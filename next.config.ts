@@ -1,9 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true, // 정적 내보내기 시 필수
-  },
+// next.config.ts
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // output: 'export' 항목이 있다면 반드시 삭제하거나 주석 처리하세요.
 };
 
 export default nextConfig;

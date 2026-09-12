@@ -31,15 +31,16 @@ interface LocaleContextType {
 
 const LocaleContext = createContext<LocaleContextType | null>(null);
 
-const STORAGE_KEY = "viet_mobile_locale";
-const LOCALE_CHANGE_EVENT = "viet_mobile_locale_change";
+const STORAGE_KEY = "life_help_locale";
+const LEGACY_STORAGE_KEY = "viet_mobile_locale";
+const LOCALE_CHANGE_EVENT = "life_help_locale_change";
 
 let cachedLocale: Locale | null = null;
 
 function getClientLocaleSnapshot(): Locale {
   if (cachedLocale) return cachedLocale;
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
       cachedLocale = saved;
       return saved;
