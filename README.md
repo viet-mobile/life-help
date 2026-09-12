@@ -1,4 +1,4 @@
-# VIET.MOBILE
+# LIFE.HELP
 
 Step 1 foundation for separate Customer (`/`), Technician (`/tech`), and Admin (`/admin`) products.
 
@@ -8,7 +8,7 @@ Copy `.env.example` to `.env.local`, then run `npm run dev`. Visit `http://local
 
 ## Security baseline
 
-`proxy.ts` maps `tech.viet.mobile` and `admin.viet.mobile` roots to their independent entry points. Set `AUTH_ENFORCEMENT=true` only after Supabase is configured; protected technician/admin routes then require a verified Supabase user with an `app_metadata.role` of `TECHNICIAN`, `ADMIN`, or `STAFF` as appropriate. The service-role key is never imported by browser code.
+`proxy.ts` maps `tech.life.help` and `admin.life.help` roots to their independent entry points. Set `AUTH_ENFORCEMENT=true` only after Supabase is configured; protected technician/admin routes then require a verified Supabase user with an `app_metadata.role` of `TECHNICIAN`, `ADMIN`, or `STAFF` as appropriate. The service-role key is never imported by browser code.
 
 ## Not included yet
 

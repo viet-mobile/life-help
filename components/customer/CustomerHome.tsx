@@ -1,10 +1,13 @@
 "use client";
-import { useState } from "react";
+
 import Link from "next/link";
 import { Card } from "@/components/shared/Card";
-import { Button } from "@/components/shared/Button";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
-import { translate, type Locale } from "@/messages";
+import { useLocale } from "@/lib/i18n/LocaleContext";
+import { useRegion } from "@/lib/region/RegionContext";
+import { getRegionUIText } from "@/lib/region/regionLocalization";
+import PrivacyNotice from "@/components/customer/PrivacyNotice";
+
 const services = [
   ["🚽", "toilet", "toilet-clog"],
   ["🚰", "sink", "sink-clog"],
@@ -17,58 +20,369 @@ const services = [
   ["🧹", "cleaning", "cleaning"],
   ["🏠", "housing", "housing"],
 ] as const;
+
 const benefits = [
   ["💬", "consultation"],
   ["🛡️", "verified"],
   ["💳", "payment"],
   ["⭐", "review"],
 ] as const;
+
 export function CustomerHome() {
-  const [locale, setLocale] = useState<Locale>("vi");
-  const t = (key: string) => translate(locale, key);
+  const { locale, setLocale, t, tKo, tBilingual } = useLocale();
+  const { formattedRegion, shortRegionText, openModal } = useRegion();
   const headingWeight = locale === "vi" ? "font-bold" : "font-extrabold";
+
   return (
     <main className="min-h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
-          <div>
-            <p className="text-xl font-extrabold text-blue-800">VIET.MOBILE</p>
-            <p className="text-xs text-slate-500">Iksan · Jeonbuk</p>
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-xs">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <Link href="/" className="text-xl font-extrabold tracking-tight text-blue-800">
+              LIFE.HELP
+            </Link>
+
+            {/* Region quick badge in header */}
+            <button
+              type="button"
+              onClick={openModal}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700"
+              title="지역 변경"
+            >
+              <span>📍</span>
+              <span className="max-w-[140px] truncate sm:max-w-none">{shortRegionText}</span>
+              <span className="text-[10px] text-slate-400">▾</span>
+            </button>
           </div>
-          <LanguageSwitcher locale={locale} onChange={setLocale} />
+
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Live Chat Link in Header */}
+            <Link
+              href="/chat"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition"
+              title="모국어 실시간 상담 센터"
+            >
+              <span>💬</span>
+              <span className="hidden sm:inline">모국어 상담</span>
+            </Link>
+
+            <Link
+              href="/request"
+              className="hidden rounded-xl bg-blue-50 px-3.5 py-1.5 text-center text-blue-700 hover:bg-blue-100 sm:inline-flex sm:flex-col sm:items-center font-bold transition"
+            >
+              {locale !== "ko" ? (
+                <>
+                  <span className="text-xs font-bold leading-tight">{t("request.title")}</span>
+                  <span className="text-[10px] font-semibold text-blue-500">서비스 신청</span>
+                </>
+              ) : (
+                <span className="text-xs font-bold py-0.5">서비스 신청</span>
+              )}
+            </Link>
+
+            <LanguageSwitcher locale={locale} onChange={setLocale} />
+          </div>
         </div>
       </header>
-      <section className="bg-linear-to-br from-blue-800 to-blue-600 px-5 py-14 text-white">
+
+      {/* Hero Section */}
+      <section className="bg-linear-to-br from-blue-800 via-blue-700 to-indigo-800 px-5 py-12 text-white sm:py-16">
         <div className="mx-auto max-w-6xl">
-          <h1 className={`max-w-xl text-4xl leading-tight ${headingWeight} sm:text-5xl`}>
+          <h1 className={`max-w-3xl text-3xl leading-tight ${headingWeight} sm:text-4xl lg:text-5xl`}>
             {t("customer.tagline")}
+            {locale !== "ko" && (
+              <span className="mt-2.5 block text-xl font-bold text-blue-200 sm:text-2xl">
+                {tKo("customer.tagline")}
+              </span>
+            )}
           </h1>
-          <Button className="mt-8 w-full sm:w-auto">🚨 {t("customer.emergency")}</Button>
-        </div>
-      </section>
-      <section className="mx-auto max-w-6xl px-5 py-10">
-        <h2 className={`text-2xl ${headingWeight}`}>{t("customer.servicesTitle")}</h2>
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {services.map(([icon, key, slug]) => (
-            <Link key={key} href={`/request?service=${slug}`} className="block">
-              <Card className="min-h-30 transition hover:-translate-y-0.5 hover:border-blue-300">
-                <span className="text-3xl">{icon}</span>
-                <p className="mt-3 font-bold">{t(`service.${key}`)}</p>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </section>
-      <section className="border-y border-slate-200 bg-white">
-        <div className="mx-auto grid max-w-6xl gap-3 px-5 py-8 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map(([icon, key]) => (
-            <div key={key} className="rounded-xl bg-slate-50 p-4">
-              <span className="text-2xl">{icon}</span>
-              <span className="ml-3 font-bold">{t(`customer.${key}`)}</span>
+
+          {/* Region Selection Banner on Main Screen */}
+          <div className="mt-8 max-w-3xl rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-md sm:p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3.5">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-2xl">
+                  📍
+                </span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-blue-100">
+                    {getRegionUIText("yourLocation", locale)}
+                  </p>
+                  <p className="mt-0.5 text-lg font-black text-white sm:text-xl">
+                    {formattedRegion}
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={openModal}
+                className="shrink-0 rounded-2xl bg-white px-5 py-2.5 text-center shadow-sm transition hover:bg-blue-50 active:scale-98 flex flex-col items-center justify-center"
+              >
+                {locale !== "ko" ? (
+                  <>
+                    <span className="text-xs sm:text-sm font-black text-blue-900 leading-snug">
+                      {getRegionUIText("changeLocation", locale)}
+                    </span>
+                    <span className="mt-0.5 text-[11px] font-bold text-blue-600">
+                      지역 변경
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-sm sm:text-base font-black text-blue-900 py-1">
+                    지역 변경
+                  </span>
+                )}
+              </button>
             </div>
-          ))}
+          </div>
+
+          {/* Hero Action Buttons */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            {/* Direct link to request/page.tsx */}
+            <Link href="/request" className="w-full sm:w-auto">
+              <div className="w-full sm:w-auto flex flex-col items-center justify-center rounded-2xl bg-red-600 hover:bg-red-700 px-6 py-3 text-white shadow-md transition active:scale-98 cursor-pointer">
+                {locale !== "ko" ? (
+                  <>
+                    <span className="text-base sm:text-lg font-black leading-snug">
+                      🚨 {t("customer.emergency")}
+                    </span>
+                    <span className="mt-0.5 text-xs sm:text-sm font-bold text-red-100">
+                      긴급 지원 신청
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-base sm:text-lg font-black py-1">
+                    🚨 {t("customer.emergency")}
+                  </span>
+                )}
+              </div>
+            </Link>
+
+            <Link href="/services/toilet-clog" className="w-full sm:w-auto">
+              <div className="w-full sm:w-auto flex flex-col items-center justify-center rounded-2xl bg-white/15 hover:bg-white/25 px-6 py-3 text-white backdrop-blur-xs transition active:scale-98 border border-white/20 cursor-pointer">
+                {locale !== "ko" ? (
+                  <>
+                    <span className="text-base sm:text-lg font-extrabold leading-snug">
+                      {t("customer.servicesTitle")}
+                    </span>
+                    <span className="mt-0.5 text-xs sm:text-sm font-semibold text-blue-100">
+                      서비스 목록 둘러보기
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-base sm:text-lg font-extrabold py-1">
+                    서비스 목록 둘러보기
+                  </span>
+                )}
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* Helper Master Registration Banner linking to tech.life.help */}
+      <section className="mx-auto max-w-6xl px-5 pt-8">
+        <Link
+          href="/tech"
+          className="group block rounded-2xl border-2 border-amber-300 bg-linear-to-r from-amber-50 via-orange-50 to-amber-100 p-5 sm:p-6 shadow-xs transition hover:border-amber-500 hover:shadow-md active:scale-[0.99]"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-center sm:text-left">
+            <div className="flex items-center gap-4 justify-center sm:justify-start">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-200 text-2xl group-hover:scale-110 transition shadow-xs">
+                🎖️
+              </span>
+              <div>
+                <p className="text-sm sm:text-base lg:text-lg font-black text-amber-950 leading-snug">
+                  {t("customer.helperMasterBanner")}
+                </p>
+                {locale !== "ko" && (
+                  <p className="mt-1 text-xs sm:text-sm font-bold text-amber-800">
+                    {tKo("customer.helperMasterBanner")}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="shrink-0 flex justify-center">
+              {locale !== "ko" ? (
+                <span className="flex flex-col items-center justify-center rounded-2xl bg-amber-600 px-5 py-3 text-white group-hover:bg-amber-700 transition shadow-sm text-center">
+                  <span className="text-xs sm:text-sm font-black leading-snug">
+                    {t("customer.helperRegisterBtn")}
+                  </span>
+                  <span className="mt-1 text-[11px] sm:text-xs font-bold text-amber-200">
+                    달인 헬퍼 등록 바로가기 →
+                  </span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center justify-center rounded-2xl bg-amber-600 px-6 py-3.5 text-sm sm:text-base font-black text-white group-hover:bg-amber-700 transition shadow-sm text-center">
+                  달인 헬퍼 등록 바로가기 →
+                </span>
+              )}
+            </div>
+          </div>
+        </Link>
+      </section>
+
+      {/* Services Grid Section */}
+      <section className="mx-auto max-w-6xl px-5 py-10">
+        <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+          <div>
+            <h2 className={`text-2xl ${headingWeight} text-slate-900`}>
+              {tBilingual("customer.servicesTitle")}
+            </h2>
+            <p className="mt-1 text-xs text-slate-500 font-medium">
+              {locale === "ko"
+                ? `현재 선택 지역: ${formattedRegion}`
+                : `${getRegionUIText("activeArea", locale)}: ${formattedRegion}`}
+            </p>
+          </div>
+
+          <Link
+            href="/request"
+            className="text-sm font-bold text-blue-700 hover:text-blue-800 hover:underline"
+          >
+            {locale === "ko" ? "원하는 서비스 직접 신청하기 →" : `${t("request.title")} · 직접 신청 →`}
+          </Link>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-5">
+          {services.map(([icon, key, slug]) => {
+            return (
+              <Card
+                key={key}
+                className="group flex flex-col justify-between p-4 transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-md"
+              >
+                {/* Clicking main card goes to services/[service]/page.tsx */}
+                <Link href={`/services/${slug}`} className="block text-center sm:text-left">
+                  <span className="text-3xl sm:text-4xl">{icon}</span>
+                  {locale !== "ko" ? (
+                    <div className="mt-3">
+                      <p className="text-sm font-extrabold text-slate-900 group-hover:text-blue-700 sm:text-base leading-snug">
+                        {t(`service.${key}`)}
+                      </p>
+                      <p className="mt-0.5 text-xs font-bold text-slate-500">
+                        {tKo(`service.${key}`)}
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="mt-3 text-sm font-extrabold text-slate-900 group-hover:text-blue-700 sm:text-base">
+                      {t(`service.${key}`)}
+                    </p>
+                  )}
+                </Link>
+
+                {/* 2-line centered action buttons with generous padding */}
+                <div className="mt-4 grid grid-cols-2 gap-2 border-t border-slate-100 pt-3">
+                  <Link
+                    href={`/services/${slug}`}
+                    className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-2 py-2 text-center transition hover:bg-slate-200"
+                    title={locale === "ko" ? "상세 정보 보기" : `${t("common.detail")} · 상세`}
+                  >
+                    {locale !== "ko" ? (
+                      <>
+                        <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
+                          {t("common.detail")}
+                        </span>
+                        <span className="mt-0.5 text-[10px] sm:text-xs font-semibold text-slate-500">
+                          상세
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-xs sm:text-sm font-bold text-slate-800 py-1">
+                        상세
+                      </span>
+                    )}
+                  </Link>
+
+                  <Link
+                    href={`/request?service=${slug}`}
+                    className="flex flex-col items-center justify-center rounded-xl bg-blue-700 px-2 py-2 text-center text-white transition hover:bg-blue-800 shadow-xs"
+                    title={locale === "ko" ? "서비스 바로 신청" : `${t("common.apply")} · 신청`}
+                  >
+                    {locale !== "ko" ? (
+                      <>
+                        <span className="text-xs sm:text-sm font-extrabold leading-snug">
+                          {t("common.apply")}
+                        </span>
+                        <span className="mt-0.5 text-[10px] sm:text-xs font-bold text-blue-200">
+                          신청
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-xs sm:text-sm font-extrabold py-1">
+                        신청
+                      </span>
+                    )}
+                  </Link>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 4 Bottom Benefit Cards - Icon on top, 2-line centered, larger typography */}
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto grid max-w-6xl gap-4 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map(([icon, key]) => {
+            const href =
+              key === "consultation"
+                ? "/chat"
+                : key === "verified"
+                ? "/tech"
+                : key === "payment"
+                ? "/payment"
+                : key === "review"
+                ? "/review"
+                : undefined;
+
+            const cardBody = (
+              <div className="flex h-full flex-col items-center justify-center text-center rounded-2xl bg-slate-50 p-6 border border-slate-200/80 transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-50/30 hover:shadow-md cursor-pointer">
+                <span className="text-4xl sm:text-5xl mb-3.5 drop-shadow-xs">{icon}</span>
+                {locale !== "ko" ? (
+                  <>
+                    <span className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      {t(`customer.${key}`)}
+                    </span>
+                    <span className="mt-1.5 text-xs sm:text-sm font-bold text-blue-700">
+                      {tKo(`customer.${key}`)}
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-base sm:text-lg font-black text-slate-900 leading-snug py-1">
+                    {t(`customer.${key}`)}
+                  </span>
+                )}
+                {href && (
+                  <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-bold text-blue-800">
+                    {key === "consultation"
+                      ? "실시간 상담 →"
+                      : key === "verified"
+                      ? "헬퍼 등록 및 확인 →"
+                      : key === "payment"
+                      ? (locale === "ko" ? "계좌이체 안내 →" : t("customer.paymentLink"))
+                      : key === "review"
+                      ? (locale === "ko" ? "자유 리뷰 남기기 →" : t("customer.reviewLink"))
+                      : ""}
+                  </span>
+                )}
+              </div>
+            );
+
+            return href ? (
+              <Link key={key} href={href} className="block group">
+                {cardBody}
+              </Link>
+            ) : (
+              <div key={key}>
+                {cardBody}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <PrivacyNotice />
     </main>
   );
 }
