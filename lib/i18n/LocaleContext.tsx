@@ -18,6 +18,7 @@ import {
   type LanguageMeta,
   translate,
 } from "@/messages";
+import { COUNTRY_TO_LANGUAGE_MAP } from "@/lib/i18n/siteMetadata";
 
 export type DisplayMode = "bilingual" | "monolingual";
 
@@ -90,6 +91,23 @@ let cachedLocale: Locale | null = null;
 let lastKnownPathname: string | null = null;
 let cachedDisplayMode: DisplayMode | null = null;
 
+export function getDomainLocale(): Locale | null {
+  if (typeof window === "undefined") return null;
+  const host = window.location.hostname.toLowerCase();
+  const parts = host.split(".");
+  if (parts.length >= 3 && parts[parts.length - 1] === "help") {
+    const candidateCountry =
+      parts[0] === "tech" || parts[0] === "chat" || parts[0] === "sys"
+        ? parts[1]
+        : parts[0];
+    if (candidateCountry && COUNTRY_TO_LANGUAGE_MAP[candidateCountry]) {
+      const mapped = COUNTRY_TO_LANGUAGE_MAP[candidateCountry];
+      if (isValidLocale(mapped)) return mapped;
+    }
+  }
+  return null;
+}
+
 function getClientLocaleSnapshot(): Locale {
   if (typeof window === "undefined") return defaultLocale;
 
@@ -105,7 +123,7 @@ function getClientLocaleSnapshot(): Locale {
       cachedLocale = urlLocale;
       return urlLocale;
     } else {
-      // Path has no language prefix; reset URL-forced cache so localStorage/device locale is used
+      // Path has no language prefix; reset URL-forced cache so domain/localStorage is used
       cachedLocale = null;
     }
   }
@@ -121,7 +139,14 @@ function getClientLocaleSnapshot(): Locale {
     return urlLocale;
   }
 
-  // 2. Otherwise check localStorage (existing behavior)
+  // 2. If host domain indicates a country (e.g. vietnam.life.help -> vi), use domain language
+  const domainLocale = getDomainLocale();
+  if (domainLocale) {
+    cachedLocale = domainLocale;
+    return domainLocale;
+  }
+
+  // 3. Otherwise check localStorage (existing behavior)
   try {
     const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
@@ -129,7 +154,7 @@ function getClientLocaleSnapshot(): Locale {
       return saved;
     }
 
-    // 3. Otherwise detect device locale (existing behavior)
+    // 4. Otherwise detect device locale (existing behavior)
     const detected = detectDeviceLocale();
     cachedLocale = detected;
     return detected;

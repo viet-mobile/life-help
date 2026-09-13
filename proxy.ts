@@ -113,7 +113,62 @@ const LANGUAGES = new Set([
   "pt",
   "el",
   "ur",
+  "zh-hans",
+  "zh-hant",
 ]);
+
+export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
+  korea: "ko",
+  vietnam: "vi",
+  japan: "ja",
+  china: "zs",
+  taiwan: "zt",
+  philippines: "en",
+  indonesia: "id",
+  russia: "ru",
+  uzbek: "uz",
+  nepal: "ne",
+  india: "hi",
+  cambodia: "km",
+  thailand: "th",
+  myanmar: "my",
+  srilanka: "si",
+  kazakh: "kk",
+  france: "fr",
+  deutsch: "de",
+  turkiye: "tr",
+  ukraina: "uk",
+  timorleste: "tet",
+  uae: "ar",
+  italia: "it",
+  egypt: "arz",
+  espania: "es",
+  iran: "fa",
+  netherland: "nl",
+  poland: "pl",
+  ethiopia: "am",
+  sweden: "sv",
+  israel: "he",
+  denmark: "da",
+  norway: "no",
+  mongol: "mn",
+  mexico: "es",
+  brazil: "pt",
+  greece: "el",
+  portugal: "pt",
+  southafrica: "en",
+  swiss: "de",
+  pakistan: "ur",
+  saudiarabia: "ar",
+  yemen: "ar",
+  iraq: "ar",
+  bangladesh: "bn",
+  us: "en",
+  uk: "en",
+  canada: "en",
+  australia: "en",
+  newzealand: "en",
+};
 
 function getHost(request: NextRequest) {
   return (request.headers.get("host") ?? "").split(":")[0].toLowerCase();
@@ -172,7 +227,11 @@ function getLanguage(pathname: string): string | null {
     return null;
   }
 
-  return LANGUAGES.has(firstSegment) ? firstSegment : null;
+  const lower = firstSegment.toLowerCase();
+  if (lower === "zt" || lower === "zh-hant") return "zt";
+  if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zs";
+
+  return LANGUAGES.has(lower) ? lower : null;
 }
 
 function buildInternalPath(
@@ -310,34 +369,46 @@ function buildInternalPath(
   }
 
   /**
-   * Customer portal
+   * Customer portal & universal language routing
    *
-   * korea.life.help/vi
-   * vietnam.life.help/ko
-   *
-   * Domain = country
-   * First path segment = language
+   * Example:
+   *   life.help/vi
+   *   korea.life.help/vi
+   *   vietnam.life.help
+   *   vietnam.life.help/ko
+   *   localhost:3000/vi
    */
-  if (country) {
-    const language = getLanguage(pathname);
+  const language = getLanguage(pathname);
+  const defaultCountryLang = country ? COUNTRY_TO_DEFAULT_LANGUAGE[country] : null;
+  const effectiveLanguage = language || defaultCountryLang;
 
-    if (language) {
-      const strippedPath =
-        pathname === `/${language}`
-          ? "/"
-          : pathname.replace(new RegExp(`^/${language}(?=/|$)`), "");
+  if (language) {
+    const firstSeg = pathname.split("/").filter(Boolean)[0];
+    const strippedPath =
+      pathname === `/${firstSeg}`
+        ? "/"
+        : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "");
 
-      return {
-        pathname: strippedPath || "/",
-        country,
-        language,
-      };
+    let internalPath = strippedPath || "/";
+
+    if (internalPath === "/sys") {
+      internalPath = "/admin";
+    } else if (internalPath.startsWith("/sys/")) {
+      internalPath = internalPath.replace(/^\/sys/, "/admin");
     }
 
     return {
+      pathname: internalPath,
+      country,
+      language,
+    };
+  }
+
+  if (country) {
+    return {
       pathname,
       country,
-      language: null,
+      language: effectiveLanguage,
     };
   }
 
@@ -421,8 +492,11 @@ export async function proxy(request: NextRequest) {
     requestHeaders.delete("x-life-country");
   }
 
-  if (language) {
-    requestHeaders.set("x-life-language", language);
+  const defaultCountryLang = country ? COUNTRY_TO_DEFAULT_LANGUAGE[country] : null;
+  const effectiveLanguage = language || defaultCountryLang;
+
+  if (effectiveLanguage) {
+    requestHeaders.set("x-life-language", effectiveLanguage);
   } else {
     requestHeaders.delete("x-life-language");
   }
@@ -488,7 +562,7 @@ export async function proxy(request: NextRequest) {
    */
   if (
     country ||
-    language ||
+    effectiveLanguage ||
     host === "sys.life.help" ||
     host.startsWith("tech.") ||
     host.startsWith("chat.") ||
