@@ -26,7 +26,7 @@ export function HelperCalendar({
   dayHours = {},
   onUpdateExclusions,
 }: HelperCalendarProps) {
-  const { locale } = useLocale();
+  const { locale, t, formatBilingual } = useLocale();
   const isKo = locale === "ko";
 
   // Current date info
@@ -40,6 +40,32 @@ export function HelperCalendar({
   // Month 0: current month, Month 1: next month
   const targetYear = selectedMonthOffset === 0 ? currentYear : currentMonth === 11 ? currentYear + 1 : currentYear;
   const targetMonth = selectedMonthOffset === 0 ? currentMonth : (currentMonth + 1) % 12;
+
+  // Localized weekday names for 0..6 (Sun..Sat)
+  const localizedWeekdays = useMemo(() => {
+    return [0, 1, 2, 3, 4, 5, 6].map((dayIdx) => {
+      // 2026-09-13 was Sunday
+      const sampleDate = new Date(2026, 8, 13 + dayIdx);
+      try {
+        return new Intl.DateTimeFormat(locale === "ko" ? "ko-KR" : locale, { weekday: "short" }).format(sampleDate);
+      } catch {
+        return WEEKDAY_NAMES[dayIdx];
+      }
+    });
+  }, [locale]);
+
+  // Localized target month header
+  const targetMonthFormatted = useMemo(() => {
+    try {
+      const sampleDate = new Date(targetYear, targetMonth, 1);
+      return new Intl.DateTimeFormat(locale === "ko" ? "ko-KR" : locale, {
+        year: "numeric",
+        month: "long",
+      }).format(sampleDate);
+    } catch {
+      return `${targetYear}년 ${targetMonth + 1}월`;
+    }
+  }, [targetYear, targetMonth, locale]);
 
   // Build calendar grid for a given year & month
   const calendarData = useMemo(() => {
@@ -185,12 +211,17 @@ export function HelperCalendar({
 
   // Reset all exclusions
   const handleResetExclusions = () => {
-    if (confirm(isKo ? "당월 및 익월의 개별 휴무일 설정을 모두 초기화(기본 요일 일정으로 복구)하시겠습니까?" : "Reset all individual day-off exclusions for this and next month?")) {
+    if (
+      confirm(
+        isKo
+          ? "당월 및 익월의 개별 휴무일 설정을 모두 초기화(기본 요일 일정으로 복구)하시겠습니까?"
+          : "Reset all individual day-off exclusions for this and next month?",
+      )
+    ) {
       onUpdateExclusions([], []);
     }
   };
 
-  const nextMonthYearLabel = currentMonth === 11 ? currentYear + 1 : currentYear;
   const nextMonthLabel = ((currentMonth + 1) % 12) + 1;
 
   return (
@@ -201,15 +232,17 @@ export function HelperCalendar({
           <h4 className="text-sm font-extrabold text-white flex items-center gap-2">
             <span>📅</span>
             <span>
-              {isKo
-                ? "월간 출동 달력 (당월 및 익월 개별 휴무일 설정)"
-                : "Monthly Dispatch Calendar (Day-Off Toggle)"}
+              {formatBilingual(
+                t("workspace.calendarTitle"),
+                "월간 출동 달력 (당월 및 익월 개별 휴무일 설정)",
+              )}
             </span>
           </h4>
           <p className="mt-1 text-xs text-slate-400">
-            {isKo
-              ? "기본 설정된 활동 요일은 자동으로 '출동 가능'으로 표시됩니다. 일할 수 없는 날짜를 클릭하여 체크 해제(휴무 지정)하세요."
-              : "Days matching weekly settings are auto-marked as active. Click any date to uncheck and set as Day Off."}
+            {formatBilingual(
+              t("workspace.calendarDesc"),
+              "기본 설정된 활동 요일은 자동으로 '출동 가능'으로 표시됩니다. 일할 수 없는 날짜를 클릭하여 체크 해제(휴무 지정)하세요.",
+            )}
           </p>
         </div>
 
@@ -224,7 +257,10 @@ export function HelperCalendar({
                 : "text-slate-400 hover:text-white"
             }`}
           >
-            {isKo ? `당월 (${currentMonth + 1}월)` : `This Month (${currentMonth + 1})`}
+            {formatBilingual(
+              `${t("workspace.calendarThisMonth")} (${currentMonth + 1})`,
+              `당월 (${currentMonth + 1}월)`,
+            )}
           </button>
           <button
             type="button"
@@ -235,9 +271,10 @@ export function HelperCalendar({
                 : "text-slate-400 hover:text-white"
             }`}
           >
-            {isKo
-              ? `익월 (${nextMonthLabel}월)`
-              : `Next Month (${nextMonthLabel})`}
+            {formatBilingual(
+              `${t("workspace.calendarNextMonth")} (${nextMonthLabel})`,
+              `익월 (${nextMonthLabel}월)`,
+            )}
           </button>
         </div>
       </div>
@@ -248,35 +285,37 @@ export function HelperCalendar({
           <span className="flex items-center gap-1.5 font-semibold text-slate-300">
             <span className="h-2.5 w-2.5 rounded-full bg-blue-500 inline-block"></span>
             <span>
-              {selectedMonthOffset === 0
-                ? `${currentMonth + 1}월 출동 가능:`
-                : `${nextMonthLabel}월 출동 가능:`}
+              {formatBilingual(
+                `${selectedMonthOffset === 0 ? currentMonth + 1 : nextMonthLabel} ${t("workspace.calendarAvailable")}:`,
+                `${selectedMonthOffset === 0 ? currentMonth + 1 : nextMonthLabel}월 출동 가능:`,
+              )}
             </span>
             <strong className="text-white">
               {selectedMonthOffset === 0
                 ? monthStats.thisMonthWorkCount
                 : monthStats.nextMonthWorkCount}
-              {isKo ? "일" : " days"}
+              {isKo ? "일" : ` ${t("workspace.calendarDays")}`}
             </strong>
           </span>
 
           <span className="flex items-center gap-1.5 font-semibold text-slate-300">
             <span className="h-2.5 w-2.5 rounded-full bg-rose-500 inline-block"></span>
             <span>
-              {selectedMonthOffset === 0
-                ? `${currentMonth + 1}월 개별 휴무:`
-                : `${nextMonthLabel}월 개별 휴무:`}
+              {formatBilingual(
+                `${selectedMonthOffset === 0 ? currentMonth + 1 : nextMonthLabel} ${t("workspace.calendarDayOff")}:`,
+                `${selectedMonthOffset === 0 ? currentMonth + 1 : nextMonthLabel}월 개별 휴무:`,
+              )}
             </span>
             <strong className="text-rose-400">
               {selectedMonthOffset === 0
                 ? monthStats.thisMonthExcludedCount
                 : monthStats.nextMonthExcludedCount}
-              {isKo ? "일" : " days"}
+              {isKo ? "일" : ` ${t("workspace.calendarDays")}`}
             </strong>
           </span>
 
           <span className="text-[11px] text-slate-500 hidden md:inline">
-            ({isKo ? "총 개별 휴무 지정: " : "Total exclusions: "}
+            ({formatBilingual(t("workspace.calendarExclusionsTitle"), "총 개별 휴무 지정: ")}
             <strong className="text-slate-400">{monthStats.totalExcluded}</strong>
             {isKo ? "건" : ""})
           </span>
@@ -288,7 +327,7 @@ export function HelperCalendar({
             onClick={handleResetExclusions}
             className="rounded-lg border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-[11px] font-bold text-slate-300 hover:bg-slate-700 hover:text-white transition"
           >
-            🔄 {isKo ? "휴무일 전체 초기화" : "Reset Exclusions"}
+            🔄 {formatBilingual(t("workspace.calendarReset"), "휴무일 전체 초기화")}
           </button>
         )}
       </div>
@@ -297,14 +336,14 @@ export function HelperCalendar({
       <div className="mt-4">
         {/* Month Header Label */}
         <div className="text-center py-2 mb-2 font-black text-white text-base">
-          {targetYear}년 {targetMonth + 1}월
+          {formatBilingual(targetMonthFormatted, `${targetYear}년 ${targetMonth + 1}월`)}
         </div>
 
         {/* Day of Week Headers */}
         <div className="grid grid-cols-7 gap-1 text-center font-bold text-xs pb-2 border-b border-slate-800">
-          {WEEKDAY_NAMES.map((name, i) => (
+          {localizedWeekdays.map((name, i) => (
             <div
-              key={name}
+              key={`wday-${i}`}
               className={`py-1 ${
                 i === 0 ? "text-rose-400" : i === 6 ? "text-blue-400" : "text-slate-400"
               }`}
@@ -340,7 +379,7 @@ export function HelperCalendar({
                     ? "border-rose-900/60 bg-rose-950/20 hover:bg-rose-900/30"
                     : "border-slate-800 bg-slate-950/50 hover:bg-slate-800/40 text-slate-500"
                 } ${cell.isToday ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-slate-900" : ""}`}
-                title={`${cell.isoDate} (${cell.dayName}): ${
+                title={`${cell.isoDate} (${localizedWeekdays[cell.dayOfWeek]}): ${
                   cell.isWorkday
                     ? isKo
                       ? "출동 가능일 (클릭 시 개별 휴무로 변경)"
@@ -384,22 +423,18 @@ export function HelperCalendar({
                       <span className="text-emerald-400">✓</span>
                       <span className="truncate">
                         {cell.isExtraWork
-                          ? isKo
-                            ? "추가근무"
-                            : "Extra"
-                          : isKo
-                          ? "출동가능"
-                          : "Active"}
+                          ? formatBilingual(t("workspace.extraWork"), "추가근무")
+                          : formatBilingual(t("workspace.calendarDayActive"), "출동가능")}
                       </span>
                     </div>
                   ) : cell.isExplicitlyExcluded ? (
                     <div className="flex items-center gap-1 rounded bg-rose-950/60 px-1 py-0.5 text-[10px] font-bold text-rose-300 border border-rose-800/60">
                       <span>✕</span>
-                      <span className="truncate">{isKo ? "개별휴무" : "Off"}</span>
+                      <span className="truncate">{formatBilingual(t("workspace.calendarDayOff"), "개별휴무")}</span>
                     </div>
                   ) : (
                     <div className="rounded bg-slate-900 px-1 py-0.5 text-[10px] font-medium text-slate-500 text-center">
-                      {isKo ? "정기휴무" : "Off"}
+                      {formatBilingual(t("workspace.calendarDayScheduledOff"), "정기휴무")}
                     </div>
                   )}
                 </div>
@@ -428,20 +463,34 @@ export function HelperCalendar({
           <p className="text-xs font-bold text-slate-300 mb-2 flex items-center gap-1.5">
             <span className="text-rose-400">🚫</span>
             <span>
-              {isKo ? "지정된 개별 휴무일 목록:" : "Individual Day-Off Exclusions:"}
+              {formatBilingual(
+                t("workspace.calendarExclusionsTitle"),
+                "지정된 개별 휴무일 목록:",
+              )}
             </span>
           </p>
           <div className="flex flex-wrap gap-1.5">
             {excludedDates.map((dateStr) => {
               const [y, m, d] = dateStr.split("-").map(Number);
-              const dayName = WEEKDAY_NAMES[new Date(y, m - 1, d).getDay()];
+              const dateObj = new Date(y, m - 1, d);
+              const dayIdx = dateObj.getDay();
+              const wdayName = localizedWeekdays[dayIdx];
+              let formattedDate: string;
+              try {
+                formattedDate = new Intl.DateTimeFormat(
+                  locale === "ko" ? "ko-KR" : locale,
+                  { year: "numeric", month: "long", day: "numeric" }
+                ).format(dateObj);
+              } catch {
+                formattedDate = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+              }
               return (
                 <span
                   key={dateStr}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-rose-900/60 bg-rose-950/40 px-2.5 py-1 text-xs font-bold text-rose-200"
                 >
                   <span>
-                    {m}월 {d}일 ({dayName})
+                    {formattedDate} ({wdayName})
                   </span>
                   <button
                     type="button"

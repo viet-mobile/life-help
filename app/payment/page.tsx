@@ -7,7 +7,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 
 export default function PaymentPage() {
-  const { locale, setLocale, t, tKo } = useLocale();
+  const { locale, setLocale, t, tKo, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const [copied, setCopied] = useState(false);
 
@@ -28,7 +28,7 @@ export default function PaymentPage() {
             href="/"
             onClick={navigateToMainHome}
             className="text-xl font-extrabold tracking-tight text-blue-800 hover:opacity-80 transition cursor-pointer"
-            title="LIFE.HELP 홈으로 이동"
+            title={t("payment.backHome")}
           >
             LIFE.HELP
           </Link>
@@ -36,7 +36,7 @@ export default function PaymentPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/chat"
-              className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition hidden sm:inline-block"
+              className="rounded-xl border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] hidden sm:inline-block cursor-pointer"
             >
               💬 {t("payment.liveChatBtn")}
             </Link>
@@ -78,8 +78,8 @@ export default function PaymentPage() {
               &ldquo;{t("payment.bankTransferInstruction")}&rdquo;
             </h2>
 
-            {/* Bilingual Korean subtitle for non-Korean users */}
-            {!isKorean && (
+            {/* Bilingual Korean subtitle for non-Korean users only in bilingual mode */}
+            {!isKorean && isBilingual && (
               <p className="text-xs sm:text-sm font-extrabold text-blue-800/80 pt-1">
                 &ldquo;우리은행 1002-080-001919로 계좌이체 해주세요&rdquo;
               </p>
@@ -108,14 +108,14 @@ export default function PaymentPage() {
                 <button
                   type="button"
                   onClick={handleCopyAccount}
-                  className={`rounded-xl px-3 py-1.5 text-xs font-black transition shadow-xs ${
+                  className={`rounded-xl px-3.5 py-1.5 text-xs font-black transition active:scale-[0.98] shadow-sm cursor-pointer ${
                     copied
-                      ? "bg-emerald-600 text-white"
-                      : "bg-blue-600 text-white hover:bg-blue-500"
+                      ? "bg-emerald-600 text-white shadow-emerald-600/20"
+                      : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-blue-600/20 hover:brightness-105"
                   }`}
-                  title="클립보드에 계좌번호 복사"
+                  title={t("payment.copyAccountBtn")}
                 >
-                  {copied ? "✓ " + (isKorean ? "복사됨" : "Copied") : "📋 " + t("payment.copyAccountBtn")}
+                  {copied ? "✓ " + t("payment.copiedToast") : "📋 " + t("payment.copyAccountBtn")}
                 </button>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function PaymentPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             <Link
               href="/chat"
-              className="flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-5 py-3.5 text-xs sm:text-sm font-black text-white hover:bg-indigo-500 shadow-md transition text-center"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition text-center cursor-pointer border border-blue-500/30"
             >
               <span>💬</span>
               <span>{t("payment.liveChatBtn")}</span>
@@ -155,7 +155,7 @@ export default function PaymentPage() {
             <Link
               href="/"
               onClick={navigateToMainHome}
-              className="flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-slate-100 px-5 py-3.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-200 transition text-center"
+              className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white px-5 py-3.5 text-xs sm:text-sm font-black text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs hover:shadow-xs active:scale-[0.98] transition text-center cursor-pointer"
             >
               <span>🏠</span>
               <span>{t("payment.homeBtn")}</span>
@@ -166,7 +166,7 @@ export default function PaymentPage() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400">
-        LIFE.HELP · 고객 지원센터 010-4494-0694 / 010-5959-5959
+        LIFE.HELP · {t("payment.supportCenter")} 010-4494-0694 / 010-5959-5959
       </footer>
     </main>
   );

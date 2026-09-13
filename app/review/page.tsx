@@ -106,7 +106,7 @@ export default function ReviewPage() {
             href="/"
             onClick={navigateToMainHome}
             className="text-xl font-extrabold tracking-tight text-blue-800 hover:opacity-80 transition cursor-pointer"
-            title="LIFE.HELP 메인 홈으로 이동"
+            title={t("review.backHome") || "LIFE.HELP Home"}
           >
             LIFE.HELP
           </Link>
@@ -114,9 +114,9 @@ export default function ReviewPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/payment"
-              className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition hidden sm:inline-block"
+              className="rounded-xl border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] hidden sm:inline-block cursor-pointer"
             >
-              💳 {isKorean ? "계좌이체 안내" : "Payment"}
+              💳 {t("payment.title")}
             </Link>
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
@@ -135,7 +135,7 @@ export default function ReviewPage() {
 
               <div className="space-y-2">
                 <span className="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
-                  {isKorean ? "이메일 전송 완료" : "Delivered to Admin Email"}
+                  {t("review.deliveredBadge")}
                 </span>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-900">
                   {t("review.successTitle")}
@@ -148,25 +148,25 @@ export default function ReviewPage() {
               {/* Submitted Review Summary Box */}
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-left space-y-3">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-2 text-xs">
-                  <span className="font-bold text-slate-500">수신 이메일:</span>
+                  <span className="font-bold text-slate-500">{t("review.recipientEmailLabel")}</span>
                   <strong className="font-mono text-blue-700">contact@life.help</strong>
                 </div>
                 <div className="flex items-center justify-between border-b border-slate-200 pb-2 text-xs">
-                  <span className="font-bold text-slate-500">만족도 평가:</span>
+                  <span className="font-bold text-slate-500">{t("review.ratingEvalLabel")}</span>
                   <span className="font-black text-amber-500">
                     {"★".repeat(submittedReview.rating)}{"☆".repeat(5 - submittedReview.rating)} ({submittedReview.rating}/5)
                   </span>
                 </div>
                 <div className="flex items-center justify-between border-b border-slate-200 pb-2 text-xs">
-                  <span className="font-bold text-slate-500">관련 서비스:</span>
+                  <span className="font-bold text-slate-500">{t("review.relatedServiceLabel")}</span>
                   <span className="font-bold text-slate-800">{submittedReview.serviceCategory}</span>
                 </div>
                 <div className="pt-1 text-xs leading-relaxed text-slate-700 bg-white p-3 rounded-xl border border-slate-200">
-                  <p className="font-bold text-slate-500 mb-1 text-[11px]">[작성된 리뷰 내용]</p>
+                  <p className="font-bold text-slate-500 mb-1 text-[11px]">{t("review.writtenContentLabel")}</p>
                   <p className="italic whitespace-pre-wrap">&ldquo;{submittedReview.content}&rdquo;</p>
                 </div>
                 <div className="text-[11px] text-slate-400 text-right">
-                  전송 시각: {new Date(submittedReview.createdAt).toLocaleString()} (개인정보 없음)
+                  {t("review.sentTimeLabel")} {new Date(submittedReview.createdAt).toLocaleString()} {t("review.noPersonalInfoNote")}
                 </div>
               </div>
 
@@ -175,14 +175,14 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="rounded-2xl border border-slate-300 bg-slate-100 px-5 py-3.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-200 transition"
+                  className="rounded-2xl border border-slate-200/90 bg-white px-5 py-3.5 text-xs sm:text-sm font-black text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs hover:shadow-xs active:scale-[0.98] transition cursor-pointer"
                 >
                   ✏️ {t("review.writeAnotherBtn")}
                 </button>
                 <Link
                   href="/"
                   onClick={navigateToMainHome}
-                  className="rounded-2xl bg-blue-700 px-5 py-3.5 text-xs sm:text-sm font-black text-white hover:bg-blue-800 shadow-md transition flex items-center justify-center gap-1.5"
+                  className="rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition flex items-center justify-center gap-1.5 cursor-pointer border border-blue-500/30"
                 >
                   <span>🏠</span>
                   <span>{t("review.homeBtn")}</span>
@@ -234,7 +234,7 @@ export default function ReviewPage() {
                   ))}
                 </div>
                 <p className="text-xs font-bold text-blue-800">
-                  {rating}점 - {isKorean ? RATING_DESCRIPTIONS[rating]?.ko : RATING_DESCRIPTIONS[rating]?.en}
+                  {rating}{t("review.starUnit")} - {t(`review.rating_${rating}`)}
                 </p>
               </div>
 
@@ -251,14 +251,14 @@ export default function ReviewPage() {
                         key={srv.slug}
                         type="button"
                         onClick={() => setSelectedService(srv.slug)}
-                        className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold transition border ${
+                        className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold transition border cursor-pointer ${
                           isSelected
-                            ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                            ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-blue-600 shadow-sm shadow-blue-600/20"
+                            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:text-slate-900 shadow-2xs"
                         }`}
                       >
                         <span>{srv.icon}</span>
-                        <span>{srv.defaultLabel}</span>
+                        <span>{t(srv.labelKey)}</span>
                       </button>
                     );
                   })}
@@ -271,20 +271,21 @@ export default function ReviewPage() {
                   <label className="block text-xs sm:text-sm font-bold text-slate-700">
                     {t("review.contentLabel")}
                   </label>
-                  <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                    100% 익명 작성
+                  <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                    {t("review.anonymousBadge")}
                   </span>
                 </div>
                 <textarea
-                  rows={5}
+                  required
+                  rows={4}
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder={t("review.contentPlaceholder")}
                   className="w-full rounded-2xl border border-slate-200 p-4 text-xs sm:text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition resize-none leading-relaxed"
                 />
                 <div className="flex items-center justify-between text-[11px] text-slate-400">
-                  <span>※ 성함, 연락처 등 개인정보는 일절 수집되지 않습니다.</span>
-                  <span>{content.length}자</span>
+                  <span>{t("review.noPersonalInfoNote") || (isKorean ? "※ 성함, 연락처 등 개인정보는 일절 수집되지 않습니다." : "※ No personal information is collected.")}</span>
+                  <span>{content.length}{isKorean ? "자" : " chars"}</span>
                 </div>
               </div>
 
@@ -293,7 +294,7 @@ export default function ReviewPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || !content.trim()}
-                  className="w-full rounded-2xl bg-blue-600 py-4 text-xs sm:text-sm font-extrabold text-white shadow-lg hover:bg-blue-700 active:scale-[0.99] disabled:opacity-50 transition flex items-center justify-center gap-2"
+                  className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-4 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex items-center justify-center gap-2 cursor-pointer border border-blue-500/30"
                 >
                   <span>⭐</span>
                   <span>{isSubmitting ? t("review.submittingBtn") : t("review.submitBtn")}</span>
@@ -308,10 +309,10 @@ export default function ReviewPage() {
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
               <span>🌟</span>
-              <span>{isKorean ? "최근 등록된 익명 고객 리뷰" : "Recent Anonymous Reviews"}</span>
+              <span>{isKorean ? "최근 등록된 익명 고객 리뷰" : (t("review.recentReviewsTitle") || "Recent Anonymous Reviews")}</span>
             </h3>
             <span className="text-xs text-slate-400">
-              {recentReviews.length}{isKorean ? "개의 솔직한 후기" : " reviews"}
+              {recentReviews.length} {isKorean ? "개의 솔직한 후기" : "reviews"}
             </span>
           </div>
 
@@ -331,7 +332,7 @@ export default function ReviewPage() {
                     </span>
                   </div>
                   <span className="text-[10px] text-slate-400">
-                    익명 고객 · {new Date(rev.createdAt).toLocaleDateString()}
+                    {isKorean ? "익명 고객" : "Anonymous"} · {new Date(rev.createdAt).toLocaleDateString()}
                   </span>
                 </div>
                 <p className="text-xs text-slate-700 leading-relaxed">
@@ -345,7 +346,7 @@ export default function ReviewPage() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400">
-        LIFE.HELP · 관리자 문의 이메일: contact@life.help
+        LIFE.HELP · {isKorean ? "관리자 문의 이메일" : "Admin Email"}: contact@life.help
       </footer>
     </main>
   );

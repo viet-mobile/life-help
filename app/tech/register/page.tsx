@@ -34,7 +34,7 @@ export default function TechRegisterPage() {
         >
           <span>LIFE.HELP</span>
           <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-xs font-bold text-white border border-blue-700/50">
-            {isKorean ? "헬퍼 등록" : "HELPER REGISTER"}
+            {t("tech.registerTab") || (isKorean ? "헬퍼 등록" : "HELPER REGISTER")}
           </span>
         </Link>
         <LanguageSwitcher />
@@ -53,7 +53,7 @@ export default function TechRegisterPage() {
             className="text-xs font-bold text-slate-400 hover:text-blue-400 transition inline-flex items-center gap-1"
           >
             <span>←</span>
-            <span>{isKorean ? "헬퍼 메인 소개 페이지로 돌아가기" : "Back to Helper Home"}</span>
+            <span>{isKorean ? "헬퍼 메인 소개 페이지로 돌아가기" : t("tech.backToTechHome") || "Back to Helper Home"}</span>
           </Link>
         </div>
       </div>

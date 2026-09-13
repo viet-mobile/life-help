@@ -34,6 +34,8 @@ import sv from "./sv.json";
 import he from "./he.json";
 import da from "./da.json";
 import no from "./no.json";
+import el from "./el.json";
+import pt from "./pt.json";
 
 export const locales = [
   "vi",
@@ -72,6 +74,8 @@ export const locales = [
   "he",
   "da",
   "no",
+  "el",
+  "pt",
 ] as const;
 
 export type Locale = (typeof locales)[number];
@@ -121,6 +125,8 @@ export const languages: readonly LanguageMeta[] = [
   { code: "he", name: "히브리어", nativeName: "עברית", dir: "rtl" },
   { code: "da", name: "덴마크어", nativeName: "Dansk" },
   { code: "no", name: "노르웨이어", nativeName: "Norsk" },
+  { code: "el", name: "그리스어", nativeName: "Ελληνικά" },
+  { code: "pt", name: "포르투갈어", nativeName: "Português" },
 ] as const;
 
 export const dictionaries = {
@@ -160,6 +166,8 @@ export const dictionaries = {
   he,
   da,
   no,
+  el,
+  pt,
 } as const;
 
 export function isValidLocale(val: unknown): val is Locale {
@@ -221,6 +229,16 @@ export function detectDeviceLocale(preferredLanguages?: readonly string[]): Loca
     // Indonesian (id or legacy in)
     if (tag.startsWith("id") || tag.startsWith("in")) {
       return "id";
+    }
+
+    // Greek
+    if (tag.startsWith("el")) {
+      return "el";
+    }
+
+    // Portuguese
+    if (tag.startsWith("pt")) {
+      return "pt";
     }
 
     // Standard 2-letter prefix match

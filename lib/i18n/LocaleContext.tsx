@@ -17,9 +17,15 @@ import {
   translate,
 } from "@/messages";
 
+export type DisplayMode = "bilingual" | "monolingual";
+
 interface LocaleContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  displayMode: DisplayMode;
+  setDisplayMode: (mode: DisplayMode) => void;
+  toggleDisplayMode: () => void;
+  isBilingual: boolean;
   t: (key: string) => string;
   tKo: (key: string) => string;
   tBilingual: (key: string, separator?: string) => string;
@@ -35,7 +41,11 @@ const STORAGE_KEY = "life_help_locale";
 const LEGACY_STORAGE_KEY = "viet_mobile_locale";
 const LOCALE_CHANGE_EVENT = "life_help_locale_change";
 
+const DISPLAY_MODE_STORAGE_KEY = "life_help_display_mode";
+const DISPLAY_MODE_CHANGE_EVENT = "life_help_display_mode_change";
+
 let cachedLocale: Locale | null = null;
+let cachedDisplayMode: DisplayMode | null = null;
 
 function getClientLocaleSnapshot(): Locale {
   if (cachedLocale) return cachedLocale;
@@ -57,7 +67,25 @@ function getServerLocaleSnapshot(): Locale {
   return defaultLocale;
 }
 
-function subscribe(callback: () => void): () => void {
+function getClientDisplayModeSnapshot(): DisplayMode {
+  if (cachedDisplayMode) return cachedDisplayMode;
+  try {
+    const saved = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
+    if (saved === "monolingual" || saved === "bilingual") {
+      cachedDisplayMode = saved;
+      return saved;
+    }
+  } catch {
+    // ignore
+  }
+  return "monolingual";
+}
+
+function getServerDisplayModeSnapshot(): DisplayMode {
+  return "monolingual";
+}
+
+function subscribeLocale(callback: () => void): () => void {
   const handleStorage = (e: StorageEvent) => {
     if (e.key === STORAGE_KEY) {
       cachedLocale = null;
@@ -78,11 +106,38 @@ function subscribe(callback: () => void): () => void {
   };
 }
 
+function subscribeDisplayMode(callback: () => void): () => void {
+  const handleStorage = (e: StorageEvent) => {
+    if (e.key === DISPLAY_MODE_STORAGE_KEY) {
+      cachedDisplayMode = null;
+      callback();
+    }
+  };
+
+  const handleCustom = () => {
+    callback();
+  };
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener(DISPLAY_MODE_CHANGE_EVENT, handleCustom);
+
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener(DISPLAY_MODE_CHANGE_EVENT, handleCustom);
+  };
+}
+
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const locale = useSyncExternalStore(
-    subscribe,
+    subscribeLocale,
     getClientLocaleSnapshot,
     getServerLocaleSnapshot,
+  );
+
+  const displayMode = useSyncExternalStore(
+    subscribeDisplayMode,
+    getClientDisplayModeSnapshot,
+    getServerDisplayModeSnapshot,
   );
 
   useEffect(() => {
@@ -104,6 +159,23 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  const setDisplayMode = useCallback((mode: DisplayMode) => {
+    cachedDisplayMode = mode;
+    try {
+      localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, mode);
+      document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=${mode}; path=/; max-age=31536000; SameSite=Lax`;
+      window.dispatchEvent(new Event(DISPLAY_MODE_CHANGE_EVENT));
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const toggleDisplayMode = useCallback(() => {
+    setDisplayMode(displayMode === "bilingual" ? "monolingual" : "bilingual");
+  }, [displayMode, setDisplayMode]);
+
+  const isBilingual = displayMode === "bilingual" && locale !== "ko";
+
   const currentMeta =
     languages.find((item) => item.code === locale) ||
     languages.find((item) => item.code === defaultLocale)!;
@@ -114,21 +186,22 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const tBilingual = useCallback(
     (key: string, separator: string = " · ") => {
       const current = translate(locale, key);
-      if (locale === "ko") return current;
+      if (locale === "ko" || displayMode === "monolingual") return current;
       const ko = translate("ko", key);
       if (!ko || current === ko) return current;
       return `${current}${separator}${ko}`;
     },
-    [locale],
+    [locale, displayMode],
   );
 
   const formatBilingual = useCallback(
     (targetText: string, koText: string, separator: string = " · ") => {
       if (locale === "ko") return koText || targetText;
+      if (displayMode === "monolingual") return targetText;
       if (!koText || targetText === koText) return targetText;
       return `${targetText}${separator}${koText}`;
     },
-    [locale],
+    [locale, displayMode],
   );
 
   return (
@@ -136,6 +209,10 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       value={{
         locale,
         setLocale,
+        displayMode,
+        setDisplayMode,
+        toggleDisplayMode,
+        isBilingual,
         t,
         tKo,
         tBilingual,
@@ -156,6 +233,10 @@ export function useLocale(): LocaleContextType {
     return {
       locale: defaultLocale,
       setLocale: () => {},
+      displayMode: "bilingual",
+      setDisplayMode: () => {},
+      toggleDisplayMode: () => {},
+      isBilingual: true,
       t: (key: string) => translate(defaultLocale, key),
       tKo: (key: string) => translate("ko", key),
       tBilingual: (key: string) => translate(defaultLocale, key),

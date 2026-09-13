@@ -10,6 +10,8 @@ import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { HelperCalendar } from "@/components/tech/HelperCalendar";
+import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
+import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
 import {
   getAdminMessages,
   sendAdminMessage,
@@ -38,7 +40,7 @@ const HOUR_PRESETS = [
 
 export default function TechWorkspacePage() {
   const router = useRouter();
-  const { locale, t } = useLocale();
+  const { locale, t, formatBilingual } = useLocale();
   const isKorean = locale === "ko";
   const {
     helper,
@@ -58,8 +60,9 @@ export default function TechWorkspacePage() {
   const [showContractModal, setShowContractModal] = useState(false);
   const [feedbackMsg, setFeedbackMsg] = useState("");
 
-  // Day hours edit state
+  // Work hours edit state
   const [editingDayHours, setEditingDayHours] = useState<string | null>(null);
+  const [showGeneralHoursPicker, setShowGeneralHoursPicker] = useState(false);
 
   // Admin Direct Messaging state
   const [adminMessages, setAdminMessages] = useState<AdminMessage[]>([]);
@@ -286,9 +289,9 @@ export default function TechWorkspacePage() {
               type="button"
               onClick={handleOpenAdminChat}
               className="relative inline-flex items-center gap-1.5 rounded-xl border border-blue-600/60 bg-blue-950/70 px-3 py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition"
-              title="sys.life.help 본사 관리자 1:1 온라인 연락"
+              title={formatBilingual(t("workspace.adminChatTitle"), "본사 관리자 1:1 온라인 연락")}
             >
-              <span>💬 {isKorean ? "본사 관리자 연락" : "Admin Chat"}</span>
+              <span>💬 {formatBilingual(t("workspace.adminChat"), "본사 관리자 연락")}</span>
               {unreadAdminCount > 0 && (
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-black text-white animate-pulse">
                   {unreadAdminCount}
@@ -314,7 +317,13 @@ export default function TechWorkspacePage() {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-extrabold text-white">
-                  {contract.name} {t("workspace.helperHonorific")}
+                  {formatHelperDisplayName(
+                    contract.name,
+                    t("tech.helper"),
+                    t("workspace.helperHonorific"),
+                    formatBilingual,
+                    isKorean,
+                  )}
                 </h1>
                 <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-[11px] font-bold text-blue-300 border border-blue-700/50">
                   {t("workspace.verifiedHelper")}
@@ -328,7 +337,7 @@ export default function TechWorkspacePage() {
               </div>
               <p className="text-xs text-slate-400 font-mono">
                 📱 {contract.phone} · {t("workspace.signedDate")}:{" "}
-                {new Date(contract.signedAt).toLocaleDateString(locale === "ko" ? "ko-KR" : undefined)}
+                {new Date(contract.signedAt).toLocaleDateString(locale === "ko" ? "ko-KR" : locale)}
               </p>
             </div>
           </div>
@@ -338,14 +347,14 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={() => setShowContractModal(true)}
-              className="rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-bold text-slate-300 hover:bg-slate-700"
+              className="rounded-xl border border-slate-700 bg-slate-800/90 px-3.5 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700 hover:text-white shadow-2xs transition active:scale-[0.98] cursor-pointer"
             >
               📄 {t("workspace.viewContract")}
             </button>
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-xl border border-rose-900/60 bg-rose-950/40 px-3.5 py-2 text-xs font-bold text-rose-300 hover:bg-rose-900/60 transition"
+              className="rounded-xl border border-rose-900/60 bg-rose-950/40 px-3.5 py-2 text-xs font-bold text-rose-300 hover:bg-rose-900/60 shadow-2xs transition active:scale-[0.98] cursor-pointer"
             >
               🚪 {t("workspace.logout")}
             </button>
@@ -367,10 +376,10 @@ export default function TechWorkspacePage() {
               <div>
                 <div className="flex items-center gap-2">
                   <strong className="text-xs font-black text-amber-300">
-                    [sys.life.help 본사 관리자 메시지]
+                    {formatBilingual(t("workspace.adminNoticeBanner"), "[본사 관리자 메시지]")}
                   </strong>
                   <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-500/40">
-                    {unreadAdminCount}건 미확인
+                    {unreadAdminCount} {t("workspace.unreadCount") || (locale === "ko" ? "건 미확인" : "unread")}
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-amber-100 line-clamp-1">
@@ -381,9 +390,9 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={handleOpenAdminChat}
-              className="rounded-xl bg-amber-500 px-4 py-2 text-xs font-black text-slate-950 hover:bg-amber-400 transition self-end sm:self-center shrink-0"
+              className="rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-xs font-black text-slate-950 hover:brightness-105 shadow-sm shadow-amber-500/20 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
             >
-              {isKorean ? "메시지 확인 및 답장" : "Open Admin Chat"}
+              {formatBilingual(t("workspace.openAdminChat"), "메시지 확인 및 답장")}
             </button>
           </div>
         )}
@@ -416,10 +425,10 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={toggleActiveStatus}
-              className={`rounded-2xl px-6 py-3.5 text-sm font-extrabold shadow-lg transition ${
+              className={`rounded-2xl px-6 py-3.5 text-sm font-black shadow-lg transition active:scale-[0.98] cursor-pointer ${
                 helper.isActive
-                  ? "bg-amber-600 text-white hover:bg-amber-500"
-                  : "bg-emerald-600 text-white hover:bg-emerald-500"
+                  ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:brightness-105 shadow-amber-500/20"
+                  : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:brightness-105 shadow-emerald-600/20"
               }`}
             >
               {helper.isActive
@@ -592,7 +601,7 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={handleAddRegion}
-              className="rounded-xl bg-blue-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-sm hover:bg-blue-500"
+              className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
             >
               + {t("workspace.addRegionBtn")}
             </button>
@@ -608,7 +617,7 @@ export default function TechWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => handleRemoveRegion(idx)}
-                  className="rounded-md bg-blue-900/60 p-1 text-slate-300 hover:bg-red-600 hover:text-white transition"
+                  className="rounded-md bg-blue-900/60 p-1 text-slate-300 hover:bg-red-600 hover:text-white transition cursor-pointer"
                   title={t("workspace.removeRegionTitle")}
                 >
                   ✕
@@ -625,29 +634,32 @@ export default function TechWorkspacePage() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 className="text-base font-extrabold text-white flex items-center gap-2">
-                  ⏰ {t("workspace.scheduleTitle")} & 요일별 근무 시간
+                  ⏰ {t("workspace.scheduleTitle")} &{" "}
+                  {formatBilingual(t("workspace.workingHoursDetailTitle"), "요일별 근무 시간")}
                 </h3>
                 <p className="mt-0.5 text-xs text-slate-400">
-                  {isKorean
-                    ? "활동 가능한 요일을 활성화하고, 요일별 개별 근무 시간대를 지정할 수 있습니다."
-                    : "Activate available days of the week and set individual working hours per day."}
+                  {formatBilingual(
+                    t("workspace.workingHoursDesc"),
+                    "활동 가능한 요일을 활성화하고, 요일별 개별 근무 시간대를 지정할 수 있습니다.",
+                  )}
                 </p>
               </div>
 
-              {/* General Default Hours Preset Selector */}
+              {/* General Default Hours Preset Selector with WorkHoursPicker */}
               <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400">{isKorean ? "기본 시간대:" : "Default:"}</span>
-                <select
-                  value={contract.availableHours}
-                  onChange={(e) => handleSetGeneralHours(e.target.value)}
-                  className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-bold text-white outline-none focus:border-blue-500"
+                <span className="text-xs text-slate-400">
+                  {isKorean ? "기본 시간대:" : `${t("workspace.defaultSchedule") || "Default"}:`}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowGeneralHoursPicker(true)}
+                  className="rounded-xl border border-blue-500/80 bg-blue-950/60 px-3.5 py-1.5 text-xs font-bold text-blue-200 hover:bg-blue-900/80 hover:brightness-105 transition flex items-center gap-1.5 shadow-2xs active:scale-[0.98] cursor-pointer"
                 >
-                  {HOUR_PRESETS.map((preset) => (
-                    <option key={preset} value={preset}>
-                      {preset}
-                    </option>
-                  ))}
-                </select>
+                  <span>⏱️ {contract.availableHours}</span>
+                  <span className="text-[10px] text-blue-300 font-normal">
+                    ({formatBilingual(t("workspace.calendarEdit"), "변경")})
+                  </span>
+                </button>
               </div>
             </div>
 
@@ -678,14 +690,18 @@ export default function TechWorkspacePage() {
             <div className="mt-5 pt-4 border-t border-slate-800/80">
               <h4 className="text-xs font-bold text-slate-300 mb-3 flex items-center gap-1.5">
                 <span>⏱️</span>
-                <span>{isKorean ? "요일별 근무 시간 상세 설정" : "Working Hours by Weekday"}</span>
+                <span>
+                  {formatBilingual(
+                    t("workspace.workingHoursDetailTitle"),
+                    "요일별 근무 시간 상세 설정",
+                  )}
+                </span>
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
                 {DAYS_CONFIG.map((d) => {
                   const isActive = contract.availableDays.includes(d.key);
                   const currentHours = contract.dayHours?.[d.key] || contract.availableHours;
-                  const isEditing = editingDayHours === d.key;
 
                   return (
                     <div
@@ -703,10 +719,10 @@ export default function TechWorkspacePage() {
                               isActive ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-500"
                             }`}
                           >
-                            {d.key}
+                            {isKorean ? d.key : (t(d.labelKey) || d.key)}
                           </span>
                           <span className="text-xs font-bold text-white">
-                            {t(d.labelKey)}요일
+                            {isKorean ? `${t(d.labelKey)}요일` : t(d.labelKey)}
                           </span>
                         </div>
                         <span
@@ -716,48 +732,29 @@ export default function TechWorkspacePage() {
                               : "bg-slate-800 text-slate-500"
                           }`}
                         >
-                          {isActive ? (isKorean ? "근무일" : "Active") : (isKorean ? "휴무" : "Off")}
+                          {isActive
+                            ? formatBilingual(t("workspace.calendarDayActive"), "근무일")
+                            : formatBilingual(t("workspace.calendarDayOff"), "휴무")}
                         </span>
                       </div>
 
                       <div className="mt-2.5">
-                        {isEditing && isActive ? (
-                          <div className="space-y-2">
-                            <select
-                              defaultValue={currentHours}
-                              onChange={(e) => handleSetDayHours(d.key, e.target.value)}
-                              className="w-full rounded-xl border border-blue-500 bg-slate-900 p-2 text-xs font-bold text-white outline-none"
-                            >
-                              {HOUR_PRESETS.map((p) => (
-                                <option key={p} value={p}>
-                                  {p}
-                                </option>
-                              ))}
-                            </select>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-300 truncate pr-2">
+                            {isActive
+                              ? currentHours
+                              : formatBilingual(t("workspace.calendarDayScheduledOff"), "정기 휴무")}
+                          </span>
+                          {isActive && (
                             <button
                               type="button"
-                              onClick={() => setEditingDayHours(null)}
-                              className="text-[11px] font-semibold text-slate-400 hover:text-white"
+                              onClick={() => setEditingDayHours(d.key)}
+                              className="rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1 text-[11px] font-bold text-blue-400 hover:bg-slate-700 hover:text-blue-300 transition active:scale-[0.98] shrink-0 cursor-pointer"
                             >
-                              ✕ {isKorean ? "닫기" : "Close"}
+                              {formatBilingual(t("workspace.calendarEdit"), "변경")}
                             </button>
-                          </div>
-                        ) : (
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-slate-300 truncate">
-                              {isActive ? currentHours : (isKorean ? "정기 휴무" : "Scheduled Off")}
-                            </span>
-                            {isActive && (
-                              <button
-                                type="button"
-                                onClick={() => setEditingDayHours(d.key)}
-                                className="rounded-lg border border-slate-700 bg-slate-800 px-2 py-1 text-[11px] font-bold text-blue-400 hover:bg-slate-700"
-                              >
-                                {isKorean ? "변경" : "Edit"}
-                              </button>
-                            )}
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
                     </div>
                   );
@@ -765,6 +762,37 @@ export default function TechWorkspacePage() {
               </div>
             </div>
           </div>
+
+          {/* Modal for Setting Day Hours (30-min steps + break time) */}
+          {editingDayHours && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+              <div className="w-full max-w-xl">
+                <WorkHoursPicker
+                  dayLabel={`${editingDayHours} (${isKorean ? `${t(DAYS_CONFIG.find((x) => x.key === editingDayHours)?.labelKey || "")}요일` : t(DAYS_CONFIG.find((x) => x.key === editingDayHours)?.labelKey || "")})`}
+                  initialValue={contract.dayHours?.[editingDayHours] || contract.availableHours}
+                  onSave={(newHours) => handleSetDayHours(editingDayHours, newHours)}
+                  onCancel={() => setEditingDayHours(null)}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Modal for Setting General Default Hours */}
+          {showGeneralHoursPicker && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+              <div className="w-full max-w-xl">
+                <WorkHoursPicker
+                  dayLabel={isKorean ? "기본 공통" : "Default"}
+                  initialValue={contract.availableHours}
+                  onSave={(newHours) => {
+                    handleSetGeneralHours(newHours);
+                    setShowGeneralHoursPicker(false);
+                  }}
+                  onCancel={() => setShowGeneralHoursPicker(false)}
+                />
+              </div>
+            </div>
+          )}
 
           {/* Interactive Monthly Calendar (This Month & Next Month with Individual Uncheck Day-Off) */}
           <HelperCalendar
@@ -783,18 +811,31 @@ export default function TechWorkspacePage() {
               {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/80 px-5 py-4">
                 <div className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white">
-                    sys
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-xs font-black text-white shadow-xs">
+                    HQ
                   </span>
                   <div>
                     <h3 className="text-sm font-extrabold text-white flex items-center gap-1.5">
-                      <span>sys.life.help 본사 관리자 1:1 온라인 연락</span>
+                      <span>
+                        {formatBilingual(
+                          t("workspace.adminChatTitle"),
+                          "본사 관리자 1:1 온라인 연락",
+                        )}
+                      </span>
                       <span className="rounded bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800/50">
-                        ONLINE
+                        {formatBilingual(t("workspace.adminChatOnline"), "실시간 온라인")}
                       </span>
                     </h3>
                     <p className="text-[11px] text-slate-400">
-                      수신자: {contract.name} 헬퍼 ({contract.phone})
+                      {formatBilingual(t("workspace.adminChatRecipient"), "수신자: 헬퍼")} (
+                      {formatHelperDisplayName(
+                        contract.name,
+                        t("tech.helper"),
+                        "",
+                        formatBilingual,
+                        isKorean,
+                      )}{" "}
+                      · {contract.phone})
                     </p>
                   </div>
                 </div>
@@ -812,8 +853,18 @@ export default function TechWorkspacePage() {
                 {adminMessages.length === 0 ? (
                   <div className="grid h-full place-content-center text-center text-xs text-slate-500">
                     <p className="text-2xl mb-2">💬</p>
-                    <p>본사 관리자와 주고받은 메시지가 없습니다.</p>
-                    <p className="text-slate-600 mt-1">문의사항이나 긴급 상황을 메시지로 남겨주시면 관리자가 확인합니다.</p>
+                    <p>
+                      {formatBilingual(
+                        t("workspace.adminChatEmpty"),
+                        "본사 관리자와 주고받은 메시지가 없습니다.",
+                      )}
+                    </p>
+                    <p className="text-slate-600 mt-1">
+                      {formatBilingual(
+                        t("workspace.adminChatEmptyHint"),
+                        "문의사항이나 긴급 상황을 메시지로 남겨주시면 관리자가 확인합니다.",
+                      )}
+                    </p>
                   </div>
                 ) : (
                   adminMessages.map((msg) => {
@@ -826,7 +877,12 @@ export default function TechWorkspacePage() {
                         <div className="flex items-center gap-1.5 text-[10px] text-slate-400 mb-1 px-1">
                           <span className="font-bold text-slate-300">{msg.senderName}</span>
                           <span>·</span>
-                          <span>{new Date(msg.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
+                          <span>
+                            {new Date(msg.timestamp).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </span>
                         </div>
                         <div
                           className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
@@ -856,15 +912,18 @@ export default function TechWorkspacePage() {
                     type="text"
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
-                    placeholder={isKorean ? "본사 관리자에게 전달할 메시지 입력..." : "Type reply to admin..."}
+                    placeholder={formatBilingual(
+                      t("workspace.adminChatPlaceholder"),
+                      "본사 관리자에게 전달할 메시지 입력...",
+                    )}
                     className="flex-1 rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
                   />
                   <button
                     type="submit"
                     disabled={!replyText.trim()}
-                    className="rounded-xl bg-blue-600 px-4 py-2.5 text-xs font-extrabold text-white hover:bg-blue-500 disabled:opacity-50 transition"
+                    className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition cursor-pointer"
                   >
-                    {isKorean ? "전송" : "Send"}
+                    {formatBilingual(t("workspace.adminChatSend"), "전송")}
                   </button>
                 </form>
               </div>
@@ -892,7 +951,15 @@ export default function TechWorkspacePage() {
                 <div className="rounded-2xl bg-slate-800/60 p-4 grid grid-cols-2 gap-3">
                   <div>
                     <span className="text-slate-400">{t("workspace.contractName")}:</span>{" "}
-                    <strong className="text-white">{contract.name}</strong>
+                    <strong className="text-white">
+                      {formatHelperDisplayName(
+                        contract.name,
+                        t("tech.helper"),
+                        "",
+                        formatBilingual,
+                        isKorean,
+                      )}
+                    </strong>
                   </div>
                   <div>
                     <span className="text-slate-400">{t("workspace.contractPhone")}:</span>{" "}
@@ -931,7 +998,7 @@ export default function TechWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setShowContractModal(false)}
-                  className="rounded-xl bg-blue-600 px-6 py-2.5 text-xs font-bold text-white hover:bg-blue-500"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-2.5 text-xs font-black text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
                 >
                   {t("workspace.close")}
                 </button>

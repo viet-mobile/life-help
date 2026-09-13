@@ -11,7 +11,7 @@ import { HelperAuthCard } from "@/components/tech/HelperAuthCard";
 
 export default function TechLoginPage() {
   const router = useRouter();
-  const { locale, t } = useLocale();
+  const { locale, t, formatBilingual } = useLocale();
   const isKorean = locale === "ko";
   const { isLoggedIn } = useHelper();
 
@@ -34,7 +34,7 @@ export default function TechLoginPage() {
         >
           <span>LIFE.HELP</span>
           <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-xs font-bold text-white border border-blue-700/50">
-            {isKorean ? "헬퍼 포털" : "HELPER PORTAL"}
+            {formatBilingual(t("tech.helperPortal"), "헬퍼 포털")}
           </span>
         </Link>
         <LanguageSwitcher />
@@ -53,16 +53,15 @@ export default function TechLoginPage() {
             className="text-xs font-bold text-slate-400 hover:text-blue-400 transition inline-flex items-center gap-1"
           >
             <span>←</span>
-            <span>{isKorean ? "헬퍼 메인 소개 페이지로 돌아가기" : "Back to Helper Home"}</span>
+            <span>{formatBilingual(t("tech.backToTechHome"), "헬퍼 메인 소개 페이지로 돌아가기")}</span>
           </Link>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="mx-auto w-full max-w-xl text-center text-xs text-slate-500 py-4">
-        {isKorean
-          ? "LIFE.HELP 헬퍼 파트너스 · 핫라인: 010-5757-5757 / 010-5959-5959"
-          : `${t("tech.helperService")} · Hotline: 010-5757-5757 / 010-5959-5959`}
+        {formatBilingual(t("tech.officialPartners"), "LIFE.HELP 헬퍼 파트너스")} ·{" "}
+        {formatBilingual(t("tech.hotline"), "핫라인")}: 010-5757-5757 / 010-5959-5959
       </footer>
     </main>
   );

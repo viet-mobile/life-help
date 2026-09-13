@@ -1,4 +1,4 @@
-import { type Locale, translate } from "@/messages";
+import { type Locale, languages, translate } from "@/messages";
 
 export interface ServiceItem {
   slug: string;
@@ -87,4 +87,50 @@ export function getService(slug: string): ServiceItem | undefined {
 
 export function getServiceName(service: ServiceItem, locale: Locale): string {
   return translate(locale, `service.${service.key}`);
+}
+
+export function getLocalizedServiceName(
+  slugOrName: string | undefined | null,
+  locale: Locale,
+): string {
+  if (!slugOrName) return "";
+  const clean = slugOrName.trim();
+  const found = services.find(
+    (s) =>
+      s.slug.toLowerCase() === clean.toLowerCase() ||
+      s.key.toLowerCase() === clean.toLowerCase() ||
+      s.ko.toLowerCase() === clean.toLowerCase() ||
+      s.vi.toLowerCase() === clean.toLowerCase(),
+  );
+  if (found) {
+    return translate(locale, `service.${found.key}`) || found.ko;
+  }
+  return clean;
+}
+
+export function getLocalizedLanguageName(
+  langCode: string | undefined | null,
+  locale: string,
+): string {
+  if (!langCode) return "";
+  const cleanCode = langCode.trim().toLowerCase();
+
+  // Try Intl.DisplayNames first for native localized names in the requested locale
+  try {
+    const dn = new Intl.DisplayNames([locale], { type: "language" });
+    const localized = dn.of(cleanCode);
+    if (localized && localized !== cleanCode) {
+      return localized.charAt(0).toUpperCase() + localized.slice(1);
+    }
+  } catch {
+    // ignore
+  }
+
+  // Fallback to languages metadata list
+  const found = languages.find((l) => l.code.toLowerCase() === cleanCode);
+  if (found) {
+    return found.name;
+  }
+
+  return langCode.toUpperCase();
 }

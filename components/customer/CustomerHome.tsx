@@ -29,7 +29,7 @@ const benefits = [
 ] as const;
 
 export function CustomerHome() {
-  const { locale, setLocale, t, tKo, tBilingual } = useLocale();
+  const { locale, setLocale, t, tKo, tBilingual, isBilingual, formatBilingual } = useLocale();
   const { formattedRegion, shortRegionText, openModal } = useRegion();
   const headingWeight = locale === "vi" ? "font-bold" : "font-extrabold";
 
@@ -46,12 +46,12 @@ export function CustomerHome() {
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700"
-              title="지역 변경"
+              className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/70 px-3 py-1 text-xs font-bold text-blue-900 transition hover:bg-blue-100"
+              title={formatBilingual(getRegionUIText("changeLocation", locale, isBilingual), "지역 변경")}
             >
               <span>📍</span>
-              <span className="max-w-[140px] truncate sm:max-w-none">{shortRegionText}</span>
-              <span className="text-[10px] text-slate-400">▾</span>
+              <span>{shortRegionText}</span>
+              <span className="text-blue-500">▾</span>
             </button>
           </div>
 
@@ -60,23 +60,25 @@ export function CustomerHome() {
             <Link
               href="/chat"
               className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition"
-              title="모국어 실시간 상담 센터"
+              title={formatBilingual(t("common.nativeConsultationCenter"), "모국어 실시간 상담 센터")}
             >
               <span>💬</span>
-              <span className="hidden sm:inline">모국어 상담</span>
+              <span className="hidden sm:inline">
+                {formatBilingual(t("common.nativeConsultation"), "모국어 상담")}
+              </span>
             </Link>
 
             <Link
               href="/request"
               className="hidden rounded-xl bg-blue-50 px-3.5 py-1.5 text-center text-blue-700 hover:bg-blue-100 sm:inline-flex sm:flex-col sm:items-center font-bold transition"
             >
-              {locale !== "ko" ? (
+              {isBilingual ? (
                 <>
                   <span className="text-xs font-bold leading-tight">{t("request.title")}</span>
                   <span className="text-[10px] font-semibold text-blue-500">서비스 신청</span>
                 </>
               ) : (
-                <span className="text-xs font-bold py-0.5">서비스 신청</span>
+                <span className="text-xs font-bold py-0.5">{locale === "ko" ? "서비스 신청" : t("request.title")}</span>
               )}
             </Link>
 
@@ -90,7 +92,7 @@ export function CustomerHome() {
         <div className="mx-auto max-w-6xl">
           <h1 className={`max-w-3xl text-3xl leading-tight ${headingWeight} sm:text-4xl lg:text-5xl`}>
             {t("customer.tagline")}
-            {locale !== "ko" && (
+            {isBilingual && (
               <span className="mt-2.5 block text-xl font-bold text-blue-200 sm:text-2xl">
                 {tKo("customer.tagline")}
               </span>
@@ -106,7 +108,7 @@ export function CustomerHome() {
                 </span>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-blue-100">
-                    {getRegionUIText("yourLocation", locale)}
+                    {getRegionUIText("yourLocation", locale, isBilingual)}
                   </p>
                   <p className="mt-0.5 text-lg font-black text-white sm:text-xl">
                     {formattedRegion}
@@ -119,10 +121,10 @@ export function CustomerHome() {
                 onClick={openModal}
                 className="shrink-0 rounded-2xl bg-white px-5 py-2.5 text-center shadow-sm transition hover:bg-blue-50 active:scale-98 flex flex-col items-center justify-center"
               >
-                {locale !== "ko" ? (
+                {isBilingual ? (
                   <>
                     <span className="text-xs sm:text-sm font-black text-blue-900 leading-snug">
-                      {getRegionUIText("changeLocation", locale)}
+                      {getRegionUIText("changeLocation", locale, false)} ▾
                     </span>
                     <span className="mt-0.5 text-[11px] font-bold text-blue-600">
                       지역 변경
@@ -130,7 +132,7 @@ export function CustomerHome() {
                   </>
                 ) : (
                   <span className="text-sm sm:text-base font-black text-blue-900 py-1">
-                    지역 변경
+                    {locale === "ko" ? "지역 변경 ▾" : `${getRegionUIText("changeLocation", locale, false)} ▾`}
                   </span>
                 )}
               </button>
@@ -142,7 +144,7 @@ export function CustomerHome() {
             {/* Direct link to request/page.tsx */}
             <Link href="/request" className="w-full sm:w-auto">
               <div className="w-full sm:w-auto flex flex-col items-center justify-center rounded-2xl bg-red-600 hover:bg-red-700 px-6 py-3 text-white shadow-md transition active:scale-98 cursor-pointer">
-                {locale !== "ko" ? (
+                {isBilingual ? (
                   <>
                     <span className="text-base sm:text-lg font-black leading-snug">
                       🚨 {t("customer.emergency")}
@@ -161,7 +163,7 @@ export function CustomerHome() {
 
             <Link href="/services/toilet-clog" className="w-full sm:w-auto">
               <div className="w-full sm:w-auto flex flex-col items-center justify-center rounded-2xl bg-white/15 hover:bg-white/25 px-6 py-3 text-white backdrop-blur-xs transition active:scale-98 border border-white/20 cursor-pointer">
-                {locale !== "ko" ? (
+                {isBilingual ? (
                   <>
                     <span className="text-base sm:text-lg font-extrabold leading-snug">
                       {t("customer.servicesTitle")}
@@ -172,7 +174,7 @@ export function CustomerHome() {
                   </>
                 ) : (
                   <span className="text-base sm:text-lg font-extrabold py-1">
-                    서비스 목록 둘러보기
+                    {locale === "ko" ? "서비스 목록 둘러보기" : t("customer.servicesTitle")}
                   </span>
                 )}
               </div>
@@ -196,7 +198,7 @@ export function CustomerHome() {
                 <p className="text-sm sm:text-base lg:text-lg font-black text-amber-950 leading-snug">
                   {t("customer.helperMasterBanner")}
                 </p>
-                {locale !== "ko" && (
+                {isBilingual && (
                   <p className="mt-1 text-xs sm:text-sm font-bold text-amber-800">
                     {tKo("customer.helperMasterBanner")}
                   </p>
@@ -204,7 +206,7 @@ export function CustomerHome() {
               </div>
             </div>
             <div className="shrink-0 flex justify-center">
-              {locale !== "ko" ? (
+              {isBilingual ? (
                 <span className="flex flex-col items-center justify-center rounded-2xl bg-amber-600 px-5 py-3 text-white group-hover:bg-amber-700 transition shadow-sm text-center">
                   <span className="text-xs sm:text-sm font-black leading-snug">
                     {t("customer.helperRegisterBtn")}
@@ -215,7 +217,7 @@ export function CustomerHome() {
                 </span>
               ) : (
                 <span className="inline-flex items-center justify-center rounded-2xl bg-amber-600 px-6 py-3.5 text-sm sm:text-base font-black text-white group-hover:bg-amber-700 transition shadow-sm text-center">
-                  달인 헬퍼 등록 바로가기 →
+                  {locale === "ko" ? "달인 헬퍼 등록 바로가기 →" : t("customer.helperRegisterBtn")}
                 </span>
               )}
             </div>
@@ -233,7 +235,7 @@ export function CustomerHome() {
             <p className="mt-1 text-xs text-slate-500 font-medium">
               {locale === "ko"
                 ? `현재 선택 지역: ${formattedRegion}`
-                : `${getRegionUIText("activeArea", locale)}: ${formattedRegion}`}
+                : `${getRegionUIText("activeArea", locale, isBilingual)}: ${formattedRegion}`}
             </p>
           </div>
 
@@ -241,7 +243,11 @@ export function CustomerHome() {
             href="/request"
             className="text-sm font-bold text-blue-700 hover:text-blue-800 hover:underline"
           >
-            {locale === "ko" ? "원하는 서비스 직접 신청하기 →" : `${t("request.title")} · 직접 신청 →`}
+            {locale === "ko"
+              ? "원하는 서비스 직접 신청하기 →"
+              : isBilingual
+              ? `${t("request.title")} · 직접 신청 →`
+              : `${t("request.title")} →`}
           </Link>
         </div>
 
@@ -255,7 +261,7 @@ export function CustomerHome() {
                 {/* Clicking main card goes to services/[service]/page.tsx */}
                 <Link href={`/services/${slug}`} className="block text-center sm:text-left">
                   <span className="text-3xl sm:text-4xl">{icon}</span>
-                  {locale !== "ko" ? (
+                  {isBilingual ? (
                     <div className="mt-3">
                       <p className="text-sm font-extrabold text-slate-900 group-hover:text-blue-700 sm:text-base leading-snug">
                         {t(`service.${key}`)}
@@ -276,9 +282,9 @@ export function CustomerHome() {
                   <Link
                     href={`/services/${slug}`}
                     className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-2 py-2 text-center transition hover:bg-slate-200"
-                    title={locale === "ko" ? "상세 정보 보기" : `${t("common.detail")} · 상세`}
+                    title={formatBilingual(t("common.detail"), "상세")}
                   >
-                    {locale !== "ko" ? (
+                    {isBilingual ? (
                       <>
                         <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
                           {t("common.detail")}
@@ -289,7 +295,7 @@ export function CustomerHome() {
                       </>
                     ) : (
                       <span className="text-xs sm:text-sm font-bold text-slate-800 py-1">
-                        상세
+                        {t("common.detail")}
                       </span>
                     )}
                   </Link>
@@ -297,9 +303,9 @@ export function CustomerHome() {
                   <Link
                     href={`/request?service=${slug}`}
                     className="flex flex-col items-center justify-center rounded-xl bg-blue-700 px-2 py-2 text-center text-white transition hover:bg-blue-800 shadow-xs"
-                    title={locale === "ko" ? "서비스 바로 신청" : `${t("common.apply")} · 신청`}
+                    title={formatBilingual(t("common.apply"), "신청")}
                   >
-                    {locale !== "ko" ? (
+                    {isBilingual ? (
                       <>
                         <span className="text-xs sm:text-sm font-extrabold leading-snug">
                           {t("common.apply")}
@@ -310,7 +316,7 @@ export function CustomerHome() {
                       </>
                     ) : (
                       <span className="text-xs sm:text-sm font-extrabold py-1">
-                        신청
+                        {t("common.apply")}
                       </span>
                     )}
                   </Link>
@@ -339,7 +345,7 @@ export function CustomerHome() {
             const cardBody = (
               <div className="flex h-full flex-col items-center justify-center text-center rounded-2xl bg-slate-50 p-6 border border-slate-200/80 transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-50/30 hover:shadow-md cursor-pointer">
                 <span className="text-4xl sm:text-5xl mb-3.5 drop-shadow-xs">{icon}</span>
-                {locale !== "ko" ? (
+                {isBilingual ? (
                   <>
                     <span className="text-base sm:text-lg font-black text-slate-900 leading-snug">
                       {t(`customer.${key}`)}
@@ -356,9 +362,9 @@ export function CustomerHome() {
                 {href && (
                   <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-bold text-blue-800">
                     {key === "consultation"
-                      ? "실시간 상담 →"
+                      ? formatBilingual(t("common.nativeConsultation"), "실시간 상담 →")
                       : key === "verified"
-                      ? "헬퍼 등록 및 확인 →"
+                      ? formatBilingual(t("tech.register"), "헬퍼 등록 및 확인 →")
                       : key === "payment"
                       ? (locale === "ko" ? "계좌이체 안내 →" : t("customer.paymentLink"))
                       : key === "review"

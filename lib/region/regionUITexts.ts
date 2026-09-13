@@ -11,6 +11,7 @@
  */
 
 export interface RegionUITexts {
+  countryCategory: string;
   yourLocation: string;
   changeLocation: string;
   activeArea: string;
@@ -27,6 +28,7 @@ export interface RegionUITexts {
 }
 
 export interface RegionCategoryHeaders {
+  countryTitle: string;
   sidoTitle: string;
   gunguTitle: string;
   dongTitle: string;
@@ -34,6 +36,7 @@ export interface RegionCategoryHeaders {
 
 export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
   ko: {
+    countryCategory: "국가",
     yourLocation: "내 거주 지역 (시·도 / 구·군·시 / 동·읍·면)",
     changeLocation: "지역 변경하기 ▾",
     activeArea: "현재 선택 지역",
@@ -49,7 +52,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "이 지역으로 설정하기",
   },
   en: {
-    yourLocation: "Your Location in Korea · 내 지역",
+    countryCategory: "Country · 국가",
+    yourLocation: "Your Location · 내 지역",
     changeLocation: "Change Location · 지역 변경 ▾",
     activeArea: "Active Area · 선택 지역",
     selectLocation: "Select Your Location · 내 지역 선택",
@@ -64,7 +68,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Confirm Location · 이 지역으로 설정",
   },
   vi: {
-    yourLocation: "Vị trí của bạn tại Hàn Quốc · 내 지역",
+    countryCategory: "Quốc gia · 국가",
+    yourLocation: "Vị trí của bạn · 내 지역",
     changeLocation: "Thay đổi khu vực · 지역 변경 ▾",
     activeArea: "Khu vực hoạt động · 선택 지역",
     selectLocation: "Chọn vị trí của bạn · 내 지역 선택",
@@ -79,7 +84,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Xác nhận vị trí này · 이 지역으로 설정",
   },
   "zh-Hans": {
-    yourLocation: "您在韩国的位置 · 내 지역",
+    countryCategory: "国家 · 국가",
+    yourLocation: "您的位置 · 내 지역",
     changeLocation: "更改地区 · 지역 변경 ▾",
     activeArea: "当前活动区域 · 선택 지역",
     selectLocation: "选择您的地区 · 내 지역 선택",
@@ -94,7 +100,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "设定此地区 · 이 지역으로 설정",
   },
   "zh-Hant": {
-    yourLocation: "您在韓國的位置 · 내 지역",
+    countryCategory: "國家 · 국가",
+    yourLocation: "您的位置 · 내 지역",
     changeLocation: "變更地區 · 지역 변경 ▾",
     activeArea: "當前活動區域 · 선택 지역",
     selectLocation: "選擇您的地區 · 내 지역 선택",
@@ -109,7 +116,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "設定此地區 · 이 지역으로 설정",
   },
   ja: {
-    yourLocation: "韓国内の現在地 · 내 지역",
+    countryCategory: "国 · 국가",
+    yourLocation: "現在地 · 내 지역",
     changeLocation: "地域を変更 · 지역 변경 ▾",
     activeArea: "選択中の地域 · 선택 지역",
     selectLocation: "お住まいの地域を選択 · 내 지역 선택",
@@ -124,7 +132,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "この地域に設定 · 이 지역으로 설정",
   },
   ru: {
-    yourLocation: "Ваше местоположение в Корее · 내 지역",
+    countryCategory: "Страна · 국가",
+    yourLocation: "Ваше местоположение · 내 지역",
     changeLocation: "Изменить регион · 지역 변경 ▾",
     activeArea: "Активная зона · 선택 지역",
     selectLocation: "Выберите ваш регион · 내 지역 선택",
@@ -139,7 +148,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Подтвердить регион · 이 지역으로 설정",
   },
   uk: {
-    yourLocation: "Ваше місцезнаходження в Кореї · 내 지역",
+    countryCategory: "Країна · 국가",
+    yourLocation: "Ваше місцезнаходження · 내 지역",
     changeLocation: "Змінити регіон · 지역 변경 ▾",
     activeArea: "Активна зона · 선택 지역",
     selectLocation: "Оберіть ваш регіон · 내 지역 선택",
@@ -154,7 +164,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Підтвердити локацію · 이 지역으로 설정",
   },
   kk: {
-    yourLocation: "Кореядағы мекенжайыңыз · 내 지역",
+    countryCategory: "Мемлекет · 국가",
+    yourLocation: "Мекенжайыңыз · 내 지역",
     changeLocation: "Аймақты өзгерту · 지역 변경 ▾",
     activeArea: "Белсенді аймақ · 선택 지역",
     selectLocation: "Аймағыңызды таңдаңыз · 내 지역 선택",
@@ -169,7 +180,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Аймақты бекіту · 이 지역으로 설정",
   },
   mn: {
-    yourLocation: "Солонгос дахь таны байршил · 내 지역",
+    countryCategory: "Улс · 국가",
+    yourLocation: "Таны байршил · 내 지역",
     changeLocation: "Байршил өөрчлөх · 지역 변경 ▾",
     activeArea: "Идэвхтэй бүс · 선택 지역",
     selectLocation: "Байршлаа сонгоно уу · 내 지역 선택",
@@ -184,7 +196,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Байршлыг баталгаажуулах · 이 지역으로 설정",
   },
   uz: {
-    yourLocation: "Koreyadagi manzilingiz · 내 지역",
+    countryCategory: "Mamlakat · 국가",
+    yourLocation: "Manzilingiz · 내 지역",
     changeLocation: "Hududni o'zgartirish · 지역 변경 ▾",
     activeArea: "Faol hudud · 선택 지역",
     selectLocation: "Hududingizni tanlang · 내 지역 선택",
@@ -199,7 +212,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Hududni tasdiqlash · 이 지역으로 설정",
   },
   th: {
-    yourLocation: "ตำแหน่งของคุณในเกาหลี · 내 지역",
+    countryCategory: "ประเทศ · 국가",
+    yourLocation: "ตำแหน่งของคุณ · 내 지역",
     changeLocation: "เปลี่ยนพื้นที่ · 지역 변경 ▾",
     activeArea: "พื้นที่ปัจจุบัน · 선택 지역",
     selectLocation: "เลือกพื้นที่ของคุณ · 내 지역 선택",
@@ -214,7 +228,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "ยืนยันพื้นที่นี้ · 이 지역으로 설정",
   },
   my: {
-    yourLocation: "ကိုရီးယားရှိ သင့်တည်နေရာ · 내 지역",
+    countryCategory: "နိုင်ငံ · 국가",
+    yourLocation: "သင့်တည်နေရာ · 내 지역",
     changeLocation: "ဒေသပြောင်းရန် · 지역 변경 ▾",
     activeArea: "လက်ရှိဒေသ · 선택 지역",
     selectLocation: "သင့်ဒေသကို ရွေးချယ်ပါ · 내 지역 선택",
@@ -229,7 +244,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "ဤတည်နေရာကို အတည်ပြုမည် · 이 지역으로 설정",
   },
   km: {
-    yourLocation: "ទីតាំងរបស់អ្នកនៅកូរ៉េ · 내 지역",
+    countryCategory: "ប្រទេស · 국가",
+    yourLocation: "ទីតាំងរបស់អ្នក · 내 지역",
     changeLocation: "ផ្លាស់ប្តូរតំបន់ · 지역 변경 ▾",
     activeArea: "តំបន់សកម្ម · 선택 지역",
     selectLocation: "ជ្រើសរើសទីតាំងរបស់អ្នក · 내 지역 선택",
@@ -244,7 +260,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "បញ្ជាក់ទីតាំងនេះ · 이 지역으로 설정",
   },
   hi: {
-    yourLocation: "कोरिया में आपका स्थान · 내 지역",
+    countryCategory: "देश · 국가",
+    yourLocation: "आपका स्थान · 내 지역",
     changeLocation: "स्थान बदलें · 지역 변경 ▾",
     activeArea: "सक्रिय क्षेत्र · 선택 지역",
     selectLocation: "अपना स्थान चुनें · 내 지역 선택",
@@ -259,7 +276,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "स्थान की पुष्टि करें · 이 지역으로 설정",
   },
   ne: {
-    yourLocation: "कोरियामा तपाईंको स्थान · 내 지역",
+    countryCategory: "देश · 국가",
+    yourLocation: "तपाईंको स्थान · 내 지역",
     changeLocation: "स्थान परिवर्तन गर्नुहोस् · 지역 변경 ▾",
     activeArea: "सक्रिय क्षेत्र · 선택 지역",
     selectLocation: "तपाईंको स्थान चयन गर्नुहोस् · 내 지역 선택",
@@ -274,7 +292,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "स्थान पुष्टि गर्नुहोस् · 이 지역으로 설정",
   },
   bn: {
-    yourLocation: "কোরিয়ায় আপনার অবস্থান · 내 지역",
+    countryCategory: "দেশ · 국가",
+    yourLocation: "আপনার অবস্থান · 내 지역",
     changeLocation: "এলাকা পরিবর্তন করুন · 지역 변경 ▾",
     activeArea: "বর্তমান এলাকা · 선택 지역",
     selectLocation: "আপনার এলাকা নির্বাচন করুন · 내 지역 선택",
@@ -289,7 +308,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "অবস্থান নিশ্চিত করুন · 이 지역으로 설정",
   },
   ta: {
-    yourLocation: "கொரியாவில் உங்கள் இருப்பிடம் · 내 지역",
+    countryCategory: "நாடு · 국가",
+    yourLocation: "உங்கள் இருப்பிடம் · 내 지역",
     changeLocation: "இருப்பிடத்தை மாற்று · 지역 변경 ▾",
     activeArea: "செயலில் உள்ள பகுதி · 선택 지역",
     selectLocation: "உங்கள் இருப்பிடத்தைத் தேர்ந்தெடுக்கவும் · 내 지역 선택",
@@ -304,7 +324,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "இருப்பிடத்தை உறுதிப்படுத்து · 이 지역으로 설정",
   },
   si: {
-    yourLocation: "කොරියාවේ ඔබගේ ස්ථානය · 내 지역",
+    countryCategory: "රට · 국가",
+    yourLocation: "ඔබගේ ස්ථානය · 내 지역",
     changeLocation: "ප්‍රදේශය වෙනස් කරන්න · 지역 변경 ▾",
     activeArea: "ක්‍රියාකාරී ප්‍රදේශය · 선택 지역",
     selectLocation: "ඔබගේ ප්‍රදේශය තෝරන්න · 내 지역 선택",
@@ -319,7 +340,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "ස්ථානය තහවුරු කරන්න · 이 지역으로 설정",
   },
   ar: {
-    yourLocation: "موقعك في كوريا · 내 지역",
+    countryCategory: "الدولة · 국가",
+    yourLocation: "موقعك · 내 지역",
     changeLocation: "تغيير المنطقة · 지역 변경 ▾",
     activeArea: "المنطقة الحالية · 선택 지역",
     selectLocation: "اختر منطقتك · 내 지역 선택",
@@ -334,7 +356,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "تأكيد الموقع · 이 지역으로 설정",
   },
   arz: {
-    yourLocation: "مكانك في كوريا · 내 지역",
+    countryCategory: "البلد · 국가",
+    yourLocation: "مكانك · 내 지역",
     changeLocation: "تغيير المكان · 지역 변경 ▾",
     activeArea: "المنطقة الشغالة · 선택 지역",
     selectLocation: "اختار مكانك · 내 지역 선택",
@@ -349,7 +372,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "تأكيد المكان · 이 지역으로 설정",
   },
   fa: {
-    yourLocation: "موقعیت شما در کره · 내 지역",
+    countryCategory: "کشور · 국가",
+    yourLocation: "موقعیت شما · 내 지역",
     changeLocation: "تغییر منطقه · 지역 변경 ▾",
     activeArea: "منطقه فعال · 선택 지역",
     selectLocation: "منطقه خود را انتخاب کنید · 내 지역 선택",
@@ -364,7 +388,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "تأیید موقعیت · 이 지역으로 설정",
   },
   he: {
-    yourLocation: "המיקום שלך בקוריאה · 내 지역",
+    countryCategory: "מדינה · 국가",
+    yourLocation: "המיקום שלך · 내 지역",
     changeLocation: "שנה אזור · 지역 변경 ▾",
     activeArea: "אזור פעיל · 선택 지역",
     selectLocation: "בחר את האזור שלך · 내 지역 선택",
@@ -379,7 +404,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "אשר מיקום זה · 이 지역으로 설정",
   },
   am: {
-    yourLocation: "በኮሪያ ውስጥ ያለዎት ቦታ · 내 지역",
+    countryCategory: "ሀገር · 국가",
+    yourLocation: "ያለዎት ቦታ · 내 지역",
     changeLocation: "አካባቢ ቀይር · 지역 변경 ▾",
     activeArea: "ንቁ አካባቢ · 선택 지역",
     selectLocation: "አካባቢዎን ይምረጡ · 내 지역 선택",
@@ -394,7 +420,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "ቦታውን አረጋግጥ · 이 지역으로 설정",
   },
   fr: {
-    yourLocation: "Votre localisation en Corée · 내 지역",
+    countryCategory: "Pays · 국가",
+    yourLocation: "Votre localisation · 내 지역",
     changeLocation: "Changer de région · 지역 변경 ▾",
     activeArea: "Zone active · 선택 지역",
     selectLocation: "Sélectionnez votre région · 내 지역 선택",
@@ -409,7 +436,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Confirmer cette localisation · 이 지역으로 설정",
   },
   de: {
-    yourLocation: "Ihr Standort in Korea · 내 지역",
+    countryCategory: "Land · 국가",
+    yourLocation: "Ihr Standort · 내 지역",
     changeLocation: "Region ändern · 지역 변경 ▾",
     activeArea: "Aktiver Bereich · 선택 지역",
     selectLocation: "Wählen Sie Ihren Standort · 내 지역 선택",
@@ -424,7 +452,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Standort bestätigen · 이 지역으로 설정",
   },
   es: {
-    yourLocation: "Tu ubicación en Corea · 내 지역",
+    countryCategory: "País · 국가",
+    yourLocation: "Tu ubicación · 내 지역",
     changeLocation: "Cambiar región · 지역 변경 ▾",
     activeArea: "Área activa · 선택 지역",
     selectLocation: "Selecciona tu ubicación · 내 지역 선택",
@@ -439,7 +468,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Confirmar ubicación · 이 지역으로 설정",
   },
   it: {
-    yourLocation: "La tua posizione in Corea · 내 지역",
+    countryCategory: "Paese · 국가",
+    yourLocation: "La tua posizione · 내 지역",
     changeLocation: "Cambia regione · 지역 변경 ▾",
     activeArea: "Area attiva · 선택 지역",
     selectLocation: "Seleziona la tua posizione · 내 지역 선택",
@@ -454,7 +484,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Conferma posizione · 이 지역으로 설정",
   },
   nl: {
-    yourLocation: "Uw locatie in Korea · 내 지역",
+    countryCategory: "Land · 국가",
+    yourLocation: "Uw locatie · 내 지역",
     changeLocation: "Regio wijzigen · 지역 변경 ▾",
     activeArea: "Actief gebied · 선택 지역",
     selectLocation: "Selecteer uw locatie · 내 지역 선택",
@@ -469,7 +500,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Locatie bevestigen · 이 지역으로 설정",
   },
   pl: {
-    yourLocation: "Twoja lokalizacja w Korei · 내 지역",
+    countryCategory: "Kraj · 국가",
+    yourLocation: "Twoja lokalizacja · 내 지역",
     changeLocation: "Zmień region · 지역 변경 ▾",
     activeArea: "Aktywny obszar · 선택 지역",
     selectLocation: "Wybierz swoją lokalizację · 내 지역 선택",
@@ -484,7 +516,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Zatwierdź lokalizację · 이 지역으로 설정",
   },
   sv: {
-    yourLocation: "Din plats i Korea · 내 지역",
+    countryCategory: "Land · 국가",
+    yourLocation: "Din plats · 내 지역",
     changeLocation: "Ändra plats · 지역 변경 ▾",
     activeArea: "Aktivt område · 선택 지역",
     selectLocation: "Välj din plats · 내 지역 선택",
@@ -499,7 +532,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Bekräfta plats · 이 지역으로 설정",
   },
   da: {
-    yourLocation: "Din placering i Korea · 내 지역",
+    countryCategory: "Land · 국가",
+    yourLocation: "Din placering · 내 지역",
     changeLocation: "Skift område · 지역 변경 ▾",
     activeArea: "Aktivt område · 선택 지역",
     selectLocation: "Vælg din placering · 내 지역 선택",
@@ -514,7 +548,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Bekræft placering · 이 지역으로 설정",
   },
   no: {
-    yourLocation: "Din plassering i Korea · 내 지역",
+    countryCategory: "Land · 국가",
+    yourLocation: "Din plassering · 내 지역",
     changeLocation: "Endre region · 지역 변경 ▾",
     activeArea: "Aktivt område · 선택 지역",
     selectLocation: "Velg din plassering · 내 지역 선택",
@@ -529,7 +564,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Bekreft plassering · 이 지역으로 설정",
   },
   tr: {
-    yourLocation: "Kore'deki Konumunuz · 내 지역",
+    countryCategory: "Ülke · 국가",
+    yourLocation: "Konumunuz · 내 지역",
     changeLocation: "Bölgeyi Değiştir · 지역 변경 ▾",
     activeArea: "Aktif Bölge · 선택 지역",
     selectLocation: "Konumunuzu Seçin · 내 지역 선택",
@@ -544,7 +580,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Konumu Onayla · 이 지역으로 설정",
   },
   tet: {
-    yourLocation: "Ita-nia Fatin iha Koreia · 내 지역",
+    countryCategory: "Rai · 국가",
+    yourLocation: "Ita-nia Fatin · 내 지역",
     changeLocation: "Muda Fatin · 지역 변경 ▾",
     activeArea: "Área Ativu · 선택 지역",
     selectLocation: "Hili Ita-nia Fatin · 내 지역 선택",
@@ -559,7 +596,8 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     confirmLocation: "Konfirma Fatin · 이 지역으로 설정",
   },
   id: {
-    yourLocation: "Lokasi Anda di Korea · 내 지역",
+    countryCategory: "Negara · 국가",
+    yourLocation: "Lokasi Anda · 내 지역",
     changeLocation: "Ubah Wilayah · 지역 변경 ▾",
     activeArea: "Wilayah Aktif · 선택 지역",
     selectLocation: "Pilih Lokasi Anda · 내 지역 선택",
@@ -573,19 +611,70 @@ export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
     cancel: "Batal · 취소",
     confirmLocation: "Konfirmasi Lokasi · 이 지역으로 설정",
   },
+  pt: {
+    countryCategory: "País · 국가",
+    yourLocation: "Sua Região · 내 지역",
+    changeLocation: "Alterar Região ▾ · 지역 변경 ▾",
+    activeArea: "Região Selecionada · 선택 지역",
+    selectLocation: "Selecionar Região · 내 지역 선택",
+    selectDescription: "Selecione Estado/Cidade, Município/Distrito e Bairro · 시·도/구·군·시/동·읍·면 선택",
+    sidoCategory: "Estado / Cidade · 시·도",
+    gunguCategory: "Município / Distrito · 구·군·시",
+    dongCategory: "Bairro · 동·읍·면",
+    selecting: "Selecionando... · 선택 중",
+    typeTown: "Digitar bairro diretamente · 직접 입력",
+    townPlaceholder: "Ex.: Sin-dong · 예: 신동",
+    cancel: "Cancelar · 취소",
+    confirmLocation: "Definir esta Região · 이 지역으로 설정",
+  },
+  el: {
+    countryCategory: "Χώρα · 국가",
+    yourLocation: "Η Περιοχή σας · 내 지역",
+    changeLocation: "Αλλαγή Περιοχής ▾ · 지역 변경 ▾",
+    activeArea: "Επιλεγμένη Περιοχή · 선택 지역",
+    selectLocation: "Επιλογή Περιοχής · 내 지역 선택",
+    selectDescription: "Επιλέξτε Επαρχία/Πόλη, Δήμο και Γειτονιά · 시·도/구·군·시/동·읍·면 선택",
+    sidoCategory: "Περιφέρεια / Πόλη · 시·도",
+    gunguCategory: "Δήμος · 구·군·시",
+    dongCategory: "Γειτονιά · 동·읍·면",
+    selecting: "Επιλογή... · 선택 중",
+    typeTown: "Πληκτρολογήστε γειτονιά απευθείας · 직접 입력",
+    townPlaceholder: "π.χ. Sin-dong · 예: 신동",
+    cancel: "Ακύρωση · 취소",
+    confirmLocation: "Ορισμός Περιοχής · 이 지역으로 설정",
+  },
 };
 
-export function getRegionUIText(key: keyof RegionUITexts, locale: string): string {
+export function getRegionUIText(
+  key: keyof RegionUITexts,
+  locale: string,
+  isBilingual: boolean = false
+): string {
   const texts = REGION_UI_TRANSLATIONS[locale] || REGION_UI_TRANSLATIONS["en"];
-  return texts[key] || REGION_UI_TRANSLATIONS["en"][key];
+  const rawText = texts[key] || REGION_UI_TRANSLATIONS["en"][key] || "";
+  if (locale === "ko" || isBilingual) {
+    return rawText;
+  }
+  // In monolingual mode for foreign languages, strip accompanied Korean (after ' · ')
+  if (rawText.includes(" · ")) {
+    const native = rawText.split(" · ")[0].trim();
+    if (key === "changeLocation" && !native.includes("▾")) {
+      return `${native} ▾`;
+    }
+    return native;
+  }
+  return rawText;
 }
 
-export function getRegionCategoryHeaders(locale: string): RegionCategoryHeaders {
-  const texts = REGION_UI_TRANSLATIONS[locale] || REGION_UI_TRANSLATIONS["en"];
+export function getRegionCategoryHeaders(
+  locale: string,
+  isBilingual: boolean = false
+): RegionCategoryHeaders {
   return {
-    sidoTitle: `1. ${texts.sidoCategory}`,
-    gunguTitle: `2. ${texts.gunguCategory}`,
-    dongTitle: `3. ${texts.dongCategory}`,
+    countryTitle: getRegionUIText("countryCategory", locale, isBilingual),
+    sidoTitle: `1. ${getRegionUIText("sidoCategory", locale, isBilingual)}`,
+    gunguTitle: `2. ${getRegionUIText("gunguCategory", locale, isBilingual)}`,
+    dongTitle: `3. ${getRegionUIText("dongCategory", locale, isBilingual)}`,
   };
 }
 

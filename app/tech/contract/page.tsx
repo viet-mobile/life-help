@@ -9,6 +9,7 @@ import { koreanRegions } from "@/lib/region/regions";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
+import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
 
 const DAYS_OF_WEEK = ["월", "화", "수", "목", "금", "토", "일"];
 const TIME_PRESETS = [
@@ -20,7 +21,7 @@ const TIME_PRESETS = [
 
 export default function TechContractPage() {
   const router = useRouter();
-  const { locale, t } = useLocale();
+  const { locale, t, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const { helper, isLoggedIn, saveContract } = useHelper();
 
@@ -53,6 +54,7 @@ export default function TechContractPage() {
   const [availableHours, setAvailableHours] = useState(
     helper?.contract?.availableHours || "24시간 즉시 출동 가능",
   );
+  const [showHoursPicker, setShowHoursPicker] = useState(false);
 
   // Agreement
   const [agreed, setAgreed] = useState(true);
@@ -405,9 +407,18 @@ export default function TechContractPage() {
 
             {/* Hours */}
             <div className="mt-5">
-              <label className="block text-xs font-bold uppercase text-slate-300">
-                {isKorean ? "출동 가능 시간대" : "Available Hours"}
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-bold uppercase text-slate-300">
+                  {isKorean ? "출동 가능 시간대" : "Available Hours"}
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowHoursPicker(true)}
+                  className="text-xs font-bold text-blue-400 hover:text-blue-300 transition"
+                >
+                  ⚙️ {isKorean ? "30분 단위 자유 설정 (휴게 포함)" : "Custom 30-min Setup"}
+                </button>
+              </div>
               <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 {TIME_PRESETS.map((preset) => (
                   <label
@@ -429,13 +440,38 @@ export default function TechContractPage() {
                   </label>
                 ))}
               </div>
-              <input
-                type="text"
-                value={availableHours}
-                onChange={(e) => setAvailableHours(e.target.value)}
-                placeholder="직접 입력 (예: 평일 13:00 - 22:00)"
-                className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-800 p-2.5 text-xs font-bold text-white outline-none focus:border-blue-500"
-              />
+              <div className="mt-2 flex items-center gap-2">
+                <input
+                  type="text"
+                  value={availableHours}
+                  onChange={(e) => setAvailableHours(e.target.value)}
+                  placeholder="직접 입력 (예: 09:00 - 12:00, 13:00 - 18:00)"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-800 p-2.5 text-xs font-bold text-white outline-none focus:border-blue-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowHoursPicker(true)}
+                  className="rounded-xl border border-blue-500 bg-blue-900/40 px-3 py-2 text-xs font-bold text-blue-300 hover:bg-blue-800 transition shrink-0"
+                >
+                  ⏱️ {isKorean ? "상세 설정" : "Picker"}
+                </button>
+              </div>
+
+              {/* Hours Picker Modal */}
+              {showHoursPicker && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+                  <div className="w-full max-w-xl">
+                    <WorkHoursPicker
+                      initialValue={availableHours}
+                      onSave={(newHours) => {
+                        setAvailableHours(newHours);
+                        setShowHoursPicker(false);
+                      }}
+                      onCancel={() => setShowHoursPicker(false)}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -481,18 +517,18 @@ export default function TechContractPage() {
             {/* Signature */}
             <div className="mt-6 border-t border-blue-900/40 pt-4">
               <label className="block text-xs font-bold uppercase text-blue-300">
-                {isKorean ? "전자 서명 (성명 서명)" : "Electronic Signature · 전자 서명"}
+                {isKorean ? "전자 서명 (성명 서명)" : isBilingual ? "Electronic Signature · 전자 서명" : "Electronic Signature"}
               </label>
               <input
                 type="text"
                 required
                 value={signatureText}
                 onChange={(e) => setSignatureText(e.target.value)}
-                placeholder="서명자 성명 입력"
+                placeholder={isKorean ? "서명자 성명 입력" : "Enter signature name"}
                 className="mt-1.5 w-full rounded-xl border border-blue-700 bg-slate-900 p-3 text-base font-extrabold text-white outline-none focus:border-blue-400 tracking-wider"
               />
               <p className="mt-1 text-[11px] text-slate-400">
-                계약 체결일: {new Date().toLocaleDateString("ko-KR")}
+                {isKorean ? "계약 체결일: " : "Date: "}{new Date().toLocaleDateString(locale === "ko" ? "ko-KR" : undefined)}
               </p>
             </div>
           </div>
@@ -501,7 +537,7 @@ export default function TechContractPage() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
             <Link
               href="/tech"
-              className="rounded-xl border border-slate-700 bg-slate-800 px-6 py-3.5 text-center text-sm font-bold text-slate-300 hover:bg-slate-700"
+              className="rounded-xl border border-slate-700 bg-slate-800/90 px-6 py-3.5 text-center text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-white shadow-2xs active:scale-[0.98] transition cursor-pointer"
             >
               {isKorean ? "취소" : "Cancel"}
             </Link>
@@ -509,7 +545,7 @@ export default function TechContractPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="rounded-xl bg-blue-600 px-8 py-3.5 text-center text-sm font-extrabold text-white shadow-lg transition hover:bg-blue-500 active:scale-98 disabled:opacity-50"
+              className="rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-8 py-3.5 text-center text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition cursor-pointer border border-blue-500/30"
             >
               {submitting
                 ? isKorean
@@ -517,7 +553,9 @@ export default function TechContractPage() {
                   : "Signing..."
                 : isKorean
                 ? "전자계약 체결 및 헬퍼 등록 완료"
-                : "Sign Agreement & Complete Helper Registration · 계약 체결 완료"}
+                : isBilingual
+                ? "Sign Agreement & Complete Helper Registration · 계약 체결 완료"
+                : "Sign Agreement & Complete Helper Registration"}
             </button>
           </div>
         </form>

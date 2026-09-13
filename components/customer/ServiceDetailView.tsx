@@ -8,7 +8,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 
 export function ServiceDetailView({ slug }: { slug: string }) {
-  const { locale, t, tKo, tBilingual } = useLocale();
+  const { locale, t, tKo, tBilingual, formatBilingual, isBilingual } = useLocale();
   const { formattedRegion, shortRegionText, openModal } = useRegion();
   const service = getService(slug);
 
@@ -26,18 +26,14 @@ export function ServiceDetailView({ slug }: { slug: string }) {
 
         <div className="mx-auto max-w-xl rounded-2xl bg-white p-8 shadow-sm">
           <h1 className="text-2xl font-bold text-slate-900">
-            {isKorean
-              ? "서비스를 찾을 수 없습니다."
-              : `${t("serviceDetail.notFound")} · 서비스를 찾을 수 없습니다.`}
+            {formatBilingual(t("serviceDetail.notFound"), "서비스를 찾을 수 없습니다.")}
           </h1>
 
           <Link
             href="/"
             className="mt-6 inline-block rounded-xl bg-blue-700 px-5 py-3 font-bold text-white transition hover:bg-blue-800"
           >
-            {isKorean
-              ? "홈으로 돌아가기"
-              : `${t("serviceDetail.backHome")} · 홈으로 돌아가기`}
+            {formatBilingual(t("serviceDetail.backHome"), "홈으로 돌아가기")}
           </Link>
         </div>
       </main>
@@ -50,34 +46,38 @@ export function ServiceDetailView({ slug }: { slug: string }) {
 
   // Housing specific descriptions vs regular repair descriptions
   const servicePromptTitle = isHousing
-    ? isKorean
-      ? "어떤 집을 찾으시나요?"
-      : `${t("request.housingLabel")} · 어떤 집을 찾으시나요?`
-    : isKorean
-      ? "서비스를 신청하시겠습니까?"
-      : `${t("serviceDetail.applyTitle")} · 서비스를 신청하시겠습니까?`;
+    ? formatBilingual(t("request.housingLabel"), "어떤 집을 찾으시나요?")
+    : formatBilingual(t("serviceDetail.applyTitle"), "서비스를 신청하시겠습니까?");
 
-  const servicePromptDesc = isHousing
-    ? isKorean
-      ? `현재 설정된 지역(${formattedRegion})을 중심으로 원하시는 주거 조건(보증금, 월세, 원룸/투룸)을 알려주시면 가장 알맞은 방을 찾아 연결해 드립니다.`
-      : (
-        <>
-          <span>{t("serviceDetail.applyDesc")}</span>
-          <span className="mt-1 block">
-            현재 설정된 지역({formattedRegion})을 중심으로 원하시는 주거 조건(보증금, 월세, 원룸/투룸)을 알려주시면 가장 알맞은 방을 찾아 연결해 드립니다.
-          </span>
-        </>
-      )
-    : isKorean
-      ? "문제 상황과 사진을 알려주시면 가까운 전문 헬퍼를 연결해 드립니다."
-      : (
-        <>
-          <span>{t("serviceDetail.applyDesc")}</span>
-          <span className="mt-1 block">
-            문제 상황과 사진을 알려주시면 가까운 전문 헬퍼를 연결해 드립니다.
-          </span>
-        </>
-      );
+  const servicePromptDesc = isHousing ? (
+    isBilingual ? (
+      <>
+        <span>{t("serviceDetail.applyDesc")}</span>
+        <span className="mt-1 block text-slate-500 font-normal">
+          현재 설정된 지역({formattedRegion})을 중심으로 원하시는 주거 조건(보증금, 월세, 원룸/투룸)을 알려주시면 가장 알맞은 방을 찾아 연결해 드립니다.
+        </span>
+      </>
+    ) : (
+      <span>
+        {isKorean
+          ? `현재 설정된 지역(${formattedRegion})을 중심으로 원하시는 주거 조건(보증금, 월세, 원룸/투룸)을 알려주시면 가장 알맞은 방을 찾아 연결해 드립니다.`
+          : t("serviceDetail.applyDesc")}
+      </span>
+    )
+  ) : isBilingual ? (
+    <>
+      <span>{t("serviceDetail.applyDesc")}</span>
+      <span className="mt-1 block text-slate-500 font-normal">
+        문제 상황과 사진을 알려주시면 가까운 전문 헬퍼를 연결해 드립니다.
+      </span>
+    </>
+  ) : (
+    <span>
+      {isKorean
+        ? "문제 상황과 사진을 알려주시면 가까운 전문 헬퍼를 연결해 드립니다."
+        : t("serviceDetail.applyDesc")}
+    </span>
+  );
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -108,25 +108,29 @@ export function ServiceDetailView({ slug }: { slug: string }) {
             href="/"
             className="mb-4 inline-flex items-center text-xs font-semibold text-blue-100 hover:text-white"
           >
-            ← {isKorean ? "전체 서비스 목록으로 돌아가기" : `${t("serviceDetail.backHome")} · 홈으로`}
+            ← {formatBilingual(t("serviceDetail.backHome"), "전체 서비스 목록으로 돌아가기")}
           </Link>
 
           <div className="text-5xl">{service.icon}</div>
 
           <h1 className="mt-4 text-3xl font-bold">
-            {isKorean ? serviceNameKo : `${serviceName} · ${serviceNameKo}`}
+            {formatBilingual(serviceName, serviceNameKo)}
           </h1>
 
           <p className="mt-4 text-base leading-7 font-medium text-white/95">
-            {isKorean ? (
-              `${serviceNameKo} 서비스가 필요하신 경우 신청해 주세요.`
-            ) : (
+            {isBilingual ? (
               <>
                 <span>{t("serviceDetail.needService")}</span>
                 <span className="block mt-1 text-blue-100 font-normal">
                   {serviceNameKo} 서비스가 필요하신 경우 신청해 주세요.
                 </span>
               </>
+            ) : (
+              <span>
+                {isKorean
+                  ? `${serviceNameKo} 서비스가 필요하신 경우 신청해 주세요.`
+                  : t("serviceDetail.needService")}
+              </span>
             )}
           </p>
         </div>
@@ -136,12 +140,15 @@ export function ServiceDetailView({ slug }: { slug: string }) {
       <section className="mx-auto max-w-3xl px-5 py-8">
         {/* Housing Active Region Card */}
         {isHousing && (
-          <div className="mb-6 flex items-center justify-between rounded-2xl border border-blue-200 bg-blue-50/80 p-4">
+          <div className="mb-6 flex items-center justify-between rounded-2xl border border-blue-200 bg-blue-50/80 p-4 shadow-xs">
             <div className="flex items-center gap-2.5">
               <span className="text-xl">📍</span>
               <div>
                 <p className="text-xs font-bold text-blue-800">
-                  {isKorean ? "현재 설정된 방 구하기 희망 지역" : "Target Housing Search Area · 희망 지역"}
+                  {formatBilingual(
+                    t("serviceDetail.targetHousingArea"),
+                    tKo("serviceDetail.targetHousingArea"),
+                  )}
                 </p>
                 <p className="text-sm font-extrabold text-slate-900 sm:text-base">
                   {formattedRegion}
@@ -152,15 +159,18 @@ export function ServiceDetailView({ slug }: { slug: string }) {
             <button
               type="button"
               onClick={openModal}
-              className="rounded-xl bg-white px-3.5 py-2 text-xs font-bold text-blue-700 shadow-2xs hover:bg-blue-100"
+              className="rounded-xl bg-white px-4 py-2 text-xs font-extrabold text-blue-700 shadow-2xs hover:bg-blue-50 hover:shadow-xs border border-blue-200 active:scale-98 transition-all duration-150 cursor-pointer"
             >
-              {isKorean ? "지역 변경" : "Change · 변경"}
+              {formatBilingual(
+                t("serviceDetail.changeRegion"),
+                tKo("serviceDetail.changeRegion"),
+              )}
             </button>
           </div>
         )}
 
-        <div className="rounded-2xl bg-white p-6 shadow-sm border border-slate-100">
-          <h2 className="text-xl font-bold text-slate-900">{servicePromptTitle}</h2>
+        <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-sm border border-slate-100">
+          <h2 className="text-xl font-extrabold text-slate-900">{servicePromptTitle}</h2>
 
           <div className="mt-4 text-base leading-7 font-medium text-slate-700">
             {servicePromptDesc}
@@ -169,31 +179,29 @@ export function ServiceDetailView({ slug }: { slug: string }) {
           {/* Primary Action Button directly connected to request/page.tsx */}
           <Link
             href={`/request?service=${service.slug}`}
-            className="mt-6 block rounded-xl bg-blue-700 px-5 py-4 text-center text-lg font-bold text-white shadow-sm transition hover:bg-blue-800"
+            className="mt-6 block rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-6 py-4 text-center text-lg font-black text-white shadow-md shadow-blue-600/25 transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] border border-blue-500/30 cursor-pointer"
           >
-            {isKorean
-              ? "서비스 신청하기"
-              : `${t("serviceDetail.applyButton")} · 서비스 신청하기`}
+            {formatBilingual(t("serviceDetail.applyButton"), "서비스 신청하기")}
           </Link>
         </div>
 
         {/* Other Services Navigation */}
-        <div className="mt-8 rounded-2xl bg-slate-100 p-5">
-          <p className="text-sm font-bold text-slate-700">
-            {isKorean ? "다른 서비스 둘러보기" : `${t("customer.servicesTitle")} · 다른 서비스`}
+        <div className="mt-8 rounded-3xl bg-slate-100/80 border border-slate-200/70 p-6">
+          <p className="text-sm font-extrabold text-slate-800">
+            {formatBilingual(t("customer.servicesTitle"), "다른 서비스 둘러보기")}
           </p>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3.5 flex flex-wrap gap-2">
             {services
               .filter((s) => s.slug !== service.slug)
               .map((s) => (
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 shadow-2xs hover:border-blue-300 hover:text-blue-700"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-white px-3.5 py-2 text-xs font-bold text-slate-800 shadow-2xs hover:border-blue-400 hover:text-blue-700 hover:shadow-xs border border-slate-200/80 transition-all duration-150 cursor-pointer"
                 >
-                  <span>{s.icon}</span>
-                  <span>{isKorean ? tKo(`service.${s.key}`) : tBilingual(`service.${s.key}`)}</span>
+                  <span className="text-base">{s.icon}</span>
+                  <span>{formatBilingual(t(`service.${s.key}`), tKo(`service.${s.key}`))}</span>
                 </Link>
               ))}
           </div>

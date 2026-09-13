@@ -15,7 +15,8 @@
  *    and defined cleanly in the column category headers on top!
  */
 
-import { type RegionItem, koreanRegions, findSido, findGungu } from "./regions";
+import { type RegionItem, koreanRegions, findSido, findGungu, getCountryRegions } from "./regions";
+import { type CountryCode, getCountryInfo } from "./countries";
 import { COMPLETE_DONG_HANJA } from "./dongHanjaData";
 import {
   type RegionUITexts,
@@ -58,6 +59,7 @@ export const LATIN_SCRIPT_LOCALES = new Set([
   "tet",
   "uz",
   "id",
+  "pt",
 ]);
 
 // 1. Clean, Consistent Root Localization Data for all 17 Administrative Divisions (시·도)
@@ -1073,7 +1075,8 @@ export function formatRegionDisplay(
   nativeName: string,
   englishName: string,
   koreanName: string,
-  locale: string
+  locale: string,
+  isBilingual: boolean = false
 ): string {
   if (locale === "ko") {
     return koreanName;
@@ -1082,15 +1085,22 @@ export function formatRegionDisplay(
   const trimmedNative = nativeName.trim();
   const trimmedEn = englishName.trim();
 
-  // For Latin-script languages (including Vietnamese, French, Spanish, German...):
-  // English is NOT needed because the native language already uses the Latin alphabet!
+  // Primary name for current locale (Latin scripts use native/English directly)
+  const primaryName = LATIN_SCRIPT_LOCALES.has(locale)
+    ? (locale === "en" ? trimmedEn : trimmedNative)
+    : (trimmedNative === trimmedEn ? trimmedEn : trimmedNative);
+
+  // In monolingual mode (단일 언어), foreign language must NOT output accompanied Korean text
+  if (!isBilingual) {
+    return primaryName;
+  }
+
+  // Bilingual mode (한국어 병기)
   if (LATIN_SCRIPT_LOCALES.has(locale)) {
-    const primaryName = locale === "en" ? trimmedEn : trimmedNative;
     return `${primaryName} · ${koreanName}`;
   }
 
-  // Non-Latin script languages: Left = Native script, Middle = English, Right = Korean
-  // If native name is identical to English (e.g. fallback), avoid duplicate English:
+  // Non-Latin script languages in bilingual mode
   if (trimmedNative === trimmedEn) {
     return `${trimmedEn} · ${koreanName}`;
   }
@@ -1117,92 +1127,161 @@ export function sortRegionsByLocale<T>(
 }
 
 /**
- * Get sorted and localized list of all 17 Sidos for the current locale.
+ * Get sorted and localized list of Level 1 (Sido / Province) for the current locale and country.
  */
-export function getLocalizedSidoList(locale: string): LocalizedRegionOption[] {
-  const options: LocalizedRegionOption[] = koreanRegions.map((s) => {
-    const ko = s.name;
-    const en = SIDO_DATA[ko]?.en || romanizeKoreanRegion(ko);
-    const native = getNativeRegionName(ko, en, locale, "sido");
-    const display = formatRegionDisplay(native, en, ko, locale);
-    const sortKey = locale === "ko" ? ko : native;
+export function getLocalizedSidoList(
+  locale: string,
+  isBilingual: boolean = false,
+  country: CountryCode = "KR"
+): LocalizedRegionOption[] {
+  if (country === "KR") {
+    const options: LocalizedRegionOption[] = koreanRegions.map((s) => {
+      const ko = s.name;
+      const en = SIDO_DATA[ko]?.en || romanizeKoreanRegion(ko);
+      const native = getNativeRegionName(ko, en, locale, "sido");
+      const display = formatRegionDisplay(native, en, ko, locale, isBilingual);
+      const sortKey = locale === "ko" ? ko : native;
 
-    return {
-      key: ko,
-      ko,
-      en,
-      native,
-      display,
-      sortKey,
-    };
-  });
+      return {
+        key: ko,
+        ko,
+        en,
+        native,
+        display,
+        sortKey,
+      };
+    });
 
-  return sortRegionsByLocale(options, locale, (o) => o.sortKey);
+    return sortRegionsByLocale(options, locale, (o) => o.sortKey);
+  }
+
+  // Non-KR countries:
+  const regions = getCountryRegions(country);
+  return regions.map((s) => ({
+    key: s.name,
+    ko: s.name,
+    en: s.shortName || s.name,
+    native: s.name,
+    display: s.name,
+    sortKey: s.name,
+  }));
 }
 
 /**
- * Get sorted and localized list of Gungus within a Sido for the current locale.
+ * Get sorted and localized list of Level 2 (Gungu / District / City) for the current locale and country.
  */
-export function getLocalizedGunguList(sidoName: string, locale: string): LocalizedRegionOption[] {
-  const sData = findSido(sidoName);
+export function getLocalizedGunguList(
+  sidoName: string,
+  locale: string,
+  isBilingual: boolean = false,
+  country: CountryCode = "KR"
+): LocalizedRegionOption[] {
+  const sData = findSido(sidoName, country);
   if (!sData) return [];
 
-  const options: LocalizedRegionOption[] = sData.gunguList.map((g) => {
-    const ko = g.name;
-    const en = GUNGU_DATA[ko]?.en || romanizeKoreanRegion(ko);
-    const native = getNativeRegionName(ko, en, locale, "gungu");
-    const display = formatRegionDisplay(native, en, ko, locale);
-    const sortKey = locale === "ko" ? ko : native;
+  if (country === "KR") {
+    const options: LocalizedRegionOption[] = sData.gunguList.map((g) => {
+      const ko = g.name;
+      const en = GUNGU_DATA[ko]?.en || romanizeKoreanRegion(ko);
+      const native = getNativeRegionName(ko, en, locale, "gungu");
+      const display = formatRegionDisplay(native, en, ko, locale, isBilingual);
+      const sortKey = locale === "ko" ? ko : native;
 
-    return {
-      key: ko,
-      ko,
-      en,
-      native,
-      display,
-      sortKey,
-    };
-  });
+      return {
+        key: ko,
+        ko,
+        en,
+        native,
+        display,
+        sortKey,
+      };
+    });
 
-  return sortRegionsByLocale(options, locale, (o) => o.sortKey);
+    return sortRegionsByLocale(options, locale, (o) => o.sortKey);
+  }
+
+  // Non-KR countries:
+  return sData.gunguList.map((g) => ({
+    key: g.name,
+    ko: g.name,
+    en: g.name,
+    native: g.name,
+    display: g.name,
+    sortKey: g.name,
+  }));
 }
 
 /**
- * Get sorted and localized list of Dongs within a Gungu for the current locale.
+ * Get sorted and localized list of Level 3 (Dong / Ward / Barangay / Village) for the current locale and country.
  */
 export function getLocalizedDongList(
   sidoName: string,
   gunguName: string,
-  locale: string
+  locale: string,
+  isBilingual: boolean = false,
+  country: CountryCode = "KR"
 ): LocalizedRegionOption[] {
-  const gData = findGungu(sidoName, gunguName);
+  const gData = findGungu(sidoName, gunguName, country);
   if (!gData) return [];
 
-  const options: LocalizedRegionOption[] = gData.dongs.map((d) => {
-    const ko = d;
-    const en = romanizeKoreanRegion(ko);
-    const native = getNativeRegionName(ko, en, locale, "dong");
-    const display = formatRegionDisplay(native, en, ko, locale);
-    const sortKey = locale === "ko" ? ko : native;
+  if (country === "KR") {
+    const options: LocalizedRegionOption[] = gData.dongs.map((d) => {
+      const ko = d;
+      const en = romanizeKoreanRegion(ko);
+      const native = getNativeRegionName(ko, en, locale, "dong");
+      const display = formatRegionDisplay(native, en, ko, locale, isBilingual);
+      const sortKey = locale === "ko" ? ko : native;
 
-    return {
-      key: ko,
-      ko,
-      en,
-      native,
-      display,
-      sortKey,
-    };
-  });
+      return {
+        key: ko,
+        ko,
+        en,
+        native,
+        display,
+        sortKey,
+      };
+    });
 
-  return sortRegionsByLocale(options, locale, (o) => o.sortKey);
+    return sortRegionsByLocale(options, locale, (o) => o.sortKey);
+  }
+
+  // Non-KR countries:
+  return gData.dongs.map((d) => ({
+    key: d,
+    ko: d,
+    en: d,
+    native: d,
+    display: d,
+    sortKey: d,
+  }));
 }
 
 /**
  * Format a full localized address string for a given RegionItem.
  */
-export function getLocalizedAddress(region: RegionItem, locale: string): string {
+export function getLocalizedAddress(
+  region: RegionItem,
+  locale: string,
+  isBilingual: boolean = false
+): string {
+  const country = region.country || "KR";
   const { sido, gungu, dong } = region;
+
+  if (country !== "KR") {
+    const countryInfo = getCountryInfo(country);
+    let fullAddr = "";
+    if (country === "VN" || country === "PH" || country === "ID") {
+      fullAddr = [dong, gungu, sido].filter(Boolean).join(", ");
+    } else {
+      fullAddr = [sido, gungu, dong].filter(Boolean).join(" ");
+    }
+
+    if (locale === "ko" || isBilingual) {
+      return `${countryInfo.flag} [${countryInfo.nameKo}] ${fullAddr}`.trim();
+    }
+    return `${countryInfo.flag} ${fullAddr}`.trim();
+  }
+
   if (locale === "ko") {
     return `${sido} ${gungu} ${dong}`.trim();
   }
@@ -1220,14 +1299,35 @@ export function getLocalizedAddress(region: RegionItem, locale: string): string 
   const enCombined = `${sidoEn} ${gunguEn} ${dongEn}`.trim();
   const koCombined = `${sido} ${gungu} ${dong}`.trim();
 
-  return formatRegionDisplay(nativeCombined, enCombined, koCombined, locale);
+  return formatRegionDisplay(nativeCombined, enCombined, koCombined, locale, isBilingual);
 }
 
 /**
  * Format a short localized address string (Gungu + Dong) for a given RegionItem.
  */
-export function getLocalizedShortAddress(region: RegionItem, locale: string): string {
+export function getLocalizedShortAddress(
+  region: RegionItem,
+  locale: string,
+  isBilingual: boolean = false
+): string {
+  const country = region.country || "KR";
   const { gungu, dong } = region;
+
+  if (country !== "KR") {
+    const countryInfo = getCountryInfo(country);
+    let shortAddr = "";
+    if (country === "VN" || country === "PH" || country === "ID") {
+      shortAddr = [dong, gungu].filter(Boolean).join(", ");
+    } else {
+      shortAddr = [gungu, dong].filter(Boolean).join(" ");
+    }
+
+    if (locale === "ko" || isBilingual) {
+      return `${countryInfo.flag} [${countryInfo.nameKo}] ${shortAddr}`.trim();
+    }
+    return `${countryInfo.flag} ${shortAddr}`.trim();
+  }
+
   if (locale === "ko") {
     return `${gungu} ${dong}`.trim();
   }
@@ -1242,7 +1342,7 @@ export function getLocalizedShortAddress(region: RegionItem, locale: string): st
   const enCombined = `${gunguEn} ${dongEn}`.trim();
   const koCombined = `${gungu} ${dong}`.trim();
 
-
-  return formatRegionDisplay(nativeCombined, enCombined, koCombined, locale);
+  return formatRegionDisplay(nativeCombined, enCombined, koCombined, locale, isBilingual);
 }
+
 

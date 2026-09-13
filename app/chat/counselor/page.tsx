@@ -14,9 +14,10 @@ import {
   ADMIN_MESSAGE_EVENT,
   type AdminMessage,
 } from "@/lib/admin/adminMessage";
+import { formatCounselorName } from "@/lib/chat/counselorFormat";
 
 export default function CounselorPortalPage() {
-  const { locale, setLocale, t, tKo } = useLocale();
+  const { locale, setLocale, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
 
   const {
@@ -103,7 +104,12 @@ export default function CounselorPortalPage() {
       targetId: currentCounselor.phone,
       targetName: currentCounselor.name,
       sender: "partner",
-      senderName: `${currentCounselor.name} 상담원`,
+      senderName: formatCounselorName({
+        rawName: currentCounselor.name,
+        roleTitle: t("chat.counselorRole"),
+        locale,
+        isBilingual,
+      }),
       text: adminReplyText.trim(),
     });
     setAdminReplyText("");
@@ -339,10 +345,10 @@ export default function CounselorPortalPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-xl bg-indigo-600 py-3.5 text-sm font-extrabold text-white shadow-sm hover:bg-indigo-700 active:scale-[0.99] transition flex flex-col items-center justify-center disabled:opacity-50"
+                  className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-blue-700 py-3.5 text-sm font-black text-white shadow-md shadow-indigo-600/25 hover:shadow-lg hover:shadow-indigo-600/35 hover:brightness-105 active:scale-[0.98] transition flex flex-col items-center justify-center disabled:opacity-50 cursor-pointer border border-indigo-500/30"
                 >
                   {loading ? (
-                    <span>{isKorean ? "로그인 검증 중..." : "Verifying..."}</span>
+                    <span>{t("chat.verifying")}</span>
                   ) : (
                     <span>{t("chat.loginSubmit")}</span>
                   )}
@@ -350,7 +356,7 @@ export default function CounselorPortalPage() {
 
                 <div className="rounded-xl border border-indigo-100 bg-indigo-50/70 p-3 text-xs text-indigo-900">
                   <p className="leading-relaxed">
-                    💡 카카오톡 또는 문자로 발급받으신 <strong>3개월 전용 보안 코드</strong>를 입력하시면 별도의 본인인증 절차 없이 즉시 상담 업무에 접속하실 수 있습니다.
+                    💡 {t("chat.loginKeyNotice")}
                   </p>
                 </div>
 
@@ -361,23 +367,23 @@ export default function CounselorPortalPage() {
                       setActiveTab("register");
                       setErrorMsg("");
                     }}
-                    className="text-indigo-600 hover:text-indigo-800 font-bold"
+                    className="text-indigo-600 hover:text-indigo-800 font-bold cursor-pointer"
                   >
-                    {isKorean ? "← 신규 상담원 등록 및 코드 받기" : "Register as New Counselor"}
+                    {t("chat.registerAsNewCounselor")}
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowPhoneReissue((prev) => !prev)}
-                    className="text-slate-500 hover:text-slate-800 underline font-medium"
+                    className="text-slate-500 hover:text-slate-800 underline font-medium cursor-pointer"
                   >
-                    {isKorean ? "코드를 분실하셨나요?" : "Lost your code?"}
+                    {t("chat.lostCode")}
                   </button>
                 </div>
 
                 {showPhoneReissue && (
                   <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 mt-2 space-y-2">
                     <span className="text-[11px] font-bold text-slate-700 block">
-                      {isKorean ? "휴대폰 번호로 3개월 코드 재발급" : "Re-issue Access Key via Phone"}
+                      {t("chat.reissuePhoneTitle")}
                     </span>
                     <div className="flex gap-2">
                       <input
@@ -385,26 +391,26 @@ export default function CounselorPortalPage() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="010-XXXX-XXXX"
-                        className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold font-mono outline-none focus:border-indigo-600"
+                        className="flex-1 rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold font-mono outline-none focus:border-indigo-600"
                       />
                       <button
                         type="button"
                         onClick={handleSendAccessKey}
                         disabled={loading}
-                        className="rounded-lg bg-indigo-600 px-3 py-2 text-xs font-bold text-white hover:bg-indigo-700 shrink-0"
+                        className="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 px-3.5 py-2 text-xs font-extrabold text-white shadow-sm shadow-indigo-600/20 hover:brightness-105 active:scale-[0.98] shrink-0 cursor-pointer"
                       >
-                        {loading ? "발송 중..." : "코드 받기"}
+                        {loading ? t("chat.sendingCode") : t("chat.getCode")}
                       </button>
                     </div>
                     {accessKeyNotice && (
-                      <div className="rounded-lg bg-emerald-50 border border-emerald-200 p-2 text-xs text-emerald-800 flex items-center justify-between">
+                      <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-2.5 text-xs text-emerald-800 flex items-center justify-between">
                         <span className="font-mono font-bold">{accessKeyNotice.accessKey}</span>
                         <button
                           type="button"
                           onClick={handleCopyKey}
-                          className="text-[11px] bg-emerald-600 text-white px-2 py-0.5 rounded font-bold"
+                          className="text-[11px] bg-emerald-600 text-white px-2.5 py-1 rounded-lg font-bold hover:bg-emerald-700 active:scale-95 transition cursor-pointer shadow-2xs"
                         >
-                          {copiedToast ? "복사됨!" : "복사"}
+                          {copiedToast ? t("chat.copied") : t("chat.copy")}
                         </button>
                       </div>
                     )}
@@ -434,23 +440,26 @@ export default function CounselorPortalPage() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white hover:bg-indigo-700 transition shrink-0 disabled:opacity-50"
+                        className="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 px-4 py-2.5 text-xs font-black text-white shadow-sm shadow-indigo-600/20 hover:brightness-105 active:scale-[0.98] transition shrink-0 disabled:opacity-50 cursor-pointer"
                       >
-                        {loading ? (isKorean ? "발송 중..." : "Sending...") : (isKorean ? "3개월 보안 코드 받기" : "Get 3-Month Key")}
+                        {loading ? t("chat.sendingCode") : (isKorean ? "3개월 보안 코드 받기" : t("chat.getCode"))}
                       </button>
                     ) : (
                       <button
                         type="button"
                         onClick={() => setCodeSent(false)}
-                        className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-slate-600 hover:bg-slate-50 shrink-0"
+                        className="rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-2xs active:scale-[0.98] transition shrink-0 cursor-pointer"
                       >
-                        {isKorean ? "재입력" : "Change Phone"}
+                        {isKorean ? "재입력" : "Change"}
                       </button>
                     )}
                   </div>
                   {!codeSent && (
                     <p className="mt-1.5 text-[11px] text-slate-500">
-                      💡 카카오톡 또는 문자로 3개월 전용 보안 코드가 발송되며, <strong>90일간 자동 로그인이 유지</strong>됩니다.
+                      💡 {formatBilingual(
+                        t("chat.loginKeyNotice"),
+                        "카카오톡 또는 문자로 3개월 전용 보안 코드가 발송되며, 90일간 자동 로그인이 유지됩니다.",
+                      )}
                     </p>
                   )}
                 </div>
@@ -463,15 +472,15 @@ export default function CounselorPortalPage() {
                       <div className="flex items-center justify-between">
                         <span className="font-bold flex items-center gap-1 text-emerald-700">
                           <span>💬</span>
-                          <span>카카오톡 알림톡 / SMS 전송 완료</span>
+                          <span>{t("chat.securityCodeSentNotice")}</span>
                         </span>
                         <span className="font-mono text-[11px] text-slate-500">{phone}</span>
                       </div>
 
-                      <div className="mt-2.5 rounded-lg border border-emerald-300 bg-white p-2.5 flex items-center justify-between gap-2 shadow-xs">
+                      <div className="mt-2.5 rounded-xl border border-emerald-300 bg-white p-2.5 flex items-center justify-between gap-2 shadow-xs">
                         <div>
                           <span className="text-[10px] font-bold text-emerald-600 uppercase block">
-                            3개월 전용 보안 접속 코드 (Access Key)
+                            {t("chat.accessKeyTitle")}
                           </span>
                           <span className="font-mono text-sm sm:text-base font-black tracking-wider text-slate-900 select-all">
                             {accessKeyNotice?.accessKey}
@@ -480,14 +489,14 @@ export default function CounselorPortalPage() {
                         <button
                           type="button"
                           onClick={handleCopyKey}
-                          className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-black text-white hover:bg-emerald-700 active:scale-95 transition"
+                          className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-black text-white hover:bg-emerald-700 active:scale-95 transition cursor-pointer shadow-2xs"
                         >
-                          {copiedToast ? "✓ 복사됨!" : "📋 복사"}
+                          {copiedToast ? `✓ ${t("chat.copied")}` : `📋 ${t("chat.copy")}`}
                         </button>
                       </div>
 
                       <p className="mt-2 text-[11px] text-emerald-700 font-medium">
-                        📅 유효기간: <strong>{accessKeyNotice?.expiryFormatted}</strong>까지 (90일간 재인증 없이 자동 로그인 유지)
+                        📅 {t("chat.expiryNotice").replace("{expiry}", accessKeyNotice?.expiryFormatted || "")}
                       </p>
                     </div>
 
@@ -526,7 +535,7 @@ export default function CounselorPortalPage() {
                         type="text"
                         value={region}
                         onChange={(e) => setRegion(e.target.value)}
-                        placeholder="예: 서울특별시, 경기도 수원시, 전북 익산시"
+                        placeholder={formatBilingual("e.g. Seoul, Suwon, Iksan", "예: 서울특별시, 경기도 수원시, 전북 익산시")}
                         className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100"
                       />
                     </div>
@@ -550,7 +559,7 @@ export default function CounselorPortalPage() {
                           {t("chat.langsLabel")}
                         </label>
                         <span className="text-[11px] text-indigo-600 font-bold">
-                          {selectedLangs.length}개 선택됨
+                          {t("chat.selectedLangsCount").replace("{count}", String(selectedLangs.length))}
                         </span>
                       </div>
 
@@ -591,7 +600,7 @@ export default function CounselorPortalPage() {
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="w-full rounded-xl bg-indigo-600 py-3.5 text-sm font-extrabold text-white shadow-sm hover:bg-indigo-700 active:scale-[0.99] transition flex flex-col items-center justify-center"
+                        className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-blue-700 py-3.5 text-sm font-black text-white shadow-md shadow-indigo-600/25 hover:shadow-lg hover:shadow-indigo-600/35 hover:brightness-105 active:scale-[0.98] transition flex flex-col items-center justify-center cursor-pointer border border-indigo-500/30"
                       >
                         <span>{t("chat.registerSubmit")}</span>
                       </button>
@@ -633,7 +642,14 @@ export default function CounselorPortalPage() {
               <span>LIFE.HELP {t("chat.workstationTitle")}</span>
             </Link>
             <div className="hidden sm:flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1 text-xs">
-              <span className="font-bold text-slate-700">👤 {currentCounselor.name}</span>
+              <span className="font-bold text-slate-700">
+                👤 {formatCounselorName({
+                  rawName: currentCounselor.name,
+                  roleTitle: t("chat.counselorRole"),
+                  locale,
+                  isBilingual,
+                })}
+              </span>
               <span className="text-slate-400">|</span>
               <span className="text-slate-500">{currentCounselor.phone}</span>
               {currentCounselor.region && (
@@ -655,14 +671,14 @@ export default function CounselorPortalPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* sys.life.help Admin Chat Button */}
+            {/* HQ Admin Chat Button */}
             <button
               type="button"
               onClick={handleOpenAdminChat}
-              className="relative inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition"
-              title="sys.life.help 본사 관리자 1:1 온라인 연락"
+              className="relative inline-flex items-center gap-1.5 rounded-xl border border-indigo-200/90 bg-indigo-50/80 px-3.5 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100/90 shadow-2xs transition active:scale-[0.98] cursor-pointer"
+              title={formatBilingual(t("workspace.adminChatTitle"), "본사 관리자 1:1 온라인 연락")}
             >
-              <span>💬 {isKorean ? "본사 관리자" : "Admin Chat"}</span>
+              <span>💬 {formatBilingual(t("workspace.adminChat"), "본사 관리자")}</span>
               {unreadAdminCount > 0 && (
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-black text-white animate-pulse">
                   {unreadAdminCount}
@@ -676,10 +692,10 @@ export default function CounselorPortalPage() {
               onClick={() =>
                 updateCounselorStatus(currentCounselor.status === "duty" ? "break" : "duty")
               }
-              className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-extrabold shadow-xs transition ${
+              className={`inline-flex items-center gap-2 rounded-xl px-4 py-1.5 text-xs font-extrabold shadow-sm transition active:scale-[0.98] cursor-pointer ${
                 currentCounselor.status === "duty"
-                  ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                  : "bg-amber-500 text-white hover:bg-amber-600"
+                  ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:brightness-105 shadow-emerald-600/20"
+                  : "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:brightness-105 shadow-amber-500/20"
               }`}
             >
               <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
@@ -691,7 +707,7 @@ export default function CounselorPortalPage() {
             <button
               type="button"
               onClick={logoutCounselor}
-              className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 hover:bg-slate-50 transition"
+              className="rounded-xl border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] cursor-pointer"
             >
               {t("chat.logout")}
             </button>
@@ -710,10 +726,10 @@ export default function CounselorPortalPage() {
               <div>
                 <div className="flex items-center gap-2">
                   <strong className="text-xs font-black text-amber-900">
-                    [sys.life.help 본사 관리자 메시지]
+                    {formatBilingual(t("workspace.adminNoticeBanner"), "[본사 관리자 메시지]")}
                   </strong>
                   <span className="rounded bg-amber-200 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">
-                    {unreadAdminCount}건 미확인
+                    {unreadAdminCount} {t("workspace.unreadCount") || (isKorean ? "건 미확인" : "unread")}
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-amber-800 line-clamp-1">
@@ -724,9 +740,9 @@ export default function CounselorPortalPage() {
             <button
               type="button"
               onClick={handleOpenAdminChat}
-              className="rounded-xl bg-amber-600 px-4 py-2 text-xs font-black text-white hover:bg-amber-700 transition self-end sm:self-center shrink-0"
+              className="rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 px-4 py-2 text-xs font-black text-white shadow-sm shadow-amber-600/20 hover:brightness-105 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
             >
-              {isKorean ? "메시지 확인 및 답장" : "Open Admin Chat"}
+              {formatBilingual(t("workspace.openAdminChat"), "메시지 확인 및 답장")}
             </button>
           </div>
         </div>
@@ -839,7 +855,7 @@ export default function CounselorPortalPage() {
                           acceptSession(s.id, currentCounselor);
                           setSelectedSessionId(s.id);
                         }}
-                        className="w-full rounded-lg bg-indigo-600 py-1.5 text-xs font-extrabold text-white hover:bg-indigo-700 transition shadow-xs"
+                        className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 py-2 text-xs font-black text-white shadow-sm shadow-indigo-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
                       >
                         {t("chat.acceptBtn")}
                       </button>
@@ -924,7 +940,7 @@ export default function CounselorPortalPage() {
                   <button
                     type="button"
                     onClick={() => closeSession(activeSession.id)}
-                    className="rounded-xl border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-bold text-red-700 hover:bg-red-100 transition"
+                    className="rounded-xl border border-red-200 bg-white px-3 py-1.5 text-xs font-bold text-red-600 hover:bg-red-50 hover:border-red-300 shadow-2xs transition active:scale-[0.98] cursor-pointer"
                   >
                     {t("chat.endChat")}
                   </button>
@@ -983,21 +999,21 @@ export default function CounselorPortalPage() {
                 <button
                   type="button"
                   onClick={() => sendCannedResponse(t("chat.quickHelloText"))}
-                  className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"
+                  className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-100 cursor-pointer"
                 >
                   {t("chat.quickHello")}
                 </button>
                 <button
                   type="button"
                   onClick={() => sendCannedResponse(t("chat.quickTechText"))}
-                  className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"
+                  className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-100 cursor-pointer"
                 >
                   {t("chat.quickTech")}
                 </button>
                 <button
                   type="button"
                   onClick={() => sendCannedResponse(t("chat.quickHousingText"))}
-                  className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-100"
+                  className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-100 cursor-pointer"
                 >
                   {t("chat.quickHousing")}
                 </button>
@@ -1018,7 +1034,7 @@ export default function CounselorPortalPage() {
                 <button
                   type="submit"
                   disabled={!replyText.trim()}
-                  className="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm shadow-indigo-600/20 hover:brightness-105 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {t("chat.send")}
                 </button>
@@ -1045,18 +1061,33 @@ export default function CounselorPortalPage() {
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-sm font-black text-white">
-                  sys
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-xs font-black text-white shadow-xs">
+                  HQ
                 </span>
                 <div>
                   <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
-                    <span>sys.life.help 본사 관리자 1:1 온라인 연락</span>
+                    <span>
+                      {formatBilingual(
+                        t("workspace.adminChatTitle"),
+                        "본사 관리자 1:1 온라인 연락",
+                      )}
+                    </span>
                     <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 border border-emerald-300">
-                      ONLINE
+                      {formatBilingual(t("workspace.adminChatOnline"), "실시간 온라인")}
                     </span>
                   </h3>
                   <p className="text-[11px] text-slate-500">
-                    수신자: {currentCounselor.name} 상담원 ({currentCounselor.phone})
+                    {formatBilingual(
+                      t("workspace.adminChatRecipientCounselor"),
+                      "수신자: 상담원",
+                    )}:{" "}
+                    {formatCounselorName({
+                      rawName: currentCounselor.name,
+                      roleTitle: t("chat.counselorRole"),
+                      locale,
+                      isBilingual,
+                    })}{" "}
+                    ({currentCounselor.phone})
                   </p>
                 </div>
               </div>
@@ -1074,8 +1105,18 @@ export default function CounselorPortalPage() {
               {adminMessages.length === 0 ? (
                 <div className="grid h-full place-content-center text-center text-xs text-slate-500">
                   <p className="text-2xl mb-2">💬</p>
-                  <p>본사 관리자와 주고받은 메시지가 없습니다.</p>
-                  <p className="text-slate-400 mt-1">문의사항이나 지원 요청을 남겨주시면 관리자가 확인합니다.</p>
+                  <p>
+                    {formatBilingual(
+                      t("workspace.adminChatEmpty"),
+                      "본사 관리자와 주고받은 메시지가 없습니다.",
+                    )}
+                  </p>
+                  <p className="text-slate-400 mt-1">
+                    {formatBilingual(
+                      t("workspace.adminChatEmptyHint"),
+                      "문의사항이나 지원 요청을 남겨주시면 관리자가 확인합니다.",
+                    )}
+                  </p>
                 </div>
               ) : (
                 adminMessages.map((msg) => {
@@ -1088,7 +1129,12 @@ export default function CounselorPortalPage() {
                       <div className="flex items-center gap-1.5 text-[10px] text-slate-400 mb-1 px-1">
                         <span className="font-bold text-slate-600">{msg.senderName}</span>
                         <span>·</span>
-                        <span>{new Date(msg.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
+                        <span>
+                          {new Date(msg.timestamp).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </span>
                       </div>
                       <div
                         className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
@@ -1118,15 +1164,18 @@ export default function CounselorPortalPage() {
                   type="text"
                   value={adminReplyText}
                   onChange={(e) => setAdminReplyText(e.target.value)}
-                  placeholder={isKorean ? "본사 관리자에게 전달할 메시지 입력..." : "Type reply to admin..."}
+                  placeholder={formatBilingual(
+                    t("workspace.adminChatPlaceholder"),
+                    "본사 관리자에게 전달할 메시지 입력...",
+                  )}
                   className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white"
                 />
                 <button
                   type="submit"
                   disabled={!adminReplyText.trim()}
-                  className="rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white hover:bg-indigo-700 disabled:opacity-50 transition"
+                  className="rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-indigo-600/20 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition cursor-pointer"
                 >
-                  {isKorean ? "전송" : "Send"}
+                  {formatBilingual(t("workspace.adminChatSend"), "전송")}
                 </button>
               </form>
             </div>

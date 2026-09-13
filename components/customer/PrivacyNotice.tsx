@@ -3,7 +3,7 @@
 import { useLocale } from "@/lib/i18n/LocaleContext";
 
 export default function PrivacyNotice() {
-  const { locale, t, tKo } = useLocale();
+  const { locale, t, tKo, isBilingual } = useLocale();
   const isKorean = locale === "ko";
 
   return (
@@ -24,11 +24,15 @@ export default function PrivacyNotice() {
               {t("privacy.content")}
             </p>
 
-            {/* Korean Accompanied Block */}
-            <h3 className="mt-5 text-sm font-bold text-slate-600">{tKo("privacy.title")}</h3>
-            <p className="mt-2 text-xs leading-5 font-medium text-slate-500">
-              {tKo("privacy.content")}
-            </p>
+            {/* Korean Accompanied Block (Only shown in bilingual mode) */}
+            {isBilingual && (
+              <>
+                <h3 className="mt-5 text-sm font-bold text-slate-600">{tKo("privacy.title")}</h3>
+                <p className="mt-2 text-xs leading-5 font-medium text-slate-500">
+                  {tKo("privacy.content")}
+                </p>
+              </>
+            )}
           </div>
         )}
 

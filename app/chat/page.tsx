@@ -8,9 +8,10 @@ import { useRegion } from "@/lib/region/RegionContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { languages, type Locale } from "@/messages";
 import { navigateToMainHome } from "@/lib/navigation";
+import { formatCounselorName } from "@/lib/chat/counselorFormat";
 
 export default function CustomerChatPage() {
-  const { locale, setLocale, currentMeta, t, tKo } = useLocale();
+  const { locale, setLocale, currentMeta, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const { formattedRegion, shortRegionText, openModal } = useRegion();
   const {
@@ -73,7 +74,7 @@ export default function CustomerChatPage() {
               href="/"
               onClick={navigateToMainHome}
               className="flex items-center gap-2 text-xl font-extrabold text-blue-800 hover:opacity-80 transition cursor-pointer"
-              title="LIFE.HELP 메인 홈으로 이동"
+              title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
             >
               <span>💬</span>
               <span>LIFE.HELP CHAT</span>
@@ -93,7 +94,7 @@ export default function CustomerChatPage() {
               href="/chat/counselor"
               className="rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition"
             >
-              🎧 {isKorean ? t("chat.counselorPortal") : `${t("chat.counselorPortal")} · 상담원 포털`}
+              🎧 {formatBilingual(t("chat.counselorPortal"), "상담원 포털")}
             </Link>
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
@@ -106,30 +107,30 @@ export default function CustomerChatPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="inline-flex flex-wrap items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-bold tracking-wide">
-                <span>🌐 {isKorean ? t("chat.tag") : `${t("chat.tag")} · 실시간 모국어 상담`}</span>
+                <span>🌐 {formatBilingual(t("chat.tag"), "실시간 모국어 상담")}</span>
                 <span className="text-blue-200">|</span>
                 <span>{consultationMeta.nativeName} ({consultationMeta.name})</span>
                 {consultationLocale !== locale && (
                   <span className="rounded-full bg-blue-900/60 border border-blue-300/40 px-2 py-0.5 text-[10px] text-blue-100 font-semibold">
-                    화면: {currentMeta.nativeName}
+                    {t("chat.screenLabel")}{currentMeta.nativeName}
                   </span>
                 )}
               </div>
               <h1 className="mt-2 text-2xl font-extrabold sm:text-3xl">
-                {isKorean ? (
-                  t("chat.title")
-                ) : (
+                {isBilingual ? (
                   <>
                     <span>{t("chat.title")}</span>
                     <span className="block mt-1 text-xl font-bold text-blue-200">
                       {tKo("chat.title")}
                     </span>
                   </>
+                ) : (
+                  <span>{isKorean ? tKo("chat.title") : t("chat.title")}</span>
                 )}
               </h1>
               <div className="mt-1 text-sm text-blue-100">
                 <p>{t("chat.desc")}</p>
-                {!isKorean && (
+                {isBilingual && (
                   <p className="mt-0.5 text-xs text-blue-200 font-medium">
                     {tKo("chat.desc")}
                   </p>
@@ -155,12 +156,14 @@ export default function CustomerChatPage() {
                 </span>
                 <span className="text-sm font-extrabold">
                   {dutyCounselorsForLocale.length > 0
-                    ? (isKorean
-                        ? `[${consultationMeta.nativeName}] ${dutyCounselorsForLocale.length}명 상담 근무 중`
-                        : `${t("chat.dutyCount").replace("{count}", String(dutyCounselorsForLocale.length))} · ${tKo("chat.dutyCount").replace("{count}", String(dutyCounselorsForLocale.length))}`)
-                    : (isKorean
-                        ? `[${consultationMeta.nativeName}] 상담원 연결 준비 중`
-                        : `${t("chat.dutyPreparing")} · 상담원 연결 준비 중`)}
+                    ? formatBilingual(
+                        t("chat.dutyCount").replace("{count}", String(dutyCounselorsForLocale.length)),
+                        `[${consultationMeta.nativeName}] ${dutyCounselorsForLocale.length}명 상담 근무 중`,
+                      )
+                    : formatBilingual(
+                        t("chat.dutyPreparing"),
+                        `[${consultationMeta.nativeName}] 상담원 연결 준비 중`,
+                      )}
                 </span>
               </div>
 
@@ -168,7 +171,15 @@ export default function CustomerChatPage() {
                 {dutyCounselorsForLocale.length > 0 ? (
                   dutyCounselorsForLocale.map((c) => (
                     <div key={c.phone} className="flex items-center gap-1.5 font-medium">
-                      <span>👤 {c.name}</span>
+                      <span>
+                        👤{" "}
+                        {formatCounselorName({
+                          rawName: c.name,
+                          roleTitle: t("chat.counselorRole"),
+                          locale,
+                          isBilingual,
+                        })}
+                      </span>
                       <span className="text-[10px] text-emerald-300 font-bold bg-emerald-950/40 px-1.5 py-0.5 rounded-full">
                         {t("chat.dutyStatus")}
                       </span>
@@ -176,9 +187,10 @@ export default function CustomerChatPage() {
                   ))
                 ) : (
                   <p className="text-[11px] text-blue-200 max-w-xs">
-                    {isKorean
-                      ? `전체 상담원 ${activeDutyCounselors.length}명 근무 중. 메시지를 남기시면 [${consultationMeta.nativeName}] 가능 상담원이 즉시 배정됩니다.`
-                      : t("chat.allDutyNotice").replace("{count}", String(activeDutyCounselors.length))}
+                    {formatBilingual(
+                      t("chat.allDutyNotice").replace("{count}", String(activeDutyCounselors.length)),
+                      `전체 상담원 ${activeDutyCounselors.length}명 근무 중. 메시지를 남기시면 [${consultationMeta.nativeName}] 가능 상담원이 즉시 배정됩니다.`,
+                    )}
                   </p>
                 )}
               </div>
@@ -193,11 +205,11 @@ export default function CustomerChatPage() {
             <div className="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
               <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
                 <span>💬</span>
-                <span>{isKorean ? t("chat.startTitle") : `${t("chat.startTitle")} · 실시간 상담 시작`}</span>
+                <span>{formatBilingual(t("chat.startTitle"), "실시간 상담 시작")}</span>
               </h2>
               <div className="mt-1 text-xs text-slate-500">
                 <p>{t("chat.startDesc")}</p>
-                {!isKorean && (
+                {isBilingual && (
                   <p className="mt-0.5 text-[11px] text-slate-400 font-medium">
                     {tKo("chat.startDesc")}
                   </p>
@@ -207,7 +219,7 @@ export default function CustomerChatPage() {
               <form onSubmit={handleStartChat} className="mt-5 space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700">
-                    {isKorean ? t("chat.nameLabel") : `${t("chat.nameLabel")} · 성함`}
+                    {formatBilingual(t("chat.nameLabel"), "성함")}
                   </label>
                   <input
                     type="text"
@@ -223,23 +235,15 @@ export default function CustomerChatPage() {
                   <div className="flex items-center justify-between">
                     <label className="block text-xs font-extrabold text-slate-800 flex items-center gap-1.5">
                       <span>🗣️</span>
-                      <span>{isKorean ? "상담 희망 언어 선택" : `${t("chat.langLabel")} · 상담 희망 언어`}</span>
+                      <span>{formatBilingual(t("chat.langLabel"), "상담 희망 언어")}</span>
                     </label>
                     <span className="text-[11px] text-slate-500 font-medium">
-                      {isKorean
-                        ? `(현재 화면: ${currentMeta.nativeName})`
-                        : locale === "en"
-                        ? `(Screen: ${currentMeta.nativeName})`
-                        : `(화면: ${currentMeta.nativeName})`}
+                      ({t("chat.screenLabel")}{currentMeta.nativeName})
                     </span>
                   </div>
 
                   <p className="text-[11px] text-slate-500 leading-relaxed">
-                    {isKorean
-                      ? "웹사이트 화면 언어와 별도로, 1:1 상담을 진행하고 싶으신 언어를 자유롭게 선택하실 수 있습니다."
-                      : locale === "en"
-                      ? "You can select a 1:1 consultation language independently from the website display language."
-                      : "웹사이트 화면 언어와 별도로 1:1 실시간 상담을 원하시는 언어를 자유롭게 선택하실 수 있습니다."}
+                    {t("chat.langIndependentDesc")}
                   </p>
 
                   {/* Dropdown Select + Reset Button */}
@@ -269,11 +273,11 @@ export default function CustomerChatPage() {
                           setConsultationLocale(locale);
                           setIsCustomConsultationLocale(false);
                         }}
-                        className="shrink-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-1"
-                        title="웹사이트 화면 언어와 일치시키기"
+                        className="shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] flex items-center justify-center gap-1 cursor-pointer"
+                        title={t("chat.syncWithWeb")}
                       >
                         <span>↺</span>
-                        <span>{isKorean ? "웹 언어와 맞춤" : locale === "en" ? "Sync with web" : "웹 언어와 맞춤"}</span>
+                        <span>{t("chat.syncWithWeb")}</span>
                       </button>
                     )}
                   </div>
@@ -281,7 +285,7 @@ export default function CustomerChatPage() {
                   {/* Quick Language Chips */}
                   <div className="flex flex-wrap items-center gap-1.5 pt-1">
                     <span className="text-[10px] font-bold text-slate-400 mr-0.5">
-                      {isKorean ? "빠른선택:" : locale === "en" ? "Quick select:" : "빠른선택:"}
+                      {t("chat.quickSelect")}
                     </span>
                     {(
                       [
@@ -302,7 +306,7 @@ export default function CustomerChatPage() {
                           setConsultationLocale(item.code as Locale);
                           setIsCustomConsultationLocale(true);
                         }}
-                        className={`rounded-lg px-2 py-1 text-[11px] font-bold transition ${
+                        className={`rounded-lg px-2 py-1 text-[11px] font-bold transition cursor-pointer ${
                           consultationLocale === item.code
                             ? "bg-indigo-600 text-white shadow-xs"
                             : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
@@ -322,10 +326,6 @@ export default function CustomerChatPage() {
                           <>
                             상담 언어: <strong className="font-extrabold text-blue-900">{consultationMeta.nativeName} ({consultationMeta.name})</strong>
                           </>
-                        ) : locale === "en" ? (
-                          <>
-                            Consultation Language: <strong className="font-extrabold text-blue-900">{consultationMeta.nativeName}</strong>
-                          </>
                         ) : (
                           <>
                             <span>{t("chat.langLabel")}:</span> <strong className="font-extrabold text-blue-900">{consultationMeta.nativeName}</strong>
@@ -335,23 +335,15 @@ export default function CustomerChatPage() {
                     </div>
                     <span className="text-[11px] font-bold text-emerald-700 bg-emerald-100/90 px-2 py-0.5 rounded-full">
                       {dutyCounselorsForLocale.length > 0
-                        ? (isKorean
-                            ? `🟢 ${dutyCounselorsForLocale.length}명 대기중`
-                            : locale === "en"
-                            ? `🟢 ${dutyCounselorsForLocale.length} ready`
-                            : `🟢 ${dutyCounselorsForLocale.length}명 대기중`)
-                        : (isKorean
-                            ? "🟡 접수 시 즉시 매칭"
-                            : locale === "en"
-                            ? "🟡 Auto-matching"
-                            : "🟡 접수 시 즉시 매칭")}
+                        ? t("chat.counselorReadyCount").replace("{count}", String(dutyCounselorsForLocale.length))
+                        : t("chat.counselorAutoMatch")}
                     </span>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700">
-                    {isKorean ? t("chat.inquiryLabel") : `${t("chat.inquiryLabel")} · 문의 내용`}
+                    {formatBilingual(t("chat.inquiryLabel"), "문의 내용")}
                   </label>
                   <textarea
                     rows={4}
@@ -365,23 +357,23 @@ export default function CustomerChatPage() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-blue-700 py-3.5 text-base font-extrabold text-white shadow-sm hover:bg-blue-800 active:scale-[0.99] transition flex flex-col items-center justify-center"
+                    className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition flex flex-col items-center justify-center cursor-pointer border border-blue-500/30"
                   >
-                    {isKorean ? (
-                      <span className="flex items-center gap-2">
-                        <span>🚀</span>
-                        <span>{t("chat.enterRoom")}</span>
-                      </span>
-                    ) : (
+                    {isBilingual ? (
                       <>
                         <span className="flex items-center gap-1.5 text-base font-black">
                           <span>🚀</span>
                           <span>{t("chat.enterRoom")}</span>
                         </span>
                         <span className="text-xs text-blue-200 font-bold mt-0.5">
-                          모국어 실시간 상담방 입장하기
+                          {tKo("chat.enterRoom")}
                         </span>
                       </>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <span>🚀</span>
+                        <span>{t("chat.enterRoom")}</span>
+                      </span>
                     )}
                   </button>
                 </div>
@@ -393,7 +385,7 @@ export default function CustomerChatPage() {
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
                 <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
                   <span>🛡️</span>
-                  <span>{isKorean ? t("chat.guideTitle") : `${t("chat.guideTitle")} · 상담 센터 안내`}</span>
+                  <span>{formatBilingual(t("chat.guideTitle"), "상담 센터 안내")}</span>
                 </h3>
                 <ul className="mt-3 space-y-2.5 text-xs text-slate-600 font-medium leading-relaxed">
                   <li className="flex items-start gap-2">
@@ -421,9 +413,9 @@ export default function CustomerChatPage() {
                 </p>
                 <Link
                   href="/chat/counselor"
-                  className="mt-3 block text-center rounded-xl bg-indigo-600 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 transition"
+                  className="mt-3 block text-center rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 py-2.5 text-xs font-bold text-white shadow-sm shadow-indigo-600/20 hover:shadow-md hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
                 >
-                  {isKorean ? t("chat.counselorPortalBtn") : `${t("chat.counselorPortalBtn")} · 상담원 포털 이동`}
+                  {formatBilingual(t("chat.counselorPortalBtn"), "상담원 포털 이동")}
                 </Link>
               </div>
 
@@ -439,7 +431,7 @@ export default function CustomerChatPage() {
                           key={s.id}
                           type="button"
                           onClick={() => setActiveSessionId(s.id)}
-                          className="w-full text-left rounded-lg p-2 hover:bg-slate-50 border border-slate-100 flex items-center justify-between text-xs"
+                          className="w-full text-left rounded-lg p-2 hover:bg-slate-50 border border-slate-100 flex items-center justify-between text-xs cursor-pointer"
                         >
                           <div className="truncate pr-2">
                             <span className="font-bold text-slate-800">{s.customerName}</span>
@@ -448,25 +440,34 @@ export default function CustomerChatPage() {
                                 {sessionLang.nativeName}
                               </span>
                             )}
-                            <span className="text-slate-400 ml-1 text-[10px]">
-                              {s.counselorName ? `(${s.counselorName})` : `(${t("chat.waiting")})`}
+                          </div>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <span className="text-slate-400 text-[10px]">
+                              {s.counselorName
+                                ? `(${formatCounselorName({
+                                    rawName: s.counselorName,
+                                    roleTitle: t("chat.counselorRole"),
+                                    locale,
+                                    isBilingual,
+                                  })})`
+                                : `(${t("chat.waiting")})`}
+                            </span>
+                            <span
+                              className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                                s.status === "active"
+                                  ? "bg-emerald-100 text-emerald-700"
+                                  : s.status === "waiting"
+                                  ? "bg-amber-100 text-amber-700"
+                                  : "bg-slate-100 text-slate-500"
+                              }`}
+                            >
+                              {s.status === "active"
+                                ? t("chat.chatting")
+                                : s.status === "waiting"
+                                ? t("chat.waiting")
+                                : t("chat.closed")}
                             </span>
                           </div>
-                          <span
-                            className={`shrink-0 text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                              s.status === "active"
-                                ? "bg-emerald-100 text-emerald-700"
-                                : s.status === "waiting"
-                                ? "bg-amber-100 text-amber-700"
-                                : "bg-slate-100 text-slate-500"
-                            }`}
-                          >
-                            {s.status === "active"
-                              ? t("chat.chatting")
-                              : s.status === "waiting"
-                              ? t("chat.waiting")
-                              : t("chat.closed")}
-                          </span>
                         </button>
                       );
                     })}
@@ -484,8 +485,8 @@ export default function CustomerChatPage() {
                 <button
                   type="button"
                   onClick={() => setActiveSessionId(null)}
-                  className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-200 text-sm font-bold transition"
-                  title="목록으로"
+                  className="rounded-xl p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 bg-white shadow-2xs active:scale-[0.96] transition cursor-pointer"
+                  title={formatBilingual(t("common.back") || "Back", "목록으로")}
                 >
                   ←
                 </button>
@@ -493,7 +494,12 @@ export default function CustomerChatPage() {
                   <div className="flex items-center gap-2">
                     <h2 className="text-sm font-extrabold text-slate-900">
                       {activeSession.counselorName
-                        ? `${activeSession.counselorName}`
+                        ? formatCounselorName({
+                            rawName: activeSession.counselorName,
+                            roleTitle: t("chat.counselorRole"),
+                            locale,
+                            isBilingual,
+                          })
                         : t("chat.connecting")}
                     </h2>
                     <span
@@ -523,7 +529,7 @@ export default function CustomerChatPage() {
                     </span>
                     {activeSession.customerLocale !== locale && (
                       <span className="text-[10px] text-slate-400">
-                        (화면: {currentMeta.nativeName})
+                        ({t("chat.screenLabel")}{currentMeta.nativeName})
                       </span>
                     )}
                     <span>•</span>
@@ -537,7 +543,7 @@ export default function CustomerChatPage() {
                   <button
                     type="button"
                     onClick={() => closeSession(activeSession.id)}
-                    className="rounded-lg border border-slate-300 bg-white px-3 py-1 text-xs font-bold text-slate-700 hover:bg-red-50 hover:border-red-200 hover:text-red-600 transition"
+                    className="rounded-xl border border-red-200 bg-white px-3 py-1.5 text-xs font-bold text-red-600 hover:bg-red-50 hover:border-red-300 shadow-2xs transition active:scale-[0.98] cursor-pointer"
                   >
                     {t("chat.endChat")}
                   </button>
@@ -545,7 +551,7 @@ export default function CustomerChatPage() {
                 <button
                   type="button"
                   onClick={() => setActiveSessionId(null)}
-                  className="rounded-lg bg-slate-200 px-3 py-1 text-xs font-bold text-slate-700 hover:bg-slate-300 transition"
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-2xs transition active:scale-[0.98] cursor-pointer"
                 >
                   {t("chat.leaveRoom")}
                 </button>
@@ -574,7 +580,14 @@ export default function CustomerChatPage() {
                   >
                     <div className="flex items-baseline gap-1.5 mb-1 px-1">
                       <span className="text-[11px] font-bold text-slate-700">
-                        {msg.senderName}
+                        {msg.sender === "counselor"
+                          ? formatCounselorName({
+                              rawName: msg.senderName,
+                              roleTitle: t("chat.counselorRole"),
+                              locale,
+                              isBilingual,
+                            })
+                          : msg.senderName}
                       </span>
                       <span className="text-[10px] text-slate-400">
                         {new Date(msg.timestamp).toLocaleTimeString([], {
@@ -618,7 +631,7 @@ export default function CustomerChatPage() {
                 <button
                   type="submit"
                   disabled={!messageInput.trim()}
-                  className="rounded-xl bg-blue-700 px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm shadow-blue-600/20 hover:shadow-md hover:brightness-105 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {t("chat.send")}
                 </button>

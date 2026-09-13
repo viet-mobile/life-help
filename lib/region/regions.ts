@@ -1,3 +1,11 @@
+import { type CountryCode } from "./countries";
+import { vietnamRegions } from "./vietnamRegions";
+import { chinaRegions } from "./chinaRegions";
+import { taiwanRegions } from "./taiwanRegions";
+import { japanRegions } from "./japanRegions";
+import { philippinesRegions } from "./philippinesRegions";
+import { indonesiaRegions } from "./indonesiaRegions";
+
 export interface GunguData {
   name: string;
   dongs: string[];
@@ -10,18 +18,21 @@ export interface SidoData {
 }
 
 export interface RegionItem {
+  country?: CountryCode;
   sido: string;
   gungu: string;
   dong: string;
 }
 
 export const defaultRegion: RegionItem = {
+  country: "KR",
   sido: "전북특별자치도",
   gungu: "익산시",
   dong: "신동",
 };
 
 export const koreanRegions: SidoData[] = [
+
   {
     name: "전북특별자치도",
     shortName: "전북",
@@ -493,17 +504,39 @@ export const koreanRegions: SidoData[] = [
   },
 ];
 
-export function findSido(sidoName: string): SidoData | undefined {
-  return koreanRegions.find(
+export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
+  switch (country) {
+    case "VN":
+      return vietnamRegions;
+    case "CN":
+      return chinaRegions;
+    case "TW":
+      return taiwanRegions;
+    case "JP":
+      return japanRegions;
+    case "PH":
+      return philippinesRegions;
+    case "ID":
+      return indonesiaRegions;
+    case "KR":
+    default:
+      return koreanRegions;
+  }
+}
+
+export function findSido(sidoName: string, country: CountryCode = "KR"): SidoData | undefined {
+  const regions = getCountryRegions(country);
+  return regions.find(
     (s) => s.name === sidoName || s.shortName === sidoName || sidoName.includes(s.shortName),
   );
 }
 
-export function findGungu(sidoName: string, gunguName: string): GunguData | undefined {
-  const sido = findSido(sidoName);
+export function findGungu(sidoName: string, gunguName: string, country: CountryCode = "KR"): GunguData | undefined {
+  const sido = findSido(sidoName, country);
   if (!sido) return undefined;
   return sido.gunguList.find(
     (g) => g.name === gunguName || g.name.includes(gunguName) || gunguName.includes(g.name),
   );
 }
+
 

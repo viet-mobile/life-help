@@ -16,7 +16,7 @@ export function HelperAuthCard({
   onSuccess,
 }: HelperAuthCardProps) {
   const router = useRouter();
-  const { locale, t } = useLocale();
+  const { locale, t, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
 
   const { requestAccessKey, verifyAccessKey, registerHelper } = useHelper();
@@ -54,9 +54,10 @@ export function HelperAuthCard({
     const cleanPhone = phone.replace(/[^0-9]/g, "");
     if (cleanPhone.length < 10) {
       setErrorMsg(
-        isKorean
-          ? "올바른 이동전화번호를 입력해 주세요. (예: 010-1234-5678)"
-          : `${t("tech.invalidPhoneError")} · 올바른 이동전화번호를 입력해 주세요.`,
+        formatBilingual(
+          t("tech.invalidPhoneError"),
+          "올바른 이동전화번호를 입력해 주세요. (예: 010-1234-5678)",
+        ),
       );
       return;
     }
@@ -71,7 +72,12 @@ export function HelperAuthCard({
       setAccessKeyNotice(res.notice);
       setAuthCode(res.accessKey); // Auto-fill for seamless mobile verification
     } else {
-      setErrorMsg(isKorean ? "보안 코드 발송에 실패했습니다." : "Failed to issue security code.");
+      setErrorMsg(
+        formatBilingual(
+          "Failed to issue security code.",
+          "보안 코드 발송에 실패했습니다.",
+        ),
+      );
     }
   };
 
@@ -93,19 +99,39 @@ export function HelperAuthCard({
     setErrorMsg("");
 
     if (!authCode || authCode.trim().length < 6) {
-      setErrorMsg(isKorean ? "보안 접속 코드를 입력해 주세요." : "Please enter the security access key.");
+      setErrorMsg(
+        formatBilingual(
+          t("tech.enterAccessKeyError"),
+          "3개월 전용 보안 코드를 입력해 주세요.",
+        ),
+      );
       return;
     }
     if (!helperName.trim()) {
-      setErrorMsg(isKorean ? "헬퍼 성함(활동명)을 입력해 주세요." : "Please enter your name.");
+      setErrorMsg(
+        formatBilingual(
+          t("tech.enterNameError"),
+          "헬퍼 성함(활동명)을 입력해 주세요.",
+        ),
+      );
       return;
     }
     if (selectedServices.length === 0) {
-      setErrorMsg(isKorean ? "최소 하나 이상의 서비스 가능 분야를 선택해 주세요." : "Please select at least one service category.");
+      setErrorMsg(
+        formatBilingual(
+          t("tech.selectServiceError"),
+          "최소 하나 이상의 서비스 가능 분야를 선택해 주세요.",
+        ),
+      );
       return;
     }
     if (!agreeTerms) {
-      setErrorMsg(isKorean ? "헬퍼 활동 규정 및 안전 수칙에 동의해 주세요." : "Please agree to the regulations.");
+      setErrorMsg(
+        formatBilingual(
+          t("tech.agreeTermsError"),
+          "헬퍼 활동 규정 및 안전 수칙에 동의해 주세요.",
+        ),
+      );
       return;
     }
 
@@ -139,7 +165,12 @@ export function HelperAuthCard({
     setErrorMsg("");
 
     if (!authCode || authCode.trim().length < 6) {
-      setErrorMsg(isKorean ? "3개월 전용 보안 코드를 입력해 주세요." : "Please enter the security access key.");
+      setErrorMsg(
+        formatBilingual(
+          t("tech.enterAccessKeyError"),
+          "3개월 전용 보안 코드를 입력해 주세요.",
+        ),
+      );
       return;
     }
 
@@ -158,9 +189,10 @@ export function HelperAuthCard({
     } else {
       setErrorMsg(
         result.error ||
-          (isKorean
-            ? "보안 접속 코드가 올바르지 않거나 유효기간이 만료되었습니다."
-            : "Security access key is invalid or expired."),
+          formatBilingual(
+            "Security access key is invalid or expired.",
+            "보안 접속 코드가 올바르지 않거나 유효기간이 만료되었습니다.",
+          ),
       );
     }
   };
@@ -181,7 +213,7 @@ export function HelperAuthCard({
               : "text-slate-400 hover:text-white"
           }`}
         >
-          {isKorean ? "📝 신규 헬퍼 등록 및 활동 신청" : "Register Helper · 신규 헬퍼 등록"}
+          <span>📝 {formatBilingual(t("tech.registerTab"), "신규 헬퍼 등록 및 활동 신청")}</span>
         </button>
         <button
           type="button"
@@ -195,7 +227,7 @@ export function HelperAuthCard({
               : "text-slate-400 hover:text-white"
           }`}
         >
-          {isKorean ? "🔑 기존 헬퍼 로그인" : "Helper Sign In · 기존 헬퍼 로그인"}
+          <span>🔑 {formatBilingual(t("tech.loginTab"), "기존 헬퍼 로그인")}</span>
         </button>
       </div>
 
@@ -205,22 +237,26 @@ export function HelperAuthCard({
           <span>{activeTab === "register" ? "🚀" : "🛡️"}</span>
           <span>
             {activeTab === "register"
-              ? isKorean
-                ? "신규 헬퍼 등록 (3개월 보안 접속)"
-                : "New Helper Registration · 신규 헬퍼 등록"
-              : isKorean
-              ? "기존 헬퍼 로그인"
-              : "Helper Sign In · 기존 헬퍼 로그인"}
+              ? formatBilingual(
+                  t("tech.newHelperRegTitle"),
+                  "신규 헬퍼 등록 (3개월 보안 접속)",
+                )
+              : formatBilingual(
+                  t("tech.existingHelperLoginTitle"),
+                  "기존 헬퍼 로그인",
+                )}
           </span>
         </h2>
         <p className="mt-1 text-xs text-slate-400">
           {activeTab === "register"
-            ? isKorean
-              ? "주민등록번호 입력 없이, 이동전화번호 하나로 3개월간 자유롭게 활동하세요."
-              : "No ID numbers required. Register easily with mobile number & 3-month access key."
-            : isKorean
-            ? "발급받으신 3개월 전용 보안 코드를 입력하시면 별도의 인증 없이 바로 로그인됩니다."
-            : "Enter your 3-month dedicated access key to access your workspace directly."}
+            ? formatBilingual(
+                t("tech.newHelperRegDesc"),
+                "주민등록번호 입력 없이, 이동전화번호 하나로 3개월간 자유롭게 활동하세요.",
+              )
+            : formatBilingual(
+                t("tech.existingHelperLoginDesc"),
+                "발급받으신 3개월 전용 보안 코드를 입력하시면 별도의 인증 없이 바로 로그인됩니다.",
+              )}
         </p>
       </div>
 
@@ -238,9 +274,10 @@ export function HelperAuthCard({
           {/* 3-Month Dedicated Access Key Input */}
           <div>
             <label className="block text-xs font-bold uppercase text-slate-300">
-              {isKorean
-                ? "3개월 전용 보안 코드 (Access Key)"
-                : "3-Month Dedicated Access Key · 3개월 전용 보안 코드"}
+              {formatBilingual(
+                t("tech.accessKeyLabel"),
+                "3개월 전용 보안 코드 (Access Key)",
+              )}
             </label>
             <input
               type="text"
@@ -256,24 +293,29 @@ export function HelperAuthCard({
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-2xl bg-emerald-600 py-4 text-sm font-black text-white shadow-lg transition hover:bg-emerald-500 active:scale-98 disabled:opacity-50 flex flex-col items-center justify-center"
+            className="w-full rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 py-4 text-sm font-black text-white shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex flex-col items-center justify-center cursor-pointer border border-emerald-500/30"
           >
             {loading ? (
-              <span>{isKorean ? "로그인 검증 중..." : "Verifying..."}</span>
-            ) : isKorean ? (
-              "3개월 보안 코드로 로그인 (90일 유지) 🟢"
+              <span>{formatBilingual(t("tech.verifying"), "로그인 검증 중...")}</span>
             ) : (
-              <>
-                <span>Sign In with 90-Day Access Key 🟢</span>
-                <span className="text-xs font-normal text-emerald-200 mt-0.5">3개월 보안 코드로 로그인 (90일 유지)</span>
-              </>
+              <span>
+                {formatBilingual(
+                  t("tech.loginWithAccessKey"),
+                  "3개월 보안 코드로 로그인 (90일 유지)",
+                )}{" "}
+                🟢
+              </span>
             )}
           </button>
 
           {/* Explanatory Info Card */}
           <div className="rounded-xl border border-blue-900/40 bg-blue-950/20 p-3.5">
             <p className="text-[11px] leading-relaxed text-blue-300 font-medium">
-              💡 카카오톡 또는 문자로 발급받으신 <strong>3개월 전용 보안 코드</strong>를 입력하시면 별도의 본인인증 없이 즉시 헬퍼 워크스페이스에 접속하실 수 있습니다.
+              💡{" "}
+              {formatBilingual(
+                t("tech.loginKeyNotice"),
+                "카카오톡 또는 문자로 발급받으신 3개월 전용 보안 코드를 입력하시면 별도의 본인인증 없이 즉시 헬퍼 워크스페이스에 접속하실 수 있습니다.",
+              )}
             </p>
           </div>
 
@@ -287,14 +329,17 @@ export function HelperAuthCard({
               }}
               className="text-blue-400 hover:text-blue-300 font-bold"
             >
-              {isKorean ? "← 신규 헬퍼 등록 및 코드 발급" : "Register as New Helper"}
+              {formatBilingual(
+                t("tech.registerTab"),
+                "← 신규 헬퍼 등록 및 활동 신청",
+              )}
             </button>
             <button
               type="button"
               onClick={() => setShowPhoneReissue((prev) => !prev)}
               className="text-slate-400 hover:text-white underline font-medium"
             >
-              {isKorean ? "코드를 분실하셨나요?" : "Lost your code?"}
+              {formatBilingual(t("tech.lostCodeBtn"), "코드를 분실하셨나요?")}
             </button>
           </div>
 
@@ -302,7 +347,10 @@ export function HelperAuthCard({
           {showPhoneReissue && (
             <div className="rounded-2xl border border-slate-700 bg-slate-950/70 p-4 mt-2 space-y-2">
               <span className="text-[11px] font-bold text-slate-300 block">
-                {isKorean ? "이동전화번호로 3개월 코드 재발급" : "Re-issue Access Key via Phone"}
+                {formatBilingual(
+                  t("tech.reissueCodeTitle"),
+                  "이동전화번호로 3개월 코드 재발급",
+                )}
               </span>
               <div className="flex gap-2">
                 <input
@@ -316,9 +364,11 @@ export function HelperAuthCard({
                   type="button"
                   onClick={handleSendAccessKey}
                   disabled={loading}
-                  className="rounded-xl bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-500 shrink-0"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition shrink-0 cursor-pointer"
                 >
-                  {loading ? "발송 중..." : "코드 받기"}
+                  {loading
+                    ? formatBilingual(t("tech.verifying"), "발송 중...")
+                    : formatBilingual(t("tech.getCode"), "코드 받기")}
                 </button>
               </div>
               {accessKeyNotice && (
@@ -327,9 +377,11 @@ export function HelperAuthCard({
                   <button
                     type="button"
                     onClick={handleCopyKey}
-                    className="text-[11px] bg-emerald-600 text-white px-2.5 py-1 rounded-lg font-bold"
+                    className="text-[11px] bg-emerald-600 text-white px-2.5 py-1 rounded-lg font-bold hover:bg-emerald-700 active:scale-95 transition cursor-pointer shadow-2xs"
                   >
-                    {copiedToast ? "복사됨!" : "복사"}
+                    {copiedToast
+                      ? formatBilingual(t("tech.copied"), "복사됨!")
+                      : formatBilingual(t("tech.copy"), "복사")}
                   </button>
                 </div>
               )}
@@ -345,7 +397,7 @@ export function HelperAuthCard({
           {/* Phone Input */}
           <div>
             <label className="block text-xs font-bold uppercase text-slate-300">
-              {isKorean ? "이동전화번호 (휴대폰 번호)" : "Mobile Phone · 이동전화번호"}
+              {formatBilingual(t("tech.phoneLabel"), "이동전화번호 (휴대폰 번호)")}
             </label>
             <div className="mt-1.5 flex gap-2">
               <input
@@ -361,30 +413,33 @@ export function HelperAuthCard({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="shrink-0 rounded-xl bg-blue-600 px-4 sm:px-5 py-3.5 text-xs sm:text-sm font-extrabold text-white shadow-md transition hover:bg-blue-500 active:scale-98 disabled:opacity-50"
+                  className="shrink-0 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-4 sm:px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition disabled:opacity-50 cursor-pointer border border-blue-500/30"
                 >
                   {loading
-                    ? isKorean
-                      ? "발송 중..."
-                      : "Sending..."
-                    : isKorean
-                    ? "3개월 보안 접속 코드 받기"
-                    : "Get 3-Month Key"}
+                    ? formatBilingual(t("tech.verifying"), "발송 중...")
+                    : formatBilingual(
+                        t("tech.getAccessKeyBtn"),
+                        "3개월 보안 접속 코드 받기",
+                      )}
                 </button>
               ) : (
                 <button
                   type="button"
                   onClick={() => setCodeSent(false)}
-                  className="shrink-0 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-3.5 text-xs font-bold text-slate-300 hover:bg-slate-750 hover:text-white transition"
+                  className="shrink-0 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-3.5 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white shadow-2xs active:scale-[0.98] transition cursor-pointer"
                 >
-                  {isKorean ? "번호 변경" : "Change"}
+                  {formatBilingual(t("tech.changePhoneBtn"), "번호 변경")}
                 </button>
               )}
             </div>
             {!codeSent && (
               <div className="mt-2 rounded-xl border border-blue-900/40 bg-blue-950/20 p-3">
                 <p className="text-[11px] leading-relaxed text-blue-300 font-medium">
-                  💡 번호 입력 후 코드를 받으시면 <strong>3개월(90일) 동안</strong> 매번 번거로운 인증 없이 즉시 워크스페이스에 접속하실 수 있습니다.
+                  💡{" "}
+                  {formatBilingual(
+                    t("tech.securitySessionNotice"),
+                    "3개월 보안 세션 시스템: 이동전화번호 기반 무작위 90자 보안 암호키 발급",
+                  )}
                 </p>
               </div>
             )}
@@ -398,14 +453,22 @@ export function HelperAuthCard({
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400">
                     <span>💬</span>
-                    <span>카카오톡 알림톡 / SMS 발송 완료</span>
+                    <span>
+                      {formatBilingual(
+                        t("tech.keySentNotice"),
+                        "카카오톡 알림톡 / SMS 발송 완료",
+                      )}
+                    </span>
                   </span>
                   <span className="font-mono text-slate-300">{phone}</span>
                 </div>
 
                 <div className="mt-3 rounded-xl border border-emerald-600/50 bg-slate-900/95 p-3.5">
                   <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block mb-1">
-                    발급된 3개월 보안 접속 코드 (Access Key)
+                    {formatBilingual(
+                      t("tech.issuedAccessKey"),
+                      "발급된 3개월 보안 접속 코드 (Access Key)",
+                    )}
                   </span>
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-mono text-base sm:text-lg font-black tracking-wider text-white select-all">
@@ -416,7 +479,9 @@ export function HelperAuthCard({
                       onClick={handleCopyKey}
                       className="shrink-0 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-black text-white hover:bg-emerald-500 active:scale-95 transition shadow-sm"
                     >
-                      {copiedToast ? "✓ 복사됨!" : "📋 복사"}
+                      {copiedToast
+                        ? formatBilingual(t("tech.copied"), "복사됨!")
+                        : formatBilingual(t("tech.copy"), "복사")}
                     </button>
                   </div>
                 </div>
@@ -424,7 +489,9 @@ export function HelperAuthCard({
                 <p className="mt-2 text-[11px] text-emerald-300 flex items-center gap-1">
                   <span>📅</span>
                   <span>
-                    유효기간: <strong>{accessKeyNotice?.expiryFormatted}</strong>까지 (90일간 자동 로그인 유지)
+                    {formatBilingual(t("tech.securitySessionExpiry"), "보안 세션 만료일")}:{" "}
+                    <strong>{accessKeyNotice?.expiryFormatted}</strong> (
+                    {formatBilingual(t("tech.autoMaintainedDays"), "90일간 자동 로그인 유지")})
                   </span>
                 </p>
               </div>
@@ -432,9 +499,10 @@ export function HelperAuthCard({
               {/* Access Key Input */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-300">
-                  {isKorean
-                    ? "3개월 보안 접속 코드 (Access Key)"
-                    : "Security Access Key · 3개월 보안 접속 코드"}
+                  {formatBilingual(
+                    t("tech.accessKeyLabel"),
+                    "3개월 보안 접속 코드 (Access Key)",
+                  )}
                 </label>
                 <input
                   type="text"
@@ -449,14 +517,19 @@ export function HelperAuthCard({
               {/* Helper Name */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-300">
-                  {isKorean ? "헬퍼 성함 (활동명 또는 실명)" : "Helper Name · 성함"}
+                  {formatBilingual(
+                    t("tech.helperNameLabel"),
+                    "헬퍼 성함 (활동명 또는 실명)",
+                  )}
                 </label>
                 <input
                   type="text"
                   required
                   value={helperName}
                   onChange={(e) => setHelperName(e.target.value)}
-                  placeholder={isKorean ? "예: 홍길동 (익산 마스터)" : "e.g. Master Kim"}
+                  placeholder={
+                    isKorean ? "예: 홍길동 (익산 마스터)" : "e.g. Master Kim"
+                  }
                   className="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-800 p-3.5 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-blue-500"
                 />
               </div>
@@ -464,7 +537,7 @@ export function HelperAuthCard({
               {/* Preferred Region */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-300">
-                  {isKorean ? "주요 활동 지역" : "Primary Operating Region · 활동 지역"}
+                  {formatBilingual(t("tech.operatingRegions"), "활동 가능 지역")}
                 </label>
                 <input
                   type="text"
@@ -491,21 +564,27 @@ export function HelperAuthCard({
               <div>
                 <div className="flex items-center justify-between">
                   <label className="block text-xs font-bold uppercase text-slate-300">
-                    {isKorean ? "서비스 가능 분야 선택" : "Capable Services · 서비스 분야"}
+                    {formatBilingual(
+                      t("tech.selectServices"),
+                      "서비스 가능 분야 선택",
+                    )}
                   </label>
                   <span className="text-[11px] font-bold text-blue-400">
-                    {selectedServices.length}개 선택됨
+                    {selectedServices.length}
+                    {formatBilingual(t("tech.selectedCount"), "개 선택됨")}
                   </span>
                 </div>
                 <p className="mt-1 text-[11px] text-slate-400">
-                  {isKorean
-                    ? "출동 및 해결 가능한 분야를 모두 눌러 선택해 주세요. (추후 워크스페이스에서 변경 가능)"
-                    : "Select all categories you can service. Can be updated later."}
+                  {formatBilingual(
+                    t("tech.selectServicesDesc"),
+                    "출동 및 해결 가능한 분야를 모두 눌러 선택해 주세요. (추후 워크스페이스에서 변경 가능)",
+                  )}
                 </p>
 
                 <div className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {services.map((srv) => {
                     const isSelected = selectedServices.includes(srv.slug);
+                    const srvName = t(`services.${srv.slug}`) || srv.ko;
                     return (
                       <button
                         key={srv.slug}
@@ -519,7 +598,7 @@ export function HelperAuthCard({
                       >
                         <span className="text-lg">{srv.icon}</span>
                         <span className="truncate text-xs font-bold">
-                          {isKorean ? srv.ko : `${srv.ko} (${srv.slug})`}
+                          {formatBilingual(srvName, srv.ko)}
                         </span>
                         <span className="ml-auto text-xs font-bold text-blue-400">
                           {isSelected ? "✓" : "+"}
@@ -539,12 +618,9 @@ export function HelperAuthCard({
                   className="mt-0.5 rounded text-blue-600 focus:ring-0"
                 />
                 <span className="text-xs text-slate-300 leading-relaxed">
-                  {isKorean ? (
-                    <>
-                      <strong>LIFE.HELP 헬퍼 활동 규정 및 안전 수칙</strong>을 확인하였으며, 신속하고 친절한 고객 지원에 성실히 임할 것을 확약합니다. (주민등록번호 미수집)
-                    </>
-                  ) : (
-                    "I agree to the LIFE.HELP regulations and safety terms."
+                  {formatBilingual(
+                    t("tech.agreeTerms"),
+                    "LIFE.HELP 헬퍼 활동 규정 및 안전 수칙을 확인하였으며, 신속하고 친절한 고객 지원에 성실히 임할 것을 확약합니다. (주민등록번호 미수집)",
                   )}
                 </span>
               </label>
@@ -553,17 +629,18 @@ export function HelperAuthCard({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-2xl bg-blue-600 py-4 text-sm font-black text-white shadow-lg transition hover:bg-blue-500 active:scale-98 disabled:opacity-50 flex flex-col items-center justify-center"
+                className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-4 text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex flex-col items-center justify-center cursor-pointer border border-blue-500/30"
               >
                 {loading ? (
-                  <span>{isKorean ? "처리 중..." : "Processing..."}</span>
-                ) : isKorean ? (
-                  "3개월 보안 코드로 등록 및 활동 시작 🟢"
+                  <span>{formatBilingual(t("tech.verifying"), "처리 중...")}</span>
                 ) : (
-                  <>
-                    <span>Register & Start Service 🟢</span>
-                    <span className="text-xs font-normal text-blue-200 mt-0.5">3개월 보안 코드로 등록 및 활동 시작</span>
-                  </>
+                  <span>
+                    {formatBilingual(
+                      t("tech.registerAndStart"),
+                      "3개월 보안 코드로 등록 및 활동 시작",
+                    )}{" "}
+                    🟢
+                  </span>
                 )}
               </button>
             </>
