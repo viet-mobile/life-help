@@ -7,12 +7,14 @@ import React, {
   useEffect,
   useSyncExternalStore,
 } from "react";
+import { usePathname } from "next/navigation";
 import {
   type Locale,
   defaultLocale,
   detectDeviceLocale,
   isValidLocale,
   languages,
+  locales,
   type LanguageMeta,
   translate,
 } from "@/messages";
@@ -44,17 +46,90 @@ const LOCALE_CHANGE_EVENT = "life_help_locale_change";
 const DISPLAY_MODE_STORAGE_KEY = "life_help_display_mode";
 const DISPLAY_MODE_CHANGE_EVENT = "life_help_display_mode_change";
 
+/**
+ * Resolves a URL path's first segment into a valid supported Locale.
+ * Priority mappings:
+ *   /vi -> vi
+ *   /ko -> ko
+ *   /en -> en
+ *   /ja -> ja
+ *   /zt -> zh-Hant
+ *   /zs -> zh-Hans
+ *   /zh -> zh-Hans
+ * Also supports all 38 locales from messages.
+ */
+export function resolveLocaleFromPath(pathname?: string | null): Locale | null {
+  if (!pathname) return null;
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length === 0) return null;
+
+  const firstSegment = segments[0];
+  const lower = firstSegment.toLowerCase();
+
+  // Explicit mappings required by LIFE.HELP routing
+  if (lower === "zt") return "zh-Hant";
+  if (lower === "zs" || lower === "zh") return "zh-Hans";
+
+  // Check direct valid locale match
+  if (isValidLocale(firstSegment)) {
+    return firstSegment;
+  }
+
+  // Case-insensitive match against all supported locales in messages (e.g. zh-hans -> zh-Hans)
+  const matched = (locales as readonly string[]).find(
+    (l) => l.toLowerCase() === lower
+  );
+  if (matched && isValidLocale(matched)) {
+    return matched;
+  }
+
+  return null;
+}
+
 let cachedLocale: Locale | null = null;
+let lastKnownPathname: string | null = null;
 let cachedDisplayMode: DisplayMode | null = null;
 
 function getClientLocaleSnapshot(): Locale {
-  if (cachedLocale) return cachedLocale;
+  if (typeof window === "undefined") return defaultLocale;
+
+  const currentPath = window.location.pathname;
+  const urlLocale = resolveLocaleFromPath(currentPath);
+
+  // If the pathname changed (navigation or initial load)
+  if (currentPath !== lastKnownPathname) {
+    lastKnownPathname = currentPath;
+
+    // 1. If URL contains a valid language segment, URL language ALWAYS takes highest priority
+    if (urlLocale) {
+      cachedLocale = urlLocale;
+      return urlLocale;
+    } else {
+      // Path has no language prefix; reset URL-forced cache so localStorage/device locale is used
+      cachedLocale = null;
+    }
+  }
+
+  // If locale was explicitly selected via setLocale during this view, return cachedLocale
+  if (cachedLocale) {
+    return cachedLocale;
+  }
+
+  // 1 (Fallback for initial evaluation): If URL has language, use it
+  if (urlLocale) {
+    cachedLocale = urlLocale;
+    return urlLocale;
+  }
+
+  // 2. Otherwise check localStorage (existing behavior)
   try {
     const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
       cachedLocale = saved;
       return saved;
     }
+
+    // 3. Otherwise detect device locale (existing behavior)
     const detected = detectDeviceLocale();
     cachedLocale = detected;
     return detected;
@@ -88,8 +163,11 @@ function getServerDisplayModeSnapshot(): DisplayMode {
 function subscribeLocale(callback: () => void): () => void {
   const handleStorage = (e: StorageEvent) => {
     if (e.key === STORAGE_KEY) {
-      cachedLocale = null;
-      callback();
+      const currentUrlLocale = typeof window !== "undefined" ? resolveLocaleFromPath(window.location.pathname) : null;
+      if (!currentUrlLocale) {
+        cachedLocale = null;
+        callback();
+      }
     }
   };
 
@@ -99,10 +177,12 @@ function subscribeLocale(callback: () => void): () => void {
 
   window.addEventListener("storage", handleStorage);
   window.addEventListener(LOCALE_CHANGE_EVENT, handleCustom);
+  window.addEventListener("popstate", handleCustom);
 
   return () => {
     window.removeEventListener("storage", handleStorage);
     window.removeEventListener(LOCALE_CHANGE_EVENT, handleCustom);
+    window.removeEventListener("popstate", handleCustom);
   };
 }
 
@@ -128,6 +208,8 @@ function subscribeDisplayMode(callback: () => void): () => void {
 }
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   const locale = useSyncExternalStore(
     subscribeLocale,
     getClientLocaleSnapshot,
@@ -139,6 +221,11 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     getClientDisplayModeSnapshot,
     getServerDisplayModeSnapshot,
   );
+
+  // Sync client-side route changes with the locale external store
+  useEffect(() => {
+    window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
+  }, [pathname]);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
