@@ -212,42 +212,43 @@ async function main() {
   await saveVariants(russia512, "russia");
   console.log("   -> Russia created from authentic user image.");
 
-  console.log("3. Generating other country logos with matching full-width typography...");
+  console.log("3. Generating other country logos with matching full-width typography (장평 조정)...");
   for (const [slug, displayName] of Object.entries(COUNTRY_DISPLAY_NAMES)) {
     if (["korea", "japan", "china", "indonesia", "vietnam", "taiwan", "russia"].includes(slug)) {
       continue; // user authentic files
     }
 
-    const len = displayName.length;
-    let fontSize = 185;
-    if (len >= 13) {
-      fontSize = 115;
-    } else if (len >= 10) {
-      fontSize = 140;
-    } else if (len >= 8) {
-      fontSize = 165;
-    }
-
-    const svg = `
-      <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    // 1. Render text in SVG canvas
+    const svgText = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="3000" height="400">
         <text
-          x="180"
-          y="330"
+          x="50"
+          y="260"
           fill="#0b1e4c"
           font-family="Impact, 'Arial Black', sans-serif"
-          font-size="${fontSize}"
+          font-size="200"
           font-weight="900"
-          textLength="678"
-          lengthAdjust="spacingAndGlyphs"
         >${displayName}</text>
       </svg>
     `;
 
+    // 2. Trim text to its exact glyph boundaries
+    const trimmed = await sharp(Buffer.from(svgText))
+      .trim()
+      .toBuffer();
+
+    // 3. Stretch/scale horizontally (장평) to exactly 678px (matching width of LIFE HELP below), height 142px
+    const textStretched = await sharp(trimmed)
+      .resize(678, 142, { fit: "fill" })
+      .toBuffer();
+
+    // 4. Composite onto base image at x=180, y=161
     const compositeBuf = await sharp(USER_LOGOS.base)
-      .composite([{ input: Buffer.from(svg), top: 0, left: 0 }])
+      .composite([{ input: textStretched, left: 180, top: 161 }])
       .png()
       .toBuffer();
 
+    // 5. Extract 790x790 square and resize to 512x512
     const country512 = await sharp(compositeBuf)
       .extract({ left: 124, top: 119, width: 790, height: 790 })
       .resize(512, 512)
@@ -255,7 +256,7 @@ async function main() {
       .toBuffer();
 
     await saveVariants(country512, slug);
-    console.log(`   -> ${displayName} (${slug}) created.`);
+    console.log(`   -> ${displayName} (${slug}) created with full-width justified typography.`);
   }
 
   console.log("All logos generated successfully!");
