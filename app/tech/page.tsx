@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/shared/Button";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useHelper } from "@/lib/helper/HelperContext";
 import { navigateToMainHome } from "@/lib/navigation";
@@ -20,23 +21,23 @@ export default function TechPage() {
   return (
     <main className="min-h-screen bg-slate-950 p-4 sm:p-6 text-white flex flex-col justify-between">
       {/* Navigation Header */}
-      <header className="mx-auto flex w-full max-w-5xl items-center justify-between py-3 font-extrabold border-b border-slate-800/80">
-        <div className="flex items-center gap-3">
+      <header className="mx-auto flex w-full max-w-5xl items-center justify-between py-2 sm:py-3 font-extrabold border-b border-slate-800/80 gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           <Link
             href="/"
             onClick={navigateToMainHome}
-            className="text-xl text-blue-400 hover:text-blue-300 transition flex items-center gap-2 group cursor-pointer"
+            className="text-lg sm:text-xl text-blue-400 hover:text-blue-300 transition flex items-center gap-1.5 sm:gap-2 group cursor-pointer shrink-0"
             title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
           >
-            <span>LIFE.HELP</span>
-            <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-xs font-bold text-white border border-blue-700/50 group-hover:bg-blue-800 transition">
+            <BrandLogo size="md" priority />
+            <span className="rounded-md bg-blue-900/60 px-1.5 py-0.5 text-[10px] sm:text-xs font-bold text-white border border-blue-700/50 group-hover:bg-blue-800 transition shrink-0">
               {formatBilingual(t("tech.helper"), "헬퍼")}
             </span>
           </Link>
           <Link
             href="/"
             onClick={navigateToMainHome}
-            className="hidden sm:inline-flex items-center gap-1 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-bold text-slate-300 hover:border-blue-500 hover:text-white transition cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-bold text-slate-300 hover:border-blue-500 hover:text-white transition cursor-pointer shrink-0"
             title={formatBilingual(t("common.home"), "홈")}
           >
             <span>🏠</span>
@@ -44,18 +45,20 @@ export default function TechPage() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           <LanguageSwitcher />
           {isLoggedIn ? (
             <Link href="/tech/workspace">
-              <Button variant="primary" className="text-xs sm:text-sm py-2 px-3.5">
-                {formatBilingual(t("tech.openWorkspaceBtn"), "내 워크스페이스 관리하기")} →
+              <Button variant="primary" className="text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
+                <span className="sm:hidden">{t("tech.workspace") || "워크스페이스"} →</span>
+                <span className="hidden sm:inline">{formatBilingual(t("tech.openWorkspaceBtn"), "내 워크스페이스 관리하기")} →</span>
               </Button>
             </Link>
           ) : (
             <Link href="/tech/login">
-              <Button variant="secondary" className="text-xs sm:text-sm py-2 px-3.5">
-                {formatBilingual(t("tech.helperLogin"), "헬퍼 로그인")}
+              <Button variant="secondary" className="text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
+                <span className="sm:hidden">{t("tech.login") || "로그인"}</span>
+                <span className="hidden sm:inline">{formatBilingual(t("tech.helperLogin"), "헬퍼 로그인")}</span>
               </Button>
             </Link>
           )}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { login, signup } from "./actions";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { navigateToMainHome } from "@/lib/navigation";
 
 interface LoginFormProps {
@@ -25,9 +26,9 @@ export function LoginForm({ message, error }: LoginFormProps) {
         <Link
           href="/"
           onClick={navigateToMainHome}
-          className="text-2xl font-black tracking-tight text-blue-800 hover:opacity-85 transition cursor-pointer"
+          className="inline-flex items-center justify-center hover:opacity-85 transition cursor-pointer"
         >
-          LIFE.HELP
+          <BrandLogo size="lg" priority />
         </Link>
         <h2 className="mt-4 text-xl font-black tracking-tight text-slate-900">
           {formatBilingual(t("login.title"), "로그인 및 회원가입")}

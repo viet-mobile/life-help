@@ -5,6 +5,7 @@ import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { getService, services } from "@/lib/services";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
@@ -68,9 +69,9 @@ function RequestPageContent() {
     return (
       <main className="min-h-screen bg-slate-50">
         <header className="border-b border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
-            <Link href="/" className="font-extrabold text-blue-700 text-lg sm:text-xl">
-              LIFE.HELP
+          <div className="mx-auto flex max-w-3xl items-center justify-between px-3 py-2.5 sm:px-5 sm:py-4 gap-2">
+            <Link href="/" className="inline-flex items-center shrink-0" title="LIFE.HELP Home">
+              <BrandLogo size="md" priority />
             </Link>
             <LanguageSwitcher />
           </div>
@@ -126,19 +127,19 @@ function RequestPageContent() {
   return (
     <main className="min-h-screen bg-slate-50">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="font-extrabold text-blue-700 text-lg sm:text-xl">
-              LIFE.HELP
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-3 py-2.5 sm:px-5 sm:py-4 gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+            <Link href="/" className="inline-flex items-center shrink-0" title="LIFE.HELP Home">
+              <BrandLogo size="md" priority />
             </Link>
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700 max-w-[90px] sm:max-w-none"
             >
-              <span>📍</span>
-              <span className="max-w-[120px] truncate sm:max-w-none">{shortRegionText}</span>
-              <span className="text-[9px] text-slate-400">▾</span>
+              <span className="shrink-0">📍</span>
+              <span className="truncate">{shortRegionText}</span>
+              <span className="text-[9px] text-slate-400 shrink-0">▾</span>
             </button>
           </div>
           <LanguageSwitcher />

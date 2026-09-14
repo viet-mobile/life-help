@@ -3,17 +3,39 @@ import { headers } from "next/headers";
 import "./globals.css";
 import { LocaleProvider } from "@/lib/i18n/LocaleContext";
 import { RegionProvider } from "@/lib/region/RegionContext";
-import { getSiteMetadata, resolveLanguageFromHeaders } from "@/lib/i18n/siteMetadata";
+import { CountryProvider } from "@/lib/country/CountryContext";
+import {
+  getSiteMetadata,
+  getPortalMetadata,
+  resolveLanguageFromHeaders,
+  resolvePortalFromHeaders,
+  resolveCountryFromHeaders,
+  getIconMetadata,
+} from "@/lib/i18n/siteMetadata";
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
   const lang = resolveLanguageFromHeaders(headersList);
-  return getSiteMetadata(lang);
+  const portal = resolvePortalFromHeaders(headersList);
+  const country = resolveCountryFromHeaders(headersList);
+
+  const baseMeta =
+    portal === "chat" || portal === "tech" || portal === "sys"
+      ? getPortalMetadata(portal, lang)
+      : getSiteMetadata(lang);
+
+  const icons = getIconMetadata(country);
+
+  return {
+    ...baseMeta,
+    icons,
+  };
 }
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const headersList = await headers();
   const lang = resolveLanguageFromHeaders(headersList);
+  const country = resolveCountryFromHeaders(headersList);
 
   return (
     <html lang={lang}>
@@ -22,9 +44,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
-        <LocaleProvider>
-          <RegionProvider>{children}</RegionProvider>
-        </LocaleProvider>
+        <CountryProvider initialCountry={country}>
+          <LocaleProvider>
+            <RegionProvider initialCountry={country}>{children}</RegionProvider>
+          </LocaleProvider>
+        </CountryProvider>
       </body>
     </html>
   );

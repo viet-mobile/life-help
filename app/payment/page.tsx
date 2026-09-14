@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 
@@ -23,17 +24,17 @@ export default function PaymentPage() {
     <main className="min-h-screen bg-slate-50 flex flex-col justify-between">
       {/* Header Navigation */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-xs">
-        <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-5 py-3.5">
+        <div className="mx-auto flex max-w-4xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-5 sm:py-3.5">
           <Link
             href="/"
             onClick={navigateToMainHome}
-            className="text-xl font-extrabold tracking-tight text-blue-800 hover:opacity-80 transition cursor-pointer"
+            className="inline-flex items-center shrink-0 hover:opacity-80 transition cursor-pointer"
             title={t("payment.backHome")}
           >
-            LIFE.HELP
+            <BrandLogo size="md" priority />
           </Link>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <Link
               href="/chat"
               className="rounded-xl border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] hidden sm:inline-block cursor-pointer"

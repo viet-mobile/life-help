@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useHelper } from "@/lib/helper/HelperContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { HelperAuthCard } from "@/components/tech/HelperAuthCard";
@@ -32,7 +33,7 @@ export default function TechLoginPage() {
           className="text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer flex items-center gap-2"
           title="LIFE.HELP 메인 홈으로 이동"
         >
-          <span>LIFE.HELP</span>
+          <BrandLogo size="md" priority />
           <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-xs font-bold text-white border border-blue-700/50">
             {formatBilingual(t("tech.helperPortal"), "헬퍼 포털")}
           </span>

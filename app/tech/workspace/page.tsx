@@ -7,6 +7,7 @@ import { useHelper } from "@/lib/helper/HelperContext";
 import { services } from "@/lib/services";
 import { koreanRegions } from "@/lib/region/regions";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { HelperCalendar } from "@/components/tech/HelperCalendar";
@@ -275,25 +276,27 @@ export default function TechWorkspacePage() {
     <main className="min-h-screen bg-slate-950 px-4 py-8 text-white">
       <div className="mx-auto max-w-4xl space-y-6">
         {/* Top Brand Navigation */}
-        <div className="flex items-center justify-between pb-1">
+        <div className="flex items-center justify-between pb-1 gap-2">
           <Link
             href="/"
             onClick={navigateToMainHome}
-            className="text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer"
+            className="inline-flex items-center gap-2 text-base sm:text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer shrink-0"
             title="LIFE.HELP"
           >
-            LIFE.HELP <span className="text-white">{t("workspace.title")}</span>
+            <BrandLogo size="md" priority />
+            <span className="text-white text-xs sm:text-base font-bold">{t("workspace.title")}</span>
           </Link>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               type="button"
               onClick={handleOpenAdminChat}
-              className="relative inline-flex items-center gap-1.5 rounded-xl border border-blue-600/60 bg-blue-950/70 px-3 py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition"
+              className="relative inline-flex items-center gap-1 sm:gap-1.5 rounded-xl border border-blue-600/60 bg-blue-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition shrink-0"
               title={formatBilingual(t("workspace.adminChatTitle"), "본사 관리자 1:1 온라인 연락")}
             >
-              <span>💬 {formatBilingual(t("workspace.adminChat"), "본사 관리자 연락")}</span>
+              <span className="sm:hidden">💬 {t("workspace.adminChatShort") || "관리자"}</span>
+              <span className="hidden sm:inline">💬 {formatBilingual(t("workspace.adminChat"), "본사 관리자 연락")}</span>
               {unreadAdminCount > 0 && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-black text-white animate-pulse">
+                <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-rose-600 text-[9px] sm:text-[10px] font-black text-white animate-pulse">
                   {unreadAdminCount}
                 </span>
               )}
@@ -301,7 +304,7 @@ export default function TechWorkspacePage() {
             <Link
               href="/"
               onClick={navigateToMainHome}
-              className="text-xs font-semibold text-slate-400 hover:text-white transition cursor-pointer"
+              className="text-xs font-semibold text-slate-400 hover:text-white transition cursor-pointer shrink-0"
             >
               {t("workspace.mainHome")}
             </Link>

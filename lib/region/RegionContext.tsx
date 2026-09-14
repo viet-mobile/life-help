@@ -4,6 +4,7 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   useSyncExternalStore,
@@ -11,7 +12,10 @@ import React, {
 import {
   type RegionItem,
   defaultRegion,
+  DEFAULT_COUNTRY_REGIONS,
+  COUNTRY_SLUG_TO_CODE,
 } from "./regions";
+import { resolveCountryFromHost } from "@/lib/country/CountryContext";
 import {
   type CountryCode,
   COUNTRIES,
@@ -48,56 +52,91 @@ const REGION_CHANGE_EVENT = "life_help_region_change";
 
 let cachedRegion: RegionItem | null = null;
 
-function getClientRegionSnapshot(): RegionItem {
-  if (cachedRegion) return cachedRegion;
+export function getDomainCountryCode(initialCountry?: string | null): CountryCode {
+  if (typeof window !== "undefined") {
+    const params = new URLSearchParams(window.location.search);
+    const qCountry = params.get("country")?.toLowerCase();
+    if (qCountry && COUNTRY_SLUG_TO_CODE[qCountry]) {
+      return COUNTRY_SLUG_TO_CODE[qCountry];
+    }
+    const hostCountry = resolveCountryFromHost(window.location.hostname)?.toLowerCase();
+    if (hostCountry && COUNTRY_SLUG_TO_CODE[hostCountry]) {
+      return COUNTRY_SLUG_TO_CODE[hostCountry];
+    }
+  }
+  const slug = initialCountry?.toLowerCase();
+  if (slug && COUNTRY_SLUG_TO_CODE[slug]) {
+    return COUNTRY_SLUG_TO_CODE[slug];
+  }
+  return "KR";
+}
+
+function getClientRegionSnapshot(domainCountry: CountryCode): RegionItem {
+  const fallback = DEFAULT_COUNTRY_REGIONS[domainCountry] || defaultRegion;
+  if (cachedRegion && cachedRegion.country === domainCountry) return cachedRegion;
   try {
+    const countrySaved = localStorage.getItem(`${REGION_STORAGE_KEY}_${domainCountry}`);
+    if (countrySaved) {
+      const parsed = JSON.parse(countrySaved);
+      if (parsed.sido && parsed.gungu && parsed.dong) {
+        cachedRegion = parsed;
+        return parsed;
+      }
+    }
     const saved = localStorage.getItem(REGION_STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
       if (parsed.sido && parsed.gungu && parsed.dong) {
-        if (!parsed.country) parsed.country = "KR";
-        cachedRegion = parsed;
-        return parsed;
+        const c = parsed.country || "KR";
+        if (c === domainCountry) {
+          cachedRegion = parsed;
+          return parsed;
+        }
       }
     }
   } catch {
     // ignore
   }
-  cachedRegion = defaultRegion;
-  return defaultRegion;
+  cachedRegion = fallback;
+  return fallback;
 }
 
-function getServerRegionSnapshot(): RegionItem {
-  return defaultRegion;
-}
-
-function subscribe(callback: () => void): () => void {
-  const handleStorage = (e: StorageEvent) => {
-    if (e.key === REGION_STORAGE_KEY) {
-      cachedRegion = null;
-      callback();
-    }
-  };
-
-  const handleCustom = () => {
-    callback();
-  };
-
-  window.addEventListener("storage", handleStorage);
-  window.addEventListener(REGION_CHANGE_EVENT, handleCustom);
-
-  return () => {
-    window.removeEventListener("storage", handleStorage);
-    window.removeEventListener(REGION_CHANGE_EVENT, handleCustom);
-  };
-}
-
-export function RegionProvider({ children }: { children: React.ReactNode }) {
-  const selectedRegion = useSyncExternalStore(
-    subscribe,
-    getClientRegionSnapshot,
-    getServerRegionSnapshot,
+export function RegionProvider({
+  children,
+  initialCountry,
+}: {
+  children: React.ReactNode;
+  initialCountry?: string | null;
+}) {
+  const domainCountryCode = useMemo(
+    () => getDomainCountryCode(initialCountry),
+    [initialCountry]
   );
+  const fallbackRegion = DEFAULT_COUNTRY_REGIONS[domainCountryCode] || defaultRegion;
+
+  const [selectedRegion, setSelectedRegion] = useState<RegionItem>(fallbackRegion);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const active = getDomainCountryCode(initialCountry);
+    const region = getClientRegionSnapshot(active);
+    setSelectedRegion(region);
+  }, [initialCountry]);
+
+  useEffect(() => {
+    const handleStorage = () => {
+      const active = getDomainCountryCode(initialCountry);
+      const region = getClientRegionSnapshot(active);
+      setSelectedRegion(region);
+    };
+
+    window.addEventListener("storage", handleStorage);
+    window.addEventListener(REGION_CHANGE_EVENT, handleStorage);
+    return () => {
+      window.removeEventListener("storage", handleStorage);
+      window.removeEventListener(REGION_CHANGE_EVENT, handleStorage);
+    };
+  }, [initialCountry]);
 
   const { locale, isBilingual } = useLocale();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -107,8 +146,12 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
 
   const setRegion = useCallback((newRegion: RegionItem) => {
     cachedRegion = newRegion;
+    setSelectedRegion(newRegion);
     try {
       localStorage.setItem(REGION_STORAGE_KEY, JSON.stringify(newRegion));
+      if (newRegion.country) {
+        localStorage.setItem(`${REGION_STORAGE_KEY}_${newRegion.country}`, JSON.stringify(newRegion));
+      }
       window.dispatchEvent(new Event(REGION_CHANGE_EVENT));
     } catch {
       // ignore
@@ -135,6 +178,7 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
         isOpen={isModalOpen}
         onClose={closeModal}
         currentRegion={selectedRegion}
+        domainCountryCode={domainCountryCode}
         onSelect={(r) => {
           setRegion(r);
           closeModal();
@@ -171,32 +215,45 @@ function RegionSelectorModal({
   isOpen,
   onClose,
   currentRegion,
+  domainCountryCode,
   onSelect,
 }: {
   isOpen: boolean;
   onClose: () => void;
   currentRegion: RegionItem;
+  domainCountryCode: CountryCode;
   onSelect: (region: RegionItem) => void;
 }) {
   const { locale, isBilingual } = useLocale();
 
-  const [country, setCountry] = useState<CountryCode>(currentRegion.country || "KR");
+  const [country, setCountry] = useState<CountryCode>(() => {
+    return currentRegion.country || domainCountryCode || "KR";
+  });
   const [sido, setSido] = useState<string>(currentRegion.sido);
   const [gungu, setGungu] = useState<string>(currentRegion.gungu);
   const [dong, setDong] = useState<string>(currentRegion.dong);
   const [customDong, setCustomDong] = useState<string>("");
 
-  // Sync state with currentRegion when modal opens
+  // Sync state with currentRegion & domainCountryCode when modal opens
   React.useEffect(() => {
     if (isOpen) {
-      const initialCountry = currentRegion.country || "KR";
+      const initialCountry =
+        currentRegion.country || domainCountryCode || "KR";
       setCountry(initialCountry);
-      setSido(currentRegion.sido);
-      setGungu(currentRegion.gungu);
-      setDong(currentRegion.dong);
+
+      if (currentRegion.country === initialCountry && currentRegion.sido) {
+        setSido(currentRegion.sido);
+        setGungu(currentRegion.gungu);
+        setDong(currentRegion.dong);
+      } else {
+        const def = DEFAULT_COUNTRY_REGIONS[initialCountry] || defaultRegion;
+        setSido(def.sido);
+        setGungu(def.gungu);
+        setDong(def.dong);
+      }
       setCustomDong("");
     }
-  }, [isOpen, currentRegion]);
+  }, [isOpen, currentRegion, domainCountryCode]);
 
   const countryInfo = useMemo(() => getCountryInfo(country), [country]);
   const sidoList = useMemo(() => getLocalizedSidoList(locale, isBilingual, country), [locale, isBilingual, country]);

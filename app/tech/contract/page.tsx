@@ -7,6 +7,7 @@ import { useHelper, type HelperRegionItem } from "@/lib/helper/HelperContext";
 import { services } from "@/lib/services";
 import { koreanRegions } from "@/lib/region/regions";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
@@ -169,10 +170,11 @@ export default function TechContractPage() {
           <Link
             href="/"
             onClick={navigateToMainHome}
-            className="text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer"
+            className="inline-flex items-center gap-2 text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer"
             title="LIFE.HELP 메인 홈으로 이동"
           >
-            LIFE.HELP <span className="text-white">{isKorean ? "헬퍼 전자계약" : "HELPER CONTRACT"}</span>
+            <BrandLogo size="md" priority />
+            <span className="text-white text-sm sm:text-base font-bold">{isKorean ? "헬퍼 전자계약" : "HELPER CONTRACT"}</span>
           </Link>
           <LanguageSwitcher />
         </div>

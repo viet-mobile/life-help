@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Card } from "@/components/shared/Card";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
@@ -36,33 +37,37 @@ export function CustomerHome() {
   return (
     <main className="min-h-screen bg-slate-50">
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-xs">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
-          <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/" className="text-xl font-extrabold tracking-tight text-blue-800">
-              LIFE.HELP
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-4 sm:px-5 sm:py-3.5">
+          <div className="flex items-center gap-1.5 sm:gap-4 shrink-0 min-w-0">
+            <Link
+              href="/"
+              className="inline-flex items-center shrink-0"
+              title="LIFE.HELP Home"
+            >
+              <BrandLogo size="md" priority />
             </Link>
 
             {/* Region quick badge in header */}
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/70 px-3 py-1 text-xs font-bold text-blue-900 transition hover:bg-blue-100"
+              className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50/70 px-2 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-blue-900 transition hover:bg-blue-100 max-w-[90px] sm:max-w-none"
               title={formatBilingual(getRegionUIText("changeLocation", locale, isBilingual), "지역 변경")}
             >
-              <span>📍</span>
-              <span>{shortRegionText}</span>
-              <span className="text-blue-500">▾</span>
+              <span className="shrink-0">📍</span>
+              <span className="truncate">{shortRegionText}</span>
+              <span className="text-blue-500 text-[10px] shrink-0">▾</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {/* Live Chat Link in Header */}
             <Link
               href="/chat"
-              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition"
+              className="inline-flex items-center gap-1 rounded-xl border border-indigo-200 bg-indigo-50 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition shrink-0"
               title={formatBilingual(t("common.nativeConsultationCenter"), "모국어 실시간 상담 센터")}
             >
-              <span>💬</span>
+              <span className="shrink-0">💬</span>
               <span className="hidden sm:inline">
                 {formatBilingual(t("common.nativeConsultation"), "모국어 상담")}
               </span>
@@ -70,7 +75,7 @@ export function CustomerHome() {
 
             <Link
               href="/request"
-              className="hidden rounded-xl bg-blue-50 px-3.5 py-1.5 text-center text-blue-700 hover:bg-blue-100 sm:inline-flex sm:flex-col sm:items-center font-bold transition"
+              className="hidden rounded-xl bg-blue-50 px-3.5 py-1.5 text-center text-blue-700 hover:bg-blue-100 md:inline-flex md:flex-col md:items-center font-bold transition shrink-0"
             >
               {isBilingual ? (
                 <>

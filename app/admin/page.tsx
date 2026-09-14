@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import {
   getRegisteredHelpers,
@@ -328,17 +329,15 @@ export default function AdminPage() {
     <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       {/* Top System Admin Brand Bar */}
       <header className="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-30 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 sm:px-6 sm:py-3 gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               href="/admin"
-              className="flex items-center gap-2 text-lg font-black tracking-tight text-white hover:text-blue-400 transition"
+              className="flex items-center gap-2 text-base sm:text-lg font-black tracking-tight text-white hover:text-blue-400 transition shrink-0"
               title={t("admin.brandTitle")}
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white shadow-md">
-                HQ
-              </span>
-              <span>LIFE.HELP HQ</span>
+              <BrandLogo size="md" priority />
+              <span className="font-black text-white text-base sm:text-lg">HQ</span>
             </Link>
             <span className="rounded-md bg-blue-950/80 px-2 py-0.5 text-[11px] font-extrabold text-blue-300 border border-blue-800/60 hidden sm:inline-block">
               {t("admin.brandTitle")}
@@ -351,13 +350,14 @@ export default function AdminPage() {
           </div>
 
           {/* Quick Nav */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             <Link
               href="/"
-              className="rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-1.5 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
+              className="rounded-xl border border-slate-700 bg-slate-800 px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer shrink-0"
               title={t("admin.mainHome")}
             >
-              🏠 {t("admin.mainHome")}
+              <span>🏠</span>
+              <span className="hidden sm:inline"> {t("admin.mainHome")}</span>
             </Link>
             <Link
               href="/tech/workspace"
@@ -377,7 +377,7 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-xl border border-rose-800/70 bg-rose-950/50 px-3.5 py-1.5 text-xs font-bold text-rose-300 hover:bg-rose-900 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer flex items-center gap-1.5"
+              className="rounded-xl border border-rose-800/70 bg-rose-950/50 px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 text-xs font-bold text-rose-300 hover:bg-rose-900 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer flex items-center gap-1 shrink-0"
               title={t("admin.logout")}
             >
               <span>🚪</span>

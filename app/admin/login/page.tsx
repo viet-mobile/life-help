@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { adminLogin, isAdminLoggedIn } from "@/lib/auth/adminAuth";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 
 export default function AdminLoginPage() {
@@ -51,10 +52,8 @@ export default function AdminLoginPage() {
           href="/"
           className="flex items-center gap-2 text-lg font-black tracking-tight text-white hover:text-blue-400 transition"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-xs font-black text-white shadow-xs">
-            HQ
-          </span>
-          <span>LIFE.HELP HQ</span>
+          <BrandLogo size="md" priority />
+          <span className="font-black text-white text-base sm:text-lg">HQ</span>
         </Link>
         <LanguageSwitcher />
       </header>

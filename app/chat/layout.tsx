@@ -1,11 +1,24 @@
+import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { ChatProvider } from "@/lib/chat/ChatContext";
+import {
+  getPortalMetadata,
+  resolveLanguageFromHeaders,
+  resolveCountryFromHeaders,
+  getIconMetadata,
+} from "@/lib/i18n/siteMetadata";
 
-export const metadata = {
-  title: "LIFE.HELP CHAT | 모국어 실시간 상담 센터",
-  description: "한국 생활의 모든 고민을 모국어로 전문 상담원과 실시간 상담하세요.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const lang = resolveLanguageFromHeaders(headersList);
+  const country = resolveCountryFromHeaders(headersList);
+  const portalMeta = getPortalMetadata("chat", lang);
+  return {
+    ...portalMeta,
+    icons: getIconMetadata(country),
+  };
+}
 
 export default function ChatLayout({ children }: { children: React.ReactNode }) {
   return <ChatProvider>{children}</ChatProvider>;
 }
-

@@ -31,6 +31,61 @@ export const defaultRegion: RegionItem = {
   dong: "신동",
 };
 
+export const COUNTRY_SLUG_TO_CODE: Record<string, CountryCode> = {
+  korea: "KR",
+  vietnam: "VN",
+  japan: "JP",
+  china: "CN",
+  taiwan: "TW",
+  indonesia: "ID",
+  philippines: "PH",
+};
+
+export const DEFAULT_COUNTRY_REGIONS: Record<CountryCode, RegionItem> = {
+  KR: {
+    country: "KR",
+    sido: "전북특별자치도",
+    gungu: "익산시",
+    dong: "신동",
+  },
+  VN: {
+    country: "VN",
+    sido: "Thành phố Hồ Chí Minh",
+    gungu: "Quận 1",
+    dong: "Bến Nghé",
+  },
+  JP: {
+    country: "JP",
+    sido: "東京都",
+    gungu: "新宿区",
+    dong: "西新宿",
+  },
+  CN: {
+    country: "CN",
+    sido: "北京市",
+    gungu: "朝阳区",
+    dong: "三里屯街道",
+  },
+  TW: {
+    country: "TW",
+    sido: "臺北市",
+    gungu: "信義區",
+    dong: "西村里",
+  },
+  ID: {
+    country: "ID",
+    sido: "DKI Jakarta",
+    gungu: "Jakarta Selatan",
+    dong: "Senayan",
+  },
+  PH: {
+    country: "PH",
+    sido: "Metro Manila",
+    gungu: "Makati",
+    dong: "Bel-Air",
+  },
+};
+
 export const koreanRegions: SidoData[] = [
 
   {

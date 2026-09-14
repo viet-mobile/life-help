@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useChat } from "@/lib/chat/ChatContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { languages, type Locale } from "@/messages";
 import { navigateToMainHome } from "@/lib/navigation";
 import {
@@ -262,8 +263,8 @@ export default function CounselorPortalPage() {
             className="inline-flex items-center gap-2 text-xl font-black text-indigo-700 hover:opacity-80 transition cursor-pointer"
             title="LIFE.HELP"
           >
-            <span>🎧</span>
-            <span>LIFE.HELP {t("chat.counselorPortal")}</span>
+            <BrandLogo size="md" priority />
+            <span className="text-slate-900">{t("chat.counselorPortal")}</span>
           </Link>
           <LanguageSwitcher locale={locale} onChange={setLocale} />
         </header>
@@ -638,8 +639,8 @@ export default function CounselorPortalPage() {
               className="flex items-center gap-2 text-lg font-black text-indigo-700 hover:opacity-80 transition cursor-pointer"
               title="LIFE.HELP"
             >
-              <span>🎧</span>
-              <span>LIFE.HELP {t("chat.workstationTitle")}</span>
+              <BrandLogo size="md" priority />
+              <span className="text-slate-900">{t("chat.workstationTitle")}</span>
             </Link>
             <div className="hidden sm:flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1 text-xs">
               <span className="font-bold text-slate-700">

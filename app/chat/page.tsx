@@ -6,6 +6,7 @@ import { useChat } from "@/lib/chat/ChatContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { BrandLogo } from "@/components/shared/BrandLogo";
 import { languages, type Locale } from "@/messages";
 import { navigateToMainHome } from "@/lib/navigation";
 import { formatCounselorName } from "@/lib/chat/counselorFormat";
@@ -68,33 +69,34 @@ export default function CustomerChatPage() {
     <main className="min-h-screen bg-slate-50 flex flex-col">
       {/* Top Header */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-30 shadow-xs">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3.5">
-          <div className="flex items-center gap-4">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-4 sm:px-4 sm:py-3.5">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0 min-w-0">
             <Link
               href="/"
               onClick={navigateToMainHome}
-              className="flex items-center gap-2 text-xl font-extrabold text-blue-800 hover:opacity-80 transition cursor-pointer"
+              className="flex items-center gap-1.5 sm:gap-2 text-base sm:text-xl font-extrabold text-blue-800 hover:opacity-80 transition cursor-pointer shrink-0"
               title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
             >
-              <span>💬</span>
-              <span>LIFE.HELP CHAT</span>
+              <BrandLogo size="md" priority />
+              <span className="rounded-md bg-blue-100 text-blue-800 px-1.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0">CHAT</span>
             </Link>
             <button
               type="button"
               onClick={openModal}
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-blue-50"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-blue-50 shrink-0"
             >
               <span>📍 {shortRegionText}</span>
               <span className="text-[10px] text-slate-400">▾</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <Link
               href="/chat/counselor"
-              className="rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition"
+              className="rounded-xl border border-indigo-200 bg-indigo-50 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition shrink-0"
             >
-              🎧 {formatBilingual(t("chat.counselorPortal"), "상담원 포털")}
+              <span className="sm:hidden">🎧 {t("chat.counselor") || "상담원"}</span>
+              <span className="hidden sm:inline">🎧 {formatBilingual(t("chat.counselorPortal"), "상담원 포털")}</span>
             </Link>
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>

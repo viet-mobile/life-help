@@ -171,7 +171,13 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
 };
 
 function getHost(request: NextRequest) {
-  return (request.headers.get("host") ?? "").split(":")[0].toLowerCase();
+  return (
+    request.headers.get("x-forwarded-host") ??
+    request.headers.get("host") ??
+    ""
+  )
+    .split(":")[0]
+    .toLowerCase();
 }
 
 /**
@@ -246,155 +252,38 @@ function buildInternalPath(
   const portal = getPortalFromHost(host);
   const country = getCountryFromHost(host);
 
-  /**
-   * Global system
-   *
-   * sys.life.help
-   * → /admin
-   */
-  if (portal === "sys" && host === "sys.life.help") {
-    if (pathname === "/") {
-      return {
-        pathname: "/admin",
-        country: null,
-        language: null,
-      };
-    }
-
-    if (pathname === "/login") {
-      return {
-        pathname: "/admin/login",
-        country: null,
-        language: null,
-      };
-    }
-  }
-
-  /**
-   * Country system
-   *
-   * sys.korea.life.help
-   * → /admin
-   */
-  if (portal === "sys" && country) {
-    if (pathname === "/") {
-      return {
-        pathname: "/admin",
-        country,
-        language: null,
-      };
-    }
-
-    if (pathname === "/login") {
-      return {
-        pathname: "/admin/login",
-        country,
-        language: null,
-      };
-    }
-
-    if (pathname.startsWith("/admin")) {
-      return {
-        pathname,
-        country,
-        language: null,
-      };
-    }
-
-    return {
-      pathname: `/admin${pathname}`,
-      country,
-      language: null,
-    };
-  }
-
-  /**
-   * Technician portal
-   *
-   * tech.korea.life.help
-   * → /tech
-   */
-  if (portal === "tech") {
-    if (pathname === "/") {
-      return {
-        pathname: "/tech",
-        country,
-        language: null,
-      };
-    }
-
-    if (pathname.startsWith("/tech")) {
-      return {
-        pathname,
-        country,
-        language: null,
-      };
-    }
-
-    return {
-      pathname: `/tech${pathname}`,
-      country,
-      language: null,
-    };
-  }
-
-  /**
-   * Chat portal
-   *
-   * chat.korea.life.help
-   * → /chat
-   */
-  if (portal === "chat") {
-    if (pathname === "/") {
-      return {
-        pathname: "/chat",
-        country,
-        language: null,
-      };
-    }
-
-    if (pathname.startsWith("/chat")) {
-      return {
-        pathname,
-        country,
-        language: null,
-      };
-    }
-
-    return {
-      pathname: `/chat${pathname}`,
-      country,
-      language: null,
-    };
-  }
-
-  /**
-   * Customer portal & universal language routing
-   *
-   * Example:
-   *   life.help/vi
-   *   korea.life.help/vi
-   *   vietnam.life.help
-   *   vietnam.life.help/ko
-   *   localhost:3000/vi
-   */
+  // 1. Detect if pathname starts with a supported language code (e.g. /vi, /ko, /en, /zt, /zs)
   const language = getLanguage(pathname);
-  const defaultCountryLang = country ? COUNTRY_TO_DEFAULT_LANGUAGE[country] : null;
-  const effectiveLanguage = language || defaultCountryLang;
 
+  // 2. Strip language prefix if present to obtain the relative subpath
+  // e.g. "/vi" -> "/"
+  //      "/vi/counselor" -> "/counselor"
+  //      "/vi/workspace" -> "/workspace"
+  let subpath = pathname;
   if (language) {
     const firstSeg = pathname.split("/").filter(Boolean)[0];
-    const strippedPath =
+    subpath =
       pathname === `/${firstSeg}`
         ? "/"
-        : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "");
+        : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "") || "/";
+  }
 
-    let internalPath = strippedPath || "/";
-
-    if (internalPath === "/sys") {
+  /**
+   * 1. System Admin portal
+   *
+   * sys.life.help, sys.korea.life.help, etc.
+   * -> /admin
+   */
+  if (portal === "sys") {
+    let internalPath = "/admin";
+    if (subpath === "/" || subpath === "") {
       internalPath = "/admin";
-    } else if (internalPath.startsWith("/sys/")) {
-      internalPath = internalPath.replace(/^\/sys/, "/admin");
+    } else if (subpath === "/login") {
+      internalPath = "/admin/login";
+    } else if (subpath.startsWith("/admin")) {
+      internalPath = subpath;
+    } else {
+      internalPath = `/admin${subpath}`;
     }
 
     return {
@@ -404,48 +293,95 @@ function buildInternalPath(
     };
   }
 
-  if (country) {
+  /**
+   * 2. Technician portal
+   *
+   * tech.life.help, tech.korea.life.help, etc.
+   * -> /tech
+   */
+  if (portal === "tech") {
+    let internalPath = "/tech";
+    if (subpath === "/" || subpath === "") {
+      internalPath = "/tech";
+    } else if (subpath.startsWith("/tech")) {
+      internalPath = subpath;
+    } else {
+      internalPath = `/tech${subpath}`;
+    }
+
     return {
-      pathname,
+      pathname: internalPath,
       country,
-      language: effectiveLanguage,
+      language,
     };
   }
 
   /**
-   * Existing legacy/global routes
+   * 3. Chat portal
    *
-   * Keep compatibility with the current project.
+   * chat.life.help, chat.korea.life.help, etc.
+   * -> /chat
    */
-  if (pathname === "/sys") {
+  if (portal === "chat") {
+    let internalPath = "/chat";
+    if (subpath === "/" || subpath === "") {
+      internalPath = "/chat";
+    } else if (subpath.startsWith("/chat")) {
+      internalPath = subpath;
+    } else {
+      internalPath = `/chat${subpath}`;
+    }
+
     return {
-      pathname: "/admin",
-      country: null,
-      language: null,
+      pathname: internalPath,
+      country,
+      language,
     };
   }
 
-  if (pathname.startsWith("/sys/")) {
-    return {
-      pathname: pathname.replace(/^\/sys/, "/admin"),
-      country: null,
-      language: null,
-    };
+  /**
+   * 4. Customer portal & universal language routing
+   *
+   * life.help/vi, korea.life.help/vi, localhost:3000/vi
+   */
+  let internalPath = subpath;
+  if (internalPath === "/sys") {
+    internalPath = "/admin";
+  } else if (internalPath.startsWith("/sys/")) {
+    internalPath = internalPath.replace(/^\/sys/, "/admin");
   }
 
   return {
-    pathname,
-    country: null,
-    language: null,
+    pathname: internalPath,
+    country,
+    language,
   };
 }
 
 export async function proxy(request: NextRequest) {
-  const rawHost = request.headers.get("host") ?? "";
+  const rawHost =
+    request.headers.get("x-forwarded-host") ??
+    request.headers.get("host") ??
+    "";
   const host = rawHost.split(":")[0].toLowerCase();
   const port = rawHost.includes(":")
     ? `:${rawHost.split(":")[1]}`
     : "";
+
+  /**
+   * Country-specific favicon.ico routing
+   */
+  if (request.nextUrl.pathname === "/favicon.ico") {
+    const country = getCountryFromHost(host);
+    if (country) {
+      return NextResponse.rewrite(
+        new URL(`/logos/favicon-${country}.ico`, request.url),
+      );
+    }
+    return NextResponse.rewrite(
+      new URL(`/logos/favicon-default.ico`, request.url),
+    );
+  }
 
   /**
    * Allow a portal to return to its customer domain.
@@ -547,7 +483,7 @@ export async function proxy(request: NextRequest) {
   if (pathname !== request.nextUrl.pathname) {
     const rewriteUrl = new URL(pathname, request.url);
 
-    return NextResponse.rewrite(
+    const rewriteResponse = NextResponse.rewrite(
       rewriteUrl,
       {
         request: {
@@ -555,6 +491,16 @@ export async function proxy(request: NextRequest) {
         },
       },
     );
+
+    if (effectiveLanguage) {
+      rewriteResponse.headers.set("x-life-language", effectiveLanguage);
+    }
+    if (country) {
+      rewriteResponse.headers.set("x-life-country", country);
+    }
+    rewriteResponse.headers.set("x-life-portal", getPortalFromHost(host));
+
+    return rewriteResponse;
   }
 
   /**
@@ -576,6 +522,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|logos/|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
