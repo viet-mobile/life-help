@@ -261,6 +261,18 @@ function RegionSelectorModal({
   const dongList = useMemo(() => getLocalizedDongList(sido, gungu, locale, isBilingual, country), [sido, gungu, locale, isBilingual, country]);
   const categoryHeaders = useMemo(() => getRegionCategoryHeaders(locale, isBilingual), [locale, isBilingual]);
 
+  // Country sorting: Default domain country at the top, others sorted in dictionary order of current locale
+  const sortedCountries = useMemo(() => {
+    const topCountryCode = domainCountryCode || country || "KR";
+    const top = COUNTRIES.find((c) => c.code === topCountryCode) || COUNTRIES[0];
+    const others = COUNTRIES.filter((c) => c.code !== top.code).slice().sort((a, b) => {
+      const nameA = getCountryDisplayName(a, locale);
+      const nameB = getCountryDisplayName(b, locale);
+      return nameA.localeCompare(nameB, locale);
+    });
+    return [top, ...others];
+  }, [domainCountryCode, country, locale]);
+
   if (!isOpen) return null;
 
   const handleCountryClick = (newCountry: CountryCode) => {
@@ -382,7 +394,7 @@ function RegionSelectorModal({
           <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-900 overflow-x-auto whitespace-nowrap py-0.5">
             <span>📍</span>
             <span>
-              {countryDisplayName} {previewSido ? `> ${previewSido}` : ""} {previewGungu ? `> ${previewGungu}` : ""} {previewDong ? `> ${previewDong}` : ""}
+              {countryInfo.flag} {countryDisplayName} {previewSido ? `> ${previewSido}` : ""} {previewGungu ? `> ${previewGungu}` : ""} {previewDong ? `> ${previewDong}` : ""}
             </span>
           </div>
           <span className="text-xs text-blue-700 font-semibold shrink-0 ml-2">
@@ -399,7 +411,7 @@ function RegionSelectorModal({
                 {categoryHeaders.countryTitle}
               </div>
               <div className="mt-1 space-y-1">
-                {COUNTRIES.map((c) => (
+                {sortedCountries.map((c) => (
                   <button
                     key={c.code}
                     type="button"

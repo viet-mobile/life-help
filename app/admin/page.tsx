@@ -42,6 +42,15 @@ import {
   type ServiceRequest,
   REQUEST_EVENT,
 } from "@/lib/request/requestStore";
+import {
+  getStoredSupportPartners,
+  getStoredSupportRequests,
+  updateSupportPartnerStatus,
+  updateSupportRequestStatus,
+  type SupportPartner,
+  type SupportRequest,
+  SUPPORT_CATEGORIES,
+} from "@/lib/support/supportStore";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -65,9 +74,9 @@ export default function AdminPage() {
     router.push("/admin/login");
   };
 
-  // Active Tab: "helpers" | "counselors" | "requests" | "messages" | "reviews"
+  // Active Tab: "helpers" | "counselors" | "requests" | "messages" | "reviews" | "support"
   const [activeTab, setActiveTab] = useState<
-    "helpers" | "counselors" | "requests" | "messages" | "reviews"
+    "helpers" | "counselors" | "requests" | "messages" | "reviews" | "support"
   >("helpers");
 
   // Search & Filter
@@ -81,6 +90,16 @@ export default function AdminPage() {
   const [requestFilter, setRequestFilter] = useState<"all" | "pending" | "dispatched" | "completed">("all");
   const [assigningRequest, setAssigningRequest] = useState<ServiceRequest | null>(null);
   const [assignHelperSearch, setAssignHelperSearch] = useState("");
+
+  // Support State (5 Life Assistance Services & 050 Safe Virtual Phone System)
+  const [supportPartners, setSupportPartners] = useState<SupportPartner[]>([]);
+  const [supportRequests, setSupportRequests] = useState<SupportRequest[]>([]);
+  const [supportSubTab, setSupportSubTab] = useState<"partners" | "requests">("partners");
+  const [supportPartnerFilter, setSupportPartnerFilter] = useState<"all" | "pending" | "approved" | "rejected">("all");
+  const [supportPartnerSearch, setSupportPartnerSearch] = useState("");
+  const [supportRequestFilter, setSupportRequestFilter] = useState<"all" | "pending" | "matched" | "completed">("all");
+  const [supportRequestSearch, setSupportRequestSearch] = useState("");
+  const [matchingSupportReq, setMatchingSupportReq] = useState<SupportRequest | null>(null);
 
   // Data state
   const [helpers, setHelpers] = useState<HelperProfile[]>([]);
@@ -105,6 +124,8 @@ export default function AdminPage() {
     setMessages(getAdminMessages());
     setReviews(getStoredReviews());
     setRequests(getStoredRequests());
+    setSupportPartners(getStoredSupportPartners());
+    setSupportRequests(getStoredSupportRequests());
   }, []);
 
   useEffect(() => {
@@ -126,16 +147,25 @@ export default function AdminPage() {
       setRequests(getStoredRequests());
     };
 
+    const handleSupportUpdate = () => {
+      setSupportPartners(getStoredSupportPartners());
+      setSupportRequests(getStoredSupportRequests());
+    };
+
     window.addEventListener(ADMIN_MESSAGE_EVENT, handleMessageUpdate);
     window.addEventListener("storage", handleHelperUpdate);
     window.addEventListener(REVIEW_EVENT, handleReviewUpdate);
     window.addEventListener(REQUEST_EVENT, handleRequestUpdate);
+    window.addEventListener("support_partners_changed", handleSupportUpdate);
+    window.addEventListener("support_requests_changed", handleSupportUpdate);
 
     return () => {
       window.removeEventListener(ADMIN_MESSAGE_EVENT, handleMessageUpdate);
       window.removeEventListener("storage", handleHelperUpdate);
       window.removeEventListener(REVIEW_EVENT, handleReviewUpdate);
       window.removeEventListener(REQUEST_EVENT, handleRequestUpdate);
+      window.removeEventListener("support_partners_changed", handleSupportUpdate);
+      window.removeEventListener("support_requests_changed", handleSupportUpdate);
     };
   }, [refreshData]);
 
@@ -230,6 +260,7 @@ export default function AdminPage() {
     });
 
     const unreadMessagesCount = messages.filter((m) => !m.isRead && m.sender === "partner").length;
+    const pendingSupportPartnersCount = supportPartners.filter((p) => p.status === "pending").length;
 
     return {
       totalHelpers: helpers.length,
@@ -244,8 +275,11 @@ export default function AdminPage() {
       completedRequests: completedRequestsCount,
       expiringKeys: expiringKeysCount,
       unreadMessages: unreadMessagesCount,
+      totalSupportPartners: supportPartners.length,
+      pendingSupportPartners: pendingSupportPartnersCount,
+      totalSupportRequests: supportRequests.length,
     };
-  }, [helpers, counselors, messages, requests]);
+  }, [helpers, counselors, messages, requests, supportPartners, supportRequests]);
 
   // Open direct chat modal with a specific partner
   const handleOpenPartnerChat = (partner: {
@@ -400,7 +434,7 @@ export default function AdminPage() {
         )}
 
         {/* System Executive Metrics */}
-        <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+        <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {/* Helper Metrics */}
           <div
             onClick={() => setActiveTab("helpers")}
@@ -449,7 +483,7 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Service Requests Metrics */}
+          {/* Emergency Service Request Metric */}
           <div
             onClick={() => setActiveTab("requests")}
             className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
@@ -461,7 +495,9 @@ export default function AdminPage() {
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-400">📋 {t("admin.statRequests")}</span>
               {stats.pendingRequests > 0 ? (
-                <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-ping"></span>
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-black text-white animate-pulse">
+                  {stats.pendingRequests}
+                </span>
               ) : (
                 <span className="flex h-2 w-2 rounded-full bg-emerald-400"></span>
               )}
@@ -471,27 +507,23 @@ export default function AdminPage() {
               <span className="text-xs text-slate-400">{t("admin.unitCases")}</span>
             </div>
             <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold flex-wrap">
-              <span className="text-amber-400 font-bold">{t("admin.statusPending")}: {stats.pendingRequests}</span>
+              <span className="text-rose-400 font-bold">{t("admin.statusPending")}: {stats.pendingRequests}</span>
               <span className="text-slate-600">|</span>
               <span className="text-blue-400">{t("admin.statusDispatched")}: {stats.dispatchedRequests}</span>
             </div>
           </div>
 
-          {/* Security Keys Status */}
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-4 sm:p-5">
+          {/* Key Security Session Metric */}
+          <div
+            className={`rounded-3xl border p-4 sm:p-5 transition border-slate-800 bg-slate-900/70`}
+          >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-400">🛡️ {t("admin.statSecurityKeys")}</span>
-              <span
-                className={`flex h-2 w-2 rounded-full ${
-                  stats.expiringKeys > 0 ? "bg-amber-400 animate-pulse" : "bg-emerald-400"
-                }`}
-              ></span>
+              <span className="text-xs font-bold text-slate-400">🔐 {t("admin.statSecurityKeys")}</span>
+              <span className="flex h-2 w-2 rounded-full bg-blue-400"></span>
             </div>
             <div className="mt-3 flex items-baseline gap-2">
-              <span className="text-2xl sm:text-3xl font-black text-white">
-                {stats.totalHelpers + stats.totalCounselors}
-              </span>
-              <span className="text-xs text-slate-400">{t("admin.unitIssued")}</span>
+              <span className="text-2xl sm:text-3xl font-black text-white">90{t("admin.unitDays")}</span>
+              <span className="text-xs text-slate-400">{t("admin.autoCycle")}</span>
             </div>
             <div className="mt-2 text-[11px] font-semibold truncate">
               {stats.expiringKeys > 0 ? (
@@ -530,6 +562,38 @@ export default function AdminPage() {
                 <span className="text-rose-400 font-bold">{t("admin.statusUnread")}: {stats.unreadMessages}{t("admin.unitCases")}</span>
               ) : (
                 <span className="text-slate-400">{t("admin.statusAllRead")}</span>
+              )}
+            </div>
+          </div>
+
+          {/* Support Partners & 050 Matching Metric */}
+          <div
+            onClick={() => setActiveTab("support")}
+            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+              activeTab === "support"
+                ? "border-purple-500 bg-purple-950/30 shadow-md shadow-purple-900/20"
+                : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-400">🤝 5대 생활도움 & 050</span>
+              {stats.pendingSupportPartners > 0 ? (
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-[10px] font-black text-slate-950 animate-pulse">
+                  {stats.pendingSupportPartners}
+                </span>
+              ) : (
+                <span className="flex h-2 w-2 rounded-full bg-purple-400"></span>
+              )}
+            </div>
+            <div className="mt-3 flex items-baseline gap-2">
+              <span className="text-2xl sm:text-3xl font-black text-white">{supportPartners.length}</span>
+              <span className="text-xs text-slate-400">명 파트너</span>
+            </div>
+            <div className="mt-2 text-[11px] font-semibold truncate">
+              {stats.pendingSupportPartners > 0 ? (
+                <span className="text-amber-400 font-bold">승인대기: {stats.pendingSupportPartners}명 | 050: {supportRequests.length}건</span>
+              ) : (
+                <span className="text-slate-400">050 안심요청: {supportRequests.length}건</span>
               )}
             </div>
           </div>
@@ -584,6 +648,26 @@ export default function AdminPage() {
               {stats.pendingRequests > 0 && (
                 <span className="rounded-full bg-rose-600 px-1.5 py-0.2 text-[9px] font-black text-white animate-pulse">
                   {stats.pendingRequests} {t("admin.statusPending")}
+                </span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab("support")}
+              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+                activeTab === "support"
+                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/25"
+                  : "text-slate-400 hover:text-white hover:bg-slate-800/60"
+              }`}
+            >
+              <span>🤝 생활도움 파트너 & 050 매칭</span>
+              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-purple-300">
+                {supportPartners.length}명
+              </span>
+              {stats.pendingSupportPartners > 0 && (
+                <span className="rounded-full bg-amber-500 px-1.5 py-0.2 text-[9px] font-black text-slate-950 animate-pulse">
+                  {stats.pendingSupportPartners}건 승인대기
                 </span>
               )}
             </button>
@@ -1615,6 +1699,519 @@ export default function AdminPage() {
               </div>
             )}
           </section>
+        )}
+
+        {/* TAB 6: 🤝 5대 생활지원 헬퍼 파트너 승인 & 050 가상 안심번호 매칭 관리 콘솔 */}
+        {activeTab === "support" && (
+          <section className="space-y-4">
+            {/* Header & Sub-Tab Switcher */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-purple-950 px-3 py-0.5 text-xs font-bold text-purple-300 border border-purple-800 mb-1.5">
+                  <span>🔒 개인정보 보호 050 안심번호 시스템</span>
+                </div>
+                <h3 className="text-base sm:text-lg font-black text-white flex items-center gap-2">
+                  <span>🤝 5대 생활지원 헬퍼 파트너 승인 & 050 안심번호 매칭 콘솔</span>
+                </h3>
+                <p className="mt-1 text-xs text-slate-400 max-w-2xl leading-relaxed">
+                  은행 계좌 개설, 보험 가입, 구인/구직, 병원 동행 통역, 이동전화 개통 등 5개 생활 지원 분야의 헬퍼 파트너 신청 승인과 050 가상 안심번호 매칭 내역을 통합 관리합니다.
+                </p>
+              </div>
+
+              {/* Sub-tab switcher */}
+              <div className="flex items-center gap-2 bg-slate-950 p-1.5 rounded-xl border border-slate-800 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setSupportSubTab("partners")}
+                  className={`flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-bold transition-all cursor-pointer ${
+                    supportSubTab === "partners"
+                      ? "bg-purple-600 text-white shadow-md"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <span>🎖️ 헬퍼 파트너 승인</span>
+                  <span className="rounded-md bg-purple-950 px-1.5 py-0.2 text-[10px] font-extrabold text-purple-200">
+                    {supportPartners.length}명
+                  </span>
+                  {stats.pendingSupportPartners > 0 && (
+                    <span className="rounded-full bg-amber-500 px-1.5 py-0.2 text-[9px] font-black text-slate-950 animate-pulse">
+                      {stats.pendingSupportPartners}
+                    </span>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSupportSubTab("requests")}
+                  className={`flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-bold transition-all cursor-pointer ${
+                    supportSubTab === "requests"
+                      ? "bg-indigo-600 text-white shadow-md"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  <span>🔒 050 안심번호 매칭 로그</span>
+                  <span className="rounded-md bg-indigo-950 px-1.5 py-0.2 text-[10px] font-extrabold text-indigo-200">
+                    {supportRequests.length}건
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* SUB-TAB 1: 헬퍼 파트너 신청 및 승인 관리 */}
+            {supportSubTab === "partners" && (
+              <div className="space-y-4">
+                {/* Search & Filter Bar */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <input
+                      type="text"
+                      value={supportPartnerSearch}
+                      onChange={(e) => setSupportPartnerSearch(e.target.value)}
+                      placeholder="파트너 이름, 연락처, 지역 검색..."
+                      className="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-purple-500 w-64"
+                    />
+
+                    <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                      {(["all", "pending", "approved", "rejected"] as const).map((f) => (
+                        <button
+                          key={f}
+                          type="button"
+                          onClick={() => setSupportPartnerFilter(f)}
+                          className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all cursor-pointer ${
+                            supportPartnerFilter === f
+                              ? "bg-purple-700 text-white shadow-xs"
+                              : "text-slate-400 hover:text-white"
+                          }`}
+                        >
+                          {f === "all"
+                            ? "전체"
+                            : f === "pending"
+                            ? `승인대기 (${stats.pendingSupportPartners})`
+                            : f === "approved"
+                            ? "승인완료"
+                            : "반려"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <span className="text-xs text-slate-400">
+                    총 {supportPartners.length}개 헬퍼 파트너 등록됨
+                  </span>
+                </div>
+
+                {/* Partners List */}
+                {supportPartners
+                  .filter((p) => {
+                    if (supportPartnerFilter !== "all" && p.status !== supportPartnerFilter) return false;
+                    if (supportPartnerSearch.trim()) {
+                      const q = supportPartnerSearch.toLowerCase();
+                      const matchName = p.name.toLowerCase().includes(q);
+                      const matchPhone = p.phone.includes(q);
+                      const matchRegion = p.regions.some((r) => r.toLowerCase().includes(q));
+                      return matchName || matchPhone || matchRegion;
+                    }
+                    return true;
+                  })
+                  .map((p) => (
+                    <div
+                      key={p.id}
+                      className="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-sm space-y-4 hover:border-slate-700 transition"
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-purple-950 text-xl text-purple-300 border border-purple-800">
+                            🎖️
+                          </span>
+                          <div>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <h4 className="text-sm font-extrabold text-white">{p.name}</h4>
+                              <span className="text-xs text-slate-400 font-mono">({p.phone})</span>
+
+                              {/* Status Badge */}
+                              {p.status === "approved" ? (
+                                <span className="rounded-full bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
+                                  ✓ 승인 완료 (활동중)
+                                </span>
+                              ) : p.status === "pending" ? (
+                                <span className="rounded-full bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
+                                  ⏳ 관리자 승인 대기
+                                </span>
+                              ) : (
+                                <span className="rounded-full bg-rose-950 px-2.5 py-0.5 text-[10px] font-black text-rose-400 border border-rose-800">
+                                  ✕ 신청 반려
+                                </span>
+                              )}
+                            </div>
+
+                            <p className="text-[11px] text-slate-400 mt-0.5">
+                              신청일: {new Date(p.createdAt).toLocaleDateString()} · 활동지역: {p.regions.join(", ") || "전국"}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Action buttons */}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          {p.status === "pending" && (
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  updateSupportPartnerStatus(p.id, "approved");
+                                  showToast(`${p.name} 파트너 승인이 완료되었습니다.`);
+                                  refreshData();
+                                }}
+                                className="rounded-xl bg-emerald-600 hover:bg-emerald-500 px-3.5 py-1.5 text-xs font-black text-white transition cursor-pointer shadow-sm"
+                              >
+                                ✓ 승인 완료
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  updateSupportPartnerStatus(p.id, "rejected");
+                                  showToast(`${p.name} 파트너 신청이 반려되었습니다.`);
+                                  refreshData();
+                                }}
+                                className="rounded-xl bg-rose-900/60 hover:bg-rose-900 border border-rose-700 px-3 py-1.5 text-xs font-bold text-rose-300 transition cursor-pointer"
+                              >
+                                ✕ 반려
+                              </button>
+                            </>
+                          )}
+
+                          {p.status === "approved" && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                updateSupportPartnerStatus(p.id, "pending");
+                                showToast(`${p.name} 파트너 상태를 대기 상태로 변경했습니다.`);
+                                refreshData();
+                              }}
+                              className="rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-300 transition cursor-pointer"
+                            >
+                              승인 대기로 전환
+                            </button>
+                          )}
+
+                          {p.status === "rejected" && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                updateSupportPartnerStatus(p.id, "approved");
+                                showToast(`${p.name} 파트너를 재승인했습니다.`);
+                                refreshData();
+                              }}
+                              className="rounded-xl bg-emerald-700 hover:bg-emerald-600 px-3 py-1.5 text-xs font-black text-white transition cursor-pointer"
+                            >
+                              재승인 처리
+                            </button>
+                          )}
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              handleOpenPartnerChat({
+                                type: "helper",
+                                id: p.phone,
+                                name: p.name,
+                              });
+                            }}
+                            className="rounded-xl border border-blue-500/40 bg-blue-950/40 hover:bg-blue-900/60 px-3 py-1.5 text-xs font-bold text-blue-300 transition cursor-pointer flex items-center gap-1"
+                          >
+                            <span>💬</span>
+                            <span>연락하기</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Categories & Fee Tag */}
+                      <div className="flex items-center gap-2 flex-wrap pt-1 border-t border-slate-800/80">
+                        <span className="text-[11px] text-slate-400">지원 카테고리:</span>
+                        {p.categories.map((cSlug) => {
+                          const meta = SUPPORT_CATEGORIES[cSlug];
+                          return (
+                            <span
+                              key={cSlug}
+                              className="rounded-md bg-slate-950 px-2 py-0.5 text-[10px] font-bold text-purple-300 border border-slate-800 flex items-center gap-1"
+                            >
+                              <span>{meta ? meta.icon : "💼"}</span>
+                              <span>{meta ? meta.nameKo : cSlug}</span>
+                            </span>
+                          );
+                        })}
+
+                        <span className="ml-auto rounded-md bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+                          {p.agreedToFee ? "✅ 플랫폼 광고 및 10% 알선수수료 동의완료" : "⚠️ 수수료 약관 미동의"}
+                        </span>
+                      </div>
+
+                      {p.bio && (
+                        <p className="text-xs text-slate-300 italic bg-slate-950/50 p-3 rounded-xl border border-slate-800/60">
+                          &ldquo;{p.bio}&rdquo;
+                        </p>
+                      )}
+                    </div>
+                  ))}
+              </div>
+            )}
+
+            {/* SUB-TAB 2: 050 가상 안심번호 매칭 및 알선 로그 */}
+            {supportSubTab === "requests" && (
+              <div className="space-y-4">
+                {/* Search & Filter Bar */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <input
+                      type="text"
+                      value={supportRequestSearch}
+                      onChange={(e) => setSupportRequestSearch(e.target.value)}
+                      placeholder="050 안심번호, 고객번호, 지역 검색..."
+                      className="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-indigo-500 w-64"
+                    />
+
+                    <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                      {(["all", "pending", "matched", "completed"] as const).map((f) => (
+                        <button
+                          key={f}
+                          type="button"
+                          onClick={() => setSupportRequestFilter(f)}
+                          className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all cursor-pointer ${
+                            supportRequestFilter === f
+                              ? "bg-indigo-700 text-white shadow-xs"
+                              : "text-slate-400 hover:text-white"
+                          }`}
+                        >
+                          {f === "all"
+                            ? "전체"
+                            : f === "pending"
+                            ? "접수대기"
+                            : f === "matched"
+                            ? "알선 매칭완료"
+                            : "서비스 완료"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <span className="text-xs text-slate-400">
+                    총 {supportRequests.length}건 안심번호 발급 및 매칭
+                  </span>
+                </div>
+
+                {/* Request list */}
+                {supportRequests
+                  .filter((req) => {
+                    if (supportRequestFilter !== "all" && req.status !== supportRequestFilter) return false;
+                    if (supportRequestSearch.trim()) {
+                      const q = supportRequestSearch.toLowerCase();
+                      const matchSafe = req.customerSafePhone.includes(q);
+                      const matchReal = req.customerRealPhone.includes(q);
+                      const matchArea = `${req.sido} ${req.gungu} ${req.dong}`.toLowerCase().includes(q);
+                      return matchSafe || matchReal || matchArea;
+                    }
+                    return true;
+                  })
+                  .map((req) => {
+                    const catMeta = SUPPORT_CATEGORIES[req.category];
+                    return (
+                      <div
+                        key={req.id}
+                        className="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-sm space-y-4 hover:border-slate-700 transition"
+                      >
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                          <div className="flex items-center gap-3">
+                            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-indigo-950 text-xl text-indigo-300 border border-indigo-800">
+                              {catMeta ? catMeta.icon : "📞"}
+                            </span>
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <h4 className="text-sm font-black text-white">
+                                  {catMeta ? catMeta.nameKo : req.category}
+                                </h4>
+                                <span className="rounded-md bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-400 border border-slate-800">
+                                  #{req.id}
+                                </span>
+
+                                {/* Status */}
+                                {req.status === "matched" ? (
+                                  <span className="rounded-full bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
+                                    ✓ 파트너 알선 매칭완료
+                                  </span>
+                                ) : req.status === "pending" ? (
+                                  <span className="rounded-full bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
+                                    ⏳ 파트너 매칭 대기
+                                  </span>
+                                ) : (
+                                  <span className="rounded-full bg-blue-950 px-2.5 py-0.5 text-[10px] font-black text-blue-300 border border-blue-800">
+                                    서비스 완료
+                                  </span>
+                                )}
+                              </div>
+
+                              <p className="text-[11px] text-slate-400 mt-0.5">
+                                접수시간: {new Date(req.createdAt).toLocaleString()} · 지역: {req.country} {req.sido} {req.gungu} {req.dong}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Matching action */}
+                          <div className="flex items-center gap-2">
+                            {req.status === "pending" ? (
+                              <button
+                                type="button"
+                                onClick={() => setMatchingSupportReq(req)}
+                                className="rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 px-3.5 py-2 text-xs font-black text-white transition shadow-sm cursor-pointer"
+                              >
+                                ⚡ 파트너 알선 연결
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  updateSupportRequestStatus(req.id, "completed");
+                                  showToast(`요청(#${req.id})이 완료 처리되었습니다.`);
+                                  refreshData();
+                                }}
+                                className="rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-300 transition cursor-pointer"
+                              >
+                                완료 상태로 변경
+                              </button>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Dual Phone Numbers (050 Safe vs Real Customer Phone) */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
+                          <div>
+                            <span className="text-[11px] font-bold text-slate-400 block uppercase">
+                              🔒 고객 발급 050 임시 안심번호 (Virtual Safe Phone)
+                            </span>
+                            <span className="text-base font-black text-emerald-400 font-mono">
+                              {req.customerSafePhone}
+                            </span>
+                            <span className="block text-[10px] text-slate-500">
+                              (헬퍼 파트너에게 노출되는 연결 번호)
+                            </span>
+                          </div>
+
+                          <div>
+                            <span className="text-[11px] font-bold text-slate-400 block uppercase">
+                              🛡️ 고객 실제 휴대폰 번호 (Private)
+                            </span>
+                            <span className="text-base font-black text-slate-300 font-mono">
+                              {req.customerRealPhone}
+                            </span>
+                            <span className="block text-[10px] text-slate-500">
+                              (관리자만 확인 가능한 실제 번호)
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Selected checklist options */}
+                        <div className="space-y-1 text-xs">
+                          <span className="text-slate-400 font-semibold block">고객 신청 도움 항목:</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {req.selectedNeeds.map((item, idx) => (
+                              <span
+                                key={idx}
+                                className="rounded-lg bg-indigo-950/50 px-2.5 py-1 text-[11px] font-semibold text-indigo-200 border border-indigo-900/60"
+                              >
+                                ✓ {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {req.memo && (
+                          <div className="text-xs text-slate-300 italic bg-slate-950/40 p-2.5 rounded-xl border border-slate-800">
+                            요청 메모: {req.memo}
+                          </div>
+                        )}
+
+                        {/* Matched Partner Information */}
+                        {req.matchedPartnerName && (
+                          <div className="flex items-center justify-between text-xs bg-emerald-950/30 p-2.5 rounded-xl border border-emerald-800/40 text-emerald-300">
+                            <span>
+                              🤝 매칭 파트너: <strong>{req.matchedPartnerName}</strong> ({req.matchedPartnerPhone})
+                            </span>
+                            <span className="text-[11px] font-semibold text-emerald-400">
+                              050 가상연결 활성화됨
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* FLOATING SUPPORT PARTNER MATCHING MODAL */}
+        {matchingSupportReq && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+            <div className="relative flex flex-col h-[550px] max-h-[90vh] w-full max-w-xl rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
+              <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
+                <div>
+                  <h3 className="text-base font-black text-white flex items-center gap-2">
+                    <span>⚡</span>
+                    <span>050 헬퍼 파트너 알선 매칭</span>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    요청번호 #{matchingSupportReq.id} (안심번호: {matchingSupportReq.customerSafePhone})
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setMatchingSupportReq(null)}
+                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-5 space-y-3">
+                <p className="text-xs text-slate-400 font-medium">
+                  승인된 헬퍼 파트너 중 고객에게 알선 연결할 파트너를 선택하세요:
+                </p>
+
+                {supportPartners
+                  .filter((p) => p.status === "approved")
+                  .map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950 p-4 hover:border-indigo-600 transition"
+                    >
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-bold text-white">{p.name}</h4>
+                        <p className="text-[11px] text-slate-400 mt-0.5">
+                          연락처: {p.phone} · 지역: {p.regions.join(", ")}
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          updateSupportRequestStatus(matchingSupportReq.id, "matched", p.name, p.phone);
+                          showToast(`${p.name} 파트너에게 050 안심연결 알선 매칭되었습니다.`);
+                          setMatchingSupportReq(null);
+                          refreshData();
+                        }}
+                        className="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-3.5 py-2 text-xs font-black text-white transition cursor-pointer"
+                      >
+                        매칭 연결
+                      </button>
+                    </div>
+                  ))}
+
+                {supportPartners.filter((p) => p.status === "approved").length === 0 && (
+                  <p className="text-xs text-amber-400 text-center py-8">
+                    현재 승인 완료된 헬퍼 파트너가 없습니다. 먼저 헬퍼 파트너를 승인해 주세요.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
         )}
 
         {/* FLOATING DIRECT CHAT MODAL (When opened via [💬 온라인 연락] from any card) */}

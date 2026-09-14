@@ -5,6 +5,7 @@ import { taiwanRegions } from "./taiwanRegions";
 import { japanRegions } from "./japanRegions";
 import { philippinesRegions } from "./philippinesRegions";
 import { indonesiaRegions } from "./indonesiaRegions";
+import { worldRegions } from "./worldRegions";
 
 export interface GunguData {
   name: string;
@@ -39,51 +40,108 @@ export const COUNTRY_SLUG_TO_CODE: Record<string, CountryCode> = {
   taiwan: "TW",
   indonesia: "ID",
   philippines: "PH",
+  russia: "RU",
+  uzbek: "UZ",
+  nepal: "NP",
+  india: "IN",
+  cambodia: "KH",
+  thailand: "TH",
+  myanmar: "MM",
+  srilanka: "LK",
+  kazakh: "KZ",
+  france: "FR",
+  deutsch: "DE",
+  turkiye: "TR",
+  ukraina: "UA",
+  timorleste: "TL",
+  uae: "AE",
+  italia: "IT",
+  egypt: "EG",
+  espania: "ES",
+  iran: "IR",
+  netherland: "NL",
+  poland: "PL",
+  ethiopia: "ET",
+  sweden: "SE",
+  israel: "IL",
+  denmark: "DK",
+  norway: "NO",
+  mongol: "MN",
+  mexico: "MX",
+  brazil: "BR",
+  greece: "GR",
+  portugal: "PT",
+  southafrica: "ZA",
+  swiss: "CH",
+  pakistan: "PK",
+  saudiarabia: "SA",
+  yemen: "YE",
+  iraq: "IQ",
+  bangladesh: "BD",
+  us: "US",
+  uk: "GB",
+  canada: "CA",
+  australia: "AU",
+  newzealand: "NZ",
+  singapore: "SG",
+  malaysia: "MY",
+  nigeria: "NG",
 };
 
-export const DEFAULT_COUNTRY_REGIONS: Record<CountryCode, RegionItem> = {
-  KR: {
-    country: "KR",
-    sido: "전북특별자치도",
-    gungu: "익산시",
-    dong: "신동",
-  },
-  VN: {
-    country: "VN",
-    sido: "Thành phố Hồ Chí Minh",
-    gungu: "Quận 1",
-    dong: "Bến Nghé",
-  },
-  JP: {
-    country: "JP",
-    sido: "東京都",
-    gungu: "新宿区",
-    dong: "西新宿",
-  },
-  CN: {
-    country: "CN",
-    sido: "北京市",
-    gungu: "朝阳区",
-    dong: "三里屯街道",
-  },
-  TW: {
-    country: "TW",
-    sido: "臺北市",
-    gungu: "信義區",
-    dong: "西村里",
-  },
-  ID: {
-    country: "ID",
-    sido: "DKI Jakarta",
-    gungu: "Jakarta Selatan",
-    dong: "Senayan",
-  },
-  PH: {
-    country: "PH",
-    sido: "Metro Manila",
-    gungu: "Makati",
-    dong: "Bel-Air",
-  },
+export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
+  KR: { country: "KR", sido: "전북특별자치도", gungu: "익산시", dong: "신동" },
+  VN: { country: "VN", sido: "Thành phố Hồ Chí Minh", gungu: "Quận 1", dong: "Bến Nghé" },
+  JP: { country: "JP", sido: "東京都", gungu: "新宿区", dong: "西新宿" },
+  CN: { country: "CN", sido: "北京市", gungu: "朝阳区", dong: "三里屯街道" },
+  TW: { country: "TW", sido: "臺北市", gungu: "信義區", dong: "西村里" },
+  ID: { country: "ID", sido: "DKI Jakarta", gungu: "Jakarta Selatan", dong: "Senayan" },
+  PH: { country: "PH", sido: "Metro Manila", gungu: "Makati", dong: "Bel-Air" },
+  US: { country: "US", sido: "California", gungu: "Los Angeles", dong: "Koreatown" },
+  CA: { country: "CA", sido: "Ontario", gungu: "Toronto", dong: "Downtown" },
+  GB: { country: "GB", sido: "Greater London", gungu: "Central London", dong: "Westminster" },
+  AU: { country: "AU", sido: "New South Wales", gungu: "Sydney Inner", dong: "Sydney CBD" },
+  NZ: { country: "NZ", sido: "Auckland Region", gungu: "Central Auckland", dong: "Auckland CBD" },
+  DE: { country: "DE", sido: "Berlin", gungu: "Mitte", dong: "Alexanderplatz" },
+  FR: { country: "FR", sido: "Île-de-France", gungu: "Paris", dong: "1er Arrondissement" },
+  IT: { country: "IT", sido: "Lombardia (Lombardy)", gungu: "Milano", dong: "Centro Storico" },
+  ES: { country: "ES", sido: "Comunidad de Madrid", gungu: "Madrid Capital", dong: "Centro (Sol/Gran Vía)" },
+  NL: { country: "NL", sido: "Noord-Holland (North Holland)", gungu: "Amsterdam", dong: "Centrum" },
+  PL: { country: "PL", sido: "Mazowieckie", gungu: "Warszawa (Warsaw)", dong: "Śródmieście (Center)" },
+  SE: { country: "SE", sido: "Stockholm", gungu: "Stockholm City", dong: "Norrmalm" },
+  NO: { country: "NO", sido: "Oslo", gungu: "Oslo Sentrum", dong: "Sentrum" },
+  DK: { country: "DK", sido: "Region Hovedstaden (Capital)", gungu: "København (Copenhagen)", dong: "Indre By (City)" },
+  CH: { country: "CH", sido: "Zürich", gungu: "Zürich City", dong: "Altstadt" },
+  PT: { country: "PT", sido: "Lisboa", gungu: "Lisbon Capital", dong: "Baixa" },
+  GR: { country: "GR", sido: "Attica (Athens)", gungu: "Athens City", dong: "Syntagma" },
+  TR: { country: "TR", sido: "İstanbul", gungu: "Avrupa (European Side)", dong: "Beyoğlu (Taksim)" },
+  RU: { country: "RU", sido: "Москва (Moscow)", gungu: "Центральный АО", dong: "Тверской" },
+  UA: { country: "UA", sido: "Київ (Kyiv City)", gungu: "Шевченківський район", dong: "Хрещатик" },
+  UZ: { country: "UZ", sido: "Toshkent shahri (Tashkent City)", gungu: "Mirobod tumani", dong: "Oybek" },
+  KZ: { country: "KZ", sido: "Астана (Astana City)", gungu: "Есіл ауданы (Yesil)", dong: "Мәңгілік Ел" },
+  TH: { country: "TH", sido: "กรุงเทพมหานคร (Bangkok)", gungu: "ปทุมวัน (Pathum Wan)", dong: "สยาม (Siam)" },
+  IN: { country: "IN", sido: "Delhi (NCT)", gungu: "New Delhi", dong: "Connaught Place" },
+  PK: { country: "PK", sido: "Islamabad Capital Territory", gungu: "Islamabad", dong: "Sector F-6" },
+  BD: { country: "BD", sido: "Dhaka Division", gungu: "Dhaka North", dong: "Gulshan" },
+  NP: { country: "NP", sido: "Bagmati Province", gungu: "Kathmandu District", dong: "Thamel" },
+  LK: { country: "LK", sido: "Western Province", gungu: "Colombo", dong: "Fort (Colombo 1)" },
+  MM: { country: "MM", sido: "Yangon Region", gungu: "Yangon", dong: "Dagon" },
+  KH: { country: "KH", sido: "Phnom Penh", gungu: "Doun Penh", dong: "Phsar Kandal" },
+  MN: { country: "MN", sido: "Улаанбаатар (Ulaanbaatar)", gungu: "Сүхбаатар дүүрэг (Sükhbaatar)", dong: "1-р хороо (Талбай)" },
+  TL: { country: "TL", sido: "Dili", gungu: "Vera Cruz", dong: "Colmera" },
+  MY: { country: "MY", sido: "Wilayah Persekutuan Kuala Lumpur", gungu: "Kuala Lumpur City", dong: "Bukit Bintang" },
+  SG: { country: "SG", sido: "Central Region", gungu: "Central Area (Downtown)", dong: "Downtown Core" },
+  AE: { country: "AE", sido: "Dubai", gungu: "Downtown / Business Bay", dong: "Downtown Dubai" },
+  SA: { country: "SA", sido: "Riyadh Region", gungu: "Riyadh City", dong: "Al Olaya" },
+  EG: { country: "EG", sido: "Cairo (Al Qahirah)", gungu: "Downtown Cairo", dong: "Tahrir" },
+  IQ: { country: "IQ", sido: "Baghdad Governorate", gungu: "Al-Karkh", dong: "Mansour" },
+  IR: { country: "IR", sido: "Tehran", gungu: "District 1-3 (North)", dong: "Tajrish" },
+  YE: { country: "YE", sido: "Sana'a Governorate (Capital)", gungu: "Sana'a City", dong: "Old City" },
+  IL: { country: "IL", sido: "Tel Aviv District", gungu: "Tel Aviv-Yafo", dong: "Lev HaIr (Center)" },
+  ET: { country: "ET", sido: "Addis Ababa", gungu: "Bole", dong: "Bole Medhanealem" },
+  ZA: { country: "ZA", sido: "Gauteng", gungu: "Johannesburg", dong: "Sandton" },
+  NG: { country: "NG", sido: "Lagos State", gungu: "Lagos Island / Eti-Osa", dong: "Victoria Island (VI)" },
+  BR: { country: "BR", sido: "São Paulo", gungu: "São Paulo Capital", dong: "Jardins" },
+  MX: { country: "MX", sido: "Ciudad de México (CDMX)", gungu: "Cuauhtémoc", dong: "Roma Norte" },
 };
 
 export const koreanRegions: SidoData[] = [
@@ -574,8 +632,18 @@ export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
     case "ID":
       return indonesiaRegions;
     case "KR":
-    default:
       return koreanRegions;
+    default:
+      if (worldRegions[country]) {
+        return worldRegions[country];
+      }
+      return [
+        {
+          name: "Main District",
+          shortName: "Main",
+          gunguList: [{ name: "Central", dongs: ["Downtown", "Area 1", "Area 2"] }],
+        },
+      ];
   }
 }
 

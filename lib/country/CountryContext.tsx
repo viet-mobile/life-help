@@ -73,6 +73,9 @@ const COUNTRY_NAMES: Record<string, string> = {
   canada: "CANADA",
   australia: "AUSTRALIA",
   newzealand: "NEW ZEALAND",
+  singapore: "SINGAPORE",
+  malaysia: "MALAYSIA",
+  nigeria: "NIGERIA",
 };
 
 export function resolveCountryFromHost(host?: string | null): string | null {

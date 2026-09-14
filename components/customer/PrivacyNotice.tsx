@@ -55,7 +55,7 @@ export default function PrivacyNotice() {
           </div>
 
           <div className="text-slate-400 font-normal">
-            LIFE.HELP © 2026 · {isKorean ? "모국어 생활 서비스 플랫폼" : "Multilingual Living Service Platform"}
+            LIFE.HELP © 2026 · {t("common.platformTagline")}
           </div>
         </div>
       </div>

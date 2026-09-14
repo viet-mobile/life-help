@@ -71,6 +71,9 @@ const COUNTRY_DISPLAY_NAMES = {
   canada: "CANADA",
   australia: "AUSTRALIA",
   newzealand: "NEW ZEALAND",
+  singapore: "SINGAPORE",
+  malaysia: "MALAYSIA",
+  nigeria: "NIGERIA",
 };
 
 function createIco(pngBuffers) {
@@ -237,14 +240,14 @@ async function main() {
       .trim()
       .toBuffer();
 
-    // 3. Stretch/scale horizontally (장평) to exactly 678px (matching width of LIFE HELP below), height 142px
+    // 3. Stretch/scale horizontally (장평) to exactly 678px (matching width of LIFE HELP below), height 162px
     const textStretched = await sharp(trimmed)
-      .resize(678, 142, { fit: "fill" })
+      .resize(678, 162, { fit: "fill" })
       .toBuffer();
 
-    // 4. Composite onto base image at x=180, y=161
+    // 4. Composite onto base image at x=180, y=158 (gap to Line 2 at 335 is exactly 15px, matching Line 2-3 gap of 14px)
     const compositeBuf = await sharp(USER_LOGOS.base)
-      .composite([{ input: textStretched, left: 180, top: 161 }])
+      .composite([{ input: textStretched, left: 180, top: 158 }])
       .png()
       .toBuffer();
 

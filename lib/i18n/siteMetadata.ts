@@ -65,6 +65,9 @@ export const COUNTRY_TO_LANGUAGE_MAP: Record<string, string> = {
   canada: "en",
   australia: "en",
   newzealand: "en",
+  singapore: "en",
+  malaysia: "en",
+  nigeria: "en",
 };
 
 export const SITE_METADATA: Record<string, SiteMetaTranslation> = {

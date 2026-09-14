@@ -64,6 +64,9 @@ const COUNTRIES = new Set([
   "canada",
   "australia",
   "newzealand",
+  "singapore",
+  "malaysia",
+  "nigeria",
 ]);
 
 /**
@@ -168,6 +171,9 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
   canada: "en",
   australia: "en",
   newzealand: "en",
+  singapore: "en",
+  malaysia: "en",
+  nigeria: "en",
 };
 
 function getHost(request: NextRequest) {

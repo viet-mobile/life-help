@@ -252,27 +252,35 @@ export function detectDeviceLocale(preferredLanguages?: readonly string[]): Loca
 }
 
 export function translate(locale: Locale, key: string): string {
-  const dict = dictionaries[locale] || dictionaries[defaultLocale];
-  const value = key
-    .split(".")
-    .reduce<unknown>(
-      (current, segment) =>
-        typeof current === "object" && current !== null && segment in current
-          ? (current as Record<string, unknown>)[segment]
-          : undefined,
-      dict,
-    );
-  if (typeof value === "string") return value;
+  const getFromDict = (d: Record<string, unknown> | undefined): string | undefined => {
+    if (!d) return undefined;
+    const val = key
+      .split(".")
+      .reduce<unknown>(
+        (current, segment) =>
+          typeof current === "object" && current !== null && segment in current
+            ? (current as Record<string, unknown>)[segment]
+            : undefined,
+        d,
+      );
+    return typeof val === "string" ? val : undefined;
+  };
 
-  // Fallback to defaultLocale if key is missing in target language
-  const fallbackVal = key
-    .split(".")
-    .reduce<unknown>(
-      (current, segment) =>
-        typeof current === "object" && current !== null && segment in current
-          ? (current as Record<string, unknown>)[segment]
-          : undefined,
-      dictionaries[defaultLocale],
-    );
-  return typeof fallbackVal === "string" ? fallbackVal : key;
+  // 1. Current target locale
+  const val = getFromDict(dictionaries[locale]);
+  if (val !== undefined) return val;
+
+  // 2. English fallback (universal standard)
+  const enVal = getFromDict(dictionaries["en"]);
+  if (enVal !== undefined) return enVal;
+
+  // 3. Korean fallback (platform root)
+  const koVal = getFromDict(dictionaries["ko"]);
+  if (koVal !== undefined) return koVal;
+
+  // 4. Default locale fallback
+  const defVal = getFromDict(dictionaries[defaultLocale]);
+  if (defVal !== undefined) return defVal;
+
+  return key;
 }

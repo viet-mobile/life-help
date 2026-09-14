@@ -9,17 +9,35 @@ import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 
-const services = [
-  ["🚽", "toilet", "toilet-clog"],
-  ["🚰", "sink", "sink-clog"],
-  ["🕳️", "drain", "drain-clog"],
-  ["💧", "leak", "water-leak"],
-  ["🔎", "detection", "leak-detection"],
-  ["🚿", "water", "water"],
-  ["🔧", "plumbing", "plumbing"],
-  ["🔥", "boiler", "boiler"],
+const mainConsolidatedServices = [
+  {
+    icons: ["🚽", "🚰", "🕳️"],
+    key: "clog",
+    slug: "clog-clearing",
+    ko: "변기, 싱크대, 하수구 등 각종 막힘 해결",
+    descKo: "변기·싱크대·하수구 역류, 고압세척, 배관 내시경 정밀 통경",
+  },
+  {
+    icons: ["💧", "🔎", "🚿", "🔧"],
+    key: "leakPlumbing",
+    slug: "leak-plumbing",
+    ko: "누수 방지, 누수 탐지, 수도 배관 공사 등",
+    descKo: "첨단 누수 탐지, 수도 동파 수리, 노후 배관 교체 및 방수 공사",
+  },
+] as const;
+
+const standardServices = [
+  ["♨️", "boiler", "boiler"],
   ["🧹", "cleaning", "cleaning"],
   ["🏠", "housing", "housing"],
+] as const;
+
+const lifeSupportServices = [
+  ["🏦", "bankHelp", "bank-help"],
+  ["📑", "insuranceHelp", "insurance-help"],
+  ["💼", "jobHelp", "job-help"],
+  ["🏥", "hospitalHelp", "hospital-help"],
+  ["📱", "mobileHelp", "mobile-help"],
 ] as const;
 
 const benefits = [
@@ -166,7 +184,7 @@ export function CustomerHome() {
               </div>
             </Link>
 
-            <Link href="/services/toilet-clog" className="w-full sm:w-auto">
+            <Link href="/services/clog-clearing" className="w-full sm:w-auto">
               <div className="w-full sm:w-auto flex flex-col items-center justify-center rounded-2xl bg-white/15 hover:bg-white/25 px-6 py-3 text-white backdrop-blur-xs transition active:scale-98 border border-white/20 cursor-pointer">
                 {isBilingual ? (
                   <>
@@ -256,79 +274,205 @@ export function CustomerHome() {
           </Link>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-5">
-          {services.map(([icon, key, slug]) => {
-            return (
-              <Card
-                key={key}
-                className="group flex flex-col justify-between p-4 transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-md"
-              >
-                {/* Clicking main card goes to services/[service]/page.tsx */}
-                <Link href={`/services/${slug}`} className="block text-center sm:text-left">
-                  <span className="text-3xl sm:text-4xl">{icon}</span>
-                  {isBilingual ? (
-                    <div className="mt-3">
-                      <p className="text-sm font-extrabold text-slate-900 group-hover:text-blue-700 sm:text-base leading-snug">
-                        {t(`service.${key}`)}
-                      </p>
-                      <p className="mt-0.5 text-xs font-bold text-slate-500">
-                        {tKo(`service.${key}`)}
-                      </p>
-                    </div>
-                  ) : (
-                    <p className="mt-3 text-sm font-extrabold text-slate-900 group-hover:text-blue-700 sm:text-base">
-                      {t(`service.${key}`)}
+        {/* 1. Large Consolidated Major Service Cards */}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {mainConsolidatedServices.map((svc) => (
+            <Card
+              key={svc.key}
+              className="group relative flex flex-col justify-between p-5 sm:p-6 transition duration-200 hover:-translate-y-1 hover:border-blue-500 hover:shadow-lg border-2 border-blue-100 bg-white"
+            >
+              <Link href={`/services/${svc.slug}`} className="block">
+                {/* Multi-icons displayed together */}
+                <div className="flex items-center gap-2 text-3xl sm:text-4xl bg-blue-50/80 p-2.5 rounded-2xl w-fit border border-blue-100">
+                  {svc.icons.map((ic, i) => (
+                    <span key={i} className="hover:scale-110 transition-transform">
+                      {ic}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-4">
+                  <span className="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-black text-blue-800 mb-1.5">
+                    {t("customer.priorityEmergency")}
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-blue-700 leading-snug">
+                    {t(`service.${svc.key}`)}
+                  </h3>
+                  {isBilingual && locale !== "ko" && (
+                    <p className="mt-1 text-xs font-bold text-slate-500">
+                      {svc.ko}
                     </p>
+                  )}
+                  <p className="mt-1.5 text-xs text-slate-600 leading-relaxed font-medium">
+                    {t(`serviceDesc.${svc.key}`)}
+                  </p>
+                </div>
+              </Link>
+
+              {/* Action Buttons */}
+              <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-slate-100 pt-4">
+                <Link
+                  href={`/services/${svc.slug}`}
+                  className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-3 py-2.5 text-center transition hover:bg-slate-200"
+                  title={formatBilingual(t("common.detail"), "상세")}
+                >
+                  {isBilingual ? (
+                    <>
+                      <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
+                        {t("common.detail")}
+                      </span>
+                      <span className="mt-0.5 text-[10px] font-semibold text-slate-500">
+                        상세 안내
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-xs sm:text-sm font-bold text-slate-800 py-1">
+                      {t("common.detail")}
+                    </span>
                   )}
                 </Link>
 
-                {/* 2-line centered action buttons with generous padding */}
+                <Link
+                  href={`/request?service=${svc.slug}`}
+                  className="flex flex-col items-center justify-center rounded-xl bg-blue-700 px-3 py-2.5 text-center text-white transition hover:bg-blue-800 shadow-md shadow-blue-700/20"
+                  title={formatBilingual(t("common.apply"), "신청")}
+                >
+                  {isBilingual ? (
+                    <>
+                      <span className="text-xs sm:text-sm font-black leading-snug">
+                        {t("common.apply")}
+                      </span>
+                      <span className="mt-0.5 text-[10px] font-bold text-blue-200">
+                        즉시 신청
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-xs sm:text-sm font-black py-1">
+                      {t("common.apply")}
+                    </span>
+                  )}
+                </Link>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* 2. Standard Services (Boiler, Cleaning, Housing) */}
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          {standardServices.map(([icon, key, slug]) => (
+            <Card
+              key={key}
+              className="group flex flex-col justify-between p-4 transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-md border border-slate-200 bg-white"
+            >
+              <Link href={`/services/${slug}`} className="block">
+                <span className="text-3xl sm:text-4xl">{icon}</span>
+                <div className="mt-3">
+                  <p className="text-sm font-extrabold text-slate-900 group-hover:text-blue-700 sm:text-base leading-snug">
+                    {t(`service.${key}`)}
+                  </p>
+                  {isBilingual && locale !== "ko" && (
+                    <p className="mt-0.5 text-xs font-bold text-slate-500">
+                      {tKo(`service.${key}`)}
+                    </p>
+                  )}
+                </div>
+              </Link>
+
+              <div className="mt-4 grid grid-cols-2 gap-2 border-t border-slate-100 pt-3">
+                <Link
+                  href={`/services/${slug}`}
+                  className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-2 py-2 text-center transition hover:bg-slate-200"
+                >
+                  <span className="text-xs font-bold text-slate-800">{t("common.detail")}</span>
+                </Link>
+                <Link
+                  href={`/request?service=${slug}`}
+                  className="flex flex-col items-center justify-center rounded-xl bg-blue-700 px-2 py-2 text-center text-white transition hover:bg-blue-800 shadow-xs"
+                >
+                  <span className="text-xs font-extrabold">{t("common.apply")}</span>
+                </Link>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* 3. 5 New Life Assistance Support Services (050 Safe Virtual Phone System) */}
+        <div className="mt-12">
+          <div className="rounded-3xl border border-indigo-200 bg-gradient-to-r from-blue-50 via-indigo-50/50 to-purple-50 p-5 sm:p-6 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-3 py-1 text-xs font-extrabold text-white shadow-xs">
+                  <span>🔒</span>
+                  <span>{t("customer.safe050Badge")}</span>
+                </div>
+                <h3 className="mt-2 text-xl sm:text-2xl font-black text-slate-900">
+                  {t("customer.lifeSupportTitle")}
+                </h3>
+                <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+                  {t("customer.lifeSupportDesc")}
+                </p>
+              </div>
+
+              <div className="shrink-0">
+                <Link
+                  href="/support/bank-help"
+                  className="inline-flex items-center gap-1.5 rounded-2xl bg-indigo-700 px-4 py-2.5 text-xs sm:text-sm font-black text-white hover:bg-indigo-800 transition shadow-sm"
+                >
+                  <span>{t("customer.partnerRegisterLink")}</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+            {lifeSupportServices.map(([icon, key, slug]) => (
+              <Card
+                key={key}
+                className="group flex flex-col justify-between p-4 transition duration-200 hover:-translate-y-1 hover:border-indigo-400 hover:shadow-lg border-2 border-indigo-100 bg-white"
+              >
+                <Link href={`/support/${slug}`} className="block">
+                  <div className="flex items-center justify-between">
+                    <span className="text-3xl sm:text-4xl">{icon}</span>
+                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-extrabold text-amber-800">
+                      🔒 {t("customer.safe050Tag")}
+                    </span>
+                  </div>
+                  <div className="mt-3">
+                    <p className="text-sm font-extrabold text-slate-900 group-hover:text-indigo-700 sm:text-base leading-snug">
+                      {t(`service.${key}`)}
+                    </p>
+                    {isBilingual && locale !== "ko" && (
+                      <p className="mt-0.5 text-xs font-bold text-slate-500">
+                        {tKo(`service.${key}`)}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+
                 <div className="mt-4 grid grid-cols-2 gap-2 border-t border-slate-100 pt-3">
                   <Link
-                    href={`/services/${slug}`}
+                    href={`/support/${slug}`}
                     className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-2 py-2 text-center transition hover:bg-slate-200"
-                    title={formatBilingual(t("common.detail"), "상세")}
+                    title={t("common.detail")}
                   >
-                    {isBilingual ? (
-                      <>
-                        <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
-                          {t("common.detail")}
-                        </span>
-                        <span className="mt-0.5 text-[10px] sm:text-xs font-semibold text-slate-500">
-                          상세
-                        </span>
-                      </>
-                    ) : (
-                      <span className="text-xs sm:text-sm font-bold text-slate-800 py-1">
-                        {t("common.detail")}
-                      </span>
-                    )}
+                    <span className="text-xs font-bold text-slate-800">
+                      {t("common.detail")}
+                    </span>
                   </Link>
 
                   <Link
-                    href={`/request?service=${slug}`}
-                    className="flex flex-col items-center justify-center rounded-xl bg-blue-700 px-2 py-2 text-center text-white transition hover:bg-blue-800 shadow-xs"
-                    title={formatBilingual(t("common.apply"), "신청")}
+                    href={`/support/${slug}`}
+                    className="flex flex-col items-center justify-center rounded-xl bg-indigo-700 px-2 py-2 text-center text-white transition hover:bg-indigo-800 shadow-xs"
+                    title={t("common.safeApply")}
                   >
-                    {isBilingual ? (
-                      <>
-                        <span className="text-xs sm:text-sm font-extrabold leading-snug">
-                          {t("common.apply")}
-                        </span>
-                        <span className="mt-0.5 text-[10px] sm:text-xs font-bold text-blue-200">
-                          신청
-                        </span>
-                      </>
-                    ) : (
-                      <span className="text-xs sm:text-sm font-extrabold py-1">
-                        {t("common.apply")}
-                      </span>
-                    )}
+                    <span className="text-xs font-extrabold">
+                      {t("common.safeApply")}
+                    </span>
                   </Link>
                 </div>
               </Card>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </section>
 
