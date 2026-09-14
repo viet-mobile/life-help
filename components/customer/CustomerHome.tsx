@@ -37,7 +37,7 @@ export function CustomerHome() {
   return (
     <main className="min-h-screen bg-slate-50">
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-xs">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-4 sm:px-5 sm:py-3.5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-4 sm:px-5 sm:py-2.5 md:py-3">
           <div className="flex items-center gap-1.5 sm:gap-4 shrink-0 min-w-0">
             <Link
               href="/"

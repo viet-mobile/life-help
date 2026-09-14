@@ -15,6 +15,8 @@ const USER_LOGOS = {
   china: path.join(UPLOAD_DIR, "media_1789352319905.png"),
   indonesia: path.join(UPLOAD_DIR, "media_1789352319902.png"),
   vietnam: path.join(UPLOAD_DIR, "media_1789354426604.png"),
+  taiwan: path.join(UPLOAD_DIR, "media_1789379643138.png"),
+  russia: path.join(UPLOAD_DIR, "media_1789379799750.png"),
 };
 
 // All countries from proxy.ts
@@ -192,9 +194,27 @@ async function main() {
   await saveVariants(vietnam512, "vietnam");
   console.log("   -> Vietnam created from authentic user image.");
 
+  // Taiwan (User uploaded authentic file media_1789379643138.png)
+  const taiwan512 = await sharp(USER_LOGOS.taiwan)
+    .extract({ left: 124, top: 119, width: 790, height: 790 })
+    .resize(512, 512)
+    .png()
+    .toBuffer();
+  await saveVariants(taiwan512, "taiwan");
+  console.log("   -> Taiwan created from authentic user image.");
+
+  // Russia (User uploaded authentic file media_1789379799750.png)
+  const russia512 = await sharp(USER_LOGOS.russia)
+    .extract({ left: 124, top: 119, width: 790, height: 790 })
+    .resize(512, 512)
+    .png()
+    .toBuffer();
+  await saveVariants(russia512, "russia");
+  console.log("   -> Russia created from authentic user image.");
+
   console.log("3. Generating other country logos with matching full-width typography...");
   for (const [slug, displayName] of Object.entries(COUNTRY_DISPLAY_NAMES)) {
-    if (["korea", "japan", "china", "indonesia", "vietnam"].includes(slug)) {
+    if (["korea", "japan", "china", "indonesia", "vietnam", "taiwan", "russia"].includes(slug)) {
       continue; // user authentic files
     }
 

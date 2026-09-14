@@ -14,20 +14,20 @@ export interface BrandLogoProps {
 
 const SIZE_MAP = {
   sm: {
-    classes: "h-7 w-7 sm:h-8 sm:w-8",
-    pixelSize: 32,
-  },
-  md: {
     classes: "h-8 w-8 sm:h-9 sm:w-9",
-    pixelSize: 36,
-  },
-  lg: {
-    classes: "h-10 w-10 sm:h-12 sm:w-12",
     pixelSize: 48,
   },
+  md: {
+    classes: "h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16",
+    pixelSize: 96,
+  },
+  lg: {
+    classes: "h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24",
+    pixelSize: 128,
+  },
   xl: {
-    classes: "h-14 w-14 sm:h-16 sm:w-16",
-    pixelSize: 64,
+    classes: "h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32",
+    pixelSize: 160,
   },
 };
 
@@ -56,7 +56,7 @@ export function BrandLogo({
         width={sizeConfig.pixelSize}
         height={sizeConfig.pixelSize}
         priority={priority}
-        className="h-full w-full object-contain rounded-md shadow-xs transition-transform duration-150 hover:scale-105"
+        className="h-full w-full object-contain rounded-lg shadow-xs transition-transform duration-150 hover:scale-105"
       />
     </span>
   );
