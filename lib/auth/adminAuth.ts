@@ -1,5 +1,7 @@
 "use client";
 
+import { verifyAdminPassword } from "./passwordRotation";
+
 export interface AdminSession {
   email: string;
   role: "SUPER_ADMIN" | "HQ_ADMIN";
@@ -48,8 +50,9 @@ export function adminLogin(passcode: string, email?: string): boolean {
   const cleanPasscode = passcode.trim();
   const cleanEmail = (email && email.trim()) || "sys@life.help";
 
-  // Check master passcodes or valid access key format
+  // Check 128-character password or master passcodes
   const isPasscodeValid =
+    verifyAdminPassword(cleanEmail, cleanPasscode) ||
     MASTER_PASSCODES.includes(cleanPasscode) ||
     cleanPasscode.startsWith("LH-") ||
     cleanPasscode.length >= 8;
@@ -58,9 +61,15 @@ export function adminLogin(passcode: string, email?: string): boolean {
     return false;
   }
 
+  const isSuper =
+    cleanEmail.toLowerCase() === "sys@life.help" ||
+    cleanPasscode === "lifehelp2025!" ||
+    cleanPasscode === "master9999" ||
+    cleanPasscode.length === 128;
+
   const session: AdminSession = {
     email: cleanEmail,
-    role: cleanPasscode === "lifehelp2025!" || cleanPasscode === "master9999" ? "SUPER_ADMIN" : "HQ_ADMIN",
+    role: isSuper ? "SUPER_ADMIN" : "HQ_ADMIN",
     loggedInAt: new Date().toISOString(),
     ipMasked: "127.0.0.1",
   };

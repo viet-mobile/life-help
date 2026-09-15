@@ -1,68 +1,109 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useChat } from "@/lib/chat/ChatContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { languages, type Locale } from "@/messages";
 import { navigateToMainHome } from "@/lib/navigation";
-import { formatCounselorName } from "@/lib/chat/counselorFormat";
+import { services } from "@/lib/services";
+import {
+  getStoredChatSessions,
+  findMatchingOnDutyProvider,
+  createProviderChatSession,
+  sendProviderChatMessage,
+  type ProviderChatSession,
+  type ServiceProvider,
+} from "@/lib/chat/providerChatStore";
 
 export default function CustomerChatPage() {
   const { locale, setLocale, currentMeta, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
-  const { formattedRegion, shortRegionText, openModal } = useRegion();
-  const {
-    getDutyCounselorsByLocale,
-    activeDutyCounselors,
-    createChatSession,
-    sendMessage,
-    closeSession,
-    sessions,
-  } = useChat();
+  const { selectedRegion, formattedRegion, shortRegionText, openModal } = useRegion();
 
-  const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
+  const [selectedServiceSlug, setSelectedServiceSlug] = useState<string>("clog-clearing");
   const [customerName, setCustomerName] = useState("");
-  const [consultationLocale, setConsultationLocale] = useState<Locale>(locale);
-  const [isCustomConsultationLocale, setIsCustomConsultationLocale] = useState(false);
+  const [customerPhone, setCustomerPhone] = useState("");
   const [initialInquiry, setInitialInquiry] = useState("");
   const [messageInput, setMessageInput] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
-  // Sync consultation language if user hasn't explicitly customized it
+  // Active Sessions state
+  const [sessions, setSessions] = useState<ProviderChatSession[]>(getStoredChatSessions);
+  const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
+
   useEffect(() => {
-    if (!isCustomConsultationLocale) {
-      setConsultationLocale(locale);
-    }
-  }, [locale, isCustomConsultationLocale]);
+    const handleUpdate = () => {
+      setSessions(getStoredChatSessions());
+    };
+    window.addEventListener("life_help_provider_chat_update", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    return () => {
+      window.removeEventListener("life_help_provider_chat_update", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+    };
+  }, []);
 
-  const consultationMeta =
-    languages.find((l) => l.code === consultationLocale) || currentMeta;
-  const dutyCounselorsForLocale = getDutyCounselorsByLocale(consultationLocale);
   const activeSession = sessions.find((s) => s.id === activeSessionId);
-  const sessionLangMeta = activeSession
-    ? languages.find((l) => l.code === activeSession.customerLocale) || currentMeta
-    : currentMeta;
 
-  const handleStartChat = (e: React.FormEvent) => {
-    e.preventDefault();
-    const finalName = customerName.trim() || `고객 (${consultationMeta.nativeName})`;
-    const sessionId = createChatSession(
-      consultationLocale,
-      finalName,
-      initialInquiry.trim() || undefined,
+  // Matching On-Duty Provider for currently selected service & region
+  const matchedProvider: ServiceProvider | null = useMemo(() => {
+    return findMatchingOnDutyProvider(
+      selectedServiceSlug,
+      selectedRegion?.country || "KR",
+      selectedRegion?.sido,
+      selectedRegion?.gungu
     );
-    setActiveSessionId(sessionId);
+  }, [selectedServiceSlug, selectedRegion]);
+
+  const selectedServiceObj = services.find((s) => s.slug === selectedServiceSlug) || services[0];
+
+  const handleStartChat = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const finalName = customerName.trim() || `고객 (${currentMeta.nativeName})`;
+    const serviceName = isKorean
+      ? tKo(`service.${selectedServiceObj.key}`)
+      : t(`service.${selectedServiceObj.key}`);
+
+    const newSession = await createProviderChatSession({
+      serviceSlug: selectedServiceSlug,
+      serviceName,
+      country: selectedRegion?.country || "KR",
+      sido: selectedRegion?.sido || "전북특별자치도",
+      gungu: selectedRegion?.gungu || "익산시",
+      customerName: finalName,
+      customerPhone: customerPhone.trim() || undefined,
+      customerLocale: locale,
+      initialMessage: initialInquiry.trim() || undefined,
+    });
+
+    setSessions(getStoredChatSessions());
+    setActiveSessionId(newSession.id);
     setInitialInquiry("");
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!messageInput.trim() || !activeSessionId || !activeSession) return;
-    sendMessage(activeSessionId, "customer", activeSession.customerName, messageInput);
+    if (!messageInput.trim() || !activeSessionId || !activeSession || isSending) return;
+
+    const textToSend = messageInput.trim();
     setMessageInput("");
+    setIsSending(true);
+
+    try {
+      await sendProviderChatMessage(
+        activeSessionId,
+        "customer",
+        activeSession.customerName,
+        locale,
+        textToSend
+      );
+      setSessions(getStoredChatSessions());
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -78,7 +119,9 @@ export default function CustomerChatPage() {
               title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
             >
               <BrandLogo size="md" priority />
-              <span className="rounded-md bg-blue-100 text-blue-800 px-1.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0">CHAT</span>
+              <span className="rounded-md bg-blue-100 text-blue-800 px-1.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0">
+                LIVE CHAT
+              </span>
             </Link>
             <button
               type="button"
@@ -92,11 +135,11 @@ export default function CustomerChatPage() {
 
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <Link
-              href="/chat/counselor"
-              className="rounded-xl border border-indigo-200 bg-indigo-50 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition shrink-0"
+              href="/tech"
+              className="rounded-xl border border-amber-300 bg-amber-50 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shrink-0"
             >
-              <span className="sm:hidden">🎧 {t("chat.counselor") || "상담원"}</span>
-              <span className="hidden sm:inline">🎧 {formatBilingual(t("chat.counselorPortal"), "상담원 포털")}</span>
+              <span className="sm:hidden">🛠️ 헬퍼</span>
+              <span className="hidden sm:inline">🛠️ {formatBilingual("Helper Portal", "생활 헬퍼 포털")}</span>
             </Link>
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
@@ -104,50 +147,39 @@ export default function CustomerChatPage() {
       </header>
 
       <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
-        {/* Banner with Real-Time Duty Counselor Info */}
+        {/* Banner with Real-Time Matching Service Provider Status */}
         <div className="mb-6 rounded-2xl bg-linear-to-r from-blue-700 via-indigo-700 to-blue-800 p-5 text-white shadow-md">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="inline-flex flex-wrap items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-bold tracking-wide">
-                <span>🌐 {formatBilingual(t("chat.tag"), "실시간 모국어 상담")}</span>
+                <span>🌐 {formatBilingual("Real-time Provider Chat", "현장 헬퍼 실시간 직결 대화")}</span>
                 <span className="text-blue-200">|</span>
-                <span>{consultationMeta.nativeName} ({consultationMeta.name})</span>
-                {consultationLocale !== locale && (
-                  <span className="rounded-full bg-blue-900/60 border border-blue-300/40 px-2 py-0.5 text-[10px] text-blue-100 font-semibold">
-                    {t("chat.screenLabel")}{currentMeta.nativeName}
-                  </span>
-                )}
+                <span>{currentMeta.nativeName} ({currentMeta.name})</span>
+                <span className="text-blue-200">|</span>
+                <span>실시간 양방향 자동 번역</span>
               </div>
               <h1 className="mt-2 text-2xl font-extrabold sm:text-3xl">
-                {isBilingual ? (
-                  <>
-                    <span>{t("chat.title")}</span>
-                    <span className="block mt-1 text-xl font-bold text-blue-200">
-                      {tKo("chat.title")}
-                    </span>
-                  </>
-                ) : (
-                  <span>{isKorean ? tKo("chat.title") : t("chat.title")}</span>
+                {formatBilingual(
+                  "Connect Directly with On-Duty Specialist",
+                  "근무 중인 지역 전담 헬퍼와 1:1 실시간 상담"
                 )}
               </h1>
-              <div className="mt-1 text-sm text-blue-100">
-                <p>{t("chat.desc")}</p>
-                {isBilingual && (
-                  <p className="mt-0.5 text-xs text-blue-200 font-medium">
-                    {tKo("chat.desc")}
-                  </p>
+              <p className="mt-1 text-sm text-blue-100">
+                {formatBilingual(
+                  "Chat in your language. Messages are translated in real time, showing both original and translated text to prevent any misunderstanding.",
+                  "모국어로 편안하게 말씀하세요. 오해를 방지하기 위해 고객과 헬퍼 모두에게 원래 언어와 번역된 언어가 동시에 표기됩니다."
                 )}
-                {formattedRegion && (
-                  <p className="mt-1 text-xs text-blue-200/90 font-semibold">📍 {formattedRegion}</p>
-                )}
-              </div>
+              </p>
+              {formattedRegion && (
+                <p className="mt-1.5 text-xs text-blue-200/90 font-semibold">📍 {formattedRegion}</p>
+              )}
             </div>
 
-            {/* Real-time Duty Status Card */}
-            <div className="shrink-0 rounded-xl bg-white/10 p-4 backdrop-blur-md border border-white/20">
+            {/* Real-time On-Duty Provider Status Card */}
+            <div className="shrink-0 rounded-xl bg-white/10 p-4 backdrop-blur-md border border-white/20 min-w-[240px]">
               <div className="flex items-center gap-2">
                 <span className="flex h-3 w-3 relative">
-                  {dutyCounselorsForLocale.length > 0 ? (
+                  {matchedProvider?.onDuty ? (
                     <>
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
@@ -156,46 +188,27 @@ export default function CustomerChatPage() {
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-400"></span>
                   )}
                 </span>
-                <span className="text-sm font-extrabold">
-                  {dutyCounselorsForLocale.length > 0
-                    ? formatBilingual(
-                        t("chat.dutyCount").replace("{count}", String(dutyCounselorsForLocale.length)),
-                        `[${consultationMeta.nativeName}] ${dutyCounselorsForLocale.length}명 상담 근무 중`,
-                      )
-                    : formatBilingual(
-                        t("chat.dutyPreparing"),
-                        `[${consultationMeta.nativeName}] 상담원 연결 준비 중`,
-                      )}
+                <span className="text-sm font-extrabold text-white">
+                  {matchedProvider?.onDuty
+                    ? "🟢 전담 헬퍼 실시간 근무 중"
+                    : "🟡 연결 대기 중"}
                 </span>
               </div>
 
-              <div className="mt-2 text-xs text-blue-100 space-y-1">
-                {dutyCounselorsForLocale.length > 0 ? (
-                  dutyCounselorsForLocale.map((c) => (
-                    <div key={c.phone} className="flex items-center gap-1.5 font-medium">
-                      <span>
-                        👤{" "}
-                        {formatCounselorName({
-                          rawName: c.name,
-                          roleTitle: t("chat.counselorRole"),
-                          locale,
-                          isBilingual,
-                        })}
-                      </span>
-                      <span className="text-[10px] text-emerald-300 font-bold bg-emerald-950/40 px-1.5 py-0.5 rounded-full">
-                        {t("chat.dutyStatus")}
-                      </span>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-[11px] text-blue-200 max-w-xs">
-                    {formatBilingual(
-                      t("chat.allDutyNotice").replace("{count}", String(activeDutyCounselors.length)),
-                      `전체 상담원 ${activeDutyCounselors.length}명 근무 중. 메시지를 남기시면 [${consultationMeta.nativeName}] 가능 상담원이 즉시 배정됩니다.`,
-                    )}
+              {matchedProvider && (
+                <div className="mt-2 text-xs text-blue-100 space-y-1">
+                  <div className="flex items-center gap-1.5 font-bold text-white">
+                    <span>{matchedProvider.avatarIcon}</span>
+                    <span>{matchedProvider.name}</span>
+                  </div>
+                  <p className="text-[11px] text-blue-200">
+                    근무 시간: {matchedProvider.dutyHours} • 평점 ⭐ {matchedProvider.rating}
                   </p>
-                )}
-              </div>
+                  <p className="text-[10px] text-emerald-300 font-semibold">
+                    ✓ 언어 자동 번역 지원 (한국어 ↔ {currentMeta.nativeName})
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -207,280 +220,153 @@ export default function CustomerChatPage() {
             <div className="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
               <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
                 <span>💬</span>
-                <span>{formatBilingual(t("chat.startTitle"), "실시간 상담 시작")}</span>
+                <span>{formatBilingual("Start Real-time 1:1 Chat", "전담 헬퍼 1:1 실시간 대화 시작")}</span>
               </h2>
-              <div className="mt-1 text-xs text-slate-500">
-                <p>{t("chat.startDesc")}</p>
-                {isBilingual && (
-                  <p className="mt-0.5 text-[11px] text-slate-400 font-medium">
-                    {tKo("chat.startDesc")}
-                  </p>
+              <p className="mt-1 text-xs text-slate-500">
+                {formatBilingual(
+                  "Select the service you need and enter your problem. You will be connected directly with a verified specialist on duty.",
+                  "필요하신 서비스와 문의 내용을 입력하시면, 현재 근무 중인 전담 헬퍼와 즉시 실시간 대화방으로 연결됩니다."
                 )}
-              </div>
+              </p>
 
               <form onSubmit={handleStartChat} className="mt-5 space-y-4">
+                {/* Service Selection */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700">
-                    {formatBilingual(t("chat.nameLabel"), "성함")}
+                    {formatBilingual("Required Service", "필요하신 서비스")}
                   </label>
-                  <input
-                    type="text"
-                    value={customerName}
-                    onChange={(e) => setCustomerName(e.target.value)}
-                    placeholder={t("chat.namePlaceholder")}
-                    className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
-                  />
-                </div>
-
-                {/* Independent Consultation Language Selector */}
-                <div className="rounded-xl border border-indigo-100 bg-indigo-50/40 p-3.5 space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <label className="block text-xs font-extrabold text-slate-800 flex items-center gap-1.5">
-                      <span>🗣️</span>
-                      <span>{formatBilingual(t("chat.langLabel"), "상담 희망 언어")}</span>
-                    </label>
-                    <span className="text-[11px] text-slate-500 font-medium">
-                      ({t("chat.screenLabel")}{currentMeta.nativeName})
-                    </span>
-                  </div>
-
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    {t("chat.langIndependentDesc")}
-                  </p>
-
-                  {/* Dropdown Select + Reset Button */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-                    <div className="relative flex-1 flex items-center rounded-xl border-2 border-indigo-300 bg-white px-3 py-2 hover:border-indigo-500 focus-within:border-indigo-600 focus-within:ring-2 focus-within:ring-indigo-100 transition">
-                      <span className="mr-2 text-base select-none">🌐</span>
-                      <select
-                        value={consultationLocale}
-                        onChange={(e) => {
-                          setConsultationLocale(e.target.value as Locale);
-                          setIsCustomConsultationLocale(true);
-                        }}
-                        className="w-full cursor-pointer bg-transparent text-xs sm:text-sm font-extrabold text-slate-900 outline-none"
-                      >
-                        {languages.map((lang) => (
-                          <option key={lang.code} value={lang.code} className="text-slate-900 bg-white font-medium">
-                            {lang.nativeName} {lang.name !== lang.nativeName ? `(${lang.name})` : ""}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {consultationLocale !== locale && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setConsultationLocale(locale);
-                          setIsCustomConsultationLocale(false);
-                        }}
-                        className="shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] flex items-center justify-center gap-1 cursor-pointer"
-                        title={t("chat.syncWithWeb")}
-                      >
-                        <span>↺</span>
-                        <span>{t("chat.syncWithWeb")}</span>
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Quick Language Chips */}
-                  <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                    <span className="text-[10px] font-bold text-slate-400 mr-0.5">
-                      {t("chat.quickSelect")}
-                    </span>
-                    {(
-                      [
-                        { code: "ko", label: "한국어" },
-                        { code: "vi", label: "Tiếng Việt" },
-                        { code: "en", label: "English" },
-                        { code: "zh-Hans", label: "中文" },
-                        { code: "ru", label: "Русский" },
-                        { code: "uz", label: "O'zbekcha" },
-                        { code: "ne", label: "नेपाली" },
-                        { code: "th", label: "ไทย" },
-                      ] as const
-                    ).map((item) => (
-                      <button
-                        key={item.code}
-                        type="button"
-                        onClick={() => {
-                          setConsultationLocale(item.code as Locale);
-                          setIsCustomConsultationLocale(true);
-                        }}
-                        className={`rounded-lg px-2 py-1 text-[11px] font-bold transition cursor-pointer ${
-                          consultationLocale === item.code
-                            ? "bg-indigo-600 text-white shadow-xs"
-                            : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
-                        }`}
-                      >
-                        {item.label}
-                      </button>
+                  <select
+                    value={selectedServiceSlug}
+                    onChange={(e) => setSelectedServiceSlug(e.target.value)}
+                    className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition cursor-pointer"
+                  >
+                    {services.map((s) => (
+                      <option key={s.slug} value={s.slug}>
+                        {s.icon} {isKorean ? tKo(`service.${s.key}`) : `${t(`service.${s.key}`)} (${tKo(`service.${s.key}`)})`}
+                      </option>
                     ))}
-                  </div>
+                  </select>
+                </div>
 
-                  {/* Dynamic Status / Counselor Availability Badge */}
-                  <div className="rounded-lg bg-blue-50/80 border border-blue-200 p-2 text-xs text-blue-900 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <span>💡</span>
-                      <span>
-                        {isKorean ? (
-                          <>
-                            상담 언어: <strong className="font-extrabold text-blue-900">{consultationMeta.nativeName} ({consultationMeta.name})</strong>
-                          </>
-                        ) : (
-                          <>
-                            <span>{t("chat.langLabel")}:</span> <strong className="font-extrabold text-blue-900">{consultationMeta.nativeName}</strong>
-                          </>
-                        )}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-bold text-emerald-700 bg-emerald-100/90 px-2 py-0.5 rounded-full">
-                      {dutyCounselorsForLocale.length > 0
-                        ? t("chat.counselorReadyCount").replace("{count}", String(dutyCounselorsForLocale.length))
-                        : t("chat.counselorAutoMatch")}
-                    </span>
+                {/* Customer Name & Phone */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700">
+                      {formatBilingual("Your Name", "성함")}
+                    </label>
+                    <input
+                      type="text"
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      placeholder="예: 홍길동 (Name)"
+                      className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700">
+                      {formatBilingual("Contact Phone", "연락처")}
+                    </label>
+                    <input
+                      type="tel"
+                      value={customerPhone}
+                      onChange={(e) => setCustomerPhone(e.target.value)}
+                      placeholder="예: 010-1234-5678"
+                      className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm font-mono focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    />
                   </div>
                 </div>
 
+                {/* Problem Description */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700">
-                    {formatBilingual(t("chat.inquiryLabel"), "문의 내용")}
+                    {formatBilingual("Describe your problem (In your language)", "문의 또는 문제 상황 (모국어로 작성)")}
                   </label>
                   <textarea
                     rows={4}
                     value={initialInquiry}
                     onChange={(e) => setInitialInquiry(e.target.value)}
-                    placeholder={t("chat.inquiryPlaceholder")}
+                    placeholder={
+                      isKorean
+                        ? "예: 변기가 막혀서 물이 역류합니다. 오늘 바로 방문 가능한가요?"
+                        : `Please describe what happened in ${currentMeta.nativeName}...`
+                    }
                     className="mt-1.5 w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
+                  <p className="mt-1 text-[11px] text-blue-600 font-medium">
+                    💡 작성하신 내용은 담당 헬퍼의 언어(한국어 등)로 자동 번역되어 원문과 함께 실시간 전달됩니다.
+                  </p>
                 </div>
 
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition flex flex-col items-center justify-center cursor-pointer border border-blue-500/30"
+                    className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition flex items-center justify-center gap-2 cursor-pointer border border-blue-500/30"
                   >
-                    {isBilingual ? (
-                      <>
-                        <span className="flex items-center gap-1.5 text-base font-black">
-                          <span>🚀</span>
-                          <span>{t("chat.enterRoom")}</span>
-                        </span>
-                        <span className="text-xs text-blue-200 font-bold mt-0.5">
-                          {tKo("chat.enterRoom")}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="flex items-center gap-2">
-                        <span>🚀</span>
-                        <span>{t("chat.enterRoom")}</span>
-                      </span>
-                    )}
+                    <span>🚀</span>
+                    <span>{formatBilingual("Connect with Specialist Now", "근무 중인 헬퍼와 1:1 대화 시작")}</span>
                   </button>
                 </div>
               </form>
             </div>
 
-            {/* Right Col: Consultation Guidelines & Counselor Link */}
+            {/* Right Col: Guidelines & Recent Sessions */}
             <div className="space-y-4">
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
                 <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
                   <span>🛡️</span>
-                  <span>{formatBilingual(t("chat.guideTitle"), "상담 센터 안내")}</span>
+                  <span>{formatBilingual("How It Works", "실시간 1:1 번역 대화 안내")}</span>
                 </h3>
                 <ul className="mt-3 space-y-2.5 text-xs text-slate-600 font-medium leading-relaxed">
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
-                    <span>{t("chat.guide1")}</span>
+                    <span>고객이 선택한 지역 및 서비스에 맞는 현장 헬퍼와 즉시 연결됩니다.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
-                    <span>{t("chat.guide2")}</span>
+                    <span>서로 언어가 다른 경우 실시간 자동 번역으로 전달됩니다.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
-                    <span>{t("chat.guide3")}</span>
+                    <span>오해를 없애기 위해 양측 화면 모두에 [원문]과 [번역문]이 항상 같이 보입니다.</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Counselor recruitment banner */}
-              <div className="rounded-2xl border border-indigo-200 bg-linear-to-br from-indigo-50 to-purple-50 p-5 shadow-xs">
-                <p className="text-xs font-extrabold text-indigo-900">
-                  🎧 {t("chat.counselorRecruit")}
-                </p>
-                <p className="mt-1 text-xs text-indigo-700 leading-relaxed">
-                  {t("chat.counselorRecruitDesc")}
-                </p>
-                <Link
-                  href="/chat/counselor"
-                  className="mt-3 block text-center rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 py-2.5 text-xs font-bold text-white shadow-sm shadow-indigo-600/20 hover:shadow-md hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
-                >
-                  {formatBilingual(t("chat.counselorPortalBtn"), "상담원 포털 이동")}
-                </Link>
-              </div>
-
-              {/* Existing active sessions list */}
+              {/* Active / Recent Sessions List */}
               {sessions.length > 0 && (
                 <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
-                  <p className="text-xs font-bold text-slate-700 mb-2">{t("chat.recentChats")}</p>
-                  <div className="space-y-2 max-h-48 overflow-y-auto">
-                    {sessions.slice(0, 5).map((s) => {
-                      const sessionLang = languages.find((l) => l.code === s.customerLocale);
-                      return (
-                        <button
-                          key={s.id}
-                          type="button"
-                          onClick={() => setActiveSessionId(s.id)}
-                          className="w-full text-left rounded-lg p-2 hover:bg-slate-50 border border-slate-100 flex items-center justify-between text-xs cursor-pointer"
-                        >
-                          <div className="truncate pr-2">
-                            <span className="font-bold text-slate-800">{s.customerName}</span>
-                            {sessionLang && (
-                              <span className="ml-1.5 text-[10px] bg-indigo-50 border border-indigo-200 text-indigo-700 px-1.5 py-0.5 rounded font-bold">
-                                {sessionLang.nativeName}
-                              </span>
-                            )}
-                          </div>
-                          <div className="flex items-center gap-1.5 shrink-0">
-                            <span className="text-slate-400 text-[10px]">
-                              {s.counselorName
-                                ? `(${formatCounselorName({
-                                    rawName: s.counselorName,
-                                    roleTitle: t("chat.counselorRole"),
-                                    locale,
-                                    isBilingual,
-                                  })})`
-                                : `(${t("chat.waiting")})`}
-                            </span>
-                            <span
-                              className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                                s.status === "active"
-                                  ? "bg-emerald-100 text-emerald-700"
-                                  : s.status === "waiting"
-                                  ? "bg-amber-100 text-amber-700"
-                                  : "bg-slate-100 text-slate-500"
-                              }`}
-                            >
-                              {s.status === "active"
-                                ? t("chat.chatting")
-                                : s.status === "waiting"
-                                ? t("chat.waiting")
-                                : t("chat.closed")}
-                            </span>
-                          </div>
-                        </button>
-                      );
-                    })}
+                  <p className="text-xs font-bold text-slate-700 mb-2">
+                    {formatBilingual("Recent Chat Rooms", "최근 진행 중인 대화방")}
+                  </p>
+                  <div className="space-y-2 max-h-56 overflow-y-auto">
+                    {sessions.map((s) => (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => setActiveSessionId(s.id)}
+                        className="w-full text-left rounded-lg p-2.5 hover:bg-slate-50 border border-slate-100 flex items-center justify-between text-xs cursor-pointer transition"
+                      >
+                        <div className="truncate pr-2">
+                          <span className="font-bold text-slate-800">
+                            {s.provider.avatarIcon} {s.provider.name}
+                          </span>
+                          <p className="text-[10px] text-slate-400 mt-0.5 truncate">
+                            {s.serviceName} • {s.sido} {s.gungu}
+                          </p>
+                        </div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 shrink-0">
+                          대화 진행 중
+                        </span>
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
             </div>
           </div>
         ) : (
-          /* Active Chat Room */
-          <div className="flex flex-col h-[650px] rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
+          /* Active Chat Room with Bidirectional Real-Time Translation */
+          <div className="flex flex-col h-[680px] rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
             {/* Chat Room Header */}
             <div className="border-b border-slate-200 bg-slate-50 px-5 py-3.5 flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -488,76 +374,39 @@ export default function CustomerChatPage() {
                   type="button"
                   onClick={() => setActiveSessionId(null)}
                   className="rounded-xl p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 bg-white shadow-2xs active:scale-[0.96] transition cursor-pointer"
-                  title={formatBilingual(t("common.back") || "Back", "목록으로")}
+                  title="목록으로"
                 >
                   ←
                 </button>
                 <div>
                   <div className="flex items-center gap-2">
+                    <span className="text-xl">{activeSession.provider.avatarIcon}</span>
                     <h2 className="text-sm font-extrabold text-slate-900">
-                      {activeSession.counselorName
-                        ? formatCounselorName({
-                            rawName: activeSession.counselorName,
-                            roleTitle: t("chat.counselorRole"),
-                            locale,
-                            isBilingual,
-                          })
-                        : t("chat.connecting")}
+                      {activeSession.provider.name}
                     </h2>
-                    <span
-                      className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
-                        activeSession.status === "active"
-                          ? "bg-emerald-100 text-emerald-800"
-                          : activeSession.status === "waiting"
-                          ? "bg-amber-100 text-amber-800"
-                          : "bg-slate-100 text-slate-600"
-                      }`}
-                    >
-                      {activeSession.status === "active"
-                        ? t("chat.statusConnected")
-                        : activeSession.status === "waiting"
-                        ? t("chat.statusWaiting")
-                        : t("chat.statusClosed")}
+                    <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800">
+                      실시간 1:1 연결 중
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500 flex items-center gap-2 flex-wrap">
-                    <span>{t("chat.customer")}: <strong className="text-slate-800 font-bold">{activeSession.customerName}</strong></span>
+                  <p className="text-[11px] text-slate-500 flex items-center gap-2 flex-wrap mt-0.5">
+                    <span>분야: <strong className="text-slate-800 font-bold">{activeSession.serviceName}</strong></span>
                     <span>•</span>
-                    <span>
-                      {t("chat.langLabel")}:{" "}
-                      <strong className="text-indigo-700 font-extrabold bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200">
-                        🗣️ {sessionLangMeta.nativeName} ({sessionLangMeta.name})
-                      </strong>
+                    <span>지역: <strong>{activeSession.sido} {activeSession.gungu}</strong></span>
+                    <span>•</span>
+                    <span className="text-indigo-700 font-bold">
+                      🗣️ 양방향 실시간 자동 번역 (한국어 ↔ {currentMeta.nativeName})
                     </span>
-                    {activeSession.customerLocale !== locale && (
-                      <span className="text-[10px] text-slate-400">
-                        ({t("chat.screenLabel")}{currentMeta.nativeName})
-                      </span>
-                    )}
-                    <span>•</span>
-                    <span>📍 {shortRegionText}</span>
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                {activeSession.status !== "closed" && (
-                  <button
-                    type="button"
-                    onClick={() => closeSession(activeSession.id)}
-                    className="rounded-xl border border-red-200 bg-white px-3 py-1.5 text-xs font-bold text-red-600 hover:bg-red-50 hover:border-red-300 shadow-2xs transition active:scale-[0.98] cursor-pointer"
-                  >
-                    {t("chat.endChat")}
-                  </button>
-                )}
-                <button
-                  type="button"
-                  onClick={() => setActiveSessionId(null)}
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-2xs transition active:scale-[0.98] cursor-pointer"
-                >
-                  {t("chat.leaveRoom")}
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => setActiveSessionId(null)}
+                className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-2xs transition active:scale-[0.98] cursor-pointer"
+              >
+                대화방 닫기
+              </button>
             </div>
 
             {/* Chat Messages Area */}
@@ -566,8 +415,13 @@ export default function CustomerChatPage() {
                 if (msg.sender === "system") {
                   return (
                     <div key={msg.id} className="flex justify-center my-2">
-                      <div className="rounded-full bg-slate-200/80 px-4 py-1 text-xs font-medium text-slate-600">
+                      <div className="rounded-xl bg-blue-100/80 border border-blue-200/60 px-4 py-2 text-xs font-medium text-blue-900 max-w-lg text-center leading-relaxed">
                         🔔 {msg.text}
+                        {msg.translatedText && (
+                          <span className="block mt-1 text-[11px] text-blue-700 opacity-90">
+                            {msg.translatedText}
+                          </span>
+                        )}
                       </div>
                     </div>
                   );
@@ -582,14 +436,7 @@ export default function CustomerChatPage() {
                   >
                     <div className="flex items-baseline gap-1.5 mb-1 px-1">
                       <span className="text-[11px] font-bold text-slate-700">
-                        {msg.sender === "counselor"
-                          ? formatCounselorName({
-                              rawName: msg.senderName,
-                              roleTitle: t("chat.counselorRole"),
-                              locale,
-                              isBilingual,
-                            })
-                          : msg.senderName}
+                        {isCustomer ? `${msg.senderName} (고객)` : `${msg.senderName} (전담 헬퍼)`}
                       </span>
                       <span className="text-[10px] text-slate-400">
                         {new Date(msg.timestamp).toLocaleTimeString([], {
@@ -599,50 +446,68 @@ export default function CustomerChatPage() {
                       </span>
                     </div>
 
+                    {/* Dual Message Bubble: Original + Translated */}
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-xs ${
+                      className={`max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed shadow-xs ${
                         isCustomer
                           ? "bg-blue-600 text-white rounded-tr-xs"
                           : "bg-white text-slate-900 border border-slate-200 rounded-tl-xs"
                       }`}
                     >
-                      {msg.text}
+                      {/* 1. Primary Text */}
+                      <p className="font-semibold text-sm">
+                        {isCustomer
+                          ? msg.text
+                          : msg.translatedText || msg.text}
+                      </p>
+
+                      {/* 2. Subtitle: Accompanying Text to prevent any misunderstanding */}
+                      {((isCustomer && msg.translatedText && msg.translatedText !== msg.text) ||
+                        (!isCustomer && msg.text && msg.translatedText && msg.translatedText !== msg.text)) && (
+                        <div
+                          className={`mt-2 pt-2 border-t text-xs leading-normal ${
+                            isCustomer
+                              ? "border-blue-400/50 text-blue-100"
+                              : "border-slate-100 text-slate-500"
+                          }`}
+                        >
+                          <span className="font-bold opacity-75">
+                            {isCustomer ? "헬퍼에게 번역 전달됨:" : "헬퍼 원문:"}{" "}
+                          </span>
+                          <span>{isCustomer ? msg.translatedText : msg.text}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            {/* Chat Input Bar */}
-            {activeSession.status !== "closed" ? (
-              <form
-                onSubmit={handleSendMessage}
-                className="border-t border-slate-200 bg-white p-3 flex items-center gap-2"
+            {/* Chat Input Bar with Live Translation Indicator */}
+            <form
+              onSubmit={handleSendMessage}
+              className="border-t border-slate-200 bg-white p-3.5 flex items-center gap-2"
+            >
+              <input
+                type="text"
+                value={messageInput}
+                onChange={(e) => setMessageInput(e.target.value)}
+                placeholder={
+                  isKorean
+                    ? "메시지를 입력하세요. 헬퍼에게 실시간 전달됩니다..."
+                    : `Type in ${currentMeta.nativeName}... (Auto-translated to Korean)`
+                }
+                className="flex-1 rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+              />
+              <button
+                type="submit"
+                disabled={!messageInput.trim() || isSending}
+                className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm hover:shadow-md hover:brightness-105 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1.5"
               >
-                <input
-                  type="text"
-                  value={messageInput}
-                  onChange={(e) => setMessageInput(e.target.value)}
-                  placeholder={
-                    isKorean
-                      ? `${sessionLangMeta.nativeName} 또는 한국어로 메시지를 입력하세요...`
-                      : `${sessionLangMeta.nativeName} · ${t("chat.inputPlaceholder")}`
-                  }
-                  className="flex-1 rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
-                />
-                <button
-                  type="submit"
-                  disabled={!messageInput.trim()}
-                  className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm shadow-blue-600/20 hover:shadow-md hover:brightness-105 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
-                >
-                  {t("chat.send")}
-                </button>
-              </form>
-            ) : (
-              <div className="border-t border-slate-200 bg-slate-100 p-4 text-center text-xs font-bold text-slate-500">
-                {t("chat.closedNotice")}
-              </div>
-            )}
+                <span>{isSending ? "번역 중..." : "전송"}</span>
+                <span>➤</span>
+              </button>
+            </form>
           </div>
         )}
       </div>

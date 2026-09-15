@@ -16,12 +16,15 @@ import {
   romanizeKoreanRegion,
 } from "@/lib/region/regionLocalization";
 import { saveServiceRequest } from "@/lib/request/requestStore";
+import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
+import { languages } from "@/messages";
 
 function RequestPageContent() {
   const searchParams = useSearchParams();
   const slugFromUrl = searchParams.get("service") ?? "";
   const { locale, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
+  const currentMeta = languages.find((l) => l.code === locale);
 
   const { selectedRegion, setRegion, formattedRegion, shortRegionText, openModal } = useRegion();
 
@@ -34,6 +37,20 @@ function RequestPageContent() {
   const [address, setAddress] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [problemDescription, setProblemDescription] = useState<string>("");
+  const [selectedProblemOptions, setSelectedProblemOptions] = useState<string[]>([]);
+  const [translatedResult, setTranslatedResult] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const problemOptions = useMemo(
+    () => getProblemOptionsForService(selectedSlug, locale),
+    [selectedSlug, locale]
+  );
+
+  const toggleProblemOption = (label: string) => {
+    setSelectedProblemOptions((prev) =>
+      prev.includes(label) ? prev.filter((o) => o !== label) : [...prev, label]
+    );
+  };
 
   const service = getService(selectedSlug);
   const isHousing = selectedSlug === "housing" || service?.key === "housing";
@@ -63,6 +80,57 @@ function RequestPageContent() {
   const handleApplyCurrentRegionToAddress = () => {
     const localized = getLocalizedAddress(selectedRegion, locale);
     setAddress(localized);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    let translatedText = problemDescription.trim();
+    if (problemDescription.trim() && locale !== "ko") {
+      try {
+        const res = await fetch("/api/translate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: problemDescription.trim(),
+            from: locale,
+            to: "ko",
+          }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.translatedText) {
+            translatedText = data.translatedText;
+          }
+        }
+      } catch (err) {
+        console.error("Translation request failed:", err);
+      }
+    }
+    setTranslatedResult(translatedText);
+
+    saveServiceRequest({
+      serviceSlug: selectedSlug,
+      serviceName: service
+        ? isKorean
+          ? tKo(`service.${service.key}`)
+          : t(`service.${service.key}`)
+        : "일반 서비스",
+      serviceIcon: service?.icon || "🛠️",
+      description: problemDescription.trim() || (isHousing ? "주거/원룸 탐색 요청" : "긴급 수리 요청"),
+      translatedDescription: translatedText,
+      selectedOptions: selectedProblemOptions,
+      sido: selectedRegion.sido,
+      gungu: selectedRegion.gungu,
+      address: address.trim(),
+      phone: phone.trim(),
+      fileNames: selectedFileNames,
+    });
+
+    setIsSubmitting(false);
+    setSubmitted(true);
   };
 
   if (submitted) {
@@ -104,18 +172,87 @@ function RequestPageContent() {
               {isBilingual ? (
                 <>
                   <span>{t("request.successNotice")}</span>
-                  <span className="block mt-1 opacity-80">현재는 테스트 접수 단계입니다.</span>
+                  <span className="block mt-1 opacity-80">
+                    작성하신 문제 상황이 서비스 제공자의 언어로 정확히 번역되어 원문과 함께 전달되었습니다.
+                  </span>
                 </>
               ) : (
-                <span>{locale === "ko" ? "현재는 테스트 접수 단계입니다." : t("request.successNotice")}</span>
+                <span>
+                  {locale === "ko"
+                    ? "작성하신 문제 상황이 서비스 제공자의 언어로 정확히 번역되어 원문과 함께 전달되었습니다."
+                    : t("request.successNotice")}
+                </span>
               )}
             </div>
-            <Link
-              href="/"
-              className="mt-7 inline-block rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-8 py-4 text-lg font-black text-white shadow-md shadow-blue-600/25 transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] border border-blue-500/30 cursor-pointer"
-            >
-              {formatBilingual(t("request.backHome"), "홈으로 돌아가기")}
-            </Link>
+
+            {/* Selected Options Summary */}
+            {selectedProblemOptions.length > 0 && (
+              <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50/60 p-4 text-left">
+                <p className="text-xs font-black text-blue-950 mb-2">
+                  📋 선택하신 문제 상황 예시 ({selectedProblemOptions.length}건):
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-xs font-semibold text-blue-900">
+                  {selectedProblemOptions.map((opt, i) => (
+                    <li key={i}>{opt}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Self-described Problem & Translation Display */}
+            {problemDescription.trim() && (
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left space-y-2.5">
+                <div>
+                  <span className="text-[11px] font-extrabold text-slate-500 block uppercase">
+                    📝 고객 작성 원문 ({currentMeta?.nativeName || locale}):
+                  </span>
+                  <p className="text-sm font-bold text-slate-900 mt-0.5">
+                    {problemDescription.trim()}
+                  </p>
+                </div>
+                {translatedResult && locale !== "ko" && (
+                  <div className="pt-2 border-t border-slate-200">
+                    <span className="text-[11px] font-extrabold text-emerald-700 block uppercase">
+                      💡 서비스 제공자(헬퍼) 전달 번역문 (한국어):
+                    </span>
+                    <p className="text-sm font-bold text-emerald-950 mt-0.5">
+                      {translatedResult}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Real phone number info */}
+            {phone.trim() && (
+              <div className="mt-4 rounded-xl border border-slate-200 bg-white p-3 text-left">
+                <p className="text-xs font-bold text-slate-500">
+                  {formatBilingual("고객 연락처", "고객 연락처")}:{" "}
+                  <span className="font-mono text-slate-900 font-bold">{phone}</span>
+                </p>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  {formatBilingual(
+                    "선택하신 지역과 서비스에 맞는 현장 헬퍼에게 다이렉트로 전달되어 신속하게 연락드립니다.",
+                    "선택하신 지역과 서비스에 맞는 현장 헬퍼에게 다이렉트로 전달되어 신속하게 연락드립니다."
+                  )}
+                </p>
+              </div>
+            )}
+
+            <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href="/chat"
+                className="w-full sm:w-auto rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-7 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition cursor-pointer text-center"
+              >
+                💬 실시간 1:1 대화 연결
+              </Link>
+              <Link
+                href="/"
+                className="w-full sm:w-auto rounded-2xl border border-slate-300 bg-white px-7 py-3.5 text-base font-bold text-slate-700 hover:bg-slate-100 active:scale-[0.98] transition cursor-pointer text-center"
+              >
+                {formatBilingual(t("request.backHome"), "홈으로 돌아가기")}
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -202,28 +339,7 @@ function RequestPageContent() {
           </div>
         </div>
 
-        <form
-          className="mt-8 space-y-6"
-          onSubmit={(e) => {
-            e.preventDefault();
-            saveServiceRequest({
-              serviceSlug: selectedSlug,
-              serviceName: service
-                ? isKorean
-                  ? tKo(`service.${service.key}`)
-                  : t(`service.${service.key}`)
-                : "일반 서비스",
-              serviceIcon: service?.icon || "🛠️",
-              description: problemDescription.trim() || (isHousing ? "주거/원룸 탐색 요청" : "긴급 수리 요청"),
-              sido: selectedRegion.sido,
-              gungu: selectedRegion.gungu,
-              address: address.trim(),
-              phone: phone.trim(),
-              fileNames: selectedFileNames,
-            });
-            setSubmitted(true);
-          }}
-        >
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {/* Question 1: Problem description OR Housing requirements */}
           <div>
             <label className="block text-base font-bold text-slate-900">
@@ -240,6 +356,72 @@ function RequestPageContent() {
               className="mt-3 min-h-32 w-full rounded-2xl border-2 border-slate-300 bg-white p-4 text-base font-medium text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-600 shadow-2xs"
               placeholder={getProblemPlaceholder()}
             />
+
+            {/* 10~15 Common problem checklist options */}
+            {problemOptions.length > 0 && (
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 sm:p-5">
+                <div className="flex items-center justify-between gap-2">
+                  <div>
+                    <p className="text-sm font-black text-slate-900 flex items-center gap-1.5">
+                      <span>📋</span>
+                      <span>
+                        {formatBilingual(
+                          "자주 발생하는 주요 증상/요청 예시 (선택 가능)",
+                          "자주 발생하는 주요 증상/요청 예시 (선택 가능)"
+                        )}
+                      </span>
+                    </p>
+                    <p className="text-xs font-semibold text-slate-500 mt-0.5">
+                      {formatBilingual(
+                        "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다.",
+                        "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다."
+                      )}
+                    </p>
+                  </div>
+                  {selectedProblemOptions.length > 0 && (
+                    <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-700 shrink-0">
+                      {selectedProblemOptions.length}개 선택
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {problemOptions.map((opt) => {
+                    const isSelected = selectedProblemOptions.includes(opt.translated);
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => toggleProblemOption(opt.translated)}
+                        className={`flex items-start gap-2.5 rounded-xl border p-2.5 text-left transition-all duration-150 cursor-pointer ${
+                          isSelected
+                            ? "border-blue-600 bg-blue-50/80 text-blue-950 font-bold shadow-xs ring-1 ring-blue-600/30"
+                            : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50/60 font-medium"
+                        }`}
+                      >
+                        <span
+                          className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded border text-[10px] font-black ${
+                            isSelected
+                              ? "border-blue-600 bg-blue-600 text-white"
+                              : "border-slate-300 bg-white text-transparent"
+                          }`}
+                        >
+                          ✓
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-xs leading-snug">{opt.translated}</p>
+                          {locale !== "ko" && isBilingual && opt.translated !== opt.ko && (
+                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                              (한국어: {opt.ko})
+                            </p>
+                          )}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Question 2: Housing Region Selector OR Photos */}
@@ -398,9 +580,17 @@ function RequestPageContent() {
 
           <button
             type="submit"
-            className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-6 py-4 text-lg font-black text-white shadow-md shadow-blue-600/25 transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] border border-blue-500/30 cursor-pointer"
+            disabled={isSubmitting}
+            className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-6 py-4 text-lg font-black text-white shadow-md shadow-blue-600/25 transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] border border-blue-500/30 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            {formatBilingual(t("request.submitButton"), "서비스 신청하기")}
+            {isSubmitting ? (
+              <>
+                <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                <span>{formatBilingual("번역 및 접수 중...", "번역 및 접수 중...")}</span>
+              </>
+            ) : (
+              formatBilingual(t("request.submitButton"), "서비스 신청하기")
+            )}
           </button>
         </form>
       </section>

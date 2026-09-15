@@ -6,6 +6,8 @@ export interface ServiceRequest {
   serviceName: string;
   serviceIcon: string;
   description: string;
+  translatedDescription?: string;
+  selectedOptions?: string[];
   sido: string;
   gungu: string;
   address: string;
@@ -102,6 +104,8 @@ export function saveServiceRequest(data: {
   serviceName: string;
   serviceIcon: string;
   description: string;
+  translatedDescription?: string;
+  selectedOptions?: string[];
   sido: string;
   gungu: string;
   address: string;
@@ -115,6 +119,8 @@ export function saveServiceRequest(data: {
     serviceName: data.serviceName,
     serviceIcon: data.serviceIcon,
     description: data.description.trim(),
+    translatedDescription: data.translatedDescription?.trim(),
+    selectedOptions: data.selectedOptions || [],
     sido: data.sido,
     gungu: data.gungu,
     address: data.address.trim(),

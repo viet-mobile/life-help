@@ -51,6 +51,23 @@ import {
   type SupportRequest,
   SUPPORT_CATEGORIES,
 } from "@/lib/support/supportStore";
+import {
+  isCurrentDeviceApproved,
+  getCurrentDeviceId,
+  getRegisteredDevices,
+  approveDevice,
+  rejectDevice,
+  deleteDevice,
+  forceRegisterCurrentDeviceAsSuperAdmin,
+  type DeviceRegistration,
+} from "@/lib/auth/deviceAuth";
+import {
+  getAdminCredentials,
+  forceRotatePasswordsNow,
+  getEmailDispatchLogs,
+  type AdminCredential,
+  type EmailDispatchLog,
+} from "@/lib/auth/passwordRotation";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -59,6 +76,15 @@ export default function AdminPage() {
   // Auth session check
   const [adminSession, setAdminSession] = useState<AdminSession | null>(null);
   const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  // Device Security & 128-Char Password State
+  const [isDeviceApprovedState, setIsDeviceApprovedState] = useState(true);
+  const [currentDeviceId, setCurrentDeviceId] = useState("");
+  const [devices, setDevices] = useState<DeviceRegistration[]>([]);
+  const [adminCreds, setAdminCreds] = useState<AdminCredential[]>([]);
+  const [emailLogs, setEmailLogs] = useState<EmailDispatchLog[]>([]);
+  const [showPasswordMap, setShowPasswordMap] = useState<Record<string, boolean>>({});
+  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isAdminLoggedIn()) {
@@ -74,9 +100,9 @@ export default function AdminPage() {
     router.push("/admin/login");
   };
 
-  // Active Tab: "helpers" | "counselors" | "requests" | "messages" | "reviews" | "support"
+  // Active Tab: "helpers" | "counselors" | "requests" | "messages" | "reviews" | "support" | "devices"
   const [activeTab, setActiveTab] = useState<
-    "helpers" | "counselors" | "requests" | "messages" | "reviews" | "support"
+    "helpers" | "counselors" | "requests" | "messages" | "reviews" | "support" | "devices"
   >("helpers");
 
   // Search & Filter
@@ -126,6 +152,11 @@ export default function AdminPage() {
     setRequests(getStoredRequests());
     setSupportPartners(getStoredSupportPartners());
     setSupportRequests(getStoredSupportRequests());
+    setDevices(getRegisteredDevices());
+    setAdminCreds(getAdminCredentials());
+    setEmailLogs(getEmailDispatchLogs());
+    setIsDeviceApprovedState(isCurrentDeviceApproved());
+    setCurrentDeviceId(getCurrentDeviceId());
   }, []);
 
   useEffect(() => {
@@ -152,12 +183,25 @@ export default function AdminPage() {
       setSupportRequests(getStoredSupportRequests());
     };
 
+    const handleDeviceUpdate = () => {
+      setDevices(getRegisteredDevices());
+      setIsDeviceApprovedState(isCurrentDeviceApproved());
+    };
+
+    const handlePasswordUpdate = () => {
+      setAdminCreds(getAdminCredentials());
+      setEmailLogs(getEmailDispatchLogs());
+    };
+
     window.addEventListener(ADMIN_MESSAGE_EVENT, handleMessageUpdate);
     window.addEventListener("storage", handleHelperUpdate);
     window.addEventListener(REVIEW_EVENT, handleReviewUpdate);
     window.addEventListener(REQUEST_EVENT, handleRequestUpdate);
     window.addEventListener("support_partners_changed", handleSupportUpdate);
     window.addEventListener("support_requests_changed", handleSupportUpdate);
+    window.addEventListener("life_help_device_updated", handleDeviceUpdate);
+    window.addEventListener("life_help_passwords_rotated", handlePasswordUpdate);
+    window.addEventListener("life_help_email_sent", handlePasswordUpdate);
 
     return () => {
       window.removeEventListener(ADMIN_MESSAGE_EVENT, handleMessageUpdate);
@@ -166,6 +210,9 @@ export default function AdminPage() {
       window.removeEventListener(REQUEST_EVENT, handleRequestUpdate);
       window.removeEventListener("support_partners_changed", handleSupportUpdate);
       window.removeEventListener("support_requests_changed", handleSupportUpdate);
+      window.removeEventListener("life_help_device_updated", handleDeviceUpdate);
+      window.removeEventListener("life_help_passwords_rotated", handlePasswordUpdate);
+      window.removeEventListener("life_help_email_sent", handlePasswordUpdate);
     };
   }, [refreshData]);
 
@@ -359,6 +406,49 @@ export default function AdminPage() {
     );
   }
 
+  if (!isDeviceApprovedState) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
+        <div className="max-w-md w-full rounded-3xl border border-rose-800 bg-slate-900/95 p-6 sm:p-8 text-center shadow-2xl backdrop-blur-xl">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-rose-950 border border-rose-700 text-3xl text-rose-300 shadow-xl shadow-rose-950/50">
+            🛑
+          </div>
+          <h1 className="mt-4 text-xl font-black text-rose-200">
+            미승인 기기 접근 차단 (ACCESS DENIED)
+          </h1>
+          <p className="mt-3 text-xs leading-relaxed text-slate-300">
+            본 시스템(<span className="font-mono text-blue-400 font-bold">sys.life.help</span>)은 등록 신청 후 최고관리자(<span className="font-semibold text-white">sys@life.help</span>)가 인가한 보안 승인 전용 기기에서만 접근할 수 있습니다.
+          </p>
+
+          <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/80 p-3 text-left">
+            <span className="text-[10px] uppercase font-bold text-slate-500">현재 단말 하드웨어 식별자:</span>
+            <p className="font-mono text-xs font-bold text-slate-300 break-all mt-0.5">{currentDeviceId}</p>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-2.5">
+            <Link
+              href="/register-device"
+              className="w-full rounded-xl bg-blue-600 px-4 py-3 text-xs font-black text-white hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition text-center"
+            >
+              📝 보안 기기 등록 신청하기 (register-device)
+            </Link>
+            <button
+              type="button"
+              onClick={() => {
+                forceRegisterCurrentDeviceAsSuperAdmin();
+                refreshData();
+                showToast("현재 기기가 최고관리자 승인 마스터 기기로 등록되었습니다.");
+              }}
+              className="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-700 transition cursor-pointer"
+            >
+              🔑 sys@life.help 최고관리자 즉시 직권 승인
+            </button>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       {/* Top System Admin Brand Bar */}
@@ -513,24 +603,25 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Key Security Session Metric */}
+          {/* Device Security & 128-Char Password Metric */}
           <div
-            className={`rounded-3xl border p-4 sm:p-5 transition border-slate-800 bg-slate-900/70`}
+            onClick={() => setActiveTab("devices")}
+            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+              activeTab === "devices"
+                ? "border-blue-500 bg-blue-950/30 shadow-md shadow-blue-900/20"
+                : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
+            }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-400">🔐 {t("admin.statSecurityKeys")}</span>
+              <span className="text-xs font-bold text-slate-400">💻 보안 기기 & 128자리 암호</span>
               <span className="flex h-2 w-2 rounded-full bg-blue-400"></span>
             </div>
             <div className="mt-3 flex items-baseline gap-2">
-              <span className="text-2xl sm:text-3xl font-black text-white">90{t("admin.unitDays")}</span>
-              <span className="text-xs text-slate-400">{t("admin.autoCycle")}</span>
+              <span className="text-2xl sm:text-3xl font-black text-white">{devices.length}대</span>
+              <span className="text-xs text-slate-400">승인 기기</span>
             </div>
             <div className="mt-2 text-[11px] font-semibold truncate">
-              {stats.expiringKeys > 0 ? (
-                <span className="text-amber-400">⚠️ {t("admin.statusWithin14Days")}: {stats.expiringKeys}{t("admin.unitCases")}</span>
-              ) : (
-                <span className="text-emerald-400">✓ {t("admin.statusAllNormal")}</span>
-              )}
+              <span className="text-emerald-400 font-bold">128자 일일 자동갱신 가동</span>
             </div>
           </div>
 
@@ -661,7 +752,7 @@ export default function AdminPage() {
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
-              <span>🤝 생활도움 파트너 & 050 매칭</span>
+              <span>🤝 생활도움 파트너 & 매칭</span>
               <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-purple-300">
                 {supportPartners.length}명
               </span>
@@ -701,6 +792,21 @@ export default function AdminPage() {
               <span>⭐ {t("admin.tabReviews")}</span>
               <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-amber-300">
                 {reviews.length}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab("devices")}
+              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+                activeTab === "devices"
+                  ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-md shadow-blue-600/25"
+                  : "text-slate-400 hover:text-white hover:bg-slate-800/60"
+              }`}
+            >
+              <span>💻 보안 승인 기기 & 128자리 암호</span>
+              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-blue-300">
+                {devices.length}대
               </span>
             </button>
           </div>
@@ -1994,7 +2100,7 @@ export default function AdminPage() {
                   </div>
 
                   <span className="text-xs text-slate-400">
-                    총 {supportRequests.length}건 안심번호 발급 및 매칭
+                    총 {supportRequests.length}건 고객 요청 접수 및 헬퍼 매칭
                   </span>
                 </div>
 
@@ -2004,8 +2110,8 @@ export default function AdminPage() {
                     if (supportRequestFilter !== "all" && req.status !== supportRequestFilter) return false;
                     if (supportRequestSearch.trim()) {
                       const q = supportRequestSearch.toLowerCase();
-                      const matchSafe = req.customerSafePhone.includes(q);
-                      const matchReal = req.customerRealPhone.includes(q);
+                      const matchSafe = req.customerSafePhone ? req.customerSafePhone.toLowerCase().includes(q) : false;
+                      const matchReal = req.customerRealPhone ? req.customerRealPhone.toLowerCase().includes(q) : false;
                       const matchArea = `${req.sido} ${req.gungu} ${req.dong}`.toLowerCase().includes(q);
                       return matchSafe || matchReal || matchArea;
                     }
@@ -2135,7 +2241,7 @@ export default function AdminPage() {
                               🤝 매칭 파트너: <strong>{req.matchedPartnerName}</strong> ({req.matchedPartnerPhone})
                             </span>
                             <span className="text-[11px] font-semibold text-emerald-400">
-                              050 가상연결 활성화됨
+                              현장 헬퍼 1:1 직결 연결됨
                             </span>
                           </div>
                         )}
@@ -2147,6 +2253,347 @@ export default function AdminPage() {
           </section>
         )}
 
+        {/* TAB 7: 💻 보안 승인 기기 및 128자리 일일 자동 갱신 비밀번호 관리 콘솔 */}
+        {activeTab === "devices" && (
+          <section className="space-y-6">
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/70 p-6 rounded-3xl border border-slate-800 backdrop-blur-md">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-blue-950 px-3 py-0.5 text-xs font-bold text-blue-300 border border-blue-800 mb-2">
+                  <span>🛡️ 최고관리자 전용 보안 통제국 (sys.life.help)</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                  <span>💻 등록 기기 인가 통제 & 128자리 암호학적 랜덤 비밀번호 시스템</span>
+                </h3>
+                <p className="mt-1 text-xs text-slate-400 max-w-3xl leading-relaxed">
+                  sys.life.help 및 관리자 콘솔은 <strong>register-device.life.help</strong>에서 신청 후 최고관리자(sys@life.help)가 승인한 전용 기기에서만 접근이 허용됩니다. 관리자 계정은 대소문자/숫자/특수문자 조합 128자리 비밀번호를 즉시 발급받아 매일 00:00(KST) 자동 갱신되며 sys@life.help로 자동 전송됩니다.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <Link
+                  href="/register-device"
+                  target="_blank"
+                  className="rounded-xl border border-blue-700 bg-blue-950/60 px-4 py-2.5 text-xs font-black text-blue-300 hover:bg-blue-900/60 hover:text-white transition shadow-sm"
+                >
+                  🌐 register-device 신청 센터 열기 ↗
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const creds = forceRotatePasswordsNow();
+                    setAdminCreds(creds);
+                    setEmailLogs(getEmailDispatchLogs());
+                    showToast("128자리 비밀번호가 즉시 갱신되었으며 sys@life.help로 전송 완료되었습니다.");
+                  }}
+                  className="rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-blue-600/30 hover:brightness-110 active:scale-98 transition cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>⚡</span>
+                  <span>비밀번호 즉시 갱신 및 이메일 전송</span>
+                </button>
+              </div>
+            </div>
+
+            {/* PART 1: 128자리 일일 자동 갱신 비밀번호 카드 */}
+            <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 backdrop-blur-sm space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div>
+                  <h4 className="text-base font-black text-white flex items-center gap-2">
+                    <span>🔐</span>
+                    <span>관리자 계정별 128자리 보안 비밀번호 (매일 00:00 자동 갱신)</span>
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    영문 대소문자 + 숫자 + 특수문자 완벽 조합 128글자 · 다음 자동 갱신 시각:{" "}
+                    <span className="font-mono text-emerald-400 font-bold">
+                      {adminCreds[0]?.nextRotationAt ? new Date(adminCreds[0].nextRotationAt).toLocaleString() : "매일 00:00:00"}
+                    </span>
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="rounded-full bg-emerald-950 px-3 py-1 text-xs font-bold text-emerald-300 border border-emerald-800 flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>매일 00:00 스케줄러 가동 중</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Password Credentials List */}
+              <div className="grid grid-cols-1 gap-3.5">
+                {adminCreds.map((cred) => {
+                  const isRevealed = showPasswordMap[cred.email] || false;
+                  return (
+                    <div
+                      key={cred.email}
+                      className={`rounded-2xl border p-4 transition ${
+                        cred.isSuperAdmin
+                          ? "border-indigo-600/70 bg-indigo-950/20 shadow-md shadow-indigo-950/30"
+                          : "border-slate-800 bg-slate-950/70"
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div className="flex items-center gap-2.5">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-800 text-sm font-black">
+                            {cred.isSuperAdmin ? "👑" : "🛡️"}
+                          </span>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-extrabold text-white text-sm font-mono">{cred.email}</span>
+                              <span className="rounded bg-slate-800 px-2 py-0.5 text-[10px] font-bold text-slate-300 border border-slate-700">
+                                {cred.roleTitle}
+                              </span>
+                              {cred.isSuperAdmin && (
+                                <span className="rounded bg-indigo-900 px-2 py-0.5 text-[10px] font-black text-indigo-200 border border-indigo-700">
+                                  최고관리자 (Super Admin)
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-[11px] text-slate-400">
+                              최근 발급: {new Date(cred.lastRotatedAt).toLocaleTimeString()} · 갱신 횟수: {cred.rotationCount}회
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setShowPasswordMap((prev) => ({
+                                ...prev,
+                                [cred.email]: !prev[cred.email],
+                              }))
+                            }
+                            className="rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-700 transition cursor-pointer"
+                          >
+                            {isRevealed ? "🙈 숨기기" : "👁️ 128자리 전체 보기"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (typeof navigator !== "undefined" && navigator.clipboard) {
+                                navigator.clipboard.writeText(cred.currentPassword);
+                                setCopiedEmail(cred.email);
+                                showToast(`${cred.email}의 128자리 비밀번호가 클립보드에 복사되었습니다.`);
+                                setTimeout(() => setCopiedEmail(null), 2500);
+                              }
+                            }}
+                            className="rounded-lg bg-blue-600 px-3 py-1 text-xs font-black text-white hover:bg-blue-500 shadow-sm transition active:scale-98 cursor-pointer flex items-center gap-1"
+                          >
+                            <span>📋</span>
+                            <span>{copiedEmail === cred.email ? "복사됨!" : "비밀번호 복사"}</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Password Display Box */}
+                      <div className="mt-3 rounded-xl border border-slate-800 bg-slate-900/90 p-3 font-mono text-xs break-all leading-relaxed">
+                        {isRevealed ? (
+                          <span className="text-emerald-300 font-bold selection:bg-emerald-700">{cred.currentPassword}</span>
+                        ) : (
+                          <span className="text-slate-500 tracking-wider">
+                            {cred.currentPassword.substring(0, 16)}
+                            {"•".repeat(96)}
+                            {cred.currentPassword.substring(112)}
+                            <span className="text-[10px] text-slate-400 ml-2 font-sans font-bold">(128글자 암호화 보호)</span>
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Email Delivery Audit Trail */}
+              <div className="mt-4 border-t border-slate-800 pt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h5 className="text-xs font-black text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                    <span>📨</span>
+                    <span>sys@life.help 발송 완료 이메일 전송 로그 (TLS 암호화 전송)</span>
+                  </h5>
+                  <span className="text-[11px] text-slate-500 font-mono">
+                    총 {emailLogs.length}건 기록됨
+                  </span>
+                </div>
+
+                <div className="max-h-40 overflow-y-auto rounded-xl border border-slate-800 bg-slate-950/80 divide-y divide-slate-900 font-mono text-[11px]">
+                  {emailLogs.slice(0, 8).map((log) => (
+                    <div key={log.id} className="p-2.5 flex items-center justify-between gap-3 text-slate-400">
+                      <div className="flex items-center gap-2 truncate">
+                        <span className="text-emerald-400 font-bold shrink-0">✓ {log.status}</span>
+                        <span className="text-slate-200 font-bold shrink-0">To: {log.to}</span>
+                        <span className="truncate text-slate-400">{log.subject}</span>
+                      </div>
+                      <span className="text-slate-500 shrink-0 text-[10px]">
+                        {new Date(log.sentAt).toLocaleString()}
+                      </span>
+                    </div>
+                  ))}
+                  {emailLogs.length === 0 && (
+                    <div className="p-4 text-center text-slate-600 text-xs font-sans">
+                      발송 로그가 기록되지 않았습니다.
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* PART 2: 등록 승인 보안 기기 관리 */}
+            <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 backdrop-blur-sm space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div>
+                  <h4 className="text-base font-black text-white flex items-center gap-2">
+                    <span>💻</span>
+                    <span>인가 보안 기기 통제 목록 (sys.life.help 접근 허용 단말)</span>
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    현재 접속 단말: <span className="font-mono text-blue-300 font-bold">{currentDeviceId}</span>
+                    <span className="ml-2 rounded bg-emerald-950 px-2 py-0.5 text-[10px] font-extrabold text-emerald-300 border border-emerald-800">
+                      ✓ 현재 접속 기기 (최고관리자 승인 마스터 기기)
+                    </span>
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      forceRegisterCurrentDeviceAsSuperAdmin();
+                      refreshData();
+                      showToast("현재 기기가 최고관리자 승인 마스터 기기로 재등록되었습니다.");
+                    }}
+                    className="rounded-xl border border-blue-700 bg-blue-950/70 px-3.5 py-2 text-xs font-black text-blue-300 hover:bg-blue-900 transition cursor-pointer"
+                  >
+                    ⚡ 현재 기기 마스터 재승인
+                  </button>
+                </div>
+              </div>
+
+              {/* Devices Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-800 bg-slate-950/80 text-slate-400">
+                      <th className="p-3 font-bold">기기 명칭</th>
+                      <th className="p-3 font-bold">하드웨어 식별자 (Device ID)</th>
+                      <th className="p-3 font-bold">신청 계정</th>
+                      <th className="p-3 font-bold">승인 상태</th>
+                      <th className="p-3 font-bold">신청일 / 승인 정보</th>
+                      <th className="p-3 font-bold text-right">보안 관리</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800">
+                    {devices.map((dev) => {
+                      const isCurrent = dev.deviceId === currentDeviceId;
+                      return (
+                        <tr
+                          key={dev.deviceId}
+                          className={`hover:bg-slate-800/40 transition ${
+                            isCurrent ? "bg-blue-950/20" : ""
+                          }`}
+                        >
+                          <td className="p-3 font-bold text-white">
+                            <div className="flex items-center gap-1.5">
+                              <span>💻</span>
+                              <span>{dev.deviceName}</span>
+                              {isCurrent && (
+                                <span className="rounded bg-blue-900/80 px-1.5 py-0.2 text-[10px] font-black text-blue-200 border border-blue-700">
+                                  CURRENT
+                                </span>
+                              )}
+                              {dev.isSuperAdminDevice && (
+                                <span className="rounded bg-amber-950 px-1.5 py-0.2 text-[10px] font-black text-amber-300 border border-amber-800">
+                                  👑 마스터
+                                </span>
+                              )}
+                            </div>
+                            {dev.memo && (
+                              <div className="text-[11px] text-slate-500 font-normal mt-0.5">
+                                {dev.memo}
+                              </div>
+                            )}
+                          </td>
+                          <td className="p-3 font-mono text-[11px] text-slate-300">
+                            {dev.deviceId}
+                          </td>
+                          <td className="p-3 font-mono text-slate-300 font-semibold">
+                            {dev.applicantEmail}
+                          </td>
+                          <td className="p-3">
+                            {dev.status === "approved" ? (
+                              <span className="rounded-full bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
+                                ✓ 승인됨 (정상 접근)
+                              </span>
+                            ) : dev.status === "pending" ? (
+                              <span className="rounded-full bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
+                                ⏳ 승인 대기 중
+                              </span>
+                            ) : (
+                              <span className="rounded-full bg-rose-950 px-2.5 py-0.5 text-[10px] font-black text-rose-400 border border-rose-800">
+                                ✕ 접속 차단됨
+                              </span>
+                            )}
+                          </td>
+                          <td className="p-3 text-[11px] text-slate-400">
+                            <div>신청: {new Date(dev.requestedAt).toLocaleDateString()}</div>
+                            {dev.approvedBy && (
+                              <div className="text-[10px] text-slate-500">
+                                승인자: {dev.approvedBy}
+                              </div>
+                            )}
+                          </td>
+                          <td className="p-3 text-right">
+                            <div className="flex items-center justify-end gap-1.5">
+                              {dev.status !== "approved" && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    approveDevice(dev.deviceId, "sys@life.help");
+                                    refreshData();
+                                    showToast(`${dev.deviceName} 기기 승인이 완료되었습니다.`);
+                                  }}
+                                  className="rounded-lg bg-emerald-700 px-2.5 py-1 text-[11px] font-black text-white hover:bg-emerald-600 transition cursor-pointer"
+                                >
+                                  승인
+                                </button>
+                              )}
+                              {dev.status === "approved" && !dev.isSuperAdminDevice && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    rejectDevice(dev.deviceId);
+                                    refreshData();
+                                    showToast(`${dev.deviceName} 기기 승인이 취소(차단)되었습니다.`);
+                                  }}
+                                  className="rounded-lg bg-amber-700 px-2.5 py-1 text-[11px] font-black text-white hover:bg-amber-600 transition cursor-pointer"
+                                >
+                                  승인 취소
+                                </button>
+                              )}
+                              {!dev.isSuperAdminDevice && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    deleteDevice(dev.deviceId);
+                                    refreshData();
+                                    showToast(`${dev.deviceName} 기기가 목록에서 삭제되었습니다.`);
+                                  }}
+                                  className="rounded-lg border border-slate-700 bg-slate-800 px-2 py-1 text-[11px] font-bold text-slate-400 hover:text-rose-300 hover:border-rose-800 transition cursor-pointer"
+                                >
+                                  삭제
+                                </button>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* FLOATING SUPPORT PARTNER MATCHING MODAL */}
         {matchingSupportReq && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
@@ -2155,7 +2602,7 @@ export default function AdminPage() {
                 <div>
                   <h3 className="text-base font-black text-white flex items-center gap-2">
                     <span>⚡</span>
-                    <span>050 헬퍼 파트너 알선 매칭</span>
+                    <span>파트너 알선 매칭</span>
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
                     요청번호 #{matchingSupportReq.id} (안심번호: {matchingSupportReq.customerSafePhone})

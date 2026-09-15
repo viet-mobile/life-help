@@ -195,13 +195,10 @@ export const SUPPORT_CATEGORIES: Record<string, SupportCategoryMeta> = {
 };
 
 /**
- * 050 Safe Virtual Number Generator
- * Returns a realistic Korean virtual safe number in the format: 050-XXXX-XXXX
+ * Customer Direct Phone Contact (050 virtual number retracted per user request)
  */
-export function generate050SafeNumber(): string {
-  const part1 = Math.floor(1000 + Math.random() * 9000);
-  const part2 = Math.floor(1000 + Math.random() * 9000);
-  return `050-${part1}-${part2}`;
+export function generate050SafeNumber(phone?: string): string {
+  return phone || "직접 연락";
 }
 
 export interface SupportRequest {
@@ -212,7 +209,7 @@ export interface SupportRequest {
   gungu: string;
   dong: string;
   customerRealPhone: string;
-  customerSafePhone: string; // 050-XXXX-XXXX
+  customerSafePhone?: string; // Kept as optional for UI backward compatibility
   selectedNeeds: string[];
   memo?: string;
   status: "pending" | "matched" | "completed";
@@ -379,11 +376,10 @@ export function getStoredSupportRequests(): SupportRequest[] {
 
 export function saveSupportRequest(req: Omit<SupportRequest, "id" | "customerSafePhone" | "status" | "createdAt">): SupportRequest {
   const current = getStoredSupportRequests();
-  const safePhone = generate050SafeNumber();
   const newReq: SupportRequest = {
     ...req,
     id: `sr-${Date.now().toString().slice(-6)}`,
-    customerSafePhone: safePhone,
+    customerSafePhone: req.customerRealPhone,
     status: "pending",
     createdAt: new Date().toISOString(),
   };

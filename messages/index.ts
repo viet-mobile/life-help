@@ -79,7 +79,7 @@ export const locales = [
 ] as const;
 
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "vi";
+export const defaultLocale: Locale = "ko";
 
 export interface LanguageMeta {
   code: Locale;

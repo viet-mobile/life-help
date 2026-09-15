@@ -40,17 +40,39 @@ export default function PrivacyNotice() {
           <div className="flex flex-wrap items-center gap-4">
             <a href="/payment" className="text-blue-700 hover:text-blue-800 font-bold flex items-center gap-1">
               <span>💳</span>
-              <span>{isKorean ? "계좌이체 결제 안내" : t("customer.paymentLink")}</span>
+              <span>
+                {isKorean
+                  ? "계좌이체 결제 안내"
+                  : isBilingual
+                  ? `${t("customer.paymentLink")} (계좌이체)`
+                  : t("customer.paymentLink")}
+              </span>
             </a>
             <a href="/review" className="hover:text-slate-800 font-bold flex items-center gap-1">
               <span>⭐</span>
-              <span>{isKorean ? "자유 리뷰 남기기" : t("customer.reviewLink")}</span>
+              <span>
+                {isKorean
+                  ? "자유 리뷰 남기기"
+                  : isBilingual
+                  ? `${t("customer.reviewLink")} (리뷰)`
+                  : t("customer.reviewLink")}
+              </span>
             </a>
             <a href="/chat" className="hover:text-slate-800">
-              💬 {isKorean ? "실시간 고객 상담" : t("customer.consultation")}
+              💬{" "}
+              {isKorean
+                ? "실시간 고객 상담"
+                : isBilingual
+                ? `${t("customer.consultation")} (실시간 상담)`
+                : t("customer.consultation")}
             </a>
             <a href="/tech" className="hover:text-slate-800">
-              🛠️ {isKorean ? "생활 도움 헬퍼" : t("customer.verified")}
+              🛠️{" "}
+              {isKorean
+                ? "생활 도움 헬퍼"
+                : isBilingual
+                ? `${t("customer.verified")} (생활도움 헬퍼)`
+                : t("customer.verified")}
             </a>
           </div>
 

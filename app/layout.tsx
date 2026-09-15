@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <CountryProvider initialCountry={country}>
-          <LocaleProvider>
+          <LocaleProvider initialLocale={lang as any}>
             <RegionProvider initialCountry={country}>{children}</RegionProvider>
           </LocaleProvider>
         </CountryProvider>

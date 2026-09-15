@@ -220,7 +220,15 @@ function getCountryFromHost(host: string): string | null {
   return null;
 }
 
-function getPortalFromHost(host: string): "customer" | "tech" | "chat" | "sys" | "main" {
+const COUNTRY_HOST_REDIRECTS: Record<string, string> = {
+  "turkey.life.help": "turkiye.life.help",
+  "spain.life.help": "espania.life.help",
+  "germany.life.help": "deutsch.life.help",
+  "italy.life.help": "italia.life.help",
+};
+
+function getPortalFromHost(host: string): "customer" | "tech" | "chat" | "sys" | "main" | "register-device" {
+  if (host === "register-device.life.help" || host.startsWith("register-device.")) return "register-device";
   if (host === "sys.life.help") return "sys";
   if (host === "chat.life.help") return "chat";
   if (host === "tech.life.help") return "tech";
@@ -272,6 +280,20 @@ function buildInternalPath(
       pathname === `/${firstSeg}`
         ? "/"
         : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "") || "/";
+  }
+
+  /**
+   * 0. Device Registration portal
+   *
+   * register-device.life.help
+   * -> /register-device
+   */
+  if (portal === "register-device") {
+    return {
+      pathname: "/register-device",
+      country,
+      language,
+    };
   }
 
   /**
@@ -373,6 +395,22 @@ export async function proxy(request: NextRequest) {
   const port = rawHost.includes(":")
     ? `:${rawHost.split(":")[1]}`
     : "";
+
+  /**
+   * Country domain official alias redirects
+   * turkey.life.help -> https://turkiye.life.help/
+   * spain.life.help -> https://espania.life.help/
+   * germany.life.help -> https://deutsch.life.help/
+   * italy.life.help -> https://italia.life.help/
+   */
+  if (COUNTRY_HOST_REDIRECTS[host]) {
+    const targetHost = COUNTRY_HOST_REDIRECTS[host];
+    const proto = host.includes("life.help") ? "https:" : request.nextUrl.protocol;
+    const targetUrl = new URL(
+      `${proto}//${targetHost}${port}${request.nextUrl.pathname}${request.nextUrl.search}`,
+    );
+    return NextResponse.redirect(targetUrl, 308);
+  }
 
   /**
    * Country-specific favicon.ico routing

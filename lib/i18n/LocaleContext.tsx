@@ -163,8 +163,10 @@ function getClientLocaleSnapshot(): Locale {
   }
 }
 
+let ssrInitialLocale: Locale = defaultLocale;
+
 function getServerLocaleSnapshot(): Locale {
-  return defaultLocale;
+  return ssrInitialLocale || defaultLocale;
 }
 
 function getClientDisplayModeSnapshot(): DisplayMode {
@@ -232,7 +234,20 @@ function subscribeDisplayMode(callback: () => void): () => void {
   };
 }
 
-export function LocaleProvider({ children }: { children: React.ReactNode }) {
+export function LocaleProvider({
+  children,
+  initialLocale,
+}: {
+  children: React.ReactNode;
+  initialLocale?: Locale;
+}) {
+  if (initialLocale && isValidLocale(initialLocale)) {
+    ssrInitialLocale = initialLocale;
+    if (typeof window !== "undefined" && !cachedLocale) {
+      cachedLocale = initialLocale;
+    }
+  }
+
   const pathname = usePathname();
 
   const locale = useSyncExternalStore(

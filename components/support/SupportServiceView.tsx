@@ -16,7 +16,7 @@ import {
 } from "@/lib/support/supportStore";
 
 export function SupportServiceView({ slug }: { slug: string }) {
-  const { locale, isBilingual, t } = useLocale();
+  const { locale, isBilingual, t, formatBilingual } = useLocale();
   const { selectedRegion, formattedRegion, shortRegionText, openModal } = useRegion();
   const country = selectedRegion?.country || "KR";
   const sido = selectedRegion?.sido || "";
@@ -260,21 +260,21 @@ export function SupportServiceView({ slug }: { slug: string }) {
                 </div>
               </div>
 
-              {/* 050 Safe Number Badge */}
+              {/* Direct Phone Contact Card */}
               <div className="mt-6 rounded-2xl border-2 border-emerald-300 bg-white p-5 shadow-xs">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-500 uppercase">
-                    🔒 {t("support.safePhoneLabel")}
+                    📞 신청자 연락처
                   </span>
                   <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-extrabold text-emerald-800">
-                    {t("support.privacyBadge")}
+                    접수 완료
                   </span>
                 </div>
                 <div className="mt-2 text-2xl sm:text-3xl font-black text-blue-900 tracking-wider">
-                  {submittedRequest.customerSafePhone}
+                  {submittedRequest.customerRealPhone}
                 </div>
                 <p className="mt-1 text-xs text-slate-500">
-                  {t("support.realPhoneHidden")}
+                  선택하신 지역의 근무 중인 전담 헬퍼에게 신청 내역이 즉시 전달됩니다.
                 </p>
               </div>
 
@@ -390,21 +390,21 @@ export function SupportServiceView({ slug }: { slug: string }) {
                 </div>
               </div>
 
-              {/* Contact Phone & 050 Conversion Notice */}
+              {/* Contact Phone & Direct Helper Match Notice */}
               <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
                 <h3 className="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
                   <span>📞</span>
                   <span>{t("support.contactPhoneLabel")}</span>
                 </h3>
 
-                {/* 050 Privacy Notice Box */}
-                <div className="rounded-2xl border border-amber-300 bg-amber-50/80 p-4 text-xs">
-                  <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
-                    <span>🔒</span>
-                    <span>{t("support.safe050Title")}</span>
+                {/* Direct Helper Connection Notice */}
+                <div className="rounded-2xl border border-blue-200 bg-blue-50/80 p-4 text-xs">
+                  <div className="flex items-center gap-2 text-blue-950 font-extrabold text-sm">
+                    <span>🤝</span>
+                    <span>지역 전문 헬퍼 1:1 직결</span>
                   </div>
-                  <p className="mt-1 text-amber-800 leading-relaxed font-medium">
-                    {t("support.safe050Desc")}
+                  <p className="mt-1 text-blue-800 leading-relaxed font-medium">
+                    고객님이 요청하신 지역과 서비스에 맞춰 현재 활동 가능한 인증 헬퍼에게 안전하게 전달됩니다.
                   </p>
                 </div>
 
@@ -446,7 +446,7 @@ export function SupportServiceView({ slug }: { slug: string }) {
                 type="submit"
                 className="w-full rounded-2xl bg-blue-700 py-4 text-center text-sm sm:text-base font-black text-white shadow-lg hover:bg-blue-800 transition active:scale-[0.99] cursor-pointer"
               >
-                🔒 {t("support.submitBtn")}
+                🤝 {formatBilingual(t("common.apply"), "도움 신청하기")}
               </button>
             </form>
           )

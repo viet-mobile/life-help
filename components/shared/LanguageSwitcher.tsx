@@ -30,18 +30,18 @@ export function LanguageSwitcher({
   };
 
   return (
-    <div className={`inline-flex items-center gap-1 sm:gap-1.5 shrink-0 ${className}`}>
+    <div className={`inline-flex items-center gap-1 sm:gap-1.5 shrink-0 max-w-full ${className}`}>
       <div
-        className="relative inline-flex items-center rounded-xl border border-slate-200 bg-white/95 px-2 py-1 sm:px-2.5 sm:py-1.5 shadow-sm transition hover:border-blue-400 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100 max-w-[105px] sm:max-w-[170px] min-w-0 shrink-0"
+        className="relative inline-flex items-center rounded-xl border border-slate-200 bg-white/95 px-1.5 py-1 sm:px-2.5 sm:py-1.5 shadow-sm transition hover:border-blue-400 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100 max-w-[85px] xs:max-w-[110px] sm:max-w-[170px] min-w-0 shrink-0"
         aria-label="Language selection"
       >
-        <span className="mr-1 sm:mr-1.5 text-xs sm:text-base select-none shrink-0" aria-hidden="true">
+        <span className="mr-1 text-xs sm:text-base select-none shrink-0" aria-hidden="true">
           🌐
         </span>
         <select
           value={currentLocale}
           onChange={handleChange}
-          className="cursor-pointer bg-transparent pr-1 sm:pr-2 text-xs font-bold text-slate-800 outline-none sm:text-sm w-full min-w-0 truncate"
+          className="cursor-pointer bg-transparent pr-0.5 sm:pr-2 text-xs font-bold text-slate-800 outline-none sm:text-sm w-full min-w-0 truncate"
           aria-label="Select system language"
         >
           {languages.map((lang) => (

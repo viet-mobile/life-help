@@ -383,42 +383,71 @@ export function CustomerHome() {
                   href={`/services/${slug}`}
                   className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-2 py-2 text-center transition hover:bg-slate-200"
                 >
-                  <span className="text-xs font-bold text-slate-800">{t("common.detail")}</span>
+                  {isBilingual ? (
+                    <>
+                      <span className="text-xs font-bold text-slate-800 leading-snug">{t("common.detail")}</span>
+                      <span className="text-[10px] font-semibold text-slate-500">상세 안내</span>
+                    </>
+                  ) : (
+                    <span className="text-xs font-bold text-slate-800">{t("common.detail")}</span>
+                  )}
                 </Link>
                 <Link
                   href={`/request?service=${slug}`}
                   className="flex flex-col items-center justify-center rounded-xl bg-blue-700 px-2 py-2 text-center text-white transition hover:bg-blue-800 shadow-xs"
                 >
-                  <span className="text-xs font-extrabold">{t("common.apply")}</span>
+                  {isBilingual ? (
+                    <>
+                      <span className="text-xs font-extrabold leading-snug">{t("common.apply")}</span>
+                      <span className="text-[10px] font-bold text-blue-200">즉시 신청</span>
+                    </>
+                  ) : (
+                    <span className="text-xs font-extrabold">{t("common.apply")}</span>
+                  )}
                 </Link>
               </div>
             </Card>
           ))}
         </div>
 
-        {/* 3. 5 New Life Assistance Support Services (050 Safe Virtual Phone System) */}
+        {/* 3. 5 New Life Assistance Support Services */}
         <div className="mt-12">
           <div className="rounded-3xl border border-indigo-200 bg-gradient-to-r from-blue-50 via-indigo-50/50 to-purple-50 p-5 sm:p-6 mb-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-3 py-1 text-xs font-extrabold text-white shadow-xs">
-                  <span>🔒</span>
-                  <span>{t("customer.safe050Badge")}</span>
+                  <span>🤝</span>
+                  <span>{formatBilingual(t("customer.lifeSupportBadge") || "1:1 매칭 지원", "1:1 매칭 지원")}</span>
                 </div>
                 <h3 className="mt-2 text-xl sm:text-2xl font-black text-slate-900">
                   {t("customer.lifeSupportTitle")}
+                  {isBilingual && locale !== "ko" && (
+                    <span className="block mt-1 text-base font-bold text-indigo-900">
+                      {tKo("customer.lifeSupportTitle")}
+                    </span>
+                  )}
                 </h3>
                 <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
                   {t("customer.lifeSupportDesc")}
+                  {isBilingual && locale !== "ko" && (
+                    <span className="block mt-1 text-xs text-slate-500 font-medium">
+                      {tKo("customer.lifeSupportDesc")}
+                    </span>
+                  )}
                 </p>
               </div>
 
               <div className="shrink-0">
                 <Link
                   href="/support/bank-help"
-                  className="inline-flex items-center gap-1.5 rounded-2xl bg-indigo-700 px-4 py-2.5 text-xs sm:text-sm font-black text-white hover:bg-indigo-800 transition shadow-sm"
+                  className="inline-flex flex-col items-center justify-center rounded-2xl bg-indigo-700 px-4 py-2.5 text-xs sm:text-sm font-black text-white hover:bg-indigo-800 transition shadow-sm text-center"
                 >
                   <span>{t("customer.partnerRegisterLink")}</span>
+                  {isBilingual && locale !== "ko" && (
+                    <span className="text-[10px] text-indigo-200 font-bold">
+                      {tKo("customer.partnerRegisterLink")}
+                    </span>
+                  )}
                 </Link>
               </div>
             </div>
@@ -433,8 +462,8 @@ export function CustomerHome() {
                 <Link href={`/support/${slug}`} className="block">
                   <div className="flex items-center justify-between">
                     <span className="text-3xl sm:text-4xl">{icon}</span>
-                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-extrabold text-amber-800">
-                      🔒 {t("customer.safe050Tag")}
+                    <span className="rounded-full bg-indigo-50 border border-indigo-200 px-2 py-0.5 text-[10px] font-extrabold text-indigo-800">
+                      🤝 {formatBilingual(t("customer.directMatch") || "헬퍼 매칭", "헬퍼 매칭")}
                     </span>
                   </div>
                   <div className="mt-3">
@@ -455,9 +484,14 @@ export function CustomerHome() {
                     className="flex flex-col items-center justify-center rounded-xl bg-slate-100 px-2 py-2 text-center transition hover:bg-slate-200"
                     title={t("common.detail")}
                   >
-                    <span className="text-xs font-bold text-slate-800">
-                      {t("common.detail")}
-                    </span>
+                    {isBilingual ? (
+                      <>
+                        <span className="text-xs font-bold text-slate-800 leading-snug">{t("common.detail")}</span>
+                        <span className="text-[10px] font-semibold text-slate-500">상세 안내</span>
+                      </>
+                    ) : (
+                      <span className="text-xs font-bold text-slate-800">{t("common.detail")}</span>
+                    )}
                   </Link>
 
                   <Link
@@ -465,9 +499,14 @@ export function CustomerHome() {
                     className="flex flex-col items-center justify-center rounded-xl bg-indigo-700 px-2 py-2 text-center text-white transition hover:bg-indigo-800 shadow-xs"
                     title={t("common.safeApply")}
                   >
-                    <span className="text-xs font-extrabold">
-                      {t("common.safeApply")}
-                    </span>
+                    {isBilingual ? (
+                      <>
+                        <span className="text-xs font-extrabold text-white leading-snug">{t("common.safeApply")}</span>
+                        <span className="text-[10px] font-bold text-indigo-200">신청</span>
+                      </>
+                    ) : (
+                      <span className="text-xs font-extrabold text-white">{t("common.safeApply")}</span>
+                    )}
                   </Link>
                 </div>
               </Card>
@@ -515,9 +554,9 @@ export function CustomerHome() {
                       : key === "verified"
                       ? formatBilingual(t("tech.register"), "헬퍼 등록 및 확인 →")
                       : key === "payment"
-                      ? (locale === "ko" ? "계좌이체 안내 →" : t("customer.paymentLink"))
+                      ? formatBilingual(t("customer.paymentLink"), "계좌이체 안내 →")
                       : key === "review"
-                      ? (locale === "ko" ? "자유 리뷰 남기기 →" : t("customer.reviewLink"))
+                      ? formatBilingual(t("customer.reviewLink"), "자유 리뷰 남기기 →")
                       : ""}
                   </span>
                 )}
