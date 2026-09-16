@@ -652,7 +652,13 @@ export function getRegionUIText(
 ): string {
   const texts = REGION_UI_TRANSLATIONS[locale] || REGION_UI_TRANSLATIONS["en"];
   const rawText = texts[key] || REGION_UI_TRANSLATIONS["en"][key] || "";
-  if (locale === "ko" || isBilingual) {
+  if (locale === "ko") {
+    return rawText;
+  }
+  if (isBilingual) {
+    if (key === "selectDescription" && rawText.includes(" · ")) {
+      return rawText.replace(" · ", "\n");
+    }
     return rawText;
   }
   // In monolingual mode for foreign languages, strip accompanied Korean (after ' · ')

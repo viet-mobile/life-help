@@ -156,13 +156,13 @@ export default function CustomerChatPage() {
                 <span className="text-blue-200">|</span>
                 <span>실시간 양방향 자동 번역</span>
               </div>
-              <h1 className="mt-2 text-2xl font-extrabold sm:text-3xl">
+              <h1 className="mt-2 text-2xl font-extrabold sm:text-3xl whitespace-pre-line leading-snug">
                 {formatBilingual(
                   "Connect Directly with On-Duty Specialist",
                   "근무 중인 지역 전담 헬퍼와 1:1 실시간 상담"
                 )}
               </h1>
-              <p className="mt-1 text-sm text-blue-100">
+              <p className="mt-1 text-sm text-blue-100 whitespace-pre-line leading-relaxed">
                 {formatBilingual(
                   "Chat in your language. Messages are translated in real time, showing both original and translated text to prevent any misunderstanding.",
                   "모국어로 편안하게 말씀하세요. 오해를 방지하기 위해 고객과 헬퍼 모두에게 원래 언어와 번역된 언어가 동시에 표기됩니다."
@@ -216,11 +216,11 @@ export default function CustomerChatPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {/* Left 2 Cols: Start Consultation Form */}
             <div className="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
-              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2 whitespace-pre-line">
                 <span>💬</span>
                 <span>{formatBilingual("Start Real-time 1:1 Chat", "전담 헬퍼 1:1 실시간 대화 시작")}</span>
               </h2>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-slate-500 whitespace-pre-line leading-relaxed">
                 {formatBilingual(
                   "Select the service you need and enter your problem. You will be connected directly with a verified specialist on duty.",
                   "필요하신 서비스와 문의 내용을 입력하시면, 현재 근무 중인 전담 헬퍼와 즉시 실시간 대화방으로 연결됩니다."
@@ -230,7 +230,7 @@ export default function CustomerChatPage() {
               <form onSubmit={handleStartChat} className="mt-5 space-y-4">
                 {/* Service Selection */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700">
+                  <label className="block text-xs font-bold text-slate-700 whitespace-pre-line">
                     {formatBilingual("Required Service", "필요하신 서비스")}
                   </label>
                   <select
@@ -248,7 +248,7 @@ export default function CustomerChatPage() {
 
                 {/* Customer Name & Privacy Assurance */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700">
+                  <label className="block text-xs font-bold text-slate-700 whitespace-pre-line">
                     {formatBilingual("Your Name (Optional)", "성함 또는 닉네임 (선택사항)")}
                   </label>
                   <input
@@ -261,14 +261,14 @@ export default function CustomerChatPage() {
                   <div className="mt-2 rounded-xl border border-emerald-200 bg-emerald-50/80 p-2.5">
                     <p className="text-[11px] font-semibold text-emerald-900 flex items-center gap-1">
                       <span>🔒</span>
-                      <span>{formatBilingual("Complete Privacy: No phone number collected. You connect safely via 1:1 chat on this website or LIFE.HELP app.", "개인정보 보호 안심: 휴대폰 번호를 수집하지 않으며, 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화로 안전하게 소통합니다.")}</span>
+                      <span className="whitespace-pre-line leading-relaxed">{formatBilingual("Complete Privacy: No phone number collected. You connect safely via 1:1 chat on this website or LIFE.HELP app.", "개인정보 보호 안심: 휴대폰 번호를 수집하지 않으며, 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화로 안전하게 소통합니다.")}</span>
                     </p>
                   </div>
                 </div>
 
                 {/* Problem Description */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700">
+                  <label className="block text-xs font-bold text-slate-700 whitespace-pre-line">
                     {formatBilingual("Describe your problem (In your language)", "문의 또는 문제 상황 (모국어로 작성)")}
                   </label>
                   <textarea

@@ -48,6 +48,38 @@ const DISPLAY_MODE_STORAGE_KEY = "life_help_display_mode";
 const DISPLAY_MODE_CHANGE_EVENT = "life_help_display_mode_change";
 
 /**
+ * Determines whether a bilingual phrase is considered long and should be rendered
+ * on two separate lines (newline "\n" without the dot " · ").
+ * Short phrases/labels (e.g. "Cancel · 취소", "Detail · 상세") remain on a single line.
+ */
+export function getBilingualSeparator(
+  targetText: string,
+  koText: string,
+  customSeparator?: string,
+): string {
+  if (customSeparator !== undefined) {
+    return customSeparator;
+  }
+  const cleanTarget = targetText.trim();
+  const cleanKo = koText.trim();
+
+  // If combined length is 18+ characters, or either text is 10+ characters,
+  // or contains commas/slashes (e.g. lists of items like "변기, 싱크대, 하수구 등..."),
+  // treat as long phrase and format across two lines with newline "\n" without the dot " · ".
+  // Short UI buttons/labels (e.g. Cancel · 취소, Detail · 상세, Apply · 신청) remain on a single line.
+  const isLong =
+    cleanTarget.length + cleanKo.length >= 18 ||
+    cleanTarget.length >= 10 ||
+    cleanKo.length >= 10 ||
+    cleanTarget.includes(",") ||
+    cleanKo.includes(",") ||
+    cleanTarget.includes("/") ||
+    cleanKo.includes("/");
+
+  return isLong ? "\n" : " · ";
+}
+
+/**
  * Resolves a URL path's first segment into a valid supported Locale.
  * Priority mappings:
  *   /vi -> vi
@@ -311,22 +343,24 @@ export function LocaleProvider({
   const tKo = useCallback((key: string) => translate("ko", key), []);
 
   const tBilingual = useCallback(
-    (key: string, separator: string = " · ") => {
+    (key: string, separator?: string) => {
       const current = translate(locale, key);
       if (locale === "ko" || displayMode === "monolingual") return current;
       const ko = translate("ko", key);
       if (!ko || current === ko) return current;
-      return `${current}${separator}${ko}`;
+      const actualSeparator = getBilingualSeparator(current, ko, separator);
+      return `${current}${actualSeparator}${ko}`;
     },
     [locale, displayMode],
   );
 
   const formatBilingual = useCallback(
-    (targetText: string, koText: string, separator: string = " · ") => {
+    (targetText: string, koText: string, separator?: string) => {
       if (locale === "ko") return koText || targetText;
       if (displayMode === "monolingual") return targetText;
       if (!koText || targetText === koText) return targetText;
-      return `${targetText}${separator}${koText}`;
+      const actualSeparator = getBilingualSeparator(targetText, koText, separator);
+      return `${targetText}${actualSeparator}${koText}`;
     },
     [locale, displayMode],
   );

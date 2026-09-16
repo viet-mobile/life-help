@@ -376,7 +376,7 @@ function RegionSelectorModal({
             <h3 className="text-lg font-extrabold text-slate-900">
               {getRegionUIText("selectLocation", locale, isBilingual)}
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 whitespace-pre-line">
               {getRegionUIText("selectDescription", locale, isBilingual)}
             </p>
           </div>

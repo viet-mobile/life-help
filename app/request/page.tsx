@@ -314,7 +314,7 @@ function RequestPageContent() {
             <div className="flex items-center gap-3 min-w-0 flex-1">
               <span className="text-3xl sm:text-4xl shrink-0 select-none">{service?.icon || "🛠️"}</span>
               <div className="min-w-0 flex-1">
-                <p className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug break-words">
+                <p className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug break-words whitespace-pre-line">
                   {service
                     ? formatBilingual(t(`service.${service.key}`), tKo(`service.${service.key}`))
                     : formatBilingual(t("customer.servicesTitle"), "서비스를 선택해 주세요")}
@@ -342,7 +342,7 @@ function RequestPageContent() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {/* Question 1: Problem description OR Housing requirements */}
           <div>
-            <label className="block text-base font-bold text-slate-900">
+            <label className="block text-base font-bold text-slate-900 whitespace-pre-line">
               {isHousing
                 ? formatBilingual(t("request.housingLabel"), "어떤 집을 찾으시나요?")
                 : formatBilingual(t("request.problemLabel"), "어떤 문제가 있나요?")}
@@ -364,14 +364,14 @@ function RequestPageContent() {
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-black text-slate-900 flex items-center gap-1.5">
                       <span className="shrink-0">📋</span>
-                      <span className="break-words">
+                      <span className="break-words whitespace-pre-line">
                         {formatBilingual(
                           t("request.checklistTitle"),
                           tKo("request.checklistTitle") || "자주 발생하는 주요 증상/요청 예시 (선택 가능)"
                         )}
                       </span>
                     </p>
-                    <p className="text-xs font-semibold text-slate-500 mt-0.5 break-words">
+                    <p className="text-xs font-semibold text-slate-500 mt-0.5 break-words whitespace-pre-line">
                       {formatBilingual(
                         t("request.checklistSubtitle"),
                         tKo("request.checklistSubtitle") || "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다."
@@ -568,13 +568,13 @@ function RequestPageContent() {
             <div className="flex items-start gap-3">
               <span className="text-2xl shrink-0 select-none">🔒</span>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-extrabold text-emerald-950">
+                <p className="text-sm font-extrabold text-emerald-950 whitespace-pre-line">
                   {formatBilingual(
                     t("request.privacyNoPhoneTitle") || "개인정보 보호 안심 시스템 (휴대폰 번호 수집 없음)",
                     "개인정보 보호 안심 시스템 (휴대폰 번호 수집 없음)"
                   )}
                 </p>
-                <p className="text-xs font-semibold text-emerald-800 mt-1 leading-relaxed">
+                <p className="text-xs font-semibold text-emerald-800 mt-1 leading-relaxed whitespace-pre-line">
                   {formatBilingual(
                     t("request.privacyNoPhoneNote") || "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다.",
                     "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다."

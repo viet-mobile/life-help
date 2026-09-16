@@ -114,7 +114,7 @@ export function ServiceDetailView({ slug }: { slug: string }) {
 
           <div className="text-5xl">{service.icon}</div>
 
-          <h1 className="mt-4 text-3xl font-bold">
+          <h1 className="mt-4 text-2xl sm:text-3xl font-bold whitespace-pre-line leading-snug">
             {formatBilingual(serviceName, serviceNameKo)}
           </h1>
 
@@ -201,8 +201,8 @@ export function ServiceDetailView({ slug }: { slug: string }) {
                   href={`/services/${s.slug}`}
                   className="inline-flex items-center gap-1.5 rounded-xl bg-white px-3.5 py-2 text-xs font-bold text-slate-800 shadow-2xs hover:border-blue-400 hover:text-blue-700 hover:shadow-xs border border-slate-200/80 transition-all duration-150 cursor-pointer"
                 >
-                  <span className="text-base">{s.icon}</span>
-                  <span>{formatBilingual(t(`service.${s.key}`), tKo(`service.${s.key}`))}</span>
+                  <span className="text-base shrink-0">{s.icon}</span>
+                  <span className="whitespace-pre-line text-left leading-tight">{formatBilingual(t(`service.${s.key}`), tKo(`service.${s.key}`))}</span>
                 </Link>
               ))}
           </div>

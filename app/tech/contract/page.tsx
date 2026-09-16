@@ -288,8 +288,8 @@ export default function TechContractPage() {
                   >
                     <span className="text-xl">{srv.icon}</span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-bold truncate">
-                        {isKorean ? srv.ko : `${t(`services.${srv.key}`)} · ${srv.ko}`}
+                      <p className="text-xs font-bold whitespace-pre-line leading-tight">
+                        {isKorean ? srv.ko : `${t(`service.${srv.key}`) || srv.ko}\n${srv.ko}`}
                       </p>
                     </div>
                     <span className="text-xs font-bold text-blue-400">
