@@ -150,6 +150,8 @@ export default function TechContractPage() {
     saveContract({
       name: name.trim(),
       residentNumber: "AUTH-VERIFIED",
+      email: helper.email || "",
+      phone: helper.phone,
       services: selectedServices,
       regions: selectedRegions,
       availableDays,
@@ -232,12 +234,12 @@ export default function TechContractPage() {
 
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-300">
-                  {isKorean ? "인증된 이동전화번호" : "Verified Mobile Phone · 전화번호"}
+                  {isKorean ? "인증된 이메일 계정" : "Verified Email · 이메일"}
                 </label>
                 <input
                   type="text"
                   readOnly
-                  value={helper.phone}
+                  value={helper.email || helper.phone}
                   className="mt-1.5 w-full rounded-xl border border-slate-800 bg-slate-800/50 p-3 text-sm font-bold text-blue-300 cursor-not-allowed"
                 />
               </div>
@@ -249,7 +251,7 @@ export default function TechContractPage() {
                     <span>3개월 보안 접속 시스템 적용 (주민등록번호 수집 배제)</span>
                   </div>
                   <p className="mt-1.5 text-[11px] text-blue-300/80 leading-relaxed">
-                    LIFE.HELP는 헬퍼님의 개인정보 보호를 위해 불필요한 주민등록번호 수집을 하지 않으며, 인증된 이동전화번호와 3개월(90일) 보안 코드로 본인 확인 및 파트너 자격을 안전하게 관리합니다.
+                    LIFE.HELP는 헬퍼님의 개인정보 보호를 위해 불필요한 주민등록번호 수집을 하지 않으며, 인증된 이메일 계정과 3개월(90일) 보안 코드로 본인 확인 및 파트너 자격을 안전하게 관리합니다.
                   </p>
                 </div>
               </div>

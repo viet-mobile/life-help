@@ -4,6 +4,7 @@ export interface ProblemOption {
   en: string;
   vi: string;
   zh: string;
+  [locale: string]: string | undefined;
 }
 
 export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
@@ -448,15 +449,33 @@ export function getProblemOptionsForService(slug: string, locale: string): { id:
     targetSlug = "clog-clearing";
   } else if (slug.includes("leak") || slug.includes("pipe") || slug.includes("water")) {
     targetSlug = "leak-plumbing";
+  } else if (slug.includes("boiler") || slug.includes("heat")) {
+    targetSlug = "boiler";
+  } else if (slug.includes("hous") || slug.includes("room") || slug.includes("rent")) {
+    targetSlug = "housing";
+  } else if (slug.includes("bank") || slug.includes("finance") || slug.includes("card")) {
+    targetSlug = "bank-help";
+  } else if (slug.includes("hosp") || slug.includes("medic") || slug.includes("doctor")) {
+    targetSlug = "hospital-help";
   }
 
   const list = SERVICE_PROBLEM_OPTIONS[targetSlug] || SERVICE_PROBLEM_OPTIONS["clog-clearing"];
 
   return list.map((item) => {
     let text = item.ko;
-    if (locale === "vi") text = item.vi || item.en || item.ko;
-    else if (locale === "zh-Hans" || locale === "zh-Hant") text = item.zh || item.en || item.ko;
-    else if (locale === "en") text = item.en || item.ko;
+    if (locale === "ko") {
+      text = item.ko;
+    } else if (locale === "vi") {
+      text = item.vi || item.en || item.ko;
+    } else if (locale.startsWith("zh")) {
+      text = item.zh || item.en || item.ko;
+    } else if (item[locale]) {
+      text = item[locale] as string;
+    } else {
+      // Non-Korean locales always fall back to universal English, NEVER Korean
+      text = item.en || item.ko;
+    }
+
     return {
       id: item.id,
       label: text,

@@ -22,7 +22,7 @@ export function HelperAuthCard({
   const { requestAccessKey, verifyAccessKey, registerHelper } = useHelper();
 
   const [activeTab, setActiveTab] = useState<"register" | "login">(defaultTab);
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [helperName, setHelperName] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([
     "toilet-clog",
@@ -31,7 +31,7 @@ export function HelperAuthCard({
   ]);
   const [regionText, setRegionText] = useState("전북특별자치도 익산시");
   const [agreeTerms, setAgreeTerms] = useState(true);
-  const [showPhoneReissue, setShowPhoneReissue] = useState(false);
+  const [showEmailReissue, setShowEmailReissue] = useState(false);
 
   // Security Access Key State
   const [codeSent, setCodeSent] = useState(false);
@@ -48,15 +48,15 @@ export function HelperAuthCard({
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Request 3-Month Security Access Key
+  // Request 90-Day Security Access Key via Email
   const handleSendAccessKey = async (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanPhone = phone.replace(/[^0-9]/g, "");
-    if (cleanPhone.length < 10) {
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail || !cleanEmail.includes("@") || !cleanEmail.includes(".")) {
       setErrorMsg(
         formatBilingual(
-          t("tech.invalidPhoneError"),
-          "올바른 이동전화번호를 입력해 주세요. (예: 010-1234-5678)",
+          "Please enter a valid email address. (e.g. helper@example.com)",
+          "올바른 이메일 주소를 입력해 주세요. (예: helper@example.com)",
         ),
       );
       return;
@@ -64,7 +64,7 @@ export function HelperAuthCard({
 
     setErrorMsg("");
     setLoading(true);
-    const res = await requestAccessKey(phone);
+    const res = await requestAccessKey(cleanEmail);
     setLoading(false);
 
     if (res.success) {
@@ -145,7 +145,7 @@ export function HelperAuthCard({
 
     registerHelper({
       name: helperName.trim(),
-      phone: phone.trim(),
+      email: email.trim().toLowerCase(),
       regions,
       services: selectedServices,
       accessKey: authCode.trim(),
@@ -175,8 +175,9 @@ export function HelperAuthCard({
     }
 
     setLoading(true);
-    const result = phone.trim()
-      ? await verifyAccessKey(phone, authCode.trim())
+    const cleanEmail = email.trim().toLowerCase();
+    const result = cleanEmail
+      ? await verifyAccessKey(cleanEmail, authCode.trim())
       : await verifyAccessKey(authCode.trim());
     setLoading(false);
 
@@ -313,8 +314,8 @@ export function HelperAuthCard({
             <p className="text-[11px] leading-relaxed text-blue-300 font-medium">
               💡{" "}
               {formatBilingual(
-                t("tech.loginKeyNotice"),
-                "카카오톡 또는 문자로 발급받으신 3개월 전용 보안 코드를 입력하시면 별도의 본인인증 없이 즉시 헬퍼 워크스페이스에 접속하실 수 있습니다.",
+                "Enter the 90-day security access code received via email to instantly access the Helper Workspace.",
+                "이메일로 발급받으신 90일 전용 보안 접속 코드를 입력하시면 별도의 본인인증 없이 즉시 헬퍼 워크스페이스에 접속하실 수 있습니다.",
               )}
             </p>
           </div>
@@ -336,7 +337,7 @@ export function HelperAuthCard({
             </button>
             <button
               type="button"
-              onClick={() => setShowPhoneReissue((prev) => !prev)}
+              onClick={() => setShowEmailReissue((prev) => !prev)}
               className="text-slate-400 hover:text-white underline font-medium"
             >
               {formatBilingual(t("tech.lostCodeBtn"), "코드를 분실하셨나요?")}
@@ -344,20 +345,20 @@ export function HelperAuthCard({
           </div>
 
           {/* Re-issue Drawer */}
-          {showPhoneReissue && (
+          {showEmailReissue && (
             <div className="rounded-2xl border border-slate-700 bg-slate-950/70 p-4 mt-2 space-y-2">
               <span className="text-[11px] font-bold text-slate-300 block">
                 {formatBilingual(
-                  t("tech.reissueCodeTitle"),
-                  "이동전화번호로 3개월 코드 재발급",
+                  "Reissue 90-day Code via Email",
+                  "이메일로 90일 보안 코드 재발급",
                 )}
               </span>
               <div className="flex gap-2">
                 <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="010-0000-0000"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="helper@example.com"
                   className="flex-1 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold font-mono text-white outline-none focus:border-blue-500"
                 />
                 <button
@@ -394,19 +395,19 @@ export function HelperAuthCard({
           onSubmit={!codeSent ? handleSendAccessKey : handleRegisterSubmit}
           className="space-y-5"
         >
-          {/* Phone Input */}
+          {/* Email Input */}
           <div>
             <label className="block text-xs font-bold uppercase text-slate-300">
-              {formatBilingual(t("tech.phoneLabel"), "이동전화번호 (휴대폰 번호)")}
+              {formatBilingual("Email Address", "이메일(Email) 주소")}
             </label>
             <div className="mt-1.5 flex gap-2">
               <input
-                type="tel"
+                type="email"
                 required
                 disabled={codeSent}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="010-0000-0000"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="helper@example.com"
                 className="flex-1 rounded-xl border border-slate-700 bg-slate-800 p-3.5 text-base font-bold text-white outline-none placeholder:text-slate-500 focus:border-blue-500 disabled:opacity-60 disabled:bg-slate-850 font-mono"
               />
               {!codeSent ? (
@@ -418,8 +419,8 @@ export function HelperAuthCard({
                   {loading
                     ? formatBilingual(t("tech.verifying"), "발송 중...")
                     : formatBilingual(
-                        t("tech.getAccessKeyBtn"),
-                        "3개월 보안 접속 코드 받기",
+                        "90일 보안 접속 코드 받기",
+                        "90일 보안 접속 코드 받기",
                       )}
                 </button>
               ) : (
@@ -428,7 +429,7 @@ export function HelperAuthCard({
                   onClick={() => setCodeSent(false)}
                   className="shrink-0 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-3.5 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white shadow-2xs active:scale-[0.98] transition cursor-pointer"
                 >
-                  {formatBilingual(t("tech.changePhoneBtn"), "번호 변경")}
+                  {formatBilingual("이메일 변경", "이메일 변경")}
                 </button>
               )}
             </div>
@@ -437,8 +438,8 @@ export function HelperAuthCard({
                 <p className="text-[11px] leading-relaxed text-blue-300 font-medium">
                   💡{" "}
                   {formatBilingual(
-                    t("tech.securitySessionNotice"),
-                    "3개월 보안 세션 시스템: 이동전화번호 기반 무작위 90자 보안 암호키 발급",
+                    "90-Day Security Session: Security access key issued via email verification",
+                    "90일 보안 세션 시스템: 이메일 인증 기반 90일 유효 보안 접속 코드 발급",
                   )}
                 </p>
               </div>
@@ -448,19 +449,19 @@ export function HelperAuthCard({
           {/* Once Key is Sent */}
           {codeSent && (
             <>
-              {/* Visual KakaoTalk / SMS Notice Card */}
+              {/* Visual Email Notice Card */}
               <div className="rounded-2xl border border-emerald-700/60 bg-emerald-950/40 p-4 text-xs text-emerald-200 shadow-inner">
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400">
-                    <span>💬</span>
+                    <span>📧</span>
                     <span>
                       {formatBilingual(
-                        t("tech.keySentNotice"),
-                        "카카오톡 알림톡 / SMS 발송 완료",
+                        "Email Sent Successfully",
+                        "이메일(Email) 발송 완료",
                       )}
                     </span>
                   </span>
-                  <span className="font-mono text-slate-300">{phone}</span>
+                  <span className="font-mono text-slate-300">{email}</span>
                 </div>
 
                 <div className="mt-3 rounded-xl border border-emerald-600/50 bg-slate-900/95 p-3.5">

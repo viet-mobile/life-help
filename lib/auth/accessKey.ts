@@ -1,19 +1,20 @@
 /**
  * 3-Month (90-Day) Security Access Key System
  * Generates and validates long-term authentication keys for Helpers and Counselors,
- * reducing recurring SMS costs and providing 90-day seamless session persistence.
+ * reducing recurring verification costs and providing 90-day seamless session persistence.
  */
 
 export interface AccessKeyRecord {
   key: string;
   issuedAt: string;
   expiresAt: string;
-  phone: string;
+  email?: string;
+  phone?: string;
 }
 
 /**
  * Generates a clean, copy-friendly, high-entropy 32-character access key (2x length).
- * Formatted with hyphens (e.g., LH-9F8A-7B2C-4D1E-93A8-5K2M-8P3W-6R7T-1V9Y) to prevent mobile copy/paste errors.
+ * Formatted with hyphens (e.g., LH-9F8A-7B2C-4D1E-93A8-5K2M-8P3W-6R7T-1V9Y) to prevent copy/paste errors.
  */
 export function generateAccessKey(prefix: string = "LH"): string {
   const chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // excludes ambiguous characters like 0, O, 1, I
@@ -54,19 +55,22 @@ export function getRemainingDays(expiryIso?: string | null): number {
 }
 
 /**
- * Formats a realistic KakaoTalk Alimtalk / SMS dispatch notification payload.
+ * Formats an Email dispatch notification payload.
  */
 export function formatAccessKeyNotice({
+  email,
   phone,
   accessKey,
   expiresAt,
   portalName,
 }: {
-  phone: string;
+  email?: string;
+  phone?: string;
   accessKey: string;
   expiresAt: string;
   portalName: string;
 }) {
+  const recipient = email || phone || "";
   const expiryFormatted = new Date(expiresAt).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
@@ -74,13 +78,13 @@ export function formatAccessKeyNotice({
   });
 
   return {
-    phone,
+    email: recipient,
+    phone: recipient,
     accessKey,
     expiresAt,
     expiryFormatted,
-    channel: "카카오톡 알림톡 / SMS",
-    title: `[LIFE.HELP] ${portalName} 3개월 보안 접속 코드 발송`,
-    body: `[LIFE.HELP] ${portalName} 전용 보안 접속 코드입니다.\n\n🔑 접속 코드: ${accessKey}\n📅 유효기간: ${expiryFormatted}까지 (발급일로부터 90일간 자동 유지)\n\n위 코드를 복사하여 접속 화면에 입력하시면 3개월 동안 번호 인증 없이 즉시 업무를 시작하실 수 있습니다.`,
+    channel: email ? "이메일(Email)" : "안내",
+    title: `[LIFE.HELP] ${portalName} 90일 보안 접속 코드 발송`,
+    body: `[LIFE.HELP] ${portalName} 전용 90일 보안 접속 코드입니다.\n\n📧 수신 계정: ${recipient}\n🔑 접속 코드: ${accessKey}\n📅 유효기간: ${expiryFormatted}까지 (발급일로부터 90일간 자동 유지)\n\n위 코드를 복사하여 접속 화면에 입력하시면 90일 동안 재인증 없이 즉시 업무를 시작하실 수 있습니다.`,
   };
 }
-

@@ -125,7 +125,7 @@ function RequestPageContent() {
       sido: selectedRegion.sido,
       gungu: selectedRegion.gungu,
       address: address.trim(),
-      phone: phone.trim(),
+      phone: "",
       fileNames: selectedFileNames,
     });
 
@@ -189,7 +189,7 @@ function RequestPageContent() {
             {selectedProblemOptions.length > 0 && (
               <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50/60 p-4 text-left">
                 <p className="text-xs font-black text-blue-950 mb-2">
-                  📋 선택하신 문제 상황 예시 ({selectedProblemOptions.length}건):
+                  📋 {t("request.selectedChecklistItems") ? t("request.selectedChecklistItems").replace("{count}", String(selectedProblemOptions.length)) : `선택하신 문제 상황 예시 (${selectedProblemOptions.length}건):`}
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-xs font-semibold text-blue-900">
                   {selectedProblemOptions.map((opt, i) => (
@@ -204,18 +204,18 @@ function RequestPageContent() {
               <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left space-y-2.5">
                 <div>
                   <span className="text-[11px] font-extrabold text-slate-500 block uppercase">
-                    📝 고객 작성 원문 ({currentMeta?.nativeName || locale}):
+                    📝 {t("request.customerOriginalText") || "고객 작성 원문"} ({currentMeta?.nativeName || locale}):
                   </span>
-                  <p className="text-sm font-bold text-slate-900 mt-0.5">
+                  <p className="text-sm font-bold text-slate-900 mt-0.5 break-words">
                     {problemDescription.trim()}
                   </p>
                 </div>
                 {translatedResult && locale !== "ko" && (
                   <div className="pt-2 border-t border-slate-200">
                     <span className="text-[11px] font-extrabold text-emerald-700 block uppercase">
-                      💡 서비스 제공자(헬퍼) 전달 번역문 (한국어):
+                      💡 {t("request.providerTranslatedText") || "서비스 제공자(헬퍼) 전달 번역문 (한국어)"}:
                     </span>
-                    <p className="text-sm font-bold text-emerald-950 mt-0.5">
+                    <p className="text-sm font-bold text-emerald-950 mt-0.5 break-words">
                       {translatedResult}
                     </p>
                   </div>
@@ -223,28 +223,26 @@ function RequestPageContent() {
               </div>
             )}
 
-            {/* Real phone number info */}
-            {phone.trim() && (
-              <div className="mt-4 rounded-xl border border-slate-200 bg-white p-3 text-left">
-                <p className="text-xs font-bold text-slate-500">
-                  {formatBilingual("고객 연락처", "고객 연락처")}:{" "}
-                  <span className="font-mono text-slate-900 font-bold">{phone}</span>
-                </p>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  {formatBilingual(
-                    "선택하신 지역과 서비스에 맞는 현장 헬퍼에게 다이렉트로 전달되어 신속하게 연락드립니다.",
-                    "선택하신 지역과 서비스에 맞는 현장 헬퍼에게 다이렉트로 전달되어 신속하게 연락드립니다."
-                  )}
-                </p>
-              </div>
-            )}
+            {/* Privacy Protection Guarantee */}
+            <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/80 p-3.5 text-left">
+              <p className="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
+                <span>🔒</span>
+                <span>{formatBilingual(t("request.privacyGuaranteeTitle") || "개인정보 완벽 보호", "개인정보 완벽 보호")}</span>
+              </p>
+              <p className="text-xs text-emerald-800 mt-1 leading-relaxed">
+                {formatBilingual(
+                  t("request.privacyNoPhoneNote"),
+                  "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다."
+                )}
+              </p>
+            </div>
 
             <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/chat"
                 className="w-full sm:w-auto rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-7 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition cursor-pointer text-center"
               >
-                💬 실시간 1:1 대화 연결
+                💬 {formatBilingual(t("request.startLiveChat") || "실시간 1:1 대화 연결", "실시간 1:1 대화 연결")}
               </Link>
               <Link
                 href="/"
@@ -262,17 +260,17 @@ function RequestPageContent() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-3 py-2.5 sm:px-5 sm:py-4 gap-2">
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+    <main className="min-h-screen bg-slate-50 overflow-x-hidden">
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-2xs">
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-3 py-2 sm:px-5 sm:py-3 gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
             <Link href="/" className="inline-flex items-center shrink-0" title="LIFE.HELP Home">
               <BrandLogo size="md" priority />
             </Link>
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700 max-w-[90px] sm:max-w-none"
+              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700 max-w-[75px] xs:max-w-[105px] sm:max-w-[160px] md:max-w-none"
             >
               <span className="shrink-0">📍</span>
               <span className="truncate">{shortRegionText}</span>
@@ -283,40 +281,40 @@ function RequestPageContent() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-3xl px-5 py-8">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-slate-900">
+      <section className="mx-auto max-w-3xl px-4 sm:px-5 py-6 sm:py-8">
+        <div className="flex items-center justify-between gap-2">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 break-words">
             {formatBilingual(t("request.title"), "서비스 신청")}
           </h1>
           <Link
             href="/"
-            className="text-xs font-semibold text-blue-700 hover:underline"
+            className="text-xs font-semibold text-blue-700 hover:underline shrink-0"
           >
             ← {formatBilingual(t("common.back"), "홈으로")}
           </Link>
         </div>
 
         {/* Service selection card with link to service detail page */}
-        <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-5">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-blue-800 uppercase tracking-wider">
+        <div className="mt-5 sm:mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs font-extrabold text-blue-800 uppercase tracking-wider">
               {formatBilingual(t("request.selectedService"), "선택한 서비스")}
             </span>
             {service && (
               <Link
                 href={`/services/${service.slug}`}
-                className="text-xs font-bold text-blue-700 hover:underline"
+                className="text-xs font-bold text-blue-700 hover:underline shrink-0"
               >
                 {formatBilingual(t("common.detail"), "서비스 안내 보기 →")}
               </Link>
             )}
           </div>
 
-          <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">{service?.icon || "🛠️"}</span>
-              <div>
-                <p className="text-lg font-bold text-slate-900">
+          <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+              <span className="text-3xl sm:text-4xl shrink-0 select-none">{service?.icon || "🛠️"}</span>
+              <div className="min-w-0 flex-1">
+                <p className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug break-words">
                   {service
                     ? formatBilingual(t(`service.${service.key}`), tKo(`service.${service.key}`))
                     : formatBilingual(t("customer.servicesTitle"), "서비스를 선택해 주세요")}
@@ -324,18 +322,20 @@ function RequestPageContent() {
               </div>
             </div>
 
-            <select
-              value={selectedSlug}
-              onChange={(e) => setSelectedSlug(e.target.value)}
-              className="rounded-xl border border-blue-300 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-800 outline-none hover:border-blue-500 focus:border-blue-600 sm:text-sm shadow-2xs cursor-pointer"
-              aria-label="Change service"
-            >
-              {services.map((s) => (
-                <option key={s.slug} value={s.slug}>
-                  {s.icon} {isKorean ? tKo(`service.${s.key}`) : isBilingual ? `${t(`service.${s.key}`)} (${tKo(`service.${s.key}`)})` : t(`service.${s.key}`)}
-                </option>
-              ))}
-            </select>
+            <div className="w-full md:w-auto shrink-0 min-w-0">
+              <select
+                value={selectedSlug}
+                onChange={(e) => setSelectedSlug(e.target.value)}
+                className="w-full md:w-auto md:max-w-[280px] lg:max-w-xs rounded-xl border border-blue-300 bg-white px-3 py-2 text-xs font-bold text-slate-800 outline-none hover:border-blue-500 focus:border-blue-600 shadow-2xs cursor-pointer truncate"
+                aria-label="Change service"
+              >
+                {services.map((s) => (
+                  <option key={s.slug} value={s.slug}>
+                    {s.icon} {isKorean ? tKo(`service.${s.key}`) : t(`service.${s.key}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
@@ -361,26 +361,26 @@ function RequestPageContent() {
             {problemOptions.length > 0 && (
               <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 sm:p-5">
                 <div className="flex items-center justify-between gap-2">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-sm font-black text-slate-900 flex items-center gap-1.5">
-                      <span>📋</span>
-                      <span>
+                      <span className="shrink-0">📋</span>
+                      <span className="break-words">
                         {formatBilingual(
-                          "자주 발생하는 주요 증상/요청 예시 (선택 가능)",
-                          "자주 발생하는 주요 증상/요청 예시 (선택 가능)"
+                          t("request.checklistTitle"),
+                          tKo("request.checklistTitle") || "자주 발생하는 주요 증상/요청 예시 (선택 가능)"
                         )}
                       </span>
                     </p>
-                    <p className="text-xs font-semibold text-slate-500 mt-0.5">
+                    <p className="text-xs font-semibold text-slate-500 mt-0.5 break-words">
                       {formatBilingual(
-                        "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다.",
-                        "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다."
+                        t("request.checklistSubtitle"),
+                        tKo("request.checklistSubtitle") || "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다."
                       )}
                     </p>
                   </div>
                   {selectedProblemOptions.length > 0 && (
                     <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-700 shrink-0">
-                      {selectedProblemOptions.length}개 선택
+                      {t("request.checklistSelectedCount") ? t("request.checklistSelectedCount").replace("{count}", String(selectedProblemOptions.length)) : `${selectedProblemOptions.length}개 선택`}
                     </span>
                   )}
                 </div>
@@ -409,9 +409,9 @@ function RequestPageContent() {
                           ✓
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="text-xs leading-snug">{opt.translated}</p>
+                          <p className="text-xs leading-snug break-words">{opt.translated}</p>
                           {locale !== "ko" && isBilingual && opt.translated !== opt.ko && (
-                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug break-words">
                               (한국어: {opt.ko})
                             </p>
                           )}
@@ -563,19 +563,25 @@ function RequestPageContent() {
             />
           </div>
 
-          {/* Phone */}
-          <div>
-            <label className="block text-base font-bold text-slate-900">
-              {formatBilingual(t("request.phoneLabel"), "연락처")}
-            </label>
-            <input
-              required
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="mt-3 w-full rounded-2xl border-2 border-slate-300 bg-white p-4 text-base font-medium text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-600 shadow-2xs font-mono"
-              placeholder="010-0000-0000"
-            />
+          {/* Privacy Guarantee Card: No Phone Number Collected */}
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4 sm:p-5">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl shrink-0 select-none">🔒</span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-extrabold text-emerald-950">
+                  {formatBilingual(
+                    t("request.privacyNoPhoneTitle") || "개인정보 보호 안심 시스템 (휴대폰 번호 수집 없음)",
+                    "개인정보 보호 안심 시스템 (휴대폰 번호 수집 없음)"
+                  )}
+                </p>
+                <p className="text-xs font-semibold text-emerald-800 mt-1 leading-relaxed">
+                  {formatBilingual(
+                    t("request.privacyNoPhoneNote") || "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다.",
+                    "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다."
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
 
           <button
@@ -586,7 +592,7 @@ function RequestPageContent() {
             {isSubmitting ? (
               <>
                 <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                <span>{formatBilingual("번역 및 접수 중...", "번역 및 접수 중...")}</span>
+                <span>{formatBilingual(t("request.translatingAndSubmitting") || "번역 및 접수 중...", "번역 및 접수 중...")}</span>
               </>
             ) : (
               formatBilingual(t("request.submitButton"), "서비스 신청하기")

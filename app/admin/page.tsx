@@ -225,10 +225,11 @@ export default function AdminPage() {
   const filteredHelpers = useMemo(() => {
     return helpers.filter((h) => {
       const name = h.contract?.name || "";
-      const phone = h.phone;
+      const phone = h.phone || "";
+      const email = h.email || "";
       const regionsStr = h.contract?.regions.map((r) => `${r.sido} ${r.gungu}`).join(" ") || "";
       const servicesStr = (h.contract?.services.map((s) => getLocalizedServiceName(s, locale)).join(" ") || "") + " " + (h.contract?.services.join(" ") || "");
-      const searchTarget = `${name} ${phone} ${regionsStr} ${servicesStr}`.toLowerCase();
+      const searchTarget = `${name} ${email} ${phone} ${regionsStr} ${servicesStr}`.toLowerCase();
 
       if (helperSearch && !searchTarget.includes(helperSearch.toLowerCase())) {
         return false;
@@ -882,17 +883,24 @@ export default function AdminPage() {
                   const contract = h.contract;
                   const daysLeft = h.accessKeyExpiresAt ? getRemainingDays(h.accessKeyExpiresAt) : 0;
                   const isExpiring = daysLeft <= 14;
-                  const unreadCount = getAdminMessages({ targetId: h.phone, targetType: "helper" }).filter(
+                  const helperId = h.email || h.phone || "";
+                  const unreadCount = getAdminMessages({ targetId: helperId, targetType: "helper" }).filter(
                     (m) => !m.isRead && m.sender === "partner",
                   ).length;
-                  const helperDisplayName = contract?.name || `Helper (${h.phone.slice(-4)})`;
+                  const helperDisplayName =
+                    contract?.name ||
+                    (h.email
+                      ? `Helper (${h.email.split("@")[0]})`
+                      : h.phone
+                        ? `Helper (${h.phone.slice(-4)})`
+                        : "Helper");
 
                   return (
                     <div
-                      key={h.phone}
+                      key={helperId}
                       className="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-sm space-y-4 hover:border-slate-700 transition"
                     >
-                      {/* Header: Name, Status, Phone */}
+                      {/* Header: Name, Status, Contact */}
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
                           <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-lg font-black text-white shadow-md">
@@ -913,7 +921,7 @@ export default function AdminPage() {
                                 {h.isActive ? `● ${t("admin.statusActive")}` : `○ ${t("admin.statusPaused")}`}
                               </span>
                             </div>
-                            <p className="text-xs font-mono text-slate-400 mt-0.5">📱 {h.phone}</p>
+                            <p className="text-xs font-mono text-slate-400 mt-0.5">✉️ {h.email || h.phone}{h.phone && h.email ? ` · 📱 ${h.phone}` : ""}</p>
                           </div>
                         </div>
 
@@ -923,7 +931,7 @@ export default function AdminPage() {
                           onClick={() =>
                             handleOpenPartnerChat({
                               type: "helper",
-                              id: h.phone,
+                              id: helperId,
                               name: helperDisplayName,
                             })
                           }
@@ -1547,23 +1555,30 @@ export default function AdminPage() {
                   🛠️ {t("admin.helpersSubheader")}
                 </div>
                 {helpers.map((h) => {
-                  const partnerName = h.contract?.name || `Helper (${h.phone.slice(-4)})`;
-                  const isSelected = selectedPartner?.id === h.phone;
-                  const unread = getAdminMessages({ targetId: h.phone, targetType: "helper" }).filter(
+                  const helperId = h.email || h.phone || "";
+                  const partnerName =
+                    h.contract?.name ||
+                    (h.email
+                      ? `Helper (${h.email.split("@")[0]})`
+                      : h.phone
+                        ? `Helper (${h.phone.slice(-4)})`
+                        : "Helper");
+                  const isSelected = selectedPartner?.id === helperId;
+                  const unread = getAdminMessages({ targetId: helperId, targetType: "helper" }).filter(
                     (m) => !m.isRead && m.sender === "partner",
                   ).length;
 
                   return (
                     <button
-                      key={h.phone}
+                      key={helperId}
                       type="button"
                       onClick={() => {
                         setSelectedPartner({
                           type: "helper",
-                          id: h.phone,
+                          id: helperId,
                           name: partnerName,
                         });
-                        markAllAdminMessagesAsRead(h.phone, "admin");
+                        markAllAdminMessagesAsRead(helperId, "admin");
                         setMessages(getAdminMessages());
                       }}
                       className={`w-full flex items-center justify-between rounded-xl px-3 py-2.5 text-left transition-all duration-200 cursor-pointer active:scale-[0.98] ${
@@ -1574,7 +1589,7 @@ export default function AdminPage() {
                     >
                       <div className="min-w-0">
                         <p className="text-xs font-bold truncate">{partnerName}</p>
-                        <p className="text-[11px] text-slate-400 truncate font-mono">{h.phone}</p>
+                        <p className="text-[11px] text-slate-400 truncate font-mono">{h.email || h.phone}</p>
                       </div>
                       {unread > 0 && (
                         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-black text-white">
@@ -2835,20 +2850,27 @@ export default function AdminPage() {
                 {helpers
                   .filter((h) => {
                     if (!assignHelperSearch) return true;
-                    const target = `${h.contract?.name || ""} ${h.phone} ${h.contract?.regions.map((r) => `${r.sido} ${r.gungu}`).join(" ") || ""}`.toLowerCase();
+                    const target = `${h.contract?.name || ""} ${h.email || ""} ${h.phone || ""} ${h.contract?.regions.map((r) => `${r.sido} ${r.gungu}`).join(" ") || ""}`.toLowerCase();
                     return target.includes(assignHelperSearch.toLowerCase());
                   })
                   .map((h) => {
+                    const helperId = h.email || h.phone || "";
                     const isRegionMatched = h.contract?.regions.some(
                       (r) =>
                         r.sido === assigningRequest.sido &&
                         (r.gungu === assigningRequest.gungu || r.gungu === "전체"),
                     );
-                    const name = h.contract?.name || `Helper (${h.phone.slice(-4)})`;
+                    const name =
+                      h.contract?.name ||
+                      (h.email
+                        ? `Helper (${h.email.split("@")[0]})`
+                        : h.phone
+                          ? `Helper (${h.phone.slice(-4)})`
+                          : "Helper");
 
                     return (
                       <div
-                        key={h.phone}
+                        key={helperId}
                         className={`rounded-2xl border p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
                           isRegionMatched
                             ? "border-emerald-500/60 bg-emerald-950/20 hover:border-emerald-400"
@@ -2858,7 +2880,7 @@ export default function AdminPage() {
                         <div className="space-y-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-extrabold text-white text-sm">{name}</span>
-                            <span className="text-xs font-mono text-slate-400">📱 {h.phone}</span>
+                            <span className="text-xs font-mono text-slate-400">✉️ {h.email || h.phone}{h.phone && h.email ? ` · 📱 ${h.phone}` : ""}</span>
                             {h.isActive ? (
                               <span className="rounded bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800">
                                 {t("admin.statusActive")}
@@ -2893,15 +2915,15 @@ export default function AdminPage() {
                             onClick={() => {
                               updateRequestStatus(assigningRequest.id, "dispatched", {
                                 name,
-                                phone: h.phone,
+                                phone: h.phone || h.email || "",
                               });
                               sendAdminMessage({
                                 targetType: "helper",
-                                targetId: h.phone,
+                                targetId: helperId,
                                 targetName: name,
                                 sender: "admin",
                                 senderName: "LIFE.HELP HQ",
-                                text: `[🚨 ${t("admin.templateDispatch")}]\n${getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)} (${assigningRequest.sido} ${assigningRequest.gungu})\n- ${t("admin.dispatchLocationLabel")}: ${assigningRequest.address}\n- ${t("admin.customerPhoneLabel")}: ${assigningRequest.phone}\n- ${t("admin.requestDescLabel")}: ${assigningRequest.description}`,
+                                text: `[🚨 ${t("admin.templateDispatch")}]\n${getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)} (${assigningRequest.sido} ${assigningRequest.gungu})\n- ${t("admin.dispatchLocationLabel")}: ${assigningRequest.address}\n- ${t("admin.customerPhoneLabel")}: ${assigningRequest.phone || "실시간 웹/앱 대화"}\n- ${t("admin.requestDescLabel")}: ${assigningRequest.description}`,
                               });
                               showToast(`${name} - ${t("admin.toastAssigned")}`);
                               setAssigningRequest(null);

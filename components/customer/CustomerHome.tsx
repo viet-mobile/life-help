@@ -53,10 +53,10 @@ export function CustomerHome() {
   const headingWeight = locale === "vi" ? "font-bold" : "font-extrabold";
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-slate-50 overflow-x-hidden">
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-xs">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-4 sm:px-5 sm:py-2.5 md:py-3">
-          <div className="flex items-center gap-1.5 sm:gap-4 shrink-0 min-w-0">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
             <Link
               href="/"
               className="inline-flex items-center shrink-0"
@@ -69,7 +69,7 @@ export function CustomerHome() {
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50/70 px-2 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-blue-900 transition hover:bg-blue-100 max-w-[90px] sm:max-w-none"
+              className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50/70 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-blue-900 transition hover:bg-blue-100 max-w-[75px] xs:max-w-[100px] sm:max-w-[160px] md:max-w-none"
               title={formatBilingual(getRegionUIText("changeLocation", locale, isBilingual), "지역 변경")}
             >
               <span className="shrink-0">📍</span>

@@ -22,7 +22,8 @@ export interface HelperRegionItem {
 export interface HelperContract {
   name: string;
   residentNumber: string; // Stored securely/locally, masked in UI
-  phone: string;
+  email: string;
+  phone?: string;
   services: string[]; // List of service slugs
   regions: HelperRegionItem[]; // List of regions
   availableDays: string[]; // e.g. ["월", "화", "수", "목", "금"]
@@ -36,7 +37,8 @@ export interface HelperContract {
 }
 
 export interface HelperProfile {
-  phone: string;
+  email: string;
+  phone?: string;
   isVerified: boolean;
   isActive: boolean; // 실시간 가용 상태 (즉시 출동 가능 vs 일시적 업무 중단)
   contract?: HelperContract;
@@ -50,6 +52,7 @@ export interface HelperProfile {
 // Initial seed helpers across regions for sys.life.help administration
 export const SEED_HELPERS: HelperProfile[] = [
   {
+    email: "helper.kim@life.help",
     phone: "010-3456-7890",
     isVerified: true,
     isActive: true,
@@ -60,6 +63,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     contract: {
       name: "김철수",
       residentNumber: "AUTH-VERIFIED",
+      email: "helper.kim@life.help",
       phone: "010-3456-7890",
       services: ["toilet-clog", "sink-drain", "floor-drain", "pipe-thaw", "high-pressure"],
       regions: [
@@ -84,6 +88,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     },
   },
   {
+    email: "helper.park@life.help",
     phone: "010-2345-6789",
     isVerified: true,
     isActive: true,
@@ -94,6 +99,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     contract: {
       name: "박영희",
       residentNumber: "AUTH-VERIFIED",
+      email: "helper.park@life.help",
       phone: "010-2345-6789",
       services: ["boiler-repair", "water-heater", "pipe-freeze", "floor-heating"],
       regions: [
@@ -118,6 +124,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     },
   },
   {
+    email: "helper.lee@life.help",
     phone: "010-4567-8901",
     isVerified: true,
     isActive: false, // Currently on break
@@ -128,6 +135,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     contract: {
       name: "이준호",
       residentNumber: "AUTH-VERIFIED",
+      email: "helper.lee@life.help",
       phone: "010-4567-8901",
       services: ["leak-detection", "waterproofing", "roof-leak", "pipe-inspection"],
       regions: [
@@ -153,6 +161,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     },
   },
   {
+    email: "helper.nguyen@life.help",
     phone: "010-9876-5432",
     isVerified: true,
     isActive: true,
@@ -163,6 +172,7 @@ export const SEED_HELPERS: HelperProfile[] = [
     contract: {
       name: "응우옌 반 훙 (Nguyen Van Hung)",
       residentNumber: "AUTH-VERIFIED",
+      email: "helper.nguyen@life.help",
       phone: "010-9876-5432",
       services: ["toilet-clog", "sink-drain", "floor-drain", "faucet-replacement"],
       regions: [
@@ -194,25 +204,31 @@ interface HelperContextType {
   remainingDays: number;
   loginPhone: (phone: string) => Promise<boolean>;
   verifyPhoneCode: (phone: string, code: string) => Promise<boolean>;
-  requestAccessKey: (phone: string) => Promise<{
+  requestAccessKey: (emailOrPhone: string) => Promise<{
     success: boolean;
     accessKey: string;
     expiresAt: string;
     notice: ReturnType<typeof formatAccessKeyNotice>;
   }>;
   verifyAccessKey: (
-    keyOrPhone: string,
+    keyOrEmail: string,
     maybeKey?: string,
   ) => Promise<{ success: boolean; error?: string }>;
   registerHelper: (data: {
     name: string;
-    phone: string;
+    email?: string;
+    phone?: string;
     regions?: HelperRegionItem[];
     services?: string[];
     accessKey?: string;
     accessKeyExpiresAt?: string;
   }) => void;
-  saveContract: (contract: Omit<HelperContract, "phone" | "signedAt">) => void;
+  saveContract: (
+    contract: Omit<HelperContract, "email" | "phone" | "signedAt"> & {
+      email?: string;
+      phone?: string;
+    },
+  ) => void;
   toggleActiveStatus: () => void;
   updateServices: (services: string[]) => void;
   updateRegions: (regions: HelperRegionItem[]) => void;
@@ -254,12 +270,12 @@ export function getRegisteredHelpers(): HelperProfile[] {
 }
 
 export function syncHelperToRegistry(profile: HelperProfile): void {
-  if (typeof window === "undefined" || !profile || !profile.phone) return;
+  if (typeof window === "undefined" || !profile || (!profile.email && !profile.phone)) return;
   try {
     const registry = getRegisteredHelpers();
-    const cleanPhone = profile.phone.replace(/[^0-9]/g, "");
+    const cleanId = (profile.email || profile.phone || "").toLowerCase().trim();
     const existingIndex = registry.findIndex(
-      (h) => h.phone.replace(/[^0-9]/g, "") === cleanPhone,
+      (h) => (h.email || h.phone || "").toLowerCase().trim() === cleanId,
     );
 
     let updated: HelperProfile[];
@@ -351,13 +367,14 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
   const hasContract = !!helper?.contract && !!helper.contract.name;
   const remainingDays = helper?.accessKeyExpiresAt ? getRemainingDays(helper.accessKeyExpiresAt) : 0;
 
-  // 3-Month Security Access Key issuance (replaces high-frequency SMS)
-  const requestAccessKey = useCallback(async (phone: string) => {
-    const cleanPhone = phone.replace(/[^0-9]/g, "");
+  // 90-Day Security Access Key issuance via Email (replaces SMS)
+  const requestAccessKey = useCallback(async (emailOrPhone: string) => {
+    const email = emailOrPhone.trim();
+    const cleanId = email.toLowerCase().replace(/[^a-z0-9@._-]/g, "");
     const key = generateAccessKey("LH");
     const expiresAt = calculateAccessKeyExpiry(90); // 90 days validity
     const notice = formatAccessKeyNotice({
-      phone,
+      email,
       accessKey: key,
       expiresAt,
       portalName: "헬퍼(Helper)",
@@ -365,8 +382,8 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
 
     try {
       localStorage.setItem(
-        `life_help_pending_helper_key_${cleanPhone}`,
-        JSON.stringify({ phone: cleanPhone, accessKey: key, expiresAt })
+        `life_help_pending_helper_key_${cleanId}`,
+        JSON.stringify({ email, accessKey: key, expiresAt })
       );
     } catch {
       // ignore
@@ -381,11 +398,12 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Verify access key and persist 90-day active session
-  const verifyAccessKey = useCallback(async (keyOrPhone: string, maybeKey?: string) => {
+  const verifyAccessKey = useCallback(async (keyOrEmail: string, maybeKey?: string) => {
     const isSingleKeyCall = maybeKey === undefined;
-    const cleanKey = (isSingleKeyCall ? keyOrPhone : maybeKey).trim().toUpperCase();
-    let phone = isSingleKeyCall ? "" : keyOrPhone.trim();
-    let cleanPhone = phone.replace(/[^0-9]/g, "");
+    const cleanKey = (isSingleKeyCall ? keyOrEmail : maybeKey).trim().toUpperCase();
+    let identifier = isSingleKeyCall ? "" : keyOrEmail.trim();
+    let email = identifier.includes("@") ? identifier.toLowerCase() : "";
+    let phone = !identifier.includes("@") ? identifier : "";
 
     if (!cleanKey || cleanKey.length < 6) {
       return { success: false, error: "유효한 보안 접속 코드를 입력해 주세요." };
@@ -402,14 +420,13 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
         if (keyMap[cleanKey]) {
           savedHelperData = keyMap[cleanKey];
           if (savedHelperData?.accessKeyExpiresAt) expiresAt = savedHelperData.accessKeyExpiresAt;
-          if (savedHelperData?.phone) {
-            phone = savedHelperData.phone;
-            cleanPhone = phone.replace(/[^0-9]/g, "");
+          if (savedHelperData?.email) {
+            email = savedHelperData.email.toLowerCase();
           }
         }
       }
-      if (cleanPhone) {
-        const pendingStr = localStorage.getItem(`life_help_pending_helper_key_${cleanPhone}`);
+      if (email) {
+        const pendingStr = localStorage.getItem(`life_help_pending_helper_key_${email}`);
         if (pendingStr) {
           const pending = JSON.parse(pendingStr);
           if (pending.expiresAt) expiresAt = pending.expiresAt;
@@ -421,31 +438,30 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
 
     // Also look in SEED_HELPERS
     const seedMatch = SEED_HELPERS.find(
-      (s) => s.accessKey?.toUpperCase() === cleanKey || (cleanPhone && s.phone.replace(/[^0-9]/g, "") === cleanPhone)
+      (s) => s.accessKey?.toUpperCase() === cleanKey || (email && s.email.toLowerCase() === email) || (phone && s.phone?.replace(/[^0-9]/g, "") === phone.replace(/[^0-9]/g, ""))
     );
     if (seedMatch) {
       savedHelperData = seedMatch;
-      phone = seedMatch.phone;
-      cleanPhone = phone.replace(/[^0-9]/g, "");
+      email = seedMatch.email;
+      phone = seedMatch.phone || "";
       if (seedMatch.accessKeyExpiresAt) expiresAt = seedMatch.accessKeyExpiresAt;
     }
 
     const existing = getClientHelperSnapshot();
-    if (!phone && existing?.phone) {
-      phone = existing.phone;
-      cleanPhone = phone.replace(/[^0-9]/g, "");
+    if (!email && existing?.email) {
+      email = existing.email;
     }
-    if (!phone) {
-      phone = `010-H${cleanKey.slice(-4)}`;
-      cleanPhone = phone.replace(/[^0-9]/g, "");
+    if (!email) {
+      email = `helper.${cleanKey.slice(-4).toLowerCase()}@life.help`;
     }
 
     const nowIso = new Date().toISOString();
 
     const defaultContract: HelperContract = {
-      name: savedHelperData?.contract?.name || existing?.contract?.name || `헬퍼 (${cleanKey.slice(-4)})`,
+      name: savedHelperData?.contract?.name || existing?.contract?.name || `헬퍼 (${email.split("@")[0]})`,
       residentNumber: "AUTH-VERIFIED",
-      phone: phone.trim(),
+      email: email.trim(),
+      phone: phone.trim() || undefined,
       services: savedHelperData?.contract?.services || existing?.contract?.services || [
         "toilet-clog",
         "sink-drain",
@@ -471,10 +487,11 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
     };
 
     const newProfile: HelperProfile = {
-      phone: phone.trim(),
+      email: email.trim(),
+      phone: phone.trim() || undefined,
       isVerified: true,
       isActive: true,
-      contract: (existing && existing.phone.replace(/[^0-9]/g, "") === cleanPhone ? existing.contract : null) || defaultContract,
+      contract: (existing && (existing.email === email || (phone && existing.phone === phone)) ? existing.contract : null) || defaultContract,
       accessKey: cleanKey,
       accessKeyIssuedAt: nowIso,
       accessKeyExpiresAt: expiresAt,
@@ -484,8 +501,8 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
     persistHelper(newProfile);
 
     try {
-      if (cleanPhone) {
-        localStorage.removeItem(`life_help_pending_helper_key_${cleanPhone}`);
+      if (email) {
+        localStorage.removeItem(`life_help_pending_helper_key_${email}`);
       }
       const keyMapRaw = localStorage.getItem("life_help_helper_key_map") || "{}";
       const keyMap = JSON.parse(keyMapRaw);
@@ -501,21 +518,24 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
   const registerHelper = useCallback(
     (data: {
       name: string;
-      phone: string;
+      email?: string;
+      phone?: string;
       regions?: HelperRegionItem[];
       services?: string[];
       accessKey?: string;
       accessKeyExpiresAt?: string;
     }) => {
-      const cleanPhone = data.phone.replace(/[^0-9]/g, "");
+      const email = (data.email || data.phone || `helper.${Date.now()}@life.help`).trim().toLowerCase();
+      const phone = data.phone?.trim() || "";
       const nowIso = new Date().toISOString();
       const expiresAt = data.accessKeyExpiresAt || calculateAccessKeyExpiry(90);
       const accessKey = data.accessKey || generateAccessKey("LH");
 
       const newContract: HelperContract = {
-        name: data.name.trim() || `헬퍼 (${cleanPhone.slice(-4)})`,
+        name: data.name.trim() || `헬퍼 (${email.split("@")[0]})`,
         residentNumber: "",
-        phone: data.phone.trim(),
+        email: email,
+        phone: phone || undefined,
         services:
           data.services && data.services.length > 0
             ? data.services
@@ -541,7 +561,8 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
       };
 
       const profile: HelperProfile = {
-        phone: data.phone.trim(),
+        email: email,
+        phone: phone || undefined,
         isVerified: true,
         isActive: true,
         contract: newContract,
@@ -580,13 +601,19 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
   );
 
   const saveContract = useCallback(
-    (contractData: Omit<HelperContract, "phone" | "signedAt">) => {
+    (
+      contractData: Omit<HelperContract, "email" | "phone" | "signedAt"> & {
+        email?: string;
+        phone?: string;
+      },
+    ) => {
       const current = getClientHelperSnapshot();
       if (!current) return;
 
       const fullContract: HelperContract = {
         ...contractData,
-        phone: current.phone,
+        email: contractData.email || current.email || "",
+        phone: contractData.phone !== undefined ? contractData.phone : current.phone,
         signedAt: new Date().toISOString(),
       };
 

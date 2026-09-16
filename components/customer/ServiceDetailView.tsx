@@ -81,17 +81,17 @@ export function ServiceDetailView({ slug }: { slug: string }) {
   );
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-3 py-2.5 sm:px-5 sm:py-4 gap-2">
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+    <main className="min-h-screen bg-slate-50 overflow-x-hidden">
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-20 shadow-2xs">
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-3 py-2 sm:px-5 sm:py-3 gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
             <Link href="/" className="inline-flex items-center shrink-0" title="LIFE.HELP Home">
               <BrandLogo size="md" priority />
             </Link>
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700 max-w-[90px] sm:max-w-none"
+              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700 max-w-[75px] xs:max-w-[105px] sm:max-w-[160px] md:max-w-none"
             >
               <span className="shrink-0">📍</span>
               <span className="truncate">{shortRegionText}</span>

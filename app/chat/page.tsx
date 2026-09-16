@@ -25,7 +25,6 @@ export default function CustomerChatPage() {
 
   const [selectedServiceSlug, setSelectedServiceSlug] = useState<string>("clog-clearing");
   const [customerName, setCustomerName] = useState("");
-  const [customerPhone, setCustomerPhone] = useState("");
   const [initialInquiry, setInitialInquiry] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [isSending, setIsSending] = useState(false);
@@ -74,7 +73,6 @@ export default function CustomerChatPage() {
       sido: selectedRegion?.sido || "전북특별자치도",
       gungu: selectedRegion?.gungu || "익산시",
       customerName: finalName,
-      customerPhone: customerPhone.trim() || undefined,
       customerLocale: locale,
       initialMessage: initialInquiry.trim() || undefined,
     });
@@ -107,7 +105,7 @@ export default function CustomerChatPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 flex flex-col">
+    <main className="min-h-screen bg-slate-50 flex flex-col overflow-x-hidden">
       {/* Top Header */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-30 shadow-xs">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-4 sm:px-4 sm:py-3.5">
@@ -248,31 +246,23 @@ export default function CustomerChatPage() {
                   </select>
                 </div>
 
-                {/* Customer Name & Phone */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700">
-                      {formatBilingual("Your Name", "성함")}
-                    </label>
-                    <input
-                      type="text"
-                      value={customerName}
-                      onChange={(e) => setCustomerName(e.target.value)}
-                      placeholder="예: 홍길동 (Name)"
-                      className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700">
-                      {formatBilingual("Contact Phone", "연락처")}
-                    </label>
-                    <input
-                      type="tel"
-                      value={customerPhone}
-                      onChange={(e) => setCustomerPhone(e.target.value)}
-                      placeholder="예: 010-1234-5678"
-                      className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm font-mono focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
-                    />
+                {/* Customer Name & Privacy Assurance */}
+                <div>
+                  <label className="block text-xs font-bold text-slate-700">
+                    {formatBilingual("Your Name (Optional)", "성함 또는 닉네임 (선택사항)")}
+                  </label>
+                  <input
+                    type="text"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    placeholder="예: 홍길동 (Name/Nickname)"
+                    className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                  />
+                  <div className="mt-2 rounded-xl border border-emerald-200 bg-emerald-50/80 p-2.5">
+                    <p className="text-[11px] font-semibold text-emerald-900 flex items-center gap-1">
+                      <span>🔒</span>
+                      <span>{formatBilingual("Complete Privacy: No phone number collected. You connect safely via 1:1 chat on this website or LIFE.HELP app.", "개인정보 보호 안심: 휴대폰 번호를 수집하지 않으며, 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화로 안전하게 소통합니다.")}</span>
+                    </p>
                   </div>
                 </div>
 

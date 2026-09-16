@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useHelper } from "@/lib/helper/HelperContext";
+import { useHelper, type HelperContract } from "@/lib/helper/HelperContext";
 import { services } from "@/lib/services";
 import { koreanRegions } from "@/lib/region/regions";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -76,12 +76,14 @@ export default function TechWorkspacePage() {
     }
   }, [isLoggedIn, helper, router]);
 
+  const helperIdentifier = helper?.email || helper?.phone || "";
+
   const refreshAdminMessages = useCallback(() => {
-    if (helper?.phone) {
-      const msgs = getAdminMessages({ targetId: helper.phone, targetType: "helper" });
+    if (helperIdentifier) {
+      const msgs = getAdminMessages({ targetId: helperIdentifier, targetType: "helper" });
       setAdminMessages(msgs);
     }
-  }, [helper?.phone]);
+  }, [helperIdentifier]);
 
   useEffect(() => {
     refreshAdminMessages();
@@ -94,9 +96,18 @@ export default function TechWorkspacePage() {
     return null;
   }
 
-  const contract = helper.contract || {
-    name: `헬퍼 (${helper.phone.slice(-4)})`,
+  const helperDisplayName =
+    helper.contract?.name ||
+    (helper.email
+      ? `헬퍼 (${helper.email.split("@")[0]})`
+      : helper.phone
+        ? `헬퍼 (${helper.phone.slice(-4)})`
+        : "헬퍼");
+
+  const contract: HelperContract = helper.contract || {
+    name: helperDisplayName,
     residentNumber: "AUTH-VERIFIED",
+    email: helper.email || "helper@life.help",
     phone: helper.phone,
     services: ["toilet-clog", "sink-drain", "floor-drain"],
     regions: [{ sido: "전북특별자치도", gungu: "익산시" }],
@@ -113,6 +124,7 @@ export default function TechWorkspacePage() {
     excludedDates: [],
     extraWorkDates: [],
     signedAt: new Date().toISOString(),
+    signatureDataUrl: "",
     agreedToTerms: true,
   };
   const currentSidoObj = koreanRegions.find((s) => s.name === addSido) || koreanRegions[0];
@@ -237,17 +249,17 @@ export default function TechWorkspacePage() {
 
   const handleOpenAdminChat = () => {
     setShowAdminChatModal(true);
-    if (helper.phone) {
-      markAllAdminMessagesAsRead(helper.phone, "partner");
+    if (helperIdentifier) {
+      markAllAdminMessagesAsRead(helperIdentifier, "partner");
       refreshAdminMessages();
     }
   };
 
   const handleSendAdminReply = () => {
-    if (!replyText.trim() || !helper.phone) return;
+    if (!replyText.trim() || !helperIdentifier) return;
     sendAdminMessage({
       targetType: "helper",
-      targetId: helper.phone,
+      targetId: helperIdentifier,
       targetName: contract.name,
       sender: "partner",
       senderName: `${contract.name} 헬퍼`,
@@ -265,9 +277,9 @@ export default function TechWorkspacePage() {
     }
   };
 
-  // SMS template for quick hotline notification
+  // Email/SMS template for quick hotline notification
   const smsBody = encodeURIComponent(
-    `[LIFE.HELP 헬퍼 변동상황 통보]\n헬퍼: ${contract.name}\n전화: ${contract.phone}\n상태: ${
+    `[LIFE.HELP 헬퍼 변동상황 통보]\n헬퍼: ${contract.name}\n계정: ${contract.email || helper.email}\n상태: ${
       helper.isActive ? "출동 가능 상태" : "일시 업무 중단/휴식 요청"
     }\n사유: 사정 변동으로 인한 실시간 반영 요청`,
   );
@@ -339,7 +351,7 @@ export default function TechWorkspacePage() {
                 )}
               </div>
               <p className="text-xs text-slate-400 font-mono">
-                📱 {contract.phone} · {t("workspace.signedDate")}:{" "}
+                ✉️ {contract.email || helper.email || "미등록"}{contract.phone ? ` · 📱 ${contract.phone}` : ""} · {t("workspace.signedDate")}:{" "}
                 {new Date(contract.signedAt).toLocaleDateString(locale === "ko" ? "ko-KR" : locale)}
               </p>
             </div>
@@ -838,7 +850,7 @@ export default function TechWorkspacePage() {
                         formatBilingual,
                         isKorean,
                       )}{" "}
-                      · {contract.phone})
+                      · {contract.email || helper.email || contract.phone})
                     </p>
                   </div>
                 </div>
@@ -965,9 +977,15 @@ export default function TechWorkspacePage() {
                     </strong>
                   </div>
                   <div>
-                    <span className="text-slate-400">{t("workspace.contractPhone")}:</span>{" "}
-                    <strong className="text-white">{contract.phone}</strong>
+                    <span className="text-slate-400">{isKorean ? "인증 이메일:" : "Verified Email:"}</span>{" "}
+                    <strong className="text-white">{contract.email || helper.email}</strong>
                   </div>
+                  {contract.phone && (
+                    <div>
+                      <span className="text-slate-400">{t("workspace.contractPhone")}:</span>{" "}
+                      <strong className="text-white">{contract.phone}</strong>
+                    </div>
+                  )}
                   <div className="col-span-2">
                     <span className="text-slate-400">{t("workspace.contractResidentId")}:</span>{" "}
                     <strong className="text-white">{contract.residentNumber}</strong>
