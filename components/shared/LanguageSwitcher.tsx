@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useLocale } from "@/lib/i18n/LocaleContext";
-import { type Locale, languages, isValidLocale } from "@/messages";
+import { type Locale, languages, isValidLocale, formatLanguageName } from "@/messages";
 
 interface LanguageSwitcherProps {
   locale?: Locale;
@@ -30,8 +30,9 @@ export function LanguageSwitcher({
   };
 
   return (
-    <div className={`inline-flex items-center gap-1 sm:gap-1.5 shrink-0 max-w-full ${className}`}>
+    <div dir="ltr" className={`inline-flex items-center gap-1 sm:gap-1.5 shrink-0 max-w-full ${className}`}>
       <div
+        dir="ltr"
         className="relative inline-flex items-center rounded-xl border border-slate-200 bg-white/95 px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm transition hover:border-blue-400 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100 max-w-[72px] xs:max-w-[85px] sm:max-w-[120px] md:max-w-[145px] lg:max-w-[170px] min-w-0 shrink-0"
         aria-label="Language selection"
       >
@@ -41,13 +42,18 @@ export function LanguageSwitcher({
         <select
           value={currentLocale}
           onChange={handleChange}
+          dir="ltr"
           className="cursor-pointer bg-transparent pr-0 text-[11px] font-bold text-slate-800 outline-none sm:text-xs md:text-sm w-full min-w-0 truncate"
           aria-label="Select system language"
         >
           {languages.map((lang) => (
-            <option key={lang.code} value={lang.code} className="text-slate-900 bg-white">
-              {lang.nativeName}
-              {lang.name !== lang.nativeName ? ` (${lang.name})` : ""}
+            <option
+              key={lang.code}
+              value={lang.code}
+              dir="ltr"
+              className="text-slate-900 bg-white"
+            >
+              {formatLanguageName(lang)}
             </option>
           ))}
         </select>

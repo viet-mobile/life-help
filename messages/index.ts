@@ -89,45 +89,63 @@ export interface LanguageMeta {
 }
 
 export const languages: readonly LanguageMeta[] = [
-  { code: "vi", name: "베트남어", nativeName: "Tiếng Việt" },
   { code: "ko", name: "한국어", nativeName: "한국어" },
   { code: "en", name: "영어", nativeName: "English" },
-  { code: "zh-Hans", name: "중국어 (간체)", nativeName: "简体中文" },
-  { code: "zh-Hant", name: "중국어 (번체)", nativeName: "繁體中文" },
-  { code: "mn", name: "몽골어", nativeName: "Монгол" },
-  { code: "ru", name: "러시아어", nativeName: "Русский" },
-  { code: "uz", name: "우즈벡어", nativeName: "O'zbekcha" },
-  { code: "ne", name: "네팔어", nativeName: "नेपाली" },
-  { code: "hi", name: "힌디어", nativeName: "हिन्दी" },
-  { code: "km", name: "캄보디아어", nativeName: "ភាសាខ្មែរ" },
-  { code: "th", name: "태국어", nativeName: "ไทย" },
-  { code: "my", name: "미얀마어", nativeName: "မြန်မာဘာသာ" },
-  { code: "ja", name: "일본어", nativeName: "日本語" },
-  { code: "id", name: "인도네시아어", nativeName: "Bahasa Indonesia" },
-  { code: "si", name: "신할라어", nativeName: "සිංහල" },
-  { code: "kk", name: "카자흐어", nativeName: "Қазақша" },
-  { code: "bn", name: "벵골어", nativeName: "বাংলা" },
-  { code: "ta", name: "타밀어", nativeName: "தமிழ்" },
-  { code: "fr", name: "프랑스어", nativeName: "Français" },
-  { code: "de", name: "독일어", nativeName: "Deutsch" },
-  { code: "tr", name: "튀르키예어", nativeName: "Türkçe" },
-  { code: "uk", name: "우크라이나어", nativeName: "Українська" },
-  { code: "tet", name: "테툰딜리어", nativeName: "Tetun" },
-  { code: "ar", name: "아랍어", nativeName: "العربية", dir: "rtl" },
-  { code: "it", name: "이탈리아어", nativeName: "Italiano" },
-  { code: "arz", name: "이집트어", nativeName: "العامية المصرية", dir: "rtl" },
-  { code: "es", name: "스페인어", nativeName: "Español" },
-  { code: "fa", name: "이란어 (페르시아어)", nativeName: "فارسی", dir: "rtl" },
-  { code: "nl", name: "네덜란드어", nativeName: "Nederlands" },
-  { code: "pl", name: "폴란드어", nativeName: "Polski" },
-  { code: "am", name: "에티오피아어 (암하라어)", nativeName: "አማርኛ" },
-  { code: "sv", name: "스웨덴어", nativeName: "Svenska" },
-  { code: "he", name: "히브리어", nativeName: "עברית", dir: "rtl" },
-  { code: "da", name: "덴마크어", nativeName: "Dansk" },
-  { code: "no", name: "노르웨이어", nativeName: "Norsk" },
+  { code: "vi", name: "베트남어", nativeName: "Tiếng Việt" },
+  { code: "zh-Hans", name: "중국어(간체)", nativeName: "简体中文" },
+  { code: "zh-Hant", name: "중국어(번체)", nativeName: "繁體中文" },
   { code: "el", name: "그리스어", nativeName: "Ελληνικά" },
+  { code: "nl", name: "네덜란드어", nativeName: "Nederlands" },
+  { code: "ne", name: "네팔어", nativeName: "नेपाली" },
+  { code: "no", name: "노르웨이어", nativeName: "Norsk" },
+  { code: "da", name: "덴마크어", nativeName: "Dansk" },
+  { code: "de", name: "독일어", nativeName: "Deutsch" },
+  { code: "ru", name: "러시아어", nativeName: "Русский" },
+  { code: "mn", name: "몽골어", nativeName: "Монгол" },
+  { code: "my", name: "미얀마어", nativeName: "မြန်မာဘာသာ" },
+  { code: "bn", name: "벵골어", nativeName: "বাংলা" },
+  { code: "sv", name: "스웨덴어", nativeName: "Svenska" },
+  { code: "es", name: "스페인어", nativeName: "Español" },
+  { code: "si", name: "신할라어", nativeName: "සිංහල" },
+  { code: "ar", name: "아랍어", nativeName: "العربية", dir: "rtl" },
+  { code: "am", name: "에티오피아어(암하라어)", nativeName: "አማርኛ" },
+  { code: "uz", name: "우즈벡어", nativeName: "O'zbekcha" },
+  { code: "uk", name: "우크라이나어", nativeName: "Українська" },
+  { code: "fa", name: "이란어(페르시아어)", nativeName: "فارسی", dir: "rtl" },
+  { code: "arz", name: "이집트어", nativeName: "العامية المصرية", dir: "rtl" },
+  { code: "it", name: "이탈리아어", nativeName: "Italiano" },
+  { code: "id", name: "인도네시아어", nativeName: "Bahasa Indonesia" },
+  { code: "ja", name: "일본어", nativeName: "日本語" },
+  { code: "kk", name: "카자흐어", nativeName: "Қазақша" },
+  { code: "km", name: "캄보디아어", nativeName: "ភាសាខ្មែរ" },
+  { code: "ta", name: "타밀어", nativeName: "தமிழ்" },
+  { code: "th", name: "태국어", nativeName: "ไทย" },
+  { code: "tet", name: "테툰딜리어", nativeName: "Tetun" },
+  { code: "tr", name: "튀르키예어", nativeName: "Türkçe" },
   { code: "pt", name: "포르투갈어", nativeName: "Português" },
+  { code: "pl", name: "폴란드어", nativeName: "Polski" },
+  { code: "fr", name: "프랑스어", nativeName: "Français" },
+  { code: "he", name: "히브리어", nativeName: "עברית", dir: "rtl" },
+  { code: "hi", name: "힌디어", nativeName: "हिन्दी" },
 ] as const;
+
+/**
+ * Formats a language metadata object for dropdowns and selection UI:
+ * - Omits outer parentheses around Korean language name (e.g. "English 영어").
+ * - Retains parentheses for the 4 exceptions:
+ *     중국어(간체), 중국어(번체), 이란어(페르시아어), 에티오피아어(암하라어).
+ * - For RTL languages (이란어, 아랍어, 히브리어, 이집트어), renders the native name on the left
+ *   and the Korean name on the right using Unicode Left-to-Right Marks (LRM).
+ */
+export function formatLanguageName(meta: LanguageMeta): string {
+  if (meta.code === "ko") {
+    return meta.nativeName;
+  }
+  if (meta.dir === "rtl") {
+    return `\u200E${meta.nativeName}\u200E ${meta.name}\u200E`;
+  }
+  return `${meta.nativeName} ${meta.name}`;
+}
 
 export const dictionaries = {
   vi,

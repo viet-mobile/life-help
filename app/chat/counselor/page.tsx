@@ -6,7 +6,7 @@ import { useChat } from "@/lib/chat/ChatContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
-import { languages, type Locale } from "@/messages";
+import { languages, type Locale, formatLanguageName } from "@/messages";
 import { navigateToMainHome } from "@/lib/navigation";
 import {
   getAdminMessages,
@@ -580,7 +580,7 @@ export default function CounselorPortalPage() {
                               onChange={() => toggleLanguage(l.code)}
                               className="rounded text-indigo-600 focus:ring-0"
                             />
-                            <span className="truncate">{l.nativeName} ({l.name})</span>
+                            <span className="truncate">{formatLanguageName(l)}</span>
                           </label>
                         ))}
                       </div>
@@ -806,7 +806,7 @@ export default function CounselorPortalPage() {
                       }}
                       className="w-full text-left p-1 rounded hover:bg-white text-xs font-medium text-slate-700 flex justify-between"
                     >
-                      <span>{l.nativeName} ({l.name})</span>
+                      <span>{formatLanguageName(l)}</span>
                       <span>{currentCounselor.languages.includes(l.code) ? "✓" : "+"}</span>
                     </button>
                   ))}

@@ -6,7 +6,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
-import { languages, type Locale } from "@/messages";
+import { languages, type Locale, formatLanguageName } from "@/messages";
 import { navigateToMainHome } from "@/lib/navigation";
 import { services } from "@/lib/services";
 import {
@@ -152,7 +152,7 @@ export default function CustomerChatPage() {
               <div className="inline-flex flex-wrap items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-bold tracking-wide">
                 <span>🌐 {formatBilingual("Real-time Provider Chat", "현장 헬퍼 실시간 직결 대화")}</span>
                 <span className="text-blue-200">|</span>
-                <span>{currentMeta.nativeName} ({currentMeta.name})</span>
+                <span>{formatLanguageName(currentMeta)}</span>
                 <span className="text-blue-200">|</span>
                 <span>실시간 양방향 자동 번역</span>
               </div>
