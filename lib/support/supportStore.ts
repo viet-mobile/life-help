@@ -12,7 +12,7 @@
  * 
  * Features:
  * - Seeker: Questionnaire selection + Customer phone converted to 050 temporary safe virtual number.
- * - Provider (헬퍼 파트너): Region & Category registration, platform fee agreement, admin approval.
+ * - Helper (헬퍼): Region & Category registration, platform fee agreement, admin approval.
  * - Admin: Provider approval/management + 050 dispatch matching log tracking.
  */
 

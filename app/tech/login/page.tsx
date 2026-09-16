@@ -61,7 +61,7 @@ export default function TechLoginPage() {
 
       {/* Footer */}
       <footer className="mx-auto w-full max-w-xl text-center text-xs text-slate-500 py-4">
-        {formatBilingual(t("tech.officialPartners"), "LIFE.HELP 헬퍼 파트너스")} ·{" "}
+        {formatBilingual(t("tech.officialPartners"), "LIFE.HELP 헬퍼")} ·{" "}
         {formatBilingual(t("tech.hotline"), "핫라인")}: 010-5757-5757 / 010-5959-5959
       </footer>
     </main>

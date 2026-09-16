@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -25,8 +25,17 @@ export function SupportServiceView({ slug }: { slug: string }) {
 
   const categoryMeta = SUPPORT_CATEGORIES[slug] || SUPPORT_CATEGORIES["bank-help"];
 
-  // Active Tab: "seeker" (수요자 신청) vs "provider" (헬퍼 파트너 등록)
+  // Active Tab: "seeker" (도움 신청하기) vs "provider" (헬퍼 등록)
   const [activeTab, setActiveTab] = useState<"seeker" | "provider">("seeker");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("tab") === "provider") {
+        setActiveTab("provider");
+      }
+    }
+  }, []);
 
   // Seeker State
   const [selectedNeeds, setSelectedNeeds] = useState<string[]>([]);
@@ -35,7 +44,7 @@ export function SupportServiceView({ slug }: { slug: string }) {
   const [submittedRequest, setSubmittedRequest] = useState<SupportRequest | null>(null);
   const [seekerError, setSeekerError] = useState("");
 
-  // Provider (헬퍼 파트너) State
+  // Helper State
   const [providerName, setProviderName] = useState("");
   const [providerPhone, setProviderPhone] = useState("");
   const [providerBio, setProviderBio] = useState("");
@@ -452,7 +461,7 @@ export function SupportServiceView({ slug }: { slug: string }) {
           )
         ) : (
           /* ========================================================================= */
-          /* PROVIDER WORKFLOW (제공자 - 헬퍼 파트너 가입 신청) */
+          /* HELPER WORKFLOW (헬퍼 가입 신청) */
           /* ========================================================================= */
           isProviderRegistered ? (
             <div className="rounded-3xl border border-amber-200 bg-amber-50/60 p-6 sm:p-8 shadow-md text-center">

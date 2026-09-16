@@ -209,7 +209,7 @@ export function CustomerHome() {
       {/* Helper Master Registration Banner linking to tech.life.help */}
       <section className="mx-auto max-w-6xl px-5 pt-8">
         <Link
-          href="/tech"
+          href="/tech/register"
           className="group block rounded-2xl border-2 border-amber-300 bg-linear-to-r from-amber-50 via-orange-50 to-amber-100 p-5 sm:p-6 shadow-xs transition hover:border-amber-500 hover:shadow-md active:scale-[0.99]"
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-center sm:text-left">
@@ -235,12 +235,12 @@ export function CustomerHome() {
                     {t("customer.helperRegisterBtn")}
                   </span>
                   <span className="mt-1 text-[11px] sm:text-xs font-bold text-amber-200">
-                    달인 헬퍼 등록 바로가기 →
+                    헬퍼 등록 바로가기 →
                   </span>
                 </span>
               ) : (
                 <span className="inline-flex items-center justify-center rounded-2xl bg-amber-600 px-6 py-3.5 text-sm sm:text-base font-black text-white group-hover:bg-amber-700 transition shadow-sm text-center">
-                  {locale === "ko" ? "달인 헬퍼 등록 바로가기 →" : t("customer.helperRegisterBtn")}
+                  {locale === "ko" ? "헬퍼 등록 바로가기 →" : t("customer.helperRegisterBtn")}
                 </span>
               )}
             </div>
@@ -439,7 +439,7 @@ export function CustomerHome() {
 
               <div className="shrink-0">
                 <Link
-                  href="/support/bank-help"
+                  href="/tech/register"
                   className="inline-flex flex-col items-center justify-center rounded-2xl bg-indigo-700 px-4 py-2.5 text-xs sm:text-sm font-black text-white hover:bg-indigo-800 transition shadow-sm text-center"
                 >
                   <span>{t("customer.partnerRegisterLink")}</span>

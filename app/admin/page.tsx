@@ -1822,20 +1822,20 @@ export default function AdminPage() {
           </section>
         )}
 
-        {/* TAB 6: 🤝 5대 생활지원 헬퍼 파트너 승인 & 050 가상 안심번호 매칭 관리 콘솔 */}
+        {/* TAB 6: 🤝 5대 생활지원 헬퍼 승인 & 안심 매칭 관리 콘솔 */}
         {activeTab === "support" && (
           <section className="space-y-4">
             {/* Header & Sub-Tab Switcher */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-purple-950 px-3 py-0.5 text-xs font-bold text-purple-300 border border-purple-800 mb-1.5">
-                  <span>🔒 개인정보 보호 050 안심번호 시스템</span>
+                  <span>🔒 개인정보 보호 안심 시스템</span>
                 </div>
                 <h3 className="text-base sm:text-lg font-black text-white flex items-center gap-2">
-                  <span>🤝 5대 생활지원 헬퍼 파트너 승인 & 050 안심번호 매칭 콘솔</span>
+                  <span>🤝 5대 생활지원 헬퍼 승인 & 매칭 콘솔</span>
                 </h3>
                 <p className="mt-1 text-xs text-slate-400 max-w-2xl leading-relaxed">
-                  은행 계좌 개설, 보험 가입, 구인/구직, 병원 동행 통역, 이동전화 개통 등 5개 생활 지원 분야의 헬퍼 파트너 신청 승인과 050 가상 안심번호 매칭 내역을 통합 관리합니다.
+                  은행 계좌 개설, 핸드폰 개통, 외국인 등록, 주거 계약, 병원 진료 등 5개 생활 지원 분야의 헬퍼 신청 승인과 매칭 내역을 통합 관리합니다.
                 </p>
               </div>
 
@@ -1850,7 +1850,7 @@ export default function AdminPage() {
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <span>🎖️ 헬퍼 파트너 승인</span>
+                  <span>🎖️ 헬퍼 승인</span>
                   <span className="rounded-md bg-purple-950 px-1.5 py-0.2 text-[10px] font-extrabold text-purple-200">
                     {supportPartners.length}명
                   </span>
@@ -1878,7 +1878,7 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* SUB-TAB 1: 헬퍼 파트너 신청 및 승인 관리 */}
+            {/* SUB-TAB 1: 헬퍼 신청 및 승인 관리 */}
             {supportSubTab === "partners" && (
               <div className="space-y-4">
                 {/* Search & Filter Bar */}
@@ -1888,7 +1888,7 @@ export default function AdminPage() {
                       type="text"
                       value={supportPartnerSearch}
                       onChange={(e) => setSupportPartnerSearch(e.target.value)}
-                      placeholder="파트너 이름, 연락처, 지역 검색..."
+                      placeholder="헬퍼 이름, 연락처, 지역 검색..."
                       className="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-purple-500 w-64"
                     />
 
@@ -1917,7 +1917,7 @@ export default function AdminPage() {
                   </div>
 
                   <span className="text-xs text-slate-400">
-                    총 {supportPartners.length}개 헬퍼 파트너 등록됨
+                    총 {supportPartners.length}명 헬퍼 등록됨
                   </span>
                 </div>
 
@@ -2211,7 +2211,7 @@ export default function AdminPage() {
                               {req.customerSafePhone}
                             </span>
                             <span className="block text-[10px] text-slate-500">
-                              (헬퍼 파트너에게 노출되는 연결 번호)
+                              (헬퍼에게 노출되는 연결 번호)
                             </span>
                           </div>
 
@@ -2634,7 +2634,7 @@ export default function AdminPage() {
 
               <div className="flex-1 overflow-y-auto p-5 space-y-3">
                 <p className="text-xs text-slate-400 font-medium">
-                  승인된 헬퍼 파트너 중 고객에게 알선 연결할 파트너를 선택하세요:
+                  승인된 헬퍼 중 고객에게 알선 연결할 헬퍼를 선택하세요:
                 </p>
 
                 {supportPartners
@@ -2655,7 +2655,7 @@ export default function AdminPage() {
                         type="button"
                         onClick={() => {
                           updateSupportRequestStatus(matchingSupportReq.id, "matched", p.name, p.phone);
-                          showToast(`${p.name} 파트너에게 050 안심연결 알선 매칭되었습니다.`);
+                          showToast(`${p.name} 헬퍼에게 안심연결 알선 매칭되었습니다.`);
                           setMatchingSupportReq(null);
                           refreshData();
                         }}
@@ -2668,7 +2668,7 @@ export default function AdminPage() {
 
                 {supportPartners.filter((p) => p.status === "approved").length === 0 && (
                   <p className="text-xs text-amber-400 text-center py-8">
-                    현재 승인 완료된 헬퍼 파트너가 없습니다. 먼저 헬퍼 파트너를 승인해 주세요.
+                    현재 승인 완료된 헬퍼가 없습니다. 먼저 헬퍼를 승인해 주세요.
                   </p>
                 )}
               </div>

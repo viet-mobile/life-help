@@ -72,7 +72,7 @@ export default function TechPage() {
           <span className="rounded-md bg-blue-900/60 px-2.5 py-1 text-xs font-bold text-blue-300 border border-blue-700/50">
             {formatBilingual(
               t("tech.officialPartners"),
-              "LIFE.HELP 공식 헬퍼(Helper) 파트너스",
+              "LIFE.HELP 공식 헬퍼(Helper)",
             )}
           </span>
           {isLoggedIn && (
@@ -273,7 +273,7 @@ export default function TechPage() {
       {/* Footer */}
       <footer className="mx-auto w-full max-w-5xl text-center text-xs text-slate-500 py-4 border-t border-slate-800/60">
         {isKorean
-          ? "LIFE.HELP 헬퍼 파트너스 포털 · 010-5757-5757 / 010-5959-5959"
+          ? "LIFE.HELP 헬퍼 포털 · 010-5757-5757 / 010-5959-5959"
           : `${t("tech.helperService")} · 010-5757-5757 / 010-5959-5959`}
       </footer>
     </main>

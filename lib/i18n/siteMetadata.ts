@@ -79,8 +79,8 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
       description: "한국 생활의 모든 고민을 모국어로 전문 상담원과 1:1 실시간 상담하세요.",
     },
     tech: {
-      title: "전문 헬퍼 파트너 포털",
-      description: "LIFE.HELP 공식 전문 헬퍼를 위한 업무 포털. 실시간 출동 상태 변경 및 맞춤 작업 일정을 관리하세요.",
+      title: "헬퍼 포털",
+      description: "LIFE.HELP 공식 헬퍼를 위한 업무 포털. 실시간 출동 상태 변경 및 맞춤 작업 일정을 관리하세요.",
     },
     sys: {
       title: "본사 통합 관리 시스템",

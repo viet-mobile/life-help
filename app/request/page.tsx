@@ -173,13 +173,13 @@ function RequestPageContent() {
                 <>
                   <span>{t("request.successNotice")}</span>
                   <span className="block mt-1 opacity-80">
-                    작성하신 문제 상황이 서비스 제공자의 언어로 정확히 번역되어 원문과 함께 전달되었습니다.
+                    작성하신 문제 상황이 헬퍼님의 언어(한국어)로 정확히 번역되어 원문과 함께 전달되었습니다.
                   </span>
                 </>
               ) : (
                 <span>
                   {locale === "ko"
-                    ? "작성하신 문제 상황이 서비스 제공자의 언어로 정확히 번역되어 원문과 함께 전달되었습니다."
+                    ? "작성하신 문제 상황이 헬퍼님의 언어(한국어)로 정확히 번역되어 원문과 함께 전달되었습니다."
                     : t("request.successNotice")}
                 </span>
               )}
@@ -213,7 +213,7 @@ function RequestPageContent() {
                 {translatedResult && locale !== "ko" && (
                   <div className="pt-2 border-t border-slate-200">
                     <span className="text-[11px] font-extrabold text-emerald-700 block uppercase">
-                      💡 {t("request.providerTranslatedText") || "서비스 제공자(헬퍼) 전달 번역문 (한국어)"}:
+                      💡 {t("request.providerTranslatedText") || "담당 헬퍼 전달 번역문 (한국어)"}:
                     </span>
                     <p className="text-sm font-bold text-emerald-950 mt-0.5 break-words">
                       {translatedResult}
@@ -232,7 +232,7 @@ function RequestPageContent() {
               <p className="text-xs text-emerald-800 mt-1 leading-relaxed">
                 {formatBilingual(
                   t("request.privacyNoPhoneNote"),
-                  "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다."
+                  "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다."
                 )}
               </p>
             </div>
@@ -374,7 +374,7 @@ function RequestPageContent() {
                     <p className="text-xs font-semibold text-slate-500 mt-0.5 break-words whitespace-pre-line">
                       {formatBilingual(
                         t("request.checklistSubtitle"),
-                        tKo("request.checklistSubtitle") || "해당하는 증상을 선택하시면 서비스 제공자에게 정확히 전달됩니다."
+                        tKo("request.checklistSubtitle") || "해당하는 증상을 선택하시면 헬퍼님께 정확히 전달됩니다."
                       )}
                     </p>
                   </div>
@@ -576,8 +576,8 @@ function RequestPageContent() {
                 </p>
                 <p className="text-xs font-semibold text-emerald-800 mt-1 leading-relaxed whitespace-pre-line">
                   {formatBilingual(
-                    t("request.privacyNoPhoneNote") || "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다.",
-                    "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 서비스 제공자(헬퍼)와 안전하게 직접 연결됩니다."
+                    t("request.privacyNoPhoneNote") || "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다.",
+                    "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다."
                   )}
                 </p>
               </div>

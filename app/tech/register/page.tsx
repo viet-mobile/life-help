@@ -61,7 +61,7 @@ export default function TechRegisterPage() {
       {/* Footer */}
       <footer className="mx-auto w-full max-w-xl text-center text-xs text-slate-500 py-4">
         {isKorean
-          ? "LIFE.HELP 헬퍼 파트너스 · 핫라인: 010-5757-5757 / 010-5959-5959"
+          ? "LIFE.HELP 헬퍼 · 핫라인: 010-5757-5757 / 010-5959-5959"
           : `${t("tech.helperService")} · Hotline: 010-5757-5757 / 010-5959-5959`}
       </footer>
     </main>
