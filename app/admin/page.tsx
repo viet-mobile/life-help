@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
+import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import {
   getRegisteredHelpers,
@@ -400,6 +401,7 @@ export default function AdminPage() {
     return (
       <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
+          <BrandLogo portal="sys" size="md" priority />
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
           <p className="text-xs text-slate-400 font-bold">{t("admin.sessionVerifying")}</p>
         </div>
@@ -411,6 +413,9 @@ export default function AdminPage() {
     return (
       <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
         <div className="max-w-md w-full droplet-card border border-rose-800 bg-slate-900/95 p-6 sm:p-8 text-center shadow-2xl backdrop-blur-xl">
+          <div className="flex items-center justify-center mb-4">
+            <BrandLogo portal="sys" size="md" priority />
+          </div>
           <div className="mx-auto flex h-16 w-16 items-center justify-center droplet-pill bg-rose-950 border border-rose-700 text-3xl text-rose-300 shadow-xl shadow-rose-950/50">
             🛑
           </div>
@@ -461,7 +466,7 @@ export default function AdminPage() {
               className="flex items-center gap-2 text-base sm:text-lg font-black tracking-tight text-white hover:text-blue-400 transition shrink-0"
               title={t("admin.brandTitle")}
             >
-              <BrandLogo size="md" priority />
+              <BrandLogo portal="sys" size="md" priority />
               <span className="font-black text-white text-base sm:text-lg">HQ</span>
             </Link>
             <span className="rounded-md bg-blue-950/80 px-2 py-0.5 text-[11px] font-extrabold text-blue-300 border border-blue-800/60 hidden sm:inline-block">
@@ -508,6 +513,8 @@ export default function AdminPage() {
               <span>🚪</span>
               <span className="hidden sm:inline">{t("admin.logout")}</span>
             </button>
+
+            <DesktopShortcutButton variant="header" portal="sys" className="bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700" />
 
             <LanguageSwitcher />
           </div>
@@ -2201,29 +2208,29 @@ export default function AdminPage() {
                           </div>
                         </div>
 
-                        {/* Dual Phone Numbers (050 Safe vs Real Customer Phone) */}
+                        {/* Customer Identifier & Zero Phone Collection */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-950/80 p-3.5 droplet-card border border-slate-800">
                           <div>
                             <span className="text-[11px] font-bold text-slate-400 block uppercase">
-                              🔒 고객 발급 050 임시 안심번호 · Virtual Safe Phone
+                              🔒 고객 안심 식별자 · Auto Customer ID
                             </span>
                             <span className="text-base font-black text-emerald-400 font-mono">
-                              {req.customerSafePhone}
+                              {req.customerDisplayName || (req.customerId ? `고객 · ${req.customerId}` : "고객 · CST-AUTO")}
                             </span>
                             <span className="block text-[10px] text-slate-500">
-                              헬퍼에게 노출되는 연결 번호
+                              시스템 자동 발급 고유 식별자
                             </span>
                           </div>
 
                           <div>
                             <span className="text-[11px] font-bold text-slate-400 block uppercase">
-                              🛡️ 고객 실제 휴대폰 번호 · Private
+                              🛡️ 개인정보 보호 정책 · Zero Phone
                             </span>
-                            <span className="text-base font-black text-slate-300 font-mono">
-                              {req.customerRealPhone}
+                            <span className="text-sm font-bold text-slate-300 font-mono">
+                              {req.customerRealPhone || "전화번호 수집 제로"}
                             </span>
                             <span className="block text-[10px] text-slate-500">
-                              관리자만 확인 가능한 실제 번호
+                              실제 휴대폰 번호 일체 미수집
                             </span>
                           </div>
                         </div>
@@ -2253,7 +2260,7 @@ export default function AdminPage() {
                         {req.matchedPartnerName && (
                           <div className="flex items-center justify-between text-xs bg-emerald-950/30 p-2.5 rounded-xl border border-emerald-800/40 text-emerald-300">
                             <span>
-                              🤝 매칭 파트너: <strong>{req.matchedPartnerName}</strong> ({req.matchedPartnerPhone})
+                              🤝 매칭 파트너: <strong>{req.matchedPartnerName}</strong> · {req.matchedPartnerPhone || "ZERO-COLLECT"}
                             </span>
                             <span className="text-[11px] font-semibold text-emerald-400">
                               현장 헬퍼 1:1 직결 연결됨

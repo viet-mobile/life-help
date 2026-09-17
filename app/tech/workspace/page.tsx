@@ -295,7 +295,7 @@ export default function TechWorkspacePage() {
             className="inline-flex items-center gap-2 text-base sm:text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer shrink-0"
             title="LIFE.HELP"
           >
-            <BrandLogo size="md" priority />
+            <BrandLogo portal="tech" size="md" priority />
             <span className="text-white text-xs sm:text-base font-bold">{t("workspace.title")}</span>
           </Link>
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">

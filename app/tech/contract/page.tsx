@@ -175,7 +175,7 @@ export default function TechContractPage() {
             className="inline-flex items-center gap-2 text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer"
             title="LIFE.HELP 메인 홈으로 이동"
           >
-            <BrandLogo size="md" priority />
+            <BrandLogo portal="tech" size="md" priority />
             <span className="text-white text-sm sm:text-base font-bold">{isKorean ? "헬퍼 전자계약" : "HELPER CONTRACT"}</span>
           </Link>
           <LanguageSwitcher />

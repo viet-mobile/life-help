@@ -6,6 +6,7 @@ import { useCountry, getLogoForCountry } from "@/lib/country/CountryContext";
 
 export interface BrandLogoProps {
   country?: string;
+  portal?: "tech" | "chat" | "sys";
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   alt?: string;
@@ -33,25 +34,35 @@ const SIZE_MAP = {
 
 export function BrandLogo({
   country: countryProp,
+  portal,
   size = "md",
   className = "",
   alt,
   priority = false,
 }: BrandLogoProps) {
   const countryContext = useCountry();
-  const activeLogo = countryProp
-    ? getLogoForCountry(countryProp)
-    : countryContext;
+  
+  let logoUrl = countryContext.logoUrl;
+  let displayName = countryContext.countryDisplayName;
+
+  if (portal) {
+    logoUrl = `/logos/logo-${portal}.png`;
+    displayName = portal.toUpperCase();
+  } else if (countryProp) {
+    const customCountry = getLogoForCountry(countryProp);
+    logoUrl = customCountry.logoUrl;
+    displayName = customCountry.countryDisplayName;
+  }
 
   const sizeConfig = SIZE_MAP[size] || SIZE_MAP.md;
-  const altText = alt || `${activeLogo.countryDisplayName} LIFE.HELP`;
+  const altText = alt || `${displayName} LIFE.HELP`;
 
   return (
     <span
       className={`inline-flex items-center justify-center shrink-0 select-none ${sizeConfig.classes} ${className}`}
     >
       <Image
-        src={activeLogo.logoUrl}
+        src={logoUrl}
         alt={altText}
         width={sizeConfig.pixelSize}
         height={sizeConfig.pixelSize}

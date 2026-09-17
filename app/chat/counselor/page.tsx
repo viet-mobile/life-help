@@ -263,7 +263,7 @@ export default function CounselorPortalPage() {
             className="inline-flex items-center gap-2 text-xl font-black text-indigo-700 hover:opacity-80 transition cursor-pointer"
             title="LIFE.HELP"
           >
-            <BrandLogo size="md" priority />
+            <BrandLogo portal="chat" size="md" priority />
             <span className="text-slate-900">{t("chat.counselorPortal")}</span>
           </Link>
           <LanguageSwitcher locale={locale} onChange={setLocale} />
@@ -639,7 +639,7 @@ export default function CounselorPortalPage() {
               className="flex items-center gap-2 text-lg font-black text-indigo-700 hover:opacity-80 transition cursor-pointer"
               title="LIFE.HELP"
             >
-              <BrandLogo size="md" priority />
+              <BrandLogo portal="chat" size="md" priority />
               <span className="text-slate-900">{t("chat.workstationTitle")}</span>
             </Link>
             <div className="hidden sm:flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1 text-xs">

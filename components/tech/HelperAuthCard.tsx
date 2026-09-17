@@ -215,7 +215,7 @@ export function HelperAuthCard({
               : "text-slate-400 hover:text-white"
           }`}
         >
-          <span>📝 {formatBilingual(t("tech.registerTab"), "신규 헬퍼 등록 및 활동 신청")}</span>
+          <span>📝 {formatBilingual(t("tech.registerTab"), "신규 헬퍼 등록")}</span>
         </button>
         <button
           type="button"
@@ -333,7 +333,7 @@ export function HelperAuthCard({
             >
               {formatBilingual(
                 t("tech.registerTab"),
-                "← 신규 헬퍼 등록 및 활동 신청",
+                "← 신규 헬퍼 등록",
               )}
             </button>
             <button
@@ -393,19 +393,6 @@ export function HelperAuthCard({
       ) : (
         /* New Helper Registration Form */
         <div className="space-y-5">
-          <div className="droplet-card border border-amber-500/50 bg-amber-500/10 p-4 rounded-xl flex items-center justify-between gap-3">
-            <div className="text-xs">
-              <span className="font-black text-amber-300 block">🎖️ {formatBilingual(t("support.providerTitle"), "공식 헬퍼 간편 등록")}</span>
-              <span className="text-slate-300 text-[11px]">{formatBilingual(t("support.providerDesc"), "10대 서비스 분야 및 지역 선택 바로가기")}</span>
-            </div>
-            <Link
-              href="/services/job-help?tab=provider"
-              className="droplet-btn bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs px-3.5 py-2 shrink-0 transition"
-            >
-              {formatBilingual(t("customer.helperRegisterBtn"), "신청하기 →")}
-            </Link>
-          </div>
-
           <form
             onSubmit={!codeSent ? handleSendAccessKey : handleRegisterSubmit}
             className="space-y-5"

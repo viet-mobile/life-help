@@ -52,7 +52,7 @@ export default function AdminLoginPage() {
           href="/"
           className="flex items-center gap-2 text-lg font-black tracking-tight text-white hover:text-blue-400 transition"
         >
-          <BrandLogo size="md" priority />
+          <BrandLogo portal="sys" size="md" priority />
           <span className="font-black text-white text-base sm:text-lg">HQ</span>
         </Link>
         <LanguageSwitcher />

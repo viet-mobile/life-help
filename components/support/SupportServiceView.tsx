@@ -17,6 +17,13 @@ import {
 } from "@/lib/support/supportStore";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
 import { getServiceBadge } from "@/lib/services";
+import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
+import {
+  getOrCreateCustomerId,
+  getOrCreateHelperId,
+  formatCustomerDisplayName,
+  formatHelperIdentifier,
+} from "@/lib/id/userIdentifier";
 
 // 10 Services Exact Color Codes Order:
 // 자주(1) - 분홍(2) - 주황(3) - 노랑(4) - 연두(5) - 민트(6) - 하늘(7) - 파랑(8) - 네이비(9) - 보라(10)
@@ -229,6 +236,7 @@ export function SupportServiceView({
   const [selectedRegions, setSelectedRegions] = useState<string[]>([formattedRegion]);
   const [agreedToFee, setAgreedToFee] = useState(false);
   const [isProviderRegistered, setIsProviderRegistered] = useState(false);
+  const [registeredHelperId, setRegisteredHelperId] = useState<string>("");
   const [providerError, setProviderError] = useState("");
 
   // Keep selectedRegions up to date if currently empty
@@ -303,19 +311,24 @@ export function SupportServiceView({
   };
 
   const addCurrentRegion = () => {
-    if (!selectedRegions.includes(formattedRegion)) {
+    if (formattedRegion && !selectedRegions.includes(formattedRegion)) {
       setSelectedRegions((prev) => [...prev, formattedRegion]);
     }
   };
 
   const toggleDistrictRegion = (districtDisplay: string) => {
-    const fullRegionName = sido ? `${sido} ${districtDisplay}` : districtDisplay;
+    const fullDistrictName = sido ? `${sido} ${districtDisplay}` : districtDisplay;
     setSelectedRegions((prev) => {
-      const exists = prev.some((r) => r === fullRegionName || r === districtDisplay || r.includes(districtDisplay));
+      const exists = prev.some(
+        (r) => r === fullDistrictName || r === districtDisplay || r.includes(districtDisplay)
+      );
       if (exists) {
-        return prev.filter((r) => r !== fullRegionName && r !== districtDisplay && !r.includes(districtDisplay));
+        if (prev.length === 1) return prev; // Keep at least one
+        return prev.filter(
+          (r) => r !== fullDistrictName && r !== districtDisplay && !r.includes(districtDisplay)
+        );
       } else {
-        return [...prev, fullRegionName];
+        return [...prev, fullDistrictName];
       }
     });
   };
@@ -324,7 +337,7 @@ export function SupportServiceView({
     setSelectedRegions((prev) => prev.filter((r) => r !== regionToRemove));
   };
 
-  // Seeker Submit: Zero Phone Collection!
+  // Seeker Submit: Zero Phone Collection! Auto Customer Identifier!
   const handleSeekerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSeekerError("");
@@ -336,13 +349,18 @@ export function SupportServiceView({
       return;
     }
 
+    const customerId = getOrCreateCustomerId();
+    const customerDisplayName = formatCustomerDisplayName(customerId, locale);
+
     const newReq = saveSupportRequest({
       category: slug,
       country,
       sido,
       gungu,
       dong,
-      customerRealPhone: "ZERO-COLLECT (전화번호 수집 제로)",
+      customerId,
+      customerDisplayName,
+      customerRealPhone: "ZERO-COLLECT · 전화번호 수집 제로",
       selectedNeeds,
       memo: seekerMemo,
     });
@@ -350,7 +368,7 @@ export function SupportServiceView({
     setSubmittedRequest(newReq);
   };
 
-  // Provider Submit: Zero Phone & Zero Name Collection! Multi-Region!
+  // Provider Submit: Zero Phone & Zero Name Collection! Auto Helper Identifier!
   const handleProviderSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setProviderError("");
@@ -382,8 +400,13 @@ export function SupportServiceView({
       return;
     }
 
+    const newHelperId = getOrCreateHelperId();
+    setRegisteredHelperId(newHelperId);
+    const helperName = formatHelperIdentifier(newHelperId, locale);
+
     registerSupportPartner({
-      name: locale === "ko" ? "공식 인증 헬퍼" : "Official Verified Helper",
+      helperId: newHelperId,
+      name: helperName,
       phone: "ZERO-COLLECT",
       categories: selectedCategories,
       country,
@@ -418,6 +441,7 @@ export function SupportServiceView({
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <DesktopShortcutButton variant="header" />
             <Link
               href="/"
               className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition"
@@ -524,6 +548,17 @@ export function SupportServiceView({
                 <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
                   고객님의 실제 휴대폰 번호는 수집·저장되지 않았습니다. 선택하신 지역의 공식 인증 헬퍼와 1:1 실시간 자동 번역 채팅으로 안전하게 소통하실 수 있습니다.
                 </p>
+
+                {/* Auto Customer Identifier Badge */}
+                <div className="mt-3.5 flex items-center justify-between rounded-xl bg-emerald-50 border border-emerald-300 p-3">
+                  <div>
+                    <span className="text-xs font-bold text-emerald-900 block">발급된 고객 안심 식별자:</span>
+                    <span className="text-[11px] text-emerald-700 font-medium">실명 및 전화번호 없이 본 식별자로 안전하게 소통합니다.</span>
+                  </div>
+                  <span className="font-mono text-sm font-black text-emerald-950 bg-white px-3 py-1 rounded-lg border border-emerald-300 shadow-2xs">
+                    {submittedRequest.customerDisplayName || `고객 · ${submittedRequest.customerId || "CST-AUTO"}`}
+                  </span>
+                </div>
 
                 <div className="mt-4">
                   <Link
@@ -711,6 +746,17 @@ export function SupportServiceView({
               <p className="mt-2 text-xs sm:text-sm text-amber-800 max-w-lg mx-auto leading-relaxed">
                 {t("support.providerSuccessDesc")}
               </p>
+
+              {/* Auto Helper Identifier Badge */}
+              <div className="mt-4 max-w-md mx-auto flex items-center justify-between rounded-2xl bg-amber-100 border border-amber-300 p-3.5 text-left">
+                <div>
+                  <span className="text-xs font-bold text-amber-900 block">발급된 안심 헬퍼 식별자:</span>
+                  <span className="text-[11px] text-amber-700 font-medium">실명과 전화번호 없이 시스템 자동 식별자로 활동합니다.</span>
+                </div>
+                <span className="font-mono text-sm font-black text-amber-950 bg-white px-3 py-1 rounded-xl border border-amber-300 shadow-2xs">
+                  {registeredHelperId ? `헬퍼 · ${registeredHelperId}` : "헬퍼 · HLP-AUTO"}
+                </span>
+              </div>
 
               {/* Registered Regions & Categories Summary */}
               <div className="mt-4 max-w-md mx-auto text-left rounded-2xl bg-white/80 p-4 border border-amber-200 text-xs text-slate-700 space-y-2">

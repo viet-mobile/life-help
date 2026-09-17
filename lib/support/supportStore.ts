@@ -1,5 +1,7 @@
 "use client";
 
+import { getOrCreateCustomerId, generateHelperId } from "@/lib/id/userIdentifier";
+
 /**
  * LIFE.HELP Support Store & 050 Safe Virtual Number System
  * 
@@ -352,6 +354,8 @@ export function generate050SafeNumber(phone?: string): string {
 
 export interface SupportRequest {
   id: string;
+  customerId: string;
+  customerDisplayName: string;
   category: string;
   country: string;
   sido: string;
@@ -363,12 +367,14 @@ export interface SupportRequest {
   memo?: string;
   status: "pending" | "matched" | "completed";
   createdAt: string;
+  matchedPartnerId?: string;
   matchedPartnerName?: string;
   matchedPartnerPhone?: string;
 }
 
 export interface SupportPartner {
   id: string;
+  helperId: string;
   name: string;
   phone: string;
   categories: string[];
@@ -389,8 +395,9 @@ const STORAGE_PARTNERS_KEY = "life_help_support_partners_v1";
 const DEFAULT_PARTNERS: SupportPartner[] = [
   {
     id: "sp-1",
-    name: "글로벌 비자·행정 지원센터 (김도현 팀장)",
-    phone: "010-3849-1928",
+    helperId: "HLP-1001",
+    name: "헬퍼 · HLP-1001 · 비자 행정 지원",
+    phone: "HLP-1001",
     categories: ["bank-help", "insurance-help"],
     country: "KR",
     regions: ["서울특별시 영등포구 대림동", "서울특별시 구로구 구로동"],
@@ -403,22 +410,24 @@ const DEFAULT_PARTNERS: SupportPartner[] = [
   },
   {
     id: "sp-2",
-    name: "하노이 메디컬 통역 케어 (응우옌 티 마이)",
-    phone: "010-8274-9912",
+    helperId: "HLP-1002",
+    name: "헬퍼 · HLP-1002 · 메디컬 통역 케어",
+    phone: "HLP-1002",
     categories: ["hospital-help"],
     country: "KR",
     regions: ["경기도 안산시 단원구 원곡동", "경기도 시흥시 정왕동"],
     agreedToFee: true,
     status: "approved",
     createdAt: "2026-09-05T14:15:00Z",
-    bio: "베트남어-한국어 의료 전문 통역사 1급 자격 보유. 대학병원 종합검진 및 진료 동행 500건 이상",
+    bio: "베트남어 한국어 의료 전문 통역사 1급 자격 보유. 대학병원 종합검진 및 진료 동행 500건 이상",
     rating: 5.0,
     completedCases: 64,
   },
   {
     id: "sp-3",
-    name: "월드 모바일 & 알뜰폰 통신센터",
-    phone: "010-5621-3344",
+    helperId: "HLP-1003",
+    name: "헬퍼 · HLP-1003 · 모바일 알뜰폰 센터",
+    phone: "HLP-1003",
     categories: ["mobile-help"],
     country: "KR",
     regions: ["서울특별시", "경기도", "인천광역시"],
@@ -431,8 +440,9 @@ const DEFAULT_PARTNERS: SupportPartner[] = [
   },
   {
     id: "sp-4",
-    name: "동남아 취업 & 일자리 네트워크 (박준호 대표)",
-    phone: "010-7712-4589",
+    helperId: "HLP-1004",
+    name: "헬퍼 · HLP-1004 · 취업 네트워크",
+    phone: "HLP-1004",
     categories: ["job-help"],
     country: "KR",
     regions: ["충청남도 천안시", "충청북도 청주시", "경기도 화성시"],
@@ -445,8 +455,9 @@ const DEFAULT_PARTNERS: SupportPartner[] = [
   },
   {
     id: "sp-5",
-    name: "아시안 라이프 파트너스 (첸 웨이)",
-    phone: "010-4491-8823",
+    helperId: "HLP-1005",
+    name: "헬퍼 · HLP-1005 · 라이프 파트너스",
+    phone: "HLP-1005",
     categories: ["bank-help", "job-help", "mobile-help"],
     country: "KR",
     regions: ["부산광역시 사상구", "김해시"],
@@ -463,45 +474,53 @@ const DEFAULT_PARTNERS: SupportPartner[] = [
 const DEFAULT_REQUESTS: SupportRequest[] = [
   {
     id: "sr-1001",
+    customerId: "CST-1001",
+    customerDisplayName: "고객 · CST-1001",
     category: "bank-help",
     country: "KR",
     sido: "서울특별시",
     gungu: "영등포구",
     dong: "대림동",
-    customerRealPhone: "010-9123-4567",
-    customerSafePhone: "050-7182-9341",
+    customerRealPhone: "ZERO-COLLECT",
+    customerSafePhone: "CST-1001",
     selectedNeeds: ["외국인등록증/여권 소지 계좌 신규 개설", "체크카드 / 신용카드 발급 신청"],
     memo: "한국어 소통이 서툴러 베트남어 가능한 헬퍼를 희망합니다.",
     status: "matched",
     createdAt: "2026-09-14T13:10:00Z",
-    matchedPartnerName: "글로벌 비자·행정 지원센터 (김도현 팀장)",
-    matchedPartnerPhone: "010-3849-1928",
+    matchedPartnerId: "HLP-1001",
+    matchedPartnerName: "헬퍼 · HLP-1001 · 비자 행정 지원",
+    matchedPartnerPhone: "HLP-1001",
   },
   {
     id: "sr-1002",
+    customerId: "CST-1002",
+    customerDisplayName: "고객 · CST-1002",
     category: "hospital-help",
     country: "KR",
     sido: "경기도",
     gungu: "안산시 단원구",
     dong: "원곡동",
-    customerRealPhone: "010-8877-6655",
-    customerSafePhone: "050-8823-1109",
+    customerRealPhone: "ZERO-COLLECT",
+    customerSafePhone: "CST-1002",
     selectedNeeds: ["대학병원 / 종합병원 전문과 진료 예약 및 사전 접수", "치과 / 정형외과 / 내과 / 피부과 진료 시 의사 소통 동행 통역"],
     memo: "무릎 통증으로 정형외과 진료 예약 동행이 필요합니다.",
     status: "matched",
     createdAt: "2026-09-14T15:30:00Z",
-    matchedPartnerName: "하노이 메디컬 통역 케어 (응우옌 티 마이)",
-    matchedPartnerPhone: "010-8274-9912",
+    matchedPartnerId: "HLP-1002",
+    matchedPartnerName: "헬퍼 · HLP-1002 · 메디컬 통역 케어",
+    matchedPartnerPhone: "HLP-1002",
   },
   {
     id: "sr-1003",
+    customerId: "CST-1003",
+    customerDisplayName: "고객 · CST-1003",
     category: "mobile-help",
     country: "KR",
     sido: "서울특별시",
     gungu: "구로구",
     dong: "구로동",
-    customerRealPhone: "010-3344-7788",
-    customerSafePhone: "050-4491-6205",
+    customerRealPhone: "ZERO-COLLECT",
+    customerSafePhone: "CST-1003",
     selectedNeeds: ["외국인등록증/여권으로 본인 인증 가능한 알뜰폰(USIM) 개통", "선불 유심(Prepaid SIM) 간편 충전 및 데이터 무제한 요금제"],
     memo: "본인인증 가능한 알뜰폰 유심 즉시 수령 원함",
     status: "pending",
@@ -523,12 +542,22 @@ export function getStoredSupportRequests(): SupportRequest[] {
   }
 }
 
-export function saveSupportRequest(req: Omit<SupportRequest, "id" | "customerSafePhone" | "status" | "createdAt">): SupportRequest {
+export function saveSupportRequest(
+  req: Omit<SupportRequest, "id" | "customerId" | "customerDisplayName" | "customerSafePhone" | "status" | "createdAt"> & {
+    customerId?: string;
+    customerDisplayName?: string;
+  }
+): SupportRequest {
   const current = getStoredSupportRequests();
+  const customerId = req.customerId || getOrCreateCustomerId();
+  const customerDisplayName = req.customerDisplayName || `고객 · ${customerId}`;
   const newReq: SupportRequest = {
     ...req,
     id: `sr-${Date.now().toString().slice(-6)}`,
-    customerSafePhone: req.customerRealPhone,
+    customerId,
+    customerDisplayName,
+    customerSafePhone: customerId,
+    customerRealPhone: "ZERO-COLLECT",
     status: "pending",
     createdAt: new Date().toISOString(),
   };
@@ -547,7 +576,8 @@ export function updateSupportRequestStatus(
   id: string,
   status: SupportRequest["status"],
   matchedPartnerName?: string,
-  matchedPartnerPhone?: string
+  matchedPartnerPhone?: string,
+  matchedPartnerId?: string
 ) {
   const current = getStoredSupportRequests();
   const updated = current.map((r) => {
@@ -557,6 +587,7 @@ export function updateSupportRequestStatus(
         status,
         matchedPartnerName: matchedPartnerName || r.matchedPartnerName,
         matchedPartnerPhone: matchedPartnerPhone || r.matchedPartnerPhone,
+        matchedPartnerId: matchedPartnerId || r.matchedPartnerId,
       };
     }
     return r;
@@ -584,12 +615,20 @@ export function getStoredSupportPartners(): SupportPartner[] {
 }
 
 export function registerSupportPartner(
-  partner: Omit<SupportPartner, "id" | "status" | "createdAt">
+  partner: Omit<SupportPartner, "id" | "helperId" | "status" | "createdAt"> & {
+    helperId?: string;
+  }
 ): SupportPartner {
   const current = getStoredSupportPartners();
+  const helperId = partner.helperId || generateHelperId();
+  const helperName = partner.name?.trim() ? partner.name.trim() : `헬퍼 · ${helperId}`;
+
   const newPartner: SupportPartner = {
     ...partner,
     id: `sp-${Date.now().toString().slice(-6)}`,
+    helperId,
+    name: helperName,
+    phone: partner.phone || helperId,
     status: "pending",
     createdAt: new Date().toISOString(),
     completedCases: 0,

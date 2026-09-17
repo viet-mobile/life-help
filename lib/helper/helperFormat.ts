@@ -60,7 +60,41 @@ export function formatHelperDisplayName(
 
   const trimmed = rawName.trim();
 
-  // Match pattern like "헬퍼 (5SJX)", "Helper (5SJX)", "Thợ (5SJX)", "Fachowiec (5SJX)"
+  // Match pattern like "헬퍼 · HLP-5SJX", "HLP-5SJX", "헬퍼 · 5SJX"
+  const dotMatch = trimmed.match(/^(.+?)\s*·\s*([A-Za-z0-9\-#_]+)$/);
+  if (dotMatch) {
+    const prefix = dotMatch[1].trim();
+    const code = dotMatch[2];
+    const prefixLower = prefix.toLowerCase();
+
+    const isGenericHelperPrefix =
+      !prefix ||
+      prefix === "헬퍼" ||
+      prefixLower === "helper" ||
+      prefixLower === helperTerm.toLowerCase() ||
+      KNOWN_HELPER_PREFIXES.has(prefixLower);
+
+    if (isGenericHelperPrefix) {
+      const koVersion = `헬퍼 · ${code}`;
+      const targetVersion = `${helperTerm} · ${code}`;
+
+      if (isKorean) {
+        return koVersion;
+      }
+
+      return formatBilingual ? formatBilingual(targetVersion, koVersion) : targetVersion;
+    }
+  }
+
+  // Direct HLP-XXXX code
+  if (/^HLP-[A-Za-z0-9]+$/i.test(trimmed)) {
+    const koVersion = `헬퍼 · ${trimmed.toUpperCase()}`;
+    const targetVersion = `${helperTerm} · ${trimmed.toUpperCase()}`;
+    if (isKorean) return koVersion;
+    return formatBilingual ? formatBilingual(targetVersion, koVersion) : targetVersion;
+  }
+
+  // Backward compatibility: match pattern like "헬퍼 (5SJX)"
   const codeMatch = trimmed.match(/^(.+?)\s*\(([A-Za-z0-9\-#_]+)\)$/);
   if (codeMatch) {
     const prefix = codeMatch[1].trim();
@@ -75,8 +109,8 @@ export function formatHelperDisplayName(
       KNOWN_HELPER_PREFIXES.has(prefixLower);
 
     if (isGenericHelperPrefix) {
-      const koVersion = `헬퍼 (${code}) 님`;
-      const targetVersion = `${helperTerm} (${code})`;
+      const koVersion = `헬퍼 · ${code}`;
+      const targetVersion = `${helperTerm} · ${code}`;
 
       if (isKorean) {
         return koVersion;

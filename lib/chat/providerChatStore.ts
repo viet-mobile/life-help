@@ -4,6 +4,7 @@ import { type Locale } from "@/messages";
 
 export interface ServiceProvider {
   id: string;
+  helperId?: string;
   name: string;
   phone: string;
   avatarIcon: string;
@@ -38,9 +39,11 @@ export interface ProviderChatSession {
   country: string;
   sido: string;
   gungu: string;
+  customerId?: string;
   customerName: string;
   customerPhone?: string;
   customerLocale: Locale;
+  helperId?: string;
   provider: ServiceProvider;
   status: "active" | "waiting" | "closed";
   createdAt: number;
@@ -57,8 +60,9 @@ const CHAT_EVENT = "life_help_provider_chat_update";
 export const SEED_SERVICE_PROVIDERS: ServiceProvider[] = [
   {
     id: "prov-1",
-    name: "박준혁 마스터 헬퍼 (배관/설비 전문)",
-    phone: "010-4829-1122",
+    helperId: "HLP-1001",
+    name: "헬퍼 · HLP-1001",
+    phone: "ZERO-COLLECT",
     avatarIcon: "🔧",
     serviceCategories: ["clog-clearing", "leak-plumbing", "boiler", "toilet-clog", "sink-clog", "drain-clog"],
     country: "KR",
@@ -73,8 +77,9 @@ export const SEED_SERVICE_PROVIDERS: ServiceProvider[] = [
   },
   {
     id: "prov-2",
-    name: "김민재 긴급설비 마스터 (서울/수도권)",
-    phone: "010-8274-9912",
+    helperId: "HLP-1002",
+    name: "헬퍼 · HLP-1002",
+    phone: "ZERO-COLLECT",
     avatarIcon: "🚰",
     serviceCategories: ["clog-clearing", "leak-plumbing", "boiler", "toilet-clog", "sink-clog", "drain-clog"],
     country: "KR",
@@ -89,8 +94,9 @@ export const SEED_SERVICE_PROVIDERS: ServiceProvider[] = [
   },
   {
     id: "prov-3",
-    name: "최영훈 원룸/주거케어 전문 헬퍼",
-    phone: "010-5541-7788",
+    helperId: "HLP-1003",
+    name: "헬퍼 · HLP-1003",
+    phone: "ZERO-COLLECT",
     avatarIcon: "🏠",
     serviceCategories: ["housing", "cleaning"],
     country: "KR",
@@ -105,8 +111,9 @@ export const SEED_SERVICE_PROVIDERS: ServiceProvider[] = [
   },
   {
     id: "prov-4",
-    name: "Nguyen Van Nam (응우옌 반 남 - 생활지원 파트너)",
-    phone: "010-9988-4433",
+    helperId: "HLP-1004",
+    name: "헬퍼 · HLP-1004",
+    phone: "ZERO-COLLECT",
     avatarIcon: "🤝",
     serviceCategories: ["bank-help", "insurance-help", "hospital-help", "mobile-help", "job-help"],
     country: "KR",
@@ -121,8 +128,9 @@ export const SEED_SERVICE_PROVIDERS: ServiceProvider[] = [
   },
   {
     id: "prov-5",
-    name: "Global Master Plumber (David Wilson)",
-    phone: "+1-213-555-0199",
+    helperId: "HLP-1005",
+    name: "헬퍼 · HLP-1005",
+    phone: "ZERO-COLLECT",
     avatarIcon: "🛠️",
     serviceCategories: ["clog-clearing", "leak-plumbing", "boiler"],
     country: "US",

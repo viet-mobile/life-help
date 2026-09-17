@@ -17,6 +17,11 @@ import {
   type ProviderChatSession,
   type ServiceProvider,
 } from "@/lib/chat/providerChatStore";
+import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
+import {
+  getOrCreateCustomerId,
+  formatCustomerDisplayName,
+} from "@/lib/id/userIdentifier";
 
 export default function CustomerChatPage() {
   const { locale, setLocale, currentMeta, t, tKo, formatBilingual, isBilingual } = useLocale();
@@ -24,10 +29,14 @@ export default function CustomerChatPage() {
   const { selectedRegion, formattedRegion, shortRegionText, openModal } = useRegion();
 
   const [selectedServiceSlug, setSelectedServiceSlug] = useState<string>("clog-clearing");
-  const [customerName, setCustomerName] = useState("");
+  const [customerId, setCustomerId] = useState<string>("");
   const [initialInquiry, setInitialInquiry] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+
+  useEffect(() => {
+    setCustomerId(getOrCreateCustomerId());
+  }, []);
 
   // Active Sessions state
   const [sessions, setSessions] = useState<ProviderChatSession[]>(getStoredChatSessions);
@@ -61,7 +70,8 @@ export default function CustomerChatPage() {
 
   const handleStartChat = async (e: React.FormEvent) => {
     e.preventDefault();
-    const finalName = customerName.trim() || `고객 · ${currentMeta.nativeName}`;
+    const finalCustomerId = customerId || getOrCreateCustomerId();
+    const finalName = formatCustomerDisplayName(finalCustomerId, locale);
     const serviceName = isKorean
       ? tKo(`service.${selectedServiceObj.key}`)
       : t(`service.${selectedServiceObj.key}`);
@@ -116,7 +126,7 @@ export default function CustomerChatPage() {
               className="flex items-center gap-1.5 sm:gap-2 text-base sm:text-xl font-extrabold text-blue-800 hover:opacity-80 transition cursor-pointer shrink-0"
               title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
             >
-              <BrandLogo size="md" priority />
+              <BrandLogo portal="chat" size="md" priority />
               <span className="droplet-pill bg-blue-100 text-blue-800 px-2 py-0.5 text-[10px] sm:text-xs font-black shrink-0">
                 LIVE CHAT
               </span>
@@ -139,6 +149,7 @@ export default function CustomerChatPage() {
               <span className="sm:hidden">🛠️ 헬퍼</span>
               <span className="hidden sm:inline">🛠️ {formatBilingual("Helper Portal", "생활 헬퍼 포털")}</span>
             </Link>
+            <DesktopShortcutButton variant="header" portal="chat" />
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
         </div>
@@ -246,24 +257,23 @@ export default function CustomerChatPage() {
                   </select>
                 </div>
 
-                {/* Customer Name & Privacy Assurance */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 whitespace-pre-line">
-                    {formatBilingual("Your Name (Optional)", "성함 또는 닉네임 · 선택사항")}
-                  </label>
-                  <input
-                    type="text"
-                    value={customerName}
-                    onChange={(e) => setCustomerName(e.target.value)}
-                    placeholder="예: 홍길동 · Name/Nickname"
-                    className="mt-1.5 w-full droplet-input border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
-                  />
-                  <div className="mt-2 droplet-card border border-emerald-200 bg-emerald-50/80 p-2.5">
-                    <p className="text-[11px] font-semibold text-emerald-900 flex items-center gap-1">
+                {/* Auto-generated Safe Customer Identifier */}
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50/90 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
                       <span>🔒</span>
-                      <span className="whitespace-pre-line leading-relaxed">{formatBilingual("Complete Privacy: No phone number collected. You connect safely via 1:1 chat on this website or LIFE.HELP app.", "개인정보 보호 안심: 휴대폰 번호를 수집하지 않으며, 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화로 안전하게 소통합니다.")}</span>
-                    </p>
+                      <span>{formatBilingual("Auto Safe Customer ID Assigned", "시스템 자동 발급 안심 식별자")}</span>
+                    </span>
+                    <span className="font-mono text-xs font-black text-emerald-950 bg-white px-2.5 py-1 rounded-lg border border-emerald-300 shadow-2xs">
+                      {customerId ? formatCustomerDisplayName(customerId, locale) : "고객 · CST-AUTO"}
+                    </span>
                   </div>
+                  <p className="mt-2 text-xs text-emerald-800 leading-relaxed font-medium">
+                    {formatBilingual(
+                      "Your real name and phone number are zero-collected. You are securely identified by your system-generated ID across 1:1 chat.",
+                      "고객님의 실명과 전화번호는 일체 수집하지 않습니다. 시스템에서 자동 발급한 안심 식별자로 1:1 대화가 안전하게 진행됩니다."
+                    )}
+                  </p>
                 </div>
 
                 {/* Problem Description */}

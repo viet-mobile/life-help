@@ -33,7 +33,7 @@ export default function TechLoginPage() {
           className="text-xl font-extrabold text-blue-400 hover:text-blue-300 transition cursor-pointer flex items-center gap-2"
           title="LIFE.HELP 메인 홈으로 이동"
         >
-          <BrandLogo size="md" priority />
+          <BrandLogo portal="tech" size="md" priority />
           <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-xs font-bold text-white border border-blue-700/50">
             {formatBilingual(t("tech.helperPortal"), "헬퍼 포털")}
           </span>

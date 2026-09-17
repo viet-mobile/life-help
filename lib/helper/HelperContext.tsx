@@ -13,6 +13,10 @@ import {
   getRemainingDays,
   formatAccessKeyNotice,
 } from "@/lib/auth/accessKey";
+import {
+  getOrCreateHelperId,
+  formatHelperIdentifier,
+} from "@/lib/id/userIdentifier";
 
 export interface HelperRegionItem {
   sido: string;
@@ -20,6 +24,7 @@ export interface HelperRegionItem {
 }
 
 export interface HelperContract {
+  helperId?: string;
   name: string;
   residentNumber: string; // Stored securely/locally, masked in UI
   email: string;
@@ -37,6 +42,7 @@ export interface HelperContract {
 }
 
 export interface HelperProfile {
+  helperId?: string;
   email: string;
   phone?: string;
   isVerified: boolean;
@@ -52,6 +58,7 @@ export interface HelperProfile {
 // Initial seed helpers across regions for sys.life.help administration
 export const SEED_HELPERS: HelperProfile[] = [
   {
+    helperId: "HLP-1001",
     email: "helper.kim@life.help",
     phone: "010-3456-7890",
     isVerified: true,
@@ -61,7 +68,8 @@ export const SEED_HELPERS: HelperProfile[] = [
     accessKeyExpiresAt: new Date(Date.now() + 75 * 86400000).toISOString(),
     lastStatusUpdatedAt: new Date(Date.now() - 3600000 * 2).toISOString(),
     contract: {
-      name: "김철수",
+      helperId: "HLP-1001",
+      name: "헬퍼 · HLP-1001",
       residentNumber: "AUTH-VERIFIED",
       email: "helper.kim@life.help",
       phone: "010-3456-7890",
@@ -83,11 +91,12 @@ export const SEED_HELPERS: HelperProfile[] = [
       excludedDates: ["2026-09-20", "2026-10-03"],
       extraWorkDates: [],
       signedAt: new Date(Date.now() - 30 * 86400000).toISOString(),
-      signatureDataUrl: "김철수 (서명 완료)",
+      signatureDataUrl: "HLP-1001 · 전자서명 완료",
       agreedToTerms: true,
     },
   },
   {
+    helperId: "HLP-1002",
     email: "helper.park@life.help",
     phone: "010-2345-6789",
     isVerified: true,
@@ -97,7 +106,8 @@ export const SEED_HELPERS: HelperProfile[] = [
     accessKeyExpiresAt: new Date(Date.now() + 70 * 86400000).toISOString(),
     lastStatusUpdatedAt: new Date(Date.now() - 3600000 * 5).toISOString(),
     contract: {
-      name: "박영희",
+      helperId: "HLP-1002",
+      name: "헬퍼 · HLP-1002",
       residentNumber: "AUTH-VERIFIED",
       email: "helper.park@life.help",
       phone: "010-2345-6789",
@@ -119,11 +129,12 @@ export const SEED_HELPERS: HelperProfile[] = [
       excludedDates: ["2026-09-25"],
       extraWorkDates: [],
       signedAt: new Date(Date.now() - 40 * 86400000).toISOString(),
-      signatureDataUrl: "박영희 (전자서명)",
+      signatureDataUrl: "HLP-1002 · 전자서명 완료",
       agreedToTerms: true,
     },
   },
   {
+    helperId: "HLP-1003",
     email: "helper.lee@life.help",
     phone: "010-4567-8901",
     isVerified: true,
@@ -133,7 +144,8 @@ export const SEED_HELPERS: HelperProfile[] = [
     accessKeyExpiresAt: new Date(Date.now() + 5 * 86400000).toISOString(), // Expiring in 5 days!
     lastStatusUpdatedAt: new Date(Date.now() - 3600000 * 12).toISOString(),
     contract: {
-      name: "이준호",
+      helperId: "HLP-1003",
+      name: "헬퍼 · HLP-1003",
       residentNumber: "AUTH-VERIFIED",
       email: "helper.lee@life.help",
       phone: "010-4567-8901",
@@ -156,11 +168,12 @@ export const SEED_HELPERS: HelperProfile[] = [
       excludedDates: ["2026-09-18", "2026-09-19"],
       extraWorkDates: [],
       signedAt: new Date(Date.now() - 85 * 86400000).toISOString(),
-      signatureDataUrl: "이준호 (서명 완료)",
+      signatureDataUrl: "HLP-1003 · 전자서명 완료",
       agreedToTerms: true,
     },
   },
   {
+    helperId: "HLP-1004",
     email: "helper.nguyen@life.help",
     phone: "010-9876-5432",
     isVerified: true,
@@ -170,7 +183,8 @@ export const SEED_HELPERS: HelperProfile[] = [
     accessKeyExpiresAt: new Date(Date.now() + 80 * 86400000).toISOString(),
     lastStatusUpdatedAt: new Date(Date.now() - 3600000 * 1).toISOString(),
     contract: {
-      name: "응우옌 반 훙 (Nguyen Van Hung)",
+      helperId: "HLP-1004",
+      name: "헬퍼 · HLP-1004",
       residentNumber: "AUTH-VERIFIED",
       email: "helper.nguyen@life.help",
       phone: "010-9876-5432",
@@ -191,7 +205,7 @@ export const SEED_HELPERS: HelperProfile[] = [
       excludedDates: [],
       extraWorkDates: [],
       signedAt: new Date(Date.now() - 10 * 86400000).toISOString(),
-      signatureDataUrl: "Nguyen Van Hung (Verified)",
+      signatureDataUrl: "HLP-1004 · 전자서명 완료",
       agreedToTerms: true,
     },
   },
@@ -215,7 +229,8 @@ interface HelperContextType {
     maybeKey?: string,
   ) => Promise<{ success: boolean; error?: string }>;
   registerHelper: (data: {
-    name: string;
+    helperId?: string;
+    name?: string;
     email?: string;
     phone?: string;
     regions?: HelperRegionItem[];
@@ -457,8 +472,11 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
 
     const nowIso = new Date().toISOString();
 
+    const helperId = savedHelperData?.helperId || existing?.helperId || seedMatch?.helperId || getOrCreateHelperId();
+
     const defaultContract: HelperContract = {
-      name: savedHelperData?.contract?.name || existing?.contract?.name || `헬퍼 (${email.split("@")[0]})`,
+      helperId,
+      name: savedHelperData?.contract?.name || existing?.contract?.name || formatHelperIdentifier(helperId, "ko"),
       residentNumber: "AUTH-VERIFIED",
       email: email.trim(),
       phone: phone.trim() || undefined,
@@ -487,6 +505,7 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
     };
 
     const newProfile: HelperProfile = {
+      helperId,
       email: email.trim(),
       phone: phone.trim() || undefined,
       isVerified: true,
@@ -517,7 +536,8 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
 
   const registerHelper = useCallback(
     (data: {
-      name: string;
+      helperId?: string;
+      name?: string;
       email?: string;
       phone?: string;
       regions?: HelperRegionItem[];
@@ -525,14 +545,16 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
       accessKey?: string;
       accessKeyExpiresAt?: string;
     }) => {
-      const email = (data.email || data.phone || `helper.${Date.now()}@life.help`).trim().toLowerCase();
+      const helperId = data.helperId || getOrCreateHelperId();
+      const email = (data.email || data.phone || `helper.${helperId.toLowerCase()}@life.help`).trim().toLowerCase();
       const phone = data.phone?.trim() || "";
       const nowIso = new Date().toISOString();
       const expiresAt = data.accessKeyExpiresAt || calculateAccessKeyExpiry(90);
       const accessKey = data.accessKey || generateAccessKey("LH");
 
       const newContract: HelperContract = {
-        name: data.name.trim() || `헬퍼 (${email.split("@")[0]})`,
+        helperId,
+        name: data.name?.trim() || formatHelperIdentifier(helperId, "ko"),
         residentNumber: "",
         email: email,
         phone: phone || undefined,
@@ -561,6 +583,7 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
       };
 
       const profile: HelperProfile = {
+        helperId,
         email: email,
         phone: phone || undefined,
         isVerified: true,

@@ -22,13 +22,31 @@ export async function generateMetadata(): Promise<Metadata> {
   const baseMeta =
     portal === "chat" || portal === "tech" || portal === "sys"
       ? getPortalMetadata(portal, lang)
-      : getSiteMetadata(lang);
+      : getSiteMetadata(lang, country);
 
-  const icons = getIconMetadata(country);
+  const icons = getIconMetadata(country, portal);
+
+  const appName =
+    portal === "tech"
+      ? "LIFE.HELP · TECH"
+      : portal === "chat"
+      ? "LIFE.HELP · CHAT"
+      : portal === "sys"
+      ? "LIFE.HELP · SYS"
+      : country
+      ? `LIFE.HELP · ${country.toUpperCase()}`
+      : "LIFE.HELP";
 
   return {
     ...baseMeta,
     icons,
+    manifest: "/manifest.webmanifest",
+    applicationName: appName,
+    appleWebApp: {
+      title: appName,
+      capable: true,
+      statusBarStyle: "default",
+    },
   };
 }
 

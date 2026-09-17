@@ -9,7 +9,7 @@ const translations = {
     headlineLead: "내 주변 고객과 바로 연결되는",
     actAsHelper: "전문 헬퍼(Helper)로 활동하세요.",
     helperPortal: "헬퍼 포털",
-    registerTab: "신규 헬퍼 등록 및 활동 신청",
+    registerTab: "신규 헬퍼 등록",
     loginTab: "기존 헬퍼 로그인",
     newHelperRegTitle: "신규 헬퍼 등록 (3개월 보안 접속)",
     existingHelperLoginTitle: "기존 헬퍼 로그인",

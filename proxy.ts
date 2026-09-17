@@ -282,6 +282,19 @@ function buildInternalPath(
         : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "") || "/";
   }
 
+  // Bypass internal portal rewriting for global API endpoints and manifest
+  if (
+    subpath.startsWith("/api/") ||
+    subpath === "/manifest.webmanifest" ||
+    subpath === "/manifest.json"
+  ) {
+    return {
+      pathname: subpath,
+      country,
+      language,
+    };
+  }
+
   /**
    * 0. Device Registration portal
    *

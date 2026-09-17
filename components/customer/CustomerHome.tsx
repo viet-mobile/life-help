@@ -8,6 +8,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
+import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 
 export interface ServiceItem {
   id: string;
@@ -315,6 +316,9 @@ export function CustomerHome() {
               <span>🚨</span>
               <span>{locale === "ko" ? "빠른 신청" : t("request.title")}</span>
             </Link>
+
+            {/* Desktop Shortcut Pill */}
+            <DesktopShortcutButton variant="header" />
 
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>

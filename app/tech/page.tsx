@@ -8,9 +8,9 @@ import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useHelper } from "@/lib/helper/HelperContext";
 import { navigateToMainHome } from "@/lib/navigation";
-import { HelperAuthCard } from "@/components/tech/HelperAuthCard";
 import { getLocalizedAddress } from "@/lib/region/regionLocalization";
 import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
+import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 
 export default function TechPage() {
   const router = useRouter();
@@ -29,7 +29,7 @@ export default function TechPage() {
             className="text-lg sm:text-xl text-blue-400 hover:text-blue-300 transition flex items-center gap-1.5 sm:gap-2 group cursor-pointer shrink-0"
             title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
           >
-            <BrandLogo size="md" priority />
+            <BrandLogo portal="tech" size="md" priority />
             <span className="droplet-pill bg-blue-900/60 px-2 py-0.5 text-[10px] sm:text-xs font-bold text-white border border-blue-700/50 group-hover:bg-blue-800 transition shrink-0">
               {formatBilingual(t("tech.helper"), "헬퍼")}
             </span>
@@ -46,29 +46,15 @@ export default function TechPage() {
         </div>
 
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <DesktopShortcutButton variant="header" portal="tech" className="bg-slate-900 border-slate-700 text-slate-200 hover:bg-slate-800" />
           <LanguageSwitcher />
-          {isLoggedIn ? (
+          {isLoggedIn && (
             <Link href="/tech/workspace">
               <Button variant="primary" className="droplet-btn text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
                 <span className="sm:hidden">{t("tech.workspace") || "워크스페이스"} →</span>
                 <span className="hidden sm:inline">{formatBilingual(t("tech.openWorkspaceBtn"), "내 워크스페이스 관리하기")} →</span>
               </Button>
             </Link>
-          ) : (
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <Link href="/services/job-help?tab=provider">
-                <Button variant="primary" className="droplet-btn text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black border-none shrink-0">
-                  <span className="sm:hidden">{t("customer.partnerRegisterLink") || "헬퍼 등록"}</span>
-                  <span className="hidden sm:inline">🎖️ {formatBilingual(t("customer.partnerRegisterLink"), "헬퍼 등록")}</span>
-                </Button>
-              </Link>
-              <Link href="/tech/login">
-                <Button variant="secondary" className="droplet-btn text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
-                  <span className="sm:hidden">{t("tech.login") || "로그인"}</span>
-                  <span className="hidden sm:inline">{formatBilingual(t("tech.helperLogin"), "헬퍼 로그인")}</span>
-                </Button>
-              </Link>
-            </div>
           )}
         </div>
       </header>
@@ -248,34 +234,51 @@ export default function TechPage() {
               </div>
             </div>
           ) : (
-            <div className="max-w-2xl space-y-4">
-              {/* Unified Helper Registration Banner */}
-              <div className="droplet-card border border-amber-500/40 bg-gradient-to-r from-amber-950/40 via-slate-900/80 to-slate-950 p-5 sm:p-6 backdrop-blur-xl">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">🎖️</span>
-                      <h2 className="text-base sm:text-lg font-black text-amber-300">
-                        {formatBilingual(t("support.providerTitle"), "LIFE.HELP 공식 헬퍼 파트너 등록")}
-                      </h2>
-                    </div>
-                    <p className="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                      {formatBilingual(t("support.providerDesc"), "100% 자율 일정으로 원하는 지역에서 활동하며 10대 생활·수리 전 분야에서 투명한 수익을 창출하세요.")}
-                    </p>
-                  </div>
-                  <Link
-                    href="/services/job-help?tab=provider"
-                    className="droplet-btn-lg inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs sm:text-sm px-5 py-3 shadow-lg shadow-amber-500/20 shrink-0 text-center cursor-pointer"
-                  >
-                    <span>{formatBilingual(t("customer.helperRegisterBtn"), "공식 헬퍼 등록 신청하기 →")}</span>
-                  </Link>
+            <div className="max-w-2xl droplet-card border border-slate-800 bg-slate-900/90 p-6 sm:p-8 backdrop-blur-xl shadow-2xl space-y-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">🎖️</span>
+                  <h2 className="text-lg sm:text-xl font-black text-white">
+                    {formatBilingual(t("support.providerTitle"), "LIFE.HELP 공식 헬퍼 파트너")}
+                  </h2>
                 </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {formatBilingual(
+                    t("support.providerDesc"),
+                    "100% 자율 일정으로 원하는 지역에서 활동하며 10대 생활·수리 전 분야에서 투명한 수익을 창출하세요.",
+                  )}
+                </p>
               </div>
 
-              <HelperAuthCard
-                defaultTab="register"
-                onSuccess={() => router.push("/tech/workspace")}
-              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-800/80">
+                {/* 1. 신규 헬퍼 등록 */}
+                <Link
+                  href="/services/job-help?tab=provider"
+                  className="droplet-btn-lg flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black p-5 text-center shadow-lg shadow-amber-500/20 transition cursor-pointer rounded-2xl"
+                >
+                  <span className="text-2xl">📝</span>
+                  <span className="text-base sm:text-lg font-black">
+                    {formatBilingual(t("tech.registerTab"), "신규 헬퍼 등록")}
+                  </span>
+                  <span className="text-xs text-amber-950 font-bold">
+                    {formatBilingual("Register as a new helper", "새로운 헬퍼로 활동 시작")} →
+                  </span>
+                </Link>
+
+                {/* 2. 기존 헬퍼 로그인 */}
+                <Link
+                  href="/tech/login"
+                  className="droplet-btn-lg flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black p-5 text-center shadow-lg shadow-blue-600/20 transition cursor-pointer rounded-2xl border border-blue-500/30"
+                >
+                  <span className="text-2xl">🔑</span>
+                  <span className="text-base sm:text-lg font-black">
+                    {formatBilingual(t("tech.loginTab"), "기존 헬퍼 로그인")}
+                  </span>
+                  <span className="text-xs text-blue-200 font-semibold">
+                    {formatBilingual("3-Month security access code", "3개월 보안 코드로 로그인")} →
+                  </span>
+                </Link>
+              </div>
             </div>
           )}
         </div>

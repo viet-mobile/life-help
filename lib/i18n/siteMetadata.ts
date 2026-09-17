@@ -88,8 +88,8 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
     },
   },
   vi: {
-    tagline: "Nền tảng dịch vụ đời sống đa ngôn ngữ",
-    description: "Nền tảng dịch vụ đời sống dành cho người nước ngoài tại Hàn Quốc. Tư vấn bằng tiếng mẹ đẻ và kết nối với thợ chuyên nghiệp uy tín.",
+    tagline: "Nền tảng dịch vụ sinh hoạt đa ngôn ngữ",
+    description: "Nền tảng dịch vụ sinh hoạt đa ngôn ngữ",
     chat: {
       title: "Trung tâm tư vấn trực tiếp bằng tiếng mẹ đẻ",
       description: "Tư vấn trực tuyến 1:1 theo thời gian thực bằng tiếng mẹ đẻ với tư vấn viên chuyên nghiệp cho mọi khó khăn trong cuộc sống tại Hàn Quốc.",
@@ -796,7 +796,22 @@ export function resolveCountryFromHeaders(headersList: Headers): string | null {
 /**
  * Generates browser tab / address bar dynamic icons metadata for the specific country.
  */
-export function getIconMetadata(country?: string | null): NonNullable<Metadata["icons"]> {
+export function getIconMetadata(country?: string | null, portal?: string | null): NonNullable<Metadata["icons"]> {
+  const p = portal?.toLowerCase();
+  if (p && ["tech", "chat", "sys"].includes(p)) {
+    return {
+      icon: [
+        { url: `/logos/favicon-${p}.png`, sizes: "32x32", type: "image/png" },
+        { url: `/logos/favicon-${p}.png`, sizes: "192x192", type: "image/png" },
+        { url: `/logos/favicon-${p}.ico`, sizes: "any" },
+      ],
+      shortcut: [`/logos/favicon-${p}.png`],
+      apple: [
+        { url: `/logos/apple-touch-icon-${p}.png`, sizes: "180x180", type: "image/png" },
+      ],
+    };
+  }
+
   const c = country?.toLowerCase();
   const slug = c && COUNTRY_TO_LANGUAGE_MAP[c] ? c : "default";
 
@@ -816,9 +831,12 @@ export function getIconMetadata(country?: string | null): NonNullable<Metadata["
 /**
  * Returns dynamic Metadata with localized title and description for social link previews and browser titles.
  */
-export function getSiteMetadata(lang: string): Metadata {
+export function getSiteMetadata(lang: string, country?: string | null): Metadata {
   const meta = SITE_METADATA[lang] || SITE_METADATA["ko"];
-  const title = `LIFE.HELP | ${meta.tagline}`;
+  const countryUpper = country ? country.toUpperCase() : "";
+  const title = countryUpper
+    ? `LIFE.HELP ${countryUpper} · ${meta.tagline}`
+    : `LIFE.HELP · ${meta.tagline}`;
   const description = meta.description;
 
   return {
@@ -827,7 +845,7 @@ export function getSiteMetadata(lang: string): Metadata {
     openGraph: {
       title,
       description,
-      siteName: "LIFE.HELP",
+      siteName: countryUpper ? `LIFE.HELP ${countryUpper}` : "LIFE.HELP",
       type: "website",
       locale: lang === "ko" ? "ko_KR" : lang,
     },
