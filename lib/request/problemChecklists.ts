@@ -4,6 +4,8 @@ export interface ProblemOption {
   en: string;
   vi: string;
   zh: string;
+  "zh-Hant"?: string;
+  zhHant?: string;
   [locale: string]: string | undefined;
 }
 
@@ -16,6 +18,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Toilet water is not draining at all and overflowing",
       vi: "Nước bồn cầu hoàn toàn không thoát được và bị trào ngược",
       zh: "马桶水完全排不下去且溢流回涌",
+      "zh-Hant": "馬桶水完全排不下去且溢流回湧",
     },
     {
       id: "clog-2",
@@ -23,6 +26,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Foreign object (wet wipe, toothbrush, cap) fell into toilet",
       vi: "Vật thể lạ (khăn ướt, bàn chải, nắp lọ) rơi vào bồn cầu",
       zh: "马桶掉入湿巾、牙刷、盖子等异物",
+      "zh-Hant": "馬桶掉入溼巾、牙刷、蓋子等異物",
     },
     {
       id: "clog-3",
@@ -30,6 +34,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Kitchen sink has bad odor and water is pooling",
       vi: "Bồn rửa bát có mùi hôi thối và nước bị đọng ứ",
       zh: "水槽排水口有腐臭异味且积水",
+      "zh-Hant": "水槽排水口有腐臭異味且積水",
     },
     {
       id: "clog-4",
@@ -37,6 +42,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Water is overflowing from under-sink pipe or floor drain",
       vi: "Nước tràn ra từ ống dưới bồn rửa hoặc đường ống sàn",
       zh: "水槽下方软管或地面管道溢水",
+      "zh-Hant": "水槽下方軟管或地面管道溢水",
     },
     {
       id: "clog-5",
@@ -44,6 +50,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Bathroom floor drain clogged with hair and overflowing",
       vi: "Cống sàn nhà tắm bị tắc do tóc và trào ngược",
       zh: "浴室/卫生间地面排水口被头发堵塞并反水",
+      "zh-Hant": "浴室/衛生間地面排水口被頭髮堵塞並反水",
     },
     {
       id: "clog-6",
@@ -51,6 +58,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Laundry room / balcony drain backing up foam and water",
       vi: "Đường thoát nước phòng giặt/ban công bị trào bọt và nước",
       zh: "洗衣房或阳台排水管泡沫和水倒灌",
+      "zh-Hant": "洗衣房或陽臺排水管泡沫和水倒灌",
     },
     {
       id: "clog-7",
@@ -58,6 +66,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Building/villa main sewage line or manhole clogged",
       vi: "Đường ống cống chính của tòa nhà/biệt thự bị tắc nghẽn",
       zh: "大楼/公寓总排污管或化粪池管道堵塞",
+      "zh-Hant": "大樓/公寓總排汙管或化糞池管道堵塞",
     },
     {
       id: "clog-8",
@@ -65,6 +74,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Endoscopic pipe camera inspection requested",
       vi: "Yêu cầu kiểm tra chính xác bằng camera nội soi đường ống",
       zh: "需要管道内窥镜高清摄像头精细检测",
+      "zh-Hant": "需要管道內窺鏡高清攝像頭精細檢測",
     },
     {
       id: "clog-9",
@@ -72,6 +82,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "High-pressure water jetting pipe clearing needed",
       vi: "Cần thông tắc xục rửa đường ống bằng máy áp lực cao",
       zh: "需要高压水枪清洗管道油垢与疏通",
+      "zh-Hant": "需要高壓水槍清洗管道油垢與疏通",
     },
     {
       id: "clog-10",
@@ -79,6 +90,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Septic tank connection pipe issues and backup",
       vi: "Vấn đề đường ống nối bể phốt và hiện tượng trào ngược",
       zh: "化粪池连接管道故障及倒灌现象",
+      "zh-Hant": "化糞池連接管道故障及倒灌現象",
     },
     {
       id: "clog-11",
@@ -86,6 +98,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Garbage disposal drain pipe grease blockage",
       vi: "Đường ống máy nghiền rác bị đông đặc mỡ và tắc nghẽn",
       zh: "垃圾处理器连接管油脂凝固堵塞",
+      "zh-Hant": "垃圾處理器連接管油脂凝固堵塞",
     },
     {
       id: "clog-12",
@@ -93,6 +106,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Restaurant grease trap cleaning and pipe clearing",
       vi: "Vệ sinh bể tách mỡ nhà hàng và thông tắc đường ống",
       zh: "餐厅/商业厨房隔油池清理及管道通畅",
+      "zh-Hant": "餐廳/商業廚房隔油池清理及管道通暢",
     },
   ],
 
@@ -104,6 +118,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Water is dripping or dampening downstairs ceiling/wall",
       vi: "Nước nhỏ giọt hoặc ngấm ướt trần/tường nhà tầng dưới",
       zh: "楼下天花板或墙面漏水滴水渗水",
+      "zh-Hant": "樓下天花板或牆面漏水滴水滲水",
     },
     {
       id: "leak-2",
@@ -111,6 +126,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Water meter spins even when no water is being used",
       vi: "Đồng hồ nước vẫn quay dù không hề sử dụng nước",
       zh: "不用水的情况下水表指针依然在转动",
+      "zh-Hant": "不用水的情況下水錶指針依然在轉動",
     },
     {
       id: "leak-3",
@@ -118,6 +134,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Wallpaper, wooden floor, or mat is damp with mold",
       vi: "Giấy dán tường, sàn gỗ hoặc dưới chiếu bị ẩm mốc",
       zh: "壁纸、木地板或地板革下方潮湿发霉",
+      "zh-Hant": "壁紙、木地板或地板革下方潮溼發黴",
     },
     {
       id: "leak-4",
@@ -125,6 +142,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Faucet/tap joint is continuously leaking water",
       vi: "Khớp nối vòi nước liên tục rò rỉ nước",
       zh: "水龙头/角阀连接处不断滴水漏水",
+      "zh-Hant": "水龍頭/角閥連接處不斷滴水漏水",
     },
     {
       id: "leak-5",
@@ -132,6 +150,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Toilet base seal or tank fittings are leaking water",
       vi: "Đáy bồn cầu hoặc phụ kiện két nước bị rò rỉ nước",
       zh: "马桶底座缝隙或水箱配件漏水",
+      "zh-Hant": "馬桶底座縫隙或水箱配件漏水",
     },
     {
       id: "leak-6",
@@ -139,6 +158,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Winter freeze broken water pipe or frozen meter",
       vi: "Ống nước/đồng hồ nước bị đóng băng hoặc vỡ do rét đậm",
       zh: "冬季寒潮导致水管/水表冻裂或结冰",
+      "zh-Hant": "冬季寒潮導致水管/水錶凍裂或結冰",
     },
     {
       id: "leak-7",
@@ -146,6 +166,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Rusty brown water or sediment coming from faucets",
       vi: "Nước có cặn bẩn hoặc nước gỉ sắt màu đỏ chảy ra từ vòi",
       zh: "水龙头流出铁锈红水或沉淀杂质",
+      "zh-Hant": "水龍頭流出鐵鏽紅水或沉澱雜質",
     },
     {
       id: "leak-8",
@@ -153,6 +174,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Boiler pipes or heating manifold valve leaking",
       vi: "Đường ống nồi hơi hoặc van chia nhiệt sưởi bị rò rỉ",
       zh: "锅炉管道或地暖分水器阀门漏水",
+      "zh-Hant": "鍋爐管道或地暖分水器閥門漏水",
     },
     {
       id: "leak-9",
@@ -160,6 +182,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Rainwater leakage from exterior cracks or window seals",
       vi: "Nước mưa thấm qua vết nứt tường ngoài hoặc gioăng cửa sổ",
       zh: "外墙裂缝渗雨水或窗框硅胶老化漏水",
+      "zh-Hant": "外牆裂縫滲雨水或窗框硅膠老化漏水",
     },
     {
       id: "leak-10",
@@ -167,6 +190,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Advanced acoustic/gas trace leak detection needed",
       vi: "Dò tìm rò rỉ vi mô bằng máy siêu âm / khí định vị",
       zh: "需要高端听音仪/气体示踪精准定位暗漏",
+      "zh-Hant": "需要高端聽音儀/氣體示蹤精準定位暗漏",
     },
     {
       id: "leak-11",
@@ -174,6 +198,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Water pressure is too low, booster pump installation needed",
       vi: "Áp lực nước quá yếu, muốn lắp đặt máy bơm tăng áp",
       zh: "水压过低想要安装增压泵",
+      "zh-Hant": "水壓過低想要安裝增壓泵",
     },
     {
       id: "leak-12",
@@ -181,6 +206,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Full replacement of old pipes & bathroom floor waterproofing",
       vi: "Thay mới toàn bộ đường ống cũ & chống thấm lại sàn nhà tắm",
       zh: "老旧管道全屋更换及卫生间地面重新防水",
+      "zh-Hant": "老舊管道全屋更換及衛生間地面重新防水",
     },
   ],
 
@@ -192,6 +218,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Boiler power is on, but the room is not heating up",
       vi: "Nồi hơi có điện nhưng phòng không ấm lên chút nào",
       zh: "锅炉电源开启但房间完全不热",
+      "zh-Hant": "鍋爐電源開啟但房間完全不熱",
     },
     {
       id: "bl-2",
@@ -199,6 +226,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "No hot water during shower, only cold water comes out",
       vi: "Không có nước nóng khi tắm, chỉ chảy ra nước lạnh",
       zh: "洗澡时不出热水只出冷水",
+      "zh-Hant": "洗澡時不出熱水只出冷水",
     },
     {
       id: "bl-3",
@@ -206,6 +234,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Error code is flashing on the indoor room thermostat",
       vi: "Mã lỗi số nhấp nháy trên bảng điều khiển nhiệt độ trong nhà",
       zh: "室内温控器屏幕闪烁数字故障代码",
+      "zh-Hant": "室內溫控器螢幕閃爍數字故障代碼",
     },
     {
       id: "bl-4",
@@ -213,6 +242,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Water is dripping from inside boiler or bottom pipes",
       vi: "Nước nhỏ giọt từ bên trong máy nồi hơi hoặc ống bên dưới",
       zh: "锅炉内部或底部管道滴水漏水",
+      "zh-Hant": "鍋爐內部或底部管道滴水漏水",
     },
     {
       id: "bl-5",
@@ -220,6 +250,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Loud banging noise or rumbling when boiler starts",
       vi: "Tiếng nổ đùng đoàng hoặc tiếng ồn lớn khi nồi hơi hoạt động",
       zh: "锅炉启动运转时发出轰鸣或巨响异响",
+      "zh-Hant": "鍋爐啟動運轉時發出轟鳴或巨響異響",
     },
     {
       id: "bl-6",
@@ -227,6 +258,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Gas smell or exhaust fumes entering the room",
       vi: "Mùi khí gas hoặc mùi khói xả tràn vào trong phòng",
       zh: "房间内有煤气味或烟道废气异味",
+      "zh-Hant": "房間內有煤氣味或煙道廢氣異味",
     },
     {
       id: "bl-7",
@@ -234,6 +266,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Circulation pump failure; water sounds but no heating",
       vi: "Hỏng bơm tuần hoàn, chỉ nghe tiếng nước chảy nhưng không ấm",
       zh: "循环泵故障，只听到水流声但不供暖",
+      "zh-Hant": "循環泵故障，只聽到水流聲但不供暖",
     },
     {
       id: "bl-8",
@@ -241,6 +274,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Quote requested for new eco-friendly condensing gas boiler",
       vi: "Yêu cầu báo giá thay mới bình gas ngưng tụ tiết kiệm năng lượng",
       zh: "需要更换全新一级能效冷凝式燃气锅炉报价",
+      "zh-Hant": "需要更換全新一級能效冷凝式燃氣鍋爐報價",
     },
     {
       id: "bl-9",
@@ -248,6 +282,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Individual room thermostat broken or zone actuator failure",
       vi: "Bảng điều khiển nhiệt độ từng phòng hỏng hoặc van tự động lỗi",
       zh: "分室温控器失灵或电动执行器故障",
+      "zh-Hant": "分室溫控器失靈或電動執行器故障",
     },
     {
       id: "bl-10",
@@ -255,6 +290,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Heating pipe flush (sludge removal) and bleeding air needed",
       vi: "Cần súc rửa xả khí (xả e) và cặn bẩn đường ống sưởi sàn",
       zh: "地暖管道清洗除垢及排气放气",
+      "zh-Hant": "地暖管道清洗除垢及排氣放氣",
     },
     {
       id: "bl-11",
@@ -262,6 +298,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Oil / electric / pellet boiler inspection & repair",
       vi: "Kiểm tra và sửa chữa nồi hơi dầu / nồi hơi điện",
       zh: "燃油/电锅炉检修与故障排除",
+      "zh-Hant": "燃油/電鍋爐檢修與故障排除",
     },
     {
       id: "bl-12",
@@ -269,6 +306,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Thawing frozen boiler pipes & re-installing insulation",
       vi: "Làm tan băng ống nồi hơi bị đông tuyết & bọc lại bảo ôn",
       zh: "冬季锅炉管道冰冻解冻及保温棉重新包扎",
+      "zh-Hant": "冬季鍋爐管道冰凍解凍及保溫棉重新包紮",
     },
   ],
 
@@ -280,6 +318,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Move-in/turnover cleaning for studio/officetel (Full disinfection)",
       vi: "Dọn dẹp chuyển vào nhà mới cho phòng one-room/officetel (Khử trùng toàn diện)",
       zh: "单间/两居室/公寓入住前深度保洁（全屋杀菌消毒）",
+      "zh-Hant": "單間/兩居室/公寓入住前深度保潔（全屋殺菌消毒）",
     },
     {
       id: "clean-2",
@@ -287,6 +326,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Deep degreasing of kitchen stove/range hood & sink",
       vi: "Tẩy sạch dầu mỡ bám cứng bếp gas/máy hút mùi & bồn rửa bát",
       zh: "厨房燃气灶/抽油烟机重油污及水槽深度清洗",
+      "zh-Hant": "廚房燃氣灶/抽油煙機重油汙及水槽深度清洗",
     },
     {
       id: "clean-3",
@@ -294,6 +334,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Bathroom tile grout mold, limescale & toilet deep sanitizing",
       vi: "Tẩy mốc khe gạch, cặn canxi nhà tắm & khử trùng bồn cầu",
       zh: "卫生间瓷砖缝隙霉菌、水垢及马桶镜面精细除垢",
+      "zh-Hant": "衛生間瓷磚縫隙黴菌、水垢及馬桶鏡面精細除垢",
     },
     {
       id: "clean-4",
@@ -301,6 +342,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Window frames, screen mesh dust removal & glass cleaning",
       vi: "Vệ sinh khung cửa sổ, lưới chống muỗi & lau kính trong ngoài",
       zh: "窗框缝隙积尘、纱窗除尘及玻璃双面擦洗",
+      "zh-Hant": "窗框縫隙積塵、紗窗除塵及玻璃雙面擦洗",
     },
     {
       id: "clean-5",
@@ -308,6 +350,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Refrigerator interior disassembly steam sanitation & deodorization",
       vi: "Tháo lắp vệ sinh hơi nước khử mùi diệt khuẩn tủ lạnh",
       zh: "冰箱内部拆卸高温蒸汽杀菌及异味清除",
+      "zh-Hant": "冰箱內部拆卸高溫蒸汽殺菌及異味清除",
     },
     {
       id: "clean-6",
@@ -315,6 +358,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Air conditioner disassembly filter & cooling fin mold cleaning",
       vi: "Tháo rửa màng lọc điều hòa & xịt rửa giàn lạnh khử nấm mốc",
       zh: "空调深度拆洗滤网及散热片高压防霉清洗",
+      "zh-Hant": "空調深度拆洗濾網及散熱片高壓防黴清洗",
     },
     {
       id: "clean-7",
@@ -322,6 +366,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Washing machine tub disassembly deep cleaning & descaling",
       vi: "Tháo lồng máy giặt (cửa trên/cửa ngang) khử cặn bẩn & vi khuẩn",
       zh: "洗衣机内筒（波轮/滚筒）拆机除垢杀菌",
+      "zh-Hant": "洗衣機內筒（波輪/滾筒）拆機除垢殺菌",
     },
     {
       id: "clean-8",
@@ -329,6 +374,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Floor machine scrubbing, stain removal & protective wax coating",
       vi: "Đánh bóng sàn máy chà sàn, tẩy ố & phủ sáp bảo vệ",
       zh: "木地板/地革污渍机械刷洗及抛光打蜡保护",
+      "zh-Hant": "木地板/地革汙漬機械刷洗及拋光打蠟保護",
     },
     {
       id: "clean-9",
@@ -336,6 +382,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Mattress / fabric sofa dust mite extraction & wet deep clean",
       vi: "Giặt nệm / sofa vải hút bọ bụi & giặt ướt khử mùi diệt khuẩn",
       zh: "床垫/布艺沙发除螨及湿式深度抽洗杀菌",
+      "zh-Hant": "床墊/布藝沙發除蟎及溼式深度抽洗殺菌",
     },
     {
       id: "clean-10",
@@ -343,6 +390,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Clutter / hoarder house deep clean (Bulk disposal & deodorization)",
       vi: "Dọn dẹp nhà rác/dọn đặc biệt (Thu gom rác thải & khử mùi diệt khuẩn)",
       zh: "垃圾房/特殊保洁（大件废弃物清运分类及深度除味防疫）",
+      "zh-Hant": "垃圾房/特殊保潔（大件廢棄物清運分類及深度除味防疫）",
     },
     {
       id: "clean-11",
@@ -350,6 +398,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Post-construction cleaning (Cement dust, paint splatters removal)",
       vi: "Dọn dẹp sau xây dựng (Làm sạch bụi mịn xi măng & vết sơn)",
       zh: "开荒保洁（清除水泥粉尘、乳胶漆印及装修残留痕迹）",
+      "zh-Hant": "開荒保潔（清除水泥粉塵、乳膠漆印及裝修殘留痕跡）",
     },
     {
       id: "clean-12",
@@ -357,6 +406,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Pet hair/odor removal & eco-friendly phytoncide fogging",
       vi: "Khử mùi hôi lông/chất thải thú cưng & xông tinh dầu phytoncide",
       zh: "宠物毛发/便溺异味深度清除及环保植物杀菌喷雾",
+      "zh-Hant": "寵物毛髮/便溺異味深度清除及環保植物殺菌噴霧",
     },
   ],
 
@@ -368,6 +418,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Affordable studio with 1M~3M KRW low deposit",
       vi: "Phòng one-room giá rẻ, đặt cọc thấp 1~3 triệu won",
       zh: "保证金100~300万韩元的平价安全单间",
+      "zh-Hant": "保證金100~300萬韓元的平價安全單間",
     },
     {
       id: "h-2",
@@ -375,6 +426,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Apartment open to foreigner registration card & legal visa",
       vi: "Nhà chấp nhận ký hợp đồng cho người nước ngoài có ARC",
       zh: "持有外国人登陆证可正常签约无限制的房源",
+      "zh-Hant": "持有外國人登陸證可正常簽約無限制的房源",
     },
     {
       id: "h-3",
@@ -382,6 +434,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Full option (Washer, Fridge, A/C, Stove/Induction included)",
       vi: "Đầy đủ tiện nghi (máy giặt, tủ lạnh, điều hòa, bếp)",
       zh: "全套家电（包含洗衣机、冰箱、空调、燃气灶/电磁炉）",
+      "zh-Hant": "全套家電（包含洗衣機、冰箱、空調、燃氣灶/電磁爐）",
     },
     {
       id: "h-4",
@@ -389,6 +442,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Short-term lease (3 to 6 months) available studio/gosiwon",
       vi: "Có thể thuê ngắn hạn (3 tháng ~ 6 tháng) hoặc gosiwon",
       zh: "可短租（3个月~6个月）的单间或考室院",
+      "zh-Hant": "可短租（3個月~6個月）的單間或考試院",
     },
     {
       id: "h-5",
@@ -396,6 +450,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Two-room or three-room house to share with coworkers/family",
       vi: "Nhà 2 phòng hoặc 3 phòng ở chung cùng bạn bè/gia đình",
       zh: "可与朋友/同事/家人合住的两居室或三居室",
+      "zh-Hant": "可與朋友/同事/家人合住的兩居室或三房",
     },
     {
       id: "h-6",
@@ -403,6 +458,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Within 5 minutes walk to subway or bus transit",
       vi: "Đi bộ dưới 5 phút tới ga tàu điện ngầm hoặc bến xe buýt",
       zh: "步行5分钟内直达地铁站或公交总站",
+      "zh-Hant": "步行5分鐘內直達地鐵站或公交總站",
     },
     {
       id: "h-7",
@@ -410,6 +466,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Transparent and low maintenance fee/utilities",
       vi: "Tiền quản lý và điện nước rõ ràng, tiết kiệm",
       zh: "管理费及水电煤气透明便宜的高性价比房源",
+      "zh-Hant": "管理費及水電煤氣透明便宜的高性價比房源",
     },
     {
       id: "h-8",
@@ -417,6 +474,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Parking space & elevator available in modern building",
       vi: "Có chỗ đỗ xe và thang máy trong tòa nhà mới",
       zh: "带停车位且有电梯的新建建筑",
+      "zh-Hant": "帶停車位且有電梯的新建建築",
     },
     {
       id: "h-9",
@@ -424,6 +482,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Pet-friendly accommodation (dogs, cats allowed)",
       vi: "Cho phép nuôi thú cưng (chó, mèo)",
       zh: "允许饲养宠物（猫/狗）共同入住的房源",
+      "zh-Hant": "允許飼養寵物（貓/狗）共同入住的房源",
     },
     {
       id: "h-10",
@@ -431,6 +490,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Early lease takeover & deposit return assistance",
       vi: "Hỗ trợ sang nhượng phòng chuyển đi sớm & lấy lại tiền cọc",
       zh: "合同期满前转租过户及保证金退还协调",
+      "zh-Hant": "合同期滿前轉租過戶及保證金退還協調",
     },
   ],
 
@@ -442,6 +502,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Bank account opening escort with ARC / Passport",
       vi: "Đồng hành mở tài khoản ngân hàng bằng ARC / Hộ chiếu",
       zh: "外国人登陆证/护照新开银行账户陪同办理",
+      "zh-Hant": "外國人登陸證/護照新開銀行賬戶陪同辦理",
     },
     {
       id: "bank-2",
@@ -449,6 +510,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Debit card with T-money transportation function application",
       vi: "Đăng ký phát hành thẻ Check kết hợp thẻ giao thông",
       zh: "办理借记卡及附带交通卡功能卡片",
+      "zh-Hant": "辦理借記卡及附帶交通卡功能卡片",
     },
     {
       id: "bank-3",
@@ -456,6 +518,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Mobile internet banking, Digital certificate & OTP setup",
       vi: "Cài đặt ứng dụng ngân hàng di động, chứng chỉ số & OTP",
       zh: "手机银行APP安装及数字证书/OTP密码器申请",
+      "zh-Hant": "手機銀行APP安裝及數字證書/OTP密碼器申請",
     },
     {
       id: "bank-4",
@@ -463,6 +526,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "International remittance limit increase & beneficiary setup",
       vi: "Nâng hạn mức chuyển tiền quốc tế và đăng ký tài khoản thụ hưởng",
       zh: "本国海外汇款限额提升及收款人账户绑定",
+      "zh-Hant": "本國海外匯款限額提升及收款人賬戶綁定",
     },
     {
       id: "bank-5",
@@ -470,6 +534,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Re-issuing lost passbook/card & printing bank statements",
       vi: "Cấp lại sổ/thẻ bị mất và in sao kê lịch sử giao dịch",
       zh: "存折/银行卡丢失补办及打印近期流水明细",
+      "zh-Hant": "存摺/銀行卡丟失補辦及列印近期流水明細",
     },
     {
       id: "bank-6",
@@ -477,6 +542,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Resetting 5-time password errors & unfreezing account",
       vi: "Mở khóa lỗi nhập sai mật khẩu 5 lần & mở khóa tài khoản",
       zh: "解除连续5次输错密码锁定及解除账户冻结",
+      "zh-Hant": "解除連續5次輸錯密碼鎖定及解除賬戶凍結",
     },
     {
       id: "bank-7",
@@ -484,6 +550,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Salary payroll account designation & automatic debit setup",
       vi: "Đăng ký tài khoản nhận lương & cài đặt chuyển khoản tự động",
       zh: "指定工资结算账户及设置自动转账",
+      "zh-Hant": "指定工資結算賬戶及設置自動轉賬",
     },
     {
       id: "bank-8",
@@ -491,6 +558,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Foreigner credit card eligibility check & document assistance",
       vi: "Tư vấn điều kiện mở thẻ tín dụng người nước ngoài & chuẩn bị hồ sơ",
       zh: "外国人专属信用卡申请资质审核及材料准备",
+      "zh-Hant": "外國人專屬信用卡申請資質審核及材料準備",
     },
   ],
 
@@ -502,6 +570,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "National Health Insurance qualification check & enrollment escort",
       vi: "Xác nhận tư cách & đồng hành đăng ký Bảo hiểm Y tế Quốc dân",
       zh: "国民健康保险（外国人职场/地域加入）资格确认及登记陪同",
+      "zh-Hant": "國民健康保險（外國人職場/地域加入）資格確認及登記陪同",
     },
     {
       id: "insur-2",
@@ -509,6 +578,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Foreign worker mandatory insurances (Departure guarantee / Accident)",
       vi: "Bảo hiểm bắt buộc theo visa (Mãn hạn xuất cảnh / Chi phí về nước / Tai nạn)",
       zh: "外国人专属法定必备保险（出国满期/回国费用/意外伤害保险）",
+      "zh-Hant": "外國人專屬法定必備保險（出國滿期/回國費用/意外傷害保險）",
     },
     {
       id: "insur-3",
@@ -516,6 +586,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Private medical indemnity & hospitalization coverage consulting",
       vi: "Tư vấn bảo hiểm y tế tư nhân, hỗ trợ viện phí & phẫu thuật",
       zh: "韩国商业实损医疗险（实费）及疾病/意外住院津贴咨询",
+      "zh-Hant": "韓國商業實損醫療險（實費）及疾病/意外住院津貼諮詢",
     },
     {
       id: "insur-4",
@@ -523,6 +594,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Auto / Motorcycle compulsory & comprehensive insurance setup",
       vi: "So sánh đăng ký bảo hiểm bắt buộc & toàn diện cho xe máy / ô tô",
       zh: "汽车/摩托车交强险及商业综合险比价投保",
+      "zh-Hant": "汽車/摩托車交強險及商業綜合險比價投保",
     },
     {
       id: "insur-5",
@@ -530,6 +602,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Insurance claim filing guidance & medical document translation",
       vi: "Hướng dẫn thủ tục yêu cầu bồi thường bảo hiểm & dịch thuật hồ sơ bệnh án",
       zh: "患病/意外理赔申请材料指导及医疗文件母语翻译",
+      "zh-Hant": "患病/意外理賠申請材料指導及醫療文件母語翻譯",
     },
     {
       id: "insur-6",
@@ -537,6 +610,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Visa status update insurance adjustments & surrender value refund",
       vi: "Điều chỉnh bảo hiểm theo thay đổi visa & rút tiền hoàn lại bảo hiểm",
       zh: "签证变更相应的保险更新及退保解约返还金申请",
+      "zh-Hant": "簽證變更相應的保險更新及退保解約返還金申請",
     },
     {
       id: "insur-7",
@@ -544,6 +618,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Dental, cancer & major surgery insurance plan consulting",
       vi: "Tư vấn gói bảo hiểm nha khoa, ung thư & phẫu thuật lớn",
       zh: "牙齿保险/癌症保险/重大手术医疗津贴专项咨询",
+      "zh-Hant": "牙齒保險/癌症保險/重大手術醫療津貼專項諮詢",
     },
     {
       id: "insur-8",
@@ -551,6 +626,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Unclaimed insurance benefits inquiry & collection prior to repatriation",
       vi: "Tra cứu & hỗ trợ nhận tiền bảo hiểm chưa thanh toán trước khi về nước",
       zh: "完全回国前回国未领保险金一键查询及清算领款",
+      "zh-Hant": "完全回國前回國未領保險金一鍵查詢及清算領款",
     },
   ],
 
@@ -562,6 +638,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Manufacturing / Factory production & assembly (Dormitory provided)",
       vi: "Sản xuất / Công xưởng / Lắp ráp linh kiện & kiểm hàng (Có ký túc xá)",
       zh: "制造业/工厂生产组装/质检（提供住宿与三餐）",
+      "zh-Hant": "製造業/工廠生產組裝/質檢（提供住宿與三餐）",
     },
     {
       id: "job-2",
@@ -569,6 +646,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Restaurant kitchen assistant / Hall server / Cook (Foreigner welcome)",
       vi: "Nhà hàng / Phụ bếp / Phục vụ bàn / Đầu bếp (Nhận người nước ngoài)",
       zh: "餐厅/饭店后厨帮工/前厅服务员/厨师（招收外国人）",
+      "zh-Hant": "餐廳/飯店後廚幫工/前廳服務員/廚師（招收外國人）",
     },
     {
       id: "job-3",
@@ -576,6 +654,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Construction / Interior site carpentry, rebar, electrical & plumbing",
       vi: "Công trường xây dựng / Nội thất, cốp pha, sắt thép, thợ mộc, điện nước",
       zh: "建筑工地/室内装修木工、钢筋、水电管道安装",
+      "zh-Hant": "建築工地/室內裝修木工、鋼筋、水電管道安裝",
     },
     {
       id: "job-4",
@@ -583,6 +662,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Trade / Logistics warehouse inbound-outbound, forklift & packing",
       vi: "Thương mại / Kho logistics xuất nhập kho / Lái xe nâng / Đóng gói",
       zh: "贸易物流仓库出入库理货/叉车操作/打包作业",
+      "zh-Hant": "貿易物流倉庫出入庫理貨/叉車操作/打包作業",
     },
     {
       id: "job-5",
@@ -590,6 +670,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Interpretation / Office administration / Global marketing professional",
       vi: "Thông phiên dịch / Nhân viên văn phòng / Marketing quốc tế",
       zh: "商务翻译/办公室文员/海外营销专业岗位",
+      "zh-Hant": "商務翻譯/辦公室文員/海外營銷專業崗位",
     },
     {
       id: "job-6",
@@ -597,6 +678,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Employment contract review (Wage, work hours, 4 major social insurances)",
       vi: "Rà soát hợp đồng lao động (Lương bổng, giờ làm, trợ cấp tuần, bảo hiểm)",
       zh: "劳动就业合同审核（薪资、工时、周休津贴、四大保险确认）",
+      "zh-Hant": "勞動就業合同審核（薪資、工時、週休津貼、四大保險確認）",
     },
     {
       id: "job-7",
@@ -604,6 +686,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Unpaid wages, severance pay & labor dispute legal consultation escort",
       vi: "Đồng hành tư vấn tranh chấp lao động, nợ lương & trợ cấp thôi việc",
       zh: "拖欠工资、退职金未结清及劳动纠纷法律咨询陪同",
+      "zh-Hant": "拖欠工資、退職金未結清及勞動糾紛法律諮詢陪同",
     },
     {
       id: "job-8",
@@ -611,6 +694,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "For Employers: Hiring qualified & diligent legal foreign workers",
       vi: "Dành cho chủ doanh nghiệp: Yêu cầu tuyển dụng lao động hợp pháp",
       zh: "雇主直聘专区：诚招踏实可靠、合法签证外籍优秀员工",
+      "zh-Hant": "僱主直聘專區：誠招踏實可靠、合法簽證外籍優秀員工",
     },
   ],
 
@@ -622,6 +706,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "General/university hospital appointment booking & check-in",
       vi: "Đặt lịch khám chuyên khoa bệnh viện lớn & làm thủ tục tiếp đón",
       zh: "大学医院/综合医院专家门诊预约挂号及预检登记",
+      "zh-Hant": "大學醫院/綜合醫院專家門診預約掛號及預檢登記",
     },
     {
       id: "hosp-2",
@@ -629,6 +714,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Dental cavities, root canal, extraction escort & interpretation",
       vi: "Thông dịch đồng hành khám nha khoa sâu răng, nhổ răng, trồng răng",
       zh: "牙科蛀牙、根管治疗、拔牙、种植牙陪同翻译",
+      "zh-Hant": "牙科蛀牙、根管治療、拔牙、種植牙陪同翻譯",
     },
     {
       id: "hosp-3",
@@ -636,6 +722,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Orthopedic bone fracture, back pain, physical therapy translation",
       vi: "Thông dịch chỉnh hình gãy xương, đau lưng, vật lý trị liệu",
       zh: "骨科骨折、腰背剧痛、物理康复治疗诊疗翻译",
+      "zh-Hant": "骨科骨折、腰背劇痛、物理康復治療診療翻譯",
     },
     {
       id: "hosp-4",
@@ -643,6 +730,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Internal medicine / ENT colds, gastroenteritis, endoscopy translation",
       vi: "Nội khoa / Tai mũi họng cảm cúm, đau bụng, nội soi dạ dày đại tràng",
       zh: "内科/耳鼻喉科感冒、肠胃炎、腹痛、胃肠镜检查翻译",
+      "zh-Hant": "內科/耳鼻喉科感冒、腸胃炎、腹痛、胃腸鏡檢查翻譯",
     },
     {
       id: "hosp-5",
@@ -650,6 +738,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "OB-GYN / Urology checkups & confidential doctor consultation",
       vi: "Khám phụ khoa / Nam khoa chuyên sâu & thông dịch bảo mật",
       zh: "妇产科/泌尿外科专科检查及隐私就诊翻译",
+      "zh-Hant": "婦產科/泌尿外科專科檢查及隱私就診翻譯",
     },
     {
       id: "hosp-6",
@@ -657,6 +746,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "National health screening report explanation in native tongue",
       vi: "Giải thích kết quả khám sức khỏe định kỳ bằng tiếng mẹ đẻ",
       zh: "国家健康体检综合检查报告母语详细解读",
+      "zh-Hant": "國家健康體檢綜合檢查報告母語詳細解讀",
     },
     {
       id: "hosp-7",
@@ -664,6 +754,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Night/weekend emergency room (ER) escort & assistance",
       vi: "Hỗ trợ đồng hành cấp cứu ban đêm hoặc ngày lễ",
       zh: "夜间或节假日急诊室（ER）紧急陪同救治",
+      "zh-Hant": "夜間或節假日急診室（ER）緊急陪同救治",
     },
     {
       id: "hosp-8",
@@ -671,6 +762,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Pharmacy prescription dosage, precautions & instructions",
       vi: "Hướng dẫn uống thuốc theo đơn, lưu ý tác dụng phụ tại nhà thuốc",
       zh: "药房处方药服用方法、禁忌及注意事项解释",
+      "zh-Hant": "藥房處方藥服用方法、禁忌及注意事項解釋",
     },
   ],
 
@@ -682,6 +774,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Foreigner budget USIM activation with full identity authentication",
       vi: "Kích hoạt SIM giá rẻ (USIM) xác thực danh tính bằng ARC/Hộ chiếu",
       zh: "持外国人登陆证/护照开通可实名认证的廉价卡（USIM）",
+      "zh-Hant": "持外國人登陸證/護照開通可實名認證的廉價卡（USIM）",
     },
     {
       id: "mob-2",
@@ -689,6 +782,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Prepaid SIM card quick recharge & unlimited data plans",
       vi: "Nạp tiền SIM trả trước nhanh chóng & gói cước data không giới hạn",
       zh: "预付费电话卡（Prepaid SIM）便捷充值及无限流量套餐咨询",
+      "zh-Hant": "預付費電話卡（Prepaid SIM）便捷儲值及無限流量套餐諮詢",
     },
     {
       id: "mob-3",
@@ -696,6 +790,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Major carriers (SKT/KT/LGU+) new sign-up & latest smartphone upgrades",
       vi: "Đăng ký mạng lớn (SKT/KT/LGU+) & đổi máy điện thoại thông minh mới",
       zh: "韩国三大运营商（SKT/KT/LGU+）合约开通及最新智能手机换机",
+      "zh-Hant": "韓國三大運營商（SKT/KT/LGU+）合約開通及最新智能手機換機",
     },
     {
       id: "mob-4",
@@ -703,6 +798,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Studio/Home high-speed fiber internet & Giga Wi-Fi setup",
       vi: "Lắp đặt mạng cáp quang tốc độ cao & Giga Wi-Fi cho phòng trọ/gia đình",
       zh: "单间/家庭高速光纤宽带及千兆Wi-Fi路由器安装",
+      "zh-Hant": "單間/家庭高速光纖寬帶及千兆Wi-Fi分享器安裝",
     },
     {
       id: "mob-5",
@@ -710,6 +806,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Unpaid bill suspension release, ownership transfer & number portability (MNP)",
       vi: "Xử lý nợ cước mở khóa mạng, đổi tên chính chủ & chuyển mạng giữ số",
       zh: "欠费停机复通、机主实名过户及携号转网（MNP）",
+      "zh-Hant": "欠費停機復通、機主實名過戶及攜號轉網（MNP）",
     },
     {
       id: "mob-6",
@@ -717,6 +814,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "PASS identity verification app setup & mobile authentication help",
       vi: "Cài đặt ứng dụng định danh PASS & hỗ trợ xác thực dịch vụ công",
       zh: "安装PASS身份认证APP及金融/政务移动实名认证协助",
+      "zh-Hant": "安裝PASS身份認證APP及金融/政務移動實名認證協助",
     },
     {
       id: "mob-7",
@@ -724,6 +822,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Screen damage, battery replacement & official service center escort",
       vi: "Vỡ màn hình, thay pin & đồng hành tới trung tâm bảo hành chính hãng",
       zh: "手机碎屏维修、电池更换及官方售后中心陪同",
+      "zh-Hant": "手機螢幕破損維修、電池更換及官方售後中心陪同",
     },
     {
       id: "mob-8",
@@ -731,6 +830,7 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       en: "Discount international calling apps & prepaid data coupon recharge",
       vi: "Ứng dụng gọi quốc tế tiết kiệm & nạp thẻ cước data trả trước",
       zh: "国际长途省钱APP设置及预付费流量充值包",
+      "zh-Hant": "國際長途省錢APP設置及預付費流量儲值包",
     },
   ],
 };
@@ -771,8 +871,10 @@ export function getProblemOptionsForService(slug: string, locale: string): { id:
       text = item.ko;
     } else if (locale === "vi") {
       text = item.vi || item.en || item.ko;
+    } else if (locale === "zh-Hant" || locale === "zt") {
+      text = item["zh-Hant"] || item.zhHant || item.zh || item.en || item.ko;
     } else if (locale.startsWith("zh")) {
-      text = item.zh || item.en || item.ko;
+      text = item.zh || item["zh-Hant"] || item.en || item.ko;
     } else if (item[locale]) {
       text = item[locale] as string;
     } else {

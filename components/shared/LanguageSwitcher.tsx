@@ -53,7 +53,7 @@ export function LanguageSwitcher({
               dir="ltr"
               className="text-slate-900 bg-white"
             >
-              {formatLanguageName(lang)}
+              {formatLanguageName(lang, currentLocale)}
             </option>
           ))}
         </select>

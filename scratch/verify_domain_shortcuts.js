@@ -32,7 +32,7 @@ async function test() {
     { host: "korea.life.help", expectedDesc: "한국 거주 외국인을 위한 생활서비스 플랫폼" },
     { host: "japan.life.help", expectedDesc: "在韓外国人向け生活支援プラットフォーム" },
     { host: "china.life.help", expectedDesc: "面向在韩外国人的生活服务平台" },
-    { host: "taiwan.life.help", expectedDesc: "專為在韓外籍居民打造的生活服務平台" },
+    { host: "taiwan.life.help", expectedDesc: "專為在韓外籍居民打造的生活服務平臺" },
     { host: "tech.life.help", expectedDesc: "LIFE.HELP 공식 헬퍼를 위한 업무 포털" },
     { host: "chat.life.help", expectedDesc: "한국 생활의 모든 고민을 모국어로 전문 상담원과 1:1 실시간 상담하세요" },
     { host: "sys.life.help", expectedDesc: "LIFE.HELP 공식 본사 통합 관제 및 운영 관리 시스템" },

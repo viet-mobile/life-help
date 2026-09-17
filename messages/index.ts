@@ -137,14 +137,15 @@ export const languages: readonly LanguageMeta[] = [
  * - For RTL languages (이란어, 아랍어, 히브리어, 이집트어), renders the native name on the left
  *   and the Korean name on the right using Unicode Left-to-Right Marks (LRM).
  */
-export function formatLanguageName(meta: LanguageMeta): string {
+export function formatLanguageName(meta: LanguageMeta, currentLocale?: Locale): string {
   if (meta.code === "ko") {
     return meta.nativeName;
   }
+  const native = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
   if (meta.dir === "rtl") {
-    return `\u200E${meta.nativeName}\u200E ${meta.name}\u200E`;
+    return `\u200E${native}\u200E ${meta.name}\u200E`;
   }
-  return `${meta.nativeName} ${meta.name}`;
+  return `${native} ${meta.name}`;
 }
 
 export const dictionaries = {

@@ -136,15 +136,15 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
     },
   },
   "zh-Hant": {
-    tagline: "多語言生活服務平台",
-    description: "專為在韓外籍居民打造的生活服務平台。使用母語即時諮詢，快速媒合在地值得信賴的專業師傅。",
+    tagline: "多語言生活服務平臺",
+    description: "專為在韓外籍居民打造的生活服務平臺。使用母語即時諮詢，快速媒合在地值得信賴的專業師傅。",
     chat: {
-      title: "母語在線即時諮詢中心",
+      title: "母語線上即時諮詢中心",
       description: "使用母語與專業諮詢顧問一對一即時交流，輕鬆解決在韓生活與工作的各項疑難。",
     },
     tech: {
-      title: "專業師傅合作門戶",
-      description: "LIFE.HELP 官方認證師傅專屬工作門戶。即時管理出勤派工狀態與服務時程。",
+      title: "專業師傅工作平臺",
+      description: "LIFE.HELP 官方認證師傅專屬工作平臺。即時管理出勤派工狀態與服務時程。",
     },
     sys: {
       title: "總部統一營運管控系統",

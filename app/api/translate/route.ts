@@ -50,6 +50,18 @@ const SERVICE_PHRASE_DICT: Record<string, Record<string, string>> = {
     completed_check: "施工已完成，请您验收一下。",
     thanks: "非常感谢您迅速而热情的处理！",
   },
+  "zh-Hant": {
+    hello: "您好",
+    clog_problem: "馬桶、水槽或下水道堵塞，水排不下去。",
+    leak_problem: "天花板或水管出現漏水現象。",
+    boiler_problem: "地暖/鍋爐出現故障，不出熱水。",
+    help_cost: "請問到府檢查和維修費用大約是多少？",
+    location_query: "請問您現在的詳細地址在哪裡？",
+    on_my_way: "好的，已收到您的訊息，我現在馬上出發過去。",
+    urgent_visit: "可以盡快過來幫我處理嗎？",
+    completed_check: "施工已完成，請您驗收一下。",
+    thanks: "非常感謝您迅速而熱心的協助！",
+  },
   ru: {
     hello: "Здравствуйте",
     clog_problem: "Засорился унитаз, раковина или слив, вода не уходит.",
