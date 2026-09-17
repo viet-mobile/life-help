@@ -44,7 +44,7 @@ export default function PrivacyNotice() {
                 {isKorean
                   ? "계좌이체 결제 안내"
                   : isBilingual
-                  ? `${t("customer.paymentLink")} (계좌이체)`
+                  ? `${t("customer.paymentLink")} · 계좌이체`
                   : t("customer.paymentLink")}
               </span>
             </a>
@@ -54,7 +54,7 @@ export default function PrivacyNotice() {
                 {isKorean
                   ? "자유 리뷰 남기기"
                   : isBilingual
-                  ? `${t("customer.reviewLink")} (리뷰)`
+                  ? `${t("customer.reviewLink")} · 리뷰`
                   : t("customer.reviewLink")}
               </span>
             </a>
@@ -63,16 +63,16 @@ export default function PrivacyNotice() {
               {isKorean
                 ? "실시간 고객 상담"
                 : isBilingual
-                ? `${t("customer.consultation")} (실시간 상담)`
+                ? `${t("customer.consultation")} · 실시간 상담`
                 : t("customer.consultation")}
             </a>
-            <a href="/tech" className="hover:text-slate-800">
+            <a href="/services/job-help?tab=provider" className="hover:text-slate-800">
               🛠️{" "}
               {isKorean
-                ? "생활 도움 헬퍼"
+                ? "공식 헬퍼 등록"
                 : isBilingual
-                ? `${t("customer.verified")} (생활도움 헬퍼)`
-                : t("customer.verified")}
+                ? `${t("customer.partnerTitle")} · 헬퍼 등록`
+                : t("customer.partnerTitle")}
             </a>
           </div>
 

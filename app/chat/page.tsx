@@ -61,7 +61,7 @@ export default function CustomerChatPage() {
 
   const handleStartChat = async (e: React.FormEvent) => {
     e.preventDefault();
-    const finalName = customerName.trim() || `고객 (${currentMeta.nativeName})`;
+    const finalName = customerName.trim() || `고객 · ${currentMeta.nativeName}`;
     const serviceName = isKorean
       ? tKo(`service.${selectedServiceObj.key}`)
       : t(`service.${selectedServiceObj.key}`);
@@ -117,14 +117,14 @@ export default function CustomerChatPage() {
               title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
             >
               <BrandLogo size="md" priority />
-              <span className="rounded-md bg-blue-100 text-blue-800 px-1.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0">
+              <span className="droplet-pill bg-blue-100 text-blue-800 px-2 py-0.5 text-[10px] sm:text-xs font-black shrink-0">
                 LIVE CHAT
               </span>
             </Link>
             <button
               type="button"
               onClick={openModal}
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-blue-50 shrink-0"
+              className="hidden sm:inline-flex items-center gap-1.5 droplet-btn border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-blue-50 shrink-0"
             >
               <span>📍 {shortRegionText}</span>
               <span className="text-[10px] text-slate-400">▾</span>
@@ -134,7 +134,7 @@ export default function CustomerChatPage() {
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <Link
               href="/tech"
-              className="rounded-xl border border-amber-300 bg-amber-50 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shrink-0"
+              className="droplet-btn border border-amber-300 bg-amber-50 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shrink-0"
             >
               <span className="sm:hidden">🛠️ 헬퍼</span>
               <span className="hidden sm:inline">🛠️ {formatBilingual("Helper Portal", "생활 헬퍼 포털")}</span>
@@ -146,10 +146,10 @@ export default function CustomerChatPage() {
 
       <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
         {/* Banner with Real-Time Matching Service Provider Status */}
-        <div className="mb-6 rounded-2xl bg-linear-to-r from-blue-700 via-indigo-700 to-blue-800 p-5 text-white shadow-md">
+        <div className="mb-6 droplet-banner bg-linear-to-r from-blue-700 via-indigo-700 to-blue-800 p-5 text-white shadow-md">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <div className="inline-flex flex-wrap items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-bold tracking-wide">
+              <div className="inline-flex flex-wrap items-center gap-2 droplet-pill bg-white/20 px-3 py-1 text-xs font-bold tracking-wide">
                 <span>🌐 {formatBilingual("Real-time Provider Chat", "현장 헬퍼 실시간 직결 대화")}</span>
                 <span className="text-blue-200">|</span>
                 <span>{formatLanguageName(currentMeta)}</span>
@@ -174,7 +174,7 @@ export default function CustomerChatPage() {
             </div>
 
             {/* Real-time On-Duty Provider Status Card */}
-            <div className="shrink-0 rounded-xl bg-white/10 p-4 backdrop-blur-md border border-white/20 min-w-[240px]">
+            <div className="shrink-0 droplet-card bg-white/10 p-4 backdrop-blur-md border border-white/20 min-w-[240px]">
               <div className="flex items-center gap-2">
                 <span className="flex h-3 w-3 relative">
                   {matchedProvider?.onDuty ? (
@@ -203,7 +203,7 @@ export default function CustomerChatPage() {
                     근무 시간: {matchedProvider.dutyHours} • 평점 ⭐ {matchedProvider.rating}
                   </p>
                   <p className="text-[10px] text-emerald-300 font-semibold">
-                    ✓ 언어 자동 번역 지원 (한국어 ↔ {currentMeta.nativeName})
+                    ✓ 언어 자동 번역 지원 · 한국어 ↔ {currentMeta.nativeName}
                   </p>
                 </div>
               )}
@@ -215,7 +215,7 @@ export default function CustomerChatPage() {
         {!activeSession ? (
           <div className="grid gap-6 md:grid-cols-3">
             {/* Left 2 Cols: Start Consultation Form */}
-            <div className="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
+            <div className="md:col-span-2 droplet-card border border-slate-200 bg-white p-6 shadow-xs">
               <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2 whitespace-pre-line">
                 <span>💬</span>
                 <span>{formatBilingual("Start Real-time 1:1 Chat", "전담 헬퍼 1:1 실시간 대화 시작")}</span>
@@ -236,11 +236,11 @@ export default function CustomerChatPage() {
                   <select
                     value={selectedServiceSlug}
                     onChange={(e) => setSelectedServiceSlug(e.target.value)}
-                    className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition cursor-pointer"
+                    className="mt-1.5 w-full droplet-input border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition cursor-pointer"
                   >
                     {services.map((s) => (
                       <option key={s.slug} value={s.slug}>
-                        {s.icon} {isKorean ? tKo(`service.${s.key}`) : `${t(`service.${s.key}`)} (${tKo(`service.${s.key}`)})`}
+                        {s.icon} {isKorean ? tKo(`service.${s.key}`) : `${t(`service.${s.key}`)} · ${tKo(`service.${s.key}`)}`}
                       </option>
                     ))}
                   </select>
@@ -249,16 +249,16 @@ export default function CustomerChatPage() {
                 {/* Customer Name & Privacy Assurance */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 whitespace-pre-line">
-                    {formatBilingual("Your Name (Optional)", "성함 또는 닉네임 (선택사항)")}
+                    {formatBilingual("Your Name (Optional)", "성함 또는 닉네임 · 선택사항")}
                   </label>
                   <input
                     type="text"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
-                    placeholder="예: 홍길동 (Name/Nickname)"
-                    className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    placeholder="예: 홍길동 · Name/Nickname"
+                    className="mt-1.5 w-full droplet-input border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
-                  <div className="mt-2 rounded-xl border border-emerald-200 bg-emerald-50/80 p-2.5">
+                  <div className="mt-2 droplet-card border border-emerald-200 bg-emerald-50/80 p-2.5">
                     <p className="text-[11px] font-semibold text-emerald-900 flex items-center gap-1">
                       <span>🔒</span>
                       <span className="whitespace-pre-line leading-relaxed">{formatBilingual("Complete Privacy: No phone number collected. You connect safely via 1:1 chat on this website or LIFE.HELP app.", "개인정보 보호 안심: 휴대폰 번호를 수집하지 않으며, 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화로 안전하게 소통합니다.")}</span>
@@ -269,7 +269,7 @@ export default function CustomerChatPage() {
                 {/* Problem Description */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 whitespace-pre-line">
-                    {formatBilingual("Describe your problem (In your language)", "문의 또는 문제 상황 (모국어로 작성)")}
+                    {formatBilingual("Describe your problem (In your language)", "문의 또는 문제 상황 · 모국어로 작성")}
                   </label>
                   <textarea
                     rows={4}
@@ -280,7 +280,7 @@ export default function CustomerChatPage() {
                         ? "예: 변기가 막혀서 물이 역류합니다. 오늘 바로 방문 가능한가요?"
                         : `Please describe what happened in ${currentMeta.nativeName}...`
                     }
-                    className="mt-1.5 w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    className="mt-1.5 w-full droplet-input border border-slate-300 p-3 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                   <p className="mt-1 text-[11px] text-blue-600 font-medium">
                     💡 작성하신 내용은 담당 헬퍼의 언어(한국어 등)로 자동 번역되어 원문과 함께 실시간 전달됩니다.
@@ -290,7 +290,7 @@ export default function CustomerChatPage() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition flex items-center justify-center gap-2 cursor-pointer border border-blue-500/30"
+                    className="w-full droplet-btn-lg bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-3.5 text-base font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition flex items-center justify-center gap-2 cursor-pointer border border-blue-500/30"
                   >
                     <span>🚀</span>
                     <span>{formatBilingual("Connect with Specialist Now", "근무 중인 헬퍼와 1:1 대화 시작")}</span>
@@ -301,7 +301,7 @@ export default function CustomerChatPage() {
 
             {/* Right Col: Guidelines & Recent Sessions */}
             <div className="space-y-4">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="droplet-card border border-slate-200 bg-white p-5 shadow-xs">
                 <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
                   <span>🛡️</span>
                   <span>{formatBilingual("How It Works", "실시간 1:1 번역 대화 안내")}</span>
@@ -324,7 +324,7 @@ export default function CustomerChatPage() {
 
               {/* Active / Recent Sessions List */}
               {sessions.length > 0 && (
-                <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
+                <div className="droplet-card border border-slate-200 bg-white p-4 shadow-xs">
                   <p className="text-xs font-bold text-slate-700 mb-2">
                     {formatBilingual("Recent Chat Rooms", "최근 진행 중인 대화방")}
                   </p>
@@ -334,7 +334,7 @@ export default function CustomerChatPage() {
                         key={s.id}
                         type="button"
                         onClick={() => setActiveSessionId(s.id)}
-                        className="w-full text-left rounded-lg p-2.5 hover:bg-slate-50 border border-slate-100 flex items-center justify-between text-xs cursor-pointer transition"
+                        className="w-full text-left droplet-btn p-2.5 hover:bg-slate-50 border border-slate-100 flex items-center justify-between text-xs cursor-pointer transition"
                       >
                         <div className="truncate pr-2">
                           <span className="font-bold text-slate-800">
@@ -344,7 +344,7 @@ export default function CustomerChatPage() {
                             {s.serviceName} • {s.sido} {s.gungu}
                           </p>
                         </div>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 shrink-0">
+                        <span className="text-[10px] px-2 py-0.5 droplet-pill font-bold bg-emerald-100 text-emerald-800 shrink-0">
                           대화 진행 중
                         </span>
                       </button>
@@ -356,14 +356,14 @@ export default function CustomerChatPage() {
           </div>
         ) : (
           /* Active Chat Room with Bidirectional Real-Time Translation */
-          <div className="flex flex-col h-[680px] rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
+          <div className="flex flex-col h-[680px] droplet-banner border border-slate-200 bg-white shadow-md overflow-hidden">
             {/* Chat Room Header */}
             <div className="border-b border-slate-200 bg-slate-50 px-5 py-3.5 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={() => setActiveSessionId(null)}
-                  className="rounded-xl p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 bg-white shadow-2xs active:scale-[0.96] transition cursor-pointer"
+                  className="droplet-btn p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 bg-white shadow-2xs active:scale-[0.96] transition cursor-pointer"
                   title="목록으로"
                 >
                   ←
@@ -374,7 +374,7 @@ export default function CustomerChatPage() {
                     <h2 className="text-sm font-extrabold text-slate-900">
                       {activeSession.provider.name}
                     </h2>
-                    <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800">
+                    <span className="text-[11px] px-2 py-0.5 droplet-pill font-bold bg-emerald-100 text-emerald-800">
                       실시간 1:1 연결 중
                     </span>
                   </div>
@@ -384,7 +384,7 @@ export default function CustomerChatPage() {
                     <span>지역: <strong>{activeSession.sido} {activeSession.gungu}</strong></span>
                     <span>•</span>
                     <span className="text-indigo-700 font-bold">
-                      🗣️ 양방향 실시간 자동 번역 (한국어 ↔ {currentMeta.nativeName})
+                      🗣️ 양방향 실시간 자동 번역 · 한국어 ↔ {currentMeta.nativeName}
                     </span>
                   </p>
                 </div>
@@ -393,7 +393,7 @@ export default function CustomerChatPage() {
               <button
                 type="button"
                 onClick={() => setActiveSessionId(null)}
-                className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-2xs transition active:scale-[0.98] cursor-pointer"
+                className="droplet-btn border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-2xs transition active:scale-[0.98] cursor-pointer"
               >
                 대화방 닫기
               </button>
@@ -405,7 +405,7 @@ export default function CustomerChatPage() {
                 if (msg.sender === "system") {
                   return (
                     <div key={msg.id} className="flex justify-center my-2">
-                      <div className="rounded-xl bg-blue-100/80 border border-blue-200/60 px-4 py-2 text-xs font-medium text-blue-900 max-w-lg text-center leading-relaxed">
+                      <div className="droplet-card bg-blue-100/80 border border-blue-200/60 px-4 py-2 text-xs font-medium text-blue-900 max-w-lg text-center leading-relaxed">
                         🔔 {msg.text}
                         {msg.translatedText && (
                           <span className="block mt-1 text-[11px] text-blue-700 opacity-90">
@@ -426,7 +426,7 @@ export default function CustomerChatPage() {
                   >
                     <div className="flex items-baseline gap-1.5 mb-1 px-1">
                       <span className="text-[11px] font-bold text-slate-700">
-                        {isCustomer ? `${msg.senderName} (고객)` : `${msg.senderName} (전담 헬퍼)`}
+                        {isCustomer ? `${msg.senderName} · 고객` : `${msg.senderName} · 전담 헬퍼`}
                       </span>
                       <span className="text-[10px] text-slate-400">
                         {new Date(msg.timestamp).toLocaleTimeString([], {
@@ -438,10 +438,10 @@ export default function CustomerChatPage() {
 
                     {/* Dual Message Bubble: Original + Translated */}
                     <div
-                      className={`max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed shadow-xs ${
+                      className={`max-w-[85%] droplet-card p-3.5 text-sm leading-relaxed shadow-xs ${
                         isCustomer
-                          ? "bg-blue-600 text-white rounded-tr-xs"
-                          : "bg-white text-slate-900 border border-slate-200 rounded-tl-xs"
+                          ? "bg-blue-600 text-white !rounded-tr-xs"
+                          : "bg-white text-slate-900 border border-slate-200 !rounded-tl-xs"
                       }`}
                     >
                       {/* 1. Primary Text */}
@@ -485,14 +485,14 @@ export default function CustomerChatPage() {
                 placeholder={
                   isKorean
                     ? "메시지를 입력하세요. 헬퍼에게 실시간 전달됩니다..."
-                    : `Type in ${currentMeta.nativeName}... (Auto-translated to Korean)`
+                    : `Type in ${currentMeta.nativeName}... · Auto-translated to Korean`
                 }
-                className="flex-1 rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                className="flex-1 droplet-input border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
               />
               <button
                 type="submit"
                 disabled={!messageInput.trim() || isSending}
-                className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm hover:shadow-md hover:brightness-105 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1.5"
+                className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm hover:shadow-md hover:brightness-105 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1.5"
               >
                 <span>{isSending ? "번역 중..." : "전송"}</span>
                 <span>➤</span>

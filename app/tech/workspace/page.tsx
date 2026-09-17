@@ -33,10 +33,10 @@ const DAYS_CONFIG = [
 
 const HOUR_PRESETS = [
   "24시간 즉시 출동 가능",
-  "주간 (09:00 ~ 18:00)",
-  "야간 및 긴급 (18:00 ~ 익일 09:00)",
-  "오전 (09:00 ~ 13:00)",
-  "오후 (13:00 ~ 18:00)",
+  "주간 · 09:00 ~ 18:00",
+  "야간 및 긴급 · 18:00 ~ 익일 09:00",
+  "오전 · 09:00 ~ 13:00",
+  "오후 · 13:00 ~ 18:00",
 ];
 
 export default function TechWorkspacePage() {
@@ -99,9 +99,9 @@ export default function TechWorkspacePage() {
   const helperDisplayName =
     helper.contract?.name ||
     (helper.email
-      ? `헬퍼 (${helper.email.split("@")[0]})`
+      ? `헬퍼 · ${helper.email.split("@")[0]}`
       : helper.phone
-        ? `헬퍼 (${helper.phone.slice(-4)})`
+        ? `헬퍼 · ${helper.phone.slice(-4)}`
         : "헬퍼");
 
   const contract: HelperContract = helper.contract || {
@@ -119,7 +119,7 @@ export default function TechWorkspacePage() {
       수: "24시간 즉시 출동 가능",
       목: "24시간 즉시 출동 가능",
       금: "24시간 즉시 출동 가능",
-      토: "주간 (09:00 ~ 18:00)",
+      토: "주간 · 09:00 ~ 18:00",
     },
     excludedDates: [],
     extraWorkDates: [],
@@ -302,7 +302,7 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={handleOpenAdminChat}
-              className="relative inline-flex items-center gap-1 sm:gap-1.5 rounded-xl border border-blue-600/60 bg-blue-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition shrink-0"
+              className="relative inline-flex items-center gap-1 sm:gap-1.5 droplet-btn border border-blue-600/60 bg-blue-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition shrink-0"
               title={formatBilingual(t("workspace.adminChatTitle"), "본사 관리자 1:1 온라인 연락")}
             >
               <span className="sm:hidden">💬 {t("workspace.adminChatShort") || "관리자"}</span>
@@ -324,9 +324,9 @@ export default function TechWorkspacePage() {
         </div>
 
         {/* Workspace Header */}
-        <header className="flex flex-col gap-4 rounded-3xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
+        <header className="flex flex-col gap-4 droplet-banner border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-2xl font-black shadow-md">
+            <span className="flex h-12 w-12 items-center justify-center droplet-card bg-blue-600 text-2xl font-black shadow-md">
               H
             </span>
             <div>
@@ -340,13 +340,13 @@ export default function TechWorkspacePage() {
                     isKorean,
                   )}
                 </h1>
-                <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-[11px] font-bold text-blue-300 border border-blue-700/50">
+                <span className="droplet-pill bg-blue-900/60 px-2 py-0.5 text-[11px] font-bold text-blue-300 border border-blue-700/50">
                   {t("workspace.verifiedHelper")}
                 </span>
                 {remainingDays > 0 && (
-                  <span className="rounded-md bg-emerald-950/80 px-2 py-0.5 text-[11px] font-bold text-emerald-400 border border-emerald-800/60 hidden sm:inline-flex items-center gap-1">
+                  <span className="droplet-pill bg-emerald-950/80 px-2 py-0.5 text-[11px] font-bold text-emerald-400 border border-emerald-800/60 hidden sm:inline-flex items-center gap-1">
                     <span>🛡️ {t("workspace.securitySessionBadge")}</span>
-                    <span className="text-emerald-300">({remainingDays} {t("workspace.daysRemaining")})</span>
+                    <span className="text-emerald-300">· {remainingDays} {t("workspace.daysRemaining")}</span>
                   </span>
                 )}
               </div>
@@ -362,14 +362,14 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={() => setShowContractModal(true)}
-              className="rounded-xl border border-slate-700 bg-slate-800/90 px-3.5 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700 hover:text-white shadow-2xs transition active:scale-[0.98] cursor-pointer"
+              className="droplet-btn border border-slate-700 bg-slate-800/90 px-3.5 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700 hover:text-white shadow-2xs transition active:scale-[0.98] cursor-pointer"
             >
               📄 {t("workspace.viewContract")}
             </button>
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-xl border border-rose-900/60 bg-rose-950/40 px-3.5 py-2 text-xs font-bold text-rose-300 hover:bg-rose-900/60 shadow-2xs transition active:scale-[0.98] cursor-pointer"
+              className="droplet-btn border border-rose-900/60 bg-rose-950/40 px-3.5 py-2 text-xs font-bold text-rose-300 hover:bg-rose-900/60 shadow-2xs transition active:scale-[0.98] cursor-pointer"
             >
               🚪 {t("workspace.logout")}
             </button>
@@ -378,14 +378,14 @@ export default function TechWorkspacePage() {
 
         {/* Feedback Alert Toast */}
         {feedbackMsg && (
-          <div className="rounded-2xl border border-blue-500/50 bg-blue-950/90 px-4 py-3 text-xs font-bold text-blue-200 shadow-lg animate-fade-in">
+          <div className="droplet-card border border-blue-500/50 bg-blue-950/90 px-4 py-3 text-xs font-bold text-blue-200 shadow-lg animate-fade-in">
             ✓ {feedbackMsg}
           </div>
         )}
 
         {/* Admin Direct Message Notification Banner */}
         {unreadAdminCount > 0 && latestAdminMsg && (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-amber-500/60 bg-amber-950/50 p-4 text-amber-200 shadow-md">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 droplet-banner border border-amber-500/60 bg-amber-950/50 p-4 text-amber-200 shadow-md">
             <div className="flex items-start gap-3">
               <span className="text-xl">🔔</span>
               <div>
@@ -393,7 +393,7 @@ export default function TechWorkspacePage() {
                   <strong className="text-xs font-black text-amber-300">
                     {formatBilingual(t("workspace.adminNoticeBanner"), "[본사 관리자 메시지]")}
                   </strong>
-                  <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-500/40">
+                  <span className="droplet-pill bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-500/40">
                     {unreadAdminCount} {t("workspace.unreadCount") || (locale === "ko" ? "건 미확인" : "unread")}
                   </span>
                 </div>
@@ -405,7 +405,7 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={handleOpenAdminChat}
-              className="rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-xs font-black text-slate-950 hover:brightness-105 shadow-sm shadow-amber-500/20 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
+              className="droplet-btn bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-xs font-black text-slate-950 hover:brightness-105 shadow-sm shadow-amber-500/20 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
             >
               {formatBilingual(t("workspace.openAdminChat"), "메시지 확인 및 답장")}
             </button>
@@ -413,7 +413,7 @@ export default function TechWorkspacePage() {
         )}
 
         {/* 1. Real-Time Dispatch Availability Switch */}
-        <section className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
+        <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="flex items-center gap-2">
@@ -440,7 +440,7 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={toggleActiveStatus}
-              className={`rounded-2xl px-6 py-3.5 text-sm font-black shadow-lg transition active:scale-[0.98] cursor-pointer ${
+              className={`droplet-btn-lg px-6 py-3.5 text-sm font-black shadow-lg transition active:scale-[0.98] cursor-pointer ${
                 helper.isActive
                   ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:brightness-105 shadow-amber-500/20"
                   : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:brightness-105 shadow-emerald-600/20"
@@ -454,7 +454,7 @@ export default function TechWorkspacePage() {
         </section>
 
         {/* 2. Direct Emergency Hotline */}
-        <section className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
+        <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
           <h3 className="text-base font-extrabold text-white flex items-center gap-2">
             🚨 {t("workspace.hotlineTitle")}
           </h3>
@@ -463,7 +463,7 @@ export default function TechWorkspacePage() {
           </p>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <div className="flex items-center justify-between rounded-2xl border border-blue-800/60 bg-slate-900/80 p-4">
+            <div className="flex items-center justify-between droplet-card border border-blue-800/60 bg-slate-900/80 p-4">
               <div>
                 <p className="text-[11px] font-bold text-blue-400">
                   {t("workspace.team1")}
@@ -475,20 +475,20 @@ export default function TechWorkspacePage() {
               <div className="flex items-center gap-1.5">
                 <a
                   href="tel:01044940694"
-                  className="rounded-xl bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-500"
+                  className="droplet-btn bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-500"
                 >
                   📞 {t("workspace.call")}
                 </a>
                 <a
                   href={`sms:01044940694?body=${smsBody}`}
-                  className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700"
+                  className="droplet-btn border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700"
                 >
                   ✉️ {t("workspace.sms")}
                 </a>
               </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-2xl border border-blue-800/60 bg-slate-900/80 p-4">
+            <div className="flex items-center justify-between droplet-card border border-blue-800/60 bg-slate-900/80 p-4">
               <div>
                 <p className="text-[11px] font-bold text-blue-400">
                   {t("workspace.team2")}
@@ -500,13 +500,13 @@ export default function TechWorkspacePage() {
               <div className="flex items-center gap-1.5">
                 <a
                   href="tel:01059595959"
-                  className="rounded-xl bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-500"
+                  className="droplet-btn bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-500"
                 >
                   📞 {t("workspace.call")}
                 </a>
                 <a
                   href={`sms:01059595959?body=${smsBody}`}
-                  className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700"
+                  className="droplet-btn border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold text-slate-200 hover:bg-slate-700"
                 >
                   ✉️ {t("workspace.sms")}
                 </a>
@@ -516,7 +516,7 @@ export default function TechWorkspacePage() {
         </section>
 
         {/* 3. Service Categories Real-Time Manager */}
-        <section className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
+        <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 className="text-base font-extrabold text-white flex items-center gap-2">
@@ -539,7 +539,7 @@ export default function TechWorkspacePage() {
                   key={srv.slug}
                   type="button"
                   onClick={() => handleToggleService(srv.slug)}
-                  className={`flex items-center justify-between rounded-2xl border p-3.5 text-left transition ${
+                  className={`flex items-center justify-between droplet-card border p-3.5 text-left transition ${
                     isActive
                       ? "border-blue-500 bg-blue-900/30 text-white shadow-xs"
                       : "border-slate-800 bg-slate-800/30 text-slate-500 hover:border-slate-700"
@@ -557,7 +557,7 @@ export default function TechWorkspacePage() {
                     </div>
                   </div>
 
-                  <span className={`rounded-lg px-2 py-1 text-[11px] font-black ${
+                  <span className={`droplet-pill px-2 py-1 text-[11px] font-black ${
                     isActive ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-400"
                   }`}>
                     {isActive ? "✓" : "+"}
@@ -569,7 +569,7 @@ export default function TechWorkspacePage() {
         </section>
 
         {/* 4. Service Regions Real-Time Manager */}
-        <section className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
+        <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 className="text-base font-extrabold text-white flex items-center gap-2">
@@ -592,7 +592,7 @@ export default function TechWorkspacePage() {
                 const s = koreanRegions.find((r) => r.name === e.target.value);
                 if (s && s.gunguList[0]) setAddGungu(s.gunguList[0].name);
               }}
-              className="rounded-xl border border-slate-700 bg-slate-800 p-2.5 text-xs font-bold text-white outline-none focus:border-blue-500"
+              className="droplet-input border border-slate-700 bg-slate-800 p-2.5 text-xs font-bold text-white outline-none focus:border-blue-500"
             >
               {koreanRegions.map((s) => (
                 <option key={s.name} value={s.name}>
@@ -604,7 +604,7 @@ export default function TechWorkspacePage() {
             <select
               value={addGungu}
               onChange={(e) => setAddGungu(e.target.value)}
-              className="rounded-xl border border-slate-700 bg-slate-800 p-2.5 text-xs font-bold text-white outline-none focus:border-blue-500"
+              className="droplet-input border border-slate-700 bg-slate-800 p-2.5 text-xs font-bold text-white outline-none focus:border-blue-500"
             >
               {currentSidoObj?.gunguList.map((g) => (
                 <option key={g.name} value={g.name}>
@@ -616,7 +616,7 @@ export default function TechWorkspacePage() {
             <button
               type="button"
               onClick={handleAddRegion}
-              className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
+              className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
             >
               + {t("workspace.addRegionBtn")}
             </button>
@@ -626,7 +626,7 @@ export default function TechWorkspacePage() {
             {contract.regions.map((reg, idx) => (
               <span
                 key={`${reg.sido}-${reg.gungu}`}
-                className="flex items-center gap-2 rounded-xl border border-blue-700/60 bg-blue-950/70 px-3.5 py-2 text-xs font-bold text-blue-200"
+                className="flex items-center gap-2 droplet-pill border border-blue-700/60 bg-blue-950/70 px-3.5 py-2 text-xs font-bold text-blue-200"
               >
                 <span>📍 {reg.sido} {reg.gungu}</span>
                 <button
@@ -645,7 +645,7 @@ export default function TechWorkspacePage() {
         {/* 5. Schedule & Calendar (Weekday Work Hours + Monthly Interactive Calendar) */}
         <section className="space-y-6">
           {/* Weekday Selection and Per-Day Work Hours */}
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
+          <div className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 className="text-base font-extrabold text-white flex items-center gap-2">
@@ -668,11 +668,11 @@ export default function TechWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setShowGeneralHoursPicker(true)}
-                  className="rounded-xl border border-blue-500/80 bg-blue-950/60 px-3.5 py-1.5 text-xs font-bold text-blue-200 hover:bg-blue-900/80 hover:brightness-105 transition flex items-center gap-1.5 shadow-2xs active:scale-[0.98] cursor-pointer"
+                  className="droplet-btn border border-blue-500/80 bg-blue-950/60 px-3.5 py-1.5 text-xs font-bold text-blue-200 hover:bg-blue-900/80 hover:brightness-105 transition flex items-center gap-1.5 shadow-2xs active:scale-[0.98] cursor-pointer"
                 >
                   <span>⏱️ {contract.availableHours}</span>
                   <span className="text-[10px] text-blue-300 font-normal">
-                    ({formatBilingual(t("workspace.calendarEdit"), "변경")})
+                    · {formatBilingual(t("workspace.calendarEdit"), "변경")}
                   </span>
                 </button>
               </div>
@@ -687,7 +687,7 @@ export default function TechWorkspacePage() {
                     key={d.key}
                     type="button"
                     onClick={() => handleToggleDay(d.key)}
-                    className={`h-10 px-3.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 ${
+                    className={`h-10 px-3.5 droplet-btn text-xs font-black transition flex items-center gap-1.5 ${
                       active
                         ? "bg-blue-600 text-white shadow-md shadow-blue-900/30"
                         : "bg-slate-800 text-slate-500 hover:bg-slate-700 hover:text-slate-300"
@@ -721,7 +721,7 @@ export default function TechWorkspacePage() {
                   return (
                     <div
                       key={d.key}
-                      className={`rounded-2xl border p-3 transition ${
+                      className={`droplet-card border p-3 transition ${
                         isActive
                           ? "border-slate-700 bg-slate-800/60"
                           : "border-slate-800/60 bg-slate-900/30 opacity-60"
@@ -741,7 +741,7 @@ export default function TechWorkspacePage() {
                           </span>
                         </div>
                         <span
-                          className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${
+                          className={`droplet-pill px-2 py-0.5 text-[10px] font-bold ${
                             isActive
                               ? "bg-blue-900/50 text-blue-300 border border-blue-700/50"
                               : "bg-slate-800 text-slate-500"
@@ -764,7 +764,7 @@ export default function TechWorkspacePage() {
                             <button
                               type="button"
                               onClick={() => setEditingDayHours(d.key)}
-                              className="rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1 text-[11px] font-bold text-blue-400 hover:bg-slate-700 hover:text-blue-300 transition active:scale-[0.98] shrink-0 cursor-pointer"
+                              className="droplet-btn border border-slate-700 bg-slate-800 px-2.5 py-1 text-[11px] font-bold text-blue-400 hover:bg-slate-700 hover:text-blue-300 transition active:scale-[0.98] shrink-0 cursor-pointer"
                             >
                               {formatBilingual(t("workspace.calendarEdit"), "변경")}
                             </button>
@@ -783,7 +783,7 @@ export default function TechWorkspacePage() {
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
               <div className="w-full max-w-xl">
                 <WorkHoursPicker
-                  dayLabel={`${editingDayHours} (${isKorean ? `${t(DAYS_CONFIG.find((x) => x.key === editingDayHours)?.labelKey || "")}요일` : t(DAYS_CONFIG.find((x) => x.key === editingDayHours)?.labelKey || "")})`}
+                  dayLabel={`${editingDayHours} · ${isKorean ? `${t(DAYS_CONFIG.find((x) => x.key === editingDayHours)?.labelKey || "")}요일` : t(DAYS_CONFIG.find((x) => x.key === editingDayHours)?.labelKey || "")}`}
                   initialValue={contract.dayHours?.[editingDayHours] || contract.availableHours}
                   onSave={(newHours) => handleSetDayHours(editingDayHours, newHours)}
                   onCancel={() => setEditingDayHours(null)}
@@ -822,11 +822,11 @@ export default function TechWorkspacePage() {
         {/* 6. Admin 1:1 Direct Chat / Online Contact Modal */}
         {showAdminChatModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative flex flex-col h-[600px] max-h-[90vh] w-full max-w-xl rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
+            <div className="relative flex flex-col h-[600px] max-h-[90vh] w-full max-w-xl droplet-card border border-slate-700 bg-slate-900/95 shadow-2xl text-white overflow-hidden">
               {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/80 px-5 py-4">
                 <div className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-xs font-black text-white shadow-xs">
+                  <span className="flex h-9 w-9 items-center justify-center droplet-pill bg-blue-600 text-xs font-black text-white shadow-xs">
                     HQ
                   </span>
                   <div>
@@ -837,12 +837,12 @@ export default function TechWorkspacePage() {
                           "본사 관리자 1:1 온라인 연락",
                         )}
                       </span>
-                      <span className="rounded bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800/50">
+                      <span className="droplet-pill bg-emerald-950 px-2 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800/50">
                         {formatBilingual(t("workspace.adminChatOnline"), "실시간 온라인")}
                       </span>
                     </h3>
                     <p className="text-[11px] text-slate-400">
-                      {formatBilingual(t("workspace.adminChatRecipient"), "수신자: 헬퍼")} (
+                      {formatBilingual(t("workspace.adminChatRecipient"), "수신자: 헬퍼")} ·{" "}
                       {formatHelperDisplayName(
                         contract.name,
                         t("tech.helper"),
@@ -850,14 +850,14 @@ export default function TechWorkspacePage() {
                         formatBilingual,
                         isKorean,
                       )}{" "}
-                      · {contract.email || helper.email || contract.phone})
+                      · {contract.email || helper.email || contract.phone}
                     </p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowAdminChatModal(false)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white"
+                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white cursor-pointer"
                 >
                   ✕
                 </button>
@@ -900,10 +900,10 @@ export default function TechWorkspacePage() {
                           </span>
                         </div>
                         <div
-                          className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
+                          className={`max-w-[80%] droplet-card px-4 py-2.5 text-xs leading-relaxed ${
                             isAdmin
-                              ? "bg-slate-800 border border-slate-700 text-white rounded-tl-xs shadow-xs"
-                              : "bg-blue-600 text-white rounded-tr-xs shadow-xs"
+                              ? "bg-slate-800 border border-slate-700 text-white shadow-xs"
+                              : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs"
                           }`}
                         >
                           <p>{msg.text}</p>
@@ -931,12 +931,12 @@ export default function TechWorkspacePage() {
                       t("workspace.adminChatPlaceholder"),
                       "본사 관리자에게 전달할 메시지 입력...",
                     )}
-                    className="flex-1 rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
+                    className="droplet-input flex-1 border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
                   />
                   <button
                     type="submit"
                     disabled={!replyText.trim()}
-                    className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition cursor-pointer"
+                    className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition cursor-pointer"
                   >
                     {formatBilingual(t("workspace.adminChatSend"), "전송")}
                   </button>
@@ -949,21 +949,22 @@ export default function TechWorkspacePage() {
         {/* Contract Viewer Modal */}
         {showContractModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-slate-700 bg-slate-900 p-6 shadow-2xl text-white">
+            <div className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto droplet-card border border-slate-700 bg-slate-900/95 p-6 shadow-2xl text-white">
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <h3 className="text-lg font-bold">
                   📄 {t("workspace.contractTitle")}
                 </h3>
                 <button
+                  type="button"
                   onClick={() => setShowContractModal(false)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white"
+                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white cursor-pointer"
                 >
                   ✕
                 </button>
               </div>
 
               <div className="mt-5 space-y-4 text-xs leading-relaxed text-slate-300">
-                <div className="rounded-2xl bg-slate-800/60 p-4 grid grid-cols-2 gap-3">
+                <div className="droplet-card bg-slate-800/60 p-4 grid grid-cols-2 gap-3 border border-slate-700/60">
                   <div>
                     <span className="text-slate-400">{t("workspace.contractName")}:</span>{" "}
                     <strong className="text-white">
@@ -998,7 +999,7 @@ export default function TechWorkspacePage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-800 p-4 space-y-2">
+                <div className="droplet-card border border-slate-800 p-4 space-y-2 bg-slate-950/40">
                   <p className="font-bold text-white text-sm">
                     {t("workspace.contractClauseTitle")}
                   </p>
@@ -1007,7 +1008,7 @@ export default function TechWorkspacePage() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl bg-blue-950/40 border border-blue-900/50 p-4 text-center">
+                <div className="droplet-card bg-blue-950/40 border border-blue-900/50 p-4 text-center">
                   <span className="text-xs text-blue-300">{t("workspace.contractSignature")}:</span>
                   <p className="mt-1 text-base font-extrabold text-white tracking-widest">
                     {contract.signatureDataUrl}
@@ -1019,7 +1020,7 @@ export default function TechWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setShowContractModal(false)}
-                  className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-2.5 text-xs font-black text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
+                  className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-2.5 text-xs font-black text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition cursor-pointer"
                 >
                   {t("workspace.close")}
                 </button>

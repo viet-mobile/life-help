@@ -410,18 +410,18 @@ export default function AdminPage() {
   if (!isDeviceApprovedState) {
     return (
       <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
-        <div className="max-w-md w-full rounded-3xl border border-rose-800 bg-slate-900/95 p-6 sm:p-8 text-center shadow-2xl backdrop-blur-xl">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-rose-950 border border-rose-700 text-3xl text-rose-300 shadow-xl shadow-rose-950/50">
+        <div className="max-w-md w-full droplet-card border border-rose-800 bg-slate-900/95 p-6 sm:p-8 text-center shadow-2xl backdrop-blur-xl">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center droplet-pill bg-rose-950 border border-rose-700 text-3xl text-rose-300 shadow-xl shadow-rose-950/50">
             🛑
           </div>
           <h1 className="mt-4 text-xl font-black text-rose-200">
-            미승인 기기 접근 차단 (ACCESS DENIED)
+            미승인 기기 접근 차단 · ACCESS DENIED
           </h1>
           <p className="mt-3 text-xs leading-relaxed text-slate-300">
             본 시스템(<span className="font-mono text-blue-400 font-bold">sys.life.help</span>)은 등록 신청 후 최고관리자(<span className="font-semibold text-white">sys@life.help</span>)가 인가한 보안 승인 전용 기기에서만 접근할 수 있습니다.
           </p>
 
-          <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/80 p-3 text-left">
+          <div className="mt-4 droplet-card border border-slate-800 bg-slate-950/80 p-3 text-left">
             <span className="text-[10px] uppercase font-bold text-slate-500">현재 단말 하드웨어 식별자:</span>
             <p className="font-mono text-xs font-bold text-slate-300 break-all mt-0.5">{currentDeviceId}</p>
           </div>
@@ -429,9 +429,9 @@ export default function AdminPage() {
           <div className="mt-6 flex flex-col gap-2.5">
             <Link
               href="/register-device"
-              className="w-full rounded-xl bg-blue-600 px-4 py-3 text-xs font-black text-white hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition text-center"
+              className="w-full droplet-btn bg-blue-600 px-4 py-3 text-xs font-black text-white hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition text-center"
             >
-              📝 보안 기기 등록 신청하기 (register-device)
+              📝 보안 기기 등록 신청하기 · register-device
             </Link>
             <button
               type="button"
@@ -440,7 +440,7 @@ export default function AdminPage() {
                 refreshData();
                 showToast("현재 기기가 최고관리자 승인 마스터 기기로 등록되었습니다.");
               }}
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-700 transition cursor-pointer"
+              className="w-full droplet-btn border border-slate-700 bg-slate-800 px-4 py-3 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-700 transition cursor-pointer"
             >
               🔑 sys@life.help 최고관리자 즉시 직권 승인
             </button>
@@ -529,7 +529,7 @@ export default function AdminPage() {
           {/* Helper Metrics */}
           <div
             onClick={() => setActiveTab("helpers")}
-            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+            className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "helpers"
                 ? "border-blue-500 bg-blue-950/30 shadow-md shadow-blue-900/20"
                 : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
@@ -553,7 +553,7 @@ export default function AdminPage() {
           {/* Counselor Metrics */}
           <div
             onClick={() => setActiveTab("counselors")}
-            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+            className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "counselors"
                 ? "border-indigo-500 bg-indigo-950/30 shadow-md shadow-indigo-900/20"
                 : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
@@ -577,7 +577,7 @@ export default function AdminPage() {
           {/* Emergency Service Request Metric */}
           <div
             onClick={() => setActiveTab("requests")}
-            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+            className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "requests"
                 ? "border-amber-500 bg-amber-950/30 shadow-md shadow-amber-900/20"
                 : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
@@ -607,7 +607,7 @@ export default function AdminPage() {
           {/* Device Security & 128-Char Password Metric */}
           <div
             onClick={() => setActiveTab("devices")}
-            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+            className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "devices"
                 ? "border-blue-500 bg-blue-950/30 shadow-md shadow-blue-900/20"
                 : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
@@ -629,7 +629,7 @@ export default function AdminPage() {
           {/* Online Messaging Metric */}
           <div
             onClick={() => setActiveTab("messages")}
-            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+            className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "messages"
                 ? "border-emerald-500 bg-emerald-950/30 shadow-md shadow-emerald-900/20"
                 : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
@@ -661,7 +661,7 @@ export default function AdminPage() {
           {/* Support Partners & 050 Matching Metric */}
           <div
             onClick={() => setActiveTab("support")}
-            className={`rounded-3xl border p-4 sm:p-5 cursor-pointer transition ${
+            className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "support"
                 ? "border-purple-500 bg-purple-950/30 shadow-md shadow-purple-900/20"
                 : "border-slate-800 bg-slate-900/70 hover:border-slate-700"
@@ -693,18 +693,18 @@ export default function AdminPage() {
 
         {/* Tab Navigation Menu */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
-          <div className="flex items-center gap-2 bg-slate-900 p-1.5 rounded-2xl border border-slate-800 overflow-x-auto max-w-full">
+          <div className="flex items-center gap-2 bg-slate-900 p-1.5 droplet-card border border-slate-800 overflow-x-auto max-w-full">
             <button
               type="button"
               onClick={() => setActiveTab("helpers")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "helpers"
                   ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
               <span>🛠️ {t("admin.tabHelpers")}</span>
-              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold">
+              <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold">
                 {helpers.length}
               </span>
             </button>
@@ -712,14 +712,14 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={() => setActiveTab("counselors")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "counselors"
                   ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-600/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
               <span>🎧 {t("admin.tabCounselors")}</span>
-              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold">
+              <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold">
                 {counselors.length}
               </span>
             </button>
@@ -727,18 +727,18 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={() => setActiveTab("requests")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "requests"
                   ? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md shadow-amber-600/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
               <span>📋 {t("admin.tabRequests")}</span>
-              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-amber-300">
+              <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-amber-300">
                 {requests.length}
               </span>
               {stats.pendingRequests > 0 && (
-                <span className="rounded-full bg-rose-600 px-1.5 py-0.2 text-[9px] font-black text-white animate-pulse">
+                <span className="droplet-pill bg-rose-600 px-2 py-0.5 text-[9px] font-black text-white animate-pulse">
                   {stats.pendingRequests} {t("admin.statusPending")}
                 </span>
               )}
@@ -747,18 +747,18 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={() => setActiveTab("support")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "support"
                   ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
               <span>🤝 생활도움 파트너 & 매칭</span>
-              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-purple-300">
+              <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-purple-300">
                 {supportPartners.length}명
               </span>
               {stats.pendingSupportPartners > 0 && (
-                <span className="rounded-full bg-amber-500 px-1.5 py-0.2 text-[9px] font-black text-slate-950 animate-pulse">
+                <span className="droplet-pill bg-amber-500 px-2 py-0.5 text-[9px] font-black text-slate-950 animate-pulse">
                   {stats.pendingSupportPartners}건 승인대기
                 </span>
               )}
@@ -767,7 +767,7 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={() => setActiveTab("messages")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "messages"
                   ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
@@ -775,7 +775,7 @@ export default function AdminPage() {
             >
               <span>💬 {t("admin.tabMessages")}</span>
               {stats.unreadMessages > 0 && (
-                <span className="rounded-full bg-rose-600 px-1.5 py-0.2 text-[10px] font-black text-white">
+                <span className="droplet-pill bg-rose-600 px-2 py-0.5 text-[10px] font-black text-white">
                   {stats.unreadMessages}
                 </span>
               )}
@@ -784,14 +784,14 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={() => setActiveTab("reviews")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "reviews"
                   ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
               <span>⭐ {t("admin.tabReviews")}</span>
-              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-amber-300">
+              <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-amber-300">
                 {reviews.length}
               </span>
             </button>
@@ -799,14 +799,14 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={() => setActiveTab("devices")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
+              className={`flex items-center gap-2 droplet-btn px-4 py-2 text-xs font-black transition-all duration-200 cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                 activeTab === "devices"
                   ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-md shadow-blue-600/25"
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
               <span>💻 보안 승인 기기 & 128자리 암호</span>
-              <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-bold text-blue-300">
+              <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-blue-300">
                 {devices.length}대
               </span>
             </button>
@@ -1947,19 +1947,19 @@ export default function AdminPage() {
                           <div>
                             <div className="flex items-center gap-2 flex-wrap">
                               <h4 className="text-sm font-extrabold text-white">{p.name}</h4>
-                              <span className="text-xs text-slate-400 font-mono">({p.phone})</span>
+                              <span className="text-xs text-slate-400 font-mono">· {p.phone}</span>
 
                               {/* Status Badge */}
                               {p.status === "approved" ? (
-                                <span className="rounded-full bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
-                                  ✓ 승인 완료 (활동중)
+                                <span className="droplet-pill bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
+                                  ✓ 승인 완료 · 활동중
                                 </span>
                               ) : p.status === "pending" ? (
-                                <span className="rounded-full bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
+                                <span className="droplet-pill bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
                                   ⏳ 관리자 승인 대기
                                 </span>
                               ) : (
-                                <span className="rounded-full bg-rose-950 px-2.5 py-0.5 text-[10px] font-black text-rose-400 border border-rose-800">
+                                <span className="droplet-pill bg-rose-950 px-2.5 py-0.5 text-[10px] font-black text-rose-400 border border-rose-800">
                                   ✕ 신청 반려
                                 </span>
                               )}
@@ -2202,28 +2202,28 @@ export default function AdminPage() {
                         </div>
 
                         {/* Dual Phone Numbers (050 Safe vs Real Customer Phone) */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-950/80 p-3.5 droplet-card border border-slate-800">
                           <div>
                             <span className="text-[11px] font-bold text-slate-400 block uppercase">
-                              🔒 고객 발급 050 임시 안심번호 (Virtual Safe Phone)
+                              🔒 고객 발급 050 임시 안심번호 · Virtual Safe Phone
                             </span>
                             <span className="text-base font-black text-emerald-400 font-mono">
                               {req.customerSafePhone}
                             </span>
                             <span className="block text-[10px] text-slate-500">
-                              (헬퍼에게 노출되는 연결 번호)
+                              헬퍼에게 노출되는 연결 번호
                             </span>
                           </div>
 
                           <div>
                             <span className="text-[11px] font-bold text-slate-400 block uppercase">
-                              🛡️ 고객 실제 휴대폰 번호 (Private)
+                              🛡️ 고객 실제 휴대폰 번호 · Private
                             </span>
                             <span className="text-base font-black text-slate-300 font-mono">
                               {req.customerRealPhone}
                             </span>
                             <span className="block text-[10px] text-slate-500">
-                              (관리자만 확인 가능한 실제 번호)
+                              관리자만 확인 가능한 실제 번호
                             </span>
                           </div>
                         </div>
@@ -2354,12 +2354,12 @@ export default function AdminPage() {
                           <div>
                             <div className="flex items-center gap-2">
                               <span className="font-extrabold text-white text-sm font-mono">{cred.email}</span>
-                              <span className="rounded bg-slate-800 px-2 py-0.5 text-[10px] font-bold text-slate-300 border border-slate-700">
+                              <span className="droplet-pill bg-slate-800 px-2 py-0.5 text-[10px] font-bold text-slate-300 border border-slate-700">
                                 {cred.roleTitle}
                               </span>
                               {cred.isSuperAdmin && (
-                                <span className="rounded bg-indigo-900 px-2 py-0.5 text-[10px] font-black text-indigo-200 border border-indigo-700">
-                                  최고관리자 (Super Admin)
+                                <span className="droplet-pill bg-indigo-900 px-2 py-0.5 text-[10px] font-black text-indigo-200 border border-indigo-700">
+                                  최고관리자 · Super Admin
                                 </span>
                               )}
                             </div>
@@ -2378,7 +2378,7 @@ export default function AdminPage() {
                                 [cred.email]: !prev[cred.email],
                               }))
                             }
-                            className="rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-700 transition cursor-pointer"
+                            className="droplet-btn border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-700 transition cursor-pointer"
                           >
                             {isRevealed ? "🙈 숨기기" : "👁️ 128자리 전체 보기"}
                           </button>
@@ -2392,7 +2392,7 @@ export default function AdminPage() {
                                 setTimeout(() => setCopiedEmail(null), 2500);
                               }
                             }}
-                            className="rounded-lg bg-blue-600 px-3 py-1 text-xs font-black text-white hover:bg-blue-500 shadow-sm transition active:scale-98 cursor-pointer flex items-center gap-1"
+                            className="droplet-btn bg-blue-600 px-3 py-1 text-xs font-black text-white hover:bg-blue-500 shadow-sm transition active:scale-98 cursor-pointer flex items-center gap-1"
                           >
                             <span>📋</span>
                             <span>{copiedEmail === cred.email ? "복사됨!" : "비밀번호 복사"}</span>
@@ -2401,7 +2401,7 @@ export default function AdminPage() {
                       </div>
 
                       {/* Password Display Box */}
-                      <div className="mt-3 rounded-xl border border-slate-800 bg-slate-900/90 p-3 font-mono text-xs break-all leading-relaxed">
+                      <div className="mt-3 droplet-card border border-slate-800 bg-slate-900/90 p-3 font-mono text-xs break-all leading-relaxed">
                         {isRevealed ? (
                           <span className="text-emerald-300 font-bold selection:bg-emerald-700">{cred.currentPassword}</span>
                         ) : (
@@ -2409,7 +2409,7 @@ export default function AdminPage() {
                             {cred.currentPassword.substring(0, 16)}
                             {"•".repeat(96)}
                             {cred.currentPassword.substring(112)}
-                            <span className="text-[10px] text-slate-400 ml-2 font-sans font-bold">(128글자 암호화 보호)</span>
+                            <span className="text-[10px] text-slate-400 ml-2 font-sans font-bold">· 128글자 암호화 보호</span>
                           </span>
                         )}
                       </div>
@@ -2423,7 +2423,7 @@ export default function AdminPage() {
                 <div className="flex items-center justify-between mb-2">
                   <h5 className="text-xs font-black text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
                     <span>📨</span>
-                    <span>sys@life.help 발송 완료 이메일 전송 로그 (TLS 암호화 전송)</span>
+                    <span>sys@life.help 발송 완료 이메일 전송 로그 · TLS 암호화 전송</span>
                   </h5>
                   <span className="text-[11px] text-slate-500 font-mono">
                     총 {emailLogs.length}건 기록됨
@@ -2453,17 +2453,17 @@ export default function AdminPage() {
             </div>
 
             {/* PART 2: 등록 승인 보안 기기 관리 */}
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 backdrop-blur-sm space-y-5">
+            <div className="droplet-card border border-slate-800 bg-slate-900/80 p-6 backdrop-blur-sm space-y-5">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
                 <div>
                   <h4 className="text-base font-black text-white flex items-center gap-2">
                     <span>💻</span>
-                    <span>인가 보안 기기 통제 목록 (sys.life.help 접근 허용 단말)</span>
+                    <span>인가 보안 기기 통제 목록 · sys.life.help 접근 허용 단말</span>
                   </h4>
                   <p className="text-xs text-slate-400 mt-0.5">
                     현재 접속 단말: <span className="font-mono text-blue-300 font-bold">{currentDeviceId}</span>
-                    <span className="ml-2 rounded bg-emerald-950 px-2 py-0.5 text-[10px] font-extrabold text-emerald-300 border border-emerald-800">
-                      ✓ 현재 접속 기기 (최고관리자 승인 마스터 기기)
+                    <span className="ml-2 droplet-pill bg-emerald-950 px-2 py-0.5 text-[10px] font-extrabold text-emerald-300 border border-emerald-800">
+                      ✓ 현재 접속 기기 · 최고관리자 승인 마스터 기기
                     </span>
                   </p>
                 </div>
@@ -2476,7 +2476,7 @@ export default function AdminPage() {
                       refreshData();
                       showToast("현재 기기가 최고관리자 승인 마스터 기기로 재등록되었습니다.");
                     }}
-                    className="rounded-xl border border-blue-700 bg-blue-950/70 px-3.5 py-2 text-xs font-black text-blue-300 hover:bg-blue-900 transition cursor-pointer"
+                    className="droplet-btn border border-blue-700 bg-blue-950/70 px-3.5 py-2 text-xs font-black text-blue-300 hover:bg-blue-900 transition cursor-pointer"
                   >
                     ⚡ 현재 기기 마스터 재승인
                   </button>
@@ -2489,7 +2489,7 @@ export default function AdminPage() {
                   <thead>
                     <tr className="border-b border-slate-800 bg-slate-950/80 text-slate-400">
                       <th className="p-3 font-bold">기기 명칭</th>
-                      <th className="p-3 font-bold">하드웨어 식별자 (Device ID)</th>
+                      <th className="p-3 font-bold">하드웨어 식별자 · Device ID</th>
                       <th className="p-3 font-bold">신청 계정</th>
                       <th className="p-3 font-bold">승인 상태</th>
                       <th className="p-3 font-bold">신청일 / 승인 정보</th>
@@ -2511,12 +2511,12 @@ export default function AdminPage() {
                               <span>💻</span>
                               <span>{dev.deviceName}</span>
                               {isCurrent && (
-                                <span className="rounded bg-blue-900/80 px-1.5 py-0.2 text-[10px] font-black text-blue-200 border border-blue-700">
+                                <span className="droplet-pill bg-blue-900/80 px-1.5 py-0.2 text-[10px] font-black text-blue-200 border border-blue-700">
                                   CURRENT
                                 </span>
                               )}
                               {dev.isSuperAdminDevice && (
-                                <span className="rounded bg-amber-950 px-1.5 py-0.2 text-[10px] font-black text-amber-300 border border-amber-800">
+                                <span className="droplet-pill bg-amber-950 px-1.5 py-0.2 text-[10px] font-black text-amber-300 border border-amber-800">
                                   👑 마스터
                                 </span>
                               )}
@@ -2535,15 +2535,15 @@ export default function AdminPage() {
                           </td>
                           <td className="p-3">
                             {dev.status === "approved" ? (
-                              <span className="rounded-full bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
-                                ✓ 승인됨 (정상 접근)
+                              <span className="droplet-pill bg-emerald-950 px-2.5 py-0.5 text-[10px] font-black text-emerald-400 border border-emerald-800">
+                                ✓ 승인됨 · 정상 접근
                               </span>
                             ) : dev.status === "pending" ? (
-                              <span className="rounded-full bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
+                              <span className="droplet-pill bg-amber-950 px-2.5 py-0.5 text-[10px] font-black text-amber-300 border border-amber-800 animate-pulse">
                                 ⏳ 승인 대기 중
                               </span>
                             ) : (
-                              <span className="rounded-full bg-rose-950 px-2.5 py-0.5 text-[10px] font-black text-rose-400 border border-rose-800">
+                              <span className="droplet-pill bg-rose-950 px-2.5 py-0.5 text-[10px] font-black text-rose-400 border border-rose-800">
                                 ✕ 접속 차단됨
                               </span>
                             )}
@@ -2612,7 +2612,7 @@ export default function AdminPage() {
         {/* FLOATING SUPPORT PARTNER MATCHING MODAL */}
         {matchingSupportReq && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative flex flex-col h-[550px] max-h-[90vh] w-full max-w-xl rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
+            <div className="relative flex flex-col h-[550px] max-h-[90vh] w-full max-w-xl droplet-card border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
               <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
                 <div>
                   <h3 className="text-base font-black text-white flex items-center gap-2">
@@ -2620,13 +2620,13 @@ export default function AdminPage() {
                     <span>파트너 알선 매칭</span>
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    요청번호 #{matchingSupportReq.id} (안심번호: {matchingSupportReq.customerSafePhone})
+                    요청번호 #{matchingSupportReq.id} · 안심번호: {matchingSupportReq.customerSafePhone}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setMatchingSupportReq(null)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition cursor-pointer"
+                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition cursor-pointer"
                 >
                   ✕
                 </button>
@@ -2642,7 +2642,7 @@ export default function AdminPage() {
                   .map((p) => (
                     <div
                       key={p.id}
-                      className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950 p-4 hover:border-indigo-600 transition"
+                      className="flex items-center justify-between droplet-card border border-slate-800 bg-slate-950 p-4 hover:border-indigo-600 transition"
                     >
                       <div>
                         <h4 className="text-xs sm:text-sm font-bold text-white">{p.name}</h4>
@@ -2659,7 +2659,7 @@ export default function AdminPage() {
                           setMatchingSupportReq(null);
                           refreshData();
                         }}
-                        className="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-3.5 py-2 text-xs font-black text-white transition cursor-pointer"
+                        className="droplet-btn bg-indigo-600 hover:bg-indigo-500 px-3.5 py-2 text-xs font-black text-white transition cursor-pointer"
                       >
                         매칭 연결
                       </button>
@@ -2679,29 +2679,29 @@ export default function AdminPage() {
         {/* FLOATING DIRECT CHAT MODAL (When opened via [💬 온라인 연락] from any card) */}
         {showDirectChatModal && selectedPartner && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative flex flex-col h-[600px] max-h-[90vh] w-full max-w-xl rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
+            <div className="relative flex flex-col h-[600px] max-h-[90vh] w-full max-w-xl droplet-card border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
               {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-5 py-4">
                 <div className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white">
+                  <span className="flex h-9 w-9 items-center justify-center droplet-pill bg-blue-600 text-sm font-black text-white">
                     HQ
                   </span>
                   <div>
                     <h3 className="text-sm font-extrabold text-white flex items-center gap-1.5">
                       <span>{selectedPartner.name} {t("admin.partnerChat")}</span>
-                      <span className="rounded bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800">
+                      <span className="droplet-pill bg-emerald-950 px-2 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800">
                         ONLINE
                       </span>
                     </h3>
                     <p className="text-[11px] text-slate-400">
-                      {t("admin.reviewRecipient")}: {selectedPartner.type === "helper" ? `🛠️ ${t("admin.helpersSubheader")}` : `🎧 ${t("admin.counselorsSubheader")}`} ({selectedPartner.id})
+                      {t("admin.reviewRecipient")}: {selectedPartner.type === "helper" ? `🛠️ ${t("admin.helpersSubheader")}` : `🎧 ${t("admin.counselorsSubheader")}`} · {selectedPartner.id}
                     </p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowDirectChatModal(false)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
+                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
                 >
                   ✕
                 </button>
@@ -2733,7 +2733,7 @@ export default function AdminPage() {
                           </span>
                         </div>
                         <div
-                          className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
+                          className={`max-w-[80%] droplet-card px-4 py-2.5 text-xs leading-relaxed ${
                             isAdmin
                               ? "bg-blue-600 text-white rounded-tr-xs shadow-xs"
                               : "bg-slate-800 border border-slate-700 text-slate-200 rounded-tl-xs shadow-xs"
@@ -2754,7 +2754,7 @@ export default function AdminPage() {
                     key={tmpl.label}
                     type="button"
                     onClick={() => handleSendMessage(tmpl.text)}
-                    className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-slate-300 hover:bg-blue-600 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
+                    className="droplet-btn border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-slate-300 hover:bg-blue-600 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
                     title={tmpl.text}
                   >
                     {tmpl.label}
@@ -2776,12 +2776,12 @@ export default function AdminPage() {
                     value={messageInput}
                     onChange={(e) => setMessageInput(e.target.value)}
                     placeholder={t("admin.chatPlaceholder")}
-                    className="flex-1 rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
+                    className="droplet-input flex-1 border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
                   />
                   <button
                     type="submit"
                     disabled={!messageInput.trim()}
-                    className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white hover:brightness-105 disabled:opacity-50 transition-all duration-200 shadow-md shadow-blue-600/20 active:scale-[0.98] cursor-pointer"
+                    className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white hover:brightness-105 disabled:opacity-50 transition-all duration-200 shadow-md shadow-blue-600/20 active:scale-[0.98] cursor-pointer"
                   >
                     {t("admin.btnSendMessage")}
                   </button>
@@ -2794,17 +2794,17 @@ export default function AdminPage() {
         {/* FLOATING HELPER ASSIGNMENT MODAL (1-Click Emergency Dispatch) */}
         {assigningRequest && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative flex flex-col h-[650px] max-h-[90vh] w-full max-w-2xl rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
+            <div className="relative flex flex-col h-[650px] max-h-[90vh] w-full max-w-2xl droplet-card border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
               {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-600 text-xl font-black text-white shadow-md">
+                  <span className="flex h-10 w-10 items-center justify-center droplet-pill bg-amber-600 text-xl font-black text-white shadow-md">
                     {assigningRequest.serviceIcon || "⚡"}
                   </span>
                   <div>
                     <h3 className="text-sm font-extrabold text-white flex items-center gap-2">
                       <span>[{getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)}] {t("admin.assignModalTitle")}</span>
-                      <span className="rounded-md bg-amber-950 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-800">
+                      <span className="droplet-pill bg-amber-950 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-800">
                         {assigningRequest.status === "pending" ? t("admin.statusPending") : t("admin.btnReassignHelper")}
                       </span>
                     </h3>
@@ -2816,7 +2816,7 @@ export default function AdminPage() {
                 <button
                   type="button"
                   onClick={() => setAssigningRequest(null)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
+                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
                 >
                   ✕
                 </button>
@@ -2841,7 +2841,7 @@ export default function AdminPage() {
                   value={assignHelperSearch}
                   onChange={(e) => setAssignHelperSearch(e.target.value)}
                   placeholder={t("admin.searchHelperAssignPlaceholder")}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
+                  className="droplet-input w-full border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -2863,15 +2863,15 @@ export default function AdminPage() {
                     const name =
                       h.contract?.name ||
                       (h.email
-                        ? `Helper (${h.email.split("@")[0]})`
+                        ? `Helper · ${h.email.split("@")[0]}`
                         : h.phone
-                          ? `Helper (${h.phone.slice(-4)})`
+                          ? `Helper · ${h.phone.slice(-4)}`
                           : "Helper");
 
                     return (
                       <div
                         key={helperId}
-                        className={`rounded-2xl border p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
+                        className={`droplet-card border p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
                           isRegionMatched
                             ? "border-emerald-500/60 bg-emerald-950/20 hover:border-emerald-400"
                             : "border-slate-800 bg-slate-950/60 hover:border-slate-700"
@@ -2882,16 +2882,16 @@ export default function AdminPage() {
                             <span className="font-extrabold text-white text-sm">{name}</span>
                             <span className="text-xs font-mono text-slate-400">✉️ {h.email || h.phone}{h.phone && h.email ? ` · 📱 ${h.phone}` : ""}</span>
                             {h.isActive ? (
-                              <span className="rounded bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800">
+                              <span className="droplet-pill bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800">
                                 {t("admin.statusActive")}
                               </span>
                             ) : (
-                              <span className="rounded bg-amber-950 px-1.5 py-0.5 text-[10px] font-bold text-amber-400 border border-amber-800">
+                              <span className="droplet-pill bg-amber-950 px-1.5 py-0.5 text-[10px] font-bold text-amber-400 border border-amber-800">
                                 {t("admin.statusPaused")}
                               </span>
                             )}
                             {isRegionMatched && (
-                              <span className="rounded bg-blue-950 px-1.5 py-0.5 text-[10px] font-black text-blue-300 border border-blue-800 animate-pulse">
+                              <span className="droplet-pill bg-blue-950 px-1.5 py-0.5 text-[10px] font-black text-blue-300 border border-blue-800 animate-pulse">
                                 📍 {t("admin.matchedRegionBadge")}
                               </span>
                             )}
@@ -2923,13 +2923,13 @@ export default function AdminPage() {
                                 targetName: name,
                                 sender: "admin",
                                 senderName: "LIFE.HELP HQ",
-                                text: `[🚨 ${t("admin.templateDispatch")}]\n${getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)} (${assigningRequest.sido} ${assigningRequest.gungu})\n- ${t("admin.dispatchLocationLabel")}: ${assigningRequest.address}\n- ${t("admin.customerPhoneLabel")}: ${assigningRequest.phone || "실시간 웹/앱 대화"}\n- ${t("admin.requestDescLabel")}: ${assigningRequest.description}`,
+                                text: `[🚨 ${t("admin.templateDispatch")}]\n${getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)} · ${assigningRequest.sido} ${assigningRequest.gungu}\n- ${t("admin.dispatchLocationLabel")}: ${assigningRequest.address}\n- ${t("admin.customerPhoneLabel")}: ${assigningRequest.phone || "실시간 웹/앱 대화"}\n- ${t("admin.requestDescLabel")}: ${assigningRequest.description}`,
                               });
                               showToast(`${name} - ${t("admin.toastAssigned")}`);
                               setAssigningRequest(null);
                               refreshData();
                             }}
-                            className="shrink-0 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-4 py-2.5 text-xs font-black text-white hover:brightness-105 active:scale-[0.98] transition-all duration-200 shadow-md shadow-blue-600/25 cursor-pointer flex items-center justify-center gap-1.5"
+                            className="shrink-0 droplet-btn bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-4 py-2.5 text-xs font-black text-white hover:brightness-105 active:scale-[0.98] transition-all duration-200 shadow-md shadow-blue-600/25 cursor-pointer flex items-center justify-center gap-1.5"
                           >
                             <span>⚡</span>
                             <span>{t("admin.btnConfirmAssign")}</span>

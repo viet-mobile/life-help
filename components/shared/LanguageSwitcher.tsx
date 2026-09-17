@@ -33,7 +33,7 @@ export function LanguageSwitcher({
     <div dir="ltr" className={`inline-flex items-center gap-1 sm:gap-1.5 shrink-0 max-w-full ${className}`}>
       <div
         dir="ltr"
-        className="relative inline-flex items-center rounded-xl border border-slate-200 bg-white/95 px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm transition hover:border-blue-400 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100 max-w-[72px] xs:max-w-[85px] sm:max-w-[120px] md:max-w-[145px] lg:max-w-[170px] min-w-0 shrink-0"
+        className="droplet-pill relative inline-flex items-center border border-slate-200 bg-white/95 px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm transition hover:border-blue-400 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100 max-w-[72px] xs:max-w-[85px] sm:max-w-[120px] md:max-w-[145px] lg:max-w-[170px] min-w-0 shrink-0"
         aria-label="Language selection"
       >
         <span className="mr-0.5 text-xs sm:text-sm select-none shrink-0" aria-hidden="true">
@@ -60,11 +60,11 @@ export function LanguageSwitcher({
       </div>
 
       {currentLocale !== "ko" && (
-        <div className="inline-flex rounded-xl p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold shadow-2xs shrink-0">
+        <div className="droplet-pill inline-flex p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold shadow-2xs shrink-0">
           <button
             type="button"
             onClick={() => context.setDisplayMode("monolingual")}
-            className={`px-1.5 py-1 sm:px-2 sm:py-1 rounded-lg transition text-xs flex items-center justify-center gap-1 shrink-0 ${
+            className={`droplet-btn px-1.5 py-1 sm:px-2 sm:py-1 transition text-xs flex items-center justify-center gap-1 shrink-0 ${
               context.displayMode === "monolingual"
                 ? "bg-white text-blue-700 shadow-xs font-black ring-1 ring-slate-300/60"
                 : "text-slate-600 hover:text-slate-900 font-semibold"
@@ -80,7 +80,7 @@ export function LanguageSwitcher({
           <button
             type="button"
             onClick={() => context.setDisplayMode("bilingual")}
-            className={`px-1.5 py-1 sm:px-2 sm:py-1 rounded-lg transition text-xs flex items-center justify-center gap-1 shrink-0 ${
+            className={`droplet-btn px-1.5 py-1 sm:px-2 sm:py-1 transition text-xs flex items-center justify-center gap-1 shrink-0 ${
               context.displayMode === "bilingual"
                 ? "bg-blue-700 text-white shadow-xs font-black"
                 : "text-slate-600 hover:text-slate-900 font-semibold"

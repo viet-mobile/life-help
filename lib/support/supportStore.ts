@@ -192,7 +192,156 @@ export const SUPPORT_CATEGORIES: Record<string, SupportCategoryMeta> = {
       "Xử lý nợ cước viễn thông, mở khóa sim & chuyển mạng giữ số",
     ],
   },
+  "clog-clearing": {
+    slug: "clog-clearing",
+    key: "clog",
+    icon: "🚽",
+    nameKo: "변기, 싱크대, 하수구 등 각종 막힘 해결",
+    nameEn: "Toilet, Sink, Sewer & Drain Unclogging Solutions",
+    nameVi: "Thông tắc bồn cầu, bồn rửa, cống rãnh các loại",
+    descriptionKo: "변기 역류, 싱크대 막힘, 욕실 배수구 및 하수관 막힘을 특수 전동 스프링 및 고압 세척 장비로 24시간 신속하게 뚫어드립니다.",
+    descriptionEn: "Emergency clearing of clogged toilets, blocked sinks, floor drains, and sewer pipes using specialized electric augers and high-pressure jetting.",
+    descriptionVi: "Xử lý thông tắc khẩn cấp bồn cầu trào ngược, bồn rửa bát, cống sàn nhà tắm bằng thiết bị máy lò xo chuyên dụng và máy thông áp lực cao.",
+    checklistOptionsKo: [
+      "변기 물이 전혀 내려가지 않고 역류하여 차오름",
+      "변기에 물티슈, 칫솔, 뚜껑 등 이물질이 빠짐",
+      "싱크대 배수구에서 썩은 냄새가 나고 물이 고임",
+      "싱크대 하부 호스 또는 바닥 배관에서 물이 넘침",
+      "욕실/화장실 바닥 하수구 머리카락 막힘 및 역류",
+    ],
+    checklistOptionsEn: [
+      "Toilet water is not draining at all and overflowing",
+      "Foreign object (wet wipe, toothbrush, cap) fell into toilet",
+      "Kitchen sink has bad odor and water is pooling",
+      "Water is overflowing from under-sink pipe or floor drain",
+      "Bathroom floor drain clogged with hair and overflowing",
+    ],
+    checklistOptionsVi: [
+      "Nước bồn cầu hoàn toàn không thoát được và bị trào ngược",
+      "Vật thể lạ (khăn ướt, bàn chải, nắp lọ) rơi vào bồn cầu",
+      "Bồn rửa bát có mùi hôi thối và nước bị đọng ứ",
+      "Nước tràn ra từ ống dưới bồn rửa hoặc đường ống sàn",
+      "Cống sàn nhà tắm bị tắc do tóc và trào ngược",
+    ],
+  },
+  "leak-plumbing": {
+    slug: "leak-plumbing",
+    key: "leakPlumbing",
+    icon: "💧",
+    nameKo: "누수 방지, 누수 탐지, 수도 배관 공사 등",
+    nameEn: "Water Leak Prevention, Detection & Plumbing Works",
+    nameVi: "Chống rò rỉ, dò tìm rò rỉ, thi công đường ống nước",
+    descriptionKo: "정밀 청음식·가스식 누수 탐지기로 미세 누수를 정확하게 찾아내고, 노후 수도관 교체 및 방수 공사를 전문 시공합니다.",
+    descriptionEn: "Precision leak detection using acoustic and tracer gas equipment, water pipe replacement, and waterproofing construction.",
+    descriptionVi: "Dò tìm rò rỉ nước chính xác bằng máy dò khí và siêu âm, sửa chữa đường ống nước cũ hỏng và thi công chống thấm chuyên nghiệp.",
+    checklistOptionsKo: [
+      "천장 또는 벽면에서 물이 뚝뚝 떨어져 벽지가 젖음",
+      "수도 요금이 비정상적으로 많이 나오고 아랫집에서 누수 항의",
+      "수도꼭지(수전)가 완전히 잠기지 않고 녹물이 나오거나 누수",
+      "싱크대 하부 배관 파손으로 바닥에 물이 흥건함",
+    ],
+    checklistOptionsEn: [
+      "Water dripping from ceiling or wall, wetting wallpaper",
+      "Water bill is abnormally high and downstairs neighbor reports leak",
+      "Faucet does not close completely or dispenses rusty water",
+      "Broken pipe under sink causing water pooling on the floor",
+    ],
+    checklistOptionsVi: [
+      "Nước nhỏ giọt từ trần nhà hoặc tường làm ướt giấy dán tường",
+      "Hóa đơn tiền nước tăng bất thường và hàng xóm phản ánh bị rò rỉ",
+      "Vòi nước không khóa chặt được hoặc chảy ra nước gỉ sét",
+      "Đường ống dưới bồn rửa bị hỏng và rò rỉ nước ra sàn",
+    ],
+  },
+  "boiler": {
+    slug: "boiler",
+    key: "boiler",
+    icon: "♨️",
+    nameKo: "보일러 설치, 시공, 수리",
+    nameEn: "Boiler Installation, Construction & Heating Repair",
+    nameVi: "Lắp đặt, thi công, sửa chữa bình nóng lạnh / nồi hơi",
+    descriptionKo: "친환경 콘덴싱 가스보일러 교체, 온수 불량 및 난방 배관 청소, 온도조절기 에러코드 고장을 신속하게 점검 수리합니다.",
+    descriptionEn: "Condensing boiler installation, hot water failure repair, heating pipe flushing, and thermostat troubleshooting.",
+    descriptionVi: "Lắp đặt và sửa chữa bình nóng lạnh, nồi hơi sưởi ấm sàn nhà, súc rửa đường ống nước nóng và khắc phục mã lỗi bảng điều khiển.",
+    checklistOptionsKo: [
+      "보일러 실내온도조절기에 에러코드가 깜빡이며 온수/난방 불가",
+      "보일러 가동 시 굉음이 발생하거나 이상 가스 냄새 발생",
+      "온수 배관 순환 불량으로 방 일부만 차갑고 난방이 안 됨",
+    ],
+    checklistOptionsEn: [
+      "Boiler thermostat blinks error code; no hot water or heating",
+      "Boiler makes loud noise or unusual gas odor when operating",
+      "Uneven floor heating circulation causing cold spots in room",
+    ],
+    checklistOptionsVi: [
+      "Bình nóng lạnh/nồi hơi báo mã lỗi nhấp nháy, không có nước nóng",
+      "Có tiếng ồn lớn hoặc mùi gas bất thường khi bật bình nóng lạnh",
+      "Bảng điều khiển nhiệt độ không hoạt động hoặc không chỉnh được",
+    ],
+  },
+  "cleaning": {
+    slug: "cleaning",
+    key: "cleaning",
+    icon: "🧹",
+    nameKo: "전문 청소 · 입주·특수·청결",
+    nameEn: "Professional Cleaning · Move-in & Deep Clean",
+    nameVi: "Vệ sinh chuyên nghiệp · Dọn nhà & Khử khuẩn sâu",
+    descriptionKo: "원룸/오피스텔 이사·입주 청소, 곰팡이 및 기름때 고온 스팀 살균, 에어컨 분해 세척 등 전문 위생 관리를 제공합니다.",
+    descriptionEn: "Move-in cleaning for studios and apartments, mold and grease high-temperature steam sterilization, and AC deep cleaning.",
+    descriptionVi: "Dọn dẹp nhà chuyển vào ở mới cho căn hộ/phòng trọ, khử khuẩn nấm mốc và vết dầu mỡ bằng hơi nước nóng, vệ sinh máy lạnh.",
+    checklistOptionsKo: [
+      "원룸/오피스텔 이사 전 입주 청소 및 묵은 때 살균 세척",
+      "욕실 타일 줄눈 곰팡이 및 창틀 찌든 먼지 고온 스팀 청소",
+      "주방 가스레인지 기름때 및 싱크대 배수구 고온 살균 세척",
+    ],
+    checklistOptionsEn: [
+      "Move-in deep cleaning and sterilization for studio/apartment",
+      "Steam cleaning for bathroom mold, grime, and window tracks",
+      "Kitchen stove grease removal and sink drain steam sanitation",
+    ],
+    checklistOptionsVi: [
+      "Cần dọn dẹp vệ sinh tổng thể trước khi chuyển vào nhà mới",
+      "Tẩy nấm mốc và vết ố bẩn lâu ngày trong phòng tắm, khe cửa sổ",
+      "Vệ sinh vết dầu mỡ nhà bếp và khử khuẩn bồn rửa",
+    ],
+  },
+  "housing": {
+    slug: "housing",
+    key: "housing",
+    icon: "🏠",
+    nameKo: "원룸/투룸 맞춤 방 구하기",
+    nameEn: "Room Finding & Safe Housing Rental Assistance",
+    nameVi: "Tìm phòng trọ & Hỗ trợ thuê nhà an toàn",
+    descriptionKo: "외국인 입주 가능한 풀옵션 원룸/투룸 매물 추천, 보증금 안심 임대차 계약서 검토 및 전입신고·확정일자를 모국어로 안내합니다.",
+    descriptionEn: "Foreigner-friendly furnished studio/apartment search, safe lease agreement review, deposit protection, and move-in registration.",
+    descriptionVi: "Giới thiệu phòng trọ/căn hộ đầy đủ tiện nghi cho người nước ngoài, kiểm tra hợp đồng thuê bảo toàn tiền cọc và hỗ trợ khai báo cư trú.",
+    checklistOptionsKo: [
+      "외국인 계약 가능한 풀옵션 원룸/투룸 맞춤 방 찾기",
+      "보증금 안심 임대차 계약서 검토 및 전입신고·확정일자 지원",
+      "임대인과의 의사소통 및 관리비/공과금 정산 안내",
+    ],
+    checklistOptionsEn: [
+      "Finding furnished studio or 1-bedroom apartment for foreigners",
+      "Safe lease contract review and deposit protection verification",
+      "Landlord communication and utility bill settlement assistance",
+    ],
+    checklistOptionsVi: [
+      "Tìm phòng trọ, căn hộ một/hai phòng đầy đủ đồ đạc tiện nghi",
+      "Tư vấn hợp đồng thuê an toàn cho người nước ngoài, bảo vệ tiền cọc",
+      "Hỗ trợ đăng ký chuyển vào cư trú và công chứng hợp đồng",
+    ],
+  },
 };
+
+// Aliases for backward compatibility
+SUPPORT_CATEGORIES["toilet-clog"] = SUPPORT_CATEGORIES["clog-clearing"];
+SUPPORT_CATEGORIES["sink-clog"] = SUPPORT_CATEGORIES["clog-clearing"];
+SUPPORT_CATEGORIES["drain-clog"] = SUPPORT_CATEGORIES["clog-clearing"];
+SUPPORT_CATEGORIES["water-leak"] = SUPPORT_CATEGORIES["leak-plumbing"];
+SUPPORT_CATEGORIES["leak-detection"] = SUPPORT_CATEGORIES["leak-plumbing"];
+SUPPORT_CATEGORIES["water"] = SUPPORT_CATEGORIES["leak-plumbing"];
+SUPPORT_CATEGORIES["plumbing"] = SUPPORT_CATEGORIES["leak-plumbing"];
+
 
 /**
  * Customer Direct Phone Contact (050 virtual number retracted per user request)

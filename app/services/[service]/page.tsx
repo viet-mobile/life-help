@@ -1,4 +1,4 @@
-import { ServiceDetailView } from "@/components/customer/ServiceDetailView";
+import { SupportServiceView } from "@/components/support/SupportServiceView";
 import { services } from "@/lib/services";
 
 export function generateStaticParams() {
@@ -13,5 +13,5 @@ export default async function ServicePage({
   params: Promise<{ service: string }>;
 }) {
   const { service: slug } = await params;
-  return <ServiceDetailView slug={slug} />;
+  return <SupportServiceView slug={slug} />;
 }

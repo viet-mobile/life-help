@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useHelper, type HelperRegionItem } from "@/lib/helper/HelperContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
@@ -56,7 +57,7 @@ export function HelperAuthCard({
       setErrorMsg(
         formatBilingual(
           "Please enter a valid email address. (e.g. helper@example.com)",
-          "올바른 이메일 주소를 입력해 주세요. (예: helper@example.com)",
+          "올바른 이메일 주소를 입력해 주세요. 예: helper@example.com",
         ),
       );
       return;
@@ -199,16 +200,16 @@ export function HelperAuthCard({
   };
 
   return (
-    <div className="rounded-3xl border border-slate-800 bg-slate-900/95 p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+    <div className="droplet-card border border-slate-800 bg-slate-900/95 p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
       {/* 2-Tab Bar */}
-      <div className="mb-6 grid grid-cols-2 gap-1.5 rounded-2xl bg-slate-950 p-1.5 border border-slate-800">
+      <div className="mb-6 grid grid-cols-2 gap-1.5 droplet-card bg-slate-950 p-1.5 border border-slate-800">
         <button
           type="button"
           onClick={() => {
             setActiveTab("register");
             setErrorMsg("");
           }}
-          className={`rounded-xl py-3 text-xs sm:text-sm font-black transition ${
+          className={`droplet-btn py-3 text-xs sm:text-sm font-black transition ${
             activeTab === "register"
               ? "bg-blue-600 text-white shadow-lg"
               : "text-slate-400 hover:text-white"
@@ -222,7 +223,7 @@ export function HelperAuthCard({
             setActiveTab("login");
             setErrorMsg("");
           }}
-          className={`rounded-xl py-3 text-xs sm:text-sm font-black transition ${
+          className={`droplet-btn py-3 text-xs sm:text-sm font-black transition ${
             activeTab === "login"
               ? "bg-blue-600 text-white shadow-lg"
               : "text-slate-400 hover:text-white"
@@ -240,7 +241,7 @@ export function HelperAuthCard({
             {activeTab === "register"
               ? formatBilingual(
                   t("tech.newHelperRegTitle"),
-                  "신규 헬퍼 등록 (3개월 보안 접속)",
+                  "신규 헬퍼 등록 · 3개월 보안 접속",
                 )
               : formatBilingual(
                   t("tech.existingHelperLoginTitle"),
@@ -263,7 +264,7 @@ export function HelperAuthCard({
 
       {/* Error Message */}
       {errorMsg && (
-        <div className="mb-5 rounded-2xl bg-red-950/50 border border-red-800/80 p-3.5 text-xs font-bold text-red-200">
+        <div className="mb-5 droplet-card bg-red-950/50 border border-red-800/80 p-3.5 text-xs font-bold text-red-200">
           ⚠️ {errorMsg}
         </div>
       )}
@@ -277,7 +278,7 @@ export function HelperAuthCard({
             <label className="block text-xs font-bold uppercase text-slate-300">
               {formatBilingual(
                 t("tech.accessKeyLabel"),
-                "3개월 전용 보안 코드 (Access Key)",
+                "3개월 전용 보안 코드 · Access Key",
               )}
             </label>
             <input
@@ -286,7 +287,7 @@ export function HelperAuthCard({
               value={authCode}
               onChange={(e) => setAuthCode(e.target.value)}
               placeholder="LH-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
-              className="mt-1.5 w-full tracking-wider rounded-xl border border-slate-700 bg-slate-800 p-4 text-center text-lg sm:text-xl font-black text-white outline-none focus:border-blue-500 uppercase font-mono shadow-inner"
+              className="mt-1.5 w-full tracking-wider droplet-input border border-slate-700 bg-slate-800 p-4 text-center text-lg sm:text-xl font-black text-white outline-none focus:border-blue-500 uppercase font-mono shadow-inner"
             />
           </div>
 
@@ -294,7 +295,7 @@ export function HelperAuthCard({
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 py-4 text-sm font-black text-white shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex flex-col items-center justify-center cursor-pointer border border-emerald-500/30"
+            className="w-full droplet-btn-lg bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 py-4 text-sm font-black text-white shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex flex-col items-center justify-center cursor-pointer border border-emerald-500/30"
           >
             {loading ? (
               <span>{formatBilingual(t("tech.verifying"), "로그인 검증 중...")}</span>
@@ -302,7 +303,7 @@ export function HelperAuthCard({
               <span>
                 {formatBilingual(
                   t("tech.loginWithAccessKey"),
-                  "3개월 보안 코드로 로그인 (90일 유지)",
+                  "3개월 보안 코드로 로그인 · 90일 유지",
                 )}{" "}
                 🟢
               </span>
@@ -310,7 +311,7 @@ export function HelperAuthCard({
           </button>
 
           {/* Explanatory Info Card */}
-          <div className="rounded-xl border border-blue-900/40 bg-blue-950/20 p-3.5">
+          <div className="droplet-card border border-blue-900/40 bg-blue-950/20 p-3.5">
             <p className="text-[11px] leading-relaxed text-blue-300 font-medium">
               💡{" "}
               {formatBilingual(
@@ -328,7 +329,7 @@ export function HelperAuthCard({
                 setActiveTab("register");
                 setErrorMsg("");
               }}
-              className="text-blue-400 hover:text-blue-300 font-bold"
+              className="text-blue-400 hover:text-blue-300 font-bold cursor-pointer"
             >
               {formatBilingual(
                 t("tech.registerTab"),
@@ -338,7 +339,7 @@ export function HelperAuthCard({
             <button
               type="button"
               onClick={() => setShowEmailReissue((prev) => !prev)}
-              className="text-slate-400 hover:text-white underline font-medium"
+              className="text-slate-400 hover:text-white underline font-medium cursor-pointer"
             >
               {formatBilingual(t("tech.lostCodeBtn"), "코드를 분실하셨나요?")}
             </button>
@@ -346,7 +347,7 @@ export function HelperAuthCard({
 
           {/* Re-issue Drawer */}
           {showEmailReissue && (
-            <div className="rounded-2xl border border-slate-700 bg-slate-950/70 p-4 mt-2 space-y-2">
+            <div className="droplet-card border border-slate-700 bg-slate-950/70 p-4 mt-2 space-y-2">
               <span className="text-[11px] font-bold text-slate-300 block">
                 {formatBilingual(
                   "Reissue 90-day Code via Email",
@@ -359,13 +360,13 @@ export function HelperAuthCard({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="helper@example.com"
-                  className="flex-1 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold font-mono text-white outline-none focus:border-blue-500"
+                  className="flex-1 droplet-input border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-bold font-mono text-white outline-none focus:border-blue-500"
                 />
                 <button
                   type="button"
                   onClick={handleSendAccessKey}
                   disabled={loading}
-                  className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition shrink-0 cursor-pointer"
+                  className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] transition shrink-0 cursor-pointer"
                 >
                   {loading
                     ? formatBilingual(t("tech.verifying"), "발송 중...")
@@ -373,12 +374,12 @@ export function HelperAuthCard({
                 </button>
               </div>
               {accessKeyNotice && (
-                <div className="rounded-xl bg-emerald-950/80 border border-emerald-700 p-2.5 text-xs text-emerald-200 flex items-center justify-between">
+                <div className="droplet-card bg-emerald-950/80 border border-emerald-700 p-2.5 text-xs text-emerald-200 flex items-center justify-between">
                   <span className="font-mono font-bold">{accessKeyNotice.accessKey}</span>
                   <button
                     type="button"
                     onClick={handleCopyKey}
-                    className="text-[11px] bg-emerald-600 text-white px-2.5 py-1 rounded-lg font-bold hover:bg-emerald-700 active:scale-95 transition cursor-pointer shadow-2xs"
+                    className="text-[11px] bg-emerald-600 text-white px-2.5 py-1 droplet-btn font-bold hover:bg-emerald-700 active:scale-95 transition cursor-pointer shadow-2xs"
                   >
                     {copiedToast
                       ? formatBilingual(t("tech.copied"), "복사됨!")
@@ -391,14 +392,28 @@ export function HelperAuthCard({
         </form>
       ) : (
         /* New Helper Registration Form */
-        <form
-          onSubmit={!codeSent ? handleSendAccessKey : handleRegisterSubmit}
-          className="space-y-5"
-        >
+        <div className="space-y-5">
+          <div className="droplet-card border border-amber-500/50 bg-amber-500/10 p-4 rounded-xl flex items-center justify-between gap-3">
+            <div className="text-xs">
+              <span className="font-black text-amber-300 block">🎖️ {formatBilingual(t("support.providerTitle"), "공식 헬퍼 간편 등록")}</span>
+              <span className="text-slate-300 text-[11px]">{formatBilingual(t("support.providerDesc"), "10대 서비스 분야 및 지역 선택 바로가기")}</span>
+            </div>
+            <Link
+              href="/services/job-help?tab=provider"
+              className="droplet-btn bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs px-3.5 py-2 shrink-0 transition"
+            >
+              {formatBilingual(t("customer.helperRegisterBtn"), "신청하기 →")}
+            </Link>
+          </div>
+
+          <form
+            onSubmit={!codeSent ? handleSendAccessKey : handleRegisterSubmit}
+            className="space-y-5"
+          >
           {/* Email Input */}
           <div>
             <label className="block text-xs font-bold uppercase text-slate-300">
-              {formatBilingual("Email Address", "이메일(Email) 주소")}
+              {formatBilingual("Email Address", "이메일 Email 주소")}
             </label>
             <div className="mt-1.5 flex gap-2">
               <input
@@ -408,13 +423,13 @@ export function HelperAuthCard({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="helper@example.com"
-                className="flex-1 rounded-xl border border-slate-700 bg-slate-800 p-3.5 text-base font-bold text-white outline-none placeholder:text-slate-500 focus:border-blue-500 disabled:opacity-60 disabled:bg-slate-850 font-mono"
+                className="flex-1 droplet-input border border-slate-700 bg-slate-800 p-3.5 text-base font-bold text-white outline-none placeholder:text-slate-500 focus:border-blue-500 disabled:opacity-60 disabled:bg-slate-850 font-mono"
               />
               {!codeSent ? (
                 <button
                   type="submit"
                   disabled={loading}
-                  className="shrink-0 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-4 sm:px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition disabled:opacity-50 cursor-pointer border border-blue-500/30"
+                  className="shrink-0 droplet-btn bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-4 sm:px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition disabled:opacity-50 cursor-pointer border border-blue-500/30"
                 >
                   {loading
                     ? formatBilingual(t("tech.verifying"), "발송 중...")
@@ -427,14 +442,14 @@ export function HelperAuthCard({
                 <button
                   type="button"
                   onClick={() => setCodeSent(false)}
-                  className="shrink-0 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-3.5 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white shadow-2xs active:scale-[0.98] transition cursor-pointer"
+                  className="shrink-0 droplet-btn border border-slate-700 bg-slate-800 px-3.5 py-3.5 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white shadow-2xs active:scale-[0.98] transition cursor-pointer"
                 >
                   {formatBilingual("이메일 변경", "이메일 변경")}
                 </button>
               )}
             </div>
             {!codeSent && (
-              <div className="mt-2 rounded-xl border border-blue-900/40 bg-blue-950/20 p-3">
+              <div className="mt-2 droplet-card border border-blue-900/40 bg-blue-950/20 p-3">
                 <p className="text-[11px] leading-relaxed text-blue-300 font-medium">
                   💡{" "}
                   {formatBilingual(
@@ -450,25 +465,25 @@ export function HelperAuthCard({
           {codeSent && (
             <>
               {/* Visual Email Notice Card */}
-              <div className="rounded-2xl border border-emerald-700/60 bg-emerald-950/40 p-4 text-xs text-emerald-200 shadow-inner">
+              <div className="droplet-card border border-emerald-700/60 bg-emerald-950/40 p-4 text-xs text-emerald-200 shadow-inner">
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400">
                     <span>📧</span>
                     <span>
                       {formatBilingual(
                         "Email Sent Successfully",
-                        "이메일(Email) 발송 완료",
+                        "이메일 Email 발송 완료",
                       )}
                     </span>
                   </span>
                   <span className="font-mono text-slate-300">{email}</span>
                 </div>
 
-                <div className="mt-3 rounded-xl border border-emerald-600/50 bg-slate-900/95 p-3.5">
+                <div className="mt-3 droplet-card border border-emerald-600/50 bg-slate-900/95 p-3.5">
                   <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block mb-1">
                     {formatBilingual(
                       t("tech.issuedAccessKey"),
-                      "발급된 3개월 보안 접속 코드 (Access Key)",
+                      "발급된 3개월 보안 접속 코드 · Access Key",
                     )}
                   </span>
                   <div className="flex items-center justify-between gap-2">
@@ -478,7 +493,7 @@ export function HelperAuthCard({
                     <button
                       type="button"
                       onClick={handleCopyKey}
-                      className="shrink-0 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-black text-white hover:bg-emerald-500 active:scale-95 transition shadow-sm"
+                      className="shrink-0 droplet-btn bg-emerald-600 px-3.5 py-1.5 text-xs font-black text-white hover:bg-emerald-500 active:scale-95 transition shadow-sm"
                     >
                       {copiedToast
                         ? formatBilingual(t("tech.copied"), "복사됨!")
@@ -491,8 +506,7 @@ export function HelperAuthCard({
                   <span>📅</span>
                   <span>
                     {formatBilingual(t("tech.securitySessionExpiry"), "보안 세션 만료일")}:{" "}
-                    <strong>{accessKeyNotice?.expiryFormatted}</strong> (
-                    {formatBilingual(t("tech.autoMaintainedDays"), "90일간 자동 로그인 유지")})
+                    <strong>{accessKeyNotice?.expiryFormatted}</strong> · {formatBilingual(t("tech.autoMaintainedDays"), "90일간 자동 로그인 유지")}
                   </span>
                 </p>
               </div>
@@ -502,7 +516,7 @@ export function HelperAuthCard({
                 <label className="block text-xs font-bold uppercase text-slate-300">
                   {formatBilingual(
                     t("tech.accessKeyLabel"),
-                    "3개월 보안 접속 코드 (Access Key)",
+                    "3개월 보안 접속 코드 · Access Key",
                   )}
                 </label>
                 <input
@@ -511,7 +525,7 @@ export function HelperAuthCard({
                   value={authCode}
                   onChange={(e) => setAuthCode(e.target.value)}
                   placeholder="LH-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
-                  className="mt-1.5 w-full tracking-wider rounded-xl border border-slate-700 bg-slate-800 p-3.5 text-center text-lg font-black text-white outline-none focus:border-blue-500 uppercase font-mono"
+                  className="mt-1.5 w-full tracking-wider droplet-input border border-slate-700 bg-slate-800 p-3.5 text-center text-lg font-black text-white outline-none focus:border-blue-500 uppercase font-mono"
                 />
               </div>
 
@@ -520,7 +534,7 @@ export function HelperAuthCard({
                 <label className="block text-xs font-bold uppercase text-slate-300">
                   {formatBilingual(
                     t("tech.helperNameLabel"),
-                    "헬퍼 성함 (활동명 또는 실명)",
+                    "헬퍼 성함 · 활동명 또는 실명",
                   )}
                 </label>
                 <input
@@ -529,9 +543,9 @@ export function HelperAuthCard({
                   value={helperName}
                   onChange={(e) => setHelperName(e.target.value)}
                   placeholder={
-                    isKorean ? "예: 홍길동 (익산 마스터)" : "e.g. Master Kim"
+                    isKorean ? "예: 홍길동 · 익산 마스터" : "e.g. Master Kim"
                   }
-                  className="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-800 p-3.5 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-blue-500"
+                  className="mt-1.5 w-full droplet-input border border-slate-700 bg-slate-800 p-3.5 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-blue-500"
                 />
               </div>
 
@@ -545,7 +559,7 @@ export function HelperAuthCard({
                   value={regionText}
                   onChange={(e) => setRegionText(e.target.value)}
                   placeholder="예: 전북특별자치도 익산시"
-                  className="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-800 p-3.5 text-sm font-bold text-white outline-none focus:border-blue-500"
+                  className="mt-1.5 w-full droplet-input border border-slate-700 bg-slate-800 p-3.5 text-sm font-bold text-white outline-none focus:border-blue-500"
                 />
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {["전북 익산시", "전북 전주시", "서울 강남구", "경기 수원시", "인근 전지역"].map((chip) => (
@@ -553,7 +567,7 @@ export function HelperAuthCard({
                       key={chip}
                       type="button"
                       onClick={() => setRegionText(chip)}
-                      className="rounded-lg border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-[11px] font-bold text-slate-300 hover:border-blue-500 hover:text-white transition"
+                      className="droplet-pill border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-[11px] font-bold text-slate-300 hover:border-blue-500 hover:text-white transition"
                     >
                       +{chip}
                     </button>
@@ -578,7 +592,7 @@ export function HelperAuthCard({
                 <p className="mt-1 text-[11px] text-slate-400">
                   {formatBilingual(
                     t("tech.selectServicesDesc"),
-                    "출동 및 해결 가능한 분야를 모두 눌러 선택해 주세요. (추후 워크스페이스에서 변경 가능)",
+                    "출동 및 해결 가능한 분야를 모두 눌러 선택해 주세요. · 추후 워크스페이스에서 변경 가능",
                   )}
                 </p>
 
@@ -591,7 +605,7 @@ export function HelperAuthCard({
                         key={srv.slug}
                         type="button"
                         onClick={() => handleToggleService(srv.slug)}
-                        className={`flex items-center gap-2 rounded-xl border p-2.5 text-left transition ${
+                        className={`flex items-center gap-2 droplet-card border p-2.5 text-left transition ${
                           isSelected
                             ? "border-blue-500 bg-blue-900/40 text-white shadow-xs"
                             : "border-slate-800 bg-slate-850 text-slate-400 hover:border-slate-700 hover:text-white"
@@ -611,7 +625,7 @@ export function HelperAuthCard({
               </div>
 
               {/* Terms Agreement */}
-              <label className="flex items-start gap-2.5 rounded-xl border border-slate-800 bg-slate-850 p-3.5 cursor-pointer">
+              <label className="flex items-start gap-2.5 droplet-card border border-slate-800 bg-slate-850 p-3.5 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={agreeTerms}
@@ -621,7 +635,7 @@ export function HelperAuthCard({
                 <span className="text-xs text-slate-300 leading-relaxed">
                   {formatBilingual(
                     t("tech.agreeTerms"),
-                    "LIFE.HELP 헬퍼 활동 규정 및 안전 수칙을 확인하였으며, 신속하고 친절한 고객 지원에 성실히 임할 것을 확약합니다. (주민등록번호 미수집)",
+                    "LIFE.HELP 헬퍼 활동 규정 및 안전 수칙을 확인하였으며, 신속하고 친절한 고객 지원에 성실히 임할 것을 확약합니다. · 주민등록번호 미수집",
                   )}
                 </span>
               </label>
@@ -630,7 +644,7 @@ export function HelperAuthCard({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-4 text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex flex-col items-center justify-center cursor-pointer border border-blue-500/30"
+                className="w-full droplet-btn-lg bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 py-4 text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition flex flex-col items-center justify-center cursor-pointer border border-blue-500/30"
               >
                 {loading ? (
                   <span>{formatBilingual(t("tech.verifying"), "처리 중...")}</span>
@@ -646,7 +660,8 @@ export function HelperAuthCard({
               </button>
             </>
           )}
-        </form>
+          </form>
+        </div>
       )}
     </div>
   );

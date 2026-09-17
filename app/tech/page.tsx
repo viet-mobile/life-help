@@ -30,14 +30,14 @@ export default function TechPage() {
             title={formatBilingual("Go to LIFE.HELP Home", "LIFE.HELP 메인 홈으로 이동")}
           >
             <BrandLogo size="md" priority />
-            <span className="rounded-md bg-blue-900/60 px-1.5 py-0.5 text-[10px] sm:text-xs font-bold text-white border border-blue-700/50 group-hover:bg-blue-800 transition shrink-0">
+            <span className="droplet-pill bg-blue-900/60 px-2 py-0.5 text-[10px] sm:text-xs font-bold text-white border border-blue-700/50 group-hover:bg-blue-800 transition shrink-0">
               {formatBilingual(t("tech.helper"), "헬퍼")}
             </span>
           </Link>
           <Link
             href="/"
             onClick={navigateToMainHome}
-            className="hidden sm:inline-flex items-center gap-1 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-bold text-slate-300 hover:border-blue-500 hover:text-white transition cursor-pointer shrink-0"
+            className="hidden sm:inline-flex items-center gap-1 droplet-btn border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-bold text-slate-300 hover:border-blue-500 hover:text-white transition cursor-pointer shrink-0"
             title={formatBilingual(t("common.home"), "홈")}
           >
             <span>🏠</span>
@@ -49,18 +49,26 @@ export default function TechPage() {
           <LanguageSwitcher />
           {isLoggedIn ? (
             <Link href="/tech/workspace">
-              <Button variant="primary" className="text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
+              <Button variant="primary" className="droplet-btn text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
                 <span className="sm:hidden">{t("tech.workspace") || "워크스페이스"} →</span>
                 <span className="hidden sm:inline">{formatBilingual(t("tech.openWorkspaceBtn"), "내 워크스페이스 관리하기")} →</span>
               </Button>
             </Link>
           ) : (
-            <Link href="/tech/login">
-              <Button variant="secondary" className="text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
-                <span className="sm:hidden">{t("tech.login") || "로그인"}</span>
-                <span className="hidden sm:inline">{formatBilingual(t("tech.helperLogin"), "헬퍼 로그인")}</span>
-              </Button>
-            </Link>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <Link href="/services/job-help?tab=provider">
+                <Button variant="primary" className="droplet-btn text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black border-none shrink-0">
+                  <span className="sm:hidden">{t("customer.partnerRegisterLink") || "헬퍼 등록"}</span>
+                  <span className="hidden sm:inline">🎖️ {formatBilingual(t("customer.partnerRegisterLink"), "헬퍼 등록")}</span>
+                </Button>
+              </Link>
+              <Link href="/tech/login">
+                <Button variant="secondary" className="droplet-btn text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-3.5 shrink-0">
+                  <span className="sm:hidden">{t("tech.login") || "로그인"}</span>
+                  <span className="hidden sm:inline">{formatBilingual(t("tech.helperLogin"), "헬퍼 로그인")}</span>
+                </Button>
+              </Link>
+            </div>
           )}
         </div>
       </header>
@@ -69,10 +77,10 @@ export default function TechPage() {
       <section className="mx-auto w-full max-w-5xl py-8 sm:py-12">
         {/* Top Badges */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className="rounded-md bg-blue-900/60 px-2.5 py-1 text-xs font-bold text-blue-300 border border-blue-700/50">
+          <span className="droplet-pill bg-blue-900/60 px-3 py-1 text-xs font-bold text-blue-300 border border-blue-700/50">
             {formatBilingual(
               t("tech.officialPartners"),
-              "LIFE.HELP 공식 헬퍼(Helper)",
+              "LIFE.HELP 공식 헬퍼 Helper",
             )}
           </span>
           {isLoggedIn && (
@@ -80,7 +88,7 @@ export default function TechPage() {
               <button
                 type="button"
                 onClick={toggleActiveStatus}
-                className={`rounded-md px-2.5 py-1 text-xs font-bold transition flex items-center gap-1.5 ${
+                className={`droplet-pill px-3 py-1 text-xs font-bold transition flex items-center gap-1.5 ${
                   helper?.isActive
                     ? "bg-emerald-950 text-emerald-300 border border-emerald-700 hover:bg-emerald-900"
                     : "bg-amber-950 text-amber-300 border border-amber-700 hover:bg-amber-900"
@@ -92,15 +100,13 @@ export default function TechPage() {
                     : formatBilingual(t("tech.statusPausedShort"), "⏸ 일시 업무 중단")}
                 </span>
                 <span className="text-[10px] text-slate-400 font-normal">
-                  ({formatBilingual(t("tech.clickToToggle"), "클릭하여 변경")})
+                  · {formatBilingual(t("tech.clickToToggle"), "클릭하여 변경")}
                 </span>
               </button>
 
               {remainingDays > 0 && (
-                <span className="rounded-md bg-blue-950 px-2.5 py-1 text-xs font-bold text-blue-300 border border-blue-800">
-                  🛡️ {formatBilingual(t("workspace.securitySessionBadge"), "3개월 보안 세션")} (
-                  {remainingDays}{" "}
-                  {formatBilingual(t("workspace.daysRemaining"), "일 남음")})
+                <span className="droplet-pill bg-blue-950 px-3 py-1 text-xs font-bold text-blue-300 border border-blue-800">
+                  🛡️ {formatBilingual(t("workspace.securitySessionBadge"), "3개월 보안 세션")} · {remainingDays} {formatBilingual(t("workspace.daysRemaining"), "일 남음")}
                 </span>
               )}
             </>
@@ -151,7 +157,7 @@ export default function TechPage() {
         {/* Dynamic Content: If Logged In show Workspace Card, else show HelperAuthCard */}
         <div className="mt-8">
           {isLoggedIn ? (
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
+            <div className="droplet-card border border-slate-800 bg-slate-900/90 p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
                 <div>
                   <div className="flex items-center gap-2">
@@ -164,7 +170,7 @@ export default function TechPage() {
                         isKorean,
                       )}
                     </span>
-                    <span className="rounded-md bg-blue-900/60 px-2 py-0.5 text-xs font-bold text-blue-300">
+                    <span className="droplet-pill bg-blue-900/60 px-2.5 py-0.5 text-xs font-bold text-blue-300">
                       {formatBilingual(t("workspace.verifiedHelper"), "인증 헬퍼")}
                     </span>
                   </div>
@@ -175,14 +181,14 @@ export default function TechPage() {
 
                 <div className="flex items-center gap-2">
                   <Link href="/tech/workspace">
-                    <Button variant="primary" className="text-sm px-6 py-3">
+                    <Button variant="primary" className="droplet-btn-lg text-sm px-6 py-3">
                       {formatBilingual(t("tech.openWorkspaceBtn"), "내 워크스페이스 관리하기")} →
                     </Button>
                   </Link>
                   <button
                     type="button"
                     onClick={logout}
-                    className="rounded-xl border border-red-900/60 bg-red-950/40 px-4 py-3 text-xs font-bold text-red-300 hover:bg-red-900/60 transition"
+                    className="droplet-btn border border-red-900/60 bg-red-950/40 px-4 py-3 text-xs font-bold text-red-300 hover:bg-red-900/60 transition"
                   >
                     {formatBilingual(t("workspace.logout"), "로그아웃")}
                   </button>
@@ -190,7 +196,7 @@ export default function TechPage() {
               </div>
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-4">
+                <div className="droplet-card border border-slate-800 bg-slate-950/50 p-4">
                   <span className="text-[11px] font-bold text-slate-400 uppercase block">
                     {formatBilingual(t("tech.securitySessionExpiry"), "보안 세션 만료일")}
                   </span>
@@ -207,7 +213,7 @@ export default function TechPage() {
                   </span>
                 </div>
 
-                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-4">
+                <div className="droplet-card border border-slate-800 bg-slate-950/50 p-4">
                   <span className="text-[11px] font-bold text-slate-400 uppercase block">
                     {formatBilingual(t("tech.operatingRegions"), "활동 가능 지역")}
                   </span>
@@ -227,7 +233,7 @@ export default function TechPage() {
                   </span>
                 </div>
 
-                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-4">
+                <div className="droplet-card border border-slate-800 bg-slate-950/50 p-4">
                   <span className="text-[11px] font-bold text-slate-400 uppercase block">
                     {formatBilingual(t("tech.registeredServices"), "등록 서비스")}
                   </span>
@@ -242,7 +248,30 @@ export default function TechPage() {
               </div>
             </div>
           ) : (
-            <div className="max-w-2xl">
+            <div className="max-w-2xl space-y-4">
+              {/* Unified Helper Registration Banner */}
+              <div className="droplet-card border border-amber-500/40 bg-gradient-to-r from-amber-950/40 via-slate-900/80 to-slate-950 p-5 sm:p-6 backdrop-blur-xl">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl">🎖️</span>
+                      <h2 className="text-base sm:text-lg font-black text-amber-300">
+                        {formatBilingual(t("support.providerTitle"), "LIFE.HELP 공식 헬퍼 파트너 등록")}
+                      </h2>
+                    </div>
+                    <p className="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      {formatBilingual(t("support.providerDesc"), "100% 자율 일정으로 원하는 지역에서 활동하며 10대 생활·수리 전 분야에서 투명한 수익을 창출하세요.")}
+                    </p>
+                  </div>
+                  <Link
+                    href="/services/job-help?tab=provider"
+                    className="droplet-btn-lg inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs sm:text-sm px-5 py-3 shadow-lg shadow-amber-500/20 shrink-0 text-center cursor-pointer"
+                  >
+                    <span>{formatBilingual(t("customer.helperRegisterBtn"), "공식 헬퍼 등록 신청하기 →")}</span>
+                  </Link>
+                </div>
+              </div>
+
               <HelperAuthCard
                 defaultTab="register"
                 onSuccess={() => router.push("/tech/workspace")}
@@ -253,12 +282,12 @@ export default function TechPage() {
 
         {/* Hotline Bar */}
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <div className="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-xs text-slate-400">
+          <div className="droplet-card border border-slate-800 bg-slate-900/60 px-4 py-3 text-xs text-slate-400">
             📞 {formatBilingual(t("tech.hotline"), "주 시스템 핫라인")}:{" "}
             <span className="font-bold text-blue-300">010-5757-5757</span> /{" "}
             <span className="font-bold text-blue-300">010-5959-5959</span>
           </div>
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-xs text-slate-400">
+          <div className="droplet-card border border-slate-800 bg-slate-900/40 px-4 py-3 text-xs text-slate-400">
             🛡️{" "}
             <span>
               {formatBilingual(

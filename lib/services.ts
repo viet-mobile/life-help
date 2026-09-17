@@ -192,3 +192,14 @@ export function getLocalizedLanguageName(
 
   return langCode.toUpperCase();
 }
+
+export function getServiceBadge(serviceKey: string, locale: Locale): string {
+  if (!serviceKey) return "";
+  const translated = translate(locale, `serviceBadge.${serviceKey}`);
+  if (translated && !translated.startsWith("serviceBadge.")) {
+    return translated;
+  }
+  const koBadge = translate("ko", `serviceBadge.${serviceKey}`);
+  return koBadge && !koBadge.startsWith("serviceBadge.") ? koBadge : "";
+}
+

@@ -21,6 +21,20 @@ export const vietnamRegions: SidoData[] = [
         ]
       },
       {
+        "name": "Quận 2",
+        "dongs": [
+          "Thảo Điền",
+          "An Phú",
+          "An Khánh",
+          "Bình An",
+          "Bình Trưng Đông",
+          "Bình Trưng Tây",
+          "Thủ Thiêm",
+          "Thạnh Mỹ Lợi",
+          "Cát Lái"
+        ]
+      },
+      {
         "name": "Quận 3",
         "dongs": [
           "Phường 1",
@@ -74,9 +88,28 @@ export const vietnamRegions: SidoData[] = [
         ]
       },
       {
+        "name": "Quận 6",
+        "dongs": [
+          "Phường 1",
+          "Phường 2",
+          "Phường 3",
+          "Phường 4",
+          "Phường 5",
+          "Phường 6",
+          "Phường 7",
+          "Phường 8",
+          "Phường 9",
+          "Phường 10",
+          "Phường 11",
+          "Phường 12",
+          "Phường 13",
+          "Phường 14"
+        ]
+      },
+      {
         "name": "Quận 7",
         "dongs": [
-          "Tân Phong (Phú Mỹ Hưng)",
+          "Tân Phong · Phú Mỹ Hưng",
           "Tân Phú",
           "Tân Hưng",
           "Tân Quy",
@@ -86,6 +119,43 @@ export const vietnamRegions: SidoData[] = [
           "Phú Mỹ",
           "Phú Thuận",
           "Bình Thuận"
+        ]
+      },
+      {
+        "name": "Quận 8",
+        "dongs": [
+          "Phường 1",
+          "Phường 2",
+          "Phường 3",
+          "Phường 4",
+          "Phường 5",
+          "Phường 6",
+          "Phường 7",
+          "Phường 8",
+          "Phường 9",
+          "Phường 10",
+          "Phường 11",
+          "Phường 12",
+          "Phường 13",
+          "Phường 14",
+          "Phường 15",
+          "Phường 16"
+        ]
+      },
+      {
+        "name": "Quận 9",
+        "dongs": [
+          "Hiệp Phú",
+          "Long Thạnh Mỹ",
+          "Phước Long A",
+          "Phước Long B",
+          "Tân Phú",
+          "Tăng Nhơn Phú A",
+          "Tăng Nhơn Phú B",
+          "Long Bình",
+          "Long Phước",
+          "Phú Hữu",
+          "Trường Thạnh"
         ]
       },
       {
