@@ -13,6 +13,9 @@ import {
   getIconMetadata,
 } from "@/lib/i18n/siteMetadata";
 
+import { TopPwaBar } from "@/components/pwa/TopPwaBar";
+import { PwaRegister } from "@/components/pwa/PwaRegister";
+
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
   const lang = resolveLanguageFromHeaders(headersList);
@@ -60,11 +63,20 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body>
         <CountryProvider initialCountry={country}>
           <LocaleProvider initialLocale={lang as any}>
-            <RegionProvider initialCountry={country}>{children}</RegionProvider>
+            <RegionProvider initialCountry={country}>
+              <PwaRegister />
+              <TopPwaBar />
+              {children}
+            </RegionProvider>
           </LocaleProvider>
         </CountryProvider>
       </body>

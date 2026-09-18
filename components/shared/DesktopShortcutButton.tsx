@@ -1,8 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useCountry } from "@/lib/country/CountryContext";
+import {
+  detectUserOS,
+  getOsInstallGuide,
+  type UserOS,
+  type OsInstallGuide,
+} from "@/lib/pwa/pwaHelper";
 import {
   getDomainShortcutDetails,
   downloadDesktopShortcut,
@@ -25,7 +32,8 @@ export function DesktopShortcutButton({
 
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [installPrompt, setInstallPrompt] = useState<any>(null);
+  const [os, setOs] = useState<UserOS>("windows");
+  const [guide, setGuide] = useState<OsInstallGuide>(() => getOsInstallGuide("windows", "ko"));
   const [details, setDetails] = useState<DomainShortcutDetails>(() =>
     getDomainShortcutDetails({
       host: typeof window !== "undefined" ? window.location.host : "korea.life.help",
@@ -36,6 +44,10 @@ export function DesktopShortcutButton({
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      const detected = detectUserOS();
+      setOs(detected);
+      setGuide(getOsInstallGuide(detected, locale));
+
       const searchParams = new URLSearchParams(window.location.search);
       if (portal) {
         searchParams.set("portal", portal);
@@ -53,17 +65,6 @@ export function DesktopShortcutButton({
     }
   }, [locale, country, portal]);
 
-  useEffect(() => {
-    const handleBeforeInstall = (e: Event) => {
-      e.preventDefault();
-      setInstallPrompt(e);
-    };
-    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
-    return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
-    };
-  }, []);
-
   const handleDownload = () => {
     downloadDesktopShortcut(details);
     setCopied(true);
@@ -71,35 +72,48 @@ export function DesktopShortcutButton({
   };
 
   const handlePwaInstall = async () => {
-    if (installPrompt) {
-      installPrompt.prompt();
-      const choice = await installPrompt.userChoice;
-      if (choice.outcome === "accepted") {
-        setInstallPrompt(null);
-        setIsOpen(false);
+    if (typeof window !== "undefined" && window.deferredPwaPrompt) {
+      try {
+        const promptEvent = window.deferredPwaPrompt;
+        promptEvent.prompt();
+        const choice = await promptEvent.userChoice;
+        if (choice.outcome === "accepted") {
+          window.deferredPwaPrompt = null;
+          setIsOpen(false);
+          return;
+        }
+      } catch {
+        // Continue
       }
     }
+    setIsOpen(true);
   };
 
   const isKorean = locale === "ko";
-
-  // STRICT RULE: ABSOLUTELY ZERO PARENTHESES IN KOREAN TEXT
   const buttonLabel = isKorean
-    ? "🖥️ 바로가기 저장"
-    : formatBilingual("🖥️ Desktop Shortcut", "🖥️ 바로가기 저장");
+    ? guide.buttonLabelKo
+    : formatBilingual(guide.buttonLabelEn, guide.buttonLabelKo);
+
+  const hasPwaPrompt = typeof window !== "undefined" && !!window.deferredPwaPrompt;
 
   return (
     <>
       {variant === "header" && (
         <button
           type="button"
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            if (hasPwaPrompt && (os === "windows" || os === "android")) {
+              handlePwaInstall();
+            } else {
+              setIsOpen(true);
+            }
+          }}
           className={`droplet-pill inline-flex items-center gap-1 border border-slate-300 bg-white/95 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-black text-slate-800 hover:bg-slate-100 hover:border-slate-400 transition cursor-pointer shadow-2xs ${className}`}
-          title={isKorean ? "바탕화면에 바로가기 저장" : "Save desktop shortcut"}
+          title={isKorean ? "홈 화면 또는 바탕화면에 바로가기 앱 추가" : "Add shortcut app to home screen or desktop"}
         >
-          <span>🖥️</span>
+          <span>{os === "ios" || os === "ipados" || os === "android" ? "📱" : "🖥️"}</span>
           <span className="hidden sm:inline">
-            {isKorean ? "바탕화면 바로가기" : "Desktop Shortcut"}
+            {buttonLabel.replace(/^[📱🖥️💻\s]+/, "")}
           </span>
           <span className="sm:hidden">
             {isKorean ? "바로가기" : "Shortcut"}
@@ -111,10 +125,10 @@ export function DesktopShortcutButton({
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className={`inline-flex items-center gap-1 text-slate-600 hover:text-slate-900 font-bold transition cursor-pointer text-xs ${className}`}
+          className={`inline-flex items-center gap-1.5 text-slate-600 hover:text-slate-900 font-bold transition cursor-pointer text-xs ${className}`}
         >
-          <span>🖥️</span>
-          <span>{isKorean ? "바탕화면 바로가기 저장" : "Save Desktop Shortcut"}</span>
+          <span>{os === "ios" || os === "ipados" || os === "android" ? "📱" : "🖥️"}</span>
+          <span>{buttonLabel}</span>
         </button>
       )}
 
@@ -123,9 +137,11 @@ export function DesktopShortcutButton({
           onClick={() => setIsOpen(true)}
           className={`droplet-card p-3 border border-slate-200 bg-white/90 hover:bg-white hover:border-blue-300 transition cursor-pointer text-center ${className}`}
         >
-          <span className="text-2xl mb-1 block">🖥️</span>
+          <span className="text-2xl mb-1 block">
+            {os === "ios" || os === "ipados" || os === "android" ? "📱" : "🖥️"}
+          </span>
           <span className="text-xs sm:text-sm font-black text-slate-900 block">
-            {isKorean ? "바탕화면 바로가기" : "Desktop Shortcut"}
+            {buttonLabel}
           </span>
           <span className="text-[10px] text-slate-500 mt-0.5 block">
             {details.canonicalDomain}
@@ -135,37 +151,52 @@ export function DesktopShortcutButton({
 
       {/* Modal Dialog */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-xs animate-fadeIn">
-          <div className="relative w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-xs animate-fadeIn"
+        >
+          <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl max-h-[92vh] overflow-y-auto text-slate-900">
             {/* Close button */}
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold text-lg cursor-pointer p-1"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold text-lg cursor-pointer p-1 rounded-full transition"
               title={isKorean ? "닫기" : "Close"}
             >
               ✕
             </button>
 
-            <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-2xl border border-blue-200">
-                🖥️
-              </span>
+            <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+              <div className="relative w-12 h-12 shrink-0 rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 flex items-center justify-center shadow-xs">
+                <Image
+                  src={details.iconPngUrl}
+                  alt={details.shortName}
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+              </div>
               <div>
-                <h3 className="text-base sm:text-lg font-black text-slate-900">
-                  {isKorean ? "바탕화면 바로가기 저장" : "Save Desktop Shortcut"}
+                <div className="flex items-center gap-2">
+                  <span className="rounded-md bg-blue-100 px-2 py-0.5 text-[10px] font-black text-blue-800">
+                    {guide.osDisplayName}
+                  </span>
+                  <span className="text-xs font-mono font-bold text-slate-500">
+                    {details.canonicalDomain}
+                  </span>
+                </div>
+                <h3 className="text-base sm:text-lg font-black text-slate-950 mt-0.5">
+                  {isKorean ? guide.modalTitleKo : guide.modalTitleEn}
                 </h3>
-                <p className="text-xs text-slate-500">
-                  {details.canonicalDomain}
-                </p>
               </div>
             </div>
 
-            {/* Shortcut Info Card */}
-            <div className="mt-4 space-y-2.5 rounded-2xl bg-slate-50 p-4 border border-slate-200 text-xs">
+            {/* Target URL & Icon Preview */}
+            <div className="mt-4 space-y-2 rounded-2xl bg-slate-50 p-4 border border-slate-200 text-xs">
               <div>
-                <span className="text-slate-500 font-semibold block">
-                  {isKorean ? "🌐 연결 도메인" : "Domain URL"}
+                <span className="text-slate-500 font-bold block text-[11px]">
+                  {isKorean ? "연결 대상 도메인 주소:" : "Target Domain URL:"}
                 </span>
                 <span className="font-mono font-bold text-blue-800 text-sm break-all">
                   {details.canonicalUrl}
@@ -173,8 +204,8 @@ export function DesktopShortcutButton({
               </div>
 
               <div className="pt-2 border-t border-slate-200">
-                <span className="text-slate-500 font-semibold block">
-                  {isKorean ? "📝 번역된 사이트 설명" : "Site URL Description"}
+                <span className="text-slate-500 font-bold block text-[11px]">
+                  {isKorean ? "설명:" : "Description:"}
                 </span>
                 <p className="mt-1 font-medium text-slate-800 leading-relaxed bg-white p-2.5 rounded-xl border border-slate-200/80">
                   {details.description}
@@ -184,42 +215,60 @@ export function DesktopShortcutButton({
 
             {copied && (
               <div className="mt-3 rounded-xl bg-emerald-50 border border-emerald-300 p-2.5 text-center text-xs font-bold text-emerald-800">
-                ✓ {isKorean ? "바로가기 파일이 다운로드되었습니다. 다운로드된 파일을 바탕화면에 두시면 즉시 접속 가능합니다." : "Shortcut file downloaded. Move it to your desktop for 1-click access."}
+                ✓ {isKorean ? "바로가기 파일이 다운로드 폴더에 안전하게 저장되었습니다." : "Shortcut file downloaded safely."}
               </div>
             )}
 
-            {/* Actions */}
+            {/* Step-by-Step Installation Instructions */}
             <div className="mt-5 space-y-2.5">
-              <button
-                type="button"
-                onClick={handleDownload}
-                className="w-full rounded-2xl bg-blue-700 hover:bg-blue-800 py-3.5 text-center text-sm font-black text-white shadow-md transition active:scale-[0.99] cursor-pointer flex items-center justify-center gap-2"
-              >
-                <span>📥</span>
-                <span>
-                  {isKorean ? "바탕화면 바로가기 파일 다운로드" : "Download Desktop Shortcut File"}
-                </span>
-              </button>
+              <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">
+                {isKorean ? "운영체제별 바로가기 추가 절차:" : "Installation Instructions:"}
+              </h4>
+              <ol className="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                {(isKorean ? guide.stepsKo : guide.stepsEn).map((step, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-2.5 border border-slate-100"
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[11px] font-black text-white">
+                      {idx + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
 
-              {installPrompt && (
+            {/* Actions */}
+            <div className="mt-6 flex flex-col gap-2.5">
+              {hasPwaPrompt && (
                 <button
                   type="button"
                   onClick={handlePwaInstall}
-                  className="w-full rounded-2xl border border-blue-300 bg-blue-50 hover:bg-blue-100 py-3 text-center text-xs sm:text-sm font-black text-blue-900 transition cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full rounded-2xl bg-blue-600 hover:bg-blue-700 py-3 text-sm font-black text-white shadow-md transition cursor-pointer"
                 >
-                  <span>📲</span>
-                  <span>
-                    {isKorean ? "브라우저 홈 화면에 앱으로 추가" : "Add to Home Screen as App"}
-                  </span>
+                  🚀 {isKorean ? "지금 1클릭 앱 설치하기" : "Install App Now"}
                 </button>
               )}
-            </div>
 
-            <p className="mt-3 text-[11px] text-slate-400 text-center leading-relaxed">
-              {isKorean
-                ? "💡 크롬·엣지 브라우저의 상단 주소창 아이콘을 바탕화면으로 드래그하셔도 바로가기가 생성됩니다."
-                : "Tip: You can also drag the address bar icon to your desktop."}
-            </p>
+              {os === "windows" && (
+                <button
+                  type="button"
+                  onClick={handleDownload}
+                  className="w-full rounded-2xl border border-slate-300 bg-white hover:bg-slate-50 py-2.5 text-xs font-bold text-slate-800 transition cursor-pointer"
+                >
+                  🖥️ {isKorean ? "Windows 전통 바로가기 파일 · .url 다운로드" : "Download Classic Windows .url File"}
+                </button>
+              )}
+
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="w-full rounded-2xl bg-slate-100 hover:bg-slate-200 py-2.5 text-xs font-bold text-slate-600 transition cursor-pointer"
+              >
+                {isKorean ? "닫기" : "Close"}
+              </button>
+            </div>
           </div>
         </div>
       )}

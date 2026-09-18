@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -23,7 +24,9 @@ import {
   formatCustomerDisplayName,
 } from "@/lib/id/userIdentifier";
 
-export default function CustomerChatPage() {
+function CustomerChatPageContent() {
+  const searchParams = useSearchParams();
+  const sessionParam = searchParams.get("session");
   const { locale, setLocale, currentMeta, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const { selectedRegion, formattedRegion, shortRegionText, openModal } = useRegion();
@@ -40,7 +43,15 @@ export default function CustomerChatPage() {
 
   // Active Sessions state
   const [sessions, setSessions] = useState<ProviderChatSession[]>(getStoredChatSessions);
-  const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
+  const [activeSessionId, setActiveSessionId] = useState<string | null>(sessionParam);
+
+  // Jump straight into the session created right after a service request submission
+  useEffect(() => {
+    if (sessionParam) {
+      setSessions(getStoredChatSessions());
+      setActiveSessionId(sessionParam);
+    }
+  }, [sessionParam]);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -512,5 +523,13 @@ export default function CustomerChatPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function CustomerChatPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-slate-50" />}>
+      <CustomerChatPageContent />
+    </Suspense>
   );
 }

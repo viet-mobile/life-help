@@ -50,6 +50,8 @@ export interface ProviderChatSession {
   messages: ProviderChatMessage[];
   problemDescription?: string;
   selectedOptions?: string[];
+  helperLastReadAt?: number;
+  customerLastReadAt?: number;
 }
 
 const STORAGE_PROVIDERS_KEY = "life_help_service_providers_v2";
@@ -411,5 +413,96 @@ export async function sendProviderChatMessage(
   }
 
   return newMsg;
+}
+
+/**
+ * Returns all real-time chat sessions currently routed to a given helper (by helperId),
+ * newest first, so a logged-in helper can find customer requests connected to them.
+ */
+export function getProviderChatSessionsForHelper(helperId: string): ProviderChatSession[] {
+  if (!helperId) return [];
+  return getStoredChatSessions()
+    .filter((s) => s.provider.helperId === helperId)
+    .sort((a, b) => b.createdAt - a.createdAt);
+}
+
+/**
+ * Marks a chat session as read by the given role, so unread badges clear.
+ */
+export function markSessionRead(sessionId: string, role: "customer" | "provider"): void {
+  const sessions = getStoredChatSessions();
+  const updated = sessions.map((s) => {
+    if (s.id !== sessionId) return s;
+    return {
+      ...s,
+      ...(role === "provider"
+        ? { helperLastReadAt: Date.now() }
+        : { customerLastReadAt: Date.now() }),
+    };
+  });
+
+  if (typeof window !== "undefined") {
+    localStorage.setItem(STORAGE_SESSIONS_KEY, JSON.stringify(updated));
+    notifyUpdate();
+  }
+}
+
+/**
+ * Counts customer messages the assigned helper has not yet read.
+ */
+export function getUnreadCountForHelper(session: ProviderChatSession): number {
+  const lastRead = session.helperLastReadAt || 0;
+  return session.messages.filter((m) => m.sender === "customer" && m.timestamp > lastRead).length;
+}
+
+/**
+ * Upserts an on-duty ServiceProvider record from a registered helper's live profile so that
+ * `findMatchingOnDutyProvider` can route new customer requests to real (non-seed) helpers,
+ * keyed by their persistent helperId. Existing rating/completedJobs stats are preserved.
+ */
+export function syncProviderFromHelperProfile(data: {
+  helperId: string;
+  name: string;
+  services: string[];
+  sido: string;
+  gungu: string;
+  onDuty: boolean;
+  dutyHours: string;
+  primaryLocale?: Locale;
+}): void {
+  if (typeof window === "undefined" || !data.helperId) return;
+  try {
+    const providers = getStoredProviders();
+    const idx = providers.findIndex((p) => p.helperId === data.helperId);
+    const existing = idx >= 0 ? providers[idx] : null;
+
+    const updatedProvider: ServiceProvider = {
+      id: existing?.id || `prov-${data.helperId}`,
+      helperId: data.helperId,
+      name: data.name || existing?.name || `헬퍼 · ${data.helperId}`,
+      phone: "ZERO-COLLECT",
+      avatarIcon: existing?.avatarIcon || "🔧",
+      serviceCategories: data.services,
+      country: existing?.country || "KR",
+      sido: data.sido,
+      gungu: data.gungu,
+      primaryLocale: data.primaryLocale || existing?.primaryLocale || "ko",
+      spokenLocales: existing?.spokenLocales || [data.primaryLocale || "ko"],
+      onDuty: data.onDuty,
+      dutyHours: data.dutyHours,
+      rating: existing?.rating ?? 5.0,
+      completedJobs: existing?.completedJobs ?? 0,
+    };
+
+    const updatedList =
+      idx >= 0
+        ? providers.map((p, i) => (i === idx ? updatedProvider : p))
+        : [updatedProvider, ...providers];
+
+    localStorage.setItem(STORAGE_PROVIDERS_KEY, JSON.stringify(updatedList));
+    notifyUpdate();
+  } catch {
+    // ignore
+  }
 }
 

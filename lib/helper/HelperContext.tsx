@@ -17,6 +17,7 @@ import {
   getOrCreateHelperId,
   formatHelperIdentifier,
 } from "@/lib/id/userIdentifier";
+import { syncProviderFromHelperProfile } from "@/lib/chat/providerChatStore";
 
 export interface HelperRegionItem {
   sido: string;
@@ -356,6 +357,19 @@ function persistHelper(profile: HelperProfile | null) {
     if (profile) {
       localStorage.setItem(HELPER_STORAGE_KEY, JSON.stringify(profile));
       syncHelperToRegistry(profile);
+
+      const helperId = profile.helperId || profile.contract?.helperId;
+      if (helperId && profile.contract) {
+        syncProviderFromHelperProfile({
+          helperId,
+          name: profile.contract.name,
+          services: profile.contract.services,
+          sido: profile.contract.regions[0]?.sido || "전북특별자치도",
+          gungu: profile.contract.regions[0]?.gungu || "익산시",
+          onDuty: profile.isActive,
+          dutyHours: profile.contract.availableHours,
+        });
+      }
     } else {
       localStorage.removeItem(HELPER_STORAGE_KEY);
     }

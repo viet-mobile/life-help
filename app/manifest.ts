@@ -28,7 +28,7 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     id: details.canonicalUrl,
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#1e3a8a",
+    theme_color: "#000000",
     lang: details.lang,
     icons: [
       {
@@ -42,6 +42,12 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
         sizes: "512x512",
         type: "image/png",
         purpose: "any",
+      },
+      {
+        src: details.iconPngUrl,
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
       },
       {
         src: details.iconIcoUrl,

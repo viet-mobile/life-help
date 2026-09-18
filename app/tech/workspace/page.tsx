@@ -12,6 +12,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { HelperCalendar } from "@/components/tech/HelperCalendar";
 import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
+import { HelperCustomerChatPanel } from "@/components/tech/HelperCustomerChatPanel";
 import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
 import {
   getAdminMessages,
@@ -20,6 +21,10 @@ import {
   ADMIN_MESSAGE_EVENT,
   type AdminMessage,
 } from "@/lib/admin/adminMessage";
+import {
+  getProviderChatSessionsForHelper,
+  getUnreadCountForHelper,
+} from "@/lib/chat/providerChatStore";
 
 const DAYS_CONFIG = [
   { key: "월", labelKey: "workspace.dayMon" },
@@ -70,6 +75,10 @@ export default function TechWorkspacePage() {
   const [showAdminChatModal, setShowAdminChatModal] = useState(false);
   const [replyText, setReplyText] = useState("");
 
+  // Real-time Customer Request Chat state
+  const [customerChatUnread, setCustomerChatUnread] = useState(0);
+  const [showCustomerChatPanel, setShowCustomerChatPanel] = useState(false);
+
   useEffect(() => {
     if (!isLoggedIn || !helper) {
       router.replace("/tech/login");
@@ -91,6 +100,28 @@ export default function TechWorkspacePage() {
     window.addEventListener(ADMIN_MESSAGE_EVENT, handleMsgUpdate);
     return () => window.removeEventListener(ADMIN_MESSAGE_EVENT, handleMsgUpdate);
   }, [refreshAdminMessages]);
+
+  const helperId = helper?.helperId || "";
+
+  const refreshCustomerChatUnread = useCallback(() => {
+    if (!helperId) return;
+    const total = getProviderChatSessionsForHelper(helperId).reduce(
+      (sum, s) => sum + getUnreadCountForHelper(s),
+      0,
+    );
+    setCustomerChatUnread(total);
+  }, [helperId]);
+
+  useEffect(() => {
+    refreshCustomerChatUnread();
+    const handleChatUpdate = () => refreshCustomerChatUnread();
+    window.addEventListener("life_help_provider_chat_update", handleChatUpdate);
+    window.addEventListener("storage", handleChatUpdate);
+    return () => {
+      window.removeEventListener("life_help_provider_chat_update", handleChatUpdate);
+      window.removeEventListener("storage", handleChatUpdate);
+    };
+  }, [refreshCustomerChatUnread]);
 
   if (!isLoggedIn || !helper) {
     return null;
@@ -301,6 +332,20 @@ export default function TechWorkspacePage() {
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               type="button"
+              onClick={() => setShowCustomerChatPanel(true)}
+              className="relative inline-flex items-center gap-1 sm:gap-1.5 droplet-btn border border-emerald-600/60 bg-emerald-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-emerald-300 hover:bg-emerald-900/80 transition shrink-0"
+              title={formatBilingual("Real-time customer messages", "고객 실시간 메시지")}
+            >
+              <span className="sm:hidden">💬 {formatBilingual("Customers", "고객")}</span>
+              <span className="hidden sm:inline">💬 {formatBilingual("Customer Messages", "고객 실시간 메시지")}</span>
+              {customerChatUnread > 0 && (
+                <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-rose-600 text-[9px] sm:text-[10px] font-black text-white animate-pulse">
+                  {customerChatUnread}
+                </span>
+              )}
+            </button>
+            <button
+              type="button"
               onClick={handleOpenAdminChat}
               className="relative inline-flex items-center gap-1 sm:gap-1.5 droplet-btn border border-blue-600/60 bg-blue-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition shrink-0"
               title={formatBilingual(t("workspace.adminChatTitle"), "본사 관리자 1:1 온라인 연락")}
@@ -380,6 +425,38 @@ export default function TechWorkspacePage() {
         {feedbackMsg && (
           <div className="droplet-card border border-blue-500/50 bg-blue-950/90 px-4 py-3 text-xs font-bold text-blue-200 shadow-lg animate-fade-in">
             ✓ {feedbackMsg}
+          </div>
+        )}
+
+        {/* New Customer Request Chat Notification Banner */}
+        {customerChatUnread > 0 && (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 droplet-banner border border-emerald-500/60 bg-emerald-950/50 p-4 text-emerald-200 shadow-md">
+            <div className="flex items-start gap-3">
+              <span className="text-xl">💬</span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <strong className="text-xs font-black text-emerald-300">
+                    {formatBilingual("[New Customer Request]", "[신규 고객 요청 메시지]")}
+                  </strong>
+                  <span className="droplet-pill bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300 border border-emerald-500/40">
+                    {customerChatUnread} {isKorean ? "건 미확인" : "unread"}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-emerald-100">
+                  {formatBilingual(
+                    "A customer submitted an online request and is waiting in a live 1:1 chat room.",
+                    "고객이 온라인으로 서비스를 요청하여 실시간 1:1 대화방에서 기다리고 있습니다.",
+                  )}
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowCustomerChatPanel(true)}
+              className="droplet-btn bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-2 text-xs font-black text-slate-950 hover:brightness-105 shadow-sm shadow-emerald-500/20 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
+            >
+              {formatBilingual("Open Chat", "대화방 열기")}
+            </button>
           </div>
         )}
 
@@ -818,6 +895,21 @@ export default function TechWorkspacePage() {
             onUpdateExclusions={handleUpdateExclusions}
           />
         </section>
+
+        {/* Real-time Customer Request Chat Panel */}
+        {showCustomerChatPanel && helperId && (
+          <HelperCustomerChatPanel
+            helperId={helperId}
+            providerName={contract.name}
+            providerLocale="ko"
+            isKorean={isKorean}
+            formatBilingual={formatBilingual}
+            onClose={() => {
+              setShowCustomerChatPanel(false);
+              refreshCustomerChatUnread();
+            }}
+          />
+        )}
 
         {/* 6. Admin 1:1 Direct Chat / Online Contact Modal */}
         {showAdminChatModal && (

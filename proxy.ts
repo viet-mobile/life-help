@@ -282,11 +282,13 @@ function buildInternalPath(
         : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "") || "/";
   }
 
-  // Bypass internal portal rewriting for global API endpoints and manifest
+  // Bypass internal portal rewriting for global API endpoints, manifest, service worker, and icons
   if (
     subpath.startsWith("/api/") ||
     subpath === "/manifest.webmanifest" ||
-    subpath === "/manifest.json"
+    subpath === "/manifest.json" ||
+    subpath === "/sw.js" ||
+    subpath.startsWith("/icon-")
   ) {
     return {
       pathname: subpath,

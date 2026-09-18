@@ -229,9 +229,9 @@ export function getDomainShortcutDetails(options?: {
   const iconPngUrl = `/logos/favicon-${iconSlug}.png`;
   const iconIcoUrl = `/logos/favicon-${iconSlug}.ico`;
 
-  // 8. Generate Windows Internet Shortcut (.url) content with UTF-8 BOM and Comment
+  // 8. Generate Windows Internet Shortcut (.url) content without BOM to ensure Windows Shell compatibility
   const urlFileContent =
-    "\uFEFF[InternetShortcut]\r\n" +
+    "[InternetShortcut]\r\n" +
     `URL=${canonicalUrl}\r\n` +
     `IconIndex=0\r\n` +
     `IconFile=https://${canonicalDomain}${iconIcoUrl}\r\n` +

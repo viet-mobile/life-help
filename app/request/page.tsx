@@ -17,6 +17,8 @@ import {
 } from "@/lib/region/regionLocalization";
 import { saveServiceRequest } from "@/lib/request/requestStore";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
+import { createProviderChatSession } from "@/lib/chat/providerChatStore";
+import { getOrCreateCustomerId, formatCustomerDisplayName } from "@/lib/id/userIdentifier";
 import { languages } from "@/messages";
 
 // 10 Services in exact requested order: 자주-분홍-주황-노랑-연두-민트-하늘-파랑-네이비-보라
@@ -236,6 +238,7 @@ function RequestPageContent() {
   const [selectedProblemOptions, setSelectedProblemOptions] = useState<string[]>([]);
   const [translatedResult, setTranslatedResult] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [chatSessionId, setChatSessionId] = useState<string | null>(null);
 
   // Active service and its assigned pastel theme
   const service = getService(selectedSlug);
@@ -314,13 +317,15 @@ function RequestPageContent() {
     }
     setTranslatedResult(translatedText);
 
+    const serviceName = service
+      ? isKorean
+        ? tKo(`service.${service.key}`)
+        : t(`service.${service.key}`)
+      : "일반 서비스";
+
     saveServiceRequest({
       serviceSlug: selectedSlug,
-      serviceName: service
-        ? isKorean
-          ? tKo(`service.${service.key}`)
-          : t(`service.${service.key}`)
-        : "일반 서비스",
+      serviceName,
       serviceIcon: service?.icon || "🛠️",
       description: problemDescription.trim() || (isHousing ? "주거/원룸 탐색 요청" : "긴급 수리 요청"),
       translatedDescription: translatedText,
@@ -331,6 +336,25 @@ function RequestPageContent() {
       phone: "",
       fileNames: selectedFileNames,
     });
+
+    // Immediately connect the customer with the matching on-duty helper via real-time 1:1 chat
+    try {
+      const customerId = getOrCreateCustomerId();
+      const chatSession = await createProviderChatSession({
+        serviceSlug: selectedSlug,
+        serviceName,
+        country: selectedRegion.country || "KR",
+        sido: selectedRegion.sido,
+        gungu: selectedRegion.gungu,
+        customerName: formatCustomerDisplayName(customerId, locale),
+        customerLocale: locale,
+        initialMessage: problemDescription.trim() || undefined,
+        selectedOptions: selectedProblemOptions,
+      });
+      setChatSessionId(chatSession.id);
+    } catch (err) {
+      console.error("Failed to create real-time chat session:", err);
+    }
 
     setIsSubmitting(false);
     setSubmitted(true);
@@ -440,7 +464,7 @@ function RequestPageContent() {
 
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
-                href="/chat"
+                href={chatSessionId ? `/chat?session=${chatSessionId}` : "/chat"}
                 className="droplet-btn-lg w-full sm:w-auto bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-7 py-3.5 text-base font-black text-white shadow-md hover:shadow-lg active:scale-[0.98] transition cursor-pointer text-center"
               >
                 💬 {formatBilingual(t("request.startLiveChat") || "실시간 1:1 대화 연결", "실시간 1:1 대화 연결")}
