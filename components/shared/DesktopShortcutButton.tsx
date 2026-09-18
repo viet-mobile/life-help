@@ -98,18 +98,7 @@ export function DesktopShortcutButton({
 
   return (
     <>
-      {/* Header variant disabled in favor of TopPwaBar at the top */}
-
-      {variant === "footer" && (
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          className={`inline-flex items-center gap-1.5 text-slate-600 hover:text-slate-900 font-bold transition cursor-pointer text-xs ${className}`}
-        >
-          <span>{os === "ios" || os === "ipados" || os === "android" ? "📱" : "🖥️"}</span>
-          <span>{buttonLabel}</span>
-        </button>
-      )}
+      {/* Header and footer variants disabled in favor of TopPwaBar at the top only */}
 
       {variant === "card" && (
         <div

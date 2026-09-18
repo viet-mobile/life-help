@@ -354,7 +354,7 @@ export function CustomerHome() {
               <span className="text-sm">🚨</span>
               <span className="text-xs sm:text-sm leading-tight">{t("customer.emergency")}</span>
               <span className="text-[10px] text-red-100 font-bold hidden xs:inline">
-                {locale === "ko" ? "(1초 연결 →)" : "→"}
+                {locale === "ko" ? "· 1초 연결 →" : "→"}
               </span>
             </Link>
           </div>

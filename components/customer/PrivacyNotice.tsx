@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale } from "@/lib/i18n/LocaleContext";
-import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 
 export default function PrivacyNotice() {
   const { locale, t, tKo, isBilingual } = useLocale();
@@ -75,7 +74,6 @@ export default function PrivacyNotice() {
                 ? `${t("customer.partnerTitle")} · 헬퍼 등록`
                 : t("customer.partnerTitle")}
             </a>
-            <DesktopShortcutButton variant="footer" />
           </div>
 
           <div className="text-slate-400 font-normal">
