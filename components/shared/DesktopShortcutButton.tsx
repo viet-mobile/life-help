@@ -98,28 +98,7 @@ export function DesktopShortcutButton({
 
   return (
     <>
-      {variant === "header" && (
-        <button
-          type="button"
-          onClick={() => {
-            if (hasPwaPrompt && (os === "windows" || os === "android")) {
-              handlePwaInstall();
-            } else {
-              setIsOpen(true);
-            }
-          }}
-          className={`droplet-pill inline-flex items-center gap-1 border border-slate-300 bg-white/95 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-black text-slate-800 hover:bg-slate-100 hover:border-slate-400 transition cursor-pointer shadow-2xs ${className}`}
-          title={isKorean ? "홈 화면 또는 바탕화면에 바로가기 앱 추가" : "Add shortcut app to home screen or desktop"}
-        >
-          <span>{os === "ios" || os === "ipados" || os === "android" ? "📱" : "🖥️"}</span>
-          <span className="hidden sm:inline">
-            {buttonLabel.replace(/^[📱🖥️💻\s]+/, "")}
-          </span>
-          <span className="sm:hidden">
-            {isKorean ? "바로가기" : "Shortcut"}
-          </span>
-        </button>
-      )}
+      {/* Header variant disabled in favor of TopPwaBar at the top */}
 
       {variant === "footer" && (
         <button

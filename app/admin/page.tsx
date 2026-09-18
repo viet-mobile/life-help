@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
-import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import {
   getRegisteredHelpers,
@@ -513,8 +512,6 @@ export default function AdminPage() {
               <span>🚪</span>
               <span className="hidden sm:inline">{t("admin.logout")}</span>
             </button>
-
-            <DesktopShortcutButton variant="header" portal="sys" className="bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700" />
 
             <LanguageSwitcher />
           </div>

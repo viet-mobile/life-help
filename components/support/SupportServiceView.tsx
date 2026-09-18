@@ -17,7 +17,6 @@ import {
 } from "@/lib/support/supportStore";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
 import { getServiceBadge } from "@/lib/services";
-import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 import {
   getOrCreateCustomerId,
   getOrCreateHelperId,
@@ -441,7 +440,6 @@ export function SupportServiceView({
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <DesktopShortcutButton variant="header" />
             <Link
               href="/"
               className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition"

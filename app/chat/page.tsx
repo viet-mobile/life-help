@@ -18,7 +18,6 @@ import {
   type ProviderChatSession,
   type ServiceProvider,
 } from "@/lib/chat/providerChatStore";
-import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 import {
   getOrCreateCustomerId,
   formatCustomerDisplayName,
@@ -160,7 +159,6 @@ function CustomerChatPageContent() {
               <span className="sm:hidden">🛠️ 헬퍼</span>
               <span className="hidden sm:inline">🛠️ {formatBilingual("Helper Portal", "생활 헬퍼 포털")}</span>
             </Link>
-            <DesktopShortcutButton variant="header" portal="chat" />
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
         </div>

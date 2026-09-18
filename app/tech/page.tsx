@@ -10,7 +10,6 @@ import { useHelper } from "@/lib/helper/HelperContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { getLocalizedAddress } from "@/lib/region/regionLocalization";
 import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
-import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 
 export default function TechPage() {
   const router = useRouter();
@@ -46,7 +45,6 @@ export default function TechPage() {
         </div>
 
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          <DesktopShortcutButton variant="header" portal="tech" className="bg-slate-900 border-slate-700 text-slate-200 hover:bg-slate-800" />
           <LanguageSwitcher />
           {isLoggedIn && (
             <Link href="/tech/workspace">
