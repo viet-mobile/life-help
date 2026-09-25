@@ -202,3 +202,15 @@ export interface MatchHelperResult {
   conversation_id?: string;
   escalation_id?: string;
 }
+
+export interface ReleaseAssignmentResult {
+  success: boolean;
+  assignment_id?: string;
+  request_id?: string;
+  new_assignment_status?: AssignmentStatus;
+  request_reopened?: boolean;
+  request_status?: ServiceRequestStatus;
+  error?: string;
+  current_status?: AssignmentStatus;
+}
+
