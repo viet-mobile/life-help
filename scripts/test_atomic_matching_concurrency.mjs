@@ -16,7 +16,9 @@ import path from "path";
 
 const supabaseUrl = process.env.TEST_SUPABASE_URL;
 const supabaseKey = process.env.TEST_SUPABASE_SERVICE_ROLE_KEY;
+const anonKey = process.env.TEST_SUPABASE_ANON_KEY;
 const allowDestructive = process.env.ALLOW_DESTRUCTIVE_STAGING_TESTS;
+const expectedStagingRef = process.env.EXPECTED_STAGING_PROJECT_REF;
 
 console.log("==================================================");
 console.log("LIFE.HELP Atomic Matching Concurrency Test Suite");
@@ -24,9 +26,20 @@ console.log("Status: TEST READY (Awaiting Staging DB)");
 console.log("==================================================");
 
 // ----------------------------------------------------
-// 1. Production Execution Prevention Guard (4-Layer Defense)
+// 1. Production Execution Prevention Guard (5-Layer Defense)
 // ----------------------------------------------------
 const KNOWN_PROD_PROJECT_REF = "wstdbymmkrqgtsibhcjz";
+
+// Absolute Priority Check 1: Direct production ref match in URL or variable
+if (supabaseUrl && supabaseUrl.includes(KNOWN_PROD_PROJECT_REF)) {
+  console.error("FATAL: Target URL matches prohibited production project ref (wstdbymmkrqgtsibhcjz)! Execution unconditionally aborted.");
+  process.exit(1);
+}
+
+if (expectedStagingRef && expectedStagingRef === KNOWN_PROD_PROJECT_REF) {
+  console.error("FATAL: EXPECTED_STAGING_PROJECT_REF cannot be set to production project ref! Execution unconditionally aborted.");
+  process.exit(1);
+}
 
 // Read production URL from .env.local if present
 let envLocalProdUrl = "";
@@ -39,6 +52,11 @@ try {
   }
 } catch {
   // Ignore file read error
+}
+
+if (envLocalProdUrl && supabaseUrl && supabaseUrl.trim() === envLocalProdUrl) {
+  console.error("FATAL: Target URL matches .env.local production Supabase URL! Execution unconditionally aborted.");
+  process.exit(1);
 }
 
 if (!supabaseUrl || !supabaseKey) {
@@ -55,15 +73,23 @@ if (allowDestructive !== "true") {
   process.exit(1);
 }
 
-// Guard B: Target URL must not point to known production reference
-if (supabaseUrl.includes(KNOWN_PROD_PROJECT_REF)) {
-  console.error("FATAL: Target URL matches known production project reference! Execution aborted.");
+// Guard B: EXPECTED_STAGING_PROJECT_REF is mandatory
+if (!expectedStagingRef) {
+  console.error("FATAL: EXPECTED_STAGING_PROJECT_REF environment variable is required to verify target environment.");
   process.exit(1);
 }
 
-// Guard C: Target URL must not match .env.local production URL
-if (envLocalProdUrl && supabaseUrl.trim() === envLocalProdUrl) {
-  console.error("FATAL: Target URL matches .env.local production Supabase URL! Execution aborted.");
+// Guard C: Extract actual project ref from TEST_SUPABASE_URL and verify exact match
+const urlMatch = supabaseUrl.match(/^https?:\/\/([^.]+)\.supabase\.(?:co|in)/);
+const actualProjectRef = urlMatch ? urlMatch[1] : "";
+
+if (!actualProjectRef) {
+  console.error("FATAL: Could not parse project ref from TEST_SUPABASE_URL. Must be in format https://<project-ref>.supabase.co");
+  process.exit(1);
+}
+
+if (actualProjectRef !== expectedStagingRef) {
+  console.error(`FATAL: Target URL project ref (${actualProjectRef}) does not match EXPECTED_STAGING_PROJECT_REF (${expectedStagingRef})! Execution aborted.`);
   process.exit(1);
 }
 
@@ -73,7 +99,7 @@ if (supabaseUrl.includes("life.help") || supabaseUrl.includes("prod")) {
   process.exit(1);
 }
 
-console.log("PASS: All 4 production prevention safety guards verified.");
+console.log("PASS: All 5 production prevention safety guards verified.");
 
 const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: { persistSession: false },
@@ -91,6 +117,30 @@ async function runConcurrencyTests() {
   const createdConversationIds = [];
 
   try {
+    // ----------------------------------------------------
+    // Live Security Check 1 & 2: RPC Privilege & Anon RLS Isolation
+    // ----------------------------------------------------
+    if (anonKey) {
+      console.log("\n[Security Check 1] Verifying anon cannot execute match_and_assign_helper RPC...");
+      const anonClient = createClient(supabaseUrl, anonKey, { auth: { persistSession: false } });
+      const { error: anonRpcErr } = await anonClient.rpc("match_and_assign_helper", {
+        p_request_id: "00000000-0000-0000-0000-000000000000",
+      });
+      if (!anonRpcErr) {
+        throw new Error("FAIL: Anon key was able to call match_and_assign_helper! RPC permission hardening failed!");
+      }
+      console.log(`PASS: RPC privilege denial verified for anon: ${anonRpcErr.message}`);
+
+      console.log("\n[Security Check 2] Verifying anon cannot directly query protected tables...");
+      const { data: anonReqData, error: anonReqErr } = await anonClient
+        .from("service_requests")
+        .select("*")
+        .limit(1);
+      if (!anonReqErr && anonReqData && anonReqData.length > 0) {
+        throw new Error("FAIL: Anon key was able to read service_requests data directly!");
+      }
+      console.log("PASS: RLS / permission denial verified for anon direct table access.");
+    }
     // ----------------------------------------------------
     // Scenario A: Same request concurrent matching (20 calls)
     // ----------------------------------------------------
