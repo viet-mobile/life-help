@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { DEVICE_OWNER_COOKIE, issueDeviceOwnerCookie } from "@/lib/referral/deviceOwnership";
 
 const REFERRAL_PATTERN = /^[A-Z]{8}$/;
 const DEVICE_ID_PATTERN = /^[A-Za-z0-9._:-]{16,200}$/;
@@ -96,5 +97,8 @@ export async function POST(request: Request) {
     if (!attribution.ok) return response({ success: false, code: "ATTRIBUTION_FAILED" }, 409);
   }
 
-  return response({ success: true, referralId: identity.referral_id, referralLink: `https://life.help/?ref=${identity.referral_id}` });
+  const result = response({ success: true, referralId: identity.referral_id, referralLink: `https://life.help/?ref=${identity.referral_id}` });
+  const ownerCookie = await issueDeviceOwnerCookie(deviceHash);
+  if (ownerCookie) result.cookies.set({ name: DEVICE_OWNER_COOKIE, value: ownerCookie, httpOnly: true, secure: true, sameSite: "strict", path: "/", maxAge: 30 * 24 * 60 * 60 });
+  return result;
 }
