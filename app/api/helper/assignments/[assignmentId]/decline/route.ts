@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { resolveAuthenticatedHelper } from "@/lib/helper/serverIdentity";
 
 export async function POST(_request: Request, context: { params: Promise<{ assignmentId: string }> }) {
-  const resolved = await resolveAuthenticatedHelper();
+  const resolved = await resolveAuthenticatedHelper(_request);
   if (!resolved.ok) return NextResponse.json({ success: false, code: resolved.code }, { status: resolved.status });
   const { assignmentId } = await context.params;
   const { data: assignment, error: assignmentError } = await resolved.value.client

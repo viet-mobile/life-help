@@ -5,8 +5,8 @@ function failure(status: number, code: string, message: string) {
   return NextResponse.json({ success: false, code, message }, { status, headers: { "Cache-Control": "no-store" } });
 }
 
-export async function GET() {
-  const resolved = await resolveAuthenticatedHelper();
+export async function GET(request: Request) {
+  const resolved = await resolveAuthenticatedHelper(request);
   if (!resolved.ok) {
     return failure(resolved.status, resolved.code, resolved.status === 401 ? "Authentication required." : "Helper account is not linked.");
   }

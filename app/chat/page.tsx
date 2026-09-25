@@ -22,10 +22,13 @@ import {
   getOrCreateCustomerId,
   formatCustomerDisplayName,
 } from "@/lib/id/userIdentifier";
+import { DbChatPanel } from "@/components/chat/DbChatPanel";
 
 function CustomerChatPageContent() {
   const searchParams = useSearchParams();
   const sessionParam = searchParams.get("session");
+    const requestIdParam = searchParams.get("requestId");
+    const capabilityParam = searchParams.get("capability");
   const { locale, setLocale, currentMeta, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const { selectedRegion, formattedRegion, shortRegionText, openModal } = useRegion();
@@ -65,6 +68,10 @@ function CustomerChatPageContent() {
   }, []);
 
   const activeSession = sessions.find((s) => s.id === activeSessionId);
+
+  if (requestIdParam && capabilityParam) {
+    return <DbChatPanel requestId={requestIdParam} capability={capabilityParam} />;
+  }
 
   // Matching On-Duty Provider for currently selected service & region
   const matchedProvider: ServiceProvider | null = useMemo(() => {

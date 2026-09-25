@@ -569,7 +569,7 @@ check("S8. recovery route authorizes before any other work",
     recoverRoute.indexOf("authorizeRecoveryRequest(request)") < Math.max(recoverRoute.indexOf("createServiceRoleClient()"), recoverRoute.indexOf("createRuntimeServiceRoleClient()")));
 check("S9. /api/requests requires Idempotency-Key before parsing body",
   route.indexOf("validateIdempotencyKey(") > 0 && route.indexOf("validateIdempotencyKey(") < route.indexOf("request.text()"));
-check("S10. client sends the Idempotency-Key header", /\[IDEMPOTENCY_HEADER\]: pendingSubmissionRef\.current\.key/.test(page));
+check("S10. client sends the Idempotency-Key header", /\[IDEMPOTENCY_HEADER\]: (?:pendingSubmissionRef\.current\.key|submissionKey)/.test(page));
 check("S11. client key is random (createIdempotencyKey), not derived from CST id/timestamp",
   /createIdempotencyKey\(\)/.test(page) && !/Idempotency[^\n]*(customer_id|CustomerId|Date\.now)/.test(page));
 check("S12. recovery re-uses match_and_assign_helper (no duplicated matching SQL/logic)",

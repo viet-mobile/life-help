@@ -22,7 +22,7 @@ import { languages } from "@/messages";
 
 // Result of POST /api/requests. Matching is decided solely by the DB match_and_assign_helper RPC.
 type RequestSubmitResult =
-  | { status: "MATCHED"; requestId: string; assignmentId: string; conversationId: string }
+  | { status: "MATCHED"; requestId: string; assignmentId: string; conversationId: string; capability?: string }
   | { status: "NO_HELPER_AVAILABLE"; requestId: string; subReason: string };
 
 interface RequestSubmitError {
@@ -336,11 +336,17 @@ function RequestPageContent() {
     }
 
     try {
+      const submissionKey = pendingSubmissionRef.current?.key;
+      if (!submissionKey) {
+        setSubmitError({ code: "REQUEST_KEY_UNAVAILABLE" });
+        setIsSubmitting(false);
+        return;
+      }
       const res = await fetch("/api/requests", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          [IDEMPOTENCY_HEADER]: pendingSubmissionRef.current.key,
+          [IDEMPOTENCY_HEADER]: submissionKey,
         },
         body: payloadJson,
       });
@@ -349,11 +355,17 @@ function RequestPageContent() {
       if (res.status === 400 || res.status === 409) pendingSubmissionRef.current = null;
 
       if (data?.success === true && data.status === "MATCHED") {
+        const capabilityResponse = await fetch("/api/requests/capability", {
+          method: "POST",
+          headers: { [IDEMPOTENCY_HEADER]: submissionKey },
+        });
+        const capabilityData = await capabilityResponse.json().catch(() => null);
         setSubmitResult({
           status: "MATCHED",
           requestId: data.requestId,
           assignmentId: data.assignmentId,
           conversationId: data.conversationId,
+          capability: typeof capabilityData?.capability === "string" ? capabilityData.capability : undefined,
         });
       } else if (data?.success === true && data.status === "NO_HELPER_AVAILABLE") {
         setSubmitResult({
@@ -474,9 +486,15 @@ function RequestPageContent() {
               </p>
             </div>
 
-            {/* TODO(P2-5): enter the DB conversation (submitResult.conversationId) once realtime DB chat
-                exists. The legacy localStorage /chat sessions must not be used for DB conversations. */}
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+              {isMatched && submitResult.capability && (
+                <Link
+                  href={`/chat?requestId=${submitResult.requestId}&capability=${encodeURIComponent(submitResult.capability)}`}
+                  className="droplet-btn-lg w-full sm:w-auto bg-blue-700 px-7 py-3.5 text-base font-bold text-white hover:bg-blue-800 text-center"
+                >
+                  {formatBilingual("Open secure chat", "안전한 대화방 열기")}
+                </Link>
+              )}
               <Link
                 href="/"
                 className="droplet-btn-lg w-full sm:w-auto border border-slate-300 bg-white px-7 py-3.5 text-base font-bold text-slate-700 hover:bg-slate-100 active:scale-[0.98] transition cursor-pointer text-center"

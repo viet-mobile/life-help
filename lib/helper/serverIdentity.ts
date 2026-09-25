@@ -15,17 +15,19 @@ export type AuthenticatedHelper = {
   client: SupabaseClient;
 };
 
-export async function resolveAuthenticatedHelper(): Promise<
+export async function resolveAuthenticatedHelper(request?: Request): Promise<
   | { ok: true; value: AuthenticatedHelper }
   | { ok: false; status: 401 | 403; code: "UNAUTHENTICATED" | "HELPER_NOT_LINKED" }
 > {
+  const bearer = request?.headers.get("authorization");
   const sessionClient = await createClient();
-  const { data, error } = await sessionClient.auth.getUser();
+  const serviceClient = await createRuntimeServiceRoleClient();
+  const authClient = bearer?.startsWith("Bearer ") && serviceClient ? serviceClient : sessionClient;
+  const { data, error } = await authClient.auth.getUser(bearer?.startsWith("Bearer ") ? bearer.slice("Bearer ".length) : undefined);
   if (error || !data.user) {
     return { ok: false, status: 401, code: "UNAUTHENTICATED" };
   }
 
-  const serviceClient = await createRuntimeServiceRoleClient();
   if (!serviceClient) {
     return { ok: false, status: 403, code: "HELPER_NOT_LINKED" };
   }
