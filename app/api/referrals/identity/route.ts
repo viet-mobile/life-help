@@ -69,7 +69,7 @@ export async function POST(request: Request) {
   if (!identity) {
     for (let attempt = 0; attempt < 5; attempt += 1) {
       const candidate = randomReferralId();
-      const create = await fetch(`${config.url}/rest/v1/referral_identities?select=id,referral_id,status`, { method: "POST", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ referral_id: candidate, subject_type: subjectType as SubjectType, device_id_hash: deviceHash, ...(subjectKey ? { subject_key: subjectKey } : {}) }) });
+      const create = await fetch(`${config.url}/rest/v1/referral_identities?select=id,referral_id,status`, { method: "POST", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ referral_id: candidate, subject_type: subjectType as SubjectType, device_id_hash: deviceHash, subject_key: subjectKey || candidate }) });
       const rows = create.ok ? await create.json() as Array<{ id: string; referral_id: string; status: string }> : [];
       if (create.ok && rows[0]) {
         identity = rows[0];
