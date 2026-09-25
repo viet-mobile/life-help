@@ -23,7 +23,7 @@ function response(body: Record<string, unknown>, status = 200) {
 }
 
 export async function POST(request: Request) {
-  let body: { deviceId?: unknown; subjectType?: unknown; referralId?: unknown };
+  let body: { deviceId?: unknown; subjectType?: unknown; referralId?: unknown; subjectKey?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -33,6 +33,7 @@ export async function POST(request: Request) {
   const deviceId = body.deviceId;
   const subjectType = body.subjectType;
   const referralId = body.referralId;
+  const subjectKey = typeof body.subjectKey === "string" ? body.subjectKey.trim() : undefined;
   if (typeof deviceId !== "string" || !DEVICE_ID_PATTERN.test(deviceId) || !["CUSTOMER", "HELPER", "ADMIN"].includes(String(subjectType))) {
     return response({ success: false, code: "VALIDATION_ERROR" }, 400);
   }
@@ -63,7 +64,7 @@ export async function POST(request: Request) {
   if (!identity) {
     for (let attempt = 0; attempt < 5; attempt += 1) {
       const candidate = randomReferralId();
-      const create = await fetch(`${config.url}/rest/v1/referral_identities?select=id,referral_id,status`, { method: "POST", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ referral_id: candidate, subject_type: subjectType as SubjectType, device_id_hash: deviceHash }) });
+      const create = await fetch(`${config.url}/rest/v1/referral_identities?select=id,referral_id,status`, { method: "POST", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ referral_id: candidate, subject_type: subjectType as SubjectType, device_id_hash: deviceHash, ...(subjectKey ? { subject_key: subjectKey } : {}) }) });
       const rows = create.ok ? await create.json() as Array<{ id: string; referral_id: string; status: string }> : [];
       if (create.ok && rows[0]) {
         identity = rows[0];
@@ -72,7 +73,7 @@ export async function POST(request: Request) {
       if (create.status !== 409) return response({ success: false, code: "REFERRAL_CREATE_FAILED" }, 500);
     }
   } else {
-    await fetch(`${config.url}/rest/v1/referral_identities?id=eq.${identity.id}`, { method: "PATCH", headers: { ...headers, Prefer: "return=minimal" }, body: JSON.stringify({ last_seen_at: new Date().toISOString() }) });
+    await fetch(`${config.url}/rest/v1/referral_identities?id=eq.${identity.id}`, { method: "PATCH", headers: { ...headers, Prefer: "return=minimal" }, body: JSON.stringify({ last_seen_at: new Date().toISOString(), ...(subjectKey ? { subject_key: subjectKey } : {}) }) });
   }
   if (!identity) return response({ success: false, code: "REFERRAL_CREATE_FAILED" }, 500);
 

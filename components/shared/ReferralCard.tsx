@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getOrCreateCustomerId } from "@/lib/id/userIdentifier";
 
 const DEVICE_KEY = "life_help_referral_device_id";
 
@@ -25,7 +26,7 @@ export function ReferralCard() {
     void fetch("/api/referrals/identity", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ deviceId: getDeviceId(), subjectType: "CUSTOMER", referralId: ref }),
+      body: JSON.stringify({ deviceId: getDeviceId(), subjectType: "CUSTOMER", subjectKey: getOrCreateCustomerId(), referralId: ref }),
     }).then(async (response) => {
       const data = await response.json().catch(() => null);
       if (response.ok && data?.success) setReferralId(data.referralId);
@@ -35,7 +36,7 @@ export function ReferralCard() {
 
   const applyManualReferral = async () => {
     const ref = manualReferral.trim().toUpperCase();
-    const response = await fetch("/api/referrals/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId: getDeviceId(), subjectType: "CUSTOMER", referralId: ref }) });
+    const response = await fetch("/api/referrals/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId: getDeviceId(), subjectType: "CUSTOMER", subjectKey: getOrCreateCustomerId(), referralId: ref }) });
     const data = await response.json().catch(() => null);
     setMessage(response.ok ? "Referral applied." : data?.code === "SELF_REFERRAL" ? "Self referral is not allowed." : "Referral ID is invalid or inactive.");
   };
