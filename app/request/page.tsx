@@ -15,11 +15,19 @@ import {
   getLocalizedGunguList,
   romanizeKoreanRegion,
 } from "@/lib/region/regionLocalization";
-import { saveServiceRequest } from "@/lib/request/requestStore";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
-import { createProviderChatSession } from "@/lib/chat/providerChatStore";
-import { getOrCreateCustomerId, formatCustomerDisplayName } from "@/lib/id/userIdentifier";
+import { getOrCreateCustomerId } from "@/lib/id/userIdentifier";
 import { languages } from "@/messages";
+
+// Result of POST /api/requests. Matching is decided solely by the DB match_and_assign_helper RPC.
+type RequestSubmitResult =
+  | { status: "MATCHED"; requestId: string; assignmentId: string; conversationId: string }
+  | { status: "NO_HELPER_AVAILABLE"; requestId: string; subReason: string };
+
+interface RequestSubmitError {
+  code: string;
+  requestId?: string;
+}
 
 // 10 Services in exact requested order: 자주-분홍-주황-노랑-연두-민트-하늘-파랑-네이비-보라
 const ORDERED_SERVICE_SLUGS = [
@@ -231,14 +239,15 @@ function RequestPageContent() {
     setSelectedProblemOptions([]);
   };
 
-  const [submitted, setSubmitted] = useState(false);
   const [selectedFileNames, setSelectedFileNames] = useState<string[]>([]);
   const [address, setAddress] = useState<string>("");
   const [problemDescription, setProblemDescription] = useState<string>("");
   const [selectedProblemOptions, setSelectedProblemOptions] = useState<string[]>([]);
-  const [translatedResult, setTranslatedResult] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [chatSessionId, setChatSessionId] = useState<string | null>(null);
+  // DB-issued ids (request / assignment / conversation UUIDs). Kept separate from the legacy
+  // localStorage chat sessions; DB chat entry is P2-5.
+  const [submitResult, setSubmitResult] = useState<RequestSubmitResult | null>(null);
+  const [submitError, setSubmitError] = useState<RequestSubmitError | null>(null);
 
   // Active service and its assigned pastel theme
   const service = getService(selectedSlug);
@@ -291,76 +300,80 @@ function RequestPageContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
+    if (!problemDescription.trim()) {
+      setSubmitError({ code: "VALIDATION_ERROR" });
+      return;
+    }
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    let translatedText = problemDescription.trim();
-    if (problemDescription.trim() && locale !== "ko") {
-      try {
-        const res = await fetch("/api/translate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            text: problemDescription.trim(),
-            from: locale,
-            to: "ko",
-          }),
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data.translatedText) {
-            translatedText = data.translatedText;
-          }
-        }
-      } catch (err) {
-        console.error("Translation request failed:", err);
-      }
-    }
-    setTranslatedResult(translatedText);
-
-    const serviceName = service
-      ? isKorean
-        ? tKo(`service.${service.key}`)
-        : t(`service.${service.key}`)
-      : "일반 서비스";
-
-    saveServiceRequest({
-      serviceSlug: selectedSlug,
-      serviceName,
-      serviceIcon: service?.icon || "🛠️",
-      description: problemDescription.trim() || (isHousing ? "주거/원룸 탐색 요청" : "긴급 수리 요청"),
-      translatedDescription: translatedText,
-      selectedOptions: selectedProblemOptions,
-      sido: selectedRegion.sido,
-      gungu: selectedRegion.gungu,
-      address: address.trim(),
-      phone: "",
-      fileNames: selectedFileNames,
-    });
-
-    // Immediately connect the customer with the matching on-duty helper via real-time 1:1 chat
+    // The original description is sent unmodified; the server stores it as-is.
+    // Helper-language translation of the first message is deferred to P2-5/P2-6.
     try {
-      const customerId = getOrCreateCustomerId();
-      const chatSession = await createProviderChatSession({
-        serviceSlug: selectedSlug,
-        serviceName,
-        country: selectedRegion.country || "KR",
-        sido: selectedRegion.sido,
-        gungu: selectedRegion.gungu,
-        customerName: formatCustomerDisplayName(customerId, locale),
-        customerLocale: locale,
-        initialMessage: problemDescription.trim() || undefined,
-        selectedOptions: selectedProblemOptions,
+      const res = await fetch("/api/requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_slug: selectedSlug,
+          customer_id: getOrCreateCustomerId(),
+          customer_locale: locale,
+          country: selectedRegion.country || "KR",
+          sido: selectedRegion.sido,
+          gungu: selectedRegion.gungu,
+          dong: selectedRegion.dong || "",
+          address: address.trim(),
+          description: problemDescription,
+          selected_options: selectedProblemOptions,
+        }),
       });
-      setChatSessionId(chatSession.id);
-    } catch (err) {
-      console.error("Failed to create real-time chat session:", err);
-    }
+      const data = await res.json().catch(() => null);
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+      if (data?.success === true && data.status === "MATCHED") {
+        setSubmitResult({
+          status: "MATCHED",
+          requestId: data.requestId,
+          assignmentId: data.assignmentId,
+          conversationId: data.conversationId,
+        });
+      } else if (data?.success === true && data.status === "NO_HELPER_AVAILABLE") {
+        setSubmitResult({
+          status: "NO_HELPER_AVAILABLE",
+          requestId: data.requestId,
+          subReason: data.subReason,
+        });
+      } else {
+        setSubmitError({
+          code: typeof data?.code === "string" ? data.code : "REQUEST_FAILED",
+          requestId: typeof data?.requestId === "string" ? data.requestId : undefined,
+        });
+      }
+    } catch {
+      setSubmitError({ code: "NETWORK_ERROR" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  if (submitted) {
+  const getSubmitErrorText = (err: RequestSubmitError) => {
+    if (err.requestId) {
+      // The request row exists (status SEARCHING) but matching did not complete. Resubmitting would
+      // create a duplicate request, so tell the customer to wait instead.
+      return formatBilingual(
+        `Your request was received, but helper assignment could not be completed. Please do not submit again. Request no. ${err.requestId.slice(0, 8)}`,
+        `신청은 접수되었으나 헬퍼 배정 처리가 완료되지 않았습니다. 다시 신청하지 마시고 잠시 기다려 주세요. 요청번호 ${err.requestId.slice(0, 8)}`
+      );
+    }
+    if (err.code === "VALIDATION_ERROR" || err.code === "INVALID_JSON") {
+      return formatBilingual("Please check the information you entered.", "입력하신 내용을 확인해 주세요.");
+    }
+    return formatBilingual(
+      "The request could not be submitted. Please try again shortly.",
+      "신청을 접수하지 못했습니다. 잠시 후 다시 시도해 주세요."
+    );
+  };
+
+  if (submitResult) {
+    const isMatched = submitResult.status === "MATCHED";
     return (
       <main className="min-h-screen bg-linear-to-b from-sky-50/40 via-amber-50/20 to-indigo-50/30">
         <header className="border-b border-slate-200/80 bg-white/85 backdrop-blur-md sticky top-0 z-20 shadow-2xs">
@@ -374,41 +387,30 @@ function RequestPageContent() {
 
         <section className="mx-auto max-w-3xl px-4 sm:px-5 py-8 sm:py-10">
           <div className="droplet-card bg-white p-6 sm:p-8 text-center shadow-sm border border-slate-200/90">
-            <div className="text-5xl">✅</div>
-            {locale === "ko" ? (
-              <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-snug">
-                서비스 신청이
-                <br />
-                접수되었습니다.
-              </h1>
-            ) : isBilingual ? (
-              <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-snug">
-                <span>{t("request.successTitle")}</span>
-                <span className="mt-2 block text-lg font-semibold text-slate-600">
-                  서비스 신청이 접수되었습니다.
-                </span>
-              </h1>
-            ) : (
-              <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-snug">
-                {t("request.successTitle")}
-              </h1>
-            )}
-            <div className="mt-3 text-sm sm:text-base leading-relaxed font-medium text-slate-600">
-              {isBilingual ? (
-                <>
-                  <span>{t("request.successNotice")}</span>
-                  <span className="block mt-1 opacity-80">
-                    작성하신 문제 상황이 헬퍼님의 언어인 한국어로 정확히 번역되어 원문과 함께 전달되었습니다.
-                  </span>
-                </>
-              ) : (
-                <span>
-                  {locale === "ko"
-                    ? "작성하신 문제 상황이 헬퍼님의 언어인 한국어로 정확히 번역되어 원문과 함께 전달되었습니다."
-                    : t("request.successNotice")}
-                </span>
-              )}
-            </div>
+            <div className="text-5xl">{isMatched ? "✅" : "🕒"}</div>
+            {/* Only ko + en copy for now; full 38-language strings are P2-8. */}
+            <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-snug whitespace-pre-line">
+              {isMatched
+                ? formatBilingual("A helper has been assigned.", "헬퍼가 배정되었습니다.", "\n")
+                : formatBilingual(
+                    "Your request has been received.",
+                    "서비스 신청이 접수되었습니다.",
+                    "\n"
+                  )}
+            </h1>
+            <p className="mt-3 text-sm sm:text-base leading-relaxed font-medium text-slate-600 whitespace-pre-line">
+              {isMatched
+                ? formatBilingual(
+                    "The helper for your region and service has been notified. The live chat connection will open here once it is ready.",
+                    "요청하신 지역과 서비스의 헬퍼에게 배정 알림이 전달되었습니다. 대화 연결이 준비되면 이곳에서 이어서 안내해 드립니다.",
+                    "\n"
+                  )
+                : formatBilingual(
+                    "No helper is available right now, so an administrator is reviewing your request.",
+                    "현재 배정 가능한 헬퍼가 없어 관리자가 확인 중입니다.",
+                    "\n"
+                  )}
+            </p>
 
             {/* Selected Options Summary */}
             {selectedProblemOptions.length > 0 && (
@@ -424,27 +426,17 @@ function RequestPageContent() {
               </div>
             )}
 
-            {/* Self-described Problem & Translation Display */}
+            {/* Customer's original text, exactly as submitted */}
             {problemDescription.trim() && (
               <div className="droplet-card mt-4 border border-slate-200 bg-slate-50 p-4 text-left space-y-2">
                 <div>
                   <span className="text-[11px] font-extrabold text-slate-500 block uppercase">
                     📝 {t("request.customerOriginalText") || "고객 작성 원문"} · {currentMeta?.nativeName || locale}:
                   </span>
-                  <p className="text-sm font-bold text-slate-900 mt-0.5 break-words">
-                    {problemDescription.trim()}
+                  <p className="text-sm font-bold text-slate-900 mt-0.5 break-words whitespace-pre-line">
+                    {problemDescription}
                   </p>
                 </div>
-                {translatedResult && locale !== "ko" && (
-                  <div className="pt-2 border-t border-slate-200">
-                    <span className="text-[11px] font-extrabold text-emerald-700 block uppercase">
-                      💡 {t("request.providerTranslatedText") || "담당 헬퍼 전달 번역문 한국어"}:
-                    </span>
-                    <p className="text-sm font-bold text-emerald-950 mt-0.5 break-words">
-                      {translatedResult}
-                    </p>
-                  </div>
-                )}
               </div>
             )}
 
@@ -462,13 +454,9 @@ function RequestPageContent() {
               </p>
             </div>
 
+            {/* TODO(P2-5): enter the DB conversation (submitResult.conversationId) once realtime DB chat
+                exists. The legacy localStorage /chat sessions must not be used for DB conversations. */}
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href={chatSessionId ? `/chat?session=${chatSessionId}` : "/chat"}
-                className="droplet-btn-lg w-full sm:w-auto bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-7 py-3.5 text-base font-black text-white shadow-md hover:shadow-lg active:scale-[0.98] transition cursor-pointer text-center"
-              >
-                💬 {formatBilingual(t("request.startLiveChat") || "실시간 1:1 대화 연결", "실시간 1:1 대화 연결")}
-              </Link>
               <Link
                 href="/"
                 className="droplet-btn-lg w-full sm:w-auto border border-slate-300 bg-white px-7 py-3.5 text-base font-bold text-slate-700 hover:bg-slate-100 active:scale-[0.98] transition cursor-pointer text-center"
@@ -815,9 +803,18 @@ function RequestPageContent() {
             </div>
           </div>
 
+          {submitError && (
+            <div
+              role="alert"
+              className="droplet-card border border-red-200 bg-red-50/90 p-3.5 text-xs sm:text-sm font-bold text-red-900 whitespace-pre-line"
+            >
+              ⚠️ {getSubmitErrorText(submitError)}
+            </div>
+          )}
+
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || Boolean(submitError?.requestId)}
             className={`droplet-btn-lg w-full ${theme.btnBg} px-6 py-3.5 sm:py-4 text-base sm:text-lg font-black text-white shadow-md transition-all duration-200 hover:shadow-lg active:scale-[0.98] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
           >
             {isSubmitting ? (

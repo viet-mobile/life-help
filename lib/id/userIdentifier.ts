@@ -69,32 +69,8 @@ export function getOrCreateHelperId(): string {
   }
 }
 
-/**
- * Formats customer display name adhering to rule: NO parentheses () in Korean text.
- * e.g. "고객 · CST-8392"
- */
-export function formatCustomerDisplayName(
-  customerId: string,
-  locale: string = "ko",
-  formatBilingual?: (target: string, ko: string) => string
-): string {
-  const cleanId = customerId.startsWith("CST-") ? customerId : `CST-${customerId}`;
-  const koText = `고객 · ${cleanId}`;
-
-  if (locale === "ko") return koText;
-
-  let targetTerm = "Customer";
-  if (locale === "vi") targetTerm = "Khách hàng";
-  else if (locale === "ja") targetTerm = "お客様";
-  else if (locale === "zh-Hans") targetTerm = "客户";
-  else if (locale === "zh-Hant") targetTerm = "客戶";
-  else if (locale === "ru") targetTerm = "Клиент";
-  else if (locale === "th") targetTerm = "ลูกค้า";
-  else if (locale === "id") targetTerm = "Pelanggan";
-
-  const targetText = `${targetTerm} · ${cleanId}`;
-  return formatBilingual ? formatBilingual(targetText, koText) : targetText;
-}
+// Display-name formatting lives in an environment-neutral module so server routes can share it.
+export { formatCustomerDisplayName } from "./customerDisplayName";
 
 /**
  * Formats helper display name adhering to rule: NO parentheses () in Korean text.
