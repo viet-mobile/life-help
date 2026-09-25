@@ -14,6 +14,31 @@ import { createClient } from "@supabase/supabase-js";
 import fs from "fs";
 import path from "path";
 
+// Load from .env.staging.local if present and not already in process.env
+const stagingEnvPath = path.resolve(process.cwd(), ".env.staging.local");
+if (fs.existsSync(stagingEnvPath)) {
+  try {
+    const envFileContent = fs.readFileSync(stagingEnvPath, "utf-8");
+    for (const line of envFileContent.split(/\r?\n/)) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const match = trimmed.match(/^([A-Za-z0-9_]+)\s*=\s*(.*)$/);
+      if (match) {
+        const key = match[1];
+        let val = match[2].trim();
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1);
+        }
+        if (!process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    }
+  } catch {
+    // Ignore read error
+  }
+}
+
 const supabaseUrl = process.env.TEST_SUPABASE_URL;
 const supabaseKey = process.env.TEST_SUPABASE_SERVICE_ROLE_KEY;
 const anonKey = process.env.TEST_SUPABASE_ANON_KEY;
