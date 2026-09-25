@@ -261,7 +261,6 @@ export function CustomerHome() {
 
   return (
     <main className="min-h-screen bg-linear-to-b from-sky-50/45 via-amber-50/25 via-pink-50/25 to-indigo-50/35 text-slate-900 overflow-x-hidden relative selection:bg-blue-100">
-      <ReferralCard />
       {/* Soft translucent pastel ambient glow */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div className="absolute -top-24 -left-20 w-80 h-80 rounded-full bg-sky-200/35 blur-3xl" />
@@ -318,6 +317,7 @@ export function CustomerHome() {
               <span>{locale === "ko" ? "빠른 신청" : t("request.title")}</span>
             </Link>
 
+            <ReferralCard compact />
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
         </div>

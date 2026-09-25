@@ -13,9 +13,10 @@ function getDeviceId() {
   return value;
 }
 
-export function ReferralCard() {
+export function ReferralCard({ compact = false }: { compact?: boolean }) {
   const { locale } = useLocale();
   const [referralId, setReferralId] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -39,6 +40,23 @@ export function ReferralCard() {
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1600);
   };
+
+  if (compact) {
+    return (
+      <div className="relative">
+        <button type="button" onClick={() => setIsOpen((value) => !value)} className="droplet-pill inline-flex max-w-[132px] items-center gap-1 border border-emerald-200 bg-emerald-50 px-2 py-1 text-[10px] font-black text-emerald-900 sm:max-w-[160px] sm:text-xs" aria-expanded={isOpen}>
+          <span className="shrink-0">ID ·</span><span className="truncate tracking-[0.12em]">{referralId || "--------"}</span><span aria-hidden="true">⌄</span>
+        </button>
+        {isOpen && <div className="absolute right-0 top-full z-40 mt-2 w-[min(88vw,280px)] rounded-xl border border-emerald-200 bg-white p-3 text-slate-900 shadow-xl" role="dialog">
+          <p className="text-[11px] font-bold text-slate-500">{locale === "vi" ? "ID LIFE.HELP" : "LIFE.HELP ID"}</p>
+          <code className="mt-1 block text-base font-black tracking-[0.18em]">{referralId || "--------"}</code>
+          <p className="mt-3 text-[11px] font-bold text-slate-500">{locale === "vi" ? "Liên kết giới thiệu" : "Referral link"}</p>
+          <p className="mt-1 break-all text-xs text-slate-700">{link || "-"}</p>
+          <button type="button" onClick={() => void copy()} className="mt-3 w-full rounded-lg bg-emerald-700 px-3 py-2 text-xs font-black text-white">{copied ? (locale === "vi" ? "Đã sao chép" : "Copied") : (locale === "vi" ? "Sao chép" : "Copy link")}</button>
+        </div>}
+      </div>
+    );
+  }
 
   return (
     <section className="mx-auto mt-6 max-w-6xl px-3 sm:px-4">
