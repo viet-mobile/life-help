@@ -1,5 +1,6 @@
 -- LIFE.HELP Core Service Matching & Atomic Assignment Schema
 -- Migration: 202609250001_core_service_matching_schema.sql
+-- Hardened: Namespaced app_notifications, RLS sealed, RPC permissions restricted, Helper concurrency guarded
 
 begin;
 
@@ -87,13 +88,24 @@ do $$ begin
   );
 exception when duplicate_object then null; end $$;
 
--- 2. Core Service Requests
+-- 2. Core Service Requests with 10-Service CHECK Constraint
 create table if not exists public.service_requests (
   id uuid primary key default gen_random_uuid(),
   customer_id text not null,
   customer_display_name text not null,
   customer_locale text not null default 'ko',
-  service_slug text not null,
+  service_slug text not null check (service_slug in (
+    'clog-clearing',
+    'leak-plumbing',
+    'boiler',
+    'cleaning',
+    'housing',
+    'bank-help',
+    'insurance-help',
+    'job-help',
+    'hospital-help',
+    'mobile-help'
+  )),
   country text not null default 'KR',
   sido text not null,
   gungu text not null,
@@ -130,11 +142,22 @@ create table if not exists public.helpers (
   updated_at timestamptz not null default now()
 );
 
--- 4. Helper Services Junction
+-- 4. Helper Services Junction with 10-Service CHECK Constraint
 create table if not exists public.helper_services (
   id uuid primary key default gen_random_uuid(),
   helper_id uuid not null references public.helpers(id) on delete cascade,
-  service_slug text not null,
+  service_slug text not null check (service_slug in (
+    'clog-clearing',
+    'leak-plumbing',
+    'boiler',
+    'cleaning',
+    'housing',
+    'bank-help',
+    'insurance-help',
+    'job-help',
+    'hospital-help',
+    'mobile-help'
+  )),
   created_at timestamptz not null default now(),
   unique(helper_id, service_slug)
 );
@@ -150,7 +173,7 @@ create table if not exists public.helper_regions (
   unique(helper_id, country, sido, gungu)
 );
 
--- 6. Request Assignments with Atomic Concurrency Guard
+-- 6. Request Assignments with Atomic Concurrency Guards
 create table if not exists public.request_assignments (
   id uuid primary key default gen_random_uuid(),
   request_id uuid not null references public.service_requests(id) on delete cascade,
@@ -161,9 +184,14 @@ create table if not exists public.request_assignments (
   completed_at timestamptz
 );
 
--- Guard: Only 1 active assignment allowed per service request at any given time
+-- Guard 1: Only 1 active assignment allowed per service request at any given time
 create unique index if not exists request_assignments_active_uidx
   on public.request_assignments(request_id)
+  where status in ('PENDING', 'NOTIFIED', 'ACCEPTED');
+
+-- Guard 2: Only 1 active assignment allowed per helper at any given time (one helper = one active service)
+create unique index if not exists request_assignments_helper_active_uidx
+  on public.request_assignments(helper_id)
   where status in ('PENDING', 'NOTIFIED', 'ACCEPTED');
 
 -- 7. Conversations
@@ -195,10 +223,10 @@ create table if not exists public.messages (
   created_at timestamptz not null default now()
 );
 
--- 9. Admin Escalation Queue
+-- 9. Admin Escalation Queue with Audit Safety (set null on request delete)
 create table if not exists public.admin_escalations (
   id uuid primary key default gen_random_uuid(),
-  request_id uuid not null references public.service_requests(id) on delete cascade,
+  request_id uuid references public.service_requests(id) on delete set null,
   reason public.escalation_reason not null,
   status public.escalation_status not null default 'PENDING',
   escalated_at timestamptz not null default now(),
@@ -207,8 +235,8 @@ create table if not exists public.admin_escalations (
   admin_notes text
 );
 
--- 10. Notifications
-create table if not exists public.notifications (
+-- 10. Namespaced App Notifications (Preserves existing public.notifications untouched)
+create table if not exists public.app_notifications (
   id uuid primary key default gen_random_uuid(),
   recipient_type public.notification_recipient_type not null,
   recipient_id text not null,
@@ -220,7 +248,7 @@ create table if not exists public.notifications (
   created_at timestamptz not null default now()
 );
 
--- Indexes for performance
+-- Performance Indexes
 create index if not exists service_requests_status_idx on public.service_requests(status);
 create index if not exists service_requests_customer_idx on public.service_requests(customer_id);
 create index if not exists helpers_on_duty_idx on public.helpers(on_duty, is_active);
@@ -228,13 +256,14 @@ create index if not exists helper_services_slug_idx on public.helper_services(se
 create index if not exists helper_regions_loc_idx on public.helper_regions(country, sido, gungu);
 create index if not exists messages_conv_idx on public.messages(conversation_id, created_at);
 create index if not exists escalations_status_idx on public.admin_escalations(status);
-create index if not exists notifications_recipient_idx on public.notifications(recipient_type, recipient_id, read_at);
+create index if not exists app_notifications_recipient_idx on public.app_notifications(recipient_type, recipient_id, read_at);
 
 -- 11. Atomic 1:1 Matching Procedure
 create or replace function public.match_and_assign_helper(p_request_id uuid)
 returns jsonb
 language plpgsql
 security definer
+set search_path = public, pg_temp
 as $$
 declare
   v_req record;
@@ -257,7 +286,7 @@ begin
     return jsonb_build_object('success', false, 'error', 'Invalid request status for matching');
   end if;
 
-  -- 2. Find best matching on-duty helper with row lock
+  -- 2. Find best matching on-duty helper with row lock (excluding helpers with active assignment)
   select h.* into v_helper
   from public.helpers h
   join public.helper_services hs on hs.helper_id = h.id
@@ -268,6 +297,11 @@ begin
     and hr.country = v_req.country
     and hr.sido = v_req.sido
     and (hr.gungu = v_req.gungu or hr.gungu = '전체' or hr.gungu = '')
+    and not exists (
+      select 1 from public.request_assignments ra
+      where ra.helper_id = h.id
+        and ra.status in ('PENDING', 'NOTIFIED', 'ACCEPTED')
+    )
   order by h.rating desc, h.completed_jobs desc
   limit 1
   for update skip locked;
@@ -304,7 +338,7 @@ begin
       v_helper.primary_locale
     ) returning id into v_conv_id;
 
-    insert into public.notifications (
+    insert into public.app_notifications (
       recipient_type,
       recipient_id,
       type,
@@ -342,10 +376,10 @@ begin
       v_req.id,
       'NO_HELPER_AVAILABLE',
       'PENDING',
-      '해당 지역 및 서비스 조건의 활동 헬퍼 부재로 관리자 큐 이관'
+      '해당 지역 및 서비스 조건의 가용 헬퍼 부재로 관리자 큐 이관'
     ) returning id into v_admin_esc_id;
 
-    insert into public.notifications (
+    insert into public.app_notifications (
       recipient_type,
       recipient_id,
       type,
@@ -369,5 +403,26 @@ begin
   end if;
 end;
 $$;
+
+-- 12. RPC Permission Hardening
+revoke execute on function public.match_and_assign_helper(uuid) from public;
+revoke execute on function public.match_and_assign_helper(uuid) from anon;
+revoke execute on function public.match_and_assign_helper(uuid) from authenticated;
+grant execute on function public.match_and_assign_helper(uuid) to service_role;
+
+-- 13. Row Level Security Seal (All 9 New Tables)
+alter table public.service_requests enable row level security;
+alter table public.helpers enable row level security;
+alter table public.helper_services enable row level security;
+alter table public.helper_regions enable row level security;
+alter table public.request_assignments enable row level security;
+alter table public.conversations enable row level security;
+alter table public.messages enable row level security;
+alter table public.admin_escalations enable row level security;
+alter table public.app_notifications enable row level security;
+
+-- Enforce server-side service_role boundary; deny direct anon/authenticated table access
+revoke all on public.service_requests, public.helpers, public.helper_services, public.helper_regions, public.request_assignments, public.conversations, public.messages, public.admin_escalations, public.app_notifications from anon, authenticated;
+grant select, insert, update, delete on public.service_requests, public.helpers, public.helper_services, public.helper_regions, public.request_assignments, public.conversations, public.messages, public.admin_escalations, public.app_notifications to service_role;
 
 commit;

@@ -1,4 +1,17 @@
 // LIFE.HELP Supabase Core Database Schema Types
+// Hardened: 10 Core Services Type, AppNotificationRow, and Nullable Escalation Reference
+
+export type CoreServiceSlug =
+  | "clog-clearing"
+  | "leak-plumbing"
+  | "boiler"
+  | "cleaning"
+  | "housing"
+  | "bank-help"
+  | "insurance-help"
+  | "job-help"
+  | "hospital-help"
+  | "mobile-help";
 
 export type ServiceRequestStatus =
   | "CREATED"
@@ -64,7 +77,7 @@ export interface ServiceRequestRow {
   customer_id: string;
   customer_display_name: string;
   customer_locale: string;
-  service_slug: string;
+  service_slug: CoreServiceSlug;
   country: string;
   sido: string;
   gungu: string;
@@ -103,7 +116,7 @@ export interface HelperRow {
 export interface HelperServiceRow {
   id: string;
   helper_id: string;
-  service_slug: string;
+  service_slug: CoreServiceSlug;
   created_at: string;
 }
 
@@ -155,7 +168,7 @@ export interface MessageRow {
 
 export interface AdminEscalationRow {
   id: string;
-  request_id: string;
+  request_id: string | null;
   reason: EscalationReason;
   status: EscalationStatus;
   escalated_at: string;
@@ -164,7 +177,7 @@ export interface AdminEscalationRow {
   admin_notes: string | null;
 }
 
-export interface NotificationRow {
+export interface AppNotificationRow {
   id: string;
   recipient_type: NotificationRecipientType;
   recipient_id: string;
@@ -175,6 +188,9 @@ export interface NotificationRow {
   read_at: string | null;
   created_at: string;
 }
+
+// Backward-compatible alias
+export type NotificationRow = AppNotificationRow;
 
 export interface MatchHelperResult {
   success: boolean;
