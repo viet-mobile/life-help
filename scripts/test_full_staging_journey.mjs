@@ -138,16 +138,16 @@ async function cleanup() {
 try {
   // A. Referral attribution
   const referrer = await referral(`${runId}-referrer-device`, "S3REF-A");
-  const referred = await referral(`${runId}-referred-device`, "CST-B2C3", referrer.body.referralId);
+  const referred = await referral(`${runId}-referred-device`, "QWERTYUI", referrer.body.referralId);
   if (referrer.response.status === 200 && /^[A-Z]{8}$/.test(referrer.body.referralId || "") && referred.response.status === 200) pass("Referral API attribution"); else fail("Referral API attribution", JSON.stringify({ referrer: referrer.response.status, referred: referred.response.status }));
   const refRows = await db(`referral_identities?select=id,referral_id,subject_key&referral_id=in.(${referrer.body.referralId},${referred.body.referralId})`);
   refRows.forEach((row) => referralIdentityIds.add(row.id));
-  const referredIdentityId = refRows.find((row) => row.subject_key === "CST-B2C3")?.id || "none";
+  const referredIdentityId = refRows.find((row) => row.subject_key === "QWERTYUI")?.id || "none";
   const attributionRows = await db(`referral_attributions?referred_identity_id=eq.${referredIdentityId}&select=id,referrer_identity_id`);
   if (attributionRows.length === 1) pass("Referral attribution DB"); else fail("Referral attribution DB", `count=${attributionRows.length}`);
-  const duplicate = await referral(`${runId}-referred-device`, "CST-B2C3", referrer.body.referralId);
+  const duplicate = await referral(`${runId}-referred-device`, "QWERTYUI", referrer.body.referralId);
   if ((duplicate.response.status === 200 || duplicate.response.status === 409) && (await db(`referral_attributions?referred_identity_id=eq.${referredIdentityId}`)).length === 1) pass("Duplicate attribution"); else fail("Duplicate attribution", `status=${duplicate.response.status}`);
-  const invalid = await referral(`${runId}-invalid-device`, "CST-Q7K8", "ZZZZZZZY");
+  const invalid = await referral(`${runId}-invalid-device`, "ASDFGHJK", "ZZZZZZZY");
   if (invalid.response.status === 400) pass("Invalid referral rejection"); else fail("Invalid referral rejection", invalid.response.status);
   const self = await referral(`${runId}-referrer-device`, "S3REF-A", referrer.body.referralId);
   if (self.response.status === 409) pass("Self-referral rejection"); else fail("Self-referral rejection", self.response.status);
@@ -156,7 +156,7 @@ try {
 
   // B. Helper assignment and accept
   const helperA = await createHelper("A", 5); const helperB = await createHelper("B", 4);
-  const request = await createRequest("CST-B2C3");
+  const request = await createRequest("QWERTYUI");
   const listAResponse = await fetch(`${base}/api/helper/assignments`, { headers: { Authorization: `Bearer ${helperA.accessToken}` } });
   const listA = await readResponse(listAResponse);
   const listB = await readResponse(await fetch(`${base}/api/helper/assignments`, { headers: { Authorization: `Bearer ${helperB.accessToken}` } }));

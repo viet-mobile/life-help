@@ -257,9 +257,9 @@ function RequestPageContent() {
     const key = "life_help_public_identity_device";
     const deviceId = localStorage.getItem(key) || `device-${crypto.randomUUID()}`;
     localStorage.setItem(key, deviceId);
-    void fetch("/api/users/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId }) })
+    void fetch("/api/referrals/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId, subjectType: "CUSTOMER" }) })
       .then((response) => response.json())
-      .then((data) => { if (typeof data.publicUserId === "string") setPublicUserId(data.publicUserId); });
+      .then((data) => { if (typeof data.referralId === "string") setPublicUserId(data.referralId); });
   }, []);
 
   // Active service and its assigned pastel theme

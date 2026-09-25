@@ -281,7 +281,7 @@ function CustomerChatPageContent() {
                       <span>{formatBilingual("Auto Safe Customer ID Assigned", "시스템 자동 발급 안심 식별자")}</span>
                     </span>
                     <span className="font-mono text-xs font-black text-emerald-950 bg-white px-2.5 py-1 rounded-lg border border-emerald-300 shadow-2xs">
-                      {customerId ? formatCustomerDisplayName(customerId, locale) : "고객 · CST-AUTO"}
+                      {customerId ? formatCustomerDisplayName(customerId, locale) : "LIFE.HELP ID"}
                     </span>
                   </div>
                   <p className="mt-2 text-xs text-emerald-800 leading-relaxed font-medium">
