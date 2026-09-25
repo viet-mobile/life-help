@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -17,6 +17,7 @@ import {
 } from "@/lib/region/regionLocalization";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
 import { getOrCreateCustomerId } from "@/lib/id/userIdentifier";
+import { IDEMPOTENCY_HEADER, createIdempotencyKey } from "@/lib/request/idempotencyKey";
 import { languages } from "@/messages";
 
 // Result of POST /api/requests. Matching is decided solely by the DB match_and_assign_helper RPC.
@@ -248,6 +249,8 @@ function RequestPageContent() {
   // localStorage chat sessions; DB chat entry is P2-5.
   const [submitResult, setSubmitResult] = useState<RequestSubmitResult | null>(null);
   const [submitError, setSubmitError] = useState<RequestSubmitError | null>(null);
+  // Idempotency key of the current logical submission, bound to the exact payload it was created for.
+  const pendingSubmissionRef = useRef<{ key: string; payloadJson: string } | null>(null);
 
   // Active service and its assigned pastel theme
   const service = getService(selectedSlug);
@@ -300,7 +303,11 @@ function RequestPageContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
-    if (!problemDescription.trim()) {
+
+    // Once the server reports an existing request (requestId), keep re-sending that exact submission
+    // with its key: the server replays its current result and never creates a second request.
+    const existing = submitError?.requestId ? pendingSubmissionRef.current : null;
+    if (!existing && !problemDescription.trim()) {
       setSubmitError({ code: "VALIDATION_ERROR" });
       return;
     }
@@ -309,24 +316,37 @@ function RequestPageContent() {
 
     // The original description is sent unmodified; the server stores it as-is.
     // Helper-language translation of the first message is deferred to P2-5/P2-6.
+    const payloadJson =
+      existing?.payloadJson ??
+      JSON.stringify({
+        service_slug: selectedSlug,
+        customer_id: getOrCreateCustomerId(),
+        customer_locale: locale,
+        country: selectedRegion.country || "KR",
+        sido: selectedRegion.sido,
+        gungu: selectedRegion.gungu,
+        dong: selectedRegion.dong || "",
+        address: address.trim(),
+        description: problemDescription,
+        selected_options: selectedProblemOptions,
+      });
+    // Same logical submission (identical payload) reuses its key; any edit starts a new submission.
+    if (pendingSubmissionRef.current?.payloadJson !== payloadJson) {
+      pendingSubmissionRef.current = { key: createIdempotencyKey(), payloadJson };
+    }
+
     try {
       const res = await fetch("/api/requests", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          service_slug: selectedSlug,
-          customer_id: getOrCreateCustomerId(),
-          customer_locale: locale,
-          country: selectedRegion.country || "KR",
-          sido: selectedRegion.sido,
-          gungu: selectedRegion.gungu,
-          dong: selectedRegion.dong || "",
-          address: address.trim(),
-          description: problemDescription,
-          selected_options: selectedProblemOptions,
-        }),
+        headers: {
+          "Content-Type": "application/json",
+          [IDEMPOTENCY_HEADER]: pendingSubmissionRef.current.key,
+        },
+        body: payloadJson,
       });
       const data = await res.json().catch(() => null);
+      // A rejected submission is final for its key; the next attempt gets a fresh one.
+      if (res.status === 400 || res.status === 409) pendingSubmissionRef.current = null;
 
       if (data?.success === true && data.status === "MATCHED") {
         setSubmitResult({
@@ -356,11 +376,11 @@ function RequestPageContent() {
 
   const getSubmitErrorText = (err: RequestSubmitError) => {
     if (err.requestId) {
-      // The request row exists (status SEARCHING) but matching did not complete. Resubmitting would
-      // create a duplicate request, so tell the customer to wait instead.
+      // The request row exists but has no matching result yet. The button now re-checks this same
+      // submission (same key) instead of creating a new request; server-side recovery also covers it.
       return formatBilingual(
-        `Your request was received, but helper assignment could not be completed. Please do not submit again. Request no. ${err.requestId.slice(0, 8)}`,
-        `신청은 접수되었으나 헬퍼 배정 처리가 완료되지 않았습니다. 다시 신청하지 마시고 잠시 기다려 주세요. 요청번호 ${err.requestId.slice(0, 8)}`
+        `Your request was received and helper assignment is still being processed. You can check the status again below. Request no. ${err.requestId.slice(0, 8)}`,
+        `신청은 접수되었으며 헬퍼 배정을 처리 중입니다. 아래 버튼으로 처리 상태를 다시 확인할 수 있습니다. 요청번호 ${err.requestId.slice(0, 8)}`
       );
     }
     if (err.code === "VALIDATION_ERROR" || err.code === "INVALID_JSON") {
@@ -814,7 +834,7 @@ function RequestPageContent() {
 
           <button
             type="submit"
-            disabled={isSubmitting || Boolean(submitError?.requestId)}
+            disabled={isSubmitting}
             className={`droplet-btn-lg w-full ${theme.btnBg} px-6 py-3.5 sm:py-4 text-base sm:text-lg font-black text-white shadow-md transition-all duration-200 hover:shadow-lg active:scale-[0.98] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
           >
             {isSubmitting ? (
@@ -822,6 +842,8 @@ function RequestPageContent() {
                 <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
                 <span>{formatBilingual(t("request.translatingAndSubmitting") || "번역 및 접수 중...", "번역 및 접수 중...")}</span>
               </>
+            ) : submitError?.requestId ? (
+              formatBilingual("Check request status", "처리 상태 확인")
             ) : (
               formatBilingual(t("request.submitButton"), "서비스 신청하기")
             )}

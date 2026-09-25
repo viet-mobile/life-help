@@ -26,6 +26,7 @@ const KNOWN_PROD_PROJECT_REF = "wstdbymmkrqgtsibhcjz";
 const KNOWN_STAGING_PROJECT_REF = "wreebowcbiymodswajwe";
 const PORT = Number(process.env.LIVE_TEST_PORT || 3217);
 const BASE = `http://localhost:${PORT}`;
+const RECOVERY_TOKEN = `live-recovery-${crypto.randomUUID()}-${crypto.randomUUID()}`;
 
 // ---------------------------------------------------------------------------
 // Env + guards
@@ -105,6 +106,7 @@ function startServer() {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: anonKey,
     SUPABASE_URL: url,
     SUPABASE_SERVICE_ROLE_KEY: serviceKey,
+    LIFE_HELP_RECOVERY_TOKEN: RECOVERY_TOKEN,
     NEXT_TELEMETRY_DISABLED: "1",
   };
   const log = fs.openSync(logPath, "w");
@@ -129,15 +131,15 @@ async function waitForServer(timeoutMs = 180000) {
   throw new Error("dev server did not become ready");
 }
 
-async function postRequest(body) {
+async function postRequest(body, idempotencyKey = crypto.randomUUID()) {
   const r = await fetch(`${BASE}/api/requests`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
     body: typeof body === "string" ? body : JSON.stringify(body),
   });
   const json = await r.json().catch(() => null);
   if (json?.requestId) created.requestIds.add(json.requestId);
-  return { status: r.status, json };
+  return { status: r.status, json, idempotencyKey };
 }
 
 // ---------------------------------------------------------------------------
@@ -168,6 +170,7 @@ async function seedHelper(suffix, sido, gungu, service, rating) {
 const REGION_A = { sido: `LIVE-${RUN_ID}-A`, gungu: "G1" }; // 1 helper
 const REGION_B = { sido: `LIVE-${RUN_ID}-B`, gungu: "G1" }; // no helper
 const REGION_C = { sido: `LIVE-${RUN_ID}-C`, gungu: "G1" }; // 2 helpers
+const REGION_D = { sido: `LIVE-${RUN_ID}-D`, gungu: "G1" }; // no helper, idempotency tests
 
 const makeBody = (region, overrides = {}) => ({
   service_slug: "boiler",
@@ -350,7 +353,69 @@ async function main() {
     check("LIVE-4", "higher-rated helper matched first", c1?.helper_id === helperC1);
   }
 
-  console.log("LIVE-5: matching RPC failure cannot be reproduced on staging without altering Phase 1 DB objects -> STATIC ONLY (covered by static test 10d).");
+  // LIVE-5: duplicate POST convergence and payload collision protection
+  {
+    const key = crypto.randomUUID();
+    const body = makeBody(REGION_D, { customer_id: randomCustomerId(), description: `${RUN_ID} duplicate payload` });
+    const all = await Promise.all(Array.from({ length: 20 }, () => postRequest(body, key)));
+    const ids = new Set(all.map((r) => r.json?.requestId));
+    const requestId = all[0].json?.requestId;
+    check("LIVE-5", "20 concurrent identical POSTs converge to one request",
+      all.every((r) => r.status === 201 || r.status === 200) && ids.size === 1 && !!requestId, JSON.stringify(all.map((r) => [r.status, r.json?.code])));
+    const { count: requestCount } = await db.from("service_requests").select("*", { count: "exact", head: true }).eq("id", requestId);
+    const { count: activeAssignments } = await db.from("request_assignments").select("*", { count: "exact", head: true })
+      .eq("request_id", requestId).in("status", ["PENDING", "NOTIFIED", "ACCEPTED"]);
+    const { count: conversations } = await db.from("conversations").select("*", { count: "exact", head: true }).eq("request_id", requestId);
+    check("LIVE-5", "one request, at most one active assignment, at most one conversation",
+      requestCount === 1 && activeAssignments <= 1 && conversations <= 1, JSON.stringify({ requestCount, activeAssignments, conversations }));
+    const replay = await postRequest(body, key);
+    check("LIVE-5", "same key and payload replays the same request", replay.status === 200 && replay.json?.requestId === requestId && replay.json?.status === all[0].json?.status);
+    const conflict = await postRequest({ ...body, description: `${RUN_ID} changed payload` }, key);
+    check("LIVE-5", "same key with different payload is rejected and row is unchanged",
+      conflict.status === 409 && conflict.json?.code === "IDEMPOTENCY_KEY_CONFLICT" && !conflict.json?.requestId);
+    const { data: unchanged } = await db.from("service_requests").select("description").eq("id", requestId).maybeSingle();
+    check("LIVE-5", "collision attempt did not mutate original row", unchanged?.description === body.description);
+  }
+
+  // LIVE-6: authenticated orphan recovery and terminal-state protection
+  {
+    const orphanBody = makeBody(REGION_D, { customer_id: randomCustomerId(), description: `${RUN_ID} recovery orphan` });
+    const createdOrphan = await postRequest(orphanBody);
+    const orphanId = createdOrphan.json?.requestId;
+    created.requestIds.add(orphanId);
+    await db.from("app_notifications").delete().eq("payload->>request_id", orphanId);
+    await db.from("admin_escalations").delete().eq("request_id", orphanId);
+    await db.from("service_requests").update({ status: "SEARCHING", created_at: new Date(Date.now() - 120000).toISOString() }).eq("id", orphanId);
+    const recover = async (requestId) => fetch(`${BASE}/api/sys/requests/recover`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${RECOVERY_TOKEN}` },
+      body: JSON.stringify({ request_id: requestId, min_age_seconds: 30 }),
+    }).then(async (r) => ({ status: r.status, json: await r.json().catch(() => null) }));
+    const recoveries = await Promise.all(Array.from({ length: 20 }, () => recover(orphanId)));
+    check("LIVE-6", "20 concurrent orphan recoveries are authorized and converge",
+      recoveries.every((r) => r.status === 200) && recoveries.some((r) => r.json?.results?.[0]?.outcome === "RECOVERED"));
+    const { data: recoveredRow } = await db.from("service_requests").select("status").eq("id", orphanId).maybeSingle();
+    const { count: recoveredAssignments } = await db.from("request_assignments").select("*", { count: "exact", head: true })
+      .eq("request_id", orphanId).in("status", ["PENDING", "NOTIFIED", "ACCEPTED"]);
+    const { count: recoveredConversations } = await db.from("conversations").select("*", { count: "exact", head: true }).eq("request_id", orphanId);
+    check("LIVE-6", "recovered orphan has one terminal matching result and no duplicate children",
+      ["MATCHED", "NO_HELPER_AVAILABLE"].includes(recoveredRow?.status) && recoveredAssignments <= 1 && recoveredConversations <= 1,
+      JSON.stringify({ status: recoveredRow?.status, recoveredAssignments, recoveredConversations }));
+
+    const terminalBody = makeBody(REGION_D, { customer_id: randomCustomerId(), description: `${RUN_ID} terminal recovery guard` });
+    const terminalCreated = await postRequest(terminalBody);
+    const terminalId = terminalCreated.json?.requestId;
+    created.requestIds.add(terminalId);
+    await db.from("service_requests").update({ status: "CANCELLED" }).eq("id", terminalId);
+    const terminalRecovery = await recover(terminalId);
+    const { data: terminalRow } = await db.from("service_requests").select("status").eq("id", terminalId).maybeSingle();
+    check("LIVE-6", "terminal request recovery is rejected without mutation",
+      terminalRecovery.status === 200 && terminalRecovery.json?.results?.[0]?.reason === "NOT_SEARCHING" && terminalRow?.status === "CANCELLED");
+    const anonymous = await fetch(`${BASE}/api/sys/requests/recover`, { method: "POST", body: JSON.stringify({ request_id: terminalId }) });
+    check("LIVE-6", "anonymous recovery is unauthorized", anonymous.status === 401);
+  }
+
+  console.log("LIVE-7: matching RPC transport failure remains STATIC ONLY (covered by static test 10d) because altering Phase 1 DB objects is prohibited.");
   return before;
 }
 

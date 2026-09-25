@@ -2,7 +2,9 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { isValidLocale } from "@/messages";
 import { CUSTOMER_ID_PATTERN, formatCustomerDisplayName } from "@/lib/id/customerDisplayName";
-import type { CoreServiceSlug, MatchHelperResult } from "@/lib/db/schema";
+import type { CoreServiceSlug } from "@/lib/db/schema";
+import { IDEMPOTENCY_HEADER, IDEMPOTENCY_KEY_PATTERN } from "@/lib/request/idempotencyKey";
+import { checkOrphanEligibility, runMatchingOnce } from "@/lib/request/requestRecovery";
 
 /** The exact 10 core services accepted by service_requests.service_slug. */
 export const CORE_SERVICE_SLUGS: readonly CoreServiceSlug[] = [
@@ -53,20 +55,23 @@ export type CreateRequestApiResponse =
       success: true;
       requestId: string;
       status: "NO_HELPER_AVAILABLE";
-      subReason: "NO_ELIGIBLE_HELPER" | "ALL_ELIGIBLE_HELPERS_BUSY";
+      /** null only on an idempotent replay whose escalation notification can no longer be read. */
+      subReason: "NO_ELIGIBLE_HELPER" | "ALL_ELIGIBLE_HELPERS_BUSY" | null;
     }
   | {
       success: false;
       code: string;
       message: string;
       field?: string;
-      /** Present only when the request row was created but matching did not complete. */
+      /** Present only when the request row exists but has no final matching result yet. */
       requestId?: string;
     };
 
 export interface ApiResult {
   httpStatus: number;
   body: CreateRequestApiResponse;
+  /** True when the response describes a request created by an earlier call with the same key. */
+  replayed?: boolean;
 }
 
 type ValidationResult =
@@ -200,91 +205,109 @@ function serverError(httpStatus: number, code: string, message: string, requestI
 }
 
 /**
- * Inserts a validated request as SEARCHING and runs the authoritative atomic matching RPC.
- *
- * - INSERT failure: matching is never attempted.
- * - RPC failure after INSERT: the request remains SEARCHING and the error is surfaced with its requestId
- *   (no automatic retry yet).
- * - NO_HELPER_AVAILABLE: the RPC itself creates the admin escalation and admin notification.
+ * Validates the Idempotency-Key header. The key must be a canonical v4 UUID (crypto.randomUUID()).
+ * The key is never logged or echoed back.
  */
-export async function createServiceRequestAndMatch(
+export function validateIdempotencyKey(
+  raw: string | null | undefined
+): { ok: true; value: string } | { ok: false; error: ApiResult } {
+  if (typeof raw !== "string" || !IDEMPOTENCY_KEY_PATTERN.test(raw)) {
+    return validationError(IDEMPOTENCY_HEADER, `${IDEMPOTENCY_HEADER} header must be a lowercase v4 UUID`);
+  }
+  return { ok: true, value: raw };
+}
+
+// Versioned domain separator. Changing it would break replay of in-flight keys; bump only with care.
+const REQUEST_ID_DERIVATION_DOMAIN = "life.help/service-request/idempotency/v1:";
+
+/**
+ * Derives the service_requests.id for an idempotency key: SHA-256(domain || key), first 128 bits,
+ * stamped as an RFC 9562 version-8 UUID.
+ *
+ * The primary key therefore acts as the DB-level uniqueness guard for the key across every Worker
+ * instance, with no extra column. It is one-way (the requestId does not reveal the key), and since
+ * DB-default ids are version-4, derived ids can never collide with them.
+ */
+export async function deriveRequestIdFromIdempotencyKey(key: string): Promise<string> {
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(REQUEST_ID_DERIVATION_DOMAIN + key)
+  );
+  const bytes = new Uint8Array(digest).slice(0, 16);
+  bytes[6] = (bytes[6] & 0x0f) | 0x80;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
+const REQUEST_FINGERPRINT_COLUMNS =
+  "id, customer_id, customer_locale, service_slug, country, sido, gungu, dong, address, description, selected_options";
+
+/**
+ * A replay must carry the same logical request. A key reused with a different customer or payload is
+ * rejected without revealing anything about the stored request.
+ */
+export function isSameLogicalRequest(row: Record<string, unknown>, input: CreateServiceRequestInput): boolean {
+  const storedOptions = Array.isArray(row.selected_options) ? row.selected_options : [];
+  return (
+    row.customer_id === input.customer_id &&
+    row.customer_locale === input.customer_locale &&
+    row.service_slug === input.service_slug &&
+    row.country === input.country &&
+    row.sido === input.sido &&
+    row.gungu === input.gungu &&
+    row.dong === input.dong &&
+    row.address === input.address &&
+    row.description === input.description &&
+    storedOptions.length === input.selected_options.length &&
+    storedOptions.every((option, i) => option === input.selected_options[i])
+  );
+}
+
+const SUB_REASONS = ["NO_ELIGIBLE_HELPER", "ALL_ELIGIBLE_HELPERS_BUSY"] as const;
+
+/**
+ * Maps the request's current DB state to the API contract. The DB, not the RPC return value, is the
+ * source of truth, so every caller for the same request converges on the same answer.
+ */
+export async function readRequestResult(
   client: SupabaseClient,
-  input: CreateServiceRequestInput
+  requestId: string,
+  successStatus: number
 ): Promise<ApiResult> {
-  const { data: inserted, error: insertError } = await client
+  const { data: row, error } = await client
     .from("service_requests")
-    .insert({
-      customer_id: input.customer_id,
-      customer_display_name: formatCustomerDisplayName(input.customer_id, input.customer_locale),
-      customer_locale: input.customer_locale,
-      service_slug: input.service_slug,
-      country: input.country,
-      sido: input.sido,
-      gungu: input.gungu,
-      dong: input.dong,
-      address: input.address,
-      description: input.description,
-      selected_options: input.selected_options,
-      status: "SEARCHING",
-    })
-    .select("id")
-    .single();
-
-  const requestId = (inserted as { id?: unknown } | null)?.id;
-  if (insertError || typeof requestId !== "string") {
-    console.error("[api/requests] service_requests insert failed", {
-      code: insertError?.code,
-      message: insertError?.message,
-    });
-    return serverError(500, "REQUEST_CREATE_FAILED", "The service request could not be created.");
+    .select("status")
+    .eq("id", requestId)
+    .maybeSingle();
+  if (error || !row) {
+    console.error("[api/requests] request state lookup failed", { requestId, code: error?.code });
+    return serverError(500, "REQUEST_LOOKUP_FAILED", "The request status could not be read.", requestId);
   }
 
-  const { data: rpcData, error: rpcError } = await client.rpc("match_and_assign_helper", {
-    p_request_id: requestId,
-  });
-
-  const match = rpcData as MatchHelperResult | null;
-  if (rpcError || !match || match.success !== true) {
-    console.error("[api/requests] match_and_assign_helper failed", {
-      requestId,
-      code: rpcError?.code,
-      message: rpcError?.message ?? match?.error,
-    });
-    return serverError(
-      502,
-      "MATCHING_FAILED",
-      "The request was received, but helper matching could not be completed.",
-      requestId
-    );
-  }
-
-  if (match.status === "NO_HELPER_AVAILABLE") {
-    const subReason = match.sub_reason;
-    if (subReason !== "NO_ELIGIBLE_HELPER" && subReason !== "ALL_ELIGIBLE_HELPERS_BUSY") {
-      console.error("[api/requests] unexpected NO_HELPER_AVAILABLE payload", { requestId });
-      return serverError(502, "MATCHING_FAILED", "Unexpected matching result.", requestId);
-    }
-    return {
-      httpStatus: 201,
-      body: { success: true, requestId, status: "NO_HELPER_AVAILABLE", subReason },
-    };
-  }
-
-  if (match.status === "MATCHED" && typeof match.conversation_id === "string") {
-    // The RPC does not return the assignment id; read the DB-created active assignment for this request.
+  if (row.status === "MATCHED") {
     const { data: assignment, error: assignmentError } = await client
       .from("request_assignments")
-      .select("id")
+      .select("id, helper_id")
       .eq("request_id", requestId)
       .in("status", [...ACTIVE_ASSIGNMENT_STATUSES])
       .maybeSingle();
+    const { data: conversation, error: conversationError } = assignment
+      ? await client
+          .from("conversations")
+          .select("id")
+          .eq("request_id", requestId)
+          .eq("helper_id", assignment.helper_id)
+          .eq("conversation_type", "CUSTOMER_HELPER")
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle()
+      : { data: null, error: null };
 
-    const assignmentId = (assignment as { id?: unknown } | null)?.id;
-    if (assignmentError || typeof assignmentId !== "string") {
-      console.error("[api/requests] active assignment lookup failed", {
+    if (assignmentError || conversationError || !assignment || !conversation) {
+      console.error("[api/requests] matched request lookup incomplete", {
         requestId,
-        code: assignmentError?.code,
-        message: assignmentError?.message,
+        code: assignmentError?.code ?? conversationError?.code,
       });
       return serverError(
         502,
@@ -293,19 +316,151 @@ export async function createServiceRequestAndMatch(
         requestId
       );
     }
-
     return {
-      httpStatus: 201,
+      httpStatus: successStatus,
       body: {
         success: true,
         requestId,
         status: "MATCHED",
-        assignmentId,
-        conversationId: match.conversation_id,
+        assignmentId: assignment.id as string,
+        conversationId: conversation.id as string,
       },
     };
   }
 
-  console.error("[api/requests] unexpected match_and_assign_helper payload", { requestId });
-  return serverError(502, "MATCHING_FAILED", "Unexpected matching result.", requestId);
+  if (row.status === "NO_HELPER_AVAILABLE") {
+    // The RPC records sub_reason only in the admin notification payload.
+    const { data: notification } = await client
+      .from("app_notifications")
+      .select("payload")
+      .eq("recipient_type", "ADMIN")
+      .eq("type", "NO_HELPER_AVAILABLE")
+      .eq("payload->>request_id", requestId)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    const raw = (notification?.payload as { sub_reason?: unknown } | undefined)?.sub_reason;
+    const subReason = (SUB_REASONS as readonly unknown[]).includes(raw)
+      ? (raw as (typeof SUB_REASONS)[number])
+      : null;
+    return {
+      httpStatus: successStatus,
+      body: { success: true, requestId, status: "NO_HELPER_AVAILABLE", subReason },
+    };
+  }
+
+  if (row.status === "SEARCHING" || row.status === "CREATED") {
+    return serverError(
+      202,
+      "REQUEST_PROCESSING",
+      "The request was received and is still being processed.",
+      requestId
+    );
+  }
+
+  // Later lifecycle states are outside this endpoint's immediate-result contract.
+  return serverError(409, "REQUEST_STATE_CHANGED", "The request has already moved on.", requestId);
+}
+
+/**
+ * Idempotent create-and-match for one logical submission.
+ *
+ * 1. requestId = derive(idempotencyKey); INSERT with that id. The primary key is the authoritative
+ *    duplicate guard: of N concurrent calls with one key, exactly one INSERT succeeds and the rest get
+ *    unique_violation (23505).
+ * 2. Creator: calls match_and_assign_helper once.
+ *    Replay: verifies it is the same logical request (else 409), then, only if the request is a strict
+ *    SEARCHING orphan, calls match_and_assign_helper once (bounded in-band recovery).
+ *    Concurrent calls are safe: the RPC locks the request row and refuses non-CREATED/SEARCHING rows.
+ * 3. Responds from the DB state (see readRequestResult). If this call ran the RPC and it failed while
+ *    the request is still SEARCHING, responds 502 MATCHING_FAILED with requestId; the same key may be
+ *    retried later, and the admin recovery endpoint also picks the request up.
+ *
+ * INSERT failure (other than the duplicate key) never reaches the RPC.
+ */
+export async function submitServiceRequest(
+  client: SupabaseClient,
+  input: CreateServiceRequestInput,
+  idempotencyKey: string
+): Promise<ApiResult> {
+  const requestId = await deriveRequestIdFromIdempotencyKey(idempotencyKey);
+
+  const { error: insertError } = await client.from("service_requests").insert({
+    id: requestId,
+    customer_id: input.customer_id,
+    customer_display_name: formatCustomerDisplayName(input.customer_id, input.customer_locale),
+    customer_locale: input.customer_locale,
+    service_slug: input.service_slug,
+    country: input.country,
+    sido: input.sido,
+    gungu: input.gungu,
+    dong: input.dong,
+    address: input.address,
+    description: input.description,
+    selected_options: input.selected_options,
+    status: "SEARCHING",
+  });
+
+  const isDuplicate = insertError?.code === "23505";
+  if (insertError && !isDuplicate) {
+    console.error("[api/requests] service_requests insert failed", {
+      code: insertError.code,
+      message: insertError.message,
+    });
+    return serverError(500, "REQUEST_CREATE_FAILED", "The service request could not be created.");
+  }
+
+  if (!isDuplicate) {
+    const attempt = await runMatchingOnce(client, requestId);
+    const result = await readRequestResult(client, requestId, 201);
+    if (attempt.outcome === "FAILED" && result.body.success === false && result.body.code === "REQUEST_PROCESSING") {
+      return serverError(
+        502,
+        "MATCHING_FAILED",
+        "The request was received, but helper matching could not be completed.",
+        requestId
+      );
+    }
+    return result;
+  }
+
+  // Replay of an existing key.
+  const { data: existing, error: existingError } = await client
+    .from("service_requests")
+    .select(REQUEST_FINGERPRINT_COLUMNS)
+    .eq("id", requestId)
+    .maybeSingle();
+  if (existingError || !existing) {
+    console.error("[api/requests] duplicate key lookup failed", { requestId, code: existingError?.code });
+    return serverError(500, "REQUEST_LOOKUP_FAILED", "The request status could not be read.");
+  }
+  if (!isSameLogicalRequest(existing as Record<string, unknown>, input)) {
+    return serverError(
+      409,
+      "IDEMPOTENCY_KEY_CONFLICT",
+      "This submission key was already used for a different request."
+    );
+  }
+
+  let ranAndFailed = false;
+  const eligibility = await checkOrphanEligibility(client, requestId);
+  if (eligibility.eligible) {
+    const attempt = await runMatchingOnce(client, requestId);
+    ranAndFailed = attempt.outcome === "FAILED";
+  }
+
+  const result = await readRequestResult(client, requestId, 200);
+  result.replayed = true;
+  if (ranAndFailed && result.body.success === false && result.body.code === "REQUEST_PROCESSING") {
+    return {
+      ...serverError(
+        502,
+        "MATCHING_FAILED",
+        "The request was received, but helper matching could not be completed.",
+        requestId
+      ),
+      replayed: true,
+    };
+  }
+  return result;
 }

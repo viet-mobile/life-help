@@ -1,14 +1,18 @@
 import { NextResponse } from "next/server";
 import { createServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { IDEMPOTENCY_HEADER } from "@/lib/request/idempotencyKey";
 import {
   MAX_REQUEST_BODY_BYTES,
-  createServiceRequestAndMatch,
+  submitServiceRequest,
   validateCreateServiceRequest,
+  validateIdempotencyKey,
   type CreateRequestApiResponse,
 } from "@/lib/request/serverRequest";
 
-function respond(httpStatus: number, body: CreateRequestApiResponse) {
-  return NextResponse.json(body, { status: httpStatus, headers: { "Cache-Control": "no-store" } });
+function respond(httpStatus: number, body: CreateRequestApiResponse, replayed = false) {
+  const headers: Record<string, string> = { "Cache-Control": "no-store" };
+  if (replayed) headers["Idempotent-Replayed"] = "true";
+  return NextResponse.json(body, { status: httpStatus, headers });
 }
 
 /**
@@ -16,8 +20,17 @@ function respond(httpStatus: number, body: CreateRequestApiResponse) {
  * Creates a customer service request and runs the authoritative DB matching RPC.
  * Only creation and the immediate matching result are handled here; the pseudonymous
  * customer_id grants no read access to requests or conversations.
+ *
+ * Requires an Idempotency-Key header (v4 UUID). Repeating a call with the same key and the same
+ * payload never creates a second request; it returns the request's current result
+ * (see submitServiceRequest for the exact semantics).
  */
 export async function POST(request: Request) {
+  const key = validateIdempotencyKey(request.headers.get(IDEMPOTENCY_HEADER));
+  if (!key.ok) {
+    return respond(key.error.httpStatus, key.error.body);
+  }
+
   let body: unknown;
   try {
     const raw = await request.text();
@@ -45,8 +58,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await createServiceRequestAndMatch(client, validation.value);
-    return respond(result.httpStatus, result.body);
+    const result = await submitServiceRequest(client, validation.value, key.value);
+    return respond(result.httpStatus, result.body, result.replayed);
   } catch (err: unknown) {
     console.error("[api/requests] unexpected failure", err instanceof Error ? err.message : String(err));
     return respond(500, {
