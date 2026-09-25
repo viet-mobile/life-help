@@ -566,7 +566,7 @@ check("S7. no log statement references the idempotency key or tokens",
 check("S8. recovery route authorizes before any other work",
   recoverRoute.indexOf("authorizeRecoveryRequest(request)") > 0 &&
     recoverRoute.indexOf("authorizeRecoveryRequest(request)") < recoverRoute.indexOf("request.text()") &&
-    recoverRoute.indexOf("authorizeRecoveryRequest(request)") < recoverRoute.indexOf("createServiceRoleClient()"));
+    recoverRoute.indexOf("authorizeRecoveryRequest(request)") < Math.max(recoverRoute.indexOf("createServiceRoleClient()"), recoverRoute.indexOf("createRuntimeServiceRoleClient()")));
 check("S9. /api/requests requires Idempotency-Key before parsing body",
   route.indexOf("validateIdempotencyKey(") > 0 && route.indexOf("validateIdempotencyKey(") < route.indexOf("request.text()"));
 check("S10. client sends the Idempotency-Key header", /\[IDEMPOTENCY_HEADER\]: pendingSubmissionRef\.current\.key/.test(page));

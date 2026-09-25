@@ -2,6 +2,10 @@ import "server-only";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
+function normalizeRuntimeUrl(value: string): string {
+  return value.trim().replace(/^(["'])(.*)\1$/, "$2").replace(/\/$/, "");
+}
+
 /**
  * Server-only Supabase client authenticated with the service_role key.
  *
@@ -30,11 +34,11 @@ export async function createRuntimeServiceRoleClient(): Promise<SupabaseClient |
     const rawUrl = runtimeEnv.SUPABASE_URL || runtimeEnv.NEXT_PUBLIC_SUPABASE_URL;
     const serviceRoleKey = runtimeEnv.SUPABASE_SERVICE_ROLE_KEY;
     if (!rawUrl || !serviceRoleKey) return null;
-    return createClient(rawUrl.replace(/\/rest\/v1\/?$/, ""), serviceRoleKey, {
+    return createClient(normalizeRuntimeUrl(rawUrl).replace(/\/rest\/v1\/?$/, ""), serviceRoleKey, {
       auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
     });
   } catch {
-    return createServiceRoleClient();
+    return null;
   }
 }
 
@@ -44,7 +48,7 @@ export async function getRuntimeServiceRoleConfig(): Promise<{ url: string; key:
     const runtimeEnv = env as Record<string, string | undefined>;
     const url = runtimeEnv.SUPABASE_URL;
     const key = runtimeEnv.SUPABASE_SERVICE_ROLE_KEY;
-    return url && key ? { url: url.replace(/\/rest\/v1\/?$/, ""), key } : null;
+    return url && key ? { url: normalizeRuntimeUrl(url).replace(/\/rest\/v1\/?$/, ""), key } : null;
   } catch {
     return null;
   }
