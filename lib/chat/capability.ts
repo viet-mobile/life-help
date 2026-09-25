@@ -48,24 +48,24 @@ export async function verifyConversationCapability(token: string, requestId: str
   }
 }
 
-export async function issuePayoutManagementCapability(ownerPublicId: string): Promise<string | null> {
+export async function issuePayoutManagementCapability(ownerIdentityId: string): Promise<string | null> {
   const config = await getRuntimeServiceRoleConfig();
   if (!config) return null;
-  const payload = toBase64Url(encoder.encode(JSON.stringify({ purpose: "PAYOUT_MANAGEMENT", ownerPublicId, expiresAt: Date.now() + 60 * 60 * 1000, nonce: crypto.randomUUID() })));
+  const payload = toBase64Url(encoder.encode(JSON.stringify({ purpose: "PAYOUT_MANAGEMENT", ownerIdentityId, expiresAt: Date.now() + 60 * 60 * 1000, nonce: crypto.randomUUID() })));
   return `${payload}.${await sign(payload, config.key)}`;
 }
 
-export async function verifyPayoutManagementCapability(token: string, ownerPublicId: string): Promise<boolean> {
+export async function readPayoutManagementCapability(token: string): Promise<string | null> {
   const config = await getRuntimeServiceRoleConfig();
-  if (!config) return false;
+  if (!config) return null;
   const [payload, supplied] = token.split(".");
-  if (!payload || !supplied) return false;
+  if (!payload || !supplied) return null;
   const expected = await sign(payload, config.key);
-  if (!constantTimeEqual(encoder.encode(supplied), encoder.encode(expected))) return false;
+  if (!constantTimeEqual(encoder.encode(supplied), encoder.encode(expected))) return null;
   try {
-    const value = JSON.parse(new TextDecoder().decode(fromBase64Url(payload))) as { purpose?: string; ownerPublicId?: string; expiresAt?: number };
-    return value.purpose === "PAYOUT_MANAGEMENT" && value.ownerPublicId === ownerPublicId && typeof value.expiresAt === "number" && value.expiresAt >= Date.now();
+    const value = JSON.parse(new TextDecoder().decode(fromBase64Url(payload))) as { purpose?: string; ownerIdentityId?: string; expiresAt?: number };
+    return value.purpose === "PAYOUT_MANAGEMENT" && typeof value.ownerIdentityId === "string" && typeof value.expiresAt === "number" && value.expiresAt >= Date.now() ? value.ownerIdentityId : null;
   } catch {
-    return false;
+    return null;
   }
 }
