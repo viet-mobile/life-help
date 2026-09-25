@@ -1,7 +1,6 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-
-const COOKIE_NAME = "life_help_sys_session";
+import { constantTimeEqual, SYS_SESSION_COOKIE } from "@/lib/auth/sysSession";
 
 async function hmac(secret: string, value: string) {
   const key = await crypto.subtle.importKey(
@@ -43,7 +42,10 @@ export async function POST(request: Request) {
     const id = String(body.id ?? "").trim();
     const password = String(body.password ?? "");
 
-    if (id !== adminId || password !== adminPassword) {
+    const isIdValid = constantTimeEqual(id, adminId);
+    const isPasswordValid = constantTimeEqual(password, adminPassword);
+
+    if (!isIdValid || !isPasswordValid) {
       return NextResponse.json(
         { ok: false, error: "Invalid credentials" },
         { status: 401 }
@@ -58,7 +60,7 @@ export async function POST(request: Request) {
     const response = NextResponse.json({ ok: true });
 
     response.cookies.set({
-      name: COOKIE_NAME,
+      name: SYS_SESSION_COOKIE,
       value: token,
       httpOnly: true,
       secure: true,
