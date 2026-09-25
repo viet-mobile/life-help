@@ -293,13 +293,5 @@ export function translate(locale: Locale, key: string): string {
   const enVal = getFromDict(dictionaries["en"]);
   if (enVal !== undefined) return enVal;
 
-  // 3. Korean fallback (platform root)
-  const koVal = getFromDict(dictionaries["ko"]);
-  if (koVal !== undefined) return koVal;
-
-  // 4. Default locale fallback
-  const defVal = getFromDict(dictionaries[defaultLocale]);
-  if (defVal !== undefined) return defVal;
-
   return key;
 }
