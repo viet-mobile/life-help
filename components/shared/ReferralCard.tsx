@@ -14,7 +14,7 @@ function getDeviceId() {
 }
 
 export function ReferralCard({ compact = false }: { compact?: boolean }) {
-  const { locale } = useLocale();
+  const { locale, t } = useLocale();
   const [referralId, setReferralId] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -52,7 +52,13 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
           <code className="mt-1 block text-base font-black tracking-[0.18em]">{referralId || "--------"}</code>
           <p className="mt-3 text-[11px] font-bold text-slate-500">{locale === "vi" ? "Liên kết giới thiệu" : "Referral link"}</p>
           <p className="mt-1 break-all text-xs text-slate-700">{link || "-"}</p>
-          <button type="button" onClick={() => void copy()} className="mt-3 w-full rounded-lg bg-emerald-700 px-3 py-2 text-xs font-black text-white">{copied ? (locale === "vi" ? "Đã sao chép" : "Copied") : (locale === "vi" ? "Sao chép" : "Copy link")}</button>
+          <button type="button" onClick={() => void copy()} className="mt-3 w-full rounded-lg bg-emerald-700 px-3 py-2 text-xs font-black text-white">{copied ? t("common.copied") : t("common.copy")}</button>
+          <div className="mt-4 border-t border-slate-200 pt-3">
+            <p className="text-xs font-black text-slate-800">{t("common.referralRewards")}</p>
+            <p className="mt-1 text-[11px] leading-relaxed text-slate-600">{t("common.rewardInfo")}</p>
+            <div className="mt-2 space-y-1 text-[11px] font-semibold text-slate-700"><p>{t("common.tierWlh")}</p><p>{t("common.tierClh")}</p><p>{t("common.tierGlh")}</p></div>
+            <p className="mt-2 text-[11px] text-slate-500">{t("common.payoutNotConnected")}</p>
+          </div>
         </div>}
       </div>
     );
