@@ -761,7 +761,7 @@ export default function AdminDashboardClient({
                   : "text-slate-400 hover:text-white hover:bg-slate-800/60"
               }`}
             >
-              <span>💻 보안 승인 기기 & 128자리 암호</span>
+              <span>💻 보안 인가 단말</span>
               <span className="droplet-pill bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-blue-300">
                 {devices.length}대
               </span>
@@ -2231,7 +2231,7 @@ export default function AdminDashboardClient({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/70 p-6 rounded-3xl border border-slate-800 backdrop-blur-md">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-blue-950 px-3 py-0.5 text-xs font-bold text-blue-300 border border-blue-800 mb-2">
-                  <span>🛡️ 최고관리자 전용 보안 통제국 (sys.life.help)</span>
+                  <span>🛡️ 최고관리자 전용 보안 통제국 · sys.life.help</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
                   <span>💻 관리자 보안 및 승인 기기 관리</span>
