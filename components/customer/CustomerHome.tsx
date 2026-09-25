@@ -458,7 +458,7 @@ export function CustomerHome() {
                   {/* Title & Bilingual Subtitle */}
                   <div>
                     <h3
-                      className={`text-[15px] sm:text-[17px] font-black ${svc.textColor} leading-snug line-clamp-2 break-all min-h-[42px] sm:min-h-[48px] flex items-center`}
+                      className={`text-[15px] sm:text-[17px] font-black ${svc.textColor} leading-snug line-clamp-2 [overflow-wrap:anywhere] min-h-[42px] sm:min-h-[48px] flex items-center`}
                     >
                       {t(`service.${svc.key}`)}
                     </h3>
