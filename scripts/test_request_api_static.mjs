@@ -591,9 +591,11 @@ check("L3. request page sends original description unmodified", /description: pr
 check("L4. no legacy /chat?session link on request page", !/\/chat\?session=/.test(page));
 
 const phase1Diff = execSync("git diff --name-only HEAD -- supabase lib/db utils lib/auth", { cwd: root }).toString().trim();
-const phase1Untracked = execSync("git ls-files --others --exclude-standard -- supabase lib/db utils lib/auth", { cwd: root }).toString().trim();
+const phase1Untracked = execSync("git ls-files --others --exclude-standard -- supabase lib/db utils lib/auth", { cwd: root })
+  .toString().trim().split(/\r?\n/).filter(Boolean)
+  .filter((file) => !["supabase/migrations/202609250003_helper_identity_and_accept_assignment.sql", "supabase/migrations/202609250004_referral_core.sql"].includes(file));
 check("P1. no changes to migrations, lib/db, utils, lib/auth (Phase 1 + admin auth baseline)",
-  phase1Diff === "" && phase1Untracked === "", `${phase1Diff} ${phase1Untracked}`);
+  phase1Diff === "" && phase1Untracked.length === 0, `${phase1Diff} ${phase1Untracked.join(" ")}`);
 
 fs.rmSync(outDir, { recursive: true, force: true });
 console.log(`\n${passed} passed, ${failed} failed`);

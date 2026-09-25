@@ -13,6 +13,7 @@ import { navigateToMainHome } from "@/lib/navigation";
 import { HelperCalendar } from "@/components/tech/HelperCalendar";
 import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
 import { HelperCustomerChatPanel } from "@/components/tech/HelperCustomerChatPanel";
+import { DbAssignmentPanel } from "@/components/tech/DbAssignmentPanel";
 import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
 import {
   getAdminMessages,
@@ -318,6 +319,7 @@ export default function TechWorkspacePage() {
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-8 text-white">
       <div className="mx-auto max-w-4xl space-y-6">
+        <DbAssignmentPanel formatBilingual={formatBilingual} />
         {/* Top Brand Navigation */}
         <div className="flex items-center justify-between pb-1 gap-2">
           <Link

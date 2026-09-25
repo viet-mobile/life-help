@@ -48,6 +48,13 @@ export default function TechLoginPage() {
           onSuccess={() => router.push("/tech/workspace")}
         />
 
+        <Link
+          href="/login?next=%2Ftech%2Fassignments"
+          className="mt-4 block text-center text-xs font-bold text-emerald-300 hover:text-emerald-200"
+        >
+          {formatBilingual("Use authenticated LIFE.HELP account for DB assignments", "인증된 LIFE.HELP 계정으로 DB 배정 확인")}
+        </Link>
+
         <div className="mt-6 text-center">
           <Link
             href="/tech"
