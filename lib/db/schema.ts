@@ -211,6 +211,8 @@ export interface ReleaseAssignmentResult {
   request_reopened?: boolean;
   request_status?: ServiceRequestStatus;
   error?: string;
+  code?: string;
   current_status?: AssignmentStatus;
+  assignment_status?: AssignmentStatus;
 }
 

@@ -56,6 +56,7 @@ export async function releaseAssignmentForRematch(
     return {
       success: false,
       error: "Invalid assignment ID",
+      code: "INVALID_ASSIGNMENT_ID",
     };
   }
 
@@ -63,6 +64,7 @@ export async function releaseAssignmentForRematch(
     return {
       success: false,
       error: "Release status must be DECLINED or TIMEOUT",
+      code: "INVALID_RELEASE_STATUS",
     };
   }
 
@@ -77,6 +79,7 @@ export async function releaseAssignmentForRematch(
       return {
         success: false,
         error: error.message,
+        code: "RPC_ERROR",
       };
     }
 
@@ -87,7 +90,9 @@ export async function releaseAssignmentForRematch(
     return {
       success: false,
       error: message,
+      code: "EXECUTION_ERROR",
     };
   }
 }
+
 

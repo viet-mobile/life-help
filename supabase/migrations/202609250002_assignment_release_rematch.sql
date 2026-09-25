@@ -1,6 +1,7 @@
 -- LIFE.HELP Assignment Release & Atomic Rematch Procedure
 -- Migration: 202609250002_assignment_release_rematch.sql
 -- Enables atomic release of DECLINED or TIMEOUT assignments and reopens request to SEARCHING
+-- Hardened: Enforces parent service_request rematchable status guard ('MATCHED', 'HELPER_NOTIFIED')
 
 begin;
 
@@ -24,7 +25,8 @@ begin
   if p_release_status not in ('DECLINED', 'TIMEOUT') then
     return jsonb_build_object(
       'success', false,
-      'error', 'Invalid release status. Must be DECLINED or TIMEOUT'
+      'error', 'Invalid release status. Must be DECLINED or TIMEOUT',
+      'code', 'INVALID_RELEASE_STATUS'
     );
   end if;
 
@@ -39,7 +41,8 @@ begin
   if not found then
     return jsonb_build_object(
       'success', false,
-      'error', 'Assignment not found'
+      'error', 'Assignment not found',
+      'code', 'ASSIGNMENT_NOT_FOUND'
     );
   end if;
 
@@ -48,6 +51,7 @@ begin
     return jsonb_build_object(
       'success', false,
       'error', 'Assignment is not in an active releaseable state',
+      'code', 'ASSIGNMENT_NOT_ACTIVE',
       'current_status', v_assignment.status
     );
   end if;
@@ -61,24 +65,39 @@ begin
   if not found then
     return jsonb_build_object(
       'success', false,
-      'error', 'Parent service request not found'
+      'error', 'Parent service request not found',
+      'code', 'REQUEST_NOT_FOUND'
     );
   end if;
 
-  -- 5. Transition assignment status to release status
+  -- 5. Guard: Verify parent service_request is in a rematchable state
+  -- Only MATCHED or HELPER_NOTIFIED requests are eligible for helper assignment release/rematch
+  -- Terminal or non-rematchable states (CANCELLED, COMPLETED, CLOSED, SETTLED, EXPIRED, IN_PROGRESS, PAYMENT_PENDING, NO_HELPER_AVAILABLE)
+  -- must remain completely immutable and must never be resurrected to SEARCHING
+  if v_request.status not in ('MATCHED', 'HELPER_NOTIFIED') then
+    return jsonb_build_object(
+      'success', false,
+      'error', 'Parent service request is not in a rematchable state',
+      'code', 'REQUEST_NOT_REMATCHABLE',
+      'request_status', v_request.status,
+      'assignment_status', v_assignment.status
+    );
+  end if;
+
+  -- 6. Transition assignment status to release status
   update public.request_assignments
   set status = v_status_enum,
       responded_at = coalesce(responded_at, now())
   where id = v_assignment.id;
 
-  -- 6. Check if any other active assignment exists for this request
+  -- 7. Check if any other active assignment exists for this request
   select count(*) into v_other_active_count
   from public.request_assignments
   where request_id = v_request.id
     and id <> v_assignment.id
     and status in ('PENDING', 'NOTIFIED', 'ACCEPTED');
 
-  -- 7. If no other active assignment exists, reopen request for matching
+  -- 8. If no other active assignment exists, reopen request for matching
   if v_other_active_count = 0 then
     update public.service_requests
     set status = 'SEARCHING',
