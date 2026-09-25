@@ -53,5 +53,8 @@ export async function POST(request: Request) {
   if ("error" in resolved) return resolved.error;
   const { data, error } = await resolved.client.from("messages").insert({ conversation_id: resolved.conversation.id, sender_role: resolved.senderRole, sender_id: resolved.senderId, original_language: originalLanguage, original_text: originalText, translated_language: null, translated_text: null, translation_status: "FAILED" }).select("id, conversation_id, sender_role, sender_id, original_language, original_text, translated_language, translated_text, translation_status, created_at").single();
   if (error || !data) return fail(500, "MESSAGE_CREATE_FAILED");
+  const recipientType = resolved.senderRole === "CUSTOMER" ? "HELPER" : "CUSTOMER";
+  const recipientId = resolved.senderRole === "CUSTOMER" ? String(resolved.conversation.helper_id || "") : resolved.conversation.customer_id;
+  await resolved.client.from("app_notifications").insert({ recipient_type: recipientType, recipient_id: recipientId, type: "NEW_CHAT_MESSAGE", title: "New chat message", body: "A new message is available.", payload: { conversation_id: resolved.conversation.id, message_id: data.id } });
   return NextResponse.json({ success: true, message: data }, { headers: { "Cache-Control": "no-store" } });
 }
