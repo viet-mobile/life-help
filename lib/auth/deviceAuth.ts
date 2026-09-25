@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 export interface DeviceRegistration {
   deviceId: string;
@@ -213,32 +213,6 @@ export function deleteDevice(deviceId: string): boolean {
 /**
  * Force approve current device as Super Admin device
  */
-export function forceRegisterCurrentDeviceAsSuperAdmin(): DeviceRegistration {
-  const currentId = getCurrentDeviceId();
-  const devices = getRegisteredDevices();
-  let dev = devices.find((d) => d.deviceId === currentId);
 
-  if (!dev) {
-    dev = {
-      deviceId: currentId,
-      deviceName: detectDeviceName(),
-      applicantEmail: "sys@life.help",
-      status: "approved",
-      isSuperAdminDevice: true,
-      requestedAt: new Date().toISOString(),
-      approvedAt: new Date().toISOString(),
-      approvedBy: "sys@life.help (최고관리자 본사 직권 승인)",
-      memo: "최고관리자 승인 마스터 기기",
-    };
-    devices.unshift(dev);
-  } else {
-    dev.status = "approved";
-    dev.isSuperAdminDevice = true;
-    dev.approvedAt = new Date().toISOString();
-    dev.approvedBy = "sys@life.help (최고관리자 본사 직권 승인)";
-  }
 
-  saveRegisteredDevices(devices);
-  return dev;
-}
 

@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+﻿import { NextResponse, type NextRequest } from "next/server";
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
 
@@ -227,8 +227,7 @@ const COUNTRY_HOST_REDIRECTS: Record<string, string> = {
   "italy.life.help": "italia.life.help",
 };
 
-function getPortalFromHost(host: string): "customer" | "tech" | "chat" | "sys" | "main" | "register-device" {
-  if (host === "register-device.life.help" || host.startsWith("register-device.")) return "register-device";
+function getPortalFromHost(host: string): "customer" | "tech" | "chat" | "sys" | "main" {
   if (host === "sys.life.help") return "sys";
   if (host === "chat.life.help") return "chat";
   if (host === "tech.life.help") return "tech";
@@ -297,19 +296,6 @@ function buildInternalPath(
     };
   }
 
-  /**
-   * 0. Device Registration portal
-   *
-   * register-device.life.help
-   * -> /register-device
-   */
-  if (portal === "register-device") {
-    return {
-      pathname: "/register-device",
-      country,
-      language,
-    };
-  }
 
   /**
    * 1. System Admin portal
