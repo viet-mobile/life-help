@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
@@ -29,9 +29,13 @@ import {
   type CustomerReview,
   REVIEW_EVENT,
 } from "@/lib/review/reviewStore";
-type AdminSession = {
+export type AdminSession = {
   email: string;
   role: "SUPER_ADMIN";
+};
+
+export type AdminDashboardClientProps = {
+  initialSession: AdminSession;
 };
 import {
   getStoredRequests,
@@ -60,66 +64,19 @@ import {
 } from "@/lib/auth/deviceAuth";
 
 
-export default function AdminPage() {
+export default function AdminDashboardClient({
+  initialSession,
+}: AdminDashboardClientProps) {
   const router = useRouter();
   const { locale, t } = useLocale();
 
-  // Auth session check
-  const [adminSession, setAdminSession] = useState<AdminSession | null>(null);
-  const [isAuthChecked, setIsAuthChecked] = useState(false);
+  // Auth session from verified server session
+  const [adminSession, setAdminSession] = useState<AdminSession | null>(initialSession);
 
-  // Device Security & 128-Char Password State
+  // Device Security State
   const [isDeviceApprovedState, setIsDeviceApprovedState] = useState(true);
   const [currentDeviceId, setCurrentDeviceId] = useState("");
   const [devices, setDevices] = useState<DeviceRegistration[]>([]);
-
-  useEffect(() => {
-    let active = true;
-
-    async function verifyAdminSession() {
-      try {
-        const response = await fetch("/api/sys/auth/session", {
-          method: "GET",
-          credentials: "include",
-          cache: "no-store",
-        });
-
-        if (!response.ok) {
-          if (active) {
-            router.replace("/admin/login");
-          }
-          return;
-        }
-
-        const data = await response.json();
-
-        if (!data.authenticated) {
-          if (active) {
-            router.replace("/admin/login");
-          }
-          return;
-        }
-
-        if (active) {
-          setAdminSession({
-            email: data.id,
-            role: "SUPER_ADMIN",
-          });
-          setIsAuthChecked(true);
-        }
-      } catch {
-        if (active) {
-          router.replace("/admin/login");
-        }
-      }
-    }
-
-    verifyAdminSession();
-
-    return () => {
-      active = false;
-    };
-  }, [router]);
 
   const handleLogout = async () => {
     try {
@@ -420,17 +377,7 @@ export default function AdminPage() {
     "일": t("workspace.daySun") || "일",
   };
 
-  if (!isAuthChecked) {
-    return (
-      <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <BrandLogo portal="sys" size="md" priority />
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
-          <p className="text-xs text-slate-400 font-bold">{t("admin.sessionVerifying")}</p>
-        </div>
-      </main>
-    );
-  }
+
 
   if (!isDeviceApprovedState) {
     return (

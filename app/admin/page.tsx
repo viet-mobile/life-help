@@ -1,4 +1,4 @@
-﻿import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AdminDashboardClient from "./AdminDashboardClient";
 import {
@@ -18,5 +18,12 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  return <AdminDashboardClient />;
+  return (
+    <AdminDashboardClient
+      initialSession={{
+        email: session.id,
+        role: session.role,
+      }}
+    />
+  );
 }
