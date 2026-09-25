@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 import { IDEMPOTENCY_HEADER } from "@/lib/request/idempotencyKey";
 import {
   MAX_REQUEST_BODY_BYTES,
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     return respond(validation.error.httpStatus, validation.error.body);
   }
 
-  const client = createServiceRoleClient();
+  const client = await createRuntimeServiceRoleClient();
   if (!client) {
     console.error("[api/requests] Supabase service environment is not configured");
     return respond(503, {

@@ -2,7 +2,7 @@ import "server-only";
 
 import type { SupabaseClient, User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
-import { createServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 
 export type AuthenticatedHelper = {
   user: User;
@@ -25,7 +25,7 @@ export async function resolveAuthenticatedHelper(): Promise<
     return { ok: false, status: 401, code: "UNAUTHENTICATED" };
   }
 
-  const serviceClient = createServiceRoleClient();
+  const serviceClient = await createRuntimeServiceRoleClient();
   if (!serviceClient) {
     return { ok: false, status: 403, code: "HELPER_NOT_LINKED" };
   }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 import { authorizeRecoveryRequest } from "@/lib/request/recoveryAuth";
 import {
   RECOVERY_DEFAULT_LIMIT,
@@ -64,7 +64,7 @@ export async function POST(request: Request) {
     return respond(400, { success: false, code: "VALIDATION_ERROR", message: "Invalid request_id." });
   }
 
-  const client = createServiceRoleClient();
+  const client = await createRuntimeServiceRoleClient();
   if (!client) {
     console.error("[api/sys/requests/recover] Supabase service environment is not configured");
     return respond(503, { success: false, code: "SERVICE_UNAVAILABLE", message: "Recovery is unavailable." });
