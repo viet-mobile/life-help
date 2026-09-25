@@ -49,6 +49,11 @@ export async function POST(request: Request) {
   if (!rawUrl || !serviceRoleKey) return response({ success: false, code: "SERVICE_UNAVAILABLE" }, 503);
   const config = { url: rawUrl.trim().replace(/^(["'])(.*)\1$/, "$2").replace(/\/$/, ""), key: serviceRoleKey };
   const headers = { apikey: config.key, Authorization: `Bearer ${config.key}`, "Content-Type": "application/json" };
+  if (referralId) {
+    const referrerCheck = await fetch(`${config.url}/rest/v1/referral_identities?select=id&referral_id=eq.${referralId}&status=eq.ACTIVE`, { headers });
+    const referrerRows = referrerCheck.ok ? await referrerCheck.json() as Array<{ id: string }> : [];
+    if (!referrerCheck.ok || referrerRows.length === 0) return response({ success: false, code: "INVALID_REFERRAL_ID" }, 400);
+  }
   const deviceHash = await hashDeviceId(deviceId);
   let lookup: Response;
   try {
@@ -77,7 +82,11 @@ export async function POST(request: Request) {
   }
   if (!identity) return response({ success: false, code: "REFERRAL_CREATE_FAILED" }, 500);
 
-  if (referralId && referralId !== identity.referral_id) {
+  if (referralId && referralId === identity.referral_id) {
+    return response({ success: false, code: "SELF_REFERRAL" }, 409);
+  }
+
+  if (referralId) {
     const referrerResponse = await fetch(`${config.url}/rest/v1/referral_identities?select=id,status&referral_id=eq.${referralId}&status=eq.ACTIVE`, { headers });
     const referrerRows = referrerResponse.ok ? await referrerResponse.json() as Array<{ id: string; status: string }> : [];
     const referrer = referrerRows[0];
