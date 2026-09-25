@@ -60,7 +60,7 @@ export function LanguageSwitcher({
       </div>
 
       {currentLocale !== "ko" && (
-        <div className="droplet-pill inline-flex p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold shadow-2xs shrink-0 max-[374px]:hidden">
+        <div className="droplet-pill inline-flex p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold shadow-2xs shrink-0 max-[430px]:hidden">
           <button
             type="button"
             onClick={() => context.setDisplayMode("monolingual")}
