@@ -235,6 +235,11 @@ create table if not exists public.admin_escalations (
   admin_notes text
 );
 
+-- Guard 3: Maximum 1 open/unresolved escalation per service request at DB level
+create unique index if not exists admin_escalations_active_request_uidx
+  on public.admin_escalations(request_id)
+  where request_id is not null and status in ('PENDING', 'ASSIGNED');
+
 -- 10. Namespaced App Notifications (Preserves existing public.notifications untouched)
 create table if not exists public.app_notifications (
   id uuid primary key default gen_random_uuid(),
@@ -268,9 +273,14 @@ as $$
 declare
   v_req record;
   v_helper record;
-  v_assignment_id uuid;
+  v_assigned_helper record;
+  v_assignment_id uuid := null;
   v_conv_id uuid;
   v_admin_esc_id uuid;
+  v_has_registered_helpers boolean := false;
+  v_sub_reason text;
+  v_admin_note text;
+  v_constraint_name text;
 begin
   -- 1. Fetch and lock request
   select * into v_req
@@ -286,38 +296,57 @@ begin
     return jsonb_build_object('success', false, 'error', 'Invalid request status for matching');
   end if;
 
-  -- 2. Find best matching on-duty helper with row lock (excluding helpers with active assignment)
-  select h.* into v_helper
-  from public.helpers h
-  join public.helper_services hs on hs.helper_id = h.id
-  join public.helper_regions hr on hr.helper_id = h.id
-  where h.on_duty = true
-    and h.is_active = true
-    and hs.service_slug = v_req.service_slug
-    and hr.country = v_req.country
-    and hr.sido = v_req.sido
-    and (hr.gungu = v_req.gungu or hr.gungu = '전체' or hr.gungu = '')
-    and not exists (
-      select 1 from public.request_assignments ra
-      where ra.helper_id = h.id
-        and ra.status in ('PENDING', 'NOTIFIED', 'ACCEPTED')
-    )
-  order by h.rating desc, h.completed_jobs desc
-  limit 1
-  for update skip locked;
+  -- 2. Iterate through best matching on-duty helpers with row lock (order by rating desc, completed_jobs desc)
+  -- If candidate A fails due to expected concurrency collision, loop moves to candidate B
+  for v_helper in
+    select h.*
+    from public.helpers h
+    join public.helper_services hs on hs.helper_id = h.id
+    join public.helper_regions hr on hr.helper_id = h.id
+    where h.on_duty = true
+      and h.is_active = true
+      and hs.service_slug = v_req.service_slug
+      and hr.country = v_req.country
+      and hr.sido = v_req.sido
+      and (hr.gungu = v_req.gungu or hr.gungu = '전체' or hr.gungu = '')
+      and not exists (
+        select 1 from public.request_assignments ra
+        where ra.helper_id = h.id
+          and ra.status in ('PENDING', 'NOTIFIED', 'ACCEPTED')
+      )
+    order by h.rating desc, h.completed_jobs desc
+    for update of h skip locked
+  loop
+    begin
+      insert into public.request_assignments (
+        request_id,
+        helper_id,
+        status
+      ) values (
+        v_req.id,
+        v_helper.id,
+        'PENDING'
+      ) returning id into v_assignment_id;
 
-  -- 3. If helper found, atomically assign and create conversation
-  if found then
-    insert into public.request_assignments (
-      request_id,
-      helper_id,
-      status
-    ) values (
-      v_req.id,
-      v_helper.id,
-      'PENDING'
-    ) returning id into v_assignment_id;
+      -- Assignment succeeded: record assigned helper and exit candidate loop
+      v_assigned_helper := v_helper;
+      exit;
+    exception
+      when unique_violation then
+        -- Expected helper concurrency collision: helper was taken concurrently
+        get stacked diagnostics v_constraint_name = constraint_name;
+        if v_constraint_name = 'request_assignments_helper_active_uidx' then
+          -- Expected helper active collision: continue loop to inspect next eligible candidate
+          continue;
+        else
+          -- Unexpected unique violation (e.g. request already has active assignment, etc.): re-raise
+          raise;
+        end if;
+    end;
+  end loop;
 
+  -- 3. If helper assigned, atomically finalize matching, conversation, and helper notification
+  if v_assignment_id is not null then
     update public.service_requests
     set status = 'MATCHED', updated_at = now()
     where id = v_req.id;
@@ -333,9 +362,9 @@ begin
       v_req.id,
       'CUSTOMER_HELPER',
       v_req.customer_id,
-      v_helper.id,
+      v_assigned_helper.id,
       v_req.customer_locale,
-      v_helper.primary_locale
+      v_assigned_helper.primary_locale
     ) returning id into v_conv_id;
 
     insert into public.app_notifications (
@@ -347,7 +376,7 @@ begin
       payload
     ) values (
       'HELPER',
-      v_helper.helper_id,
+      v_assigned_helper.helper_id,
       'NEW_SERVICE_REQUEST',
       '신규 서비스 배정 요청',
       v_req.service_slug || ' 서비스 요청이 접수되었습니다.',
@@ -357,12 +386,32 @@ begin
     return jsonb_build_object(
       'success', true,
       'status', 'MATCHED',
-      'helper_id', v_helper.helper_id,
-      'helper_name', v_helper.name,
+      'helper_id', v_assigned_helper.helper_id,
+      'helper_name', v_assigned_helper.name,
       'conversation_id', v_conv_id
     );
   else
-    -- 4. No matching helper found: STRICT ESCALATION, NO RANDOM FALLBACK
+    -- 4. No matching helper available: distinguish between NO_ELIGIBLE_HELPER and ALL_ELIGIBLE_HELPERS_BUSY
+    select exists (
+      select 1
+      from public.helpers h
+      join public.helper_services hs on hs.helper_id = h.id
+      join public.helper_regions hr on hr.helper_id = h.id
+      where h.is_active = true
+        and hs.service_slug = v_req.service_slug
+        and hr.country = v_req.country
+        and hr.sido = v_req.sido
+        and (hr.gungu = v_req.gungu or hr.gungu = '전체' or hr.gungu = '')
+    ) into v_has_registered_helpers;
+
+    if v_has_registered_helpers then
+      v_sub_reason := 'ALL_ELIGIBLE_HELPERS_BUSY';
+      v_admin_note := '해당 지역 및 서비스에 등록된 헬퍼가 있으나 현재 전원 다른 요청 수행 또는 비가용 상태임';
+    else
+      v_sub_reason := 'NO_ELIGIBLE_HELPER';
+      v_admin_note := '해당 지역 및 서비스 조건의 가용 헬퍼 부재로 관리자 큐 이관';
+    end if;
+
     update public.service_requests
     set status = 'NO_HELPER_AVAILABLE', updated_at = now()
     where id = v_req.id;
@@ -376,7 +425,7 @@ begin
       v_req.id,
       'NO_HELPER_AVAILABLE',
       'PENDING',
-      '해당 지역 및 서비스 조건의 가용 헬퍼 부재로 관리자 큐 이관'
+      v_admin_note
     ) returning id into v_admin_esc_id;
 
     insert into public.app_notifications (
@@ -391,13 +440,18 @@ begin
       'sys@life.help',
       'NO_HELPER_AVAILABLE',
       '헬퍼 부재 에스컬레이션 접수',
-      v_req.sido || ' ' || v_req.gungu || ' 지역 ' || v_req.service_slug || ' 헬퍼 부재',
-      jsonb_build_object('request_id', v_req.id, 'escalation_id', v_admin_esc_id)
+      v_req.sido || ' ' || v_req.gungu || ' 지역 ' || v_req.service_slug || ' ' || v_admin_note,
+      jsonb_build_object(
+        'request_id', v_req.id,
+        'escalation_id', v_admin_esc_id,
+        'sub_reason', v_sub_reason
+      )
     );
 
     return jsonb_build_object(
       'success', true,
       'status', 'NO_HELPER_AVAILABLE',
+      'sub_reason', v_sub_reason,
       'escalation_id', v_admin_esc_id
     );
   end if;

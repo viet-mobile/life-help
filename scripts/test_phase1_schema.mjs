@@ -112,11 +112,32 @@ if (!sql.includes("'NO_HELPER_AVAILABLE'")) {
   process.exit(1);
 }
 
+// Check Admin Escalation open partial unique index
+if (!sql.includes("admin_escalations_active_request_uidx")) {
+  console.error("FAIL: Admin escalation active partial unique index missing!");
+  process.exit(1);
+}
+
+// Check Candidate Helper retry loop & expected collision handling
+if (!sql.includes("for v_helper in") || !sql.includes("for update of h skip locked") || !sql.includes("get stacked diagnostics v_constraint_name = constraint_name;")) {
+  console.error("FAIL: Candidate helper retry loop or exception diagnostics missing!");
+  process.exit(1);
+}
+
+// Check sub_reason handling (NO_ELIGIBLE_HELPER vs ALL_ELIGIBLE_HELPERS_BUSY)
+if (!sql.includes("'ALL_ELIGIBLE_HELPERS_BUSY'") || !sql.includes("'NO_ELIGIBLE_HELPER'")) {
+  console.error("FAIL: sub_reason differentiation missing!");
+  process.exit(1);
+}
+
 console.log("PASS: 1. Namespaced app_notifications verified.");
 console.log("PASS: 2. SECURITY DEFINER & fixed search_path verified.");
 console.log("PASS: 3. RPC permissions restricted exclusively to service_role.");
 console.log("PASS: 4. RLS enabled on all 9 new tables & anon access revoked.");
 console.log("PASS: 5. 10-Service CHECK constraints verified.");
-console.log("PASS: 6. Request and Helper active assignment partial unique indexes verified.");
+console.log("PASS: 6. Request, Helper, and Admin escalation partial unique indexes verified.");
 console.log("PASS: 7. Busy helper exclusion subquery in matching procedure verified.");
+console.log("PASS: 8. Candidate helper retry loop with unique_violation diagnostics verified.");
+console.log("PASS: 9. Admin escalation open partial unique index verified.");
+console.log("PASS: 10. sub_reason (NO_ELIGIBLE_HELPER / ALL_ELIGIBLE_HELPERS_BUSY) differentiation verified.");
 console.log("PASS: Static schema & syntax integrity check completed successfully.");

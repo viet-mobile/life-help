@@ -195,6 +195,7 @@ export type NotificationRow = AppNotificationRow;
 export interface MatchHelperResult {
   success: boolean;
   status: "MATCHED" | "NO_HELPER_AVAILABLE" | "ERROR";
+  sub_reason?: "NO_ELIGIBLE_HELPER" | "ALL_ELIGIBLE_HELPERS_BUSY";
   error?: string;
   helper_id?: string;
   helper_name?: string;
