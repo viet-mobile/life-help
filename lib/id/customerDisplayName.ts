@@ -5,7 +5,7 @@
  * Pseudonymous customer identifier format produced by generateCustomerId(), e.g. "CST-7A29".
  * This is a display/pseudonym value only — never treat it as an authentication credential.
  */
-export const CUSTOMER_ID_PATTERN = /^CST-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}$/;
+export const CUSTOMER_ID_PATTERN = /^[A-Z]{8}$/;
 
 /**
  * Formats customer display name adhering to rule: NO parentheses () in Korean text.
@@ -16,13 +16,13 @@ export function formatCustomerDisplayName(
   locale: string = "ko",
   formatBilingual?: (target: string, ko: string) => string
 ): string {
-  const cleanId = customerId.startsWith("CST-") ? customerId : `CST-${customerId}`;
-  const koText = `고객 · ${cleanId}`;
+  const cleanId = customerId;
+  const koText = `사용자 ID · ${cleanId}`;
 
   if (locale === "ko") return koText;
 
-  let targetTerm = "Customer";
-  if (locale === "vi") targetTerm = "Khách hàng";
+  let targetTerm = "User ID";
+  if (locale === "vi") targetTerm = "ID người dùng";
   else if (locale === "ja") targetTerm = "お客様";
   else if (locale === "zh-Hans") targetTerm = "客户";
   else if (locale === "zh-Hant") targetTerm = "客戶";

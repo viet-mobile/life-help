@@ -83,7 +83,7 @@ const EXPECTED_SLUGS = [
 
 const base = () => ({
   service_slug: "boiler",
-  customer_id: "CST-7A29",
+  customer_id: "KQJMWXPA",
   customer_locale: "vi",
   country: "KR",
   sido: "전북특별자치도",
@@ -124,7 +124,7 @@ for (const d of ["", "   ", "\n\t ", undefined, null, 5]) {
     r.ok === false && r.error.httpStatus === 400 && r.error.body.field === "description");
 }
 for (const [field, value] of [
-  ["customer_id", "CST-0000"], ["customer_id", "HLP-1001"], ["customer_id", "cst-7a29"], ["customer_id", ""],
+  ["customer_id", "CST-0000"], ["customer_id", "HLP-1001"], ["customer_id", "kqjmw xpa"], ["customer_id", ""],
   ["country", "kr"], ["country", "KOR"], ["sido", ""], ["gungu", "   "], ["address", ""],
   ["selected_options", "not-array"], ["selected_options", [""]], ["selected_options", [1]],
   ["description", "a\u0000b"], ["sido", "x".repeat(101)], ["description", "x".repeat(5001)],
@@ -296,7 +296,7 @@ const exactKeys = (obj, list) => JSON.stringify(Object.keys(obj).sort()) === JSO
   const ins = db.tables.service_requests[0];
   check("11a. description stored byte-for-byte", ins.description === base().description);
   check("11b. insert status SEARCHING then MATCHED by RPC", ins.status === "MATCHED");
-  check("11c. customer_display_name rule", ins.customer_display_name === "Khách hàng · CST-7A29");
+  check("11c. public user display label rule", ins.customer_display_name === "ID người dùng · KQJMWXPA");
   check("11d. insert uses only real service_requests columns (+ id)", exactKeys(
     Object.fromEntries(Object.entries(ins).filter(([k]) => k !== "created_at")),
     ["id", "address", "country", "customer_display_name", "customer_id", "customer_locale", "description",
@@ -347,7 +347,7 @@ for (const [label, helpers, sub] of [["no helpers", 0, "NO_ELIGIBLE_HELPER"]]) {
   check("I2d. same key + different payload -> 409 IDEMPOTENCY_KEY_CONFLICT, no requestId leak",
     conflict.httpStatus === 409 && conflict.body.code === "IDEMPOTENCY_KEY_CONFLICT" && !("requestId" in conflict.body) &&
       db.count("service_requests") === 2);
-  const otherCustomer = await submitServiceRequest(db.client, input({ customer_id: "CST-BBBB" }), key);
+  const otherCustomer = await submitServiceRequest(db.client, input({ customer_id: "KQJMWXPB" }), key);
   check("I2e. same key + different customer_id -> 409 (key is not bound to CST id alone)",
     otherCustomer.httpStatus === 409 && otherCustomer.body.code === "IDEMPOTENCY_KEY_CONFLICT");
   check("I2f. isSameLogicalRequest compares selected_options order-sensitively",
@@ -426,7 +426,7 @@ for (const mode of ["match", "nohelper"]) {
 // ---------------------------------------------------------------------------
 function seedRequest(db, overrides = {}) {
   const row = { id: `11111111-1111-4111-8111-${String(db.tables.service_requests.length + 1).padStart(12, "0")}`,
-    status: "SEARCHING", customer_id: "CST-7A29", created_at: new Date(Date.now() - 10 * 60 * 1000).toISOString(), ...overrides };
+    status: "SEARCHING", customer_id: "KQJMWXPA", created_at: new Date(Date.now() - 10 * 60 * 1000).toISOString(), ...overrides };
   db.tables.service_requests.push(row);
   return row;
 }
@@ -593,7 +593,7 @@ check("L4. no legacy /chat?session link on request page", !/\/chat\?session=/.te
 const phase1Diff = execSync("git diff --name-only HEAD -- supabase lib/db utils lib/auth", { cwd: root }).toString().trim();
 const phase1Untracked = execSync("git ls-files --others --exclude-standard -- supabase lib/db utils lib/auth", { cwd: root })
   .toString().trim().split(/\r?\n/).filter(Boolean)
-  .filter((file) => !["supabase/migrations/202609250003_helper_identity_and_accept_assignment.sql", "supabase/migrations/202609250004_referral_core.sql", "supabase/migrations/202609250005_referral_rewards.sql"].includes(file));
+  .filter((file) => !["supabase/migrations/202609250003_helper_identity_and_accept_assignment.sql", "supabase/migrations/202609250004_referral_core.sql", "supabase/migrations/202609250005_referral_rewards.sql", "supabase/migrations/202609260006_public_user_identity.sql"].includes(file));
 check("P1. no changes to migrations, lib/db, utils, lib/auth (Phase 1 + admin auth baseline)",
   phase1Diff === "" && phase1Untracked.length === 0, `${phase1Diff} ${phase1Untracked.join(" ")}`);
 

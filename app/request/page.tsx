@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -242,6 +242,7 @@ function RequestPageContent() {
 
   const [selectedFileNames, setSelectedFileNames] = useState<string[]>([]);
   const [address, setAddress] = useState<string>("");
+  const [publicUserId, setPublicUserId] = useState<string>("");
   const [problemDescription, setProblemDescription] = useState<string>("");
   const [selectedProblemOptions, setSelectedProblemOptions] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -251,6 +252,15 @@ function RequestPageContent() {
   const [submitError, setSubmitError] = useState<RequestSubmitError | null>(null);
   // Idempotency key of the current logical submission, bound to the exact payload it was created for.
   const pendingSubmissionRef = useRef<{ key: string; payloadJson: string } | null>(null);
+
+  useEffect(() => {
+    const key = "life_help_public_identity_device";
+    const deviceId = localStorage.getItem(key) || `device-${crypto.randomUUID()}`;
+    localStorage.setItem(key, deviceId);
+    void fetch("/api/users/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId }) })
+      .then((response) => response.json())
+      .then((data) => { if (typeof data.publicUserId === "string") setPublicUserId(data.publicUserId); });
+  }, []);
 
   // Active service and its assigned pastel theme
   const service = getService(selectedSlug);
@@ -316,11 +326,16 @@ function RequestPageContent() {
 
     // The original description is sent unmodified; the server stores it as-is.
     // Helper-language translation of the first message is deferred to P2-5/P2-6.
+    if (!existing && !publicUserId) {
+      setSubmitError({ code: "IDENTITY_UNAVAILABLE" });
+      setIsSubmitting(false);
+      return;
+    }
     const payloadJson =
       existing?.payloadJson ??
       JSON.stringify({
         service_slug: selectedSlug,
-        customer_id: getOrCreateCustomerId(),
+        customer_id: publicUserId,
         customer_locale: locale,
         country: selectedRegion.country || "KR",
         sido: selectedRegion.sido,

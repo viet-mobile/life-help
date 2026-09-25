@@ -5,27 +5,24 @@
  * Generates a unique 4-character random uppercase alphanumeric string
  * avoiding visually ambiguous characters (0, O, 1, I).
  */
-export function generateRandomCode(length: number = 4): string {
-  const chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
+export function generateRandomCode(length: number = 8): string {
+  const bytes = new Uint8Array(length);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (byte) => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[byte % 26]).join("");
 }
 
 /**
  * Generates an anonymous customer identifier, e.g. "CST-7A29"
  */
 export function generateCustomerId(): string {
-  return `CST-${generateRandomCode(4)}`;
+  return generateRandomCode();
 }
 
 /**
  * Generates an anonymous helper identifier, e.g. "HLP-3814"
  */
 export function generateHelperId(): string {
-  return `HLP-${generateRandomCode(4)}`;
+  return generateRandomCode();
 }
 
 const CUSTOMER_ID_KEY = "life_help_auto_customer_id";
@@ -40,7 +37,7 @@ export function getOrCreateCustomerId(): string {
   }
   try {
     let id = localStorage.getItem(CUSTOMER_ID_KEY);
-    if (!id || !id.startsWith("CST-")) {
+    if (!id || !/^[A-Z]{8}$/.test(id)) {
       id = generateCustomerId();
       localStorage.setItem(CUSTOMER_ID_KEY, id);
     }
@@ -82,11 +79,11 @@ export function formatHelperIdentifier(
   helperTerm: string = "Helper",
   formatBilingual?: (target: string, ko: string) => string
 ): string {
-  const cleanId = helperId.startsWith("HLP-") ? helperId : `HLP-${helperId}`;
-  const koText = `헬퍼 · ${cleanId}`;
+  const cleanId = helperId;
+  const koText = `사용자 ID · ${cleanId}`;
 
   if (locale === "ko") return koText;
 
-  const targetText = `${helperTerm || "Helper"} · ${cleanId}`;
+  const targetText = `${helperTerm ? `${helperTerm} · ` : ""}${cleanId}`;
   return formatBilingual ? formatBilingual(targetText, koText) : targetText;
 }
