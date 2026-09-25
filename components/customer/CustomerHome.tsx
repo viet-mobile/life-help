@@ -285,7 +285,7 @@ export function CustomerHome() {
             <button
               type="button"
               onClick={openModal}
-              className="droplet-pill inline-flex items-center gap-1 border border-slate-200/90 bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer max-w-[100px] xs:max-w-[130px] sm:max-w-[180px] truncate shadow-2xs"
+              className="droplet-pill inline-flex items-center gap-1 border border-slate-200/90 bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer max-w-[100px] max-[374px]:max-w-16 xs:max-w-[130px] sm:max-w-[180px] truncate shadow-2xs"
               title={formatBilingual(getRegionUIText("changeLocation", locale, isBilingual), "지역 변경")}
             >
               <span className="text-xs shrink-0">📍</span>
