@@ -7,14 +7,13 @@ create type public.payout_destination_status as enum ('PENDING', 'NOT_VERIFIED',
 
 create table public.payout_destinations (
   id uuid primary key default gen_random_uuid(),
-  owner_public_id text not null,
-  request_id uuid not null references public.service_requests(id),
+  owner_identity_id uuid not null references public.referral_identities(id),
   country text not null,
   currency text not null,
   payout_method text not null,
   provider text,
-  provider_payee_token text not null,
-  masked_destination text not null,
+  provider_payee_token text,
+  masked_destination text,
   account_holder text,
   status public.payout_destination_status not null default 'NOT_VERIFIED',
   consent_at timestamptz not null default now(),
@@ -23,10 +22,10 @@ create table public.payout_destinations (
   revoked_at timestamptz
 );
 
-create unique index payout_destinations_request_active_uidx
-  on public.payout_destinations(request_id)
+create unique index payout_destinations_owner_active_uidx
+  on public.payout_destinations(owner_identity_id)
   where status in ('PENDING', 'NOT_VERIFIED', 'ACTIVE');
-create index payout_destinations_owner_idx on public.payout_destinations(owner_public_id, status);
+create index payout_destinations_owner_idx on public.payout_destinations(owner_identity_id, status);
 
 alter table public.payout_destinations enable row level security;
 revoke all on public.payout_destinations from anon, authenticated;
