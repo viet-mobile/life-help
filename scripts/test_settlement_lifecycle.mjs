@@ -7,6 +7,7 @@ import { registerHooks } from "node:module";
 registerHooks({
   resolve(specifier, context, nextResolve) {
     if (specifier === "server-only") return { url: "data:text/javascript,export{}", shortCircuit: true };
+    if (specifier.startsWith("@/")) return nextResolve(new URL(`../${specifier.slice(2)}.ts`, import.meta.url).href, context);
     return nextResolve(specifier, context);
   },
 });
@@ -18,6 +19,7 @@ function createDb() {
   const tables = {
     service_requests: [], conversations: [], messages: [], referral_identities: [], referral_attributions: [],
     referral_rewards: [], admin_audit_logs: [], app_notifications: [], request_assignments: [],
+    request_price_selections: [], request_price_snapshots: [],
   };
   const unique = { referral_rewards: ["qualifying_request_id"] };
   // Conversation ids whose messages delete returns an error (interrupted-cleanup simulation).
@@ -321,6 +323,38 @@ function seedSettled(db, n, { conversationStatus = "DELETION_SCHEDULED", status 
 
 // ---------- static authority boundaries ----------
 const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+
+// ---------- price authority (migration 013): the CURRENT accepted selection is the price ----------
+{
+  const { client, tables: t } = createDb();
+  const sel = (request_id, v, status, amount, ended) => ({ request_id, selection_version: v, status, ended_reason: ended ?? null, currency: "KRW", initial_payable_amount: amount, pricing_mode: "FIXED", quote_required: false, service_code: "clog-clearing", subitem_code: "toilet-simple", accepted_at: past, ended_at: ended ? past : null });
+  t.service_requests.push({ id: "req-SEL", customer_id: "CUST-S", status: "COMPLETED", selection_mode: "CUSTOMER_SELECTED" });
+  t.request_price_selections.push(sel("req-SEL", 1, "ENDED", 60000, "HELPER_DECLINED"), sel("req-SEL", 2, "ENDED", 75000, "HELPER_DECLINED"), sel("req-SEL", 3, "ACCEPTED", 85000));
+  // Legacy 012 snapshot with the OLD price must never win over a current selection.
+  t.request_price_snapshots.push({ request_id: "req-SEL", currency: "KRW", initial_payable_amount: 60000, pricing_mode: "FIXED", quote_required: false, service_code: "clog-clearing", subitem_code: "toilet-simple", agreed_at: past });
+  const pending = await lib.markPaymentPending(client, "req-SEL", "PLATFORM_TOKEN");
+  const pendingAudit = t.admin_audit_logs.find((a) => a.entity_id === "req-SEL" && a.action === "SERVICE_PAYMENT_PENDING");
+  check("PAYMENT_PENDING uses the CURRENT accepted selection (v3 85,000), not declined v1/v2 or the legacy snapshot", pending.ok && pending.agreedPrice?.initialPayableAmount === 85000 && pending.agreedPrice.selectionVersion === 3 && pendingAudit?.metadata.agreed_price?.initial_payable_amount === 85000 && pendingAudit.metadata.agreed_price.source === "SELECTION", JSON.stringify(pending));
+  const settled = await lib.settleServiceRequest(client, "req-SEL", "PLATFORM_TOKEN");
+  const settledAudit = t.admin_audit_logs.find((a) => a.entity_id === "req-SEL" && a.action === "SERVICE_SETTLED");
+  check("SETTLED audit records the current agreed price, no payment provider / transaction id", settled.ok && settled.agreedPrice?.initialPayableAmount === 85000 && settledAudit?.metadata.agreed_price?.selection_version === 3 && settledAudit.metadata.external_payment_transaction_id === null && settledAudit.metadata.external_payment_verified === false);
+  check("Price history untouched by settlement (v1/v2 ended, v3 accepted)", t.request_price_selections.map((r) => `${r.selection_version}:${r.status}:${r.initial_payable_amount}`).join() === "1:ENDED:60000,2:ENDED:75000,3:ACCEPTED:85000");
+
+  t.service_requests.push({ id: "req-NOSEL", customer_id: "CUST-N", status: "COMPLETED", selection_mode: "CUSTOMER_SELECTED" });
+  t.request_price_selections.push(sel("req-NOSEL", 1, "ENDED", 60000, "HELPER_DECLINED"));
+  const blocked = await lib.markPaymentPending(client, "req-NOSEL", "PLATFORM_TOKEN");
+  check("Customer-selected request without a current accepted selection cannot enter payment (PRICE_AGREEMENT_MISSING)", !blocked.ok && blocked.code === "PRICE_AGREEMENT_MISSING" && t.service_requests.find((r) => r.id === "req-NOSEL").status === "COMPLETED");
+
+  t.service_requests.push({ id: "req-LEGACY", customer_id: "CUST-L", status: "COMPLETED", selection_mode: "CUSTOMER_SELECTED" });
+  t.request_price_snapshots.push({ request_id: "req-LEGACY", currency: "KRW", initial_payable_amount: 50000, pricing_mode: "FIXED", quote_required: false, service_code: "clog-clearing", subitem_code: "sink", agreed_at: past });
+  const legacy = await lib.markPaymentPending(client, "req-LEGACY", "PLATFORM_TOKEN");
+  check("A request with no selection rows at all falls back to its frozen legacy snapshot", legacy.ok && legacy.agreedPrice?.source === "LEGACY_SNAPSHOT" && legacy.agreedPrice.initialPayableAmount === 50000);
+
+  t.service_requests.push({ id: "req-AUTO", customer_id: "CUST-A", status: "COMPLETED", selection_mode: "AUTO_MATCH" });
+  const auto = await lib.markPaymentPending(client, "req-AUTO", "PLATFORM_TOKEN");
+  check("AUTO_MATCH request: no agreed price, settlement unchanged", auto.ok && auto.agreedPrice === null);
+}
+
 const statusRoute = read("app/api/sys/requests/[requestId]/status/route.ts");
 const cleanupRoute = read("app/api/sys/cleanup/conversations/route.ts");
 const auth = read("lib/settlement/platformAuth.ts");

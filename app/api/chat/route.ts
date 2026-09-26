@@ -25,7 +25,11 @@ async function resolveConversation(request: Request, requestId: string, capabili
     senderRole = "CUSTOMER";
     senderId = verified.customerId;
   }
-  const { data: conversation, error } = await client.from("conversations").select("id, request_id, customer_id, helper_id, status, customer_locale, helper_locale").eq("request_id", requestId).eq("conversation_type", "CUSTOMER_HELPER").maybeSingle();
+  // A request gets one conversation per assigned Helper (automatic rematch, customer re-selection).
+  // A Helper only ever sees its own; the customer sees the newest one, i.e. the current Helper's.
+  let query = client.from("conversations").select("id, request_id, customer_id, helper_id, status, customer_locale, helper_locale").eq("request_id", requestId).eq("conversation_type", "CUSTOMER_HELPER");
+  if (senderRole === "HELPER") query = query.eq("helper_id", senderId);
+  const { data: conversation, error } = await query.order("created_at", { ascending: false }).limit(1).maybeSingle();
   if (error || !conversation) return { error: fail(404, "CONVERSATION_NOT_FOUND") } as const;
   return { client, conversation, senderRole, senderId } as const;
 }

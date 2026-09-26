@@ -101,8 +101,9 @@ check("Selected request: helper/price/revision come only from the token; service
 check("Selected request: client amount / currency / helper / terms are never read", !/body\.(price|amount|currency|helper|base_price|pricing_mode|materials|minimum|revision|surcharge|night|weekend|emergency)/i.test(selected));
 check("Selected request: stale / unavailable offers surface as 409 conflicts, no substitution", ["PRICE_CHANGED", "HELPER_NO_LONGER_AVAILABLE", "OFFER_UNAVAILABLE"].every((c) => selected.includes(c)) && !selected.includes("match_and_assign_helper"));
 check("Selected request: push only for a newly created assignment (never on replay)", /if \(!data\.replayed\) await dispatchPushInBackground\(\(\) => pushHelperAssignment\(client, requestId\)\)/.test(selected));
-const offersRoute = code("app/api/pricing/offers/route.ts");
+const offersRoute = code("lib/pricing/publicOffers.ts");
 const pushed = offersRoute.slice(offersRoute.indexOf("offers.push({"), offersRoute.indexOf("});", offersRoute.indexOf("offers.push({")));
+check("Both offer endpoints use the shared public mapping", code("app/api/pricing/offers/route.ts").includes("toPublicOffers(") && code("app/api/requests/reselection/offers/route.ts").includes("toPublicOffers(rows, { requestId: ctx.requestId })"));
 check("Offer discovery returns no internal ids (price_id / helper_id replaced by offerToken)", pushed.length > 0 && !/price_id|helper_id|auth_user|email|name:/.test(pushed) && pushed.includes("offerToken"));
 for (const file of ["app/api/helper/prices/route.ts", "app/api/helper/prices/status/route.ts"]) {
   const src = code(file);
@@ -112,6 +113,20 @@ const helperGet = code("app/api/helper/prices/route.ts");
 check("Helper sees only its own prices", helperGet.includes('from("helper_service_prices")') && helperGet.includes('.eq("helper_id", helper.id)'));
 const decline = code("app/api/helper/assignments/[assignmentId]/decline/route.ts");
 check("Decline of a customer-selected helper never auto-rematches (CUSTOMER_RESELECTION_REQUIRED)", decline.includes('selection_mode === "CUSTOMER_SELECTED"') && decline.indexOf("CUSTOMER_RESELECTION_REQUIRED") < decline.indexOf('rpc("match_and_assign_helper"'));
+// ---------------- customer re-selection (migration 013) ----------------
+const reselect = code("app/api/requests/reselection/route.ts");
+const reselectOffers = code("app/api/requests/reselection/offers/route.ts");
+const reselectLib = code("lib/request/reselection.ts");
+check("Re-selection: owner from the device cookie on every route; never a body / public customer id", [reselect, reselectOffers].every((src) => src.includes("resolveCustomerOwner(client)")) && !/body\.(customer|helper|price|amount|currency|pricing|materials|minimum|extra|night|weekend|emergency|revision)/.test(reselect) && reselect.includes("p_customer_id: owner.owner.customerId"));
+check("Re-selection: request must be owned by the cookie's customer (request id alone authorizes nothing)", reselectLib.includes('.eq("customer_id", customerId)') && reselect.indexOf("loadOwnedReselection(") < reselect.indexOf('rpc("reselect_customer_helper"'));
+check("Re-selection: offer token must be bound to this exact request; new-request tokens refused and vice versa", reselect.includes("offer.claims.requestId !== requestId") && code("app/api/requests/selected/route.ts").includes("if (offer.claims.requestId) return respond(400"));
+check("Re-selection: same service and detailed service enforced", reselect.includes("offer.claims.subitemCode !== lookup.value.subitemCode") && reselect.includes("OFFER_SERVICE_MISMATCH"));
+check("Re-selection offers exclude Helpers who declined / timed out on this request", reselectLib.includes('.in("status", ["DECLINED", "TIMEOUT"])') && reselectOffers.includes("!ctx.excludedHelperIds.includes(row.helper_id)"));
+check("Re-selection: price / helper / revision come only from the token; push only on a new assignment", reselect.includes("p_price_id: offer.claims.priceId") && reselect.includes("p_price_revision: offer.claims.revision") && /if \(!data\.replayed\) await dispatchPushInBackground\(\(\) => pushHelperAssignment\(client, requestId\)\)/.test(reselect));
+const declineRoute = code("app/api/helper/assignments/[assignmentId]/decline/route.ts");
+check("Decline -> customer re-selection push is generic (RESELECTION_REQUIRED event), never an auto-rematch", declineRoute.includes('pushCustomerStatus(resolved.value.client, release.request_id, "RESELECTION_REQUIRED")') && declineRoute.indexOf("CUSTOMER_RESELECTION_REQUIRED") < declineRoute.indexOf('rpc("match_and_assign_helper"'));
+const priceAuth = code("lib/pricing/requestPrice.ts");
+check("Price authority: current ACCEPTED selection first; legacy snapshot only when no selection exists", priceAuth.indexOf('row.status === "ACCEPTED"') < priceAuth.indexOf("request_price_snapshots") && priceAuth.includes("if (selections.length) return null;"));
 const page = read("app/request/page.tsx");
 check("Request page sends only the opaque offer token for a selected offer", page.includes("...(offerToken ? { offer_token: offerToken } : {})") && !/offer_(price|amount|currency|helper)/.test(page) && page.includes('fetch("/api/requests/selected", requestInit)'));
 const picker = read("components/request/PriceOfferPicker.tsx");

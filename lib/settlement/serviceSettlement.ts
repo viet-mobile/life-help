@@ -1,6 +1,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { PlatformActor } from "@/lib/settlement/platformAuth";
+import { agreedPriceAudit, loadCurrentAgreedPrice, type AgreedPrice } from "@/lib/pricing/requestPrice";
 
 /**
  * Internal service settlement lifecycle:
@@ -27,10 +28,10 @@ export type LifecycleResult =
   | { ok: true; requestId: string; status: string; idempotent: boolean; [key: string]: unknown }
   | { ok: false; httpStatus: number; code: string; currentStatus?: string };
 
-type RequestRow = { id: string; customer_id: string; status: string };
+type RequestRow = { id: string; customer_id: string; status: string; selection_mode: string };
 
 async function loadRequest(client: SupabaseClient, requestId: string): Promise<RequestRow | null> {
-  const { data, error } = await client.from("service_requests").select("id, customer_id, status").eq("id", requestId).maybeSingle();
+  const { data, error } = await client.from("service_requests").select("id, customer_id, status, selection_mode").eq("id", requestId).maybeSingle();
   return error || !data ? null : (data as RequestRow);
 }
 
@@ -46,6 +47,11 @@ async function notifyCustomer(client: SupabaseClient, customerId: string, reques
 async function transition(client: SupabaseClient, requestId: string, from: string, to: string): Promise<boolean> {
   const { data } = await client.from("service_requests").update({ status: to, updated_at: new Date().toISOString() }).eq("id", requestId).eq("status", from).select("id").maybeSingle();
   return !!data;
+}
+
+/** Agreed price of a customer-selected request (current accepted selection); null for AUTO_MATCH. */
+async function agreedPriceFor(client: SupabaseClient, row: RequestRow): Promise<AgreedPrice | null> {
+  return row.selection_mode === "CUSTOMER_SELECTED" ? loadCurrentAgreedPrice(client, row.id) : null;
 }
 
 /** Operational (non-financial) admin transitions preserved from the original SYS route. */
@@ -74,14 +80,18 @@ export async function markPaymentPending(client: SupabaseClient, requestId: stri
   if (!row) return { ok: false, httpStatus: 404, code: "REQUEST_NOT_FOUND" };
   if (row.status === "PAYMENT_PENDING") return { ok: true, requestId, status: row.status, idempotent: true };
   if (row.status !== "COMPLETED") return { ok: false, httpStatus: 409, code: "INVALID_TRANSITION", currentStatus: row.status };
+  // A customer-selected request is paid at its CURRENT accepted price selection; without one it
+  // cannot enter payment (a declined Helper's ended selection is history, never the price).
+  const agreedPrice = await agreedPriceFor(client, row);
+  if (row.selection_mode === "CUSTOMER_SELECTED" && !agreedPrice) return { ok: false, httpStatus: 409, code: "PRICE_AGREEMENT_MISSING", currentStatus: row.status };
   if (!(await transition(client, requestId, "COMPLETED", "PAYMENT_PENDING"))) {
     const latest = await loadRequest(client, requestId);
     if (latest?.status === "PAYMENT_PENDING") return { ok: true, requestId, status: latest.status, idempotent: true };
     return { ok: false, httpStatus: 409, code: "INVALID_TRANSITION", currentStatus: latest?.status };
   }
-  await audit(client, "SERVICE_PAYMENT_PENDING", requestId, { actor_kind: actor, external_payment_provider: null, external_payment_verified: false });
+  await audit(client, "SERVICE_PAYMENT_PENDING", requestId, { actor_kind: actor, external_payment_provider: null, external_payment_verified: false, agreed_price: agreedPriceAudit(agreedPrice) });
   await notifyCustomer(client, row.customer_id, requestId, "PAYMENT_PENDING");
-  return { ok: true, requestId, status: "PAYMENT_PENDING", idempotent: false };
+  return { ok: true, requestId, status: "PAYMENT_PENDING", idempotent: false, agreedPrice };
 }
 
 /**
@@ -129,18 +139,19 @@ export async function settleServiceRequest(client: SupabaseClient, requestId: st
     else status = (await loadRequest(client, requestId))?.status ?? row.status;
   }
   if (!SETTLED_STATES.includes(status)) return { ok: false, httpStatus: 409, code: "INVALID_TRANSITION", currentStatus: status };
+  const agreedPrice = await agreedPriceFor(client, row);
 
   if (won) {
-    await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: SETTLEMENT_METHOD, external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false });
+    await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: SETTLEMENT_METHOD, external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false, agreed_price: agreedPriceAudit(agreedPrice) });
     await notifyCustomer(client, row.customer_id, requestId, "SETTLED");
   } else {
     // Reconcile a settlement whose side effects may have been interrupted.
     const { data: existingAudit } = await client.from("admin_audit_logs").select("id").eq("action", "SERVICE_SETTLED").eq("entity_id", requestId).limit(1);
-    if (!existingAudit?.length) await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: SETTLEMENT_METHOD, external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false, reconciled: true });
+    if (!existingAudit?.length) await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: SETTLEMENT_METHOD, external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false, agreed_price: agreedPriceAudit(agreedPrice), reconciled: true });
   }
   const cleanupScheduled = await scheduleConversationCleanup(client, requestId);
   const reward = await qualifyReferralReward(client, requestId, row.customer_id);
-  return { ok: true, requestId, status, idempotent: !won, cleanupScheduled, reward, settlementMethod: SETTLEMENT_METHOD, externalPaymentVerified: false };
+  return { ok: true, requestId, status, idempotent: !won, cleanupScheduled, reward, settlementMethod: SETTLEMENT_METHOD, externalPaymentVerified: false, agreedPrice };
 }
 
 /** SETTLED → CLOSED, allowed only once no conversation of the request still holds content. */

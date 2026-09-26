@@ -3,6 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import { getCustomerDeviceId, getReferralParam } from "@/lib/referral/clientDeviceId";
 import { PriceOfferPicker } from "@/components/request/PriceOfferPicker";
+import { ReselectionPanel } from "@/components/request/ReselectionPanel";
+import { formatMoney } from "@/lib/pricing/pricingTerms";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
@@ -40,7 +42,11 @@ type LiveRequestStatus =
   | "CLOSED"
   | "CANCELLED"
   | "EXPIRED"
-  | "NO_HELPER_AVAILABLE";
+  | "NO_HELPER_AVAILABLE"
+  | "CUSTOMER_RESELECTION_REQUIRED";
+
+type PendingReselection = { requestId: string; serviceCode: string; subitemCode: string };
+type AgreedPrice = { currency: string; initialPayableAmount: number; selectionVersion: number | null };
 
 interface RequestSubmitError {
   code: string;
@@ -267,6 +273,9 @@ function RequestPageContent() {
   // localStorage chat sessions; DB chat entry is P2-5.
   const [submitResult, setSubmitResult] = useState<RequestSubmitResult | null>(null);
   const [liveStatus, setLiveStatus] = useState<LiveRequestStatus | null>(null);
+  const [agreedPrice, setAgreedPrice] = useState<AgreedPrice | null>(null);
+  // This device's requests whose selected Helper could not take them (owner cookie decides).
+  const [pendingReselections, setPendingReselections] = useState<PendingReselection[]>([]);
   const [submitError, setSubmitError] = useState<RequestSubmitError | null>(null);
   // Idempotency key of the current logical submission, bound to the exact payload it was created for.
   const pendingSubmissionRef = useRef<{ key: string; payloadJson: string } | null>(null);
@@ -278,7 +287,11 @@ function RequestPageContent() {
       const params = new URLSearchParams({ requestId: submitResult.requestId, capability: submitResult.capability || "" });
       const response = await fetch(`/api/requests/status?${params.toString()}`, { cache: "no-store" }).catch(() => null);
       const data = await response?.json().catch(() => null);
-      if (active && data?.success === true && typeof data.status === "string") setLiveStatus(data.status as LiveRequestStatus);
+      if (active && data?.success === true && typeof data.status === "string") {
+        setLiveStatus(data.status as LiveRequestStatus);
+        // The CURRENT accepted price selection is the agreed price (earlier versions are history).
+        setAgreedPrice(data.agreedPrice && typeof data.agreedPrice.initialPayableAmount === "number" ? data.agreedPrice : null);
+      }
     };
     void refresh();
     const timer = window.setInterval(() => void refresh(), 5000);
@@ -297,6 +310,18 @@ function RequestPageContent() {
       .then((response) => response.json())
       .then((data) => { if (typeof data.referralId === "string") setPublicUserId(data.referralId); });
   }, []);
+
+  // Requests waiting for a new Helper choice. Loaded once the device identity (owner cookie) exists,
+  // and again whenever the live status reports the re-selection state.
+  useEffect(() => {
+    if (!publicUserId) return;
+    let active = true;
+    void fetch("/api/requests/reselection", { cache: "no-store" })
+      .then((response) => response.json())
+      .then((data) => { if (active && Array.isArray(data?.requests)) setPendingReselections(data.requests); })
+      .catch(() => undefined);
+    return () => { active = false; };
+  }, [publicUserId, liveStatus]);
 
   // Active service and its assigned pastel theme
   const service = getService(selectedSlug);
@@ -480,11 +505,14 @@ function RequestPageContent() {
     if (status === "SETTLED") return t("request.statusSettled") || status;
     if (status === "CLOSED") return t("request.statusClosed") || status;
     if (status === "NO_HELPER_AVAILABLE") return t("admin.noHelpers") || status;
+    if (status === "CUSTOMER_RESELECTION_REQUIRED") return t("request.statusReselectionRequired") || status;
     return status;
   };
 
   if (submitResult) {
-    const isMatched = submitResult.status === "MATCHED";
+    const needsReselection = liveStatus === "CUSTOMER_RESELECTION_REQUIRED";
+    const reselection = pendingReselections.find((item) => item.requestId === submitResult.requestId);
+    const isMatched = submitResult.status === "MATCHED" && !needsReselection;
     return (
       <main className="min-h-screen bg-linear-to-b from-sky-50/40 via-amber-50/20 to-indigo-50/30">
         <header className="border-b border-slate-200/80 bg-white/85 backdrop-blur-md sticky top-0 z-20 shadow-2xs">
@@ -498,10 +526,12 @@ function RequestPageContent() {
 
         <section className="mx-auto max-w-3xl px-4 sm:px-5 py-8 sm:py-10">
           <div className="droplet-card bg-white p-6 sm:p-8 text-center shadow-sm border border-slate-200/90">
-            <div className="text-5xl">{isMatched ? "✅" : "🕒"}</div>
+            <div className="text-5xl">{needsReselection ? "🔁" : isMatched ? "✅" : "🕒"}</div>
             {/* Only ko + en copy for now; full 38-language strings are P2-8. */}
             <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-snug whitespace-pre-line">
-              {isMatched
+              {needsReselection
+                ? t("reselection.title")
+                : isMatched
                 ? formatBilingual("A helper has been assigned.", "헬퍼가 배정되었습니다.", "\n")
                 : formatBilingual(
                     "Your request has been received.",
@@ -510,7 +540,9 @@ function RequestPageContent() {
                   )}
             </h1>
             <p className="mt-3 text-sm sm:text-base leading-relaxed font-medium text-slate-600 whitespace-pre-line">
-              {isMatched
+              {needsReselection
+                ? t("reselection.body")
+                : isMatched
                 ? formatBilingual(
                     "The helper for your region and service has been notified. The live chat connection will open here once it is ready.",
                     "요청하신 지역과 서비스의 헬퍼에게 배정 알림이 전달되었습니다. 대화 연결이 준비되면 이곳에서 이어서 안내해 드립니다.",
@@ -522,6 +554,26 @@ function RequestPageContent() {
                     "\n"
                   )}
             </p>
+            {needsReselection && reselection && (
+              <div className="mt-5">
+                <ReselectionPanel
+                  requestId={reselection.requestId}
+                  serviceCode={reselection.serviceCode}
+                  subitemCode={reselection.subitemCode}
+                  onReselected={() => { setLiveStatus("MATCHED"); setPendingReselections((items) => items.filter((item) => item.requestId !== reselection.requestId)); }}
+                />
+              </div>
+            )}
+            {needsReselection && liveStatus && (
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-black text-amber-900">
+                <span>{getLiveStatusLabel(liveStatus)}</span>
+              </div>
+            )}
+            {isMatched && agreedPrice && (
+              <p data-testid="agreed-price" className="mt-3 text-sm font-black text-slate-900">
+                {t("pricing.initialAmount")}: {formatMoney(agreedPrice.initialPayableAmount, agreedPrice.currency, locale)}
+              </p>
+            )}
             {isMatched && liveStatus && (
               <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black text-blue-900">
                 <span className="h-2 w-2 rounded-full bg-blue-600" aria-hidden="true" />
@@ -623,6 +675,15 @@ function RequestPageContent() {
       </header>
 
       <section className="mx-auto max-w-3xl px-3 sm:px-5 py-5 sm:py-7">
+        {pendingReselections.map((item) => (
+          <div key={item.requestId} className="mb-4">
+            <ReselectionPanel
+              requestId={item.requestId}
+              serviceCode={item.serviceCode}
+              subitemCode={item.subitemCode}
+            />
+          </div>
+        ))}
         <div className="flex items-center justify-between gap-2">
           <h1 className="text-lg sm:text-2xl font-black text-slate-900 break-words">
             {formatBilingual(t("request.title"), "서비스 신청")}

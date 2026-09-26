@@ -1,17 +1,11 @@
 import { NextResponse } from "next/server";
 import { CORE_SERVICE_SLUGS } from "@/lib/request/serverRequest";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
-import { issueOfferToken } from "@/lib/pricing/offerToken";
-import type { PublicOffer } from "@/lib/pricing/pricingTerms";
+import { toPublicOffers, type OfferRow } from "@/lib/pricing/publicOffers";
 
 function respond(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
-
-type OfferRow = {
-  price_id: string; revision: number; helper_id: string; helper_alias: string; rating: number | null; completed_jobs: number | null;
-  spoken_locales: string[] | null; service_code: string; subitem_code: string; pricing_mode: PublicOffer["pricingMode"];
-} & Omit<PublicOffer, "offerToken" | "helperAlias" | "rating" | "completedJobs" | "spokenLocales" | "serviceCode" | "subitemCode" | "pricingMode">;
 
 /**
  * GET /api/pricing/offers?service=&subitem=&country=&sido=&gungu=
@@ -30,33 +24,7 @@ export async function GET(request: Request) {
   if (!client) return respond({ success: false, code: "SERVICE_UNAVAILABLE" }, 503);
   const { data, error } = await client.rpc("list_customer_offers", { p_service_code: service, p_subitem_code: subitem, p_country: country, p_sido: sido, p_gungu: gungu });
   if (error) return respond({ success: false, code: "OFFERS_UNAVAILABLE" }, 502);
-  const offers: PublicOffer[] = [];
-  for (const row of (data ?? []) as OfferRow[]) {
-    const offerToken = await issueOfferToken({ priceId: row.price_id, revision: row.revision, helperId: row.helper_id, serviceCode: row.service_code, subitemCode: row.subitem_code });
-    if (!offerToken) return respond({ success: false, code: "SERVICE_UNAVAILABLE" }, 503);
-    offers.push({
-      offerToken,
-      helperAlias: row.helper_alias,
-      rating: row.rating,
-      completedJobs: row.completed_jobs,
-      spokenLocales: row.spoken_locales ?? [],
-      serviceCode: row.service_code,
-      subitemCode: row.subitem_code,
-      pricingMode: row.pricing_mode,
-      currency: row.currency,
-      base_price: row.base_price,
-      minimum_charge: row.minimum_charge,
-      included_quantity: row.included_quantity,
-      included_minutes: row.included_minutes,
-      extra_unit_price: row.extra_unit_price,
-      extra_hour_price: row.extra_hour_price,
-      materials_policy: row.materials_policy,
-      materials_note: row.materials_note,
-      emergency_multiplier: row.emergency_multiplier,
-      night_multiplier: row.night_multiplier,
-      weekend_multiplier: row.weekend_multiplier,
-      tax_included: row.tax_included,
-    });
-  }
+  const offers = await toPublicOffers((data ?? []) as OfferRow[]);
+  if (!offers) return respond({ success: false, code: "SERVICE_UNAVAILABLE" }, 503);
   return respond({ success: true, offers });
 }

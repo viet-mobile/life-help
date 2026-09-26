@@ -47,6 +47,8 @@ export async function POST(request: Request) {
 
   const offer = await readOfferToken(body.offer_token);
   if (!offer.ok) return respond(offer.code === "OFFER_EXPIRED" ? 409 : 400, { success: false, code: offer.code });
+  // A re-selection offer is bound to its request and can never open a new one.
+  if (offer.claims.requestId) return respond(400, { success: false, code: "OFFER_INVALID" });
 
   // The request's service always comes from the offer, and the owner from the cookie.
   const validation = validateCreateServiceRequest({ ...body, customer_id: owner.owner.customerId, service_slug: offer.claims.serviceCode });

@@ -118,9 +118,13 @@ check("Push disabled without VAPID secrets", (await delivery.getVapidConfig()) =
 globalThis.__testEnv = stagingEnv;
 
 // ---------- payload minimality ----------
-for (const [event, locale] of [["HELPER_ASSIGNED", "ko"], ["SERVICE_STATUS", "vi"], ["STAGING_TEST", "xx-invalid"]]) {
+for (const [event, locale] of [["HELPER_ASSIGNED", "ko"], ["SERVICE_STATUS", "vi"], ["RESELECTION_REQUIRED", "ja"], ["STAGING_TEST", "xx-invalid"]]) {
   const payload = JSON.parse(delivery.buildPushPayload(event, locale));
   check(`Payload ${event}: only generic fields and a fixed route`, Object.keys(payload).sort().join() === "audience,body,tag,title,type,url,v" && ["/tech/assignments", "/request"].includes(payload.url) && payload.title && payload.body && !/capability|token|@|\d{3}-\d{3,4}/i.test(JSON.stringify(payload)), JSON.stringify(payload));
+}
+{
+  const re = JSON.parse(delivery.buildPushPayload("RESELECTION_REQUIRED", "ko"));
+  check("Re-selection payload: customer audience, fixed /request route, generic ko text (no price, Helper, address or id)", re.audience === "customer" && re.url === "/request" && re.type === "RESELECTION_REQUIRED" && re.title === "다른 Helper를 선택해 주세요" && !/[0-9]{3}|₩|KRW|HLP-|@/.test(re.title + re.body));
 }
 check("Payload is localized (ko helper, vi customer, en fallback)", JSON.parse(delivery.buildPushPayload("HELPER_ASSIGNED", "ko")).title === "새 서비스 요청" && JSON.parse(delivery.buildPushPayload("SERVICE_STATUS", "vi")).title === "Cập nhật dịch vụ" && JSON.parse(delivery.buildPushPayload("STAGING_TEST", "zz")).title === "Test notification");
 

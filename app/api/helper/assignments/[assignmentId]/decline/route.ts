@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { resolveAuthenticatedHelper } from "@/lib/helper/serverIdentity";
-import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
+import { dispatchPushInBackground, pushCustomerStatus, pushHelperAssignment } from "@/lib/push/pushDelivery";
 
 export async function POST(_request: Request, context: { params: Promise<{ assignmentId: string }> }) {
   const resolved = await resolveAuthenticatedHelper(_request);
@@ -23,10 +23,14 @@ export async function POST(_request: Request, context: { params: Promise<{ assig
 
   let matching = null;
   // A customer chose THIS helper at THIS price: never auto-substitute another helper / price.
-  // The request stays unassigned until the customer re-selects (see migration 012 trigger, which
-  // also blocks any substitute assignment in the database).
+  // Migration 013 moved the request to CUSTOMER_RESELECTION_REQUIRED, ended the price selection and
+  // wrote the customer's in-app notice; the customer now explicitly chooses a fresh offer.
+  // (The selection_mode read keeps the same answer for any request released before 013.)
   const { data: requestRow } = await resolved.value.client.from("service_requests").select("selection_mode").eq("id", release.request_id).maybeSingle();
-  if (release.request_reopened && requestRow?.selection_mode === "CUSTOMER_SELECTED") {
+  if (release.customer_reselection_required === true || (release.request_reopened && requestRow?.selection_mode === "CUSTOMER_SELECTED")) {
+    // Generic best-effort push to the owning customer device: no price, no Helper, no address.
+    // A retried decline is rejected by the release RPC, so this is sent once.
+    if (release.customer_reselection_required === true) await dispatchPushInBackground(() => pushCustomerStatus(resolved.value.client, release.request_id, "RESELECTION_REQUIRED"));
     return NextResponse.json({ success: true, release, matching: { success: false, code: "CUSTOMER_RESELECTION_REQUIRED" } }, { headers: { "Cache-Control": "no-store" } });
   }
   if (release.request_reopened) {

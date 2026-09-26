@@ -14,7 +14,7 @@ const REFRESH_CODES: Record<string, string> = {
 };
 
 /** Terms of one offer, exactly as agreed if confirmed. Values come from the server offer only. */
-function OfferTerms({ offer }: { offer: PublicOffer }) {
+export function OfferTerms({ offer }: { offer: PublicOffer }) {
   const { t, locale } = useLocale();
   const money = (n: number | null | undefined) => formatMoney(n == null ? null : Number(n), offer.currency, locale);
   const unit = unitKey(offer.pricingMode);
