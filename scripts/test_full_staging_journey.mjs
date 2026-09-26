@@ -121,6 +121,10 @@ async function cleanup() {
     await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`messages?conversation_id=in.(${requestId})`, "DELETE").catch(() => {});
     await db(`app_notifications?payload->>request_id=eq.${requestId}`, "DELETE").catch(() => {});
+    // Chat notifications reference the conversation, not the request.
+    for (const { id } of await db(`conversations?request_id=eq.${requestId}&select=id`).catch(() => [])) {
+      await db(`app_notifications?payload->>conversation_id=eq.${id}`, "DELETE").catch(() => {});
+    }
     await db(`request_assignments?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`conversations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`admin_escalations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
@@ -228,6 +232,10 @@ try {
     const loser = raceB.body.status === "NO_HELPER_AVAILABLE" ? raceB : raceC;
     const loserEscalation = await db(`admin_escalations?request_id=eq.${loser.body.requestId}&select=reason,status,admin_notes`);
     if (loserEscalation.length === 1 && loserEscalation[0].reason === "NO_HELPER_AVAILABLE") pass("Race loser escalated as NO_HELPER_AVAILABLE"); else fail("Race loser escalated as NO_HELPER_AVAILABLE", JSON.stringify(loserEscalation));
+    // The loser must hold no assignment row of any status: no partial or orphaned write from the race.
+    const loserRows = raceRows.filter((row) => row.request_id === loser.body.requestId);
+    const loserRequest = (await db(`service_requests?id=eq.${loser.body.requestId}&select=status`))[0];
+    if (loserRows.length === 0 && loserRequest?.status !== "MATCHED") pass("Race loser has no partial assignment", `rows=${loserRows.length} status=${loserRequest?.status}`); else fail("Race loser has no partial assignment", JSON.stringify({ loserRows, loserRequest }));
   } finally {
     await db(`helpers?id=eq.${helperB.helper.id}`, "PATCH", { on_duty: true }).catch(() => {});
   }
