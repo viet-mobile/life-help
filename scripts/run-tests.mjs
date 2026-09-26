@@ -13,7 +13,7 @@ if (leaked.length) {
 const suites = [
   "test_environment_isolation_static", "test_customer_i18n_full", "test_customer_i18n_coverage", "test_payout_authorization_static",
   "test_request_api_static", "test_service_lifecycle_static", "test_settlement_lifecycle", "test_helper_release_db",
-  "test_assignment_release_static", "test_push_subscriptions_db", "test_web_push", "test_customer_ownership",
+  "test_assignment_release_static", "test_push_subscriptions_db", "test_rematch_exclusion_db", "test_web_push", "test_customer_ownership",
 ];
 let failed = 0;
 for (const suite of suites) {
