@@ -89,26 +89,26 @@ export function PriceOfferPicker({ serviceSlug, country, sido, gungu, disabled, 
       <p className="text-sm font-black text-slate-900">{t("pricing.chooseSubitem")}</p>
       <div className="mt-2 flex flex-wrap gap-1.5">
         {subitems.map((item) => (
-          <button key={item.subitem_code} type="button" onClick={() => setSubitem(item.subitem_code)}
+          <button key={item.subitem_code} type="button" data-testid={`price-subitem-${item.subitem_code}`} onClick={() => setSubitem(item.subitem_code)}
             className={`droplet-pill border px-2.5 py-1 text-xs font-bold ${subitem === item.subitem_code ? "border-blue-600 bg-blue-50 text-blue-900" : "border-slate-300 bg-white text-slate-700"}`}>
             {t(`serviceSubitems.${item.service_code}.${item.subitem_code}`)}
           </button>
         ))}
       </div>
-      {notice && <p className="mt-3 text-xs font-bold text-amber-800">{notice}</p>}
+      {notice && <p data-testid="price-offer-notice" className="mt-3 text-xs font-bold text-amber-800">{notice}</p>}
       {subitem && !chosen && (
         <div className="mt-3">
           <p className="text-xs font-black text-slate-800">{t("pricing.offersTitle")}</p>
           {offers !== null && offers.length === 0 && <p className="mt-1 text-xs text-slate-600">{t("pricing.noOffers")}</p>}
           <div className="mt-2 space-y-2">
             {(offers ?? []).map((offer) => (
-              <article key={offer.offerToken} className="droplet-card border border-slate-200 p-3">
+              <article key={offer.offerToken} data-testid="price-offer-card" className="droplet-card border border-slate-200 p-3">
                 <p className="text-xs font-bold text-slate-600">
                   {offer.helperAlias}{offer.rating != null ? ` · ★${Number(offer.rating).toFixed(1)}` : ""}{offer.completedJobs != null ? ` · ✔${offer.completedJobs}` : ""}
                   {offer.spokenLocales.length ? ` · ${offer.spokenLocales.join("/")}` : ""}
                 </p>
                 <OfferTerms offer={offer} />
-                <button type="button" disabled={disabled} onClick={() => setChosen(offer)} className="mt-2 droplet-btn bg-blue-700 px-3 py-1.5 text-xs font-black text-white disabled:opacity-50">
+                <button type="button" data-testid="price-offer-select" disabled={disabled} onClick={() => setChosen(offer)} className="mt-2 droplet-btn bg-blue-700 px-3 py-1.5 text-xs font-black text-white disabled:opacity-50">
                   {t("pricing.select")}
                 </button>
               </article>
@@ -122,7 +122,7 @@ export function PriceOfferPicker({ serviceSlug, country, sido, gungu, disabled, 
           <p className="text-sm font-black text-blue-950">{t("pricing.confirmTitle")}</p>
           <p className="mt-1 text-xs font-bold text-slate-700">{t(`serviceSubitems.${chosen.serviceCode}.${chosen.subitemCode}`)} · {chosen.helperAlias}</p>
           <OfferTerms offer={chosen} />
-          <p className="mt-2 text-sm font-black text-slate-900">
+          <p data-testid="price-offer-initial" className="mt-2 text-sm font-black text-slate-900">
             {t("pricing.initialAmount")}: {formatMoney(initialPayableAmount({ ...chosen, pricing_mode: chosen.pricingMode }), chosen.currency, locale)}
           </p>
           <p className="mt-1 text-xs font-bold text-slate-700">{t("pricing.approvalNotice")}</p>

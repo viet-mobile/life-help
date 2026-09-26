@@ -89,55 +89,55 @@ export function HelperPricingPanel({ formatBilingual }: { formatBilingual: (en: 
     <section data-testid="helper-pricing-panel" className="mt-6 droplet-card border border-slate-200 bg-white p-4 text-slate-900 shadow-xs">
       <h2 className="text-base font-black">{formatBilingual("My service prices", "내 서비스 가격")}</h2>
       <p className="mt-1 text-xs font-semibold text-slate-600">{formatBilingual("Set your own price for each detailed service you provide. Customers see published prices before requesting.", "제공하는 세부 서비스마다 직접 가격을 정하세요. 고객은 요청 전에 게시된 가격을 봅니다.")}</p>
-      {message && <p className="mt-2 text-xs font-bold text-emerald-800">{message}</p>}
+      {message && <p data-testid="price-message" className="mt-2 text-xs font-bold text-emerald-800">{message}</p>}
       {services.length === 0 && <p className="mt-2 text-xs text-slate-600">{formatBilingual("No qualified services yet.", "아직 등록된 서비스가 없습니다.")}</p>}
       {services.map((service) => (
-        <div key={service} className="mt-3">
+        <div key={service} data-testid={`price-service-${service}`} className="mt-3">
           <p className="text-sm font-black">{t(`service.${service === "clog-clearing" ? "clog" : service.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`) || service}</p>
           {catalog.filter((c) => c.service_code === service).map((item) => {
             const row = priceFor(item);
             return (
-              <div key={item.id} className="mt-2 rounded border border-slate-200 p-2.5">
+              <div key={item.id} data-testid={`price-item-${item.subitem_code}`} className="mt-2 rounded border border-slate-200 p-2.5">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-bold">{t(`serviceSubitems.${item.service_code}.${item.subitem_code}`)}</span>
-                  <span className="text-[11px] font-bold text-slate-500">{statusLabel(row)}</span>
+                  <span data-testid={`price-status-${item.subitem_code}`} data-status={row?.status ?? "NONE"} className="text-[11px] font-bold text-slate-500">{statusLabel(row)}</span>
                 </div>
                 <div className="mt-1.5 flex flex-wrap gap-1.5">
-                  <button type="button" onClick={() => edit(item)} className="rounded border border-slate-300 px-2 py-1 text-[11px] font-bold">{formatBilingual(row ? "Edit" : "Offer this service", row ? "수정" : "이 서비스 제공")}</button>
-                  {row?.status === "ACTIVE" && <button type="button" disabled={busy} onClick={() => void setStatus(row, "PAUSED")} className="rounded border border-amber-400 px-2 py-1 text-[11px] font-bold text-amber-800">{formatBilingual("Pause", "일시중지")}</button>}
-                  {row?.status === "PAUSED" && <button type="button" disabled={busy} onClick={() => void setStatus(row, "ACTIVE")} className="rounded border border-emerald-500 px-2 py-1 text-[11px] font-bold text-emerald-800">{formatBilingual("Resume", "재개")}</button>}
+                  <button type="button" data-testid={`price-edit-${item.subitem_code}`} onClick={() => edit(item)} className="rounded border border-slate-300 px-2 py-1 text-[11px] font-bold">{formatBilingual(row ? "Edit" : "Offer this service", row ? "수정" : "이 서비스 제공")}</button>
+                  {row?.status === "ACTIVE" && <button type="button" data-testid={`price-pause-${item.subitem_code}`} disabled={busy} onClick={() => void setStatus(row, "PAUSED")} className="rounded border border-amber-400 px-2 py-1 text-[11px] font-bold text-amber-800">{formatBilingual("Pause", "일시중지")}</button>}
+                  {row?.status === "PAUSED" && <button type="button" data-testid={`price-resume-${item.subitem_code}`} disabled={busy} onClick={() => void setStatus(row, "ACTIVE")} className="rounded border border-emerald-500 px-2 py-1 text-[11px] font-bold text-emerald-800">{formatBilingual("Resume", "재개")}</button>}
                 </div>
                 {open === item.id && draft && (
                   <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
                     <label className="text-[11px] font-bold">{formatBilingual("Pricing method", "요금 방식")}
-                      <select value={draft.pricing_mode} onChange={(e) => setDraft({ ...draft, pricing_mode: e.target.value as PricingMode })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs">
+                      <select data-testid="price-mode" value={draft.pricing_mode} onChange={(e) => setDraft({ ...draft, pricing_mode: e.target.value as PricingMode })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs">
                         {modesOf(item).map((mode) => <option key={mode} value={mode}>{t(`pricing.mode.${mode}`)}</option>)}
                       </select>
                     </label>
                     <label className="text-[11px] font-bold">{formatBilingual("Currency (ISO code)", "통화 (ISO 코드)")}
-                      <input value={draft.currency ?? ""} onChange={(e) => setDraft({ ...draft, currency: e.target.value.toUpperCase() })} maxLength={3} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs" />
+                      <input data-testid="price-currency" value={draft.currency ?? ""} onChange={(e) => setDraft({ ...draft, currency: e.target.value.toUpperCase() })} maxLength={3} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs" />
                     </label>
                     {NUMBER_FIELDS.filter(([, , , modes]) => !modes || modes.includes(draft.pricing_mode)).map(([key, en, ko]) => (
                       <label key={key} className="text-[11px] font-bold">{formatBilingual(en, ko)}
-                        <input type="number" min={0} step="any" value={(draft[key] as number | null | undefined) ?? ""} onChange={(e) => setDraft({ ...draft, [key]: e.target.value === "" ? null : Number(e.target.value) })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs" />
+                        <input data-testid={`price-field-${key}`} type="number" min={0} step="any" value={(draft[key] as number | null | undefined) ?? ""} onChange={(e) => setDraft({ ...draft, [key]: e.target.value === "" ? null : Number(e.target.value) })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs" />
                       </label>
                     ))}
                     <label className="text-[11px] font-bold">{formatBilingual("Materials", "자재비")}
-                      <select value={draft.materials_policy ?? ""} onChange={(e) => setDraft({ ...draft, materials_policy: (e.target.value || null) as PriceTerms["materials_policy"] })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs">
+                      <select data-testid="price-materials" value={draft.materials_policy ?? ""} onChange={(e) => setDraft({ ...draft, materials_policy: (e.target.value || null) as PriceTerms["materials_policy"] })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs">
                         <option value="">-</option>
                         {MATERIALS_POLICIES.map((policy) => <option key={policy} value={policy}>{t(`pricing.materials.${policy}`)}</option>)}
                       </select>
                     </label>
                     <label className="text-[11px] font-bold">{formatBilingual("Materials note", "자재 안내")}
-                      <input value={draft.materials_note ?? ""} maxLength={300} onChange={(e) => setDraft({ ...draft, materials_note: e.target.value })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs" />
+                      <input data-testid="price-materials-note" value={draft.materials_note ?? ""} maxLength={300} onChange={(e) => setDraft({ ...draft, materials_note: e.target.value })} className="mt-0.5 w-full rounded border border-slate-300 p-1 text-xs" />
                     </label>
                     <label className="flex items-center gap-1.5 text-[11px] font-bold">
-                      <input type="checkbox" checked={draft.tax_included !== false} onChange={(e) => setDraft({ ...draft, tax_included: e.target.checked })} />
+                      <input data-testid="price-tax" type="checkbox" checked={draft.tax_included !== false} onChange={(e) => setDraft({ ...draft, tax_included: e.target.checked })} />
                       {formatBilingual("Tax included", "부가세 포함")}
                     </label>
                     <div className="flex flex-wrap gap-1.5 sm:col-span-2">
-                      <button type="button" disabled={busy} onClick={() => void save(item, false)} className="rounded border border-slate-300 px-2.5 py-1 text-xs font-bold">{formatBilingual("Save draft", "임시 저장")}</button>
-                      <button type="button" disabled={busy} onClick={() => void save(item, true)} className="rounded bg-emerald-700 px-2.5 py-1 text-xs font-black text-white">{formatBilingual("Save and publish", "저장하고 게시")}</button>
+                      <button type="button" data-testid="price-save-draft" disabled={busy} onClick={() => void save(item, false)} className="rounded border border-slate-300 px-2.5 py-1 text-xs font-bold">{formatBilingual("Save draft", "임시 저장")}</button>
+                      <button type="button" data-testid="price-publish" disabled={busy} onClick={() => void save(item, true)} className="rounded bg-emerald-700 px-2.5 py-1 text-xs font-black text-white">{formatBilingual("Save and publish", "저장하고 게시")}</button>
                     </div>
                   </div>
                 )}
