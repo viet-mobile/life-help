@@ -9,6 +9,8 @@ const checks = [
   ["Customer status verifies private capability", read("app/api/requests/status/route.ts"), ["verifyConversationCapability", "eq(\"customer_id\", verified.customerId)", "Cache-Control"]],
   ["Helper UI exposes lifecycle actions", read("components/tech/DbAssignmentPanel.tsx"), ["\"start\"", "\"complete\"", "Start service", "Mark completed"]],
   ["Customer UI polls private status", read("app/request/page.tsx"), ["/api/requests/status", "setInterval", "liveStatus"]],
+  ["Customer UI keeps COMPLETED distinct from settlement states", read("app/request/page.tsx"), ["request.statusPaymentPending", "request.statusSettled", "request.statusClosed", "chat.cleanupPolicy"]],
+  ["Customer chat shows cleanup policy and deleted state", read("components/chat/DbChatPanel.tsx"), ["chat.cleanupPolicy", "chat.contentDeleted", "!contentDeleted"]],
 ];
 let failed = 0;
 for (const [name, source, needles] of checks) {
