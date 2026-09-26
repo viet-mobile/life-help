@@ -170,6 +170,10 @@ check("deploy:staging = staging build + output verification + staging config", s
 check("npm run deploy still refuses", scripts.deploy === "node scripts/refuse-ambiguous-deploy.mjs");
 const raw = Object.entries(scripts).filter(([, cmd]) => /(^|&&\s*)(next (dev|build|start)|opennextjs-cloudflare build|wrangler dev)\b/.test(cmd)).map(([name]) => name);
 check("No npm script runs next/opennext/wrangler dev unguarded", raw.length === 0, raw.join(","));
+// No script may spawn the raw toolchain itself (only the guarded wrappers do), unless it refuses to run first.
+const spawners = fs.readdirSync(path.join(root, "scripts")).filter((f) => /\.(mjs|js)$/.test(f) && !["dev.mjs", "build.mjs", "preview.mjs", "test_environment_isolation_static.mjs"].includes(f))
+  .filter((f) => { const src = fs.readFileSync(path.join(root, "scripts", f), "utf8"); return /\[\s*"next"\s*,\s*"(dev|build|start)"|"wrangler"\s*,\s*\[\s*"dev"|opennextjs-cloudflare"\s*,\s*\[\s*"build"/.test(src) && !/process\.exit\(2\);/.test(src.split("\n").slice(0, 40).join("\n")); });
+check("No script spawns raw next / wrangler dev / opennextjs build outside the guarded wrappers", spawners.length === 0, spawners.join(","));
 const buildSrc = read("scripts/build.mjs");
 check("build.mjs removes stale .next/.open-next before building", buildSrc.includes('for (const dir of [".next", ".open-next"]) fs.rmSync'));
 check("preview never loads the project .dev.vars", read("scripts/preview.mjs").includes('"--config", path.join(dir, "wrangler.json")') && read("scripts/preview.mjs").includes('path.join(dir, ".dev.vars")'));

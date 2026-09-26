@@ -22,6 +22,12 @@ import os from "os";
 import path from "path";
 import { assertStagingUrl, runGuarded } from "./lib/envGuard.mjs";
 
+// RETIRED: this script spawns a raw `next dev`, which loads .env.local / .dev.vars (PRODUCTION values).
+// Raw next / wrangler dev is forbidden; the same request API behaviour is covered against the deployed
+// staging Worker by test_staging_smoke, test_full_staging_journey and test_ownership_rematch_staging.
+console.error("REFUSED: test_request_api_live.mjs spawns a raw `next dev` (forbidden). Use the staging Worker suites instead.");
+process.exit(2);
+
 const root = process.cwd();
 const KNOWN_PROD_PROJECT_REF = "wstdbymmkrqgtsibhcjz";
 const KNOWN_STAGING_PROJECT_REF = "wreebowcbiymodswajwe";
