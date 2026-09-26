@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { authorizePlatformOperator, createStagingSettlementClient } from "@/lib/settlement/platformAuth";
+import { dispatchPushInBackground, pushCustomerStatus } from "@/lib/push/pushDelivery";
 import { applyOperationalTransition, closeServiceRequest, markPaymentPending, runConversationCleanup, settleServiceRequest, type LifecycleResult } from "@/lib/settlement/serviceSettlement";
 
 const TARGETS = ["IN_PROGRESS", "COMPLETED", "PAYMENT_PENDING", "SETTLED", "CLOSED"] as const;
@@ -35,6 +36,8 @@ export async function POST(request: Request, context: { params: Promise<{ reques
   } else result = await applyOperationalTransition(client, requestId, target);
 
   if (!result.ok) return respond({ success: false, code: result.code, currentStatus: result.currentStatus }, result.httpStatus);
+  // The lifecycle functions already wrote the in-app notification; add best-effort Web Push.
+  if (!result.idempotent && ["COMPLETED", "PAYMENT_PENDING", "SETTLED"].includes(target)) await dispatchPushInBackground(() => pushCustomerStatus(client, requestId));
   const { ok: _ok, ...payload } = result;
   return respond({ success: true, ...payload, ...(cleanup ? { cleanup } : {}) });
 }

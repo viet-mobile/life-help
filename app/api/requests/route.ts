@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 import { IDEMPOTENCY_HEADER } from "@/lib/request/idempotencyKey";
+import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
 import {
   MAX_REQUEST_BODY_BYTES,
   submitServiceRequest,
@@ -59,6 +60,12 @@ export async function POST(request: Request) {
 
   try {
     const result = await submitServiceRequest(client, validation.value, key.value);
+    // Web Push to the matched helper, after the response and best effort: the in-app
+    // NEW_SERVICE_REQUEST notification was already written by match_and_assign_helper.
+    if (!result.replayed && result.body.success && result.body.status === "MATCHED") {
+      const requestId = result.body.requestId;
+      await dispatchPushInBackground(() => pushHelperAssignment(client, requestId));
+    }
     return respond(result.httpStatus, result.body, result.replayed);
   } catch (err: unknown) {
     console.error("[api/requests] unexpected failure", err instanceof Error ? err.message : String(err));

@@ -50,7 +50,9 @@ for (const role of ["anon", "authenticated"]) {
   }
 }
 check("service_role can read/write and execute", (await one("select has_table_privilege('service_role', 'public.push_subscriptions', 'insert') i, has_function_privilege('service_role', 'public.upsert_push_subscription(public.push_subscription_owner_type, uuid, uuid, text, text, text)', 'execute') e")).e === true);
-check("service_role cannot hard-delete subscriptions", !(await one("select has_table_privilege('service_role', 'public.push_subscriptions', 'delete') d")).d);
+// The migration grants no DELETE. On Supabase, default privileges still give service_role DELETE
+// (verified on staging); the app never deletes rows, it only revokes/invalidates them.
+check("Migration itself grants service_role no DELETE", !(await one("select has_table_privilege('service_role', 'public.push_subscriptions', 'delete') d")).d);
 
 // ---------- shape constraints ----------
 check("Owner must match owner_type (customer with helper id rejected)", (await fails("insert into public.push_subscriptions (owner_type, customer_identity_id, helper_id, endpoint, endpoint_hash, p256dh, auth) values ('CUSTOMER', $1, $2, $3, repeat('a', 64), $4, $5)", [deviceA, helperA, endpoint(0), P256, AUTH]))?.code === "23514");

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { resolveAuthenticatedHelper } from "@/lib/helper/serverIdentity";
+import { notifyCustomerStatusChange } from "@/lib/push/pushDelivery";
 
 function response(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
@@ -22,5 +23,7 @@ export async function POST(request: Request, context: { params: Promise<{ assign
     if (data.code === "REQUEST_NOT_FOUND") return response({ success: false, code: "REQUEST_NOT_FOUND" }, 404);
     return response({ success: false, code: data.code || "COMPLETE_CONFLICT", currentStatus: data.request_status ?? data.assignment_status }, 409);
   }
+  // Customer in-app record + Web Push, best effort: never changes the committed result.
+  if (data.idempotent !== true && data.request_status === "COMPLETED") await notifyCustomerStatusChange(client, data.request_id, "COMPLETED");
   return response({ success: true, idempotent: data.idempotent === true, requestId: data.request_id, status: data.request_status, assignmentStatus: data.assignment_status });
 }

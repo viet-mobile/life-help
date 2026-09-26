@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { PushToggle } from "@/components/push/PushToggle";
 
 type Assignment = {
   assignmentId: string;
@@ -78,6 +79,16 @@ export function DbAssignmentPanel({ formatBilingual }: { formatBilingual: (en: s
         </div>
         <span className="droplet-pill bg-white px-2.5 py-1 text-xs font-black text-emerald-800">{assignments.length}</span>
       </div>
+      <PushToggle
+        audience="helper"
+        labels={{
+          enable: formatBilingual("Enable notifications", "알림 받기"),
+          enabled: formatBilingual("Notifications are on for this device", "이 기기에서 알림이 켜져 있습니다"),
+          disable: formatBilingual("Turn off notifications", "알림 끄기"),
+          blocked: formatBilingual("Notifications are blocked. Allow them in your browser settings.", "알림이 차단되어 있습니다. 브라우저 설정에서 허용해 주세요."),
+          unavailable: formatBilingual("Notifications are not available on this device.", "이 기기에서는 알림을 사용할 수 없습니다."),
+        }}
+      />
       {message && <p className="mt-3 text-xs font-bold text-emerald-900">{message}</p>}
       <div className="mt-4 space-y-3">
         {assignments.length === 0 ? (
