@@ -89,6 +89,7 @@ export async function POST(request: Request) {
     return response({ success: false, code: "SELF_REFERRAL" }, 409);
   }
 
+  let attributionResult: "ATTRIBUTED" | "ALREADY_ATTRIBUTED" | "EXISTING_REFERRER_KEPT" | null = null;
   if (referralId) {
     const referrerResponse = await fetch(`${config.url}/rest/v1/referral_identities?select=id,status&referral_id=eq.${referralId}&status=eq.ACTIVE`, { headers });
     const referrerRows = referrerResponse.ok ? await referrerResponse.json() as Array<{ id: string; status: string }> : [];
@@ -96,10 +97,21 @@ export async function POST(request: Request) {
     if (!referrer) return response({ success: false, code: "INVALID_REFERRAL_ID" }, 400);
     if (referrer.id === identity.id) return response({ success: false, code: "SELF_REFERRAL" }, 409);
     const attribution = await fetch(`${config.url}/rest/v1/referral_attributions`, { method: "POST", headers: { ...headers, Prefer: "return=minimal,resolution=ignore-duplicates" }, body: JSON.stringify({ referred_identity_id: identity.id, referrer_identity_id: referrer.id, status: "ACTIVE" }) });
-    if (!attribution.ok) return response({ success: false, code: "ATTRIBUTION_FAILED" }, 409);
+    if (!attribution.ok) {
+      // referral_attributions.unique(referred_identity_id): a device keeps its FIRST referrer.
+      // (The ignore-duplicates hint above only resolves primary-key conflicts, so a repeat insert
+      // lands here.) The same referrer again is an idempotent replay; a different referrer never
+      // overwrites the existing attribution, and the device still gets its own identity.
+      const current = await fetch(`${config.url}/rest/v1/referral_attributions?select=referrer_identity_id&referred_identity_id=eq.${identity.id}`, { headers });
+      const currentRows = current.ok ? await current.json() as Array<{ referrer_identity_id: string }> : [];
+      if (!currentRows[0]) return response({ success: false, code: "ATTRIBUTION_FAILED" }, 409);
+      attributionResult = currentRows[0].referrer_identity_id === referrer.id ? "ALREADY_ATTRIBUTED" : "EXISTING_REFERRER_KEPT";
+    } else {
+      attributionResult = "ATTRIBUTED";
+    }
   }
 
-  const result = response({ success: true, referralId: identity.referral_id, referralLink: `https://life.help/?ref=${identity.referral_id}` });
+  const result = response({ success: true, referralId: identity.referral_id, referralLink: `https://life.help/?ref=${identity.referral_id}`, ...(attributionResult ? { attribution: attributionResult } : {}) });
   const ownerCookie = await issueDeviceOwnerCookie(deviceHash);
   if (ownerCookie) result.cookies.set({ name: DEVICE_OWNER_COOKIE, value: ownerCookie, httpOnly: true, secure: true, sameSite: "strict", path: "/", maxAge: 30 * 24 * 60 * 60 });
   return result;
