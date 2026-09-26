@@ -136,7 +136,7 @@ function run(script, cwd, args = [], env = {}) {
 const secretLeaked = (out) => [SECRET_MARKER, SECRET_SERVICE, PRODUCTION_ANON, STAGING_ANON].some((s) => out.includes(s));
 const badStaging = fx({ ".env.staging.local": { ...stagingEnvFile, TEST_SUPABASE_URL: PRODUCTION_URL }, ".env.local": { ...productionEnvLocal, EXTRA_SECRET: SECRET_MARKER } });
 const unknownStaging = fx({ ".env.staging.local": { ...stagingEnvFile, TEST_SUPABASE_URL: UNKNOWN_URL } });
-for (const script of ["scripts/test_full_staging_journey.mjs", "scripts/test_cleanup_retry_staging.mjs", "scripts/test_payout_authorization_staging.mjs", "scripts/test_web_push_staging.mjs", "scripts/test_ownership_rematch_staging.mjs", "scripts/test_staging_smoke.mjs"]) {
+for (const script of ["scripts/test_full_staging_journey.mjs", "scripts/test_cleanup_retry_staging.mjs", "scripts/test_payout_authorization_staging.mjs", "scripts/test_web_push_staging.mjs", "scripts/test_ownership_rematch_staging.mjs", "scripts/test_staging_smoke.mjs", "scripts/test_rematch_exclusion_staging.mjs"]) {
   const prod = run(script, badStaging), unknown = run(script, unknownStaging);
   check(`${path.basename(script)}: production target stops before any mutation`, prod.status !== 0 && prod.out.includes("ENV GUARD FAIL") && prod.out.includes("PRODUCTION") && !prod.out.includes("NETWORK DISABLED") && !secretLeaked(prod.out), prod.out.slice(0, 300));
   check(`${path.basename(script)}: unknown project stops before any mutation`, unknown.status !== 0 && unknown.out.includes("UNKNOWN") && !unknown.out.includes("NETWORK DISABLED"), unknown.out.slice(0, 300));

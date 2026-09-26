@@ -11,7 +11,7 @@
 // Real services only. Usage: node scripts/test_ownership_rematch_staging.mjs [--headed]
 import crypto from "node:crypto";
 import {
-  Autopush, base, capabilityOwner, clickEnable, db, deriveRequestId, fixtures, launchChrome, minimalPayload,
+  Autopush, base, capabilityOwner, clickEnable, db, deriveRequestId, fcmRefusedFreshSubscription, fixtures, launchChrome, minimalPayload,
   origin, readResponse, recorder, serviceWorkerSession, settlementToken, shownNotifications, sleep,
   subsByEndpoint, subscribe, trustedClick, unsubscribe, waitFor,
 } from "./lib/stagingPushHarness.mjs";
@@ -25,6 +25,14 @@ const browsers = [];
 const allPayloads = [];
 const helperAction = async (helper, assignmentId, action) => { const r = await fetch(`${base}/api/helper/assignments/${assignmentId}/${action}`, { method: "POST", headers: helper.auth }); return { status: r.status, body: await readResponse(r) }; };
 const activeAssignment = async (requestId) => (await db(`request_assignments?request_id=eq.${requestId}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,helper_id,status`))[0];
+/** Push timing for diagnosis: when the push service accepted delivery (DB) vs when the socket got it. */
+async function pushTiming(label, channel, t0, countBefore) {
+  const row = (await db(`push_subscriptions?endpoint=eq.${encodeURIComponent(channel.endpoint)}&select=last_success_at`))[0];
+  const msg = autopush.messages.filter((m) => m.channelID === channel.channelID)[countBefore];
+  const accepted = row?.last_success_at ? `${Math.round((Date.parse(row.last_success_at) - t0) / 1000)}s` : "never";
+  const delivered = msg ? `${Math.round((msg.receivedAt - t0) / 1000)}s` : "not yet";
+  record("INFO", `${label} push timing: push service accepted ${accepted} after trigger; socket delivery ${delivered}; reconnects ${autopush.reconnects}`);
+}
 async function finish(helper, requestId) {
   const asg = await activeAssignment(requestId);
   const codes = [];
@@ -104,7 +112,9 @@ try {
     const vFinish = await finish(h1, created.body.requestId);
     const vSw = await waitFor(() => serviceWorkerSession(visitor), 15000, 500);
     const vShown = await waitFor(async () => (await shownNotifications(visitor))?.find((n) => n.data?.type === "SERVICE_STATUS") || null, 60000, 2000);
-    expect("REAL Web Push: visitor receives its own lifecycle push in Chrome (FCM)", vFinish.every((c) => c === 200) && vShown?.title === "Service update", { vFinish, vShown, row: vEndpoint ? (await subsByEndpoint(vEndpoint))[0] : null, sw: !!vSw });
+    const vRowNow = vEndpoint ? (await subsByEndpoint(vEndpoint))[0] : null;
+    if (!vShown && fcmRefusedFreshSubscription(vRowNow)) notTestable("REAL Web Push: visitor receives its own lifecycle push in Chrome (FCM)", "FCM answered 410 to the first push for a fresh headless-Chrome subscription; the product correctly invalidated it");
+    else expect("REAL Web Push: visitor receives its own lifecycle push in Chrome (FCM)", vFinish.every((c) => c === 200) && vShown?.title === "Service update", { vFinish, vShown, row: vEndpoint ? (await subsByEndpoint(vEndpoint))[0] : null, sw: !!vSw });
     await sleep(8000);
     expect("Referrer A receives none of the visitor's pushes", autopush.received(aCh).length === 0, autopush.received(aCh));
     expect("Attribution unchanged after the request (A -> visitor, once)", (await db(`referral_attributions?referred_identity_id=eq.${V.id}&select=referrer_identity_id`)).map((r) => r.referrer_identity_id).join() === A.identityId);
@@ -154,23 +164,31 @@ try {
 
   // ================= 4. decline -> release -> rematch =================
   const h1Before = autopush.received(h1Ch).length;
+  const tRequest = Date.now();
   const reqR = await fx.createRequest(C, { label: "rematch" });
   const firstAsg = reqR.body.requestId ? await activeAssignment(reqR.body.requestId) : null;
-  const h1Arrived = await waitFor(async () => (autopush.received(h1Ch).length >= h1Before + 1 ? true : null), 45000, 500);
+  const h1Arrived = await waitFor(async () => (autopush.received(h1Ch).length >= h1Before + 1 ? true : null), 120000, 500);
   const h1Assigned = autopush.received(h1Ch).at(-1);
   allPayloads.push(h1Assigned);
-  expect("Initial Helper push: R assigned to H1, H1 notified", reqR.status === 201 && firstAsg?.helper_id === h1.helper.id && h1Arrived && h1Assigned?.type === "HELPER_ASSIGNED" && autopush.received(h1Ch).length === h1Before + 1, { status: reqR.status, firstAsg, received: autopush.received(h1Ch).length - h1Before });
+  const h1Accepted = (await db(`push_subscriptions?endpoint=eq.${encodeURIComponent(h1Ch.endpoint)}&select=last_success_at,failure_count`))[0];
+  const h1Msg = autopush.messages.filter((m) => m.channelID === h1Ch.channelID).at(-1);
+  record("INFO", `H1 push timing: push service accepted ${h1Accepted?.last_success_at ? Math.round((Date.parse(h1Accepted.last_success_at) - tRequest) / 1000) + "s" : "never"} after request; socket delivery ${h1Arrived && h1Msg ? Math.round((h1Msg.receivedAt - tRequest) / 1000) + "s" : "not within 45s"}; autopush reconnects so far ${autopush.reconnects}`);
+  expect("Initial Helper push: R assigned to H1, H1 notified", reqR.status === 201 && firstAsg?.helper_id === h1.helper.id && h1Arrived && h1Assigned?.type === "HELPER_ASSIGNED" && autopush.received(h1Ch).length === h1Before + 1, { status: reqR.status, firstAsg, received: autopush.received(h1Ch).length - h1Before, h1Accepted });
   // H1 goes off duty, then declines: the existing matcher now has exactly one eligible helper (H2).
   await db(`helpers?id=eq.${h1.helper.id}`, "PATCH", { on_duty: false });
+  const tDecline = Date.now();
   const decline = await helperAction(h1, firstAsg?.id, "decline");
   const secondAsg = await activeAssignment(reqR.body.requestId);
   expect("Decline released and rematched R to H2", decline.status === 200 && decline.body.matching?.status === "MATCHED" && secondAsg?.helper_id === h2.helper.id, { decline, secondAsg });
   const h2Pushed = await autopush.next(h2Ch, (p) => p.type === "HELPER_ASSIGNED");
+  await pushTiming("H2 rematch", h2Ch, tDecline, 0);
   allPayloads.push(h2Pushed);
   expect("Release/rematch push delivered to H2 (real, Mozilla push service)", h2Pushed?.type === "HELPER_ASSIGNED" && h2Pushed.title === "New service request", h2Pushed);
   if (helperBrowser && h2BrowserEndpoint) {
     const hShown = await waitFor(async () => (await shownNotifications(helperBrowser))?.find((n) => n.data?.type === "HELPER_ASSIGNED") || null, 60000, 2000);
-    expect("REAL Web Push: rematched Helper's browser displays the assignment (Chrome/FCM)", hShown?.title === "New service request" && hShown.data.url === "/tech/assignments", hShown);
+    const hRowNow = h2BrowserEndpoint ? (await subsByEndpoint(h2BrowserEndpoint))[0] : null;
+    if (!hShown && fcmRefusedFreshSubscription(hRowNow)) notTestable("REAL Web Push: rematched Helper's browser displays the assignment (Chrome/FCM)", "FCM answered 410 to the first push for a fresh headless-Chrome subscription; the product correctly invalidated it");
+    else expect("REAL Web Push: rematched Helper's browser displays the assignment (Chrome/FCM)", hShown?.title === "New service request" && hShown.data.url === "/tech/assignments", hShown);
   }
   const inAppH2 = await db(`app_notifications?recipient_id=eq.${h2.helper.helper_id}&type=eq.NEW_SERVICE_REQUEST&payload->>request_id=eq.${reqR.body.requestId}&select=id`);
   const inAppH1 = await db(`app_notifications?recipient_id=eq.${h1.helper.helper_id}&type=eq.NEW_SERVICE_REQUEST&payload->>request_id=eq.${reqR.body.requestId}&select=id`);
@@ -187,10 +205,12 @@ try {
   fx.created.requestIds.add(orphanId);
   await db("service_requests", "POST", { id: orphanId, ...fx.requestPayload(C.publicId, "en", "orphan"), customer_display_name: `ORPHAN ${runId}`, status: "SEARCHING" });
   const h1BeforeOrphan = autopush.received(h1Ch).length;
+  const tReplay = Date.now();
   const replay = await fx.createRequest(C, { key: orphanKey, label: "orphan" });
-  await waitFor(async () => (autopush.received(h1Ch).length >= h1BeforeOrphan + 1 ? true : null), 45000, 500);
+  await waitFor(async () => (autopush.received(h1Ch).length >= h1BeforeOrphan + 1 ? true : null), 120000, 500);
   const orphanPush = autopush.received(h1Ch).length === h1BeforeOrphan + 1 ? autopush.received(h1Ch).at(-1) : null;
   allPayloads.push(orphanPush);
+  await pushTiming("Orphan replay", h1Ch, tReplay, h1BeforeOrphan);
   expect("Orphan recovered on replay: MATCHED and helper pushed once", replay.status === 200 && replay.body.status === "MATCHED" && orphanPush?.type === "HELPER_ASSIGNED", { status: replay.status, body: replay.body });
   const replayAgain = await fx.createRequest(C, { key: orphanKey, label: "orphan" });
   await sleep(10000);

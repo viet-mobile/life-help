@@ -60,14 +60,14 @@ export function fixtures(runId) {
   const created = { requestIds: new Set(), helperIds: new Set(), authUserIds: new Set(), identityIds: new Set(), publicIds: new Set(), helperPublicIds: new Set() };
   const sido = `${runId}-S`;
 
-  async function createHelper(label, { locale = "ko", onDuty = true, rating = 5 } = {}) {
+  async function createHelper(label, { locale = "ko", onDuty = true, rating = 5, sido: helperSido = sido, service = "boiler" } = {}) {
     const email = `${label.toLowerCase()}.${runId.toLowerCase()}@example.test`, password = `LH-${crypto.randomUUID()}!`;
     const user = await authAdmin("users", "POST", { email, password, email_confirm: true });
     created.authUserIds.add(user.id);
-    const helper = (await db("helpers", "POST", { auth_user_id: user.id, helper_id: `HLP-${runId}-${label}`, name: `PUSH TEST ${label}`, email, country: "KR", sido, gungu: "G1", primary_locale: locale, spoken_locales: [locale], on_duty: onDuty, is_active: true, rating, completed_jobs: 0 }))[0];
+    const helper = (await db("helpers", "POST", { auth_user_id: user.id, helper_id: `HLP-${runId}-${label}`, name: `PUSH TEST ${label}`, email, country: "KR", sido: helperSido, gungu: "G1", primary_locale: locale, spoken_locales: [locale], on_duty: onDuty, is_active: true, rating, completed_jobs: 0 }))[0];
     created.helperIds.add(helper.id); created.helperPublicIds.add(helper.helper_id);
-    await db("helper_services", "POST", { helper_id: helper.id, service_slug: "boiler" });
-    await db("helper_regions", "POST", { helper_id: helper.id, country: "KR", sido, gungu: "G1" });
+    await db("helper_services", "POST", { helper_id: helper.id, service_slug: service });
+    await db("helper_regions", "POST", { helper_id: helper.id, country: "KR", sido: helperSido, gungu: "G1" });
     const session = await readResponse(await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, { method: "POST", headers: { apikey: serviceKey, "Content-Type": "application/json" }, body: JSON.stringify({ email, password }) }));
     return { helper, email, password, token: session.access_token, auth: { Authorization: `Bearer ${session.access_token}` } };
   }
@@ -121,7 +121,13 @@ export function fixtures(runId) {
       notifications: recipients.length ? (await db(`app_notifications?recipient_id=in.(${recipients.join(",")})&select=id`)).length : 0,
     };
   }
-  return { created, sido, createHelper, customerDevice, requestPayload, createRequest, capabilityFor, cleanup };
+  /** Database-level fixture request (service role), for matcher behaviour checks. */
+  async function insertRequest(label, { sido: requestSido = sido, service = "boiler", customerId = "DBFIXTUR" } = {}) {
+    const row = (await db("service_requests", "POST", { customer_id: customerId, customer_display_name: `DB FIXTURE ${label}`, service_slug: service, country: "KR", sido: requestSido, gungu: "G1", description: `${runId} ${label}`, status: "SEARCHING" }))[0];
+    created.requestIds.add(row.id);
+    return row.id;
+  }
+  return { created, sido, createHelper, customerDevice, requestPayload, createRequest, capabilityFor, insertRequest, cleanup };
 }
 
 export const subscribe = (audience, subscription, headers = {}, extra = {}, query = "") => fetch(`${base}/api/push/subscription${query}`, { method: "POST", headers: { "Content-Type": "application/json", ...headers }, body: JSON.stringify({ audience, subscription, ...extra }) });
@@ -160,6 +166,7 @@ export class Autopush {
     else if (message.messageType === "register") this.pendingRegs.get(message.channelID)?.(message);
     else if (message.messageType === "notification") {
       this.send({ messageType: "ack", updates: [{ channelID: message.channelID, version: message.version, code: 100 }] });
+      message.receivedAt = Date.now();
       this.messages.push(message);
       this.waiters = this.waiters.filter((waiter) => !waiter(message));
     }
@@ -189,7 +196,8 @@ export class Autopush {
   }
   /** All payloads received so far on a channel (decrypted). */
   received(channel) { return this.messages.filter((m) => m.channelID === channel.channelID).map((m) => this.decrypt(channel, m)); }
-  next(channel, predicate = () => true, timeoutMs = 45000) {
+  // 120s: Mozilla autopush has been measured delivering >45s after accepting (201) a message.
+  next(channel, predicate = () => true, timeoutMs = 120000) {
     const already = this.messages.find((m) => m.channelID === channel.channelID && !m.consumed && predicate(this.decrypt(channel, m)));
     if (already) { already.consumed = true; return Promise.resolve(this.decrypt(channel, already)); }
     return new Promise((resolve) => {
@@ -264,4 +272,19 @@ export async function shownNotifications(browser) {
   const session = await serviceWorkerSession(browser);
   if (!session) return null;
   return browser.evaluate("self.registration.getNotifications().then((n) => n.map((x) => ({ title: x.title, body: x.body, tag: x.tag, data: x.data })))", session);
+}
+
+/** Service-role RPC on the staging database; returns { status, data } without throwing. */
+export async function rpc(name, args) {
+  const response = await fetch(`${supabaseUrl}/rest/v1/rpc/${name}`, { method: "POST", headers: { ...dbHeaders }, body: JSON.stringify(args) });
+  return { status: response.status, data: await readResponse(response) };
+}
+
+/**
+ * Classifies a browser (FCM) delivery that did not show up: FCM answering 410 on the first push
+ * to a brand-new headless-Chrome subscription is an external provider refusal (the product then
+ * correctly marks the subscription INVALID). Anything else (e.g. 403 VAPID) is a real failure.
+ */
+export function fcmRefusedFreshSubscription(row) {
+  return !!row && row.status === "INVALID" && row.last_failure_status === 410 && !row.last_success_at && row.failure_count === 1;
 }
