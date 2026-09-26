@@ -8,6 +8,7 @@
 // Usage:
 //   node scripts/test_cleanup_retry_staging.mjs          # invoke the retry exactly as the cron does
 //   node scripts/test_cleanup_retry_staging.mjs --cron   # wait for the deployed cron trigger instead
+//   add --scenario=unscheduled: SETTLED request whose cleanup was never scheduled (ACTIVE chat)
 import fs from "node:fs";
 import crypto from "node:crypto";
 
@@ -23,6 +24,8 @@ const settlementToken = env.TEST_LIFE_HELP_SETTLEMENT_TOKEN;
 const stagingRef = (supabaseUrl?.match(/https?:\/\/([^.]+)\.supabase/) || [])[1];
 const base = "https://life-help-staging.simpl2eye.workers.dev";
 const waitForCron = process.argv.includes("--cron");
+// queued: crash after cleanup was scheduled. unscheduled: crash between SETTLED and scheduling.
+const scenario = process.argv.includes("--scenario=unscheduled") ? "unscheduled" : "queued";
 const cronTimeoutMs = 3 * 60 * 1000;
 const runId = `CRT${Date.now()}`;
 const startedAt = new Date().toISOString();
@@ -125,29 +128,47 @@ try {
   const attribution = (await db(`referral_attributions?referred_identity_id=eq.${customerIdentity?.id}&select=id`))[0];
 
   const helper = await createHelper();
-  const idempotencyKey = crypto.randomUUID();
-  const createResponse = await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey }, body: JSON.stringify({ service_slug: "boiler", customer_id: customerKey, customer_locale: "en", country: "KR", sido: `CRT-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`, description: `${runId} request`, selected_options: ["test"] }) });
-  const createBody = await readResponse(createResponse);
-  if (createBody.requestId) created.requestIds.add(createBody.requestId);
-  const requestId = createBody.requestId;
-  const assignment = (await db(`request_assignments?request_id=eq.${requestId}&select=id,helper_id`))[0];
   const helperAuth = { Authorization: `Bearer ${helper.accessToken}` };
-  const lifecycle = [];
-  for (const action of ["accept", "start", "complete"]) lifecycle.push((await fetch(`${base}/api/helper/assignments/${assignment?.id}/${action}`, { method: "POST", headers: helperAuth })).status);
-  const capability = (await readResponse(await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": idempotencyKey } }))).capability;
-  const chatA = await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId, capability, originalLanguage: "en", originalText: `${runId} customer message` }) });
-  const chatB = await fetch(`${base}/api/chat`, { method: "POST", headers: { ...helperAuth, "Content-Type": "application/json" }, body: JSON.stringify({ requestId, originalLanguage: "ko", originalText: `${runId} helper message` }) });
-  const pending = await fetch(`${base}/api/sys/requests/${requestId}/status`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${settlementToken}` }, body: JSON.stringify({ status: "PAYMENT_PENDING" }) });
-  const conversation = (await db(`conversations?request_id=eq.${requestId}&select=id,status`))[0];
-  if (conversation) created.conversationIds.add(conversation.id);
-  expect("Fixture: real lifecycle to PAYMENT_PENDING", createBody.status === "MATCHED" && assignment?.helper_id === helper.helper.id && lifecycle.every((s) => s === 200) && chatA.status === 200 && chatB.status === 200 && pending.status === 200 && attribution, { match: createBody.status, lifecycle, chat: [chatA.status, chatB.status], pending: pending.status, attribution: !!attribution });
+  const platformPost = (id, target) => fetch(`${base}/api/sys/requests/${id}/status`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${settlementToken}` }, body: JSON.stringify({ status: target }) });
 
-  // ---------- simulate settlement interrupted after scheduling cleanup ----------
-  // Same writes settleServiceRequest performs before the inline runConversationCleanup call.
+  /** Real lifecycle via public APIs: request → match H → accept/start/complete → 2 chat messages (→ PAYMENT_PENDING). */
+  async function buildRequest(customer, label, { paymentPending }) {
+    const idempotencyKey = crypto.randomUUID();
+    const createBody = await readResponse(await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey }, body: JSON.stringify({ service_slug: "boiler", customer_id: customer, customer_locale: "en", country: "KR", sido: `CRT-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`, description: `${runId} ${label} request`, selected_options: ["test"] }) }));
+    if (createBody.requestId) created.requestIds.add(createBody.requestId);
+    const id = createBody.requestId;
+    const assignment = (await db(`request_assignments?request_id=eq.${id}&select=id,helper_id`))[0];
+    const steps = [];
+    for (const action of ["accept", "start", "complete"]) steps.push((await fetch(`${base}/api/helper/assignments/${assignment?.id}/${action}`, { method: "POST", headers: helperAuth })).status);
+    const capability = (await readResponse(await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": idempotencyKey } }))).capability;
+    steps.push((await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId: id, capability, originalLanguage: "en", originalText: `${runId} ${label} customer message` }) })).status);
+    steps.push((await fetch(`${base}/api/chat`, { method: "POST", headers: { ...helperAuth, "Content-Type": "application/json" }, body: JSON.stringify({ requestId: id, originalLanguage: "ko", originalText: `${runId} ${label} helper message` }) })).status);
+    if (paymentPending) steps.push((await platformPost(id, "PAYMENT_PENDING")).status);
+    const conversation = (await db(`conversations?request_id=eq.${id}&select=id,status`))[0];
+    if (conversation) created.conversationIds.add(conversation.id);
+    const ok = createBody.status === "MATCHED" && assignment?.helper_id === helper.helper.id && steps.every((code) => code === 200) && !!conversation;
+    return { requestId: id, capability, conversation, ok, steps, match: createBody.status };
+  }
+
+  const main = await buildRequest(customerKey, "main", { paymentPending: true });
+  const requestId = main.requestId;
+  const capability = main.capability;
+  const conversation = main.conversation;
+  expect("Fixture: real lifecycle to PAYMENT_PENDING", main.ok && attribution, { match: main.match, steps: main.steps, attribution: !!attribution });
+  // Invalid candidates with live chat content: the retry must never touch them.
+  const completedKey = letters(8), pendingKey = letters(8);
+  created.subjectKeys.add(completedKey).add(pendingKey);
+  const protectedCompleted = await buildRequest(completedKey, "completed", { paymentPending: false });
+  const protectedPending = await buildRequest(pendingKey, "pending", { paymentPending: true });
+  expect("Fixture: COMPLETED and PAYMENT_PENDING candidates with ACTIVE chat", protectedCompleted.ok && protectedPending.ok, { completed: protectedCompleted.steps, pending: protectedPending.steps });
+
+  // ---------- simulate the interrupted settlement ----------
+  // Same writes settleServiceRequest performs (status, settlement audit, reward). "queued" also
+  // schedules cleanup (crash before the inline cleanup); "unscheduled" crashes before scheduling.
   const settled = await db(`service_requests?id=eq.${requestId}&status=eq.PAYMENT_PENDING`, "PATCH", { status: "SETTLED", updated_at: new Date().toISOString() });
   await db("admin_audit_logs", "POST", { action: "SERVICE_SETTLED", entity_type: "service_request", entity_id: requestId, actor_id: null, metadata: { actor_kind: "PLATFORM_TOKEN", settlement_method: "INTERNAL_PLATFORM_CONFIRMATION", external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false } });
   const now = new Date().toISOString();
-  await db(`conversations?request_id=eq.${requestId}&status=in.(ACTIVE,CLOSED)`, "PATCH", { status: "DELETION_SCHEDULED", deletion_scheduled_at: now, closed_at: now });
+  if (scenario === "queued") await db(`conversations?request_id=eq.${requestId}&status=in.(ACTIVE,CLOSED)`, "PATCH", { status: "DELETION_SCHEDULED", deletion_scheduled_at: now, closed_at: now });
   await db("referral_rewards", "POST", { attribution_id: attribution.id, qualifying_request_id: requestId, referrer_identity_id: referrerIdentity.id, referred_identity_id: customerIdentity.id, tier: "WLH", reward_amount_krw: 1000, first_service_discount_krw: 1000, state: "QUALIFIED", settled_at: now });
 
   const status = async () => (await db(`service_requests?id=eq.${requestId}&select=status`))[0]?.status;
@@ -155,7 +176,18 @@ try {
   const conversationStatus = async () => (await db(`conversations?id=eq.${conversation.id}&select=status`))[0]?.status;
   const rewardCount = async () => (await db(`referral_rewards?qualifying_request_id=eq.${requestId}&select=id`)).length;
   const auditCount = async (action) => (await db(`admin_audit_logs?entity_id=eq.${requestId}&action=eq.${action}&select=id`)).length;
-  expect("Fixture: request SETTLED, cleanup interrupted", settled.length === 1 && (await status()) === "SETTLED" && (await conversationStatus()) === "DELETION_SCHEDULED" && (await messageCount()) === 2, { status: await status(), conversation: await conversationStatus(), messages: await messageCount() });
+  const protectedIntact = async () => {
+    const rows = [];
+    for (const [fixture, expected] of [[protectedCompleted, "COMPLETED"], [protectedPending, "PAYMENT_PENDING"]]) {
+      const request = (await db(`service_requests?id=eq.${fixture.requestId}&select=status`))[0]?.status;
+      const conv = (await db(`conversations?id=eq.${fixture.conversation.id}&select=status,deletion_scheduled_at`))[0];
+      const messages = (await db(`messages?conversation_id=eq.${fixture.conversation.id}&select=id`)).length;
+      rows.push({ expected, request, conversation: conv?.status, scheduled: conv?.deletion_scheduled_at, messages, rewards: (await db(`referral_rewards?qualifying_request_id=eq.${fixture.requestId}&select=id`)).length });
+    }
+    return { ok: rows.every((row) => row.request === row.expected && row.conversation === "ACTIVE" && row.scheduled === null && row.messages === 2 && row.rewards === 0), rows };
+  };
+  const expectedConversation = scenario === "queued" ? "DELETION_SCHEDULED" : "ACTIVE";
+  expect(`Fixture: SETTLED + ${expectedConversation} conversation, content present, reward x1`, settled.length === 1 && (await status()) === "SETTLED" && (await conversationStatus()) === expectedConversation && (await messageCount()) === 2 && (await rewardCount()) === 1 && (await auditCount("SETTLED_CLEANUP_RECONCILED")) === 0, { status: await status(), conversation: await conversationStatus(), messages: await messageCount() });
 
   // ---------- security: the retry is not publicly callable ----------
   const denied = {
@@ -167,7 +199,7 @@ try {
     serviceRoleKey: (await cleanupRetry({ Authorization: `Bearer ${serviceKey}` })).status,
   };
   expect("Unauthorized callers blocked (anon/customer/public ID/helper/wrong token/service key)", Object.values(denied).every((code) => code === 401), denied);
-  expect("Blocked calls changed nothing", (await messageCount()) === 2 && (await status()) === "SETTLED", "fixture mutated");
+  expect("Blocked calls changed nothing", (await messageCount()) === 2 && (await status()) === "SETTLED" && (await conversationStatus()) === expectedConversation, "fixture mutated");
 
   // ---------- recovery ----------
   let first;
@@ -186,17 +218,28 @@ try {
     if (audit) created.retryAuditIds.add(audit.id);
     expect("Retry run recorded with counts", audit && ["scanned", "eligible", "cleaned", "already_clean", "failed"].every((key) => typeof audit.metadata[key] === "number"), audit?.metadata);
   }
-  console.log(`  counts ${JSON.stringify({ scanned: first?.scanned, eligible: first?.eligible, cleaned: first?.cleaned, already_clean: first?.already_clean, failed: first?.failed, closedRequests: first?.closedRequests })}`);
+  console.log(`  counts ${JSON.stringify({ scanned: first?.scanned, eligible: first?.eligible, cleaned: first?.cleaned, already_clean: first?.already_clean, failed: first?.failed, reconciled: first?.reconciled, closedRequests: first?.closedRequests })}`);
+  if (scenario === "unscheduled") {
+    expect("Missing cleanup schedule detected and reconciled", first?.reconciled >= 1 && first?.reason === "SETTLED_CLEANUP_RECONCILED" && (first?.reconciledRequestIds || []).includes(requestId) && (await auditCount("SETTLED_CLEANUP_RECONCILED")) === 1, first);
+    const reconciledAudit = (await db(`admin_audit_logs?entity_id=eq.${requestId}&action=eq.SETTLED_CLEANUP_RECONCILED&select=metadata`))[0];
+    expect("Reconciliation audit holds no message content", reconciledAudit && !JSON.stringify(reconciledAudit).includes(runId), reconciledAudit);
+  } else {
+    expect("Queued retry is not labelled as reconciliation", first?.reason === "QUEUED_CLEANUP_RETRY" && (await auditCount("SETTLED_CLEANUP_RECONCILED")) === 0, first);
+  }
   expect("Interrupted SETTLED cleanup recovered", first?.cleaned >= 1 && first?.failed === 0 && (await messageCount()) === 0 && (await conversationStatus()) === "DELETED", first);
   expect("Request closed after recovered cleanup", (await status()) === "CLOSED" && (await auditCount("SERVICE_CLOSED")) === 1, await status());
   expect("Assignment history preserved", (await db(`request_assignments?request_id=eq.${requestId}&select=status`)).map((row) => row.status).join() === "COMPLETED");
   expect("Reward preserved, not duplicated", (await rewardCount()) === 1);
+  const settledAudit = (await db(`admin_audit_logs?entity_id=eq.${requestId}&action=eq.SERVICE_SETTLED&select=metadata`))[0];
+  expect("external_payment_verified stays false", settledAudit?.metadata?.external_payment_verified === false && settledAudit?.metadata?.external_payment_transaction_id === null, settledAudit);
+  const intact = await protectedIntact();
+  expect("COMPLETED and PAYMENT_PENDING conversations protected", intact.ok, intact.rows);
   expect("Legal/audit records preserved", (await auditCount("SERVICE_SETTLED")) === 1 && (await auditCount("SERVICE_PAYMENT_PENDING")) === 1 && (await auditCount("CONVERSATION_CONTENT_DELETED")) === 1 && (await db(`conversations?id=eq.${conversation.id}&select=id`)).length === 1);
 
   // ---------- idempotent re-run ----------
   const againResponse = await cleanupRetry({ Authorization: `Bearer ${settlementToken}` }, { limit: 50, requestId });
   const again = await readResponse(againResponse);
-  expect("Second retry idempotent", againResponse.status === 200 && again.cleaned === 0 && again.closedRequests === 0 && again.failed === 0 && (await status()) === "CLOSED" && (await rewardCount()) === 1 && (await auditCount("CONVERSATION_CONTENT_DELETED")) === 1 && (await auditCount("SERVICE_CLOSED")) === 1, again);
+  expect("Second retry idempotent", againResponse.status === 200 && again.cleaned === 0 && again.reconciled === 0 && again.closedRequests === 0 && again.failed === 0 && (await status()) === "CLOSED" && (await conversationStatus()) === "DELETED" && (await auditCount("SETTLED_CLEANUP_RECONCILED")) === (scenario === "unscheduled" ? 1 : 0) && (await db(`request_assignments?request_id=eq.${requestId}&select=status`)).map((row) => row.status).join() === "COMPLETED" && (await rewardCount()) === 1 && (await auditCount("CONVERSATION_CONTENT_DELETED")) === 1 && (await auditCount("SERVICE_CLOSED")) === 1, again);
   const resettle = await readResponse(await fetch(`${base}/api/sys/requests/${requestId}/status`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${settlementToken}` }, body: JSON.stringify({ status: "SETTLED" }) }));
   expect("No invalid transition or duplicate reward on re-settle", resettle.idempotent === true && resettle.status === "CLOSED" && (await rewardCount()) === 1 && (await auditCount("SERVICE_SETTLED")) === 1, resettle);
 } catch (error) {

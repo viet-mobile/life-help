@@ -18,9 +18,12 @@ export async function POST(request: Request) {
   const report = await runConversationCleanup(client, { requestId, limit });
   // Label only; authority comes from authorizePlatformOperator above.
   const trigger = request.headers.get("x-life-help-trigger") === "scheduled" ? "SCHEDULED" : "MANUAL";
+  // reason separates a plain queued-cleanup retry from recovery of a SETTLED request whose
+  // cleanup was never scheduled (per-request SETTLED_CLEANUP_RECONCILED rows carry the detail).
+  const reason = report.reconciled > 0 ? "SETTLED_CLEANUP_RECONCILED" : "QUEUED_CLEANUP_RETRY";
   // Record runs that changed or failed something; empty runs leave no audit noise.
-  if (report.cleaned + report.closedRequests + report.failed > 0) {
-    await client.from("admin_audit_logs").insert({ action: "CONVERSATION_CLEANUP_RETRY", entity_type: "system", entity_id: null, actor_id: null, metadata: { actor_kind: actor, trigger, ...report } });
+  if (report.cleaned + report.closedRequests + report.failed + report.reconciled > 0) {
+    await client.from("admin_audit_logs").insert({ action: "CONVERSATION_CLEANUP_RETRY", entity_type: "system", entity_id: null, actor_id: null, metadata: { actor_kind: actor, trigger, reason, ...report } });
   }
-  return NextResponse.json({ success: true, trigger, ...report }, { headers: { "Cache-Control": "no-store" } });
+  return NextResponse.json({ success: true, trigger, reason, ...report }, { headers: { "Cache-Control": "no-store" } });
 }

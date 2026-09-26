@@ -172,6 +172,10 @@ export type CleanupReport = {
   already_clean: number;
   /** Eligible conversations whose cleanup errored; left as-is for the next retry. */
   failed: number;
+  /** Conversations of SETTLED requests whose missing cleanup schedule was repaired by this run. */
+  reconciled: number;
+  /** SETTLED requests that had never had cleanup scheduled (SETTLED_CLEANUP_RECONCILED). */
+  reconciledRequestIds: string[];
   processed: number;
   messagesDeleted: number;
   closedRequests: number;
@@ -191,12 +195,39 @@ async function deleteMessages(client: SupabaseClient, conversationId: string): P
  *
  * Also the retry path for an interrupted cleanup: a SETTLED request whose conversations are all
  * DELETED but which never reached CLOSED gets any stray content removed and is closed.
+ * Before that, it reconciles a settlement that crashed between SETTLED and cleanup scheduling:
+ * a SETTLED request whose conversation is still ACTIVE/CLOSED gets the same scheduling call
+ * settleServiceRequest makes, then flows through the normal cleanup below. Eligibility comes from
+ * the request status only; rewards and settlement records are not touched.
+ *
  * Each conversation is isolated: one failure is counted and left for the next run.
  * Only SETTLED/CLOSED requests are ever touched; COMPLETED and PAYMENT_PENDING never are.
  */
 export async function runConversationCleanup(client: SupabaseClient, options: { requestId?: string; limit?: number } = {}): Promise<CleanupReport> {
-  const report: CleanupReport = { scanned: 0, eligible: 0, cleaned: 0, already_clean: 0, failed: 0, processed: 0, messagesDeleted: 0, closedRequests: 0, skipped: 0 };
+  const report: CleanupReport = { scanned: 0, eligible: 0, cleaned: 0, already_clean: 0, failed: 0, reconciled: 0, reconciledRequestIds: [], processed: 0, messagesDeleted: 0, closedRequests: 0, skipped: 0 };
   const limit = Math.min(Math.max(options.limit ?? 20, 1), 100);
+
+  // Missing cleanup schedule: settlement reached SETTLED but crashed before scheduling. Rooted in
+  // the request lifecycle (status = SETTLED), never in conversation state alone.
+  let unscheduled = client.from("service_requests").select("id").eq("status", "SETTLED").order("updated_at", { ascending: true }).limit(limit);
+  if (options.requestId) unscheduled = unscheduled.eq("id", options.requestId);
+  const { data: settledForSchedule } = await unscheduled;
+  for (const requestRow of settledForSchedule ?? []) {
+    try {
+      const { data: open } = await client.from("conversations").select("id").eq("request_id", requestRow.id).in("status", ["ACTIVE", "CLOSED"]);
+      if (!open?.length) continue;
+      // Re-check right before the write: only a still-SETTLED request may have content scheduled.
+      if ((await loadRequest(client, requestRow.id))?.status !== "SETTLED") continue;
+      const scheduled = await scheduleConversationCleanup(client, requestRow.id);
+      if (!scheduled) continue;
+      report.reconciled += scheduled;
+      report.reconciledRequestIds.push(requestRow.id);
+      await audit(client, "SETTLED_CLEANUP_RECONCILED", requestRow.id, { conversations_scheduled: scheduled, reason: "SETTLED_WITHOUT_CLEANUP_SCHEDULE" });
+    } catch {
+      report.failed += 1;
+    }
+  }
+
   let query = client.from("conversations").select("id, request_id").eq("status", "DELETION_SCHEDULED").lte("deletion_scheduled_at", new Date().toISOString()).order("deletion_scheduled_at", { ascending: true }).limit(limit);
   if (options.requestId) query = query.eq("request_id", options.requestId);
   const { data: due } = await query;

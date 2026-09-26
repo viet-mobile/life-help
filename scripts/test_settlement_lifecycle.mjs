@@ -263,6 +263,62 @@ function seedSettled(db, n, { conversationStatus = "DELETION_SCHEDULED", status 
   check("Retry: PAYMENT_PENDING/COMPLETED never cleaned", run.eligible === 0 && run.cleaned === 0 && run.skipped === 2 && t.messages.length === 6 && t.conversations.every((row) => row.status !== "DELETED") && t.service_requests.every((row) => !["CLOSED", "SETTLED"].includes(row.status)));
 }
 
+// ---------- SETTLED without cleanup schedule (reconciliation) ----------
+{
+  // Settlement succeeded (reward + audit written) but crashed before scheduling cleanup.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1, { conversationStatus: "ACTIVE" });
+  const notificationsBefore = t.app_notifications.length;
+  const run = await lib.runConversationCleanup(db.client, {});
+  check("Reconcile: missing cleanup schedule detected", run.reconciled === 1 && run.reconciledRequestIds.join() === "req-R1");
+  check("Reconcile: SETTLED_CLEANUP_RECONCILED audit, no content", t.admin_audit_logs.filter((row) => row.action === "SETTLED_CLEANUP_RECONCILED" && row.entity_id === "req-R1").length === 1 && !JSON.stringify(t.admin_audit_logs).includes("retry secret"));
+  check("Reconcile: existing cleanup path cleans ACTIVE → DELETED", run.cleaned === 1 && run.failed === 0 && t.conversations[0].status === "DELETED" && !t.messages.length && t.conversations.length === 1);
+  check("Reconcile: request SETTLED → CLOSED", run.closedRequests === 1 && t.service_requests[0].status === "CLOSED");
+  check("Reconcile: reward/assignment/settlement audit unchanged", t.referral_rewards.length === 1 && t.request_assignments.length === 1 && t.request_assignments[0].status === "COMPLETED" && t.admin_audit_logs.filter((row) => row.action === "SERVICE_SETTLED").length === 1 && t.admin_audit_logs.find((row) => row.action === "SERVICE_SETTLED").metadata.external_payment_verified === false && !t.app_notifications.slice(notificationsBefore).some((row) => row.type === "REFERRAL_REWARD_CONFIRMED"));
+  const audits = t.admin_audit_logs.length;
+  const again = await lib.runConversationCleanup(db.client, {});
+  check("Reconcile: second run idempotent", again.reconciled === 0 && again.cleaned === 0 && again.closedRequests === 0 && again.failed === 0 && t.admin_audit_logs.length === audits && t.referral_rewards.length === 1 && t.service_requests[0].status === "CLOSED" && t.conversations[0].status === "DELETED");
+}
+
+{
+  // Reconciliation never runs reward qualification, even if settlement never qualified one.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1, { conversationStatus: "ACTIVE" });
+  t.referral_rewards.length = 0;
+  t.referral_identities.push({ id: "id-P", subject_type: "CUSTOMER", subject_key: "CUST-P" }, { id: "id-R1", subject_type: "CUSTOMER", subject_key: "CUST-R1" });
+  t.referral_attributions.push({ id: "att-PR1", referred_identity_id: "id-R1", referrer_identity_id: "id-P", status: "ACTIVE" });
+  const run = await lib.runConversationCleanup(db.client, {});
+  check("Reconcile: no reward qualification rerun", run.reconciled === 1 && t.referral_rewards.length === 0 && t.service_requests[0].status === "CLOSED");
+}
+
+{
+  // Failure isolation: B's cleanup fails, A is still repaired; B recovers next run without a second reconcile.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1, { conversationStatus: "ACTIVE" });
+  seedSettled(db, 2, { conversationStatus: "ACTIVE" });
+  db.failMessageDelete.add("conv-R2");
+  const run = await lib.runConversationCleanup(db.client, {});
+  const byId = (table, id) => t[table].find((row) => row.id === id);
+  check("Reconcile isolation: A repaired despite B failure", run.reconciled === 2 && run.cleaned === 1 && run.failed === 1 && byId("service_requests", "req-R1").status === "CLOSED" && byId("conversations", "conv-R1").status === "DELETED");
+  check("Reconcile isolation: B left retryable, content intact", byId("service_requests", "req-R2").status === "SETTLED" && byId("conversations", "conv-R2").status === "DELETION_SCHEDULED" && t.messages.filter((m) => m.conversation_id === "conv-R2").length === 2);
+  db.failMessageDelete.clear();
+  const retry = await lib.runConversationCleanup(db.client, {});
+  check("Reconcile isolation: B recovered, not reconciled twice", retry.reconciled === 0 && retry.cleaned === 1 && byId("service_requests", "req-R2").status === "CLOSED" && t.admin_audit_logs.filter((row) => row.action === "SETTLED_CLEANUP_RECONCILED").length === 2 && t.referral_rewards.length === 2);
+}
+
+{
+  // Eligibility is rooted in the request lifecycle: no non-settled status ever gets cleanup scheduled.
+  const db = createDb();
+  const t = db.tables;
+  const unsettled = ["CREATED", "SEARCHING", "MATCHED", "HELPER_NOTIFIED", "ACCEPTED", "DECLINED", "IN_PROGRESS", "COMPLETED", "PAYMENT_PENDING", "CANCELLED", "EXPIRED", "NO_HELPER_AVAILABLE"];
+  unsettled.forEach((status, i) => seedSettled(db, i, { status, conversationStatus: "ACTIVE" }));
+  const run = await lib.runConversationCleanup(db.client, {});
+  check("Reconcile: every non-SETTLED status protected (incl. COMPLETED, PAYMENT_PENDING)", run.reconciled === 0 && run.cleaned === 0 && t.conversations.every((row) => row.status === "ACTIVE" && row.deletion_scheduled_at === null) && t.messages.length === unsettled.length * 2 && !t.admin_audit_logs.some((row) => row.action === "SETTLED_CLEANUP_RECONCILED"));
+}
+
 // ---------- static authority boundaries ----------
 const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
 const statusRoute = read("app/api/sys/requests/[requestId]/status/route.ts");
@@ -290,6 +346,8 @@ check("Cron attached by deploy:staging only", pkgScripts["deploy:staging"].endsW
 const compat = (source) => source.match(/"compatibility_date": "[^"]+"/)?.[0] + source.match(/"compatibility_flags": \[[^\]]*\]/)?.[0];
 check("Staging config mirrors production runtime settings", compat(stagingConfig) === compat(wranglerConfig));
 check("wrangler.jsonc has no cron trigger", !/"triggers"|"crons"/.test(wranglerConfig) && wranglerConfig.includes('"main": ".open-next/worker.js"'));
+check("Retry audit distinguishes reconciliation from queued retry", cleanupRoute.includes('"SETTLED_CLEANUP_RECONCILED"') && cleanupRoute.includes('"QUEUED_CLEANUP_RETRY"'));
+check("Reconciliation reuses scheduling, never qualifies rewards", (() => { const body = settlementLib.slice(settlementLib.indexOf("export async function runConversationCleanup")); return body.includes("scheduleConversationCleanup(client, requestRow.id)") && !body.includes("qualifyReferralReward") && !body.includes("settleServiceRequest") && !body.includes('from("referral_rewards")'); })());
 check("Cleanup route stays platform-authorized for scheduled runs", cleanupRoute.indexOf("authorizePlatformOperator(request)") < cleanupRoute.indexOf("x-life-help-trigger"));
 check("Cleanup deletes only messages", !/from\("(service_requests|referral_rewards|admin_audit_logs|request_assignments|conversations)"\)\.delete\(/.test(settlementLib));
 
