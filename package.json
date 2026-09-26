@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "opennextjs-cloudflare build && wrangler dev",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "node scripts/refuse-ambiguous-deploy.mjs",
+    "deploy:staging": "opennextjs-cloudflare build && wrangler deploy --name life-help-staging",
+    "deploy:production": "opennextjs-cloudflare build && wrangler deploy --name life-help",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit"
