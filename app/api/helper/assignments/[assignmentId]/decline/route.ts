@@ -22,6 +22,13 @@ export async function POST(_request: Request, context: { params: Promise<{ assig
   if (!release?.success) return NextResponse.json({ success: false, code: release?.code || "DECLINE_REJECTED" }, { status: 409 });
 
   let matching = null;
+  // A customer chose THIS helper at THIS price: never auto-substitute another helper / price.
+  // The request stays unassigned until the customer re-selects (see migration 012 trigger, which
+  // also blocks any substitute assignment in the database).
+  const { data: requestRow } = await resolved.value.client.from("service_requests").select("selection_mode").eq("id", release.request_id).maybeSingle();
+  if (release.request_reopened && requestRow?.selection_mode === "CUSTOMER_SELECTED") {
+    return NextResponse.json({ success: true, release, matching: { success: false, code: "CUSTOMER_RESELECTION_REQUIRED" } }, { headers: { "Cache-Control": "no-store" } });
+  }
   if (release.request_reopened) {
     const result = await resolved.value.client.rpc("match_and_assign_helper", { p_request_id: release.request_id });
     if (result.error) return NextResponse.json({ success: true, release, matching: { success: false, code: "REMATCH_FAILED" } }, { status: 202 });

@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { getCustomerDeviceId, getReferralParam } from "@/lib/referral/clientDeviceId";
+import { PriceOfferPicker } from "@/components/request/PriceOfferPicker";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
@@ -347,6 +348,12 @@ function RequestPageContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    await submitRequest();
+  };
+
+  // offerToken: the customer confirmed one displayed helper offer (CUSTOMER_SELECTED path). Only the
+  // opaque token is sent; helper, price, currency and terms are resolved by the server.
+  const submitRequest = async (offerToken?: string) => {
     if (isSubmitting) return;
 
     // Once the server reports an existing request (requestId), keep re-sending that exact submission
@@ -379,6 +386,7 @@ function RequestPageContent() {
         address: address.trim(),
         description: problemDescription,
         selected_options: selectedProblemOptions,
+        ...(offerToken ? { offer_token: offerToken } : {}),
       });
     // Same logical submission (identical payload) reuses its key; any edit starts a new submission.
     if (pendingSubmissionRef.current?.payloadJson !== payloadJson) {
@@ -392,14 +400,18 @@ function RequestPageContent() {
         setIsSubmitting(false);
         return;
       }
-      const res = await fetch("/api/requests", {
+      const requestInit = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           [IDEMPOTENCY_HEADER]: submissionKey,
         },
         body: payloadJson,
-      });
+      };
+      const isSelectedOffer = typeof (JSON.parse(payloadJson) as { offer_token?: unknown }).offer_token === "string";
+      const res = isSelectedOffer
+        ? await fetch("/api/requests/selected", requestInit)
+        : await fetch("/api/requests", requestInit);
       const data = await res.json().catch(() => null);
       // A rejected submission is final for its key; the next attempt gets a fresh one.
       if (res.status === 400 || res.status === 409) pendingSubmissionRef.current = null;
@@ -446,6 +458,8 @@ function RequestPageContent() {
         `신청은 접수되었으며 헬퍼 배정을 처리 중입니다. 아래 버튼으로 처리 상태를 다시 확인할 수 있습니다. 요청번호 ${err.requestId.slice(0, 8)}`
       );
     }
+    const pricingNotice = ({ PRICE_CHANGED: "pricing.priceChanged", HELPER_NO_LONGER_AVAILABLE: "pricing.helperUnavailable", OFFER_UNAVAILABLE: "pricing.offerExpired", OFFER_EXPIRED: "pricing.offerExpired", OFFER_INVALID: "pricing.offerExpired" } as Record<string, string>)[err.code];
+    if (pricingNotice) return t(pricingNotice);
     if (err.code === "VALIDATION_ERROR" || err.code === "INVALID_JSON") {
       return formatBilingual("Please check the information you entered.", "입력하신 내용을 확인해 주세요.");
     }
@@ -916,6 +930,16 @@ function RequestPageContent() {
               </div>
             </div>
           </div>
+
+          <PriceOfferPicker
+            serviceSlug={selectedSlug}
+            country={selectedRegion.country || "KR"}
+            sido={selectedRegion.sido}
+            gungu={selectedRegion.gungu}
+            disabled={isSubmitting}
+            errorCode={submitError?.code ?? null}
+            onConfirm={(token) => void submitRequest(token)}
+          />
 
           {submitError && (
             <div
