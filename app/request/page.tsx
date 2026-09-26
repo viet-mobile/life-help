@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { getCustomerDeviceId, getReferralParam } from "@/lib/referral/clientDeviceId";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
@@ -287,10 +288,11 @@ function RequestPageContent() {
   }, [submitResult]);
 
   useEffect(() => {
-    const key = "life_help_public_identity_device";
-    const deviceId = localStorage.getItem(key) || `device-${crypto.randomUUID()}`;
-    localStorage.setItem(key, deviceId);
-    void fetch("/api/referrals/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId, subjectType: "CUSTOMER" }) })
+    // Same device id as the home referral card, so attribution and request ownership share one
+    // identity; ?ref= only names the referrer and never becomes this visitor's identity.
+    const deviceId = getCustomerDeviceId();
+    const referralId = getReferralParam();
+    void fetch("/api/referrals/identity", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId, subjectType: "CUSTOMER", ...(referralId ? { referralId } : {}) }) })
       .then((response) => response.json())
       .then((data) => { if (typeof data.referralId === "string") setPublicUserId(data.referralId); });
   }, []);

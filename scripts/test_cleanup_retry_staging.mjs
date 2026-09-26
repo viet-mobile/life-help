@@ -60,7 +60,6 @@ async function authAdmin(path, method = "GET", body) {
   return value;
 }
 
-const letters = (n) => Array.from(crypto.randomBytes(n), (b) => String.fromCharCode(65 + (b % 26))).join("");
 
 async function createHelper() {
   const email = `h.${runId.toLowerCase()}@example.test`;
@@ -75,9 +74,13 @@ async function createHelper() {
   return { helper, accessToken: session.access_token };
 }
 
-async function referral(deviceId, subjectKey, referralId) {
-  const response = await fetch(`${base}/api/referrals/identity`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId, subjectType: "CUSTOMER", subjectKey, ...(referralId ? { referralId } : {}) }) });
-  return readResponse(response);
+// A real customer device: server-issued public ID (= subject key) plus the HttpOnly owner cookie.
+async function referral(deviceId, referralId) {
+  const response = await fetch(`${base}/api/referrals/identity`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deviceId, subjectType: "CUSTOMER", ...(referralId ? { referralId } : {}) }) });
+  const body = await readResponse(response);
+  const cookie = (response.headers.getSetCookie?.() || []).map((c) => c.split(";")[0]).find((c) => c.startsWith("life_help_device_owner="));
+  if (body.referralId) created.subjectKeys.add(body.referralId);
+  return { ...body, cookie };
 }
 
 /** Exactly the request workers/scheduled.mjs sends, over the public URL. */
@@ -117,10 +120,9 @@ async function cleanupFixtures() {
 created.subjectKeys = new Set();
 try {
   // ---------- fixture: real lifecycle up to PAYMENT_PENDING ----------
-  const referrerKey = letters(8), customerKey = letters(8);
-  created.subjectKeys.add(referrerKey).add(customerKey);
-  const referrer = await referral(`${runId}-referrer`, referrerKey);
-  const referred = await referral(`${runId}-customer`, customerKey, referrer.referralId);
+  const referrer = await referral(`${runId}-referrer`);
+  const referred = await referral(`${runId}-customer`, referrer.referralId);
+  const referrerKey = referrer.referralId, customerKey = referred.referralId;
   const identities = await db(`referral_identities?subject_key=in.(${referrerKey},${customerKey})&select=id,subject_key,referral_id`);
   identities.forEach((row) => created.identityIds.add(row.id));
   const referrerIdentity = identities.find((row) => row.subject_key === referrerKey);
@@ -132,15 +134,16 @@ try {
   const platformPost = (id, target) => fetch(`${base}/api/sys/requests/${id}/status`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${settlementToken}` }, body: JSON.stringify({ status: target }) });
 
   /** Real lifecycle via public APIs: request → match H → accept/start/complete → 2 chat messages (→ PAYMENT_PENDING). */
-  async function buildRequest(customer, label, { paymentPending }) {
+  async function buildRequest(device, label, { paymentPending }) {
+    const customer = device.referralId;
     const idempotencyKey = crypto.randomUUID();
-    const createBody = await readResponse(await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey }, body: JSON.stringify({ service_slug: "boiler", customer_id: customer, customer_locale: "en", country: "KR", sido: `CRT-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`, description: `${runId} ${label} request`, selected_options: ["test"] }) }));
+    const createBody = await readResponse(await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey, Cookie: device.cookie }, body: JSON.stringify({ service_slug: "boiler", customer_id: customer, customer_locale: "en", country: "KR", sido: `CRT-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`, description: `${runId} ${label} request`, selected_options: ["test"] }) }));
     if (createBody.requestId) created.requestIds.add(createBody.requestId);
     const id = createBody.requestId;
     const assignment = (await db(`request_assignments?request_id=eq.${id}&select=id,helper_id`))[0];
     const steps = [];
     for (const action of ["accept", "start", "complete"]) steps.push((await fetch(`${base}/api/helper/assignments/${assignment?.id}/${action}`, { method: "POST", headers: helperAuth })).status);
-    const capability = (await readResponse(await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": idempotencyKey } }))).capability;
+    const capability = (await readResponse(await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": idempotencyKey, Cookie: device.cookie } }))).capability;
     steps.push((await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId: id, capability, originalLanguage: "en", originalText: `${runId} ${label} customer message` }) })).status);
     steps.push((await fetch(`${base}/api/chat`, { method: "POST", headers: { ...helperAuth, "Content-Type": "application/json" }, body: JSON.stringify({ requestId: id, originalLanguage: "ko", originalText: `${runId} ${label} helper message` }) })).status);
     if (paymentPending) steps.push((await platformPost(id, "PAYMENT_PENDING")).status);
@@ -150,16 +153,16 @@ try {
     return { requestId: id, capability, conversation, ok, steps, match: createBody.status };
   }
 
-  const main = await buildRequest(customerKey, "main", { paymentPending: true });
+  const main = await buildRequest(referred, "main", { paymentPending: true });
   const requestId = main.requestId;
   const capability = main.capability;
   const conversation = main.conversation;
   expect("Fixture: real lifecycle to PAYMENT_PENDING", main.ok && attribution, { match: main.match, steps: main.steps, attribution: !!attribution });
   // Invalid candidates with live chat content: the retry must never touch them.
-  const completedKey = letters(8), pendingKey = letters(8);
-  created.subjectKeys.add(completedKey).add(pendingKey);
-  const protectedCompleted = await buildRequest(completedKey, "completed", { paymentPending: false });
-  const protectedPending = await buildRequest(pendingKey, "pending", { paymentPending: true });
+  const completedDevice = await referral(`${runId}-completed`), pendingDevice = await referral(`${runId}-pending`);
+  for (const row of await db(`referral_identities?referral_id=in.(${completedDevice.referralId},${pendingDevice.referralId})&select=id`)) created.identityIds.add(row.id);
+  const protectedCompleted = await buildRequest(completedDevice, "completed", { paymentPending: false });
+  const protectedPending = await buildRequest(pendingDevice, "pending", { paymentPending: true });
   expect("Fixture: COMPLETED and PAYMENT_PENDING candidates with ACTIVE chat", protectedCompleted.ok && protectedPending.ok, { completed: protectedCompleted.steps, pending: protectedPending.steps });
 
   // ---------- simulate the interrupted settlement ----------

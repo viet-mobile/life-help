@@ -50,8 +50,12 @@ for (const role of ["anon", "authenticated"]) {
   }
 }
 check("service_role can read/write and execute", (await one("select has_table_privilege('service_role', 'public.push_subscriptions', 'insert') i, has_function_privilege('service_role', 'public.upsert_push_subscription(public.push_subscription_owner_type, uuid, uuid, text, text, text)', 'execute') e")).e === true);
-// The migration grants no DELETE. On Supabase, default privileges still give service_role DELETE
-// (verified on staging); the app never deletes rows, it only revokes/invalidates them.
+// Access model (verified on staging, see test_web_push.mjs for the runtime check):
+//   * anon / authenticated: no table or RPC access at all (cannot read, write or delete).
+//   * application behaviour: unsubscribe -> REVOKED, push service 404/410 -> INVALID, via the RPCs;
+//     no runtime code path hard-deletes a subscription.
+//   * service_role: this migration grants it no DELETE, but Supabase's default privileges do, so it
+//     technically keeps administrative DELETE (used only by E2E fixture cleanup).
 check("Migration itself grants service_role no DELETE", !(await one("select has_table_privilege('service_role', 'public.push_subscriptions', 'delete') d")).d);
 
 // ---------- shape constraints ----------

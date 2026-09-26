@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 import { authorizeRecoveryRequest } from "@/lib/request/recoveryAuth";
+import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
 import {
   RECOVERY_DEFAULT_LIMIT,
   RECOVERY_DEFAULT_MIN_AGE_SECONDS,
@@ -9,6 +10,7 @@ import {
   RECOVERY_MIN_AGE_FLOOR_SECONDS,
   recoverOrphanRequest,
   recoverOrphanRequests,
+  type RecoveryOutcome,
 } from "@/lib/request/requestRecovery";
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -71,14 +73,19 @@ export async function POST(request: Request) {
   }
 
   try {
+    // Helper push only for requests this call actually matched (RECOVERED + MATCHED). A retried
+    // recovery finds the request no longer SEARCHING (SKIPPED / ALREADY_RESOLVED) and sends nothing.
+    const pushMatched = (results: RecoveryOutcome[]) => dispatchPushInBackground(() => Promise.all(results.filter((r) => r.outcome === "RECOVERED" && r.status === "MATCHED").map((r) => pushHelperAssignment(client, r.requestId))));
     if (typeof requestId === "string") {
       const result = await recoverOrphanRequest(client, requestId, { minAgeMs: minAgeSeconds * 1000 });
+      await pushMatched([result]);
       return respond(200, { success: true, scanned: 1, results: [result] });
     }
     const batch = await recoverOrphanRequests(client, { limit, minAgeSeconds });
     if (!batch.ok) {
       return respond(500, { success: false, code: "RECOVERY_SCAN_FAILED", message: "Orphan scan failed." });
     }
+    await pushMatched(batch.results);
     return respond(200, { success: true, scanned: batch.scanned, results: batch.results });
   } catch (err: unknown) {
     console.error("[api/sys/requests/recover] unexpected failure", err instanceof Error ? err.message : String(err));

@@ -91,21 +91,25 @@ async function createHelper(label, rating) {
   return { helper, accessToken: sessionBody.access_token };
 }
 
-async function referral(deviceId, subjectKey, referralId) {
+// A real customer device: the identity API issues the public ID and the HttpOnly owner cookie.
+// Customer subject keys are server-issued, so no subjectKey is sent.
+async function referral(deviceId, referralId) {
   const response = await fetch(`${base}/api/referrals/identity`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ deviceId, subjectType: "CUSTOMER", subjectKey, ...(referralId ? { referralId } : {}) }),
+    body: JSON.stringify({ deviceId, subjectType: "CUSTOMER", ...(referralId ? { referralId } : {}) }),
   });
-  return { response, body: await readResponse(response) };
+  const cookie = (response.headers.getSetCookie?.() || []).map((c) => c.split(";")[0]).find((c) => c.startsWith("life_help_device_owner="));
+  return { response, body: await readResponse(response), cookie };
 }
 
-async function createRequest(customerId, idempotencyKey = crypto.randomUUID()) {
+// Request owner comes from the device cookie; customer_id in the body is ignored by the server.
+async function createRequest(device, idempotencyKey = crypto.randomUUID()) {
   const response = await fetch(`${base}/api/requests`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
+    headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey, Cookie: device.cookie },
     body: JSON.stringify({
-      service_slug: "boiler", customer_id: customerId, customer_locale: "en", country: "KR",
+      service_slug: "boiler", customer_id: device.body.referralId, customer_locale: "en", country: "KR",
       sido: `S3-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`,
       description: `${runId} customer request`, selected_options: ["test"],
     }),
@@ -144,26 +148,27 @@ async function cleanup() {
 
 try {
   // A. Referral attribution
-  const referrer = await referral(`${runId}-referrer-device`, "S3REF-A");
-  const referred = await referral(`${runId}-referred-device`, "QWERTYUI", referrer.body.referralId);
+  const referrer = await referral(`${runId}-referrer-device`);
+  const referred = await referral(`${runId}-referred-device`, referrer.body.referralId);
   if (referrer.response.status === 200 && /^[A-Z]{8}$/.test(referrer.body.referralId || "") && referred.response.status === 200) pass("Referral API attribution"); else fail("Referral API attribution", JSON.stringify({ referrer: referrer.response.status, referred: referred.response.status }));
   const refRows = await db(`referral_identities?select=id,referral_id,subject_key&referral_id=in.(${referrer.body.referralId},${referred.body.referralId})`);
   refRows.forEach((row) => referralIdentityIds.add(row.id));
-  const referredIdentityId = refRows.find((row) => row.subject_key === "QWERTYUI")?.id || "none";
+  const referredIdentityId = refRows.find((row) => row.referral_id === referred.body.referralId)?.id || "none";
   const attributionRows = await db(`referral_attributions?referred_identity_id=eq.${referredIdentityId}&select=id,referrer_identity_id`);
   if (attributionRows.length === 1) pass("Referral attribution DB"); else fail("Referral attribution DB", `count=${attributionRows.length}`);
-  const duplicate = await referral(`${runId}-referred-device`, "QWERTYUI", referrer.body.referralId);
+  const duplicate = await referral(`${runId}-referred-device`, referrer.body.referralId);
   if ((duplicate.response.status === 200 || duplicate.response.status === 409) && (await db(`referral_attributions?referred_identity_id=eq.${referredIdentityId}`)).length === 1) pass("Duplicate attribution"); else fail("Duplicate attribution", `status=${duplicate.response.status}`);
-  const invalid = await referral(`${runId}-invalid-device`, "ASDFGHJK", "ZZZZZZZY");
+  const invalid = await referral(`${runId}-invalid-device`, "ZZZZZZZY");
   if (invalid.response.status === 400) pass("Invalid referral rejection"); else fail("Invalid referral rejection", invalid.response.status);
-  const self = await referral(`${runId}-referrer-device`, "S3REF-A", referrer.body.referralId);
+  const self = await referral(`${runId}-referrer-device`, referrer.body.referralId);
   if (self.response.status === 409) pass("Self-referral rejection"); else fail("Self-referral rejection", self.response.status);
   notTested("Referral URL UI lock", "Browser automation not invoked in this script");
   notTested("Manual referral UI", "Browser automation not invoked in this script");
 
   // B. Helper assignment and accept
   const helperA = await createHelper("A", 5); const helperB = await createHelper("B", 4);
-  const request = await createRequest("QWERTYUI");
+  const request = await createRequest(referred);
+  if (request.response.status === 201 && (await db(`service_requests?id=eq.${request.body.requestId}&select=customer_id`))[0]?.customer_id === referred.body.referralId) pass("Request owner derived from device cookie"); else fail("Request owner derived from device cookie", JSON.stringify(request.body));
   const listAResponse = await fetch(`${base}/api/helper/assignments`, { headers: { Authorization: `Bearer ${helperA.accessToken}` } });
   const listA = await readResponse(listAResponse);
   const listB = await readResponse(await fetch(`${base}/api/helper/assignments`, { headers: { Authorization: `Bearer ${helperB.accessToken}` } }));
@@ -184,7 +189,7 @@ try {
   const startedRows = await db(`service_requests?id=eq.${request.body.requestId}&select=status`);
   if (startResponse.status === 200 && startBody.status === "IN_PROGRESS" && startedRows[0]?.status === "IN_PROGRESS") pass("Helper START"); else fail("Helper START", JSON.stringify({ status: startResponse.status, body: startBody, db: startedRows }));
 
-  const capabilityResponse = await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": request.idempotencyKey } });
+  const capabilityResponse = await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": request.idempotencyKey, Cookie: referred.cookie } });
   const capability = await readResponse(capabilityResponse);
   const customerStatus = await fetch(`${base}/api/requests/status?requestId=${request.body.requestId}&capability=${encodeURIComponent(capability.capability)}`);
   const customerStatusBody = await readResponse(customerStatus);
@@ -211,7 +216,7 @@ try {
   // helper A (H) is the only compatible candidate for everything below.
   await db(`helpers?id=eq.${helperB.helper.id}`, "PATCH", { on_duty: false });
   try {
-    const reuse = await createRequest("REUSEBBB");
+    const reuse = await createRequest(referred);
     const reuseAssignment = (await db(`request_assignments?request_id=eq.${reuse.body.requestId}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,helper_id`))[0];
     const aStillCompleted = (await db(`service_requests?id=eq.${request.body.requestId}&select=status`))[0]?.status === "COMPLETED";
     if (reuse.body.status === "MATCHED" && reuseAssignment?.helper_id === helperA.helper.id && aStillCompleted) pass("Helper reusable before SETTLED (rematched)"); else fail("Helper reusable before SETTLED (rematched)", JSON.stringify({ status: reuse.body.status, reuseAssignment, aStillCompleted }));
@@ -223,7 +228,7 @@ try {
     if (reuseSteps.every((code) => code === 200) && reuseAssignmentAfter === "COMPLETED") pass("Second job completed; helper released again"); else fail("Second job completed; helper released again", JSON.stringify({ reuseSteps, reuseAssignmentAfter }));
 
     // Real concurrent race on the staging database: two compatible requests, H the only candidate.
-    const [raceB, raceC] = await Promise.all([createRequest("RACEBBBB"), createRequest("RACECCCC")]);
+    const [raceB, raceC] = await Promise.all([createRequest(referred), createRequest(referred)]);
     const raceRows = await db(`request_assignments?request_id=in.(${raceB.body.requestId},${raceC.body.requestId})&select=request_id,helper_id,status`);
     const activeRace = raceRows.filter((row) => ["PENDING", "NOTIFIED", "ACCEPTED"].includes(row.status));
     const helperAActive = await db(`request_assignments?helper_id=eq.${helperA.helper.id}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,request_id`);
@@ -329,7 +334,7 @@ try {
   if (cleanupAnon.status === 401 && cleanupRun.status === 200 && cleanupRunBody.processed === 0) pass("Cleanup runner authorized + idempotent"); else fail("Cleanup runner authorized + idempotent", JSON.stringify({ anon: cleanupAnon.status, run: cleanupRun.status, cleanupRunBody }));
 
   const notifications = await db(`app_notifications?payload->>request_id=eq.${requestId}&select=type,recipient_id,payload`);
-  if (["PAYMENT_PENDING", "SETTLED", "CLOSED"].every((status) => notifications.some((row) => row.type === "SERVICE_STATUS_CHANGED" && row.payload?.status === status)) && notifications.some((row) => row.type === "REFERRAL_REWARD_CONFIRMED" && row.recipient_id === "S3REF-A")) pass("Lifecycle notifications recorded (in-app only)"); else fail("Lifecycle notifications recorded (in-app only)", JSON.stringify(notifications));
+  if (["PAYMENT_PENDING", "SETTLED", "CLOSED"].every((status) => notifications.some((row) => row.type === "SERVICE_STATUS_CHANGED" && row.payload?.status === status)) && notifications.some((row) => row.type === "REFERRAL_REWARD_CONFIRMED" && row.recipient_id === referrer.body.referralId)) pass("Lifecycle notifications recorded (in-app only)"); else fail("Lifecycle notifications recorded (in-app only)", JSON.stringify(notifications));
 
   notTested("CLH/GLH staging tiers", "Covered deterministically in test_settlement_lifecycle.mjs; staging run exercises WLH");
   notTested("Admin UI visibility", "SYS admin secrets are not configured on the staging Worker");

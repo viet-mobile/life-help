@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { resolveAuthenticatedHelper } from "@/lib/helper/serverIdentity";
+import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
 
 export async function POST(_request: Request, context: { params: Promise<{ assignmentId: string }> }) {
   const resolved = await resolveAuthenticatedHelper(_request);
@@ -25,6 +26,9 @@ export async function POST(_request: Request, context: { params: Promise<{ assig
     const result = await resolved.value.client.rpc("match_and_assign_helper", { p_request_id: release.request_id });
     if (result.error) return NextResponse.json({ success: true, release, matching: { success: false, code: "REMATCH_FAILED" } }, { status: 202 });
     matching = result.data;
+    // New assignment created by this rematch: notify the newly assigned helper (best effort).
+    // A retried decline is rejected by release_assignment_for_rematch, so this never repeats.
+    if (matching?.success === true && matching.status === "MATCHED") await dispatchPushInBackground(() => pushHelperAssignment(resolved.value.client, release.request_id));
   }
   return NextResponse.json({ success: true, release, matching }, { headers: { "Cache-Control": "no-store" } });
 }

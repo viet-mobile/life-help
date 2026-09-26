@@ -167,7 +167,8 @@ check("Permission requested only inside the click handler", (toggle.match(/Notif
 check("Client sends no owner identifiers", !/helperId|helper_id|referralId|referral_id|customer_id|\?ref=/.test(toggle));
 const owner = read("lib/push/pushOwner.ts");
 check("Helper owner via Supabase Auth -> helpers", owner.includes('audience === "helper"') && owner.includes("resolveAuthenticatedHelper(request)") && owner.includes("resolved.value.helper.id"));
-check("Customer owner via signed device cookie -> CUSTOMER identity", owner.includes("verifyDeviceOwnerCookie(") && owner.includes('.eq("device_id_hash", deviceHash)') && owner.includes('.eq("subject_type", "CUSTOMER")'));
+const customerOwner = read("lib/request/customerOwner.ts");
+check("Customer owner via signed device cookie -> CUSTOMER identity (shared resolver)", owner.includes("resolveCustomerOwner(client)") && customerOwner.includes("verifyDeviceOwnerCookie(") && customerOwner.includes('.eq("device_id_hash", deviceHash)') && customerOwner.includes('.eq("subject_type", "CUSTOMER")'));
 check("Owner resolution never reads the request body or query", !/request\.(json|text|formData)\(|searchParams|new URL\(request|\breferral_id\b|\bsubject_key\b/.test(owner.replace(/^\s*\*.*$/gm, "").replace(/\/\/.*$/gm, "")));
 const subRoute = read("app/api/push/subscription/route.ts");
 check("Subscription route resolves owner before any write and uses the RPCs", subRoute.indexOf("resolvePushOwner(") < subRoute.indexOf('rpc("upsert_push_subscription"') && subRoute.includes('rpc("revoke_push_subscription"') && !/from\("push_subscriptions"\)/.test(subRoute));
@@ -181,8 +182,11 @@ const clientFiles = ["components/push/PushToggle.tsx", "components/chat/DbChatPa
 check("Private VAPID key name never referenced client-side", !clientFiles.includes("VAPID_PRIVATE") && !clientFiles.includes("pushDelivery"));
 const privateRefs = ["app", "lib", "components", "public"].flatMap(function walk(dir) { return fs.readdirSync(new URL(dir + "/", root), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`]); }).filter((f) => /\.(tsx?|mjs|js)$/.test(f) && read(f).includes("LIFE_HELP_WEB_PUSH_VAPID_PRIVATE_KEY"));
 check("VAPID private key read only in lib/push/pushDelivery.ts (server-only)", privateRefs.length === 1 && privateRefs[0] === "lib/push/pushDelivery.ts" && read("lib/push/pushDelivery.ts").startsWith('import "server-only";'), privateRefs.join(","));
+const runtimeFiles = ["app", "lib", "components"].flatMap(function walk(dir) { return fs.readdirSync(new URL(dir + "/", root), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`]); }).filter((f) => /\.tsx?$/.test(f));
+const pushTableUsers = runtimeFiles.filter((f) => read(f).includes('from("push_subscriptions")'));
+check("Runtime never hard-deletes push subscriptions (status-only via RPCs)", pushTableUsers.join() === "lib/push/pushDelivery.ts" && !/from\("push_subscriptions"\)[^;]*\.(delete|update|insert|upsert)\(/.test(read("lib/push/pushDelivery.ts")), pushTableUsers.join());
 const requestRoute = read("app/api/requests/route.ts");
-check("Helper push runs after matching, only for a fresh MATCHED result", requestRoute.indexOf("submitServiceRequest(client") < requestRoute.lastIndexOf("pushHelperAssignment(") && requestRoute.includes('!result.replayed && result.body.success && result.body.status === "MATCHED"'));
+check("Helper push runs after matching, only for a fresh MATCHED result", requestRoute.indexOf("submitServiceRequest(client") < requestRoute.lastIndexOf("pushHelperAssignment(") && requestRoute.includes('result.matchedByThisCall && result.body.success && result.body.status === "MATCHED"'));
 const completeRoute = read("app/api/helper/assignments/[assignmentId]/complete/route.ts");
 check("Customer push after committed COMPLETE only", completeRoute.indexOf('rpc("complete_assignment_service"') < completeRoute.lastIndexOf("notifyCustomerStatusChange(") && completeRoute.includes("data.idempotent !== true"));
 

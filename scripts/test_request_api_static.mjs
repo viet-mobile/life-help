@@ -377,6 +377,26 @@ for (const [label, helpers, sub] of [["no helpers", 0, "NO_ELIGIBLE_HELPER"]]) {
       db.count("request_assignments") === 1 && db.rpcCalls === 3);
 }
 {
+  // Helper push boundary: matchedByThisCall is true only for the call whose RPC created the assignment.
+  const db = fakeDb(); db.addHelper();
+  const key = keys();
+  const first = await submitServiceRequest(db.client, input(), key);
+  const replay = await submitServiceRequest(db.client, input(), key);
+  check("M1. first MATCHED submission -> matchedByThisCall (push once)", first.body.status === "MATCHED" && first.matchedByThisCall === true);
+  check("M2. replay of a matched request -> no second push", replay.replayed === true && replay.matchedByThisCall === false);
+  const none = fakeDb();
+  const noHelper = await submitServiceRequest(none.client, input(), keys());
+  check("M3. NO_HELPER_AVAILABLE -> no helper push", noHelper.body.status === "NO_HELPER_AVAILABLE" && noHelper.matchedByThisCall === false);
+  const orphan = fakeDb(); orphan.addHelper(); orphan.rpcMode = "fail-transport";
+  const orphanKey = keys();
+  const failed = await submitServiceRequest(orphan.client, input(), orphanKey);
+  orphan.rpcMode = "match";
+  const recoveredReplay = await submitServiceRequest(orphan.client, input(), orphanKey);
+  const afterRecovery = await submitServiceRequest(orphan.client, input(), orphanKey);
+  check("M4. orphan recovered on replay -> that replay pushes once, later replays do not",
+    !failed.matchedByThisCall && recoveredReplay.body.status === "MATCHED" && recoveredReplay.matchedByThisCall === true && afterRecovery.matchedByThisCall === false, JSON.stringify([failed.matchedByThisCall, recoveredReplay.httpStatus, recoveredReplay.body.status, recoveredReplay.matchedByThisCall, afterRecovery.matchedByThisCall]));
+}
+{
   // Released-for-rematch request (SEARCHING with assignment history) is not an orphan: no RPC on replay.
   const db = fakeDb(); db.addHelper();
   const key = keys();

@@ -34,7 +34,9 @@ export async function POST(request: Request) {
   const deviceId = body.deviceId;
   const subjectType = body.subjectType;
   const referralId = body.referralId;
-  const subjectKey = typeof body.subjectKey === "string" ? body.subjectKey.trim() : undefined;
+  // Customer subject_key is the request owner key (service_requests.customer_id), so it is always
+  // server-issued (= the generated referral_id) and never taken from, or changed by, the client.
+  const subjectKey = body.subjectType !== "CUSTOMER" && typeof body.subjectKey === "string" ? body.subjectKey.trim() : undefined;
   if (typeof deviceId !== "string" || !DEVICE_ID_PATTERN.test(deviceId) || !["CUSTOMER", "HELPER", "ADMIN"].includes(String(subjectType))) {
     return response({ success: false, code: "VALIDATION_ERROR" }, 400);
   }
@@ -58,12 +60,12 @@ export async function POST(request: Request) {
   const deviceHash = await hashDeviceId(deviceId);
   let lookup: Response;
   try {
-    lookup = await fetch(`${config.url}/rest/v1/referral_identities?select=id,referral_id,status&device_id_hash=eq.${deviceHash}&status=eq.ACTIVE`, { headers });
+    lookup = await fetch(`${config.url}/rest/v1/referral_identities?select=id,referral_id,status,subject_key&device_id_hash=eq.${deviceHash}&status=eq.ACTIVE`, { headers });
   } catch {
     return response({ success: false, code: "REFERRAL_FETCH_FAILED" }, 500);
   }
   if (!lookup.ok) return response({ success: false, code: "REFERRAL_LOOKUP_FAILED" }, 500);
-  const existingRows = await lookup.json() as Array<{ id: string; referral_id: string; status: string }>;
+  const existingRows = await lookup.json() as Array<{ id: string; referral_id: string; status: string; subject_key?: string | null }>;
   const existing = existingRows[0] || null;
 
   let identity = existing;
@@ -79,7 +81,7 @@ export async function POST(request: Request) {
       if (create.status !== 409) return response({ success: false, code: "REFERRAL_CREATE_FAILED" }, 500);
     }
   } else {
-    await fetch(`${config.url}/rest/v1/referral_identities?id=eq.${identity.id}`, { method: "PATCH", headers: { ...headers, Prefer: "return=minimal" }, body: JSON.stringify({ last_seen_at: new Date().toISOString(), ...(subjectKey ? { subject_key: subjectKey } : {}) }) });
+    await fetch(`${config.url}/rest/v1/referral_identities?id=eq.${identity.id}`, { method: "PATCH", headers: { ...headers, Prefer: "return=minimal" }, body: JSON.stringify({ last_seen_at: new Date().toISOString(), ...(subjectKey && !existing?.subject_key ? { subject_key: subjectKey } : {}) }) });
   }
   if (!identity) return response({ success: false, code: "REFERRAL_CREATE_FAILED" }, 500);
 

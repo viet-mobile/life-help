@@ -3,16 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
-
-const DEVICE_KEY = "life_help_referral_device_id";
-
-function getDeviceId() {
-  const existing = window.localStorage.getItem(DEVICE_KEY);
-  if (existing) return existing;
-  const value = `device-${crypto.randomUUID()}`;
-  window.localStorage.setItem(DEVICE_KEY, value);
-  return value;
-}
+import { getCustomerDeviceId } from "@/lib/referral/clientDeviceId";
 
 export function ReferralCard({ compact = false }: { compact?: boolean }) {
   const { locale, t } = useLocale();
@@ -26,7 +17,7 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
     void fetch("/api/referrals/identity", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ deviceId: getDeviceId(), subjectType: "CUSTOMER", referralId: ref }),
+      body: JSON.stringify({ deviceId: getCustomerDeviceId(), subjectType: "CUSTOMER", referralId: ref }),
     }).then(async (response) => {
       const data = await response.json().catch(() => null);
       if (response.ok && data?.success) setReferralId(data.referralId);

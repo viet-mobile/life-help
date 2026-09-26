@@ -72,6 +72,11 @@ export interface ApiResult {
   body: CreateRequestApiResponse;
   /** True when the response describes a request created by an earlier call with the same key. */
   replayed?: boolean;
+  /**
+   * True only when this call's own match_and_assign_helper invocation created the assignment
+   * (first submission, or in-band orphan recovery on a replay). The helper push keys off this.
+   */
+  matchedByThisCall?: boolean;
 }
 
 type ValidationResult =
@@ -413,6 +418,7 @@ export async function submitServiceRequest(
   if (!isDuplicate) {
     const attempt = await runMatchingOnce(client, requestId);
     const result = await readRequestResult(client, requestId, 201);
+    result.matchedByThisCall = attempt.outcome === "RAN" && attempt.status === "MATCHED";
     if (attempt.outcome === "FAILED" && result.body.success === false && result.body.code === "REQUEST_PROCESSING") {
       return serverError(
         502,
@@ -443,14 +449,17 @@ export async function submitServiceRequest(
   }
 
   let ranAndFailed = false;
+  let matchedByThisCall = false;
   const eligibility = await checkOrphanEligibility(client, requestId);
   if (eligibility.eligible) {
     const attempt = await runMatchingOnce(client, requestId);
     ranAndFailed = attempt.outcome === "FAILED";
+    matchedByThisCall = attempt.outcome === "RAN" && attempt.status === "MATCHED";
   }
 
   const result = await readRequestResult(client, requestId, 200);
   result.replayed = true;
+  result.matchedByThisCall = matchedByThisCall;
   if (ranAndFailed && result.body.success === false && result.body.code === "REQUEST_PROCESSING") {
     return {
       ...serverError(

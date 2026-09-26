@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 import { IDEMPOTENCY_HEADER } from "@/lib/request/idempotencyKey";
 import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
+import { resolveCustomerOwner } from "@/lib/request/customerOwner";
 import {
   MAX_REQUEST_BODY_BYTES,
   submitServiceRequest,
@@ -19,8 +20,11 @@ function respond(httpStatus: number, body: CreateRequestApiResponse, replayed = 
 /**
  * POST /api/requests
  * Creates a customer service request and runs the authoritative DB matching RPC.
- * Only creation and the immediate matching result are handled here; the pseudonymous
- * customer_id grants no read access to requests or conversations.
+ * Only creation and the immediate matching result are handled here.
+ *
+ * The request owner (customer_id) is derived server-side from the HttpOnly device-owner cookie
+ * (see resolveCustomerOwner). Any customer_id in the body is ignored and overwritten, so a client
+ * can never file a request under another customer's identity.
  *
  * Requires an Idempotency-Key header (v4 UUID). Repeating a call with the same key and the same
  * payload never creates a second request; it returns the request's current result
@@ -43,11 +47,6 @@ export async function POST(request: Request) {
     return respond(400, { success: false, code: "INVALID_JSON", message: "Request body must be valid JSON." });
   }
 
-  const validation = validateCreateServiceRequest(body);
-  if (!validation.ok) {
-    return respond(validation.error.httpStatus, validation.error.body);
-  }
-
   const client = await createRuntimeServiceRoleClient();
   if (!client) {
     console.error("[api/requests] Supabase service environment is not configured");
@@ -58,11 +57,22 @@ export async function POST(request: Request) {
     });
   }
 
+  const owner = await resolveCustomerOwner(client);
+  if (!owner.ok) {
+    return respond(owner.status, { success: false, code: owner.code, message: "This device is not recognized as a customer." });
+  }
+  const isObject = typeof body === "object" && body !== null && !Array.isArray(body);
+  const validation = validateCreateServiceRequest(isObject ? { ...(body as Record<string, unknown>), customer_id: owner.owner.customerId } : body);
+  if (!validation.ok) {
+    return respond(validation.error.httpStatus, validation.error.body);
+  }
+
   try {
     const result = await submitServiceRequest(client, validation.value, key.value);
     // Web Push to the matched helper, after the response and best effort: the in-app
     // NEW_SERVICE_REQUEST notification was already written by match_and_assign_helper.
-    if (!result.replayed && result.body.success && result.body.status === "MATCHED") {
+    // Only when this call's matching RPC created the assignment, so replays never push twice.
+    if (result.matchedByThisCall && result.body.success && result.body.status === "MATCHED") {
       const requestId = result.body.requestId;
       await dispatchPushInBackground(() => pushHelperAssignment(client, requestId));
     }
