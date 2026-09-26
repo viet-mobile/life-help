@@ -167,9 +167,32 @@ try {
   const acceptedRows = await db(`service_requests?id=eq.${request.body.requestId}&select=status`);
   if (acceptResponse.status === 200 && acceptBody.request_status === "ACCEPTED" && acceptedRows[0]?.status === "ACCEPTED") pass("Helper ACCEPT"); else fail("Helper ACCEPT", JSON.stringify({ status: acceptResponse.status, body: acceptBody, db: acceptedRows }));
 
-  // C. Customer/helper chat
+  const assignmentId = listA.assignments[0].assignmentId;
+  const invalidComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}` } });
+  if (invalidComplete.status === 409) pass("Completion rejected before START"); else fail("Completion rejected before START", invalidComplete.status);
+  const wrongHelperStart = await fetch(`${base}/api/helper/assignments/${assignmentId}/start`, { method: "POST", headers: { Authorization: `Bearer ${helperB.accessToken}` } });
+  if (wrongHelperStart.status === 404) pass("Cross-helper START isolation"); else fail("Cross-helper START isolation", wrongHelperStart.status);
+  const startResponse = await fetch(`${base}/api/helper/assignments/${assignmentId}/start`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}` } });
+  const startBody = await readResponse(startResponse);
+  const startedRows = await db(`service_requests?id=eq.${request.body.requestId}&select=status`);
+  if (startResponse.status === 200 && startBody.status === "IN_PROGRESS" && startedRows[0]?.status === "IN_PROGRESS") pass("Helper START"); else fail("Helper START", JSON.stringify({ status: startResponse.status, body: startBody, db: startedRows }));
+
   const capabilityResponse = await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": request.idempotencyKey } });
   const capability = await readResponse(capabilityResponse);
+  const customerStatus = await fetch(`${base}/api/requests/status?requestId=${request.body.requestId}&capability=${encodeURIComponent(capability.capability)}`);
+  const customerStatusBody = await readResponse(customerStatus);
+  if (customerStatus.status === 200 && customerStatusBody.status === "IN_PROGRESS") pass("Customer live status authorization"); else fail("Customer live status authorization", JSON.stringify({ status: customerStatus.status, body: customerStatusBody }));
+
+  const completeResponse = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}` } });
+  const completeBody = await readResponse(completeResponse);
+  const completedRows = await db(`service_requests?id=eq.${request.body.requestId}&select=status`);
+  if (completeResponse.status === 200 && completeBody.status === "COMPLETED" && completedRows[0]?.status === "COMPLETED") pass("Helper COMPLETE"); else fail("Helper COMPLETE", JSON.stringify({ status: completeResponse.status, body: completeBody, db: completedRows }));
+  if (completedRows[0]?.status !== "SETTLED") pass("COMPLETED is not SETTLED"); else fail("COMPLETED is not SETTLED", "request auto-settled");
+  const repeatedComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}` } });
+  const repeatedCompleteBody = await readResponse(repeatedComplete);
+  if (repeatedComplete.status === 200 && repeatedCompleteBody.idempotent === true) pass("Duplicate COMPLETE idempotency"); else fail("Duplicate COMPLETE idempotency", JSON.stringify({ status: repeatedComplete.status, body: repeatedCompleteBody }));
+
+  // C. Customer/helper chat
   const customerSend = await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId: request.body.requestId, capability: capability.capability, originalLanguage: "en", originalText: "S3E2E customer original" }) });
   const helperRead = await fetch(`${base}/api/chat?requestId=${request.body.requestId}`, { headers: { Authorization: `Bearer ${helperA.accessToken}` } });
   const helperSend = await fetch(`${base}/api/chat`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}`, "Content-Type": "application/json" }, body: JSON.stringify({ requestId: request.body.requestId, originalLanguage: "ko", originalText: "S3E2E helper original" }) });
