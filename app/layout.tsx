@@ -13,7 +13,6 @@ import {
   getIconMetadata,
 } from "@/lib/i18n/siteMetadata";
 
-import { TopPwaBar } from "@/components/pwa/TopPwaBar";
 import { PwaRegister } from "@/components/pwa/PwaRegister";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -74,7 +73,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <LocaleProvider initialLocale={lang as any}>
             <RegionProvider initialCountry={country}>
               <PwaRegister />
-              <TopPwaBar />
               {children}
             </RegionProvider>
           </LocaleProvider>

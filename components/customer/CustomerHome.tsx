@@ -374,7 +374,7 @@ export function CustomerHome() {
                 }`}
               >
                 <span className="shrink-0">🌈</span>
-                <span className="truncate">{t("customer.allView") || (locale === "ko" ? "전체 보기" : "All")}</span>
+                <span className="min-w-0 whitespace-normal text-center leading-tight [overflow-wrap:break-word]">{t("customer.allView") || (locale === "ko" ? "전체 보기" : "All")}</span>
                 <span
                   className={`droplet-pill px-1 sm:px-1.5 py-0.2 text-[9px] sm:text-[10px] shrink-0 ${
                     activeTab === "all" ? "bg-white/25 text-white" : "bg-slate-100 text-slate-600"
@@ -394,7 +394,7 @@ export function CustomerHome() {
                 }`}
               >
                 <span className="shrink-0">🔧</span>
-                <span className="truncate">{t("customer.repairView") || (locale === "ko" ? "긴급 수리" : "Repair")}</span>
+                <span className="min-w-0 whitespace-normal text-center leading-tight [overflow-wrap:break-word]">{t("customer.repairView") || (locale === "ko" ? "긴급 수리" : "Repair")}</span>
                 <span
                   className={`droplet-pill px-1 sm:px-1.5 py-0.2 text-[9px] sm:text-[10px] shrink-0 ${
                     activeTab === "repair" ? "bg-white/25 text-white" : "bg-slate-100 text-slate-600"
@@ -414,7 +414,7 @@ export function CustomerHome() {
                 }`}
               >
                 <span className="shrink-0">🤝</span>
-                <span className="truncate">{t("customer.supportView") || (locale === "ko" ? "생활 지원" : "Support")}</span>
+                <span className="min-w-0 whitespace-normal text-center leading-tight [overflow-wrap:break-word]">{t("customer.supportView") || (locale === "ko" ? "생활 지원" : "Support")}</span>
                 <span
                   className={`droplet-pill px-1 sm:px-1.5 py-0.2 text-[9px] sm:text-[10px] shrink-0 ${
                     activeTab === "support" ? "bg-white/25 text-white" : "bg-slate-100 text-slate-600"
@@ -436,11 +436,11 @@ export function CustomerHome() {
               <Link
                 key={svc.id}
                 href={`/services/${svc.slug}`}
-                className={`droplet-card group relative border ${svc.cardBorder} ${svc.cardBg} ${svc.cardHover} p-3 sm:p-4 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between cursor-pointer focus:outline-none`}
+                className={`droplet-card group relative min-w-0 border ${svc.cardBorder} ${svc.cardBg} ${svc.cardHover} p-3 sm:p-4 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between cursor-pointer focus:outline-none`}
               >
                 {/* Top: Large Icon + Badge */}
                 <div>
-                  <div className="flex items-center justify-between gap-1 mb-2">
+                  <div className="flex min-w-0 items-center justify-between gap-1 mb-2">
                     <span
                       className={`droplet-icon flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center ${svc.iconBg} text-2xl sm:text-3xl shadow-2xs group-hover:scale-110 transition-transform shrink-0`}
                     >
@@ -449,14 +449,14 @@ export function CustomerHome() {
 
                     {/* Pastel Tag */}
                     <span
-                      className={`droplet-pill ${svc.badgeBg} ${svc.badgeText} px-2.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0 tracking-wide`}
+                      className={`droplet-pill max-w-[58%] whitespace-normal text-center leading-tight [overflow-wrap:break-word] ${svc.badgeBg} ${svc.badgeText} px-2.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0 tracking-wide`}
                     >
                       {getBadgeText(svc.key, svc.badgeLabelKo)}
                     </span>
                   </div>
 
                   {/* Title & Bilingual Subtitle */}
-                  <div>
+                  <div className="min-w-0 max-w-full">
                     <h3
                       className={`text-[15px] sm:text-[17px] font-black ${svc.textColor} leading-snug sm:line-clamp-2 [overflow-wrap:break-word] min-h-[42px] sm:min-h-[48px] flex items-center`}
                     >

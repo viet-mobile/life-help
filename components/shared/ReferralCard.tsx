@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/i18n/LocaleContext";
+import { DesktopShortcutButton } from "@/components/shared/DesktopShortcutButton";
 
 const DEVICE_KEY = "life_help_referral_device_id";
 
@@ -47,12 +48,13 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
         <button type="button" onClick={() => setIsOpen((value) => !value)} className="droplet-pill inline-flex max-w-[132px] items-center gap-1 border border-emerald-200 bg-emerald-50 px-2 py-1 text-[10px] font-black text-emerald-900 sm:max-w-[160px] sm:text-xs" aria-expanded={isOpen}>
           <span className="shrink-0">ID ·</span><span className="truncate tracking-[0.12em]">{referralId || "--------"}</span><span aria-hidden="true">⌄</span>
         </button>
-        {isOpen && <div className="absolute right-0 top-full z-40 mt-2 w-[min(88vw,280px)] rounded-xl border border-emerald-200 bg-white p-3 text-slate-900 shadow-xl" role="dialog">
+        {isOpen && <div className="absolute right-0 top-full z-40 mt-2 w-[min(92vw,320px)] max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-xl border border-emerald-200 bg-white p-3 text-slate-900 shadow-xl" role="dialog">
           <p className="text-[11px] font-bold text-slate-500">{locale === "vi" ? "ID LIFE.HELP" : "LIFE.HELP ID"}</p>
-          <code className="mt-1 block text-base font-black tracking-[0.18em]">{referralId || "--------"}</code>
+          <code className="mt-1 block max-w-full break-all text-base font-black tracking-[0.18em]">{referralId || "--------"}</code>
           <p className="mt-3 text-[11px] font-bold text-slate-500">{locale === "vi" ? "Liên kết giới thiệu" : "Referral link"}</p>
           <p className="mt-1 break-all text-xs text-slate-700">{link || "-"}</p>
           <button type="button" onClick={() => void copy()} className="mt-3 w-full rounded-lg bg-emerald-700 px-3 py-2 text-xs font-black text-white">{copied ? t("common.copied") : t("common.copy")}</button>
+          <DesktopShortcutButton variant="card" className="mt-3 w-full max-w-full overflow-hidden [overflow-wrap:break-word]" />
           <div className="mt-4 border-t border-slate-200 pt-3">
             <p className="text-xs font-black text-slate-800">{t("common.referralRewards")}</p>
             <p className="mt-1 text-[11px] leading-relaxed text-slate-600">{t("common.rewardInfo")}</p>

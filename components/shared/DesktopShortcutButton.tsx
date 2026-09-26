@@ -27,7 +27,7 @@ export function DesktopShortcutButton({
   portal,
   className = "",
 }: DesktopShortcutButtonProps) {
-  const { locale, formatBilingual } = useLocale();
+  const { locale, t, formatBilingual } = useLocale();
   const { country } = useCountry();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -90,9 +90,7 @@ export function DesktopShortcutButton({
   };
 
   const isKorean = locale === "ko";
-  const buttonLabel = isKorean
-    ? guide.buttonLabelKo
-    : formatBilingual(guide.buttonLabelEn, guide.buttonLabelKo);
+  const buttonLabel = isKorean ? guide.buttonLabelKo : t("common.placeShortcut");
 
   const hasPwaPrompt = typeof window !== "undefined" && !!window.deferredPwaPrompt;
 
@@ -135,7 +133,7 @@ export function DesktopShortcutButton({
               ✕
             </button>
 
-            <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+            <div className="flex min-w-0 items-center gap-3 border-b border-slate-100 pb-4">
               <div className="relative w-12 h-12 shrink-0 rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 flex items-center justify-center shadow-xs">
                 <Image
                   src={details.iconPngUrl}
@@ -145,7 +143,7 @@ export function DesktopShortcutButton({
                   className="object-contain"
                 />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="rounded-md bg-blue-100 px-2 py-0.5 text-[10px] font-black text-blue-800">
                     {guide.osDisplayName}
@@ -155,7 +153,7 @@ export function DesktopShortcutButton({
                   </span>
                 </div>
                 <h3 className="text-base sm:text-lg font-black text-slate-950 mt-0.5">
-                  {isKorean ? guide.modalTitleKo : guide.modalTitleEn}
+                    {isKorean ? guide.modalTitleKo : t("common.placeShortcut")}
                 </h3>
               </div>
             </div>
@@ -215,7 +213,7 @@ export function DesktopShortcutButton({
                   onClick={handlePwaInstall}
                   className="w-full rounded-2xl bg-blue-600 hover:bg-blue-700 py-3 text-sm font-black text-white shadow-md transition cursor-pointer"
                 >
-                  🚀 {isKorean ? "지금 1클릭 앱 설치하기" : "Install App Now"}
+                  🚀 {isKorean ? "지금 바로가기 만들기" : "Place Shortcut Now"}
                 </button>
               )}
 

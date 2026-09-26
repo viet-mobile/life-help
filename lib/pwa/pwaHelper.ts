@@ -109,9 +109,9 @@ export function getOsInstallGuide(os: UserOS, locale: string = "ko"): OsInstallG
         os: "android",
         osDisplayName: "Android",
         buttonLabelKo: "📱 홈 화면에 바로가기 앱 설치",
-        buttonLabelEn: "📱 Install App to Home Screen",
+        buttonLabelEn: "📱 Place Shortcut to Home Screen",
         modalTitleKo: "Android 홈 화면에 바로가기 앱 설치",
-        modalTitleEn: "Install App on Android Home Screen",
+        modalTitleEn: "Place a Shortcut on Android Home Screen",
         stepsKo: [
           "아래 [ 지금 앱 설치하기 ] 버튼을 누르면 1클릭으로 홈 화면 추가 대화상자가 열립니다.",
           "대화상자가 자동으로 열리지 않을 경우 브라우저 우측 상단 더보기 버튼 · 점 3개 모양을 누릅니다.",
@@ -120,7 +120,7 @@ export function getOsInstallGuide(os: UserOS, locale: string = "ko"): OsInstallG
         stepsEn: [
           "Tap the button below to trigger the 1-click home screen install prompt.",
           "If the dialog does not appear automatically, tap the browser menu (three dots) in the top right.",
-          "Select 'Install app' or 'Add to Home screen' to install as a standalone app."
+          "Select 'Add to Home screen' to place a convenient shortcut."
         ],
         primaryActionType: "pwa-prompt"
       };
@@ -130,16 +130,16 @@ export function getOsInstallGuide(os: UserOS, locale: string = "ko"): OsInstallG
         os: "macos",
         osDisplayName: "macOS · Mac",
         buttonLabelKo: "💻 Dock에 추가 · 앱 설치",
-        buttonLabelEn: "💻 Add to Dock / Install App",
+        buttonLabelEn: "💻 Place Shortcut to Dock",
         modalTitleKo: "Mac에 바로가기 앱 설치 방법",
-        modalTitleEn: "How to Install App on Mac",
+        modalTitleEn: "How to Place a Shortcut on Mac",
         stepsKo: [
           "Chrome 또는 Edge 브라우저의 경우 주소창 우측의 [ 앱 설치 ] 버튼이나 아래 설치 버튼을 누르면 1클릭 설치가 진행됩니다.",
           "Safari 브라우저의 경우 상단 메뉴 막대에서 [ 파일 ] ➔ [ Dock에 추가 ]를 선택합니다.",
           "설치 완료 시 Mac의 독 · Dock과 런치패드에 독립 실행 아이콘이 생성됩니다."
         ],
         stepsEn: [
-          "On Chrome or Edge, click the Install App button below or in the address bar.",
+          "On Chrome or Edge, use the shortcut action below or the browser address-bar menu.",
           "On Safari, click 'File' in the menu bar and choose 'Add to Dock'.",
           "The standalone app shortcut will appear in your Mac Dock and Launchpad."
         ],
@@ -152,18 +152,18 @@ export function getOsInstallGuide(os: UserOS, locale: string = "ko"): OsInstallG
         os: "windows",
         osDisplayName: "Windows PC",
         buttonLabelKo: "🖥️ 바탕화면에 바로가기 앱 설치",
-        buttonLabelEn: "🖥️ Install App to Desktop",
+        buttonLabelEn: "🖥️ Place Shortcut to Desktop",
         modalTitleKo: "Windows 바탕화면에 바로가기 앱 설치",
-        modalTitleEn: "Install App to Windows Desktop",
+        modalTitleEn: "How to Place a Shortcut on Windows Desktop",
         stepsKo: [
           "아래 [ 🖥️ 바탕화면에 바로가기 앱 설치 ] 버튼을 클릭하면 Edge 또는 Chrome 브라우저의 앱 설치창이 뜹니다.",
           "[ 설치 ]를 누르시면 바탕화면과 작업표시줄에 전용 아이콘이 즉시 생성됩니다.",
           "브라우저 주소창 없이 깨끗하고 빠른 독립형 창으로 사이트를 편리하게 이용할 수 있습니다."
         ],
         stepsEn: [
-          "Click the Install button below to launch the native Edge or Chrome install dialog.",
-          "Click 'Install' to add dedicated shortcuts to your desktop and taskbar.",
-          "Enjoy a fast, standalone full-screen experience with no address bar clutter."
+          "Use the shortcut action below to open the supported Edge or Chrome shortcut flow.",
+          "Confirm the browser prompt to place a LIFE.HELP shortcut on your desktop or taskbar.",
+          "Open LIFE.HELP quickly without searching for the website again."
         ],
         primaryActionType: "pwa-prompt"
       };

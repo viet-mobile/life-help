@@ -254,7 +254,7 @@ export function TopPwaBar() {
                   onClick={handleActionClick}
                   className="w-full rounded-2xl bg-blue-600 py-3 text-sm font-black text-white shadow-md hover:bg-blue-700 transition cursor-pointer"
                 >
-                  🚀 {isKorean ? "지금 1클릭 앱 설치하기" : "Install App Now"}
+                  🚀 {isKorean ? "지금 바로가기 만들기" : "Place Shortcut Now"}
                 </button>
               )}
 
