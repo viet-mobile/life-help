@@ -37,7 +37,7 @@ try {
   // ================= A / B =================
   const spec = await (await fetch(`${supabaseUrl}/rest/v1/`, { headers: hdr(serviceKey) })).json();
   const statuses = spec.definitions?.service_requests?.properties?.status?.enum || [];
-  const probe = await rest("service_requests", hdr(serviceKey), "POST", { customer_id: "RMPROBEX", customer_display_name: "probe", service_slug: "boiler", country: "KR", sido: `${runId}-PROBE`, gungu: "G1", description: `${runId} probe`, status: "CUSTOMER_RESELECTION_REQUIRED" });
+  const probe = await rest("service_requests", hdr(serviceKey), "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: "RMPROBEX", customer_display_name: "probe", service_slug: "boiler", country: "KR", sido: `${runId}-PROBE`, gungu: "G1", description: `${runId} probe`, status: "CUSTOMER_RESELECTION_REQUIRED" });
   if (Array.isArray(probe.body) && probe.body[0]?.id) fx.created.requestIds.add(probe.body[0].id);
   expect("A. CUSTOMER_RESELECTION_REQUIRED accepted by the database enum (and listed in the API schema)", statuses.includes("CUSTOMER_RESELECTION_REQUIRED") && probe.status === 201, { statuses, probe: probe.status, err: probe.body?.message });
   const selCols = Object.keys(spec.definitions?.request_price_selections?.properties || {});

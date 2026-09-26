@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { resolveCustomerOwner } from "@/lib/request/customerOwner";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { dispatchRefund } from "@/lib/payments/transfers";
+import { dispatchPushInBackground } from "@/lib/push/pushDelivery";
 
 /**
  * POST /api/requests/{requestId}/cancel: the owner cancels a FUNDED request no Helper has taken
@@ -17,6 +19,7 @@ export async function POST(_request: Request, context: { params: Promise<{ reque
   const { data, error } = await client.rpc("cancel_funded_request", { p_request_id: requestId, p_customer_id: owner.owner.customerId });
   if (error || !data) return NextResponse.json({ success: false, code: "CANCEL_FAILED" }, { status: 502 });
   if (!data.success) return NextResponse.json({ success: false, code: data.code }, { status: data.code === "REQUEST_NOT_FOUND" ? 404 : 409 });
+  if (!data.replayed && data.refund_id) await dispatchPushInBackground(() => dispatchRefund(client, String(data.refund_id)));
   return NextResponse.json({ success: true, replayed: data.replayed === true, status: data.status, paymentStatus: data.payment_status, refundId: data.refund_id },
     { headers: { "Cache-Control": "no-store" } });
 }

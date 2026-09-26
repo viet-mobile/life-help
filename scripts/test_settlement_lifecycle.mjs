@@ -19,7 +19,7 @@ function createDb() {
   const tables = {
     service_requests: [], conversations: [], messages: [], referral_identities: [], referral_attributions: [],
     referral_rewards: [], admin_audit_logs: [], app_notifications: [], request_assignments: [],
-    request_price_selections: [], request_price_snapshots: [],
+    request_price_selections: [], request_price_snapshots: [], payment_intents: [], payout_obligations: [],
   };
   const unique = { referral_rewards: ["qualifying_request_id"] };
   // Conversation ids whose messages delete returns an error (interrupted-cleanup simulation).

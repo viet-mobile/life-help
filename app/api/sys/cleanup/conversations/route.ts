@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { authorizePlatformOperator, createStagingSettlementClient } from "@/lib/settlement/platformAuth";
 import { runConversationCleanup } from "@/lib/settlement/serviceSettlement";
 import { runMediaDeletion } from "@/lib/media/mediaStorage";
+import { reconcileTransfers } from "@/lib/payments/transfers";
 
 /**
  * Runs due settled-conversation cleanup (retry path for the inline cleanup performed at
@@ -19,6 +20,7 @@ export async function POST(request: Request) {
   const report = await runConversationCleanup(client, { requestId, limit });
   // Request photos / videos scheduled at "service complete" (or cancel) are deleted permanently.
   const media = await runMediaDeletion(client);
+  const transfers = await reconcileTransfers(client).catch(() => null);
   // Label only; authority comes from authorizePlatformOperator above.
   const trigger = request.headers.get("x-life-help-trigger") === "scheduled" ? "SCHEDULED" : "MANUAL";
   // reason separates a plain queued-cleanup retry from recovery of a SETTLED request whose
@@ -28,5 +30,5 @@ export async function POST(request: Request) {
   if (report.cleaned + report.closedRequests + report.failed + report.reconciled > 0) {
     await client.from("admin_audit_logs").insert({ action: "CONVERSATION_CLEANUP_RETRY", entity_type: "system", entity_id: null, actor_id: null, metadata: { actor_kind: actor, trigger, reason, ...report } });
   }
-  return NextResponse.json({ success: true, trigger, reason, ...report, media }, { headers: { "Cache-Control": "no-store" } });
+  return NextResponse.json({ success: true, trigger, reason, ...report, media, transfers }, { headers: { "Cache-Control": "no-store" } });
 }

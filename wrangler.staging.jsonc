@@ -14,5 +14,16 @@
   // Every 6 hours at minute 17: retry for interrupted post-SETTLED conversation cleanup.
   "triggers": {
     "crons": ["17 */6 * * *"]
+  },
+  // STAGING ONLY (never in wrangler.jsonc): Solana DEVNET test rail + private request-media bucket.
+  // Public values only. The devnet signer key is the Worker SECRET LIFE_HELP_SOLANA_DEVNET_SIGNER_SECRET;
+  // the recipient below is that signer's public address (the staging holding account). The FX rate is
+  // an explicit TEST rate for devnet test USDC, not a market rate.
+  "vars": {
+    "LIFE_HELP_PAYMENT_MODE": "STAGING_DEVNET_TEST",
+    "LIFE_HELP_SOLANA_DEVNET_RECIPIENT": "D89fnNdAMFSnd4Jc8NvHcAkGQfvhWFkhY84K5qALQE4",
+    "LIFE_HELP_SOLANA_DEVNET_RPC_URL": "https://api.devnet.solana.com",
+    "LIFE_HELP_TEST_FX_RATES": "KRW=1400",
+    "LIFE_HELP_MEDIA_BUCKET": "life-help-staging-request-media"
   }
 }

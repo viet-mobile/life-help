@@ -49,6 +49,26 @@ async function transition(client: SupabaseClient, requestId: string, from: strin
   return !!data;
 }
 
+/**
+ * Real chain evidence for a prepaid request: the customer payment was verified on-chain by the server
+ * (payment_intents.verified_signature) AND the Helper payout was confirmed on-chain (obligation PAID
+ * with a chain signature). Only then is external_payment_verified true; internal / legacy settlement
+ * stays false and never carries a fabricated transaction id.
+ */
+type ChainEvidence = { network: string; paymentSignature: string; payoutSignature: string } | null;
+async function chainEvidence(client: SupabaseClient, row: RequestRow): Promise<ChainEvidence> {
+  if (!row.funding_payment_intent_id) return null;
+  const { data: intent } = await client.from("payment_intents").select("network, verified_signature").eq("id", row.funding_payment_intent_id).maybeSingle();
+  const { data: ob } = await client.from("payout_obligations").select("status, chain_signature").eq("request_id", row.id).eq("kind", "HELPER_SERVICE").maybeSingle();
+  if (!intent?.verified_signature || ob?.status !== "PAID" || !ob.chain_signature) return null;
+  return { network: intent.network, paymentSignature: intent.verified_signature, payoutSignature: ob.chain_signature };
+}
+function chainAudit(chain: ChainEvidence): Record<string, unknown> {
+  return chain
+    ? { external_payment_provider: `SOLANA_${chain.network.toUpperCase()}`, external_payment_transaction_id: chain.paymentSignature, external_payout_transaction_id: chain.payoutSignature, external_payment_verified: true }
+    : { external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false };
+}
+
 /** Agreed price of a customer-selected request (current accepted selection); null for AUTO_MATCH. */
 async function agreedPriceFor(client: SupabaseClient, row: RequestRow): Promise<AgreedPrice | null> {
   return row.selection_mode === "CUSTOMER_SELECTED" ? loadCurrentAgreedPrice(client, row.id) : null;
@@ -130,7 +150,7 @@ async function qualifyReferralReward(client: SupabaseClient, requestId: string, 
   return "QUALIFIED";
 }
 
-export async function settleServiceRequest(client: SupabaseClient, requestId: string, actor: PlatformActor): Promise<LifecycleResult> {
+export async function settleServiceRequest(client: SupabaseClient, requestId: string, actor: PlatformActor | "PAYOUT_RECONCILER"): Promise<LifecycleResult> {
   const row = await loadRequest(client, requestId);
   if (!row) return { ok: false, httpStatus: 404, code: "REQUEST_NOT_FOUND" };
   // Prepaid request: settled only once the Helper payout is confirmed by the payout rail.
@@ -147,18 +167,19 @@ export async function settleServiceRequest(client: SupabaseClient, requestId: st
   }
   if (!SETTLED_STATES.includes(status)) return { ok: false, httpStatus: 409, code: "INVALID_TRANSITION", currentStatus: status };
   const agreedPrice = await agreedPriceFor(client, row);
+  const chain = await chainEvidence(client, row);
 
   if (won) {
-    await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: SETTLEMENT_METHOD, external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false, agreed_price: agreedPriceAudit(agreedPrice) });
+    await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: chain ? "STAGING_DEVNET_USDC" : SETTLEMENT_METHOD, ...chainAudit(chain), agreed_price: agreedPriceAudit(agreedPrice) });
     await notifyCustomer(client, row.customer_id, requestId, "SETTLED");
   } else {
     // Reconcile a settlement whose side effects may have been interrupted.
     const { data: existingAudit } = await client.from("admin_audit_logs").select("id").eq("action", "SERVICE_SETTLED").eq("entity_id", requestId).limit(1);
-    if (!existingAudit?.length) await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: SETTLEMENT_METHOD, external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false, agreed_price: agreedPriceAudit(agreedPrice), reconciled: true });
+    if (!existingAudit?.length) await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: chain ? "STAGING_DEVNET_USDC" : SETTLEMENT_METHOD, ...chainAudit(chain), agreed_price: agreedPriceAudit(agreedPrice), reconciled: true });
   }
   const cleanupScheduled = await scheduleConversationCleanup(client, requestId);
   const reward = await qualifyReferralReward(client, requestId, row.customer_id);
-  return { ok: true, requestId, status, idempotent: !won, cleanupScheduled, reward, settlementMethod: SETTLEMENT_METHOD, externalPaymentVerified: false, agreedPrice };
+  return { ok: true, requestId, status, idempotent: !won, cleanupScheduled, reward, settlementMethod: chain ? "STAGING_DEVNET_USDC" : SETTLEMENT_METHOD, externalPaymentVerified: !!chain, agreedPrice };
 }
 
 /** SETTLED → CLOSED, allowed only once no conversation of the request still holds content. */

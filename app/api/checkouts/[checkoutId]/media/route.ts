@@ -6,7 +6,7 @@ import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 /**
  * POST /api/checkouts/{checkoutId}/media (raw body, Content-Type = the file type): the owner attaches
  * a photo / video to an OPEN checkout. Stored only in the private bucket under a server-generated key;
- * registered in request_media (max 10 per request, 100 MB each, images / videos only).
+ * registered in request_media (max 10 per request, 50 MB each, images / videos only).
  */
 export async function POST(request: Request, context: { params: Promise<{ checkoutId: string }> }) {
   const { checkoutId } = await context.params;

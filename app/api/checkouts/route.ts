@@ -4,6 +4,7 @@ import { resolveCustomerOwner } from "@/lib/request/customerOwner";
 import { formatCustomerDisplayName } from "@/lib/id/customerDisplayName";
 import { readOfferToken } from "@/lib/pricing/offerToken";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { isStagingTestOperator } from "@/lib/request/prepaidGate";
 
 function respond(status: number, body: Record<string, unknown>) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
@@ -41,6 +42,8 @@ export async function POST(request: Request) {
   const owner = await resolveCustomerOwner(client);
   if (!owner.ok) return respond(owner.status, { success: false, code: owner.code });
   const customerId = owner.owner.customerId;
+  // Staging harness only (operator token on the staging project): purgeable test fixture.
+  const testFixture = await isStagingTestOperator(request);
 
   if (body.mode === "HELPER_PRICE_SELECTED") {
     const offer = await readOfferToken(body.offer_token);
@@ -52,7 +55,7 @@ export async function POST(request: Request) {
     const { data, error } = await client.rpc("create_helper_price_checkout", {
       p_customer_id: customerId, p_customer_display_name: formatCustomerDisplayName(customerId, input.customer_locale), p_customer_locale: input.customer_locale,
       p_country: input.country, p_sido: input.sido, p_gungu: input.gungu, p_dong: input.dong, p_address: input.address, p_description: input.description,
-      p_selected_options: input.selected_options, p_price_id: offer.claims.priceId, p_price_revision: offer.claims.revision, p_test_fixture: false,
+      p_selected_options: input.selected_options, p_price_id: offer.claims.priceId, p_price_revision: offer.claims.revision, p_test_fixture: testFixture,
     });
     if (error || !data) return respond(502, { success: false, code: "CHECKOUT_FAILED" });
     if (!data.success) return respond(CONFLICT.has(String(data.code)) ? 409 : 400, { success: false, code: String(data.code) });
@@ -70,7 +73,7 @@ export async function POST(request: Request) {
       p_customer_id: customerId, p_customer_display_name: formatCustomerDisplayName(customerId, input.customer_locale), p_customer_locale: input.customer_locale,
       p_country: input.country, p_sido: input.sido, p_gungu: input.gungu, p_dong: input.dong, p_address: input.address, p_description: input.description,
       p_selected_options: input.selected_options, p_service_code: input.service_slug, p_subitem_code: typeof body.subitem_code === "string" ? body.subitem_code : "",
-      p_offer: offer, p_test_fixture: false,
+      p_offer: offer, p_test_fixture: testFixture,
     });
     if (error || !data) return respond(502, { success: false, code: "CHECKOUT_FAILED" });
     if (!data.success) return respond(400, { success: false, code: String(data.code), reason: data.reason ?? null });

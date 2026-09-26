@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { PushToggle } from "@/components/push/PushToggle";
+import { ProtectedMediaList } from "@/components/media/ProtectedMediaList";
 
 type Assignment = {
   assignmentId: string;
@@ -102,6 +103,7 @@ export function DbAssignmentPanel({ formatBilingual }: { formatBilingual: (en: s
             <p className="mt-1 text-xs font-bold text-slate-700">{assignment.sido} {assignment.gungu} · {new Date(assignment.createdAt).toLocaleString()}</p>
             <p className="mt-2 whitespace-pre-line break-words text-sm font-medium text-slate-800">{assignment.description}</p>
             {assignment.selectedOptions.length > 0 && <p className="mt-2 text-xs font-semibold text-slate-600">{assignment.selectedOptions.join(" · ")}</p>}
+            {["PENDING", "NOTIFIED", "ACCEPTED"].includes(assignment.assignmentStatus) && <ProtectedMediaList requestId={assignment.requestId} audience="helper" />}
             {(assignment.assignmentStatus === "PENDING" || assignment.assignmentStatus === "NOTIFIED") && (
               <div className="mt-3 flex gap-2">
                 <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "accept")} className="droplet-btn bg-emerald-600 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Accept", "수락")}</button>
@@ -112,7 +114,7 @@ export function DbAssignmentPanel({ formatBilingual }: { formatBilingual: (en: s
               <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "start")} className="mt-3 droplet-btn bg-blue-700 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Start service", "서비스 시작")}</button>
             )}
             {assignment.assignmentStatus === "ACCEPTED" && assignment.requestStatus === "IN_PROGRESS" && (
-              <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "complete")} className="mt-3 droplet-btn bg-emerald-700 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Mark completed", "서비스 완료")}</button>
+              <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "complete")} className="mt-3 droplet-btn bg-emerald-700 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Mark work completed", "작업 완료")}</button>
             )}
           </article>
         ))}

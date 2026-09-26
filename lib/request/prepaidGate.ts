@@ -18,3 +18,12 @@ export async function refuseUnlessLegacyTestCompat(request: Request): Promise<Ne
     { status: 402, headers: { "Cache-Control": "no-store" } },
   );
 }
+
+/**
+ * True only for the platform operator on the STAGING project (test harness). Used to mark live test
+ * checkouts as test fixtures so purge_payment_fixture() can remove them; never true for a customer.
+ */
+export async function isStagingTestOperator(request: Request): Promise<boolean> {
+  const actor = await authorizePlatformOperator(request);
+  return !!actor && !!(await createStagingSettlementClient());
+}

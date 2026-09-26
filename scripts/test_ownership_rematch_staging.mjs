@@ -53,7 +53,7 @@ try {
   // ================= 1. spoofed customer_id =================
   const anon = await fx.createRequest(null, { claimedCustomerId: A.publicId });
   const publicIdAuth = await fetch(`${base}/api/requests?ref=${A.publicId}`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": crypto.randomUUID(), Authorization: `Bearer ${A.publicId}` }, body: JSON.stringify(fx.requestPayload(A.publicId)) });
-  expect("No device cookie: request creation blocked (public ID / ?ref= are not credentials)", anon.status === 401 && anon.body.code === "DEVICE_OWNER_REQUIRED" && publicIdAuth.status === 401, [anon.status, publicIdAuth.status]);
+  expect("No device cookie: request creation blocked (public ID / ?ref= are not credentials)", anon.status === 401 && anon.body.code === "DEVICE_OWNER_REQUIRED" && [401, 402].includes(publicIdAuth.status) && !(await readResponse(publicIdAuth))?.requestId, [anon.status, publicIdAuth.status]);
   const spoof = await fx.createRequest(B, { claimedCustomerId: A.publicId, label: "spoof" });
   const spoofRow = spoof.body.requestId ? (await db(`service_requests?id=eq.${spoof.body.requestId}&select=customer_id`))[0] : null;
   expect("B sending A's customer_id: request stored under B, never A", spoof.status === 201 && spoofRow?.customer_id === B.publicId && spoofRow.customer_id !== A.publicId, { status: spoof.status, spoofRow });
@@ -94,10 +94,12 @@ try {
     const identitiesForDevice = await db(`referral_identities?device_id_hash=eq.${hash}&select=id`);
     const sameDevice = await visitor.evaluate("localStorage.getItem('life_help_referral_device_id')");
     expect("Home and request page share one device identity", identitiesForDevice.length === 1 && sameDevice === deviceId, { identities: identitiesForDevice.length });
-    const created = await visitor.evaluate(`(async () => { const key = crypto.randomUUID(); const r = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key }, body: ${JSON.stringify(JSON.stringify(fx.requestPayload(A.publicId, "en", "referral request")))} }); const body = await r.json(); const c = await (await fetch('/api/requests/capability', { method: 'POST', headers: { 'Idempotency-Key': key } })).json(); return { key, status: r.status, body, capability: c.capability }; })()`);
+    const created = await visitor.evaluate(`(async () => { const key = crypto.randomUUID(); const unpaid = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': crypto.randomUUID() }, body: ${JSON.stringify(JSON.stringify(fx.requestPayload(A.publicId, "en", "referral request")))} }); const unpaidBody = await unpaid.json(); const r = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key, Authorization: 'Bearer ' + ${JSON.stringify(settlementToken)} }, body: ${JSON.stringify(JSON.stringify(fx.requestPayload(A.publicId, "en", "referral request")))} }); const body = await r.json(); const c = await (await fetch('/api/requests/capability', { method: 'POST', headers: { 'Idempotency-Key': key } })).json(); return { key, unpaid: [unpaid.status, unpaidBody.code, !!unpaidBody.requestId], status: r.status, body, capability: c.capability }; })()`);
     if (created?.body?.requestId) fx.created.requestIds.add(created.body.requestId);
     const refRow = created?.body?.requestId ? (await db(`service_requests?id=eq.${created.body.requestId}&select=customer_id`))[0] : null;
-    expect("Visitor's request belongs to the visitor, not referrer A (even when claiming A)", created?.status === 201 && refRow?.customer_id === V?.referral_id && refRow.customer_id !== A.publicId, { created, refRow });
+    expect("Visitor: unpaid public creation from the real browser is refused (402 PREPAYMENT_REQUIRED, nothing created)", created?.unpaid?.[0] === 402 && created.unpaid[1] === "PREPAYMENT_REQUIRED" && created.unpaid[2] === false, created?.unpaid);
+    // Prepaid browser creation needs a verified devnet payment (funding unavailable): legacy operator path, same browser cookie.
+    expect("Visitor's request belongs to the visitor, not referrer A (even when claiming A; operator legacy path)", created?.status === 201 && refRow?.customer_id === V?.referral_id && refRow.customer_id !== A.publicId, { created, refRow });
     expect("Visitor's conversation capability bound to the visitor", capabilityOwner(created?.capability) === V?.referral_id, capabilityOwner(created?.capability));
     const capForA = await fx.capabilityFor(A.cookie, created?.key);
     expect("Referrer A cannot obtain the visitor's capability", !capForA.capability, capForA);

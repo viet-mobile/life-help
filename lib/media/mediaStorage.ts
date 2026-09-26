@@ -16,7 +16,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
  */
 
 export const ALLOWED_MEDIA_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "video/mp4", "video/quicktime", "video/webm"] as const;
-export const MAX_MEDIA_BYTES = 100 * 1024 * 1024;
+export const MAX_MEDIA_BYTES = 50 * 1024 * 1024; // storage bucket limit (database allows up to 100 MB)
 
 async function bucketName(): Promise<string | null> {
   try {
@@ -54,7 +54,9 @@ export async function runMediaDeletion(client: SupabaseClient, limit = 50): Prom
   let deleted = 0, failed = 0;
   for (const item of pending) {
     const { error } = await client.storage.from(bucket).remove([item.object_key]);
-    if (error) { failed += 1; continue; }
+    // Verify the object is really gone before recording DELETED (a failed delete stays queued).
+    const still = error ? null : await client.storage.from(bucket).download(item.object_key);
+    if (error || still?.data) { failed += 1; continue; }
     const { data: marked } = await client.rpc("mark_request_media_deleted", { p_media_id: item.media_id });
     if (marked?.success) deleted += 1; else failed += 1;
   }

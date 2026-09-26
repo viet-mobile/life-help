@@ -100,12 +100,3 @@ export async function devnetTransactionFetcher(env?: Record<string, string | und
   if (!rail) return null;
   return (signature: string) => fetchDevnetTransaction(rail.rpcUrl, signature);
 }
-
-/**
- * Payout dispatch right after the customer's "service complete". The obligation (instruction) is
- * already committed by confirm_service_completion. No signer / payout provider is configured in
- * this phase, so the obligation stays CREATED and nothing claims the Helper was paid.
- */
-export async function dispatchHelperPayout(_client: SupabaseClient, obligationId: string): Promise<{ obligationId: string; submitted: false; reason: "PAYOUT_RAIL_NOT_CONFIGURED" }> {
-  return { obligationId, submitted: false, reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
-}

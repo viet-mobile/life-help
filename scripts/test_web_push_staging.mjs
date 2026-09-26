@@ -146,9 +146,11 @@ try {
 
     // The browser's own request, created with its HttpOnly owner cookie (never readable by Node).
     const payload = JSON.stringify(fx.requestPayload(browserIdentity?.referral_id, "en", "browser request"));
-    const reqB = await browser.evaluate(`(async () => { const key = crypto.randomUUID(); const r = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key }, body: ${JSON.stringify(payload)} }); const body = await r.json(); const c = await (await fetch('/api/requests/capability', { method: 'POST', headers: { 'Idempotency-Key': key } })).json(); return { status: r.status, body, capability: c.capability }; })()`);
+    const reqB = await browser.evaluate(`(async () => { const key = crypto.randomUUID(); const unpaid = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': crypto.randomUUID() }, body: ${JSON.stringify(payload)} }); const unpaidBody = await unpaid.json(); const r = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key, Authorization: 'Bearer ' + ${JSON.stringify(settlementToken)} }, body: ${JSON.stringify(payload)} }); const body = await r.json(); const c = await (await fetch('/api/requests/capability', { method: 'POST', headers: { 'Idempotency-Key': key } })).json(); return { unpaid: [unpaid.status, unpaidBody.code, !!unpaidBody.requestId], status: r.status, body, capability: c.capability }; })()`);
     if (reqB?.body?.requestId) fx.created.requestIds.add(reqB.body.requestId);
-    expect("Browser: request created with the browser's own device cookie", reqB?.status === 201 && reqB.body.status === "MATCHED" && reqB.capability, reqB);
+    expect("Browser: unpaid public creation from the real browser is refused (402 PREPAYMENT_REQUIRED, nothing created)", reqB?.unpaid?.[0] === 402 && reqB.unpaid[1] === "PREPAYMENT_REQUIRED" && reqB.unpaid[2] === false, reqB?.unpaid);
+    // Prepaid browser creation needs a verified devnet payment (funding unavailable): legacy operator path, same browser cookie.
+    expect("Browser: request created with the browser's own device cookie (operator legacy path)", reqB?.status === 201 && reqB.body.status === "MATCHED" && reqB.capability, reqB);
     await browser.navigate(`${base}/chat?requestId=${reqB.body.requestId}&capability=${encodeURIComponent(reqB.capability)}`);
     const buttonShown = await waitFor(() => browser.evaluate("!!document.querySelector('[data-testid=\"push-customer-enable\"]')"), 20000, 500);
     const beforeClick = await browser.evaluate("({ calls: window.__permissionCalls.length, permission: Notification.permission })");

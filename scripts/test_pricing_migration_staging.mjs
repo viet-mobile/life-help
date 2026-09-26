@@ -175,16 +175,17 @@ try {
   expect("C12. stale revision -> PRICE_CHANGED, nothing written", stale?.code === "PRICE_CHANGED" && stale.current_revision === edited.revision && (await db(`service_requests?id=eq.${reqId}&select=id`)).length === 0, stale);
   const made = await create(fixedId, edited.revision);
   const req = (await db(`service_requests?id=eq.${reqId}&select=status,selection_mode,customer_id`))[0];
-  const snap = (await db(`request_price_snapshots?request_id=eq.${reqId}&select=*`))[0];
+  // Migration 013 froze request_price_snapshots (legacy v1 record); the price authority is request_price_selections.
+  const snap = (await db(`request_price_selections?request_id=eq.${reqId}&selection_version=eq.1&select=*`))[0];
   const asg = await db(`request_assignments?request_id=eq.${reqId}&select=id,helper_id,status`);
-  expect("C13. selected request: MATCHED / CUSTOMER_SELECTED + PENDING assignment to H1 + snapshot of revision", made?.success && req?.status === "MATCHED" && req.selection_mode === "CUSTOMER_SELECTED" && asg.length === 1 && asg[0].helper_id === h1.helper.id && snap?.helper_id === h1.helper.id && Number(snap.base_price) === 60000 && Number(snap.initial_payable_amount) === 60000 && snap.source_price_revision === edited.revision && Number(snap.emergency_multiplier) === 1.4, { made, req, snap });
-  const snapPatch = await rest(`request_price_snapshots?request_id=eq.${reqId}`, as(serviceKey), "PATCH", { base_price: 1 });
-  const snapDelete = await rest(`request_price_snapshots?request_id=eq.${reqId}`, as(serviceKey), "DELETE");
-  const snapAfter = (await db(`request_price_snapshots?request_id=eq.${reqId}&select=base_price`))[0];
-  expect("C14. snapshot UPDATE / DELETE denied even for service_role; value unchanged", denied(snapPatch) && denied(snapDelete) && Number(snapAfter?.base_price) === 60000, { patch: [snapPatch.status, snapPatch.body?.code], del: [snapDelete.status, snapDelete.body?.code] });
+  expect("C13. selected request: MATCHED / CUSTOMER_SELECTED + PENDING assignment to H1 + price selection v1 of revision", made?.success && req?.status === "MATCHED" && req.selection_mode === "CUSTOMER_SELECTED" && asg.length === 1 && asg[0].helper_id === h1.helper.id && snap?.helper_id === h1.helper.id && Number(snap.base_price) === 60000 && Number(snap.initial_payable_amount) === 60000 && snap.source_price_revision === edited.revision && Number(snap.emergency_multiplier) === 1.4, { made, req, snap });
+  const snapPatch = await rest(`request_price_selections?request_id=eq.${reqId}`, as(serviceKey), "PATCH", { base_price: 1 });
+  const snapDelete = await rest(`request_price_selections?request_id=eq.${reqId}`, as(serviceKey), "DELETE");
+  const snapAfter = (await db(`request_price_selections?request_id=eq.${reqId}&select=base_price`))[0];
+  expect("C14. selected price UPDATE / DELETE denied even for service_role; value unchanged", denied(snapPatch) && denied(snapDelete) && Number(snapAfter?.base_price) === 60000, { patch: [snapPatch.status, snapPatch.body?.code], del: [snapDelete.status, snapDelete.body?.code] });
   await upsert(h1.helper.id, "clog-clearing", "toilet-simple", { pricing_mode: "FIXED", currency: "KRW", base_price: 80000, materials_policy: "INCLUDED" }, true);
-  const snapLater = (await db(`request_price_snapshots?request_id=eq.${reqId}&select=base_price,initial_payable_amount`))[0];
-  expect("C15. later price change (60,000 -> 80,000) does not touch the snapshot", Number(snapLater.base_price) === 60000 && Number(snapLater.initial_payable_amount) === 60000 && Number((await priceRow(fixedId)).base_price) === 80000, snapLater);
+  const snapLater = (await db(`request_price_selections?request_id=eq.${reqId}&selection_version=eq.1&select=base_price,initial_payable_amount`))[0];
+  expect("C15. later price change (60,000 -> 80,000) does not touch the accepted price selection", Number(snapLater.base_price) === 60000 && Number(snapLater.initial_payable_amount) === 60000 && Number((await priceRow(fixedId)).base_price) === 80000, snapLater);
   let lock = null;
   try { await db("request_assignments", "POST", { request_id: reqId, helper_id: h2.helper.id, status: "DECLINED" }); } catch (error) { lock = String(error.message); }
   expect("C16. assigning a different Helper to a CUSTOMER_SELECTED request is blocked (CUSTOMER_SELECTED_HELPER_LOCKED)", !!lock && (await db(`request_assignments?request_id=eq.${reqId}&helper_id=eq.${h2.helper.id}&select=id`)).length === 0, lock);

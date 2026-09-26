@@ -5,6 +5,7 @@ import { getCustomerDeviceId, getReferralParam } from "@/lib/referral/clientDevi
 import { PriceOfferPicker } from "@/components/request/PriceOfferPicker";
 import { ReselectionPanel } from "@/components/request/ReselectionPanel";
 import { CheckoutPanel } from "@/components/request/CheckoutPanel";
+import { ProtectedMediaList } from "@/components/media/ProtectedMediaList";
 import { CustomerOfferForm, type CustomerOfferInput } from "@/components/request/CustomerOfferForm";
 import { formatMoney } from "@/lib/pricing/pricingTerms";
 import { Suspense, useEffect, useMemo, useState } from "react";
@@ -527,6 +528,7 @@ function RequestPageContent() {
                   : t("payment.held")}
               </p>
             )}
+            {submitResult.status === "MATCHED" && <ProtectedMediaList requestId={submitResult.requestId} audience="customer" />}
             {completionRequired && ownerAction === null && (
               <div data-testid="completion-confirm" className="mt-4 droplet-card border-2 border-emerald-500 bg-emerald-50 p-4 text-left">
                 <p className="text-sm font-black text-emerald-950">{t("payment.confirmServiceComplete")}</p>

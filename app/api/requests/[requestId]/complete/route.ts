@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { resolveCustomerOwner } from "@/lib/request/customerOwner";
-import { dispatchHelperPayout } from "@/lib/payments/paymentRail";
+import { dispatchHelperPayout } from "@/lib/payments/transfers";
 import { dispatchPushInBackground, pushHelpers } from "@/lib/push/pushDelivery";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 
@@ -29,14 +29,16 @@ export async function POST(_request: Request, context: { params: Promise<{ reque
     const code = String(data.code);
     return NextResponse.json({ success: false, code }, { status: code === "REQUEST_NOT_FOUND" ? 404 : CONFLICT.has(code) ? 409 : 400 });
   }
-  let payout: Awaited<ReturnType<typeof dispatchHelperPayout>> | null = null;
   if (!data.replayed && data.payout_obligation_id) {
-    payout = await dispatchHelperPayout(client, String(data.payout_obligation_id));
-    const { data: obligation } = await client.from("payout_obligations").select("helper_id").eq("id", data.payout_obligation_id).maybeSingle();
+    // Payout instruction is committed; submission runs in the background (claimed exactly once).
+    // It is reported as paid only after the chain transfer is finalized (reconciliation).
+    const obligationId = String(data.payout_obligation_id);
+    await dispatchPushInBackground(() => dispatchHelperPayout(client, obligationId));
+    const { data: obligation } = await client.from("payout_obligations").select("helper_id").eq("id", obligationId).maybeSingle();
     if (obligation?.helper_id) await dispatchPushInBackground(() => pushHelpers(client, [obligation.helper_id as string], "PAYOUT_UPDATE"));
   }
   return NextResponse.json({
     success: true, replayed: data.replayed === true, requestId, paymentStatus: data.payment_status, requestStatus: data.request_status,
-    payoutObligationId: data.payout_obligation_id ?? null, payoutSubmitted: payout?.submitted ?? false,
+    payoutObligationId: data.payout_obligation_id ?? null,
   }, { headers: { "Cache-Control": "no-store" } });
 }

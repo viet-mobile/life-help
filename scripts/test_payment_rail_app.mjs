@@ -99,8 +99,10 @@ const args = calls[0]?.[1] ?? {};
 check("Verification passes the CHAIN's observation (not the browser's claim) to record_payment_observation", verified.ok && calls[0]?.[0] === "record_payment_observation" && args.p_amount_base_units === "42857143" && args.p_mint === MINT && args.p_recipient === RECIPIENT && args.p_reference_matched === true && args.p_confirmation === "finalized" && args.p_signature === sig && args.p_network === "solana-devnet", JSON.stringify(args));
 check("Malformed signature refused before any chain / database call", (await rail.verifyPaymentSignature(client, intent, "not-a-signature", async () => { throw new Error("must not be called"); })).code === "INVALID_SIGNATURE" && calls.length === 1);
 check("Unknown transaction -> TRANSACTION_NOT_FOUND, nothing recorded", (await rail.verifyPaymentSignature(client, intent, sig, async () => null)).code === "TRANSACTION_NOT_FOUND" && calls.length === 1);
-const payout = await rail.dispatchHelperPayout(client, "ob-1");
-check("Payout dispatch: no signer configured -> instruction stays pending, never reported paid", payout.submitted === false && payout.reason === "PAYOUT_RAIL_NOT_CONFIGURED" && calls.length === 1);
+const transfers = await import(new URL("lib/payments/transfers.ts", root).href);
+globalThis.__env = {};
+const payout = await transfers.dispatchHelperPayout(client, "ob-1");
+check("Payout dispatch: no staging signer -> instruction stays pending, never reported paid", payout.status === "NOT_SUBMITTED" && payout.reason === "PAYOUT_RAIL_NOT_CONFIGURED" && calls.length === 1);
 
 // ---------------- source-level authority ----------------
 const src = (f) => code(f);
@@ -132,6 +134,7 @@ const settlement = src("lib/settlement/serviceSettlement.ts");
 check("Operator cannot shortcut a prepaid request: PAYMENT_PENDING needs the customer's confirmation; SETTLED needs a confirmed payout", settlement.includes('code: "CUSTOMER_CONFIRMATION_REQUIRED"') && settlement.includes('code: "PAYOUT_NOT_CONFIRMED"'));
 const complete = src("app/api/helper/assignments/[assignmentId]/complete/route.ts");
 check("Helper completion never releases money; it only asks the customer to confirm (generic push)", complete.includes('pushCustomerStatus(client, data.request_id, "COMPLETION_CONFIRMATION_REQUESTED")') && !/confirm_service_completion|payout/i.test(complete));
+check("Helper's completion button never reads the customer's release words '서비스 완료' (it is '작업 완료')", !read("components/tech/DbAssignmentPanel.tsx").includes("서비스 완료") && read("components/tech/DbAssignmentPanel.tsx").includes("작업 완료"));
 check("Decline of an accepted customer offer re-opens it (no rematch)", src("app/api/helper/assignments/[assignmentId]/decline/route.ts").indexOf("customer_offer_reopened") < src("app/api/helper/assignments/[assignmentId]/decline/route.ts").indexOf('rpc("match_and_assign_helper"'));
 
 // ---------------- push payloads ----------------
