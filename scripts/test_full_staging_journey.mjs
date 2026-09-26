@@ -9,6 +9,7 @@ for (const line of fs.readFileSync(".env.staging.local", "utf8").split(/\r?\n/))
 
 const supabaseUrl = env.TEST_SUPABASE_URL?.replace(/\/$/, "");
 const serviceKey = env.TEST_SUPABASE_SERVICE_ROLE_KEY;
+const settlementToken = env.TEST_LIFE_HELP_SETTLEMENT_TOKEN;
 const stagingRef = (supabaseUrl?.match(/https?:\/\/([^.]+)\.supabase/) || [])[1];
 const productionRef = "wstdbymmkrqgtsibhcjz";
 const expectedRef = "wreebowcbiymodswajwe";
@@ -116,6 +117,8 @@ async function createRequest(customerId, idempotencyKey = crypto.randomUUID()) {
 
 async function cleanup() {
   for (const requestId of requestIds) {
+    await db(`referral_rewards?qualifying_request_id=eq.${requestId}`, "DELETE").catch(() => {});
+    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`messages?conversation_id=in.(${requestId})`, "DELETE").catch(() => {});
     await db(`app_notifications?payload->>request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`request_assignments?request_id=eq.${requestId}`, "DELETE").catch(() => {});
@@ -204,16 +207,81 @@ try {
   if (wrongCapability.status === 403) pass("Wrong customer capability rejection"); else fail("Wrong customer capability rejection", wrongCapability.status);
   if (!(await (await fetch(`${base}/api/helper/assignments`)).status === 401)) fail("Anonymous helper assignments", "not 401"); else pass("Anonymous helper assignments");
 
-  // D/E/F/G lifecycle/admin/rewards require authenticated sys session; do not weaken auth.
-  notTested("IN_PROGRESS", "Automated SYS HMAC login credentials are not available in staging env");
-  notTested("COMPLETED", "Automated SYS HMAC login credentials are not available in staging env");
-  notTested("PAYMENT_PENDING", "Automated SYS HMAC login credentials are not available in staging env");
-  notTested("SETTLED", "Automated SYS HMAC login credentials are not available in staging env");
-  notTested("Conversation deletion", "SETTLED transition not executed without SYS session");
-  notTested("Reward qualification", "SETTLED transition not executed without SYS session");
-  notTested("WLH/CLH/GLH", "Settlement fixtures require SYS lifecycle execution");
-  notTested("Admin UI visibility", "Automated SYS HMAC login credentials are not available in staging env");
-  notTested("Notifications", "Lifecycle/reward events not executed in this run");
+  // D. Settlement lifecycle: COMPLETED → PAYMENT_PENDING → SETTLED → cleanup → CLOSED (platform authority only)
+  const requestId = request.body.requestId;
+  const conversationId = customerReadBody.conversation?.id;
+  const sysStatus = (status, headers = {}) => fetch(`${base}/api/sys/requests/${requestId}/status`, { method: "POST", headers: { "Content-Type": "application/json", ...headers }, body: JSON.stringify({ status }) });
+  const statusOf = async () => (await db(`service_requests?id=eq.${requestId}&select=status`))[0]?.status;
+  const rewardsOf = () => db(`referral_rewards?qualifying_request_id=eq.${requestId}&select=id,state,tier,referrer_identity_id,reward_amount_krw`);
+  const auditsOf = (action) => db(`admin_audit_logs?entity_id=eq.${requestId}&action=eq.${action}&select=id,metadata`);
+  if (!settlementToken) throw new Error("TEST_LIFE_HELP_SETTLEMENT_TOKEN is required for settlement E2E");
+
+  const helperSettle = await sysStatus("SETTLED", { Authorization: `Bearer ${helperA.accessToken}` });
+  const helperPending = await sysStatus("PAYMENT_PENDING", { Authorization: `Bearer ${helperA.accessToken}` });
+  if (helperSettle.status === 401 && helperPending.status === 401 && (await statusOf()) === "COMPLETED") pass("Helper cannot settle"); else fail("Helper cannot settle", `${helperSettle.status}/${helperPending.status}`);
+  const customerSettle = await fetch(`${base}/api/sys/requests/${requestId}/status?capability=${encodeURIComponent(capability.capability)}`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${capability.capability}` }, body: JSON.stringify({ status: "SETTLED", capability: capability.capability }) });
+  if (customerSettle.status === 401 && (await statusOf()) === "COMPLETED") pass("Customer capability cannot settle"); else fail("Customer capability cannot settle", customerSettle.status);
+  const publicIdSettle = await sysStatus("SETTLED", { Authorization: `Bearer ${referred.body.referralId}` });
+  if (publicIdSettle.status === 401) pass("Public LIFE.HELP ID cannot settle"); else fail("Public LIFE.HELP ID cannot settle", publicIdSettle.status);
+  const wrongToken = await sysStatus("SETTLED", { Authorization: `Bearer ${settlementToken.slice(0, -2)}xx` });
+  const forgedCookie = await sysStatus("SETTLED", { Cookie: `life_help_sys_session=${encodeURIComponent(`admin|${Date.now() + 60000}|${"0".repeat(64)}`)}` });
+  if (wrongToken.status === 401 && forgedCookie.status === 401 && (await statusOf()) === "COMPLETED") pass("Wrong platform authority cannot settle"); else fail("Wrong platform authority cannot settle", `${wrongToken.status}/${forgedCookie.status}`);
+
+  const platform = { Authorization: `Bearer ${settlementToken}` };
+  const skipAhead = await sysStatus("SETTLED", platform);
+  if (skipAhead.status === 409 && (await statusOf()) === "COMPLETED" && (await rewardsOf()).length === 0) pass("COMPLETED cannot jump to SETTLED"); else fail("COMPLETED cannot jump to SETTLED", skipAhead.status);
+
+  const pendingResponse = await sysStatus("PAYMENT_PENDING", platform);
+  const pendingBody = await readResponse(pendingResponse);
+  if (pendingResponse.status === 200 && pendingBody.status === "PAYMENT_PENDING" && (await statusOf()) === "PAYMENT_PENDING") pass("COMPLETED → PAYMENT_PENDING"); else fail("COMPLETED → PAYMENT_PENDING", JSON.stringify({ status: pendingResponse.status, body: pendingBody }));
+  const pendingAgain = await readResponse(await sysStatus("PAYMENT_PENDING", platform));
+  if (pendingAgain.idempotent === true) pass("Duplicate PAYMENT_PENDING idempotency"); else fail("Duplicate PAYMENT_PENDING idempotency", JSON.stringify(pendingAgain));
+  const customerPending = await readResponse(await fetch(`${base}/api/requests/status?requestId=${requestId}&capability=${encodeURIComponent(capability.capability)}`));
+  if (customerPending.status === "PAYMENT_PENDING") pass("Customer sees PAYMENT_PENDING"); else fail("Customer sees PAYMENT_PENDING", JSON.stringify(customerPending));
+  const pendingAudit = await auditsOf("SERVICE_PAYMENT_PENDING");
+  if ((await rewardsOf()).length === 0 && (await db(`messages?conversation_id=eq.${conversationId}&select=id`)).length === 2 && pendingAudit[0]?.metadata?.external_payment_verified === false) pass("PAYMENT_PENDING has no reward/cleanup/fake payment"); else fail("PAYMENT_PENDING has no reward/cleanup/fake payment", JSON.stringify(pendingAudit));
+
+  const settleResponse = await sysStatus("SETTLED", platform);
+  const settleBody = await readResponse(settleResponse);
+  if (settleResponse.status === 200 && settleBody.idempotent === false && settleBody.externalPaymentVerified === false && settleBody.settlementMethod === "INTERNAL_PLATFORM_CONFIRMATION") pass("PAYMENT_PENDING → SETTLED"); else fail("PAYMENT_PENDING → SETTLED", JSON.stringify({ status: settleResponse.status, body: settleBody }));
+  const settledAudit = await auditsOf("SERVICE_SETTLED");
+  if (settledAudit.length === 1 && settledAudit[0].metadata?.external_payment_transaction_id === null && settledAudit[0].metadata?.external_payment_verified === false) pass("Settlement audit truthful (no PSP id)"); else fail("Settlement audit truthful (no PSP id)", JSON.stringify(settledAudit));
+  if (settleBody.cleanupScheduled === 1) pass("SETTLED schedules cleanup"); else fail("SETTLED schedules cleanup", JSON.stringify(settleBody));
+  const conversationRows = await db(`conversations?id=eq.${conversationId}&select=id,status,deletion_scheduled_at`);
+  const remainingMessages = await db(`messages?conversation_id=eq.${conversationId}&select=id`);
+  if (settleBody.cleanup?.processed === 1 && settleBody.cleanup?.messagesDeleted === 2 && remainingMessages.length === 0 && conversationRows[0]?.status === "DELETED") pass("Conversation cleanup executed"); else fail("Conversation cleanup executed", JSON.stringify({ cleanup: settleBody.cleanup, remainingMessages: remainingMessages.length, conversationRows }));
+  if (settleBody.status === "CLOSED" && (await statusOf()) === "CLOSED") pass("SETTLED → CLOSED after cleanup"); else fail("SETTLED → CLOSED after cleanup", JSON.stringify({ body: settleBody.status, db: await statusOf() }));
+  const rewards = await rewardsOf();
+  const referrerIdentityId = refRows.find((row) => row.referral_id === referrer.body.referralId)?.id;
+  if (rewards.length === 1 && rewards[0].state === "QUALIFIED" && rewards[0].referrer_identity_id === referrerIdentityId && rewards[0].tier === "WLH" && rewards[0].reward_amount_krw === 1000) pass("Reward qualified at settlement boundary (WLH)"); else fail("Reward qualified at settlement boundary (WLH)", JSON.stringify(rewards));
+
+  const settleAgain = await sysStatus("SETTLED", platform);
+  const settleAgainBody = await readResponse(settleAgain);
+  if (settleAgain.status === 200 && settleAgainBody.idempotent === true && settleAgainBody.cleanupScheduled === 0 && (await rewardsOf()).length === 1 && (await auditsOf("SERVICE_SETTLED")).length === 1 && (await auditsOf("CONVERSATION_CONTENT_DELETED")).length === 1) pass("Duplicate SETTLED idempotency"); else fail("Duplicate SETTLED idempotency", JSON.stringify(settleAgainBody));
+  const closeAgain = await readResponse(await sysStatus("CLOSED", platform));
+  if (closeAgain.idempotent === true && closeAgain.status === "CLOSED") pass("Duplicate CLOSED idempotency"); else fail("Duplicate CLOSED idempotency", JSON.stringify(closeAgain));
+
+  const customerAfter = await readResponse(await fetch(`${base}/api/chat?requestId=${requestId}&capability=${encodeURIComponent(capability.capability)}`));
+  const customerPostAfter = await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId, capability: capability.capability, originalLanguage: "en", originalText: "after settlement" }) });
+  const helperPostAfter = await fetch(`${base}/api/chat`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}`, "Content-Type": "application/json" }, body: JSON.stringify({ requestId, originalLanguage: "ko", originalText: "after settlement" }) });
+  if (customerAfter.contentDeleted === true && customerAfter.messages?.length === 0 && customerPostAfter.status === 409 && helperPostAfter.status === 409 && (await db(`messages?conversation_id=eq.${conversationId}&select=id`)).length === 0) pass("Chat closed after settlement"); else fail("Chat closed after settlement", JSON.stringify({ customerAfter, customerPost: customerPostAfter.status, helperPost: helperPostAfter.status }));
+
+  const keptRequest = await db(`service_requests?id=eq.${requestId}&select=id`);
+  const keptAssignment = await db(`request_assignments?request_id=eq.${requestId}&select=id`);
+  const keptAudits = await db(`admin_audit_logs?entity_id=eq.${requestId}&select=action,metadata`);
+  if (keptRequest.length === 1 && keptAssignment.length >= 1 && conversationRows.length === 1 && (await rewardsOf()).length === 1 && ["SERVICE_PAYMENT_PENDING", "SERVICE_SETTLED", "CONVERSATION_CONTENT_DELETED", "SERVICE_CLOSED"].every((action) => keptAudits.some((row) => row.action === action)) && !JSON.stringify(keptAudits).includes("S3E2E")) pass("Legal/audit records preserved"); else fail("Legal/audit records preserved", JSON.stringify({ keptRequest, keptAssignment, keptAudits }));
+
+  const cleanupAnon = await fetch(`${base}/api/sys/cleanup/conversations`, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+  const cleanupRun = await fetch(`${base}/api/sys/cleanup/conversations`, { method: "POST", headers: { "Content-Type": "application/json", ...platform }, body: JSON.stringify({ requestId }) });
+  const cleanupRunBody = await readResponse(cleanupRun);
+  if (cleanupAnon.status === 401 && cleanupRun.status === 200 && cleanupRunBody.processed === 0) pass("Cleanup runner authorized + idempotent"); else fail("Cleanup runner authorized + idempotent", JSON.stringify({ anon: cleanupAnon.status, run: cleanupRun.status, cleanupRunBody }));
+
+  const notifications = await db(`app_notifications?payload->>request_id=eq.${requestId}&select=type,recipient_id,payload`);
+  if (["PAYMENT_PENDING", "SETTLED", "CLOSED"].every((status) => notifications.some((row) => row.type === "SERVICE_STATUS_CHANGED" && row.payload?.status === status)) && notifications.some((row) => row.type === "REFERRAL_REWARD_CONFIRMED" && row.recipient_id === "S3REF-A")) pass("Lifecycle notifications recorded (in-app only)"); else fail("Lifecycle notifications recorded (in-app only)", JSON.stringify(notifications));
+
+  notTested("CLH/GLH staging tiers", "Covered deterministically in test_settlement_lifecycle.mjs; staging run exercises WLH");
+  notTested("Admin UI visibility", "SYS admin secrets are not configured on the staging Worker");
+  notTested("Push delivery", "Push provider not connected; notifications are in-app records only");
 } catch (error) {
   fail("E2E harness", error);
 } finally {
