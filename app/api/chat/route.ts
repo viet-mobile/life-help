@@ -14,7 +14,7 @@ async function resolveConversation(request: Request, requestId: string, capabili
   let senderRole: "CUSTOMER" | "HELPER";
   let senderId: string;
   if (helper.ok) {
-    const { data: assignment } = await client.from("request_assignments").select("id").eq("request_id", requestId).eq("helper_id", helper.value.helper.id).in("status", ["PENDING", "NOTIFIED", "ACCEPTED"]).maybeSingle();
+    const { data: assignment } = await client.from("request_assignments").select("id").eq("request_id", requestId).eq("helper_id", helper.value.helper.id).in("status", ["PENDING", "NOTIFIED", "ACCEPTED", "COMPLETED"]).limit(1).maybeSingle();
     if (!assignment) return { error: fail(403, "HELPER_NOT_ASSIGNED") } as const;
     senderRole = "HELPER";
     senderId = helper.value.helper.id;

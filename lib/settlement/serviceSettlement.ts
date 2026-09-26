@@ -53,6 +53,16 @@ export async function applyOperationalTransition(client: SupabaseClient, request
   const from = target === "IN_PROGRESS" ? "ACCEPTED" : "IN_PROGRESS";
   const row = await loadRequest(client, requestId);
   if (!row) return { ok: false, httpStatus: 404, code: "REQUEST_NOT_FOUND" };
+  if (target === "COMPLETED") {
+    // Same atomic path as Helper COMPLETE: the request and its accepted assignment move together,
+    // so an admin override can never leave the helper occupied.
+    const { data: assignment } = await client.from("request_assignments").select("id, helper_id").eq("request_id", requestId).in("status", ["ACCEPTED", "COMPLETED"]).order("assigned_at", { ascending: false }).limit(1).maybeSingle();
+    if (!assignment) return { ok: false, httpStatus: 409, code: "NO_ACCEPTED_ASSIGNMENT", currentStatus: row.status };
+    const { data, error } = await client.rpc("complete_assignment_service", { p_assignment_id: assignment.id, p_helper_id: assignment.helper_id });
+    if (error || !data?.success) return { ok: false, httpStatus: 409, code: data?.code || "INVALID_TRANSITION", currentStatus: data?.request_status ?? row.status };
+    if (!data.idempotent) await notifyCustomer(client, row.customer_id, requestId, "COMPLETED");
+    return { ok: true, requestId, status: data.request_status, idempotent: data.idempotent === true };
+  }
   if (row.status === target) return { ok: true, requestId, status: target, idempotent: true };
   if (row.status !== from || !(await transition(client, requestId, from, target))) return { ok: false, httpStatus: 409, code: "INVALID_TRANSITION", currentStatus: row.status };
   await notifyCustomer(client, row.customer_id, requestId, target);

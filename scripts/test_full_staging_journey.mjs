@@ -186,6 +186,13 @@ try {
   const customerStatusBody = await readResponse(customerStatus);
   if (customerStatus.status === 200 && customerStatusBody.status === "IN_PROGRESS") pass("Customer live status authorization"); else fail("Customer live status authorization", JSON.stringify({ status: customerStatus.status, body: customerStatusBody }));
 
+  const wrongHelperComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${helperB.accessToken}` } });
+  const anonComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST" });
+  const customerComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${capability.capability}` } });
+  const publicIdComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${referred.body.referralId}` } });
+  const stillInProgress = (await db(`service_requests?id=eq.${request.body.requestId}&select=status`))[0]?.status === "IN_PROGRESS" && (await db(`request_assignments?id=eq.${assignmentId}&select=status`))[0]?.status === "ACCEPTED";
+  if (wrongHelperComplete.status === 404 && stillInProgress) pass("Wrong helper cannot complete"); else fail("Wrong helper cannot complete", wrongHelperComplete.status);
+  if (anonComplete.status === 401 && customerComplete.status === 401 && publicIdComplete.status === 401 && stillInProgress) pass("Anonymous/customer/public-ID cannot complete"); else fail("Anonymous/customer/public-ID cannot complete", `${anonComplete.status}/${customerComplete.status}/${publicIdComplete.status}`);
   const completeResponse = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}` } });
   const completeBody = await readResponse(completeResponse);
   const completedRows = await db(`service_requests?id=eq.${request.body.requestId}&select=status`);
@@ -194,6 +201,15 @@ try {
   const repeatedComplete = await fetch(`${base}/api/helper/assignments/${assignmentId}/complete`, { method: "POST", headers: { Authorization: `Bearer ${helperA.accessToken}` } });
   const repeatedCompleteBody = await readResponse(repeatedComplete);
   if (repeatedComplete.status === 200 && repeatedCompleteBody.idempotent === true) pass("Duplicate COMPLETE idempotency"); else fail("Duplicate COMPLETE idempotency", JSON.stringify({ status: repeatedComplete.status, body: repeatedCompleteBody }));
+  const assignmentAfterComplete = (await db(`request_assignments?id=eq.${assignmentId}&select=status,completed_at`))[0];
+  if (assignmentAfterComplete?.status === "COMPLETED" && assignmentAfterComplete.completed_at) pass("Assignment COMPLETED with service COMPLETED"); else fail("Assignment COMPLETED with service COMPLETED", JSON.stringify(assignmentAfterComplete));
+  // Helper A is released before any settlement. Two compatible requests race for A concurrently.
+  const [raceB, raceC] = await Promise.all([createRequest("RACEBBBB"), createRequest("RACECCCC")]);
+  const raceAssignments = await db(`request_assignments?request_id=in.(${raceB.body.requestId},${raceC.body.requestId})&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=request_id,helper_id`);
+  const helperAActive = await db(`request_assignments?helper_id=eq.${helperA.helper.id}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,request_id`);
+  if (raceAssignments.some((row) => row.helper_id === helperA.helper.id)) pass("Helper reusable before SETTLED (rematched)"); else fail("Helper reusable before SETTLED (rematched)", JSON.stringify({ raceAssignments, b: raceB.body.status, c: raceC.body.status }));
+  if (helperAActive.length === 1 && raceAssignments.filter((row) => row.helper_id === helperA.helper.id).length === 1 && new Set(raceAssignments.map((row) => row.helper_id)).size === raceAssignments.length) pass("Concurrent double assignment prevented"); else fail("Concurrent double assignment prevented", JSON.stringify({ helperAActive, raceAssignments }));
+  if ((await db(`service_requests?id=eq.${request.body.requestId}&select=status`))[0]?.status === "COMPLETED" && (await db(`referral_rewards?qualifying_request_id=eq.${request.body.requestId}&select=id`)).length === 0) pass("Helper release does not settle or reward"); else fail("Helper release does not settle or reward", "request moved or reward created");
 
   // C. Customer/helper chat
   const customerSend = await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId: request.body.requestId, capability: capability.capability, originalLanguage: "en", originalText: "S3E2E customer original" }) });
@@ -271,6 +287,8 @@ try {
   const keptAudits = await db(`admin_audit_logs?entity_id=eq.${requestId}&select=action,metadata`);
   if (keptRequest.length === 1 && keptAssignment.length >= 1 && conversationRows.length === 1 && (await rewardsOf()).length === 1 && ["SERVICE_PAYMENT_PENDING", "SERVICE_SETTLED", "CONVERSATION_CONTENT_DELETED", "SERVICE_CLOSED"].every((action) => keptAudits.some((row) => row.action === action)) && !JSON.stringify(keptAudits).includes("S3E2E")) pass("Legal/audit records preserved"); else fail("Legal/audit records preserved", JSON.stringify({ keptRequest, keptAssignment, keptAudits }));
 
+  const historicalAssignment = (await db(`request_assignments?id=eq.${assignmentId}&select=status`))[0];
+  if (historicalAssignment?.status === "COMPLETED") pass("Completed assignment retained after CLOSED"); else fail("Completed assignment retained after CLOSED", JSON.stringify(historicalAssignment));
   const cleanupAnon = await fetch(`${base}/api/sys/cleanup/conversations`, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
   const cleanupRun = await fetch(`${base}/api/sys/cleanup/conversations`, { method: "POST", headers: { "Content-Type": "application/json", ...platform }, body: JSON.stringify({ requestId }) });
   const cleanupRunBody = await readResponse(cleanupRun);

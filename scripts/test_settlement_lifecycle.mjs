@@ -174,6 +174,25 @@ function check(name, condition, detail = "") {
 }
 
 {
+  // Admin COMPLETED override must use the same atomic RPC as Helper COMPLETE (helper release).
+  const { tables: t, client } = seed({ status: "IN_PROGRESS" });
+  t.request_assignments[0].helper_id = "helper-H";
+  const calls = [];
+  client.rpc = async (name, args) => {
+    calls.push([name, args]);
+    t.service_requests[0].status = "COMPLETED";
+    t.request_assignments[0].status = "COMPLETED";
+    return { data: { success: true, idempotent: false, request_status: "COMPLETED", assignment_status: "COMPLETED" }, error: null };
+  };
+  const completed = await lib.applyOperationalTransition(client, "req-B1", "COMPLETED");
+  check("Admin COMPLETED goes through complete_assignment_service", completed.ok && calls.length === 1 && calls[0][0] === "complete_assignment_service" && calls[0][1].p_assignment_id === "asg-B1" && calls[0][1].p_helper_id === "helper-H");
+  check("Service COMPLETED qualifies no reward and schedules no cleanup", t.referral_rewards.length === 0 && t.conversations[0].status === "ACTIVE" && t.messages.some((m) => m.conversation_id === "conv-B1"));
+  const pending = await lib.markPaymentPending(client, "req-B1", "PLATFORM_TOKEN");
+  const settled = await lib.settleServiceRequest(client, "req-B1", "PLATFORM_TOKEN");
+  check("Settlement still works after helper release", pending.ok && settled.ok && t.referral_rewards.length === 1 && t.conversations[0].status === "DELETION_SCHEDULED" && t.request_assignments[0].status === "COMPLETED");
+}
+
+{
   const { client } = seed();
   const missing = await lib.settleServiceRequest(client, "req-missing", "PLATFORM_TOKEN");
   check("Unknown request rejected", !missing.ok && missing.httpStatus === 404);

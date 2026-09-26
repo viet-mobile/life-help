@@ -35,7 +35,8 @@ export type AssignmentStatus =
   | "ACCEPTED"
   | "DECLINED"
   | "TIMEOUT"
-  | "CANCELLED";
+  | "CANCELLED"
+  | "COMPLETED";
 
 export type ConversationType =
   | "CUSTOMER_HELPER"
@@ -65,7 +66,8 @@ export type EscalationStatus =
   | "PENDING"
   | "ASSIGNED"
   | "RESOLVED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | "COMPLETED";
 
 export type NotificationRecipientType =
   | "CUSTOMER"

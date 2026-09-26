@@ -5,21 +5,22 @@ function response(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
 
+// Request IN_PROGRESS -> COMPLETED and assignment ACCEPTED -> COMPLETED happen in one database
+// transaction (complete_assignment_service), which releases the helper for new matching.
+// Financial settlement, rewards and conversation cleanup are separate and are not triggered here.
 export async function POST(request: Request, context: { params: Promise<{ assignmentId: string }> }) {
   const resolved = await resolveAuthenticatedHelper(request);
   if (!resolved.ok) return response({ success: false, code: resolved.code }, resolved.status);
   const { assignmentId } = await context.params;
+  if (!/^[0-9a-f-]{36}$/i.test(assignmentId)) return response({ success: false, code: "ASSIGNMENT_NOT_FOUND" }, 404);
   const { helper, client } = resolved.value;
-  const { data: assignment, error } = await client.from("request_assignments").select("id, request_id, helper_id, status").eq("id", assignmentId).eq("helper_id", helper.id).maybeSingle();
-  if (error || !assignment) return response({ success: false, code: "ASSIGNMENT_NOT_FOUND" }, 404);
-  const { data: requestRow, error: requestError } = await client.from("service_requests").select("id, status").eq("id", assignment.request_id).maybeSingle();
-  if (requestError || !requestRow) return response({ success: false, code: "REQUEST_NOT_FOUND" }, 404);
-  if (assignment.status !== "ACCEPTED") return response({ success: false, code: "ASSIGNMENT_NOT_ACCEPTED" }, 409);
-  if (requestRow.status === "COMPLETED") return response({ success: true, idempotent: true, requestId: requestRow.id, status: "COMPLETED" });
-  if (requestRow.status !== "IN_PROGRESS") return response({ success: false, code: "REQUEST_NOT_COMPLETABLE", currentStatus: requestRow.status }, 409);
-  const now = new Date().toISOString();
-  const { data: updated, error: updateError } = await client.from("service_requests").update({ status: "COMPLETED", updated_at: now }).eq("id", requestRow.id).eq("status", "IN_PROGRESS").select("id, status").maybeSingle();
-  if (updateError || !updated) return response({ success: false, code: "COMPLETE_CONFLICT" }, 409);
-  await client.from("request_assignments").update({ completed_at: now }).eq("id", assignment.id).eq("status", "ACCEPTED");
-  return response({ success: true, idempotent: false, requestId: updated.id, status: updated.status });
+  const { data, error } = await client.rpc("complete_assignment_service", { p_assignment_id: assignmentId, p_helper_id: helper.id });
+  if (error || !data) return response({ success: false, code: "COMPLETE_FAILED" }, 502);
+  if (!data.success) {
+    // A helper never learns whether another helper's assignment exists.
+    if (data.code === "ASSIGNMENT_NOT_FOUND" || data.code === "HELPER_MISMATCH") return response({ success: false, code: "ASSIGNMENT_NOT_FOUND" }, 404);
+    if (data.code === "REQUEST_NOT_FOUND") return response({ success: false, code: "REQUEST_NOT_FOUND" }, 404);
+    return response({ success: false, code: data.code || "COMPLETE_CONFLICT", currentStatus: data.request_status ?? data.assignment_status }, 409);
+  }
+  return response({ success: true, idempotent: data.idempotent === true, requestId: data.request_id, status: data.request_status, assignmentStatus: data.assignment_status });
 }
