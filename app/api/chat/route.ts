@@ -37,6 +37,8 @@ export async function GET(request: Request) {
   if (!/^[0-9a-f-]{36}$/.test(requestId)) return fail(400, "INVALID_REQUEST_ID");
   const resolved = await resolveConversation(request, requestId, capability);
   if ("error" in resolved) return resolved.error;
+  // Content of a settled service conversation is withheld once cleanup is scheduled and deleted afterwards.
+  if (resolved.conversation.status === "DELETION_SCHEDULED" || resolved.conversation.status === "DELETED") return NextResponse.json({ success: true, conversation: resolved.conversation, messages: [], contentDeleted: true }, { headers: { "Cache-Control": "no-store" } });
   const { data: messages, error } = await resolved.client.from("messages").select("id, conversation_id, sender_role, sender_id, original_language, original_text, translated_language, translated_text, translation_status, created_at").eq("conversation_id", resolved.conversation.id).order("created_at", { ascending: true });
   if (error) return fail(500, "MESSAGE_LOOKUP_FAILED");
   return NextResponse.json({ success: true, conversation: resolved.conversation, messages: messages ?? [] }, { headers: { "Cache-Control": "no-store" } });
@@ -51,6 +53,7 @@ export async function POST(request: Request) {
   if (!/^[0-9a-f-]{36}$/.test(requestId) || !originalText || !originalLanguage) return fail(400, "VALIDATION_ERROR");
   const resolved = await resolveConversation(request, requestId, typeof body.capability === "string" ? body.capability : undefined);
   if ("error" in resolved) return resolved.error;
+  if (resolved.conversation.status !== "ACTIVE") return fail(409, "CONVERSATION_CLOSED");
   const { data, error } = await resolved.client.from("messages").insert({ conversation_id: resolved.conversation.id, sender_role: resolved.senderRole, sender_id: resolved.senderId, original_language: originalLanguage, original_text: originalText, translated_language: null, translated_text: null, translation_status: "FAILED" }).select("id, conversation_id, sender_role, sender_id, original_language, original_text, translated_language, translated_text, translation_status, created_at").single();
   if (error || !data) return fail(500, "MESSAGE_CREATE_FAILED");
   const recipientType = resolved.senderRole === "CUSTOMER" ? "HELPER" : "CUSTOMER";

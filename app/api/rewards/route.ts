@@ -12,7 +12,7 @@ export async function GET() {
   if (!identity) return NextResponse.json({ success: true, tier: "WLH", rewards: [] });
   const { data: rewards, error } = await client.from("referral_rewards").select("id, tier, reward_amount_krw, first_service_discount_krw, state, settled_at, created_at, qualifying_request_id").eq("referrer_identity_id", identity.id).order("created_at", { ascending: false });
   if (error) return NextResponse.json({ success: false, code: "REWARD_LOOKUP_FAILED" }, { status: 500 });
-  const { count } = await client.from("service_requests").select("id", { count: "exact", head: true }).eq("customer_id", identity.subject_key || "").eq("status", "SETTLED");
+  const { count } = await client.from("service_requests").select("id", { count: "exact", head: true }).eq("customer_id", identity.subject_key || "").in("status", ["SETTLED", "CLOSED"]);
   const settled = count || 0;
   return NextResponse.json({ success: true, tier: settled >= 5 ? "GLH" : settled >= 1 ? "CLH" : "WLH", rewards: rewards ?? [] }, { headers: { "Cache-Control": "no-store" } });
 }
