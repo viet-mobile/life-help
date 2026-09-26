@@ -20,14 +20,16 @@ function createDb() {
     referral_rewards: [], admin_audit_logs: [], app_notifications: [], request_assignments: [],
   };
   const unique = { referral_rewards: ["qualifying_request_id"] };
+  // Conversation ids whose messages delete returns an error (interrupted-cleanup simulation).
+  const failMessageDelete = new Set();
   let seq = 0;
   class Query {
-    constructor(table) { this.table = table; this.filters = []; this.op = "select"; this.limitN = Infinity; this.single = false; this.returning = false; }
+    constructor(table) { this.table = table; this.filters = []; this.eqs = {}; this.op = "select"; this.limitN = Infinity; this.single = false; this.returning = false; }
     select(cols, opts = {}) { if (this.op === "select") { this.cols = cols; this.count = opts.count; this.head = opts.head; } else this.returning = true; return this; }
     update(values) { this.op = "update"; this.values = values; return this; }
     insert(values) { this.op = "insert"; this.values = values; return this; }
     delete() { this.op = "delete"; return this; }
-    eq(col, value) { this.filters.push((row) => row[col] === value); return this; }
+    eq(col, value) { this.eqs[col] = value; this.filters.push((row) => row[col] === value); return this; }
     neq(col, value) { this.filters.push((row) => row[col] !== value); return this; }
     in(col, values) { this.filters.push((row) => values.includes(row[col])); return this; }
     lte(col, value) { this.filters.push((row) => row[col] != null && row[col] <= value); return this; }
@@ -56,6 +58,7 @@ function createDb() {
         return { data: this.returning ? this.shape(hit) : null, error: null };
       }
       if (this.op === "delete") {
+        if (this.table === "messages" && failMessageDelete.has(this.eqs.conversation_id)) return { data: null, error: { code: "XX000", message: "injected failure" } };
         const hit = this.rows();
         tables[this.table] = tables[this.table].filter((row) => !hit.includes(row));
         return { data: this.returning ? this.shape(hit) : null, error: null };
@@ -64,7 +67,7 @@ function createDb() {
       return { data: this.head ? null : this.shape(hit), error: null, count: this.count ? hit.length : undefined };
     }
   }
-  return { tables, client: { from: (table) => new Query(table) } };
+  return { tables, failMessageDelete, client: { from: (table) => new Query(table) } };
 }
 
 // ---------- fixtures ----------
@@ -198,6 +201,68 @@ function check(name, condition, detail = "") {
   check("Unknown request rejected", !missing.ok && missing.httpStatus === 404);
 }
 
+
+// ---------- scheduled cleanup retry ----------
+function seedSettled(db, n, { conversationStatus = "DELETION_SCHEDULED", status = "SETTLED" } = {}) {
+  const t = db.tables;
+  t.service_requests.push({ id: `req-R${n}`, customer_id: `CUST-R${n}`, status });
+  t.conversations.push({ id: `conv-R${n}`, request_id: `req-R${n}`, status: conversationStatus, deletion_scheduled_at: conversationStatus === "ACTIVE" ? null : past });
+  t.messages.push({ id: `msg-R${n}a`, conversation_id: `conv-R${n}`, original_text: `retry secret ${n}` }, { id: `msg-R${n}b`, conversation_id: `conv-R${n}`, original_text: `retry secret ${n}` });
+  t.request_assignments.push({ id: `asg-R${n}`, request_id: `req-R${n}`, status: "COMPLETED" });
+  t.referral_rewards.push({ id: `rw-R${n}`, qualifying_request_id: `req-R${n}`, state: "QUALIFIED" });
+  t.admin_audit_logs.push({ id: `au-R${n}`, action: "SERVICE_SETTLED", entity_id: `req-R${n}`, metadata: { external_payment_verified: false } });
+}
+
+{
+  // Interrupted post-SETTLED cleanup recovered by the retry runner; second run is a no-op.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1);
+  const first = await lib.runConversationCleanup(db.client, {});
+  check("Retry: interrupted SETTLED cleanup recovered", first.scanned === 1 && first.eligible === 1 && first.cleaned === 1 && first.failed === 0 && first.messagesDeleted === 2 && !t.messages.length && t.conversations[0].status === "DELETED");
+  check("Retry: request closes after recovered cleanup", first.closedRequests === 1 && t.service_requests[0].status === "CLOSED");
+  check("Retry: assignment/reward/audit preserved", t.request_assignments.length === 1 && t.referral_rewards.length === 1 && t.admin_audit_logs.some((row) => row.action === "SERVICE_SETTLED") && t.conversations.length === 1);
+  const auditsBefore = t.admin_audit_logs.length;
+  const second = await lib.runConversationCleanup(db.client, {});
+  check("Retry: second run idempotent", second.scanned === 0 && second.cleaned === 0 && second.closedRequests === 0 && second.failed === 0 && t.admin_audit_logs.length === auditsBefore && t.referral_rewards.length === 1 && t.service_requests[0].status === "CLOSED");
+}
+
+{
+  // One failing conversation does not corrupt or block the others, and is retried next run.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1);
+  seedSettled(db, 2);
+  db.failMessageDelete.add("conv-R1");
+  const run = await lib.runConversationCleanup(db.client, {});
+  const conv1 = t.conversations.find((row) => row.id === "conv-R1");
+  check("Retry: failure counted, others cleaned", run.scanned === 2 && run.eligible === 2 && run.failed === 1 && run.cleaned === 1 && t.service_requests.find((row) => row.id === "req-R2").status === "CLOSED");
+  check("Retry: failed conversation left retryable, content intact", conv1.status === "DELETION_SCHEDULED" && t.messages.filter((m) => m.conversation_id === "conv-R1").length === 2 && t.service_requests.find((row) => row.id === "req-R1").status === "SETTLED");
+  db.failMessageDelete.clear();
+  const retry = await lib.runConversationCleanup(db.client, {});
+  check("Retry: failed conversation recovered next run", retry.cleaned === 1 && retry.failed === 0 && conv1.status === "DELETED" && t.service_requests.find((row) => row.id === "req-R1").status === "CLOSED" && !t.messages.length);
+}
+
+{
+  // Crash after marking DELETED but before CLOSED: retry sweeps stray content and closes.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1, { conversationStatus: "DELETED" });
+  const run = await lib.runConversationCleanup(db.client, {});
+  check("Retry: interrupted close recovered", run.already_clean === 1 && run.closedRequests === 1 && run.messagesDeleted === 2 && t.service_requests[0].status === "CLOSED" && t.conversations[0].status === "DELETED");
+}
+
+{
+  // Only SETTLED is a cleanup boundary: COMPLETED and PAYMENT_PENDING content is never touched.
+  const db = createDb();
+  const t = db.tables;
+  seedSettled(db, 1, { status: "PAYMENT_PENDING" });
+  seedSettled(db, 2, { status: "COMPLETED" });
+  seedSettled(db, 3, { status: "COMPLETED", conversationStatus: "ACTIVE" });
+  const run = await lib.runConversationCleanup(db.client, {});
+  check("Retry: PAYMENT_PENDING/COMPLETED never cleaned", run.eligible === 0 && run.cleaned === 0 && run.skipped === 2 && t.messages.length === 6 && t.conversations.every((row) => row.status !== "DELETED") && t.service_requests.every((row) => !["CLOSED", "SETTLED"].includes(row.status)));
+}
+
 // ---------- static authority boundaries ----------
 const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
 const statusRoute = read("app/api/sys/requests/[requestId]/status/route.ts");
@@ -216,6 +281,16 @@ check("Customer/public routes cannot set financial states", customerRoutes.every
 check("Chat writes blocked after settlement", chatRoute.includes('conversation.status !== "ACTIVE"') && chatRoute.includes("CONVERSATION_CLOSED"));
 check("Chat content withheld once cleanup scheduled", chatRoute.includes("DELETION_SCHEDULED") && chatRoute.includes("contentDeleted: true"));
 const settlementLib = read("lib/settlement/serviceSettlement.ts");
+const scheduledWorker = read("workers/scheduled.mjs");
+const wranglerConfig = read("wrangler.jsonc");
+const pkgScripts = JSON.parse(read("package.json")).scripts;
+check("Scheduler calls the platform-token cleanup route", scheduledWorker.includes("/api/sys/cleanup/conversations") && scheduledWorker.includes("env.LIFE_HELP_SETTLEMENT_TOKEN") && scheduledWorker.includes("async scheduled("));
+const stagingConfig = read("wrangler.staging.jsonc");
+check("Cron attached by deploy:staging only", pkgScripts["deploy:staging"].endsWith("wrangler deploy --config wrangler.staging.jsonc") && stagingConfig.includes('"name": "life-help-staging"') && stagingConfig.includes('"main": "workers/scheduled.mjs"') && stagingConfig.includes('"crons": ["17 */6 * * *"]') && !/schedule|triggers|scheduled\.mjs|staging\.jsonc/.test(pkgScripts["deploy:production"]) && pkgScripts["deploy:production"].endsWith("wrangler deploy --name life-help"));
+const compat = (source) => source.match(/"compatibility_date": "[^"]+"/)?.[0] + source.match(/"compatibility_flags": \[[^\]]*\]/)?.[0];
+check("Staging config mirrors production runtime settings", compat(stagingConfig) === compat(wranglerConfig));
+check("wrangler.jsonc has no cron trigger", !/"triggers"|"crons"/.test(wranglerConfig) && wranglerConfig.includes('"main": ".open-next/worker.js"'));
+check("Cleanup route stays platform-authorized for scheduled runs", cleanupRoute.indexOf("authorizePlatformOperator(request)") < cleanupRoute.indexOf("x-life-help-trigger"));
 check("Cleanup deletes only messages", !/from\("(service_requests|referral_rewards|admin_audit_logs|request_assignments|conversations)"\)\.delete\(/.test(settlementLib));
 
 if (failed) { console.error(`FAILED ${failed}`); process.exitCode = 1; } else console.log("ALL PASS");

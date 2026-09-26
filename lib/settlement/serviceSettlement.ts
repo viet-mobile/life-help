@@ -161,31 +161,91 @@ export async function closeServiceRequest(client: SupabaseClient, requestId: str
   return { ok: true, requestId, status: "CLOSED", idempotent: false };
 }
 
-export type CleanupReport = { processed: number; messagesDeleted: number; closedRequests: number; skipped: number };
+export type CleanupReport = {
+  /** Conversations examined (due DELETION_SCHEDULED + already-DELETED ones of unclosed SETTLED requests). */
+  scanned: number;
+  /** Scanned conversations whose request is financially settled, i.e. allowed to lose content. */
+  eligible: number;
+  /** Conversations moved to DELETED by this run. */
+  cleaned: number;
+  /** Eligible conversations another run had already moved to DELETED. */
+  already_clean: number;
+  /** Eligible conversations whose cleanup errored; left as-is for the next retry. */
+  failed: number;
+  processed: number;
+  messagesDeleted: number;
+  closedRequests: number;
+  skipped: number;
+};
+
+async function deleteMessages(client: SupabaseClient, conversationId: string): Promise<number> {
+  const { data, error } = await client.from("messages").delete().eq("conversation_id", conversationId).select("id");
+  if (error) throw new Error(`messages delete failed: ${error.code || error.message}`);
+  return data?.length ?? 0;
+}
 
 /**
  * Executes due conversation cleanup: deletes message content of DELETION_SCHEDULED conversations
  * whose request is financially settled, marks the conversation DELETED, then closes the request.
  * Conversation metadata rows are retained (no content) so audit/dispute references stay valid.
+ *
+ * Also the retry path for an interrupted cleanup: a SETTLED request whose conversations are all
+ * DELETED but which never reached CLOSED gets any stray content removed and is closed.
+ * Each conversation is isolated: one failure is counted and left for the next run.
+ * Only SETTLED/CLOSED requests are ever touched; COMPLETED and PAYMENT_PENDING never are.
  */
 export async function runConversationCleanup(client: SupabaseClient, options: { requestId?: string; limit?: number } = {}): Promise<CleanupReport> {
-  const report: CleanupReport = { processed: 0, messagesDeleted: 0, closedRequests: 0, skipped: 0 };
-  let query = client.from("conversations").select("id, request_id").eq("status", "DELETION_SCHEDULED").lte("deletion_scheduled_at", new Date().toISOString()).order("deletion_scheduled_at", { ascending: true }).limit(Math.min(Math.max(options.limit ?? 20, 1), 100));
+  const report: CleanupReport = { scanned: 0, eligible: 0, cleaned: 0, already_clean: 0, failed: 0, processed: 0, messagesDeleted: 0, closedRequests: 0, skipped: 0 };
+  const limit = Math.min(Math.max(options.limit ?? 20, 1), 100);
+  let query = client.from("conversations").select("id, request_id").eq("status", "DELETION_SCHEDULED").lte("deletion_scheduled_at", new Date().toISOString()).order("deletion_scheduled_at", { ascending: true }).limit(limit);
   if (options.requestId) query = query.eq("request_id", options.requestId);
   const { data: due } = await query;
   for (const conversation of due ?? []) {
-    const requestRow = conversation.request_id ? await loadRequest(client, conversation.request_id) : null;
-    // Never delete conversation content for a request that is not financially settled.
-    if (!requestRow || !SETTLED_STATES.includes(requestRow.status)) { report.skipped += 1; continue; }
-    const { data: deleted } = await client.from("messages").delete().eq("conversation_id", conversation.id).select("id");
-    const { data: marked } = await client.from("conversations").update({ status: "DELETED" }).eq("id", conversation.id).eq("status", "DELETION_SCHEDULED").select("id").maybeSingle();
-    // Second pass removes any message that raced in between the delete and the status change.
-    const { data: late } = await client.from("messages").delete().eq("conversation_id", conversation.id).select("id");
-    const count = (deleted?.length ?? 0) + (late?.length ?? 0);
-    report.messagesDeleted += count;
-    if (!marked) continue;
-    report.processed += 1;
-    await audit(client, "CONVERSATION_CONTENT_DELETED", requestRow.id, { conversation_id: conversation.id, messages_deleted: count, retained: ["service_requests", "request_assignments", "conversations(metadata)", "referral_rewards", "admin_audit_logs"] });
+    report.scanned += 1;
+    try {
+      const requestRow = conversation.request_id ? await loadRequest(client, conversation.request_id) : null;
+      // Never delete conversation content for a request that is not financially settled.
+      if (!requestRow || !SETTLED_STATES.includes(requestRow.status)) { report.skipped += 1; continue; }
+      report.eligible += 1;
+      // A failed delete throws before the status change, so the conversation stays retryable.
+      const deleted = await deleteMessages(client, conversation.id);
+      const { data: marked, error: markError } = await client.from("conversations").update({ status: "DELETED" }).eq("id", conversation.id).eq("status", "DELETION_SCHEDULED").select("id").maybeSingle();
+      if (markError) throw new Error(`conversation mark failed: ${markError.code || markError.message}`);
+      // Second pass removes any message that raced in between the delete and the status change.
+      const count = deleted + (await deleteMessages(client, conversation.id));
+      report.messagesDeleted += count;
+      if (!marked) { report.already_clean += 1; continue; }
+      report.cleaned += 1;
+      report.processed += 1;
+      await audit(client, "CONVERSATION_CONTENT_DELETED", requestRow.id, { conversation_id: conversation.id, messages_deleted: count, retained: ["service_requests", "request_assignments", "conversations(metadata)", "referral_rewards", "admin_audit_logs"] });
+      const closed = await closeServiceRequest(client, requestRow.id, "CLEANUP_RUNNER");
+      if (closed.ok && !closed.idempotent) report.closedRequests += 1;
+    } catch {
+      report.failed += 1;
+    }
+  }
+
+  // Interrupted close: content cleanup finished (or crashed after marking DELETED) but the request
+  // stayed SETTLED. Requests that still have non-DELETED conversations are left to the pass above.
+  let settled = client.from("service_requests").select("id").eq("status", "SETTLED").order("updated_at", { ascending: true }).limit(limit);
+  if (options.requestId) settled = settled.eq("id", options.requestId);
+  const { data: settledRows } = await settled;
+  for (const requestRow of settledRows ?? []) {
+    const { data: conversations } = await client.from("conversations").select("id, status").eq("request_id", requestRow.id);
+    if ((conversations ?? []).some((row) => row.status !== "DELETED")) continue;
+    let requestFailed = false;
+    for (const conversation of conversations ?? []) {
+      report.scanned += 1;
+      report.eligible += 1;
+      try {
+        report.messagesDeleted += await deleteMessages(client, conversation.id);
+        report.already_clean += 1;
+      } catch {
+        report.failed += 1;
+        requestFailed = true;
+      }
+    }
+    if (requestFailed) continue;
     const closed = await closeServiceRequest(client, requestRow.id, "CLEANUP_RUNNER");
     if (closed.ok && !closed.idempotent) report.closedRequests += 1;
   }
