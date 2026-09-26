@@ -458,8 +458,11 @@ function RequestPageContent() {
     if (status === "SEARCHING" || status === "CREATED") return t("admin.statusPending") || status;
     if (status === "MATCHED" || status === "HELPER_NOTIFIED" || status === "ACCEPTED") return t("admin.statusDispatched") || status;
     if (status === "IN_PROGRESS") return t("admin.statusActive") || status;
-    if (status === "COMPLETED" || status === "CLOSED" || status === "SETTLED") return t("admin.statusCompleted") || status;
-    if (status === "PAYMENT_PENDING") return t("payment.title") || status;
+    if (status === "COMPLETED") return t("admin.statusCompleted") || status;
+    // No payment provider is connected: these labels describe internal settlement state only.
+    if (status === "PAYMENT_PENDING") return t("request.statusPaymentPending") || status;
+    if (status === "SETTLED") return t("request.statusSettled") || status;
+    if (status === "CLOSED") return t("request.statusClosed") || status;
     if (status === "NO_HELPER_AVAILABLE") return t("admin.noHelpers") || status;
     return status;
   };
@@ -508,6 +511,11 @@ function RequestPageContent() {
                 <span className="h-2 w-2 rounded-full bg-blue-600" aria-hidden="true" />
                 <span>{getLiveStatusLabel(liveStatus)}</span>
               </div>
+            )}
+            {isMatched && (liveStatus === "PAYMENT_PENDING" || liveStatus === "SETTLED" || liveStatus === "CLOSED") && (
+              <p data-testid="conversation-cleanup-policy" className="mx-auto mt-3 max-w-xl break-words text-left text-xs leading-relaxed text-slate-600">
+                {t("chat.cleanupPolicy")}
+              </p>
             )}
 
             {/* Selected Options Summary */}
