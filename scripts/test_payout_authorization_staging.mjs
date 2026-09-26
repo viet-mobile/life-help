@@ -1,15 +1,9 @@
-import fs from "node:fs";
+import { runGuarded, stagingTarget } from "./lib/envGuard.mjs";
 
-const env = {};
-for (const line of fs.readFileSync(".env.staging.local", "utf8").split(/\r?\n/)) { const match = line.match(/^([A-Za-z0-9_]+)\s*=\s*(.*)$/); if (match) env[match[1]] = match[2].trim().replace(/^(["'])(.*)\1$/, "$2"); }
-const supabaseUrl = env.TEST_SUPABASE_URL.replace(/\/$/, "");
+// Shared tripwire: staging Supabase + staging Worker, verified before any mutation.
+const { env, supabaseUrl, base } = await runGuarded("staging target", () => stagingTarget());
 const serviceKey = env.TEST_SUPABASE_SERVICE_ROLE_KEY;
 const anonKey = env.TEST_SUPABASE_ANON_KEY;
-const stagingRef = (supabaseUrl.match(/https?:\/\/([^.]+)\.supabase/) || [])[1];
-const productionRef = "wstdbymmkrqgtsibhcjz";
-const expectedRef = "wreebowcbiymodswajwe";
-const base = "https://life-help-staging.simpl2eye.workers.dev";
-if (stagingRef !== expectedRef || stagingRef === productionRef) throw new Error("STAGING GUARD FAILED");
 const results = [];
 function pass(name) { results.push("PASS"); console.log(`PASS ${name}`); }
 function fail(name, detail) { results.push("FAIL"); console.log(`FAIL ${name} ${detail}`); }

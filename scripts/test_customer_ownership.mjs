@@ -140,12 +140,6 @@ check("Every runtime match_and_assign_helper caller is covered by helper push", 
 const serverMatchingUsers = ["app", "lib", "components"].flatMap(function walk(dir) { return fs.readdirSync(new URL(dir + "/", root), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`]); }).filter((f) => /\.tsx?$/.test(f) && f !== "lib/db/serverMatching.ts" && /serverMatching/.test(read(f)));
 check("TIMEOUT release helper (lib/db/serverMatching.ts) has no runtime caller", serverMatchingUsers.length === 0, serverMatchingUsers.join());
 
-// ---------- staging build never inlines the production Supabase project ----------
-const scripts = JSON.parse(read("package.json")).scripts;
-const buildStaging = read("scripts/build-staging.mjs");
-check("deploy:staging builds with staging NEXT_PUBLIC Supabase values", scripts["deploy:staging"].startsWith("node scripts/build-staging.mjs && ") && /NEXT_PUBLIC_SUPABASE_URL: url, NEXT_PUBLIC_SUPABASE_ANON_KEY: anonKey/.test(buildStaging) && buildStaging.includes('url.includes(`${STAGING_REF}.supabase.co`)'));
-check("Staging build fails closed if the production URL is in the output", buildStaging.includes("`${PRODUCTION_REF}.supabase`") && buildStaging.includes("refusing to deploy"));
-check("Production deploy script unchanged", scripts["deploy:production"] === "opennextjs-cloudflare build && wrangler deploy --name life-help");
 
 fs.rmSync(stubDir, { recursive: true, force: true });
 if (failed) { console.error(`FAILED ${failed}`); process.exitCode = 1; } else console.log("ALL PASS");

@@ -13,6 +13,7 @@
 import { createClient } from "@supabase/supabase-js";
 import fs from "fs";
 import path from "path";
+import { assertStagingUrl, runGuarded } from "./lib/envGuard.mjs";
 
 // Load from .env.staging.local if present and not already in process.env
 const stagingEnvPath = path.resolve(process.cwd(), ".env.staging.local");
@@ -40,6 +41,8 @@ if (fs.existsSync(stagingEnvPath)) {
 }
 
 const supabaseUrl = process.env.TEST_SUPABASE_URL;
+// Shared tripwire (in addition to the checks below): only the staging project, never unknown.
+await runGuarded("staging target", () => assertStagingUrl(supabaseUrl, "TEST_SUPABASE_URL"));
 const supabaseKey = process.env.TEST_SUPABASE_SERVICE_ROLE_KEY;
 const anonKey = process.env.TEST_SUPABASE_ANON_KEY;
 const allowDestructive = process.env.ALLOW_DESTRUCTIVE_STAGING_TESTS;

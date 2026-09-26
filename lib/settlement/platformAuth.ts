@@ -19,8 +19,9 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 export type PlatformActor = "SYS_SESSION" | "PLATFORM_TOKEN";
 
 export const SETTLEMENT_TOKEN_MIN_LENGTH = 32;
+// Allow-list: only the staging project may run internal settlement (production and every other
+// project are rejected). The production ref is deliberately not embedded in the bundle.
 const STAGING_REF: string = "wreebowcbiymodswajwe";
-const PRODUCTION_REF: string = "wstdbymmkrqgtsibhcjz";
 
 async function sha256Hex(value: string): Promise<string> {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
@@ -74,6 +75,6 @@ export async function authorizePlatformOperator(request: Request): Promise<Platf
 export async function createStagingSettlementClient(): Promise<SupabaseClient | null> {
   const config = await getRuntimeServiceRoleConfig();
   const ref = config?.url.match(/([a-z0-9]+)\.supabase\.(?:co|in)/i)?.[1];
-  if (!config || ref !== STAGING_REF || ref === PRODUCTION_REF) return null;
+  if (!config || ref !== STAGING_REF) return null;
   return createRuntimeServiceRoleClient();
 }

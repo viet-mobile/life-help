@@ -17,8 +17,9 @@ import { sendWebPush, type VapidKeys } from "@/lib/push/webPushCrypto";
  * Supabase project.
  */
 
+// Allow-list: push runs only against the staging project (every other project, including
+// production, is rejected). The production ref is deliberately not embedded in the bundle.
 const STAGING_REF: string = "wreebowcbiymodswajwe";
-const PRODUCTION_REF: string = "wstdbymmkrqgtsibhcjz";
 const DEFAULT_SUBJECT = "https://life.help";
 
 export type PushEvent = "HELPER_ASSIGNED" | "SERVICE_STATUS" | "STAGING_TEST";
@@ -43,7 +44,7 @@ async function runtimeEnv(): Promise<Record<string, string | undefined>> {
 export async function getVapidConfig(): Promise<VapidKeys | null> {
   const env = await runtimeEnv();
   const ref = (env.SUPABASE_URL || "").match(/([a-z0-9]+)\.supabase\.(?:co|in)/i)?.[1];
-  if (ref !== STAGING_REF || ref === PRODUCTION_REF) return null;
+  if (ref !== STAGING_REF) return null;
   const publicKey = env.LIFE_HELP_WEB_PUSH_VAPID_PUBLIC_KEY?.trim();
   const privateKey = env.LIFE_HELP_WEB_PUSH_VAPID_PRIVATE_KEY?.trim();
   if (!publicKey || !privateKey) return null;

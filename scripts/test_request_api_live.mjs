@@ -20,6 +20,7 @@ import { spawn, execSync } from "child_process";
 import fs from "fs";
 import os from "os";
 import path from "path";
+import { assertStagingUrl, runGuarded } from "./lib/envGuard.mjs";
 
 const root = process.cwd();
 const KNOWN_PROD_PROJECT_REF = "wstdbymmkrqgtsibhcjz";
@@ -43,6 +44,8 @@ if (fs.existsSync(stagingEnvPath)) {
 }
 
 const url = process.env.TEST_SUPABASE_URL || "";
+// Shared tripwire (in addition to the checks below): only the staging project, never unknown.
+await runGuarded("staging target", () => assertStagingUrl(url, "TEST_SUPABASE_URL"));
 const anonKey = process.env.TEST_SUPABASE_ANON_KEY || "";
 const serviceKey = process.env.TEST_SUPABASE_SERVICE_ROLE_KEY || "";
 const expectedRef = process.env.EXPECTED_STAGING_PROJECT_REF || "";

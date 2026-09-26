@@ -6,20 +6,17 @@ import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
 import { spawn } from "node:child_process";
+import { runGuarded, stagingTarget } from "./envGuard.mjs";
 
-export const env = {};
-for (const line of fs.readFileSync(".env.staging.local", "utf8").split(/\r?\n/)) {
-  const match = line.match(/^([A-Za-z0-9_]+)\s*=\s*(.*)$/);
-  if (match) env[match[1]] = match[2].trim().replace(/^(["'])(.*)\1$/, "$2");
-}
-export const supabaseUrl = env.TEST_SUPABASE_URL?.replace(/\/$/, "");
+// Shared tripwire: staging Supabase + staging Worker, verified before any fixture exists.
+const target = await runGuarded("staging target", () => stagingTarget());
+export const env = target.env;
+export const supabaseUrl = target.supabaseUrl;
 export const serviceKey = env.TEST_SUPABASE_SERVICE_ROLE_KEY;
 export const settlementToken = env.TEST_LIFE_HELP_SETTLEMENT_TOKEN;
 export const vapidPublicKey = env.TEST_LIFE_HELP_WEB_PUSH_VAPID_PUBLIC_KEY;
-const stagingRef = (supabaseUrl?.match(/https?:\/\/([^.]+)\.supabase/) || [])[1];
-export const base = "https://life-help-staging.simpl2eye.workers.dev";
+export const base = target.base;
 export const origin = new URL(base).origin;
-if (stagingRef !== "wreebowcbiymodswajwe" || stagingRef === "wstdbymmkrqgtsibhcjz") throw new Error(`STAGING GUARD FAILED: ${stagingRef || "missing"}`);
 if (!serviceKey || !settlementToken || !vapidPublicKey) throw new Error("staging service key, settlement token and VAPID public key are required");
 
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

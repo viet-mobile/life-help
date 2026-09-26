@@ -9,20 +9,13 @@
 //   node scripts/test_cleanup_retry_staging.mjs          # invoke the retry exactly as the cron does
 //   node scripts/test_cleanup_retry_staging.mjs --cron   # wait for the deployed cron trigger instead
 //   add --scenario=unscheduled: SETTLED request whose cleanup was never scheduled (ACTIVE chat)
-import fs from "node:fs";
 import crypto from "node:crypto";
+import { runGuarded, stagingTarget } from "./lib/envGuard.mjs";
 
-const env = {};
-for (const line of fs.readFileSync(".env.staging.local", "utf8").split(/\r?\n/)) {
-  const match = line.match(/^([A-Za-z0-9_]+)\s*=\s*(.*)$/);
-  if (match) env[match[1]] = match[2].trim().replace(/^(["'])(.*)\1$/, "$2");
-}
-
-const supabaseUrl = env.TEST_SUPABASE_URL?.replace(/\/$/, "");
+// Shared tripwire: staging Supabase + staging Worker, verified before any mutation.
+const { env, supabaseUrl, base } = await runGuarded("staging target", () => stagingTarget());
 const serviceKey = env.TEST_SUPABASE_SERVICE_ROLE_KEY;
 const settlementToken = env.TEST_LIFE_HELP_SETTLEMENT_TOKEN;
-const stagingRef = (supabaseUrl?.match(/https?:\/\/([^.]+)\.supabase/) || [])[1];
-const base = "https://life-help-staging.simpl2eye.workers.dev";
 const waitForCron = process.argv.includes("--cron");
 // queued: crash after cleanup was scheduled. unscheduled: crash between SETTLED and scheduling.
 const scenario = process.argv.includes("--scenario=unscheduled") ? "unscheduled" : "queued";
@@ -30,7 +23,6 @@ const cronTimeoutMs = 3 * 60 * 1000;
 const runId = `CRT${Date.now()}`;
 const startedAt = new Date().toISOString();
 
-if (stagingRef !== "wreebowcbiymodswajwe" || stagingRef === "wstdbymmkrqgtsibhcjz") throw new Error(`STAGING GUARD FAILED: ${stagingRef || "missing"}`);
 if (!serviceKey || !settlementToken) throw new Error("TEST_SUPABASE_SERVICE_ROLE_KEY and TEST_LIFE_HELP_SETTLEMENT_TOKEN are required");
 
 const dbHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" };
