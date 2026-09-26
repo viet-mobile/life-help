@@ -48,7 +48,7 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
         <button type="button" onClick={() => setIsOpen((value) => !value)} className="droplet-pill inline-flex max-w-[132px] items-center gap-1 border border-emerald-200 bg-emerald-50 px-2 py-1 text-[10px] font-black text-emerald-900 sm:max-w-[160px] sm:text-xs" aria-expanded={isOpen}>
           <span className="shrink-0">ID ·</span><span className="truncate tracking-[0.12em]">{referralId || "--------"}</span><span aria-hidden="true">⌄</span>
         </button>
-        {isOpen && <div className="absolute right-0 top-full z-40 mt-2 w-[min(92vw,320px)] max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-xl border border-emerald-200 bg-white p-3 text-slate-900 shadow-xl" role="dialog">
+        {isOpen && <div className="absolute right-0 top-full z-40 mt-2 w-[min(92vw,320px)] max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-xl border border-emerald-200 bg-white p-3 text-slate-900 shadow-xl max-sm:fixed max-sm:right-3 max-sm:top-12 max-sm:mt-0" role="dialog">
           <p className="text-[11px] font-bold text-slate-500">{locale === "vi" ? "ID LIFE.HELP" : "LIFE.HELP ID"}</p>
           <code className="mt-1 block max-w-full break-all text-base font-black tracking-[0.18em]">{referralId || "--------"}</code>
           <p className="mt-3 text-[11px] font-bold text-slate-500">{locale === "vi" ? "Liên kết giới thiệu" : "Referral link"}</p>
