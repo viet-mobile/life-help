@@ -44,7 +44,7 @@ export function DbAssignmentPanel({ formatBilingual }: { formatBilingual: (en: s
     };
   }, [refresh]);
 
-  const respond = async (assignmentId: string, action: "accept" | "decline") => {
+  const respond = async (assignmentId: string, action: "accept" | "decline" | "start" | "complete") => {
     setBusyId(assignmentId);
     setMessage(null);
     try {
@@ -53,7 +53,13 @@ export function DbAssignmentPanel({ formatBilingual }: { formatBilingual: (en: s
       if (!response.ok || data?.success === false) {
         setMessage(formatBilingual("The assignment could not be updated.", "배정 상태를 변경하지 못했습니다."));
       } else {
-        setMessage(action === "accept" ? formatBilingual("Assignment accepted.", "배정을 수락했습니다.") : formatBilingual("Assignment declined.", "배정을 거절했습니다."));
+        const messages = {
+          accept: formatBilingual("Assignment accepted.", "배정을 수락했습니다."),
+          decline: formatBilingual("Assignment declined.", "배정을 거절했습니다."),
+          start: formatBilingual("Service started.", "서비스를 시작했습니다."),
+          complete: formatBilingual("Service marked completed.", "서비스를 완료 처리했습니다."),
+        } as const;
+        setMessage(messages[action]);
         await refresh();
       }
     } finally {
@@ -90,6 +96,12 @@ export function DbAssignmentPanel({ formatBilingual }: { formatBilingual: (en: s
                 <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "accept")} className="droplet-btn bg-emerald-600 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Accept", "수락")}</button>
                 <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "decline")} className="droplet-btn border border-slate-300 bg-white px-3 py-2 text-xs font-black text-slate-700 disabled:opacity-50">{formatBilingual("Decline", "거절")}</button>
               </div>
+            )}
+            {assignment.assignmentStatus === "ACCEPTED" && assignment.requestStatus === "ACCEPTED" && (
+              <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "start")} className="mt-3 droplet-btn bg-blue-700 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Start service", "서비스 시작")}</button>
+            )}
+            {assignment.assignmentStatus === "ACCEPTED" && assignment.requestStatus === "IN_PROGRESS" && (
+              <button type="button" disabled={busyId === assignment.assignmentId} onClick={() => void respond(assignment.assignmentId, "complete")} className="mt-3 droplet-btn bg-emerald-700 px-3 py-2 text-xs font-black text-white disabled:opacity-50">{formatBilingual("Mark completed", "서비스 완료")}</button>
             )}
           </article>
         ))}

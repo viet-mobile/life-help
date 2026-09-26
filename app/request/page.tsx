@@ -25,6 +25,21 @@ type RequestSubmitResult =
   | { status: "MATCHED"; requestId: string; assignmentId: string; conversationId: string; capability?: string }
   | { status: "NO_HELPER_AVAILABLE"; requestId: string; subReason: string };
 
+type LiveRequestStatus =
+  | "CREATED"
+  | "SEARCHING"
+  | "MATCHED"
+  | "HELPER_NOTIFIED"
+  | "ACCEPTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "PAYMENT_PENDING"
+  | "SETTLED"
+  | "CLOSED"
+  | "CANCELLED"
+  | "EXPIRED"
+  | "NO_HELPER_AVAILABLE";
+
 interface RequestSubmitError {
   code: string;
   requestId?: string;
@@ -249,9 +264,27 @@ function RequestPageContent() {
   // DB-issued ids (request / assignment / conversation UUIDs). Kept separate from the legacy
   // localStorage chat sessions; DB chat entry is P2-5.
   const [submitResult, setSubmitResult] = useState<RequestSubmitResult | null>(null);
+  const [liveStatus, setLiveStatus] = useState<LiveRequestStatus | null>(null);
   const [submitError, setSubmitError] = useState<RequestSubmitError | null>(null);
   // Idempotency key of the current logical submission, bound to the exact payload it was created for.
   const pendingSubmissionRef = useRef<{ key: string; payloadJson: string } | null>(null);
+
+  useEffect(() => {
+    if (submitResult?.status !== "MATCHED" || !submitResult.capability) return;
+    let active = true;
+    const refresh = async () => {
+      const params = new URLSearchParams({ requestId: submitResult.requestId, capability: submitResult.capability || "" });
+      const response = await fetch(`/api/requests/status?${params.toString()}`, { cache: "no-store" }).catch(() => null);
+      const data = await response?.json().catch(() => null);
+      if (active && data?.success === true && typeof data.status === "string") setLiveStatus(data.status as LiveRequestStatus);
+    };
+    void refresh();
+    const timer = window.setInterval(() => void refresh(), 5000);
+    return () => {
+      active = false;
+      window.clearInterval(timer);
+    };
+  }, [submitResult]);
 
   useEffect(() => {
     const key = "life_help_public_identity_device";
@@ -382,6 +415,7 @@ function RequestPageContent() {
           conversationId: data.conversationId,
           capability: typeof capabilityData?.capability === "string" ? capabilityData.capability : undefined,
         });
+        setLiveStatus("MATCHED");
       } else if (data?.success === true && data.status === "NO_HELPER_AVAILABLE") {
         setSubmitResult({
           status: "NO_HELPER_AVAILABLE",
@@ -417,6 +451,17 @@ function RequestPageContent() {
       "The request could not be submitted. Please try again shortly.",
       "신청을 접수하지 못했습니다. 잠시 후 다시 시도해 주세요."
     );
+  };
+
+  const getLiveStatusLabel = (status: LiveRequestStatus | null) => {
+    if (!status) return "";
+    if (status === "SEARCHING" || status === "CREATED") return t("admin.statusPending") || status;
+    if (status === "MATCHED" || status === "HELPER_NOTIFIED" || status === "ACCEPTED") return t("admin.statusDispatched") || status;
+    if (status === "IN_PROGRESS") return t("admin.statusActive") || status;
+    if (status === "COMPLETED" || status === "CLOSED" || status === "SETTLED") return t("admin.statusCompleted") || status;
+    if (status === "PAYMENT_PENDING") return t("payment.title") || status;
+    if (status === "NO_HELPER_AVAILABLE") return t("admin.noHelpers") || status;
+    return status;
   };
 
   if (submitResult) {
@@ -458,6 +503,12 @@ function RequestPageContent() {
                     "\n"
                   )}
             </p>
+            {isMatched && liveStatus && (
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black text-blue-900">
+                <span className="h-2 w-2 rounded-full bg-blue-600" aria-hidden="true" />
+                <span>{getLiveStatusLabel(liveStatus)}</span>
+              </div>
+            )}
 
             {/* Selected Options Summary */}
             {selectedProblemOptions.length > 0 && (
