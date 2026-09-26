@@ -84,3 +84,21 @@ AUTO_MATCH request: unchanged (DECLINED/TIMEOUT -> SEARCHING -> matcher, 011 exc
 Paste the whole file into the STAGING SQL editor. Part 1 (enum value) commits on its own, and Part 2
 runs as one transaction. The currently deployed Worker stays compatible: nothing reads the snapshot
 table, and `request_reopened` keeps its meaning.
+
+## Application status (applied to staging; app flow implemented)
+
+| Piece | Where |
+|---|---|
+| Owner's pending re-selections | `GET /api/requests/reselection` (device-owner cookie) |
+| Fresh offers (same sub-item + region, declined/timed-out Helpers excluded, request-bound tokens) | `GET /api/requests/reselection/offers?requestId=` |
+| Explicit re-selection (`reselect_customer_helper`) | `POST /api/requests/reselection` + `Idempotency-Key` |
+| Customer UI (own state, "choose another Helper", terms confirmation) | `components/request/ReselectionPanel.tsx`, `app/request/page.tsx` |
+| Generic customer push on decline (`RESELECTION_REQUIRED`) | decline route -> `pushCustomerStatus(..., "RESELECTION_REQUIRED")` |
+| Price authority (current ACCEPTED selection) | `lib/pricing/requestPrice.ts` (status view, payment-pending + settlement audits) |
+
+### Who still reads `request_price_snapshots` (frozen, never written or deleted)
+
+Only `lib/pricing/requestPrice.ts#loadCurrentAgreedPrice`, as a read-only fallback for a request
+that has **no** `request_price_selections` rows at all. After the 013 backfill no such customer-selected
+request exists; a request with any selection row never falls back to the snapshot (a request whose
+selections all ended has no agreed price). Everything else reads `request_price_selections`.

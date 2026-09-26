@@ -188,7 +188,7 @@ try {
     const hShown = await waitFor(async () => (await shownNotifications(helperBrowser))?.find((n) => n.data?.type === "HELPER_ASSIGNED") || null, 60000, 2000);
     const hRowNow = h2BrowserEndpoint ? (await subsByEndpoint(h2BrowserEndpoint))[0] : null;
     if (!hShown && fcmRefusedFreshSubscription(hRowNow)) notTestable("REAL Web Push: rematched Helper's browser displays the assignment (Chrome/FCM)", "FCM answered 410 to the first push for a fresh headless-Chrome subscription; the product correctly invalidated it");
-    else expect("REAL Web Push: rematched Helper's browser displays the assignment (Chrome/FCM)", hShown?.title === "New service request" && hShown.data.url === "/tech/assignments", hShown);
+    else expect("REAL Web Push: rematched Helper's browser displays the assignment (Chrome/FCM)", hShown?.title === "New service request" && hShown.data.url === "/tech/assignments", { hShown, row: hRowNow && { status: hRowNow.status, failures: hRowNow.failure_count, lastFailure: hRowNow.last_failure_status, lastSuccess: hRowNow.last_success_at }, shown: await shownNotifications(helperBrowser), sw: !!(await serviceWorkerSession(helperBrowser)) });
   }
   const inAppH2 = await db(`app_notifications?recipient_id=eq.${h2.helper.helper_id}&type=eq.NEW_SERVICE_REQUEST&payload->>request_id=eq.${reqR.body.requestId}&select=id`);
   const inAppH1 = await db(`app_notifications?recipient_id=eq.${h1.helper.helper_id}&type=eq.NEW_SERVICE_REQUEST&payload->>request_id=eq.${reqR.body.requestId}&select=id`);

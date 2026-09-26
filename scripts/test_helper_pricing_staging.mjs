@@ -9,7 +9,8 @@
 //      request + assignment + snapshot created atomically (CUSTOMER_SELECTED); real Web Push to H1.
 //   6. Immutable snapshot: H1 60,000 -> 80,000 leaves the request at 60,000; direct writes blocked.
 //  11. H1 DECLINES the customer-selected request: no automatic rematch / substitution;
-//      CUSTOMER_RESELECTION_REQUIRED signal; interim DB state recorded.
+//      CUSTOMER_RESELECTION_REQUIRED (migration 013 state).
+// Since migration 013 the agreement is request_price_selections v1 (the 012 snapshot table is frozen).
 //   7. Stale offer in the browser: PRICE_CHANGED (409), nothing created, refreshed offers, reconfirm.
 //   8. True concurrent selection race of one free Helper (Promise.all through the Worker).
 //   9. Tampering: helper / amount / currency / mode / materials / minimum / extra / surcharge ignored.
@@ -46,7 +47,7 @@ const selectOffer = (device, offerToken, key = crypto.randomUUID(), extra = {}, 
 const track = (id) => { if (id) fx.created.requestIds.add(id); return id; };
 const nothingFor = async (requestId) => ({
   requests: (await db(`service_requests?id=eq.${requestId}&select=id`)).length,
-  snapshots: (await db(`request_price_snapshots?request_id=eq.${requestId}&select=request_id`)).length,
+  snapshots: (await db(`request_price_selections?request_id=eq.${requestId}&selection_version=eq.1&select=request_id`)).length,
   assignments: (await db(`request_assignments?request_id=eq.${requestId}&select=id`)).length,
   conversations: (await db(`conversations?request_id=eq.${requestId}&select=id`)).length,
 });
@@ -209,7 +210,7 @@ try {
   const sent = await waitFor(() => cb.evaluate("window.__sel[0] || null"), 15000, 500);
   const sentKeys = sent?.sent ? Object.keys(JSON.parse(sent.sent)).sort() : [];
   expect("5b. Browser sends only the form + opaque offer_token (no helper / amount / currency / mode / materials)", sent?.status === 201 && sentKeys.includes("offer_token") && !sentKeys.some((k) => /helper|amount|price|currency|mode|material|minimum|extra|multiplier/.test(k)), { status: sent?.status, sentKeys, body: sent?.body, form1 });
-  const snap1 = r1 ? (await db(`request_price_snapshots?request_id=eq.${r1.id}&select=*`))[0] : null;
+  const snap1 = r1 ? (await db(`request_price_selections?request_id=eq.${r1.id}&selection_version=eq.1&select=*`))[0] : null;
   const asg1 = r1 ? await db(`request_assignments?request_id=eq.${r1.id}&select=id,helper_id,status`) : [];
   const conv1 = r1 ? await db(`conversations?request_id=eq.${r1.id}&select=id`) : [];
   expect("5c. Atomic: request MATCHED / CUSTOMER_SELECTED (owner = this device) + one PENDING assignment to H1 + one conversation", r1?.status === "MATCHED" && r1.selection_mode === "CUSTOMER_SELECTED" && r1.customer_id === V.referral_id && r1.service_slug === "clog-clearing" && asg1.length === 1 && asg1[0].helper_id === h1.helper.id && asg1[0].status === "PENDING" && conv1.length === 1, { r1, asg1, conv1: conv1.length });
@@ -220,9 +221,9 @@ try {
   // ================= 6. immutable snapshot =================
   const to80 = await putPrice(h1, "toilet-simple", { pricing_mode: "FIXED", currency: "KRW", base_price: 80000, minimum_charge: 50000, included_minutes: 60, extra_hour_price: 20000, materials_policy: "PARTIALLY_INCLUDED", materials_note: `${runId} basic parts`, night_multiplier: 1.3, weekend_multiplier: 1.2, emergency_multiplier: 1.5 }, true);
   const h1Catalog = await api("/api/helper/prices", { headers: h1.auth });
-  const snapAfter = (await db(`request_price_snapshots?request_id=eq.${r1.id}&select=base_price,initial_payable_amount,source_price_revision`))[0];
+  const snapAfter = (await db(`request_price_selections?request_id=eq.${r1.id}&selection_version=eq.1&select=base_price,initial_payable_amount,source_price_revision`))[0];
   expect("6a. H1 60,000 -> 80,000: H1's current catalog shows 80,000; the accepted request stays 60,000", to80.status === 200 && Number(h1Catalog.body.prices?.find((p) => p.id === h1Price.id)?.base_price) === 80000 && Number(snapAfter.base_price) === 60000 && Number(snapAfter.initial_payable_amount) === 60000 && snapAfter.source_price_revision === h1Price.revision, { to80: to80.body, snapAfter });
-  const rest = (headers, method, body) => fetch(`${supabaseUrl}/rest/v1/request_price_snapshots?request_id=eq.${r1.id}`, { method, headers: { ...headers, "Content-Type": "application/json", Prefer: "return=representation" }, body: body ? JSON.stringify(body) : undefined }).then(async (r) => [r.status, (await readResponse(r))?.code]);
+  const rest = (headers, method, body) => fetch(`${supabaseUrl}/rest/v1/request_price_selections?request_id=eq.${r1.id}`, { method, headers: { ...headers, "Content-Type": "application/json", Prefer: "return=representation" }, body: body ? JSON.stringify(body) : undefined }).then(async (r) => [r.status, (await readResponse(r))?.code]);
   const svc = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` }, anon = { apikey: anonKey, Authorization: `Bearer ${anonKey}` }, helperJwt = { apikey: anonKey, Authorization: `Bearer ${h1.token}` };
   const attempts = {
     serviceRolePatch: await rest(svc, "PATCH", { base_price: 1 }), serviceRoleDelete: await rest(svc, "DELETE"),
@@ -230,7 +231,7 @@ try {
     helperPatch: await rest(helperJwt, "PATCH", { base_price: 1 }), helperDelete: await rest(helperJwt, "DELETE"),
     workerPut: [(await api("/api/requests/selected", { method: "PUT", headers: { Cookie: cust.cookie }, body: {} })).status], workerDelete: [(await api("/api/requests/selected", { method: "DELETE", headers: { Cookie: cust.cookie } })).status],
   };
-  const snapStill = (await db(`request_price_snapshots?request_id=eq.${r1.id}&select=base_price`))[0];
+  const snapStill = (await db(`request_price_selections?request_id=eq.${r1.id}&selection_version=eq.1&select=base_price`))[0];
   expect("6b. Direct snapshot UPDATE / DELETE blocked on every non-authorized path (service_role, anon, Helper JWT, Worker)", Object.entries(attempts).every(([k, [s, c]]) => (k.startsWith("worker") ? s === 405 : s === 401 || s === 403 || c === "42501")) && Number(snapStill?.base_price) === 60000, attempts);
 
   // ================= 11. selected H1 declines =================
@@ -239,13 +240,12 @@ try {
   await sleep(3000);
   const rowsAfter = await db(`request_assignments?request_id=eq.${r1.id}&select=helper_id,status`);
   const reqAfter = (await db(`service_requests?id=eq.${r1.id}&select=status,selection_mode`))[0];
-  const snapDecl = (await db(`request_price_snapshots?request_id=eq.${r1.id}&select=helper_id,base_price`))[0];
+  const snapDecl = (await db(`request_price_selections?request_id=eq.${r1.id}&selection_version=eq.1&select=helper_id,base_price`))[0];
   expect("11a. H1 DECLINES: route returns CUSTOMER_RESELECTION_REQUIRED; H1 assignment DECLINED", decline.status === 200 && decline.body.matching?.code === "CUSTOMER_RESELECTION_REQUIRED" && decline.body.release?.request_reopened === true && rowsAfter.length === 1 && rowsAfter[0].status === "DECLINED", { decline: decline.body, rowsAfter });
   expect("11b. NO automatic match to free H2, NO new assignment, NO price substitution (snapshot still H1 / 60,000)", (await active(h2)).length === 0 && rowsAfter.every((r) => r.helper_id === h1.helper.id) && snapDecl.helper_id === h1.helper.id && Number(snapDecl.base_price) === 60000, { h2Active: (await active(h2)).length, snapDecl });
   await sleep(10000);
   expect("11c. H2 receives no assignment push", autopush.received(h2Ch).length === h2PushesBefore, autopush.received(h2Ch));
-  record("INFO", `Interim state (migration 012): request ${reqAfter?.status} / ${reqAfter?.selection_mode} with no active assignment (known; migration 013 adds CUSTOMER_RESELECTION_REQUIRED)`);
-  expect("11d. Known interim DB state recorded: SEARCHING + CUSTOMER_SELECTED", reqAfter?.status === "SEARCHING" && reqAfter.selection_mode === "CUSTOMER_SELECTED", reqAfter);
+  expect("11d. After migration 013 the request waits for the customer: CUSTOMER_RESELECTION_REQUIRED (not SEARCHING)", reqAfter?.status === "CUSTOMER_RESELECTION_REQUIRED" && reqAfter.selection_mode === "CUSTOMER_SELECTED", reqAfter);
 
   // ================= 7. stale offer in the browser =================
   await cb.navigate(`${base}/request?service=clog-clearing`);
@@ -273,8 +273,8 @@ try {
   await trustedClick(cb, q("price-offer-submit"));
   const r2 = await waitFor(async () => (await db(`service_requests?customer_id=eq.${V.referral_id}&id=neq.${r1.id}&select=id,status`))[0], 30000, 1000);
   track(r2?.id);
-  const snap2 = r2 ? (await db(`request_price_snapshots?request_id=eq.${r2.id}&select=helper_id,base_price`))[0] : null;
-  expect("7d. Reconfirmed at the new price (85,000) -> new request with its own snapshot; first request still 60,000", /85,000/.test(v2Confirm || "") && r2?.status === "MATCHED" && snap2?.helper_id === h1.helper.id && Number(snap2.base_price) === 85000 && Number((await db(`request_price_snapshots?request_id=eq.${r1.id}&select=base_price`))[0].base_price) === 60000, { r2, snap2 });
+  const snap2 = r2 ? (await db(`request_price_selections?request_id=eq.${r2.id}&selection_version=eq.1&select=helper_id,base_price`))[0] : null;
+  expect("7d. Reconfirmed at the new price (85,000) -> new request with its own snapshot; first request still 60,000", /85,000/.test(v2Confirm || "") && r2?.status === "MATCHED" && snap2?.helper_id === h1.helper.id && Number(snap2.base_price) === 85000 && Number((await db(`request_price_selections?request_id=eq.${r1.id}&selection_version=eq.1&select=base_price`))[0].base_price) === 60000, { r2, snap2 });
 
   // ================= 8. concurrent selection race =================
   const x = await fx.createHelper("X", { service: "clog-clearing", rating: 5 });
@@ -301,7 +301,7 @@ try {
   const tamper = { helper_id: h2.helper.id, helperId: h2.helper.id, helper_public_id: h2.helper.helper_id, amount: 1, price: 1, initial_payable_amount: 1, base_price: 1, currency: "USD", pricing_mode: "HOURLY", materials_policy: "INCLUDED", minimum_charge: 1, extra_hour_price: 1, extra_unit_price: 1, night_multiplier: 3, weekend_multiplier: 3, emergency_multiplier: 3, price_revision: 999, service_slug: "boiler", customer_id: other.publicId };
   const tampered = await selectOffer(ct, tOffer?.offerToken, undefined, tamper, "tamper");
   track(tampered.requestId);
-  const tSnap = (await db(`request_price_snapshots?request_id=eq.${tampered.requestId}&select=*`))[0];
+  const tSnap = (await db(`request_price_selections?request_id=eq.${tampered.requestId}&selection_version=eq.1&select=*`))[0];
   const tReq = (await db(`service_requests?id=eq.${tampered.requestId}&select=customer_id,service_slug`))[0];
   const tAsg = await db(`request_assignments?request_id=eq.${tampered.requestId}&select=helper_id`);
   expect("9a. Tampered helper / amount / currency / mode / materials / minimum / extra / surcharge / service / customer all ignored", tampered.status === 201 && tampered.body.agreed?.currency === "KRW" && tampered.body.agreed?.initialPayableAmount === 45000 && tSnap?.helper_id === t.helper.id && tAsg.length === 1 && tAsg[0].helper_id === t.helper.id && tSnap.currency === "KRW" && tSnap.pricing_mode === "FIXED" && Number(tSnap.base_price) === 45000 && tSnap.materials_policy === "EXCLUDED" && tSnap.minimum_charge === null && tSnap.extra_hour_price === null && tSnap.extra_unit_price === null && tSnap.night_multiplier === null && tSnap.weekend_multiplier === null && tSnap.emergency_multiplier === null && Number(tSnap.initial_payable_amount) === 45000 && tReq?.service_slug === "clog-clearing" && tReq.customer_id === ct.publicId, { body: tampered.body, tSnap, tReq });
@@ -337,6 +337,7 @@ try {
   const helperIds = [...fx.created.helperIds, zero].join(",");
   leftovers.prices = (await db(`helper_service_prices?helper_id=in.(${helperIds})&select=id`)).length;
   leftovers.snapshots = (await db(`request_price_snapshots?helper_id=in.(${helperIds})&select=request_id`)).length;
+  leftovers.selections = (await db(`request_price_selections?helper_id=in.(${helperIds})&select=id`)).length;
   leftovers.assignments = (await db(`request_assignments?helper_id=in.(${helperIds})&select=id`)).length;
   leftovers.authUsers = 0;
   for (const id of fx.created.authUserIds) { const r = await fetch(`${supabaseUrl}/auth/v1/admin/users/${id}`, { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } }); if (r.status === 200) leftovers.authUsers += 1; }
