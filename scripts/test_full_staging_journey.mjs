@@ -203,13 +203,38 @@ try {
   if (repeatedComplete.status === 200 && repeatedCompleteBody.idempotent === true) pass("Duplicate COMPLETE idempotency"); else fail("Duplicate COMPLETE idempotency", JSON.stringify({ status: repeatedComplete.status, body: repeatedCompleteBody }));
   const assignmentAfterComplete = (await db(`request_assignments?id=eq.${assignmentId}&select=status,completed_at`))[0];
   if (assignmentAfterComplete?.status === "COMPLETED" && assignmentAfterComplete.completed_at) pass("Assignment COMPLETED with service COMPLETED"); else fail("Assignment COMPLETED with service COMPLETED", JSON.stringify(assignmentAfterComplete));
-  // Helper A is released before any settlement. Two compatible requests race for A concurrently.
-  const [raceB, raceC] = await Promise.all([createRequest("RACEBBBB"), createRequest("RACECCCC")]);
-  const raceAssignments = await db(`request_assignments?request_id=in.(${raceB.body.requestId},${raceC.body.requestId})&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=request_id,helper_id`);
-  const helperAActive = await db(`request_assignments?helper_id=eq.${helperA.helper.id}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,request_id`);
-  if (raceAssignments.some((row) => row.helper_id === helperA.helper.id)) pass("Helper reusable before SETTLED (rematched)"); else fail("Helper reusable before SETTLED (rematched)", JSON.stringify({ raceAssignments, b: raceB.body.status, c: raceC.body.status }));
-  if (helperAActive.length === 1 && raceAssignments.filter((row) => row.helper_id === helperA.helper.id).length === 1 && new Set(raceAssignments.map((row) => row.helper_id)).size === raceAssignments.length) pass("Concurrent double assignment prevented"); else fail("Concurrent double assignment prevented", JSON.stringify({ helperAActive, raceAssignments }));
-  if ((await db(`service_requests?id=eq.${request.body.requestId}&select=status`))[0]?.status === "COMPLETED" && (await db(`referral_rewards?qualifying_request_id=eq.${request.body.requestId}&select=id`)).length === 0) pass("Helper release does not settle or reward"); else fail("Helper release does not settle or reward", "request moved or reward created");
+  // Helper release happens at service COMPLETED: A is not settled yet. Helper B goes off duty so
+  // helper A (H) is the only compatible candidate for everything below.
+  await db(`helpers?id=eq.${helperB.helper.id}`, "PATCH", { on_duty: false });
+  try {
+    const reuse = await createRequest("REUSEBBB");
+    const reuseAssignment = (await db(`request_assignments?request_id=eq.${reuse.body.requestId}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,helper_id`))[0];
+    const aStillCompleted = (await db(`service_requests?id=eq.${request.body.requestId}&select=status`))[0]?.status === "COMPLETED";
+    if (reuse.body.status === "MATCHED" && reuseAssignment?.helper_id === helperA.helper.id && aStillCompleted) pass("Helper reusable before SETTLED (rematched)"); else fail("Helper reusable before SETTLED (rematched)", JSON.stringify({ status: reuse.body.status, reuseAssignment, aStillCompleted }));
+    // Finish the second job too, which frees H again through the same atomic path.
+    const reuseAuth = { Authorization: `Bearer ${helperA.accessToken}` };
+    const reuseSteps = [];
+    for (const action of ["accept", "start", "complete"]) reuseSteps.push((await fetch(`${base}/api/helper/assignments/${reuseAssignment?.id}/${action}`, { method: "POST", headers: reuseAuth })).status);
+    const reuseAssignmentAfter = (await db(`request_assignments?id=eq.${reuseAssignment?.id}&select=status`))[0]?.status;
+    if (reuseSteps.every((code) => code === 200) && reuseAssignmentAfter === "COMPLETED") pass("Second job completed; helper released again"); else fail("Second job completed; helper released again", JSON.stringify({ reuseSteps, reuseAssignmentAfter }));
+
+    // Real concurrent race on the staging database: two compatible requests, H the only candidate.
+    const [raceB, raceC] = await Promise.all([createRequest("RACEBBBB"), createRequest("RACECCCC")]);
+    const raceRows = await db(`request_assignments?request_id=in.(${raceB.body.requestId},${raceC.body.requestId})&select=request_id,helper_id,status`);
+    const activeRace = raceRows.filter((row) => ["PENDING", "NOTIFIED", "ACCEPTED"].includes(row.status));
+    const helperAActive = await db(`request_assignments?helper_id=eq.${helperA.helper.id}&status=in.(PENDING,NOTIFIED,ACCEPTED)&select=id,request_id`);
+    const statuses = [raceB.body.status, raceC.body.status].sort();
+    if (statuses[0] === "MATCHED" && statuses[1] === "NO_HELPER_AVAILABLE" && activeRace.length === 1 && activeRace[0].helper_id === helperA.helper.id && helperAActive.length === 1) pass("Concurrent double assignment prevented"); else fail("Concurrent double assignment prevented", JSON.stringify({ statuses, raceRows, helperAActive }));
+    const loser = raceB.body.status === "NO_HELPER_AVAILABLE" ? raceB : raceC;
+    const loserEscalation = await db(`admin_escalations?request_id=eq.${loser.body.requestId}&select=reason,status,admin_notes`);
+    if (loserEscalation.length === 1 && loserEscalation[0].reason === "NO_HELPER_AVAILABLE") pass("Race loser escalated as NO_HELPER_AVAILABLE"); else fail("Race loser escalated as NO_HELPER_AVAILABLE", JSON.stringify(loserEscalation));
+  } finally {
+    await db(`helpers?id=eq.${helperB.helper.id}`, "PATCH", { on_duty: true }).catch(() => {});
+  }
+  const requestARows = await db(`service_requests?id=eq.${request.body.requestId}&select=status`);
+  const conversationAtComplete = await db(`conversations?request_id=eq.${request.body.requestId}&select=status,deletion_scheduled_at`);
+  if (requestARows[0]?.status === "COMPLETED" && (await db(`referral_rewards?qualifying_request_id=eq.${request.body.requestId}&select=id`)).length === 0) pass("Helper release does not settle or reward"); else fail("Helper release does not settle or reward", JSON.stringify(requestARows));
+  if (conversationAtComplete[0]?.status === "ACTIVE" && conversationAtComplete[0]?.deletion_scheduled_at === null) pass("COMPLETED does not schedule conversation cleanup"); else fail("COMPLETED does not schedule conversation cleanup", JSON.stringify(conversationAtComplete));
 
   // C. Customer/helper chat
   const customerSend = await fetch(`${base}/api/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId: request.body.requestId, capability: capability.capability, originalLanguage: "en", originalText: "S3E2E customer original" }) });
@@ -219,6 +244,7 @@ try {
   const customerReadBody = await readResponse(customerRead);
   const messages = await db(`messages?conversation_id=eq.${customerReadBody.conversation?.id}&select=original_text`);
   if (customerSend.status === 200 && helperRead.status === 200 && helperSend.status === 200 && customerRead.status === 200 && messages.some((row) => row.original_text === "S3E2E customer original") && messages.some((row) => row.original_text === "S3E2E helper original")) pass("Customer→Helper chat"); else fail("Customer→Helper chat", JSON.stringify({ customerSend: customerSend.status, helperRead: helperRead.status, helperSend: helperSend.status, customerRead: customerRead.status, messages }));
+  if (customerReadBody.contentDeleted !== true && (customerReadBody.messages || []).length === 2) pass("Chat intact after service COMPLETED"); else fail("Chat intact after service COMPLETED", JSON.stringify(customerReadBody).slice(0, 200));
   const wrongCapability = await fetch(`${base}/api/chat?requestId=${request.body.requestId}&capability=invalid-token`);
   if (wrongCapability.status === 403) pass("Wrong customer capability rejection"); else fail("Wrong customer capability rejection", wrongCapability.status);
   if (!(await (await fetch(`${base}/api/helper/assignments`)).status === 401)) fail("Anonymous helper assignments", "not 401"); else pass("Anonymous helper assignments");
