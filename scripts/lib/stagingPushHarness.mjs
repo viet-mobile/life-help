@@ -89,7 +89,8 @@ export function fixtures(runId) {
 
   /** POST /api/requests as a device (cookie); `claimedCustomerId` lets a test spoof the body. */
   async function createRequest(device, { locale = "en", claimedCustomerId, key = crypto.randomUUID(), label } = {}) {
-    const response = await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": key, ...(device?.cookie ? { Cookie: device.cookie } : {}) }, body: JSON.stringify(requestPayload(claimedCustomerId ?? device?.publicId, locale, label)) });
+    // Migration 014: unpaid creation is internal legacy test compatibility (operator token only).
+    const response = await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": key, Authorization: `Bearer ${settlementToken}`, ...(device?.cookie ? { Cookie: device.cookie } : {}) }, body: JSON.stringify(requestPayload(claimedCustomerId ?? device?.publicId, locale, label)) });
     const body = await readResponse(response);
     if (body.requestId) created.requestIds.add(body.requestId);
     return { status: response.status, body, key };
@@ -123,7 +124,8 @@ export function fixtures(runId) {
   }
   /** Database-level fixture request (service role), for matcher behaviour checks. */
   async function insertRequest(label, { sido: requestSido = sido, service = "boiler", customerId = "DBFIXTUR" } = {}) {
-    const row = (await db("service_requests", "POST", { customer_id: customerId, customer_display_name: `DB FIXTURE ${label}`, service_slug: service, country: "KR", sido: requestSido, gungu: "G1", description: `${runId} ${label}`, status: "SEARCHING" }))[0];
+    // Migration 014: raw fixture rows are explicit legacy (unfunded) auto-match requests.
+    const row = (await db("service_requests", "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: customerId, customer_display_name: `DB FIXTURE ${label}`, service_slug: service, country: "KR", sido: requestSido, gungu: "G1", description: `${runId} ${label}`, status: "SEARCHING" }))[0];
     created.requestIds.add(row.id);
     return row.id;
   }

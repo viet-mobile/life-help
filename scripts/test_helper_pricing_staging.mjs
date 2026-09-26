@@ -22,6 +22,7 @@ import {
   Autopush, base, db, deriveRequestId, env, fixtures, launchChrome, minimalPayload, readResponse, recorder, sleep, subscribe,
   supabaseUrl, serviceKey, trustedClick, waitFor,
 } from "./lib/stagingPushHarness.mjs";
+import { settlementToken } from "./lib/stagingPushHarness.mjs";
 
 const runId = `HP${Date.now()}`;
 const headed = process.argv.includes("--headed");
@@ -42,7 +43,7 @@ const putPrice = (helper, subitem, terms, publish = true) => api("/api/helper/pr
 const priceOf = async (helper, subitem) => (await db(`helper_service_prices?helper_id=eq.${helper.helper.id}&select=*,service_subitems!inner(subitem_code)&service_subitems.subitem_code=eq.${subitem}`))[0];
 const selectOffer = (device, offerToken, key = crypto.randomUUID(), extra = {}, label = "selected") => {
   const payload = { ...fx.requestPayload(device.publicId, "en", label), service_slug: "clog-clearing", offer_token: offerToken, ...extra };
-  return api("/api/requests/selected", { method: "POST", headers: device.cookie ? { Cookie: device.cookie } : {}, body: payload, key }).then(async (r) => ({ ...r, key, requestId: await deriveRequestId(key) }));
+  return api("/api/requests/selected", { method: "POST", headers: { ...(device.cookie ? { Cookie: device.cookie } : {}), Authorization: `Bearer ${settlementToken}` }, body: payload, key }).then(async (r) => ({ ...r, key, requestId: await deriveRequestId(key) }));
 };
 const track = (id) => { if (id) fx.created.requestIds.add(id); return id; };
 const nothingFor = async (requestId) => ({

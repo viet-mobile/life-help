@@ -95,7 +95,7 @@ async function referral(deviceId, referralId) {
 async function createRequest(device, idempotencyKey = crypto.randomUUID()) {
   const response = await fetch(`${base}/api/requests`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey, Cookie: device.cookie },
+    headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey, Cookie: device.cookie, Authorization: `Bearer ${settlementToken}` },
     body: JSON.stringify({
       service_slug: "boiler", customer_id: device.body.referralId, customer_locale: "en", country: "KR",
       sido: `S3-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`,

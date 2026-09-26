@@ -203,7 +203,7 @@ try {
   const orphanKey = crypto.randomUUID();
   const orphanId = await deriveRequestId(orphanKey);
   fx.created.requestIds.add(orphanId);
-  await db("service_requests", "POST", { id: orphanId, ...fx.requestPayload(C.publicId, "en", "orphan"), customer_display_name: `ORPHAN ${runId}`, status: "SEARCHING" });
+  await db("service_requests", "POST", { id: orphanId, ...fx.requestPayload(C.publicId, "en", "orphan"), customer_display_name: `ORPHAN ${runId}`, status: "SEARCHING", request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true });
   const h1BeforeOrphan = autopush.received(h1Ch).length;
   const tReplay = Date.now();
   const replay = await fx.createRequest(C, { key: orphanKey, label: "orphan" });

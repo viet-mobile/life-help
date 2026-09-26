@@ -43,7 +43,7 @@ const reselOffers = (device, requestId, extra = "") => api(`/api/requests/resele
 const reselect = (device, requestId, offerToken, key = crypto.randomUUID(), extra = {}) => api("/api/requests/reselection", { method: "POST", headers: cookieOf(device), key, body: { request_id: requestId, offer_token: offerToken, ...extra } });
 const createSelected = async (device, offerToken, label) => {
   const key = crypto.randomUUID();
-  const r = await api("/api/requests/selected", { method: "POST", headers: cookieOf(device), key, body: { ...fx.requestPayload(device.publicId, "en", label), service_slug: "clog-clearing", offer_token: offerToken } });
+  const r = await api("/api/requests/selected", { method: "POST", headers: { ...cookieOf(device), Authorization: `Bearer ${settlementToken}` }, key, body: { ...fx.requestPayload(device.publicId, "en", label), service_slug: "clog-clearing", offer_token: offerToken } });
   if (r.body.requestId) fx.created.requestIds.add(r.body.requestId);
   return { ...r, key };
 };

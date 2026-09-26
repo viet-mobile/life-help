@@ -129,7 +129,7 @@ try {
   async function buildRequest(device, label, { paymentPending }) {
     const customer = device.referralId;
     const idempotencyKey = crypto.randomUUID();
-    const createBody = await readResponse(await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey, Cookie: device.cookie }, body: JSON.stringify({ service_slug: "boiler", customer_id: customer, customer_locale: "en", country: "KR", sido: `CRT-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`, description: `${runId} ${label} request`, selected_options: ["test"] }) }));
+    const createBody = await readResponse(await fetch(`${base}/api/requests`, { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey, Cookie: device.cookie, Authorization: `Bearer ${settlementToken}` }, body: JSON.stringify({ service_slug: "boiler", customer_id: customer, customer_locale: "en", country: "KR", sido: `CRT-${runId}`, gungu: "G1", dong: "D1", address: `${runId} address`, description: `${runId} ${label} request`, selected_options: ["test"] }) }));
     if (createBody.requestId) created.requestIds.add(createBody.requestId);
     const id = createBody.requestId;
     const assignment = (await db(`request_assignments?request_id=eq.${id}&select=id,helper_id`))[0];
