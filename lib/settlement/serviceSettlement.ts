@@ -28,10 +28,10 @@ export type LifecycleResult =
   | { ok: true; requestId: string; status: string; idempotent: boolean; [key: string]: unknown }
   | { ok: false; httpStatus: number; code: string; currentStatus?: string };
 
-type RequestRow = { id: string; customer_id: string; status: string; selection_mode: string };
+type RequestRow = { id: string; customer_id: string; status: string; selection_mode: string; funding_payment_intent_id: string | null };
 
 async function loadRequest(client: SupabaseClient, requestId: string): Promise<RequestRow | null> {
-  const { data, error } = await client.from("service_requests").select("id, customer_id, status, selection_mode").eq("id", requestId).maybeSingle();
+  const { data, error } = await client.from("service_requests").select("id, customer_id, status, selection_mode, funding_payment_intent_id").eq("id", requestId).maybeSingle();
   return error || !data ? null : (data as RequestRow);
 }
 
@@ -80,6 +80,8 @@ export async function markPaymentPending(client: SupabaseClient, requestId: stri
   if (!row) return { ok: false, httpStatus: 404, code: "REQUEST_NOT_FOUND" };
   if (row.status === "PAYMENT_PENDING") return { ok: true, requestId, status: row.status, idempotent: true };
   if (row.status !== "COMPLETED") return { ok: false, httpStatus: 409, code: "INVALID_TRANSITION", currentStatus: row.status };
+  // Prepaid request: only the customer's "서비스 완료" (confirm_service_completion) moves it on.
+  if (row.funding_payment_intent_id) return { ok: false, httpStatus: 409, code: "CUSTOMER_CONFIRMATION_REQUIRED", currentStatus: row.status };
   // A customer-selected request is paid at its CURRENT accepted price selection; without one it
   // cannot enter payment (a declined Helper's ended selection is history, never the price).
   const agreedPrice = await agreedPriceFor(client, row);
@@ -131,6 +133,11 @@ async function qualifyReferralReward(client: SupabaseClient, requestId: string, 
 export async function settleServiceRequest(client: SupabaseClient, requestId: string, actor: PlatformActor): Promise<LifecycleResult> {
   const row = await loadRequest(client, requestId);
   if (!row) return { ok: false, httpStatus: 404, code: "REQUEST_NOT_FOUND" };
+  // Prepaid request: settled only once the Helper payout is confirmed by the payout rail.
+  if (row.funding_payment_intent_id && row.status === "PAYMENT_PENDING") {
+    const { data: obligation } = await client.from("payout_obligations").select("status").eq("request_id", requestId).eq("kind", "HELPER_SERVICE").maybeSingle();
+    if (obligation?.status !== "PAID") return { ok: false, httpStatus: 409, code: "PAYOUT_NOT_CONFIRMED", currentStatus: row.status };
+  }
   let won = false;
   let status = row.status;
   if (row.status === "PAYMENT_PENDING") {

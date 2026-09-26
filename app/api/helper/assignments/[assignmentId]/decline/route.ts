@@ -26,6 +26,11 @@ export async function POST(_request: Request, context: { params: Promise<{ assig
   // Migration 013 moved the request to CUSTOMER_RESELECTION_REQUIRED, ended the price selection and
   // wrote the customer's in-app notice; the customer now explicitly chooses a fresh offer.
   // (The selection_mode read keeps the same answer for any request released before 013.)
+  // Migration 014: an accepted CUSTOMER_OFFER_OPEN request re-opens to eligible Helpers at the SAME
+  // funded customer offer (the declining Helper is excluded); no automatic assignment, no new price.
+  if (release.customer_offer_reopened === true) {
+    return NextResponse.json({ success: true, release, matching: { success: false, code: "CUSTOMER_OFFER_REOPENED" } }, { headers: { "Cache-Control": "no-store" } });
+  }
   const { data: requestRow } = await resolved.value.client.from("service_requests").select("selection_mode").eq("id", release.request_id).maybeSingle();
   if (release.customer_reselection_required === true || (release.request_reopened && requestRow?.selection_mode === "CUSTOMER_SELECTED")) {
     // Generic best-effort push to the owning customer device: no price, no Helper, no address.

@@ -3,6 +3,7 @@ import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 import { IDEMPOTENCY_HEADER } from "@/lib/request/idempotencyKey";
 import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
 import { resolveCustomerOwner } from "@/lib/request/customerOwner";
+import { refuseUnlessLegacyTestCompat } from "@/lib/request/prepaidGate";
 import {
   MAX_REQUEST_BODY_BYTES,
   submitServiceRequest,
@@ -31,6 +32,9 @@ function respond(httpStatus: number, body: CreateRequestApiResponse, replayed = 
  * (see submitServiceRequest for the exact semantics).
  */
 export async function POST(request: Request) {
+  // Prepaid invariant: unpaid creation is internal legacy test compatibility only (operator token).
+  const refused = await refuseUnlessLegacyTestCompat(request);
+  if (refused) return refused;
   const key = validateIdempotencyKey(request.headers.get(IDEMPOTENCY_HEADER));
   if (!key.ok) {
     return respond(key.error.httpStatus, key.error.body);

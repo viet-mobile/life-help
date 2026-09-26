@@ -36,7 +36,7 @@ export type PriceHistoryEntry = {
   endedAt: string | null;
 };
 
-const SELECTION_FIELDS = "selection_version, status, ended_reason, currency, initial_payable_amount, pricing_mode, quote_required, service_code, subitem_code, accepted_at, ended_at";
+const SELECTION_FIELDS = "selection_version, status, ended_reason, currency, initial_payable_amount, pricing_mode, quote_required, service_code, subitem_code, accepted_at, ended_at, source_kind";
 
 type SelectionRow = {
   selection_version: number; status: "ACCEPTED" | "ENDED"; ended_reason: string | null; currency: string; initial_payable_amount: number | string;

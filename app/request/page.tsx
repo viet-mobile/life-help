@@ -4,8 +4,10 @@ import { useSearchParams } from "next/navigation";
 import { getCustomerDeviceId, getReferralParam } from "@/lib/referral/clientDeviceId";
 import { PriceOfferPicker } from "@/components/request/PriceOfferPicker";
 import { ReselectionPanel } from "@/components/request/ReselectionPanel";
+import { CheckoutPanel } from "@/components/request/CheckoutPanel";
+import { CustomerOfferForm, type CustomerOfferInput } from "@/components/request/CustomerOfferForm";
 import { formatMoney } from "@/lib/pricing/pricingTerms";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -21,7 +23,6 @@ import {
 } from "@/lib/region/regionLocalization";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
 import { getOrCreateCustomerId } from "@/lib/id/userIdentifier";
-import { IDEMPOTENCY_HEADER, createIdempotencyKey } from "@/lib/request/idempotencyKey";
 import { languages } from "@/messages";
 
 // Result of POST /api/requests. Matching is decided solely by the DB match_and_assign_helper RPC.
@@ -43,7 +44,10 @@ type LiveRequestStatus =
   | "CANCELLED"
   | "EXPIRED"
   | "NO_HELPER_AVAILABLE"
-  | "CUSTOMER_RESELECTION_REQUIRED";
+  | "CUSTOMER_RESELECTION_REQUIRED"
+  | "OPEN_FOR_HELPERS";
+
+type ActiveCheckout = { checkoutId: string; mode: "HELPER_PRICE_SELECTED" | "CUSTOMER_OFFER_OPEN"; fiatCurrency: string; fiatAmount: number };
 
 type PendingReselection = { requestId: string; serviceCode: string; subitemCode: string };
 type AgreedPrice = { currency: string; initialPayableAmount: number; selectionVersion: number | null };
@@ -274,11 +278,15 @@ function RequestPageContent() {
   const [submitResult, setSubmitResult] = useState<RequestSubmitResult | null>(null);
   const [liveStatus, setLiveStatus] = useState<LiveRequestStatus | null>(null);
   const [agreedPrice, setAgreedPrice] = useState<AgreedPrice | null>(null);
+  // Prepaid flow (migration 014): a request exists only after its checkout was paid and verified.
+  const [checkout, setCheckout] = useState<ActiveCheckout | null>(null);
+  const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
+  const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
+  const [completionRequired, setCompletionRequired] = useState(false);
+  const [ownerAction, setOwnerAction] = useState<"COMPLETED" | "CANCELLED" | null>(null);
   // This device's requests whose selected Helper could not take them (owner cookie decides).
   const [pendingReselections, setPendingReselections] = useState<PendingReselection[]>([]);
   const [submitError, setSubmitError] = useState<RequestSubmitError | null>(null);
-  // Idempotency key of the current logical submission, bound to the exact payload it was created for.
-  const pendingSubmissionRef = useRef<{ key: string; payloadJson: string } | null>(null);
 
   useEffect(() => {
     if (submitResult?.status !== "MATCHED" || !submitResult.capability) return;
@@ -291,6 +299,8 @@ function RequestPageContent() {
         setLiveStatus(data.status as LiveRequestStatus);
         // The CURRENT accepted price selection is the agreed price (earlier versions are history).
         setAgreedPrice(data.agreedPrice && typeof data.agreedPrice.initialPayableAmount === "number" ? data.agreedPrice : null);
+        setPaymentStatus(typeof data.paymentStatus === "string" ? data.paymentStatus : null);
+        setCompletionRequired(data.completionConfirmationRequired === true);
       }
     };
     void refresh();
@@ -371,106 +381,41 @@ function RequestPageContent() {
     setAddress(localized);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Prepayment is required (migration 014): the form itself never creates a request. A request is
+  // created only by a paid checkout (Helper price, or the customer's own offer).
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitRequest();
   };
 
-  // offerToken: the customer confirmed one displayed helper offer (CUSTOMER_SELECTED path). Only the
-  // opaque token is sent; helper, price, currency and terms are resolved by the server.
-  const submitRequest = async (offerToken?: string) => {
+  const startCheckout = async (modeFields: Record<string, unknown>) => {
     if (isSubmitting) return;
-
-    // Once the server reports an existing request (requestId), keep re-sending that exact submission
-    // with its key: the server replays its current result and never creates a second request.
-    const existing = submitError?.requestId ? pendingSubmissionRef.current : null;
-    if (!existing && !problemDescription.trim()) {
-      setSubmitError({ code: "VALIDATION_ERROR" });
-      return;
-    }
+    if (!problemDescription.trim()) { setSubmitError({ code: "VALIDATION_ERROR" }); return; }
     setIsSubmitting(true);
     setSubmitError(null);
-
-    // The original description is sent unmodified; the server stores it as-is.
-    // Helper-language translation of the first message is deferred to P2-5/P2-6.
-    if (!existing && !publicUserId) {
-      setSubmitError({ code: "IDENTITY_UNAVAILABLE" });
-      setIsSubmitting(false);
-      return;
+    const response = await fetch("/api/checkouts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        service_slug: selectedSlug, customer_locale: locale, country: selectedRegion.country || "KR", sido: selectedRegion.sido,
+        gungu: selectedRegion.gungu, dong: selectedRegion.dong || "", address: address.trim(), description: problemDescription,
+        selected_options: selectedProblemOptions, ...modeFields,
+      }),
+    }).catch(() => null);
+    const data = await response?.json().catch(() => null);
+    setIsSubmitting(false);
+    if (data?.success === true && typeof data.checkoutId === "string") {
+      setCheckout({ checkoutId: data.checkoutId, mode: data.mode, fiatCurrency: data.fiatCurrency, fiatAmount: Number(data.fiatAmount) });
+    } else {
+      setSubmitError({ code: typeof data?.code === "string" ? data.code : "REQUEST_FAILED" });
     }
-    const payloadJson =
-      existing?.payloadJson ??
-      JSON.stringify({
-        service_slug: selectedSlug,
-        customer_id: publicUserId,
-        customer_locale: locale,
-        country: selectedRegion.country || "KR",
-        sido: selectedRegion.sido,
-        gungu: selectedRegion.gungu,
-        dong: selectedRegion.dong || "",
-        address: address.trim(),
-        description: problemDescription,
-        selected_options: selectedProblemOptions,
-        ...(offerToken ? { offer_token: offerToken } : {}),
-      });
-    // Same logical submission (identical payload) reuses its key; any edit starts a new submission.
-    if (pendingSubmissionRef.current?.payloadJson !== payloadJson) {
-      pendingSubmissionRef.current = { key: createIdempotencyKey(), payloadJson };
-    }
+  };
 
-    try {
-      const submissionKey = pendingSubmissionRef.current?.key;
-      if (!submissionKey) {
-        setSubmitError({ code: "REQUEST_KEY_UNAVAILABLE" });
-        setIsSubmitting(false);
-        return;
-      }
-      const requestInit = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          [IDEMPOTENCY_HEADER]: submissionKey,
-        },
-        body: payloadJson,
-      };
-      const isSelectedOffer = typeof (JSON.parse(payloadJson) as { offer_token?: unknown }).offer_token === "string";
-      const res = isSelectedOffer
-        ? await fetch("/api/requests/selected", requestInit)
-        : await fetch("/api/requests", requestInit);
-      const data = await res.json().catch(() => null);
-      // A rejected submission is final for its key; the next attempt gets a fresh one.
-      if (res.status === 400 || res.status === 409) pendingSubmissionRef.current = null;
-
-      if (data?.success === true && data.status === "MATCHED") {
-        const capabilityResponse = await fetch("/api/requests/capability", {
-          method: "POST",
-          headers: { [IDEMPOTENCY_HEADER]: submissionKey },
-        });
-        const capabilityData = await capabilityResponse.json().catch(() => null);
-        setSubmitResult({
-          status: "MATCHED",
-          requestId: data.requestId,
-          assignmentId: data.assignmentId,
-          conversationId: data.conversationId,
-          capability: typeof capabilityData?.capability === "string" ? capabilityData.capability : undefined,
-        });
-        setLiveStatus("MATCHED");
-      } else if (data?.success === true && data.status === "NO_HELPER_AVAILABLE") {
-        setSubmitResult({
-          status: "NO_HELPER_AVAILABLE",
-          requestId: data.requestId,
-          subReason: data.subReason,
-        });
-      } else {
-        setSubmitError({
-          code: typeof data?.code === "string" ? data.code : "REQUEST_FAILED",
-          requestId: typeof data?.requestId === "string" ? data.requestId : undefined,
-        });
-      }
-    } catch {
-      setSubmitError({ code: "NETWORK_ERROR" });
-    } finally {
-      setIsSubmitting(false);
+  const ownerRequestAction = async (requestId: string, action: "complete" | "cancel") => {
+    const response = await fetch(`/api/requests/${requestId}/${action}`, { method: "POST" }).catch(() => null);
+    const data = await response?.json().catch(() => null);
+    if (data?.success === true) {
+      setOwnerAction(action === "complete" ? "COMPLETED" : "CANCELLED");
+      setCompletionRequired(false);
     }
   };
 
@@ -506,13 +451,15 @@ function RequestPageContent() {
     if (status === "CLOSED") return t("request.statusClosed") || status;
     if (status === "NO_HELPER_AVAILABLE") return t("admin.noHelpers") || status;
     if (status === "CUSTOMER_RESELECTION_REQUIRED") return t("request.statusReselectionRequired") || status;
+    if (status === "OPEN_FOR_HELPERS") return t("marketplace.openRequest") || status;
     return status;
   };
 
   if (submitResult) {
     const needsReselection = liveStatus === "CUSTOMER_RESELECTION_REQUIRED";
     const reselection = pendingReselections.find((item) => item.requestId === submitResult.requestId);
-    const isMatched = submitResult.status === "MATCHED" && !needsReselection;
+    const isOpenOffer = liveStatus === "OPEN_FOR_HELPERS";
+    const isMatched = submitResult.status === "MATCHED" && !needsReselection && !isOpenOffer;
     return (
       <main className="min-h-screen bg-linear-to-b from-sky-50/40 via-amber-50/20 to-indigo-50/30">
         <header className="border-b border-slate-200/80 bg-white/85 backdrop-blur-md sticky top-0 z-20 shadow-2xs">
@@ -526,11 +473,13 @@ function RequestPageContent() {
 
         <section className="mx-auto max-w-3xl px-4 sm:px-5 py-8 sm:py-10">
           <div className="droplet-card bg-white p-6 sm:p-8 text-center shadow-sm border border-slate-200/90">
-            <div className="text-5xl">{needsReselection ? "🔁" : isMatched ? "✅" : "🕒"}</div>
+            <div className="text-5xl">{needsReselection ? "🔁" : isOpenOffer ? "📣" : isMatched ? "✅" : "🕒"}</div>
             {/* Only ko + en copy for now; full 38-language strings are P2-8. */}
             <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-snug whitespace-pre-line">
               {needsReselection
                 ? t("reselection.title")
+                : isOpenOffer
+                ? t("marketplace.openRequest")
                 : isMatched
                 ? formatBilingual("A helper has been assigned.", "헬퍼가 배정되었습니다.", "\n")
                 : formatBilingual(
@@ -542,6 +491,8 @@ function RequestPageContent() {
             <p className="mt-3 text-sm sm:text-base leading-relaxed font-medium text-slate-600 whitespace-pre-line">
               {needsReselection
                 ? t("reselection.body")
+                : isOpenOffer
+                ? t("payment.held")
                 : isMatched
                 ? formatBilingual(
                     "The helper for your region and service has been notified. The live chat connection will open here once it is ready.",
@@ -568,6 +519,27 @@ function RequestPageContent() {
               <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-black text-amber-900">
                 <span>{getLiveStatusLabel(liveStatus)}</span>
               </div>
+            )}
+            {paymentStatus && (
+              <p data-testid="payment-status" className="mt-3 inline-flex rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-900">
+                {paymentStatus === "REFUND_PENDING" || ownerAction === "CANCELLED" ? t("payment.refundPending")
+                  : paymentStatus === "RELEASE_AUTHORIZED" || paymentStatus === "PAYOUT_PROCESSING" || ownerAction === "COMPLETED" ? t("payment.payoutStarted")
+                  : t("payment.held")}
+              </p>
+            )}
+            {completionRequired && ownerAction === null && (
+              <div data-testid="completion-confirm" className="mt-4 droplet-card border-2 border-emerald-500 bg-emerald-50 p-4 text-left">
+                <p className="text-sm font-black text-emerald-950">{t("payment.confirmServiceComplete")}</p>
+                <p className="mt-1 text-xs font-bold text-emerald-900">{t("payment.completionNotice")}</p>
+                <button type="button" data-testid="completion-confirm-button" onClick={() => void ownerRequestAction(submitResult.requestId, "complete")} className="mt-3 droplet-btn bg-emerald-700 px-4 py-2 text-sm font-black text-white">
+                  {t("payment.serviceComplete")}
+                </button>
+              </div>
+            )}
+            {(isOpenOffer || needsReselection) && paymentStatus === "PAID_HELD" && ownerAction === null && (
+              <button type="button" data-testid="request-cancel" onClick={() => void ownerRequestAction(submitResult.requestId, "cancel")} className="mt-4 droplet-btn border border-red-300 bg-white px-4 py-2 text-xs font-black text-red-800">
+                {t("payment.cancelRequest")}
+              </button>
             )}
             {isMatched && agreedPrice && (
               <p data-testid="agreed-price" className="mt-3 text-sm font-black text-slate-900">
@@ -898,16 +870,18 @@ function RequestPageContent() {
               <label className="block text-sm sm:text-base font-bold text-slate-900">
                 {formatBilingual(t("request.photosLabel"), "사진을 첨부해 주세요")}
               </label>
+              <p data-testid="customer-media-notice" className="mt-1 text-[11px] font-semibold leading-relaxed text-slate-600">{t("media.customerNotice")}</p>
 
               <input
                 id="photos"
                 type="file"
-                accept="image/*"
+                accept="image/*,video/*"
                 multiple
                 className="sr-only"
-                onChange={({ target }) =>
-                  setSelectedFileNames(Array.from(target.files ?? [], ({ name }) => name))
-                }
+                onChange={({ target }) => {
+                  setSelectedFileNames(Array.from(target.files ?? [], ({ name }) => name));
+                  setAttachedFiles(Array.from(target.files ?? []).slice(0, 10));
+                }}
               />
 
               <label
@@ -999,8 +973,30 @@ function RequestPageContent() {
             gungu={selectedRegion.gungu}
             disabled={isSubmitting}
             errorCode={submitError?.code ?? null}
-            onConfirm={(token) => void submitRequest(token)}
+            onConfirm={(token) => void startCheckout({ mode: "HELPER_PRICE_SELECTED", offer_token: token })}
           />
+
+          <CustomerOfferForm
+            serviceSlug={selectedSlug}
+            currency="KRW"
+            disabled={isSubmitting}
+            onSubmit={(input: CustomerOfferInput) => void startCheckout({ mode: "CUSTOMER_OFFER_OPEN", subitem_code: input.subitemCode, offer: input.offer })}
+          />
+
+          {checkout && (
+            <CheckoutPanel
+              key={checkout.checkoutId}
+              checkoutId={checkout.checkoutId}
+              mode={checkout.mode}
+              fiatCurrency={checkout.fiatCurrency}
+              fiatAmount={checkout.fiatAmount}
+              files={attachedFiles}
+              onActivated={({ requestId, capability }) => {
+                setSubmitResult({ status: "MATCHED", requestId, assignmentId: "", conversationId: "", capability: capability ?? undefined });
+                setLiveStatus(checkout.mode === "CUSTOMER_OFFER_OPEN" ? "OPEN_FOR_HELPERS" : "MATCHED");
+              }}
+            />
+          )}
 
           {submitError && (
             <div
@@ -1011,22 +1007,7 @@ function RequestPageContent() {
             </div>
           )}
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`droplet-btn-lg w-full ${theme.btnBg} px-6 py-3.5 sm:py-4 text-base sm:text-lg font-black text-white shadow-md transition-all duration-200 hover:shadow-lg active:scale-[0.98] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
-          >
-            {isSubmitting ? (
-              <>
-                <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                <span>{formatBilingual(t("request.translatingAndSubmitting") || "번역 및 접수 중...", "번역 및 접수 중...")}</span>
-              </>
-            ) : submitError?.requestId ? (
-              formatBilingual("Check request status", "처리 상태 확인")
-            ) : (
-              formatBilingual(t("request.submitButton"), "서비스 신청하기")
-            )}
-          </button>
+          {/* Unpaid direct submission retired (prepaid invariant): use a Helper price or your own offer above. */}
         </form>
       </section>
 

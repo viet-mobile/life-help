@@ -15,6 +15,7 @@ const suites = [
   "test_request_api_static", "test_service_lifecycle_static", "test_settlement_lifecycle", "test_helper_release_db",
   "test_assignment_release_static", "test_push_subscriptions_db", "test_rematch_exclusion_db", "test_web_push", "test_customer_ownership",
   "test_helper_pricing_db", "test_helper_pricing_app", "test_customer_reselection_db",
+  "test_marketplace_prepay_db", "test_payment_rail_app",
 ];
 let failed = 0;
 for (const suite of suites) {

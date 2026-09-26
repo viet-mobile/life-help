@@ -128,7 +128,7 @@ check("Decline -> customer re-selection push is generic (RESELECTION_REQUIRED ev
 const priceAuth = code("lib/pricing/requestPrice.ts");
 check("Price authority: current ACCEPTED selection first; legacy snapshot only when no selection exists", priceAuth.indexOf('row.status === "ACCEPTED"') < priceAuth.indexOf("request_price_snapshots") && priceAuth.includes("if (selections.length) return null;"));
 const page = read("app/request/page.tsx");
-check("Request page sends only the opaque offer token for a selected offer", page.includes("...(offerToken ? { offer_token: offerToken } : {})") && !/offer_(price|amount|currency|helper)/.test(page) && page.includes('fetch("/api/requests/selected", requestInit)'));
+check("Request page sends only the opaque offer token for a selected offer (prepaid checkout)", page.includes('startCheckout({ mode: "HELPER_PRICE_SELECTED", offer_token: token })') && !/offer_(price|amount|currency|helper)/.test(page) && !page.includes('fetch("/api/requests/selected"'));
 const picker = read("components/request/PriceOfferPicker.tsx");
 check("Picker shows terms before confirming and confirms with the token only", picker.includes("pricing.confirmTitle") && picker.includes("onConfirm(chosen.offerToken)") && picker.includes("pricing.diagnosticNotice") && picker.includes("pricing.approvalNotice"));
 const pricingSources = ["lib/pricing/pricingTerms.ts", "lib/pricing/offerToken.ts", "app/api/pricing/offers/route.ts", "app/api/pricing/catalog/route.ts", "app/api/helper/prices/route.ts", "app/api/requests/selected/route.ts", "components/tech/HelperPricingPanel.tsx", "components/request/PriceOfferPicker.tsx"].map(code).join("\n");

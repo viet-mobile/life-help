@@ -22,7 +22,7 @@ import { sendWebPush, type VapidKeys } from "@/lib/push/webPushCrypto";
 const STAGING_REF: string = "wreebowcbiymodswajwe";
 const DEFAULT_SUBJECT = "https://life.help";
 
-export type PushEvent = "HELPER_ASSIGNED" | "SERVICE_STATUS" | "RESELECTION_REQUIRED" | "STAGING_TEST";
+export type PushEvent = "HELPER_ASSIGNED" | "SERVICE_STATUS" | "RESELECTION_REQUIRED" | "COMPLETION_CONFIRMATION_REQUESTED" | "OPEN_CUSTOMER_OFFER" | "PAYOUT_UPDATE" | "STAGING_TEST";
 export type PushTarget = { ownerType: "HELPER"; helperId: string } | { ownerType: "CUSTOMER"; customerIdentityId: string };
 export type PushReport = { attempted: number; delivered: number; invalidated: number; failed: number };
 
@@ -31,6 +31,12 @@ const EVENT_TEXT: Record<PushEvent, { title: string; body: string }> = {
   SERVICE_STATUS: { title: "push.customerUpdateTitle", body: "push.customerUpdateBody" },
   // Selected Helper declined / timed out: generic "please choose another Helper" only.
   RESELECTION_REQUIRED: { title: "push.reselectionTitle", body: "push.reselectionBody" },
+  // Helper marked the work done: ask the customer to confirm "service complete" (no price / ids).
+  COMPLETION_CONFIRMATION_REQUESTED: { title: "push.completionTitle", body: "push.completionBody" },
+  // A funded customer offer an eligible Helper may accept (no amount / address in the payload).
+  OPEN_CUSTOMER_OFFER: { title: "push.openOfferTitle", body: "push.openOfferBody" },
+  // Payout instruction created / payout confirmed for the Helper (no amount in the payload).
+  PAYOUT_UPDATE: { title: "push.payoutTitle", body: "push.payoutBody" },
   STAGING_TEST: { title: "push.testTitle", body: "push.testBody" },
 };
 
@@ -62,7 +68,8 @@ export async function getPublicPushConfig(): Promise<{ enabled: boolean; publicK
 export function buildPushPayload(event: PushEvent, locale: string | null | undefined): string {
   const lang: Locale = isValidLocale(locale) ? locale : "en";
   const text = EVENT_TEXT[event];
-  const audience = event === "HELPER_ASSIGNED" ? "helper" : event === "SERVICE_STATUS" || event === "RESELECTION_REQUIRED" ? "customer" : "any";
+  const audience = event === "HELPER_ASSIGNED" || event === "OPEN_CUSTOMER_OFFER" || event === "PAYOUT_UPDATE" ? "helper"
+    : event === "SERVICE_STATUS" || event === "RESELECTION_REQUIRED" || event === "COMPLETION_CONFIRMATION_REQUESTED" ? "customer" : "any";
   const url = audience === "helper" ? "/tech/assignments" : "/request";
   return JSON.stringify({ v: 1, type: event, audience, title: translate(lang, text.title), body: translate(lang, text.body), url, tag: `life-help-${event.toLowerCase()}` });
 }
@@ -113,7 +120,7 @@ export async function pushHelperAssignment(client: SupabaseClient, requestId: st
  * Customer lifecycle update: push to the device identity that owns the request's customer id.
  * The identity is looked up server-side; the client never names the recipient.
  */
-export async function pushCustomerStatus(client: SupabaseClient, requestId: string, event: "SERVICE_STATUS" | "RESELECTION_REQUIRED" = "SERVICE_STATUS"): Promise<PushReport | null> {
+export async function pushCustomerStatus(client: SupabaseClient, requestId: string, event: "SERVICE_STATUS" | "RESELECTION_REQUIRED" | "COMPLETION_CONFIRMATION_REQUESTED" = "SERVICE_STATUS"): Promise<PushReport | null> {
   try {
     const { data: request } = await client.from("service_requests").select("customer_id, customer_locale").eq("id", requestId).maybeSingle();
     if (!request?.customer_id) return null;
@@ -123,6 +130,20 @@ export async function pushCustomerStatus(client: SupabaseClient, requestId: stri
   } catch {
     return null;
   }
+}
+
+/** Generic push to specific Helpers (bounded by the caller; the in-app feed stays authoritative). */
+export async function pushHelpers(client: SupabaseClient, helperIds: string[], event: "OPEN_CUSTOMER_OFFER" | "PAYOUT_UPDATE"): Promise<number> {
+  let delivered = 0;
+  for (const helperId of helperIds.slice(0, 50)) {
+    try {
+      const { data: helper } = await client.from("helpers").select("id, primary_locale").eq("id", helperId).maybeSingle();
+      if (helper) delivered += (await deliverPush(client, { ownerType: "HELPER", helperId: helper.id }, event, helper.primary_locale)).delivered;
+    } catch {
+      // best effort
+    }
+  }
+  return delivered;
 }
 
 /** Runs push after the response when the Worker context allows it; errors never propagate. */

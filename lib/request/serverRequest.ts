@@ -404,6 +404,10 @@ export async function submitServiceRequest(
     description: input.description,
     selected_options: input.selected_options,
     status: "SEARCHING",
+    // Migration 014: explicit mode; unpaid rows exist only as internal legacy test compatibility.
+    request_mode: "LEGACY_AUTO_MATCH",
+    selection_mode: "AUTO_MATCH",
+    legacy_unfunded: true,
   });
 
   const isDuplicate = insertError?.code === "23505";

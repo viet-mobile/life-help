@@ -6,6 +6,7 @@ import { formatCustomerDisplayName } from "@/lib/id/customerDisplayName";
 import { readOfferToken } from "@/lib/pricing/offerToken";
 import { dispatchPushInBackground, pushHelperAssignment } from "@/lib/push/pushDelivery";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
+import { refuseUnlessLegacyTestCompat } from "@/lib/request/prepaidGate";
 
 function respond(status: number, body: Record<string, unknown>) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
@@ -26,6 +27,10 @@ const CONFLICT_CODES = new Set(["PRICE_CHANGED", "HELPER_NO_LONGER_AVAILABLE", "
  * / OFFER_UNAVAILABLE). No other helper is ever substituted.
  */
 export async function POST(request: Request) {
+  // Prepaid invariant: customers now go through /api/checkouts (payment first). This unpaid path is
+  // internal legacy test compatibility only (operator token; rows marked legacy_unfunded).
+  const refused = await refuseUnlessLegacyTestCompat(request);
+  if (refused) return refused;
   const key = validateIdempotencyKey(request.headers.get(IDEMPOTENCY_HEADER));
   if (!key.ok) return respond(key.error.httpStatus, key.error.body as Record<string, unknown>);
 

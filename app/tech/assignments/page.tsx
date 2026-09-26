@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { DbAssignmentPanel } from "@/components/tech/DbAssignmentPanel";
 import { HelperPricingPanel } from "@/components/tech/HelperPricingPanel";
+import { HelperOpenOffersPanel } from "@/components/tech/HelperOpenOffersPanel";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { useLocale } from "@/lib/i18n/LocaleContext";
@@ -20,6 +21,7 @@ export default function HelperAssignmentsPage() {
           <LanguageSwitcher />
         </header>
         <DbAssignmentPanel formatBilingual={formatBilingual} />
+        <HelperOpenOffersPanel />
         <HelperPricingPanel formatBilingual={formatBilingual} />
         <p className="text-center text-xs font-semibold text-slate-500">
           {formatBilingual("Sign in with your LIFE.HELP account to view assignments.", "LIFE.HELP 계정으로 로그인하면 배정 요청을 확인할 수 있습니다.")}

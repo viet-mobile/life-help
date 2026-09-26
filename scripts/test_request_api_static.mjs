@@ -300,7 +300,9 @@ const exactKeys = (obj, list) => JSON.stringify(Object.keys(obj).sort()) === JSO
   check("11d. insert uses only real service_requests columns (+ id)", exactKeys(
     Object.fromEntries(Object.entries(ins).filter(([k]) => k !== "created_at")),
     ["id", "address", "country", "customer_display_name", "customer_id", "customer_locale", "description",
-      "dong", "gungu", "selected_options", "service_slug", "sido", "status"]));
+      "dong", "gungu", "legacy_unfunded", "request_mode", "selected_options", "selection_mode", "service_slug", "sido", "status"])
+    // Migration 014: the unpaid path is explicit legacy test compatibility only.
+    && ins.request_mode === "LEGACY_AUTO_MATCH" && ins.legacy_unfunded === true);
   check("11e. RPC called exactly once", db.rpcCalls === 1);
 }
 for (const [label, helpers, sub] of [["no helpers", 0, "NO_ELIGIBLE_HELPER"]]) {
@@ -589,9 +591,13 @@ check("S8. recovery route authorizes before any other work",
     recoverRoute.indexOf("authorizeRecoveryRequest(request)") < Math.max(recoverRoute.indexOf("createServiceRoleClient()"), recoverRoute.indexOf("createRuntimeServiceRoleClient()")));
 check("S9. /api/requests requires Idempotency-Key before parsing body",
   route.indexOf("validateIdempotencyKey(") > 0 && route.indexOf("validateIdempotencyKey(") < route.indexOf("request.text()"));
-check("S10. client sends the Idempotency-Key header", /\[IDEMPOTENCY_HEADER\]: (?:pendingSubmissionRef\.current\.key|submissionKey)/.test(page));
-check("S11. client key is random (createIdempotencyKey), not derived from CST id/timestamp",
-  /createIdempotencyKey\(\)/.test(page) && !/Idempotency[^\n]*(customer_id|CustomerId|Date\.now)/.test(page));
+// Migration 014 prepaid invariant: the request page never creates an unpaid request.
+check("S10. request page never posts to the retired unpaid routes (/api/requests, /api/requests/selected)",
+  !/fetch\("\/api\/requests"/.test(page) && !/fetch\("\/api\/requests\/selected"/.test(page));
+check("S11. unpaid creation routes refuse public callers (402 PREPAYMENT_REQUIRED unless operator test compatibility)",
+  route.indexOf("refuseUnlessLegacyTestCompat(request)") > 0 && route.indexOf("refuseUnlessLegacyTestCompat(request)") < route.indexOf("validateIdempotencyKey(")
+  && read("app/api/requests/selected/route.ts").indexOf("refuseUnlessLegacyTestCompat(request)") < read("app/api/requests/selected/route.ts").indexOf("validateIdempotencyKey(")
+  && /PREPAYMENT_REQUIRED/.test(read("lib/request/prepaidGate.ts")) && /status: 402/.test(read("lib/request/prepaidGate.ts")));
 check("S12. recovery re-uses match_and_assign_helper (no duplicated matching SQL/logic)",
   /rpc\("match_and_assign_helper"/.test(recovery) && !/helper_services|helper_regions|\.insert\(|\.update\(|\.delete\(/.test(recovery));
 check("S13. recovery never calls release_assignment_for_rematch",
@@ -606,7 +612,7 @@ for (const banned of ["saveServiceRequest", "createProviderChatSession", "findMa
   check(`L. request path does not use ${banned}`,
     ![page, route, serverReq, recovery, recoverRoute].some((src) => src.includes(banned)));
 }
-check("L2. request page submits via POST /api/requests", /fetch\("\/api\/requests"/.test(page) && /method: "POST"/.test(page));
+check("L2. request page starts requests only via a prepaid checkout (POST /api/checkouts)", /fetch\("\/api\/checkouts"/.test(page) && /method: "POST"/.test(page) && /<CheckoutPanel/.test(page));
 check("L3. request page sends original description unmodified", /description: problemDescription,/.test(page));
 check("L4. no legacy /chat?session link on request page", !/\/chat\?session=/.test(page));
 
@@ -614,7 +620,7 @@ const phase1Diff = execSync("git diff --name-only HEAD -- supabase lib/db utils 
 const allowedMigration = "supabase/migrations/202609260008_payout_destinations.sql";
 const phase1Untracked = execSync("git ls-files --others --exclude-standard -- supabase lib/db utils lib/auth", { cwd: root })
   .toString().trim().split(/\r?\n/).filter(Boolean)
-  .filter((file) => !["supabase/migrations/202609250003_helper_identity_and_accept_assignment.sql", "supabase/migrations/202609250004_referral_core.sql", "supabase/migrations/202609250005_referral_rewards.sql", "supabase/migrations/202609260006_public_user_identity.sql", "supabase/migrations/202609260007_remove_redundant_public_user_identity.sql", "supabase/migrations/202609260008_payout_destinations.sql", "supabase/migrations/202609260009_assignment_completed_release.sql", "supabase/migrations/202609260010_web_push_subscriptions.sql", "supabase/migrations/202609260011_exclude_declined_timeout_from_rematch.sql", "supabase/migrations/202609260012_helper_service_pricing.sql", "supabase/migrations/202609260013_customer_reselection.sql", "supabase/migrations/202609260013_customer_reselection.md"].includes(file));
+  .filter((file) => !["supabase/migrations/202609250003_helper_identity_and_accept_assignment.sql", "supabase/migrations/202609250004_referral_core.sql", "supabase/migrations/202609250005_referral_rewards.sql", "supabase/migrations/202609260006_public_user_identity.sql", "supabase/migrations/202609260007_remove_redundant_public_user_identity.sql", "supabase/migrations/202609260008_payout_destinations.sql", "supabase/migrations/202609260009_assignment_completed_release.sql", "supabase/migrations/202609260010_web_push_subscriptions.sql", "supabase/migrations/202609260011_exclude_declined_timeout_from_rematch.sql", "supabase/migrations/202609260012_helper_service_pricing.sql", "supabase/migrations/202609260013_customer_reselection.sql", "supabase/migrations/202609260013_customer_reselection.md", "supabase/migrations/202609270014_marketplace_prepay_usdc_foundation.sql", "supabase/migrations/202609270014_marketplace_prepay_usdc_foundation.md"].includes(file));
 check("P1. no changes to migrations, lib/db, utils, lib/auth (Phase 1 + admin auth baseline)",
   phase1Diff.split(/\r?\n/).filter((file) => file && file !== allowedMigration).length === 0 && phase1Untracked.length === 0, `${phase1Diff} ${phase1Untracked.join(" ")}`);
 
