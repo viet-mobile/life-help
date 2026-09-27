@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { resolveCustomerOwner } from "@/lib/request/customerOwner";
-import { dispatchHelperPayout } from "@/lib/payments/transfers";
+import { processHelperPayout } from "@/lib/payments/transfers";
 import { dispatchPushInBackground, pushHelpers } from "@/lib/push/pushDelivery";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 
@@ -13,8 +13,8 @@ const CONFLICT = new Set(["SERVICE_NOT_COMPLETED", "PAYMENT_NOT_HELD", "PRICE_AG
  * the request id, a conversation capability or a Helper session never authorizes this.
  * The database, atomically and exactly once: confirmation + RELEASE_AUTHORIZED + one Helper payout
  * obligation (+ any price-difference refund) + media deletion scheduling. Repeats return the same
- * result. The payout instruction is dispatched immediately; it is never reported as paid until the
- * payout rail confirms.
+ * result. The obligation's money job (created in the same transaction) is processed immediately; if
+ * this Worker fails, the durable outbox retries it. Never reported as paid until the rail confirms.
  */
 export async function POST(_request: Request, context: { params: Promise<{ requestId: string }> }) {
   const { requestId } = await context.params;
@@ -30,10 +30,10 @@ export async function POST(_request: Request, context: { params: Promise<{ reque
     return NextResponse.json({ success: false, code }, { status: code === "REQUEST_NOT_FOUND" ? 404 : CONFLICT.has(code) ? 409 : 400 });
   }
   if (!data.replayed && data.payout_obligation_id) {
-    // Payout instruction is committed; submission runs in the background (claimed exactly once).
-    // It is reported as paid only after the chain transfer is finalized (reconciliation).
+    // Inline fast path of the committed money job (leased; the outbox retries anything unfinished).
+    // It is reported as paid only after the chain transfer is finalized and re-verified.
     const obligationId = String(data.payout_obligation_id);
-    await dispatchPushInBackground(() => dispatchHelperPayout(client, obligationId));
+    await dispatchPushInBackground(() => processHelperPayout(client, obligationId));
     const { data: obligation } = await client.from("payout_obligations").select("helper_id").eq("id", obligationId).maybeSingle();
     if (obligation?.helper_id) await dispatchPushInBackground(() => pushHelpers(client, [obligation.helper_id as string], "PAYOUT_UPDATE"));
   }

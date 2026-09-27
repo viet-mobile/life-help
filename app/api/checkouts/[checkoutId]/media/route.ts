@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { resolveCustomerOwner } from "@/lib/request/customerOwner";
-import { ALLOWED_MEDIA_TYPES, MAX_MEDIA_BYTES, uploadPrivateMedia } from "@/lib/media/mediaStorage";
+import { ALLOWED_MEDIA_TYPES, MAX_MEDIA_BYTES, removePrivateMedia, uploadPrivateMedia } from "@/lib/media/mediaStorage";
 import { createRuntimeServiceRoleClient } from "@/lib/supabase/serviceRole";
 
 /**
@@ -31,6 +31,10 @@ export async function POST(request: Request, context: { params: Promise<{ checko
     p_checkout_id: checkoutId, p_customer_id: owner.owner.customerId, p_storage_provider: storageProvider, p_object_key: stored.objectKey,
     p_content_type: contentType, p_byte_size: bytes.byteLength,
   });
-  if (!data?.success) return NextResponse.json({ success: false, code: data?.code ?? "MEDIA_REJECTED" }, { status: 409 });
+  if (!data?.success) {
+    // Not registered (checkout ended meanwhile, limit, ...): never leave an orphan object in storage.
+    await removePrivateMedia(client, stored.objectKey);
+    return NextResponse.json({ success: false, code: data?.code ?? "MEDIA_REJECTED" }, { status: 409 });
+  }
   return NextResponse.json({ success: true, mediaId: data.media_id }, { status: 201, headers: { "Cache-Control": "no-store" } });
 }

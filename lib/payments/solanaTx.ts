@@ -172,6 +172,12 @@ export async function signTransaction(message: Uint8Array, requiredSigners: stri
 // ---------------------------------------------------------------------------------------------
 // Devnet-only RPC (genesis-hash verified before any signing / sending)
 // ---------------------------------------------------------------------------------------------
+const RPC_TIMEOUT_MS = 10000;
+function toBase64(bytes: Uint8Array): string {
+  let binary = ""; for (const b of bytes) binary += String.fromCharCode(b);
+  return btoa(binary);
+}
+
 export class DevnetRpc {
   private verified = false;
   private readonly endpoint: string;
@@ -181,7 +187,9 @@ export class DevnetRpc {
     this.fetchImpl = fetchImpl;
   }
   async call<T>(method: string, params: unknown[] = []): Promise<T> {
-    const response = await this.fetchImpl(this.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }) });
+    // Bounded: a hung RPC call must never outlive the caller's money-job lease.
+    const response = await this.fetchImpl(this.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }), signal: AbortSignal.timeout(RPC_TIMEOUT_MS) });
+    if (response.status === 429 || response.status >= 500) throw new Error(`RPC_${method}_HTTP_${response.status}`);
     const body = await response.json() as { result?: T; error?: { message?: string } };
     if (body.error) throw new Error(`RPC_${method}_${body.error.message ?? "ERROR"}`);
     return body.result as T;
@@ -194,13 +202,24 @@ export class DevnetRpc {
     this.verified = true;
   }
   async latestBlockhash(): Promise<string> {
-    const r = await this.call<{ value: { blockhash: string } }>("getLatestBlockhash", [{ commitment: "finalized" }]);
-    return r.value.blockhash;
+    return (await this.latestBlockhashWithHeight()).blockhash;
+  }
+  /** Blockhash + the last block height at which a transaction using it can still be processed. */
+  async latestBlockhashWithHeight(): Promise<{ blockhash: string; lastValidBlockHeight: number }> {
+    const r = await this.call<{ value: { blockhash: string; lastValidBlockHeight: number } }>("getLatestBlockhash", [{ commitment: "finalized" }]);
+    return { blockhash: r.value.blockhash, lastValidBlockHeight: Number(r.value.lastValidBlockHeight) };
+  }
+  /** Current FINALIZED block height (conservative: it lags the tip, so "expired" is never early). */
+  async finalizedBlockHeight(): Promise<number> {
+    return Number(await this.call<number>("getBlockHeight", [{ commitment: "finalized" }]));
   }
   async send(wire: Uint8Array): Promise<string> {
+    return this.sendBase64(toBase64(wire));
+  }
+  /** Broadcast an already signed transaction (same bytes = same signature: a rebroadcast never pays twice). */
+  async sendBase64(signedBase64: string): Promise<string> {
     await this.assertDevnet();
-    let binary = ""; for (const b of wire) binary += String.fromCharCode(b);
-    return this.call<string>("sendTransaction", [btoa(binary), { encoding: "base64", preflightCommitment: "confirmed" }]);
+    return this.call<string>("sendTransaction", [signedBase64, { encoding: "base64", preflightCommitment: "confirmed" }]);
   }
   async signaturesFor(address: string, limit = 10): Promise<Array<{ signature: string; err: unknown; confirmationStatus?: string }>> {
     return this.call("getSignaturesForAddress", [address, { limit, commitment: "confirmed" }]);
@@ -219,18 +238,31 @@ export class DevnetRpc {
  * TransferChecked with a reference key, fee paid by the signer. Returns the signature.
  */
 export async function sendUsdcTransfer(rpc: DevnetRpc, signer: Signer, opts: { mint: string; toOwner: string; amountBaseUnits: bigint; reference: string }): Promise<string> {
+  const prepared = await prepareUsdcTransfer(rpc, signer, opts);
+  return rpc.sendBase64(prepared.signedBase64);
+}
+
+export type PreparedUsdcTransfer = { signature: string; signedBase64: string; recentBlockhash: string; lastValidBlockHeight: number };
+
+/**
+ * Build + sign (never broadcast) a native-USDC transfer. The caller persists the signature and the
+ * signed bytes BEFORE broadcasting, so a crash at any point leaves a recoverable attempt: the retry
+ * reconciles / rebroadcasts exactly these bytes until lastValidBlockHeight has provably passed.
+ */
+export async function prepareUsdcTransfer(rpc: DevnetRpc, signer: Signer, opts: { mint: string; toOwner: string; amountBaseUnits: bigint; reference: string }): Promise<PreparedUsdcTransfer> {
   if (opts.mint !== NATIVE_USDC_MINT["solana-devnet"]) throw new Error("MINT_NOT_ALLOWED");
   if (!(opts.amountBaseUnits > BigInt(0))) throw new Error("INVALID_AMOUNT");
   if (!BASE58_ADDRESS.test(opts.toOwner) || !BASE58_ADDRESS.test(opts.reference)) throw new Error("INVALID_ADDRESS");
   await rpc.assertDevnet();
   const source = await associatedTokenAddress(signer.publicKey, opts.mint);
   const destination = await associatedTokenAddress(opts.toOwner, opts.mint);
+  const latest = await rpc.latestBlockhashWithHeight();
   const { message, signers } = compileMessage(signer.publicKey, [
     createAtaIdempotentInstruction(signer.publicKey, destination, opts.toOwner, opts.mint),
     transferCheckedInstruction(source, opts.mint, destination, signer.publicKey, opts.amountBaseUnits, USDC_DECIMALS, opts.reference),
-  ], await rpc.latestBlockhash());
-  const { wire } = await signTransaction(message, signers, [signer]);
-  return rpc.send(wire);
+  ], latest.blockhash);
+  const { wire, signature } = await signTransaction(message, signers, [signer]);
+  return { signature, signedBase64: toBase64(wire), recentBlockhash: latest.blockhash, lastValidBlockHeight: latest.lastValidBlockHeight };
 }
 
 /** Wait until a signature is finalized (or failed / timed out). */

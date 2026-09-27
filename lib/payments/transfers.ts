@@ -2,23 +2,27 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getRailConfig, getTestFxQuote, RAIL_NETWORK, RAIL_PROVIDER } from "@/lib/payments/paymentRail";
-import { NATIVE_USDC_MINT, observePayment } from "@/lib/payments/solana";
-import { DevnetRpc, sendUsdcTransfer, signerFromSecret, transferReference, type Signer } from "@/lib/payments/solanaTx";
+import { BASE58_ADDRESS, NATIVE_USDC_MINT, observePayment } from "@/lib/payments/solana";
+import { DevnetRpc, prepareUsdcTransfer, signerFromSecret, transferReference, type Signer } from "@/lib/payments/solanaTx";
+import {
+  MoneyMovementError, moneyJobIdFor, runDueMoneyJobs, runMoneyJob,
+  type AttemptView, type ClaimedJob, type MoneyAdapter, type MoneyJobHooks, type MoneyJobOutcome, type Observation, type PlannedTransfer,
+} from "@/lib/payments/moneyJobs";
 import { closeServiceRequest, runConversationCleanup, settleServiceRequest } from "@/lib/settlement/serviceSettlement";
 
 /**
- * STAGING DEVNET money movement: Helper payouts, refunds, Referral payouts.
+ * STAGING DEVNET money movement: Helper payouts, refunds, Referral payouts, executed through the
+ * durable money-movement outbox (lib/payments/moneyJobs.ts, migration 202609270015).
  *
  * This direct-signer adapter is TEST / STAGING ONLY. Production must use a licensed PSP / custody /
- * escrow / payout provider; LIFE.HELP production must never depend on a raw application hot-wallet
- * key. The adapter refuses to exist outside staging (Supabase ref + explicit STAGING_DEVNET_TEST mode
- * + devnet genesis hash verified on every RPC client before signing).
+ * escrow / payout provider adapter; LIFE.HELP production must never depend on a raw application
+ * hot-wallet key. The adapter refuses to exist outside staging (Supabase ref + explicit
+ * STAGING_DEVNET_TEST mode + devnet genesis hash verified on every RPC client before signing).
  *
- * Exactly once: every transfer is CLAIMED first by a unique payment_events row
- * (LIFE_HELP_TRANSFER_CLAIM, "<kind>:<id>"); only the claimer sends. Each transfer carries a
- * deterministic reference key, so a retry reconciles the existing chain transaction instead of
- * paying twice. Nothing is recorded as paid / refunded until the chain transaction is FINALIZED and
- * re-read: recipient, native devnet USDC mint, amount, success.
+ * Each transfer carries a deterministic reference key per obligation (confirmation search), is
+ * persisted as a PREPARED attempt (signature + signed bytes, server-only) BEFORE broadcast, and is
+ * recorded paid / refunded only after it is FINALIZED and re-read: destination, native devnet USDC
+ * mint, amount, reference, success.
  */
 
 export type DevnetRail = { rpc: DevnetRpc; signer: Signer; mint: string };
@@ -43,101 +47,14 @@ export async function getDevnetRail(env?: Record<string, string | undefined>): P
   }
 }
 
-async function claim(client: SupabaseClient, key: string, payload: Record<string, unknown>): Promise<boolean> {
-  const { error } = await client.from("payment_events").insert({ provider: "LIFE_HELP_TRANSFER_CLAIM", provider_event_id: key, event_type: "TRANSFER_CLAIM", processing_status: "PROCESSED", payload });
-  if (!error) return true;
-  if (error.code === "23505") return false;
-  throw new Error(`CLAIM_FAILED_${error.code}`);
-}
+type TokenBalance = { accountIndex: number; mint: string; owner?: string; uiTokenAmount: { amount: string } };
 
-async function logEvent(client: SupabaseClient, intentId: string | null, type: string, payload: Record<string, unknown>) {
-  await client.from("payment_events").insert({ provider: "LIFE_HELP_LEDGER", provider_event_id: crypto.randomUUID(), provider_payment_id: intentId, event_type: type, processing_status: "PROCESSED", payload, payment_intent_id: intentId, processed_at: new Date().toISOString() });
-}
-
-async function readEvent(client: SupabaseClient, type: string, key: string, value: string) {
-  const { data } = await client.from("payment_events").select("payload").eq("event_type", type).eq(`payload->>${key}`, value).order("received_at", { ascending: false }).limit(1).maybeSingle();
-  return (data?.payload ?? null) as Record<string, string> | null;
-}
-
-/** Finalized chain proof that `amount` native USDC reached `owner` in `signature`. */
-async function provenTransfer(rail: DevnetRail, signature: string, owner: string, amount: string, reference: string): Promise<"CONFIRMED" | "FAILED" | "PENDING"> {
-  const status = await rail.rpc.status(signature).catch(() => null);
-  if (status?.err) return "FAILED";
-  if (status?.confirmationStatus !== "finalized") return "PENDING";
-  const tx = await rail.rpc.transaction(signature, "finalized").catch(() => null);
-  if (!tx) return "PENDING";
-  const seen = observePayment(tx, { recipient: owner, mint: rail.mint, reference });
-  return seen.txSuccess && seen.recipient === owner && seen.mint === rail.mint && seen.amountBaseUnits === amount && seen.referenceMatched ? "CONFIRMED" : "FAILED";
-}
-
-async function findExisting(rail: DevnetRail, reference: string): Promise<string | null> {
-  const found = await rail.rpc.signaturesFor(reference, 5).catch(() => []);
-  return found.find((s) => !s.err)?.signature ?? null;
-}
-
-// ---------------------------------------------------------------------------------------------
-// Helper payout (after the customer's "서비스 완료")
-// ---------------------------------------------------------------------------------------------
-export type TransferOutcome = { status: string; signature?: string | null; reason?: string };
-
-export async function dispatchHelperPayout(client: SupabaseClient, obligationId: string, railArg?: DevnetRail | null): Promise<TransferOutcome> {
-  const rail = railArg ?? await getDevnetRail();
-  if (!rail) return { status: "NOT_SUBMITTED", reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
-  const { data: ob } = await client.from("payout_obligations").select("*").eq("id", obligationId).maybeSingle();
-  if (!ob || ob.kind !== "HELPER_SERVICE") return { status: "NOT_SUBMITTED", reason: "OBLIGATION_NOT_FOUND" };
-  if (ob.status !== "CREATED") return { status: ob.status, signature: ob.chain_signature };
-  const { data: req } = await client.from("service_requests").select("country").eq("id", ob.request_id).maybeSingle();
-  const { data: enabled } = await client.rpc("payment_rail_enabled", { p_country: req?.country ?? "", p_capability: "USDC_HELPER_PAYOUT", p_network: RAIL_NETWORK, p_provider: RAIL_PROVIDER });
-  if (enabled !== true) return { status: "NOT_SUBMITTED", reason: "PAYMENT_RAIL_DISABLED" };
-  const { data: dest } = await client.from("payout_destinations").select("id, provider_payee_token").eq("owner_helper_id", ob.helper_id).eq("payout_method", "USDC_SOLANA").eq("status", "ACTIVE").maybeSingle();
-  if (!dest?.provider_payee_token) return { status: "NOT_SUBMITTED", reason: "PAYOUT_DESTINATION_MISSING" };
-  // Ledger amount -> USDC at the SAME rate the customer paid; never more than was received.
-  const { data: intent } = await client.from("payment_intents").select("id, quote_id, amount_base_units").eq("id", ob.payment_intent_id).maybeSingle();
-  const { data: quote } = intent ? await client.from("payment_quotes").select("fx_rate, fx_provider").eq("id", intent.quote_id).maybeSingle() : { data: null };
-  if (!intent || !quote) return { status: "NOT_SUBMITTED", reason: "PAYMENT_NOT_FOUND" };
-  const computed = BigInt(Math.floor((Number(ob.net_amount) * 1_000_000) / Number(quote.fx_rate)));
-  const amount = computed < BigInt(intent.amount_base_units) ? computed : BigInt(intent.amount_base_units);
-  if (amount <= BigInt(0)) return { status: "NOT_SUBMITTED", reason: "NOTHING_TO_PAY" };
-  const reference = await transferReference("helper-payout", obligationId);
-  if (!(await claim(client, `HELPER_PAYOUT:${obligationId}`, { obligation_id: obligationId, reference }))) return { status: "ALREADY_CLAIMED" };
-  const signature = (await findExisting(rail, reference)) ?? await sendUsdcTransfer(rail.rpc, rail.signer, { mint: rail.mint, toOwner: dest.provider_payee_token, amountBaseUnits: amount, reference });
-  await logEvent(client, intent.id, "HELPER_PAYOUT_SUBMITTED", {
-    obligation_id: obligationId, signature, reference, to: dest.provider_payee_token, amount_base_units: amount.toString(),
-    fx_rate: String(quote.fx_rate), fx_provider: quote.fx_provider, net_amount: String(ob.net_amount), currency: ob.currency,
-  });
-  const { data: sub } = await client.rpc("record_payout_submission", { p_obligation_id: obligationId, p_provider: RAIL_PROVIDER, p_provider_payout_id: reference, p_chain_network: RAIL_NETWORK, p_chain_signature: signature });
-  return { status: sub?.success ? "SUBMITTED" : String(sub?.code ?? "SUBMISSION_NOT_RECORDED"), signature };
-}
-
-/** SUBMITTED -> PAID only after finalized on-chain proof; then settle (-> SETTLED -> cleanup -> CLOSED). */
-export async function reconcileHelperPayout(client: SupabaseClient, obligationId: string, railArg?: DevnetRail | null): Promise<TransferOutcome> {
-  const rail = railArg ?? await getDevnetRail();
-  if (!rail) return { status: "NOT_RECONCILED", reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
-  const { data: ob } = await client.from("payout_obligations").select("*").eq("id", obligationId).maybeSingle();
-  if (!ob) return { status: "NOT_RECONCILED", reason: "OBLIGATION_NOT_FOUND" };
-  if (ob.status === "PAID") return { status: "PAID", signature: ob.chain_signature };
-  if (ob.status !== "SUBMITTED" || !ob.chain_signature) return { status: ob.status };
-  const sent = await readEvent(client, ob.kind === "HELPER_SERVICE" ? "HELPER_PAYOUT_SUBMITTED" : "REFERRAL_PAYOUT_SUBMITTED", "obligation_id", obligationId);
-  if (!sent) return { status: "SUBMITTED", reason: "SUBMISSION_EVIDENCE_MISSING" };
-  const proof = await provenTransfer(rail, ob.chain_signature, sent.to, sent.amount_base_units, sent.reference);
-  if (proof === "PENDING") return { status: "SUBMITTED", signature: ob.chain_signature };
-  const { data: result } = await client.rpc("record_payout_result", { p_obligation_id: obligationId, p_provider: RAIL_PROVIDER, p_provider_payout_id: ob.provider_payout_id, p_success: proof === "CONFIRMED" });
-  if (proof === "CONFIRMED" && ob.kind === "HELPER_SERVICE" && result?.success) {
-    const settled = await settleServiceRequest(client, ob.request_id, "PAYOUT_RECONCILER");
-    if (settled.ok) { await runConversationCleanup(client, { requestId: ob.request_id }); await closeServiceRequest(client, ob.request_id, "CLEANUP_RUNNER"); }
-  }
-  return { status: proof === "CONFIRMED" ? "PAID" : "FAILED", signature: ob.chain_signature };
-}
-
-// ---------------------------------------------------------------------------------------------
-// Refund (customer cancelled an unmatched funded request, activation failure, price difference)
-// ---------------------------------------------------------------------------------------------
+/** The customer who paid: the owner whose native-USDC balance DECREASED in the verified payment. */
 async function payerOf(rail: DevnetRail, signature: string, recipient: string): Promise<string | null> {
-  const tx = await rail.rpc.transaction(signature, "finalized").catch(() => null);
+  const tx = await rail.rpc.transaction(signature, "finalized");
   if (!tx?.meta) return null;
-  const meta = tx.meta as { preTokenBalances?: Array<{ accountIndex: number; mint: string; owner?: string; uiTokenAmount: { amount: string } }>; postTokenBalances?: Array<{ accountIndex: number; mint: string; owner?: string; uiTokenAmount: { amount: string } }> };
+  const meta = tx.meta as { preTokenBalances?: TokenBalance[]; postTokenBalances?: TokenBalance[] };
   const post = new Map((meta.postTokenBalances ?? []).map((b) => [b.accountIndex, b]));
-  // The account whose native-USDC balance DECREASED is the payer (never the recipient).
   for (const pre of meta.preTokenBalances ?? []) {
     const after = post.get(pre.accountIndex);
     if (pre.mint === rail.mint && pre.owner && pre.owner !== recipient && after && BigInt(after.uiTokenAmount.amount) < BigInt(pre.uiTokenAmount.amount)) return pre.owner;
@@ -145,83 +62,151 @@ async function payerOf(rail: DevnetRail, signature: string, recipient: string): 
   return null;
 }
 
-export async function dispatchRefund(client: SupabaseClient, refundId: string, railArg?: DevnetRail | null): Promise<TransferOutcome> {
-  const rail = railArg ?? await getDevnetRail();
-  if (!rail) return { status: "NOT_SUBMITTED", reason: "REFUND_RAIL_NOT_CONFIGURED" };
-  const { data: refund } = await client.from("service_refunds").select("*").eq("id", refundId).maybeSingle();
-  if (!refund) return { status: "NOT_SUBMITTED", reason: "REFUND_NOT_FOUND" };
-  if (refund.status !== "PENDING") return { status: refund.status, signature: refund.chain_signature };
-  const { data: intent } = await client.from("payment_intents").select("id, quote_id, amount_base_units, verified_signature, recipient, fiat_amount").eq("id", refund.payment_intent_id).maybeSingle();
-  if (!intent?.verified_signature) return { status: "NOT_SUBMITTED", reason: "NO_VERIFIED_PAYMENT" };
-  const payer = await payerOf(rail, intent.verified_signature, intent.recipient);
-  if (!payer) return { status: "NOT_SUBMITTED", reason: "PAYER_NOT_FOUND" };
-  // Full refunds return exactly what was received; partial ones convert at the payment's own rate.
-  const { data: quote } = await client.from("payment_quotes").select("fx_rate").eq("id", intent.quote_id).maybeSingle();
-  const full = Number(refund.amount) === Number(intent.fiat_amount);
-  const amount = full ? BigInt(intent.amount_base_units) : BigInt(Math.floor((Number(refund.amount) * 1_000_000) / Number(quote?.fx_rate)));
-  const reference = await transferReference("refund", refundId);
-  if (!(await claim(client, `REFUND:${refundId}`, { refund_id: refundId, reference }))) return { status: "ALREADY_CLAIMED" };
-  const signature = (await findExisting(rail, reference)) ?? await sendUsdcTransfer(rail.rpc, rail.signer, { mint: rail.mint, toOwner: payer, amountBaseUnits: amount, reference });
-  await logEvent(client, intent.id, "REFUND_SUBMITTED", { refund_id: refundId, signature, reference, to: payer, amount_base_units: amount.toString() });
-  return { status: "SUBMITTED", signature };
+const toBaseUnits = (fiat: number, rate: number) => BigInt(Math.floor((fiat * 1_000_000) / rate));
+
+/** Snapshot of the 014 ledger rows a job points to (money_job_context in migration 015). */
+type JobContext = {
+  business_status: string; currency: string; net_amount?: string | number; amount?: string | number; fx_rate?: string | number | null;
+  country?: string | null; destination?: string | null; obligation_id?: string; refund_id?: string;
+  intent?: { amount_base_units: string; network?: string; mint?: string; recipient?: string; fiat_amount?: string | number; verified_signature?: string | null } | null;
+};
+
+/** The staging devnet adapter: business planning (who / how much) + Solana preparation and observation. */
+export function devnetAdapter(client: SupabaseClient, rail: DevnetRail): MoneyAdapter {
+  const destinationOk = (address: unknown): address is string => typeof address === "string" && BASE58_ADDRESS.test(address) && address !== rail.signer.publicKey;
+
+  async function plan(job: ClaimedJob): Promise<PlannedTransfer> {
+    const ctx = job.context as JobContext;
+    if (job.obligation_type === "REFUND") {
+      if (!["PENDING", "FAILED", "SUBMITTED"].includes(ctx.business_status)) throw new MoneyMovementError(`REFUND_STATE_${ctx.business_status}`, "REVIEW");
+      const intent = ctx.intent;
+      if (!intent || intent.network !== RAIL_NETWORK || intent.mint !== rail.mint) throw new MoneyMovementError("UNSUPPORTED_NETWORK_OR_MINT", "PERMANENT");
+      if (!intent.verified_signature) throw new MoneyMovementError("NO_VERIFIED_PAYMENT", "REVIEW");
+      const payer = await payerOf(rail, intent.verified_signature, String(intent.recipient));
+      if (!destinationOk(payer)) throw new MoneyMovementError("PAYER_NOT_FOUND", "REVIEW");
+      // Full refunds return exactly what was received; partial ones convert at the payment's own rate.
+      const full = Number(ctx.amount) === Number(intent.fiat_amount);
+      const amount = full ? BigInt(intent.amount_base_units) : toBaseUnits(Number(ctx.amount), Number(ctx.fx_rate));
+      if (amount <= BigInt(0) || amount > BigInt(intent.amount_base_units)) throw new MoneyMovementError("BUSINESS_AMOUNT_INVALID", "REVIEW");
+      return { destination: payer, amountBaseUnits: amount, reference: await transferReference("refund", String(ctx.refund_id)) };
+    }
+    if (!["CREATED", "FAILED", "SUBMITTED"].includes(ctx.business_status)) throw new MoneyMovementError(`OBLIGATION_STATE_${ctx.business_status}`, "REVIEW");
+    if (!ctx.destination) throw new MoneyMovementError("PAYOUT_DESTINATION_MISSING", "WAITING", 6 * 3600);
+    if (!destinationOk(ctx.destination)) throw new MoneyMovementError("INVALID_PAYOUT_DESTINATION", "PERMANENT");
+    if (job.obligation_type === "HELPER_PAYOUT") {
+      const { data: enabled, error } = await client.rpc("payment_rail_enabled", { p_country: String(ctx.country ?? ""), p_capability: "USDC_HELPER_PAYOUT", p_network: RAIL_NETWORK, p_provider: RAIL_PROVIDER });
+      if (error) throw new MoneyMovementError("POLICY_LOOKUP_FAILED", "RETRYABLE");
+      if (enabled !== true) throw new MoneyMovementError("PAYMENT_RAIL_DISABLED", "PERMANENT");
+      // Ledger amount -> USDC at the SAME rate the customer paid; never more than was received.
+      const received = BigInt(ctx.intent?.amount_base_units ?? "0");
+      const computed = toBaseUnits(Number(ctx.net_amount), Number(ctx.fx_rate));
+      const amount = computed < received ? computed : received;
+      if (amount <= BigInt(0)) throw new MoneyMovementError("NOTHING_TO_PAY", "REVIEW");
+      return { destination: ctx.destination, amountBaseUnits: amount, reference: await transferReference("helper-payout", String(ctx.obligation_id)) };
+    }
+    // Referral payout: fiat reward at the explicit TEST FX rate (the job locks the amount at attempt 1).
+    const fx = await getTestFxQuote(String(ctx.currency));
+    if (!fx) throw new MoneyMovementError("FX_UNAVAILABLE", "REVIEW");
+    const amount = toBaseUnits(Number(ctx.net_amount), fx.rate);
+    if (amount <= BigInt(0)) throw new MoneyMovementError("NOTHING_TO_PAY", "REVIEW");
+    return { destination: ctx.destination, amountBaseUnits: amount, reference: await transferReference("referral-payout", String(ctx.obligation_id)), meta: { fx_rate: fx.rate, fx_provider: fx.provider } };
+  }
+
+  async function observe(attempt: AttemptView): Promise<Observation> {
+    const payload = attempt.adapter_payload as { lastValidBlockHeight?: number; reference?: string; legacy?: boolean };
+    // A pre-outbox submission has no blockhash metadata: its expiry can never be proven.
+    if (payload.legacy) throw new MoneyMovementError("LEGACY_ATTEMPT_UNVERIFIABLE", "REVIEW");
+    const status = await rail.rpc.status(attempt.external_id);
+    if (status?.err) return { kind: "FAILED_ONCHAIN", code: "TX_ERROR" };
+    if (status?.confirmationStatus === "finalized") {
+      const tx = await rail.rpc.transaction(attempt.external_id, "finalized");
+      if (!tx) return { kind: "PENDING" };
+      const seen = observePayment(tx, { recipient: attempt.destination, mint: rail.mint, reference: String(payload.reference ?? "") });
+      const exact = seen.txSuccess && seen.recipient === attempt.destination && seen.mint === rail.mint && seen.amountBaseUnits === attempt.amount_base_units && seen.referenceMatched;
+      return exact ? { kind: "CONFIRMED" } : { kind: "MISMATCH", code: "LANDED_TRANSFER_MISMATCH" };
+    }
+    if (status) return { kind: "PENDING" };
+    if (typeof payload.lastValidBlockHeight !== "number") return { kind: "NOT_FOUND", expired: false };
+    // Expired only when even the FINALIZED height is past the blockhash's last valid height.
+    return { kind: "NOT_FOUND", expired: (await rail.rpc.finalizedBlockHeight()) > payload.lastValidBlockHeight };
+  }
+
+  return {
+    provider: RAIL_PROVIDER,
+    network: RAIL_NETWORK,
+    asset: "USDC",
+    plan,
+    async search(_job, planned) {
+      const found = await rail.rpc.signaturesFor(planned.reference, 20);
+      return found.map((s) => ({ externalId: s.signature, success: !s.err }));
+    },
+    async prepare(_job, planned) {
+      const p = await prepareUsdcTransfer(rail.rpc, rail.signer, { mint: rail.mint, toOwner: planned.destination, amountBaseUnits: planned.amountBaseUnits, reference: planned.reference });
+      return { externalId: p.signature, signedPayload: p.signedBase64, adapterPayload: { recentBlockhash: p.recentBlockhash, lastValidBlockHeight: p.lastValidBlockHeight, ...(planned.meta ?? {}) } };
+    },
+    async submit(attempt) {
+      if (!attempt.signed_payload) throw new MoneyMovementError("NO_SIGNED_PAYLOAD", "REVIEW");
+      try {
+        await rail.rpc.sendBase64(attempt.signed_payload);
+      } catch (error) {
+        // Rebroadcast of bytes the network already has is success, not a new payment.
+        if (/already been processed|AlreadyProcessed/i.test(error instanceof Error ? error.message : "")) return;
+        throw error;
+      }
+    },
+    observe,
+  };
 }
 
-export async function reconcileRefund(client: SupabaseClient, refundId: string, railArg?: DevnetRail | null): Promise<TransferOutcome> {
-  const rail = railArg ?? await getDevnetRail();
-  if (!rail) return { status: "NOT_RECONCILED", reason: "REFUND_RAIL_NOT_CONFIGURED" };
-  const { data: refund } = await client.from("service_refunds").select("status, chain_signature").eq("id", refundId).maybeSingle();
-  if (!refund) return { status: "NOT_RECONCILED", reason: "REFUND_NOT_FOUND" };
-  if (refund.status === "COMPLETED") return { status: "COMPLETED", signature: refund.chain_signature };
-  const sent = await readEvent(client, "REFUND_SUBMITTED", "refund_id", refundId);
-  if (!sent) return { status: refund.status };
-  const proof = await provenTransfer(rail, sent.signature, sent.to, sent.amount_base_units, sent.reference);
-  if (proof === "PENDING") return { status: "SUBMITTED", signature: sent.signature };
-  await client.rpc("record_refund_result", { p_refund_id: refundId, p_provider: RAIL_PROVIDER, p_provider_refund_id: sent.reference, p_chain_network: RAIL_NETWORK, p_chain_signature: sent.signature, p_success: proof === "CONFIRMED" });
-  return { status: proof === "CONFIRMED" ? "COMPLETED" : "FAILED", signature: sent.signature };
+/** After a CONFIRMED Helper payout: settle the request (-> SETTLED -> cleanup -> CLOSED). */
+function settlementHooks(client: SupabaseClient): MoneyJobHooks {
+  return {
+    async onConfirmed(job) {
+      const requestId = (job.context as { request_id?: string }).request_id;
+      if (job.obligation_type !== "HELPER_PAYOUT" || !requestId) return;
+      const settled = await settleServiceRequest(client, requestId, "PAYOUT_RECONCILER");
+      if (settled.ok) { await runConversationCleanup(client, { requestId }); await closeServiceRequest(client, requestId, "CLEANUP_RUNNER"); }
+    },
+  };
 }
 
-// ---------------------------------------------------------------------------------------------
-// Referral payout (reward lifecycle unchanged: PAYABLE -> PAYOUT_PROCESSING -> PAID)
-// ---------------------------------------------------------------------------------------------
-export async function dispatchReferralPayout(client: SupabaseClient, rewardId: string, country: string, railArg?: DevnetRail | null): Promise<TransferOutcome & { obligationId?: string }> {
+export type TransferOutcome = { status: string; signature?: string | null; reason?: string; obligationId?: string };
+const outcome = (o: MoneyJobOutcome, obligationId?: string): TransferOutcome => ({ status: o.status, signature: o.externalId ?? null, reason: o.code, obligationId });
+
+async function runFor(client: SupabaseClient, link: { payoutObligationId?: string; serviceRefundId?: string }, railArg?: DevnetRail | null): Promise<TransferOutcome> {
+  const rail = railArg ?? await getDevnetRail();
+  if (!rail) return { status: "NOT_SUBMITTED", reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
+  const jobId = await moneyJobIdFor(client, link);
+  if (!jobId) return { status: "NOT_SUBMITTED", reason: "MONEY_JOB_NOT_FOUND" };
+  return outcome(await runMoneyJob(client, devnetAdapter(client, rail), jobId, settlementHooks(client)));
+}
+
+/** Inline fast path after "서비스 완료": the obligation's job is processed now; the outbox retries on any failure. */
+export const processHelperPayout = (client: SupabaseClient, obligationId: string, rail?: DevnetRail | null) => runFor(client, { payoutObligationId: obligationId }, rail);
+export const processRefund = (client: SupabaseClient, refundId: string, rail?: DevnetRail | null) => runFor(client, { serviceRefundId: refundId }, rail);
+
+/** Referral payout: PAYABLE -> exactly one obligation (+ its job, same transaction) -> processed. Qualification unchanged. */
+export async function processReferralPayout(client: SupabaseClient, rewardId: string, country: string, railArg?: DevnetRail | null): Promise<TransferOutcome> {
   const rail = railArg ?? await getDevnetRail();
   if (!rail) return { status: "NOT_SUBMITTED", reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
   const { data: created } = await client.rpc("create_referral_payout_obligation", { p_reward_id: rewardId, p_rail: "USDC_SOLANA", p_country: country });
   if (!created?.success) return { status: "NOT_SUBMITTED", reason: String(created?.code ?? "OBLIGATION_FAILED") };
   const obligationId = String(created.payout_obligation_id);
-  const { data: ob } = await client.from("payout_obligations").select("*").eq("id", obligationId).maybeSingle();
-  if (ob?.status !== "CREATED") return { status: String(ob?.status), obligationId, signature: ob?.chain_signature };
-  const { data: reward } = await client.from("referral_rewards").select("referrer_identity_id").eq("id", rewardId).maybeSingle();
-  const { data: dest } = await client.from("payout_destinations").select("provider_payee_token").eq("owner_identity_id", reward?.referrer_identity_id).eq("payout_method", "USDC_SOLANA").eq("status", "ACTIVE").maybeSingle();
-  if (!dest?.provider_payee_token) return { status: "NOT_SUBMITTED", reason: "PAYOUT_DESTINATION_MISSING", obligationId };
-  // Fiat-denominated reward: explicit TEST FX, snapshot stored with the submission evidence.
-  const fx = await getTestFxQuote(ob.currency);
-  if (!fx) return { status: "NOT_SUBMITTED", reason: "FX_UNAVAILABLE", obligationId };
-  const amount = BigInt(Math.floor((Number(ob.net_amount) * 1_000_000) / fx.rate));
-  const reference = await transferReference("referral-payout", obligationId);
-  if (!(await claim(client, `REFERRAL_PAYOUT:${obligationId}`, { obligation_id: obligationId, reference }))) return { status: "ALREADY_CLAIMED", obligationId };
-  const signature = (await findExisting(rail, reference)) ?? await sendUsdcTransfer(rail.rpc, rail.signer, { mint: rail.mint, toOwner: dest.provider_payee_token, amountBaseUnits: amount, reference });
-  await logEvent(client, null, "REFERRAL_PAYOUT_SUBMITTED", {
-    obligation_id: obligationId, reward_id: rewardId, signature, reference, to: dest.provider_payee_token, amount_base_units: amount.toString(),
-    fx_rate: String(fx.rate), fx_provider: fx.provider, fx_source_ref: fx.sourceRef, net_amount: String(ob.net_amount), currency: ob.currency,
-  });
-  const { data: sub } = await client.rpc("record_payout_submission", { p_obligation_id: obligationId, p_provider: RAIL_PROVIDER, p_provider_payout_id: reference, p_chain_network: RAIL_NETWORK, p_chain_signature: signature });
-  return { status: sub?.success ? "SUBMITTED" : String(sub?.code), signature, obligationId };
+  return { ...(await runFor(client, { payoutObligationId: obligationId }, rail)), obligationId };
 }
 
-/** Reconcile everything in flight (cron / operator / status polling). Bounded. */
-export async function reconcileTransfers(client: SupabaseClient, limit = 20): Promise<{ payouts: TransferOutcome[]; refunds: TransferOutcome[]; dispatched: TransferOutcome[] }> {
+/** Durable retry (cron / operator): every due job, bounded. No adapter in this environment -> nothing moves. */
+export async function runMoneyOutbox(client: SupabaseClient, limit = 20): Promise<{ processed: MoneyJobOutcome[]; configured: boolean }> {
   const rail = await getDevnetRail();
-  if (!rail) return { payouts: [], refunds: [], dispatched: [] };
-  const dispatched: TransferOutcome[] = [];
-  const { data: created } = await client.from("payout_obligations").select("id").eq("kind", "HELPER_SERVICE").eq("status", "CREATED").limit(limit);
-  for (const row of created ?? []) dispatched.push(await dispatchHelperPayout(client, row.id, rail).catch((e) => ({ status: "ERROR", reason: String(e?.message ?? e) })));
-  const { data: pendingRefunds } = await client.from("service_refunds").select("id").eq("status", "PENDING").limit(limit);
-  for (const row of pendingRefunds ?? []) dispatched.push(await dispatchRefund(client, row.id, rail).catch((e) => ({ status: "ERROR", reason: String(e?.message ?? e) })));
-  const payouts: TransferOutcome[] = [];
-  const { data: submitted } = await client.from("payout_obligations").select("id").eq("status", "SUBMITTED").limit(limit);
-  for (const row of submitted ?? []) payouts.push(await reconcileHelperPayout(client, row.id, rail).catch((e) => ({ status: "ERROR", reason: String(e?.message ?? e) })));
-  const refunds: TransferOutcome[] = [];
-  for (const row of pendingRefunds ?? []) refunds.push(await reconcileRefund(client, row.id, rail).catch((e) => ({ status: "ERROR", reason: String(e?.message ?? e) })));
-  return { payouts, refunds, dispatched };
+  if (!rail) return { processed: [], configured: false };
+  const hooks = settlementHooks(client);
+  const processed = await runDueMoneyJobs(client, devnetAdapter(client, rail), limit, hooks);
+  // Crash after CONFIRMED but before settlement: finish the settlement of paid, still-pending requests.
+  const { data: paid } = await client.from("payout_obligations").select("request_id").eq("kind", "HELPER_SERVICE").eq("status", "PAID").order("paid_at", { ascending: false }).limit(50);
+  const ids = (paid ?? []).map((r) => r.request_id as string).filter(Boolean);
+  const { data: pending } = ids.length ? await client.from("service_requests").select("id").in("id", ids).eq("status", "PAYMENT_PENDING").limit(limit) : { data: [] };
+  for (const row of pending ?? []) {
+    await hooks.onConfirmed?.({ obligation_type: "HELPER_PAYOUT", context: { request_id: row.id } } as unknown as ClaimedJob).catch(() => undefined);
+  }
+  return { processed, configured: true };
 }

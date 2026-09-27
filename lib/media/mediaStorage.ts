@@ -45,7 +45,17 @@ export async function readPrivateMedia(client: SupabaseClient, objectKey: string
   return data ?? null;
 }
 
-/** Permanently delete scheduled media (storage object first, then the ledger row -> DELETED). */
+/** Best-effort removal of an object that was never registered (upload raced a checkout end). */
+export async function removePrivateMedia(client: SupabaseClient, objectKey: string): Promise<void> {
+  const bucket = await bucketName();
+  if (bucket) await client.storage.from(bucket).remove([objectKey]).catch(() => undefined);
+}
+
+/**
+ * Permanently delete queued media: storage object first, verified gone, then the row -> DELETED.
+ * A failed / unverified delete stays DELETION_PENDING (no view is possible: views need ACTIVE) and is
+ * retried with backoff by the next run.
+ */
 export async function runMediaDeletion(client: SupabaseClient, limit = 50): Promise<{ deleted: number; failed: number; notConfigured: boolean }> {
   const bucket = await bucketName();
   const { data } = await client.rpc("list_media_pending_deletion", { p_limit: limit });
@@ -56,7 +66,11 @@ export async function runMediaDeletion(client: SupabaseClient, limit = 50): Prom
     const { error } = await client.storage.from(bucket).remove([item.object_key]);
     // Verify the object is really gone before recording DELETED (a failed delete stays queued).
     const still = error ? null : await client.storage.from(bucket).download(item.object_key);
-    if (error || still?.data) { failed += 1; continue; }
+    if (error || still?.data) {
+      failed += 1;
+      await client.rpc("record_media_deletion_failure", { p_media_id: item.media_id, p_error_code: error ? "STORAGE_DELETE_FAILED" : "STORAGE_OBJECT_STILL_PRESENT" });
+      continue;
+    }
     const { data: marked } = await client.rpc("mark_request_media_deleted", { p_media_id: item.media_id });
     if (marked?.success) deleted += 1; else failed += 1;
   }

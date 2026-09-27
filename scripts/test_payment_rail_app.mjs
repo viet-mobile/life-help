@@ -101,7 +101,7 @@ check("Malformed signature refused before any chain / database call", (await rai
 check("Unknown transaction -> TRANSACTION_NOT_FOUND, nothing recorded", (await rail.verifyPaymentSignature(client, intent, sig, async () => null)).code === "TRANSACTION_NOT_FOUND" && calls.length === 1);
 const transfers = await import(new URL("lib/payments/transfers.ts", root).href);
 globalThis.__env = {};
-const payout = await transfers.dispatchHelperPayout(client, "ob-1");
+const payout = await transfers.processHelperPayout(client, "ob-1");
 check("Payout dispatch: no staging signer -> instruction stays pending, never reported paid", payout.status === "NOT_SUBMITTED" && payout.reason === "PAYOUT_RAIL_NOT_CONFIGURED" && calls.length === 1);
 
 // ---------------- source-level authority ----------------

@@ -107,16 +107,14 @@ check("Signer available only with staging project + explicit STAGING_DEVNET_TEST
 check("Signer refused against production, without the mode, without the secret, or when the key is not the holding account", (await transfers.getDevnetRail({ ...base, SUPABASE_URL: PROD })) === null && (await transfers.getDevnetRail({ ...base, LIFE_HELP_PAYMENT_MODE: "" })) === null && (await transfers.getDevnetRail({ ...base, LIFE_HELP_SOLANA_DEVNET_SIGNER_SECRET: "" })) === null && (await transfers.getDevnetRail({ ...base, LIFE_HELP_SOLANA_DEVNET_RECIPIENT: dest })) === null);
 check("Mainnet RPC override cannot activate the signer", (await transfers.getDevnetRail({ ...base, LIFE_HELP_SOLANA_DEVNET_RPC_URL: "https://api.mainnet-beta.solana.com" }).then((r) => r, () => null)) === null);
 globalThis.__env = {};
-check("Without a rail, payout dispatch never submits (nothing claimed as paid)", (await transfers.dispatchHelperPayout({}, "ob-1")).status === "NOT_SUBMITTED");
+check("Without a rail, payout processing never submits (nothing claimed as paid)", (await transfers.processHelperPayout({}, "ob-1")).status === "NOT_SUBMITTED");
 
-// ---- source-level ordering / custody ----
+// ---- source-level ordering / custody (crash-recovery semantics: scripts/test_money_outbox_app.mjs) ----
 const t = code("lib/payments/transfers.ts");
-for (const [label, fn] of [["Helper payout", "dispatchHelperPayout"], ["Refund", "dispatchRefund"], ["Referral payout", "dispatchReferralPayout"]]) {
-  const body = t.slice(t.indexOf(`export async function ${fn}`), t.indexOf("export async function", t.indexOf(`export async function ${fn}`) + 10));
-  check(`${label}: exactly-once claim BEFORE any chain send; existing chain transfer reused on retry`, body.indexOf("await claim(") > 0 && body.indexOf("await claim(") < body.indexOf("sendUsdcTransfer(") && body.includes("findExisting(rail, reference)"));
-}
-check("Paid / refunded recorded only after finalized on-chain proof", t.indexOf("provenTransfer(rail, ob.chain_signature") < t.indexOf('rpc("record_payout_result"') && t.indexOf("provenTransfer(rail, sent.signature") < t.indexOf('rpc("record_refund_result"') && /confirmationStatus !== "finalized"\) return "PENDING"/.test(t));
-check("Helper payout amount from the ledger at the customer's own FX rate, capped at what was received", t.includes("Number(ob.net_amount) * 1_000_000) / Number(quote.fx_rate)") && t.includes("computed < BigInt(intent.amount_base_units)"));
+check("Money movement goes through the durable outbox (no direct claim-then-send path left)", t.includes("runMoneyJob(") && !t.includes("sendUsdcTransfer(") && !t.includes("LIFE_HELP_TRANSFER_CLAIM"));
+check("Devnet adapter prepares (signs) without broadcasting; broadcast = the persisted signed bytes", t.includes("prepareUsdcTransfer(rail.rpc") && t.includes("rail.rpc.sendBase64(attempt.signed_payload)"));
+check("Paid only after finality + re-verification (destination, mint, amount, reference)", /confirmationStatus === "finalized"/.test(t) && t.includes("seen.amountBaseUnits === attempt.amount_base_units") && t.includes("seen.referenceMatched"));
+check("Helper payout amount from the ledger at the customer's own FX rate, capped at what was received", t.includes("toBaseUnits(Number(ctx.net_amount), Number(ctx.fx_rate))") && t.includes("computed < received ? computed : received"));
 const settlement = code("lib/settlement/serviceSettlement.ts");
 check("external_payment_verified true ONLY with a verified chain payment AND a confirmed chain payout", settlement.includes("if (!intent?.verified_signature || ob?.status !== \"PAID\" || !ob.chain_signature) return null;") && settlement.includes("external_payment_verified: true") && settlement.includes("external_payment_verified: false"));
 const prodConfig = read("wrangler.jsonc");
