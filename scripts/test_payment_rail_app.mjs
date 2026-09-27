@@ -109,6 +109,14 @@ const provider = ({ status, txSlot, finalizedSlot }) => async (_url, init) => {
 check("Finality is never taken from the provider's commitment label: status 'confirmed' -> confirmed (even though getTransaction(finalized) answered)", (await solana.fetchDevnetTransaction(RPC, "sig", provider({ status: "confirmed", txSlot: 100, finalizedSlot: 200 })))?.confirmation === "confirmed");
 check("Finality needs the tx slot at or below the cluster's finalized slot (status 'finalized' but slot ahead -> confirmed)", (await solana.fetchDevnetTransaction(RPC, "sig", provider({ status: "finalized", txSlot: 300, finalizedSlot: 200 })))?.confirmation === "confirmed");
 check("Status finalized AND slot <= finalized slot -> finalized", (await solana.fetchDevnetTransaction(RPC, "sig", provider({ status: "finalized", txSlot: 150, finalizedSlot: 200 })))?.confirmation === "finalized");
+{
+  const src = (f) => fs.readFileSync(new URL(`../${f}`, import.meta.url), "utf8");
+  const verifyFn = src("lib/payments/solana.ts").slice(src("lib/payments/solana.ts").indexOf("export async function fetchDevnetTransaction"));
+  const transfersSrc = src("lib/payments/transfers.ts");
+  const observeFn = transfersSrc.slice(transfersSrc.indexOf("async function observe("), transfersSrc.indexOf("provider: RAIL_PROVIDER,"));
+  const verifyBody = verifyFn.slice(0, verifyFn.indexOf("\n}\n"));
+  check("Finality never depends on wall-clock time (payment verification + payout / refund reconciliation read chain state only)", !/Date\.now|new Date|setTimeout|performance\.now/.test(verifyBody) && !/Date\.now|new Date|setTimeout|performance\.now/.test(observeFn) && observeFn.includes("rail.rpc.finalizedSlot()") && verifyBody.includes("\"getSlot\""));
+}
 check("Payment verification proves devnet identity first, then reads the transaction", devCalls[0] === "getGenesisHash" && devCalls.includes("getTransaction"), devCalls);
 const health = fs.readFileSync(new URL("../app/api/sys/payments/rpc-health/route.ts", import.meta.url), "utf8");
 check("RPC health route: operator + staging only, never returns / logs the endpoint, never signs, identity before any other call", health.includes("authorizePlatformOperator(request)") && health.includes("createStagingSettlementClient()") && !/rpcUrl[^)]*[,}]\s*$|endpoint:\s*rail|console\./m.test(health) && !/rail\.rpcUrl\s*[,}]/.test(health.slice(health.indexOf("const report"))) && health.includes('throw new Error("NEVER_SIGN")') && health.indexOf("getGenesisHash") < health.indexOf("rpc.version()"));
