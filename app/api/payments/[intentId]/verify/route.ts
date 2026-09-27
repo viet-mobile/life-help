@@ -30,7 +30,7 @@ export async function POST(request: Request, context: { params: Promise<{ intent
   if (!fetchTx) return respond(503, { success: false, code: "PAYMENT_RAIL_DISABLED" });
   const verified = await verifyPaymentSignature(client, intent, typeof body?.signature === "string" ? body.signature : "", fetchTx);
   if (!verified.ok) return respond(verified.httpStatus, { success: false, code: verified.code });
-  const result = verified.result as { success?: boolean; code?: string; status?: string; classification?: string; replayed?: boolean; activation?: { request_id?: string; request_mode?: string; assignment_id?: string | null } };
+  const result = verified.result as { success?: boolean; code?: string; status?: string; classification?: string; replayed?: boolean; request_id?: string | null; activation?: { request_id?: string; request_mode?: string; assignment_id?: string | null } };
   // New activation only (never on a replay): best-effort push to the Helper(s) concerned.
   const activation = result.activation;
   if (result.success && !result.replayed && activation?.request_id) {
@@ -45,6 +45,6 @@ export async function POST(request: Request, context: { params: Promise<{ intent
   }
   return respond(result.success ? 200 : 409, {
     success: result.success === true, code: result.code ?? null, paymentStatus: result.status ?? null, classification: result.classification ?? null,
-    replayed: result.replayed === true, requestId: activation?.request_id ?? null,
+    replayed: result.replayed === true, requestId: activation?.request_id ?? result.request_id ?? null,
   });
 }

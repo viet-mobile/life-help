@@ -208,6 +208,10 @@ export class DevnetRpc {
     const r = await this.call<{ value: { blockhash: string; lastValidBlockHeight: number } }>("getLatestBlockhash", [{ commitment: "finalized" }]);
     return { blockhash: r.value.blockhash, lastValidBlockHeight: Number(r.value.lastValidBlockHeight) };
   }
+  /** Current FINALIZED slot: a transaction is final only at or below it (provider-independent check). */
+  async finalizedSlot(): Promise<number> {
+    return Number(await this.call<number>("getSlot", [{ commitment: "finalized" }]));
+  }
   /** Current FINALIZED block height (conservative: it lags the tip, so "expired" is never early). */
   async finalizedBlockHeight(): Promise<number> {
     return Number(await this.call<number>("getBlockHeight", [{ commitment: "finalized" }]));

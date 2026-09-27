@@ -98,6 +98,17 @@ for (const [label, genesis] of [["mainnet", "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc
 }
 const devCalls = [];
 await solana.fetchDevnetTransaction(RPC, "sig", genesisStub("EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG", devCalls));
+// Provider behaviour seen live (2026-09-27): getTransaction(commitment=finalized) answered with a merely
+// confirmed transaction. Finality must come from the signature status + the finalized slot.
+const provider = ({ status, txSlot, finalizedSlot }) => async (_url, init) => {
+  const { method } = JSON.parse(init.body);
+  const result = method === "getGenesisHash" ? "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG" : method === "getTransaction" ? { slot: txSlot, meta: { err: null }, transaction: { message: { accountKeys: [] } } }
+    : method === "getSignatureStatuses" ? { value: [status ? { confirmationStatus: status } : null] } : method === "getSlot" ? finalizedSlot : null;
+  return { json: async () => ({ jsonrpc: "2.0", id: 1, result }) };
+};
+check("Finality is never taken from the provider's commitment label: status 'confirmed' -> confirmed (even though getTransaction(finalized) answered)", (await solana.fetchDevnetTransaction(RPC, "sig", provider({ status: "confirmed", txSlot: 100, finalizedSlot: 200 })))?.confirmation === "confirmed");
+check("Finality needs the tx slot at or below the cluster's finalized slot (status 'finalized' but slot ahead -> confirmed)", (await solana.fetchDevnetTransaction(RPC, "sig", provider({ status: "finalized", txSlot: 300, finalizedSlot: 200 })))?.confirmation === "confirmed");
+check("Status finalized AND slot <= finalized slot -> finalized", (await solana.fetchDevnetTransaction(RPC, "sig", provider({ status: "finalized", txSlot: 150, finalizedSlot: 200 })))?.confirmation === "finalized");
 check("Payment verification proves devnet identity first, then reads the transaction", devCalls[0] === "getGenesisHash" && devCalls.includes("getTransaction"), devCalls);
 const health = fs.readFileSync(new URL("../app/api/sys/payments/rpc-health/route.ts", import.meta.url), "utf8");
 check("RPC health route: operator + staging only, never returns / logs the endpoint, never signs, identity before any other call", health.includes("authorizePlatformOperator(request)") && health.includes("createStagingSettlementClient()") && !/rpcUrl[^)]*[,}]\s*$|endpoint:\s*rail|console\./m.test(health) && !/rail\.rpcUrl\s*[,}]/.test(health.slice(health.indexOf("const report"))) && health.includes('throw new Error("NEVER_SIGN")') && health.indexOf("getGenesisHash") < health.indexOf("rpc.version()"));

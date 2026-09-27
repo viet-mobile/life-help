@@ -121,6 +121,8 @@ export function devnetAdapter(client: SupabaseClient, rail: DevnetRail): MoneyAd
     if (status?.confirmationStatus === "finalized") {
       const tx = await rail.rpc.transaction(attempt.external_id, "finalized");
       if (!tx) return { kind: "PENDING" };
+      // Finality from the chain, not from the provider's label: the slot must be finalized.
+      if (typeof tx.slot !== "number" || tx.slot > await rail.rpc.finalizedSlot()) return { kind: "PENDING" };
       const seen = observePayment(tx, { recipient: attempt.destination, mint: rail.mint, reference: String(payload.reference ?? "") });
       const exact = seen.txSuccess && seen.recipient === attempt.destination && seen.mint === rail.mint && seen.amountBaseUnits === attempt.amount_base_units && seen.referenceMatched;
       return exact ? { kind: "CONFIRMED" } : { kind: "MISMATCH", code: "LANDED_TRANSFER_MISMATCH" };

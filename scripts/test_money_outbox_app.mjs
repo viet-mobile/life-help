@@ -417,13 +417,14 @@ check("Classification: wrong mint / mainnet / invalid address / amount -> PERMAN
   const B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
   const enc = (bytes) => { let n = BigInt("0x" + Buffer.from(bytes).toString("hex")); let s = ""; while (n > 0n) { s = B58[Number(n % 58n)] + s; n /= 58n; } for (const b of bytes) { if (b === 0) s = "1" + s; else break; } return s; };
   const signer = await tx.signerFromSecret(enc(Buffer.concat([secretBytes, pub])));
-  const state = { genesis: tx.DEVNET_GENESIS_HASH, statuses: {}, txs: {}, height: 500, sent: [], sendError: null };
+  const state = { genesis: tx.DEVNET_GENESIS_HASH, statuses: {}, txs: {}, height: 500, finalizedSlot: 100, sent: [], sendError: null };
   const rpcStub = new tx.DevnetRpc("https://api.devnet.solana.com", async (_u, init) => {
     const { method, params } = JSON.parse(init.body);
     let result = null;
     if (method === "getGenesisHash") result = state.genesis;
     else if (method === "getLatestBlockhash") result = { value: { blockhash: "GfVcyD4kkTrj4bKc7WA9sZCin9JDbdT4Zkd3EittNR1W", lastValidBlockHeight: 650 } };
     else if (method === "getBlockHeight") result = state.height;
+    else if (method === "getSlot") result = state.finalizedSlot;
     else if (method === "getSignatureStatuses") result = { value: [state.statuses[params[0][0]] ?? null] };
     else if (method === "getTransaction") result = state.txs[params[0]] ?? null;
     else if (method === "getSignaturesForAddress") result = [];
@@ -455,6 +456,9 @@ check("Classification: wrong mint / mainnet / invalid address / amount -> PERMAN
   const mkTx = (amount, owner = plan.destination) => ({ slot: 9, meta: { err: null, preTokenBalances: [], postTokenBalances: [{ accountIndex: 1, mint: rail.mint, owner, programId: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", uiTokenAmount: { amount: String(amount) } }] }, transaction: { message: { accountKeys: [signer.publicKey, destAta, plan.reference] } } });
   state.txs[prepared.externalId] = mkTx(42857142);
   check("Devnet adapter observe: finalized + exact destination / mint / amount / reference -> CONFIRMED", (await adapter.observe(attempt)).kind === "CONFIRMED");
+  state.finalizedSlot = 5;
+  check("Devnet adapter observe: provider says 'finalized' but the tx slot is past the cluster's finalized slot -> PENDING (never paid early)", (await adapter.observe(attempt)).kind === "PENDING");
+  state.finalizedSlot = 100;
   state.txs[prepared.externalId] = mkTx(42857141);
   check("Devnet adapter observe: finalized but a different amount -> MISMATCH (review, never paid)", (await adapter.observe(attempt)).kind === "MISMATCH");
   state.statuses[prepared.externalId] = { confirmationStatus: "finalized", err: { InstructionError: [1, "Custom"] } };

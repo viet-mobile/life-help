@@ -135,21 +135,25 @@ export function observePayment(tx: ParsedTransaction, expected: { recipient: str
   };
 }
 
-/** Devnet JSON-RPC reader: finalized first, then confirmed. Never mainnet, never signs. */
+/**
+ * Devnet JSON-RPC reader. Never mainnet, never signs. Finality is decided from the chain, never from
+ * the commitment we asked for (some providers answer getTransaction(finalized) with a merely
+ * confirmed transaction): "finalized" only when the signature status says finalized AND the
+ * transaction's slot is at or below the cluster's finalized slot.
+ */
 export async function fetchDevnetTransaction(rpcUrl: string, signature: string, fetchImpl: typeof fetch = fetch): Promise<{ tx: ParsedTransaction; confirmation: "finalized" | "confirmed" } | null> {
   const endpoint = assertDevnetEndpoint(rpcUrl);
+  const call = async <T>(method: string, params: unknown[] = []): Promise<T | null> => {
+    const response = await fetchImpl(endpoint.toString(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }) });
+    const body = await response.json().catch(() => null) as { result?: T } | null;
+    return body?.result ?? null;
+  };
   // Network identity first: whatever the URL claims, only the devnet genesis hash may be trusted.
-  const genesis = await fetchImpl(endpoint.toString(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "getGenesisHash" }) });
-  const genesisBody = await genesis.json().catch(() => null) as { result?: string } | null;
-  if (genesisBody?.result !== DEVNET_GENESIS_HASH) throw new MainnetDisabledError();
-  for (const commitment of ["finalized", "confirmed"] as const) {
-    const response = await fetchImpl(endpoint.toString(), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "getTransaction", params: [signature, { encoding: "jsonParsed", commitment, maxSupportedTransactionVersion: 0 }] }),
-    });
-    const body = await response.json().catch(() => null) as { result?: ParsedTransaction | null } | null;
-    if (body?.result) return { tx: body.result, confirmation: commitment };
-  }
-  return null;
+  if (await call<string>("getGenesisHash") !== DEVNET_GENESIS_HASH) throw new MainnetDisabledError();
+  const tx = await call<ParsedTransaction>("getTransaction", [signature, { encoding: "jsonParsed", commitment: "confirmed", maxSupportedTransactionVersion: 0 }]);
+  if (!tx) return null;
+  const status = (await call<{ value: Array<{ confirmationStatus?: string } | null> }>("getSignatureStatuses", [[signature], { searchTransactionHistory: true }]))?.value?.[0];
+  const finalizedSlot = await call<number>("getSlot", [{ commitment: "finalized" }]);
+  const finalized = status?.confirmationStatus === "finalized" && typeof tx.slot === "number" && typeof finalizedSlot === "number" && tx.slot <= finalizedSlot;
+  return { tx, confirmation: finalized ? "finalized" : "confirmed" };
 }
