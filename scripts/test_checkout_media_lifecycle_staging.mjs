@@ -24,7 +24,8 @@ const api = async (pathname, { method = "GET", headers = {}, body, raw } = {}) =
   return { status: r.status, body: type.startsWith("application/json") ? await r.json() : null };
 };
 const storageHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` };
-const objectExists = async (key) => (await fetch(`${supabaseUrl}/storage/v1/object/${BUCKET}/${key}`, { headers: storageHeaders })).status === 200;
+// Storage METADATA (object/info): object GETs can be answered from the storage CDN cache after deletion.
+const objectExists = async (key) => (await fetch(`${supabaseUrl}/storage/v1/object/info/${BUCKET}/${key}`, { headers: storageHeaders })).status === 200;
 const mediaRow = async (id) => (await db(`request_media?id=eq.${id}&select=*`))[0];
 const runCleanup = async () => api("/api/sys/cleanup/conversations", { method: "POST", headers: operator, body: { limit: 20 } });
 const form = (label) => ({ ...fx.requestPayload(undefined, "en", label), service_slug: "clog-clearing" });

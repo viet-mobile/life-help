@@ -34,7 +34,7 @@ export async function uploadPrivateMedia(client: SupabaseClient, checkoutId: str
   if (!bucket) return { ok: false, code: "MEDIA_STORAGE_NOT_CONFIGURED" };
   const extension = contentType.split("/")[1].replace("quicktime", "mov");
   const objectKey = `requests/${checkoutId}/${crypto.randomUUID()}.${extension}`;
-  const { error } = await client.storage.from(bucket).upload(objectKey, bytes, { contentType, upsert: false, cacheControl: "no-store" });
+  const { error } = await client.storage.from(bucket).upload(objectKey, bytes, { contentType, upsert: false, cacheControl: "0" });
   return error ? { ok: false, code: "MEDIA_UPLOAD_FAILED" } : { ok: true, objectKey };
 }
 
@@ -43,6 +43,17 @@ export async function readPrivateMedia(client: SupabaseClient, objectKey: string
   if (!bucket) return null;
   const { data } = await client.storage.from(bucket).download(objectKey);
   return data ?? null;
+}
+
+/**
+ * Is the object gone? Answered from storage METADATA (object/info), never from a download: object
+ * reads can be served from the storage CDN cache for a while after deletion. null = could not verify.
+ */
+async function objectGone(client: SupabaseClient, bucket: string, objectKey: string): Promise<boolean | null> {
+  const { data, error } = await client.storage.from(bucket).info(objectKey);
+  if (data) return false;
+  const status = (error as { status?: number; statusCode?: string | number } | null)?.status ?? Number((error as { statusCode?: string | number } | null)?.statusCode);
+  return status === 400 || status === 404 ? true : null;
 }
 
 /** Best-effort removal of an object that was never registered (upload raced a checkout end). */
@@ -67,10 +78,11 @@ export async function runMediaDeletion(client: SupabaseClient, limit = 50): Prom
     let failure: string | null = null;
     try {
       const { error } = await client.storage.from(bucket).remove([item.object_key]);
-      // Verify the object is really gone before recording DELETED (a failed delete stays queued).
-      const still = error ? null : await client.storage.from(bucket).download(item.object_key);
+      // Verify the object is really gone (metadata, not a cacheable read) before recording DELETED.
+      const gone = error ? false : await objectGone(client, bucket, item.object_key);
       if (error) failure = "STORAGE_DELETE_FAILED";
-      else if (still?.data) failure = "STORAGE_OBJECT_STILL_PRESENT";
+      else if (gone === false) failure = "STORAGE_OBJECT_STILL_PRESENT";
+      else if (gone === null) failure = "STORAGE_DELETE_UNVERIFIED";
     } catch {
       failure = "STORAGE_DELETE_ERROR";
     }

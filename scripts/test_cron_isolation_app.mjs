@@ -53,7 +53,7 @@ globalThis.__realMedia = true;
 globalThis.__env = { LIFE_HELP_MEDIA_BUCKET: "life-help-staging-request-media" };
 const media = await import(new URL("lib/media/mediaStorage.ts", root).href + "?real");
 const recorded = [], deletedIds = [];
-const objects = new Set(["k-throws", "k-error", "k-stays", "k-ok"]);
+const objects = new Set(["k-throws", "k-error", "k-stays", "k-unverified", "k-ok"]);
 const mediaClient = {
   rpc: async (fn, args) => {
     if (fn === "list_media_pending_deletion") return { data: [...objects].map((k, i) => ({ media_id: `m${i}-${k}`, object_key: k })) };
@@ -62,13 +62,14 @@ const mediaClient = {
     return { data: null };
   },
   storage: { from: () => ({
-    remove: async ([key]) => { if (key === "k-throws") throw new Error("network"); if (key === "k-error") return { error: { message: "denied" } }; if (key !== "k-stays") objects.delete(key); return { error: null }; },
-    download: async (key) => ({ data: objects.has(key) ? new Blob(["x"]) : null }),
+    remove: async ([key]) => { if (key === "k-throws") throw new Error("network"); if (key === "k-error") return { error: { message: "denied" } }; if (key !== "k-stays" && key !== "k-unverified") objects.delete(key); return { error: null }; },
+    info: async (key) => (key === "k-unverified" ? { data: null, error: { status: 500 } } : objects.has(key) ? { data: { name: key }, error: null } : { data: null, error: { status: 400 } }),
+    download: async () => { throw new Error("verification must not use cacheable downloads"); },
   }) },
 };
 const out = await media.runMediaDeletion(mediaClient, 50);
-check("One object throwing / failing / still present does not stop the others: the healthy item is deleted", out.deleted === 1 && out.failed === 3 && deletedIds.length === 1 && deletedIds[0].endsWith("k-ok"), { out, deletedIds });
-check("Each failure is recorded (stays queued with backoff) with a safe code; none is marked DELETED", recorded.map((r) => r[1]).sort().join() === "STORAGE_DELETE_ERROR,STORAGE_DELETE_FAILED,STORAGE_OBJECT_STILL_PRESENT" && !deletedIds.some((id) => /k-(throws|error|stays)/.test(id)), recorded);
+check("One object throwing / failing / still present does not stop the others: the healthy item is deleted", out.deleted === 1 && out.failed === 4 && deletedIds.length === 1 && deletedIds[0].endsWith("k-ok"), { out, deletedIds });
+check("Each failure is recorded (stays queued with backoff) with a safe code - incl. 'could not verify' (metadata error) and 'still present'; none is marked DELETED; verification never uses a cacheable download", recorded.map((r) => r[1]).sort().join() === "STORAGE_DELETE_ERROR,STORAGE_DELETE_FAILED,STORAGE_DELETE_UNVERIFIED,STORAGE_OBJECT_STILL_PRESENT" && !deletedIds.some((id) => /k-(throws|error|stays|unverified)/.test(id)), recorded);
 
 fs.rmSync(dir, { recursive: true, force: true });
 console.log(`${passed} passed, ${failed} failed`);
