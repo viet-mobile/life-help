@@ -7,6 +7,7 @@
 //   N   new Helper gets a new conversation; current chat lookup returns only it
 //   F   funded cancel after the last decline: refund exactly once, no writable conversation
 // Usage: node scripts/test_conversation_lifecycle_staging.mjs
+import crypto from "node:crypto";
 import { base, db, fixtures, recorder, rpc, serviceKey, settlementToken, supabaseUrl } from "./lib/stagingPushHarness.mjs";
 import { call, moneyFixtures } from "./lib/stagingMoneyFixtures.mjs";
 
@@ -21,6 +22,7 @@ const api = async (pathname, { method = "GET", headers = {}, body } = {}) => {
 };
 const conversations = (requestId) => db(`conversations?request_id=eq.${requestId}&select=id,helper_id,status,closed_at&order=created_at`);
 const messagesIn = (conversationId) => db(`messages?conversation_id=eq.${conversationId}&select=id,original_text`);
+const mediaKeys = new Set();
 const say = (requestId, auth, text, capability) => api("/api/chat", { method: "POST", headers: auth ?? {}, body: { requestId, originalLanguage: "en", originalText: text, ...(capability ? { capability } : {}) } });
 
 try {
@@ -108,10 +110,49 @@ try {
   const refunds = await db(`service_refunds?payment_intent_id=eq.${funded.intent.intent_id}&select=id`);
   const jobs = refunds.length ? await db(`money_movement_jobs?service_refund_id=eq.${refunds[0].id}&select=id`) : [];
   expect("F1. funded cancel: CANCELLED, no ACTIVE conversation, message refused, refund exactly once (1 obligation, 1 job)", (k1?.success || k1?.code) && (await db(`service_requests?id=eq.${requestId}&select=status`))[0].status === "CANCELLED" && (await conversations(requestId)).every((c) => c.status === "CLOSED") && k2.status === 409 && refunds.length === 1 && jobs.length === 1, { k1, k2: k2.status, refunds: refunds.length });
+
+  // ================= M. Mode A reselection through the customer API: lookup, notices, media, authority =================
+  {
+    const RA1 = await mf.helperWithPrice("RA1", 64500), RA2 = await mf.helperWithPrice("RA2", 57000);
+    const E = await fx.customerDevice("E");
+    const offers = await api(`/api/pricing/offers?service=clog-clearing&subitem=toilet-simple&country=KR&sido=${encodeURIComponent(fx.sido)}&gungu=G1`);
+    const token = offers.body?.offers?.find((o) => Number(o.base_price) === 64500)?.offerToken;
+    const co = await api("/api/checkouts", { method: "POST", headers: { ...operator, Cookie: E.cookie }, body: { mode: "HELPER_PRICE_SELECTED", offer_token: token, ...fx.requestPayload(undefined, "en", "mode A reselection"), service_slug: "clog-clearing" } });
+    mf.checkouts.add(co.body.checkoutId);
+    const png = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==", "base64");
+    const media = await (await fetch(`${base}/api/checkouts/${co.body.checkoutId}/media`, { method: "POST", headers: { "Content-Type": "image/png", Cookie: E.cookie }, body: png })).json();
+    const fA = await mf.fixtureFund(co.body.checkoutId, E.publicId);
+    const capE = (await api(`/api/checkouts/${co.body.checkoutId}`, { headers: { Cookie: E.cookie } })).body?.capability;
+    const [m1] = await conversations(fA.requestId);
+    const hello = await say(fA.requestId, null, "hello RA1", capE);
+    const [asg1] = await db(`request_assignments?request_id=eq.${fA.requestId}&helper_id=eq.${RA1.helper.id}&select=id`);
+    const dec = await api(`/api/helper/assignments/${asg1.id}/decline`, { method: "POST", headers: RA1.auth });
+    const noticesBefore = (await db(`app_notifications?type=eq.NEW_CHAT_MESSAGE&payload->>conversation_id=eq.${m1.id}&select=id`)).length;
+    const stale = await say(fA.requestId, null, "stale after decline", capE);
+    const historyLookup = await api(`/api/chat?requestId=${fA.requestId}&capability=${encodeURIComponent(capE)}`);
+    const noticesAfter = (await db(`app_notifications?type=eq.NEW_CHAT_MESSAGE&payload->>conversation_id=eq.${m1.id}&select=id`)).length;
+    expect("M1. Mode A: RA1 declines -> CUSTOMER_RESELECTION_REQUIRED, C1 CLOSED; customer's stale write 409 and creates NO notice; with no current Helper the lookup shows C1 read-only", hello.status === 200 && dec.status === 200 && (await db(`service_requests?id=eq.${fA.requestId}&select=status`))[0].status === "CUSTOMER_RESELECTION_REQUIRED" && stale.status === 409 && noticesAfter === noticesBefore && historyLookup.body?.conversation?.id === m1.id && historyLookup.body.conversation.status === "CLOSED", { stale: stale.status, lookup: historyLookup.body?.conversation });
+    const reOffers = await api(`/api/requests/reselection/offers?requestId=${fA.requestId}`, { headers: { Cookie: E.cookie } });
+    const reToken = reOffers.body?.offers?.find((o) => Number(o.base_price) === 57000)?.offerToken;
+    const reselect = await api("/api/requests/reselection", { method: "POST", headers: { Cookie: E.cookie, "Idempotency-Key": crypto.randomUUID() }, body: { request_id: fA.requestId, offer_token: reToken } });
+    const convM = await conversations(fA.requestId);
+    const m2 = convM.find((c) => c.helper_id === RA2.helper.id);
+    const lookupM = await api(`/api/chat?requestId=${fA.requestId}&capability=${encodeURIComponent(capE)}`);
+    const toRA2 = await say(fA.requestId, null, "hello RA2", capE);
+    const notices = await db(`app_notifications?type=eq.NEW_CHAT_MESSAGE&payload->>conversation_id=eq.${m2?.id}&select=recipient_id`);
+    const sel = await db(`request_price_selections?request_id=eq.${fA.requestId}&select=selection_version,status,helper_id&order=selection_version`);
+    expect("M2. customer re-selects RA2 (API): NEW conversation C2, lookup returns ONLY C2, customer <-> RA2 works, RA1 blocked (403); v2 is the only ACCEPTED selection", reselect.status === 200 && !!m2 && m2.id !== m1.id && convM.filter((c) => c.status === "ACTIVE").length === 1 && lookupM.body?.conversation?.id === m2.id && toRA2.status === 200 && (await say(fA.requestId, RA2.auth, "hi from RA2")).status === 200 && (await say(fA.requestId, RA1.auth, "RA1 again")).status === 403 && sel.length === 2 && sel[1].status === "ACCEPTED" && sel[1].helper_id === RA2.helper.id && sel[0].status === "ENDED", { reselect: reselect.body, lookup: lookupM.body?.conversation?.id });
+    expect("M3. new-message notice routing: the customer's message to C2 notifies ONLY RA2 (never RA1)", notices.length === 1 && notices[0].recipient_id === RA2.helper.id, notices);
+    const mediaViews = { RA1: (await api(`/api/media/${media.mediaId}`, { headers: RA1.auth })).status, RA2: (await api(`/api/media/${media.mediaId}`, { headers: RA2.auth })).status, owner: (await api(`/api/media/${media.mediaId}`, { headers: { Cookie: E.cookie } })).status };
+    expect("M4. media (API): released RA1 404, current RA2 200, owner 200", mediaViews.RA1 === 404 && mediaViews.RA2 === 200 && mediaViews.owner === 200, mediaViews);
+    const mediaRow = (await db(`request_media?id=eq.${media.mediaId}&select=object_key`))[0];
+    if (mediaRow?.object_key) mediaKeys.add(mediaRow.object_key);
+  }
 } catch (error) {
   record("FAIL", "conversation lifecycle harness", String(error?.stack || error).slice(0, 600));
 } finally {
   const out = await mf.cleanup();
+  if (mediaKeys.size) await fetch(`${supabaseUrl}/storage/v1/object/life-help-staging-request-media`, { method: "DELETE", headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" }, body: JSON.stringify({ prefixes: [...mediaKeys] }) });
   expect("Fixture cleanup (checkouts purged; helpers, users, requests, conversations, messages, notifications)", out.purged.every(Boolean) && Object.values(out.leftovers).every((n) => n === 0), out);
 }
 if (summary().FAIL > 0) process.exit(1);
