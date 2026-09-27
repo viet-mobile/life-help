@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { authorizePlatformOperator, createStagingSettlementClient } from "@/lib/settlement/platformAuth";
-import { getRailConfig } from "@/lib/payments/paymentRail";
+import { getRailConfig, railConfigDiagnostics } from "@/lib/payments/paymentRail";
 import { BASE58_ADDRESS, DEVNET_GENESIS_HASH, MAINNET_GENESIS_HASH, NATIVE_USDC_MINT, assertDevnetEndpoint } from "@/lib/payments/solana";
 import { DevnetRpc, associatedTokenAddress, prepareUsdcTransfer } from "@/lib/payments/solanaTx";
 
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => ({})) as { addresses?: unknown };
   const addresses = Array.isArray(body.addresses) ? body.addresses.filter((a): a is string => typeof a === "string" && BASE58_ADDRESS.test(a)).slice(0, 5) : [];
   const rail = await getRailConfig();
-  if (!rail) return NextResponse.json({ success: false, code: "RAIL_NOT_CONFIGURED" }, { headers: { "Cache-Control": "no-store" } });
+  if (!rail) return NextResponse.json({ success: false, code: "RAIL_NOT_CONFIGURED", diagnostics: await railConfigDiagnostics() }, { headers: { "Cache-Control": "no-store" } });
 
   const rpc = new DevnetRpc(rail.rpcUrl);
   const genesis = await step(() => rpc.call<string>("getGenesisHash"));

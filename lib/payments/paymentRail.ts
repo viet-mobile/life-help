@@ -41,6 +41,29 @@ export async function getRailConfig(env?: Record<string, string | undefined>): P
 }
 
 /**
+ * Why is the rail off? Shape-only answers (booleans / lengths), NEVER the endpoint value itself:
+ * the RPC URL is a secret that may carry an API key.
+ */
+export async function railConfigDiagnostics(env?: Record<string, string | undefined>) {
+  const e = env ?? await runtimeEnv();
+  const raw = e.LIFE_HELP_SOLANA_DEVNET_RPC_URL ?? "";
+  const url = raw.trim();
+  let parsed: URL | null = null;
+  try { parsed = new URL(url); } catch { parsed = null; }
+  const host = parsed?.hostname.toLowerCase() ?? "";
+  return {
+    stagingProject: (e.SUPABASE_URL || "").match(/([a-z0-9]+)\.supabase\.(?:co|in)/i)?.[1] === STAGING_REF,
+    paymentMode: e.LIFE_HELP_PAYMENT_MODE === "STAGING_DEVNET_TEST",
+    recipientValid: BASE58_ADDRESS.test(e.LIFE_HELP_SOLANA_DEVNET_RECIPIENT?.trim() ?? ""),
+    rpc: {
+      present: raw.length > 0, length: url.length, surroundingWhitespace: raw !== url, quoted: /^["']|["']$/.test(url), containsEquals: /^[A-Z_]+=/.test(url),
+      parseable: !!parsed, https: parsed?.protocol === "https:", hostContainsDevnet: host.includes("devnet"),
+      hostOrPathContainsMainnet: /mainnet/.test(host) || /mainnet/.test(parsed?.pathname ?? ""), guardPasses: (() => { try { assertDevnetEndpoint(url); return true; } catch { return false; } })(),
+    },
+  };
+}
+
+/**
  * TEST / SANDBOX FX: rates come only from explicit configuration, e.g.
  * LIFE_HELP_TEST_FX_RATES="KRW=1400" (source-currency units per 1 USDC). No production FX provider
  * is connected; an unconfigured currency has no quote (FX_UNAVAILABLE), never a guessed rate.
