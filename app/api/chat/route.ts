@@ -25,10 +25,16 @@ async function resolveConversation(request: Request, requestId: string, capabili
     senderRole = "CUSTOMER";
     senderId = verified.customerId;
   }
-  // A request gets one conversation per assigned Helper (automatic rematch, customer re-selection).
-  // A Helper only ever sees its own; the customer sees the newest one, i.e. the current Helper's.
+  // A request gets one conversation per assigned Helper (automatic rematch, customer re-selection);
+  // a relationship's conversation is closed by the database when it ends (migration 016).
+  // A Helper only ever sees its own. The customer sees the CURRENT Helper's conversation (never an
+  // older one because of ordering); with no current Helper, the newest one as read-only history.
   let query = client.from("conversations").select("id, request_id, customer_id, helper_id, status, customer_locale, helper_locale").eq("request_id", requestId).eq("conversation_type", "CUSTOMER_HELPER");
   if (senderRole === "HELPER") query = query.eq("helper_id", senderId);
+  else {
+    const { data: current } = await client.from("request_assignments").select("helper_id").eq("request_id", requestId).in("status", ["PENDING", "NOTIFIED", "ACCEPTED", "COMPLETED"]).order("assigned_at", { ascending: false }).limit(1).maybeSingle();
+    if (current?.helper_id) query = query.eq("helper_id", current.helper_id);
+  }
   const { data: conversation, error } = await query.order("created_at", { ascending: false }).limit(1).maybeSingle();
   if (error || !conversation) return { error: fail(404, "CONVERSATION_NOT_FOUND") } as const;
   return { client, conversation, senderRole, senderId } as const;
@@ -59,6 +65,9 @@ export async function POST(request: Request) {
   if ("error" in resolved) return resolved.error;
   if (resolved.conversation.status !== "ACTIVE") return fail(409, "CONVERSATION_CLOSED");
   const { data, error } = await resolved.client.from("messages").insert({ conversation_id: resolved.conversation.id, sender_role: resolved.senderRole, sender_id: resolved.senderId, original_language: originalLanguage, original_text: originalText, translated_language: null, translated_text: null, translation_status: "FAILED" }).select("id, conversation_id, sender_role, sender_id, original_language, original_text, translated_language, translated_text, translation_status, created_at").single();
+  // The database refuses writes outside the current relationship (closed / ended / wrong sender): same
+  // answer as a closed conversation, so a refused write reveals nothing more.
+  if (error && /CONVERSATION_NOT_WRITABLE/.test(error.message ?? "")) return fail(409, "CONVERSATION_CLOSED");
   if (error || !data) return fail(500, "MESSAGE_CREATE_FAILED");
   const recipientType = resolved.senderRole === "CUSTOMER" ? "HELPER" : "CUSTOMER";
   const recipientId = resolved.senderRole === "CUSTOMER" ? String(resolved.conversation.helper_id || "") : resolved.conversation.customer_id;
