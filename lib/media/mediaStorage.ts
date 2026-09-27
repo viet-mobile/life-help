@@ -63,12 +63,20 @@ export async function runMediaDeletion(client: SupabaseClient, limit = 50): Prom
   if (!bucket) return { deleted: 0, failed: pending.length, notConfigured: true };
   let deleted = 0, failed = 0;
   for (const item of pending) {
-    const { error } = await client.storage.from(bucket).remove([item.object_key]);
-    // Verify the object is really gone before recording DELETED (a failed delete stays queued).
-    const still = error ? null : await client.storage.from(bucket).download(item.object_key);
-    if (error || still?.data) {
+    // Per-item isolation: one failing object never stops the others.
+    let failure: string | null = null;
+    try {
+      const { error } = await client.storage.from(bucket).remove([item.object_key]);
+      // Verify the object is really gone before recording DELETED (a failed delete stays queued).
+      const still = error ? null : await client.storage.from(bucket).download(item.object_key);
+      if (error) failure = "STORAGE_DELETE_FAILED";
+      else if (still?.data) failure = "STORAGE_OBJECT_STILL_PRESENT";
+    } catch {
+      failure = "STORAGE_DELETE_ERROR";
+    }
+    if (failure) {
       failed += 1;
-      await client.rpc("record_media_deletion_failure", { p_media_id: item.media_id, p_error_code: error ? "STORAGE_DELETE_FAILED" : "STORAGE_OBJECT_STILL_PRESENT" });
+      await Promise.resolve(client.rpc("record_media_deletion_failure", { p_media_id: item.media_id, p_error_code: failure })).catch(() => undefined);
       continue;
     }
     const { data: marked } = await client.rpc("mark_request_media_deleted", { p_media_id: item.media_id });

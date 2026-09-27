@@ -389,6 +389,20 @@ async function crashAfter(step, jobId, adapter, chain) {
   check("Durable loop: every due job (payouts + refund) processed; bounded per run", out1.length === 3 && out2.filter((o) => o.status === "CONFIRMED").length === 3 && (await engine.runDueMoneyJobs(client, ad, 10)).length === 0);
 }
 
+// ============ one broken job never blocks the others ============
+{
+  const chain = makeChain(), ad = makeAdapter(chain);
+  await db.query("update public.money_movement_jobs set status = 'REVIEW_REQUIRED', last_error_class = 'REVIEW' where status not in ('CONFIRMED', 'REVIEW_REQUIRED', 'FAILED_PERMANENT')");
+  const broken = await f.completedPayout("BRK");
+  const healthy = [await f.completedPayout("OK1"), await f.completedPayout("OK2")];
+  const brokenJob = (await f.jobFor({ obligationId: broken.obligationId })).id;
+  const plan = ad.plan;
+  ad.plan = async (job) => { if (job.job_id === brokenJob) throw new TypeError("Cannot read properties of undefined"); return plan(job); };
+  const out = await engine.runDueMoneyJobs(client, ad, 10);
+  const statuses = await Promise.all(healthy.map(async (p) => (await f.jobFor({ obligationId: p.obligationId })).status));
+  check("Outbox run: an unexpected error in one job is contained (that job RETRYABLE, bounded); every other due job is still processed", out.length === 3 && (await jobRow(brokenJob)).status === "RETRYABLE" && statuses.every((st) => st === "CONFIRMING"), { out, statuses });
+}
+
 // ============ error classification ============
 const cls = (e) => engine.classifyMoneyError(e).errorClass;
 check("Classification: timeout / 429 / 5xx / fetch failure -> RETRYABLE", cls(Object.assign(new Error("x"), { name: "TimeoutError" })) === "RETRYABLE" && cls(new Error("RPC_getBlockHeight_HTTP_429")) === "RETRYABLE" && cls(new Error("RPC_send_HTTP_502")) === "RETRYABLE" && cls(new Error("fetch failed")) === "RETRYABLE");
@@ -482,6 +496,9 @@ check("Checkout cancel route: owner = device-owner cookie only, database decides
 check("Upload that loses the race with a checkout end removes its storage object (no orphan)", /if \(!data\?\.success\) \{[\s\S]*removePrivateMedia\(client, stored\.objectKey\)/.test(src("app/api/checkouts/[checkoutId]/media/route.ts")));
 check("Storage deletion failure is recorded (stays queued, backoff) - DELETED only after verified removal", /record_media_deletion_failure[\s\S]*mark_request_media_deleted/.test(src("lib/media/mediaStorage.ts")));
 check("Saving a Helper payout destination wakes that Helper's waiting payout jobs", src("app/api/helper/payouts/route.ts").includes('rpc("wake_helper_money_jobs", { p_helper_id: helper.id })'));
+check("Signed bytes never logged: no console output in the outbox engine / devnet adapter / cron + reconcile routes", !["lib/payments/moneyJobs.ts", "lib/payments/transfers.ts", "app/api/sys/cleanup/conversations/route.ts", "app/api/sys/payments/reconcile/route.ts"].some((file) => /console\.(log|info|warn|error|debug)/.test(src(file))));
+check("Outcomes returned to routes / cron logs carry job id, status, code and the PUBLIC external id only", /export type MoneyJobOutcome = \{ jobId: string \| null; status: string; code\?: string; externalId\?: string \};/.test(src("lib/payments/moneyJobs.ts")) && !/signed_payload|signedPayload/.test(src("app/api/sys/cleanup/conversations/route.ts") + src("workers/scheduled.mjs")));
+check("Signed bytes never written to payment_events / audit logs by the outbox", !/payment_events|admin_audit_logs/.test(src("lib/payments/moneyJobs.ts")) && !/payment_events|admin_audit_logs/.test(src("lib/payments/transfers.ts")));
 void settled;
 
 fs.rmSync(stubDir, { recursive: true, force: true });
