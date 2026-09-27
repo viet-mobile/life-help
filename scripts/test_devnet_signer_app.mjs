@@ -102,7 +102,7 @@ check("Devnet genesis verified first, then blockhash, then send", okSig === "SEN
 
 // ---- rail gating (the signer never exists outside explicit staging devnet) ----
 const STAGING = "https://wreebowcbiymodswajwe.supabase.co", PROD = "https://wstdbymmkrqgtsibhcjz.supabase.co";
-const base = { SUPABASE_URL: STAGING, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: address, LIFE_HELP_SOLANA_DEVNET_SIGNER_SECRET: secret };
+const base = { SUPABASE_URL: STAGING, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: address, LIFE_HELP_SOLANA_DEVNET_SIGNER_SECRET: secret, LIFE_HELP_SOLANA_DEVNET_RPC_URL: "https://devnet.rpc-provider.example/v1/KEY" };
 check("Signer available only with staging project + explicit STAGING_DEVNET_TEST mode + matching holding address", (await transfers.getDevnetRail(base))?.signer.publicKey === address);
 check("Signer refused against production, without the mode, without the secret, or when the key is not the holding account", (await transfers.getDevnetRail({ ...base, SUPABASE_URL: PROD })) === null && (await transfers.getDevnetRail({ ...base, LIFE_HELP_PAYMENT_MODE: "" })) === null && (await transfers.getDevnetRail({ ...base, LIFE_HELP_SOLANA_DEVNET_SIGNER_SECRET: "" })) === null && (await transfers.getDevnetRail({ ...base, LIFE_HELP_SOLANA_DEVNET_RECIPIENT: dest })) === null);
 check("Mainnet RPC override cannot activate the signer", (await transfers.getDevnetRail({ ...base, LIFE_HELP_SOLANA_DEVNET_RPC_URL: "https://api.mainnet-beta.solana.com" }).then((r) => r, () => null)) === null);

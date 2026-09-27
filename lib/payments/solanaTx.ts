@@ -9,12 +9,11 @@
  *
  * Nothing here decides business amounts: callers pass amounts computed by the LIFE.HELP ledger.
  */
-import { BASE58_ADDRESS, MainnetDisabledError, NATIVE_USDC_MINT, SPL_TOKEN_PROGRAM_ID, USDC_DECIMALS, assertDevnetEndpoint, base58Encode } from "@/lib/payments/solana";
+import { BASE58_ADDRESS, DEVNET_GENESIS_HASH, MainnetDisabledError, NATIVE_USDC_MINT, SPL_TOKEN_PROGRAM_ID, USDC_DECIMALS, assertDevnetEndpoint, base58Encode } from "@/lib/payments/solana";
 
 export const SYSTEM_PROGRAM_ID = "11111111111111111111111111111111";
 export const ASSOCIATED_TOKEN_PROGRAM_ID = "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
-export const DEVNET_GENESIS_HASH = "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG";
-export const MAINNET_GENESIS_HASH = "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d";
+export { DEVNET_GENESIS_HASH, MAINNET_GENESIS_HASH } from "@/lib/payments/solana";
 
 const B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 export function base58Decode(value: string): Uint8Array {
@@ -223,6 +222,21 @@ export class DevnetRpc {
   }
   async signaturesFor(address: string, limit = 10): Promise<Array<{ signature: string; err: unknown; confirmationStatus?: string }>> {
     return this.call("getSignaturesForAddress", [address, { limit, commitment: "confirmed" }]);
+  }
+  async version(): Promise<string | null> {
+    return (await this.call<{ "solana-core"?: string }>("getVersion"))["solana-core"] ?? null;
+  }
+  /** Read-only balances (health / funding checks): lamports, and a token account's base units (null = no account). */
+  async lamports(address: string): Promise<number> {
+    return Number((await this.call<{ value: number }>("getBalance", [address, { commitment: "confirmed" }])).value);
+  }
+  async tokenBaseUnits(tokenAccount: string): Promise<string | null> {
+    try {
+      return (await this.call<{ value: { amount: string } }>("getTokenAccountBalance", [tokenAccount, { commitment: "confirmed" }])).value.amount;
+    } catch (error) {
+      if (/could not find account|Invalid param/i.test(error instanceof Error ? error.message : "")) return null;
+      throw error;
+    }
   }
   async status(signature: string): Promise<{ confirmationStatus?: string; err: unknown } | null> {
     const r = await this.call<{ value: Array<{ confirmationStatus?: string; err: unknown } | null> }>("getSignatureStatuses", [[signature], { searchTransactionHistory: true }]);

@@ -16,6 +16,10 @@ export const NATIVE_USDC_MINT: Record<SolanaNetwork, string> = {
 export const SPL_TOKEN_PROGRAM_ID = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
 export const USDC_DECIMALS = 6;
 
+/** Chain identity: the only trustworthy answer to "which cluster is this endpoint?". */
+export const DEVNET_GENESIS_HASH = "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG";
+export const MAINNET_GENESIS_HASH = "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d";
+
 export class MainnetDisabledError extends Error {
   constructor() { super("MAINNET_DISABLED"); }
 }
@@ -134,6 +138,10 @@ export function observePayment(tx: ParsedTransaction, expected: { recipient: str
 /** Devnet JSON-RPC reader: finalized first, then confirmed. Never mainnet, never signs. */
 export async function fetchDevnetTransaction(rpcUrl: string, signature: string, fetchImpl: typeof fetch = fetch): Promise<{ tx: ParsedTransaction; confirmation: "finalized" | "confirmed" } | null> {
   const endpoint = assertDevnetEndpoint(rpcUrl);
+  // Network identity first: whatever the URL claims, only the devnet genesis hash may be trusted.
+  const genesis = await fetchImpl(endpoint.toString(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "getGenesisHash" }) });
+  const genesisBody = await genesis.json().catch(() => null) as { result?: string } | null;
+  if (genesisBody?.result !== DEVNET_GENESIS_HASH) throw new MainnetDisabledError();
   for (const commitment of ["finalized", "confirmed"] as const) {
     const response = await fetchImpl(endpoint.toString(), {
       method: "POST",

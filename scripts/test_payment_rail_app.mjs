@@ -85,8 +85,25 @@ const STAGING = "https://wreebowcbiymodswajwe.supabase.co", PROD = "https://wstd
 const cfg = (env) => rail.getRailConfig(env);
 check("Payments disabled against the production project, even fully configured", (await cfg({ SUPABASE_URL: PROD, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: RECIPIENT })) === null);
 check("Payments disabled on staging unless the explicit STAGING_DEVNET_TEST mode + a valid public recipient are configured", (await cfg({ SUPABASE_URL: STAGING, LIFE_HELP_SOLANA_DEVNET_RECIPIENT: RECIPIENT })) === null && (await cfg({ SUPABASE_URL: STAGING, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: "not-an-address" })) === null);
-const good = await cfg({ SUPABASE_URL: STAGING, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: RECIPIENT });
-check("Configured staging rail = devnet + native devnet USDC + devnet RPC", good?.network === "solana-devnet" && good.mint === MINT && good.recipient === RECIPIENT && good.rpcUrl === "https://api.devnet.solana.com");
+const RPC = "https://devnet.rpc-provider.example/v1/KEY";
+const good = await cfg({ SUPABASE_URL: STAGING, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: RECIPIENT, LIFE_HELP_SOLANA_DEVNET_RPC_URL: RPC });
+check("Configured staging rail = devnet + native devnet USDC + the configured (provider-neutral) devnet RPC", good?.network === "solana-devnet" && good.mint === MINT && good.recipient === RECIPIENT && good.rpcUrl === RPC);
+const railBase = { SUPABASE_URL: STAGING, LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_SOLANA_DEVNET_RECIPIENT: RECIPIENT };
+check("No built-in RPC default: without LIFE_HELP_SOLANA_DEVNET_RPC_URL the rail is off; a mainnet / http / non-devnet URL is refused", (await cfg(railBase)) === null && (await cfg({ ...railBase, LIFE_HELP_SOLANA_DEVNET_RPC_URL: "https://api.mainnet-beta.solana.com" })) === null && (await cfg({ ...railBase, LIFE_HELP_SOLANA_DEVNET_RPC_URL: "http://devnet.example" })) === null && (await cfg({ ...railBase, LIFE_HELP_SOLANA_DEVNET_RPC_URL: "https://rpc.example.com" })) === null);
+const genesisStub = (genesis, calls) => async (_url, init) => { const { method } = JSON.parse(init.body); calls.push(method); return { json: async () => ({ jsonrpc: "2.0", id: 1, result: method === "getGenesisHash" ? genesis : null }) }; };
+for (const [label, genesis] of [["mainnet", "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d"], ["unknown", "UnknownCluster1111111111111111111111111111"]]) {
+  const calls = []; let err = "";
+  try { await solana.fetchDevnetTransaction(RPC, "sig", genesisStub(genesis, calls)); } catch (e) { err = e.message; }
+  check(`Payment verification against a ${label} cluster behind a 'devnet' URL is refused before any transaction is read`, err === "MAINNET_DISABLED" && !calls.includes("getTransaction"), calls);
+}
+const devCalls = [];
+await solana.fetchDevnetTransaction(RPC, "sig", genesisStub("EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG", devCalls));
+check("Payment verification proves devnet identity first, then reads the transaction", devCalls[0] === "getGenesisHash" && devCalls.includes("getTransaction"), devCalls);
+const health = fs.readFileSync(new URL("../app/api/sys/payments/rpc-health/route.ts", import.meta.url), "utf8");
+check("RPC health route: operator + staging only, never returns / logs the endpoint, never signs, identity before any other call", health.includes("authorizePlatformOperator(request)") && health.includes("createStagingSettlementClient()") && !/rpcUrl[^)]*[,}]\s*$|endpoint:\s*rail|console\./m.test(health) && !/rail\.rpcUrl\s*[,}]/.test(health.slice(health.indexOf("const report"))) && health.includes('throw new Error("NEVER_SIGN")') && health.indexOf("getGenesisHash") < health.indexOf("rpc.version()"));
+const libAndApp = ["lib", "app"].flatMap((d) => fs.readdirSync(new URL(`../${d}/`, import.meta.url), { recursive: true }).filter((f) => /\.(ts|tsx)$/.test(f)).map((f) => fs.readFileSync(new URL(`../${d}/${String(f).split("\\").join("/")}`, import.meta.url), "utf8"))).join(String.fromCharCode(10));
+check("No hardcoded devnet RPC provider URL in application code (only the configured secret)", !/https:\/\/[a-z0-9.-]*devnet[a-z0-9.-]*\.(com|org|io|pro|net)/i.test(libAndApp));
+check("Staging Worker config carries no RPC URL (it is a secret)", !/LIFE_HELP_SOLANA_DEVNET_RPC_URL"\s*:/.test(fs.readFileSync(new URL("../wrangler.staging.jsonc", import.meta.url), "utf8")));
 check("FX: only explicitly configured TEST rates (never invented); unknown currency / no mode -> none", (await rail.getTestFxQuote("KRW", { LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_TEST_FX_RATES: "KRW=1400,JPY=150" }))?.rate === 1400 && (await rail.getTestFxQuote("USD", { LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_TEST_FX_RATES: "KRW=1400" })) === null && (await rail.getTestFxQuote("KRW", { LIFE_HELP_TEST_FX_RATES: "KRW=1400" })) === null && (await rail.getTestFxQuote("KRW", { LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_TEST_FX_RATES: "KRW=-1" })) === null);
 
 // ---------------- verification plumbing (stub client + stub chain) ----------------

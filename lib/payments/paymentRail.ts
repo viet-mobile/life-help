@@ -1,7 +1,7 @@
 import "server-only";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { BASE58_ADDRESS, NATIVE_USDC_MINT, fetchDevnetTransaction, newPaymentReference, observePayment, type ParsedTransaction } from "@/lib/payments/solana";
+import { BASE58_ADDRESS, NATIVE_USDC_MINT, assertDevnetEndpoint, fetchDevnetTransaction, newPaymentReference, observePayment, type ParsedTransaction } from "@/lib/payments/solana";
 
 /**
  * Provider-neutral payment core (Worker side). The database RPCs are the ledger and decide every
@@ -33,7 +33,11 @@ export async function getRailConfig(env?: Record<string, string | undefined>): P
   if (ref !== STAGING_REF || e.LIFE_HELP_PAYMENT_MODE !== "STAGING_DEVNET_TEST") return null;
   const recipient = e.LIFE_HELP_SOLANA_DEVNET_RECIPIENT?.trim() ?? "";
   if (!BASE58_ADDRESS.test(recipient)) return null;
-  return { network: RAIL_NETWORK, mint: NATIVE_USDC_MINT[RAIL_NETWORK], recipient, rpcUrl: e.LIFE_HELP_SOLANA_DEVNET_RPC_URL?.trim() || "https://api.devnet.solana.com" };
+  // Any standard Solana JSON-RPC provider; configured ONLY here (a staging secret: it may carry an API
+  // key). No built-in default. The URL guard runs here and the genesis-hash guard before every use.
+  const rpcUrl = e.LIFE_HELP_SOLANA_DEVNET_RPC_URL?.trim() ?? "";
+  try { assertDevnetEndpoint(rpcUrl); } catch { return null; }
+  return { network: RAIL_NETWORK, mint: NATIVE_USDC_MINT[RAIL_NETWORK], recipient, rpcUrl };
 }
 
 /**
