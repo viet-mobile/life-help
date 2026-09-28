@@ -45,15 +45,17 @@ try {
   const [referrer] = await db("referral_identities", "POST", { referral_id: ra, subject_type: "CUSTOMER", device_id_hash: crypto.createHash("sha256").update(`${runId}-a`).digest("hex"), subject_key: ra });
   const [referred] = await db("referral_identities", "POST", { referral_id: rb, subject_type: "CUSTOMER", device_id_hash: crypto.createHash("sha256").update(`${runId}-b`).digest("hex"), subject_key: rb });
   const [attribution] = await db("referral_attributions", "POST", { referred_identity_id: referred.id, referrer_identity_id: referrer.id });
-  const [request] = await db("service_requests", "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: rb, customer_display_name: "AUTHORITY FIXTURE", service_slug: "boiler", country: "KR", sido: `${runId}-REF`, gungu: "G1", description: `${runId} authority probe (retained: referenced by a reward)`, status: "CANCELLED" });
+  const [request] = await db("service_requests", "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: rb, customer_display_name: "AUTHORITY FIXTURE", service_slug: "boiler", country: "KR", sido: `${runId}-REF`, gungu: "G1", description: `${runId} authority probe (retained: referenced by a reward)`, status: "SETTLED" });
   const row = (state) => ({ attribution_id: attribution.id, qualifying_request_id: request.id, referrer_identity_id: referrer.id, referred_identity_id: referred.id, tier: "WLH", reward_amount_krw: 1000, first_service_discount_krw: 1000, state });
   const insPaid = await rest("referral_rewards", svc, "POST", row("PAID"));
   const insProc = await rest("referral_rewards", svc, "POST", row("PAYOUT_PROCESSING"));
-  expect("2a. app-role insert of a reward already PAID / PAYOUT_PROCESSING is refused (no row)", insPaid.status >= 400 && insProc.status >= 400 && /payout path/.test(JSON.stringify(insPaid.body) + JSON.stringify(insProc.body)) && (await db(`referral_rewards?qualifying_request_id=eq.${request.id}&select=id`)).length === 0);
+  expect("2a. app-role insert of a reward already PAID / PAYOUT_PROCESSING is refused (no row)", insPaid.status >= 400 && insProc.status >= 400 && /payout path|permission denied/.test(JSON.stringify(insPaid.body) + JSON.stringify(insProc.body)) && (await db(`referral_rewards?qualifying_request_id=eq.${request.id}&select=id`)).length === 0);
+  // Since 019 the application's real creation at settlement is the trusted function (direct insert refused).
   const insQualified = await rest("referral_rewards", svc, "POST", row("QUALIFIED"));
-  expect("2b. the application's real initial insert (QUALIFIED, as at settlement) still works", insQualified.status === 201 && insQualified.body?.[0]?.state === "QUALIFIED", insQualified.status);
-  const probeRewardId = insQualified.body?.[0]?.id;
-  const payNotPayable = await call("create_referral_payout_obligation", { p_reward_id: insQualified.body?.[0]?.id, p_rail: "USDC_SOLANA", p_country: "KR" });
+  const trusted = await call("create_referral_reward_for_settled_request", { p_request_id: request.id });
+  expect("2b. the application's real creation at settlement (QUALIFIED; trusted function since 019) still works", trusted?.code === "QUALIFIED" && (insQualified.status === 201 || insQualified.body?.code === "42501"), { direct: insQualified.status, trusted: trusted?.code });
+  const probeRewardId = trusted?.reward_id ?? insQualified.body?.[0]?.id;
+  const payNotPayable = await call("create_referral_payout_obligation", { p_reward_id: probeRewardId, p_rail: "USDC_SOLANA", p_country: "KR" });
   expect("3a. a QUALIFIED reward cannot be paid out (REWARD_NOT_PAYABLE): no obligation, no job", payNotPayable?.code === "REWARD_NOT_PAYABLE" && (await db(`payout_obligations?referral_reward_id=eq.${probeRewardId}&select=id`)).length === 0);
   // Probe cleanup (the probe row is ours; while the DELETE gap exists the app role can remove it).
   probe = { rewardId: probeRewardId, requestId: request.id, identityIds: [referrer.id, referred.id] };
@@ -110,6 +112,8 @@ try {
     } else record("INFO", `probe reward ${probe.rewardId} retained (not deletable by the app role)`);
   }
   const out = await mf.cleanup();
-  expect("Fixture cleanup (purgeable money fixtures; helpers, users, requests; the probe reward only if deletable)", out.purged.every(Boolean) && Object.values(out.leftovers).every((n) => n === 0), out);
+  // Since 019 the probe reward is immutable history: its qualifying request is retained with it.
+  if (probe && (await db(`referral_rewards?id=eq.${probe.rewardId}&select=id`)).length) out.leftovers.requests -= (await db(`service_requests?id=eq.${probe.requestId}&select=id`)).length;
+  expect("Fixture cleanup (purgeable money fixtures; helpers, users, requests; the probe reward + its request retained as history)", out.purged.every(Boolean) && Object.values(out.leftovers).every((n) => n === 0), out);
 }
 if (summary().FAIL > 0) process.exit(1);

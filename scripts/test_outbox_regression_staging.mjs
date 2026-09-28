@@ -53,7 +53,7 @@ try {
     keptDetail.push({ job: k.id, code: k.last_error_code, status: after.status, lease: after.lease_token, jobs: (await mf.jobFor({ obligationId: k.payout_obligation_id })).length, replayed: replay?.replayed === true && replay.payout_obligation_id === k.payout_obligation_id, claim: claim?.code, obligation: ob.status, reward: reward.state, attempts: (await mf.attemptsOf(k.id)).length });
   }
   record("INFO", `Retained Referral fixture sets: ${JSON.stringify(keptDetail)}`);
-  expect("3. Referral obligation -> exactly one job; duplicate creation on the retained sets replays (same obligation, still one job)", kept.length === 2 && keptDetail.every((d) => d.jobs === 1 && d.replayed), keptDetail);
+  expect("3. Referral obligation -> exactly one job; duplicate creation on the retained sets replays (same obligation, still one job; >= 2 retained sets, immutable history grows)", kept.length >= 2 && keptDetail.every((d) => d.jobs === 1 && d.replayed), keptDetail);
   expect("3b. retained Referral sets stay isolated: REVIEW_REQUIRED, no lease, not claimable (JOB_FINAL), reward never PAID", keptDetail.every((d) => d.status === "REVIEW_REQUIRED" && d.lease === null && d.claim === "JOB_FINAL" && d.reward !== "PAID" && d.obligation !== "PAID"), keptDetail);
 
   // ================= concurrent claim races (parallel HTTP) =================

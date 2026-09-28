@@ -57,7 +57,7 @@ try {
   const list = json(await api("/api/sys/review/cases?includeClosed=1", { headers: operator }));
   const wrong = (list?.cases ?? []).filter((c) => c.caseType === "PAYMENT");
   const fixtureJobs = (list?.cases ?? []).filter((c) => c.caseType === "MONEY_JOB" && /^TEST_FIXTURE_/.test(c.reason ?? ""));
-  expect("3. queue lists the retained wrong-payment cases and the 2 TEST_FIXTURE Referral jobs with their allowed actions", list?.success && wrong.length >= 4 && fixtureJobs.length === 2 && wrong.every((c) => Array.isArray(c.allowedActions)), { payments: wrong.length, fixtureJobs: fixtureJobs.length });
+  expect("3. queue lists the retained wrong-payment cases and the retained TEST_FIXTURE Referral jobs (>= 2; immutable history grows with each referral fixture run) with their allowed actions", list?.success && wrong.length >= 4 && fixtureJobs.length >= 2 && wrong.every((c) => Array.isArray(c.allowedActions)), { payments: wrong.length, fixtureJobs: fixtureJobs.length });
   const filtered = json(await api("/api/sys/review/cases?caseType=PAYMENT&reason=UNDERPAID&includeClosed=1", { headers: operator }));
   expect("17b. filters (case type + reason) narrow the queue", filtered?.success && filtered.cases.length >= 1 && filtered.cases.every((c) => c.caseType === "PAYMENT" && /UNDERPAID/.test(c.reason)));
   const wr = wrong.find((c) => /WRONG_RECIPIENT/.test(c.reason ?? ""));

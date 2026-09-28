@@ -68,7 +68,7 @@ try {
   const fixtureRules = await Promise.all(fixtureJobs.map((j) => rules("MONEY_JOB", j.id)));
   record("INFO", `retained payment cases: ${JSON.stringify(retainedRules.map((r) => ({ actions: r.actions, refundable: (r.refundable_transfers ?? []).map((t) => `${t.classification}:${t.amount_base_units}`) })))}`);
   expect("3a. retained wrong-payment intents are review cases; only transfers that reached our recipient are refundable (exact observed amounts)", retainedRules.length === 4 && retainedRules.filter((r) => r.actions.includes("INITIATE_REFUND")).length === 3 && retainedRules.every((r) => r.status === "REVIEW_REQUIRED"));
-  expect("3b. retained TEST_FIXTURE Referral jobs: REVIEW_REQUIRED, no lease; readable as cases (not mutated)", fixtureJobs.length === 2 && fixtureJobs.every((j) => j.status === "REVIEW_REQUIRED" && j.lease_token === null) && fixtureRules.every((r) => r.exists === true));
+  expect("3b. retained TEST_FIXTURE Referral jobs: REVIEW_REQUIRED, no lease; readable as cases (not mutated; >= 2, immutable history grows)", fixtureJobs.length >= 2 && fixtureJobs.every((j) => j.status === "REVIEW_REQUIRED" && j.lease_token === null) && fixtureRules.every((r) => r.exists === true));
 
   // ================= 11. refund eligibility (purgeable fixtures) =================
   const under = await observedPayment("UNDER", { amount: 700 });
