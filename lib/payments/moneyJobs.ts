@@ -71,6 +71,8 @@ export type PlannedTransfer = { destination: string; amountBaseUnits: bigint; re
 export type PreparedTransfer = { externalId: string; signedPayload: string | null; adapterPayload: Record<string, unknown> };
 export type Observation =
   | { kind: "CONFIRMED" }
+  /** Provider says "paid" but documents that paid can still fail: recorded, never terminal (migration 022). */
+  | { kind: "REPORTED_PAID" }
   | { kind: "PENDING" }
   | { kind: "FAILED_ONCHAIN"; code: string }
   | { kind: "MISMATCH"; code: string }
@@ -126,6 +128,7 @@ async function result(client: SupabaseClient, job: ClaimedJob, attempt: AttemptV
 async function reconcile(client: SupabaseClient, adapter: MoneyAdapter, job: ClaimedJob, attempt: AttemptView, hooks: MoneyJobHooks): Promise<MoneyJobOutcome> {
   const seen = await adapter.observe(attempt);
   if (seen.kind === "CONFIRMED") return result(client, job, attempt, "CONFIRMED", null, hooks);
+  if (seen.kind === "REPORTED_PAID") return result(client, job, attempt, "PROVIDER_REPORTED_PAID", null, hooks);
   if (seen.kind === "PENDING") return result(client, job, attempt, "PENDING", null, hooks);
   if (seen.kind === "FAILED_ONCHAIN") return result(client, job, attempt, "FAILED_ONCHAIN", seen.code, hooks);
   if (seen.kind === "MISMATCH") return release(client, job, new MoneyMovementError(seen.code, "REVIEW"));

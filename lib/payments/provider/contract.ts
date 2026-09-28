@@ -25,8 +25,13 @@ export type Money = { amountMinor: bigint; currency: string };
 export const NORMALIZED_EVENT_TYPES = [
   "PAYMENT_AUTHORIZED", "PAYMENT_HELD", "PAYMENT_FAILED", "PAYMENT_CANCELLED",
   "REFUND_SUBMITTED", "REFUND_CONFIRMED", "REFUND_FAILED",
-  "PAYOUT_SUBMITTED", "PAYOUT_CONFIRMED", "PAYOUT_FAILED",
+  "PAYOUT_SUBMITTED", "PAYOUT_REPORTED_PAID", "PAYOUT_CONFIRMED", "PAYOUT_FAILED",
 ] as const;
+/**
+ * PAYOUT_CONFIRMED = the provider's FINAL payout success (only for providers registered PROVIDER_FINAL_STATUS).
+ * PAYOUT_REPORTED_PAID = the provider reports "paid" but documents that paid can still fail (no finality).
+ * The database enforces this per provider (payment_providers.payout_finality, migration 022).
+ */
 export type NormalizedEventType = (typeof NORMALIZED_EVENT_TYPES)[number];
 
 /**
@@ -46,6 +51,8 @@ export type NormalizedProviderEvent = {
   amount: Money | null;
   occurredAt: string | null;
   sequence: number | null;
+  /** The provider's own object id (refund / transfer), bound once to the LIFE.HELP idempotency key. */
+  providerObjectId?: string | null;
 };
 
 /**
@@ -54,7 +61,7 @@ export type NormalizedProviderEvent = {
  * "in flight, not yet secured". The ledger meaning (PAID_HELD) never changes with the provider.
  */
 export type ProviderPaymentStatus = "PENDING" | "AUTHORIZED" | "HELD" | "FAILED" | "CANCELLED" | "NOT_FOUND";
-export type ProviderTransferStatus = "SUBMITTED" | "PENDING" | "CONFIRMED" | "FAILED" | "NOT_FOUND";
+export type ProviderTransferStatus = "SUBMITTED" | "PENDING" | "REPORTED_PAID" | "CONFIRMED" | "FAILED" | "NOT_FOUND";
 
 export type PaymentSessionInput = { intentId: string; reference: string; amount: Money; customerRef: string };
 export type PaymentSession = { providerPaymentId: string; redirectUrl: string | null };
@@ -62,7 +69,9 @@ export type PaymentStatusResult = { status: ProviderPaymentStatus; amount: Money
 /** Refund / payout requests carry the LIFE.HELP idempotency key; repeating a create call must be safe. */
 export type RefundInput = { idempotencyKey: string; reference: string; amount: Money; providerPaymentId: string };
 export type PayoutInput = { idempotencyKey: string; reference: string; amount: Money; payeeToken: string };
-export type TransferStatusResult = { status: ProviderTransferStatus; amount: Money | null; failureCode: string | null };
+export type TransferStatusResult = { status: ProviderTransferStatus; amount: Money | null; failureCode: string | null; fundingStatus?: string | null };
+/** Create result: providerObjectId (when the provider returns one) is bound to the idempotency key. */
+export type TransferCreateResult = { accepted: boolean; providerObjectId?: string | null; code?: string | null };
 
 /** Raw webhook as received: the exact body bytes (as text) are needed for signature verification. */
 export type RawWebhook = { rawBody: string; headers: Record<string, string> };
@@ -79,11 +88,12 @@ export interface PaymentProviderAdapter {
    * any invalid / missing / stale signature; MUST NOT parse or trust anything before verifying.
    */
   verifyWebhook(webhook: RawWebhook, webhookSecret: string): Promise<NormalizedProviderEvent[] | null>;
-  createRefund(input: RefundInput): Promise<{ accepted: boolean }>;
-  queryRefund(idempotencyKey: string): Promise<TransferStatusResult>;
-  createHelperPayout(input: PayoutInput): Promise<{ accepted: boolean }>;
-  createReferralPayout(input: PayoutInput): Promise<{ accepted: boolean }>;
-  queryPayout(idempotencyKey: string): Promise<TransferStatusResult>;
+  createRefund(input: RefundInput): Promise<TransferCreateResult>;
+  /** providerObjectId: the bound provider object id when known (a provider may only be queryable by it). */
+  queryRefund(idempotencyKey: string, providerObjectId?: string | null): Promise<TransferStatusResult>;
+  createHelperPayout(input: PayoutInput): Promise<TransferCreateResult>;
+  createReferralPayout(input: PayoutInput): Promise<TransferCreateResult>;
+  queryPayout(idempotencyKey: string, providerObjectId?: string | null): Promise<TransferStatusResult>;
 }
 
 /** Network label the ledger uses for a provider rail (quotes, intents, attempts). */

@@ -46,7 +46,13 @@ export async function ingestProviderWebhook(
   if (events.some((e) => e.environment !== adapter.environment)) return { httpStatus: 403, code: "WRONG_ENVIRONMENT", results: [] };
   const results = [];
   for (let i = 0; i < events.length; i += 1) {
-    results.push(await recordEvent(client, events[i], "WEBHOOK", await sha256Hex(`${events[i].providerEventId}\n${webhook.rawBody}`)));
+    const e = events[i];
+    // A verified refund / payout event carries both ids: bind the provider object id to our idempotency key
+    // (only possible for a key the outbox persisted; conflicts are refused by the database).
+    if (e.providerObjectId && /^(REFUND|PAYOUT)_/.test(e.eventType)) {
+      await client.rpc("bind_provider_object", { p_provider: e.provider, p_environment: e.environment, p_external_id: e.objectRef, p_provider_object_id: e.providerObjectId });
+    }
+    results.push(await recordEvent(client, e, "WEBHOOK", await sha256Hex(`${e.providerEventId}\n${webhook.rawBody}`)));
   }
   return { httpStatus: 200, code: "RECEIVED", results };
 }

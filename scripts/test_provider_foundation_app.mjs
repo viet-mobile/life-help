@@ -171,7 +171,8 @@ await db.query("update public.money_movement_jobs set next_retry_at = now() - in
 const [rw, rp] = await Promise.all([ingest.ingestProviderWebhook(client, mock, refundHook, cfg), engine.runMoneyJob(client, bridge, rJob.id)]);
 check("R1. refund through the ORIGINAL provider payment (bridge target), then refund webhook vs refund poll racing: refund COMPLETED once, intent REFUNDED, one attempt, one provider refund call", rRun.status === "CONFIRMING" && rAtt.destination === offOpen.providerPaymentId && (await one("select status from public.service_refunds where id = $1", [cancel.refund_id])).status === "COMPLETED" && (await intentOf(offOpen.intentId)).s === "REFUNDED" && (await one("select count(*)::int n from public.money_movement_attempts where job_id = $1", [rJob.id])).n === 1 && mock.createCalls.filter((x) => x === `REFUND:${rAtt.external_id}`).length === 1, JSON.stringify([rw.results[0], rp]));
 const failAfter = await mock.webhook(SECRET, [{ type: "refund.failed", object: rAtt.external_id }]);
-check("R2. a late refund.failed after completion never regresses it (STALE_IGNORED)", (await ingest.ingestProviderWebhook(client, mock, failAfter, cfg)).results[0]?.result === "STALE_IGNORED" && (await one("select status from public.service_refunds where id = $1", [cancel.refund_id])).status === "COMPLETED");
+const lateRefundFail = (await ingest.ingestProviderWebhook(client, mock, failAfter, cfg)).results[0];
+check("R2. a late refund.failed after completion never regresses it and is never silently ignored (REVIEW PROVIDER_FAILED_AFTER_CONFIRMED, migration 022)", lateRefundFail?.result === "REVIEW" && lateRefundFail.code === "PROVIDER_FAILED_AFTER_CONFIRMED" && (await one("select status from public.service_refunds where id = $1", [cancel.refund_id])).status === "COMPLETED");
 
 // ================= environment / registry / policy hooks =================
 let liveMock = "constructed";
@@ -194,13 +195,13 @@ check("E3. fee policy stays UNCONFIGURED_ZERO (commercial amount and fees distin
 
 // ================= static safety =================
 const read = (p) => fs.readFileSync(new URL(p, root), "utf8");
-const providerFiles = fs.readdirSync(new URL("lib/payments/provider/", root)).map((f) => `lib/payments/provider/${f}`);
+const providerFiles = fs.readdirSync(new URL("lib/payments/provider/", root), { recursive: true }).map((f) => `lib/payments/provider/${String(f).replace(/\\/g, "/")}`).filter((p) => p.endsWith(".ts"));
 const route = read("app/api/providers/[provider]/webhook/route.ts");
 const ingestSrc = read("lib/payments/provider/ingest.ts");
 const all = [...providerFiles.map(read), route].join("\n");
 check("X1. static: provider layer never reads LIFE_HELP_TEST_FX_RATES / getTestFxQuote, never imports the staging devnet signer or rail", !/LIFE_HELP_TEST_FX_RATES|getTestFxQuote|solanaTx|devnetAdapter|transfers"|paymentRail/.test(all.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "")));
 check("X2. static: the webhook route passes the RAW body text to the adapter; the adapter verifies BEFORE parsing; ingestion checks environment + secret + signature before any database call", /await request\.text\(\)/.test(route) && !/request\.json\(\)/.test(route) && read("lib/payments/provider/mockProvider.ts").indexOf("timingSafeEqualHex(expected") < read("lib/payments/provider/mockProvider.ts").indexOf("JSON.parse(webhook.rawBody)")
-  && ingestSrc.indexOf("verifyWebhook(") < ingestSrc.indexOf("recordEvent(client, events[i]") && ingestSrc.indexOf("WRONG_ENVIRONMENT") < ingestSrc.indexOf("verifyWebhook("));
+  && ingestSrc.indexOf("verifyWebhook(") < ingestSrc.indexOf("recordEvent(client, e, \"WEBHOOK\"") && ingestSrc.indexOf("verifyWebhook(") < ingestSrc.indexOf("bind_provider_object") && ingestSrc.indexOf("recordEvent(client, e, \"WEBHOOK\"") > 0 && ingestSrc.indexOf("WRONG_ENVIRONMENT") < ingestSrc.indexOf("verifyWebhook("));
 check("X3. static: no hardcoded provider credentials / keys in the provider layer or route", !/(sk_(live|test)_[A-Za-z0-9]{8,}|api[_-]?key\s*[:=]\s*["'][^"']{8,}|secret\s*[:=]\s*["'][^"']{8,}|Bearer\s+[A-Za-z0-9._-]{20,})/i.test(all));
 check("X4. static: no provider-specific business logic outside adapters (no PSP names in the ledger migration's functions; mock only in its adapter / registry)", !/stripe|adyen|circle|coinbase/i.test(read("supabase/migrations/202609280020_provider_payment_foundation.sql") + all.replace(/\/\*[\s\S]*?\*\//g, "")) && providerFiles.filter((p) => /MockPaymentProvider/.test(read(p))).every((p) => /mockProvider|registry/.test(p)));
 check("X5. static: the database refuses unverified evidence by construction (signature_verified check + function gate), and only service_role may call the ingestion authority", /signature_verified boolean not null check \(signature_verified\)/.test(read("supabase/migrations/202609280020_provider_payment_foundation.sql")) && /p_signature_verified is distinct from true/.test(read("supabase/migrations/202609280020_provider_payment_foundation.sql")));

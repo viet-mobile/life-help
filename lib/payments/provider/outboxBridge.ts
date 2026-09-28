@@ -59,19 +59,28 @@ export function providerMoneyAdapter(client: SupabaseClient, provider: PaymentPr
     async submit(attempt: AttemptView): Promise<void> {
       const req = request(attempt);
       const amount = { amountMinor: BigInt(req.amountMinor), currency: req.currency };
-      if (req.kind === "REFUND") await provider.createRefund({ idempotencyKey: attempt.external_id, reference: req.reference, amount, providerPaymentId: String(req.providerPaymentId) });
-      else if (req.kind === "HELPER_PAYOUT") await provider.createHelperPayout({ idempotencyKey: attempt.external_id, reference: req.reference, amount, payeeToken: String(req.payeeToken) });
-      else await provider.createReferralPayout({ idempotencyKey: attempt.external_id, reference: req.reference, amount, payeeToken: String(req.payeeToken) });
+      const created = req.kind === "REFUND" ? await provider.createRefund({ idempotencyKey: attempt.external_id, reference: req.reference, amount, providerPaymentId: String(req.providerPaymentId) })
+        : req.kind === "HELPER_PAYOUT" ? await provider.createHelperPayout({ idempotencyKey: attempt.external_id, reference: req.reference, amount, payeeToken: String(req.payeeToken) })
+          : await provider.createReferralPayout({ idempotencyKey: attempt.external_id, reference: req.reference, amount, payeeToken: String(req.payeeToken) });
+      if (!created.accepted) throw new MoneyMovementError(created.code ?? "PROVIDER_REJECTED_CREATE", "REVIEW");
+      // The provider's own object id is bound once to our idempotency key (immutable evidence, migration 022).
+      if (created.providerObjectId) {
+        const { data: bound } = await client.rpc("bind_provider_object", { p_provider: provider.code, p_environment: provider.environment, p_external_id: attempt.external_id, p_provider_object_id: created.providerObjectId });
+        if (bound && bound.success === false) throw new MoneyMovementError(String(bound.code ?? "PROVIDER_OBJECT_CONFLICT"), "REVIEW");
+      }
     },
 
     async observe(attempt: AttemptView): Promise<Observation> {
       const isRefund = attempt.adapter_payload?.kind === "REFUND";
-      const status = isRefund ? await provider.queryRefund(attempt.external_id) : await provider.queryPayout(attempt.external_id);
+      const { data: ref } = await client.from("provider_object_refs").select("provider_object_id").eq("external_id", attempt.external_id).eq("provider", provider.code).eq("environment", provider.environment).maybeSingle();
+      const objectId = (ref?.provider_object_id as string | undefined) ?? null;
+      const status = isRefund ? await provider.queryRefund(attempt.external_id, objectId) : await provider.queryPayout(attempt.external_id, objectId);
       if (status.status === "NOT_FOUND") return { kind: "NOT_FOUND", expired: false };
       if (status.amount && (status.amount.amountMinor.toString() !== attempt.amount_base_units || status.amount.currency !== attempt.asset)) {
         return { kind: "MISMATCH", code: "PROVIDER_AMOUNT_MISMATCH" };
       }
       if (status.status === "CONFIRMED") return status.amount ? { kind: "CONFIRMED" } : { kind: "MISMATCH", code: "PROVIDER_AMOUNT_UNREPORTED" };
+      if (status.status === "REPORTED_PAID") return status.amount ? { kind: "REPORTED_PAID" } : { kind: "MISMATCH", code: "PROVIDER_AMOUNT_UNREPORTED" };
       if (status.status === "FAILED") return { kind: "FAILED_ONCHAIN", code: status.failureCode ?? "PROVIDER_REPORTED_FAILED" };
       return { kind: "PENDING" };
     },
