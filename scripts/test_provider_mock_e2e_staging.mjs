@@ -10,7 +10,7 @@
 // Configuration lifecycle (all staging-only): requires MOCK_PROVIDER/SANDBOX + KR policies enabled in the DB by
 // the owner beforehand; this run sets three Cloudflare STAGING secrets (provider environment flag, mock flag,
 // webhook secret generated in memory - never printed / written) and DELETES them again at the end.
-// Usage: node scripts/test_provider_mock_e2e_staging.mjs
+// Usage: node scripts/test_provider_mock_e2e_staging.mjs [--keep-config]   (--keep-config: leave the staging flags + secret for review)
 import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
@@ -101,6 +101,17 @@ try {
   configured.secrets = true;
   let ready = null;
   for (let i = 0; i < 30 && !ready; i += 1) { const r = await api("/api/providers/MOCK_PROVIDER/webhook", { method: "POST", body: {} }); if (r.status === 401) ready = r; else await sleep(4000); }
+  // A secret rotation rolls out as a new Worker version: until EVERY serving isolate has it, a correctly
+  // signed webhook can still hit the previous secret. Require 12 consecutive accepted signed probes
+  // (each recorded as immutable UNMATCHED evidence, object tagged with this run id).
+  let streak = 0;
+  for (let i = 0; i < 90 && streak < 12; i += 1) {
+    const probe = await post(await mock.webhook(SECRET, [{ type: "payment.held", object: `mockpay_ready_${runId}_${i}`, amount: { amountMinor: 1000n, currency: "KRW" } }]));
+    streak = probe.status === 200 ? streak + 1 : 0;
+    if (streak === 0) await sleep(3000);
+  }
+  record("INFO", `secret rollout: ${streak} consecutive signed probes accepted`);
+  if (streak < 12) throw new Error("rotated webhook secret did not reach every serving Worker isolate");
   const listed = wrangler(["secret", "list"]).stdout || "";
   expect("11/12b. staging-only mock configuration live: route now verifies signatures (unsigned -> 401); the three secrets exist only as Cloudflare staging secrets (names listed, values never output); not in the repo / wrangler config", !!ready && ready.body?.code === "INVALID_SIGNATURE" && Object.keys(SECRETS).every((k) => listed.includes(k)) && !listed.includes(SECRET) && !fs.readFileSync(new URL("../wrangler.staging.jsonc", import.meta.url), "utf8").includes("LIFE_HELP_PROVIDER"), ready?.body);
   const other = await api("/api/providers/OTHER_PSP/webhook", { method: "POST", body: {} });
@@ -250,7 +261,9 @@ try {
   record("FAIL", "mock provider E2E harness", String(error?.stack || error).slice(0, 800));
 } finally {
   // Cloudflare: remove the staging flags + secret (no automatic mock authority remains).
-  if (configured.secrets) {
+  if (configured.secrets && process.argv.includes("--keep-config")) {
+    record("INFO", "31a. --keep-config: the staging flags + rotated webhook secret stay configured (report first; teardown after approval)");
+  } else if (configured.secrets) {
     for (const name of Object.keys(SECRETS)) wrangler(["secret", "delete", name], "y\n");
     let off = null;
     for (let i = 0; i < 30 && !off; i += 1) { const r = await api("/api/providers/MOCK_PROVIDER/webhook", { method: "POST", body: {} }); if (r.status === 404) off = r; else await sleep(4000); }
