@@ -136,7 +136,7 @@ const walk = (dir, out = []) => { for (const e of fs.readdirSync(new URL(`../${d
 const appFiles = [...walk("lib"), ...walk("app")].filter((p) => /\.tsx?$/.test(p));
 const directWriters = appFiles.filter((p) => /from\("admin_audit_logs"\)\s*\.(insert|update|upsert|delete)/.test(read(p)));
 const helper = read("lib/admin/auditLog.ts");
-check("Static. application code writes admin_audit_logs only through appendAuditLog (the only direct insert is its pre-021 rollout fallback, taken solely on PGRST202 'function not found')", directWriters.join() === "lib/admin/auditLog.ts" && /if \(error\?\.code === "PGRST202"\) \{/.test(helper) && (helper.match(/from\("admin_audit_logs"\)/g) || []).length === 1, directWriters);
+check("Static. application code writes admin_audit_logs only through appendAuditLog (the only direct insert is its pre-021 rollout fallback, taken solely on PGRST202 naming append_admin_audit_log)", directWriters.join() === "lib/admin/auditLog.ts" && /if \(isAppendFunctionMissing\(error\)\) \{/.test(helper) && /return error\?\.code === "PGRST202" && \/append_admin_audit_log\/\.test/.test(helper) && (helper.match(/from\("admin_audit_logs"\)/g) || []).length === 1, directWriters);
 const scriptFiles = walk("scripts").filter((p) => /\.mjs$/.test(p) && !/test_admin_audit_authority_db/.test(p));
 const deleters = scriptFiles.filter((p) => /admin_audit_logs[^\n]*"DELETE"|del\(`admin_audit_logs/.test(read(p)));
 check("H. no test fixture cleanup deletes audit history any more (audit rows of fixtures remain as immutable history)", deleters.length === 0, deleters);

@@ -15,11 +15,20 @@ export type AuditAction =
   | "CONVERSATION_CLEANUP_RETRY" | "WEB_PUSH_TEST_SENT";
 export type AuditEntityType = "service_request" | "system" | "push_subscription_owner";
 
+/**
+ * The ONLY fallback condition: PostgREST cannot find append_admin_audit_log at all (PGRST202 naming this very
+ * function) - i.e. migration 021 is not applied yet. Permission denied, validation / state rejections (returned
+ * as data, not errors), timeouts and any other database error are never a reason to write directly.
+ */
+export function isAppendFunctionMissing(error: { code?: string; message?: string } | null | undefined): boolean {
+  return error?.code === "PGRST202" && /append_admin_audit_log/.test(String(error.message ?? ""));
+}
+
 export async function appendAuditLog(
   client: SupabaseClient, action: AuditAction, entityType: AuditEntityType, entityId: string | null, metadata: Record<string, unknown>,
 ): Promise<{ success: boolean; replayed?: boolean; code?: string }> {
   const { data, error } = await client.rpc("append_admin_audit_log", { p_action: action, p_entity_type: entityType, p_entity_id: entityId, p_metadata: metadata });
-  if (error?.code === "PGRST202") {
+  if (isAppendFunctionMissing(error)) {
     const { error: insertError } = await client.from("admin_audit_logs").insert({ action, entity_type: entityType, entity_id: entityId, actor_id: null, metadata });
     return insertError ? { success: false, code: "AUDIT_WRITE_FAILED" } : { success: true, replayed: false };
   }
