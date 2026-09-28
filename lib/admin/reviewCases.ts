@@ -25,6 +25,21 @@ export type ReviewCaseRow = {
 
 const PAYMENT_REVIEW_CLASSES = ["UNDERPAID", "OVERPAID", "WRONG_RECIPIENT", "WRONG_MINT", "WRONG_NETWORK", "MISSING_REFERENCE", "LATE", "EXTRA_PAYMENT"];
 const STUCK_AFTER_MS = 60 * 60 * 1000;
+/** Provider evidence columns shown to operators (evidence only: no payload, no secrets). */
+const PROVIDER_EVENT_COLUMNS = "provider, environment, provider_event_id, source, event_type, provider_event_type, object_ref, amount_minor, currency, occurred_at, provider_sequence, received_at, processed_at, processing_result, result_code";
+
+/**
+ * Provider evidence that could not be tied to a ledger object, or that the ledger refused / sent to review
+ * (unknown provider payment or transfer, amount / currency / target mismatch, wrong environment, provider
+ * confirming an attempt the ledger considers failed). Read-only in the existing queue; the affected intent /
+ * money job (when there is one) is itself REVIEW_REQUIRED and actionable through the normal case actions.
+ */
+export async function listProviderEventsNeedingReview(client: SupabaseClient) {
+  const { data } = await client.from("provider_events").select(`${PROVIDER_EVENT_COLUMNS}, payment_intent_id, money_job_id`)
+    .in("processing_result", ["UNMATCHED", "REVIEW", "REJECTED"]).order("received_at", { ascending: false }).limit(200);
+  return data ?? [];
+}
+
 const usdc = (baseUnits: unknown) => (baseUnits === null || baseUnits === undefined ? null : (Number(baseUnits) / 1_000_000).toFixed(6));
 
 async function rules(client: SupabaseClient, caseType: ReviewCaseType, caseId: string) {
@@ -91,9 +106,10 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
     const { data: refunds } = await client.from("service_refunds").select("id, reason, status, amount, currency, source_signature, asset_amount_base_units, chain_signature, created_at, completed_at").eq("payment_intent_id", caseId).order("created_at");
     const { data: request } = intent?.request_id ? await client.from("service_requests").select("id, status, request_mode").eq("id", intent.request_id).maybeSingle() : { data: null };
     const { data: selections } = intent?.request_id ? await client.from("request_price_selections").select("selection_version, status, helper_id, initial_payable_amount, currency").eq("request_id", intent.request_id).order("selection_version") : { data: [] };
+    const { data: providerEvidence } = await client.from("provider_events").select(PROVIDER_EVENT_COLUMNS).eq("payment_intent_id", caseId).order("received_at");
     return {
       caseType, caseId, closed: r.closed === true, allowedActions: r.actions, refundableTransfers: r.refundable_transfers ?? [],
-      facts: { observedOnChain: chain ?? [] },
+      facts: { observedOnChain: chain ?? [], providerEvidence: providerEvidence ?? [] },
       systemDecisions: { intent, events: events ?? [], refunds: refunds ?? [], request, priceSelections: selections ?? [] },
       operatorActions: operatorActions ?? [],
       unresolved: r.closed !== true,
@@ -103,9 +119,10 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
   const { data: attempts } = await client.from("money_movement_attempts").select("attempt_number, state, provider, network, asset, amount_base_units, destination, external_id, failure_category, prepared_at, submitted_at, resolved_at").eq("job_id", caseId).order("attempt_number");
   const { data: obligation } = job?.payout_obligation_id ? await client.from("payout_obligations").select("id, kind, status, currency, gross_amount, platform_fee_amount, net_amount, fee_policy, payout_rail, request_id, referral_reward_id, chain_signature, created_at, submitted_at, paid_at").eq("id", job.payout_obligation_id).maybeSingle() : { data: null };
   const { data: refund } = job?.service_refund_id ? await client.from("service_refunds").select("id, reason, status, amount, currency, payment_intent_id, source_signature, asset_amount_base_units, chain_signature, created_at, completed_at").eq("id", job.service_refund_id).maybeSingle() : { data: null };
+  const { data: providerEvidence } = await client.from("provider_events").select(PROVIDER_EVENT_COLUMNS).eq("money_job_id", caseId).order("received_at");
   return {
     caseType, caseId, closed: r.closed === true, allowedActions: r.actions,
-    facts: { attemptsObservedExternally: (attempts ?? []).map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destination: a.destination, amountBaseUnits: a.amount_base_units })) },
+    facts: { providerEvidence: providerEvidence ?? [], attemptsObservedExternally: (attempts ?? []).map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destination: a.destination, amountBaseUnits: a.amount_base_units })) },
     systemDecisions: { job, attempts: attempts ?? [], obligation, refund },
     operatorActions: operatorActions ?? [],
     unresolved: r.closed !== true && job?.status !== "CONFIRMED",
@@ -120,7 +137,9 @@ export async function moneyActionSummary(client: SupabaseClient, caseType: Revie
   }
   const { data: job } = await client.from("money_movement_jobs").select("obligation_type, provider, network, asset, amount_base_units").eq("id", caseId).maybeSingle();
   return {
-    case: `${caseType}:${caseId}`, action, amount: usdc(job?.amount_base_units), token: job?.asset ?? "USDC", network: job?.network ?? null, provider: job?.provider ?? "configured rail",
+    // Provider rails move fiat minor units; only chain rails are USDC base units.
+    case: `${caseType}:${caseId}`, action, amount: String(job?.network ?? "").startsWith("provider:") ? job?.amount_base_units ?? null : usdc(job?.amount_base_units),
+    amountUnit: String(job?.network ?? "").startsWith("provider:") ? "MINOR_UNITS" : "USDC", token: job?.asset ?? "USDC", network: job?.network ?? null, provider: job?.provider ?? "configured rail",
     destinationSource: job?.obligation_type === "REFUND" ? "payer of the verified payment" : "the obligation's registered payout destination",
     effect: action === "RETRY_RECONCILIATION" ? "reconcile existing attempts only; never creates a new transfer" : "one more automatic attempt, after a reference search proves nothing landed",
   };
