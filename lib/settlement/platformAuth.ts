@@ -68,6 +68,19 @@ export async function authorizePlatformOperator(request: Request): Promise<Platf
   return null;
 }
 
+/** Operator identity for audit: the SYS admin id, or the platform token (no session identity). Fails closed. */
+export async function authorizePlatformOperatorIdentity(request: Request): Promise<{ kind: PlatformActor; id: string } | null> {
+  const actor = await authorizePlatformOperator(request);
+  if (!actor) return null;
+  if (actor === "PLATFORM_TOKEN") return { kind: actor, id: "platform-token" };
+  try {
+    const session = await verifySysSessionToken(readCookie(request.headers.get("cookie"), SYS_SESSION_COOKIE));
+    return session ? { kind: actor, id: session.id } : null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * No real payment provider is connected, so internal settlement confirmation is restricted
  * to the staging Supabase project. Returns null outside staging.

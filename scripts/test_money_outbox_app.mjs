@@ -11,7 +11,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { pathToFileURL } from "node:url";
 import { registerHooks } from "node:module";
-import { b58, checker, createDb, fixtures } from "./lib/prepayFixtures.mjs";
+import { b58, checker, createDb, fixtures, pubkey } from "./lib/prepayFixtures.mjs";
 
 const root = new URL("..", import.meta.url);
 const stubDir = fs.mkdtempSync(path.join(os.tmpdir(), "lh-outbox-"));
@@ -389,6 +389,16 @@ async function crashAfter(step, jobId, adapter, chain) {
   check("Durable loop: every due job (payouts + refund) processed; bounded per run", out1.length === 3 && out2.filter((o) => o.status === "CONFIRMED").length === 3 && (await engine.runDueMoneyJobs(client, ad, 10)).length === 0);
 }
 
+// ============ operator RECONCILE_ONLY: the engine can never prepare a new transfer ============
+{
+  const chain = makeChain(), ad = makeAdapter(chain);
+  const p = await f.completedPayout("RO");
+  const job = await f.jobFor({ obligationId: p.obligationId });
+  await db.query("update public.money_movement_jobs set automation_policy = 'RECONCILE_ONLY' where id = $1", [job.id]);
+  const r = await run(ad, job.id);
+  check("RECONCILE_ONLY job with no live attempt: the engine plans + searches, the database refuses a new attempt -> REVIEW_REQUIRED; nothing broadcast", r.status === "REVIEW_REQUIRED" && r.code === "RECONCILE_ONLY_NO_NEW_ATTEMPT" && (await attemptsOf(job.id)).length === 0 && ad.calls.submit === 0, r);
+}
+
 // ============ one broken job never blocks the others ============
 {
   const chain = makeChain(), ad = makeAdapter(chain);
@@ -484,6 +494,23 @@ check("Classification: wrong mint / mainnet / invalid address / amount -> PERMAN
   try { await adapter.plan(job); } catch (e) { polErr = engine.classifyMoneyError(e); }
   check("Devnet adapter: Helper payout rail policy disabled -> PERMANENT (review)", polErr?.code === "PAYMENT_RAIL_DISABLED" && polErr.errorClass === "PERMANENT");
   await db.query("update public.payment_rail_policies set enabled = true where capability = 'USDC_HELPER_PAYOUT'");
+  // ---- operator-approved source refund (migration 017): exact observed amount back to THAT transfer's payer ----
+  {
+    const sourceSig = b58(88);
+    const sender = pubkey();
+    state.txs[sourceSig] = { slot: 7, meta: { err: null,
+      preTokenBalances: [{ accountIndex: 1, mint: rail.mint, owner: sender, uiTokenAmount: { amount: "90000000" } }, { accountIndex: 2, mint: rail.mint, owner: signer.publicKey, uiTokenAmount: { amount: "0" } }],
+      postTokenBalances: [{ accountIndex: 1, mint: rail.mint, owner: sender, uiTokenAmount: { amount: "65000000" } }, { accountIndex: 2, mint: rail.mint, owner: signer.publicKey, uiTokenAmount: { amount: "25000000" } }] },
+      transaction: { message: { accountKeys: [sender] } } };
+    const refundJob = { obligation_type: "REFUND", context: { business_status: "PENDING", refund_id: crypto.randomUUID(), amount: 1785.71, source_signature: sourceSig, asset_amount_base_units: "25000000",
+      intent: { network: "solana-devnet", mint: rail.mint, recipient: signer.publicKey, amount_base_units: "1000000", fiat_amount: 1400, verified_signature: null } } };
+    const plan = await adapter.plan(refundJob);
+    check("Operator source refund: destination = the wallet whose balance decreased in THAT transaction, amount = the exact observed base units (no verified payment needed)", plan.destination === sender && plan.amountBaseUnits === 25000000n);
+    delete state.txs[sourceSig];
+    let err = null;
+    try { await adapter.plan({ ...refundJob, context: { ...refundJob.context, source_signature: b58(88) } }); } catch (e) { err = engine.classifyMoneyError(e); }
+    check("Operator source refund: payer cannot be established from the chain -> REVIEW (never a guessed destination)", err?.errorClass === "REVIEW" && err.code === "SOURCE_PAYER_NOT_FOUND", err);
+  }
 }
 
 // ============ wiring ============

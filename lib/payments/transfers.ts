@@ -68,6 +68,7 @@ const toBaseUnits = (fiat: number, rate: number) => BigInt(Math.floor((fiat * 1_
 type JobContext = {
   business_status: string; currency: string; net_amount?: string | number; amount?: string | number; fx_rate?: string | number | null;
   country?: string | null; destination?: string | null; obligation_id?: string; refund_id?: string;
+  source_signature?: string | null; asset_amount_base_units?: string | null;
   intent?: { amount_base_units: string; network?: string; mint?: string; recipient?: string; fiat_amount?: string | number; verified_signature?: string | null } | null;
 };
 
@@ -81,6 +82,15 @@ export function devnetAdapter(client: SupabaseClient, rail: DevnetRail): MoneyAd
       if (!["PENDING", "FAILED", "SUBMITTED"].includes(ctx.business_status)) throw new MoneyMovementError(`REFUND_STATE_${ctx.business_status}`, "REVIEW");
       const intent = ctx.intent;
       if (!intent || intent.network !== RAIL_NETWORK || intent.mint !== rail.mint) throw new MoneyMovementError("UNSUPPORTED_NETWORK_OR_MINT", "PERMANENT");
+      if (ctx.source_signature) {
+        // Operator-approved refund of ONE observed transfer (migration 017): the exact observed amount,
+        // back to the wallet that sent THAT transaction. No destination is ever supplied by a person.
+        const sourcePayer = await payerOf(rail, ctx.source_signature, String(intent.recipient));
+        if (!destinationOk(sourcePayer)) throw new MoneyMovementError("SOURCE_PAYER_NOT_FOUND", "REVIEW");
+        const exact = BigInt(ctx.asset_amount_base_units ?? "0");
+        if (exact <= BigInt(0)) throw new MoneyMovementError("BUSINESS_AMOUNT_INVALID", "REVIEW");
+        return { destination: sourcePayer, amountBaseUnits: exact, reference: await transferReference("refund", String(ctx.refund_id)) };
+      }
       if (!intent.verified_signature) throw new MoneyMovementError("NO_VERIFIED_PAYMENT", "REVIEW");
       const payer = await payerOf(rail, intent.verified_signature, String(intent.recipient));
       if (!destinationOk(payer)) throw new MoneyMovementError("PAYER_NOT_FOUND", "REVIEW");
