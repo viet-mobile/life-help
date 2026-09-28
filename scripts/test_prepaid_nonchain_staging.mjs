@@ -9,6 +9,7 @@
 // Usage: node scripts/test_prepaid_nonchain_staging.mjs
 import crypto from "node:crypto";
 import { base, db, fixtures, readResponse, recorder, rpc, serviceKey, settlementToken, supabaseUrl } from "./lib/stagingPushHarness.mjs";
+import { fixtureObserveIntent } from "./lib/stagingMoneyFixtures.mjs";
 
 const runId = `PN${Date.now()}`;
 const { expect, record, summary } = recorder();
@@ -72,6 +73,20 @@ try {
   expect("B2. unpaid customer offer invisible to the eligible Helper feed", feed.status === 200 && Array.isArray(feed.body.offers) && !JSON.stringify(feed.body).includes(runId), [feed.status, feed.body?.offers?.length]);
   const contact = await checkout(B, { mode: "CUSTOMER_OFFER_OPEN", subitem_code: "toilet-simple", offer: { ...offerBody, public_note: "call me +82 10 1234 5678" }, ...form("mode-b-contact") });
   expect("B3. contact details in an offer note refused", contact.status === 400 && contact.body.code === "CONTACT_DETAILS_NOT_ALLOWED", [contact.status, contact.body?.code]);
+  // Test activation (FIXTURE observation on the product's own intent; never a chain payment) -> the SAME
+  // funded offer is published to eligible Helpers; no unpaid path exists.
+  const note = offerBody.public_note;
+  const feedBefore = JSON.stringify(feed.body);
+  const payMB = await call(`/api/checkouts/${cb.body?.checkoutId}/payment`, { method: "POST", headers: { Cookie: B.cookie } });
+  const actB = payMB.body?.intentId ? await fixtureObserveIntent(payMB.body.intentId) : null;
+  if (actB?.activation?.request_id) fx.created.requestIds.add(actB.activation.request_id);
+  const reqB = actB?.activation?.request_id ? (await db(`service_requests?id=eq.${actB.activation.request_id}&select=id,status,request_mode,funding_payment_intent_id`))[0] : null;
+  // H2 becomes eligible (declares the detailed service); H1 is reserved by the open Mode A checkout above.
+  await rpc("upsert_helper_service_price", { p_helper_id: h2.helper.id, p_service_code: "clog-clearing", p_subitem_code: "toilet-simple", p_terms: { pricing_mode: "FIXED", currency: "KRW", base_price: 65000, materials_policy: "INCLUDED" }, p_publish: true });
+  const feedH2 = await call("/api/helper/open-offers", { headers: h2.auth });
+  const feedH1 = await call("/api/helper/open-offers", { headers: h1.auth });
+  const seen = (f) => (f.body?.offers || []).some((o) => o.requestId === reqB?.id);
+  expect("B4. MODE B after verified (test) payment: request OPEN_FOR_HELPERS, funded by that intent; now visible to an eligible free Helper (H2); not to H1, reserved by another open checkout; never visible before payment", payMB.status === 201 && actB?.status === "PAID_HELD" && reqB?.status === "OPEN_FOR_HELPERS" && reqB.request_mode === "CUSTOMER_OFFER_OPEN" && reqB.funding_payment_intent_id === payMB.body.intentId && !feedBefore.includes(note) && seen(feedH2) && !seen(feedH1), { pay: payMB.status, act: actB?.status, reqB, h2: seen(feedH2), h1: seen(feedH1) });
 
   // ---------------- R. payment rail ----------------
   const policies = await db("payment_rail_policies?select=country,network,enabled,capability");
@@ -118,6 +133,7 @@ try {
 } catch (error) {
   record("FAIL", "prepaid non-chain harness", String(error?.stack || error));
 } finally {
+  await fx.cleanup(); // request children first (the purge then removes the funded requests themselves)
   const purged = [];
   for (const id of checkouts) purged.push((await rpc("purge_payment_fixture", { p_checkout_id: id })).data?.success === true);
   let removed = 0;

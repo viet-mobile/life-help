@@ -44,6 +44,21 @@ export async function legitimatePayableReward(runId, label, { description = "REF
   return { referrer, referred, attribution, request, reward: { ...reward, state: "PAYABLE" }, promoted };
 }
 
+/**
+ * FABRICATED payment observation (DB fixture, NOT a chain payment) against an intent the product itself
+ * created (e.g. the browser's own POST /api/checkouts/{id}/payment): same network / mint / recipient /
+ * amount, signature prefixed FIXTURE. Only for test_fixture checkouts (refused otherwise, so a real
+ * checkout can never be activated this way); purge_payment_fixture() removes everything afterwards.
+ * Activation stays external_payment_verified=false (no chain payout ever exists for it).
+ */
+export async function fixtureObserveIntent(intentId) {
+  const [intent] = await db(`payment_intents?id=eq.${intentId}&select=id,checkout_id,network,mint,recipient,amount_base_units,status`);
+  const [checkout] = intent ? await db(`service_checkouts?id=eq.${intent.checkout_id}&select=test_fixture`) : [];
+  if (!checkout?.test_fixture) throw new Error("fixtureObserveIntent: refused - not a test_fixture checkout");
+  if (intent.network !== "solana-devnet") throw new Error("fixtureObserveIntent: refused - devnet only");
+  return call("record_payment_observation", { p_intent_id: intent.id, p_network: intent.network, p_signature: fixtureSignature(), p_slot: 1, p_mint: intent.mint, p_recipient: intent.recipient, p_amount_base_units: Number(intent.amount_base_units), p_reference_matched: true, p_tx_success: true, p_confirmation: "finalized" });
+}
+
 export function moneyFixtures(fx, runId) {
   const checkouts = new Set();
   const form = (customer, label) => ({ p_customer_id: customer, p_customer_display_name: `FX · ${customer}`, p_customer_locale: "en", p_country: "KR", p_sido: fx.sido, p_gungu: "G1", p_dong: "", p_address: "fixture", p_description: `${runId} ${label}`, p_selected_options: [] });

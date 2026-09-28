@@ -227,8 +227,13 @@ export async function launchChrome({ headed = false } = {}) {
   if (!version) { proc.kill(); return null; }
   const ws = new WebSocket(version.webSocketDebuggerUrl);
   await new Promise((resolve) => ws.addEventListener("open", resolve));
-  let seq = 0; const pending = new Map();
-  ws.addEventListener("message", (event) => { const m = JSON.parse(event.data); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); } });
+  let seq = 0; const pending = new Map(); const listeners = new Map();
+  ws.addEventListener("message", (event) => {
+    const m = JSON.parse(event.data);
+    if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); }
+    else if (m.method) for (const fn of listeners.get(m.method) || []) fn(m.params, m.sessionId);
+  });
+  const on = (method, fn) => listeners.set(method, [...(listeners.get(method) || []), fn]);
   const cdp = (method, params = {}, sessionId) => new Promise((resolve) => { const id = ++seq; pending.set(id, resolve); ws.send(JSON.stringify({ id, method, params, sessionId })); });
   const { result: { targetId } } = await cdp("Target.createTarget", { url: "about:blank" });
   const { result: { sessionId } } = await cdp("Target.attachToTarget", { targetId, flatten: true });
@@ -237,7 +242,22 @@ export async function launchChrome({ headed = false } = {}) {
   const navigate = (url) => cdp("Page.navigate", { url }, sessionId);
   const instrumentPermission = () => cdp("Page.addScriptToEvaluateOnNewDocument", { source: "(() => { window.__permissionCalls = []; const original = Notification.requestPermission.bind(Notification); Notification.requestPermission = (...args) => { window.__permissionCalls.push({ userActivation: navigator.userActivation?.isActive === true }); return original(...args); }; })();" }, sessionId);
   const close = async () => { try { ws.close(); } catch { /* closed */ } proc.kill(); await sleep(800); try { fs.rmSync(profile, { recursive: true, force: true }); } catch { /* locked */ } };
-  return { cdp, sessionId, evaluate, navigate, instrumentPermission, close };
+  return { cdp, on, sessionId, evaluate, navigate, instrumentPermission, close };
+}
+
+/**
+ * Staging test harness: the page's own POST /api/checkouts gets the platform-operator header added by
+ * DevTools request interception (never visible to page script), so the checkout the real UI creates is
+ * a purgeable test_fixture (isStagingTestOperator). Nothing else about the request changes.
+ */
+export async function markBrowserCheckoutsAsTestFixtures(browser, operatorToken) {
+  browser.on("Fetch.requestPaused", (params, session) => {
+    const isCreate = params.request.method === "POST" && new URL(params.request.url).pathname === "/api/checkouts";
+    const headers = Object.entries(params.request.headers).map(([name, value]) => ({ name, value }));
+    if (isCreate) headers.push({ name: "Authorization", value: `Bearer ${operatorToken}` });
+    void browser.cdp("Fetch.continueRequest", { requestId: params.requestId, ...(isCreate ? { headers } : {}) }, session);
+  });
+  await browser.cdp("Fetch.enable", { patterns: [{ urlPattern: "*/api/checkouts", requestStage: "Request" }] }, browser.sessionId);
 }
 
 /** Trusted click (real input events carry user activation) on a data-testid or CSS selector. */
