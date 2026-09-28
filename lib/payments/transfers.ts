@@ -5,7 +5,7 @@ import { getRailConfig, getTestFxQuote, RAIL_NETWORK, RAIL_PROVIDER } from "@/li
 import { BASE58_ADDRESS, NATIVE_USDC_MINT, observePayment } from "@/lib/payments/solana";
 import { DevnetRpc, prepareUsdcTransfer, signerFromSecret, transferReference, type Signer } from "@/lib/payments/solanaTx";
 import {
-  MoneyMovementError, moneyJobIdFor, runDueMoneyJobs, runMoneyJob,
+  MoneyMovementError, moneyJobIdFor, runMoneyJob,
   type AttemptView, type ClaimedJob, type MoneyAdapter, type MoneyJobHooks, type MoneyJobOutcome, type Observation, type PlannedTransfer,
 } from "@/lib/payments/moneyJobs";
 import { closeServiceRequest, runConversationCleanup, settleServiceRequest } from "@/lib/settlement/serviceSettlement";
@@ -185,11 +185,27 @@ function settlementHooks(client: SupabaseClient): MoneyJobHooks {
 export type TransferOutcome = { status: string; signature?: string | null; reason?: string; obligationId?: string };
 const outcome = (o: MoneyJobOutcome, obligationId?: string): TransferOutcome => ({ status: o.status, signature: o.externalId ?? null, reason: o.code, obligationId });
 
+/**
+ * The devnet adapter serves only devnet-rail jobs. A job whose money moves through a registered provider
+ * (payout rail PROVIDER_PAYEE, or a refund of a provider-hosted payment) belongs to the provider bridge
+ * (lib/payments/provider/outboxBridge.ts) and is never claimed here - otherwise the devnet adapter would
+ * fail a provider refund permanently (UNSUPPORTED_NETWORK_OR_MINT) or cycle a provider payout as WAITING.
+ */
+export async function devnetServesJob(client: SupabaseClient, jobId: string): Promise<boolean> {
+  const { data: job } = await client.from("money_movement_jobs").select("rail, obligation_type, service_refund_id").eq("id", jobId).maybeSingle();
+  if (!job) return false;
+  if (job.obligation_type !== "REFUND") return job.rail !== "PROVIDER_PAYEE";
+  const { data: refund } = await client.from("service_refunds").select("payment_intent_id").eq("id", job.service_refund_id).maybeSingle();
+  const { data: intent } = refund ? await client.from("payment_intents").select("network").eq("id", refund.payment_intent_id).maybeSingle() : { data: null };
+  return !!intent && !String(intent.network).startsWith("provider:");
+}
+
 async function runFor(client: SupabaseClient, link: { payoutObligationId?: string; serviceRefundId?: string }, railArg?: DevnetRail | null): Promise<TransferOutcome> {
   const rail = railArg ?? await getDevnetRail();
   if (!rail) return { status: "NOT_SUBMITTED", reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
   const jobId = await moneyJobIdFor(client, link);
   if (!jobId) return { status: "NOT_SUBMITTED", reason: "MONEY_JOB_NOT_FOUND" };
+  if (!(await devnetServesJob(client, jobId))) return { status: "NOT_SUBMITTED", reason: "NOT_DEVNET_RAIL" };
   return outcome(await runMoneyJob(client, devnetAdapter(client, rail), jobId, settlementHooks(client)));
 }
 
@@ -216,7 +232,16 @@ export async function runMoneyOutbox(client: SupabaseClient, limit = 20): Promis
   const rail = await getDevnetRail();
   if (!rail) return { processed: [], configured: false };
   const hooks = settlementHooks(client);
-  const processed = await runDueMoneyJobs(client, devnetAdapter(client, rail), limit, hooks);
+  // Only devnet-rail jobs are claimed here (provider-rail jobs are skipped, never leased or delayed).
+  const adapter = devnetAdapter(client, rail);
+  const processed: MoneyJobOutcome[] = [];
+  const { data: due } = await client.from("money_movement_jobs").select("id").not("status", "in", "(CONFIRMED,REVIEW_REQUIRED,FAILED_PERMANENT)")
+    .lte("next_retry_at", new Date().toISOString()).order("next_retry_at").limit(limit * 3);
+  for (const row of due ?? []) {
+    if (processed.length >= limit) break;
+    if (!(await devnetServesJob(client, row.id as string))) continue;
+    processed.push(await runMoneyJob(client, adapter, row.id as string, hooks));
+  }
   // Crash after CONFIRMED but before settlement: finish the settlement of paid, still-pending requests.
   const { data: paid } = await client.from("payout_obligations").select("request_id").eq("kind", "HELPER_SERVICE").eq("status", "PAID").order("paid_at", { ascending: false }).limit(50);
   const ids = (paid ?? []).map((r) => r.request_id as string).filter(Boolean);

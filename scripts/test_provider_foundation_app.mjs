@@ -205,6 +205,20 @@ check("X3. static: no hardcoded provider credentials / keys in the provider laye
 check("X4. static: no provider-specific business logic outside adapters (no PSP names in the ledger migration's functions; mock only in its adapter / registry)", !/stripe|adyen|circle|coinbase/i.test(read("supabase/migrations/202609280020_provider_payment_foundation.sql") + all.replace(/\/\*[\s\S]*?\*\//g, "")) && providerFiles.filter((p) => /MockPaymentProvider/.test(read(p))).every((p) => /mockProvider|registry/.test(p)));
 check("X5. static: the database refuses unverified evidence by construction (signature_verified check + function gate), and only service_role may call the ingestion authority", /signature_verified boolean not null check \(signature_verified\)/.test(read("supabase/migrations/202609280020_provider_payment_foundation.sql")) && /p_signature_verified is distinct from true/.test(read("supabase/migrations/202609280020_provider_payment_foundation.sql")));
 
+// ---- the devnet runtime never claims provider-rail jobs (found in the live verification of 020) ----
+const transfers = await import(new URL("lib/payments/transfers.ts", root).href);
+const devnetJob = await f.completedPayout("DEVRAIL");
+const devnetJobId = (await f.jobFor({ obligationId: devnetJob.obligationId })).id;
+const devnetRefund = await f.cancelledRefund("DEVREF");
+const devnetRefundJobId = (await f.jobFor({ refundId: devnetRefund.refundId })).id;
+const serves = {
+  providerPayout: await transfers.devnetServesJob(client, job.id), providerRefund: await transfers.devnetServesJob(client, rJob.id),
+  devnetPayout: await transfers.devnetServesJob(client, devnetJobId), devnetRefund: await transfers.devnetServesJob(client, devnetRefundJobId),
+};
+const tsrc = read("lib/payments/transfers.ts");
+check("D1. devnet runtime is rail-aware: provider payout (PROVIDER_PAYEE) and provider refund jobs are NOT devnet jobs; devnet payout / refund jobs are; the inline fast path and the cron runner check it before claiming", serves.providerPayout === false && serves.providerRefund === false && serves.devnetPayout === true && serves.devnetRefund === true
+  && /if \(!\(await devnetServesJob\(client, jobId\)\)\) return \{ status: "NOT_SUBMITTED", reason: "NOT_DEVNET_RAIL" \}/.test(tsrc) && /if \(!\(await devnetServesJob\(client, row\.id as string\)\)\) continue;/.test(tsrc) && !/runDueMoneyJobs\(/.test(tsrc), JSON.stringify(serves));
+
 const rail = await import(new URL("lib/payments/paymentRail.ts", root).href);
 const testFx = {
   staging: await rail.getTestFxQuote("KRW", { LIFE_HELP_PAYMENT_MODE: "STAGING_DEVNET_TEST", LIFE_HELP_TEST_FX_RATES: "KRW=1400" }),
