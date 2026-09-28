@@ -4,8 +4,10 @@ import { processHelperPayout, processReferralPayout } from "@/lib/payments/trans
 
 /**
  * POST /api/sys/rewards/{rewardId}/payout  { country } (platform operator, staging only)
- * Referral reward lifecycle is unchanged: only a PAYABLE reward gets exactly one USDC payout
- * obligation (-> PAYOUT_PROCESSING) and exactly one money job; PAID only after finalized chain proof.
+ * A QUALIFIED reward is first promoted to PAYABLE by the trusted DB function (re-checks the settled
+ * qualifying request, the ACTIVE attribution and that the payment was not refunded); only a PAYABLE reward
+ * gets exactly one USDC payout obligation (-> PAYOUT_PROCESSING) and exactly one money job; PAID only
+ * after finalized chain proof.
  */
 export async function POST(request: Request, context: { params: Promise<{ rewardId: string }> }) {
   const actor = await authorizePlatformOperator(request);

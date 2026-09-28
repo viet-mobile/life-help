@@ -18,9 +18,11 @@ const reward = await one("select attribution_id, qualifying_request_id, referrer
 check("1. the app role can no longer UPDATE referral rewards (e.g. force PAID)", /permission denied/i.test(String((await asApp("update public.referral_rewards set state = 'PAID' where id = $1", [w.rewardId]))?.message)) && (await one("select state::text s from public.referral_rewards where id = $1", [w.rewardId])).s === "PAYABLE");
 const freshRequest = (await one("insert into public.service_requests (customer_id, customer_display_name, service_slug, country, sido, gungu, description, status, request_mode, selection_mode, legacy_unfunded) values ('AUTHREQX', 'x', 'boiler', 'KR', 'AUTH', 'G1', 'x', 'SEARCHING', 'LEGACY_AUTO_MATCH', 'AUTO_MATCH', true) returning id")).id;
 const insertAs = (state, requestId) => asApp("insert into public.referral_rewards (attribution_id, qualifying_request_id, referrer_identity_id, referred_identity_id, tier, reward_amount_krw, first_service_discount_krw, state) values ($1, $2, $3, $4, 'WLH', 1000, 1000, $5)", [reward.attribution_id, requestId, reward.referrer_identity_id, reward.referred_identity_id, state]);
-check("2. the app role cannot INSERT a reward already PAID / PAYOUT_PROCESSING", /payout path/.test(String((await insertAs("PAID", freshRequest))?.message)) && /payout path/.test(String((await insertAs("PAYOUT_PROCESSING", freshRequest))?.message)));
-const qualified = await insertAs("QUALIFIED", freshRequest);
-check("3. the app's real insert (QUALIFIED at settlement) still works", qualified === null || /duplicate key|unique/i.test(String(qualified?.message)), qualified?.message);
+// Since migration 019 the app role has no INSERT at all (SELECT only); the 018 insert guard is superseded.
+check("2. the app role cannot INSERT a reward already PAID / PAYOUT_PROCESSING", /permission denied/i.test(String((await insertAs("PAID", freshRequest))?.message)) && /permission denied/i.test(String((await insertAs("PAYOUT_PROCESSING", freshRequest))?.message)));
+await db.query("update public.service_requests set status = 'SETTLED' where id = $1", [freshRequest]);
+const viaTrusted = await rpc("create_referral_reward_for_settled_request", freshRequest);
+check("3. the app's real creation at settlement (trusted function since 019) still works", /permission denied/i.test(String((await insertAs("QUALIFIED", freshRequest))?.message)) && viaTrusted.success === true, JSON.stringify(viaTrusted));
 const created = await rpc("create_referral_payout_obligation", w.rewardId, "USDC_SOLANA", "KR");
 const job = await f.jobFor({ obligationId: created.payout_obligation_id });
 const c = await rpc("claim_money_job", job.id, 60);

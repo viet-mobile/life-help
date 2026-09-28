@@ -88,8 +88,12 @@ export function fixtures(db) {
     const cancel = await rpc("cancel_funded_request", funded.requestId, customer);
     return { customer, checkout, funded, requestId: funded.requestId, refundId: cancel.refund_id, intentId: funded.i.intent_id };
   }
-  /** PAYABLE referral reward with an ACTIVE USDC destination for the referrer. */
-  async function payableReward(label) {
+  /**
+   * Referral reward through the legitimate flow (migration 019): identities + ACTIVE attribution, a legacy
+   * request of the referred customer reaching SETTLED, the trusted creation (QUALIFIED), and optionally the
+   * trusted promotion (PAYABLE). No direct reward write. The referrer gets an ACTIVE USDC destination.
+   */
+  async function qualifiedReward(label, { promote = false, status = "SETTLED" } = {}) {
     seq += 1;
     const letters = () => Array.from(crypto.randomBytes(8), (x) => String.fromCharCode(65 + (x % 26))).join("");
     const tag = letters();
@@ -97,11 +101,26 @@ export function fixtures(db) {
     const referredTag = letters();
     const referred = (await one("insert into public.referral_identities (referral_id, subject_type, device_id_hash, subject_key) values ($1, 'CUSTOMER', md5($1), $1) returning id", [referredTag])).id;
     const attribution = (await one("insert into public.referral_attributions (referred_identity_id, referrer_identity_id) values ($1, $2) returning id", [referred, referrer])).id;
-    const request = (await one("insert into public.service_requests (customer_id, customer_display_name, service_slug, country, sido, gungu, description, status, request_mode, selection_mode, legacy_unfunded) values ($1, 'x', 'boiler', 'KR', 'LEG', 'G1', 'old', 'SEARCHING', 'LEGACY_AUTO_MATCH', 'AUTO_MATCH', true) returning id", [referredTag])).id;
-    const reward = (await one("insert into public.referral_rewards (attribution_id, qualifying_request_id, referrer_identity_id, referred_identity_id, tier, reward_amount_krw, first_service_discount_krw, state) values ($1, $2, $3, $4, 'WLH', 1000, 1000, 'PAYABLE') returning id", [attribution, request, referrer, referred])).id;
+    const request = (await one("insert into public.service_requests (customer_id, customer_display_name, service_slug, country, sido, gungu, description, status, request_mode, selection_mode, legacy_unfunded) values ($1, 'x', 'boiler', 'KR', 'LEG', 'G1', 'old', $2, 'LEGACY_AUTO_MATCH', 'AUTO_MATCH', true) returning id", [referredTag, status])).id;
+    let created, promoted = null;
+    if ((await one("select to_regprocedure('public.create_referral_reward_for_settled_request(uuid)') is not null as ok")).ok) {
+      created = await rpc("create_referral_reward_for_settled_request", request);
+      if (promote) promoted = await rpc("promote_referral_reward_payable", created.reward_id);
+    } else {
+      // Chain before migration 019 (e.g. the 015 outbox test): the reward is written as the settlement code then did.
+      const state = promote ? "PAYABLE" : "QUALIFIED";
+      created = { code: "QUALIFIED", reward_id: (await one("insert into public.referral_rewards (attribution_id, qualifying_request_id, referrer_identity_id, referred_identity_id, tier, reward_amount_krw, first_service_discount_krw, state) values ($1, $2, $3, $4, 'WLH', 1000, 1000, $5) returning id", [attribution, request, referrer, referred, state])).id };
+      if (promote) promoted = { success: true, state };
+    }
     const destination = pubkey();
     await db.query("insert into public.payout_destinations (owner_identity_id, country, currency, payout_method, provider, provider_payee_token, masked_destination, status) values ($1, 'KR', 'USDC', 'USDC_SOLANA', 'SOLANA_DIRECT_DEVNET', $2, 'xxxx', 'ACTIVE')", [referrer, destination]);
-    return { rewardId: reward, referrer, destination };
+    return { rewardId: created.reward_id, created, promoted, referrer, referred, attribution, requestId: request, referredKey: referredTag, referrerKey: tag, destination };
+  }
+  /** PAYABLE referral reward (legitimate flow: settled request -> QUALIFIED -> trusted promotion). */
+  async function payableReward(label) {
+    const r = await qualifiedReward(label, { promote: true });
+    if (r.promoted?.state !== "PAYABLE") throw new Error(`payableReward: ${JSON.stringify(r.created)} / ${JSON.stringify(r.promoted)}`);
+    return r;
   }
   /** Superuser-only test lever: move a checkout's expiry (the guard makes it immutable to the app). */
   async function backdateCheckout(checkoutId, interval = "1 hour") {
@@ -113,7 +132,7 @@ export function fixtures(db) {
   const expireLease = (jobId) => db.query("update public.money_movement_jobs set claim_expires_at = now() - interval '1 second' where id = $1", [jobId]);
   const makeDue = (jobId) => db.query("update public.money_movement_jobs set next_retry_at = now() - interval '1 second' where id = $1", [jobId]);
 
-  return { one, all, rpc, fails, recipient, enablePolicies, helper, price, helperCheckout, offerCheckout, fund, activeAssignments, setDestination, completedPayout, cancelledRefund, payableReward, backdateCheckout, jobFor, expireLease, makeDue };
+  return { one, all, rpc, fails, recipient, enablePolicies, helper, price, helperCheckout, offerCheckout, fund, activeAssignments, setDestination, completedPayout, cancelledRefund, qualifiedReward, payableReward, backdateCheckout, jobFor, expireLease, makeDue };
 }
 
 export function checker() {

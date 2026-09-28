@@ -107,10 +107,16 @@ async function createRequest(device, idempotencyKey = crypto.randomUUID()) {
   return { response, body, idempotencyKey };
 }
 
+// Referral rewards are immutable financial history (migration 019: no delete, even for the service role).
+// A request that qualified a reward is kept (request row + settlement audit) together with the
+// attribution / identities the reward references; everything else of the run is removed as before.
+const retained = { rewards: [], requests: [], identities: [] };
 async function cleanup() {
+  const rewards = requestIds.size ? await db(`referral_rewards?qualifying_request_id=in.(${[...requestIds].join(",")})&select=id,qualifying_request_id,referrer_identity_id,referred_identity_id`).catch(() => []) : [];
+  const keepRequests = new Set(rewards.map((r) => r.qualifying_request_id));
+  const keepIdentities = new Set(rewards.flatMap((r) => [r.referrer_identity_id, r.referred_identity_id]));
+  Object.assign(retained, { rewards: rewards.map((r) => r.id), requests: [...keepRequests], identities: [...keepIdentities] });
   for (const requestId of requestIds) {
-    await db(`referral_rewards?qualifying_request_id=eq.${requestId}`, "DELETE").catch(() => {});
-    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`messages?conversation_id=in.(${requestId})`, "DELETE").catch(() => {});
     await db(`app_notifications?payload->>request_id=eq.${requestId}`, "DELETE").catch(() => {});
     // Chat notifications reference the conversation, not the request.
@@ -120,6 +126,8 @@ async function cleanup() {
     await db(`request_assignments?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`conversations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`admin_escalations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
+    if (keepRequests.has(requestId)) continue;
+    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`service_requests?id=eq.${requestId}`, "DELETE").catch(() => {});
   }
   for (const helperId of helperIds) {
@@ -129,6 +137,7 @@ async function cleanup() {
   }
   for (const userId of authUserIds) await authAdmin(`users/${userId}`, "DELETE").catch(() => {});
   for (const identityId of referralIdentityIds) {
+    if (keepIdentities.has(identityId)) continue;
     await db(`referral_attributions?or=(referred_identity_id.eq.${identityId},referrer_identity_id.eq.${identityId})`, "DELETE").catch(() => {});
     await db(`referral_identities?id=eq.${identityId}`, "DELETE").catch(() => {});
   }
@@ -331,6 +340,7 @@ try {
   fail("E2E harness", error);
 } finally {
   await cleanup();
+  if (retained.rewards.length) console.log(`RETAINED (financial history, never deleted): rewards=${retained.rewards.join(",")} requests=${retained.requests.join(",")} identities=${retained.identities.join(",")}`);
 }
 
 const counts = Object.fromEntries(["PASS", "FAIL", "NOT_TESTED"].map((status) => [status, results.filter(([value]) => value === status).length]));

@@ -201,6 +201,10 @@ export const processRefund = (client: SupabaseClient, refundId: string, rail?: D
 export async function processReferralPayout(client: SupabaseClient, rewardId: string, country: string, railArg?: DevnetRail | null): Promise<TransferOutcome> {
   const rail = railArg ?? await getDevnetRail();
   if (!rail) return { status: "NOT_SUBMITTED", reason: "PAYOUT_RAIL_NOT_CONFIGURED" };
+  // QUALIFIED -> PAYABLE only through the trusted promotion (re-checks attribution, settled request, no refund).
+  // A reward already past PAYABLE falls through: the obligation call replays its existing obligation.
+  const { data: promoted } = await client.rpc("promote_referral_reward_payable", { p_reward_id: rewardId });
+  if (!promoted?.success && promoted?.code !== "REWARD_NOT_QUALIFIED") return { status: "NOT_SUBMITTED", reason: String(promoted?.code ?? "PROMOTION_FAILED") };
   const { data: created } = await client.rpc("create_referral_payout_obligation", { p_reward_id: rewardId, p_rail: "USDC_SOLANA", p_country: country });
   if (!created?.success) return { status: "NOT_SUBMITTED", reason: String(created?.code ?? "OBLIGATION_FAILED") };
   const obligationId = String(created.payout_obligation_id);

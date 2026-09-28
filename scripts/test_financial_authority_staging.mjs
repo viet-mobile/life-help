@@ -1,9 +1,10 @@
 // Live STAGING verification of migration 202609280018 (financial authority hardening) on the deployed
-// KNOWN OPEN GAPS (reported 2026-09-28, pending a product decision): the app role can still DELETE
-// referral_rewards (Supabase default privileges; never revoked) and can INSERT a reward directly as
-// PAYABLE (qualification bypass). Check 12 stays red for referral_rewards:delete until that is fixed.
 // Worker. Purgeable fixtures only; reward-state probes use writes that are REFUSED (no row is created)
 // plus ONE valid QUALIFIED reward (retained: referral rewards are not deletable by the app role).
+// POINT-IN-TIME (018): it found two open gaps - the app role could DELETE referral_rewards and INSERT a
+// reward directly as PAYABLE (check 12 red for referral_rewards:delete). Migration 019 closes both; after
+// 019 checks 2a / 2b (direct app-role reward inserts) are superseded: every direct insert is refused and
+// rewards are created only by create_referral_reward_for_settled_request(). Verify 019 with its own live suite.
 // Usage: node scripts/test_financial_authority_staging.mjs
 import crypto from "node:crypto";
 import { base, db, env, fixtures, readResponse, recorder, rpc, serviceKey, settlementToken, sleep, supabaseUrl } from "./lib/stagingPushHarness.mjs";

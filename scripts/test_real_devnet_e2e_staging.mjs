@@ -9,6 +9,7 @@ import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import { registerHooks } from "node:module";
 import { base, db, fixtures, recorder, rpc as dbRpc, serviceKey, settlementToken, sleep, supabaseUrl } from "./lib/stagingPushHarness.mjs";
+import { legitimatePayableReward } from "./lib/stagingMoneyFixtures.mjs";
 
 const root = new URL("..", import.meta.url);
 registerHooks({
@@ -105,15 +106,12 @@ async function workerBalances(addresses) {
   if (j.network !== "SOLANA_DEVNET") throw new Error(`worker rpc not devnet: ${j.network}`);
   return addresses.map((a) => BigInt(j.balances.find((b) => b.address === a)?.devnetUsdcBaseUnits ?? "0"));
 }
-const letters = () => Array.from({ length: 8 }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26))).join("");
-/** Isolated PAYABLE Referral reward whose referrer holds an ACTIVE devnet USDC destination (financial history: kept). */
+/**
+ * Isolated PAYABLE Referral reward whose referrer holds an ACTIVE devnet USDC destination (financial history: kept).
+ * Legitimate flow only (migration 019): settled qualifying request -> trusted creation (QUALIFIED) -> trusted promotion.
+ */
 async function payableReward(destination) {
-  const [ra, rb] = [letters(), letters()];
-  const [referrer] = await db("referral_identities", "POST", { referral_id: ra, subject_type: "CUSTOMER", device_id_hash: `${runId}-${ra}`.padEnd(64, "0").slice(0, 64), subject_key: ra });
-  const [referred] = await db("referral_identities", "POST", { referral_id: rb, subject_type: "CUSTOMER", device_id_hash: `${runId}-${rb}`.padEnd(64, "0").slice(0, 64), subject_key: rb });
-  const [attribution] = await db("referral_attributions", "POST", { referred_identity_id: referred.id, referrer_identity_id: referrer.id });
-  const [request] = await db("service_requests", "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: rb, customer_display_name: "REAL-CHAIN REFERRAL", service_slug: "boiler", country: "KR", sido: `${runId}-REF`, gungu: "G1", description: `${runId} REAL-CHAIN referral qualifying request (financial history, kept)`, status: "CANCELLED" });
-  const [reward] = await db("referral_rewards", "POST", { attribution_id: attribution.id, qualifying_request_id: request.id, referrer_identity_id: referrer.id, referred_identity_id: referred.id, tier: "WLH", reward_amount_krw: 1000, first_service_discount_krw: 1000, state: "PAYABLE" });
+  const { referrer, reward } = await legitimatePayableReward(runId, "REALCHAIN", { description: "REAL-CHAIN referral qualifying request (financial history, kept)", displayName: "REAL-CHAIN REFERRAL" });
   await db("payout_destinations", "POST", { owner_identity_id: referrer.id, country: "KR", currency: "USDC", payout_method: "USDC_SOLANA", provider: "SOLANA_DIRECT_DEVNET", provider_payee_token: destination, masked_destination: `${destination.slice(0, 4)}…${destination.slice(-4)}`, status: "ACTIVE" });
   return reward;
 }

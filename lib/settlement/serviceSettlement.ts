@@ -128,26 +128,15 @@ async function scheduleConversationCleanup(client: SupabaseClient, requestId: st
 
 /**
  * One-level referral reward at the settlement boundary only. The referred customer's direct
- * referrer may be rewarded; indirect referrers never are. Duplicate settlement cannot create a
- * second reward because referral_rewards.qualifying_request_id is unique.
+ * referrer may be rewarded; indirect referrers never are. The reward is created QUALIFIED by the
+ * trusted database function (migration 019), which derives referrer, referred, attribution, tier and
+ * amount from the settled request itself; the app role has no write access to referral_rewards.
+ * Duplicate settlement cannot create a second reward (unique qualifying_request_id).
  */
-async function qualifyReferralReward(client: SupabaseClient, requestId: string, customerId: string): Promise<"QUALIFIED" | "ALREADY_QUALIFIED" | "NO_REFERRAL"> {
-  const { data: referred } = await client.from("referral_identities").select("id, subject_key").eq("subject_type", "CUSTOMER").eq("subject_key", customerId).maybeSingle();
-  if (!referred) return "NO_REFERRAL";
-  const { data: attribution } = await client.from("referral_attributions").select("id, referrer_identity_id, referrer_identity:referrer_identity_id(id, subject_key)").eq("referred_identity_id", referred.id).eq("status", "ACTIVE").maybeSingle();
-  const referrer = ((Array.isArray(attribution?.referrer_identity) ? attribution?.referrer_identity[0] : attribution?.referrer_identity) || null) as { id: string; subject_key: string | null } | null;
-  if (!attribution || !referrer) return "NO_REFERRAL";
-  const { data: existing } = await client.from("referral_rewards").select("id").eq("qualifying_request_id", requestId).maybeSingle();
-  if (existing) return "ALREADY_QUALIFIED";
-  const { count } = await client.from("service_requests").select("id", { count: "exact", head: true }).eq("customer_id", referrer.subject_key || "").in("status", SETTLED_STATES);
-  const settledCount = count || 0;
-  const tier = settledCount >= 5 ? "GLH" : settledCount >= 1 ? "CLH" : "WLH";
-  const amount = tier === "GLH" ? 10000 : tier === "CLH" ? 5000 : 1000;
-  const { error } = await client.from("referral_rewards").insert({ attribution_id: attribution.id, qualifying_request_id: requestId, referrer_identity_id: referrer.id, referred_identity_id: referred.id, tier, reward_amount_krw: amount, first_service_discount_krw: amount, state: "QUALIFIED", settled_at: new Date().toISOString() });
-  // 23505: a concurrent settlement retry already inserted the reward for this request.
-  if (error) return error.code === "23505" ? "ALREADY_QUALIFIED" : "NO_REFERRAL";
-  await client.from("app_notifications").insert({ recipient_type: "CUSTOMER", recipient_id: referrer.subject_key || "", type: "REFERRAL_REWARD_CONFIRMED", title: "Referral reward qualified", body: `${tier} referral reward qualified.`, payload: { request_id: requestId, tier, reward_amount_krw: amount } });
-  return "QUALIFIED";
+async function qualifyReferralReward(client: SupabaseClient, requestId: string): Promise<"QUALIFIED" | "ALREADY_QUALIFIED" | "NO_REFERRAL"> {
+  const { data } = await client.rpc("create_referral_reward_for_settled_request", { p_request_id: requestId });
+  const code = (data as { code?: string } | null)?.code;
+  return code === "QUALIFIED" || code === "ALREADY_QUALIFIED" ? code : "NO_REFERRAL";
 }
 
 export async function settleServiceRequest(client: SupabaseClient, requestId: string, actor: PlatformActor | "PAYOUT_RECONCILER"): Promise<LifecycleResult> {
@@ -178,7 +167,7 @@ export async function settleServiceRequest(client: SupabaseClient, requestId: st
     if (!existingAudit?.length) await audit(client, "SERVICE_SETTLED", requestId, { actor_kind: actor, settlement_method: chain ? "STAGING_DEVNET_USDC" : SETTLEMENT_METHOD, ...chainAudit(chain), agreed_price: agreedPriceAudit(agreedPrice), reconciled: true });
   }
   const cleanupScheduled = await scheduleConversationCleanup(client, requestId);
-  const reward = await qualifyReferralReward(client, requestId, row.customer_id);
+  const reward = await qualifyReferralReward(client, requestId);
   return { ok: true, requestId, status, idempotent: !won, cleanupScheduled, reward, settlementMethod: chain ? "STAGING_DEVNET_USDC" : SETTLEMENT_METHOD, externalPaymentVerified: !!chain, agreedPrice };
 }
 

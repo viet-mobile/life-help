@@ -69,7 +69,29 @@ function createDb() {
       return { data: this.head ? null : this.shape(hit), error: null, count: this.count ? hit.length : undefined };
     }
   }
-  return { tables, failMessageDelete, client: { from: (table) => new Query(table) } };
+  // Stand-in for the trusted reward creation (migration 019): the same derivation as the SQL function
+  // (settled request -> referred customer identity -> ACTIVE attribution -> direct referrer; tier from the
+  // referrer's settled services; one reward per request; referrer notified).
+  function createRewardForSettledRequest({ p_request_id: requestId }) {
+    const req = tables.service_requests.find((r) => r.id === requestId);
+    if (!req) return { success: false, code: "REQUEST_NOT_FOUND" };
+    if (!["SETTLED", "CLOSED"].includes(req.status)) return { success: false, code: "REQUEST_NOT_SETTLED" };
+    const referred = tables.referral_identities.find((r) => r.subject_type === "CUSTOMER" && r.subject_key === req.customer_id);
+    const attribution = referred && tables.referral_attributions.find((a) => a.referred_identity_id === referred.id && a.status === "ACTIVE");
+    const referrer = attribution && tables.referral_identities.find((r) => r.id === attribution.referrer_identity_id);
+    if (!referrer) return { success: true, code: "NO_REFERRAL" };
+    const existing = tables.referral_rewards.find((r) => r.qualifying_request_id === requestId);
+    if (existing) return { success: true, code: "ALREADY_QUALIFIED", reward_id: existing.id };
+    const settled = tables.service_requests.filter((r) => r.customer_id === (referrer.subject_key || "") && ["SETTLED", "CLOSED"].includes(r.status)).length;
+    const tier = settled >= 5 ? "GLH" : settled >= 1 ? "CLH" : "WLH";
+    const amount = tier === "GLH" ? 10000 : tier === "CLH" ? 5000 : 1000;
+    const id = `referral_rewards-${++seq}`;
+    tables.referral_rewards.push({ id, attribution_id: attribution.id, qualifying_request_id: requestId, referrer_identity_id: referrer.id, referred_identity_id: referred.id, tier, reward_amount_krw: amount, first_service_discount_krw: amount, state: "QUALIFIED", settled_at: new Date().toISOString(), created_at: new Date().toISOString() });
+    tables.app_notifications.push({ id: `app_notifications-${++seq}`, recipient_type: "CUSTOMER", recipient_id: referrer.subject_key || "", type: "REFERRAL_REWARD_CONFIRMED", payload: { request_id: requestId, tier, reward_amount_krw: amount } });
+    return { success: true, code: "QUALIFIED", reward_id: id, tier, reward_amount_krw: amount };
+  }
+  const rpc = async (name, args) => name === "create_referral_reward_for_settled_request" ? { data: createRewardForSettledRequest(args), error: null } : { data: null, error: { message: `rpc ${name} not stubbed` } };
+  return { tables, failMessageDelete, client: { from: (table) => new Query(table), rpc } };
 }
 
 // ---------- fixtures ----------
@@ -183,7 +205,9 @@ function check(name, condition, detail = "") {
   const { tables: t, client } = seed({ status: "IN_PROGRESS" });
   t.request_assignments[0].helper_id = "helper-H";
   const calls = [];
+  const trusted = client.rpc;
   client.rpc = async (name, args) => {
+    if (name !== "complete_assignment_service") return trusted(name, args);
     calls.push([name, args]);
     t.service_requests[0].status = "COMPLETED";
     t.request_assignments[0].status = "COMPLETED";
@@ -383,6 +407,14 @@ check("wrangler.jsonc has no cron trigger", !/"triggers"|"crons"/.test(wranglerC
 check("Retry audit distinguishes reconciliation from queued retry", cleanupRoute.includes('"SETTLED_CLEANUP_RECONCILED"') && cleanupRoute.includes('"QUEUED_CLEANUP_RETRY"'));
 check("Reconciliation reuses scheduling, never qualifies rewards", (() => { const body = settlementLib.slice(settlementLib.indexOf("export async function runConversationCleanup")); return body.includes("scheduleConversationCleanup(client, requestRow.id)") && !body.includes("qualifyReferralReward") && !body.includes("settleServiceRequest") && !body.includes('from("referral_rewards")'); })());
 check("Cleanup route stays platform-authorized for scheduled runs", cleanupRoute.indexOf("authorizePlatformOperator(request)") < cleanupRoute.indexOf("x-life-help-trigger"));
+check("Rewards are created only by the trusted DB function (migration 019): no app write to referral_rewards anywhere in lib / app", (() => {
+  const files = [];
+  const walk = (dir) => { for (const e of fs.readdirSync(new URL(`../${dir}`, import.meta.url), { withFileTypes: true })) { const rel = `${dir}/${e.name}`; if (e.isDirectory()) walk(rel); else if (/\.tsx?$/.test(e.name)) files.push(rel); } };
+  walk("lib"); walk("app");
+  const writers = files.filter((file) => /from\("referral_rewards"\)\s*\.(insert|update|upsert|delete)\(/.test(read(file)));
+  const transfers = read("lib/payments/transfers.ts");
+  return writers.length === 0 && /rpc\("create_referral_reward_for_settled_request"/.test(settlementLib) && transfers.indexOf("promote_referral_reward_payable") > 0 && transfers.indexOf("promote_referral_reward_payable") < transfers.indexOf('rpc("create_referral_payout_obligation"');
+})());
 check("Cleanup deletes only messages", !/from\("(service_requests|referral_rewards|admin_audit_logs|request_assignments|conversations)"\)\.delete\(/.test(settlementLib));
 
 if (failed) { console.error(`FAILED ${failed}`); process.exitCode = 1; } else console.log("ALL PASS");

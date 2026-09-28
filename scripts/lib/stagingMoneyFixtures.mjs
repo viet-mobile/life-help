@@ -5,7 +5,7 @@
 // Safety: fixtures never get a payout destination, so even the deployed outbox can never reach
 // "prepare / sign" for them (Helper / Referral payouts WAIT; refunds stop at PAYER_NOT_FOUND).
 import crypto from "node:crypto";
-import { base, db, rpc } from "./stagingPushHarness.mjs";
+import { base, db, rpc, settlementToken } from "./stagingPushHarness.mjs";
 
 export const DEVNET_USDC = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU";
 export const STAGING_RECIPIENT = "D89fnNdAMFSnd4Jc8NvHcAkGQfvhWFkhY84K5qALQE4";
@@ -19,6 +19,30 @@ export function base58Of32() {
 export const letters = (n = 8) => Array.from(crypto.randomBytes(n), (x) => String.fromCharCode(65 + (x % 26))).join("");
 export const fixtureSignature = () => `FIXTURE${crypto.randomUUID().replace(/-/g, "")}NOTACHAINTX`;
 export const call = async (name, args) => (await rpc(name, args)).data;
+
+/**
+ * PAYABLE referral reward through the LEGITIMATE flow (migration 019; the app role cannot write rewards):
+ * referral basis (identities + ACTIVE attribution + a legacy request of the referred customer, COMPLETED)
+ * -> the deployed platform settlement route (PAYMENT_PENDING -> SETTLED), whose trusted DB function creates
+ * the reward QUALIFIED -> trusted promotion to PAYABLE. Rewards / identities / the request are financial
+ * history and REMAIN (tagged with the run id). Requires the runtime that calls the 019 functions.
+ */
+export async function legitimatePayableReward(runId, label, { description = "REFERRAL FIXTURE (financial history, kept)", displayName = "REFERRAL FIXTURE" } = {}) {
+  const [ra, rb] = [letters(), letters()];
+  const hash = (x) => crypto.createHash("sha256").update(`${runId}-${label}-${x}`).digest("hex");
+  const [referrer] = await db("referral_identities", "POST", { referral_id: ra, subject_type: "CUSTOMER", device_id_hash: hash("a"), subject_key: ra });
+  const [referred] = await db("referral_identities", "POST", { referral_id: rb, subject_type: "CUSTOMER", device_id_hash: hash("b"), subject_key: rb });
+  const [attribution] = await db("referral_attributions", "POST", { referred_identity_id: referred.id, referrer_identity_id: referrer.id });
+  const [request] = await db("service_requests", "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: rb, customer_display_name: displayName, service_slug: "boiler", country: "KR", sido: `${runId}-REF`, gungu: "G1", description: `${runId} ${label} ${description}`, status: "COMPLETED" });
+  const settle = async (status) => (await fetch(`${base}/api/sys/requests/${request.id}/status`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${settlementToken}` }, body: JSON.stringify({ status }) })).json().catch(() => ({}));
+  const pending = await settle("PAYMENT_PENDING");
+  const settled = await settle("SETTLED");
+  const [reward] = await db(`referral_rewards?qualifying_request_id=eq.${request.id}&select=*`);
+  if (reward?.state !== "QUALIFIED") throw new Error(`legitimatePayableReward: no QUALIFIED reward after settlement (${JSON.stringify({ pending: pending?.status ?? pending?.code, settled: settled?.status ?? settled?.code, reward: settled?.reward })})`);
+  const promoted = await call("promote_referral_reward_payable", { p_reward_id: reward.id });
+  if (!promoted?.success) throw new Error(`legitimatePayableReward: promotion refused (${promoted?.code})`);
+  return { referrer, referred, attribution, request, reward: { ...reward, state: "PAYABLE" }, promoted };
+}
 
 export function moneyFixtures(fx, runId) {
   const checkouts = new Set();
@@ -75,16 +99,12 @@ export function moneyFixtures(fx, runId) {
    * Referral payout obligation. Financial history is non-deletable by schema, so this fixture's
    * reward / obligation / job (and the identities + legacy request they reference) REMAIN, tagged
    * with the run id; the job is finalized to REVIEW_REQUIRED so nothing ever processes it.
+   * The reward follows the legitimate flow (settled request -> QUALIFIED -> promotion), never a direct write.
    */
   async function referralObligation() {
-    const [ra, rb] = [letters(), letters()];
-    const [referrer] = await db("referral_identities", "POST", { referral_id: ra, subject_type: "CUSTOMER", device_id_hash: crypto.createHash("sha256").update(`${runId}-a`).digest("hex"), subject_key: ra });
-    const [referred] = await db("referral_identities", "POST", { referral_id: rb, subject_type: "CUSTOMER", device_id_hash: crypto.createHash("sha256").update(`${runId}-b`).digest("hex"), subject_key: rb });
-    const [attribution] = await db("referral_attributions", "POST", { referred_identity_id: referred.id, referrer_identity_id: referrer.id });
-    const [request] = await db("service_requests", "POST", { request_mode: "LEGACY_AUTO_MATCH", selection_mode: "AUTO_MATCH", legacy_unfunded: true, customer_id: rb, customer_display_name: "OUTBOX FIXTURE", service_slug: "boiler", country: "KR", sido: `${runId}-REF`, gungu: "G1", description: `${runId} OUTBOX REFERRAL FIXTURE (financial history, kept)`, status: "CANCELLED" });
-    const [reward] = await db("referral_rewards", "POST", { attribution_id: attribution.id, qualifying_request_id: request.id, referrer_identity_id: referrer.id, referred_identity_id: referred.id, tier: "WLH", reward_amount_krw: 1000, first_service_discount_krw: 1000, state: "PAYABLE" });
-    const created = await call("create_referral_payout_obligation", { p_reward_id: reward.id, p_rail: "USDC_SOLANA", p_country: "KR" });
-    return { referrer, referred, attribution, request, reward, created, obligationId: created?.payout_obligation_id ?? null };
+    const r = await legitimatePayableReward(runId, "OUTBOX", { description: "OUTBOX REFERRAL FIXTURE (financial history, kept)", displayName: "OUTBOX FIXTURE" });
+    const created = await call("create_referral_payout_obligation", { p_reward_id: r.reward.id, p_rail: "USDC_SOLANA", p_country: "KR" });
+    return { ...r, created, obligationId: created?.payout_obligation_id ?? null };
   }
   const jobFor = async (link) => (await db(`money_movement_jobs?${link.refundId ? "service_refund_id" : "payout_obligation_id"}=eq.${link.refundId ?? link.obligationId}&select=*`));
   const attemptsOf = (jobId) => db(`money_movement_attempts?job_id=eq.${jobId}&select=*&order=attempt_number`);

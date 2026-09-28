@@ -80,10 +80,15 @@ function cleanupRetry(headers = {}, body = { limit: 50 }) {
   return fetch(`${base}/api/sys/cleanup/conversations`, { method: "POST", headers: { "Content-Type": "application/json", "X-Life-Help-Trigger": "scheduled", ...headers }, body: JSON.stringify(body) });
 }
 
+// Referral rewards are immutable financial history (migration 019): a rewarded request is kept with its
+// settlement audit (row only) and the identities / attribution the reward references; the rest is removed.
+const retained = { requests: new Set(), identities: new Set() };
 async function cleanupFixtures() {
+  const ids = [...created.requestIds];
+  for (const r of ids.length ? await db(`referral_rewards?qualifying_request_id=in.(${ids.join(",")})&select=qualifying_request_id,referrer_identity_id,referred_identity_id`).catch(() => []) : []) {
+    retained.requests.add(r.qualifying_request_id); retained.identities.add(r.referrer_identity_id); retained.identities.add(r.referred_identity_id);
+  }
   for (const requestId of created.requestIds) {
-    await db(`referral_rewards?qualifying_request_id=eq.${requestId}`, "DELETE").catch(() => {});
-    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`app_notifications?payload->>request_id=eq.${requestId}`, "DELETE").catch(() => {});
     for (const { id } of await db(`conversations?request_id=eq.${requestId}&select=id`).catch(() => [])) created.conversationIds.add(id);
     for (const id of created.conversationIds) {
@@ -93,6 +98,8 @@ async function cleanupFixtures() {
     await db(`request_assignments?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`conversations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`admin_escalations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
+    if (retained.requests.has(requestId)) continue;
+    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`service_requests?id=eq.${requestId}`, "DELETE").catch(() => {});
   }
   for (const id of created.retryAuditIds) await db(`admin_audit_logs?id=eq.${id}`, "DELETE").catch(() => {});
@@ -104,6 +111,7 @@ async function cleanupFixtures() {
   for (const userId of created.authUserIds) await authAdmin(`users/${userId}`, "DELETE").catch(() => {});
   for (const identityId of created.identityIds) {
     await db(`app_notifications?recipient_id=in.(${[...created.subjectKeys].join(",")})`, "DELETE").catch(() => {});
+    if (retained.identities.has(identityId)) continue;
     await db(`referral_attributions?or=(referred_identity_id.eq.${identityId},referrer_identity_id.eq.${identityId})`, "DELETE").catch(() => {});
     await db(`referral_identities?id=eq.${identityId}`, "DELETE").catch(() => {});
   }
@@ -164,7 +172,8 @@ try {
   await db("admin_audit_logs", "POST", { action: "SERVICE_SETTLED", entity_type: "service_request", entity_id: requestId, actor_id: null, metadata: { actor_kind: "PLATFORM_TOKEN", settlement_method: "INTERNAL_PLATFORM_CONFIRMATION", external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false } });
   const now = new Date().toISOString();
   if (scenario === "queued") await db(`conversations?request_id=eq.${requestId}&status=in.(ACTIVE,CLOSED)`, "PATCH", { status: "DELETION_SCHEDULED", deletion_scheduled_at: now, closed_at: now });
-  await db("referral_rewards", "POST", { attribution_id: attribution.id, qualifying_request_id: requestId, referrer_identity_id: referrerIdentity.id, referred_identity_id: customerIdentity.id, tier: "WLH", reward_amount_krw: 1000, first_service_discount_krw: 1000, state: "QUALIFIED", settled_at: now });
+  // The reward is created exactly as settlement creates it since migration 019: the trusted function.
+  await fetch(`${supabaseUrl}/rest/v1/rpc/create_referral_reward_for_settled_request`, { method: "POST", headers: dbHeaders, body: JSON.stringify({ p_request_id: requestId }) });
 
   const status = async () => (await db(`service_requests?id=eq.${requestId}&select=status`))[0]?.status;
   const messageCount = async () => (await db(`messages?conversation_id=eq.${conversation.id}&select=id`)).length;
@@ -242,15 +251,15 @@ try {
 } finally {
   await cleanupFixtures();
   const leftovers = {
-    requests: (await db(`service_requests?description=like.${runId}*&select=id`)).length,
+    requests: (await db(`service_requests?description=like.${runId}*&select=id`)).filter((r) => !retained.requests.has(r.id)).length,
     helpers: (await db(`helpers?helper_id=eq.HLP-${runId}&select=id`)).length,
     conversations: created.conversationIds.size ? (await db(`conversations?id=in.(${[...created.conversationIds].join(",")})&select=id`)).length : 0,
     messages: (await db(`messages?original_text=like.${runId}*&select=id`)).length,
-    identities: (await db(`referral_identities?subject_key=in.(${[...created.subjectKeys].join(",")})&select=id`)).length,
+    identities: (await db(`referral_identities?subject_key=in.(${[...created.subjectKeys].join(",")})&select=id`)).filter((r) => !retained.identities.has(r.id)).length,
     notifications: (await db(`app_notifications?recipient_id=in.(${[...created.subjectKeys].join(",")},HLP-${runId})&select=id`)).length,
     retryAudits: created.retryAuditIds.size ? (await db(`admin_audit_logs?id=in.(${[...created.retryAuditIds].join(",")})&select=id`)).length : 0,
   };
-  expect("Fixture cleanup", Object.values(leftovers).every((n) => n === 0), leftovers);
+  expect("Fixture cleanup (reward history retained, never deleted)", Object.values(leftovers).every((n) => n === 0), { ...leftovers, retainedRequests: [...retained.requests], retainedIdentities: [...retained.identities] });
 }
 
 const counts = Object.fromEntries(["PASS", "FAIL"].map((s) => [s, results.filter(([v]) => v === s).length]));
