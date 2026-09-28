@@ -19,7 +19,7 @@ function createDb() {
   const tables = {
     service_requests: [], conversations: [], messages: [], referral_identities: [], referral_attributions: [],
     referral_rewards: [], admin_audit_logs: [], app_notifications: [], request_assignments: [],
-    request_price_selections: [], request_price_snapshots: [], payment_intents: [], payout_obligations: [],
+    request_price_selections: [], request_price_snapshots: [], payment_intents: [], payout_obligations: [], provider_payment_links: [],
   };
   const unique = { referral_rewards: ["qualifying_request_id"] };
   // Conversation ids whose messages delete returns an error (interrupted-cleanup simulation).
@@ -343,6 +343,54 @@ function seedSettled(db, n, { conversationStatus = "DELETION_SCHEDULED", status 
   unsettled.forEach((status, i) => seedSettled(db, i, { status, conversationStatus: "ACTIVE" }));
   const run = await lib.runConversationCleanup(db.client, {});
   check("Reconcile: every non-SETTLED status protected (incl. COMPLETED, PAYMENT_PENDING)", run.reconciled === 0 && run.cleaned === 0 && t.conversations.every((row) => row.status === "ACTIVE" && row.deletion_scheduled_at === null) && t.messages.length === unsettled.length * 2 && !t.admin_audit_logs.some((row) => row.action === "SETTLED_CLEANUP_RECONCILED"));
+}
+
+// ---------- settlement attribution (provider leak A): factual, ledger-derived, never borrowed ----------
+{
+  const { client, tables: t } = createDb();
+  const fundedCase = (id, { network, provider = null, verified, link = null, payout = { status: "PAID", chain_signature: `lh_${id}_1`, chain_network: network } }) => {
+    t.service_requests.push({ id, customer_id: `CUST-${id}`, status: "PAYMENT_PENDING", funding_payment_intent_id: `pi-${id}` });
+    t.payment_intents.push({ id: `pi-${id}`, network, provider, verified_signature: verified });
+    if (link) t.provider_payment_links.push({ payment_intent_id: `pi-${id}`, ...link });
+    if (payout) t.payout_obligations.push({ id: `ob-${id}`, request_id: id, kind: "HELPER_SERVICE", ...payout });
+  };
+  const settledAudits = (id) => t.admin_audit_logs.filter((a) => a.entity_id === id && a.action === "SERVICE_SETTLED");
+  fundedCase("req-PSP", { network: "provider:SOME_PSP:SANDBOX", provider: "SOME_PSP", verified: "provider:SOME_PSP:psp_pay_1", link: { provider: "SOME_PSP", environment: "SANDBOX", provider_payment_id: "psp_pay_1" } });
+  const a = await lib.settleServiceRequest(client, "req-PSP", "PLATFORM_TOKEN");
+  const aAudit = settledAudits("req-PSP")[0]?.metadata ?? {};
+  check("Attribution A. provider-funded settlement: PROVIDER_HOSTED, provider SOME_PSP / SANDBOX, provider payment reference from the binding, payout reference from the obligation, verified - never STAGING_DEVNET_USDC, nothing Solana",
+    a.ok && a.settlementMethod === "PROVIDER_HOSTED" && a.settlementRail === "PROVIDER" && a.externalPaymentVerified === true && aAudit.settlement_method === "PROVIDER_HOSTED" && aAudit.settlement_rail === "PROVIDER"
+    && aAudit.external_payment_provider === "SOME_PSP" && aAudit.external_payment_environment === "SANDBOX" && aAudit.external_payment_transaction_id === "psp_pay_1" && aAudit.external_payout_transaction_id === "lh_req-PSP_1"
+    && aAudit.external_payment_verified === true && !/SOLANA|DEVNET|USDC/i.test(JSON.stringify(aAudit)), aAudit);
+  fundedCase("req-DEV", { network: "solana-devnet", provider: "SOLANA_DIRECT_DEVNET", verified: "5DevnetPaymentSignature" });
+  const b = await lib.settleServiceRequest(client, "req-DEV", "PLATFORM_TOKEN");
+  const bAudit = settledAudits("req-DEV")[0]?.metadata ?? {};
+  check("Attribution B. Solana devnet settlement keeps its factual labels: STAGING_DEVNET_USDC, SOLANA_SOLANA-DEVNET, chain signatures, CHAIN_DIRECT", b.ok && b.settlementMethod === "STAGING_DEVNET_USDC" && b.settlementRail === "CHAIN_DIRECT" && bAudit.external_payment_provider === "SOLANA_SOLANA-DEVNET" && bAudit.external_payment_transaction_id === "5DevnetPaymentSignature" && bAudit.external_payout_transaction_id === "lh_req-DEV_1" && bAudit.external_payment_verified === true, bAudit);
+  fundedCase("req-PSP2", { network: "provider:SOME_PSP:SANDBOX", provider: "SOME_PSP", verified: "provider:SOME_PSP:psp_pay_2", link: { provider: "SOME_PSP", environment: "SANDBOX", provider_payment_id: "psp_pay_2" }, payout: { status: "SUBMITTED", chain_signature: null, chain_network: null } });
+  const early = await lib.settleServiceRequest(client, "req-PSP2", "PLATFORM_TOKEN");
+  t.payout_obligations.find((o) => o.id === "ob-req-PSP2").status = "PAID";
+  t.payout_obligations.find((o) => o.id === "ob-req-PSP2").chain_signature = "lh_req-PSP2_1";
+  const [c1, c2] = await Promise.all([lib.settleServiceRequest(client, "req-PSP2", "PLATFORM_TOKEN"), lib.settleServiceRequest(client, "req-PSP2", "SYS_SESSION")]);
+  const again = await lib.settleServiceRequest(client, "req-PSP2", "PLATFORM_TOKEN");
+  check("Attribution C / D. provider payment + customer completion: the SAME settlement authority (payout not PAID -> PAYOUT_NOT_CONFIRMED); once PAID, duplicate / concurrent settlement -> ONE SETTLED audit, one effect, later calls idempotent", !early.ok && early.code === "PAYOUT_NOT_CONFIRMED" && [c1, c2].filter((r) => r.ok && r.idempotent === false).length === 1 && [c1, c2, again].every((r) => r.ok) && settledAudits("req-PSP2").length === 1 && settledAudits("req-PSP2")[0].metadata.settlement_method === "PROVIDER_HOSTED", [early.code, c1.idempotent, c2.idempotent, again.idempotent]);
+  fundedCase("req-NOLINK", { network: "provider:SOME_PSP:SANDBOX", provider: "SOME_PSP", verified: "provider:SOME_PSP:psp_pay_3" });
+  fundedCase("req-ENV", { network: "provider:SOME_PSP:SANDBOX", provider: "SOME_PSP", verified: "provider:SOME_PSP:psp_pay_4", link: { provider: "SOME_PSP", environment: "LIVE", provider_payment_id: "psp_pay_4" } });
+  fundedCase("req-OTHER", { network: "provider:SOME_PSP:SANDBOX", provider: "SOME_PSP", verified: "provider:SOME_PSP:psp_pay_5", link: { provider: "OTHER_PSP", environment: "SANDBOX", provider_payment_id: "psp_pay_5" } });
+  fundedCase("req-REF", { network: "provider:SOME_PSP:SANDBOX", provider: "SOME_PSP", verified: "provider:SOME_PSP:psp_pay_X", link: { provider: "SOME_PSP", environment: "SANDBOX", provider_payment_id: "psp_pay_6" } });
+  const bad = {};
+  for (const id of ["req-NOLINK", "req-ENV", "req-OTHER", "req-REF"]) { const r = await lib.settleServiceRequest(client, id, "PLATFORM_TOKEN"); bad[id] = { ok: r.ok, verified: r.externalPaymentVerified, audit: settledAudits(id)[0]?.metadata }; }
+  check("Attribution E. missing / wrong binding (no link, link environment LIVE vs SANDBOX intent, other provider, reference differs from the verified evidence) fails closed: never verified, no provider payment reference, explicit attribution_issue, still no Solana label; the business settlement authority (PAID payout gate) is unchanged",
+    Object.values(bad).every((x) => x.ok && x.verified === false && x.audit?.external_payment_verified === false && x.audit.external_payment_transaction_id === null && x.audit.attribution_issue === "PROVIDER_BINDING_MISSING_OR_INCONSISTENT" && x.audit.external_payment_provider === "SOME_PSP" && !/SOLANA|DEVNET/i.test(JSON.stringify(x.audit))), bad);
+  fundedCase("req-ODD", { network: "some-new-chain", provider: "X", verified: "sig" });
+  const odd = await lib.settleServiceRequest(client, "req-ODD", "PLATFORM_TOKEN");
+  check("Attribution E2. an unknown funding rail is never attributed: UNKNOWN, unverified, INTERNAL method label, issue UNKNOWN_FUNDING_RAIL", odd.ok && odd.settlementRail === "UNKNOWN" && odd.externalPaymentVerified === false && settledAudits("req-ODD")[0]?.metadata.attribution_issue === "UNKNOWN_FUNDING_RAIL");
+  const routeSrc = fs.readFileSync(new URL("../app/api/sys/requests/[requestId]/status/route.ts", import.meta.url), "utf8");
+  const libSrc = fs.readFileSync(new URL("../lib/settlement/serviceSettlement.ts", import.meta.url), "utf8");
+  const attrFn = libSrc.slice(libSrc.indexOf("async function settlementAttribution"), libSrc.indexOf("export async function", libSrc.indexOf("async function settlementAttribution")));
+  check("Attribution F. provider attribution cannot come from a browser: the settlement route reads only { status } from the body; attribution reads only ledger rows (payment_intents, provider_payment_links, payout_obligations)", /as \{ status\?: unknown \}/.test(routeSrc) && !/body\.(provider|environment|reference|settlement)/.test(routeSrc)
+    && [...new Set([...attrFn.matchAll(/from\("([a-z_]+)"\)/g)].map((m) => m[1]))].sort().join() === "payment_intents,payout_obligations,provider_payment_links");
+  const providerBranch = libSrc.slice(libSrc.indexOf("const provider = network.match(PROVIDER_NETWORK);"), libSrc.indexOf('return { rail: "UNKNOWN"'));
+  check("Attribution guard. the provider-hosted branch can never carry Solana / devnet labels (no STAGING_DEVNET_USDC / SOLANA_ / USDC); the chain labels exist only for solana-* networks; no provider code is hardcoded", providerBranch.length > 200 && !/STAGING_DEVNET_USDC|SOLANA_|SOLANA_PROVIDER|USDC/.test(providerBranch) && libSrc.includes('const CHAIN_METHOD: Record<string, string> = { "solana-devnet": "STAGING_DEVNET_USDC", "solana-mainnet": "SOLANA_MAINNET_USDC" };') && !/MOCK_PROVIDER/.test(libSrc) && !/SOLANA_PROVIDER/.test(libSrc));
 }
 
 // ---------- static authority boundaries ----------

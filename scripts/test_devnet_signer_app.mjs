@@ -116,7 +116,7 @@ check("Devnet adapter prepares (signs) without broadcasting; broadcast = the per
 check("Paid only after finality + re-verification (destination, mint, amount, reference)", /confirmationStatus === "finalized"/.test(t) && t.includes("seen.amountBaseUnits === attempt.amount_base_units") && t.includes("seen.referenceMatched"));
 check("Helper payout amount from the ledger at the customer's own FX rate, capped at what was received", t.includes("toBaseUnits(Number(ctx.net_amount), Number(ctx.fx_rate))") && t.includes("computed < received ? computed : received"));
 const settlement = code("lib/settlement/serviceSettlement.ts");
-check("external_payment_verified true ONLY with a verified chain payment AND a confirmed chain payout", settlement.includes("if (!intent?.verified_signature || ob?.status !== \"PAID\" || !ob.chain_signature) return null;") && settlement.includes("external_payment_verified: true") && settlement.includes("external_payment_verified: false"));
+check("external_payment_verified true ONLY with a verified chain payment AND a confirmed chain payout", settlement.includes("const payoutConfirmed = ob?.status === \"PAID\" && !!ob.chain_signature;") && settlement.includes("const verified = !!intent?.verified_signature && payoutConfirmed;") && settlement.includes("external_payment_verified: true") && settlement.includes("external_payment_verified: false"));
 const prodConfig = read("wrangler.jsonc");
 check("Production Worker config carries no payment mode / signer / devnet recipient", !/LIFE_HELP_PAYMENT_MODE|SIGNER_SECRET|SOLANA_DEVNET/.test(prodConfig));
 const allCode = ["lib/payments/solanaTx.ts", "lib/payments/transfers.ts", "lib/payments/paymentRail.ts", "wrangler.staging.jsonc"].map(read).join("\n");
