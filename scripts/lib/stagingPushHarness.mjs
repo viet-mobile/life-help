@@ -97,19 +97,19 @@ export function fixtures(runId) {
   }
   const capabilityFor = async (cookie, key) => readResponse(await fetch(`${base}/api/requests/capability`, { method: "POST", headers: { "Idempotency-Key": key, ...(cookie ? { Cookie: cookie } : {}) } }));
 
+  // admin_audit_logs is append-only (migration 021): fixture audit rows stay as immutable history.
   async function cleanup() {
     const del = (p) => db(p, "DELETE").catch(() => null);
     for (const requestId of created.requestIds) {
       for (const { id } of await db(`conversations?request_id=eq.${requestId}&select=id`).catch(() => [])) { await del(`app_notifications?payload->>conversation_id=eq.${id}`); await del(`messages?conversation_id=eq.${id}`); }
       await del(`app_notifications?payload->>request_id=eq.${requestId}`);
-      await del(`admin_audit_logs?entity_id=eq.${requestId}`);
       await del(`request_assignments?request_id=eq.${requestId}`);
       await del(`conversations?request_id=eq.${requestId}`);
       await del(`admin_escalations?request_id=eq.${requestId}`);
       await del(`service_requests?id=eq.${requestId}`);
     }
-    for (const id of created.identityIds) { await del(`push_subscriptions?customer_identity_id=eq.${id}`); await del(`admin_audit_logs?entity_id=eq.${id}`); await del(`referral_attributions?or=(referred_identity_id.eq.${id},referrer_identity_id.eq.${id})`); await del(`referral_identities?id=eq.${id}`); }
-    for (const id of created.helperIds) { await del(`push_subscriptions?helper_id=eq.${id}`); await del(`admin_audit_logs?entity_id=eq.${id}`); await del(`helper_services?helper_id=eq.${id}`); await del(`helper_regions?helper_id=eq.${id}`); await del(`helpers?id=eq.${id}`); }
+    for (const id of created.identityIds) { await del(`push_subscriptions?customer_identity_id=eq.${id}`); await del(`referral_attributions?or=(referred_identity_id.eq.${id},referrer_identity_id.eq.${id})`); await del(`referral_identities?id=eq.${id}`); }
+    for (const id of created.helperIds) { await del(`push_subscriptions?helper_id=eq.${id}`); await del(`helper_services?helper_id=eq.${id}`); await del(`helper_regions?helper_id=eq.${id}`); await del(`helpers?id=eq.${id}`); }
     for (const id of created.authUserIds) await authAdmin(`users/${id}`, "DELETE").catch(() => null);
     const recipients = [...created.publicIds, ...created.helperPublicIds];
     if (recipients.length) await del(`app_notifications?recipient_id=in.(${recipients.join(",")})`);

@@ -2,6 +2,7 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { PlatformActor } from "@/lib/settlement/platformAuth";
 import { agreedPriceAudit, loadCurrentAgreedPrice, type AgreedPrice } from "@/lib/pricing/requestPrice";
+import { appendAuditLog, type AuditAction } from "@/lib/admin/auditLog";
 
 /**
  * Internal service settlement lifecycle:
@@ -35,8 +36,9 @@ async function loadRequest(client: SupabaseClient, requestId: string): Promise<R
   return error || !data ? null : (data as RequestRow);
 }
 
-async function audit(client: SupabaseClient, action: string, requestId: string, metadata: Record<string, unknown>) {
-  await client.from("admin_audit_logs").insert({ action, entity_type: "service_request", entity_id: requestId, actor_id: null, metadata });
+/** Append-only request audit (migration 021): the trusted append path, never a direct table write. */
+async function audit(client: SupabaseClient, action: AuditAction, requestId: string, metadata: Record<string, unknown>) {
+  await appendAuditLog(client, action, "service_request", requestId, metadata);
 }
 
 async function notifyCustomer(client: SupabaseClient, customerId: string, requestId: string, status: string) {

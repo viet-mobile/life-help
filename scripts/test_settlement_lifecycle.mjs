@@ -90,7 +90,17 @@ function createDb() {
     tables.app_notifications.push({ id: `app_notifications-${++seq}`, recipient_type: "CUSTOMER", recipient_id: referrer.subject_key || "", type: "REFERRAL_REWARD_CONFIRMED", payload: { request_id: requestId, tier, reward_amount_krw: amount } });
     return { success: true, code: "QUALIFIED", reward_id: id, tier, reward_amount_krw: amount };
   }
-  const rpc = async (name, args) => name === "create_referral_reward_for_settled_request" ? { data: createRewardForSettledRequest(args), error: null } : { data: null, error: { message: `rpc ${name} not stubbed` } };
+  // Stand-in for the append-only audit path (migration 021): one lifecycle audit per request, replay otherwise.
+  const appendAudit = ({ p_action, p_entity_type, p_entity_id, p_metadata }) => {
+    const lifecycle = ["SERVICE_PAYMENT_PENDING", "SERVICE_SETTLED", "SERVICE_CLOSED"].includes(p_action);
+    const existing = lifecycle && tables.admin_audit_logs.find((a) => a.action === p_action && a.entity_id === p_entity_id);
+    if (existing) return { success: true, replayed: true, id: existing.id };
+    const id = `admin_audit_logs-${++seq}`;
+    tables.admin_audit_logs.push({ id, action: p_action, entity_type: p_entity_type, entity_id: p_entity_id, actor_id: null, metadata: p_metadata });
+    return { success: true, replayed: false, id };
+  };
+  const rpc = async (name, args) => name === "create_referral_reward_for_settled_request" ? { data: createRewardForSettledRequest(args), error: null }
+    : name === "append_admin_audit_log" ? { data: appendAudit(args), error: null } : { data: null, error: { message: `rpc ${name} not stubbed` } };
   return { tables, failMessageDelete, client: { from: (table) => new Query(table), rpc } };
 }
 

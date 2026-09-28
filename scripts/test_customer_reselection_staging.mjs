@@ -371,7 +371,8 @@ try {
   leftovers.refunds = (await db(`service_refunds?request_id=in.(${requestIds})&select=id`)).length;
   leftovers.rewards = (await db(`referral_rewards?or=(referred_identity_id.in.(${identityIds}),referrer_identity_id.in.(${identityIds}))&select=id`)).length;
   leftovers.attributions = (await db(`referral_attributions?or=(referred_identity_id.in.(${identityIds}),referrer_identity_id.in.(${identityIds}))&select=id`)).length;
-  leftovers.audit = (await db(`admin_audit_logs?entity_id=in.(${[...fx.created.requestIds, ...fx.created.helperIds, ...fx.created.identityIds, zero].join(",")})&select=id`)).length;
+  // Audit rows are append-only history (migration 021): reported, never deleted.
+  record("INFO", `audit history retained: ${(await db(`admin_audit_logs?entity_id=in.(${[...fx.created.requestIds, ...fx.created.helperIds, ...fx.created.identityIds, zero].join(",")})&select=id`)).length} rows`);
   leftovers.authUsers = 0;
   for (const id of fx.created.authUserIds) if ((await fetch(`${supabaseUrl}/auth/v1/admin/users/${id}`, { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } })).status === 200) leftovers.authUsers += 1;
   expect("Fixture cleanup (all run checkouts purged - none OPEN; auth users, helpers, prices, reservations, requests, assignments, selections, conversations, messages, obligations / refunds / jobs, push, notifications, identities, audit; no reward history created)", Object.values(leftovers).every((n) => n === 0), leftovers);

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { authorizePlatformOperator, createStagingSettlementClient } from "@/lib/settlement/platformAuth";
 import { deliverPush, type PushTarget } from "@/lib/push/pushDelivery";
+import { appendAuditLog } from "@/lib/admin/auditLog";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -25,6 +26,6 @@ export async function POST(request: Request) {
   if (body?.target?.type === "CUSTOMER" && typeof body.target.customerIdentityId === "string" && UUID.test(body.target.customerIdentityId)) target = { ownerType: "CUSTOMER", customerIdentityId: body.target.customerIdentityId };
   if (!target) return respond({ success: false, code: "INVALID_TARGET" }, 400);
   const report = await deliverPush(client, target, "STAGING_TEST", typeof body?.locale === "string" ? body.locale : "en");
-  await client.from("admin_audit_logs").insert({ action: "WEB_PUSH_TEST_SENT", entity_type: "push_subscription_owner", entity_id: target.ownerType === "HELPER" ? target.helperId : target.customerIdentityId, actor_id: null, metadata: { actor_kind: actor, owner_type: target.ownerType, ...report } });
+  await appendAuditLog(client, "WEB_PUSH_TEST_SENT", "push_subscription_owner", target.ownerType === "HELPER" ? target.helperId : target.customerIdentityId, { actor_kind: actor, owner_type: target.ownerType, ...report });
   return respond({ success: true, ...report });
 }

@@ -3,6 +3,7 @@ import { authorizePlatformOperator, createStagingSettlementClient } from "@/lib/
 import { runConversationCleanup } from "@/lib/settlement/serviceSettlement";
 import { runMediaDeletion } from "@/lib/media/mediaStorage";
 import { runMoneyOutbox } from "@/lib/payments/transfers";
+import { appendAuditLog } from "@/lib/admin/auditLog";
 
 /**
  * Runs due settled-conversation cleanup (retry path for the inline cleanup performed at
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
   const reason = (report?.reconciled ?? 0) > 0 ? "SETTLED_CLEANUP_RECONCILED" : "QUEUED_CLEANUP_RETRY";
   // Record runs that changed or failed something; empty runs leave no audit noise.
   if (report && report.cleaned + report.closedRequests + report.failed + report.reconciled > 0) {
-    await isolated("audit", async () => { await client.from("admin_audit_logs").insert({ action: "CONVERSATION_CLEANUP_RETRY", entity_type: "system", entity_id: null, actor_id: null, metadata: { actor_kind: actor, trigger, reason, ...report } }); });
+    await isolated("audit", async () => { await appendAuditLog(client, "CONVERSATION_CLEANUP_RETRY", "system", null, { actor_kind: actor, trigger, reason, ...report }); });
   }
   const ok = subsystemErrors.length === 0;
   return NextResponse.json({ success: ok, trigger, reason, ...(report ?? {}), checkouts: checkouts ?? null, media, transfers, subsystemErrors },

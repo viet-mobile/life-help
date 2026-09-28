@@ -127,7 +127,6 @@ async function cleanup() {
     await db(`conversations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`admin_escalations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     if (keepRequests.has(requestId)) continue;
-    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`service_requests?id=eq.${requestId}`, "DELETE").catch(() => {});
   }
   for (const helperId of helperIds) {

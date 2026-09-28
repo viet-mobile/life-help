@@ -194,7 +194,8 @@ try {
   autopush.close();
   await sleep(500);
   const leftovers = await fx.cleanup();
-  leftovers.testAudits = (await db(`admin_audit_logs?action=eq.WEB_PUSH_TEST_SENT&created_at=gte.${new Date(Number(runId.slice(2))).toISOString()}&select=id`)).length;
+  // WEB_PUSH_TEST_SENT audit rows are append-only operator history (migration 021): reported, never deleted.
+  record("INFO", `audit history retained: ${(await db(`admin_audit_logs?action=eq.WEB_PUSH_TEST_SENT&created_at=gte.${new Date(Number(runId.slice(2))).toISOString()}&select=id`)).length} WEB_PUSH_TEST_SENT rows`);
   expect("Fixture cleanup", Object.values(leftovers).every((n) => n === 0), leftovers);
 }
 if (summary().FAIL > 0) process.exit(1);

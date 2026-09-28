@@ -32,6 +32,7 @@ const created = { requestIds: new Set(), helperIds: new Set(), authUserIds: new 
 function pass(name, detail = "") { results.push(["PASS", name]); console.log(`PASS ${name}${detail ? ` ${detail}` : ""}`); }
 function fail(name, error) { results.push(["FAIL", name]); console.log(`FAIL ${name} ${error}`); }
 const expect = (name, condition, detail) => (condition ? pass(name) : fail(name, typeof detail === "string" ? detail : JSON.stringify(detail)));
+const record = (status, name) => console.log(`${status} ${name}`);
 
 async function readResponse(response) {
   const text = await response.text();
@@ -99,10 +100,9 @@ async function cleanupFixtures() {
     await db(`conversations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`admin_escalations?request_id=eq.${requestId}`, "DELETE").catch(() => {});
     if (retained.requests.has(requestId)) continue;
-    await db(`admin_audit_logs?entity_id=eq.${requestId}`, "DELETE").catch(() => {});
     await db(`service_requests?id=eq.${requestId}`, "DELETE").catch(() => {});
   }
-  for (const id of created.retryAuditIds) await db(`admin_audit_logs?id=eq.${id}`, "DELETE").catch(() => {});
+  // Audit rows (settlement + cleanup-retry runs) are append-only history since migration 021: never deleted.
   for (const helperId of created.helperIds) {
     await db(`helper_services?helper_id=eq.${helperId}`, "DELETE").catch(() => {});
     await db(`helper_regions?helper_id=eq.${helperId}`, "DELETE").catch(() => {});
@@ -169,7 +169,8 @@ try {
   // Same writes settleServiceRequest performs (status, settlement audit, reward). "queued" also
   // schedules cleanup (crash before the inline cleanup); "unscheduled" crashes before scheduling.
   const settled = await db(`service_requests?id=eq.${requestId}&status=eq.PAYMENT_PENDING`, "PATCH", { status: "SETTLED", updated_at: new Date().toISOString() });
-  await db("admin_audit_logs", "POST", { action: "SERVICE_SETTLED", entity_type: "service_request", entity_id: requestId, actor_id: null, metadata: { actor_kind: "PLATFORM_TOKEN", settlement_method: "INTERNAL_PLATFORM_CONFIRMATION", external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false } });
+  // The settlement audit goes through the same append-only authority settlement uses (migration 021).
+  await fetch(`${supabaseUrl}/rest/v1/rpc/append_admin_audit_log`, { method: "POST", headers: dbHeaders, body: JSON.stringify({ p_action: "SERVICE_SETTLED", p_entity_type: "service_request", p_entity_id: requestId, p_metadata: { actor_kind: "PLATFORM_TOKEN", settlement_method: "INTERNAL_PLATFORM_CONFIRMATION", settlement_rail: "INTERNAL", external_payment_provider: null, external_payment_transaction_id: null, external_payment_verified: false } }) });
   const now = new Date().toISOString();
   if (scenario === "queued") await db(`conversations?request_id=eq.${requestId}&status=in.(ACTIVE,CLOSED)`, "PATCH", { status: "DELETION_SCHEDULED", deletion_scheduled_at: now, closed_at: now });
   // The reward is created exactly as settlement creates it since migration 019: the trusted function.
@@ -257,8 +258,8 @@ try {
     messages: (await db(`messages?original_text=like.${runId}*&select=id`)).length,
     identities: (await db(`referral_identities?subject_key=in.(${[...created.subjectKeys].join(",")})&select=id`)).filter((r) => !retained.identities.has(r.id)).length,
     notifications: (await db(`app_notifications?recipient_id=in.(${[...created.subjectKeys].join(",")},HLP-${runId})&select=id`)).length,
-    retryAudits: created.retryAuditIds.size ? (await db(`admin_audit_logs?id=in.(${[...created.retryAuditIds].join(",")})&select=id`)).length : 0,
   };
+  record("INFO", `audit history retained (append-only): ${(await db(`admin_audit_logs?entity_id=in.(${[...created.requestIds, "00000000-0000-0000-0000-000000000000"].join(",")})&select=id`)).length} request audit rows + ${created.retryAuditIds.size} cleanup-retry run rows`);
   expect("Fixture cleanup (reward history retained, never deleted)", Object.values(leftovers).every((n) => n === 0), { ...leftovers, retainedRequests: [...retained.requests], retainedIdentities: [...retained.identities] });
 }
 
