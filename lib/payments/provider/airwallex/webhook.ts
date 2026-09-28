@@ -76,6 +76,5 @@ export function mapAirwallexEvent(rawBody: string, environment: ProviderEnvironm
     provider: providerCode, environment, providerAccount: typeof e.account_id === "string" ? e.account_id : null,
     providerEventId: e.id, providerEventType: e.name, eventType: type, objectRef, lifeHelpReference: reference, amount,
     occurredAt: typeof e.created_at === "string" ? e.created_at : null, sequence: null,
-    providerObjectId: !isPayment && typeof o.id === "string" ? o.id : null,
   }];
 }

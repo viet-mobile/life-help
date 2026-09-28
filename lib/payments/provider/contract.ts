@@ -51,8 +51,6 @@ export type NormalizedProviderEvent = {
   amount: Money | null;
   occurredAt: string | null;
   sequence: number | null;
-  /** The provider's own object id (refund / transfer), bound once to the LIFE.HELP idempotency key. */
-  providerObjectId?: string | null;
 };
 
 /**
@@ -61,7 +59,8 @@ export type NormalizedProviderEvent = {
  * "in flight, not yet secured". The ledger meaning (PAID_HELD) never changes with the provider.
  */
 export type ProviderPaymentStatus = "PENDING" | "AUTHORIZED" | "HELD" | "FAILED" | "CANCELLED" | "NOT_FOUND";
-export type ProviderTransferStatus = "SUBMITTED" | "PENDING" | "REPORTED_PAID" | "CONFIRMED" | "FAILED" | "NOT_FOUND";
+/** AMBIGUOUS: the provider returned more than one object for one LIFE.HELP idempotency key (never guessed). */
+export type ProviderTransferStatus = "SUBMITTED" | "PENDING" | "REPORTED_PAID" | "CONFIRMED" | "FAILED" | "NOT_FOUND" | "AMBIGUOUS";
 
 export type PaymentSessionInput = { intentId: string; reference: string; amount: Money; customerRef: string };
 export type PaymentSession = { providerPaymentId: string; redirectUrl: string | null };
@@ -69,9 +68,16 @@ export type PaymentStatusResult = { status: ProviderPaymentStatus; amount: Money
 /** Refund / payout requests carry the LIFE.HELP idempotency key; repeating a create call must be safe. */
 export type RefundInput = { idempotencyKey: string; reference: string; amount: Money; providerPaymentId: string };
 export type PayoutInput = { idempotencyKey: string; reference: string; amount: Money; payeeToken: string };
-export type TransferStatusResult = { status: ProviderTransferStatus; amount: Money | null; failureCode: string | null; fundingStatus?: string | null };
-/** Create result: providerObjectId (when the provider returns one) is bound to the idempotency key. */
-export type TransferCreateResult = { accepted: boolean; providerObjectId?: string | null; code?: string | null };
+/**
+ * target: when the adapter reports it, the counterparty the provider object actually points at (payout:
+ * the payee token / beneficiary; refund: the original provider payment). Compared with the ledger; a
+ * reported-but-different (or reported-as-missing: null) target fails closed.
+ */
+export type TransferStatusResult = { status: ProviderTransferStatus; amount: Money | null; failureCode: string | null; fundingStatus?: string | null; target?: string | null };
+/** Create result: accepted = the provider took the request (or already had it under the same idempotency key). */
+export type TransferCreateResult = { accepted: boolean; code?: string | null };
+/** Ledger context for a refund lookup: the provider payment the refund obligation is bound to. */
+export type RefundQueryContext = { providerPaymentId: string | null };
 
 /** Raw webhook as received: the exact body bytes (as text) are needed for signature verification. */
 export type RawWebhook = { rawBody: string; headers: Record<string, string> };
@@ -89,11 +95,14 @@ export interface PaymentProviderAdapter {
    */
   verifyWebhook(webhook: RawWebhook, webhookSecret: string): Promise<NormalizedProviderEvent[] | null>;
   createRefund(input: RefundInput): Promise<TransferCreateResult>;
-  /** providerObjectId: the bound provider object id when known (a provider may only be queryable by it). */
-  queryRefund(idempotencyKey: string, providerObjectId?: string | null): Promise<TransferStatusResult>;
+  /**
+   * Lookups are keyed by the LIFE.HELP idempotency key (recovery after an uncertain create). A refund lookup
+   * also receives the ledger-bound provider payment (some providers only list refunds per payment).
+   */
+  queryRefund(idempotencyKey: string, context: RefundQueryContext): Promise<TransferStatusResult>;
   createHelperPayout(input: PayoutInput): Promise<TransferCreateResult>;
   createReferralPayout(input: PayoutInput): Promise<TransferCreateResult>;
-  queryPayout(idempotencyKey: string, providerObjectId?: string | null): Promise<TransferStatusResult>;
+  queryPayout(idempotencyKey: string): Promise<TransferStatusResult>;
 }
 
 /** Network label the ledger uses for a provider rail (quotes, intents, attempts). */

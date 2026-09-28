@@ -63,19 +63,18 @@ export function providerMoneyAdapter(client: SupabaseClient, provider: PaymentPr
         : req.kind === "HELPER_PAYOUT" ? await provider.createHelperPayout({ idempotencyKey: attempt.external_id, reference: req.reference, amount, payeeToken: String(req.payeeToken) })
           : await provider.createReferralPayout({ idempotencyKey: attempt.external_id, reference: req.reference, amount, payeeToken: String(req.payeeToken) });
       if (!created.accepted) throw new MoneyMovementError(created.code ?? "PROVIDER_REJECTED_CREATE", "REVIEW");
-      // The provider's own object id is bound once to our idempotency key (immutable evidence, migration 022).
-      if (created.providerObjectId) {
-        const { data: bound } = await client.rpc("bind_provider_object", { p_provider: provider.code, p_environment: provider.environment, p_external_id: attempt.external_id, p_provider_object_id: created.providerObjectId });
-        if (bound && bound.success === false) throw new MoneyMovementError(String(bound.code ?? "PROVIDER_OBJECT_CONFLICT"), "REVIEW");
-      }
     },
 
     async observe(attempt: AttemptView): Promise<Observation> {
-      const isRefund = attempt.adapter_payload?.kind === "REFUND";
-      const { data: ref } = await client.from("provider_object_refs").select("provider_object_id").eq("external_id", attempt.external_id).eq("provider", provider.code).eq("environment", provider.environment).maybeSingle();
-      const objectId = (ref?.provider_object_id as string | undefined) ?? null;
-      const status = isRefund ? await provider.queryRefund(attempt.external_id, objectId) : await provider.queryPayout(attempt.external_id, objectId);
+      // Recovery is keyed ONLY by the persisted LIFE.HELP idempotency key + the persisted request (ledger);
+      // no provider object id is trusted from anywhere else. NOT_FOUND -> the same request is re-submitted
+      // under the same key (the engine never mints a new key for it).
+      const req = request(attempt);
+      const isRefund = req.kind === "REFUND";
+      const status = isRefund ? await provider.queryRefund(attempt.external_id, { providerPaymentId: req.providerPaymentId }) : await provider.queryPayout(attempt.external_id);
       if (status.status === "NOT_FOUND") return { kind: "NOT_FOUND", expired: false };
+      if (status.status === "AMBIGUOUS") return { kind: "MISMATCH", code: "PROVIDER_OBJECT_AMBIGUOUS" };
+      if (status.target !== undefined && status.target !== (isRefund ? req.providerPaymentId : req.payeeToken)) return { kind: "MISMATCH", code: "PROVIDER_TARGET_MISMATCH" };
       if (status.amount && (status.amount.amountMinor.toString() !== attempt.amount_base_units || status.amount.currency !== attempt.asset)) {
         return { kind: "MISMATCH", code: "PROVIDER_AMOUNT_MISMATCH" };
       }

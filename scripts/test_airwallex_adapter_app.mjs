@@ -56,7 +56,7 @@ for (const cap of ["CUSTOMER_PAYMENT", "HELPER_PAYOUT", "REFUND"]) await db.quer
 const finality = (await one("select payout_finality from public.payment_providers where code = 'AIRWALLEX' and environment = 'SANDBOX'")).payout_finality;
 
 // ---------------- fake Airwallex (documented endpoints only) ----------------
-const awx = { logins: 0, calls: [], intents: new Map(), refunds: new Map(), transfers: new Map(), byRequest: new Map(), tokens: new Set(), clock: Date.parse("2026-09-29T00:00:00Z") };
+const awx = { fault: null, filterBroken: false, logins: 0, calls: [], intents: new Map(), refunds: new Map(), transfers: new Map(), byRequest: new Map(), tokens: new Set(), clock: Date.parse("2026-09-29T00:00:00Z") };
 const reply = (status, body) => ({ status, json: async () => body });
 async function fakeFetch(url, init) {
   const u = new URL(url);
@@ -71,12 +71,26 @@ async function fakeFetch(url, init) {
   if (!awx.tokens.has(String(init.headers.Authorization).replace("Bearer ", ""))) return reply(401, { code: "unauthorized" });
   const body = init.body ? JSON.parse(init.body) : {};
   const create = (store, prefix, obj) => {
+    // Fault injection for uncertain creates: "before" = the request never reached Airwallex; "after" = it was
+    // processed but the response was lost. Both surface to the client as a transport error.
+    if (awx.fault === "before") { awx.fault = null; throw new Error("ECONNRESET"); }
     const prior = awx.byRequest.get(body.request_id);
-    if (prior) return reply(201, prior);
+    if (prior) return reply(201, prior); // documented: same request_id -> the original object, no duplicate
     const created = { id: `${prefix}_${crypto.randomBytes(6).toString("hex")}`, ...obj };
     store.set(created.id, created); awx.byRequest.set(body.request_id, created);
+    if (awx.fault === "after") { awx.fault = null; throw new Error("ETIMEDOUT"); }
     return reply(201, created);
   };
+  if (init.method === "GET" && u.pathname === "/api/v1/transfers") {
+    const rid = u.searchParams.get("request_id");
+    return reply(200, { items: [...awx.transfers.values()].filter((t) => awx.filterBroken || t.request_id === rid), page_after: null });
+  }
+  if (init.method === "GET" && u.pathname === "/api/v1/pa/refunds") {
+    const pid = u.searchParams.get("payment_intent_id");
+    const all = [...awx.refunds.values()].filter((r) => r.payment_intent_id === pid);
+    const size = Number(u.searchParams.get("page_size")), num = Number(u.searchParams.get("page_num"));
+    return reply(200, { items: all.slice(num * size, (num + 1) * size), has_more: (num + 1) * size < all.length });
+  }
   if (u.pathname === "/api/v1/pa/payment_intents/create") return create(awx.intents, "int", { request_id: body.request_id, amount: Number(body.amount), currency: body.currency, merchant_order_id: body.merchant_order_id, metadata: body.metadata, status: "REQUIRES_PAYMENT_METHOD" });
   if (u.pathname === "/api/v1/pa/refunds/create") return create(awx.refunds, "rfd", { request_id: body.request_id, payment_intent_id: body.payment_intent_id, amount: Number(body.amount), currency: awx.intents.get(body.payment_intent_id)?.currency, metadata: body.metadata, status: "RECEIVED" });
   if (u.pathname === "/api/v1/transfers/create") return create(awx.transfers, "trf", { request_id: body.request_id, beneficiary_id: body.beneficiary_id, transfer_amount: Number(body.transfer_amount), transfer_currency: body.transfer_currency, metadata: body.metadata, status: "SCHEDULED", funding: { status: "SCHEDULED" } });
@@ -168,8 +182,7 @@ const job = await f.jobFor({ obligationId: ob.id });
 const run1 = await engine.runMoneyJob(client, bridge, job.id);
 const att = await one("select * from public.money_movement_attempts where job_id = $1", [job.id]);
 const trf = [...awx.transfers.values()].find((x) => x.request_id === att.external_id);
-const bound = await one("select provider_object_id from public.provider_object_refs where external_id = $1", [att.external_id]);
-check("T1. customer completion -> one obligation -> transfer created with request_id = the job's idempotency key, beneficiary / amount / currency from the ledger (benef_test_A, 60000 KRW); Airwallex transfer id bound once; SCHEDULED -> job CONFIRMING", run1.status === "CONFIRMING" && trf?.beneficiary_id === "benef_test_A" && trf.transfer_amount === 60000 && trf.transfer_currency === "KRW" && bound?.provider_object_id === trf.id, { run1, trf });
+check("T1. customer completion -> one obligation -> transfer created with request_id = the job's idempotency key, beneficiary / amount / currency from the ledger (benef_test_A, 60000 KRW); status looked up by GET /api/v1/transfers?request_id=<key> (no provider object id stored); SCHEDULED -> job CONFIRMING", run1.status === "CONFIRMING" && trf?.beneficiary_id === "benef_test_A" && trf.transfer_amount === 60000 && trf.transfer_currency === "KRW" && awx.calls.includes("GET /api/v1/transfers") && !awx.calls.some((c) => c.startsWith("GET /api/v1/transfers/")), { run1, trf });
 const noted = [];
 for (const s of ["processing", "sent"]) { trf.status = s.toUpperCase(); noted.push((await post(webhook(`payout.transfer.${s}`, { ...trf }))).results[0]); }
 check("T2. scheduled / processing / sent -> NOTED (progress evidence only)", noted.every((r) => r.result === "NOTED"), noted);
@@ -220,6 +233,70 @@ check("T9. FAILED before any PAID (failure event without an amount): applied as 
 const wrongObligation = await post(webhook("payout.transfer.paid", { ...gTrf, request_id: "lh_not_our_key_000001", status: "PAID" }));
 check("T10. a transfer event for an unknown LIFE.HELP obligation / key -> UNMATCHED (never creates payout authority)", wrongObligation.results[0]?.result === "UNMATCHED");
 
+// ================= payout recovery by request_id (uncertain create) =================
+async function awxPayoutJob(label, benef) {
+  const p = await airwallexPayment(label);
+  await post(webhook("payment_intent.succeeded", succeeded(p)));
+  const req = (await intentRow(p.opened.intentId)).request_id;
+  await db.query("insert into public.payout_destinations (owner_helper_id, country, currency, payout_method, provider, provider_environment, provider_payee_token, masked_destination, status) values ($1, 'KR', 'KRW', 'PROVIDER_PAYEE', 'AIRWALLEX', 'SANDBOX', $2, 'awx ****', 'ACTIVE')", [p.h.id, benef]);
+  const [x] = await f.activeAssignments(req);
+  await f.rpc("accept_assignment", x.id, p.h.id);
+  await db.query("update public.service_requests set status = 'IN_PROGRESS' where id = $1", [req]);
+  await f.rpc("complete_assignment_service", x.id, p.h.id);
+  await f.rpc("confirm_service_completion", req, p.customer);
+  const obl = await one("select * from public.payout_obligations where request_id = $1", [req]);
+  return { req, ob: obl, job: await f.jobFor({ obligationId: obl.id }) };
+}
+const transfersFor = (key) => [...awx.transfers.values()].filter((t) => t.request_id === key);
+const creates = () => awx.calls.filter((c) => c === "POST /api/v1/transfers/create").length;
+const jobRow = (id) => one("select status, last_error_code, attempt_count from public.money_movement_jobs where id = $1", [id]);
+const attemptsOf = (id) => db.query("select state, external_id from public.money_movement_attempts where job_id = $1", [id]).then((r) => r.rows);
+const rerun = async (id) => { await f.makeDue(id); await f.expireLease(id); return engine.runMoneyJob(client, bridge, id); };
+
+const u1 = await awxPayoutJob("U1", "benef_U1");
+awx.fault = "after";
+const c0 = creates();
+const u1a = await engine.runMoneyJob(client, bridge, u1.job.id);
+const u1Key = (await attemptsOf(u1.job.id))[0].external_id;
+const u1b = await rerun(u1.job.id);
+check("U1. uncertain create (processed, response lost) -> the job is NOT failed and no new key is minted; recovery GET /api/v1/transfers?request_id=<key> finds exactly one transfer -> validated -> job CONFIRMING; one create call, one transfer, one attempt",
+  u1a.status !== "CONFIRMING" && transfersFor(u1Key).length === 1 && u1b.status === "CONFIRMING" && creates() === c0 + 1 && (await attemptsOf(u1.job.id)).length === 1 && (await attemptsOf(u1.job.id))[0].state === "SUBMITTED", { u1a, u1b });
+const u2 = await awxPayoutJob("U2", "benef_U2");
+awx.fault = "before";
+const u2a = await engine.runMoneyJob(client, bridge, u2.job.id);
+const u2Key = (await attemptsOf(u2.job.id))[0].external_id;
+const u2none = transfersFor(u2Key).length;
+const u2b = await rerun(u2.job.id);
+check("U2. uncertain create that never reached Airwallex -> lookup by request_id returns none -> the SAME persisted request is re-submitted under the SAME request_id (engine re-send branch, AWAITING_NETWORK); exactly one transfer, one attempt, now SUBMITTED",
+  u2a.status !== "CONFIRMING" && u2none === 0 && u2b.status === "WAITING" && u2b.code === "AWAITING_NETWORK" && transfersFor(u2Key).length === 1 && (await attemptsOf(u2.job.id)).length === 1 && (await attemptsOf(u2.job.id))[0].state === "SUBMITTED", { u2a, u2b });
+const u1t = transfersFor(u1Key)[0];
+awx.transfers.set("trf_dup_U1", { ...u1t, id: "trf_dup_U1" });
+const u3 = await rerun(u1.job.id);
+check("U3. lookup returns more than one transfer for one request_id -> REVIEW_REQUIRED (PROVIDER_OBJECT_AMBIGUOUS); nothing guessed, obligation not PAID", (await jobRow(u1.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(u1.job.id)).last_error_code === "PROVIDER_OBJECT_AMBIGUOUS" && (await one("select status from public.payout_obligations where id = $1", [u1.ob.id])).status !== "PAID", u3);
+transfersFor(u2Key)[0].transfer_amount = 59999;
+await rerun(u2.job.id);
+check("U4. returned transfer amount mismatch -> REVIEW (PROVIDER_AMOUNT_MISMATCH)", (await jobRow(u2.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(u2.job.id)).last_error_code === "PROVIDER_AMOUNT_MISMATCH");
+const u5 = await awxPayoutJob("U5", "benef_U5");
+await engine.runMoneyJob(client, bridge, u5.job.id);
+const u5t = transfersFor((await attemptsOf(u5.job.id))[0].external_id)[0];
+u5t.transfer_currency = "USD";
+await rerun(u5.job.id);
+check("U5. returned transfer currency mismatch -> REVIEW (PROVIDER_AMOUNT_MISMATCH: amount + currency must both equal the ledger)", (await jobRow(u5.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(u5.job.id)).last_error_code === "PROVIDER_AMOUNT_MISMATCH");
+const u6 = await awxPayoutJob("U6", "benef_U6");
+await engine.runMoneyJob(client, bridge, u6.job.id);
+const u6t = transfersFor((await attemptsOf(u6.job.id))[0].external_id)[0];
+u6t.beneficiary_id = "benef_someone_else";
+u6t.status = "PAID";
+await rerun(u6.job.id);
+check("U6. returned beneficiary differs from the ledger destination -> REVIEW (PROVIDER_TARGET_MISMATCH) even when Airwallex says PAID; obligation not PAID", (await jobRow(u6.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(u6.job.id)).last_error_code === "PROVIDER_TARGET_MISMATCH" && (await one("select status from public.payout_obligations where id = $1", [u6.ob.id])).status !== "PAID");
+const u7 = await awxPayoutJob("U7", "benef_U7");
+await engine.runMoneyJob(client, bridge, u7.job.id);
+awx.filterBroken = true; // the provider returns every transfer, including other obligations' objects
+const u7b = await rerun(u7.job.id);
+awx.filterBroken = false;
+check("U7. no borrowing across obligations: even if the provider-side filter returned other transfers, only the object whose request_id EXACTLY equals this job's persisted key is used (job stays CONFIRMING, not ambiguous / not matched to another obligation)", u7b.status === "CONFIRMING" && (await jobRow(u7.job.id)).status === "CONFIRMING", u7b);
+awx.transfers.delete("trf_dup_U1");
+
 // ================= refund =================
 const offer = await f.offerCheckout("AWREFUND", 50000);
 const offOpen = await ingest.openProviderPayment(client, adapter, offer.checkout_id, "AWREFUND", b58());
@@ -232,7 +309,7 @@ const rJob = await f.jobFor({ refundId: cancel.refund_id });
 await engine.runMoneyJob(client, bridge, rJob.id);
 const rAtt = await one("select * from public.money_movement_attempts where job_id = $1", [rJob.id]);
 const rfd = [...awx.refunds.values()].find((x) => x.request_id === rAtt.external_id);
-check("R1. refund consumes the existing LIFE.HELP refund obligation: request_id = its idempotency key, payment_intent_id = the ledger-bound Airwallex payment, amount from the ledger (50000 KRW); RECEIVED -> pending", rfd?.payment_intent_id === offOpen.providerPaymentId && rfd.amount === 50000 && rfd.currency === "KRW" && (await one("select provider_object_id from public.provider_object_refs where external_id = $1", [rAtt.external_id])).provider_object_id === rfd.id);
+check("R1. refund consumes the existing LIFE.HELP refund obligation: request_id = its idempotency key, payment_intent_id = the ledger-bound Airwallex payment, amount from the ledger (50000 KRW); RECEIVED -> pending", rfd?.payment_intent_id === offOpen.providerPaymentId && rfd.amount === 50000 && rfd.currency === "KRW" && awx.calls.includes("GET /api/v1/pa/refunds") && !awx.calls.some((c) => c.startsWith("GET /api/v1/pa/refunds/")));
 const rNoted = [];
 for (const s of ["received", "accepted"]) { rfd.status = s.toUpperCase(); rNoted.push((await post(webhook(`refund.${s}`, { ...rfd }))).results[0]?.result); }
 rfd.status = "SETTLED";
@@ -241,6 +318,35 @@ const [rw, rp] = await Promise.all([post(webhook("refund.settled", { ...rfd })),
 const refundRow = await one("select status from public.service_refunds where id = $1", [cancel.refund_id]);
 const rFailLate = await post(webhook("refund.failed", { ...rfd, status: "FAILED" }));
 check("R2. refund received / accepted -> NOTED; settled (webhook vs poll race) -> exactly one completion: refund COMPLETED, intent REFUNDED; a later refund.failed -> REVIEW (PROVIDER_FAILED_AFTER_CONFIRMED), never silently ignored", rNoted.every((x) => x === "NOTED") && refundRow.status === "COMPLETED" && (await intentRow(offOpen.intentId)).s === "REFUNDED" && ((rw.results[0]?.result === "APPLIED") !== (rp.status === "CONFIRMED")) && rFailLate.results[0]?.code === "PROVIDER_FAILED_AFTER_CONFIRMED", { rw: rw.results[0], rp, rFailLate: rFailLate.results[0] });
+
+// ================= refund recovery (list by the ledger-bound payment, exact request_id) =================
+async function awxRefundJob(label) {
+  const cust = `RF${label}`.padEnd(8, "Z").slice(0, 8).toUpperCase();
+  const o = await f.offerCheckout(cust, 50000);
+  const op = await ingest.openProviderPayment(client, adapter, o.checkout_id, cust, b58());
+  const pi = awx.intents.get(op.providerPaymentId);
+  pi.status = "SUCCEEDED";
+  await post(webhook("payment_intent.succeeded", { ...pi }));
+  const rq = (await intentRow(op.intentId)).request_id;
+  const cn = await f.rpc("cancel_funded_request", rq, cust);
+  return { payId: op.providerPaymentId, job: await f.jobFor({ refundId: cn.refund_id }), refundId: cn.refund_id };
+}
+const refundCreates = () => awx.calls.filter((c) => c === "POST /api/v1/pa/refunds/create").length;
+const v1 = await awxRefundJob("V1");
+awx.refunds.set("rfd_foreign_V1", { id: "rfd_foreign_V1", request_id: "someone_elses_request", payment_intent_id: v1.payId, amount: 50000, currency: "KRW", status: "SETTLED" });
+awx.fault = "after";
+const rc0 = refundCreates();
+await engine.runMoneyJob(client, bridge, v1.job.id);
+const v1b = await rerun(v1.job.id);
+const v1Key = (await attemptsOf(v1.job.id))[0].external_id;
+check("V1. refund uncertain create -> recovered by listing refunds of the ledger-bound payment (no request_id filter exists) and matching request_id exactly: one refund, one create call, a foreign SETTLED refund on the same payment is NOT taken as ours (job CONFIRMING, refund not completed by it)",
+  v1b.status === "CONFIRMING" && [...awx.refunds.values()].filter((r) => r.request_id === v1Key).length === 1 && refundCreates() === rc0 + 1 && (await one("select status from public.service_refunds where id = $1", [v1.refundId])).status !== "COMPLETED", v1b);
+const v1r = [...awx.refunds.values()].find((r) => r.request_id === v1Key);
+awx.refunds.set("rfd_dup_V1", { ...v1r, id: "rfd_dup_V1" });
+await rerun(v1.job.id);
+check("V2. two refunds for one request_id -> REVIEW (PROVIDER_OBJECT_AMBIGUOUS)", (await jobRow(v1.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(v1.job.id)).last_error_code === "PROVIDER_OBJECT_AMBIGUOUS");
+const noCtx = await adapter.queryRefund("lh_some_key_000001", { providerPaymentId: null });
+check("V3. a refund lookup without the ledger payment binding fails closed (AMBIGUOUS -> REVIEW), never a blind re-create", noCtx.status === "AMBIGUOUS");
 
 // ================= auth / gates / static =================
 const loginsSoFar = awx.logins;

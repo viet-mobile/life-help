@@ -20,8 +20,11 @@
 --   * a failure after a genuinely FINAL confirmation: REVIEW (PROVIDER_FAILED_AFTER_CONFIRMED) instead of
 --     STALE_IGNORED - contradicting evidence is surfaced, never silently dropped.
 --   * confirmations must carry the exact amount; a failure may omit it (a reported amount must still match).
---   * provider_object_refs: immutable binding LIFE.HELP idempotency key (attempt external id) <-> provider
---     object id, so a poll can query the provider object without trusting any caller input.
+--   * fail closed: only a registry row explicitly marked PROVIDER_FINAL_STATUS can make a provider payout
+--     terminal; a missing row / any other value is treated as "not final".
+-- No new provider-object table: recovery after an uncertain create uses the LIFE.HELP idempotency key with the
+-- provider's own retrieval (e.g. transfers filterable by request_id; refunds listed by the ledger-bound payment
+-- and matched on request_id); the ledger (links, obligations, jobs / attempts) stays the only binding.
 -- NO finality timer exists: nothing turns PROVIDER_REPORTED_PAID into PAID automatically. A provider without a
 -- documented final signal needs an explicit, contractual finality decision before it can complete payouts.
 -- Does not modify migrations 001-021; existing chain / mock behaviour is unchanged except the two REVIEW cases.
@@ -46,60 +49,7 @@ alter table public.provider_events add constraint provider_events_event_type_che
   'PAYOUT_SUBMITTED', 'PAYOUT_REPORTED_PAID', 'PAYOUT_CONFIRMED', 'PAYOUT_FAILED'));
 
 -- ---------------------------------------------------------------------------------------------
--- 3. Provider object binding (idempotency key <-> provider object id), immutable evidence.
--- ---------------------------------------------------------------------------------------------
-create table public.provider_object_refs (
-  id uuid primary key default gen_random_uuid(),
-  provider text not null,
-  environment text not null check (environment in ('SANDBOX', 'LIVE')),
-  external_id text not null check (length(external_id) between 8 and 200),
-  provider_object_id text not null check (length(provider_object_id) between 4 and 200),
-  object_kind text not null check (object_kind in ('REFUND', 'PAYOUT')),
-  created_at timestamptz not null default now(),
-  unique (provider, environment, external_id),
-  unique (provider, environment, provider_object_id)
-);
-create trigger provider_object_refs_immutable before update on public.provider_object_refs for each row execute function public.audit_row_immutable();
-create trigger provider_object_refs_no_delete before delete on public.provider_object_refs for each row execute function public.audit_row_immutable();
-create trigger provider_object_refs_no_truncate before truncate on public.provider_object_refs for each statement execute function public.audit_table_no_truncate();
-revoke all on public.provider_object_refs from public, anon, authenticated, service_role;
-grant select on public.provider_object_refs to service_role;
-comment on table public.provider_object_refs is 'RETENTION CLASS: PROVIDER_EVIDENCE - immutable idempotency-key <-> provider object binding.';
-
-create or replace function public.bind_provider_object(p_provider text, p_environment text, p_external_id text, p_provider_object_id text)
-returns jsonb
-language plpgsql
-security definer
-set search_path = public, pg_temp
-as $$
-declare
-  v_attempt public.money_movement_attempts%rowtype;
-  v_job public.money_movement_jobs%rowtype;
-  v_existing public.provider_object_refs%rowtype;
-begin
-  -- Only a key the outbox itself persisted for this provider + environment can be bound.
-  select * into v_attempt from public.money_movement_attempts where network = 'provider:' || p_provider || ':' || p_environment and external_id = p_external_id;
-  if not found then return jsonb_build_object('success', false, 'code', 'UNKNOWN_PROVIDER_TRANSFER'); end if;
-  select * into v_job from public.money_movement_jobs where id = v_attempt.job_id;
-  select * into v_existing from public.provider_object_refs where provider = p_provider and environment = p_environment and external_id = p_external_id;
-  if found then
-    if v_existing.provider_object_id = p_provider_object_id then return jsonb_build_object('success', true, 'replayed', true); end if;
-    return jsonb_build_object('success', false, 'code', 'PROVIDER_OBJECT_CONFLICT');
-  end if;
-  begin
-    insert into public.provider_object_refs (provider, environment, external_id, provider_object_id, object_kind)
-    values (p_provider, p_environment, p_external_id, p_provider_object_id, case when v_job.obligation_type = 'REFUND' then 'REFUND' else 'PAYOUT' end);
-  exception when unique_violation then
-    return jsonb_build_object('success', false, 'code', 'PROVIDER_OBJECT_CONFLICT');
-  end;
-  return jsonb_build_object('success', true, 'replayed', false);
-end;
-$$;
-revoke all on function public.bind_provider_object(text, text, text, text) from public, anon, authenticated;
-grant execute on function public.bind_provider_object(text, text, text, text) to service_role;
-
--- ---------------------------------------------------------------------------------------------
--- 4. The single result authority (017 definition + 022 PROVIDER_REPORTED_PAID semantics).
+-- 3. The single result authority (017 definition + 022 PROVIDER_REPORTED_PAID semantics).
 -- ---------------------------------------------------------------------------------------------
 create or replace function public.record_money_attempt_result(p_job_id uuid, p_lease uuid, p_attempt_id uuid, p_outcome text, p_code text)
 returns jsonb
@@ -199,7 +149,7 @@ $$;
 
 
 -- ---------------------------------------------------------------------------------------------
--- 5. Provider evidence ingestion (020 definition + 022 finality semantics).
+-- 4. Provider evidence ingestion (020 definition + 022 finality semantics).
 -- ---------------------------------------------------------------------------------------------
 create or replace function public.ingest_provider_event(
   p_provider text, p_environment text, p_provider_account text, p_provider_event_id text, p_source text,
@@ -394,4 +344,4 @@ commit;
 
 -- Rollback (review-only): restore record_money_attempt_result from 017 and ingest_provider_event from 020;
 -- restore the 020 provider_events_event_type_check (only while no PAYOUT_REPORTED_PAID rows exist); drop
--- bind_provider_object, provider_object_refs (only while empty) and payment_providers.payout_finality.
+-- payment_providers.payout_finality.

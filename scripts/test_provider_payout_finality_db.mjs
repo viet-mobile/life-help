@@ -1,6 +1,6 @@
 // Deterministic test of migration 202609290022 (provider payout finality) on the REAL chain in PGlite:
 // registry payout_finality, the non-terminal PROVIDER_REPORTED_PAID outcome on the single result authority
-// (record_money_attempt_result, poll path), failure after reported-paid -> 017 review, provider_object_refs.
+// (record_money_attempt_result, poll path), failure after reported-paid -> 017 review, fail-closed finality config, Solana / mock unchanged, and NO provider-object binding table.
 // Usage: node scripts/test_provider_payout_finality_db.mjs
 import crypto from "node:crypto";
 import { b58, checker, createDb, fixtures } from "./lib/prepayFixtures.mjs";
@@ -113,24 +113,38 @@ const cMismatch = await ingest({ type: "PAYOUT_REPORTED_PAID", object: c.extId, 
 const cS = await state(c);
 check("4b. reported-paid with the wrong amount -> REVIEW (AMOUNT_MISMATCH), not awaiting-finality, obligation not PAID", cMismatch.result === "REVIEW" && cS.ob !== "PAID", JSON.stringify({ cMismatch, cS }));
 
-// ================= 5. provider_object_refs =================
-const d = await payoutJob("D");
-const b1 = await named("bind_provider_object", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_external_id: d.extId, p_provider_object_id: "trf_D_0001" });
-const b2 = await named("bind_provider_object", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_external_id: d.extId, p_provider_object_id: "trf_D_0001" });
-const b3 = await named("bind_provider_object", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_external_id: d.extId, p_provider_object_id: "trf_D_OTHER" });
-const b4 = await named("bind_provider_object", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_external_id: a.extId, p_provider_object_id: "trf_D_0001" });
-const b5 = await named("bind_provider_object", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_external_id: "lh_unknown_key_00001", p_provider_object_id: "trf_X_0001" });
-const b6 = await named("bind_provider_object", { p_provider: "MOCK_PROVIDER", p_environment: "SANDBOX", p_external_id: d.extId, p_provider_object_id: "trf_D_0002" });
-check("5a. bind_provider_object: bound once; identical replay -> replayed; a different object for the same key, or the same object for another key -> PROVIDER_OBJECT_CONFLICT; unknown key / wrong provider network -> refused",
-  b1?.success && !b1.replayed && b2?.replayed === true && b3?.success === false && b3.code === "PROVIDER_OBJECT_CONFLICT" && b4?.success === false && b5?.success === false && b6?.success === false, JSON.stringify([b1, b2, b3, b4, b5, b6]));
-const refRow = await one("select id from public.provider_object_refs where external_id = $1", [d.extId]);
-const upd = await fails("update public.provider_object_refs set provider_object_id = 'attacker' where id = $1", [refRow.id]);
-const del = await fails("delete from public.provider_object_refs where id = $1", [refRow.id]);
-const trunc = await fails("truncate public.provider_object_refs");
-const appIns = await asApp("insert into public.provider_object_refs (provider, environment, external_id, provider_object_id, object_kind) values ('AIRWALLEX', 'SANDBOX', 'lh_forged_key_0001', 'trf_forged', 'PAYOUT')");
-const appSel = await asApp("select 1 from public.provider_object_refs limit 1");
-const anonExec = await one("select has_function_privilege('anon', 'public.bind_provider_object(text,text,text,text)', 'EXECUTE') a, has_function_privilege('authenticated', 'public.bind_provider_object(text,text,text,text)', 'EXECUTE') u");
-check("5b. provider_object_refs is retained evidence: immutable, no delete, no truncate (even the owner); the app role can only SELECT (writes via bind_provider_object); anon / authenticated cannot bind",
-  !!upd && !!del && !!trunc && denied(appIns) && appSel === null && !anonExec.a && !anonExec.u);
+// ================= 5. no competing provider-object binding (option A) =================
+const objTables = await one("select to_regclass('public.provider_object_refs') t, (select count(*)::int from pg_proc where proname = 'bind_provider_object') f");
+check("5a. migration 022 adds NO provider-object table / binding function: recovery uses the LIFE.HELP idempotency key + provider retrieval; business authority stays links / obligations / jobs / attempts", objTables.t === null && objTables.f === 0);
+
+// ================= 6. fail closed on missing / unknown finality configuration =================
+const nullFinality = await fails("update public.payment_providers set payout_finality = null where code = 'AIRWALLEX'");
+const bogusFinality = await fails("update public.payment_providers set payout_finality = 'FINAL' where code = 'AIRWALLEX'");
+check("6a. payout_finality can never be absent or an unknown value (NOT NULL + closed vocabulary)", !!nullFinality && !!bogusFinality);
+const g = await payoutJob("G", "MOCK_PROVIDER");
+// Simulate a payout attempt whose provider network has NO registry row (config absent): owner-level fixture edit.
+await db.exec("alter table public.money_movement_attempts disable trigger user");
+await db.query("update public.money_movement_attempts set network = 'provider:GHOST_PSP:SANDBOX' where id = $1", [g.attemptId]);
+await db.exec("alter table public.money_movement_attempts enable trigger user");
+const gRes = await f.rpc("record_money_attempt_result", g.job.id, g.lease, g.attemptId, "CONFIRMED", null);
+const gS = await state(g);
+const ghostEvt = await ingest({ provider: "GHOST_PSP", type: "PAYOUT_CONFIRMED", object: g.extId, amount: 60000, currency: "KRW" });
+check("6b. missing finality configuration fails closed: a CONFIRMED for a provider network without a registry row is only 'reported paid' (obligation not PAID, job awaiting finality); unregistered provider evidence is refused",
+  gRes?.status === "PROVIDER_PAID_AWAITING_FINALITY" && gS.ob !== "PAID" && gS.att === "SUBMITTED" && ghostEvt?.success === false, JSON.stringify({ gRes, gS, ghostEvt }));
+await db.query("update public.payment_providers set payout_finality = 'NO_FINAL_SIGNAL' where code = 'MOCK_PROVIDER' and environment = 'SANDBOX'");
+const h2 = await payoutJob("H", "MOCK_PROVIDER");
+const hRes = await f.rpc("record_money_attempt_result", h2.job.id, h2.lease, h2.attemptId, "CONFIRMED", null);
+await db.query("update public.payment_providers set payout_finality = 'PROVIDER_FINAL_STATUS' where code = 'MOCK_PROVIDER' and environment = 'SANDBOX'");
+check("6c. finality is registry-driven: the same mock payout while its row says NO_FINAL_SIGNAL is NOT terminal", hRes?.status === "PROVIDER_PAID_AWAITING_FINALITY" && (await state(h2)).ob !== "PAID", JSON.stringify(hRes));
+
+// ================= 7. Solana devnet (finalized chain) payout unchanged =================
+const sol = await f.completedPayout("SOL");
+const solJob = await f.jobFor({ obligationId: sol.obligationId });
+const solClaim = await f.rpc("claim_money_job", solJob.id, 60);
+const solPrep = await f.rpc("prepare_money_attempt", solJob.id, solClaim.job.lease_token, "SOLANA_DIRECT_DEVNET", "solana-devnet", "USDC", 42857142, sol.destination, b58(88), JSON.stringify({ lastValidBlockHeight: 100, reference: "ref" }), "c2lnbmVk");
+const solRes = await f.rpc("record_money_attempt_result", solJob.id, solClaim.job.lease_token, solPrep.attempt_id, "CONFIRMED", null);
+const solOb = await one("select status from public.payout_obligations where id = $1", [sol.obligationId]);
+const solJ = await one("select status from public.money_movement_jobs where id = $1", [solJob.id]);
+check("7a. Solana devnet finalized payout completes exactly as before: CONFIRMED -> attempt CONFIRMED, obligation PAID, job CONFIRMED", solPrep.success && solOb.status === "PAID" && solJ.status === "CONFIRMED", JSON.stringify({ solPrep, solRes, solOb, solJ }));
 
 done();
