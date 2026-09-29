@@ -82,6 +82,9 @@ export function providerMoneyAdapter(client: SupabaseClient, provider: PaymentPr
         throw new MoneyMovementError("PROVIDER_LOOKUP_UNKNOWN", "RETRYABLE");
       }
       if (status.status === "NOT_FOUND") {
+        // The provider already reported THIS attempt paid (migration 023 evidence): its object vanishing is
+        // never a reason to re-send the create - an operator decides.
+        if (attempt.provider_reported_paid_at) return { kind: "MISMATCH", code: "PROVIDER_OBJECT_MISSING_AFTER_REPORTED_PAID" };
         // Re-sending the persisted create under the SAME key is only safe while the provider still dedupes that
         // key. Boundary = the provider's documented window, measured from the attempt's prepared_at (persisted, immutable,
         // written BEFORE the first create call - the earliest authoritative create time).

@@ -339,6 +339,47 @@ const refundRow = await one("select status from public.service_refunds where id 
 const rFailLate = await post(webhook("refund.failed", { ...rfd, status: "FAILED" }));
 check("R2. refund received / accepted -> NOTED; settled (webhook vs poll race) -> exactly one completion: refund COMPLETED, intent REFUNDED; a later refund.failed -> REVIEW (PROVIDER_FAILED_AFTER_CONFIRMED), never silently ignored", rNoted.every((x) => x === "NOTED") && refundRow.status === "COMPLETED" && (await intentRow(offOpen.intentId)).s === "REFUNDED" && ((rw.results[0]?.result === "APPLIED") !== (rp.status === "CONFIRMED")) && rFailLate.results[0]?.code === "PROVIDER_FAILED_AFTER_CONFIRMED", { rw: rw.results[0], rp, rFailLate: rFailLate.results[0] });
 
+// ================= 023: reported-paid evidence survives the engine's operational releases =================
+const z1 = await awxPayoutJob("Z1", "benef_Z1");
+await engine.runMoneyJob(client, bridge, z1.job.id);
+const z1Key = (await attemptsOf(z1.job.id))[0].external_id;
+const zc0 = creates();
+transfersFor(z1Key)[0].status = "PAID";
+const zPaid = await rerun(z1.job.id);
+awx.listFault = "network";
+const zUnknown = await rerun(z1.job.id);
+awx.listFault = null;
+const zCodeAfterUnknown = (await jobRow(z1.job.id)).last_error_code;
+transfersFor(z1Key)[0].status = "FAILED";
+const zFail = await rerun(z1.job.id);
+const zAgain = await rerun(z1.job.id);
+const zMarker = (await db.query("select provider_reported_paid_at from public.money_movement_attempts where job_id = $1", [z1.job.id])).rows;
+check("Z1. engine + bridge: Airwallex PAID (reported paid, evidence on the attempt) -> lookup outage (RETRYABLE PROVIDER_LOOKUP_UNKNOWN overwrites the job code) -> FAILED -> REVIEW_REQUIRED (PROVIDER_FAILED_AFTER_REPORTED_PAID); later runs JOB_FINAL; still one attempt, one transfer, no create call after the first",
+  zPaid.status === "PROVIDER_PAID_AWAITING_FINALITY" && zUnknown.code === "PROVIDER_LOOKUP_UNKNOWN" && zCodeAfterUnknown === "PROVIDER_LOOKUP_UNKNOWN" && zMarker.length === 1 && zMarker[0].provider_reported_paid_at !== null
+  && (await jobRow(z1.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(z1.job.id)).last_error_code === "PROVIDER_FAILED_AFTER_REPORTED_PAID" && zAgain.code === "JOB_FINAL" && creates() === zc0 && transfersFor(z1Key).length === 1,
+  { zPaid, zUnknown, zFail, zAgain });
+const z2 = await awxPayoutJob("Z2", "benef_Z2");
+await engine.runMoneyJob(client, bridge, z2.job.id);
+const z2Key = (await attemptsOf(z2.job.id))[0].external_id;
+transfersFor(z2Key)[0].status = "PAID";
+await rerun(z2.job.id);
+const z2c = creates();
+awx.transfers.delete(transfersFor(z2Key)[0].id); // the provider object vanishes after reporting it paid
+awx.byRequest.delete(z2Key);
+await rerun(z2.job.id);
+check("Z2. after reported paid, a lookup that finds NO transfer is never a reason to re-send the create: REVIEW (PROVIDER_OBJECT_MISSING_AFTER_REPORTED_PAID), no create call, one attempt",
+  (await jobRow(z2.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(z2.job.id)).last_error_code === "PROVIDER_OBJECT_MISSING_AFTER_REPORTED_PAID" && creates() === z2c && (await attemptsOf(z2.job.id)).length === 1);
+const z3 = await awxPayoutJob("Z3", "benef_Z3");
+await engine.runMoneyJob(client, bridge, z3.job.id);
+const z3Key = (await attemptsOf(z3.job.id))[0].external_id;
+transfersFor(z3Key)[0].status = "PAID";
+const z3hooks = await Promise.all(Array.from({ length: 10 }, (_, i) => post(webhook("payout.transfer.paid", { ...transfersFor(z3Key)[0] }, { id: `evt_z3_paid_${i}` }))));
+const z3res = z3hooks.map((h) => h.results[0]?.code ?? h.results[0]?.result);
+const z3marker = (await db.query("select provider_reported_paid_at from public.money_movement_attempts where job_id = $1", [z3.job.id])).rows;
+check("Z3. duplicate reported-paid webhooks x10 (concurrent): applied once, the rest replay / defer; one attempt, one evidence timestamp, obligation not PAID",
+  z3res.filter((c) => c === "PROVIDER_PAID_AWAITING_FINALITY").length === 1 && z3res.every((c) => ["PROVIDER_PAID_AWAITING_FINALITY", "ALREADY_REPORTED_PAID", "JOB_BUSY_OR_FINAL"].includes(c)) && z3marker.length === 1 && z3marker[0].provider_reported_paid_at !== null
+  && (await one("select status from public.payout_obligations where id = $1", [z3.ob.id])).status !== "PAID", z3res);
+
 // ================= refund recovery (list by the ledger-bound payment, exact request_id) =================
 async function awxRefundJob(label) {
   const cust = `RF${label}`.padEnd(8, "Z").slice(0, 8).toUpperCase();

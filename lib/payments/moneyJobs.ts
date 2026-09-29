@@ -57,6 +57,8 @@ export type AttemptView = {
   attempt_id: string; attempt_number: number; state: string; provider: string; network: string; asset: string;
   amount_base_units: string; destination: string; external_id: string; adapter_payload: Record<string, unknown>;
   signed_payload: string | null; submitted_at: string | null;
+  /** 023: the provider reported this attempt paid (durable DB evidence; NOT final). */
+  provider_reported_paid_at?: string | null;
 };
 
 export type ClaimedJob = {
