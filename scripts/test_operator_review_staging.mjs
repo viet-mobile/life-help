@@ -65,7 +65,7 @@ try {
   const up = filtered.cases.find((c) => c.status === "REVIEW_REQUIRED");
   const detail = json(await api(`/api/sys/review/cases/PAYMENT/${up?.caseId}`, { headers: operator }));
   const fact = detail?.case?.facts?.observedOnChain?.[0] ?? {};
-  expect("4. detail: CHAIN FACTS (amount, recipient, mint, network, signature, classification) / SYSTEM DECISIONS (intent status) / OPERATOR ACTIONS / UNRESOLVED", detail?.success && fact.amount_base_units && fact.recipient && fact.mint && fact.network && fact.signature && fact.classification === "UNDERPAID" && detail.case.systemDecisions.intent.status === "REVIEW_REQUIRED" && Array.isArray(detail.case.operatorActions) && detail.case.unresolved === true);
+  expect("4. detail: CHAIN FACTS (amount, MASKED recipient + server-side match flag, mint, network, signature, classification; no raw recipient) / SYSTEM DECISIONS (intent status) / OPERATOR ACTIONS / UNRESOLVED", detail?.success && fact.amount_base_units && /^.{4}….{4}$/.test(fact.recipientMasked ?? "") && typeof fact.recipientMatchesIntent === "boolean" && !("recipient" in fact) && fact.mint && fact.network && fact.signature && fact.classification === "UNDERPAID" && detail.case.systemDecisions.intent.status === "REVIEW_REQUIRED" && Array.isArray(detail.case.operatorActions) && detail.case.unresolved === true);
   record("INFO", "observed sender: not stored as a chain fact; the refund adapter derives it from the transaction at execution (unknown sender -> REVIEW, see 11c)");
   const everything = JSON.stringify(list) + JSON.stringify(detail);
   expect("5. no secret material in queue / detail (signed bytes, keys, RPC URL, session secrets)", !/signed_payload|signedPayload|secret|alchemy|\/v2\/|PRIVATE KEY|life_help_sys_session/i.test(everything));
