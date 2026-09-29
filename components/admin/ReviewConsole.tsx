@@ -11,10 +11,15 @@ type PayoutEvidence = {
   jobStatus: string | null; reviewReason: string | null; provider: string | null; network: string | null; businessStatus: string | null; obligationId: string | null;
   attempts: Array<{ attempt: number; state: string; provider: string; network: string; attemptKey: string; destinationMasked: string | null; providerReportedPaidAt: string | null; finalConfirmation: boolean }>;
 };
+type PaymentEvidence = {
+  intentStatus: string | null; network: string | null; mint: string | null; receivingWalletMasked: string | null; reference: string | null; reviewReasons: string[];
+  transfers: Array<{ signature: string; classification: string | null; recipientMasked: string | null; recipientMatchesIntent: boolean }>;
+};
 type Detail = {
   allowedActions: string[]; unresolved: boolean; facts: unknown; systemDecisions: unknown; operatorActions: unknown;
   refundableTransfers?: Array<{ signature: string; classification: string; amount_base_units: string }>;
   payoutEvidence?: PayoutEvidence;
+  paymentEvidence?: PaymentEvidence;
 };
 const MONEY_ACTIONS = ["RETRY_RECONCILIATION", "REQUEUE_SAFE", "INITIATE_REFUND"];
 const short = (value: string | null | undefined) => (value ? `${value.slice(0, 6)}…${value.slice(-4)}` : "—");
@@ -41,6 +46,22 @@ export function PayoutEvidencePanel({ evidence }: { evidence: PayoutEvidence }) 
           )}
           {a.finalConfirmation && <p className="text-emerald-700">Final confirmation recorded for this attempt.</p>}
         </div>
+      ))}
+    </div>
+  );
+}
+
+/** Read-only payment evidence: the platform receiving wallet and observed recipients are MASKED server-side. */
+export function PaymentEvidencePanel({ evidence }: { evidence: PaymentEvidence }) {
+  return (
+    <div className="space-y-1 rounded border p-2">
+      <p className="font-semibold">Payment evidence (read-only)</p>
+      <p>Intent {evidence.intentStatus ?? "—"} · {evidence.network ?? "—"} · asset {short(evidence.mint)} · reason {evidence.reviewReasons.join(", ") || "—"}</p>
+      <p>Receiving wallet: {evidence.receivingWalletMasked ?? "—"} · reference {short(evidence.reference)}</p>
+      {evidence.transfers.map((t) => (
+        <p key={t.signature} className="border-t pt-1">
+          {t.classification ?? "—"} · {short(t.signature)} · to {t.recipientMasked ?? "—"} {t.recipientMatchesIntent ? "(our receiving wallet)" : "(NOT our receiving wallet)"}
+        </p>
       ))}
     </div>
   );
@@ -131,6 +152,7 @@ export function ReviewConsole() {
             <section className="space-y-3 rounded border bg-white p-3 text-xs">
               <h2 className="font-bold">{selected.kind} · {short(selected.caseId)}</h2>
               {detail.payoutEvidence && <PayoutEvidencePanel evidence={detail.payoutEvidence} />}
+              {detail.paymentEvidence && <PaymentEvidencePanel evidence={detail.paymentEvidence} />}
               <details open><summary className="font-semibold">Facts (observed on chain)</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.facts, null, 1)}</pre></details>
               <details><summary className="font-semibold">System decisions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.systemDecisions, null, 1)}</pre></details>
               <details><summary className="font-semibold">Operator actions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.operatorActions, null, 1)}</pre></details>

@@ -1,6 +1,7 @@
 /**
- * Server-side display masking for payout destinations in operator surfaces (least exposure). The raw value
- * stays in the ledger only; review APIs return this masked form and never the original.
+ * Server-side display masking for payout destinations AND payment receiving wallets in operator surfaces
+ * (least exposure). The raw value stays in the ledger (and in every server-side comparison) only; review APIs
+ * return this masked form and never the original.
  *
  * The style is chosen from the LEDGER network, never guessed from the string:
  *   chain networks (solana-*)  wallet address       -> "ABCD…WXYZ"   (first 4 + last 4; public-key shaped)

@@ -6,8 +6,8 @@ import { maskDestination } from "@/lib/admin/maskDestination";
  * Operator REVIEW_REQUIRED console data (migration 017). Read-only views over the existing ledger;
  * the only write path is operator_review_action(). Every select names its columns explicitly: signed
  * transaction bytes, keys and provider secrets are never read here, and customer private auth data is
- * never joined in. Payout destinations are read only to derive a masked display value (maskDestination);
- * the raw destination is never returned.
+ * never joined in. Payout destinations and payment receiving wallets (intent / observed recipients) are read
+ * only to derive masked display values (maskDestination); the raw addresses are never returned.
  */
 
 export type ReviewCaseType = "PAYMENT" | "MONEY_JOB";
@@ -127,10 +127,23 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
     const { data: request } = intent?.request_id ? await client.from("service_requests").select("id, status, request_mode").eq("id", intent.request_id).maybeSingle() : { data: null };
     const { data: selections } = intent?.request_id ? await client.from("request_price_selections").select("selection_version, status, helper_id, initial_payable_amount, currency").eq("request_id", intent.request_id).order("selection_version") : { data: [] };
     const { data: providerEvidence } = await client.from("provider_events").select(PROVIDER_EVENT_COLUMNS).eq("payment_intent_id", caseId).order("received_at");
+    // Least exposure: the platform receiving wallet (and any observed recipient) is returned masked only. The
+    // comparison with the intent's recipient happens HERE on the full values (display flag only; the ledger's own
+    // classification - e.g. WRONG_RECIPIENT - remains the authority and is unchanged).
+    const { recipient: intentRecipient, ...intentRest } = intent ?? ({} as Record<string, unknown>);
+    const safeIntent = intent ? { ...intentRest, recipientMasked: maskDestination(intentRecipient as string | null, intent.network) } : null;
+    const safeChain = (chain ?? []).map(({ recipient, ...rest }) => ({
+      ...rest, recipientMasked: maskDestination(recipient, rest.network), recipientMatchesIntent: !!intent && recipient === intentRecipient,
+    }));
     return {
       caseType, caseId, closed: r.closed === true, allowedActions: r.actions, refundableTransfers: r.refundable_transfers ?? [],
-      facts: { observedOnChain: chain ?? [], providerEvidence: providerEvidence ?? [] },
-      systemDecisions: { intent, events: events ?? [], refunds: refunds ?? [], request, priceSelections: selections ?? [] },
+      facts: { observedOnChain: safeChain, providerEvidence: providerEvidence ?? [] },
+      systemDecisions: { intent: safeIntent, events: events ?? [], refunds: refunds ?? [], request, priceSelections: selections ?? [] },
+      paymentEvidence: {
+        intentStatus: intent?.status ?? null, network: intent?.network ?? null, mint: intent?.mint ?? null, receivingWalletMasked: safeIntent?.recipientMasked ?? null,
+        reference: intent?.reference ?? null, reviewReasons: [...new Set(safeChain.map((t) => t.classification).filter(Boolean))],
+        transfers: safeChain.map((t) => ({ signature: t.signature, classification: t.classification, recipientMasked: t.recipientMasked, recipientMatchesIntent: t.recipientMatchesIntent })),
+      },
       operatorActions: operatorActions ?? [],
       unresolved: r.closed !== true,
     };

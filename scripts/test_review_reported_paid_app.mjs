@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import crypto from "node:crypto";
 import { registerHooks } from "node:module";
-import { b58, checker, createDb, fixtures } from "./lib/prepayFixtures.mjs";
+import { MINT, b58, checker, createDb, fixtures } from "./lib/prepayFixtures.mjs";
 
 const root = new URL("..", import.meta.url);
 registerHooks({
@@ -143,16 +143,49 @@ const cacheDir = new URL("node_modules/.cache/", root);
 fs.mkdirSync(cacheDir, { recursive: true });
 const compiledUrl = new URL(`lh-review-console-${process.pid}.mjs`, cacheDir);
 fs.writeFileSync(compiledUrl, compiled.code);
-const { PayoutEvidencePanel } = await import(compiledUrl.href);
+const { PayoutEvidencePanel, PaymentEvidencePanel } = await import(compiledUrl.href);
 const { createElement } = await import("react");
 const { renderToStaticMarkup } = await import("react-dom/server");
 const htmlA = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dAm.payoutEvidence }));
 const htmlS = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dS.payoutEvidence }));
 const htmlB = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dB2.payoutEvidence }));
-fs.rmSync(compiledUrl, { force: true });
 check("MD. rendered HTML: 'Destination: <masked>' shown; the raw destination is in no text, attribute or comment; the 023 marker still displays ('Provider reported payout paid' only for the reported-paid case)",
   htmlA.includes(`Destination: ••••••${rawA.slice(-4)}`) && htmlS.includes(`Destination: ${sol.destination.slice(0, 4)}…${sol.destination.slice(-4)}`) && !htmlA.includes(rawA) && !htmlS.includes(sol.destination)
   && htmlA.includes("Provider reported payout paid:") && !htmlB.includes("Provider reported payout paid:") && !htmlS.includes("Provider reported payout paid:"), { htmlA: htmlA.slice(0, 300) });
+
+// ---- PAYMENT cases: platform receiving wallet masked (display only; full values stay authoritative) ----
+const platform = f.recipient;
+const lookalike = `${platform.slice(0, 4)}${b58(36)}${platform.slice(-4)}`; // SAME masked form, different address
+const pco = await f.offerCheckout("PAYMASK1", 70000);
+const pq = await f.rpc("create_payment_quote", pco.checkout_id, "PAYMASK1", "solana-devnet", MINT, 1400, "TEST_SANDBOX_FX", "fixed-test-rate", 600);
+const pi = await f.rpc("create_payment_intent", pq.quote_id, "PAYMASK1", platform, b58());
+const wrongSig = b58() + b58();
+await f.rpc("record_payment_observation", pi.intent_id, "solana-devnet", wrongSig, 1, MINT, lookalike, Number(pi.amount_base_units), true, true, "finalized");
+const rightSig = b58() + b58();
+await f.rpc("record_payment_observation", pi.intent_id, "solana-devnet", rightSig, 2, MINT, platform, Number(pi.amount_base_units), true, true, "finalized");
+const ledgerIntent = await f.one("select recipient, status from public.payment_intents where id = $1", [pi.intent_id]);
+const ledgerTx = await f.all("select signature, recipient, classification from public.payment_chain_transactions where payment_intent_id = $1", [pi.intent_id]);
+const wrongTx = ledgerTx.find((t) => t.signature === wrongSig), rightTx = ledgerTx.find((t) => t.signature === rightSig);
+await f.rpc("operator_review_action", "PAYMENT", pi.intent_id, "NOTE", "op-test", "PLATFORM_TOKEN", "payment masking note", crypto.randomUUID(), null);
+const dP = await reviewCaseDetail(client, "PAYMENT", pi.intent_id);
+const payRows = await listReviewCases(client, { caseType: "PAYMENT", includeClosed: true });
+const ev = dP.paymentEvidence;
+const masked = `${platform.slice(0, 4)}…${platform.slice(-4)}`;
+check("PA. payment case: the platform receiving wallet is returned masked (ABCD…WXYZ) in systemDecisions.intent and paymentEvidence; network / asset / reference / intent status / review reasons / signatures stay for context",
+  dP.systemDecisions.intent.recipientMasked === masked && ev.receivingWalletMasked === masked && ev.network === "solana-devnet" && ev.mint === MINT && !!ev.reference && ev.reviewReasons.includes("WRONG_RECIPIENT") && ev.transfers.some((t) => t.signature === wrongSig), ev);
+const payJson = JSON.stringify([dP, payRows]);
+check("PB. the raw platform wallet and the raw observed recipient appear NOWHERE in the PAYMENT detail / queue JSON (no 'recipient' key)", !payJson.includes(platform) && !payJson.includes(lookalike) && !/"recipient"\s*:/.test(payJson));
+const htmlP = renderToStaticMarkup(createElement(PaymentEvidencePanel, { evidence: ev }));
+fs.rmSync(compiledUrl, { force: true });
+check("PC. rendered HTML shows 'Receiving wallet: <masked>' and the masked recipients; neither raw address appears in text / attributes / comments", htmlP.includes(`Receiving wallet: ${masked}`) && !htmlP.includes(platform) && !htmlP.includes(lookalike) && htmlP.includes("(NOT our receiving wallet)"), htmlP.slice(0, 300));
+check("PD. the ledger keeps the FULL wallet values (intent recipient + observed recipients unchanged)", ledgerIntent.recipient === platform && wrongTx?.recipient === lookalike && rightTx?.recipient === platform);
+check("PE/PF. chain verification + wrong-recipient detection still use the FULL addresses: the lookalike transfer (identical masked form) is classified WRONG_RECIPIENT by the ledger and flagged recipientMatchesIntent=false; the genuine one matches; wrong-recipient transfers are never refundable",
+  wrongTx?.classification === "WRONG_RECIPIENT" && rightTx?.classification !== "WRONG_RECIPIENT" && ev.transfers.find((t) => t.signature === wrongSig)?.recipientMatchesIntent === false
+  && ev.transfers.find((t) => t.signature === rightSig)?.recipientMatchesIntent === true && ev.transfers.find((t) => t.signature === wrongSig)?.recipientMasked === masked
+  && !(dP.refundableTransfers ?? []).some((t) => t.signature === wrongSig), { wrong: wrongTx?.classification, right: rightTx?.classification });
+const opRow = await f.all("select safe_refs, previous_state, resulting_state, reason from public.operator_review_actions where case_id = $1", [pi.intent_id]);
+const payRules = (await client.rpc("review_case_actions", { p_case_type: "PAYMENT", p_case_id: pi.intent_id })).data;
+check("PG. review audit metadata (operator_review_actions) carries no raw wallet; payment-case actions unchanged (detail == review_case_actions)", opRow.length === 1 && !JSON.stringify(opRow).includes(platform) && !JSON.stringify(opRow).includes(lookalike) && JSON.stringify(dP.allowedActions) === JSON.stringify(payRules.actions));
 
 // ---- static: surfaces ----
 const read = (p) => fs.readFileSync(new URL(p, root), "utf8");
