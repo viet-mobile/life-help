@@ -15,7 +15,8 @@ registerHooks({
     return nextResolve(specifier, context);
   },
 });
-const { reviewCaseDetail } = await import(new URL("lib/admin/reviewCases.ts", root).href);
+const { reviewCaseDetail, listReviewCases } = await import(new URL("lib/admin/reviewCases.ts", root).href);
+const { maskDestination } = await import(new URL("lib/admin/maskDestination.ts", root).href);
 
 const { check, done } = checker();
 const db = await createDb();
@@ -33,7 +34,7 @@ function from(table) {
     not(c, op, list) { where.push(`${c} not in (${list.replace(/[()]/g, "").split(",").map((x) => `'${x.trim()}'`).join(", ")})`); return q; },
     order(c, o = {}) { order = ` order by ${c} ${o.ascending === false ? "desc" : "asc"}`; return q; },
     limit(n) { limit = ` limit ${Number(n)}`; return q; },
-    async run() { const r = await db.query(`select ${cols} from public.${table}${where.length ? ` where ${where.join(" and ")}` : ""}${order}${limit}`, params); return r.rows; },
+    async run() { const r = await db.query(`select ${cols} from public.${table}${where.length ? ` where ${where.join(" and ")}` : ""}${order}${limit}`, params); return r.rows.map((row) => Object.fromEntries(Object.entries(row).map(([k, v]) => [k, v instanceof Date ? v.toISOString() : v]))); }, // PostgREST returns ISO strings
     async maybeSingle() { const rows = await q.run(); return { data: rows[0] ?? null, error: null }; },
     then(resolve, reject) { return q.run().then((rows) => resolve({ data: rows, error: null }), reject); },
   };
@@ -64,7 +65,7 @@ async function payoutJob(label) {
   await named("link_provider_payment", { p_intent_id: opened.intent_id, p_provider_payment_id: payId });
   await named("ingest_provider_event", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_provider_account: "acct", p_provider_event_id: `evt_${label}_${n}_${crypto.randomUUID().slice(0, 8)}`, p_source: "WEBHOOK", p_event_type: "PAYMENT_HELD", p_provider_event_type: "payment_intent.succeeded", p_object_ref: payId, p_life_help_reference: null, p_amount_minor: 60000, p_currency: "KRW", p_occurred_at: null, p_provider_sequence: null, p_payload_sha256: crypto.randomBytes(32).toString("hex"), p_signature_verified: true });
   const req = (await f.one("select request_id from public.payment_intents where id = $1", [opened.intent_id])).request_id;
-  await db.query("insert into public.payout_destinations (owner_helper_id, country, currency, payout_method, provider, provider_environment, provider_payee_token, masked_destination, status) values ($1, 'KR', 'KRW', 'PROVIDER_PAYEE', 'AIRWALLEX', 'SANDBOX', $2, 'x ****', 'ACTIVE')", [h.id, `benef_${label}${n}_x`]);
+  await db.query("insert into public.payout_destinations (owner_helper_id, country, currency, payout_method, provider, provider_environment, provider_payee_token, masked_destination, status) values ($1, 'KR', 'KRW', 'PROVIDER_PAYEE', 'AIRWALLEX', 'SANDBOX', $2, 'x ****', 'ACTIVE')", [h.id, `benef_${label}${n}_payee_token`]);
   const [asg] = await f.activeAssignments(req);
   await f.rpc("accept_assignment", asg.id, h.id);
   await db.query("update public.service_requests set status = 'IN_PROGRESS' where id = $1", [req]);
@@ -73,7 +74,7 @@ async function payoutJob(label) {
   const ob = await f.one("select * from public.payout_obligations where request_id = $1", [req]);
   const job = await f.jobFor({ obligationId: ob.id });
   const c = await f.rpc("claim_money_job", job.id, 60);
-  const prep = await f.rpc("prepare_money_attempt", job.id, c.job.lease_token, "AIRWALLEX", "provider:AIRWALLEX:SANDBOX", "KRW", 60000, `benef_${label}${n}_x`, `lh_${job.id.replace(/-/g, "")}_1`, JSON.stringify({ kind: "HELPER_PAYOUT", reference: job.id }), "SIGNED-BYTES-MUST-NEVER-LEAK");
+  const prep = await f.rpc("prepare_money_attempt", job.id, c.job.lease_token, "AIRWALLEX", "provider:AIRWALLEX:SANDBOX", "KRW", 60000, `benef_${label}${n}_payee_token`, `lh_${job.id.replace(/-/g, "")}_1`, JSON.stringify({ kind: "HELPER_PAYOUT", reference: job.id }), "SIGNED-BYTES-MUST-NEVER-LEAK");
   return { job, lease: c.job.lease_token, attemptId: prep.attempt_id, ob };
 }
 const due = (id) => db.query("update public.money_movement_jobs set next_retry_at = now() - interval '1 second', claim_expires_at = null where id = $1", [id]);
@@ -113,6 +114,45 @@ check("E. no secret-like fields / values in the detail: no signed bytes (column 
 // G: actions unchanged (detail exposes exactly the 023 rules)
 const rulesA = (await client.rpc("review_case_actions", { p_case_type: "MONEY_JOB", p_case_id: A.job.id })).data;
 check("G. operator actions unchanged: the detail's allowed actions are exactly review_case_actions (023 rules: no REQUEUE_SAFE after reported paid)", JSON.stringify(dA2.allowedActions) === JSON.stringify(rulesA.actions) && !dA2.allowedActions.includes("REQUEUE_SAFE"));
+
+// ---- destination masking (least exposure) ----
+const rawA = (await f.one("select destination from public.money_movement_attempts where id = $1", [A.attemptId])).destination;
+const sol = await f.completedPayout("MASKSOL");
+const solJob = await f.jobFor({ obligationId: sol.obligationId });
+const sc = await f.rpc("claim_money_job", solJob.id, 60);
+const solPrep = await f.rpc("prepare_money_attempt", solJob.id, sc.job.lease_token, "SOLANA_DIRECT_DEVNET", "solana-devnet", "USDC", 42857142, sol.destination, b58(88), "{}", "c2lnbmVk");
+await f.rpc("release_money_job", solJob.id, sc.job.lease_token, "REVIEW", "MASK_TEST", null);
+const dS = await reviewCaseDetail(client, "MONEY_JOB", solJob.id);
+const dAm = await reviewCaseDetail(client, "MONEY_JOB", A.job.id);
+const rows = await listReviewCases(client, { includeClosed: true });
+check("MA. provider payee token masked (opaque style '••••••' + last 4); the attempt key, provider, network, obligation, status and reason remain for correlation",
+  dAm.payoutEvidence.attempts[0].destinationMasked === `••••••${rawA.slice(-4)}` && dAm.systemDecisions.attempts[0].destinationMasked === `••••••${rawA.slice(-4)}` && dAm.payoutEvidence.attempts[0].attemptKey && dAm.payoutEvidence.obligationId === A.ob.id && dAm.payoutEvidence.provider === "AIRWALLEX",
+  dAm.payoutEvidence.attempts[0]);
+check("MB. Solana wallet masked (wallet style first 4 … last 4, chosen from the ledger network)", dS.payoutEvidence.attempts[0].destinationMasked === `${sol.destination.slice(0, 4)}…${sol.destination.slice(-4)}` && solPrep.success, dS.payoutEvidence.attempts[0].destinationMasked);
+const allJson = JSON.stringify([dA, dA2, dAm, dB, dB2, dS, rows]);
+check("MC. the raw destination appears NOWHERE in the review detail / queue JSON (no 'destination' key at all; neither raw value present)", !allJson.includes(rawA) && !allJson.includes(sol.destination) && !/"destination"\s*:/.test(allJson));
+check("ME/MF. short identifiers masked almost entirely; null / empty handled; deterministic; style never inferred from the format (a wallet-shaped value on a provider network is masked as opaque)",
+  maskDestination("abc", "provider:X:SANDBOX") === "••••••" && maskDestination("abcdefgh", "provider:X:SANDBOX") === "••••••gh" && maskDestination("short123", "solana-devnet") === "••••••23"
+  && maskDestination(null, "solana-devnet") === null && maskDestination("   ", "provider:X:SANDBOX") === null && maskDestination(sol.destination, "provider:X:SANDBOX") === `••••••${sol.destination.slice(-4)}`
+  && maskDestination(rawA, "provider:AIRWALLEX:SANDBOX") === maskDestination(rawA, "provider:AIRWALLEX:SANDBOX"));
+// Rendered HTML of the real panel component (TSX compiled with esbuild, server-rendered with react-dom/server).
+const esbuild = await import("esbuild");
+const tsx = fs.readFileSync(new URL("components/admin/ReviewConsole.tsx", root), "utf8");
+const compiled = await esbuild.transform(tsx, { loader: "tsx", format: "esm", jsx: "automatic" });
+const cacheDir = new URL("node_modules/.cache/", root);
+fs.mkdirSync(cacheDir, { recursive: true });
+const compiledUrl = new URL(`lh-review-console-${process.pid}.mjs`, cacheDir);
+fs.writeFileSync(compiledUrl, compiled.code);
+const { PayoutEvidencePanel } = await import(compiledUrl.href);
+const { createElement } = await import("react");
+const { renderToStaticMarkup } = await import("react-dom/server");
+const htmlA = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dAm.payoutEvidence }));
+const htmlS = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dS.payoutEvidence }));
+const htmlB = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dB2.payoutEvidence }));
+fs.rmSync(compiledUrl, { force: true });
+check("MD. rendered HTML: 'Destination: <masked>' shown; the raw destination is in no text, attribute or comment; the 023 marker still displays ('Provider reported payout paid' only for the reported-paid case)",
+  htmlA.includes(`Destination: ••••••${rawA.slice(-4)}`) && htmlS.includes(`Destination: ${sol.destination.slice(0, 4)}…${sol.destination.slice(-4)}`) && !htmlA.includes(rawA) && !htmlS.includes(sol.destination)
+  && htmlA.includes("Provider reported payout paid:") && !htmlB.includes("Provider reported payout paid:") && !htmlS.includes("Provider reported payout paid:"), { htmlA: htmlA.slice(0, 300) });
 
 // ---- static: surfaces ----
 const read = (p) => fs.readFileSync(new URL(p, root), "utf8");

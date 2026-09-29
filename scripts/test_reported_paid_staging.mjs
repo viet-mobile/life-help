@@ -129,6 +129,8 @@ async function gate() {
   expect("8b. review detail shows the attempt evidence read-only: payoutEvidence.attempts[0].providerReportedPaidAt === the attempt row's provider_reported_paid_at (also in systemDecisions.attempts), reason PROVIDER_FAILED_AFTER_REPORTED_PAID, not a final confirmation; anonymous / anon-key / Helper session -> 401",
     !!ev && new Date(ev.attempts?.[0]?.providerReportedPaidAt ?? 0).toISOString() === new Date(aAtts2[0].provider_reported_paid_at).toISOString() && ev.attempts[0].finalConfirmation === false && ev.reviewReason === "PROVIDER_FAILED_AFTER_REPORTED_PAID"
     && detail.json.case.systemDecisions.attempts[0].provider_reported_paid_at !== null && Object.values(unauth).every((s) => s === 401), { ev, unauth });
+  expect("8c. destination masked in the API itself: detail + queue network responses carry '••••••' + last 4 of the payee token and never the raw token (no 'destination' key)",
+    ev?.attempts?.[0]?.destinationMasked === `••••••${A.payee.slice(-4)}` && !dText.includes(A.payee) && !list.text.includes(A.payee) && !/"destination"\s*:/.test(dText + list.text), { masked: ev?.attempts?.[0]?.destinationMasked });
   // ---------------- 3. every accessible route to a new attempt ----------------
   const aWorker = await claim(A.job.id);
   const aSweep = (await rpc("claim_money_job", { p_job_id: null, p_lease_seconds: 5 })).data;
@@ -211,7 +213,10 @@ async function gate() {
     expect("7b. SOLANA_DIRECT_DEVNET finalized-chain semantics unchanged (DB authority, FIXTURE signature, no chain tx): CONFIRMED -> obligation PAID, no reported-paid evidence (fixture purged immediately)", sConf?.status === "CONFIRMED" && sOb === "PAID" && sAtts[0]?.provider_reported_paid_at === null && sPurged, { sConf: sConf?.status ?? sConf, sOb, sPurged });
   }
 
-  const retained = { opActions: (await db(`operator_review_actions?case_id=in.(${[A.job.id, B.job.id, C.job.id].join(",")})&select=id`)).length };
+  const opRows = await db(`operator_review_actions?case_id=in.(${[A.job.id, B.job.id, C.job.id].join(",")})&select=id,previous_state,resulting_state,safe_refs,reason`);
+  const auditRows = await db(`admin_audit_logs?select=metadata&order=created_at.desc&limit=200`);
+  expect("8d. no raw payout destination in retained operator review rows or recent admin audit metadata", ![A.payee, B.payee, C.payee].some((raw) => JSON.stringify(opRows).includes(raw) || JSON.stringify(auditRows).includes(raw)), { opRows: opRows.length });
+  const retained = { opActions: opRows.length };
   return { A, B, C, retained };
 }
 

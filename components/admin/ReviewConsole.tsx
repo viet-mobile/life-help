@@ -4,12 +4,12 @@ import { useCallback, useEffect, useState } from "react";
 
 type CaseRow = {
   caseType: "PAYMENT" | "MONEY_JOB"; caseId: string; kind: string; status: string; reason: string | null; amount: string | null;
-  token: string; network: string | null; destination: string | null; destinationSource: string | null; signatures: string[];
+  token: string; network: string | null; destinationMasked: string | null; destinationSource: string | null; signatures: string[];
   attemptCount: number | null; lastError: string | null; leaseHeld: boolean; closed: boolean; allowedActions: string[]; createdAt: string; updatedAt: string | null;
 };
 type PayoutEvidence = {
-  jobStatus: string | null; reviewReason: string | null; provider: string | null; network: string | null; businessStatus: string | null;
-  attempts: Array<{ attempt: number; state: string; provider: string; network: string; providerReportedPaidAt: string | null; finalConfirmation: boolean }>;
+  jobStatus: string | null; reviewReason: string | null; provider: string | null; network: string | null; businessStatus: string | null; obligationId: string | null;
+  attempts: Array<{ attempt: number; state: string; provider: string; network: string; attemptKey: string; destinationMasked: string | null; providerReportedPaidAt: string | null; finalConfirmation: boolean }>;
 };
 type Detail = {
   allowedActions: string[]; unresolved: boolean; facts: unknown; systemDecisions: unknown; operatorActions: unknown;
@@ -23,14 +23,15 @@ const short = (value: string | null | undefined) => (value ? `${value.slice(0, 6
  * Read-only per-attempt payout evidence (migration 023). "Provider reported payout paid" is the provider's own
  * claim - it is never shown as final: final confirmation is only an attempt in state CONFIRMED.
  */
-function PayoutEvidencePanel({ evidence }: { evidence: PayoutEvidence }) {
+export function PayoutEvidencePanel({ evidence }: { evidence: PayoutEvidence }) {
   return (
     <div className="space-y-1 rounded border p-2">
       <p className="font-semibold">Payout evidence (read-only)</p>
-      <p>Job {evidence.jobStatus ?? "—"} · reason {evidence.reviewReason ?? "—"} · obligation {evidence.businessStatus ?? "—"} · {evidence.provider ?? "—"} {evidence.network ?? ""}</p>
+      <p>Job {evidence.jobStatus ?? "—"} · reason {evidence.reviewReason ?? "—"} · obligation {short(evidence.obligationId)} {evidence.businessStatus ?? "—"} · {evidence.provider ?? "—"} {evidence.network ?? ""}</p>
       {evidence.attempts.map((a) => (
         <div key={a.attempt} className="border-t pt-1">
-          <p>Attempt {a.attempt} · {a.state} · {a.network}</p>
+          <p>Attempt {a.attempt} · {a.state} · {a.network} · key {short(a.attemptKey)}</p>
+          <p>Destination: {a.destinationMasked ?? "—"}</p>
           {a.providerReportedPaidAt && (
             <p className="rounded bg-amber-50 p-1" data-testid="provider-reported-paid">
               Provider reported payout paid: {a.providerReportedPaidAt}

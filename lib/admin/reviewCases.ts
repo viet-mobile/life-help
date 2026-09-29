@@ -1,11 +1,13 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { maskDestination } from "@/lib/admin/maskDestination";
 
 /**
  * Operator REVIEW_REQUIRED console data (migration 017). Read-only views over the existing ledger;
  * the only write path is operator_review_action(). Every select names its columns explicitly: signed
  * transaction bytes, keys and provider secrets are never read here, and customer private auth data is
- * never joined in.
+ * never joined in. Payout destinations are read only to derive a masked display value (maskDestination);
+ * the raw destination is never returned.
  */
 
 export type ReviewCaseType = "PAYMENT" | "MONEY_JOB";
@@ -17,7 +19,7 @@ export const MONEY_ACTIONS: ReviewAction[] = ["RETRY_RECONCILIATION", "REQUEUE_S
 export type ReviewCaseRow = {
   caseType: ReviewCaseType; caseId: string; kind: string; status: string; reason: string | null;
   amount: string | null; currency: string | null; token: string; network: string | null;
-  destination: string | null; destinationSource: string | null; signatures: string[];
+  destinationMasked: string | null; destinationSource: string | null; signatures: string[];
   obligationId: string | null; paymentIntentId: string | null; requestId: string | null;
   createdAt: string; updatedAt: string | null; attemptCount: number | null; lastError: string | null;
   leaseHeld: boolean; closed: boolean; allowedActions: string[];
@@ -60,7 +62,7 @@ export async function listReviewCases(client: SupabaseClient, filter: { caseType
       rows.push({
         caseType: "PAYMENT", caseId: intent.id, kind: `PAYMENT:${mine.map((t) => t.classification).join("+") || "REVIEW"}`, status: intent.status,
         reason: mine.map((t) => t.classification).join(", ") || null, amount: usdc(mine.reduce((sum, t) => sum + Number(t.amount_base_units ?? 0), 0)),
-        currency: intent.fiat_currency, token: "USDC", network: intent.network, destination: null,
+        currency: intent.fiat_currency, token: "USDC", network: intent.network, destinationMasked: null,
         destinationSource: (r.refundable_transfers?.length ?? 0) > 0 ? "PAYER_OF_SOURCE_SIGNATURE" : null,
         signatures: mine.map((t) => t.signature as string), obligationId: null, paymentIntentId: intent.id, requestId: intent.request_id,
         createdAt: intent.created_at, updatedAt: intent.updated_at, attemptCount: null, lastError: null, leaseHeld: false,
@@ -74,13 +76,13 @@ export async function listReviewCases(client: SupabaseClient, filter: { caseType
     for (const job of jobs ?? []) {
       const stuck = job.status !== "REVIEW_REQUIRED" && job.status !== "FAILED_PERMANENT" && (Number(job.failure_count) >= 3 || now - new Date(job.updated_at).getTime() > STUCK_AFTER_MS);
       if (job.status !== "REVIEW_REQUIRED" && job.status !== "FAILED_PERMANENT" && !stuck) continue;
-      const { data: attempts } = await client.from("money_movement_attempts").select("external_id, destination, state").eq("job_id", job.id).order("attempt_number");
+      const { data: attempts } = await client.from("money_movement_attempts").select("external_id, destination, network, state").eq("job_id", job.id).order("attempt_number");
       const r = await rules(client, "MONEY_JOB", job.id);
       const last = attempts?.[attempts.length - 1];
       rows.push({
         caseType: "MONEY_JOB", caseId: job.id, kind: `JOB:${job.obligation_type}${stuck ? ":STUCK" : ""}`, status: job.status,
         reason: job.last_error_code, amount: usdc(job.amount_base_units), currency: null, token: job.asset ?? "USDC", network: job.network,
-        destination: last?.destination ?? null, destinationSource: job.obligation_type === "REFUND" ? "PAYER_OF_VERIFIED_PAYMENT" : "OBLIGATION_PAYOUT_DESTINATION",
+        destinationMasked: maskDestination(last?.destination, last?.network), destinationSource: job.obligation_type === "REFUND" ? "PAYER_OF_VERIFIED_PAYMENT" : "OBLIGATION_PAYOUT_DESTINATION",
         signatures: (attempts ?? []).map((a) => a.external_id as string), obligationId: job.payout_obligation_id ?? job.service_refund_id, paymentIntentId: null, requestId: null,
         createdAt: job.created_at, updatedAt: job.updated_at, attemptCount: job.attempt_count, lastError: job.last_error_code,
         leaseHeld: !!job.claim_expires_at && new Date(job.claim_expires_at).getTime() > now, closed: r.closed === true, allowedActions: r.actions ?? [],
@@ -100,13 +102,13 @@ export async function listReviewCases(client: SupabaseClient, filter: { caseType
  * beneficiary receipt, NOT a LIFE.HELP payout confirmation. Final confirmation is only an attempt in state
  * CONFIRMED (and the obligation / refund status the ledger shows). Never derived from job codes or events.
  */
-type AttemptEvidenceRow = { attempt_number: number; state: string; provider: string; network: string; provider_reported_paid_at?: string | null };
+type AttemptEvidenceRow = { attempt_number: number; state: string; provider: string; network: string; external_id: string; destinationMasked: string | null; provider_reported_paid_at?: string | null };
 function payoutEvidence(job: Record<string, unknown> | null, attempts: AttemptEvidenceRow[], business: { status?: unknown } | null) {
   return {
     jobStatus: job?.status ?? null, reviewReason: job?.last_error_code ?? null, provider: job?.provider ?? null, network: job?.network ?? null,
-    businessStatus: business?.status ?? null,
+    businessStatus: business?.status ?? null, obligationId: job?.payout_obligation_id ?? job?.service_refund_id ?? null,
     attempts: attempts.map((a) => ({
-      attempt: a.attempt_number, state: a.state, provider: a.provider, network: a.network,
+      attempt: a.attempt_number, state: a.state, provider: a.provider, network: a.network, attemptKey: a.external_id, destinationMasked: a.destinationMasked,
       providerReportedPaidAt: a.provider_reported_paid_at ?? null, finalConfirmation: a.state === "CONFIRMED",
     })),
   };
@@ -138,11 +140,13 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
   const { data: obligation } = job?.payout_obligation_id ? await client.from("payout_obligations").select("id, kind, status, currency, gross_amount, platform_fee_amount, net_amount, fee_policy, payout_rail, request_id, referral_reward_id, chain_signature, created_at, submitted_at, paid_at").eq("id", job.payout_obligation_id).maybeSingle() : { data: null };
   const { data: refund } = job?.service_refund_id ? await client.from("service_refunds").select("id, reason, status, amount, currency, payment_intent_id, source_signature, asset_amount_base_units, chain_signature, created_at, completed_at").eq("id", job.service_refund_id).maybeSingle() : { data: null };
   const { data: providerEvidence } = await client.from("provider_events").select(PROVIDER_EVENT_COLUMNS).eq("money_job_id", caseId).order("received_at");
+  // The raw destination never leaves this function: every attempt row is rebuilt without it.
+  const safeAttempts = (attempts ?? []).map(({ destination, ...rest }) => ({ ...rest, destinationMasked: maskDestination(destination, rest.network) }));
   return {
     caseType, caseId, closed: r.closed === true, allowedActions: r.actions,
-    facts: { providerEvidence: providerEvidence ?? [], attemptsObservedExternally: (attempts ?? []).map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destination: a.destination, amountBaseUnits: a.amount_base_units, providerReportedPaidAt: a.provider_reported_paid_at ?? null })) },
-    systemDecisions: { job, attempts: attempts ?? [], obligation, refund },
-    payoutEvidence: payoutEvidence(job, attempts ?? [], obligation ?? refund ?? null),
+    facts: { providerEvidence: providerEvidence ?? [], attemptsObservedExternally: safeAttempts.map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destinationMasked: a.destinationMasked, amountBaseUnits: a.amount_base_units, providerReportedPaidAt: a.provider_reported_paid_at ?? null })) },
+    systemDecisions: { job, attempts: safeAttempts, obligation, refund },
+    payoutEvidence: payoutEvidence(job, safeAttempts, obligation ?? refund ?? null),
     operatorActions: operatorActions ?? [],
     unresolved: r.closed !== true && job?.status !== "CONFIRMED",
   };
