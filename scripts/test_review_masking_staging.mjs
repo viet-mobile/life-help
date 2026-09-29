@@ -54,6 +54,23 @@ const objRaw = (await db("provider_events?select=object_ref&limit=500")).map((r)
 expect(`5. raw internal identifiers absent from every review response checked (${opRaw.length} SYS operator ids, ${selRaw.length} Helper ids, ${objRaw.length} provider object refs in the ledger); no operator_id / helper_id / object_ref keys`,
   [...opRaw, ...selRaw, ...objRaw].every((v) => !idText.includes(v)) && !/"(operator_id|helper_id|object_ref)"\s*:/.test(idText), { opRaw: opRaw.length, selRaw: selRaw.length, objRaw: objRaw.length });
 expect("6. payment_reference unchanged and still returned in full (reconciliation evidence)", refs.length > 0 && refs.every((r) => r.ledger && r.api === r.ledger), refs.length);
+// ---- provider_event_id policy: masked in the queue's provider list; exact in the authorized case detail ----
+const queueFull = await get("/api/sys/review/cases?includeClosed=1");
+const queueJson = JSON.parse(queueFull.text);
+const listedEventIds = (await db("provider_events?processing_result=in.(UNMATCHED,REVIEW,REJECTED)&select=provider_event_id&limit=200")).map((r) => r.provider_event_id);
+expect(`7. queue provider list (${(queueJson.providerEvents ?? []).length} events): no raw provider_event_id (masked providerEventIdMasked, no 'provider_event_id' key); none of the ${listedEventIds.length} ledger event ids present`,
+  queueFull.status === 200 && (queueJson.providerEvents ?? []).every((e) => !("provider_event_id" in e) && "providerEventIdMasked" in e && !("object_ref" in e)) && listedEventIds.every((v) => !queueFull.text.includes(v)), { n: (queueJson.providerEvents ?? []).length });
+const [evRow] = await db("provider_events?money_job_id=not.is.null&select=provider_event_id,money_job_id,object_ref&order=received_at.desc&limit=1");
+if (evRow) {
+  const jd = await get(`/api/sys/review/cases/MONEY_JOB/${evRow.money_job_id}`);
+  const [att] = await db(`money_movement_attempts?job_id=eq.${evRow.money_job_id}&select=external_id,network&limit=1`);
+  const unauthEvt = [(await get(`/api/sys/review/cases/MONEY_JOB/${evRow.money_job_id}`, {})).status, (await get(`/api/sys/review/cases/MONEY_JOB/${evRow.money_job_id}`, { Authorization: `Bearer ${anonKey}` })).status];
+  expect("8. authorized MONEY_JOB case detail keeps the EXACT provider_event_id; the raw object_ref / LIFE.HELP attempt key (provider network) is absent there; unauthorized callers get 401 (cannot obtain the event id)",
+    jd.status === 200 && jd.text.includes(evRow.provider_event_id) && !jd.text.includes(evRow.object_ref) && (!att || !String(att.network).startsWith("provider:") || !jd.text.includes(att.external_id)) && unauthEvt.every((s) => s === 401),
+    { status: jd.status, unauthEvt });
+} else {
+  expect("8. authorized case detail keeps provider_event_id (no retained money-job provider event on staging to check)", false);
+}
 const [ledger] = await db(`payment_intents?id=eq.${probe}&select=recipient`);
 expect("4. the ledger still holds the full receiving wallet (display-only change)", typeof ledger?.recipient === "string" && ledger.recipient.length >= 32);
 if (summary().FAIL > 0) process.exit(1);

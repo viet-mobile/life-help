@@ -35,7 +35,7 @@ export function PayoutEvidencePanel({ evidence }: { evidence: PayoutEvidence }) 
       <p>Job {evidence.jobStatus ?? "—"} · reason {evidence.reviewReason ?? "—"} · obligation {short(evidence.obligationId)} {evidence.businessStatus ?? "—"} · {evidence.provider ?? "—"} {evidence.network ?? ""}</p>
       {evidence.attempts.map((a) => (
         <div key={a.attempt} className="border-t pt-1">
-          <p>Attempt {a.attempt} · {a.state} · {a.network} · key {short(a.attemptKey)}</p>
+          <p>Attempt {a.attempt} · {a.state} · {a.network} · key {a.attemptKey ?? "—"}</p>
           <p>Destination: {a.destinationMasked ?? "—"}</p>
           {a.providerReportedPaidAt && (
             <p className="rounded bg-amber-50 p-1" data-testid="provider-reported-paid">

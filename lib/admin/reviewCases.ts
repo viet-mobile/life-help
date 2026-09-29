@@ -1,6 +1,6 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { maskDestination, maskReference } from "@/lib/admin/maskDestination";
+import { maskAttemptKey, maskDestination, maskProviderEvidence, maskReference } from "@/lib/admin/maskDestination";
 
 /**
  * Operator REVIEW_REQUIRED console data (migration 017). Read-only views over the existing ledger;
@@ -9,8 +9,12 @@ import { maskDestination, maskReference } from "@/lib/admin/maskDestination";
  * never joined in. Payout destinations and payment receiving wallets (intent / observed recipients) are read
  * only to derive masked display values (maskDestination); the raw addresses are never returned. Likewise provider
  * object references, operator ids and Helper internal ids are read server-side only and returned as masked /
- * public display values (safe* helpers below). Payment references are intentionally returned in full: public
- * chain / payment references needed for reconciliation.
+ * public display values (safe* helpers below). LIFE.HELP attempt / idempotency keys on provider networks (and
+ * every copy: obligation / refund chain_signature, provider-hosted verified_signature) are masked too; on-chain
+ * transaction signatures stay in full (public chain evidence). provider_event_id: full only in the authorized
+ * case detail (replay / support investigation), masked in the queue's provider list. Payment references are
+ * intentionally returned in full: public chain / payment references needed for reconciliation. None of these
+ * display values is ever used for any decision.
  */
 
 export type ReviewCaseType = "PAYMENT" | "MONEY_JOB";
@@ -42,7 +46,8 @@ const PROVIDER_EVENT_COLUMNS = "provider, environment, provider_event_id, source
 export async function listProviderEventsNeedingReview(client: SupabaseClient) {
   const { data } = await client.from("provider_events").select(`${PROVIDER_EVENT_COLUMNS}, payment_intent_id, money_job_id`)
     .in("processing_result", ["UNMATCHED", "REVIEW", "REJECTED"]).order("received_at", { ascending: false }).limit(200);
-  return safeProviderEvents(data);
+  // Queue / list: the provider event id is masked here; the exact id stays in the authorized case detail.
+  return safeProviderEvents(data).map(({ provider_event_id, ...rest }) => ({ ...rest, providerEventIdMasked: maskReference(provider_event_id as string | null) }));
 }
 
 /** Provider evidence rows without the raw provider object reference (objectRefMasked for correlation). */
@@ -99,7 +104,7 @@ export async function listReviewCases(client: SupabaseClient, filter: { caseType
         caseType: "MONEY_JOB", caseId: job.id, kind: `JOB:${job.obligation_type}${stuck ? ":STUCK" : ""}`, status: job.status,
         reason: job.last_error_code, amount: usdc(job.amount_base_units), currency: null, token: job.asset ?? "USDC", network: job.network,
         destinationMasked: maskDestination(last?.destination, last?.network), destinationSource: job.obligation_type === "REFUND" ? "PAYER_OF_VERIFIED_PAYMENT" : "OBLIGATION_PAYOUT_DESTINATION",
-        signatures: (attempts ?? []).map((a) => a.external_id as string), obligationId: job.payout_obligation_id ?? job.service_refund_id, paymentIntentId: null, requestId: null,
+        signatures: (attempts ?? []).map((a) => maskAttemptKey(a.external_id as string, a.network as string) as string), obligationId: job.payout_obligation_id ?? job.service_refund_id, paymentIntentId: null, requestId: null,
         createdAt: job.created_at, updatedAt: job.updated_at, attemptCount: job.attempt_count, lastError: job.last_error_code,
         leaseHeld: !!job.claim_expires_at && new Date(job.claim_expires_at).getTime() > now, closed: r.closed === true, allowedActions: r.actions ?? [],
       });
@@ -118,13 +123,13 @@ export async function listReviewCases(client: SupabaseClient, filter: { caseType
  * beneficiary receipt, NOT a LIFE.HELP payout confirmation. Final confirmation is only an attempt in state
  * CONFIRMED (and the obligation / refund status the ledger shows). Never derived from job codes or events.
  */
-type AttemptEvidenceRow = { attempt_number: number; state: string; provider: string; network: string; external_id: string; destinationMasked: string | null; provider_reported_paid_at?: string | null };
-function payoutEvidence(job: Record<string, unknown> | null, attempts: AttemptEvidenceRow[], business: { status?: unknown } | null) {
+type AttemptEvidenceRow = { attempt_number: number; state: string; provider: string; network: string; attemptKeyDisplay: string | null; destinationMasked: string | null; provider_reported_paid_at?: string | null };
+function payoutEvidence(job: Record<string, unknown> | null, attempts: AttemptEvidenceRow[], business: Record<string, unknown> | null) {
   return {
     jobStatus: job?.status ?? null, reviewReason: job?.last_error_code ?? null, provider: job?.provider ?? null, network: job?.network ?? null,
     businessStatus: business?.status ?? null, obligationId: job?.payout_obligation_id ?? job?.service_refund_id ?? null,
     attempts: attempts.map((a) => ({
-      attempt: a.attempt_number, state: a.state, provider: a.provider, network: a.network, attemptKey: a.external_id, destinationMasked: a.destinationMasked,
+      attempt: a.attempt_number, state: a.state, provider: a.provider, network: a.network, attemptKey: a.attemptKeyDisplay, destinationMasked: a.destinationMasked,
       providerReportedPaidAt: a.provider_reported_paid_at ?? null, finalConfirmation: a.state === "CONFIRMED",
     })),
   };
@@ -155,14 +160,16 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
     // comparison with the intent's recipient happens HERE on the full values (display flag only; the ledger's own
     // classification - e.g. WRONG_RECIPIENT - remains the authority and is unchanged).
     const { recipient: intentRecipient, ...intentRest } = intent ?? ({} as Record<string, unknown>);
-    const safeIntent = intent ? { ...intentRest, recipientMasked: maskDestination(intentRecipient as string | null, intent.network) } : null;
+    const { verified_signature: intentEvidence, ...intentShown } = intentRest as Record<string, unknown>;
+    const safeIntent = intent ? { ...intentShown, verifiedEvidence: maskProviderEvidence(intentEvidence as string | null), recipientMasked: maskDestination(intentRecipient as string | null, intent.network) } : null;
+    const safeRefunds = (refunds ?? []).map(({ chain_signature, ...rest }) => ({ ...rest, chainSignatureDisplay: maskAttemptKey(chain_signature as string | null, intent?.network) }));
     const safeChain = (chain ?? []).map(({ recipient, ...rest }) => ({
       ...rest, recipientMasked: maskDestination(recipient, rest.network), recipientMatchesIntent: !!intent && recipient === intentRecipient,
     }));
     return {
       caseType, caseId, closed: r.closed === true, allowedActions: r.actions, refundableTransfers: r.refundable_transfers ?? [],
       facts: { observedOnChain: safeChain, providerEvidence: safeProviderEvents(providerEvidence) },
-      systemDecisions: { intent: safeIntent, events: events ?? [], refunds: refunds ?? [], request, priceSelections: safeSelections },
+      systemDecisions: { intent: safeIntent, events: events ?? [], refunds: safeRefunds, request, priceSelections: safeSelections },
       paymentEvidence: {
         intentStatus: intent?.status ?? null, network: intent?.network ?? null, mint: intent?.mint ?? null, receivingWalletMasked: safeIntent?.recipientMasked ?? null,
         reference: intent?.reference ?? null, reviewReasons: [...new Set(safeChain.map((t) => t.classification).filter(Boolean))],
@@ -178,12 +185,17 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
   const { data: refund } = job?.service_refund_id ? await client.from("service_refunds").select("id, reason, status, amount, currency, payment_intent_id, source_signature, asset_amount_base_units, chain_signature, created_at, completed_at").eq("id", job.service_refund_id).maybeSingle() : { data: null };
   const { data: providerEvidence } = await client.from("provider_events").select(PROVIDER_EVENT_COLUMNS).eq("money_job_id", caseId).order("received_at");
   // The raw destination never leaves this function: every attempt row is rebuilt without it.
-  const safeAttempts = (attempts ?? []).map(({ destination, ...rest }) => ({ ...rest, destinationMasked: maskDestination(destination, rest.network) }));
+  // ...nor does the raw LIFE.HELP attempt key on provider networks (masked; chain signatures stay public evidence).
+  const safeAttempts = (attempts ?? []).map(({ destination, external_id, ...rest }) => ({ ...rest, attemptKeyDisplay: maskAttemptKey(external_id, rest.network), destinationMasked: maskDestination(destination, rest.network) }));
+  const { chain_signature: obligationSig, ...obligationShown } = (obligation ?? {}) as Record<string, unknown>;
+  const safeObligation = obligation ? { ...obligationShown, chainSignatureDisplay: maskAttemptKey(obligationSig as string | null, job?.network) } : null;
+  const { chain_signature: refundSig, ...refundShown } = (refund ?? {}) as Record<string, unknown>;
+  const safeRefund = refund ? { ...refundShown, chainSignatureDisplay: maskAttemptKey(refundSig as string | null, job?.network) } : null;
   return {
     caseType, caseId, closed: r.closed === true, allowedActions: r.actions,
-    facts: { providerEvidence: safeProviderEvents(providerEvidence), attemptsObservedExternally: safeAttempts.map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destinationMasked: a.destinationMasked, amountBaseUnits: a.amount_base_units, providerReportedPaidAt: a.provider_reported_paid_at ?? null })) },
-    systemDecisions: { job, attempts: safeAttempts, obligation, refund },
-    payoutEvidence: payoutEvidence(job, safeAttempts, obligation ?? refund ?? null),
+    facts: { providerEvidence: safeProviderEvents(providerEvidence), attemptsObservedExternally: safeAttempts.map((a) => ({ attempt: a.attempt_number, attemptKey: a.attemptKeyDisplay, state: a.state, destinationMasked: a.destinationMasked, amountBaseUnits: a.amount_base_units, providerReportedPaidAt: a.provider_reported_paid_at ?? null })) },
+    systemDecisions: { job, attempts: safeAttempts, obligation: safeObligation, refund: safeRefund },
+    payoutEvidence: payoutEvidence(job, safeAttempts, safeObligation ?? safeRefund ?? null),
     operatorActions: safeOperatorActions(operatorActions),
     unresolved: r.closed !== true && job?.status !== "CONFIRMED",
   };

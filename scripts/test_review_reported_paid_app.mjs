@@ -16,7 +16,7 @@ registerHooks({
   },
 });
 const { reviewCaseDetail, listReviewCases, listProviderEventsNeedingReview } = await import(new URL("lib/admin/reviewCases.ts", root).href);
-const { maskDestination, maskReference } = await import(new URL("lib/admin/maskDestination.ts", root).href);
+const { maskAttemptKey, maskDestination, maskReference } = await import(new URL("lib/admin/maskDestination.ts", root).href);
 
 const { check, done } = checker();
 const db = await createDb();
@@ -53,7 +53,7 @@ const client = {
 await db.query("insert into public.payment_providers (code, environment, kind, enabled, approved_by, approved_at) values ('AIRWALLEX', 'SANDBOX', 'PSP', true, 'test', now())");
 for (const cap of ["CUSTOMER_PAYMENT", "HELPER_PAYOUT"]) await db.query("insert into public.payment_capability_policies (country, capability, provider, environment, rail, enabled, approved_by, approved_at) values ('KR', $1, 'AIRWALLEX', 'SANDBOX', 'AIRWALLEX_RAIL', true, 'test', now())", [cap]);
 let n = 0;
-async function payoutJob(label) {
+async function payoutJob(label, attemptNetwork = "provider:AIRWALLEX:SANDBOX") {
   n += 1;
   const sido = `RV${label}${n}`;
   const h = await f.helper(`RV${label}${n}`, { sido });
@@ -74,7 +74,7 @@ async function payoutJob(label) {
   const ob = await f.one("select * from public.payout_obligations where request_id = $1", [req]);
   const job = await f.jobFor({ obligationId: ob.id });
   const c = await f.rpc("claim_money_job", job.id, 60);
-  const prep = await f.rpc("prepare_money_attempt", job.id, c.job.lease_token, "AIRWALLEX", "provider:AIRWALLEX:SANDBOX", "KRW", 60000, `benef_${label}${n}_payee_token`, `lh_${job.id.replace(/-/g, "")}_1`, JSON.stringify({ kind: "HELPER_PAYOUT", reference: job.id }), "SIGNED-BYTES-MUST-NEVER-LEAK");
+  const prep = await f.rpc("prepare_money_attempt", job.id, c.job.lease_token, attemptNetwork.split(":")[1], attemptNetwork, "KRW", 60000, `benef_${label}${n}_payee_token`, `lh_${job.id.replace(/-/g, "")}_1`, JSON.stringify({ kind: "HELPER_PAYOUT", reference: job.id }), "SIGNED-BYTES-MUST-NEVER-LEAK");
   return { job, lease: c.job.lease_token, attemptId: prep.attempt_id, ob };
 }
 const due = (id) => db.query("update public.money_movement_jobs set next_retry_at = now() - interval '1 second', claim_expires_at = null where id = $1", [id]);
@@ -215,12 +215,45 @@ const sel = dH.systemDecisions.priceSelections[0];
 check("IC/ID. raw helper_id absent from the PAYMENT review JSON (no 'helper_id' key); the Helper's PUBLIC code (HLP-...) is shown for display only; no masked fallback needed when the public mapping exists",
   !!sel && !idJson.includes(hh.id) && !/"helper_id"\s*:/.test(idJson) && sel.helperPublicId === helperPublic && sel.helperIdMasked === null && /^HLP-/.test(helperPublic), sel);
 const matchedEvt = dAi.facts.providerEvidence.find((e) => e.provider_event_id === "evt_idmask_matched_0001");
-const unmatchedEvt = provList.find((e) => e.provider_event_id === "evt_idmask_unmatched_0001");
+const unmatchedEvt = provList.find((e) => e.objectRefMasked === "tr_••••••9X2F");
 check("IE. raw provider object_ref absent from provider evidence (money-job detail) and the provider review list (no 'object_ref' key)",
   !JSON.stringify(provList).includes(RAW_UNMATCHED) && !JSON.stringify(dAi.facts.providerEvidence).includes(aKey) && !/"object_ref"\s*:/.test(idJson) && !!matchedEvt && !!unmatchedEvt);
 check("IF. masked object refs stay useful for correlation: provider-style prefix + last 4 ('tr_••••••9X2F'; the LIFE.HELP key 'lh_••••••' + last 4)", matchedEvt?.objectRefMasked === `lh_••••••${aKey.slice(-4)}` && unmatchedEvt?.objectRefMasked === "tr_••••••9X2F", { matched: matchedEvt?.objectRefMasked, unmatched: unmatchedEvt?.objectRefMasked });
 const htmlI = renderToStaticMarkup(createElement(CaseDetailSections, { detail: dAi })) + renderToStaticMarkup(createElement(CaseDetailSections, { detail: dH }));
+
+// ---- LIFE.HELP attempt keys + every copy; provider_event_id policy ----
+// A payout confirmed through a PROVIDER_FINAL_STATUS registry row (MOCK_PROVIDER, disabled: prepare-time network
+// only) -> the ledger copies the attempt key into payout_obligations.chain_signature.
+const K = await payoutJob("KEYS", "provider:MOCK_PROVIDER:SANDBOX");
+const kKey = `lh_${K.job.id.replace(/-/g, "")}_1`;
+const kConf = await f.rpc("record_money_attempt_result", K.job.id, K.lease, K.attemptId, "CONFIRMED", null);
+const kOb = await f.one("select status, chain_signature from public.payout_obligations where id = $1", [K.ob.id]);
+const dK = await reviewCaseDetail(client, "MONEY_JOB", K.job.id);
+const k2Key = kKey;
+const dK2 = dK;
+const aIntentId = (await f.one("select payment_intent_id from public.payout_obligations where id = $1", [A.ob.id])).payment_intent_id;
+const aIntentRow = await f.one("select verified_signature from public.payment_intents where id = $1", [aIntentId]);
+const dAp = await reviewCaseDetail(client, "PAYMENT", aIntentId);
+const queueRows = await listReviewCases(client, { includeClosed: true });
+const keyJson = JSON.stringify([queueRows, provList]);
+const detailJson = JSON.stringify([dAi, dK, dK2, dAp]);
+check("KA. raw LIFE.HELP attempt key absent from the review QUEUE JSON (MONEY_JOB rows' signatures are masked; provider list masked)", !keyJson.includes(aKey) && queueRows.filter((r) => r.caseType === "MONEY_JOB").some((r) => r.signatures.includes(`lh_••••••${aKey.slice(-4)}`)));
+check("KB. raw attempt key absent from the review DETAIL JSON (attempt rows, facts, payout evidence, provider evidence) and the provider-hosted payment evidence (verified_signature -> verifiedEvidence 'provider:AIRWALLEX:pay_••••••xxxx')",
+  !detailJson.includes(aKey) && !detailJson.includes(kKey) && !detailJson.includes(k2Key) && !/"(external_id|verified_signature|chain_signature)"\s*:/.test(detailJson)
+  && !detailJson.includes(aIntentRow.verified_signature.split(":")[2]) && dAp.systemDecisions.intent.verifiedEvidence === `provider:AIRWALLEX:${maskReference(aIntentRow.verified_signature.split(":")[2])}`, { verified: dAp.systemDecisions.intent.verifiedEvidence });
+const htmlK = htmlI + renderToStaticMarkup(createElement(CaseDetailSections, { detail: dK })) + renderToStaticMarkup(createElement(CaseDetailSections, { detail: dAp })) + renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dAi.payoutEvidence }));
 fs.rmSync(compiledUrl, { force: true });
+check("KC. raw attempt key absent from rendered HTML (detail sections + payout panel); the masked key is shown", !htmlK.includes(aKey) && !htmlK.includes(kKey) && htmlK.includes(`lh_••••••${aKey.slice(-4)}`));
+check("KD. masked attempt key is stable and useful for correlation: 'lh_' prefix + last 4, identical across queue, attempt rows, payout evidence and provider evidence (objectRefMasked)",
+  dAi.payoutEvidence.attempts[0].attemptKey === `lh_••••••${aKey.slice(-4)}` && dAi.systemDecisions.attempts[0].attemptKeyDisplay === dAi.payoutEvidence.attempts[0].attemptKey
+  && dAi.facts.attemptsObservedExternally[0].attemptKey === dAi.payoutEvidence.attempts[0].attemptKey && matchedEvt.objectRefMasked === dAi.payoutEvidence.attempts[0].attemptKey && maskAttemptKey(aKey, "provider:AIRWALLEX:SANDBOX") === maskAttemptKey(aKey, "provider:AIRWALLEX:SANDBOX"));
+const solSig = dS.systemDecisions.attempts[0].attemptKeyDisplay;
+check("KD2. on-chain attempts keep the public transaction signature in full (chain evidence, not a LIFE.HELP key)", typeof solSig === "string" && solSig.length >= 80 && !solSig.includes("••"));
+check("KB2. the ledger's copy of the key (obligation chain_signature of a confirmed provider payout) is masked in the detail (chainSignatureDisplay), never returned raw",
+  kConf?.status === "CONFIRMED" && kOb.status === "PAID" && kOb.chain_signature === kKey && dK.systemDecisions.obligation.chainSignatureDisplay === `lh_••••••${kKey.slice(-4)}` && !("chain_signature" in dK.systemDecisions.obligation) && !JSON.stringify(dK).includes(kKey), { kConf: kConf?.status, ob: kOb.status, shown: dK.systemDecisions.obligation?.chainSignatureDisplay });
+check("KE. the ledger keeps the raw attempt keys unchanged (money_movement_attempts.external_id; provider payment evidence)", (await f.one("select external_id from public.money_movement_attempts where id = $1", [A.attemptId])).external_id === aKey && aIntentRow.verified_signature.startsWith("provider:AIRWALLEX:pay_"));
+check("KG. the queue's provider-event list never returns the raw provider_event_id (providerEventIdMasked instead; no 'provider_event_id' key)", !JSON.stringify(provList).includes("evt_idmask_unmatched_0001") && !/"provider_event_id"\s*:/.test(JSON.stringify(provList)) && unmatchedEvt?.providerEventIdMasked === maskReference("evt_idmask_unmatched_0001"));
+check("KH. the authorized MONEY_JOB case detail keeps the EXACT provider_event_id (replay / support investigation)", dAi.facts.providerEvidence.some((e) => e.provider_event_id === "evt_idmask_matched_0001"));
 check("IH. rendered console HTML (facts / system decisions / operator actions sections) contains none of the raw operator id / helper id / provider-issued object ref / wallet, and shows the safe values (the LIFE.HELP attempt key itself stays visible as the attempt key, by design)", !htmlI.includes(RAW_OPERATOR) && !htmlI.includes(hh.id) && !htmlI.includes(RAW_UNMATCHED) && !htmlI.includes(platform) && htmlI.includes("SYS admin session") && htmlI.includes(helperPublic) && htmlI.includes(`lh_••••••${aKey.slice(-4)}`));
 const rawOp = await f.one("select count(*)::int n from public.operator_review_actions where operator_id = $1", [RAW_OPERATOR]);
 const rawEvt = await f.one("select count(*)::int n from public.provider_events where object_ref = $1", [RAW_UNMATCHED]);

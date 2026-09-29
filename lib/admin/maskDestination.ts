@@ -38,3 +38,21 @@ export function maskReference(reference: string | null | undefined): string | nu
   if (body.length >= 8) return `${prefix}${MASK}${body.slice(-2)}`;
   return `${prefix}${MASK}`;
 }
+
+const PROVIDER_NETWORK = /^provider:/;
+/**
+ * An attempt's external id for DISPLAY: on provider networks it is the LIFE.HELP idempotency key ("lh_...", also
+ * the provider object reference) -> masked with its prefix ("lh_••••••A1B2"). On chain networks it is the public
+ * transaction signature (reconciliation evidence, like any on-chain signature) -> unchanged.
+ */
+export function maskAttemptKey(externalId: string | null | undefined, network: string | null | undefined): string | null {
+  if (typeof externalId !== "string" || !externalId) return null;
+  return PROVIDER_NETWORK.test(String(network ?? "")) ? maskReference(externalId) : externalId;
+}
+
+/** A provider-hosted payment's evidence ("provider:CODE:<provider payment id>") with the provider id masked. */
+export function maskProviderEvidence(value: string | null | undefined): string | null {
+  if (typeof value !== "string" || !value) return null;
+  const m = value.match(/^(provider:[A-Z][A-Z0-9_]{1,39}:)(.+)$/);
+  return m ? `${m[1]}${maskReference(m[2])}` : value;
+}

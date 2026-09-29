@@ -115,8 +115,8 @@ async function gate() {
   const row = (list.json?.cases ?? []).find((c) => c.caseId === A.job.id);
   const detail = await api(`/api/sys/review/cases/MONEY_JOB/${A.job.id}`);
   const dText = detail.text;
-  expect("8a. the 017 review queue lists the reported-paid failure (job, reason PROVIDER_FAILED_AFTER_REPORTED_PAID, provider network) and the detail shows job + attempt (provider, network, state, key) + error code; no secret / signed bytes",
-    list.status === 200 && !!row && row.reason === "PROVIDER_FAILED_AFTER_REPORTED_PAID" && detail.status === 200 && dText.includes(A.key(1)) && dText.includes("provider:LHFIXTURE:SANDBOX") && dText.includes("PROVIDER_FAILED_AFTER_REPORTED_PAID")
+  expect("8a. the 017 review queue lists the reported-paid failure (job, reason PROVIDER_FAILED_AFTER_REPORTED_PAID, provider network) and the detail shows job + attempt (provider, network, state, MASKED attempt key - the raw LIFE.HELP key is absent from queue + detail) + error code; no secret / signed bytes",
+    list.status === 200 && !!row && row.reason === "PROVIDER_FAILED_AFTER_REPORTED_PAID" && detail.status === 200 && !dText.includes(A.key(1)) && !list.text.includes(A.key(1)) && dText.includes(`lh_••••••${A.key(1).slice(-4)}`) && row.signatures.includes(`lh_••••••${A.key(1).slice(-4)}`) && dText.includes("provider:LHFIXTURE:SANDBOX") && dText.includes("PROVIDER_FAILED_AFTER_REPORTED_PAID")
     && !dText.includes(settlementToken) && !/signed_payload|signedPayload/.test(dText), { list: list.status, row: !!row, detail: detail.status });
   const ev = detail.json?.case?.payoutEvidence;
   const hdrs = async () => (await import("./lib/stagingPushHarness.mjs")).env.TEST_SUPABASE_ANON_KEY;
