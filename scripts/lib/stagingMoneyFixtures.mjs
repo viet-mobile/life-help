@@ -14,6 +14,8 @@ export function base58Of32() {
   const bytes = crypto.randomBytes(32);
   let n = BigInt("0x" + bytes.toString("hex")), s = "";
   while (n > 0n) { s = B58[Number(n % 58n)] + s; n /= 58n; }
+  // base58 keeps each leading zero byte as '1' (without it ~1/256 values decode to 31 bytes: RPC "WrongSize").
+  for (const b of bytes) { if (b === 0) s = "1" + s; else break; }
   return s;
 }
 export const letters = (n = 8) => Array.from(crypto.randomBytes(n), (x) => String.fromCharCode(65 + (x % 26))).join("");
