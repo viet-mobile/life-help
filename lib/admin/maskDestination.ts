@@ -20,3 +20,21 @@ export function maskDestination(destination: string | null | undefined, network:
   if (value.length >= 8) return `${MASK}${value.slice(-2)}`;
   return MASK;
 }
+
+/**
+ * Display masking for opaque INTERNAL / PROVIDER identifiers in operator surfaces (provider object references,
+ * operator ids, internal ids without a public mapping). A short provider-style prefix ("pi_", "tr_", "lh_") is
+ * kept for correlation; the body is masked, keeping at most the last 4 characters (2 for 8-11 characters,
+ * none below 8). Deterministic; never used for any decision; null / empty -> null.
+ */
+const REF_PREFIX = /^([A-Za-z]{2,5}_)/;
+export function maskReference(reference: string | null | undefined): string | null {
+  if (typeof reference !== "string") return null;
+  const value = reference.trim();
+  if (!value) return null;
+  const prefix = value.match(REF_PREFIX)?.[1] ?? "";
+  const body = value.slice(prefix.length);
+  if (body.length >= 12) return `${prefix}${MASK}${body.slice(-4)}`;
+  if (body.length >= 8) return `${prefix}${MASK}${body.slice(-2)}`;
+  return `${prefix}${MASK}`;
+}

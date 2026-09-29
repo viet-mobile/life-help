@@ -67,6 +67,17 @@ export function PaymentEvidencePanel({ evidence }: { evidence: PaymentEvidence }
   );
 }
 
+/** Facts / system decisions / operator actions exactly as the (already least-exposure) review API returned them. */
+export function CaseDetailSections({ detail }: { detail: Pick<Detail, "facts" | "systemDecisions" | "operatorActions"> }) {
+  return (
+    <>
+      <details open><summary className="font-semibold">Facts (observed on chain)</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.facts, null, 1)}</pre></details>
+      <details><summary className="font-semibold">System decisions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.systemDecisions, null, 1)}</pre></details>
+      <details><summary className="font-semibold">Operator actions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.operatorActions, null, 1)}</pre></details>
+    </>
+  );
+}
+
 /** Minimal operator console: queue, filters, case detail, allowed actions only, confirmation for money actions. */
 export function ReviewConsole() {
   const [rows, setRows] = useState<CaseRow[]>([]);
@@ -153,9 +164,7 @@ export function ReviewConsole() {
               <h2 className="font-bold">{selected.kind} · {short(selected.caseId)}</h2>
               {detail.payoutEvidence && <PayoutEvidencePanel evidence={detail.payoutEvidence} />}
               {detail.paymentEvidence && <PaymentEvidencePanel evidence={detail.paymentEvidence} />}
-              <details open><summary className="font-semibold">Facts (observed on chain)</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.facts, null, 1)}</pre></details>
-              <details><summary className="font-semibold">System decisions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.systemDecisions, null, 1)}</pre></details>
-              <details><summary className="font-semibold">Operator actions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.operatorActions, null, 1)}</pre></details>
+              <CaseDetailSections detail={detail} />
               <p className="font-semibold">{detail.unresolved ? "UNRESOLVED" : "Resolved / closed"}</p>
               {detail.refundableTransfers && detail.refundableTransfers.length > 0 && (
                 <select aria-label="source transfer" className="w-full rounded border px-2 py-1" value={signature} onChange={(e) => setSignature(e.target.value)}>

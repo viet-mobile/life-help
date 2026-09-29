@@ -15,8 +15,8 @@ registerHooks({
     return nextResolve(specifier, context);
   },
 });
-const { reviewCaseDetail, listReviewCases } = await import(new URL("lib/admin/reviewCases.ts", root).href);
-const { maskDestination } = await import(new URL("lib/admin/maskDestination.ts", root).href);
+const { reviewCaseDetail, listReviewCases, listProviderEventsNeedingReview } = await import(new URL("lib/admin/reviewCases.ts", root).href);
+const { maskDestination, maskReference } = await import(new URL("lib/admin/maskDestination.ts", root).href);
 
 const { check, done } = checker();
 const db = await createDb();
@@ -143,7 +143,7 @@ const cacheDir = new URL("node_modules/.cache/", root);
 fs.mkdirSync(cacheDir, { recursive: true });
 const compiledUrl = new URL(`lh-review-console-${process.pid}.mjs`, cacheDir);
 fs.writeFileSync(compiledUrl, compiled.code);
-const { PayoutEvidencePanel, PaymentEvidencePanel } = await import(compiledUrl.href);
+const { PayoutEvidencePanel, PaymentEvidencePanel, CaseDetailSections } = await import(compiledUrl.href);
 const { createElement } = await import("react");
 const { renderToStaticMarkup } = await import("react-dom/server");
 const htmlA = renderToStaticMarkup(createElement(PayoutEvidencePanel, { evidence: dAm.payoutEvidence }));
@@ -176,7 +176,6 @@ check("PA. payment case: the platform receiving wallet is returned masked (ABCD�
 const payJson = JSON.stringify([dP, payRows]);
 check("PB. the raw platform wallet and the raw observed recipient appear NOWHERE in the PAYMENT detail / queue JSON (no 'recipient' key)", !payJson.includes(platform) && !payJson.includes(lookalike) && !/"recipient"\s*:/.test(payJson));
 const htmlP = renderToStaticMarkup(createElement(PaymentEvidencePanel, { evidence: ev }));
-fs.rmSync(compiledUrl, { force: true });
 check("PC. rendered HTML shows 'Receiving wallet: <masked>' and the masked recipients; neither raw address appears in text / attributes / comments", htmlP.includes(`Receiving wallet: ${masked}`) && !htmlP.includes(platform) && !htmlP.includes(lookalike) && htmlP.includes("(NOT our receiving wallet)"), htmlP.slice(0, 300));
 check("PD. the ledger keeps the FULL wallet values (intent recipient + observed recipients unchanged)", ledgerIntent.recipient === platform && wrongTx?.recipient === lookalike && rightTx?.recipient === platform);
 check("PE/PF. chain verification + wrong-recipient detection still use the FULL addresses: the lookalike transfer (identical masked form) is classified WRONG_RECIPIENT by the ledger and flagged recipientMatchesIntent=false; the genuine one matches; wrong-recipient transfers are never refundable",
@@ -186,6 +185,51 @@ check("PE/PF. chain verification + wrong-recipient detection still use the FULL 
 const opRow = await f.all("select safe_refs, previous_state, resulting_state, reason from public.operator_review_actions where case_id = $1", [pi.intent_id]);
 const payRules = (await client.rpc("review_case_actions", { p_case_type: "PAYMENT", p_case_id: pi.intent_id })).data;
 check("PG. review audit metadata (operator_review_actions) carries no raw wallet; payment-case actions unchanged (detail == review_case_actions)", opRow.length === 1 && !JSON.stringify(opRow).includes(platform) && !JSON.stringify(opRow).includes(lookalike) && JSON.stringify(dP.allowedActions) === JSON.stringify(payRules.actions));
+
+// ---- internal identifiers: operator_id, helper_id, provider object_ref (display only; raw stays server-side) ----
+const RAW_OPERATOR = "lh-sys-admin-7f3k9q2m";
+await f.rpc("operator_review_action", "MONEY_JOB", A.job.id, "NOTE", RAW_OPERATOR, "SYS_SESSION", "sys note", crypto.randomUUID(), null);
+await f.rpc("operator_review_action", "MONEY_JOB", A.job.id, "NOTE", "platform-token", "PLATFORM_TOKEN", "token note", crypto.randomUUID(), null);
+const aKey = `lh_${A.job.id.replace(/-/g, "")}_1`;
+const RAW_UNMATCHED = "tr_UNMATCHEDrawprovider9X2F";
+const evtArgs = (id, type, obj) => ({ p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_provider_account: "acct", p_provider_event_id: id, p_source: "WEBHOOK", p_event_type: type, p_provider_event_type: type.toLowerCase(), p_object_ref: obj, p_life_help_reference: null, p_amount_minor: null, p_currency: null, p_occurred_at: null, p_provider_sequence: null, p_payload_sha256: crypto.randomBytes(32).toString("hex"), p_signature_verified: true });
+await named("ingest_provider_event", evtArgs("evt_idmask_matched_0001", "PAYOUT_FAILED", aKey));
+await named("ingest_provider_event", evtArgs("evt_idmask_unmatched_0001", "PAYOUT_FAILED", RAW_UNMATCHED));
+const hh = await f.helper("IDMASK", { sido: "IDMASK" });
+const hp = await f.rpc("upsert_helper_service_price", hh.id, "clog-clearing", "toilet-simple", JSON.stringify({ pricing_mode: "FIXED", currency: "KRW", base_price: 60000, materials_policy: "INCLUDED" }), true);
+const hco = await f.helperCheckout(hp, "IDMASKCU", "IDMASK");
+const hq = await f.rpc("create_payment_quote", hco.checkout_id, "IDMASKCU", "solana-devnet", MINT, 1400, "TEST_SANDBOX_FX", "fixed-test-rate", 600);
+const hi = await f.rpc("create_payment_intent", hq.quote_id, "IDMASKCU", platform, b58());
+await f.rpc("record_payment_observation", hi.intent_id, "solana-devnet", b58() + b58(), 1, MINT, platform, Number(hi.amount_base_units), true, true, "finalized"); // genuine payment -> activation -> price selection
+await f.rpc("record_payment_observation", hi.intent_id, "solana-devnet", b58() + b58(), 2, MINT, lookalike, Number(hi.amount_base_units), true, true, "finalized"); // then a wrong-recipient transfer (review evidence)
+const dH = await reviewCaseDetail(client, "PAYMENT", hi.intent_id);
+const dAi = await reviewCaseDetail(client, "MONEY_JOB", A.job.id);
+const provList = await listProviderEventsNeedingReview(client);
+const helperPublic = (await f.one("select helper_id from public.helpers where id = $1", [hh.id])).helper_id;
+const idJson = JSON.stringify([dAi, dH, provList]);
+const sysRow = dAi.operatorActions.find((x) => x.operator_kind === "SYS_SESSION");
+const tokRow = dAi.operatorActions.find((x) => x.operator_kind === "PLATFORM_TOKEN");
+check("IA/IB. raw operator_id absent from the review JSON (no 'operator_id' key); operators stay identifiable: trusted label from operator_kind ('SYS admin session' + masked id; 'Platform operator token')",
+  !idJson.includes(RAW_OPERATOR) && !/"operator_id"\s*:/.test(idJson) && sysRow?.operatorLabel === "SYS admin session" && sysRow.operatorIdMasked === "••••••9q2m" && tokRow?.operatorLabel === "Platform operator token" && tokRow.operatorIdMasked === null, { sysRow, tokRow });
+const sel = dH.systemDecisions.priceSelections[0];
+check("IC/ID. raw helper_id absent from the PAYMENT review JSON (no 'helper_id' key); the Helper's PUBLIC code (HLP-...) is shown for display only; no masked fallback needed when the public mapping exists",
+  !!sel && !idJson.includes(hh.id) && !/"helper_id"\s*:/.test(idJson) && sel.helperPublicId === helperPublic && sel.helperIdMasked === null && /^HLP-/.test(helperPublic), sel);
+const matchedEvt = dAi.facts.providerEvidence.find((e) => e.provider_event_id === "evt_idmask_matched_0001");
+const unmatchedEvt = provList.find((e) => e.provider_event_id === "evt_idmask_unmatched_0001");
+check("IE. raw provider object_ref absent from provider evidence (money-job detail) and the provider review list (no 'object_ref' key)",
+  !JSON.stringify(provList).includes(RAW_UNMATCHED) && !JSON.stringify(dAi.facts.providerEvidence).includes(aKey) && !/"object_ref"\s*:/.test(idJson) && !!matchedEvt && !!unmatchedEvt);
+check("IF. masked object refs stay useful for correlation: provider-style prefix + last 4 ('tr_••••••9X2F'; the LIFE.HELP key 'lh_••••••' + last 4)", matchedEvt?.objectRefMasked === `lh_••••••${aKey.slice(-4)}` && unmatchedEvt?.objectRefMasked === "tr_••••••9X2F", { matched: matchedEvt?.objectRefMasked, unmatched: unmatchedEvt?.objectRefMasked });
+const htmlI = renderToStaticMarkup(createElement(CaseDetailSections, { detail: dAi })) + renderToStaticMarkup(createElement(CaseDetailSections, { detail: dH }));
+fs.rmSync(compiledUrl, { force: true });
+check("IH. rendered console HTML (facts / system decisions / operator actions sections) contains none of the raw operator id / helper id / provider-issued object ref / wallet, and shows the safe values (the LIFE.HELP attempt key itself stays visible as the attempt key, by design)", !htmlI.includes(RAW_OPERATOR) && !htmlI.includes(hh.id) && !htmlI.includes(RAW_UNMATCHED) && !htmlI.includes(platform) && htmlI.includes("SYS admin session") && htmlI.includes(helperPublic) && htmlI.includes(`lh_••••••${aKey.slice(-4)}`));
+const rawOp = await f.one("select count(*)::int n from public.operator_review_actions where operator_id = $1", [RAW_OPERATOR]);
+const rawEvt = await f.one("select count(*)::int n from public.provider_events where object_ref = $1", [RAW_UNMATCHED]);
+const rawSel = await f.one("select count(*)::int n from public.request_price_selections where helper_id = $1", [hh.id]);
+check("IG. ledger / audit tables keep the full values (operator_review_actions.operator_id, provider_events.object_ref, request_price_selections.helper_id)", rawOp.n === 1 && rawEvt.n === 1 && rawSel.n >= 1, { rawOp, rawEvt, rawSel });
+const hiLedger = await f.one("select reference from public.payment_intents where id = $1", [hi.intent_id]);
+check("II. payment_reference unchanged and still returned in full where operationally useful (PAYMENT detail + paymentEvidence), for reconciliation", dH.systemDecisions.intent.reference === hiLedger.reference && dH.paymentEvidence.reference === hiLedger.reference);
+check("IK. maskReference: prefix kept, last 4 / last 2 / nothing by body length, null-safe, deterministic",
+  maskReference("pi_3NabcdefGHIJKL9X2") === "pi_••••••L9X2" && maskReference(null) === null && maskReference("  ") === null && maskReference("abc") === "••••••" && maskReference("abcdefgh") === "••••••gh" && maskReference("tr_short") === "tr_••••••" && maskReference("platform-token") === "••••••oken" && maskReference(RAW_OPERATOR) === maskReference(RAW_OPERATOR));
 
 // ---- static: surfaces ----
 const read = (p) => fs.readFileSync(new URL(p, root), "utf8");
