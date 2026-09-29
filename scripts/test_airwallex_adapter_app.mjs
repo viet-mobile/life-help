@@ -56,11 +56,12 @@ for (const cap of ["CUSTOMER_PAYMENT", "HELPER_PAYOUT", "REFUND"]) await db.quer
 const finality = (await one("select payout_finality from public.payment_providers where code = 'AIRWALLEX' and environment = 'SANDBOX'")).payout_finality;
 
 // ---------------- fake Airwallex (documented endpoints only) ----------------
-const awx = { fault: null, filterBroken: false, logins: 0, calls: [], intents: new Map(), refunds: new Map(), transfers: new Map(), byRequest: new Map(), tokens: new Set(), clock: Date.parse("2026-09-29T00:00:00Z") };
+const awx = { fault: null, filterBroken: false, listFault: null, pageSize: 100, refundPageSize: 100, refundFaultFromPage: null, urls: [], createdRequestIds: [], logins: 0, calls: [], intents: new Map(), refunds: new Map(), transfers: new Map(), byRequest: new Map(), tokens: new Set(), clock: Date.parse("2026-09-29T00:00:00Z") };
 const reply = (status, body) => ({ status, json: async () => body });
 async function fakeFetch(url, init) {
   const u = new URL(url);
   awx.calls.push(`${init.method} ${u.pathname}`);
+  if (init.method === "GET") awx.urls.push(`${u.pathname}${u.search}`);
   if (u.pathname === "/api/v1/authentication/login") {
     if (init.headers["x-client-id"] !== "test-client" || init.headers["x-api-key"] !== "test-key") return reply(401, { code: "unauthorized" });
     awx.logins += 1;
@@ -75,20 +76,39 @@ async function fakeFetch(url, init) {
     // processed but the response was lost. Both surface to the client as a transport error.
     if (awx.fault === "before") { awx.fault = null; throw new Error("ECONNRESET"); }
     const prior = awx.byRequest.get(body.request_id);
-    if (prior) return reply(201, prior); // documented: same request_id -> the original object, no duplicate
-    const created = { id: `${prefix}_${crypto.randomBytes(6).toString("hex")}`, ...obj };
+    // Documented for transfers: a reused request_id is a duplicate only within 7 days - after that the fake
+    // (like Airwallex) would happily create a SECOND object. Recovery must never get here after 7 days.
+    if (prior && (prefix !== "trf" || awx.clock - Date.parse(prior.created_at) < 7 * 86400_000)) return reply(201, prior);
+    awx.createdRequestIds.push(body.request_id);
+    const created = { id: `${prefix}_${crypto.randomBytes(6).toString("hex")}`, created_at: new Date(awx.clock).toISOString(), ...obj };
     store.set(created.id, created); awx.byRequest.set(body.request_id, created);
     if (awx.fault === "after") { awx.fault = null; throw new Error("ETIMEDOUT"); }
     return reply(201, created);
   };
+  const lookupFault = () => {
+    if (awx.listFault === "network") throw new Error("ECONNRESET");
+    if (awx.listFault === "5xx") return reply(503, { code: "service_unavailable" });
+    if (awx.listFault === "malformed") return reply(200, { data: "not a list" });
+    return null;
+  };
   if (init.method === "GET" && u.pathname === "/api/v1/transfers") {
+    const bad = lookupFault(); if (bad) return bad;
     const rid = u.searchParams.get("request_id");
-    return reply(200, { items: [...awx.transfers.values()].filter((t) => awx.filterBroken || t.request_id === rid), page_after: null });
+    // Documented: without page, only the last 30 days; page=0 on the first request = complete history.
+    const page = u.searchParams.get("page");
+    const all = [...awx.transfers.values()].filter((t) => (awx.filterBroken || t.request_id === rid) && (page !== null || awx.clock - Date.parse(t.created_at) <= 30 * 86400_000));
+    const start = page === null ? 0 : Number(page);
+    const end = start + awx.pageSize;
+    if (awx.listFault === "loop") return reply(200, { items: all.slice(0, awx.pageSize), page_after: "1" });
+    return reply(200, { items: all.slice(start, end), page_after: end < all.length ? String(end) : "" });
   }
   if (init.method === "GET" && u.pathname === "/api/v1/pa/refunds") {
+    const num = Number(u.searchParams.get("page_num"));
+    if (awx.refundFaultFromPage !== null && num >= awx.refundFaultFromPage) throw new Error("ECONNRESET");
+    const bad = lookupFault(); if (bad) return bad;
     const pid = u.searchParams.get("payment_intent_id");
     const all = [...awx.refunds.values()].filter((r) => r.payment_intent_id === pid);
-    const size = Number(u.searchParams.get("page_size")), num = Number(u.searchParams.get("page_num"));
+    const size = Math.min(Number(u.searchParams.get("page_size")), awx.refundPageSize);
     return reply(200, { items: all.slice(num * size, (num + 1) * size), has_more: (num + 1) * size < all.length });
   }
   if (u.pathname === "/api/v1/pa/payment_intents/create") return create(awx.intents, "int", { request_id: body.request_id, amount: Number(body.amount), currency: body.currency, merchant_order_id: body.merchant_order_id, metadata: body.metadata, status: "REQUIRES_PAYMENT_METHOD" });
@@ -347,6 +367,109 @@ await rerun(v1.job.id);
 check("V2. two refunds for one request_id -> REVIEW (PROVIDER_OBJECT_AMBIGUOUS)", (await jobRow(v1.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(v1.job.id)).last_error_code === "PROVIDER_OBJECT_AMBIGUOUS");
 const noCtx = await adapter.queryRefund("lh_some_key_000001", { providerPaymentId: null });
 check("V3. a refund lookup without the ledger payment binding fails closed (AMBIGUOUS -> REVIEW), never a blind re-create", noCtx.status === "AMBIGUOUS");
+
+// ================= recovery hardening: complete history, pagination, UNKNOWN != zero, 7-day boundary =================
+const backdateAttempt = async (jobId, ms) => {
+  await db.exec("alter table public.money_movement_attempts disable trigger user");
+  await db.query("update public.money_movement_attempts set prepared_at = prepared_at - ($2 || ' milliseconds')::interval where job_id = $1", [jobId, String(ms)]);
+  await db.exec("alter table public.money_movement_attempts enable trigger user");
+};
+const DAY = 86400_000;
+const lostBefore = async (label) => { const j = await awxPayoutJob(label, `benef_${label}`); awx.fault = "before"; await engine.runMoneyJob(client, bridge, j.job.id); return { ...j, key: (await attemptsOf(j.job.id))[0].external_id }; };
+
+const rw1 = await awxPayoutJob("W1", "benef_W1");
+await engine.runMoneyJob(client, bridge, rw1.job.id);
+const rw1Key = (await attemptsOf(rw1.job.id))[0].external_id;
+transfersFor(rw1Key)[0].created_at = new Date(awx.clock - 40 * DAY).toISOString(); // older than the default 30-day list window
+await backdateAttempt(rw1.job.id, 40 * DAY);
+const rw1c = creates(), rw1urls = awx.urls.length;
+const rw1b = await rerun(rw1.job.id);
+const rw1first = awx.urls.slice(rw1urls).find((x) => x.startsWith("/api/v1/transfers?"));
+check("H1. complete-history lookup: the first transfers lookup sends request_id + page=0 (lifts the default 30-day window); a 40-day-old matching transfer is FOUND and validated - not treated as missing, not recreated (even though its 7-day window has passed)",
+  /request_id=/.test(rw1first ?? "") && /[?&]page=0(&|$)/.test(rw1first ?? "") && rw1b.status === "CONFIRMING" && creates() === rw1c && transfersFor(rw1Key).length === 1, { rw1first, rw1b });
+
+awx.pageSize = 1; awx.filterBroken = true; // provider returns every transfer, one per page: the match is deep in the history
+const rw2urls = awx.urls.length;
+const rw2 = await rerun(rw1.job.id);
+const rw2pages = awx.urls.slice(rw2urls).filter((x) => x.startsWith("/api/v1/transfers?")).length;
+awx.transfers.set("trf_dup_W1", { ...transfersFor(rw1Key)[0], id: "trf_dup_W1" });
+const rw2dup = await rerun(rw1.job.id);
+awx.pageSize = 100; awx.filterBroken = false; awx.transfers.delete("trf_dup_W1");
+check("H2. pagination followed to completion (page_after): with one object per page the single match is found across " + rw2pages + " pages; a duplicate on a later page is seen -> REVIEW (PROVIDER_OBJECT_AMBIGUOUS)",
+  rw2.status === "CONFIRMING" && rw2pages > 3 && (await jobRow(rw1.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(rw1.job.id)).last_error_code === "PROVIDER_OBJECT_AMBIGUOUS", { rw2, rw2dup, rw2pages });
+
+const unknownCases = {};
+for (const fault of ["network", "5xx", "malformed", "loop"]) {
+  const j = await lostBefore(`W3${fault.slice(0, 3)}`);
+  awx.listFault = fault;
+  const c = creates();
+  const r = await rerun(j.job.id);
+  awx.listFault = null;
+  unknownCases[fault] = { status: r.status, code: r.code, created: creates() - c, transfers: transfersFor(j.key).length, attempt: (await attemptsOf(j.job.id))[0].state, attempts: (await attemptsOf(j.job.id)).length };
+}
+check("H3. lookup network failure / 5xx / malformed body / never-ending pagination are UNKNOWN, not zero: job RETRYABLE (PROVIDER_LOOKUP_UNKNOWN), attempt still live, NO create call, no transfer, no new attempt",
+  Object.values(unknownCases).every((x) => x.status === "RETRYABLE" && x.code === "PROVIDER_LOOKUP_UNKNOWN" && x.created === 0 && x.transfers === 0 && x.attempt === "PREPARED" && x.attempts === 1), unknownCases);
+
+const rw4 = await lostBefore("W4");
+await backdateAttempt(rw4.job.id, 6 * DAY);
+const rw4c = creates();
+const rw4r = await rerun(rw4.job.id);
+check("H4. zero transfers + attempt age 6 days (< 7-day request_id window) -> the SAME stored request_id is re-sent once; one transfer under that key; still one attempt",
+  rw4r.code === "AWAITING_NETWORK" && creates() === rw4c + 1 && transfersFor(rw4.key).length === 1 && (await attemptsOf(rw4.job.id)).length === 1, rw4r);
+
+const rw5 = await lostBefore("W5");
+await backdateAttempt(rw5.job.id, 7 * DAY);
+const rw5c = creates();
+const rw5r = await rerun(rw5.job.id);
+const rw5b = await rerun(rw5.job.id);
+const rw5ok = (await jobRow(rw5.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(rw5.job.id)).last_error_code === "PROVIDER_IDEMPOTENCY_WINDOW_EXPIRED" && creates() === rw5c && transfersFor(rw5.key).length === 0;
+const rw6 = await lostBefore("W6");
+await backdateAttempt(rw6.job.id, 7 * DAY - 30 * 60_000); // inside the 1-hour safety margin before day 7
+const rw6c = creates();
+await rerun(rw6.job.id);
+check("H5. zero transfers + attempt age >= 7 days -> REVIEW_REQUIRED (PROVIDER_IDEMPOTENCY_WINDOW_EXPIRED), NO create; the clock-skew margin closes the window 1 hour early (6d23h30m -> REVIEW as well); a later run does not create either",
+  rw5ok && transfersFor(rw5.key).length === 0
+  && (await jobRow(rw6.job.id)).last_error_code === "PROVIDER_IDEMPOTENCY_WINDOW_EXPIRED" && creates() === rw6c, { rw5r, rw5b, rw6: await jobRow(rw6.job.id), c: creates() - rw6c, a: await attemptsOf(rw6.job.id) });
+
+const rw7 = await lostBefore("W7");
+const blindClient = { rpc: client.rpc, from: (t) => (t === "money_movement_attempts" ? { select() { return this; }, eq() { return this; }, async maybeSingle() { return { data: null, error: null }; } } : client.from(t)) };
+const blindBridge = providerMoneyAdapter(blindClient, adapter);
+await f.makeDue(rw7.job.id); await f.expireLease(rw7.job.id);
+const rw7c = creates();
+await engine.runMoneyJob(client, blindBridge, rw7.job.id);
+check("H6. missing authoritative attempt timestamp -> REVIEW_REQUIRED (PROVIDER_CREATE_TIME_UNKNOWN), NO create", (await jobRow(rw7.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(rw7.job.id)).last_error_code === "PROVIDER_CREATE_TIME_UNKNOWN" && creates() === rw7c);
+
+// ---- refunds ----
+const x1 = await awxRefundJob("X1");
+for (let i = 0; i < 3; i += 1) awx.refunds.set(`rfd_other_X1_${i}`, { id: `rfd_other_X1_${i}`, request_id: `other_req_${i}`, payment_intent_id: x1.payId, amount: 1, currency: "KRW", status: "SETTLED" });
+awx.refundPageSize = 2;
+const x1r = await engine.runMoneyJob(client, bridge, x1.job.id);
+const x1Key = (await attemptsOf(x1.job.id))[0].external_id;
+const x1pages = awx.urls.filter((x) => x.startsWith("/api/v1/pa/refunds?") && x.includes(encodeURIComponent(x1.payId))).map((x) => new URL(`https://x${x}`).searchParams.get("page_num"));
+check("X1. refund on page 2: refunds of the ledger-bound payment listed page by page until has_more=false; the exact request_id match on page 2 is found (job CONFIRMING, no second refund)",
+  x1r.status === "CONFIRMING" && x1pages.includes("1") && [...awx.refunds.values()].filter((r) => r.request_id === x1Key).length === 1, { x1r, x1pages });
+
+const x2 = await awxRefundJob("X2");
+for (let i = 0; i < 3; i += 1) awx.refunds.set(`rfd_other_X2_${i}`, { id: `rfd_other_X2_${i}`, request_id: `other2_req_${i}`, payment_intent_id: x2.payId, amount: 1, currency: "KRW", status: "SETTLED" });
+awx.fault = "before";
+await engine.runMoneyJob(client, bridge, x2.job.id);
+const x2Key = (await attemptsOf(x2.job.id))[0].external_id;
+awx.refundFaultFromPage = 1; // page 0 answers has_more=true, page 1 fails
+const rcX2 = refundCreates();
+const x2r = await rerun(x2.job.id);
+awx.refundFaultFromPage = 0; // the very first page fails
+const x3r = await rerun(x2.job.id);
+awx.refundFaultFromPage = null;
+check("X2 / X3. has_more=true first page + failing page 2, and a failing first page: UNKNOWN (RETRYABLE, PROVIDER_LOOKUP_UNKNOWN) - a partial page is never zero, no refund create",
+  x2r.status === "RETRYABLE" && x2r.code === "PROVIDER_LOOKUP_UNKNOWN" && x3r.code === "PROVIDER_LOOKUP_UNKNOWN" && refundCreates() === rcX2 && [...awx.refunds.values()].filter((r) => r.request_id === x2Key).length === 0, { x2r, x3r });
+const x4r = await rerun(x2.job.id);
+awx.refundPageSize = 100;
+check("X4. refund: zero matches after COMPLETE pagination -> REVIEW (PROVIDER_IDEMPOTENCY_WINDOW_UNDOCUMENTED): Airwallex documents no refund request_id dedupe window, so the refund is never re-sent blind", (await jobRow(x2.job.id)).status === "REVIEW_REQUIRED" && (await jobRow(x2.job.id)).last_error_code === "PROVIDER_IDEMPOTENCY_WINDOW_UNDOCUMENTED" && refundCreates() === rcX2, x4r);
+
+const allKeys = new Set((await db.query("select external_id from public.money_movement_attempts where network = 'provider:AIRWALLEX:SANDBOX'")).rows.map((r) => r.external_id));
+const multiAttempt = (await one("select count(*)::int n from (select job_id from public.money_movement_attempts where network = 'provider:AIRWALLEX:SANDBOX' group by job_id having count(*) > 1) x")).n;
+check("H7. no new request_id is ever generated during recovery: every transfer / refund create carried a persisted attempt key, and no Airwallex job ever got a second attempt",
+  awx.createdRequestIds.filter((r) => !r.startsWith("lh-pi-")).every((r) => allKeys.has(r)) && multiAttempt === 0, { multiAttempt });
 
 // ================= auth / gates / static =================
 const loginsSoFar = awx.logins;

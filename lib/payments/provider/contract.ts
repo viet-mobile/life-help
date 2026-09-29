@@ -86,6 +86,13 @@ export interface PaymentProviderAdapter {
   readonly code: string;
   readonly environment: ProviderEnvironment;
   readonly kind: ProviderKind;
+  /**
+   * How long the provider DOCUMENTS that a reused idempotency key is deduplicated on create, per object kind
+   * (ms). Recovery may re-send the persisted create under the same key only inside this window (measured from
+   * the persisted LIFE.HELP attempt time); outside it - or when null (undocumented) - an unobserved create goes
+   * to REVIEW instead. Infinity only for a provider whose dedupe is permanent by construction (the mock).
+   */
+  readonly createIdempotencyWindowMs: { REFUND: number | null; PAYOUT: number | null };
   /** Hosted payment for a ledger intent (amount / currency / reference come from the ledger). */
   createPaymentSession(input: PaymentSessionInput): Promise<PaymentSession>;
   queryPayment(providerPaymentId: string): Promise<PaymentStatusResult>;

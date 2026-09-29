@@ -16,6 +16,9 @@ import { providerNetwork, type PaymentProviderAdapter } from "@/lib/payments/pro
  * Chain vocabulary of the engine maps as: FAILED_ONCHAIN = "terminal failure at the rail"; NOT_FOUND never
  * expires for an idempotent provider (the persisted request is simply re-submitted).
  */
+/** Clock-skew margin: the create-retry boundary closes this much BEFORE the provider's documented window ends. */
+export const IDEMPOTENCY_WINDOW_SAFETY_MARGIN_MS = 3600 * 1000;
+
 type Request = { kind: "REFUND" | "HELPER_PAYOUT" | "REFERRAL_PAYOUT"; amountMinor: string; currency: string; reference: string; payeeToken: string | null; providerPaymentId: string | null };
 
 export function providerMoneyAdapter(client: SupabaseClient, provider: PaymentProviderAdapter): MoneyAdapter & { readonly asset: string } {
@@ -71,8 +74,28 @@ export function providerMoneyAdapter(client: SupabaseClient, provider: PaymentPr
       // under the same key (the engine never mints a new key for it).
       const req = request(attempt);
       const isRefund = req.kind === "REFUND";
-      const status = isRefund ? await provider.queryRefund(attempt.external_id, { providerPaymentId: req.providerPaymentId }) : await provider.queryPayout(attempt.external_id);
-      if (status.status === "NOT_FOUND") return { kind: "NOT_FOUND", expired: false };
+      let status;
+      try {
+        status = isRefund ? await provider.queryRefund(attempt.external_id, { providerPaymentId: req.providerPaymentId }) : await provider.queryPayout(attempt.external_id);
+      } catch {
+        // Lookup outcome UNKNOWN (transport / 5xx / malformed / unfinished pagination): never "zero", never a create.
+        throw new MoneyMovementError("PROVIDER_LOOKUP_UNKNOWN", "RETRYABLE");
+      }
+      if (status.status === "NOT_FOUND") {
+        // Re-sending the persisted create under the SAME key is only safe while the provider still dedupes that
+        // key. Boundary = the provider's documented window, measured from the attempt's prepared_at (persisted, immutable,
+        // written BEFORE the first create call - the earliest authoritative create time).
+        // This is a create-retry safety boundary only; it never makes anything final.
+        const window = provider.createIdempotencyWindowMs[isRefund ? "REFUND" : "PAYOUT"];
+        if (window !== Number.POSITIVE_INFINITY) {
+          if (window === null) return { kind: "MISMATCH", code: "PROVIDER_IDEMPOTENCY_WINDOW_UNDOCUMENTED" };
+          const { data: row } = await client.from("money_movement_attempts").select("prepared_at").eq("id", attempt.attempt_id).maybeSingle();
+          const createdAt = row?.prepared_at ? Date.parse(String(row.prepared_at)) : NaN;
+          if (!Number.isFinite(createdAt)) return { kind: "MISMATCH", code: "PROVIDER_CREATE_TIME_UNKNOWN" };
+          if (Date.now() - createdAt >= window - IDEMPOTENCY_WINDOW_SAFETY_MARGIN_MS) return { kind: "MISMATCH", code: "PROVIDER_IDEMPOTENCY_WINDOW_EXPIRED" };
+        }
+        return { kind: "NOT_FOUND", expired: false };
+      }
       if (status.status === "AMBIGUOUS") return { kind: "MISMATCH", code: "PROVIDER_OBJECT_AMBIGUOUS" };
       if (status.target !== undefined && status.target !== (isRefund ? req.providerPaymentId : req.payeeToken)) return { kind: "MISMATCH", code: "PROVIDER_TARGET_MISMATCH" };
       if (status.amount && (status.amount.amountMinor.toString() !== attempt.amount_base_units || status.amount.currency !== attempt.asset)) {

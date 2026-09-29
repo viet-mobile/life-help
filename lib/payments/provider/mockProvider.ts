@@ -45,6 +45,8 @@ export type MockScript = {
 export class MockPaymentProvider implements PaymentProviderAdapter {
   readonly code = MOCK_PROVIDER_CODE;
   readonly kind = "MOCK" as const;
+  // The mock keeps every idempotency key forever (deterministic in-memory store).
+  readonly createIdempotencyWindowMs = { REFUND: Number.POSITIVE_INFINITY, PAYOUT: Number.POSITIVE_INFINITY };
   readonly environment: ProviderEnvironment;
   readonly account: string;
   script: MockScript = { payment: "HELD", refund: "CONFIRMED", payout: "CONFIRMED", pollFailure: false, misreportAmountBy: BigInt(0) };

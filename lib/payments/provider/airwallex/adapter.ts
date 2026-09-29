@@ -14,13 +14,17 @@ import { mapAirwallexEvent, verifyAirwallexSignature } from "@/lib/payments/prov
  *                                                     returns the original intent instead of a duplicate)
  *   refund    POST /api/v1/pa/refunds/create           (request_id = the refund job's idempotency key; the
  *             GET  /api/v1/pa/refunds?payment_intent_id  provider payment id is the ledger's bound reference.
- *                                                     The refund list has no request_id filter: list the refunds
- *                                                     of that ledger-bound payment and match request_id exactly)
+ *                                                     The refund list has no request_id filter: list EVERY page
+ *                                                     (page_num / has_more) of that ledger-bound payment, then
+ *                                                     match request_id exactly. No request_id dedupe window is
+ *                                                     documented for refunds -> window null (fail closed))
  *   payout    POST /api/v1/transfers/create            (request_id = the payout job's idempotency key; amount,
- *             GET  /api/v1/transfers?request_id=       currency, beneficiary from the ledger / verified destination.
- *                                                     Documented request_id filter = recovery after an uncertain
- *                                                     create: 0 -> not observed (same request re-submitted under
- *                                                     the same key), 1 -> validated, >1 -> AMBIGUOUS -> REVIEW)
+ *             GET  /api/v1/transfers?request_id=&page=0  currency, beneficiary from the ledger / verified destination.
+ *                                                     page=0 on the first request lifts the default 30-day list
+ *                                                     window (complete history); page_after is followed to the end.
+ *                                                     Create dedupes a reused request_id for 7 days (documented).)
+ * Lookups classify 0 / 1 / >1 ONLY after complete pagination. A transport error, non-2xx, malformed body or an
+ * unfinished pagination throws AirwallexLookupError (UNKNOWN) - never "zero", so it can never trigger a create.
  * No provider object id is stored or trusted: every lookup is derived from the LIFE.HELP key + ledger.
  * Status normalization (documented Airwallex lifecycles):
  *   PaymentIntent SUCCEEDED -> HELD; REQUIRES_CAPTURE -> AUTHORIZED; CANCELLED -> CANCELLED; others -> PENDING
@@ -31,6 +35,14 @@ import { mapAirwallexEvent, verifyAirwallexSignature } from "@/lib/payments/prov
  * Nothing here is reachable at runtime yet: the registry never resolves AIRWALLEX (commercial gate).
  */
 export const AIRWALLEX_PROVIDER_CODE = "AIRWALLEX";
+/** Documented: "Payout creation requests with a request_id that has been used in the past 7 days are treated as duplicated". */
+export const AIRWALLEX_TRANSFER_REQUEST_ID_WINDOW_MS = 7 * 24 * 3600 * 1000;
+const MAX_LOOKUP_PAGES = 50;
+
+/** A lookup whose outcome is not known (never to be read as "no object"). */
+export class AirwallexLookupError extends Error {
+  constructor(code: string) { super(`PROVIDER_LOOKUP_UNKNOWN_${code}`); this.name = "AirwallexLookupError"; }
+}
 
 type Json = Record<string, unknown>;
 const str = (v: unknown) => (typeof v === "string" ? v : null);
@@ -38,6 +50,7 @@ const str = (v: unknown) => (typeof v === "string" ? v : null);
 export class AirwallexAdapter implements PaymentProviderAdapter {
   readonly code = AIRWALLEX_PROVIDER_CODE;
   readonly kind = "PSP" as const;
+  readonly createIdempotencyWindowMs = { REFUND: null, PAYOUT: AIRWALLEX_TRANSFER_REQUEST_ID_WINDOW_MS };
   readonly environment: ProviderEnvironment;
   private readonly http: AirwallexHttpClient;
   private readonly webhookToleranceMs: number;
@@ -104,15 +117,27 @@ export class AirwallexAdapter implements PaymentProviderAdapter {
     return (Array.isArray(items) ? (items as Json[]) : []).filter((o) => o && str(o.request_id) === key);
   }
 
+  /** GET a list page; anything but a well-formed 2xx list is UNKNOWN (never zero). */
+  private async listPage(path: string): Promise<Json> {
+    let body: Json | null;
+    try { body = await this.http.request<Json>("GET", path); } catch (e) {
+      throw new AirwallexLookupError(e instanceof AirwallexApiError ? `HTTP_${e.status}` : "TRANSPORT");
+    }
+    if (!body || typeof body !== "object" || !Array.isArray(body.items)) throw new AirwallexLookupError("MALFORMED");
+    return body;
+  }
+
   async queryRefund(key: string, context: RefundQueryContext): Promise<TransferStatusResult> {
     if (!context?.providerPaymentId) return { status: "AMBIGUOUS", amount: null, failureCode: "REFUND_PAYMENT_BINDING_MISSING" };
     const matches: Json[] = [];
-    for (let page = 0; page < 20; page += 1) {
-      const body = await this.http.request<Json>("GET", `/api/v1/pa/refunds?payment_intent_id=${encodeURIComponent(context.providerPaymentId)}&page_num=${page}&page_size=100`);
+    let complete = false;
+    for (let page = 0; page < MAX_LOOKUP_PAGES; page += 1) {
+      const body = await this.listPage(`/api/v1/pa/refunds?payment_intent_id=${encodeURIComponent(context.providerPaymentId)}&page_num=${page}&page_size=100`);
       matches.push(...AirwallexAdapter.exact(body.items, key));
-      if (body.has_more !== true) break;
-      if (page === 19) return { status: "AMBIGUOUS", amount: null, failureCode: "REFUND_LIST_UNBOUNDED" };
+      if (typeof body.has_more !== "boolean") throw new AirwallexLookupError("MALFORMED");
+      if (!body.has_more) { complete = true; break; }
     }
+    if (!complete) throw new AirwallexLookupError("PAGINATION_INCOMPLETE");
     if (matches.length === 0) return { status: "NOT_FOUND", amount: null, failureCode: null };
     if (matches.length > 1) return { status: "AMBIGUOUS", amount: null, failureCode: "MULTIPLE_REFUNDS_FOR_REQUEST_ID" };
     const b = matches[0];
@@ -127,8 +152,20 @@ export class AirwallexAdapter implements PaymentProviderAdapter {
   }
 
   async queryPayout(key: string): Promise<TransferStatusResult> {
-    const body = await this.http.request<Json>("GET", `/api/v1/transfers?request_id=${encodeURIComponent(key)}&page_size=10`);
-    const matches = AirwallexAdapter.exact(body.items, key);
+    const matches: Json[] = [];
+    const seen = new Set<string>();
+    let cursor = "0"; // page=0 on the first request: complete history, not the default 30-day window
+    let complete = false;
+    for (let i = 0; i < MAX_LOOKUP_PAGES; i += 1) {
+      const body = await this.listPage(`/api/v1/transfers?request_id=${encodeURIComponent(key)}&page=${encodeURIComponent(cursor)}&page_size=100`);
+      matches.push(...AirwallexAdapter.exact(body.items, key));
+      const next = body.page_after;
+      if (next === undefined || next === null || next === "") { complete = true; break; }
+      if (typeof next !== "string" || seen.has(next) || next === cursor) throw new AirwallexLookupError("PAGINATION_INVALID");
+      seen.add(next);
+      cursor = next;
+    }
+    if (!complete) throw new AirwallexLookupError("PAGINATION_INCOMPLETE");
     if (matches.length === 0) return { status: "NOT_FOUND", amount: null, failureCode: null };
     if (matches.length > 1) return { status: "AMBIGUOUS", amount: null, failureCode: "MULTIPLE_TRANSFERS_FOR_REQUEST_ID" };
     const b = matches[0];
