@@ -5,7 +5,7 @@
 import { base, db, env, recorder, rpc, settlementToken } from "./lib/stagingPushHarness.mjs";
 import { STAGING_RECIPIENT } from "./lib/stagingMoneyFixtures.mjs";
 
-const { expect, summary } = recorder();
+const { expect, notTestable, summary } = recorder();
 const operator = { Authorization: `Bearer ${settlementToken}` };
 const get = async (path, headers = operator) => { const r = await fetch(`${base}${path}`, { headers }); return { status: r.status, text: await r.text() }; };
 const mask = (v) => `${v.slice(0, 4)}…${v.slice(-4)}`;
@@ -60,16 +60,21 @@ const queueJson = JSON.parse(queueFull.text);
 const listedEventIds = (await db("provider_events?processing_result=in.(UNMATCHED,REVIEW,REJECTED)&select=provider_event_id&limit=200")).map((r) => r.provider_event_id);
 expect(`7. queue provider list (${(queueJson.providerEvents ?? []).length} events): no raw provider_event_id (masked providerEventIdMasked, no 'provider_event_id' key); none of the ${listedEventIds.length} ledger event ids present`,
   queueFull.status === 200 && (queueJson.providerEvents ?? []).every((e) => !("provider_event_id" in e) && "providerEventIdMasked" in e && !("object_ref" in e)) && listedEventIds.every((v) => !queueFull.text.includes(v)), { n: (queueJson.providerEvents ?? []).length });
-const [evRow] = await db("provider_events?money_job_id=not.is.null&select=provider_event_id,money_job_id,object_ref&order=received_at.desc&limit=1");
+const evCandidates = await db("provider_events?or=(money_job_id.not.is.null,payment_intent_id.not.is.null)&select=provider_event_id,money_job_id,payment_intent_id,object_ref&order=received_at.desc&limit=100");
+let evRow = null;
+for (const e of evCandidates) { // skip events whose fixture job / intent was purged
+  if (e.money_job_id && (await db(`money_movement_jobs?id=eq.${e.money_job_id}&select=id`)).length) { evRow = { ...e, caseType: "MONEY_JOB", caseId: e.money_job_id }; break; }
+  if (e.payment_intent_id && (await db(`payment_intents?id=eq.${e.payment_intent_id}&select=id`)).length) { evRow = { ...e, caseType: "PAYMENT", caseId: e.payment_intent_id }; break; }
+}
 if (evRow) {
-  const jd = await get(`/api/sys/review/cases/MONEY_JOB/${evRow.money_job_id}`);
-  const [att] = await db(`money_movement_attempts?job_id=eq.${evRow.money_job_id}&select=external_id,network&limit=1`);
-  const unauthEvt = [(await get(`/api/sys/review/cases/MONEY_JOB/${evRow.money_job_id}`, {})).status, (await get(`/api/sys/review/cases/MONEY_JOB/${evRow.money_job_id}`, { Authorization: `Bearer ${anonKey}` })).status];
-  expect("8. authorized MONEY_JOB case detail keeps the EXACT provider_event_id; the raw object_ref / LIFE.HELP attempt key (provider network) is absent there; unauthorized callers get 401 (cannot obtain the event id)",
+  const jd = await get(`/api/sys/review/cases/${evRow.caseType}/${evRow.caseId}`);
+  const [att] = evRow.money_job_id ? await db(`money_movement_attempts?job_id=eq.${evRow.money_job_id}&select=external_id,network&limit=1`) : [];
+  const unauthEvt = [(await get(`/api/sys/review/cases/${evRow.caseType}/${evRow.caseId}`, {})).status, (await get(`/api/sys/review/cases/${evRow.caseType}/${evRow.caseId}`, { Authorization: `Bearer ${anonKey}` })).status];
+  expect(`8. authorized ${evRow.caseType} case detail keeps the EXACT provider_event_id; the raw object_ref / LIFE.HELP attempt key (provider network) is absent there; unauthorized callers get 401 (cannot obtain the event id)`,
     jd.status === 200 && jd.text.includes(evRow.provider_event_id) && !jd.text.includes(evRow.object_ref) && (!att || !String(att.network).startsWith("provider:") || !jd.text.includes(att.external_id)) && unauthEvt.every((s) => s === 401),
     { status: jd.status, unauthEvt });
 } else {
-  expect("8. authorized case detail keeps provider_event_id (no retained money-job provider event on staging to check)", false);
+  notTestable("8. authorized case detail keeps the exact provider_event_id", "every retained staging provider event belongs to a purged fixture job / intent, and a new one needs an enabled provider (forbidden); proven on the real chain locally (test_review_reported_paid_app KH)");
 }
 const [ledger] = await db(`payment_intents?id=eq.${probe}&select=recipient`);
 expect("4. the ledger still holds the full receiving wallet (display-only change)", typeof ledger?.recipient === "string" && ledger.recipient.length >= 32);
