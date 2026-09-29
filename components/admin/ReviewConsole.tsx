@@ -7,12 +7,43 @@ type CaseRow = {
   token: string; network: string | null; destination: string | null; destinationSource: string | null; signatures: string[];
   attemptCount: number | null; lastError: string | null; leaseHeld: boolean; closed: boolean; allowedActions: string[]; createdAt: string; updatedAt: string | null;
 };
+type PayoutEvidence = {
+  jobStatus: string | null; reviewReason: string | null; provider: string | null; network: string | null; businessStatus: string | null;
+  attempts: Array<{ attempt: number; state: string; provider: string; network: string; providerReportedPaidAt: string | null; finalConfirmation: boolean }>;
+};
 type Detail = {
   allowedActions: string[]; unresolved: boolean; facts: unknown; systemDecisions: unknown; operatorActions: unknown;
   refundableTransfers?: Array<{ signature: string; classification: string; amount_base_units: string }>;
+  payoutEvidence?: PayoutEvidence;
 };
 const MONEY_ACTIONS = ["RETRY_RECONCILIATION", "REQUEUE_SAFE", "INITIATE_REFUND"];
 const short = (value: string | null | undefined) => (value ? `${value.slice(0, 6)}…${value.slice(-4)}` : "—");
+
+/**
+ * Read-only per-attempt payout evidence (migration 023). "Provider reported payout paid" is the provider's own
+ * claim - it is never shown as final: final confirmation is only an attempt in state CONFIRMED.
+ */
+function PayoutEvidencePanel({ evidence }: { evidence: PayoutEvidence }) {
+  return (
+    <div className="space-y-1 rounded border p-2">
+      <p className="font-semibold">Payout evidence (read-only)</p>
+      <p>Job {evidence.jobStatus ?? "—"} · reason {evidence.reviewReason ?? "—"} · obligation {evidence.businessStatus ?? "—"} · {evidence.provider ?? "—"} {evidence.network ?? ""}</p>
+      {evidence.attempts.map((a) => (
+        <div key={a.attempt} className="border-t pt-1">
+          <p>Attempt {a.attempt} · {a.state} · {a.network}</p>
+          {a.providerReportedPaidAt && (
+            <p className="rounded bg-amber-50 p-1" data-testid="provider-reported-paid">
+              Provider reported payout paid: {a.providerReportedPaidAt}
+              <br />
+              <span className="text-slate-600">Reported by the provider only - not final, not beneficiary receipt, not a LIFE.HELP payout confirmation. No new attempt can be created for this job.</span>
+            </p>
+          )}
+          {a.finalConfirmation && <p className="text-emerald-700">Final confirmation recorded for this attempt.</p>}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 /** Minimal operator console: queue, filters, case detail, allowed actions only, confirmation for money actions. */
 export function ReviewConsole() {
@@ -98,6 +129,7 @@ export function ReviewConsole() {
           {selected && detail && (
             <section className="space-y-3 rounded border bg-white p-3 text-xs">
               <h2 className="font-bold">{selected.kind} · {short(selected.caseId)}</h2>
+              {detail.payoutEvidence && <PayoutEvidencePanel evidence={detail.payoutEvidence} />}
               <details open><summary className="font-semibold">Facts (observed on chain)</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.facts, null, 1)}</pre></details>
               <details><summary className="font-semibold">System decisions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.systemDecisions, null, 1)}</pre></details>
               <details><summary className="font-semibold">Operator actions</summary><pre className="whitespace-pre-wrap">{JSON.stringify(detail.operatorActions, null, 1)}</pre></details>

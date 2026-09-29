@@ -118,8 +118,17 @@ async function gate() {
   expect("8a. the 017 review queue lists the reported-paid failure (job, reason PROVIDER_FAILED_AFTER_REPORTED_PAID, provider network) and the detail shows job + attempt (provider, network, state, key) + error code; no secret / signed bytes",
     list.status === 200 && !!row && row.reason === "PROVIDER_FAILED_AFTER_REPORTED_PAID" && detail.status === 200 && dText.includes(A.key(1)) && dText.includes("provider:LHFIXTURE:SANDBOX") && dText.includes("PROVIDER_FAILED_AFTER_REPORTED_PAID")
     && !dText.includes(settlementToken) && !/signed_payload|signedPayload/.test(dText), { list: list.status, row: !!row, detail: detail.status });
-  if (!dText.includes("provider_reported_paid_at") && !dText.includes("providerReportedPaidAt")) notTestable("8b. attempt marker in the review detail", "the deployed review detail (runtime b0d862b; unchanged at 81131fe) does not select provider_reported_paid_at - evidence is in the DB, not yet displayed");
-  else expect("8b. attempt marker shown in the review detail", true);
+  const ev = detail.json?.case?.payoutEvidence;
+  const hdrs = async () => (await import("./lib/stagingPushHarness.mjs")).env.TEST_SUPABASE_ANON_KEY;
+  const anonKey = await hdrs();
+  const unauth = {
+    none: (await fetch(`${base}/api/sys/review/cases/MONEY_JOB/${A.job.id}`)).status,
+    anonKey: (await fetch(`${base}/api/sys/review/cases/MONEY_JOB/${A.job.id}`, { headers: { Authorization: `Bearer ${anonKey}` } })).status,
+    helper: (await fetch(`${base}/api/sys/review/cases/MONEY_JOB/${A.job.id}`, { headers: A.h.auth })).status,
+  };
+  expect("8b. review detail shows the attempt evidence read-only: payoutEvidence.attempts[0].providerReportedPaidAt === the attempt row's provider_reported_paid_at (also in systemDecisions.attempts), reason PROVIDER_FAILED_AFTER_REPORTED_PAID, not a final confirmation; anonymous / anon-key / Helper session -> 401",
+    !!ev && new Date(ev.attempts?.[0]?.providerReportedPaidAt ?? 0).toISOString() === new Date(aAtts2[0].provider_reported_paid_at).toISOString() && ev.attempts[0].finalConfirmation === false && ev.reviewReason === "PROVIDER_FAILED_AFTER_REPORTED_PAID"
+    && detail.json.case.systemDecisions.attempts[0].provider_reported_paid_at !== null && Object.values(unauth).every((s) => s === 401), { ev, unauth });
   // ---------------- 3. every accessible route to a new attempt ----------------
   const aWorker = await claim(A.job.id);
   const aSweep = (await rpc("claim_money_job", { p_job_id: null, p_lease_seconds: 5 })).data;

@@ -1,0 +1,130 @@
+// Operator review visibility of the migration-023 evidence (money_movement_attempts.provider_reported_paid_at):
+// the REAL reviewCaseDetail() against the REAL migration chain (PGlite) through a PostgREST-shaped shim, plus
+// static checks of the console / routes. Read-only feature: no financial state machine or action is touched.
+// Usage: node scripts/test_review_reported_paid_app.mjs
+import fs from "node:fs";
+import crypto from "node:crypto";
+import { registerHooks } from "node:module";
+import { b58, checker, createDb, fixtures } from "./lib/prepayFixtures.mjs";
+
+const root = new URL("..", import.meta.url);
+registerHooks({
+  resolve(specifier, context, nextResolve) {
+    if (specifier === "server-only") return { url: "data:text/javascript,export{}", shortCircuit: true };
+    if (specifier.startsWith("@/")) return nextResolve(new URL(specifier.slice(2) + ".ts", root).href, context);
+    return nextResolve(specifier, context);
+  },
+});
+const { reviewCaseDetail } = await import(new URL("lib/admin/reviewCases.ts", root).href);
+
+const { check, done } = checker();
+const db = await createDb();
+const f = fixtures(db);
+await f.enablePolicies();
+const named = async (fn, args) => { const k = Object.keys(args); return (await f.one(`select public.${fn}(${k.map((x, i) => `${x} => $${i + 1}`).join(", ")}) as r`, k.map((x) => args[x]))).r; };
+
+/** Minimal PostgREST-like query builder over PGlite (select / eq / in / not in / order / limit / maybeSingle / await). */
+function from(table) {
+  let cols = "*"; const where = []; const params = []; let order = ""; let limit = "";
+  const q = {
+    select(c) { cols = c; return q; },
+    eq(c, v) { params.push(v); where.push(`${c} = $${params.length}`); return q; },
+    in(c, vs) { const ph = vs.map((v) => { params.push(v); return `$${params.length}`; }); where.push(vs.length ? `${c} in (${ph.join(", ")})` : "false"); return q; },
+    not(c, op, list) { where.push(`${c} not in (${list.replace(/[()]/g, "").split(",").map((x) => `'${x.trim()}'`).join(", ")})`); return q; },
+    order(c, o = {}) { order = ` order by ${c} ${o.ascending === false ? "desc" : "asc"}`; return q; },
+    limit(n) { limit = ` limit ${Number(n)}`; return q; },
+    async run() { const r = await db.query(`select ${cols} from public.${table}${where.length ? ` where ${where.join(" and ")}` : ""}${order}${limit}`, params); return r.rows; },
+    async maybeSingle() { const rows = await q.run(); return { data: rows[0] ?? null, error: null }; },
+    then(resolve, reject) { return q.run().then((rows) => resolve({ data: rows, error: null }), reject); },
+  };
+  return q;
+}
+const client = {
+  from,
+  async rpc(fn, args = {}) {
+    const k = Object.keys(args);
+    try { const r = await db.query(`select public.${fn}(${k.map((x, i) => `${x} => $${i + 1}`).join(", ")}) as r`, k.map((x) => args[x])); return { data: r.rows[0].r, error: null }; }
+    catch (e) { return { data: null, error: { code: e.code, message: e.message } }; }
+  },
+};
+
+// ---- fixtures: provider-rail payout jobs through the trusted authorities ----
+await db.query("insert into public.payment_providers (code, environment, kind, enabled, approved_by, approved_at) values ('AIRWALLEX', 'SANDBOX', 'PSP', true, 'test', now())");
+for (const cap of ["CUSTOMER_PAYMENT", "HELPER_PAYOUT"]) await db.query("insert into public.payment_capability_policies (country, capability, provider, environment, rail, enabled, approved_by, approved_at) values ('KR', $1, 'AIRWALLEX', 'SANDBOX', 'AIRWALLEX_RAIL', true, 'test', now())", [cap]);
+let n = 0;
+async function payoutJob(label) {
+  n += 1;
+  const sido = `RV${label}${n}`;
+  const h = await f.helper(`RV${label}${n}`, { sido });
+  const price = await f.rpc("upsert_helper_service_price", h.id, "clog-clearing", "toilet-simple", JSON.stringify({ pricing_mode: "FIXED", currency: "KRW", base_price: 60000, materials_policy: "INCLUDED" }), true);
+  const customer = `V${label}${n}`.padEnd(8, "Q").slice(0, 8).toUpperCase();
+  const co = await f.helperCheckout(price, customer, sido);
+  const opened = await named("open_provider_payment_intent", { p_checkout_id: co.checkout_id, p_customer_id: customer, p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_provider_account: "acct", p_reference: b58(), p_ttl_seconds: 900 });
+  const payId = `pay_${crypto.randomUUID().replace(/-/g, "").slice(0, 20)}`;
+  await named("link_provider_payment", { p_intent_id: opened.intent_id, p_provider_payment_id: payId });
+  await named("ingest_provider_event", { p_provider: "AIRWALLEX", p_environment: "SANDBOX", p_provider_account: "acct", p_provider_event_id: `evt_${label}_${n}_${crypto.randomUUID().slice(0, 8)}`, p_source: "WEBHOOK", p_event_type: "PAYMENT_HELD", p_provider_event_type: "payment_intent.succeeded", p_object_ref: payId, p_life_help_reference: null, p_amount_minor: 60000, p_currency: "KRW", p_occurred_at: null, p_provider_sequence: null, p_payload_sha256: crypto.randomBytes(32).toString("hex"), p_signature_verified: true });
+  const req = (await f.one("select request_id from public.payment_intents where id = $1", [opened.intent_id])).request_id;
+  await db.query("insert into public.payout_destinations (owner_helper_id, country, currency, payout_method, provider, provider_environment, provider_payee_token, masked_destination, status) values ($1, 'KR', 'KRW', 'PROVIDER_PAYEE', 'AIRWALLEX', 'SANDBOX', $2, 'x ****', 'ACTIVE')", [h.id, `benef_${label}${n}_x`]);
+  const [asg] = await f.activeAssignments(req);
+  await f.rpc("accept_assignment", asg.id, h.id);
+  await db.query("update public.service_requests set status = 'IN_PROGRESS' where id = $1", [req]);
+  await f.rpc("complete_assignment_service", asg.id, h.id);
+  await f.rpc("confirm_service_completion", req, customer);
+  const ob = await f.one("select * from public.payout_obligations where request_id = $1", [req]);
+  const job = await f.jobFor({ obligationId: ob.id });
+  const c = await f.rpc("claim_money_job", job.id, 60);
+  const prep = await f.rpc("prepare_money_attempt", job.id, c.job.lease_token, "AIRWALLEX", "provider:AIRWALLEX:SANDBOX", "KRW", 60000, `benef_${label}${n}_x`, `lh_${job.id.replace(/-/g, "")}_1`, JSON.stringify({ kind: "HELPER_PAYOUT", reference: job.id }), "SIGNED-BYTES-MUST-NEVER-LEAK");
+  return { job, lease: c.job.lease_token, attemptId: prep.attempt_id, ob };
+}
+const due = (id) => db.query("update public.money_movement_jobs set next_retry_at = now() - interval '1 second', claim_expires_at = null where id = $1", [id]);
+
+// A: reported paid -> failed -> REVIEW_REQUIRED
+const A = await payoutJob("A");
+await f.rpc("record_money_attempt_result", A.job.id, A.lease, A.attemptId, "PROVIDER_REPORTED_PAID", null);
+await due(A.job.id);
+const ac = await f.rpc("claim_money_job", A.job.id, 60);
+await f.rpc("record_money_attempt_result", A.job.id, ac.job.lease_token, A.attemptId, "FAILED_ONCHAIN", "BENEFICIARY_BANK_REJECTED");
+const marker = (await f.one("select provider_reported_paid_at from public.money_movement_attempts where id = $1", [A.attemptId])).provider_reported_paid_at;
+const dA = await reviewCaseDetail(client, "MONEY_JOB", A.job.id);
+const iso = (v) => (v ? new Date(v).toISOString() : null);
+check("A. reported-paid review case: detail exposes the attempt's provider_reported_paid_at (systemDecisions.attempts, facts, payoutEvidence) - equal to the attempt row; reason PROVIDER_FAILED_AFTER_REPORTED_PAID; not a final confirmation",
+  !!marker && iso(dA.systemDecisions.attempts[0].provider_reported_paid_at) === iso(marker) && iso(dA.facts.attemptsObservedExternally[0].providerReportedPaidAt) === iso(marker)
+  && iso(dA.payoutEvidence.attempts[0].providerReportedPaidAt) === iso(marker) && dA.payoutEvidence.attempts[0].finalConfirmation === false
+  && dA.payoutEvidence.reviewReason === "PROVIDER_FAILED_AFTER_REPORTED_PAID" && dA.payoutEvidence.jobStatus === "REVIEW_REQUIRED" && dA.payoutEvidence.businessStatus !== "PAID", dA.payoutEvidence);
+
+// B: ordinary failure (never reported paid)
+const B = await payoutJob("B");
+await f.rpc("release_money_job", B.job.id, B.lease, "REVIEW", "SOME_OTHER_REVIEW", null);
+const dB = await reviewCaseDetail(client, "MONEY_JOB", B.job.id);
+check("B. ordinary case: the field is present and null (API contract: always the attempt's value) - no false positive", dB.systemDecisions.attempts[0].provider_reported_paid_at === null && dB.payoutEvidence.attempts[0].providerReportedPaidAt === null && dB.facts.attemptsObservedExternally[0].providerReportedPaidAt === null);
+
+// C / D: job code is not the source
+await db.query("update public.money_movement_jobs set last_error_code = 'PROVIDER_PAID_AWAITING_FINALITY' where id = $1", [B.job.id]);
+await db.query("update public.money_movement_jobs set last_error_code = 'OVERWRITTEN_BY_SOMETHING' where id = $1", [A.job.id]);
+const dB2 = await reviewCaseDetail(client, "MONEY_JOB", B.job.id);
+const dA2 = await reviewCaseDetail(client, "MONEY_JOB", A.job.id);
+check("C. the value comes from the attempt, never the job code: a job carrying PROVIDER_PAID_AWAITING_FINALITY without attempt evidence still shows null", dB2.payoutEvidence.attempts[0].providerReportedPaidAt === null && dB2.payoutEvidence.reviewReason === "PROVIDER_PAID_AWAITING_FINALITY");
+check("D. overwriting the job's last_error_code does not change the displayed evidence", iso(dA2.payoutEvidence.attempts[0].providerReportedPaidAt) === iso(marker) && dA2.payoutEvidence.reviewReason === "OVERWRITTEN_BY_SOMETHING");
+
+// E: no secret material
+const blob = JSON.stringify([dA, dB]);
+check("E. no secret-like fields / values in the detail: no signed bytes (column or value), no secret / api key / authorization / credential keys", !blob.includes("SIGNED-BYTES-MUST-NEVER-LEAK") && !/"(signed_payload|signedPayload|webhook_?secret|api_?key|authorization|password|credential|private_?key)"/i.test(blob));
+
+// G: actions unchanged (detail exposes exactly the 023 rules)
+const rulesA = (await client.rpc("review_case_actions", { p_case_type: "MONEY_JOB", p_case_id: A.job.id })).data;
+check("G. operator actions unchanged: the detail's allowed actions are exactly review_case_actions (023 rules: no REQUEUE_SAFE after reported paid)", JSON.stringify(dA2.allowedActions) === JSON.stringify(rulesA.actions) && !dA2.allowedActions.includes("REQUEUE_SAFE"));
+
+// ---- static: surfaces ----
+const read = (p) => fs.readFileSync(new URL(p, root), "utf8");
+const ui = read("components/admin/ReviewConsole.tsx");
+const panel = ui.slice(ui.indexOf("function PayoutEvidencePanel"), ui.indexOf("/** Minimal operator console"));
+check("UI. /admin/review shows 'Provider reported payout paid: <timestamp>' only when present, explicitly not final / not beneficiary receipt / not a LIFE.HELP confirmation; never labels it PAID / FINAL / SETTLED / BENEFICIARY RECEIVED; final confirmation shown only for a CONFIRMED attempt",
+  /a\.providerReportedPaidAt && \(/.test(panel) && panel.includes("Provider reported payout paid: {a.providerReportedPaidAt}") && /not final, not beneficiary receipt, not a LIFE\.HELP payout confirmation/.test(panel)
+  && !/>\s*(PAID|FINAL|SETTLED|BENEFICIARY RECEIVED)\s*</.test(panel) && /a\.finalConfirmation && /.test(panel) && read("lib/admin/reviewCases.ts").includes('finalConfirmation: a.state === "CONFIRMED"'));
+const apiFiles = fs.readdirSync(new URL("app/", root), { recursive: true }).map(String).filter((x) => x.endsWith(".ts") || x.endsWith(".tsx"));
+const mentions = apiFiles.filter((x) => /provider_reported_paid_at|providerReportedPaidAt|payoutEvidence|reviewCaseDetail/.test(read(`app/${x.replace(/\\/g, "/")}`))).map((x) => x.replace(/\\/g, "/"));
+check("F. only the SYS-gated review detail route serves it (no customer / Helper / public endpoint): the only app file using reviewCaseDetail is the operator detail route, which fails closed on authorizePlatformOperator first",
+  mentions.length === 1 && mentions[0] === "api/sys/review/cases/[caseType]/[caseId]/route.ts" && read("app/api/sys/review/cases/[caseType]/[caseId]/route.ts").indexOf("authorizePlatformOperator(request)") < read("app/api/sys/review/cases/[caseType]/[caseId]/route.ts").indexOf("reviewCaseDetail(client"), mentions);
+check("R. read-only: the review data layer never writes (no insert / update / delete / upsert) and never selects signed bytes", !/\.(insert|update|delete|upsert)\(/.test(read("lib/admin/reviewCases.ts")) && !/signed_payload/.test(read("lib/admin/reviewCases.ts")));
+
+done();

@@ -94,6 +94,24 @@ export async function listReviewCases(client: SupabaseClient, filter: { caseType
     .sort((a, b) => (b.updatedAt ?? b.createdAt).localeCompare(a.updatedAt ?? a.createdAt));
 }
 
+/**
+ * Read-only payout evidence for a money-job case, per ATTEMPT (migration 023). providerReportedPaidAt comes only
+ * from money_movement_attempts.provider_reported_paid_at: the provider SAID it paid - NOT a final status, NOT
+ * beneficiary receipt, NOT a LIFE.HELP payout confirmation. Final confirmation is only an attempt in state
+ * CONFIRMED (and the obligation / refund status the ledger shows). Never derived from job codes or events.
+ */
+type AttemptEvidenceRow = { attempt_number: number; state: string; provider: string; network: string; provider_reported_paid_at?: string | null };
+function payoutEvidence(job: Record<string, unknown> | null, attempts: AttemptEvidenceRow[], business: { status?: unknown } | null) {
+  return {
+    jobStatus: job?.status ?? null, reviewReason: job?.last_error_code ?? null, provider: job?.provider ?? null, network: job?.network ?? null,
+    businessStatus: business?.status ?? null,
+    attempts: attempts.map((a) => ({
+      attempt: a.attempt_number, state: a.state, provider: a.provider, network: a.network,
+      providerReportedPaidAt: a.provider_reported_paid_at ?? null, finalConfirmation: a.state === "CONFIRMED",
+    })),
+  };
+}
+
 /** One case: FACTS (observed on chain), SYSTEM DECISIONS, OPERATOR ACTIONS, and what is still unresolved. */
 export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewCaseType, caseId: string) {
   const r = await rules(client, caseType, caseId);
@@ -116,14 +134,15 @@ export async function reviewCaseDetail(client: SupabaseClient, caseType: ReviewC
     };
   }
   const { data: job } = await client.from("money_movement_jobs").select("id, obligation_type, payout_obligation_id, service_refund_id, rail, provider, network, asset, amount_base_units, status, automation_policy, attempt_count, max_attempts, failure_count, max_failures, claim_expires_at, next_retry_at, last_attempt_at, last_error_code, last_error_class, confirmed_at, created_at, updated_at").eq("id", caseId).maybeSingle();
-  const { data: attempts } = await client.from("money_movement_attempts").select("attempt_number, state, provider, network, asset, amount_base_units, destination, external_id, failure_category, prepared_at, submitted_at, resolved_at").eq("job_id", caseId).order("attempt_number");
+  const { data: attempts } = await client.from("money_movement_attempts").select("attempt_number, state, provider, network, asset, amount_base_units, destination, external_id, failure_category, prepared_at, submitted_at, resolved_at, provider_reported_paid_at").eq("job_id", caseId).order("attempt_number");
   const { data: obligation } = job?.payout_obligation_id ? await client.from("payout_obligations").select("id, kind, status, currency, gross_amount, platform_fee_amount, net_amount, fee_policy, payout_rail, request_id, referral_reward_id, chain_signature, created_at, submitted_at, paid_at").eq("id", job.payout_obligation_id).maybeSingle() : { data: null };
   const { data: refund } = job?.service_refund_id ? await client.from("service_refunds").select("id, reason, status, amount, currency, payment_intent_id, source_signature, asset_amount_base_units, chain_signature, created_at, completed_at").eq("id", job.service_refund_id).maybeSingle() : { data: null };
   const { data: providerEvidence } = await client.from("provider_events").select(PROVIDER_EVENT_COLUMNS).eq("money_job_id", caseId).order("received_at");
   return {
     caseType, caseId, closed: r.closed === true, allowedActions: r.actions,
-    facts: { providerEvidence: providerEvidence ?? [], attemptsObservedExternally: (attempts ?? []).map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destination: a.destination, amountBaseUnits: a.amount_base_units })) },
+    facts: { providerEvidence: providerEvidence ?? [], attemptsObservedExternally: (attempts ?? []).map((a) => ({ attempt: a.attempt_number, externalId: a.external_id, state: a.state, destination: a.destination, amountBaseUnits: a.amount_base_units, providerReportedPaidAt: a.provider_reported_paid_at ?? null })) },
     systemDecisions: { job, attempts: attempts ?? [], obligation, refund },
+    payoutEvidence: payoutEvidence(job, attempts ?? [], obligation ?? refund ?? null),
     operatorActions: operatorActions ?? [],
     unresolved: r.closed !== true && job?.status !== "CONFIRMED",
   };
