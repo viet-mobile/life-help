@@ -213,6 +213,12 @@ async function gate() {
     expect("7b. SOLANA_DIRECT_DEVNET finalized-chain semantics unchanged (DB authority, FIXTURE signature, no chain tx): CONFIRMED -> obligation PAID, no reported-paid evidence (fixture purged immediately)", sConf?.status === "CONFIRMED" && sOb === "PAID" && sAtts[0]?.provider_reported_paid_at === null && sPurged, { sConf: sConf?.status ?? sConf, sOb, sPurged });
   }
 
+  const pDetail = await api(`/api/sys/review/cases/PAYMENT/${A.funded.intent.intent_id}`);
+  const pSel = pDetail.json?.case?.systemDecisions?.priceSelections ?? [];
+  const [ledgerSel] = await db(`request_price_selections?request_id=eq.${A.requestId}&select=helper_id&limit=1`);
+  expect("8e. PAYMENT review detail of a Helper-price fixture: price selection shows the Helper's PUBLIC code (helperPublicId), never the raw internal helper_id (present in the ledger); payment reference still returned",
+    pDetail.status === 200 && pSel.length > 0 && pSel.every((x) => x.helperPublicId === A.h.helper.helper_id && x.helperIdMasked === null) && !!ledgerSel?.helper_id && !pDetail.text.includes(ledgerSel.helper_id) && !/"helper_id"\s*:/.test(pDetail.text)
+    && typeof pDetail.json.case.paymentEvidence?.reference === "string", { status: pDetail.status, sel: pSel[0] });
   const opRows = await db(`operator_review_actions?case_id=in.(${[A.job.id, B.job.id, C.job.id].join(",")})&select=id,previous_state,resulting_state,safe_refs,reason`);
   const auditRows = await db(`admin_audit_logs?select=metadata&order=created_at.desc&limit=200`);
   expect("8d. no raw payout destination in retained operator review rows or recent admin audit metadata", ![A.payee, B.payee, C.payee].some((raw) => JSON.stringify(opRows).includes(raw) || JSON.stringify(auditRows).includes(raw)), { opRows: opRows.length });
