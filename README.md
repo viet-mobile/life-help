@@ -48,3 +48,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Learning sites (math.life.help / english.life.help)
+
+Game-style learning platform served by the same Worker via hostname routing (`proxy.ts` → `/study/<site>`).
+See `docs/DEPLOYMENT.md` for environments, staging and go-live steps. Locally: `npm run dev`, open `/study/math` or `/study/english`
+(or `http://math.localhost:3000`). Checks: `npm run check:learn`, `npm run build:next`, `npm run test:e2e` (needs a build).

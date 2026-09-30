@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { PGlite } from "@electric-sql/pglite";
@@ -258,5 +259,34 @@ describe("engine <-> SQL round trip", () => {
     // Attempts were recorded with the answer trimmed and typed correctly.
     const att = await db.query<{ n: string }>("select count(*)::text n from public.learn_attempts where user_id = $1", [U]);
     expect(att.rows[0].n).toBe("5");
+  });
+});
+
+describe("demo seed", () => {
+  it("refuses to run without the explicit opt-in, and loads the full demo curriculum with it", async () => {
+    const seed = readFileSync(path.join(__dirname, "../../supabase/seed/learn_demo.sql"), "utf8");
+    const fresh = new PGlite();
+    await fresh.exec(`
+      create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;
+      create schema auth; create schema security;
+      create table auth.users (id uuid primary key);
+      create function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create type public.app_role as enum ('CUSTOMER', 'TECHNICIAN', 'ADMIN', 'STAFF');
+      create table public.user_roles (user_id uuid, role public.app_role);
+      create function security.has_role(required_roles public.app_role[]) returns boolean language sql stable as $$ select false $$;
+    `);
+    await fresh.exec(migration);
+    await expect(fresh.exec(seed)).rejects.toThrow(/demo seed refused/);
+    await fresh.exec("rollback");
+    await fresh.exec(`set app.allow_demo_seed = 'on'; ${seed}`);
+    const counts = await fresh.query<{ site: string; n: string }>(
+      "select s.code as site, count(*)::text as n from public.learn_questions q join public.learn_subjects s on s.id = q.subject_id where q.status = 'PUBLISHED' group by 1 order by 1",
+    );
+    expect(counts.rows.map((r) => [r.site, Number(r.n) >= 20])).toEqual([["english", true], ["math", true]]);
+    const lessons = await fresh.query<{ n: string }>("select count(*)::text n from public.learn_lessons");
+    expect(Number(lessons.rows[0].n)).toBe(8);
+    // Workflow trigger is back on after seeding.
+    await expect(fresh.exec("insert into public.learn_questions(code, subject_id, skill_id, type, difficulty, prompt, status) select 'zz', subject_id, id, 'numeric', 1, 'x', 'PUBLISHED' from public.learn_skills limit 1")).rejects.toThrow(/DRAFT/);
+    await fresh.close();
   });
 });

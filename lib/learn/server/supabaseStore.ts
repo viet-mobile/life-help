@@ -60,11 +60,32 @@ function round2(n: number) {
   return Math.round(n * 100) / 100;
 }
 
+interface LoadStateJson {
+  profile?: { nickname?: string; grade?: unknown; goal?: unknown; avatar?: string } | null;
+  totalXp?: number;
+  coins?: number;
+  xpToday?: number;
+  ledgerKeys?: string[];
+  rewardsToday?: Record<string, number>;
+  mastery?: {
+    skill_code: string; score: number | string; attempts: number; correct: number; streak: number; srs_box: number;
+    last_practiced_at: string | null; next_review_at: string | null;
+  }[];
+  lessons?: {
+    lesson_code: string; stars: 0 | 1 | 2 | 3; best_accuracy: number | string; completions: number;
+    first_completed_at: string | null; last_completed_at: string | null; placed_out: boolean;
+  }[];
+  streak?: { current_days: number; best_days: number; last_active_day: string | null; freezes: number } | null;
+  quest?: { quest_day: string; items: PlayerState["quest"] extends infer Q ? (Q extends { items: infer I } ? I : never) : never; completed_at: string | null } | null;
+  achievements?: string[];
+  meta?: { counters?: Partial<PlayerState["counters"]>; diagnostic_done?: boolean } | null;
+}
+
 /** Result of public.learn_load_state() -> PlayerState. */
 export function rpcToState(raw: unknown, site: Site, day: string): PlayerState {
   const base = createInitialState(site);
   if (!raw || typeof raw !== "object") return base;
-  const r = raw as Record<string, any>;
+  const r = raw as LoadStateJson;
 
   const p = r.profile;
   const profile: StudentProfile | null =
@@ -73,7 +94,7 @@ export function rpcToState(raw: unknown, site: Site, day: string): PlayerState {
       : null;
 
   const mastery: PlayerState["mastery"] = {};
-  for (const m of (r.mastery ?? []) as any[]) {
+  for (const m of r.mastery ?? []) {
     mastery[m.skill_code] = {
       skillId: m.skill_code,
       score: Number(m.score),
@@ -86,7 +107,7 @@ export function rpcToState(raw: unknown, site: Site, day: string): PlayerState {
     };
   }
   const lessons: PlayerState["lessons"] = {};
-  for (const l of (r.lessons ?? []) as any[]) {
+  for (const l of r.lessons ?? []) {
     lessons[l.lesson_code] = {
       lessonId: l.lesson_code,
       stars: l.stars,
@@ -98,9 +119,9 @@ export function rpcToState(raw: unknown, site: Site, day: string): PlayerState {
     };
   }
   const s = r.streak;
-  const counters = { ...base.counters, ...((r.meta?.counters as object) ?? {}) };
+  const counters = { ...base.counters, ...(r.meta?.counters ?? {}) };
   const rewards: Record<string, number> = {};
-  for (const [q, c] of Object.entries((r.rewardsToday ?? {}) as Record<string, number>)) rewards[`${day}:${q}`] = Number(c);
+  for (const [q, c] of Object.entries(r.rewardsToday ?? {})) rewards[`${day}:${q}`] = Number(c);
 
   return {
     ...base,

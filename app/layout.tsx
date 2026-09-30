@@ -74,7 +74,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <LocaleProvider initialLocale={lang as any}>
             <RegionProvider initialCountry={country}>
               <PwaRegister />
-              <TopPwaBar />
+              {headersList.get("x-life-portal") !== "learn" && <TopPwaBar />}
               {children}
             </RegionProvider>
           </LocaleProvider>
