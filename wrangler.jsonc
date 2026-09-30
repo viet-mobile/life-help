@@ -7,6 +7,23 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  // Staging Worker: a separate Worker (its own *.workers.dev URL and custom domains),
+  // deployed only with `--env staging`. Nothing here changes the default (production) deploy.
+  // Attach math-staging.life.help / english-staging.life.help to THIS worker in the dashboard.
+  "env": {
+    "staging": {
+      "name": "life-help-staging",
+      "main": ".open-next/worker.js",
+      "compatibility_date": "2024-09-23",
+      "compatibility_flags": ["nodejs_compat"],
+      "assets": {
+        "directory": ".open-next/assets",
+        "binding": "ASSETS"
+      },
+      "vars": {
+        "APP_ENV": "staging"
+      }
+    }
   }
 }
-
