@@ -1,0 +1,1144 @@
+{
+ "catalog": {
+  "site": "math",
+  "country": "KR",
+  "curriculum": "kr-2022-middle-math",
+  "skills": [
+   {
+    "id": "m.int",
+    "title": "정수의 계산"
+   },
+   {
+    "id": "m.expr",
+    "title": "식의 값",
+    "prerequisiteId": "m.int"
+   },
+   {
+    "id": "m.prop",
+    "title": "등식의 성질",
+    "prerequisiteId": "m.expr"
+   },
+   {
+    "id": "m.solve",
+    "title": "일차방정식의 풀이",
+    "prerequisiteId": "m.prop"
+   },
+   {
+    "id": "m.word",
+    "title": "방정식의 활용",
+    "prerequisiteId": "m.solve"
+   }
+  ],
+  "courses": [
+   {
+    "id": "math-m1-algebra",
+    "title": "중1 수학 · 일차방정식",
+    "grade": "M1",
+    "world": {
+     "name": "Algebra Forest",
+     "emoji": "🌲",
+     "tagline": "문자와 식의 숲을 탐험해요"
+    },
+    "units": [
+     {
+      "id": "math-m1-linear-eq",
+      "title": "일차방정식",
+      "lessons": [
+       {
+        "id": "math-l1",
+        "title": "식의 값 구하기",
+        "skillIds": [
+         "m.expr"
+        ],
+        "concept": "문자에 수를 넣는 것을 **대입**이라고 해요. 대입해서 계산한 결과가 **식의 값**이에요. 음수를 넣을 때는 괄호를 써서 실수를 줄여요.",
+        "example": "$x=3$일 때 $2x+1$ 은 $2\\times3+1=7$ 이에요.",
+        "questionIds": [
+         "m-expr-1",
+         "m-expr-2",
+         "m-expr-3",
+         "m-expr-4"
+        ],
+        "challengeId": "m-expr-5"
+       },
+       {
+        "id": "math-l2",
+        "title": "등식의 성질",
+        "skillIds": [
+         "m.prop"
+        ],
+        "concept": "등식은 **저울**과 같아요. 양변에 같은 수를 더하거나 빼고, 곱하거나(0이 아닌 수로) 나누어도 저울은 평형을 유지해요.",
+        "example": "$x+5=9$ 의 양변에서 $5$를 빼면 $x=4$ 예요.",
+        "questionIds": [
+         "m-prop-1",
+         "m-prop-2",
+         "m-prop-3",
+         "m-prop-4"
+        ],
+        "challengeId": "m-prop-5"
+       },
+       {
+        "id": "math-l3",
+        "title": "일차방정식 풀기",
+        "skillIds": [
+         "m.solve"
+        ],
+        "concept": "$x$가 있는 항은 한쪽, 숫자는 반대쪽으로 **이항**해서 모아요. 이항하면 부호가 바뀌어요. 마지막으로 $x$ 앞의 수로 나누면 끝!",
+        "example": "$2x+1=9 \\Rightarrow 2x=8 \\Rightarrow x=4$",
+        "questionIds": [
+         "m-solve-1",
+         "m-solve-2",
+         "m-solve-3",
+         "m-solve-4"
+        ],
+        "challengeId": "m-solve-5"
+       },
+       {
+        "id": "math-l4",
+        "title": "방정식으로 문제 풀기",
+        "skillIds": [
+         "m.word"
+        ],
+        "concept": "문장제는 **구하려는 것을 $x$로 놓고** → 문장을 식으로 옮기고 → 풀고 → 답이 조건에 맞는지 확인하는 순서로 풀어요.",
+        "example": "어떤 수의 $3$배에 $2$를 더하면 $14$ → $3x+2=14$ → $x=4$",
+        "questionIds": [
+         "m-word-1",
+         "m-word-2",
+         "m-word-3",
+         "m-word-4"
+        ],
+        "challengeId": "m-word-5"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "questions": [
+  {
+   "id": "m-expr-1",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "$x=3$일 때, $2x+1$의 값은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$5$"
+    },
+    {
+     "id": "b",
+     "text": "$6$"
+    },
+    {
+     "id": "c",
+     "text": "$7$"
+    },
+    {
+     "id": "d",
+     "text": "$9$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "$x$ 자리에 $3$을 넣어 보세요.",
+    "$2\\times 3$을 먼저 계산한 다음 $1$을 더해요."
+   ],
+   "explanation": "$x$에 $3$을 대입하면 $2\\times3+1=6+1=7$ 이에요.",
+   "role": "core",
+   "family": "expr-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-2",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$x=-2$일 때, $3x+4$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -2
+   },
+   "hints": [
+    "음수를 넣을 때는 괄호를 써서 $3\\times(-2)+4$ 로 써 보세요.",
+    "$3\\times(-2)=-6$ 이에요. 여기에 $4$를 더하면?"
+   ],
+   "explanation": "$3\\times(-2)+4=-6+4=-2$ 이에요.",
+   "role": "core",
+   "family": "expr-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-3",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$a=4,\\ b=-1$일 때, $2a-3b$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 11
+   },
+   "hints": [
+    "$a$와 $b$에 각각 값을 넣어 $2\\times4-3\\times(-1)$ 을 만들어요.",
+    "빼기 음수는 더하기가 돼요: $8-(-3)$."
+   ],
+   "explanation": "$2\\times4-3\\times(-1)=8+3=11$ 이에요.",
+   "role": "core",
+   "family": "expr-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-4",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$x=-1$일 때, $x^2+2x$의 값은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$-3$"
+    },
+    {
+     "id": "b",
+     "text": "$-1$"
+    },
+    {
+     "id": "c",
+     "text": "$1$"
+    },
+    {
+     "id": "d",
+     "text": "$3$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "$x^2$은 $(-1)\\times(-1)$ 이에요.",
+    "$x^2=1$, $2x=-2$ 를 각각 구해서 더해 보세요."
+   ],
+   "explanation": "$(-1)^2+2\\times(-1)=1-2=-1$ 이에요.",
+   "role": "core",
+   "family": "expr-sq",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-5",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$x=\\dfrac12$일 때, $4x^2-2x+1$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1
+   },
+   "hints": [
+    "$x^2=\\dfrac14$ 이에요.",
+    "$4\\times\\dfrac14=1$, $2\\times\\dfrac12=1$ 을 이용해 보세요."
+   ],
+   "explanation": "$4\\times\\dfrac14-2\\times\\dfrac12+1=1-1+1=1$ 이에요.",
+   "role": "core",
+   "family": "expr-sq",
+   "expectedSeconds": 70,
+   "tags": [
+    "challenge"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-v1",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$x=5$일 때, $3x-2$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 13
+   },
+   "hints": [
+    "$x$ 자리에 $5$를 넣어요.",
+    "$3\\times5-2$ 를 계산해 보세요."
+   ],
+   "explanation": "$3\\times5-2=15-2=13$ 이에요.",
+   "role": "variant",
+   "family": "expr-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-v2",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$x=-4$일 때, $2x+9$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1
+   },
+   "hints": [
+    "$2\\times(-4)+9$ 로 써 보세요.",
+    "$2\\times(-4)=-8$ 이에요."
+   ],
+   "explanation": "$2\\times(-4)+9=-8+9=1$ 이에요.",
+   "role": "variant",
+   "family": "expr-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-v3",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$x=-3$일 때, $4x+5$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -7
+   },
+   "hints": [
+    "$4\\times(-3)+5$ 를 계산해요.",
+    "$4\\times(-3)=-12$."
+   ],
+   "explanation": "$4\\times(-3)+5=-12+5=-7$ 이에요.",
+   "role": "variant",
+   "family": "expr-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-expr-v4",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$x=-2$일 때, $x^2-3x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "$x^2$은 $(-2)\\times(-2)$ 이에요.",
+    "$4-3\\times(-2)$ 를 계산해요."
+   ],
+   "explanation": "$(-2)^2-3\\times(-2)=4+6=10$ 이에요.",
+   "role": "variant",
+   "family": "expr-sq",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-1",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "true_false",
+   "difficulty": 1,
+   "prompt": "$a=b$이면 $a+3=b+3$ 이다.",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "양변에 같은 수를 더해도 등식은 성립할까요?",
+    "저울 양쪽에 같은 무게를 올리는 상황을 떠올려 보세요."
+   ],
+   "explanation": "등식의 양변에 같은 수를 더해도 등식은 성립해요. 그래서 참(O)이에요.",
+   "role": "core",
+   "family": "prop-tf",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-2",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$x+5=9$의 양변에서 $5$를 빼면?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$x=4$"
+    },
+    {
+     "id": "b",
+     "text": "$x=14$"
+    },
+    {
+     "id": "c",
+     "text": "$x=-4$"
+    },
+    {
+     "id": "d",
+     "text": "$x=45$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "양변에서 같은 수를 빼도 등식은 성립해요.",
+    "좌변은 $x+5-5=x$ 가 돼요. 우변은 $9-5$."
+   ],
+   "explanation": "$x+5-5=9-5$ 이므로 $x=4$ 이에요.",
+   "role": "core",
+   "family": "prop-solve",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-3",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$\\dfrac{x}{3}=4$의 양변에 $3$을 곱하면?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$x=12$"
+    },
+    {
+     "id": "b",
+     "text": "$x=7$"
+    },
+    {
+     "id": "c",
+     "text": "$x=\\dfrac43$"
+    },
+    {
+     "id": "d",
+     "text": "$x=1$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "나눗셈을 없애려면 같은 수를 곱해요.",
+    "좌변은 $\\dfrac{x}{3}\\times3=x$ 예요."
+   ],
+   "explanation": "$\\dfrac{x}{3}\\times3=4\\times3$ 이므로 $x=12$ 이에요.",
+   "role": "core",
+   "family": "prop-solve",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-4",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "등식의 성질로 옳지 않은 것은? (단, $a=b$)",
+   "options": [
+    {
+     "id": "a",
+     "text": "$a-c=b-c$"
+    },
+    {
+     "id": "b",
+     "text": "$ac=bc$"
+    },
+    {
+     "id": "c",
+     "text": "$\\dfrac{a}{c}=\\dfrac{b}{c}$ (c는 모든 수)"
+    },
+    {
+     "id": "d",
+     "text": "$b=a$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "나눗셈에서 조심해야 할 수가 하나 있어요.",
+    "$c=0$ 이면 어떻게 될까요?"
+   ],
+   "explanation": "$0$으로는 나눌 수 없으므로 $c\\neq0$ 일 때만 양변을 $c$로 나눌 수 있어요.",
+   "role": "core",
+   "family": "prop-tf",
+   "expectedSeconds": 60,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-5",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "등식의 성질을 이용해 $2x-3=7$ 에서 $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "먼저 양변에 $3$을 더해 $2x=10$ 을 만들어요.",
+    "다음엔 양변을 $2$로 나누어요."
+   ],
+   "explanation": "$2x=10$ 이므로 $x=5$ 이에요.",
+   "role": "core",
+   "family": "prop-solve",
+   "expectedSeconds": 70,
+   "tags": [
+    "challenge"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-v1",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "true_false",
+   "difficulty": 1,
+   "prompt": "$a=b$이면 $a-5=b-5$ 이다.",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "양변에서 같은 수를 빼도 등식은 성립할까요?",
+    "저울 양쪽에서 같은 무게를 덜어 내는 상황이에요."
+   ],
+   "explanation": "양변에서 같은 수를 빼도 등식은 성립해요.",
+   "role": "variant",
+   "family": "prop-tf",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-prop-v2",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$x-2=6$의 양변에 $2$를 더하면?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$x=8$"
+    },
+    {
+     "id": "b",
+     "text": "$x=4$"
+    },
+    {
+     "id": "c",
+     "text": "$x=-4$"
+    },
+    {
+     "id": "d",
+     "text": "$x=12$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "양변에 같은 수를 더해요.",
+    "$x-2+2=x$ 예요."
+   ],
+   "explanation": "$x-2+2=6+2$ 이므로 $x=8$ 이에요.",
+   "role": "variant",
+   "family": "prop-solve",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-1",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$x+7=12$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "$7$을 우변으로 옮기면 부호가 바뀌어요.",
+    "$x=12-7$"
+   ],
+   "explanation": "$x=12-7=5$ 이에요.",
+   "role": "core",
+   "family": "solve-basic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-2",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$3x=-12$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -4
+   },
+   "hints": [
+    "양변을 $3$으로 나누어요.",
+    "$-12\\div3$ 을 계산해 보세요."
+   ],
+   "explanation": "$x=-12\\div3=-4$ 이에요.",
+   "role": "core",
+   "family": "solve-basic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-3",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$2x+1=9$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "먼저 $+1$ 을 우변으로 이항해요.",
+    "$2x=8$ 이 돼요. 이제 양변을 나누면?"
+   ],
+   "explanation": "$2x=9-1=8$, 따라서 $x=4$ 이에요.",
+   "role": "core",
+   "family": "solve-two",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-4",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$5x-4=3x+6$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "$x$가 있는 항은 왼쪽, 숫자는 오른쪽으로 모아요(이항).",
+    "$5x-3x=6+4$ 이에요."
+   ],
+   "explanation": "$5x-3x=6+4$, $2x=10$ 이므로 $x=5$ 이에요.",
+   "role": "core",
+   "family": "solve-two",
+   "expectedSeconds": 60,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-5",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "$\\dfrac{x-1}{2}=\\dfrac{x+2}{3}$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "분모 $2$와 $3$의 최소공배수 $6$을 양변에 곱해요.",
+    "$3(x-1)=2(x+2)$ 를 전개해 보세요."
+   ],
+   "explanation": "$3x-3=2x+4$ 이므로 $x=7$ 이에요.",
+   "role": "core",
+   "family": "solve-two",
+   "expectedSeconds": 90,
+   "tags": [
+    "challenge"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-v1",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$x-3=8$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 11
+   },
+   "hints": [
+    "$-3$ 을 우변으로 이항하면 $+3$ 이 돼요.",
+    "$x=8+3$"
+   ],
+   "explanation": "$x=8+3=11$ 이에요.",
+   "role": "variant",
+   "family": "solve-basic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-v2",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$4x+3=19$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "먼저 $+3$ 을 우변으로 이항해요.",
+    "$4x=16$"
+   ],
+   "explanation": "$4x=19-3=16$, 따라서 $x=4$ 이에요.",
+   "role": "variant",
+   "family": "solve-two",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-solve-v3",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$6x-5=2x+15$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "$x$항은 왼쪽으로, 숫자는 오른쪽으로 모아요.",
+    "$6x-2x=15+5$"
+   ],
+   "explanation": "$4x=20$ 이므로 $x=5$ 이에요.",
+   "role": "variant",
+   "family": "solve-two",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-1",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "어떤 수의 $3$배에 $2$를 더하면 $14$ 입니다. 어떤 수를 $x$라 할 때 알맞은 방정식은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$3x+2=14$"
+    },
+    {
+     "id": "b",
+     "text": "$3(x+2)=14$"
+    },
+    {
+     "id": "c",
+     "text": "$x+3+2=14$"
+    },
+    {
+     "id": "d",
+     "text": "$3x-2=14$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "'어떤 수의 3배'를 먼저 식으로 나타내 보세요.",
+    "$3x$ 에 $2$를 더한 것이 $14$ 예요."
+   ],
+   "explanation": "어떤 수의 $3$배는 $3x$, 여기에 $2$를 더해 $14$ 이므로 $3x+2=14$ 이에요.",
+   "role": "core",
+   "family": "word-num",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-2",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "연속하는 두 자연수의 합이 $25$ 입니다. 작은 수를 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "작은 수를 $x$ 라 하면 큰 수는 $x+1$ 이에요.",
+    "$x+(x+1)=25$"
+   ],
+   "explanation": "$2x+1=25$, $2x=24$, $x=12$ 이에요.",
+   "role": "core",
+   "family": "word-seq",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-3",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "사과 한 개는 $800$원, 귤 한 개는 $500$원입니다. 사과 $3$개와 귤 $x$개를 사서 $3900$원을 냈다면 귤은 몇 개인가요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "사과 값은 $800\\times3=2400$원이에요.",
+    "$2400+500x=3900$"
+   ],
+   "explanation": "$500x=1500$ 이므로 $x=3$, 귤은 $3$개예요.",
+   "role": "core",
+   "family": "word-price",
+   "expectedSeconds": 75,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-4",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "현재 아버지는 $42$세, 아들은 $10$세입니다. 몇 년 후에 아버지의 나이가 아들 나이의 $2$배가 될까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 22
+   },
+   "hints": [
+    "$x$년 후 아버지는 $42+x$, 아들은 $10+x$ 세예요.",
+    "$42+x=2(10+x)$"
+   ],
+   "explanation": "$42+x=20+2x$ 이므로 $x=22$, 즉 $22$년 후예요.",
+   "role": "core",
+   "family": "word-age",
+   "expectedSeconds": 80,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-5",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "집에서 학교까지 시속 $3\\,\\text{km}$로 가면 시속 $4\\,\\text{km}$로 갈 때보다 $10$분 더 걸립니다. 집에서 학교까지의 거리는 몇 $\\text{km}$인가요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "시간 = 거리 ÷ 속력 이에요. $10$분은 $\\dfrac16$ 시간이에요.",
+    "$\\dfrac{x}{3}-\\dfrac{x}{4}=\\dfrac16$ 을 풀어 보세요."
+   ],
+   "explanation": "$\\dfrac{x}{12}=\\dfrac16$ 이므로 $x=2$, 거리는 $2\\,\\text{km}$ 예요.",
+   "role": "core",
+   "family": "word-speed",
+   "expectedSeconds": 120,
+   "tags": [
+    "challenge"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-v1",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "어떤 수의 $2$배에 $5$를 더하면 $17$ 입니다. 어떤 수를 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "어떤 수를 $x$ 라 하면 $2x+5=17$ 이에요.",
+    "$2x=12$"
+   ],
+   "explanation": "$2x=12$ 이므로 $x=6$ 이에요.",
+   "role": "variant",
+   "family": "word-num",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-word-v2",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "연속하는 두 자연수의 합이 $31$ 입니다. 작은 수를 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "작은 수를 $x$ 라 하면 $x+(x+1)=31$ 이에요.",
+    "$2x=30$"
+   ],
+   "explanation": "$2x+1=31$ 이므로 $x=15$ 이에요.",
+   "role": "variant",
+   "family": "word-seq",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-int1",
+   "site": "math",
+   "skillId": "m.int",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$(-3)+(-5)$ 를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -8
+   },
+   "hints": [
+    "같은 부호끼리 더하면 절댓값을 더하고 부호는 그대로예요.",
+    "$3+5=8$ 에 음수 부호를 붙여요."
+   ],
+   "explanation": "$(-3)+(-5)=-8$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-int2",
+   "site": "math",
+   "skillId": "m.int",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$-12\\div3+5$ 를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1
+   },
+   "hints": [
+    "나눗셈을 먼저 계산해요.",
+    "$-12\\div3=-4$ 예요."
+   ],
+   "explanation": "$-4+5=1$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-expr1",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$x=-3$일 때, $2x+7$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1
+   },
+   "hints": [
+    "$2\\times(-3)+7$ 로 써 보세요.",
+    "$2\\times(-3)=-6$"
+   ],
+   "explanation": "$-6+7=1$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-expr2",
+   "site": "math",
+   "skillId": "m.expr",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$x=2$일 때, $x^2-3x$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -2
+   },
+   "hints": [
+    "$x^2=4$, $3x=6$ 이에요.",
+    "$4-6$"
+   ],
+   "explanation": "$2^2-3\\times2=4-6=-2$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-prop1",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$x-4=6$의 양변에 $4$를 더하면?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$x=10$"
+    },
+    {
+     "id": "b",
+     "text": "$x=2$"
+    },
+    {
+     "id": "c",
+     "text": "$x=-2$"
+    },
+    {
+     "id": "d",
+     "text": "$x=24$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "양변에 같은 수를 더해도 등식은 성립해요.",
+    "$x-4+4=x$"
+   ],
+   "explanation": "$x=6+4=10$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-prop2",
+   "site": "math",
+   "skillId": "m.prop",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "$2x=10$ 에서 등식의 성질을 바르게 사용한 것은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "양변을 $2$로 나눈다"
+    },
+    {
+     "id": "b",
+     "text": "양변에 $2$를 더한다"
+    },
+    {
+     "id": "c",
+     "text": "양변에서 $10$을 뺀다"
+    },
+    {
+     "id": "d",
+     "text": "양변에 $0$을 곱한다"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "$x$ 앞의 $2$를 없애려면 어떻게 해야 할까요?",
+    "곱해진 수는 나눗셈으로 없애요."
+   ],
+   "explanation": "$x$ 앞의 계수 $2$로 양변을 나누면 $x=5$ 예요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-solve1",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$2x-5=9$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "$-5$ 를 우변으로 이항해요.",
+    "$2x=14$"
+   ],
+   "explanation": "$2x=14$ 이므로 $x=7$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-solve2",
+   "site": "math",
+   "skillId": "m.solve",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$3x+4=x+12$ 일 때, $x$의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "$x$항을 왼쪽으로 모아요.",
+    "$3x-x=12-4$"
+   ],
+   "explanation": "$2x=8$ 이므로 $x=4$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-word1",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "어떤 수의 $4$배에서 $3$을 빼면 $17$ 입니다. 어떤 수를 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "어떤 수를 $x$ 라 하면 $4x-3=17$ 이에요.",
+    "$4x=20$"
+   ],
+   "explanation": "$4x=20$ 이므로 $x=5$ 예요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-diag-word2",
+   "site": "math",
+   "skillId": "m.word",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "연속하는 세 자연수의 합이 $42$ 입니다. 가장 작은 수를 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 13
+   },
+   "hints": [
+    "가장 작은 수를 $x$ 라 하면 세 수는 $x,\\ x+1,\\ x+2$ 예요.",
+    "$3x+3=42$"
+   ],
+   "explanation": "$3x+3=42$, $3x=39$, $x=13$ 이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  }
+ ]
+}
