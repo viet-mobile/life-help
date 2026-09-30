@@ -19,7 +19,9 @@ export default defineConfig({
   webServer: {
     command: `npx next start -p ${PORT}`,
     port: PORT,
-    reuseExistingServer: true,
+    reuseExistingServer: false,
+    // Path-based /study access and the API on non-learn hosts only exist outside production.
+    env: { APP_ENV: "staging" },
     timeout: 120_000,
   },
 });

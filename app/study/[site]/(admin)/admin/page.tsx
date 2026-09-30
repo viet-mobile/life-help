@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getUserRole } from "@/lib/auth/roles";
-import { getContentRepository } from "@/lib/learn/content/repository";
+import { canAdminister } from "@/lib/learn/server/adminAccess";
 import { t } from "@/lib/learn/i18n";
-import { accountsEnabled } from "@/lib/learn/server/runtime";
+import { accountsEnabled, loadContent } from "@/lib/learn/server/runtime";
 import { isSite } from "@/lib/learn/types";
 import { createClient } from "@/utils/supabase/server";
 
@@ -25,8 +24,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      const role = getUserRole(user);
-      allowed = role === "ADMIN" || role === "STAFF";
+      allowed = canAdminister(user);
     } catch {
       allowed = false;
     }
@@ -39,7 +37,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
     );
   }
 
-  const bundle = await getContentRepository().getBundle(site);
+  const { bundle } = await loadContent(site);
   const byStatus = new Map<string, number>();
   for (const q of bundle.questions) byStatus.set(q.status, (byStatus.get(q.status) ?? 0) + 1);
   const lessons = bundle.catalog.courses.flatMap((c) => c.units.flatMap((u) => u.lessons));

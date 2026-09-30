@@ -9,7 +9,9 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
  * with minimal stand-ins for Supabase's auth/roles, then exercises RLS,
  * the XP-ledger idempotency guard, the atomic commit RPC and the publish workflow.
  */
-const migration = readFileSync(path.join(__dirname, "../../supabase/migrations/202609300001_learning_platform.sql"), "utf8");
+const migration =
+  readFileSync(path.join(__dirname, "../../supabase/migrations/202609300001_learning_platform.sql"), "utf8") +
+  readFileSync(path.join(__dirname, "../../supabase/migrations/202609300002_learning_content_rpc.sql"), "utf8");
 
 const A = "11111111-1111-1111-1111-111111111111";
 const B = "22222222-2222-2222-2222-222222222222";
@@ -287,6 +289,49 @@ describe("demo seed", () => {
     expect(Number(lessons.rows[0].n)).toBe(8);
     // Workflow trigger is back on after seeding.
     await expect(fresh.exec("insert into public.learn_questions(code, subject_id, skill_id, type, difficulty, prompt, status) select 'zz', subject_id, id, 'numeric', 1, 'x', 'PUBLISHED' from public.learn_skills limit 1")).rejects.toThrow(/DRAFT/);
+    await fresh.close();
+  });
+});
+
+describe("database-backed content", () => {
+  it("learn_load_content returns exactly the demo curriculum once seeded, and hides unpublished questions", async () => {
+    const seed = readFileSync(path.join(__dirname, "../../supabase/seed/learn_demo.sql"), "utf8");
+    const { parseContentBundle } = await import("@/lib/learn/content/supabaseContent");
+    const { demoContentRepository } = await import("@/lib/learn/content/repository");
+    const fresh = new PGlite();
+    await fresh.exec(`
+      create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;
+      create schema auth; create schema security;
+      create table auth.users (id uuid primary key);
+      create function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create type public.app_role as enum ('CUSTOMER', 'TECHNICIAN', 'ADMIN', 'STAFF');
+      create table public.user_roles (user_id uuid, role public.app_role);
+      create function security.has_role(required_roles public.app_role[]) returns boolean language sql stable as $$ select false $$;
+    `);
+    await fresh.exec(migration);
+    await fresh.exec(`set app.allow_demo_seed = 'on'; ${seed}`);
+    for (const site of ["math", "english"] as const) {
+      const raw = (await fresh.query<{ c: unknown }>("select public.learn_load_content($1) as c", [site])).rows[0].c;
+      const fromDb = parseContentBundle(raw, site);
+      const demo = await demoContentRepository.getBundle(site);
+      type Cat = import("@/lib/learn/types").SiteCatalog;
+      // Skill lists have no inherent order: compare them sorted.
+      const bySkill = (c: Cat): Cat => ({
+        ...c,
+        skills: [...c.skills].sort((a, b) => a.id.localeCompare(b.id)),
+        courses: c.courses.map((co) => ({ ...co, units: co.units.map((u) => ({ ...u, lessons: u.lessons.map((l) => ({ ...l, skillIds: [...l.skillIds].sort() })) })) })),
+      });
+      expect(bySkill(fromDb.catalog)).toEqual(bySkill(demo.catalog));
+      expect([...fromDb.questions].sort((a, b) => a.id.localeCompare(b.id))).toEqual([...demo.questions].sort((a, b) => a.id.localeCompare(b.id)));
+    }
+    // A draft question never reaches students.
+    await fresh.exec("update public.learn_questions set status = 'ARCHIVED' where code = 'm-expr-1'");
+    const raw = (await fresh.query<{ c: { questions: { id: string }[] } }>("select public.learn_load_content('math') as c")).rows[0].c;
+    expect(raw.questions.map((q) => q.id)).not.toContain("m-expr-1");
+    // Students/anon cannot call it (it contains answer keys).
+    await fresh.exec("set role authenticated");
+    await expect(fresh.query("select public.learn_load_content('math')")).rejects.toThrow();
+    await fresh.exec("reset role");
     await fresh.close();
   });
 });

@@ -3,8 +3,28 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { supabaseMatchesEnvironment } from "@/lib/env";
 import { LearnService, type Actor } from "./service";
 import { SupabaseLearnStore } from "./supabaseStore";
+import type { Site } from "@/lib/learn/types";
+import { loadIndex, setContentRepository } from "@/lib/learn/content/repository";
+import { SupabaseContentRepository } from "@/lib/learn/content/supabaseContent";
 
 let service: LearnService | null = null;
+let contentReady = false;
+
+/** LEARN_CONTENT_SOURCE=supabase switches the curriculum from the bundled demo to the database. */
+function ensureContentSource() {
+  if (contentReady) return;
+  contentReady = true;
+  if (process.env.LEARN_CONTENT_SOURCE === "supabase" && accountsEnabled()) {
+    const admin = createAdminClient();
+    if (admin) setContentRepository(new SupabaseContentRepository(admin));
+  }
+}
+
+/** Server pages load curriculum through this so the configured content source is always applied. */
+export async function loadContent(site: Site) {
+  ensureContentSource();
+  return loadIndex(site);
+}
 
 /** True when accounts (Supabase auth + service role) are configured for this deployment. */
 export function accountsEnabled(): boolean {
@@ -20,6 +40,7 @@ export function getLearnService(): LearnService {
   if (!service) {
     const admin = accountsEnabled() ? createAdminClient() : null;
     service = new LearnService({ store: admin ? new SupabaseLearnStore(admin) : null });
+    ensureContentSource();
   }
   return service;
 }

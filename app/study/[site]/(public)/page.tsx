@@ -2,9 +2,8 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { StartCta } from "@/components/learn/StartCta";
-import { loadIndex } from "@/lib/learn/content/repository";
 import { t } from "@/lib/learn/i18n";
-import { accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
+import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
 import { isSite } from "@/lib/learn/types";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
@@ -12,7 +11,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   if (!isSite(site)) notFound();
   const h = await headers();
   const base = h.get("x-learn-base") ?? `/study/${site}`;
-  const { bundle } = await loadIndex(site);
+  const { bundle } = await loadContent(site);
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
   const other = site === "math" ? "english" : "math";

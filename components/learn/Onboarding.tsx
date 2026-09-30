@@ -1,21 +1,42 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
 import { GOALS, GRADES, type Goal, type Grade } from "@/lib/learn/types";
 import { ApiError, useLearner } from "./LearnerProvider";
 
 const TOTAL = 4;
 
+const subscribe = () => () => {};
+/** Profile fields (only) of this device's guest session; used to pre-fill a new account's onboarding. */
+function guestProfileJson(site: string): string | null {
+  try {
+    const raw = window.localStorage.getItem(`${learnConfig.guestStorageKey}:${site}`);
+    const p = raw ? JSON.parse(raw)?.profile : null;
+    return p ? JSON.stringify({ nickname: p.nickname, grade: p.grade, goal: p.goal, avatar: p.avatar }) : null;
+  } catch {
+    return null;
+  }
+}
+
 export function Onboarding() {
-  const { t, api, href, ready, state } = useLearner();
+  const { t, api, href, ready, state, mode, site } = useLearner();
+  // Progress (XP, mastery, lessons) is never carried over from a guest session: it is
+  // client-held and unverifiable. Only the harmless profile choices are offered as defaults.
+  const guestJson = useSyncExternalStore(subscribe, () => (mode === "account" && !state.profile ? guestProfileJson(site) : null), () => null);
+  const guest = guestJson ? (JSON.parse(guestJson) as { nickname?: string; grade?: Grade; goal?: Goal; avatar?: string }) : null;
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [nickname, setNickname] = useState(state.profile?.nickname ?? "");
-  const [grade, setGrade] = useState<Grade | null>(state.profile?.grade ?? null);
-  const [goal, setGoal] = useState<Goal | null>(state.profile?.goal ?? null);
-  const [avatar, setAvatar] = useState<string>(state.profile?.avatar ?? "fox");
+  const [nicknameInput, setNickname] = useState<string | null>(null);
+  const [gradeInput, setGrade] = useState<Grade | null>(null);
+  const [goalInput, setGoal] = useState<Goal | null>(null);
+  const [avatarInput, setAvatar] = useState<string | null>(null);
+  const nickname = nicknameInput ?? state.profile?.nickname ?? guest?.nickname ?? "";
+  const grade = gradeInput ?? state.profile?.grade ?? guest?.grade ?? null;
+  const goal = goalInput ?? state.profile?.goal ?? guest?.goal ?? null;
+  const avatar = avatarInput ?? state.profile?.avatar ?? guest?.avatar ?? "fox";
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

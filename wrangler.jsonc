@@ -8,9 +8,9 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  // Staging Worker: a separate Worker (its own *.workers.dev URL and custom domains),
-  // deployed only with `--env staging`. Nothing here changes the default (production) deploy.
-  // Attach math-staging.life.help / english-staging.life.help to THIS worker in the dashboard.
+  // Staging Worker: a separate Worker served on its own *.workers.dev URL, deployed only with
+  // `--env staging`. It has no routes/custom domains and is unrelated to the production
+  // `*.life.help/* -> life-help` route. Nothing here changes the default (production) deploy.
   "env": {
     "staging": {
       "name": "life-help-staging",

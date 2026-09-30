@@ -1,77 +1,72 @@
-# Deployment, environments and go-live checklist (math / english)
+# Deployment, environments and go-live (math / english)
 
-Audit facts below come from files in this repository. Anything the repository
-cannot show (dashboard-only settings) is marked **UNKNOWN – verify in dashboard**.
+Facts marked **[CONFIRMED]** were read from the Cloudflare dashboard by the project owner; everything else is from this repository.
 
-## 1. Audit
+## 1. Confirmed production topology
 
-**GitHub**
-- Repository: `viet-mobile/life-help`; default branch `main` (remote head `996ec06`).
-- Working branch for this work: `claude/compassionate-tesla-70glgy` (not `main`).
-- `.github/` did not exist: no CI, no deploy workflow, no staging/production workflow.
-  This change adds `ci.yml` (verify only) and `deploy-staging.yml` (manual, staging Worker only).
-- No production workflow was added on purpose.
-- Secret/variable names referenced by the new workflows: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-  (secrets, Environment `staging`), `STAGING_SUPABASE_URL`, `STAGING_SUPABASE_ANON_KEY` (variables).
+- Worker `life-help` (structure A: Worker is the origin, OpenNext, see `wrangler.jsonc`).
+- **[CONFIRMED]** Zone `life.help` has Worker Route **`*.life.help/* → life-help`** and **Custom Domains `life.help` +61**.
+- **[CONFIRMED]** There is **no wildcard DNS record** (`*`). The route alone does not make a hostname resolve: a hostname must have a proxied DNS
+  record (the Custom Domains create those for the existing ~60 hosts). Route ≠ DNS.
+- **[CONFIRMED]** Production branch `main`; Workers Builds for non-production branches is **on**. Build `npm run build`, deploy `npm run deploy`,
+  version `npx wrangler versions upload`. Do **not** click "Set up Worker Previews" (separate migration, later).
+- **[CONFIRMED]** Active deployment is version `b60470a6` (100%). Branch builds such as `8a1293af` only upload *versions*; they are not active.
+  An uploaded version does not receive production traffic until someone deploys/promotes it. Never promote a branch version.
+- Existing hosts are routed inside the Worker by `proxy.ts` (country / tech / chat / sys). Their behaviour is pinned by a regression test
+  (`tests/learn/proxy.test.ts` compares against a verbatim copy of `main`'s proxy for 18 hosts × 12 paths).
 
-**Cloudflare structure: A — a Cloudflare Worker is the origin.**
-Evidence: `wrangler.jsonc` has `main: .open-next/worker.js`, `name: life-help`, an `assets` binding, and
-`nodejs_compat`; `open-next.config.ts` uses `@opennextjs/cloudflare`; `package.json` has `deploy = opennextjs-cloudflare build && … deploy`.
-There is no Pages config (`_routes.json`, `functions/`), no `routes`/`custom_domains` (so attached hostnames are dashboard-managed),
-and no separate origin behind the Worker (not B, C or D).
+## 2. What changed with the wildcard-route discovery
 
-**Hostname handling in code**
-- `proxy.ts` does all host routing inside the single Worker: `<country>.life.help`, `tech.`, `chat.`, `sys.`, `register-device.`.
-- New: `math.` / `english.` (and `-staging` variants) are matched by an exact allowlist (`lib/learn/hosts.ts`), never a wildcard, and
-  rewritten to `/study/<site>/…`.
-- Cookies: the app sets no cookie `Domain`, so Supabase session cookies are host-only. `math` and `english` do **not** share a session with
-  each other or with `sys.`/`tech.`. Keep it that way (do not set `Domain=.life.help`).
-- CORS: no CORS headers anywhere; the learning API is same-origin only (`Origin` must equal the request host).
-- CSP: none exists today. OAuth: none used. Supabase auth redirect: e-mail/password only; confirmation e-mails use the Supabase *Site URL*
-  / *Redirect URLs* allowlist (dashboard).
-- Collisions found: (1) PWA manifest (`app/manifest.ts`) and site metadata assumed LIFE.HELP customer hosts → learn hosts now get their own manifest;
-  (2) the old proxy would have treated `math.life.help` as a customer host with no country → now handled before that logic.
-- Not changed, but risky (existing): `lib/auth/adminAuth.ts` sets a client-side `admin auth = true` cookie (spoofable); real protection depends on
-  `AUTH_ENFORCEMENT=true`. The README mentions `.env.example`, which does not exist. `npm run lint` already fails on 64 pre-existing errors, so CI lints only new code.
+| Earlier plan | Now |
+|---|---|
+| Attach `math-staging.life.help` / `english-staging.life.help` as Custom Domains of `life-help-staging` | **Dropped for now.** Staging uses `life-help-staging.<account>.workers.dev` only. No `life.help` DNS, Custom Domain or Route is created. |
+| Path `/study/*` available everywhere | `/study/*` and the API are **404 in production on every non-learning host** (proxy + API guard), so existing hosts cannot expose the learning pages. |
 
-## 2. Architecture decision
+Why the wildcard matters: Cloudflare picks the **most specific route** when several match, and routes take precedence over Custom Domains on the
+same hostname. So a future `math-staging.life.help/* → life-help-staging` route (plus a proxied DNS record) *would* win over `*.life.help/*`. That is
+workable, but it touches the production zone, so it is deferred until workers.dev validation is complete.
 
-One web application, one codebase, hostname-based routing (already the repository's pattern).
-- Production Worker: `life-help` (unchanged).
-- Staging Worker: **`life-help-staging`** (new `env.staging` block in `wrangler.jsonc`; deploys only with `--env staging`). It never edits the production Worker.
-- Shared: auth, engine, gamification, UI, providers (`lib/learn`, `components/learn`). Site-specific: demo content and renderers per site.
-- Environments come only from `lib/env.ts` (`APP_ENV`: local | staging | production). Staging is `noindex`, and accounts are disabled unless the Supabase
-  project matches `EXPECTED_SUPABASE_REF` (fail closed so staging can never silently use the production database).
+## 3. Staging strategy (chosen: Option A — workers.dev first)
 
-## 3. Variables and secrets (names only)
+```
+LOCAL → life-help-staging.<account>.workers.dev (real staging Supabase) → [only if needed] specific route for *-staging hosts → full E2E → PR → production review
+```
 
-| Name | Kind | Where |
-|---|---|---|
-| `APP_ENV` | var | staging Worker: `staging` (set in wrangler.jsonc); production: leave unset |
-| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | build-time vars | per environment |
-| `SUPABASE_SERVICE_ROLE_KEY` | Worker **secret** | per environment, never in git |
-| `EXPECTED_SUPABASE_REF` | Worker var | staging: staging project ref (required); production: prod ref (recommended) |
-| `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | GitHub Environment `staging` secrets | CI staging deploy |
+- Separate Worker `life-help-staging` (`wrangler.jsonc` → `env.staging`, deployed only with `--env staging`). It shares nothing with `life-help`:
+  different name, no routes, own vars/secrets, own `*.workers.dev` URL. The production wildcard route targets `life-help` by name and cannot reach it.
+- `APP_ENV=staging` (Worker var) enables the staging-only conveniences: `/study` chooser and path access `/study/math`, `/study/english`
+  (workers.dev has no `math.` subdomain). In production none of this exists (404). Production hostname UX is unchanged.
+- Staging is `noindex`, and accounts are disabled unless `EXPECTED_SUPABASE_REF` matches the Supabase URL (cannot silently use the production DB).
+- Details and commands: `docs/STAGING.md`.
 
-## 4. Connecting hosts (ordering matters)
+## 4. Future production hostnames (not created yet)
 
-Use **Worker Custom Domains** (matches structure A). Do not pre-create A/AAAA/CNAME records for these names: attaching a Custom Domain creates them.
+`math.life.help` and `english.life.help` should be added **the same way the existing ~60 hosts are**: Custom Domain on Worker `life-help`
+(which creates the proxied DNS record; the wildcard route then also matches). No special-casing. Do this only after staging passes and the
+branch is merged through a PR. Until a DNS record exists these names do not resolve, so merging alone exposes nothing; but **merging to `main` triggers
+the production build/deploy** (Workers Builds), so merge only when you intend to go live with this code.
 
-1. Staging first: deploy `life-help-staging`, attach `math-staging.life.help` and `english-staging.life.help` to it.
-   (Single-label subdomains are covered by Universal SSL. `math.staging.life.help` would not be, so it is not used.)
-2. Only after staging passes the checklist below, attach `math.life.help` and `english.life.help` to `life-help` **after** production is deployed with this code.
-3. **UNKNOWN – verify first:** whether a wildcard (`*.life.help`) DNS record or Worker route already exists. If it does, `math.life.help` may already reach the
-   production Worker, and deploying this code to production makes those hosts live immediately.
-4. **UNKNOWN – verify first:** whether Workers Builds (git integration) auto-deploys `main`. If so, merging this branch deploys production.
+## 5. Variables and secrets (names only)
 
-## 5. Staging verification checklist
+| Name | Kind | Staging | Production |
+|---|---|---|---|
+| `APP_ENV` | var | `staging` (in wrangler.jsonc) | unset (= production) |
+| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | build-time | staging project | existing |
+| `SUPABASE_SERVICE_ROLE_KEY` | Worker secret | staging key | add only at go-live |
+| `EXPECTED_SUPABASE_REF` | var | staging ref (required) | production ref (recommended) |
+| `LEARN_CONTENT_SOURCE` | var | `demo` → `supabase` after seeding | `supabase` |
+| `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | GitHub Environment `staging` secrets | yes | — |
 
-math + english landing, onboarding, diagnostic, lesson, hint ladder, XP/level, refresh persistence, daily quest, sign-up/login (staging Supabase only),
-mobile layout, and a regression pass on `korea.life.help`, `tech.`, `chat.`, `sys.` staging-equivalents.
+**Do not add `SUPABASE_SERVICE_ROLE_KEY` to the production Worker yet.** Branch versions share the production Worker's secrets/bindings; without the key,
+accounts stay disabled and the learning code cannot reach any database from a branch version.
 
 ## 6. Database
 
-`supabase/migrations/202609300001_learning_platform.sql` is additive (new `learn_*` objects only; no existing table is altered).
-Apply to **staging first** with the Supabase CLI against the staging project. Production application requires explicit approval.
-Rollback: `supabase/rollbacks/202609300001_learning_platform.down.sql` (manual, destroys learning data).
-Demo content: `supabase/seed/` (never in migrations; guarded so it cannot run by accident).
+`supabase/migrations/202609300001_learning_platform.sql` and `…0002_learning_content_rpc.sql` are additive (new `learn_*` objects and one function).
+They depend on `security.has_role` and `public.app_role` from the marketplace migrations, so a fresh staging project must receive **all** migrations in order.
+Rollback: `supabase/rollbacks/`. Seed (staging only, guarded): `supabase/seed/learn_demo.sql`.
+
+## 7. Guest → account (security design)
+
+Guest progress is client-held and unverifiable, so it is **never imported** into an account (that would let anyone mint XP). On first sign-in only the
+harmless profile choices (nickname, grade, goal, avatar) are offered as defaults in onboarding. Everything else is earned again on the account.

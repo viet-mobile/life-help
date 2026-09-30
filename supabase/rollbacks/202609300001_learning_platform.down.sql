@@ -11,3 +11,5 @@ drop table if exists public.learn_progress_meta, public.learn_student_achievemen
   public.learn_subjects, public.learn_curricula, public.learn_countries cascade;
 drop function if exists public.learn_enforce_publish_flow();
 drop type if exists public.learn_publish_status;
+-- Also remove the content RPC added by 202609300002_learning_content_rpc.sql:
+drop function if exists public.learn_load_content(text);

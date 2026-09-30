@@ -19,7 +19,8 @@
     "deploy:staging": "opennextjs-cloudflare build && opennextjs-cloudflare deploy --env staging",
     "lint:learn": "eslint app/study app/api/learn lib/learn lib/env.ts components/learn tests utils/supabase/admin.ts",
     "check:learn": "npm run typecheck && npm run lint:learn && npm test",
-    "seed:learn:generate": "node scripts/learn/generate-seed.mjs"
+    "seed:learn:generate": "node scripts/learn/generate-seed.mjs",
+    "test:staging": "playwright test -c playwright.staging.config.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

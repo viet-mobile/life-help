@@ -1,7 +1,7 @@
 name: Deploy to STAGING (manual)
 
-# Manual only. Deploys the separate `life-help-staging` Worker; it can never touch
-# the production Worker (`life-help`). Requires the GitHub Environment `staging`
+# Manual only. Deploys the separate `life-help-staging` Worker (workers.dev URL, no routes);
+# it can never touch the production Worker (`life-help`) or its `*.life.help/*` route. Requires the GitHub Environment `staging`
 # with the secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID, plus the
 # staging variables/secrets listed in docs/DEPLOYMENT.md.
 on:
