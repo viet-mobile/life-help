@@ -270,6 +270,8 @@ export interface AttemptInput {
   isReview?: boolean;
   /** True when the student was shown the answer and asked to move on. */
   revealed?: boolean;
+  /** Submitted answer, trimmed to 200 chars, kept for mistake analysis. */
+  answer?: string;
 }
 
 export type LearnEvent =

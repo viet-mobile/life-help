@@ -254,9 +254,11 @@ export class LearnService {
     const now = this.now();
     const store = this.requireStore(actor);
     let attemptNo = clampInt(body.attemptNo, 1, 3, 1);
+    let sessionLessonId: string | null = null;
     if (store && actor.userId) {
       const session = await store.getSession(actor.userId, body.sessionId);
       if (!session || session.site !== site) throw new LearnError("invalid_session", 403);
+      sessionLessonId = session.lessonId;
       // Authoritative attempt count comes from what was actually recorded.
       const summary = await store.sessionSummary(actor.userId, body.sessionId);
       const prior = summary.questions[q.id];
@@ -281,12 +283,13 @@ export class LearnService {
         timeMs: clampInt(body.timeMs, 0, 3_600_000, 0),
         isReview: body.isReview === true && skillDue,
         revealed: reveal,
+        answer: (Array.isArray(body.answer) ? body.answer.join(",") : String(body.answer)).slice(0, 200),
       },
       now,
     );
 
     if (store && actor.userId) {
-      await store.commit(actor.userId, site, result, { sessionId: body.sessionId, lessonId: null });
+      await store.commit(actor.userId, site, result, { sessionId: body.sessionId, lessonId: sessionLessonId });
     }
 
     // Wrong answers escalate: small hint -> concrete hint -> worked explanation + similar question.
