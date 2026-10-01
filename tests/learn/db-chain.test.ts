@@ -59,7 +59,7 @@ describe("learning migrations on the real LIFE.HELP chain", { timeout: 120_000 }
       await db.query<{ t: string; i: boolean; u: boolean; d: boolean; s: boolean }>(
         `select t, has_table_privilege('service_role', 'public.' || t, 'INSERT') i, has_table_privilege('service_role', 'public.' || t, 'UPDATE') u,
                 has_table_privilege('service_role', 'public.' || t, 'DELETE') d, has_table_privilege('service_role', 'public.' || t, 'SELECT') s
-         from unnest(array['learn_xp_ledger','learn_attempts','learn_skill_mastery','learn_lesson_progress','learn_streaks','learn_daily_quests','learn_student_achievements','learn_progress_meta','learn_questions','learn_question_answers']) t`,
+         from unnest(array['learn_xp_ledger','learn_attempts','learn_skill_mastery','learn_lesson_progress','learn_streaks','learn_daily_quests','learn_student_achievements','learn_progress_meta']) t`,
       )
     ).rows;
     for (const g of grants) expect(g, g.t).toMatchObject({ i: false, u: false, d: false, s: true });

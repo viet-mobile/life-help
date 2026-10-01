@@ -15,7 +15,7 @@ const suites = [
   "test_request_api_static", "test_service_lifecycle_static", "test_settlement_lifecycle", "test_helper_release_db",
   "test_assignment_release_static", "test_push_subscriptions_db", "test_rematch_exclusion_db", "test_web_push", "test_customer_ownership",
   "test_helper_pricing_db", "test_helper_pricing_app", "test_customer_reselection_db",
-  "test_marketplace_prepay_db", "test_payment_rail_app", "test_devnet_signer_app", "test_money_outbox_db", "test_money_outbox_app", "test_cron_isolation_app", "test_conversation_lifecycle_db", "test_operator_review_db", "test_financial_authority_db", "test_referral_reward_authority_db", "test_checkout_expiry_db", "test_provider_foundation_db", "test_provider_foundation_app", "test_admin_audit_authority_db", "test_audit_log_helper_app", "test_provider_payout_finality_db", "test_provider_reported_paid_db", "test_review_reported_paid_app", "test_airwallex_adapter_app",
+  "test_marketplace_prepay_db", "test_payment_rail_app", "test_devnet_signer_app", "test_money_outbox_db", "test_money_outbox_app", "test_cron_isolation_app", "test_conversation_lifecycle_db", "test_operator_review_db", "test_financial_authority_db", "test_referral_reward_authority_db", "test_checkout_expiry_db", "test_provider_foundation_db", "test_provider_foundation_app", "test_admin_audit_authority_db", "test_audit_log_helper_app", "test_provider_payout_finality_db", "test_provider_reported_paid_db", "test_review_reported_paid_app", "test_airwallex_adapter_app", "test_learning_migration_db", "test_staging_probe_local",
 ];
 let failed = 0;
 for (const suite of suites) {

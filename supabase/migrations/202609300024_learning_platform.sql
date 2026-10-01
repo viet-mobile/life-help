@@ -359,6 +359,12 @@ end $$;
 -- (owner privileges), so the app role has SELECT only there: it cannot rewrite or delete history directly.
 -- The server writes just two tables directly: the student's own profile and the session bookkeeping row.
 grant insert, update, delete on public.learn_student_profiles, public.learn_sessions to service_role;
+-- Content (catalog, questions, answer keys) is authored by the trusted import path with the server key and, for
+-- question content, by staff through RLS. It is not financial history, and the publish-flow trigger still binds every role.
+grant insert, update, delete on public.learn_countries, public.learn_curricula, public.learn_subjects, public.learn_courses,
+  public.learn_units, public.learn_skills, public.learn_lessons, public.learn_lesson_skills, public.learn_questions,
+  public.learn_lesson_questions, public.learn_question_options, public.learn_question_answers, public.learn_question_hints,
+  public.learn_question_explanations to service_role;
 grant select on public.learn_countries, public.learn_subjects, public.learn_skills, public.learn_curricula, public.learn_courses,
   public.learn_units, public.learn_lessons, public.learn_lesson_skills to authenticated;
 grant select, insert, update, delete on public.learn_questions, public.learn_lesson_questions, public.learn_question_options,
