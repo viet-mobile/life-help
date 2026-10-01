@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { canAdminister } from "@/lib/learn/server/adminAccess";
+import { isLearnStaff } from "@/lib/learn/server/adminAccess";
 import { t } from "@/lib/learn/i18n";
 import { accountsEnabled, loadContent } from "@/lib/learn/server/runtime";
 import { isSite } from "@/lib/learn/types";
 import { createClient } from "@/utils/supabase/server";
+import { createAdminClient } from "@/utils/supabase/admin";
 
 export const metadata: Metadata = { title: t("admin.title"), robots: { index: false, follow: false } };
 
 /**
- * Content overview (read-only foundation). Staff only, verified from the
- * Supabase session (app_metadata.role), never from a client-set cookie.
+ * Content overview (read-only foundation). Staff only: the verified Supabase user id
+ * (auth.getUser(), never a client-set cookie) must have a row in learn_staff_users.
+ * Marketplace roles and user/app metadata are not consulted.
  * Answer keys are deliberately never rendered.
  */
 export default async function Page({ params }: { params: Promise<{ site: string }> }) {
@@ -24,7 +26,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      allowed = canAdminister(user);
+      allowed = await isLearnStaff(createAdminClient(), user);
     } catch {
       allowed = false;
     }

@@ -10,7 +10,9 @@
 //     "denied"  = privilege or row-level-security refusal (SQLSTATE 42501 / HTTP 401, 403)
 //     "error"   = any other database error (check / FK / raised exception)
 //   createUser(label) -> { id, token }       purgeable Auth user (deleting it cascades every learn_* student row)
-//   makeStaff(user)                          profile + STAFF role through the service authority
+//   makeStaff(user)                          grants LEARNING staff (a row in public.learn_staff_users) as the database owner:
+//                                            the API roles cannot write that table (migration 202609300026); a marketplace role is NOT learning staff
+//   rpcInSchema?(actor, schema, fn, args)    live only: call a function through the API in a non-exposed schema (must fail)
 //   catalog?(sql) -> rows                    PGlite only; the live catalog is verified by the read-only probe
 //   purge()                                  removes every fixture the gate created
 //
@@ -63,7 +65,7 @@ export async function learningGate(b, { expect, notTestable }, { phase = "gate" 
       const rows = await b.catalog(`select p.proname, p.prosecdef, coalesce(p.proconfig::text, '') cfg from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'public' and p.proname in ('learn_commit_events', 'learn_load_state', 'learn_load_content') order by 1`);
       expect("024-A3. learn RPCs are SECURITY DEFINER with an empty search_path (catalog)", rows.length === 3 && rows.every((r) => r.prosecdef && r.cfg.replace(/[\\"{}]/g, "") === "search_path="), rows);
       const rls = await b.catalog(`select count(*) filter (where relrowsecurity)::int on_, count(*)::int n from pg_class c join pg_namespace s on s.oid = c.relnamespace where s.nspname = 'public' and c.relkind = 'r' and c.relname like 'learn\\_%'`);
-      expect("024-A4. RLS enabled on all 24 learn_* tables (catalog)", rls[0].on_ === 24 && rls[0].n === 24, rls);
+      expect("024-A4 / 026. RLS enabled on all 25 learn_* tables incl. learn_staff_users (catalog)", rls[0].on_ === LEARN_TABLES.length + 1 && rls[0].n === LEARN_TABLES.length + 1, rls);
     } else notTestable("024-A3/A4. SECURITY DEFINER + search_path + RLS flags", "catalog is not reachable over PostgREST; verified by supabase/diagnostics/staging_migrations_016_023_readonly.sql after apply");
 
     // ======================= 024 anon =======================
@@ -237,6 +239,36 @@ export async function learningGate(b, { expect, notTestable }, { phase = "gate" 
     for (const t of CONTENT) studentWrites.push([t, (await b.insert(A, t, {})).status]);
     expect("024-H3. students cannot write any content table", studentWrites.every(([, s]) => s === "denied"), studentWrites);
     expect("024-H4. staff can read answer keys, hints and explanations (authoring access is unchanged)", (await b.select(S, "learn_question_answers", { question_id: qPub.id })).rows?.length === 1);
+
+    // ======================= 026 self-contained authorization =======================
+    const staffRow = (await b.select("service", "learn_staff_users", { user_id: S.id })).rows ?? [];
+    expect("026-A1. the staff fixture is a row of learn_staff_users with role EDITOR, readable by the server role (the server's admin gate)", staffRow.length === 1 && staffRow[0].role === "EDITOR", staffRow);
+    const staffReads = [];
+    for (const [who, actor] of [["anon", "anon"], ["student", A], ["staff", S]]) staffReads.push([who, (await b.select(actor, "learn_staff_users", {}, { limit: 1 })).status]);
+    expect("026-A2. neither anon, students nor staff accounts can read learn_staff_users through the API (no grant, RLS without policies)", staffReads.every(([, st]) => st === "denied"), staffReads);
+    const staffWrites = [];
+    for (const [who, actor] of [["anon", "anon"], ["student", A], ["staff", S], ["service", "service"]]) {
+      const ins = await b.insert(actor, "learn_staff_users", { user_id: A.id, role: "ADMIN" });
+      const upd = await b.update(actor, "learn_staff_users", { role: "ADMIN" }, { user_id: S.id });
+      const del = await b.del(actor, "learn_staff_users", { user_id: S.id });
+      staffWrites.push([who, ins.status, upd.status, del.status]);
+    }
+    expect("026-A3. NOBODY can write learn_staff_users through the API (anon, student, staff, and the server key): staff are granted only by the database owner", staffWrites.every(([, i, u, d]) => i === "denied" && u === "denied" && d === "denied"), staffWrites);
+    expect("026-A4. the staff row survived every attempt (and the student is still not staff)", (await b.select("service", "learn_staff_users", { user_id: S.id })).rows?.length === 1 && (await b.select("service", "learn_staff_users", { user_id: A.id })).rows?.length === 0);
+    if (b.rpcInSchema) {
+      const probes = [];
+      for (const [who, actor] of [["anon", "anon"], ["student", A], ["staff", S], ["service", "service"]]) probes.push([who, (await b.rpcInSchema(actor, "learn_security", "is_staff", {})).status]);
+      expect("026-A5. learn_security.is_staff is not callable through the API (the schema is not exposed): every actor is refused", probes.every(([, st]) => st !== "ok"), probes);
+    } else notTestable("026-A5. learn_security is not an API-exposed schema", "PostgREST exposure is a project setting; checked live by the staging gate");
+    if (b.catalog) {
+      const pol = await b.catalog(`select count(*)::int n, count(*) filter (where qual like '%learn_security.is_staff%' and with_check like '%learn_security.is_staff%')::int ok,
+        count(*) filter (where qual ~ 'has_role|app_role' or with_check ~ 'has_role|app_role')::int legacy from pg_policies where schemaname = 'public' and policyname = 'learn content staff all'`);
+      expect("026-B1. all 14 content staff policies use learn_security.is_staff and none references the marketplace has_role / app_role (catalog)", pol[0].n === 14 && pol[0].ok === 14 && pol[0].legacy === 0, pol);
+      const fn = await b.catalog(`select p.prosecdef, coalesce(p.proconfig::text, '') cfg, has_function_privilege('anon', p.oid, 'EXECUTE') a, has_function_privilege('authenticated', p.oid, 'EXECUTE') u, has_function_privilege('service_role', p.oid, 'EXECUTE') sr,
+        has_schema_privilege('anon', 'learn_security', 'USAGE') sa, has_schema_privilege('authenticated', 'learn_security', 'USAGE') su
+        from pg_proc p where p.oid = 'learn_security.is_staff(text[])'::regprocedure`);
+      expect("026-B2. is_staff is SECURITY DEFINER, search_path '', EXECUTE and schema USAGE for authenticated only (catalog)", fn[0].prosecdef && fn[0].cfg.replace(/[\\"{}]/g, "") === "search_path=" && !fn[0].a && fn[0].u && !fn[0].sr && !fn[0].sa && fn[0].su, fn);
+    }
 
     // ======================= 025 learn_load_content =======================
     const stuLoad = await b.rpc(A, "learn_load_content", { p_subject: subjectCode });

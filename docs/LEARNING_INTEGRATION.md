@@ -49,3 +49,22 @@ proxy regression test against a snapshot of main's `proxy.ts`), `npm test` (main
 - Staging-only drift: 7 server-side tables (money_movement_attempts / money_movement_jobs / operator_review_actions /
   payment_capability_policies / payment_providers / provider_events / provider_payment_links) have RLS enabled with no
   policy on staging; the repo only seals them with `revoke all` from every API role. Tracked separately.
+
+## Self-contained learning authorization (migrations 023 + 026)
+
+- `202609300024` / `202609300025` are IMMUTABLE (applied on staging; sha256 pinned in `tests/learn/migration-lineage.test.ts`).
+  024 guards content authoring with the marketplace's `security.has_role(...)` in exactly 14 policies; nothing else depends on
+  `public.app_role` / `public.user_roles`.
+- `202609300023_learning_prereq_shim.sql`: creates `public.app_role` (same labels as 0001) and an always-false `security.has_role`
+  ONLY when both are absent (a database without the marketplace schema), tagged with the marker `learn-prereq-shim:v1`. When
+  both exist it is a no-op; when only one exists it fails closed.
+- `202609300026_learning_selfcontained_auth.sql`: `public.learn_staff_users` (ADMIN | EDITOR; no API-role write, service_role
+  SELECT only), `learn_security.is_staff()` (private schema, SECURITY DEFINER, `search_path = ''`, EXECUTE for `authenticated` only),
+  replaces the 14 policies, then removes ONLY marker-tagged shim objects (no CASCADE; unmarked marketplace objects are never touched).
+  Marketplace staff are not learning staff. The content console reads `learn_staff_users` (`lib/learn/server/adminAccess.ts`).
+- Lineage chains proven in PGlite: A production-now (empty base), B staging-like, C adversarial (fail closed), D marketplace
+  0001-0023 applied AFTER learning. Manual rollback without CASCADE: `supabase/rollbacks/202609300026_learning_platform_full.down.sql`.
+- Applying to a project whose history already contains 024/025 needs `--include-all` (023 sorts before 025):
+  `supabase db push --linked --include-all --dry-run` must list exactly 023 and 026.
+- A production-style database must be pushed from a temporary workdir that holds only the four learning files; a plain push from
+  this repository would also try to apply the marketplace migrations.

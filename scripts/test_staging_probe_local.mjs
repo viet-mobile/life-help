@@ -18,11 +18,11 @@ async function level(until) {
 const expect = (got, want, label) => check(label, JSON.stringify(got) === JSON.stringify(want), JSON.stringify(got));
 const ALL = ["202609280016", "202609280017", "202609280018", "202609280019", "202609280020", "202609280021", "202609290022", "202609290023", "202609300024", "202609300025"];
 const pick = (map, n) => Object.fromEntries(ALL.slice(0, n).map((m) => [m, map[m]]));
-const full = await level("202609300025");
+const full = await level("202609300026");
 expect(Object.values(full).filter((v) => v !== "APPLIED"), [], "full chain: every rollup APPLIED");
 const to23 = await level("202609290023");
 expect(ALL.slice(0, 8).map((m) => to23[m]), Array(8).fill("APPLIED"), "chain to 023: 016-023 APPLIED");
-expect(["202609300024", "202609300025"].map((m) => to23[m]), ["NOT_APPLIED", "NOT_APPLIED"], "chain to 023: 024/025 NOT_APPLIED");
+expect(["202609300024", "202609300025", "202609300026"].map((m) => to23[m]), ["NOT_APPLIED", "NOT_APPLIED", "NOT_APPLIED"], "chain to 023: 024/025/026 NOT_APPLIED");
 const to21 = await level("202609280021");
 expect(ALL.slice(0, 6).map((m) => to21[m]), Array(6).fill("APPLIED"), "chain to 021: 016-021 APPLIED");
 expect(["202609290022", "202609290023"].map((m) => to21[m]), ["NOT_APPLIED", "NOT_APPLIED"], "chain to 021: 022/023 NOT_APPLIED");

@@ -27,8 +27,7 @@ beforeAll(async () => {
   db = await createChainDb();
   await db.exec(`
     insert into auth.users values ('${A}'), ('${B}'), ('${STAFF}');
-    insert into public.profiles (id, display_name) values ('${STAFF}', 'staff');
-    insert into public.user_roles (user_id, role) values ('${STAFF}', 'STAFF');
+    insert into public.learn_staff_users (user_id, role) values ('${STAFF}', 'EDITOR');
   `);
 });
 

@@ -4,12 +4,13 @@
 // real PostgREST: service key / anon key / real Auth user JWTs. Catalog-level facts (RLS flags, SECURITY DEFINER,
 // search_path, policies, grants) are checked afterwards by the read-only probe supabase/diagnostics/*.sql.
 //
-//   --phase=pre   READ-ONLY. Confirms 024 / 025 are NOT yet applied (learn tables / RPCs absent). Creates nothing.
+//   --phase=pre   READ-ONLY (GET only). Before 023 / 026 are applied on a project that has 024 / 025: learn tables present, learn_staff_users absent.
 //   --phase=gate  (default) creates purgeable fixtures only: 3 Auth users (cascade-deletes every learn_* student row) and a
 //                 handful of content rows written by the trusted server key / a STAFF fixture, all deleted afterwards.
 //                 No admin_audit_logs or other immutable table is written. No Worker, no chain, no money.
 // Usage: node scripts/test_learning_migration_staging.mjs [--phase=pre|gate]
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { runGuarded, stagingTarget } from "./lib/envGuard.mjs";
 import { LEARN_TABLES, learningGate } from "./lib/learningGate.mjs";
 
@@ -47,6 +48,8 @@ const authAdmin = async (pathname, method = "GET", body) => {
   if (!response.ok) throw new Error(`auth ${method} ${pathname.split("/")[0]} ${response.status}`);
   return value;
 };
+const STAGING_REF = "wreebowcbiymodswajwe"; // pinned: the fixture SQL is executed only on the staging project
+if (!supabaseUrl.includes(STAGING_REF)) throw new Error("not the staging project");
 const runId = `LG${Date.now()}`;
 const created = [];
 
@@ -64,10 +67,20 @@ const backend = {
     if (!session?.access_token) throw new Error(`fixture sign-in failed for ${label}`);
     return { id: user.id, token: session.access_token, label };
   },
+  // Learning staff = a row in public.learn_staff_users. The API roles (incl. the server key) cannot write that table by design
+  // (migration 202609300026), so the fixture row is granted the way production staff are: as the database owner, through the
+  // Management API (`supabase db query`). It is purgeable: the row cascades away when the Auth user is deleted.
   makeStaff: async (user) => {
-    const p = await call("service", "profiles", "POST", { id: user.id, display_name: "learning gate staff" });
-    const r = await call("service", "user_roles", "POST", { user_id: user.id, role: "STAFF" });
-    if (p.status !== "ok" || r.status !== "ok") throw new Error(`staff fixture refused: ${p.status}/${r.status}`);
+    if (!/^[0-9a-f-]{36}$/.test(user.id)) throw new Error("unexpected user id");
+    const sql = `insert into public.learn_staff_users (user_id, role, note) values ('${user.id}', 'EDITOR', 'learning gate fixture')`;
+    execFileSync(process.platform === "win32" ? "npx.cmd" : "npx", ["--yes", "supabase@2.119.0", "db", "query", "--linked", "--project-ref", STAGING_REF, sql], { stdio: "pipe", shell: process.platform === "win32" });
+  },
+  // PostgREST only serves schemas listed in db-schemas (public, graphql_public). A function in learn_security must not be callable.
+  rpcInSchema: async (actor, schema, fn, args) => {
+    const response = await fetch(`${supabaseUrl}/rest/v1/rpc/${fn}`, { method: "POST", headers: { ...headersFor(actor), "Content-Profile": schema, "Accept-Profile": schema }, body: JSON.stringify(args) });
+    const value = await readBody(response);
+    if (response.ok) return { status: "ok", data: value };
+    return { status: response.status === 401 || response.status === 403 ? "denied" : "error", httpStatus: response.status, code: value?.code };
   },
   catalog: undefined, // not reachable over PostgREST
   purge: async () => {
@@ -84,15 +97,15 @@ const backend = {
 };
 
 if (phase === "pre") {
-  // READ-ONLY by construction: only HTTP GET requests (PostgREST allows GET on tables and on STABLE functions only, so even a
-  // mutating function could not be invoked this way). No Auth call, no fixture, no write.
+  // READ-ONLY by construction: only HTTP GET requests (PostgREST allows GET on tables and on STABLE functions only).
+  // State before 023 / 026 are applied to a project that already has 024 / 025: the learning tables exist, the self-contained
+  // authorization objects do not yet.
   const control = await call("service", "helpers?select=id&limit=1");
   expect("PRE-0. control: the staging secret key can read an existing table (credentials work; nothing is printed)", control.status === "ok", { status: control.status, http: control.httpStatus });
-  const probes = [];
-  for (const t of ["learn_countries", "learn_questions", "learn_xp_ledger"]) { const r = await call("service", `${t}?select=*&limit=1`); probes.push([t, r.httpStatus]); }
-  const rpc = await call("service", "rpc/learn_load_content?p_subject=math");
-  const rpcState = await call("service", "rpc/learn_load_state?p_user=00000000-0000-0000-0000-000000000000&p_site=math&p_day=2026-03-01");
-  expect("PRE-1. migrations 024 / 025 are NOT applied yet: learn_* tables and learn_load_content / learn_load_state are absent (HTTP 404)", probes.every(([, h]) => h === 404) && rpc.httpStatus === 404 && rpcState.httpStatus === 404, { probes, rpc: rpc.httpStatus, state: rpcState.httpStatus });
+  const present = [];
+  for (const t of ["learn_countries", "learn_questions", "learn_xp_ledger"]) present.push([t, (await call("service", `${t}?select=*&limit=1`)).status]);
+  const staff = await call("service", "learn_staff_users?select=*&limit=1");
+  expect("PRE-1. 024 / 025 are applied (learn tables readable) and 026 is NOT yet applied (learn_staff_users absent, HTTP 404)", present.every(([, st]) => st === "ok") && staff.httpStatus === 404, { present, staff: staff.httpStatus });
 } else if (phase === "gate") {
   await learningGate(backend, { expect, notTestable });
 } else throw new Error(`unknown phase ${phase}`);
