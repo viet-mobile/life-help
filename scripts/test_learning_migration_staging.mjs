@@ -10,6 +10,9 @@
 //                 No admin_audit_logs or other immutable table is written. No Worker, no chain, no money.
 // Usage: node scripts/test_learning_migration_staging.mjs [--phase=pre|gate]
 import crypto from "node:crypto";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { runGuarded, stagingTarget } from "./lib/envGuard.mjs";
 import { LEARN_TABLES, learningGate } from "./lib/learningGate.mjs";
@@ -72,8 +75,13 @@ const backend = {
   // Management API (`supabase db query`). It is purgeable: the row cascades away when the Auth user is deleted.
   makeStaff: async (user) => {
     if (!/^[0-9a-f-]{36}$/.test(user.id)) throw new Error("unexpected user id");
-    const sql = `insert into public.learn_staff_users (user_id, role, note) values ('${user.id}', 'EDITOR', 'learning gate fixture')`;
-    execFileSync(process.platform === "win32" ? "npx.cmd" : "npx", ["--yes", "supabase@2.119.0", "db", "query", "--linked", "--project-ref", STAGING_REF, sql], { stdio: "pipe", shell: process.platform === "win32" });
+    // The statement goes through a temp file (-f): no shell quoting of the SQL text.
+    const file = path.join(os.tmpdir(), `learn-gate-staff-${runId}.sql`);
+    fs.writeFileSync(file, `insert into public.learn_staff_users (user_id, role, note) values ('${user.id}', 'EDITOR', 'learning gate fixture');
+`);
+    try {
+      execFileSync(process.platform === "win32" ? "npx.cmd" : "npx", ["--yes", "supabase@2.119.0", "db", "query", "--linked", "--project-ref", STAGING_REF, "-f", file], { stdio: "pipe", shell: process.platform === "win32" });
+    } finally { fs.rmSync(file, { force: true }); }
   },
   // PostgREST only serves schemas listed in db-schemas (public, graphql_public). A function in learn_security must not be callable.
   rpcInSchema: async (actor, schema, fn, args) => {
@@ -107,7 +115,11 @@ if (phase === "pre") {
   const staff = await call("service", "learn_staff_users?select=*&limit=1");
   expect("PRE-1. 024 / 025 are applied (learn tables readable) and 026 is NOT yet applied (learn_staff_users absent, HTTP 404)", present.every(([, st]) => st === "ok") && staff.httpStatus === 404, { present, staff: staff.httpStatus });
 } else if (phase === "gate") {
-  await learningGate(backend, { expect, notTestable });
+  try {
+    await learningGate(backend, { expect, notTestable });
+  } finally {
+    await backend.purge().catch((error) => console.log(`PURGE WARNING ${error.message}`)); // idempotent: also covers a failure before the gate's own purge
+  }
 } else throw new Error(`unknown phase ${phase}`);
 
 const counts = Object.fromEntries(["PASS", "FAIL", "NOT_TESTABLE"].map((s) => [s, results.filter((v) => v === s).length]));

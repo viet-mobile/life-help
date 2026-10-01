@@ -46,7 +46,6 @@ export async function learningGate(b, { expect, notTestable }, { phase = "gate" 
   const A = await b.createUser("a");
   const B = await b.createUser("b");
   const STAFF = await b.createUser("staff");
-  await b.makeStaff(STAFF);
   const ev = (e) => ({ day: DAY, ...e });
   const commit = (user, events, meta = null, site = "math") => b.rpc("service", "learn_commit_events", { p_user: user.id, p_site: site, p_events: events, p_meta: meta });
   const state = async (user) => (await b.rpc("service", "learn_load_state", { p_user: user.id, p_site: "math", p_day: DAY })).data;
@@ -54,6 +53,7 @@ export async function learningGate(b, { expect, notTestable }, { phase = "gate" 
   const created = { question: [], parents: [] }; // parents: [table, key] of content roots, deleted in FK order
 
   try {
+    await b.makeStaff(STAFF); // inside the try: a failure here still reaches the purge in `finally`
     // ======================= 024 structure =======================
     const reach = [];
     for (const t of LEARN_TABLES) reach.push([t, (await b.select("service", t, {}, { limit: 1 })).status]);
