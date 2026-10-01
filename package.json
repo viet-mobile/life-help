@@ -20,7 +20,13 @@
     "lint:learn": "eslint app/study app/api/learn lib/learn lib/env.ts components/learn tests utils/supabase/admin.ts",
     "check:learn": "npm run typecheck && npm run lint:learn && npm test",
     "seed:learn:generate": "node scripts/learn/generate-seed.mjs",
-    "test:staging": "playwright test -c playwright.staging.config.ts"
+    "test:staging": "playwright test -c playwright.staging.config.ts",
+    "staging:db:check": "node scripts/learn/assert-staging-link.mjs",
+    "staging:db:dry-run": "node scripts/learn/assert-staging-link.mjs && npx --yes supabase@2.119.0 db push --linked --dry-run",
+    "staging:db:push": "node scripts/learn/assert-staging-link.mjs && npx --yes supabase@2.119.0 db push --linked",
+    "staging:db:marker": "node scripts/learn/assert-staging-link.mjs && npx --yes supabase@2.119.0 db query --linked -f supabase/verify/staging_marker.sql",
+    "staging:db:seed": "node scripts/learn/assert-staging-link.mjs && npx --yes supabase@2.119.0 db query --linked -f supabase/seed/learn_demo.staging-run.sql",
+    "staging:db:verify": "node scripts/learn/assert-staging-link.mjs && npx --yes supabase@2.119.0 db query --linked -f supabase/verify/learn_staging_verify.sql"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

@@ -13,6 +13,8 @@ const migration =
   readFileSync(path.join(__dirname, "../../supabase/migrations/202609300001_learning_platform.sql"), "utf8") +
   readFileSync(path.join(__dirname, "../../supabase/migrations/202609300002_learning_content_rpc.sql"), "utf8");
 
+const markerSql = readFileSync(path.join(__dirname, "../../supabase/verify/staging_marker.sql"), "utf8");
+
 const A = "11111111-1111-1111-1111-111111111111";
 const B = "22222222-2222-2222-2222-222222222222";
 const STAFF = "33333333-3333-3333-3333-333333333333";
@@ -278,6 +280,7 @@ describe("demo seed", () => {
       create function security.has_role(required_roles public.app_role[]) returns boolean language sql stable as $$ select false $$;
     `);
     await fresh.exec(migration);
+    await fresh.exec(markerSql);
     await expect(fresh.exec(seed)).rejects.toThrow(/demo seed refused/);
     await fresh.exec("rollback");
     await fresh.exec(`set app.allow_demo_seed = 'on'; ${seed}`);
@@ -309,6 +312,7 @@ describe("database-backed content", () => {
       create function security.has_role(required_roles public.app_role[]) returns boolean language sql stable as $$ select false $$;
     `);
     await fresh.exec(migration);
+    await fresh.exec(markerSql);
     await fresh.exec(`set app.allow_demo_seed = 'on'; ${seed}`);
     for (const site of ["math", "english"] as const) {
       const raw = (await fresh.query<{ c: unknown }>("select public.learn_load_content($1) as c", [site])).rows[0].c;
