@@ -460,7 +460,14 @@ check("Scheduler calls the platform-token cleanup route", scheduledWorker.includ
 const stagingConfig = read("wrangler.staging.jsonc");
 check("Cron attached by deploy:staging only", pkgScripts["deploy:staging"].endsWith("wrangler deploy --config wrangler.staging.jsonc") && stagingConfig.includes('"name": "life-help-staging"') && stagingConfig.includes('"main": "workers/scheduled.mjs"') && stagingConfig.includes('"crons": ["17 */6 * * *"]') && !/schedule|triggers|scheduled\.mjs|staging\.jsonc/.test(pkgScripts["deploy:production"]) && pkgScripts["deploy:production"].endsWith("wrangler deploy --name life-help"));
 const compat = (source) => source.match(/"compatibility_date": "[^"]+"/)?.[0] + source.match(/"compatibility_flags": \[[^\]]*\]/)?.[0];
-check("Staging config mirrors production runtime settings", compat(stagingConfig) === compat(wranglerConfig));
+// Same compatibility date and flags as production, plus exactly one staging-only flag: nodejs_compat_populate_process_env
+// (the learning platform reads Supabase credentials from process.env; production is unchanged until it is separately approved).
+const compatFlags = (source) => JSON.parse(source.match(/"compatibility_flags": (\[[^\]]*\])/)[1]);
+const compatDate = (source) => source.match(/"compatibility_date": "([^"]+)"/)[1];
+check("Staging config mirrors production runtime settings (+ the one staging-only process.env flag)",
+  compatDate(stagingConfig) === compatDate(wranglerConfig)
+  && JSON.stringify(compatFlags(stagingConfig).filter((flag) => flag !== "nodejs_compat_populate_process_env")) === JSON.stringify(compatFlags(wranglerConfig))
+  && compatFlags(stagingConfig).includes("nodejs_compat_populate_process_env") && !compatFlags(wranglerConfig).includes("nodejs_compat_populate_process_env"));
 check("wrangler.jsonc has no cron trigger", !/"triggers"|"crons"/.test(wranglerConfig) && wranglerConfig.includes('"main": ".open-next/worker.js"'));
 check("Retry audit distinguishes reconciliation from queued retry", cleanupRoute.includes('"SETTLED_CLEANUP_RECONCILED"') && cleanupRoute.includes('"QUEUED_CLEANUP_RETRY"'));
 check("Reconciliation reuses scheduling, never qualifies rewards", (() => { const body = settlementLib.slice(settlementLib.indexOf("export async function runConversationCleanup")); return body.includes("scheduleConversationCleanup(client, requestRow.id)") && !body.includes("qualifyReferralReward") && !body.includes("settleServiceRequest") && !body.includes('from("referral_rewards")'); })());

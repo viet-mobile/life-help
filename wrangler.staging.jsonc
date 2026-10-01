@@ -6,7 +6,9 @@
   "main": "workers/scheduled.mjs",
   "name": "life-help-staging",
   "compatibility_date": "2024-09-23",
-  "compatibility_flags": ["nodejs_compat"],
+  // At this compatibility date nodejs_compat alone does not copy bindings / secrets into process.env; the server code
+  // (learning platform, lib/supabase/serviceRole.ts) reads Supabase credentials from process.env.
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
