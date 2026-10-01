@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { resolvePublishableKey, resolveSecretKey } from "@/lib/supabase/keys";
 
@@ -8,9 +10,11 @@ describe("supabase key resolution", () => {
     expect(resolvePublishableKey({ NEXT_PUBLIC_SUPABASE_ANON_KEY: "anon" })).toBe("anon");
     expect(resolvePublishableKey({})).toBeUndefined();
   });
-  it("prefers SUPABASE_SECRET_KEY over the legacy service role name", () => {
+  it("keeps the secret key resolution in main's serviceRole.ts: new name first, legacy name as fallback", () => {
+    const src = readFileSync(path.join(__dirname, "../../lib/supabase/serviceRole.ts"), "utf8");
+    const uses = src.match(/SUPABASE_SECRET_KEY \|\| (?:process.env|runtimeEnv)\.SUPABASE_SERVICE_ROLE_KEY/g) ?? [];
+    expect(uses).toHaveLength(3);
     expect(resolveSecretKey({ SUPABASE_SECRET_KEY: "sb_secret_x", SUPABASE_SERVICE_ROLE_KEY: "legacy" })).toBe("sb_secret_x");
-    expect(resolveSecretKey({ SUPABASE_SERVICE_ROLE_KEY: "legacy" })).toBe("legacy");
     expect(resolveSecretKey({ SUPABASE_SECRET_KEY: "" })).toBeUndefined();
   });
   it("never exposes the secret under a NEXT_PUBLIC_ name", () => {

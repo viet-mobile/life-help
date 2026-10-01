@@ -2,7 +2,7 @@
  * Supabase key resolution (new API keys first, legacy names as fallback).
  *
  *  - Publishable key (browser-safe):  SUPABASE_PUBLISHABLE_KEY  →  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY  →  NEXT_PUBLIC_SUPABASE_ANON_KEY (legacy)
- *  - Secret key (server only):        SUPABASE_SECRET_KEY       →  SUPABASE_SERVICE_ROLE_KEY (legacy)
+ *  - Secret key (server only):    resolved ONLY in lib/supabase/serviceRole.ts (SUPABASE_SECRET_KEY → legacy service role name)
  *
  * The NEXT_PUBLIC_* names are referenced literally so Next.js can inline them into client bundles.
  * The secret key is read only by this module's server-side helper and never by client code.
@@ -13,8 +13,9 @@ export function resolvePublishableKey(env: Env = process.env): string | undefine
   return env.SUPABASE_PUBLISHABLE_KEY || env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || env.NEXT_PUBLIC_SUPABASE_ANON_KEY || undefined;
 }
 
+/** New-format secret key name only (diagnostics). Never use this to build a client: use createServiceRoleClient(). */
 export function resolveSecretKey(env: Env = process.env): string | undefined {
-  return env.SUPABASE_SECRET_KEY || env.SUPABASE_SERVICE_ROLE_KEY || undefined;
+  return env.SUPABASE_SECRET_KEY || undefined;
 }
 
 /** True for the new-format keys; used only for diagnostics, never logged with the value. */
