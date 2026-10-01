@@ -15,18 +15,23 @@ import { LEARN_TABLES, learningGate } from "./lib/learningGate.mjs";
 
 // Fail-closed tripwire: staging Supabase only (production refs refused), verified before any request is sent.
 const { env, supabaseUrl } = await runGuarded("staging target", () => stagingTarget());
-const serviceKey = env.TEST_SUPABASE_SERVICE_ROLE_KEY, anonKey = env.TEST_SUPABASE_ANON_KEY;
-if (!serviceKey || !anonKey) throw new Error("staging service key and anon key are required");
+const serviceKey = env.TEST_SUPABASE_SERVICE_ROLE_KEY; // secret key (sb_secret_...) or legacy service_role JWT: REQUIRED for every phase
+if (!serviceKey) throw new Error("TEST_SUPABASE_SERVICE_ROLE_KEY (the staging secret key) is required");
 const phase = process.argv.find((a) => a.startsWith("--phase="))?.split("=")[1] ?? "gate";
+const anonKey = env.TEST_SUPABASE_ANON_KEY; // publishable key: REQUIRED ONLY for --phase=gate (user sign-in + anon / student requests)
+if (phase === "gate" && !anonKey) throw new Error("--phase=gate needs TEST_SUPABASE_ANON_KEY (the publishable key)");
 const results = [];
 const record = (status, name, detail = "") => { results.push(status); console.log(`${status} ${name}${detail ? ` ${detail}` : ""}`); };
 const expect = (name, condition, detail) => record(condition ? "PASS" : "FAIL", name, condition ? "" : (typeof detail === "string" ? detail : JSON.stringify(detail ?? "")).slice(0, 400));
 const notTestable = (name, reason) => record("NOT_TESTABLE", name, reason);
 
 const readBody = async (response) => { const text = await response.text(); try { return text ? JSON.parse(text) : null; } catch { return { raw: text.slice(0, 200) }; } };
+// New-format keys (sb_secret_ / sb_publishable_) are not JWTs: they go in `apikey` only. Legacy JWT keys also go in Authorization.
 const headersFor = (actor) => {
-  const token = actor === "anon" ? anonKey : actor === "service" ? serviceKey : actor.token;
-  return { apikey: actor === "service" ? serviceKey : anonKey, Authorization: `Bearer ${token}`, "Content-Type": "application/json", Prefer: "return=representation" };
+  const key = actor === "service" ? serviceKey : anonKey;
+  const headers = { apikey: key, "Content-Type": "application/json", Prefer: "return=representation" };
+  if (actor !== "anon" && actor !== "service") return { ...headers, Authorization: `Bearer ${actor.token}` };
+  return String(key).startsWith("sb_") ? headers : { ...headers, Authorization: `Bearer ${key}` };
 };
 async function call(actor, pathname, method = "GET", body) {
   const response = await fetch(`${supabaseUrl}/rest/v1/${pathname}`, { method, headers: headersFor(actor), body: body === undefined ? undefined : JSON.stringify(body) });
@@ -37,7 +42,7 @@ async function call(actor, pathname, method = "GET", body) {
 }
 const qs = (filter) => Object.entries(filter).map(([k, v]) => `${k}=eq.${encodeURIComponent(v)}`).join("&");
 const authAdmin = async (pathname, method = "GET", body) => {
-  const response = await fetch(`${supabaseUrl}/auth/v1/admin/${pathname}`, { method, headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
+  const response = await fetch(`${supabaseUrl}/auth/v1/admin/${pathname}`, { method, headers: { apikey: serviceKey, ...(String(serviceKey).startsWith("sb_") ? {} : { Authorization: `Bearer ${serviceKey}` }), "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
   const value = await readBody(response);
   if (!response.ok) throw new Error(`auth ${method} ${pathname.split("/")[0]} ${response.status}`);
   return value;
@@ -79,10 +84,15 @@ const backend = {
 };
 
 if (phase === "pre") {
+  // READ-ONLY by construction: only HTTP GET requests (PostgREST allows GET on tables and on STABLE functions only, so even a
+  // mutating function could not be invoked this way). No Auth call, no fixture, no write.
+  const control = await call("service", "helpers?select=id&limit=1");
+  expect("PRE-0. control: the staging secret key can read an existing table (credentials work; nothing is printed)", control.status === "ok", { status: control.status, http: control.httpStatus });
   const probes = [];
-  for (const t of ["learn_countries", "learn_questions", "learn_xp_ledger"]) probes.push([t, (await call("service", `${t}?select=*&limit=1`)).status]);
-  const rpc = await call("service", "rpc/learn_load_content", "POST", { p_subject: "math" });
-  expect("PRE. migrations 024 / 025 are NOT applied yet (learn tables and learn_load_content absent)", probes.every(([, s]) => s === "error") && rpc.status === "error", { probes, rpc: rpc.status });
+  for (const t of ["learn_countries", "learn_questions", "learn_xp_ledger"]) { const r = await call("service", `${t}?select=*&limit=1`); probes.push([t, r.httpStatus]); }
+  const rpc = await call("service", "rpc/learn_load_content?p_subject=math");
+  const rpcState = await call("service", "rpc/learn_load_state?p_user=00000000-0000-0000-0000-000000000000&p_site=math&p_day=2026-03-01");
+  expect("PRE-1. migrations 024 / 025 are NOT applied yet: learn_* tables and learn_load_content / learn_load_state are absent (HTTP 404)", probes.every(([, h]) => h === 404) && rpc.httpStatus === 404 && rpcState.httpStatus === 404, { probes, rpc: rpc.httpStatus, state: rpcState.httpStatus });
 } else if (phase === "gate") {
   await learningGate(backend, { expect, notTestable });
 } else throw new Error(`unknown phase ${phase}`);
