@@ -6,5 +6,8 @@ export default defineConfig({
   test: {
     include: ["tests/**/*.test.ts"],
     environment: "node",
+    // The DB tests build the full migration chain in PGlite (several seconds, slower under parallel load).
+    hookTimeout: 120_000,
+    testTimeout: 60_000,
   },
 });
