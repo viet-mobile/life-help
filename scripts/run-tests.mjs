@@ -26,5 +26,14 @@ for (const suite of suites) {
   if (!ok) failed += 1;
   console.log(`${ok ? "PASS" : "FAIL"} ${suite} (${pass} passed, ${fail} failed)`);
 }
+// Learning platform suites (vitest, local PGlite on the real migration chain; no network, no remote DB).
+{
+  const result = spawnSync(process.execPath, [path.join("node_modules", "vitest", "vitest.mjs"), "run"], { encoding: "utf8" });
+  const out = `${result.stdout}\n${result.stderr}`.replace(/\u001b\[[0-9;]*m/g, "");
+  const tests = out.match(/Tests\s+(.*)/)?.[1]?.trim() ?? "no summary";
+  const ok = result.status === 0;
+  if (!ok) failed += 1;
+  console.log(`${ok ? "PASS" : "FAIL"} learn_vitest (${tests})`);
+}
 console.log(failed ? `FAILED ${failed} suite(s)` : "ALL SUITES PASS");
 process.exit(failed ? 1 : 0);

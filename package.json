@@ -17,11 +17,18 @@
     "test": "node scripts/run-tests.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:learn": "vitest run",
+    "test:e2e": "playwright test",
+    "lint:learn": "eslint app/study app/api/learn lib/learn lib/env.ts components/learn tests utils/supabase/admin.ts",
+    "check:learn": "npm run typecheck && npm run lint:learn && npm run test:learn",
+    "seed:learn:generate": "node scripts/learn/generate-seed.mjs",
+    "check:learn:secrets": "node scripts/learn/check-no-secrets.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.116.0",
+    "katex": "^0.18.9",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"
@@ -29,7 +36,9 @@
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
     "@opennextjs/cloudflare": "^1.20.6",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
+    "@types/katex": "^0.16.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -40,6 +49,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vitest": "^3.2.7",
     "wrangler": "^4.142.0"
   }
 }
