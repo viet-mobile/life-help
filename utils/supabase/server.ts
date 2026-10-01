@@ -5,7 +5,7 @@ export async function createClient() {
   const cookieStore = await cookies();
   const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
   const supabaseUrl = rawUrl.replace(/\/rest\/v1\/?$/, "");
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+  const supabaseAnonKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) || "";
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {

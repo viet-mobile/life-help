@@ -5,9 +5,9 @@ import englishDemo from "../../lib/learn/content/demo/english.json";
 const URL_ = process.env.STAGING_URL;
 const PW = process.env.STAGING_TEST_PASSWORD;
 const SB_URL = process.env.STAGING_SUPABASE_URL;
-const SB_ANON = process.env.STAGING_SUPABASE_ANON_KEY;
-const ready = !!(URL_ && PW && SB_URL && SB_ANON);
-test.skip(!ready, "set STAGING_URL, STAGING_TEST_PASSWORD, STAGING_SUPABASE_URL, STAGING_SUPABASE_ANON_KEY");
+const SB_KEY = process.env.STAGING_SUPABASE_PUBLISHABLE_KEY;
+const ready = !!(URL_ && PW && SB_URL && SB_KEY);
+test.skip(!ready, "set STAGING_URL, STAGING_TEST_PASSWORD, STAGING_SUPABASE_URL, STAGING_SUPABASE_PUBLISHABLE_KEY");
 
 const A = "learn-staging-a@example.com";
 const B = "learn-staging-b@example.com";
@@ -119,9 +119,9 @@ test("isolation: student B cannot see or use student A's data; RLS blocks direct
   expect((await forged.json()).state.totalXp).toBeLessThan(99999);
 
   // Direct PostgREST access with B's own JWT: only B's rows, and no writes to progress tables.
-  const tok = await request.post(`${SB_URL}/auth/v1/token?grant_type=password`, { headers: { apikey: SB_ANON! }, data: { email: B, password: PW } });
+  const tok = await request.post(`${SB_URL}/auth/v1/token?grant_type=password`, { headers: { apikey: SB_KEY! }, data: { email: B, password: PW } });
   const jwt = (await tok.json()).access_token as string;
-  const h = { apikey: SB_ANON!, Authorization: `Bearer ${jwt}` };
+  const h = { apikey: SB_KEY!, Authorization: `Bearer ${jwt}` };
   const rows = await (await request.get(`${SB_URL}/rest/v1/learn_xp_ledger?select=user_id`, { headers: h })).json();
   const uids = new Set((rows as { user_id: string }[]).map((r) => r.user_id));
   expect(uids.size).toBeLessThanOrEqual(1);
@@ -131,7 +131,7 @@ test("isolation: student B cannot see or use student A's data; RLS blocks direct
   expect(rpc.ok()).toBe(false);
   const answers = await request.get(`${SB_URL}/rest/v1/learn_question_answers?select=*`, { headers: h });
   expect(((await answers.json()) as unknown[]).length ?? 0).toBe(0);
-  const anon = await request.get(`${SB_URL}/rest/v1/learn_xp_ledger?select=*`, { headers: { apikey: SB_ANON! } });
+  const anon = await request.get(`${SB_URL}/rest/v1/learn_xp_ledger?select=*`, { headers: { apikey: SB_KEY! } });
   expect(anon.ok() ? ((await anon.json()) as unknown[]).length : 0).toBe(0);
   await ca.close();
   await cb.close();

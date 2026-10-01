@@ -1,6 +1,7 @@
 import { createClient as createSessionClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { supabaseMatchesEnvironment } from "@/lib/env";
+import { resolvePublishableKey, resolveSecretKey } from "@/lib/supabase/keys";
 import { LearnService, type Actor } from "./service";
 import { SupabaseLearnStore } from "./supabaseStore";
 import type { Site } from "@/lib/learn/types";
@@ -31,8 +32,8 @@ export function accountsEnabled(): boolean {
   return !!(
     supabaseMatchesEnvironment() &&
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    resolvePublishableKey() &&
+    resolveSecretKey()
   );
 }
 

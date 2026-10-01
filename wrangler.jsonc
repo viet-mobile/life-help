@@ -22,7 +22,9 @@
         "binding": "ASSETS"
       },
       "vars": {
-        "APP_ENV": "staging"
+        "APP_ENV": "staging",
+        // Non-secret: pins this Worker to the staging Supabase project (fail-closed guard in lib/env.ts).
+        "EXPECTED_SUPABASE_REF": "wreebowcbiymodswajwe"
       }
     }
   }

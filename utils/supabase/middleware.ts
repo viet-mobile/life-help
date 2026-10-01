@@ -8,7 +8,7 @@ export async function updateSession(request: NextRequest) {
 
   const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
   const supabaseUrl = rawUrl.replace(/\/rest\/v1\/?$/, "");
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+  const supabaseAnonKey = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) || "";
 
   if (!supabaseUrl || !supabaseAnonKey) {
     return { response: supabaseResponse, supabaseResponse, user: null };

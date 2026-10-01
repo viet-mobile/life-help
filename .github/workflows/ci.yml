@@ -38,3 +38,5 @@ jobs:
           # Public, non-secret placeholders so the build never touches a real project.
           NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
           NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder
+      - name: Client bundle must not contain secret keys
+        run: node scripts/learn/check-no-secrets.mjs

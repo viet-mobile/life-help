@@ -51,13 +51,15 @@ the production build/deploy** (Workers Builds), so merge only when you intend to
 | Name | Kind | Staging | Production |
 |---|---|---|---|
 | `APP_ENV` | var | `staging` (in wrangler.jsonc) | unset (= production) |
-| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | build-time | staging project | existing |
-| `SUPABASE_SERVICE_ROLE_KEY` | Worker secret | staging key | add only at go-live |
+| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | build-time | staging project (`sb_publishable_…`) | existing `NEXT_PUBLIC_SUPABASE_URL` / `…_ANON_KEY` (unchanged; legacy fallback) |
+| `SUPABASE_SECRET_KEY` | Worker **secret** (server only) | staging `sb_secret_…` | add only at go-live |
 | `EXPECTED_SUPABASE_REF` | var | staging ref (required) | production ref (recommended) |
 | `LEARN_CONTENT_SOURCE` | var | `demo` → `supabase` after seeding | `supabase` |
 | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | GitHub Environment `staging` secrets | yes | — |
 
-**Do not add `SUPABASE_SERVICE_ROLE_KEY` to the production Worker yet.** Branch versions share the production Worker's secrets/bindings; without the key,
+Key resolution order (`lib/supabase/keys.ts`): publishable = `SUPABASE_PUBLISHABLE_KEY` → `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` → legacy `NEXT_PUBLIC_SUPABASE_ANON_KEY`; secret = `SUPABASE_SECRET_KEY` → legacy `SUPABASE_SERVICE_ROLE_KEY`. Production keeps using its existing names untouched.
+
+**Do not add `SUPABASE_SECRET_KEY` (or the legacy `SUPABASE_SERVICE_ROLE_KEY`) to the production Worker yet.** Branch versions share the production Worker's secrets/bindings; without the key,
 accounts stay disabled and the learning code cannot reach any database from a branch version.
 
 ## 6. Database

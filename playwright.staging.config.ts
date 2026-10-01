@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 // Real-staging validation (real Supabase). Run AFTER the staging Worker is deployed:
 //   STAGING_URL=https://life-help-staging.<account>.workers.dev STAGING_TEST_PASSWORD=... \
-//   STAGING_SUPABASE_URL=... STAGING_SUPABASE_ANON_KEY=... npm run test:staging
+//   STAGING_SUPABASE_URL=... STAGING_SUPABASE_PUBLISHABLE_KEY=... npm run test:staging
 export default defineConfig({
   testDir: "tests/staging",
   timeout: 90_000,

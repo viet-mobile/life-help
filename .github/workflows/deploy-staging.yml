@@ -2,8 +2,8 @@ name: Deploy to STAGING (manual)
 
 # Manual only. Deploys the separate `life-help-staging` Worker (workers.dev URL, no routes);
 # it can never touch the production Worker (`life-help`) or its `*.life.help/*` route. Requires the GitHub Environment `staging`
-# with the secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID, plus the
-# staging variables/secrets listed in docs/DEPLOYMENT.md.
+# with secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID and variable
+# STAGING_SUPABASE_PUBLISHABLE_KEY (see docs/STAGING.md).
 on:
   workflow_dispatch:
 
@@ -23,11 +23,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: Require the publishable key variable
+        run: test -n "$KEY" || (echo "Set GitHub variable STAGING_SUPABASE_PUBLISHABLE_KEY" && exit 1)
+        env:
+          KEY: ${{ vars.STAGING_SUPABASE_PUBLISHABLE_KEY }}
       - name: Build + deploy staging Worker
         run: npm run deploy:staging
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           APP_ENV: staging
-          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.STAGING_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.STAGING_SUPABASE_ANON_KEY }}
+          # Public values only (inlined into the client bundle). The sb_secret_ key is NEVER used in CI:
+          # it lives only as a secret on the life-help-staging Worker.
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.STAGING_SUPABASE_URL || 'https://wreebowcbiymodswajwe.supabase.co' }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.STAGING_SUPABASE_PUBLISHABLE_KEY }}
