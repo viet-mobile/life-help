@@ -86,3 +86,53 @@ describe("proxy on a production-built Worker with an EMPTY runtime environment",
     expect(res.headers.get("x-middleware-rewrite") ?? "").toBe("");
   });
 });
+
+describe("production build: runtime NODE_ENV / APP_ENV can be anything, learning paths are ALWAYS denied on existing hosts", () => {
+  const RUNTIME_NODE_ENV = [undefined, "", " ", "development", "test", "staging", "weird-value", "PRODUCTION"];
+  const RUNTIME_APP_ENV = [undefined, "", "production", "PRODUCTION", "bogus", "prod", "0"];
+  const HOSTS = ["life.help", "korea.life.help", "tech.life.help", "sys.life.help", "chat.life.help"];
+  const PATHS = ["/study", "/study/math", "/study/english", "/study/math/login", "/study/english/login", "/api/learn/state", "/api/learn/start", "/api/learn/submit"];
+
+  it("every runtime combination x host x path x method answers 404", async () => {
+    const proxy = await proxyOnProductionWorker();
+    let checked = 0;
+    for (const nodeEnv of RUNTIME_NODE_ENV) for (const appEnv of RUNTIME_APP_ENV) {
+      if (nodeEnv === undefined) delete env.NODE_ENV; else env.NODE_ENV = nodeEnv;
+      if (appEnv === undefined) delete env.APP_ENV; else env.APP_ENV = appEnv;
+      for (const host of HOSTS) for (const path of PATHS) {
+        for (const method of path.startsWith("/api/learn") ? ["GET", "POST"] : ["GET"]) {
+          const res = await get(proxy, host, path, method);
+          expect(res.status, `NODE_ENV=${JSON.stringify(nodeEnv)} APP_ENV=${JSON.stringify(appEnv)} ${method} ${host}${path}`).toBe(404);
+          expect(res.headers.get("x-middleware-rewrite") ?? "", "no rewrite to a learning page").toBe("");
+          checked++;
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(2000);
+  });
+
+  it("only an explicit APP_ENV=staging or APP_ENV=local opts in to path-based access (case-insensitive); nothing else does", async () => {
+    const proxy = await proxyOnProductionWorker();
+    for (const appEnv of ["staging", "STAGING", "local", "Local"]) {
+      env.APP_ENV = appEnv;
+      const res = await get(proxy, "korea.life.help", "/study/math");
+      expect(res.status, appEnv).toBe(200);
+    }
+    for (const appEnv of ["", "production", "bogus", "stagin", "staging ", "dev"]) {
+      env.APP_ENV = appEnv;
+      expect((await get(proxy, "korea.life.help", "/study/math")).status, JSON.stringify(appEnv)).toBe(404);
+    }
+  });
+
+  it("learning hostnames keep working under every runtime environment (they do not depend on the guard)", async () => {
+    const proxy = await proxyOnProductionWorker();
+    for (const nodeEnv of RUNTIME_NODE_ENV) {
+      if (nodeEnv === undefined) delete env.NODE_ENV; else env.NODE_ENV = nodeEnv;
+      for (const host of ["math.life.help", "english.life.help"]) {
+        const res = await get(proxy, host, "/");
+        expect(res.status).toBe(200);
+        expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
+      }
+    }
+  });
+});
