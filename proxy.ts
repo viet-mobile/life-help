@@ -444,20 +444,14 @@ export async function proxy(request: NextRequest) {
    * Country-specific favicon.ico routing
    */
   if (request.nextUrl.pathname === "/favicon.ico") {
-    // math.life.help / english.life.help: the site's own logo (LIFE.HELP with MATH / ENGLISH above it).
+    // math.life.help / english.life.help: the site's own logo (LIFE.HELP with MATH / ENGLISH above it), served by a route handler.
+    // The Worker runs first for /favicon.ico only (wrangler.jsonc assets.run_worker_first); public/ files are NOT reachable by a rewrite there.
     const learnFaviconSite = getLearnSiteFromHost(host);
     if (learnFaviconSite) {
-      return NextResponse.rewrite(new URL(`/logos/favicon-${learnFaviconSite}.ico`, request.url));
+      return NextResponse.rewrite(new URL(`/study/${learnFaviconSite}/favicon.ico`, request.url));
     }
-    const country = getCountryFromHost(host);
-    if (country) {
-      return NextResponse.rewrite(
-        new URL(`/logos/favicon-${country}.ico`, request.url),
-      );
-    }
-    return NextResponse.rewrite(
-      new URL(`/logos/favicon-default.ico`, request.url),
-    );
+    // Every existing host keeps the generic LIFE.HELP favicon (app/favicon.ico, byte-identical to public/favicon.ico) - what production has always served.
+    return NextResponse.next();
   }
 
   /**

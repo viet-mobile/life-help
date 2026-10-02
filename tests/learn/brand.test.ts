@@ -4,6 +4,7 @@ import sharp from "sharp";
 import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
 import { proxy } from "@/proxy";
+import { LEARN_FAVICONS } from "@/lib/learn/faviconData";
 
 /** The MATH / ENGLISH logos: LIFE.HELP with the site name in the empty band above "LIFE" (scripts/generate_learn_logos.js). */
 const root = path.join(__dirname, "../..");
@@ -50,11 +51,27 @@ describe("where the logo is used", () => {
     expect(manifest).toContain("/logos/logo-${learn.site}.png");
   });
 
-  it("/favicon.ico on the learning hosts is the site's logo; every other host keeps its existing favicon routing", async () => {
-    const get = (host: string) => proxy(new NextRequest(`https://${host}/favicon.ico`, { headers: { host } }));
-    expect((await get("math.life.help")).headers.get("x-middleware-rewrite")).toContain("/logos/favicon-math.ico");
-    expect((await get("english.life.help")).headers.get("x-middleware-rewrite")).toContain("/logos/favicon-english.ico");
-    expect((await get("korea.life.help")).headers.get("x-middleware-rewrite")).toContain("/logos/favicon-korea.ico");
-    expect((await get("life.help")).headers.get("x-middleware-rewrite")).toContain("/logos/favicon-default.ico");
+  it("/favicon.ico: learning hosts get their own logo; EVERY existing host is pinned to the generic favicon (byte-identical to public/favicon.ico)", async () => {
+    const get = (host: string, q = "") => proxy(new NextRequest(`https://${host}/favicon.ico${q}`, { headers: { host } }));
+    for (const q of ["", "?favicon.0123abcd.ico"]) {
+      expect((await get("math.life.help", q)).headers.get("x-middleware-rewrite")).toContain("/study/math/favicon.ico");
+      expect((await get("english.life.help", q)).headers.get("x-middleware-rewrite")).toContain("/study/english/favicon.ico");
+      for (const host of ["life.help", "korea.life.help", "vietnam.life.help", "tech.life.help", "sys.life.help", "chat.life.help", "unknown.life.help"]) {
+        const res = await get(host, q);
+        expect(res.headers.get("x-middleware-rewrite") ?? "", host).toBe(""); // no rewrite: app/favicon.ico (the generic file) answers
+        expect(res.status, host).toBe(200);
+      }
+    }
+    expect(readFileSync(path.join(root, "public/logos/favicon-default.ico")).equals(readFileSync(path.join(root, "app/favicon.ico")))).toBe(true);
+    expect(readFileSync(path.join(root, "public/favicon.ico")).equals(readFileSync(path.join(root, "app/favicon.ico")))).toBe(true);
+    for (const site of ["math", "english"]) expect(LEARN_FAVICONS[site], site).toBe(readFileSync(path.join(root, `public/logos/favicon-${site}.ico`)).toString("base64"));
+  });
+  it("wrangler.jsonc runs the Worker first for /favicon.ico ONLY (every other asset stays asset-first)", () => {
+    const cfg = JSON.parse(readFileSync(path.join(root, "wrangler.jsonc"), "utf8").replace(/^\s*\/\/.*$/gm, ""));
+    expect(cfg.assets.run_worker_first).toEqual(["/favicon.ico"]);
+    expect(cfg.assets.binding).toBe("ASSETS");
+    expect(cfg.compatibility_flags).toEqual(["nodejs_compat"]);
+    expect(cfg.compatibility_date).toBe("2024-09-23");
+    expect(cfg.vars).toBeUndefined();
   });
 });
