@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { dayKey } from "@/lib/learn/domain/dates";
 import { levelProgress } from "@/lib/learn/domain/level";
 import { displayStreak } from "@/lib/learn/domain/streak";
+import { BrandLogo } from "./BrandLogo";
 import { useLearner } from "./LearnerProvider";
 
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"];
@@ -31,7 +32,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
       <a className="l-skip" href="#main">{t("nav.skip")}</a>
       <header className="l-topbar">
         <div className="l-topbar-inner">
-          <Link className="l-brand" href={href("/dashboard")}>{site === "math" ? t("brand.math") : t("brand.english")}</Link>
+          <Link className="l-brand" href={href("/dashboard")}><BrandLogo site={site} name={site === "math" ? t("brand.math") : t("brand.english")} /></Link>
           <div className="l-stats" aria-label="status">
             <span className="l-stat" title={t("dash.streak", { n: streak })}>🔥 {streak}</span>
             <span className="l-stat">Lv.{level.level}</span>

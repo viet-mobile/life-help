@@ -226,6 +226,31 @@ test.describe("mobile", () => {
   });
 });
 
+test("top-left logo and page metadata are the site's own logo (MATH / ENGLISH set above LIFE.HELP)", async ({ page, request }) => {
+  for (const site of ["math", "english"] as const) {
+    await page.goto(`${HOSTS[site]}/`);
+    const logo = page.locator("img.l-logo").first();
+    await expect(logo).toBeVisible();
+    await expect(logo).toHaveAttribute("src", `/logos/logo-${site}.png`);
+    expect(await logo.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 512)).toBe(true); // the 512px logo actually loaded
+    const box = await logo.boundingBox();
+    expect(box!.x).toBeLessThan(200); // top-left of the page content column
+    expect(box!.y).toBeLessThan(120);
+    await expect(page.locator(".l-brand .l-sr")).toHaveText(site === "math" ? "MATH.LIFE.HELP" : "ENGLISH.LIFE.HELP");
+    await expect(page.locator(`link[rel="icon"][href="/logos/favicon-${site}.png"]`).first()).toHaveCount(1);
+    await expect(page.locator(`link[rel="apple-touch-icon"][href="/logos/apple-touch-icon-${site}.png"]`)).toHaveCount(1);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", `${HOSTS[site]}/logos/logo-${site}.png`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", `${HOSTS[site]}/logos/logo-${site}.png`);
+    // The tab icon requested by the browser by default (/favicon.ico) is the site's icon, not the generic LIFE.HELP one.
+    const fav = await request.get(`http://127.0.0.1:${PORT}/favicon.ico`, { headers: { Host: `${site}.localhost:${PORT}` } });
+    const own = await request.get(`http://127.0.0.1:${PORT}/logos/favicon-${site}.ico`, { headers: { Host: `${site}.localhost:${PORT}` } });
+    expect(fav.status()).toBe(200);
+    expect((await fav.body()).equals(await own.body())).toBe(true);
+    const manifest = await (await request.get(`http://127.0.0.1:${PORT}/manifest.webmanifest`, { headers: { Host: `${site}.localhost:${PORT}` } })).json();
+    expect(manifest.icons.map((i: { src: string }) => i.src)).toEqual([`/logos/favicon-${site}.png`, `/logos/logo-${site}.png`]);
+  }
+});
+
 test("path-based access works locally and existing LIFE.HELP hosts are not captured", async ({ page, request }) => {
   await page.goto(`http://localhost:${PORT}/study/math`);
   await expect(page.getByRole("link", { name: /1분 만에 시작하기/ })).toHaveAttribute("href", "/study/math/onboarding");

@@ -32,8 +32,8 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
       theme_color: learn.site === "math" ? "#4f46e5" : "#059669",
       lang: "ko",
       icons: [
-        { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-        { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+        { src: `/logos/favicon-${learn.site}.png`, sizes: "192x192", type: "image/png", purpose: "any" },
+        { src: `/logos/logo-${learn.site}.png`, sizes: "512x512", type: "image/png", purpose: "any" },
       ],
     };
   }

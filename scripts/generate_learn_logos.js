@@ -1,0 +1,57 @@
+// Generates the MATH and ENGLISH variants of the LIFE.HELP logo for math.life.help / english.life.help.
+//
+// Same construction as scripts/generate_logos.js (country logos): the site name is set in the empty band above "LIFE" in the logo's
+// navy, and stretched to exactly the width of "LIFE HELP" below it. The canvas is an existing 512x512 country logo
+// (public/logos/logo-nepal.png) whose name band is first painted white, so no artwork outside the band changes.
+//
+//   node scripts/generate_learn_logos.js
+//
+// Writes, using the same file-name convention as the tech / chat / sys portals:
+//   public/logos/logo-<site>.png (512)   favicon-<site>.png (192)   favicon-<site>-32.png   favicon-<site>.ico (16/32/48)
+//   public/logos/apple-touch-icon-<site>.png (180)
+const sharp = require("sharp");
+const fs = require("node:fs");
+const path = require("node:path");
+
+const LOGOS = path.join(__dirname, "../public/logos");
+const CANVAS = path.join(LOGOS, "logo-nepal.png");
+const SITES = { math: "MATH", english: "ENGLISH" };
+// Name band in 512px coordinates (generate_logos.js: text 678x162 at (180,158) of the 790px crop, scaled by 512/790).
+const BAND = { left: 36, top: 25, width: 439, height: 105 };
+const NAVY = "#0b1e4c";
+
+function createIco(entries) {
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0); header.writeUInt16LE(1, 2); header.writeUInt16LE(entries.length, 4);
+  const dir = []; let offset = 6 + entries.length * 16;
+  for (const { size, buffer } of entries) {
+    const e = Buffer.alloc(16);
+    e.writeUInt8(size >= 256 ? 0 : size, 0); e.writeUInt8(size >= 256 ? 0 : size, 1); e.writeUInt16LE(1, 4); e.writeUInt16LE(32, 6);
+    e.writeUInt32LE(buffer.length, 8); e.writeUInt32LE(offset, 12); dir.push(e); offset += buffer.length;
+  }
+  return Buffer.concat([header, ...dir, ...entries.map((x) => x.buffer)]);
+}
+
+async function build(site, label) {
+  // 1. Clear the existing name band (white) so the canvas holds only the LIFE HELP artwork.
+  const clear = await sharp({ create: { width: 452, height: 120, channels: 4, background: "#ffffff" } }).png().toBuffer();
+  const blank = await sharp(CANVAS).composite([{ input: clear, left: 30, top: 18 }]).png().toBuffer();
+  // 2. Set the name, trim to the glyph boundaries and stretch to the width of "LIFE HELP".
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="400"><text x="50" y="260" fill="${NAVY}" font-family="Impact, 'Arial Black', sans-serif" font-size="200" font-weight="900">${label}</text></svg>`;
+  const trimmed = await sharp(Buffer.from(svg)).trim().toBuffer();
+  const text = await sharp(trimmed).resize(BAND.width, BAND.height, { fit: "fill" }).toBuffer();
+  const logo = await sharp(blank).composite([{ input: text, left: BAND.left, top: BAND.top }]).png().toBuffer();
+
+  fs.writeFileSync(path.join(LOGOS, `logo-${site}.png`), logo);
+  const at = async (n) => sharp(logo).resize(n, n).png().toBuffer();
+  fs.writeFileSync(path.join(LOGOS, `favicon-${site}.png`), await at(192));
+  fs.writeFileSync(path.join(LOGOS, `apple-touch-icon-${site}.png`), await at(180));
+  const f32 = await at(32);
+  fs.writeFileSync(path.join(LOGOS, `favicon-${site}-32.png`), f32);
+  fs.writeFileSync(path.join(LOGOS, `favicon-${site}.ico`), createIco([{ size: 16, buffer: await at(16) }, { size: 32, buffer: f32 }, { size: 48, buffer: await at(48) }]));
+  console.log(`${site}: logo-${site}.png, favicon-${site}.png/.ico/-32.png, apple-touch-icon-${site}.png`);
+}
+
+(async () => {
+  for (const [site, label] of Object.entries(SITES)) await build(site, label);
+})().catch((error) => { console.error(error); process.exit(1); });

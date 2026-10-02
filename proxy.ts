@@ -444,6 +444,11 @@ export async function proxy(request: NextRequest) {
    * Country-specific favicon.ico routing
    */
   if (request.nextUrl.pathname === "/favicon.ico") {
+    // math.life.help / english.life.help: the site's own logo (LIFE.HELP with MATH / ENGLISH above it).
+    const learnFaviconSite = getLearnSiteFromHost(host);
+    if (learnFaviconSite) {
+      return NextResponse.rewrite(new URL(`/logos/favicon-${learnFaviconSite}.ico`, request.url));
+    }
     const country = getCountryFromHost(host);
     if (country) {
       return NextResponse.rewrite(
