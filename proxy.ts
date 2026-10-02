@@ -2,7 +2,7 @@
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
 import { parseLearnHost } from "@/lib/learn/hosts";
-import { getAppEnv } from "@/lib/env";
+import { allowsLearnPathAccess } from "@/lib/env";
 import { updateLearnSession } from "@/lib/learn/server/supabase/proxySession";
 
 /**
@@ -465,10 +465,12 @@ export async function proxy(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const isStudyPath = path === "/study" || path.startsWith("/study/");
 
-    // Path-based access (/study/...) exists only for local/staging. In production the
+    // Path-based access (/study/...) is an explicit opt-in for local/staging (default deny). In production the
     // learning sites are reachable solely through their own hostnames, so existing
     // LIFE.HELP hosts (korea.life.help/study/math ...) must not expose them.
-    if (isStudyPath && !learnHostSite && getAppEnv() === "production") {
+    // The learning API is hidden the same way (a GET would otherwise answer 405 on every LIFE.HELP host and reveal the route).
+    const isLearnApi = path === "/api/learn" || path.startsWith("/api/learn/");
+    if ((isStudyPath || isLearnApi) && !learnHostSite && !allowsLearnPathAccess()) {
       return new NextResponse("Not Found", { status: 404 });
     }
 
@@ -499,6 +501,7 @@ export async function proxy(request: NextRequest) {
             })
           : NextResponse.next({ request: { headers: learnHeaders } });
       sessionResponse.cookies.getAll().forEach((c) => out.cookies.set(c));
+      out.headers.set("X-Robots-Tag", "noindex, nofollow"); // first release: learning sites are not indexed (parity with the live release)
       return out;
     }
   }
