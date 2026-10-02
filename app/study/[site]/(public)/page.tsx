@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { BrandLogo } from "@/components/learn/BrandLogo";
 import { StartCta } from "@/components/learn/StartCta";
 import { t } from "@/lib/learn/i18n";
 import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
@@ -20,7 +21,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   return (
     <div className="l-wrap l-wrap-wide l-stack">
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span className="l-brand">{site === "math" ? t("brand.math") : t("brand.english")}</span>
+        <span className="l-brand"><BrandLogo site={site} name={site === "math" ? t("brand.math") : t("brand.english")} size={56} /></span>
         <Link className="l-link" href={otherHost}>{t("site.other", { name: t(`site.${other}.name` as never) })}</Link>
       </header>
 

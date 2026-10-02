@@ -87,7 +87,8 @@
 
 .l-topbar { position: sticky; top: 0; z-index: 20; background: rgba(245,246,252,0.92); backdrop-filter: blur(8px); border-bottom: 2px solid var(--l-line); }
 .l-topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; max-width: 1040px; margin: 0 auto; }
-.l-brand { font-weight: 900; letter-spacing: -0.02em; color: var(--l-accent-dark); text-decoration: none; font-size: 1.05rem; }
+.l-brand { display: inline-flex; align-items: center; font-weight: 900; letter-spacing: -0.02em; color: var(--l-accent-dark); text-decoration: none; font-size: 1.05rem; line-height: 0; }
+.l-logo { display: block; width: auto; height: 44px; border-radius: 10px; }
 .l-stats { display: flex; gap: 8px; align-items: center; }
 .l-stat { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; padding: 6px 10px; border-radius: 999px; background: #fff; border: 2px solid var(--l-line); font-size: 0.9rem; }
 
