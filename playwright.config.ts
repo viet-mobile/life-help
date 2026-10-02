@@ -22,7 +22,7 @@ export default defineConfig({
     reuseExistingServer: false,
     // Path-based /study access and the API on non-learn hosts only exist outside production.
     // Decoy GENERIC marketplace credentials (a project that does not exist): the learning platform must ignore them, so accounts
-    // stay off and the guest flows below behave exactly as without them. No LEARN_SUPABASE_* here on purpose.
+    // stay off and the guest flows below behave exactly as without them. No learning credentials are set here on purpose.
     env: {
       APP_ENV: "staging",
       SUPABASE_URL: "https://decoygenericref01.supabase.co",

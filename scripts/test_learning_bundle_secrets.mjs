@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
+import { loadStagingEnv } from "./lib/envGuard.mjs";
 
 const CANARY = {
   LEARN_SUPABASE_URL: "https://canarylearnref01.supabase.co",
@@ -27,11 +28,12 @@ const CANARY = {
   APP_ENV: "staging",
 };
 const needles = Object.entries(CANARY).filter(([k]) => k !== "APP_ENV" && k !== "EXPECTED_LEARN_SUPABASE_REF" && k !== "EXPECTED_SUPABASE_REF").map(([name, value]) => ({ name, value }));
-// Real staging values (if present locally) are scanned for too; only their NAME is ever printed.
+// Real staging values (if present locally) are scanned for too; only their NAME is ever printed. Read through the shared guard
+// (staging project only; production-valued entries are refused), never directly.
 try {
-  const env = Object.fromEntries(fs.readFileSync(".env.staging.local", "utf8").split(/\r?\n/).map((l) => l.match(/^\s*([A-Za-z0-9_]+)\s*=\s*(.*)$/)).filter(Boolean).map((m) => [m[1], m[2].trim()]));
+  const env = loadStagingEnv();
   for (const key of ["TEST_SUPABASE_SERVICE_ROLE_KEY", "TEST_SUPABASE_ANON_KEY"]) if (env[key] && env[key].length >= 20) needles.push({ name: `.env.staging.local:${key}`, value: env[key] });
-} catch { /* no local staging env file */ }
+} catch { /* no local staging env file (or the guard refused it): the canary scan still runs */ }
 
 const skipBuild = process.argv.includes("--skip-build");
 const dirs = [".next", ".open-next"];

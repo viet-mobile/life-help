@@ -172,7 +172,7 @@ describe("unrelated marketplace code is not newly wired to Supabase by the learn
   const generic = "(^|[^A-Z_])(NEXT_PUBLIC_SUPABASE|SUPABASE_URL|SUPABASE_SERVICE_ROLE_KEY|SUPABASE_SECRET_KEY|SUPABASE_PUBLISHABLE_KEY|EXPECTED_SUPABASE_REF)"; // not preceded by LEARN_ / EXPECTED_LEARN_
   const grep = (rev: string | null) => {
     try {
-      const args = ["grep", "-lE", generic, ...(rev ? [rev] : []), "--", "*.ts", "*.tsx", ":!tests", ":!scripts"];
+      const args = ["grep", "-lE", generic, ...(rev ? [rev] : []), "--", "*.ts", "*.tsx", ":!tests", ":!scripts", ":!lib/learn", ":!playwright*.ts"]; // learning code and test configs are compared separately
       const out = execFileSync("git", args, { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
       return new Set(out.split("\n").filter(Boolean).map((l) => (rev ? l.replace(`${rev}:`, "") : l)));
     } catch (error) {
@@ -182,7 +182,7 @@ describe("unrelated marketplace code is not newly wired to Supabase by the learn
   };
 
   it("no file outside the learning platform references a LEARN_SUPABASE_* / EXPECTED_LEARN_SUPABASE_REF name", () => {
-    const learnRefs = execFileSync("git", ["grep", "-lE", "LEARN_SUPABASE_|EXPECTED_LEARN_SUPABASE_REF", "--", "*.ts", "*.tsx", "*.mjs", ":!tests", ":!scripts"], { cwd: root, encoding: "utf8" })
+    const learnRefs = execFileSync("git", ["grep", "-lE", "LEARN_SUPABASE_|EXPECTED_LEARN_SUPABASE_REF", "--", "*.ts", "*.tsx", "*.mjs", ":!tests", ":!scripts", ":!playwright*.ts"], { cwd: root, encoding: "utf8" })
       .split("\n").filter(Boolean);
     expect(learnRefs.filter((f) => !f.startsWith("lib/learn/") && f !== "proxy.ts")).toEqual([]);
   });
