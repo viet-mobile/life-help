@@ -1,4 +1,4 @@
-import { getAppEnv } from "@/lib/env";
+import { allowsLearnPathAccess } from "@/lib/env";
 import { parseLearnHost } from "../hosts";
 import { LearnError } from "./errors";
 
@@ -11,7 +11,7 @@ const MAX_BODY_BYTES = 64 * 1024;
 export function assertSameOrigin(request: Request) {
   const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase();
   // In production the learning API answers only on the learning hostnames, never on other LIFE.HELP hosts.
-  if (getAppEnv() === "production" && !parseLearnHost(host)) throw new LearnError("not_found", 404);
+  if (!allowsLearnPathAccess() && !parseLearnHost(host)) throw new LearnError("not_found", 404);
   const origin = request.headers.get("origin");
   if (origin) {
     let originHost = "";

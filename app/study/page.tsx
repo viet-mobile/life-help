@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAppEnv } from "@/lib/env";
+import { allowsLearnPathAccess, getAppEnv } from "@/lib/env";
 import "./study.css";
 
 export const metadata: Metadata = { title: "Learning sites (staging)", robots: { index: false, follow: false } };
@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Learning sites (staging)", robots: {
  * (e.g. *.workers.dev). It does not exist in production.
  */
 export default function StudyIndex() {
-  if (getAppEnv() === "production") notFound();
+  if (!allowsLearnPathAccess()) notFound();
   return (
     <div className="study-root" data-site="math">
       <div className="l-wrap l-stack">
