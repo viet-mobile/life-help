@@ -28,11 +28,16 @@ const CANARY = {
   APP_ENV: "staging",
 };
 const needles = Object.entries(CANARY).filter(([k]) => k !== "APP_ENV" && k !== "EXPECTED_LEARN_SUPABASE_REF" && k !== "EXPECTED_SUPABASE_REF").map(([name, value]) => ({ name, value }));
+const info = [];
 // Real staging values (if present locally) are scanned for too; only their NAME is ever printed. Read through the shared guard
 // (staging project only; production-valued entries are refused), never directly.
 try {
   const env = loadStagingEnv();
-  for (const key of ["TEST_SUPABASE_SERVICE_ROLE_KEY", "TEST_SUPABASE_ANON_KEY"]) if (env[key] && env[key].length >= 20) needles.push({ name: `.env.staging.local:${key}`, value: env[key] });
+  // The real SECRET key must never appear. The real PUBLISHABLE key is reported only as information: the existing guarded staging build
+  // inlines it on purpose as NEXT_PUBLIC_SUPABASE_ANON_KEY for the marketplace clients (public by design); the learning platform does
+  // not read that name (tests/learn/supabase-isolation.test.ts) and the canary build above proves it adds no publishable value itself.
+  if (env.TEST_SUPABASE_SERVICE_ROLE_KEY?.length >= 20) needles.push({ name: ".env.staging.local:TEST_SUPABASE_SERVICE_ROLE_KEY", value: env.TEST_SUPABASE_SERVICE_ROLE_KEY });
+  if (env.TEST_SUPABASE_ANON_KEY?.length >= 20) info.push({ name: ".env.staging.local:TEST_SUPABASE_ANON_KEY (publishable; marketplace NEXT_PUBLIC inlining)", value: env.TEST_SUPABASE_ANON_KEY });
 } catch { /* no local staging env file (or the guard refused it): the canary scan still runs */ }
 
 const skipBuild = process.argv.includes("--skip-build");
@@ -61,7 +66,8 @@ const SECRET_TOKEN = /sb_secret_[A-Za-z0-9_-]{8,}/;
 const JWT = /eyJ[A-Za-z0-9_-]{10,}\.([A-Za-z0-9_-]{20,})\.[A-Za-z0-9_-]{10,}/g;
 function scan() {
   const hits = [];
-  let count = 0, bytes = 0, proxyFiles = 0;
+  let count = 0, bytes = 0, proxyFiles = 0, infoCount = 0;
+  const infoFiles = new Set();
   for (const dir of dirs) for (const file of files(dir)) {
     if (!TEXT.test(file) && !/(^|[\\/])(BUILD_ID)$/.test(file)) continue;
     let text;
@@ -69,12 +75,13 @@ function scan() {
     count++; bytes += text.length;
     if (/updateLearnSession/.test(text)) proxyFiles++;
     for (const { name, value } of needles) if (text.includes(value)) hits.push(`${file}: ${name}`);
+    for (const { name, value } of info) if (text.includes(value)) infoFiles.add(`${name}`), infoCount++;
     if (SECRET_TOKEN.test(text.replace(/sb_secret_CANARY[A-Za-z0-9_-]*/g, ""))) hits.push(`${file}: sb_secret_ token`); // canary tokens are reported by name above
     for (const m of text.matchAll(JWT)) {
       try { if (JSON.parse(Buffer.from(m[1], "base64url").toString()).role === "service_role") hits.push(`${file}: service_role JWT`); } catch { /* not a JWT */ }
     }
   }
-  return { hits, count, bytes, proxyFiles };
+  return { hits, count, bytes, proxyFiles, infoCount, infoFiles };
 }
 
 // Positive control: the scanner must find a planted canary, otherwise a clean result would mean nothing.
@@ -86,9 +93,10 @@ fs.rmSync(controlFile, { force: true });
 const controlOk = control.hits.some((h) => h.includes("__scanner_control.js") && h.includes("LEARN_SUPABASE_SECRET_KEY"));
 console.log(`${controlOk ? "PASS" : "FAIL"} positive control: the scanner finds a planted learning-secret canary`);
 
-const { hits, count, bytes, proxyFiles } = scan();
+const { hits, count, bytes, proxyFiles, infoCount, infoFiles } = scan();
 console.log(`scanned ${count} files (${Math.round(bytes / 1024)} KiB) in ${dirs.join(" + ")}; files containing the learning proxy helper: ${proxyFiles}`);
 console.log(`${hits.length === 0 ? "PASS" : "FAIL"} no learning / generic credential value, sb_secret_ token or service_role JWT in any client, proxy, server or Worker bundle`);
 for (const h of hits.slice(0, 20)) console.log(`  HIT ${h}`);
+for (const name of infoFiles) console.log(`INFO ${name} appears in ${infoCount} bundle file(s)`);
 console.log(`${proxyFiles > 0 ? "PASS" : "FAIL"} the proxy bundle that contains updateLearnSession was among the scanned files`);
 process.exit(controlOk && hits.length === 0 && proxyFiles > 0 ? 0 : 1);
