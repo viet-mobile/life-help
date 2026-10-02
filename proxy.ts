@@ -1,6 +1,9 @@
 ﻿import { NextResponse, type NextRequest } from "next/server";
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
+import { parseLearnHost } from "@/lib/learn/hosts";
+import { getAppEnv } from "@/lib/env";
+import { updateLearnSession } from "@/lib/learn/server/supabase/proxySession";
 
 /**
  * LIFE.HELP country domains
@@ -227,6 +230,30 @@ const COUNTRY_HOST_REDIRECTS: Record<string, string> = {
   "italy.life.help": "italia.life.help",
 };
 
+
+/**
+ * Learning sites (math.life.help, english.life.help).
+ *
+ * The subdomain selects a learning site; the app lives at /study/[site]/...
+ * internally, so math.life.help/dashboard is served by /study/math/dashboard.
+ * Locally (no subdomain) the same pages are reachable at /study/math.
+ */
+const LEARN_SITES = new Set(["math", "english"]);
+
+function getLearnSiteFromHost(host: string): "math" | "english" | null {
+  return parseLearnHost(host)?.site ?? null;
+}
+
+function isLearnPassthrough(pathname: string) {
+  return (
+    pathname.startsWith("/api/") ||
+    pathname === "/manifest.webmanifest" ||
+    pathname === "/manifest.json" ||
+    pathname === "/sw.js" ||
+    pathname.startsWith("/icon-")
+  );
+}
+
 function getPortalFromHost(host: string): "customer" | "tech" | "chat" | "sys" | "main" {
   if (host === "sys.life.help") return "sys";
   if (host === "chat.life.help") return "chat";
@@ -427,6 +454,59 @@ export async function proxy(request: NextRequest) {
       new URL(`/logos/favicon-default.ico`, request.url),
     );
   }
+
+  /**
+   * Learning sites: math.life.help / english.life.help (and /study/* locally).
+   * This block uses ONLY the learning session helper (publishable credentials, no service key); the generic marketplace
+   * session handling below is never called for learning hosts (tests/learn/supabase-isolation.test.ts).
+   */
+  // LEARN_BLOCK_START
+  {
+    const learnHostSite = getLearnSiteFromHost(host);
+    const path = request.nextUrl.pathname;
+    const isStudyPath = path === "/study" || path.startsWith("/study/");
+
+    // Path-based access (/study/...) exists only for local/staging. In production the
+    // learning sites are reachable solely through their own hostnames, so existing
+    // LIFE.HELP hosts (korea.life.help/study/math ...) must not expose them.
+    // The learning API is hidden the same way (a GET would otherwise answer 405 on every LIFE.HELP host and reveal the route).
+    const isLearnApi = path === "/api/learn" || path.startsWith("/api/learn/");
+    if ((isStudyPath || isLearnApi) && !learnHostSite && getAppEnv() === "production") {
+      return new NextResponse("Not Found", { status: 404 });
+    }
+
+    const pathSite = path.startsWith("/study/") ? path.split("/")[2] : null;
+    const learnSite = learnHostSite ?? (pathSite && LEARN_SITES.has(pathSite) ? pathSite : null);
+
+    if (learnSite) {
+      const passthrough = isLearnPassthrough(path);
+      const internal =
+        passthrough || path.startsWith("/study/")
+          ? path
+          : `/study/${learnSite}${path === "/" ? "" : path}`;
+
+      const learnHeaders = new Headers(request.headers);
+      learnHeaders.set("x-life-portal", "learn");
+      learnHeaders.set("x-life-site", learnSite);
+      // The public base path for links: empty on the site's own subdomain.
+      learnHeaders.set("x-learn-base", learnHostSite ? "" : `/study/${learnSite}`);
+      learnHeaders.set("x-life-language", "ko");
+      learnHeaders.delete("x-life-country");
+
+      // Keep the learning Supabase session fresh and persist refreshed cookies (no-op without LEARN_SUPABASE_* public config).
+      const { response: sessionResponse } = await updateLearnSession(request);
+      const out =
+        internal !== path
+          ? NextResponse.rewrite(new URL(internal + request.nextUrl.search, request.url), {
+              request: { headers: learnHeaders },
+            })
+          : NextResponse.next({ request: { headers: learnHeaders } });
+      sessionResponse.cookies.getAll().forEach((c) => out.cookies.set(c));
+      out.headers.set("X-Robots-Tag", "noindex, nofollow"); // first release: learning sites are not indexed
+      return out;
+    }
+  }
+  // LEARN_BLOCK_END
 
   /**
    * Allow a portal to return to its customer domain.
