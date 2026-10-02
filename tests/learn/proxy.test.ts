@@ -19,7 +19,8 @@ async function snap(fn: typeof current, host: string, path: string) {
 const HOSTS = ["life.help", "korea.life.help", "vietnam.life.help", "japan.life.help", "taiwan.life.help", "us.life.help",
   "tech.life.help", "tech.korea.life.help", "chat.life.help", "chat.vietnam.life.help", "sys.life.help", "sys.korea.life.help",
   "register-device.life.help", "turkey.life.help", "spain.life.help", "unknown.life.help", "life-help.example.workers.dev", "localhost:3000"];
-const PATHS = ["/", "/vi", "/ko/services/ac", "/login", "/admin", "/tech/workspace", "/chat/counselor", "/api/review", "/manifest.webmanifest", "/favicon.ico", "/sys", "/payment"];
+// /favicon.ico is covered in brand.test.ts: it is the one deliberate difference (existing hosts are pinned to the generic favicon that production serves).
+const PATHS = ["/", "/vi", "/ko/services/ac", "/login", "/admin", "/tech/workspace", "/chat/counselor", "/api/review", "/manifest.webmanifest", "/sys", "/payment"];
 
 describe("existing hostnames are unaffected by the learning platform", () => {
   afterEach(() => vi.unstubAllEnvs());
