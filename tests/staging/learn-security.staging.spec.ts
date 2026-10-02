@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { expect, request as pwRequest, test, type BrowserContext, type Page } from "@playwright/test";
 import {
   ANON, BASE, DEMO, PRODUCTION_REF, REF, SERVICE, SUPABASE, authUserId, authUsersWithEmail, correctPayload, deleteFixtureUser, diagnostic,
@@ -347,6 +348,28 @@ test.describe.serial("staging authority: unauthenticated / cross-user / forged /
   });
 });
 
+/* ----------------------------------- branding: logo / metadata / favicon ----------------------------------- */
+test("branding: each site serves its own logo, favicon and metadata; the generic favicon is untouched", async () => {
+  const bytes = async (p: string) => { const r = await fetch(`${BASE}${p}`); return { status: r.status, type: r.headers.get("content-type") ?? "", body: Buffer.from(await r.arrayBuffer()) }; };
+  const file = (p: string) => fs.readFileSync(p);
+  const generic = await bytes("/favicon.ico");
+  expect(generic.status).toBe(200);
+  expect(generic.body.equals(file("public/favicon.ico")), "existing-host favicon = the generic LIFE.HELP favicon").toBe(true);
+  expect((await bytes("/favicon.ico?favicon.0123abcd.ico")).body.equals(generic.body)).toBe(true);
+  for (const site of ["math", "english"] as const) {
+    const ico = await bytes(`/study/${site}/favicon.ico`);
+    expect(ico.status).toBe(200);
+    expect(ico.type).toMatch(/^image\/(x-icon|vnd\.microsoft\.icon)/);
+    expect(ico.body.equals(file(`public/logos/favicon-${site}.ico`)), `${site} favicon bytes`).toBe(true);
+    for (const f of [`logo-${site}.png`, `favicon-${site}.png`, `apple-touch-icon-${site}.png`]) expect((await bytes(`/logos/${f}`)).body.equals(file(`public/logos/${f}`)), f).toBe(true);
+    const tags = (await (await fetch(url(site, "/"))).text()).match(/<link[^>]+>|<meta[^>]+>/g) ?? [];
+    expect(tags.some((t) => new RegExp(`rel="icon"[^>]*favicon-${site}`).test(t)), "icon link").toBe(true);
+    expect(tags.some((t) => t.includes(`apple-touch-icon-${site}.png`)), "apple-touch-icon link").toBe(true);
+    expect(tags.some((t) => /og:image/.test(t) && t.includes(`${BASE}/logos/logo-${site}.png`)), "og:image").toBe(true);
+    expect(tags.some((t) => /twitter:image/.test(t) && t.includes(`/logos/logo-${site}.png`)), "twitter:image").toBe(true);
+  }
+});
+
 /* ------------------------------------------- responsive ------------------------------------------- */
 const VIEWPORTS = [
   { name: "mobile 320", width: 320, height: 640, mobile: true },
@@ -402,6 +425,13 @@ for (const vp of VIEWPORTS) {
         await page.goto(url(site, "/"));
         await expect(page.locator(".l-brand").first()).toBeVisible();
         await hook("landing");
+        // The site's own logo (LIFE.HELP with MATH / ENGLISH above it) sits at the top left of the page content column.
+        const logo = page.locator("img.l-logo").first();
+        await expect(logo).toBeVisible();
+        await expect(logo).toHaveAttribute("src", `/logos/logo-${site}.png`);
+        expect(await logo.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth === 512), "the 512px logo loaded").toBe(true);
+        const logoBox = await logo.boundingBox();
+        expect(logoBox && logoBox.x >= 0 && logoBox.x + logoBox.width <= vp.width && logoBox.x < 200 && logoBox.y < 120, "logo inside the viewport at the top left").toBe(true);
         await onboard(page, site, hook);
         await diagnostic(page, site, hook);
         await lesson(page, site, hook);
