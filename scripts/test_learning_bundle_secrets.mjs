@@ -8,7 +8,7 @@
 //   --canary  build with CANARY values for every learning and generic Supabase variable: none of them may appear in any
 //             bundle (LEARN_SUPABASE_* are runtime-only; generic decoys must not leak either).
 // Both modes include a positive control (a planted canary file) so a clean result is meaningful, and report the count of
-// "supabase.co" occurrences; with --baseline-dir <dir> that count must not exceed the production-baseline build's count.
+// real Supabase project URLs (20-character refs); with --baseline-dir <dir> that count must not exceed the production-baseline build's.
 //   node scripts/test_learning_bundle_secrets.mjs [--clean|--canary] [--skip-build] [--baseline-dir <dir>]
 import fs from "node:fs";
 import path from "node:path";
@@ -61,14 +61,15 @@ const TOKEN = /sb_(?:secret|publishable)_[A-Za-z0-9_-]{8,}/;
 const JWT = /eyJ[A-Za-z0-9_-]{10,}\.([A-Za-z0-9_-]{20,})\.[A-Za-z0-9_-]{10,}/g;
 function scan(root = ".", names = dirs) {
   const hits = [];
-  let count = 0, bytes = 0, proxyFiles = 0, supabaseCo = 0;
+  let count = 0, bytes = 0, proxyFiles = 0, supabaseCo = 0, rawSupabaseCo = 0;
   for (const d of names) for (const file of files(path.join(root, d))) {
     if (!TEXT.test(file)) continue;
     let text;
     try { text = fs.readFileSync(file, "utf8"); } catch { continue; }
     count++; bytes += text.length;
     if (/updateLearnSession/.test(text)) proxyFiles++;
-    supabaseCo += (text.match(/\.supabase\.co/g) ?? []).length;
+    rawSupabaseCo += (text.match(/\.supabase\.co/g) ?? []).length; // mostly documentation examples inside the supabase-js library code
+    supabaseCo += (text.match(/https?:\/\/[a-z0-9]{20}\.supabase\.(?:co|in)/g) ?? []).length; // a REAL project URL (20-character ref)
     for (const { name, value } of needles) if (text.includes(value)) hits.push(`${file}: ${name}`);
     if (mode === "clean" && TOKEN.test(text)) hits.push(`${file}: sb_ token`);
     if (mode === "canary" && TOKEN.test(text.replace(/sb_(?:secret|publishable)_CANARY[A-Za-z0-9_-]*/g, ""))) hits.push(`${file}: sb_ token`);
@@ -76,7 +77,7 @@ function scan(root = ".", names = dirs) {
       try { if (JSON.parse(Buffer.from(m[1], "base64url").toString()).role === "service_role") hits.push(`${file}: service_role JWT`); } catch { /* not a JWT */ }
     }
   }
-  return { hits, count, bytes, proxyFiles, supabaseCo };
+  return { hits, count, bytes, proxyFiles, supabaseCo, rawSupabaseCo };
 }
 
 // Positive control: the scanner must find a planted needle, otherwise a clean result would mean nothing.
@@ -88,18 +89,19 @@ fs.rmSync(controlFile, { force: true });
 const controlOk = control.hits.some((h) => h.includes("__scanner_control.js"));
 console.log(`${controlOk ? "PASS" : "FAIL"} positive control: the scanner finds a planted ${needles[0].name}`);
 
-const { hits, count, bytes, proxyFiles, supabaseCo } = scan();
+const { hits, count, bytes, proxyFiles, supabaseCo, rawSupabaseCo } = scan();
 console.log(`scanned ${count} files (${Math.round(bytes / 1024)} KiB) in ${dirs.join(" + ")}; files containing the learning proxy helper: ${proxyFiles}`);
 const label = mode === "clean" ? "no staging / production project ref, sb_ token or service_role JWT in any client, proxy, server or Worker bundle" : "no learning / generic credential value, sb_ token or service_role JWT in any bundle";
 console.log(`${hits.length === 0 ? "PASS" : "FAIL"} ${label}`);
 for (const h of hits.slice(0, 20)) console.log(`  HIT ${h}`);
 console.log(`${proxyFiles > 0 ? "PASS" : "FAIL"} the proxy bundle containing updateLearnSession was among the scanned files`);
-console.log(`INFO ".supabase.co" occurrences in this build: ${supabaseCo}`);
+console.log(`INFO real project URLs (20-char ref) in this build: ${supabaseCo}; raw ".supabase.co" strings (library doc examples included): ${rawSupabaseCo}`);
 let baselineOk = true;
 if (baselineDir) {
   const base = scan(baselineDir, [".next"]);
   const mine = scan(".", [".next"]);
   baselineOk = mine.supabaseCo <= base.supabaseCo;
-  console.log(`${baselineOk ? "PASS" : "FAIL"} ".supabase.co" occurrences in .next: release ${mine.supabaseCo} <= production baseline ${base.supabaseCo} (no unrelated client code newly wired to Supabase)`);
+  console.log(`INFO raw ".supabase.co" strings in .next: release ${mine.rawSupabaseCo}, baseline ${base.rawSupabaseCo} (library documentation examples bundled once per chunk that imports supabase-js; not a wiring signal)`);
+  console.log(`${baselineOk ? "PASS" : "FAIL"} real Supabase project URLs in .next: release ${mine.supabaseCo} <= production baseline ${base.supabaseCo} (no unrelated client code newly wired to a project)`);
 }
 process.exit(controlOk && hits.length === 0 && proxyFiles > 0 && baselineOk ? 0 : 1);
