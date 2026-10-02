@@ -136,3 +136,24 @@ describe("production build: runtime NODE_ENV / APP_ENV can be anything, learning
     }
   });
 });
+
+describe("production build: malformed / look-alike hostnames fail closed", () => {
+  // Only the exact allowlisted names resolve to a learning site (lib/learn/hosts.ts); anything else is an ordinary host, so /study and /api/learn stay hidden.
+  const LOOKALIKES = ["math.life.help.evil.com", "evilmath.life.help", "xmath.life.help", "math.life.help.", "math..life.help", "life.help.math.life.help", "math.evil.com", "english.life.help.attacker.example", "mathlife.help", "math.life.help.localhost", ""];
+  it("a look-alike host never reaches the learning pages or API, for any method and any runtime environment", async () => {
+    const proxy = await proxyOnProductionWorker();
+    let checked = 0;
+    for (const appEnv of [undefined, "", "production", "bogus"]) {
+      if (appEnv === undefined) delete env.APP_ENV; else env.APP_ENV = appEnv;
+      for (const host of LOOKALIKES) for (const path of ["/study/math", "/study/english/dashboard", "/api/learn/state", "/api/learn/attempt"]) {
+        for (const method of path.startsWith("/api/learn") ? ["GET", "POST"] : ["GET"]) {
+          const res = await get(proxy, host || "unknown.example", path, method);
+          expect(res.status, `APP_ENV=${JSON.stringify(appEnv)} ${method} ${JSON.stringify(host)}${path}`).toBe(404);
+          expect(res.headers.get("x-middleware-rewrite") ?? "", "no rewrite to a learning page").toBe("");
+          checked++;
+        }
+      }
+    }
+    expect(checked).toBe(264); // 4 runtime APP_ENV values x 11 hosts x (2 page paths + 2 API paths x GET,POST)
+  });
+});
