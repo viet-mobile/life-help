@@ -21,7 +21,16 @@ export default defineConfig({
     port: PORT,
     reuseExistingServer: false,
     // Path-based /study access and the API on non-learn hosts only exist outside production.
-    env: { APP_ENV: "staging" },
+    // Decoy GENERIC marketplace credentials (a project that does not exist): the learning platform must ignore them, so accounts
+    // stay off and the guest flows below behave exactly as without them. No LEARN_SUPABASE_* here on purpose.
+    env: {
+      APP_ENV: "staging",
+      SUPABASE_URL: "https://decoygenericref01.supabase.co",
+      SUPABASE_SERVICE_ROLE_KEY: "decoy-generic-service-role-key-not-real",
+      SUPABASE_SECRET_KEY: "sb_secret_decoy_generic_not_real_0123456789",
+      SUPABASE_PUBLISHABLE_KEY: "sb_publishable_decoy_generic_not_real",
+      EXPECTED_SUPABASE_REF: "decoygenericref01",
+    },
     timeout: 120_000,
   },
 });

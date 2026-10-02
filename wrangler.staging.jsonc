@@ -23,10 +23,16 @@
   // The recipient below is the signer's public address (the staging holding account). The FX rate is
   // an explicit TEST rate for devnet test USDC, not a market rate.
   "vars": {
-    // Learning sites (/study, math|english-staging hosts): APP_ENV selects staging behavior (lib/env.ts) and
-    // EXPECTED_SUPABASE_REF pins accounts to the staging project (public ref, fail-closed).
+    // Learning sites (/study, math|english-staging hosts): APP_ENV selects staging behavior (lib/env.ts). The learning platform has
+    // its OWN Supabase contract and never reads the generic SUPABASE_* names:
+    //   vars (public, here):  LEARN_SUPABASE_URL, EXPECTED_LEARN_SUPABASE_REF (accounts fail closed unless the URL's project ref equals it)
+    //   Worker secrets (NOT here, set with `wrangler secret put ... --config wrangler.staging.jsonc`):
+    //     LEARN_SUPABASE_PUBLISHABLE_KEY  (public by design, but kept a secret binding: plain vars set in the dashboard are removed by a deploy)
+    //     LEARN_SUPABASE_SECRET_KEY       (trusted server key)
+    //   Until BOTH secrets exist, learning accounts stay off and guests are unaffected.
     "APP_ENV": "staging",
-    "EXPECTED_SUPABASE_REF": "wreebowcbiymodswajwe",
+    "LEARN_SUPABASE_URL": "https://wreebowcbiymodswajwe.supabase.co",
+    "EXPECTED_LEARN_SUPABASE_REF": "wreebowcbiymodswajwe",
     "LIFE_HELP_PAYMENT_MODE": "STAGING_DEVNET_TEST",
     "LIFE_HELP_SOLANA_DEVNET_RECIPIENT": "D89fnNdAMFSnd4Jc8NvHcAkGQfvhWFkhY84K5qALQE4",
     "LIFE_HELP_TEST_FX_RATES": "KRW=1400",

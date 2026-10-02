@@ -23,7 +23,8 @@
     "lint:learn": "eslint app/study app/api/learn lib/learn lib/env.ts components/learn tests utils/supabase/admin.ts",
     "check:learn": "npm run typecheck && npm run lint:learn && npm run test:learn",
     "seed:learn:generate": "node scripts/learn/generate-seed.mjs",
-    "check:learn:secrets": "node scripts/learn/check-no-secrets.mjs"
+    "check:learn:secrets": "node scripts/learn/check-no-secrets.mjs",
+    "test:learn:bundle": "node scripts/test_learning_bundle_secrets.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

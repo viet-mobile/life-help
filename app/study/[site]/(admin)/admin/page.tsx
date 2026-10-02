@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLearnStaff } from "@/lib/learn/server/adminAccess";
 import { t } from "@/lib/learn/i18n";
-import { accountsEnabled, loadContent } from "@/lib/learn/server/runtime";
+import { accountsEnabled, getLearnServiceClient, loadContent } from "@/lib/learn/server/runtime";
 import { isSite } from "@/lib/learn/types";
-import { createClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
+import { createLearnSessionClient } from "@/lib/learn/server/supabase/session";
 
 export const metadata: Metadata = { title: t("admin.title"), robots: { index: false, follow: false } };
 
@@ -22,11 +21,9 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   let allowed = false;
   if (accountsEnabled()) {
     try {
-      const supabase = await createClient();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      allowed = await isLearnStaff(createAdminClient(), user);
+      const supabase = await createLearnSessionClient();
+      const user = supabase ? (await supabase.auth.getUser()).data.user : null;
+      allowed = await isLearnStaff(getLearnServiceClient(), user);
     } catch {
       allowed = false;
     }

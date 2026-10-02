@@ -194,6 +194,22 @@ test("API is same-origin only, never leaks answers, and cannot be farmed", async
   await expect(page.getByText("관리자만 볼 수 있어요.")).toBeVisible();
 });
 
+test("generic Supabase credentials never enable learning accounts: the account UI stays disabled and sign-in is unavailable", async ({ page }) => {
+  // The server runs with decoy SUPABASE_URL / service-role / secret / publishable variables and NO LEARN_SUPABASE_*.
+  for (const site of ["math", "english"] as const) {
+    await page.goto(`${HOSTS[site]}/login`);
+    await expect(page.getByText("계정 기능은 아직 준비 중이에요")).toBeVisible();
+    await expect(page.locator("#email")).toBeDisabled();
+    await expect(page.locator("#password")).toBeDisabled();
+    await expect(page.getByRole("button", { name: "로그인", exact: true })).toBeDisabled();
+    await expect(page.getByRole("link", { name: "가입 없이 체험하기" })).toBeVisible(); // guest mode stays available
+  }
+  // Guest play is unaffected: the landing page offers the guest start and no account prompt.
+  await page.goto(`${HOSTS.math}/`);
+  await expect(page.getByRole("link", { name: /1분 만에 시작하기/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: "가입하고 기록 지키기" })).toHaveCount(0);
+});
+
 test.describe("mobile", () => {
   test.use({ viewport: { width: 375, height: 700 } });
   test("landing and lesson fit a phone with no horizontal scroll and 44px+ tap targets", async ({ page }) => {

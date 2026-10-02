@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { isSite } from "@/lib/learn/types";
 import { accountsEnabled } from "@/lib/learn/server/runtime";
-import { createClient } from "@/utils/supabase/server";
+import { createLearnSessionClient } from "@/lib/learn/server/supabase/session";
 
 export interface AuthFormState {
   error?: "unavailable" | "invalid" | "failed";
@@ -31,7 +31,8 @@ export async function authenticate(_prev: AuthFormState | null, formData: FormDa
   }
 
   const base = await siteBase(site);
-  const supabase = await createClient();
+  const supabase = await createLearnSessionClient();
+  if (!supabase) return { error: "unavailable" };
   if (mode === "signup") {
     const h = await headers();
     const host = h.get("x-forwarded-host") ?? h.get("host") ?? "";
@@ -56,8 +57,8 @@ export async function signOutAction(site: string): Promise<void> {
   if (!isSite(site)) return;
   const base = await siteBase(site);
   if (accountsEnabled()) {
-    const supabase = await createClient();
-    await supabase.auth.signOut();
+    const supabase = await createLearnSessionClient();
+    await supabase?.auth.signOut();
   }
   revalidatePath("/", "layout");
   redirect(`${base}/`);

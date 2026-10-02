@@ -1,7 +1,6 @@
-import { createClient as createSessionClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
-import { supabaseMatchesEnvironment } from "@/lib/env";
-import { resolvePublishableKey } from "@/lib/supabase/keys";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { createLearnServiceClient, learnAccountsConfigured } from "./supabase/service";
+import { createLearnSessionClient } from "./supabase/session";
 import { LearnService, type Actor } from "./service";
 import { SupabaseLearnStore } from "./supabaseStore";
 import type { Site } from "@/lib/learn/types";
@@ -16,7 +15,7 @@ function ensureContentSource() {
   if (contentReady) return;
   contentReady = true;
   if (process.env.LEARN_CONTENT_SOURCE === "supabase" && accountsEnabled()) {
-    const admin = createAdminClient();
+    const admin = createLearnServiceClient();
     if (admin) setContentRepository(new SupabaseContentRepository(admin));
   }
 }
@@ -27,19 +26,23 @@ export async function loadContent(site: Site) {
   return loadIndex(site);
 }
 
-/** True when accounts (Supabase auth + service role) are configured for this deployment. */
+/**
+ * True only when the LEARNING Supabase credentials are complete: LEARN_SUPABASE_URL + LEARN_SUPABASE_PUBLISHABLE_KEY +
+ * LEARN_SUPABASE_SECRET_KEY, and the project ref matches EXPECTED_LEARN_SUPABASE_REF. The generic marketplace Supabase
+ * environment variables are never consulted, so they cannot enable (or redirect) learning accounts.
+ */
 export function accountsEnabled(): boolean {
-  return !!(
-    supabaseMatchesEnvironment() &&
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    resolvePublishableKey() &&
-    createAdminClient()
-  );
+  return learnAccountsConfigured();
+}
+
+/** The trusted learning client for server components / actions (staff lookup, trusted reads). Null when accounts are off. */
+export function getLearnServiceClient(): SupabaseClient | null {
+  return accountsEnabled() ? createLearnServiceClient() : null;
 }
 
 export function getLearnService(): LearnService {
   if (!service) {
-    const admin = accountsEnabled() ? createAdminClient() : null;
+    const admin = getLearnServiceClient();
     service = new LearnService({ store: admin ? new SupabaseLearnStore(admin) : null });
     ensureContentSource();
   }
@@ -50,7 +53,8 @@ export function getLearnService(): LearnService {
 export async function getUserId(): Promise<string | null> {
   if (!accountsEnabled()) return null;
   try {
-    const supabase = await createSessionClient();
+    const supabase = await createLearnSessionClient();
+    if (!supabase) return null;
     const {
       data: { user },
     } = await supabase.auth.getUser();

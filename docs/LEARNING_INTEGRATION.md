@@ -21,11 +21,18 @@ It is NOT a separate project and has no database of its own.
 
 ## Environments
 
-- Staging Worker = `wrangler.staging.jsonc` (`life-help-staging`); it sets `APP_ENV=staging` and
-  `EXPECTED_SUPABASE_REF`. Without `APP_ENV`, a production build treats `/study/*` on non-learn hosts as 404.
-- Supabase keys: publishable = `SUPABASE_PUBLISHABLE_KEY` -> `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` ->
-  `NEXT_PUBLIC_SUPABASE_ANON_KEY`; secret = `SUPABASE_SECRET_KEY` -> `SUPABASE_SERVICE_ROLE_KEY`
-  (`lib/supabase/keys.ts`). Existing LIFE.HELP code keeps using `SUPABASE_SERVICE_ROLE_KEY` unchanged.
+- Staging Worker = `wrangler.staging.jsonc` (`life-help-staging`); it sets `APP_ENV=staging`. Without `APP_ENV`, a production build
+  treats `/study/*` on non-learn hosts as 404.
+- **Learning Supabase contract (isolated from the marketplace):** the learning platform reads ONLY
+  `LEARN_SUPABASE_URL`, `LEARN_SUPABASE_PUBLISHABLE_KEY`, `LEARN_SUPABASE_SECRET_KEY` and `EXPECTED_LEARN_SUPABASE_REF`, with no
+  fallback to the generic `SUPABASE_*` / `NEXT_PUBLIC_SUPABASE_*` names (so a generic credential can never enable or redirect learning
+  accounts). None is `NEXT_PUBLIC_*`: they are read at request time from the Worker environment and never inlined into a bundle; the
+  browser talks only to same-origin server actions / `/api/learn`. In staging and production `EXPECTED_LEARN_SUPABASE_REF` is
+  required and must equal the project ref of `LEARN_SUPABASE_URL`; accounts need URL + publishable key + secret key.
+  Code: `lib/learn/server/supabase/` (`config.ts` public config + ref guard, `secret.ts` the only reader of the secret key,
+  `service.ts` trusted client, server-only, `session.ts` publishable-key session client, server-only, `proxySession.ts` session
+  refresh for the proxy, publishable credentials only). Guarded by `tests/learn/supabase-env.test.ts` (env matrix),
+  `tests/learn/supabase-isolation.test.ts` (import graph) and `scripts/test_learning_bundle_secrets.mjs` (build-output scan).
 - The demo seed (`npm run seed:learn:generate` -> `supabase/seed/learn_demo.sql`) is for local/PGlite only and
   refuses to run without `set app.allow_demo_seed = 'on'`. Do not run it on shared staging or production.
 

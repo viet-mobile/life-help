@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseLearnHost } from "@/lib/learn/hosts";
-import { getAppEnv, supabaseMatchesEnvironment } from "@/lib/env";
+import { getAppEnv } from "@/lib/env";
 
 describe("learn hostnames (explicit allowlist)", () => {
   it("maps production, staging and local hosts", () => {
@@ -24,11 +24,5 @@ describe("environment resolution", () => {
     expect(getAppEnv({ NODE_ENV: "development" })).toBe("local");
     expect(getAppEnv({ APP_ENV: "staging", NODE_ENV: "production" })).toBe("staging");
     expect(getAppEnv({ APP_ENV: "bogus", NODE_ENV: "production" })).toBe("production");
-  });
-  it("blocks a database that does not belong to the environment", () => {
-    expect(supabaseMatchesEnvironment({ APP_ENV: "staging", NEXT_PUBLIC_SUPABASE_URL: "https://prodref.supabase.co" })).toBe(false);
-    expect(supabaseMatchesEnvironment({ APP_ENV: "staging", EXPECTED_SUPABASE_REF: "stgref", NEXT_PUBLIC_SUPABASE_URL: "https://prodref.supabase.co" })).toBe(false);
-    expect(supabaseMatchesEnvironment({ APP_ENV: "staging", EXPECTED_SUPABASE_REF: "stgref", NEXT_PUBLIC_SUPABASE_URL: "https://stgref.supabase.co" })).toBe(true);
-    expect(supabaseMatchesEnvironment({ APP_ENV: "production", NEXT_PUBLIC_SUPABASE_URL: "https://prodref.supabase.co" })).toBe(true);
   });
 });

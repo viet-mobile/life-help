@@ -21,14 +21,3 @@ export const isProduction = (env: AppEnv = getAppEnv()) => env === "production";
 
 /** Staging and local must never be indexed or treated as canonical. */
 export const allowsIndexing = (env: AppEnv = getAppEnv()) => env === "production";
-
-/**
- * Fail-closed guard against wiring the wrong database into an environment.
- * If EXPECTED_SUPABASE_REF is set (the project ref for this environment),
- * accounts are only enabled when NEXT_PUBLIC_SUPABASE_URL contains that ref.
- */
-export function supabaseMatchesEnvironment(source: Record<string, string | undefined> = process.env): boolean {
-  const expected = source.EXPECTED_SUPABASE_REF;
-  if (!expected) return getAppEnv(source) !== "staging"; // staging must declare its ref
-  return (source.NEXT_PUBLIC_SUPABASE_URL ?? "").includes(expected);
-}
