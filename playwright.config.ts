@@ -1,0 +1,36 @@
+import { defineConfig, devices } from "@playwright/test";
+
+const PORT = 3100;
+
+// Serves the PRODUCTION build (`npm run build:next` first). `*.localhost` resolves to
+// loopback in Chromium, so subdomain routing (math.localhost / english.localhost) is
+// exercised exactly like math.life.help / english.life.help.
+export default defineConfig({
+  testDir: "tests/e2e",
+  timeout: 60_000,
+  retries: 0,
+  workers: 1,
+  reporter: "list",
+  use: {
+    trace: "off",
+    launchOptions: process.env.PW_CHROMIUM_PATH ? { executablePath: process.env.PW_CHROMIUM_PATH } : {},
+  },
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  webServer: {
+    command: `npx next start -p ${PORT}`,
+    port: PORT,
+    reuseExistingServer: false,
+    // PRODUCTION mode: APP_ENV is deliberately empty (-> production), so path-based /study access and the learning API on non-learning
+    // hosts are 404 exactly as on the live site. NO learning credentials are set (guest-only release). The decoy GENERIC marketplace
+    // credentials point at a project that does not exist: the learning platform must ignore them (accounts stay off).
+    env: {
+      APP_ENV: "",
+      SUPABASE_URL: "https://decoygenericref01.supabase.co",
+      SUPABASE_SERVICE_ROLE_KEY: "decoy-generic-service-role-key-not-real",
+      SUPABASE_SECRET_KEY: "sb_secret_decoy_generic_not_real_0123456789",
+      SUPABASE_PUBLISHABLE_KEY: "sb_publishable_decoy_generic_not_real",
+      EXPECTED_SUPABASE_REF: "decoygenericref01",
+    },
+    timeout: 120_000,
+  },
+});

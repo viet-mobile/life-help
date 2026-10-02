@@ -12,18 +12,28 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:learn": "vitest run",
+    "test:learn:db": "node scripts/test_learning_migration_db.mjs",
+    "test:learn:bundle": "node scripts/test_learning_bundle_secrets.mjs",
+    "test:learn:routes": "node scripts/release/test_baseline_routes.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.116.0",
+    "katex": "^0.18.10",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@opennextjs/cloudflare": "^1.20.6",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
+    "@types/katex": "^0.16.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -34,6 +44,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vitest": "^3.2.7",
     "wrangler": "^4.131.1"
   }
 }
