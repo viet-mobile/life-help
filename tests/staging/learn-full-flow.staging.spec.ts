@@ -1,7 +1,5 @@
-import fs from "node:fs";
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
-import mathDemo from "../../lib/learn/content/demo/math.json";
-import englishDemo from "../../lib/learn/content/demo/english.json";
+import { REF, SUPABASE, diagnostic, guestSnapshot, lesson, onboard, snapshot, svcHeaders, url, type Site, type Snapshot } from "./helpers";
 
 /**
  * Real-browser, full learning flow on the STAGING Worker (workers.dev, path mode /study/<site>). Staging only:
@@ -15,126 +13,8 @@ import englishDemo from "../../lib/learn/content/demo/english.json";
  *
  * Run: npx playwright test -c playwright.staging.config.ts tests/staging/learn-full-flow.staging.spec.ts
  * Needs .env.staging.local (TEST_SUPABASE_URL, TEST_SUPABASE_SERVICE_ROLE_KEY) for fixture cleanup only. Never prints keys.
+ * The host / project pin and the shared flow helpers live in ./helpers (also used by learn-security.staging.spec.ts).
  */
-const BASE = "https://life-help-staging.simpl2eye.workers.dev";
-const REF = "wreebowcbiymodswajwe";
-const DEMO = { math: mathDemo, english: englishDemo } as const;
-type Site = "math" | "english";
-type Q = {
-  id: string;
-  type: string;
-  options?: { id: string; text: string }[];
-  answer: { kind: string; id?: string; value?: number; accepted?: string[]; ids?: string[] };
-};
-
-const env = Object.fromEntries(
-  fs.readFileSync(".env.staging.local", "utf8").split(/\r?\n/).map((l) => l.match(/^\s*([A-Za-z0-9_]+)\s*=\s*(.*)$/)).filter((m): m is RegExpMatchArray => !!m).map((m) => [m[1], m[2].trim()]),
-);
-const SUPABASE = (env.TEST_SUPABASE_URL ?? "").replace(/\/$/, "");
-const SERVICE = env.TEST_SUPABASE_SERVICE_ROLE_KEY ?? "";
-if (new URL(BASE).host !== "life-help-staging.simpl2eye.workers.dev" || !SUPABASE.includes(REF) || !SERVICE) throw new Error("staging pin failed");
-const svcHeaders = (): Record<string, string> => ({ apikey: SERVICE, ...(SERVICE.startsWith("sb_") ? {} : { Authorization: `Bearer ${SERVICE}` }), "Content-Type": "application/json" });
-
-const url = (site: Site, p = "") => `${BASE}/study/${site}${p}`;
-const isApi = (name: string) => (r: { url(): string }) => r.url().endsWith(`/api/learn/${name}`);
-const NEXT_OR_RESULT = /다음 문제|결과 보기/;
-
-async function answer(page: Page, q: Q) {
-  const k = q.answer;
-  if (q.type === "multiple_choice" || q.type === "true_false") {
-    const idx = q.type === "true_false" ? (k.id === "true" ? 0 : 1) : q.options!.findIndex((o) => o.id === k.id);
-    await page.getByRole("radio").nth(idx).click();
-  } else if (q.type === "numeric") await page.locator(`#ans-${q.id}`).fill(String(k.value));
-  else if (q.type === "short_answer" || q.type === "fill_blank") await page.locator(`#ans-${q.id}`).fill(k.accepted![0]);
-  else if (q.type === "ordering") for (const id of k.ids!) await page.locator(".l-tokens").getByRole("button", { name: q.options!.find((o) => o.id === id)!.text, exact: true }).click();
-  await page.getByRole("button", { name: /^(확인|다시 풀어 보기)$/ }).click();
-}
-
-async function onboard(page: Page, site: Site) {
-  await page.goto(url(site, "/onboarding"));
-  await page.locator("#nick").fill("테스터");
-  await page.getByRole("button", { name: "다음" }).click();
-  await page.getByRole("radio", { name: "중1" }).click();
-  await page.getByRole("button", { name: "다음" }).click();
-  await page.getByRole("radio", { name: "부족한 부분 채우기" }).click();
-  await page.getByRole("button", { name: "다음" }).click();
-  await page.getByRole("radio", { name: "로봇" }).click();
-  await page.getByRole("button", { name: "진단 퀘스트로 출발!" }).click();
-  await expect(page.getByRole("heading", { name: /2분 실력 탐색/ })).toBeVisible();
-}
-
-/** Adaptive diagnostic: every question answered correctly, found by id in the bundled demo content. */
-async function diagnostic(page: Page, site: Site) {
-  const demo = DEMO[site].questions as unknown as Q[];
-  const first = page.waitForResponse(isApi("diagnostic"));
-  await page.getByRole("button", { name: "탐색 시작" }).click();
-  let nextId: string | null = (await (await first).json()).next.id;
-  for (let n = 0; n < 6; n++) {
-    await expect(page.getByText(new RegExp(`${n + 1} / 6`))).toBeVisible();
-    const q = demo.find((x) => x.id === nextId)!;
-    expect(q, `question ${nextId}`).toBeTruthy();
-    const resp = page.waitForResponse(isApi("diagnostic"));
-    await answer(page, q);
-    nextId = (await (await resp).json()).next?.id ?? null;
-    await page.getByRole("button", { name: NEXT_OR_RESULT }).click();
-  }
-  await expect(page.getByRole("heading", { name: /나의 스킬 지도/ })).toBeVisible();
-  await expect(page.getByText(/탐색 완료 보너스 \+30 XP/)).toBeVisible();
-  await page.getByRole("link", { name: /첫 퀘스트 시작/ }).click();
-  await expect(page).toHaveURL(url(site, "/dashboard"));
-}
-
-/** Dashboard CTA -> lesson: first answer wrong (hint appears), then everything correct; returns the XP the result screen showed. */
-async function lesson(page: Page, site: Site) {
-  const demo = DEMO[site].questions as unknown as Q[];
-  await page.getByRole("link", { name: /^▶ 계속 학습하기/ }).click();
-  await expect(page).toHaveURL(new RegExp(`/study/${site}/lesson/`));
-  const startResp = page.waitForResponse(isApi("start"));
-  await page.getByRole("button", { name: "문제 풀러 가기" }).click();
-  const startBody = await (await startResp).json();
-  expect(JSON.stringify(startBody)).not.toMatch(/"answer"|"explanation"|"hints"/); // no answer leakage
-  const queue: string[] = startBody.questions.map((x: { id: string }) => x.id);
-  await expect(page.getByText(/문제 1 \//)).toBeVisible();
-  const firstQ = demo.find((x) => x.id === queue[0])!;
-  if (firstQ.type === "numeric" || firstQ.type === "short_answer" || firstQ.type === "fill_blank") await page.locator(`#ans-${firstQ.id}`).fill("999");
-  else if (firstQ.type === "ordering") await page.locator(".l-tokens").getByRole("button").first().click();
-  else await page.getByRole("radio").nth(firstQ.options ? firstQ.options.findIndex((o) => o.id !== firstQ.answer.id) : 1).click();
-  await page.getByRole("button", { name: /^(확인|다시 풀어 보기)$/ }).click();
-  await expect(page.getByText("아직이에요, 힌트를 볼게요.")).toBeVisible(); // wrong answer -> first hint
-  await expect(page.locator(".l-panel-hint")).toBeVisible();
-  for (const [n, id] of queue.entries()) {
-    const q = demo.find((x) => x.id === id)!;
-    if (n > 0) await expect(page.getByText(new RegExp(`문제 ${n + 1} /|도전 문제`))).toBeVisible();
-    if (n === 0 && q.type === "ordering") await page.getByRole("button", { name: /다시|지우기|초기화/ }).first().click().catch(() => undefined);
-    await answer(page, q);
-    await expect(page.getByText(/정답이에요!|끝까지 해냈어요!/)).toBeVisible();
-    await page.getByRole("button", { name: /^(다음|퀘스트 마무리)$/ }).click();
-  }
-  await expect(page.getByRole("heading", { name: "레슨 클리어!" })).toBeVisible();
-  return Number((await page.getByText(/^\+\d+ XP$/).innerText()).replace(/\D/g, ""));
-}
-
-type Snapshot = { totalXp: number; mastery: number; lessons: number; profile: string | null };
-const summarize = (state: { totalXp: number; mastery?: object; lessons?: object; profile?: { nickname?: string } | null }): Snapshot => ({
-  totalXp: state.totalXp, mastery: Object.keys(state.mastery ?? {}).length, lessons: Object.keys(state.lessons ?? {}).length, profile: state.profile?.nickname ?? null,
-});
-/** Account: the learner state the server returns for this browser session (same-origin API call; no secrets). */
-async function snapshot(page: Page, site: Site): Promise<Snapshot> {
-  const state = await page.evaluate(async (s) => {
-    const r = await fetch(`/api/learn/state`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ site: s }) });
-    return (await r.json()).state;
-  }, site);
-  return summarize(state);
-}
-/** Guest: progress lives in this browser's localStorage (the server only echoes the state the client sends). */
-async function guestSnapshot(page: Page, site: Site): Promise<Snapshot> {
-  const state = await page.evaluate((s) => {
-    const key = Object.keys(window.localStorage).find((k) => k.endsWith(`:${s}`));
-    return key ? JSON.parse(window.localStorage.getItem(key)!) : null;
-  }, site);
-  expect(state, "guest state is stored in this browser").toBeTruthy();
-  return summarize(state);
-}
 
 test.describe("guest (no account)", () => {
   for (const site of ["math", "english"] as const) {
