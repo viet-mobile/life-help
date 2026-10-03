@@ -4,6 +4,8 @@ import { createLearnSessionClient } from "./supabase/session";
 import { LearnService, type Actor } from "./service";
 import { SupabaseLearnStore } from "./supabaseStore";
 import type { Site } from "@/lib/learn/types";
+import { getLocale } from "@/lib/learn/i18n/server";
+import type { LearnLocale } from "@/lib/learn/i18n";
 import { loadIndex, setContentRepository } from "@/lib/learn/content/repository";
 import { SupabaseContentRepository } from "@/lib/learn/content/supabaseContent";
 
@@ -21,9 +23,9 @@ function ensureContentSource() {
 }
 
 /** Server pages load curriculum through this so the configured content source is always applied. */
-export async function loadContent(site: Site) {
+export async function loadContent(site: Site, locale?: LearnLocale) {
   ensureContentSource();
-  return loadIndex(site);
+  return loadIndex(site, { locale });
 }
 
 /**
@@ -66,5 +68,5 @@ export async function getUserId(): Promise<string | null> {
 
 export async function resolveActor(guestState?: unknown): Promise<Actor> {
   const userId = await getUserId();
-  return { userId, guestState: userId ? undefined : guestState };
+  return { userId, guestState: userId ? undefined : guestState, locale: await getLocale() };
 }

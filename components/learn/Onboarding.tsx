@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
-import { GOALS, GRADES, type Goal, type Grade } from "@/lib/learn/types";
+import { ELEMENTARY_GRADES, GOALS, SECONDARY_GRADES, type Goal, type Grade } from "@/lib/learn/types";
+import { LocaleSwitch } from "./LocaleSwitch";
 import { ApiError, useLearner } from "./LearnerProvider";
 
 const TOTAL = 4;
@@ -59,6 +60,7 @@ export function Onboarding() {
 
   return (
     <div className="l-wrap l-stack">
+      <LocaleSwitch compact />
       <p className="l-muted" aria-live="polite">{t("onboarding.step", { n: step, total: TOTAL })}</p>
       <div className="l-bar" role="progressbar" aria-valuemin={1} aria-valuemax={TOTAL} aria-valuenow={step} aria-label={t("onboarding.step", { n: step, total: TOTAL })}>
         <span style={{ width: `${(step / TOTAL) * 100}%` }} />
@@ -75,13 +77,18 @@ export function Onboarding() {
       {step === 2 && (
         <section className="l-stack">
           <h1 className="l-h1">{t("onboarding.grade.title")}</h1>
-          <div role="radiogroup" aria-label={t("onboarding.grade.title")} className="l-options" style={{ gridTemplateColumns: "1fr 1fr" }}>
-            {GRADES.map((g) => (
-              <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} className="l-option" onClick={() => setGrade(g)}>
-                {t(`grade.${g}` as never)}
-              </button>
-            ))}
-          </div>
+          {([["elementary", ELEMENTARY_GRADES], ["secondary", SECONDARY_GRADES]] as const).map(([level, list]) => (
+            <div key={level} role="radiogroup" aria-label={t(`grade.group.${level}` as never)} className="l-stack">
+              <p className="l-muted" style={{ fontWeight: 800 }}>{t(`grade.group.${level}` as never)}</p>
+              <div className="l-options l-grades">
+                {list.map((g) => (
+                  <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} data-grade={g} className="l-option l-grade" onClick={() => setGrade(g)}>
+                    {t(`grade.${g}` as never)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
       )}
 

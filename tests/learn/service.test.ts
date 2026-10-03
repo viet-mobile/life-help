@@ -83,9 +83,9 @@ describe("hint ladder", () => {
   });
 
   it("serves voluntary hints only up to what exists", async () => {
-    expect((await svc.requestHint("math", { questionId: "m-expr-1", level: 1 })).hint).toContain("$x$");
-    await expect(svc.requestHint("math", { questionId: "m-expr-1", level: 3 })).rejects.toMatchObject({ code: "no_more_hints" });
-    await expect(svc.requestHint("math", { questionId: "nope", level: 1 })).rejects.toBeInstanceOf(LearnError);
+    expect((await svc.requestHint(A, "math", { questionId: "m-expr-1", level: 1 })).hint).toContain("$x$");
+    await expect(svc.requestHint(A, "math", { questionId: "m-expr-1", level: 3 })).rejects.toMatchObject({ code: "no_more_hints" });
+    await expect(svc.requestHint(A, "math", { questionId: "nope", level: 1 })).rejects.toBeInstanceOf(LearnError);
   });
 
   it("does not let a client fake its attempt number (server counts recorded attempts)", async () => {

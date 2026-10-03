@@ -6,10 +6,22 @@ export function isSite(value: unknown): value is Site {
   return typeof value === "string" && (SITES as readonly string[]).includes(value);
 }
 
-export const GRADES = ["M1", "M2", "M3", "H1", "H2", "H3"] as const;
+/**
+ * ONE canonical grade model for every subject, route, profile and curriculum.
+ *   E1..E6  elementary (초1-6)      M1..M3  middle (중1-3)      H1..H3  high (고1-3)
+ * The identifiers are locale-independent and additive: M1..H3 are unchanged, so stored middle / high profiles keep their meaning.
+ */
+export const ELEMENTARY_GRADES = ["E1", "E2", "E3", "E4", "E5", "E6"] as const;
+export const SECONDARY_GRADES = ["M1", "M2", "M3", "H1", "H2", "H3"] as const;
+export const GRADES = [...ELEMENTARY_GRADES, ...SECONDARY_GRADES] as const;
 export type Grade = (typeof GRADES)[number];
 export function isGrade(value: unknown): value is Grade {
   return typeof value === "string" && (GRADES as readonly string[]).includes(value);
+}
+export type SchoolLevel = "elementary" | "secondary";
+/** Elementary students learn their own grade's course; middle / high students share the secondary courses (unchanged behaviour). */
+export function schoolLevel(grade: Grade): SchoolLevel {
+  return grade.startsWith("E") ? "elementary" : "secondary";
 }
 
 export const GOALS = ["school_exam", "fill_gaps", "advance", "habit"] as const;

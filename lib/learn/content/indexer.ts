@@ -1,12 +1,4 @@
-import type {
-  ContentBundle,
-  MetaBundle,
-  QuestionMeta,
-  Course,
-  Lesson,
-  Skill,
-  Unit,
-} from "@/lib/learn/types";
+import { schoolLevel, type ContentBundle, type Grade, type MetaBundle, type QuestionMeta, type Course, type Lesson, type Skill, type Unit } from "@/lib/learn/types";
 
 export interface ContentIndex {
   bundle: MetaBundle;
@@ -59,5 +51,31 @@ export function toMetaBundle(bundle: ContentBundle): MetaBundle {
       expectedSeconds: q.expectedSeconds,
       status: q.status,
     })),
+  };
+}
+
+/**
+ * The slice of a bundle one student works in. Pure and shared by the server and the browser, so the learning path, the placement
+ * pool, the skills map, the quests and the achievements are all computed over the SAME grade-scoped content:
+ *   elementary grade  -> only the course whose grade equals the student's grade
+ *   middle / high     -> every secondary (M1..H3) course, exactly as before elementary grades existed
+ * Skills are those the in-scope lessons teach (plus their prerequisite chain); questions are those that practise those skills.
+ */
+export function scopeToGrade<T extends { catalog: MetaBundle["catalog"]; questions: Array<{ skillId: string }> }>(bundle: T, grade: Grade): T {
+  const level = schoolLevel(grade);
+  const courses = bundle.catalog.courses.filter((c) => (level === "elementary" ? c.grade === grade : schoolLevel(c.grade) === "secondary"));
+  const byId = new Map(bundle.catalog.skills.map((s) => [s.id, s]));
+  const wanted = new Set<string>();
+  const add = (id: string | undefined) => {
+    while (id && !wanted.has(id) && byId.has(id)) {
+      wanted.add(id);
+      id = byId.get(id)!.prerequisiteId;
+    }
+  };
+  for (const course of courses) for (const unit of course.units) for (const lesson of unit.lessons) lesson.skillIds.forEach(add);
+  return {
+    ...bundle,
+    catalog: { ...bundle.catalog, courses, skills: bundle.catalog.skills.filter((s) => wanted.has(s.id)) },
+    questions: bundle.questions.filter((q) => wanted.has(q.skillId)),
   };
 }

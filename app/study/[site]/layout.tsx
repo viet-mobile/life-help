@@ -5,12 +5,13 @@ import type { ReactNode } from "react";
 import "katex/dist/katex.min.css";
 import "../study.css";
 import { SiteProvider } from "@/components/learn/LearnerProvider";
-import { t } from "@/lib/learn/i18n";
+import { getLocale, getServerT } from "@/lib/learn/i18n/server";
 import { isSite } from "@/lib/learn/types";
 
 export async function generateMetadata({ params }: { params: Promise<{ site: string }> }): Promise<Metadata> {
   const { site } = await params;
   if (!isSite(site)) return {};
+  const { t, locale } = await getServerT(); // title / description / social preview in the learner's language
   const name = t(site === "math" ? "brand.math" : "brand.english");
   // Absolute URL for social previews (relative og:image would be resolved against a default origin).
   const h = await headers();
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
       shortcut: [`/logos/favicon-${site}.png`],
       apple: [{ url: `/logos/apple-touch-icon-${site}.png`, sizes: "180x180", type: "image/png" }],
     },
-    openGraph: { title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), locale: "ko_KR", type: "website", siteName: name, images: [{ url: logo, width: 512, height: 512, alt: name }] },
+    openGraph: { title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), locale: locale === "vi" ? "vi_VN" : "ko_KR", type: "website", siteName: name, images: [{ url: logo, width: 512, height: 512, alt: name }] },
     twitter: { card: "summary", title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), images: [logo] },
   };
 }
@@ -44,9 +45,10 @@ export default async function StudyLayout({ children, params }: { children: Reac
   if (!isSite(site)) notFound();
   const h = await headers();
   const base = h.get("x-learn-base") ?? `/study/${site}`;
+  const locale = await getLocale();
   return (
-    <div className="study-root" data-site={site} lang="ko">
-      <SiteProvider site={site} base={base}>
+    <div className="study-root" data-site={site} lang={locale}>
+      <SiteProvider site={site} base={base} locale={locale}>
         {children}
       </SiteProvider>
     </div>

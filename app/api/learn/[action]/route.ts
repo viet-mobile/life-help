@@ -49,7 +49,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
       }
       case "hint":
         return jsonResponse(
-          await svc.requestHint(site, {
+          await svc.requestHint(actor, site, {
             questionId: String(body.questionId ?? ""),
             level: Number(body.level),
           }),

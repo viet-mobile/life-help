@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { demoContentRepository } from "@/lib/learn/content/repository";
-import { indexContent, toMetaBundle, type ContentIndex } from "@/lib/learn/content/indexer";
+import { indexContent, scopeToGrade, toMetaBundle, type ContentIndex } from "@/lib/learn/content/indexer";
 import {
   applyAttempt,
   applyDiagnosticResult,
@@ -14,7 +14,8 @@ import { levelForXp } from "@/lib/learn/domain/level";
 import type { PlayerState } from "@/lib/learn/types";
 
 async function setup(site: "math" | "english" = "math") {
-  const bundle = await demoContentRepository.getBundle(site);
+  // A middle / high student: the secondary slice of the bundle, exactly the curriculum these engine tests were written for.
+  const bundle = scopeToGrade(await demoContentRepository.getBundle(site), "M1");
   return { bundle, index: indexContent(toMetaBundle(bundle)) };
 }
 const T0 = new Date("2026-03-01T03:00:00Z"); // 12:00 KST
