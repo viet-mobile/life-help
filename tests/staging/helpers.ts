@@ -2,6 +2,10 @@ import fs from "node:fs";
 import { expect, type Page } from "@playwright/test";
 import mathDemo from "../../lib/learn/content/demo/math.json";
 import englishDemo from "../../lib/learn/content/demo/english.json";
+import mathElementary from "../../lib/learn/content/elementary/math.json";
+import englishElementary from "../../lib/learn/content/elementary/english.json";
+import { ko } from "../../lib/learn/i18n/ko";
+import { vi } from "../../lib/learn/i18n/vi";
 
 /**
  * Shared pieces of the STAGING-only real-browser suites (tests/staging/*.staging.spec.ts).
@@ -11,7 +15,15 @@ import englishDemo from "../../lib/learn/content/demo/english.json";
 export const BASE = "https://life-help-staging.simpl2eye.workers.dev";
 export const REF = "wreebowcbiymodswajwe";
 export const PRODUCTION_REF = "wstdbymmkrqgtsibhcjz";
-export const DEMO = { math: mathDemo, english: englishDemo } as const;
+/** Every question the learning sites can serve (elementary + middle / high) with its canonical answer key: the data the server judges against. */
+export const DEMO = {
+  math: { questions: [...mathElementary.questions, ...mathDemo.questions] },
+  english: { questions: [...englishElementary.questions, ...englishDemo.questions] },
+} as const;
+export type Locale = "ko" | "vi";
+export type Grade = "E1" | "E2" | "E3" | "E4" | "E5" | "E6" | "M1" | "M2" | "M3" | "H1" | "H2" | "H3";
+export type Opts = { locale?: Locale; grade?: Grade };
+export const dict = (locale: Locale) => (locale === "vi" ? vi : ko);
 export type Site = "math" | "english";
 export type Q = {
   id: string;
@@ -38,7 +50,6 @@ if (
 export const svcHeaders = (): Record<string, string> => ({ apikey: SERVICE, ...(SERVICE.startsWith("sb_") ? {} : { Authorization: `Bearer ${SERVICE}` }), "Content-Type": "application/json" });
 export const url = (site: Site, p = "") => `${BASE}/study/${site}${p}`;
 export const isApi = (name: string) => (r: { url(): string }) => r.url().endsWith(`/api/learn/${name}`);
-const NEXT_OR_RESULT = /다음 문제|결과 보기/;
 
 /** Called at every distinct screen so a suite can audit it (overflow, console, ...). */
 export type ScreenHook = (label: string) => Promise<void>;
@@ -51,95 +62,6 @@ export function correctPayload(q: Q): string | string[] {
   if (q.type === "short_answer" || q.type === "fill_blank") return k.accepted![0];
   if (q.type === "ordering") return k.ids!;
   throw new Error(`unsupported question type ${q.type}`);
-}
-
-export async function answer(page: Page, q: Q) {
-  const k = q.answer;
-  if (q.type === "multiple_choice" || q.type === "true_false") {
-    const idx = q.type === "true_false" ? (k.id === "true" ? 0 : 1) : q.options!.findIndex((o) => o.id === k.id);
-    await page.getByRole("radio").nth(idx).click();
-  } else if (q.type === "numeric") await page.locator(`#ans-${q.id}`).fill(String(k.value));
-  else if (q.type === "short_answer" || q.type === "fill_blank") await page.locator(`#ans-${q.id}`).fill(k.accepted![0]);
-  else if (q.type === "ordering") for (const id of k.ids!) await page.locator(".l-tokens").getByRole("button", { name: q.options!.find((o) => o.id === id)!.text, exact: true }).click();
-  await page.getByRole("button", { name: /^(확인|다시 풀어 보기)$/ }).click();
-}
-
-export async function onboard(page: Page, site: Site, hook?: ScreenHook) {
-  await page.goto(url(site, "/onboarding"));
-  await hook?.("onboarding 1/4");
-  await page.locator("#nick").fill("테스터");
-  await page.getByRole("button", { name: "다음" }).click();
-  await hook?.("onboarding 2/4");
-  await page.getByRole("radio", { name: "중1" }).click();
-  await page.getByRole("button", { name: "다음" }).click();
-  await hook?.("onboarding 3/4");
-  await page.getByRole("radio", { name: "부족한 부분 채우기" }).click();
-  await page.getByRole("button", { name: "다음" }).click();
-  await hook?.("onboarding 4/4");
-  await page.getByRole("radio", { name: "로봇" }).click();
-  await page.getByRole("button", { name: "진단 퀘스트로 출발!" }).click();
-  await expect(page.getByRole("heading", { name: /2분 실력 탐색/ })).toBeVisible();
-  await hook?.("diagnostic intro");
-}
-
-/** Adaptive diagnostic: every question answered correctly, found by id in the bundled demo content. */
-export async function diagnostic(page: Page, site: Site, hook?: ScreenHook) {
-  const demo = DEMO[site].questions as unknown as Q[];
-  const first = page.waitForResponse(isApi("diagnostic"));
-  await page.getByRole("button", { name: "탐색 시작" }).click();
-  let nextId: string | null = (await (await first).json()).next.id;
-  for (let n = 0; n < 6; n++) {
-    await expect(page.getByText(new RegExp(`${n + 1} / 6`))).toBeVisible();
-    const q = demo.find((x) => x.id === nextId)!;
-    expect(q, `question ${nextId}`).toBeTruthy();
-    if (n === 0 || n === 3) await hook?.(`diagnostic question ${n + 1} (${q.type})`);
-    const resp = page.waitForResponse(isApi("diagnostic"));
-    await answer(page, q);
-    nextId = (await (await resp).json()).next?.id ?? null;
-    if (n === 0) await hook?.("diagnostic feedback");
-    await page.getByRole("button", { name: NEXT_OR_RESULT }).click();
-  }
-  await expect(page.getByRole("heading", { name: /나의 스킬 지도/ })).toBeVisible();
-  await expect(page.getByText(/탐색 완료 보너스 \+30 XP/)).toBeVisible();
-  await hook?.("diagnostic result");
-  await page.getByRole("link", { name: /첫 퀘스트 시작/ }).click();
-  await expect(page).toHaveURL(url(site, "/dashboard"));
-  await hook?.("dashboard");
-}
-
-/** Dashboard CTA -> lesson: first answer wrong (hint appears), then everything correct; returns the XP the result screen showed. */
-export async function lesson(page: Page, site: Site, hook?: ScreenHook) {
-  const demo = DEMO[site].questions as unknown as Q[];
-  await page.getByRole("link", { name: /^▶ 계속 학습하기/ }).click();
-  await expect(page).toHaveURL(new RegExp(`/study/${site}/lesson/`));
-  await hook?.("lesson intro");
-  const startResp = page.waitForResponse(isApi("start"));
-  await page.getByRole("button", { name: "문제 풀러 가기" }).click();
-  const startBody = await (await startResp).json();
-  expect(JSON.stringify(startBody)).not.toMatch(/"answer"|"explanation"|"hints"/); // no answer leakage
-  const queue: string[] = startBody.questions.map((x: { id: string }) => x.id);
-  await expect(page.getByText(/문제 1 \//)).toBeVisible();
-  await hook?.("lesson question 1");
-  const firstQ = demo.find((x) => x.id === queue[0])!;
-  if (firstQ.type === "numeric" || firstQ.type === "short_answer" || firstQ.type === "fill_blank") await page.locator(`#ans-${firstQ.id}`).fill("999");
-  else if (firstQ.type === "ordering") await page.locator(".l-tokens").getByRole("button").first().click();
-  else await page.getByRole("radio").nth(firstQ.options ? firstQ.options.findIndex((o) => o.id !== firstQ.answer.id) : 1).click();
-  await page.getByRole("button", { name: /^(확인|다시 풀어 보기)$/ }).click();
-  await expect(page.getByText("아직이에요, 힌트를 볼게요.")).toBeVisible(); // wrong answer -> first hint
-  await expect(page.locator(".l-panel-hint")).toBeVisible();
-  await hook?.("lesson wrong answer + hint");
-  for (const [n, id] of queue.entries()) {
-    const q = demo.find((x) => x.id === id)!;
-    if (n > 0) await expect(page.getByText(new RegExp(`문제 ${n + 1} /|도전 문제`))).toBeVisible();
-    if (n === 0 && q.type === "ordering") await page.getByRole("button", { name: /다시|지우기|초기화/ }).first().click().catch(() => undefined);
-    await answer(page, q);
-    await expect(page.getByText(/정답이에요!|끝까지 해냈어요!/)).toBeVisible();
-    if (n === 0) await hook?.("lesson correct feedback");
-    await page.getByRole("button", { name: /^(다음|퀘스트 마무리)$/ }).click();
-  }
-  await expect(page.getByRole("heading", { name: "레슨 클리어!" })).toBeVisible();
-  await hook?.("lesson result");
-  return Number((await page.getByText(/^\+\d+ XP$/).innerText()).replace(/\D/g, ""));
 }
 
 export type Snapshot = { totalXp: number; mastery: number; lessons: number; profile: string | null };

@@ -1,5 +1,6 @@
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
-import { REF, SUPABASE, diagnostic, guestSnapshot, lesson, onboard, snapshot, svcHeaders, url, type Site, type Snapshot } from "./helpers";
+import { REF, SUPABASE, guestSnapshot, snapshot, svcHeaders, url, type Site, type Snapshot } from "./helpers";
+import { diagnostic, lesson, onboard } from "./flow";
 
 /**
  * Real-browser, full learning flow on the STAGING Worker (workers.dev, path mode /study/<site>). Staging only:

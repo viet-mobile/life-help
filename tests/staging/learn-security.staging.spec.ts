@@ -1,9 +1,10 @@
 import fs from "node:fs";
 import { expect, request as pwRequest, test, type BrowserContext, type Page } from "@playwright/test";
 import {
-  ANON, BASE, DEMO, PRODUCTION_REF, REF, SERVICE, SUPABASE, authUserId, authUsersWithEmail, correctPayload, deleteFixtureUser, diagnostic,
-  exactCount, guestSnapshot, LEARN_TABLES, lesson, onboard, restRows, snapshot, url, type Q, type ScreenHook, type Site,
+  ANON, BASE, DEMO, PRODUCTION_REF, REF, SERVICE, SUPABASE, authUserId, authUsersWithEmail, correctPayload, deleteFixtureUser,
+  exactCount, guestSnapshot, LEARN_TABLES, restRows, snapshot, url, type Q, type ScreenHook, type Site,
 } from "./helpers";
+import { diagnostic, lesson, onboard } from "./flow";
 
 /**
  * STAGING-ONLY real-browser authority / persistence / responsive suite for the learning platform (the lifecycle itself -
