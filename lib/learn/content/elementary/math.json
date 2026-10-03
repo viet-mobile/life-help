@@ -1,0 +1,6553 @@
+{
+ "catalog": {
+  "site": "math",
+  "country": "KR",
+  "curriculum": "life-help-elementary-math-v1",
+  "skills": [
+   {
+    "id": "m.e1.count",
+    "title": "수 세기"
+   },
+   {
+    "id": "m.e1.addsub",
+    "title": "더하기와 빼기",
+    "prerequisiteId": "m.e1.count"
+   },
+   {
+    "id": "m.e1.cmp",
+    "title": "수의 크기 비교",
+    "prerequisiteId": "m.e1.count"
+   },
+   {
+    "id": "m.e1.shape",
+    "title": "여러 가지 모양",
+    "prerequisiteId": "m.e1.cmp"
+   },
+   {
+    "id": "m.e1.measure",
+    "title": "길이와 시계",
+    "prerequisiteId": "m.e1.shape"
+   },
+   {
+    "id": "m.e2.place",
+    "title": "자릿값"
+   },
+   {
+    "id": "m.e2.addsub",
+    "title": "두 자리 수의 덧셈과 뺄셈",
+    "prerequisiteId": "m.e2.place"
+   },
+   {
+    "id": "m.e2.mul",
+    "title": "곱셈 처음 만나기",
+    "prerequisiteId": "m.e2.addsub"
+   },
+   {
+    "id": "m.e2.time",
+    "title": "길이와 시각",
+    "prerequisiteId": "m.e2.addsub"
+   },
+   {
+    "id": "m.e2.pattern",
+    "title": "규칙 찾기",
+    "prerequisiteId": "m.e2.mul"
+   },
+   {
+    "id": "m.e3.muldiv",
+    "title": "곱셈과 나눗셈"
+   },
+   {
+    "id": "m.e3.frac",
+    "title": "분수 알아보기",
+    "prerequisiteId": "m.e3.muldiv"
+   },
+   {
+    "id": "m.e3.unit",
+    "title": "길이·들이·무게",
+    "prerequisiteId": "m.e3.muldiv"
+   },
+   {
+    "id": "m.e3.geo",
+    "title": "원과 각",
+    "prerequisiteId": "m.e3.frac"
+   },
+   {
+    "id": "m.e3.data",
+    "title": "표와 그래프",
+    "prerequisiteId": "m.e3.unit"
+   },
+   {
+    "id": "m.e4.big",
+    "title": "큰 수"
+   },
+   {
+    "id": "m.e4.muldiv",
+    "title": "큰 수의 곱셈과 나눗셈",
+    "prerequisiteId": "m.e4.big"
+   },
+   {
+    "id": "m.e4.frac",
+    "title": "분수와 소수의 덧셈·뺄셈",
+    "prerequisiteId": "m.e4.muldiv"
+   },
+   {
+    "id": "m.e4.angle",
+    "title": "각도와 도형",
+    "prerequisiteId": "m.e4.big"
+   },
+   {
+    "id": "m.e4.data",
+    "title": "막대그래프와 평균",
+    "prerequisiteId": "m.e4.frac"
+   },
+   {
+    "id": "m.e5.frac",
+    "title": "분모가 다른 분수의 덧셈·뺄셈"
+   },
+   {
+    "id": "m.e5.dec",
+    "title": "소수의 곱셈",
+    "prerequisiteId": "m.e5.frac"
+   },
+   {
+    "id": "m.e5.factor",
+    "title": "약수와 배수",
+    "prerequisiteId": "m.e5.frac"
+   },
+   {
+    "id": "m.e5.area",
+    "title": "넓이와 부피",
+    "prerequisiteId": "m.e5.dec"
+   },
+   {
+    "id": "m.e5.ratio",
+    "title": "비와 비율",
+    "prerequisiteId": "m.e5.dec"
+   },
+   {
+    "id": "m.e6.frac",
+    "title": "분수·소수의 곱셈과 나눗셈"
+   },
+   {
+    "id": "m.e6.ratio",
+    "title": "비례식과 비례배분",
+    "prerequisiteId": "m.e6.frac"
+   },
+   {
+    "id": "m.e6.pct",
+    "title": "백분율",
+    "prerequisiteId": "m.e6.ratio"
+   },
+   {
+    "id": "m.e6.geo",
+    "title": "원과 입체도형",
+    "prerequisiteId": "m.e6.frac"
+   },
+   {
+    "id": "m.e6.stat",
+    "title": "평균과 자료 정리",
+    "prerequisiteId": "m.e6.pct"
+   }
+  ],
+  "courses": [
+   {
+    "id": "math-e1",
+    "title": "초1 수학 · 수와 모양",
+    "grade": "E1",
+    "world": {
+     "name": "Number Meadow",
+     "emoji": "🌼",
+     "tagline": "수와 모양과 친구가 되어요"
+    },
+    "units": [
+     {
+      "id": "math-e1-u1",
+      "title": "수와 연산, 모양",
+      "lessons": [
+       {
+        "id": "math-e1-l1",
+        "title": "수 세기",
+        "skillIds": [
+         "m.e1.count"
+        ],
+        "concept": "물건을 하나씩 짚으며 세면 몇 개인지 알 수 있어요. 10이 넘으면 5개나 10개씩 묶어서 세면 쉬워요.",
+        "example": "🍎🍎🍎🍎🍎 → 사과는 5개예요.",
+        "questionIds": [
+         "m-e1-count-1",
+         "m-e1-count-2",
+         "m-e1-count-3",
+         "m-e1-count-4"
+        ],
+        "challengeId": "m-e1-count-5"
+       },
+       {
+        "id": "math-e1-l2",
+        "title": "더하기와 빼기",
+        "skillIds": [
+         "m.e1.addsub"
+        ],
+        "concept": "**더하기(+)**는 두 수를 합치는 것이고, **빼기(-)**는 큰 수에서 작은 수만큼 덜어 내는 것이에요.",
+        "example": "$3 + 4 = 7$, $8 - 3 = 5$",
+        "questionIds": [
+         "m-e1-addsub-1",
+         "m-e1-addsub-2",
+         "m-e1-addsub-3",
+         "m-e1-addsub-4"
+        ],
+        "challengeId": "m-e1-addsub-5"
+       },
+       {
+        "id": "math-e1-l3",
+        "title": "수의 크기 비교",
+        "skillIds": [
+         "m.e1.cmp"
+        ],
+        "concept": "두 수 중 더 큰 수는 **>**, 더 작은 수는 **<**로 나타내요. 기호는 큰 수 쪽으로 벌어져요.",
+        "example": "$8 > 5$, $4 < 7$",
+        "questionIds": [
+         "m-e1-cmp-1",
+         "m-e1-cmp-2",
+         "m-e1-cmp-3",
+         "m-e1-cmp-4"
+        ],
+        "challengeId": "m-e1-cmp-5"
+       },
+       {
+        "id": "math-e1-l4",
+        "title": "여러 가지 모양",
+        "skillIds": [
+         "m.e1.shape"
+        ],
+        "concept": "**삼각형**은 변이 3개, **사각형**은 변이 4개예요. **원**은 둥글고 꼭짓점이 없어요.",
+        "example": "삼각형: 변 3개, 꼭짓점 3개",
+        "questionIds": [
+         "m-e1-shape-1",
+         "m-e1-shape-2",
+         "m-e1-shape-3",
+         "m-e1-shape-4"
+        ],
+        "challengeId": "m-e1-shape-5"
+       },
+       {
+        "id": "math-e1-l5",
+        "title": "길이와 시계",
+        "skillIds": [
+         "m.e1.measure"
+        ],
+        "concept": "길이는 **cm**로 재요. 시계의 짧은바늘은 '시', 긴바늘은 '분'을 알려 줘요.",
+        "example": "짧은바늘 4, 긴바늘 12 → 4시",
+        "questionIds": [
+         "m-e1-measure-1",
+         "m-e1-measure-2",
+         "m-e1-measure-3",
+         "m-e1-measure-4"
+        ],
+        "challengeId": "m-e1-measure-5"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-e2",
+    "title": "초2 수학 · 두 자리 수와 곱셈",
+    "grade": "E2",
+    "world": {
+     "name": "Multiply Mountain",
+     "emoji": "⛰️",
+     "tagline": "묶어 세며 산을 올라요"
+    },
+    "units": [
+     {
+      "id": "math-e2-u1",
+      "title": "자릿값, 덧셈 뺄셈, 곱셈 시작",
+      "lessons": [
+       {
+        "id": "math-e2-l1",
+        "title": "자릿값",
+        "skillIds": [
+         "m.e2.place"
+        ],
+        "concept": "두 자리 수에서 왼쪽 숫자는 **십의 자리**, 오른쪽 숫자는 **일의 자리**예요. 10이 10개 모이면 100이에요.",
+        "example": "$47$ = 10이 4개, 1이 7개",
+        "questionIds": [
+         "m-e2-place-1",
+         "m-e2-place-2",
+         "m-e2-place-3",
+         "m-e2-place-4"
+        ],
+        "challengeId": "m-e2-place-5"
+       },
+       {
+        "id": "math-e2-l2",
+        "title": "두 자리 수의 덧셈과 뺄셈",
+        "skillIds": [
+         "m.e2.addsub"
+        ],
+        "concept": "일의 자리끼리, 십의 자리끼리 계산해요. 합이 10이 넘으면 올림하고, 뺄 수 없으면 내림해요.",
+        "example": "$45 + 27 = 72$, $61 - 28 = 33$",
+        "questionIds": [
+         "m-e2-addsub-1",
+         "m-e2-addsub-2",
+         "m-e2-addsub-3",
+         "m-e2-addsub-4"
+        ],
+        "challengeId": "m-e2-addsub-5"
+       },
+       {
+        "id": "math-e2-l3",
+        "title": "곱셈 처음 만나기",
+        "skillIds": [
+         "m.e2.mul"
+        ],
+        "concept": "같은 수를 여러 번 더하는 것을 **곱셈(×)**으로 짧게 쓸 수 있어요.",
+        "example": "$3 + 3 + 3 + 3 = 3 \\times 4 = 12$",
+        "questionIds": [
+         "m-e2-mul-1",
+         "m-e2-mul-2",
+         "m-e2-mul-3",
+         "m-e2-mul-4"
+        ],
+        "challengeId": "m-e2-mul-5"
+       },
+       {
+        "id": "math-e2-l4",
+        "title": "길이와 시각",
+        "skillIds": [
+         "m.e2.time"
+        ],
+        "concept": "**1m = 100cm**예요. 시계에서 긴바늘이 숫자 하나를 지날 때마다 5분이 지나요.",
+        "example": "긴바늘이 6 → 30분",
+        "questionIds": [
+         "m-e2-time-1",
+         "m-e2-time-2",
+         "m-e2-time-3",
+         "m-e2-time-4"
+        ],
+        "challengeId": "m-e2-time-5"
+       },
+       {
+        "id": "math-e2-l5",
+        "title": "규칙 찾기",
+        "skillIds": [
+         "m.e2.pattern"
+        ],
+        "concept": "수가 늘어나거나 줄어드는 **규칙**을 찾으면 다음 수를 알 수 있어요.",
+        "example": "$2, 4, 6, 8, \\square$ → 2씩 커져요, □ = 10",
+        "questionIds": [
+         "m-e2-pattern-1",
+         "m-e2-pattern-2",
+         "m-e2-pattern-3",
+         "m-e2-pattern-4"
+        ],
+        "challengeId": "m-e2-pattern-5"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-e3",
+    "title": "초3 수학 · 곱셈, 나눗셈, 분수",
+    "grade": "E3",
+    "world": {
+     "name": "Fraction Island",
+     "emoji": "🏝️",
+     "tagline": "똑같이 나누어 섬을 탐험해요"
+    },
+    "units": [
+     {
+      "id": "math-e3-u1",
+      "title": "곱셈과 나눗셈, 분수, 측정, 도형, 자료",
+      "lessons": [
+       {
+        "id": "math-e3-l1",
+        "title": "곱셈과 나눗셈",
+        "skillIds": [
+         "m.e3.muldiv"
+        ],
+        "concept": "곱셈은 같은 수를 여러 번 더하는 것이고, **나눗셈**은 똑같이 나누는 것이에요. 곱셈구구를 알면 나눗셈도 쉬워요.",
+        "example": "$6 \\times 7 = 42$, $42 \\div 6 = 7$",
+        "questionIds": [
+         "m-e3-muldiv-1",
+         "m-e3-muldiv-2",
+         "m-e3-muldiv-3",
+         "m-e3-muldiv-4"
+        ],
+        "challengeId": "m-e3-muldiv-5"
+       },
+       {
+        "id": "math-e3-l2",
+        "title": "분수 알아보기",
+        "skillIds": [
+         "m.e3.frac"
+        ],
+        "concept": "전체를 똑같이 나눈 것 중의 일부를 **분수**로 나타내요. 아래 수가 **분모**, 위의 수가 **분자**예요.",
+        "example": "$\\frac{3}{8}$ : 8조각 중 3조각",
+        "questionIds": [
+         "m-e3-frac-1",
+         "m-e3-frac-2",
+         "m-e3-frac-3",
+         "m-e3-frac-4"
+        ],
+        "challengeId": "m-e3-frac-5"
+       },
+       {
+        "id": "math-e3-l3",
+        "title": "길이·들이·무게",
+        "skillIds": [
+         "m.e3.unit"
+        ],
+        "concept": "**1km = 1000m**, **1L = 1000mL**, **1kg = 1000g**예요. 단위를 바꿀 때는 1000을 곱해요.",
+        "example": "$3\\text{km} = 3000\\text{m}$",
+        "questionIds": [
+         "m-e3-unit-1",
+         "m-e3-unit-2",
+         "m-e3-unit-3",
+         "m-e3-unit-4"
+        ],
+        "challengeId": "m-e3-unit-5"
+       },
+       {
+        "id": "math-e3-l4",
+        "title": "원과 각",
+        "skillIds": [
+         "m.e3.geo"
+        ],
+        "concept": "**직각**은 90°예요. 원에서 **지름**은 **반지름**의 2배예요.",
+        "example": "반지름 5cm → 지름 10cm",
+        "questionIds": [
+         "m-e3-geo-1",
+         "m-e3-geo-2",
+         "m-e3-geo-3",
+         "m-e3-geo-4"
+        ],
+        "challengeId": "m-e3-geo-5"
+       },
+       {
+        "id": "math-e3-l5",
+        "title": "표와 그래프",
+        "skillIds": [
+         "m.e3.data"
+        ],
+        "concept": "조사한 결과를 표로 정리하면 가장 많은 것, 가장 적은 것, 합계를 쉽게 알 수 있어요.",
+        "example": "$7 + 5 + 9 + 4 = 25$명",
+        "questionIds": [
+         "m-e3-data-1",
+         "m-e3-data-2",
+         "m-e3-data-3",
+         "m-e3-data-4"
+        ],
+        "challengeId": "m-e3-data-5"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-e4",
+    "title": "초4 수학 · 큰 수와 분수·소수",
+    "grade": "E4",
+    "world": {
+     "name": "Big Number Canyon",
+     "emoji": "🏜️",
+     "tagline": "커다란 수의 협곡을 건너요"
+    },
+    "units": [
+     {
+      "id": "math-e4-u1",
+      "title": "큰 수, 곱셈과 나눗셈, 분수와 소수, 각도, 그래프",
+      "lessons": [
+       {
+        "id": "math-e4-l1",
+        "title": "큰 수",
+        "skillIds": [
+         "m.e4.big"
+        ],
+        "concept": "만(10000) 단위로 큰 수를 읽고 써요. 각 자리의 숫자는 **자릿값**만큼의 크기를 나타내요.",
+        "example": "$5 \\times 10000 + 3 \\times 1000 = 53000$",
+        "questionIds": [
+         "m-e4-big-1",
+         "m-e4-big-2",
+         "m-e4-big-3",
+         "m-e4-big-4"
+        ],
+        "challengeId": "m-e4-big-5"
+       },
+       {
+        "id": "math-e4-l2",
+        "title": "큰 수의 곱셈과 나눗셈",
+        "skillIds": [
+         "m.e4.muldiv"
+        ],
+        "concept": "곱하는 수를 나누어 곱한 뒤 더해요. 나눗셈은 몫을 어림해서 확인해요.",
+        "example": "$34 \\times 12 = 408$",
+        "questionIds": [
+         "m-e4-muldiv-1",
+         "m-e4-muldiv-2",
+         "m-e4-muldiv-3",
+         "m-e4-muldiv-4"
+        ],
+        "challengeId": "m-e4-muldiv-5"
+       },
+       {
+        "id": "math-e4-l3",
+        "title": "분수와 소수의 덧셈·뺄셈",
+        "skillIds": [
+         "m.e4.frac"
+        ],
+        "concept": "분모가 같은 분수는 **분자끼리** 더하고 빼요. 소수는 소수점의 자리를 맞춰 계산해요.",
+        "example": "$\\frac{3}{5} + \\frac{1}{5} = \\frac{4}{5}$",
+        "questionIds": [
+         "m-e4-frac-1",
+         "m-e4-frac-2",
+         "m-e4-frac-3",
+         "m-e4-frac-4"
+        ],
+        "challengeId": "m-e4-frac-5"
+       },
+       {
+        "id": "math-e4-l4",
+        "title": "각도와 도형",
+        "skillIds": [
+         "m.e4.angle"
+        ],
+        "concept": "삼각형의 세 각의 합은 **180°**, 사각형의 네 각의 합은 **360°**예요.",
+        "example": "$180 - 50 - 60 = 70$",
+        "questionIds": [
+         "m-e4-angle-1",
+         "m-e4-angle-2",
+         "m-e4-angle-3",
+         "m-e4-angle-4"
+        ],
+        "challengeId": "m-e4-angle-5"
+       },
+       {
+        "id": "math-e4-l5",
+        "title": "막대그래프와 평균",
+        "skillIds": [
+         "m.e4.data"
+        ],
+        "concept": "자료를 읽어 합계와 차를 구해요. **평균**은 모두 더한 값을 개수로 나눈 값이에요.",
+        "example": "$60 \\div 4 = 15$",
+        "questionIds": [
+         "m-e4-data-1",
+         "m-e4-data-2",
+         "m-e4-data-3",
+         "m-e4-data-4"
+        ],
+        "challengeId": "m-e4-data-5"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-e5",
+    "title": "초5 수학 · 분수, 소수, 약수·배수, 넓이",
+    "grade": "E5",
+    "world": {
+     "name": "Prime Peak",
+     "emoji": "🏔️",
+     "tagline": "약수와 배수의 봉우리를 올라요"
+    },
+    "units": [
+     {
+      "id": "math-e5-u1",
+      "title": "분수, 소수, 약수와 배수, 넓이와 부피, 비율",
+      "lessons": [
+       {
+        "id": "math-e5-l1",
+        "title": "분모가 다른 분수의 덧셈·뺄셈",
+        "skillIds": [
+         "m.e5.frac"
+        ],
+        "concept": "분모가 다르면 먼저 **통분**해요. 두 분모의 최소공배수를 공통분모로 쓰면 편해요.",
+        "example": "$\\frac{1}{2} + \\frac{1}{3} = \\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$",
+        "questionIds": [
+         "m-e5-frac-1",
+         "m-e5-frac-2",
+         "m-e5-frac-3",
+         "m-e5-frac-4"
+        ],
+        "challengeId": "m-e5-frac-5"
+       },
+       {
+        "id": "math-e5-l2",
+        "title": "소수의 곱셈",
+        "skillIds": [
+         "m.e5.dec"
+        ],
+        "concept": "소수점을 없애고 자연수처럼 곱한 뒤, 곱해진 소수점 아래 자리 수만큼 소수점을 다시 찍어요.",
+        "example": "$0.6 \\times 4 = 2.4$",
+        "questionIds": [
+         "m-e5-dec-1",
+         "m-e5-dec-2",
+         "m-e5-dec-3",
+         "m-e5-dec-4"
+        ],
+        "challengeId": "m-e5-dec-5"
+       },
+       {
+        "id": "math-e5-l3",
+        "title": "약수와 배수",
+        "skillIds": [
+         "m.e5.factor"
+        ],
+        "concept": "**약수**는 어떤 수를 나누어떨어지게 하는 수, **배수**는 그 수를 1배, 2배, 3배... 한 수예요.",
+        "example": "12의 약수: 1, 2, 3, 4, 6, 12",
+        "questionIds": [
+         "m-e5-factor-1",
+         "m-e5-factor-2",
+         "m-e5-factor-3",
+         "m-e5-factor-4"
+        ],
+        "challengeId": "m-e5-factor-5"
+       },
+       {
+        "id": "math-e5-l4",
+        "title": "넓이와 부피",
+        "skillIds": [
+         "m.e5.area"
+        ],
+        "concept": "직사각형은 **가로 × 세로**, 삼각형은 **밑변 × 높이 ÷ 2**, 직육면체의 부피는 **가로 × 세로 × 높이**예요.",
+        "example": "$8 \\times 5 = 40$ cm²",
+        "questionIds": [
+         "m-e5-area-1",
+         "m-e5-area-2",
+         "m-e5-area-3",
+         "m-e5-area-4"
+        ],
+        "challengeId": "m-e5-area-5"
+       },
+       {
+        "id": "math-e5-l5",
+        "title": "비와 비율",
+        "skillIds": [
+         "m.e5.ratio"
+        ],
+        "concept": "**비율**은 비교하는 양을 기준량으로 나눈 값이에요. 비율에 100을 곱하면 **백분율(%)**이에요.",
+        "example": "$3 : 5 \\to 3 \\div 5 = 0.6$",
+        "questionIds": [
+         "m-e5-ratio-1",
+         "m-e5-ratio-2",
+         "m-e5-ratio-3",
+         "m-e5-ratio-4"
+        ],
+        "challengeId": "m-e5-ratio-5"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-e6",
+    "title": "초6 수학 · 분수·소수 연산, 비례식, 원",
+    "grade": "E6",
+    "world": {
+     "name": "Ratio Reef",
+     "emoji": "🐠",
+     "tagline": "비율의 바다를 헤엄쳐요"
+    },
+    "units": [
+     {
+      "id": "math-e6-u1",
+      "title": "분수·소수의 연산, 비례, 백분율, 원과 부피, 평균",
+      "lessons": [
+       {
+        "id": "math-e6-l1",
+        "title": "분수·소수의 곱셈과 나눗셈",
+        "skillIds": [
+         "m.e6.frac"
+        ],
+        "concept": "분수의 곱셈은 분자끼리, 분모끼리 곱해요. 분수의 나눗셈은 **역수**를 곱해요.",
+        "example": "$\\frac{3}{4} \\times \\frac{2}{5} = \\frac{3}{10}$",
+        "questionIds": [
+         "m-e6-frac-1",
+         "m-e6-frac-2",
+         "m-e6-frac-3",
+         "m-e6-frac-4"
+        ],
+        "challengeId": "m-e6-frac-5"
+       },
+       {
+        "id": "math-e6-l2",
+        "title": "비례식과 비례배분",
+        "skillIds": [
+         "m.e6.ratio"
+        ],
+        "concept": "비례식에서는 **안쪽 수의 곱 = 바깥쪽 수의 곱**이에요. 전체를 비로 나누면 **비례배분**이에요.",
+        "example": "$3 : 4 = 12 : \\square \\to \\square = 16$",
+        "questionIds": [
+         "m-e6-ratio-1",
+         "m-e6-ratio-2",
+         "m-e6-ratio-3",
+         "m-e6-ratio-4"
+        ],
+        "challengeId": "m-e6-ratio-5"
+       },
+       {
+        "id": "math-e6-l3",
+        "title": "백분율",
+        "skillIds": [
+         "m.e6.pct"
+        ],
+        "concept": "**백분율(%)**은 기준량을 100으로 보았을 때의 비율이에요. 소수에 100을 곱하면 %가 돼요.",
+        "example": "80의 25% = $80 \\times 25 \\div 100 = 20$",
+        "questionIds": [
+         "m-e6-pct-1",
+         "m-e6-pct-2",
+         "m-e6-pct-3",
+         "m-e6-pct-4"
+        ],
+        "challengeId": "m-e6-pct-5"
+       },
+       {
+        "id": "math-e6-l4",
+        "title": "원과 입체도형",
+        "skillIds": [
+         "m.e6.geo"
+        ],
+        "concept": "원의 둘레는 **지름 × 3.14**, 원의 넓이는 **반지름 × 반지름 × 3.14**예요.",
+        "example": "$10 \\times 3.14 = 31.4$",
+        "questionIds": [
+         "m-e6-geo-1",
+         "m-e6-geo-2",
+         "m-e6-geo-3",
+         "m-e6-geo-4"
+        ],
+        "challengeId": "m-e6-geo-5"
+       },
+       {
+        "id": "math-e6-l5",
+        "title": "평균과 자료 정리",
+        "skillIds": [
+         "m.e6.stat"
+        ],
+        "concept": "**평균**은 합 ÷ 개수, **중앙값**은 한가운데 수, **최빈값**은 가장 많이 나온 수예요.",
+        "example": "$(80 + 90 + 70 + 100) \\div 4 = 85$",
+        "questionIds": [
+         "m-e6-stat-1",
+         "m-e6-stat-2",
+         "m-e6-stat-3",
+         "m-e6-stat-4"
+        ],
+        "challengeId": "m-e6-stat-5"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "questions": [
+  {
+   "id": "m-e1-count-1",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "🍎🍎🍎🍎 사과는 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 4개예요.",
+   "role": "core",
+   "family": "e1-count-a",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-2",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "🍬🍬🍬🍬🍬🍬🍬 사탕은 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 7개예요.",
+   "role": "core",
+   "family": "e1-count-a",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-3",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "⭐⭐⭐⭐⭐⭐⭐⭐⭐ 스티커는 모두 몇 장일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 9장이에요.",
+   "role": "core",
+   "family": "e1-count-a",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-4",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈 풍선은 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 13
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 13개예요.",
+   "role": "core",
+   "family": "e1-count-b",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-5",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 구슬은 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 18
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 18개예요.",
+   "role": "core",
+   "family": "e1-count-b",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-v1",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "🌸🌸🌸🌸🌸🌸 꽃은 모두 몇 송이일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 6송이예요.",
+   "role": "variant",
+   "family": "e1-count-a",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-v2",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪 쿠키는 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 15개예요.",
+   "role": "variant",
+   "family": "e1-count-b",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-count-d1",
+   "site": "math",
+   "skillId": "m.e1.count",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "🐦🐦🐦🐦🐦🐦🐦🐦 새는 모두 몇 마리일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "하나씩 손가락으로 짚으면서 세어 보세요.",
+    "10개가 넘으면 5개씩 묶어서 세어요."
+   ],
+   "explanation": "하나씩 세어 보면 모두 8마리예요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-1",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$3 + 4$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "손가락이나 그림으로 이어 세어 보세요.",
+    "3에서 4만큼 이어 세어요."
+   ],
+   "explanation": "$3 + 4 = 7$.",
+   "role": "core",
+   "family": "e1-add",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-2",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$8 - 3$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "큰 수에서 거꾸로 세어 보세요.",
+    "8에서 3만큼 거꾸로 세어요."
+   ],
+   "explanation": "$8 - 3 = 5$.",
+   "role": "core",
+   "family": "e1-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-3",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "사과가 5개 있어요. 3개를 더 받으면 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "처음 수와 더 받은 수를 합쳐요.",
+    "더하기(+)로 식을 만들어 보세요."
+   ],
+   "explanation": "$5 + 3 = 8$ 이므로 모두 8개예요.",
+   "role": "core",
+   "family": "e1-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-4",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "사탕이 9개 있었어요. 4개를 먹었어요. 몇 개 남았을까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "처음 수에서 줄어든 수를 빼요.",
+    "빼기(-)로 식을 만들어 보세요."
+   ],
+   "explanation": "$9 - 4 = 5$ 이므로 5개 남아요.",
+   "role": "core",
+   "family": "e1-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-5",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$15 - 8$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "큰 수에서 거꾸로 세어 보세요.",
+    "15에서 8만큼 거꾸로 세어요."
+   ],
+   "explanation": "$15 - 8 = 7$.",
+   "role": "core",
+   "family": "e1-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-v1",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$2 + 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "손가락이나 그림으로 이어 세어 보세요.",
+    "2에서 6만큼 이어 세어요."
+   ],
+   "explanation": "$2 + 6 = 8$.",
+   "role": "variant",
+   "family": "e1-add",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-v2",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$10 - 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "큰 수에서 거꾸로 세어 보세요.",
+    "10에서 6만큼 거꾸로 세어요."
+   ],
+   "explanation": "$10 - 6 = 4$.",
+   "role": "variant",
+   "family": "e1-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-v3",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "쿠키가 6개 있어요. 5개를 더 받으면 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 11
+   },
+   "hints": [
+    "처음 수와 더 받은 수를 합쳐요.",
+    "더하기(+)로 식을 만들어 보세요."
+   ],
+   "explanation": "$6 + 5 = 11$ 이므로 모두 11개예요.",
+   "role": "variant",
+   "family": "e1-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-d1",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$4 + 5$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "손가락이나 그림으로 이어 세어 보세요.",
+    "4에서 5만큼 이어 세어요."
+   ],
+   "explanation": "$4 + 5 = 9$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-addsub-d2",
+   "site": "math",
+   "skillId": "m.e1.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$13 - 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "큰 수에서 거꾸로 세어 보세요.",
+    "13에서 6만큼 거꾸로 세어요."
+   ],
+   "explanation": "$13 - 6 = 7$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-1",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "$5$, $8$, $6$ 중 가장 큰 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$5$"
+    },
+    {
+     "id": "b",
+     "text": "$8$"
+    },
+    {
+     "id": "c",
+     "text": "$6$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "세 수를 십의 자리부터 비교해요.",
+    "수직선에서 가장 오른쪽에 있는 수를 찾아요."
+   ],
+   "explanation": "가장 큰 수: $8$",
+   "role": "core",
+   "family": "e1-pair",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-2",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "$12$, $9$, $10$ 중 가장 작은 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$12$"
+    },
+    {
+     "id": "b",
+     "text": "$9$"
+    },
+    {
+     "id": "c",
+     "text": "$10$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "세 수를 십의 자리부터 비교해요.",
+    "수직선에서 가장 왼쪽에 있는 수를 찾아요."
+   ],
+   "explanation": "가장 작은 수: $9$",
+   "role": "core",
+   "family": "e1-pair",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-3",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$7 \\square 4$ 의 □ 안에 알맞은 기호는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$>$"
+    },
+    {
+     "id": "b",
+     "text": "$<$"
+    },
+    {
+     "id": "c",
+     "text": "$=$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "왼쪽 수와 오른쪽 수 중 어느 쪽이 더 큰지 살펴요.",
+    "큰 쪽으로 입을 벌린 모양이 > 또는 < 예요."
+   ],
+   "explanation": "$7 > 4$.",
+   "role": "core",
+   "family": "e1-sym",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-4",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "true_false",
+   "difficulty": 2,
+   "prompt": "다음 비교가 맞는지 틀린지 고르세요. $9 < 11$",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "두 수의 크기를 먼저 비교해 보세요.",
+    "기호가 큰 수 쪽으로 벌어져 있는지 확인해요."
+   ],
+   "explanation": "비교하면 $9 < 11$ 이므로 맞아요.",
+   "role": "core",
+   "family": "e1-sym",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-5",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "$14$, $9$, $17$, $11$ 중 가장 큰 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$14$"
+    },
+    {
+     "id": "b",
+     "text": "$9$"
+    },
+    {
+     "id": "c",
+     "text": "$17$"
+    },
+    {
+     "id": "d",
+     "text": "$11$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "십의 자리 수가 큰 수부터 찾아보세요.",
+    "십의 자리가 같으면 일의 자리를 비교해요."
+   ],
+   "explanation": "가장 큰 수: $17$",
+   "role": "core",
+   "family": "e1-pair",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-v1",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "$11$, $10$, $13$ 중 가장 큰 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$11$"
+    },
+    {
+     "id": "b",
+     "text": "$10$"
+    },
+    {
+     "id": "c",
+     "text": "$13$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "세 수를 십의 자리부터 비교해요.",
+    "수직선에서 가장 오른쪽에 있는 수를 찾아요."
+   ],
+   "explanation": "가장 큰 수: $13$",
+   "role": "variant",
+   "family": "e1-pair",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-v2",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "$6 \\square 6$ 의 □ 안에 알맞은 기호는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$>$"
+    },
+    {
+     "id": "b",
+     "text": "$<$"
+    },
+    {
+     "id": "c",
+     "text": "$=$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "왼쪽 수와 오른쪽 수 중 어느 쪽이 더 큰지 살펴요.",
+    "큰 쪽으로 입을 벌린 모양이 > 또는 < 예요."
+   ],
+   "explanation": "$6 = 6$.",
+   "role": "variant",
+   "family": "e1-sym",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-cmp-d1",
+   "site": "math",
+   "skillId": "m.e1.cmp",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "$16$, $15$, $18$ 중 가장 작은 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$16$"
+    },
+    {
+     "id": "b",
+     "text": "$15$"
+    },
+    {
+     "id": "c",
+     "text": "$18$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "세 수를 십의 자리부터 비교해요.",
+    "수직선에서 가장 왼쪽에 있는 수를 찾아요."
+   ],
+   "explanation": "가장 작은 수: $15$",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-1",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "꼭짓점이 3개인 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "원"
+    },
+    {
+     "id": "b",
+     "text": "삼각형"
+    },
+    {
+     "id": "c",
+     "text": "사각형"
+    },
+    {
+     "id": "d",
+     "text": "오각형"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "꼭짓점은 뾰족하게 만나는 점이에요.",
+    "삼각형은 이름에 '3'이 들어 있어요."
+   ],
+   "explanation": "꼭짓점이 3개인 도형은 삼각형이에요.",
+   "role": "core",
+   "family": "e1-vertex",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-2",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "둥글고 꼭짓점이 없는 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "사각형"
+    },
+    {
+     "id": "b",
+     "text": "삼각형"
+    },
+    {
+     "id": "c",
+     "text": "오각형"
+    },
+    {
+     "id": "d",
+     "text": "원"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "모서리 없이 동그란 모양을 떠올려 보세요.",
+    "동전이나 접시 모양이에요."
+   ],
+   "explanation": "둥글고 꼭짓점이 없는 도형은 원이에요.",
+   "role": "core",
+   "family": "e1-vertex",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-3",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "변이 4개인 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "삼각형"
+    },
+    {
+     "id": "b",
+     "text": "사각형"
+    },
+    {
+     "id": "c",
+     "text": "원"
+    },
+    {
+     "id": "d",
+     "text": "오각형"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "변은 도형의 곧은 선이에요.",
+    "'사'는 숫자 4를 뜻해요."
+   ],
+   "explanation": "변이 4개인 도형은 사각형이에요.",
+   "role": "core",
+   "family": "e1-side",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-4",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "true_false",
+   "difficulty": 2,
+   "prompt": "삼각형의 변은 3개예요.",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "삼각형을 그리고 변을 하나씩 세어 보세요.",
+    "꼭짓점의 수와 변의 수는 같아요."
+   ],
+   "explanation": "삼각형은 변이 3개, 꼭짓점도 3개예요.",
+   "role": "core",
+   "family": "e1-side",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-5",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "변이 모두 4개이고 길이가 모두 같은 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "직사각형"
+    },
+    {
+     "id": "b",
+     "text": "삼각형"
+    },
+    {
+     "id": "c",
+     "text": "원"
+    },
+    {
+     "id": "d",
+     "text": "정사각형"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "네 변의 길이가 모두 같아야 해요.",
+    "직사각형은 마주 보는 변만 길이가 같아요."
+   ],
+   "explanation": "네 변의 길이가 모두 같은 도형은 정사각형이에요.",
+   "role": "core",
+   "family": "e1-side",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-v1",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "꼭짓점이 4개인 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "원"
+    },
+    {
+     "id": "b",
+     "text": "삼각형"
+    },
+    {
+     "id": "c",
+     "text": "오각형"
+    },
+    {
+     "id": "d",
+     "text": "사각형"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "꼭짓점을 하나씩 세어 보세요.",
+    "변이 4개면 꼭짓점도 4개예요."
+   ],
+   "explanation": "꼭짓점이 4개인 도형은 사각형이에요.",
+   "role": "variant",
+   "family": "e1-vertex",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-v2",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "true_false",
+   "difficulty": 1,
+   "prompt": "원에는 꼭짓점이 없어요.",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "원은 뾰족한 곳이 있는지 살펴보세요.",
+    "원은 처음부터 끝까지 둥글어요."
+   ],
+   "explanation": "원은 둥글어서 꼭짓점도 변도 없어요.",
+   "role": "variant",
+   "family": "e1-side",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-shape-d1",
+   "site": "math",
+   "skillId": "m.e1.shape",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "변이 3개인 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "사각형"
+    },
+    {
+     "id": "b",
+     "text": "원"
+    },
+    {
+     "id": "c",
+     "text": "삼각형"
+    },
+    {
+     "id": "d",
+     "text": "오각형"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "변을 하나씩 세어 보세요.",
+    "3은 '삼'이에요."
+   ],
+   "explanation": "변이 3개인 도형은 삼각형이에요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-1",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "빨간 리본은 15cm, 파란 리본은 18cm, 초록 리본은 20cm예요. 가장 긴 리본은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "빨간 리본"
+    },
+    {
+     "id": "b",
+     "text": "파란 리본"
+    },
+    {
+     "id": "c",
+     "text": "초록 리본"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "세 길이의 수를 비교해요.",
+    "수가 클수록 더 길어요."
+   ],
+   "explanation": "20cm가 가장 기니까 초록 리본이 가장 길어요.",
+   "role": "core",
+   "family": "e1-len",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-2",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "연필은 7cm, 지우개는 4cm예요. 연필은 지우개보다 몇 cm 더 길까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "긴 길이에서 짧은 길이를 빼요.",
+    "7 - 4 의 값을 구해요."
+   ],
+   "explanation": "$7 - 4 = 3$ 이므로 3cm 더 길어요.",
+   "role": "core",
+   "family": "e1-len",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-3",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "시계의 짧은바늘이 4, 긴바늘이 12를 가리켜요. 몇 시일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "짧은바늘은 '시'를 알려 줘요.",
+    "긴바늘이 12에 있으면 정각이에요."
+   ],
+   "explanation": "짧은바늘이 4에 있고 긴바늘이 12에 있으니 4시예요.",
+   "role": "core",
+   "family": "e1-clock",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-4",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "길이가 2cm인 클립 3개를 한 줄로 이었어요. 전체 길이는 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "같은 길이를 여러 번 더해요.",
+    "2 + 2 + 2 의 값을 구해요."
+   ],
+   "explanation": "$2 + 2 + 2 = 6$.",
+   "role": "core",
+   "family": "e1-len",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-5",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "빨간 끈은 12cm, 파란 끈은 9cm예요. 두 끈을 길게 이어 붙이면 모두 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 21
+   },
+   "hints": [
+    "이어 붙이면 길이를 더해요.",
+    "12 + 9 의 값을 구해요."
+   ],
+   "explanation": "$12 + 9 = 21$ 이므로 모두 21cm예요.",
+   "role": "core",
+   "family": "e1-len",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-v1",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "빨간 리본은 11cm, 파란 리본은 18cm, 초록 리본은 14cm예요. 가장 긴 리본은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "빨간 리본"
+    },
+    {
+     "id": "b",
+     "text": "파란 리본"
+    },
+    {
+     "id": "c",
+     "text": "초록 리본"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "세 길이의 수를 비교해요.",
+    "수가 클수록 더 길어요."
+   ],
+   "explanation": "18cm가 가장 기니까 파란 리본이 가장 길어요.",
+   "role": "variant",
+   "family": "e1-len",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-v2",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "시계의 짧은바늘이 9, 긴바늘이 12를 가리켜요. 몇 시일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "짧은바늘은 '시'를 알려 줘요.",
+    "긴바늘이 12에 있으면 정각이에요."
+   ],
+   "explanation": "짧은바늘이 9에 있고 긴바늘이 12에 있으니 9시예요.",
+   "role": "variant",
+   "family": "e1-clock",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e1-measure-d1",
+   "site": "math",
+   "skillId": "m.e1.measure",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "연필은 15cm, 지우개는 9cm예요. 연필은 지우개보다 몇 cm 더 길까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "긴 길이에서 짧은 길이를 빼요.",
+    "15 - 9 의 값을 구해요."
+   ],
+   "explanation": "$15 - 9 = 6$ 이므로 6cm 더 길어요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-1",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$47$ 에서 십의 자리 숫자는 무엇일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "두 자리 수에서 왼쪽 숫자가 십의 자리예요.",
+    "오른쪽 숫자는 일의 자리예요."
+   ],
+   "explanation": "$47$ → 십의 자리: 4, 일의 자리: 7.",
+   "role": "core",
+   "family": "e2-digit",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-2",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "10이 5개, 1이 3개이면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 53
+   },
+   "hints": [
+    "10이 몇 개인지가 십의 자리예요.",
+    "50 + 3 의 값을 구해 보세요."
+   ],
+   "explanation": "$50 + 3 = 53$.",
+   "role": "core",
+   "family": "e2-build",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-3",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$82$ 에서 십의 자리 숫자는 무엇일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "두 자리 수에서 왼쪽 숫자가 십의 자리예요.",
+    "오른쪽 숫자는 일의 자리예요."
+   ],
+   "explanation": "$82$ → 십의 자리: 8, 일의 자리: 2.",
+   "role": "core",
+   "family": "e2-digit",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-4",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$29$ 보다 1 큰 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 30
+   },
+   "hints": [
+    "1을 더해요.",
+    "일의 자리가 9이면 십의 자리가 하나 늘어요."
+   ],
+   "explanation": "$29 + 1 = 30$.",
+   "role": "core",
+   "family": "e2-build",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-5",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "100은 10이 몇 개 모인 수일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "10, 20, 30, ... 으로 100까지 세어 보세요.",
+    "10씩 몇 번 뛰어 세면 100일까요?"
+   ],
+   "explanation": "10이 10개 모이면 100이에요.",
+   "role": "core",
+   "family": "e2-build",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-v1",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$65$ 에서 십의 자리 숫자는 무엇일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "두 자리 수에서 왼쪽 숫자가 십의 자리예요.",
+    "오른쪽 숫자는 일의 자리예요."
+   ],
+   "explanation": "$65$ → 십의 자리: 6, 일의 자리: 5.",
+   "role": "variant",
+   "family": "e2-digit",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-v2",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "10이 7개, 1이 4개이면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 74
+   },
+   "hints": [
+    "10이 몇 개인지가 십의 자리예요.",
+    "70 + 4 의 값을 구해 보세요."
+   ],
+   "explanation": "$70 + 4 = 74$.",
+   "role": "variant",
+   "family": "e2-build",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-place-d1",
+   "site": "math",
+   "skillId": "m.e2.place",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "10이 3개, 1이 6개이면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 36
+   },
+   "hints": [
+    "10이 몇 개인지가 십의 자리예요.",
+    "30 + 6 의 값을 구해 보세요."
+   ],
+   "explanation": "$30 + 6 = 36$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-1",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$23 + 14$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 37
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 더해요.",
+    "일의 자리를 먼저 더한 다음 십의 자리를 더해요."
+   ],
+   "explanation": "$23 + 14 = 37$.",
+   "role": "core",
+   "family": "e2-add",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-2",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$45 + 27$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 72
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 더해요.",
+    "일의 자리의 합이 10이 넘으면 십의 자리로 1을 올려요."
+   ],
+   "explanation": "$45 + 27 = 72$.",
+   "role": "core",
+   "family": "e2-add",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-3",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$58 - 23$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 35
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 빼요.",
+    "일의 자리를 먼저 빼고 십의 자리를 빼요."
+   ],
+   "explanation": "$58 - 23 = 35$.",
+   "role": "core",
+   "family": "e2-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-4",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$61 - 28$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 33
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 빼요.",
+    "일의 자리끼리 뺄 수 없으면 십의 자리에서 10을 받아 와요."
+   ],
+   "explanation": "$61 - 28 = 33$.",
+   "role": "core",
+   "family": "e2-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-5",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "사탕이 36개 있어요. 28개를 더 모으면 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 64
+   },
+   "hints": [
+    "처음 수와 더 모은 수를 더해요.",
+    "일의 자리부터 더해 보세요."
+   ],
+   "explanation": "$36 + 28 = 64$ 이므로 모두 64개예요.",
+   "role": "core",
+   "family": "e2-add",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-v1",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$32 + 15$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 47
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 더해요.",
+    "일의 자리를 먼저 더한 다음 십의 자리를 더해요."
+   ],
+   "explanation": "$32 + 15 = 47$.",
+   "role": "variant",
+   "family": "e2-add",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-v2",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$74 - 31$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 43
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 빼요.",
+    "일의 자리를 먼저 빼고 십의 자리를 빼요."
+   ],
+   "explanation": "$74 - 31 = 43$.",
+   "role": "variant",
+   "family": "e2-sub",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-d1",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$38 + 24$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 62
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 더해요.",
+    "일의 자리의 합이 10이 넘으면 십의 자리로 1을 올려요."
+   ],
+   "explanation": "$38 + 24 = 62$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-addsub-d2",
+   "site": "math",
+   "skillId": "m.e2.addsub",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$83 - 41$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 42
+   },
+   "hints": [
+    "일의 자리끼리, 십의 자리끼리 빼요.",
+    "일의 자리를 먼저 빼고 십의 자리를 빼요."
+   ],
+   "explanation": "$83 - 41 = 42$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-1",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$2 \\times 4$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "2씩 4번 더하는 것과 같아요.",
+    "2 + 2 + 2 + 2 의 값을 구해 보세요."
+   ],
+   "explanation": "$2 + 2 + 2 + 2 = 8$ 이므로 $2 \\times 4 = 8$.",
+   "role": "core",
+   "family": "e2-mulE",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-2",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$3 \\times 5$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "3씩 5번 더하는 것과 같아요.",
+    "3 + 3 + 3 + 3 + 3 의 값을 구해 보세요."
+   ],
+   "explanation": "$3 + 3 + 3 + 3 + 3 = 15$ 이므로 $3 \\times 5 = 15$.",
+   "role": "core",
+   "family": "e2-mulE",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-3",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 접시에 쿠키가 3개씩 4접시 있어요. 쿠키는 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "같은 수를 여러 번 더해요.",
+    "3 × 4 로 계산할 수 있어요."
+   ],
+   "explanation": "$3 \\times 4 = 12$ 이므로 모두 12개예요.",
+   "role": "core",
+   "family": "e2-group",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-4",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 덧셈식을 곱셈식으로 나타낼 때 □ 안에 알맞은 수는? $5 + 5 + 5 + 5$ = $5 \\times \\square$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "더해진 5의 개수를 세어 보세요.",
+    "더한 횟수가 곱하는 수예요."
+   ],
+   "explanation": "5씩 4번 더했으니 $5 \\times 4$.",
+   "role": "core",
+   "family": "e2-group",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-5",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$4 \\times 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 24
+   },
+   "hints": [
+    "4씩 6번 더하는 것과 같아요.",
+    "4 + 4 + 4 + 4 + 4 + 4 의 값을 구해 보세요."
+   ],
+   "explanation": "$4 + 4 + 4 + 4 + 4 + 4 = 24$ 이므로 $4 \\times 6 = 24$.",
+   "role": "core",
+   "family": "e2-mulE",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-v1",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$2 \\times 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "2씩 6번 더하는 것과 같아요.",
+    "2 + 2 + 2 + 2 + 2 + 2 의 값을 구해 보세요."
+   ],
+   "explanation": "$2 + 2 + 2 + 2 + 2 + 2 = 12$ 이므로 $2 \\times 6 = 12$.",
+   "role": "variant",
+   "family": "e2-mulE",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-v2",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 접시에 쿠키가 4개씩 3접시 있어요. 쿠키는 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "같은 수를 여러 번 더해요.",
+    "4 × 3 로 계산할 수 있어요."
+   ],
+   "explanation": "$4 \\times 3 = 12$ 이므로 모두 12개예요.",
+   "role": "variant",
+   "family": "e2-group",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-mul-d1",
+   "site": "math",
+   "skillId": "m.e2.mul",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$5 \\times 3$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "5씩 3번 더하는 것과 같아요.",
+    "5 + 5 + 5 의 값을 구해 보세요."
+   ],
+   "explanation": "$5 + 5 + 5 = 15$ 이므로 $5 \\times 3 = 15$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-1",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "1m는 100cm예요. 2m는 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 200
+   },
+   "hints": [
+    "1m마다 100cm씩 늘어나요.",
+    "100을 2번 더해요."
+   ],
+   "explanation": "$2 \\times 100 = 200$ 이므로 200cm예요.",
+   "role": "core",
+   "family": "e2-m",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-2",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "지금은 5시 30분이에요. 30분이 지나면 몇 시일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "30분 + 30분 = 60분이에요.",
+    "60분은 1시간이에요."
+   ],
+   "explanation": "5시 30분에서 30분이 지나면 6시예요.",
+   "role": "core",
+   "family": "e2-clock",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-3",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "끈의 길이가 120cm예요. 1m(100cm)를 쓰고 남은 길이는 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "처음 길이에서 쓴 길이를 빼요.",
+    "120 - 100 의 값을 구해요."
+   ],
+   "explanation": "$120 - 100 = 20$ 이므로 20cm 남아요.",
+   "role": "core",
+   "family": "e2-m",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-4",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "긴바늘이 6을 가리켜요. 몇 분일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 30
+   },
+   "hints": [
+    "시계의 숫자 하나는 5분을 뜻해요.",
+    "5분씩 6번 뛰어 세어 보세요."
+   ],
+   "explanation": "$5 \\times 6 = 30$ 이므로 30분이에요.",
+   "role": "core",
+   "family": "e2-clock",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-5",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "2시 20분에서 10분이 지나면 몇 시 몇 분일까요? '분'에 해당하는 수만 쓰세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 30
+   },
+   "hints": [
+    "분끼리 더해요.",
+    "20 + 10 의 값을 구해요."
+   ],
+   "explanation": "$20 + 10 = 30$ 이므로 2시 30분이에요.",
+   "role": "core",
+   "family": "e2-clock",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-v1",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "1m는 100cm예요. 3m는 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 300
+   },
+   "hints": [
+    "1m마다 100cm씩 늘어나요.",
+    "100을 3번 더해요."
+   ],
+   "explanation": "$3 \\times 100 = 300$ 이므로 300cm예요.",
+   "role": "variant",
+   "family": "e2-m",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-v2",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "지금은 8시 30분이에요. 30분이 지나면 몇 시일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "30분 + 30분 = 60분이에요.",
+    "60분은 1시간이에요."
+   ],
+   "explanation": "8시 30분에서 30분이 지나면 9시예요.",
+   "role": "variant",
+   "family": "e2-clock",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-time-d1",
+   "site": "math",
+   "skillId": "m.e2.time",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "끈의 길이가 150cm예요. 1m(100cm)를 쓰고 남은 길이는 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 50
+   },
+   "hints": [
+    "처음 길이에서 쓴 길이를 빼요.",
+    "150 - 100 의 값을 구해요."
+   ],
+   "explanation": "$150 - 100 = 50$ 이므로 50cm 남아요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-1",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $2, 4, 6, 8, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 2씩 커져요."
+   ],
+   "explanation": "2씩 커지는 규칙이에요. $8 + 2 = 10$",
+   "role": "core",
+   "family": "e2-up",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-2",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $5, 10, 15, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 5씩 커져요."
+   ],
+   "explanation": "5씩 커지는 규칙이에요. $15 + 5 = 20$",
+   "role": "core",
+   "family": "e2-up",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-3",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $1, 3, 5, 7, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 2씩 커져요."
+   ],
+   "explanation": "2씩 커지는 규칙이에요. $7 + 2 = 9$",
+   "role": "core",
+   "family": "e2-up",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-4",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $20, 18, 16, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 14
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 2씩 작아져요."
+   ],
+   "explanation": "2씩 작아지는 규칙이에요. $16 - 2 = 14$",
+   "role": "core",
+   "family": "e2-down",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-5",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $3, 6, 9, 12, 15, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 18
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 3씩 커져요."
+   ],
+   "explanation": "3씩 커지는 규칙이에요. $15 + 3 = 18$",
+   "role": "core",
+   "family": "e2-up",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-v1",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $4, 8, 12, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 16
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 4씩 커져요."
+   ],
+   "explanation": "4씩 커지는 규칙이에요. $12 + 4 = 16$",
+   "role": "variant",
+   "family": "e2-up",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-v2",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $30, 25, 20, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 5씩 작아져요."
+   ],
+   "explanation": "5씩 작아지는 규칙이에요. $20 - 5 = 15$",
+   "role": "variant",
+   "family": "e2-down",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e2-pattern-d1",
+   "site": "math",
+   "skillId": "m.e2.pattern",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "규칙을 찾아 □에 알맞은 수를 쓰세요: $10, 20, 30, 40, \\square$",
+   "answer": {
+    "kind": "numeric",
+    "value": 50
+   },
+   "hints": [
+    "이웃한 두 수의 차이를 살펴보세요.",
+    "매번 10씩 커져요."
+   ],
+   "explanation": "10씩 커지는 규칙이에요. $40 + 10 = 50$",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-1",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$6 \\times 7$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 42
+   },
+   "hints": [
+    "곱셈구구를 떠올려 보세요.",
+    "6씩 7번 더해도 돼요."
+   ],
+   "explanation": "$6 \\times 7 = 42$.",
+   "role": "core",
+   "family": "e3-mul",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-2",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$24 \\div 4$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "4단 곱셈구구에서 곱이 24인 곳을 찾아요.",
+    "4 × □ = 24 인 □를 구해요."
+   ],
+   "explanation": "$4 \\times 6 = 24$ 이므로 $24 \\div 4 = 6$.",
+   "role": "core",
+   "family": "e3-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-3",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 상자에 사탕이 8개씩 들어 있어요. 5상자에는 사탕이 모두 몇 개 있을까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 40
+   },
+   "hints": [
+    "한 상자의 수와 상자 수를 곱해요.",
+    "8 × 5 의 값을 구해요."
+   ],
+   "explanation": "$8 \\times 5 = 40$. 모두 40개예요.",
+   "role": "core",
+   "family": "e3-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-4",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "사탕 28개를 4명에게 똑같이 나누어 주려고 해요. 한 명이 몇 개씩 받을까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "똑같이 나누면 나눗셈이에요.",
+    "28 ÷ 4 의 값을 구해요."
+   ],
+   "explanation": "$28 \\div 4 = 7$. 한 명이 7개씩 받아요.",
+   "role": "core",
+   "family": "e3-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-5",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$23 \\times 3$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 69
+   },
+   "hints": [
+    "곱셈구구를 떠올려 보세요.",
+    "23씩 3번 더해도 돼요."
+   ],
+   "explanation": "$23 \\times 3 = 69$.",
+   "role": "core",
+   "family": "e3-mul",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-v1",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$9 \\times 3$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 27
+   },
+   "hints": [
+    "곱셈구구를 떠올려 보세요.",
+    "9씩 3번 더해도 돼요."
+   ],
+   "explanation": "$9 \\times 3 = 27$.",
+   "role": "variant",
+   "family": "e3-mul",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-v2",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$35 \\div 7$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "7단 곱셈구구에서 곱이 35인 곳을 찾아요.",
+    "7 × □ = 35 인 □를 구해요."
+   ],
+   "explanation": "$7 \\times 5 = 35$ 이므로 $35 \\div 7 = 5$.",
+   "role": "variant",
+   "family": "e3-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-v3",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 상자에 사탕이 6개씩 들어 있어요. 7상자에는 사탕이 모두 몇 개 있을까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 42
+   },
+   "hints": [
+    "한 상자의 수와 상자 수를 곱해요.",
+    "6 × 7 의 값을 구해요."
+   ],
+   "explanation": "$6 \\times 7 = 42$. 모두 42개예요.",
+   "role": "variant",
+   "family": "e3-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-d1",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$7 \\times 8$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 56
+   },
+   "hints": [
+    "곱셈구구를 떠올려 보세요.",
+    "7씩 8번 더해도 돼요."
+   ],
+   "explanation": "$7 \\times 8 = 56$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-muldiv-d2",
+   "site": "math",
+   "skillId": "m.e3.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$54 \\div 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "6단 곱셈구구에서 곱이 54인 곳을 찾아요.",
+    "6 × □ = 54 인 □를 구해요."
+   ],
+   "explanation": "$6 \\times 9 = 54$ 이므로 $54 \\div 6 = 9$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-1",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "피자를 똑같이 8조각으로 나누었어요. 그중 3조각을 먹었다면 먹은 양은 전체의 얼마일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$\\frac{5}{8}$"
+    },
+    {
+     "id": "b",
+     "text": "$\\frac{3}{5}$"
+    },
+    {
+     "id": "c",
+     "text": "$\\frac{3}{8}$"
+    },
+    {
+     "id": "d",
+     "text": "$\\frac{8}{3}$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "전체를 똑같이 나눈 수가 분모예요.",
+    "먹은 조각 수가 분자예요."
+   ],
+   "explanation": "전체가 8조각이고 3조각을 먹었으니 $\\frac{3}{8}$.",
+   "role": "core",
+   "family": "e3-parts",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-2",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$\\frac{2}{5}$ 에서 분모는 무엇일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "분수에서 아래에 있는 수가 분모예요.",
+    "분모는 전체를 똑같이 나눈 개수예요."
+   ],
+   "explanation": "$\\frac{2}{5}$ 의 분모는 5, 분자는 2.",
+   "role": "core",
+   "family": "e3-parts",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-3",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "세 분수 중 가장 큰 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$\\frac{1}{3}$"
+    },
+    {
+     "id": "b",
+     "text": "$\\frac{1}{4}$"
+    },
+    {
+     "id": "c",
+     "text": "$\\frac{1}{5}$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "분자가 같으면 분모가 작을수록 더 커요.",
+    "피자를 3조각으로 나눈 한 조각과 5조각으로 나눈 한 조각을 비교해요."
+   ],
+   "explanation": "$\\frac{1}{3} > \\frac{1}{5}$.",
+   "role": "core",
+   "family": "e3-cmp",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-4",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "true_false",
+   "difficulty": 2,
+   "prompt": "$\\frac{3}{4} < 1$ 이라는 말은 맞을까요?",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "분자가 분모보다 작으면 1보다 작아요.",
+    "4조각 중 3조각은 전체보다 작아요."
+   ],
+   "explanation": "분자 3이 분모 4보다 작으므로 1보다 작아요.",
+   "role": "core",
+   "family": "e3-cmp",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-5",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "□ 안에 알맞은 수를 쓰세요. $\\frac{5}{8} = \\frac{1}{8} \\times \\square$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "분자는 단위분수의 개수예요.",
+    "1/8이 5번 모이면?"
+   ],
+   "explanation": "$\\frac{5}{8}$ = $\\frac{1}{8}$ 이 5개.",
+   "role": "core",
+   "family": "e3-parts",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-v1",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "피자를 똑같이 6조각으로 나누었어요. 그중 2조각을 먹었다면 먹은 양은 전체의 얼마일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$\\frac{4}{6}$"
+    },
+    {
+     "id": "b",
+     "text": "$\\frac{2}{4}$"
+    },
+    {
+     "id": "c",
+     "text": "$\\frac{2}{6}$"
+    },
+    {
+     "id": "d",
+     "text": "$\\frac{6}{2}$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "전체를 똑같이 나눈 수가 분모예요.",
+    "먹은 조각 수가 분자예요."
+   ],
+   "explanation": "전체가 6조각이고 2조각을 먹었으니 $\\frac{2}{6}$.",
+   "role": "variant",
+   "family": "e3-parts",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-v2",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "세 분수 중 가장 큰 수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$\\frac{1}{7}$"
+    },
+    {
+     "id": "b",
+     "text": "$\\frac{1}{4}$"
+    },
+    {
+     "id": "c",
+     "text": "$\\frac{1}{5}$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "분자가 같으면 분모가 작을수록 커요.",
+    "4와 7 중 더 작은 분모를 찾아요."
+   ],
+   "explanation": "$\\frac{1}{4} > \\frac{1}{7}$.",
+   "role": "variant",
+   "family": "e3-cmp",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-frac-d1",
+   "site": "math",
+   "skillId": "m.e3.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{3}{7}$ 에서 분자는 무엇일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "분수에서 위에 있는 수가 분자예요.",
+    "색칠한 조각의 수예요."
+   ],
+   "explanation": "$\\frac{3}{7}$ 의 분자는 3.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-1",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "단위를 바꾸어요. (1km = 1000m) 3km = □m 에서 □ 안에 알맞은 수는? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3000
+   },
+   "hints": [
+    "단위가 바뀌면 같은 수를 곱해요.",
+    "3 × 1000 의 값을 구해요."
+   ],
+   "explanation": "$3 \\times 1000 = 3000$. 즉 3km = 3000m.",
+   "role": "core",
+   "family": "e3-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-2",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "단위를 바꾸어요. (1L = 1000mL) 2L = □mL 에서 □ 안에 알맞은 수는? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2000
+   },
+   "hints": [
+    "단위가 바뀌면 같은 수를 곱해요.",
+    "2 × 1000 의 값을 구해요."
+   ],
+   "explanation": "$2 \\times 1000 = 2000$. 즉 2L = 2000mL.",
+   "role": "core",
+   "family": "e3-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-3",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "단위를 바꾸어요. (1kg = 1000g) 5kg = □g 에서 □ 안에 알맞은 수는? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5000
+   },
+   "hints": [
+    "단위가 바뀌면 같은 수를 곱해요.",
+    "5 × 1000 의 값을 구해요."
+   ],
+   "explanation": "$5 \\times 1000 = 5000$. 즉 5kg = 5000g.",
+   "role": "core",
+   "family": "e3-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-4",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "1m 20cm는 모두 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 120
+   },
+   "hints": [
+    "1m는 100cm예요.",
+    "100cm에 20cm를 더해요."
+   ],
+   "explanation": "$100 + 20 = 120$.",
+   "role": "core",
+   "family": "e3-mixed",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-5",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "2km 300m는 모두 몇 m일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2300
+   },
+   "hints": [
+    "1km는 1000m예요.",
+    "2000m에 300m를 더해요."
+   ],
+   "explanation": "$2000 + 300 = 2300$.",
+   "role": "core",
+   "family": "e3-mixed",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-v1",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "단위를 바꾸어요. (1km = 1000m) 4km = □m 에서 □ 안에 알맞은 수는? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4000
+   },
+   "hints": [
+    "단위가 바뀌면 같은 수를 곱해요.",
+    "4 × 1000 의 값을 구해요."
+   ],
+   "explanation": "$4 \\times 1000 = 4000$. 즉 4km = 4000m.",
+   "role": "variant",
+   "family": "e3-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-v2",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "1m 50cm는 모두 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 150
+   },
+   "hints": [
+    "1m는 100cm예요.",
+    "100 + 50 의 값을 구해요."
+   ],
+   "explanation": "$100 + 50 = 150$.",
+   "role": "variant",
+   "family": "e3-mixed",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-unit-d1",
+   "site": "math",
+   "skillId": "m.e3.unit",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "단위를 바꾸어요. (1kg = 1000g) 6kg = □g 에서 □ 안에 알맞은 수는? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6000
+   },
+   "hints": [
+    "단위가 바뀌면 같은 수를 곱해요.",
+    "6 × 1000 의 값을 구해요."
+   ],
+   "explanation": "$6 \\times 1000 = 6000$. 즉 6kg = 6000g.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-1",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "직각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 90
+   },
+   "hints": [
+    "네모난 종이의 모서리 각이에요.",
+    "직각은 숫자 90으로 기억해요."
+   ],
+   "explanation": "직각은 90°예요.",
+   "role": "core",
+   "family": "e3-angle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-2",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "직사각형에서 직각은 모두 몇 개일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "직사각형의 꼭짓점마다 직각이 있어요.",
+    "꼭짓점은 4개예요."
+   ],
+   "explanation": "직사각형은 네 각이 모두 직각이에요.",
+   "role": "core",
+   "family": "e3-angle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-3",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "반지름이 5cm인 원의 지름은 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "지름은 반지름의 2배예요.",
+    "5 × 2 의 값을 구해요."
+   ],
+   "explanation": "$5 \\times 2 = 10$. 지름은 10cm예요.",
+   "role": "core",
+   "family": "e3-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-4",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 중 직각이 있는 도형은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "직각삼각형"
+    },
+    {
+     "id": "b",
+     "text": "원"
+    },
+    {
+     "id": "c",
+     "text": "정삼각형"
+    },
+    {
+     "id": "d",
+     "text": "반원"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "직각삼각형은 이름에 직각이 들어 있어요.",
+    "한 각이 90°인 삼각형을 찾아요."
+   ],
+   "explanation": "직각삼각형은 한 각이 직각이에요.",
+   "role": "core",
+   "family": "e3-angle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-5",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "지름이 14cm인 원의 반지름은 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "반지름은 지름의 반이에요.",
+    "14 ÷ 2 의 값을 구해요."
+   ],
+   "explanation": "$14 \\div 2 = 7$. 반지름은 7cm예요.",
+   "role": "core",
+   "family": "e3-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-v1",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "반지름이 8cm인 원의 지름은 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 16
+   },
+   "hints": [
+    "지름은 반지름의 2배예요.",
+    "8 × 2 의 값을 구해요."
+   ],
+   "explanation": "$8 \\times 2 = 16$. 지름은 16cm예요.",
+   "role": "variant",
+   "family": "e3-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-v2",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "정사각형에서 직각은 모두 몇 개일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "정사각형의 모든 각을 살펴보세요.",
+    "꼭짓점이 4개예요."
+   ],
+   "explanation": "정사각형은 네 각이 모두 직각이에요.",
+   "role": "variant",
+   "family": "e3-angle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-geo-d1",
+   "site": "math",
+   "skillId": "m.e3.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "지름이 20cm인 원의 반지름은 몇 cm일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "반지름은 지름의 반이에요.",
+    "20 ÷ 2 의 값을 구해요."
+   ],
+   "explanation": "$20 \\div 2 = 10$. 반지름은 10cm예요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-1",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 가장 많은 학생이 좋아하는 과일을 고른 학생은 몇 명일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "표에서 가장 큰 수를 찾아요.",
+    "포도가 몇 명인지 확인해요."
+   ],
+   "explanation": "가장 큰 수는 포도의 9명이에요.",
+   "role": "core",
+   "family": "e3-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-2",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 사과와 바나나를 좋아하는 학생은 모두 몇 명일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "두 수를 더해요.",
+    "7 + 5 의 값을 구해요."
+   ],
+   "explanation": "$7 + 5 = 12$.",
+   "role": "core",
+   "family": "e3-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-3",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 포도를 좋아하는 학생은 귤을 좋아하는 학생보다 몇 명 더 많을까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "큰 수에서 작은 수를 빼요.",
+    "9 - 4 의 값을 구해요."
+   ],
+   "explanation": "$9 - 4 = 5$.",
+   "role": "core",
+   "family": "e3-compare",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-4",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 가장 적은 학생이 좋아하는 과일은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "귤"
+    },
+    {
+     "id": "b",
+     "text": "사과"
+    },
+    {
+     "id": "c",
+     "text": "바나나"
+    },
+    {
+     "id": "d",
+     "text": "포도"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "표에서 가장 작은 수를 찾아요.",
+    "4명인 과일이 무엇인지 보세요."
+   ],
+   "explanation": "가장 작은 수는 귤의 4명이에요.",
+   "role": "core",
+   "family": "e3-compare",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-5",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 조사한 학생은 모두 몇 명일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "모든 과일의 학생 수를 더해요.",
+    "7 + 5 + 9 + 4 의 값을 구해요."
+   ],
+   "explanation": "$7 + 5 + 9 + 4 = 25$.",
+   "role": "core",
+   "family": "e3-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-v1",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 바나나를 좋아하는 학생은 몇 명일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "표에서 바나나 칸을 찾아요.",
+    "바나나 옆의 수를 읽어요."
+   ],
+   "explanation": "바나나를 좋아하는 학생은 5명이에요.",
+   "role": "variant",
+   "family": "e3-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-v2",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 사과를 좋아하는 학생은 귤을 좋아하는 학생보다 몇 명 더 많을까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "큰 수에서 작은 수를 빼요.",
+    "7 - 4 의 값을 구해요."
+   ],
+   "explanation": "$7 - 4 = 3$.",
+   "role": "variant",
+   "family": "e3-compare",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-data-d1",
+   "site": "math",
+   "skillId": "m.e3.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "좋아하는 과일 조사 결과: 사과 7명, 바나나 5명, 포도 9명, 귤 4명. 바나나와 귤을 좋아하는 학생은 모두 몇 명일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "두 수를 더해요.",
+    "5 + 4 의 값을 구해요."
+   ],
+   "explanation": "$5 + 4 = 9$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-1",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "1만이 7개, 1천이 2개인 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 72000
+   },
+   "hints": [
+    "만의 자리와 천의 자리를 나누어 생각해요.",
+    "70000 + 2000 의 값을 구해요."
+   ],
+   "explanation": "$70000 + 2000 = 72000$.",
+   "role": "core",
+   "family": "e4-compose",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-2",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "1만이 5개, 1천이 3개인 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 53000
+   },
+   "hints": [
+    "만의 자리와 천의 자리를 나누어 생각해요.",
+    "50000 + 3000 의 값을 구해요."
+   ],
+   "explanation": "$50000 + 3000 = 53000$.",
+   "role": "core",
+   "family": "e4-compose",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-3",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$250000$ 에서 십만의 자리 숫자가 나타내는 값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 200000
+   },
+   "hints": [
+    "그 자리의 숫자에 자릿값을 곱해요.",
+    "오른쪽에서 6번째 자리예요."
+   ],
+   "explanation": "$2 \\times 100000 = 200000$.",
+   "role": "core",
+   "family": "e4-digit",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-4",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$48200$ 에서 천의 자리 숫자가 나타내는 값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 8000
+   },
+   "hints": [
+    "그 자리의 숫자에 자릿값을 곱해요.",
+    "오른쪽에서 4번째 자리예요."
+   ],
+   "explanation": "$8 \\times 1000 = 8000$.",
+   "role": "core",
+   "family": "e4-digit",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-5",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$38000 + 47000$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 85000
+   },
+   "hints": [
+    "천의 자리끼리 더해요.",
+    "38 + 47 = 85 라는 식을 이용해요."
+   ],
+   "explanation": "$38000 + 47000 = 85000$.",
+   "role": "core",
+   "family": "e4-compose",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-v1",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "1만이 4개, 1천이 6개인 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 46000
+   },
+   "hints": [
+    "만의 자리와 천의 자리를 나누어 생각해요.",
+    "40000 + 6000 의 값을 구해요."
+   ],
+   "explanation": "$40000 + 6000 = 46000$.",
+   "role": "variant",
+   "family": "e4-compose",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-v2",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$735000$ 에서 십만의 자리 숫자가 나타내는 값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 700000
+   },
+   "hints": [
+    "그 자리의 숫자에 자릿값을 곱해요.",
+    "오른쪽에서 6번째 자리예요."
+   ],
+   "explanation": "$7 \\times 100000 = 700000$.",
+   "role": "variant",
+   "family": "e4-digit",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-big-d1",
+   "site": "math",
+   "skillId": "m.e4.big",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "1만이 6개, 1천이 5개인 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 65000
+   },
+   "hints": [
+    "만의 자리와 천의 자리를 나누어 생각해요.",
+    "60000 + 5000 의 값을 구해요."
+   ],
+   "explanation": "$60000 + 5000 = 65000$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-1",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$34 \\times 12$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 408
+   },
+   "hints": [
+    "곱하는 수를 일의 자리와 십의 자리로 나누어 곱해요.",
+    "각각의 곱을 더해요."
+   ],
+   "explanation": "$34 \\times 12 = 408$.",
+   "role": "core",
+   "family": "e4-mul",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-2",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$156 \\div 12$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 13
+   },
+   "hints": [
+    "나누는 수에 어떤 수를 곱하면 156에 가까워지는지 생각해요.",
+    "몫을 어림해서 확인해요."
+   ],
+   "explanation": "$12 \\times 13 = 156$ 이므로 $156 \\div 12 = 13$.",
+   "role": "core",
+   "family": "e4-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-3",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$25 \\times 40$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1000
+   },
+   "hints": [
+    "곱하는 수를 일의 자리와 십의 자리로 나누어 곱해요.",
+    "각각의 곱을 더해요."
+   ],
+   "explanation": "$25 \\times 40 = 1000$.",
+   "role": "core",
+   "family": "e4-mul",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-4",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 봉지에 구슬이 24개씩 들어 있어요. 15봉지에는 구슬이 모두 몇 개 있을까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 360
+   },
+   "hints": [
+    "한 봉지의 수와 봉지 수를 곱해요.",
+    "24 × 15 의 값을 구해요."
+   ],
+   "explanation": "$24 \\times 15 = 360$. 모두 360개예요.",
+   "role": "core",
+   "family": "e4-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-5",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$735 \\div 15$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 49
+   },
+   "hints": [
+    "나누는 수에 어떤 수를 곱하면 735에 가까워지는지 생각해요.",
+    "몫을 어림해서 확인해요."
+   ],
+   "explanation": "$15 \\times 49 = 735$ 이므로 $735 \\div 15 = 49$.",
+   "role": "core",
+   "family": "e4-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-v1",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$21 \\times 14$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 294
+   },
+   "hints": [
+    "곱하는 수를 일의 자리와 십의 자리로 나누어 곱해요.",
+    "각각의 곱을 더해요."
+   ],
+   "explanation": "$21 \\times 14 = 294$.",
+   "role": "variant",
+   "family": "e4-mul",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-v2",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$168 \\div 14$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "나누는 수에 어떤 수를 곱하면 168에 가까워지는지 생각해요.",
+    "몫을 어림해서 확인해요."
+   ],
+   "explanation": "$14 \\times 12 = 168$ 이므로 $168 \\div 14 = 12$.",
+   "role": "variant",
+   "family": "e4-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-v3",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 봉지에 구슬이 18개씩 들어 있어요. 12봉지에는 구슬이 모두 몇 개 있을까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 216
+   },
+   "hints": [
+    "한 봉지의 수와 봉지 수를 곱해요.",
+    "18 × 12 의 값을 구해요."
+   ],
+   "explanation": "$18 \\times 12 = 216$. 모두 216개예요.",
+   "role": "variant",
+   "family": "e4-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-d1",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$45 \\times 12$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 540
+   },
+   "hints": [
+    "곱하는 수를 일의 자리와 십의 자리로 나누어 곱해요.",
+    "각각의 곱을 더해요."
+   ],
+   "explanation": "$45 \\times 12 = 540$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-muldiv-d2",
+   "site": "math",
+   "skillId": "m.e4.muldiv",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$273 \\div 13$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 21
+   },
+   "hints": [
+    "나누는 수에 어떤 수를 곱하면 273에 가까워지는지 생각해요.",
+    "몫을 어림해서 확인해요."
+   ],
+   "explanation": "$13 \\times 21 = 273$ 이므로 $273 \\div 13 = 21$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-3",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 분수를 소수로 나타내면 얼마일까요? $\\frac{1}{2}$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5
+   },
+   "hints": [
+    "분수는 분자 ÷ 분모예요.",
+    "1 ÷ 2 의 값을 구해요."
+   ],
+   "explanation": "$1 \\div 2 = 0.5$.",
+   "role": "core",
+   "family": "e4-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-1",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$\\frac{3}{5} + \\frac{1}{5}$ 의 값을 구하세요. (예: 3/5 처럼 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.8,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분모가 같으면 분자끼리 계산해요.",
+    "분모는 그대로 둬요."
+   ],
+   "explanation": "$\\frac{3}{5} + \\frac{1}{5} = \\frac{4}{5}$.",
+   "role": "core",
+   "family": "e4-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-2",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{7}{9} - \\frac{2}{9}$ 의 값을 구하세요. (예: 3/5 처럼 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5555555555555556,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분모가 같으면 분자끼리 계산해요.",
+    "분모는 그대로 둬요."
+   ],
+   "explanation": "$\\frac{7}{9} - \\frac{2}{9} = \\frac{5}{9}$.",
+   "role": "core",
+   "family": "e4-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-4",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$0.3 + 0.4$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.7
+   },
+   "hints": [
+    "소수점의 자리를 맞추어 계산해요.",
+    "자연수처럼 계산한 뒤 소수점을 찍어요."
+   ],
+   "explanation": "$0.3 + 0.4 = 0.7$.",
+   "role": "core",
+   "family": "e4-dec",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-5",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$2.5 + 1.75$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 4.25
+   },
+   "hints": [
+    "소수점의 자리를 맞추어 계산해요.",
+    "자연수처럼 계산한 뒤 소수점을 찍어요."
+   ],
+   "explanation": "$2.5 + 1.75 = 4.25$.",
+   "role": "core",
+   "family": "e4-dec",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-v1",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$\\frac{2}{7} + \\frac{3}{7}$ 의 값을 구하세요. (예: 3/5 처럼 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.7142857142857143,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분모가 같으면 분자끼리 계산해요.",
+    "분모는 그대로 둬요."
+   ],
+   "explanation": "$\\frac{2}{7} + \\frac{3}{7} = \\frac{5}{7}$.",
+   "role": "variant",
+   "family": "e4-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-v2",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$1.8 - 0.6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.2
+   },
+   "hints": [
+    "소수점의 자리를 맞추어 계산해요.",
+    "자연수처럼 계산한 뒤 소수점을 찍어요."
+   ],
+   "explanation": "$1.8 - 0.6 = 1.2$.",
+   "role": "variant",
+   "family": "e4-dec",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-v3",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 분수를 소수로 나타내면 얼마일까요? $\\frac{1}{4}$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.25
+   },
+   "hints": [
+    "1 ÷ 4 의 값을 구해요.",
+    "100원의 4분의 1은 25원이에요."
+   ],
+   "explanation": "$1 \\div 4 = 0.25$.",
+   "role": "variant",
+   "family": "e4-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-d1",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{4}{7} + \\frac{2}{7}$ 의 값을 구하세요. (예: 3/5 처럼 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.8571428571428571,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분모가 같으면 분자끼리 계산해요.",
+    "분모는 그대로 둬요."
+   ],
+   "explanation": "$\\frac{4}{7} + \\frac{2}{7} = \\frac{6}{7}$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-frac-d2",
+   "site": "math",
+   "skillId": "m.e4.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$0.5 + 0.2$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.7
+   },
+   "hints": [
+    "소수점의 자리를 맞추어 계산해요.",
+    "자연수처럼 계산한 뒤 소수점을 찍어요."
+   ],
+   "explanation": "$0.5 + 0.2 = 0.7$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-1",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "삼각형의 두 각이 50°, 60°예요. 나머지 한 각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "삼각형의 세 각의 합은 180°예요.",
+    "180 - 50 - 60 의 값을 구해요."
+   ],
+   "explanation": "$180 - 50 - 60 = 70$. 나머지 각은 70°예요.",
+   "role": "core",
+   "family": "e4-tri",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-2",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "삼각형의 세 각의 합은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 180
+   },
+   "hints": [
+    "삼각형의 세 꼭짓점의 각을 모두 더해요.",
+    "두 직각삼각형을 합친 사각형을 생각해 보세요."
+   ],
+   "explanation": "삼각형의 세 각의 합은 180°예요.",
+   "role": "core",
+   "family": "e4-tri",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-3",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "사각형의 네 각의 합은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 360
+   },
+   "hints": [
+    "사각형은 삼각형 2개로 나눌 수 있어요.",
+    "180 × 2 의 값을 구해요."
+   ],
+   "explanation": "$180 \\times 2 = 360$.",
+   "role": "core",
+   "family": "e4-tri",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-4",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "삼각형의 두 각이 90°, 35°예요. 나머지 한 각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 55
+   },
+   "hints": [
+    "삼각형의 세 각의 합은 180°예요.",
+    "180 - 90 - 35 의 값을 구해요."
+   ],
+   "explanation": "$180 - 90 - 35 = 55$. 나머지 각은 55°예요.",
+   "role": "core",
+   "family": "e4-tri",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-5",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "한 직선 위에 두 각이 있어요. 한 각이 120°이면 다른 각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "한 직선이 이루는 각은 180°예요.",
+    "180 - 120 의 값을 구해요."
+   ],
+   "explanation": "$180 - 120 = 60$.",
+   "role": "core",
+   "family": "e4-straight",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-v1",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "삼각형의 두 각이 40°, 70°예요. 나머지 한 각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "삼각형의 세 각의 합은 180°예요.",
+    "180 - 40 - 70 의 값을 구해요."
+   ],
+   "explanation": "$180 - 40 - 70 = 70$. 나머지 각은 70°예요.",
+   "role": "variant",
+   "family": "e4-tri",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-v2",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 직선 위에 두 각이 있어요. 한 각이 100°이면 다른 각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 80
+   },
+   "hints": [
+    "한 직선이 이루는 각은 180°예요.",
+    "180 - 100 의 값을 구해요."
+   ],
+   "explanation": "$180 - 100 = 80$.",
+   "role": "variant",
+   "family": "e4-straight",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-angle-d1",
+   "site": "math",
+   "skillId": "m.e4.angle",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "삼각형의 두 각이 30°, 80°예요. 나머지 한 각은 몇 도일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "삼각형의 세 각의 합은 180°예요.",
+    "180 - 30 - 80 의 값을 구해요."
+   ],
+   "explanation": "$180 - 30 - 80 = 70$. 나머지 각은 70°예요.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-1",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 책을 가장 많이 읽은 달은 몇 권을 읽었을까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 21
+   },
+   "hints": [
+    "가장 큰 수를 찾아요.",
+    "4월의 수를 확인해요."
+   ],
+   "explanation": "가장 큰 수는 4월의 21권이에요.",
+   "role": "core",
+   "family": "e4-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-2",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 1월과 4월에 읽은 책 수의 차는 몇 권일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "큰 수에서 작은 수를 빼요.",
+    "21 - 12 의 값을 구해요."
+   ],
+   "explanation": "$21 - 12 = 9$.",
+   "role": "core",
+   "family": "e4-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-3",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 4개월 동안 읽은 책은 모두 몇 권일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "네 수를 모두 더해요.",
+    "12 + 18 + 9 + 21 의 값을 구해요."
+   ],
+   "explanation": "$12 + 18 + 9 + 21 = 60$.",
+   "role": "core",
+   "family": "e4-total",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-4",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 2월에 읽은 책 수는 3월에 읽은 책 수의 몇 배일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "18은 9의 몇 배인지 생각해요.",
+    "18 ÷ 9 의 값을 구해요."
+   ],
+   "explanation": "$18 \\div 9 = 2$. 2배예요.",
+   "role": "core",
+   "family": "e4-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-5",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 4개월 동안 읽은 책 수의 평균은 몇 권일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "평균은 모두 더한 값을 개수로 나눈 값이에요.",
+    "60 ÷ 4 의 값을 구해요."
+   ],
+   "explanation": "$60 \\div 4 = 15$. 평균은 15권이에요.",
+   "role": "core",
+   "family": "e4-total",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-v1",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 3월에 읽은 책은 몇 권일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "표에서 3월 칸을 찾아요.",
+    "3월 옆의 수를 읽어요."
+   ],
+   "explanation": "3월에는 9권을 읽었어요.",
+   "role": "variant",
+   "family": "e4-read",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-v2",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "세 수 4, 8, 12 의 평균은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "세 수를 더한 뒤 3으로 나눠요.",
+    "24 ÷ 3 의 값을 구해요."
+   ],
+   "explanation": "$(4 + 8 + 12) \\div 3 = 8$.",
+   "role": "variant",
+   "family": "e4-total",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e4-data-d1",
+   "site": "math",
+   "skillId": "m.e4.data",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "월별로 읽은 책 수: 1월 12권, 2월 18권, 3월 9권, 4월 21권. 2월과 3월에 읽은 책은 모두 몇 권일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 27
+   },
+   "hints": [
+    "두 수를 더해요.",
+    "18 + 9 의 값을 구해요."
+   ],
+   "explanation": "$18 + 9 = 27$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-1",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{1}{2} + \\frac{1}{3}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.8333333333333334,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "2, 3의 최소공배수: 6. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$.",
+   "role": "core",
+   "family": "e5-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-2",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{3}{4} - \\frac{1}{6}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5833333333333334,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "4, 6의 최소공배수: 12. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{9}{12} - \\frac{2}{12} = \\frac{7}{12}$.",
+   "role": "core",
+   "family": "e5-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-3",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\frac{2}{3} + \\frac{3}{4}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.4166666666666667,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "3, 4의 최소공배수: 12. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{8}{12} + \\frac{9}{12} = \\frac{17}{12}$.",
+   "role": "core",
+   "family": "e5-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-4",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 두 분수를 통분할 때 가장 작은 공통분모는 얼마일까요? $\\frac{1}{2}$, $\\frac{1}{3}$",
+   "options": [
+    {
+     "id": "a",
+     "text": "$7$"
+    },
+    {
+     "id": "b",
+     "text": "$5$"
+    },
+    {
+     "id": "c",
+     "text": "$6$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "두 분모의 최소공배수를 구해요.",
+    "2의 배수와 3의 배수에서 처음 겹치는 수를 찾아요."
+   ],
+   "explanation": "2, 3의 최소공배수는 6.",
+   "role": "core",
+   "family": "e5-lcd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-5",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\frac{5}{6} - \\frac{3}{8}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.4583333333333333,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "6, 8의 최소공배수: 24. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{20}{24} - \\frac{9}{24} = \\frac{11}{24}$.",
+   "role": "core",
+   "family": "e5-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-v1",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{1}{4} + \\frac{1}{6}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.4166666666666667,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "4, 6의 최소공배수: 12. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{3}{12} + \\frac{2}{12} = \\frac{5}{12}$.",
+   "role": "variant",
+   "family": "e5-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-v2",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{5}{6} - \\frac{1}{3}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "6, 3의 최소공배수: 6. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{5}{6} - \\frac{2}{6} = \\frac{1}{2}$.",
+   "role": "variant",
+   "family": "e5-fr",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-v3",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 두 분수를 통분할 때 가장 작은 공통분모는 얼마일까요? $\\frac{1}{4}$, $\\frac{1}{6}$",
+   "options": [
+    {
+     "id": "a",
+     "text": "$11$"
+    },
+    {
+     "id": "b",
+     "text": "$10$"
+    },
+    {
+     "id": "c",
+     "text": "$12$"
+    },
+    {
+     "id": "d",
+     "text": "$13$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "두 분모의 최소공배수를 구해요.",
+    "4의 배수와 6의 배수에서 처음 겹치는 수를 찾아요."
+   ],
+   "explanation": "4, 6의 최소공배수는 12.",
+   "role": "variant",
+   "family": "e5-lcd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-d1",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$\\frac{1}{2} + \\frac{1}{4}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.75,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "2, 4의 최소공배수: 4. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{2}{4} + \\frac{1}{4} = \\frac{3}{4}$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-frac-d2",
+   "site": "math",
+   "skillId": "m.e5.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{2}{5} + \\frac{1}{10}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "먼저 분모를 같게 통분해요.",
+    "5, 10의 최소공배수: 10. 이 수를 공통분모로 써요."
+   ],
+   "explanation": "$\\frac{4}{10} + \\frac{1}{10} = \\frac{1}{2}$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-1",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$0.6 \\times 4$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 2.4
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$0.6 \\times 4 = 2.4$.",
+   "role": "core",
+   "family": "e5-dm",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-2",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$1.2 \\times 3$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 3.6
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$1.2 \\times 3 = 3.6$.",
+   "role": "core",
+   "family": "e5-dm",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-3",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$2.5 \\times 1.2$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$2.5 \\times 1.2 = 3$.",
+   "role": "core",
+   "family": "e5-dm2",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-4",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$0.4 \\times 0.5$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.2
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$0.4 \\times 0.5 = 0.2$.",
+   "role": "core",
+   "family": "e5-dm2",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-5",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$3.6 \\times 2.5$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$3.6 \\times 2.5 = 9$.",
+   "role": "core",
+   "family": "e5-dm2",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-v1",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$0.3 \\times 6$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.8
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$0.3 \\times 6 = 1.8$.",
+   "role": "variant",
+   "family": "e5-dm",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-v2",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$1.5 \\times 0.4$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.6
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$1.5 \\times 0.4 = 0.6$.",
+   "role": "variant",
+   "family": "e5-dm2",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-dec-d1",
+   "site": "math",
+   "skillId": "m.e5.dec",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$0.5 \\times 8$ 의 값을 구하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "소수점을 없애고 자연수처럼 곱해요.",
+    "곱한 뒤 소수점의 자리를 다시 맞춰요."
+   ],
+   "explanation": "$0.5 \\times 8 = 4$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-1",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "12의 약수는 모두 몇 개일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "1부터 차례로 나누어떨어지는 수를 찾아요.",
+    "약수는 짝을 지어서 찾으면 쉬워요."
+   ],
+   "explanation": "12의 약수의 개수는 6개.",
+   "role": "core",
+   "family": "e5-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-2",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "두 수 4, 6의 최소공배수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "각 수의 배수를 차례로 써 보세요.",
+    "처음으로 같아지는 수가 최소공배수예요."
+   ],
+   "explanation": "4, 6의 최소공배수는 12.",
+   "role": "core",
+   "family": "e5-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-3",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "두 수 12, 18의 최대공약수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "두 수의 약수를 각각 구해요.",
+    "공통인 약수 중 가장 큰 수를 골라요."
+   ],
+   "explanation": "12, 18의 최대공약수는 6.",
+   "role": "core",
+   "family": "e5-gcd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-4",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "true_false",
+   "difficulty": 2,
+   "prompt": "15는 5의 배수예요. 맞을까요?",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "5를 1배, 2배, 3배 해 보세요.",
+    "5 × 3 = 15 예요."
+   ],
+   "explanation": "5 × 3 = 15 이므로 15는 5의 배수예요.",
+   "role": "core",
+   "family": "e5-mult",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-5",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "두 수 8, 12의 최소공배수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 24
+   },
+   "hints": [
+    "각 수의 배수를 차례로 써 보세요.",
+    "처음으로 같아지는 수가 최소공배수예요."
+   ],
+   "explanation": "8, 12의 최소공배수는 24.",
+   "role": "core",
+   "family": "e5-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-v1",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "18의 약수는 모두 몇 개일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "1부터 차례로 나누어떨어지는 수를 찾아요.",
+    "약수는 짝을 지어서 찾으면 쉬워요."
+   ],
+   "explanation": "18의 약수의 개수는 6개.",
+   "role": "variant",
+   "family": "e5-div",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-v2",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "두 수 6, 9의 최대공약수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "두 수의 약수를 각각 구해요.",
+    "공통인 약수 중 가장 큰 수를 골라요."
+   ],
+   "explanation": "6, 9의 최대공약수는 3.",
+   "role": "variant",
+   "family": "e5-gcd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-v3",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 중 7의 배수는?",
+   "options": [
+    {
+     "id": "a",
+     "text": "$34$"
+    },
+    {
+     "id": "b",
+     "text": "$21$"
+    },
+    {
+     "id": "c",
+     "text": "$25$"
+    },
+    {
+     "id": "d",
+     "text": "$30$"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "7단 곱셈구구를 떠올려요.",
+    "7 × 3 = 21 이에요."
+   ],
+   "explanation": "21 = 7 × 3 이므로 7의 배수예요.",
+   "role": "variant",
+   "family": "e5-mult",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-factor-d1",
+   "site": "math",
+   "skillId": "m.e5.factor",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "10의 약수는 모두 몇 개일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "1부터 차례로 나누어떨어지는 수를 찾아요.",
+    "약수는 짝을 지어서 찾으면 쉬워요."
+   ],
+   "explanation": "10의 약수의 개수는 4개.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-1",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "가로 5cm, 세로 8cm인 직사각형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 40
+   },
+   "hints": [
+    "직사각형의 넓이 = 가로 × 세로",
+    "5 × 8 의 값을 구해요."
+   ],
+   "explanation": "$5 \\times 8 = 40$. 넓이는 40cm².",
+   "role": "core",
+   "family": "e5-plane",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-2",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "밑변이 10cm, 높이가 6cm인 삼각형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 30
+   },
+   "hints": [
+    "삼각형의 넓이 = 밑변 × 높이 ÷ 2",
+    "밑변 × 높이를 구한 뒤 2로 나눠요."
+   ],
+   "explanation": "$10 \\times 6 \\div 2 = 30$. 넓이는 30cm².",
+   "role": "core",
+   "family": "e5-plane",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-3",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "한 변이 7cm인 정사각형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 49
+   },
+   "hints": [
+    "정사각형의 넓이 = 한 변 × 한 변",
+    "7 × 7 의 값을 구해요."
+   ],
+   "explanation": "$7 \\times 7 = 49$. 넓이는 49cm².",
+   "role": "core",
+   "family": "e5-plane",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-4",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "가로 4cm, 세로 3cm, 높이 5cm인 직육면체의 부피는 몇 cm³일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "직육면체의 부피 = 가로 × 세로 × 높이",
+    "4 × 3 × 5 의 값을 구해요."
+   ],
+   "explanation": "$4 \\times 3 \\times 5 = 60$. 부피는 60cm³.",
+   "role": "core",
+   "family": "e5-vol",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-5",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "밑변이 9cm, 높이가 7cm인 평행사변형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 63
+   },
+   "hints": [
+    "평행사변형의 넓이 = 밑변 × 높이",
+    "9 × 7 의 값을 구해요."
+   ],
+   "explanation": "$9 \\times 7 = 63$. 넓이는 63cm².",
+   "role": "core",
+   "family": "e5-plane",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-v1",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "가로 3cm, 세로 12cm인 직사각형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 36
+   },
+   "hints": [
+    "직사각형의 넓이 = 가로 × 세로",
+    "3 × 12 의 값을 구해요."
+   ],
+   "explanation": "$3 \\times 12 = 36$. 넓이는 36cm².",
+   "role": "variant",
+   "family": "e5-plane",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-v2",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "밑변이 8cm, 높이가 5cm인 삼각형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "삼각형의 넓이 = 밑변 × 높이 ÷ 2",
+    "밑변 × 높이를 구한 뒤 2로 나눠요."
+   ],
+   "explanation": "$8 \\times 5 \\div 2 = 20$. 넓이는 20cm².",
+   "role": "variant",
+   "family": "e5-plane",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-v3",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "가로 2cm, 세로 5cm, 높이 6cm인 직육면체의 부피는 몇 cm³일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "직육면체의 부피 = 가로 × 세로 × 높이",
+    "2 × 5 × 6 의 값을 구해요."
+   ],
+   "explanation": "$2 \\times 5 \\times 6 = 60$. 부피는 60cm³.",
+   "role": "variant",
+   "family": "e5-vol",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-area-d1",
+   "site": "math",
+   "skillId": "m.e5.area",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "가로 6cm, 세로 7cm인 직사각형의 넓이는 몇 cm²일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 42
+   },
+   "hints": [
+    "직사각형의 넓이 = 가로 × 세로",
+    "6 × 7 의 값을 구해요."
+   ],
+   "explanation": "$6 \\times 7 = 42$. 넓이는 42cm².",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-4",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 비율을 백분율로 나타내면 몇 %일까요? $\\frac{3}{4}$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 75
+   },
+   "hints": [
+    "분수를 소수로 바꾼 뒤 100을 곱해요.",
+    "3 ÷ 4 = 0.75 예요."
+   ],
+   "explanation": "$\\frac{3}{4} = 0.75 = 75\\%$.",
+   "role": "core",
+   "family": "e5-pct",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-1",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$3 : 5$ 의 비율을 소수로 나타내면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.6
+   },
+   "hints": [
+    "비율 = 비교하는 양 ÷ 기준량",
+    "3 ÷ 5 의 값을 구해요."
+   ],
+   "explanation": "$3 \\div 5 = 0.6$.",
+   "role": "core",
+   "family": "e5-rate",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-2",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 비를 가장 간단한 자연수의 비로 나타낼 때 앞의 수는 얼마일까요? $12 : 8$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "두 수를 최대공약수로 나눠요.",
+    "12, 8의 최대공약수를 구해요."
+   ],
+   "explanation": "$12 : 8 = 3 : 2$.",
+   "role": "core",
+   "family": "e5-rate",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-3",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "5명 중 2명이 안경을 썼어요. 안경을 쓴 학생 수의 비율을 소수로 나타내면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.4
+   },
+   "hints": [
+    "비율 = 안경 쓴 학생 수 ÷ 전체 학생 수",
+    "2 ÷ 5 의 값을 구해요."
+   ],
+   "explanation": "$2 \\div 5 = 0.4$.",
+   "role": "core",
+   "family": "e5-rate",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-5",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "40쪽짜리 책을 10쪽 읽었어요. 읽은 쪽수의 백분율은 몇 %일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "비율에 100을 곱하면 백분율이에요.",
+    "10 ÷ 40 × 100 의 값을 구해요."
+   ],
+   "explanation": "$10 \\div 40 \\times 100 = 25$. 25%.",
+   "role": "core",
+   "family": "e5-pct",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-v1",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$2 : 5$ 의 비율을 소수로 나타내면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.4
+   },
+   "hints": [
+    "비율 = 비교하는 양 ÷ 기준량",
+    "2 ÷ 5 의 값을 구해요."
+   ],
+   "explanation": "$2 \\div 5 = 0.4$.",
+   "role": "variant",
+   "family": "e5-rate",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-v2",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 비를 가장 간단한 자연수의 비로 나타낼 때 앞의 수는 얼마일까요? $20 : 30$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "두 수를 최대공약수로 나눠요.",
+    "20, 30의 최대공약수를 구해요."
+   ],
+   "explanation": "$20 : 30 = 2 : 3$.",
+   "role": "variant",
+   "family": "e5-rate",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-v3",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "12쪽짜리 책을 9쪽 읽었어요. 읽은 쪽수의 백분율은 몇 %일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 75
+   },
+   "hints": [
+    "비율에 100을 곱하면 백분율이에요.",
+    "9 ÷ 12 × 100 의 값을 구해요."
+   ],
+   "explanation": "$9 \\div 12 \\times 100 = 75$. 75%.",
+   "role": "variant",
+   "family": "e5-pct",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e5-ratio-d1",
+   "site": "math",
+   "skillId": "m.e5.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$1 : 4$ 의 비율을 소수로 나타내면 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.25
+   },
+   "hints": [
+    "비율 = 비교하는 양 ÷ 기준량",
+    "1 ÷ 4 의 값을 구해요."
+   ],
+   "explanation": "$1 \\div 4 = 0.25$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-4",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{5}{6} \\div 5$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.16666666666666666,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "자연수로 나누는 것은 그 수의 역수를 곱하는 것과 같아요.",
+    "5로 나누면 ×1/5 예요."
+   ],
+   "explanation": "$\\frac{5}{6} \\times \\frac{1}{5} = \\frac{1}{6}$.",
+   "role": "core",
+   "family": "e6-fd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-1",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{3}{4} \\times \\frac{2}{5}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.3,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분자끼리, 분모끼리 곱해요.",
+    "곱한 뒤 약분할 수 있으면 약분해요."
+   ],
+   "explanation": "$\\frac{3}{4} \\times \\frac{2}{5} = \\frac{3}{10}$.",
+   "role": "core",
+   "family": "e6-fm",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-2",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{2}{3} \\div \\frac{4}{9}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.5,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "나누는 분수의 분자와 분모를 바꾸어 곱해요.",
+    "곱한 뒤 약분해요."
+   ],
+   "explanation": "$\\frac{2}{3} \\div \\frac{4}{9} = \\frac{2}{3} \\times \\frac{9}{4} = \\frac{3}{2}$.",
+   "role": "core",
+   "family": "e6-fd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-3",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$3.6 \\div 1.2$ 의 값을 구하세요. (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "나누는 수와 나누어지는 수의 소수점을 같은 자리만큼 옮겨요.",
+    "자연수의 나눗셈처럼 계산해요."
+   ],
+   "explanation": "$3.6 \\div 1.2 = 3$.",
+   "role": "core",
+   "family": "e6-dd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-5",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\frac{7}{8} \\times 4 \\div \\frac{7}{4}$ 의 값을 구하세요. (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "앞에서부터 차례로 계산해요.",
+    "나눗셈은 역수를 곱해요."
+   ],
+   "explanation": "$\\frac{7}{8} \\times 4 = \\frac{7}{2},\\ \\frac{7}{2} \\div \\frac{7}{4} = 2$.",
+   "role": "core",
+   "family": "e6-fd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-v1",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{2}{3} \\times \\frac{3}{4}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분자끼리, 분모끼리 곱해요.",
+    "곱한 뒤 약분할 수 있으면 약분해요."
+   ],
+   "explanation": "$\\frac{2}{3} \\times \\frac{3}{4} = \\frac{1}{2}$.",
+   "role": "variant",
+   "family": "e6-fm",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-v2",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$8.4 \\div 2.1$ 의 값을 구하세요. (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "나누는 수와 나누어지는 수의 소수점을 같은 자리만큼 옮겨요.",
+    "자연수의 나눗셈처럼 계산해요."
+   ],
+   "explanation": "$8.4 \\div 2.1 = 4$.",
+   "role": "variant",
+   "family": "e6-dd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-v3",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$\\frac{3}{4} \\div \\frac{3}{8}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "나누는 분수의 분자와 분모를 바꾸어 곱해요.",
+    "곱한 뒤 약분해요."
+   ],
+   "explanation": "$\\frac{3}{4} \\div \\frac{3}{8} = \\frac{3}{4} \\times \\frac{8}{3} = 2$.",
+   "role": "variant",
+   "family": "e6-fd",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-d1",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "$\\frac{1}{2} \\times \\frac{1}{3}$ 의 값을 구하세요. (3/4 처럼 분수로 써도 돼요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.16666666666666666,
+    "tolerance": 0.000001
+   },
+   "hints": [
+    "분자끼리, 분모끼리 곱해요.",
+    "곱한 뒤 약분할 수 있으면 약분해요."
+   ],
+   "explanation": "$\\frac{1}{2} \\times \\frac{1}{3} = \\frac{1}{6}$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-frac-d2",
+   "site": "math",
+   "skillId": "m.e6.frac",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "$6 \\div 1.5$ 의 값을 구하세요. (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "나누는 수와 나누어지는 수의 소수점을 같은 자리만큼 옮겨요.",
+    "자연수의 나눗셈처럼 계산해요."
+   ],
+   "explanation": "$6 \\div 1.5 = 4$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-2",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "비례식 $5 : 2 = \\square : 10$ 에서 □ 안에 알맞은 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "안쪽의 곱과 바깥쪽의 곱이 같아요.",
+    "2 × □ = 5 × 10 으로 풀어요."
+   ],
+   "explanation": "$2 \\times \\square = 5 \\times 10 = 50$ 이므로 □ = 25.",
+   "role": "core",
+   "family": "e6-prop",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-4",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "연필 3자루의 값이 1500원이에요. 같은 연필 7자루의 값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3500
+   },
+   "hints": [
+    "연필 1자루의 값을 먼저 구해요.",
+    "1500 ÷ 3 = 500 이에요."
+   ],
+   "explanation": "$1500 \\div 3 \\times 7 = 3500$. 3500원.",
+   "role": "core",
+   "family": "e6-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-1",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "비례식 $3 : 4 = 12 : \\square$ 에서 □ 안에 알맞은 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 16
+   },
+   "hints": [
+    "비례식에서 안쪽의 곱과 바깥쪽의 곱은 같아요.",
+    "3 × □ = 4 × 12 로 풀어요."
+   ],
+   "explanation": "$3 \\times \\square = 4 \\times 12$ 이므로 □ = 16.",
+   "role": "core",
+   "family": "e6-prop",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-3",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "사탕 20개를 3:2의 비로 나누어 가지려고 해요. 더 많이 가진 쪽은 몇 개를 가질까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "전체를 5로 똑같이 나누어 생각해요.",
+    "큰 비에 해당하는 몫만큼 가져요."
+   ],
+   "explanation": "$20 \\div 5 \\times 3 = 12$.",
+   "role": "core",
+   "family": "e6-split",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-5",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "비례식 $7 : 3 = 28 : \\square$ 에서 □ 안에 알맞은 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "비례식에서 안쪽의 곱과 바깥쪽의 곱은 같아요.",
+    "7 × □ = 3 × 28 로 풀어요."
+   ],
+   "explanation": "$7 \\times \\square = 3 \\times 28$ 이므로 □ = 12.",
+   "role": "core",
+   "family": "e6-prop",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-v1",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "비례식 $2 : 3 = 12 : \\square$ 에서 □ 안에 알맞은 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 18
+   },
+   "hints": [
+    "비례식에서 안쪽의 곱과 바깥쪽의 곱은 같아요.",
+    "2 × □ = 3 × 12 로 풀어요."
+   ],
+   "explanation": "$2 \\times \\square = 3 \\times 12$ 이므로 □ = 18.",
+   "role": "variant",
+   "family": "e6-prop",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-v2",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "사탕 30개를 2:3의 비로 나누어 가지려고 해요. 더 많이 가진 쪽은 몇 개를 가질까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 18
+   },
+   "hints": [
+    "전체를 5로 똑같이 나누어 생각해요.",
+    "큰 비에 해당하는 몫만큼 가져요."
+   ],
+   "explanation": "$30 \\div 5 \\times 3 = 18$.",
+   "role": "variant",
+   "family": "e6-split",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-v3",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "공책 4권의 값이 2000원이에요. 같은 공책 9권의 값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4500
+   },
+   "hints": [
+    "공책 1권의 값을 먼저 구해요.",
+    "2000 ÷ 4 = 500 이에요."
+   ],
+   "explanation": "$2000 \\div 4 \\times 9 = 4500$. 4500원.",
+   "role": "variant",
+   "family": "e6-word",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ratio-d1",
+   "site": "math",
+   "skillId": "m.e6.ratio",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "비례식 $1 : 2 = 5 : \\square$ 에서 □ 안에 알맞은 수는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "비례식에서 안쪽의 곱과 바깥쪽의 곱은 같아요.",
+    "1 × □ = 2 × 5 로 풀어요."
+   ],
+   "explanation": "$1 \\times \\square = 2 \\times 5$ 이므로 □ = 10.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-4",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음 소수를 백분율로 나타내면 몇 %일까요? $0.35$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 35
+   },
+   "hints": [
+    "소수에 100을 곱해요.",
+    "0.35 × 100 의 값을 구해요."
+   ],
+   "explanation": "$0.35 \\times 100 = 35\\%$.",
+   "role": "core",
+   "family": "e6-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-5",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "원가가 20000원인 물건에 15%의 이익을 붙여 팔아요. 판매 가격은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 23000
+   },
+   "hints": [
+    "이익 금액을 먼저 구해요.",
+    "20000의 15%를 구한 뒤 원가에 더해요."
+   ],
+   "explanation": "$20000 + 20000 \\times 15 \\div 100 = 23000$.",
+   "role": "core",
+   "family": "e6-price",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-1",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "다음 분수를 백분율로 나타내면 몇 %일까요? $\\frac{3}{5}$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "분수를 소수로 바꾼 뒤 100을 곱해요.",
+    "3 ÷ 5 의 값을 구해요."
+   ],
+   "explanation": "$\\frac{3}{5} = 0.6 = 60\\%$.",
+   "role": "core",
+   "family": "e6-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-2",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "80의 25%는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "백분율은 100분의 몇이라는 뜻이에요.",
+    "80 × 25 ÷ 100 의 값을 구해요."
+   ],
+   "explanation": "$80 \\times 25 \\div 100 = 20$.",
+   "role": "core",
+   "family": "e6-of",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-3",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "정가 5000원인 물건을 20% 할인해서 팔아요. 할인한 가격은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 4000
+   },
+   "hints": [
+    "할인 금액을 먼저 구해요.",
+    "정가에서 할인 금액을 빼요."
+   ],
+   "explanation": "$5000 - 5000 \\times 20 \\div 100 = 4000$.",
+   "role": "core",
+   "family": "e6-price",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-v1",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "200의 30%는 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "백분율은 100분의 몇이라는 뜻이에요.",
+    "200 × 30 ÷ 100 의 값을 구해요."
+   ],
+   "explanation": "$200 \\times 30 \\div 100 = 60$.",
+   "role": "variant",
+   "family": "e6-of",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-v2",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "정가 8000원인 물건을 25% 할인해서 팔아요. 할인한 가격은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 6000
+   },
+   "hints": [
+    "할인 금액을 먼저 구해요.",
+    "정가에서 할인 금액을 빼요."
+   ],
+   "explanation": "$8000 - 8000 \\times 25 \\div 100 = 6000$.",
+   "role": "variant",
+   "family": "e6-price",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-v3",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "다음 분수를 백분율로 나타내면 몇 %일까요? $\\frac{1}{4}$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "분수를 소수로 바꾼 뒤 100을 곱해요.",
+    "1 ÷ 4 의 값을 구해요."
+   ],
+   "explanation": "$\\frac{1}{4} = 0.25 = 25\\%$.",
+   "role": "variant",
+   "family": "e6-conv",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-pct-d1",
+   "site": "math",
+   "skillId": "m.e6.pct",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "다음 소수를 백분율로 나타내면 몇 %일까요? $0.5$ (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 50
+   },
+   "hints": [
+    "소수에 100을 곱해요.",
+    "0.5 × 100 의 값을 구해요."
+   ],
+   "explanation": "$0.5 \\times 100 = 50\\%$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-4",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "한 모서리가 4cm인 정육면체의 부피는 몇 cm³일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 64
+   },
+   "hints": [
+    "정육면체의 부피 = 한 모서리 × 한 모서리 × 한 모서리",
+    "4 × 4 × 4 의 값을 구해요."
+   ],
+   "explanation": "$4 \\times 4 \\times 4 = 64$. 부피는 64cm³.",
+   "role": "core",
+   "family": "e6-box",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-1",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "지름이 10cm인 원의 둘레는 몇 cm일까요? (원주율은 3.14) (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 31.4
+   },
+   "hints": [
+    "원의 둘레 = 지름 × 원주율",
+    "10 × 3.14 의 값을 구해요."
+   ],
+   "explanation": "$10 \\times 3.14 = 31.4$. 둘레는 31.4cm.",
+   "role": "core",
+   "family": "e6-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-2",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "반지름이 5cm인 원의 넓이는 몇 cm²일까요? (원주율은 3.14) (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 78.5
+   },
+   "hints": [
+    "원의 넓이 = 반지름 × 반지름 × 원주율",
+    "5 × 5 × 3.14 의 값을 구해요."
+   ],
+   "explanation": "$5 \\times 5 \\times 3.14 = 78.5$. 넓이는 78.5cm².",
+   "role": "core",
+   "family": "e6-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-3",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "가로 5cm, 세로 4cm, 높이 3cm인 직육면체의 부피는 몇 cm³일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "부피 = 가로 × 세로 × 높이",
+    "5 × 4 × 3 의 값을 구해요."
+   ],
+   "explanation": "$5 \\times 4 \\times 3 = 60$. 부피는 60cm³.",
+   "role": "core",
+   "family": "e6-box",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-5",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "반지름이 10cm인 원의 넓이는 몇 cm²일까요? (원주율은 3.14) (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 314
+   },
+   "hints": [
+    "원의 넓이 = 반지름 × 반지름 × 원주율",
+    "10 × 10 × 3.14 의 값을 구해요."
+   ],
+   "explanation": "$10 \\times 10 \\times 3.14 = 314$. 넓이는 314cm².",
+   "role": "core",
+   "family": "e6-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-v1",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "지름이 20cm인 원의 둘레는 몇 cm일까요? (원주율은 3.14) (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 62.8
+   },
+   "hints": [
+    "원의 둘레 = 지름 × 원주율",
+    "20 × 3.14 의 값을 구해요."
+   ],
+   "explanation": "$20 \\times 3.14 = 62.8$. 둘레는 62.8cm.",
+   "role": "variant",
+   "family": "e6-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-v2",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "가로 6cm, 세로 3cm, 높이 5cm인 직육면체의 부피는 몇 cm³일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 90
+   },
+   "hints": [
+    "부피 = 가로 × 세로 × 높이",
+    "6 × 3 × 5 의 값을 구해요."
+   ],
+   "explanation": "$6 \\times 3 \\times 5 = 90$. 부피는 90cm³.",
+   "role": "variant",
+   "family": "e6-box",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-v3",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "반지름이 3cm인 원의 넓이는 몇 cm²일까요? (원주율은 3.14) (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 28.26
+   },
+   "hints": [
+    "원의 넓이 = 반지름 × 반지름 × 원주율",
+    "3 × 3 × 3.14 의 값을 구해요."
+   ],
+   "explanation": "$3 \\times 3 \\times 3.14 = 28.26$. 넓이는 28.26cm².",
+   "role": "variant",
+   "family": "e6-circle",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-geo-d1",
+   "site": "math",
+   "skillId": "m.e6.geo",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "지름이 5cm인 원의 둘레는 몇 cm일까요? (원주율은 3.14) (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 15.7
+   },
+   "hints": [
+    "원의 둘레 = 지름 × 원주율",
+    "5 × 3.14 의 값을 구해요."
+   ],
+   "explanation": "$5 \\times 3.14 = 15.7$. 둘레는 15.7cm.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-2",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "5개 수의 평균이 8이에요. 이 5개 수의 합은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 40
+   },
+   "hints": [
+    "합 = 평균 × 개수",
+    "8 × 5 의 값을 구해요."
+   ],
+   "explanation": "$8 \\times 5 = 40$.",
+   "role": "core",
+   "family": "e6-mean",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-4",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "수 2, 3, 3, 5, 3, 7 중에서 가장 많이 나타나는 수(최빈값)는 무엇일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "각 수가 몇 번 나왔는지 세어 보세요.",
+    "3이 몇 번 나오는지 확인해요."
+   ],
+   "explanation": "3이 세 번 나와서 가장 많아요.",
+   "role": "core",
+   "family": "e6-mean",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-5",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "4명의 평균 점수가 70점이에요. 다섯 번째 학생이 95점이면 5명의 평균 점수는 몇 점일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 75
+   },
+   "hints": [
+    "4명의 점수의 합을 먼저 구해요.",
+    "70 × 4 = 280 에 95를 더해요."
+   ],
+   "explanation": "$(70 \\times 4 + 95) \\div 5 = 75$.",
+   "role": "core",
+   "family": "e6-mean",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-1",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "점수가 80, 90, 70, 100점일 때 평균은 몇 점일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 85
+   },
+   "hints": [
+    "평균 = 모든 값의 합 ÷ 값의 개수",
+    "80 + 90 + 70 + 100 를 먼저 구해요."
+   ],
+   "explanation": "$(80 + 90 + 70 + 100) \\div 4 = 85$.",
+   "role": "core",
+   "family": "e6-mean",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-3",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "수 3, 7, 5, 9, 11의 중앙값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "크기 순서대로 늘어놓아요.",
+    "한가운데 있는 수가 중앙값이에요."
+   ],
+   "explanation": "3, 5, 7, 9, 11 에서 가운데 수는 7.",
+   "role": "core",
+   "family": "e6-mid",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-v1",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "점수가 6, 8, 10점일 때 평균은 몇 점일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "평균 = 모든 값의 합 ÷ 값의 개수",
+    "6 + 8 + 10 를 먼저 구해요."
+   ],
+   "explanation": "$(6 + 8 + 10) \\div 3 = 8$.",
+   "role": "variant",
+   "family": "e6-mean",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-v2",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "수 4, 9, 2, 7, 5의 중앙값은 얼마일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "크기 순서대로 늘어놓아요.",
+    "한가운데 있는 수가 중앙값이에요."
+   ],
+   "explanation": "2, 4, 5, 7, 9 에서 가운데 수는 5.",
+   "role": "variant",
+   "family": "e6-mid",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-stat-d1",
+   "site": "math",
+   "skillId": "m.e6.stat",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "점수가 10, 20점일 때 평균은 몇 점일까요? (숫자만 쓰세요)",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "평균 = 모든 값의 합 ÷ 값의 개수",
+    "10 + 20 를 먼저 구해요."
+   ],
+   "explanation": "$(10 + 20) \\div 2 = 15$.",
+   "role": "diagnostic",
+   "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  }
+ ]
+}

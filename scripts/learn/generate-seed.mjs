@@ -26,7 +26,11 @@ insert into public.learn_countries(code, name) values ('KR', '대한민국') on 
 insert into public.learn_subjects(code, name) values ('math', '수학'), ('english', '영어') on conflict do nothing;`);
 
 for (const site of ["math", "english"]) {
-  const { catalog, questions } = JSON.parse(readFileSync(path.join(root, `lib/learn/content/demo/${site}.json`), "utf8"));
+  // The same merge as lib/learn/content/repository.ts: elementary courses first, then the existing secondary course(s).
+  const demo = JSON.parse(readFileSync(path.join(root, `lib/learn/content/demo/${site}.json`), "utf8"));
+  const elementary = JSON.parse(readFileSync(path.join(root, `lib/learn/content/elementary/${site}.json`), "utf8"));
+  const catalog = { ...demo.catalog, skills: [...elementary.catalog.skills, ...demo.catalog.skills], courses: [...elementary.catalog.courses, ...demo.catalog.courses] };
+  const questions = [...elementary.questions, ...demo.questions];
   const subj = `(select id from public.learn_subjects where code = ${q(site)})`;
   out.push(`\n-- ${site}`);
   out.push(`insert into public.learn_curricula(code, country_code, name, status) values (${q(catalog.curriculum)}, ${q(catalog.country)}, ${q(catalog.curriculum)}, 'PUBLISHED') on conflict (code) do nothing;`);
@@ -38,7 +42,7 @@ for (const site of ["math", "english"]) {
   }
   catalog.courses.forEach((c, ci) => {
     out.push(`insert into public.learn_courses(code, curriculum_id, subject_id, school_level, grade, title, world_name, world_emoji, world_tagline, sort_order, status)
-  values (${q(c.id)}, (select id from public.learn_curricula where code = ${q(catalog.curriculum)}), ${subj}, ${q(c.grade.startsWith("M") ? "middle" : "high")}, ${q(c.grade)}, ${q(c.title)}, ${q(c.world.name)}, ${q(c.world.emoji)}, ${q(c.world.tagline)}, ${ci}, 'PUBLISHED') on conflict (code) do nothing;`);
+  values (${q(c.id)}, (select id from public.learn_curricula where code = ${q(catalog.curriculum)}), ${subj}, ${q(c.grade.startsWith("E") ? "elementary" : c.grade.startsWith("M") ? "middle" : "high")}, ${q(c.grade)}, ${q(c.title)}, ${q(c.world.name)}, ${q(c.world.emoji)}, ${q(c.world.tagline)}, ${ci}, 'PUBLISHED') on conflict (code) do nothing;`);
     c.units.forEach((u, ui) => {
       out.push(`insert into public.learn_units(code, course_id, title, sort_order, status) values (${q(u.id)}, (select id from public.learn_courses where code = ${q(c.id)}), ${q(u.title)}, ${ui}, 'PUBLISHED') on conflict (code) do nothing;`);
       u.lessons.forEach((l, li) => {

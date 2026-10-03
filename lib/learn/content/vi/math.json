@@ -1,0 +1,2740 @@
+{
+ "skills": {
+  "m.int": "Tính toán với số nguyên",
+  "m.expr": "Giá trị của biểu thức",
+  "m.prop": "Tính chất của đẳng thức",
+  "m.solve": "Giải phương trình bậc nhất",
+  "m.word": "Giải bài toán bằng phương trình",
+  "m.e1.count": "Đếm số",
+  "m.e1.addsub": "Cộng và trừ",
+  "m.e1.cmp": "So sánh các số",
+  "m.e1.shape": "Các hình cơ bản",
+  "m.e1.measure": "Độ dài và đồng hồ",
+  "m.e2.place": "Giá trị theo hàng",
+  "m.e2.addsub": "Cộng và trừ số có hai chữ số",
+  "m.e2.mul": "Làm quen với phép nhân",
+  "m.e2.time": "Độ dài và thời gian",
+  "m.e2.pattern": "Tìm quy luật",
+  "m.e3.muldiv": "Phép nhân và phép chia",
+  "m.e3.frac": "Làm quen với phân số",
+  "m.e3.unit": "Độ dài, dung tích và khối lượng",
+  "m.e3.geo": "Hình tròn và góc",
+  "m.e3.data": "Bảng và biểu đồ",
+  "m.e4.big": "Số lớn",
+  "m.e4.muldiv": "Nhân và chia số lớn",
+  "m.e4.frac": "Cộng trừ phân số và số thập phân",
+  "m.e4.angle": "Góc và hình học",
+  "m.e4.data": "Biểu đồ cột và trung bình cộng",
+  "m.e5.frac": "Cộng trừ phân số khác mẫu số",
+  "m.e5.dec": "Nhân số thập phân",
+  "m.e5.factor": "Ước số và bội số",
+  "m.e5.area": "Diện tích và thể tích",
+  "m.e5.ratio": "Tỉ số và tỉ lệ",
+  "m.e6.frac": "Nhân chia phân số và số thập phân",
+  "m.e6.ratio": "Tỉ lệ thức và chia theo tỉ lệ",
+  "m.e6.pct": "Phần trăm",
+  "m.e6.geo": "Hình tròn và hình khối",
+  "m.e6.stat": "Trung bình cộng và số liệu"
+ },
+ "courses": {
+  "math-m1-algebra": {
+   "title": "Toán Lớp 7 · Phương trình bậc nhất",
+   "world": {
+    "name": "Rừng Đại Số",
+    "tagline": "Khám phá khu rừng của chữ và biểu thức"
+   }
+  },
+  "math-e1": {
+   "title": "Toán Lớp 1 · Số và hình",
+   "world": {
+    "name": "Đồng cỏ Số",
+    "tagline": "Làm bạn với các con số và hình khối"
+   }
+  },
+  "math-e2": {
+   "title": "Toán Lớp 2 · Số có hai chữ số và phép nhân",
+   "world": {
+    "name": "Núi Phép Nhân",
+    "tagline": "Đếm theo nhóm để leo lên đỉnh núi"
+   }
+  },
+  "math-e3": {
+   "title": "Toán Lớp 3 · Nhân, chia và phân số",
+   "world": {
+    "name": "Đảo Phân Số",
+    "tagline": "Chia đều để khám phá hòn đảo"
+   }
+  },
+  "math-e4": {
+   "title": "Toán Lớp 4 · Số lớn, phân số và số thập phân",
+   "world": {
+    "name": "Hẻm Núi Số Lớn",
+    "tagline": "Vượt qua hẻm núi của những con số lớn"
+   }
+  },
+  "math-e5": {
+   "title": "Toán Lớp 5 · Phân số, số thập phân, ước và bội, diện tích",
+   "world": {
+    "name": "Đỉnh Núi Số Nguyên Tố",
+    "tagline": "Leo lên đỉnh núi của ước số và bội số"
+   }
+  },
+  "math-e6": {
+   "title": "Toán Lớp 6 · Phép tính phân số và số thập phân, tỉ lệ thức, hình tròn",
+   "world": {
+    "name": "Rạn San Hô Tỉ Lệ",
+    "tagline": "Bơi trong đại dương của tỉ lệ"
+   }
+  }
+ },
+ "units": {
+  "math-m1-linear-eq": "Phương trình bậc nhất",
+  "math-e1-u1": "Số, phép tính và hình",
+  "math-e2-u1": "Hàng, cộng trừ và bước đầu làm quen phép nhân",
+  "math-e3-u1": "Nhân chia, phân số, đo lường, hình học, số liệu",
+  "math-e4-u1": "Số lớn, nhân chia, phân số và số thập phân, góc, biểu đồ",
+  "math-e5-u1": "Phân số, số thập phân, ước và bội, diện tích và thể tích, tỉ lệ",
+  "math-e6-u1": "Phép tính phân số và số thập phân, tỉ lệ, phần trăm, hình tròn và thể tích, trung bình"
+ },
+ "lessons": {
+  "math-l1": {
+   "title": "Tính giá trị của biểu thức",
+   "concept": "Thay số vào chữ gọi là **thế**. Kết quả sau khi thế và tính là **giá trị của biểu thức**. Khi thế số âm, hãy đặt trong ngoặc để ít nhầm hơn.",
+   "example": "Khi $x=3$, $2x+1$ bằng $2\\times3+1=7$."
+  },
+  "math-l2": {
+   "title": "Tính chất của đẳng thức",
+   "concept": "Đẳng thức giống như một **chiếc cân**. Cộng, trừ cùng một số vào hai vế, hoặc nhân, chia hai vế cho cùng một số khác 0 thì cân vẫn thăng bằng.",
+   "example": "Trừ $5$ ở cả hai vế của $x+5=9$ ta được $x=4$."
+  },
+  "math-l3": {
+   "title": "Giải phương trình bậc nhất",
+   "concept": "Chuyển các số hạng chứa $x$ sang một vế, các số sang vế còn lại (**chuyển vế**). Khi chuyển vế thì đổi dấu. Cuối cùng chia cho hệ số của $x$ là xong!",
+   "example": "$2x+1=9 \\Rightarrow 2x=8 \\Rightarrow x=4$"
+  },
+  "math-l4": {
+   "title": "Giải toán bằng phương trình",
+   "concept": "Với bài toán có lời văn: **đặt ẩn $x$ cho đại lượng cần tìm** → viết đề bài thành phương trình → giải → kiểm tra đáp số có phù hợp với điều kiện không.",
+   "example": "Gấp $3$ lần một số rồi cộng $2$ được $14$ → $3x+2=14$ → $x=4$"
+  },
+  "math-e1-l1": {
+   "title": "Đếm số",
+   "concept": "Chỉ vào từng vật và đếm là biết có bao nhiêu. Khi có hơn 10 vật, hãy nhóm 5 hoặc 10 vật một để đếm cho dễ.",
+   "example": "🍎🍎🍎🍎🍎 → có 5 quả táo."
+  },
+  "math-e1-l2": {
+   "title": "Cộng và trừ",
+   "concept": "**Cộng (+)** là gộp hai số lại, còn **trừ (-)** là bớt đi từ số lớn.",
+   "example": "$3 + 4 = 7$, $8 - 3 = 5$"
+  },
+  "math-e1-l3": {
+   "title": "So sánh các số",
+   "concept": "Số lớn hơn dùng dấu **>**, số bé hơn dùng dấu **<**. Dấu luôn mở về phía số lớn hơn.",
+   "example": "$8 > 5$, $4 < 7$"
+  },
+  "math-e1-l4": {
+   "title": "Các hình cơ bản",
+   "concept": "**Hình tam giác** có 3 cạnh, **hình tứ giác** có 4 cạnh. **Hình tròn** tròn đều và không có đỉnh.",
+   "example": "Hình tam giác: 3 cạnh, 3 đỉnh"
+  },
+  "math-e1-l5": {
+   "title": "Độ dài và đồng hồ",
+   "concept": "Độ dài đo bằng **cm**. Kim ngắn của đồng hồ chỉ giờ, kim dài chỉ phút.",
+   "example": "Kim ngắn chỉ 4, kim dài chỉ 12 → 4 giờ"
+  },
+  "math-e2-l1": {
+   "title": "Giá trị theo hàng",
+   "concept": "Trong số có hai chữ số, chữ số bên trái là **hàng chục**, bên phải là **hàng đơn vị**. 10 chục hợp lại thành 100.",
+   "example": "$47$ = 4 chục và 7 đơn vị"
+  },
+  "math-e2-l2": {
+   "title": "Cộng và trừ số có hai chữ số",
+   "concept": "Tính hàng đơn vị với hàng đơn vị, hàng chục với hàng chục. Tổng từ 10 trở lên thì nhớ, không trừ được thì mượn.",
+   "example": "$45 + 27 = 72$, $61 - 28 = 33$"
+  },
+  "math-e2-l3": {
+   "title": "Làm quen với phép nhân",
+   "concept": "Cộng cùng một số nhiều lần có thể viết gọn bằng **phép nhân (×)**.",
+   "example": "$3 + 3 + 3 + 3 = 3 \\times 4 = 12$"
+  },
+  "math-e2-l4": {
+   "title": "Độ dài và thời gian",
+   "concept": "**1 m = 100 cm**. Trên đồng hồ, kim dài đi qua mỗi số là 5 phút.",
+   "example": "Kim dài chỉ số 6 → 30 phút"
+  },
+  "math-e2-l5": {
+   "title": "Tìm quy luật",
+   "concept": "Khi tìm ra **quy luật** tăng hoặc giảm của dãy số, ta biết được số tiếp theo.",
+   "example": "$2, 4, 6, 8, \\square$ → mỗi lần tăng 2, □ = 10"
+  },
+  "math-e3-l1": {
+   "title": "Phép nhân và phép chia",
+   "concept": "Phép nhân là cộng cùng một số nhiều lần, còn **phép chia** là chia đều. Thuộc bảng nhân thì chia cũng dễ.",
+   "example": "$6 \\times 7 = 42$, $42 \\div 6 = 7$"
+  },
+  "math-e3-l2": {
+   "title": "Làm quen với phân số",
+   "concept": "Một phần của cả đơn vị được chia đều gọi là **phân số**. Số dưới là **mẫu số**, số trên là **tử số**.",
+   "example": "$\\frac{3}{8}$ : 3 phần trong 8 phần"
+  },
+  "math-e3-l3": {
+   "title": "Độ dài, dung tích và khối lượng",
+   "concept": "**1 km = 1000 m**, **1 lít = 1000 mL**, **1 kg = 1000 g**. Đổi sang đơn vị nhỏ hơn thì nhân với 1000.",
+   "example": "$3\\text{ km} = 3000\\text{ m}$"
+  },
+  "math-e3-l4": {
+   "title": "Hình tròn và góc",
+   "concept": "**Góc vuông** bằng 90°. Trong hình tròn, **đường kính** gấp đôi **bán kính**.",
+   "example": "Bán kính 5 cm → đường kính 10 cm"
+  },
+  "math-e3-l5": {
+   "title": "Bảng và biểu đồ",
+   "concept": "Sắp xếp kết quả khảo sát vào bảng giúp ta dễ thấy cái nhiều nhất, ít nhất và tổng số.",
+   "example": "$7 + 5 + 9 + 4 = 25$ bạn"
+  },
+  "math-e4-l1": {
+   "title": "Số lớn",
+   "concept": "Đọc và viết số lớn theo đơn vị vạn (10000). Mỗi chữ số có giá trị theo **hàng** của nó.",
+   "example": "$5 \\times 10000 + 3 \\times 1000 = 53000$"
+  },
+  "math-e4-l2": {
+   "title": "Nhân và chia số lớn",
+   "concept": "Tách số nhân thành từng phần, nhân rồi cộng lại. Với phép chia, hãy ước lượng thương để kiểm tra.",
+   "example": "$34 \\times 12 = 408$"
+  },
+  "math-e4-l3": {
+   "title": "Cộng trừ phân số và số thập phân",
+   "concept": "Phân số cùng mẫu số thì **cộng trừ các tử số**. Số thập phân thì đặt thẳng hàng dấu phẩy rồi tính.",
+   "example": "$\\frac{3}{5} + \\frac{1}{5} = \\frac{4}{5}$"
+  },
+  "math-e4-l4": {
+   "title": "Góc và hình học",
+   "concept": "Tổng ba góc của tam giác là **180°**, tổng bốn góc của tứ giác là **360°**.",
+   "example": "$180 - 50 - 60 = 70$"
+  },
+  "math-e4-l5": {
+   "title": "Biểu đồ cột và trung bình cộng",
+   "concept": "Đọc số liệu để tính tổng và hiệu. **Trung bình cộng** bằng tổng chia cho số lượng.",
+   "example": "$60 \\div 4 = 15$"
+  },
+  "math-e5-l1": {
+   "title": "Cộng trừ phân số khác mẫu số",
+   "concept": "Khi mẫu số khác nhau, hãy **quy đồng** trước. Dùng bội chung nhỏ nhất của hai mẫu số làm mẫu số chung.",
+   "example": "$\\frac{1}{2} + \\frac{1}{3} = \\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$"
+  },
+  "math-e5-l2": {
+   "title": "Nhân số thập phân",
+   "concept": "Bỏ dấu phẩy, nhân như số tự nhiên, rồi đặt lại dấu phẩy sao cho có đủ chữ số thập phân.",
+   "example": "$0.6 \\times 4 = 2.4$"
+  },
+  "math-e5-l3": {
+   "title": "Ước số và bội số",
+   "concept": "**Ước số** là số chia hết một số cho trước; **bội số** là kết quả khi nhân số đó với 1, 2, 3, ...",
+   "example": "Các ước của 12: 1, 2, 3, 4, 6, 12"
+  },
+  "math-e5-l4": {
+   "title": "Diện tích và thể tích",
+   "concept": "Hình chữ nhật: **dài × rộng**; tam giác: **đáy × chiều cao ÷ 2**; thể tích hình hộp chữ nhật: **dài × rộng × cao**.",
+   "example": "$8 \\times 5 = 40$ cm²"
+  },
+  "math-e5-l5": {
+   "title": "Tỉ số và tỉ lệ",
+   "concept": "**Tỉ lệ** là số so sánh chia cho số gốc. Nhân tỉ lệ với 100 ta được **phần trăm (%)**.",
+   "example": "$3 : 5 \\to 3 \\div 5 = 0.6$"
+  },
+  "math-e6-l1": {
+   "title": "Nhân chia phân số và số thập phân",
+   "concept": "Nhân phân số: nhân tử với tử, mẫu với mẫu. Chia phân số: nhân với **số nghịch đảo**.",
+   "example": "$\\frac{3}{4} \\times \\frac{2}{5} = \\frac{3}{10}$"
+  },
+  "math-e6-l2": {
+   "title": "Tỉ lệ thức và chia theo tỉ lệ",
+   "concept": "Trong tỉ lệ thức, **tích hai trung tỉ = tích hai ngoại tỉ**. Chia một tổng theo tỉ lệ gọi là **chia tỉ lệ**.",
+   "example": "$3 : 4 = 12 : \\square \\to \\square = 16$"
+  },
+  "math-e6-l3": {
+   "title": "Phần trăm",
+   "concept": "**Phần trăm (%)** là tỉ lệ khi coi số gốc là 100. Nhân số thập phân với 100 ta được %.",
+   "example": "25% của 80 = $80 \\times 25 \\div 100 = 20$"
+  },
+  "math-e6-l4": {
+   "title": "Hình tròn và hình khối",
+   "concept": "Chu vi hình tròn = **đường kính × 3,14**; diện tích hình tròn = **bán kính × bán kính × 3,14**.",
+   "example": "$10 \\times 3.14 = 31.4$"
+  },
+  "math-e6-l5": {
+   "title": "Trung bình cộng và số liệu",
+   "concept": "**Trung bình cộng** = tổng ÷ số lượng, **số trung vị** là số ở giữa, **mốt** là số xuất hiện nhiều nhất.",
+   "example": "$(80 + 90 + 70 + 100) \\div 4 = 85$"
+  }
+ },
+ "questions": {
+  "m-expr-1": {
+   "prompt": "Khi $x=3$, giá trị của $2x+1$ là?",
+   "hints": [
+    "Hãy thay $3$ vào vị trí của $x$.",
+    "Tính $2\\times 3$ trước rồi cộng $1$."
+   ],
+   "explanation": "Thế $x=3$ ta được $2\\times3+1=6+1=7$."
+  },
+  "m-expr-2": {
+   "prompt": "Khi $x=-2$, hãy tính giá trị của $3x+4$.",
+   "hints": [
+    "Khi thế số âm, hãy viết trong ngoặc: $3\\times(-2)+4$.",
+    "$3\\times(-2)=-6$. Cộng thêm $4$ thì được bao nhiêu?"
+   ],
+   "explanation": "$3\\times(-2)+4=-6+4=-2$."
+  },
+  "m-expr-3": {
+   "prompt": "Khi $a=4,\\ b=-1$, hãy tính giá trị của $2a-3b$.",
+   "hints": [
+    "Thế từng giá trị của $a$ và $b$ để được $2\\times4-3\\times(-1)$.",
+    "Trừ một số âm thành cộng: $8-(-3)$."
+   ],
+   "explanation": "$2\\times4-3\\times(-1)=8+3=11$."
+  },
+  "m-expr-4": {
+   "prompt": "Khi $x=-1$, giá trị của $x^2+2x$ là?",
+   "hints": [
+    "$x^2$ là $(-1)\\times(-1)$.",
+    "Tính $x^2=1$ và $2x=-2$ rồi cộng lại."
+   ],
+   "explanation": "$(-1)^2+2\\times(-1)=1-2=-1$."
+  },
+  "m-expr-5": {
+   "prompt": "Khi $x=\\dfrac12$, hãy tính giá trị của $4x^2-2x+1$.",
+   "hints": [
+    "$x^2=\\dfrac14$.",
+    "Hãy dùng $4\\times\\dfrac14=1$ và $2\\times\\dfrac12=1$."
+   ],
+   "explanation": "$4\\times\\dfrac14-2\\times\\dfrac12+1=1-1+1=1$."
+  },
+  "m-expr-v1": {
+   "prompt": "Khi $x=5$, hãy tính giá trị của $3x-2$.",
+   "hints": [
+    "Thế $5$ vào vị trí của $x$.",
+    "Hãy tính $3\\times5-2$."
+   ],
+   "explanation": "$3\\times5-2=15-2=13$."
+  },
+  "m-expr-v2": {
+   "prompt": "Khi $x=-4$, hãy tính giá trị của $2x+9$.",
+   "hints": [
+    "Hãy viết $2\\times(-4)+9$.",
+    "$2\\times(-4)=-8$."
+   ],
+   "explanation": "$2\\times(-4)+9=-8+9=1$."
+  },
+  "m-expr-v3": {
+   "prompt": "Khi $x=-3$, hãy tính giá trị của $4x+5$.",
+   "hints": [
+    "Hãy tính $4\\times(-3)+5$.",
+    "$4\\times(-3)=-12$."
+   ],
+   "explanation": "$4\\times(-3)+5=-12+5=-7$."
+  },
+  "m-expr-v4": {
+   "prompt": "Khi $x=-2$, hãy tính giá trị của $x^2-3x$.",
+   "hints": [
+    "$x^2$ là $(-2)\\times(-2)$.",
+    "Hãy tính $4-3\\times(-2)$."
+   ],
+   "explanation": "$(-2)^2-3\\times(-2)=4+6=10$."
+  },
+  "m-prop-1": {
+   "prompt": "Nếu $a=b$ thì $a+3=b+3$. Đúng hay sai?",
+   "hints": [
+    "Cộng cùng một số vào hai vế thì đẳng thức có còn đúng không?",
+    "Hãy tưởng tượng đặt thêm cùng một khối lượng vào hai đĩa cân."
+   ],
+   "explanation": "Cộng cùng một số vào hai vế thì đẳng thức vẫn đúng. Vì vậy đáp án là Đúng (O)."
+  },
+  "m-prop-2": {
+   "prompt": "Trừ $5$ ở cả hai vế của $x+5=9$ thì được?",
+   "hints": [
+    "Trừ cùng một số ở hai vế thì đẳng thức vẫn đúng.",
+    "Vế trái thành $x+5-5=x$. Vế phải là $9-5$."
+   ],
+   "explanation": "$x+5-5=9-5$ nên $x=4$."
+  },
+  "m-prop-3": {
+   "prompt": "Nhân cả hai vế của $\\dfrac{x}{3}=4$ với $3$ thì được?",
+   "hints": [
+    "Để mất phép chia, hãy nhân với cùng một số.",
+    "Vế trái là $\\dfrac{x}{3}\\times3=x$."
+   ],
+   "explanation": "$\\dfrac{x}{3}\\times3=4\\times3$ nên $x=12$."
+  },
+  "m-prop-4": {
+   "prompt": "Khẳng định nào về tính chất của đẳng thức là KHÔNG đúng? (với $a=b$)",
+   "hints": [
+    "Có một số cần chú ý khi chia.",
+    "Điều gì xảy ra nếu $c=0$?"
+   ],
+   "explanation": "Không thể chia cho $0$, nên chỉ chia hai vế cho $c$ khi $c\\neq0$.",
+   "options": {
+    "c": "$\\dfrac{a}{c}=\\dfrac{b}{c}$ (c là số bất kỳ)"
+   }
+  },
+  "m-prop-5": {
+   "prompt": "Dùng tính chất của đẳng thức để tìm $x$ trong $2x-3=7$.",
+   "hints": [
+    "Trước hết cộng $3$ vào hai vế để được $2x=10$.",
+    "Sau đó chia cả hai vế cho 2."
+   ],
+   "explanation": "$2x=10$ nên $x=5$."
+  },
+  "m-prop-v1": {
+   "prompt": "Nếu $a=b$ thì $a-5=b-5$. Đúng hay sai?",
+   "hints": [
+    "Trừ cùng một số ở hai vế thì đẳng thức có còn đúng không?",
+    "Hãy tưởng tượng bớt cùng một khối lượng ở hai đĩa cân."
+   ],
+   "explanation": "Trừ cùng một số ở hai vế thì đẳng thức vẫn đúng."
+  },
+  "m-prop-v2": {
+   "prompt": "Cộng $2$ vào cả hai vế của $x-2=6$ thì được?",
+   "hints": [
+    "Cộng cùng một số vào hai vế.",
+    "$x-2+2=x$."
+   ],
+   "explanation": "$x-2+2=6+2$ nên $x=8$."
+  },
+  "m-solve-1": {
+   "prompt": "Biết $x+7=12$, hãy tìm $x$.",
+   "hints": [
+    "Chuyển $7$ sang vế phải thì đổi dấu.",
+    "$x=12-7$"
+   ],
+   "explanation": "$x=12-7=5$."
+  },
+  "m-solve-2": {
+   "prompt": "Biết $3x=-12$, hãy tìm $x$.",
+   "hints": [
+    "Chia cả hai vế cho $3$.",
+    "Hãy tính $-12\\div3$."
+   ],
+   "explanation": "$x=-12\\div3=-4$."
+  },
+  "m-solve-3": {
+   "prompt": "Biết $2x+1=9$, hãy tìm $x$.",
+   "hints": [
+    "Trước hết chuyển $+1$ sang vế phải.",
+    "Ta được 2x=8. Bây giờ chia hai vế thì được bao nhiêu?"
+   ],
+   "explanation": "$2x=9-1=8$, do đó $x=4$."
+  },
+  "m-solve-4": {
+   "prompt": "Biết $5x-4=3x+6$, hãy tìm $x$.",
+   "hints": [
+    "Gom các số hạng chứa $x$ sang vế trái, các số sang vế phải (chuyển vế).",
+    "$5x-3x=6+4$."
+   ],
+   "explanation": "$5x-3x=6+4$, $2x=10$ nên $x=5$."
+  },
+  "m-solve-5": {
+   "prompt": "Biết $\\dfrac{x-1}{2}=\\dfrac{x+2}{3}$, hãy tìm $x$.",
+   "hints": [
+    "Nhân hai vế với bội chung nhỏ nhất của mẫu số $2$ và $3$, tức là $6$.",
+    "Hãy khai triển $3(x-1)=2(x+2)$."
+   ],
+   "explanation": "$3x-3=2x+4$ nên $x=7$."
+  },
+  "m-solve-v1": {
+   "prompt": "Biết $x-3=8$, hãy tìm $x$.",
+   "hints": [
+    "Chuyển $-3$ sang vế phải thì thành $+3$.",
+    "$x=8+3$"
+   ],
+   "explanation": "$x=8+3=11$."
+  },
+  "m-solve-v2": {
+   "prompt": "Biết $4x+3=19$, hãy tìm $x$.",
+   "hints": [
+    "Trước hết chuyển $+3$ sang vế phải.",
+    "$4x=16$"
+   ],
+   "explanation": "$4x=19-3=16$, do đó $x=4$."
+  },
+  "m-solve-v3": {
+   "prompt": "Biết $6x-5=2x+15$, hãy tìm $x$.",
+   "hints": [
+    "Gom số hạng chứa $x$ sang vế trái, các số sang vế phải.",
+    "$6x-2x=15+5$"
+   ],
+   "explanation": "$4x=20$ nên $x=5$."
+  },
+  "m-word-1": {
+   "prompt": "Gấp $3$ lần một số rồi cộng $2$ được $14$. Gọi số đó là $x$, phương trình đúng là?",
+   "hints": [
+    "Hãy viết \"gấp 3 lần một số\" thành biểu thức trước.",
+    "Cộng $2$ vào $3x$ thì được $14$."
+   ],
+   "explanation": "Gấp $3$ lần số đó là $3x$, cộng $2$ được $14$ nên $3x+2=14$."
+  },
+  "m-word-2": {
+   "prompt": "Tổng của hai số tự nhiên liên tiếp là $25$. Hãy tìm số bé.",
+   "hints": [
+    "Gọi số bé là $x$ thì số lớn là $x+1$.",
+    "$x+(x+1)=25$"
+   ],
+   "explanation": "$2x+1=25$, $2x=24$, $x=12$."
+  },
+  "m-word-3": {
+   "prompt": "Một quả táo giá $800$ đồng, một quả quýt giá $500$ đồng. Mua $3$ quả táo và $x$ quả quýt hết $3900$ đồng. Hỏi đã mua bao nhiêu quả quýt?",
+   "hints": [
+    "Tiền táo là $800\\times3=2400$ đồng.",
+    "$2400+500x=3900$"
+   ],
+   "explanation": "$500x=1500$ nên $x=3$, tức là $3$ quả quýt."
+  },
+  "m-word-4": {
+   "prompt": "Hiện nay bố $42$ tuổi, con $10$ tuổi. Sau bao nhiêu năm thì tuổi bố gấp $2$ lần tuổi con?",
+   "hints": [
+    "Sau $x$ năm, bố $42+x$ tuổi, con $10+x$ tuổi.",
+    "$42+x=2(10+x)$"
+   ],
+   "explanation": "$42+x=20+2x$ nên $x=22$, tức là sau $22$ năm."
+  },
+  "m-word-5": {
+   "prompt": "Đi từ nhà đến trường với vận tốc $3\\,\\text{km/h}$ thì lâu hơn đi với vận tốc $4\\,\\text{km/h}$ là $10$ phút. Quãng đường từ nhà đến trường dài bao nhiêu $\\text{km}$?",
+   "hints": [
+    "Thời gian = quãng đường ÷ vận tốc. $10$ phút là $\\dfrac16$ giờ.",
+    "Hãy giải $\\dfrac{x}{3}-\\dfrac{x}{4}=\\dfrac16$."
+   ],
+   "explanation": "$\\dfrac{x}{12}=\\dfrac16$ nên $x=2$, quãng đường dài $2\\,\\text{km}$."
+  },
+  "m-word-v1": {
+   "prompt": "Gấp $2$ lần một số rồi cộng $5$ được $17$. Hãy tìm số đó.",
+   "hints": [
+    "Gọi số đó là $x$ thì $2x+5=17$.",
+    "$2x=12$"
+   ],
+   "explanation": "$2x=12$ nên $x=6$."
+  },
+  "m-word-v2": {
+   "prompt": "Tổng của hai số tự nhiên liên tiếp là $31$. Hãy tìm số bé.",
+   "hints": [
+    "Gọi số bé là $x$ thì $x+(x+1)=31$.",
+    "$2x=30$"
+   ],
+   "explanation": "$2x+1=31$ nên $x=15$."
+  },
+  "m-diag-int1": {
+   "prompt": "Hãy tính $(-3)+(-5)$.",
+   "hints": [
+    "Cộng hai số cùng dấu thì cộng giá trị tuyệt đối và giữ nguyên dấu.",
+    "Lấy $3+5=8$ rồi thêm dấu âm."
+   ],
+   "explanation": "$(-3)+(-5)=-8$."
+  },
+  "m-diag-int2": {
+   "prompt": "Hãy tính $-12\\div3+5$.",
+   "hints": [
+    "Tính phép chia trước.",
+    "$-12\\div3=-4$."
+   ],
+   "explanation": "$-4+5=1$."
+  },
+  "m-diag-expr1": {
+   "prompt": "Khi $x=-3$, hãy tính giá trị của $2x+7$.",
+   "hints": [
+    "Hãy viết $2\\times(-3)+7$.",
+    "$2\\times(-3)=-6$"
+   ],
+   "explanation": "$-6+7=1$."
+  },
+  "m-diag-expr2": {
+   "prompt": "Khi $x=2$, hãy tính giá trị của $x^2-3x$.",
+   "hints": [
+    "$x^2=4$, $3x=6$.",
+    "$4-6$"
+   ],
+   "explanation": "$2^2-3\\times2=4-6=-2$."
+  },
+  "m-diag-prop1": {
+   "prompt": "Cộng $4$ vào cả hai vế của $x-4=6$ thì được?",
+   "hints": [
+    "Cộng cùng một số vào hai vế thì đẳng thức vẫn đúng.",
+    "$x-4+4=x$"
+   ],
+   "explanation": "$x=6+4=10$."
+  },
+  "m-diag-prop2": {
+   "prompt": "Từ $2x=10$, cách dùng tính chất của đẳng thức nào là đúng?",
+   "hints": [
+    "Muốn bỏ số $2$ đứng trước $x$ thì làm thế nào?",
+    "Số đang nhân thì bỏ đi bằng phép chia."
+   ],
+   "explanation": "Chia cả hai vế cho hệ số $2$ của $x$ ta được $x=5$.",
+   "options": {
+    "a": "Chia cả hai vế cho $2$",
+    "b": "Cộng $2$ vào cả hai vế",
+    "c": "Trừ $10$ ở cả hai vế",
+    "d": "Nhân cả hai vế với $0$"
+   }
+  },
+  "m-diag-solve1": {
+   "prompt": "Biết $2x-5=9$, hãy tìm $x$.",
+   "hints": [
+    "Chuyển $-5$ sang vế phải.",
+    "$2x=14$"
+   ],
+   "explanation": "$2x=14$ nên $x=7$."
+  },
+  "m-diag-solve2": {
+   "prompt": "Biết $3x+4=x+12$, hãy tìm $x$.",
+   "hints": [
+    "Gom số hạng chứa $x$ sang vế trái.",
+    "$3x-x=12-4$"
+   ],
+   "explanation": "$2x=8$ nên $x=4$."
+  },
+  "m-diag-word1": {
+   "prompt": "Gấp $4$ lần một số rồi trừ $3$ được $17$. Hãy tìm số đó.",
+   "hints": [
+    "Gọi số đó là $x$ thì $4x-3=17$.",
+    "$4x=20$"
+   ],
+   "explanation": "$4x=20$ nên $x=5$."
+  },
+  "m-diag-word2": {
+   "prompt": "Tổng của ba số tự nhiên liên tiếp là $42$. Hãy tìm số bé nhất.",
+   "hints": [
+    "Gọi số bé nhất là $x$ thì ba số là $x,\\ x+1,\\ x+2$.",
+    "$3x+3=42$"
+   ],
+   "explanation": "$3x+3=42$, $3x=39$, $x=13$."
+  },
+  "m-e1-count-1": {
+   "prompt": "Có tất cả bao nhiêu quả táo? 🍎🍎🍎🍎",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 4."
+  },
+  "m-e1-count-2": {
+   "prompt": "Có tất cả bao nhiêu viên kẹo? 🍬🍬🍬🍬🍬🍬🍬",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 7."
+  },
+  "m-e1-count-3": {
+   "prompt": "Có tất cả bao nhiêu miếng dán? ⭐⭐⭐⭐⭐⭐⭐⭐⭐",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 9."
+  },
+  "m-e1-count-4": {
+   "prompt": "Có tất cả bao nhiêu quả bóng bay? 🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 13."
+  },
+  "m-e1-count-5": {
+   "prompt": "Có tất cả bao nhiêu viên bi? 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 18."
+  },
+  "m-e1-count-v1": {
+   "prompt": "Có tất cả bao nhiêu bông hoa? 🌸🌸🌸🌸🌸🌸",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 6."
+  },
+  "m-e1-count-v2": {
+   "prompt": "Có tất cả bao nhiêu chiếc bánh quy? 🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 15."
+  },
+  "m-e1-count-d1": {
+   "prompt": "Có tất cả bao nhiêu con chim? 🐦🐦🐦🐦🐦🐦🐦🐦",
+   "hints": [
+    "Hãy chỉ từng hình bằng ngón tay rồi đếm nhé.",
+    "Nếu có hơn 10 hình, hãy nhóm 5 hình một rồi đếm."
+   ],
+   "explanation": "Đếm lần lượt từng hình, ta được tất cả 8."
+  },
+  "m-e1-addsub-1": {
+   "prompt": "Tính giá trị của $3 + 4$.",
+   "hints": [
+    "Hãy dùng ngón tay hoặc hình vẽ để đếm tiếp.",
+    "Đếm tiếp từ 3 thêm 4 số."
+   ],
+   "explanation": "$3 + 4 = 7$."
+  },
+  "m-e1-addsub-2": {
+   "prompt": "Tính giá trị của $8 - 3$.",
+   "hints": [
+    "Hãy đếm lùi từ số lớn.",
+    "Đếm lùi 3 số, bắt đầu từ 8."
+   ],
+   "explanation": "$8 - 3 = 5$."
+  },
+  "m-e1-addsub-3": {
+   "prompt": "Có 5 quả táo. Được cho thêm 3 quả nữa. Hỏi có tất cả bao nhiêu quả?",
+   "hints": [
+    "Gộp số lúc đầu với số nhận thêm.",
+    "Hãy viết phép tính cộng (+)."
+   ],
+   "explanation": "$5 + 3 = 8$ nên có tất cả 8 quả."
+  },
+  "m-e1-addsub-4": {
+   "prompt": "Có 9 viên kẹo. Đã ăn 4 viên. Hỏi còn lại bao nhiêu viên?",
+   "hints": [
+    "Lấy số lúc đầu trừ đi số đã mất.",
+    "Hãy viết phép tính trừ (-)."
+   ],
+   "explanation": "$9 - 4 = 5$ nên còn lại 5 viên."
+  },
+  "m-e1-addsub-5": {
+   "prompt": "Tính giá trị của $15 - 8$.",
+   "hints": [
+    "Hãy đếm lùi từ số lớn.",
+    "Đếm lùi 8 số, bắt đầu từ 15."
+   ],
+   "explanation": "$15 - 8 = 7$."
+  },
+  "m-e1-addsub-v1": {
+   "prompt": "Tính giá trị của $2 + 6$.",
+   "hints": [
+    "Hãy dùng ngón tay hoặc hình vẽ để đếm tiếp.",
+    "Đếm tiếp từ 2 thêm 6 số."
+   ],
+   "explanation": "$2 + 6 = 8$."
+  },
+  "m-e1-addsub-v2": {
+   "prompt": "Tính giá trị của $10 - 6$.",
+   "hints": [
+    "Hãy đếm lùi từ số lớn.",
+    "Đếm lùi 6 số, bắt đầu từ 10."
+   ],
+   "explanation": "$10 - 6 = 4$."
+  },
+  "m-e1-addsub-v3": {
+   "prompt": "Có 6 chiếc bánh quy. Được cho thêm 5 chiếc nữa. Hỏi có tất cả bao nhiêu chiếc?",
+   "hints": [
+    "Gộp số lúc đầu với số nhận thêm.",
+    "Hãy viết phép tính cộng (+)."
+   ],
+   "explanation": "$6 + 5 = 11$ nên có tất cả 11 chiếc."
+  },
+  "m-e1-addsub-d1": {
+   "prompt": "Tính giá trị của $4 + 5$.",
+   "hints": [
+    "Hãy dùng ngón tay hoặc hình vẽ để đếm tiếp.",
+    "Đếm tiếp từ 4 thêm 5 số."
+   ],
+   "explanation": "$4 + 5 = 9$."
+  },
+  "m-e1-addsub-d2": {
+   "prompt": "Tính giá trị của $13 - 6$.",
+   "hints": [
+    "Hãy đếm lùi từ số lớn.",
+    "Đếm lùi 6 số, bắt đầu từ 13."
+   ],
+   "explanation": "$13 - 6 = 7$."
+  },
+  "m-e1-cmp-1": {
+   "prompt": "Trong các số $5$, $8$, $6$, số nào lớn nhất?",
+   "hints": [
+    "Hãy so sánh ba số, bắt đầu từ hàng chục.",
+    "Trên tia số, hãy tìm số nằm ngoài cùng bên phải."
+   ],
+   "explanation": "Số lớn nhất: $8$."
+  },
+  "m-e1-cmp-2": {
+   "prompt": "Trong các số $12$, $9$, $10$, số nào bé nhất?",
+   "hints": [
+    "Hãy so sánh ba số, bắt đầu từ hàng chục.",
+    "Trên tia số, hãy tìm số nằm ngoài cùng bên trái."
+   ],
+   "explanation": "Số bé nhất: $9$."
+  },
+  "m-e1-cmp-3": {
+   "prompt": "Chọn dấu thích hợp thay cho ô vuông: $7 \\square 4$.",
+   "hints": [
+    "Hãy xem số bên trái hay số bên phải lớn hơn.",
+    "Dấu > hoặc < luôn mở về phía số lớn hơn."
+   ],
+   "explanation": "$7 > 4$."
+  },
+  "m-e1-cmp-4": {
+   "prompt": "Phép so sánh $9 < 11$ có đúng không?",
+   "hints": [
+    "Hãy so sánh hai số trước.",
+    "Kiểm tra dấu có mở về phía số lớn hơn không."
+   ],
+   "explanation": "So sánh ta có $9 < 11$, nên phép so sánh đúng."
+  },
+  "m-e1-cmp-5": {
+   "prompt": "Trong các số $14$, $9$, $17$, $11$, số nào lớn nhất?",
+   "hints": [
+    "Hãy tìm các số có chữ số hàng chục lớn trước.",
+    "Nếu hàng chục bằng nhau, hãy so sánh hàng đơn vị."
+   ],
+   "explanation": "$17$ là số lớn nhất."
+  },
+  "m-e1-cmp-v1": {
+   "prompt": "Trong các số $11$, $10$, $13$, số nào lớn nhất?",
+   "hints": [
+    "Hãy so sánh ba số, bắt đầu từ hàng chục.",
+    "Trên tia số, hãy tìm số nằm ngoài cùng bên phải."
+   ],
+   "explanation": "Số lớn nhất: $13$."
+  },
+  "m-e1-cmp-v2": {
+   "prompt": "Chọn dấu thích hợp thay cho ô vuông: $6 \\square 6$.",
+   "hints": [
+    "Hãy xem số bên trái hay số bên phải lớn hơn.",
+    "Dấu > hoặc < luôn mở về phía số lớn hơn."
+   ],
+   "explanation": "$6 = 6$."
+  },
+  "m-e1-cmp-d1": {
+   "prompt": "Trong các số $16$, $15$, $18$, số nào bé nhất?",
+   "hints": [
+    "Hãy so sánh ba số, bắt đầu từ hàng chục.",
+    "Trên tia số, hãy tìm số nằm ngoài cùng bên trái."
+   ],
+   "explanation": "Số bé nhất: $15$."
+  },
+  "m-e1-shape-1": {
+   "prompt": "Hình nào có 3 đỉnh?",
+   "hints": [
+    "Đỉnh là điểm nhọn nơi các cạnh gặp nhau.",
+    "Tên của hình tam giác có số 3 (tam)."
+   ],
+   "explanation": "Hình có 3 đỉnh là hình tam giác.",
+   "options": {
+    "a": "Hình tròn",
+    "b": "Hình tam giác",
+    "c": "Hình tứ giác (có 4 cạnh)",
+    "d": "Hình ngũ giác"
+   }
+  },
+  "m-e1-shape-2": {
+   "prompt": "Hình nào tròn và không có đỉnh?",
+   "hints": [
+    "Hãy nghĩ đến hình tròn trịa, không có góc nhọn.",
+    "Giống hình đồng xu hoặc cái đĩa."
+   ],
+   "explanation": "Hình tròn trịa và không có đỉnh là hình tròn.",
+   "options": {
+    "a": "Hình tứ giác (có 4 cạnh)",
+    "b": "Hình tam giác",
+    "c": "Hình ngũ giác",
+    "d": "Hình tròn"
+   }
+  },
+  "m-e1-shape-3": {
+   "prompt": "Hình nào có 4 cạnh?",
+   "hints": [
+    "Cạnh là các đoạn thẳng của hình.",
+    "Chữ 'tứ' trong 'tứ giác' có nghĩa là 4."
+   ],
+   "explanation": "Hình có 4 cạnh là hình tứ giác.",
+   "options": {
+    "a": "Hình tam giác",
+    "b": "Hình tứ giác (có 4 cạnh)",
+    "c": "Hình tròn",
+    "d": "Hình ngũ giác"
+   }
+  },
+  "m-e1-shape-4": {
+   "prompt": "Hình tam giác có 3 cạnh. Đúng hay sai?",
+   "hints": [
+    "Hãy vẽ một hình tam giác và đếm từng cạnh.",
+    "Số đỉnh và số cạnh của hình tam giác bằng nhau."
+   ],
+   "explanation": "Hình tam giác có 3 cạnh và 3 đỉnh."
+  },
+  "m-e1-shape-5": {
+   "prompt": "Hình nào có 4 cạnh và cả 4 cạnh dài bằng nhau?",
+   "hints": [
+    "Cả bốn cạnh phải dài bằng nhau.",
+    "Hình chữ nhật chỉ có các cạnh đối diện bằng nhau."
+   ],
+   "explanation": "Hình có 4 cạnh bằng nhau là hình vuông.",
+   "options": {
+    "a": "Hình chữ nhật",
+    "b": "Hình tam giác",
+    "c": "Hình tròn",
+    "d": "Hình vuông"
+   }
+  },
+  "m-e1-shape-v1": {
+   "prompt": "Hình nào có 4 đỉnh?",
+   "hints": [
+    "Hãy đếm từng đỉnh.",
+    "Hình có 4 cạnh thì cũng có 4 đỉnh."
+   ],
+   "explanation": "Hình có 4 đỉnh là hình tứ giác.",
+   "options": {
+    "a": "Hình tròn",
+    "b": "Hình tam giác",
+    "c": "Hình ngũ giác",
+    "d": "Hình tứ giác (có 4 cạnh)"
+   }
+  },
+  "m-e1-shape-v2": {
+   "prompt": "Hình tròn không có đỉnh. Đúng hay sai?",
+   "hints": [
+    "Hãy xem hình tròn có chỗ nhọn nào không.",
+    "Hình tròn tròn đều từ đầu đến cuối."
+   ],
+   "explanation": "Hình tròn không có đỉnh và cũng không có cạnh thẳng."
+  },
+  "m-e1-shape-d1": {
+   "prompt": "Hình nào có 3 cạnh?",
+   "hints": [
+    "Hãy đếm từng cạnh.",
+    "Số 3 gọi là 'tam'."
+   ],
+   "explanation": "Hình có 3 cạnh là hình tam giác.",
+   "options": {
+    "a": "Hình tứ giác (có 4 cạnh)",
+    "b": "Hình tròn",
+    "c": "Hình tam giác",
+    "d": "Hình ngũ giác"
+   }
+  },
+  "m-e1-measure-1": {
+   "prompt": "Dải ruy băng đỏ dài 15 cm, dải xanh dài 18 cm, dải lục dài 20 cm. Dải nào dài nhất?",
+   "hints": [
+    "Hãy so sánh ba số đo độ dài.",
+    "Số càng lớn thì càng dài."
+   ],
+   "explanation": "20 cm dài nhất nên dải lục dài nhất.",
+   "options": {
+    "a": "Dải ruy băng đỏ",
+    "b": "Dải ruy băng xanh",
+    "c": "Dải ruy băng lục"
+   }
+  },
+  "m-e1-measure-2": {
+   "prompt": "Bút chì dài 7 cm, cục tẩy dài 4 cm. Bút chì dài hơn cục tẩy bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Lấy số đo dài trừ số đo ngắn.",
+    "Hãy tính 7 - 4."
+   ],
+   "explanation": "$7 - 4 = 3$ nên dài hơn 3 cm."
+  },
+  "m-e1-measure-3": {
+   "prompt": "Kim giờ chỉ số 4, kim phút chỉ số 12. Đồng hồ chỉ mấy giờ? (chỉ nhập số)",
+   "hints": [
+    "Kim ngắn cho biết số giờ.",
+    "Kim dài ở số 12 nghĩa là đúng giờ."
+   ],
+   "explanation": "Kim ngắn ở số 4, kim dài ở số 12 nên là 4 giờ đúng."
+  },
+  "m-e1-measure-4": {
+   "prompt": "Nối 3 chiếc kẹp giấy, mỗi chiếc dài 2 cm, thành một hàng. Cả hàng dài bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Cộng cùng một độ dài nhiều lần.",
+    "Hãy tính 2 + 2 + 2."
+   ],
+   "explanation": "$2 + 2 + 2 = 6$."
+  },
+  "m-e1-measure-5": {
+   "prompt": "Sợi dây đỏ dài 12 cm, sợi dây xanh dài 9 cm. Nối hai sợi lại thành một sợi dài thì dài bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Nối lại thì cộng hai độ dài.",
+    "Hãy tính 12 + 9."
+   ],
+   "explanation": "$12 + 9 = 21$ nên dài tất cả 21 cm."
+  },
+  "m-e1-measure-v1": {
+   "prompt": "Dải ruy băng đỏ dài 11 cm, dải xanh dài 18 cm, dải lục dài 14 cm. Dải nào dài nhất?",
+   "hints": [
+    "Hãy so sánh ba số đo độ dài.",
+    "Số càng lớn thì càng dài."
+   ],
+   "explanation": "18 cm dài nhất nên dải xanh dài nhất.",
+   "options": {
+    "a": "Dải ruy băng đỏ",
+    "b": "Dải ruy băng xanh",
+    "c": "Dải ruy băng lục"
+   }
+  },
+  "m-e1-measure-v2": {
+   "prompt": "Kim giờ chỉ số 9, kim phút chỉ số 12. Đồng hồ chỉ mấy giờ? (chỉ nhập số)",
+   "hints": [
+    "Kim ngắn cho biết số giờ.",
+    "Kim dài ở số 12 nghĩa là đúng giờ."
+   ],
+   "explanation": "Kim ngắn ở số 9, kim dài ở số 12 nên là 9 giờ đúng."
+  },
+  "m-e1-measure-d1": {
+   "prompt": "Bút chì dài 15 cm, cục tẩy dài 9 cm. Bút chì dài hơn cục tẩy bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Lấy số đo dài trừ số đo ngắn.",
+    "Hãy tính 15 - 9."
+   ],
+   "explanation": "$15 - 9 = 6$ nên dài hơn 6 cm."
+  },
+  "m-e2-place-1": {
+   "prompt": "Trong số $47$, chữ số hàng chục là mấy? (chỉ nhập số)",
+   "hints": [
+    "Trong số có hai chữ số, chữ số bên trái là hàng chục.",
+    "Chữ số bên phải là hàng đơn vị."
+   ],
+   "explanation": "Số $47$ có hàng chục là 4, hàng đơn vị là 7."
+  },
+  "m-e2-place-2": {
+   "prompt": "5 chục và 3 đơn vị là số nào? (chỉ nhập số)",
+   "hints": [
+    "Số chục chính là chữ số hàng chục.",
+    "Hãy cộng 50 với 3."
+   ],
+   "explanation": "$50 + 3 = 53$."
+  },
+  "m-e2-place-3": {
+   "prompt": "Trong số $82$, chữ số hàng chục là mấy? (chỉ nhập số)",
+   "hints": [
+    "Trong số có hai chữ số, chữ số bên trái là hàng chục.",
+    "Chữ số bên phải là hàng đơn vị."
+   ],
+   "explanation": "Số $82$ có hàng chục là 8, hàng đơn vị là 2."
+  },
+  "m-e2-place-4": {
+   "prompt": "Số nào lớn hơn $29$ một đơn vị? (chỉ nhập số)",
+   "hints": [
+    "Hãy cộng thêm 1.",
+    "Nếu hàng đơn vị là 9, hàng chục sẽ tăng thêm một."
+   ],
+   "explanation": "$29 + 1 = 30$."
+  },
+  "m-e2-place-5": {
+   "prompt": "Số 100 gồm bao nhiêu chục? (chỉ nhập số)",
+   "hints": [
+    "Hãy đếm 10, 20, 30, ... cho đến 100.",
+    "Đếm nhảy cách 10 bao nhiêu lần thì được 100?"
+   ],
+   "explanation": "10 chục hợp lại thành 100."
+  },
+  "m-e2-place-v1": {
+   "prompt": "Trong số $65$, chữ số hàng chục là mấy? (chỉ nhập số)",
+   "hints": [
+    "Trong số có hai chữ số, chữ số bên trái là hàng chục.",
+    "Chữ số bên phải là hàng đơn vị."
+   ],
+   "explanation": "Số $65$ có hàng chục là 6, hàng đơn vị là 5."
+  },
+  "m-e2-place-v2": {
+   "prompt": "7 chục và 4 đơn vị là số nào? (chỉ nhập số)",
+   "hints": [
+    "Số chục chính là chữ số hàng chục.",
+    "Hãy cộng 70 với 4."
+   ],
+   "explanation": "$70 + 4 = 74$."
+  },
+  "m-e2-place-d1": {
+   "prompt": "3 chục và 6 đơn vị là số nào? (chỉ nhập số)",
+   "hints": [
+    "Số chục chính là chữ số hàng chục.",
+    "Hãy cộng 30 với 6."
+   ],
+   "explanation": "$30 + 6 = 36$."
+  },
+  "m-e2-addsub-1": {
+   "prompt": "Tính $23 + 14$.",
+   "hints": [
+    "Cộng hàng đơn vị với hàng đơn vị, hàng chục với hàng chục.",
+    "Cộng hàng đơn vị trước, rồi cộng hàng chục."
+   ],
+   "explanation": "$23 + 14 = 37$."
+  },
+  "m-e2-addsub-2": {
+   "prompt": "Tính $45 + 27$.",
+   "hints": [
+    "Cộng hàng đơn vị với hàng đơn vị, hàng chục với hàng chục.",
+    "Nếu tổng hàng đơn vị từ 10 trở lên, hãy nhớ 1 sang hàng chục."
+   ],
+   "explanation": "$45 + 27 = 72$."
+  },
+  "m-e2-addsub-3": {
+   "prompt": "Tính $58 - 23$.",
+   "hints": [
+    "Trừ hàng đơn vị cho hàng đơn vị, hàng chục cho hàng chục.",
+    "Trừ hàng đơn vị trước, rồi trừ hàng chục."
+   ],
+   "explanation": "$58 - 23 = 35$."
+  },
+  "m-e2-addsub-4": {
+   "prompt": "Tính $61 - 28$.",
+   "hints": [
+    "Trừ hàng đơn vị cho hàng đơn vị, hàng chục cho hàng chục.",
+    "Nếu hàng đơn vị không trừ được, hãy mượn 10 từ hàng chục."
+   ],
+   "explanation": "$61 - 28 = 33$."
+  },
+  "m-e2-addsub-5": {
+   "prompt": "Có 36 viên kẹo. Gom thêm 28 viên nữa. Hỏi có tất cả bao nhiêu viên?",
+   "hints": [
+    "Cộng số lúc đầu với số gom thêm.",
+    "Hãy cộng từ hàng đơn vị."
+   ],
+   "explanation": "$36 + 28 = 64$ nên có tất cả 64 viên."
+  },
+  "m-e2-addsub-v1": {
+   "prompt": "Tính $32 + 15$.",
+   "hints": [
+    "Cộng hàng đơn vị với hàng đơn vị, hàng chục với hàng chục.",
+    "Cộng hàng đơn vị trước, rồi cộng hàng chục."
+   ],
+   "explanation": "$32 + 15 = 47$."
+  },
+  "m-e2-addsub-v2": {
+   "prompt": "Tính $74 - 31$.",
+   "hints": [
+    "Trừ hàng đơn vị cho hàng đơn vị, hàng chục cho hàng chục.",
+    "Trừ hàng đơn vị trước, rồi trừ hàng chục."
+   ],
+   "explanation": "$74 - 31 = 43$."
+  },
+  "m-e2-addsub-d1": {
+   "prompt": "Tính $38 + 24$.",
+   "hints": [
+    "Cộng hàng đơn vị với hàng đơn vị, hàng chục với hàng chục.",
+    "Nếu tổng hàng đơn vị từ 10 trở lên, hãy nhớ 1 sang hàng chục."
+   ],
+   "explanation": "$38 + 24 = 62$."
+  },
+  "m-e2-addsub-d2": {
+   "prompt": "Tính $83 - 41$.",
+   "hints": [
+    "Trừ hàng đơn vị cho hàng đơn vị, hàng chục cho hàng chục.",
+    "Trừ hàng đơn vị trước, rồi trừ hàng chục."
+   ],
+   "explanation": "$83 - 41 = 42$."
+  },
+  "m-e2-mul-1": {
+   "prompt": "Tính giá trị của $2 \\times 4$.",
+   "hints": [
+    "Phép nhân này giống như cộng 2 với chính nó 4 lần.",
+    "Hãy tính 2 + 2 + 2 + 2."
+   ],
+   "explanation": "$2 + 2 + 2 + 2 = 8$ nên $2 \\times 4 = 8$."
+  },
+  "m-e2-mul-2": {
+   "prompt": "Tính giá trị của $3 \\times 5$.",
+   "hints": [
+    "Phép nhân này giống như cộng 3 với chính nó 5 lần.",
+    "Hãy tính 3 + 3 + 3 + 3 + 3."
+   ],
+   "explanation": "$3 + 3 + 3 + 3 + 3 = 15$ nên $3 \\times 5 = 15$."
+  },
+  "m-e2-mul-3": {
+   "prompt": "Mỗi đĩa có 3 chiếc bánh quy, có 4 đĩa. Hỏi có tất cả bao nhiêu chiếc bánh quy?",
+   "hints": [
+    "Cộng cùng một số nhiều lần.",
+    "Có thể tính bằng phép nhân 3 × 4."
+   ],
+   "explanation": "$3 \\times 4 = 12$ nên có tất cả 12 chiếc."
+  },
+  "m-e2-mul-4": {
+   "prompt": "Viết $5 + 5 + 5 + 5$ thành phép nhân $5 \\times \\square$. Số trong ô vuông là mấy? (chỉ nhập số)",
+   "hints": [
+    "Hãy đếm xem 5 được cộng bao nhiêu lần.",
+    "Số lần cộng chính là số đem nhân."
+   ],
+   "explanation": "5 được cộng 4 lần nên là $5 \\times 4$."
+  },
+  "m-e2-mul-5": {
+   "prompt": "Tính giá trị của $4 \\times 6$.",
+   "hints": [
+    "Phép nhân này giống như cộng 4 với chính nó 6 lần.",
+    "Hãy tính 4 + 4 + 4 + 4 + 4 + 4."
+   ],
+   "explanation": "$4 + 4 + 4 + 4 + 4 + 4 = 24$ nên $4 \\times 6 = 24$."
+  },
+  "m-e2-mul-v1": {
+   "prompt": "Tính giá trị của $2 \\times 6$.",
+   "hints": [
+    "Phép nhân này giống như cộng 2 với chính nó 6 lần.",
+    "Hãy tính 2 + 2 + 2 + 2 + 2 + 2."
+   ],
+   "explanation": "$2 + 2 + 2 + 2 + 2 + 2 = 12$ nên $2 \\times 6 = 12$."
+  },
+  "m-e2-mul-v2": {
+   "prompt": "Mỗi đĩa có 4 chiếc bánh quy, có 3 đĩa. Hỏi có tất cả bao nhiêu chiếc bánh quy?",
+   "hints": [
+    "Cộng cùng một số nhiều lần.",
+    "Có thể tính bằng phép nhân 4 × 3."
+   ],
+   "explanation": "$4 \\times 3 = 12$ nên có tất cả 12 chiếc."
+  },
+  "m-e2-mul-d1": {
+   "prompt": "Tính giá trị của $5 \\times 3$.",
+   "hints": [
+    "Phép nhân này giống như cộng 5 với chính nó 3 lần.",
+    "Hãy tính 5 + 5 + 5."
+   ],
+   "explanation": "$5 + 5 + 5 = 15$ nên $5 \\times 3 = 15$."
+  },
+  "m-e2-time-1": {
+   "prompt": "1 m bằng 100 cm. 2 m bằng bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Mỗi 1 m có 100 cm.",
+    "Hãy cộng 100 với chính nó 2 lần."
+   ],
+   "explanation": "$2 \\times 100 = 200$ nên là 200 cm."
+  },
+  "m-e2-time-2": {
+   "prompt": "Bây giờ là 5 giờ 30 phút. 30 phút nữa là mấy giờ? (chỉ nhập số)",
+   "hints": [
+    "30 phút + 30 phút = 60 phút.",
+    "60 phút là 1 giờ."
+   ],
+   "explanation": "5 giờ 30 phút cộng thêm 30 phút là 6 giờ."
+  },
+  "m-e2-time-3": {
+   "prompt": "Một sợi dây dài 120 cm. Dùng hết 1 m (100 cm) thì còn lại bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Lấy độ dài lúc đầu trừ đi phần đã dùng.",
+    "Hãy tính 120 - 100."
+   ],
+   "explanation": "$120 - 100 = 20$ nên còn lại 20 cm."
+  },
+  "m-e2-time-4": {
+   "prompt": "Kim phút chỉ số 6. Đó là bao nhiêu phút? (chỉ nhập số)",
+   "hints": [
+    "Mỗi số trên đồng hồ ứng với 5 phút.",
+    "Hãy đếm nhảy cách 5 phút, 6 lần."
+   ],
+   "explanation": "$5 \\times 6 = 30$ nên là 30 phút."
+  },
+  "m-e2-time-5": {
+   "prompt": "2 giờ 20 phút, sau 10 phút nữa là mấy giờ mấy phút? Chỉ nhập số phút.",
+   "hints": [
+    "Hãy cộng số phút với nhau.",
+    "Hãy tính 20 + 10."
+   ],
+   "explanation": "$20 + 10 = 30$ nên là 2 giờ 30 phút."
+  },
+  "m-e2-time-v1": {
+   "prompt": "1 m bằng 100 cm. 3 m bằng bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Mỗi 1 m có 100 cm.",
+    "Hãy cộng 100 với chính nó 3 lần."
+   ],
+   "explanation": "$3 \\times 100 = 300$ nên là 300 cm."
+  },
+  "m-e2-time-v2": {
+   "prompt": "Bây giờ là 8 giờ 30 phút. 30 phút nữa là mấy giờ? (chỉ nhập số)",
+   "hints": [
+    "30 phút + 30 phút = 60 phút.",
+    "60 phút là 1 giờ."
+   ],
+   "explanation": "8 giờ 30 phút cộng thêm 30 phút là 9 giờ."
+  },
+  "m-e2-time-d1": {
+   "prompt": "Một sợi dây dài 150 cm. Dùng hết 1 m (100 cm) thì còn lại bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Lấy độ dài lúc đầu trừ đi phần đã dùng.",
+    "Hãy tính 150 - 100."
+   ],
+   "explanation": "$150 - 100 = 50$ nên còn lại 50 cm."
+  },
+  "m-e2-pattern-1": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $2, 4, 6, 8, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần tăng thêm 2."
+   ],
+   "explanation": "Quy luật là tăng 2 mỗi lần. $8 + 2 = 10$"
+  },
+  "m-e2-pattern-2": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $5, 10, 15, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần tăng thêm 5."
+   ],
+   "explanation": "Quy luật là tăng 5 mỗi lần. $15 + 5 = 20$"
+  },
+  "m-e2-pattern-3": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $1, 3, 5, 7, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần tăng thêm 2."
+   ],
+   "explanation": "Quy luật là tăng 2 mỗi lần. $7 + 2 = 9$"
+  },
+  "m-e2-pattern-4": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $20, 18, 16, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần giảm đi 2."
+   ],
+   "explanation": "Quy luật là giảm 2 mỗi lần. $16 - 2 = 14$"
+  },
+  "m-e2-pattern-5": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $3, 6, 9, 12, 15, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần tăng thêm 3."
+   ],
+   "explanation": "Quy luật là tăng 3 mỗi lần. $15 + 3 = 18$"
+  },
+  "m-e2-pattern-v1": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $4, 8, 12, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần tăng thêm 4."
+   ],
+   "explanation": "Quy luật là tăng 4 mỗi lần. $12 + 4 = 16$"
+  },
+  "m-e2-pattern-v2": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $30, 25, 20, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần giảm đi 5."
+   ],
+   "explanation": "Quy luật là giảm 5 mỗi lần. $20 - 5 = 15$"
+  },
+  "m-e2-pattern-d1": {
+   "prompt": "Tìm quy luật rồi điền số thích hợp vào ô vuông: $10, 20, 30, 40, \\square$",
+   "hints": [
+    "Hãy xem hiệu của hai số đứng cạnh nhau.",
+    "Mỗi lần tăng thêm 10."
+   ],
+   "explanation": "Quy luật là tăng 10 mỗi lần. $40 + 10 = 50$"
+  },
+  "m-e3-muldiv-1": {
+   "prompt": "Tính giá trị của $6 \\times 7$.",
+   "hints": [
+    "Hãy nhớ lại bảng nhân.",
+    "Cũng có thể cộng 6 với chính nó 7 lần."
+   ],
+   "explanation": "$6 \\times 7 = 42$."
+  },
+  "m-e3-muldiv-2": {
+   "prompt": "Tính giá trị của $24 \\div 4$.",
+   "hints": [
+    "Tìm trong bảng nhân 4 xem tích nào bằng 24.",
+    "Tìm □ sao cho 4 × □ = 24."
+   ],
+   "explanation": "$4 \\times 6 = 24$ nên $24 \\div 4 = 6$."
+  },
+  "m-e3-muldiv-3": {
+   "prompt": "Mỗi hộp có 8 viên kẹo. Hỏi 5 hộp có tất cả bao nhiêu viên kẹo?",
+   "hints": [
+    "Nhân số kẹo trong một hộp với số hộp.",
+    "Hãy tính 8 × 5."
+   ],
+   "explanation": "$8 \\times 5 = 40$. Có tất cả 40 viên."
+  },
+  "m-e3-muldiv-4": {
+   "prompt": "Chia đều 28 viên kẹo cho 4 bạn. Mỗi bạn nhận được bao nhiêu viên?",
+   "hints": [
+    "Chia đều thì dùng phép chia.",
+    "Hãy tính 28 ÷ 4."
+   ],
+   "explanation": "$28 \\div 4 = 7$. Mỗi bạn nhận 7 viên."
+  },
+  "m-e3-muldiv-5": {
+   "prompt": "Tính giá trị của $23 \\times 3$.",
+   "hints": [
+    "Hãy nhớ lại bảng nhân.",
+    "Cũng có thể cộng 23 với chính nó 3 lần."
+   ],
+   "explanation": "$23 \\times 3 = 69$."
+  },
+  "m-e3-muldiv-v1": {
+   "prompt": "Tính giá trị của $9 \\times 3$.",
+   "hints": [
+    "Hãy nhớ lại bảng nhân.",
+    "Cũng có thể cộng 9 với chính nó 3 lần."
+   ],
+   "explanation": "$9 \\times 3 = 27$."
+  },
+  "m-e3-muldiv-v2": {
+   "prompt": "Tính giá trị của $35 \\div 7$.",
+   "hints": [
+    "Tìm trong bảng nhân 7 xem tích nào bằng 35.",
+    "Tìm □ sao cho 7 × □ = 35."
+   ],
+   "explanation": "$7 \\times 5 = 35$ nên $35 \\div 7 = 5$."
+  },
+  "m-e3-muldiv-v3": {
+   "prompt": "Mỗi hộp có 6 viên kẹo. Hỏi 7 hộp có tất cả bao nhiêu viên kẹo?",
+   "hints": [
+    "Nhân số kẹo trong một hộp với số hộp.",
+    "Hãy tính 6 × 7."
+   ],
+   "explanation": "$6 \\times 7 = 42$. Có tất cả 42 viên."
+  },
+  "m-e3-muldiv-d1": {
+   "prompt": "Tính giá trị của $7 \\times 8$.",
+   "hints": [
+    "Hãy nhớ lại bảng nhân.",
+    "Cũng có thể cộng 7 với chính nó 8 lần."
+   ],
+   "explanation": "$7 \\times 8 = 56$."
+  },
+  "m-e3-muldiv-d2": {
+   "prompt": "Tính giá trị của $54 \\div 6$.",
+   "hints": [
+    "Tìm trong bảng nhân 6 xem tích nào bằng 54.",
+    "Tìm □ sao cho 6 × □ = 54."
+   ],
+   "explanation": "$6 \\times 9 = 54$ nên $54 \\div 6 = 9$."
+  },
+  "m-e3-frac-1": {
+   "prompt": "Một chiếc pizza được chia đều thành 8 phần. Bạn đã ăn 3 phần. Phần đã ăn là bao nhiêu phần của cả chiếc?",
+   "hints": [
+    "Số phần chia đều là mẫu số.",
+    "Số phần đã ăn là tử số."
+   ],
+   "explanation": "Cả chiếc có 8 phần, đã ăn 3 phần nên là $\\frac{3}{8}$."
+  },
+  "m-e3-frac-2": {
+   "prompt": "Trong phân số $\\frac{2}{5}$, mẫu số là mấy? (chỉ nhập số)",
+   "hints": [
+    "Số ở phía dưới của phân số là mẫu số.",
+    "Mẫu số là số phần chia đều của cả đơn vị."
+   ],
+   "explanation": "Phân số $\\frac{2}{5}$ có mẫu số 5, tử số 2."
+  },
+  "m-e3-frac-3": {
+   "prompt": "Trong ba phân số, phân số nào lớn nhất?",
+   "hints": [
+    "Khi tử số bằng nhau, mẫu số càng bé thì phân số càng lớn.",
+    "Hãy so sánh một phần khi chia pizza làm 3 với một phần khi chia làm 5."
+   ],
+   "explanation": "$\\frac{1}{3} > \\frac{1}{5}$."
+  },
+  "m-e3-frac-4": {
+   "prompt": "Phát biểu \"$\\frac{3}{4}$ bé hơn 1\" có đúng không?",
+   "hints": [
+    "Khi tử số bé hơn mẫu số thì phân số bé hơn 1.",
+    "3 phần trong 4 phần thì nhỏ hơn cả chiếc."
+   ],
+   "explanation": "Tử số 3 bé hơn mẫu số 4 nên phân số bé hơn 1."
+  },
+  "m-e3-frac-5": {
+   "prompt": "$\\frac{5}{8}$ gồm bao nhiêu phần $\\frac{1}{8}$? (chỉ nhập số)",
+   "hints": [
+    "Tử số cho biết có bao nhiêu phần đơn vị.",
+    "5 lần 1/8 bằng bao nhiêu?"
+   ],
+   "explanation": "$\\frac{5}{8}$ gồm 5 phần $\\frac{1}{8}$."
+  },
+  "m-e3-frac-v1": {
+   "prompt": "Một chiếc pizza được chia đều thành 6 phần. Bạn đã ăn 2 phần. Phần đã ăn là bao nhiêu phần của cả chiếc?",
+   "hints": [
+    "Số phần chia đều là mẫu số.",
+    "Số phần đã ăn là tử số."
+   ],
+   "explanation": "Cả chiếc có 6 phần, đã ăn 2 phần nên là $\\frac{2}{6}$."
+  },
+  "m-e3-frac-v2": {
+   "prompt": "Trong ba phân số, phân số nào lớn nhất?",
+   "hints": [
+    "Tử số bằng nhau thì mẫu số càng bé, phân số càng lớn.",
+    "Hãy chọn mẫu số bé hơn trong 4 và 7."
+   ],
+   "explanation": "$\\frac{1}{4} > \\frac{1}{7}$."
+  },
+  "m-e3-frac-d1": {
+   "prompt": "Trong phân số $\\frac{3}{7}$, tử số là mấy? (chỉ nhập số)",
+   "hints": [
+    "Số ở phía trên của phân số là tử số.",
+    "Đó là số phần được tô màu."
+   ],
+   "explanation": "Phân số $\\frac{3}{7}$ có tử số là 3."
+  },
+  "m-e3-unit-1": {
+   "prompt": "Đổi đơn vị. (1 km = 1000 m) 3 km = □ m. Số trong ô vuông là mấy? (chỉ nhập số)",
+   "hints": [
+    "Khi đổi sang đơn vị nhỏ hơn thì nhân với cùng một số.",
+    "Hãy tính 3 × 1000."
+   ],
+   "explanation": "$3 \\times 1000 = 3000$. Vậy 3 km = 3000 m."
+  },
+  "m-e3-unit-2": {
+   "prompt": "Đổi đơn vị. (1 lít = 1000 mL) 2 lít = □ mL. Số trong ô vuông là mấy? (chỉ nhập số)",
+   "hints": [
+    "Khi đổi sang đơn vị nhỏ hơn thì nhân với cùng một số.",
+    "Hãy tính 2 × 1000."
+   ],
+   "explanation": "$2 \\times 1000 = 2000$. Vậy 2 lít = 2000 mL."
+  },
+  "m-e3-unit-3": {
+   "prompt": "Đổi đơn vị. (1 kg = 1000 g) 5 kg = □ g. Số trong ô vuông là mấy? (chỉ nhập số)",
+   "hints": [
+    "Khi đổi sang đơn vị nhỏ hơn thì nhân với cùng một số.",
+    "Hãy tính 5 × 1000."
+   ],
+   "explanation": "$5 \\times 1000 = 5000$. Vậy 5 kg = 5000 g."
+  },
+  "m-e3-unit-4": {
+   "prompt": "1 m 20 cm bằng bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "1 m bằng 100 cm.",
+    "Cộng 100 cm với 20 cm."
+   ],
+   "explanation": "$100 + 20 = 120$."
+  },
+  "m-e3-unit-5": {
+   "prompt": "2 km 300 m bằng bao nhiêu m? (chỉ nhập số)",
+   "hints": [
+    "1 km bằng 1000 m.",
+    "Cộng 2000 m với 300 m."
+   ],
+   "explanation": "$2000 + 300 = 2300$."
+  },
+  "m-e3-unit-v1": {
+   "prompt": "Đổi đơn vị. (1 km = 1000 m) 4 km = □ m. Số trong ô vuông là mấy? (chỉ nhập số)",
+   "hints": [
+    "Khi đổi sang đơn vị nhỏ hơn thì nhân với cùng một số.",
+    "Hãy tính 4 × 1000."
+   ],
+   "explanation": "$4 \\times 1000 = 4000$. Vậy 4 km = 4000 m."
+  },
+  "m-e3-unit-v2": {
+   "prompt": "1 m 50 cm bằng bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "1 m bằng 100 cm.",
+    "Hãy tính 100 + 50."
+   ],
+   "explanation": "$100 + 50 = 150$."
+  },
+  "m-e3-unit-d1": {
+   "prompt": "Đổi đơn vị. (1 kg = 1000 g) 6 kg = □ g. Số trong ô vuông là mấy? (chỉ nhập số)",
+   "hints": [
+    "Khi đổi sang đơn vị nhỏ hơn thì nhân với cùng một số.",
+    "Hãy tính 6 × 1000."
+   ],
+   "explanation": "$6 \\times 1000 = 6000$. Vậy 6 kg = 6000 g."
+  },
+  "m-e3-geo-1": {
+   "prompt": "Góc vuông bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Đó là góc ở góc của tờ giấy hình chữ nhật.",
+    "Hãy nhớ góc vuông là 90 độ."
+   ],
+   "explanation": "Góc vuông bằng 90°."
+  },
+  "m-e3-geo-2": {
+   "prompt": "Hình chữ nhật có tất cả bao nhiêu góc vuông? (chỉ nhập số)",
+   "hints": [
+    "Mỗi đỉnh của hình chữ nhật đều là một góc vuông.",
+    "Hình chữ nhật có 4 đỉnh."
+   ],
+   "explanation": "Hình chữ nhật có cả bốn góc đều là góc vuông."
+  },
+  "m-e3-geo-3": {
+   "prompt": "Hình tròn có bán kính 5 cm. Đường kính dài bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Đường kính gấp đôi bán kính.",
+    "Hãy tính 5 × 2."
+   ],
+   "explanation": "$5 \\times 2 = 10$. Đường kính là 10 cm."
+  },
+  "m-e3-geo-4": {
+   "prompt": "Hình nào có góc vuông?",
+   "hints": [
+    "Tên 'tam giác vuông' đã có chữ 'vuông'.",
+    "Hãy tìm tam giác có một góc 90°."
+   ],
+   "explanation": "Tam giác vuông có một góc là góc vuông.",
+   "options": {
+    "a": "Tam giác vuông",
+    "b": "Hình tròn",
+    "c": "Tam giác đều",
+    "d": "Nửa hình tròn"
+   }
+  },
+  "m-e3-geo-5": {
+   "prompt": "Hình tròn có đường kính 14 cm. Bán kính dài bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Bán kính bằng một nửa đường kính.",
+    "Hãy tính 14 ÷ 2."
+   ],
+   "explanation": "$14 \\div 2 = 7$. Bán kính là 7 cm."
+  },
+  "m-e3-geo-v1": {
+   "prompt": "Hình tròn có bán kính 8 cm. Đường kính dài bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Đường kính gấp đôi bán kính.",
+    "Hãy tính 8 × 2."
+   ],
+   "explanation": "$8 \\times 2 = 16$. Đường kính là 16 cm."
+  },
+  "m-e3-geo-v2": {
+   "prompt": "Hình vuông có tất cả bao nhiêu góc vuông? (chỉ nhập số)",
+   "hints": [
+    "Hãy xem tất cả các góc của hình vuông.",
+    "Hình vuông có 4 đỉnh."
+   ],
+   "explanation": "Hình vuông có cả bốn góc đều là góc vuông."
+  },
+  "m-e3-geo-d1": {
+   "prompt": "Hình tròn có đường kính 20 cm. Bán kính dài bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Bán kính bằng một nửa đường kính.",
+    "Hãy tính 20 ÷ 2."
+   ],
+   "explanation": "$20 \\div 2 = 10$. Bán kính là 10 cm."
+  },
+  "m-e3-data-1": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Loại quả được nhiều bạn thích nhất có bao nhiêu bạn chọn? (chỉ nhập số)",
+   "hints": [
+    "Hãy tìm số lớn nhất trong bảng.",
+    "Xem có bao nhiêu bạn chọn nho."
+   ],
+   "explanation": "Số lớn nhất là 9 bạn chọn nho."
+  },
+  "m-e3-data-2": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Có tất cả bao nhiêu bạn thích táo và chuối? (chỉ nhập số)",
+   "hints": [
+    "Hãy cộng hai số.",
+    "Hãy tính 7 + 5."
+   ],
+   "explanation": "$7 + 5 = 12$."
+  },
+  "m-e3-data-3": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Số bạn thích nho nhiều hơn số bạn thích quýt bao nhiêu bạn? (chỉ nhập số)",
+   "hints": [
+    "Lấy số lớn trừ số bé.",
+    "Hãy tính 9 - 4."
+   ],
+   "explanation": "$9 - 4 = 5$."
+  },
+  "m-e3-data-4": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Loại quả được ít bạn thích nhất là gì?",
+   "hints": [
+    "Hãy tìm số nhỏ nhất trong bảng.",
+    "Xem loại quả có 4 bạn chọn."
+   ],
+   "explanation": "Số nhỏ nhất là 4 bạn chọn quýt.",
+   "options": {
+    "a": "Quýt",
+    "b": "Táo",
+    "c": "Chuối",
+    "d": "Nho"
+   }
+  },
+  "m-e3-data-5": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Có tất cả bao nhiêu bạn tham gia khảo sát? (chỉ nhập số)",
+   "hints": [
+    "Hãy cộng số bạn của tất cả các loại quả.",
+    "Hãy tính 7 + 5 + 9 + 4."
+   ],
+   "explanation": "$7 + 5 + 9 + 4 = 25$."
+  },
+  "m-e3-data-v1": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Có bao nhiêu bạn thích chuối? (chỉ nhập số)",
+   "hints": [
+    "Hãy tìm hàng chuối trong bảng.",
+    "Đọc số bên cạnh chuối."
+   ],
+   "explanation": "Có 5 bạn thích chuối."
+  },
+  "m-e3-data-v2": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Số bạn thích táo nhiều hơn số bạn thích quýt bao nhiêu bạn? (chỉ nhập số)",
+   "hints": [
+    "Lấy số lớn trừ số bé.",
+    "Hãy tính 7 - 4."
+   ],
+   "explanation": "$7 - 4 = 3$."
+  },
+  "m-e3-data-d1": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Có tất cả bao nhiêu bạn thích chuối và quýt? (chỉ nhập số)",
+   "hints": [
+    "Hãy cộng hai số.",
+    "Hãy tính 5 + 4."
+   ],
+   "explanation": "$5 + 4 = 9$."
+  },
+  "m-e4-big-1": {
+   "prompt": "Số gồm 7 chục nghìn và 2 nghìn là số nào? (chỉ nhập số)",
+   "hints": [
+    "Hãy nghĩ riêng hàng chục nghìn và hàng nghìn.",
+    "Hãy cộng 70000 và 2000."
+   ],
+   "explanation": "$70000 + 2000 = 72000$."
+  },
+  "m-e4-big-2": {
+   "prompt": "Số gồm 5 chục nghìn và 3 nghìn là số nào? (chỉ nhập số)",
+   "hints": [
+    "Hãy nghĩ riêng hàng chục nghìn và hàng nghìn.",
+    "Hãy cộng 50000 và 3000."
+   ],
+   "explanation": "$50000 + 3000 = 53000$."
+  },
+  "m-e4-big-3": {
+   "prompt": "Trong số $250000$, chữ số ở hàng trăm nghìn có giá trị bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Lấy chữ số đó nhân với giá trị của hàng.",
+    "Đó là hàng thứ 6 tính từ bên phải."
+   ],
+   "explanation": "Chữ số 2 ở hàng thứ 6 nên $2 \\times 100000 = 200000$."
+  },
+  "m-e4-big-4": {
+   "prompt": "Trong số $48200$, chữ số ở hàng nghìn có giá trị bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Lấy chữ số đó nhân với giá trị của hàng.",
+    "Đó là hàng thứ 4 tính từ bên phải."
+   ],
+   "explanation": "Chữ số 8 ở hàng thứ 4 nên $8 \\times 1000 = 8000$."
+  },
+  "m-e4-big-5": {
+   "prompt": "Tính giá trị của $38000 + 47000$.",
+   "hints": [
+    "Cộng các nghìn với nhau.",
+    "Dùng 38 + 47 = 85."
+   ],
+   "explanation": "$38000 + 47000 = 85000$."
+  },
+  "m-e4-big-v1": {
+   "prompt": "Số gồm 4 chục nghìn và 6 nghìn là số nào? (chỉ nhập số)",
+   "hints": [
+    "Hãy nghĩ riêng hàng chục nghìn và hàng nghìn.",
+    "Hãy cộng 40000 và 6000."
+   ],
+   "explanation": "$40000 + 6000 = 46000$."
+  },
+  "m-e4-big-v2": {
+   "prompt": "Trong số $735000$, chữ số ở hàng trăm nghìn có giá trị bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Lấy chữ số đó nhân với giá trị của hàng.",
+    "Đó là hàng thứ 6 tính từ bên phải."
+   ],
+   "explanation": "Chữ số 7 ở hàng thứ 6 nên $7 \\times 100000 = 700000$."
+  },
+  "m-e4-big-d1": {
+   "prompt": "Số gồm 6 chục nghìn và 5 nghìn là số nào? (chỉ nhập số)",
+   "hints": [
+    "Hãy nghĩ riêng hàng chục nghìn và hàng nghìn.",
+    "Hãy cộng 60000 và 5000."
+   ],
+   "explanation": "$60000 + 5000 = 65000$."
+  },
+  "m-e4-muldiv-1": {
+   "prompt": "Tính giá trị của $34 \\times 12$.",
+   "hints": [
+    "Hãy tách 12 thành các chữ số rồi nhân từng phần.",
+    "Rồi cộng các tích riêng lại."
+   ],
+   "explanation": "$34 \\times 12 = 408$."
+  },
+  "m-e4-muldiv-2": {
+   "prompt": "Tính giá trị của $156 \\div 12$.",
+   "hints": [
+    "Hãy nghĩ 12 nhân với số nào thì gần bằng 156.",
+    "Hãy ước lượng thương rồi kiểm tra."
+   ],
+   "explanation": "$12 \\times 13 = 156$ nên $156 \\div 12 = 13$."
+  },
+  "m-e4-muldiv-3": {
+   "prompt": "Tính giá trị của $25 \\times 40$.",
+   "hints": [
+    "Hãy tách 40 thành các chữ số rồi nhân từng phần.",
+    "Rồi cộng các tích riêng lại."
+   ],
+   "explanation": "$25 \\times 40 = 1000$."
+  },
+  "m-e4-muldiv-4": {
+   "prompt": "Mỗi túi có 24 viên bi. Hỏi 15 túi có tất cả bao nhiêu viên bi?",
+   "hints": [
+    "Nhân số bi trong một túi với số túi.",
+    "Hãy tính 24 × 15."
+   ],
+   "explanation": "$24 \\times 15 = 360$. Có tất cả 360 viên."
+  },
+  "m-e4-muldiv-5": {
+   "prompt": "Tính giá trị của $735 \\div 15$.",
+   "hints": [
+    "Hãy nghĩ 15 nhân với số nào thì gần bằng 735.",
+    "Hãy ước lượng thương rồi kiểm tra."
+   ],
+   "explanation": "$15 \\times 49 = 735$ nên $735 \\div 15 = 49$."
+  },
+  "m-e4-muldiv-v1": {
+   "prompt": "Tính giá trị của $21 \\times 14$.",
+   "hints": [
+    "Hãy tách 14 thành các chữ số rồi nhân từng phần.",
+    "Rồi cộng các tích riêng lại."
+   ],
+   "explanation": "$21 \\times 14 = 294$."
+  },
+  "m-e4-muldiv-v2": {
+   "prompt": "Tính giá trị của $168 \\div 14$.",
+   "hints": [
+    "Hãy nghĩ 14 nhân với số nào thì gần bằng 168.",
+    "Hãy ước lượng thương rồi kiểm tra."
+   ],
+   "explanation": "$14 \\times 12 = 168$ nên $168 \\div 14 = 12$."
+  },
+  "m-e4-muldiv-v3": {
+   "prompt": "Mỗi túi có 18 viên bi. Hỏi 12 túi có tất cả bao nhiêu viên bi?",
+   "hints": [
+    "Nhân số bi trong một túi với số túi.",
+    "Hãy tính 18 × 12."
+   ],
+   "explanation": "$18 \\times 12 = 216$. Có tất cả 216 viên."
+  },
+  "m-e4-muldiv-d1": {
+   "prompt": "Tính giá trị của $45 \\times 12$.",
+   "hints": [
+    "Hãy tách 12 thành các chữ số rồi nhân từng phần.",
+    "Rồi cộng các tích riêng lại."
+   ],
+   "explanation": "$45 \\times 12 = 540$."
+  },
+  "m-e4-muldiv-d2": {
+   "prompt": "Tính giá trị của $273 \\div 13$.",
+   "hints": [
+    "Hãy nghĩ 13 nhân với số nào thì gần bằng 273.",
+    "Hãy ước lượng thương rồi kiểm tra."
+   ],
+   "explanation": "$13 \\times 21 = 273$ nên $273 \\div 13 = 21$."
+  },
+  "m-e4-frac-3": {
+   "prompt": "Viết $\\frac{1}{2}$ dưới dạng số thập phân. Kết quả là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Phân số là tử số chia cho mẫu số.",
+    "Hãy tính 1 ÷ 2."
+   ],
+   "explanation": "$1 \\div 2 = 0.5$."
+  },
+  "m-e4-frac-1": {
+   "prompt": "Tính giá trị của $\\frac{3}{5} + \\frac{1}{5}$. (có thể nhập dạng 3/5)",
+   "hints": [
+    "Khi mẫu số bằng nhau, chỉ cần tính trên tử số.",
+    "Giữ nguyên mẫu số."
+   ],
+   "explanation": "$\\frac{3}{5} + \\frac{1}{5} = \\frac{4}{5}$."
+  },
+  "m-e4-frac-2": {
+   "prompt": "Tính giá trị của $\\frac{7}{9} - \\frac{2}{9}$. (có thể nhập dạng 3/5)",
+   "hints": [
+    "Khi mẫu số bằng nhau, chỉ cần tính trên tử số.",
+    "Giữ nguyên mẫu số."
+   ],
+   "explanation": "$\\frac{7}{9} - \\frac{2}{9} = \\frac{5}{9}$."
+  },
+  "m-e4-frac-4": {
+   "prompt": "Tính giá trị của $0.3 + 0.4$.",
+   "hints": [
+    "Hãy đặt thẳng hàng dấu phẩy rồi tính.",
+    "Tính như số tự nhiên rồi đặt dấu phẩy."
+   ],
+   "explanation": "$0.3 + 0.4 = 0.7$."
+  },
+  "m-e4-frac-5": {
+   "prompt": "Tính giá trị của $2.5 + 1.75$.",
+   "hints": [
+    "Hãy đặt thẳng hàng dấu phẩy rồi tính.",
+    "Tính như số tự nhiên rồi đặt dấu phẩy."
+   ],
+   "explanation": "$2.5 + 1.75 = 4.25$."
+  },
+  "m-e4-frac-v1": {
+   "prompt": "Tính giá trị của $\\frac{2}{7} + \\frac{3}{7}$. (có thể nhập dạng 3/5)",
+   "hints": [
+    "Khi mẫu số bằng nhau, chỉ cần tính trên tử số.",
+    "Giữ nguyên mẫu số."
+   ],
+   "explanation": "$\\frac{2}{7} + \\frac{3}{7} = \\frac{5}{7}$."
+  },
+  "m-e4-frac-v2": {
+   "prompt": "Tính giá trị của $1.8 - 0.6$.",
+   "hints": [
+    "Hãy đặt thẳng hàng dấu phẩy rồi tính.",
+    "Tính như số tự nhiên rồi đặt dấu phẩy."
+   ],
+   "explanation": "$1.8 - 0.6 = 1.2$."
+  },
+  "m-e4-frac-v3": {
+   "prompt": "Viết $\\frac{1}{4}$ dưới dạng số thập phân. Kết quả là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính 1 ÷ 4.",
+    "Một phần tư của 100 là 25."
+   ],
+   "explanation": "$1 \\div 4 = 0.25$."
+  },
+  "m-e4-frac-d1": {
+   "prompt": "Tính giá trị của $\\frac{4}{7} + \\frac{2}{7}$. (có thể nhập dạng 3/5)",
+   "hints": [
+    "Khi mẫu số bằng nhau, chỉ cần tính trên tử số.",
+    "Giữ nguyên mẫu số."
+   ],
+   "explanation": "$\\frac{4}{7} + \\frac{2}{7} = \\frac{6}{7}$."
+  },
+  "m-e4-frac-d2": {
+   "prompt": "Tính giá trị của $0.5 + 0.2$.",
+   "hints": [
+    "Hãy đặt thẳng hàng dấu phẩy rồi tính.",
+    "Tính như số tự nhiên rồi đặt dấu phẩy."
+   ],
+   "explanation": "$0.5 + 0.2 = 0.7$."
+  },
+  "m-e4-angle-1": {
+   "prompt": "Một tam giác có hai góc là 50° và 60°. Góc còn lại bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Tổng ba góc của tam giác là 180°.",
+    "Hãy tính 180 - 50 - 60."
+   ],
+   "explanation": "$180 - 50 - 60 = 70$. Góc còn lại là 70°."
+  },
+  "m-e4-angle-2": {
+   "prompt": "Tổng ba góc của một tam giác bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Cộng cả ba góc ở ba đỉnh.",
+    "Hãy nghĩ đến việc ghép hai tam giác thành một hình chữ nhật."
+   ],
+   "explanation": "Tổng ba góc của một tam giác là 180°."
+  },
+  "m-e4-angle-3": {
+   "prompt": "Tổng bốn góc của một tứ giác bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Một tứ giác có thể chia thành 2 tam giác.",
+    "Hãy tính 180 × 2."
+   ],
+   "explanation": "$180 \\times 2 = 360$."
+  },
+  "m-e4-angle-4": {
+   "prompt": "Một tam giác có hai góc là 90° và 35°. Góc còn lại bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Tổng ba góc của tam giác là 180°.",
+    "Hãy tính 180 - 90 - 35."
+   ],
+   "explanation": "$180 - 90 - 35 = 55$. Góc còn lại là 55°."
+  },
+  "m-e4-angle-5": {
+   "prompt": "Hai góc nằm cạnh nhau trên một đường thẳng. Nếu một góc là 120° thì góc kia bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Góc bẹt (một đường thẳng) bằng 180°.",
+    "Hãy tính 180 - 120."
+   ],
+   "explanation": "$180 - 120 = 60$."
+  },
+  "m-e4-angle-v1": {
+   "prompt": "Một tam giác có hai góc là 40° và 70°. Góc còn lại bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Tổng ba góc của tam giác là 180°.",
+    "Hãy tính 180 - 40 - 70."
+   ],
+   "explanation": "$180 - 40 - 70 = 70$. Góc còn lại là 70°."
+  },
+  "m-e4-angle-v2": {
+   "prompt": "Hai góc nằm cạnh nhau trên một đường thẳng. Nếu một góc là 100° thì góc kia bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Góc bẹt bằng 180°.",
+    "Hãy tính 180 - 100."
+   ],
+   "explanation": "$180 - 100 = 80$."
+  },
+  "m-e4-angle-d1": {
+   "prompt": "Một tam giác có hai góc là 30° và 80°. Góc còn lại bằng bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Tổng ba góc của tam giác là 180°.",
+    "Hãy tính 180 - 30 - 80."
+   ],
+   "explanation": "$180 - 30 - 80 = 70$. Góc còn lại là 70°."
+  },
+  "m-e4-data-1": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Tháng đọc nhiều sách nhất đã đọc bao nhiêu quyển? (chỉ nhập số)",
+   "hints": [
+    "Hãy tìm số lớn nhất.",
+    "Xem số của tháng 4."
+   ],
+   "explanation": "Số lớn nhất là 21 quyển của tháng 4."
+  },
+  "m-e4-data-2": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Số sách tháng 1 và tháng 4 chênh nhau bao nhiêu quyển? (chỉ nhập số)",
+   "hints": [
+    "Lấy số lớn trừ số bé.",
+    "Hãy tính 21 - 12."
+   ],
+   "explanation": "$21 - 12 = 9$."
+  },
+  "m-e4-data-3": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Trong 4 tháng đã đọc tất cả bao nhiêu quyển? (chỉ nhập số)",
+   "hints": [
+    "Hãy cộng cả bốn số.",
+    "Hãy tính 12 + 18 + 9 + 21."
+   ],
+   "explanation": "$12 + 18 + 9 + 21 = 60$."
+  },
+  "m-e4-data-4": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Số sách tháng 2 gấp mấy lần số sách tháng 3? (chỉ nhập số)",
+   "hints": [
+    "Hãy nghĩ 18 gấp 9 mấy lần.",
+    "Hãy tính 18 ÷ 9."
+   ],
+   "explanation": "$18 \\div 9 = 2$. Gấp 2 lần."
+  },
+  "m-e4-data-5": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Trung bình mỗi tháng đọc bao nhiêu quyển? (chỉ nhập số)",
+   "hints": [
+    "Trung bình cộng bằng tổng chia cho số lượng.",
+    "Hãy tính 60 ÷ 4."
+   ],
+   "explanation": "$60 \\div 4 = 15$. Trung bình là 15 quyển."
+  },
+  "m-e4-data-v1": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Tháng 3 đã đọc bao nhiêu quyển? (chỉ nhập số)",
+   "hints": [
+    "Tìm cột tháng 3.",
+    "Đọc số của tháng 3."
+   ],
+   "explanation": "Tháng 3 đã đọc 9 quyển."
+  },
+  "m-e4-data-v2": {
+   "prompt": "Trung bình cộng của ba số 4, 8, 12 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Cộng ba số rồi chia cho 3.",
+    "Hãy tính 24 ÷ 3."
+   ],
+   "explanation": "$(4 + 8 + 12) \\div 3 = 8$."
+  },
+  "m-e4-data-d1": {
+   "prompt": "Số sách đã đọc theo tháng: tháng 1 là 12 quyển, tháng 2 là 18 quyển, tháng 3 là 9 quyển, tháng 4 là 21 quyển. Tháng 2 và tháng 3 đã đọc tất cả bao nhiêu quyển? (chỉ nhập số)",
+   "hints": [
+    "Hãy cộng hai số.",
+    "Hãy tính 18 + 9."
+   ],
+   "explanation": "$18 + 9 = 27$."
+  },
+  "m-e5-frac-1": {
+   "prompt": "Tính giá trị của $\\frac{1}{2} + \\frac{1}{3}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 6 (bội chung nhỏ nhất của 2 và 3) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$."
+  },
+  "m-e5-frac-2": {
+   "prompt": "Tính giá trị của $\\frac{3}{4} - \\frac{1}{6}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 12 (bội chung nhỏ nhất của 4 và 6) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{9}{12} - \\frac{2}{12} = \\frac{7}{12}$."
+  },
+  "m-e5-frac-3": {
+   "prompt": "Tính giá trị của $\\frac{2}{3} + \\frac{3}{4}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 12 (bội chung nhỏ nhất của 3 và 4) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{8}{12} + \\frac{9}{12} = \\frac{17}{12}$."
+  },
+  "m-e5-frac-4": {
+   "prompt": "Khi quy đồng $\\frac{1}{2}$ và $\\frac{1}{3}$, mẫu số chung nhỏ nhất là bao nhiêu?",
+   "hints": [
+    "Hãy tìm bội chung nhỏ nhất của hai mẫu số.",
+    "Tìm số đầu tiên chung của các bội của 2 và 3."
+   ],
+   "explanation": "Bội chung nhỏ nhất của 2 và 3 là 6."
+  },
+  "m-e5-frac-5": {
+   "prompt": "Tính giá trị của $\\frac{5}{6} - \\frac{3}{8}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 24 (bội chung nhỏ nhất của 6 và 8) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{20}{24} - \\frac{9}{24} = \\frac{11}{24}$."
+  },
+  "m-e5-frac-v1": {
+   "prompt": "Tính giá trị của $\\frac{1}{4} + \\frac{1}{6}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 12 (bội chung nhỏ nhất của 4 và 6) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{3}{12} + \\frac{2}{12} = \\frac{5}{12}$."
+  },
+  "m-e5-frac-v2": {
+   "prompt": "Tính giá trị của $\\frac{5}{6} - \\frac{1}{3}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 6 (bội chung nhỏ nhất của 6 và 3) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{5}{6} - \\frac{2}{6} = \\frac{1}{2}$."
+  },
+  "m-e5-frac-v3": {
+   "prompt": "Khi quy đồng $\\frac{1}{4}$ và $\\frac{1}{6}$, mẫu số chung nhỏ nhất là bao nhiêu?",
+   "hints": [
+    "Hãy tìm bội chung nhỏ nhất của hai mẫu số.",
+    "Tìm số đầu tiên chung của các bội của 4 và 6."
+   ],
+   "explanation": "Bội chung nhỏ nhất của 4 và 6 là 12."
+  },
+  "m-e5-frac-d1": {
+   "prompt": "Tính giá trị của $\\frac{1}{2} + \\frac{1}{4}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 4 (bội chung nhỏ nhất của 2 và 4) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{2}{4} + \\frac{1}{4} = \\frac{3}{4}$."
+  },
+  "m-e5-frac-d2": {
+   "prompt": "Tính giá trị của $\\frac{2}{5} + \\frac{1}{10}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Trước tiên hãy quy đồng mẫu số.",
+    "Chọn 10 (bội chung nhỏ nhất của 5 và 10) làm mẫu số chung."
+   ],
+   "explanation": "$\\frac{4}{10} + \\frac{1}{10} = \\frac{1}{2}$."
+  },
+  "m-e5-dec-1": {
+   "prompt": "Tính giá trị của $0.6 \\times 4$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$0.6 \\times 4 = 2.4$."
+  },
+  "m-e5-dec-2": {
+   "prompt": "Tính giá trị của $1.2 \\times 3$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$1.2 \\times 3 = 3.6$."
+  },
+  "m-e5-dec-3": {
+   "prompt": "Tính giá trị của $2.5 \\times 1.2$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$2.5 \\times 1.2 = 3$."
+  },
+  "m-e5-dec-4": {
+   "prompt": "Tính giá trị của $0.4 \\times 0.5$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$0.4 \\times 0.5 = 0.2$."
+  },
+  "m-e5-dec-5": {
+   "prompt": "Tính giá trị của $3.6 \\times 2.5$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$3.6 \\times 2.5 = 9$."
+  },
+  "m-e5-dec-v1": {
+   "prompt": "Tính giá trị của $0.3 \\times 6$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$0.3 \\times 6 = 1.8$."
+  },
+  "m-e5-dec-v2": {
+   "prompt": "Tính giá trị của $1.5 \\times 0.4$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$1.5 \\times 0.4 = 0.6$."
+  },
+  "m-e5-dec-d1": {
+   "prompt": "Tính giá trị của $0.5 \\times 8$.",
+   "hints": [
+    "Bỏ dấu phẩy và nhân như số tự nhiên.",
+    "Nhân xong, đặt lại dấu phẩy cho đúng."
+   ],
+   "explanation": "$0.5 \\times 8 = 4$."
+  },
+  "m-e5-factor-1": {
+   "prompt": "Số 12 có tất cả bao nhiêu ước số? (chỉ nhập số)",
+   "hints": [
+    "Lần lượt tìm các số chia hết cho nhau, bắt đầu từ 1.",
+    "Tìm các ước theo từng cặp sẽ dễ hơn."
+   ],
+   "explanation": "Số 12 có 6 ước số."
+  },
+  "m-e5-factor-2": {
+   "prompt": "Bội chung nhỏ nhất của hai số 4 và 6 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy lần lượt viết các bội của mỗi số.",
+    "Số chung đầu tiên chính là bội chung nhỏ nhất."
+   ],
+   "explanation": "Bội chung nhỏ nhất của 4 và 6 là 12."
+  },
+  "m-e5-factor-3": {
+   "prompt": "Ước chung lớn nhất của hai số 12 và 18 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy tìm các ước của từng số.",
+    "Chọn số lớn nhất trong các ước chung."
+   ],
+   "explanation": "Ước chung lớn nhất của 12 và 18 là 6."
+  },
+  "m-e5-factor-4": {
+   "prompt": "15 là bội số của 5. Đúng hay sai?",
+   "hints": [
+    "Hãy nhân 5 với 1, 2, 3.",
+    "5 × 3 = 15."
+   ],
+   "explanation": "Vì 5 × 3 = 15 nên 15 là bội số của 5."
+  },
+  "m-e5-factor-5": {
+   "prompt": "Bội chung nhỏ nhất của hai số 8 và 12 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy lần lượt viết các bội của mỗi số.",
+    "Số chung đầu tiên chính là bội chung nhỏ nhất."
+   ],
+   "explanation": "Bội chung nhỏ nhất của 8 và 12 là 24."
+  },
+  "m-e5-factor-v1": {
+   "prompt": "Số 18 có tất cả bao nhiêu ước số? (chỉ nhập số)",
+   "hints": [
+    "Lần lượt tìm các số chia hết cho nhau, bắt đầu từ 1.",
+    "Tìm các ước theo từng cặp sẽ dễ hơn."
+   ],
+   "explanation": "Số 18 có 6 ước số."
+  },
+  "m-e5-factor-v2": {
+   "prompt": "Ước chung lớn nhất của hai số 6 và 9 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy tìm các ước của từng số.",
+    "Chọn số lớn nhất trong các ước chung."
+   ],
+   "explanation": "Ước chung lớn nhất của 6 và 9 là 3."
+  },
+  "m-e5-factor-v3": {
+   "prompt": "Số nào sau đây là bội số của 7?",
+   "hints": [
+    "Hãy nhớ bảng nhân 7.",
+    "7 × 3 = 21."
+   ],
+   "explanation": "21 = 7 × 3 nên là bội số của 7."
+  },
+  "m-e5-factor-d1": {
+   "prompt": "Số 10 có tất cả bao nhiêu ước số? (chỉ nhập số)",
+   "hints": [
+    "Lần lượt tìm các số chia hết cho nhau, bắt đầu từ 1.",
+    "Tìm các ước theo từng cặp sẽ dễ hơn."
+   ],
+   "explanation": "Số 10 có 4 ước số."
+  },
+  "m-e5-area-1": {
+   "prompt": "Hình chữ nhật có chiều rộng 5 cm, chiều dài 8 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình chữ nhật = chiều rộng × chiều dài.",
+    "Hãy tính 5 × 8."
+   ],
+   "explanation": "$5 \\times 8 = 40$. Diện tích là 40 cm²."
+  },
+  "m-e5-area-2": {
+   "prompt": "Tam giác có đáy 10 cm và chiều cao 6 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích tam giác = đáy × chiều cao ÷ 2.",
+    "Tính 10 × 6 rồi chia cho 2."
+   ],
+   "explanation": "$10 \\times 6 \\div 2 = 30$. Diện tích là 30 cm²."
+  },
+  "m-e5-area-3": {
+   "prompt": "Hình vuông có cạnh 7 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình vuông = cạnh × cạnh.",
+    "Hãy tính 7 × 7."
+   ],
+   "explanation": "$7 \\times 7 = 49$. Diện tích là 49 cm²."
+  },
+  "m-e5-area-4": {
+   "prompt": "Hình hộp chữ nhật có chiều dài 4 cm, chiều rộng 3 cm, chiều cao 5 cm. Thể tích là bao nhiêu cm³? (chỉ nhập số)",
+   "hints": [
+    "Thể tích hình hộp chữ nhật = dài × rộng × cao.",
+    "Hãy tính 4 × 3 × 5."
+   ],
+   "explanation": "$4 \\times 3 \\times 5 = 60$. Thể tích là 60 cm³."
+  },
+  "m-e5-area-5": {
+   "prompt": "Hình bình hành có đáy 9 cm và chiều cao 7 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình bình hành = đáy × chiều cao.",
+    "Hãy tính 9 × 7."
+   ],
+   "explanation": "$9 \\times 7 = 63$. Diện tích là 63 cm²."
+  },
+  "m-e5-area-v1": {
+   "prompt": "Hình chữ nhật có chiều rộng 3 cm, chiều dài 12 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình chữ nhật = chiều rộng × chiều dài.",
+    "Hãy tính 3 × 12."
+   ],
+   "explanation": "$3 \\times 12 = 36$. Diện tích là 36 cm²."
+  },
+  "m-e5-area-v2": {
+   "prompt": "Tam giác có đáy 8 cm và chiều cao 5 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích tam giác = đáy × chiều cao ÷ 2.",
+    "Tính 8 × 5 rồi chia cho 2."
+   ],
+   "explanation": "$8 \\times 5 \\div 2 = 20$. Diện tích là 20 cm²."
+  },
+  "m-e5-area-v3": {
+   "prompt": "Hình hộp chữ nhật có chiều dài 2 cm, chiều rộng 5 cm, chiều cao 6 cm. Thể tích là bao nhiêu cm³? (chỉ nhập số)",
+   "hints": [
+    "Thể tích hình hộp chữ nhật = dài × rộng × cao.",
+    "Hãy tính 2 × 5 × 6."
+   ],
+   "explanation": "$2 \\times 5 \\times 6 = 60$. Thể tích là 60 cm³."
+  },
+  "m-e5-area-d1": {
+   "prompt": "Hình chữ nhật có chiều rộng 6 cm, chiều dài 7 cm. Diện tích là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình chữ nhật = chiều rộng × chiều dài.",
+    "Hãy tính 6 × 7."
+   ],
+   "explanation": "$6 \\times 7 = 42$. Diện tích là 42 cm²."
+  },
+  "m-e5-ratio-4": {
+   "prompt": "Tỉ lệ $\\frac{3}{4}$ viết thành phần trăm là bao nhiêu %? (chỉ nhập số)",
+   "hints": [
+    "Đổi phân số thành số thập phân rồi nhân với 100.",
+    "3 ÷ 4 = 0.75."
+   ],
+   "explanation": "$\\frac{3}{4} = 0.75 = 75\\%$."
+  },
+  "m-e5-ratio-1": {
+   "prompt": "Tỉ số $3 : 5$ viết dưới dạng số thập phân là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Tỉ lệ = số so sánh ÷ số gốc.",
+    "Hãy tính 3 ÷ 5."
+   ],
+   "explanation": "$3 \\div 5 = 0.6$."
+  },
+  "m-e5-ratio-2": {
+   "prompt": "Rút gọn tỉ số $12 : 8$ về tỉ số các số tự nhiên đơn giản nhất. Số đứng trước là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Chia cả hai số cho ước chung lớn nhất.",
+    "Tìm ước chung lớn nhất của 12 và 8."
+   ],
+   "explanation": "$12 : 8 = 3 : 2$."
+  },
+  "m-e5-ratio-3": {
+   "prompt": "Trong 5 bạn có 2 bạn đeo kính. Tỉ lệ bạn đeo kính viết dưới dạng số thập phân là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Tỉ lệ = số bạn đeo kính ÷ tổng số bạn.",
+    "Hãy tính 2 ÷ 5."
+   ],
+   "explanation": "$2 \\div 5 = 0.4$."
+  },
+  "m-e5-ratio-5": {
+   "prompt": "Một cuốn sách 40 trang, bạn đã đọc 10 trang. Số trang đã đọc chiếm bao nhiêu phần trăm? (chỉ nhập số)",
+   "hints": [
+    "Lấy tỉ lệ nhân với 100 để được phần trăm.",
+    "Hãy tính 10 ÷ 40 × 100."
+   ],
+   "explanation": "$10 \\div 40 \\times 100 = 25$. Đó là 25%."
+  },
+  "m-e5-ratio-v1": {
+   "prompt": "Tỉ số $2 : 5$ viết dưới dạng số thập phân là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Tỉ lệ = số so sánh ÷ số gốc.",
+    "Hãy tính 2 ÷ 5."
+   ],
+   "explanation": "$2 \\div 5 = 0.4$."
+  },
+  "m-e5-ratio-v2": {
+   "prompt": "Rút gọn tỉ số $20 : 30$ về tỉ số các số tự nhiên đơn giản nhất. Số đứng trước là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Chia cả hai số cho ước chung lớn nhất.",
+    "Tìm ước chung lớn nhất của 20 và 30."
+   ],
+   "explanation": "$20 : 30 = 2 : 3$."
+  },
+  "m-e5-ratio-v3": {
+   "prompt": "Một cuốn sách 12 trang, bạn đã đọc 9 trang. Số trang đã đọc chiếm bao nhiêu phần trăm? (chỉ nhập số)",
+   "hints": [
+    "Lấy tỉ lệ nhân với 100 để được phần trăm.",
+    "Hãy tính 9 ÷ 12 × 100."
+   ],
+   "explanation": "$9 \\div 12 \\times 100 = 75$. Đó là 75%."
+  },
+  "m-e5-ratio-d1": {
+   "prompt": "Tỉ số $1 : 4$ viết dưới dạng số thập phân là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Tỉ lệ = số so sánh ÷ số gốc.",
+    "Hãy tính 1 ÷ 4."
+   ],
+   "explanation": "$1 \\div 4 = 0.25$."
+  },
+  "m-e6-frac-4": {
+   "prompt": "Tính giá trị của $\\frac{5}{6} \\div 5$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Chia cho một số tự nhiên bằng nhân với số nghịch đảo của nó.",
+    "Chia cho 5 nghĩa là nhân với 1/5."
+   ],
+   "explanation": "$\\frac{5}{6} \\times \\frac{1}{5} = \\frac{1}{6}$."
+  },
+  "m-e6-frac-1": {
+   "prompt": "Tính giá trị của $\\frac{3}{4} \\times \\frac{2}{5}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Nhân tử số với tử số, mẫu số với mẫu số.",
+    "Nhân xong, nếu rút gọn được thì hãy rút gọn."
+   ],
+   "explanation": "$\\frac{3}{4} \\times \\frac{2}{5} = \\frac{3}{10}$."
+  },
+  "m-e6-frac-2": {
+   "prompt": "Tính giá trị của $\\frac{2}{3} \\div \\frac{4}{9}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Đảo ngược phân số chia rồi nhân.",
+    "Nhân xong thì rút gọn."
+   ],
+   "explanation": "$\\frac{2}{3} \\div \\frac{4}{9} = \\frac{2}{3} \\times \\frac{9}{4} = \\frac{3}{2}$."
+  },
+  "m-e6-frac-3": {
+   "prompt": "Tính giá trị của $3.6 \\div 1.2$. (chỉ nhập số)",
+   "hints": [
+    "Dời dấu phẩy của số chia và số bị chia sang phải cùng số chữ số.",
+    "Rồi chia như số tự nhiên."
+   ],
+   "explanation": "$3.6 \\div 1.2 = 3$."
+  },
+  "m-e6-frac-5": {
+   "prompt": "Tính giá trị của $\\frac{7}{8} \\times 4 \\div \\frac{7}{4}$. (chỉ nhập số)",
+   "hints": [
+    "Hãy tính lần lượt từ trái sang phải.",
+    "Phép chia là nhân với số nghịch đảo."
+   ],
+   "explanation": "$\\frac{7}{8} \\times 4 = \\frac{7}{2},\\ \\frac{7}{2} \\div \\frac{7}{4} = 2$."
+  },
+  "m-e6-frac-v1": {
+   "prompt": "Tính giá trị của $\\frac{2}{3} \\times \\frac{3}{4}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Nhân tử số với tử số, mẫu số với mẫu số.",
+    "Nhân xong, nếu rút gọn được thì hãy rút gọn."
+   ],
+   "explanation": "$\\frac{2}{3} \\times \\frac{3}{4} = \\frac{1}{2}$."
+  },
+  "m-e6-frac-v2": {
+   "prompt": "Tính giá trị của $8.4 \\div 2.1$. (chỉ nhập số)",
+   "hints": [
+    "Dời dấu phẩy của số chia và số bị chia sang phải cùng số chữ số.",
+    "Rồi chia như số tự nhiên."
+   ],
+   "explanation": "$8.4 \\div 2.1 = 4$."
+  },
+  "m-e6-frac-v3": {
+   "prompt": "Tính giá trị của $\\frac{3}{4} \\div \\frac{3}{8}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Đảo ngược phân số chia rồi nhân.",
+    "Nhân xong thì rút gọn."
+   ],
+   "explanation": "$\\frac{3}{4} \\div \\frac{3}{8} = \\frac{3}{4} \\times \\frac{8}{3} = 2$."
+  },
+  "m-e6-frac-d1": {
+   "prompt": "Tính giá trị của $\\frac{1}{2} \\times \\frac{1}{3}$. (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Nhân tử số với tử số, mẫu số với mẫu số.",
+    "Nhân xong, nếu rút gọn được thì hãy rút gọn."
+   ],
+   "explanation": "$\\frac{1}{2} \\times \\frac{1}{3} = \\frac{1}{6}$."
+  },
+  "m-e6-frac-d2": {
+   "prompt": "Tính giá trị của $6 \\div 1.5$. (chỉ nhập số)",
+   "hints": [
+    "Dời dấu phẩy của số chia và số bị chia sang phải cùng số chữ số.",
+    "Rồi chia như số tự nhiên."
+   ],
+   "explanation": "$6 \\div 1.5 = 4$."
+  },
+  "m-e6-ratio-2": {
+   "prompt": "Trong tỉ lệ thức $5 : 2 = \\square : 10$, số trong ô vuông là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Tích hai trung tỉ bằng tích hai ngoại tỉ.",
+    "Giải 2 × □ = 5 × 10."
+   ],
+   "explanation": "$2 \\times \\square = 5 \\times 10 = 50$ nên □ = 25."
+  },
+  "m-e6-ratio-4": {
+   "prompt": "Giá 3 cây bút chì là 1500 đồng. Giá 7 cây bút chì như vậy là bao nhiêu đồng? (chỉ nhập số)",
+   "hints": [
+    "Hãy tìm giá của 1 cây bút chì trước.",
+    "1500 ÷ 3 = 500."
+   ],
+   "explanation": "$1500 \\div 3 \\times 7 = 3500$. Là 3500 đồng."
+  },
+  "m-e6-ratio-1": {
+   "prompt": "Trong tỉ lệ thức $3 : 4 = 12 : \\square$, số trong ô vuông là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trong tỉ lệ thức, tích hai trung tỉ bằng tích hai ngoại tỉ.",
+    "Giải 3 × □ = 4 × 12."
+   ],
+   "explanation": "$3 \\times \\square = 4 \\times 12$ nên □ = 16."
+  },
+  "m-e6-ratio-3": {
+   "prompt": "Chia 20 viên kẹo theo tỉ lệ 3:2. Bên nhận nhiều hơn được bao nhiêu viên? (chỉ nhập số)",
+   "hints": [
+    "Hãy chia cả số kẹo thành 5 phần bằng nhau.",
+    "Bên có phần lớn hơn nhận số phần tương ứng."
+   ],
+   "explanation": "$20 \\div 5 \\times 3 = 12$."
+  },
+  "m-e6-ratio-5": {
+   "prompt": "Trong tỉ lệ thức $7 : 3 = 28 : \\square$, số trong ô vuông là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trong tỉ lệ thức, tích hai trung tỉ bằng tích hai ngoại tỉ.",
+    "Giải 7 × □ = 3 × 28."
+   ],
+   "explanation": "$7 \\times \\square = 3 \\times 28$ nên □ = 12."
+  },
+  "m-e6-ratio-v1": {
+   "prompt": "Trong tỉ lệ thức $2 : 3 = 12 : \\square$, số trong ô vuông là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trong tỉ lệ thức, tích hai trung tỉ bằng tích hai ngoại tỉ.",
+    "Giải 2 × □ = 3 × 12."
+   ],
+   "explanation": "$2 \\times \\square = 3 \\times 12$ nên □ = 18."
+  },
+  "m-e6-ratio-v2": {
+   "prompt": "Chia 30 viên kẹo theo tỉ lệ 2:3. Bên nhận nhiều hơn được bao nhiêu viên? (chỉ nhập số)",
+   "hints": [
+    "Hãy chia cả số kẹo thành 5 phần bằng nhau.",
+    "Bên có phần lớn hơn nhận số phần tương ứng."
+   ],
+   "explanation": "$30 \\div 5 \\times 3 = 18$."
+  },
+  "m-e6-ratio-v3": {
+   "prompt": "Giá 4 quyển vở là 2000 đồng. Giá 9 quyển vở như vậy là bao nhiêu đồng? (chỉ nhập số)",
+   "hints": [
+    "Tìm giá của 1 quyển vở trước.",
+    "2000 ÷ 4 = 500."
+   ],
+   "explanation": "$2000 \\div 4 \\times 9 = 4500$. Là 4500 đồng."
+  },
+  "m-e6-ratio-d1": {
+   "prompt": "Trong tỉ lệ thức $1 : 2 = 5 : \\square$, số trong ô vuông là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trong tỉ lệ thức, tích hai trung tỉ bằng tích hai ngoại tỉ.",
+    "Giải 1 × □ = 2 × 5."
+   ],
+   "explanation": "$1 \\times \\square = 2 \\times 5$ nên □ = 10."
+  },
+  "m-e6-pct-4": {
+   "prompt": "Viết số thập phân $0.35$ thành phần trăm. Kết quả là bao nhiêu %? (chỉ nhập số)",
+   "hints": [
+    "Nhân số thập phân với 100.",
+    "Hãy tính 0.35 × 100."
+   ],
+   "explanation": "$0.35 \\times 100 = 35\\%$."
+  },
+  "m-e6-pct-5": {
+   "prompt": "Một món hàng giá vốn 20000 đồng được bán với lợi nhuận 15%. Giá bán là bao nhiêu đồng? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính số tiền lợi nhuận trước.",
+    "Tính 15% của 20000 rồi cộng vào giá vốn."
+   ],
+   "explanation": "$20000 + 20000 \\times 15 \\div 100 = 23000$."
+  },
+  "m-e6-pct-1": {
+   "prompt": "Viết phân số $\\frac{3}{5}$ thành phần trăm. Kết quả là bao nhiêu %? (chỉ nhập số)",
+   "hints": [
+    "Đổi phân số thành số thập phân rồi nhân với 100.",
+    "Hãy tính 3 ÷ 5."
+   ],
+   "explanation": "$\\frac{3}{5} = 0.6 = 60\\%$."
+  },
+  "m-e6-pct-2": {
+   "prompt": "25% của 80 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Phần trăm nghĩa là bao nhiêu phần của 100.",
+    "Hãy tính 80 × 25 ÷ 100."
+   ],
+   "explanation": "$80 \\times 25 \\div 100 = 20$."
+  },
+  "m-e6-pct-3": {
+   "prompt": "Một món hàng giá niêm yết 5000 đồng được giảm 20%. Giá sau khi giảm là bao nhiêu đồng? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính số tiền được giảm trước.",
+    "Lấy giá niêm yết trừ đi số tiền giảm."
+   ],
+   "explanation": "$5000 - 5000 \\times 20 \\div 100 = 4000$."
+  },
+  "m-e6-pct-v1": {
+   "prompt": "30% của 200 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Phần trăm nghĩa là bao nhiêu phần của 100.",
+    "Hãy tính 200 × 30 ÷ 100."
+   ],
+   "explanation": "$200 \\times 30 \\div 100 = 60$."
+  },
+  "m-e6-pct-v2": {
+   "prompt": "Một món hàng giá niêm yết 8000 đồng được giảm 25%. Giá sau khi giảm là bao nhiêu đồng? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính số tiền được giảm trước.",
+    "Lấy giá niêm yết trừ đi số tiền giảm."
+   ],
+   "explanation": "$8000 - 8000 \\times 25 \\div 100 = 6000$."
+  },
+  "m-e6-pct-v3": {
+   "prompt": "Viết phân số $\\frac{1}{4}$ thành phần trăm. Kết quả là bao nhiêu %? (chỉ nhập số)",
+   "hints": [
+    "Đổi phân số thành số thập phân rồi nhân với 100.",
+    "Hãy tính 1 ÷ 4."
+   ],
+   "explanation": "$\\frac{1}{4} = 0.25 = 25\\%$."
+  },
+  "m-e6-pct-d1": {
+   "prompt": "Viết số thập phân $0.5$ thành phần trăm. Kết quả là bao nhiêu %? (chỉ nhập số)",
+   "hints": [
+    "Nhân số thập phân với 100.",
+    "Hãy tính 0.5 × 100."
+   ],
+   "explanation": "$0.5 \\times 100 = 50\\%$."
+  },
+  "m-e6-geo-4": {
+   "prompt": "Hình lập phương có cạnh 4 cm. Thể tích là bao nhiêu cm³? (chỉ nhập số)",
+   "hints": [
+    "Thể tích hình lập phương = cạnh × cạnh × cạnh.",
+    "Hãy tính 4 × 4 × 4."
+   ],
+   "explanation": "$4 \\times 4 \\times 4 = 64$. Thể tích là 64 cm³."
+  },
+  "m-e6-geo-1": {
+   "prompt": "Hình tròn có đường kính 10 cm. Chu vi dài bao nhiêu cm? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Chu vi hình tròn = đường kính × π.",
+    "Hãy tính 10 × 3,14."
+   ],
+   "explanation": "$10 \\times 3.14 = 31.4$. Chu vi là 31.4 cm."
+  },
+  "m-e6-geo-2": {
+   "prompt": "Hình tròn có bán kính 5 cm. Diện tích là bao nhiêu cm²? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình tròn = bán kính × bán kính × π.",
+    "Hãy tính 5 × 5 × 3,14."
+   ],
+   "explanation": "$5 \\times 5 \\times 3.14 = 78.5$. Diện tích là 78.5 cm²."
+  },
+  "m-e6-geo-3": {
+   "prompt": "Hình hộp chữ nhật có chiều dài 5 cm, chiều rộng 4 cm, chiều cao 3 cm. Thể tích là bao nhiêu cm³? (chỉ nhập số)",
+   "hints": [
+    "Thể tích = dài × rộng × cao.",
+    "Hãy tính 5 × 4 × 3."
+   ],
+   "explanation": "$5 \\times 4 \\times 3 = 60$. Thể tích là 60 cm³."
+  },
+  "m-e6-geo-5": {
+   "prompt": "Hình tròn có bán kính 10 cm. Diện tích là bao nhiêu cm²? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình tròn = bán kính × bán kính × π.",
+    "Hãy tính 10 × 10 × 3,14."
+   ],
+   "explanation": "$10 \\times 10 \\times 3.14 = 314$. Diện tích là 314 cm²."
+  },
+  "m-e6-geo-v1": {
+   "prompt": "Hình tròn có đường kính 20 cm. Chu vi dài bao nhiêu cm? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Chu vi hình tròn = đường kính × π.",
+    "Hãy tính 20 × 3,14."
+   ],
+   "explanation": "$20 \\times 3.14 = 62.8$. Chu vi là 62.8 cm."
+  },
+  "m-e6-geo-v2": {
+   "prompt": "Hình hộp chữ nhật có chiều dài 6 cm, chiều rộng 3 cm, chiều cao 5 cm. Thể tích là bao nhiêu cm³? (chỉ nhập số)",
+   "hints": [
+    "Thể tích = dài × rộng × cao.",
+    "Hãy tính 6 × 3 × 5."
+   ],
+   "explanation": "$6 \\times 3 \\times 5 = 90$. Thể tích là 90 cm³."
+  },
+  "m-e6-geo-v3": {
+   "prompt": "Hình tròn có bán kính 3 cm. Diện tích là bao nhiêu cm²? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Diện tích hình tròn = bán kính × bán kính × π.",
+    "Hãy tính 3 × 3 × 3,14."
+   ],
+   "explanation": "$3 \\times 3 \\times 3.14 = 28.26$. Diện tích là 28.26 cm²."
+  },
+  "m-e6-geo-d1": {
+   "prompt": "Hình tròn có đường kính 5 cm. Chu vi dài bao nhiêu cm? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Chu vi hình tròn = đường kính × π.",
+    "Hãy tính 5 × 3,14."
+   ],
+   "explanation": "$5 \\times 3.14 = 15.7$. Chu vi là 15.7 cm."
+  },
+  "m-e6-stat-2": {
+   "prompt": "Trung bình cộng của 5 số là 8. Tổng của 5 số đó là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Tổng = trung bình × số lượng.",
+    "Hãy tính 8 × 5."
+   ],
+   "explanation": "$8 \\times 5 = 40$."
+  },
+  "m-e6-stat-4": {
+   "prompt": "Trong các số 2, 3, 3, 5, 3, 7, số xuất hiện nhiều nhất (mốt) là số nào? (chỉ nhập số)",
+   "hints": [
+    "Hãy đếm xem mỗi số xuất hiện mấy lần.",
+    "Xem số 3 xuất hiện mấy lần."
+   ],
+   "explanation": "Số 3 xuất hiện 3 lần, nhiều nhất."
+  },
+  "m-e6-stat-5": {
+   "prompt": "Điểm trung bình của 4 bạn là 70. Bạn thứ năm được 95 điểm. Điểm trung bình của cả 5 bạn là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính tổng điểm của 4 bạn trước.",
+    "70 × 4 = 280, rồi cộng thêm 95."
+   ],
+   "explanation": "$(70 \\times 4 + 95) \\div 5 = 75$."
+  },
+  "m-e6-stat-1": {
+   "prompt": "Các điểm số là 80, 90, 70, 100. Điểm trung bình là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trung bình cộng = tổng các giá trị ÷ số giá trị.",
+    "Hãy tính 80 + 90 + 70 + 100 trước."
+   ],
+   "explanation": "$(80 + 90 + 70 + 100) \\div 4 = 85$."
+  },
+  "m-e6-stat-3": {
+   "prompt": "Số trung vị của các số 3, 7, 5, 9, 11 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy sắp xếp các số theo thứ tự tăng dần.",
+    "Số đứng ở chính giữa là số trung vị."
+   ],
+   "explanation": "Sau khi sắp xếp: 3, 5, 7, 9, 11. Số ở giữa là 7."
+  },
+  "m-e6-stat-v1": {
+   "prompt": "Các điểm số là 6, 8, 10. Điểm trung bình là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trung bình cộng = tổng các giá trị ÷ số giá trị.",
+    "Hãy tính 6 + 8 + 10 trước."
+   ],
+   "explanation": "$(6 + 8 + 10) \\div 3 = 8$."
+  },
+  "m-e6-stat-v2": {
+   "prompt": "Số trung vị của các số 4, 9, 2, 7, 5 là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy sắp xếp các số theo thứ tự tăng dần.",
+    "Số đứng ở chính giữa là số trung vị."
+   ],
+   "explanation": "Sau khi sắp xếp: 2, 4, 5, 7, 9. Số ở giữa là 5."
+  },
+  "m-e6-stat-d1": {
+   "prompt": "Các điểm số là 10, 20. Điểm trung bình là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Trung bình cộng = tổng các giá trị ÷ số giá trị.",
+    "Hãy tính 10 + 20 trước."
+   ],
+   "explanation": "$(10 + 20) \\div 2 = 15$."
+  }
+ }
+}
