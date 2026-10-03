@@ -15,7 +15,8 @@ export const SHIM = "202609300023_learning_prereq_shim.sql";
 export const M024 = "202609300024_learning_platform.sql";
 export const M025 = "202609300025_learning_content_rpc.sql";
 export const M026 = "202609300026_learning_selfcontained_auth.sql";
-export const LEARNING_CHAIN = [SHIM, M024, M025, M026];
+export const M027 = "202609300027_learning_elementary_grades.sql";
+export const LEARNING_CHAIN = [SHIM, M024, M025, M026, M027];
 export const MARKETPLACE_FILES = MIGRATIONS.filter((f) => !LEARN_MIGRATIONS.includes(f));
 export const sqlOf = (f: string) =>
   readFileSync(path.join(root, "supabase/migrations", f), "utf8").replace(/create extension if not exists pgcrypto[^;]*;/gi, "");
