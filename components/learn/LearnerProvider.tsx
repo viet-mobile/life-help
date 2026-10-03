@@ -3,9 +3,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { learnConfig } from "@/lib/learn/config";
-import { indexContent, type ContentIndex } from "@/lib/learn/content/indexer";
+import { indexContent, scopeToGrade, type ContentIndex } from "@/lib/learn/content/indexer";
 import { createInitialState } from "@/lib/learn/domain/engine";
-import { createTranslator, type Translator } from "@/lib/learn/i18n";
+import { createTranslator, type LearnLocale, type Translator } from "@/lib/learn/i18n";
 import type { MetaBundle, PlayerState, Site } from "@/lib/learn/types";
 
 export class ApiError extends Error {
@@ -18,13 +18,15 @@ interface SiteCtx {
   site: Site;
   /** "" on the site's own subdomain, "/study/<site>" when reached by path (local/dev). */
   base: string;
+  /** The learner's language for this page (cookie, resolved on the server). */
+  locale: LearnLocale;
   t: Translator;
   href: (path: string) => string;
 }
 const SiteContext = createContext<SiteCtx | null>(null);
 
-export function SiteProvider({ site, base, children }: { site: Site; base: string; children: ReactNode }) {
-  const value = useMemo(() => ({ site, base, t: createTranslator("ko"), href: (path: string) => `${base}${path}` }), [site, base]);
+export function SiteProvider({ site, base, locale, children }: { site: Site; base: string; locale: LearnLocale; children: ReactNode }) {
+  const value = useMemo(() => ({ site, base, locale, t: createTranslator(locale), href: (path: string) => `${base}${path}` }), [site, base, locale]);
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;
 }
 export function useSite(): SiteCtx {
@@ -75,12 +77,15 @@ export function LearnerProvider({
   accountsEnabled: boolean;
   children: ReactNode;
 }) {
-  const { site, base, t, href } = useSite();
+  const { site, base, locale, t, href } = useSite();
   const router = useRouter();
   const pathname = usePathname();
   const mode = initialState ? "account" : "guest";
-  const index = useMemo(() => indexContent(meta), [meta]);
   const [state, setStateRaw] = useState<PlayerState>(initialState ?? createInitialState(site));
+  // The curriculum is scoped to the student's grade with the same pure function the server uses (middle / high: the secondary courses,
+  // exactly as before; elementary: only that grade's course). Before onboarding there is no grade yet and the secondary default applies.
+  const grade = state.profile?.grade ?? "M1";
+  const index = useMemo(() => indexContent(scopeToGrade(meta, grade)), [meta, grade]);
   const [ready, setReady] = useState(mode === "account");
   const stateRef = useRef(state);
   useEffect(() => {
@@ -155,8 +160,8 @@ export function LearnerProvider({
   }, [ready, state.profile, pathname, router, href]);
 
   const value = useMemo<LearnerCtx>(
-    () => ({ site, base, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest }),
-    [site, base, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest],
+    () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest }),
+    [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest],
   );
   return <LearnerContext.Provider value={value}>{children}</LearnerContext.Provider>;
 }

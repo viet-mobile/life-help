@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Dashboard } from "@/components/learn/Dashboard";
-import { t } from "@/lib/learn/i18n";
+import { getServerT } from "@/lib/learn/i18n/server";
 
-export const metadata: Metadata = { title: t("nav.home") };
+export async function generateMetadata(): Promise<Metadata> {
+  return { title: (await getServerT()).t("nav.home") };
+}
+
 export default function Page() {
   return <Dashboard />;
 }

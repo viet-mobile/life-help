@@ -14,6 +14,7 @@ import { levelForXp } from "@/lib/learn/domain/level";
 import { buildPath } from "@/lib/learn/domain/path";
 import { dueSkills } from "@/lib/learn/domain/srs";
 import { toPublicQuestion, loadIndex } from "@/lib/learn/content/repository";
+import type { LearnLocale } from "@/lib/learn/i18n";
 import type { ContentIndex } from "@/lib/learn/content/indexer";
 import type {
   AnswerValue,
@@ -39,6 +40,8 @@ import { parsePlayerState } from "./stateCodec";
 export interface Actor {
   userId: string | null;
   guestState?: unknown;
+  /** Presentation language of this request (Korean when absent). It never changes grading, XP or mastery. */
+  locale?: LearnLocale;
 }
 
 export interface ServiceDeps {
@@ -69,6 +72,17 @@ export class LearnService {
     const store = this.requireStore(actor);
     if (store && actor.userId) return store.loadState(actor.userId, site, this.now());
     return parsePlayerState(actor.guestState, site);
+  }
+
+  /**
+   * The student's state plus the curriculum for THEIR grade, in THEIR language. Every entry point goes through this, so the path, the
+   * placement pool, the skills and the quests are always computed over the same grade-scoped content (scopeToGrade).
+   */
+  private async load(actor: Actor, site: Site) {
+    const state = await this.getState(actor, site);
+    const grade: Grade = state.profile?.grade ?? "M1";
+    const { bundle, index } = await loadIndex(site, { grade, locale: actor.locale ?? "ko" });
+    return { state, grade, bundle, index };
   }
 
   /* ------------------------------ onboarding ------------------------------ */
@@ -108,9 +122,7 @@ export class LearnService {
     site: Site,
     body: { history: DiagnosticAnswer[]; answer?: { questionId: string; value: unknown } },
   ) {
-    const { bundle, index } = await loadIndex(site);
-    const state = await this.getState(actor, site);
-    const grade: Grade = state.profile?.grade ?? "M1";
+    const { state, grade, bundle, index } = await this.load(actor, site);
 
     const history: DiagnosticAnswer[] = (body.history ?? [])
       .filter((h) => index.questions.get(h.questionId)?.role === "diagnostic")
@@ -177,8 +189,7 @@ export class LearnService {
     site: Site,
     input: { kind: "lesson" | "review" | "practice"; lessonId?: string; skillId?: string },
   ) {
-    const { bundle, index } = await loadIndex(site);
-    const state = await this.getState(actor, site);
+    const { state, bundle, index } = await this.load(actor, site);
     const sessionId = this.newId();
     const now = this.now();
     let questions: Question[] = [];
@@ -219,8 +230,8 @@ export class LearnService {
 
   /* ------------------------------- attempts ------------------------------- */
 
-  async requestHint(site: Site, body: { questionId: string; level: number }) {
-    const { bundle } = await loadIndex(site);
+  async requestHint(actor: Actor, site: Site, body: { questionId: string; level: number }) {
+    const { bundle } = await loadIndex(site, { locale: actor.locale ?? "ko" });
     const q = bundle.questions.find((x) => x.id === body.questionId);
     if (!q || q.status !== "PUBLISHED" || q.role === "diagnostic") throw new LearnError("unknown_question", 404);
     const level = Math.floor(body.level);
@@ -245,7 +256,7 @@ export class LearnService {
     if (typeof body.sessionId !== "string" || !SESSION_ID_RE.test(body.sessionId)) {
       throw new LearnError("invalid_session");
     }
-    const { bundle, index } = await loadIndex(site);
+    const { state, bundle, index } = await this.load(actor, site);
     const q = bundle.questions.find((x) => x.id === body.questionId);
     if (!q || q.status !== "PUBLISHED" || q.role === "diagnostic") throw new LearnError("unknown_question", 404);
     const bad = validateResponse(q, body.answer);
@@ -266,7 +277,6 @@ export class LearnService {
       attemptNo = (prior?.attempts ?? 0) + 1;
     }
 
-    const state = await this.getState(actor, site);
     const correct = checkAnswer(q, body.answer as AnswerValue);
     const reveal = !correct && attemptNo >= 3;
     const skillDue = dueSkills(state.mastery, now).some((m) => m.skillId === q.skillId);
@@ -343,7 +353,7 @@ export class LearnService {
     if (typeof body.sessionId !== "string" || !SESSION_ID_RE.test(body.sessionId)) {
       throw new LearnError("invalid_session");
     }
-    const { index } = await loadIndex(site);
+    const { state, index } = await this.load(actor, site);
     const found = index.lessons.get(body.lessonId);
     if (!found) throw new LearnError("unknown_lesson", 404);
     const total = found.lesson.questionIds.length + (found.lesson.challengeId ? 1 : 0);
@@ -386,7 +396,6 @@ export class LearnService {
       firstTryCorrect = ids.filter((id) => summary.questions[id]?.firstTryCorrect).length;
     }
 
-    const state = await this.getState(actor, site);
     const result: EngineResult = applyLessonCompletion(
       state,
       index,

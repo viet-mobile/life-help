@@ -7,6 +7,7 @@ import { dayKey } from "@/lib/learn/domain/dates";
 import { levelProgress } from "@/lib/learn/domain/level";
 import { displayStreak } from "@/lib/learn/domain/streak";
 import { BrandLogo } from "./BrandLogo";
+import { LocaleSwitch } from "./LocaleSwitch";
 import { useLearner } from "./LearnerProvider";
 
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"];
@@ -33,6 +34,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
       <header className="l-topbar">
         <div className="l-topbar-inner">
           <Link className="l-brand" href={href("/dashboard")}><BrandLogo site={site} name={site === "math" ? t("brand.math") : t("brand.english")} /></Link>
+          <LocaleSwitch compact />
           <div className="l-stats" aria-label="status">
             <span className="l-stat" title={t("dash.streak", { n: streak })}>🔥 {streak}</span>
             <span className="l-stat">Lv.{level.level}</span>

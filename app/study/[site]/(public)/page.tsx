@@ -2,17 +2,19 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { BrandLogo } from "@/components/learn/BrandLogo";
+import { LocaleSwitch } from "@/components/learn/LocaleSwitch";
 import { StartCta } from "@/components/learn/StartCta";
-import { t } from "@/lib/learn/i18n";
+import { getServerT } from "@/lib/learn/i18n/server";
 import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
-import { isSite } from "@/lib/learn/types";
+import { isSite, schoolLevel } from "@/lib/learn/types";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
   if (!isSite(site)) notFound();
   const h = await headers();
   const base = h.get("x-learn-base") ?? `/study/${site}`;
-  const { bundle } = await loadContent(site);
+  const { t, locale } = await getServerT();
+  const { bundle } = await loadContent(site, locale);
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
   const other = site === "math" ? "english" : "math";
@@ -20,8 +22,9 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
   return (
     <div className="l-wrap l-wrap-wide l-stack">
-      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <header className="l-landing-head">
         <span className="l-brand"><BrandLogo site={site} name={site === "math" ? t("brand.math") : t("brand.english")} size={56} /></span>
+        <LocaleSwitch />
         <Link className="l-link" href={otherHost}>{t("site.other", { name: t(`site.${other}.name` as never) })}</Link>
       </header>
 
@@ -47,15 +50,24 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
       <section className="l-stack" aria-labelledby="worlds-h">
         <h2 id="worlds-h" className="l-h2">{t("landing.worldsTitle")}</h2>
-        <div className="l-grid l-grid-2">
-          {bundle.catalog.courses.map((c) => (
-            <div key={c.id} className="l-card">
-              <div style={{ fontSize: "2rem" }} aria-hidden="true">{c.world.emoji}</div>
-              <h3 className="l-h2">{c.world.name}</h3>
-              <p className="l-muted">{c.title}</p>
+        {(["elementary", "secondary"] as const).map((level) => {
+          const courses = bundle.catalog.courses.filter((c) => schoolLevel(c.grade) === level);
+          if (courses.length === 0) return null;
+          return (
+            <div key={level} className="l-stack">
+              <h3 className="l-h2">{t(`grade.group.${level}` as never)}</h3>
+              <div className="l-grid l-grid-2">
+                {courses.map((c) => (
+                  <div key={c.id} className="l-card">
+                    <div style={{ fontSize: "2rem" }} aria-hidden="true">{c.world.emoji}</div>
+                    <h3 className="l-h2">{c.world.name}</h3>
+                    <p className="l-muted">{c.title}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </section>
       <span hidden data-base={base} />
     </div>

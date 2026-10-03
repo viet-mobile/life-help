@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { ProfilePage } from "@/components/learn/ProfilePage";
-import { t } from "@/lib/learn/i18n";
+import { getServerT } from "@/lib/learn/i18n/server";
 import { signOutAction } from "../../actions";
 
-export const metadata: Metadata = { title: t("profile.title") };
+export async function generateMetadata(): Promise<Metadata> {
+  return { title: (await getServerT()).t("profile.title") };
+}
 
 export default async function Page({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
