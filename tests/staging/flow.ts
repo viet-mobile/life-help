@@ -87,7 +87,10 @@ export async function lesson(page: Page, site: Site, hook?: ScreenHook, opts: Op
   await hook?.("lesson question 1");
   const firstQ = demo.find((x) => x.id === queue[0])!;
   if (firstQ.type === "numeric" || firstQ.type === "short_answer" || firstQ.type === "fill_blank") await page.locator(`#ans-${firstQ.id}`).fill("999");
-  else if (firstQ.type === "ordering") await page.locator(".l-tokens").getByRole("button").first().click();
+  else if (firstQ.type === "ordering") {
+    // "Check" only enables once every tile is placed: place them in the REVERSE of the correct order so the answer is certainly wrong.
+    for (const id of [...firstQ.answer.ids!].reverse()) await page.locator(".l-tokens").getByRole("button", { name: firstQ.options!.find((o) => o.id === id)!.text, exact: true }).click();
+  }
   else await page.getByRole("radio").nth(firstQ.options ? firstQ.options.findIndex((o) => o.id !== firstQ.answer.id) : 1).click();
   await page.getByRole("button", { name: CHECK(t) }).click();
   await expect(page.getByText(t["lesson.wrong.1"])).toBeVisible(); // wrong answer -> first hint
@@ -96,7 +99,7 @@ export async function lesson(page: Page, site: Site, hook?: ScreenHook, opts: Op
   for (const [n, id] of queue.entries()) {
     const q = demo.find((x) => x.id === id)!;
     if (n > 0) await expect(page.getByText(new RegExp(`${qWord} ${n + 1} /|${t["lesson.challenge"]}`))).toBeVisible();
-    if (n === 0 && q.type === "ordering") await page.getByRole("button", { name: new RegExp(t["lesson.order.reset"]) }).first().click().catch(() => undefined);
+    // (after a wrong answer the app clears the chosen tiles itself, so an ordering question is simply answered again)
     await answer(page, q, opts);
     await expect(page.getByText(new RegExp(`${t["lesson.correct"]}|${t["lesson.correct.after"]}`))).toBeVisible();
     if (n === 0) await hook?.("lesson correct feedback");
