@@ -16,6 +16,9 @@ import { createBuilder } from "../elementary/lib.mjs";
 import { LEVEL_GRADES, COGNITIVE } from "./levels.mjs";
 import { cognitiveClass, predictLevel, validateFeatures } from "./rubric.mjs";
 import { hash32, makeRand } from "./util.mjs";
+import { profileOf, reasoningTags } from "./core/reasoning.mjs";
+import { stampGenerated } from "./core/model.mjs";
+import { fingerprintItem } from "./core/fingerprint.mjs";
 import { MATH_TEMPLATES } from "./templates/math.mjs";
 import { ENGLISH_TEMPLATES } from "./templates/english.mjs";
 
@@ -110,7 +113,12 @@ export function generate({ subject, level, count = 10, seed = 1, cognitive = nul
   const { bundle, overlay } = b.finish();
   const byId = new Map(bundle.questions.map((q) => [q.id, q]));
   return {
-    items: items.map((it) => ({ ...it, question: byId.get(it.id), overlay: overlay.questions[it.id] })),
+    items: items.map((it) => {
+      const question = byId.get(it.id);
+      const reasoning = profileOf(it.features, { cognitive: it.cognitive, template: it.template });
+      const withQ = { ...it, question, overlay: overlay.questions[it.id], reasoning, reasoningTags: reasoningTags(reasoning), difficulty: stampGenerated(it.predictedLevel) };
+      return { ...withQ, fingerprint: fingerprintItem(subject, withQ, reasoning) };
+    }),
     bundle, overlay,
   };
 }
