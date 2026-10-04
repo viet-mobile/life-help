@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "rule": "Only OWNED, LICENSED or PUBLIC_DOMAIN with evidence, decidedBy and decidedAt clears a source. Anything not listed here is UNCLEARED and the importer refuses it.",
+  "decisions": {
+    "legacy:korean:data_block.study_korean.js": { "status": "UNCLEARED", "note": "origin and licence not established; the legacy repository documents its corpus sources by jw.org publication symbol (target_sources.py); no licence evidence recorded" },
+    "legacy:english:data_block.study_english.js": { "status": "UNCLEARED", "note": "same as korean" },
+    "legacy:japanese:data_block.study_japanese.js": { "status": "UNCLEARED", "note": "same as korean" },
+    "legacy:chinese:data_block.study_chinese.js": { "status": "UNCLEARED", "note": "same as korean" },
+    "legacy:indonesian:data_block.study_indonesian.js": { "status": "UNCLEARED", "note": "same as korean" },
+    "legacy:vietnamese:data_block.js": { "status": "UNCLEARED", "note": "mixed content (course material, culture articles, scripture and song text, templates): per-container rights decisions are required before any adapter is written" }
+  }
+}

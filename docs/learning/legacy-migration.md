@@ -23,3 +23,6 @@ Census snapshot: `docs/learning/legacy-domain-references.json`, tool `scripts/le
 
 ## Host transition
 Legacy host -> `study.<slug>.life.help` (registry `legacyHosts`, exact names, no wildcard) with a permanent redirect (301) and a canonical on the new host only AFTER the new host serves the full product; before that, no redirect (a redirect to an empty product is worse than the old site). Certificates: two-label hosts need per-host certificates (see adult-study-architecture.md). No DNS or route change is part of this work.
+
+## Pipeline and findings
+The real-corpus import pipeline, the id namespace, the rights gate and what the first real run found are in `legacy-import-pipeline.md`.
