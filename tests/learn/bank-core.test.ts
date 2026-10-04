@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { REASONING_DIMENSIONS as TS_DIMS, DIFFICULTY_BASES as TS_BASES, publicView, type GeneratedQuestion } from "@/lib/learn/bank/core/types";
-import { REASONING_DIMENSIONS, DIFFICULTY_BASES } from "../../scripts/learn/bank/core/taxonomy.mjs";
-import { parseCsv, validateDataset, SOURCE_COLUMNS, ITEM_COLUMNS } from "../../scripts/learn/bank/core/contract.mjs";
+import { REASONING_DIMENSIONS as TS_DIMS, DIFFICULTY_BASES as TS_BASES, METRIC_TYPES as TS_METRICS, SCORING_MODELS as TS_SCORING, SAMPLE_SIZE_SCOPES as TS_SCOPES, TRUST_LEVELS as TS_TRUST, publicView, type GeneratedQuestion } from "@/lib/learn/bank/core/types";
+import { REASONING_DIMENSIONS, DIFFICULTY_BASES, METRIC_TYPES as RT_METRICS, SCORING_MODELS as RT_SCORING, SAMPLE_SIZE_SCOPES as RT_SCOPES, TRUST_LEVELS as RT_TRUST } from "../../scripts/learn/bank/core/taxonomy.mjs";
+import { parseCsv, validateDataset, validateEvidence, EVIDENCE_COLUMNS, SOURCE_COLUMNS, ITEM_COLUMNS } from "../../scripts/learn/bank/core/contract.mjs";
 import { CALIBRATION_VERSION, P_EPS, buildLevelScale, calibrateDataset, clipP, itemConfidence, levelOf, logitDifficulty, logitSE, normalizeWithinCohort, stampGenerated } from "../../scripts/learn/bank/core/model.mjs";
 import { allBands, bandFor, chooseLevel } from "../../scripts/learn/bank/core/bands.mjs";
 import { profileOf, reasoningTags, validateProfile } from "../../scripts/learn/bank/core/reasoning.mjs";
@@ -10,7 +10,10 @@ import { generate } from "../../scripts/learn/bank/engine.mjs";
 
 /** SYNTHETIC datasets, used only to test arithmetic. They are never data. */
 const SRC = (id: string, over: Record<string, string> = {}) => ({ source_id: id, country: "US", institution: "Test body", exam_family: "Test exam", year_from: "2010", year_to: "2020", subjects: "math", official_url: "https://example.test/x", source_type: "GOVERNMENT_AGENCY", public_access: "OPEN", correct_rate_availability: "ITEM_LEVEL", license_status: "PUBLIC_DOMAIN", retrieval_policy: "MANUAL_ONLY", notes: "synthetic", ...over });
-const ITEM = (src: string, i: number, rate: string, over: Record<string, string> = {}) => ({ source_id: src, external_item_id: `Q${i}`, year: "2015", subject: "math", population: "grade 8", grade_or_level: "8", correct_rate: rate, sample_size: "2000", topic_tags: "algebra", skill_tags: "proceduralFluency", metadata_confidence: "HIGH", status: "EMPIRICAL", ...over });
+const ITEM = (src: string, i: number, rate: string, over: Record<string, string> = {}) => {
+  const e = rate !== "";
+  return { source_id: src, external_item_id: `Q${i}`, year: "2015", subject: "math", population: "grade 8", grade_or_level: "8", correct_rate: rate, metric_type: e ? "PERCENT_CORRECT" : "", metric_scope: e ? "ITEM" : "", scoring_model: e ? "DICHOTOMOUS" : "", sample_size: "2000", sample_size_scope: "ITEM", topic_tags: "algebra", skill_tags: "proceduralFluency", metadata_confidence: "HIGH", trust_level: e ? "VERIFIED_EMPIRICAL" : "PROVISIONAL", status: "EMPIRICAL", ...over };
+};
 const csv = (cols: string[], rows: Record<string, string>[]) => [cols.join(","), ...rows.map((r) => cols.map((c) => (/[",\n]/.test(r[c] ?? "") ? `"${(r[c] ?? "").replace(/"/g, '""')}"` : (r[c] ?? ""))).join(","))].join("\n");
 const dataset = (sources: Record<string, string>[], items: Record<string, string>[]) => validateDataset(csv(SOURCE_COLUMNS, sources), csv(ITEM_COLUMNS, items));
 const rates = (n: number, hi = 0.95, lo = 0.05) => Array.from({ length: n }, (_, i) => hi - ((hi - lo) * i) / (n - 1));
@@ -21,6 +24,7 @@ describe("taxonomy: TypeScript contract mirrors the runtime vocabulary", () => {
     expect([...TS_DIMS]).toEqual(REASONING_DIMENSIONS);
     expect([...TS_BASES]).toEqual(DIFFICULTY_BASES);
     expect(REASONING_DIMENSIONS).toHaveLength(12);
+    expect([[TS_METRICS, RT_METRICS], [TS_SCORING, RT_SCORING], [TS_SCOPES, RT_SCOPES], [TS_TRUST, RT_TRUST]].every(([a, b]) => JSON.stringify([...a]) === JSON.stringify(b))).toBe(true);
   });
 });
 
@@ -167,7 +171,7 @@ describe("confidence", () => {
     expect(itemConfidence(row({ metadata_confidence: "HIGH" }))).toBeGreaterThan(itemConfidence(row({ metadata_confidence: "LOW" })));
     expect(itemConfidence(row({}))).toBeGreaterThan(itemConfidence(row({}, { cohortN: 4, scaleBorrowed: true })));
     expect(itemConfidence(row({}))).toBeGreaterThan(itemConfidence(row({}, { clipped: true })));
-    expect(itemConfidence(row({ sample_size: "" }))).toBeLessThan(itemConfidence(row({ sample_size: "2000" })));
+    expect(itemConfidence(row({ sample_size: "", sample_size_scope: "UNKNOWN" }))).toBeLessThan(itemConfidence(row({ sample_size: "2000" })));
     const c = itemConfidence(row({ sample_size: "100000" }));
     expect(c).toBeGreaterThan(0);
     expect(c).toBeLessThanOrEqual(1);
@@ -177,6 +181,72 @@ describe("confidence", () => {
     const fitted = stampGenerated(6, { spearman: 0.8, within1: 0.9, n: 400 });
     expect(fitted.difficultyBasis).toBe("STRUCTURAL");
     expect(fitted.calibrationConfidence).toBeGreaterThan(0.25);
+  });
+});
+
+describe("evidence semantics: scope, metric, scoring model, trust", () => {
+  it("assessment-wide N never raises item confidence: only an ITEM-scoped N does", () => {
+    const row = (over: Record<string, string>) => { const r = dataset([SRC("S1")], [ITEM("S1", 1, "0.6", over)]); return { item: r.items[0], cohortN: 40, scaleBorrowed: false, clipped: false }; };
+    expect(itemConfidence(row({ sample_size: "250000", sample_size_scope: "ASSESSMENT" }))).toBe(itemConfidence(row({ sample_size: "", sample_size_scope: "UNKNOWN" })));
+    expect(itemConfidence(row({ sample_size: "250000", sample_size_scope: "POPULATION" }))).toBe(itemConfidence(row({ sample_size: "", sample_size_scope: "UNKNOWN" })));
+    expect(itemConfidence(row({ sample_size: "2500", sample_size_scope: "ITEM" }))).toBeGreaterThan(itemConfidence(row({ sample_size: "250000", sample_size_scope: "ASSESSMENT" })));
+  });
+  it("the contract refuses a rate without its meaning, and an empty N that claims a scope", () => {
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { metric_type: "" })]).problems.join()).toMatch(/needs metric_type/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { scoring_model: "" })]).problems.join()).toMatch(/needs metric_type/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { scoring_model: "UNKNOWN" })]).problems.join()).toMatch(/known scoring semantics/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { metric_type: "OTHER" })]).problems.join()).toMatch(/known scoring semantics|metric type/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { sample_size: "", sample_size_scope: "ITEM" })]).problems.join()).toMatch(/sample_size_scope UNKNOWN/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { metric_type: "PERCENT_FULL_CREDIT" })]).problems.join()).toMatch(/partial-credit/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "", { status: "UNAVAILABLE", metric_type: "PERCENT_CORRECT" })]).problems.join()).toMatch(/must be empty/);
+    expect(dataset([SRC("S1")], [ITEM("S1", 1, "0.5", { trust_level: "VERIFIED_STRUCTURAL" })]).problems.join()).toMatch(/cannot carry an empirical rate/);
+  });
+  it("only VERIFIED_EMPIRICAL rows enter calibration: PROVISIONAL empirical rows are ignored", () => {
+    const rows = [...synth(50), ...rates(30).map((r, i) => ITEM("S1", 500 + i, r.toFixed(4), { trust_level: "PROVISIONAL" }))];
+    const r = dataset([SRC("S1")], rows);
+    expect(r.problems).toEqual([]);
+    const c = calibrateDataset(r.items, r.sources);
+    expect(c.scale.n).toBe(50);
+    expect(c.items.slice(50).every((i: { difficultyLevel: number | null }) => i.difficultyLevel === null)).toBe(true);
+  });
+  it("partial-credit (full-credit rate) items get their OWN scale: never pooled with binary items, and with lower confidence", () => {
+    const binary = rates(60).map((r, i) => ITEM("S1", i, r.toFixed(4)));
+    const full = rates(45, 0.8, 0.02).map((r, i) => ITEM("S1", 700 + i, r.toFixed(4), { metric_type: "PERCENT_FULL_CREDIT", scoring_model: "PARTIAL_CREDIT" }));
+    const r = dataset([SRC("S1")], [...binary, ...full]);
+    expect(r.problems).toEqual([]);
+    const c = calibrateDataset(r.items, r.sources);
+    expect(Object.keys(c.scales).sort()).toEqual(["BINARY", "FULL_CREDIT"]);
+    expect(c.scales.BINARY.n).toBe(60);
+    expect(c.scales.FULL_CREDIT.n).toBe(45);
+    expect(c.items[0]).toMatchObject({ scaleClass: "BINARY", difficultyLevel: 1 });
+    expect(c.items[60]).toMatchObject({ scaleClass: "FULL_CREDIT", difficultyLevel: 1 });
+    // same rank, same cohort size: the full-credit item is trusted less
+    expect(c.items[60].calibrationConfidence).toBeLessThan(c.items[0].calibrationConfidence);
+    // cohorts are separate groups: metric and scoring model are part of the cohort key
+    expect(c.cohorts.length).toBe(2);
+  });
+  it("a partial-credit class too small to define ten levels is left unscaled instead of being mixed in", () => {
+    const binary = rates(60).map((r, i) => ITEM("S1", i, r.toFixed(4)));
+    const full = rates(10, 0.8, 0.02).map((r, i) => ITEM("S1", 700 + i, r.toFixed(4), { metric_type: "PERCENT_FULL_CREDIT", scoring_model: "PARTIAL_CREDIT" }));
+    const r = dataset([SRC("S1")], [...binary, ...full]);
+    const c = calibrateDataset(r.items, r.sources);
+    expect(Object.keys(c.scales)).toEqual(["BINARY"]);
+    expect(c.items.slice(60).every((i: { difficultyLevel: number | null }) => i.difficultyLevel === null)).toBe(true);
+  });
+  it("coverage evidence needs per-year, per-resource references: an archive page or a missing field is rejected", () => {
+    const sources = dataset([SRC("S1")], []).sources;
+    const head = EVIDENCE_COLUMNS;
+    const ev = (rows: Record<string, string>[]) => validateEvidence({ header: head, rows }, sources);
+    const ok = { source_id: "S1", year: "2015", resource_type: "QUESTION_PAPER", official_url: "https://example.test/paper-2015.pdf", publication_year: "2015", accessible: "YES", retrieved_at: "2026-10-05T00:00:00Z" };
+    expect(ev([ok])).toEqual([]);
+    expect(ev([{ ...ok, official_url: "" }]).join()).toMatch(/https official_url/);
+    expect(ev([{ ...ok, official_url: "https://example.test/boardCnts/list.do?boardID=1" }]).join()).toMatch(/archive/);
+    expect(ev([{ ...ok, publication_year: "" }]).join()).toMatch(/publication_year/);
+    expect(ev([{ ...ok, resource_type: "LAW" }]).join()).toMatch(/resource_type/);
+    expect(ev([ok, ok]).join()).toMatch(/duplicate/);
+    expect(ev([{ ...ok, source_id: "NOPE" }]).join()).toMatch(/unknown source_id/);
+    expect(ev([{ ...ok, accessible: "UNKNOWN", official_url: "", publication_year: "", retrieved_at: "" }])).toEqual([]);
+    expect(ev([{ ...ok, resource_type: "ITEM_LEVEL_STATISTICS", accessible: "NO", official_url: "", publication_year: "", retrieved_at: "" }])).toEqual([]);
   });
 });
 

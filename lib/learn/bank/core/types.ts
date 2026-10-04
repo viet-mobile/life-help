@@ -23,6 +23,20 @@ export const DIFFICULTY_BASES = ["EMPIRICAL", "STRUCTURAL", "PROVISIONAL"] as co
 /** EMPIRICAL = the item itself was measured; STRUCTURAL = rubric mapping fitted on measured items; PROVISIONAL = design-anchored, never measured */
 export type DifficultyBasis = (typeof DIFFICULTY_BASES)[number];
 
+/** what the published number IS (never compare different meanings as if they were the same quantity) */
+export const METRIC_TYPES = ["PERCENT_CORRECT", "WEIGHTED_PERCENT_CORRECT", "PERCENT_FULL_CREDIT", "MEAN_ITEM_SCORE", "OTHER"] as const;
+export type MetricType = (typeof METRIC_TYPES)[number];
+export const SCORING_MODELS = ["DICHOTOMOUS", "PARTIAL_CREDIT", "UNKNOWN"] as const;
+export type ScoringModel = (typeof SCORING_MODELS)[number];
+/** what a recorded N counts; only ITEM may inform item-level confidence */
+export const SAMPLE_SIZE_SCOPES = ["ITEM", "ASSESSMENT", "POPULATION", "UNKNOWN"] as const;
+export type SampleSizeScope = (typeof SAMPLE_SIZE_SCOPES)[number];
+/** only VERIFIED_EMPIRICAL evidence enters empirical calibration */
+export const TRUST_LEVELS = ["VERIFIED_EMPIRICAL", "VERIFIED_STRUCTURAL", "PROVISIONAL"] as const;
+export type TrustLevel = (typeof TRUST_LEVELS)[number];
+/** BINARY = dichotomous items (primary scale); FULL_CREDIT = partial-credit items reported as percent full credit (separate scale, never pooled) */
+export type ScaleClass = "BINARY" | "FULL_CREDIT";
+
 export type DifficultyLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type SchoolGrade = "E1" | "E2" | "E3" | "E4" | "E5" | "E6" | "M1" | "M2" | "M3" | "H1" | "H2" | "H3";
 export type BankSubject = "math" | "english";
@@ -37,9 +51,13 @@ export interface DifficultyProfile {
   calibrationConfidence: number;
   calibrationVersion: string;
   sourceEvidence: SourceEvidence[];
-  /** only for EMPIRICAL items */
+  /** only for EMPIRICAL items; raw source evidence is never mutated, these are derived */
   rawCorrectRate?: number | null;
   normalizedDifficulty?: number | null;
+  metricType?: MetricType | null;
+  scoringModel?: ScoringModel | null;
+  sampleSizeScope?: SampleSizeScope | null;
+  scaleClass?: ScaleClass | null;
 }
 
 export interface GenerationContext {

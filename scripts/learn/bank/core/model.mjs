@@ -16,7 +16,7 @@
  *
  * Nothing here invents data: items that are not EMPIRICAL get difficultyLevel = null.
  */
-export const CALIBRATION_VERSION = "cal-1";
+export const CALIBRATION_VERSION = "cal-2";
 export const P_EPS = 0.005;
 export const MIN_COHORT = 8;
 export const MIN_SCALE = 0.25;
@@ -39,7 +39,18 @@ export const logitDifficulty = (p) => { const { p: q } = clipP(p); return Math.l
 /** standard error of the logit of a proportion from n students (Infinity when n is unknown) */
 export const logitSE = (p, n) => { const { p: q } = clipP(p); return n > 0 ? Math.sqrt(1 / (n * q * (1 - q))) : Infinity; };
 
-export const cohortKey = (it, source) => [it.sourceId, source?.examFamily ?? "", it.year, it.subject, it.population].join("|");
+export const cohortKey = (it, source) => [it.sourceId, source?.examFamily ?? "", it.year, it.subject, it.population, it.metricType ?? "", it.scoringModel ?? ""].join("|");
+
+/**
+ * DECISION (cal-2, option C): only compatible evidence shares a transformation.
+ *   BINARY       dichotomous items (percent correct / weighted percent correct): the PRIMARY scale, the only one used to fit the rubric mapping
+ *   FULL_CREDIT  partial-credit items reported as percent FULL credit: a SEPARATE scale. "Full credit" is a harder bar than "some credit", so mixing it
+ *                with binary rates would make every multi-point item look harder than it is. It still yields a 1..10 level (rank inside its own class,
+ *                confidence x FULL_CREDIT_FACTOR) but is never pooled with BINARY and never trains the rubric.
+ * Only trustLevel VERIFIED_EMPIRICAL enters either scale; PROVISIONAL and structural rows never do.
+ */
+export const FULL_CREDIT_FACTOR = 0.85;
+export const scaleClassOf = (it) => (it.scoringModel === "PARTIAL_CREDIT" ? "FULL_CREDIT" : "BINARY");
 
 /**
  * @param {any[]} items CalibrationItem[] (validated by contract.mjs)  @param {any[]} sources CalibrationSource[]
@@ -47,7 +58,7 @@ export const cohortKey = (it, source) => [it.sourceId, source?.examFamily ?? "",
  */
 export function normalizeWithinCohort(items, sources) {
   const src = new Map(sources.map((s) => [s.sourceId, s]));
-  const emp = items.filter((i) => i.status === "EMPIRICAL" && i.correctRate !== null);
+  const emp = items.filter((i) => i.status === "EMPIRICAL" && i.trustLevel === "VERIFIED_EMPIRICAL" && i.correctRate !== null);
   const groups = new Map();
   for (const it of emp) { const k = cohortKey(it, src.get(it.sourceId)); (groups.get(k) ?? groups.set(k, []).get(k)).push(it); }
   const rows = []; const cohorts = [];
@@ -69,7 +80,8 @@ export function normalizeWithinCohort(items, sources) {
 /** Item confidence in 0..1 (see header). A missing sample size caps the sample factor at 0.3. */
 export function itemConfidence(row) {
   const it = row.item;
-  const se = logitSE(it.correctRate, it.sampleSize ?? 0);
+  // assessment- or population-wide N is NOT the number of respondents to this item: only an ITEM-scoped N may inform precision
+  const se = logitSE(it.correctRate, it.sampleSizeScope === "ITEM" ? it.sampleSize ?? 0 : 0);
   const sample = Number.isFinite(se) ? 1 / (1 + (se / 0.15) ** 2) : 0.3;
   const meta = META[it.metadataConfidence] ?? 0.4;
   const cohort = row.scaleBorrowed ? Math.min(0.5, row.cohortN / 20) : Math.min(1, row.cohortN / 20);
@@ -100,19 +112,30 @@ export function levelOf(z, scale) {
 
 /**
  * Full calibration of a validated dataset. Items that are not EMPIRICAL come back with difficultyLevel null.
- * @returns {{ calibrationVersion: string, scale: any, cohorts: any[], items: any[] }}
+ * @returns {{ calibrationVersion: string, scale: any, scales: Record<string, any>, cohorts: any[], items: any[] }}
  */
 export function calibrateDataset(items, sources, opts = {}) {
   const { rows, cohorts } = normalizeWithinCohort(items, sources);
-  const scale = buildLevelScale(rows.map((r) => r.normalizedDifficulty), opts);
-  const done = new Map(rows.map((r) => [r.item, {
-    sourceId: r.item.sourceId, externalItemId: r.item.externalItemId, difficultyLevel: levelOf(r.normalizedDifficulty, scale), difficultyBasis: "EMPIRICAL",
-    calibrationConfidence: itemConfidence(r), calibrationVersion: CALIBRATION_VERSION, rawCorrectRate: r.rawCorrectRate, normalizedDifficulty: r.normalizedDifficulty,
-    sourceEvidence: [{ sourceId: r.item.sourceId, externalItemId: r.item.externalItemId, cohort: r.cohort, sampleSize: r.item.sampleSize }],
-  }]));
+  /** @type {Record<string, any>} */ const scales = {};
+  for (const cls of ["BINARY", "FULL_CREDIT"]) {
+    const zs = rows.filter((r) => scaleClassOf(r.item) === cls).map((r) => r.normalizedDifficulty);
+    if (zs.length >= (opts.minItems ?? MIN_ITEMS)) scales[cls] = buildLevelScale(zs, opts);
+  }
+  const done = new Map();
+  for (const r of rows) {
+    const cls = scaleClassOf(r.item), scale = scales[cls];
+    if (!scale) continue;
+    done.set(r.item, {
+      sourceId: r.item.sourceId, externalItemId: r.item.externalItemId, difficultyLevel: levelOf(r.normalizedDifficulty, scale), difficultyBasis: "EMPIRICAL",
+      calibrationConfidence: Math.round(itemConfidence(r) * (cls === "FULL_CREDIT" ? FULL_CREDIT_FACTOR : 1) * 1000) / 1000, calibrationVersion: CALIBRATION_VERSION,
+      rawCorrectRate: r.rawCorrectRate, normalizedDifficulty: r.normalizedDifficulty, scaleClass: cls, metricType: r.item.metricType, scoringModel: r.item.scoringModel, sampleSizeScope: r.item.sampleSizeScope,
+      sourceEvidence: [{ sourceId: r.item.sourceId, externalItemId: r.item.externalItemId, cohort: r.cohort, sampleSize: r.item.sampleSizeScope === "ITEM" ? r.item.sampleSize : null }],
+    });
+  }
+  if (!scales.BINARY) throw new Error("need at least " + (opts.minItems ?? MIN_ITEMS) + " verified binary items to define the primary scale");
   return {
-    calibrationVersion: CALIBRATION_VERSION, scale, cohorts,
-    items: items.map((it) => done.get(it) ?? { sourceId: it.sourceId, externalItemId: it.externalItemId, difficultyLevel: null, difficultyBasis: it.status === "STRUCTURAL_ONLY" ? "STRUCTURAL" : "PROVISIONAL", calibrationConfidence: 0, calibrationVersion: CALIBRATION_VERSION, rawCorrectRate: null, normalizedDifficulty: null, sourceEvidence: [] }),
+    calibrationVersion: CALIBRATION_VERSION, scale: scales.BINARY, scales, cohorts,
+    items: items.map((it) => done.get(it) ?? { sourceId: it.sourceId, externalItemId: it.externalItemId, difficultyLevel: null, difficultyBasis: it.status === "STRUCTURAL_ONLY" ? "STRUCTURAL" : "PROVISIONAL", calibrationConfidence: 0, calibrationVersion: CALIBRATION_VERSION, rawCorrectRate: null, normalizedDifficulty: null, scaleClass: null, metricType: it.metricType ?? null, scoringModel: it.scoringModel ?? null, sampleSizeScope: it.sampleSizeScope ?? null, sourceEvidence: [] }),
   };
 }
 

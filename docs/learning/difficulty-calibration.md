@@ -37,3 +37,21 @@ Six fingerprints (structural, reasoningPath, skillCombination, parameterPattern,
 
 ## Status
 No public item-level data has been imported (`data/learning-calibration/{sources,items}.csv` belong to the bulk track). Until a real calibration exists everything generated stays PROVISIONAL.
+
+## Evidence semantics and acceptance (contract v2, model cal-2)
+Raw source evidence is never mutated: every derived number (normalized difficulty, level, confidence) lives beside it.
+
+**What each number is** (`metric_type`, `metric_scope`, `scoring_model`; all three are required on every rate):
+* `PERCENT_CORRECT` / `WEIGHTED_PERCENT_CORRECT` on a DICHOTOMOUS item: share answering correctly (IEA: the unweighted international average of national percentages, an integer percent; NAEP: the weighted national percentage).
+* `PERCENT_FULL_CREDIT` on a PARTIAL_CREDIT item (a multi-point or multi-category item): share earning FULL credit. This is a harder bar than "some credit" and is not the same quantity as a binary rate.
+* `MEAN_ITEM_SCORE`, `OTHER`: representable, not accepted as VERIFIED_EMPIRICAL (scoring semantics must be known and the metric defined).
+
+**Sample size** has a scope (`ITEM`, `ASSESSMENT`, `POPULATION`, `UNKNOWN`). Only an ITEM-scoped N informs item confidence (standard error of the logit). An assessment- or population-wide N (the bulk draft's 50,000 / 15,000 / "250,000" values) is never read as the number of respondents to an item; it is kept empty with scope UNKNOWN, and such an item gets the neutral sample factor 0.3. If the raw files do not carry the scope, the core schema defines it and a bulk correction is requested; the raw files are not reinterpreted in place.
+
+**Trust levels** (`trust_level`): `VERIFIED_EMPIRICAL` = official source, exact item identity, known metric and scoring model, valid rate, provenance, independently re-read from the official channel; `VERIFIED_STRUCTURAL` = official test or curriculum source with no usable rate (structural skill/topic metadata only, never a rate); `PROVISIONAL` = anything else. Only VERIFIED_EMPIRICAL enters calibration.
+
+**Decision for partial credit (option C).** Only compatible evidence shares a transformation. Cohort = source, exam family, year, subject, population, metric type and scoring model. Two scales are built, never pooled: `BINARY` (dichotomous items, the primary scale, the only one allowed to fit the rubric mapping) and `FULL_CREDIT` (partial-credit items reported as percent full credit; its 1..10 levels are ranks inside that class with confidence x 0.85). A class with fewer than 40 verified items gets no scale and its items get level null. Excluding multi-point items outright (option B) would discard 60 of 308 verified items; collapsing them into one number (option A) would call every multi-point item harder than it is.
+
+**Statistical model, unchanged:** `ln((1-p)/p)` with p clipped to [0.005, 0.995], median/MAD robust z-score within each cohort, 1..10 by the user's rule (easiest anchor 1, hardest 10, 8 equal interior bins) per scale. TIMSS/PIRLS (international averages of national rates) and NAEP (US national) are separate cohorts; their raw percentages are never compared. Integer-rounded IEA percentages carry +-0.5 percentage points of rounding; that is far below the spread of the items and is not modelled.
+
+**Verified data today (reviewed layer, 308 items):** 222 IEA items (TIMSS 2011 grade 4: 73, grade 8: 90; PIRLS 2011 grade 4: 59) re-read from the official released-item statistics workbooks, and 86 NAEP 2017 items (math grade 4: 28, grade 8: 28; reading grade 4: 14, grade 8: 16) re-read from the NAEP Questions Tool; 248 binary, 60 full-credit. NAEP items whose scoring scale has no unambiguous full-credit label (Extended, Extensive, Acceptable) are excluded (10 of the 96 released items).

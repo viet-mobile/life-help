@@ -10,12 +10,12 @@
  * Unknown numbers are EMPTY (null). Estimated, interpolated or academy-published rates are not allowed: status EMPIRICAL requires a rate
  * AND a source whose `correct_rate_availability` is ITEM_LEVEL.
  */
-import { SKILL_TAGS, SUBJECTS } from "./taxonomy.mjs";
+import { ACCESSIBLE, METRIC_SCOPES, METRIC_TYPES, RESOURCE_TYPES, SAMPLE_SIZE_SCOPES, SCORING_MODELS, SKILL_TAGS, SUBJECTS, TRUST_LEVELS } from "./taxonomy.mjs";
 
-export const CALIBRATION_SCHEMA_VERSION = "1";
+export const CALIBRATION_SCHEMA_VERSION = "2";
 
 export const SOURCE_COLUMNS = ["source_id", "country", "institution", "exam_family", "year_from", "year_to", "subjects", "official_url", "source_type", "public_access", "correct_rate_availability", "license_status", "retrieval_policy", "notes"];
-export const ITEM_COLUMNS = ["source_id", "external_item_id", "year", "subject", "population", "grade_or_level", "correct_rate", "sample_size", "topic_tags", "skill_tags", "metadata_confidence", "status"];
+export const ITEM_COLUMNS = ["source_id", "external_item_id", "year", "subject", "population", "grade_or_level", "correct_rate", "metric_type", "metric_scope", "scoring_model", "sample_size", "sample_size_scope", "topic_tags", "skill_tags", "metadata_confidence", "trust_level", "status"];
 
 export const ENUMS = {
   source_type: ["GOVERNMENT_AGENCY", "PUBLIC_EXAM_BODY", "PUBLIC_RESEARCH_ASSESSMENT", "INTERNATIONAL_ORGANIZATION"],
@@ -25,6 +25,7 @@ export const ENUMS = {
   retrieval_policy: ["MANUAL_ONLY", "API_ALLOWED", "ROBOTS_OK", "DO_NOT_FETCH"],
   metadata_confidence: ["HIGH", "MEDIUM", "LOW"],
   status: ["EMPIRICAL", "STRUCTURAL_ONLY", "UNAVAILABLE"],
+  metric_type: METRIC_TYPES, metric_scope: METRIC_SCOPES, scoring_model: SCORING_MODELS, sample_size_scope: SAMPLE_SIZE_SCOPES, trust_level: TRUST_LEVELS,
 };
 export const MAX_LEN = { institution: 120, exam_family: 80, notes: 240, population: 80, grade_or_level: 40, topic_tag: 40, source_id: 48, external_item_id: 64 };
 const ID = /^[A-Za-z0-9][A-Za-z0-9._:-]*$/;
@@ -114,13 +115,21 @@ export function validateItems({ header, rows }, sources) {
     if (topics.some((t) => !SLUG.test(t) || t.length > MAX_LEN.topic_tag)) p("topic_tags must be short kebab-case slugs separated by ;");
     const skills = list(r.skill_tags);
     if (skills.some((s) => !SKILL_TAGS.includes(s))) p(`skill_tags must come from: ${SKILL_TAGS.join(";")}`);
-    for (const k of /** @type {const} */ (["metadata_confidence", "status"])) if (!ENUMS[k].includes(r[k])) p(`${k} must be one of ${ENUMS[k].join("|")}`);
+    for (const k of /** @type {const} */ (["metadata_confidence", "status", "trust_level", "sample_size_scope"])) if (!ENUMS[k].includes(r[k])) p(`${k} must be one of ${ENUMS[k].join("|")}`);
+    for (const k of /** @type {const} */ (["metric_type", "metric_scope", "scoring_model"])) if (r[k] !== "" && !ENUMS[k].includes(r[k])) p(`${k} must be empty or one of ${ENUMS[k].join("|")}`);
+    if (n === null && r.sample_size_scope !== "UNKNOWN") p("an empty sample_size must have sample_size_scope UNKNOWN");
+    if (rate === null && (r.metric_type || r.metric_scope || r.scoring_model)) p("metric fields describe a rate: they must be empty when correct_rate is empty");
+    if (r.trust_level === "VERIFIED_EMPIRICAL" && r.status !== "EMPIRICAL") p("trust_level VERIFIED_EMPIRICAL requires status EMPIRICAL");
+    if (r.trust_level === "VERIFIED_STRUCTURAL" && r.status === "EMPIRICAL") p("trust_level VERIFIED_STRUCTURAL cannot carry an empirical rate");
     if (r.status === "EMPIRICAL") {
       if (rate === null) p("status EMPIRICAL requires correct_rate");
+      if (!r.metric_type || !r.metric_scope || !r.scoring_model) p("an empirical rate needs metric_type, metric_scope and scoring_model (a rate without its meaning cannot be compared)");
+      if (r.trust_level === "VERIFIED_EMPIRICAL" && (r.scoring_model === "UNKNOWN" || r.metric_type === "OTHER")) p("VERIFIED_EMPIRICAL needs known scoring semantics and a defined metric type");
+      if (r.metric_type === "PERCENT_FULL_CREDIT" && r.scoring_model === "DICHOTOMOUS") p("PERCENT_FULL_CREDIT only makes sense for partial-credit items");
       if (src && src.correctRateAvailability !== "ITEM_LEVEL") p("EMPIRICAL items need a source with correct_rate_availability ITEM_LEVEL");
       if (src && (src.retrievalPolicy === "DO_NOT_FETCH" || src.licenseStatus === "RESTRICTED")) p("source is RESTRICTED / DO_NOT_FETCH: no empirical rows allowed");
     } else if (rate !== null) p(`status ${r.status} must have an empty correct_rate (no estimates)`);
-    out.push({ sourceId: r.source_id, externalItemId: r.external_item_id, year, subject: r.subject, population: r.population, gradeOrLevel: r.grade_or_level, correctRate: rate, sampleSize: n, topicTags: topics, skillTags: skills, metadataConfidence: r.metadata_confidence, status: r.status });
+    out.push({ sourceId: r.source_id, externalItemId: r.external_item_id, year, subject: r.subject, population: r.population, gradeOrLevel: r.grade_or_level, correctRate: rate, metricType: r.metric_type || null, metricScope: r.metric_scope || null, scoringModel: r.scoring_model || null, sampleSize: n, sampleSizeScope: r.sample_size_scope, topicTags: topics, skillTags: skills, metadataConfidence: r.metadata_confidence, trustLevel: r.trust_level, status: r.status });
   });
   return { problems, items: out };
 }
@@ -131,6 +140,35 @@ export function validateDataset(/** @type {string} */ sourcesCsv, /** @type {str
   try { s = validateSources(parseCsv(sourcesCsv)); it = validateItems(parseCsv(itemsCsv), s.sources); } catch (e) { return { ok: false, problems: [String(/** @type {Error} */ (e).message)], sources: [], items: [], stats: null }; }
   const problems = [...s.problems, ...it.problems];
   const count = (/** @type {string} */ st) => it.items.filter((x) => x.status === st).length;
-  const stats = { sources: s.sources.length, items: it.items.length, empirical: count("EMPIRICAL"), structuralOnly: count("STRUCTURAL_ONLY"), unavailable: count("UNAVAILABLE") };
+  const stats = { sources: s.sources.length, items: it.items.length, empirical: count("EMPIRICAL"), structuralOnly: count("STRUCTURAL_ONLY"), unavailable: count("UNAVAILABLE"), verifiedEmpirical: it.items.filter((x) => x.trustLevel === "VERIFIED_EMPIRICAL").length };
   return { ok: !problems.length, problems, sources: s.sources, items: it.items, stats };
+}
+
+/* ---------------------------------- coverage evidence (contract v2) ----------------------------------
+ * A coverage CLAIM ("official answer key exists for family F in year Y", "no item-level statistics were identified") is only as good as its evidence.
+ * One row per (family, year, resource type): the official reference, the year it was published, whether it was reachable when checked. A grouped
+ * period or an archive index page is not per-year evidence and stays UNKNOWN. A NO for ITEM_LEVEL_STATISTICS means "not identified in the reviewed
+ * public releases": it is a statement about what was found, never a legal conclusion about why.
+ */
+export const EVIDENCE_COLUMNS = ["source_id", "year", "resource_type", "official_url", "publication_year", "accessible", "retrieved_at"];
+export function validateEvidence({ header, rows }, sources) {
+  /** @type {string[]} */ const problems = []; const known = new Set(sources.map((x) => x.sourceId)); const seen = new Set();
+  checkHeader(header, EVIDENCE_COLUMNS, "coverage-evidence.csv", problems);
+  rows.forEach((r, i) => {
+    const p = (/** @type {string} */ m) => problems.push(`coverage-evidence.csv row ${i + 2}: ${m}`);
+    if (!known.has(r.source_id)) p(`unknown source_id ${r.source_id}`);
+    if (!/^(19|20)\d\d$/.test(r.year)) p("year must be a four-digit year");
+    if (!RESOURCE_TYPES.includes(r.resource_type)) p(`resource_type must be one of ${RESOURCE_TYPES.join("|")}`);
+    if (!ACCESSIBLE.includes(r.accessible)) p(`accessible must be one of ${ACCESSIBLE.join("|")}`);
+    const key = [r.source_id, r.year, r.resource_type].join("|");
+    if (seen.has(key)) p("duplicate (source, year, resource type)");
+    seen.add(key);
+    if (r.accessible === "YES") {
+      if (!/^https:\/\/\S+$/.test(r.official_url)) p("accessible YES needs an https official_url");
+      if (!/^(19|20)\d\d$/.test(r.publication_year)) p("accessible YES needs the publication_year of the resource");
+      if (!/^\d{4}-\d{2}-\d{2}T/.test(r.retrieved_at)) p("accessible YES needs retrieved_at (ISO time of the check)");
+      if (/\/(list|board|index)\b|boardCnts\/list/.test(r.official_url)) p("an archive / list page is not per-year evidence: link the resource itself");
+    }
+  });
+  return problems;
 }
