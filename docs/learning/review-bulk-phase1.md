@@ -1,35 +1,54 @@
-# Core review of the bulk track, phase 1
+# Core review of the bulk track, phases 1 and 1.5
 
-Reviewed commits (bulk branch, baseline d522da4): `e0bec3f` calibration metadata, `8062994` locale registry, `4858faa` legacy inventory, `7d94fea` provenance audit. All four were cherry-picked unchanged (history preserved); the core track adds the review step on top, never editing Antigravity-owned files.
+Method: every claim was checked against the committed files, then (where a second channel exists) against the official source or against the repository code. Chat summaries were NOT used as evidence: several contradicted the commits (locale list, item counts per source, legacy framework, "1,800 / 90 / 90").
 
-## Verdict per package
-| package | verdict | notes |
-|---|---|---|
-| locale registry (`messages/generated/locale-registry.json`, `lib/learn/i18n/generated/locales.generated.ts`) | ACCEPTED | data equals `locales` of `messages/index.ts` (38, RTL ar/arz/fa/he, default ko). Test `calibration-data.test.ts` now cross-checks it independently. Defect to fix in the generator: adult target `chinese` has `primaryScript: "Hant"` but the product is zh-Hans (Hans). |
-| legacy inventory (`data/learning-study/inventory/**`) | ACCEPTED as evidence, with a correction to the chat report | the committed files say what the repos actually contain: vanilla JS SPA / PWA built by a Python pipeline (`build_app.py`, `site_profiles.py`), 14 routes, 12 UI locales, no auth, localStorage progress, Web Speech TTS. The bulk chat summary claimed Next.js 14, 5 routes, 1,800 vocabulary items and 90 lessons: that is NOT in the data and must not be used. |
-| calibration metadata (`data/learning-calibration/{sources,items}.csv`) | ACCEPTED AFTER CONVERSION | wrote the first-draft schema (the contract v1 columns were published before the work started and not used). Converted by a deterministic core step into `data/learning-calibration/reviewed/` (see below). The raw files stay as delivered. |
-| provenance audit (`7d94fea`) | ACCEPTED | its own finding is the reason `sample_size` is empty in the reviewed data. |
-| 38-language translation, bank stress tests | NOT STARTED by bulk | translation is UNBLOCKED now (`CANONICAL_I18N_READY = YES`); stress tests wait for the generator API freeze below. |
+## Verdict per commit
+| commit | content | verdict | cherry-picked |
+|---|---|---|---|
+| `e0bec3f` calibration metadata (raw) | 19 sources, 277 item rows | APPROVE_WITH_CORRECTION | YES, files untouched; a reviewed layer (contract v2) sits beside them |
+| `8062994` locale registry | 38 locales, 4 RTL | APPROVE (one data defect to fix: Chinese `primaryScript` says Hant, the product is Hans) | YES |
+| `4858faa` legacy inventory | 6 site manifests, aggregate | APPROVE_WITH_CORRECTION: spot checks agree (vanilla JS PWA, Python build, 14 routes, `_redirects`, manifest), but the manifests are hand-entered literals in the generator, not extracted from the repositories | YES, with the caveat recorded here |
+| `7d94fea` provenance audit | metric / sample-size audit | APPROVE_WITH_CORRECTION: its ASSESSMENT-scope finding is right; its statement that NAEP scoring is dichotomous is wrong (see below) | YES |
+| `8ddb967` coverage gap matrices | international + Korea 20-year matrix | REJECT as evidence (PROVISIONAL): one archive URL per family cannot verify per-year claims; the legal basis is unverified (see `korea-evidence-policy.md`) | NO |
+| `0bbe755` legacy content quality | hygiene audit, schema diff, fingerprint | REJECT: the generator holds `vocabCount: 300`, `lessonCount: 15`, `grammarCount: 15`, `hardcodedDomainReferencesCount: 42` as constants and reads no content, so every "PASS" and the "85 % duplicate code" figure are unsupported | NO |
+| `5a6a6d7` translation readiness | key / namespace / placeholder inventory | APPROVE_WITH_CORRECTION: its numbers are right for the baseline (257 keys, 22 namespaces, 7 placeholders) but its test pins the pre-`en.ts` state (`en.ts` must not exist, `CANONICAL_I18N_READY` false); stale now that `en.ts` exists. The generator is mechanical and reads the live files. | integrated once, then reverted (`077fb84` / `2e34e06`); to be re-delivered by the bulk track after a rebase, with the signals computed live |
 
-## What the review changed (`scripts/learn/bank/core/convert-calibration-v0.mjs`, rerunnable, `--check` is a test)
-* license / source type / item-level availability / retrieval policy decided per source (table in the script);
-* `sample_n` dropped: the draft's value is the size of the whole assessment cohort (the bulk audit calls it ASSESSMENT semantics, 0 item-level values), so keeping it would overstate every rate's precision;
-* the 17 `STRUCTURAL_ONLY` item rows dropped: their ids (`ELEM-M-Q01` ...) are placeholders, not verified public item numbers, and carry no data. The 12 non-empirical sources stay as source rows saying "published, no item-level rates";
-* `UK` -> `GB`; `INT` accepted by the contract for international bodies;
-* metadata confidence HIGH for TIMSS / PIRLS (official statistics workbooks), MEDIUM for NAEP (public Questions Tool web application, not cross-checked by a second channel).
+## Reconciliation 1: item counts (authoritative, source by source)
+The raw `items.csv` has not changed since the first commit (`git log` shows one commit touching it). The two chat summaries were both wrong about NAEP; the file says:
+| source | rows in the raw file | released items in the official source | rows reproduced by the official source |
+|---|---|---|---|
+| TIMSS 2011 grade 4 math | 73 | 73 workbook sheets | 73 / 73 |
+| TIMSS 2011 grade 8 math | 90 | 90 | 90 / 90 |
+| PIRLS 2011 grade 4 reading | 59 | 59 | 59 / 59 (5 refs written R31... in the raw file; the workbook prints R21...) |
+| NAEP 2017 math grade 4 | 15 | 29 | 15 / 15 |
+| NAEP 2017 math grade 8 | 17 | 29 | 17 / 17 |
+| NAEP 2017 reading grade 4 | 2 | 18 | 2 / 2 |
+| NAEP 2017 reading grade 8 | 4 | 20 | 4 / 4 |
+Total raw empirical rows 260 (IEA 222, NAEP 38). The "10 / 8 / 10 / 10" version (phase 1 chat) never matched the file; the "15 / 17 / 2 / 4" version (phase 1.5) is the file. Subject labels were not remapped (item id prefixes match the subject: M and D = math, R = reading). Why NAEP reading is so small: the bulk extraction kept only items whose response scale contains the literal heading "Correct" or "Complete" and skipped every multiple-choice item; the national tool lists 96 released items for these four sets.
 
-## What the data is, honestly
-* 260 empirical item rows from 7 sources: TIMSS 2011 grade 4 (73) and grade 8 (90) mathematics, PIRLS 2011 grade 4 reading (59), NAEP 2017 mathematics grade 4 (15) and grade 8 (17), reading grade 4 (2) and grade 8 (4). The chat report's NAEP counts (10/8/10/10) are wrong; the file has 38 NAEP rows.
-* ONE test year per source (2011 or 2017). The requested coverage of roughly twenty years across eight countries and Korea does not exist in this data. For Korea (exams, CSAT, mocks) and for UK, Canada, Australia, New Zealand, France, Germany no item-level rate was found published: they are STRUCTURAL_ONLY sources with no rows, and no estimate was used.
-* TIMSS / PIRLS values are international averages of national percent-correct (not a student-weighted rate, not a single population); NAEP values are US national. Within-cohort normalisation (cal-1) treats each source / year / subject / population as its own cohort, which is the correct handling, but the pooled scale still mixes three different populations and is a first anchor, not a finished calibration.
-* Running cal-1 on it: cohorts of 2 and 4 items are flagged `scaleBorrowed`; levels 1 and 10 hold 1 and 2 items (the strict "highest / lowest rate" rule puts only the extremes there; `anchorPercentile` is the robust alternative); item confidence 0.38-0.74.
-* NOT done and still required before any generated item can leave PROVISIONAL: rubric coding (seven integers per item, no text stored) of at least 40 of these real items, then `fitMapping` / `evaluateMapping`. This coding needs reading the released items; it must be done by a person or by the core track item by item, and only the integers are stored.
+## Reconciliation 2: sample size
+The raw `sample_n` (50,000 for IEA rows, 15,000 for NAEP rows) is a constant per source, not the number of respondents to the item, and the chat figure "about 250,000" appears nowhere in the files. Canonical rule (contract v2): `sample_size` has a scope (ITEM / ASSESSMENT / POPULATION / UNKNOWN); only an ITEM scope can inform item confidence. The reviewed layer records no N (scope UNKNOWN). Bulk correction requested (below); the raw files are not reinterpreted in place.
 
-## Requests to Antigravity (next bulk round, in order)
-1. Package 2 (38-language UI) is unblocked: source `lib/learn/i18n/en.ts` + `docs/learning/i18n-canonical.md` (302 keys, ko / en / vi identical keys; en is the source, vi is reviewed, ko is canonical). Rebase `feature/learning-v3-bulk` onto the core branch first. Do not translate `locale.*` values; keep `{placeholders}`.
-2. Migrate the calibration generator to emit contract v1 itself (`scripts/learn/bank/core/contract.mjs`, validator `npm run bank:validate-data`), so the review conversion becomes a no-op; keep the audit findings as the sample-size rule.
-3. Fix `primaryScript` for the Chinese target (Hans) and make the report text come from the generated data (the phase-1 chat report contradicted the committed files on locale list, NAEP counts and legacy framework).
-4. Package 3 (stress tests) after the generator API note below.
+## Reconciliation 3: what the numbers mean
+* IEA workbooks: the "International Avg." row = unweighted average of national percentages (integer percent) with a standard error of the average. 193 items are 1-point (percent correct), 29 are multi-point (percent FULL credit).
+* NAEP Questions Tool: national weighted percentage per response category. Most released items carry a Partial category: of the 86 items with an unambiguous full-credit label, 55 are dichotomous (WEIGHTED_PERCENT_CORRECT) and 31 are partial-credit (PERCENT_FULL_CREDIT). The bulk audit's "mostly dichotomous" is wrong for the 38 raw rows (32 of 38 are partial-credit).
+* Decision (cal-2, option C): separate scales for BINARY and FULL_CREDIT evidence; only BINARY may fit the rubric (`docs/learning/difficulty-calibration.md`).
 
-## Generator API freeze (for the stress tests)
-`generate({ subject, level, count, seed, cognitive?, templates? })` in `scripts/learn/bank/engine.mjs`; each item carries `id, level, grade, template, cognitive, features, predictedLevel, reasoning (12 dimensions), reasoningTags, difficulty (level, basis, confidence, version), fingerprint (6 layers), question, overlay`. Stress checks to run per subject x grade x level over many seeds: determinism, `verify()` passing, no thrown error, 4 distinct options for multiple choice, `|predictedLevel - level| <= 1`, no `NaN` / `undefined` / `{` in rendered text, no exact fingerprint duplicates inside a run, Korean and Vietnamese present, English target text free of Hangul. Store statistics only.
+## Independent verification performed
+* `scripts/learn/bank/core/verify/iea_workbooks.py`: reads the three official workbooks and compares every row: 217 / 222 identical; the 5 others differ only in the printed id (values equal). Evidence: `data/learning-calibration/reviewed/iea-verification.json`.
+* `scripts/learn/bank/core/verify/naep_nqt.mjs`: queries the public NAEP Questions Tool: all 38 raw rows equal the full-credit percentage; 96 released items listed, 86 with an unambiguous full-credit label. Evidence: `.../naep-verification.json`.
+* `scripts/learn/bank/core/verify/legacy_domain_refs.mjs`: mechanical census of `viet.mobile` references (47 in sources, 15 in consolidated dist).
+* The locale registry equals `locales` of `messages/index.ts` (test).
+
+## Reviewed calibration layer (`data/learning-calibration/reviewed/`, deterministic, `convert-calibration-v0.mjs --check` is a test)
+308 verified items (222 IEA + 86 NAEP; 248 binary, 60 full-credit), all VERIFIED_EMPIRICAL. Decisions: source type, licence, availability per source; item identity = the id printed by the official source; item titles are not stored (some are fragments of the question text); the 17 placeholder STRUCTURAL_ONLY item rows are dropped (unverified ids, no data); NAEP items with scales that have no unambiguous full-credit label are excluded (10 of 96); UK -> GB.
+Coverage honesty: ONE test year per source (2011 or 2017). The requested coverage of about twenty years across eight countries and Korea does not exist in this data. Korean exams and the UK, Canada, Australia, New Zealand, France and Germany sources are listed with no item-level rates (none identified); nothing was estimated.
+
+## Requests to Antigravity (next bulk round)
+1. Rebase `feature/learning-v3-bulk` onto the core branch; package 2 (38-language UI) is unblocked (see `antigravity-handoff.md`).
+2. Re-deliver the translation-readiness inventory with signals computed live from the files (no pinned baseline counts, no "en.ts must not exist").
+3. Migrate the calibration generator to emit contract v2 (metric, scoring model, sample-size scope, trust level) and include every released NAEP item with an unambiguous full-credit label; the review conversion then becomes a no-op.
+4. Replace hand-entered literals by extraction: legacy inventory, hygiene and fingerprint reports must read the repositories (or be labelled "hand-entered, unverified"). Never publish a PASS from a constant.
+5. Per-year Korean coverage evidence in `coverage-evidence.csv` (contract v2) or nothing; no legal interpretation.
+6. Fix `primaryScript` for the Chinese adult target (Hans).
+7. Stress tests: see `docs/learning/bank-api.md` (the API is frozen).
