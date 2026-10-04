@@ -73,7 +73,7 @@ export const ko = {
   "avatar.panda": "판다",
   "avatar.robot": "로봇",
   "avatar.owl": "부엉이",
-  "avatar.dragon": "용",
+  "avatar.penguin": "펭귄",
 
   "diag.intro.title": "2분 실력 탐색",
   "diag.intro.body": "점수를 매기는 시험이 아니에요. 몇 문제만 풀면 지금 위치를 알아보고 딱 맞는 길을 열어 줄게요. 모르면 그냥 넘어가도 괜찮아요.",

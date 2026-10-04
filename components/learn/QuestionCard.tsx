@@ -5,6 +5,7 @@ import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types
 import { ApiError, useLearner } from "./LearnerProvider";
 import { AnswerInput, ListenButton } from "./renderers";
 import { MathBlock, RichText } from "./RichText";
+import { useEnterToContinue } from "./useEnterToContinue";
 
 export interface AttemptResponse {
   correct: boolean;
@@ -65,6 +66,8 @@ export function QuestionCard({
     : value.trim().length > 0;
   const resolved = status === "correct" || status === "revealed";
   const canHint = hints.length < 2 && !resolved;
+  const goNext = () => onNext({ firstTry: status === "correct" && attempts === 0, revealed: status === "revealed", followUp });
+  useEnterToContinue(resolved, goNext); // Enter = the "next question" button
 
   const submit = async () => {
     if (status === "checking" || resolved || !hasAnswer) return;
@@ -156,10 +159,7 @@ export function QuestionCard({
 
       <div className="l-stack">
         {resolved ? (
-          <button
-            className="l-btn l-btn-block"
-            onClick={() => onNext({ firstTry: status === "correct" && attempts === 0, revealed: status === "revealed", followUp })}
-          >
+          <button className="l-btn l-btn-block" onClick={goNext}>
             {status === "revealed" && followUp ? t("lesson.similar.go") : isLast ? t("lesson.finish") : t("lesson.next")}
           </button>
         ) : (

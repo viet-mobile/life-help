@@ -8,6 +8,7 @@ import { useLearner } from "./LearnerProvider";
 import { AnswerInput, ListenButton } from "./renderers";
 import { MathBlock, RichText } from "./RichText";
 import { SkillBars } from "./SkillBars";
+import { useEnterToContinue } from "./useEnterToContinue";
 
 interface StepResponse {
   lastCorrect: boolean | null;
@@ -76,6 +77,8 @@ export function Diagnostic() {
       setPhase("question");
     }
   };
+
+  useEnterToContinue(phase === "feedback", proceed); // Enter = the "next question" button
 
   if (phase === "intro" || phase === "loading") {
     return (

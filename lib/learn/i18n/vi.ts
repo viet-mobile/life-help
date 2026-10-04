@@ -76,7 +76,7 @@ export const vi: Record<MessageKey, string> = {
   "avatar.panda": "Gấu trúc",
   "avatar.robot": "Rô-bốt",
   "avatar.owl": "Cú mèo",
-  "avatar.dragon": "Rồng",
+  "avatar.penguin": "Chim cánh cụt",
 
   "diag.intro.title": "Khám phá trình độ trong 2 phút",
   "diag.intro.body": "Đây không phải bài kiểm tra chấm điểm. Chỉ cần làm vài câu, chúng mình sẽ biết bạn đang ở đâu và mở đúng con đường cho bạn. Câu nào chưa biết, cứ bỏ qua nhé.",

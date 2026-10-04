@@ -5,7 +5,7 @@ export const AVATARS = [
   { id: "panda", emoji: "🐼" },
   { id: "robot", emoji: "🤖" },
   { id: "owl", emoji: "🦉" },
-  { id: "dragon", emoji: "🐲" },
+  { id: "penguin", emoji: "🐧" },
 ] as const;
 
 export function avatarEmoji(id: string | undefined): string {
