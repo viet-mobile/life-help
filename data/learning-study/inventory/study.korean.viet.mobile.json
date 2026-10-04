@@ -1,0 +1,245 @@
+{
+  "site_id": "study_korean",
+  "domain": "study.korean.viet.mobile",
+  "new_target_domain": "study.korean.life.help",
+  "target_language": "ko",
+  "product_slug": "korean",
+  "accessible": true,
+  "framework": "Vanilla JavaScript SPA (Native DOM, Custom Event System, Service Worker PWA)",
+  "build_system": "Python 3 build pipeline (build_app.py, assemble_app.py, site_profiles.py)",
+  "deployment_target": "Cloudflare Pages (Static Site / dist folder)",
+  "standalone_repo_accessible": true,
+  "standalone_repo_path": "C:/Users/leetr/Documents/viet-project/hoc-tieng-han",
+  "consolidated_dist_path": "C:/Users/leetr/Documents/viet-project/hoc-tieng-viet-mobile/dist/study-korean",
+  "dist_accessible": true,
+  "total_dist_bytes": 1407562,
+  "dist_files": [
+    {
+      "file": "brand/icon-180.png",
+      "bytes": 1408
+    },
+    {
+      "file": "brand/icon-192.png",
+      "bytes": 1530
+    },
+    {
+      "file": "brand/icon-32.png",
+      "bytes": 494
+    },
+    {
+      "file": "brand/icon-512.png",
+      "bytes": 3672
+    },
+    {
+      "file": "brand/icon.svg",
+      "bytes": 647
+    },
+    {
+      "file": "data.1.f52a717e27.js",
+      "bytes": 60314
+    },
+    {
+      "file": "index.html",
+      "bytes": 1346018
+    },
+    {
+      "file": "manifest.webmanifest",
+      "bytes": 632
+    },
+    {
+      "file": "_redirects",
+      "bytes": 578
+    }
+  ],
+  "route_count": 14,
+  "routes": [
+    {
+      "path": "/ko",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Korean UI entry point"
+    },
+    {
+      "path": "/vi",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Vietnamese UI entry point"
+    },
+    {
+      "path": "/cs",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Czech UI entry point"
+    },
+    {
+      "path": "/zh_cn",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Simplified Chinese UI entry point"
+    },
+    {
+      "path": "/cn",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Simplified Chinese alias"
+    },
+    {
+      "path": "/zh",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Traditional Chinese UI entry point"
+    },
+    {
+      "path": "/zt",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Traditional Chinese alias"
+    },
+    {
+      "path": "/en",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "English UI entry point"
+    },
+    {
+      "path": "/fr",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "French UI entry point"
+    },
+    {
+      "path": "/de",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "German UI entry point"
+    },
+    {
+      "path": "/hu",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Hungarian UI entry point"
+    },
+    {
+      "path": "/id",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Indonesian UI entry point"
+    },
+    {
+      "path": "/ja",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Japanese UI entry point"
+    },
+    {
+      "path": "/pl",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Polish UI entry point"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "reader",
+      "label": "Reader",
+      "description": "Dual-language aligned parallel text reader"
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "description": "Spaced repetition vocabulary cards and exercise mode"
+    },
+    {
+      "id": "voice_settings",
+      "label": "Voice Settings",
+      "description": "Browser Web Speech API synthesizer configuration"
+    },
+    {
+      "id": "word_order",
+      "label": "Word Order",
+      "description": "Interactive sentence reconstruction tiles (eojeol tokenized)"
+    }
+  ],
+  "exercise_types": [
+    "Parallel text alignment study",
+    "Vocabulary flashcards",
+    "Word-order tile assembly (eojeol-level tokenization)",
+    "Audio listening via Web Speech API TTS (ko-KR)"
+  ],
+  "datasets": {
+    "corpus_sources": [
+      "elf",
+      "lpd",
+      "wt",
+      "songs",
+      "neighbor"
+    ],
+    "row_aligned_languages": 12,
+    "source_files": [
+      "target_content.py",
+      "target_sources.py",
+      "target_reference.py",
+      "data_block.study_korean.js"
+    ]
+  },
+  "media_assets": {
+    "images": {
+      "brand_icons": [
+        "icon.svg",
+        "icon-32.png",
+        "icon-180.png",
+        "icon-192.png",
+        "icon-512.png"
+      ],
+      "format": "SVG + PNG multi-resolution PWA icons",
+      "total_count": 5
+    },
+    "audio": {
+      "source": "Web Speech API (Browser native synthesizer)",
+      "local_audio_files": 0,
+      "notes": "No binary audio files bundled; synthesis runs dynamically in client browser using SpeechSynthesisUtterance."
+    },
+    "video": {
+      "total_count": 0,
+      "notes": "Zero video files stored locally."
+    }
+  },
+  "ui_locales": {
+    "count": 12,
+    "locales": [
+      "vi",
+      "cs",
+      "zh_cn",
+      "zh",
+      "en",
+      "fr",
+      "de",
+      "hu",
+      "id",
+      "ja",
+      "ko",
+      "pl"
+    ]
+  },
+  "security_and_storage": {
+    "authentication": "None (Fully client-side static public learning application)",
+    "progress_persistence": "localStorage (Browser key: 'viet_mobile_locale', 'target_study_progress_*')",
+    "backend_database": "None (Static compilation; all vocabulary and grammar bundled in JS)"
+  },
+  "dependencies_and_domain_assumptions": {
+    "current_domain": "study.korean.viet.mobile",
+    "new_target_domain": "study.korean.life.help",
+    "hardcoded_viet_mobile_references": [
+      "https://study.korean.viet.mobile",
+      "viet.mobile",
+      "viet_mobile_locale"
+    ],
+    "shared_component_candidates": [
+      "TTS voice configuration modal",
+      "Language selection bar (12 legacy / 38 life.help)",
+      "Vocabulary review card component",
+      "Sentence reconstruction tile component",
+      "Offline Service Worker cache strategy"
+    ]
+  }
+}

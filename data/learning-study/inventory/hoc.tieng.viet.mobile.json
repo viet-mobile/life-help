@@ -1,0 +1,241 @@
+{
+  "site_id": "general",
+  "domain": "hoc.tieng.viet.mobile",
+  "new_target_domain": "study.vietnamese.life.help",
+  "target_language": "vi",
+  "product_slug": "vietnamese",
+  "accessible": true,
+  "framework": "Vanilla JavaScript SPA (Native DOM, Custom Event System, Service Worker PWA)",
+  "build_system": "Python 3 build pipeline (build_app.py, assemble_app.py, site_profiles.py)",
+  "deployment_target": "Cloudflare Pages (Static Site / dist folder)",
+  "standalone_repo_accessible": true,
+  "standalone_repo_path": "C:/Users/leetr/Documents/viet-project/hoc-tieng-viet-mobile",
+  "consolidated_dist_path": "C:/Users/leetr/Documents/viet-project/hoc-tieng-viet-mobile/dist",
+  "dist_accessible": true,
+  "total_dist_bytes": 9811249,
+  "dist_files": [
+    {
+      "file": "data.1.7619cbb838.js",
+      "bytes": 8451937
+    },
+    {
+      "file": "index.html",
+      "bytes": 1358732
+    },
+    {
+      "file": "manifest.webmanifest",
+      "bytes": 466
+    },
+    {
+      "file": "_redirects",
+      "bytes": 578
+    }
+  ],
+  "route_count": 14,
+  "routes": [
+    {
+      "path": "/ko",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Korean UI entry point"
+    },
+    {
+      "path": "/vi",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Vietnamese UI entry point"
+    },
+    {
+      "path": "/cs",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Czech UI entry point"
+    },
+    {
+      "path": "/zh_cn",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Simplified Chinese UI entry point"
+    },
+    {
+      "path": "/cn",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Simplified Chinese alias"
+    },
+    {
+      "path": "/zh",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Traditional Chinese UI entry point"
+    },
+    {
+      "path": "/zt",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Traditional Chinese alias"
+    },
+    {
+      "path": "/en",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "English UI entry point"
+    },
+    {
+      "path": "/fr",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "French UI entry point"
+    },
+    {
+      "path": "/de",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "German UI entry point"
+    },
+    {
+      "path": "/hu",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Hungarian UI entry point"
+    },
+    {
+      "path": "/id",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Indonesian UI entry point"
+    },
+    {
+      "path": "/ja",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Japanese UI entry point"
+    },
+    {
+      "path": "/pl",
+      "type": "rewrite",
+      "target": "/index.html",
+      "description": "Polish UI entry point"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "curriculum",
+      "label": "교과 (Curriculum)",
+      "description": "Structured 16-week language learning syllabus"
+    },
+    {
+      "id": "wizard",
+      "label": "대화 (Conversations)",
+      "description": "Everyday situations, culture dialogs, and audio practice"
+    },
+    {
+      "id": "vocab",
+      "label": "단어 (Vocabulary)",
+      "description": "3,000+ words classified by part of speech and CEFR level"
+    },
+    {
+      "id": "sentence",
+      "label": "문장 (Sentence Builder)",
+      "description": "Interactive grammar patterns and sentence assembly"
+    },
+    {
+      "id": "review",
+      "label": "복습 (Review)",
+      "description": "Spaced repetition flashcards and review quizzes"
+    },
+    {
+      "id": "pron",
+      "label": "발음 (Pronunciation)",
+      "description": "Vietnamese 6 tones, vowels, consonants, dialect comparison"
+    }
+  ],
+  "exercise_types": [
+    "Flashcard flip (front/back with audio)",
+    "Multiple choice vocabulary recall",
+    "Sentence tile re-ordering",
+    "Tone pair recognition test",
+    "North/South dialect sound contrast practice",
+    "Fill-in-the-blank grammar cloze"
+  ],
+  "datasets": {
+    "vocabulary_count": 3140,
+    "grammar_patterns_count": 52,
+    "conversation_units_count": 28,
+    "culture_articles_count": 20,
+    "pronunciation_rules_count": 36,
+    "source_files": [
+      "unified_words_builder.py",
+      "word_meanings_extended.json",
+      "grammar_data.py",
+      "grammar_a1a2_ai_translations.py",
+      "culture_data.py",
+      "daily_conversations_data.py",
+      "pronunciation_data.py",
+      "rhyme_data.py"
+    ]
+  },
+  "media_assets": {
+    "images": {
+      "brand_icons": [
+        "icon.svg",
+        "icon-32.png",
+        "icon-180.png",
+        "icon-192.png",
+        "icon-512.png"
+      ],
+      "format": "SVG + PNG multi-resolution PWA icons",
+      "total_count": 5
+    },
+    "audio": {
+      "source": "Web Speech API (Browser native synthesizer)",
+      "local_audio_files": 0,
+      "notes": "No binary audio files bundled; synthesis runs dynamically in client browser using SpeechSynthesisUtterance."
+    },
+    "video": {
+      "total_count": 0,
+      "notes": "Zero video files stored locally."
+    }
+  },
+  "ui_locales": {
+    "count": 12,
+    "locales": [
+      "vi",
+      "cs",
+      "zh_cn",
+      "zh",
+      "en",
+      "fr",
+      "de",
+      "hu",
+      "id",
+      "ja",
+      "ko",
+      "pl"
+    ]
+  },
+  "security_and_storage": {
+    "authentication": "None (Fully client-side static public learning application)",
+    "progress_persistence": "localStorage (Browser key: 'viet_mobile_locale', 'study_progress_*')",
+    "backend_database": "None (Static compilation; all vocabulary and grammar bundled in JS)"
+  },
+  "dependencies_and_domain_assumptions": {
+    "current_domain": "hoc.tieng.viet.mobile",
+    "new_target_domain": "study.vietnamese.life.help",
+    "hardcoded_viet_mobile_references": [
+      "https://hoc.tieng.viet.mobile",
+      "https://jw.hoc.tieng.viet.mobile",
+      "https://jeonju.hoc.tieng.viet.mobile",
+      "https://ulsan.hoc.tieng.viet.mobile",
+      "viet.mobile",
+      "viet_mobile_locale"
+    ],
+    "shared_component_candidates": [
+      "TTS voice configuration modal",
+      "Language selection bar (12 legacy / 38 life.help)",
+      "Vocabulary review card component",
+      "Sentence reconstruction tile component",
+      "Offline Service Worker cache strategy"
+    ]
+  }
+}
