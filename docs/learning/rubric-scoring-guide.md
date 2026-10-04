@@ -1,0 +1,28 @@
+# Rubric scoring guide (for coding REAL items; policy `fit-accept-1`)
+
+Purpose: let several people code released items the same way, so that `fitMapping` can learn a score-to-level mapping from published difficulty. `BANK_INTERFACE_FROZEN` is unaffected: this guide and `scripts/learn/bank/core/rubric-coding.mjs` do not touch `bank-api-1` or the provisional path of the engine.
+
+## What is coded, and what is never stored
+* Only rows that are `VERIFIED_EMPIRICAL` and BINARY (dichotomous) in `data/learning-calibration/reviewed/items.csv`. Partial-credit rows, structural rows and unverified rows are refused by the validator: they never train the mapping.
+* Output file `data/learning-calibration/rubric-coding.csv`, columns exactly: `source_id, external_item_id, coder, steps, abstraction, context, novelty, recall, distractor, numberSize, method_tag, ambiguous, adjudicated`. Ids and integers only. There is no note column and no text column: nothing of the item is copied. The coder may read the released item to code it; it is never quoted, paraphrased or summarised in any file.
+* `coder` = a short id (two or more coders are required for part of the sample). `method_tag` = empty or one of the 12 reasoning dimensions (the dominant thinking). `ambiguous` = true when the coder cannot decide a feature between two values after rereading; ambiguous items are kept in the file and excluded from fitting.
+
+## The seven integers (decide in this order; use the rule, not the feeling)
+**steps (1..6)**: write the shortest correct solution as numbered lines. A line is a step if it produces a new value or deduction that a later line needs. Independent look-ups that are only compared count one step each when their results are combined. A pure recall answer is 1. Cap at 6.
+**abstraction (0..4)**: 0 concrete numbers or objects; 1 concrete with units or a quantity named in words; 2 one unknown, a table, a graph, or a simple formula to apply; 3 several symbols, a function, or a general statement; 4 formal objects or an argument about all cases.
+**context (0..4)** (reading load): 0 bare expression or one-line question; 1 one sentence of situation; 2 a short paragraph, a table or a figure to read; 3 long text, or several pieces of information of which some are irrelevant; 4 several sources or a long text with competing information.
+**novelty (0..4)**: 0 exactly the routine as taught; 1 the routine with different numbers or a small twist; 2 the routine in a new context; 3 the solver must choose or combine methods that the item does not name; 4 non-routine: no known method fits, an approach must be invented.
+**recall (0..4)** (lowers demand): 4 answered at once from a remembered fact or table; 3 mostly recall with one trivial step; 2 recall a rule or formula, then apply it; 1 a small piece of recall is needed; 0 nothing has to be remembered.
+**distractor (0..3)**: 0 no wrong options (open response) or obviously silly ones; 1 one wrong option built on a real misconception; 2 two; 3 every wrong option is plausible or the item contains information designed to mislead.
+**numberSize (0..4)**: 0 whole numbers up to 20; 1 up to 100; 2 up to 1000, or simple fractions and decimals; 3 large numbers, decimals or mixed units; 4 very large or messy combinations (scientific notation, awkward fractions).
+
+## Evidence requirement
+Before entering a number the coder must be able to say, from the item, which line or element justifies it (the solution lines for `steps`, the symbols for `abstraction`, ...). If two adjacent values are both defensible: choose the LOWER for `steps`, `abstraction`, `context`, `novelty`, `distractor`, `numberSize` and the HIGHER for `recall` (so that doubt never inflates demand), and set `ambiguous = true` only if the doubt remains after rereading and would change the item's demand score by 2 or more.
+
+## Ambiguous and disputed items
+* Two coders: a pair is accepted when no feature differs by more than 1 (the consolidated value is the rounded mean). A pair that differs by more than 1 on any feature blocks acceptance until a third coder adjudicates (`adjudicated = true`; that row decides).
+* At least 20 items are double-coded. Agreement must reach, for EVERY feature: within one step 85 % and exact 60 %.
+* Coders do not see the published difficulty of an item before coding it (code from the item alone), and do not code items of a source in a row by difficulty order. The coding batches mix sources.
+
+## From coding to a mapping (`fit-accept-1`, implemented and tested in `rubric-coding.mjs`)
+Eligible only if ALL hold (each is reported with its value): the coding file is valid; no unresolved disagreement; at least 40 usable (non-ambiguous, BINARY, VERIFIED_EMPIRICAL) coded items; at least 20 double-coded with the agreement above; no source above 60 % of the items; at least 6 distinct empirical levels among them; no feature constant in more than 90 % of the items; 5-fold cross-validated Spearman >= 0.50 and >= 60 % within one level; in-sample minus cross-validated Spearman <= 0.15 (overfit guard); at least 5 distinct predicted levels. The tool then says `ELIGIBLE_FOR_REVIEW` or `REJECTED`: never "accepted". Antigravity may run it and report; **Claude decides**. Acceptance is a recorded decision `data/learning-calibration/mapping-decision.json` `{ status: "ACCEPTED", fitSha256, decidedBy, decidedAt }` that names the exact fit (`isMappingAccepted`). Until then every generated item keeps `difficultyBasis: PROVISIONAL`. Using an accepted mapping in the engine is a `bank-api` version change (it makes generated items STRUCTURAL) and happens after the stress baseline, not during it.

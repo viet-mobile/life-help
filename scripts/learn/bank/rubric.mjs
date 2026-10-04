@@ -73,11 +73,15 @@ export function fitMapping(items, { minItems = 40 } = {}) {
   const pts = items.map((it) => ({ x: demandScore(validateFeatures(it.features)), y: it.level })).sort((a, b) => a.x - b.x);
   return { kind: "isotonic", steps: isotonic(pts) };
 }
+/** level of the fitted step that contains the score; a score between two steps (or outside all of them) takes the NEAREST step (it used to fall through to the last one) */
 function mappedLevel(score, mapping) {
-  const s = mapping.steps;
-  if (score <= s[0].x1) return Math.min(10, Math.max(1, Math.round(s[0].level)));
-  for (const b of s) if (score >= b.x0 && score <= b.x1) return Math.min(10, Math.max(1, Math.round(b.level)));
-  return Math.min(10, Math.max(1, Math.round(s[s.length - 1].level)));
+  const steps = mapping.steps;
+  let best = steps[0], bestDist = Infinity;
+  for (const b of steps) {
+    const d = score < b.x0 ? b.x0 - score : score > b.x1 ? score - b.x1 : 0;
+    if (d < bestDist) { bestDist = d; best = b; if (d === 0) break; }
+  }
+  return Math.min(10, Math.max(1, Math.round(best.level)));
 }
 
 /** How well the rubric explains the published difficulty: Spearman rank correlation and the share of items within one level. */
