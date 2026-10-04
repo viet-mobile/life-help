@@ -74,7 +74,7 @@ export function validateSources({ header, rows }) {
     if (!ID.test(r.source_id) || r.source_id.length > MAX_LEN.source_id) p("source_id must be a short id [A-Za-z0-9._:-]");
     if (seen.has(r.source_id)) p(`duplicate source_id ${r.source_id}`);
     seen.add(r.source_id);
-    if (!/^[A-Z]{2}$/.test(r.country)) p("country must be ISO-3166 alpha-2 (e.g. KR, US)");
+    if (!/^([A-Z]{2}|INT)$/.test(r.country)) p("country must be ISO-3166 alpha-2 (e.g. KR, US) or INT for an international body");
     for (const k of /** @type {const} */ (["institution", "exam_family"])) if (!r[k] || r[k].length > MAX_LEN[k]) p(`${k} required, max ${MAX_LEN[k]} characters`);
     const y0 = num(r.year_from), y1 = num(r.year_to);
     if (y0 === null || y1 === null || !Number.isInteger(y0) || !Number.isInteger(y1) || y0 < 1990 || y1 > 2100 || y0 > y1) p("year_from..year_to must be integer years, from <= to");
