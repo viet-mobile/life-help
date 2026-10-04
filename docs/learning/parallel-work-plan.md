@@ -1,5 +1,13 @@
 # Learning Platform V3: parallel work plan (source of truth)
 
+**PARALLEL EXECUTION BASELINE: d522da4**
+
+* `9d3b0c3` = functional feature baseline (last code commit).
+* `e33c521` = initial parallel-plan commit (docs only).
+* `d522da4` = the actual common start point of `feature/learning-v3-core` and `feature/learning-v3-bulk`.
+
+In this repo "baseline" without a SHA always means `d522da4`.
+
 Base (clean feature HEAD): 9d3b0c3 (`feature/learning-elementary-vi`). Plan-doc commit e33c521. Both tracks start from the final baseline recorded in `docs/learning/antigravity-handoff.md`.
 Live `6e68ec3d` stays 100%. Canary `25747a2a` (`c4b03fe`) is NOT promoted. The next production release is rebuilt from a new RC after this work.
 

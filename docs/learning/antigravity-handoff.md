@@ -1,10 +1,18 @@
 # Antigravity handoff (imperative; follow exactly)
 
+**PARALLEL EXECUTION BASELINE: d522da4**
+
+* `9d3b0c3` = functional feature baseline (last code commit).
+* `e33c521` = initial parallel-plan commit (docs only).
+* `d522da4` = the actual common start point of `feature/learning-v3-core` and `feature/learning-v3-bulk`.
+
+In this repo "baseline" without a SHA always means `d522da4`.
+
 Read `docs/learning/parallel-work-plan.md` first. It is the source of truth. If this file and it disagree, the plan wins; write the conflict to `reports/generated/REQUESTS.md` and stop that item.
 
 ## Setup
 * Worktree: `C:\Users\leetr\Documents\life-project\life-help-v3-bulk`. Branch: `feature/learning-v3-bulk`.
-* Baseline SHA: run `git rev-parse HEAD` before your first edit and write it at the top of every report. Do not rebase or merge other branches.
+* Baseline SHA: `d522da4` (see PARALLEL EXECUTION BASELINE above). Verify with `git rev-parse --short HEAD` and write it at the top of every report.
 * Production is frozen. Never touch Worker traffic, Supabase, Auth/SMTP, DNS, main, payment providers, or any blockchain. Never read, copy or print `.env*` or keys.
 
 ## You MAY modify (only these)
