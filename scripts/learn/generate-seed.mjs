@@ -26,11 +26,12 @@ insert into public.learn_countries(code, name) values ('KR', '대한민국') on 
 insert into public.learn_subjects(code, name) values ('math', '수학'), ('english', '영어') on conflict do nothing;`);
 
 for (const site of ["math", "english"]) {
-  // The same merge as lib/learn/content/repository.ts: elementary courses first, then the existing secondary course(s).
+  // The same merge as lib/learn/content/repository.ts: elementary courses first, then the M1 demo course, then the secondary (M2..H3) courses.
   const demo = JSON.parse(readFileSync(path.join(root, `lib/learn/content/demo/${site}.json`), "utf8"));
   const elementary = JSON.parse(readFileSync(path.join(root, `lib/learn/content/elementary/${site}.json`), "utf8"));
-  const catalog = { ...demo.catalog, skills: [...elementary.catalog.skills, ...demo.catalog.skills], courses: [...elementary.catalog.courses, ...demo.catalog.courses] };
-  const questions = [...elementary.questions, ...demo.questions];
+  const secondary = JSON.parse(readFileSync(path.join(root, `lib/learn/content/secondary/${site}.json`), "utf8"));
+  const catalog = { ...demo.catalog, skills: [...elementary.catalog.skills, ...demo.catalog.skills, ...secondary.catalog.skills], courses: [...elementary.catalog.courses, ...demo.catalog.courses, ...secondary.catalog.courses] };
+  const questions = [...elementary.questions, ...demo.questions, ...secondary.questions];
   const subj = `(select id from public.learn_subjects where code = ${q(site)})`;
   out.push(`\n-- ${site}`);
   out.push(`insert into public.learn_curricula(code, country_code, name, status) values (${q(catalog.curriculum)}, ${q(catalog.country)}, ${q(catalog.curriculum)}, 'PUBLISHED') on conflict (code) do nothing;`);

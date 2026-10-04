@@ -4,6 +4,8 @@ import mathDemo from "../../lib/learn/content/demo/math.json";
 import englishDemo from "../../lib/learn/content/demo/english.json";
 import mathElementary from "../../lib/learn/content/elementary/math.json";
 import englishElementary from "../../lib/learn/content/elementary/english.json";
+import mathSecondary from "../../lib/learn/content/secondary/math.json";
+import englishSecondary from "../../lib/learn/content/secondary/english.json";
 import { ko } from "../../lib/learn/i18n/ko";
 import { vi } from "../../lib/learn/i18n/vi";
 
@@ -15,10 +17,10 @@ import { vi } from "../../lib/learn/i18n/vi";
 export const BASE = "https://life-help-staging.simpl2eye.workers.dev";
 export const REF = "wreebowcbiymodswajwe";
 export const PRODUCTION_REF = "wstdbymmkrqgtsibhcjz";
-/** Every question the learning sites can serve (elementary + middle / high) with its canonical answer key: the data the server judges against. */
+/** Every question the learning sites can serve (elementary, the M1 demo course and the grade-specific M2..H3 courses) with its canonical answer key: the data the server judges against. */
 export const DEMO = {
-  math: { questions: [...mathElementary.questions, ...mathDemo.questions] },
-  english: { questions: [...englishElementary.questions, ...englishDemo.questions] },
+  math: { questions: [...mathElementary.questions, ...mathDemo.questions, ...mathSecondary.questions] },
+  english: { questions: [...englishElementary.questions, ...englishDemo.questions, ...englishSecondary.questions] },
 } as const;
 export type Locale = "ko" | "vi";
 export type Grade = "E1" | "E2" | "E3" | "E4" | "E5" | "E6" | "M1" | "M2" | "M3" | "H1" | "H2" | "H3";

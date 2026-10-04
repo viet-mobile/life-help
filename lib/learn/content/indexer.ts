@@ -1,4 +1,4 @@
-import { schoolLevel, type ContentBundle, type Grade, type MetaBundle, type QuestionMeta, type Course, type Lesson, type Skill, type Unit } from "@/lib/learn/types";
+import { SECONDARY_GRADES, schoolLevel, type ContentBundle, type Grade, type MetaBundle, type QuestionMeta, type Course, type Lesson, type Skill, type Unit } from "@/lib/learn/types";
 
 export interface ContentIndex {
   bundle: MetaBundle;
@@ -58,12 +58,26 @@ export function toMetaBundle(bundle: ContentBundle): MetaBundle {
  * The slice of a bundle one student works in. Pure and shared by the server and the browser, so the learning path, the placement
  * pool, the skills map, the quests and the achievements are all computed over the SAME grade-scoped content:
  *   elementary grade  -> only the course whose grade equals the student's grade
- *   middle / high     -> every secondary (M1..H3) course, exactly as before elementary grades existed
+ *   middle / high     -> only the course of the student's own grade (M1..H3). When the content has no course for that grade yet
+ *                        (a database that still holds only the original M1 course), the nearest lower grade that has one is served,
+ *                        so a student is never left without a path.
  * Skills are those the in-scope lessons teach (plus their prerequisite chain); questions are those that practise those skills.
  */
+function coursesFor(all: Course[], grade: Grade, level: ReturnType<typeof schoolLevel>): Course[] {
+  if (level === "elementary") return all.filter((c) => c.grade === grade);
+  const secondary = all.filter((c) => schoolLevel(c.grade) === "secondary");
+  const own = secondary.filter((c) => c.grade === grade);
+  if (own.length) return own;
+  for (let i = SECONDARY_GRADES.indexOf(grade as (typeof SECONDARY_GRADES)[number]) - 1; i >= 0; i--) {
+    const lower = secondary.filter((c) => c.grade === SECONDARY_GRADES[i]);
+    if (lower.length) return lower;
+  }
+  return secondary;
+}
+
 export function scopeToGrade<T extends { catalog: MetaBundle["catalog"]; questions: Array<{ skillId: string }> }>(bundle: T, grade: Grade): T {
   const level = schoolLevel(grade);
-  const courses = bundle.catalog.courses.filter((c) => (level === "elementary" ? c.grade === grade : schoolLevel(c.grade) === "secondary"));
+  const courses = coursesFor(bundle.catalog.courses, grade, level);
   const byId = new Map(bundle.catalog.skills.map((s) => [s.id, s]));
   const wanted = new Set<string>();
   const add = (id: string | undefined) => {

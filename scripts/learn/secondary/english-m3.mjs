@@ -1,0 +1,104 @@
+import { T, BLANK, DIALOG, WRONG, READ, READ_TF, TF, FILL, makeEnglishKit } from "./english-kit.mjs";
+
+/** Middle 3 English: relative pronouns, conditionals, indirect questions, participles, reading for inference and purpose. */
+export function enM3(b) {
+  const S = { rel: "e.m3.rel", cond: "e.m3.cond", ques: "e.m3.ques", part: "e.m3.part", read: "e.m3.read" };
+  b.skill(S.rel, T("관계대명사", "Đại từ quan hệ"));
+  b.skill(S.cond, T("조건문과 가정법 과거", "Câu điều kiện và giả định ở quá khứ"), S.rel);
+  b.skill(S.ques, T("간접의문문", "Câu hỏi gián tiếp"), S.cond);
+  b.skill(S.part, T("분사", "Phân từ"), S.ques);
+  b.skill(S.read, T("독해: 추론과 글의 목적", "Đọc hiểu: suy luận và mục đích"), S.part);
+  const k = makeEnglishKit(b, "m3", S);
+  const { mc, tf, write, order } = k;
+  const G = ["grammar"], GC = ["grammar", "context"], GR = ["grammar", "reasoning"];
+
+  /* ------------------------------ 1. relative pronouns ------------------------------ */
+  const R1 = T("관계대명사는 앞의 명사(선행사)를 꾸며요. 사람은 who, 사물은 which, 둘 다 that, 소유는 whose.", "Đại từ quan hệ bổ nghĩa cho danh từ đứng trước: who cho người, which cho vật, that cho cả hai, whose chỉ sở hữu.");
+  const l1 = [
+    mc("rel", 1, "core", 1, G, BLANK("The girl ____ is singing is my sister."), ["who", "which", "whose", "what"], 0, R1, T("선행사 The girl 은 사람이에요.", "Danh từ đứng trước The girl chỉ người."), T("사람이 선행사이고 주어 역할이므로 who.", "Danh từ chỉ người làm chủ ngữ nên dùng who.")),
+    mc("rel", 2, "core", 2, G, BLANK("This is the book ____ I bought yesterday."), ["which", "who", "whose", "where"], 0, R1, T("선행사 the book 은 사물이에요.", "Danh từ đứng trước the book chỉ vật."), T("사물이 선행사이므로 which (또는 that).", "Danh từ chỉ vật nên dùng which (hoặc that).")),
+    mc("rel", 3, "core", 2, GR, WRONG, ["The man which lives next door is a doctor.", "I know a boy who plays the cello.", "She has a dog that loves swimming.", "This is the girl whose bag was stolen."], 0, R1, T("선행사가 사람인지 사물인지부터 확인해요.", "Trước hết xác định danh từ đứng trước chỉ người hay vật."), T("The man 은 사람이므로 which 가 아니라 who 를 써야 해요.", "The man chỉ người nên phải dùng who chứ không dùng which.")),
+    mc("rel", 4, "core", 3, GC, DIALOG("A: Who is that woman? B: She is the teacher ____ son is in my class."), ["whose", "who", "which", "whom"], 0, T("'~의' 라는 소유 관계는 whose + 명사로 나타내요.", "Quan hệ sở hữu 'của ...' diễn đạt bằng whose + danh từ."), T("the teacher 의 son(아들)이라는 소유 관계예요.", "Đây là quan hệ sở hữu: con trai của giáo viên."), T("whose son = 그 선생님의 아들.", "whose son = con trai của giáo viên đó.")),
+    write("rel", 5, "core", 3, ["grammar", "multistep", "reasoning"], FILL(T("두 문장을 관계대명사로 한 문장으로 만들어 빈칸을 채우세요.", "Nối hai câu thành một câu bằng đại từ quan hệ rồi điền vào chỗ trống."), "I have a friend. He lives in Canada. → I have a friend ____ lives in Canada."), ["who", "that"], R1, T("He 가 가리키는 a friend 는 사람이고, 주어 역할을 해요.", "He chỉ a friend (người) và làm chủ ngữ."), T("사람 + 주어 역할이므로 who(또는 that).", "Chỉ người làm chủ ngữ nên dùng who (hoặc that).")),
+  ];
+  mc("rel", "v1", "variant", 1, G, BLANK("The movie ____ we watched was fun."), ["which", "who", "whose", "where"], 0, R1, T("the movie 는 사물이에요.", "the movie chỉ vật."), T("which 가 알맞아요.", "which là đúng."));
+  tf("rel", "v2", "variant", 2, GR, TF("I met a girl whose father is a pilot."), true, R1, T("'그 소녀의 아버지' 라는 소유 관계예요.", "Đây là quan hệ sở hữu: cha của cô gái."), T("whose 는 소유를 나타내므로 올바른 문장이에요.", "whose chỉ sở hữu nên câu đúng."));
+  mc("rel", "v3", "variant", 2, G, BLANK("He is the man ____ helped me."), ["who", "which", "whose", "what"], 0, R1, T("the man 은 사람이에요.", "the man chỉ người."), T("who 가 알맞아요.", "who là đúng."));
+  mc("rel", "d1", "diagnostic", 1, G, BLANK("The bag ____ is on the desk is mine."), ["which", "who", "whose", "whom"], 0, R1, T("the bag 은 사물이에요.", "the bag chỉ vật."), T("which 가 알맞아요.", "which là đúng."));
+  mc("rel", "d2", "diagnostic", 3, GR, WRONG, ["This is the house who I grew up in.", "She is the singer that I like most.", "He is the boy whose dog is lost.", "I have a cat which has blue eyes."], 0, R1, T("the house 는 사물이에요.", "the house chỉ vật."), T("사물에는 who 가 아니라 which 를 써야 해요.", "Với vật phải dùng which chứ không dùng who."));
+
+  /* ------------------------------ 2. conditionals ------------------------------ */
+  const R2 = T("가능성 있는 조건은 If + 현재, will + 동사원형. 현재 사실과 반대는 If + 과거(be는 were), would + 동사원형.", "Điều kiện có thể xảy ra: If + hiện tại, will + V. Giả định trái với hiện tại: If + quá khứ (be dùng were), would + V.");
+  const l2 = [
+    mc("cond", 1, "core", 1, G, BLANK("If it rains tomorrow, we ____ at home."), ["will stay", "stay", "stayed", "would stay"], 0, R2, T("내일 비가 올 가능성이 있는 조건이에요.", "Đây là điều kiện có khả năng xảy ra vào ngày mai."), T("If + 현재, will + 동사원형.", "If + hiện tại, will + V.")),
+    mc("cond", 2, "core", 2, G, BLANK("If I ____ rich, I would buy a big house."), ["were", "am", "will be", "have been"], 0, R2, T("뒤에 would 가 있으므로 현재 사실과 반대되는 가정이에요.", "Có would ở mệnh đề sau nên đây là giả định trái với thực tế."), T("가정법 과거에서 be동사는 were 를 써요.", "Trong câu điều kiện loại 2, be dùng were.")),
+    mc("cond", 3, "core", 2, GR, WRONG, ["If I will see him, I will tell him.", "If she studies hard, she will pass the test.", "If I were you, I would apologize.", "If it snows, we will build a snowman."], 0, T("조건을 나타내는 if절에서는 미래의 일도 현재시제로 써요.", "Trong mệnh đề if chỉ điều kiện, việc ở tương lai vẫn dùng thì hiện tại."), T("if절에 will 이 쓰인 문장을 찾아요.", "Hãy tìm câu có will trong mệnh đề if."), T("If I see him, I will tell him. 이 맞아요.", "Phải là If I see him, I will tell him.")),
+    mc("cond", 4, "core", 3, GC, DIALOG("A: I'm so tired every morning. B: If you ____ to bed earlier, you wouldn't feel so tired."), ["went", "go", "will go", "had gone"], 0, R2, T("뒤에 wouldn't 가 있으므로 if절은 과거형이에요.", "Có wouldn't ở sau nên mệnh đề if dùng thì quá khứ."), T("If + 과거형(went), would + 동사원형.", "If + quá khứ (went), would + V.")),
+    mc("cond", 5, "core", 3, ["reading", "multistep", "reasoning"], READ("Tom doesn't have a car, so he takes the bus every day.", "Which sentence has the same meaning?"), ["If Tom had a car, he wouldn't take the bus.", "If Tom has a car, he will take the bus.", "If Tom had a car, he would take the bus every day.", "Tom has a car, so he doesn't take the bus."], 0, R2, T("현재 사실의 반대(차가 없다)를 가정하면 결과도 반대(버스를 타지 않는다)가 돼요.", "Giả định điều trái với thực tế (không có xe) thì kết quả cũng ngược lại (không đi xe buýt)."), T("'차가 없어서 버스를 탄다' = '차가 있다면 버스를 타지 않을 텐데'", "'Vì không có xe nên đi xe buýt' = 'Nếu có xe thì sẽ không đi xe buýt'.")),
+  ];
+  mc("cond", "v1", "variant", 1, G, BLANK("If you heat ice, it ____."), ["melts", "melt", "melted", "will melting"], 0, R2, T("일반적인 사실이에요.", "Đây là sự thật hiển nhiên."), T("melts.", "melts."));
+  tf("cond", "v2", "variant", 2, GR, TF("If I was you, I would study harder."), false, R2, T("가정법 과거에서는 주어가 I 여도 were 를 써요.", "Trong câu điều kiện loại 2, dù chủ ngữ là I vẫn dùng were."), T("If I were you, ... 가 맞아요.", "Phải là If I were you, ..."));
+  mc("cond", "v3", "variant", 2, G, BLANK("If she ____ more time, she would travel around the world."), ["had", "has", "will have", "have"], 0, R2, T("would 가 있으므로 if절은 과거형이에요.", "Có would nên mệnh đề if ở thì quá khứ."), T("had 가 알맞아요.", "had là đúng."));
+  mc("cond", "d1", "diagnostic", 1, G, BLANK("If it is sunny tomorrow, we ____ a picnic."), ["will have", "had", "would have", "have had"], 0, R2, T("가능성 있는 미래의 조건이에요.", "Điều kiện có khả năng ở tương lai."), T("will have.", "will have."));
+  mc("cond", "d2", "diagnostic", 3, GR, BLANK("If I ____ a bird, I would fly to you."), ["were", "am", "will be", "was being"], 0, R2, T("현재 사실과 반대되는 가정이에요.", "Giả định trái với hiện tại."), T("were.", "were."));
+
+  /* ------------------------------ 3. indirect questions ------------------------------ */
+  const R3 = T("간접의문문은 의문사 + 주어 + 동사 순서예요. 의문문처럼 do/does/did 를 쓰거나 주어와 동사를 뒤집지 않아요.", "Câu hỏi gián tiếp có trật tự: từ để hỏi + chủ ngữ + động từ; không dùng do/does/did hay đảo chủ ngữ và động từ như câu hỏi trực tiếp.");
+  const l3 = [
+    mc("ques", 1, "core", 1, G, BLANK("Do you know where ____?"), ["he lives", "does he live", "lives he", "he does live"], 0, R3, T("where 뒤에는 주어 + 동사 순서예요.", "Sau where là chủ ngữ + động từ."), T("where he lives.", "where he lives.")),
+    mc("ques", 2, "core", 2, G, BLANK("I wonder what time ____."), ["the movie starts", "does the movie start", "the movie does start", "starts the movie"], 0, R3, T("의문문 어순(does the movie)이 아니라 평서문 어순이에요.", "Dùng trật tự câu khẳng định chứ không phải trật tự câu hỏi (does the movie)."), T("what time the movie starts.", "what time the movie starts.")),
+    mc("ques", 3, "core", 2, GR, WRONG, ["Tell me where is the station.", "Can you tell me where the station is?", "I don't know why she is crying.", "Do you know who he is?"], 0, R3, T("각 문장에서 의문사 뒤의 순서를 확인해요.", "Kiểm tra trật tự sau từ để hỏi trong từng câu."), T("where is the station 은 의문문 어순이에요.", "where is the station là trật tự của câu hỏi trực tiếp."), T("where the station is 로 고쳐야 해요.", "Phải sửa thành where the station is.")),
+    mc("ques", 4, "core", 3, GC, DIALOG("A: Excuse me, could you tell me ____? B: Sure. It's next to the bank."), ["where the post office is", "where is the post office", "where does the post office", "the post office where is"], 0, R3, T("정중하게 묻는 말(could you tell me)은 간접의문문이에요.", "Cách hỏi lịch sự (could you tell me) là câu hỏi gián tiếp."), T("where + 주어(the post office) + 동사(is).", "where + chủ ngữ (the post office) + động từ (is)."), T("where the post office is.", "where the post office is.")),
+    order("ques", 5, "core", 3, ["grammar", "multistep"], T("나는 그녀가 어디에 사는지 몰라요.", "Tôi không biết cô ấy sống ở đâu."), ["I", "don't", "know", "where", "she", "lives"], R3, T("know 뒤에 where + 주어 + 동사를 이어요.", "Sau know nối where + chủ ngữ + động từ."), T("I don't know where she lives.", "I don't know where she lives.")),
+  ];
+  mc("ques", "v1", "variant", 1, G, BLANK("Do you know what ____?"), ["he wants", "does he want", "wants he", "he does want"], 0, R3, T("what 뒤에는 주어 + 동사예요.", "Sau what là chủ ngữ + động từ."), T("what he wants.", "what he wants."));
+  tf("ques", "v2", "variant", 2, GR, TF("I wonder why did she leave early."), false, R3, T("간접의문문에서는 did 를 쓰지 않아요.", "Trong câu hỏi gián tiếp không dùng did."), T("why she left early 가 맞아요.", "Phải viết why she left early."));
+  order("ques", "v3", "variant", 2, G, T("그가 누구인지 아니?", "Bạn có biết anh ấy là ai không?"), ["Do", "you", "know", "who", "he", "is"], R3, T("who 뒤에 he is 의 순서예요.", "Sau who là he is."), T("Do you know who he is?", "Do you know who he is?"));
+  mc("ques", "d1", "diagnostic", 1, G, BLANK("I don't know when ____."), ["she comes", "does she come", "comes she", "she does come"], 0, R3, T("평서문 어순이에요.", "Dùng trật tự câu khẳng định."), T("when she comes.", "when she comes."));
+  mc("ques", "d2", "diagnostic", 3, GR, BLANK("Could you tell me how much ____?"), ["this bag costs", "does this bag cost", "this bag does cost", "costs this bag"], 0, R3, T("how much 로 시작해도 뒤는 주어 + 동사예요.", "Dù bắt đầu bằng how much, phía sau vẫn là chủ ngữ + động từ."), T("how much this bag costs.", "how much this bag costs."));
+
+  /* ------------------------------ 4. participles ------------------------------ */
+  const R4 = T("현재분사(-ing)는 '~하는·~하게 만드는', 과거분사(-ed)는 '~된·~한 느낌을 받는' 뜻으로 명사나 감정을 꾸며요.", "Phân từ hiện tại (-ing) nghĩa là 'đang ... / gây ra cảm giác', phân từ quá khứ (-ed) nghĩa là 'bị/được ... / cảm thấy' khi bổ nghĩa cho danh từ hoặc diễn tả cảm xúc.");
+  const DANCE = "The girl dancing on the stage is my cousin. The song played at the party was her favorite.";
+  const l4 = [
+    mc("part", 1, "core", 1, G, BLANK("Look at the ____ baby."), ["sleeping", "slept", "sleeps", "sleep"], 0, R4, T("아기가 '자고 있는' 중이에요.", "Em bé đang ngủ."), T("진행의 의미이므로 현재분사 sleeping.", "Mang nghĩa đang diễn ra nên dùng phân từ hiện tại sleeping.")),
+    mc("part", 2, "core", 2, G, BLANK("This is a book ____ in 1990."), ["written", "writing", "wrote", "write"], 0, R4, T("책은 '쓰여진' 대상이에요.", "Cuốn sách là đối tượng được viết."), T("수동의 의미이므로 과거분사 written.", "Mang nghĩa bị động nên dùng phân từ quá khứ written.")),
+    mc("part", 3, "core", 2, GR, WRONG, ["The movie was boring, so I felt boring.", "The news was shocking.", "I was surprised at the result.", "The exciting game made us happy."], 0, T("감정을 일으키는 것은 -ing, 감정을 느끼는 사람은 -ed 를 써요.", "Điều gây ra cảm xúc dùng -ing, người cảm thấy cảm xúc dùng -ed."), T("'내가 느낀' 감정을 말하는 부분을 확인해요.", "Hãy xem phần diễn tả cảm xúc mà tôi cảm thấy."), T("내가 지루함을 느낀 것이므로 I felt bored 가 맞아요.", "Tôi là người cảm thấy chán nên phải là I felt bored.")),
+    mc("part", 4, "core", 3, GC, DIALOG("A: Why are you smiling? B: I was so ____ when I heard the good news."), ["excited", "exciting", "excite", "excites"], 0, R4, T("좋은 소식을 듣고 '신이 난' 사람은 B 예요.", "B là người cảm thấy hào hứng khi nghe tin vui."), T("감정을 느끼는 사람이므로 excited.", "Là người cảm thấy cảm xúc nên dùng excited.")),
+    mc("part", 5, "core", 3, ["reading", "multistep", "reasoning"], READ(DANCE, "Which words tell us WHICH girl is the speaker's cousin?"), ["dancing on the stage", "played at the party", "my cousin", "her favorite"], 0, T("분사구가 명사 뒤에서 그 명사를 구별해 줘요.", "Cụm phân từ đứng sau danh từ để xác định danh từ đó."), T("The girl 바로 뒤에서 꾸며 주는 말을 찾아요.", "Tìm cụm từ ngay sau The girl bổ nghĩa cho nó."), T("dancing on the stage 가 The girl 을 꾸며 줘요.", "dancing on the stage bổ nghĩa cho The girl.")),
+  ];
+  mc("part", "v1", "variant", 1, G, BLANK("The boy ____ a book is my brother."), ["reading", "read", "reads", "to read"], 0, R4, T("소년이 책을 '읽고 있는' 중이에요.", "Cậu bé đang đọc sách."), T("reading.", "reading."));
+  tf("part", "v2", "variant", 2, GR, TF("I was interested in the exciting story."), true, R4, T("흥미를 느끼는 사람은 -ed, 흥미를 일으키는 것은 -ing 예요.", "Người cảm thấy hứng thú dùng -ed, thứ gây hứng thú dùng -ing."), T("interested(사람) + exciting(이야기) 이므로 옳아요.", "interested (người) + exciting (câu chuyện) nên câu đúng."));
+  mc("part", "v3", "variant", 2, G, BLANK("She picked up the ____ glass."), ["broken", "breaking", "broke", "breaks"], 0, R4, T("유리잔은 '깨진' 상태예요.", "Chiếc ly ở trạng thái bị vỡ."), T("broken.", "broken."));
+  mc("part", "d1", "diagnostic", 1, G, BLANK("The ____ dog is mine."), ["barking", "barked", "barks", "bark"], 0, R4, T("개가 '짖고 있는' 중이에요.", "Con chó đang sủa."), T("barking.", "barking."));
+  mc("part", "d2", "diagnostic", 3, GR, BLANK("The lesson was so ____ that I fell asleep."), ["boring", "bored", "bore", "bores"], 0, R4, T("수업이 '지루하게 만든' 것이에요.", "Bài học là thứ gây ra sự nhàm chán."), T("boring.", "boring."));
+
+  /* ------------------------------ 5. reading: inference and purpose ------------------------------ */
+  const R5 = T("직접 쓰여 있지 않은 내용은 글의 단서를 조합해 추론하고, 글의 목적은 글 전체의 요청·주장을 보고 정해요.", "Với thông tin không viết trực tiếp, hãy kết hợp các manh mối để suy luận; mục đích của bài được xác định từ lời đề nghị hoặc ý kiến chính.");
+  const MSG = "Dear Mr. Kim, I am writing to ask about the swimming class on Saturday. Last week, the class was cancelled because of heavy rain. Could you tell me if it will be held this Saturday? Thank you. Best regards, Hana";
+  const SAM = "Sam checked the sky again and put on his raincoat. He took an umbrella from the closet, too. Then he looked at his watch and hurried out the door.";
+  const l5 = [
+    mc("read", 1, "core", 1, ["reading"], READ(MSG, "Who wrote the message?"), ["Hana", "Mr. Kim", "A swimming coach", "A weather reporter"], 0, R5, T("맨 끝의 서명을 확인해요.", "Xem chữ ký ở cuối thư."), T("글쓴이는 마지막에 이름을 쓴 Hana 예요.", "Người viết là Hana, tên ở cuối thư.")),
+    mc("read", 2, "core", 2, ["reading"], READ(MSG, "Why was the class cancelled last week?"), ["Because of heavy rain.", "Because Mr. Kim was sick.", "Because it was a holiday.", "Because Hana was late."], 0, R5, T("because of 가 들어 있는 문장을 찾아요.", "Tìm câu có because of."), T("Last week, the class was cancelled because of heavy rain.", "Last week, the class was cancelled because of heavy rain.")),
+    tf("read", 3, "core", 2, ["reading", "reasoning"], READ_TF(MSG, "Hana is writing to complain about the weather."), false, R5, T("Hana 가 무엇을 요청하는지 확인해요.", "Kiểm tra Hana đang đề nghị điều gì."), T("Hana 는 수업이 열리는지 묻고 있을 뿐 불평하지 않아요.", "Hana chỉ hỏi xem lớp có mở không, không hề phàn nàn.")),
+    mc("read", 4, "core", 3, ["reading", "context", "reasoning"], READ(SAM, "What can we guess from the passage?"), ["It is going to rain, and Sam is in a hurry.", "Sam is going to the beach.", "Sam forgot his umbrella.", "It is a sunny day."], 0, R5, T("Sam 의 행동(우비, 우산, 시계, 서두름)을 하나씩 모아 보세요.", "Hãy gom các hành động của Sam (áo mưa, ô, đồng hồ, vội vã)."), T("우비와 우산을 챙기고 시계를 본 뒤 서둘러 나갔어요.", "Cậu ấy mang áo mưa, ô, nhìn đồng hồ rồi vội vã đi."), T("우비·우산은 비가 올 것을, 시계와 서두름은 바쁨을 보여 줘요.", "Áo mưa và ô cho thấy trời sắp mưa; đồng hồ và sự vội vã cho thấy Sam đang bận.")),
+    mc("read", 5, "core", 3, ["reading", "multistep", "reasoning"], READ(MSG, "What is the purpose of the message?"), ["To ask whether the class will be held.", "To cancel the class.", "To thank the coach.", "To invite Mr. Kim to a party."], 0, R5, T("글의 목적은 보통 요청하는 문장(Could you tell me ...?)에 드러나요.", "Mục đích của thư thường thể hiện ở câu đề nghị (Could you tell me ...?)."), T("지난주 취소 사실을 말한 뒤, 이번 토요일에 열리는지 물었어요.", "Sau khi nhắc việc hủy tuần trước, Hana hỏi tuần này có mở không."), T("이번 토요일 수업이 열리는지 묻는 것이 목적이에요.", "Mục đích là hỏi lớp Thứ Bảy này có được tổ chức không.")),
+  ];
+  mc("read", "v1", "variant", 1, ["reading"], READ(MSG, "When is the swimming class?"), ["On Saturday", "On Monday", "On Friday night", "On Sunday morning"], 0, R5, T("Saturday 가 들어 있는 문장을 찾아요.", "Tìm câu có Saturday."), T("the swimming class on Saturday.", "the swimming class on Saturday."));
+  tf("read", "v2", "variant", 2, ["reading", "reasoning"], READ_TF(SAM, "Sam stayed at home all day."), false, R5, T("마지막 문장의 동작을 확인해요.", "Xem hành động ở câu cuối."), T("hurried out the door 는 집을 나갔다는 뜻이에요.", "hurried out the door nghĩa là cậu ấy đã ra khỏi nhà."));
+  mc("read", "v3", "variant", 2, ["reading", "reasoning"], READ(SAM, "Why did Sam take an umbrella?"), ["Because he expected rain.", "Because he was cold.", "Because he liked it.", "Because it was a gift."], 0, R5, T("우비와 함께 우산을 챙긴 이유를 추론해요.", "Hãy suy luận lý do cậu ấy mang ô cùng áo mưa."), T("하늘을 다시 살펴보고 우비를 입었어요.", "Cậu ấy kiểm tra bầu trời rồi mặc áo mưa."));
+  mc("read", "d1", "diagnostic", 1, ["reading"], READ(SAM, "What did Sam put on?"), ["His raincoat", "His hat", "His gloves", "His swimsuit"], 0, R5, T("put on 이 들어 있는 문장을 찾아요.", "Tìm câu có put on."), T("put on his raincoat.", "put on his raincoat."));
+  mc("read", "d2", "diagnostic", 3, ["reading", "reasoning"], READ(MSG, "Which word best describes Hana's tone?"), ["Polite", "Angry", "Funny", "Careless"], 0, R5, T("Dear, Could you, Thank you 같은 표현이 어떤 어조인지 생각해 봐요.", "Hãy nghĩ xem các cụm Dear, Could you, Thank you thể hiện giọng điệu nào."), T("정중하게 요청하고 감사 인사로 끝맺었어요.", "Cô ấy đề nghị lịch sự và kết thúc bằng lời cảm ơn."));
+
+  k.course({
+    slug: "grammar-reading", title: T("중3 영어: 관계사·가정법·분사·추론 독해", "Tiếng Anh lớp 9: Quan hệ, điều kiện, phân từ và đọc hiểu suy luận"),
+    world: { name: T("문장 숲 깊은 곳", "Sâu trong rừng câu chữ"), emoji: "🌳", tagline: T("긴 문장을 짓고 글 속 숨은 뜻을 추론해요.", "Tạo câu dài và suy luận ý nghĩa ẩn trong bài.") }, unitTitle: T("중3 영어", "Tiếng Anh lớp 9"),
+    lessons: [
+      k.lesson(1, "rel", T("관계대명사", "Đại từ quan hệ"), T("who(사람), which(사물), that(둘 다), whose(소유)로 두 문장을 하나로 이어요.", "Nối hai câu bằng who (người), which (vật), that (cả hai), whose (sở hữu)."), T("I have a friend who lives in Canada.", "I have a friend who lives in Canada."), l1),
+      k.lesson(2, "cond", T("조건문과 가정법 과거", "Câu điều kiện và giả định"), T("If + 현재, will + V (가능한 일). If + 과거, would + V (현재와 반대되는 가정).", "If + hiện tại, will + V (có thể xảy ra). If + quá khứ, would + V (giả định trái với hiện tại)."), T("If I were rich, I would travel.", "If I were rich, I would travel."), l2),
+      k.lesson(3, "ques", T("간접의문문", "Câu hỏi gián tiếp"), T("의문사 + 주어 + 동사 순서로 써요. do/does/did 를 쓰지 않아요.", "Dùng trật tự từ để hỏi + chủ ngữ + động từ, không dùng do/does/did."), T("Do you know where he lives?", "Do you know where he lives?"), l3),
+      k.lesson(4, "part", T("분사", "Phân từ"), T("-ing 는 능동·진행, -ed 는 수동·완료. 감정은 일으키면 -ing, 느끼면 -ed 예요.", "-ing: chủ động, đang diễn ra; -ed: bị động, hoàn thành. Cảm xúc: gây ra là -ing, cảm thấy là -ed."), T("an exciting game / I am excited", "an exciting game / I am excited"), l4),
+      k.lesson(5, "read", T("독해: 추론과 글의 목적", "Đọc hiểu: suy luận và mục đích"), T("단서를 조합해 추론하고, 글의 목적은 요청·주장을 보고 정해요.", "Kết hợp manh mối để suy luận; xác định mục đích từ lời đề nghị hoặc ý kiến."), T("Could you tell me ...? → 질문(문의)", "Could you tell me ...? → hỏi thông tin"), l5),
+    ],
+  });
+}

@@ -52,7 +52,7 @@ export async function diagnostic(page: Page, site: Site, hook?: ScreenHook, opts
     await expect(page.getByText(new RegExp(`${n + 1} / 6`))).toBeVisible();
     const q = demo.find((x) => x.id === nextId)!;
     expect(q, `question ${nextId}`).toBeTruthy();
-    if (opts.grade && opts.grade.startsWith("E")) expect(q.id.includes(`-${opts.grade.toLowerCase()}-`), `placement question ${q.id} belongs to ${opts.grade}`).toBe(true);
+    if (opts.grade && opts.grade !== "M1") expect(q.id.includes(`-${opts.grade.toLowerCase()}-`), `placement question ${q.id} belongs to ${opts.grade}`).toBe(true);
     if (n === 0 || n === 3) await hook?.(`diagnostic question ${n + 1} (${q.type})`);
     const resp = page.waitForResponse(isApi("diagnostic"));
     await answer(page, q, opts);
@@ -82,7 +82,7 @@ export async function lesson(page: Page, site: Site, hook?: ScreenHook, opts: Op
   expect(JSON.stringify(startBody)).not.toMatch(/"answer"|"explanation"|"hints"/); // no answer leakage
   const queue: string[] = startBody.questions.map((x: { id: string }) => x.id);
   if (opts.locale === "vi") for (const x of startBody.questions) expect(HANGUL.test(x.prompt), `Vietnamese prompt still has Korean: ${x.prompt}`).toBe(false);
-  if (opts.grade && opts.grade.startsWith("E")) for (const id of queue) expect(id.includes(`-${opts.grade.toLowerCase()}-`), `${id} belongs to ${opts.grade}`).toBe(true);
+  if (opts.grade && opts.grade !== "M1") for (const id of queue) expect(id.includes(`-${opts.grade.toLowerCase()}-`), `${id} belongs to ${opts.grade}`).toBe(true);
   await expect(page.getByText(new RegExp(`${qWord} 1 /`))).toBeVisible();
   await hook?.("lesson question 1");
   const firstQ = demo.find((x) => x.id === queue[0])!;
