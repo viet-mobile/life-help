@@ -22,6 +22,8 @@ import { fingerprintItem } from "./core/fingerprint.mjs";
 import { MATH_TEMPLATES } from "./templates/math.mjs";
 import { ENGLISH_TEMPLATES } from "./templates/english.mjs";
 
+/** Frozen contract version of generate() output; stress tests record it. Any change of item shape, error behaviour or determinism bumps it. */
+export const BANK_API_VERSION = "bank-api-1";
 export const REGISTRY = { math: MATH_TEMPLATES, english: ENGLISH_TEMPLATES };
 const LETTERS = ["a", "b", "c", "d", "e"];
 
