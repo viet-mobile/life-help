@@ -1,6 +1,6 @@
 # Learning Platform V3: parallel work plan (source of truth)
 
-Base: `feature/learning-elementary-vi` @ 9d3b0c3 (clean). Production is FROZEN: no Worker traffic change, no DB/Auth/SMTP/DNS change, no main merge.
+Base (clean feature HEAD): 9d3b0c3 (`feature/learning-elementary-vi`). Plan-doc commit e33c521. Both tracks start from the final baseline recorded in `docs/learning/antigravity-handoff.md`.
 Live `6e68ec3d` stays 100%. Canary `25747a2a` (`c4b03fe`) is NOT promoted. The next production release is rebuilt from a new RC after this work.
 
 | Track | Owner | Branch | Worktree |
