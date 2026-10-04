@@ -31,7 +31,7 @@ The raw `sample_n` (50,000 for IEA rows, 15,000 for NAEP rows) is a constant per
 
 ## Reconciliation 3: what the numbers mean
 * IEA workbooks: the "International Avg." row = unweighted average of national percentages (integer percent) with a standard error of the average. 193 items are 1-point (percent correct), 29 are multi-point (percent FULL credit).
-* NAEP Questions Tool: national weighted percentage per response category. Most released items carry a Partial category: of the 86 items with an unambiguous full-credit label, 55 are dichotomous (WEIGHTED_PERCENT_CORRECT) and 31 are partial-credit (PERCENT_FULL_CREDIT). The bulk audit's "mostly dichotomous" is wrong for the 38 raw rows (32 of 38 are partial-credit).
+* NAEP Questions Tool: national weighted percentage per response category. Most released items carry a Partial category: of the 86 items with an unambiguous full-credit label, 55 are dichotomous (WEIGHTED_PERCENT_CORRECT) and 31 are partial-credit (PERCENT_FULL_CREDIT). The bulk audit's "mostly dichotomous" is wrong for the 38 raw rows (31 of the 38 are partial-credit, 7 dichotomous).
 * Decision (cal-2, option C): separate scales for BINARY and FULL_CREDIT evidence; only BINARY may fit the rubric (`docs/learning/difficulty-calibration.md`).
 
 ## Independent verification performed
