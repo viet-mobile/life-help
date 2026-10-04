@@ -1,0 +1,16 @@
+# Published item statistics used to calibrate the ten-step scale. ONE ROW PER EXAM ITEM; no question text is stored, only a reference to it.
+# This file is intentionally EMPTY of data rows: nothing here may be estimated, rounded up or invented. Add a row only when the percent correct
+# was published by the exam body (or computed from its published item-level data) and you can give the licence and the url.
+#
+# source       who published it (e.g. NCES-NAEP, IEA-TIMSS, UK-STA-KS2, KICE)
+# exam         the exam / assessment and form (e.g. "NAEP Grade 8 Mathematics 2019")
+# year         administration year
+# subject      math | english
+# item_ref     the publisher's item identifier (never the question text)
+# pct_correct  0..100, percent of the test takers who answered correctly
+# n_students   size of the sample behind that percentage
+# license      the licence / terms that allow this use (e.g. "public domain, educational use")
+# url          where the statistic was read
+# cognitive    (optional) MEMORIZE | PROCEDURE | APPLY | ANALYZE | CREATE, coded with the rubric in rubric.mjs
+# grade        (optional) tested grade level
+source,exam,year,subject,item_ref,pct_correct,n_students,license,url,cognitive,grade
