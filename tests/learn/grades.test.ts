@@ -51,13 +51,34 @@ describe("one canonical grade model (math, english, profile, routing)", () => {
 });
 
 describe.each(SITES)("grade-scoped curriculum: %s", (site) => {
-  it("a middle / high student sees EXACTLY the pre-elementary curriculum (scopeToGrade is a no-op for the demo content)", async () => {
+  it("an M1 student sees EXACTLY the pre-elementary curriculum (the original demo course, unchanged)", async () => {
     const merged = await demoContentRepository.getBundle(site);
-    for (const g of SECONDARY_GRADES) {
+    const scoped = scopeToGrade(merged, "M1");
+    expect(scoped.catalog.courses).toEqual(DEMO[site].catalog.courses);
+    expect(scoped.catalog.skills).toEqual(DEMO[site].catalog.skills);
+    expect(scoped.questions).toEqual(DEMO[site].questions.filter((q) => q.status === "PUBLISHED"));
+  });
+
+  it("M2, M3, H1, H2 and H3 each get their own course, skills and questions (no shared M1 fallback)", async () => {
+    const merged = await demoContentRepository.getBundle(site);
+    const m1Skills = new Set(DEMO[site].catalog.skills.map((s) => s.id));
+    const seen = new Set<string>();
+    for (const g of ["M2", "M3", "H1", "H2", "H3"] as const) {
       const scoped = scopeToGrade(merged, g);
+      expect(scoped.catalog.courses.map((c) => c.grade), g).toEqual([g]);
+      seen.add(scoped.catalog.courses[0].id);
+      expect(scoped.catalog.courses[0].id, g).not.toBe(DEMO[site].catalog.courses[0].id);
+      for (const s of scoped.catalog.skills) expect(m1Skills.has(s.id), `${g}: ${s.id} is an M1 skill`).toBe(false);
+      for (const q of scoped.questions) expect(q.id.includes(`-${g.toLowerCase()}-`), `${g}: ${q.id}`).toBe(true);
+    }
+    expect(seen.size).toBe(5);
+  });
+
+  it("without a course for the grade (a database that still holds only M1) the nearest lower grade is served, never an empty path", () => {
+    for (const g of ["M2", "M3", "H1", "H2", "H3"] as const) {
+      const scoped = scopeToGrade(DEMO[site], g);
       expect(scoped.catalog.courses, g).toEqual(DEMO[site].catalog.courses);
-      expect(scoped.catalog.skills, g).toEqual(DEMO[site].catalog.skills);
-      expect(scoped.questions, g).toEqual(DEMO[site].questions.filter((q) => q.status === "PUBLISHED"));
+      expect(scoped.questions.length, g).toBeGreaterThan(0);
     }
   });
 

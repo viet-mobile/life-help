@@ -6,6 +6,8 @@ import mathDemo from "./demo/math.json";
 import englishDemo from "./demo/english.json";
 import mathElementary from "./elementary/math.json";
 import englishElementary from "./elementary/english.json";
+import mathSecondary from "./secondary/math.json";
+import englishSecondary from "./secondary/english.json";
 
 /**
  * Where curriculum content comes from. The default source is the bundled demo
@@ -16,20 +18,23 @@ export interface ContentRepository {
   getBundle(site: Site): Promise<ContentBundle>;
 }
 
-/** Elementary (E1..E6) courses first, then the existing secondary course(s). Courses, skills and questions are disjoint by id. */
-function mergeBundles(elementary: ContentBundle, secondary: ContentBundle): ContentBundle {
+/**
+ * Elementary (E1..E6) courses first, then the existing M1 demo course, then the grade-specific secondary courses (M2..H3).
+ * Courses, skills and questions are disjoint by id.
+ */
+function mergeBundles(elementary: ContentBundle, demo: ContentBundle, secondary: ContentBundle): ContentBundle {
   return {
     catalog: {
-      ...secondary.catalog, // country / curriculum identifiers stay those of the existing curriculum (one curriculum row per subject in the database too)
-      skills: [...elementary.catalog.skills, ...secondary.catalog.skills],
-      courses: [...elementary.catalog.courses, ...secondary.catalog.courses],
+      ...demo.catalog, // country / curriculum identifiers stay those of the existing curriculum (one curriculum row per subject in the database too)
+      skills: [...elementary.catalog.skills, ...demo.catalog.skills, ...secondary.catalog.skills],
+      courses: [...elementary.catalog.courses, ...demo.catalog.courses, ...secondary.catalog.courses],
     },
-    questions: [...elementary.questions, ...secondary.questions],
+    questions: [...elementary.questions, ...demo.questions, ...secondary.questions],
   };
 }
 const demoBundles: Record<Site, ContentBundle> = {
-  math: publishedOnly(mergeBundles(mathElementary as unknown as ContentBundle, mathDemo as unknown as ContentBundle)),
-  english: publishedOnly(mergeBundles(englishElementary as unknown as ContentBundle, englishDemo as unknown as ContentBundle)),
+  math: publishedOnly(mergeBundles(mathElementary as unknown as ContentBundle, mathDemo as unknown as ContentBundle, mathSecondary as unknown as ContentBundle)),
+  english: publishedOnly(mergeBundles(englishElementary as unknown as ContentBundle, englishDemo as unknown as ContentBundle, englishSecondary as unknown as ContentBundle)),
 };
 
 export const demoContentRepository: ContentRepository = {

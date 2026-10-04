@@ -2,6 +2,8 @@ import type { LearnLocale } from "@/lib/learn/i18n";
 import type { ContentBundle, Course, Lesson, Question, Site, Unit } from "@/lib/learn/types";
 import viEnglish from "./vi/english.json";
 import viMath from "./vi/math.json";
+import viSecondaryEnglish from "./vi/secondary-english.json";
+import viSecondaryMath from "./vi/secondary-math.json";
 
 /**
  * Presentation-language overlay for a content bundle. The canonical bundle (Korean instructions) holds the data that matters:
@@ -17,9 +19,25 @@ export interface ContentOverlay {
   questions?: Record<string, { prompt?: string; latex?: string; options?: Record<string, string>; hints?: string[]; explanation?: string }>;
 }
 
+/** Overlays are generated per content set (demo + elementary, then secondary M2..H3); ids are disjoint, so merging is a plain spread. */
+export function mergeOverlays(...parts: ContentOverlay[]): ContentOverlay {
+  const out: Required<ContentOverlay> = { skills: {}, courses: {}, units: {}, lessons: {}, questions: {} };
+  for (const p of parts) {
+    Object.assign(out.skills, p.skills);
+    Object.assign(out.courses, p.courses);
+    Object.assign(out.units, p.units);
+    Object.assign(out.lessons, p.lessons);
+    Object.assign(out.questions, p.questions);
+  }
+  return out;
+}
+
 const OVERLAYS: Record<LearnLocale, Partial<Record<Site, ContentOverlay>>> = {
   ko: {},
-  vi: { math: viMath as ContentOverlay, english: viEnglish as ContentOverlay },
+  vi: {
+    math: mergeOverlays(viMath as ContentOverlay, viSecondaryMath as ContentOverlay),
+    english: mergeOverlays(viEnglish as ContentOverlay, viSecondaryEnglish as ContentOverlay),
+  },
 };
 
 export function overlayFor(locale: LearnLocale, site: Site): ContentOverlay | null {
