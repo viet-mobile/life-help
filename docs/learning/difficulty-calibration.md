@@ -13,7 +13,7 @@ Data contract (schema version 1): `scripts/learn/bank/core/contract.mjs`; valida
 Every item carries `difficultyLevel` (1..10 or null), `difficultyBasis`, `calibrationConfidence` (0..1), `calibrationVersion`, `sourceEvidence`, and for measured items `rawCorrectRate`, `normalizedDifficulty`.
 
 ## Formula
-1. `p` = correct rate, clipped to [0.005, 0.995] (clipped rows are flagged and lose confidence). 
+1. `p` = correct rate, clipped to [0.005, 0.995] (clipped rows are flagged and lose confidence).
 2. `rawDifficulty d = ln((1 - p) / p)` (monotone decreasing in p, 0 at p = 0.5).
 3. Cohort = `sourceId | examFamily | year | subject | population`. Within a cohort: `z = (d - median) / max(0.25, 1.4826 * MAD)`, clamped to +-4. Cohorts with fewer than 8 items are only centred (scale 1) and flagged `scaleBorrowed` (confidence halves at most).
 4. `normalizedDifficulty = z`, pooled across cohorts. No normal distribution is assumed: median / MAD are robust, and step 5 is range based.
