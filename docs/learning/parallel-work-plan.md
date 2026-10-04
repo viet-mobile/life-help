@@ -37,13 +37,17 @@ Antigravity (B): `data/learning-calibration/{sources.csv,items.csv,source-manife
   hoc.tieng.viet.mobile -> study.vietnamese.life.help.
 * English target sentences inside English-learning content are NOT translated; only UI and instructions are.
 
-## Schemas (B must follow exactly)
-`sources.csv`: source_id,country,institution,exam_family,year,subject,official_url,publication_status,license_status,usage_note,data_status
-(data_status in EMPIRICAL|STRUCTURAL_ONLY|UNAVAILABLE).
-`items.csv`: source_id,item_ref,year,subject,topic,grade_or_population,correct_rate,sample_n,sample_note,official_url,data_status
-(`correct_rate` fraction 0..1 or empty if not public; `item_ref` is a public id/number only, no text).
-`source-manifest.json`: `{ generatedAt, sources:[{source_id, retrievedAt, url, sha256OfRetrievedMetadata?}], gaps:[{source_id, reason}] }`.
-Locale files: `{ "<key>": "<string>" }` flat; keys = canonical key set in `lib/learn/i18n/en.ts`; keep `{placeholders}` byte-identical; RTL locales: ar, arz, fa, he.
+## Schemas (B must follow exactly; contract version 1)
+The authoritative contract is code: `scripts/learn/bank/core/contract.mjs` (columns, enums, limits). Header templates: `data/learning-calibration/schema/*.template.csv`.
+Validate before every commit: `node scripts/learn/bank/core/validate-calibration-data.mjs data/learning-calibration` (exit 1 = rejected).
+This SUPERSEDES the column names of the first draft (source_id,country,institution,exam_family,year,... in the old plan): if you already produced files, convert them.
+* sources.csv: `source_id,country,institution,exam_family,year_from,year_to,subjects,official_url,source_type,public_access,correct_rate_availability,license_status,retrieval_policy,notes`
+* items.csv: `source_id,external_item_id,year,subject,population,grade_or_level,correct_rate,sample_size,topic_tags,skill_tags,metadata_confidence,status`
+* `subjects`/`topic_tags`/`skill_tags` use `;`. country = ISO-3166 alpha-2. `correct_rate` = fraction 0..1 or EMPTY. `status` EMPIRICAL | STRUCTURAL_ONLY | UNAVAILABLE.
+* Closed column set: any extra column (stem, text, options, ...) is rejected. `external_item_id` = public id/number, no spaces. `notes` <= 240 chars. `skill_tags` come from the 12 reasoning dimensions.
+* EMPIRICAL needs a rate and a source with correct_rate_availability ITEM_LEVEL and license not RESTRICTED / DO_NOT_FETCH. Non-empirical rows have an EMPTY rate.
+* source-manifest.json: `{ generatedAt, sources:[{source_id, retrievedAt, url}], gaps:[{source_id, reason}] }`.
+* Locale files: flat `{ "<key>": "<string>" }`, keys = `lib/learn/i18n/en.ts`, `{placeholders}` byte-identical, RTL: ar, arz, fa, he.
 
 ## Packages for Antigravity (one commit each)
 1. `data(learn): add public assessment calibration metadata` (priority NAEP, TIMSS, PIRLS, England KS2, then others in the 7 countries and Korea; Korea stays UNAVAILABLE/STRUCTURAL if no official item rates).

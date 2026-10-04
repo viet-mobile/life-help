@@ -26,11 +26,17 @@ Everything else, especially `scripts/learn/bank/**`, `lib/learn/{bank,certificat
 ## Locale source of truth
 The 38 locales are `locales` in `messages/index.ts`. Generate from it; never guess. Canonical keys/strings are Claude's `lib/learn/i18n/en.ts` + `ko.ts` (once Claude publishes them); until then do not start package 2. Keep `{placeholders}` byte-identical. RTL: ar, arz, fa, he. Do not translate English target sentences.
 
-## Schemas
-`sources.csv`: source_id,country,institution,exam_family,year,subject,official_url,publication_status,license_status,usage_note,data_status
-`items.csv`: source_id,item_ref,year,subject,topic,grade_or_population,correct_rate,sample_n,sample_note,official_url,data_status
-data_status in EMPIRICAL | STRUCTURAL_ONLY | UNAVAILABLE. `correct_rate` is a fraction 0..1, or empty when not public. `source-manifest.json`: `{generatedAt, sources:[{source_id, retrievedAt, url}], gaps:[{source_id, reason}]}`.
-Reports: markdown with baseline SHA, command, counts, failures, and a list of what was NOT done.
+## Schemas (contract version 1)
+The authoritative contract is code: `scripts/learn/bank/core/contract.mjs` (columns, enums, limits). Header templates: `data/learning-calibration/schema/*.template.csv`.
+Validate before every commit: `node scripts/learn/bank/core/validate-calibration-data.mjs data/learning-calibration` (exit 1 = rejected).
+This SUPERSEDES the column names of the first draft (source_id,country,institution,exam_family,year,... in the old plan): if you already produced files, convert them.
+* sources.csv: `source_id,country,institution,exam_family,year_from,year_to,subjects,official_url,source_type,public_access,correct_rate_availability,license_status,retrieval_policy,notes`
+* items.csv: `source_id,external_item_id,year,subject,population,grade_or_level,correct_rate,sample_size,topic_tags,skill_tags,metadata_confidence,status`
+* `subjects`/`topic_tags`/`skill_tags` use `;`. country = ISO-3166 alpha-2. `correct_rate` = fraction 0..1 or EMPTY. `status` EMPIRICAL | STRUCTURAL_ONLY | UNAVAILABLE.
+* Closed column set: any extra column (stem, text, options, ...) is rejected. `external_item_id` = public id/number, no spaces. `notes` <= 240 chars. `skill_tags` come from the 12 reasoning dimensions.
+* EMPIRICAL needs a rate and a source with correct_rate_availability ITEM_LEVEL and license not RESTRICTED / DO_NOT_FETCH. Non-empirical rows have an EMPTY rate.
+* source-manifest.json: `{ generatedAt, sources:[{source_id, retrievedAt, url}], gaps:[{source_id, reason}] }`.
+* Locale files: flat `{ "<key>": "<string>" }`, keys = `lib/learn/i18n/en.ts`, `{placeholders}` byte-identical, RTL: ar, arz, fa, he.
 
 ## Source quality rules
 Official government, public agency, public exam body or public research assessment only (NAEP, TIMSS, PIRLS, KS2, etc.). Roughly the last 20 years; countries: Korea, US, Canada, UK, Australia, New Zealand, France, Germany.
