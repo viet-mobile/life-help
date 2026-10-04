@@ -39,7 +39,7 @@ The independent tests found two real defects while writing them (both fixed): a 
 Caveat: errorAnalysis / optimization are template-hint driven (`reasoning.mjs` TEMPLATE_HINTS), not measured from the question text, so these columns say "a family designed for this thinking is served", not "students were shown to need it".
 
 ## Remaining gaps (designed, not built: the point of this phase was the contract, not the count)
-1. Math optimization below level 9 (elementary "best buy" with a budget and a rule, levels 3-7). 
+1. Math optimization below level 9 (elementary "best buy" with a budget and a rule, levels 3-7).
 2. Math error analysis at levels 1, 6 and 10 (level 6: wrong equation-solving step; level 10: flaw in a short argument).
 3. English levels 1-3 (only sign-notice, sign-words, form-check, product-compare, notice-to-note, search-results): add short realistic items (bus stop sign, opening-hours line, simple order confirmation).
 4. English level 10 (headline-claim, multi-source, review-reliability, data-text): add a "documentation + constraints" family (conflicting version notes, deprecation, regional differences).
