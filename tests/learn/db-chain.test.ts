@@ -8,9 +8,13 @@ import { PGlite } from "@electric-sql/pglite";
  * weaken the existing authority model. All local (PGlite); nothing here touches a remote database.
  */
 describe("learning migrations on the real LIFE.HELP chain", { timeout: 120_000 }, () => {
-  it("sequence: the learning migrations are last, once each, and 0001/0002 are not duplicated", () => {
+  it("sequence: the learning migrations are contiguous and once each; only the reviewed later marketplace-domain migrations follow; 0001/0002 are not duplicated", () => {
     expect(LEARN_MIGRATIONS).toEqual(["202609300023_learning_prereq_shim.sql", "202609300024_learning_platform.sql", "202609300025_learning_content_rpc.sql", "202609300026_learning_selfcontained_auth.sql", "202609300027_learning_elementary_grades.sql"]);
-    expect(MIGRATIONS.slice(-5)).toEqual(LEARN_MIGRATIONS);
+    const first = MIGRATIONS.indexOf(LEARN_MIGRATIONS[0]);
+    expect(MIGRATIONS.slice(first, first + LEARN_MIGRATIONS.length)).toEqual(LEARN_MIGRATIONS);
+    // anything after the learning block is a later MARKETPLACE-domain migration and must be listed here on purpose (aircon: 11th core service)
+    expect(MIGRATIONS.slice(first + LEARN_MIGRATIONS.length)).toEqual(["202610050028_aircon_service.sql"]);
+    expect(MIGRATIONS.slice(0, first).some((f) => LEARN_MIGRATIONS.includes(f))).toBe(false);
     expect(new Set(MIGRATIONS).size).toBe(MIGRATIONS.length);
     expect(MIGRATIONS.filter((f) => /initial_marketplace_schema|payment_settlement_upgrade/.test(f))).toHaveLength(2);
   });

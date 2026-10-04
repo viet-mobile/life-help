@@ -78,7 +78,7 @@ const {
 
 const EXPECTED_SLUGS = [
   "clog-clearing", "leak-plumbing", "boiler", "cleaning", "housing",
-  "bank-help", "insurance-help", "job-help", "hospital-help", "mobile-help",
+  "bank-help", "insurance-help", "job-help", "hospital-help", "mobile-help", "aircon",
 ];
 
 const base = () => ({
@@ -98,7 +98,7 @@ const input = (o = {}) => validateCreateServiceRequest({ ...base(), ...o }).valu
 // ---------------------------------------------------------------------------
 // 1-4. Payload validation (P2-1/P2-2 regression)
 // ---------------------------------------------------------------------------
-check("1a. CORE_SERVICE_SLUGS is exactly the 10 services",
+check("1a. CORE_SERVICE_SLUGS is exactly the 11 services",
   JSON.stringify([...CORE_SERVICE_SLUGS].sort()) === JSON.stringify([...EXPECTED_SLUGS].sort()));
 for (const slug of EXPECTED_SLUGS) {
   check(`1b. valid slug accepted: ${slug}`, validateCreateServiceRequest({ ...base(), service_slug: slug }).ok === true);

@@ -6,7 +6,7 @@ import type { CoreServiceSlug } from "@/lib/db/schema";
 import { IDEMPOTENCY_HEADER, IDEMPOTENCY_KEY_PATTERN } from "@/lib/request/idempotencyKey";
 import { checkOrphanEligibility, runMatchingOnce } from "@/lib/request/requestRecovery";
 
-/** The exact 10 core services accepted by service_requests.service_slug. */
+/** The exact 11 core services accepted by service_requests.service_slug (aircon: migration 202610050028). */
 export const CORE_SERVICE_SLUGS: readonly CoreServiceSlug[] = [
   "clog-clearing",
   "leak-plumbing",
@@ -18,6 +18,7 @@ export const CORE_SERVICE_SLUGS: readonly CoreServiceSlug[] = [
   "job-help",
   "hospital-help",
   "mobile-help",
+  "aircon",
 ];
 
 const ACTIVE_ASSIGNMENT_STATUSES = ["PENDING", "NOTIFIED", "ACCEPTED"] as const;

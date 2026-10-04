@@ -15,6 +15,7 @@ const SERVICE_OPTIONS = [
   { slug: "drain", labelKey: "service.drain", defaultLabel: "하수구 막힘", icon: "🕳️" },
   { slug: "leak", labelKey: "service.leak", defaultLabel: "누수 탐지/공사", icon: "💧" },
   { slug: "boiler", labelKey: "service.boiler", defaultLabel: "보일러/난방", icon: "🔥" },
+  { slug: "aircon", labelKey: "service.aircon", defaultLabel: "에어컨 설치/수리/청소", icon: "❄️" },
   { slug: "housing", labelKey: "service.housing", defaultLabel: "방 구하기/임대차", icon: "🏠" },
   { slug: "cleaning", labelKey: "service.cleaning", defaultLabel: "전문 청소", icon: "🧹" },
 ];

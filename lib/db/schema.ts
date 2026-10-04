@@ -1,5 +1,5 @@
 // LIFE.HELP Supabase Core Database Schema Types
-// Hardened: 10 Core Services Type, AppNotificationRow, and Nullable Escalation Reference
+// Hardened: 11 Core Services Type (aircon added after mobile-help), AppNotificationRow, and Nullable Escalation Reference
 
 export type CoreServiceSlug =
   | "clog-clearing"
@@ -11,7 +11,8 @@ export type CoreServiceSlug =
   | "insurance-help"
   | "job-help"
   | "hospital-help"
-  | "mobile-help";
+  | "mobile-help"
+  | "aircon";
 
 export type ServiceRequestStatus =
   | "CREATED"

@@ -87,6 +87,15 @@ export const services: readonly ServiceItem[] = [
     vi: "Hỗ trợ đăng ký mạng di động",
   },
 
+  // 11. Air conditioner installation, repair and cleaning (sub-services: aircon-install / aircon-repair / aircon-cleaning)
+  {
+    slug: "aircon",
+    key: "aircon",
+    icon: "❄️",
+    ko: "에어컨 설치, 수리, 청소",
+    vi: "Lắp đặt, sửa chữa, vệ sinh máy lạnh",
+  },
+
   // Legacy individual items for backward compatibility
   {
     slug: "toilet-clog",

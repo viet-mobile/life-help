@@ -83,6 +83,20 @@ export const SERVICE_THEMES: Record<string, ServiceTheme> = {
     badgeText: "text-orange-900",
     iconBg: "bg-orange-100 text-orange-700",
   },
+  // 11. 시안 (Cyan / Ice) - 에어컨 설치·수리·청소
+  "aircon": {
+    colorName: "시안",
+    heroGradient: "from-cyan-950 via-sky-950 to-slate-950",
+    btnBg: "bg-cyan-700 hover:bg-cyan-800",
+    btnHover: "hover:bg-cyan-800",
+    selectedBg: "bg-cyan-50/85",
+    selectedBorder: "border-cyan-600",
+    textColor: "text-cyan-950",
+    checkboxColor: "text-cyan-600 focus:ring-cyan-500",
+    badgeBg: "bg-cyan-100/90",
+    badgeText: "text-cyan-900",
+    iconBg: "bg-cyan-100 text-cyan-700",
+  },
   // 4. 노랑 (Amber / Yellow) - 방 구하기
   "housing": {
     colorName: "노랑",

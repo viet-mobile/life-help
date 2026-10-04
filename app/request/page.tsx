@@ -58,10 +58,11 @@ interface RequestSubmitError {
   requestId?: string;
 }
 
-// 10 Services in exact requested order: 자주-분홍-주황-노랑-연두-민트-하늘-파랑-네이비-보라
+// 11 services in the requested order (aircon sits right after mobile-help, boiler right after aircon)
 const ORDERED_SERVICE_SLUGS = [
   "job-help",
   "mobile-help",
+  "aircon",
   "boiler",
   "housing",
   "cleaning",
@@ -117,6 +118,21 @@ const SERVICE_THEMES: Record<string, ServiceTheme> = {
     selectedOptionBorder: "border-pink-600",
     selectedOptionText: "text-pink-950",
     badgeLabelKo: "휴대폰 개통",
+  },
+  // 시안 (Pastel Cyan / Ice) - 에어컨
+  "aircon": {
+    colorName: "시안",
+    cardBg: "bg-cyan-50/85",
+    cardBorder: "border-cyan-200/90",
+    textColor: "text-cyan-950",
+    iconBg: "bg-cyan-100/80 text-cyan-700",
+    badgeBg: "bg-cyan-100/90",
+    badgeText: "text-cyan-900",
+    btnBg: "bg-cyan-700 hover:bg-cyan-800",
+    selectedOptionBg: "bg-cyan-50/90",
+    selectedOptionBorder: "border-cyan-600",
+    selectedOptionText: "text-cyan-950",
+    badgeLabelKo: "에어컨",
   },
   // 3. 주황 (Pastel Orange / Peach)
   "boiler": {

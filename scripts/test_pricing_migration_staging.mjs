@@ -20,6 +20,7 @@ const CATALOG = {
   "clog-clearing": ["toilet-simple", "sink", "floor-drain", "high-pressure"], "leak-plumbing": ["leak-detection", "faucet-repair", "pipe-repair"],
   boiler: ["boiler-diagnostic", "boiler-install"], cleaning: ["move-in-cleaning", "regular-cleaning", "appliance-cleaning"], housing: ["room-search-accompaniment"],
   "bank-help": ["account-opening"], "insurance-help": ["insurance-enrollment"], "job-help": ["job-application-support"], "hospital-help": ["general-outpatient", "remote-interpretation"], "mobile-help": ["phone-plan-setup"],
+  aircon: ["aircon-install", "aircon-repair", "aircon-cleaning"], // migration 202610050028 (apply before running this suite)
 };
 const as = (key, bearer = key) => ({ apikey: key, Authorization: `Bearer ${bearer}`, "Content-Type": "application/json" });
 const rest = async (pathname, headers, method = "GET", body) => { const r = await fetch(`${supabaseUrl}/rest/v1/${pathname}`, { method, headers: { ...headers, Prefer: "return=representation" }, body: body === undefined ? undefined : JSON.stringify(body) }); return { status: r.status, body: await readResponse(r) }; };

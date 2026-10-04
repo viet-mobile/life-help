@@ -833,6 +833,138 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
       "zh-Hant": "國際長途省錢APP設置及預付費流量儲值包",
     },
   ],
+
+  // 11. 에어컨 설치, 수리, 청소 (installation / repair / cleaning / access: the request carries these as selected options + the free description)
+  "aircon": [
+    {
+      id: "ac-1",
+      ko: "[설치] 벽걸이 에어컨 신규 설치 (실외기 포함)",
+      en: "[Install] New wall-mounted air conditioner installation (outdoor unit included)",
+      vi: "[Lắp đặt] Lắp mới máy lạnh treo tường (kèm dàn nóng)",
+      zh: "[安装] 新装壁挂式空调（含室外机）",
+      "zh-Hant": "[安裝] 新裝壁掛式冷氣（含室外機）",
+    },
+    {
+      id: "ac-2",
+      ko: "[설치] 스탠드형 또는 투인원 에어컨 신규 설치",
+      en: "[Install] New floor-standing or 2-in-1 air conditioner installation",
+      vi: "[Lắp đặt] Lắp mới máy lạnh tủ đứng hoặc 2 trong 1",
+      zh: "[安装] 新装立式或二合一空调",
+      "zh-Hant": "[安裝] 新裝立式或二合一冷氣",
+    },
+    {
+      id: "ac-3",
+      ko: "[설치] 이사 후 기존 에어컨 철거 및 재설치",
+      en: "[Install] Remove an existing unit and re-install it after moving",
+      vi: "[Lắp đặt] Tháo máy lạnh cũ và lắp lại sau khi chuyển nhà",
+      zh: "[安装] 搬家后拆卸并重新安装原有空调",
+      "zh-Hant": "[安裝] 搬家後拆卸並重新安裝原有冷氣",
+    },
+    {
+      id: "ac-4",
+      ko: "[설치] 배관 연장 또는 실외기 거치대 설치가 필요함",
+      en: "[Install] Pipe extension or an outdoor-unit bracket is needed",
+      vi: "[Lắp đặt] Cần kéo dài ống hoặc lắp giá đỡ dàn nóng",
+      zh: "[安装] 需要延长管路或安装室外机支架",
+      "zh-Hant": "[安裝] 需要延長管路或安裝室外機支架",
+    },
+    {
+      id: "ac-5",
+      ko: "[수리] 전원은 켜지지만 시원한 바람이 나오지 않음",
+      en: "[Repair] It powers on but does not blow cold air",
+      vi: "[Sửa chữa] Máy bật được nhưng không ra gió lạnh",
+      zh: "[维修] 能开机但不出冷风",
+      "zh-Hant": "[維修] 可開機但不出冷風",
+    },
+    {
+      id: "ac-6",
+      ko: "[수리] 실내기에서 물이 떨어지거나 새어 나옴",
+      en: "[Repair] Water drips or leaks from the indoor unit",
+      vi: "[Sửa chữa] Dàn lạnh bị nhỏ nước hoặc rò rỉ nước",
+      zh: "[维修] 室内机滴水或漏水",
+      "zh-Hant": "[維修] 室內機滴水或漏水",
+    },
+    {
+      id: "ac-7",
+      ko: "[수리] 에러 코드가 표시되거나 램프가 깜빡임",
+      en: "[Repair] An error code is shown or a lamp is blinking",
+      vi: "[Sửa chữa] Hiện mã lỗi hoặc đèn nhấp nháy",
+      zh: "[维修] 显示故障代码或指示灯闪烁",
+      "zh-Hant": "[維修] 顯示故障代碼或指示燈閃爍",
+    },
+    {
+      id: "ac-8",
+      ko: "[수리] 실외기가 작동하지 않거나 큰 소음이 남",
+      en: "[Repair] The outdoor unit does not run or makes a loud noise",
+      vi: "[Sửa chữa] Dàn nóng không chạy hoặc kêu to",
+      zh: "[维修] 室外机不运转或噪音很大",
+      "zh-Hant": "[維修] 室外機不運轉或噪音很大",
+    },
+    {
+      id: "ac-9",
+      ko: "[수리] 냉매(가스) 부족이 의심되어 점검 또는 충전이 필요함",
+      en: "[Repair] Refrigerant seems low: inspection or refill needed",
+      vi: "[Sửa chữa] Nghi thiếu gas lạnh, cần kiểm tra hoặc nạp thêm",
+      zh: "[维修] 怀疑制冷剂不足，需要检查或补充",
+      "zh-Hant": "[維修] 懷疑冷媒不足，需要檢查或補充",
+    },
+    {
+      id: "ac-10",
+      ko: "[수리] 리모컨 또는 전원 불량으로 켜지지 않음",
+      en: "[Repair] It will not turn on (remote or power problem)",
+      vi: "[Sửa chữa] Không bật được (lỗi điều khiển hoặc nguồn)",
+      zh: "[维修] 遥控器或电源故障无法开机",
+      "zh-Hant": "[維修] 遙控器或電源故障無法開機",
+    },
+    {
+      id: "ac-11",
+      ko: "[청소] 벽걸이 에어컨 분해 세척",
+      en: "[Cleaning] Wall-mounted air conditioner disassembly cleaning",
+      vi: "[Vệ sinh] Tháo rửa vệ sinh máy lạnh treo tường",
+      zh: "[清洗] 壁挂式空调拆洗",
+      "zh-Hant": "[清洗] 壁掛式冷氣拆洗",
+    },
+    {
+      id: "ac-12",
+      ko: "[청소] 스탠드형 또는 시스템 에어컨 청소",
+      en: "[Cleaning] Floor-standing or ceiling-system air conditioner cleaning",
+      vi: "[Vệ sinh] Vệ sinh máy lạnh tủ đứng hoặc âm trần",
+      zh: "[清洗] 立式或吊顶系统空调清洗",
+      "zh-Hant": "[清洗] 立式或吊頂系統冷氣清洗",
+    },
+    {
+      id: "ac-13",
+      ko: "[청소] 실외기 세척 포함",
+      en: "[Cleaning] Include outdoor unit washing",
+      vi: "[Vệ sinh] Gồm cả vệ sinh dàn nóng",
+      zh: "[清洗] 包含室外机清洗",
+      "zh-Hant": "[清洗] 包含室外機清洗",
+    },
+    {
+      id: "ac-14",
+      ko: "[청소] 악취나 곰팡이 때문에 청소가 필요함",
+      en: "[Cleaning] Cleaning needed for a bad smell or mold",
+      vi: "[Vệ sinh] Cần vệ sinh vì có mùi hôi hoặc nấm mốc",
+      zh: "[清洗] 因异味或霉菌需要清洗",
+      "zh-Hant": "[清洗] 因異味或黴菌需要清洗",
+    },
+    {
+      id: "ac-15",
+      ko: "[접근] 실외기 접근이 어려움 (고층, 외벽, 베란다 난간 작업)",
+      en: "[Access] The outdoor unit is hard to reach (high floor, exterior wall, balcony rail)",
+      vi: "[Tiếp cận] Khó tiếp cận dàn nóng (tầng cao, tường ngoài, lan can ban công)",
+      zh: "[场地] 室外机位置难以到达（高层、外墙、阳台栏杆处）",
+      "zh-Hant": "[場地] 室外機位置難以到達（高樓層、外牆、陽台欄杆處）",
+    },
+    {
+      id: "ac-16",
+      ko: "[접근] 천장이 높거나 사다리가 필요한 위치임",
+      en: "[Access] A high ceiling or a spot that needs a ladder",
+      vi: "[Tiếp cận] Trần cao hoặc vị trí cần thang",
+      zh: "[场地] 天花板较高或需要梯子的位置",
+      "zh-Hant": "[場地] 天花板較高或需要梯子的位置",
+    },
+  ],
 };
 
 /**
@@ -841,7 +973,9 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
 export function getProblemOptionsForService(slug: string, locale: string): { id: string; label: string; ko: string; translated: string }[] {
   // Normalize slug aliases
   let targetSlug = slug.toLowerCase();
-  if (targetSlug.includes("clog") || targetSlug.includes("toilet") || targetSlug.includes("sink") || targetSlug.includes("drain")) {
+  if (targetSlug === "aircon" || targetSlug.includes("air-con") || targetSlug.includes("aircon")) {
+    targetSlug = "aircon";
+  } else if (targetSlug.includes("clog") || targetSlug.includes("toilet") || targetSlug.includes("sink") || targetSlug.includes("drain")) {
     targetSlug = "clog-clearing";
   } else if (targetSlug.includes("leak") || targetSlug.includes("pipe") || targetSlug.includes("water") || targetSlug.includes("plumb")) {
     targetSlug = "leak-plumbing";
