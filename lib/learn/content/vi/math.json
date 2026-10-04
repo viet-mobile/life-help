@@ -2735,6 +2735,538 @@
     "Hãy tính 10 + 20 trước."
    ],
    "explanation": "$(10 + 20) \\div 2 = 15$."
+  },
+  "m-e1-up-l1a": {
+   "prompt": "Có các viên bi đỏ 🔴🔴🔴🔴🔴 và các viên bi xanh 🔵🔵🔵. Đếm tất cả thì được bao nhiêu viên? (chỉ nhập số)",
+   "hints": [
+    "Hãy đếm bi đỏ trước, rồi đếm tiếp bi xanh.",
+    "Đếm tiếp từ 5: 6, 7, 8."
+   ],
+   "explanation": "5 viên và 3 viên, đếm tiếp được tất cả 8 viên."
+  },
+  "m-e1-up-l1b": {
+   "prompt": "Mai đếm kẹo nhưng đếm trùng một viên hai lần nên nói có 9 viên. Thực tế có bao nhiêu viên kẹo? (chỉ nhập số)",
+   "hints": [
+    "Phải bớt đi viên kẹo bị đếm hai lần.",
+    "Đó là số nhỏ hơn 9 một đơn vị."
+   ],
+   "explanation": "Một viên bị đếm hai lần nên 9 - 1 = 8. Thực tế có 8 viên."
+  },
+  "m-e1-up-l2a": {
+   "prompt": "Có 8 quả táo. Ăn mất 3 quả rồi mua thêm 5 quả. Bây giờ có bao nhiêu quả táo? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên hãy trừ đi số táo đã ăn.",
+    "Sau đó cộng thêm số táo đã mua."
+   ],
+   "explanation": "8 - 3 = 5, rồi 5 + 5 = 10. Bây giờ có 10 quả."
+  },
+  "m-e1-up-l2b": {
+   "prompt": "Trong $\\square + 6 = 13$, số nào điền vào ô trống? (chỉ nhập số)",
+   "hints": [
+    "Lấy 13 trừ 6 sẽ ra số trong ô trống.",
+    "Hãy tính 13 - 6."
+   ],
+   "explanation": "Ô trống = 13 - 6 = 7. Kiểm tra: 7 + 6 = 13."
+  },
+  "m-e1-up-l3a": {
+   "prompt": "Minh có 14 miếng dán, Lan có 11 miếng dán, Nam có 17 miếng dán. Ai có ít miếng dán nhất?",
+   "hints": [
+    "Hãy so sánh cả ba số.",
+    "Tìm số nhỏ nhất trong 11, 14, 17."
+   ],
+   "explanation": "11 là số nhỏ nhất, nên Lan có ít miếng dán nhất.",
+   "options": {
+    "a": "Lan",
+    "b": "Nam",
+    "c": "Minh"
+   }
+  },
+  "m-e1-up-l3b": {
+   "prompt": "Số $\\square$ lớn hơn $9$ và nhỏ hơn $12$. Có tất cả bao nhiêu số có thể là □? (chỉ nhập số)",
+   "hints": [
+    "9 và 12 không tính.",
+    "Hãy viết từng số lớn hơn 9 và nhỏ hơn 12."
+   ],
+   "explanation": "Đó là 10 và 11, tức là 2 số. 9 và 12 không tính."
+  },
+  "m-e1-up-l4a": {
+   "prompt": "2 hình tam giác và 1 hình tứ giác có tất cả bao nhiêu cạnh? (chỉ nhập số)",
+   "hints": [
+    "Mỗi tam giác có 3 cạnh, mỗi hình tứ giác có 4 cạnh.",
+    "Hãy tính 3 + 3 + 4."
+   ],
+   "explanation": "3 + 3 + 4 = 10. Có tất cả 10 cạnh."
+  },
+  "m-e1-up-l4b": {
+   "prompt": "Ghép hai tờ giấy hình tam giác sao cho hai cạnh dài khít vào nhau. Có thể tạo ra hình nào?",
+   "hints": [
+    "Hãy đếm các cạnh của hình sau khi ghép.",
+    "Cạnh ghép vào nhau nằm bên trong nên biến mất."
+   ],
+   "explanation": "Ghép hai tam giác lại sẽ được hình tứ giác có 4 cạnh.",
+   "options": {
+    "a": "Hình tam giác",
+    "b": "Hình ngũ giác",
+    "c": "Hình tròn",
+    "d": "Hình tứ giác"
+   }
+  },
+  "m-e1-up-l5a": {
+   "prompt": "Cắt 5 cm từ dải ruy băng dài 12 cm, rồi nối thêm dải ruy băng 8 cm vào phần còn lại. Tổng chiều dài sau khi nối là bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên tìm phần còn lại sau khi cắt.",
+    "Rồi cộng thêm 8 cm."
+   ],
+   "explanation": "12 - 5 = 7, 7 + 8 = 15 nên dài 15 cm."
+  },
+  "m-e1-up-l5b": {
+   "prompt": "Bút chì dài hơn cục tẩy 3 cm, cục tẩy dài hơn hồ dán 2 cm. Vật nào ngắn nhất trong ba vật?",
+   "hints": [
+    "Hãy nối hai phép so sánh lại với nhau.",
+    "Thứ tự là bút chì > cục tẩy > hồ dán."
+   ],
+   "explanation": "Bút chì > cục tẩy > hồ dán nên hồ dán ngắn nhất.",
+   "options": {
+    "a": "Cục tẩy",
+    "b": "Hồ dán",
+    "c": "Bút chì"
+   }
+  },
+  "m-e2-up-l1a": {
+   "prompt": "Trong số $305$, chữ số 3 biểu thị giá trị nào?",
+   "hints": [
+    "Hãy xem chữ số 3 đứng ở hàng nào.",
+    "Đó là chữ số hàng trăm."
+   ],
+   "explanation": "Chữ số 3 ở hàng trăm nên biểu thị 300."
+  },
+  "m-e2-up-l1b": {
+   "prompt": "Số gồm 7 chục và 15 đơn vị là số nào? (chỉ nhập số)",
+   "hints": [
+    "15 đơn vị là 1 chục và 5 đơn vị.",
+    "Hãy đếm lại xem có tất cả mấy chục."
+   ],
+   "explanation": "70 + 15 = 85. (8 chục và 5 đơn vị)"
+  },
+  "m-e2-up-l2a": {
+   "prompt": "Quyển sách dày 100 trang. Buổi sáng đọc 38 trang, buổi chiều đọc 27 trang. Còn bao nhiêu trang chưa đọc? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên hãy cộng số trang đã đọc.",
+    "Rồi lấy 100 trừ số trang đã đọc."
+   ],
+   "explanation": "38 + 27 = 65, 100 - 65 = 35. Còn 35 trang."
+  },
+  "m-e2-up-l2b": {
+   "prompt": "Trong $\\square + 28 = 61$, số nào điền vào ô trống? (chỉ nhập số)",
+   "hints": [
+    "Phép trừ là phép tính ngược của phép cộng.",
+    "Hãy tính 61 - 28."
+   ],
+   "explanation": "Ô trống = 61 - 28 = 33. Kiểm tra: 33 + 28 = 61."
+  },
+  "m-e2-up-l3a": {
+   "prompt": "Mỗi túi có 4 viên kẹo, có 3 túi. Đã ăn mất 2 viên. Còn lại bao nhiêu viên kẹo? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên dùng phép nhân tìm tổng số kẹo.",
+    "Rồi trừ đi 2 viên đã ăn."
+   ],
+   "explanation": "4 × 3 = 12, 12 - 2 = 10. Còn 10 viên."
+  },
+  "m-e2-up-l3b": {
+   "prompt": "Biểu thức nào có giá trị khác $6 \\times 4$?",
+   "hints": [
+    "Hãy tính giá trị từng biểu thức rồi so với 24.",
+    "Đếm xem số đó được cộng bao nhiêu lần."
+   ],
+   "explanation": "4 cộng 5 lần là 20. Các biểu thức còn lại đều bằng 24."
+  },
+  "m-e2-up-l4a": {
+   "prompt": "Bộ phim bắt đầu lúc 2 giờ và kết thúc sau 3 giờ. Phim kết thúc lúc mấy giờ? (chỉ nhập số)",
+   "hints": [
+    "Cộng thời gian chiếu vào giờ bắt đầu.",
+    "Hãy tính 2 + 3."
+   ],
+   "explanation": "Từ 2 giờ trải qua 3 giờ là 5 giờ."
+  },
+  "m-e2-up-l4b": {
+   "prompt": "Sợi dây dài 150 cm. Đã dùng 1 m 20 cm. Còn lại bao nhiêu cm dây? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên đổi 1 m 20 cm ra cm.",
+    "1 m = 100 cm."
+   ],
+   "explanation": "1 m 20 cm = 120 cm, 150 - 120 = 30 nên còn 30 cm."
+  },
+  "m-e2-up-l5a": {
+   "prompt": "Tìm quy luật rồi điền số vào ô trống: $3, 7, 11, 15, \\square$ (chỉ nhập số)",
+   "hints": [
+    "Tính hiệu của hai số liền nhau.",
+    "Mỗi lần tăng thêm 4."
+   ],
+   "explanation": "3, 7, 11, 15 tăng thêm 4 mỗi lần. 15 + 4 = 19."
+  },
+  "m-e2-up-l5b": {
+   "prompt": "Tìm quy luật rồi điền số vào ô trống: $1, 2, 4, 7, 11, \\square$ (chỉ nhập số)",
+   "hints": [
+    "Xem hiệu của các số liền nhau có giống nhau không.",
+    "Hiệu là 1, 2, 3, 4, tăng dần từng đơn vị."
+   ],
+   "explanation": "Số cộng thêm là 1, 2, 3, 4 nên tiếp theo là +5, 11 + 5 = 16."
+  },
+  "m-e3-up-l1a": {
+   "prompt": "Mỗi hộp có 12 cây bút chì. Có 4 hộp. Đã phát đi 15 cây. Còn lại bao nhiêu cây bút chì? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên tìm tổng số bút chì.",
+    "Rồi trừ đi 15 cây đã phát."
+   ],
+   "explanation": "12 × 4 = 48, 48 - 15 = 33. Còn lại 33 cây."
+  },
+  "m-e3-up-l1b": {
+   "prompt": "Nhân một số với 6 được 42. Nhân số đó với 3 thì được bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Phép chia là phép tính ngược của phép nhân. Hãy tìm số đó trước.",
+    "42 ÷ 6 = 7."
+   ],
+   "explanation": "Số đó là 42 ÷ 6 = 7. Vậy 7 × 3 = 21."
+  },
+  "m-e3-up-l2a": {
+   "prompt": "Chia đều chiếc bánh thành 6 phần và ăn 2 phần. Phần đã ăn biểu diễn bằng phân số nào?",
+   "hints": [
+    "Mẫu số là tổng số phần bằng nhau.",
+    "Tử số là số phần đã ăn."
+   ],
+   "explanation": "2 trong 6 phần là 2/6. (4/6 là phần còn lại.)"
+  },
+  "m-e3-up-l2b": {
+   "prompt": "Trong các phân số đơn vị $\\frac{1}{3}$, $\\frac{1}{6}$, $\\frac{1}{4}$, mẫu số của phân số lớn nhất là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hãy hình dung một chiếc bánh chia thành 3, 4 hoặc 6 phần và lấy một phần.",
+    "Chia càng ít phần thì mỗi phần càng lớn."
+   ],
+   "explanation": "Phân số đơn vị có mẫu số càng nhỏ thì càng lớn. Lớn nhất là 1/3, mẫu số là 3."
+  },
+  "m-e3-up-l3a": {
+   "prompt": "Bình có 1 L 500 mL nước. Đã uống 300 mL. Còn lại bao nhiêu mL nước? (chỉ nhập số)",
+   "hints": [
+    "Hãy đổi 1 L 500 mL ra mL.",
+    "1 L = 1000 mL."
+   ],
+   "explanation": "1 L 500 mL = 1500 mL, 1500 - 300 = 1200. Còn lại 1200 mL."
+  },
+  "m-e3-up-l3b": {
+   "prompt": "Độ dài nào dài nhất trong các độ dài sau?",
+   "hints": [
+    "Hãy đổi tất cả ra m rồi so sánh.",
+    "1 km = 1000 m."
+   ],
+   "explanation": "Lần lượt là 1020 m, 1200 m, 980 m, 1002 m nên dài nhất là 1 km 200 m.",
+   "options": {
+    "a": "1 km 2 m",
+    "b": "1 km 20 m",
+    "c": "1 km 200 m",
+    "d": "980 m"
+   }
+  },
+  "m-e3-up-l4a": {
+   "prompt": "Xếp sát nhau thành một hàng 2 chiếc đĩa tròn có bán kính 6 cm. Chiều dài cả hàng là bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Chiều ngang của mỗi đĩa là đường kính.",
+    "Đường kính = bán kính × 2."
+   ],
+   "explanation": "Đường kính là 6 × 2 = 12 cm, 2 chiếc đĩa nên 12 × 2 = 24 cm."
+  },
+  "m-e3-up-l4b": {
+   "prompt": "Câu nào đúng về hình tròn có đường kính 12 cm?",
+   "hints": [
+    "Hãy nhớ lại mối quan hệ giữa đường kính và bán kính.",
+    "Đường kính gấp 2 lần bán kính."
+   ],
+   "explanation": "Đường kính gấp 2 lần bán kính nên bán kính là 12 ÷ 2 = 6 cm.",
+   "options": {
+    "a": "Bán kính là 24 cm.",
+    "b": "Bán kính là 6 cm.",
+    "c": "Đường kính ngắn hơn bán kính.",
+    "d": "Bán kính bằng đường kính."
+   }
+  },
+  "m-e3-up-l5a": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Tổng số bạn thích táo và quýt ít hơn tổng số bạn thích nho và chuối bao nhiêu bạn? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính tổng của từng nhóm.",
+    "So sánh 7 + 4 với 9 + 5."
+   ],
+   "explanation": "7 + 4 = 11, 9 + 5 = 14 nên ít hơn 14 - 11 = 3 bạn."
+  },
+  "m-e3-up-l5b": {
+   "prompt": "Kết quả khảo sát loại quả yêu thích: táo 7 bạn, chuối 5 bạn, nho 9 bạn, quýt 4 bạn. Có 2 bạn đã nói thích chuối giờ đổi sang thích nho. Bây giờ loại quả được nhiều bạn thích nhất có bao nhiêu bạn thích? (chỉ nhập số)",
+   "hints": [
+    "Hãy tính lại số bạn của hai loại quả thay đổi.",
+    "Nho tăng 2 bạn, chuối giảm 2 bạn."
+   ],
+   "explanation": "Nho là 9 + 2 = 11 bạn, chuối là 5 - 2 = 3 bạn. Nhiều nhất là nho với 11 bạn."
+  },
+  "m-e4-up-l1a": {
+   "prompt": "Dùng mỗi thẻ số 5, 0, 8, 2 đúng một lần. Số có bốn chữ số nhỏ nhất có thể lập được là số nào? (chỉ nhập số)",
+   "hints": [
+    "Số nhỏ nhất đặt chữ số bé ở hàng cao.",
+    "Nhưng chữ số 0 không được đứng đầu."
+   ],
+   "explanation": "Đặt 2 (nhỏ nhất, trừ 0) ở đầu rồi đến 0, 5, 8. Được 2058."
+  },
+  "m-e4-up-l1b": {
+   "prompt": "Thư viện trường có 12500 cuốn sách. Năm nay mua thêm 3400 cuốn và thanh lý 1200 cuốn. Bây giờ có tất cả bao nhiêu cuốn? (chỉ nhập số)",
+   "hints": [
+    "Sách mua thì cộng, sách thanh lý thì trừ.",
+    "Tính 12500 + 3400 trước."
+   ],
+   "explanation": "12500 + 3400 = 15900, 15900 - 1200 = 14700. Có 14700 cuốn."
+  },
+  "m-e4-up-l2a": {
+   "prompt": "Mỗi thùng có 24 quả táo, có 15 thùng. Đã bán 4 thùng. Còn lại bao nhiêu quả táo? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên tìm số thùng còn lại.",
+    "15 - 4 = 11 thùng."
+   ],
+   "explanation": "Còn 11 thùng, 24 × 11 = 264. Có 264 quả táo."
+  },
+  "m-e4-up-l2b": {
+   "prompt": "Chia một số cho 12 được thương 13 và dư 5. Số đó là bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Số chia × thương + số dư = số bị chia.",
+    "Tính 12 × 13 trước."
+   ],
+   "explanation": "12 × 13 = 156, 156 + 5 = 161. Số đó là 161."
+  },
+  "m-e4-up-l3a": {
+   "prompt": "Có 2,5 L nước ép. Uống 0,75 L rồi đổ thêm 1,5 L. Bây giờ có bao nhiêu lít nước ép? (chỉ nhập số)",
+   "hints": [
+    "Lượng đã uống thì trừ, lượng đổ thêm thì cộng.",
+    "Đặt thẳng hàng dấu phẩy khi tính."
+   ],
+   "explanation": "2,5 - 0,75 = 1,75, 1,75 + 1,5 = 3,25. Được 3,25 L."
+  },
+  "m-e4-up-l3b": {
+   "prompt": "Một bạn tính $\\frac{3}{7}+\\frac{2}{7}$ bằng $\\frac{5}{14}$. Bạn ấy sai ở đâu?",
+   "hints": [
+    "Khi cộng hai phân số cùng mẫu số, mẫu số thay đổi thế nào?",
+    "Kích thước mỗi phần bằng nhau không đổi."
+   ],
+   "explanation": "Mẫu số vẫn là 7, chỉ cộng các tử số. 3/7 + 2/7 = 5/7.",
+   "options": {
+    "a": "Đã cộng cả hai mẫu số.",
+    "b": "Không trừ các tử số.",
+    "c": "Phép tính đúng.",
+    "d": "Phải nhân các mẫu số."
+   }
+  },
+  "m-e4-up-l4a": {
+   "prompt": "Tam giác cân có góc ở đỉnh là 40°. Mỗi góc ở đáy là bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Tổng ba góc là 180°. Hai góc đáy bằng nhau.",
+    "Lấy 180 - 40 rồi chia đôi."
+   ],
+   "explanation": "Tổng hai góc đáy là 180 - 40 = 140°, mỗi góc là 140 ÷ 2 = 70°."
+  },
+  "m-e4-up-l4b": {
+   "prompt": "Ba góc của một hình tứ giác là 85°, 95°, 110°. Góc còn lại là bao nhiêu độ? (chỉ nhập số)",
+   "hints": [
+    "Tổng bốn góc của hình tứ giác là 360°.",
+    "Tính tổng ba góc rồi lấy 360 trừ đi."
+   ],
+   "explanation": "85 + 95 + 110 = 290, 360 - 290 = 70. Góc còn lại là 70°."
+  },
+  "m-e4-up-l5a": {
+   "prompt": "Số sách đọc theo từng tháng: tháng 1 là 12 cuốn, tháng 2 là 18 cuốn, tháng 3 là 9 cuốn, tháng 4 là 21 cuốn. Tháng 5 phải đọc bao nhiêu cuốn để trung bình 5 tháng là 16 cuốn? (chỉ nhập số)",
+   "hints": [
+    "Trung bình × số tháng = tổng.",
+    "Lấy 16 × 5 trừ tổng 4 tháng."
+   ],
+   "explanation": "Tổng 5 tháng là 16 × 5 = 80, tổng 4 tháng là 60. 80 - 60 = 20 cuốn."
+  },
+  "m-e4-up-l5b": {
+   "prompt": "Số sách đọc theo từng tháng: tháng 1 là 12 cuốn, tháng 2 là 18 cuốn, tháng 3 là 9 cuốn, tháng 4 là 21 cuốn. Có bao nhiêu tháng đọc nhiều sách hơn mức trung bình của 4 tháng? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên tính trung bình của 4 tháng.",
+    "Trung bình là 60 ÷ 4 = 15 cuốn."
+   ],
+   "explanation": "Trung bình là 15 cuốn. Các tháng nhiều hơn 15 là tháng 2 (18) và tháng 4 (21), tổng cộng 2 tháng."
+  },
+  "m-e5-up-l1a": {
+   "prompt": "Bình có $\\frac{1}{2}$ L nước. Uống $\\frac{1}{3}$ L rồi đổ thêm $\\frac{3}{4}$ L. Bây giờ có bao nhiêu lít nước? (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Lượng uống thì trừ, lượng đổ thêm thì cộng. Hãy dùng mẫu số chung 12.",
+    "1/2 = 6/12, 1/3 = 4/12, 3/4 = 9/12."
+   ],
+   "explanation": "6/12 - 4/12 + 9/12 = 11/12. Có 11/12 L."
+  },
+  "m-e5-up-l1b": {
+   "prompt": "Một bạn tính $\\frac{2}{5}+\\frac{1}{3}$ bằng $\\frac{3}{8}$. Giá trị đúng là bao nhiêu?",
+   "hints": [
+    "Phân số khác mẫu số phải quy đồng trước.",
+    "Mẫu số chung của 5 và 3 là 15."
+   ],
+   "explanation": "2/5 = 6/15, 1/3 = 5/15 nên tổng là 11/15. Cộng tử với tử và mẫu với mẫu là sai."
+  },
+  "m-e5-up-l2a": {
+   "prompt": "Mỗi mét dây thép nặng 0,35 kg. Dây thép dài 4,2 m nặng bao nhiêu kg? (chỉ nhập số)",
+   "hints": [
+    "Khối lượng = khối lượng 1 m × chiều dài.",
+    "Tính 35 × 42 trước rồi đặt dấu phẩy."
+   ],
+   "explanation": "35 × 42 = 1470, có tất cả 3 chữ số sau dấu phẩy nên được 1,470 = 1,47 kg."
+  },
+  "m-e5-up-l2b": {
+   "prompt": "Biết $12 \\times 15 = 180$, hãy suy ra giá trị của $1.2 \\times 1.5$.",
+   "hints": [
+    "1,2 là một phần mười của 12, 1,5 là một phần mười của 15.",
+    "Tích bị giảm đi 10 lần hai lần, tức là giảm 100 lần."
+   ],
+   "explanation": "Một phần trăm của 180 là 1,8. Số chữ số thập phân là 1 + 1 = 2."
+  },
+  "m-e5-up-l3a": {
+   "prompt": "Có 24 viên kẹo và 36 viên sôcôla. Chia đều, không thừa, vào các túi sao cho được nhiều túi nhất. Làm được nhiều nhất bao nhiêu túi? (chỉ nhập số)",
+   "hints": [
+    "Số túi phải là ước chung của 24 và 36.",
+    "Nhiều túi nhất là ước chung lớn nhất."
+   ],
+   "explanation": "Ước chung lớn nhất của 24 và 36 là 12 nên được 12 túi, mỗi túi có 2 viên kẹo và 3 viên sôcôla."
+  },
+  "m-e5-up-l3b": {
+   "prompt": "Xe buýt A cứ 12 phút xuất phát một lần, xe buýt B cứ 15 phút một lần. Hai xe cùng xuất phát lúc 8 giờ. Sau bao nhiêu phút hai xe lại cùng xuất phát? (chỉ nhập số)",
+   "hints": [
+    "Thời gian hai xe cùng xuất phát vừa là bội của 12 vừa là bội của 15.",
+    "Sớm nhất là bội chung nhỏ nhất."
+   ],
+   "explanation": "Bội chung nhỏ nhất của 12 và 15 là 60. Sau 60 phút hai xe lại gặp nhau."
+  },
+  "m-e5-up-l4a": {
+   "prompt": "Từ tờ giấy hình chữ nhật dài 10 cm, rộng 6 cm, cắt bỏ một hình vuông cạnh 3 cm. Diện tích phần giấy còn lại là bao nhiêu cm²? (chỉ nhập số)",
+   "hints": [
+    "Lấy diện tích cả tờ giấy trừ diện tích phần đã cắt.",
+    "Diện tích hình vuông là 3 × 3."
+   ],
+   "explanation": "10 × 6 = 60, 3 × 3 = 9, 60 - 9 = 51. Diện tích còn lại là 51 cm²."
+  },
+  "m-e5-up-l4b": {
+   "prompt": "Nếu chiều dài và chiều rộng của hình chữ nhật đều gấp đôi thì diện tích gấp mấy lần ban đầu? (chỉ nhập số)",
+   "hints": [
+    "Hãy thử với hình chữ nhật dài 2 cm, rộng 3 cm.",
+    "Hình đã gấp đôi là 4 cm × 6 cm."
+   ],
+   "explanation": "Diện tích ban đầu là 6, sau khi gấp đôi là 4 × 6 = 24 nên gấp 4 lần. Gấp 2 lần chiều dài và 2 lần chiều rộng là 2 × 2 = 4 lần."
+  },
+  "m-e5-up-l5a": {
+   "prompt": "Trong trận bóng rổ, đội A ném 25 lần trúng 17 lần, đội B ném 20 lần trúng 14 lần. Tỉ lệ ném trúng của đội cao hơn là bao nhiêu phần trăm? (chỉ nhập số)",
+   "hints": [
+    "Tính tỉ lệ của mỗi đội: số lần trúng ÷ số lần ném.",
+    "Phần trăm là tỉ lệ nhân 100."
+   ],
+   "explanation": "Đội A là 17 ÷ 25 = 0,68 → 68%, đội B là 14 ÷ 20 = 0,7 → 70%. Đội B cao hơn với 70%."
+  },
+  "m-e5-up-l5b": {
+   "prompt": "Hòa 20 g muối vào 80 g nước được nước muối. Tỉ lệ khối lượng muối so với toàn bộ nước muối là bao nhiêu?",
+   "hints": [
+    "Đại lượng gốc là toàn bộ khối lượng nước muối.",
+    "Khối lượng nước muối = muối + nước."
+   ],
+   "explanation": "Nước muối nặng 20 + 80 = 100 g, tỉ lệ là 20 ÷ 100 = 0,2. (0,25 là so với lượng nước.)"
+  },
+  "m-e6-up-l1a": {
+   "prompt": "Trong $\\frac{3}{4}$ m ruy băng, đã dùng $\\frac{2}{3}$ số đó để làm hoa. Còn lại bao nhiêu mét ruy băng? (có thể nhập dạng phân số, ví dụ 3/4)",
+   "hints": [
+    "Lượng đã dùng là 3/4 × 2/3.",
+    "Lấy toàn bộ trừ lượng đã dùng."
+   ],
+   "explanation": "3/4 × 2/3 = 1/2, 3/4 - 1/2 = 1/4. Còn lại 1/4 m."
+  },
+  "m-e6-up-l1b": {
+   "prompt": "Khi chia một số cho một số nhỏ hơn 1 thì thương so với số bị chia thế nào?",
+   "hints": [
+    "Hãy thử tính, ví dụ 6 ÷ 0,5.",
+    "Hãy nghĩ xem 6 chứa bao nhiêu lần 0,5."
+   ],
+   "explanation": "Ví dụ 6 ÷ 0,5 = 12, thương lớn hơn. Chia cho số nhỏ hơn 1 thì thương lớn hơn.",
+   "options": {
+    "a": "Lớn hơn.",
+    "b": "Nhỏ hơn.",
+    "c": "Bằng nhau.",
+    "d": "Không thể biết."
+   }
+  },
+  "m-e6-up-l2a": {
+   "prompt": "Hình chữ nhật có tỉ số chiều dài và chiều rộng là 5 : 3, chu vi 48 cm. Chiều dài là bao nhiêu cm? (chỉ nhập số)",
+   "hints": [
+    "Chiều dài + chiều rộng bằng nửa chu vi.",
+    "Chia tổng đó theo tỉ số 5 : 3."
+   ],
+   "explanation": "Dài + rộng = 24 cm, chiều dài là 24 × 5/8 = 15 cm."
+  },
+  "m-e6-up-l2b": {
+   "prompt": "Tỉ số của A và B là 2 : 3, và A nhỏ hơn B là 8. A bằng bao nhiêu? (chỉ nhập số)",
+   "hints": [
+    "Hiệu của tỉ số 3 - 2 = 1 tương ứng với 8.",
+    "Vậy một phần của tỉ số là 8."
+   ],
+   "explanation": "Một phần là 8 nên A = 8 × 2 = 16, B = 8 × 3 = 24."
+  },
+  "m-e6-up-l3a": {
+   "prompt": "Món hàng giá 8000 đồng được giảm 25%, sau đó dùng thêm phiếu giảm 500 đồng. Phải trả bao nhiêu tiền? (chỉ nhập số)",
+   "hints": [
+    "Trước tiên tính giá sau khi giảm 25%.",
+    "Rồi trừ phiếu giảm 500 đồng khỏi giá đó."
+   ],
+   "explanation": "75% của 8000 là 6000 đồng, 6000 - 500 = 5500 đồng."
+  },
+  "m-e6-up-l3b": {
+   "prompt": "Giá một món hàng tăng 20% rồi lại giảm 20%. So với giá ban đầu thì thế nào?",
+   "hints": [
+    "Giả sử giá ban đầu là 100 đồng rồi tính.",
+    "Khi giảm, cơ sở là giá sau khi tăng."
+   ],
+   "explanation": "100 đồng → 120 đồng → 80% của 120 là 96 đồng. Rẻ hơn ban đầu 4%.",
+   "options": {
+    "a": "Đắt hơn 4%.",
+    "b": "Rẻ hơn 20%.",
+    "c": "Bằng giá ban đầu.",
+    "d": "Rẻ hơn 4%."
+   }
+  },
+  "m-e6-up-l4a": {
+   "prompt": "Đặt chiếc bánh pizza hình tròn đường kính 20 cm vào đáy hộp hình vuông cạnh 20 cm. Phần diện tích đáy hộp còn trống là bao nhiêu cm²? (lấy π = 3,14) (chỉ nhập số)",
+   "hints": [
+    "Đáy hộp là hình vuông, bánh pizza là hình tròn bán kính 10 cm.",
+    "Lấy diện tích hình vuông trừ diện tích hình tròn."
+   ],
+   "explanation": "20 × 20 = 400, 3,14 × 10 × 10 = 314, 400 - 314 = 86. Diện tích trống là 86 cm²."
+  },
+  "m-e6-up-l4b": {
+   "prompt": "Nếu bán kính hình tròn gấp đôi thì diện tích hình tròn gấp mấy lần ban đầu?",
+   "hints": [
+    "Diện tích = bán kính × bán kính × 3,14.",
+    "Hãy chú ý bán kính được nhân hai lần."
+   ],
+   "explanation": "Bán kính gấp 2 thì diện tích gấp 2 × 2 = 4 lần.",
+   "options": {
+    "a": "8 lần",
+    "b": "2 lần",
+    "c": "4 lần",
+    "d": "6 lần"
+   }
+  },
+  "m-e6-up-l5a": {
+   "prompt": "Điểm của năm bạn là 60, 70, 70, 80, 170. Hiệu giữa số trung bình và trung vị là bao nhiêu điểm? (chỉ nhập số)",
+   "hints": [
+    "Trung bình là tổng chia 5. Trung vị là số ở giữa khi xếp theo thứ tự.",
+    "Điểm 170 kéo trung bình lên rất nhiều."
+   ],
+   "explanation": "Trung bình là 450 ÷ 5 = 90, trung vị là 70. Hiệu là 20 điểm. Có giá trị rất lớn thì trung bình bị kéo lên."
+  },
+  "m-e6-up-l5b": {
+   "prompt": "Điểm trung bình của 4 bạn là 70. Thêm một bạn nữa thì trung bình của 5 bạn là 72. Bạn mới được bao nhiêu điểm? (chỉ nhập số)",
+   "hints": [
+    "Trung bình × số người = tổng điểm.",
+    "Lấy tổng của 5 bạn trừ tổng của 4 bạn đầu."
+   ],
+   "explanation": "Tổng 5 bạn là 72 × 5 = 360, tổng 4 bạn là 70 × 4 = 280. 360 - 280 = 80 điểm."
   }
  }
 }

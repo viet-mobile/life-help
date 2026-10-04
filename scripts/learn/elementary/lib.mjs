@@ -6,6 +6,8 @@
 // (lib/learn/content/vi/*.json), which never touches answer keys, option ids or the English target material.
 
 export const T = (ko, vi) => ({ ko, vi });
+/** Tag vocabulary. multistep: 2+ dependent steps; context: a situation / short passage to interpret; reasoning: infer, find the error, compare, work backwards. */
+export const CONTENT_TAGS = ["vocab", "grammar", "reading", "listening", "speaking", "phonics", "colors", "numbers", "multistep", "context", "reasoning"];
 const HANGUL = /[가-힣]/;
 
 export function gcd(a, b) { return b === 0 ? Math.abs(a) : gcd(b, a % b); }
@@ -81,7 +83,7 @@ export function createBuilder(site, { country = "KR", curriculum } = {}) {
     q.role = role;
     if (spec.family) q.family = spec.family;
     q.expectedSeconds = spec.seconds ?? 45;
-    if (spec.tags) q.tags = spec.tags;
+    if (spec.tags) { need(spec.tags.every((t) => CONTENT_TAGS.includes(t)), `${id}: unknown tag in ${spec.tags}`); q.tags = spec.tags; }
     q.status = "PUBLISHED";
     questions.push(q);
 
@@ -109,7 +111,35 @@ export function createBuilder(site, { country = "KR", curriculum } = {}) {
     courses.push({ id: c.id, title: c.title.ko, grade: c.grade, world: { name: c.world.name.ko, emoji: c.world.emoji, tagline: c.world.tagline.ko }, units: [{ id: c.unit.id, title: c.unit.title.ko, lessons }] });
   }
 
+  /**
+   * Re-order / replace the five questions of a lesson (4 + the challenge). Used by the difficulty ladder: a lesson runs
+   * warm-up -> standard -> challenge. Questions that leave every lesson stay in the bank as extra practice (role "variant").
+   */
+  function setLesson(lessonId, five) {
+    need(five.length === 5 && new Set(five).size === 5, `${lessonId}: a lesson has exactly five distinct questions`);
+    five.forEach((qid) => need(ids.has(qid), `${lessonId}: unknown question ${qid}`));
+    for (const c of courses) for (const u of c.units) for (const l of u.lessons) if (l.id === lessonId) { l.questionIds = five.slice(0, 4); l.challengeId = five[4]; return; }
+    throw new Error(`[${site}] unknown lesson ${lessonId}`);
+  }
+
+  /** A question's difficulty relative to its lesson (e.g. the simplest question of a lesson that has no difficulty-1 item becomes its warm-up). */
+  function retune(qid, d) {
+    need([1, 2, 3, 4, 5].includes(d), `bad difficulty for ${qid}`);
+    const q = questions.find((x) => x.id === qid);
+    need(q, `retune: unknown question ${qid}`);
+    q.difficulty = d;
+  }
+
+  /** Read access for the difficulty-ladder passes (no mutation). */
+  const peek = {
+    lesson: (lessonId) => { for (const c of courses) for (const u of c.units) for (const l of u.lessons) if (l.id === lessonId) return l; throw new Error(`[${site}] unknown lesson ${lessonId}`); },
+    question: (qid) => questions.find((q) => q.id === qid),
+    lessons: () => courses.flatMap((c) => c.units.flatMap((u) => u.lessons)),
+  };
+
   function finish() {
+    const inLesson = new Set(courses.flatMap((c) => c.units.flatMap((u) => u.lessons.flatMap((l) => [...l.questionIds, l.challengeId]))));
+    for (const q of questions) if (q.role === "core" && !inLesson.has(q.id)) q.role = "variant";
     // A "family" groups similar questions: after the third wrong attempt the engine offers a VARIANT of the same family and skill.
     // A core question whose family has no variant would get no follow-up, so it joins the nearest variant family of its skill (same type first).
     for (const sk of skills) {
@@ -136,5 +166,5 @@ export function createBuilder(site, { country = "KR", curriculum } = {}) {
     };
   }
 
-  return { skill, question, course, finish, T };
+  return { skill, question, course, setLesson, retune, peek, finish, T };
 }
