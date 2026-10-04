@@ -60,7 +60,7 @@ level, so a template's declared range is advisory and the level always comes fro
 
 ## What is generated, and why it is not copied
 
-Templates (17 math, 13 English) are original generators: a situation is composed from parameters, names, numbers and text pools, and the answer is computed
+Templates (20 math, 19 English) are original generators: a situation is composed from parameters, names, numbers and text pools, and the answer is computed
 by code, with an independent check (`verify`) that must agree. No exam question text is stored or reproduced; exams may only inform which kinds of thinking
 exist at each level.
 

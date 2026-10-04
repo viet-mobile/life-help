@@ -291,7 +291,6 @@ export const en: Record<MessageKey, string> = {
   "common.reduced": "Reduce motion",
 
   // ---- v3 foundation vocabulary (adult study, plans, certification, scholarship): labels only, no promises ----
-  "locale.en": "English",
   "keyboard.enter.next": "Press Enter to continue.",
   "study.targetLanguage": "Language you are learning",
   "study.uiLanguage": "Display language",

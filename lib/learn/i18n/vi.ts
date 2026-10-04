@@ -282,7 +282,6 @@ export const vi: Record<MessageKey, string> = {
   "common.diff": "Độ khó {n}",
   "common.reduced": "Giảm hiệu ứng chuyển động",
   // ---- v3 foundation vocabulary (adult study, plans, certification, scholarship) ----
-  "locale.en": "English",
   "keyboard.enter.next": "Nhấn Enter để tiếp tục.",
   "study.targetLanguage": "Ngôn ngữ bạn đang học",
   "study.uiLanguage": "Ngôn ngữ hiển thị",

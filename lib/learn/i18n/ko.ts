@@ -280,7 +280,6 @@ export const ko = {
   "common.reduced": "애니메이션 줄이기",
 
   // ---- v3 foundation vocabulary (adult study, plans, certification, scholarship) ----
-  "locale.en": "English",
   "keyboard.enter.next": "Enter 키를 누르면 다음으로 넘어가요.",
   "study.targetLanguage": "배우는 언어",
   "study.uiLanguage": "화면 언어",

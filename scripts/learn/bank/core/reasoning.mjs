@@ -32,6 +32,15 @@ export const TEMPLATE_HINTS = {
   "policy-eligibility": { informationFiltering: 3, logicalInference: 3 },
   "product-compare": { informationFiltering: 3, optimization: 2 },
   "email-intent": { informationFiltering: 2, logicalInference: 2 },
+  "representation-match": { modeling: 3, abstraction: 3, transfer: 2 },
+  "backward-reasoning": { novelStrategy: 3, logicalInference: 3 },
+  "find-the-slip": { errorAnalysis: 4, logicalInference: 2 },
+  "search-results": { informationFiltering: 4, logicalInference: 3 },
+  "form-check": { informationFiltering: 3, logicalInference: 2 },
+  "help-docs": { informationFiltering: 3, logicalInference: 3, multiStepReasoning: 2 },
+  "notice-to-note": { informationFiltering: 3, transfer: 2 },
+  "inconsistency-check": { errorAnalysis: 4, informationFiltering: 3 },
+  "best-option": { optimization: 4, multiStepReasoning: 3, informationFiltering: 3 },
 };
 
 /** @param {Record<string, number>} f rubric features  @param {{ cognitive?: string, template?: string }} [o] @returns {Record<string, number>} */

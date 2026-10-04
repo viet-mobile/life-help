@@ -27,7 +27,9 @@
     "bank:calibrate": "node scripts/learn/bank/calibrate.mjs",
     "check:learn:secrets": "node scripts/learn/check-no-secrets.mjs",
     "test:learn:bundle": "node scripts/test_learning_bundle_secrets.mjs",
-    "bank:validate-data": "node scripts/learn/bank/core/validate-calibration-data.mjs"
+    "bank:validate-data": "node scripts/learn/bank/core/validate-calibration-data.mjs",
+    "bank:audit": "node scripts/learn/bank/core/audit.mjs",
+    "bank:probe": "node scripts/learn/bank/core/probe-family.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
