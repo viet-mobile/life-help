@@ -11,11 +11,12 @@
  * No count in this file is a constant about the legacy content. Lesson, vocabulary, grammar and exercise counts are whatever the adapters produce from the
  * files; containers without an adapter are reported with their measured size and imported as nothing.
  *
- * RIGHTS GATE: content is importable only if data/learning-study/rights.json says OWNED, LICENSED or PUBLIC_DOMAIN for its source with an evidence reference.
+ * RIGHTS GATE: content is importable only if data/learning-study/rights.json says ORIGINAL, LICENSED, OPEN_LICENSE or PUBLIC_DOMAIN for its source with evidence (UNCLEARED and REJECTED never pass).
  * Everything else, including every source not listed, is UNCLEARED and the dry run refuses it. (The legacy source metadata names jw.org publications as the
  * origin of the corpus; whether LIFE.HELP may use them is a rights decision for people, not a parsing question.)
  */
 import { createHash } from "node:crypto";
+import { PUBLISHABLE_RIGHTS, effectiveRights } from "../../../lib/learn/products/rights.ts";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -69,18 +70,17 @@ export function scanDataBlock(text) {
 }
 
 /* ----------------------------------------------------------------------------------------- rights */
-export const CLEARED = ["OWNED", "LICENSED", "PUBLIC_DOMAIN"];
+export const CLEARED = [...PUBLISHABLE_RIGHTS];
 export function loadRights(file) {
   if (!fs.existsSync(file)) return { version: 1, decisions: {} };
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
-/** status of a source id: only an explicit, evidenced decision clears it */
+/** status of a source id: only an explicit, evidenced decision clears it (rules in lib/learn/products/rights.ts) */
 export function rightsOf(rights, sourceId) {
   const d = rights.decisions?.[sourceId];
-  if (!d) return { status: "UNCLEARED", reason: "no rights decision recorded" };
-  if (!CLEARED.includes(d.status)) return { status: d.status ?? "UNCLEARED", reason: d.note ?? "not cleared" };
-  if (!d.evidence || !d.decidedBy || !d.decidedAt) return { status: "UNCLEARED", reason: "a clearing decision needs evidence, decidedBy and decidedAt" };
-  return { status: d.status, reason: d.note ?? "" };
+  const e = effectiveRights(d);
+  if (e.publishable) return { status: e.status, reason: d.note ?? "" };
+  return { status: e.status, reason: [d?.note, ...e.problems].filter(Boolean).join("; ") || "not cleared" };
 }
 
 /* ----------------------------------------------------------------------------------------- discover */

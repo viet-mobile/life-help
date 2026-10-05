@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "rule": "Only OWNED, LICENSED or PUBLIC_DOMAIN with evidence, decidedBy and decidedAt clears a source. Anything not listed here is UNCLEARED and the importer refuses it.",
+  "rule": "Statuses: ORIGINAL, LICENSED, OPEN_LICENSE, PUBLIC_DOMAIN (publishable, each needs evidence, decidedBy, decidedAt; LICENSED and OPEN_LICENSE also a licenceId) and UNCLEARED, REJECTED (never publishable). Anything not listed is UNCLEARED. Policy 2026-10-05: the legacy corpus stays UNCLEARED, is not imported and is not scraped or repackaged (see docs/learning/adult-study-rights-policy.md).",
   "decisions": {
     "legacy:korean:data_block.study_korean.js": { "status": "UNCLEARED", "note": "origin and licence not established; the legacy repository documents its corpus sources by jw.org publication symbol (target_sources.py); no licence evidence recorded" },
     "legacy:english:data_block.study_english.js": { "status": "UNCLEARED", "note": "same as korean" },

@@ -1,3 +1,4 @@
+import type { RightsDecision } from "./rights";
 /**
  * Content contracts of the ONE adult-study engine.
  *
@@ -72,7 +73,7 @@ export interface AdultLesson {
   grammarIds: string[];
   exerciseIds: string[];
 }
-export interface ContentProvenance { source: string; licence: string; importedFrom?: string; importedAt: string }
+export interface ContentProvenance { source: string; licence: string; importedFrom?: string; importedAt: string; /** rights decision covering the pack: required to publish (see rights.ts) */ rights?: RightsDecision }
 export interface AdultContentPack {
   schemaVersion: 1;
   targetLanguageId: string;

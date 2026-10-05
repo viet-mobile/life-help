@@ -108,8 +108,8 @@ describe("rights gate and dry run", () => {
   it("an unlisted source, or a clearing decision without evidence, is UNCLEARED", () => {
     expect(rightsOf({ version: 1, decisions: {} }, src.id).status).toBe("UNCLEARED");
     expect(rightsOf({ version: 1, decisions: { [src.id]: { status: "LICENSED" } } }, src.id).status).toBe("UNCLEARED");
-    expect(rightsOf({ version: 1, decisions: { [src.id]: { status: "RESTRICTED", note: "no" } } }, src.id).status).toBe("RESTRICTED");
-    expect(rightsOf({ version: 1, decisions: { [src.id]: { status: "LICENSED", evidence: "contract-7", decidedBy: "legal", decidedAt: "2030-01-01" } } }, src.id).status).toBe("LICENSED");
+    expect(rightsOf({ version: 1, decisions: { [src.id]: { status: "REJECTED", note: "no" } } }, src.id).status).toBe("REJECTED");
+    expect(rightsOf({ version: 1, decisions: { [src.id]: { status: "LICENSED", licenceId: "contract-7", evidence: "contract-7", decidedBy: "legal", decidedAt: "2030-01-01" } } }, src.id).status).toBe("LICENSED");
   });
   it("the committed rights file clears nothing today", () => {
     const rights = loadRights("data/learning-study/rights.json");
@@ -123,7 +123,7 @@ describe("rights gate and dry run", () => {
     expect(r[0].reasons[0]).toMatch(/UNCLEARED/);
   });
   it("with a cleared source it plans the rows, and an id collision refuses even then", () => {
-    const rights = { version: 1, decisions: { [src.id]: { status: "OWNED", evidence: "authored in-house", decidedBy: "owner", decidedAt: "2030-01-01" } } };
+    const rights = { version: 1, decisions: { [src.id]: { status: "ORIGINAL", evidence: "authored in-house", decidedBy: "owner", decidedAt: "2030-01-01" } } };
     expect(dryRun([pack(["a", "b"])], rights, { korean: [src] })[0]).toMatchObject({ refused: false, wouldImport: { vocabulary: 2, grammar: 0, lessons: 0, exercises: 0 } });
     const dup = dryRun([pack(["a", "a"])], rights, { korean: [src] })[0];
     expect(dup.refused).toBe(true);
