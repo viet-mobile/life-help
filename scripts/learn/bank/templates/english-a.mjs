@@ -8,7 +8,12 @@ import { T, join } from "../util.mjs";
 export const F = (steps, abstraction, context, novelty, recall, distractor, numberSize) => ({ steps, abstraction, context, novelty, recall, distractor, numberSize });
 export const hm = (m) => { const h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? "pm" : "am", h12 = ((h + 11) % 12) + 1; return mm ? `${h12}:${String(mm).padStart(2, "0")} ${ap}` : `${h12} ${ap}`; };
 export const hm24 = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
-export const READ = (doc, q) => T(`글을 읽고 답하세요. "${doc}" 질문: ${q}`, `Đọc văn bản rồi trả lời. "${doc}" Câu hỏi: ${q}`);
+/**
+ * Frame of a reading question. The document and the question are TARGET text (English, never any other language); the frame and the optional answer-format
+ * `note` (e.g. "(숫자만 쓰세요)") are localized INSTRUCTION and sit in the frame BEFORE the document, never after the English question.
+ * @param {string} doc @param {string} q @param {{ ko: string, vi: string } | null} [note]
+ */
+export const READ = (doc, q, note = null) => T(`글을 읽고 답하세요.${note ? ` ${note.ko}` : ""} "${doc}" 질문: ${q}`, `Đọc văn bản rồi trả lời.${note ? ` ${note.vi}` : ""} "${doc}" Câu hỏi: ${q}`);
 export const usd = (x) => `${Number(x).toFixed(2)} USD`;
 export const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 export const dateStr = (d) => `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
@@ -55,7 +60,7 @@ export const product = {
     const steps = 2 + (minRating ? 1 : 0) + (maxDays < 99 ? 1 : 0) + (coupon ? 1 : 0) + (freeOver ? 1 : 0);
     const common = { hints: [T("조건에 맞지 않는 상품을 먼저 지우고, 남은 것만 총액을 계산해요.", "Loại các sản phẩm không đạt điều kiện trước, rồi chỉ tính tổng cho những cái còn lại."), T(`${coupon ? "할인은 물건 값에만 적용돼요. " : ""}${freeOver ? "할인 후 가격이 기준 이상이면 배송비가 0이에요." : "배송비를 꼭 더해요."}`, `${coupon ? "Giảm giá chỉ áp dụng cho giá hàng. " : ""}${freeOver ? "Nếu giá sau giảm đạt mức quy định thì phí vận chuyển bằng 0." : "Đừng quên cộng phí vận chuyển."}`)], expl: T(`조건을 만족하는 상품만 비교하면 ${names[best.i]}가 가장 싸요(총 ${usd(best.t)}).`, `Chỉ so sánh các sản phẩm đạt điều kiện thì ${names[best.i]} rẻ nhất (tổng ${usd(best.t)}).`), tags: ["reading", "multistep", "reasoning"], features: F(Math.min(6, steps), 1, 3, level >= 6 ? 2 : 1, 0, 2, level >= 7 ? 3 : 2), verify: () => pool.every((x) => x.t >= best.t) };
     if (ask === "name") return { type: "multiple_choice", prompt: READ(doc, q), right: names[best.i], wrong: names.filter((_, i) => i !== best.i), ...common };
-    return { type: "numeric", prompt: join(READ(doc, q), T("(USD 숫자만, 소수 둘째 자리까지)", "(chỉ nhập số USD, đến hai chữ số thập phân)")), value: best.t, tol: 0.011, ...common };
+    return { type: "numeric", prompt: READ(doc, q, T("(USD 숫자만, 소수 둘째 자리까지)", "(chỉ nhập số USD, đến hai chữ số thập phân)")), value: best.t, tol: 0.011, ...common };
   },
 };
 
@@ -80,7 +85,7 @@ export const schedule = {
     if (level === 7) { const x = rand.pick(s), off = 9, utcStart = x.a - off * 60; const wrapOk = utcStart >= 0; if (!wrapOk) return schedule.make(rand, level); return { type: "multiple_choice", prompt: READ(`Online event | ${x.name} starts at ${hm24(utcStart)} UTC`, "Korea time is UTC+9. What time does it start in Korea?"), right: hm24(x.a), wrong: [...new Set([hm24(utcStart), hm24(((utcStart - off * 60) % 1440 + 1440) % 1440), hm24(x.a + 60), hm24(x.a - 60), hm24(x.a + 120)])].filter((v) => v !== hm24(x.a)).slice(0, 3), hints: [T("UTC+9는 UTC보다 9시간 빠르다는 뜻이에요.", "UTC+9 nghĩa là sớm hơn UTC 9 giờ."), T("더하기인지 빼기인지 헷갈리면 ‘한국이 더 일찍 해가 뜬다’를 떠올려요.", "Nếu nhầm cộng hay trừ, hãy nhớ Hàn Quốc ở phía đông nên giờ muộn hơn UTC.")], expl: T(`${hm24(utcStart)} + 9시간 = ${hm24(x.a)}`, `${hm24(utcStart)} + 9 giờ = ${hm24(x.a)}`), tags: ["reading", "multistep"], features: F(2, 1, 2, 2, 0, 3, 2), verify: () => utcStart + off * 60 === x.a }; }
     // level 8: how many activities can you attend if you always need `walk` minutes to move
     const order = [...s].sort((p, q) => p.b - q.b); let last = -Infinity, count = 0; for (const y of order) if (y.a >= last + (count ? walk : 0)) { count++; last = y.b; }
-    return { type: "numeric", prompt: join(READ(doc, `You want to attend as many activities as possible. You need ${walk} minutes to move between rooms. How many activities can you attend?`), T("(숫자만 쓰세요)", "(chỉ nhập số)")), value: count, hints: [T("끝나는 시각이 이른 행사부터 고르면 더 많이 들어갈 수 있어요.", "Chọn hoạt động kết thúc sớm trước thì xếp được nhiều hơn."), T("고른 행사 사이에는 항상 이동 시간을 확보해야 해요.", "Giữa các hoạt động đã chọn luôn phải chừa thời gian đi lại.")], expl: T(`끝나는 시각 순으로 이동 시간을 지키며 고르면 최대 ${count}개`, `Chọn theo thứ tự giờ kết thúc và giữ thời gian đi lại, tối đa ${count} hoạt động`), tags: ["reasoning", "multistep"], features: F(5, 2, 3, 4, 0, 1, 2), verify: () => count >= 1 };
+    return { type: "numeric", prompt: READ(doc, `You want to attend as many activities as possible. You need ${walk} minutes to move between rooms. How many activities can you attend?`, T("(숫자만 쓰세요)", "(chỉ nhập số)")), value: count, hints: [T("끝나는 시각이 이른 행사부터 고르면 더 많이 들어갈 수 있어요.", "Chọn hoạt động kết thúc sớm trước thì xếp được nhiều hơn."), T("고른 행사 사이에는 항상 이동 시간을 확보해야 해요.", "Giữa các hoạt động đã chọn luôn phải chừa thời gian đi lại.")], expl: T(`끝나는 시각 순으로 이동 시간을 지키며 고르면 최대 ${count}개`, `Chọn theo thứ tự giờ kết thúc và giữ thời gian đi lại, tối đa ${count} hoạt động`), tags: ["reasoning", "multistep"], features: F(5, 2, 3, 4, 0, 1, 2), verify: () => count >= 1 };
   },
 };
 
