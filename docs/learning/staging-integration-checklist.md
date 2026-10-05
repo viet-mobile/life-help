@@ -7,7 +7,7 @@ Nothing here deploys anything. It is the list used AFTER the bulk phase 2 output
 ## A. Gates that must be true before staging (each one has an owner and evidence)
 | # | gate | evidence | state now |
 |---|---|---|---|
-| 1 | learning 38-locale package reviewed and merged | accepted only if `verify-generated-locales.mjs --dir <dir>` exits 0 and the semantic read passes | **FAIL/OPEN**: final package `cfd73b7` passes the structural gate but 13 locales (ar, de, es, fr, hi, id, it, ja, nl, pt, ru, zh-Hans, zh-Hant) change canonical facts (nickname 2-12 vs 2-16, added "free", dropped durations); see `review-bulk-final.md`. Regeneration required |
+| 1 | learning 38-locale package reviewed and merged | `verify-generated-locales.mjs` 35/35, 0 problems, number parity, semantic read (`review-bulk-final.md` section 7) | **PASS**: corrected package integrated (`bd382fd`, `f73c87f`); generated TS module not yet wired to the learner runtime (out of scope) |
 | 2 | bank stress reviewed | rerun `a46feb6`: 5000 items, 0 throws / determinism / tolerance / invalid MC / non-finite / Hangul; duplicates classified FOLLOWUP (no correctness bug) | **PASS** (duplicates: FOLLOWUP) |
 | 3 | rubric / mapping decision | candidate `53b1fb3` REJECTED as circular (features assigned from the empirical level); `FIT_MAPPING_STATUS = DEFERRED`; generated items stay PROVISIONAL | DEFERRED (not a blocker) |
 | 4 | Study card | home order + chooser tests green (`tests/home`, `tests/e2e/home-cards.spec.ts`) | DONE |
