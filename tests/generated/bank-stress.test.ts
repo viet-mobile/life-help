@@ -9,6 +9,8 @@ const REPORT_DATE = "2026-10-05";
 const JSON_REPORT = path.resolve(rootDir, `reports/generated/bank-stress-${REPORT_DATE}.json`);
 const MD_REPORT = path.resolve(rootDir, "reports/generated/bank-stress-report.md");
 
+const DUP_SEVERITY_REPORT = path.resolve(rootDir, "reports/generated/bank-duplicate-severity.md");
+
 describe("Question Bank Stress Tests (Package 3)", () => {
   it("verifies frozen bank-api-1 surface and supported registries", () => {
     expect(BANK_API_VERSION).toBe("bank-api-1");
@@ -59,21 +61,35 @@ describe("Question Bank Stress Tests (Package 3)", () => {
     expect(() => generate({ subject: "unknown", level: 1 })).toThrow(/unknown subject/);
     expect(() => generate({ subject: "math", level: 0 })).toThrow(/level must be an integer 1\.\.10/);
     expect(() => generate({ subject: "math", level: 11 })).toThrow(/level must be an integer 1\.\.10/);
-    expect(() => generate({ subject: "math", level: 1.5 })).toThrow(/level must be an integer 1\.\.10/);
+    expect(() => generate({ subject: "math", level: 2.5 })).toThrow(/level must be an integer 1\.\.10/);
   });
 
-  it("verifies generated stress report schema and --check execution", () => {
+  it("verifies generated stress report schema, zero Hangul, duplicate severity, and --check execution", () => {
     expect(fs.existsSync(JSON_REPORT)).toBe(true);
     expect(fs.existsSync(MD_REPORT)).toBe(true);
+    expect(fs.existsSync(DUP_SEVERITY_REPORT)).toBe(true);
 
     const data = JSON.parse(fs.readFileSync(JSON_REPORT, "utf8"));
     expect(data.bankApiVersion).toBe("bank-api-1");
-    expect(data.baselineSha).toBe("b3f51bd36ddf617bf801f92c438c9bc453ec2ac7");
+    expect(data.baselineSha).toBe("fcdc4af");
+    expect(data.bankStressCoreSha).toBe("1307bb5");
     expect(data.summary.totalRuns).toBeGreaterThanOrEqual(1000);
     expect(data.summary.totalItems).toBeGreaterThanOrEqual(5000);
     expect(data.summary.determinismMismatches).toBe(0);
     expect(data.summary.toleranceViolations).toBe(0);
     expect(data.summary.unexpectedThrows).toBe(0);
+    expect(data.summary.hangulInEnglishTarget).toBe(0);
+
+    // Duplicate severity structure
+    expect(data.duplicateAnalysis).toBeDefined();
+    expect(data.duplicateAnalysis.exactContentRepeatItems).toBeGreaterThan(0);
+    expect(data.duplicateAnalysis.topOffendingTemplates.length).toBeGreaterThan(0);
+
+    const dupMd = fs.readFileSync(DUP_SEVERITY_REPORT, "utf8");
+    expect(dupMd).toContain("EXACT_CONTENT_REPEAT");
+    expect(dupMd).toContain("SAME_PARAMETERIZED_ITEM");
+    expect(dupMd).toContain("SAME_SKELETON_DIFFERENT_VALUES");
+    expect(dupMd).toContain("NEAR_DUPLICATE");
 
     const checkOutput = execSync("node scripts/generated/stress-question-bank.mjs --check", {
       cwd: rootDir,

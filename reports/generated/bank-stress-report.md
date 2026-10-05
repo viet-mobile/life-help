@@ -1,8 +1,9 @@
 # Question Bank API Stress Test Report
 
 - **Bank API Version**: `bank-api-1`
-- **Baseline SHA**: `b3f51bd36ddf617bf801f92c438c9bc453ec2ac7`
-- **Generated At**: `2026-10-05T00:41:23.801Z`
+- **Baseline Core SHA**: `fcdc4af`
+- **Bank Stress Fix SHA**: `1307bb5`
+- **Generated At**: `2026-10-05T03:12:44.397Z`
 - **Total Runs Tested**: 1,000
 - **Total Items Generated**: 5,000
 
@@ -14,7 +15,7 @@
 | Determinism Mismatches | 0 | PASS | Identical arguments yield byte-identical JSON |
 | Tolerance Violations (|pred - req| > 1) | 0 | PASS | Rubric level within 1 of requested level |
 | Duplicate Surfaces in Single Run | 0 | PASS | Uniqueness of surface within count batch |
-| Exact Fingerprint Duplicates Across Seeds | 499 | WARN | Expected ~0 across distinct seeds |
+| Exact Fingerprint Duplicates Across Seeds | 499 | WARN | See duplicate severity report for breakdown |
 | NaN in Prompt / Overlay | 0 | PASS | String 'NaN' in prompt or overlay |
 | undefined in Prompt / Overlay | 0 | PASS | String 'undefined' in prompt or overlay |
 | Braces in Prompt / Overlay (Raw) | 88 | INFO | Includes legitimate LaTeX math: $\frac{a}{b}$, $\sqrt{x}$ |
@@ -62,5 +63,6 @@
 1. **Determinism**: 100% byte-identical reproduction across identical (subject, level, count, seed) invocations.
 2. **Rubric Tolerance**: All items strictly observe `|predictedLevel - level| <= 1` across all 10 difficulty tiers.
 3. **Formatting & Math**: Raw `{` and `}` characters occur solely inside LaTeX mathematical expressions (`\frac`, `\sqrt`); zero unexpanded template variables detected outside math blocks.
-4. **Language Purity**: Zero Hangul characters detected inside English reading target texts and option choices.
+4. **Language Purity (1307bb5)**: Unintended Hangul inside English target texts, reading documents, and option choices is strictly **0** across all 2,500 English items.
 5. **Structural Integrity**: All multiple choice questions provide exactly 4 distinct options with valid key linkage; all items provide bilingual (Korean + Vietnamese) hints and prompt coverage.
+6. **Duplicate Concentration**: 523 exact content repeats observed across 5,000 items (~10.5%), concentrated heavily in discrete-combinatorics and basic arithmetic recall templates (see bank-duplicate-severity.md).

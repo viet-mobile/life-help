@@ -1,7 +1,8 @@
 {
   "bankApiVersion": "bank-api-1",
-  "baselineSha": "b3f51bd36ddf617bf801f92c438c9bc453ec2ac7",
-  "generatedAt": "2026-10-05T00:41:23.801Z",
+  "baselineSha": "fcdc4af",
+  "bankStressCoreSha": "1307bb5",
+  "generatedAt": "2026-10-05T03:12:44.397Z",
   "config": {
     "seedsPerLevel": 50,
     "countPerSeed": 5,
@@ -25,6 +26,154 @@
     "nonFiniteNumericAnswers": 0,
     "hintCountViolations": 0,
     "missingOverlayOrQuestion": 0
+  },
+  "duplicateAnalysis": {
+    "totalItems": 5000,
+    "exactContentRepeatClusters": 272,
+    "exactContentRepeatItems": 523,
+    "nearDuplicateDifferentSurfaceItems": 191,
+    "sameSkeletonItems": 4950,
+    "maxRepetition": 20,
+    "maxRepItem": {
+      "template": "fact-recall",
+      "subject": "math",
+      "level": 1,
+      "surface": "1 m는 몇 cm인가요? (숫자만 쓰세요)",
+      "count": 20
+    },
+    "subjectBreakdown": {
+      "math": 431,
+      "english": 92
+    },
+    "levelBreakdown": {
+      "1": 99,
+      "2": 27,
+      "3": 21,
+      "4": 28,
+      "5": 64,
+      "6": 27,
+      "7": 56,
+      "8": 24,
+      "9": 45,
+      "10": 132
+    },
+    "topOffendingTemplates": [
+      {
+        "template": "counting-probability",
+        "duplicateCount": 94,
+        "shareOfDuplicates": 0.1797
+      },
+      {
+        "template": "fact-recall",
+        "duplicateCount": 86,
+        "shareOfDuplicates": 0.1644
+      },
+      {
+        "template": "pattern-general",
+        "duplicateCount": 53,
+        "shareOfDuplicates": 0.1013
+      },
+      {
+        "template": "fraction-ratio-ops",
+        "duplicateCount": 44,
+        "shareOfDuplicates": 0.0841
+      },
+      {
+        "template": "function-model",
+        "duplicateCount": 42,
+        "shareOfDuplicates": 0.0803
+      },
+      {
+        "template": "exp-log-model",
+        "duplicateCount": 39,
+        "shareOfDuplicates": 0.0746
+      },
+      {
+        "template": "error-message",
+        "duplicateCount": 26,
+        "shareOfDuplicates": 0.0497
+      },
+      {
+        "template": "place-value",
+        "duplicateCount": 26,
+        "shareOfDuplicates": 0.0497
+      },
+      {
+        "template": "geometry-real",
+        "duplicateCount": 26,
+        "shareOfDuplicates": 0.0497
+      },
+      {
+        "template": "headline-claim",
+        "duplicateCount": 23,
+        "shareOfDuplicates": 0.044
+      },
+      {
+        "template": "sign-notice",
+        "duplicateCount": 14,
+        "shareOfDuplicates": 0.0268
+      },
+      {
+        "template": "data-text",
+        "duplicateCount": 10,
+        "shareOfDuplicates": 0.0191
+      },
+      {
+        "template": "rate-travel",
+        "duplicateCount": 10,
+        "shareOfDuplicates": 0.0191
+      },
+      {
+        "template": "instructions-order",
+        "duplicateCount": 8,
+        "shareOfDuplicates": 0.0153
+      },
+      {
+        "template": "search-results",
+        "duplicateCount": 8,
+        "shareOfDuplicates": 0.0153
+      },
+      {
+        "template": "algebra-solve",
+        "duplicateCount": 5,
+        "shareOfDuplicates": 0.0096
+      },
+      {
+        "template": "representation-match",
+        "duplicateCount": 3,
+        "shareOfDuplicates": 0.0057
+      },
+      {
+        "template": "sign-words",
+        "duplicateCount": 1,
+        "shareOfDuplicates": 0.0019
+      },
+      {
+        "template": "schedule-constraints",
+        "duplicateCount": 1,
+        "shareOfDuplicates": 0.0019
+      },
+      {
+        "template": "multi-source",
+        "duplicateCount": 1,
+        "shareOfDuplicates": 0.0019
+      },
+      {
+        "template": "arith-routine",
+        "duplicateCount": 1,
+        "shareOfDuplicates": 0.0019
+      },
+      {
+        "template": "plan-compare-linear",
+        "duplicateCount": 1,
+        "shareOfDuplicates": 0.0019
+      },
+      {
+        "template": "estimation",
+        "duplicateCount": 1,
+        "shareOfDuplicates": 0.0019
+      }
+    ]
   },
   "boundaryTests": {
     "total": 5,
