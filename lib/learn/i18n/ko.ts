@@ -289,6 +289,7 @@ export const ko = {
   "listen.mode.en": "영어만",
   "listen.mode.enko": "영어 + 한국어",
   "listen.mode.na": "이 내용에는 한국어 뜻이 없어서 영어만 들려요.",
+  "listen.mode.afterAnswer": "한국어 뜻은 문제를 푼 뒤에 들을 수 있어요.",
   "listen.speed": "속도",
   "listen.repeat": "구간 반복",
   "listen.from": "시작 문장",

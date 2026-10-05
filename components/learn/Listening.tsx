@@ -68,9 +68,11 @@ interface PanelProps {
   variant: "list" | "chips";
   /** lets the learner save words/phrases of this lesson into the Words list */
   lesson?: { id: string; title: string };
+  /** the canonical Korean exists but is shown only after the question is answered */
+  meaningPending?: boolean;
 }
 
-export function ListeningPanel({ scope, segments, variant, lesson }: PanelProps) {
+export function ListeningPanel({ scope, segments, variant, lesson, meaningPending }: PanelProps) {
   const { t, locale, site } = useSite();
   const { player, state, available, mounted } = useListenPlayer();
   const [mode, setMode] = useState<ListenMode>("en");
@@ -152,7 +154,7 @@ export function ListeningPanel({ scope, segments, variant, lesson }: PanelProps)
           <div>
             <p className="l-muted" id={`mode-l-${scope}`}>{t("listen.mode")}</p>
             <Seg label={t("listen.mode")} value={effectiveMode} onChange={(v) => setMode(v as ListenMode)} options={[{ value: "en", label: t("listen.mode.en") }, { value: "en+ko", label: t("listen.mode.enko"), disabled: !bilingual }]} />
-            {!bilingual && <p className="l-muted">{t("listen.mode.na")}</p>}
+            {!bilingual && <p className="l-muted" data-testid="listen-meaning-note">{t(meaningPending ? "listen.mode.afterAnswer" : "listen.mode.na")}</p>}
           </div>
           <div>
             <p className="l-muted">{t("listen.speed")}</p>

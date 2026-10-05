@@ -5,8 +5,16 @@
 ## 1. Candidate identity
 * `PORT_BASELINE = c4b03fe` (production learning lineage; canary `25747a2a` is built from it). Branch `release/learning-prod-port`.
 * `PORT_HEAD` = the head of `release/learning-prod-port` at execution time (see the final report of the port task for the SHA recorded when this plan was written). Application source = every commit up to the last one that touches `app/`, `components/`, `lib/` or `messages/` (the touch-target fix); later commits are tests, docs and release tooling only.
-* `STAGING_VALIDATED_ARTIFACT` = the OpenNext build of that application source, deployed to the `life-help-staging` Worker as version `bc972f3b-e1cb-44ee-b15a-8f5c11b0abed` with `wrangler.staging.jsonc` (runtime variables only: `APP_ENV=staging`, `LEARN_SUPABASE_URL`, `EXPECTED_LEARN_SUPABASE_REF`).
+* `PREVIOUS_CANDIDATE = 5391a65` = SUPERSEDED (it lacked the bilingual content). `STAGING_VALIDATED_ARTIFACT` = the OpenNext build of the new port head (see the final report of the bilingual task for the SHA and the staging Worker version; the earlier version `bc972f3b-e1cb-44ee-b15a-8f5c11b0abed` is superseded) with `wrangler.staging.jsonc` (runtime variables only: `APP_ENV=staging`, `LEARN_SUPABASE_URL`, `EXPECTED_LEARN_SUPABASE_REF`).
 * `FULL_STAGED_APP_2b80230 = NOT PRODUCTION CANDIDATE`.
+
+## 1b. Bilingual listening content (added 2026-10-05; candidate 5391a65 SUPERSEDED)
+* `BILINGUAL_LISTENING_CONTENT_COVERAGE = 100%`
+* `TOTAL_LISTENABLE_ENGLISH_SEGMENTS = 241` (88 lesson-example items + 153 reading-passage sentences in 58 passages / 141 questions)
+* `WITH_CANONICAL_KOREAN = 241` (8 previously paired in the lesson text, 233 newly authored and reviewed)
+* `MISSING_CANONICAL_KOREAN = 0` (3 lessons excluded on purpose: no English to speak)
+* `VOCAB_PERSISTENCE = DEVICE_LOCAL` (saved words and flashcards stay in the browser; a signed-in learner does not get them on another device; no server table in this release)
+* Passage Korean is server-only until the question is solved or revealed (verified: 0 client bundle files contain it).
 
 ## 2. Scope
 Included: school learning E1-H3 with the current curricula; Vietnamese learning UI; penguin mascot; Enter-to-continue; guest and account learning with server scoring, XP, mastery; Study card with the math / English chooser (11 keys in 38 locales); English listening (sentence, full, bilingual canonical pairs, repeat range and count, speed), saved words and flashcards (device-local), design in `tts-flashcards-design.md`.

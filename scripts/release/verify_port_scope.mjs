@@ -30,6 +30,8 @@ const TEST_OR_DOC = /^(tests\/|docs\/|scripts\/release\/verify_port_scope\.mjs$)
 const ALLOWED = [
   /^components\/learn\//, /^lib\/learn\/(listen|i18n)\//, /^lib\/learn\/avatars\.ts$/, /^app\/study\/\[site\]\/\(play\)\/words\//,
   /^components\/customer\/(CustomerHome|StudyChooser)\.tsx$/, /^lib\/home\//, /^messages\/[A-Za-z-]+\.json$/,
+  // canonical Korean of the English listening content, the learning API that sends a passage's Korean after the answer, its inventory tool
+  /^lib\/learn\/content\/listening\//, /^lib\/learn\/server\/service\.ts$/, /^scripts\/learn\/listening-inventory\.mjs$/,
   /^tests\//, /^docs\//, /^scripts\/release\//,
   // staging-only tooling used to stage-validate the exact artifact (never used for production)
   /^(playwright\.staging\.config\.ts|wrangler\.staging\.jsonc)$/,

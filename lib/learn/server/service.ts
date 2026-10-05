@@ -1,4 +1,6 @@
 import { learnConfig } from "@/lib/learn/config";
+import { PASSAGE_KO } from "@/lib/learn/content/listening/passages-ko";
+import { passageText } from "@/lib/learn/listen/segments";
 import { checkAnswer, describeAnswer, validateResponse } from "@/lib/learn/domain/answers";
 import {
   computePlacement,
@@ -303,12 +305,15 @@ export class LearnService {
     }
 
     // Wrong answers escalate: small hint -> concrete hint -> worked explanation + similar question.
-    let feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string } = {};
+    let feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; passageKo?: string[] } = {};
+    // canonical Korean of an English reading passage: only once the question is solved or revealed (it would help answer it)
+    const passage = q.site === "english" ? passageText(q.prompt) : null;
+    const passageKo = passage ? PASSAGE_KO[passage] : undefined;
     let followUp: PublicQuestion | null = null;
     if (correct) {
-      feedback = { explanation: q.explanation };
+      feedback = { explanation: q.explanation, ...(passageKo ? { passageKo: [...passageKo] } : {}) };
     } else if (reveal) {
-      feedback = { explanation: q.explanation, answer: describeAnswer(q) };
+      feedback = { explanation: q.explanation, answer: describeAnswer(q), ...(passageKo ? { passageKo: [...passageKo] } : {}) };
       followUp = this.pickFollowUp(bundle, index, q, body.seenIds ?? []);
     } else {
       const level = Math.min(attemptNo, q.hints.length);

@@ -10,6 +10,7 @@ import { QuestionCard, type AttemptResponse, type QuestionOutcome } from "./Ques
 import { RichText } from "./RichText";
 import { ListeningPanel } from "./Listening";
 import { exampleSegments } from "@/lib/learn/listen/segments";
+import { EXAMPLE_KO } from "@/lib/learn/content/listening/examples-ko";
 import { ResultScreen, type SessionResult } from "./ResultScreen";
 
 type Kind = "lesson" | "review" | "practice";
@@ -167,7 +168,7 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
             <section className="l-card l-stack" aria-labelledby="example-h">
               <h2 id="example-h" className="l-h2">✏️ {t("lesson.example")}</h2>
               <p><RichText text={lesson.lesson.example} /></p>
-              {site === "english" && <ListeningPanel scope={`ex-${lesson.lesson.id}`} variant="list" segments={exampleSegments(`ex-${lesson.lesson.id}`, lesson.lesson.example)} lesson={{ id: lesson.lesson.id, title: lesson.lesson.title }} />}
+              {site === "english" && <ListeningPanel scope={`ex-${lesson.lesson.id}`} variant="list" segments={exampleSegments(`ex-${lesson.lesson.id}`, lesson.lesson.example, EXAMPLE_KO[lesson.lesson.id])} lesson={{ id: lesson.lesson.id, title: lesson.lesson.title }} />}
             </section>
           </>
         ) : (

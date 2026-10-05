@@ -13,7 +13,7 @@ export interface AttemptResponse {
   correct: boolean;
   attemptNo: number;
   revealed: boolean;
-  feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string };
+  feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[] };
   followUp: PublicQuestion | null;
   delta: EngineDelta;
   state: PlayerState;
@@ -51,8 +51,6 @@ export function QuestionCard({
   onNext: (outcome: QuestionOutcome) => void;
 }) {
   const { api, t, site } = useLearner();
-  // an English reading passage inside the prompt is listenable sentence by sentence (canonical text, speech runs in the browser)
-  const passage = useMemo(() => (site === "english" ? passageSegments(`q-${q.id}`, q.prompt) : null), [site, q.id, q.prompt]);
   const isMulti = q.type === "ordering" || q.type === "multiple_select";
   const [value, setValue] = useState<string | string[]>(isMulti ? [] : "");
   const [status, setStatus] = useState<QStatus>("answering");
@@ -69,6 +67,9 @@ export function QuestionCard({
     ? value.length > 0 && (q.type !== "ordering" || value.length === (q.options?.length ?? 0))
     : value.trim().length > 0;
   const resolved = status === "correct" || status === "revealed";
+  // an English reading passage inside the prompt is listenable sentence by sentence; its Korean only after the question is solved or revealed
+  const passageKo = resolved ? feedback.passageKo : undefined;
+  const passage = useMemo(() => (site === "english" ? passageSegments(`q-${q.id}`, q.prompt, passageKo) : null), [site, q.id, q.prompt, passageKo]);
   const canHint = hints.length < 2 && !resolved;
   const goNext = () => onNext({ firstTry: status === "correct" && attempts === 0, revealed: status === "revealed", followUp });
   useEnterToContinue(resolved, goNext); // Enter = the "next question" button
@@ -127,7 +128,7 @@ export function QuestionCard({
 
       <div className="l-card l-stack">
         <div className="l-qprompt"><RichText text={q.prompt} /></div>
-        {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} />}
+        {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} meaningPending={!resolved} />}
         {q.latex && <MathBlock latex={q.latex} />}
         {q.audioText && site === "english" && <ListenButton text={q.audioText} />}
         <AnswerInput site={site} q={q} value={value} onChange={setValue} disabled={resolved || status === "checking"} onSubmit={submit} />
