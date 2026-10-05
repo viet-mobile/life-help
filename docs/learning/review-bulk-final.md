@@ -17,8 +17,12 @@ Method: committed content only (extracted with `git archive`), checked by core c
   * `onboarding.nickname.hint`: canonical "A nickname of 2-16 characters"; these locales say 2-12. This is a wrong validation hint for the real input rule.
   * `landing.cta.start`: canonical "Start in 1 minute"; these locales say "Start for free" (a promise that is not in the canonical text; the handoff forbids added promises).
   * `site.math.description`, `site.english.description`, `landing.how1.body`, `diag.intro.title`, `dash.diagnostic.cta`: canonical numbers ("3-10 minute", "2-minute") dropped.
-* The check is now mechanical: the verifier compares the numbers of every string (native digits normalised; `grade.*` labels exempt). On the delivered package it reports 15 locales: the 13 above are genuine defects; `arz` (number words, e.g. "دقيقة واحدة") and `he` ("בדקה אחת") are false positives of the digit rule and read correctly, but a re-delivery should still use digits.
-* The other 20 locales (am, bn, da, el, fa, kk, km, mn, my, ne, no, pl, si, sv, ta, tet, th, tr, uk, uz, plus arz and he on reading) are faithful on the sampled keys.
+* The check is now mechanical: the verifier compares the numbers of every string (native digits normalised; `grade.*` labels exempt). It first reported 15 locales on the delivered package. Four distinct things must not be conflated:
+  * **Wrong language**: none in the final package (fixed from Phase 2).
+  * **English fallback / untranslated**: none (at most a few identical brand-like strings).
+  * **Genuine number/meaning drift: 13 locales** (the list above), source text differs from `en.ts`.
+  * **Verifier false positives (fixed in the verifier, not in the translations)**: `he` `landing.cta.start` ("בדקה אחת" = one minute) and `arz` `landing.cta.start`, `onboarding.nickname.hint` ("حرفين لـ ١٦"), `diag.intro.title` and `dash.diagnostic.cta` ("دقيقتين") were correct word forms. **But `arz` is not clean**: `site.math.description` and `site.english.description` lose the "3-10 minute" range and add "10 minutes a day", which is genuine drift (14 genuine + 1 locale where only 2 keys drift; `arz` therefore also needs those two keys regenerated). After the reviewed number-word table, the verifier reports `arz` numDiff 2 (those keys) and `he` clean.
+* The other locales (am, bn, da, el, fa, he, kk, km, mn, my, ne, no, pl, si, sv, ta, tet, th, tr, uk, uz) pass the number check and the sampled keys read faithfully; a full semantic read of every key is part of the final acceptance.
 * Core does not hand-edit generated translations. The 38-locale learning gate stays **OPEN/FAIL** until those 13 locales are regenerated from the canonical text and the verifier exits 0.
 
 ## 2. Main-service package: PASS
