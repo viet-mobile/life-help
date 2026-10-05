@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "scope": "Adult Study v1 specification: how original content is authored and validated. It contains no lessons and no vocabulary; it is the contract content must satisfy.",
+  "dimensions": ["reading", "listening", "speaking", "writing", "vocabulary", "grammar", "practicalInformation"],
+  "dimensionNotes": { "practicalInformation": "practical information use: reading, filling in and acting on real-life information (forms, notices, schedules, prices, directions, messages)" },
+  "targets": ["korean", "english", "japanese", "chinese", "indonesian", "vietnamese"],
+  "frameworkMapping": "metadata only; no level claims to be an official CEFR, TOPIK, JLPT, HSK or similar result",
+  "authoring": {
+    "allowedRights": ["ORIGINAL", "LICENSED", "OPEN_LICENSE", "PUBLIC_DOMAIN"],
+    "forbidden": [
+      "importing, copying, translating, summarizing or paraphrasing any legacy viet.mobile corpus text while its rights are UNCLEARED",
+      "scraping, repackaging or re-expressing jw.org or any other third-party publication text",
+      "reusing a sentence, dialogue, passage, lesson order or exercise from a third-party course",
+      "text produced by a model from a third-party source passage"
+    ],
+    "originalityRules": [
+      "every dialogue, passage and example sentence is written for LIFE.HELP from a situation description and a target vocabulary/grammar list, not from a source text",
+      "every content record names its author or generator and the authoring record that justifies ORIGINAL (provenance.rights.evidence)",
+      "open-licensed or public-domain material is allowed only with the licence id and attribution duties recorded; it is never mixed into an ORIGINAL pack without its own record",
+      "a native-speaker review is recorded per pack before it is published; unreviewed packs stay in draft"
+    ],
+    "packGate": "validateContentPack plus publishProblems (lib/learn/products/rights.ts): no pack with UNCLEARED or REJECTED rights is publishable"
+  },
+  "engine": {
+    "shared": ["AdultContentPack contract", "lesson and exercise types (multiple_choice, fill_blank, match, translation, word_order)", "per-dimension proficiency model and level placement", "progress, review scheduling and mastery", "entitlement, privacy and transparency layers"],
+    "perTargetOverlay": {
+      "korean": { "extension": "ko", "needs": ["Hangul text", "romanization as a learner aid only", "honorific / politeness level tag on every example"] },
+      "english": { "extension": "en", "needs": ["irregular forms", "phrasal verb flag", "register tag"] },
+      "japanese": { "extension": "ja", "needs": ["hiragana on every entry", "kanji only from the level's kanji list", "politeness level tag"] },
+      "chinese": { "extension": "zh", "needs": ["simplified text", "toned pinyin", "traditional form optional"] },
+      "indonesian": { "extension": "id", "needs": ["root and affixes where affixation is taught", "formal/informal register tag"] },
+      "vietnamese": { "extension": "vi", "needs": ["full diacritics (the tone is part of the word)", "region tag where usage differs", "register tag"] }
+    },
+    "uiLocales": "instruction language is the learner's UI locale; target text never carries instruction-language text and vice versa (the two-layer rule of the question bank)"
+  },
+  "levels": [
+    { "level": 1, "name": "First steps", "lessonMinutes": [5, 10], "newVocabularyPerLesson": [5, 8], "cumulativeVocabularyBand": [0, 150], "sentenceTokens": [1, 4],
+      "canDo": { "reading": "recognize the writing system and read single words and labels", "listening": "pick out isolated words and numbers in slow, clear speech", "speaking": "say a greeting, a name and a number", "writing": "copy and write single words", "vocabulary": "core nouns, numbers, greetings", "grammar": "fixed phrases without analysis", "practicalInformation": "read a price, a time and a name on a sign" } },
+    { "level": 2, "name": "Basic sentences", "lessonMinutes": [5, 10], "newVocabularyPerLesson": [6, 10], "cumulativeVocabularyBand": [150, 400], "sentenceTokens": [3, 6],
+      "canDo": { "reading": "read short sentences about self and surroundings", "listening": "follow simple questions and instructions", "speaking": "answer yes/no and simple wh-questions about self", "writing": "write one simple sentence from a model", "vocabulary": "family, food, places, days", "grammar": "present statement, question and negation patterns", "practicalInformation": "read an opening-hours notice and a simple menu" } },
+    { "level": 3, "name": "Everyday needs", "lessonMinutes": [8, 12], "newVocabularyPerLesson": [8, 12], "cumulativeVocabularyBand": [400, 800], "sentenceTokens": [4, 8],
+      "canDo": { "reading": "read short everyday messages", "listening": "understand short requests and directions", "speaking": "ask for things and give simple directions", "writing": "write a short message of two or three sentences", "vocabulary": "shopping, transport, time, health words", "grammar": "past and future markers, simple connectors", "practicalInformation": "read a timetable, a receipt and a simple form" } },
+    { "level": 4, "name": "Daily routines", "lessonMinutes": [8, 12], "newVocabularyPerLesson": [8, 12], "cumulativeVocabularyBand": [800, 1400], "sentenceTokens": [5, 10],
+      "canDo": { "reading": "read short notices and simple texts on familiar topics", "listening": "follow short dialogues at normal-slow speed", "speaking": "describe routine, preferences and plans", "writing": "write a short note or reply", "vocabulary": "work, home, health, services", "grammar": "reasons, conditions, comparisons at basic level", "practicalInformation": "complete a basic form and follow a written instruction" } },
+    { "level": 5, "name": "Independent basics", "lessonMinutes": [10, 15], "newVocabularyPerLesson": [10, 14], "cumulativeVocabularyBand": [1400, 2200], "sentenceTokens": [6, 12],
+      "canDo": { "reading": "read simple articles and instructions", "listening": "understand the main point of everyday conversations", "speaking": "hold a short exchange on familiar topics without prompts", "writing": "write a paragraph on a familiar topic", "vocabulary": "common abstract and workplace words", "grammar": "relative and subordinate structures, politeness variants", "practicalInformation": "handle a service call, appointment or application using written guidance" } },
+    { "level": 6, "name": "Confident everyday use", "lessonMinutes": [10, 15], "newVocabularyPerLesson": [10, 14], "cumulativeVocabularyBand": [2200, 3200], "sentenceTokens": [8, 14],
+      "canDo": { "reading": "read multi-paragraph texts and extract details", "listening": "follow announcements and phone messages", "speaking": "explain a problem and ask for a solution", "writing": "write an informal email or message with a clear request", "vocabulary": "services, finance, health, work in more detail", "grammar": "reported speech, passive and causative at working level", "practicalInformation": "read a contract summary or notice and answer questions about it" } },
+    { "level": 7, "name": "Working proficiency", "lessonMinutes": [12, 18], "newVocabularyPerLesson": [10, 16], "cumulativeVocabularyBand": [3200, 4500], "sentenceTokens": [10, 18],
+      "canDo": { "reading": "read news and workplace documents", "listening": "follow meetings and media at normal speed on known topics", "speaking": "present a short opinion with reasons", "writing": "write a formal message and a short report", "vocabulary": "register-sensitive vocabulary, collocations", "grammar": "nuance, hedging and formal registers", "practicalInformation": "compare options in documents and decide" } },
+    { "level": 8, "name": "Advanced working use", "lessonMinutes": [12, 20], "newVocabularyPerLesson": [10, 16], "cumulativeVocabularyBand": [4500, 6500], "sentenceTokens": [12, 22],
+      "canDo": { "reading": "read long texts and infer unstated points", "listening": "follow fast, informal and mixed-accent speech", "speaking": "negotiate and discuss abstract topics", "writing": "write structured arguments and summaries", "vocabulary": "abstract and idiomatic usage", "grammar": "full range with rare structures recognized", "practicalInformation": "work with official and technical documents" } },
+    { "level": 9, "name": "Near-native control", "lessonMinutes": [15, 25], "newVocabularyPerLesson": [8, 14], "cumulativeVocabularyBand": [6500, 9000], "sentenceTokens": [14, 28],
+      "canDo": { "reading": "read literary, legal-lay and specialist texts with effort", "listening": "understand rapid speech, humor and implication", "speaking": "adapt tone and register fluently", "writing": "write polished, audience-aware text", "vocabulary": "specialist and low-frequency words", "grammar": "stylistic choice and error-free control of common structures", "practicalInformation": "handle complex administrative and professional situations independently" } },
+    { "level": 10, "name": "Mastery", "lessonMinutes": [15, 30], "newVocabularyPerLesson": [8, 14], "cumulativeVocabularyBand": [9000, 14000], "sentenceTokens": [16, 40],
+      "canDo": { "reading": "read any ordinary text with ease", "listening": "understand all ordinary speech and media", "speaking": "express fine shades of meaning spontaneously", "writing": "write on any topic with style and precision", "vocabulary": "wide idiomatic and cultural range", "grammar": "consistent accurate and natural control", "practicalInformation": "act on any ordinary written or spoken information without help" } }
+  ],
+  "contentTargetsV1": "per target and level: a pilot pack sized by the review capacity, not by a corpus total; no target counts of lessons or words are promised here",
+  "provisional": "level bands are authoring guidance on the shared ten-step scale; they are not calibrated against learner data and make no external-framework claim"
+}

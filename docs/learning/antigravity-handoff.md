@@ -60,3 +60,10 @@ Official government, public agency, public exam body or public research assessme
 
 ## Report
 `reports/generated/<package>.md`: baseline SHA, files changed, counts COMPUTED by the script, validation output, gaps, open questions. Claude reviews and cherry-picks; do not self-merge. The report must agree with the committed files: Claude checks it against them.
+
+## PHASE 3 RE-DELIVERY REQUIREMENTS (2026-10-05)
+* `BANK_STRESS_RERUN_REQUIRED = YES`: the English Hangul leak is fixed in core (`1307bb5`). Rerun the stress harness on the new core head and also assert that no English target text contains Hangul or Vietnamese letters.
+* Translations (38-locale learning UI; 35-locale main service): real translations of the canonical meaning, one language per file. Acceptance gate: `node --no-warnings scripts/learn/i18n/verify-generated-locales.mjs --dir <dir>` must exit 0 (key parity, placeholders, script match, no copies between languages, no Hangul outside ko). Canonical locales are never edited; core does not hand-edit generated files.
+* Rubric coding: independent of empirical rates. No feature may be derived from correct_rate or any empirical, predicted or calibrated level. `FIT_MAPPING_STATUS = DEFERRED`.
+* Candidate data: v2 must contain genuinely new items from official sources; a repackaging of the 308 reviewed items is not an expansion.
+* Rights: `data/learning-study/rights.json` and `lib/learn/products/rights.ts` are core-owned. Never import or paraphrase legacy or jw.org text.

@@ -20,3 +20,6 @@
 ## Evidence items
 * Rubric-code at least 40 real items (guide: `rubric-scoring-guide.md`), run `assessFit`, record the decision.
 * Per-year Korean coverage evidence (`coverage-evidence.csv`) or leave Korean as "not identified".
+
+## Diversity finding from the stress rerun (2026-10-05)
+499 of 5,000 sampled items repeat an exact fingerprint across seeds, concentrated in math L1 (91/250) and L10 (110/250). Candidates: widen parameter ranges at math L1, add structural variation at L10. Not started; any change to item output bumps `BANK_API_VERSION`.
