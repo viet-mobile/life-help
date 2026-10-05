@@ -44,6 +44,23 @@ function useSpeed(): [Speed, (s: Speed) => void] {
 const MAX_WORDS_TO_SAVE = 6;
 const wordCount = (s: string) => s.trim().split(/\s+/).length;
 
+/** Single choice as large buttons: radio semantics, >= 44px touch targets, the chosen one is marked with a check and a border. */
+function Seg({ label, value, options, onChange }: { label: string; value: string | number; options: { value: string | number; label: string; disabled?: boolean }[]; onChange: (v: string | number) => void }) {
+  return (
+    <div role="radiogroup" aria-label={label} style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+      {options.map((o) => {
+        const on = o.value === value;
+        return (
+          <button key={String(o.value)} type="button" role="radio" aria-checked={on} disabled={o.disabled} className="l-chip" onClick={() => onChange(o.value)}
+            style={{ minHeight: 44, minWidth: 44, border: on ? "2px solid var(--l-accent)" : "2px solid transparent", fontWeight: on ? 800 : 600, opacity: o.disabled ? 0.5 : 1 }}>
+            {on ? "✓ " : ""}{o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 interface PanelProps {
   scope: string;
   segments: ListenSegment[];
@@ -132,23 +149,22 @@ export function ListeningPanel({ scope, segments, variant, lesson }: PanelProps)
       <details>
         <summary className="l-link" style={{ cursor: "pointer" }}>{t("listen.repeat")} · {t("listen.mode")} · {t("listen.speed")}</summary>
         <div className="l-stack" style={{ marginTop: 8 }}>
-          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend className="l-muted">{t("listen.mode")}</legend>
-            <label style={{ marginRight: 12 }}><input type="radio" name={`mode-${scope}`} checked={effectiveMode === "en"} onChange={() => setMode("en")} /> {t("listen.mode.en")}</label>
-            <label><input type="radio" name={`mode-${scope}`} checked={effectiveMode === "en+ko"} disabled={!bilingual} onChange={() => setMode("en+ko")} /> {t("listen.mode.enko")}</label>
+          <div>
+            <p className="l-muted" id={`mode-l-${scope}`}>{t("listen.mode")}</p>
+            <Seg label={t("listen.mode")} value={effectiveMode} onChange={(v) => setMode(v as ListenMode)} options={[{ value: "en", label: t("listen.mode.en") }, { value: "en+ko", label: t("listen.mode.enko"), disabled: !bilingual }]} />
             {!bilingual && <p className="l-muted">{t("listen.mode.na")}</p>}
-          </fieldset>
-          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend className="l-muted">{t("listen.speed")}</legend>
-            {SPEEDS.map((s) => <label key={s} style={{ marginRight: 12 }}><input type="radio" name={`speed-${scope}`} checked={speed === s} onChange={() => setSpeed(s)} /> {s}x</label>)}
-          </fieldset>
+          </div>
+          <div>
+            <p className="l-muted">{t("listen.speed")}</p>
+            <Seg label={t("listen.speed")} value={speed} onChange={(v) => setSpeed(v as Speed)} options={SPEEDS.map((s) => ({ value: s, label: `${s}x` }))} />
+          </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-            <label>{t("listen.from")} <select aria-label={t("listen.from")} data-testid="repeat-from" value={from} onChange={(e) => { const v = Number(e.target.value); setFrom(v); if (to < v) setTo(v); }}>{segments.map((_, i) => <option key={i} value={i}>{i + 1}</option>)}</select></label>
-            <label>{t("listen.to")} <select aria-label={t("listen.to")} data-testid="repeat-to" value={to} onChange={(e) => { const v = Number(e.target.value); setTo(v); if (from > v) setFrom(v); }}>{segments.map((_, i) => <option key={i} value={i}>{i + 1}</option>)}</select></label>
-            <label>{t("listen.count")} <select aria-label={t("listen.count")} data-testid="repeat-count" value={count} onChange={(e) => setCount(e.target.value)}>
+            <label>{t("listen.from")} <select style={{ minHeight: 44 }} aria-label={t("listen.from")} data-testid="repeat-from" value={from} onChange={(e) => { const v = Number(e.target.value); setFrom(v); if (to < v) setTo(v); }}>{segments.map((_, i) => <option key={i} value={i}>{i + 1}</option>)}</select></label>
+            <label>{t("listen.to")} <select style={{ minHeight: 44 }} aria-label={t("listen.to")} data-testid="repeat-to" value={to} onChange={(e) => { const v = Number(e.target.value); setTo(v); if (from > v) setFrom(v); }}>{segments.map((_, i) => <option key={i} value={i}>{i + 1}</option>)}</select></label>
+            <label>{t("listen.count")} <select style={{ minHeight: 44 }} aria-label={t("listen.count")} data-testid="repeat-count" value={count} onChange={(e) => setCount(e.target.value)}>
               {REPEAT_CHOICES.map((n) => <option key={n} value={String(n)}>{n}</option>)}<option value="custom">{t("listen.count.custom")}</option></select></label>
             {count === "custom" && (
-              <label>{t("listen.count.custom.label", { n: MAX_REPEAT })} <input data-testid="repeat-custom" inputMode="numeric" value={custom} onChange={(e) => setCustom(e.target.value)} aria-invalid={customInvalid} style={{ width: "4.5rem" }} /></label>
+              <label>{t("listen.count.custom.label", { n: MAX_REPEAT })} <input data-testid="repeat-custom" inputMode="numeric" value={custom} onChange={(e) => setCustom(e.target.value)} aria-invalid={customInvalid} style={{ width: "5rem", minHeight: 44 }} /></label>
             )}
           </div>
           <button type="button" className="l-btn l-btn-ghost" data-testid="repeat-play" disabled={customInvalid || repeat < 1} onClick={() => play({ from, to, repeat })}>🔁 {t("listen.repeat.play")}</button>

@@ -82,7 +82,7 @@ test.describe("English listening (mocked speech)", () => {
     await openLesson(page, "en-l1");
     await openDetails(page);
     await expect(page.getByRole("radio", { name: ko["listen.mode.en"] })).toBeChecked();
-    await page.getByRole("radio", { name: ko["listen.mode.enko"] }).check();
+    await page.getByRole("radio", { name: ko["listen.mode.enko"] }).click();
     await page.getByTestId("listen-full").click();
     await expect.poll(() => texts(page)).toEqual(["library", "도서관", "desk", "책상", "milk", "우유"]);
     expect((await spoken(page)).map((u) => u.lang)).toEqual(["en-US", "ko-KR", "en-US", "ko-KR", "en-US", "ko-KR"]);
@@ -93,7 +93,7 @@ test.describe("English listening (mocked speech)", () => {
     await onboard(page, "M1");
     await openLesson(page, "en-l1");
     await openDetails(page);
-    await page.getByRole("radio", { name: "0.75x" }).check();
+    await page.getByRole("radio", { name: "0.75x" }).click();
     await page.getByTestId("repeat-from").selectOption({ value: "1" });
     await page.getByTestId("repeat-to").selectOption({ value: "2" });
     await page.getByTestId("repeat-count").selectOption({ value: "3" });

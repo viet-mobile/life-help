@@ -59,7 +59,7 @@ export function Flashcards() {
         <>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
             <label>{t("words.filter")}{" "}
-              <select data-testid="words-filter" aria-label={t("words.filter")} value={filter.kind === "all" ? "all" : filter.lessonId}
+              <select style={{ minHeight: 44 }} data-testid="words-filter" aria-label={t("words.filter")} value={filter.kind === "all" ? "all" : filter.lessonId}
                 onChange={(e) => { setFilter(e.target.value === "all" ? { kind: "all" } : { kind: "lesson", lessonId: e.target.value }); setI(0); setFlipped(false); }}>
                 <option value="all">{t("words.filter.all")}</option>
                 {lessons.map(([id, title]) => <option key={id} value={id}>{t("words.filter.lesson")}: {title}</option>)}

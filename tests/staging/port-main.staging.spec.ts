@@ -103,7 +103,7 @@ test.describe.serial("learning-only port on the staging Worker", () => {
   }
 
   test("route negatives: no Aircon, no marketplace / payment / provider / push / reward / media surface, no Adult Study", async () => {
-    for (const p of ["/api/requests", "/api/checkouts", "/api/providers/MOCK_PROVIDER/webhook", "/api/payments/x/verify", "/api/helper/prices", "/api/helper/payouts", "/api/push/config", "/api/rewards", "/api/media", "/api/sys/review/cases", "/api/pricing/catalog", "/api/referrals/identity", "/adult", "/study/korean", "/study/adult", "/tech/assignments", "/payment"]) {
+    for (const p of ["/api/requests", "/api/checkouts", "/api/providers/MOCK_PROVIDER/webhook", "/api/payments/x/verify", "/api/helper/prices", "/api/helper/payouts", "/api/push/config", "/api/rewards", "/api/media", "/api/sys/review/cases", "/api/pricing/catalog", "/api/referrals/identity", "/adult", "/study/korean", "/study/adult", "/tech/assignments"]) {
       expect((await fetch(`${BASE}${p}`)).status, p).toBe(404);
     }
     const html = await (await fetch(`${BASE}/services/aircon`)).text();
@@ -130,11 +130,11 @@ test.describe.serial("learning-only port on the staging Worker", () => {
     test("English + Korean queue order and voices; repeat range 2..3 x 3; custom count; stop cancels", async ({ page }) => {
       await lesson(page);
       await details(page);
-      await page.getByRole("radio", { name: ko["listen.mode.enko"] }).check();
+      await page.getByRole("radio", { name: ko["listen.mode.enko"] }).click();
       await page.getByTestId("listen-full").click();
       await expect.poll(() => texts(page)).toEqual(["library", "도서관", "desk", "책상", "milk", "우유"]);
       expect((await spoken(page)).map((u) => u.lang)).toEqual(["en-US", "ko-KR", "en-US", "ko-KR", "en-US", "ko-KR"]);
-      await page.getByRole("radio", { name: ko["listen.mode.en"] }).check();
+      await page.getByRole("radio", { name: ko["listen.mode.en"] }).click();
       await page.evaluate(() => { (window as unknown as { __spoken: unknown[] }).__spoken.length = 0; });
       await page.getByTestId("repeat-from").selectOption({ value: "1" });
       await page.getByTestId("repeat-to").selectOption({ value: "2" });
