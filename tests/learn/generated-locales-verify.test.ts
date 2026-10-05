@@ -46,6 +46,15 @@ describe("generated-locale verifier", () => {
     expect(p).toMatch(/markup/);
     expect(verifyLocale("th", flat).notes.identicalToEnglish).toBeGreaterThanOrEqual(1);
   });
+  it("flags a translation that changes a number of the canonical text (nickname 2-16 became 2-12, a duration dropped), native digits allowed", () => {
+    const flat = pseudo("ก");
+    flat["onboarding.nickname.hint"] = flat["onboarding.nickname.hint"].replace("16", "12");
+    flat["diag.intro.title"] = flat["diag.intro.title"].replace(/\d/g, "");
+    const r = verifyLocale("th", flat);
+    expect(r.problems.join("\n")).toMatch(/numDiff 2/);
+    const thai = pseudo("ก"); thai["onboarding.nickname.hint"] = thai["onboarding.nickname.hint"].replace(/\d/g, (d) => String.fromCodePoint(0x0e50 + Number(d)));
+    expect(verifyLocale("th", thai).problems).toEqual([]);
+  });
   it("flags a locale whose strings were copied from another language, and a generated reference locale", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "locales-"));
     try {

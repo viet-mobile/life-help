@@ -23,6 +23,9 @@ const EXPECTED = ALL.filter((l) => !REFERENCE.includes(l));
 const KEYS = Object.keys(en);
 const ph = (s) => (s.match(/\{[A-Za-z0-9_]+\}/g) ?? []).sort().join(",");
 const EMOJI = /\p{Extended_Pictographic}/u;
+/** every Unicode decimal digit mapped to 0-9 (native-digit scripts count as the same number), then the sorted numbers of the string */
+const nd = (c) => { const cp = c.codePointAt(0); let b = cp; while (/\p{Nd}/u.test(String.fromCodePoint(b - 1))) b--; return String(cp - b); };
+const numbers = (s) => (s.replace(/\p{Nd}/gu, nd).match(/\d+/g) ?? []).sort().join(",");
 const BRANDS = ["MATH.LIFE.HELP", "ENGLISH.LIFE.HELP"];
 const SAME_OK = new Set(["brand.math", "brand.english", "dash.xp", "locale.ko", "locale.vi", "common.diff"]);
 
@@ -49,11 +52,12 @@ export function verifyLocale(locale, flat) {
   const missing = KEYS.filter((k) => !(k in flat)), extra = keys.filter((k) => !(k in en));
   if (missing.length) problems.push(`missing ${missing.length}: ${missing.slice(0, 5).join(", ")}`);
   if (extra.length) problems.push(`extra ${extra.length}: ${extra.slice(0, 5).join(", ")}`);
-  let same = [], hangul = [], markup = [], phBad = [], empty = [], brand = [], emoji = [], longest = { key: "", ratio: 0 };
+  let numDiff = [], same = [], hangul = [], markup = [], phBad = [], empty = [], brand = [], emoji = [], longest = { key: "", ratio: 0 };
   for (const k of KEYS) {
     const v = flat[k];
     if (typeof v !== "string" || !v.trim()) { empty.push(k); continue; }
     if (ph(v) !== ph(en[k])) phBad.push(k);
+    if (!k.startsWith("grade.") && numbers(v) !== numbers(en[k])) numDiff.push(k);
     if (v.replace(/\{[A-Za-z0-9_]+\}/g, "").match(/[{}]/)) phBad.push(k);
     if (/[<>\n\r]|\$/.test(v)) markup.push(k);
     if (/[가-힯]/.test(v) && k !== "locale.ko") hangul.push(k);
@@ -63,7 +67,7 @@ export function verifyLocale(locale, flat) {
     const ratio = v.length / en[k].length;
     if (en[k].length > 12 && ratio > longest.ratio) longest = { key: k, ratio: +ratio.toFixed(2) };
   }
-  for (const [name, list] of Object.entries({ empty, phBad, markup, hangul, brand, emoji })) if (list.length) problems.push(`${name} ${list.length}: ${list.slice(0, 5).join(", ")}`);
+  for (const [name, list] of Object.entries({ empty, phBad, numDiff, markup, hangul, brand, emoji })) if (list.length) problems.push(`${name} ${list.length}: ${list.slice(0, 5).join(", ")}`);
   if (flat["locale.ko"] !== ko["locale.ko"] || flat["locale.vi"] !== en["locale.vi"]) problems.push("locale.* names changed");
   const wrongScript = KEYS.filter((k) => { const sh = scriptShare(locale, flat[k] ?? ""); return sh !== null && sh < 0.6; });
   if (SCRIPT[locale] && wrongScript.length > KEYS.length * 0.1) problems.push(`WRONG LANGUAGE? ${wrongScript.length}/${KEYS.length} strings are not mainly in the locale's own script: ${wrongScript.slice(0, 4).join(", ")}`);
