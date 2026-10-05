@@ -1,8 +1,8 @@
 # Question Bank Duplicate Fingerprint & Severity Report
 
-- **Authoritative Baseline SHA**: `e621a12`
+- **Authoritative Baseline SHA**: `fcdc4af`
 - **Bank Fix SHA**: `1307bb5`
-- **Generated At**: `2026-10-05T03:06:14.921Z`
+- **Generated At**: `2026-10-05T03:12:44.397Z`
 - **Total Sample Tested**: 5,000 items (2 subjects × 10 levels × 50 seeds × 5 items)
 
 ## 1. Executive Summary
