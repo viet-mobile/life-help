@@ -8,9 +8,12 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
+import { StudyChooser } from "@/components/customer/StudyChooser";
 
 export interface ServiceItem {
   id: string;
+  /** "study" is a link card (chooser to the learning sub-domains), not a marketplace service */
+  kind?: "service" | "study";
   category: "repair" | "support";
   icon: string;
   key: string;
@@ -31,6 +34,27 @@ export interface ServiceItem {
 
 // 10 Core Services with distinct subtle pastel color codes (순서: 자주-분홍-주황-노랑-연두-민트-하늘-파랑-네이비-보라)
 const allServices: ServiceItem[] = [
+  // 0. 에메랄드 (Pastel Emerald) - 영어/수학 공부: immediately BEFORE 구인/구직 도움; opens a chooser to math.life.help / english.life.help
+  {
+    id: "study",
+    kind: "study",
+    category: "support",
+    icon: "🎓",
+    key: "study",
+    slug: "study",
+    pathPrefix: "support",
+    ko: "영어/수학 공부",
+    colorName: "에메랄드",
+    cardBg: "bg-emerald-50/85",
+    cardBorder: "border-emerald-200/90",
+    cardHover: "hover:border-emerald-400 hover:bg-emerald-100/90",
+    textColor: "text-emerald-950",
+    iconBg: "bg-emerald-100/80 text-emerald-700",
+    badgeBg: "bg-emerald-100/90",
+    badgeText: "text-emerald-900",
+    btnBg: "bg-emerald-700 hover:bg-emerald-800",
+    badgeLabelKo: "학교 공부",
+  },
   // 1. 자주 (Pastel Magenta / Plum) - 구인/주거계약
   {
     id: "jobHelp",
@@ -240,6 +264,22 @@ const benefits = [
   ["⭐", "review"],
 ] as const;
 
+/** Service cards link to the service page; the Study card is a button that opens the chooser (its destinations are other sub-domains, not routes of this site). */
+function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; onStudy: () => void; className: string; children: React.ReactNode }) {
+  if (svc.kind === "study") {
+    return (
+      <button type="button" onClick={onStudy} aria-haspopup="dialog" data-testid="home-card-study" data-service-id={svc.id} className={`${className} w-full text-left`}>
+        {children}
+      </button>
+    );
+  }
+  return (
+    <Link href={`/services/${svc.slug}`} data-testid={`home-card-${svc.id}`} data-service-id={svc.id} className={className}>
+      {children}
+    </Link>
+  );
+}
+
 export function CustomerHome() {
   const { locale, setLocale, t, tKo, tBilingual, isBilingual, formatBilingual } = useLocale();
   const { formattedRegion, shortRegionText, openModal } = useRegion();
@@ -247,6 +287,8 @@ export function CustomerHome() {
 
   // Mobile smart tabs: default "all" so that all 10 services are visible on the first screen
   const [activeTab, setActiveTab] = useState<"all" | "repair" | "support">("all");
+  const [studyOpen, setStudyOpen] = useState(false);
+  const countOf = (c: "repair" | "support") => allServices.filter((x) => x.category === c).length;
 
   const displayedServices =
     activeTab === "all"
@@ -378,7 +420,7 @@ export function CustomerHome() {
                     activeTab === "all" ? "bg-white/25 text-white" : "bg-slate-100 text-slate-600"
                   }`}
                 >
-                  10
+                  {allServices.length}
                 </span>
               </button>
 
@@ -398,7 +440,7 @@ export function CustomerHome() {
                     activeTab === "repair" ? "bg-white/25 text-white" : "bg-slate-100 text-slate-600"
                   }`}
                 >
-                  5
+                  {countOf("repair")}
                 </span>
               </button>
 
@@ -418,7 +460,7 @@ export function CustomerHome() {
                     activeTab === "support" ? "bg-white/25 text-white" : "bg-slate-100 text-slate-600"
                   }`}
                 >
-                  5
+                  {countOf("support")}
                 </span>
               </button>
             </div>
@@ -431,9 +473,10 @@ export function CustomerHome() {
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
             {displayedServices.map((svc) => (
-              <Link
+              <CardShell
                 key={svc.id}
-                href={`/services/${svc.slug}`}
+                svc={svc}
+                onStudy={() => setStudyOpen(true)}
                 className={`droplet-card group relative border ${svc.cardBorder} ${svc.cardBg} ${svc.cardHover} p-3 sm:p-4 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between cursor-pointer focus:outline-none`}
               >
                 {/* Top: Large Icon + Badge */}
@@ -468,7 +511,7 @@ export function CustomerHome() {
                     )}
                   </div>
                 </div>
-              </Link>
+              </CardShell>
             ))}
           </div>
 
@@ -613,6 +656,7 @@ export function CustomerHome() {
 
       {/* ⑧ Bottom Legal & Privacy Notice Footer */}
       <PrivacyNotice />
+      <StudyChooser open={studyOpen} onClose={() => { setStudyOpen(false); window.setTimeout(() => document.querySelector<HTMLElement>('[data-testid="home-card-study"]')?.focus(), 0); }} />
     </main>
   );
 }
