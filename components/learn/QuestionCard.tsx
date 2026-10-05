@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
 import { ApiError, useLearner } from "./LearnerProvider";
 import { AnswerInput, ListenButton } from "./renderers";
 import { MathBlock, RichText } from "./RichText";
 import { useEnterToContinue } from "./useEnterToContinue";
+import { ListeningPanel } from "./Listening";
+import { passageSegments } from "@/lib/learn/listen/segments";
 
 export interface AttemptResponse {
   correct: boolean;
@@ -49,6 +51,8 @@ export function QuestionCard({
   onNext: (outcome: QuestionOutcome) => void;
 }) {
   const { api, t, site } = useLearner();
+  // an English reading passage inside the prompt is listenable sentence by sentence (canonical text, speech runs in the browser)
+  const passage = useMemo(() => (site === "english" ? passageSegments(`q-${q.id}`, q.prompt) : null), [site, q.id, q.prompt]);
   const isMulti = q.type === "ordering" || q.type === "multiple_select";
   const [value, setValue] = useState<string | string[]>(isMulti ? [] : "");
   const [status, setStatus] = useState<QStatus>("answering");
@@ -123,6 +127,7 @@ export function QuestionCard({
 
       <div className="l-card l-stack">
         <div className="l-qprompt"><RichText text={q.prompt} /></div>
+        {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} />}
         {q.latex && <MathBlock latex={q.latex} />}
         {q.audioText && site === "english" && <ListenButton text={q.audioText} />}
         <AnswerInput site={site} q={q} value={value} onChange={setValue} disabled={resolved || status === "checking"} onSubmit={submit} />

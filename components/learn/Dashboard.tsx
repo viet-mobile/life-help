@@ -13,7 +13,7 @@ import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
 
 export function Dashboard() {
-  const { state, index, t, href, mode, accountsEnabled } = useLearner();
+  const { state, index, t, href, mode, accountsEnabled, site } = useLearner();
   const now = new Date();
   const level = levelProgress(state.totalXp);
   const rec = recommendNext(state, index, now);
@@ -74,6 +74,13 @@ export function Dashboard() {
           <QuestList quest={quest} compact />
           <Link className="l-btn l-btn-block" href={href("/quest")}>{questDone ? t("dash.quest.done") : t("dash.quest.start")}</Link>
         </section>
+
+        {site === "english" && (
+          <section className="l-card l-stack" aria-labelledby="w-h">
+            <h2 id="w-h" className="l-h2">📇 {t("words.title")}</h2>
+            <Link className="l-btn l-btn-ghost l-btn-block" data-testid="words-link" href={href("/words")}>{t("words.open")}</Link>
+          </section>
+        )}
       </div>
 
       <section className="l-card l-stack" aria-labelledby="sk-h">

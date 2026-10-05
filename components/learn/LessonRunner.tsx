@@ -8,6 +8,8 @@ import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types
 import { ApiError, useLearner } from "./LearnerProvider";
 import { QuestionCard, type AttemptResponse, type QuestionOutcome } from "./QuestionCard";
 import { RichText } from "./RichText";
+import { ListeningPanel } from "./Listening";
+import { exampleSegments } from "@/lib/learn/listen/segments";
 import { ResultScreen, type SessionResult } from "./ResultScreen";
 
 type Kind = "lesson" | "review" | "practice";
@@ -32,7 +34,7 @@ interface Totals {
 }
 
 export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId?: string; skillId?: string }) {
-  const { api, index, t, href, state } = useLearner();
+  const { api, index, t, href, state, site } = useLearner();
   const lesson = lessonId ? index.lessons.get(lessonId) : undefined;
 
   const [phase, setPhase] = useState<"intro" | "loading" | "play" | "finishing" | "result" | "error">("intro");
@@ -165,6 +167,7 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
             <section className="l-card l-stack" aria-labelledby="example-h">
               <h2 id="example-h" className="l-h2">✏️ {t("lesson.example")}</h2>
               <p><RichText text={lesson.lesson.example} /></p>
+              {site === "english" && <ListeningPanel scope={`ex-${lesson.lesson.id}`} variant="list" segments={exampleSegments(`ex-${lesson.lesson.id}`, lesson.lesson.example)} lesson={{ id: lesson.lesson.id, title: lesson.lesson.title }} />}
             </section>
           </>
         ) : (
