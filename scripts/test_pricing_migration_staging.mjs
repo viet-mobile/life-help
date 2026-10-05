@@ -1,7 +1,7 @@
 // Live STAGING verification of migration 202609260012 (helper service pricing), database level.
 // Runs BEFORE the Worker is deployed: service role, anon key and a real Helper JWT against PostgREST.
 //
-//   A. Structure: catalog (19 rows), helper_service_prices, request_price_snapshots, selection_mode,
+//   A. Structure: catalog (22 rows), helper_service_prices, request_price_snapshots, selection_mode,
 //      enums, the four RPCs with their exact parameters.
 //   B. Access: anon / authenticated (real Helper JWT) cannot read or write any pricing table or RPC;
 //      service_role cannot UPDATE / DELETE a price snapshot.
@@ -34,7 +34,7 @@ try {
   const catalog = await db("service_subitems?select=service_code,subitem_code,active,allowed_pricing_modes,default_pricing_mode&order=service_code,sort_order");
   const expected = Object.entries(CATALOG).flatMap(([s, list]) => list.map((c) => `${s}/${c}`)).sort();
   const actual = catalog.map((c) => `${c.service_code}/${c.subitem_code}`).sort();
-  expect("A1. service_subitems exists: exactly the 19 detailed services under the 10 service codes, all active", JSON.stringify(actual) === JSON.stringify(expected) && catalog.every((c) => c.active && c.allowed_pricing_modes.includes(c.default_pricing_mode)), { actual });
+  expect("A1. service_subitems exists: exactly the 22 detailed services under the 11 service codes (19 + the 3 aircon sub-items of 202610050028), all active", JSON.stringify(actual) === JSON.stringify(expected) && catalog.every((c) => c.active && c.allowed_pricing_modes.includes(c.default_pricing_mode)), { actual });
   const spec = await (await fetch(`${supabaseUrl}/rest/v1/`, { headers: as(serviceKey) })).json();
   const cols = (table) => Object.keys(spec.definitions?.[table]?.properties || {});
   const priceCols = ["id", "helper_id", "service_subitem_id", "pricing_mode", "currency", "base_price", "minimum_charge", "included_quantity", "included_minutes", "extra_unit_price", "extra_hour_price", "materials_policy", "materials_note", "emergency_multiplier", "night_multiplier", "weekend_multiplier", "tax_included", "status", "revision", "valid_from", "published_at"];
@@ -207,7 +207,7 @@ try {
   const ids = [...fx.created.helperIds, "00000000-0000-0000-0000-000000000000"].join(",");
   leftovers.prices = (await db(`helper_service_prices?helper_id=in.(${ids})&select=id`)).length;
   leftovers.snapshots = (await db(`request_price_snapshots?helper_id=in.(${ids})&select=request_id`)).length;
-  leftovers.catalog = (await db("service_subitems?select=id")).length === 19 ? 0 : 1;
+  leftovers.catalog = (await db("service_subitems?select=id")).length === Object.values(CATALOG).flat().length ? 0 : 1;
   expect("Fixture cleanup (helpers, auth users, prices, requests, snapshots, notifications)", Object.values(leftovers).every((n) => n === 0), leftovers);
 }
 if (summary().FAIL > 0) process.exit(1);
