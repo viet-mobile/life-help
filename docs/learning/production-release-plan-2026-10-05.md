@@ -1,3 +1,5 @@
+> **BLOCKED / NOT THE APPROVED PRODUCTION ARTIFACT.** Superseded on 2026-10-05 by `docs/learning/production-learning-port-release-plan-2026-10-05.md` on branch `release/learning-prod-port` (learning-only port from `c4b03fe`; Path A approved). The full staged app `2b80230` is not a production candidate; migration 028 is not applicable to production.
+
 # Production release plan: Learning V3 (prepared 2026-10-05; PLANNING ONLY, NOTHING HERE HAS BEEN EXECUTED)
 
 Owner of every task from here on: Claude (no external bulk agent exists any more). Production is frozen until an explicit written GO. Commands are split into **[READ-ONLY]** and **[PRODUCTION MUTATION: DO NOT RUN WITHOUT EXPLICIT PRODUCTION GO]**.
