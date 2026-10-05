@@ -152,10 +152,10 @@ const rtlComponentFindings = [
 // 4. Generate Reports
 const deepCheckReportMd = `# Translation Readiness Deep Check Report (301 Canonical Keys)
 
-**Date**: 2026-10-05  
-**Authoritative Baseline**: \`${BASELINE_SHA}\`  
-**Canonical Source Commit**: \`${CANONICAL_COMMIT}\`  
-**Canonical en.ts SHA-256**: \`${enHash}\`  
+**Date**: 2026-10-05
+**Authoritative Baseline**: \`${BASELINE_SHA}\`
+**Canonical Source Commit**: \`${CANONICAL_COMMIT}\`
+**Canonical en.ts SHA-256**: \`${enHash}\`
 **Scope**: In-depth linguistic audit across all 301 canonical learning message keys, expansion ratios, punctuation, product names, and placeholder signatures.
 
 > [!NOTE]
@@ -217,9 +217,9 @@ The 44 newly added foundation keys cover:
 
 const rtlMatrixReportMd = `# RTL Readiness & Bidirectional UX Matrix (301 Canonical Keys)
 
-**Date**: 2026-10-05  
-**Authoritative Baseline**: \`${BASELINE_SHA}\`  
-**Canonical Source Commit**: \`${CANONICAL_COMMIT}\`  
+**Date**: 2026-10-05
+**Authoritative Baseline**: \`${BASELINE_SHA}\`
+**Canonical Source Commit**: \`${CANONICAL_COMMIT}\`
 **Scope**: Mechanical assessment of right-to-left layout risks for Arabic (\`ar\`), Egyptian Arabic (\`arz\`), Persian (\`fa\`), and Hebrew (\`he\`).
 
 ---
@@ -321,4 +321,3 @@ for (const t of targets) {
   console.log(`Wrote ${t.file} (${t.content.length} bytes)`);
 }
 console.log("Successfully generated translation readiness deep check and RTL matrix reports.");
-

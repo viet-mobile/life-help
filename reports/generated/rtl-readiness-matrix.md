@@ -1,8 +1,8 @@
 # RTL Readiness & Bidirectional UX Matrix (301 Canonical Keys)
 
-**Date**: 2026-10-05  
-**Authoritative Baseline**: `d522da41caf2b9030d9b0ec0bcce6674dce57249`  
-**Canonical Source Commit**: `f707310`  
+**Date**: 2026-10-05
+**Authoritative Baseline**: `d522da41caf2b9030d9b0ec0bcce6674dce57249`
+**Canonical Source Commit**: `f707310`
 **Scope**: Mechanical assessment of right-to-left layout risks for Arabic (`ar`), Egyptian Arabic (`arz`), Persian (`fa`), and Hebrew (`he`).
 
 ---

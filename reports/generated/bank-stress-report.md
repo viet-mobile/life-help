@@ -64,4 +64,3 @@
 3. **Formatting & Math**: Raw `{` and `}` characters occur solely inside LaTeX mathematical expressions (`\frac`, `\sqrt`); zero unexpanded template variables detected outside math blocks.
 4. **Language Purity**: Zero Hangul characters detected inside English reading target texts and option choices.
 5. **Structural Integrity**: All multiple choice questions provide exactly 4 distinct options with valid key linkage; all items provide bilingual (Korean + Vietnamese) hints and prompt coverage.
-

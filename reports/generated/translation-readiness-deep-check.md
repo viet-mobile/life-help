@@ -1,9 +1,9 @@
 # Translation Readiness Deep Check Report (301 Canonical Keys)
 
-**Date**: 2026-10-05  
-**Authoritative Baseline**: `d522da41caf2b9030d9b0ec0bcce6674dce57249`  
-**Canonical Source Commit**: `f707310`  
-**Canonical en.ts SHA-256**: `d4195f8feaf8b0c8cbb56034eb4520d641c54476cfe9a958422913806ede9cc4`  
+**Date**: 2026-10-05
+**Authoritative Baseline**: `d522da41caf2b9030d9b0ec0bcce6674dce57249`
+**Canonical Source Commit**: `f707310`
+**Canonical en.ts SHA-256**: `d4195f8feaf8b0c8cbb56034eb4520d641c54476cfe9a958422913806ede9cc4`
 **Scope**: In-depth linguistic audit across all 301 canonical learning message keys, expansion ratios, punctuation, product names, and placeholder signatures.
 
 > [!NOTE]
