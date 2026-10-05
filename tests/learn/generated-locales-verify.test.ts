@@ -72,6 +72,14 @@ describe("generated-locale verifier", () => {
     arz["site.math.description"] = "مسار تعلم مخصص لكل طالب"; // the 3-10 minute range is gone
     expect(verifyLocale("arz", arz).problems.join("\n")).toMatch(/numDiff 2: .*onboarding\.nickname\.hint/);
   });
+  it("a range that loses one end (3-10 -> 3) fails, and an arz two-minute word form still passes", () => {
+    const th = pseudo("ก");
+    th["landing.how1.body"] = th["landing.how1.body"].replace(/-?10/, "").replace("3", "3");
+    expect(verifyLocale("th", th).problems.join("\n")).toMatch(/numDiff 1: landing\.how1\.body/);
+    const arz = pseudo("ا");
+    arz["diag.intro.title"] = "اختبار مستوى في دقيقتين";
+    expect(verifyLocale("arz", arz).problems.join("\n")).not.toMatch(/diag\.intro\.title/);
+  });
   it("flags a locale whose strings were copied from another language, and a generated reference locale", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "locales-"));
     try {
