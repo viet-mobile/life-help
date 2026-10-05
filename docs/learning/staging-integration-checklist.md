@@ -1,5 +1,7 @@
 # Staging integration checklist (prepared, NOT executed)
 
+See `final-staging-prep.md` for the frozen scope, the migration 028 staging procedure, the compiled-guard prerequisites, the bulk acceptance checklist and the Mac transfer steps.
+
 Nothing here deploys anything. It is the list used AFTER the bulk phase 2 outputs are reviewed. Production stays frozen (live `6e68ec3d` at 100 %, canary `25747a2a` unpromoted); staging only, never production.
 
 ## A. Gates that must be true before staging (each one has an owner and evidence)
@@ -11,7 +13,7 @@ Nothing here deploys anything. It is the list used AFTER the bulk phase 2 output
 | 4 | Study card | home order + chooser tests green (`tests/home`, `tests/e2e/home-cards.spec.ts`) | DONE |
 | 5 | Aircon service | UI + request checklist + `202610050028` migration tested on the real chain (PGlite) | DONE locally; applying the migration to staging is part of this checklist (C) |
 | 6 | `MAIN_SERVICE_I18N_READY` | `docs/learning/main-service-i18n.md` = messages (test) | YES |
-| 7 | main-service translation package reviewed | `messages/generated/main-services/<locale>.json` for 35 locales merged by `merge-main-service-i18n.mjs`, `--check` clean, ordering matrix green | **OPEN**: not delivered; English fallback applies meanwhile (not a blocker for ko/en/vi staging) |
+| 7 | main-service translation package reviewed | `messages/generated/main-services/<locale>.json` for 35 locales merged by `merge-main-service-i18n.mjs`, `--check` clean, ordering matrix green | **OPEN**: historical package (`4185537`) passes the core verifier and a merge dry run, but the final regenerated package from `e621a12` is awaited (`verify-main-service-locales.mjs`); English fallback applies meanwhile (not a blocker for ko/en/vi staging) |
 | 8 | adult study stays isolated | no adult-study route, host or code path in the staging build; importer refuses all six legacy products; rights gate (`adult-study-rights-policy.md`) | YES |
 | 9 | no marketplace / payment / provider route leak | route inventory and production guard (section B) | re-run at staging time |
 | 10 | gates on the integration branch | `git diff --check`, `npm run typecheck`, `npx vitest run`, local Playwright (full), `npm test` deterministic suites, secret scan | re-run at staging time |
