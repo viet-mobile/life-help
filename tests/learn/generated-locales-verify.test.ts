@@ -55,6 +55,23 @@ describe("generated-locale verifier", () => {
     const thai = pseudo("ก"); thai["onboarding.nickname.hint"] = thai["onboarding.nickname.hint"].replace(/\d/g, (d) => String.fromCodePoint(0x0e50 + Number(d)));
     expect(verifyLocale("th", thai).problems).toEqual([]);
   });
+  it("number words: correct Hebrew / Arabic word forms of a value pass; a dropped duration or a changed range still fails", () => {
+    const he = pseudo("א");
+    he["landing.cta.start"] = "התחילו בדקה אחת";
+    he["diag.intro.title"] = "בדיקת רמה בשתי דקות";
+    expect(verifyLocale("he", he).problems.join("\n")).not.toMatch(/numDiff/);
+    he["landing.cta.start"] = "התחילו עכשיו"; // the one-minute meaning is gone
+    expect(verifyLocale("he", he).problems.join("\n")).toMatch(/numDiff 1: landing\.cta\.start/);
+
+    const arz = pseudo("ا");
+    arz["landing.cta.start"] = "ابدأ في دقيقة واحدة";
+    arz["diag.intro.title"] = "اختبار مستوى في دقيقتين";
+    arz["onboarding.nickname.hint"] = "اسم مستعار من حرفين لـ ١٦ حرف كفاية";
+    expect(verifyLocale("arz", arz).problems.join("\n")).not.toMatch(/numDiff/);
+    arz["onboarding.nickname.hint"] = "اسم مستعار من حرفين لـ ١٢ حرف كفاية"; // 2-16 became 2-12
+    arz["site.math.description"] = "مسار تعلم مخصص لكل طالب"; // the 3-10 minute range is gone
+    expect(verifyLocale("arz", arz).problems.join("\n")).toMatch(/numDiff 2: .*onboarding\.nickname\.hint/);
+  });
   it("flags a locale whose strings were copied from another language, and a generated reference locale", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "locales-"));
     try {

@@ -26,6 +26,19 @@ const EMOJI = /\p{Extended_Pictographic}/u;
 /** every Unicode decimal digit mapped to 0-9 (native-digit scripts count as the same number), then the sorted numbers of the string */
 const nd = (c) => { const cp = c.codePointAt(0); let b = cp; while (/\p{Nd}/u.test(String.fromCodePoint(b - 1))) b--; return String(cp - b); };
 const numbers = (s) => (s.replace(/\p{Nd}/gu, nd).match(/\d+/g) ?? []).sort().join(",");
+/**
+ * Reviewed number-word equivalents, per locale, for the few places where a native speaker writes the value as a word attached to its unit (one minute, two minutes,
+ * two characters: Arabic/Egyptian Arabic dual forms, Hebrew 'one minute'). Each pattern is anchored to its unit noun and rewritten to the digit it means BEFORE numbers are
+ * compared, so the check itself is unchanged: a dropped or altered value (2-16 -> 2-12, a lost duration) still fails. Extend only after a native-speaker review.
+ */
+const AR_WORDS = [[/\u062F\u0642\u064A\u0642\u0629 \u0648\u0627\u062D\u062F\u0629/g, "1 \u062F\u0642\u064A\u0642\u0629"], [/\u062F\u0642\u064A\u0642\u062A\u064A\u0646/g, "2 \u062F\u0642\u064A\u0642\u0629"], [/\u062D\u0631\u0641\u064A\u0646/g, "2 \u062D\u0631\u0641"]];
+const NUMBER_WORDS = {
+  ar: AR_WORDS,
+  arz: AR_WORDS,
+  he: [[/\u05D1\u05D3\u05E7\u05D4 \u05D0\u05D7\u05EA/g, "1 \u05D3\u05E7\u05D4"], [/\u05D3\u05E7\u05D4 \u05D0\u05D7\u05EA/g, "1 \u05D3\u05E7\u05D4"], [/\u05E9\u05EA\u05D9 \u05D3\u05E7\u05D5\u05EA/g, "2 \u05D3\u05E7\u05D4"], [/\u05D3\u05E7\u05D5\u05EA\u05D9\u05D9\u05DD/g, "2 \u05D3\u05E7\u05D4"]],
+};
+const withWords = (locale, s) => (NUMBER_WORDS[locale] ?? []).reduce((acc, [re, to]) => acc.replace(re, to), s);
+const localeNumbers = (locale, s) => numbers(withWords(locale, s));
 const BRANDS = ["MATH.LIFE.HELP", "ENGLISH.LIFE.HELP"];
 const SAME_OK = new Set(["brand.math", "brand.english", "dash.xp", "locale.ko", "locale.vi", "common.diff"]);
 
@@ -57,7 +70,7 @@ export function verifyLocale(locale, flat) {
     const v = flat[k];
     if (typeof v !== "string" || !v.trim()) { empty.push(k); continue; }
     if (ph(v) !== ph(en[k])) phBad.push(k);
-    if (!k.startsWith("grade.") && numbers(v) !== numbers(en[k])) numDiff.push(k);
+    if (!k.startsWith("grade.") && localeNumbers(locale, v) !== numbers(en[k])) numDiff.push(k);
     if (v.replace(/\{[A-Za-z0-9_]+\}/g, "").match(/[{}]/)) phBad.push(k);
     if (/[<>\n\r]|\$/.test(v)) markup.push(k);
     if (/[가-힯]/.test(v) && k !== "locale.ko") hangul.push(k);
