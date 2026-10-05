@@ -121,11 +121,12 @@ describe("main-service canonical i18n (MAIN_SERVICE_I18N)", () => {
     expect(rows.map((r) => r[1])).toEqual([...MAIN_SERVICE_KEYS]);
     for (const [, key, ko, en] of rows) { expect(get(dict("ko"), key), key).toBe(ko); expect(get(dict("en"), key), key).toBe(en); }
   });
-  it("falls back to English (never Korean) in locales that have no translation yet, and the existing 38-locale coverage keys are untouched", () => {
+  it("the merged generated locales carry their own translation (never English, never Korean); the existing 38-locale coverage keys are untouched", () => {
     for (const loc of ["ja", "fr", "ar"] as const) {
-      expect(translate(loc, "study.chooser.title")).toBe("What would you like to study?");
-      expect(translate(loc, "service.aircon")).toBe("Air Conditioner Installation, Repair & Cleaning");
+      expect(translate(loc, "study.chooser.title")).not.toBe("What would you like to study?");
+      expect(translate(loc, "service.aircon")).not.toBe("Air Conditioner Installation, Repair & Cleaning");
       expect(translate(loc, "service.study")).not.toMatch(/[가-힯]/);
+      expect(translate(loc, "study.chooser.goTo")).toContain("{site}");
     }
     expect(translate("ko", "service.study")).toBe("영어/수학 공부");
     expect(translate("ko", "service.aircon")).toBe("에어컨 설치, 수리, 청소");
