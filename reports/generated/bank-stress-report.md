@@ -2,7 +2,7 @@
 
 - **Bank API Version**: `bank-api-1`
 - **Baseline SHA**: `b3f51bd36ddf617bf801f92c438c9bc453ec2ac7`
-- **Generated At**: `2026-10-04T22:37:13.180Z`
+- **Generated At**: `2026-10-05T00:41:23.801Z`
 - **Total Runs Tested**: 1,000
 - **Total Items Generated**: 5,000
 
@@ -20,7 +20,7 @@
 | Braces in Prompt / Overlay (Raw) | 88 | INFO | Includes legitimate LaTeX math: $\frac{a}{b}$, $\sqrt{x}$ |
 | Braces Outside LaTeX Math | 0 | PASS | Unexpanded template braces outside math blocks |
 | Option Count Violations (MC != 4) | 0 | PASS | MC questions have exactly 4 distinct options with valid key |
-| Hangul in English Target Text | 327 | FAIL | English reading prompts & options contain no Hangul |
+| Hangul in English Target Text | 0 | PASS | English reading prompts & options contain no Hangul |
 | Non-Finite Numeric Answers | 0 | PASS | Numeric answers are valid finite numbers |
 | Hint Count Violations (!= 2) | 0 | PASS | Every item must have exactly 2 hints |
 | Missing Prompt / Overlay | 0 | PASS | Both Korean question and Vietnamese overlay present |
@@ -40,12 +40,12 @@
 | english | 2 | 250 | form-check, product-compare, sign-notice, sign-words | 0 | 0 | 0 | 0 | 0 |
 | english | 3 | 250 | form-check, instructions-order, notice-to-note, product-compare, schedule-constraints, search-results, sign-notice | 0 | 0 | 0 | 0 | 0 |
 | english | 4 | 250 | email-intent, error-message, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, schedule-constraints, search-results, sign-notice, weather-alert | 0 | 0 | 0 | 0 | 0 |
-| english | 5 | 250 | best-option, data-text, email-intent, error-message, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, review-reliability, schedule-constraints, search-results, weather-alert | 0 | 0 | 0 | 0 | 15 |
-| english | 6 | 250 | best-option, data-text, email-intent, error-message, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, review-reliability, schedule-constraints, search-results, weather-alert | 0 | 0 | 0 | 0 | 24 |
-| english | 7 | 250 | best-option, data-text, email-intent, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, review-reliability, schedule-constraints, search-results, weather-alert | 0 | 0 | 0 | 0 | 20 |
-| english | 8 | 250 | best-option, data-text, email-intent, error-message, form-check, headline-claim, help-docs, inconsistency-check, notice-to-note, policy-eligibility, product-compare, review-reliability, search-results | 0 | 0 | 0 | 0 | 64 |
-| english | 9 | 250 | best-option, data-text, headline-claim, help-docs, inconsistency-check, multi-source, policy-eligibility, review-reliability, search-results | 0 | 0 | 0 | 0 | 69 |
-| english | 10 | 250 | data-text, headline-claim, multi-source, review-reliability | 0 | 0 | 0 | 0 | 135 |
+| english | 5 | 250 | best-option, data-text, email-intent, error-message, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, review-reliability, schedule-constraints, search-results, weather-alert | 0 | 0 | 0 | 0 | 0 |
+| english | 6 | 250 | best-option, data-text, email-intent, error-message, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, review-reliability, schedule-constraints, search-results, weather-alert | 0 | 0 | 0 | 0 | 0 |
+| english | 7 | 250 | best-option, data-text, email-intent, form-check, help-docs, inconsistency-check, instructions-order, notice-to-note, policy-eligibility, product-compare, review-reliability, schedule-constraints, search-results, weather-alert | 0 | 0 | 0 | 0 | 0 |
+| english | 8 | 250 | best-option, data-text, email-intent, error-message, form-check, headline-claim, help-docs, inconsistency-check, notice-to-note, policy-eligibility, product-compare, review-reliability, search-results | 0 | 0 | 0 | 0 | 0 |
+| english | 9 | 250 | best-option, data-text, headline-claim, help-docs, inconsistency-check, multi-source, policy-eligibility, review-reliability, search-results | 0 | 0 | 0 | 0 | 0 |
+| english | 10 | 250 | data-text, headline-claim, multi-source, review-reliability | 0 | 0 | 0 | 0 | 0 |
 | math | 1 | 250 | arith-routine, fact-recall, place-value | 0 | 0 | 0 | 0 | 0 |
 | math | 2 | 250 | arith-routine, fact-recall, find-the-slip, place-value, shopping-multistep | 0 | 0 | 0 | 0 | 0 |
 | math | 3 | 250 | arith-routine, backward-reasoning, data-stats, find-the-slip, fraction-ratio-ops, geometry-real, place-value, representation-match, shopping-multistep | 0 | 0 | 0 | 0 | 0 |
