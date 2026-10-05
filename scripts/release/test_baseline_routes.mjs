@@ -28,7 +28,11 @@ const learning = (r) => /^\/study(\/|$)/.test(r) || /^\/api\/learn(\/|$)/.test(r
 console.log(`route inventory: baseline ${before.size}, release ${after.length}, added ${added.length}, removed ${removed.length}`);
 check("no baseline route was removed or renamed", removed.length === 0, removed.join(", "));
 check("every added route is a learning route (/study/**, /api/learn/**)", added.every(learning), added.filter((r) => !learning(r)).join(", "));
-check("the learning surface is exactly the expected one (study pages + /api/learn/[action])", added.some((r) => r.startsWith("/api/learn")) && added.some((r) => r.startsWith("/study")), added.join(", "));
+// Against the first learning baseline (no /study routes yet) the whole learning surface is added; against a baseline that already serves the learning
+// sites (the production canary lineage) only the explicitly approved additions may appear: here the English Words page.
+const baselineHasLearning = [...before].some((r) => r.startsWith("/study"));
+const APPROVED_ADDITIONS = ["/study/[site]/(play)/words/page"];
+check("the learning surface is exactly the expected one", baselineHasLearning ? added.every((r) => APPROVED_ADDITIONS.includes(r)) : (added.some((r) => r.startsWith("/api/learn")) && added.some((r) => r.startsWith("/study"))), added.join(", "));
 
 // ---- servers ----
 const children = [];

@@ -57,8 +57,10 @@ test.describe("Korean", () => {
   });
 
   test("the Aircon page does not exist in this release", async ({ page }) => {
-    const res = await page.goto(`${MAIN}/services/aircon`);
-    expect(res?.status()).toBe(404);
+    await page.goto(`${MAIN}/services/aircon`);
+    // an unknown service renders the site's not-found page: no Aircon content and no service view
+    await expect(page.locator("body")).not.toContainText(/에어컨|Air Conditioner/);
+    await expect(page.getByTestId("home-card-aircon")).toHaveCount(0);
   });
 });
 
