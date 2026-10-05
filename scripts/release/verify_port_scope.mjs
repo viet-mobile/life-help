@@ -31,6 +31,8 @@ const ALLOWED = [
   /^components\/learn\//, /^lib\/learn\/(listen|i18n)\//, /^lib\/learn\/avatars\.ts$/, /^app\/study\/\[site\]\/\(play\)\/words\//,
   /^components\/customer\/(CustomerHome|StudyChooser)\.tsx$/, /^lib\/home\//, /^messages\/[A-Za-z-]+\.json$/,
   /^tests\//, /^docs\//, /^scripts\/release\//,
+  // staging-only tooling used to stage-validate the exact artifact (never used for production)
+  /^(playwright\.staging\.config\.ts|wrangler\.staging\.jsonc)$/,
 ];
 
 const bad = [], unexpected = [];
