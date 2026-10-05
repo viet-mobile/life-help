@@ -88,13 +88,14 @@ test.describe("English", () => {
   });
 });
 
-test.describe("a locale without a translation yet", () => {
+test.describe("a locale with a generated main-service translation", () => {
   test.use({ locale: "ja-JP" });
-  test("falls back to English for the new copy (never Korean) and keeps the order", async ({ page }) => {
+  test("shows its own translation of the new copy (never English, never Korean) and keeps the order", async ({ page }) => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("English & Math Study");
+    await expect(page.getByTestId("home-card-study")).toContainText("英語・数学の学習");
+    expect(await page.getByTestId("home-card-study").textContent()).not.toContain("English & Math Study");
     expect(await page.getByTestId("home-card-aircon").textContent()).not.toMatch(/[가-힯]/);
   });
 });
