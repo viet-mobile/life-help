@@ -2,13 +2,13 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { PGlite } from "@electric-sql/pglite";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { LEARNING_CHAIN, M027, apply, newBase, nonLearningCatalog, root, sqlOf, usersHash } from "./chainDb";
+import { LEARNING_CHAIN, M027, M028, apply, newBase, nonLearningCatalog, root, sqlOf, usersHash } from "./chainDb";
 
 /**
  * 202609300027 widens three CHECK constraints so elementary grades can be stored. These tests run the REAL migration files on PGlite:
  * the migration is additive, learning-only, idempotent, keeps every existing row, and its manual rollback never deletes data.
  */
-const BEFORE_027 = LEARNING_CHAIN.filter((f) => f !== M027);
+const BEFORE_027 = LEARNING_CHAIN.slice(0, LEARNING_CHAIN.indexOf(M027)); // 023..026 (later learning migrations such as 028 come after)
 const ROLLBACK = readFileSync(path.join(root, "supabase/rollbacks/202609300027_learning_elementary_grades.down.sql"), "utf8");
 const U1 = "10000000-0000-4000-8000-000000000001";
 const U2 = "10000000-0000-4000-8000-000000000002";
@@ -124,8 +124,8 @@ describe("202609300027: static review", () => {
     expect(/\b(create|drop)\s+(table|function|type|schema|policy|trigger|index|view|extension)\b/i.test(sql)).toBe(false);
     expect(/\b(auth|storage|supabase_)/i.test(sql.replace(/\bpublic\.learn_/gi, ""))).toBe(false);
   });
-  it("sorts after 026 and is the last learning migration; the rollback is a standalone manual file", () => {
-    expect(LEARNING_CHAIN[LEARNING_CHAIN.length - 1]).toBe(M027);
+  it("sorts after 026, directly before 028 (study.korean); the rollback is a standalone manual file", () => {
+    expect(LEARNING_CHAIN.slice(-2)).toEqual([M027, M028]);
     expect(M027 > "202609300026_learning_selfcontained_auth.sql").toBe(true);
     expect(ROLLBACK).toMatch(/NOT run by `supabase db push`/);
     expect(/\bcascade\b/i.test(ROLLBACK.replace(/--.*$/gm, ""))).toBe(false);

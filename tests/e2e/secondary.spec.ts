@@ -2,7 +2,8 @@ import { expect, test, type Page } from "@playwright/test";
 import secondaryMath from "../../lib/learn/content/secondary/math.json";
 import secondaryEnglish from "../../lib/learn/content/secondary/english.json";
 import { ko } from "../../lib/learn/i18n/ko";
-import { vi } from "../../lib/learn/i18n/vi";
+import viJson from "../../lib/learn/i18n/locales/vi.json";
+const vi = viJson as Record<keyof typeof ko, string>;
 
 /**
  * Local production-build e2e (guest mode, math.localhost / english.localhost host routing) for the grade-specific secondary courses:
@@ -112,7 +113,7 @@ for (const site of ["math", "english"] as const) {
 
   test(`${site} H3 (Vietnamese): the Lớp 12 course runs in Vietnamese end to end`, async ({ page }) => {
     await page.goto(`${HOSTS[site]}/`);
-    await page.getByRole("radio", { name: "Tiếng Việt" }).first().click();
+    await page.getByTestId("locale-select").first().selectOption("vi");
     await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi");
     await page.goto(`${HOSTS[site]}/onboarding`);
     await onboard(page, "H3", "vi");

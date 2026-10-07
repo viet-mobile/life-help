@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { checkAnswer, validateResponse } from "@/lib/learn/domain/answers";
 import { learnConfig } from "@/lib/learn/config";
-import { SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
+import { SCHOOL_SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
+type SchoolSite = (typeof SCHOOL_SITES)[number];
 import { demoContentRepository } from "@/lib/learn/content/repository";
-import { localizeBundle } from "@/lib/learn/content/localize";
+import { localizeBundle, overlayFor } from "@/lib/learn/content/localize";
 import mathSecondary from "@/lib/learn/content/secondary/math.json";
 import englishSecondary from "@/lib/learn/content/secondary/english.json";
 import viMath from "@/lib/learn/content/vi/secondary-math.json";
@@ -16,9 +17,9 @@ import { buildSecondaryEnglish } from "../../scripts/learn/secondary/english.mjs
 import { assertCoverage, summarize, SECONDARY_NEW, TARGETS } from "../../scripts/learn/difficulty-report.mjs";
 
 const GRADES = ["M2", "M3", "H1", "H2", "H3"] as const;
-const BUNDLES: Record<Site, ContentBundle> = { math: mathSecondary as unknown as ContentBundle, english: englishSecondary as unknown as ContentBundle };
-const OVERLAYS = { math: viMath, english: viEnglish } as Record<Site, { questions: Record<string, { prompt: string; hints: string[]; explanation: string; options?: Record<string, string> }> }>;
-const DEMO: Record<Site, ContentBundle> = { math: mathDemo as unknown as ContentBundle, english: englishDemo as unknown as ContentBundle };
+const BUNDLES: Record<SchoolSite, ContentBundle> = { math: mathSecondary as unknown as ContentBundle, english: englishSecondary as unknown as ContentBundle };
+const OVERLAYS = { math: viMath, english: viEnglish } as Record<SchoolSite, { questions: Record<string, { prompt: string; hints: string[]; explanation: string; options?: Record<string, string> }> }>;
+const DEMO: Record<SchoolSite, ContentBundle> = { math: mathDemo as unknown as ContentBundle, english: englishDemo as unknown as ContentBundle };
 const HANGUL = /[가-힣]/;
 
 function correctResponse(q: Question): string | string[] {
@@ -40,7 +41,7 @@ describe("generated files are in sync with the generators (deterministic)", () =
   });
 });
 
-describe.each(SITES)("secondary curriculum (M2..H3): %s", (site) => {
+describe.each(SCHOOL_SITES)("secondary curriculum (M2..H3): %s", (site) => {
   const bundle = BUNDLES[site];
   const overlay = OVERLAYS[site];
 
@@ -120,7 +121,7 @@ describe.each(SITES)("secondary curriculum (M2..H3): %s", (site) => {
     }
   });
 
-  it("KO / vi parity: every learner-facing string has a Vietnamese counterpart with the same numbers, passages and blanks", () => {
+  it("KO / vi parity: every learner-facing string has a Vietnamese counterpart with the same numbers, passages and blanks", async () => {
     for (const q of bundle.questions) {
       const o = overlay.questions[q.id];
       expect(o, q.id).toBeTruthy();
@@ -137,7 +138,7 @@ describe.each(SITES)("secondary curriculum (M2..H3): %s", (site) => {
       }
     }
     // the localised bundle never shows Korean and keeps every id and answer key
-    const merged = localizeBundle(bundle, "vi");
+    const merged = localizeBundle(bundle, await overlayFor("vi", site));
     expect(merged.questions.map((q) => q.id)).toEqual(bundle.questions.map((q) => q.id));
     expect(merged.questions.map((q) => q.answer)).toEqual(bundle.questions.map((q) => q.answer));
     for (const c of merged.catalog.courses) {
@@ -160,7 +161,7 @@ describe("difficulty report: numeric targets", () => {
     expect(assertCoverage(summary)).toEqual([]);
   });
   it("each new secondary course reports its coverage numerically", () => {
-    for (const site of SITES) for (const g of SECONDARY_NEW as string[]) {
+    for (const site of SCHOOL_SITES) for (const g of SECONDARY_NEW as string[]) {
       const r = summary[`${site}/${g}`];
       expect(r.lessons, `${site}/${g}`).toBeGreaterThanOrEqual(TARGETS.structure.lessons);
       expect(r.slots).toBeGreaterThanOrEqual(TARGETS.structure.slots);

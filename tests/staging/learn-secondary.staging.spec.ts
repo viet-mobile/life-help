@@ -38,7 +38,7 @@ async function signUp(page: Page, who: { email: string; password: string }, loca
   const t = dict(locale);
   if (locale === "vi") {
     await page.goto(url("math", "/"));
-    await page.getByRole("radio", { name: "Tiếng Việt" }).first().click();
+    await page.getByTestId("locale-select").first().selectOption("vi");
     await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi");
     await page.getByRole("link", { name: t["landing.cta.login"] }).click();
   } else await page.goto(url("math", "/login"));

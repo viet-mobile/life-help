@@ -5,9 +5,9 @@ import mathDemo from "@/lib/learn/content/demo/math.json";
 import englishDemo from "@/lib/learn/content/demo/english.json";
 import { learnConfig } from "@/lib/learn/config";
 import { ko } from "@/lib/learn/i18n/ko";
-import { vi } from "@/lib/learn/i18n/vi";
+import vi from "@/lib/learn/i18n/locales/vi.json";
 import { parsePlayerState } from "@/lib/learn/server/stateCodec";
-import { ELEMENTARY_GRADES, GRADES, SECONDARY_GRADES, SITES, isGrade, schoolLevel, type ContentBundle, type Grade } from "@/lib/learn/types";
+import { ELEMENTARY_GRADES, SCHOOL_GRADES as GRADES, SECONDARY_GRADES, SCHOOL_SITES, isGrade, schoolLevel, type ContentBundle, type Grade } from "@/lib/learn/types";
 
 const DEMO: Record<string, ContentBundle> = { math: mathDemo as unknown as ContentBundle, english: englishDemo as unknown as ContentBundle };
 
@@ -50,7 +50,7 @@ describe("one canonical grade model (math, english, profile, routing)", () => {
   });
 });
 
-describe.each(SITES)("grade-scoped curriculum: %s", (site) => {
+describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
   it("an M1 student sees EXACTLY the pre-elementary curriculum (the original demo course, unchanged)", async () => {
     const merged = await demoContentRepository.getBundle(site);
     const scoped = scopeToGrade(merged, "M1");
@@ -118,7 +118,7 @@ describe.each(SITES)("grade-scoped curriculum: %s", (site) => {
 
 describe("the merged bundle", () => {
   it("lists elementary courses first and keeps ids unique across demo + elementary", async () => {
-    for (const site of SITES) {
+    for (const site of SCHOOL_SITES) {
       const merged = await demoContentRepository.getBundle(site);
       const grades = merged.catalog.courses.map((c) => c.grade as Grade);
       expect(grades.slice(0, 6)).toEqual([...ELEMENTARY_GRADES]);

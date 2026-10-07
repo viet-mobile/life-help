@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { createTranslator, isLocale, parseLocale, LOCALES, LOCALE_COOKIE } from "@/lib/learn/i18n";
 import { ko, type MessageKey } from "@/lib/learn/i18n/ko";
-import { vi } from "@/lib/learn/i18n/vi";
-import { GRADES, SITES, type ContentBundle, type Site } from "@/lib/learn/types";
+import viJson from "@/lib/learn/i18n/locales/vi.json";
+import { locales as REGISTRY } from "@/messages/registry";
+import { SCHOOL_GRADES as GRADES, SCHOOL_SITES as SITES, type ContentBundle, type Site } from "@/lib/learn/types";
 import { localizeBundle, localizedBundle, overlayFor } from "@/lib/learn/content/localize";
 import { demoContentRepository } from "@/lib/learn/content/repository";
 import { checkAnswer } from "@/lib/learn/domain/answers";
@@ -11,9 +12,10 @@ import { ACHIEVEMENTS } from "@/lib/learn/domain/achievements";
 const HANGUL = /[가-힣]/;
 const VI_DIACRITIC = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i;
 const PLACEHOLDER = /(todo|tbd|fixme|lorem|xxx|\?\?\?|\{\{|\}\}|undefined|null|\[object)/i;
+const vi = viJson as Record<MessageKey, string>;
 const keys = Object.keys(ko) as MessageKey[];
 // Keys whose value is intentionally the same in every locale (brand names, units, a language's own name).
-const NEUTRAL = new Set<MessageKey>(["brand.math", "brand.english", "diag.progress", "dash.xp", "lesson.xp", "locale.ko", "locale.vi"]);
+const NEUTRAL = new Set<MessageKey>(["brand.math", "brand.english", "diag.progress", "dash.xp", "lesson.xp", "brand.korean"]);
 const vars = (s: string) => [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
 
 describe("Vietnamese dictionary (locale vi)", () => {
@@ -23,12 +25,8 @@ describe("Vietnamese dictionary (locale vi)", () => {
   it("has no empty or whitespace-only string", () => {
     for (const k of keys) expect(vi[k].trim().length, k).toBeGreaterThan(0);
   });
-  it("leaks no Korean in the learner UI (the Korean language name in the switcher is the one intended exception)", () => {
-    for (const k of keys) {
-      if (k === "locale.ko") continue;
-      expect(HANGUL.test(vi[k]), `${k}: ${vi[k]}`).toBe(false);
-    }
-    expect(vi["locale.ko"]).toBe("한국어"); // a language is named in its own script so a Korean speaker can find it
+  it("leaks no Korean in the learner UI (the language picker names every language by its registry autonym, outside the dictionary)", () => {
+    for (const k of keys) expect(HANGUL.test(vi[k]), `${k}: ${vi[k]}`).toBe(false);
   });
   it("has no developer placeholder / machine-copy marker", () => {
     for (const k of keys) expect(PLACEHOLDER.test(vi[k]), `${k}: ${vi[k]}`).toBe(false);
@@ -46,7 +44,7 @@ describe("Vietnamese dictionary (locale vi)", () => {
     }
   });
   it("renders the twelve grade labels as Lớp 1 .. Lớp 12 (age-aligned: elementary 1-6, middle 7-9, high 10-12)", () => {
-    const t = createTranslator("vi");
+    const t = createTranslator(vi);
     expect(GRADES.map((g) => t(`grade.${g}` as MessageKey))).toEqual(["Lớp 1", "Lớp 2", "Lớp 3", "Lớp 4", "Lớp 5", "Lớp 6", "Lớp 7", "Lớp 8", "Lớp 9", "Lớp 10", "Lớp 11", "Lớp 12"]);
     expect(t("grade.group.elementary")).toBe("Lớp 1–6");
     expect(t("grade.group.secondary")).toBe("Lớp 7–12");
@@ -67,24 +65,25 @@ describe("Vietnamese dictionary (locale vi)", () => {
 });
 
 describe("translator and locale resolution", () => {
-  it("interpolates variables in both locales and falls back to Korean, then to the key", () => {
-    expect(createTranslator("vi")("dash.hello", { name: "An" })).toBe("Chào An, hôm nay chơi một ván nhé?");
-    expect(createTranslator("ko")("dash.hello", { name: "미나" })).toContain("미나");
-    expect(createTranslator("vi")("nope.key" as MessageKey)).toBe("nope.key");
+  it("interpolates variables, falls back to Korean, then to the key", () => {
+    expect(createTranslator(vi)("dash.hello", { name: "An" })).toBe("Chào An, hôm nay chơi một ván nhé?");
+    expect(createTranslator(ko)("dash.hello", { name: "미나" })).toContain("미나");
+    expect(createTranslator(vi)("nope.key" as MessageKey)).toBe("nope.key");
   });
-  it("parses the cookie value strictly: only ko / vi, anything else is Korean", () => {
-    expect([...LOCALES]).toEqual(["ko", "vi"]);
+  it("derives the learner locales from the canonical registry and parses the cookie strictly", () => {
+    expect([...LOCALES]).toEqual([...REGISTRY]);
     expect(LOCALE_COOKIE).toBe("learn_lang");
-    for (const v of ["ko", "vi"]) expect(isLocale(v)).toBe(true);
-    for (const bad of ["VI", "en", "vi-VN", "", undefined, null, 5, "ko;vi", "vi "]) expect(parseLocale(bad), String(bad)).toBe("ko");
+    for (const v of REGISTRY) expect(isLocale(v)).toBe(true);
+    for (const bad of ["VI", "vi-VN", "", undefined, null, 5, "ko;vi", "vi ", "zh", "pt-BR"]) expect(parseLocale(bad), String(bad)).toBe("ko");
     expect(parseLocale("vi")).toBe("vi");
+    expect(parseLocale("bogus", "en")).toBe("en"); // the site default (study.korean) when nothing valid was chosen
   });
 });
 
 describe.each(SITES)("Vietnamese content overlay: %s", (site: Site) => {
   it("covers every skill, course, unit, lesson and question of the whole curriculum (elementary + middle / high)", async () => {
     const bundle = await demoContentRepository.getBundle(site);
-    const ov = overlayFor("vi", site)!;
+    const ov = (await overlayFor("vi", site))!;
     for (const s of bundle.catalog.skills) expect(ov.skills?.[s.id], `skill ${s.id}`).toBeTruthy();
     for (const c of bundle.catalog.courses) {
       expect(ov.courses?.[c.id]?.title, `course ${c.id}`).toBeTruthy();
@@ -110,7 +109,7 @@ describe.each(SITES)("Vietnamese content overlay: %s", (site: Site) => {
   });
 
   it("never leaves Korean in the localised bundle and has no empty or placeholder text", async () => {
-    const bundle = localizeBundle(await demoContentRepository.getBundle(site), "vi");
+    const bundle = localizeBundle(await demoContentRepository.getBundle(site), await overlayFor("vi", site));
     const strings: [string, string][] = [];
     for (const s of bundle.catalog.skills) strings.push([`skill ${s.id}`, s.title]);
     for (const c of bundle.catalog.courses) {
@@ -134,7 +133,7 @@ describe.each(SITES)("Vietnamese content overlay: %s", (site: Site) => {
 
   it("changes ONLY presentation: ids, types, option ids, answer keys, difficulty, roles and skills are identical to the canonical bundle", async () => {
     const base = await demoContentRepository.getBundle(site);
-    const vib = localizeBundle(base, "vi");
+    const vib = localizeBundle(base, await overlayFor("vi", site));
     expect(vib.questions.length).toBe(base.questions.length);
     base.questions.forEach((q, i) => {
       const v = vib.questions[i];
@@ -154,7 +153,7 @@ describe.each(SITES)("Vietnamese content overlay: %s", (site: Site) => {
 
   it("grades identically in both locales: the canonical correct response is accepted by the Vietnamese question too", async () => {
     const base = await demoContentRepository.getBundle(site);
-    const vib = localizeBundle(base, "vi");
+    const vib = localizeBundle(base, await overlayFor("vi", site));
     for (const [i, q] of base.questions.entries()) {
       const k = q.answer;
       const resp = k.kind === "choice" ? k.id : k.kind === "numeric" ? String(k.value) : k.kind === "text" ? k.accepted[0] : k.ids;
@@ -164,7 +163,8 @@ describe.each(SITES)("Vietnamese content overlay: %s", (site: Site) => {
 
   it("is memoised and the Korean locale returns the canonical bundle object itself", async () => {
     const base = await demoContentRepository.getBundle(site);
-    expect(localizeBundle(base, "ko")).toBe(base);
+    expect(localizeBundle(base, null)).toBe(base);
+    expect(await localizedBundle(base, "ko")).toBe(base);
     expect(localizedBundle(base, "vi")).toBe(localizedBundle(base, "vi"));
   });
 });
@@ -172,7 +172,7 @@ describe.each(SITES)("Vietnamese content overlay: %s", (site: Site) => {
 describe("English subject in Vietnamese mode: instructions localised, the English target is not", () => {
   it("answer keys, ordering tiles and English option texts are byte-identical to the canonical bundle", async () => {
     const base: ContentBundle = await demoContentRepository.getBundle("english");
-    const vib = localizeBundle(base, "vi");
+    const vib = localizeBundle(base, await overlayFor("vi", "english"));
     base.questions.forEach((q, i) => {
       const v = vib.questions[i];
       if (q.type === "ordering") expect((v.options ?? []).map((o) => o.text), q.id).toEqual((q.options ?? []).map((o) => o.text));
@@ -182,7 +182,7 @@ describe("English subject in Vietnamese mode: instructions localised, the Englis
   });
   it("a Vietnamese English-lesson prompt keeps the English sentence verbatim", async () => {
     const base: ContentBundle = await demoContentRepository.getBundle("english");
-    const vib = localizeBundle(base, "vi");
+    const vib = localizeBundle(base, await overlayFor("vi", "english"));
     const q = vib.questions.find((x) => x.id === "e-e3-build-3")!;
     expect(q.prompt).toContain("He ____ soccer.");
     expect(HANGUL.test(q.prompt)).toBe(false);

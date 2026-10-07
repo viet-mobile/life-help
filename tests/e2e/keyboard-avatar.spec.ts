@@ -1,7 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
 import elementaryMath from "../../lib/learn/content/elementary/math.json";
 import { ko } from "../../lib/learn/i18n/ko";
-import { vi } from "../../lib/learn/i18n/vi";
+import viJson from "../../lib/learn/i18n/locales/vi.json";
+const vi = viJson as Record<keyof typeof ko, string>;
 
 /**
  * Local production-build e2e (guest mode) for two small UX changes:
@@ -48,7 +49,7 @@ test("avatars: a penguin is offered, the dragon is gone (Korean)", async ({ page
 
 test("avatars: Vietnamese labels (Chim cánh cụt, no Rồng)", async ({ page }) => {
   await page.goto(`${HOME}/`);
-  await page.getByRole("radio", { name: "Tiếng Việt" }).first().click();
+  await page.getByTestId("locale-select").first().selectOption("vi");
   await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi");
   await toAvatarStep(page, vi);
   await expect(page.getByRole("radio", { name: vi["avatar.penguin"], exact: true })).toBeVisible();

@@ -2,7 +2,8 @@ import { expect, test, type Page } from "@playwright/test";
 import elementaryMath from "../../lib/learn/content/elementary/math.json";
 import elementaryEnglish from "../../lib/learn/content/elementary/english.json";
 import { ko } from "../../lib/learn/i18n/ko";
-import { vi } from "../../lib/learn/i18n/vi";
+import viJson from "../../lib/learn/i18n/locales/vi.json";
+const vi = viJson as Record<keyof typeof ko, string>;
 
 /**
  * Local production-build e2e (guest mode, math.localhost / english.localhost host routing) for the two new capabilities:
@@ -30,7 +31,7 @@ async function answer(page: Page, q: Q, locale: Locale) {
 const isApi = (name: string) => (r: { url(): string }) => r.url().endsWith(`/api/learn/${name}`);
 
 async function chooseLocale(page: Page, locale: Locale) {
-  await page.getByRole("radio", { name: locale === "vi" ? "Tiếng Việt" : "한국어" }).first().click();
+  await page.getByTestId("locale-select").first().selectOption(locale);
   await expect(page.locator(".study-root")).toHaveAttribute("lang", locale);
 }
 async function onboard(page: Page, site: "math" | "english", gradeLabel: string, locale: Locale) {
@@ -120,7 +121,7 @@ test("Vietnamese: switch on the landing page, all 12 grades read Lớp 1 .. Lớ
   await expect(page.getByRole("link", { name: vi["landing.cta.start"] })).toBeVisible();
   await expect(page.getByRole("heading", { name: vi["site.math.tagline"] })).toBeVisible();
   expect(await page.title()).toContain(vi["site.math.tagline"]); // locale-aware metadata
-  expect(HANGUL.test((await page.locator("main, .study-root").first().innerText()).replace(ko["locale.ko"], ""))).toBe(false);
+  expect(HANGUL.test((await page.locator("main, .study-root").first().innerText()).replaceAll("한국어", ""))).toBe(false);
 
   await page.reload();
   await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi"); // refresh persistence (cookie)

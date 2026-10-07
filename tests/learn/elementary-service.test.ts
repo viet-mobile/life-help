@@ -4,7 +4,7 @@ import { MemoryLearnStore } from "@/lib/learn/server/memoryStore";
 import { LearnError } from "@/lib/learn/server/errors";
 import { loadIndex } from "@/lib/learn/content/repository";
 import { buildPath } from "@/lib/learn/domain/path";
-import { ELEMENTARY_GRADES, SITES, type ContentBundle, type Grade, type Question, type Site } from "@/lib/learn/types";
+import { ELEMENTARY_GRADES, SCHOOL_SITES, type ContentBundle, type Grade, type Question, type Site } from "@/lib/learn/types";
 
 /**
  * Elementary grades and the Vietnamese locale run through the SAME server authority as middle / high Korean mode: the server picks the
@@ -62,7 +62,7 @@ async function currentLesson(actor: Actor, site: Site, grade: Grade) {
   return { lessonId: node.lessonId, index, state };
 }
 
-describe.each(SITES)("elementary flows: %s", (site) => {
+describe.each(SCHOOL_SITES)("elementary flows: %s", (site) => {
   it.each([...ELEMENTARY_GRADES])("grade %s: onboarding saves the grade, placement draws only that grade's questions, the lesson earns XP and mastery", async (grade) => {
     const actor = user(`student-${grade}`);
     const saved = await onboard(actor, site, grade);

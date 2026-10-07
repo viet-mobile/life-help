@@ -43,7 +43,7 @@ async function signUp(page: Page, who: { email: string; password: string }, loca
   const t = dict(locale);
   if (locale === "vi") {
     await page.goto(url("math", "/"));
-    await page.getByRole("radio", { name: "Tiếng Việt" }).first().click();
+    await page.getByTestId("locale-select").first().selectOption("vi");
     await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi");
     await page.getByRole("link", { name: t["landing.cta.login"] }).click();
   } else await page.goto(url("math", "/login"));
@@ -104,7 +104,7 @@ test.describe.serial("elementary + Vietnamese on the deployed staging Worker: re
     await page.getByRole("button", { name: dict("ko")["onboarding.next"] }).click();
     for (const g of ["초1", "초2", "초3", "초4", "초5", "초6", "중1", "중2", "중3", "고1", "고2", "고3"]) await expect(page.getByRole("radio", { name: g, exact: true }), g).toBeVisible();
     await expect(page.locator(".l-grade")).toHaveCount(12);
-    await page.getByRole("radio", { name: "Tiếng Việt" }).first().click();
+    await page.getByTestId("locale-select").first().selectOption("vi");
     for (let n = 1; n <= 12; n++) await expect(page.getByRole("radio", { name: `Lớp ${n}`, exact: true }), `Lớp ${n}`).toBeVisible();
   });
 
@@ -300,7 +300,7 @@ for (const [name, width, height, mobile] of [["320", 320, 640, true], ["390", 39
       };
       try {
         await page.goto(url("math", "/"));
-        if (locale === "vi") await page.getByRole("radio", { name: "Tiếng Việt" }).first().click();
+        if (locale === "vi") await page.getByTestId("locale-select").first().selectOption("vi");
         await audit("landing");
         await page.getByRole("link", { name: t["landing.cta.start"] }).click();
         await page.locator("#nick").fill("An An");

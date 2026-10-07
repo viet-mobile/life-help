@@ -7,7 +7,8 @@ import englishElementary from "../../lib/learn/content/elementary/english.json";
 import mathSecondary from "../../lib/learn/content/secondary/math.json";
 import englishSecondary from "../../lib/learn/content/secondary/english.json";
 import { ko } from "../../lib/learn/i18n/ko";
-import { vi } from "../../lib/learn/i18n/vi";
+import viJson from "../../lib/learn/i18n/locales/vi.json";
+const vi = viJson as Record<keyof typeof ko, string>;
 
 /**
  * Shared pieces of the STAGING-only real-browser suites (tests/staging/*.staging.spec.ts).

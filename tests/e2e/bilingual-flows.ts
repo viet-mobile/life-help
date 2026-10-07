@@ -1,6 +1,7 @@
 import { expect, type Page, type TestType, type PlaywrightTestArgs, type PlaywrightTestOptions, type PlaywrightWorkerArgs, type PlaywrightWorkerOptions } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
-import { vi } from "../../lib/learn/i18n/vi";
+import viJson from "../../lib/learn/i18n/locales/vi.json";
+const vi = viJson as Record<keyof typeof ko, string>;
 import { EXAMPLE_KO } from "../../lib/learn/content/listening/examples-ko";
 
 /**
@@ -36,7 +37,7 @@ export function defineBilingualTests(test: T, url: (p: string) => string) {
   async function onboard(page: Page, grade: Grade, loc: "ko" | "vi" = "ko") {
     const t = dict(loc);
     await page.goto(url("/"));
-    if (loc === "vi") { await page.getByRole("radio", { name: "Tiếng Việt" }).first().click(); await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi"); }
+    if (loc === "vi") { await page.getByTestId("locale-select").first().selectOption("vi"); await expect(page.locator(".study-root")).toHaveAttribute("lang", "vi"); }
     await page.goto(url("/onboarding"));
     await page.locator("#nick").fill("tester");
     await page.getByRole("button", { name: t["onboarding.next"] }).click();

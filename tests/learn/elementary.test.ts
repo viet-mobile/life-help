@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { checkAnswer, validateResponse } from "@/lib/learn/domain/answers";
-import { ELEMENTARY_GRADES, SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
+import { ELEMENTARY_GRADES, SCHOOL_SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
+type SchoolSite = (typeof SCHOOL_SITES)[number];
 import mathElementary from "@/lib/learn/content/elementary/math.json";
 import englishElementary from "@/lib/learn/content/elementary/english.json";
 import viMath from "@/lib/learn/content/vi/math.json";
@@ -9,7 +10,7 @@ import viEnglish from "@/lib/learn/content/vi/english.json";
 import { buildMath } from "../../scripts/learn/elementary/math.mjs";
 import { buildEnglish } from "../../scripts/learn/elementary/english.mjs";
 
-const BUNDLES: Record<Site, ContentBundle> = { math: mathElementary as unknown as ContentBundle, english: englishElementary as unknown as ContentBundle };
+const BUNDLES: Record<SchoolSite, ContentBundle> = { math: mathElementary as unknown as ContentBundle, english: englishElementary as unknown as ContentBundle };
 const HANGUL = /[가-힣]/;
 
 function correctResponse(q: Question): string | string[] {
@@ -33,7 +34,7 @@ describe("generated files are in sync with the generators (deterministic)", () =
   });
 });
 
-describe.each(SITES)("elementary curriculum: %s", (site) => {
+describe.each(SCHOOL_SITES)("elementary curriculum: %s", (site) => {
   const bundle = BUNDLES[site];
 
   it("covers grades E1..E6 exactly once each, with five lessons of four core questions + one challenge", () => {
