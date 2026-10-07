@@ -23,7 +23,8 @@ export interface SessionSummary {
  */
 export interface LearnStore {
   loadState(userId: string, site: Site, now: Date): Promise<PlayerState>;
-  saveProfile(userId: string, profile: StudentProfile): Promise<void>;
+  /** Shared fields on every site; the grade is the school grade (math / english) or the site's own level (korean: K1..K6). */
+  saveProfile(userId: string, site: Site, profile: StudentProfile): Promise<void>;
   createSession(rec: Omit<SessionRecord, "completedAt">): Promise<void>;
   getSession(userId: string, sessionId: string): Promise<SessionRecord | null>;
   sessionSummary(userId: string, sessionId: string): Promise<SessionSummary>;

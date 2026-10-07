@@ -30,7 +30,8 @@ import type {
   Site,
   StudentProfile,
 } from "@/lib/learn/types";
-import { isGoal, isGrade } from "@/lib/learn/types";
+import { isGoal } from "@/lib/learn/types";
+import { isLevelOf } from "@/lib/learn/sites";
 import { LearnError } from "./errors";
 import type { LearnStore } from "./store";
 import { parsePlayerState } from "./stateCodec";
@@ -98,14 +99,14 @@ export class LearnService {
     if (nickname.length < 2 || nickname.length > 16 || /[<>&"'`\\]/.test(nickname)) {
       throw new LearnError("invalid_nickname");
     }
-    if (!isGrade(input.grade)) throw new LearnError("invalid_grade");
+    if (!isLevelOf(site, input.grade)) throw new LearnError("invalid_grade"); // a school grade on math / english, K1..K6 on korean
     if (!isGoal(input.goal)) throw new LearnError("invalid_goal");
     const avatar = typeof input.avatar === "string" && /^[a-z]{2,12}$/.test(input.avatar) ? input.avatar : "fox";
     const profile: StudentProfile = { nickname, grade: input.grade, goal: input.goal, avatar, onboardingDone: true };
 
     const store = this.requireStore(actor);
     if (store && actor.userId) {
-      await store.saveProfile(actor.userId, profile);
+      await store.saveProfile(actor.userId, site, profile);
       return store.loadState(actor.userId, site, this.now());
     }
     const state = parsePlayerState(actor.guestState, site);

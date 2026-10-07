@@ -2,7 +2,9 @@ import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { getDomainShortcutDetails } from "@/lib/shortcut/desktopShortcut";
 import { parseLearnHost } from "@/lib/learn/hosts";
-import { t } from "@/lib/learn/i18n";
+import { createTranslator } from "@/lib/learn/i18n";
+import { loadMessages } from "@/lib/learn/i18n/catalog";
+import { siteConfig } from "@/lib/learn/sites";
 
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
   let host = "";
@@ -16,21 +18,22 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     // ignore
   }
 
-  // math.life.help / english.life.help ship their own installable identity.
+  // math.life.help / english.life.help / study.korean.life.help ship their own installable identity (in the site's default locale).
   const learn = parseLearnHost(host);
   if (learn) {
-    const name = learn.site === "math" ? t("brand.math") : t("brand.english");
+    const cfg = siteConfig(learn.site);
+    const t = createTranslator(await loadMessages(cfg.defaultLocale));
     return {
-      name,
-      short_name: learn.site === "math" ? t("site.math.name") : t("site.english.name"),
-      description: t(learn.site === "math" ? "site.math.description" : "site.english.description"),
+      name: t(cfg.brandKey),
+      short_name: t(`site.${learn.site}.name`),
+      description: t(`site.${learn.site}.description`),
       start_url: "/dashboard",
       scope: "/",
       id: `/${learn.site}`,
       display: "standalone",
       background_color: "#ffffff",
-      theme_color: learn.site === "math" ? "#4f46e5" : "#059669",
-      lang: "ko",
+      theme_color: cfg.themeColor,
+      lang: cfg.defaultLocale,
       icons: [
         { src: `/logos/favicon-${learn.site}.png`, sizes: "192x192", type: "image/png", purpose: "any" },
         { src: `/logos/logo-${learn.site}.png`, sizes: "512x512", type: "image/png", purpose: "any" },

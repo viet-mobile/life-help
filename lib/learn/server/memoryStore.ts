@@ -2,9 +2,12 @@ import { createInitialState } from "@/lib/learn/domain/engine";
 import { dayKey } from "@/lib/learn/domain/dates";
 import type { EngineResult, LearnEvent, PlayerState, Site, StudentProfile } from "@/lib/learn/types";
 import type { LearnStore, SessionRecord, SessionSummary } from "./store";
+import { composeProfile, type SharedProfileRow } from "./profile";
 
 interface UserData {
-  profile: StudentProfile | null;
+  /** the shared profile row (school grade may be null), plus per-site language levels, exactly like the database */
+  profile: SharedProfileRow | null;
+  levels: Partial<Record<Site, string>>;
   states: Partial<Record<Site, PlayerState>>;
 }
 
@@ -27,7 +30,7 @@ export class MemoryLearnStore implements LearnStore {
   private user(userId: string): UserData {
     let u = this.users.get(userId);
     if (!u) {
-      u = { profile: null, states: {} };
+      u = { profile: null, levels: {}, states: {} };
       this.users.set(userId, u);
     }
     return u;
@@ -40,13 +43,18 @@ export class MemoryLearnStore implements LearnStore {
     // Mirror a DB load: profile is shared across sites and the quest is per-day.
     return {
       ...base,
-      profile: u.profile,
+      profile: composeProfile(site, u.profile, u.levels[site]),
       quest: base.quest && base.quest.day === today ? base.quest : null,
     };
   }
 
-  async saveProfile(userId: string, profile: StudentProfile) {
-    this.user(userId).profile = profile;
+  async saveProfile(userId: string, site: Site, profile: StudentProfile) {
+    const u = this.user(userId);
+    const shared = { nickname: profile.nickname, goal: profile.goal, avatar: profile.avatar };
+    if (site === "korean") {
+      u.profile = { grade: null, ...u.profile, ...shared };
+      u.levels[site] = profile.grade;
+    } else u.profile = { ...u.profile, ...shared, grade: profile.grade };
   }
 
   async createSession(rec: Omit<SessionRecord, "completedAt">) {

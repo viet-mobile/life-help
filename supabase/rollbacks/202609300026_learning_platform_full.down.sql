@@ -10,6 +10,7 @@
 begin;
 
 -- Trusted RPCs first (they reference the tables only inside their bodies).
+drop function if exists public.learn_set_course_level(uuid, text, text); -- 202610070028 (study.korean); absent before it, so "if exists"
 drop function if exists public.learn_commit_events(uuid, text, jsonb, jsonb);
 drop function if exists public.learn_load_state(uuid, text, date);
 drop function if exists public.learn_load_content(text);

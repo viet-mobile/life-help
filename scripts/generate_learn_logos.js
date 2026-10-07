@@ -1,4 +1,4 @@
-// Generates the MATH and ENGLISH variants of the LIFE.HELP logo for math.life.help / english.life.help.
+// Generates the MATH, ENGLISH and KOREAN variants of the LIFE.HELP logo for math.life.help / english.life.help / study.korean.life.help.
 //
 // Same construction as scripts/generate_logos.js (country logos): the site name is set in the empty band above "LIFE" in the logo's
 // navy, and stretched to exactly the width of "LIFE HELP" below it. The canvas is an existing 512x512 country logo
@@ -15,7 +15,7 @@ const path = require("node:path");
 
 const LOGOS = path.join(__dirname, "../public/logos");
 const CANVAS = path.join(LOGOS, "logo-nepal.png");
-const SITES = { math: "MATH", english: "ENGLISH" };
+const SITES = { math: "MATH", english: "ENGLISH", korean: "KOREAN" };
 // Name band in 512px coordinates (generate_logos.js: text 678x162 at (180,158) of the 790px crop, scaled by 512/790).
 const BAND = { left: 36, top: 25, width: 439, height: 105 };
 const NAVY = "#0b1e4c";

@@ -3,7 +3,7 @@ import { createInitialState } from "@/lib/learn/domain/engine";
 import { dayKey } from "@/lib/learn/domain/dates";
 import { pruneLedgerKeys } from "@/lib/learn/domain/ledger";
 import type { EngineResult, LearnEvent, PlayerState, Site, StudentProfile } from "@/lib/learn/types";
-import { isGoal, isGrade } from "@/lib/learn/types";
+import { composeProfile } from "./profile";
 import type { LearnStore, SessionKind, SessionRecord, SessionSummary } from "./store";
 
 /* ---------------------------- pure mappers (unit tested) ---------------------------- */
@@ -78,7 +78,7 @@ interface LoadStateJson {
   streak?: { current_days: number; best_days: number; last_active_day: string | null; freezes: number } | null;
   quest?: { quest_day: string; items: PlayerState["quest"] extends infer Q ? (Q extends { items: infer I } ? I : never) : never; completed_at: string | null } | null;
   achievements?: string[];
-  meta?: { counters?: Partial<PlayerState["counters"]>; diagnostic_done?: boolean } | null;
+  meta?: { counters?: Partial<PlayerState["counters"]>; diagnostic_done?: boolean; level?: string | null } | null;
 }
 
 /** Result of public.learn_load_state() -> PlayerState. */
@@ -87,11 +87,7 @@ export function rpcToState(raw: unknown, site: Site, day: string): PlayerState {
   if (!raw || typeof raw !== "object") return base;
   const r = raw as LoadStateJson;
 
-  const p = r.profile;
-  const profile: StudentProfile | null =
-    p && isGrade(p.grade) && isGoal(p.goal) && typeof p.nickname === "string"
-      ? { nickname: p.nickname, grade: p.grade, goal: p.goal, avatar: p.avatar ?? "fox", onboardingDone: true }
-      : null;
+  const profile = composeProfile(site, r.profile, r.meta?.level);
 
   const mastery: PlayerState["mastery"] = {};
   for (const m of r.mastery ?? []) {
@@ -163,12 +159,16 @@ export class SupabaseLearnStore implements LearnStore {
     return rpcToState(data, site, day);
   }
 
-  async saveProfile(userId: string, profile: StudentProfile) {
-    const { error } = await this.db.from("learn_student_profiles").upsert(
-      { user_id: userId, nickname: profile.nickname, grade: profile.grade, goal: profile.goal, avatar: profile.avatar, updated_at: new Date().toISOString() },
-      { onConflict: "user_id" },
-    );
+  async saveProfile(userId: string, site: Site, profile: StudentProfile) {
+    // A language level never overwrites the shared school grade (the column is simply not sent for korean).
+    const shared: Record<string, string> = { user_id: userId, nickname: profile.nickname, goal: profile.goal, avatar: profile.avatar, updated_at: new Date().toISOString() };
+    if (site !== "korean") shared.grade = profile.grade;
+    const { error } = await this.db.from("learn_student_profiles").upsert(shared, { onConflict: "user_id" });
     if (error) fail("save_profile", error);
+    if (site === "korean") {
+      const { error: levelError } = await this.db.rpc("learn_set_course_level", { p_user: userId, p_site: site, p_level: profile.grade });
+      if (levelError) fail("save_level", levelError);
+    }
   }
 
   async createSession(rec: Omit<SessionRecord, "completedAt">) {

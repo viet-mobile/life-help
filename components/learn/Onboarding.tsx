@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
-import { ELEMENTARY_GRADES, GOALS, SECONDARY_GRADES, type Goal, type Grade } from "@/lib/learn/types";
+import { siteConfig, isLevelOf } from "@/lib/learn/sites";
+import { GOALS, type Goal, type Grade } from "@/lib/learn/types";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { ApiError, useLearner } from "./LearnerProvider";
 
@@ -35,7 +36,8 @@ export function Onboarding() {
   const [goalInput, setGoal] = useState<Goal | null>(null);
   const [avatarInput, setAvatar] = useState<string | null>(null);
   const nickname = nicknameInput ?? state.profile?.nickname ?? guest?.nickname ?? "";
-  const grade = gradeInput ?? state.profile?.grade ?? guest?.grade ?? null;
+  // a level from another site (e.g. a school grade carried by a guest profile) is never offered on a language site, and vice versa
+  const grade = [gradeInput, state.profile?.grade, guest?.grade].find((g): g is Grade => isLevelOf(site, g)) ?? null;
   const goal = goalInput ?? state.profile?.goal ?? guest?.goal ?? null;
   const avatar = avatarInput ?? state.profile?.avatar ?? guest?.avatar ?? "fox";
   const [saving, setSaving] = useState(false);
@@ -76,8 +78,8 @@ export function Onboarding() {
 
       {step === 2 && (
         <section className="l-stack">
-          <h1 className="l-h1">{t("onboarding.grade.title")}</h1>
-          {([["elementary", ELEMENTARY_GRADES], ["secondary", SECONDARY_GRADES]] as const).map(([level, list]) => (
+          <h1 className="l-h1">{t(site === "korean" ? "onboarding.level.title" : "onboarding.grade.title")}</h1>
+          {siteConfig(site).levelGroups.map(({ key: level, levels: list }) => (
             <div key={level} role="radiogroup" aria-label={t(`grade.group.${level}` as never)} className="l-stack">
               <p className="l-muted" style={{ fontWeight: 800 }}>{t(`grade.group.${level}` as never)}</p>
               <div className="l-options l-grades">

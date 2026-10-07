@@ -107,7 +107,7 @@ export const learnConfig = {
 
   diagnostic: {
     maxQuestions: 6,
-    initialAbilityByGrade: { E1: 1, E2: 1.2, E3: 1.4, E4: 1.6, E5: 1.75, E6: 1.9, M1: 2, M2: 2.5, M3: 3, H1: 3, H2: 3.5, H3: 4 } as const,
+    initialAbilityByGrade: { E1: 1, E2: 1.2, E3: 1.4, E4: 1.6, E5: 1.75, E6: 1.9, M1: 2, M2: 2.5, M3: 3, H1: 3, H2: 3.5, H3: 4, K1: 1, K2: 1.4, K3: 1.8, K4: 2.2, K5: 2.6, K6: 3 } as const,
     step: 0.7,
     /** Placement: a lesson is "placed out" when all its skills seed at or above this. */
     placeOutSeed: 65,

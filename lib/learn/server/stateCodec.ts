@@ -1,4 +1,5 @@
-import { GRADES, GOALS, type Goal, type Grade, type PlayerState, type Site } from "@/lib/learn/types";
+import { isLevelOf } from "@/lib/learn/sites";
+import { GOALS, type Goal, type Grade, type PlayerState, type Site } from "@/lib/learn/types";
 import { createInitialState } from "@/lib/learn/domain/engine";
 import { MAX_LEDGER_KEYS, pruneLedgerKeys } from "@/lib/learn/domain/ledger";
 
@@ -27,7 +28,7 @@ export function parsePlayerState(raw: unknown, site: Site): PlayerState {
 
   const profile = isRecord(raw.profile) ? raw.profile : null;
   const nickname = profile ? str(profile.nickname, 16) : null;
-  const grade = profile && (GRADES as readonly unknown[]).includes(profile.grade) ? profile.grade : null;
+  const grade = profile && isLevelOf(site, profile.grade) ? profile.grade : null; // a guest state of one site never carries another site's level
   const goal = profile && (GOALS as readonly unknown[]).includes(profile.goal) ? profile.goal : null;
 
   const mastery: PlayerState["mastery"] = {};

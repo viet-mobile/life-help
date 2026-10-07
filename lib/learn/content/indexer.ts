@@ -57,14 +57,14 @@ export function toMetaBundle(bundle: ContentBundle): MetaBundle {
 /**
  * The slice of a bundle one student works in. Pure and shared by the server and the browser, so the learning path, the placement
  * pool, the skills map, the quests and the achievements are all computed over the SAME grade-scoped content:
- *   elementary grade  -> only the course whose grade equals the student's grade
+ *   elementary grade  -> only the course whose grade equals the student's grade (a language level K1..K6 works the same way)
  *   middle / high     -> only the course of the student's own grade (M1..H3). When the content has no course for that grade yet
  *                        (a database that still holds only the original M1 course), the nearest lower grade that has one is served,
  *                        so a student is never left without a path.
  * Skills are those the in-scope lessons teach (plus their prerequisite chain); questions are those that practise those skills.
  */
 function coursesFor(all: Course[], grade: Grade, level: ReturnType<typeof schoolLevel>): Course[] {
-  if (level === "elementary") return all.filter((c) => c.grade === grade);
+  if (level === "elementary" || level === "language") return all.filter((c) => c.grade === grade);
   const secondary = all.filter((c) => schoolLevel(c.grade) === "secondary");
   const own = secondary.filter((c) => c.grade === grade);
   if (own.length) return own;

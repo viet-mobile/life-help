@@ -2,6 +2,7 @@
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
 import { parseLearnHost } from "@/lib/learn/hosts";
+import { SITES, type Site } from "@/lib/learn/types";
 import { allowsLearnPathAccess } from "@/lib/env";
 import { updateLearnSession } from "@/lib/learn/server/supabase/proxySession";
 
@@ -250,15 +251,15 @@ const COUNTRY_HOST_REDIRECTS: Record<string, string> = {
 
 
 /**
- * Learning sites (math.life.help, english.life.help).
+ * Learning sites (math.life.help, english.life.help, study.korean.life.help).
  *
  * The subdomain selects a learning site; the app lives at /study/[site]/...
  * internally, so math.life.help/dashboard is served by /study/math/dashboard.
  * Locally (no subdomain) the same pages are reachable at /study/math.
  */
-const LEARN_SITES = new Set(["math", "english"]);
+const LEARN_SITES = new Set<string>(SITES);
 
-function getLearnSiteFromHost(host: string): "math" | "english" | null {
+function getLearnSiteFromHost(host: string): Site | null {
   return parseLearnHost(host)?.site ?? null;
 }
 
