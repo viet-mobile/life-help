@@ -6,7 +6,9 @@ import { LocaleSwitch } from "@/components/learn/LocaleSwitch";
 import { StartCta } from "@/components/learn/StartCta";
 import { getServerT } from "@/lib/learn/i18n/server";
 import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
-import { isSite, schoolLevel } from "@/lib/learn/types";
+import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
+import { siteConfig } from "@/lib/learn/sites";
+import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -17,15 +19,16 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   const { bundle } = await loadContent(site, locale);
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
-  const other = site === "math" ? "english" : "math";
-  const otherHost = h.get("x-learn-base") === "" ? `https://${other}.life.help` : `/study/${other}`;
+  // Links to the other learning sites: same stage (production / staging) on their own hosts, or the /study path locally.
+  const stage = parseLearnHost(h.get("host") ?? "")?.stage;
+  const others = SITES.filter((s) => s !== site).map((s) => ({ site: s, href: stage && stage !== "local" ? `https://${learnHost(s, stage)}` : `/study/${s}` }));
 
   return (
     <div className="l-wrap l-wrap-wide l-stack">
       <header className="l-landing-head">
-        <span className="l-brand"><BrandLogo site={site} name={site === "math" ? t("brand.math") : t("brand.english")} size={56} /></span>
+        <span className="l-brand"><BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={56} /></span>
         <LocaleSwitch />
-        <Link className="l-link" href={otherHost}>{t("site.other", { name: t(`site.${other}.name` as never) })}</Link>
+        {others.map((o) => <Link key={o.site} className="l-link" href={o.href} data-testid={`other-site-${o.site}`}>{t("site.other", { name: t(`site.${o.site}.name` as never) })}</Link>)}
       </header>
 
       <section className="l-card l-card-accent l-stack" style={{ padding: 28 }}>
@@ -50,7 +53,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
       <section className="l-stack" aria-labelledby="worlds-h">
         <h2 id="worlds-h" className="l-h2">{t("landing.worldsTitle")}</h2>
-        {(["elementary", "secondary"] as const).map((level) => {
+        {siteConfig(site).levelGroups.map(({ key: level }) => {
           const courses = bundle.catalog.courses.filter((c) => schoolLevel(c.grade) === level);
           if (courses.length === 0) return null;
           return (

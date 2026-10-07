@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { learnConfig } from "@/lib/learn/config";
 import { indexContent, scopeToGrade, type ContentIndex } from "@/lib/learn/content/indexer";
 import { createInitialState } from "@/lib/learn/domain/engine";
-import { createTranslator, type LearnLocale, type Translator } from "@/lib/learn/i18n";
+import { createTranslator, type LearnLocale, type Messages, type Translator } from "@/lib/learn/i18n";
 import type { MetaBundle, PlayerState, Site } from "@/lib/learn/types";
 
 export class ApiError extends Error {
@@ -25,8 +25,9 @@ interface SiteCtx {
 }
 const SiteContext = createContext<SiteCtx | null>(null);
 
-export function SiteProvider({ site, base, locale, children }: { site: Site; base: string; locale: LearnLocale; children: ReactNode }) {
-  const value = useMemo(() => ({ site, base, locale, t: createTranslator(locale), href: (path: string) => `${base}${path}` }), [site, base, locale]);
+export function SiteProvider({ site, base, locale, messages, children }: { site: Site; base: string; locale: LearnLocale; messages: Messages; children: ReactNode }) {
+  // `messages` is the server-resolved dictionary of this locale only (never the whole catalogue in the browser bundle).
+  const value = useMemo(() => ({ site, base, locale, t: createTranslator(messages), href: (path: string) => `${base}${path}` }), [site, base, locale, messages]);
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;
 }
 export function useSite(): SiteCtx {

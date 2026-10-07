@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type ComponentType } from "react";
+import { useState, useSyncExternalStore, type ComponentType } from "react";
 import { getAudioProvider } from "@/lib/learn/providers/audio";
 import type { PublicQuestion, QuestionType, Site } from "@/lib/learn/types";
+import { siteConfig } from "@/lib/learn/sites";
 import { useSite } from "./LearnerProvider";
 import { RichText } from "./RichText";
 
@@ -58,7 +59,8 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
             data-selected={selected}
           >
             <span className="l-option-key" aria-hidden="true">{q.type === "true_false" ? (o.id === "true" ? "O" : "X") : String.fromCharCode(65 + i)}</span>
-            <RichText text={o.text} />
+            {/* dir="auto": a gloss in Arabic script reads right-to-left, Korean / English target text left-to-right, on any page */}
+            <RichText text={o.text} dir="auto" />
           </button>
         );
       })}
@@ -86,7 +88,7 @@ function MultiRenderer({ q, value, onChange, disabled }: RendererProps) {
             data-selected={on}
           >
             <span className="l-option-key" aria-hidden="true">{on ? "✓" : ""}</span>
-            <RichText text={o.text} />
+            <RichText text={o.text} dir="auto" />
           </button>
         );
       })}
@@ -115,7 +117,9 @@ function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps)
         autoCapitalize="off"
         autoCorrect="off"
         spellCheck={false}
-        lang={site === "english" && !numeric ? "en" : undefined}
+        // typed answers are target-language text (English / Korean) or numbers: always left-to-right, with the target language's keyboard hint
+        lang={!numeric ? siteConfig(site).targetLanguage?.code : undefined}
+        dir="ltr"
         placeholder={numeric ? t("lesson.answer.numeric") : t("lesson.answer.placeholder")}
         value={typeof value === "string" ? value : ""}
         disabled={disabled}
@@ -145,7 +149,7 @@ function OrderingRenderer({ q, value, onChange, disabled }: RendererProps) {
       <ol className="l-slots" aria-label={q.prompt}>
         {options.map((_, i) => (
           <li key={i} className="l-slot" aria-label={t("lesson.order.slot", { n: i + 1 })}>
-            {chosen[i] ? text(chosen[i]) : ""}
+            <bdi>{chosen[i] ? text(chosen[i]) : ""}</bdi>
           </li>
         ))}
       </ol>
@@ -158,7 +162,7 @@ function OrderingRenderer({ q, value, onChange, disabled }: RendererProps) {
             disabled={disabled || chosen.includes(o.id)}
             onClick={() => onChange([...chosen, o.id])}
           >
-            {o.text}
+            <bdi>{o.text}</bdi>
           </button>
         ))}
       </div>
@@ -170,27 +174,74 @@ function OrderingRenderer({ q, value, onChange, disabled }: RendererProps) {
 }
 registerRenderer("ordering", OrderingRenderer);
 
-/* ------------------------- english: listen button ------------------------- */
+/* ------------------- target-language audio and text ------------------- */
 
+/**
+ * Speaker button for target-language audio (browser speech only: no cloud TTS, nothing leaves the device). When the device reports
+ * its voices and none speaks the language, the button is replaced by a short note: the learner continues with the text.
+ */
 export function ListenButton({ text }: { text: string }) {
-  const { t } = useSite();
+  const { t, site } = useSite();
   const [busy, setBusy] = useState(false);
+  const target = siteConfig(site).targetLanguage;
   const provider = getAudioProvider();
-  if (!provider.isAvailable()) return null;
+  const voice = useSyncExternalStore(subscribeVoices, () => (target ? provider.hasVoice(target.speech) : false), () => true);
+  if (!target || !provider.isAvailable()) return null;
+  const lang = t(`lang.${target.code}`);
+  if (!voice) return <p className="l-target-note" role="note" data-testid="no-voice">{t("listen.noVoice", { lang })}</p>;
   return (
     <button
       type="button"
       className="l-chip"
-      aria-label={t("lesson.listen")}
+      data-testid="target-listen"
+      aria-label={site === "english" ? t("lesson.listen") : t("target.listen", { lang })}
       disabled={busy}
       onClick={async () => {
         setBusy(true);
-        await provider.speak(text, "en-US");
+        await provider.speak(text, target.speech);
         setBusy(false);
       }}
     >
-      🔊 {t("lesson.listen")}
+      🔊 {site === "english" ? t("lesson.listen") : t("target.listen", { lang })}
     </button>
+  );
+}
+function subscribeVoices(notify: () => void) {
+  if (typeof window === "undefined" || !("speechSynthesis" in window) || typeof window.speechSynthesis.addEventListener !== "function") return () => {};
+  window.speechSynthesis.addEventListener("voiceschanged", notify);
+  return () => window.speechSynthesis.removeEventListener("voiceschanged", notify);
+}
+
+const RR_KEY = "life_help_learn_rr";
+const rrListeners = new Set<() => void>();
+function readRr(): boolean {
+  try { return window.localStorage.getItem(RR_KEY) === "1"; } catch { return false; }
+}
+/**
+ * The target-language text of a question (study.korean): shown large with lang / dir set for the target language, an optional
+ * romanization (one system, Revised Romanization; off by default, remembered per browser) and the speaker button.
+ */
+export function TargetBlock({ target, audioText }: { target: { text: string; romanization?: string }; audioText?: string }) {
+  const { t, site } = useSite();
+  const lang = siteConfig(site).targetLanguage;
+  const showRr = useSyncExternalStore((n) => { rrListeners.add(n); return () => { rrListeners.delete(n); }; }, readRr, () => false);
+  const toggle = () => {
+    try { window.localStorage.setItem(RR_KEY, showRr ? "0" : "1"); } catch { /* private mode: the toggle still works for this page */ }
+    rrListeners.forEach((n) => n());
+  };
+  return (
+    <div className="l-target" data-testid="target-block">
+      <span className="l-target-text" lang={lang?.code} dir="ltr" data-testid="target-text">{target.text}</span>
+      {audioText && <ListenButton text={audioText} />}
+      {target.romanization && (
+        <>
+          <button type="button" className="l-link" aria-pressed={showRr} onClick={toggle} data-testid="rr-toggle">
+            {t(showRr ? "target.romanization.hide" : "target.romanization.show")}
+          </button>
+          {showRr && <span className="l-target-rr" lang="ko-Latn" dir="ltr" title={t("target.romanization.name")} data-testid="target-rr">{target.romanization}</span>}
+        </>
+      )}
+    </div>
   );
 }
 

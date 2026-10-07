@@ -1,6 +1,8 @@
-/** Shared type definitions for the LIFE.HELP learning platform (math + english). */
+/** Shared type definitions for the LIFE.HELP learning platform (math, english, study.korean). */
 
-export const SITES = ["math", "english"] as const;
+export const SITES = ["math", "english", "korean"] as const;
+/** The school-curriculum sites (grades E1..H3); study.korean is a language course with its own levels. */
+export const SCHOOL_SITES = ["math", "english"] as const;
 export type Site = (typeof SITES)[number];
 export function isSite(value: unknown): value is Site {
   return typeof value === "string" && (SITES as readonly string[]).includes(value);
@@ -13,14 +15,32 @@ export function isSite(value: unknown): value is Site {
  */
 export const ELEMENTARY_GRADES = ["E1", "E2", "E3", "E4", "E5", "E6"] as const;
 export const SECONDARY_GRADES = ["M1", "M2", "M3", "H1", "H2", "H3"] as const;
-export const GRADES = [...ELEMENTARY_GRADES, ...SECONDARY_GRADES] as const;
+export const SCHOOL_GRADES = [...ELEMENTARY_GRADES, ...SECONDARY_GRADES] as const;
+/**
+ * Language-course LEVELS (study.korean): K1..K6 are proficiency levels, not school grades. They share the Grade slot of a course /
+ * profile so the engine (paths, placement, scoping) is one engine; which list a site offers comes from its SiteConfig (lib/learn/sites.ts).
+ */
+export const KOREAN_LEVELS = ["K1", "K2", "K3", "K4", "K5", "K6"] as const;
+export const GRADES = [...SCHOOL_GRADES, ...KOREAN_LEVELS] as const;
 export type Grade = (typeof GRADES)[number];
+export type SchoolGrade = (typeof SCHOOL_GRADES)[number];
+export type KoreanLevel = (typeof KOREAN_LEVELS)[number];
 export function isGrade(value: unknown): value is Grade {
   return typeof value === "string" && (GRADES as readonly string[]).includes(value);
 }
-export type SchoolLevel = "elementary" | "secondary";
-/** Elementary students learn their own grade's course; middle / high students share the secondary courses (unchanged behaviour). */
+export function isSchoolGrade(value: unknown): value is SchoolGrade {
+  return typeof value === "string" && (SCHOOL_GRADES as readonly string[]).includes(value);
+}
+export function isKoreanLevel(value: unknown): value is KoreanLevel {
+  return typeof value === "string" && (KOREAN_LEVELS as readonly string[]).includes(value);
+}
+export type SchoolLevel = "elementary" | "secondary" | "language";
+/**
+ * Elementary students learn their own grade's course; middle / high students share the secondary courses (unchanged behaviour);
+ * a language level (K1..K6) learns its own level's course, like an elementary grade.
+ */
 export function schoolLevel(grade: Grade): SchoolLevel {
+  if (grade.startsWith("K")) return "language";
   return grade.startsWith("E") ? "elementary" : "secondary";
 }
 
@@ -82,8 +102,13 @@ export interface Question {
   family?: string;
   /** "core" questions appear in lessons; "variant" only as follow-ups; "diagnostic" only in placement. */
   role: "core" | "variant" | "diagnostic";
-  /** Optional audio for listening-style questions. */
+  /** Optional audio for listening-style questions (spoken in the site's target language). */
   audioText?: string;
+  /**
+   * Target-language text the question is about (study.korean: the Korean word / sentence), shown as its own block with an optional
+   * romanization (one system: Revised Romanization). Never localized, never part of the answer key.
+   */
+  target?: { text: string; romanization?: string };
   /** Expected solve time in seconds (used for mastery timing weight). */
   expectedSeconds?: number;
   tags?: string[];
@@ -101,6 +126,7 @@ export interface PublicQuestion {
   latex?: string;
   options?: QuestionOption[];
   audioText?: string;
+  target?: { text: string; romanization?: string };
   hintCount: number;
 }
 

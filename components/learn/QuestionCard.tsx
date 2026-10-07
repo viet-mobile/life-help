@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
 import { ApiError, useLearner } from "./LearnerProvider";
-import { AnswerInput, ListenButton } from "./renderers";
+import { AnswerInput, ListenButton, TargetBlock } from "./renderers";
 import { MathBlock, RichText } from "./RichText";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { ListeningPanel } from "./Listening";
@@ -130,7 +130,7 @@ export function QuestionCard({
         <div className="l-qprompt"><RichText text={q.prompt} /></div>
         {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} meaningPending={!resolved} />}
         {q.latex && <MathBlock latex={q.latex} />}
-        {q.audioText && site === "english" && <ListenButton text={q.audioText} />}
+        {q.target ? <TargetBlock target={q.target} audioText={q.audioText} /> : q.audioText && <ListenButton text={q.audioText} />}
         <AnswerInput site={site} q={q} value={value} onChange={setValue} disabled={resolved || status === "checking"} onSubmit={submit} />
       </div>
 

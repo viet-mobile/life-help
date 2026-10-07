@@ -1,52 +1,27 @@
 import type { LearnLocale } from "@/lib/learn/i18n";
-import type { ContentBundle, Course, Lesson, Question, Site, Unit } from "@/lib/learn/types";
-import viEnglish from "./vi/english.json";
-import viMath from "./vi/math.json";
-import viSecondaryEnglish from "./vi/secondary-english.json";
-import viSecondaryMath from "./vi/secondary-math.json";
+import { siteConfig } from "@/lib/learn/sites";
+import type { ContentBundle, Course, Lesson, Question, Unit } from "@/lib/learn/types";
+import { mergeOverlays, type ContentOverlay } from "./overlay";
+import { OVERLAY_LOADERS } from "./overlayIndex";
+
+export { mergeOverlays, type ContentOverlay } from "./overlay";
 
 /**
- * Presentation-language overlay for a content bundle. The canonical bundle (Korean instructions) holds the data that matters:
- * ids, skills, question types, option ids, answer keys, difficulty. An overlay replaces ONLY learner-facing strings
- * (titles, concepts, prompts, option texts, hints, explanations) and can never touch an answer key or an id, so grading, XP and
- * mastery are identical in every locale. English target material (words, sentences, accepted answers) is not translated.
+ * The overlay stack for (locale, site), on top of the canonical bundle (written in the site's presentation locale):
+ *   English overlay   (when the canonical language is not English) - the fallback for any string a locale does not carry yet
+ *   locale overlay    the learner's language
+ * A locale whose question texts are not translated yet therefore shows English instructions, never the canonical Korean.
  */
-export interface ContentOverlay {
-  skills?: Record<string, string>;
-  courses?: Record<string, { title: string; world?: { name?: string; tagline?: string } }>;
-  units?: Record<string, string>;
-  lessons?: Record<string, { title: string; concept: string; example: string }>;
-  questions?: Record<string, { prompt?: string; latex?: string; options?: Record<string, string>; hints?: string[]; explanation?: string }>;
-}
-
-/** Overlays are generated per content set (demo + elementary, then secondary M2..H3); ids are disjoint, so merging is a plain spread. */
-export function mergeOverlays(...parts: ContentOverlay[]): ContentOverlay {
-  const out: Required<ContentOverlay> = { skills: {}, courses: {}, units: {}, lessons: {}, questions: {} };
-  for (const p of parts) {
-    Object.assign(out.skills, p.skills);
-    Object.assign(out.courses, p.courses);
-    Object.assign(out.units, p.units);
-    Object.assign(out.lessons, p.lessons);
-    Object.assign(out.questions, p.questions);
-  }
-  return out;
-}
-
-const OVERLAYS: Record<LearnLocale, Partial<Record<Site, ContentOverlay>>> = {
-  ko: {},
-  vi: {
-    math: mergeOverlays(viMath as ContentOverlay, viSecondaryMath as ContentOverlay),
-    english: mergeOverlays(viEnglish as ContentOverlay, viSecondaryEnglish as ContentOverlay),
-  },
-};
-
-export function overlayFor(locale: LearnLocale, site: Site): ContentOverlay | null {
-  return OVERLAYS[locale]?.[site] ?? null;
+export async function overlayFor(locale: LearnLocale, site: ContentBundle["catalog"]["site"]): Promise<ContentOverlay | null> {
+  const presentation = siteConfig(site).presentationLocale;
+  if (locale === presentation) return null;
+  const load = async (l: LearnLocale) => (await OVERLAY_LOADERS[l]?.[site]?.()) ?? null;
+  const layers = (await Promise.all([presentation === "en" ? null : load("en"), locale === "en" ? null : load(locale)])).filter((x): x is ContentOverlay => !!x);
+  return layers.length ? mergeOverlays(...layers) : null;
 }
 
 /** Pure: returns the same object for a locale without an overlay (Korean), otherwise a localised copy. */
-export function localizeBundle(bundle: ContentBundle, locale: LearnLocale): ContentBundle {
-  const ov = overlayFor(locale, bundle.catalog.site);
+export function localizeBundle(bundle: ContentBundle, ov: ContentOverlay | null): ContentBundle {
   if (!ov) return bundle;
   const lesson = (l: Lesson): Lesson => {
     const o = ov.lessons?.[l.id];
@@ -85,13 +60,13 @@ export function localizeBundle(bundle: ContentBundle, locale: LearnLocale): Cont
   };
 }
 
-const memo = new WeakMap<ContentBundle, Map<LearnLocale, ContentBundle>>();
+const memo = new WeakMap<ContentBundle, Map<LearnLocale, Promise<ContentBundle>>>();
 /** Memoised per source bundle object, so a request never re-copies the whole curriculum. */
-export function localizedBundle(bundle: ContentBundle, locale: LearnLocale): ContentBundle {
-  if (locale === "ko") return bundle;
+export function localizedBundle(bundle: ContentBundle, locale: LearnLocale): Promise<ContentBundle> {
+  if (locale === siteConfig(bundle.catalog.site).presentationLocale) return Promise.resolve(bundle);
   let per = memo.get(bundle);
   if (!per) memo.set(bundle, (per = new Map()));
   let hit = per.get(locale);
-  if (!hit) per.set(locale, (hit = localizeBundle(bundle, locale)));
+  if (!hit) per.set(locale, (hit = overlayFor(locale, bundle.catalog.site).then((ov) => localizeBundle(bundle, ov))));
   return hit;
 }

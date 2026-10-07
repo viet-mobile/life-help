@@ -47,7 +47,7 @@ export function upliftEnglishE3(b) {
     T("비가 와서(it is raining) 걸어가요. so 는 '그래서'라는 뜻이에요.", "Vì trời mưa (it is raining) nên đi bộ. so nghĩa là \"vì vậy\"."));
   u.mc(5, "b", 3, ["reading", "reasoning"], u.read(P, "What is the passage mainly about?"), ["Mina's bike and her way to school", "A rainy day at the zoo", "Mina's birthday party", "A new teacher"], 0,
     [T("글 전체에서 가장 많이 나오는 내용을 찾아요.", "Hãy tìm nội dung xuất hiện nhiều nhất trong cả đoạn."), T("bike, school 이 여러 번 나와요.", "bike và school xuất hiện nhiều lần.")],
-    T("자전거와 등굣길에 대한 글이므로 첫 번째 보기가 맞아요.", "Đoạn văn nói về chiếc xe đạp và đường đến trường nên đáp án đầu là đúng."));
+    T("자전거와 등굣길에 대한 글이므로 'Mina's bike and her way to school' 이 맞아요.", "Đoạn văn nói về chiếc xe đạp và đường đến trường nên đáp án đúng là 'Mina's bike and her way to school'."));
   u.ladder(5, [1, 3, 4], ["a", "b"]);
 }
 

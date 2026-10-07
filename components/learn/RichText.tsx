@@ -28,7 +28,7 @@ const loadKatex = () => (katexPromise ??= import("katex").then((m) => (m as unkn
  * Renders inline math with KaTeX (loaded lazily, only when a `$` appears) and
  * keeps the MathML output so screen readers can read formulas.
  */
-export function RichText({ text, display = false, className }: { text: string; display?: boolean; className?: string }) {
+export function RichText({ text, display = false, className, dir }: { text: string; display?: boolean; className?: string; dir?: "auto" | "ltr" | "rtl" }) {
   const segments = parseRich(text);
   const hasMath = segments.some((s) => s.kind === "math");
   const [katex, setKatex] = useState<Katex | null>(null);
@@ -38,13 +38,14 @@ export function RichText({ text, display = false, className }: { text: string; d
   }, [hasMath]);
 
   return (
-    <span className={className}>
+    <span className={className} dir={dir}>
       {segments.map((s, i) => {
         if (s.kind === "bold") return <strong key={i}>{s.value}</strong>;
         if (s.kind === "text") return <span key={i}>{s.value}</span>;
-        if (!katex) return <span key={i} className="l-math-fallback">{s.value}</span>;
+        // formulas always read left to right, also inside a right-to-left (ar, fa, he, ur) page
+        if (!katex) return <span key={i} className="l-math-fallback" dir="ltr">{s.value}</span>;
         const html = katex.renderToString(s.value, { throwOnError: false, displayMode: display, output: "htmlAndMathml", trust: false });
-        return <span key={i} className="l-math" dangerouslySetInnerHTML={{ __html: html }} />;
+        return <span key={i} className="l-math" dir="ltr" dangerouslySetInnerHTML={{ __html: html }} />;
       })}
     </span>
   );
@@ -53,7 +54,7 @@ export function RichText({ text, display = false, className }: { text: string; d
 /** Display-mode LaTeX block for a question's `latex` field. */
 export function MathBlock({ latex }: { latex: string }) {
   return (
-    <div className="l-mathblock">
+    <div className="l-mathblock" dir="ltr">
       <RichText text={`$${latex}$`} display />
     </div>
   );

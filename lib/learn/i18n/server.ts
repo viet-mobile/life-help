@@ -1,17 +1,35 @@
 import "server-only";
-import { cookies } from "next/headers";
-import { createTranslator, LOCALE_COOKIE, parseLocale, type LearnLocale, type Translator } from "./index";
+import { cookies, headers } from "next/headers";
+import { createTranslator, LOCALE_COOKIE, parseLocale, type LearnLocale, type Messages, type Translator } from "./index";
+import { loadMessages } from "./catalog";
+import { siteConfig } from "@/lib/learn/sites";
+import { isSite } from "@/lib/learn/types";
 
-/** The learner's locale for this request (cookie set by the language switch; Korean when absent or unknown). */
-export async function getLocale(): Promise<LearnLocale> {
+/** The site's default learner locale for this request (Korean for math / english, English for study.korean). */
+async function siteDefault(): Promise<LearnLocale> {
   try {
-    return parseLocale((await cookies()).get(LOCALE_COOKIE)?.value);
+    const site = (await headers()).get("x-life-site");
+    return isSite(site) ? siteConfig(site).defaultLocale : "ko";
   } catch {
     return "ko";
   }
 }
 
-export async function getServerT(): Promise<{ locale: LearnLocale; t: Translator }> {
+/**
+ * The learner's locale for this request: the language-switch cookie when it names a registry locale, otherwise the site default.
+ * Deterministic (no Accept-Language guessing), so the same request always renders the same language.
+ */
+export async function getLocale(): Promise<LearnLocale> {
+  const fallback = await siteDefault();
+  try {
+    return parseLocale((await cookies()).get(LOCALE_COOKIE)?.value, fallback);
+  } catch {
+    return fallback;
+  }
+}
+
+export async function getServerT(): Promise<{ locale: LearnLocale; t: Translator; messages: Messages }> {
   const locale = await getLocale();
-  return { locale, t: createTranslator(locale) };
+  const messages = await loadMessages(locale);
+  return { locale, t: createTranslator(messages), messages };
 }

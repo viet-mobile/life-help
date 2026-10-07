@@ -2,12 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { LOCALES, LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, type LearnLocale } from "@/lib/learn/i18n";
+import { LOCALES, LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, isLocale, localeDir, nativeName, type LearnLocale } from "@/lib/learn/i18n";
 import { useSite } from "./LearnerProvider";
 
 /**
- * Language switch: 한국어 | Tiếng Việt. The choice is a browser-level cookie (no account column, no second identity): it survives refresh,
- * navigation and sign out / in on this browser, and the server renders every page and API answer in that language.
+ * Language picker over every registry locale (47), each named in its own script so a learner can always find their language.
+ * The choice is a browser-level cookie (no account column, no second identity): it survives refresh, navigation and sign out / in on
+ * this browser, and the server renders every page and API answer in that language. Progress is keyed by canonical ids, so switching
+ * language never changes or forks it.
  */
 export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
   const { locale, t } = useSite();
@@ -22,21 +24,21 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
   };
 
   return (
-    <div role="radiogroup" aria-label={t("locale.label")} className="l-locale" data-compact={compact || undefined} aria-busy={pending}>
-      {LOCALES.map((code) => (
-        <button
-          key={code}
-          type="button"
-          role="radio"
-          lang={code}
-          aria-checked={locale === code}
-          data-selected={locale === code}
-          className="l-locale-btn"
-          onClick={() => choose(code)}
-        >
-          {t(`locale.${code}` as never)}
-        </button>
-      ))}
-    </div>
+    <label className="l-locale" data-compact={compact || undefined} aria-busy={pending}>
+      <span aria-hidden="true">🌐</span>
+      <select
+        className="l-locale-select"
+        data-testid="locale-select"
+        value={locale}
+        aria-label={t("locale.label")}
+        onChange={(e) => { if (isLocale(e.target.value)) choose(e.target.value); }}
+      >
+        {LOCALES.map((code) => (
+          <option key={code} value={code} lang={code} dir={localeDir(code)}>
+            {nativeName(code)}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }

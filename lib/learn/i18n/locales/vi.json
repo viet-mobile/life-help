@@ -1,29 +1,23 @@
-import type { MessageKey } from "./ko";
-
-/**
- * Vietnamese UI strings for the learning sites (pilot locale "vi"). Same keys as ko.ts - the compiler rejects a missing or extra key.
- * Written for children and teenagers: friendly "bạn", short sentences, correct diacritics. Grade labels follow the age-aligned
- * Lớp 1..12 sequence (elementary E1..E6 = Lớp 1..6, middle M1..M3 = Lớp 7..9, high H1..H3 = Lớp 10..12).
- * The English subject keeps its target material in English; only instructions / feedback are Vietnamese.
- */
-export const vi: Record<MessageKey, string> = {
+{
   "brand.math": "MATH.LIFE.HELP",
   "brand.english": "ENGLISH.LIFE.HELP",
+  "brand.korean": "STUDY.KOREAN.LIFE.HELP",
   "site.math.name": "Toán",
   "site.english.name": "Tiếng Anh",
   "site.math.tagline": "Nhiệm vụ hôm nay: một ván Toán!",
   "site.english.tagline": "Nhiệm vụ hôm nay: một ván Tiếng Anh!",
   "site.math.description": "Học Toán như chơi game cho học sinh tiểu học, THCS và THPT. Nhiệm vụ 3–10 phút, từ khái niệm đến bài tập, có gợi ý để bạn tự giải.",
   "site.english.description": "Học Tiếng Anh như chơi game cho học sinh tiểu học, THCS và THPT. Luyện từ vựng, ngữ pháp và đặt câu qua các nhiệm vụ ngắn.",
+  "site.korean.name": "Tiếng Hàn",
+  "site.korean.tagline": "Nhiệm vụ hôm nay: một ván tiếng Hàn nào!",
+  "site.korean.description": "Từ đọc chữ Hangul đến hội thoại hằng ngày. Đọc, nghe và luyện tiếng Hàn qua những nhiệm vụ ngắn. Phần giải thích hiện bằng ngôn ngữ bạn chọn.",
   "site.other": "Đến trang {name}",
-
   "nav.home": "Trang chủ",
   "nav.learn": "Học tập",
   "nav.quest": "Nhiệm vụ",
   "nav.profile": "Của tôi",
   "nav.skip": "Bỏ qua, đến nội dung chính",
   "nav.main": "Menu chính",
-
   "landing.eyebrow": "Đừng đến để học bài, hãy đến để làm nhiệm vụ",
   "landing.cta.start": "Bắt đầu chỉ trong 1 phút",
   "landing.cta.continue": "Tiếp tục học",
@@ -37,7 +31,6 @@ export const vi: Record<MessageKey, string> = {
   "landing.how3.body": "XP, cấp độ, chuỗi ngày học và bản đồ kỹ năng cho bạn biết hôm nay mình đã giỏi lên bao nhiêu.",
   "landing.worldsTitle": "Những thế giới để khám phá",
   "landing.privacy": "Chúng mình không hỏi họ tên thật, số điện thoại hay trường học. Chỉ cần biệt danh và lớp của bạn.",
-
   "onboarding.step": "Bước {n} / {total}",
   "onboarding.nickname.title": "Chúng mình gọi bạn là gì nhé?",
   "onboarding.nickname.hint": "Đừng dùng họ tên thật. Biệt danh dài 2–16 ký tự là được.",
@@ -49,7 +42,6 @@ export const vi: Record<MessageKey, string> = {
   "onboarding.back": "Quay lại",
   "onboarding.finish": "Xuất phát với nhiệm vụ khám phá!",
   "onboarding.saving": "Đang lưu…",
-
   "grade.E1": "Lớp 1",
   "grade.E2": "Lớp 2",
   "grade.E3": "Lớp 3",
@@ -59,8 +51,13 @@ export const vi: Record<MessageKey, string> = {
   "grade.group.elementary": "Lớp 1–6",
   "grade.group.secondary": "Lớp 7–12",
   "locale.label": "Ngôn ngữ",
-  "locale.ko": "한국어",
-  "locale.vi": "Tiếng Việt",
+  "grade.K1": "Cấp 1 · Đọc chữ Hangul",
+  "grade.K2": "Cấp 2 · Chào hỏi và câu cơ bản",
+  "grade.K3": "Cấp 3 · Bản thân và gia đình",
+  "grade.K4": "Cấp 4 · Một ngày của mình",
+  "grade.K5": "Cấp 5 · Chuyện đã qua và dự định",
+  "grade.K6": "Cấp 6 · Hội thoại đời thường",
+  "grade.group.language": "Các cấp tiếng Hàn",
   "grade.M1": "Lớp 7",
   "grade.M2": "Lớp 8",
   "grade.M3": "Lớp 9",
@@ -77,7 +74,6 @@ export const vi: Record<MessageKey, string> = {
   "avatar.robot": "Rô-bốt",
   "avatar.owl": "Cú mèo",
   "avatar.penguin": "Chim cánh cụt",
-
   "diag.intro.title": "Khám phá trình độ trong 2 phút",
   "diag.intro.body": "Đây không phải bài kiểm tra chấm điểm. Chỉ cần làm vài câu, chúng mình sẽ biết bạn đang ở đâu và mở đúng con đường cho bạn. Câu nào chưa biết, cứ bỏ qua nhé.",
   "diag.start": "Bắt đầu khám phá",
@@ -93,7 +89,6 @@ export const vi: Record<MessageKey, string> = {
   "diag.result.reward": "Thưởng hoàn thành khám phá +{xp} XP",
   "diag.result.placed": "Đã bỏ qua {n} bài học bạn biết rồi.",
   "diag.result.cta": "Bắt đầu nhiệm vụ đầu tiên",
-
   "dash.hello": "Chào {name}, hôm nay chơi một ván nhé?",
   "dash.continue": "Tiếp tục học",
   "dash.continue.lesson": "Bài tiếp theo · {title}",
@@ -119,7 +114,6 @@ export const vi: Record<MessageKey, string> = {
   "dash.diagnostic.cta": "Tìm đường học qua phần khám phá 2 phút",
   "dash.guest": "Hiện tại tiến độ chỉ lưu trên thiết bị này. Đăng ký để học tiếp ở bất cứ đâu.",
   "dash.guest.cta": "Đăng ký để giữ tiến độ",
-
   "learn.title": "Thế giới học tập",
   "learn.unit": "Chương",
   "learn.lesson.done": "Hoàn thành",
@@ -130,7 +124,6 @@ export const vi: Record<MessageKey, string> = {
   "learn.lesson.start": "Bắt đầu",
   "learn.lesson.stars": "{n} sao",
   "learn.notFound": "Không tìm thấy thế giới này.",
-
   "lesson.concept": "Khái niệm chính",
   "lesson.example": "Ví dụ",
   "lesson.begin": "Đi làm bài tập",
@@ -168,7 +161,6 @@ export const vi: Record<MessageKey, string> = {
   "lesson.xp": "+{n} XP",
   "lesson.locked": "Bài học này chưa được mở khóa.",
   "lesson.empty": "Hiện chưa có câu hỏi nào để làm.",
-
   "result.title.lesson": "Hoàn thành bài học!",
   "result.title.session": "Xong nhiệm vụ!",
   "result.accuracy": "Số câu đúng ngay lần đầu: {n} / {total}",
@@ -183,7 +175,6 @@ export const vi: Record<MessageKey, string> = {
   "result.again": "Làm thêm lần nữa",
   "result.mastery": "Tiến độ kỹ năng",
   "result.noNext": "Bạn đã hoàn thành mọi bài học của thế giới này!",
-
   "quest.title": "Nhiệm vụ hôm nay",
   "quest.subtitle": "Làm xong tất cả để nhận thêm +100 XP",
   "quest.item.solve": "Giải {n} câu thuộc kỹ năng còn yếu",
@@ -193,7 +184,6 @@ export const vi: Record<MessageKey, string> = {
   "quest.complete": "Đã xong",
   "quest.allDone": "Bạn đã xong mọi nhiệm vụ hôm nay. Ngày mai sẽ có nhiệm vụ mới!",
   "quest.more": "Muốn làm thêm? Hãy luyện tập để vững hơn nhé!",
-
   "profile.title": "Của tôi",
   "profile.grade": "Lớp",
   "profile.goal": "Mục tiêu",
@@ -213,7 +203,6 @@ export const vi: Record<MessageKey, string> = {
   "profile.reset.confirm": "Toàn bộ dữ liệu dùng thử sẽ bị xóa. Bạn muốn xóa không?",
   "profile.privacy": "Thông tin được lưu: biệt danh, lớp, mục tiêu, nhân vật và tiến độ học. Chúng mình không nhận họ tên thật, trường học hay số điện thoại.",
   "profile.edit": "Thiết lập lại hồ sơ",
-
   "level.beginner": "Người mới",
   "level.explorer": "Nhà thám hiểm",
   "level.solver": "Người giải đố",
@@ -223,12 +212,10 @@ export const vi: Record<MessageKey, string> = {
   "level.expert": "Chuyên gia",
   "level.master": "Bậc thầy",
   "level.legend": "Huyền thoại",
-
   "mastery.mastered": "Thành thạo",
   "mastery.strong": "Vững vàng",
   "mastery.learning": "Đang tiến bộ",
   "mastery.growth": "Vùng cần phát triển",
-
   "ach.first_solve.title": "Câu đầu tiên",
   "ach.first_solve.desc": "Bạn đã làm đúng câu đầu tiên.",
   "ach.first_lesson.title": "Bài học đầu tiên",
@@ -249,7 +236,6 @@ export const vi: Record<MessageKey, string> = {
   "ach.skill_mastered.desc": "Bạn đã thành thạo một kỹ năng.",
   "ach.quest_first.title": "Hoàn thành nhiệm vụ",
   "ach.quest_first.desc": "Bạn đã xong mọi nhiệm vụ của hôm nay.",
-
   "auth.title.login": "Đăng nhập",
   "auth.title.signup": "Đăng ký",
   "auth.email": "Email",
@@ -263,7 +249,6 @@ export const vi: Record<MessageKey, string> = {
   "auth.confirm": "Chúng mình đã gửi email xác nhận. Hãy xác nhận trong hộp thư rồi đăng nhập nhé.",
   "auth.error": "Đăng nhập hoặc đăng ký không thành công. Hãy kiểm tra lại thông tin đã nhập.",
   "auth.note": "Chỉ cần email và mật khẩu. Không cần họ tên thật.",
-
   "admin.title": "Quản lý nội dung",
   "admin.forbidden": "Chỉ quản trị viên mới xem được.",
   "admin.summary": "Nguồn nội dung hiện tại: {source}",
@@ -271,7 +256,6 @@ export const vi: Record<MessageKey, string> = {
   "admin.questions": "Câu hỏi",
   "admin.lessons": "Bài học",
   "admin.skills": "Kỹ năng",
-
   "common.loading": "Đang tải…",
   "common.close": "Đóng",
   "common.cancel": "Hủy",
@@ -326,4 +310,12 @@ export const vi: Record<MessageKey, string> = {
   "words.card": "Thẻ {i} / {n}",
   "words.back": "Mặt sau",
   "words.front": "Mặt trước",
-};
+  "onboarding.level.title": "Bạn muốn bắt đầu học tiếng Hàn từ đâu?",
+  "target.listen": "Nghe phát âm {lang}",
+  "target.romanization.show": "Hiện phiên âm La-tinh",
+  "target.romanization.hide": "Ẩn phiên âm La-tinh",
+  "target.romanization.name": "Phiên âm La-tinh (Romaja quốc ngữ)",
+  "lang.ko": "tiếng Hàn",
+  "lang.en": "tiếng Anh",
+  "listen.noVoice": "Thiết bị này chưa có giọng đọc {lang}. Bạn vẫn có thể học tiếp bằng cách xem chữ."
+}
