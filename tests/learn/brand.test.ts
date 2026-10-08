@@ -66,9 +66,9 @@ describe("where the logo is used", () => {
     expect(readFileSync(path.join(root, "public/favicon.ico")).equals(readFileSync(path.join(root, "app/favicon.ico")))).toBe(true);
     for (const site of ["math", "english"]) expect(LEARN_FAVICONS[site], site).toBe(readFileSync(path.join(root, `public/logos/favicon-${site}.ico`)).toString("base64"));
   });
-  it("wrangler.jsonc runs the Worker first for /favicon.ico ONLY (every other asset stays asset-first)", () => {
+  it("wrangler.jsonc runs the Worker first ONLY for /favicon.ico and the server-side learning overlays (every other asset stays asset-first)", () => {
     const cfg = JSON.parse(readFileSync(path.join(root, "wrangler.jsonc"), "utf8").replace(/^\s*\/\/.*$/gm, ""));
-    expect(cfg.assets.run_worker_first).toEqual(["/favicon.ico"]);
+    expect(cfg.assets.run_worker_first).toEqual(["/favicon.ico", "/learn-content/*"]);
     expect(cfg.assets.binding).toBe("ASSETS");
     expect(cfg.compatibility_flags).toEqual(["nodejs_compat"]);
     expect(cfg.compatibility_date).toBe("2024-09-23");

@@ -2,22 +2,19 @@ import type { LearnLocale } from "@/lib/learn/i18n";
 import { siteConfig } from "@/lib/learn/sites";
 import type { ContentBundle, Course, Lesson, Question, Unit } from "@/lib/learn/types";
 import { mergeOverlays, type ContentOverlay } from "./overlay";
-import { OVERLAY_LOADERS } from "./overlayIndex";
+import { loadOverlayAsset } from "./assets";
 
 export { mergeOverlays, type ContentOverlay } from "./overlay";
 
 /**
- * The overlay stack for (locale, site), on top of the canonical bundle (written in the site's presentation locale):
- *   English overlay   (when the canonical language is not English) - the fallback for any string a locale does not carry yet
- *   locale overlay    the learner's language
- * A locale whose question texts are not translated yet therefore shows English instructions, never the canonical Korean.
+ * The overlay for (locale, site), on top of the canonical bundle (written in the site's presentation locale). One layer, no fallback:
+ * every locale ships a complete overlay (scripts/learn/build-content-assets.mjs refuses an overlay that leaves a learner-facing
+ * canonical string untranslated), so a learner never sees another language's instructions.
  */
 export async function overlayFor(locale: LearnLocale, site: ContentBundle["catalog"]["site"]): Promise<ContentOverlay | null> {
   const presentation = siteConfig(site).presentationLocale;
   if (locale === presentation) return null;
-  const load = async (l: LearnLocale) => (await OVERLAY_LOADERS[l]?.[site]?.()) ?? null;
-  const layers = (await Promise.all([presentation === "en" ? null : load("en"), locale === "en" ? null : load(locale)])).filter((x): x is ContentOverlay => !!x);
-  return layers.length ? mergeOverlays(...layers) : null;
+  return (await loadOverlayAsset(site, locale)) ?? null;
 }
 
 /** Pure: returns the same object for a locale without an overlay (Korean), otherwise a localised copy. */

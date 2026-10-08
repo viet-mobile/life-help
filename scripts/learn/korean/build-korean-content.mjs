@@ -6,7 +6,7 @@
 //
 // Outputs:
 //   lib/learn/content/korean/korean.json            canonical bundle (English presentation, Korean target)
-//   lib/learn/content/i18n/<locale>/korean.json     presentation overlay for every other registry locale (never touches ids / answers)
+//   content/learn-overlays/<locale>/korean.json     presentation overlay for every other registry locale (never touches ids / answers)
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -131,7 +131,7 @@ for (const loc of LOCALES) {
     ov.questions[q.id] = { prompt: q.prompt, hints: q.hints, explanation: q.explanation, ...(q.localizedOptions ? { options: Object.fromEntries(q.options.map((o) => [o.id, o.text])) } : {}) };
   });
   if (loc !== "ko") for (const [k, v] of Object.entries(kits[loc].gloss)) need(!HANGUL.test(v), `${loc}: Hangul in gloss ${k}`);
-  outputs[`lib/learn/content/i18n/${loc}/korean.json`] = ov;
+  outputs[`content/learn-overlays/${loc}/korean.json`] = ov;
 }
 
 let stale = false;

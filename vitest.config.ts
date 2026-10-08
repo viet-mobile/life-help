@@ -5,6 +5,8 @@ export default defineConfig({
   resolve: { alias: { "@": path.resolve(__dirname), "server-only": path.resolve(__dirname, "tests/learn/stubs/server-only.ts") } },
   test: {
     include: ["tests/**/*.test.ts"],
+    // learning overlays are read from the generated static assets (public/learn-content), exactly like the Worker does
+    globalSetup: ["tests/learn/setup-content-assets.ts"],
     environment: "node",
     // The DB tests build the full migration chain in PGlite (several seconds, slower under parallel load).
     hookTimeout: 120_000,
