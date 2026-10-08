@@ -4,6 +4,7 @@ import { dayKey } from "@/lib/learn/domain/dates";
 import { pruneLedgerKeys } from "@/lib/learn/domain/ledger";
 import type { EngineResult, LearnEvent, PlayerState, Site, StudentProfile } from "@/lib/learn/types";
 import { composeProfile } from "./profile";
+import type { EntitlementRecord } from "@/lib/learn/domain/access";
 import type { LearnStore, SessionKind, SessionRecord, SessionSummary } from "./store";
 
 /* ---------------------------- pure mappers (unit tested) ---------------------------- */
@@ -157,6 +158,13 @@ export class SupabaseLearnStore implements LearnStore {
     const { data, error } = await this.db.rpc("learn_load_state", { p_user: userId, p_site: site, p_day: day });
     if (error) fail("load_state", error);
     return rpcToState(data, site, day);
+  }
+
+  async getEntitlements(userId: string): Promise<EntitlementRecord[]> {
+    const { data, error } = await this.db.from("learn_entitlements").select("scope, source, starts_at, expires_at, revoked_at").eq("user_id", userId);
+    if (error) fail("load_entitlements", error);
+    return ((data ?? []) as { scope: EntitlementRecord["scope"]; source: EntitlementRecord["source"]; starts_at: string; expires_at: string | null; revoked_at: string | null }[])
+      .map((r) => ({ scope: r.scope, source: r.source, startsAt: r.starts_at, expiresAt: r.expires_at, revokedAt: r.revoked_at }));
   }
 
   async saveProfile(userId: string, site: Site, profile: StudentProfile) {

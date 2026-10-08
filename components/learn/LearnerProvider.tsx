@@ -6,6 +6,7 @@ import { learnConfig } from "@/lib/learn/config";
 import { indexContent, scopeToGrade, type ContentIndex } from "@/lib/learn/content/indexer";
 import { createInitialState } from "@/lib/learn/domain/engine";
 import { createTranslator, type LearnLocale, type Messages, type Translator } from "@/lib/learn/i18n";
+import { FREE_ACCESS, buildAccessPlan, type Access, type AccessPlan } from "@/lib/learn/domain/access";
 import type { MetaBundle, PlayerState, Site } from "@/lib/learn/types";
 
 export class ApiError extends Error {
@@ -37,6 +38,9 @@ export function useSite(): SiteCtx {
 }
 
 interface LearnerCtx extends SiteCtx {
+  /** Free / Premium as decided by the server for this page (display only: every payload is authorised again on the server). */
+  access: Access;
+  plan: AccessPlan;
   mode: "guest" | "account";
   accountsEnabled: boolean;
   ready: boolean;
@@ -70,8 +74,10 @@ export function LearnerProvider({
   meta,
   initialState,
   accountsEnabled,
+  access = FREE_ACCESS,
   children,
 }: {
+  access?: Access;
   meta: MetaBundle;
   /** Present for signed-in students (server-loaded); null means guest/demo mode. */
   initialState: PlayerState | null;
@@ -160,9 +166,10 @@ export function LearnerProvider({
     if (ready && !state.profile && !pathname.endsWith("/onboarding")) router.replace(href("/onboarding"));
   }, [ready, state.profile, pathname, router, href]);
 
+  const plan = useMemo(() => buildAccessPlan(meta.catalog, meta.questions), [meta]);
   const value = useMemo<LearnerCtx>(
-    () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest }),
-    [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest],
+    () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan }),
+    [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan],
   );
   return <LearnerContext.Provider value={value}>{children}</LearnerContext.Provider>;
 }

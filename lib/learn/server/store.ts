@@ -1,4 +1,5 @@
 import type { EngineResult, PlayerState, Site, StudentProfile } from "@/lib/learn/types";
+import type { EntitlementRecord } from "@/lib/learn/domain/access";
 
 export type SessionKind = "lesson" | "review" | "practice" | "diagnostic";
 
@@ -33,4 +34,6 @@ export interface LearnStore {
   /** Persist a state change that has no attempt events (e.g. diagnostic placement). */
   commitState(userId: string, site: Site, state: PlayerState, events: EngineResult["events"]): Promise<void>;
   markSessionComplete(userId: string, sessionId: string, now: Date): Promise<void>;
+  /** Stored Premium entitlements (any state; resolveAccess decides). Read-only here: grants come from admin / future billing only. */
+  getEntitlements(userId: string): Promise<EntitlementRecord[]>;
 }

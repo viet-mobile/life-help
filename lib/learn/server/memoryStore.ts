@@ -3,6 +3,7 @@ import { dayKey } from "@/lib/learn/domain/dates";
 import type { EngineResult, LearnEvent, PlayerState, Site, StudentProfile } from "@/lib/learn/types";
 import type { LearnStore, SessionRecord, SessionSummary } from "./store";
 import { composeProfile, type SharedProfileRow } from "./profile";
+import type { EntitlementRecord } from "@/lib/learn/domain/access";
 
 interface UserData {
   /** the shared profile row (school grade may be null), plus per-site language levels, exactly like the database */
@@ -23,6 +24,11 @@ export class MemoryLearnStore implements LearnStore {
     attemptNo: number;
     revealed: boolean;
   }[] = [];
+  /** test / local tooling only: entitlements as the database would hold them */
+  entitlements = new Map<string, EntitlementRecord[]>();
+  async getEntitlements(userId: string) {
+    return this.entitlements.get(userId) ?? [];
+  }
   /** exposed for assertions */
   ledger = new Set<string>();
   eventLog: LearnEvent[] = [];

@@ -16,6 +16,8 @@ import { levelForXp } from "@/lib/learn/domain/level";
 import { buildPath } from "@/lib/learn/domain/path";
 import { dueSkills } from "@/lib/learn/domain/srs";
 import { toPublicQuestion, loadIndex } from "@/lib/learn/content/repository";
+import { indexContent } from "@/lib/learn/content/indexer";
+import { FREE_ACCESS, accessibleBundle, buildAccessPlan, resolveAccess, type Access, type AccessPlan } from "@/lib/learn/domain/access";
 import type { LearnLocale } from "@/lib/learn/i18n";
 import type { ContentIndex } from "@/lib/learn/content/indexer";
 import type {
@@ -54,6 +56,7 @@ export interface ServiceDeps {
 }
 
 const SESSION_ID_RE = /^[A-Za-z0-9_-]{8,64}$/;
+const PLANS = new WeakMap<ContentBundle, AccessPlan>();
 
 export class LearnService {
   constructor(private deps: ServiceDeps) {}
@@ -71,6 +74,27 @@ export class LearnService {
     return this.deps.store;
   }
 
+  /**
+   * Free / Premium for this learner on this site, from the STORED entitlement only (guests are always Free). Nothing the client sends -
+   * state, flags, query, locale - takes part in this decision.
+   */
+  async getAccess(actor: Actor, site: Site): Promise<Access> {
+    if (!actor.userId || !this.deps.store) return FREE_ACCESS;
+    return resolveAccess(await this.deps.store.getEntitlements(actor.userId), site, this.now());
+  }
+
+  /** The canonical free / premium plan of a site (memoised per canonical bundle object). */
+  async accessPlan(site: Site): Promise<AccessPlan> {
+    const { bundle } = await loadIndex(site);
+    let plan = PLANS.get(bundle);
+    if (!plan) PLANS.set(bundle, (plan = buildAccessPlan(bundle.catalog, bundle.questions)));
+    return plan;
+  }
+
+  private premiumDenied(access: Access): never {
+    throw new LearnError(access.status === "expired" ? "premium_expired" : "premium_required", 403);
+  }
+
   async getState(actor: Actor, site: Site): Promise<PlayerState> {
     const store = this.requireStore(actor);
     if (store && actor.userId) return store.loadState(actor.userId, site, this.now());
@@ -84,8 +108,12 @@ export class LearnService {
   private async load(actor: Actor, site: Site) {
     const state = await this.getState(actor, site);
     const grade: Grade = state.profile?.grade ?? "M1";
-    const { bundle, index } = await loadIndex(site, { grade, locale: actor.locale ?? "ko" });
-    return { state, grade, bundle, index };
+    const { bundle: full } = await loadIndex(site, { grade, locale: actor.locale ?? "ko" });
+    // Server-authoritative access: a non-Premium learner's bundle simply has no premium question (and no premium teaching text), so no
+    // code path below can hand one out. Locale only changes presentation, never this filter.
+    const [access, plan] = await Promise.all([this.getAccess(actor, site), this.accessPlan(site)]);
+    const bundle = accessibleBundle(full, plan, access);
+    return { state, grade, bundle, index: indexContent(bundle), access, plan };
   }
 
   /* ------------------------------ onboarding ------------------------------ */
@@ -192,22 +220,26 @@ export class LearnService {
     site: Site,
     input: { kind: "lesson" | "review" | "practice"; lessonId?: string; skillId?: string },
   ) {
-    const { state, bundle, index } = await this.load(actor, site);
+    const { state, bundle, index, access, plan } = await this.load(actor, site);
     const sessionId = this.newId();
     const now = this.now();
     let questions: Question[] = [];
     let lessonId: string | null = null;
+    let premiumLocked = 0;
 
     if (input.kind === "lesson") {
       const found = input.lessonId ? index.lessons.get(input.lessonId) : undefined;
       if (!found) throw new LearnError("unknown_lesson", 404);
       const node = buildPath(state, index).find((n) => n.lessonId === found.lesson.id);
       if (!node || node.status === "locked") throw new LearnError("lesson_locked", 403);
+      if (plan.lessonTier.get(found.lesson.id) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
       lessonId = found.lesson.id;
       const ids = [...found.lesson.questionIds, ...(found.lesson.challengeId ? [found.lesson.challengeId] : [])];
       questions = ids
         .map((id) => bundle.questions.find((q) => q.id === id))
         .filter((q): q is Question => !!q && q.status === "PUBLISHED");
+      // a PARTIAL lesson for a free learner: its free items only (the bundle holds no premium payload); the rest needs Premium
+      if (access.tier !== "PREMIUM") premiumLocked = ids.filter((id) => plan.questionTier.get(id) === "PREMIUM").length;
     } else if (input.kind === "review") {
       const due = dueSkills(state.mastery, now).filter((m) => index.skills.has(m.skillId));
       if (due.length === 0) throw new LearnError("nothing_to_review", 409);
@@ -227,6 +259,7 @@ export class LearnService {
       sessionId,
       kind: input.kind,
       lessonId,
+      premiumLocked,
       questions: questions.map(toPublicQuestion),
     };
   }
@@ -234,7 +267,10 @@ export class LearnService {
   /* ------------------------------- attempts ------------------------------- */
 
   async requestHint(actor: Actor, site: Site, body: { questionId: string; level: number }) {
-    const { bundle } = await loadIndex(site, { locale: actor.locale ?? "ko" });
+    const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko" });
+    const [access, plan] = await Promise.all([this.getAccess(actor, site), this.accessPlan(site)]);
+    if (plan.questionTier.get(body.questionId) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
+    const bundle = accessibleBundle(full, plan, access);
     const q = bundle.questions.find((x) => x.id === body.questionId);
     if (!q || q.status !== "PUBLISHED" || q.role === "diagnostic") throw new LearnError("unknown_question", 404);
     const level = Math.floor(body.level);
@@ -259,7 +295,8 @@ export class LearnService {
     if (typeof body.sessionId !== "string" || !SESSION_ID_RE.test(body.sessionId)) {
       throw new LearnError("invalid_session");
     }
-    const { state, bundle, index } = await this.load(actor, site);
+    const { state, bundle, index, access, plan } = await this.load(actor, site);
+    if (plan.questionTier.get(body.questionId) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
     const q = bundle.questions.find((x) => x.id === body.questionId);
     if (!q || q.status !== "PUBLISHED" || q.role === "diagnostic") throw new LearnError("unknown_question", 404);
     const bad = validateResponse(q, body.answer);
@@ -359,7 +396,8 @@ export class LearnService {
     if (typeof body.sessionId !== "string" || !SESSION_ID_RE.test(body.sessionId)) {
       throw new LearnError("invalid_session");
     }
-    const { state, index } = await this.load(actor, site);
+    const { state, index, access, plan } = await this.load(actor, site);
+    if (plan.lessonTier.get(body.lessonId) !== "FREE" && plan.lessonTier.has(body.lessonId) && access.tier !== "PREMIUM") this.premiumDenied(access);
     const found = index.lessons.get(body.lessonId);
     if (!found) throw new LearnError("unknown_lesson", 404);
     const total = found.lesson.questionIds.length + (found.lesson.challengeId ? 1 : 0);

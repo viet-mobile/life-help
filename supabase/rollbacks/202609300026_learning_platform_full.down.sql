@@ -10,6 +10,8 @@
 begin;
 
 -- Trusted RPCs first (they reference the tables only inside their bodies).
+drop function if exists public.learn_revoke_entitlement(uuid); -- 202610080029
+drop function if exists public.learn_grant_entitlement(uuid, text, text, timestamptz, timestamptz, text); -- 202610080029
 drop function if exists public.learn_set_course_level(uuid, text, text); -- 202610070028 (study.korean); absent before it, so "if exists"
 drop function if exists public.learn_commit_events(uuid, text, jsonb, jsonb);
 drop function if exists public.learn_load_state(uuid, text, date);
@@ -17,6 +19,7 @@ drop function if exists public.learn_load_content(text);
 
 -- All 25 learning tables in one statement (FKs among them are dropped together; policies and the publish-flow trigger go with
 -- their tables). The staff table is included; its auth.users FK is just a reference and does not touch user rows.
+drop table if exists public.learn_entitlements; -- 202610080029 (absent before it)
 drop table if exists
   public.learn_progress_meta, public.learn_student_achievements, public.learn_daily_quests, public.learn_streaks,
   public.learn_xp_ledger, public.learn_lesson_progress, public.learn_skill_mastery, public.learn_attempts, public.learn_sessions,

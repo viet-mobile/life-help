@@ -7,6 +7,7 @@ import { toMetaBundle } from "@/lib/learn/content/indexer";
 import { getLocale } from "@/lib/learn/i18n/server";
 import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
 import { isSite } from "@/lib/learn/types";
+import { accessibleBundle } from "@/lib/learn/domain/access";
 
 // Student pages are personal: never indexed.
 export const metadata: Metadata = { robots: { index: false, follow: false } };
@@ -16,9 +17,12 @@ export default async function PlayLayout({ children, params }: { children: React
   if (!isSite(site)) notFound();
   const { bundle } = await loadContent(site, await getLocale());
   const userId = await getUserId();
-  const initial = userId ? await getLearnService().getState({ userId }, site) : null;
+  const svc = getLearnService();
+  const initial = userId ? await svc.getState({ userId }, site) : null;
+  // Server-authoritative access: premium lessons stay listed (as Premium) but carry no teaching text for a non-Premium learner.
+  const [access, plan] = await Promise.all([svc.getAccess({ userId }, site), svc.accessPlan(site)]);
   return (
-    <LearnerProvider meta={toMetaBundle(bundle)} initialState={initial} accountsEnabled={accountsEnabled()}>
+    <LearnerProvider meta={toMetaBundle(accessibleBundle(bundle, plan, access))} initialState={initial} accountsEnabled={accountsEnabled()} access={access}>
       <PlayShell>{children}</PlayShell>
     </LearnerProvider>
   );

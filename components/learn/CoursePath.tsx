@@ -6,7 +6,7 @@ import type { Course } from "@/lib/learn/types";
 import { useLearner } from "./LearnerProvider";
 
 export function CoursePath({ course }: { course: Course }) {
-  const { state, index, t, href } = useLearner();
+  const { state, index, t, href, access, plan } = useLearner();
   const nodes = new Map(buildPath(state, index).map((n) => [n.lessonId, n]));
   return (
     <section className="l-stack" aria-labelledby={`c-${course.id}`}>
@@ -21,24 +21,31 @@ export function CoursePath({ course }: { course: Course }) {
           <ol className="l-path">
             {unit.lessons.map((lesson) => {
               const node = nodes.get(lesson.id);
+              const tier = plan.lessonTier.get(lesson.id) ?? "PREMIUM";
+              const premium = tier !== "FREE";
+              const premiumLocked = tier === "PREMIUM" && access.tier !== "PREMIUM";
               const status = node?.status ?? "locked";
-              const icon = status === "done" ? "✅" : status === "current" ? "▶️" : "🔒";
+              const icon = premiumLocked ? "💎" : status === "done" ? "✅" : status === "current" ? "▶️" : "🔒";
               const inner = (
                 <>
                   <span className="l-node-ico" aria-hidden="true">{icon}</span>
                   <span style={{ flex: 1 }}>
-                    <strong>{lesson.title}</strong>
+                    <strong>{lesson.title}</strong>{" "}
+                    <span className="l-tier" data-tier={tier.toLowerCase()} data-testid={`tier-${lesson.id}`}>{tier === "PARTIAL" ? `${t("premium.free")} + ${t("premium.premium")}` : t(premium ? "premium.premium" : "premium.free")}</span>
                     <br />
                     <span className="l-muted">
                       {status === "done" ? (node?.placedOut && !node.stars ? t("learn.lesson.placed") : `${"★".repeat(node?.stars ?? 0)}${"☆".repeat(3 - (node?.stars ?? 0))} ${t("learn.lesson.done")}`) : status === "current" ? t("learn.lesson.current") : t("learn.lesson.locked")}
                     </span>
                   </span>
-                  {status !== "locked" && <span className="l-chip">{status === "done" ? t("learn.lesson.replay") : t("learn.lesson.start")}</span>}
+                  {premiumLocked ? <span className="l-chip">{t("premium.locked")}</span> : status !== "locked" && <span className="l-chip">{status === "done" ? t("learn.lesson.replay") : t("learn.lesson.start")}</span>}
                 </>
               );
               return (
                 <li key={lesson.id}>
-                  {status === "locked" ? (
+                  {premiumLocked ? (
+                    // a premium lesson opens the lesson page, which shows why it is locked (the server sends no lesson content)
+                    <Link className="l-node" data-status="premium" href={href(`/lesson/${lesson.id}`)}>{inner}</Link>
+                  ) : status === "locked" ? (
                     <div className="l-node" data-status={status} aria-disabled="true">{inner}</div>
                   ) : (
                     <Link className="l-node" data-status={status} href={href(`/lesson/${lesson.id}`)}>{inner}</Link>

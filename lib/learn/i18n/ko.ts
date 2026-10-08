@@ -339,6 +339,17 @@ export const ko = {
   "target.romanization.name": "로마자 표기 (국어의 로마자 표기법)",
   "lang.ko": "한국어",
   "lang.en": "영어",
+  "premium.free": "무료",
+  "premium.premium": "프리미엄",
+  "premium.locked": "잠김",
+  "premium.unlock": "잠금 해제",
+  "premium.upgrade": "업그레이드",
+  "premium.continue": "계속 학습하기",
+  "premium.content": "프리미엄 콘텐츠",
+  "premium.progressSaved": "지금까지의 학습 기록은 그대로 저장되어 있어요.",
+  "premium.expired": "프리미엄 이용 기간이 끝났어요.",
+  "premium.required": "이 레슨은 프리미엄으로 이용할 수 있어요.",
+  "premium.notAvailable": "아직 구매 기능이 열리지 않았어요. 결제는 일어나지 않아요.",
   "listen.noVoice": "이 기기에는 {lang} 음성이 없어요. 글자를 보며 계속 학습할 수 있어요.",
 } as const;
 

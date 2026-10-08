@@ -12,12 +12,15 @@ import { ListeningPanel } from "./Listening";
 import { exampleSegments } from "@/lib/learn/listen/segments";
 import { EXAMPLE_KO } from "@/lib/learn/content/listening/examples-ko";
 import { ResultScreen, type SessionResult } from "./ResultScreen";
+import { PremiumGate } from "./PremiumGate";
 
 type Kind = "lesson" | "review" | "practice";
 interface StartResponse {
   sessionId: string;
   kind: Kind;
   lessonId: string | null;
+  /** items of this lesson withheld until Premium (a lesson the Free / Premium boundary falls in) */
+  premiumLocked: number;
   questions: PublicQuestion[];
 }
 interface CompleteResponse {
@@ -35,10 +38,10 @@ interface Totals {
 }
 
 export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId?: string; skillId?: string }) {
-  const { api, index, t, href, state, site } = useLearner();
+  const { api, index, t, href, state, site, access } = useLearner();
   const lesson = lessonId ? index.lessons.get(lessonId) : undefined;
 
-  const [phase, setPhase] = useState<"intro" | "loading" | "play" | "finishing" | "result" | "error">("intro");
+  const [phase, setPhase] = useState<"intro" | "loading" | "play" | "finishing" | "result" | "premium" | "error">("intro");
   const [error, setError] = useState<string | null>(null);
   const [session, setSession] = useState<StartResponse | null>(null);
   const [queue, setQueue] = useState<PublicQuestion[]>([]);
@@ -52,6 +55,8 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
   const fail = useCallback(
     (e: unknown) => {
       if (e instanceof ApiError && e.code === "lesson_locked") setError(t("lesson.locked"));
+      else if (e instanceof ApiError && e.code === "premium_required") setError(t("premium.required"));
+      else if (e instanceof ApiError && e.code === "premium_expired") setError(t("premium.expired"));
       else if (e instanceof ApiError && (e.code === "nothing_to_review" || e.code === "no_questions")) setError(t("lesson.empty"));
       else setError(t("lesson.error"));
     },
@@ -88,6 +93,11 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
 
   const finish = async (ids: string[], sums: Totals) => {
     if (!session) return;
+    if (kind === "lesson" && session.premiumLocked > 0) {
+      // the free part is played (attempts were saved); finishing the lesson needs Premium - say so, never fake a completion
+      setPhase("premium");
+      return;
+    }
     setPhase("finishing");
     try {
       let finalState: PlayerState | null = null;
@@ -140,6 +150,7 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
     return node ? index.lessons.get(node.lessonId)?.lesson ?? null : null;
   }, [result, index]);
 
+  if (phase === "premium") return <PremiumGate t={t} access={access} title={lesson?.lesson.title ?? ""} backHref={href("/learn")} />;
   if (phase === "result" && result) return <ResultScreen result={result} nextLesson={nextLesson} onAgain={start} />;
 
   if (phase === "error") {
