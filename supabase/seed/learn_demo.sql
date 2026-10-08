@@ -2271,7 +2271,7 @@ insert into public.learn_questions(code, subject_id, skill_id, type, difficulty,
 insert into public.learn_question_answers(question_id, answer) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), '{"kind":"choice","id":"a"}'::jsonb) on conflict do nothing;
 insert into public.learn_question_explanations(question_id, body) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), '예를 들어 6 ÷ 0.5 = 12 로 몫이 더 커져요. 나누는 수가 1보다 작으면 몫은 커져요.') on conflict do nothing;
 insert into public.learn_question_hints(question_id, level, body) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), 1, '6 ÷ 0.5 처럼 직접 계산해 보세요.') on conflict do nothing;
-insert into public.learn_question_hints(question_id, level, body) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), 2, '0.5 안에 6이 몇 번 들어가는지 생각해 보세요.') on conflict do nothing;
+insert into public.learn_question_hints(question_id, level, body) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), 2, '6 안에 0.5가 몇 번 들어가는지 생각해 보세요.') on conflict do nothing;
 insert into public.learn_question_options(question_id, option_key, body, sort_order) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), 'a', '더 커져요.', 0) on conflict do nothing;
 insert into public.learn_question_options(question_id, option_key, body, sort_order) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), 'b', '더 작아져요.', 1) on conflict do nothing;
 insert into public.learn_question_options(question_id, option_key, body, sort_order) values ((select id from public.learn_questions where code = 'm-e6-up-l1b'), 'c', '똑같아요.', 2) on conflict do nothing;
@@ -8466,7 +8466,7 @@ insert into public.learn_question_options(question_id, option_key, body, sort_or
 insert into public.learn_question_options(question_id, option_key, body, sort_order) values ((select id from public.learn_questions where code = 'e-diag-order1'), 'w2', 'She', 1) on conflict do nothing;
 insert into public.learn_question_options(question_id, option_key, body, sort_order) values ((select id from public.learn_questions where code = 'e-diag-order1'), 'w3', 'dogs', 2) on conflict do nothing;
 insert into public.learn_questions(code, subject_id, skill_id, type, difficulty, prompt, latex, role, family, expected_seconds, audio_text, tags, status)
-  values ('e-diag-pres3', (select id from public.learn_subjects where code = 'english'), (select id from public.learn_skills where code = 'e.pres'), 'multiple_choice', 3, 'Which sentence is correct?', null, 'diagnostic', null, 30, null, '{}'::text[], 'PUBLISHED') on conflict (code) do nothing;
+  values ('e-diag-pres3', (select id from public.learn_subjects where code = 'english'), (select id from public.learn_skills where code = 'e.pres'), 'multiple_choice', 3, '다음 중 올바른 문장은 무엇일까요?', null, 'diagnostic', null, 30, null, '{}'::text[], 'PUBLISHED') on conflict (code) do nothing;
 insert into public.learn_question_answers(question_id, answer) values ((select id from public.learn_questions where code = 'e-diag-pres3'), '{"kind":"choice","id":"b"}'::jsonb) on conflict do nothing;
 insert into public.learn_question_explanations(question_id, body) values ((select id from public.learn_questions where code = 'e-diag-pres3'), 'watch → watches.') on conflict do nothing;
 insert into public.learn_question_hints(question_id, level, body) values ((select id from public.learn_questions where code = 'e-diag-pres3'), 1, '-ch로 끝나는 동사예요.') on conflict do nothing;

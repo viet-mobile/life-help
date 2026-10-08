@@ -70,7 +70,7 @@ export function upliftE6(b, h) {
     T("3/4 × 2/3 = 1/2, 3/4 - 1/2 = 1/4 이에요. 1/4m가 남아요.", "3/4 × 2/3 = 1/2, 3/4 - 1/2 = 1/4. Còn lại 1/4 m."), 1e-6);
   u.mc(1, "b", 3, ["reasoning"], T("1보다 작은 수로 나누면 몫은 나누어지는 수와 비교해 어떻게 될까요?", "Khi chia một số cho một số nhỏ hơn 1 thì thương so với số bị chia thế nào?"),
     [T("더 커져요.", "Lớn hơn."), T("더 작아져요.", "Nhỏ hơn."), T("똑같아요.", "Bằng nhau."), T("알 수 없어요.", "Không thể biết.")], 0,
-    [T("6 ÷ 0.5 처럼 직접 계산해 보세요.", "Hãy thử tính, ví dụ 6 ÷ 0,5."), T("0.5 안에 6이 몇 번 들어가는지 생각해 보세요.", "Hãy nghĩ xem 6 chứa bao nhiêu lần 0,5.")],
+    [T("6 ÷ 0.5 처럼 직접 계산해 보세요.", "Hãy thử tính, ví dụ 6 ÷ 0,5."), T("6 안에 0.5가 몇 번 들어가는지 생각해 보세요.", "Hãy nghĩ xem 6 chứa bao nhiêu lần 0,5.")],
     T("예를 들어 6 ÷ 0.5 = 12 로 몫이 더 커져요. 나누는 수가 1보다 작으면 몫은 커져요.", "Ví dụ 6 ÷ 0,5 = 12, thương lớn hơn. Chia cho số nhỏ hơn 1 thì thương lớn hơn."));
   u.ladder(1, [1, 2, 4], ["a", "b"], { 1: 1 });
 
@@ -84,13 +84,13 @@ export function upliftE6(b, h) {
   u.ladder(2, [1, 2, 3], ["a", "b"]);
 
   // L3 percent
-  u.num(3, "a", 2, ["multistep", "context"], j(T("정가 8000원인 물건을 25% 할인한 가격에서 500원 할인 쿠폰을 한 번 더 썼어요. 내야 하는 돈은 얼마일까요?", "Món hàng giá 8000 đồng được giảm 25%, sau đó dùng thêm phiếu giảm 500 đồng. Phải trả bao nhiêu tiền?"), ONE), 8000 * 0.75 - 500,
-    [T("먼저 25% 할인한 가격을 구해요.", "Trước tiên tính giá sau khi giảm 25%."), T("그 가격에서 쿠폰 500원을 빼요.", "Rồi trừ phiếu giảm 500 đồng khỏi giá đó.")],
-    T("8000의 75%는 6000원, 6000 - 500 = 5500원이에요.", "75% của 8000 là 6000 đồng, 6000 - 500 = 5500 đồng."));
+  u.num(3, "a", 2, ["multistep", "context"], j(T("정가 8000원인 물건을 25% 할인한 가격에서 500원 할인 쿠폰을 한 번 더 썼어요. 내야 하는 돈은 얼마일까요?", "Món hàng giá 8000 won được giảm 25%, sau đó dùng thêm phiếu giảm 500 won. Phải trả bao nhiêu tiền?"), ONE), 8000 * 0.75 - 500,
+    [T("먼저 25% 할인한 가격을 구해요.", "Trước tiên tính giá sau khi giảm 25%."), T("그 가격에서 쿠폰 500원을 빼요.", "Rồi trừ phiếu giảm 500 won khỏi giá đó.")],
+    T("8000의 75%는 6000원, 6000 - 500 = 5500원이에요.", "75% của 8000 là 6000 won, 6000 - 500 = 5500 won."));
   u.mc(3, "b", 3, ["reasoning"], T("어떤 물건의 가격이 20% 올랐다가 다시 20% 내렸어요. 처음 가격과 비교하면?", "Giá một món hàng tăng 20% rồi lại giảm 20%. So với giá ban đầu thì thế nào?"),
     [T("처음과 같아요.", "Bằng giá ban đầu."), T("4% 싸요.", "Rẻ hơn 4%."), T("4% 비싸요.", "Đắt hơn 4%."), T("20% 싸요.", "Rẻ hơn 20%.")], 1,
-    [T("처음 가격을 100원이라고 놓고 계산해 보세요.", "Giả sử giá ban đầu là 100 đồng rồi tính."), T("내릴 때의 기준은 올린 뒤의 가격이에요.", "Khi giảm, cơ sở là giá sau khi tăng.")],
-    T("100원 → 120원 → 120의 80% = 96원이에요. 처음보다 4% 싸요.", "100 đồng → 120 đồng → 80% của 120 là 96 đồng. Rẻ hơn ban đầu 4%."));
+    [T("처음 가격을 100원이라고 놓고 계산해 보세요.", "Giả sử giá ban đầu là 100 won rồi tính."), T("내릴 때의 기준은 올린 뒤의 가격이에요.", "Khi giảm, cơ sở là giá sau khi tăng.")],
+    T("100원 → 120원 → 120의 80% = 96원이에요. 처음보다 4% 싸요.", "100 won → 120 won → 80% của 120 là 96 won. Rẻ hơn ban đầu 4%."));
   u.ladder(3, [1, 3, 4], ["a", "b"]);
 
   // L4 circles and solids

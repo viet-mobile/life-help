@@ -74,7 +74,7 @@ describe("study.korean content quality gates", () => {
     const b = await canonical("korean");
     const target = JSON.stringify(b);
     for (const l of LOCALES.filter((x) => x !== "en")) {
-      const ov = JSON.parse(readFileSync(`lib/learn/content/i18n/${l}/korean.json`, "utf8"));
+      const ov = JSON.parse(readFileSync(`content/learn-overlays/${l}/korean.json`, "utf8"));
       for (const q of b.questions) {
         const o = ov.questions[q.id];
         expect(o, `${l} ${q.id}`).toBeTruthy();
@@ -91,7 +91,7 @@ describe("content quality gates (canonical and every installed overlay)", () => 
   const files = [
     ...["elementary", "secondary", "demo"].flatMap((d) => [`lib/learn/content/${d}/math.json`, `lib/learn/content/${d}/english.json`]),
     "lib/learn/content/korean/korean.json",
-    ...readdirSync("lib/learn/content/i18n").filter((d) => !d.endsWith(".json")).flatMap((d) => readdirSync(`lib/learn/content/i18n/${d}`).map((f) => `lib/learn/content/i18n/${d}/${f}`)),
+    ...readdirSync("content/learn-overlays").filter((d) => !d.endsWith(".json")).flatMap((d) => readdirSync(`content/learn-overlays/${d}`).map((f) => `content/learn-overlays/${d}/${f}`)),
   ];
   it("no floating-point artifacts (e.g. 44.99999999999999) in any learner-facing number", () => {
     for (const f of files) for (const t of texts(JSON.parse(readFileSync(f, "utf8")))) expect(/\d\.\d{8,}/.test(t), `${f}: ${t.slice(0, 80)}`).toBe(false);
@@ -106,12 +106,12 @@ describe("content quality gates (canonical and every installed overlay)", () => 
 
 describe("math / english overlays: presentation only", () => {
   it("every installed overlay addresses existing ids only, with the canonical hint count and option ids; coverage.json matches the files", async () => {
-    const coverage = JSON.parse(readFileSync("lib/learn/content/i18n/coverage.json", "utf8")) as Record<string, Record<string, string>>;
+    const coverage = JSON.parse(readFileSync("content/learn-overlays/coverage.json", "utf8")) as Record<string, Record<string, string>>;
     for (const site of ["math", "english"] as const) {
       const b = await canonical(site);
       const byId = new Map(b.questions.map((q) => [q.id, q]));
-      for (const l of readdirSync("lib/learn/content/i18n").filter((d) => existsSync(`lib/learn/content/i18n/${d}/${site}.json`))) {
-        const ov = JSON.parse(readFileSync(`lib/learn/content/i18n/${l}/${site}.json`, "utf8"));
+      for (const l of readdirSync("content/learn-overlays").filter((d) => existsSync(`content/learn-overlays/${d}/${site}.json`))) {
+        const ov = JSON.parse(readFileSync(`content/learn-overlays/${l}/${site}.json`, "utf8"));
         expect(coverage[l]?.[site], `${l}/${site} listed in coverage`).toBeTruthy();
         for (const [id, o] of Object.entries(ov.questions ?? {}) as [string, { hints?: string[]; options?: Record<string, string> }][]) {
           const q = byId.get(id);
@@ -123,13 +123,13 @@ describe("math / english overlays: presentation only", () => {
       }
     }
   });
-  it("a locale without question texts falls back to English, never to the canonical Korean", async () => {
-    const enOnly = await overlayFor("de", "math"); // de has no math question texts (STRUCT at most): English fills in
-    const en = await overlayFor("en", "math");
+  it("there is no fallback layer: a locale's overlay is the only presentation layer (never English, never canonical Korean)", async () => {
     const b = await canonical("math");
     const q = b.questions.find((x) => HANGUL.test(x.prompt))!;
-    expect(enOnly?.questions?.[q.id]?.prompt).toBe(en?.questions?.[q.id]?.prompt);
-    expect(HANGUL.test(enOnly!.questions![q.id]!.prompt!)).toBe(false);
+    const [de, en] = await Promise.all([overlayFor("de", "math"), overlayFor("en", "math")]);
+    expect(de?.questions?.[q.id]?.prompt).toBeTruthy();
+    expect(de!.questions![q.id]!.prompt).not.toBe(en?.questions?.[q.id]?.prompt);
+    expect(HANGUL.test(de!.questions![q.id]!.prompt!)).toBe(false);
   });
 });
 

@@ -6,7 +6,7 @@ import { ko } from "../../lib/learn/i18n/ko";
  * 47-locale learning (production build, guest mode, speech mocked):
  *   - representative matrix: 16 locales x math / english / study.korean x desktop / 390 px
  *   - locale switching inside a learner journey: math E3 en -> mr -> ur (RTL); English vi -> ur -> sw -> te; Korean "안녕하세요." in en / vi / ur / sw / mr
- * Expected texts come from the same files the server uses (dictionary + overlay stack locale -> English -> canonical), so the assertions
+ * Expected texts come from the same files the server uses (dictionary + the locale's own overlay; no fallback layer), so the assertions
  * check that the RIGHT language reaches the page, while answer ids / target material stay canonical.
  */
 const PORT = 3100;
@@ -17,21 +17,21 @@ const RTL = new Set(["ar", "arz", "fa", "he", "ur"]);
 const HANGUL = /[가-힣]/;
 
 type Dict = Record<string, string>;
-const dict = (loc: string): Dict => (loc === "ko" ? (ko as Dict) : { ...ko, ...JSON.parse(readFileSync(`lib/learn/i18n/locales/en.json`, "utf8")), ...JSON.parse(readFileSync(`lib/learn/i18n/locales/${loc}.json`, "utf8")) });
+const dict = (loc: string): Dict => (loc === "ko" ? (ko as Dict) : JSON.parse(readFileSync(`lib/learn/i18n/locales/${loc}.json`, "utf8")));
 type Ov = { questions?: Record<string, { prompt?: string }>; lessons?: Record<string, { title: string }> };
 const readOv = (loc: string, site: Site): Ov => {
   if (loc === "vi" && site !== "korean") {
     const parts = site === "math" ? ["vi/math", "vi/secondary-math"] : ["vi/english", "vi/secondary-english"];
     return parts.map((p) => JSON.parse(readFileSync(`lib/learn/content/${p}.json`, "utf8")) as Ov).reduce((a, b) => ({ questions: { ...a.questions, ...b.questions }, lessons: { ...a.lessons, ...b.lessons } }));
   }
-  const f = `lib/learn/content/i18n/${loc}/${site}.json`;
+  const f = `content/learn-overlays/${loc}/${site}.json`;
   return existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {};
 };
-/** The prompt the server must render for (locale, site, question): locale overlay -> English overlay -> canonical. */
+/** The prompt the server must render for (locale, site, question): the locale's overlay, or canonical for a string without words. */
 const expectedPrompt = (loc: string, site: Site, id: string, canonical: string) => {
   const presentation = site === "korean" ? "en" : "ko";
   if (loc === presentation) return canonical;
-  return readOv(loc, site).questions?.[id]?.prompt ?? (site !== "korean" ? readOv("en", site).questions?.[id]?.prompt : undefined) ?? canonical;
+  return readOv(loc, site).questions?.[id]?.prompt ?? canonical;
 };
 
 const setLocale = async (page: Page, site: Site, loc: string) =>

@@ -40,7 +40,7 @@ export const viDemoMath = {
     "m-solve-v3": Q(r`Biết $6x-5=2x+15$, hãy tìm $x$.`, [`Gom số hạng chứa $x$ sang vế trái, các số sang vế phải.`, r`$6x-2x=15+5$`], r`$4x=20$ nên $x=5$.`),
     "m-word-1": Q(r`Gấp $3$ lần một số rồi cộng $2$ được $14$. Gọi số đó là $x$, phương trình đúng là?`, [`Hãy viết "gấp 3 lần một số" thành biểu thức trước.`, r`Cộng $2$ vào $3x$ thì được $14$.`], r`Gấp $3$ lần số đó là $3x$, cộng $2$ được $14$ nên $3x+2=14$.`),
     "m-word-2": Q(r`Tổng của hai số tự nhiên liên tiếp là $25$. Hãy tìm số bé.`, [r`Gọi số bé là $x$ thì số lớn là $x+1$.`, r`$x+(x+1)=25$`], r`$2x+1=25$, $2x=24$, $x=12$.`),
-    "m-word-3": Q(r`Một quả táo giá $800$ đồng, một quả quýt giá $500$ đồng. Mua $3$ quả táo và $x$ quả quýt hết $3900$ đồng. Hỏi đã mua bao nhiêu quả quýt?`, [r`Tiền táo là $800\times3=2400$ đồng.`, r`$2400+500x=3900$`], r`$500x=1500$ nên $x=3$, tức là $3$ quả quýt.`),
+    "m-word-3": Q(r`Một quả táo giá $800$ won, một quả quýt giá $500$ won. Mua $3$ quả táo và $x$ quả quýt hết $3900$ won. Hỏi đã mua bao nhiêu quả quýt?`, [r`Tiền táo là $800\times3=2400$ won.`, r`$2400+500x=3900$`], r`$500x=1500$ nên $x=3$, tức là $3$ quả quýt.`),
     "m-word-4": Q(r`Hiện nay bố $42$ tuổi, con $10$ tuổi. Sau bao nhiêu năm thì tuổi bố gấp $2$ lần tuổi con?`, [r`Sau $x$ năm, bố $42+x$ tuổi, con $10+x$ tuổi.`, r`$42+x=2(10+x)$`], r`$42+x=20+2x$ nên $x=22$, tức là sau $22$ năm.`),
     "m-word-5": Q(r`Đi từ nhà đến trường với vận tốc $3\,\text{km/h}$ thì lâu hơn đi với vận tốc $4\,\text{km/h}$ là $10$ phút. Quãng đường từ nhà đến trường dài bao nhiêu $\text{km}$?`, [r`Thời gian = quãng đường ÷ vận tốc. $10$ phút là $\dfrac16$ giờ.`, r`Hãy giải $\dfrac{x}{3}-\dfrac{x}{4}=\dfrac16$.`], r`$\dfrac{x}{12}=\dfrac16$ nên $x=2$, quãng đường dài $2\,\text{km}$.`),
     "m-word-v1": Q(r`Gấp $2$ lần một số rồi cộng $5$ được $17$. Hãy tìm số đó.`, [r`Gọi số đó là $x$ thì $2x+5=17$.`, r`$2x=12$`], r`$2x=12$ nên $x=6$.`),
@@ -106,7 +106,7 @@ export const viDemoEnglish = {
     "e-diag-pres2": Q("He ____ (go) to work by bus.", ["Động từ kết thúc bằng -o.", "go + es"], "go → goes."),
     "e-diag-plural1": Q("Số nhiều của 'leaf' là?", ["Danh từ kết thúc bằng -f thường đổi f thành v.", "f → ves"], "leaf → leaves."),
     "e-diag-order1": Q("Bấm các từ theo đúng thứ tự để tạo thành câu.", ["Bắt đầu bằng chủ ngữ.", "Chủ ngữ → động từ → tân ngữ"], "She likes dogs."),
-    "e-diag-pres3": Q("Which sentence is correct?", ["Động từ kết thúc bằng -ch.", "-es"], "watch → watches."),
+    "e-diag-pres3": Q("Câu nào là câu đúng?", ["Động từ kết thúc bằng -ch.", "-es"], "watch → watches."),
   },
 };
 void O;
