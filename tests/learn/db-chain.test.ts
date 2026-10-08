@@ -9,7 +9,7 @@ import { PGlite } from "@electric-sql/pglite";
  */
 describe("learning migrations on the real LIFE.HELP chain", { timeout: 120_000 }, () => {
   it("sequence: the learning migrations are last, once each, and 0001/0002 are not duplicated", () => {
-    expect(LEARN_MIGRATIONS).toEqual(["202609300023_learning_prereq_shim.sql", "202609300024_learning_platform.sql", "202609300025_learning_content_rpc.sql", "202609300026_learning_selfcontained_auth.sql", "202609300027_learning_elementary_grades.sql", "202610070028_learning_korean_study.sql"]);
+    expect(LEARN_MIGRATIONS).toEqual(["202609300023_learning_prereq_shim.sql", "202609300024_learning_platform.sql", "202609300025_learning_content_rpc.sql", "202609300026_learning_selfcontained_auth.sql", "202609300027_learning_elementary_grades.sql", "202610070028_learning_korean_study.sql", "202610080029_learning_entitlements.sql"]);
     expect(CHAIN_MIGRATIONS.slice(-LEARN_MIGRATIONS.length)).toEqual(LEARN_MIGRATIONS); // later, unrelated migrations (service core) come after them
     expect(new Set(MIGRATIONS).size).toBe(MIGRATIONS.length);
     expect(MIGRATIONS.filter((f) => /initial_marketplace_schema|payment_settlement_upgrade/.test(f))).toHaveLength(2);
@@ -42,7 +42,7 @@ describe("learning migrations on the real LIFE.HELP chain", { timeout: 120_000 }
   it("applies cleanly after the full chain and creates exactly the 24 learn_* tables", async () => {
     const db = await createChainDb();
     const n = await db.query<{ n: string }>("select count(*)::text n from pg_tables where schemaname='public' and tablename like 'learn\_%'");
-    expect(Number(n.rows[0].n)).toBe(25); // 24 content/progress tables + learn_staff_users
+    expect(Number(n.rows[0].n)).toBe(26); // 24 content/progress tables + learn_staff_users + learn_entitlements (029)
     await db.close();
   });
 

@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { PGlite } from "@electric-sql/pglite";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { LEARNING_CHAIN, M027, M028, apply, newBase, nonLearningCatalog, root, sqlOf, usersHash } from "./chainDb";
+import { LEARNING_CHAIN, M027, M028, M029, apply, newBase, nonLearningCatalog, root, sqlOf, usersHash } from "./chainDb";
 
 /**
  * 202609300027 widens three CHECK constraints so elementary grades can be stored. These tests run the REAL migration files on PGlite:
@@ -125,7 +125,7 @@ describe("202609300027: static review", () => {
     expect(/\b(auth|storage|supabase_)/i.test(sql.replace(/\bpublic\.learn_/gi, ""))).toBe(false);
   });
   it("sorts after 026, directly before 028 (study.korean); the rollback is a standalone manual file", () => {
-    expect(LEARNING_CHAIN.slice(-2)).toEqual([M027, M028]);
+    expect(LEARNING_CHAIN.slice(-3)).toEqual([M027, M028, M029]);
     expect(M027 > "202609300026_learning_selfcontained_auth.sql").toBe(true);
     expect(ROLLBACK).toMatch(/NOT run by `supabase db push`/);
     expect(/\bcascade\b/i.test(ROLLBACK.replace(/--.*$/gm, ""))).toBe(false);

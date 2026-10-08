@@ -75,6 +75,11 @@ test("math: onboarding -> adaptive diagnostic -> lesson with hints -> XP persist
   await expect(page.getByRole("heading", { name: /오늘도 한 판/ })).toBeVisible();
   await page.getByRole("link", { name: /^▶ 계속 학습하기/ }).click();
   await expect(page).toHaveURL(/\/lesson\/math-l\d/);
+  // placed past the free lessons: a guest (never Premium) meets the Premium gate and continues on the first (free) lesson
+  if (await page.getByTestId("premium-gate").isVisible()) {
+    await expect(page.getByTestId("premium-reason")).toHaveText(/프리미엄/);
+    await page.goto(page.url().replace(/\/lesson\/[^/?#]+/, "/lesson/math-l1"));
+  }
 
   const startResp = page.waitForResponse(isApi("start"));
   await page.getByRole("button", { name: "문제 풀러 가기" }).click();

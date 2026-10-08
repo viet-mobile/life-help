@@ -66,6 +66,12 @@ async function lesson(page: Page, site: Site, grade: Grade, locale: Locale) {
   const t = L(locale);
   await page.getByRole("link", { name: new RegExp(`^▶ ${t["dash.continue"]}`) }).click();
   await expect(page).toHaveURL(new RegExp(`/lesson/${site === "math" ? "math" : "en"}-${grade.toLowerCase()}-l`));
+  // a strong placement can place a guest (never Premium) past the free lessons: the next lesson is then behind the Premium gate,
+  // and the lesson flow continues on the course's first (free) lesson
+  if (await page.getByTestId("premium-gate").isVisible()) {
+    await expect(page.getByTestId("premium-reason")).toHaveText(t["premium.required"]);
+    await page.goto(page.url().replace(/\/lesson\/[^/?#]+/, `/lesson/${site === "math" ? "math" : "en"}-${grade.toLowerCase()}-l1`));
+  }
   const start = page.waitForResponse(isApi("start"));
   await page.getByRole("button", { name: t["lesson.begin"] }).click();
   const body = await (await start).json();

@@ -196,15 +196,13 @@ test.describe("English listening (mocked speech)", () => {
     await expect(page.getByText(ko["words.saved.n"].replace("{n}", "1"))).toBeVisible();
   });
 
-  test("an English reading question offers its passage sentence by sentence and in full", async ({ page }) => {
+  test("an English reading question is Premium content: a free learner's practice is refused (no passage reaches the page)", async ({ page }) => {
     await onboard(page, "E2");
+    const start = page.waitForResponse((r) => r.url().includes("/api/learn/start"));
     await page.goto(`${EN}/practice?kind=practice&skill=e.e2.read`);
     await page.getByRole("button", { name: ko["lesson.begin"] }).click().catch(() => {});
-    const panel = page.getByTestId("listening-panel").first();
-    await expect(panel).toBeVisible({ timeout: 20000 });
-    await panel.getByTestId("listen-full").click();
-    await expect.poll(async () => (await texts(page)).length).toBeGreaterThanOrEqual(2);
-    await expect(panel.getByRole("button", { name: ko["listen.sentence"].replace("{n}", "1") })).toBeVisible();
+    expect((await start).status()).toBeGreaterThanOrEqual(400);
+    await expect(page.getByTestId("listening-panel")).toHaveCount(0);
   });
 });
 

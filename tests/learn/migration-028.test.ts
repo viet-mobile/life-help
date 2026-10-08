@@ -9,7 +9,7 @@ import { LEARNING_CHAIN, M028, apply, newBase, nonLearningCatalog, root, sqlOf, 
  * korean progress accepted through the existing RPC authority, the per-site language level stored per (user, site), and the manual
  * rollback refusing while korean data exists.
  */
-const BEFORE = LEARNING_CHAIN.filter((f) => f !== M028);
+const BEFORE = LEARNING_CHAIN.slice(0, LEARNING_CHAIN.indexOf(M028));
 const ROLLBACK = readFileSync(path.join(root, "supabase/rollbacks/202610070028_learning_korean_study.down.sql"), "utf8");
 const U1 = "10000000-0000-4000-8000-000000000001";
 const U2 = "10000000-0000-4000-8000-000000000002";

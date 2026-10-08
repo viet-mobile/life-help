@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
 import { describe, expect, it } from "vitest";
-import { EXISTING_USER, LEARNING_CHAIN, M024, M025, M026, M027, M028, MARKETPLACE_FILES, SHIM, apply, createChainDb, newBase, nonLearningCatalog, root, sha256Of, sqlOf, usersHash } from "./chainDb";
+import { EXISTING_USER, LEARNING_CHAIN, M024, M025, M026, M027, M028, M029, MARKETPLACE_FILES, SHIM, apply, createChainDb, newBase, nonLearningCatalog, root, sha256Of, sqlOf, usersHash } from "./chainDb";
 
 /**
  * Migration lineage for the learning-only production release.
@@ -44,8 +44,8 @@ describe("immutability: 024 / 025 are pinned", () => {
     expect(sha256Of(M024)).toBe(PINNED[M024]);
     expect(sha256Of(M025)).toBe(PINNED[M025]);
   });
-  it("the learning migrations are exactly 023 (shim), 024, 025, 026 (self-contained auth), 027 (elementary grades) and 028 (study.korean); no other learning file changed", () => {
-    expect(LEARNING_CHAIN).toEqual([SHIM, M024, M025, M026, M027, M028]);
+  it("the learning migrations are exactly 023 (shim), 024, 025, 026 (self-contained auth), 027 (elementary grades), 028 (study.korean) and 029 (entitlements); no other learning file changed", () => {
+    expect(LEARNING_CHAIN).toEqual([SHIM, M024, M025, M026, M027, M028, M029]);
   });
   it("neither new migration uses CASCADE (comments aside) or creates a marketplace table", () => {
     for (const f of [SHIM, M026]) {
@@ -61,7 +61,7 @@ describe("CHAIN A: production-now (empty Supabase base -> 023 -> 024 -> 025 -> 0
     const db = await newBase();
     const before = await usersHash(db);
     await apply(db, LEARNING_CHAIN);
-    expect(await learnTables(db)).toBe(25); // 24 content/progress tables + learn_staff_users
+    expect(await learnTables(db)).toBe(26); // 24 content/progress tables + learn_staff_users + learn_entitlements (029)
     expect(await usersHash(db)).toBe(before);
     expect(await count(db, "select count(*) n from auth.users")).toBe(1);
     expect((await one(db, "select to_regtype('public.app_role') t, to_regnamespace('security') s, to_regprocedure('security.has_role(public.app_role[])') f")))
@@ -188,7 +188,7 @@ describe("CHAIN B: staging / marketplace present (0001-0023 -> 023 NO-OP -> 024 
     expect(await count(full, "select count(*) n from pg_tables where schemaname = 'public' and tablename = 'user_roles'")).toBe(1);
     expect((await one(full, "select pg_get_functiondef('security.has_role(public.app_role[])'::regprocedure) d")).d).toContain("user_roles");
     for (const p of await policyDefs(full)) expect(`${p.qual}${p.with_check}`).toContain("learn_security.is_staff");
-    expect(await learnTables(full)).toBe(25);
+    expect(await learnTables(full)).toBe(26);
     await without.close(); await full.close();
   });
 
@@ -229,7 +229,7 @@ describe("CHAIN C: adversarial states fail closed and never delete what is not o
     await apply(db, LEARNING_CHAIN);
     expect(await snapshot(db)).toEqual(before);
     expect((await one(db, "select pg_get_functiondef('security.has_role(public.app_role[])'::regprocedure) d")).d).toContain("select true");
-    expect(await learnTables(db)).toBe(25);
+    expect(await learnTables(db)).toBe(26);
     await db.close();
   });
 
@@ -307,7 +307,7 @@ describe("CHAIN D: future marketplace rollout AFTER learning (023 -> 024 -> 025 
     await apply(db, LEARNING_CHAIN);
     await apply(db, MARKETPLACE_FILES); // real 0001 .. 0023, in order, must not collide with anything learning left behind
     expect(await usersHash(db)).toBe(usersBefore);
-    expect(await learnTables(db)).toBe(25);
+    expect(await learnTables(db)).toBe(26);
     expect((await one(db, "select obj_description('public.app_role'::regtype, 'pg_type') t")).t).toBeNull(); // the marketplace's own, unmarked
     expect((await one(db, "select pg_get_functiondef('security.has_role(public.app_role[])'::regprocedure) d")).d).toContain("user_roles");
     for (const p of await policyDefs(db)) { expect(`${p.qual}${p.with_check}`).toContain("learn_security.is_staff"); expect(`${p.qual}${p.with_check}`).not.toMatch(/has_role/); } // never reverted to the marketplace function

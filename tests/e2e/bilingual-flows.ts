@@ -55,8 +55,9 @@ export function defineBilingualTests(test: T, url: (p: string) => string) {
   const BANDS: { band: string; grade: Grade; lesson: string; en: string[] }[] = [
     { band: "elementary (E3)", grade: "E3", lesson: "en-e3-l3", en: ["I walk.", "I walked."] },
     { band: "middle school (M2)", grade: "M2", lesson: "en-m2-l3", en: ["I want to buy a bike.", "She enjoys singing."] },
-    { band: "high school (H3)", grade: "H3", lesson: "en-h3-l5", en: ["cost more", "save money in the long run"] },
   ];
+  // high school: the only H-level lessons with a two-sentence bilingual example are Premium (e.g. en-h3-l5); a guest is never Premium,
+  // so in the browser the H band is checked at the Premium boundary - the bilingual player itself is exercised by E3 / M2 above
 
   test.describe("English + Korean listening (mocked speech)", () => {
     test.beforeEach(async ({ page }) => { await page.addInitScript(SPEECH_MOCK); });
@@ -97,33 +98,15 @@ export function defineBilingualTests(test: T, url: (p: string) => string) {
       expect((await spoken(page)).map((u) => u.lang)).toEqual(["en-US", "ko-KR", "en-US", "ko-KR"]);
     });
 
-    test("reading passage: English any time; its Korean is withheld (with a note) until the question is solved, then EN / KO alternate", async ({ page }) => {
+    test("reading passages (e.e2.read) are Premium content: a free learner's practice is refused and no passage is handed out", async ({ page }) => {
       await onboard(page, "E2");
+      const start = page.waitForResponse((r) => r.url().includes("/api/learn/start"));
       await page.goto(url("/practice?kind=practice&skill=e.e2.read"));
       await page.getByRole("button", { name: ko["lesson.begin"] }).click().catch(() => {});
-      const panel = page.getByTestId("listening-panel").first();
-      await expect(panel).toBeVisible({ timeout: 20000 });
-      await panel.locator("details > summary").click();
-      await expect(panel.getByTestId("listen-meaning-note")).toHaveText(ko["listen.mode.afterAnswer"]);
-      await expect(panel.getByRole("radio", { name: ko["listen.mode.enko"] })).toBeDisabled();
-      // answer until the question is solved or revealed (the API sends the passage's Korean only then)
-      const next = page.getByRole("button", { name: new RegExp(`^(${ko["lesson.next"]}|${ko["lesson.finish"]}|${ko["lesson.similar.go"]})$`) });
-      for (let k = 0; k < 6 && !(await next.isVisible()); k++) {
-        const radios = page.getByRole("radiogroup").last().getByRole("radio");
-        const n = await radios.count();
-        if (n) await radios.nth(k % n).click(); else await page.locator("input.l-input").first().fill(`x${k}`);
-        await page.getByRole("button", { name: new RegExp(`^(${ko["lesson.check"]}|${ko["lesson.retry"]})$`) }).click();
-        await page.waitForTimeout(400);
-      }
-      await expect(next).toBeVisible();
-      await expect(panel.getByTestId("listen-meaning-note")).toHaveCount(0);
-      await panel.getByRole("radio", { name: ko["listen.mode.enko"] }).click();
-      await clearSpoken(page);
-      await panel.getByTestId("listen-full").click();
-      await expect.poll(async () => (await spoken(page)).length).toBeGreaterThanOrEqual(4);
-      const s = await spoken(page);
-      s.forEach((u, i) => expect(u.lang, `${i}: ${u.text}`).toBe(i % 2 === 0 ? "en-US" : "ko-KR"));
-      expect(s.filter((u, i) => i % 2 === 1).every((u) => /[가-힯]/.test(u.text))).toBe(true);
+      const res = await start;
+      expect(res.status()).toBeGreaterThanOrEqual(400);
+      expect(JSON.stringify(await res.json())).not.toMatch(/"questions"/);
+      await expect(page.getByTestId("listening-panel")).toHaveCount(0);
     });
 
     test("flashcard from a middle-school sentence: save, flip to the canonical Korean, English pronunciation", async ({ page }) => {
@@ -139,10 +122,18 @@ export function defineBilingualTests(test: T, url: (p: string) => string) {
       await page.getByTestId("flashcard-remove").click();
     });
 
+    test("high school (H3) en-h3-l5 is Premium: a free learner gets the Premium gate, never the lesson or its audio text", async ({ page }) => {
+      await onboard(page, "H3");
+      await page.goto(url("/lesson/en-h3-l5"));
+      await expect(page.getByTestId("premium-gate")).toBeVisible();
+      await expect(page.getByTestId("premium-reason")).toHaveText(ko["premium.required"]);
+      await expect(page.getByTestId("listening-panel")).toHaveCount(0);
+    });
+
     test("390 px: the bilingual panel fits and its controls stay reachable", async ({ page }) => {
       await page.setViewportSize({ width: 390, height: 844 });
-      await onboard(page, "H3");
-      await openLesson(page, "en-h3-l5");
+      await onboard(page, "M2");
+      await openLesson(page, "en-m2-l3");
       await details(page);
       expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
       for (const id of ["listen-full", "repeat-play", "repeat-from", "repeat-count"]) { const b = await page.getByTestId(id).boundingBox(); expect(b && b.x >= -1 && b.x + b.width <= 391 && b.height >= 40, id).toBe(true); }
