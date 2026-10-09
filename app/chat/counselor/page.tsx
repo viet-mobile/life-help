@@ -1074,7 +1074,7 @@ export default function CounselorPortalPage() {
                       )}
                     </span>
                     <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 border border-emerald-300">
-                      {formatBilingual(t("workspace.adminChatOnline"), "실시간 온라인")}
+                      {formatBilingual(t("workspace.adminChatOnline"), "관리자 채팅")}
                     </span>
                   </h3>
                   <p className="text-[11px] text-slate-500">

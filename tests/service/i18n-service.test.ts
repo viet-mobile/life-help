@@ -72,10 +72,20 @@ describe("service core strings in the canonical locale registry", () => {
   }
 
   it("customer-facing chat copy makes no real-time / instant promise (transport is polling, no SLA)", () => {
-    const keys = ["common.nativeConsultationCenter", "privacy.cardRealtimeChatTitle", "request.privacyNoPhoneNote", "request.startLiveChat", "support.badge050", "tech.instantDispatchConnected"];
+    const keys = ["admin.reviewDesc", "admin.statMessages", "admin.tabMessages", "chat.backToCustomerChat", "chat.emptyWorkspaceSub", "chat.registerDesc", "chat.title", "payment.liveChatBtn", "payment.notice3", "support.providerDesc", "workspace.adminChatOnline", "workspace.adminChatTitle", "workspace.servicesDesc", "workspace.servicesTitle", "common.nativeConsultationCenter", "privacy.cardRealtimeChatTitle", "request.privacyNoPhoneNote", "request.startLiveChat", "support.badge050", "tech.instantDispatchConnected"];
     for (const l of ["en", "ko"]) {
       const d = load(l);
       for (const k of keys) expect(get(d, k) as string, `${l} ${k}`).not.toMatch(/real[- ]?time|live|instant|immediate|실시간|즉시/i);
+    }
+  });
+  it("no dictionary key in any locale keeps a real-time / live claim about chat (en + ko checked by wording, the rest by key set)", () => {
+    const removed = ["chat.enterRoom", "chat.startTitle", "chat.statusConnected", "chat.tag", "chat.nativeConsultationCenter", "request.liveMatchingDesc", "support.realPhoneHidden", "admin.btnDirectMessage", "workspace.availTitle"];
+    for (const l of locales) for (const k of removed) expect(get(load(l), k), `${l} ${k}`).toBeUndefined();
+    for (const l of ["en", "ko"]) {
+      const bad: string[] = [];
+      const walk = (o: Dict, p = "") => { for (const [k, v] of Object.entries(o)) { const q = p + k; if (typeof v === "object") walk(v, q + "."); else if (/real[- ]?time|\blive\b|실시간/i.test(v) && !/^(payment|serviceDesc)\./.test(q)) bad.push(`${q}: ${v}`); } };
+      walk(load(l));
+      expect(bad).toEqual([]);
     }
   });
   it("derives the canonical locale count from the registry (no hard-coded 38 / 47 in the copy)", () => {
