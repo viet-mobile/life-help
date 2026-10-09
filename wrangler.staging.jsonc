@@ -1,7 +1,9 @@
 // STAGING-ONLY Worker config for the learning-only production port (used to stage-validate the exact artifact; never used for production).
 // Same artifact as production (`opennextjs-cloudflare build`, no environment baked in). Differences are runtime bindings only:
 //   APP_ENV=staging lets the learning sites be reached by path (/study/<site>); the learning platform reads its own LEARN_SUPABASE_* names.
-//   Worker secrets (never here): LEARN_SUPABASE_PUBLISHABLE_KEY, LEARN_SUPABASE_SECRET_KEY (already installed on life-help-staging).
+//   Worker secrets (never here): LEARN_SUPABASE_PUBLISHABLE_KEY, LEARN_SUPABASE_SECRET_KEY (reported installed on life-help-staging - verify with
+//   `wrangler secret list --config wrangler.staging.jsonc`), and for the integrated tree SERVICE_CORE_SUPABASE_SECRET_KEY, LIFE_HELP_SYS_ADMIN_ID,
+//   LIFE_HELP_SYS_ADMIN_PASSWORD, LIFE_HELP_SYS_SESSION_SECRET. Names and classification: scripts/staging/contract.cjs (WORKER_BINDINGS).
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
@@ -11,11 +13,13 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS",
-    "run_worker_first": ["/favicon.ico"]
+    "run_worker_first": ["/favicon.ico", "/learn-content/*"]
   },
   "vars": {
     "APP_ENV": "staging",
     "LEARN_SUPABASE_URL": "https://wreebowcbiymodswajwe.supabase.co",
-    "EXPECTED_LEARN_SUPABASE_REF": "wreebowcbiymodswajwe"
+    "EXPECTED_LEARN_SUPABASE_REF": "wreebowcbiymodswajwe",
+    "SERVICE_CORE_SUPABASE_URL": "https://wreebowcbiymodswajwe.supabase.co",
+    "EXPECTED_SERVICE_CORE_SUPABASE_REF": "wreebowcbiymodswajwe"
   }
 }

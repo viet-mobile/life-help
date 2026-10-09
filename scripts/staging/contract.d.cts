@@ -1,0 +1,18 @@
+export const ROOT: string;
+export const ENV_FILE: string;
+export const ENV_EXAMPLE: string;
+export const STAGING_REF: string;
+export const PRODUCTION_REF: string;
+export const STAGING_HOST: string;
+export const STAGING_WORKER: string;
+export const STAGING_WRANGLER_CONFIG: string;
+export const ENV_GROUPS: Record<"serviceCore" | "learning" | "browser", string[]>;
+export const ALL_ENV_NAMES: string[];
+export const URL_NAMES: string[];
+export function readEnvFile(file?: string): Record<string, string>;
+export function loadStagingEnv(processEnv?: Record<string, string | undefined>, file?: string): Record<string, string>;
+export function refOfUrl(u: string): string | null;
+export function preflight(env: Record<string, string | undefined>): { status: "READY" | "BLOCKED_MISSING_ENV" | "REFUSED"; lines: string[]; missing: string[]; problems: string[] };
+export const WORKER_BINDINGS: Array<{ name: string; kind: string; class: string; note: string }>;
+export const WORKER_REQUIRED_BINDINGS: Array<{ name: string; declared: string }>;
+export function registryLocales(root?: string): string[];

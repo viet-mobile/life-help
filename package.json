@@ -23,6 +23,8 @@
     "test:learn:db": "node scripts/test_learning_migration_db.mjs",
     "test:learn:bundle": "node scripts/test_learning_bundle_secrets.mjs",
     "test:learn:routes": "node scripts/release/test_baseline_routes.mjs",
+    "staging:preflight": "node scripts/staging/preflight.mjs",
+    "staging:integrated": "node scripts/staging/integrated.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

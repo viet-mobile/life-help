@@ -14,6 +14,10 @@
  * Secrets are read from the environment only and are never printed.
  */
 import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { loadStagingEnv } from "./contract.cjs";
+
+// the local staging env file (gitignored) fills any variable the shell did not set; values are never printed
+for (const [k, v] of Object.entries(loadStagingEnv())) if (!process.env[k]) process.env[k] = v;
 
 const GATES = [
   "G01 migration 040 present (all svc_* functions and tables exist)",
@@ -49,7 +53,7 @@ const { createClient } = await import("@supabase/supabase-js");
 const client = () => createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
 const admin = client();
 
-const RUN_ID = `STG-${Date.now().toString(36)}-${randomBytes(3).toString("hex")}`;
+const RUN_ID = process.env.STAGING_RUN_ID || `STG-${Date.now().toString(36)}-${randomBytes(3).toString("hex")}`;
 const sha = (s) => createHash("sha256").update(s).digest("hex");
 const secret = () => randomBytes(32).toString("hex");
 const IKSAN = { country: "KR", sido: "전북특별자치도", gungu: "익산시" };
@@ -269,6 +273,7 @@ await gate("G15", async () => {
   // delete only rows this run created (cascades remove events, messages, outbox rows), then prove nothing with the RUN_ID is left
   if (created.requests.length) await admin.from("svc_requests").delete().in("id", created.requests);
   if (created.helpers.length) await admin.from("svc_helpers").delete().in("id", created.helpers);
+  if (created.customers.length) await admin.from("svc_customers").delete().in("credential_hash", created.customers.map((c) => c.credHash)); // only the customers this run made
   const left = await admin.from("svc_helpers").select("id", { count: "exact", head: true }).like("display_name", `${RUN_ID}%`);
   const leftReq = await admin.from("svc_requests").select("id", { count: "exact", head: true }).like("description", `${RUN_ID}%`);
   must(!left.error && left.count === 0 && !leftReq.error && leftReq.count === 0, `residue left: helpers=${left.count} requests=${leftReq.count}`);
