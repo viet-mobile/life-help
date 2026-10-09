@@ -58,103 +58,135 @@ async function approveHelper(admin: Page, name: string) {
   await expect(row).toHaveAttribute("data-status", "APPROVED", { timeout: 10_000 });
 }
 
-test("customer -> helper -> chat -> start -> complete across three devices, admin sees it", async ({ browser }) => {
-  const C = await newDevice(browser, "vi");
-  const H = await newDevice(browser, "ko");
-  const A = await newDevice(browser, "ko");
-  try {
-    await adminLogin(A.page);
+// the same server flow in nine UI languages (one right-to-left pair): server state must not depend on the browser's language
+const MATRIX: Array<{ locale: string; service: string; rtl?: boolean }> = [
+  { locale: "ko", service: "clog-clearing" },
+  { locale: "en", service: "leak-plumbing" },
+  { locale: "vi", service: "cleaning" },
+  { locale: "ur", service: "housing", rtl: true },
+  { locale: "ar", service: "bank-help", rtl: true },
+  { locale: "sw", service: "insurance-help" },
+  { locale: "sg", service: "job-help" },
+  { locale: "mr", service: "hospital-help" },
+  { locale: "te", service: "mobile-help" },
+];
 
-    // helper applies on device H and is PENDING: cannot see requests
-    const code = await applyHelper(H.page, "Kim E2E", "cleaning");
-    await H.page.goto("/tech/workspace");
-    await expect(H.page.getByTestId("helper-service-panel")).toHaveAttribute("data-status", "PENDING");
-    await expect(H.page.getByTestId("helper-open-request")).toHaveCount(0);
+for (const { locale, service, rtl } of MATRIX) {
+  test(`customer (${locale}) -> helper -> chat -> start -> complete across three devices, admin sees it`, async ({ browser }) => {
+    const C = await newDevice(browser, locale);
+    const H = await newDevice(browser, "ko");
+    const A = await newDevice(browser, "ko");
+    const name = `Kim E2E ${locale}`;
+    const hello = `Hello-${locale} khi nao anh den?`;
+    const sameLang = locale === "ko";
+    try {
+      await adminLogin(A.page);
 
-    // customer creates a request (device C) while the only helper is still PENDING -> no eligible helper, request stays WAITING
-    const link = await submitRequest(C.page, "cleaning", "Xin hãy giúp tôi dọn dẹp căn hộ.");
-    await C.page.goto(link);
-    await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "WAITING");
-    await expect(C.page.getByTestId("request-unmatched")).toBeVisible();
+      // the helper's local weekly schedule is NOT authority: set it to "never available" before anything happens
+      await H.page.addInitScript(() => { try { localStorage.setItem("life_help_helper_schedule_v1", JSON.stringify({ availableDays: [], availableHours: "none" })); } catch { /* */ } });
+      const code = await applyHelper(H.page, name, service);
+      await H.page.goto("/tech/workspace");
+      await expect(H.page.getByTestId("helper-service-panel")).toHaveAttribute("data-status", "PENDING");
+      await expect(H.page.getByTestId("helper-open-request")).toHaveCount(0);
 
-    // admin (device A) sees the request, unmatched, and approves the helper
-    await A.page.goto("/admin");
-    await openAdminTab(A.page, "requests");
-    const adminRow = A.page.locator('[data-testid="admin-request"]').first();
-    await expect(adminRow).toBeVisible({ timeout: 15_000 });
-    await expect(adminRow.getByTestId("admin-unmatched")).toBeVisible();
-    await approveHelper(A.page, "Kim E2E");
+      // customer creates a request (device C) while the only helper is still PENDING -> unmatched, stays WAITING
+      const link = await submitRequest(C.page, service, `Description-${locale} please help`);
+      if (rtl) expect(await C.page.evaluate(() => document.documentElement.dir)).toBe("rtl");
+      await C.page.goto(link);
+      await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "WAITING");
+      await expect(C.page.getByTestId("request-unmatched")).toBeVisible();
+      // the link's token is exchanged for a cookie and removed from the address bar
+      expect(C.page.url()).not.toContain("#t=");
 
-    // helper becomes APPROVED, goes available and receives the (earlier) WAITING request without any reload by us
-    await expect(H.page.getByTestId("helper-service-panel")).toHaveAttribute("data-status", "APPROVED", { timeout: 20_000 });
-    await H.page.getByTestId("helper-available-toggle").click();
-    const open = H.page.getByTestId("helper-open-request");
-    await expect(open).toHaveCount(1, { timeout: 15_000 });
-    // Korean reader sees the Vietnamese original untouched plus the (fake) machine translation, and no street address yet
-    await expect(open.getByTestId("request-original")).toContainText("Xin hãy giúp tôi");
-    await expect(open).not.toContainText("신동 123-4");
+      // admin sees it unmatched, then approves the helper
+      await A.page.goto("/admin");
+      await openAdminTab(A.page, "requests");
+      await expect(A.page.locator('[data-testid="admin-request"]', { hasText: /./ }).first()).toBeVisible({ timeout: 15_000 });
+      await expect(A.page.getByTestId("admin-unmatched").first()).toBeVisible();
+      await approveHelper(A.page, name);
 
-    // accept -> customer sees assignment
-    await H.page.getByTestId("accept-request").click();
-    await expect(H.page.getByTestId("helper-job")).toHaveAttribute("data-status", "ASSIGNED");
-    await expect(H.page.getByTestId("job-address")).toContainText("신동 123-4");
-    await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "ASSIGNED", { timeout: 15_000 });
-    await expect(C.page.getByTestId("request-helper")).toContainText("Kim E2E");
+      // helper becomes APPROVED, goes available and receives the earlier WAITING request, whatever its local schedule says
+      await expect(H.page.getByTestId("helper-service-panel")).toHaveAttribute("data-status", "APPROVED", { timeout: 20_000 });
+      await H.page.getByTestId("helper-available-toggle").click();
+      const open = H.page.getByTestId("helper-open-request");
+      await expect(open).toHaveCount(1, { timeout: 15_000 });
+      await expect(open).toContainText(`Description-${locale}`); // the original, in the customer's own language
+      await expect(open).not.toContainText("신동 123-4"); // no street address before accepting
 
-    // chat both ways, no reload, with original preserved and per-reader translation
-    await expect(H.page.getByTestId("service-chat")).toBeVisible(); // opened by accepting
-    await C.page.getByTestId("chat-input").fill("Khi nào anh đến?");
-    await C.page.getByTestId("chat-send").click();
-    const hLog = H.page.getByTestId("chat-log");
-    const t0 = Date.now();
-    await expect(hLog).toContainText("Khi nào anh đến?", { timeout: 10_000 });
-    const latency = Date.now() - t0;
-    test.info().annotations.push({ type: "chat-latency-ms", description: String(latency) });
-    await H.page.getByTestId("chat-input").fill("30분 뒤에 도착합니다.");
-    await H.page.getByTestId("chat-send").click();
-    await expect(C.page.getByTestId("chat-log")).toContainText("30분 뒤에 도착합니다.", { timeout: 10_000 });
-    await expect(C.page.getByTestId("chat-log")).toContainText("[vi] 30분");
+      await H.page.getByTestId("accept-request").click();
+      await expect(H.page.getByTestId("helper-job")).toHaveAttribute("data-status", "ASSIGNED");
+      await expect(H.page.getByTestId("job-address")).toContainText("신동 123-4");
+      await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "ASSIGNED", { timeout: 15_000 });
+      await expect(C.page.getByTestId("request-helper")).toContainText(name);
 
-    // a translation failure never hides the original and never fabricates a translation
-    await C.page.getByTestId("chat-input").fill("Tin nhắn [[fail]]");
-    await C.page.getByTestId("chat-send").click();
-    await expect(hLog).toContainText("Tin nhắn [[fail]]", { timeout: 10_000 });
-    await expect(hLog.getByTestId("msg-translation-failed").first()).toBeVisible();
+      // chat both ways without reloads; original kept, translation per reader
+      await expect(H.page.getByTestId("service-chat")).toBeVisible();
+      await C.page.getByTestId("chat-input").fill(hello);
+      await C.page.getByTestId("chat-send").click();
+      const hLog = H.page.getByTestId("chat-log");
+      const t0 = Date.now();
+      await expect(hLog).toContainText(hello, { timeout: 10_000 });
+      test.info().annotations.push({ type: "chat-latency-ms", description: String(Date.now() - t0) });
+      if (!sameLang) await expect(hLog).toContainText(`[ko] ${hello}`);
+      await H.page.getByTestId("chat-input").fill("30분 뒤에 도착합니다.");
+      await H.page.getByTestId("chat-send").click();
+      await expect(C.page.getByTestId("chat-log")).toContainText("30분 뒤에 도착합니다.", { timeout: 10_000 });
+      if (!sameLang) await expect(C.page.getByTestId("chat-log")).toContainText(`[${locale}] 30분`);
 
-    // start -> complete; customer follows without reloading
-    await H.page.getByTestId("start-job").click();
-    await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "IN_PROGRESS", { timeout: 15_000 });
-    await H.page.getByTestId("complete-job").click();
-    await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED", { timeout: 15_000 });
-    await openAdminTab(A.page, "requests");
-    await expect(A.page.locator('[data-testid="admin-request"]').first()).toHaveAttribute("data-status", "COMPLETED", { timeout: 15_000 });
+      // a translation failure never hides the original and never fabricates a translation
+      if (!sameLang) {
+        await C.page.getByTestId("chat-input").fill(`Fail-${locale} [[fail]]`);
+        await C.page.getByTestId("chat-send").click();
+        await expect(hLog).toContainText(`Fail-${locale} [[fail]]`, { timeout: 10_000 });
+        await expect(hLog.getByTestId("msg-translation-failed").first()).toBeVisible();
+      }
 
-    // canonical state survives deleting localStorage, a new tab and a fresh login on a new device
-    await C.page.evaluate(() => { localStorage.clear(); });
-    await C.page.reload();
-    await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED"); // cookie + URL token, not localStorage
-    const tab = await C.ctx.newPage();
-    await tab.goto(link);
-    await expect(tab.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED");
-    await expect(tab.getByTestId("chat-log")).toContainText("Khi nào anh đến?");
-    const H2 = await newDevice(browser, "ko");
-    await H2.page.goto("/tech/login");
-    await H2.page.getByTestId("helper-code-input").fill(code);
-    await H2.page.getByTestId("helper-login-submit").click();
-    await H2.page.waitForURL("**/tech/workspace");
-    await expect(H2.page.getByTestId("helper-job")).toHaveAttribute("data-status", "COMPLETED");
-    await H2.ctx.close();
+      await H.page.getByTestId("start-job").click();
+      await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "IN_PROGRESS", { timeout: 15_000 });
+      await H.page.getByTestId("complete-job").click();
+      await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED", { timeout: 15_000 });
+      await openAdminTab(A.page, "requests");
+      await expect(A.page.locator(`[data-testid="admin-request"][data-status="COMPLETED"]`).first()).toBeVisible({ timeout: 15_000 });
 
-    // a different customer device with the id but no token gets nothing
-    const X = await newDevice(browser, "vi");
-    const id = link.match(/r=([0-9a-f-]{36})/)![1];
-    await X.page.goto(`/chat?r=${id}`);
-    await expect(X.page.getByTestId("request-missing")).toBeVisible({ timeout: 15_000 });
-    await X.ctx.close();
-  } finally {
-    await C.ctx.close(); await H.ctx.close(); await A.ctx.close();
-  }
-});
+      // canonical state survives deleting localStorage (both devices), a new tab and a fresh login on a new device
+      await C.page.evaluate(() => { localStorage.clear(); });
+      await C.page.reload();
+      await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED"); // HttpOnly cookies, not localStorage
+      // the request token is not readable by page JS at all
+      const jsCookies = await C.page.evaluate(() => document.cookie);
+      expect(jsCookies).not.toContain("lh_rt_");
+      expect(jsCookies).not.toContain("lh_c=");
+      expect(await C.page.evaluate(() => JSON.stringify(localStorage) + JSON.stringify(sessionStorage))).not.toMatch(/[0-9a-f]{64}/);
+      const tab = await C.ctx.newPage();
+      await tab.goto(`/chat?r=${link.match(/r=([0-9a-f-]{36})/)![1]}`);
+      await expect(tab.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED");
+      await expect(tab.getByTestId("chat-log")).toContainText(hello);
+      await H.page.evaluate(() => { localStorage.clear(); });
+      await H.page.reload();
+      await expect(H.page.getByTestId("helper-job")).toHaveAttribute("data-status", "COMPLETED"); // helper state is the server's too
+      const H2 = await newDevice(browser, "ko");
+      await H2.page.goto("/tech/login");
+      await H2.page.getByTestId("helper-code-input").fill(code);
+      await H2.page.getByTestId("helper-login-submit").click();
+      await H2.page.waitForURL("**/tech/workspace");
+      await expect(H2.page.getByTestId("helper-job")).toHaveAttribute("data-status", "COMPLETED");
+      await H2.ctx.close();
+
+      // another customer device with the request id but no token gets nothing; with the link it is let in once and the URL is cleaned
+      const id = link.match(/r=([0-9a-f-]{36})/)![1];
+      const X = await newDevice(browser, locale);
+      await X.page.goto(`/chat?r=${id}`);
+      await expect(X.page.getByTestId("request-missing")).toBeVisible({ timeout: 15_000 });
+      const opened = await X.ctx.newPage(); // the link opened as a new navigation (a hash-only change on the same page is not a new visit)
+      await opened.goto(link);
+      await expect(opened.getByTestId("customer-request")).toHaveAttribute("data-status", "COMPLETED");
+      expect(opened.url()).not.toContain("#t=");
+      await X.ctx.close();
+    } finally {
+      await C.ctx.close(); await H.ctx.close(); await A.ctx.close();
+    }
+  });
+}
 
 test("admin manual assignment, helper cannot act without approval, forged credential denied", async ({ browser }) => {
   const C = await newDevice(browser, "en");
