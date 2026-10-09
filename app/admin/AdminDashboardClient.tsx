@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
-import {
-  getRegisteredHelpers,
-  type HelperProfile,
-  HELPERS_REGISTRY_KEY,
-} from "@/lib/helper/HelperContext";
+import { adminApi, ApiError } from "@/lib/service/client";
+import type { SvcHelper, SvcRequest } from "@/lib/service/clientTypes";
+import { usePoll } from "@/lib/service/usePoll";
+import { AdminHelpersPanel } from "@/components/service/AdminHelpersPanel";
+import { AdminRequestsPanel } from "@/components/service/AdminRequestsPanel";
 import {
   getStoredCounselors,
   type Counselor,
@@ -37,13 +37,6 @@ export type AdminSession = {
 export type AdminDashboardClientProps = {
   initialSession: AdminSession;
 };
-import {
-  getStoredRequests,
-  updateRequestStatus,
-  deleteServiceRequest,
-  type ServiceRequest,
-  REQUEST_EVENT,
-} from "@/lib/request/requestStore";
 import {
   getStoredSupportPartners,
   getStoredSupportRequests,
@@ -97,16 +90,9 @@ export default function AdminDashboardClient({
   >("helpers");
 
   // Search & Filter
-  const [helperSearch, setHelperSearch] = useState("");
-  const [helperFilter, setHelperFilter] = useState<"all" | "active" | "paused" | "expiring">("all");
-
   const [counselorSearch, setCounselorSearch] = useState("");
   const [counselorFilter, setCounselorFilter] = useState<"all" | "duty" | "break" | "expiring">("all");
 
-  const [requestSearch, setRequestSearch] = useState("");
-  const [requestFilter, setRequestFilter] = useState<"all" | "pending" | "dispatched" | "completed">("all");
-  const [assigningRequest, setAssigningRequest] = useState<ServiceRequest | null>(null);
-  const [assignHelperSearch, setAssignHelperSearch] = useState("");
 
   // Support State (5 Life Assistance Services & 050 Safe Virtual Phone System)
   const [supportPartners, setSupportPartners] = useState<SupportPartner[]>([]);
@@ -119,11 +105,13 @@ export default function AdminDashboardClient({
   const [matchingSupportReq, setMatchingSupportReq] = useState<SupportRequest | null>(null);
 
   // Data state
-  const [helpers, setHelpers] = useState<HelperProfile[]>([]);
+  // Helpers and customer requests are SERVER data (never this browser's storage)
+  const [helpers, setHelpers] = useState<SvcHelper[]>([]);
+  const [requests, setRequests] = useState<SvcRequest[]>([]);
+  const [serviceProblem, setServiceProblem] = useState<"" | "session" | "offline">("");
   const [counselors, setCounselors] = useState<Counselor[]>([]);
   const [messages, setMessages] = useState<AdminMessage[]>([]);
   const [reviews, setReviews] = useState<CustomerReview[]>([]);
-  const [requests, setRequests] = useState<ServiceRequest[]>([]);
 
   // Messaging active conversation state
   const [selectedPartner, setSelectedPartner] = useState<{
@@ -136,11 +124,9 @@ export default function AdminDashboardClient({
   const [toastMessage, setToastMessage] = useState("");
 
   const refreshData = useCallback(() => {
-    setHelpers(getRegisteredHelpers());
     setCounselors(getStoredCounselors());
     setMessages(getAdminMessages());
     setReviews(getStoredReviews());
-    setRequests(getStoredRequests());
     setSupportPartners(getStoredSupportPartners());
     setSupportRequests(getStoredSupportRequests());
     setDevices(getRegisteredDevices());
@@ -149,22 +135,15 @@ export default function AdminDashboardClient({
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrates from the server / browser cache after mount
     refreshData();
 
     const handleMessageUpdate = () => {
       setMessages(getAdminMessages());
     };
 
-    const handleHelperUpdate = () => {
-      setHelpers(getRegisteredHelpers());
-    };
-
     const handleReviewUpdate = () => {
       setReviews(getStoredReviews());
-    };
-
-    const handleRequestUpdate = () => {
-      setRequests(getStoredRequests());
     };
 
     const handleSupportUpdate = () => {
@@ -179,51 +158,32 @@ export default function AdminDashboardClient({
 
 
     window.addEventListener(ADMIN_MESSAGE_EVENT, handleMessageUpdate);
-    window.addEventListener("storage", handleHelperUpdate);
     window.addEventListener(REVIEW_EVENT, handleReviewUpdate);
-    window.addEventListener(REQUEST_EVENT, handleRequestUpdate);
     window.addEventListener("support_partners_changed", handleSupportUpdate);
     window.addEventListener("support_requests_changed", handleSupportUpdate);
     window.addEventListener("life_help_device_updated", handleDeviceUpdate);
 
     return () => {
       window.removeEventListener(ADMIN_MESSAGE_EVENT, handleMessageUpdate);
-      window.removeEventListener("storage", handleHelperUpdate);
       window.removeEventListener(REVIEW_EVENT, handleReviewUpdate);
-      window.removeEventListener(REQUEST_EVENT, handleRequestUpdate);
       window.removeEventListener("support_partners_changed", handleSupportUpdate);
       window.removeEventListener("support_requests_changed", handleSupportUpdate);
       window.removeEventListener("life_help_device_updated", handleDeviceUpdate);
     };
   }, [refreshData]);
 
+  const loadService = useCallback(async () => {
+    const [h, r] = await Promise.all([adminApi.helpers(), adminApi.requests()]);
+    setHelpers(h);
+    setRequests(r);
+    setServiceProblem("");
+  }, []);
+  usePoll(loadService, 3000, true, (e) => setServiceProblem(e instanceof ApiError && e.status === 401 ? "session" : "offline"));
+
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(""), 3000);
   };
-
-  // Filtered Helpers
-  const filteredHelpers = useMemo(() => {
-    return helpers.filter((h) => {
-      const name = h.contract?.name || "";
-      const phone = h.phone || "";
-      const email = h.email || "";
-      const regionsStr = h.contract?.regions.map((r) => `${r.sido} ${r.gungu}`).join(" ") || "";
-      const servicesStr = (h.contract?.services.map((s) => getLocalizedServiceName(s, locale)).join(" ") || "") + " " + (h.contract?.services.join(" ") || "");
-      const searchTarget = `${name} ${email} ${phone} ${regionsStr} ${servicesStr}`.toLowerCase();
-
-      if (helperSearch && !searchTarget.includes(helperSearch.toLowerCase())) {
-        return false;
-      }
-
-      const daysLeft = h.accessKeyExpiresAt ? getRemainingDays(h.accessKeyExpiresAt) : 0;
-      if (helperFilter === "active" && !h.isActive) return false;
-      if (helperFilter === "paused" && h.isActive) return false;
-      if (helperFilter === "expiring" && daysLeft > 14) return false;
-
-      return true;
-    });
-  }, [helpers, helperSearch, helperFilter, locale]);
 
   // Filtered Counselors
   const filteredCounselors = useMemo(() => {
@@ -249,36 +209,21 @@ export default function AdminDashboardClient({
     });
   }, [counselors, counselorSearch, counselorFilter, locale]);
 
-  // Filtered Requests
-  const filteredRequests = useMemo(() => {
-    return requests.filter((r) => {
-      const localizedService = getLocalizedServiceName(r.serviceSlug || r.serviceName, locale);
-      const searchTarget = `${r.serviceName} ${localizedService} ${r.sido} ${r.gungu} ${r.address} ${r.phone} ${r.description} ${r.assignedHelper?.name || ""}`.toLowerCase();
-      if (requestSearch && !searchTarget.includes(requestSearch.toLowerCase())) {
-        return false;
-      }
-      if (requestFilter === "pending" && r.status !== "pending") return false;
-      if (requestFilter === "dispatched" && r.status !== "dispatched") return false;
-      if (requestFilter === "completed" && r.status !== "completed") return false;
-      return true;
-    });
-  }, [requests, requestSearch, requestFilter, locale]);
-
   // Key System Statistics
   const stats = useMemo(() => {
-    const activeHelpersCount = helpers.filter((h) => h.isActive).length;
+    const activeHelpersCount = helpers.filter((h) => h.status === "APPROVED" && h.isAvailable).length;
     const pausedHelpersCount = helpers.length - activeHelpersCount;
 
     const dutyCounselorsCount = counselors.filter((c) => c.status === "duty").length;
     const breakCounselorsCount = counselors.length - dutyCounselorsCount;
 
-    const pendingRequestsCount = requests.filter((r) => r.status === "pending").length;
-    const dispatchedRequestsCount = requests.filter((r) => r.status === "dispatched").length;
-    const completedRequestsCount = requests.filter((r) => r.status === "completed").length;
+    const pendingRequestsCount = requests.filter((r) => r.status === "WAITING").length;
+    const dispatchedRequestsCount = requests.filter((r) => r.status === "ASSIGNED" || r.status === "IN_PROGRESS").length;
+    const completedRequestsCount = requests.filter((r) => r.status === "COMPLETED").length;
 
     let expiringKeysCount = 0;
     helpers.forEach((h) => {
-      if (h.accessKeyExpiresAt && getRemainingDays(h.accessKeyExpiresAt) <= 14) {
+      if (h.status !== "DISABLED" && getRemainingDays(h.credentialExpiresAt) <= 14) {
         expiringKeysCount++;
       }
     });
@@ -484,6 +429,7 @@ export default function AdminDashboardClient({
         <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {/* Helper Metrics */}
           <div
+            data-testid="admin-tab-helpers"
             onClick={() => setActiveTab("helpers")}
             className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "helpers"
@@ -532,6 +478,7 @@ export default function AdminDashboardClient({
 
           {/* Emergency Service Request Metric */}
           <div
+            data-testid="admin-tab-requests"
             onClick={() => setActiveTab("requests")}
             className={`droplet-card border p-4 sm:p-5 cursor-pointer transition ${
               activeTab === "requests"
@@ -771,268 +718,12 @@ export default function AdminDashboardClient({
 
         {/* TAB 1: 🛠️ 헬퍼 관리 콘솔 */}
         {activeTab === "helpers" && (
-          <section className="space-y-4">
-            {/* Filter and Search Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-              <div className="flex flex-wrap items-center gap-2">
-                <input
-                  type="text"
-                  value={helperSearch}
-                  onChange={(e) => setHelperSearch(e.target.value)}
-                  placeholder={t("admin.searchHelperPlaceholder")}
-                  className="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500 w-64"
-                />
-                <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-                  <button
-                    type="button"
-                    onClick={() => setHelperFilter("all")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      helperFilter === "all" ? "bg-slate-800 text-white shadow-xs" : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterAll")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setHelperFilter("active")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      helperFilter === "active" ? "bg-emerald-950 text-emerald-300 border border-emerald-800/60 shadow-xs" : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterActive")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setHelperFilter("paused")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      helperFilter === "paused" ? "bg-amber-950 text-amber-300 border border-amber-800/60 shadow-xs" : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterPaused")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setHelperFilter("expiring")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      helperFilter === "expiring" ? "bg-rose-950 text-rose-300 border border-rose-800/60 shadow-xs" : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterExpiring")}
-                  </button>
-                </div>
-              </div>
-
-              <div className="text-xs text-slate-400">
-                {t("admin.statHelpers")}: <strong className="text-white">{filteredHelpers.length}</strong>{t("admin.unitPersons")}
-              </div>
-            </div>
-
-            {/* Helpers List Grid */}
-            {filteredHelpers.length === 0 ? (
-              <div className="grid h-64 place-content-center rounded-3xl border border-slate-800 bg-slate-900/40 text-center text-xs text-slate-500">
-                <p className="text-3xl mb-2">🛠️</p>
-                <p>{t("admin.noHelpers")}</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {filteredHelpers.map((h) => {
-                  const contract = h.contract;
-                  const daysLeft = h.accessKeyExpiresAt ? getRemainingDays(h.accessKeyExpiresAt) : 0;
-                  const isExpiring = daysLeft <= 14;
-                  const helperId = h.email || h.phone || "";
-                  const unreadCount = getAdminMessages({ targetId: helperId, targetType: "helper" }).filter(
-                    (m) => !m.isRead && m.sender === "partner",
-                  ).length;
-                  const helperDisplayName =
-                    contract?.name ||
-                    (h.email
-                      ? `Helper (${h.email.split("@")[0]})`
-                      : h.phone
-                        ? `Helper (${h.phone.slice(-4)})`
-                        : "Helper");
-
-                  return (
-                    <div
-                      key={helperId}
-                      className="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-sm space-y-4 hover:border-slate-700 transition"
-                    >
-                      {/* Header: Name, Status, Contact */}
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-lg font-black text-white shadow-md">
-                            {contract?.name ? contract.name.charAt(0) : "H"}
-                          </span>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <h3 className="text-base font-extrabold text-white">
-                                {helperDisplayName}
-                              </h3>
-                              <span
-                                className={`rounded-md px-2 py-0.5 text-[10px] font-black border ${
-                                  h.isActive
-                                    ? "bg-emerald-950/80 text-emerald-400 border-emerald-800/60"
-                                    : "bg-amber-950/80 text-amber-400 border-amber-800/60"
-                                }`}
-                              >
-                                {h.isActive ? `● ${t("admin.statusActive")}` : `○ ${t("admin.statusPaused")}`}
-                              </span>
-                            </div>
-                            <p className="text-xs font-mono text-slate-400 mt-0.5">✉️ {h.email || h.phone}{h.phone && h.email ? ` · 📱 ${h.phone}` : ""}</p>
-                          </div>
-                        </div>
-
-                        {/* Online Contact Action Button */}
-                        <button
-                          type="button"
-                          onClick={() =>
-                            handleOpenPartnerChat({
-                              type: "helper",
-                              id: helperId,
-                              name: helperDisplayName,
-                            })
-                          }
-                          className="relative flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-3.5 py-2 text-xs font-extrabold text-white hover:brightness-105 shadow-md shadow-blue-600/20 active:scale-[0.98] cursor-pointer transition-all duration-200"
-                        >
-                          <span>💬 {t("admin.partnerChat")}</span>
-                          {unreadCount > 0 && (
-                            <span className="flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[9px] font-black text-white animate-pulse">
-                              {unreadCount}
-                            </span>
-                          )}
-                        </button>
-                      </div>
-
-                      {/* 3-Month Security Key Bar */}
-                      <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3 space-y-1.5">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="font-bold text-slate-300 flex items-center gap-1.5">
-                            <span>🛡️ {t("admin.securityKeyLabel")}</span>
-                          </span>
-                          <span
-                            className={`rounded px-1.5 py-0.5 text-[10px] font-black ${
-                              isExpiring
-                                ? "bg-rose-950 text-rose-300 border border-rose-800/60 animate-pulse"
-                                : "bg-blue-950 text-blue-300 border border-blue-800/60"
-                            }`}
-                          >
-                            {isExpiring ? `D-${daysLeft} (${t("admin.renewalRequired")})` : `D-${daysLeft} ${t("admin.daysLeft")}`}
-                          </span>
-                        </div>
-                        <p className="font-mono text-xs font-bold text-slate-400 tracking-wider truncate">
-                          {h.accessKey || "LH-AUTH-LOCAL-SECURED"}
-                        </p>
-                        {h.accessKeyExpiresAt && (
-                          <p className="text-[10px] text-slate-500">
-                            {t("admin.expiresAtLabel")}: {new Date(h.accessKeyExpiresAt).toLocaleDateString()}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Regions & Services */}
-                      <div className="space-y-2 text-xs">
-                        <div>
-                          <span className="text-slate-400 font-medium">{t("admin.activeRegionLabel")}:</span>
-                          <div className="mt-1 flex flex-wrap gap-1">
-                            {contract?.regions && contract.regions.length > 0 ? (
-                              contract.regions.map((reg) => (
-                                <span
-                                  key={`${reg.sido}-${reg.gungu}`}
-                                  className="rounded-lg bg-slate-800 px-2 py-0.5 text-[11px] font-bold text-blue-300 border border-slate-700"
-                                >
-                                  📍 {reg.sido} {reg.gungu}
-                                </span>
-                              ))
-                            ) : (
-                              <span className="text-slate-500 text-[11px]">{t("admin.unspecifiedRegion")}</span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div>
-                          <span className="text-slate-400 font-medium">{t("admin.serviceCategoryLabel")}:</span>
-                          <div className="mt-1 flex flex-wrap gap-1">
-                            {contract?.services && contract.services.length > 0 ? (
-                              contract.services.map((slug) => {
-                                const srvName = getLocalizedServiceName(slug, locale);
-                                const srvObj = services.find((s) => s.slug === slug || s.key === slug);
-                                return (
-                                  <span
-                                    key={slug}
-                                    className="rounded-lg bg-slate-800 px-2 py-0.5 text-[11px] font-medium text-slate-300"
-                                  >
-                                    {srvObj ? srvObj.icon : "🔧"} {srvName}
-                                  </span>
-                                );
-                              })
-                            ) : (
-                              <span className="text-slate-500 text-[11px]">{t("admin.unselectedService")}</span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Schedule & Calendar Exclusions */}
-                      <div className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-3 text-xs space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="font-bold text-slate-300 flex items-center gap-1.5">
-                            <span>⏰ {t("admin.weeklyScheduleLabel")}:</span>
-                          </span>
-                          <div className="flex items-center gap-1">
-                            {["월", "화", "수", "목", "금", "토", "일"].map((d) => {
-                              const isWorking = contract?.availableDays.includes(d);
-                              return (
-                                <span
-                                  key={d}
-                                  className={`flex h-5 w-5 items-center justify-center rounded text-[10px] font-black ${
-                                    isWorking
-                                      ? "bg-blue-600 text-white"
-                                      : "bg-slate-800 text-slate-600"
-                                  }`}
-                                >
-                                  {DAY_NAMES[d] || d}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {/* Hours Summary */}
-                        <div className="text-[11px] text-slate-400">
-                          {t("admin.standardHoursLabel")}:{" "}
-                          <strong className="text-white">
-                            {contract?.availableHours || t("admin.hours24")}
-                          </strong>
-                        </div>
-
-                        {/* Excluded Day-Off Dates (Unchecked Days) */}
-                        {contract?.excludedDates && contract.excludedDates.length > 0 && (
-                          <div className="pt-2 border-t border-slate-800/60">
-                            <span className="text-rose-400 font-bold flex items-center gap-1 text-[11px]">
-                              <span>🚫</span>
-                              <span>{t("admin.individualDayOffLabel")} ({contract.excludedDates.length}):</span>
-                            </span>
-                            <div className="mt-1 flex flex-wrap gap-1">
-                              {contract.excludedDates.map((dateStr) => (
-                                <span
-                                  key={dateStr}
-                                  className="rounded bg-rose-950/60 px-1.5 py-0.5 text-[10px] font-bold text-rose-300 border border-rose-800/50"
-                                >
-                                  {dateStr}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </section>
+          <>
+            {serviceProblem && <p role="alert" data-testid="service-problem" className="mb-3 rounded-lg bg-red-950/60 p-2 text-xs font-bold text-red-200">{serviceProblem === "session" ? t("svc.admin.sessionExpired") : t("svc.admin.offline")}</p>}
+            <AdminHelpersPanel helpers={helpers} onChanged={() => void loadService().catch(() => undefined)} />
+          </>
         )}
 
-        {/* TAB 2: 🎧 상담원 관리 콘솔 */}
         {activeTab === "counselors" && (
           <section className="space-y-4">
             {/* Filter and Search Bar */}
@@ -1209,289 +900,12 @@ export default function AdminDashboardClient({
 
         {/* TAB 3: 📋 고객 의뢰 접수 현황 */}
         {activeTab === "requests" && (
-          <section className="space-y-4">
-            {/* Filter and Search Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-              <div className="flex flex-wrap items-center gap-2">
-                <input
-                  type="text"
-                  value={requestSearch}
-                  onChange={(e) => setRequestSearch(e.target.value)}
-                  placeholder={t("admin.searchRequestPlaceholder")}
-                  className="rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-amber-500 w-72"
-                />
-                <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-                  <button
-                    type="button"
-                    onClick={() => setRequestFilter("all")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      requestFilter === "all" ? "bg-slate-800 text-white shadow-xs" : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterAll")} ({requests.length})
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setRequestFilter("pending")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      requestFilter === "pending"
-                        ? "bg-amber-950 text-amber-300 border border-amber-800/60 shadow-xs"
-                        : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterPending")} ({stats.pendingRequests})
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setRequestFilter("dispatched")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      requestFilter === "dispatched"
-                        ? "bg-blue-950 text-blue-300 border border-blue-800/60 shadow-xs"
-                        : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterDispatched")} ({stats.dispatchedRequests})
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setRequestFilter("completed")}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                      requestFilter === "completed"
-                        ? "bg-emerald-950 text-emerald-300 border border-emerald-800/60 shadow-xs"
-                        : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {t("admin.filterCompleted")} ({stats.completedRequests})
-                  </button>
-                </div>
-              </div>
-
-              <div className="text-xs text-slate-400">
-                {t("admin.statRequests")}: <strong className="text-white">{filteredRequests.length}</strong>{t("admin.unitCases")}
-              </div>
-            </div>
-
-            {/* Requests Cards Grid */}
-            {filteredRequests.length === 0 ? (
-              <div className="grid h-64 place-content-center rounded-3xl border border-slate-800 bg-slate-900/40 text-center text-xs text-slate-500">
-                <p className="text-3xl mb-2">📋</p>
-                <p>{t("admin.noRequests")}</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {filteredRequests.map((req) => {
-                  const isPending = req.status === "pending";
-                  const isDispatched = req.status === "dispatched";
-                  const isCompleted = req.status === "completed";
-                  const localizedServiceName = getLocalizedServiceName(req.serviceSlug || req.serviceName, locale);
-
-                  return (
-                    <div
-                      key={req.id}
-                      className="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-sm space-y-4 hover:border-slate-700 transition"
-                    >
-                      {/* Top Header */}
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-600/20 border border-amber-500/30 text-2xl shadow-md">
-                            {req.serviceIcon || "🛠️"}
-                          </span>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <h3 className="text-base font-extrabold text-white">
-                                {localizedServiceName}
-                              </h3>
-                              <span
-                                className={`rounded-md px-2 py-0.5 text-[10px] font-black border ${
-                                  isPending
-                                    ? "bg-amber-950/80 text-amber-400 border-amber-800/60 animate-pulse"
-                                    : isDispatched
-                                    ? "bg-blue-950/80 text-blue-400 border-blue-800/60"
-                                    : isCompleted
-                                    ? "bg-emerald-950/80 text-emerald-400 border-emerald-800/60"
-                                    : "bg-slate-800 text-slate-400 border-slate-700"
-                                }`}
-                              >
-                                {isPending
-                                  ? `⏳ ${t("admin.statusPending")}`
-                                  : isDispatched
-                                  ? `🚚 ${t("admin.statusDispatched")}`
-                                  : isCompleted
-                                  ? `✓ ${t("admin.statusCompleted")}`
-                                  : "✕"}
-                              </span>
-                            </div>
-                            <p className="text-xs font-mono text-slate-400 mt-0.5">
-                              {new Date(req.createdAt).toLocaleString()}
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Top Action / Delete */}
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (confirm(t("admin.deleteConfirm"))) {
-                              deleteServiceRequest(req.id);
-                              refreshData();
-                              showToast(t("admin.toastDeleted"));
-                            }
-                          }}
-                          className="rounded-lg p-1.5 text-slate-500 hover:text-rose-400 hover:bg-slate-800 transition-all duration-200 active:scale-[0.98] cursor-pointer text-xs"
-                          title={t("admin.btnDelete")}
-                        >
-                          🗑️
-                        </button>
-                      </div>
-
-                      {/* Customer Info & Location */}
-                      <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3.5 space-y-2 text-xs">
-                        <div className="flex items-center justify-between">
-                          <span className="text-slate-400 font-semibold">📍 {t("admin.dispatchLocationLabel")}:</span>
-                          <span className="text-slate-200 font-bold text-right">
-                            {req.sido} {req.gungu}
-                          </span>
-                        </div>
-                        <div className="text-slate-300 bg-slate-900/60 p-2 rounded-xl border border-slate-800/80">
-                          {req.address}
-                        </div>
-                        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
-                          <span className="text-slate-400 font-semibold">📞 {t("admin.customerPhoneLabel")}:</span>
-                          <a
-                            href={`tel:${req.phone}`}
-                            className="text-amber-300 font-mono font-black hover:underline"
-                          >
-                            {req.phone}
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Problem Description */}
-                      <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3.5 space-y-1.5 text-xs">
-                        <div className="text-slate-400 font-semibold">📝 {t("admin.requestDescLabel")}:</div>
-                        <p className="text-slate-200 leading-relaxed whitespace-pre-wrap">
-                          &ldquo;{req.description}&rdquo;
-                        </p>
-                        {req.fileNames && req.fileNames.length > 0 && (
-                          <div className="pt-1 text-[11px] text-slate-400 flex items-center gap-1">
-                            <span>📷 {t("admin.attachedPhotosLabel")}:</span>
-                            <span className="text-blue-400 font-mono">
-                              {req.fileNames.join(", ")}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Assigned Helper Info (If dispatched or completed) */}
-                      {req.assignedHelper && (
-                        <div className="rounded-2xl border border-blue-800/40 bg-blue-950/30 p-3.5 space-y-2 text-xs">
-                          <div className="flex items-center justify-between">
-                            <span className="font-extrabold text-blue-300 flex items-center gap-1.5">
-                              <span>🛠️ {t("admin.assignedHelperLabel")}:</span>
-                              <span className="text-white">{req.assignedHelper.name}</span>
-                              <span className="text-slate-400 font-mono">({req.assignedHelper.phone})</span>
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() =>
-                                handleOpenPartnerChat({
-                                  type: "helper",
-                                  id: req.assignedHelper!.phone,
-                                  name: req.assignedHelper!.name,
-                                })
-                              }
-                              className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-[11px] font-extrabold text-white hover:brightness-105 transition-all duration-200 shadow-xs active:scale-[0.98] cursor-pointer"
-                            >
-                              💬 {t("admin.directChat1to1")}
-                            </button>
-                          </div>
-                          <div className="text-[11px] text-slate-400 flex items-center justify-between">
-                            <span>{t("admin.dispatchTimeLabel")}: {new Date(req.assignedHelper.dispatchedAt).toLocaleString()}</span>
-                            <span className="text-emerald-400 font-bold">✓ {t("admin.emergencyNotified")}</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Bottom Action Buttons */}
-                      <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-800/80">
-                        {isPending && (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setAssigningRequest(req);
-                              setAssignHelperSearch("");
-                            }}
-                            className="flex-1 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 px-4 py-2.5 text-xs font-black text-white hover:brightness-105 active:scale-[0.98] shadow-md shadow-amber-950/40 transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
-                          >
-                            <span>⚡</span>
-                            <span>{t("admin.btnAssignHelper")}</span>
-                          </button>
-                        )}
-
-                        {isDispatched && (
-                          <>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                updateRequestStatus(req.id, "completed");
-                                refreshData();
-                                showToast(t("admin.toastCompleted"));
-                              }}
-                              className="flex-1 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-xs font-black text-white hover:brightness-105 active:scale-[0.98] transition-all duration-200 shadow-sm cursor-pointer flex items-center justify-center gap-1.5"
-                            >
-                              <span>✓</span>
-                              <span>{t("admin.btnComplete")}</span>
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setAssigningRequest(req);
-                                setAssignHelperSearch("");
-                              }}
-                              className="rounded-xl border border-blue-700/80 bg-blue-950/60 px-3.5 py-2.5 text-xs font-bold text-blue-300 hover:bg-blue-900 transition-all duration-200 active:scale-[0.98] cursor-pointer"
-                            >
-                              🔄 {t("admin.btnReassignHelper")}
-                            </button>
-                          </>
-                        )}
-
-                        {isCompleted && (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              updateRequestStatus(req.id, "pending");
-                              refreshData();
-                              showToast(t("admin.toastReverted"));
-                            }}
-                            className="rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-bold text-slate-300 hover:bg-slate-700 transition-all duration-200 active:scale-[0.98] cursor-pointer"
-                          >
-                            {t("admin.btnRevertPending")}
-                          </button>
-                        )}
-
-                        {isPending && (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              updateRequestStatus(req.id, "cancelled");
-                              refreshData();
-                              showToast(t("admin.toastCancelled"));
-                            }}
-                            className="rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2.5 text-xs font-bold text-slate-400 hover:bg-slate-700 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
-                          >
-                            {t("admin.btnCancelDispatch")}
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </section>
+          <>
+            {serviceProblem && <p role="alert" className="mb-3 rounded-lg bg-red-950/60 p-2 text-xs font-bold text-red-200">{serviceProblem === "session" ? t("svc.admin.sessionExpired") : t("svc.admin.offline")}</p>}
+            <AdminRequestsPanel requests={requests} helpers={helpers} onChanged={() => void loadService().catch(() => undefined)} />
+          </>
         )}
 
-        {/* TAB 4: 💬 온라인 연락 센터 (Dedicated View) */}
         {activeTab === "messages" && (
           <section className="grid grid-cols-1 md:grid-cols-12 gap-4 h-[640px] rounded-3xl border border-slate-800 bg-slate-900/80 overflow-hidden shadow-2xl">
             {/* Left Column: Partners List (4 cols) */}
@@ -1500,61 +914,13 @@ export default function AdminDashboardClient({
                 <h3 className="text-sm font-extrabold text-white flex items-center gap-2">
                   <span>👥 {t("admin.chatPartnerList")}</span>
                   <span className="text-xs text-slate-400 font-normal">
-                    ({t("admin.helpersSubheader")} {helpers.length}{t("admin.unitPersons")} / {t("admin.counselorsSubheader")} {counselors.length}{t("admin.unitPersons")})
+                    ({t("admin.counselorsSubheader")} {counselors.length}{t("admin.unitPersons")})
                   </span>
                 </h3>
               </div>
 
               <div className="flex-1 overflow-y-auto p-2 space-y-1">
-                {/* Helpers Subheader */}
-                <div className="px-3 py-1.5 text-[11px] font-black text-blue-400 uppercase tracking-wider">
-                  🛠️ {t("admin.helpersSubheader")}
-                </div>
-                {helpers.map((h) => {
-                  const helperId = h.email || h.phone || "";
-                  const partnerName =
-                    h.contract?.name ||
-                    (h.email
-                      ? `Helper (${h.email.split("@")[0]})`
-                      : h.phone
-                        ? `Helper (${h.phone.slice(-4)})`
-                        : "Helper");
-                  const isSelected = selectedPartner?.id === helperId;
-                  const unread = getAdminMessages({ targetId: helperId, targetType: "helper" }).filter(
-                    (m) => !m.isRead && m.sender === "partner",
-                  ).length;
-
-                  return (
-                    <button
-                      key={helperId}
-                      type="button"
-                      onClick={() => {
-                        setSelectedPartner({
-                          type: "helper",
-                          id: helperId,
-                          name: partnerName,
-                        });
-                        markAllAdminMessagesAsRead(helperId, "admin");
-                        setMessages(getAdminMessages());
-                      }}
-                      className={`w-full flex items-center justify-between rounded-xl px-3 py-2.5 text-left transition-all duration-200 cursor-pointer active:scale-[0.98] ${
-                        isSelected
-                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold shadow-sm"
-                          : "text-slate-300 hover:bg-slate-800/70"
-                      }`}
-                    >
-                      <div className="min-w-0">
-                        <p className="text-xs font-bold truncate">{partnerName}</p>
-                        <p className="text-[11px] text-slate-400 truncate font-mono">{h.email || h.phone}</p>
-                      </div>
-                      {unread > 0 && (
-                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-black text-white">
-                          {unread}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
+                <p className="px-3 py-2 text-[11px] font-bold text-slate-400" data-testid="messages-helpers-moved">🛠️ {t("svc.admin.helperChatMoved")}</p>
 
                 {/* Counselors Subheader */}
                 <div className="px-3 pt-3 pb-1.5 text-[11px] font-black text-indigo-400 uppercase tracking-wider">
@@ -2609,156 +1975,6 @@ export default function AdminDashboardClient({
           </div>
         )}
 
-        {/* FLOATING HELPER ASSIGNMENT MODAL (1-Click Emergency Dispatch) */}
-        {assigningRequest && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative flex flex-col h-[650px] max-h-[90vh] w-full max-w-2xl droplet-card border border-slate-700 bg-slate-900 shadow-2xl text-white overflow-hidden">
-              {/* Modal Header */}
-              <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center droplet-pill bg-amber-600 text-xl font-black text-white shadow-md">
-                    {assigningRequest.serviceIcon || "⚡"}
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-extrabold text-white flex items-center gap-2">
-                      <span>[{getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)}] {t("admin.assignModalTitle")}</span>
-                      <span className="droplet-pill bg-amber-950 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-800">
-                        {assigningRequest.status === "pending" ? t("admin.statusPending") : t("admin.btnReassignHelper")}
-                      </span>
-                    </h3>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      📍 {assigningRequest.sido} {assigningRequest.gungu} · {assigningRequest.address}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setAssigningRequest(null)}
-                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200 active:scale-[0.98] cursor-pointer"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* Request Summary Banner */}
-              <div className="bg-slate-950/60 border-b border-slate-800 p-4 text-xs space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">{t("admin.customerPhoneLabel")}:</span>
-                  <span className="font-mono font-bold text-amber-300">📞 {assigningRequest.phone}</span>
-                </div>
-                <div className="text-slate-300">
-                  <span className="text-slate-400 font-semibold">{t("admin.requestDescLabel")}:</span>{" "}
-                  <span className="text-slate-200">&ldquo;{assigningRequest.description}&rdquo;</span>
-                </div>
-              </div>
-
-              {/* Search Helper in Modal */}
-              <div className="p-4 border-b border-slate-800 bg-slate-900">
-                <input
-                  type="text"
-                  value={assignHelperSearch}
-                  onChange={(e) => setAssignHelperSearch(e.target.value)}
-                  placeholder={t("admin.searchHelperAssignPlaceholder")}
-                  className="droplet-input w-full border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
-                />
-              </div>
-
-              {/* Helpers List */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                {helpers
-                  .filter((h) => {
-                    if (!assignHelperSearch) return true;
-                    const target = `${h.contract?.name || ""} ${h.email || ""} ${h.phone || ""} ${h.contract?.regions.map((r) => `${r.sido} ${r.gungu}`).join(" ") || ""}`.toLowerCase();
-                    return target.includes(assignHelperSearch.toLowerCase());
-                  })
-                  .map((h) => {
-                    const helperId = h.email || h.phone || "";
-                    const isRegionMatched = h.contract?.regions.some(
-                      (r) =>
-                        r.sido === assigningRequest.sido &&
-                        (r.gungu === assigningRequest.gungu || r.gungu === "전체"),
-                    );
-                    const name =
-                      h.contract?.name ||
-                      (h.email
-                        ? `Helper · ${h.email.split("@")[0]}`
-                        : h.phone
-                          ? `Helper · ${h.phone.slice(-4)}`
-                          : "Helper");
-
-                    return (
-                      <div
-                        key={helperId}
-                        className={`droplet-card border p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
-                          isRegionMatched
-                            ? "border-emerald-500/60 bg-emerald-950/20 hover:border-emerald-400"
-                            : "border-slate-800 bg-slate-950/60 hover:border-slate-700"
-                        }`}
-                      >
-                        <div className="space-y-1 min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-extrabold text-white text-sm">{name}</span>
-                            <span className="text-xs font-mono text-slate-400">✉️ {h.email || h.phone}{h.phone && h.email ? ` · 📱 ${h.phone}` : ""}</span>
-                            {h.isActive ? (
-                              <span className="droplet-pill bg-emerald-950 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800">
-                                {t("admin.statusActive")}
-                              </span>
-                            ) : (
-                              <span className="droplet-pill bg-amber-950 px-1.5 py-0.5 text-[10px] font-bold text-amber-400 border border-amber-800">
-                                {t("admin.statusPaused")}
-                              </span>
-                            )}
-                            {isRegionMatched && (
-                              <span className="droplet-pill bg-blue-950 px-1.5 py-0.5 text-[10px] font-black text-blue-300 border border-blue-800 animate-pulse">
-                                📍 {t("admin.matchedRegionBadge")}
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs text-slate-400">
-                            {t("admin.activeRegionLabel")}:{" "}
-                            <span className="text-slate-300">
-                              {h.contract?.regions.map((r) => `${r.sido} ${r.gungu}`).join(", ") || t("admin.unspecifiedRegion")}
-                            </span>
-                          </div>
-                          <div className="text-[11px] text-slate-500">
-                            {t("admin.registeredServicesLabel")}:{" "}
-                            {h.contract?.services && h.contract.services.length > 0
-                              ? h.contract.services.map((s) => getLocalizedServiceName(s, locale)).join(", ")
-                              : t("admin.allServices")}
-                          </div>
-                        </div>
-
-                          <button
-                            type="button"
-                            onClick={() => {
-                              updateRequestStatus(assigningRequest.id, "dispatched", {
-                                name,
-                                phone: h.phone || h.email || "",
-                              });
-                              sendAdminMessage({
-                                targetType: "helper",
-                                targetId: helperId,
-                                targetName: name,
-                                sender: "admin",
-                                senderName: "LIFE.HELP HQ",
-                                text: `[🚨 ${t("admin.templateDispatch")}]\n${getLocalizedServiceName(assigningRequest.serviceSlug || assigningRequest.serviceName, locale)} · ${assigningRequest.sido} ${assigningRequest.gungu}\n- ${t("admin.dispatchLocationLabel")}: ${assigningRequest.address}\n- ${t("admin.customerPhoneLabel")}: ${assigningRequest.phone || "실시간 웹/앱 대화"}\n- ${t("admin.requestDescLabel")}: ${assigningRequest.description}`,
-                              });
-                              showToast(`${name} - ${t("admin.toastAssigned")}`);
-                              setAssigningRequest(null);
-                              refreshData();
-                            }}
-                            className="shrink-0 droplet-btn bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-4 py-2.5 text-xs font-black text-white hover:brightness-105 active:scale-[0.98] transition-all duration-200 shadow-md shadow-blue-600/25 cursor-pointer flex items-center justify-center gap-1.5"
-                          >
-                            <span>⚡</span>
-                            <span>{t("admin.btnConfirmAssign")}</span>
-                          </button>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </main>
   );

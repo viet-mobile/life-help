@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- the SQL harness handles untyped rows */
 import { createHash, randomBytes } from "node:crypto";
 import { PGlite } from "@electric-sql/pglite";
 import { expect } from "vitest";

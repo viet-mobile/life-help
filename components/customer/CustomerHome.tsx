@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
+import { locales } from "@/messages";
 import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
@@ -373,7 +374,7 @@ export function CustomerHome() {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span>
                   {locale === "ko"
-                    ? "38개 언어 지원 · 100% 개인정보 안심 대화"
+                    ? `${t("trustMetrics.languages").replace("{count}", String(locales.length))}`
                     : `${t("customer.consultation")} · ${t("customer.safe050Tag") || "안심 연결"}`}
                 </span>
               </div>
@@ -519,11 +520,7 @@ export function CustomerHome() {
           <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-[10px] sm:text-xs font-bold text-slate-600">
             <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
               <span>🌐</span>
-              <span>{t("trustMetrics.languages") || "38개국 언어 실시간 통역"}</span>
-            </div>
-            <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
-              <span>⚡</span>
-              <span>{t("trustMetrics.dispatch") || "평균 15분 내 헬퍼 배정"}</span>
+              <span>{t("trustMetrics.languages").replace("{count}", String(locales.length))}</span>
             </div>
             <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
               <span>🔒</span>

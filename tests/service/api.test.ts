@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- the SQL harness handles untyped rows */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { locales } from "@/messages";
 import { createLocalDb } from "@/lib/service/dbLocal";

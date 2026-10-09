@@ -12,20 +12,8 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
 import { HelperCalendar } from "@/components/tech/HelperCalendar";
 import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
-import { HelperCustomerChatPanel } from "@/components/tech/HelperCustomerChatPanel";
+import { HelperServicePanel } from "@/components/service/HelperServicePanel";
 import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
-import {
-  getAdminMessages,
-  sendAdminMessage,
-  markAllAdminMessagesAsRead,
-  ADMIN_MESSAGE_EVENT,
-  type AdminMessage,
-} from "@/lib/admin/adminMessage";
-import {
-  getProviderChatSessionsForHelper,
-  getUnreadCountForHelper,
-} from "@/lib/chat/providerChatStore";
-
 const DAYS_CONFIG = [
   { key: "월", labelKey: "workspace.dayMon" },
   { key: "화", labelKey: "workspace.dayTue" },
@@ -70,58 +58,11 @@ export default function TechWorkspacePage() {
   const [editingDayHours, setEditingDayHours] = useState<string | null>(null);
   const [showGeneralHoursPicker, setShowGeneralHoursPicker] = useState(false);
 
-  // Admin Direct Messaging state
-  const [adminMessages, setAdminMessages] = useState<AdminMessage[]>([]);
-  const [showAdminChatModal, setShowAdminChatModal] = useState(false);
-  const [replyText, setReplyText] = useState("");
-
-  // Real-time Customer Request Chat state
-  const [customerChatUnread, setCustomerChatUnread] = useState(0);
-  const [showCustomerChatPanel, setShowCustomerChatPanel] = useState(false);
-
   useEffect(() => {
     if (!isLoggedIn || !helper) {
       router.replace("/tech/login");
     }
   }, [isLoggedIn, helper, router]);
-
-  const helperIdentifier = helper?.email || helper?.phone || "";
-
-  const refreshAdminMessages = useCallback(() => {
-    if (helperIdentifier) {
-      const msgs = getAdminMessages({ targetId: helperIdentifier, targetType: "helper" });
-      setAdminMessages(msgs);
-    }
-  }, [helperIdentifier]);
-
-  useEffect(() => {
-    refreshAdminMessages();
-    const handleMsgUpdate = () => refreshAdminMessages();
-    window.addEventListener(ADMIN_MESSAGE_EVENT, handleMsgUpdate);
-    return () => window.removeEventListener(ADMIN_MESSAGE_EVENT, handleMsgUpdate);
-  }, [refreshAdminMessages]);
-
-  const helperId = helper?.helperId || "";
-
-  const refreshCustomerChatUnread = useCallback(() => {
-    if (!helperId) return;
-    const total = getProviderChatSessionsForHelper(helperId).reduce(
-      (sum, s) => sum + getUnreadCountForHelper(s),
-      0,
-    );
-    setCustomerChatUnread(total);
-  }, [helperId]);
-
-  useEffect(() => {
-    refreshCustomerChatUnread();
-    const handleChatUpdate = () => refreshCustomerChatUnread();
-    window.addEventListener("life_help_provider_chat_update", handleChatUpdate);
-    window.addEventListener("storage", handleChatUpdate);
-    return () => {
-      window.removeEventListener("life_help_provider_chat_update", handleChatUpdate);
-      window.removeEventListener("storage", handleChatUpdate);
-    };
-  }, [refreshCustomerChatUnread]);
 
   if (!isLoggedIn || !helper) {
     return null;
@@ -160,11 +101,6 @@ export default function TechWorkspacePage() {
   };
   const currentSidoObj = koreanRegions.find((s) => s.name === addSido) || koreanRegions[0];
 
-  const unreadAdminCount = adminMessages.filter(
-    (m) => !m.isRead && m.sender === "admin",
-  ).length;
-  const latestAdminMsg = adminMessages.find((m) => m.sender === "admin");
-
   const showFeedback = (msg: string) => {
     setFeedbackMsg(msg);
     setTimeout(() => setFeedbackMsg(""), 3000);
@@ -182,20 +118,17 @@ export default function TechWorkspacePage() {
       return;
     }
 
-    updateServices(updated);
-    showFeedback(
-      isPresent
-        ? t("workspace.serviceRemoved")
-        : t("workspace.serviceAdded"),
-    );
+    void updateServices(updated).then((res) => {
+      if (!res.success) return showFeedback(res.error === "NOT_ALLOWED" ? t("svc.helper.changeByStaff") : t("svc.auth.errGeneric"));
+      showFeedback(isPresent ? t("workspace.serviceRemoved") : t("workspace.serviceAdded"));
+    });
   };
 
   const handleAddRegion = () => {
     if (!contract.regions.some((r) => r.sido === addSido && r.gungu === addGungu)) {
-      updateRegions([...contract.regions, { sido: addSido, gungu: addGungu }]);
-      showFeedback(
-        `${addSido} ${addGungu}: ${t("workspace.regionAdded")}`,
-      );
+      void updateRegions([...contract.regions, { sido: addSido, gungu: addGungu }]).then((res) => {
+        showFeedback(res.success ? `${addSido} ${addGungu}: ${t("workspace.regionAdded")}` : res.error === "NOT_ALLOWED" ? t("svc.helper.changeByStaff") : t("svc.auth.errGeneric"));
+      });
     }
   };
 
@@ -206,10 +139,9 @@ export default function TechWorkspacePage() {
     }
     const removed = contract.regions[index];
     const updated = contract.regions.filter((_, i) => i !== index);
-    updateRegions(updated);
-    showFeedback(
-      `${removed.sido} ${removed.gungu}: ${t("workspace.regionRemoved")}`,
-    );
+    void updateRegions(updated).then((res) => {
+      showFeedback(res.success ? `${removed.sido} ${removed.gungu}: ${t("workspace.regionRemoved")}` : res.error === "NOT_ALLOWED" ? t("svc.helper.changeByStaff") : t("svc.auth.errGeneric"));
+    });
   };
 
   const handleToggleDay = (day: string) => {
@@ -278,33 +210,9 @@ export default function TechWorkspacePage() {
     );
   };
 
-  const handleOpenAdminChat = () => {
-    setShowAdminChatModal(true);
-    if (helperIdentifier) {
-      markAllAdminMessagesAsRead(helperIdentifier, "partner");
-      refreshAdminMessages();
-    }
-  };
-
-  const handleSendAdminReply = () => {
-    if (!replyText.trim() || !helperIdentifier) return;
-    sendAdminMessage({
-      targetType: "helper",
-      targetId: helperIdentifier,
-      targetName: contract.name,
-      sender: "partner",
-      senderName: `${contract.name} 헬퍼`,
-      text: replyText.trim(),
-    });
-    setReplyText("");
-    refreshAdminMessages();
-    showFeedback(isKorean ? "본사 관리자에게 메시지를 전송했습니다." : "Message sent to admin");
-  };
-
   const handleLogout = () => {
     if (confirm(t("workspace.logoutConfirm"))) {
-      logout();
-      router.push("/tech");
+      void logout().then(() => router.push("/tech"));
     }
   };
 
@@ -330,34 +238,6 @@ export default function TechWorkspacePage() {
             <span className="text-white text-xs sm:text-base font-bold">{t("workspace.title")}</span>
           </Link>
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-            <button
-              type="button"
-              onClick={() => setShowCustomerChatPanel(true)}
-              className="relative inline-flex items-center gap-1 sm:gap-1.5 droplet-btn border border-emerald-600/60 bg-emerald-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-emerald-300 hover:bg-emerald-900/80 transition shrink-0"
-              title={formatBilingual("Real-time customer messages", "고객 실시간 메시지")}
-            >
-              <span className="sm:hidden">💬 {formatBilingual("Customers", "고객")}</span>
-              <span className="hidden sm:inline">💬 {formatBilingual("Customer Messages", "고객 실시간 메시지")}</span>
-              {customerChatUnread > 0 && (
-                <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-rose-600 text-[9px] sm:text-[10px] font-black text-white animate-pulse">
-                  {customerChatUnread}
-                </span>
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={handleOpenAdminChat}
-              className="relative inline-flex items-center gap-1 sm:gap-1.5 droplet-btn border border-blue-600/60 bg-blue-950/70 px-2 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-blue-300 hover:bg-blue-900/80 transition shrink-0"
-              title={formatBilingual(t("workspace.adminChatTitle"), "본사 관리자 1:1 온라인 연락")}
-            >
-              <span className="sm:hidden">💬 {t("workspace.adminChatShort") || "관리자"}</span>
-              <span className="hidden sm:inline">💬 {formatBilingual(t("workspace.adminChat"), "본사 관리자 연락")}</span>
-              {unreadAdminCount > 0 && (
-                <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-rose-600 text-[9px] sm:text-[10px] font-black text-white animate-pulse">
-                  {unreadAdminCount}
-                </span>
-              )}
-            </button>
             <Link
               href="/"
               onClick={navigateToMainHome}
@@ -385,9 +265,11 @@ export default function TechWorkspacePage() {
                     isKorean,
                   )}
                 </h1>
-                <span className="droplet-pill bg-blue-900/60 px-2 py-0.5 text-[11px] font-bold text-blue-300 border border-blue-700/50">
-                  {t("workspace.verifiedHelper")}
-                </span>
+                {helper.isVerified && (
+                  <span className="droplet-pill bg-blue-900/60 px-2 py-0.5 text-[11px] font-bold text-blue-300 border border-blue-700/50" data-testid="verified-badge">
+                    {t("workspace.verifiedHelper")}
+                  </span>
+                )}
                 {remainingDays > 0 && (
                   <span className="droplet-pill bg-emerald-950/80 px-2 py-0.5 text-[11px] font-bold text-emerald-400 border border-emerald-800/60 hidden sm:inline-flex items-center gap-1">
                     <span>🛡️ {t("workspace.securitySessionBadge")}</span>
@@ -428,107 +310,8 @@ export default function TechWorkspacePage() {
           </div>
         )}
 
-        {/* New Customer Request Chat Notification Banner */}
-        {customerChatUnread > 0 && (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 droplet-banner border border-emerald-500/60 bg-emerald-950/50 p-4 text-emerald-200 shadow-md">
-            <div className="flex items-start gap-3">
-              <span className="text-xl">💬</span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <strong className="text-xs font-black text-emerald-300">
-                    {formatBilingual("[New Customer Request]", "[신규 고객 요청 메시지]")}
-                  </strong>
-                  <span className="droplet-pill bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300 border border-emerald-500/40">
-                    {customerChatUnread} {isKorean ? "건 미확인" : "unread"}
-                  </span>
-                </div>
-                <p className="mt-1 text-xs text-emerald-100">
-                  {formatBilingual(
-                    "A customer submitted an online request and is waiting in a live 1:1 chat room.",
-                    "고객이 온라인으로 서비스를 요청하여 실시간 1:1 대화방에서 기다리고 있습니다.",
-                  )}
-                </p>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowCustomerChatPanel(true)}
-              className="droplet-btn bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-2 text-xs font-black text-slate-950 hover:brightness-105 shadow-sm shadow-emerald-500/20 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
-            >
-              {formatBilingual("Open Chat", "대화방 열기")}
-            </button>
-          </div>
-        )}
-
-        {/* Admin Direct Message Notification Banner */}
-        {unreadAdminCount > 0 && latestAdminMsg && (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 droplet-banner border border-amber-500/60 bg-amber-950/50 p-4 text-amber-200 shadow-md">
-            <div className="flex items-start gap-3">
-              <span className="text-xl">🔔</span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <strong className="text-xs font-black text-amber-300">
-                    {formatBilingual(t("workspace.adminNoticeBanner"), "[본사 관리자 메시지]")}
-                  </strong>
-                  <span className="droplet-pill bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-500/40">
-                    {unreadAdminCount} {t("workspace.unreadCount") || (locale === "ko" ? "건 미확인" : "unread")}
-                  </span>
-                </div>
-                <p className="mt-1 text-xs text-amber-100 line-clamp-1">
-                  &ldquo;{latestAdminMsg.text}&rdquo;
-                </p>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={handleOpenAdminChat}
-              className="droplet-btn bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-xs font-black text-slate-950 hover:brightness-105 shadow-sm shadow-amber-500/20 active:scale-[0.98] transition self-end sm:self-center shrink-0 cursor-pointer"
-            >
-              {formatBilingual(t("workspace.openAdminChat"), "메시지 확인 및 답장")}
-            </button>
-          </div>
-        )}
-
-        {/* 1. Real-Time Dispatch Availability Switch */}
-        <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <div className="flex items-center gap-2">
-                <span
-                  className={`h-3.5 w-3.5 rounded-full ${
-                    helper.isActive
-                      ? "bg-emerald-500 shadow-[0_0_12px_#10b981]"
-                      : "bg-amber-500 shadow-[0_0_12px_#f59e0b]"
-                  }`}
-                />
-                <h2 className="text-lg font-bold text-white">
-                  {helper.isActive
-                    ? t("workspace.activeTitle")
-                    : t("workspace.pausedTitle")}
-                </h2>
-              </div>
-              <p className="mt-1 text-xs text-slate-400">
-                {helper.isActive
-                  ? t("workspace.activeDesc")
-                  : t("workspace.pausedDesc")}
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={toggleActiveStatus}
-              className={`droplet-btn-lg px-6 py-3.5 text-sm font-black shadow-lg transition active:scale-[0.98] cursor-pointer ${
-                helper.isActive
-                  ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:brightness-105 shadow-amber-500/20"
-                  : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:brightness-105 shadow-emerald-600/20"
-              }`}
-            >
-              {helper.isActive
-                ? t("workspace.pauseBtn")
-                : t("workspace.resumeBtn")}
-            </button>
-          </div>
-        </section>
+        {/* Server-backed work area: approval status, availability, eligible requests, my jobs, chat */}
+        <HelperServicePanel />
 
         {/* 2. Direct Emergency Hotline */}
         <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">
@@ -895,148 +678,6 @@ export default function TechWorkspacePage() {
             onUpdateExclusions={handleUpdateExclusions}
           />
         </section>
-
-        {/* Real-time Customer Request Chat Panel */}
-        {showCustomerChatPanel && helperId && (
-          <HelperCustomerChatPanel
-            helperId={helperId}
-            providerName={contract.name}
-            providerLocale="ko"
-            isKorean={isKorean}
-            formatBilingual={formatBilingual}
-            onClose={() => {
-              setShowCustomerChatPanel(false);
-              refreshCustomerChatUnread();
-            }}
-          />
-        )}
-
-        {/* 6. Admin 1:1 Direct Chat / Online Contact Modal */}
-        {showAdminChatModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-            <div className="relative flex flex-col h-[600px] max-h-[90vh] w-full max-w-xl droplet-card border border-slate-700 bg-slate-900/95 shadow-2xl text-white overflow-hidden">
-              {/* Modal Header */}
-              <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/80 px-5 py-4">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center droplet-pill bg-blue-600 text-xs font-black text-white shadow-xs">
-                    HQ
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-extrabold text-white flex items-center gap-1.5">
-                      <span>
-                        {formatBilingual(
-                          t("workspace.adminChatTitle"),
-                          "본사 관리자 1:1 온라인 연락",
-                        )}
-                      </span>
-                      <span className="droplet-pill bg-emerald-950 px-2 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-800/50">
-                        {formatBilingual(t("workspace.adminChatOnline"), "실시간 온라인")}
-                      </span>
-                    </h3>
-                    <p className="text-[11px] text-slate-400">
-                      {formatBilingual(t("workspace.adminChatRecipient"), "수신자: 헬퍼")} ·{" "}
-                      {formatHelperDisplayName(
-                        contract.name,
-                        t("tech.helper"),
-                        "",
-                        formatBilingual,
-                        isKorean,
-                      )}{" "}
-                      · {contract.email || helper.email || contract.phone}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setShowAdminChatModal(false)}
-                  className="droplet-btn p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white cursor-pointer"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* Message History Thread */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                {adminMessages.length === 0 ? (
-                  <div className="grid h-full place-content-center text-center text-xs text-slate-500">
-                    <p className="text-2xl mb-2">💬</p>
-                    <p>
-                      {formatBilingual(
-                        t("workspace.adminChatEmpty"),
-                        "본사 관리자와 주고받은 메시지가 없습니다.",
-                      )}
-                    </p>
-                    <p className="text-slate-600 mt-1">
-                      {formatBilingual(
-                        t("workspace.adminChatEmptyHint"),
-                        "문의사항이나 긴급 상황을 메시지로 남겨주시면 관리자가 확인합니다.",
-                      )}
-                    </p>
-                  </div>
-                ) : (
-                  adminMessages.map((msg) => {
-                    const isAdmin = msg.sender === "admin";
-                    return (
-                      <div
-                        key={msg.id}
-                        className={`flex flex-col ${isAdmin ? "items-start" : "items-end"}`}
-                      >
-                        <div className="flex items-center gap-1.5 text-[10px] text-slate-400 mb-1 px-1">
-                          <span className="font-bold text-slate-300">{msg.senderName}</span>
-                          <span>·</span>
-                          <span>
-                            {new Date(msg.timestamp).toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })}
-                          </span>
-                        </div>
-                        <div
-                          className={`max-w-[80%] droplet-card px-4 py-2.5 text-xs leading-relaxed ${
-                            isAdmin
-                              ? "bg-slate-800 border border-slate-700 text-white shadow-xs"
-                              : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs"
-                          }`}
-                        >
-                          <p>{msg.text}</p>
-                        </div>
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-
-              {/* Reply Input Bar */}
-              <div className="border-t border-slate-800 bg-slate-950 p-3">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSendAdminReply();
-                  }}
-                  className="flex items-center gap-2"
-                >
-                  <input
-                    type="text"
-                    value={replyText}
-                    onChange={(e) => setReplyText(e.target.value)}
-                    placeholder={formatBilingual(
-                      t("workspace.adminChatPlaceholder"),
-                      "본사 관리자에게 전달할 메시지 입력...",
-                    )}
-                    className="droplet-input flex-1 border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
-                  />
-                  <button
-                    type="submit"
-                    disabled={!replyText.trim()}
-                    className="droplet-btn bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-sm shadow-blue-600/20 hover:brightness-105 active:scale-[0.98] disabled:opacity-50 transition cursor-pointer"
-                  >
-                    {formatBilingual(t("workspace.adminChatSend"), "전송")}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Contract Viewer Modal */}
         {showContractModal && (

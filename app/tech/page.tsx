@@ -154,9 +154,11 @@ export default function TechPage() {
                         isKorean,
                       )}
                     </span>
+                    {helper?.isVerified && (
                     <span className="droplet-pill bg-blue-900/60 px-2.5 py-0.5 text-xs font-bold text-blue-300">
                       {formatBilingual(t("workspace.verifiedHelper"), "인증 헬퍼")}
                     </span>
+                    )}
                   </div>
                   <p className="mt-1 text-xs text-slate-400 font-mono">
                     📱 {helper?.phone}
