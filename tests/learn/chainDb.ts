@@ -17,7 +17,10 @@ export const M025 = "202609300025_learning_content_rpc.sql";
 export const M026 = "202609300026_learning_selfcontained_auth.sql";
 export const M027 = "202609300027_learning_elementary_grades.sql";
 export const LEARNING_CHAIN = [SHIM, M024, M025, M026, M027];
-export const MARKETPLACE_FILES = MIGRATIONS.filter((f) => !LEARN_MIGRATIONS.includes(f));
+/** The customer <-> helper service core is a later, separate migration: the learning chain tests are about marketplace + learning only. */
+export const SERVICE_CORE_FILES = MIGRATIONS.filter((f) => /_service_core\.sql$/.test(f));
+export const CHAIN_MIGRATIONS = MIGRATIONS.filter((f) => !SERVICE_CORE_FILES.includes(f));
+export const MARKETPLACE_FILES = CHAIN_MIGRATIONS.filter((f) => !LEARN_MIGRATIONS.includes(f));
 export const sqlOf = (f: string) =>
   readFileSync(path.join(root, "supabase/migrations", f), "utf8").replace(/create extension if not exists pgcrypto[^;]*;/gi, "");
 
@@ -59,9 +62,9 @@ export async function usersHash(db: PGlite): Promise<string> {
 }
 
 /** Staging-like chain: every migration file in order (marketplace 0001-0023, then the learning migrations). */
-export async function createChainDb({ until }: { until?: string } = {}) {
+export async function createChainDb({ until, withServiceCore = false }: { until?: string; withServiceCore?: boolean } = {}) {
   const db = await newBase();
-  await apply(db, MIGRATIONS.filter((m) => !until || m < until));
+  await apply(db, (withServiceCore ? MIGRATIONS : CHAIN_MIGRATIONS).filter((m) => !until || m < until));
   return db;
 }
 

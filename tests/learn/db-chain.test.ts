@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LEARN_MIGRATIONS, MIGRATIONS, SUPABASE_STUB, createChainDb, demoSeed, sqlOf } from "./chainDb";
+import { CHAIN_MIGRATIONS, LEARN_MIGRATIONS, MIGRATIONS, SUPABASE_STUB, createChainDb, demoSeed, sqlOf } from "./chainDb";
 import { PGlite } from "@electric-sql/pglite";
 
 /**
@@ -10,7 +10,7 @@ import { PGlite } from "@electric-sql/pglite";
 describe("learning migrations on the real LIFE.HELP chain", { timeout: 120_000 }, () => {
   it("sequence: the learning migrations are last, once each, and 0001/0002 are not duplicated", () => {
     expect(LEARN_MIGRATIONS).toEqual(["202609300023_learning_prereq_shim.sql", "202609300024_learning_platform.sql", "202609300025_learning_content_rpc.sql", "202609300026_learning_selfcontained_auth.sql", "202609300027_learning_elementary_grades.sql"]);
-    expect(MIGRATIONS.slice(-5)).toEqual(LEARN_MIGRATIONS);
+    expect(CHAIN_MIGRATIONS.slice(-5)).toEqual(LEARN_MIGRATIONS); // later, unrelated migrations (service core) come after them
     expect(new Set(MIGRATIONS).size).toBe(MIGRATIONS.length);
     expect(MIGRATIONS.filter((f) => /initial_marketplace_schema|payment_settlement_upgrade/.test(f))).toHaveLength(2);
   });

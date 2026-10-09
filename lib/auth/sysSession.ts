@@ -1,6 +1,6 @@
 import "server-only";
 
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { readSysEnv } from "./sysEnv";
 
 export const SYS_SESSION_COOKIE = "life_help_sys_session";
 
@@ -68,13 +68,8 @@ export async function verifySysSessionToken(
     return null;
   }
 
-  const { env } = await getCloudflareContext({ async: true });
-
-  const configuredAdminId =
-    (env as any).LIFE_HELP_SYS_ADMIN_ID as string | undefined;
-
-  const sessionSecret =
-    (env as any).LIFE_HELP_SYS_SESSION_SECRET as string | undefined;
+  const configuredAdminId = await readSysEnv("LIFE_HELP_SYS_ADMIN_ID");
+  const sessionSecret = await readSysEnv("LIFE_HELP_SYS_SESSION_SECRET");
 
   if (
     !configuredAdminId ||

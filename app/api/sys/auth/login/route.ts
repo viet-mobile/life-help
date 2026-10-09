@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { readSysEnv } from "@/lib/auth/sysEnv";
 import { constantTimeEqual, SYS_SESSION_COOKIE } from "@/lib/auth/sysSession";
 
 async function hmac(secret: string, value: string) {
@@ -24,11 +24,9 @@ async function hmac(secret: string, value: string) {
 
 export async function POST(request: Request) {
   try {
-    const { env } = await getCloudflareContext({ async: true });
-
-    const adminId = (env as any).LIFE_HELP_SYS_ADMIN_ID as string | undefined;
-    const adminPassword = (env as any).LIFE_HELP_SYS_ADMIN_PASSWORD as string | undefined;
-    const sessionSecret = (env as any).LIFE_HELP_SYS_SESSION_SECRET as string | undefined;
+    const adminId = await readSysEnv("LIFE_HELP_SYS_ADMIN_ID");
+    const adminPassword = await readSysEnv("LIFE_HELP_SYS_ADMIN_PASSWORD");
+    const sessionSecret = await readSysEnv("LIFE_HELP_SYS_SESSION_SECRET");
 
     if (!adminId || !adminPassword || !sessionSecret) {
       console.error("SYS admin secrets are not configured.");
