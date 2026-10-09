@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import type { ServiceDb } from "./db";
 import { fromDbMessage } from "./errors";
 
@@ -32,7 +30,9 @@ export async function createLocalDb(root = process.cwd()): Promise<LocalDb> {
   const { PGlite } = await load(["@electric-sql", "pglite"].join("/"));
   const db = new PGlite();
   await db.exec(SUPABASE_ROLES);
-  for (const file of SERVICE_CORE_MIGRATIONS) await db.exec(readFileSync(path.join(root, file), "utf8"));
+  // read through the hidden loader too: a literal fs read relative to the working directory makes the Worker bundler copy the whole repo
+  const { readFileSync } = (await (load as unknown as (s: string) => Promise<typeof import("node:fs")>)("node:fs"));
+  for (const file of SERVICE_CORE_MIGRATIONS) await db.exec(readFileSync(`${root}/${file}`, "utf8"));
   return {
     async rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
       const keys = Object.keys(args);
