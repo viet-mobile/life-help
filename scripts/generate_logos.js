@@ -74,6 +74,11 @@ const COUNTRY_DISPLAY_NAMES = {
   singapore: "SINGAPORE",
   malaysia: "MALAYSIA",
   nigeria: "NIGERIA",
+  elsalvador: "EL SALVADOR",
+  centralafrica: "CENTRAL AFRICAN REPUBLIC",
+  venezuela: "VENEZUELA",
+  kenya: "KENYA",
+  argentina: "ARGENTINA",
 };
 
 function createIco(pngBuffers) {
