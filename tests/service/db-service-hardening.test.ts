@@ -194,7 +194,7 @@ describe("service-core function security audit", { timeout: 120_000 }, () => {
       await call(db, "svc_notifications_list", "CUSTOMER", c.credHash, 0),
     ];
     const text = JSON.stringify(outs);
-    for (const secretValue of [c.cred, c.token, c.credHash, c.tokenHash, h.cred, h.credHash]) expect(text).not.toContain(secretValue);
+    for (const secretValue of [c.cred, c.token, c.credHash, c.tokenHash, c.session, c.sessionHash, h.cred, h.credHash]) expect(text).not.toContain(secretValue);
     expect(text).not.toMatch(/"(credential_hash|credHash|token_hash|tokenHash|access_token_hash|cred)"/i);
   });
 

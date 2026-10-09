@@ -7,7 +7,7 @@ const SCRIPT = "scripts/staging/service-core-staging.mjs";
 describe("service-core staging harness (prepared, not run)", () => {
   it("lists every required gate in --plan mode without any network access", () => {
     const out = execFileSync("node", [SCRIPT, "--plan"], { encoding: "utf8", env: { PATH: process.env.PATH } as unknown as NodeJS.ProcessEnv });
-    for (const g of ["migration 040", "grant", "helper approval", "TRUE CONCURRENCY", "admin assign", "idempotency", "cross-device chat", "outbox", "negative authorization", "residue"]) expect(out.toLowerCase()).toContain(g.toLowerCase());
+    for (const g of ["request access", "revoke-all", "migration 040", "grant", "helper approval", "TRUE CONCURRENCY", "admin assign", "idempotency", "cross-device chat", "outbox", "negative authorization", "residue"]) expect(out.toLowerCase()).toContain(g.toLowerCase());
   });
   it("refuses to run without a matching project ref confirmation", () => {
     const r = spawnSync("node", [SCRIPT], { encoding: "utf8", env: { PATH: process.env.PATH, SERVICE_CORE_SUPABASE_URL: "https://abcdefghijklmnopqrst.supabase.co", SERVICE_CORE_SUPABASE_SECRET_KEY: "x", EXPECTED_SERVICE_CORE_SUPABASE_REF: "abcdefghijklmnopqrst", SERVICE_CORE_STAGING_CONFIRM: "something-else" } as unknown as NodeJS.ProcessEnv });

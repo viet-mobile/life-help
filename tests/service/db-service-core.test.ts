@@ -55,7 +55,7 @@ describe("service core: customer -> helper -> chat -> complete (SQL authority)",
     const c = newCustomer();
     const { request } = await createRequest(db, c);
     const other = newCustomer();
-    expect((await call(db, "svc_c_get_request", other.credHash, c.tokenHash, request.id)).request.id).toBe(request.id); // new device + token
+    expect((await call(db, "svc_c_get_request", other.credHash, c.sessionHash, request.id)).request.id).toBe(request.id); // another device with a live session
     await rejects(db, "svc_c_get_request", [other.credHash, null, request.id], "NOT_FOUND"); // customer B
     await rejects(db, "svc_c_get_request", [null, null, request.id], "NOT_FOUND"); // nothing but the UUID
     await rejects(db, "svc_c_get_request", [other.credHash, sha("wrong"), request.id], "NOT_FOUND");
@@ -279,7 +279,7 @@ describe("service core: customer -> helper -> chat -> complete (SQL authority)",
       await rejects(db, "svc_msg_list", ["CUSTOMER", null, null, id, 0, null], "NOT_FOUND");
       await rejects(db, "svc_msg_list", ["ADMIN", c.credHash, null, id, 0, null], "FORBIDDEN"); // kind cannot be forged to ADMIN
       await rejects(db, "svc_msg_list", ["HELPER", c.credHash, null, id, 0, null], "FORBIDDEN"); // a customer credential is not a helper credential
-      expect(await call(db, "svc_msg_list", "CUSTOMER", other.credHash, c.tokenHash, id, 0, null)).toHaveLength(2); // token on another device
+      expect(await call(db, "svc_msg_list", "CUSTOMER", other.credHash, c.sessionHash, id, 0, null)).toHaveLength(2); // session on another device
       await call(db, "svc_a_msg_send", "admin-1", id, "Admin here", "ko");
       const all = await call(db, "svc_a_msg_list", id, 0, null);
       expect(all.map((m: any) => m.senderKind)).toEqual(["CUSTOMER", "HELPER", "ADMIN"]);
@@ -394,7 +394,7 @@ describe("service core: customer -> helper -> chat -> complete (SQL authority)",
     it("every svc table has RLS enabled and forced, and no policy", async () => {
       const rows = (await db.query<{ relname: string; rls: boolean; force: boolean }>(
         "select relname, relrowsecurity rls, relforcerowsecurity force from pg_class where relnamespace = 'public'::regnamespace and relkind = 'r' and relname like 'svc\\_%'")).rows;
-      expect(rows.length).toBe(9);
+      expect(rows.length).toBe(10);
       for (const r of rows) expect([r.relname, r.rls, r.force]).toEqual([r.relname, true, true]);
       expect((await db.query("select count(*)::int c from pg_policies where tablename like 'svc\\_%'")).rows[0]).toEqual({ c: 0 });
     });
@@ -420,7 +420,7 @@ describe("service core migration on the real LIFE.HELP chain", { timeout: 180_00
     const catalogAfter = await nonLearningCatalog(full);
     const strip = (xs: string[]) => xs.filter((x) => !x.includes("svc_"));
     expect(strip(catalogAfter)).toEqual(strip(catalogBefore));
-    expect((await full.query("select count(*)::int c from pg_class where relnamespace = 'public'::regnamespace and relname like 'svc\\_%' and relkind = 'r'")).rows[0]).toEqual({ c: 9 });
+    expect((await full.query("select count(*)::int c from pg_class where relnamespace = 'public'::regnamespace and relname like 'svc\\_%' and relkind = 'r'")).rows[0]).toEqual({ c: 10 });
     await full.close();
   });
 });

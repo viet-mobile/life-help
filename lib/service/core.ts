@@ -63,10 +63,12 @@ export class ServiceCore {
     const locale = text(input.locale, 16);
     if (!slug || !locale) throw new ServiceError("INVALID_INPUT");
     const credential = isSecret(credRaw) ? credRaw : newSecret(); // a new anonymous customer gets a new credential
-    const token = newSecret();
+    const token = newSecret(); // the recovery LINK credential (shareable; exchanged for a session by claim)
+    const session = newSecret(); // this browser's session credential (HttpOnly cookie)
     const out = await this.db.rpc<{ request: any; eligibleHelpers: number }>("svc_c_create_request", {
       p_cred: await sha256Hex(credential),
       p_token: await sha256Hex(token),
+      p_session: await sha256Hex(session),
       p_locale: locale,
       p_service: slug,
       p_country: text(input.country, 2).toUpperCase(),
@@ -76,12 +78,35 @@ export class ServiceCore {
       p_description: text(input.description, 2000),
       p_options: strings(input.selectedOptions, 20, 80),
     });
-    return { ...out, token, credential: isSecret(credRaw) ? null : credential };
+    return { ...out, token, session, credential: isSecret(credRaw) ? null : credential };
   }
 
   async getCustomerRequest(credRaw: string | null, tokenRaw: string | null, id: string) {
     return this.db.rpc<{ request: any; events: any[] }>("svc_c_get_request", { p_cred: await this.hash(credRaw), p_token: await this.hash(tokenRaw), p_request: id });
   }
+  /** Exchanges the recovery link credential for a new browser session. Any failure (unknown, wrong, expired, revoked) is NOT_FOUND. */
+  async claimRequest(id: string, linkRaw: unknown) {
+    if (!isSecret(linkRaw)) throw new ServiceError("NOT_FOUND");
+    const session = newSecret();
+    const out = await this.db.rpc<{ request: any }>("svc_c_claim", { p_request: id, p_link: await sha256Hex(linkRaw), p_session: await sha256Hex(session) });
+    return { ...out, session };
+  }
+  /** Owner (customer credential) only: a new recovery link replaces the old one; existing sessions keep working. */
+  async rotateLink(credRaw: string | null, id: string) {
+    const token = newSecret();
+    const out = await this.db.rpc<{ linkExpiresAt: string }>("svc_c_rotate_link", { p_cred: await this.hash(credRaw), p_request: id, p_new_link: await sha256Hex(token) });
+    return { ...out, token };
+  }
+  async revokeLink(credRaw: string | null, id: string) { return this.db.rpc<any>("svc_c_revoke_link", { p_cred: await this.hash(credRaw), p_request: id }); }
+  /** Ends the recovery link and every browser session of the request. */
+  async revokeAllAccess(credRaw: string | null, id: string) { return this.db.rpc<any>("svc_c_revoke_all_access", { p_cred: await this.hash(credRaw), p_request: id }); }
+  async adminRotateLink(admin: string, id: string) {
+    const token = newSecret();
+    const out = await this.db.rpc<{ linkExpiresAt: string }>("svc_a_rotate_link", { p_admin: admin, p_request: id, p_new_link: await sha256Hex(token) });
+    return { ...out, token };
+  }
+  async adminRevokeLink(admin: string, id: string) { return this.db.rpc<any>("svc_a_revoke_link", { p_admin: admin, p_request: id }); }
+  async adminRevokeAllAccess(admin: string, id: string) { return this.db.rpc<any>("svc_a_revoke_all_access", { p_admin: admin, p_request: id }); }
   async listCustomerRequests(credRaw: string | null) {
     return this.db.rpc<any[]>("svc_c_list_requests", { p_cred: await this.hash(credRaw) });
   }

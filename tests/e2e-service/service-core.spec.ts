@@ -221,3 +221,45 @@ test("admin manual assignment, helper cannot act without approval, forged creden
     await C.ctx.close(); await H.ctx.close(); await A.ctx.close();
   }
 });
+
+test("request access: device B claims the link, then admin revoke-all ends every claimed session; rotation restores recovery", async ({ browser }) => {
+  const C = await newDevice(browser, "vi");
+  const B = await newDevice(browser, "en");
+  const A = await newDevice(browser, "ko");
+  try {
+    await adminLogin(A.page);
+    const link = await submitRequest(C.page, "boiler", "Access test request");
+    const id = link.match(/r=([0-9a-f-]{36})/)![1];
+    await C.page.goto(link);
+    await expect(C.page.getByTestId("customer-request")).toBeVisible();
+
+    // device B opens the recovery link: its own HttpOnly session, link removed from the address bar, nothing readable by page JS
+    await B.page.goto(link);
+    await expect(B.page.getByTestId("customer-request")).toHaveAttribute("data-status", "WAITING");
+    expect(B.page.url()).not.toContain("#t=");
+    expect(await B.page.evaluate(() => document.cookie)).toBe("");
+    expect(await B.page.evaluate(() => JSON.stringify(localStorage) + JSON.stringify(sessionStorage))).not.toMatch(/[0-9a-f]{64}/);
+    await B.page.reload();
+    await expect(B.page.getByTestId("customer-request")).toBeVisible(); // survives reload via the session cookie alone
+
+    // admin revokes ALL request access (link + sessions)
+    const res = await A.ctx.request.post(`/api/svc/a/requests/${id}/access/revoke-all`, { headers: { origin: "http://localhost:3200", "content-type": "application/json" }, data: {} });
+    expect(res.status()).toBe(200);
+    await B.page.reload();
+    await expect(B.page.getByTestId("request-missing")).toBeVisible({ timeout: 15_000 });
+    const late = await B.ctx.newPage();
+    await late.goto(link); // the old link no longer works either
+    await expect(late.getByTestId("request-missing")).toBeVisible({ timeout: 15_000 });
+    await expect(C.page.getByTestId("customer-request")).toBeVisible(); // the owner's own customer cookie is a separate identity
+
+    // admin rotates the link: a new device can recover again
+    const rot = await A.ctx.request.post(`/api/svc/a/requests/${id}/link/rotate`, { headers: { origin: "http://localhost:3200", "content-type": "application/json" }, data: {} });
+    const { token } = await rot.json();
+    const Z = await newDevice(browser, "en");
+    await Z.page.goto(`/chat?r=${id}#t=${token}`);
+    await expect(Z.page.getByTestId("customer-request")).toBeVisible({ timeout: 15_000 });
+    await Z.ctx.close();
+  } finally {
+    await C.ctx.close(); await B.ctx.close(); await A.ctx.close();
+  }
+});

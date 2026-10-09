@@ -5,13 +5,14 @@ import { expect } from "vitest";
 import { apply, newBase } from "../learn/chainDb";
 
 export const SERVICE_CORE = "202610090040_service_core.sql";
+export const SERVICE_ACCESS = "202610100041_service_request_access.sql";
 export const sha = (s: string) => createHash("sha256").update(s).digest("hex");
 export const secret = () => randomBytes(24).toString("hex");
 
 /** Supabase-compatible base plus ONLY the service-core migration (it has no other dependency). */
 export async function newServiceDb(): Promise<PGlite> {
   const db = await newBase();
-  await apply(db, [SERVICE_CORE]);
+  await apply(db, [SERVICE_CORE, SERVICE_ACCESS]);
   return db;
 }
 
@@ -25,18 +26,20 @@ export async function rejects(db: PGlite, fn: string, args: unknown[], code: str
   await expect(call(db, fn, ...args), `${fn} should fail with ${code}`).rejects.toThrow(new RegExp(`\\b${code}\\b`));
 }
 
-export interface Customer { cred: string; credHash: string; token: string; tokenHash: string }
+/** token = the recovery LINK secret; session = what a claimed browser keeps (separate credentials). */
+export interface Customer { cred: string; credHash: string; token: string; tokenHash: string; session: string; sessionHash: string }
 export const newCustomer = (): Customer => {
-  const cred = secret(), token = secret();
-  return { cred, credHash: sha(cred), token, tokenHash: sha(token) };
+  const cred = secret(), token = secret(), session = secret();
+  return { cred, credHash: sha(cred), token, tokenHash: sha(token), session, sessionHash: sha(session) };
 };
 export interface Helper { id: string; cred: string; credHash: string }
 
 const IKSAN = { country: "KR", sido: "전북특별자치도", gungu: "익산시" };
 
+const sessionUsed = new WeakSet<Customer>();
 export async function createRequest(db: PGlite, c: Customer, over: Partial<{ service: string; country: string; sido: string; gungu: string; locale: string; description: string }> = {}) {
   return call(db, "svc_c_create_request", c.credHash, c.tokenHash, over.locale ?? "vi", over.service ?? "toilet-clog", over.country ?? IKSAN.country,
-    over.sido ?? IKSAN.sido, over.gungu ?? IKSAN.gungu, "전북특별자치도 익산시 신동 대학로 123", over.description ?? "Bồn cầu bị tắc", ["urgent"]);
+    over.sido ?? IKSAN.sido, over.gungu ?? IKSAN.gungu, "전북특별자치도 익산시 신동 대학로 123", over.description ?? "Bồn cầu bị tắc", ["urgent"], sessionUsed.has(c) ? sha(secret()) : (sessionUsed.add(c), c.sessionHash)); // a session secret belongs to one request
 }
 
 export async function registerHelper(db: PGlite, over: Partial<{ name: string; services: string[]; regions: object[]; locale: string; expires: Date }> = {}): Promise<Helper> {

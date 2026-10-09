@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * STAGING validation of the service core (customer <-> helper server authority). READY_NOT_RUN: this file is prepared but has NOT been
- * executed against any project. Run it only against the dedicated STAGING Supabase project, after migration 202610090040 is applied.
+ * executed against any project. Run it only against the dedicated STAGING Supabase project, after migrations 202610090040 and 202610100041 are applied.
  *
  *   SERVICE_CORE_SUPABASE_URL=https://<staging-ref>.supabase.co \
  *   SERVICE_CORE_SUPABASE_SECRET_KEY=<staging secret key> \
@@ -28,7 +28,9 @@ const GATES = [
   "G10 cross-device chat + start/complete visible to the other actors",
   "G11 notification outbox: exactly one event per step and recipient",
   "G12 negative authorization matrix (stranger customer, unassigned helper, forged credential, bare request UUID)",
-  "G13 cleanup + residue check (no rows carrying this RUN_ID remain)",
+  "G13 request access: expired link denied, revoked link denied, rotation kills the old link and the new one works",
+  "G14 request access: sessions are separate from the link; revoke-all ends every session (cross-device) and the link",
+  "G15 cleanup + residue check (no rows carrying this RUN_ID remain)",
 ];
 if (process.argv.includes("--plan")) {
   console.log("service-core staging plan (not executed):\n" + GATES.map((g) => "  - " + g).join("\n"));
@@ -68,10 +70,10 @@ async function gate(id, fn) {
 const must = (cond, msg) => { if (!cond) throw new Error(msg); };
 const mustReject = async (p, re, msg) => { try { await p; } catch (e) { must(re.test(e.message), `${msg}: wrong error ${e.message}`); return; } throw new Error(`${msg}: should have been denied`); };
 
-async function newCustomer() { const cred = secret(), token = secret(); const c = { cred, token, credHash: sha(cred), tokenHash: sha(token) }; created.customers.push(c); return c; }
+async function newCustomer() { const cred = secret(), token = secret(), session = secret(); const c = { cred, token, session, credHash: sha(cred), tokenHash: sha(token), sessionHash: sha(session) }; created.customers.push(c); return c; }
 async function newRequest(c, over = {}) {
   const out = await rpc(admin, "svc_c_create_request", {
-    p_cred: c.credHash, p_token: c.tokenHash, p_locale: "vi", p_service: over.service ?? "toilet-clog", p_country: IKSAN.country, p_sido: IKSAN.sido, p_gungu: IKSAN.gungu,
+    p_cred: c.credHash, p_token: c.tokenHash, p_session: c.sessionHash, p_locale: "vi", p_service: over.service ?? "toilet-clog", p_country: IKSAN.country, p_sido: IKSAN.sido, p_gungu: IKSAN.gungu,
     p_address: `${RUN_ID} test address`, p_description: `${RUN_ID} test request`, p_options: ["urgent"],
   });
   created.requests.push(out.request.id);
@@ -192,11 +194,11 @@ await gate("G09", async () => {
 await gate("G10", async () => {
   const { h, c, r } = flow;
   await rpc(client(), "svc_msg_send", { p_kind: "HELPER", p_cred: h.credHash, p_token: null, p_request: r.id, p_body: `${RUN_ID} reply`, p_locale: "ko" });
-  const seen = await rpc(client(), "svc_msg_list", { p_kind: "CUSTOMER", p_cred: null, p_token: c.tokenHash, p_request: r.id, p_after: 0, p_target_locale: "vi" }); // "other device": token only
+  const seen = await rpc(client(), "svc_msg_list", { p_kind: "CUSTOMER", p_cred: null, p_token: c.sessionHash, p_request: r.id, p_after: 0, p_target_locale: "vi" }); // "other device": token only
   must(seen.length === 2, "customer on another device must see both messages");
   await rpc(client(), "svc_h_start_request", { p_cred: h.credHash, p_request: r.id });
   await rpc(client(), "svc_h_complete_request", { p_cred: h.credHash, p_request: r.id });
-  must((await rpc(client(), "svc_c_get_request", { p_cred: null, p_token: c.tokenHash, p_request: r.id })).request.status === "COMPLETED", "completed state must be visible");
+  must((await rpc(client(), "svc_c_get_request", { p_cred: null, p_token: c.sessionHash, p_request: r.id })).request.status === "COMPLETED", "completed state must be visible");
 });
 
 await gate("G11", async () => {
@@ -219,6 +221,51 @@ await gate("G12", async () => {
 });
 
 await gate("G13", async () => {
+  const owner = await newCustomer();
+  const r = await newRequest(owner);
+  const claim = (link, session) => rpc(client(), "svc_c_claim", { p_request: r.id, p_link: sha(link), p_session: sha(session) });
+  const read = (session) => rpc(client(), "svc_c_get_request", { p_cred: null, p_token: sha(session), p_request: r.id });
+  // valid link -> session -> read
+  const s1 = secret();
+  await claim(owner.token, s1);
+  must((await read(s1)).request.id === r.id, "claimed session must read the request");
+  // expired link (server-side clock): denied; the session already issued keeps its own lifetime
+  await admin.from("svc_requests").update({ token_expires_at: new Date(Date.now() - 1000).toISOString() }).eq("id", r.id);
+  await mustReject(claim(owner.token, secret()), /NOT_FOUND/, "expired link");
+  must((await read(s1)).request.id === r.id, "expired link must not end existing sessions");
+  // rotation: old link stays dead, the new one works (rotate clears expiry/revocation)
+  const next = secret();
+  await rpc(admin, "svc_c_rotate_link", { p_cred: owner.credHash, p_request: r.id, p_new_link: sha(next) });
+  await mustReject(claim(owner.token, secret()), /NOT_FOUND/, "old link after rotation");
+  await claim(next, secret());
+  // revoked link
+  await rpc(admin, "svc_c_revoke_link", { p_cred: owner.credHash, p_request: r.id });
+  await mustReject(claim(next, secret()), /NOT_FOUND/, "revoked link");
+  // forged / malformed / other-request credentials
+  await mustReject(claim(secret(), secret()), /NOT_FOUND/, "forged link");
+  await mustReject(read(secret()), /NOT_FOUND/, "forged session");
+  const other = await newCustomer();
+  const r2 = await newRequest(other);
+  await mustReject(rpc(client(), "svc_c_get_request", { p_cred: null, p_token: owner.sessionHash, p_request: r2.id }), /NOT_FOUND/, "request-A session on request-B");
+});
+
+await gate("G14", async () => {
+  const owner = await newCustomer();
+  const r = await newRequest(owner);
+  const deviceA = secret(), deviceB = secret();
+  const claim = (session) => rpc(client(), "svc_c_claim", { p_request: r.id, p_link: sha(owner.token), p_session: sha(session) });
+  const read = (session) => rpc(client(), "svc_c_get_request", { p_cred: null, p_token: sha(session), p_request: r.id });
+  await claim(deviceA); await claim(deviceB);
+  must((await read(deviceA)).request.id === (await read(deviceB)).request.id, "both devices must see the same request");
+  const out = await rpc(admin, "svc_c_revoke_all_access", { p_cred: owner.credHash, p_request: r.id });
+  must(out.sessionsRevoked >= 3, "creator + two claimed sessions must be revoked");
+  await mustReject(read(deviceA), /NOT_FOUND/, "device A after revoke-all");
+  await mustReject(read(deviceB), /NOT_FOUND/, "device B after revoke-all");
+  await mustReject(claim(secret()), /NOT_FOUND/, "link after revoke-all");
+  must((await rpc(client(), "svc_c_get_request", { p_cred: owner.credHash, p_token: null, p_request: r.id })).request.id === r.id, "the owner customer credential is a separate identity");
+});
+
+await gate("G15", async () => {
   // delete only rows this run created (cascades remove events, messages, outbox rows), then prove nothing with the RUN_ID is left
   if (created.requests.length) await admin.from("svc_requests").delete().in("id", created.requests);
   if (created.helpers.length) await admin.from("svc_helpers").delete().in("id", created.helpers);

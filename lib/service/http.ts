@@ -99,19 +99,29 @@ export function createServiceHandler(deps: HttpDeps) {
           limit(`create:${ip}`, 20, 3_600_000, t);
           const body = await readBody(request);
           const out = await core.createRequest(cred, { ...(body as CreateRequestInput), locale: locale(body.locale, "") });
-          const { credential, ...rest } = out;
-          const cookies = [tokenCookieHeader(rest.request.id, rest.token)];
+          const { credential, session, ...rest } = out;
+          // `rest.token` is the shareable recovery LINK credential (returned once); the browser's own SESSION credential only ever
+          // travels in the HttpOnly cookie
+          const cookies = [tokenCookieHeader(rest.request.id, session)];
           if (credential) cookies.push(setCookieHeader(CUSTOMER_COOKIE, credential, { maxAgeSec: 400 * 86_400, secure }));
           return json(rest, 201, cookies);
         }
         if ((hit = m(/^\/c\/requests\/([^/]+)\/claim$/)) && method === "POST") {
-          // One-time exchange: the link's token is verified, then kept only as an HttpOnly cookie for this browser
+          // Exchange: the link credential is verified (known, unexpired, unrevoked) and traded for a NEW session kept only as an
+          // HttpOnly cookie. Every failure - malformed, forged, expired, revoked, unknown request - is the same 404.
           limit(`claim:${ip}`, 30, 600_000, t);
           const body = await readBody(request);
-          if (!isSecret(body.token)) throw new ServiceError("FORBIDDEN");
           const reqId = id(hit[1]);
-          const out = await core.getCustomerRequest(cred, body.token, reqId); // FORBIDDEN / NOT_FOUND unless the token is valid for this request
-          return json({ request: out.request }, 200, [tokenCookieHeader(reqId, body.token)]);
+          const out = await core.claimRequest(reqId, body.token);
+          return json({ request: out.request }, 200, [tokenCookieHeader(reqId, out.session)]);
+        }
+        // credential management: owner (customer cookie) only; a claimed session cannot manage credentials
+        if ((hit = m(/^\/c\/requests\/([^/]+)\/(link\/rotate|link\/revoke|access\/revoke-all)$/)) && method === "POST") {
+          limit(`own:${cred ?? ip}`, 20, 600_000, t);
+          const reqId = id(hit[1]);
+          if (hit[2] === "link/rotate") return json(await core.rotateLink(cred, reqId));
+          if (hit[2] === "link/revoke") return json(await core.revokeLink(cred, reqId));
+          return json(await core.revokeAllAccess(cred, reqId));
         }
         if (route === "/c/requests" && method === "GET") return json({ requests: await core.listCustomerRequests(cred) });
         if ((hit = m(/^\/c\/requests\/([^/]+)$/)) && method === "GET") return json(await core.getCustomerRequest(cred, tokenFor(id(hit[1])), id(hit[1])));
@@ -180,6 +190,11 @@ export function createServiceHandler(deps: HttpDeps) {
         if ((hit = m(/^\/a\/requests\/([^/]+)\/assign$/)) && method === "POST") {
           const body = await readBody(request);
           return json({ request: await core.adminAssign(admin, id(hit[1]), id(String(body.helperId ?? ""))) });
+        }
+        if ((hit = m(/^\/a\/requests\/([^/]+)\/(link\/rotate|link\/revoke|access\/revoke-all)$/)) && method === "POST") {
+          if (hit[2] === "link/rotate") return json(await core.adminRotateLink(admin, id(hit[1])));
+          if (hit[2] === "link/revoke") return json(await core.adminRevokeLink(admin, id(hit[1])));
+          return json(await core.adminRevokeAllAccess(admin, id(hit[1])));
         }
         if ((hit = m(/^\/a\/requests\/([^/]+)\/cancel$/)) && method === "POST") return json({ request: await core.adminCancel(admin, id(hit[1])) });
         if ((hit = m(/^\/a\/requests\/([^/]+)\/messages$/))) {

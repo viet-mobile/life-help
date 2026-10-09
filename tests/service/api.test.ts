@@ -124,15 +124,17 @@ describe("service API: three separate clients, one server", { timeout: 60_000 },
   });
 
   it("a request opened on another device with the request link; losing the cookie does not lose the request", async () => {
-    const phone = new Agent("phone"), laptop = new Agent("laptop"), stranger = new Agent("stranger");
+    const phone = new Agent("phone"), laptop = new Agent("laptop");
     const created = await phone.post("/c/requests", { ...newRequest, serviceSlug: "bank-help" });
     const id = created.body.request.id;
     expect((await laptop.get(`/c/requests/${id}`)).status).toBe(404); // a UUID alone is nothing
-    expect((await stranger.get(`/c/requests/${id}`, { "x-svc-token": "f".repeat(64) })).status).toBe(404);
-    expect((await laptop.get(`/c/requests/${id}`, { "x-svc-token": created.body.token })).body.request.id).toBe(id);
-    phone.jar.clear(); // "cleared browser data" on the phone
-    expect((await phone.get(`/c/requests/${id}`, { "x-svc-token": created.body.token })).status).toBe(200);
-    expect((await phone.get("/c/requests")).body.requests).toEqual([]); // the list belongs to the credential, not the token
+    expect((await laptop.post(`/c/requests/${id}/claim`, { token: created.body.token })).status).toBe(200); // link -> own session
+    expect((await laptop.get(`/c/requests/${id}`)).body.request.id).toBe(id);
+    phone.jar.clear(); // "cleared browser data" on the phone: it opens the link again
+    expect((await phone.get(`/c/requests/${id}`)).status).toBe(404);
+    expect((await phone.post(`/c/requests/${id}/claim`, { token: created.body.token })).status).toBe(200);
+    expect((await phone.get(`/c/requests/${id}`)).status).toBe(200);
+    expect((await phone.get("/c/requests")).body.requests).toEqual([]); // the list belongs to the customer credential, not the link
   });
 
   it("customers are isolated: B can neither read, cancel nor message A's request", async () => {
@@ -286,49 +288,176 @@ describe("environment guards", () => {
   });
 });
 
-describe("customer request access: the link token is exchanged for an HttpOnly cookie", { timeout: 60_000 }, () => {
-  it("request id alone and forged tokens are denied; the real token is claimed once and then works from the cookie only", async () => {
-    const owner = new Agent("owner"), device2 = new Agent("device2"), stranger = new Agent("stranger");
-    const created = await owner.post("/c/requests", newRequest);
-    const { request, token } = created.body;
-    const url = `/c/requests/${request.id}`;
+describe("request access credentials: link and session are separate, with server-side expiry and revocation", { timeout: 60_000 }, () => {
+  async function fresh(service = "mobile-help") {
+    const owner = new Agent("owner");
+    const created = await owner.post("/c/requests", { ...newRequest, serviceSlug: service });
+    return { owner, id: created.body.request.id as string, link: created.body.token as string, created };
+  }
+  const claim = (agent: Agent, id: string, token: unknown) => agent.post(`/c/requests/${id}/claim`, { token });
+  const sessionCookie = (agent: Agent, id: string) => agent.jar.get(`lh_rt_${id.replace(/-/g, "")}`);
+  const admin = () => new Agent("admin", true);
 
-    // creating a request sets its token cookie (HttpOnly) next to the anonymous customer cookie
-    const setCookies = created.headers.getSetCookie().join("\n");
-    expect(setCookies).toMatch(new RegExp(`lh_rt_${request.id.replace(/-/g, "")}=[^;]+;[^\\n]*HttpOnly`, "i"));
-    expect(setCookies).toMatch(/lh_c=[^;]+;[^\n]*HttpOnly/i);
-
-    expect((await device2.get(url)).status).toBe(404); // the UUID alone grants nothing
-    expect((await device2.get(`${url}/messages?locale=vi`)).status).toBe(404);
-    expect((await device2.post(`${url}/claim`, { token: "f".repeat(64) })).status).toBe(404); // forged token
-    expect((await device2.post(`${url}/claim`, { token: "short" })).status).toBe(403); // not even secret-shaped
-    expect((await device2.post(`${url}/claim`, {})).status).toBe(403);
-    expect((await device2.get(url, { "x-svc-token": "e".repeat(64) })).status).toBe(404);
-    expect([...device2.jar.keys()].filter((k) => k.startsWith("lh_rt_"))).toEqual([]); // a failed claim sets nothing
-
-    const claimed = await device2.post(`${url}/claim`, { token }); // valid token -> cookie
-    expect(claimed.status).toBe(200);
-    expect(claimed.headers.getSetCookie().join("\n")).toMatch(/HttpOnly/i);
-    expect(claimed.headers.getSetCookie().join("\n")).toMatch(/SameSite=Lax/i);
-    expect((await device2.get(url)).status).toBe(200); // no header token: the cookie is the authority now
-    expect((await device2.post(`${url}/messages`, { body: "from device 2", locale: "vi" })).status).toBe(201);
-    expect((await owner.get(`${url}/messages?locale=vi`)).body.messages.map((m: any) => m.body)).toContain("from device 2");
-
-    // the cookie is bound to this request: it opens nothing else
-    const other = (await stranger.post("/c/requests", newRequest)).body.request.id;
-    expect((await device2.get(`/c/requests/${other}`)).status).toBe(404);
-    expect((await stranger.get(url)).status).toBe(404);
-    // and a cookie copied onto another request's id does not work
-    const copy = new Agent("copy");
-    copy.jar.set(`lh_rt_${other.replace(/-/g, "")}`, device2.jar.get(`lh_rt_${request.id.replace(/-/g, "")}`)!);
-    expect((await copy.get(`/c/requests/${other}`)).status).toBe(404);
+  it("creating sets only a SESSION cookie (HttpOnly); the link is returned once and is not the cookie", async () => {
+    const { owner, id, link, created } = await fresh();
+    const set = created.headers.getSetCookie().join("\n");
+    expect(set).toMatch(new RegExp(`lh_rt_${id.replace(/-/g, "")}=[^;]+;[^\\n]*HttpOnly`, "i"));
+    expect(set).toMatch(/lh_c=[^;]+;[^\n]*HttpOnly/i);
+    expect(sessionCookie(owner, id)).toMatch(/^[0-9a-f]{64}$/);
+    expect(sessionCookie(owner, id)).not.toBe(link); // two identities
+    expect(created.body.session).toBeUndefined(); // the session secret never appears in a body
+    expect(JSON.stringify(created.body)).not.toContain(sessionCookie(owner, id)!);
   });
 
-  it("claiming is rate limited", async () => {
-    const a = new Agent("a");
-    const id = (await new Agent("c").post("/c/requests", newRequest)).body.request.id;
+  it("denied: request id only, malformed, wrong and header-presented link tokens; all look identical to an unknown request", async () => {
+    const { id, link } = await fresh();
+    const d = new Agent("d");
+    const unknown = "00000000-0000-4000-8000-000000000000";
+    const outcomes = [
+      await d.get(`/c/requests/${id}`),
+      await d.get(`/c/requests/${id}/messages?locale=vi`),
+      await claim(d, id, undefined),
+      await claim(d, id, "short"),
+      await claim(d, id, "g".repeat(64)),
+      await claim(d, id, "f".repeat(64)),
+      await claim(d, unknown, link), // right token, no such request
+      await d.get(`/c/requests/${id}`, { "x-svc-token": link }), // the link is NOT an authority, only claimable
+    ];
+    for (const o of outcomes) { expect(o.status).toBe(404); expect(o.body).toEqual({ error: "NOT_FOUND" }); }
+    expect([...d.jar.keys()].filter((k) => k.startsWith("lh_rt_"))).toEqual([]);
+  });
+
+  it("valid link -> own HttpOnly session; request-A's session does nothing on request B", async () => {
+    const a = await fresh(), b = await fresh("job-help");
+    const d = new Agent("d");
+    const res = await claim(d, a.id, a.link);
+    expect(res.status).toBe(200);
+    expect(res.headers.getSetCookie().join("\n")).toMatch(/HttpOnly/i);
+    expect(sessionCookie(d, a.id)).not.toBe(a.link);
+    expect((await d.get(`/c/requests/${a.id}`)).status).toBe(200);
+    expect((await d.get(`/c/requests/${b.id}`)).status).toBe(404);
+    const copy = new Agent("copy");
+    copy.jar.set(`lh_rt_${b.id.replace(/-/g, "")}`, sessionCookie(d, a.id)!); // A's session value placed under B's cookie name
+    expect((await copy.get(`/c/requests/${b.id}`)).status).toBe(404);
+    expect((await claim(new Agent("x"), b.id, a.link)).status).toBe(404); // A's link on B
+  });
+
+  it("an expired LINK is refused by the server (not just by cookie age); sessions already issued keep their own lifetime", async () => {
+    const { id, link } = await fresh();
+    const early = new Agent("early");
+    expect((await claim(early, id, link)).status).toBe(200);
+    await local.sql("update public.svc_requests set token_expires_at = now() - interval '1 second' where id = $1", [id]);
+    expect((await claim(new Agent("late"), id, link)).status).toBe(404);
+    expect((await early.get(`/c/requests/${id}`)).status).toBe(200);
+  });
+
+  it("an expired SESSION is refused by the server; other sessions and the owner are unaffected", async () => {
+    const { owner, id, link } = await fresh();
+    const [a, b] = [new Agent("a"), new Agent("b")];
+    await claim(a, id, link); await claim(b, id, link);
+    const sessions = await local.sql("select session_hash from public.svc_request_sessions where request_id = $1 order by created_at", [id]);
+    expect(sessions).toHaveLength(3); // creator + two claims
+    await local.sql("update public.svc_request_sessions set expires_at = now() - interval '1 second' where request_id = $1 and via = 'CLAIM' and id = (select id from public.svc_request_sessions where request_id = $1 and via = 'CLAIM' order by created_at limit 1)", [id]);
+    expect((await a.get(`/c/requests/${id}`)).status).toBe(404);
+    expect((await a.get(`/c/requests/${id}/messages?locale=vi`)).status).toBe(404);
+    expect((await b.get(`/c/requests/${id}`)).status).toBe(200);
+    expect((await owner.get(`/c/requests/${id}`)).status).toBe(200);
+  });
+
+  it("a REVOKED link is refused; revoking needs the owner credential (a session or a stranger cannot)", async () => {
+    const { owner, id, link } = await fresh();
+    const viaLink = new Agent("via-link"), stranger = new Agent("stranger");
+    await claim(viaLink, id, link);
+    expect((await viaLink.post(`/c/requests/${id}/link/revoke`)).status).toBe(404);
+    expect((await stranger.post(`/c/requests/${id}/link/revoke`)).status).toBe(404);
+    expect((await new Agent("anon").post(`/c/requests/${id}/link/rotate`)).status).toBe(404); // no unauthenticated rotate
+    expect((await owner.post(`/c/requests/${id}/link/revoke`)).status).toBe(200);
+    expect((await claim(new Agent("late"), id, link)).status).toBe(404);
+    expect((await viaLink.get(`/c/requests/${id}`)).status).toBe(200); // link revocation alone leaves sessions alone
+    const row = (await local.sql("select token_revoked_at is not null as revoked from public.svc_requests where id = $1", [id]))[0] as any;
+    expect(row.revoked).toBe(true);
+  });
+
+  it("ROTATION: old link refused, new link accepted, existing sessions and all request/chat data unchanged", async () => {
+    const { owner, id, link } = await fresh();
+    const sessionDevice = new Agent("session-device");
+    await claim(sessionDevice, id, link);
+    await owner.post(`/c/requests/${id}/messages`, { body: "before rotation", locale: "vi" });
+    const before = (await owner.get(`/c/requests/${id}`)).body;
+    const rot = await owner.post(`/c/requests/${id}/link/rotate`);
+    expect(rot.status).toBe(200);
+    expect(rot.body.token).toMatch(/^[0-9a-f]{64}$/);
+    expect(rot.body.token).not.toBe(link);
+    expect((await claim(new Agent("old"), id, link)).status).toBe(404);
+    const fresh2 = new Agent("new");
+    expect((await claim(fresh2, id, rot.body.token)).status).toBe(200);
+    expect((await sessionDevice.get(`/c/requests/${id}`)).status).toBe(200); // documented: rotation does not end sessions
+    const after = (await fresh2.get(`/c/requests/${id}`)).body;
+    expect(after.request).toEqual(before.request);
+    expect((await fresh2.get(`/c/requests/${id}/messages?locale=vi`)).body.messages.map((m: any) => m.body)).toEqual(["before rotation"]);
+    // rotation after a revoke issues a working link again
+    await owner.post(`/c/requests/${id}/link/revoke`);
+    expect((await claim(new Agent("r"), id, rot.body.token)).status).toBe(404);
+    const rot2 = await owner.post(`/c/requests/${id}/link/rotate`);
+    expect((await claim(new Agent("r2"), id, rot2.body.token)).status).toBe(200);
+  });
+
+  it("CROSS-DEVICE: A and B each hold their own session; both read the same request and chat; revoke-all ends both (and the link)", async () => {
+    const { owner, id, link } = await fresh("housing");
+    const [devA, devB] = [new Agent("deviceA"), new Agent("deviceB")];
+    expect((await claim(devA, id, link)).status).toBe(200);
+    expect((await claim(devB, id, link)).status).toBe(200);
+    expect(sessionCookie(devA, id)).not.toBe(sessionCookie(devB, id)); // own sessions
+    await devA.post(`/c/requests/${id}/messages`, { body: "from A", locale: "vi" });
+    expect((await devB.get(`/c/requests/${id}/messages?locale=vi`)).body.messages.map((m: any) => m.body)).toEqual(["from A"]);
+    expect((await devA.get(`/c/requests/${id}`)).body.request.id).toBe((await devB.get(`/c/requests/${id}`)).body.request.id);
+
+    const out = await owner.post(`/c/requests/${id}/access/revoke-all`);
+    expect(out.status).toBe(200);
+    expect(out.body.sessionsRevoked).toBe(3); // creator browser session + A + B
+    for (const dev of [devA, devB]) {
+      expect((await dev.get(`/c/requests/${id}`)).status).toBe(404);
+      expect((await dev.get(`/c/requests/${id}/messages?locale=vi`)).status).toBe(404);
+      expect((await dev.post(`/c/requests/${id}/messages`, { body: "x", locale: "vi" })).status).toBe(404);
+    }
+    expect((await claim(new Agent("late"), id, link)).status).toBe(404);
+    expect((await owner.get(`/c/requests/${id}`)).status).toBe(200); // the owner's own customer credential is a separate identity
+    const rot = await owner.post(`/c/requests/${id}/link/rotate`); // recovery path after revoke-all
+    expect((await claim(devA, id, rot.body.token)).status).toBe(200);
+    expect((await devA.get(`/c/requests/${id}`)).status).toBe(200);
+  });
+
+  it("admin can rotate, revoke and revoke-all; non-admins get 401", async () => {
+    const { id, link } = await fresh("clog-clearing");
+    const dev = new Agent("dev"), anon = new Agent("anon");
+    await claim(dev, id, link);
+    for (const p of ["link/rotate", "link/revoke", "access/revoke-all"]) expect((await anon.post(`/a/requests/${id}/${p}`)).status).toBe(401);
+    const rot = await admin().post(`/a/requests/${id}/link/rotate`);
+    expect(rot.status).toBe(200);
+    expect((await claim(new Agent("o"), id, link)).status).toBe(404);
+    expect((await claim(new Agent("n"), id, rot.body.token)).status).toBe(200);
+    expect((await admin().post(`/a/requests/${id}/link/revoke`)).status).toBe(200);
+    expect((await claim(new Agent("n2"), id, rot.body.token)).status).toBe(404);
+    expect((await admin().post(`/a/requests/${id}/access/revoke-all`)).body.sessionsRevoked).toBeGreaterThanOrEqual(2);
+    expect((await dev.get(`/c/requests/${id}`)).status).toBe(404);
+    expect((await admin().post(`/a/requests/00000000-0000-4000-8000-000000000000/link/rotate`)).status).toBe(404);
+  });
+
+  it("every claim attempt - forged, expired, revoked, valid - counts toward 30 per 10 minutes", async () => {
+    const { owner, id, link } = await fresh("insurance-help");
+    await owner.post(`/c/requests/${id}/link/revoke`);
+    const ip = new Agent("brute");
     let last = 0;
-    for (let i = 0; i < 31; i++) last = (await a.post(`/c/requests/${id}/claim`, { token: "f".repeat(64) })).status;
+    for (let i = 0; i < 30; i++) { last = (await claim(ip, id, i % 2 ? link : "f".repeat(64))).status; expect(last).toBe(404); } // revoked + forged: same answer
+    expect((await claim(ip, id, link)).status).toBe(429);
+    resetLimits();
+    expect((await claim(ip, id, link)).status).toBe(404);
+  });
+
+  it("at most 20 live sessions per request", async () => {
+    const { id, link } = await fresh("hospital-help");
+    let last = 0;
+    for (let i = 0; i < 21; i++) { resetLimits(); last = (await claim(new Agent(`s${i}`), id, link)).status; }
     expect(last).toBe(429);
   });
 });

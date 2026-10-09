@@ -10,7 +10,7 @@ const SUPABASE_ROLES = `
   alter default privileges in schema public grant all on functions to anon, authenticated, service_role;
   alter default privileges in schema public grant all on sequences to anon, authenticated, service_role;
 `;
-export const SERVICE_CORE_MIGRATION = "supabase/migrations/202610090040_service_core.sql";
+export const SERVICE_CORE_MIGRATIONS = ["supabase/migrations/202610090040_service_core.sql", "supabase/migrations/202610100041_service_request_access.sql"] as const;
 
 interface LocalDb extends ServiceDb {
   close(): Promise<void>;
@@ -32,7 +32,7 @@ export async function createLocalDb(root = process.cwd()): Promise<LocalDb> {
   const { PGlite } = await load(["@electric-sql", "pglite"].join("/"));
   const db = new PGlite();
   await db.exec(SUPABASE_ROLES);
-  await db.exec(readFileSync(path.join(root, SERVICE_CORE_MIGRATION), "utf8"));
+  for (const file of SERVICE_CORE_MIGRATIONS) await db.exec(readFileSync(path.join(root, file), "utf8"));
   return {
     async rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
       const keys = Object.keys(args);
