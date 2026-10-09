@@ -5522,4 +5522,956 @@ export const worldRegions: Record<string, SidoData[]> = {
       ],
     },
   ],
+  SV: [
+    {
+      name: "Ahuachapán",
+      shortName: "Ahuachapán",
+      gunguList: [
+        { name: "Ahuachapán", dongs: ["Centro", "Apaneca", "Concepción de Ataco"] },
+      ],
+    },
+    {
+      name: "Cabañas",
+      shortName: "Cabañas",
+      gunguList: [
+        { name: "Sensuntepeque", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Chalatenango",
+      shortName: "Chalatenango",
+      gunguList: [
+        { name: "Chalatenango", dongs: ["Centro"] },
+        { name: "La Palma", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cuscatlán",
+      shortName: "Cuscatlán",
+      gunguList: [
+        { name: "Cojutepeque", dongs: ["Centro"] },
+        { name: "Suchitoto", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Libertad",
+      shortName: "La Libertad",
+      gunguList: [
+        { name: "Santa Tecla", dongs: ["Centro", "Las Delicias"] },
+        { name: "Antiguo Cuscatlán", dongs: ["Centro", "Ciudad Merliot"] },
+        { name: "La Libertad (Puerto)", dongs: ["Centro", "El Tunco", "El Sunzal"] },
+      ],
+    },
+    {
+      name: "La Paz",
+      shortName: "La Paz",
+      gunguList: [
+        { name: "Zacatecoluca", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Unión",
+      shortName: "La Unión",
+      gunguList: [
+        { name: "La Unión", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Morazán",
+      shortName: "Morazán",
+      gunguList: [
+        { name: "San Francisco Gotera", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Miguel",
+      shortName: "San Miguel",
+      gunguList: [
+        { name: "San Miguel", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Salvador",
+      shortName: "San Salvador",
+      gunguList: [
+        { name: "San Salvador", dongs: ["Centro Histórico", "Colonia Escalón", "San Benito", "Colonia Flor Blanca", "Colonia Miramonte"] },
+        { name: "Soyapango", dongs: ["Centro"] },
+        { name: "Mejicanos", dongs: ["Centro"] },
+        { name: "Apopa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Vicente",
+      shortName: "San Vicente",
+      gunguList: [
+        { name: "San Vicente", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santa Ana",
+      shortName: "Santa Ana",
+      gunguList: [
+        { name: "Santa Ana", dongs: ["Centro Histórico"] },
+        { name: "Metapán", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Sonsonate",
+      shortName: "Sonsonate",
+      gunguList: [
+        { name: "Sonsonate", dongs: ["Centro"] },
+        { name: "Acajutla", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Usulután",
+      shortName: "Usulután",
+      gunguList: [
+        { name: "Usulután", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  CF: [
+    {
+      name: "Bangui",
+      shortName: "Bangui",
+      gunguList: [
+        { name: "1er arrondissement", dongs: ["Centre-ville"] },
+        { name: "2e arrondissement", dongs: ["Lakouanga"] },
+        { name: "3e arrondissement", dongs: ["PK5 (Kilomètre 5)"] },
+        { name: "4e arrondissement", dongs: ["Boy-Rabe"] },
+      ],
+    },
+    {
+      name: "Bamingui-Bangoran",
+      shortName: "Bamingui-Bangoran",
+      gunguList: [
+        { name: "Ndélé", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Basse-Kotto",
+      shortName: "Basse-Kotto",
+      gunguList: [
+        { name: "Mobaye", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Haute-Kotto",
+      shortName: "Haute-Kotto",
+      gunguList: [
+        { name: "Bria", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Haut-Mbomou",
+      shortName: "Haut-Mbomou",
+      gunguList: [
+        { name: "Obo", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Kémo",
+      shortName: "Kémo",
+      gunguList: [
+        { name: "Sibut", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Lobaye",
+      shortName: "Lobaye",
+      gunguList: [
+        { name: "Mbaïki", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Mambéré-Kadéï",
+      shortName: "Mambéré-Kadéï",
+      gunguList: [
+        { name: "Berbérati", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Mbomou",
+      shortName: "Mbomou",
+      gunguList: [
+        { name: "Bangassou", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Nana-Grébizi",
+      shortName: "Nana-Grébizi",
+      gunguList: [
+        { name: "Kaga-Bandoro", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Nana-Mambéré",
+      shortName: "Nana-Mambéré",
+      gunguList: [
+        { name: "Bouar", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Ombella-M'Poko",
+      shortName: "Ombella-M'Poko",
+      gunguList: [
+        { name: "Bimbo", dongs: ["Centre-ville"] },
+        { name: "Boali", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Ouaka",
+      shortName: "Ouaka",
+      gunguList: [
+        { name: "Bambari", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Ouham",
+      shortName: "Ouham",
+      gunguList: [
+        { name: "Bossangoa", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Ouham-Pendé",
+      shortName: "Ouham-Pendé",
+      gunguList: [
+        { name: "Bozoum", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Sangha-Mbaéré",
+      shortName: "Sangha-Mbaéré",
+      gunguList: [
+        { name: "Nola", dongs: ["Centre-ville"] },
+      ],
+    },
+    {
+      name: "Vakaga",
+      shortName: "Vakaga",
+      gunguList: [
+        { name: "Birao", dongs: ["Centre-ville"] },
+      ],
+    },
+  ],
+  VE: [
+    {
+      name: "Distrito Capital",
+      shortName: "Caracas",
+      gunguList: [
+        { name: "Libertador (Caracas)", dongs: ["Catedral", "Candelaria", "Altagracia", "El Recreo (Sabana Grande)"] },
+      ],
+    },
+    {
+      name: "Amazonas",
+      shortName: "Amazonas",
+      gunguList: [
+        { name: "Atures (Puerto Ayacucho)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Anzoátegui",
+      shortName: "Anzoátegui",
+      gunguList: [
+        { name: "Simón Bolívar (Barcelona)", dongs: ["Centro"] },
+        { name: "Sotillo (Puerto La Cruz)", dongs: ["Centro"] },
+        { name: "Diego Bautista Urbaneja (Lechería)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Apure",
+      shortName: "Apure",
+      gunguList: [
+        { name: "San Fernando (San Fernando de Apure)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Aragua",
+      shortName: "Aragua",
+      gunguList: [
+        { name: "Girardot (Maracay)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Barinas",
+      shortName: "Barinas",
+      gunguList: [
+        { name: "Barinas", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Bolívar",
+      shortName: "Bolívar",
+      gunguList: [
+        { name: "Caroní (Ciudad Guayana)", dongs: ["Puerto Ordaz", "San Félix"] },
+        { name: "Angostura del Orinoco (Ciudad Bolívar)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Carabobo",
+      shortName: "Carabobo",
+      gunguList: [
+        { name: "Valencia", dongs: ["Centro"] },
+        { name: "Puerto Cabello", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cojedes",
+      shortName: "Cojedes",
+      gunguList: [
+        { name: "Ezequiel Zamora (San Carlos)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Delta Amacuro",
+      shortName: "Delta Amacuro",
+      gunguList: [
+        { name: "Tucupita", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Falcón",
+      shortName: "Falcón",
+      gunguList: [
+        { name: "Miranda (Coro)", dongs: ["Centro"] },
+        { name: "Carirubana (Punto Fijo)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Guárico",
+      shortName: "Guárico",
+      gunguList: [
+        { name: "Juan Germán Roscio (San Juan de los Morros)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Guaira",
+      shortName: "La Guaira",
+      gunguList: [
+        { name: "Vargas (La Guaira)", dongs: ["Maiquetía", "Catia La Mar"] },
+      ],
+    },
+    {
+      name: "Lara",
+      shortName: "Lara",
+      gunguList: [
+        { name: "Iribarren (Barquisimeto)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Mérida",
+      shortName: "Mérida",
+      gunguList: [
+        { name: "Libertador (Mérida)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Miranda",
+      shortName: "Miranda",
+      gunguList: [
+        { name: "Chacao", dongs: ["Altamira", "Los Palos Grandes", "El Rosal"] },
+        { name: "Baruta", dongs: ["Las Mercedes", "El Cafetal"] },
+        { name: "Sucre (Petare)", dongs: ["Petare", "Los Dos Caminos"] },
+        { name: "Guaicaipuro (Los Teques)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Monagas",
+      shortName: "Monagas",
+      gunguList: [
+        { name: "Maturín", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Nueva Esparta",
+      shortName: "Nueva Esparta",
+      gunguList: [
+        { name: "Mariño (Porlamar)", dongs: ["Centro"] },
+        { name: "Arismendi (La Asunción)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Portuguesa",
+      shortName: "Portuguesa",
+      gunguList: [
+        { name: "Guanare", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Sucre",
+      shortName: "Sucre",
+      gunguList: [
+        { name: "Sucre (Cumaná)", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Táchira",
+      shortName: "Táchira",
+      gunguList: [
+        { name: "San Cristóbal", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Trujillo",
+      shortName: "Trujillo",
+      gunguList: [
+        { name: "Trujillo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Yaracuy",
+      shortName: "Yaracuy",
+      gunguList: [
+        { name: "San Felipe", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Zulia",
+      shortName: "Zulia",
+      gunguList: [
+        { name: "Maracaibo", dongs: ["Centro"] },
+        { name: "Cabimas", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  KE: [
+    {
+      name: "Nairobi City",
+      shortName: "Nairobi",
+      gunguList: [
+        { name: "Westlands", dongs: ["Westlands", "Parklands", "Kangemi"] },
+        { name: "Dagoretti North", dongs: ["Kilimani", "Kileleshwa", "Lavington"] },
+        { name: "Lang'ata", dongs: ["Karen", "Lang'ata"] },
+        { name: "Starehe", dongs: ["Nairobi CBD", "Ngara"] },
+        { name: "Embakasi", dongs: ["Embakasi"] },
+        { name: "Kasarani", dongs: ["Kasarani"] },
+      ],
+    },
+    {
+      name: "Mombasa County",
+      shortName: "Mombasa",
+      gunguList: [
+        { name: "Mvita", dongs: ["Old Town", "Mvita"] },
+        { name: "Nyali", dongs: ["Nyali", "Kongowea"] },
+        { name: "Kisauni", dongs: ["Bamburi"] },
+        { name: "Likoni", dongs: ["Likoni"] },
+      ],
+    },
+    {
+      name: "Kwale County",
+      shortName: "Kwale",
+      gunguList: [
+        { name: "Kwale", dongs: ["Kwale"] },
+      ],
+    },
+    {
+      name: "Kilifi County",
+      shortName: "Kilifi",
+      gunguList: [
+        { name: "Kilifi", dongs: ["Kilifi"] },
+      ],
+    },
+    {
+      name: "Tana River County",
+      shortName: "Tana River",
+      gunguList: [
+        { name: "Hola", dongs: ["Hola"] },
+      ],
+    },
+    {
+      name: "Lamu County",
+      shortName: "Lamu",
+      gunguList: [
+        { name: "Lamu", dongs: ["Lamu"] },
+      ],
+    },
+    {
+      name: "Taita-Taveta County",
+      shortName: "Taita-Taveta",
+      gunguList: [
+        { name: "Mwatate", dongs: ["Mwatate"] },
+      ],
+    },
+    {
+      name: "Garissa County",
+      shortName: "Garissa",
+      gunguList: [
+        { name: "Garissa", dongs: ["Garissa"] },
+      ],
+    },
+    {
+      name: "Wajir County",
+      shortName: "Wajir",
+      gunguList: [
+        { name: "Wajir", dongs: ["Wajir"] },
+      ],
+    },
+    {
+      name: "Mandera County",
+      shortName: "Mandera",
+      gunguList: [
+        { name: "Mandera", dongs: ["Mandera"] },
+      ],
+    },
+    {
+      name: "Marsabit County",
+      shortName: "Marsabit",
+      gunguList: [
+        { name: "Marsabit", dongs: ["Marsabit"] },
+      ],
+    },
+    {
+      name: "Isiolo County",
+      shortName: "Isiolo",
+      gunguList: [
+        { name: "Isiolo", dongs: ["Isiolo"] },
+      ],
+    },
+    {
+      name: "Meru County",
+      shortName: "Meru",
+      gunguList: [
+        { name: "Meru", dongs: ["Meru"] },
+      ],
+    },
+    {
+      name: "Tharaka-Nithi County",
+      shortName: "Tharaka-Nithi",
+      gunguList: [
+        { name: "Kathwana", dongs: ["Kathwana"] },
+      ],
+    },
+    {
+      name: "Embu County",
+      shortName: "Embu",
+      gunguList: [
+        { name: "Embu", dongs: ["Embu"] },
+      ],
+    },
+    {
+      name: "Kitui County",
+      shortName: "Kitui",
+      gunguList: [
+        { name: "Kitui", dongs: ["Kitui"] },
+      ],
+    },
+    {
+      name: "Machakos County",
+      shortName: "Machakos",
+      gunguList: [
+        { name: "Machakos", dongs: ["Machakos"] },
+      ],
+    },
+    {
+      name: "Makueni County",
+      shortName: "Makueni",
+      gunguList: [
+        { name: "Wote", dongs: ["Wote"] },
+      ],
+    },
+    {
+      name: "Nyandarua County",
+      shortName: "Nyandarua",
+      gunguList: [
+        { name: "Ol Kalou", dongs: ["Ol Kalou"] },
+      ],
+    },
+    {
+      name: "Nyeri County",
+      shortName: "Nyeri",
+      gunguList: [
+        { name: "Nyeri", dongs: ["Nyeri"] },
+      ],
+    },
+    {
+      name: "Kirinyaga County",
+      shortName: "Kirinyaga",
+      gunguList: [
+        { name: "Kerugoya", dongs: ["Kerugoya"] },
+      ],
+    },
+    {
+      name: "Murang'a County",
+      shortName: "Murang'a",
+      gunguList: [
+        { name: "Murang'a", dongs: ["Murang'a"] },
+      ],
+    },
+    {
+      name: "Kiambu County",
+      shortName: "Kiambu",
+      gunguList: [
+        { name: "Kiambu", dongs: ["Kiambu"] },
+        { name: "Thika", dongs: ["Thika"] },
+        { name: "Ruiru", dongs: ["Ruiru"] },
+      ],
+    },
+    {
+      name: "Turkana County",
+      shortName: "Turkana",
+      gunguList: [
+        { name: "Lodwar", dongs: ["Lodwar"] },
+      ],
+    },
+    {
+      name: "West Pokot County",
+      shortName: "West Pokot",
+      gunguList: [
+        { name: "Kapenguria", dongs: ["Kapenguria"] },
+      ],
+    },
+    {
+      name: "Samburu County",
+      shortName: "Samburu",
+      gunguList: [
+        { name: "Maralal", dongs: ["Maralal"] },
+      ],
+    },
+    {
+      name: "Trans-Nzoia County",
+      shortName: "Trans-Nzoia",
+      gunguList: [
+        { name: "Kitale", dongs: ["Kitale"] },
+      ],
+    },
+    {
+      name: "Uasin Gishu County",
+      shortName: "Uasin Gishu",
+      gunguList: [
+        { name: "Eldoret", dongs: ["Eldoret"] },
+      ],
+    },
+    {
+      name: "Elgeyo-Marakwet County",
+      shortName: "Elgeyo-Marakwet",
+      gunguList: [
+        { name: "Iten", dongs: ["Iten"] },
+      ],
+    },
+    {
+      name: "Nandi County",
+      shortName: "Nandi",
+      gunguList: [
+        { name: "Kapsabet", dongs: ["Kapsabet"] },
+      ],
+    },
+    {
+      name: "Baringo County",
+      shortName: "Baringo",
+      gunguList: [
+        { name: "Kabarnet", dongs: ["Kabarnet"] },
+      ],
+    },
+    {
+      name: "Laikipia County",
+      shortName: "Laikipia",
+      gunguList: [
+        { name: "Rumuruti", dongs: ["Rumuruti"] },
+      ],
+    },
+    {
+      name: "Nakuru County",
+      shortName: "Nakuru",
+      gunguList: [
+        { name: "Nakuru", dongs: ["Nakuru"] },
+        { name: "Naivasha", dongs: ["Naivasha"] },
+      ],
+    },
+    {
+      name: "Narok County",
+      shortName: "Narok",
+      gunguList: [
+        { name: "Narok", dongs: ["Narok"] },
+      ],
+    },
+    {
+      name: "Kajiado County",
+      shortName: "Kajiado",
+      gunguList: [
+        { name: "Kajiado", dongs: ["Kajiado"] },
+        { name: "Kitengela", dongs: ["Kitengela"] },
+        { name: "Ngong", dongs: ["Ngong"] },
+      ],
+    },
+    {
+      name: "Kericho County",
+      shortName: "Kericho",
+      gunguList: [
+        { name: "Kericho", dongs: ["Kericho"] },
+      ],
+    },
+    {
+      name: "Bomet County",
+      shortName: "Bomet",
+      gunguList: [
+        { name: "Bomet", dongs: ["Bomet"] },
+      ],
+    },
+    {
+      name: "Kakamega County",
+      shortName: "Kakamega",
+      gunguList: [
+        { name: "Kakamega", dongs: ["Kakamega"] },
+      ],
+    },
+    {
+      name: "Vihiga County",
+      shortName: "Vihiga",
+      gunguList: [
+        { name: "Mbale", dongs: ["Mbale"] },
+      ],
+    },
+    {
+      name: "Bungoma County",
+      shortName: "Bungoma",
+      gunguList: [
+        { name: "Bungoma", dongs: ["Bungoma"] },
+      ],
+    },
+    {
+      name: "Busia County",
+      shortName: "Busia",
+      gunguList: [
+        { name: "Busia", dongs: ["Busia"] },
+      ],
+    },
+    {
+      name: "Siaya County",
+      shortName: "Siaya",
+      gunguList: [
+        { name: "Siaya", dongs: ["Siaya"] },
+      ],
+    },
+    {
+      name: "Kisumu County",
+      shortName: "Kisumu",
+      gunguList: [
+        { name: "Kisumu Central", dongs: ["Milimani", "Kondele"] },
+      ],
+    },
+    {
+      name: "Homa Bay County",
+      shortName: "Homa Bay",
+      gunguList: [
+        { name: "Homa Bay", dongs: ["Homa Bay"] },
+      ],
+    },
+    {
+      name: "Migori County",
+      shortName: "Migori",
+      gunguList: [
+        { name: "Migori", dongs: ["Migori"] },
+      ],
+    },
+    {
+      name: "Kisii County",
+      shortName: "Kisii",
+      gunguList: [
+        { name: "Kisii", dongs: ["Kisii"] },
+      ],
+    },
+    {
+      name: "Nyamira County",
+      shortName: "Nyamira",
+      gunguList: [
+        { name: "Nyamira", dongs: ["Nyamira"] },
+      ],
+    },
+  ],
+  AR: [
+    {
+      name: "Ciudad Autónoma de Buenos Aires",
+      shortName: "CABA",
+      gunguList: [
+        { name: "Comuna 1", dongs: ["San Nicolás", "Monserrat", "Retiro", "San Telmo", "Puerto Madero", "Constitución"] },
+        { name: "Comuna 2", dongs: ["Recoleta"] },
+        { name: "Comuna 5", dongs: ["Almagro", "Boedo"] },
+        { name: "Comuna 6", dongs: ["Caballito"] },
+        { name: "Comuna 13", dongs: ["Belgrano", "Núñez", "Colegiales"] },
+        { name: "Comuna 14", dongs: ["Palermo"] },
+        { name: "Comuna 15", dongs: ["Villa Crespo", "Chacarita"] },
+      ],
+    },
+    {
+      name: "Buenos Aires",
+      shortName: "Buenos Aires",
+      gunguList: [
+        { name: "La Plata", dongs: ["Centro", "City Bell"] },
+        { name: "General Pueyrredón (Mar del Plata)", dongs: ["Centro"] },
+        { name: "Bahía Blanca", dongs: ["Centro"] },
+        { name: "Vicente López", dongs: ["Olivos", "Florida"] },
+        { name: "San Isidro", dongs: ["San Isidro", "Martínez"] },
+        { name: "Tigre", dongs: ["Tigre", "Nordelta"] },
+        { name: "Quilmes", dongs: ["Quilmes", "Bernal"] },
+        { name: "Lomas de Zamora", dongs: ["Lomas de Zamora", "Banfield"] },
+        { name: "La Matanza", dongs: ["San Justo", "Ramos Mejía"] },
+      ],
+    },
+    {
+      name: "Catamarca",
+      shortName: "Catamarca",
+      gunguList: [
+        { name: "San Fernando del Valle de Catamarca", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Chaco",
+      shortName: "Chaco",
+      gunguList: [
+        { name: "Resistencia", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Chubut",
+      shortName: "Chubut",
+      gunguList: [
+        { name: "Rawson", dongs: ["Centro"] },
+        { name: "Comodoro Rivadavia", dongs: ["Centro"] },
+        { name: "Puerto Madryn", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Córdoba",
+      shortName: "Córdoba",
+      gunguList: [
+        { name: "Córdoba Capital", dongs: ["Centro", "Nueva Córdoba", "Güemes"] },
+        { name: "Río Cuarto", dongs: ["Centro"] },
+        { name: "Villa Carlos Paz", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Corrientes",
+      shortName: "Corrientes",
+      gunguList: [
+        { name: "Corrientes", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Entre Ríos",
+      shortName: "Entre Ríos",
+      gunguList: [
+        { name: "Paraná", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Formosa",
+      shortName: "Formosa",
+      gunguList: [
+        { name: "Formosa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Jujuy",
+      shortName: "Jujuy",
+      gunguList: [
+        { name: "San Salvador de Jujuy", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Pampa",
+      shortName: "La Pampa",
+      gunguList: [
+        { name: "Santa Rosa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Rioja",
+      shortName: "La Rioja",
+      gunguList: [
+        { name: "La Rioja", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Mendoza",
+      shortName: "Mendoza",
+      gunguList: [
+        { name: "Mendoza Capital", dongs: ["Centro"] },
+        { name: "Godoy Cruz", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Misiones",
+      shortName: "Misiones",
+      gunguList: [
+        { name: "Posadas", dongs: ["Centro"] },
+        { name: "Puerto Iguazú", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Neuquén",
+      shortName: "Neuquén",
+      gunguList: [
+        { name: "Neuquén", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Río Negro",
+      shortName: "Río Negro",
+      gunguList: [
+        { name: "Viedma", dongs: ["Centro"] },
+        { name: "San Carlos de Bariloche", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Salta",
+      shortName: "Salta",
+      gunguList: [
+        { name: "Salta Capital", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Juan",
+      shortName: "San Juan",
+      gunguList: [
+        { name: "San Juan", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Luis",
+      shortName: "San Luis",
+      gunguList: [
+        { name: "San Luis", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santa Cruz",
+      shortName: "Santa Cruz",
+      gunguList: [
+        { name: "Río Gallegos", dongs: ["Centro"] },
+        { name: "El Calafate", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santa Fe",
+      shortName: "Santa Fe",
+      gunguList: [
+        { name: "Rosario", dongs: ["Centro", "Pichincha"] },
+        { name: "Santa Fe Capital", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santiago del Estero",
+      shortName: "Santiago del Estero",
+      gunguList: [
+        { name: "Santiago del Estero", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tierra del Fuego",
+      shortName: "Tierra del Fuego",
+      gunguList: [
+        { name: "Ushuaia", dongs: ["Centro"] },
+        { name: "Río Grande", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tucumán",
+      shortName: "Tucumán",
+      gunguList: [
+        { name: "San Miguel de Tucumán", dongs: ["Centro"] },
+      ],
+    },
+  ],
 };

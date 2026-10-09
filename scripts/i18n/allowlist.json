@@ -1,0 +1,431 @@
+{
+  "_doc": "Reviewed classifications for scripts/verify_i18n_completeness.py. Every entry: classification (one of the audit's ALLOWED_CLASSES) + reason. tokens: substrings ignored when judging a value. entries: {locale ('*' = every locale), key, classification, reason} for whole values that legitimately stay identical / bilingual. hardcodedFiles / hardcodedPatterns: classify hard-coded literals (reported metric on this branch).",
+  "tokens": {
+    "LIFE.HELP": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "product brand"
+    },
+    "life.help": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "product domain"
+    },
+    "VIET.MOBILE": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "partner brand"
+    },
+    "KakaoTalk": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "messenger product name"
+    },
+    "Woori Bank": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "official name of the Korean bank account the customer must match"
+    },
+    "SKT": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "Korean carrier brand"
+    },
+    "LGU+": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "Korean carrier brand"
+    },
+    "KT": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "Korean carrier brand"
+    },
+    "PASS": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "Korean carriers' identity-verification app name"
+    },
+    "USIM": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "SIM card standard name on Korean carrier counters"
+    },
+    "SIM": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "standard abbreviation"
+    },
+    "Wi-Fi": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "standard name"
+    },
+    "Giga": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "Korean carrier plan name"
+    },
+    "LTE": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "network standard"
+    },
+    "5G": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "network standard"
+    },
+    "MNP": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "number-portability abbreviation used by carriers"
+    },
+    "ARC": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "Alien Registration Card abbreviation printed on the card"
+    },
+    "PWA": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "web-app standard name"
+    },
+    "OTP": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "one-time password abbreviation"
+    },
+    "ID": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "identifier abbreviation"
+    },
+    "QR": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "QR code"
+    },
+    "PIN": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "PIN code"
+    },
+    "URL": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "web address abbreviation"
+    },
+    "email": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "e-mail address field"
+    },
+    "localStorage": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "browser storage API name"
+    },
+    "HttpOnly": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "cookie attribute name"
+    },
+    "CST-AUTO": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "customer ID prefix shown verbatim"
+    },
+    "KRW": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "ISO currency code"
+    },
+    "USDC": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "stablecoin ticker"
+    },
+    "1:1": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "one-to-one notation"
+    },
+    "24/7": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "time notation"
+    },
+    "SMS": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "standard abbreviation"
+    },
+    "iOS": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "operating system name"
+    },
+    "Android": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "operating system name"
+    },
+    "Safari": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "browser name"
+    },
+    "Chrome": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "browser name"
+    },
+    "Windows": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "operating system name"
+    },
+    "macOS": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "operating system name"
+    },
+    "iPhone": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "device name"
+    },
+    "iPad": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "device name"
+    },
+    "TOPIK": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "official Korean-language test name"
+    },
+    "T-money": {
+      "classification": "BRAND_OR_PROPER_NOUN",
+      "reason": "Korean transit card brand"
+    }
+  },
+  "entries": [
+    {
+      "locale": "*",
+      "key": "payment.bankName",
+      "classification": "OFFICIAL_KOREAN_RECORD",
+      "reason": "the receiving bank's official Korean name (우리은행) must match the customer's banking app exactly; the localized name is shown next to it"
+    },
+    {
+      "locale": "*",
+      "key": "payment.accountHolder",
+      "classification": "OFFICIAL_KOREAN_RECORD",
+      "reason": "the account holder's registered Korean name (라이프헬프) must match the bank record exactly for the transfer"
+    },
+    {
+      "locale": "da",
+      "key": "admin.thWorkStatus",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Danish uses the identical word Status as a table column header"
+    },
+    {
+      "locale": "da",
+      "key": "admin.btnSendMessage",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Send is the native Danish imperative of the verb sende, the standard send-button label"
+    },
+    {
+      "locale": "da",
+      "key": "chat.dutyStatus",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Online is the established Danish word for an available/online status (e.g. 'Jeg er online')"
+    },
+    {
+      "locale": "da",
+      "key": "chat.send",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Send is the native Danish imperative of the verb sende, the standard send-button label"
+    },
+    {
+      "locale": "da",
+      "key": "workspace.adminChatSend",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Send is the native Danish imperative of the verb sende, the standard send-button label"
+    },
+    {
+      "locale": "da",
+      "key": "payment.bankNameLabel",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Danish uses the identical noun Bank for a bank"
+    },
+    {
+      "locale": "de",
+      "key": "chat.dutyStatus",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "German UIs use the identical loanword 'Online' (Duden-listed) for availability status"
+    },
+    {
+      "locale": "de",
+      "key": "payment.bankNameLabel",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "German uses the identical word 'Bank' for a financial institution"
+    },
+    {
+      "locale": "fr",
+      "key": "admin.reviewService",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "French uses the identical word 'Service' (le service) as the column label for the service reviewed"
+    },
+    {
+      "locale": "id",
+      "key": "login.emailLabel",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Indonesian UIs use the loanword 'Email' as the standard field label (KBBI lists 'email'; the locale already uses 'email' elsewhere)"
+    },
+    {
+      "locale": "it",
+      "key": "admin.mainHome",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Italian UI uses the loanword Home for the start page; the it locale already uses it (e.g. 'Torna alla Home')"
+    },
+    {
+      "locale": "it",
+      "key": "common.home",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Italian UI uses the loanword Home for the start page; the it locale already uses it (e.g. 'Torna alla Home')"
+    },
+    {
+      "locale": "it",
+      "key": "common.mainHome",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Italian UI uses the loanword Home for the start page; the it locale already uses it (e.g. 'Torna alla Home')"
+    },
+    {
+      "locale": "it",
+      "key": "login.passwordLabel",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Italian uses the identical loanword Password as the standard login field label"
+    },
+    {
+      "locale": "it",
+      "key": "support.homeNav",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Italian UI uses the loanword Home for the start page; arrow kept, consistent with 'Torna alla Home'"
+    },
+    {
+      "locale": "no",
+      "key": "admin.thWorkStatus",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Norwegian Bokmål uses the identical word 'Status' as the standard column label for work status"
+    },
+    {
+      "locale": "no",
+      "key": "admin.btnSendMessage",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "'Send' is the Norwegian Bokmål imperative of 'sende' and the standard send-button label"
+    },
+    {
+      "locale": "no",
+      "key": "chat.send",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "'Send' is the Norwegian Bokmål imperative of 'sende' and the standard send-button label"
+    },
+    {
+      "locale": "no",
+      "key": "workspace.adminChatSend",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "'Send' is the Norwegian Bokmål imperative of 'sende' and the standard send-button label"
+    },
+    {
+      "locale": "pl",
+      "key": "admin.thWorkStatus",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Polish uses the identical native word 'Status' (status zlecenia) as a table column header"
+    },
+    {
+      "locale": "pl",
+      "key": "payment.bankNameLabel",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Polish uses the identical native word 'Bank' for a bank (field label for the bank name)"
+    },
+    {
+      "locale": "vi",
+      "key": "login.emailLabel",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "Vietnamese UI uses the loanword 'Email' identically as the standard field label (the vi locale itself already writes 'email' in other strings)"
+    },
+    {
+      "locale": "sg",
+      "key": "admin.reviewService",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "'service' is the French loanword Sango uses for a service category; it is the same term used in every other sg key (aservice, marä ti service), so the column label is spelled identically to English."
+    },
+    {
+      "locale": "*",
+      "key": "svc.chat.original",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "international loanword / cognate (e.g. Chat, Original, Helper, System) written the same in several languages"
+    },
+    {
+      "locale": "*",
+      "key": "svc.chat.send",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "international loanword / cognate (e.g. Chat, Original, Helper, System) written the same in several languages"
+    },
+    {
+      "locale": "*",
+      "key": "svc.chat.sender.HELPER",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "international loanword / cognate (e.g. Chat, Original, Helper, System) written the same in several languages"
+    },
+    {
+      "locale": "*",
+      "key": "svc.chat.sender.SYSTEM",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "international loanword / cognate (e.g. Chat, Original, Helper, System) written the same in several languages"
+    },
+    {
+      "locale": "*",
+      "key": "svc.chat.title",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "international loanword / cognate (e.g. Chat, Original, Helper, System) written the same in several languages"
+    }
+  ],
+  "hardcodedFiles": {
+    "lib/region/(regions|dongHanjaData|worldRegions|vietnamRegions|philippinesRegions|indonesiaRegions)\\.ts": {
+      "classification": "DATA_PLACE_NAME",
+      "reason": "administrative place-name data, displayed through the region localizing helpers"
+    },
+    "lib/region/regionUITexts\\.ts": {
+      "classification": "PER_LOCALE_TABLE",
+      "reason": "one entry per registry locale, each already in its own language"
+    },
+    "lib/region/regionLocalization\\.ts": {
+      "classification": "PER_LOCALE_TABLE",
+      "reason": "per-locale province names and transliteration tables"
+    },
+    "lib/i18n/siteMetadata\\.ts": {
+      "classification": "PER_LOCALE_TABLE",
+      "reason": "one site-metadata entry per registry locale, each already in its own language"
+    },
+    "lib/region/countries\\.ts": {
+      "classification": "DATA_PLACE_NAME",
+      "reason": "country registry data (ISO code, flag, Korean / English / native names, native administrative-level labels); the displayed country name comes from getCountryDisplayName"
+    },
+    "lib/learn/i18n/ko\\.ts": {
+      "classification": "CANONICAL_KO_DATA",
+      "reason": "the canonical Korean learning-UI dictionary; every other locale is lib/learn/i18n/locales/<code>.json, audited key by key in the LEARN_UI section"
+    },
+    "lib/learn/content/listening/(examples|passages)-ko\\.ts": {
+      "classification": "CANONICAL_KO_DATA",
+      "reason": "canonical Korean meanings of English listening segments; spoken by the Korean voice in the English + Korean listening mode, never shown as UI chrome"
+    },
+    "lib/learn/server/(http|supabaseStore)\\.ts": {
+      "classification": "NON_UI",
+      "reason": "server-side validation messages / PostgREST column lists, never rendered"
+    },
+    "lib/learn/providers/speech\\.ts": {
+      "classification": "NON_UI",
+      "reason": "developer diagnostic of the pronunciation-scoring stub, never rendered"
+    },
+    "app/study/\\[site\\]/favicon\\.ico/route\\.ts": {
+      "classification": "NON_UI",
+      "reason": "HTTP status text / cache header of the favicon route"
+    },
+    "components/learn/useEnterToContinue\\.ts": {
+      "classification": "NON_UI",
+      "reason": "CSS selector of focusable elements"
+    },
+    "app/study/page\\.tsx": {
+      "classification": "NON_UI",
+      "reason": "developer index of the learning sites; proxy.ts and allowsLearnPathAccess() return 404 for /study on production hosts"
+    },
+    "app/study/\\[site\\]/\\(admin\\)/admin/page\\.tsx": {
+      "classification": "NON_UI",
+      "reason": "staff-only content diagnostics (learn_staff_users), not a learner surface"
+    }
+  },
+  "hardcodedPatterns": {
+    "^= ; [Pp]ath=/; .*SameSite=Lax$": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "cookie attribute string"
+    },
+    "^bg-[a-z].*": {
+      "classification": "TECHNICAL_TOKEN",
+      "reason": "CSS class names"
+    },
+    "\\d+px solid [-a-z(),.0-9 ]+|var\\(--[-a-z]+(, ?[-a-z(),.0-9 ]+)?\\)": {
+      "classification": "NON_UI",
+      "reason": "inline CSS values"
+    },
+    "= ; Path=/; Max-Age= ; SameSite=Lax": {
+      "classification": "NON_UI",
+      "reason": "cookie attribute syntax of the learner language preference"
+    },
+    "/logos/[-a-z]+ \\.png": {
+      "classification": "NON_UI",
+      "reason": "static asset path template"
+    }
+  }
+}

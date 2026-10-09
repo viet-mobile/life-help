@@ -76,6 +76,11 @@ const COUNTRY_NAMES: Record<string, string> = {
   singapore: "SINGAPORE",
   malaysia: "MALAYSIA",
   nigeria: "NIGERIA",
+  elsalvador: "EL SALVADOR",
+  centralafrica: "CENTRAL AFRICAN REPUBLIC",
+  venezuela: "VENEZUELA",
+  kenya: "KENYA",
+  argentina: "ARGENTINA",
 };
 
 const PORTAL_DISPLAY_NAMES: Record<string, string> = {

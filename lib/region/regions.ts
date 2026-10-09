@@ -86,6 +86,11 @@ export const COUNTRY_SLUG_TO_CODE: Record<string, CountryCode> = {
   singapore: "SG",
   malaysia: "MY",
   nigeria: "NG",
+  elsalvador: "SV",
+  centralafrica: "CF",
+  venezuela: "VE",
+  kenya: "KE",
+  argentina: "AR",
 };
 
 export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
@@ -142,6 +147,11 @@ export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
   NG: { country: "NG", sido: "Lagos State", gungu: "Lagos Island / Eti-Osa", dong: "Victoria Island (VI)" },
   BR: { country: "BR", sido: "São Paulo", gungu: "São Paulo Capital", dong: "Jardins" },
   MX: { country: "MX", sido: "Ciudad de México (CDMX)", gungu: "Cuauhtémoc", dong: "Roma Norte" },
+  SV: { country: "SV", sido: "San Salvador", gungu: "San Salvador", dong: "Colonia Escalón" },
+  CF: { country: "CF", sido: "Bangui", gungu: "1er arrondissement", dong: "Centre-ville" },
+  VE: { country: "VE", sido: "Distrito Capital", gungu: "Libertador (Caracas)", dong: "Catedral" },
+  KE: { country: "KE", sido: "Nairobi City", gungu: "Westlands", dong: "Westlands" },
+  AR: { country: "AR", sido: "Ciudad Autónoma de Buenos Aires", gungu: "Comuna 14", dong: "Palermo" },
 };
 
 export const koreanRegions: SidoData[] = [

@@ -75,7 +75,7 @@
     "securitySessionExpired": "보안 세션 만료됨",
     "autoMaintainedDays": "일간 자동 유지",
     "operatingRegions": "활동 가능 지역",
-    "instantDispatchConnected": "고객 호출 즉시 연결",
+    "instantDispatchConnected": "내게 맞는 신청이 포털에 표시됩니다",
     "registeredServices": "등록 서비스",
     "categoriesRegisteredCount": "개 분야 등록",
     "editableInWorkspace": "워크스페이스에서 변경 가능",
@@ -116,7 +116,8 @@
     "enterAccessKeyError": "3개월 전용 보안 코드를 입력해 주세요.",
     "enterNameError": "헬퍼 성함 · 활동명을 입력해 주세요.",
     "selectServiceError": "최소 하나 이상의 서비스 가능 분야를 선택해 주세요.",
-    "agreeTermsError": "헬퍼 활동 규정 및 안전 수칙에 동의해 주세요."
+    "agreeTermsError": "헬퍼 활동 규정 및 안전 수칙에 동의해 주세요.",
+    "workspace": "워크스페이스"
   },
   "admin": {
     "title": "관리자 시스템",
@@ -291,7 +292,7 @@
     "bilingualToggleHint": "한국어 병기 모드 · 클릭 시 단일 언어",
     "monolingualToggleHint": "단일 언어 모드 · 클릭 시 한국어 병기",
     "nativeConsultation": "모국어 상담",
-    "nativeConsultationCenter": "모국어 실시간 상담 센터",
+    "nativeConsultationCenter": "모국어 상담 센터",
     "home": "홈",
     "mainHome": "홈",
     "safeApply": "안심신청",
@@ -303,7 +304,7 @@
     "badge": "사생활 보호 안심 시스템",
     "cardZeroPhoneTitle": "전화번호 수집 제로",
     "cardZeroPhoneDesc": "고객님의 실제 휴대폰 번호를 수집·저장하지 않아 스팸 및 유출 걱정이 없습니다.",
-    "cardRealtimeChatTitle": "1:1 실시간 모국어 번역 대화",
+    "cardRealtimeChatTitle": "헬퍼와 1:1 번역 채팅",
     "cardRealtimeChatDesc": "모국어로 메시지를 보내면 헬퍼에게 자동 번역되어 막힘없이 소통합니다.",
     "cardVerifiedHelperTitle": "신원 검증된 공식 헬퍼",
     "cardVerifiedHelperDesc": "신원과 기술력이 철저히 검증된 지역 헬퍼만이 방문하여 안전하고 신뢰할 수 있습니다."
@@ -343,10 +344,10 @@
     "customerOriginalText": "고객 작성 원문",
     "providerTranslatedText": "담당 헬퍼 전달 번역문 · 한국어",
     "privacyNoPhoneTitle": "개인정보 보호 안심 시스템 · 휴대폰 번호 수집 없음",
-    "privacyNoPhoneNote": "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다.",
+    "privacyNoPhoneNote": "저희는 휴대폰 번호를 받지 않습니다. 이 웹사이트의 1:1 대화방에서 헬퍼와 대화합니다.",
     "privacyGuaranteeTitle": "개인정보 완벽 보호",
     "translatingAndSubmitting": "번역 및 접수 중...",
-    "startLiveChat": "실시간 1:1 대화 연결",
+    "startLiveChat": "1:1 대화 열기",
     "liveMatchingDesc": "현장 헬퍼와 실시간 1:1 번역 대화방으로 연결됩니다."
   },
   "serviceDetail": {
@@ -581,7 +582,21 @@
     "activeDesc": "고객 요청 시 즉시 연결 및 출동 배차가 가능합니다. 개인 사정이나 휴식 시 즉시 아래 스위치를 눌러 일시 중단으로 변경해 주세요.",
     "pausedDesc": "현재 고객 요청 배차가 일시 정지되어 있습니다. 다시 업무가 가능해지시면 스위치를 켜주세요.",
     "pauseBtn": "⏸ 일시 업무 중단하기",
-    "resumeBtn": "🟢 즉시 출동 가능 전환"
+    "resumeBtn": "🟢 즉시 출동 가능 전환",
+    "adminChatShort": "관리자",
+    "extraWork": "추가근무",
+    "adminChat": "본사 관리자 연락",
+    "openAdminChat": "메시지 확인 및 답장",
+    "adminChatTitle": "본사 관리자 1:1 온라인 연락",
+    "adminChatOnline": "실시간 온라인",
+    "adminChatEmpty": "본사 관리자와 주고받은 메시지가 없습니다.",
+    "adminChatEmptyHint": "문의 사항이나 긴급 신고를 남겨 주시면 본사에서 신속하게 확인합니다.",
+    "adminChatPlaceholder": "본사 관리자에게 보낼 메시지...",
+    "adminChatSend": "전송",
+    "calendarClose": "닫기",
+    "adminChatRecipientCounselor": "수신자: 상담사",
+    "adminNoticeBanner": "[본사 관리자 메시지]",
+    "unreadCount": "건 미확인"
   },
   "payment": {
     "title": "결제 및 계좌이체 안내",
@@ -602,7 +617,8 @@
     "liveChatBtn": "실시간 상담 문의하기",
     "homeBtn": "메인 홈으로 돌아가기",
     "copiedToast": "복사됨",
-    "supportCenter": "고객 지원센터"
+    "supportCenter": "고객 지원센터",
+    "backHome": "LIFE.HELP 홈"
   },
   "review": {
     "title": "자유 고객 리뷰",
@@ -633,7 +649,9 @@
     "rating_4": "만족해요 · 좋았어요",
     "rating_3": "보통이에요",
     "rating_2": "조금 아쉬워요",
-    "rating_1": "불만족해요 · 개선이 필요해요"
+    "rating_1": "불만족해요 · 개선이 필요해요",
+    "backHome": "LIFE.HELP 홈",
+    "recentReviewsTitle": "최근 등록된 익명 고객 리뷰"
   },
   "login": {
     "title": "로그인 및 회원가입",
@@ -657,7 +675,7 @@
     "mobileHelp": "외국인 명의 알뜰폰/선불유심 즉시 개통, 최적 요금제 추천 및 기기 설정"
   },
   "support": {
-    "badge050": "🔒 사생활 보호 안심 대화 · 1:1 실시간 연결",
+    "badge050": "🔒 개인정보 보호 · 1:1 번역 채팅",
     "requestTab": "도움 신청하기 · 수요자",
     "partnerTab": "헬퍼 등록 · 전문가",
     "successTitle": "서비스 신청이 정상 접수되었습니다!",
@@ -916,7 +934,9 @@
         "SUSPENDED": "운영진이 계정을 일시 정지했습니다. 다시 승인될 때까지 신청을 받을 수 없습니다."
       },
       "statusTitle": "내 계정",
-      "unavailable": "새 신청을 받지 않는 상태입니다."
+      "unavailable": "새 신청을 받지 않는 상태입니다.",
+      "scheduleNote": "이 주간 일정은 이 기기에만 저장되는 개인 메모입니다. 신청은 서버에 저장된 승인 상태, '근무 가능' 설정, 서비스와 지역에 따라 전달됩니다.",
+      "scheduleSaved": "이 기기에 저장되었습니다. 신청 배정에는 사용되지 않습니다."
     },
     "nav": {
       "helperPortal": "헬퍼 포털"

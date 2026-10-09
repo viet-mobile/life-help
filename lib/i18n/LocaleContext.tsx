@@ -89,7 +89,7 @@ export function getBilingualSeparator(
  *   /zt -> zh-Hant
  *   /zs -> zh-Hans
  *   /zh -> zh-Hans
- * Also supports all 38 locales from messages.
+ * Also supports every locale of the registry in messages/index.ts.
  */
 export function resolveLocaleFromPath(pathname?: string | null): Locale | null {
   if (!pathname) return null;
@@ -171,22 +171,27 @@ function getClientLocaleSnapshot(): Locale {
     return urlLocale;
   }
 
-  // 2. If host domain indicates a country (e.g. vietnam.life.help -> vi), use domain language
-  const domainLocale = getDomainLocale();
-  if (domainLocale) {
-    cachedLocale = domainLocale;
-    return domainLocale;
-  }
-
-  // 3. Otherwise check localStorage (existing behavior)
+  // 2. A language the user explicitly picked (setLocale is the only writer of STORAGE_KEY) is kept across
+  //    navigation and across country domains: the domain default never resets a manual choice.
   try {
     const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
       cachedLocale = saved;
       return saved;
     }
+  } catch {
+    // storage unavailable: fall through to the domain / device language
+  }
 
-    // 4. Otherwise detect device locale (existing behavior)
+  // 3. If host domain indicates a country (e.g. vietnam.life.help -> vi), use domain language
+  const domainLocale = getDomainLocale();
+  if (domainLocale) {
+    cachedLocale = domainLocale;
+    return domainLocale;
+  }
+
+  // 4. Otherwise detect device locale (existing behavior)
+  try {
     const detected = detectDeviceLocale();
     cachedLocale = detected;
     return detected;

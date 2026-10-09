@@ -541,10 +541,10 @@ export function SupportServiceView({
                   </span>
                 </div>
                 <div className="mt-2 text-xl sm:text-2xl font-black text-slate-900">
-                  💬 1:1 실시간 모국어 번역 대화방 개설
+                  💬 1:1 모국어 번역 대화방
                 </div>
                 <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-                  고객님의 실제 휴대폰 번호는 수집·저장되지 않았습니다. 선택하신 지역의 공식 인증 헬퍼와 1:1 실시간 자동 번역 채팅으로 안전하게 소통하실 수 있습니다.
+                  고객님의 실제 휴대폰 번호는 수집·저장되지 않았습니다. 선택하신 지역의 공식 인증 헬퍼와 1:1 자동 번역 채팅으로 안전하게 소통하실 수 있습니다.
                 </p>
 
                 {/* Auto Customer Identifier Badge */}
@@ -564,7 +564,7 @@ export function SupportServiceView({
                     className={`w-full droplet-btn-lg ${theme.btnBg} text-white font-black text-sm py-3.5 flex items-center justify-center gap-2 shadow-md transition text-center`}
                   >
                     <span>💬</span>
-                    <span>1:1 실시간 번역 대화 시작하기 →</span>
+                    <span>1:1 번역 대화 시작하기 →</span>
                   </Link>
                 </div>
               </div>
@@ -687,7 +687,7 @@ export function SupportServiceView({
                 <div className="flex items-center gap-2 text-emerald-950 font-black text-sm sm:text-base">
                   <span>🔒</span>
                   <span>
-                    {t("privacy.cardZeroPhoneTitle") || "전화번호 수집 제로"} · {t("privacy.cardRealtimeChatTitle") || "1:1 실시간 모국어 번역 대화"}
+                    {t("privacy.cardZeroPhoneTitle") || "전화번호 수집 제로"} · {t("privacy.cardRealtimeChatTitle") || "헬퍼와 1:1 번역 채팅"}
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-emerald-800 leading-relaxed font-medium">
@@ -696,7 +696,7 @@ export function SupportServiceView({
                 </p>
                 <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-emerald-900 pt-2 border-t border-emerald-200/60">
                   <span className="droplet-pill bg-emerald-100 text-emerald-900 px-2.5 py-0.5">✓ 개인 연락처 수집 0%</span>
-                  <span className="droplet-pill bg-emerald-100 text-emerald-900 px-2.5 py-0.5">✓ 1:1 실시간 안심 대화</span>
+                  <span className="droplet-pill bg-emerald-100 text-emerald-900 px-2.5 py-0.5">✓ 1:1 안심 대화</span>
                   <span className="droplet-pill bg-emerald-100 text-emerald-900 px-2.5 py-0.5">✓ 지역 전담 헬퍼 직결</span>
                 </div>
               </div>
@@ -810,7 +810,7 @@ export function SupportServiceView({
                   <span>헬퍼 개인정보 및 전화번호 수집 제로 (안심 활동)</span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                  헬퍼님의 실제 이름이나 개인 휴대폰 번호를 수집·저장하지 않습니다. 고객과의 모든 상담 및 매칭은 1:1 실시간 모국어 자동 번역 대화 시스템을 통해 안전하게 이루어집니다.
+                  헬퍼님의 실제 이름이나 개인 휴대폰 번호를 수집·저장하지 않습니다. 고객과의 모든 상담 및 매칭은 1:1 모국어 자동 번역 대화 시스템을 통해 안전하게 이루어집니다.
                 </p>
               </div>
 

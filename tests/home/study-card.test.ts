@@ -7,6 +7,7 @@ const read = (p: string) => readFileSync(p, "utf8").replace(/\r\n/g, "\n");
 const dict = (l: string) => JSON.parse(read(`messages/${l}.json`)) as Record<string, unknown>;
 const get = (o: unknown, path: string): unknown => path.split(".").reduce<unknown>((c, k) => (c && typeof c === "object" ? (c as Record<string, unknown>)[k] : undefined), o);
 const ph = (s: string) => (s.match(/\{[A-Za-z0-9_]+\}/g) ?? []).sort().join(",");
+import { locales as REGISTRY_LOCALES } from "@/messages/registry";
 const LOCALES = readdirSync("messages").filter((f) => f.endsWith(".json")).map((f) => f.replace(".json", ""));
 
 const home = read("components/customer/CustomerHome.tsx");
@@ -49,8 +50,8 @@ describe("study destinations follow the environment and never fall into producti
 });
 
 describe("Study copy in every main-site locale", () => {
-  it("has all 11 keys, non-empty, in all 38 locale files", () => {
-    expect(LOCALES).toHaveLength(38);
+  it("has all 11 keys, non-empty, in every registry locale file", () => {
+    expect([...LOCALES].sort()).toEqual([...REGISTRY_LOCALES].sort());
     for (const l of LOCALES) for (const k of STUDY_KEYS) { const v = get(dict(l), k); expect(typeof v, `${l}:${k}`).toBe("string"); expect((v as string).trim().length, `${l}:${k}`).toBeGreaterThan(0); }
   });
   it("uses only the {site} placeholder, with the same placeholder as Korean in every locale, no markup or line break", () => {

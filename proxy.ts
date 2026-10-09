@@ -70,6 +70,11 @@ const COUNTRIES = new Set([
   "singapore",
   "malaysia",
   "nigeria",
+  "elsalvador",
+  "centralafrica",
+  "venezuela",
+  "kenya",
+  "argentina",
 ]);
 
 /**
@@ -119,6 +124,14 @@ const LANGUAGES = new Set([
   "pt",
   "el",
   "ur",
+  "sg",
+  "sw",
+  "mr",
+  "gu",
+  "pa",
+  "te",
+  "kn",
+  "ml",
   "zh-hans",
   "zh-hant",
 ]);
@@ -177,6 +190,11 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
   singapore: "en",
   malaysia: "en",
   nigeria: "en",
+  elsalvador: "es",
+  centralafrica: "sg",
+  venezuela: "es",
+  kenya: "sw",
+  argentina: "es",
 };
 
 function getHost(request: NextRequest) {

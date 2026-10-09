@@ -61,9 +61,9 @@ export default function PrivacyNotice() {
             <a href="/chat" className="hover:text-slate-800">
               💬{" "}
               {isKorean
-                ? "실시간 고객 상담"
+                ? "고객 상담"
                 : isBilingual
-                ? `${t("customer.consultation")} · 실시간 상담`
+                ? `${t("customer.consultation")} · 상담`
                 : t("customer.consultation")}
             </a>
             <a href="/services/job-help?tab=provider" className="hover:text-slate-800">

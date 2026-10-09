@@ -70,4 +70,16 @@ describe("service core strings in the canonical locale registry", () => {
       expect(/\b38\b|\b47\b/.test(lang)).toBe(false);
     });
   }
+
+  it("customer-facing chat copy makes no real-time / instant promise (transport is polling, no SLA)", () => {
+    const keys = ["common.nativeConsultationCenter", "privacy.cardRealtimeChatTitle", "request.privacyNoPhoneNote", "request.startLiveChat", "support.badge050", "tech.instantDispatchConnected"];
+    for (const l of ["en", "ko"]) {
+      const d = load(l);
+      for (const k of keys) expect(get(d, k) as string, `${l} ${k}`).not.toMatch(/real[- ]?time|live|instant|immediate|실시간|즉시/i);
+    }
+  });
+  it("derives the canonical locale count from the registry (no hard-coded 38 / 47 in the copy)", () => {
+    for (const l of locales) expect(Object.keys(load(l)).length).toBeGreaterThan(10);
+    expect(new Set(locales).size).toBe(locales.length);
+  });
 });

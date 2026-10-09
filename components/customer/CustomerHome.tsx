@@ -5,7 +5,7 @@ import Link from "next/link";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
-import { locales } from "@/messages";
+import { formatLocaleCount } from "@/lib/i18n/localeCount";
 import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
@@ -342,7 +342,7 @@ export function CustomerHome() {
             <Link
               href="/chat"
               className="droplet-pill inline-flex items-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-700 transition shrink-0"
-              title={formatBilingual(t("common.nativeConsultationCenter"), "모국어 실시간 상담 센터")}
+              title={formatBilingual(t("common.nativeConsultationCenter"), "모국어 상담 센터")}
             >
               <span className="shrink-0 text-xs">💬</span>
               <span className="hidden xs:inline">
@@ -374,7 +374,7 @@ export function CustomerHome() {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span>
                   {locale === "ko"
-                    ? `${t("trustMetrics.languages").replace("{count}", String(locales.length))}`
+                    ? `${t("trustMetrics.languages").replace("{count}", formatLocaleCount(locale))}`
                     : `${t("customer.consultation")} · ${t("customer.safe050Tag") || "안심 연결"}`}
                 </span>
               </div>
@@ -520,7 +520,7 @@ export function CustomerHome() {
           <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-[10px] sm:text-xs font-bold text-slate-600">
             <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
               <span>🌐</span>
-              <span>{t("trustMetrics.languages").replace("{count}", String(locales.length))}</span>
+              <span>{t("trustMetrics.languages").replace("{count}", formatLocaleCount(locale))}</span>
             </div>
             <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
               <span>🔒</span>
@@ -594,7 +594,7 @@ export function CustomerHome() {
 
             <div className="droplet-card border border-slate-200/90 bg-white/90 p-3.5 shadow-2xs">
               <span className="text-xl">💬</span>
-              <h3 className="mt-1 text-xs sm:text-sm font-black text-slate-900">{t("privacy.cardRealtimeChatTitle") || "1:1 실시간 모국어 번역 대화"}</h3>
+              <h3 className="mt-1 text-xs sm:text-sm font-black text-slate-900">{t("privacy.cardRealtimeChatTitle") || "헬퍼와 1:1 번역 채팅"}</h3>
               <p className="mt-0.5 text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">
                 {t("privacy.cardRealtimeChatDesc") || "모국어로 메시지를 보내면 헬퍼에게 자동 번역되어 막힘없이 소통합니다."}
               </p>

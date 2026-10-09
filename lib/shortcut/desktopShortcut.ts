@@ -75,6 +75,11 @@ export const COUNTRY_KOREAN_NAMES: Record<string, string> = {
   singapore: "싱가포르",
   malaysia: "말레이시아",
   nigeria: "나이지리아",
+  elsalvador: "엘살바도르",
+  centralafrica: "중앙아프리카공화국",
+  venezuela: "베네수엘라",
+  kenya: "케냐",
+  argentina: "아르헨티나",
 };
 
 /**
@@ -195,7 +200,7 @@ export function getDomainShortcutDetails(options?: {
     description = meta.tech.description;
   } else if (portal === "chat") {
     title = isKorean
-      ? "LIFE.HELP CHAT · 모국어 실시간 상담 센터"
+      ? "LIFE.HELP CHAT · 모국어 상담 센터"
       : `LIFE.HELP CHAT · ${meta.chat.title}`;
     shortName = isKorean ? "LIFE.HELP · 상담" : "LIFE.HELP · Chat";
     description = meta.chat.description;
