@@ -285,3 +285,50 @@ describe("environment guards", () => {
     for (const bad of ["", "x", "Boiler", null, 5, "drop table"]) expect(normalizeServiceSlug(bad)).toBeNull();
   });
 });
+
+describe("customer request access: the link token is exchanged for an HttpOnly cookie", { timeout: 60_000 }, () => {
+  it("request id alone and forged tokens are denied; the real token is claimed once and then works from the cookie only", async () => {
+    const owner = new Agent("owner"), device2 = new Agent("device2"), stranger = new Agent("stranger");
+    const created = await owner.post("/c/requests", newRequest);
+    const { request, token } = created.body;
+    const url = `/c/requests/${request.id}`;
+
+    // creating a request sets its token cookie (HttpOnly) next to the anonymous customer cookie
+    const setCookies = created.headers.getSetCookie().join("\n");
+    expect(setCookies).toMatch(new RegExp(`lh_rt_${request.id.replace(/-/g, "")}=[^;]+;[^\\n]*HttpOnly`, "i"));
+    expect(setCookies).toMatch(/lh_c=[^;]+;[^\n]*HttpOnly/i);
+
+    expect((await device2.get(url)).status).toBe(404); // the UUID alone grants nothing
+    expect((await device2.get(`${url}/messages?locale=vi`)).status).toBe(404);
+    expect((await device2.post(`${url}/claim`, { token: "f".repeat(64) })).status).toBe(404); // forged token
+    expect((await device2.post(`${url}/claim`, { token: "short" })).status).toBe(403); // not even secret-shaped
+    expect((await device2.post(`${url}/claim`, {})).status).toBe(403);
+    expect((await device2.get(url, { "x-svc-token": "e".repeat(64) })).status).toBe(404);
+    expect([...device2.jar.keys()].filter((k) => k.startsWith("lh_rt_"))).toEqual([]); // a failed claim sets nothing
+
+    const claimed = await device2.post(`${url}/claim`, { token }); // valid token -> cookie
+    expect(claimed.status).toBe(200);
+    expect(claimed.headers.getSetCookie().join("\n")).toMatch(/HttpOnly/i);
+    expect(claimed.headers.getSetCookie().join("\n")).toMatch(/SameSite=Lax/i);
+    expect((await device2.get(url)).status).toBe(200); // no header token: the cookie is the authority now
+    expect((await device2.post(`${url}/messages`, { body: "from device 2", locale: "vi" })).status).toBe(201);
+    expect((await owner.get(`${url}/messages?locale=vi`)).body.messages.map((m: any) => m.body)).toContain("from device 2");
+
+    // the cookie is bound to this request: it opens nothing else
+    const other = (await stranger.post("/c/requests", newRequest)).body.request.id;
+    expect((await device2.get(`/c/requests/${other}`)).status).toBe(404);
+    expect((await stranger.get(url)).status).toBe(404);
+    // and a cookie copied onto another request's id does not work
+    const copy = new Agent("copy");
+    copy.jar.set(`lh_rt_${other.replace(/-/g, "")}`, device2.jar.get(`lh_rt_${request.id.replace(/-/g, "")}`)!);
+    expect((await copy.get(`/c/requests/${other}`)).status).toBe(404);
+  });
+
+  it("claiming is rate limited", async () => {
+    const a = new Agent("a");
+    const id = (await new Agent("c").post("/c/requests", newRequest)).body.request.id;
+    let last = 0;
+    for (let i = 0; i < 31; i++) last = (await a.post(`/c/requests/${id}/claim`, { token: "f".repeat(64) })).status;
+    expect(last).toBe(429);
+  });
+});

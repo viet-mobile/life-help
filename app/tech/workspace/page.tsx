@@ -204,9 +204,7 @@ export default function TechWorkspacePage() {
       extraWorkDates,
     );
     showFeedback(
-      isKorean
-        ? "월간 출동 달력 일정이 실시간 반영되었습니다."
-        : "Monthly calendar schedule updated.",
+      t("svc.helper.scheduleSaved"),
     );
   };
 
@@ -220,7 +218,7 @@ export default function TechWorkspacePage() {
   const smsBody = encodeURIComponent(
     `[LIFE.HELP 헬퍼 변동상황 통보]\n헬퍼: ${contract.name}\n계정: ${contract.email || helper.email}\n상태: ${
       helper.isActive ? "출동 가능 상태" : "일시 업무 중단/휴식 요청"
-    }\n사유: 사정 변동으로 인한 실시간 반영 요청`,
+    }\n사유: 사정 변동으로 인한 반영 요청`,
   );
 
   return (
@@ -521,6 +519,7 @@ export default function TechWorkspacePage() {
               </div>
 
               {/* General Default Hours Preset Selector with WorkHoursPicker */}
+              <p data-testid="schedule-note" className="mb-3 w-full text-[11px] font-bold text-amber-300">{t("svc.helper.scheduleNote")}</p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-400">
                   {isKorean ? "기본 시간대:" : `${t("workspace.defaultSchedule") || "Default"}:`}

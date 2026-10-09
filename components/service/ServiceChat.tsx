@@ -9,8 +9,6 @@ import { usePoll } from "@/lib/service/usePoll";
 interface Props {
   requestId: string;
   kind: ChatKind;
-  /** the customer's request access token (for opening the request on another device) */
-  token?: string | null;
   canSend: boolean;
   tone?: "light" | "dark";
   /** how often the other side's messages are fetched */
@@ -22,7 +20,7 @@ interface Props {
  * a new tab or another device shows the same conversation. The ORIGINAL text is always shown; a machine translation, when there is
  * one, is shown next to it and marked as such. A failed translation says so - it is never replaced by a made-up one.
  */
-export function ServiceChat({ requestId, kind, token = null, canSend, tone = "light", pollMs = 2000 }: Props) {
+export function ServiceChat({ requestId, kind, canSend, tone = "light", pollMs = 2000 }: Props) {
   const { locale, t } = useLocale();
   const [messages, setMessages] = useState<SvcMessage[]>([]);
   const [text, setText] = useState("");
@@ -50,19 +48,24 @@ export function ServiceChat({ requestId, kind, token = null, canSend, tone = "li
   }, [requestId, locale]);
 
   usePoll(async () => {
-    merge(await chatApi.list(kind, requestId, cursor.current, locale, token));
+    merge(await chatApi.list(kind, requestId, cursor.current, locale));
     setProblem(null);
   }, pollMs, true, (e) => setProblem(e instanceof ApiError && e.status === 404 ? "gone" : "retry"));
 
   useEffect(() => { bottom.current?.scrollIntoView({ block: "end" }); }, [messages.length]);
+
+  const pending = useRef<{ id: string; body: string } | null>(null);
 
   const send = async (e: React.FormEvent) => {
     e.preventDefault();
     const body = text.trim();
     if (!body || sending || !canSend) return;
     setSending(true);
+    // one idempotency identity per message: a retry after a failed or lost response is stored once on the server
+    if (!pending.current || pending.current.body !== body) pending.current = { id: crypto.randomUUID(), body };
     try {
-      const m = await chatApi.send(kind, requestId, body, locale, token);
+      const m = await chatApi.send(kind, requestId, body, locale, pending.current.id);
+      pending.current = null;
       setText("");
       merge([{ ...m, own: true, translation: null, translationStatus: "NONE" }]);
       setProblem(null);

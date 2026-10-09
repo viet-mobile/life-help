@@ -1,6 +1,8 @@
 /** Opaque credentials. The server keeps only SHA-256 hashes; the raw secret lives in an HttpOnly cookie (or the request link). */
 export const CUSTOMER_COOKIE = "lh_c";
 export const HELPER_COOKIE = "lh_h";
+/** Per-request access token cookie: `lh_rt_<request id without dashes>` (HttpOnly, set by creating or claiming a request). */
+export const REQUEST_TOKEN_COOKIE = "lh_rt_";
 
 export function newSecret(bytes = 32): string {
   const buf = new Uint8Array(bytes);

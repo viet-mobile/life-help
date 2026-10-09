@@ -102,8 +102,11 @@ create table public.svc_messages (
   sender_id text,
   body text not null check (char_length(body) between 1 and 2000),
   source_locale text not null check (char_length(source_locale) between 2 and 16),
+  -- idempotency identity chosen by the sender per message: a retry of the same send stores (and notifies) once
+  client_msg_id uuid,
   created_at timestamptz not null default now()
 );
+create unique index svc_messages_client_idx on public.svc_messages (request_id, sender_kind, coalesce(sender_id, ''), client_msg_id) where client_msg_id is not null;
 create unique index svc_messages_seq_idx on public.svc_messages (seq);
 create index svc_messages_request_idx on public.svc_messages (request_id, seq);
 
@@ -551,16 +554,28 @@ create function public.svc__msg_json(m public.svc_messages) returns jsonb
                             'sourceLocale', m.source_locale, 'createdAt', m.created_at)
 $$;
 
-create function public.svc__post_message(r public.svc_requests, p_kind text, p_sender text, p_body text, p_locale text) returns public.svc_messages
+create function public.svc__post_message(r public.svc_requests, p_kind text, p_sender text, p_body text, p_locale text, p_client_id uuid default null) returns public.svc_messages
   language plpgsql set search_path = '' as $$
 declare m public.svc_messages; v_body text := btrim(coalesce(p_body, '')); v_waiting_count integer;
 begin
   if v_body = '' or char_length(v_body) > 2000 or p_locale is null or char_length(p_locale) not between 2 and 16 then perform public.svc__fail('INVALID_INPUT'); end if;
+  if p_client_id is not null then
+    select * into m from public.svc_messages
+      where request_id = r.id and sender_kind = p_kind and coalesce(sender_id, '') = coalesce(p_sender, '') and client_msg_id = p_client_id;
+    if found then return m; end if; -- a replay of an already stored send: same message, no second notification
+  end if;
   if r.status = 'WAITING' and p_kind = 'CUSTOMER' then
     select count(*) into v_waiting_count from public.svc_messages where request_id = r.id and sender_kind = 'CUSTOMER';
     if v_waiting_count >= 20 then perform public.svc__fail('RATE_LIMITED'); end if;
   end if;
-  insert into public.svc_messages (request_id, sender_kind, sender_id, body, source_locale) values (r.id, p_kind, p_sender, v_body, p_locale) returning * into m;
+  insert into public.svc_messages (request_id, sender_kind, sender_id, body, source_locale, client_msg_id) values (r.id, p_kind, p_sender, v_body, p_locale, p_client_id)
+    on conflict (request_id, sender_kind, coalesce(sender_id, ''), client_msg_id) where client_msg_id is not null do nothing
+    returning * into m;
+  if m.id is null then -- lost a race against the same client id: return the winner, notify nothing
+    select * into m from public.svc_messages
+      where request_id = r.id and sender_kind = p_kind and coalesce(sender_id, '') = coalesce(p_sender, '') and client_msg_id = p_client_id;
+    return m;
+  end if;
   -- notify the other side(s); the sender never notifies themself, and nobody is notified about a helper that does not exist yet
   if p_kind <> 'CUSTOMER' then perform public.svc__emit('NEW_CHAT_MESSAGE', r.id, 'CUSTOMER', r.customer_id, m.id::text); end if;
   if p_kind <> 'HELPER' and r.helper_id is not null then perform public.svc__emit('NEW_CHAT_MESSAGE', r.id, 'HELPER', r.helper_id, m.id::text); end if;
@@ -568,12 +583,12 @@ begin
 end
 $$;
 
-create function public.svc_msg_send(p_kind text, p_cred text, p_token text, p_request uuid, p_body text, p_locale text) returns jsonb
+create function public.svc_msg_send(p_kind text, p_cred text, p_token text, p_request uuid, p_body text, p_locale text, p_client_id uuid default null) returns jsonb
   language plpgsql security definer set search_path = '' as $$
 declare party record; m public.svc_messages;
 begin
   select * into party from public.svc__chat_party(p_kind, p_cred, p_token, p_request, true);
-  m := public.svc__post_message(party.o_request, party.o_kind, party.o_id::text, p_body, p_locale);
+  m := public.svc__post_message(party.o_request, party.o_kind, party.o_id::text, p_body, p_locale, p_client_id);
   return public.svc__msg_json(m);
 end
 $$;
@@ -761,7 +776,7 @@ begin
 end
 $$;
 
-create function public.svc_a_msg_send(p_admin text, p_request uuid, p_body text, p_locale text) returns jsonb
+create function public.svc_a_msg_send(p_admin text, p_request uuid, p_body text, p_locale text, p_client_id uuid default null) returns jsonb
   language plpgsql security definer set search_path = '' as $$
 declare r public.svc_requests; m public.svc_messages;
 begin
@@ -769,7 +784,7 @@ begin
   select * into r from public.svc_requests where id = p_request;
   if not found then perform public.svc__fail('NOT_FOUND'); end if;
   if r.status in ('COMPLETED', 'CANCELLED') then perform public.svc__fail('INVALID_STATE'); end if;
-  m := public.svc__post_message(r, 'ADMIN', p_admin, p_body, p_locale);
+  m := public.svc__post_message(r, 'ADMIN', p_admin, p_body, p_locale, p_client_id);
   return public.svc__msg_json(m);
 end
 $$;

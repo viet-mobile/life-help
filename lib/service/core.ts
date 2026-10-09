@@ -35,6 +35,9 @@ const strings = (v: unknown, max: number, each: number) => (Array.isArray(v) ? v
  * Orchestrates the svc_* database functions: turns raw credentials into hashes, creates credentials, adds machine translations
  * (cache beside the originals) and nothing else. Authorization, matching, state transitions and notifications all live in SQL.
  */
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const uuidOrNull = (v: unknown): string | null => (typeof v === "string" && UUID_RE.test(v) ? v.toLowerCase() : null);
+
 export class ServiceCore {
   /** (message|request, locale) -> time of the last failed translation: do not hammer a provider that just said no. */
   private failures = new Map<string, number>();
@@ -146,10 +149,10 @@ export class ServiceCore {
 
   /* -------------------------------------------------------------------- chat */
 
-  async sendMessage(kind: ActorKind, credRaw: string | null, tokenRaw: string | null, id: string, body: unknown, locale: unknown) {
+  async sendMessage(kind: ActorKind, credRaw: string | null, tokenRaw: string | null, id: string, body: unknown, locale: unknown, clientId?: unknown) {
     const m = await this.db.rpc<any>("svc_msg_send", {
       p_kind: kind, p_cred: kind === "HELPER" ? await this.helperCred(credRaw) : await this.hash(credRaw), p_token: await this.hash(tokenRaw),
-      p_request: id, p_body: text(body, 2000), p_locale: text(locale, 16),
+      p_request: id, p_body: text(body, 2000), p_locale: text(locale, 16), p_client_id: uuidOrNull(clientId),
     });
     return { ...m, own: true, translation: null, translationStatus: "NONE" as TranslationStatus } as MessageView;
   }
@@ -245,8 +248,8 @@ export class ServiceCore {
   async adminCancel(admin: string, id: string) {
     return this.db.rpc<any>("svc_a_cancel_request", { p_admin: admin, p_request: id });
   }
-  async adminSendMessage(admin: string, id: string, body: unknown, locale: unknown) {
-    const m = await this.db.rpc<any>("svc_a_msg_send", { p_admin: admin, p_request: id, p_body: text(body, 2000), p_locale: text(locale, 16) });
+  async adminSendMessage(admin: string, id: string, body: unknown, locale: unknown, clientId?: unknown) {
+    const m = await this.db.rpc<any>("svc_a_msg_send", { p_admin: admin, p_request: id, p_body: text(body, 2000), p_locale: text(locale, 16), p_client_id: uuidOrNull(clientId) });
     return { ...m, own: true, translation: null, translationStatus: "NONE" as TranslationStatus } as MessageView;
   }
   async adminListMessages(id: string, after: number, readerLocale: string) {

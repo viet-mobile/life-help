@@ -11,7 +11,7 @@ import { ServiceChat } from "./ServiceChat";
 import { StatusBadge, StatusSteps } from "./RequestStatus";
 
 /** One request as the server knows it, refreshed every few seconds, with its chat. Everything shown here comes from the database. */
-export function CustomerRequest({ requestId, token }: { requestId: string; token: string | null }) {
+export function CustomerRequest({ requestId, token }: { requestId: string; /** only in memory, from the link just opened or created: used to show the shareable link, never stored */ token: string | null }) {
   const { t } = useLocale();
   const [request, setRequest] = useState<SvcRequest | null>(null);
   const [events, setEvents] = useState<SvcEvent[]>([]);
@@ -20,7 +20,7 @@ export function CustomerRequest({ requestId, token }: { requestId: string; token
   const [busy, setBusy] = useState(false);
 
   usePoll(async () => {
-    const out = await customerApi.get(requestId, token);
+    const out = await customerApi.get(requestId);
     setRequest(out.request);
     setEvents(out.events);
     setState("ready");
@@ -48,7 +48,7 @@ export function CustomerRequest({ requestId, token }: { requestId: string; token
   const cancel = async () => {
     if (busy || !window.confirm(t("svc.req.cancelConfirm"))) return;
     setBusy(true);
-    try { setRequest(await customerApi.cancel(request.id, token)); } catch { /* the next refresh shows the truth */ } finally { setBusy(false); }
+    try { setRequest(await customerApi.cancel(request.id)); } catch { /* the next refresh shows the truth */ } finally { setBusy(false); }
   };
   const copy = async () => {
     try { await navigator.clipboard.writeText(link ?? ""); setCopied(true); } catch { /* shown below to copy by hand */ }
@@ -93,7 +93,7 @@ export function CustomerRequest({ requestId, token }: { requestId: string; token
       </section>
 
       {request.status === "WAITING" && !request.helper && <p className="px-1 text-[11px] text-slate-500">{t("svc.chat.beforeHelper")}</p>}
-      <ServiceChat requestId={request.id} kind="CUSTOMER" token={token} canSend={request.status !== "COMPLETED" && request.status !== "CANCELLED"} />
+      <ServiceChat requestId={request.id} kind="CUSTOMER" canSend={request.status !== "COMPLETED" && request.status !== "CANCELLED"} />
 
       <details className="px-1 text-[11px] text-slate-500">
         <summary className="cursor-pointer font-bold">{t("svc.req.history")}</summary>

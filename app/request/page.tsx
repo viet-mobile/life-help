@@ -15,7 +15,7 @@ import {
   getLocalizedGunguList,
   romanizeKoreanRegion,
 } from "@/lib/region/regionLocalization";
-import { ApiError, customerApi, rememberRequestToken } from "@/lib/service/client";
+import { ApiError, customerApi } from "@/lib/service/client";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
 import { languages } from "@/messages";
 
@@ -307,7 +307,6 @@ function RequestPageContent() {
         locale,
         selectedOptions: selectedProblemOptions,
       });
-      rememberRequestToken(out.request.id, out.token);
       setCreated({ id: out.request.id, token: out.token, eligibleHelpers: out.eligibleHelpers });
       setSubmitted(true);
     } catch (err) {
@@ -392,7 +391,7 @@ function RequestPageContent() {
               <p className="text-xs text-emerald-800 mt-1 leading-relaxed">
                 {formatBilingual(
                   t("request.privacyNoPhoneNote"),
-                  "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다."
+                  "저희는 휴대폰 번호를 받지 않습니다. 이 웹사이트의 1:1 대화방에서 헬퍼님과 대화합니다."
                 )}
               </p>
             </div>
@@ -402,7 +401,7 @@ function RequestPageContent() {
                 href={created ? `/chat?r=${created.id}#t=${created.token}` : "/chat"}
                 className="droplet-btn-lg w-full sm:w-auto bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-7 py-3.5 text-base font-black text-white shadow-md hover:shadow-lg active:scale-[0.98] transition cursor-pointer text-center"
               >
-                💬 {formatBilingual(t("request.startLiveChat") || "실시간 1:1 대화 연결", "실시간 1:1 대화 연결")}
+                💬 {formatBilingual(t("request.startLiveChat") || "1:1 대화 열기", "1:1 대화 열기")}
               </Link>
               <Link
                 href="/"
@@ -745,8 +744,8 @@ function RequestPageContent() {
                 </p>
                 <p className="text-[11px] sm:text-xs font-semibold text-emerald-800 mt-1 leading-relaxed whitespace-pre-line">
                   {formatBilingual(
-                    t("request.privacyNoPhoneNote") || "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다.",
-                    "저희 시스템은 고객님의 개인정보 보호를 위해 휴대폰 번호를 기입받지 않습니다. 본 웹사이트 또는 LIFE.HELP 앱의 실시간 대화방을 통해 헬퍼님과 안전하게 직접 연결됩니다."
+                    t("request.privacyNoPhoneNote") || "저희는 휴대폰 번호를 받지 않습니다. 이 웹사이트의 1:1 대화방에서 헬퍼님과 대화합니다.",
+                    "저희는 휴대폰 번호를 받지 않습니다. 이 웹사이트의 1:1 대화방에서 헬퍼님과 대화합니다."
                   )}
                 </p>
               </div>

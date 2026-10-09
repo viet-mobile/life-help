@@ -7,7 +7,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { navigateToMainHome } from "@/lib/navigation";
-import { rememberRequestToken, requestToken } from "@/lib/service/client";
+import { customerApi } from "@/lib/service/client";
 import { CustomerRequest } from "@/components/service/CustomerRequest";
 import { MyRequests } from "@/components/service/MyRequests";
 
@@ -16,18 +16,23 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 function CustomerChatContent() {
   const { t } = useLocale();
   const requestId = useSearchParams().get("r");
-  // The request link carries its access token in the URL fragment (never sent to the server except as a header by our own fetches).
-  // localStorage only remembers it for this browser; the server is the source of truth for the request and its messages.
+  // The link's token (URL fragment) is exchanged once for an HttpOnly cookie and removed from the address bar; it is never written to
+  // JS-readable storage. The page keeps it in memory only to be able to show the shareable link.
   const [token, setToken] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrates from the server / browser cache after mount
-    if (!requestId) return setReady(true);
-    const fromHash = new URLSearchParams(window.location.hash.replace(/^#/, "")).get("t");
-    const t64 = fromHash && /^[0-9a-f]{64}$/.test(fromHash) ? fromHash : null;
-    if (t64) rememberRequestToken(requestId, t64);
-    setToken(t64 ?? requestToken(requestId));
-    setReady(true);
+    let alive = true;
+    (async () => {
+      if (requestId) {
+        const fromHash = new URLSearchParams(window.location.hash.replace(/^#/, "")).get("t");
+        if (fromHash && /^[0-9a-f]{64}$/.test(fromHash)) {
+          try { await customerApi.claim(requestId, fromHash); if (alive) setToken(fromHash); } catch { /* shown as "not found" below */ }
+          window.history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+      }
+      if (alive) setReady(true);
+    })();
+    return () => { alive = false; };
   }, [requestId]);
 
   return (

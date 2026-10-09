@@ -1,4 +1,4 @@
-import { CUSTOMER_COOKIE, HELPER_COOKIE, clearCookieHeader, isSecret, readCookie, setCookieHeader } from "./credentials";
+import { CUSTOMER_COOKIE, HELPER_COOKIE, REQUEST_TOKEN_COOKIE, clearCookieHeader, isSecret, readCookie, setCookieHeader } from "./credentials";
 import type { CreateRequestInput, ServiceCore } from "./core";
 import { ServiceError } from "./errors";
 
@@ -88,23 +88,40 @@ export function createServiceHandler(deps: HttpDeps) {
       /* ------------------------------------------------------------ customer */
       if (route.startsWith("/c/")) {
         const cred = readCookie(request, CUSTOMER_COOKIE);
-        const token = request.headers.get("x-svc-token");
+        // A request's access token reaches the server in an HttpOnly cookie set by the claim exchange below (browsers never keep it in
+        // JS-readable storage); the header form is for non-browser clients.
+        const tokenCookie = (reqId: string) => readCookie(request, `${REQUEST_TOKEN_COOKIE}${reqId.replace(/-/g, "")}`);
+        const headerToken = request.headers.get("x-svc-token");
+        const tokenFor = (reqId: string) => headerToken ?? tokenCookie(reqId);
+        const tokenCookieHeader = (reqId: string, value: string) =>
+          setCookieHeader(`${REQUEST_TOKEN_COOKIE}${reqId.replace(/-/g, "")}`, value, { maxAgeSec: 90 * 86_400, secure });
         if (route === "/c/requests" && method === "POST") {
           limit(`create:${ip}`, 20, 3_600_000, t);
           const body = await readBody(request);
           const out = await core.createRequest(cred, { ...(body as CreateRequestInput), locale: locale(body.locale, "") });
           const { credential, ...rest } = out;
-          return json(rest, 201, credential ? [setCookieHeader(CUSTOMER_COOKIE, credential, { maxAgeSec: 400 * 86_400, secure })] : []);
+          const cookies = [tokenCookieHeader(rest.request.id, rest.token)];
+          if (credential) cookies.push(setCookieHeader(CUSTOMER_COOKIE, credential, { maxAgeSec: 400 * 86_400, secure }));
+          return json(rest, 201, cookies);
+        }
+        if ((hit = m(/^\/c\/requests\/([^/]+)\/claim$/)) && method === "POST") {
+          // One-time exchange: the link's token is verified, then kept only as an HttpOnly cookie for this browser
+          limit(`claim:${ip}`, 30, 600_000, t);
+          const body = await readBody(request);
+          if (!isSecret(body.token)) throw new ServiceError("FORBIDDEN");
+          const reqId = id(hit[1]);
+          const out = await core.getCustomerRequest(cred, body.token, reqId); // FORBIDDEN / NOT_FOUND unless the token is valid for this request
+          return json({ request: out.request }, 200, [tokenCookieHeader(reqId, body.token)]);
         }
         if (route === "/c/requests" && method === "GET") return json({ requests: await core.listCustomerRequests(cred) });
-        if ((hit = m(/^\/c\/requests\/([^/]+)$/)) && method === "GET") return json(await core.getCustomerRequest(cred, token, id(hit[1])));
-        if ((hit = m(/^\/c\/requests\/([^/]+)\/cancel$/)) && method === "POST") return json({ request: await core.cancelCustomerRequest(cred, token, id(hit[1])) });
+        if ((hit = m(/^\/c\/requests\/([^/]+)$/)) && method === "GET") return json(await core.getCustomerRequest(cred, tokenFor(id(hit[1])), id(hit[1])));
+        if ((hit = m(/^\/c\/requests\/([^/]+)\/cancel$/)) && method === "POST") return json({ request: await core.cancelCustomerRequest(cred, tokenFor(id(hit[1])), id(hit[1])) });
         if ((hit = m(/^\/c\/requests\/([^/]+)\/messages$/))) {
-          if (method === "GET") return json({ messages: await core.listMessages("CUSTOMER", cred, token, id(hit[1]), intParam(url.searchParams.get("after")), locale(url.searchParams.get("locale"), "en")) });
+          if (method === "GET") return json({ messages: await core.listMessages("CUSTOMER", cred, tokenFor(id(hit[1])), id(hit[1]), intParam(url.searchParams.get("after")), locale(url.searchParams.get("locale"), "en")) });
           if (method === "POST") {
             limit(`msg:${cred ?? ip}`, 60, 60_000, t);
             const body = await readBody(request);
-            return json({ message: await core.sendMessage("CUSTOMER", cred, token, id(hit[1]), body.body, locale(body.locale, "")) }, 201);
+            return json({ message: await core.sendMessage("CUSTOMER", cred, tokenFor(id(hit[1])), id(hit[1]), body.body, locale(body.locale, ""), body.clientId) }, 201);
           }
         }
         if (route === "/c/notifications" && method === "GET") return json({ notifications: await core.notifications("CUSTOMER", cred, intParam(url.searchParams.get("after"))) });
@@ -146,7 +163,7 @@ export function createServiceHandler(deps: HttpDeps) {
           if (method === "POST") {
             limit(`hmsg:${cred ?? ip}`, 60, 60_000, t);
             const body = await readBody(request);
-            return json({ message: await core.sendMessage("HELPER", cred, null, id(hit[1]), body.body, locale(body.locale, "")) }, 201);
+            return json({ message: await core.sendMessage("HELPER", cred, null, id(hit[1]), body.body, locale(body.locale, ""), body.clientId) }, 201);
           }
         }
         if (route === "/h/notifications" && method === "GET") return json({ notifications: await core.notifications("HELPER", cred, intParam(url.searchParams.get("after"))) });
@@ -169,7 +186,7 @@ export function createServiceHandler(deps: HttpDeps) {
           if (method === "GET") return json({ messages: await core.adminListMessages(id(hit[1]), intParam(url.searchParams.get("after")), readerLocale) });
           if (method === "POST") {
             const body = await readBody(request);
-            return json({ message: await core.adminSendMessage(admin, id(hit[1]), body.body, locale(body.locale, "ko")) }, 201);
+            return json({ message: await core.adminSendMessage(admin, id(hit[1]), body.body, locale(body.locale, "ko"), body.clientId) }, 201);
           }
         }
         if (route === "/a/helpers" && method === "GET") return json({ helpers: await core.adminListHelpers(url.searchParams.get("status")) });
