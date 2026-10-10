@@ -97,7 +97,8 @@ if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).
 
   const RUN_ID = `STG-${Date.now().toString(36)}-${randomBytes(3).toString("hex")}`;
   const baseline = path.join(os.tmpdir(), `life-help-${RUN_ID}.baseline.json`);
-  const childEnv = { ...process.env, ...env, STAGING_RUN_ID: RUN_ID };
+  const manifest = path.join(os.tmpdir(), `life-help-${RUN_ID}.manifest.ndjson`);
+  const childEnv = { ...process.env, ...env, STAGING_RUN_ID: RUN_ID, STAGING_RUN_MANIFEST: manifest };
   console.log(`RUN_ID = ${RUN_ID}`);
   const { results, blocked, failed, final } = await executePlan({
     baseline,

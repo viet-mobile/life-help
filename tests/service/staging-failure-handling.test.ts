@@ -1,4 +1,4 @@
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -63,6 +63,7 @@ describe("cleanup: authentication and malformed responses", () => {
   it("a delete that is rejected stops the run as blocked-auth without further deletes", async () => {
     const net = fakeNet([
       { match: /svc_requests\?select=id,customer_id/, status: 200, body: [{ id: "r1", customer_id: "c1" }] },
+      { match: /svc_helpers\?select=id&display_name=like/, status: 200, body: [] },
       { match: /svc_requests\?description=like/, method: "DELETE", status: 401, body: {} },
     ]);
     const r = await runCleanup({ fetchImpl: net.fetchImpl, env: env(), runId: RUN });
@@ -72,6 +73,7 @@ describe("cleanup: authentication and malformed responses", () => {
   it("learning Auth admin 401 -> blocked, no user deleted", async () => {
     const net = fakeNet([
       { match: /rest\/v1\/svc_requests\?select=id,customer_id/, status: 200, body: [] },
+      { match: /rest\/v1\/svc_helpers\?select=id&display_name/, status: 200, body: [] },
       { match: /rest\/v1\/svc_helpers\?display_name/, method: "DELETE", status: 204 },
       { match: /auth\/v1\/admin\/users\?/, status: 401, body: { msg: "bad jwt" } },
     ]);
@@ -215,5 +217,118 @@ describe("runner: failure classification", () => {
     expect(await probe(403)).toEqual({ deployed: true });
     expect(await probe(503)).toEqual({ deployed: true });
     expect(await probe("throw")).toMatchObject({ deployed: false, why: "BLOCKED_STAGING_UNREACHABLE" });
+  });
+});
+
+describe("cleanup: svc_audit is append-only", async () => {
+  const { auditBaseline, compareAudit, rowHash } = await import("../../scripts/staging/audit.mjs");
+  const audit = (id: number, over: Record<string, unknown> = {}) => ({ id, actor_kind: "ADMIN", actor_id: "a1", action: "HELPER_STATUS", entity: "helper", entity_id: `h${id}`, metadata: {}, created_at: "2026-10-11T00:00:00Z", ...over });
+  const BASE_ROWS = [audit(1), audit(2), audit(3, { entity: "request", entity_id: "r-old" })];
+
+  const net = (nowRows: unknown[], extra: Array<{ match: RegExp; method?: string; status: number; body?: unknown; headers?: Record<string, string> }> = []) =>
+    fakeNet([
+      ...extra,
+      { match: /svc_requests\?select=id,customer_id&description=like/, status: 200, body: [{ id: "r-run", customer_id: "c1" }] },
+      { match: /svc_helpers\?select=id&display_name=like/, status: 200, body: [{ id: "h-run" }], once: true },
+      { match: /svc_requests\?description=like/, method: "DELETE", status: 204 },
+      { match: /svc_helpers\?display_name=like/, method: "DELETE", status: 204 },
+      { match: /svc_requests\?select=id&customer_id=eq\.c1/, status: 200, body: [] },
+      { match: /svc_customers\?id=eq\.c1/, method: "DELETE", status: 204 },
+      { match: /auth\/v1\/admin\/users\?/, status: 200, body: { users: [] } },
+      { match: /svc_requests\?select=id&description=like/, status: 200, body: [] },
+      { match: /svc_helpers\?select=id&display_name=like/, status: 200, body: [] },
+      { match: /svc_audit\?select=/, status: 200, body: nowRows },
+      { match: /svc_requests\?select=\*/, method: "HEAD", status: 200, headers: { "content-range": "0-0/7" } },
+    ]);
+  const baselineFile = (rows: unknown[], counts: Record<string, number> = { svc_requests: 7 }) => {
+    const f = join(mkdtempSync(join(tmpdir(), "stg-")), "b.json");
+    writeFileSync(f, JSON.stringify({ counts, audit: auditBaseline(rows) }));
+    return f;
+  };
+  const go = (n: ReturnType<typeof fakeNet>, file: string, manifest = "") => runCleanup({ fetchImpl: n.fetchImpl, env: env(), runId: RUN, baselineFile: file, manifestFile: manifest });
+
+  it("baseline audit rows unchanged + new rows that belong to this run => PASS (append-only growth allowed, reported)", async () => {
+    const grown = [...BASE_ROWS, audit(4, { entity: "request", entity_id: "r-run", action: "REQUEST_ASSIGNED" }), audit(5, { entity: "helper", entity_id: "h-run", action: "HELPER_REGISTERED" })];
+    const n = net(grown);
+    const r = await go(n, baselineFile(BASE_ROWS));
+    expect(r.code).toBe(0);
+    const text = r.lines.join("\n");
+    expect(text).toContain("APPEND_ONLY_AUDIT_PRESERVED = PASS (baseline rows 3)");
+    expect(text).toContain("NEW_AUDIT_ROWS = 2 (attributed to this run 2, unattributed 0)");
+    expect(text).toContain("CURRENT_RUN_RESIDUE = 0");
+    expect(text).toContain("FOREIGN_ROWS_UNTOUCHED = PASS");
+    expect(n.calls.some((c) => c.url.includes("svc_audit") && c.method !== "GET")).toBe(false); // never a DELETE / PATCH on the audit table
+  });
+  it("rows of requests/helpers this run created and already removed (recorded in the run manifest) are attributed too", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "stg-"));
+    const manifest = join(dir, "m.ndjson");
+    writeFileSync(manifest, `${JSON.stringify({ kind: "requests", id: "r-harness" })}\n${JSON.stringify({ kind: "helpers", id: "h-harness" })}\ntorn-line`);
+    const grown = [...BASE_ROWS, audit(4, { entity: "request", entity_id: "r-harness" }), audit(5, { entity: "helper", entity_id: "h-harness" })];
+    const r = await go(net(grown), baselineFile(BASE_ROWS), manifest);
+    expect(r.code).toBe(0);
+    expect(r.lines.join("\n")).toContain("attributed to this run 2, unattributed 0");
+  });
+  it("a baseline audit row that disappeared => FAIL", async () => {
+    const r = await go(net([BASE_ROWS[0], BASE_ROWS[2]]), baselineFile(BASE_ROWS));
+    expect(r.code).toBe(1);
+    expect(r.lines.join("\n")).toContain("APPEND_ONLY_AUDIT_PRESERVED = FAIL (missing 1, modified 0)");
+  });
+  it("a baseline audit row that was modified => FAIL (detected by content hash)", async () => {
+    const r = await go(net([BASE_ROWS[0], audit(2, { action: "TAMPERED" }), BASE_ROWS[2]]), baselineFile(BASE_ROWS));
+    expect(r.code).toBe(1);
+    expect(r.lines.join("\n")).toContain("APPEND_ONLY_AUDIT_PRESERVED = FAIL (missing 0, modified 1)");
+  });
+  it("new audit rows that do not belong to this run are reported and fail (never silently ignored)", async () => {
+    const r = await go(net([...BASE_ROWS, audit(9, { entity: "request", entity_id: "someone-elses", action: "REQUEST_CANCELLED" })]), baselineFile(BASE_ROWS));
+    expect(r.code).toBe(1);
+    expect(r.lines.join("\n")).toContain("NEW_AUDIT_ROWS = 1 (attributed to this run 0, unattributed 1: 9/REQUEST_CANCELLED/request)");
+  });
+  it("mutable foreign tables keep exact protection: a changed count fails even when the audit is fine", async () => {
+    const r = await go(net(BASE_ROWS), baselineFile(BASE_ROWS, { svc_requests: 5 }));
+    expect(r.code).toBe(1);
+    expect(r.lines.join("\n")).toContain("FOREIGN_ROWS_UNTOUCHED = FAIL (svc_requests: 5 -> 7)");
+    expect(r.lines.join("\n")).toContain("APPEND_ONLY_AUDIT_PRESERVED = PASS");
+  });
+  it("current-run mutable residue fails even when the audit is fine; zero residue + audit growth passes", async () => {
+    const left = fakeNet([
+      { match: /svc_requests\?select=id,customer_id&description=like/, status: 200, body: [] },
+      { match: /svc_helpers\?select=id&display_name=like/, status: 200, body: [] },
+      { match: /svc_helpers\?display_name=like/, method: "DELETE", status: 204 },
+      { match: /auth\/v1\/admin\/users\?/, status: 200, body: { users: [] } },
+      { match: /svc_requests\?select=id&description=like/, status: 200, body: [{ id: "still-here" }] },
+      { match: /svc_audit\?select=/, status: 200, body: BASE_ROWS },
+      { match: /svc_requests\?select=\*/, method: "HEAD", status: 200, headers: { "content-range": "0-0/7" } },
+    ]);
+    const r = await go(left, baselineFile(BASE_ROWS));
+    expect(r.code).toBe(1);
+    expect(r.lines.join("\n")).toContain("CURRENT_RUN_RESIDUE = 1");
+  });
+  it("cleanup never issues a DELETE against svc_audit, and refuses if asked to", async () => {
+    const n = net([...BASE_ROWS]);
+    await go(n, baselineFile(BASE_ROWS));
+    expect(n.calls.filter((c) => c.method === "DELETE").some((c) => c.url.includes("svc_audit"))).toBe(false);
+    const src = readFileSync("scripts/staging/cleanup.mjs", "utf8");
+    expect(src).toContain("refusing to delete from the append-only svc_audit");
+  });
+  it("a baseline without audit data is reported explicitly as NOT_CHECKED (never silently skipped)", async () => {
+    const f = join(mkdtempSync(join(tmpdir(), "stg-")), "b.json");
+    writeFileSync(f, JSON.stringify({ counts: { svc_requests: 7 } }));
+    const r = await go(net(BASE_ROWS), f);
+    expect(r.lines.join("\n")).toContain("APPEND_ONLY_AUDIT_PRESERVED = NOT_CHECKED");
+  });
+  it("an audit read that is rejected is CLEANUP_BLOCKED_AUTH, a non-array answer is CLEANUP_FAILED", async () => {
+    const a = await go(net([], [{ match: /svc_audit\?select=/, status: 401, body: {} }]), baselineFile(BASE_ROWS));
+    expect(a.code).toBe(5);
+    const b = await go(net([], [{ match: /svc_audit\?select=/, status: 200, body: { message: "x" } }]), baselineFile(BASE_ROWS));
+    expect(b.code).toBe(1);
+    expect(b.lines.join("\n")).toContain("CLEANUP_FAILED");
+  });
+  it("audit schema facts the invariant relies on: no foreign key, identity key, only INSERTs anywhere in the SQL", () => {
+    const sql = readdirSync("supabase/migrations").filter((f) => f.endsWith(".sql")).map((f) => readFileSync(`supabase/migrations/${f}`, "utf8")).join("\n");
+    expect(sql).toMatch(/create table public\.svc_audit \(\s*id bigint generated always as identity primary key/);
+    expect(sql).not.toMatch(/update public\.svc_audit|delete from public\.svc_audit|truncate[^;]*svc_audit/i);
+    expect(sql).not.toMatch(/references public\.svc_audit/);
+    expect(rowHash(audit(1))).toBe(rowHash(audit(1)));
+    expect(rowHash(audit(1))).not.toBe(rowHash(audit(1, { action: "X" })));
   });
 });

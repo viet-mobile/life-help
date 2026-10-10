@@ -20,9 +20,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT, STAGING_REF, loadStagingEnv, preflight, refOfUrl } from "./contract.cjs";
+import { auditBaseline, readAuditRows } from "./audit.mjs";
 
 export const REQUIRED = ["202610070028_learning_korean_study.sql", "202610080029_learning_entitlements.sql", "202610090040_service_core.sql", "202610100041_service_request_access.sql", "202610110042_service_core_internal_rpc_lockdown.sql"];
-const SNAPSHOT_TABLES = ["svc_customers", "svc_helpers", "svc_requests", "svc_request_sessions", "svc_messages", "svc_outbox", "svc_audit", "learn_entitlements", "learn_student_profiles"];
+// svc_audit is append-only (a run legitimately adds rows): it gets an identity-level baseline below, not a row-count equality
+const SNAPSHOT_TABLES = ["svc_customers", "svc_helpers", "svc_requests", "svc_request_sessions", "svc_messages", "svc_outbox", "learn_entitlements", "learn_student_profiles"];
 
 /** modern sb_* keys travel in `apikey` only; legacy JWT keys are also sent as the Authorization bearer (the user-JWT slot) */
 export const keyHeaders = (key) => ({ apikey: key, ...(key.startsWith("sb_") ? {} : { Authorization: `Bearer ${key}` }) });
@@ -189,7 +191,12 @@ export async function runDbGate({ fetchImpl = fetch, env, snapshotFile = "", roo
         counts[t] = Number(m[1]);
       } catch { gate(`row count of ${t}`, false, "network failure"); }
     }
-    fs.writeFileSync(snapshotFile, JSON.stringify({ at: new Date().toISOString(), counts }));
+    let audit = null;
+    try {
+      audit = auditBaseline(await readAuditRows((p, range) => fetchImpl(`${url}/rest/v1/${p}`, { headers: { ...svc, "Range-Unit": "items", Range: range } })));
+      say(`audit baseline recorded: ${audit.count} svc_audit rows (append-only; identities and content hashed)`);
+    } catch (e) { gate("svc_audit baseline", false, e instanceof Error ? e.message : "unreadable"); }
+    fs.writeFileSync(snapshotFile, JSON.stringify({ at: new Date().toISOString(), counts, audit }));
     say(`baseline counts recorded for ${Object.keys(counts).length} tables`);
   }
   say(failed ? `INTEGRATED_STAGING_DB_GATE = FAIL (${failed})` : "INTEGRATED_STAGING_DB_GATE = PASS");

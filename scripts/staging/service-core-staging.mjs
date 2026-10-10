@@ -59,6 +59,10 @@ const secret = () => randomBytes(32).toString("hex");
 const IKSAN = { country: "KR", sido: "전북특별자치도", gungu: "익산시" };
 const results = [];
 const created = { requests: [], helpers: [], customers: [] };
+// every request / helper id is also appended to the run manifest (if the runner set one) so the audit rows this run adds can be attributed
+// to it even after this harness has deleted the rows themselves
+import fs from "node:fs";
+const track = (kind, id) => { created[kind].push(id); if (process.env.STAGING_RUN_MANIFEST) fs.appendFileSync(process.env.STAGING_RUN_MANIFEST, JSON.stringify({ kind, id }) + "\n"); };
 
 async function rpc(c, fn, args) {
   const { data, error } = await c.rpc(fn, args);
@@ -80,7 +84,7 @@ async function newRequest(c, over = {}) {
     p_cred: c.credHash, p_token: c.tokenHash, p_session: c.sessionHash, p_locale: "vi", p_service: over.service ?? "toilet-clog", p_country: IKSAN.country, p_sido: IKSAN.sido, p_gungu: IKSAN.gungu,
     p_address: `${RUN_ID} test address`, p_description: `${RUN_ID} test request`, p_options: ["urgent"],
   });
-  created.requests.push(out.request.id);
+  track("requests", out.request.id);
   return out.request;
 }
 async function newHelper(name, { approve = true, available = true } = {}) {
@@ -89,7 +93,7 @@ async function newHelper(name, { approve = true, available = true } = {}) {
     p_cred: sha(cred), p_expires: new Date(Date.now() + 7 * 86_400_000).toISOString(), p_name: `${RUN_ID} ${name}`, p_primary_locale: "ko", p_spoken: ["ko", "vi"],
     p_capabilities: ["toilet-clog"], p_regions: [IKSAN], p_email: null,
   });
-  created.helpers.push(h.id);
+  track("helpers", h.id);
   const helper = { id: h.id, credHash: sha(cred), client: client() };
   if (approve) await rpc(admin, "svc_a_set_helper_status", { p_admin: RUN_ID, p_helper: h.id, p_status: "APPROVED" });
   if (approve && available) await rpc(helper.client, "svc_h_set_available", { p_cred: helper.credHash, p_available: true });

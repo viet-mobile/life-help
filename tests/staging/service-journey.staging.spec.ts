@@ -1,6 +1,7 @@
 import { expect, test, type Browser, type Page } from "@playwright/test";
 import { loadStagingEnv } from "../../scripts/staging/contract.cjs";
 import { BASE, RUN_ID } from "./target";
+import { isRecoveryLink, openLink, resolveLink } from "./links";
 
 /**
  * Customer / Helper / Admin on the integrated STAGING Worker, three separate browser contexts (no shared cookies or storage).
@@ -55,9 +56,10 @@ test("customer -> helper -> chat -> start -> complete; admin sees the same state
     await C.page.getByTestId("request-address").fill(`${RUN_ID} address`);
     await C.page.getByTestId("request-submit").click();
     await expect(C.page.getByTestId("request-submitted-note")).toBeVisible({ timeout: 30_000 });
-    const link = (await C.page.locator('a[href*="/chat?r="]').first().getAttribute("href"))!;
-    expect(link).toMatch(/\/chat\?r=[0-9a-f-]{36}#t=[0-9a-f]{64}/);
-    await C.page.goto(link);
+    // the app renders the recovery link as a relative href on purpose; resolve it against the target before navigating (never print it)
+    const link = resolveLink((await C.page.locator('a[href*="/chat?r="]').first().getAttribute("href"))!, BASE);
+    expect(isRecoveryLink(link), "recovery link has the expected shape").toBe(true);
+    await openLink(C.page, link);
     await expect(C.page.getByTestId("customer-request")).toBeVisible({ timeout: 30_000 });
 
     // admin approves the helper
