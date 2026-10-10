@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import * as C from "../../scripts/staging/contract.cjs";
@@ -10,7 +10,9 @@ const SENTINEL = "SENTINEL_VALUE_9f3c1d"; // stands in for a secret: it must nev
 const full = (over: Record<string, string> = {}) => Object.fromEntries(C.ALL_ENV_NAMES.map((n) => [n, C.URL_NAMES.includes(n) ? `https://${C.STAGING_REF}.supabase.co` : n.includes("CONFIRM") || n.includes("EXPECTED") ? C.STAGING_REF : `${SENTINEL}_${n}`])) as Record<string, string> & typeof over;
 const read = (f: string) => readFileSync(f, "utf8");
 const code = (f: string) => read(f).replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, ""); // comments may talk about "47" or "checkout"; code may not
-const clean = { PATH: process.env.PATH } as unknown as NodeJS.ProcessEnv;
+// every spawned CLI gets an env file path that does not exist: a test can never read the operator's real file or reach staging
+const NOFILE = "/nonexistent/life-help-test.env";
+const clean = { PATH: process.env.PATH, STAGING_ENV_FILE: NOFILE } as unknown as NodeJS.ProcessEnv;
 
 describe("env example and gitignore", () => {
   const example = read(".env.staging.local.example");
@@ -26,13 +28,18 @@ describe("env example and gitignore", () => {
     for (const s of sources) for (const m of s.matchAll(/(?:process\.env|env)\.((?:TEST|SERVICE_CORE|EXPECTED_SERVICE_CORE)_[A-Z0-9_]+)/g)) used.add(m[1]);
     for (const n of used) expect(C.ALL_ENV_NAMES, n).toContain(n);
   });
-  it(".env.staging.local is gitignored, the example is not, and the real file is absent", () => {
+  it(".env.staging.local is gitignored and never tracked (the operator's file may exist locally), the example is neither", () => {
     expect(spawnSync("git", ["check-ignore", "-q", ".env.staging.local"]).status).toBe(0);
     expect(spawnSync("git", ["check-ignore", "-q", ".env.staging.local.example"]).status).toBe(1);
-    expect(existsSync(".env.staging.local")).toBe(false);
+    expect(spawnSync("git", ["ls-files", "--error-unmatch", ".env.staging.local"]).status).not.toBe(0);
+    expect(spawnSync("git", ["ls-files", "--error-unmatch", ".env.staging.local.example"]).status).toBe(0);
   });
   it("the canonical local file lives in the integration worktree root", () => {
-    expect(C.ENV_FILE.endsWith("/life-help-integration-service-learning-47/.env.staging.local") || C.ENV_FILE === join(process.cwd(), ".env.staging.local")).toBe(true);
+    const saved = process.env.STAGING_ENV_FILE;
+    delete process.env.STAGING_ENV_FILE;
+    const fresh = spawnSync("node", ["-e", "console.log(require('./scripts/staging/contract.cjs').ENV_FILE)"], { encoding: "utf8", env: { PATH: process.env.PATH } as unknown as NodeJS.ProcessEnv }).stdout.trim();
+    if (saved) process.env.STAGING_ENV_FILE = saved;
+    expect(fresh).toBe(join(process.cwd(), ".env.staging.local"));
   });
 });
 
@@ -59,7 +66,7 @@ describe("integrated preflight", () => {
   });
   it("the CLIs print only names / SET / MISSING / refs even when secrets are present in the environment", () => {
     for (const script of ["preflight.mjs", "integrated.mjs"]) {
-      const env = { ...clean, ...full(), TEST_SUPABASE_URL: `https://${C.PRODUCTION_REF}.supabase.co` } as NodeJS.ProcessEnv; // identity problem: stops before any step
+      const env = { ...clean, ...full(), STAGING_ENV_FILE: NOFILE, TEST_SUPABASE_URL: `https://${C.PRODUCTION_REF}.supabase.co` } as NodeJS.ProcessEnv; // identity problem: stops before any step
       const r = spawnSync("node", [join("scripts/staging", script)], { encoding: "utf8", env, cwd: process.cwd() });
       expect(r.status, script).toBe(2);
       expect(r.stdout + r.stderr, script).not.toContain(SENTINEL);

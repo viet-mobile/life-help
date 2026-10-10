@@ -7,7 +7,7 @@
  *   - --snapshot <file>: row counts of the tables a run may touch (foreign-row baseline for the cleanup step)
  * Catalog details (SECURITY DEFINER, empty search_path, owner, no dynamic SQL) are proven on the identical migration files by
  * tests/service/db-service-hardening.test.ts; PostgREST cannot read pg_catalog.
- * Exit: 0 pass | 4 migrations pending (BLOCKED_MIGRATIONS_PENDING) | 1 gate failure
+ * Exit: 0 pass | 4 migrations pending (BLOCKED_MIGRATIONS_PENDING) | 6 credential rejected (DB_GATE_BLOCKED_AUTH) | 1 gate failure
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -24,8 +24,10 @@ const anon = { apikey: env.SERVICE_CORE_STAGING_ANON_KEY, ...(env.SERVICE_CORE_S
 
 async function exposed(headers) {
   const r = await fetch(`${url}/rest/v1/`, { headers: { ...headers, Accept: "application/openapi+json" } });
-  if (!r.ok) throw new Error(`OpenAPI ${r.status}`);
-  const spec = await r.json();
+  if (r.status === 401 || r.status === 403) { console.error(`DB_GATE_BLOCKED_AUTH: the staging credential was rejected (HTTP ${r.status}); nothing was read or changed`); process.exit(6); }
+  if (!r.ok) { console.error(`INTEGRATED_STAGING_DB_GATE = FAIL: OpenAPI answered HTTP ${r.status}`); process.exit(1); }
+  const spec = await r.json().catch(() => null);
+  if (!spec || typeof spec !== "object") { console.error("INTEGRATED_STAGING_DB_GATE = FAIL: OpenAPI response was not JSON"); process.exit(1); }
   return new Set(Object.keys(spec.paths ?? {}).map((p) => p.replace(/^\/(rpc\/)?/, "")).filter(Boolean));
 }
 /** Objects a migration creates (tables and functions in schema public), read from the file itself. */

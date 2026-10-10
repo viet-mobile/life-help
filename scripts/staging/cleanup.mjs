@@ -5,66 +5,102 @@
  *   (their learn_* rows and entitlements cascade). Customers left without any request after that are removed only if they
  *   were the owners of this run's requests. Never touches learning baseline/content tables or unrelated users.
  * Then verifies CURRENT_RUN_RESIDUE = 0 and (with --baseline <file>) that the foreign-row counts equal the recorded baseline.
+ *
+ * Failure handling: every HTTP status is checked BEFORE its body is used. If the credentials are rejected (401/403) the run reports
+ * CLEANUP_BLOCKED_AUTH (exit 5) before any delete and attempts no fallback. Any other unexpected response reports CLEANUP_FAILED
+ * with the status (exit 1). Never an opaque TypeError.
+ * Exit: 0 clean | 1 failed / residue / foreign rows changed | 2 refused | 3 missing env | 5 CLEANUP_BLOCKED_AUTH
  */
 import fs from "node:fs";
 import { STAGING_REF, loadStagingEnv, preflight, refOfUrl } from "./contract.cjs";
 
-const RUN_ID = process.env.STAGING_RUN_ID;
-if (!RUN_ID || !/^STG-[a-z0-9-]{6,40}$/.test(RUN_ID)) { console.error("STAGING_RUN_ID missing or malformed: nothing to clean"); process.exit(2); }
-const env = loadStagingEnv();
-const pf = preflight(env);
-if (pf.status !== "READY") { console.error(pf.status); process.exit(pf.status === "BLOCKED_MISSING_ENV" ? 3 : 2); }
-const url = env.SERVICE_CORE_SUPABASE_URL.replace(/\/$/, "");
-if (refOfUrl(url) !== STAGING_REF) { console.error("REFUSED: target is not the staging project"); process.exit(2); }
-const key = env.SERVICE_CORE_SUPABASE_SECRET_KEY;
-const h = { apikey: key, ...(key.startsWith("sb_") ? {} : { Authorization: `Bearer ${key}` }), "Content-Type": "application/json" };
-const rest = (p, init = {}) => fetch(`${url}/rest/v1/${p}`, { ...init, headers: { ...h, ...(init.headers ?? {}) } });
-const like = encodeURIComponent(`${RUN_ID}*`); // PostgREST like wildcard is *
+class Blocked extends Error { constructor(code, detail) { super(detail); this.code = code; } }
 
-const mine = await (await rest(`svc_requests?select=id,customer_id&description=like.${like}`)).json();
-const owners = [...new Set(mine.map((r) => r.customer_id))];
-let deleted = 0;
-if (mine.length) {
-  const d = await rest(`svc_requests?description=like.${like}`, { method: "DELETE", headers: { Prefer: "count=exact" } });
-  deleted += mine.length; if (!d.ok) console.error(`request delete status ${d.status}`);
-}
-const helpers = await rest(`svc_helpers?display_name=like.${like}`, { method: "DELETE", headers: { Prefer: "count=exact" } });
-for (const c of owners) {
-  const left = await (await rest(`svc_requests?select=id&customer_id=eq.${c}&limit=1`)).json();
-  if (Array.isArray(left) && left.length === 0) await rest(`svc_customers?id=eq.${c}`, { method: "DELETE" });
-}
-if (env.TEST_SUPABASE_URL && refOfUrl(env.TEST_SUPABASE_URL) === STAGING_REF) {
-  const lh = { apikey: env.TEST_SUPABASE_SERVICE_ROLE_KEY, ...(env.TEST_SUPABASE_SERVICE_ROLE_KEY.startsWith("sb_") ? {} : { Authorization: `Bearer ${env.TEST_SUPABASE_SERVICE_ROLE_KEY}` }) };
-  const base = env.TEST_SUPABASE_URL.replace(/\/$/, "");
-  const list = await (await fetch(`${base}/auth/v1/admin/users?per_page=1000`, { headers: lh })).json();
-  for (const u of (list.users ?? []).filter((x) => typeof x.email === "string" && x.email.includes(RUN_ID.toLowerCase()))) {
-    await fetch(`${base}/auth/v1/admin/users/${u.id}`, { method: "DELETE", headers: lh });
+const authHeaders = (key) => ({ apikey: key, ...(key.startsWith("sb_") ? {} : { Authorization: `Bearer ${key}` }) });
+
+/** Pure, injectable core: `fetchImpl` is the network, `env` the staging env. Returns { code, lines } and never throws. */
+export async function runCleanup({ fetchImpl = fetch, env, runId, baselineFile = "", log = () => {} }) {
+  const out = (code, lines) => ({ code, lines });
+  if (!runId || !/^STG-[a-z0-9-]{6,40}$/.test(runId)) return out(2, ["STAGING_RUN_ID missing or malformed: nothing to clean"]);
+  const pf = preflight(env);
+  if (pf.status === "BLOCKED_MISSING_ENV") return out(3, ["BLOCKED_MISSING_ENV"]);
+  if (pf.status !== "READY") return out(2, ["REFUSED: identity guard failed"]);
+  const url = env.SERVICE_CORE_SUPABASE_URL.replace(/\/$/, "");
+  if (refOfUrl(url) !== STAGING_REF) return out(2, ["REFUSED: target is not the staging project"]);
+
+  const h = { ...authHeaders(env.SERVICE_CORE_SUPABASE_SECRET_KEY), "Content-Type": "application/json" };
+  const rest = (p, init = {}) => fetchImpl(`${url}/rest/v1/${p}`, { ...init, headers: { ...h, ...(init.headers ?? {}) } });
+  /** GET that must return a JSON array: status first, then shape. */
+  const rows = async (p) => {
+    const r = await rest(p);
+    if (r.status === 401 || r.status === 403) throw new Blocked("CLEANUP_BLOCKED_AUTH", `REST ${r.status} on ${p.split("?")[0]}`);
+    if (!r.ok) throw new Blocked("CLEANUP_FAILED", `REST ${r.status} on ${p.split("?")[0]}`);
+    const body = await r.json().catch(() => null);
+    if (!Array.isArray(body)) throw new Blocked("CLEANUP_FAILED", `unexpected non-array response (status ${r.status}) on ${p.split("?")[0]}`);
+    return body;
+  };
+  const del = async (p) => {
+    const r = await rest(p, { method: "DELETE" });
+    if (r.status === 401 || r.status === 403) throw new Blocked("CLEANUP_BLOCKED_AUTH", `REST ${r.status} on DELETE ${p.split("?")[0]}`);
+    if (!r.ok) throw new Blocked("CLEANUP_FAILED", `REST ${r.status} on DELETE ${p.split("?")[0]}`);
+  };
+  const like = encodeURIComponent(`${runId}*`); // PostgREST like wildcard is *
+  const lines = [];
+  try {
+    // 1. auth probe BEFORE any destructive call: a rejected credential stops everything here (no fallback path exists)
+    const mine = await rows(`svc_requests?select=id,customer_id&description=like.${like}`);
+    const owners = [...new Set(mine.map((r) => r.customer_id))];
+    if (mine.length) await del(`svc_requests?description=like.${like}`);
+    await del(`svc_helpers?display_name=like.${like}`);
+    for (const c of owners) {
+      const left = await rows(`svc_requests?select=id&customer_id=eq.${c}&limit=1`);
+      if (left.length === 0) await del(`svc_customers?id=eq.${c}`);
+    }
+    // learning Auth fixtures of this run only (email carries the lower-cased RUN_ID); cascades learn_* and entitlements
+    const lbase = env.TEST_SUPABASE_URL && refOfUrl(env.TEST_SUPABASE_URL) === STAGING_REF ? env.TEST_SUPABASE_URL.replace(/\/$/, "") : null;
+    const usersOfRun = async () => {
+      if (!lbase) return [];
+      const r = await fetchImpl(`${lbase}/auth/v1/admin/users?per_page=1000`, { headers: authHeaders(env.TEST_SUPABASE_SERVICE_ROLE_KEY) });
+      if (r.status === 401 || r.status === 403) throw new Blocked("CLEANUP_BLOCKED_AUTH", `Auth admin ${r.status}`);
+      const body = await r.json().catch(() => null);
+      if (!r.ok || !body || !Array.isArray(body.users)) throw new Blocked("CLEANUP_FAILED", `Auth admin unexpected response (status ${r.status})`);
+      return body.users.filter((x) => typeof x.email === "string" && x.email.includes(runId.toLowerCase()));
+    };
+    for (const u of await usersOfRun()) {
+      const d = await fetchImpl(`${lbase}/auth/v1/admin/users/${u.id}`, { method: "DELETE", headers: authHeaders(env.TEST_SUPABASE_SERVICE_ROLE_KEY) });
+      if (d.status === 401 || d.status === 403) throw new Blocked("CLEANUP_BLOCKED_AUTH", `Auth admin DELETE ${d.status}`);
+    }
+
+    // 2. residue
+    const resReq = await rows(`svc_requests?select=id&description=like.${like}`);
+    const resHelp = await rows(`svc_helpers?select=id&display_name=like.${like}`);
+    const resUsers = (await usersOfRun()).length;
+    const residue = resReq.length + resHelp.length + resUsers;
+    lines.push(`CURRENT_RUN_RESIDUE = ${residue} (requests ${resReq.length}, helpers ${resHelp.length}, auth users ${resUsers})`);
+    let foreign = "NOT_CHECKED";
+    if (baselineFile && fs.existsSync(baselineFile)) {
+      const base = JSON.parse(fs.readFileSync(baselineFile, "utf8")).counts;
+      const diffs = [];
+      for (const [t, n] of Object.entries(base)) {
+        const r = await rest(`${t}?select=*`, { method: "HEAD", headers: { Prefer: "count=exact", Range: "0-0" } });
+        if (r.status === 401 || r.status === 403) throw new Blocked("CLEANUP_BLOCKED_AUTH", `REST ${r.status} on count ${t}`);
+        const m = (r.headers.get("content-range") ?? "").match(/\/(\d+)$/);
+        if (!m || Number(m[1]) !== n) diffs.push(`${t}: ${n} -> ${m ? m[1] : "?"}`);
+      }
+      foreign = diffs.length ? `FAIL (${diffs.join("; ")})` : "PASS";
+    }
+    lines.push(`FOREIGN_ROWS_UNTOUCHED = ${foreign}`);
+    log(lines.join("\n"));
+    return out(residue === 0 && !foreign.startsWith("FAIL") ? 0 : 1, lines);
+  } catch (e) {
+    if (e instanceof Blocked) return out(e.code === "CLEANUP_BLOCKED_AUTH" ? 5 : 1, [...lines, `${e.code}: ${e.message}`, ...(e.code === "CLEANUP_BLOCKED_AUTH" ? ["no cleanup was attempted after the authentication failure; fix the staging credential and rerun the cleanup for this RUN_ID"] : [])]);
+    return out(1, [...lines, `CLEANUP_FAILED: ${e instanceof Error ? e.message.slice(0, 200) : "unexpected error"}`]);
   }
 }
 
-// residue
-const resReq = await (await rest(`svc_requests?select=id&description=like.${like}`)).json();
-const resHelp = await (await rest(`svc_helpers?select=id&display_name=like.${like}`)).json();
-let resUsers = 0;
-if (env.TEST_SUPABASE_URL) {
-  const lh = { apikey: env.TEST_SUPABASE_SERVICE_ROLE_KEY, ...(env.TEST_SUPABASE_SERVICE_ROLE_KEY.startsWith("sb_") ? {} : { Authorization: `Bearer ${env.TEST_SUPABASE_SERVICE_ROLE_KEY}` }) };
-  const list = await (await fetch(`${env.TEST_SUPABASE_URL.replace(/\/$/, "")}/auth/v1/admin/users?per_page=1000`, { headers: lh })).json();
-  resUsers = (list.users ?? []).filter((x) => typeof x.email === "string" && x.email.includes(RUN_ID.toLowerCase())).length;
+if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
+  const bi = process.argv.indexOf("--baseline");
+  const r = await runCleanup({ env: loadStagingEnv(), runId: process.env.STAGING_RUN_ID, baselineFile: bi > 0 ? process.argv[bi + 1] : undefined });
+  console.log(r.lines.join("\n"));
+  process.exit(r.code);
 }
-const residue = (resReq.length ?? 0) + (resHelp.length ?? 0) + resUsers;
-console.log(`CURRENT_RUN_RESIDUE = ${residue} (requests ${resReq.length}, helpers ${resHelp.length}, auth users ${resUsers})`);
-let foreign = "NOT_CHECKED";
-const bi = process.argv.indexOf("--baseline");
-if (bi > 0 && fs.existsSync(process.argv[bi + 1])) {
-  const base = JSON.parse(fs.readFileSync(process.argv[bi + 1], "utf8")).counts;
-  const diffs = [];
-  for (const [t, n] of Object.entries(base)) {
-    const r = await rest(`${t}?select=*`, { method: "HEAD", headers: { Prefer: "count=exact", Range: "0-0" } });
-    const m = (r.headers.get("content-range") ?? "").match(/\/(\d+)$/);
-    if (!m || Number(m[1]) !== n) diffs.push(`${t}: ${n} -> ${m ? m[1] : "?"}`);
-  }
-  foreign = diffs.length ? `FAIL (${diffs.join("; ")})` : "PASS";
-}
-console.log(`FOREIGN_ROWS_UNTOUCHED = ${foreign}`);
-void deleted; void helpers;
-process.exit(residue === 0 && !foreign.startsWith("FAIL") ? 0 : 1);

@@ -11,7 +11,9 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const ROOT = path.join(__dirname, "../..");
-const ENV_FILE = path.join(ROOT, ".env.staging.local");
+// STAGING_ENV_FILE only redirects WHICH env file is read (tests point it at a nonexistent path so they can never reach staging);
+// the identity guards below apply to whatever it contains.
+const ENV_FILE = process.env.STAGING_ENV_FILE || path.join(ROOT, ".env.staging.local");
 const ENV_EXAMPLE = path.join(ROOT, ".env.staging.local.example");
 
 /** Staging project (the only database an integrated run may touch) and the production project that must always be refused. */
