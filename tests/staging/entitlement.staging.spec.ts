@@ -8,6 +8,7 @@ import { BASE, RUN_ID, SITES, learnUrl } from "./target";
 import { classify, describeEvidence, type Evidence } from "./entitlementDiagnostics";
 import { readRpc } from "./rpc";
 import { loginForm, loginSubmit } from "./loginForm";
+import { activeScopes, isActive, type EntRow } from "./entitlementFixture";
 
 /**
  * Free / Premium on the integrated STAGING Worker with run-scoped entitlement fixtures. No checkout, no payment provider: the
@@ -90,6 +91,15 @@ const gateState = async (page: Page, site: Site, lessonId: string, loc = "en") =
 };
 const gateVisible = async (page: Page, site: Site, lessonId: string, loc = "en") => (await gateState(page, site, lessonId, loc)).gate;
 
+const entitlementRows = () => restRows<EntRow & { id: string }>("learn_entitlements", `user_id=eq.${userId}&select=id,scope,starts_at,expires_at,revoked_at&order=created_at.asc`);
+/** The fixture user must hold NO active entitlement here: otherwise a "locked" / "open" expectation would be measuring leftovers of an earlier test. */
+const expectCleanBaseline = async (before: string) => expect(activeScopes(await entitlementRows()), `no active entitlement before ${before}`).toEqual([]);
+/** Revokes every active entitlement of the fixture user (history is kept) and proves none is left. Run after EVERY test, pass or fail. */
+async function revokeAllActive() {
+  for (const r of (await entitlementRows()).filter((x) => isActive(x))) await rpc("learn_revoke_entitlement", { p_id: r.id }, { allowEmpty: true });
+  expect(activeScopes(await entitlementRows()), "no active entitlement left behind").toEqual([]);
+}
+
 /** Secret-free evidence for a failed "open with entitlement" expectation. */
 async function evidence(page: Page, site: Site, lessonId: string): Promise<string> {
   const rows = await restRows<{ scope: string; starts_at: string; expires_at: string | null; revoked_at: string | null }>("learn_entitlements", `user_id=eq.${userId}&select=scope,starts_at,expires_at,revoked_at&order=created_at.desc`);
@@ -110,6 +120,8 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
     expect(r.status, "fixture user created").toBeLessThan(300);
     userId = (await r.json()).id;
   });
+  // the three per-site tests all end with a regrant that is ACTIVE; without this they would leak Premium into the next test (same fixture user)
+  test.afterEach(async () => { await revokeAllActive(); });
   test.afterAll(async () => { await deleteFixtureUser(userId); });
 
   for (const site of SITES) {
@@ -120,6 +132,7 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
       await onboard(page, site);
       // the server must have seen THIS fixture user (onboarding writes the profile for the signed-in user only)
       expect((await restRows("learn_student_profiles", `user_id=eq.${userId}&select=user_id&limit=1`)).length, "the browser is signed in as the fixture user").toBe(1);
+      await expectCleanBaseline(`${site}: free learner checks`);
 
       // free content is accessible; premium is locked for a free learner (direct URL) in several locales (the lock is not language-bound)
       expect(await gateVisible(page, site, free.id), "free lesson is open").toBe(false);
@@ -145,10 +158,32 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
   }
 
   test("an entitlement for one site does not open another (scope is authoritative)", async ({ page }) => {
-    const { premium } = canonical("english");
-    await grant("math", null, null); // fixture is already scoped to math from the first test; english must stay locked unless granted
-    await login(page, "english");
-    await onboard(page, "english").catch(() => undefined);
-    expect(await gateVisible(page, "english", premium.id), "a math entitlement must not unlock english").toBe(true);
+    test.setTimeout(240_000);
+    const lessons = { math: canonical("math").premium, english: canonical("english").premium, korean: canonical("korean").premium };
+    await login(page, "math");
+    for (const site of SITES) await onboard(page, site).catch(() => undefined); // one account, a profile / level per site
+    await expectCleanBaseline("the cross-site scope checks"); // earlier tests' grants are revoked: English must be locked because of SCOPE, not by luck
+
+    // locked everywhere without any entitlement
+    for (const site of SITES) expect(await gateVisible(page, site, lessons[site].id), `${site} locked without an entitlement`).toBe(true);
+
+    // a MATH entitlement only: stored with scope math, opens math, leaves english and korean locked
+    await grant("math", null, null);
+    expect(activeScopes(await entitlementRows()), "exactly one active scope: math").toEqual(["math"]);
+    expect(await gateVisible(page, "math", lessons.math.id), "math opens with a math entitlement").toBe(false);
+    expect(await gateVisible(page, "english", lessons.english.id), "a math entitlement must not unlock english").toBe(true);
+    expect(await gateVisible(page, "korean", lessons.korean.id), "a math entitlement must not unlock korean").toBe(true);
+    await revokeAllActive();
+
+    // revoked and expired english rows are history, not Premium
+    await grant("english", iso(-2), iso(-1));
+    const revoked = await grant("english", null, null);
+    await rpc("learn_revoke_entitlement", { p_id: revoked }, { allowEmpty: true });
+    expect(activeScopes(await entitlementRows()), "revoked / expired rows are not active").toEqual([]);
+    expect(await gateVisible(page, "english", lessons.english.id), "revoked / expired english entitlements keep english locked").toBe(true);
+
+    // an "all" entitlement opens every site
+    await grant("all", null, null);
+    for (const site of SITES) expect(await gateVisible(page, site, lessons[site].id), `${site} opens with an "all" entitlement`).toBe(false);
   });
 });

@@ -48,11 +48,13 @@ describe("entitlement spec RPC audit", () => {
   });
   it("every rpc() call is classified: grant is strict (JSON id required, empty refused), revoke allows an empty success", () => {
     const calls = [...spec.matchAll(/rpc\("([a-z_]+)"[^\n]*/g)].map((m) => ({ fn: m[1], line: m[0] }));
-    expect(calls.map((c) => c.fn).sort()).toEqual(["learn_grant_entitlement", "learn_revoke_entitlement"]);
-    const grant = calls.find((c) => c.fn === "learn_grant_entitlement")!;
-    const revoke = calls.find((c) => c.fn === "learn_revoke_entitlement")!;
-    expect(grant.line).not.toContain("allowEmpty");
-    expect(revoke.line).toContain("{ allowEmpty: true }");
+    expect([...new Set(calls.map((c) => c.fn))].sort()).toEqual(["learn_grant_entitlement", "learn_revoke_entitlement"]);
+    const grants = calls.filter((c) => c.fn === "learn_grant_entitlement");
+    const revokes = calls.filter((c) => c.fn === "learn_revoke_entitlement");
+    expect(grants.length).toBeGreaterThanOrEqual(1);
+    for (const g of grants) expect(g.line, "grant is strict").not.toContain("allowEmpty");
+    expect(revokes.length).toBeGreaterThanOrEqual(2);
+    for (const r of revokes) expect(r.line, "revoke (RETURNS void) allows an empty success").toContain("{ allowEmpty: true }");
     expect(spec).toContain("grant returned an entitlement id (an empty or non-id answer is a failure)");
     expect(spec).not.toMatch(/\.json\(\)\s*;?\s*\n\};/); // no bare r.json() on an RPC answer any more
   });
