@@ -21,7 +21,9 @@ interface Opts {
   table?: (t: string) => Response | "throw";
   rpc?: (fn: string, body: Record<string, unknown>) => Response | "throw";
   hide?: string[];            // objects missing from the elevated OpenAPI (pending migration)
-  exposeInternals?: boolean;  // internals visible to service_role (a grants bug)
+  exposeInternals?: boolean;  // internals LISTED in the elevated OpenAPI (PostgREST lists them whatever EXECUTE says)
+  internalRpc?: (fn: string, body: Record<string, unknown>) => Response | "throw"; // what service_role gets when it calls an internal
+  schemaVersion?: Response | "throw"; // the external positive-control RPC
   secretStatus?: number;      // answer to the elevated OpenAPI call
 }
 const json = (status: number, body: unknown, headers?: Record<string, string>) => new Response(JSON.stringify(body), { status, headers });
@@ -47,6 +49,12 @@ function mini(o: Opts = {}) {
     if (u.pathname === "/auth/v1/settings") return json((o.authSettings ?? ((k) => (k === PUB ? 200 : 401)))(headers.apikey), {});
     if (u.pathname.startsWith("/rest/v1/rpc/")) {
       const fn = u.pathname.split("/").pop()!;
+      if (elevated && fn === "svc_core_schema_version") { if (o.schemaVersion === "throw") throw new TypeError("fetch failed"); return o.schemaVersion ?? json(200, 42); }
+      if (elevated && fn.startsWith("svc__")) {
+        const r = (o.internalRpc ?? ((f) => json(403, { code: "42501", message: `permission denied for function ${f}` })))(fn, JSON.parse(init.body ?? "{}"));
+        if (r === "throw") throw new TypeError("fetch failed");
+        return r;
+      }
       if (elevated) return json(200, null);
       const r = (o.rpc ?? ((f) => denied(`function ${f}`)))(fn, JSON.parse(init.body ?? "{}"));
       if (r === "throw") throw new TypeError("fetch failed");
@@ -171,23 +179,59 @@ describe("elevated structural inspection", () => {
     expect(before.text).not.toContain("FAIL");
     expect(before.calls.some((c) => c.headers.apikey === PUB)).toBe(false);
   });
-  it("once 042 is applied the gate expects ZERO internal exposure for service_role (and still all intended API objects)", async () => {
+  it("once 042 is applied: intended external APIs are reachable and every internal is refused on direct execution - OpenAPI listing is irrelevant", async () => {
     const applied = await run();
     expect(applied.code).toBe(0);
     expect(applied.text).toMatch(/PASS service_role can reach every API object/);
-    expect(applied.text).toMatch(/PASS nobody can reach the svc__ internals through the API \(17\)/);
-    const stillExposed = await run({ exposeInternals: true });
-    expect(stillExposed.code).toBe(1);
-    expect(stillExposed.text).toMatch(/FAIL nobody can reach the svc__ internals through the API \(17\) :: svc__/);
+    expect(applied.text).toMatch(/PASS service_role cannot EXECUTE any of the 17 svc__ internals/);
+    expect(applied.text).toContain("positive control: elevated key executes the external server API (svc_core_schema_version)");
   });
-  it("the API object set never requires an internal to be exposed (internals are excluded from 'all API functions')", async () => {
-    const r = await run({ hide: [...allFns.keys()].filter((n) => n.startsWith("svc__")) }); // internals absent from the elevated OpenAPI
-    expect(r.code).toBe(0);
+  it("OpenAPI is not authority: internals LISTED in the spec + direct service_role call refused => PASS; absent from the spec + refused => PASS", async () => {
+    expect((await run({ exposeInternals: true })).code).toBe(0);
+    expect((await run({ exposeInternals: false })).code).toBe(0);
   });
-  it("internals visible to service_role are a failure (service-role isolation)", async () => {
-    const r = await run({ exposeInternals: true });
-    expect(r.code).toBe(1);
-    expect(r.text).toMatch(/FAIL nobody can reach the svc__ internals/);
+  it("a successful direct service_role call to ANY internal fails the gate and names it (whether or not the spec lists it)", async () => {
+    for (const fn of [...allFns.keys()].filter((n) => n.startsWith("svc__"))) {
+      for (const exposeInternals of [true, false]) {
+        const r = await run({ exposeInternals, internalRpc: (f) => (f === fn ? json(200, null) : json(403, { code: "42501", message: `permission denied for function ${f}` })) });
+        expect(r.code, fn).toBe(1);
+        expect(r.text, fn).toContain(`${fn}: HTTP 200 (EXECUTED)`);
+      }
+    }
+  });
+  it("only an unambiguous permission denial passes: invalid key, malformed bodies, wrong call shape (404), table-level denial, server errors and network failures all fail", async () => {
+    const bad: Array<[string, Response | "throw"]> = [
+      ["invalid API key", json(401, { message: "Invalid API key" })],
+      ["wrong call shape / unknown RPC", json(404, { code: "PGRST202", message: "Could not find the function public.svc__fail(wrong) in the schema cache" })],
+      ["malformed (not JSON)", new Response("<html>denied</html>", { status: 403 })],
+      ["malformed (null body)", json(403, null)],
+      ["permission error that is not about EXECUTE", json(403, { code: "42501", message: "permission denied for table svc_requests" })],
+      ["unrelated 403", json(403, { message: "forbidden" })],
+      ["server error", json(500, { message: "boom" })],
+      ["network failure", "throw"],
+    ];
+    for (const [label, res] of bad) {
+      const r = await run({ internalRpc: (f) => (f === "svc__emit" ? res : json(403, { code: "42501", message: `permission denied for function ${f}` })) });
+      expect(r.code, label).toBe(1);
+      expect(r.text, label).toMatch(/FAIL service_role cannot EXECUTE[^\n]*svc__emit/);
+    }
+  });
+  it("each internal is called with the exact parameter names (null values) so that a granted EXECUTE would really enter the function", async () => {
+    const r = await run();
+    const internalCalls = r.calls.filter((c) => c.headers.apikey === SECRET && /\/rpc\/svc__/.test(c.url));
+    expect(internalCalls.length).toBe([...allFns.keys()].filter((n) => n.startsWith("svc__")).length);
+    for (const c of internalCalls) {
+      const fn = c.url.split("/").pop()!;
+      const body = JSON.parse(c.body!);
+      expect(Object.keys(body).sort(), fn).toEqual([...allFns.get(fn)!].sort());
+      expect(Object.values(body).every((v) => v === null), fn).toBe(true);
+      expect(c.headers.Authorization, fn).toBeUndefined(); // sb_secret_* in apikey only
+    }
+  });
+  it("the external positive control must still succeed: a failing or wrong answer from svc_core_schema_version fails the gate", async () => {
+    for (const schemaVersion of [json(401, { message: "Invalid API key" }), json(200, 7), json(404, { code: "PGRST202" }), "throw" as const]) {
+      expect((await run({ schemaVersion })).code).toBe(1);
+    }
   });
   it("a rejected elevated credential is DB_GATE_BLOCKED_AUTH (exit 6), not a failure and not a pass; 5xx / non-JSON / unreachable fail", async () => {
     expect((await run({ secretStatus: 401 })).code).toBe(6);
@@ -195,11 +239,14 @@ describe("elevated structural inspection", () => {
     const down = await runDbGate({ fetchImpl: (async () => { throw new TypeError("fetch failed"); }) as unknown as typeof fetch, env: env() });
     expect(down.code).toBe(1);
   });
-  it("the elevated key is used for the schema and the positive control only", async () => {
+  it("the elevated key is used for: the schema, the positive controls, the structural reads/counts and the direct internal-execution probes - nothing else", async () => {
     const r = await run();
-    expect(r.calls.filter((c) => c.headers.apikey === SECRET).map((c) => new URL(c.url).pathname)).toEqual(["/rest/v1/", "/rest/v1/svc_requests"]);
+    const paths = r.calls.filter((c) => c.headers.apikey === SECRET).map((c) => new URL(c.url).pathname);
+    expect(paths.slice(0, 3)).toEqual(["/rest/v1/", "/rest/v1/svc_requests", "/rest/v1/rpc/svc_core_schema_version"]);
+    expect(paths.slice(3).every((p) => /^\/rest\/v1\/rpc\/svc__[a-z_]+$/.test(p))).toBe(true);
     expect(r.text).toContain("positive control: elevated key reads svc_requests");
   });
+
 });
 
 describe("identity guards are unchanged", () => {

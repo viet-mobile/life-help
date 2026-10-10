@@ -2,7 +2,11 @@
 /**
  * Read-only staging DB gate (no mutation).
  *   structure  (elevated SERVICE_CORE_SUPABASE_SECRET_KEY, GET /rest/v1/ OpenAPI): which of the integrated tree's migrations are already
- *              applied, derived from the objects each file creates; service_role reaches every API object and none of the svc__ internals
+ *              applied, derived from the objects each file creates; service_role reaches every intended API object. The OpenAPI document is
+ *              structural discovery ONLY: PostgREST lists functions regardless of EXECUTE, so presence there is never evidence of authority.
+ *   internals  every svc__* function is CALLED with the elevated key (apikey header, exact parameter names, null values) and must be refused
+ *              with a permission-denied-for-function error. A 2xx, an invalid-key answer, a wrong call shape (404), a malformed body or a
+ *              network failure is a FAIL, never a pass.
  *   key        SERVICE_CORE_STAGING_ANON_KEY is validated through the public Auth settings endpoint (modern sb_publishable_* keys are NOT
  *              valid proof via the OpenAPI root, and are never sent as a Bearer token: sb_* keys go in `apikey` only)
  *   denial     with that publishable key every service-core / entitlement table and function is CALLED DIRECTLY and must be refused by
@@ -102,7 +106,6 @@ export async function runDbGate({ fetchImpl = fetch, env, snapshotFile = "", roo
     for (const [n, params] of perFile[f].fns) (n.startsWith("svc__") ? internals : apiFns).set(n, params);
   }
   gate(`service_role can reach every API object (${tables.length} tables, ${apiFns.size} functions)`, [...tables, ...apiFns.keys()].every((n) => asService.has(n)));
-  gate(`nobody can reach the svc__ internals through the API (${internals.size})`, [...internals.keys()].every((n) => !asService.has(n)), [...internals.keys()].filter((n) => asService.has(n)).join(", "));
 
   // ---- the publishable key: valid for THIS project, and not a secret key ---------------------------------------------------------
   if (/^sb_secret_/.test(pubKey) || pubKey === secretKey) { gate("SERVICE_CORE_STAGING_ANON_KEY is a public key (not a secret key)", false, "a secret key was supplied in the public-key slot"); say("INTEGRATED_STAGING_DB_GATE = FAIL (PUBLISHABLE_KEY_INVALID)"); return done(1); }
@@ -117,6 +120,26 @@ export async function runDbGate({ fetchImpl = fetch, env, snapshotFile = "", roo
     const r = await fetchImpl(`${url}/rest/v1/svc_requests?select=id&limit=1`, { headers: svc });
     gate("positive control: elevated key reads svc_requests", r.status === 200 && Array.isArray(await jsonOf(r)), `HTTP ${r.status}`);
   } catch { gate("positive control: elevated key reads svc_requests", false, "network failure"); }
+
+  try {
+    const r = await fetchImpl(`${url}/rest/v1/rpc/svc_core_schema_version`, { method: "POST", headers: { ...svc, "Content-Type": "application/json" }, body: "{}" });
+    const body = await jsonOf(r);
+    gate("positive control: elevated key executes the external server API (svc_core_schema_version)", r.status === 200 && body === 42, `HTTP ${r.status}`);
+  } catch { gate("positive control: elevated key executes the external server API (svc_core_schema_version)", false, "network failure"); }
+
+  // ---- service_role cannot EXECUTE any internal: proven by calling each one ------------------------------------------------------
+  const internalDenial = [];
+  for (const [fn, params] of internals) {
+    const names = spec.definitions?.[`(rpc) ${fn}`] ? rpcParams(fn) : params; // the deployed shape when PostgREST knows it, else the migration's
+    try {
+      const r = await fetchImpl(`${url}/rest/v1/rpc/${fn}`, { method: "POST", headers: { ...svc, "Content-Type": "application/json" }, body: JSON.stringify(Object.fromEntries(names.map((p) => [p, null]))) });
+      const body = await jsonOf(r);
+      // only an unambiguous "permission denied for function" proves the missing EXECUTE; key rejection, 404 (wrong shape / unknown), 2xx, malformed: no
+      const ok = (r.status === 401 || r.status === 403) && !!body && typeof body === "object" && /permission denied for function/i.test(String(body.message ?? "")) && (body.code === undefined || body.code === "42501");
+      internalDenial.push([fn, ok, `HTTP ${r.status}${r.status >= 200 && r.status < 300 ? " (EXECUTED)" : ""}`]);
+    } catch { internalDenial.push([fn, false, "network failure"]); }
+  }
+  gate(`service_role cannot EXECUTE any of the ${internals.size} svc__ internals (each called directly; permission denied for function)`, internalDenial.every((v) => v[1]), internalDenial.filter((v) => !v[1]).map((v) => `${v[0]}: ${v[2]}`).join("; "));
 
   // ---- anonymous denial, proven by direct calls ---------------------------------------------------------------------------------
   const tableVerdicts = [];
