@@ -1,7 +1,8 @@
 import { expect, test, type Browser, type Page } from "@playwright/test";
 import { loadStagingEnv } from "../../scripts/staging/contract.cjs";
 import { BASE, RUN_ID } from "./target";
-import { isRecoveryLink, openLink, resolveLink } from "./links";
+import { isRecoveryLink, openLink, requestIdOf, resolveLink } from "./links";
+import { classifyChat, report, watchChat, type ChatObs, type Evidence } from "./chatProbe";
 
 /**
  * Customer / Helper / Admin on the integrated STAGING Worker, three separate browser contexts (no shared cookies or storage).
@@ -28,6 +29,57 @@ async function adminLogin(page: Page) {
   await page.fill("#password", ADMIN.password);
   await page.locator("form button[type=submit]").click();
   await page.waitForURL("**/admin");
+}
+
+const SVC_URL = (env.SERVICE_CORE_SUPABASE_URL ?? "").replace(/\/$/, "");
+const SVC_KEY = env.SERVICE_CORE_SUPABASE_SECRET_KEY ?? "";
+/** Trusted read of this run's rows (service-role path of the staging tests). Returns null when it cannot be read; never prints anything. */
+async function dbRows(query: string): Promise<unknown[] | null> {
+  if (!SVC_URL || !SVC_KEY) return null;
+  try {
+    const r = await fetch(`${SVC_URL}/rest/v1/${query}`, { headers: { apikey: SVC_KEY, ...(SVC_KEY.startsWith("sb_") ? {} : { Authorization: `Bearer ${SVC_KEY}` }) } });
+    const body = await r.json();
+    return r.ok && Array.isArray(body) ? body : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Sends `text` from `from` and requires `to` to show it in its chat-log WITHOUT a reload (polling must deliver it). On failure the error carries
+ * a secret-free report that names the failing segment (send HTTP / persistence / receiver poll / authorization / render). The reload
+ * is a diagnostic after the failure only and never part of the passing expectation.
+ */
+async function deliver(opts: { from: Page; to: Page; fromObs: ChatObs; toObs: ChatObs; text: string; requestId: string; helperName: string; label: string }) {
+  const { from, to, fromObs, toObs, text, requestId, helperName, label } = opts;
+  const sentBefore = fromObs.sends.length;
+  const t0 = Date.now();
+  await from.getByTestId("chat-input").fill(text);
+  await from.getByTestId("chat-send").click();
+  const shown = await to.getByTestId("chat-log").filter({ hasText: text }).waitFor({ timeout: 30_000 }).then(() => true, () => false);
+  if (shown) return;
+  const send = fromObs.sends.slice(sentBefore)[0];
+  const polls = toObs.polls.filter((p) => p.at >= t0);
+  const rows = await dbRows(`svc_messages?select=id&request_id=eq.${requestId}&body=like.${encodeURIComponent(`*${text}*`)}`);
+  const req = await dbRows(`svc_requests?select=status,helper_id&id=eq.${requestId}`);
+  const helper = await dbRows(`svc_helpers?select=id,status&display_name=eq.${encodeURIComponent(helperName)}`);
+  const r0 = (req?.[0] ?? null) as { status?: string; helper_id?: string } | null;
+  const h0 = (helper?.[0] ?? null) as { id?: string; status?: string } | null;
+  const partyOk = r0 && h0 ? h0.status === "APPROVED" && r0.helper_id === h0.id && (r0.status === "ASSIGNED" || r0.status === "IN_PROGRESS") : null;
+  // diagnostic only: would a reload make the persisted message appear?
+  let reloadShows: boolean | null = null;
+  try {
+    await to.reload();
+    const open = to.getByTestId("open-chat");
+    if (await open.count()) await open.first().click();
+    reloadShows = await to.getByTestId("chat-log").filter({ hasText: text }).waitFor({ timeout: 8_000 }).then(() => true, () => false);
+  } catch { /* the page may be gone */ }
+  const e: Evidence = {
+    sendEmitted: send !== undefined, sendStatus: send?.status ?? null, sendCode: send?.code ?? null,
+    persisted: rows === null ? null : rows.length > 0, pollsInWindow: polls.length, pollStatuses: polls.map((p) => p.status),
+    anyPollHasMessage: polls.some((p) => p.hasMarker), uiShowsMessage: false, partyOk, reloadShowsMessage: reloadShows,
+  };
+  throw new Error(`chat delivery failed (${label})\n${report(label, e, polls)}\nverdict=${classifyChat(e)}`);
 }
 
 test("customer -> helper -> chat -> start -> complete; admin sees the same state; localStorage cleared mid-flow", async ({ browser }) => {
@@ -92,16 +144,15 @@ test("customer -> helper -> chat -> start -> complete; admin sees the same state
     await expect(C.page.getByTestId("customer-request")).toHaveAttribute("data-status", "ASSIGNED", { timeout: 30_000 });
     await expect(H.page.locator('[data-testid="helper-job"]', { hasText: RUN_ID })).toHaveAttribute("data-status", "ASSIGNED", { timeout: 30_000 });
 
-    // chat both ways (the helper re-opens the job chat after the reload)
+    // chat both ways: polling must deliver each message without a reload (a failure names the failing segment)
+    const requestId = requestIdOf(link)!;
+    const cObs = watchChat(C.page, RUN_ID);
+    const hObs = watchChat(H.page, RUN_ID);
     await job.getByTestId("open-chat").click();
     const hello = `${RUN_ID} xin chao`;
-    await C.page.getByTestId("chat-input").fill(hello);
-    await C.page.getByTestId("chat-send").click();
-    await expect(H.page.getByTestId("chat-log")).toContainText(hello, { timeout: 30_000 });
+    await deliver({ from: C.page, to: H.page, fromObs: cObs, toObs: hObs, text: hello, requestId, helperName: NAME, label: "customer -> helper" });
     const reply = `${RUN_ID} ok`;
-    await H.page.getByTestId("chat-input").fill(reply);
-    await H.page.getByTestId("chat-send").click();
-    await expect(C.page.getByTestId("chat-log")).toContainText(reply, { timeout: 30_000 });
+    await deliver({ from: H.page, to: C.page, fromObs: hObs, toObs: cObs, text: reply, requestId, helperName: NAME, label: "helper -> customer" });
 
     // start -> complete, customer follows without reloads
     await job.getByTestId("start-job").click();
