@@ -7,6 +7,7 @@ import { REF, SERVICE, SUPABASE, deleteFixtureUser, restRows, snapshot, svcHeade
 import { BASE, RUN_ID, SITES, learnUrl } from "./target";
 import { classify, describeEvidence, type Evidence } from "./entitlementDiagnostics";
 import { readRpc } from "./rpc";
+import { loginForm, loginSubmit } from "./loginForm";
 
 /**
  * Free / Premium on the integrated STAGING Worker with run-scoped entitlement fixtures. No checkout, no payment provider: the
@@ -50,7 +51,13 @@ async function login(page: Page, site: Site) {
   await page.goto(learnUrl(site, "/login"));
   await page.locator("#email").fill(email);
   await page.locator("#password").fill(password);
-  await page.getByRole("button", { name: "로그인", exact: true }).click();
+  // the submit control is found by structure (the only button in the form that holds #email and #password): its label is localized
+  // (study.korean defaults to English "Log in", math/english to Korean), so an accessible-name lookup is not a valid cross-site selector.
+  // toBeEnabled() still waits through the disabled/loading state of the form.
+  await expect(loginForm(page)).toHaveCount(1);
+  await expect(loginSubmit(page)).toHaveCount(1);
+  await expect(loginSubmit(page)).toBeEnabled({ timeout: 30_000 });
+  await loginSubmit(page).click();
   // NOT waitForURL(/study/<site>/): the login page's own URL already matches that, so the old wait returned at once and the next navigation
   // interrupted the sign-in - the browser stayed a guest. Wait for the signed-in landing page and for the session cookie.
   await expect(page).toHaveURL(learnUrl(site, "/dashboard"), { timeout: 30_000 }); // the login action redirects to `${base}/dashboard`
