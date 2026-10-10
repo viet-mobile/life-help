@@ -3,8 +3,9 @@ import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
 import { buildAccessPlan } from "../../lib/learn/domain/access";
 import type { ContentBundle, SiteCatalog } from "../../lib/learn/types";
-import { SERVICE, SUPABASE, deleteFixtureUser, snapshot, svcHeaders } from "./helpers";
+import { REF, SERVICE, SUPABASE, deleteFixtureUser, restRows, snapshot, svcHeaders } from "./helpers";
 import { BASE, RUN_ID, SITES, learnUrl } from "./target";
+import { classify, describeEvidence, type Evidence } from "./entitlementDiagnostics";
 
 /**
  * Free / Premium on the integrated STAGING Worker with run-scoped entitlement fixtures. No checkout, no payment provider: the
@@ -35,8 +36,15 @@ const rpc = async (fn: string, body: Record<string, unknown>) => {
   expect(r.status, `${fn}`).toBeLessThan(300);
   return r.json();
 };
-const grant = (scope: string, startsAt: string | null, expiresAt: string | null) =>
-  rpc("learn_grant_entitlement", { p_user: userId, p_scope: scope, p_source: "grant", p_starts_at: startsAt, p_expires_at: expiresAt, p_note: RUN_ID }) as Promise<string>;
+/** Grants through the service-role RPC, then READS THE ROW BACK: the fixture is only trusted when it is really stored for this user and scope. */
+const grant = async (scope: string, startsAt: string | null, expiresAt: string | null): Promise<string> => {
+  const id = (await rpc("learn_grant_entitlement", { p_user: userId, p_scope: scope, p_source: "grant", p_starts_at: startsAt, p_expires_at: expiresAt, p_note: RUN_ID })) as string;
+  expect(typeof id, "grant returned an entitlement id").toBe("string");
+  const rows = await restRows<{ user_id: string; scope: string; revoked_at: string | null }>("learn_entitlements", `id=eq.${id}&select=user_id,scope,revoked_at`);
+  expect(rows.length, "the entitlement row exists").toBe(1);
+  expect([rows[0].user_id === userId, rows[0].scope, rows[0].revoked_at], "stored for the fixture user, with the requested scope, not revoked").toEqual([true, scope, null]);
+  return id;
+};
 const iso = (offsetDays: number) => new Date(Date.now() + offsetDays * 86_400_000).toISOString();
 
 async function login(page: Page, site: Site) {
@@ -44,8 +52,13 @@ async function login(page: Page, site: Site) {
   await page.locator("#email").fill(email);
   await page.locator("#password").fill(password);
   await page.getByRole("button", { name: "로그인", exact: true }).click();
-  await page.waitForURL(new RegExp(`/study/${site}`));
+  // NOT waitForURL(/study/<site>/): the login page's own URL already matches that, so the old wait returned at once and the next navigation
+  // interrupted the sign-in - the browser stayed a guest. Wait for the signed-in landing page and for the session cookie.
+  await expect(page).toHaveURL(learnUrl(site, "/dashboard"), { timeout: 30_000 }); // the login action redirects to `${base}/dashboard`
+  const cookies = await page.context().cookies();
+  expect(cookies.some((c) => c.name.startsWith(`sb-${REF}-auth-token`)), "signed in: Supabase session cookie present").toBe(true);
 }
+const sessionFingerprint = async (page: Page) => (await page.context().cookies()).filter((c) => c.name.startsWith(`sb-${REF}-auth-token`)).map((c) => `${c.name}=${c.value}`).join("|"); // only ever compared for equality or tested for emptiness; never printed
 async function onboard(page: Page, site: Site) {
   const t = dict("en");
   await page.context().addCookies([{ name: "learn_lang", value: "en", url: BASE }]);
@@ -60,14 +73,30 @@ async function onboard(page: Page, site: Site) {
   await page.getByRole("button", { name: t["onboarding.finish"] }).click();
   await page.getByRole("heading", { name: t["diag.intro.title"] }).waitFor();
 }
-const gateVisible = async (page: Page, site: Site, lessonId: string, loc = "en") => {
+const gateState = async (page: Page, site: Site, lessonId: string, loc = "en") => {
   await page.context().addCookies([{ name: "learn_lang", value: loc, url: BASE }]);
-  await page.goto(learnUrl(site, `/lesson/${lessonId}`));
+  const before = await sessionFingerprint(page);
+  const res = await page.goto(learnUrl(site, `/lesson/${lessonId}`));
   const gate = page.getByTestId("premium-gate");
   const begin = page.getByRole("button", { name: dict(loc)["lesson.begin"] });
   await expect(gate.or(begin)).toBeVisible({ timeout: 30_000 });
-  return gate.isVisible();
+  return { gate: await gate.isVisible(), cacheControl: res?.headers()["cache-control"] ?? "", stable: before === (await sessionFingerprint(page)) };
 };
+const gateVisible = async (page: Page, site: Site, lessonId: string, loc = "en") => (await gateState(page, site, lessonId, loc)).gate;
+
+/** Secret-free evidence for a failed "open with entitlement" expectation. */
+async function evidence(page: Page, site: Site, lessonId: string): Promise<string> {
+  const rows = await restRows<{ scope: string; starts_at: string; expires_at: string | null; revoked_at: string | null }>("learn_entitlements", `user_id=eq.${userId}&select=scope,starts_at,expires_at,revoked_at&order=created_at.desc`);
+  const now = Date.now();
+  const active = rows.find((r) => !r.revoked_at && Date.parse(r.starts_at) <= now && (!r.expires_at || Date.parse(r.expires_at) > now));
+  const profile = await restRows("learn_student_profiles", `user_id=eq.${userId}&select=user_id&limit=1`);
+  const st = await gateState(page, site, lessonId);
+  const e: Evidence = {
+    expectedScope: site, grantRows: rows.length, grantScope: (active ?? rows[0])?.scope ?? null, grantActive: !!active,
+    sessionCookie: !!(await sessionFingerprint(page)), profileRow: profile.length > 0, gateVisible: st.gate, cacheControl: st.cacheControl, identityStable: st.stable,
+  };
+  return describeEvidence(e);
+}
 
 test.describe.serial("free / premium boundary with run-scoped entitlement fixtures", () => {
   test.beforeAll(async () => {
@@ -83,6 +112,8 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
       const { premium, free } = canonical(site);
       await login(page, site);
       await onboard(page, site);
+      // the server must have seen THIS fixture user (onboarding writes the profile for the signed-in user only)
+      expect((await restRows("learn_student_profiles", `user_id=eq.${userId}&select=user_id&limit=1`)).length, "the browser is signed in as the fixture user").toBe(1);
 
       // free content is accessible; premium is locked for a free learner (direct URL) in several locales (the lock is not language-bound)
       expect(await gateVisible(page, site, free.id), "free lesson is open").toBe(false);
@@ -91,7 +122,8 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
 
       // an entitlement for this site (scope) opens it; the lock is server-side, so a reload shows the lesson
       const id = await grant(site, null, null);
-      expect(await gateVisible(page, site, premium.id), "premium open with an entitlement").toBe(false);
+      const opened = await gateVisible(page, site, premium.id);
+      expect(opened, opened ? `premium open with an entitlement - ${await evidence(page, site, premium.id)}` : "premium open with an entitlement").toBe(false);
       // revoked -> locked again
       await rpc("learn_revoke_entitlement", { p_id: id });
       expect(await gateVisible(page, site, premium.id), "premium locked after revoke").toBe(true);
