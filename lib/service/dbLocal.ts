@@ -8,7 +8,7 @@ const SUPABASE_ROLES = `
   alter default privileges in schema public grant all on functions to anon, authenticated, service_role;
   alter default privileges in schema public grant all on sequences to anon, authenticated, service_role;
 `;
-export const SERVICE_CORE_MIGRATIONS = ["supabase/migrations/202610090040_service_core.sql", "supabase/migrations/202610100041_service_request_access.sql"] as const;
+export const SERVICE_CORE_MIGRATIONS = ["supabase/migrations/202610090040_service_core.sql", "supabase/migrations/202610100041_service_request_access.sql", "supabase/migrations/202610110042_service_core_internal_rpc_lockdown.sql"] as const;
 
 interface LocalDb extends ServiceDb {
   close(): Promise<void>;
@@ -36,7 +36,7 @@ export async function createLocalDb(root = process.cwd()): Promise<LocalDb> {
   return {
     async rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
       const keys = Object.keys(args);
-      if (!/^svc_[a-z_]+$/.test(fn) || keys.some((k) => !/^p_[a-z_]+$/.test(k))) throw fromDbMessage("INTERNAL");
+      if (!/^svc_[a-z_]+$/.test(fn) || fn.startsWith("svc__") || keys.some((k) => !/^p_[a-z_]+$/.test(k))) throw fromDbMessage("INTERNAL");
       const call = `select public.${fn}(${keys.map((k, i) => `${k} => $${i + 1}`).join(", ")}) as v`;
       try {
         const res = await db.query<{ v: T }>(call, keys.map((k) => args[k] ?? null));

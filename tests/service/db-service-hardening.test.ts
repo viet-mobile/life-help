@@ -138,7 +138,7 @@ describe("service-core function security audit", { timeout: 120_000 }, () => {
   afterAll(async () => { await db.close(); });
 
   const fns = async () => (await db.query<any>(`
-    select p.oid, p.proname, p.prosecdef, p.proconfig, p.prosrc, pg_get_userbyid(p.proowner) as owner, p.proacl::text as acl,
+    select p.oid, p.proname, p.pronargs, p.prosecdef, p.proconfig, p.prosrc, pg_get_userbyid(p.proowner) as owner, p.proacl::text as acl,
            has_function_privilege('anon', p.oid, 'EXECUTE') as anon, has_function_privilege('authenticated', p.oid, 'EXECUTE') as auth,
            has_function_privilege('service_role', p.oid, 'EXECUTE') as svc
     from pg_proc p join pg_namespace n on n.oid = p.pronamespace where n.nspname = 'public' and p.proname like 'svc\\_%'`)).rows;
@@ -170,8 +170,18 @@ describe("service-core function security audit", { timeout: 120_000 }, () => {
     expect(["anon", "authenticated", "service_role"]).not.toContain([...owners][0]);
   });
 
-  it("no function builds dynamic SQL from its inputs", async () => {
-    for (const f of await fns()) expect(f.prosrc, `${f.proname}`).not.toMatch(/\bexecute\b|\bformat\s*\(/i);
+  it("no function builds dynamic SQL from its inputs (the two lockdown helpers take no input and only revoke over catalog names)", async () => {
+    const LOCKDOWN = new Set(["svc__lockdown_internals", "svc__lockdown_on_create"]);
+    for (const f of await fns()) {
+      if (LOCKDOWN.has(f.proname)) {
+        expect(f.pronargs, `${f.proname} takes no arguments`).toBe(0);
+        expect([f.anon, f.auth, f.svc], `${f.proname} is unreachable for API roles`).toEqual([false, false, false]);
+        expect(f.prosrc.match(/execute\s+format\(/gi)?.length, f.proname).toBe(1);
+        expect(f.prosrc, f.proname).toMatch(/revoke all on function %s from public, anon, authenticated, service_role/);
+        continue;
+      }
+      expect(f.prosrc, `${f.proname}`).not.toMatch(/\bexecute\b|\bformat\s*\(/i);
+    }
   });
 
   it("no API result carries a credential, token hash or other secret", async () => {

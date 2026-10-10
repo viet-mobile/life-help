@@ -17,7 +17,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT, STAGING_REF, loadStagingEnv, preflight, refOfUrl } from "./contract.cjs";
 
-export const REQUIRED = ["202610070028_learning_korean_study.sql", "202610080029_learning_entitlements.sql", "202610090040_service_core.sql", "202610100041_service_request_access.sql"];
+export const REQUIRED = ["202610070028_learning_korean_study.sql", "202610080029_learning_entitlements.sql", "202610090040_service_core.sql", "202610100041_service_request_access.sql", "202610110042_service_core_internal_rpc_lockdown.sql"];
 const SNAPSHOT_TABLES = ["svc_customers", "svc_helpers", "svc_requests", "svc_request_sessions", "svc_messages", "svc_outbox", "svc_audit", "learn_entitlements", "learn_student_profiles"];
 
 /** modern sb_* keys travel in `apikey` only; legacy JWT keys are also sent as the Authorization bearer (the user-JWT slot) */

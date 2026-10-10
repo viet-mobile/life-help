@@ -15,7 +15,7 @@ Worker secrets: `npm run staging:integrated` (`-- --plan` lists the steps and to
    `SERVICE_CORE_SUPABASE_SECRET_KEY`, `LIFE_HELP_SYS_ADMIN_ID`, `LIFE_HELP_SYS_ADMIN_PASSWORD`, `LIFE_HELP_SYS_SESSION_SECRET`
    (and verify `LEARN_SUPABASE_PUBLISHABLE_KEY`, `LEARN_SUPABASE_SECRET_KEY` are installed). Non-secret vars are already in
    `wrangler.staging.jsonc`. Full classification: `WORKER_BINDINGS` in `scripts/staging/contract.cjs`.
-3. **Migrations** on the staging project: 028, 029, 040, 041 (the runner audits read-only and reports `MIGRATIONS_PENDING`; it never
+3. **Migrations** on the staging project: 028, 029, 040, 041, 042 (the runner audits read-only and reports `MIGRATIONS_PENDING`; it never
    applies anything). Apply only the pending files, as `docs/LEARNING_RELEASE.md` describes (a temporary workdir that holds just them).
 4. **Worker version** running the integrated build. Staging deploys from a local worktree, **no git push is involved**:
    `NEXT_PUBLIC_SUPABASE_URL=… NEXT_PUBLIC_SUPABASE_ANON_KEY=… npx opennextjs-cloudflare build && npx wrangler deploy --config wrangler.staging.jsonc`

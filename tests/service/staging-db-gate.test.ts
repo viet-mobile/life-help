@@ -160,8 +160,29 @@ describe("elevated structural inspection", () => {
     const r = await run({ hide: ["svc_request_sessions", "svc_c_claim"] });
     expect(r.code).toBe(4);
     expect(r.text).toContain("MIGRATIONS_PENDING = 202610100041_service_request_access.sql");
-    expect(r.text).toContain("MIGRATIONS_ALREADY_APPLIED = 202610070028_learning_korean_study.sql, 202610080029_learning_entitlements.sql, 202610090040_service_core.sql");
+    expect(r.text).toContain("MIGRATIONS_ALREADY_APPLIED = 202610070028_learning_korean_study.sql, 202610080029_learning_entitlements.sql, 202610090040_service_core.sql, 202610110042_service_core_internal_rpc_lockdown.sql");
     expect(r.calls.some((c) => c.headers.apikey === PUB)).toBe(false);
+  });
+  it("migration 042 is REQUIRED: until its marker is visible the gate reports it pending (exit 4) - even while internals are still exposed", async () => {
+    expect(REQUIRED).toContain("202610110042_service_core_internal_rpc_lockdown.sql");
+    const before = await run({ hide: ["svc_core_schema_version"], exposeInternals: true }); // the staging situation before 042 is applied
+    expect(before.code).toBe(4);
+    expect(before.text).toContain("MIGRATIONS_PENDING = 202610110042_service_core_internal_rpc_lockdown.sql");
+    expect(before.text).not.toContain("FAIL");
+    expect(before.calls.some((c) => c.headers.apikey === PUB)).toBe(false);
+  });
+  it("once 042 is applied the gate expects ZERO internal exposure for service_role (and still all intended API objects)", async () => {
+    const applied = await run();
+    expect(applied.code).toBe(0);
+    expect(applied.text).toMatch(/PASS service_role can reach every API object/);
+    expect(applied.text).toMatch(/PASS nobody can reach the svc__ internals through the API \(17\)/);
+    const stillExposed = await run({ exposeInternals: true });
+    expect(stillExposed.code).toBe(1);
+    expect(stillExposed.text).toMatch(/FAIL nobody can reach the svc__ internals through the API \(17\) :: svc__/);
+  });
+  it("the API object set never requires an internal to be exposed (internals are excluded from 'all API functions')", async () => {
+    const r = await run({ hide: [...allFns.keys()].filter((n) => n.startsWith("svc__")) }); // internals absent from the elevated OpenAPI
+    expect(r.code).toBe(0);
   });
   it("internals visible to service_role are a failure (service-role isolation)", async () => {
     const r = await run({ exposeInternals: true });

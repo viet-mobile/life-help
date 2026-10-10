@@ -27,6 +27,7 @@ export function createSupabaseDb(config: { url: string; key: string }): ServiceD
   const client = createClient(config.url, config.key, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
   return {
     async rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
+      if (!/^svc_[a-z_]+$/.test(fn) || fn.startsWith("svc__")) throw fromDbMessage("INTERNAL"); // only svc_* wrappers are API; svc__ internals never
       const { data, error } = await client.rpc(fn, args);
       if (error) throw fromDbMessage(error.message);
       return data as T;

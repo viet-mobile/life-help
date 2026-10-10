@@ -20,7 +20,7 @@ export const M028 = "202610070028_learning_korean_study.sql";
 export const M029 = "202610080029_learning_entitlements.sql";
 export const LEARNING_CHAIN = [SHIM, M024, M025, M026, M027, M028, M029];
 /** The customer <-> helper service core is a later, separate migration: the learning chain tests are about marketplace + learning only. */
-export const SERVICE_CORE_FILES = MIGRATIONS.filter((f) => /_service_(core|request_access)\.sql$/.test(f));
+export const SERVICE_CORE_FILES = MIGRATIONS.filter((f) => /_service_[a-z_]+\.sql$/.test(f));
 export const CHAIN_MIGRATIONS = MIGRATIONS.filter((f) => !SERVICE_CORE_FILES.includes(f));
 export const MARKETPLACE_FILES = CHAIN_MIGRATIONS.filter((f) => !LEARN_MIGRATIONS.includes(f));
 export const sqlOf = (f: string) =>
