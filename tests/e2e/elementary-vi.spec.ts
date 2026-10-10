@@ -120,7 +120,7 @@ test("Vietnamese: switch on the landing page, all 12 grades read Lớp 1 .. Lớ
   await chooseLocale(page, "vi");
   await expect(page.getByRole("link", { name: vi["landing.cta.start"] })).toBeVisible();
   await expect(page.getByRole("heading", { name: vi["site.math.tagline"] })).toBeVisible();
-  expect(await page.title()).toContain(vi["site.math.tagline"]); // locale-aware metadata
+  await expect.poll(() => page.title()).toContain(vi["site.math.tagline"]); // metadata arrives after the locale refresh
   expect(HANGUL.test((await page.locator("main, .study-root").first().innerText()).replaceAll("한국어", ""))).toBe(false);
 
   await page.reload();

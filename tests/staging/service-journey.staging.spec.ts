@@ -2,7 +2,7 @@ import { expect, test, type Browser, type Page } from "@playwright/test";
 import { loadStagingEnv } from "../../scripts/staging/contract.cjs";
 import { BASE, RUN_ID } from "./target";
 import { isRecoveryLink, openLink, requestIdOf, resolveLink } from "./links";
-import { classifyChat, report, watchChat, type ChatObs, type Evidence } from "./chatProbe";
+import { classifyChat, report, watchChat, type Evidence } from "./chatProbe";
 
 /**
  * Customer / Helper / Admin on the integrated STAGING Worker, three separate browser contexts (no shared cookies or storage).
@@ -50,17 +50,23 @@ async function dbRows(query: string): Promise<unknown[] | null> {
  * a secret-free report that names the failing segment (send HTTP / persistence / receiver poll / authorization / render). The reload
  * is a diagnostic after the failure only and never part of the passing expectation.
  */
-async function deliver(opts: { from: Page; to: Page; fromObs: ChatObs; toObs: ChatObs; text: string; requestId: string; helperName: string; label: string }) {
-  const { from, to, fromObs, toObs, text, requestId, helperName, label } = opts;
-  const sentBefore = fromObs.sends.length;
+async function deliver(opts: { from: Page; to: Page; text: string; requestId: string; helperName: string; label: string }) {
+  const { from, to, text, requestId, helperName, label } = opts;
+  // Observe this exact delivery, not another message carrying the same run id.
+  const fromObs = watchChat(from, text);
+  const toObs = watchChat(to, text);
   const t0 = Date.now();
   await from.getByTestId("chat-input").fill(text);
   await from.getByTestId("chat-send").click();
   const shown = await to.getByTestId("chat-log").filter({ hasText: text }).waitFor({ timeout: 30_000 }).then(() => true, () => false);
-  if (shown) return;
-  const send = fromObs.sends.slice(sentBefore)[0];
+  if (shown) { fromObs.stop(); toObs.stop(); return; }
+  const receiverView = await to.evaluate(() => ({ visible: document.visibilityState === "visible",
+    chatMounted: !!document.querySelector('[data-testid="chat-log"]'),
+    shownCount: document.querySelectorAll('[data-testid="msg-shown"]').length,
+    originalCount: document.querySelectorAll('[data-testid="msg-original"]').length })).catch(() => undefined);
+  const send = fromObs.sends[0];
   const polls = toObs.polls.filter((p) => p.at >= t0);
-  const rows = await dbRows(`svc_messages?select=id&request_id=eq.${requestId}&body=like.${encodeURIComponent(`*${text}*`)}`);
+  const rows = await dbRows(`svc_messages?select=id&request_id=eq.${requestId}&body=eq.${encodeURIComponent(text)}`);
   const req = await dbRows(`svc_requests?select=status,helper_id&id=eq.${requestId}`);
   const helper = await dbRows(`svc_helpers?select=id,status&display_name=eq.${encodeURIComponent(helperName)}`);
   const r0 = (req?.[0] ?? null) as { status?: string; helper_id?: string } | null;
@@ -74,10 +80,11 @@ async function deliver(opts: { from: Page; to: Page; fromObs: ChatObs; toObs: Ch
     if (await open.count()) await open.first().click();
     reloadShows = await to.getByTestId("chat-log").filter({ hasText: text }).waitFor({ timeout: 8_000 }).then(() => true, () => false);
   } catch { /* the page may be gone */ }
+  fromObs.stop(); toObs.stop();
   const e: Evidence = {
     sendEmitted: send !== undefined, sendStatus: send?.status ?? null, sendCode: send?.code ?? null,
     persisted: rows === null ? null : rows.length > 0, pollsInWindow: polls.length, pollStatuses: polls.map((p) => p.status),
-    anyPollHasMessage: polls.some((p) => p.hasMarker), uiShowsMessage: false, partyOk, reloadShowsMessage: reloadShows,
+    anyPollHasMessage: polls.some((p) => p.hasMarker), uiShowsMessage: false, partyOk, reloadShowsMessage: reloadShows, receiverView,
   };
   throw new Error(`chat delivery failed (${label})\n${report(label, e, polls)}\nverdict=${classifyChat(e)}`);
 }
@@ -146,13 +153,11 @@ test("customer -> helper -> chat -> start -> complete; admin sees the same state
 
     // chat both ways: polling must deliver each message without a reload (a failure names the failing segment)
     const requestId = requestIdOf(link)!;
-    const cObs = watchChat(C.page, RUN_ID);
-    const hObs = watchChat(H.page, RUN_ID);
     await job.getByTestId("open-chat").click();
     const hello = `${RUN_ID} xin chao`;
-    await deliver({ from: C.page, to: H.page, fromObs: cObs, toObs: hObs, text: hello, requestId, helperName: NAME, label: "customer -> helper" });
+    await deliver({ from: C.page, to: H.page, text: hello, requestId, helperName: NAME, label: "customer -> helper" });
     const reply = `${RUN_ID} ok`;
-    await deliver({ from: H.page, to: C.page, fromObs: hObs, toObs: cObs, text: reply, requestId, helperName: NAME, label: "helper -> customer" });
+    await deliver({ from: H.page, to: C.page, text: reply, requestId, helperName: NAME, label: "helper -> customer" });
 
     // start -> complete, customer follows without reloads
     await job.getByTestId("start-job").click();

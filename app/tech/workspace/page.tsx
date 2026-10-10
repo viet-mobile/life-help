@@ -39,6 +39,7 @@ export default function TechWorkspacePage() {
   const {
     helper,
     isLoggedIn,
+    sessionState,
     hasContract,
     remainingDays,
     toggleActiveStatus,
@@ -59,10 +60,12 @@ export default function TechWorkspacePage() {
   const [showGeneralHoursPicker, setShowGeneralHoursPicker] = useState(false);
 
   useEffect(() => {
+    // The credential check is asynchronous; loading is not a confirmed anonymous session.
+    if (sessionState === "loading") return;
     if (!isLoggedIn || !helper) {
       router.replace("/tech/login");
     }
-  }, [isLoggedIn, helper, router]);
+  }, [sessionState, isLoggedIn, helper, router]);
 
   if (!isLoggedIn || !helper) {
     return null;

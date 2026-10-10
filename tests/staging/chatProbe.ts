@@ -6,14 +6,14 @@ import type { Page } from "@playwright/test";
  * It never records URLs with ids/tokens, cookies, headers or bodies. The marker is the RUN_ID message text (safe by design).
  */
 export interface SendObs { status: number; code?: string; at: number }
-export interface PollObs { status: number; at: number; count: number; hasMarker: boolean }
-export interface ChatObs { sends: SendObs[]; polls: PollObs[] }
+export interface PollObs { status: number; at: number; count: number; hasMarker: boolean; translationStatus?: string; validMessage?: boolean }
+export interface ChatObs { sends: SendObs[]; polls: PollObs[]; stop: () => void }
 
 const MESSAGES_URL = /\/api\/svc\/(?:c|h)\/requests\/[0-9a-f-]{36}\/messages/;
 
 export function watchChat(page: Page, marker: string): ChatObs {
-  const obs: ChatObs = { sends: [], polls: [] };
-  page.on("response", async (res) => {
+  const obs: ChatObs = { sends: [], polls: [], stop: () => page.off("response", listener) };
+  const listener = async (res: import("@playwright/test").Response) => {
     if (!MESSAGES_URL.test(res.url())) return;
     const method = res.request().method();
     const at = Date.now();
@@ -23,10 +23,14 @@ export function watchChat(page: Page, marker: string): ChatObs {
       const code = res.status() >= 400 && body && typeof (body as { error?: unknown }).error === "string" && /^[A-Z_]{3,40}$/.test((body as { error: string }).error) ? (body as { error: string }).error : undefined;
       obs.sends.push({ status: res.status(), code, at });
     } else if (method === "GET") {
-      const list = body && Array.isArray((body as { messages?: unknown }).messages) ? ((body as { messages: Array<{ body?: unknown }> }).messages) : [];
-      obs.polls.push({ status: res.status(), at, count: list.length, hasMarker: list.some((m) => typeof m?.body === "string" && m.body.includes(marker)) });
+      const list = body && Array.isArray((body as { messages?: unknown }).messages) ? ((body as { messages: Array<{ body?: unknown; id?: unknown; seq?: unknown; senderKind?: unknown; translationStatus?: unknown }> }).messages) : [];
+      const matched = list.find((m) => m?.body === marker);
+      const translationStatus = matched && ["NONE", "OK", "FAILED", "SAME_LANGUAGE"].includes(String(matched.translationStatus)) ? String(matched.translationStatus) : undefined;
+      obs.polls.push({ status: res.status(), at, count: list.length, hasMarker: matched !== undefined, translationStatus,
+        validMessage: matched ? typeof matched.id === "string" && Number.isFinite(matched.seq) && ["CUSTOMER", "HELPER", "ADMIN"].includes(String(matched.senderKind)) : undefined });
     }
-  });
+  };
+  page.on("response", listener);
   return obs;
 }
 
@@ -41,6 +45,7 @@ export interface Evidence {
   anyPollHasMessage: boolean;
   uiShowsMessage: boolean;
   partyOk: boolean | null;         // receiver is the approved, assigned helper / the owner at the time (null = could not be checked)
+  receiverView?: { visible: boolean; chatMounted: boolean; shownCount: number; originalCount: number };
   reloadShowsMessage: boolean | null; // diagnostic only; never part of the passing expectation
 }
 export type Verdict =
@@ -51,6 +56,7 @@ export type Verdict =
   | "RECEIVER_AUTHORIZATION_FAILED"
   | "PERSISTED_BUT_NO_POLL"
   | "POLL_EMPTY_BUT_PERSISTED"
+  | "RECEIVER_CHAT_NOT_MOUNTED"
   | "POLL_HAS_MESSAGE_UI_NOT_RENDERED"
   | "UNDETERMINED";
 
@@ -61,6 +67,7 @@ export function classifyChat(e: Evidence): Verdict {
   if (e.persisted === false) return "SEND_OK_BUT_NOT_PERSISTED";
   if (e.pollStatuses.some((s) => s === 401 || s === 403 || s === 404) || e.partyOk === false) return "RECEIVER_AUTHORIZATION_FAILED";
   if (e.persisted === true && e.pollsInWindow === 0) return "PERSISTED_BUT_NO_POLL";
+  if (e.receiverView?.chatMounted === false) return "RECEIVER_CHAT_NOT_MOUNTED";
   if (e.anyPollHasMessage) return "POLL_HAS_MESSAGE_UI_NOT_RENDERED";
   if (e.persisted === true && e.pollsInWindow > 0) return "POLL_EMPTY_BUT_PERSISTED";
   return "UNDETERMINED";
@@ -81,6 +88,8 @@ export function report(label: string, e: Evidence, polls: PollObs[]): string {
     `HELPER_POLL_HTTP=${JSON.stringify(hist)}`,
     `HELPER_POLL_HAS_MESSAGE=${e.anyPollHasMessage}`,
     `HELPER_UI_RENDERED_MESSAGE=${e.uiShowsMessage}`,
+    `RECEIVER_VIEW=${e.receiverView ? JSON.stringify(e.receiverView) : "unchecked"}`,
+    `MATCHED_MESSAGE_SHAPE=${JSON.stringify(polls.filter((p) => p.hasMarker).map((p) => ({ valid: p.validMessage ?? null, translationStatus: p.translationStatus ?? "unknown" })))}`,
     `RECEIVER_PARTY_OK=${e.partyOk === null ? "unchecked" : e.partyOk}`,
     `RELOAD_SHOWS_MESSAGE=${e.reloadShowsMessage === null ? "not tried" : e.reloadShowsMessage} (diagnostic only)`,
   ].join("\n");

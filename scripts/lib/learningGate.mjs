@@ -65,7 +65,8 @@ export async function learningGate(b, { expect, notTestable }, { phase = "gate" 
       const rows = await b.catalog(`select p.proname, p.prosecdef, coalesce(p.proconfig::text, '') cfg from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'public' and p.proname in ('learn_commit_events', 'learn_load_state', 'learn_load_content') order by 1`);
       expect("024-A3. learn RPCs are SECURITY DEFINER with an empty search_path (catalog)", rows.length === 3 && rows.every((r) => r.prosecdef && r.cfg.replace(/[\\"{}]/g, "") === "search_path="), rows);
       const rls = await b.catalog(`select count(*) filter (where relrowsecurity)::int on_, count(*)::int n from pg_class c join pg_namespace s on s.oid = c.relnamespace where s.nspname = 'public' and c.relkind = 'r' and c.relname like 'learn\\_%'`);
-      expect("024-A4 / 026. RLS enabled on all 25 learn_* tables incl. learn_staff_users (catalog)", rls[0].on_ === LEARN_TABLES.length + 1 && rls[0].n === LEARN_TABLES.length + 1, rls);
+      // Later migrations may add tables (e.g. entitlements); every one must still have RLS.
+      expect("024-A4 / 026. RLS enabled on every learn_* table incl. learn_staff_users (catalog)", rls[0].n >= LEARN_TABLES.length + 1 && rls[0].on_ === rls[0].n, rls);
     } else notTestable("024-A3/A4. SECURITY DEFINER + search_path + RLS flags", "catalog is not reachable over PostgREST; verified by supabase/diagnostics/staging_migrations_016_023_readonly.sql after apply");
 
     // ======================= 024 anon =======================

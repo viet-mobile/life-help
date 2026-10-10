@@ -161,7 +161,8 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
     test.setTimeout(240_000);
     const lessons = { math: canonical("math").premium, english: canonical("english").premium, korean: canonical("korean").premium };
     await login(page, "math");
-    for (const site of SITES) await onboard(page, site).catch(() => undefined); // one account, a profile / level per site
+    // The preceding serial full-flow tests created all three profiles. Re-saving a learner
+    // whose diagnostic is done returns to the dashboard, not the diagnostic heading onboard() waits for.
     await expectCleanBaseline("the cross-site scope checks"); // earlier tests' grants are revoked: English must be locked because of SCOPE, not by luck
 
     // locked everywhere without any entitlement
