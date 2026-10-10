@@ -6,6 +6,7 @@ import type { ContentBundle, SiteCatalog } from "../../lib/learn/types";
 import { REF, SERVICE, SUPABASE, deleteFixtureUser, restRows, snapshot, svcHeaders } from "./helpers";
 import { BASE, RUN_ID, SITES, learnUrl } from "./target";
 import { classify, describeEvidence, type Evidence } from "./entitlementDiagnostics";
+import { readRpc } from "./rpc";
 
 /**
  * Free / Premium on the integrated STAGING Worker with run-scoped entitlement fixtures. No checkout, no payment provider: the
@@ -31,15 +32,13 @@ function canonical(site: Site) {
 const email = `learn.ent.${RUN_ID.toLowerCase()}@example.test`;
 const password = `LH-${Math.random().toString(36).slice(2)}-${Date.now()}!`;
 let userId: string | null = null;
-const rpc = async (fn: string, body: Record<string, unknown>) => {
-  const r = await fetch(`${SUPABASE}/rest/v1/rpc/${fn}`, { method: "POST", headers: svcHeaders(), body: JSON.stringify(body) });
-  expect(r.status, `${fn}`).toBeLessThan(300);
-  return r.json();
-};
+/** JSON-returning by default (learn_grant_entitlement -> the new id); a void function says so with { allowEmpty: true } (learn_revoke_entitlement). */
+const rpc = async (fn: string, body: Record<string, unknown>, opts: { allowEmpty?: boolean } = {}) =>
+  readRpc(await fetch(`${SUPABASE}/rest/v1/rpc/${fn}`, { method: "POST", headers: svcHeaders(), body: JSON.stringify(body) }), fn, opts);
 /** Grants through the service-role RPC, then READS THE ROW BACK: the fixture is only trusted when it is really stored for this user and scope. */
 const grant = async (scope: string, startsAt: string | null, expiresAt: string | null): Promise<string> => {
   const id = (await rpc("learn_grant_entitlement", { p_user: userId, p_scope: scope, p_source: "grant", p_starts_at: startsAt, p_expires_at: expiresAt, p_note: RUN_ID })) as string;
-  expect(typeof id, "grant returned an entitlement id").toBe("string");
+  expect(typeof id === "string" && /^[0-9a-f-]{36}$/i.test(id), "grant returned an entitlement id (an empty or non-id answer is a failure)").toBe(true);
   const rows = await restRows<{ user_id: string; scope: string; revoked_at: string | null }>("learn_entitlements", `id=eq.${id}&select=user_id,scope,revoked_at`);
   expect(rows.length, "the entitlement row exists").toBe(1);
   expect([rows[0].user_id === userId, rows[0].scope, rows[0].revoked_at], "stored for the fixture user, with the requested scope, not revoked").toEqual([true, scope, null]);
@@ -125,7 +124,7 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
       const opened = await gateVisible(page, site, premium.id);
       expect(opened, opened ? `premium open with an entitlement - ${await evidence(page, site, premium.id)}` : "premium open with an entitlement").toBe(false);
       // revoked -> locked again
-      await rpc("learn_revoke_entitlement", { p_id: id });
+      await rpc("learn_revoke_entitlement", { p_id: id }, { allowEmpty: true }); // RETURNS void: an empty success is the expected answer
       expect(await gateVisible(page, site, premium.id), "premium locked after revoke").toBe(true);
       // expired -> locked
       await grant(site, iso(-2), iso(-1));
