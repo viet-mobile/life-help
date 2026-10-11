@@ -171,7 +171,7 @@ export function e1(b, h) {
   const lesson = (n, sk, title, concept, example, core, challenge) => ({ id: `math-e1-l${n}`, title, concept, example, skills: [S[sk]], core, challenge });
   b.course({
     id: "math-e1", grade: "E1", title: T("초1 수학 · 수와 모양", "Toán Lớp 1 · Số và hình"),
-    world: { name: T("Number Meadow", "Đồng cỏ Số"), emoji: "🌼", tagline: T("수와 모양과 친구가 되어요", "Làm bạn với các con số và hình khối") },
+    world: { name: T("수의 초원", "Đồng cỏ Số"), emoji: "🌼", tagline: T("수와 모양과 친구가 되어요", "Làm bạn với các con số và hình khối") },
     unit: { id: "math-e1-u1", title: T("수와 연산, 모양", "Số, phép tính và hình") },
     lessons: [
       lesson(1, "count", T("수 세기", "Đếm số"), T("물건을 하나씩 짚으며 세면 몇 개인지 알 수 있어요. 10이 넘으면 5개나 10개씩 묶어서 세면 쉬워요.", "Chỉ vào từng vật và đếm là biết có bao nhiêu. Khi có hơn 10 vật, hãy nhóm 5 hoặc 10 vật một để đếm cho dễ."), T(`🍎🍎🍎🍎🍎 → 사과는 5개예요.`, `🍎🍎🍎🍎🍎 → có 5 quả táo.`), [c1, c2, c3, c4], c5),
@@ -346,7 +346,7 @@ export function e2(b, h) {
   const lesson = (n, sk, title, concept, example, core, challenge) => ({ id: `math-e2-l${n}`, title, concept, example, skills: [S[sk]], core, challenge });
   b.course({
     id: "math-e2", grade: "E2", title: T("초2 수학 · 두 자리 수와 곱셈", "Toán Lớp 2 · Số có hai chữ số và phép nhân"),
-    world: { name: T("Multiply Mountain", "Núi Phép Nhân"), emoji: "⛰️", tagline: T("묶어 세며 산을 올라요", "Đếm theo nhóm để leo lên đỉnh núi") },
+    world: { name: T("곱셈 산", "Núi Phép Nhân"), emoji: "⛰️", tagline: T("묶어 세며 산을 올라요", "Đếm theo nhóm để leo lên đỉnh núi") },
     unit: { id: "math-e2-u1", title: T("자릿값, 덧셈 뺄셈, 곱셈 시작", "Hàng, cộng trừ và bước đầu làm quen phép nhân") },
     lessons: [
       lesson(1, "place", T("자릿값", "Giá trị theo hàng"), T("두 자리 수에서 왼쪽 숫자는 **십의 자리**, 오른쪽 숫자는 **일의 자리**예요. 10이 10개 모이면 100이에요.", "Trong số có hai chữ số, chữ số bên trái là **hàng chục**, bên phải là **hàng đơn vị**. 10 chục hợp lại thành 100."), T(`${tex("47")} = 10이 4개, 1이 7개`, `${tex("47")} = 4 chục và 7 đơn vị`), [p1, p2, p3, p4], p5),

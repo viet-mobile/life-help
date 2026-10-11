@@ -91,7 +91,7 @@ export function e5(b, h) {
 
   b.course({
     id: "math-e5", grade: "E5", title: T("초5 수학 · 분수, 소수, 약수·배수, 넓이", "Toán Lớp 5 · Phân số, số thập phân, ước và bội, diện tích"),
-    world: { name: T("Prime Peak", "Đỉnh Núi Số Nguyên Tố"), emoji: "🏔️", tagline: T("약수와 배수의 봉우리를 올라요", "Leo lên đỉnh núi của ước số và bội số") },
+    world: { name: T("소수의 봉우리", "Đỉnh Núi Số Nguyên Tố"), emoji: "🏔️", tagline: T("약수와 배수의 봉우리를 올라요", "Leo lên đỉnh núi của ước số và bội số") },
     unit: { id: "math-e5-u1", title: T("분수, 소수, 약수와 배수, 넓이와 부피, 비율", "Phân số, số thập phân, ước và bội, diện tích và thể tích, tỉ lệ") },
     lessons: [
       lesson(1, "frac", S, T("분모가 다른 분수의 덧셈·뺄셈", "Cộng trừ phân số khác mẫu số"), T("분모가 다르면 먼저 **통분**해요. 두 분모의 최소공배수를 공통분모로 쓰면 편해요.", "Khi mẫu số khác nhau, hãy **quy đồng** trước. Dùng bội chung nhỏ nhất của hai mẫu số làm mẫu số chung."), T(`${tex("\\frac{1}{2} + \\frac{1}{3} = \\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}")}`, `${tex("\\frac{1}{2} + \\frac{1}{3} = \\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}")}`), [q1, q2, q3, q4], q5),
@@ -171,7 +171,7 @@ export function e6(b, h) {
 
   b.course({
     id: "math-e6", grade: "E6", title: T("초6 수학 · 분수·소수 연산, 비례식, 원", "Toán Lớp 6 · Phép tính phân số và số thập phân, tỉ lệ thức, hình tròn"),
-    world: { name: T("Ratio Reef", "Rạn San Hô Tỉ Lệ"), emoji: "🐠", tagline: T("비율의 바다를 헤엄쳐요", "Bơi trong đại dương của tỉ lệ") },
+    world: { name: T("비율 산호초", "Rạn San Hô Tỉ Lệ"), emoji: "🐠", tagline: T("비율의 바다를 헤엄쳐요", "Bơi trong đại dương của tỉ lệ") },
     unit: { id: "math-e6-u1", title: T("분수·소수의 연산, 비례, 백분율, 원과 부피, 평균", "Phép tính phân số và số thập phân, tỉ lệ, phần trăm, hình tròn và thể tích, trung bình") },
     lessons: [
       lesson(1, "frac", S, T("분수·소수의 곱셈과 나눗셈", "Nhân chia phân số và số thập phân"), T("분수의 곱셈은 분자끼리, 분모끼리 곱해요. 분수의 나눗셈은 **역수**를 곱해요.", "Nhân phân số: nhân tử với tử, mẫu với mẫu. Chia phân số: nhân với **số nghịch đảo**."), T(`${tex("\\frac{3}{4} \\times \\frac{2}{5} = \\frac{3}{10}")}`, `${tex("\\frac{3}{4} \\times \\frac{2}{5} = \\frac{3}{10}")}`), [f1, f2, f3, fdivInt], f5),

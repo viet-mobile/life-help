@@ -92,7 +92,7 @@ export function e3(b, h) {
 
   b.course({
     id: "math-e3", grade: "E3", title: T("초3 수학 · 곱셈, 나눗셈, 분수", "Toán Lớp 3 · Nhân, chia và phân số"),
-    world: { name: T("Fraction Island", "Đảo Phân Số"), emoji: "🏝️", tagline: T("똑같이 나누어 섬을 탐험해요", "Chia đều để khám phá hòn đảo") },
+    world: { name: T("분수 섬", "Đảo Phân Số"), emoji: "🏝️", tagline: T("똑같이 나누어 섬을 탐험해요", "Chia đều để khám phá hòn đảo") },
     unit: { id: "math-e3-u1", title: T("곱셈과 나눗셈, 분수, 측정, 도형, 자료", "Nhân chia, phân số, đo lường, hình học, số liệu") },
     lessons: [
       lesson(1, "muldiv", S, T("곱셈과 나눗셈", "Phép nhân và phép chia"), T("곱셈은 같은 수를 여러 번 더하는 것이고, **나눗셈**은 똑같이 나누는 것이에요. 곱셈구구를 알면 나눗셈도 쉬워요.", "Phép nhân là cộng cùng một số nhiều lần, còn **phép chia** là chia đều. Thuộc bảng nhân thì chia cũng dễ."), T(`${tex("6 \\times 7 = 42")}, ${tex("42 \\div 6 = 7")}`, `${tex("6 \\times 7 = 42")}, ${tex("42 \\div 6 = 7")}`), [m1, m2, m3, m4], m5),
@@ -172,7 +172,7 @@ export function e4(b, h) {
 
   b.course({
     id: "math-e4", grade: "E4", title: T("초4 수학 · 큰 수와 분수·소수", "Toán Lớp 4 · Số lớn, phân số và số thập phân"),
-    world: { name: T("Big Number Canyon", "Hẻm Núi Số Lớn"), emoji: "🏜️", tagline: T("커다란 수의 협곡을 건너요", "Vượt qua hẻm núi của những con số lớn") },
+    world: { name: T("큰 수 협곡", "Hẻm Núi Số Lớn"), emoji: "🏜️", tagline: T("커다란 수의 협곡을 건너요", "Vượt qua hẻm núi của những con số lớn") },
     unit: { id: "math-e4-u1", title: T("큰 수, 곱셈과 나눗셈, 분수와 소수, 각도, 그래프", "Số lớn, nhân chia, phân số và số thập phân, góc, biểu đồ") },
     lessons: [
       lesson(1, "big", S, T("큰 수", "Số lớn"), T("만(10000) 단위로 큰 수를 읽고 써요. 각 자리의 숫자는 **자릿값**만큼의 크기를 나타내요.", "Đọc và viết số lớn theo đơn vị vạn (10000). Mỗi chữ số có giá trị theo **hàng** của nó."), T(`${tex("5 \\times 10000 + 3 \\times 1000 = 53000")}`, `${tex("5 \\times 10000 + 3 \\times 1000 = 53000")}`), [b1, b2, b3, b4], b5),
