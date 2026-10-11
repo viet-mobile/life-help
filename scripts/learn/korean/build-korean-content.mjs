@@ -11,6 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { EXAMPLES, LEVELS } from "./course.mjs";
+import { pronunciationVi, distractorVi } from "./vietnamese-pronunciation.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const check = process.argv.includes("--check");
@@ -35,7 +36,9 @@ const OPT_IDS = ["a", "b", "c", "d"];
 const need = (cond, msg) => { if (!cond) throw new Error(msg); };
 
 /** One rendering of the whole course in one presentation kit. Pure function of (items, kit). */
-function render(kit) {
+function render(kit, locale = "en") {
+  const vi = locale === "vi";
+  const reading = (ko, rr) => vi ? pronunciationVi(ko) : rr;
   const gloss = (key) => { need(kit.gloss[key], `gloss ${key}`); return kit.gloss[key]; };
   const skills = [], courses = [], questions = [];
   let prevSkill;
@@ -51,15 +54,18 @@ function render(kit) {
         q.answer = { kind: "choice", id: OPT_IDS[ordered.indexOf(texts[0])] };
         q.localizedOptions = localized;
       };
-      const vars = { rr: it.rr, ko: it.ko, gloss: it.g ? gloss(it.g) : "", n: it.n, first: it.parts ? it.parts[0] : [...(it.ko ?? "")][0] };
+      const vars = { rr: reading(it.ko, it.rr), ko: it.ko, gloss: it.g ? gloss(it.g) : "", n: it.n, first: it.parts ? it.parts[0] : [...(it.ko ?? "")][0] };
       switch (it.k) {
-        case "read": choice([it.rr, ...it.wrong], false); q.target = { text: it.ko }; q.audioText = it.ko; break;
-        case "meaning": choice([it.g, ...it.wrong].map(gloss), true); q.target = { text: it.ko, romanization: it.rr }; q.audioText = it.ko; break;
+        case "read":
+          choice(vi ? [pronunciationVi(it.ko), ...it.wrong.map(distractorVi)] : [it.rr, ...it.wrong], vi);
+          need(new Set(q.options.map((o) => o.text)).size === q.options.length, `${id}: distinct readings`);
+          q.target = { text: it.ko }; q.audioText = it.ko; break;
+        case "meaning": choice([it.g, ...it.wrong].map(gloss), true); q.target = { text: it.ko, romanization: it.rr, romanizationVi: pronunciationVi(it.ko) }; q.audioText = it.ko; break;
         case "toko": choice([it.ko, ...it.wrong], false); break;
         case "listen": choice([it.ko, ...it.wrong], false); q.audioText = it.ko; break;
         case "choose": choice(it.options, false); break;
-        case "tf": q.type = "true_false"; q.answer = { kind: "choice", id: it.claim === it.g ? "true" : "false" }; q.target = { text: it.ko, romanization: it.rr }; q.audioText = it.ko; vars.gloss = gloss(it.claim); break;
-        case "fill": q.type = "fill_blank"; q.answer = { kind: "text", accepted: it.answers }; q.target = { text: it.blank }; vars.rr = it.ans_rr; break;
+        case "tf": q.type = "true_false"; q.answer = { kind: "choice", id: it.claim === it.g ? "true" : "false" }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pronunciationVi(it.ko) }; q.audioText = it.ko; vars.gloss = gloss(it.claim); break;
+        case "fill": q.type = "fill_blank"; q.answer = { kind: "text", accepted: it.answers }; q.target = { text: it.blank }; vars.rr = reading(it.answers[0], it.ans_rr); break;
         case "order": {
           q.type = "ordering";
           const ids = it.parts.map((_, i) => `w${i + 1}`);
@@ -70,13 +76,13 @@ function render(kit) {
           q.audioText = it.ko;
           break;
         }
-        case "number": q.type = "numeric"; q.answer = { kind: "numeric", value: it.n }; q.target = { text: it.ko, romanization: it.rr }; q.audioText = it.ko; break;
+        case "number": q.type = "numeric"; q.answer = { kind: "numeric", value: it.n }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pronunciationVi(it.ko) }; q.audioText = it.ko; break;
         default: throw new Error(`unknown kind ${it.k}`);
       }
       q.prompt = fill(kit.prompt[it.k], vars);
-      q.hints = kit.hint[it.k].map((h) => fill(h, { ...vars, rr: it.k === "fill" ? it.ans_rr : it.rr }));
+      q.hints = kit.hint[it.k].map((h) => fill(h, { ...vars, rr: it.k === "fill" ? reading(it.answers[0], it.ans_rr) : reading(it.ko, it.rr) }));
       const ex = it.k === "read" ? kit.expl.read : it.k === "number" ? kit.expl.number : kit.expl.meaning;
-      q.explanation = fill(ex, { ...vars, rr: it.rr, gloss: it.g ? gloss(it.g) : "" }) + (it.note ? ` ${kit.note[it.note]}` : "");
+      q.explanation = fill(ex, { ...vars, rr: reading(it.ko, it.rr), gloss: it.g ? gloss(it.g) : "" }) + (it.note ? ` ${kit.note[it.note]}` : "");
       return q;
     };
     L.lessons.forEach((les, li) => {
@@ -95,7 +101,7 @@ function render(kit) {
         questions.push(q);
         if (it.challenge) challengeId = id; else if (!it.variant) core.push(id);
       }
-      const ex = EXAMPLES[`${L.level}.${les.skill}`].map(([ko, rr, g]) => (g ? `${ko} (${rr}) = ${gloss(g)}` : `${ko} (${rr})`)).join(" / ");
+      const ex = EXAMPLES[`${L.level}.${les.skill}`].map(([ko, rr, g]) => (g ? `${ko} (${reading(ko, rr)}) = ${gloss(g)}` : `${ko} (${reading(ko, rr)})`)).join(" / ");
       lessons.push({ id: `korean-${lv}-l${li + 1}`, title: kit.lesson[les.skill].title, concept: kit.lesson[les.skill].concept, example: ex, skillIds: [sid], questionIds: core, ...(challengeId ? { challengeId } : {}) });
     });
     L.diagnostic.forEach((it, i) => {
@@ -114,13 +120,14 @@ const canonical = render(kits.en);
 const strip = (q) => { const { localizedOptions, ...rest } = q; void localizedOptions; return rest; };
 const bundle = { catalog: { site: "korean", country: "KR", curriculum: "life-help-korean-v1", courses: canonical.courses, skills: canonical.skills }, questions: canonical.questions.map(strip) };
 
-// Integrity: answer keys, ids and target material are independent of the presentation locale.
-const sig = (r) => JSON.stringify(r.questions.map((q) => [q.id, q.type, q.answer, q.target ?? null, q.audioText ?? null, q.localizedOptions ? q.options.map((o) => o.id) : q.options ?? null]));
+// Integrity: answer keys, ids and Korean target material are independent of locale.
+// Read-option text may use the Vietnamese aid; its option ids remain canonical.
+const sig = (r, vietnameseReadings = false) => JSON.stringify(r.questions.map((q) => [q.id, q.type, q.answer, q.target ?? null, q.audioText ?? null, (q.localizedOptions || (vietnameseReadings && q.tags.includes("read"))) ? q.options.map((o) => o.id) : q.options ?? null]));
 const outputs = { "lib/learn/content/korean/korean.json": bundle };
 for (const loc of LOCALES) {
   if (loc === "en" || !kits[loc]) continue;
-  const r = render(kits[loc]);
-  need(sig(r) === sig(canonical), `${loc}: answers / target differ from canonical`);
+  const r = render(kits[loc], loc);
+  need(sig(r, loc === "vi") === sig(canonical, loc === "vi"), `${loc}: answers / target differ from canonical`);
   const ov = { skills: {}, courses: {}, units: {}, lessons: {}, questions: {} };
   r.skills.forEach((s) => { ov.skills[s.id] = s.title; });
   r.courses.forEach((c) => {

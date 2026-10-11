@@ -148,9 +148,9 @@ test('study.korean K2: "안녕하세요." stays Korean target text while the exp
     await expect(page.getByTestId("target-text")).toHaveAttribute("lang", "ko");
     expect(q.prompt).toBe(expectedPrompt(loc, "korean", q.id, canonical.find((x) => x.id === q.id)!.prompt));
     prompts.add(q.prompt);
-    // optional romanization (one system), off by default, remembered per browser
+    // Optional locale-specific reading aid, off by default, remembered per browser
     await page.getByTestId("rr-toggle").click();
-    await expect(page.getByTestId("target-rr")).toHaveText("annyeonghaseyo.");
+    await expect(page.getByTestId("target-rr")).toHaveText(loc === "vi" ? "annyơnghasêyô." : "annyeonghaseyo.");
     await page.getByTestId("rr-toggle").click();
     await expect(page.getByTestId("target-rr")).toHaveCount(0);
     // browser speech in Korean (mocked voices include ko-KR): a speaker button, no "no voice" note

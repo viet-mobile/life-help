@@ -222,10 +222,11 @@ function readRr(): boolean {
 }
 /**
  * The target-language text of a question (study.korean): shown large with lang / dir set for the target language, an optional
- * romanization (one system, Revised Romanization; off by default, remembered per browser) and the speaker button.
+ * reading aid (Vietnamese pronunciation for vi, Revised Romanization otherwise; off by default, remembered per browser) and the speaker button.
  */
-export function TargetBlock({ target, audioText }: { target: { text: string; romanization?: string }; audioText?: string }) {
-  const { t, site } = useSite();
+export function TargetBlock({ target, audioText }: { target: { text: string; romanization?: string; romanizationVi?: string }; audioText?: string }) {
+  const { t, site, locale } = useSite();
+  const romanization = site === "korean" && locale === "vi" ? target.romanizationVi : target.romanization;
   const lang = siteConfig(site).targetLanguage;
   const showRr = useSyncExternalStore((n) => { rrListeners.add(n); return () => { rrListeners.delete(n); }; }, readRr, () => false);
   const toggle = () => {
@@ -236,12 +237,12 @@ export function TargetBlock({ target, audioText }: { target: { text: string; rom
     <div className="l-target" data-testid="target-block">
       <span className="l-target-text" lang={lang?.code} dir="ltr" data-testid="target-text">{target.text}</span>
       {audioText && <ListenButton text={audioText} />}
-      {target.romanization && (
+      {romanization && (
         <>
           <button type="button" className="l-link" aria-pressed={showRr} onClick={toggle} data-testid="rr-toggle">
             {t(showRr ? "target.romanization.hide" : "target.romanization.show")}
           </button>
-          {showRr && <span className="l-target-rr" lang="ko-Latn" dir="ltr" title={t("target.romanization.name")} data-testid="target-rr">{target.romanization}</span>}
+          {showRr && <span className="l-target-rr" lang="ko-Latn" dir="ltr" title={t("target.romanization.name")} data-testid="target-rr">{romanization}</span>}
         </>
       )}
     </div>

@@ -106,9 +106,9 @@ export interface Question {
   audioText?: string;
   /**
    * Target-language text the question is about (study.korean: the Korean word / sentence), shown as its own block with an optional
-   * romanization (one system: Revised Romanization). Never localized, never part of the answer key.
+   * romanization (Revised Romanization and an optional reviewed Vietnamese reading aid). Never part of the answer key.
    */
-  target?: { text: string; romanization?: string };
+  target?: { text: string; romanization?: string; romanizationVi?: string };
   /** Expected solve time in seconds (used for mastery timing weight). */
   expectedSeconds?: number;
   tags?: string[];
@@ -126,7 +126,7 @@ export interface PublicQuestion {
   latex?: string;
   options?: QuestionOption[];
   audioText?: string;
-  target?: { text: string; romanization?: string };
+  target?: { text: string; romanization?: string; romanizationVi?: string };
   hintCount: number;
 }
 

@@ -1,6 +1,6 @@
 // study.korean.life.help — canonical Korean course data (K1..K6 language levels).
 //
-// TARGET material (Korean text, its Revised Romanization, accepted answers, audio) lives here ONCE and is never localized.
+// TARGET material (Korean text, its Revised Romanization, reviewed Vietnamese pronunciation, accepted answers, audio) lives here ONCE and is never localized.
 // Everything the learner READS around it (prompts, hints, explanations, meaning glosses, lesson concepts, course names) is a key into a
 // presentation kit (scripts/learn/korean/kit/<locale>.json); build-korean-content.mjs renders the canonical bundle (English kit) and one
 // overlay per registry locale from the same items, so ids, option ids and answer keys are identical in every locale.
@@ -15,7 +15,7 @@
 //   order    tap `parts` in order, meaning gloss `g`                options = Korean chunks (target)
 //   number   write the number `ko` stands for                       numeric `n`
 //   choose   choose the correct sentence for gloss `g`              options = Korean sentences (target), first is correct
-// `rr` = Revised Romanization of `ko` (the only romanization system used). `note` = kit key of a grammar note added to the explanation.
+// `rr` = Revised Romanization of `ko`; Vietnamese reading aids use reviewed surface pronunciation. `note` = kit key of a grammar note added to the explanation.
 
 export const LEVELS = [
   {
