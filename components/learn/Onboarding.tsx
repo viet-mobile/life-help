@@ -46,6 +46,10 @@ export function Onboarding() {
   const nickOk = nickname.trim().length >= 2 && nickname.trim().length <= 16 && !/[<>&"'`\\]/.test(nickname);
   const canNext = step === 1 ? nickOk : step === 2 ? !!grade : step === 3 ? !!goal : true;
 
+  const next = () => {
+    if (canNext && step < TOTAL) setStep(step + 1);
+  };
+
   const finish = async () => {
     setSaving(true);
     setError(null);
@@ -72,7 +76,12 @@ export function Onboarding() {
         <section className="l-stack">
           <h1 className="l-h1">{t("onboarding.nickname.title")}</h1>
           <label htmlFor="nick" className="l-muted">{t("onboarding.nickname.label")} · {t("onboarding.nickname.hint")}</label>
-          <input id="nick" className="l-input" value={nickname} maxLength={16} autoComplete="off" onChange={(e) => setNickname(e.target.value)} />
+          <input id="nick" className="l-input" value={nickname} maxLength={16} autoComplete="off" onChange={(e) => setNickname(e.target.value)} onKeyDown={(e) => {
+            if (e.key !== "Enter" || e.repeat || e.nativeEvent.isComposing || e.nativeEvent.keyCode === 229) return;
+            if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+            e.preventDefault();
+            next();
+          }} />
         </section>
       )}
 
@@ -125,7 +134,7 @@ export function Onboarding() {
 
       <div className="l-stack">
         {step < TOTAL ? (
-          <button className="l-btn l-btn-block" disabled={!canNext} onClick={() => setStep(step + 1)}>{t("onboarding.next")}</button>
+          <button className="l-btn l-btn-block" disabled={!canNext} onClick={next}>{t("onboarding.next")}</button>
         ) : (
           <button className="l-btn l-btn-block" disabled={saving} onClick={finish}>{saving ? t("onboarding.saving") : t("onboarding.finish")}</button>
         )}

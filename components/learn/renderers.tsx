@@ -126,7 +126,10 @@ function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps)
         maxLength={numeric ? 32 : 120}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") onSubmit();
+          if (e.key !== "Enter" || e.repeat || e.nativeEvent.isComposing || e.nativeEvent.keyCode === 229 || disabled) return;
+          if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+          e.preventDefault();
+          onSubmit();
         }}
       />
     </div>
