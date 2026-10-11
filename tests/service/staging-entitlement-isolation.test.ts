@@ -107,12 +107,12 @@ describe("the staging spec after the fix", () => {
     expect(spec).toContain("no active entitlement left behind");
     expect(spec).toContain("await expectCleanBaseline(`${site}: free learner checks`);"); // the per-site tests also start clean
   });
-  it("the scope test starts from a proven clean baseline, grants math only, and checks math / english / korean plus revoked-expired and 'all'", () => {
+  it("the scope test starts from a proven clean baseline, grants math only, and checks math / english (korean is entirely free) plus revoked-expired and 'all'", () => {
     const t = spec.slice(spec.indexOf('test("an entitlement for one site does not open another'));
     expect(t).toContain('await expectCleanBaseline("the cross-site scope checks")');
     expect(t).toContain('await grant("math", null, null)');
     expect(t).toContain('toEqual(["math"])');
-    for (const needle of ["math opens with a math entitlement", "a math entitlement must not unlock english", "a math entitlement must not unlock korean", "revoked / expired english entitlements keep english locked", 'opens with an "all" entitlement']) expect(t, needle).toContain(needle);
+    for (const needle of ["math opens with a math entitlement", "a math entitlement must not unlock english", "revoked / expired english entitlements keep english locked", 'opens with an "all" entitlement']) expect(t, needle).toContain(needle);
     expect(t.indexOf("expectCleanBaseline")).toBeLessThan(t.indexOf('grant("math"'));
     expect(t.indexOf('grant("math"')).toBeLessThan(t.indexOf("must not unlock english"));
   });

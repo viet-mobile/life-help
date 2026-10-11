@@ -67,7 +67,8 @@ const isClientComponent = (f: string) => /^\s*(?:\/\*[\s\S]*?\*\/\s*|\/\/.*\n\s*
 const SUPABASE_DIR = path.join(root, "lib/learn/server/supabase");
 const learningRoots = [...walk(path.join(root, "lib/learn")), ...walk(path.join(root, "components/learn")), ...walk(path.join(root, "app/study")), ...walk(path.join(root, "app/api/learn"))];
 // messages/registry.ts: the canonical locale list (pure data, no dictionaries, no client / credentials) the learner locales derive from
-const ALLOWED_PREFIXES = ["lib/learn/", "components/learn/", "app/study/", "app/api/learn/", "lib/env.ts", "messages/registry.ts"];
+// lib/legal, components/legal: the Privacy Policy / Terms text and its page shell (static data + markup, no credentials, no Supabase)
+const ALLOWED_PREFIXES = ["lib/learn/", "components/learn/", "app/study/", "app/api/learn/", "lib/env.ts", "messages/registry.ts", "lib/legal/", "components/legal/"];
 const code = (f: string) => stripComments(readFileSync(f, "utf8"));
 
 describe("learning runtime import isolation", () => {

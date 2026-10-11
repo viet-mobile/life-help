@@ -37,6 +37,9 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
         <p>{t(`site.${site}.description` as never)}</p>
         <StartCta accountHasProfile={hasProfile} accountsEnabled={accountsEnabled()} />
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>{t("landing.privacy")}</p>
+        <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>
+          <Link className="l-link" href={`${base}/privacy`}>개인정보처리방침 · Privacy Policy</Link> · <Link className="l-link" href={`${base}/terms`}>이용약관 · Terms</Link>
+        </p>
       </section>
 
       <section className="l-stack" aria-labelledby="how-h">

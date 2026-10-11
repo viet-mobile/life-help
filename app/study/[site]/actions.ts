@@ -6,9 +6,10 @@ import { revalidatePath } from "next/cache";
 import { isSite } from "@/lib/learn/types";
 import { accountsEnabled } from "@/lib/learn/server/runtime";
 import { createLearnSessionClient } from "@/lib/learn/server/supabase/session";
+import { LEGAL_VERSION } from "@/lib/legal/operator";
 
 export interface AuthFormState {
-  error?: "unavailable" | "invalid" | "failed";
+  error?: "unavailable" | "invalid" | "failed" | "consent";
   confirm?: boolean;
 }
 
@@ -30,6 +31,12 @@ export async function authenticate(_prev: AuthFormState | null, formData: FormDa
     return { error: "invalid" };
   }
 
+  // Sign-up needs the terms / privacy agreement and the age basis (14 or older, or a legal guardian signing up for a child under 14).
+  const ageBasis = String(formData.get("ageBasis") ?? "");
+  if (mode === "signup" && (formData.get("agree") !== "on" || (ageBasis !== "14plus" && ageBasis !== "guardian"))) {
+    return { error: "consent" };
+  }
+
   const base = await siteBase(site);
   const supabase = await createLearnSessionClient();
   if (!supabase) return { error: "unavailable" };
@@ -41,7 +48,11 @@ export async function authenticate(_prev: AuthFormState | null, formData: FormDa
       email,
       password,
       // Must be present in the Supabase Auth "Redirect URLs" allowlist; otherwise Supabase uses the Site URL.
-      options: { emailRedirectTo: `${proto}://${host}${base}/dashboard` },
+      options: {
+        emailRedirectTo: `${proto}://${host}${base}/dashboard`,
+        // consent record kept with the account (user metadata): document version, basis for the age requirement, time
+        data: { legal_consent: { version: LEGAL_VERSION, ageBasis, at: new Date().toISOString() } },
+      },
     });
     if (error) return { error: "failed" };
     if (!data.session) return { confirm: true };
