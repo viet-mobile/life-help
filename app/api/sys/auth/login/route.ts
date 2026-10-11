@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { readSysEnv } from "@/lib/auth/sysEnv";
 import { constantTimeEqual, SYS_SESSION_COOKIE } from "@/lib/auth/sysSession";
+import { clientIp, createLimiter, isSameOrigin } from "@/lib/security/guards";
+
+// Brute-force brake (per Worker isolate; Cloudflare rate limiting / Access must back it in production).
+const attempt = createLimiter();
 
 async function hmac(secret: string, value: string) {
   const key = await crypto.subtle.importKey(
@@ -23,6 +27,11 @@ async function hmac(secret: string, value: string) {
 }
 
 export async function POST(request: Request) {
+  if (!isSameOrigin(request)) return NextResponse.json({ ok: false, error: "Forbidden" }, { status: 403 });
+  const ip = clientIp(request);
+  if (!attempt(`sys-login:${ip}`, 10, 15 * 60_000)) {
+    return NextResponse.json({ ok: false, error: "Too many attempts" }, { status: 429, headers: { "Retry-After": "900" } });
+  }
   try {
     const adminId = await readSysEnv("LIFE_HELP_SYS_ADMIN_ID");
     const adminPassword = await readSysEnv("LIFE_HELP_SYS_ADMIN_PASSWORD");
@@ -44,6 +53,7 @@ export async function POST(request: Request) {
     const isPasswordValid = constantTimeEqual(password, adminPassword);
 
     if (!isIdValid || !isPasswordValid) {
+      await new Promise((r) => setTimeout(r, 400));
       return NextResponse.json(
         { ok: false, error: "Invalid credentials" },
         { status: 401 }

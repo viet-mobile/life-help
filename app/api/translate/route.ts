@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { locales } from "@/messages";
 import { resolveTranslator } from "@/lib/service/runtime";
+import { clientIp, createLimiter, isSameOrigin } from "@/lib/security/guards";
 
 /**
  * Machine translation endpoint. Contract (changed on purpose):
@@ -10,8 +11,12 @@ import { resolveTranslator } from "@/lib/service/runtime";
  * (It used to assume English when no source was given and answered with a canned phrase or the unchanged text on failure.)
  */
 const MAX_LENGTH = 500;
+const allow = createLimiter();
 
 export async function POST(req: Request) {
+  // Not an open proxy to the paid translation provider: same-origin browser calls only, and rate limited per client.
+  if (!isSameOrigin(req)) return NextResponse.json({ ok: false, reason: "bad_origin" }, { status: 403 });
+  if (!allow(`translate:${clientIp(req)}`, 30, 60_000)) return NextResponse.json({ ok: false, reason: "rate_limited" }, { status: 429 });
   let body: Record<string, unknown>;
   try {
     body = await req.json();
