@@ -15,6 +15,8 @@ export const STUDY_KEYS = [
   "study.chooser.mathDesc",
   "study.chooser.english",
   "study.chooser.englishDesc",
+  "study.chooser.korean",
+  "study.chooser.koreanDesc",
   "study.chooser.goTo",
   "study.chooser.close",
 ] as const;

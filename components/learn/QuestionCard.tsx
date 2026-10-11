@@ -72,7 +72,6 @@ export function QuestionCard({
   const passage = useMemo(() => (site === "english" ? passageSegments(`q-${q.id}`, q.prompt, passageKo) : null), [site, q.id, q.prompt, passageKo]);
   const canHint = hints.length < 2 && !resolved;
   const goNext = () => onNext({ firstTry: status === "correct" && attempts === 0, revealed: status === "revealed", followUp });
-  useEnterToContinue(resolved, goNext); // Enter = the "next question" button
 
   const submit = async () => {
     if (status === "checking" || resolved || !hasAnswer) return;
@@ -112,6 +111,8 @@ export function QuestionCard({
       setError(e instanceof ApiError && e.code === "rate_limited" ? t("lesson.error") : t("lesson.error"));
     }
   };
+
+  useEnterToContinue(resolved || (hasAnswer && status !== "checking"), () => { if (resolved) goNext(); else void submit(); }, status);
 
   const askHint = async () => {
     try {

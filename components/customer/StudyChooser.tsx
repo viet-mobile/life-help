@@ -5,7 +5,7 @@ import { useLocale } from "@/lib/i18n/LocaleContext";
 import { studyUrls } from "@/lib/home/studyHosts";
 
 /**
- * The Study card's chooser: two plain links to the learning sub-domains (a real navigation, not a route of this site).
+ * The Study card's chooser: three plain links to the learning sub-domains (a real navigation, not a route of this site).
  * Accessible dialog: labelled, Escape and backdrop close, focus moves in and returns to the card.
  */
 export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -27,6 +27,7 @@ export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => 
   const options = [
     { id: "math", href: urls.math, site: "math.life.help", icon: "➗", title: t("study.chooser.math"), desc: t("study.chooser.mathDesc"), ring: "border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50" },
     { id: "english", href: urls.english, site: "english.life.help", icon: "🔤", title: t("study.chooser.english"), desc: t("study.chooser.englishDesc"), ring: "border-sky-300 hover:border-sky-500 hover:bg-sky-50" },
+    { id: "korean", href: urls.korean, site: "study.korean.life.help", icon: "🇰🇷", title: t("study.chooser.korean"), desc: t("study.chooser.koreanDesc"), ring: "border-violet-300 hover:border-violet-500 hover:bg-violet-50" },
   ] as const;
 
   return (

@@ -61,3 +61,23 @@ describe("learning hosts and production guard", () => {
     expect((await snap(current, "math.life.help", "/")).status).toBe(200);
   });
 });
+
+
+describe("Vietnamese learning entry points", () => {
+  it("redirects only the two exact aliases to the fixed Vietnamese destinations", async () => {
+    for (const [host, target] of [["hoc.tieng.han.viet.mobile", "study.korean.life.help"], ["hoc.tieng.anh.viet.mobile", "english.life.help"]]) {
+      const response = await snap(current, host, "/?lang=en&next=https://evil.example");
+      expect(response.status).toBe(308);
+      expect(response.headers.location).toBe(`https://${target}/?lang=vi`);
+    }
+  });
+  it("sets the learning locale on the destination host and removes the entry parameter", async () => {
+    const host = "study.korean.life.help";
+    const response = await current(new NextRequest(`https://${host}/onboarding?lang=vi&from=entry`, { headers: { host } }));
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toBe(`https://${host}/onboarding?from=entry`);
+    expect(response.cookies.get("learn_lang")?.value).toBe("vi");
+    expect(response.headers.get("set-cookie")).toContain("Secure");
+    expect(response.headers.get("set-cookie")).not.toContain("Domain=");
+  });
+});

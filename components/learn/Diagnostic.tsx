@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import type { Placement } from "@/lib/learn/domain/diagnostic";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
 import { useLearner } from "./LearnerProvider";
-import { AnswerInput, ListenButton } from "./renderers";
+import { AnswerInput, ListenButton, TargetBlock } from "./renderers";
 import { MathBlock, RichText } from "./RichText";
 import { SkillBars } from "./SkillBars";
 import { useEnterToContinue } from "./useEnterToContinue";
@@ -50,7 +50,7 @@ export function Diagnostic() {
   };
 
   const submit = async () => {
-    if (!q || busy.current) return;
+    if (!q || busy.current || phase !== "question" || !answerReady) return;
     busy.current = true;
     try {
       const res = await api<StepResponse>("diagnostic", { history, answer: { questionId: q.id, value } });
@@ -78,7 +78,12 @@ export function Diagnostic() {
     }
   };
 
-  useEnterToContinue(phase === "feedback", proceed); // Enter = the "next question" button
+  const answerReady = Array.isArray(value) ? value.length > 0 && (q?.type !== "ordering" || value.length === (q.options?.length ?? 0)) : value.trim().length > 0;
+  useEnterToContinue(phase === "intro" || phase === "feedback" || (phase === "question" && answerReady), () => {
+    if (phase === "intro") void begin();
+    else if (phase === "feedback") proceed();
+    else void submit();
+  }, phase + (q?.id ?? ""));
 
   if (phase === "intro" || phase === "loading") {
     return (
@@ -127,7 +132,7 @@ export function Diagnostic() {
       <div className="l-card l-stack">
         <div className="l-qprompt"><RichText text={q.prompt} /></div>
         {q.latex && <MathBlock latex={q.latex} />}
-        {q.audioText && site === "english" && <ListenButton text={q.audioText} />}
+        {q.target ? <TargetBlock target={q.target} audioText={q.audioText} /> : q.audioText && <ListenButton text={q.audioText} />}
         <AnswerInput site={site} q={q} value={value} onChange={setValue} disabled={phase !== "question"} onSubmit={submit} />
       </div>
       {phase === "feedback" ? (

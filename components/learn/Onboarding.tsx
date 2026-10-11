@@ -6,6 +6,7 @@ import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
 import { siteConfig, isLevelOf } from "@/lib/learn/sites";
 import { GOALS, type Goal, type Grade } from "@/lib/learn/types";
+import { useEnterToContinue } from "./useEnterToContinue";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { ApiError, useLearner } from "./LearnerProvider";
 
@@ -61,6 +62,8 @@ export function Onboarding() {
       setError(e instanceof ApiError && e.code === "invalid_nickname" ? t("onboarding.nickname.hint") : t("lesson.error"));
     }
   };
+
+  useEnterToContinue(ready && canNext && !saving, () => { if (step < TOTAL) next(); else void finish(); }, step);
 
   if (!ready) return <div className="l-wrap" role="status">{t("common.loading")}</div>;
 

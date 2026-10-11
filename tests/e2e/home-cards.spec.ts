@@ -17,7 +17,7 @@ test.describe("Korean", () => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("영어/수학 공부");
+    await expect(page.getByTestId("home-card-study")).toContainText("영어/수학/한국어 공부");
     await expect(page.getByTestId("home-card-aircon")).toHaveCount(0);
     expect(await page.getByTestId("home-card-study").evaluate((e) => e.tagName)).toBe("BUTTON");
     const tabs = page.locator("button.droplet-pill").filter({ hasText: /^(🌈|🔧|🤝)/ });
@@ -37,6 +37,8 @@ test.describe("Korean", () => {
     await expect(dialog).toBeVisible();
     await expect(dialog).toContainText("수학 공부");
     await expect(dialog).toContainText("영어 공부");
+    await expect(dialog).toContainText("한국어 공부");
+    await expect(page.getByTestId("study-link-korean")).toHaveAttribute("href", `http://korean.localhost:${PORT}`);
     await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", `http://math.localhost:${PORT}`);
     await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", `http://english.localhost:${PORT}`);
     await expect(page.getByTestId("study-link-math")).toBeFocused();
@@ -71,7 +73,7 @@ test.describe("English", () => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("English & Math Study");
+    await expect(page.getByTestId("home-card-study")).toContainText("English, Math & Korean Study");
     await page.getByTestId("home-card-study").click();
     await expect(page.getByRole("dialog", { name: "Choose a study subject" })).toContainText("Study Math");
     await expect(page.getByTestId("study-link-english")).toContainText("Open english.life.help");
@@ -84,7 +86,7 @@ test.describe("a locale with a verified translation", () => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("英語・数学の学習");
-    expect(await page.getByTestId("home-card-study").textContent()).not.toMatch(/[가-힯]|English & Math Study/);
+    await expect(page.getByTestId("home-card-study")).toContainText("英語・数学・韓国語の学習");
+    expect(await page.getByTestId("home-card-study").textContent()).not.toMatch(/[가-힯]|English, Math & Korean Study/);
   });
 });

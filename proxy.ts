@@ -1,6 +1,7 @@
 ﻿import { NextResponse, type NextRequest } from "next/server";
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
+import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE } from "@/lib/learn/i18n";
 import { parseLearnHost } from "@/lib/learn/hosts";
 import { SITES, type Site } from "@/lib/learn/types";
 import { allowsLearnPathAccess } from "@/lib/env";
@@ -447,6 +448,23 @@ export async function proxy(request: NextRequest) {
   const port = rawHost.includes(":")
     ? `:${rawHost.split(":")[1]}`
     : "";
+
+  const learningAliases: Record<string, string> = {
+    "hoc.tieng.han.viet.mobile": "study.korean.life.help",
+    "hoc.tieng.anh.viet.mobile": "english.life.help",
+  };
+  if (learningAliases[host]) {
+    const target = new URL(`https://${learningAliases[host]}`);
+    target.searchParams.set("lang", "vi");
+    return NextResponse.redirect(target, 308);
+  }
+  if (parseLearnHost(host) && request.nextUrl.searchParams.get("lang") === "vi") {
+    const target = request.nextUrl.clone();
+    target.searchParams.delete("lang");
+    const response = NextResponse.redirect(target, 307);
+    response.cookies.set(LOCALE_COOKIE, "vi", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+    return response;
+  }
 
   /**
    * Country domain official alias redirects

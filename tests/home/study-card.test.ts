@@ -39,13 +39,13 @@ describe("home grid (learning-only release): the existing ten services plus the 
 
 describe("study destinations follow the environment and never fall into production by accident", () => {
   it("production, staging and local hosts", () => {
-    expect(studyUrls("life.help")).toEqual({ math: "https://math.life.help", english: "https://english.life.help" });
-    expect(studyUrls("korea.life.help")).toEqual({ math: "https://math.life.help", english: "https://english.life.help" });
-    expect(studyUrls("localhost", "3100")).toEqual({ math: "http://math.localhost:3100", english: "http://english.localhost:3100" });
+    expect(studyUrls("life.help")).toEqual({ math: "https://math.life.help", english: "https://english.life.help", korean: "https://study.korean.life.help" });
+    expect(studyUrls("korea.life.help")).toEqual({ math: "https://math.life.help", english: "https://english.life.help", korean: "https://study.korean.life.help" });
+    expect(studyUrls("localhost", "3100")).toEqual({ math: "http://math.localhost:3100", english: "http://english.localhost:3100", korean: "http://korean.localhost:3100" });
     expect(studyUrl("math", "app.localhost", "3000")).toBe("http://math.localhost:3000");
-    expect(studyUrls("life-help-staging.example.workers.dev")).toEqual({ math: "https://math-staging.life.help", english: "https://english-staging.life.help" });
+    expect(studyUrls("life-help-staging.example.workers.dev")).toEqual({ math: "https://math-staging.life.help", english: "https://english-staging.life.help", korean: "https://study-korean-staging.life.help" });
     expect(studyUrl("english", "evil.example.com")).toBe("https://english-staging.life.help");
-    expect(STUDY_SUBJECTS).toEqual(["math", "english"]);
+    expect(STUDY_SUBJECTS).toEqual(["math", "english", "korean"]);
   });
 });
 
