@@ -160,21 +160,22 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
 
   test("an entitlement for one site does not open another (scope is authoritative)", async ({ page }) => {
     test.setTimeout(240_000);
-    const lessons = { math: canonical("math").premium, english: canonical("english").premium, korean: canonical("korean").premium };
+    // korean is entirely free for now (FREE_SITES): it has no Premium lesson, so only math and english take part in the scope checks
+    const GATED = ["math", "english"] as const;
+    const lessons = { math: canonical("math").premium, english: canonical("english").premium };
     await login(page, "math");
     // The preceding serial full-flow tests created all three profiles. Re-saving a learner
     // whose diagnostic is done returns to the dashboard, not the diagnostic heading onboard() waits for.
     await expectCleanBaseline("the cross-site scope checks"); // earlier tests' grants are revoked: English must be locked because of SCOPE, not by luck
 
     // locked everywhere without any entitlement
-    for (const site of SITES) expect(await gateVisible(page, site, lessons[site].id), `${site} locked without an entitlement`).toBe(true);
+    for (const site of GATED) expect(await gateVisible(page, site, lessons[site].id), `${site} locked without an entitlement`).toBe(true);
 
     // a MATH entitlement only: stored with scope math, opens math, leaves english and korean locked
     await grant("math", null, null);
     expect(activeScopes(await entitlementRows()), "exactly one active scope: math").toEqual(["math"]);
     expect(await gateVisible(page, "math", lessons.math.id), "math opens with a math entitlement").toBe(false);
     expect(await gateVisible(page, "english", lessons.english.id), "a math entitlement must not unlock english").toBe(true);
-    expect(await gateVisible(page, "korean", lessons.korean.id), "a math entitlement must not unlock korean").toBe(true);
     await revokeAllActive();
 
     // revoked and expired english rows are history, not Premium
@@ -186,6 +187,6 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
 
     // an "all" entitlement opens every site
     await grant("all", null, null);
-    for (const site of SITES) expect(await gateVisible(page, site, lessons[site].id), `${site} opens with an "all" entitlement`).toBe(false);
+    for (const site of GATED) expect(await gateVisible(page, site, lessons[site].id), `${site} opens with an "all" entitlement`).toBe(false);
   });
 });
