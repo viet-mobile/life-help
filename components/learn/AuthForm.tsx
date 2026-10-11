@@ -27,24 +27,25 @@ export function AuthForm({ enabled }: { enabled: boolean }) {
         </div>
         {mode === "signup" && (
           <fieldset className="l-stack" style={{ border: 0, padding: 0 }} disabled={!enabled}>
-            <legend className="l-muted">만 14세 이상 확인 · Age confirmation</legend>
+            <legend className="l-muted">{t("auth.age.title")}</legend>
             <label className="l-muted" style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
               <input type="radio" name="ageBasis" value="14plus" required />
-              <span>저는 만 14세 이상입니다. · I am 14 or older.</span>
+              <span>{t("auth.age.adult")}</span>
             </label>
             <label className="l-muted" style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
               <input type="radio" name="ageBasis" value="guardian" required />
-              <span>저는 만 14세 미만 아동의 법정대리인이며, 아동을 위해 직접 가입합니다. · I am the parent / legal guardian of a child under 14 and am signing up for the child.</span>
+              <span>{t("auth.age.guardian")}</span>
             </label>
             <label className="l-muted" style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
               <input type="checkbox" name="agree" required />
               <span>
-                <Link className="l-link" href={href("/terms")} target="_blank">이용약관 · Terms</Link> 및 <Link className="l-link" href={href("/privacy")} target="_blank">개인정보처리방침 · Privacy Policy</Link>에 동의합니다. · I agree.
+                {t("auth.agree")}{" "}
+                <Link className="l-link" href={href("/terms")} target="_blank">{t("legal.terms")}</Link> · <Link className="l-link" href={href("/privacy")} target="_blank">{t("legal.privacy")}</Link>
               </span>
             </label>
           </fieldset>
         )}
-        {state?.error === "consent" && <div className="l-panel l-panel-reveal" role="alert">가입하려면 나이 확인과 약관 동의가 필요합니다. · Please confirm your age and accept the terms to sign up.</div>}
+        {state?.error === "consent" && <div className="l-panel l-panel-reveal" role="alert">{t("auth.consent.error")}</div>}
         {state?.error && state.error !== "unavailable" && state.error !== "consent" && <div className="l-panel l-panel-reveal" role="alert">{t("auth.error")}</div>}
         {state?.confirm && <div className="l-panel l-panel-good" role="status">{t("auth.confirm")}</div>}
         <button className="l-btn l-btn-block" disabled={!enabled || pending}>{t(mode === "login" ? "auth.submit.login" : "auth.submit.signup")}</button>
@@ -53,7 +54,7 @@ export function AuthForm({ enabled }: { enabled: boolean }) {
       <Link className="l-btn l-btn-ghost l-btn-block" href={href("/onboarding")}>{t("auth.guest")}</Link>
       <p className="l-muted">{t("auth.note")}</p>
       <p className="l-muted" style={{ fontSize: "0.85rem" }}>
-        <Link className="l-link" href={href("/privacy")}>개인정보처리방침 · Privacy Policy</Link> · <Link className="l-link" href={href("/terms")}>이용약관 · Terms</Link>
+        <Link className="l-link" href={href("/privacy")}>{t("legal.privacy")}</Link> · <Link className="l-link" href={href("/terms")}>{t("legal.terms")}</Link>
       </p>
     </div>
   );

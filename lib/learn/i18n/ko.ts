@@ -351,6 +351,13 @@ export const ko = {
   "premium.required": "이 레슨은 프리미엄으로 이용할 수 있어요.",
   "premium.notAvailable": "아직 구매 기능이 열리지 않았어요. 결제는 일어나지 않아요.",
   "listen.noVoice": "이 기기에는 {lang} 음성이 없어요. 글자를 보며 계속 학습할 수 있어요.",
+  "legal.privacy": "개인정보처리방침",
+  "legal.terms": "이용약관",
+  "auth.age.title": "만 14세 이상 확인",
+  "auth.age.adult": "저는 만 14세 이상입니다.",
+  "auth.age.guardian": "저는 만 14세 미만 아동의 법정대리인이며, 아동을 위해 직접 가입합니다.",
+  "auth.agree": "이용약관과 개인정보처리방침에 동의합니다.",
+  "auth.consent.error": "가입하려면 나이 확인과 약관 동의가 필요합니다.",
 } as const;
 
 export type MessageKey = keyof typeof ko;

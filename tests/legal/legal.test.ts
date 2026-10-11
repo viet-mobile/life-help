@@ -51,6 +51,7 @@ describe("sign-up consent", () => {
     expect(form).toContain('name="ageBasis"');
     expect(form).toContain('name="agree"');
     expect(form).toContain('href("/privacy")');
+    expect(form).not.toMatch(/[가-힣]/); // learner-language only: every label comes from the dictionary
     expect(form).toContain('href("/terms")');
   });
 });
