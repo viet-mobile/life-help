@@ -93,7 +93,7 @@ export function enH1(b) {
 
   k.course({
     slug: "grammar-reading", title: T("고1 영어: 시제·분사구문·연결어·요지 추론", "Tiếng Anh lớp 10: Thì, phân từ cú, từ nối và suy luận ý chính"),
-    world: { name: T("논리의 다리", "Cây cầu logic"), emoji: "🌉", tagline: T("문장을 정교하게 다듬고 글의 흐름과 요지를 읽어요.", "Trau chuốt câu văn và đọc mạch văn cùng ý chính.") }, unitTitle: T("고1 영어", "Tiếng Anh lớp 10"),
+    world: { name: T("논리의 다리 (Bridge of Logic)", "Cây cầu logic (Bridge of Logic)"), emoji: "🌉", tagline: T("문장을 정교하게 다듬고 글의 흐름과 요지를 읽어요.", "Trau chuốt câu văn và đọc mạch văn cùng ý chính.") }, unitTitle: T("고1 영어", "Tiếng Anh lớp 10"),
     lessons: [
       k.lesson(1, "tense", T("완료시제와 완료진행", "Thì hoàn thành và tiếp diễn"), T("had + p.p. 는 과거보다 앞선 일, have been -ing 는 지금까지 계속되는 동작이에요.", "had + p.p. chỉ việc xảy ra trước một mốc quá khứ, have been -ing chỉ hành động kéo dài đến nay."), T("I have been waiting for an hour.", "I have been waiting for an hour."), l1),
       k.lesson(2, "clause", T("관계부사와 명사절", "Trạng từ quan hệ và mệnh đề danh từ"), T("where / when / why 는 부사 역할의 관계사이고, whether / that 은 명사절을 이끌어요.", "where / when / why là từ quan hệ làm trạng ngữ; whether / that dẫn mệnh đề danh từ."), T("This is the town where I was born.", "This is the town where I was born."), l2),

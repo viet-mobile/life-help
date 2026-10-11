@@ -94,7 +94,7 @@ export function e1(b) {
 
   b.course({
     id: "english-e1", grade: "E1", title: T("초1 영어 · 알파벳과 첫 단어", "Tiếng Anh Lớp 1 · Bảng chữ cái và những từ đầu tiên"),
-    world: { name: T("Alphabet Garden", "Vườn Chữ Cái"), emoji: "🌱", tagline: T("알파벳 정원에서 소리를 찾아요", "Tìm âm thanh trong khu vườn chữ cái") },
+    world: { name: T("알파벳 정원 (Alphabet Garden)", "Vườn Chữ Cái (Alphabet Garden)"), emoji: "🌱", tagline: T("알파벳 정원에서 소리를 찾아요", "Tìm âm thanh trong khu vườn chữ cái") },
     unit: { id: "english-e1-u1", title: T("알파벳, 인사, 숫자와 색깔, 가족, 교실", "Chữ cái, chào hỏi, số và màu, gia đình, lớp học") },
     lessons: [
       lesson(1, "alpha", S, T("알파벳과 첫소리", "Bảng chữ cái và âm đầu"), T("낱말은 첫소리와 첫 글자를 알면 쉽게 기억돼요. 소리를 내며 따라 읽어 보세요.", "Biết âm đầu và chữ cái đầu sẽ giúp bạn nhớ từ dễ hơn. Hãy đọc to theo."), T("ball → B, cat → C, dog → D", "ball → B, cat → C, dog → D"), [a1, a2, a3, a4], a5),
@@ -163,7 +163,7 @@ export function e2(b) {
 
   b.course({
     id: "english-e2", grade: "E2", title: T("초2 영어 · 낱말과 짧은 문장", "Tiếng Anh Lớp 2 · Từ vựng và câu ngắn"),
-    world: { name: T("Word Pond", "Ao Từ Vựng"), emoji: "🪷", tagline: T("낱말을 모아 짧은 문장을 만들어요", "Gom từ để đặt những câu ngắn") },
+    world: { name: T("낱말 연못 (Word Pond)", "Ao Từ Vựng (Word Pond)"), emoji: "🪷", tagline: T("낱말을 모아 짧은 문장을 만들어요", "Gom từ để đặt những câu ngắn") },
     unit: { id: "english-e2-u1", title: T("동물, 동작, I like·I have, 짧은 문장, 읽기", "Con vật, hành động, I like·I have, câu ngắn, đọc hiểu") },
     lessons: [
       lesson(1, "noun", S, T("동물과 사물 이름", "Tên con vật và đồ vật"), T("rabbit(토끼), bird(새), fish(물고기)처럼 이름을 나타내는 낱말을 **명사**라고 해요.", "Những từ chỉ tên như rabbit (thỏ), bird (chim), fish (cá) gọi là **danh từ**."), T("🐰 = rabbit", "🐰 = rabbit"), [a1, a2, a3, a4], a5),
@@ -236,7 +236,7 @@ export function e3(b) {
 
   b.course({
     id: "english-e3", grade: "E3", title: T("초3 영어 · 문장, 대명사, 과거형", "Tiếng Anh Lớp 3 · Câu, đại từ và thì quá khứ"),
-    world: { name: T("Sentence Station", "Ga Đặt Câu"), emoji: "🚉", tagline: T("낱말을 이어 문장 기차를 만들어요", "Nối các từ thành đoàn tàu câu") },
+    world: { name: T("문장 기차역 (Sentence Station)", "Ga Đặt Câu (Sentence Station)"), emoji: "🚉", tagline: T("낱말을 이어 문장 기차를 만들어요", "Nối các từ thành đoàn tàu câu") },
     unit: { id: "english-e3-u1", title: T("문장 만들기, 대명사, 현재와 과거, 하루 일과, 읽기", "Đặt câu, đại từ, hiện tại và quá khứ, thói quen, đọc hiểu") },
     lessons: [
       lesson(1, "build", S, T("문장 만들기", "Xây dựng câu"), T("문장은 '누가 → 무엇을 한다 → 무엇' 순서예요. He, She, 사람 이름 뒤의 동사에는 **-s**를 붙여요.", "Câu có thứ tự: ai → làm gì → cái gì. Động từ sau He, She hoặc tên một người thì thêm **-s**."), T("She reads a book.", "She reads a book."), [b1, b2, b3, b4], b5),

@@ -93,7 +93,7 @@ export function enH2(b) {
 
   k.course({
     slug: "advanced-grammar-logic", title: T("고2 영어: 도치·가정법·어휘 추론·논리 독해", "Tiếng Anh lớp 11: Đảo ngữ, giả định, suy luận từ vựng và đọc hiểu logic"),
-    world: { name: T("수사학의 탑", "Tháp tu từ"), emoji: "🗼", tagline: T("강조와 가정의 문법을 익히고 글의 논리를 따라가요.", "Nắm ngữ pháp nhấn mạnh, giả định và lần theo lập luận của bài.") }, unitTitle: T("고2 영어", "Tiếng Anh lớp 11"),
+    world: { name: T("수사학의 탑 (Tower of Rhetoric)", "Tháp tu từ (Tower of Rhetoric)"), emoji: "🗼", tagline: T("강조와 가정의 문법을 익히고 글의 논리를 따라가요.", "Nắm ngữ pháp nhấn mạnh, giả định và lần theo lập luận của bài.") }, unitTitle: T("고2 영어", "Tiếng Anh lớp 11"),
     lessons: [
       k.lesson(1, "inv", T("도치와 강조 구문", "Đảo ngữ và nhấn mạnh"), T("Never/Hardly/Only then 이 문두에 오면 조동사 + 주어 순서가 돼요. It is ~ that 으로 강조해요.", "Never/Hardly/Only then đứng đầu câu thì trợ động từ đứng trước chủ ngữ. Dùng It is ... that để nhấn mạnh."), T("Never have I seen such a view.", "Never have I seen such a view."), l1),
       k.lesson(2, "subj", T("가정법", "Câu giả định"), T("I wish / as if / If 절에서 현재 반대는 과거형, 과거 반대는 had p.p. 를 써요.", "Trong I wish / as if / If, trái với hiện tại dùng quá khứ, trái với quá khứ dùng had p.p."), T("I wish I had studied harder.", "I wish I had studied harder."), l2),

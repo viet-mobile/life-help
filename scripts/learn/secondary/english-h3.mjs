@@ -96,7 +96,7 @@ export function enH3(b) {
 
   k.course({
     slug: "reading-summary", title: T("고3 영어: 병렬·어조·순서 삽입·요약", "Tiếng Anh lớp 12: Song song, giọng điệu, sắp xếp câu và tóm tắt"),
-    world: { name: T("수능 정상", "Đỉnh kỳ thi"), emoji: "🏆", tagline: T("글의 구조를 읽고 순서를 잡고 요약까지 완성해요.", "Đọc cấu trúc bài, sắp xếp câu và hoàn thành bản tóm tắt.") }, unitTitle: T("고3 영어", "Tiếng Anh lớp 12"),
+    world: { name: T("수능 정상 (Exam Summit)", "Đỉnh kỳ thi (Exam Summit)"), emoji: "🏆", tagline: T("글의 구조를 읽고 순서를 잡고 요약까지 완성해요.", "Đọc cấu trúc bài, sắp xếp câu và hoàn thành bản tóm tắt.") }, unitTitle: T("고3 영어", "Tiếng Anh lớp 12"),
     lessons: [
       k.lesson(1, "par", T("병렬 구조와 수일치", "Song song và hòa hợp chủ vị"), T("and/but/or 로 이어지는 어구는 같은 형태로, 동사는 핵심 주어에 일치시켜요.", "Các thành phần nối bằng and/but/or phải cùng dạng; động từ hòa hợp với chủ ngữ chính."), T("singing, dancing, and swimming", "singing, dancing, and swimming"), l1),
       k.lesson(2, "tone", T("분위기·어조·목적", "Không khí, giọng điệu và mục đích"), T("묘사와 감정 어휘로 분위기를, 요청·안내·설득 여부로 글의 목적을 파악해요.", "Nhận ra không khí qua mô tả và từ chỉ cảm xúc; xác định mục đích qua việc bài đề nghị, thông báo hay thuyết phục."), T("Please store enough water. → 안내", "Please store enough water. → thông báo"), l2),

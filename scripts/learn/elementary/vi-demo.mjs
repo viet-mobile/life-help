@@ -61,7 +61,7 @@ export const viDemoMath = {
 const O = (obj) => obj;
 export const viDemoEnglish = {
   skills: { "e.vocab": "Từ vựng hằng ngày", "e.be": "Động từ be", "e.pres": "Động từ thường ở thì hiện tại", "e.plural": "Danh từ số nhiều", "e.order": "Sắp xếp câu" },
-  courses: { "en-m1-basics": { title: "Tiếng Anh Lớp 7 · Ngữ pháp và từ vựng cơ bản", world: { name: "Làng Từ Vựng", tagline: "Bắt đầu từ ngôi làng của từ và câu" } } },
+  courses: { "en-m1-basics": { title: "Tiếng Anh Lớp 7 · Ngữ pháp và từ vựng cơ bản", world: { name: "Làng Từ Vựng (Word Village)", tagline: "Bắt đầu từ ngôi làng của từ và câu" } } },
   units: { "en-m1-unit1": "Từ vựng và ngữ pháp cơ bản" },
   lessons: {
     "en-l1": { title: "Học từ vựng hằng ngày", concept: "Những từ hay dùng sẽ được nhớ lâu nếu bạn học **âm thanh + nghĩa + cách viết** cùng lúc. Hãy bấm nút loa để nghe phát âm.", example: "library = thư viện / desk = bàn học / milk = sữa" },

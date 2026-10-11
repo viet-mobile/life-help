@@ -96,7 +96,7 @@ export function enM2(b) {
 
   k.course({
     slug: "grammar-reading", title: T("중2 영어: 시제·수동태·비교·독해", "Tiếng Anh lớp 8: Thì, bị động, so sánh và đọc hiểu"),
-    world: { name: T("문장 정원", "Khu vườn câu chữ"), emoji: "🌷", tagline: T("문법의 뼈대를 세우고 짧은 글의 핵심을 읽어요.", "Dựng khung ngữ pháp và nắm ý chính của đoạn văn ngắn.") }, unitTitle: T("중2 영어", "Tiếng Anh lớp 8"),
+    world: { name: T("문장 정원 (Sentence Garden)", "Khu vườn câu chữ (Sentence Garden)"), emoji: "🌷", tagline: T("문법의 뼈대를 세우고 짧은 글의 핵심을 읽어요.", "Dựng khung ngữ pháp và nắm ý chính của đoạn văn ngắn.") }, unitTitle: T("중2 영어", "Tiếng Anh lớp 8"),
     lessons: [
       k.lesson(1, "perf", T("현재완료", "Hiện tại hoàn thành"), T("have/has + 과거분사. 경험, 완료, 계속을 나타내고, since(시점)와 for(기간)를 구별해요.", "have/has + phân từ quá khứ. Diễn tả kinh nghiệm, hoàn thành, tiếp diễn; phân biệt since (mốc) và for (khoảng)."), T("I have lived here for five years.", "I have lived here for five years."), l1),
       k.lesson(2, "pass", T("수동태", "Câu bị động"), T("be + 과거분사로 '~되다/당하다' 를 나타내요. 행위자는 by 로 덧붙여요.", "be + phân từ quá khứ diễn tả 'được/bị'. Người thực hiện được thêm bằng by."), T("The room is cleaned by Mina.", "The room is cleaned by Mina."), l2),

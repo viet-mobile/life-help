@@ -92,7 +92,7 @@ export function enM3(b) {
 
   k.course({
     slug: "grammar-reading", title: T("중3 영어: 관계사·가정법·분사·추론 독해", "Tiếng Anh lớp 9: Quan hệ, điều kiện, phân từ và đọc hiểu suy luận"),
-    world: { name: T("문장 숲 깊은 곳", "Sâu trong rừng câu chữ"), emoji: "🌳", tagline: T("긴 문장을 짓고 글 속 숨은 뜻을 추론해요.", "Tạo câu dài và suy luận ý nghĩa ẩn trong bài.") }, unitTitle: T("중3 영어", "Tiếng Anh lớp 9"),
+    world: { name: T("문장 숲 깊은 곳 (Deep in the Sentence Forest)", "Sâu trong rừng câu chữ (Deep in the Sentence Forest)"), emoji: "🌳", tagline: T("긴 문장을 짓고 글 속 숨은 뜻을 추론해요.", "Tạo câu dài và suy luận ý nghĩa ẩn trong bài.") }, unitTitle: T("중3 영어", "Tiếng Anh lớp 9"),
     lessons: [
       k.lesson(1, "rel", T("관계대명사", "Đại từ quan hệ"), T("who(사람), which(사물), that(둘 다), whose(소유)로 두 문장을 하나로 이어요.", "Nối hai câu bằng who (người), which (vật), that (cả hai), whose (sở hữu)."), T("I have a friend who lives in Canada.", "I have a friend who lives in Canada."), l1),
       k.lesson(2, "cond", T("조건문과 가정법 과거", "Câu điều kiện và giả định"), T("If + 현재, will + V (가능한 일). If + 과거, would + V (현재와 반대되는 가정).", "If + hiện tại, will + V (có thể xảy ra). If + quá khứ, would + V (giả định trái với hiện tại)."), T("If I were rich, I would travel.", "If I were rich, I would travel."), l2),

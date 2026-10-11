@@ -90,7 +90,7 @@ export function e4(b) {
 
   b.course({
     id: "english-e4", grade: "E4", title: T("초4 영어 · 시제, 질문과 부정, 설명하는 말", "Tiếng Anh Lớp 4 · Thì, câu hỏi, phủ định và từ miêu tả"),
-    world: { name: T("Grammar Garden", "Vườn Ngữ Pháp"), emoji: "🌳", tagline: T("문장의 규칙을 하나씩 심어요", "Gieo từng quy tắc của câu") },
+    world: { name: T("문법 정원 (Grammar Garden)", "Vườn Ngữ Pháp (Grammar Garden)"), emoji: "🌳", tagline: T("문장의 규칙을 하나씩 심어요", "Gieo từng quy tắc của câu") },
     unit: { id: "english-e4-u1", title: T("시제, 질문과 부정, 꾸미는 말, 위치, 읽기", "Thì, câu hỏi và phủ định, từ miêu tả, vị trí, đọc hiểu") },
     lessons: [
       lesson(1, "tense", S, T("현재·과거·미래", "Hiện tại, quá khứ và tương lai"), T("지금·반복은 **현재형**, 지난 일은 **-ed**, 앞으로 할 일은 **will + 동사원형**으로 말해요.", "Việc đang xảy ra hoặc lặp lại dùng **hiện tại**, việc đã xảy ra thêm **-ed**, việc sẽ xảy ra dùng **will + động từ nguyên mẫu**."), T("I will visit my aunt tomorrow.", "I will visit my aunt tomorrow."), [t1, t2, t3, t4], t5),
@@ -160,7 +160,7 @@ export function e5(b) {
 
   b.course({
     id: "english-e5", grade: "E5", title: T("초5 영어 · 문법 넓히기와 비교, 미래, 바꿔 쓰기", "Tiếng Anh Lớp 5 · Mở rộng ngữ pháp, so sánh, tương lai và viết lại câu"),
-    world: { name: T("Comparison Cliffs", "Vách Đá So Sánh"), emoji: "🧗", tagline: T("비교하며 한 걸음씩 올라가요", "Leo lên từng bước bằng cách so sánh") },
+    world: { name: T("비교 절벽 (Comparison Cliffs)", "Vách Đá So Sánh (Comparison Cliffs)"), emoji: "🧗", tagline: T("비교하며 한 걸음씩 올라가요", "Leo lên từng bước bằng cách so sánh") },
     unit: { id: "english-e5-u1", title: T("관사와 복수형, 비교, 미래, 문장 바꿔 쓰기, 읽기", "Mạo từ và số nhiều, so sánh, tương lai, viết lại câu, đọc hiểu") },
     lessons: [
       lesson(1, "gram", S, T("관사·복수형·There is/are", "Mạo từ, số nhiều, There is/are"), T("모음 소리 앞에는 **an**, 자음 소리 앞에는 **a**를 써요. 하나면 **There is**, 여러 개면 **There are**를 써요.", "Trước âm nguyên âm dùng **an**, trước âm phụ âm dùng **a**. Một vật dùng **There is**, nhiều vật dùng **There are**."), T("an apple, two boxes, There are three books.", "an apple, two boxes, There are three books."), [g1, g2, g3, g4], g5),
@@ -228,7 +228,7 @@ export function e6(b) {
 
   b.course({
     id: "english-e6", grade: "E6", title: T("초6 영어 · 중학교 준비", "Tiếng Anh Lớp 6 · Chuẩn bị lên cấp trung học"),
-    world: { name: T("Bridge to Middle School", "Cây Cầu Lên Cấp Hai"), emoji: "🌉", tagline: T("지금까지 배운 것을 튼튼히 이어요", "Nối vững chắc những gì đã học") },
+    world: { name: T("중학교로 가는 다리 (Bridge to Middle School)", "Cây Cầu Lên Cấp Hai (Bridge to Middle School)"), emoji: "🌉", tagline: T("지금까지 배운 것을 튼튼히 이어요", "Nối vững chắc những gì đã học") },
     unit: { id: "english-e6-u1", title: T("시제 총정리, 조동사, 낱말, 이어 주는 말, 문단 읽기", "Ôn các thì, động từ khuyết thiếu, từ vựng, từ nối, đọc đoạn văn") },
     lessons: [
       lesson(1, "tense", S, T("시제 총정리", "Tổng ôn các thì"), T("지금 하는 일은 **be + -ing**, 지난 일은 **과거형**, 앞으로 할 일은 **will / be going to**로 말해요.", "Việc đang làm dùng **be + -ing**, việc đã xảy ra dùng **quá khứ**, việc sẽ làm dùng **will / be going to**."), T("The baby is sleeping now.", "The baby is sleeping now."), [t1, t2, t3, t4], t5),
