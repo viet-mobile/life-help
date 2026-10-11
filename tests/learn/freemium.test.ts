@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { buildAccessPlan, freeCount, resolveAccess, accessibleBundle, type EntitlementRecord } from "@/lib/learn/domain/access";
+import { FREE_SITES, buildAccessPlan, freeCount, resolveAccess, accessibleBundle, type EntitlementRecord } from "@/lib/learn/domain/access";
 import { loadIndex } from "@/lib/learn/content/repository";
 import { MemoryLearnStore } from "@/lib/learn/server/memoryStore";
 import { LearnService, type Actor } from "@/lib/learn/server/service";
@@ -14,11 +14,13 @@ const key = (q: Question) => (q.answer.kind === "choice" ? q.answer.id : q.answe
 const canonical = async (site: Site): Promise<ContentBundle> => (await loadIndex(site)).bundle;
 const grant = (over: Partial<EntitlementRecord> = {}): EntitlementRecord => ({ scope: "all", source: "grant", startsAt: "2026-01-01T00:00:00Z", expiresAt: null, revokedAt: null, ...over });
 
+const GATED_SITES = SITES.filter((s) => !FREE_SITES.has(s));
+
 describe("canonical 50 / 50 split", () => {
   it("floor(n / 2) free, the rest premium (20 -> 10 / 10, 25 -> 12 / 13)", () => {
     expect([20, 25, 5, 4, 3].map((n) => [freeCount(n), n - freeCount(n)])).toEqual([[10, 10], [12, 13], [2, 3], [2, 2], [1, 2]]);
   });
-  it.each(SITES)("%s: every course gives exactly floor(n / 2) items free, in curriculum order, at most one lesson split", async (site) => {
+  it.each(GATED_SITES)("%s: every course gives exactly floor(n / 2) items free, in curriculum order, at most one lesson split", async (site) => {
     const b = await canonical(site);
     const plan = buildAccessPlan(b.catalog, b.questions);
     for (const c of plan.courses) {
@@ -64,10 +66,10 @@ describe("entitlement resolution (server-side records only)", () => {
   });
 });
 
-describe.each(SITES)("server-authoritative premium payload protection: %s", (site) => {
+describe.each(GATED_SITES)("server-authoritative premium payload protection: %s", (site) => {
   let store: MemoryLearnStore;
   let svc: LearnService;
-  const level: Grade = site === "korean" ? "K2" : "E3";
+  const level: Grade = "E3";
   const user: Actor = { userId: "u-premium-test", locale: "en" };
   beforeEach(() => {
     store = new MemoryLearnStore();
@@ -172,5 +174,24 @@ describe.each(SITES)("server-authoritative premium payload protection: %s", (sit
     }
     expect(free.questions.every((q) => plan.questionTier.get(q.id) === "FREE")).toBe(true);
     expect(accessibleBundle(bundle, plan, { tier: "PREMIUM", status: "active" })).toBe(bundle);
+  });
+});
+
+describe("sites that are entirely free", () => {
+  it("korean is in FREE_SITES and nothing in it is gated", async () => {
+    expect(FREE_SITES.has("korean")).toBe(true);
+    const b = await canonical("korean");
+    const plan = buildAccessPlan(b.catalog, b.questions);
+    for (const c of plan.courses) {
+      expect(c.premiumUnits, c.courseId).toBe(0);
+      expect(c.freeUnits).toBe(c.totalUnits);
+    }
+    expect([...plan.lessonTier.values()].every((t) => t === "FREE")).toBe(true);
+    expect([...plan.questionTier.values()].every((t) => t === "FREE")).toBe(true);
+    const free = accessibleBundle(b, plan, { tier: "FREE", status: "none" });
+    expect(free.questions.length).toBe(b.questions.length);
+  });
+  it("math and english keep the 50 / 50 boundary", () => {
+    expect(FREE_SITES.has("math") || FREE_SITES.has("english")).toBe(false);
   });
 });

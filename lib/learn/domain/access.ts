@@ -26,8 +26,14 @@ export interface AccessPlan {
 const lessonsOf = (c: Course) => c.units.flatMap((u) => u.lessons);
 const itemsOf = (l: { questionIds: string[]; challengeId?: string }) => [...l.questionIds, ...(l.challengeId ? [l.challengeId] : [])];
 
-export function freeCount(total: number): number {
-  return Math.floor(total / 2);
+/**
+ * Sites whose whole curriculum is free for now (no Premium boundary, nothing is gated).
+ * Korean: the 50 % rule would cut each short level mid-way; it returns to the normal split once the course is long enough.
+ */
+export const FREE_SITES: ReadonlySet<string> = new Set(["korean"]);
+
+export function freeCount(total: number, site?: string): number {
+  return site && FREE_SITES.has(site) ? total : Math.floor(total / 2);
 }
 
 export function buildAccessPlan(catalog: SiteCatalog, questions: Pick<Question, "id" | "skillId" | "role">[]): AccessPlan {
@@ -38,7 +44,7 @@ export function buildAccessPlan(catalog: SiteCatalog, questions: Pick<Question, 
   for (const course of catalog.courses) {
     const lessons = lessonsOf(course);
     const total = lessons.reduce((n, l) => n + itemsOf(l).length, 0);
-    const free = freeCount(total);
+    const free = freeCount(total, catalog.site);
     let seen = 0;
     for (const l of lessons) {
       const items = itemsOf(l);

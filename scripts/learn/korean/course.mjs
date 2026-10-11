@@ -17,7 +17,9 @@
 //   choose   choose the correct sentence for gloss `g`              options = Korean sentences (target), first is correct
 // `rr` = Revised Romanization of `ko`; Vietnamese reading aids use reviewed surface pronunciation. `note` = kit key of a grammar note added to the explanation.
 
-export const LEVELS = [
+import { EXTRA_LESSONS, EXTRA_EXAMPLES } from "./course-extra.mjs";
+
+const BASE_LEVELS = [
   {
     level: "K1", emoji: "🔤",
     lessons: [
@@ -236,8 +238,11 @@ export const LEVELS = [
   },
 ];
 
+/** K1..K6: the first three lessons above plus the extended lessons in course-extra.mjs. */
+export const LEVELS = BASE_LEVELS.map((L) => ({ ...L, lessons: [...L.lessons, ...(EXTRA_LESSONS[L.level] ?? [])] }));
+
 /** Lesson examples: Korean target + romanization; the gloss after "=" is presentation (kit key). */
-export const EXAMPLES = {
+const BASE_EXAMPLES = {
   "K1.vowels": [["아 · 어 · 오 · 우 · 으 · 이", "a · eo · o · u · eu · i", null]],
   "K1.consonants": [["가 · 나 · 다 · 마 · 바 · 사 · 하", "ga · na · da · ma · ba · sa · ha", null]],
   "K1.words": [["우유", "uyu", "milk"], ["나무", "namu", "tree"]],
@@ -257,3 +262,5 @@ export const EXAMPLES = {
   "K6.directions": [["화장실이 어디예요?", "hwajangsiri eodiyeyo?", "whereRestroom"]],
   "K6.wants": [["가고 싶어요.", "gago sipeoyo.", "wantGo"]],
 };
+
+export const EXAMPLES = { ...BASE_EXAMPLES, ...EXTRA_EXAMPLES };

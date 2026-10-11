@@ -124,7 +124,8 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
   test.afterEach(async () => { await revokeAllActive(); });
   test.afterAll(async () => { await deleteFixtureUser(userId); });
 
-  for (const site of SITES) {
+  // korean is entirely free for now (FREE_SITES in lib/learn/domain/access.ts): no Premium boundary to verify
+  for (const site of SITES.filter((x) => x !== "korean")) {
     test(`${site}: free open, premium locked, entitlement opens it, revoke/expiry lock it, progress survives`, async ({ page }) => {
       test.setTimeout(240_000);
       const { premium, free } = canonical(site);
@@ -137,7 +138,7 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
       // free content is accessible; premium is locked for a free learner (direct URL) in several locales (the lock is not language-bound)
       expect(await gateVisible(page, site, free.id), "free lesson is open").toBe(false);
       for (const loc of ["en", "ur", "sw"]) expect(await gateVisible(page, site, premium.id, loc), `premium locked in ${loc}`).toBe(true);
-      const before = await snapshot(page, site === "korean" ? "math" : site).catch(() => null); // learner state (XP, mastery, lessons)
+      const before = await snapshot(page, site).catch(() => null); // learner state (XP, mastery, lessons)
 
       // an entitlement for this site (scope) opens it; the lock is server-side, so a reload shows the lesson
       const id = await grant(site, null, null);
@@ -152,7 +153,7 @@ test.describe.serial("free / premium boundary with run-scoped entitlement fixtur
       // regained -> open again
       await grant(site, null, iso(1));
       expect(await gateVisible(page, site, premium.id), "premium open again when re-granted").toBe(false);
-      const after = await snapshot(page, site === "korean" ? "math" : site).catch(() => null);
+      const after = await snapshot(page, site).catch(() => null);
       expect(after, "losing and regaining access never changed the learner's progress").toEqual(before);
     });
   }

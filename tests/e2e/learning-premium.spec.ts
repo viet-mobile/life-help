@@ -69,7 +69,8 @@ const forgedCall = (page: Page, site: Site, action: string, body: Record<string,
     { site, action, body, done },
   );
 
-for (const site of ["math", "english", "korean"] as const) {
+// korean is entirely free for now (FREE_SITES in lib/learn/domain/access.ts), so it has no gate to exercise
+for (const site of ["math", "english"] as const) {
   test.describe(`${site}: free / premium boundary`, () => {
     for (const width of [1280, 390]) {
       test(`path badges and the Premium gate across locales @${width}px`, async ({ page }) => {
@@ -103,7 +104,7 @@ for (const site of ["math", "english", "korean"] as const) {
           await expect(root).toHaveAttribute("lang", loc);
           await expect(root).toHaveAttribute("dir", RTL.has(loc) ? "rtl" : "ltr");
           // no Korean anywhere on a non-Korean page (study.korean's own lesson titles are not part of the gate's chrome text check)
-          if (loc !== "ko" && site !== "korean") expect(HANGUL.test((await root.innerText()).replaceAll("한국어", "")), `${site} ${loc}: Korean on the gate`).toBe(false);
+          if (loc !== "ko") expect(HANGUL.test((await root.innerText()).replaceAll("한국어", "")), `${site} ${loc}: Korean on the gate`).toBe(false);
           const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
           expect(overflow, `${site} ${loc} @${width}: horizontal scroll`).toBeLessThanOrEqual(1);
         }

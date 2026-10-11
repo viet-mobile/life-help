@@ -21,7 +21,14 @@ const HANGUL = /[가-힣ㄱ-ㆎ]/;
 
 const kitPath = (l) => path.join(root, "scripts/learn/korean/kit", `${l}.json`);
 const kits = Object.fromEntries(LOCALES.filter((l) => fs.existsSync(kitPath(l))).map((l) => [l, JSON.parse(fs.readFileSync(kitPath(l), "utf8"))]));
-const missing = LOCALES.filter((l) => !kits[l]);
+// Extended lessons (course-extra.mjs): kit-extra/<locale>.json carries their skill titles, lesson texts, glosses and notes.
+const extraPath = (l) => path.join(root, "scripts/learn/korean/kit-extra", `${l}.json`);
+for (const l of Object.keys(kits)) {
+  if (!fs.existsSync(extraPath(l))) { if (process.argv.includes("--draft")) delete kits[l]; continue; }
+  const x = JSON.parse(fs.readFileSync(extraPath(l), "utf8"));
+  for (const sec of ["skill", "lesson", "gloss", "note"]) kits[l][sec] = { ...kits[l][sec], ...(x[sec] ?? {}) };
+}
+const missing = LOCALES.filter((l) => !kits[l] || !fs.existsSync(extraPath(l)));
 // --draft renders only the kits present (development); the committed build (and --check) requires a kit for every registry locale.
 const draft = process.argv.includes("--draft");
 if (missing.length && !draft) {

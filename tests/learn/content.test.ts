@@ -49,14 +49,14 @@ describe.each(SITES)("demo content: %s", (site) => {
     }
   });
 
-  it("has 3-5 lessons per course, of 3-6 questions each, that reference existing questions", async () => {
+  it("has 3-9 lessons per course (korean levels have nine), of 3-6 questions each, that reference existing questions", async () => {
     const bundle = await demoContentRepository.getBundle(site);
     const index = indexContent(toMetaBundle(bundle));
     expect(bundle.catalog.courses.length).toBeGreaterThanOrEqual(1);
     for (const course of bundle.catalog.courses) {
       const lessons = course.units.flatMap((u) => u.lessons);
       expect(lessons.length, `${course.id} lessons`).toBeGreaterThanOrEqual(3);
-      expect(lessons.length, `${course.id} lessons`).toBeLessThanOrEqual(5);
+      expect(lessons.length, `${course.id} lessons`).toBeLessThanOrEqual(9);
     }
     for (const { lesson } of index.lessons.values()) {
       const n = lesson.questionIds.length + (lesson.challengeId ? 1 : 0);
