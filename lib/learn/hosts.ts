@@ -2,9 +2,9 @@ import type { Site } from "./types";
 
 /**
  * Explicit hostname allowlist for the learning sites. No wildcards and no label parsing: a host resolves to a learning site only when
- * it is listed here (deterministic routing; look-alikes such as korea.life.help, korean.life.help or a.math.life.help never match).
+ * it is listed here (deterministic routing; look-alikes such as korea.life.help, study.korea.life.help or a.math.life.help never match).
  *
- *   production: math.life.help, english.life.help, study.korean.life.help
+ *   production: math.life.help, english.life.help, study.korean.life.help, korean.life.help (alias of study.korean.life.help)
  *   staging:    math-staging.life.help, english-staging.life.help, study-korean-staging.life.help
  *   local:      math.localhost, english.localhost, korean.localhost, study.korean.localhost
  */
@@ -14,6 +14,8 @@ const HOSTS: Record<string, LearnHostInfo> = {
   "math.life.help": { site: "math", stage: "production" },
   "english.life.help": { site: "english", stage: "production" },
   "study.korean.life.help": { site: "korean", stage: "production" },
+  // one-level alias of the same site (covered by the zone's wildcard certificate; study.korean.life.help is two levels deep)
+  "korean.life.help": { site: "korean", stage: "production" },
   "math-staging.life.help": { site: "math", stage: "staging" },
   "english-staging.life.help": { site: "english", stage: "staging" },
   "study-korean-staging.life.help": { site: "korean", stage: "staging" },

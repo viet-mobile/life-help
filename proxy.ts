@@ -5,6 +5,7 @@ import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE } from "@/lib/learn/i18n";
 import { parseLearnHost } from "@/lib/learn/hosts";
 import { SITES, type Site } from "@/lib/learn/types";
 import { allowsLearnPathAccess } from "@/lib/env";
+import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { updateLearnSession } from "@/lib/learn/server/supabase/proxySession";
 
 /**
@@ -521,17 +522,23 @@ export async function proxy(request: NextRequest) {
 
     if (learnSite) {
       const passthrough = isLearnPassthrough(path);
-      const internal =
-        passthrough || path.startsWith("/study/")
-          ? path
-          : `/study/${learnSite}${path === "/" ? "" : path}`;
+      // Language in the URL (https://math.life.help/en , /vi/dashboard): the first segment after the site root names a registry locale.
+      // It is stripped before routing and travels as x-learn-locale, so the server renders - and link previews / crawlers see - the
+      // metadata of THAT language without any cookie. Links inside the page keep the prefix (x-learn-base).
+      const sitePath = path.startsWith("/study/") ? "/" + path.split("/").slice(3).join("/") : path;
+      const { locale: urlLocale, rest } = passthrough ? { locale: null, rest: sitePath } : splitLocalePrefix(sitePath);
+      const innerPath = urlLocale ? rest : sitePath;
+      const siteRoot = learnHostSite ? "" : `/study/${learnSite}`;
+      const internal = passthrough ? path : `/study/${learnSite}${innerPath === "/" ? "" : innerPath}`;
 
       const learnHeaders = new Headers(request.headers);
       learnHeaders.set("x-life-portal", "learn");
       learnHeaders.set("x-life-site", learnSite);
-      // The public base path for links: empty on the site's own subdomain.
-      learnHeaders.set("x-learn-base", learnHostSite ? "" : `/study/${learnSite}`);
-      learnHeaders.set("x-life-language", "ko");
+      // The public base path for links: empty on the site's own subdomain (plus the language prefix when the URL carries one).
+      learnHeaders.set("x-learn-base", `${siteRoot}${urlLocale ? `/${urlLocale}` : ""}`);
+      learnHeaders.set("x-learn-path", innerPath);
+      if (urlLocale) learnHeaders.set("x-learn-locale", urlLocale); else learnHeaders.delete("x-learn-locale"); // never trust a client-supplied value
+      learnHeaders.set("x-life-language", urlLocale ?? "ko");
       learnHeaders.delete("x-life-country");
 
       // Keep the learning Supabase session fresh and persist refreshed cookies (no-op without LEARN_SUPABASE_* public config).
@@ -543,6 +550,8 @@ export async function proxy(request: NextRequest) {
             })
           : NextResponse.next({ request: { headers: learnHeaders } });
       sessionResponse.cookies.getAll().forEach((c) => out.cookies.set(c));
+      // a language link also becomes the browser's language (same cookie the language switcher writes)
+      if (urlLocale) out.cookies.set(LOCALE_COOKIE, urlLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
       out.headers.set("X-Robots-Tag", "noindex, nofollow"); // first release: learning sites are not indexed
       return out;
     }

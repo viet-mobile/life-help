@@ -38,12 +38,12 @@ describe("deterministic host routing (explicit allowlist)", () => {
     expect(parseLearnHost("english-staging.life.help")).toEqual({ site: "english", stage: "staging" });
   });
   it("never captures country hosts or look-alikes", () => {
-    for (const h of ["korea.life.help", "korean.life.help", "a.study.korean.life.help", "study.korean.life.help.evil.com", "study.korea.life.help", "korean-staging.life.help", "study-korean.life.help", "constructor.life.help", "__proto__"]) {
+    for (const h of ["korea.life.help", "a.korean.life.help", "a.study.korean.life.help", "study.korean.life.help.evil.com", "study.korea.life.help", "korean-staging.life.help", "study-korean.life.help", "constructor.life.help", "__proto__"]) {
       expect(parseLearnHost(h), h).toBeNull();
     }
   });
   it("same-origin allowlist covers every production / staging learning host and no local host", () => {
-    expect(learnOrigins().sort()).toEqual(["https://english-staging.life.help", "https://english.life.help", "https://math-staging.life.help", "https://math.life.help", "https://study-korean-staging.life.help", "https://study.korean.life.help"]);
+    expect(learnOrigins().sort()).toEqual(["https://english-staging.life.help", "https://english.life.help", "https://korean.life.help", "https://math-staging.life.help", "https://math.life.help", "https://study-korean-staging.life.help", "https://study.korean.life.help"]);
   });
 });
 

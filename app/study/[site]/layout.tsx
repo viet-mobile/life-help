@@ -9,6 +9,13 @@ import { localeDir } from "@/lib/learn/i18n";
 import { getServerT } from "@/lib/learn/i18n/server";
 import { siteConfig } from "@/lib/learn/sites";
 import { isSite } from "@/lib/learn/types";
+import { locales } from "@/messages/registry";
+
+/** "/study/math/en" -> "/study/math"; "/en" -> ""; "" -> "" : the part of x-learn-base before the language prefix. */
+function parseSiteRoot(base: string, site: string): string {
+  const root = base.startsWith(`/study/${site}`) ? `/study/${site}` : "";
+  return root;
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ site: string }> }): Promise<Metadata> {
   const { site } = await params;
@@ -20,7 +27,16 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const host = h.get("x-forwarded-host") ?? h.get("host") ?? "";
   const origin = host ? `${host.startsWith("localhost") || host.includes(".localhost") || host.startsWith("127.") ? "http" : "https"}://${host}` : "";
   const logo = `${origin}/logos/logo-${site}.png`;
+  // Language alternates (hreflang) for the SAME page: the site's own host serves /<locale>/<page>; path mode (staging / local) sits under /study/<site>.
+  const siteRoot = origin;
+  const rootPath = parseSiteRoot(h.get("x-learn-base") ?? "", site);
+  const innerPath = h.get("x-learn-path") ?? "/";
+  const page = innerPath === "/" ? "" : innerPath;
+  const urlLocale = h.get("x-learn-locale");
+  const languages = Object.fromEntries([...locales.map((l) => [l, `${siteRoot}${rootPath}/${l}${page}`] as const), ["x-default", `${siteRoot}${rootPath}${page || "/"}`] as const]);
   return {
+    metadataBase: origin ? new URL(origin) : undefined,
+    alternates: { canonical: urlLocale ? languages[urlLocale] : `${siteRoot}${rootPath}${page || "/"}`, languages },
     title: { default: `${name} · ${t(`site.${site}.tagline` as never)}`, template: `%s · ${name}` },
     description: t(`site.${site}.description` as never),
     // Staging/local are never indexed; individual pages narrow this further.
@@ -37,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
       shortcut: [`/logos/favicon-${site}.png`],
       apple: [{ url: `/logos/apple-touch-icon-${site}.png`, sizes: "180x180", type: "image/png" }],
     },
-    openGraph: { title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), locale: locale.replace("-", "_"), type: "website", siteName: name, images: [{ url: logo, width: 512, height: 512, alt: name }] },
+    openGraph: { url: urlLocale ? languages[urlLocale] : `${siteRoot}${rootPath}${page || "/"}`, alternateLocale: locales.filter((l) => l !== locale).map((l) => l.replace("-", "_")), title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), locale: locale.replace("-", "_"), type: "website", siteName: name, images: [{ url: logo, width: 512, height: 512, alt: name }] },
     twitter: { card: "summary", title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), images: [logo] },
   };
 }

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useSyncExternalStore, type ComponentType } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type ComponentType } from "react";
 import { getAudioProvider } from "@/lib/learn/providers/audio";
 import type { PublicQuestion, QuestionType, Site } from "@/lib/learn/types";
 import { siteConfig } from "@/lib/learn/sites";
 import { useSite } from "./LearnerProvider";
 import { RichText } from "./RichText";
+import { choiceKeyIndex, isTextTarget } from "./choiceKeys";
 
 /**
  * Renderer registry. A renderer receives the public question and controlled
@@ -43,6 +44,22 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
           { id: "false", text: t("lesson.tf.false") },
         ]
       : (q.options ?? []);
+  // The letters on the options are keys: A / B / C / D (any case, also under a Korean input method) choose exactly like a click.
+  const latest = useRef({ options, onChange, disabled });
+  useEffect(() => { latest.current = { options, onChange, disabled }; });
+  useEffect(() => {
+    if (q.type !== "multiple_choice") return;
+    const onKey = (e: KeyboardEvent) => {
+      const { options: opts, onChange: choose, disabled: locked } = latest.current;
+      if (locked || isTextTarget(e.target)) return;
+      const index = choiceKeyIndex(e, opts.length);
+      if (index < 0) return;
+      e.preventDefault();
+      choose(opts[index].id); // the same handler a click runs
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [q.id, q.type]);
   return (
     <div role="radiogroup" aria-label={q.prompt} className="l-options">
       {options.map((o, i) => {
