@@ -3,7 +3,8 @@ import { NextRequest } from "next/server";
 import { proxy } from "@/proxy";
 import { locales } from "@/messages/registry";
 import { localeFromSegment, splitLocalePrefix, withLocalePrefix } from "@/lib/learn/i18n/path";
-import { learnOrigins, parseLearnHost } from "@/lib/learn/hosts";
+import { learnHost, learnOrigins, parseLearnHost } from "@/lib/learn/hosts";
+import { studyUrl, studyUrls } from "@/lib/home/studyHosts";
 
 const run = (host: string, path: string, headers: Record<string, string> = {}) => proxy(new NextRequest(`https://${host}${path}`, { headers: { host, ...headers } }));
 const hdr = (res: Response, h: string) => res.headers.get(`x-middleware-request-${h}`);
@@ -87,6 +88,24 @@ describe("korean.life.help is registered as a learning host", () => {
   });
 });
 
+describe("korean.life.help is the representative address", () => {
+  it("learnHost, the Study chooser and the Vietnamese entry alias all name korean.life.help; staging is unchanged", async () => {
+    expect(learnHost("korean", "production")).toBe("korean.life.help");
+    expect(learnHost("math", "production")).toBe("math.life.help");
+    expect(learnHost("korean", "staging")).toBe("study-korean-staging.life.help");
+    expect(studyUrl("korean", "life.help")).toBe("https://korean.life.help");
+    expect(studyUrls("korea.life.help").korean).toBe("https://korean.life.help");
+    expect(studyUrl("korean", "somewhere.preview.dev")).toBe("https://study-korean-staging.life.help");
+    expect(studyUrl("korean", "localhost", "3100")).toBe("http://korean.localhost:3100");
+    const res = await run("hoc.tieng.han.viet.mobile", "/");
+    expect(res.status).toBe(308);
+    expect(res.headers.get("location")).toBe("https://korean.life.help/?lang=vi");
+  });
+  it("both hosts serve the site; the alias is not redirected (guest progress lives per origin)", async () => {
+    for (const host of ["korean.life.help", "study.korean.life.help"]) expect(rewrite(await run(host, "/")), host).toBe("/study/korean");
+  });
+});
+
 describe("metadata per language (title, description, social preview, hreflang)", () => {
   vi.mock("next/headers", () => {
     const state = { headers: new Headers() };
@@ -119,6 +138,22 @@ describe("metadata per language (title, description, social preview, hreflang)",
       expect(titles.size, `${site}: titles are translated, not copies of one language`).toBeGreaterThan(35);
       expect(descriptions.size, `${site}: descriptions are translated`).toBeGreaterThan(35);
     }
+  });
+  it("requested through the study.korean alias, canonical / og:url / social image still name korean.life.help", async () => {
+    const { generateMetadata } = await import("@/app/study/[site]/layout");
+    set({ host: "study.korean.life.help", "x-learn-locale": "vi", "x-learn-base": "/vi", "x-learn-path": "/dashboard" });
+    const md = await generateMetadata({ params: Promise.resolve({ site: "korean" }) });
+    const a = md.alternates as { canonical: string; languages: Record<string, string> };
+    expect(a.canonical).toBe("https://korean.life.help/vi/dashboard");
+    expect(a.languages.ur).toBe("https://korean.life.help/ur/dashboard");
+    expect(a.languages["x-default"]).toBe("https://korean.life.help/dashboard");
+    expect((md.openGraph as { url: string; images: Array<{ url: string }> }).url).toBe("https://korean.life.help/vi/dashboard");
+    expect((md.openGraph as { images: Array<{ url: string }> }).images[0].url).toBe("https://korean.life.help/logos/logo-korean.png");
+    expect(String(md.metadataBase)).toBe("https://korean.life.help/");
+    // staging and local hosts keep their own origin
+    set({ host: "english-staging.life.help", "x-learn-locale": "en", "x-learn-base": "/en", "x-learn-path": "/" });
+    const st = await generateMetadata({ params: Promise.resolve({ site: "english" }) });
+    expect((st.alternates as { canonical: string }).canonical).toBe("https://english-staging.life.help/en");
   });
   it("without a language in the URL the site keeps its default language and canonical root", async () => {
     const { generateMetadata } = await import("@/app/study/[site]/layout");

@@ -27,7 +27,7 @@ export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => 
   const options = [
     { id: "math", href: urls.math, site: "math.life.help", icon: "➗", title: t("study.chooser.math"), desc: t("study.chooser.mathDesc"), ring: "border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50" },
     { id: "english", href: urls.english, site: "english.life.help", icon: "🔤", title: t("study.chooser.english"), desc: t("study.chooser.englishDesc"), ring: "border-sky-300 hover:border-sky-500 hover:bg-sky-50" },
-    { id: "korean", href: urls.korean, site: "study.korean.life.help", icon: "🇰🇷", title: t("study.chooser.korean"), desc: t("study.chooser.koreanDesc"), ring: "border-violet-300 hover:border-violet-500 hover:bg-violet-50" },
+    { id: "korean", href: urls.korean, site: "korean.life.help", icon: "🇰🇷", title: t("study.chooser.korean"), desc: t("study.chooser.koreanDesc"), ring: "border-violet-300 hover:border-violet-500 hover:bg-violet-50" },
   ] as const;
 
   return (

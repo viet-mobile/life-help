@@ -9,6 +9,7 @@ import { localeDir } from "@/lib/learn/i18n";
 import { getServerT } from "@/lib/learn/i18n/server";
 import { siteConfig } from "@/lib/learn/sites";
 import { isSite } from "@/lib/learn/types";
+import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
 import { locales } from "@/messages/registry";
 
 /** "/study/math/en" -> "/study/math"; "/en" -> ""; "" -> "" : the part of x-learn-base before the language prefix. */
@@ -24,7 +25,11 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const name = t(siteConfig(site).brandKey);
   // Absolute URL for social previews (relative og:image would be resolved against a default origin).
   const h = await headers();
-  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "";
+  const requestHost = h.get("x-forwarded-host") ?? h.get("host") ?? "";
+  // A production learning host is always presented under its REPRESENTATIVE address (korean.life.help for the Korean study site):
+  // canonical, hreflang, og:url and the social image never name an alias.
+  const info = parseLearnHost(requestHost);
+  const host = info?.stage === "production" ? learnHost(info.site, "production") : requestHost;
   const origin = host ? `${host.startsWith("localhost") || host.includes(".localhost") || host.startsWith("127.") ? "http" : "https"}://${host}` : "";
   const logo = `${origin}/logos/logo-${site}.png`;
   // Language alternates (hreflang) for the SAME page: the site's own host serves /<locale>/<page>; path mode (staging / local) sits under /study/<site>.

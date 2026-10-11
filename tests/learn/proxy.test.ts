@@ -65,7 +65,7 @@ describe("learning hosts and production guard", () => {
 
 describe("Vietnamese learning entry points", () => {
   it("redirects only the two exact aliases to the fixed Vietnamese destinations", async () => {
-    for (const [host, target] of [["hoc.tieng.han.viet.mobile", "study.korean.life.help"], ["hoc.tieng.anh.viet.mobile", "english.life.help"]]) {
+    for (const [host, target] of [["hoc.tieng.han.viet.mobile", "korean.life.help"], ["hoc.tieng.anh.viet.mobile", "english.life.help"]]) {
       const response = await snap(current, host, "/?lang=en&next=https://evil.example");
       expect(response.status).toBe(308);
       expect(response.headers.location).toBe(`https://${target}/?lang=vi`);

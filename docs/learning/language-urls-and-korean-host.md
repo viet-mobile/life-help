@@ -11,10 +11,12 @@ moves to the same page under the new prefix. Without a prefix nothing changes (m
 
 ## korean.life.help
 
-`korean.life.help` is a production alias of the Korean study site (`lib/learn/hosts.ts`); `study.korean.life.help` keeps working.
+`korean.life.help` is the REPRESENTATIVE address of the Korean study site (`lib/learn/hosts.ts`, first production entry): the Study chooser,
+the cross-site links, the Vietnamese entry alias (`hoc.tieng.han.viet.mobile`) and every canonical / hreflang / og:url name it.
+`study.korean.life.help` keeps serving the same site but is not redirected (guest progress lives per origin) and is never named in metadata.
 A one-level host is covered by the zone's wildcard certificate (the two-level `study.korean.life.help` is not).
 
-Registering the hostname is a Cloudflare production change and is intentionally NOT done by the repository:
+The hostname is registered in Cloudflare by the operator (not by the repository). If it must be redone:
 1. Cloudflare dashboard -> Workers & Pages -> `life-help` -> Settings -> Domains & Routes -> Add -> Custom domain -> `korean.life.help`
    (DNS record and certificate are created automatically).
 2. Do it together with (or right after) the release that contains this code. Before that release the production Worker does not know the

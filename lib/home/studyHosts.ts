@@ -2,7 +2,7 @@
  * Where the Study card sends the learner. Study lives on its own sub-domains (math.life.help, english.life.help); the main site never serves
  * /study/* routes on production hosts. The destination follows the environment the main site itself runs in:
  *
- *   production            https://math.life.help          https://english.life.help
+ *   production            https://math.life.help          https://english.life.help          https://korean.life.help
  *   staging               https://math-staging.life.help  https://english-staging.life.help
  *   local (localhost)     http://math.localhost:<port>    http://english.localhost:<port>
  *
@@ -15,7 +15,7 @@ export const STUDY_SUBJECTS: readonly StudySubject[] = ["math", "english", "kore
 export function studyUrl(subject: StudySubject, hostname: string, port = ""): string {
   const host = hostname.toLowerCase().split(":")[0];
   if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") return `http://${subject}.localhost${port ? `:${port}` : ""}`;
-  if (host === "life.help" || host === "www.life.help" || /^(korea|vietnam|japan|china|taiwan)\.life\.help$/.test(host)) return `https://${subject === "korean" ? "study.korean" : subject}.life.help`;
+  if (host === "life.help" || host === "www.life.help" || /^(korea|vietnam|japan|china|taiwan)\.life\.help$/.test(host)) return `https://${subject === "korean" ? "korean" : subject}.life.help`;
   return `https://${subject === "korean" ? "study-korean" : subject}-staging.life.help`;
 }
 

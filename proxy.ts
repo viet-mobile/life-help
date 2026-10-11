@@ -253,7 +253,7 @@ const COUNTRY_HOST_REDIRECTS: Record<string, string> = {
 
 
 /**
- * Learning sites (math.life.help, english.life.help, study.korean.life.help).
+ * Learning sites (math.life.help, english.life.help, korean.life.help / study.korean.life.help).
  *
  * The subdomain selects a learning site; the app lives at /study/[site]/...
  * internally, so math.life.help/dashboard is served by /study/math/dashboard.
@@ -451,7 +451,7 @@ export async function proxy(request: NextRequest) {
     : "";
 
   const learningAliases: Record<string, string> = {
-    "hoc.tieng.han.viet.mobile": "study.korean.life.help",
+    "hoc.tieng.han.viet.mobile": "korean.life.help",
     "hoc.tieng.anh.viet.mobile": "english.life.help",
   };
   if (learningAliases[host]) {
