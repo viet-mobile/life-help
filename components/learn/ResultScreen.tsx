@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEnterToContinue } from "./useEnterToContinue";
 import { levelProgress } from "@/lib/learn/domain/level";
 import type { Lesson, PlayerState } from "@/lib/learn/types";
 import { useLearner } from "./LearnerProvider";
@@ -22,6 +24,8 @@ export interface SessionResult {
 
 export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionResult; nextLesson: Lesson | null; onAgain: () => void }) {
   const { t, href, state, index } = useLearner();
+  const router = useRouter();
+  useEnterToContinue(result.kind === "lesson" && !!nextLesson, () => { if (nextLesson) router.push(href(`/lesson/${nextLesson.id}`)); });
   const level = levelProgress(state.totalXp);
   const leveledUp = level.level > result.levelBefore;
   const lessonSkillIds = result.lessonId ? index.lessons.get(result.lessonId)?.lesson.skillIds : undefined;

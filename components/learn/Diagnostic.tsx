@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import type { Placement } from "@/lib/learn/domain/diagnostic";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
@@ -24,6 +25,7 @@ interface StepResponse {
 /** Adaptive placement: gentle wording, no scores, ends in a skill map. */
 export function Diagnostic() {
   const { api, t, href, site } = useLearner();
+  const router = useRouter();
   const [phase, setPhase] = useState<"intro" | "loading" | "question" | "feedback" | "done" | "error">("intro");
   const [q, setQ] = useState<PublicQuestion | null>(null);
   const [value, setValue] = useState<string | string[]>("");
@@ -79,9 +81,10 @@ export function Diagnostic() {
   };
 
   const answerReady = Array.isArray(value) ? value.length > 0 && (q?.type !== "ordering" || value.length === (q.options?.length ?? 0)) : value.trim().length > 0;
-  useEnterToContinue(phase === "intro" || phase === "feedback" || (phase === "question" && answerReady), () => {
+  useEnterToContinue(phase === "intro" || phase === "feedback" || phase === "done" || (phase === "question" && answerReady), () => {
     if (phase === "intro") void begin();
     else if (phase === "feedback") proceed();
+    else if (phase === "done") router.push(href("/dashboard"));
     else void submit();
   }, phase + (q?.id ?? ""));
 

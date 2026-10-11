@@ -12,6 +12,7 @@ import { ListeningPanel } from "./Listening";
 import { exampleSegments } from "@/lib/learn/listen/segments";
 import { EXAMPLE_KO } from "@/lib/learn/content/listening/examples-ko";
 import { ResultScreen, type SessionResult } from "./ResultScreen";
+import { useEnterToContinue } from "./useEnterToContinue";
 import { PremiumGate } from "./PremiumGate";
 
 type Kind = "lesson" | "review" | "practice";
@@ -149,6 +150,8 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
     const node = buildPath(result.finalState, index).find((n) => n.status === "current");
     return node ? index.lessons.get(node.lessonId)?.lesson ?? null : null;
   }, [result, index]);
+
+  useEnterToContinue(phase === "intro", () => { void start(); });
 
   if (phase === "premium") return <PremiumGate t={t} access={access} title={lesson?.lesson.title ?? ""} backHref={href("/learn")} />;
   if (phase === "result" && result) return <ResultScreen result={result} nextLesson={nextLesson} onAgain={start} />;

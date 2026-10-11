@@ -63,7 +63,8 @@ test("Enter moves to the next question in a lesson (once per press), after both 
   await page.getByRole("link", { name: ko["diag.later"] }).click();
   await page.getByRole("link", { name: new RegExp(`^▶ ${ko["dash.continue"]}`) }).click();
   const start = page.waitForResponse(isApi("start"));
-  await page.getByRole("button", { name: ko["lesson.begin"] }).click();
+  await page.locator("h1").click();
+  await page.keyboard.press("Enter");
   const body = await (await start).json();
   const qWord = ko["lesson.question"].split("{")[0].trim();
   for (const [i, pq] of (body.questions as { id: string }[]).entries()) {
@@ -84,6 +85,12 @@ test("Enter moves to the next question in a lesson (once per press), after both 
     }
   }
   await expect(page.getByRole("heading", { name: ko["result.title.lesson"] })).toBeVisible();
+  const nextLink = page.locator("a.l-btn-block").first();
+  const nextHref = await nextLink.getAttribute("href");
+  expect(nextHref).toMatch(/\/lesson\//);
+  await page.locator("h1").click();
+  await page.keyboard.press("Enter");
+  await page.waitForURL(new RegExp(nextHref! + "$"));
 });
 
 test("Enter moves on in the placement test too", async ({ page }) => {
@@ -104,4 +111,7 @@ test("Enter moves on in the placement test too", async ({ page }) => {
     await page.keyboard.press("Enter");
   }
   await expect(page.getByRole("heading", { name: ko["diag.result.title"] })).toBeVisible();
+  await page.locator("h1").click();
+  await page.keyboard.press("Enter");
+  await page.waitForURL(/dashboard/);
 });
