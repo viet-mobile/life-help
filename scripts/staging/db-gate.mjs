@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /**
  * Read-only staging DB gate (no mutation).
- *   structure  (elevated SERVICE_CORE_SUPABASE_SECRET_KEY, GET /rest/v1/ OpenAPI): which of the integrated tree's migrations are already
- *              applied, derived from the objects each file creates; service_role reaches every intended API object. The OpenAPI document is
+ *   structure  (elevated SERVICE_CORE_SUPABASE_SECRET_KEY, GET /rest/v1/ OpenAPI): API postconditions of the integrated tree's migrations,
+ *              including learning foundation and figure/elective columns; migration history is NOT inferred; service_role reaches every intended API object. The OpenAPI document is
  *              structural discovery ONLY: PostgREST lists functions regardless of EXECUTE, so presence there is never evidence of authority.
  *   internals  every svc__* function is CALLED with the elevated key (apikey header, exact parameter names, null values) and must be refused
  *              with a permission-denied-for-function error. A 2xx, an invalid-key answer, a wrong call shape (404), a malformed body or a
  *              network failure is a FAIL, never a pass.
  *   key        SERVICE_CORE_STAGING_ANON_KEY is validated through the public Auth settings endpoint (modern sb_publishable_* keys are NOT
  *              valid proof via the OpenAPI root, and are never sent as a Bearer token: sb_* keys go in `apikey` only)
- *   denial     with that publishable key every service-core / entitlement table and function is CALLED DIRECTLY and must be refused by
+ *   denial     with that publishable key every learning / service-core / entitlement table and service-core / entitlement function is CALLED DIRECTLY and must be refused by
  *              PostgREST with a permission error (401/403 + 42501). A 2xx (even an empty array), a network failure, an invalid-key
  *              answer or a wrong-project key is never a pass.
  *   --snapshot <file>: row counts of the tables a run may touch (foreign-row baseline for the cleanup step)
@@ -22,8 +22,13 @@ import path from "node:path";
 import { ROOT, STAGING_REF, loadStagingEnv, preflight, refOfUrl } from "./contract.cjs";
 import { auditBaseline, readAuditRows } from "./audit.mjs";
 
-export const REQUIRED = ["202610070028_learning_korean_study.sql", "202610080029_learning_entitlements.sql", "202610090040_service_core.sql", "202610100041_service_request_access.sql", "202610110042_service_core_internal_rpc_lockdown.sql"];
-// svc_audit is append-only (a run legitimately adds rows): it gets an identity-level baseline below, not a row-count equality
+// These files have observable API postconditions. This is NOT a migration-history audit.
+export const REQUIRED = ["202609300024_learning_platform.sql", "202609300025_learning_content_rpc.sql", "202609300026_learning_selfcontained_auth.sql", "202610070028_learning_korean_study.sql", "202610080029_learning_entitlements.sql", "202610090040_service_core.sql", "202610100041_service_request_access.sql", "202610110042_service_core_internal_rpc_lockdown.sql", "202610130043_learning_question_figure.sql"];
+// Their deployed postconditions require pg_catalog access, not OpenAPI inference.
+export const CATALOG_ONLY = ["202609300023_learning_prereq_shim.sql", "202609300027_learning_elementary_grades.sql"];
+const TRIGGER_FUNCTIONS = new Set(["learn_enforce_publish_flow"]);
+const REQUIRED_COLUMNS = { "202610130043_learning_question_figure.sql": [["learn_questions", "figure"], ["learn_courses", "elective"]] };
+// svc_audit is append-only: it gets an identity-level baseline below, not row-count equality.
 const SNAPSHOT_TABLES = ["svc_customers", "svc_helpers", "svc_requests", "svc_request_sessions", "svc_messages", "svc_outbox", "learn_entitlements", "learn_student_profiles"];
 
 /** modern sb_* keys travel in `apikey` only; legacy JWT keys are also sent as the Authorization bearer (the user-JWT slot) */
@@ -83,31 +88,36 @@ export async function runDbGate({ fetchImpl = fetch, env, snapshotFile = "", roo
   const asService = new Set(Object.keys(spec.paths ?? {}).map((p) => p.replace(/^\/(rpc\/)?/, "")).filter(Boolean));
   const rpcParams = (fn) => Object.keys(spec.definitions?.[`(rpc) ${fn}`]?.properties ?? {});
 
-  const applied = [], pending = [];
+  const visible = [], pending = [];
   const perFile = {};
   for (const f of REQUIRED) {
     const { tables, fns } = objectsOf(f, root);
     perFile[f] = { tables, fns };
-    const api = [...tables, ...[...fns.keys()].filter((n) => !n.startsWith("svc__"))];
+    const api = [...tables, ...[...fns.keys()].filter((n) => !n.startsWith("svc__") && !TRIGGER_FUNCTIONS.has(n))];
     const missing = api.filter((n) => !asService.has(n));
-    (missing.length ? pending : applied).push(f);
+    for (const [table, column] of REQUIRED_COLUMNS[f] ?? []) {
+      const properties = spec.definitions?.[table]?.properties;
+      if (!properties || !Object.hasOwn(properties, column)) missing.push(`${table}.${column}`);
+    }
+    (missing.length ? pending : visible).push(f);
     if (missing.length) say(`  ${f}: ${missing.length} object(s) not visible to service_role: ${missing.slice(0, 6).join(", ")}${missing.length > 6 ? ", ..." : ""}`);
   }
   say(`MIGRATIONS_REQUIRED = ${REQUIRED.join(", ")}`);
-  say(`MIGRATIONS_ALREADY_APPLIED = ${applied.join(", ") || "none"}`);
+  say(`MIGRATION_OBJECTS_VISIBLE = ${visible.join(", ") || "none"}`);
   say(`MIGRATIONS_PENDING = ${pending.join(", ") || "none"}`);
+  say("MIGRATION_HISTORY = NOT_VERIFIED (OpenAPI proves API postconditions only)");
+  say(`CATALOG_REVIEW_REQUIRED = ${CATALOG_ONLY.join(", ")} (use scripts/staging/learning-catalog-readonly.sql; no remote catalog audit was performed here)`);
   if (pending.length) {
-    say("BLOCKED_MIGRATIONS_PENDING: apply ONLY these files to STAGING (supabase db push from a temporary workdir holding just them, as docs/LEARNING_RELEASE.md describes), then rerun. This runner never applies migrations.");
+    say("BLOCKED_MIGRATIONS_PENDING: required API postconditions are missing. Compare migration history and deployed pg_catalog before planning any STAGING change; missing visibility is not proof a file should be reapplied. This runner never applies migrations.");
     return done(4);
   }
 
   const guarded = REQUIRED.filter((x) => /service|entitle/.test(x));
-  const tables = [], apiFns = new Map(), internals = new Map();
+  const tables = [...new Set(REQUIRED.flatMap(f => perFile[f].tables))], apiFns = new Map(), internals = new Map();
   for (const f of guarded) {
-    tables.push(...perFile[f].tables);
     for (const [n, params] of perFile[f].fns) (n.startsWith("svc__") ? internals : apiFns).set(n, params);
   }
-  gate(`service_role can reach every API object (${tables.length} tables, ${apiFns.size} functions)`, [...tables, ...apiFns.keys()].every((n) => asService.has(n)));
+  gate(`service_role can reach every API object (${tables.length} learning / service tables, ${apiFns.size} service / entitlement functions)`, [...tables, ...apiFns.keys()].every((n) => asService.has(n)));
 
   // ---- the publishable key: valid for THIS project, and not a secret key ---------------------------------------------------------
   if (/^sb_secret_/.test(pubKey) || pubKey === secretKey) { gate("SERVICE_CORE_STAGING_ANON_KEY is a public key (not a secret key)", false, "a secret key was supplied in the public-key slot"); say("INTEGRATED_STAGING_DB_GATE = FAIL (PUBLISHABLE_KEY_INVALID)"); return done(1); }
@@ -129,6 +139,12 @@ export async function runDbGate({ fetchImpl = fetch, env, snapshotFile = "", roo
     gate("positive control: elevated key executes the external server API (svc_core_schema_version)", r.status === 200 && body === 42, `HTTP ${r.status}`);
   } catch { gate("positive control: elevated key executes the external server API (svc_core_schema_version)", false, "network failure"); }
 
+  // Learning positive control reads no rows (column visibility alone is not a SELECT grant).
+  try {
+    const r = await fetchImpl(`${url}/rest/v1/learn_questions?select=id&limit=0`, { headers: svc });
+    gate("positive control: elevated key reads learn_questions", r.status === 200 && Array.isArray(await jsonOf(r)), `HTTP ${r.status}`);
+  } catch { gate("positive control: elevated key reads learn_questions", false, "network failure"); }
+
   // ---- service_role cannot EXECUTE any internal: proven by calling each one ------------------------------------------------------
   const internalDenial = [];
   for (const [fn, params] of internals) {
@@ -147,13 +163,13 @@ export async function runDbGate({ fetchImpl = fetch, env, snapshotFile = "", roo
   const tableVerdicts = [];
   for (const t of tables) {
     try {
-      const r = await fetchImpl(`${url}/rest/v1/${t}?select=*&limit=1`, { headers: pub });
+      const r = await fetchImpl(`${url}/rest/v1/${t}?select=*&limit=0`, { headers: pub });
       const body = await jsonOf(r);
       const ok = isPermissionDenied(r.status, body) && !looksLikeKeyRejection({ message: body?.message?.replace?.(/permission denied[^]*/i, "") });
       tableVerdicts.push([t, ok, `HTTP ${r.status}${r.status >= 200 && r.status < 300 ? " (access NOT denied)" : ""}`]);
     } catch { tableVerdicts.push([t, false, "network failure"]); }
   }
-  gate(`anon cannot read any of the ${tables.length} service-core / entitlement tables (svc_requests, helpers, sessions, outbox, audit, entitlements, ...)`, tableVerdicts.every((v) => v[1]), tableVerdicts.filter((v) => !v[1]).map((v) => `${v[0]}: ${v[2]}`).join("; "));
+  gate(`anon cannot read any of the ${tables.length} learning / service-core / entitlement tables (catalog, answers, progress, staff, svc_requests, sessions, entitlements, ...)`, tableVerdicts.every((v) => v[1]), tableVerdicts.filter((v) => !v[1]).map((v) => `${v[0]}: ${v[2]}`).join("; "));
 
   const rpcVerdicts = [];
   const callAnon = async (fn, params) => {

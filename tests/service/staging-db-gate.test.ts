@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import * as C from "../../scripts/staging/contract.cjs";
-import { REQUIRED, keyHeaders, objectsOf, runDbGate } from "../../scripts/staging/db-gate.mjs";
+import { REQUIRED, CATALOG_ONLY, keyHeaders, objectsOf, runDbGate } from "../../scripts/staging/db-gate.mjs";
 
 const STAGING = `https://${C.STAGING_REF}.supabase.co`;
 const PUB = "sb_publishable_TESTONLY_not_a_real_key";
@@ -11,9 +11,9 @@ const env = (over: Record<string, string> = {}) =>
 const files = REQUIRED.map((f: string) => ({ f, ...objectsOf(f) }));
 const allTables: string[] = files.flatMap((x: { tables: string[] }) => x.tables);
 const allFns = new Map<string, string[]>(files.flatMap((x: { fns: Map<string, string[]> }) => [...x.fns]));
-// the denial surface = the service-core and entitlement migrations (028 is learning content, not guarded here)
+// Table denial covers the full learning/service surface; RPC denial retains the service/entitlement surface.
 const guarded = files.filter((x: { f: string }) => /service|entitle/.test(x.f));
-const guardedTables: string[] = guarded.flatMap((x: { tables: string[] }) => x.tables);
+const guardedTables: string[] = [...new Set(allTables)];
 const guardedFns = new Map<string, string[]>(guarded.flatMap((x: { fns: Map<string, string[]> }) => [...x.fns]));
 
 interface Opts {
@@ -24,6 +24,8 @@ interface Opts {
   exposeInternals?: boolean;  // internals LISTED in the elevated OpenAPI (PostgREST lists them whatever EXECUTE says)
   internalRpc?: (fn: string, body: Record<string, unknown>) => Response | "throw"; // what service_role gets when it calls an internal
   schemaVersion?: Response | "throw"; // the external positive-control RPC
+  missingColumns?: Array<[string, string]>;
+  learningReadStatus?: number;
   secretStatus?: number;      // answer to the elevated OpenAPI call
 }
 const json = (status: number, body: unknown, headers?: Record<string, string>) => new Response(JSON.stringify(body), { status, headers });
@@ -37,7 +39,7 @@ function mini(o: Opts = {}) {
       ...allTables.map((t) => [`/${t}`, {}]),
       ...[...allFns.keys()].filter((n) => !n.startsWith("svc__") || o.exposeInternals).map((n) => [`/rpc/${n}`, {}]),
     ].filter(([p]) => !(o.hide ?? []).includes(String(p).replace(/^\/(rpc\/)?/, "")))),
-    definitions: Object.fromEntries([...allFns].map(([n, params]) => [`(rpc) ${n}`, { properties: Object.fromEntries(params.map((p) => [p, {}])) }])),
+    definitions: { ...Object.fromEntries(allTables.map(t => [t, { properties: Object.fromEntries((t === "learn_questions" ? ["id", "figure"] : t === "learn_courses" ? ["id", "elective"] : ["id"]).filter(c => !(o.missingColumns ?? []).some(([table, column]) => table === t && column === c)).map(c => [c, {}])) }])), ...Object.fromEntries([...allFns].map(([n, params]) => [`(rpc) ${n}`, { properties: Object.fromEntries(params.map((p) => [p, {}])) }])) },
   };
   const fetchImpl = (async (url: string, init: { method?: string; headers?: Record<string, string>; body?: string } = {}) => {
     const method = init.method ?? "GET";
@@ -62,6 +64,7 @@ function mini(o: Opts = {}) {
     }
     if (u.pathname.startsWith("/rest/v1/")) {
       const t = u.pathname.split("/").pop()!;
+      if (elevated && t === "learn_questions" && o.learningReadStatus) return json(o.learningReadStatus, { message: "denied" });
       if (elevated) return method === "HEAD" ? new Response(null, { status: 200, headers: { "content-range": "0-0/5" } }) : json(200, []);
       const r = (o.table ?? ((x) => denied(`table ${x}`)))(t);
       if (r === "throw") throw new TypeError("fetch failed");
@@ -109,12 +112,12 @@ describe("db gate with modern Supabase keys", () => {
 });
 
 describe("anonymous denial is proven by direct calls", () => {
-  it("every service-core / entitlement table is called and refused", async () => {
+  it("every learning / service-core / entitlement table is called and refused", async () => {
     const r = await run();
-    const tableCalls = r.calls.filter((c) => c.headers.apikey === PUB && /\/rest\/v1\/(svc_|learn_entitlements)/.test(c.url) && c.method === "GET");
+    const tableCalls = r.calls.filter((c) => c.headers.apikey === PUB && /\/rest\/v1\/(svc_|learn_)/.test(c.url) && c.method === "GET");
     expect(tableCalls.length).toBe(guardedTables.length);
     expect(allTables).toEqual(expect.arrayContaining(["svc_requests", "svc_helpers", "svc_audit", "svc_outbox", "svc_request_sessions", "learn_entitlements"]));
-    expect(r.text).toMatch(/PASS anon cannot read any of the \d+ service-core/);
+    expect(r.text).toMatch(/PASS anon cannot read any of the \d+ learning \/ service-core/);
   });
   it("a table that answers 200 (even an empty array through RLS) is NOT a pass; rows are a failure", async () => {
     for (const body of [[], [{ id: 1 }]]) {
@@ -157,18 +160,18 @@ describe("anonymous denial is proven by direct calls", () => {
     expect((await run({ rpc: (f, b) => (f === "svc_a_assign" ? notFound : denied(`function ${f}`)) })).code).toBe(0); // shape matches the elevated OpenAPI
     // an API function whose OpenAPI parameters differ from what was sent cannot prove anything
     const net = mini({ rpc: (f) => (f === "svc_a_assign" ? notFound : denied(`function ${f}`)) });
-    const wrongShape = async (url: string, init: { method?: string; headers?: Record<string, string>; body?: string }) => (url.endsWith("/rest/v1/") ? json(200, { paths: Object.fromEntries([...allTables.map((t) => [`/${t}`, {}]), ...[...allFns.keys()].filter((n) => !n.startsWith("svc__")).map((n) => [`/rpc/${n}`, {}])]), definitions: {} }) : (net.fetchImpl as unknown as (u: string, i: unknown) => Promise<Response>)(url, init));
+    const wrongShape = async (url: string, init: { method?: string; headers?: Record<string, string>; body?: string }) => (url.endsWith("/rest/v1/") ? json(200, { paths: Object.fromEntries([...allTables.map((t) => [`/${t}`, {}]), ...[...allFns.keys()].filter((n) => !n.startsWith("svc__")).map((n) => [`/rpc/${n}`, {}])]), definitions: { learn_questions: { properties: { figure: {} } }, learn_courses: { properties: { elective: {} } } } }) : (net.fetchImpl as unknown as (u: string, i: unknown) => Promise<Response>)(url, init));
     const r = await runDbGate({ fetchImpl: wrongShape as unknown as typeof fetch, env: env() });
     expect(r.code).toBe(1);
   });
 });
 
 describe("elevated structural inspection", () => {
-  it("reports what is applied and what is pending, and stops at BLOCKED_MIGRATIONS_PENDING (exit 4) before any anonymous test", async () => {
+  it("reports visible and missing API postconditions, and stops at BLOCKED_MIGRATIONS_PENDING (exit 4) before any anonymous test", async () => {
     const r = await run({ hide: ["svc_request_sessions", "svc_c_claim"] });
     expect(r.code).toBe(4);
     expect(r.text).toContain("MIGRATIONS_PENDING = 202610100041_service_request_access.sql");
-    expect(r.text).toContain("MIGRATIONS_ALREADY_APPLIED = 202610070028_learning_korean_study.sql, 202610080029_learning_entitlements.sql, 202610090040_service_core.sql, 202610110042_service_core_internal_rpc_lockdown.sql");
+    expect(r.text).toContain(`MIGRATION_OBJECTS_VISIBLE = ${REQUIRED.filter((f: string) => f !== "202610100041_service_request_access.sql").join(", ")}`);
     expect(r.calls.some((c) => c.headers.apikey === PUB)).toBe(false);
   });
   it("migration 042 is REQUIRED: until its marker is visible the gate reports it pending (exit 4) - even while internals are still exposed", async () => {
@@ -242,8 +245,8 @@ describe("elevated structural inspection", () => {
   it("the elevated key is used for: the schema, the positive controls, the structural reads/counts and the direct internal-execution probes - nothing else", async () => {
     const r = await run();
     const paths = r.calls.filter((c) => c.headers.apikey === SECRET).map((c) => new URL(c.url).pathname);
-    expect(paths.slice(0, 3)).toEqual(["/rest/v1/", "/rest/v1/svc_requests", "/rest/v1/rpc/svc_core_schema_version"]);
-    expect(paths.slice(3).every((p) => /^\/rest\/v1\/rpc\/svc__[a-z_]+$/.test(p))).toBe(true);
+    expect(paths.slice(0, 4)).toEqual(["/rest/v1/", "/rest/v1/svc_requests", "/rest/v1/rpc/svc_core_schema_version", "/rest/v1/learn_questions"]);
+    expect(paths.slice(4).every((p) => /^\/rest\/v1\/rpc\/svc__[a-z_]+$/.test(p))).toBe(true);
     expect(r.text).toContain("positive control: elevated key reads svc_requests");
   });
 
@@ -261,5 +264,53 @@ describe("identity guards are unchanged", () => {
       const r = await runDbGate({ fetchImpl: net.fetchImpl, env: e });
       expect([r.code, net.calls.length]).toEqual([code, 0]);
     }
+  });
+});
+
+
+describe("learning foundation and column postconditions", () => {
+  it("requires the learning foundation and staff table before access probes", async () => {
+    for (const name of ["learn_question_answers", "learn_xp_ledger", "learn_staff_users", "learn_load_content"]) {
+      const r = await run({ hide: [name] });
+      expect(r.code, name).toBe(4);
+      expect(r.text, name).toContain(name);
+      expect(r.calls.some(c => c.headers.apikey === PUB), name).toBe(false);
+    }
+  });
+  it("requires both 043 columns even when the unchanged content RPC name is visible", async () => {
+    for (const [table, column] of [["learn_questions", "figure"], ["learn_courses", "elective"]]) {
+      const r = await run({ missingColumns: [[table, column]] });
+      expect(r.code).toBe(4);
+      expect(r.text).toContain(`${table}.${column}`);
+      expect(r.text).toContain("MIGRATIONS_PENDING = 202610130043_learning_question_figure.sql");
+      expect(r.calls.some(c => c.headers.apikey === PUB)).toBe(false);
+    }
+  });
+  it("does not claim migration history or constraint proof from API visibility", async () => {
+    const r = await run();
+    expect(r.text).toContain("MIGRATION_HISTORY = NOT_VERIFIED");
+    expect(r.text).toContain("CATALOG_REVIEW_REQUIRED");
+    expect(CATALOG_ONLY).toEqual(["202609300023_learning_prereq_shim.sql", "202609300027_learning_elementary_grades.sql"]);
+    expect(r.text).not.toContain("MIGRATIONS_ALREADY_APPLIED");
+  });
+  it("does not require a trigger-returning function in OpenAPI", async () => {
+    expect((await run({ hide: ["learn_enforce_publish_flow"] })).code).toBe(0);
+  });
+  it("fails if answer keys, student history or staff data are readable through the public key", async () => {
+    for (const name of ["learn_question_answers", "learn_xp_ledger", "learn_staff_users", "learn_student_profiles"]) {
+      const r = await run({ table: t => t === name ? json(200, []) : denied(`table ${t}`) });
+      expect(r.code, name).toBe(1);
+      expect(r.text, name).toContain(`${name}: HTTP 200 (access NOT denied)`);
+    }
+  });
+  it("uses zero-row GETs for learning table controls and denials", async () => {
+    const r = await run();
+    const learning = r.calls.filter(c => new URL(c.url).pathname.match(/^\/rest\/v1\/learn_/));
+    expect(learning.filter(c => c.headers.apikey === PUB)).toHaveLength(26);
+    expect(learning.every(c => c.method === "GET" && new URL(c.url).searchParams.get("limit") === "0")).toBe(true);
+    expect(learning.some(c => c.headers.apikey === SECRET && c.url.includes("/learn_questions?"))).toBe(true);
+  });
+  it("a failed elevated learning-table read is a failure, not proof of denial", async () => {
+    expect((await run({ learningReadStatus: 403 })).code).toBe(1);
   });
 });
