@@ -1,11 +1,12 @@
-// Difficulty report for the learning content: per subject and grade, what a student actually meets in the lessons.
+// Difficulty report for the original curriculum, excluding separately generated math and English layers.
 //
 //   node scripts/learn/difficulty-report.mjs [--json out.json] [--compare before.json] [--assert]
 //
-// "Slots" are the lesson positions (4 questions + the challenge) a learner is served; "bank" counts every question of the grade, "diag" the
+// "Slots" are the lesson positions (4 questions + the challenge) a learner is served; "bank" counts original-generator questions of the grade, "diag" the
 // placement questions. reasoning / multistep / context come from the question `tags` (see CONTENT_TAGS in scripts/learn/elementary/lib.mjs).
 // --assert exits non-zero when a graded course misses the structure or coverage targets below (the same targets are enforced by vitest).
 import fs from "node:fs";
+import { isGeneratedLayerId } from "./generated-layers.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -30,11 +31,10 @@ export function summarize() {
     const questions = new Map(); const courses = [];
     for (const set of ["elementary", "demo", "secondary"]) {
       const b = read(`lib/learn/content/${set}/${site}.json`);
-      // the figure-based geometry lessons are a separate layer (scripts/learn/geometry) with their own checks
-      const isGeo = (id) => /^(?:m-(?:[a-z]\d|el)-(?:geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|econ|ai|job|cul|res)\d|math-(?:[a-z]\d|el)-(?:geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|econ|ai|job|cul|res)\d|math-el-|e-[a-z]\d-(?:abc|snd|seq|pun|sum)\d|en-[a-z]\d-(?:abc|snd|seq|pun|sum)\d)/.test(id);
-      b.catalog.courses = b.catalog.courses.filter((c) => !isGeo(c.id));
-      for (const c of b.catalog.courses) for (const u of c.units) u.lessons = u.lessons.filter((l) => !isGeo(l.id));
-      b.questions = b.questions.filter((q) => !isGeo(q.id));
+      // Structure targets describe the original generators; topic layers have separate checks.
+      b.catalog.courses = b.catalog.courses.filter((c) => !isGeneratedLayerId(c.id));
+      for (const c of b.catalog.courses) for (const u of c.units) u.lessons = u.lessons.filter((l) => !isGeneratedLayerId(l.id));
+      b.questions = b.questions.filter((q) => !isGeneratedLayerId(q.id));
       for (const q of b.questions) questions.set(q.id, q);
       courses.push(...b.catalog.courses);
     }

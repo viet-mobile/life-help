@@ -3,7 +3,7 @@ import { checkAnswer, validateResponse } from "@/lib/learn/domain/answers";
 import { ELEMENTARY_GRADES, SCHOOL_SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
 type SchoolSite = (typeof SCHOOL_SITES)[number];
 import mathElementaryAll from "@/lib/learn/content/elementary/math.json";
-import { stripGeometry } from "./withoutGeometry";
+import { stripGeneratedLayers } from "./withoutGeneratedLayers";
 import englishElementaryAll from "@/lib/learn/content/elementary/english.json";
 import viMathAll from "@/lib/learn/content/vi/math.json";
 import viEnglishAll from "@/lib/learn/content/vi/english.json";
@@ -11,12 +11,12 @@ import viEnglishAll from "@/lib/learn/content/vi/english.json";
 import { buildMath } from "../../scripts/learn/elementary/math.mjs";
 import { buildEnglish } from "../../scripts/learn/elementary/english.mjs";
 
-// the geometry layer is generated separately (scripts/learn/geometry) and tested in geometry-semesters.test.ts
-const mathElementary = stripGeometry(mathElementaryAll);
-const viMath = stripGeometry<typeof viMathAll>(viMathAll);
+// Original-generator checks omit generated layers; full content has separate checks.
+const mathElementary = stripGeneratedLayers(mathElementaryAll);
+const viMath = stripGeneratedLayers<typeof viMathAll>(viMathAll);
 // the English topic lessons are generated separately (scripts/learn/topics/english)
-const englishElementary = stripGeometry<typeof englishElementaryAll>(englishElementaryAll);
-const viEnglish = stripGeometry<typeof viEnglishAll>(viEnglishAll);
+const englishElementary = stripGeneratedLayers<typeof englishElementaryAll>(englishElementaryAll);
+const viEnglish = stripGeneratedLayers<typeof viEnglishAll>(viEnglishAll);
 const BUNDLES: Record<SchoolSite, ContentBundle> = { math: mathElementary as unknown as ContentBundle, english: englishElementary as unknown as ContentBundle };
 const HANGUL = /[가-힣]/;
 

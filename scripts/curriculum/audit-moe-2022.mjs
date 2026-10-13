@@ -66,9 +66,11 @@ export function validateMappings(entries, standards, content) {
     seen.add(entry.code);
     fail(['unreviewed', 'gap', 'partial', 'covered'].includes(entry.status), `Invalid mapping status: ${entry.code}`);
     fail(Array.isArray(entry.lesson_ids) && Array.isArray(entry.question_ids), `Missing evidence arrays: ${entry.code}`);
+    fail(new Set(entry.lesson_ids).size === entry.lesson_ids.length && new Set(entry.question_ids).size === entry.question_ids.length, `Duplicate evidence ID: ${entry.code}`);
     fail(entry.lesson_ids.every(id => content.lessons.has(id)), `Unknown evidence lesson: ${entry.code}`);
     fail(entry.question_ids.every(id => content.questions.has(id)), `Unknown evidence question: ${entry.code}`);
     if (['partial', 'covered'].includes(entry.status)) {
+      fail(entry.question_ids.every(id => content.questions.get(id).status === 'PUBLISHED'), `Unpublished evidence question: ${entry.code}`);
       fail(entry.lesson_ids.length > 0 && entry.question_ids.length > 0, `Missing coverage evidence: ${entry.code}`);
       fail(typeof entry.rationale === 'string' && entry.rationale.trim().length > 0, `Missing coverage rationale: ${entry.code}`);
       fail(typeof entry.reviewed_by === 'string' && entry.reviewed_by.trim().length > 0, `Missing reviewer: ${entry.code}`);
