@@ -147,6 +147,26 @@
     "id": "e.e6.read",
     "title": "문단 읽기",
     "prerequisiteId": "e.e6.clause"
+   },
+   {
+    "id": "e.e3.abc1",
+    "title": "알파벳 대문자와 소문자",
+    "prerequisiteId": "e.e3.read"
+   },
+   {
+    "id": "e.e3.snd1",
+    "title": "소리와 철자의 관계",
+    "prerequisiteId": "e.e3.abc1"
+   },
+   {
+    "id": "e.e6.seq1",
+    "title": "일이 일어난 순서 파악하기",
+    "prerequisiteId": "e.e6.read"
+   },
+   {
+    "id": "e.e6.pun1",
+    "title": "대문자와 문장 부호",
+    "prerequisiteId": "e.e6.seq1"
    }
   ],
   "courses": [
@@ -439,6 +459,38 @@
          "e-e3-up-5a"
         ],
         "challengeId": "e-e3-up-5b"
+       },
+       {
+        "id": "en-e3-abc1",
+        "title": "알파벳 대문자와 소문자",
+        "skillIds": [
+         "e.e3.abc1"
+        ],
+        "concept": "알파벳에는 **대문자**와 **소문자**가 있어요. 모양이 다른 짝이 많으니 하나씩 짝을 지어 기억해요. b, d, p, q처럼 비슷한 글자는 특히 조심해요.",
+        "example": "A–a, B–b, D–d, G–g",
+        "questionIds": [
+         "e-e3-abc1-1",
+         "e-e3-abc1-2",
+         "e-e3-abc1-3",
+         "e-e3-abc1-4"
+        ],
+        "challengeId": "e-e3-abc1-c"
+       },
+       {
+        "id": "en-e3-snd1",
+        "title": "소리와 철자의 관계",
+        "skillIds": [
+         "e.e3.snd1"
+        ],
+        "concept": "낱말의 첫소리와 첫 글자는 서로 관계가 있어요. 같은 소리로 시작하는 낱말을 찾으며 소리와 철자의 관계를 익혀요. ph처럼 두 글자가 f 소리를 내기도 해요.",
+        "example": "cat → cup, fish → fan",
+        "questionIds": [
+         "e-e3-snd1-1",
+         "e-e3-snd1-2",
+         "e-e3-snd1-3",
+         "e-e3-snd1-4"
+        ],
+        "challengeId": "e-e3-snd1-c"
        }
       ]
      }
@@ -733,6 +785,38 @@
          "e-e6-up-5a"
         ],
         "challengeId": "e-e6-up-5b"
+       },
+       {
+        "id": "en-e6-seq1",
+        "title": "일이 일어난 순서 파악하기",
+        "skillIds": [
+         "e.e6.seq1"
+        ],
+        "concept": "**First**(먼저), **Then / Next**(그다음), **After that**(그 후에), **Finally**(마지막으로)처럼 순서를 나타내는 말을 찾으면 일이 일어난 순서를 알 수 있어요.",
+        "example": "First, I wake up. Then I eat breakfast. Finally, I go to school.",
+        "questionIds": [
+         "e-e6-seq1-1",
+         "e-e6-seq1-2",
+         "e-e6-seq1-3",
+         "e-e6-seq1-4"
+        ],
+        "challengeId": "e-e6-seq1-c"
+       },
+       {
+        "id": "en-e6-pun1",
+        "title": "대문자와 문장 부호",
+        "skillIds": [
+         "e.e6.pun1"
+        ],
+        "concept": "문장은 **대문자**로 시작하고 끝에는 알맞은 **문장 부호**를 써요. 보통 문장은 마침표(.), 질문은 물음표(?), 놀람이나 강한 느낌은 느낌표(!)를 써요. 사람 이름과 I는 항상 대문자예요.",
+        "example": "Is this your bag? Yes, it is.",
+        "questionIds": [
+         "e-e6-pun1-1",
+         "e-e6-pun1-2",
+         "e-e6-pun1-3",
+         "e-e6-pun1-4"
+        ],
+        "challengeId": "e-e6-pun1-c"
        }
       ]
      }
@@ -13160,6 +13244,1182 @@
     "reading",
     "vocab",
     "reasoning"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-1",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "대문자 B의 소문자는 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "d"
+    },
+    {
+     "id": "b",
+     "text": "p"
+    },
+    {
+     "id": "c",
+     "text": "q"
+    },
+    {
+     "id": "d",
+     "text": "b"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "대문자와 소문자의 짝을 떠올려 보세요.",
+    "b, d, p, q처럼 비슷하게 생긴 글자를 조심해요."
+   ],
+   "explanation": "대문자 B의 소문자는 b예요.",
+   "role": "core",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-2",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "대문자 G의 소문자는 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "g"
+    },
+    {
+     "id": "b",
+     "text": "q"
+    },
+    {
+     "id": "c",
+     "text": "y"
+    },
+    {
+     "id": "d",
+     "text": "j"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "대문자와 소문자의 짝을 떠올려 보세요.",
+    "b, d, p, q처럼 비슷하게 생긴 글자를 조심해요."
+   ],
+   "explanation": "대문자 G의 소문자는 g예요.",
+   "role": "core",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-3",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "소문자 e의 대문자는 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "L"
+    },
+    {
+     "id": "b",
+     "text": "E"
+    },
+    {
+     "id": "c",
+     "text": "F"
+    },
+    {
+     "id": "d",
+     "text": "B"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "대문자와 소문자의 짝을 떠올려 보세요.",
+    "소문자의 모양을 크게 쓴다고 생각해 보세요."
+   ],
+   "explanation": "소문자 e의 대문자는 E예요.",
+   "role": "core",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-4",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "소문자 h의 대문자는 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "M"
+    },
+    {
+     "id": "b",
+     "text": "K"
+    },
+    {
+     "id": "c",
+     "text": "H"
+    },
+    {
+     "id": "d",
+     "text": "N"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "대문자와 소문자의 짝을 떠올려 보세요.",
+    "소문자의 모양을 크게 쓴다고 생각해 보세요."
+   ],
+   "explanation": "소문자 h의 대문자는 H예요.",
+   "role": "core",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-c",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 소문자의 짝이 맞는 것을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "Dp"
+    },
+    {
+     "id": "b",
+     "text": "Gg"
+    },
+    {
+     "id": "c",
+     "text": "Bd"
+    },
+    {
+     "id": "d",
+     "text": "Pq"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "각 짝에서 앞은 대문자, 뒤는 소문자예요.",
+    "소문자가 대문자와 같은 글자인지 하나씩 확인해요."
+   ],
+   "explanation": "Gg는 대문자와 소문자가 같은 글자의 짝이에요.",
+   "role": "core",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-v1",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "대문자 P의 소문자는 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "d"
+    },
+    {
+     "id": "b",
+     "text": "p"
+    },
+    {
+     "id": "c",
+     "text": "q"
+    },
+    {
+     "id": "d",
+     "text": "b"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "대문자와 소문자의 짝을 떠올려 보세요.",
+    "b, d, p, q처럼 비슷하게 생긴 글자를 조심해요."
+   ],
+   "explanation": "대문자 P의 소문자는 p예요.",
+   "role": "variant",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-abc1-v2",
+   "site": "english",
+   "skillId": "e.e3.abc1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "소문자 k의 대문자는 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "X"
+    },
+    {
+     "id": "b",
+     "text": "R"
+    },
+    {
+     "id": "c",
+     "text": "K"
+    },
+    {
+     "id": "d",
+     "text": "H"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "대문자와 소문자의 짝을 떠올려 보세요.",
+    "소문자의 모양을 크게 쓴다고 생각해 보세요."
+   ],
+   "explanation": "소문자 k의 대문자는 K예요.",
+   "role": "variant",
+   "family": "e3-abc1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-1",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "'cat'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "cup"
+    },
+    {
+     "id": "b",
+     "text": "hat"
+    },
+    {
+     "id": "c",
+     "text": "bus"
+    },
+    {
+     "id": "d",
+     "text": "pen"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "'cat'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'cat'와 'cup'는 모두 /k/ 소리로 시작해요.",
+   "role": "core",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-2",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "'dog'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "pig"
+    },
+    {
+     "id": "b",
+     "text": "desk"
+    },
+    {
+     "id": "c",
+     "text": "gift"
+    },
+    {
+     "id": "d",
+     "text": "tree"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "'dog'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'dog'와 'desk'는 모두 /d/ 소리로 시작해요.",
+   "role": "core",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-3",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "'sun'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "top"
+    },
+    {
+     "id": "b",
+     "text": "fox"
+    },
+    {
+     "id": "c",
+     "text": "sit"
+    },
+    {
+     "id": "d",
+     "text": "man"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "'sun'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'sun'와 'sit'는 모두 /s/ 소리로 시작해요.",
+   "role": "core",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-4",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "'fish'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "sun"
+    },
+    {
+     "id": "b",
+     "text": "pig"
+    },
+    {
+     "id": "c",
+     "text": "bed"
+    },
+    {
+     "id": "d",
+     "text": "fan"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "'fish'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'fish'와 'fan'는 모두 /f/ 소리로 시작해요.",
+   "role": "core",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-c",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "'phone'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "pig"
+    },
+    {
+     "id": "b",
+     "text": "bag"
+    },
+    {
+     "id": "c",
+     "text": "fish"
+    },
+    {
+     "id": "d",
+     "text": "pen"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "'phone'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'phone'와 'fish'는 모두 /f/ 소리로 시작해요.",
+   "role": "core",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-v1",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "'knee'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "nose"
+    },
+    {
+     "id": "b",
+     "text": "key"
+    },
+    {
+     "id": "c",
+     "text": "kite"
+    },
+    {
+     "id": "d",
+     "text": "bat"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "'knee'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'knee'와 'nose'는 모두 /n/ 소리로 시작해요.",
+   "role": "variant",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e3-snd1-v2",
+   "site": "english",
+   "skillId": "e.e3.snd1",
+   "type": "multiple_choice",
+   "difficulty": 1,
+   "prompt": "'bed'와 같은 소리로 시작하는 낱말은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "fish"
+    },
+    {
+     "id": "b",
+     "text": "ball"
+    },
+    {
+     "id": "c",
+     "text": "duck"
+    },
+    {
+     "id": "d",
+     "text": "pen"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "'bed'의 첫소리를 소리 내어 말해 보세요.",
+    "같은 소리로 시작하는 낱말을 찾아요. 첫 글자가 서로 다를 수도 있어요."
+   ],
+   "explanation": "'bed'와 'ball'는 모두 /b/ 소리로 시작해요.",
+   "role": "variant",
+   "family": "e3-snd1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-1",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 글을 읽고, 가장 먼저 일어난 일을 고르세요.\n\n\"First, Mina wakes up at seven. Then she brushes her teeth. Next, she eats breakfast. Finally, she goes to school.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "brushes her teeth"
+    },
+    {
+     "id": "b",
+     "text": "eats breakfast"
+    },
+    {
+     "id": "c",
+     "text": "goes to school"
+    },
+    {
+     "id": "d",
+     "text": "wakes up at seven"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "First, Then, Next, Finally처럼 순서를 나타내는 말을 찾아요.",
+    "First가 있는 문장에서 일어난 일이 가장 먼저예요."
+   ],
+   "explanation": "글에서 First 다음에 나오는 'wakes up at seven'가 가장 먼저 일어난 일이에요.",
+   "role": "core",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-2",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 글을 읽고, 가장 마지막에 일어난 일을 고르세요.\n\n\"First, Mina wakes up at seven. Then she brushes her teeth. Next, she eats breakfast. Finally, she goes to school.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "wakes up at seven"
+    },
+    {
+     "id": "b",
+     "text": "brushes her teeth"
+    },
+    {
+     "id": "c",
+     "text": "eats breakfast"
+    },
+    {
+     "id": "d",
+     "text": "goes to school"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "First, Then, Next, Finally처럼 순서를 나타내는 말을 찾아요.",
+    "Finally가 있는 문장에서 일어난 일이 가장 마지막이에요."
+   ],
+   "explanation": "글에서 Finally 다음에 나오는 'goes to school'가 가장 마지막에 일어난 일이에요.",
+   "role": "core",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-3",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 글을 읽고, 'mixes them in a bowl' 바로 다음에 일어난 일을 고르세요.\n\n\"First, Jun takes out the flour and eggs. Then he mixes them in a bowl. Next, he bakes the cake in the oven. Finally, he puts cream on the cake.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "puts cream on the cake"
+    },
+    {
+     "id": "b",
+     "text": "takes out the flour and eggs"
+    },
+    {
+     "id": "c",
+     "text": "mixes them in a bowl"
+    },
+    {
+     "id": "d",
+     "text": "bakes the cake in the oven"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "글에서 'mixes them in a bowl'가 나오는 문장을 먼저 찾아요.",
+    "그 문장 바로 다음 문장에서 일어난 일을 찾아요."
+   ],
+   "explanation": "'mixes them in a bowl' 바로 다음에는 'bakes the cake in the oven'가 일어나요.",
+   "role": "core",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-4",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 글을 읽고, 가장 먼저 일어난 일을 고르세요.\n\n\"First, Jun takes out the flour and eggs. Then he mixes them in a bowl. Next, he bakes the cake in the oven. Finally, he puts cream on the cake.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "bakes the cake in the oven"
+    },
+    {
+     "id": "b",
+     "text": "puts cream on the cake"
+    },
+    {
+     "id": "c",
+     "text": "takes out the flour and eggs"
+    },
+    {
+     "id": "d",
+     "text": "mixes them in a bowl"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "First, Then, Next, Finally처럼 순서를 나타내는 말을 찾아요.",
+    "First가 있는 문장에서 일어난 일이 가장 먼저예요."
+   ],
+   "explanation": "글에서 First 다음에 나오는 'takes out the flour and eggs'가 가장 먼저 일어난 일이에요.",
+   "role": "core",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-c",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 읽고, 'played soccer with his friends' 바로 다음에 일어난 일을 고르세요.\n\n\"Sam went to the park after lunch. First, he played soccer with his friends. After that, he rode his bike. Finally, he drank some water and went home.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "went to the park"
+    },
+    {
+     "id": "b",
+     "text": "played soccer with his friends"
+    },
+    {
+     "id": "c",
+     "text": "rode his bike"
+    },
+    {
+     "id": "d",
+     "text": "drank some water"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "글에서 'played soccer with his friends'가 나오는 문장을 먼저 찾아요.",
+    "그 문장 바로 다음 문장에서 일어난 일을 찾아요."
+   ],
+   "explanation": "'played soccer with his friends' 바로 다음에는 'rode his bike'가 일어나요.",
+   "role": "core",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-v1",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 글을 읽고, 가장 마지막에 일어난 일을 고르세요.\n\n\"First, Jun takes out the flour and eggs. Then he mixes them in a bowl. Next, he bakes the cake in the oven. Finally, he puts cream on the cake.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "puts cream on the cake"
+    },
+    {
+     "id": "b",
+     "text": "takes out the flour and eggs"
+    },
+    {
+     "id": "c",
+     "text": "mixes them in a bowl"
+    },
+    {
+     "id": "d",
+     "text": "bakes the cake in the oven"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "First, Then, Next, Finally처럼 순서를 나타내는 말을 찾아요.",
+    "Finally가 있는 문장에서 일어난 일이 가장 마지막이에요."
+   ],
+   "explanation": "글에서 Finally 다음에 나오는 'puts cream on the cake'가 가장 마지막에 일어난 일이에요.",
+   "role": "variant",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-seq1-v2",
+   "site": "english",
+   "skillId": "e.e6.seq1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "다음 글을 읽고, 'brushes her teeth' 바로 다음에 일어난 일을 고르세요.\n\n\"First, Mina wakes up at seven. Then she brushes her teeth. Next, she eats breakfast. Finally, she goes to school.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "eats breakfast"
+    },
+    {
+     "id": "b",
+     "text": "goes to school"
+    },
+    {
+     "id": "c",
+     "text": "wakes up at seven"
+    },
+    {
+     "id": "d",
+     "text": "brushes her teeth"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "글에서 'brushes her teeth'가 나오는 문장을 먼저 찾아요.",
+    "그 문장 바로 다음 문장에서 일어난 일을 찾아요."
+   ],
+   "explanation": "'brushes her teeth' 바로 다음에는 'eats breakfast'가 일어나요.",
+   "role": "variant",
+   "family": "e6-seq1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-1",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "My name is Tom"
+    },
+    {
+     "id": "b",
+     "text": "My name is Tom."
+    },
+    {
+     "id": "c",
+     "text": "my name is Tom."
+    },
+    {
+     "id": "d",
+     "text": "My name is tom."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'My name is Tom.'예요.",
+   "role": "core",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-2",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "Where do you live?"
+    },
+    {
+     "id": "b",
+     "text": "Where do you live"
+    },
+    {
+     "id": "c",
+     "text": "where do you live?"
+    },
+    {
+     "id": "d",
+     "text": "Where do you live."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'Where do you live?'예요.",
+   "role": "core",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-3",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "i like apples, oranges, and bananas."
+    },
+    {
+     "id": "b",
+     "text": "I like apples oranges and bananas"
+    },
+    {
+     "id": "c",
+     "text": "I like apples, oranges, and bananas?"
+    },
+    {
+     "id": "d",
+     "text": "I like apples, oranges, and bananas."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'I like apples, oranges, and bananas.'예요.",
+   "role": "core",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-4",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "What a beautiful day."
+    },
+    {
+     "id": "b",
+     "text": "what a beautiful day!"
+    },
+    {
+     "id": "c",
+     "text": "What a beautiful day!"
+    },
+    {
+     "id": "d",
+     "text": "What a beautiful day?"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'What a beautiful day!'예요.",
+   "role": "core",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-c",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "Can anna and I play soccer today?"
+    },
+    {
+     "id": "b",
+     "text": "Can Anna and I play soccer today."
+    },
+    {
+     "id": "c",
+     "text": "Can Anna and I play soccer today?"
+    },
+    {
+     "id": "d",
+     "text": "can Anna and i play soccer today?"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'Can Anna and I play soccer today?'예요.",
+   "role": "core",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-v1",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "she is my sister."
+    },
+    {
+     "id": "b",
+     "text": "She is my Sister"
+    },
+    {
+     "id": "c",
+     "text": "She is my sister?"
+    },
+    {
+     "id": "d",
+     "text": "She is my sister."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'She is my sister.'예요.",
+   "role": "variant",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-e6-pun1-v2",
+   "site": "english",
+   "skillId": "e.e6.pun1",
+   "type": "multiple_choice",
+   "difficulty": 2,
+   "prompt": "대문자와 문장 부호를 바르게 쓴 문장을 고르세요.",
+   "options": [
+    {
+     "id": "a",
+     "text": "How old are you."
+    },
+    {
+     "id": "b",
+     "text": "how old are you?"
+    },
+    {
+     "id": "c",
+     "text": "How old are you?"
+    },
+    {
+     "id": "d",
+     "text": "How Old are you"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "문장의 첫 글자와 사람 이름, 그리고 I는 대문자로 써요.",
+    "문장의 끝에는 종류에 맞는 부호(. ? !)를 써요."
+   ],
+   "explanation": "바르게 쓴 문장은 'How old are you?'예요.",
+   "role": "variant",
+   "family": "e6-pun1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
    ],
    "status": "PUBLISHED"
   }

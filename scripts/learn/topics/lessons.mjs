@@ -8,6 +8,8 @@ const tf = (t, v, ans, fig, o = {}) => ({ k: "tf", t, v, ans, fig, ...o });
 const c = { challenge: true }, vr = { variant: true };
 const tol = (x = 0.001) => ({ tol: x });
 
+const MAT1 = "$A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix},\\ B=\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$";
+const MAT2 = "$A=\\begin{pmatrix}1&0\\\\2&3\\end{pmatrix},\\ B=\\begin{pmatrix}4&1\\\\0&2\\end{pmatrix}$";
 const LINE1 = [["1", 12], ["2", 15], ["3", 20], ["4", 18]];
 const LINE2 = [["1", 30], ["2", 34], ["3", 28], ["4", 40]];
 
@@ -286,6 +288,60 @@ export const LESSONS = [
     tf("ethicsTF", { desc: "#et_fake", reason: "#et_fake_r" }, false, null, vr),
     tf("ethicsTF", { desc: "#et_cite", reason: "#et_cite_r" }, true, null, vr),
   ] },
+  { grade: "H1", topic: "mat", n: 1, items: [
+    num("matEntry", { mats: MAT1, expr: "$A+B$", r: 2, c: 2, steps: "$4+3$" }, 7),
+    num("matEntry", { mats: MAT1, expr: "$A-B$", r: 1, c: 1, steps: "$1-2$" }, -1),
+    num("matEntry", { mats: MAT1, expr: "$AB$", r: 1, c: 1, steps: "$1\\times2+2\\times1$" }, 4),
+    num("matEntry", { mats: MAT1, expr: "$AB$", r: 2, c: 2, steps: "$3\\times0+4\\times3$" }, 12),
+    num("matEntry", { mats: MAT2, expr: "$3A-B$", r: 2, c: 2, steps: "$3\\times3-2$" }, 7, null, c),
+    num("matEntry", { mats: MAT1, expr: "$AB$", r: 1, c: 2, steps: "$1\\times0+2\\times3$" }, 6, null, vr),
+    num("matEntry", { mats: MAT2, expr: "$AB$", r: 2, c: 1, steps: "$2\\times4+3\\times0$" }, 8, null, vr),
+  ] },
+  { grade: "H1", topic: "set", n: 1, items: [
+    num("setCount", { na: 10, nb: 8, nab: 3 }, 15),
+    num("subsetCount", { n: 3, prod: "$2^3$" }, 8),
+    num("setOp", { sets: "$A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$", expr: "$A\\cap B$", steps: "$A\\cap B=\\{3,4\\}$" }, 2),
+    tf("logicTF", { desc: "#lg_contra", reason: "#lg_contra_r" }, true),
+    num("setOp", { sets: "$A=\\{2,4,6,8\\},\\ B=\\{4,8,12\\}$", expr: "$A\\cup B$", steps: "$A\\cup B=\\{2,4,6,8,12\\}$" }, 5, null, c),
+    num("subsetCount", { n: 5, prod: "$2^5$" }, 32, null, vr),
+    tf("logicTF", { desc: "#lg_conv", reason: "#lg_conv_r" }, false, null, vr),
+  ] },
+  { grade: "H1", topic: "fnc", n: 1, items: [
+    num("composite", { f: "2x+1", g: "x^2", comp: "$(g\\circ f)(2)$", steps: "$f(2)=5,\\ g(5)=25$" }, 25),
+    num("composite", { f: "2x+1", g: "x^2", comp: "$(f\\circ g)(2)$", steps: "$g(2)=4,\\ f(4)=9$" }, 9),
+    num("inverseVal", { f: "2x+1", y: 7, steps: "$2x+1=7$, $x=3$" }, 3),
+    num("inverseVal", { f: "3x-5", y: 7, steps: "$3x-5=7$, $x=4$" }, 4),
+    num("composite", { f: "x^2+1", g: "2x-3", comp: "$(g\\circ f)(2)$", steps: "$f(2)=5,\\ g(5)=7$" }, 7, null, c),
+    num("inverseVal", { f: "4x-3", y: 9, steps: "$4x-3=9$, $x=3$" }, 3, null, vr),
+    num("composite", { f: "x-1", g: "x^2", comp: "$(g\\circ f)(4)$", steps: "$f(4)=3,\\ g(3)=9$" }, 9, null, vr),
+  ] },
+  { grade: "H1", topic: "pol", n: 1, items: [
+    num("rootMax", { eq: "$x^3-7x+6=0$", fact: "$(x-1)(x-2)(x+3)=0$", roots: "$1,\\ 2,\\ -3$" }, 2),
+    num("rootSum", { eq: "$x^3-x^2-4x+4=0$", fact: "$(x-1)(x-2)(x+2)=0$", roots: "$1,\\ 2,\\ -2$" }, 1),
+    num("rootCount", { eq: "$x^4-5x^2+4=0$", fact: "$(x^2-1)(x^2-4)=0$", roots: "$\\pm1,\\ \\pm2$" }, 4),
+    num("rootCount", { eq: "$x^3-8=0$", fact: "$(x-2)(x^2+2x+4)=0,\\ D<0$", roots: "$2$" }, 1),
+    num("rootMax", { eq: "$x^4-10x^2+9=0$", fact: "$(x^2-1)(x^2-9)=0$", roots: "$\\pm1,\\ \\pm3$" }, 3, null, c),
+    num("rootSum", { eq: "$x^3-6x^2+11x-6=0$", fact: "$(x-1)(x-2)(x-3)=0$", roots: "$1,\\ 2,\\ 3$" }, 6, null, vr),
+    num("rootCount", { eq: "$x^3+x=0$", fact: "$x(x^2+1)=0,\\ D<0$", roots: "$0$" }, 1, null, vr),
+  ] },
+  { grade: "H3", topic: "cal", n: 1, items: [
+    num("derivVal", { f: "e^{2x}", a: 0, steps: "$f'(x)=2e^{2x},\\ f'(0)=2$" }, 2),
+    num("derivVal", { f: "\\ln(x^2+1)", a: 1, steps: "$f'(x)=\\frac{2x}{x^2+1},\\ f'(1)=1$" }, 1),
+    num("derivVal", { f: "\\sin 3x", a: 0, steps: "$f'(x)=3\\cos 3x,\\ f'(0)=3$" }, 3),
+    num("derivVal", { f: "\\frac{x}{x+1}", a: 1, steps: "$f'(x)=\\frac{1}{(x+1)^2},\\ f'(1)=\\frac{1}{4}=0.25$" }, 0.25, null, tol()),
+    num("derivVal", { f: "(2x+1)^3", a: 0, steps: "$f'(x)=6(2x+1)^2,\\ f'(0)=6$" }, 6, null, c),
+    num("derivVal", { f: "xe^x", a: 0, steps: "$f'(x)=e^x+xe^x,\\ f'(0)=1$" }, 1, null, vr),
+    num("derivVal", { f: "\\cos 2x", a: "\\frac{\\pi}{4}", steps: "$f'(x)=-2\\sin 2x,\\ f'(\\frac{\\pi}{4})=-2$" }, -2, null, vr),
+  ] },
+  { grade: "H3", topic: "cnt", n: 1, items: [
+    num("repPerm", { n: 3, r: 4, prod: "3×3×3×3" }, 81),
+    num("permSame", { word: "aabbc", calc: "5!÷(2!×2!)=120÷4" }, 30),
+    num("repComb", { n: 3, r: 4, calc: "$_3H_4=\\,_6C_4$" }, 15),
+    num("binomCoef", { n: 5, k: 2, calc: "$_5C_2$" }, 10),
+    num("permSame", { word: "banana", calc: "6!÷(3!×2!)=720÷12" }, 60, null, c),
+    num("repPerm", { n: 2, r: 5, prod: "2×2×2×2×2" }, 32, null, vr),
+    num("binomCoef", { n: 6, k: 3, calc: "$_6C_3$" }, 20, null, vr),
+  ] },
 ];
 
 export const COURSES = {
@@ -329,4 +385,10 @@ export const LESSON_TEXT = {
   M3sta1: { ko: { title: "분산과 표준편차", concept: "**편차**=(변량)−(평균)이에요. **분산**은 편차의 제곱의 평균이고, **표준편차**는 분산의 양의 제곱근이에요. 값이 클수록 자료가 평균에서 멀리 흩어져 있어요.", example: "2, 4, 6, 8 → 평균 5, 분산 5" }, en: { title: "Variance and standard deviation", concept: "The **deviation** is (value) − (mean). The **variance** is the mean of the squared deviations and the **standard deviation** is its positive square root. The larger it is, the more spread out the data are.", example: "2, 4, 6, 8 → mean 5, variance 5" } },
   H2seq1: { ko: { title: "수열의 합과 ∑", concept: "$\\sum_{k=1}^{n} a_k$는 $a_1+a_2+\\cdots+a_n$을 뜻해요. $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$, $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$예요.", example: "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$" }, en: { title: "Sums of sequences and ∑", concept: "$\\sum_{k=1}^{n} a_k$ means $a_1+a_2+\\cdots+a_n$. Useful rules: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ and $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.", example: "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$" } },
   H3pro1: { ko: { title: "확률의 덧셈정리와 여사건", concept: "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$예요. 여사건의 확률은 $P(A^c)=1-P(A)$예요.", example: "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$" }, en: { title: "The addition rule and complements", concept: "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. The probability of the complement is $P(A^c)=1-P(A)$.", example: "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$" } },
+  H1mat1: { ko: { title: "행렬의 뜻과 연산", concept: "**행렬**은 수를 직사각형 모양으로 배열한 것이에요. 덧셈·뺄셈·실수배는 같은 위치의 성분끼리 계산하고, 곱 $AB$의 (i, j) 성분은 $A$의 i행과 $B$의 j열의 성분을 차례로 곱해 더한 값이에요.", example: "$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$의 (1, 1) 성분 $=1\\times2+2\\times1=4$" }, en: { title: "Matrices and their operations", concept: "A **matrix** is a rectangular arrangement of numbers. Addition, subtraction and scalar multiples work entry by entry; the (i, j) entry of a product $AB$ is the sum of the products of row i of $A$ and column j of $B$, taken in order.", example: "The (1, 1) entry of $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ is $1\\times2+2\\times1=4$" } },
+  H1set1: { ko: { title: "집합과 명제", concept: "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$이고, 원소가 n개인 집합의 부분집합은 $2^n$개예요. 명제 'p이면 q이다'의 대우는 원래 명제와 참, 거짓이 같지만 역은 그렇지 않을 수 있어요.", example: "$A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$이면 $A\\cap B=\\{3,4\\}$, $A\\cup B=\\{1,2,3,4,5\\}$" }, en: { title: "Sets and propositions", concept: "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, and a set with n elements has $2^n$ subsets. The contrapositive of “if p then q” always has the same truth value as the statement, but the converse may not.", example: "If $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ then $A\\cap B=\\{3,4\\}$ and $A\\cup B=\\{1,2,3,4,5\\}$" } },
+  H1fnc1: { ko: { title: "합성함수와 역함수", concept: "합성함수 $(g\\circ f)(x)=g(f(x))$는 안쪽 함수부터 계산해요. 역함수는 $f(x)=y$일 때 $f^{-1}(y)=x$인 함수예요.", example: "$f(x)=2x+1,\\ g(x)=x^2$이면 $(g\\circ f)(2)=g(5)=25$" }, en: { title: "Composite and inverse functions", concept: "The composite $(g\\circ f)(x)=g(f(x))$ is worked from the inner function outwards. The inverse function satisfies $f^{-1}(y)=x$ whenever $f(x)=y$.", example: "If $f(x)=2x+1$ and $g(x)=x^2$, then $(g\\circ f)(2)=g(5)=25$" } },
+  H1pol1: { ko: { title: "인수분해와 삼·사차방정식", concept: "삼차·사차방정식은 조립제법이나 치환을 이용해 **인수분해**한 뒤, 각 인수가 0이 되는 값을 구해 풀어요. 이차 인수는 판별식으로 실근이 있는지 확인해요.", example: "$x^3-7x+6=(x-1)(x-2)(x+3)=0$이면 $x=1,\\ 2,\\ -3$" }, en: { title: "Factorising and solving cubic and quartic equations", concept: "Solve a cubic or quartic equation by **factorising** it (synthetic division or a substitution helps) and finding the values that make each factor zero. Check a quadratic factor with its discriminant.", example: "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ gives $x=1,\\ 2,\\ -3$" } },
+  H3cal1: { ko: { title: "여러 가지 함수의 미분", concept: "합성함수는 (겉함수의 미분)×(속함수의 미분), 몫은 $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$로 미분해요. $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$, $(\\cos x)'=-\\sin x$예요.", example: "$f(x)=e^{2x}$이면 $f'(x)=2e^{2x}$, $f'(0)=2$" }, en: { title: "Differentiating exponential, logarithmic and trigonometric functions", concept: "Differentiate a composite function as (derivative of the outer function)×(derivative of the inner function), and a quotient with $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Also $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ and $(\\cos x)'=-\\sin x$.", example: "If $f(x)=e^{2x}$ then $f'(x)=2e^{2x}$ and $f'(0)=2$" } },
+  H3cnt1: { ko: { title: "중복순열·중복조합과 이항정리", concept: "중복을 허락하여 일렬로 나열하는 **중복순열**의 수는 (가짓수)를 (자리 수)번 곱한 값이에요. 같은 것이 있는 순열은 전체의 팩토리얼을 같은 것의 팩토리얼로 나누고, **중복조합**은 $_nH_r={}_{n+r-1}C_r$예요. $(x+1)^n$에서 $x^k$의 계수는 $_nC_k$예요.", example: "aabbc를 나열하는 방법은 $5!\\div(2!\\times2!)=30$가지" }, en: { title: "Permutations and combinations with repetition, and the binomial theorem", concept: "The number of arrangements **with repetition** is the number of choices multiplied by itself once per place. With repeated items, divide the factorial of the total by the factorial of each repeat count; **combinations with repetition** give $_nH_r={}_{n+r-1}C_r$. In $(x+1)^n$ the coefficient of $x^k$ is $_nC_k$.", example: "The letters aabbc can be arranged in $5!\\div(2!\\times2!)=30$ ways" } },
 };

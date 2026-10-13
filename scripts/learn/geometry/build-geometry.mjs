@@ -112,7 +112,7 @@ const write = (rel, text, oldRaw) => {
 };
 // The data / number / elective layer (scripts/learn/topics) is generated after this one and appends to the same files: geometry entries
 // are inserted BEFORE its entries so that either builder can be re-run (or checked) in any order and the files stay identical.
-const TOPIC_ID = /^(?:m-(?:[a-z]\d|el)-|m\.(?:[a-z]\d|el)\.|math-(?:[a-z]\d|el)-)(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|econ|ai|job|cul|res)\d|^math-el-/;
+const TOPIC_ID = /^(?:m-(?:[a-z]\d|el)-|m\.(?:[a-z]\d|el)\.|math-(?:[a-z]\d|el)-)(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|econ|ai|job|cul|res)\d|^math-el-/;
 const addBeforeTopics = (arr, items, idOf) => { const at = arr.findIndex((x) => TOPIC_ID.test(idOf(x))); arr.splice(at < 0 ? arr.length : at, 0, ...items); };
 const addKeysBeforeTopics = (obj, entries) => {
   const out = {}, add = () => { for (const [k, v] of entries) out[k] = v; };

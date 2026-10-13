@@ -9,17 +9,17 @@ import { semesterOf } from "@/lib/learn/content/semesters";
 const root = process.cwd();
 const read = (rel: string) => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
 const math = ["elementary", "demo", "secondary"].map((f) => read(`lib/learn/content/${f}/math.json`) as ContentBundle);
-const TOPIC_Q = /^m-(?:[a-z]\d|el)-(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|econ|ai|job|cul|res)\d/;
+const TOPIC_Q = /^m-(?:[a-z]\d|el)-(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|econ|ai|job|cul|res)\d/;
 const questions = math.flatMap((b) => b.questions).filter((q) => TOPIC_Q.test(q.id));
 const courses = math.flatMap((b) => b.catalog.courses);
 const ELECTIVES = ["econ", "ai", "job", "cul", "sta", "res"];
 
 describe("data / number / elective topic lessons", () => {
-  it("30 lessons, 210 questions; each lesson has 4 core questions and a challenge that exist", () => {
-    expect(questions.length).toBe(210);
-    expect(new Set(questions.map((q) => q.id)).size).toBe(210);
-    const lessons = courses.flatMap((c) => c.units.flatMap((u) => u.lessons)).filter((l) => /^math-(?:[a-z]\d|el)-(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|econ|ai|job|cul|res)\d$/.test(l.id));
-    expect(lessons.length).toBe(30);
+  it("36 lessons, 252 questions; each lesson has 4 core questions and a challenge that exist", () => {
+    expect(questions.length).toBe(252);
+    expect(new Set(questions.map((q) => q.id)).size).toBe(252);
+    const lessons = courses.flatMap((c) => c.units.flatMap((u) => u.lessons)).filter((l) => /^math-(?:[a-z]\d|el)-(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|econ|ai|job|cul|res)\d$/.test(l.id));
+    expect(lessons.length).toBe(36);
     for (const l of lessons) {
       expect(l.questionIds.length, l.id).toBe(4);
       for (const id of [...l.questionIds, l.challengeId!]) expect(questions.some((q) => q.id === id), id).toBe(true);

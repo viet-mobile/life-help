@@ -1,0 +1,103 @@
+{
+  "q": {
+    "capToLow": {
+      "prompt": "{up} büyük harfinin küçük harfi hangisidir?",
+      "hints": [
+        "Büyük ve küçük harfleri çiftler olarak düşün.",
+        "b, d, p ve q gibi birbirine benzeyen harflere dikkat et."
+      ],
+      "expl": "{up} harfinin küçük harfi {ans} harfidir."
+    },
+    "lowToCap": {
+      "prompt": "{low} küçük harfinin büyük harfi hangisidir?",
+      "hints": [
+        "Büyük ve küçük harfleri çiftler olarak düşün.",
+        "Küçük harfi büyük ve uzun yazdığını hayal et."
+      ],
+      "expl": "{low} harfinin büyük harfi {ans} harfidir."
+    },
+    "pairPick": {
+      "prompt": "Büyük ve küçük harflerin birbirine uyduğu çifti seç.",
+      "hints": [
+        "Her çiftte ilk harf büyük, ikinci harf küçüktür.",
+        "Küçük harfin büyük harfle aynı harf olup olmadığını tek tek kontrol et."
+      ],
+      "expl": "{ans}, büyük ve küçük harfin doğru eşleştiği bir çifttir."
+    },
+    "sameStart": {
+      "prompt": "Hangi kelime “{word}” ile aynı sesle başlar?",
+      "hints": [
+        "“{word}” kelimesinin ilk sesini yüksek sesle söyle.",
+        "Aynı sesle başlayan bir kelime ara. İlk harfler farklı olabilir."
+      ],
+      "expl": "“{word}” ve “{ans}” kelimelerinin ikisi de {sound} sesiyle başlar."
+    },
+    "storyFirst": {
+      "prompt": "Parçayı oku ve ilk olarak neyin olduğunu seç.\n\n\"{text}\"",
+      "hints": [
+        "First, Then, Next ve Finally gibi sırayı gösteren sözcükleri ara.",
+        "First olan cümlede anlatılan olay ilk olarak olur."
+      ],
+      "expl": "“{ans}” parçada First sözcüğünden sonra geliyor, bu yüzden ilk olarak o oldu."
+    },
+    "storyLast": {
+      "prompt": "Parçayı oku ve en son neyin olduğunu seç.\n\n\"{text}\"",
+      "hints": [
+        "First, Then, Next ve Finally gibi sırayı gösteren sözcükleri ara.",
+        "Finally olan cümlede anlatılan olay en son olur."
+      ],
+      "expl": "“{ans}” parçada Finally sözcüğünden sonra geliyor, bu yüzden en son o oldu."
+    },
+    "storyAfter": {
+      "prompt": "Parçayı oku ve '{event}' olayından hemen sonra neyin olduğunu seç.\n\n\"{text}\"",
+      "hints": [
+        "Önce parçada “{event}” olan cümleyi bul.",
+        "Sonra hemen bir sonraki cümlede neyin olduğuna bak."
+      ],
+      "expl": "“{event}” olayından hemen sonra parça “{ans}” diyor."
+    },
+    "punct": {
+      "prompt": "Büyük harfleri ve noktalama işaretleri doğru olan cümleyi seç.",
+      "hints": [
+        "Cümlenin ilk harfini, kişi adlarını ve I sözcüğünü büyük yaz.",
+        "Cümleyi ona uygun işaretle bitir (. ? !)."
+      ],
+      "expl": "Doğru cümle “{ans}” cümlesidir."
+    },
+    "sumPick": {
+      "prompt": "Parçayı en iyi özetleyen cümleyi seç.\n\n\"{text}\"",
+      "hints": [
+        "Parçanın bütününde sürekli geri dönülen ana fikri bul.",
+        "Yalnızca tek bir ayrıntıyı anlatan ya da parçada olmayan bir şeyi anlatan cümle iyi bir özet değildir."
+      ],
+      "expl": "“{ans}” parçanın bütününün ana fikrini kapsıyor, bu yüzden en iyi özettir."
+    }
+  },
+  "lesson": {
+    "E3abc1": {
+      "title": "Büyük ve küçük harfler",
+      "concept": "Alfabede **büyük harfler** ve **küçük harfler** vardır. Birçok çift birbirinden farklı görünür, bu yüzden onları tek tek öğren. b, d, p ve q gibi birbirine benzeyen harflere özellikle dikkat et.",
+      "example": "A–a, B–b, D–d, G–g"
+    },
+    "E3snd1": {
+      "title": "Sesler ve yazım",
+      "concept": "Bir kelimenin ilk sesi, ilk harfiyle bağlantılıdır. Seslerle yazımın nasıl ilişkili olduğunu öğrenmek için aynı sesle başlayan kelimeleri bul. Bazen ph gibi iki harf f sesini verir.",
+      "example": "cat → cup, fish → fan"
+    },
+    "E6seq1": {
+      "title": "Olayların sırasını bulma",
+      "concept": "**First**, **Then / Next**, **After that** ve **Finally** gibi sırayı gösteren sözcükler, olayların hangi sırayla gerçekleştiğini anlatır.",
+      "example": "First, I wake up. Then I eat breakfast. Finally, I go to school."
+    },
+    "E6pun1": {
+      "title": "Büyük harfler ve noktalama",
+      "concept": "Bir cümle **büyük harfle** başlar ve doğru **noktalama işaretiyle** biter: bildirim cümlesi için nokta (.), soru için soru işareti (?), şaşkınlık veya güçlü duygu için ünlem işareti (!). Kişi adları ve I sözcüğü her zaman büyük yazılır.",
+      "example": "Is this your bag? Yes, it is."
+    },
+    "M2sum1": {
+      "title": "Bir parçayı özetleme",
+      "concept": "Özetlemek için **ana fikri** bul ve bir ya da iki cümleye indir. Yalnızca tek bir ayrıntıyı anlatan, parçada olmayan bir şey ekleyen ya da fazla geniş olan cümle iyi bir özet değildir.",
+      "example": "Recycling saves resources and reduces trash."
+    }
+  }
+}

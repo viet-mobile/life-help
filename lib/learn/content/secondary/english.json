@@ -123,6 +123,11 @@
     "id": "e.h3.sum",
     "title": "요약문 완성",
     "prerequisiteId": "e.h3.col"
+   },
+   {
+    "id": "e.m2.sum1",
+    "title": "글의 내용 요약하기",
+    "prerequisiteId": "e.m2.read"
    }
   ],
   "courses": [
@@ -219,6 +224,22 @@
          "e-m2-read-4"
         ],
         "challengeId": "e-m2-read-5"
+       },
+       {
+        "id": "en-m2-sum1",
+        "title": "글의 내용 요약하기",
+        "skillIds": [
+         "e.m2.sum1"
+        ],
+        "concept": "글을 요약할 때는 **중심 내용**을 찾아 한두 문장으로 줄여요. 세부 내용 하나만 말하거나, 글에 없는 내용을 더하거나, 너무 넓게 말한 문장은 좋은 요약이 아니에요.",
+        "example": "Recycling saves resources and reduces trash.",
+        "questionIds": [
+         "e-m2-sum1-1",
+         "e-m2-sum1-2",
+         "e-m2-sum1-3",
+         "e-m2-sum1-4"
+        ],
+        "challengeId": "e-m2-sum1-c"
        }
       ]
      }
@@ -10606,6 +10627,300 @@
    "tags": [
     "reading",
     "reasoning"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-1",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"Many people throw away bottles and cans every day. When we recycle them, factories can make new products without using as many natural resources. Recycling also reduces the amount of trash in landfills.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "People should buy fewer bottles and cans."
+    },
+    {
+     "id": "b",
+     "text": "Factories make new products every day."
+    },
+    {
+     "id": "c",
+     "text": "Bottles are made of glass and metal."
+    },
+    {
+     "id": "d",
+     "text": "Recycling saves resources and reduces trash."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'Recycling saves resources and reduces trash.'가 가장 알맞은 요약이에요.",
+   "role": "core",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-2",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"Teenagers need about nine hours of sleep each night. Without enough sleep, students find it hard to focus in class and often feel tired. Going to bed at the same time every day can help.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "Teenagers need enough sleep to feel and study well."
+    },
+    {
+     "id": "b",
+     "text": "Students should study until midnight."
+    },
+    {
+     "id": "c",
+     "text": "Teenagers like to go to bed late."
+    },
+    {
+     "id": "d",
+     "text": "Classes start too early at school."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'Teenagers need enough sleep to feel and study well.'가 가장 알맞은 요약이에요.",
+   "role": "core",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-3",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"Honeybees visit flowers to collect nectar. While they move from flower to flower, pollen sticks to their bodies and falls onto other flowers. This helps plants grow fruits and seeds.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "Plants need sunlight and water."
+    },
+    {
+     "id": "b",
+     "text": "Honeybees help plants grow by carrying pollen."
+    },
+    {
+     "id": "c",
+     "text": "Honeybees make sweet honey every day."
+    },
+    {
+     "id": "d",
+     "text": "Flowers have many different colors."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'Honeybees help plants grow by carrying pollen.'가 가장 알맞은 요약이에요.",
+   "role": "core",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-4",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"The new city library opened last month. It has a quiet reading room, a children's corner, and free computers. Many families visit it on weekends.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "Children are not allowed to use computers."
+    },
+    {
+     "id": "b",
+     "text": "The city built a new park."
+    },
+    {
+     "id": "c",
+     "text": "The new library offers useful spaces for many people."
+    },
+    {
+     "id": "d",
+     "text": "The library is closed on weekends."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'The new library offers useful spaces for many people.'가 가장 알맞은 요약이에요.",
+   "role": "core",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-c",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"Last Saturday, our class cleaned the beach near our school. We picked up plastic bags, bottles, and old nets. After three hours, the beach looked clean again, and we felt proud.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "Old nets are useful for fishing."
+    },
+    {
+     "id": "b",
+     "text": "Our class cleaned the beach and felt proud."
+    },
+    {
+     "id": "c",
+     "text": "Plastic bags are cheap."
+    },
+    {
+     "id": "d",
+     "text": "The class went swimming at the beach."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'Our class cleaned the beach and felt proud.'가 가장 알맞은 요약이에요.",
+   "role": "core",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-v1",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"Many people throw away bottles and cans every day. When we recycle them, factories can make new products without using as many natural resources. Recycling also reduces the amount of trash in landfills.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "Bottles are made of glass and metal."
+    },
+    {
+     "id": "b",
+     "text": "Recycling saves resources and reduces trash."
+    },
+    {
+     "id": "c",
+     "text": "People should buy fewer bottles and cans."
+    },
+    {
+     "id": "d",
+     "text": "Factories make new products every day."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'Recycling saves resources and reduces trash.'가 가장 알맞은 요약이에요.",
+   "role": "variant",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "e-m2-sum1-v2",
+   "site": "english",
+   "skillId": "e.m2.sum1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "다음 글을 가장 잘 요약한 문장을 고르세요.\n\n\"Honeybees visit flowers to collect nectar. While they move from flower to flower, pollen sticks to their bodies and falls onto other flowers. This helps plants grow fruits and seeds.\"",
+   "options": [
+    {
+     "id": "a",
+     "text": "Flowers have many different colors."
+    },
+    {
+     "id": "b",
+     "text": "Plants need sunlight and water."
+    },
+    {
+     "id": "c",
+     "text": "Honeybees help plants grow by carrying pollen."
+    },
+    {
+     "id": "d",
+     "text": "Honeybees make sweet honey every day."
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "글 전체에서 되풀이되는 중심 내용을 찾아요.",
+    "세부 내용 하나만 말하거나 글에 없는 내용을 담은 문장은 알맞지 않아요."
+   ],
+   "explanation": "글 전체의 중심 내용을 담은 'Honeybees help plants grow by carrying pollen.'가 가장 알맞은 요약이에요.",
+   "role": "variant",
+   "family": "m2-sum1",
+   "expectedSeconds": 45,
+   "tags": [
+    "topic"
    ],
    "status": "PUBLISHED"
   }

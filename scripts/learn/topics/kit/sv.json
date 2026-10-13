@@ -735,6 +735,126 @@
         "Dra $P(A)$ från 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "För {mats}, vilket är elementet på plats ({r}, {c}) i {expr}?",
+      "hints": [
+        "Addition, subtraktion och multiplikation med skalär görs element för element på samma plats.",
+        "Elementet (i, j) i produkten $AB$ är summan av produkterna av rad i i $A$ och kolumn j i $B$, i tur och ordning."
+      ],
+      "expl": "{steps}, så svaret är {ans}."
+    },
+    "setCount": {
+      "prompt": "Om $n(A)={na}$, $n(B)={nb}$ och $n(A\\cap B)={nab}$, vad är $n(A\\cup B)$?",
+      "hints": [
+        "Använd $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Sätt in de givna värdena ett i taget."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Hur många delmängder har en mängd med {n} element?",
+      "hints": [
+        "En mängd med n element har $2^n$ delmängder.",
+        "Tänk dig att du för varje element avgör om det ska vara med eller inte."
+      ],
+      "expl": "{prod}={ans}, så det finns {ans} delmängder."
+    },
+    "setOp": {
+      "prompt": "För {sets}, hur många element har {expr}?",
+      "hints": [
+        "Snittet innehåller de element som finns i båda mängderna; unionen innehåller de element som finns i minst en av dem.",
+        "Skriv upp elementen ett i taget och räkna dem sedan."
+      ],
+      "expl": "{steps}, så den har {ans} element."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "För påståendet “om p så q” är omvändningen “om q så p” och kontrapositionen “om inte q så inte p”.",
+        "Kontrapositionen har alltid samma sanningsvärde som det ursprungliga påståendet."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Om $f(x)={f}$ och $g(x)={g}$, vad är {comp}?",
+      "hints": [
+        "Den sammansatta funktionen $(g\\circ f)(a)$ betyder $g(f(a))$. Arbeta från den inre funktionen och utåt.",
+        "Beräkna först värdet av den inre funktionen och sätt sedan in det i den yttre funktionen."
+      ],
+      "expl": "{steps}, så svaret är {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Om $f^{-1}$ är inversen till funktionen $f(x)={f}$, vad är $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ betyder samma sak som $f(x)=y$.",
+        "Bestäm det värde på x som uppfyller $f(x)={y}$."
+      ],
+      "expl": "{steps}, så $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Vilken är den största reella roten till {eq}?",
+      "hints": [
+        "Faktorisera till en produkt av faktorer. Syntetisk division kan ge en första rot.",
+        "Rötterna är de värden på x som gör en faktor lika med noll."
+      ],
+      "expl": "{fact}, så de reella rötterna är {roots} och den största är {ans}."
+    },
+    "rootSum": {
+      "prompt": "Vad är summan av alla reella rötter till {eq}?",
+      "hints": [
+        "Faktorisera till en produkt av faktorer. Syntetisk division kan ge en första rot.",
+        "Rötterna är de värden på x som gör en faktor lika med noll."
+      ],
+      "expl": "{fact}, så de reella rötterna är {roots} och deras summa är {ans}."
+    },
+    "rootCount": {
+      "prompt": "Hur många olika reella rötter har {eq}?",
+      "hints": [
+        "Faktorisera till linjära eller kvadratiska faktorer.",
+        "Använd diskriminanten för att avgöra om en andragradsfaktor $x^2+ax+b$ har reella rötter."
+      ],
+      "expl": "{fact}, så de olika reella rötterna är {roots}: {ans} stycken."
+    },
+    "derivVal": {
+      "prompt": "Om $f(x)={f}$, vad är $f'({a})$?",
+      "hints": [
+        "För en sammansatt funktion deriverar du den yttre funktionen och multiplicerar med derivatan av den inre; för en kvot gäller $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Använd $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ och $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "På hur många sätt kan man välja {r} föremål bland {n} olika föremål, med upprepning tillåten, och ordna dem på en rad?",
+      "hints": [
+        "Antalet ordningar med upprepning är antalet val multiplicerat med sig självt en gång för varje plats.",
+        "Varje plats kan fyllas på {n} sätt."
+      ],
+      "expl": "{prod}={ans} sätt."
+    },
+    "permSame": {
+      "prompt": "På hur många sätt kan alla bokstäver i {word} ordnas på en rad?",
+      "hints": [
+        "Vid upprepade bokstäver dividerar man fakulteten av det totala antalet bokstäver med fakulteten av varje upprepningsantal.",
+        "Räkna hur många gånger varje bokstav förekommer."
+      ],
+      "expl": "{calc}={ans} sätt."
+    },
+    "repComb": {
+      "prompt": "På hur många sätt kan man välja {r} föremål bland {n} olika sorter, med upprepning tillåten?",
+      "hints": [
+        "Med n sorter och r valda föremål är antalet lika med antalet sätt att välja r av n+r−1.",
+        "Sätt in antalet sorter och antalet föremål."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Vilken är koefficienten för $x^{{k}}$ i utvecklingen av $(x+1)^{{n}}$?",
+      "hints": [
+        "Enligt binomialsatsen är koefficienterna antal kombinationer.",
+        "Koefficienten för $x^k$ är $_nC_k$, antalet sätt att välja k av n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Att ändra resultat är fusk med data och bryter mot forskningsetiken, så påståendet är falskt.",
     "rd_up": "avrundning uppåt",
     "rd_down": "avrundning nedåt",
-    "rd_half": "avrundning till närmaste"
+    "rd_half": "avrundning till närmaste",
+    "lg_contra": "Om påståendet “om p så q” är sant, är dess kontraposition “om inte q så inte p” alltid sann också.",
+    "lg_contra_r": "Ett påstående och dess kontraposition har alltid samma sanningsvärde, så påståendet är sant.",
+    "lg_conv": "Om påståendet “om p så q” är sant, är dess omvändning “om q så p” alltid sann också.",
+    "lg_conv_r": "Omvändningen kan vara falsk även när påståendet är sant (till exempel är “om x=2 så x²=4” sant men “om x²=4 så x=2” falskt), så påståendet är falskt."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Additionssatsen och komplementhändelsen",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Sannolikheten för komplementhändelsen är $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matriser och räkneoperationer med dem",
+      "concept": "En **matris** är en rektangulär uppställning av tal. Addition, subtraktion och multiplikation med skalär görs element för element; elementet (i, j) i en produkt $AB$ är summan av produkterna av rad i i $A$ och kolumn j i $B$, i tur och ordning.",
+      "example": "Elementet (1, 1) i $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ är $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Mängder och påståenden",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, och en mängd med n element har $2^n$ delmängder. Kontrapositionen till “om p så q” har alltid samma sanningsvärde som påståendet, men omvändningen behöver inte ha det.",
+      "example": "Om $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ så är $A\\cap B=\\{3,4\\}$ och $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Sammansatta funktioner och inverser",
+      "concept": "Den sammansatta funktionen $(g\\circ f)(x)=g(f(x))$ beräknas från den inre funktionen och utåt. Inversen uppfyller $f^{-1}(y)=x$ när $f(x)=y$.",
+      "example": "Om $f(x)=2x+1$ och $g(x)=x^2$ så är $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Faktorisering och lösning av tredje- och fjärdegradsekvationer",
+      "concept": "Lös en tredje- eller fjärdegradsekvation genom att **faktorisera** den (syntetisk division eller substitution hjälper) och hitta de värden som gör varje faktor lika med noll. Kontrollera en andragradsfaktor med dess diskriminant.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ ger $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Derivering av exponential-, logaritm- och trigonometriska funktioner",
+      "concept": "Derivera en sammansatt funktion som (derivatan av den yttre funktionen)×(derivatan av den inre funktionen), och en kvot med $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Dessutom $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ och $(\\cos x)'=-\\sin x$.",
+      "example": "Om $f(x)=e^{2x}$ så är $f'(x)=2e^{2x}$ och $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutationer och kombinationer med upprepning samt binomialsatsen",
+      "concept": "Antalet ordningar **med upprepning** är antalet val multiplicerat med sig självt en gång per plats. Vid upprepade föremål dividerar man fakulteten av totalen med fakulteten av varje upprepningsantal; **kombinationer med upprepning** ger $_nH_r={}_{n+r-1}C_r$. I $(x+1)^n$ är koefficienten för $x^k$ lika med $_nC_k$.",
+      "example": "Bokstäverna aabbc kan ordnas på $5!\\div(2!\\times2!)=30$ sätt"
     }
   },
   "course": {

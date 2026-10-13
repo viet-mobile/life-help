@@ -735,6 +735,126 @@
         "Ziehe $P(A)$ von 1 ab."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Für {mats}: Welchen Wert hat der Eintrag an der Stelle ({r}, {c}) von {expr}?",
+      "hints": [
+        "Addition, Subtraktion und skalare Vielfache von Matrizen werden eintragsweise an derselben Position ausgeführt.",
+        "Der Eintrag (i, j) des Produkts $AB$ ist die Summe der Produkte aus Zeile i von $A$ und Spalte j von $B$, der Reihe nach genommen."
+      ],
+      "expl": "{steps}, also ist die Antwort {ans}."
+    },
+    "setCount": {
+      "prompt": "Wenn $n(A)={na}$, $n(B)={nb}$ und $n(A\\cap B)={nab}$ gilt, was ist $n(A\\cup B)$?",
+      "hints": [
+        "Verwende $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Setze die gegebenen Werte der Reihe nach ein."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Wie viele Teilmengen hat eine Menge mit {n} Elementen?",
+      "hints": [
+        "Eine Menge mit n Elementen hat $2^n$ Teilmengen.",
+        "Überlege, dass man für jedes Element entscheidet, ob es dazugehört oder nicht."
+      ],
+      "expl": "{prod}={ans}, also gibt es {ans} Teilmengen."
+    },
+    "setOp": {
+      "prompt": "Für {sets}: Wie viele Elemente hat {expr}?",
+      "hints": [
+        "Die Schnittmenge enthält die Elemente, die in beiden Mengen liegen; die Vereinigungsmenge enthält die Elemente, die in mindestens einer von ihnen liegen.",
+        "Liste die Elemente einzeln auf und zähle sie dann."
+      ],
+      "expl": "{steps}, also hat sie {ans} Elemente."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Für die Aussage „wenn p, dann q“ lautet die Umkehrung „wenn q, dann p“ und die Kontraposition „wenn nicht q, dann nicht p“.",
+        "Die Kontraposition hat immer denselben Wahrheitswert wie die ursprüngliche Aussage."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Wenn $f(x)={f}$ und $g(x)={g}$ gilt, was ist {comp}?",
+      "hints": [
+        "Die Verkettung $(g\\circ f)(a)$ bedeutet $g(f(a))$. Arbeite von der inneren Funktion nach außen.",
+        "Berechne zuerst den Wert der inneren Funktion und setze ihn dann in die äußere Funktion ein."
+      ],
+      "expl": "{steps}, also ist die Antwort {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Wenn $f^{-1}$ die Umkehrfunktion von $f(x)={f}$ ist, was ist $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ bedeutet dasselbe wie $f(x)=y$.",
+        "Bestimme den Wert von x, der $f(x)={y}$ erfüllt."
+      ],
+      "expl": "{steps}, also $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Was ist die größte reelle Nullstelle von {eq}?",
+      "hints": [
+        "Zerlege sie in ein Produkt von Faktoren. Mit dem Horner-Schema lässt sich eine erste Nullstelle finden.",
+        "Die Nullstellen sind die Werte von x, für die ein Faktor null wird."
+      ],
+      "expl": "{fact}, also sind die reellen Nullstellen {roots} und die größte ist {ans}."
+    },
+    "rootSum": {
+      "prompt": "Was ist die Summe aller reellen Nullstellen von {eq}?",
+      "hints": [
+        "Zerlege sie in ein Produkt von Faktoren. Mit dem Horner-Schema lässt sich eine erste Nullstelle finden.",
+        "Die Nullstellen sind die Werte von x, für die ein Faktor null wird."
+      ],
+      "expl": "{fact}, also sind die reellen Nullstellen {roots} und ihre Summe ist {ans}."
+    },
+    "rootCount": {
+      "prompt": "Wie viele verschiedene reelle Nullstellen hat {eq}?",
+      "hints": [
+        "Zerlege sie in lineare oder quadratische Faktoren.",
+        "Prüfe mit der Diskriminante, ob ein quadratischer Faktor $x^2+ax+b$ reelle Nullstellen hat."
+      ],
+      "expl": "{fact}, also sind die verschiedenen reellen Nullstellen {roots}: Es sind {ans}."
+    },
+    "derivVal": {
+      "prompt": "Wenn $f(x)={f}$ gilt, was ist $f'({a})$?",
+      "hints": [
+        "Bei einer verketteten Funktion leitet man die äußere Funktion ab und multipliziert mit der Ableitung der inneren; für einen Quotienten gilt $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Verwende $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ und $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Auf wie viele Arten kann man {r} Objekte aus {n} verschiedenen Objekten mit Wiederholung auswählen und in einer Reihe anordnen?",
+      "hints": [
+        "Die Anzahl der Anordnungen mit Wiederholung ist die Anzahl der Möglichkeiten, für jeden Platz einmal mit sich selbst multipliziert.",
+        "Jeder Platz kann auf {n} Arten besetzt werden."
+      ],
+      "expl": "{prod}={ans} Arten."
+    },
+    "permSame": {
+      "prompt": "Auf wie viele Arten lassen sich alle Buchstaben von {word} in einer Reihe anordnen?",
+      "hints": [
+        "Bei wiederholten Buchstaben teilt man die Fakultät der Gesamtzahl der Buchstaben durch die Fakultät jeder Wiederholungszahl.",
+        "Zähle, wie oft jeder Buchstabe vorkommt."
+      ],
+      "expl": "{calc}={ans} Arten."
+    },
+    "repComb": {
+      "prompt": "Auf wie viele Arten kann man {r} Objekte aus {n} verschiedenen Sorten mit Wiederholung auswählen?",
+      "hints": [
+        "Bei n Sorten und r gewählten Objekten ist die Anzahl gleich der Anzahl der Möglichkeiten, r aus n+r−1 auszuwählen.",
+        "Setze die Anzahl der Sorten und die Anzahl der Objekte ein."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Was ist der Koeffizient von $x^{{k}}$ in der Entwicklung von $(x+1)^{{n}}$?",
+      "hints": [
+        "Nach dem binomischen Lehrsatz sind die Koeffizienten Anzahlen von Kombinationen.",
+        "Der Koeffizient von $x^k$ ist $_nC_k$, die Anzahl der Möglichkeiten, k aus n auszuwählen."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Ergebnisse zu ändern ist Fälschung und verstößt gegen die Forschungsethik, also ist die Aussage falsch.",
     "rd_up": "Aufrunden",
     "rd_down": "Abrunden",
-    "rd_half": "Runden auf den nächsten Wert"
+    "rd_half": "Runden auf den nächsten Wert",
+    "lg_contra": "Wenn die Aussage „wenn p, dann q“ wahr ist, dann ist auch ihre Kontraposition „wenn nicht q, dann nicht p“ immer wahr.",
+    "lg_contra_r": "Eine Aussage und ihre Kontraposition haben immer denselben Wahrheitswert, also ist die Aussage wahr.",
+    "lg_conv": "Wenn die Aussage „wenn p, dann q“ wahr ist, dann ist auch ihre Umkehrung „wenn q, dann p“ immer wahr.",
+    "lg_conv_r": "Die Umkehrung kann falsch sein, auch wenn die Aussage wahr ist (zum Beispiel ist „wenn x=2, dann x²=4“ wahr, aber „wenn x²=4, dann x=2“ falsch), also ist die Aussage falsch."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Additionssatz und Gegenereignis",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Die Wahrscheinlichkeit des Gegenereignisses ist $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrizen und ihre Rechenoperationen",
+      "concept": "Eine **Matrix** ist eine rechteckige Anordnung von Zahlen. Addition, Subtraktion und skalare Vielfache werden eintragsweise ausgeführt; der Eintrag (i, j) eines Produkts $AB$ ist die Summe der Produkte aus Zeile i von $A$ und Spalte j von $B$, der Reihe nach genommen.",
+      "example": "Der Eintrag (1, 1) von $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ ist $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Mengen und Aussagen",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, und eine Menge mit n Elementen hat $2^n$ Teilmengen. Die Kontraposition von „wenn p, dann q“ hat immer denselben Wahrheitswert wie die Aussage, die Umkehrung dagegen nicht unbedingt.",
+      "example": "Für $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ gilt $A\\cap B=\\{3,4\\}$ und $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Verkettete Funktionen und Umkehrfunktionen",
+      "concept": "Die Verkettung $(g\\circ f)(x)=g(f(x))$ wird von der inneren Funktion nach außen berechnet. Die Umkehrfunktion erfüllt $f^{-1}(y)=x$, wann immer $f(x)=y$ gilt.",
+      "example": "Für $f(x)=2x+1$ und $g(x)=x^2$ gilt $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Faktorisieren und Lösen von Gleichungen dritten und vierten Grades",
+      "concept": "Löse eine Gleichung dritten oder vierten Grades, indem du sie **faktorisierst** (Horner-Schema oder eine Substitution helfen) und die Werte bestimmst, für die jeder Faktor null wird. Prüfe einen quadratischen Faktor mit seiner Diskriminante.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ ergibt $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Ableiten von Exponential-, Logarithmus- und trigonometrischen Funktionen",
+      "concept": "Eine verkettete Funktion leitet man ab als (Ableitung der äußeren Funktion)×(Ableitung der inneren Funktion), einen Quotienten mit $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Außerdem gilt $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ und $(\\cos x)'=-\\sin x$.",
+      "example": "Für $f(x)=e^{2x}$ gilt $f'(x)=2e^{2x}$ und $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutationen und Kombinationen mit Wiederholung und der binomische Lehrsatz",
+      "concept": "Die Anzahl der Anordnungen **mit Wiederholung** ist die Anzahl der Möglichkeiten, für jeden Platz einmal mit sich selbst multipliziert. Bei wiederholten Objekten teilt man die Fakultät der Gesamtzahl durch die Fakultät jeder Wiederholungszahl; **Kombinationen mit Wiederholung** ergeben $_nH_r={}_{n+r-1}C_r$. In $(x+1)^n$ ist der Koeffizient von $x^k$ gleich $_nC_k$.",
+      "example": "Die Buchstaben aabbc lassen sich auf $5!\\div(2!\\times2!)=30$ Arten anordnen"
     }
   },
   "course": {

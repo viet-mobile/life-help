@@ -735,6 +735,126 @@
         "Sottrai $P(A)$ da 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Per {mats}, qual è l'elemento di posto ({r}, {c}) di {expr}?",
+      "hints": [
+        "Somma, differenza e multipli scalari di matrici si eseguono elemento per elemento, nella stessa posizione.",
+        "L'elemento (i, j) del prodotto $AB$ è la somma dei prodotti tra la riga i di $A$ e la colonna j di $B$, nell'ordine."
+      ],
+      "expl": "{steps}, quindi la risposta è {ans}."
+    },
+    "setCount": {
+      "prompt": "Se $n(A)={na}$, $n(B)={nb}$ e $n(A\\cap B)={nab}$, quanto vale $n(A\\cup B)$?",
+      "hints": [
+        "Usa $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Sostituisci i valori dati uno alla volta."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Quanti sottoinsiemi ha un insieme con {n} elementi?",
+      "hints": [
+        "Un insieme con n elementi ha $2^n$ sottoinsiemi.",
+        "Pensa a decidere, per ogni elemento, se includerlo oppure no."
+      ],
+      "expl": "{prod}={ans}, quindi ci sono {ans} sottoinsiemi."
+    },
+    "setOp": {
+      "prompt": "Per {sets}, quanti elementi ha {expr}?",
+      "hints": [
+        "L'intersezione contiene gli elementi presenti in entrambi gli insiemi; l'unione contiene quelli presenti in almeno uno dei due.",
+        "Elenca gli elementi uno per uno, poi contali."
+      ],
+      "expl": "{steps}, quindi ha {ans} elementi."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Per l'enunciato “se p allora q”, l'inversa è “se q allora p” e la contronominale è “se non q allora non p”.",
+        "La contronominale ha sempre lo stesso valore di verità dell'enunciato originale."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Se $f(x)={f}$ e $g(x)={g}$, quanto vale {comp}?",
+      "hints": [
+        "La funzione composta $(g\\circ f)(a)$ significa $g(f(a))$. Procedi dalla funzione interna verso l'esterna.",
+        "Trova prima il valore della funzione interna, poi sostituiscilo nella funzione esterna."
+      ],
+      "expl": "{steps}, quindi la risposta è {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Se $f^{-1}$ è la funzione inversa di $f(x)={f}$, quanto vale $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ significa lo stesso di $f(x)=y$.",
+        "Trova il valore di x che soddisfa $f(x)={y}$."
+      ],
+      "expl": "{steps}, quindi $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Qual è la radice reale maggiore di {eq}?",
+      "hints": [
+        "Scomponi in un prodotto di fattori. La divisione sintetica (regola di Ruffini) può aiutare a trovare una prima radice.",
+        "Le radici sono i valori di x che annullano un fattore."
+      ],
+      "expl": "{fact}, quindi le radici reali sono {roots} e la maggiore è {ans}."
+    },
+    "rootSum": {
+      "prompt": "Qual è la somma di tutte le radici reali di {eq}?",
+      "hints": [
+        "Scomponi in un prodotto di fattori. La divisione sintetica (regola di Ruffini) può aiutare a trovare una prima radice.",
+        "Le radici sono i valori di x che annullano un fattore."
+      ],
+      "expl": "{fact}, quindi le radici reali sono {roots} e la loro somma è {ans}."
+    },
+    "rootCount": {
+      "prompt": "Quante radici reali distinte ha {eq}?",
+      "hints": [
+        "Scomponi in fattori lineari o quadratici.",
+        "Usa il discriminante per verificare se un fattore quadratico $x^2+ax+b$ ha radici reali."
+      ],
+      "expl": "{fact}, quindi le radici reali distinte sono {roots}: {ans} in tutto."
+    },
+    "derivVal": {
+      "prompt": "Se $f(x)={f}$, quanto vale $f'({a})$?",
+      "hints": [
+        "Per una funzione composta, deriva la funzione esterna e moltiplica per la derivata di quella interna; per un quoziente, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Usa $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ e $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "In quanti modi si possono scegliere {r} oggetti tra {n} oggetti diversi, con ripetizione, e disporli in fila?",
+      "hints": [
+        "Il numero di disposizioni con ripetizione è il numero di scelte moltiplicato per se stesso una volta per ogni posto.",
+        "Ogni posto può essere occupato in {n} modi."
+      ],
+      "expl": "{prod}={ans} modi."
+    },
+    "permSame": {
+      "prompt": "In quanti modi si possono disporre in fila tutte le lettere di {word}?",
+      "hints": [
+        "Con lettere ripetute, dividi il fattoriale del numero totale di lettere per il fattoriale del numero di ripetizioni di ciascuna.",
+        "Conta quante volte compare ogni lettera."
+      ],
+      "expl": "{calc}={ans} modi."
+    },
+    "repComb": {
+      "prompt": "In quanti modi si possono scegliere {r} oggetti tra {n} tipi diversi, con ripetizione?",
+      "hints": [
+        "Con n tipi e r oggetti scelti, il numero è pari ai modi di scegliere r tra n+r−1.",
+        "Sostituisci il numero di tipi e il numero di oggetti."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Qual è il coefficiente di $x^{{k}}$ nello sviluppo di $(x+1)^{{n}}$?",
+      "hints": [
+        "Per il teorema binomiale i coefficienti sono numeri di combinazioni.",
+        "Il coefficiente di $x^k$ è $_nC_k$, il numero di modi di scegliere k tra n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Cambiare i risultati è falsificazione e viola l'etica della ricerca, quindi l'affermazione è falsa.",
     "rd_up": "arrotondamento per eccesso",
     "rd_down": "arrotondamento per difetto",
-    "rd_half": "arrotondamento al più vicino"
+    "rd_half": "arrotondamento al più vicino",
+    "lg_contra": "Se l'enunciato “se p allora q” è vero, anche la sua contronominale “se non q allora non p” è sempre vera.",
+    "lg_contra_r": "Un enunciato e la sua contronominale hanno sempre lo stesso valore di verità, quindi l'enunciato è vero.",
+    "lg_conv": "Se l'enunciato “se p allora q” è vero, anche la sua inversa “se q allora p” è sempre vera.",
+    "lg_conv_r": "L'inversa può essere falsa anche quando l'enunciato è vero (per esempio, “se x=2 allora x²=4” è vero ma “se x²=4 allora x=2” è falso), quindi l'enunciato è falso."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "La regola dell’addizione e l’evento complementare",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. La probabilità dell’evento complementare è $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrici e operazioni",
+      "concept": "Una **matrice** è una disposizione rettangolare di numeri. Somma, differenza e multipli scalari si eseguono elemento per elemento; l'elemento (i, j) del prodotto $AB$ è la somma dei prodotti tra la riga i di $A$ e la colonna j di $B$, nell'ordine.",
+      "example": "L'elemento (1, 1) di $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ è $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Insiemi e proposizioni",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, e un insieme con n elementi ha $2^n$ sottoinsiemi. La contronominale di “se p allora q” ha sempre lo stesso valore di verità dell'enunciato, mentre l'inversa può non averlo.",
+      "example": "Se $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ allora $A\\cap B=\\{3,4\\}$ e $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Funzioni composte e inverse",
+      "concept": "La funzione composta $(g\\circ f)(x)=g(f(x))$ si calcola dalla funzione interna verso l'esterna. La funzione inversa soddisfa $f^{-1}(y)=x$ ogni volta che $f(x)=y$.",
+      "example": "Se $f(x)=2x+1$ e $g(x)=x^2$, allora $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Scomposizione e risoluzione di equazioni cubiche e quartiche",
+      "concept": "Risolvi un'equazione cubica o quartica **scomponendola** in fattori (la divisione sintetica o una sostituzione aiutano) e trovando i valori che annullano ciascun fattore. Verifica un fattore quadratico con il suo discriminante.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ dà $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Derivate di funzioni esponenziali, logaritmiche e trigonometriche",
+      "concept": "Deriva una funzione composta come (derivata della funzione esterna)×(derivata della funzione interna), e un quoziente con $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Inoltre $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ e $(\\cos x)'=-\\sin x$.",
+      "example": "Se $f(x)=e^{2x}$ allora $f'(x)=2e^{2x}$ e $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutazioni e combinazioni con ripetizione, e teorema binomiale",
+      "concept": "Il numero di disposizioni **con ripetizione** è il numero di scelte moltiplicato per se stesso una volta per ogni posto. Con oggetti ripetuti, dividi il fattoriale del totale per il fattoriale del numero di ripetizioni di ciascuno; le **combinazioni con ripetizione** danno $_nH_r={}_{n+r-1}C_r$. In $(x+1)^n$ il coefficiente di $x^k$ è $_nC_k$.",
+      "example": "Le lettere aabbc si possono disporre in $5!\\div(2!\\times2!)=30$ modi"
     }
   },
   "course": {

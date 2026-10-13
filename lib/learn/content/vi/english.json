@@ -34,7 +34,11 @@
   "e.e6.modal": "can, must, should, may",
   "e.e6.vocab": "Mở rộng vốn từ",
   "e.e6.clause": "Từ nối câu",
-  "e.e6.read": "Đọc đoạn văn"
+  "e.e6.read": "Đọc đoạn văn",
+  "e.e3.abc1": "Chữ in hoa và chữ thường",
+  "e.e3.snd1": "Âm và chính tả",
+  "e.e6.seq1": "Tìm thứ tự các sự việc",
+  "e.e6.pun1": "Chữ hoa và dấu câu"
  },
  "courses": {
   "en-m1-basics": {
@@ -266,6 +270,26 @@
    "title": "Đọc đoạn văn",
    "concept": "Đọc đoạn văn nhiều câu và tìm xem ai, khi nào, vì sao làm điều đó.",
    "example": "Jina was tired because they walked a lot."
+  },
+  "en-e3-abc1": {
+   "title": "Chữ in hoa và chữ thường",
+   "concept": "Bảng chữ cái có **chữ in hoa** và **chữ thường**. Nhiều cặp trông khác nhau, vì vậy hãy học từng cặp một. Đặc biệt cẩn thận với những chữ cái trông giống nhau, như b, d, p và q.",
+   "example": "A–a, B–b, D–d, G–g"
+  },
+  "en-e3-snd1": {
+   "title": "Âm và chính tả",
+   "concept": "Âm đầu của một từ gắn với chữ cái đầu của nó. Hãy tìm các từ bắt đầu bằng cùng một âm để hiểu âm và chính tả liên quan với nhau thế nào. Đôi khi hai chữ cái, như ph, tạo ra âm f.",
+   "example": "cat → cup, fish → fan"
+  },
+  "en-e6-seq1": {
+   "title": "Tìm thứ tự các sự việc",
+   "concept": "Các từ chỉ thứ tự, như **First**, **Then / Next**, **After that** và **Finally**, cho bạn biết các sự việc xảy ra theo thứ tự nào.",
+   "example": "First, I wake up. Then I eat breakfast. Finally, I go to school."
+  },
+  "en-e6-pun1": {
+   "title": "Chữ hoa và dấu câu",
+   "concept": "Câu bắt đầu bằng **chữ hoa** và kết thúc bằng **dấu câu** đúng: dấu chấm (.) cho câu kể, dấu hỏi (?) cho câu hỏi, và dấu chấm than (!) cho sự ngạc nhiên hoặc cảm xúc mạnh. Tên người và từ I luôn được viết hoa.",
+   "example": "Is this your bag? Yes, it is."
   }
  },
  "questions": {
@@ -3174,6 +3198,230 @@
     "Đây là từ chỉ người không bỏ cuộc."
    ],
    "explanation": "Jiho không bỏ cuộc và luyện tập nên determined (kiên quyết) là phù hợp nhất."
+  },
+  "e-e3-abc1-1": {
+   "prompt": "Chữ thường của chữ in hoa B là chữ nào?",
+   "hints": [
+    "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+    "Cẩn thận với những chữ cái trông giống nhau, như b, d, p và q."
+   ],
+   "explanation": "Chữ thường của B là b."
+  },
+  "e-e3-abc1-2": {
+   "prompt": "Chữ thường của chữ in hoa G là chữ nào?",
+   "hints": [
+    "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+    "Cẩn thận với những chữ cái trông giống nhau, như b, d, p và q."
+   ],
+   "explanation": "Chữ thường của G là g."
+  },
+  "e-e3-abc1-3": {
+   "prompt": "Chữ in hoa của chữ thường e là chữ nào?",
+   "hints": [
+    "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+    "Hãy tưởng tượng viết chữ thường to và cao lên."
+   ],
+   "explanation": "Chữ in hoa của e là E."
+  },
+  "e-e3-abc1-4": {
+   "prompt": "Chữ in hoa của chữ thường h là chữ nào?",
+   "hints": [
+    "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+    "Hãy tưởng tượng viết chữ thường to và cao lên."
+   ],
+   "explanation": "Chữ in hoa của h là H."
+  },
+  "e-e3-abc1-c": {
+   "prompt": "Chọn cặp có chữ in hoa và chữ thường khớp nhau.",
+   "hints": [
+    "Trong mỗi cặp, chữ đầu là chữ in hoa và chữ sau là chữ thường.",
+    "Kiểm tra từng cặp xem chữ thường có phải là cùng một chữ với chữ in hoa không."
+   ],
+   "explanation": "Gg là một cặp chữ in hoa và chữ thường khớp nhau."
+  },
+  "e-e3-abc1-v1": {
+   "prompt": "Chữ thường của chữ in hoa P là chữ nào?",
+   "hints": [
+    "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+    "Cẩn thận với những chữ cái trông giống nhau, như b, d, p và q."
+   ],
+   "explanation": "Chữ thường của P là p."
+  },
+  "e-e3-abc1-v2": {
+   "prompt": "Chữ in hoa của chữ thường k là chữ nào?",
+   "hints": [
+    "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+    "Hãy tưởng tượng viết chữ thường to và cao lên."
+   ],
+   "explanation": "Chữ in hoa của k là K."
+  },
+  "e-e3-snd1-1": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “cat”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “cat”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“cat” và “cup” đều bắt đầu bằng âm /k/."
+  },
+  "e-e3-snd1-2": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “dog”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “dog”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“dog” và “desk” đều bắt đầu bằng âm /d/."
+  },
+  "e-e3-snd1-3": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “sun”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “sun”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“sun” và “sit” đều bắt đầu bằng âm /s/."
+  },
+  "e-e3-snd1-4": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “fish”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “fish”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“fish” và “fan” đều bắt đầu bằng âm /f/."
+  },
+  "e-e3-snd1-c": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “phone”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “phone”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“phone” và “fish” đều bắt đầu bằng âm /f/."
+  },
+  "e-e3-snd1-v1": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “knee”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “knee”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“knee” và “nose” đều bắt đầu bằng âm /n/."
+  },
+  "e-e3-snd1-v2": {
+   "prompt": "Từ nào bắt đầu bằng cùng âm với “bed”?",
+   "hints": [
+    "Hãy đọc to âm đầu của “bed”.",
+    "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+   ],
+   "explanation": "“bed” và “ball” đều bắt đầu bằng âm /b/."
+  },
+  "e-e6-seq1-1": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra đầu tiên.\n\n\"First, Mina wakes up at seven. Then she brushes her teeth. Next, she eats breakfast. Finally, she goes to school.\"",
+   "hints": [
+    "Tìm các từ chỉ thứ tự, như First, Then, Next và Finally.",
+    "Điều xảy ra trong câu có First thì xảy ra đầu tiên."
+   ],
+   "explanation": "“wakes up at seven” đứng sau First trong đoạn văn, nên nó xảy ra đầu tiên."
+  },
+  "e-e6-seq1-2": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra cuối cùng.\n\n\"First, Mina wakes up at seven. Then she brushes her teeth. Next, she eats breakfast. Finally, she goes to school.\"",
+   "hints": [
+    "Tìm các từ chỉ thứ tự, như First, Then, Next và Finally.",
+    "Điều xảy ra trong câu có Finally thì xảy ra cuối cùng."
+   ],
+   "explanation": "“goes to school” đứng sau Finally trong đoạn văn, nên nó xảy ra cuối cùng."
+  },
+  "e-e6-seq1-3": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra ngay sau 'mixes them in a bowl'.\n\n\"First, Jun takes out the flour and eggs. Then he mixes them in a bowl. Next, he bakes the cake in the oven. Finally, he puts cream on the cake.\"",
+   "hints": [
+    "Trước tiên hãy tìm câu có “mixes them in a bowl” trong đoạn văn.",
+    "Sau đó xem điều gì xảy ra ở câu ngay kế tiếp."
+   ],
+   "explanation": "Ngay sau “mixes them in a bowl”, đoạn văn nói “bakes the cake in the oven”."
+  },
+  "e-e6-seq1-4": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra đầu tiên.\n\n\"First, Jun takes out the flour and eggs. Then he mixes them in a bowl. Next, he bakes the cake in the oven. Finally, he puts cream on the cake.\"",
+   "hints": [
+    "Tìm các từ chỉ thứ tự, như First, Then, Next và Finally.",
+    "Điều xảy ra trong câu có First thì xảy ra đầu tiên."
+   ],
+   "explanation": "“takes out the flour and eggs” đứng sau First trong đoạn văn, nên nó xảy ra đầu tiên."
+  },
+  "e-e6-seq1-c": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra ngay sau 'played soccer with his friends'.\n\n\"Sam went to the park after lunch. First, he played soccer with his friends. After that, he rode his bike. Finally, he drank some water and went home.\"",
+   "hints": [
+    "Trước tiên hãy tìm câu có “played soccer with his friends” trong đoạn văn.",
+    "Sau đó xem điều gì xảy ra ở câu ngay kế tiếp."
+   ],
+   "explanation": "Ngay sau “played soccer with his friends”, đoạn văn nói “rode his bike”."
+  },
+  "e-e6-seq1-v1": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra cuối cùng.\n\n\"First, Jun takes out the flour and eggs. Then he mixes them in a bowl. Next, he bakes the cake in the oven. Finally, he puts cream on the cake.\"",
+   "hints": [
+    "Tìm các từ chỉ thứ tự, như First, Then, Next và Finally.",
+    "Điều xảy ra trong câu có Finally thì xảy ra cuối cùng."
+   ],
+   "explanation": "“puts cream on the cake” đứng sau Finally trong đoạn văn, nên nó xảy ra cuối cùng."
+  },
+  "e-e6-seq1-v2": {
+   "prompt": "Đọc đoạn văn và chọn điều đã xảy ra ngay sau 'brushes her teeth'.\n\n\"First, Mina wakes up at seven. Then she brushes her teeth. Next, she eats breakfast. Finally, she goes to school.\"",
+   "hints": [
+    "Trước tiên hãy tìm câu có “brushes her teeth” trong đoạn văn.",
+    "Sau đó xem điều gì xảy ra ở câu ngay kế tiếp."
+   ],
+   "explanation": "Ngay sau “brushes her teeth”, đoạn văn nói “eats breakfast”."
+  },
+  "e-e6-pun1-1": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “My name is Tom.”."
+  },
+  "e-e6-pun1-2": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “Where do you live?”."
+  },
+  "e-e6-pun1-3": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “I like apples, oranges, and bananas.”."
+  },
+  "e-e6-pun1-4": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “What a beautiful day!”."
+  },
+  "e-e6-pun1-c": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “Can Anna and I play soccer today?”."
+  },
+  "e-e6-pun1-v1": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “She is my sister.”."
+  },
+  "e-e6-pun1-v2": {
+   "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+   "hints": [
+    "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+    "Kết thúc câu bằng dấu phù hợp (. ? !)."
+   ],
+   "explanation": "Câu đúng là “How old are you?”."
   }
  }
 }

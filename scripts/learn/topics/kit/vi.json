@@ -735,6 +735,126 @@
         "Lấy 1 trừ $P(A)$."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Với {mats}, phần tử ở vị trí ({r}, {c}) của {expr} là bao nhiêu?",
+      "hints": [
+        "Phép cộng, phép trừ và phép nhân một số với ma trận được thực hiện lần lượt trên từng phần tử cùng vị trí.",
+        "Phần tử (i, j) của tích $AB$ là tổng các tích của hàng i của $A$ với cột j của $B$, lấy theo thứ tự."
+      ],
+      "expl": "{steps}, nên đáp án là {ans}."
+    },
+    "setCount": {
+      "prompt": "Nếu $n(A)={na}$, $n(B)={nb}$ và $n(A\\cap B)={nab}$ thì $n(A\\cup B)$ bằng bao nhiêu?",
+      "hints": [
+        "Dùng $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Thay lần lượt các giá trị đã cho vào."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Một tập hợp có {n} phần tử thì có bao nhiêu tập con?",
+      "hints": [
+        "Tập hợp có n phần tử có $2^n$ tập con.",
+        "Hãy nghĩ đến việc với mỗi phần tử, ta chọn lấy hoặc không lấy."
+      ],
+      "expl": "{prod}={ans}, nên có {ans} tập con."
+    },
+    "setOp": {
+      "prompt": "Với {sets}, {expr} có bao nhiêu phần tử?",
+      "hints": [
+        "Giao gồm các phần tử thuộc cả hai tập; hợp gồm các phần tử thuộc ít nhất một trong hai tập.",
+        "Liệt kê lần lượt các phần tử rồi đếm."
+      ],
+      "expl": "{steps}, nên có {ans} phần tử."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Với mệnh đề “nếu p thì q”, mệnh đề đảo là “nếu q thì p” và mệnh đề phản đảo (phản đề) là “nếu không q thì không p”.",
+        "Mệnh đề phản đảo luôn có cùng giá trị đúng sai với mệnh đề ban đầu."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Nếu $f(x)={f}$ và $g(x)={g}$ thì {comp} bằng bao nhiêu?",
+      "hints": [
+        "Hàm hợp $(g\\circ f)(a)$ nghĩa là $g(f(a))$. Tính từ hàm trong ra hàm ngoài.",
+        "Tìm giá trị của hàm trong trước, rồi thay vào hàm ngoài."
+      ],
+      "expl": "{steps}, nên đáp án là {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Nếu $f^{-1}$ là hàm ngược của $f(x)={f}$ thì $f^{-1}({y})$ bằng bao nhiêu?",
+      "hints": [
+        "$f^{-1}(y)=x$ có nghĩa giống như $f(x)=y$.",
+        "Tìm giá trị của x thỏa mãn $f(x)={y}$."
+      ],
+      "expl": "{steps}, nên $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Nghiệm thực lớn nhất của {eq} là bao nhiêu?",
+      "hints": [
+        "Phân tích thành tích các nhân tử. Có thể dùng sơ đồ Horner (chia tổng hợp) để tìm nghiệm đầu tiên.",
+        "Các nghiệm là những giá trị của x làm cho một nhân tử bằng không."
+      ],
+      "expl": "{fact}, nên các nghiệm thực là {roots} và nghiệm lớn nhất là {ans}."
+    },
+    "rootSum": {
+      "prompt": "Tổng tất cả các nghiệm thực của {eq} là bao nhiêu?",
+      "hints": [
+        "Phân tích thành tích các nhân tử. Có thể dùng sơ đồ Horner (chia tổng hợp) để tìm nghiệm đầu tiên.",
+        "Các nghiệm là những giá trị của x làm cho một nhân tử bằng không."
+      ],
+      "expl": "{fact}, nên các nghiệm thực là {roots} và tổng của chúng là {ans}."
+    },
+    "rootCount": {
+      "prompt": "{eq} có bao nhiêu nghiệm thực phân biệt?",
+      "hints": [
+        "Phân tích thành các nhân tử bậc nhất hoặc bậc hai.",
+        "Dùng biệt thức để kiểm tra xem nhân tử bậc hai $x^2+ax+b$ có nghiệm thực hay không."
+      ],
+      "expl": "{fact}, nên các nghiệm thực phân biệt là {roots}: có {ans} nghiệm."
+    },
+    "derivVal": {
+      "prompt": "Nếu $f(x)={f}$ thì $f'({a})$ bằng bao nhiêu?",
+      "hints": [
+        "Với hàm hợp, lấy đạo hàm hàm ngoài rồi nhân với đạo hàm của hàm trong; với thương, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Dùng $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ và $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Có bao nhiêu cách chọn {r} vật từ {n} vật khác nhau, cho phép lặp, rồi xếp thành một hàng?",
+      "hints": [
+        "Số cách xếp có lặp bằng số cách chọn nhân với chính nó, mỗi vị trí một lần.",
+        "Mỗi vị trí có thể được điền theo {n} cách."
+      ],
+      "expl": "{prod}={ans} cách."
+    },
+    "permSame": {
+      "prompt": "Có bao nhiêu cách xếp tất cả các chữ cái của {word} thành một hàng?",
+      "hints": [
+        "Khi có chữ cái lặp, lấy giai thừa của tổng số chữ cái chia cho giai thừa số lần lặp của từng chữ cái.",
+        "Đếm xem mỗi chữ cái xuất hiện bao nhiêu lần."
+      ],
+      "expl": "{calc}={ans} cách."
+    },
+    "repComb": {
+      "prompt": "Có bao nhiêu cách chọn {r} vật từ {n} loại khác nhau, cho phép lặp?",
+      "hints": [
+        "Với n loại và chọn r vật, số cách bằng số cách chọn r từ n+r−1.",
+        "Thay số loại và số vật vào."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Hệ số của $x^{{k}}$ trong khai triển $(x+1)^{{n}}$ là bao nhiêu?",
+      "hints": [
+        "Theo định lý nhị thức, các hệ số là số tổ hợp.",
+        "Hệ số của $x^k$ là $_nC_k$, số cách chọn k từ n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Sửa kết quả là làm giả số liệu và vi phạm đạo đức nghiên cứu, nên nhận định này sai.",
     "rd_up": "làm tròn lên",
     "rd_down": "làm tròn xuống",
-    "rd_half": "làm tròn gần nhất"
+    "rd_half": "làm tròn gần nhất",
+    "lg_contra": "Nếu mệnh đề “nếu p thì q” đúng thì mệnh đề phản đảo “nếu không q thì không p” của nó cũng luôn đúng.",
+    "lg_contra_r": "Một mệnh đề và mệnh đề phản đảo của nó luôn có cùng giá trị đúng sai, nên mệnh đề này đúng.",
+    "lg_conv": "Nếu mệnh đề “nếu p thì q” đúng thì mệnh đề đảo “nếu q thì p” của nó cũng luôn đúng.",
+    "lg_conv_r": "Mệnh đề đảo có thể sai ngay cả khi mệnh đề ban đầu đúng (ví dụ, “nếu x=2 thì x²=4” đúng nhưng “nếu x²=4 thì x=2” sai), nên mệnh đề này sai."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Quy tắc cộng và biến cố đối",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Xác suất của biến cố đối là $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Ma trận và các phép toán",
+      "concept": "**Ma trận** là một bảng số hình chữ nhật. Phép cộng, phép trừ và phép nhân một số với ma trận được thực hiện trên từng phần tử; phần tử (i, j) của tích $AB$ là tổng các tích của hàng i của $A$ với cột j của $B$, lấy theo thứ tự.",
+      "example": "Phần tử (1, 1) của $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ là $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Tập hợp và mệnh đề",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, và tập hợp có n phần tử có $2^n$ tập con. Mệnh đề phản đảo của “nếu p thì q” luôn có cùng giá trị đúng sai với mệnh đề đó, nhưng mệnh đề đảo thì chưa chắc.",
+      "example": "Nếu $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ thì $A\\cap B=\\{3,4\\}$ và $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Hàm hợp và hàm ngược",
+      "concept": "Hàm hợp $(g\\circ f)(x)=g(f(x))$ được tính từ hàm trong ra hàm ngoài. Hàm ngược thỏa mãn $f^{-1}(y)=x$ mỗi khi $f(x)=y$.",
+      "example": "Nếu $f(x)=2x+1$ và $g(x)=x^2$ thì $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Phân tích thành nhân tử và giải phương trình bậc ba, bậc bốn",
+      "concept": "Giải phương trình bậc ba hoặc bậc bốn bằng cách **phân tích thành nhân tử** (chia tổng hợp hoặc đổi biến sẽ giúp ích) rồi tìm các giá trị làm mỗi nhân tử bằng không. Kiểm tra nhân tử bậc hai bằng biệt thức.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ cho $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Đạo hàm của hàm mũ, hàm logarit và hàm lượng giác",
+      "concept": "Đạo hàm của hàm hợp bằng (đạo hàm của hàm ngoài)×(đạo hàm của hàm trong), và đạo hàm của thương dùng $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Ngoài ra $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ và $(\\cos x)'=-\\sin x$.",
+      "example": "Nếu $f(x)=e^{2x}$ thì $f'(x)=2e^{2x}$ và $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Hoán vị và tổ hợp lặp, và định lý nhị thức",
+      "concept": "Số cách xếp **có lặp** bằng số cách chọn nhân với chính nó, mỗi vị trí một lần. Khi có phần tử lặp, lấy giai thừa của tổng chia cho giai thừa số lần lặp của từng phần tử; **tổ hợp lặp** cho $_nH_r={}_{n+r-1}C_r$. Trong $(x+1)^n$, hệ số của $x^k$ là $_nC_k$.",
+      "example": "Các chữ cái aabbc có thể được xếp theo $5!\\div(2!\\times2!)=30$ cách"
     }
   },
   "course": {

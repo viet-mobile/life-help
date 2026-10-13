@@ -735,6 +735,126 @@
         "Subtraia $P(A)$ de 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Para {mats}, qual é o elemento na posição ({r}, {c}) de {expr}?",
+      "hints": [
+        "A adição, a subtração e os múltiplos escalares de matrizes fazem-se elemento a elemento, na mesma posição.",
+        "O elemento (i, j) do produto $AB$ é a soma dos produtos dos elementos da linha i de $A$ pelos da coluna j de $B$, tomados por ordem."
+      ],
+      "expl": "{steps}, logo a resposta é {ans}."
+    },
+    "setCount": {
+      "prompt": "Se $n(A)={na}$, $n(B)={nb}$ e $n(A\\cap B)={nab}$, qual é $n(A\\cup B)$?",
+      "hints": [
+        "Use $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Substitua os valores dados um a um."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Quantos subconjuntos tem um conjunto com {n} elementos?",
+      "hints": [
+        "Um conjunto com n elementos tem $2^n$ subconjuntos.",
+        "Pense em decidir, para cada elemento, se ele entra ou não."
+      ],
+      "expl": "{prod}={ans}, logo há {ans} subconjuntos."
+    },
+    "setOp": {
+      "prompt": "Para {sets}, quantos elementos tem {expr}?",
+      "hints": [
+        "A interseção contém os elementos que estão nos dois conjuntos; a união contém os elementos que estão em pelo menos um deles.",
+        "Liste os elementos um a um e depois conte-os."
+      ],
+      "expl": "{steps}, logo tem {ans} elementos."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Para a proposição «se p então q», a recíproca é «se q então p» e a contrapositiva é «se não q então não p».",
+        "A contrapositiva tem sempre o mesmo valor lógico que a proposição original."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Se $f(x)={f}$ e $g(x)={g}$, qual é {comp}?",
+      "hints": [
+        "A função composta $(g\\circ f)(a)$ significa $g(f(a))$. Trabalhe da função interna para a externa.",
+        "Calcule primeiro o valor da função interna e depois substitua-o na função externa."
+      ],
+      "expl": "{steps}, logo a resposta é {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Se $f^{-1}$ é a função inversa de $f(x)={f}$, qual é $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ significa o mesmo que $f(x)=y$.",
+        "Encontre o valor de x que satisfaz $f(x)={y}$."
+      ],
+      "expl": "{steps}, logo $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Qual é a maior raiz real de {eq}?",
+      "hints": [
+        "Fatorize-a num produto de fatores. A regra de Ruffini permite encontrar uma primeira raiz.",
+        "As raízes são os valores de x que anulam um fator."
+      ],
+      "expl": "{fact}, logo as raízes reais são {roots} e a maior é {ans}."
+    },
+    "rootSum": {
+      "prompt": "Qual é a soma de todas as raízes reais de {eq}?",
+      "hints": [
+        "Fatorize-a num produto de fatores. A regra de Ruffini permite encontrar uma primeira raiz.",
+        "As raízes são os valores de x que anulam um fator."
+      ],
+      "expl": "{fact}, logo as raízes reais são {roots} e a sua soma é {ans}."
+    },
+    "rootCount": {
+      "prompt": "Quantas raízes reais distintas tem {eq}?",
+      "hints": [
+        "Fatorize-a em fatores lineares ou quadráticos.",
+        "Use o discriminante para verificar se um fator quadrático $x^2+ax+b$ tem raízes reais."
+      ],
+      "expl": "{fact}, logo as raízes reais distintas são {roots}: {ans} no total."
+    },
+    "derivVal": {
+      "prompt": "Se $f(x)={f}$, qual é $f'({a})$?",
+      "hints": [
+        "Para uma função composta, derive a função externa e multiplique pela derivada da interna; para um quociente, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Use $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ e $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "De quantas maneiras se podem escolher {r} itens de {n} itens diferentes, com repetição permitida, e dispô-los em fila?",
+      "hints": [
+        "O número de arranjos com repetição é o número de escolhas multiplicado por si mesmo uma vez por cada lugar.",
+        "Cada lugar pode ser preenchido de {n} maneiras."
+      ],
+      "expl": "{prod}={ans} maneiras."
+    },
+    "permSame": {
+      "prompt": "De quantas maneiras se podem dispor em fila todas as letras de {word}?",
+      "hints": [
+        "Com letras repetidas, divida o fatorial do número total de letras pelo fatorial de cada número de repetições.",
+        "Conte quantas vezes aparece cada letra."
+      ],
+      "expl": "{calc}={ans} maneiras."
+    },
+    "repComb": {
+      "prompt": "De quantas maneiras se podem escolher {r} itens de {n} tipos diferentes, com repetição permitida?",
+      "hints": [
+        "Com n tipos e r itens escolhidos, o resultado é igual ao número de maneiras de escolher r entre n+r−1.",
+        "Substitua o número de tipos e o número de itens."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Qual é o coeficiente de $x^{{k}}$ no desenvolvimento de $(x+1)^{{n}}$?",
+      "hints": [
+        "Pelo teorema binomial, os coeficientes são números de combinações.",
+        "O coeficiente de $x^k$ é $_nC_k$, o número de maneiras de escolher k entre n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Mudar resultados é fabricação e viola a ética em pesquisa, então a afirmação é falsa.",
     "rd_up": "arredondamento para cima",
     "rd_down": "arredondamento para baixo",
-    "rd_half": "arredondamento ao mais próximo"
+    "rd_half": "arredondamento ao mais próximo",
+    "lg_contra": "Se a proposição «se p então q» é verdadeira, então a sua contrapositiva «se não q então não p» é sempre verdadeira.",
+    "lg_contra_r": "Uma proposição e a sua contrapositiva têm sempre o mesmo valor lógico, logo a proposição é verdadeira.",
+    "lg_conv": "Se a proposição «se p então q» é verdadeira, então a sua recíproca «se q então p» é sempre verdadeira.",
+    "lg_conv_r": "A recíproca pode ser falsa mesmo quando a proposição é verdadeira (por exemplo, «se x=2 então x²=4» é verdadeira, mas «se x²=4 então x=2» é falsa), logo a proposição é falsa."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "A regra da adição e o evento complementar",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. A probabilidade do evento complementar é $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrizes e as suas operações",
+      "concept": "Uma **matriz** é uma disposição retangular de números. A adição, a subtração e os múltiplos escalares fazem-se elemento a elemento; o elemento (i, j) de um produto $AB$ é a soma dos produtos dos elementos da linha i de $A$ pelos da coluna j de $B$, tomados por ordem.",
+      "example": "O elemento (1, 1) de $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ é $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Conjuntos e proposições",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, e um conjunto com n elementos tem $2^n$ subconjuntos. A contrapositiva de «se p então q» tem sempre o mesmo valor lógico que a proposição, mas a recíproca pode não ter.",
+      "example": "Se $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$, então $A\\cap B=\\{3,4\\}$ e $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Funções compostas e inversas",
+      "concept": "A composta $(g\\circ f)(x)=g(f(x))$ calcula-se da função interna para a externa. A função inversa verifica $f^{-1}(y)=x$ sempre que $f(x)=y$.",
+      "example": "Se $f(x)=2x+1$ e $g(x)=x^2$, então $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Fatorização e resolução de equações do terceiro e do quarto grau",
+      "concept": "Resolva uma equação do terceiro ou do quarto grau **fatorizando-a** (a regra de Ruffini ou uma mudança de variável ajuda) e encontrando os valores que anulam cada fator. Verifique um fator quadrático com o seu discriminante.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ dá $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Derivação de funções exponenciais, logarítmicas e trigonométricas",
+      "concept": "Derive uma função composta como (derivada da função externa)×(derivada da função interna), e um quociente com $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Além disso, $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ e $(\\cos x)'=-\\sin x$.",
+      "example": "Se $f(x)=e^{2x}$, então $f'(x)=2e^{2x}$ e $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Arranjos e combinações com repetição e o teorema binomial",
+      "concept": "O número de arranjos **com repetição** é o número de escolhas multiplicado por si mesmo uma vez por lugar. Com itens repetidos, divida o fatorial do total pelo fatorial de cada número de repetições; as **combinações com repetição** dão $_nH_r={}_{n+r-1}C_r$. Em $(x+1)^n$, o coeficiente de $x^k$ é $_nC_k$.",
+      "example": "As letras aabbc podem ser dispostas de $5!\\div(2!\\times2!)=30$ maneiras"
     }
   },
   "course": {

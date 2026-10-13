@@ -735,6 +735,126 @@
         "Soustrais $P(A)$ de 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Pour {mats}, quel est le coefficient ({r}, {c}) de {expr} ?",
+      "hints": [
+        "L'addition, la soustraction et les multiples scalaires de matrices se font coefficient par coefficient, à la même position.",
+        "Le coefficient (i, j) du produit $AB$ est la somme des produits des éléments de la ligne i de $A$ par ceux de la colonne j de $B$, pris dans l'ordre."
+      ],
+      "expl": "{steps}, donc la réponse est {ans}."
+    },
+    "setCount": {
+      "prompt": "Si $n(A)={na}$, $n(B)={nb}$ et $n(A\\cap B)={nab}$, que vaut $n(A\\cup B)$ ?",
+      "hints": [
+        "Utilisez $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Remplacez par les valeurs données, une par une."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Combien de sous-ensembles possède un ensemble de {n} éléments ?",
+      "hints": [
+        "Un ensemble de n éléments possède $2^n$ sous-ensembles.",
+        "Pensez qu'on décide, pour chaque élément, de le prendre ou non."
+      ],
+      "expl": "{prod}={ans}, donc il y a {ans} sous-ensembles."
+    },
+    "setOp": {
+      "prompt": "Pour {sets}, combien d'éléments possède {expr} ?",
+      "hints": [
+        "L'intersection contient les éléments qui sont dans les deux ensembles ; la réunion contient les éléments qui sont dans au moins l'un des deux.",
+        "Listez les éléments un par un, puis comptez-les."
+      ],
+      "expl": "{steps}, donc il y a {ans} éléments."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Pour l'énoncé « si p alors q », la réciproque est « si q alors p » et la contraposée est « si non q alors non p ».",
+        "La contraposée a toujours la même valeur de vérité que l'énoncé de départ."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Si $f(x)={f}$ et $g(x)={g}$, que vaut {comp} ?",
+      "hints": [
+        "La composée $(g\\circ f)(a)$ signifie $g(f(a))$. Travaillez de la fonction intérieure vers l'extérieure.",
+        "Calculez d'abord la valeur de la fonction intérieure, puis remplacez-la dans la fonction extérieure."
+      ],
+      "expl": "{steps}, donc la réponse est {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Si $f^{-1}$ est la fonction réciproque de $f(x)={f}$, que vaut $f^{-1}({y})$ ?",
+      "hints": [
+        "$f^{-1}(y)=x$ signifie la même chose que $f(x)=y$.",
+        "Trouvez la valeur de x qui vérifie $f(x)={y}$."
+      ],
+      "expl": "{steps}, donc $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Quelle est la plus grande racine réelle de {eq} ?",
+      "hints": [
+        "Factorisez en un produit de facteurs. La division synthétique permet de trouver une première racine.",
+        "Les racines sont les valeurs de x qui annulent un facteur."
+      ],
+      "expl": "{fact}, donc les racines réelles sont {roots} et la plus grande est {ans}."
+    },
+    "rootSum": {
+      "prompt": "Quelle est la somme de toutes les racines réelles de {eq} ?",
+      "hints": [
+        "Factorisez en un produit de facteurs. La division synthétique permet de trouver une première racine.",
+        "Les racines sont les valeurs de x qui annulent un facteur."
+      ],
+      "expl": "{fact}, donc les racines réelles sont {roots} et leur somme est {ans}."
+    },
+    "rootCount": {
+      "prompt": "Combien {eq} a-t-elle de racines réelles distinctes ?",
+      "hints": [
+        "Factorisez en facteurs du premier ou du second degré.",
+        "Utilisez le discriminant pour vérifier si un facteur du second degré $x^2+ax+b$ a des racines réelles."
+      ],
+      "expl": "{fact}, donc les racines réelles distinctes sont {roots} : il y en a {ans}."
+    },
+    "derivVal": {
+      "prompt": "Si $f(x)={f}$, que vaut $f'({a})$ ?",
+      "hints": [
+        "Pour une fonction composée, on dérive la fonction extérieure et on multiplie par la dérivée de la fonction intérieure ; pour un quotient, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Utilisez $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ et $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "De combien de façons peut-on choisir {r} objets parmi {n} objets différents, avec répétition autorisée, et les ranger en ligne ?",
+      "hints": [
+        "Le nombre d'arrangements avec répétition est le nombre de choix multiplié par lui-même une fois par place.",
+        "Chaque place peut être remplie de {n} façons."
+      ],
+      "expl": "{prod}={ans} façons."
+    },
+    "permSame": {
+      "prompt": "De combien de façons peut-on ranger en ligne toutes les lettres de {word} ?",
+      "hints": [
+        "Avec des lettres répétées, on divise la factorielle du nombre total de lettres par la factorielle de chaque nombre de répétitions.",
+        "Comptez combien de fois apparaît chaque lettre."
+      ],
+      "expl": "{calc}={ans} façons."
+    },
+    "repComb": {
+      "prompt": "De combien de façons peut-on choisir {r} objets parmi {n} types différents, avec répétition autorisée ?",
+      "hints": [
+        "Avec n types et r objets choisis, le nombre est égal au nombre de façons de choisir r parmi n+r−1.",
+        "Remplacez par le nombre de types et le nombre d'objets."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Quel est le coefficient de $x^{{k}}$ dans le développement de $(x+1)^{{n}}$ ?",
+      "hints": [
+        "D'après la formule du binôme de Newton, les coefficients sont des nombres de combinaisons.",
+        "Le coefficient de $x^k$ est $_nC_k$, le nombre de façons de choisir k parmi n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Modifier des résultats est une falsification et enfreint l'éthique de la recherche, donc l'affirmation est fausse.",
     "rd_up": "arrondi par excès",
     "rd_down": "arrondi par défaut",
-    "rd_half": "arrondi au plus proche"
+    "rd_half": "arrondi au plus proche",
+    "lg_contra": "Si l'énoncé « si p alors q » est vrai, alors sa contraposée « si non q alors non p » est toujours vraie aussi.",
+    "lg_contra_r": "Un énoncé et sa contraposée ont toujours la même valeur de vérité, donc l'énoncé est vrai.",
+    "lg_conv": "Si l'énoncé « si p alors q » est vrai, alors sa réciproque « si q alors p » est toujours vraie aussi.",
+    "lg_conv_r": "La réciproque peut être fausse même lorsque l'énoncé est vrai (par exemple, « si x=2 alors x²=4 » est vrai mais « si x²=4 alors x=2 » est faux), donc l'énoncé est faux."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "La formule d’addition et l’événement contraire",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. La probabilité de l’événement contraire est $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Les matrices et leurs opérations",
+      "concept": "Une **matrice** est un tableau rectangulaire de nombres. L'addition, la soustraction et les multiples scalaires se font coefficient par coefficient ; le coefficient (i, j) d'un produit $AB$ est la somme des produits des éléments de la ligne i de $A$ par ceux de la colonne j de $B$, pris dans l'ordre.",
+      "example": "Le coefficient (1, 1) de $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ est $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Ensembles et propositions",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, et un ensemble de n éléments possède $2^n$ sous-ensembles. La contraposée de « si p alors q » a toujours la même valeur de vérité que l'énoncé, mais la réciproque peut en avoir une autre.",
+      "example": "Si $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ alors $A\\cap B=\\{3,4\\}$ et $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Fonctions composées et fonctions réciproques",
+      "concept": "La composée $(g\\circ f)(x)=g(f(x))$ se calcule de la fonction intérieure vers l'extérieure. La fonction réciproque vérifie $f^{-1}(y)=x$ chaque fois que $f(x)=y$.",
+      "example": "Si $f(x)=2x+1$ et $g(x)=x^2$, alors $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Factoriser et résoudre des équations du troisième et du quatrième degré",
+      "concept": "Résolvez une équation du troisième ou du quatrième degré en la **factorisant** (la division synthétique ou un changement de variable aide) et en cherchant les valeurs qui annulent chaque facteur. Vérifiez un facteur du second degré avec son discriminant.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ donne $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Dérivation des fonctions exponentielles, logarithmiques et trigonométriques",
+      "concept": "On dérive une fonction composée comme (dérivée de la fonction extérieure)×(dérivée de la fonction intérieure), et un quotient avec $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. De plus, $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ et $(\\cos x)'=-\\sin x$.",
+      "example": "Si $f(x)=e^{2x}$ alors $f'(x)=2e^{2x}$ et $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Arrangements et combinaisons avec répétition, et formule du binôme",
+      "concept": "Le nombre d'arrangements **avec répétition** est le nombre de choix multiplié par lui-même une fois par place. Avec des objets répétés, on divise la factorielle du total par la factorielle de chaque nombre de répétitions ; les **combinaisons avec répétition** donnent $_nH_r={}_{n+r-1}C_r$. Dans $(x+1)^n$, le coefficient de $x^k$ est $_nC_k$.",
+      "example": "Les lettres aabbc peuvent être rangées de $5!\\div(2!\\times2!)=30$ façons"
     }
   },
   "course": {

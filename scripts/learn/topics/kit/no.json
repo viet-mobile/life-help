@@ -735,6 +735,126 @@
         "Trekk $P(A)$ fra 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "For {mats}, hva er elementet på plass ({r}, {c}) i {expr}?",
+      "hints": [
+        "Addisjon, subtraksjon og skalarmultipler av matriser regnes element for element på samme plass.",
+        "Element (i, j) i produktet $AB$ er summen av produktene av rad i i $A$ og kolonne j i $B$, tatt i rekkefølge."
+      ],
+      "expl": "{steps}, så svaret er {ans}."
+    },
+    "setCount": {
+      "prompt": "Hvis $n(A)={na}$, $n(B)={nb}$ og $n(A\\cap B)={nab}$, hva er $n(A\\cup B)$?",
+      "hints": [
+        "Bruk $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Sett inn de oppgitte verdiene én etter én."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Hvor mange delmengder har en mengde med {n} elementer?",
+      "hints": [
+        "En mengde med n elementer har $2^n$ delmengder.",
+        "Tenk deg at du for hvert element bestemmer om det skal være med eller ikke."
+      ],
+      "expl": "{prod}={ans}, så det finnes {ans} delmengder."
+    },
+    "setOp": {
+      "prompt": "For {sets}, hvor mange elementer har {expr}?",
+      "hints": [
+        "Snittet inneholder elementene som er i begge mengdene; unionen inneholder elementene som er i minst én av dem.",
+        "List opp elementene ett for ett, og tell dem."
+      ],
+      "expl": "{steps}, så den har {ans} elementer."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "For påstanden «hvis p, så q» er den omvendte påstanden «hvis q, så p» og kontrapositivet «hvis ikke q, så ikke p».",
+        "Kontrapositivet har alltid samme sannhetsverdi som den opprinnelige påstanden."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Hvis $f(x)={f}$ og $g(x)={g}$, hva er {comp}?",
+      "hints": [
+        "Den sammensatte funksjonen $(g\\circ f)(a)$ betyr $g(f(a))$. Regn fra den indre funksjonen og utover.",
+        "Finn først verdien av den indre funksjonen, og sett den deretter inn i den ytre funksjonen."
+      ],
+      "expl": "{steps}, så svaret er {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Hvis $f^{-1}$ er den inverse funksjonen til $f(x)={f}$, hva er $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ betyr det samme som $f(x)=y$.",
+        "Finn verdien av x som oppfyller $f(x)={y}$."
+      ],
+      "expl": "{steps}, så $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Hva er den største reelle roten til {eq}?",
+      "hints": [
+        "Faktoriser den til et produkt av faktorer. Polynomdivisjon kan gi en første rot.",
+        "Røttene er verdiene av x som gjør en faktor lik null."
+      ],
+      "expl": "{fact}, så de reelle røttene er {roots}, og den største er {ans}."
+    },
+    "rootSum": {
+      "prompt": "Hva er summen av alle de reelle røttene til {eq}?",
+      "hints": [
+        "Faktoriser den til et produkt av faktorer. Polynomdivisjon kan gi en første rot.",
+        "Røttene er verdiene av x som gjør en faktor lik null."
+      ],
+      "expl": "{fact}, så de reelle røttene er {roots}, og summen er {ans}."
+    },
+    "rootCount": {
+      "prompt": "Hvor mange ulike reelle røtter har {eq}?",
+      "hints": [
+        "Faktoriser den til lineære eller kvadratiske faktorer.",
+        "Bruk diskriminanten for å avgjøre om en kvadratisk faktor $x^2+ax+b$ har reelle røtter."
+      ],
+      "expl": "{fact}, så de ulike reelle røttene er {roots}: {ans} stykker."
+    },
+    "derivVal": {
+      "prompt": "Hvis $f(x)={f}$, hva er $f'({a})$?",
+      "hints": [
+        "For en sammensatt funksjon deriverer du den ytre funksjonen og multipliserer med den deriverte av den indre; for en brøk er $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Bruk $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ og $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "På hvor mange måter kan du velge {r} ting blant {n} ulike ting, med gjentakelse tillatt, og ordne dem på rad?",
+      "hints": [
+        "Antall ordninger med gjentakelse er antall valg multiplisert med seg selv én gang for hver plass.",
+        "Hver plass kan fylles på {n} måter."
+      ],
+      "expl": "{prod}={ans} måter."
+    },
+    "permSame": {
+      "prompt": "På hvor mange måter kan alle bokstavene i {word} ordnes på rad?",
+      "hints": [
+        "Når bokstaver gjentas, deler du fakultetet av det totale antallet bokstaver på fakultetet av hvert gjentatte antall.",
+        "Tell hvor mange ganger hver bokstav forekommer."
+      ],
+      "expl": "{calc}={ans} måter."
+    },
+    "repComb": {
+      "prompt": "På hvor mange måter kan du velge {r} ting blant {n} ulike sorter, med gjentakelse tillatt?",
+      "hints": [
+        "Med n sorter og r valgte ting er antallet lik antall måter å velge r av n+r−1.",
+        "Sett inn antall sorter og antall ting."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Hva er koeffisienten til $x^{{k}}$ i utviklingen av $(x+1)^{{n}}$?",
+      "hints": [
+        "Ifølge binomialsetningen er koeffisientene antall kombinasjoner.",
+        "Koeffisienten til $x^k$ er $_nC_k$, antall måter å velge k av n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Å endre resultater er forfalskning og bryter forskningsetikken, så påstanden er usann.",
     "rd_up": "avrunding opp",
     "rd_down": "avrunding ned",
-    "rd_half": "avrunding til nærmeste"
+    "rd_half": "avrunding til nærmeste",
+    "lg_contra": "Hvis påstanden «hvis p, så q» er sann, så er også kontrapositivet «hvis ikke q, så ikke p» alltid sant.",
+    "lg_contra_r": "En påstand og dens kontrapositiv har alltid samme sannhetsverdi, så påstanden er sann.",
+    "lg_conv": "Hvis påstanden «hvis p, så q» er sann, så er også den omvendte påstanden «hvis q, så p» alltid sann.",
+    "lg_conv_r": "Den omvendte påstanden kan være gal selv når påstanden er sann (for eksempel er «hvis x=2, så x²=4» sann, men «hvis x²=4, så x=2» er gal), så påstanden er gal."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Addisjonsregelen og komplementhendelsen",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Sannsynligheten for komplementhendelsen er $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matriser og regneoperasjoner med dem",
+      "concept": "En **matrise** er en rektangulær oppstilling av tall. Addisjon, subtraksjon og skalarmultipler regnes element for element; element (i, j) i et produkt $AB$ er summen av produktene av rad i i $A$ og kolonne j i $B$, tatt i rekkefølge.",
+      "example": "Element (1, 1) i $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ er $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Mengder og påstander",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, og en mengde med n elementer har $2^n$ delmengder. Kontrapositivet til «hvis p, så q» har alltid samme sannhetsverdi som påstanden, men den omvendte påstanden trenger ikke ha det.",
+      "example": "Hvis $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ er $A\\cap B=\\{3,4\\}$ og $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Sammensatte og inverse funksjoner",
+      "concept": "Den sammensatte funksjonen $(g\\circ f)(x)=g(f(x))$ regnes ut fra den indre funksjonen og utover. Den inverse funksjonen oppfyller $f^{-1}(y)=x$ nøyaktig når $f(x)=y$.",
+      "example": "Hvis $f(x)=2x+1$ og $g(x)=x^2$, er $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Faktorisering og løsning av tredjegrads- og fjerdegradsligninger",
+      "concept": "Løs en tredjegrads- eller fjerdegradsligning ved å **faktorisere** den (polynomdivisjon eller et variabelskifte hjelper) og finne verdiene som gjør hver faktor lik null. Sjekk en kvadratisk faktor med diskriminanten.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ gir $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Derivasjon av eksponential-, logaritme- og trigonometriske funksjoner",
+      "concept": "Deriver en sammensatt funksjon som (den deriverte av den ytre funksjonen)×(den deriverte av den indre funksjonen), og en brøk med $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Dessuten er $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ og $(\\cos x)'=-\\sin x$.",
+      "example": "Hvis $f(x)=e^{2x}$, er $f'(x)=2e^{2x}$ og $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutasjoner og kombinasjoner med gjentakelse, og binomialsetningen",
+      "concept": "Antall ordninger **med gjentakelse** er antall valg multiplisert med seg selv én gang per plass. Når noe gjentas, deler du fakultetet av totalen på fakultetet av hvert gjentatte antall; **kombinasjoner med gjentakelse** gir $_nH_r={}_{n+r-1}C_r$. I $(x+1)^n$ er koeffisienten til $x^k$ lik $_nC_k$.",
+      "example": "Bokstavene aabbc kan ordnes på $5!\\div(2!\\times2!)=30$ måter"
     }
   },
   "course": {

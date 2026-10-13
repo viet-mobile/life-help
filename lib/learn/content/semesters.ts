@@ -8,7 +8,7 @@ import type { Site } from "@/lib/learn/types";
  * not per semester; the semester of a topic follows the order of the 2022-revised textbooks (e.g. Math 3-1: shapes, division, multiplication,
  * length and time, fractions and decimals; 3-2: multiplication, division, circles, fractions, volume and weight, data). High-school
  * subjects are credit-based, so their split is the usual school ordering. English has no official semester table: lessons are split by the
- * usual textbook order (structure first, then use and reading). Review these assignments with a teacher before relying on them.
+ * usual textbook order (structure first, then use and reading). These assignments are this site's own scheduling judgement, not a semester fixed by the Ministry of Education; review them with a teacher before relying on them.
  */
 const MATH: Record<string, 0 | 1 | 2> = {
   // E1
@@ -30,11 +30,11 @@ const MATH: Record<string, 0 | 1 | 2> = {
   // M3
   "math-m3-l1": 1, "math-m3-l2": 1, "math-m3-l3": 1, "math-m3-l4": 2, "math-m3-l5": 2, "math-m3-geo1": 2, "math-m3-geo2": 2, "math-m3-sta1": 2,
   // H1
-  "math-h1-l1": 1, "math-h1-l2": 1, "math-h1-l3": 1, "math-h1-l4": 1, "math-h1-l5": 2, "math-h1-geo1": 2, "math-h1-geo2": 2,
+  "math-h1-l1": 1, "math-h1-l2": 1, "math-h1-l3": 1, "math-h1-l4": 1, "math-h1-l5": 2, "math-h1-geo1": 2, "math-h1-geo2": 2, "math-h1-mat1": 1, "math-h1-pol1": 1, "math-h1-set1": 2, "math-h1-fnc1": 2,
   // H2
   "math-h2-l1": 1, "math-h2-l2": 1, "math-h2-l3": 1, "math-h2-l4": 2, "math-h2-l5": 2, "math-h2-geo1": 1, "math-h2-geo2": 1, "math-h2-seq1": 1,
   // H3
-  "math-h3-l1": 1, "math-h3-l2": 1, "math-h3-l3": 1, "math-h3-l4": 2, "math-h3-l5": 2, "math-h3-geo1": 2, "math-h3-geo2": 2, "math-h3-pro1": 2,
+  "math-h3-l1": 1, "math-h3-l2": 1, "math-h3-l3": 1, "math-h3-l4": 2, "math-h3-l5": 2, "math-h3-geo1": 2, "math-h3-geo2": 2, "math-h3-pro1": 2, "math-h3-cal1": 2, "math-h3-cnt1": 1,
 };
 
 const ENGLISH: Record<string, 0 | 1 | 2> = {
@@ -43,15 +43,15 @@ const ENGLISH: Record<string, 0 | 1 | 2> = {
   // E2
   "en-e2-l1": 1, "en-e2-l2": 1, "en-e2-l3": 2, "en-e2-l4": 2, "en-e2-l5": 2,
   // E3
-  "en-e3-l1": 1, "en-e3-l2": 1, "en-e3-l3": 2, "en-e3-l4": 2, "en-e3-l5": 0,
+  "en-e3-l1": 1, "en-e3-l2": 1, "en-e3-l3": 2, "en-e3-l4": 2, "en-e3-l5": 0, "en-e3-abc1": 1, "en-e3-snd1": 1,
   // E4
   "en-e4-l1": 1, "en-e4-l2": 1, "en-e4-l3": 2, "en-e4-l4": 2, "en-e4-l5": 0,
   // E5
   "en-e5-l1": 1, "en-e5-l2": 1, "en-e5-l3": 2, "en-e5-l4": 2, "en-e5-l5": 0,
   // E6
-  "en-e6-l1": 1, "en-e6-l2": 1, "en-e6-l3": 2, "en-e6-l4": 2, "en-e6-l5": 0,
+  "en-e6-l1": 1, "en-e6-l2": 1, "en-e6-l3": 2, "en-e6-l4": 2, "en-e6-l5": 0, "en-e6-seq1": 2, "en-e6-pun1": 2,
   // M2
-  "en-m2-l1": 1, "en-m2-l2": 1, "en-m2-l3": 2, "en-m2-l4": 2, "en-m2-l5": 0,
+  "en-m2-l1": 1, "en-m2-l2": 1, "en-m2-l3": 2, "en-m2-l4": 2, "en-m2-l5": 0, "en-m2-sum1": 2,
   // M3
   "en-m3-l1": 1, "en-m3-l2": 1, "en-m3-l3": 2, "en-m3-l4": 2, "en-m3-l5": 0,
   // H1

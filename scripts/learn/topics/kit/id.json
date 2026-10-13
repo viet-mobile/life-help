@@ -735,6 +735,126 @@
         "Kurangkan $P(A)$ dari 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Untuk {mats}, berapakah entri ({r}, {c}) dari {expr}?",
+      "hints": [
+        "Penjumlahan, pengurangan, dan perkalian skalar matriks dikerjakan entri demi entri pada posisi yang sama.",
+        "Entri (i, j) dari hasil kali $AB$ adalah jumlah hasil kali baris i dari $A$ dan kolom j dari $B$, secara berurutan."
+      ],
+      "expl": "{steps}, jadi jawabannya {ans}."
+    },
+    "setCount": {
+      "prompt": "Jika $n(A)={na}$, $n(B)={nb}$, dan $n(A\\cap B)={nab}$, berapakah $n(A\\cup B)$?",
+      "hints": [
+        "Gunakan $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Masukkan nilai-nilai yang diketahui satu per satu."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Berapa banyak himpunan bagian dari himpunan dengan {n} anggota?",
+      "hints": [
+        "Himpunan dengan n anggota memiliki $2^n$ himpunan bagian.",
+        "Pikirkan untuk setiap anggota: dimasukkan atau tidak."
+      ],
+      "expl": "{prod}={ans}, jadi ada {ans} himpunan bagian."
+    },
+    "setOp": {
+      "prompt": "Untuk {sets}, berapa banyak anggota {expr}?",
+      "hints": [
+        "Irisan berisi anggota yang ada di kedua himpunan; gabungan berisi anggota yang ada di setidaknya satu himpunan.",
+        "Tuliskan anggotanya satu per satu, lalu hitung."
+      ],
+      "expl": "{steps}, jadi banyak anggotanya {ans}."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Untuk pernyataan “jika p maka q”, konversnya adalah “jika q maka p” dan kontraposisinya adalah “jika bukan q maka bukan p”.",
+        "Kontraposisi selalu memiliki nilai kebenaran yang sama dengan pernyataan semula."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Jika $f(x)={f}$ dan $g(x)={g}$, berapakah {comp}?",
+      "hints": [
+        "Fungsi komposisi $(g\\circ f)(a)$ berarti $g(f(a))$. Kerjakan dari fungsi dalam ke luar.",
+        "Cari dahulu nilai fungsi dalam, lalu masukkan ke fungsi luar."
+      ],
+      "expl": "{steps}, jadi jawabannya {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Jika $f^{-1}$ adalah fungsi invers dari $f(x)={f}$, berapakah $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ berarti sama dengan $f(x)=y$.",
+        "Cari nilai x yang memenuhi $f(x)={y}$."
+      ],
+      "expl": "{steps}, jadi $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Berapakah akar real terbesar dari {eq}?",
+      "hints": [
+        "Faktorkan menjadi hasil kali faktor-faktor. Pembagian sintetik dapat membantu menemukan akar pertama.",
+        "Akar-akarnya adalah nilai x yang membuat suatu faktor sama dengan nol."
+      ],
+      "expl": "{fact}, jadi akar-akar realnya {roots} dan yang terbesar adalah {ans}."
+    },
+    "rootSum": {
+      "prompt": "Berapakah jumlah semua akar real dari {eq}?",
+      "hints": [
+        "Faktorkan menjadi hasil kali faktor-faktor. Pembagian sintetik dapat membantu menemukan akar pertama.",
+        "Akar-akarnya adalah nilai x yang membuat suatu faktor sama dengan nol."
+      ],
+      "expl": "{fact}, jadi akar-akar realnya {roots} dan jumlahnya {ans}."
+    },
+    "rootCount": {
+      "prompt": "Berapa banyak akar real berbeda dari {eq}?",
+      "hints": [
+        "Faktorkan menjadi faktor linear atau kuadrat.",
+        "Gunakan diskriminan untuk memeriksa apakah faktor kuadrat $x^2+ax+b$ memiliki akar real."
+      ],
+      "expl": "{fact}, jadi akar real yang berbeda adalah {roots}: sebanyak {ans}."
+    },
+    "derivVal": {
+      "prompt": "Jika $f(x)={f}$, berapakah $f'({a})$?",
+      "hints": [
+        "Untuk fungsi komposisi, turunkan fungsi luar lalu kalikan dengan turunan fungsi dalam; untuk hasil bagi, gunakan $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Gunakan $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$, dan $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Ada berapa cara memilih {r} benda dari {n} benda berbeda, dengan pengulangan diperbolehkan, lalu menyusunnya dalam satu baris?",
+      "hints": [
+        "Banyak susunan dengan pengulangan adalah banyak pilihan yang dikalikan dengan dirinya sendiri sekali untuk tiap tempat.",
+        "Setiap tempat dapat diisi dengan {n} cara."
+      ],
+      "expl": "{prod}={ans} cara."
+    },
+    "permSame": {
+      "prompt": "Ada berapa cara menyusun semua huruf dari {word} dalam satu baris?",
+      "hints": [
+        "Jika ada huruf berulang, bagilah faktorial banyak seluruh huruf dengan faktorial banyak pengulangan tiap huruf.",
+        "Hitung berapa kali setiap huruf muncul."
+      ],
+      "expl": "{calc}={ans} cara."
+    },
+    "repComb": {
+      "prompt": "Ada berapa cara memilih {r} benda dari {n} jenis berbeda, dengan pengulangan diperbolehkan?",
+      "hints": [
+        "Dengan n jenis dan r benda yang dipilih, banyaknya sama dengan banyak cara memilih r dari n+r−1.",
+        "Masukkan banyak jenis dan banyak benda."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Berapakah koefisien $x^{{k}}$ dalam ekspansi $(x+1)^{{n}}$?",
+      "hints": [
+        "Menurut teorema binomial, koefisiennya adalah banyaknya kombinasi.",
+        "Koefisien $x^k$ adalah $_nC_k$, yaitu banyak cara memilih k dari n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Mengubah hasil adalah fabrikasi dan melanggar etika penelitian, jadi pernyataan itu salah.",
     "rd_up": "pembulatan ke atas",
     "rd_down": "pembulatan ke bawah",
-    "rd_half": "pembulatan ke terdekat"
+    "rd_half": "pembulatan ke terdekat",
+    "lg_contra": "Jika pernyataan “jika p maka q” benar, maka kontraposisinya “jika bukan q maka bukan p” juga selalu benar.",
+    "lg_contra_r": "Suatu pernyataan dan kontraposisinya selalu memiliki nilai kebenaran yang sama, jadi pernyataan itu benar.",
+    "lg_conv": "Jika pernyataan “jika p maka q” benar, maka konversnya “jika q maka p” juga selalu benar.",
+    "lg_conv_r": "Konvers bisa salah meskipun pernyataannya benar (misalnya, “jika x=2 maka x²=4” benar tetapi “jika x²=4 maka x=2” salah), jadi pernyataan itu salah."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Aturan penjumlahan dan komplemen",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Peluang komplemen adalah $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matriks dan operasinya",
+      "concept": "**Matriks** adalah susunan bilangan berbentuk persegi panjang. Penjumlahan, pengurangan, dan perkalian skalar dikerjakan entri demi entri; entri (i, j) dari hasil kali $AB$ adalah jumlah hasil kali baris i dari $A$ dan kolom j dari $B$, secara berurutan.",
+      "example": "Entri (1, 1) dari $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ adalah $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Himpunan dan pernyataan",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, dan himpunan dengan n anggota memiliki $2^n$ himpunan bagian. Kontraposisi dari “jika p maka q” selalu memiliki nilai kebenaran yang sama dengan pernyataannya, tetapi konversnya belum tentu.",
+      "example": "Jika $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ maka $A\\cap B=\\{3,4\\}$ dan $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Fungsi komposisi dan fungsi invers",
+      "concept": "Fungsi komposisi $(g\\circ f)(x)=g(f(x))$ dikerjakan dari fungsi dalam ke luar. Fungsi invers memenuhi $f^{-1}(y)=x$ setiap kali $f(x)=y$.",
+      "example": "Jika $f(x)=2x+1$ dan $g(x)=x^2$, maka $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Memfaktorkan dan menyelesaikan persamaan kubik dan kuartik",
+      "concept": "Selesaikan persamaan kubik atau kuartik dengan **memfaktorkannya** (pembagian sintetik atau substitusi membantu) dan mencari nilai yang membuat tiap faktor sama dengan nol. Periksa faktor kuadrat dengan diskriminannya.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ memberikan $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Menurunkan fungsi eksponensial, logaritma, dan trigonometri",
+      "concept": "Turunkan fungsi komposisi sebagai (turunan fungsi luar)×(turunan fungsi dalam), dan hasil bagi dengan $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Juga $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$, dan $(\\cos x)'=-\\sin x$.",
+      "example": "Jika $f(x)=e^{2x}$ maka $f'(x)=2e^{2x}$ dan $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutasi dan kombinasi dengan pengulangan, serta teorema binomial",
+      "concept": "Banyak susunan **dengan pengulangan** adalah banyak pilihan yang dikalikan dengan dirinya sendiri sekali untuk tiap tempat. Jika ada benda berulang, bagilah faktorial jumlah seluruhnya dengan faktorial banyak pengulangan tiap benda; **kombinasi dengan pengulangan** memberi $_nH_r={}_{n+r-1}C_r$. Dalam $(x+1)^n$ koefisien $x^k$ adalah $_nC_k$.",
+      "example": "Huruf aabbc dapat disusun dengan $5!\\div(2!\\times2!)=30$ cara"
     }
   },
   "course": {

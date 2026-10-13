@@ -32,7 +32,7 @@ const pairs: { where: string; en: string; ko: string }[] = [
 
 describe("coverage: every listenable English segment has canonical Korean (MISSING_CANONICAL_KOREAN = 0)", () => {
   it("lesson examples: one Korean per English item, for every lesson; excluded lessons have no English to speak and a recorded reason", () => {
-    expect(lessons.length).toBe(59);
+    expect(lessons.length).toBe(64);
     for (const l of lessons) {
       const items = exampleItems(l.example);
       expect(EXAMPLE_KO[l.id], l.id).toBeDefined();
@@ -46,15 +46,15 @@ describe("coverage: every listenable English segment has canonical Korean (MISSI
     for (const l of lessons) exampleItems(l.example).forEach((it, i) => { if (it.ko) expect(EXAMPLE_KO[l.id][i], `${l.id}:${i}`).toBe(it.ko); });
   });
   it("reading passages: every passage of every question has one Korean sentence per English sentence; no orphan entries", () => {
-    expect(passages.length).toBe(58);
+    expect(passages.length).toBe(66);
     for (const p of passages) {
       expect(PASSAGE_KO[p], p).toBeDefined();
       expect(PASSAGE_KO[p].length, p).toBe(splitSentences(p).length);
     }
     expect(Object.keys(PASSAGE_KO).sort()).toEqual([...passages].sort());
   });
-  it("totals: 241 segments, all paired", () => {
-    expect(pairs.length).toBe(241);
+  it("totals: 278 segments, all paired", () => {
+    expect(pairs.length).toBe(278);
     expect(pairs.filter((p) => !p.ko || !HANGUL.test(p.ko))).toEqual([]);
   });
   it("the Vietnamese UI derives exactly the same English segments, so the same pairs apply", () => {

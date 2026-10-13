@@ -3,8 +3,9 @@
  * structure / generator-sync tests describe the original curriculum, so they look at the bundles and overlays without that layer.
  * The layer itself is covered by tests/learn/geometry-semesters.test.ts.
  */
-const TOPIC = "(?:geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|econ|ai|job|cul|res)";
-const GEO = new RegExp(`^(?:m-(?:[a-z]\\d|el)-${TOPIC}\\d|m\\.(?:[a-z]\\d|el)\\.${TOPIC}\\d|math-(?:[a-z]\\d|el)-${TOPIC}\\d|math-el-${TOPIC})`);
+const TOPIC = "(?:geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|econ|ai|job|cul|res)";
+const ETOPIC = "(?:abc|snd|seq|pun|sum)"; // English topic lessons (scripts/learn/topics/english)
+const GEO = new RegExp(`^(?:m-(?:[a-z]\\d|el)-${TOPIC}\\d|m\\.(?:[a-z]\\d|el)\\.${TOPIC}\\d|math-(?:[a-z]\\d|el)-${TOPIC}\\d|math-el-${TOPIC}|e-[a-z]\\d-${ETOPIC}\\d|e\\.[a-z]\\d\\.${ETOPIC}\\d|en-[a-z]\\d-${ETOPIC}\\d)`);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function stripGeometry<T = any>(input: unknown): T {
   const x = JSON.parse(JSON.stringify(input)) as any;

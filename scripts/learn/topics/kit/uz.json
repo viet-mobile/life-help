@@ -735,6 +735,126 @@
         "1 dan $P(A)$ ni ayiring."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "{mats} uchun {expr} ning ({r}, {c}) elementi nimaga teng?",
+      "hints": [
+        "Matritsalarni qo‘shish, ayirish va songa ko‘paytirish bir xil o‘rindagi elementlar ustida alohida-alohida bajariladi.",
+        "$AB$ ko‘paytmaning (i, j) elementi $A$ ning i-satri va $B$ ning j-ustunidagi mos elementlar ko‘paytmalarining tartib bilan olingan yig‘indisiga teng."
+      ],
+      "expl": "{steps}, demak javob {ans}."
+    },
+    "setCount": {
+      "prompt": "Agar $n(A)={na}$, $n(B)={nb}$ va $n(A\\cap B)={nab}$ bo‘lsa, $n(A\\cup B)$ nimaga teng?",
+      "hints": [
+        "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$ formulasidan foydalaning.",
+        "Berilgan qiymatlarni birin-ketin qo‘ying."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "{n} ta elementli to‘plamning nechta qismi to‘plami bor?",
+      "hints": [
+        "n ta elementli to‘plamning $2^n$ ta qismi to‘plami bor.",
+        "Har bir element uchun uni olish yoki olmaslikni tanlash mumkinligini o‘ylab ko‘ring."
+      ],
+      "expl": "{prod}={ans}, demak {ans} ta qismi to‘plam bor."
+    },
+    "setOp": {
+      "prompt": "{sets} uchun {expr} nechta elementdan iborat?",
+      "hints": [
+        "Kesishma ikkala to‘plamga ham tegishli elementlardan, birlashma esa kamida bittasiga tegishli elementlardan iborat.",
+        "Elementlarni birin-ketin yozib chiqing, so‘ng sanang."
+      ],
+      "expl": "{steps}, demak u {ans} ta elementdan iborat."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "“Agar p bo‘lsa, q bo‘ladi” tasdig‘ining teskarisi “agar q bo‘lsa, p bo‘ladi”, qarama-qarshisiga teskarisi (kontrapozitsiya) esa “agar q bo‘lmasa, p ham bo‘lmaydi” tasdig‘idir.",
+        "Kontrapozitsiya har doim asl tasdiq bilan bir xil rost yoki yolg‘on qiymatga ega bo‘ladi."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Agar $f(x)={f}$ va $g(x)={g}$ bo‘lsa, {comp} nimaga teng?",
+      "hints": [
+        "Kompozitsiya $(g\\circ f)(a)$ bu $g(f(a))$ degani. Ichki funksiyadan tashqariga qarab hisoblang.",
+        "Avval ichki funksiyaning qiymatini toping, so‘ng uni tashqi funksiyaga qo‘ying."
+      ],
+      "expl": "{steps}, demak javob {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Agar $f^{-1}$ funksiya $f(x)={f}$ ning teskari funksiyasi bo‘lsa, $f^{-1}({y})$ nimaga teng?",
+      "hints": [
+        "$f^{-1}(y)=x$ bu $f(x)=y$ bilan bir xil ma’noni bildiradi.",
+        "$f(x)={y}$ ni qanoatlantiradigan x ning qiymatini toping."
+      ],
+      "expl": "{steps}, demak $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "{eq} tenglamaning eng katta haqiqiy ildizi nimaga teng?",
+      "hints": [
+        "Uni ko‘paytuvchilar ko‘paytmasiga ajrating. Birinchi ildizni topish uchun Horner sxemasidan (sintetik bo‘lish) foydalanish mumkin.",
+        "Ildizlar ko‘paytuvchilardan birini nolga aylantiradigan x qiymatlaridir."
+      ],
+      "expl": "{fact}, demak haqiqiy ildizlar {roots} va eng kattasi {ans}."
+    },
+    "rootSum": {
+      "prompt": "{eq} tenglamaning barcha haqiqiy ildizlari yig‘indisi nimaga teng?",
+      "hints": [
+        "Uni ko‘paytuvchilar ko‘paytmasiga ajrating. Birinchi ildizni topish uchun Horner sxemasidan (sintetik bo‘lish) foydalanish mumkin.",
+        "Ildizlar ko‘paytuvchilardan birini nolga aylantiradigan x qiymatlaridir."
+      ],
+      "expl": "{fact}, demak haqiqiy ildizlar {roots} va ularning yig‘indisi {ans}."
+    },
+    "rootCount": {
+      "prompt": "{eq} tenglamaning nechta turli haqiqiy ildizi bor?",
+      "hints": [
+        "Uni chiziqli yoki kvadrat ko‘paytuvchilarga ajrating.",
+        "$x^2+ax+b$ kvadrat ko‘paytuvchining haqiqiy ildizlari bor-yo‘qligini diskriminant yordamida tekshiring."
+      ],
+      "expl": "{fact}, demak turli haqiqiy ildizlar {roots}: jami {ans} ta."
+    },
+    "derivVal": {
+      "prompt": "Agar $f(x)={f}$ bo‘lsa, $f'({a})$ nimaga teng?",
+      "hints": [
+        "Murakkab funksiyada tashqi funksiyadan hosila olib, ichki funksiyaning hosilasiga ko‘paytiring; nisbat uchun $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "$(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ va $(\\cos x)'=-\\sin x$ formulalaridan foydalaning."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "{n} ta turli narsadan takrorlashga ruxsat bilan {r} tasini tanlab, ularni bir qatorga necha xil usulda joylashtirish mumkin?",
+      "hints": [
+        "Takrorlanuvchi o‘rinlashtirishlar soni tanlovlar sonining har bir o‘rin uchun o‘ziga bir marta ko‘paytirilganiga teng.",
+        "Har bir o‘rinni {n} xil usulda to‘ldirish mumkin."
+      ],
+      "expl": "{prod}={ans} usul."
+    },
+    "permSame": {
+      "prompt": "{word} so‘zining barcha harflarini bir qatorga necha xil usulda joylashtirish mumkin?",
+      "hints": [
+        "Harflar takrorlansa, harflarning umumiy soni faktorialini har bir takrorlanish soni faktoriallariga bo‘ling.",
+        "Har bir harf necha marta kelganini sanang."
+      ],
+      "expl": "{calc}={ans} usul."
+    },
+    "repComb": {
+      "prompt": "{n} xil turdagi narsadan takrorlashga ruxsat bilan {r} tasini necha xil usulda tanlash mumkin?",
+      "hints": [
+        "n ta tur va r ta tanlovda usullar soni n+r−1 tadan r tasini tanlash usullari soniga teng.",
+        "Turlar soni va tanlanadigan narsalar sonini qo‘ying."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "$(x+1)^{{n}}$ yoyilmasida $x^{{k}}$ ning koeffitsiyenti nimaga teng?",
+      "hints": [
+        "Nyuton binomi formulasiga ko‘ra koeffitsiyentlar guruhlashlar soniga teng.",
+        "$x^k$ ning koeffitsiyenti $_nC_k$, ya’ni n tadan k tasini tanlash usullari soni."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Natijalarni o'zgartirish soxtalashtirish bo'lib, tadqiqot etikasini buzadi, shuning uchun bu fikr noto'g'ri.",
     "rd_up": "yuqoriga yaxlitlash",
     "rd_down": "pastga yaxlitlash",
-    "rd_half": "eng yaqinigacha yaxlitlash"
+    "rd_half": "eng yaqinigacha yaxlitlash",
+    "lg_contra": "Agar “agar p bo‘lsa, q bo‘ladi” tasdig‘i rost bo‘lsa, uning kontrapozitsiyasi “agar q bo‘lmasa, p ham bo‘lmaydi” ham har doim rost bo‘ladi.",
+    "lg_contra_r": "Tasdiq va uning kontrapozitsiyasi har doim bir xil rost yoki yolg‘on qiymatga ega, shuning uchun tasdiq rost.",
+    "lg_conv": "Agar “agar p bo‘lsa, q bo‘ladi” tasdig‘i rost bo‘lsa, uning teskarisi “agar q bo‘lsa, p bo‘ladi” ham har doim rost bo‘ladi.",
+    "lg_conv_r": "Tasdiq rost bo‘lsa ham, uning teskarisi yolg‘on bo‘lishi mumkin (masalan, “agar x=2 bo‘lsa, x²=4” rost, lekin “agar x²=4 bo‘lsa, x=2” yolg‘on), shuning uchun tasdiq yolg‘on."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Qo‘shish qoidasi va qarama-qarshi hodisa",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Qarama-qarshi hodisaning ehtimolligi $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matritsalar va ular ustida amallar",
+      "concept": "**Matritsa** — sonlarning to‘g‘ri to‘rtburchak jadvali. Qo‘shish, ayirish va songa ko‘paytirish elementlar bo‘yicha bajariladi; $AB$ ko‘paytmaning (i, j) elementi $A$ ning i-satri va $B$ ning j-ustunidagi mos elementlar ko‘paytmalarining tartib bilan olingan yig‘indisiga teng.",
+      "example": "$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ ning (1, 1) elementi $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "To‘plamlar va mulohazalar",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, va n ta elementli to‘plamning $2^n$ ta qismi to‘plami bor. “Agar p bo‘lsa, q bo‘ladi” ning kontrapozitsiyasi har doim asl tasdiq bilan bir xil rost yoki yolg‘on qiymatga ega, teskarisi esa shunday bo‘lmasligi mumkin.",
+      "example": "Agar $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ bo‘lsa, $A\\cap B=\\{3,4\\}$ va $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Kompozitsiya va teskari funksiyalar",
+      "concept": "Kompozitsiya $(g\\circ f)(x)=g(f(x))$ ichki funksiyadan tashqariga qarab hisoblanadi. Teskari funksiya $f(x)=y$ bo‘lganda doim $f^{-1}(y)=x$ shartini qanoatlantiradi.",
+      "example": "Agar $f(x)=2x+1$ va $g(x)=x^2$ bo‘lsa, $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Kub va to‘rtinchi darajali tenglamalarni ko‘paytuvchilarga ajratib yechish",
+      "concept": "Kub yoki to‘rtinchi darajali tenglamani **ko‘paytuvchilarga ajratib** (Horner sxemasi yoki almashtirish yordam beradi) va har bir ko‘paytuvchini nolga aylantiradigan qiymatlarni topib yeching. Kvadrat ko‘paytuvchini diskriminant bilan tekshiring.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ dan $x=1,\\ 2,\\ -3$ kelib chiqadi"
+    },
+    "H3cal1": {
+      "title": "Ko‘rsatkichli, logarifmik va trigonometrik funksiyalarning hosilasi",
+      "concept": "Murakkab funksiyaning hosilasi (tashqi funksiya hosilasi)×(ichki funksiya hosilasi) ga teng, nisbatniki esa $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$ bilan topiladi. Shuningdek, $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ va $(\\cos x)'=-\\sin x$.",
+      "example": "Agar $f(x)=e^{2x}$ bo‘lsa, $f'(x)=2e^{2x}$ va $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Takrorlanuvchi o‘rin almashtirish va guruhlashlar hamda Nyuton binomi",
+      "concept": "**Takrorlanuvchi** o‘rinlashtirishlar soni tanlovlar sonining har bir o‘rin uchun o‘ziga bir marta ko‘paytirilganiga teng. Takrorlanuvchi elementlar bo‘lsa, umumiy son faktorialini har bir takrorlanish soni faktoriallariga bo‘ling; **takrorlanuvchi guruhlashlar** $_nH_r={}_{n+r-1}C_r$ ni beradi. $(x+1)^n$ da $x^k$ ning koeffitsiyenti $_nC_k$ ga teng.",
+      "example": "aabbc harflarini $5!\\div(2!\\times2!)=30$ xil usulda joylashtirish mumkin"
     }
   },
   "course": {

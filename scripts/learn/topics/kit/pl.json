@@ -735,6 +735,126 @@
         "Odejmij $P(A)$ od 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Dla {mats} ile wynosi element na pozycji ({r}, {c}) macierzy {expr}?",
+      "hints": [
+        "Dodawanie, odejmowanie i mnożenie macierzy przez liczbę wykonuje się element po elemencie na tych samych pozycjach.",
+        "Element (i, j) iloczynu $AB$ to suma iloczynów elementów i-tego wiersza macierzy $A$ i j-tej kolumny macierzy $B$, branych po kolei."
+      ],
+      "expl": "{steps}, więc odpowiedź to {ans}."
+    },
+    "setCount": {
+      "prompt": "Jeśli $n(A)={na}$, $n(B)={nb}$ oraz $n(A\\cap B)={nab}$, to ile wynosi $n(A\\cup B)$?",
+      "hints": [
+        "Skorzystaj ze wzoru $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Podstaw podane wartości jedna po drugiej."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Ile podzbiorów ma zbiór o {n} elementach?",
+      "hints": [
+        "Zbiór n-elementowy ma $2^n$ podzbiorów.",
+        "Dla każdego elementu zdecyduj, czy należy go uwzględnić, czy nie."
+      ],
+      "expl": "{prod}={ans}, więc jest {ans} podzbiorów."
+    },
+    "setOp": {
+      "prompt": "Dla {sets} ile elementów ma {expr}?",
+      "hints": [
+        "Część wspólna zawiera elementy należące do obu zbiorów; suma zawiera elementy należące do co najmniej jednego z nich.",
+        "Wypisz elementy po kolei, a potem je policz."
+      ],
+      "expl": "{steps}, więc ma {ans} elementów."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Dla zdania „jeśli p, to q” zdaniem odwrotnym jest „jeśli q, to p”, a zdaniem przeciwstawnym „jeśli nie q, to nie p”.",
+        "Zdanie przeciwstawne zawsze ma tę samą wartość logiczną co zdanie wyjściowe."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Jeśli $f(x)={f}$ i $g(x)={g}$, to ile wynosi {comp}?",
+      "hints": [
+        "Złożenie $(g\\circ f)(a)$ oznacza $g(f(a))$. Licz od funkcji wewnętrznej na zewnątrz.",
+        "Najpierw znajdź wartość funkcji wewnętrznej, a potem podstaw ją do funkcji zewnętrznej."
+      ],
+      "expl": "{steps}, więc odpowiedź to {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Jeśli $f^{-1}$ jest funkcją odwrotną do $f(x)={f}$, to ile wynosi $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ oznacza to samo co $f(x)=y$.",
+        "Znajdź wartość x spełniającą $f(x)={y}$."
+      ],
+      "expl": "{steps}, więc $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Jaki jest największy pierwiastek rzeczywisty równania {eq}?",
+      "hints": [
+        "Rozłóż wielomian na czynniki. Schemat Hornera pozwala znaleźć pierwszy pierwiastek.",
+        "Pierwiastki to wartości x, dla których któryś czynnik jest równy zero."
+      ],
+      "expl": "{fact}, więc pierwiastki rzeczywiste to {roots}, a największy z nich to {ans}."
+    },
+    "rootSum": {
+      "prompt": "Ile wynosi suma wszystkich pierwiastków rzeczywistych równania {eq}?",
+      "hints": [
+        "Rozłóż wielomian na czynniki. Schemat Hornera pozwala znaleźć pierwszy pierwiastek.",
+        "Pierwiastki to wartości x, dla których któryś czynnik jest równy zero."
+      ],
+      "expl": "{fact}, więc pierwiastki rzeczywiste to {roots}, a ich suma wynosi {ans}."
+    },
+    "rootCount": {
+      "prompt": "Ile różnych pierwiastków rzeczywistych ma równanie {eq}?",
+      "hints": [
+        "Rozłóż wielomian na czynniki liniowe lub kwadratowe.",
+        "Za pomocą wyróżnika sprawdź, czy czynnik kwadratowy $x^2+ax+b$ ma pierwiastki rzeczywiste."
+      ],
+      "expl": "{fact}, więc różne pierwiastki rzeczywiste to {roots}: jest ich {ans}."
+    },
+    "derivVal": {
+      "prompt": "Jeśli $f(x)={f}$, to ile wynosi $f'({a})$?",
+      "hints": [
+        "Dla funkcji złożonej oblicz pochodną funkcji zewnętrznej i pomnóż przez pochodną funkcji wewnętrznej; dla ilorazu $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Skorzystaj z $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ oraz $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Na ile sposobów można wybrać {r} elementów spośród {n} różnych elementów, z powtórzeniami, i ustawić je w rzędzie?",
+      "hints": [
+        "Liczba ustawień z powtórzeniami to liczba możliwości wyboru pomnożona przez siebie tyle razy, ile jest miejsc.",
+        "Każde miejsce można zapełnić na {n} sposobów."
+      ],
+      "expl": "{prod}={ans} sposobów."
+    },
+    "permSame": {
+      "prompt": "Na ile sposobów można ustawić w rzędzie wszystkie litery słowa {word}?",
+      "hints": [
+        "Gdy litery się powtarzają, podziel silnię z łącznej liczby liter przez silnię z liczby powtórzeń każdej litery.",
+        "Policz, ile razy występuje każda litera."
+      ],
+      "expl": "{calc}={ans} sposobów."
+    },
+    "repComb": {
+      "prompt": "Na ile sposobów można wybrać {r} elementów spośród {n} różnych rodzajów, z powtórzeniami?",
+      "hints": [
+        "Dla n rodzajów i r wybranych elementów wynik równa się liczbie sposobów wyboru r spośród n+r−1.",
+        "Podstaw liczbę rodzajów i liczbę elementów."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Jaki jest współczynnik przy $x^{{k}}$ w rozwinięciu $(x+1)^{{n}}$?",
+      "hints": [
+        "Zgodnie ze wzorem dwumianowym Newtona współczynniki są liczbami kombinacji.",
+        "Współczynnik przy $x^k$ to $_nC_k$, czyli liczba sposobów wyboru k spośród n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Zmiana wyników to fałszowanie danych i łamie etykę badań, więc to zdanie jest fałszywe.",
     "rd_up": "zaokrąglenie w górę",
     "rd_down": "zaokrąglenie w dół",
-    "rd_half": "zaokrąglenie do najbliższej wartości"
+    "rd_half": "zaokrąglenie do najbliższej wartości",
+    "lg_contra": "Jeśli zdanie „jeśli p, to q” jest prawdziwe, to jego zdanie przeciwstawne „jeśli nie q, to nie p” jest zawsze prawdziwe.",
+    "lg_contra_r": "Zdanie i jego zdanie przeciwstawne zawsze mają tę samą wartość logiczną, więc zdanie jest prawdziwe.",
+    "lg_conv": "Jeśli zdanie „jeśli p, to q” jest prawdziwe, to jego zdanie odwrotne „jeśli q, to p” jest zawsze prawdziwe.",
+    "lg_conv_r": "Zdanie odwrotne może być fałszywe, nawet gdy zdanie wyjściowe jest prawdziwe (na przykład „jeśli x=2, to x²=4” jest prawdziwe, ale „jeśli x²=4, to x=2” jest fałszywe), więc zdanie jest fałszywe."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Wzór na sumę zdarzeń i zdarzenie przeciwne",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Prawdopodobieństwo zdarzenia przeciwnego to $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Macierze i działania na nich",
+      "concept": "**Macierz** to prostokątna tablica liczb. Dodawanie, odejmowanie i mnożenie przez liczbę wykonuje się element po elemencie; element (i, j) iloczynu $AB$ to suma iloczynów elementów i-tego wiersza macierzy $A$ i j-tej kolumny macierzy $B$, branych po kolei.",
+      "example": "Element (1, 1) iloczynu $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ to $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Zbiory i zdania logiczne",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, a zbiór n-elementowy ma $2^n$ podzbiorów. Zdanie przeciwstawne do „jeśli p, to q” zawsze ma tę samą wartość logiczną co zdanie wyjściowe, ale zdanie odwrotne już nie musi.",
+      "example": "Jeśli $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$, to $A\\cap B=\\{3,4\\}$ i $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Funkcje złożone i odwrotne",
+      "concept": "Złożenie $(g\\circ f)(x)=g(f(x))$ oblicza się od funkcji wewnętrznej na zewnątrz. Funkcja odwrotna spełnia $f^{-1}(y)=x$ zawsze, gdy $f(x)=y$.",
+      "example": "Jeśli $f(x)=2x+1$ i $g(x)=x^2$, to $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Rozkład na czynniki i rozwiązywanie równań trzeciego i czwartego stopnia",
+      "concept": "Równanie trzeciego lub czwartego stopnia rozwiązujemy, **rozkładając je na czynniki** (pomaga schemat Hornera lub podstawienie) i szukając wartości, dla których każdy czynnik jest równy zero. Czynnik kwadratowy sprawdzamy za pomocą wyróżnika.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ daje $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Pochodne funkcji wykładniczych, logarytmicznych i trygonometrycznych",
+      "concept": "Funkcję złożoną różniczkujemy jako (pochodna funkcji zewnętrznej)×(pochodna funkcji wewnętrznej), a iloraz według wzoru $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Ponadto $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ oraz $(\\cos x)'=-\\sin x$.",
+      "example": "Jeśli $f(x)=e^{2x}$, to $f'(x)=2e^{2x}$ i $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutacje i kombinacje z powtórzeniami oraz wzór dwumianowy Newtona",
+      "concept": "Liczba ustawień **z powtórzeniami** to liczba możliwości wyboru pomnożona przez siebie tyle razy, ile jest miejsc. Gdy elementy się powtarzają, dzielimy silnię z całkowitej liczby przez silnię z liczby powtórzeń każdego z nich; **kombinacje z powtórzeniami** dają $_nH_r={}_{n+r-1}C_r$. W rozwinięciu $(x+1)^n$ współczynnik przy $x^k$ wynosi $_nC_k$.",
+      "example": "Litery aabbc można ustawić na $5!\\div(2!\\times2!)=30$ sposobów"
     }
   },
   "course": {

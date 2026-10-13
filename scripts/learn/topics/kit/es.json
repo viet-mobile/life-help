@@ -735,6 +735,126 @@
         "Resta $P(A)$ de 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Para {mats}, ¿cuál es el elemento ({r}, {c}) de {expr}?",
+      "hints": [
+        "La suma, la resta y los múltiplos escalares de matrices se hacen elemento a elemento, en la misma posición.",
+        "El elemento (i, j) del producto $AB$ es la suma de los productos de la fila i de $A$ por la columna j de $B$, tomados en orden."
+      ],
+      "expl": "{steps}, así que la respuesta es {ans}."
+    },
+    "setCount": {
+      "prompt": "Si $n(A)={na}$, $n(B)={nb}$ y $n(A\\cap B)={nab}$, ¿cuánto vale $n(A\\cup B)$?",
+      "hints": [
+        "Usa $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Sustituye los valores dados uno por uno."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "¿Cuántos subconjuntos tiene un conjunto con {n} elementos?",
+      "hints": [
+        "Un conjunto con n elementos tiene $2^n$ subconjuntos.",
+        "Piensa que para cada elemento se decide si se incluye o no."
+      ],
+      "expl": "{prod}={ans}, así que hay {ans} subconjuntos."
+    },
+    "setOp": {
+      "prompt": "Para {sets}, ¿cuántos elementos tiene {expr}?",
+      "hints": [
+        "La intersección contiene los elementos que están en ambos conjuntos; la unión contiene los elementos que están en al menos uno de ellos.",
+        "Escribe los elementos uno por uno y luego cuéntalos."
+      ],
+      "expl": "{steps}, así que tiene {ans} elementos."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Para el enunciado «si p entonces q», el recíproco es «si q entonces p» y el contrarrecíproco es «si no q entonces no p».",
+        "El contrarrecíproco siempre tiene el mismo valor de verdad que el enunciado original."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Si $f(x)={f}$ y $g(x)={g}$, ¿cuánto vale {comp}?",
+      "hints": [
+        "La composición $(g\\circ f)(a)$ significa $g(f(a))$. Trabaja desde la función interior hacia afuera.",
+        "Halla primero el valor de la función interior y luego sustitúyelo en la función exterior."
+      ],
+      "expl": "{steps}, así que la respuesta es {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Si $f^{-1}$ es la función inversa de $f(x)={f}$, ¿cuánto vale $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ significa lo mismo que $f(x)=y$.",
+        "Halla el valor de x que cumple $f(x)={y}$."
+      ],
+      "expl": "{steps}, así que $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "¿Cuál es la mayor raíz real de {eq}?",
+      "hints": [
+        "Factorízala como producto de factores. La división sintética permite hallar una primera raíz.",
+        "Las raíces son los valores de x que anulan un factor."
+      ],
+      "expl": "{fact}, así que las raíces reales son {roots} y la mayor es {ans}."
+    },
+    "rootSum": {
+      "prompt": "¿Cuál es la suma de todas las raíces reales de {eq}?",
+      "hints": [
+        "Factorízala como producto de factores. La división sintética permite hallar una primera raíz.",
+        "Las raíces son los valores de x que anulan un factor."
+      ],
+      "expl": "{fact}, así que las raíces reales son {roots} y su suma es {ans}."
+    },
+    "rootCount": {
+      "prompt": "¿Cuántas raíces reales distintas tiene {eq}?",
+      "hints": [
+        "Factorízala en factores lineales o cuadráticos.",
+        "Usa el discriminante para comprobar si un factor cuadrático $x^2+ax+b$ tiene raíces reales."
+      ],
+      "expl": "{fact}, así que las raíces reales distintas son {roots}: hay {ans}."
+    },
+    "derivVal": {
+      "prompt": "Si $f(x)={f}$, ¿cuánto vale $f'({a})$?",
+      "hints": [
+        "Para una función compuesta, se deriva la función exterior y se multiplica por la derivada de la interior; para un cociente, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Usa $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ y $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "¿De cuántas maneras se pueden elegir {r} objetos de entre {n} objetos distintos, con repetición permitida, y ordenarlos en fila?",
+      "hints": [
+        "El número de ordenaciones con repetición es el número de opciones multiplicado por sí mismo una vez por cada lugar.",
+        "Cada lugar se puede ocupar de {n} maneras."
+      ],
+      "expl": "{prod}={ans} maneras."
+    },
+    "permSame": {
+      "prompt": "¿De cuántas maneras se pueden ordenar en fila todas las letras de {word}?",
+      "hints": [
+        "Con letras repetidas, se divide el factorial del número total de letras entre el factorial de cada número de repeticiones.",
+        "Cuenta cuántas veces aparece cada letra."
+      ],
+      "expl": "{calc}={ans} maneras."
+    },
+    "repComb": {
+      "prompt": "¿De cuántas maneras se pueden elegir {r} objetos de entre {n} tipos distintos, con repetición permitida?",
+      "hints": [
+        "Con n tipos y r objetos elegidos, el número es igual al de maneras de elegir r entre n+r−1.",
+        "Sustituye el número de tipos y el número de objetos."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "¿Cuál es el coeficiente de $x^{{k}}$ en el desarrollo de $(x+1)^{{n}}$?",
+      "hints": [
+        "Por el teorema del binomio, los coeficientes son números de combinaciones.",
+        "El coeficiente de $x^k$ es $_nC_k$, el número de maneras de elegir k entre n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Cambiar los resultados es falsificación y rompe la ética de la investigación, así que la afirmación es falsa.",
     "rd_up": "redondeo hacia arriba",
     "rd_down": "redondeo hacia abajo",
-    "rd_half": "redondeo al más cercano"
+    "rd_half": "redondeo al más cercano",
+    "lg_contra": "Si el enunciado «si p entonces q» es verdadero, entonces su contrarrecíproco «si no q entonces no p» también es siempre verdadero.",
+    "lg_contra_r": "Un enunciado y su contrarrecíproco siempre tienen el mismo valor de verdad, así que el enunciado es verdadero.",
+    "lg_conv": "Si el enunciado «si p entonces q» es verdadero, entonces su recíproco «si q entonces p» también es siempre verdadero.",
+    "lg_conv_r": "El recíproco puede ser falso aunque el enunciado sea verdadero (por ejemplo, «si x=2 entonces x²=4» es verdadero pero «si x²=4 entonces x=2» es falso), así que el enunciado es falso."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "La regla de la suma y el suceso contrario",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. La probabilidad del suceso contrario es $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrices y sus operaciones",
+      "concept": "Una **matriz** es una disposición rectangular de números. La suma, la resta y los múltiplos escalares se hacen elemento a elemento; el elemento (i, j) de un producto $AB$ es la suma de los productos de la fila i de $A$ por la columna j de $B$, tomados en orden.",
+      "example": "El elemento (1, 1) de $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ es $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Conjuntos y proposiciones",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, y un conjunto con n elementos tiene $2^n$ subconjuntos. El contrarrecíproco de «si p entonces q» siempre tiene el mismo valor de verdad que el enunciado, pero el recíproco puede no tenerlo.",
+      "example": "Si $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ entonces $A\\cap B=\\{3,4\\}$ y $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Funciones compuestas e inversas",
+      "concept": "La composición $(g\\circ f)(x)=g(f(x))$ se calcula desde la función interior hacia afuera. La función inversa cumple $f^{-1}(y)=x$ siempre que $f(x)=y$.",
+      "example": "Si $f(x)=2x+1$ y $g(x)=x^2$, entonces $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Factorización y resolución de ecuaciones cúbicas y cuárticas",
+      "concept": "Resuelve una ecuación cúbica o cuártica **factorizándola** (la división sintética o un cambio de variable ayudan) y hallando los valores que anulan cada factor. Comprueba un factor cuadrático con su discriminante.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ da $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Derivación de funciones exponenciales, logarítmicas y trigonométricas",
+      "concept": "Una función compuesta se deriva como (derivada de la función exterior)×(derivada de la función interior), y un cociente con $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Además, $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ y $(\\cos x)'=-\\sin x$.",
+      "example": "Si $f(x)=e^{2x}$ entonces $f'(x)=2e^{2x}$ y $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutaciones y combinaciones con repetición, y teorema del binomio",
+      "concept": "El número de ordenaciones **con repetición** es el número de opciones multiplicado por sí mismo una vez por cada lugar. Con objetos repetidos, se divide el factorial del total entre el factorial de cada número de repeticiones; las **combinaciones con repetición** dan $_nH_r={}_{n+r-1}C_r$. En $(x+1)^n$ el coeficiente de $x^k$ es $_nC_k$.",
+      "example": "Las letras aabbc se pueden ordenar de $5!\\div(2!\\times2!)=30$ maneras"
     }
   },
   "course": {

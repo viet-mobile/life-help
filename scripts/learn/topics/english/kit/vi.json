@@ -1,0 +1,103 @@
+{
+  "q": {
+    "capToLow": {
+      "prompt": "Chữ thường của chữ in hoa {up} là chữ nào?",
+      "hints": [
+        "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+        "Cẩn thận với những chữ cái trông giống nhau, như b, d, p và q."
+      ],
+      "expl": "Chữ thường của {up} là {ans}."
+    },
+    "lowToCap": {
+      "prompt": "Chữ in hoa của chữ thường {low} là chữ nào?",
+      "hints": [
+        "Hãy nghĩ chữ in hoa và chữ thường như từng cặp.",
+        "Hãy tưởng tượng viết chữ thường to và cao lên."
+      ],
+      "expl": "Chữ in hoa của {low} là {ans}."
+    },
+    "pairPick": {
+      "prompt": "Chọn cặp có chữ in hoa và chữ thường khớp nhau.",
+      "hints": [
+        "Trong mỗi cặp, chữ đầu là chữ in hoa và chữ sau là chữ thường.",
+        "Kiểm tra từng cặp xem chữ thường có phải là cùng một chữ với chữ in hoa không."
+      ],
+      "expl": "{ans} là một cặp chữ in hoa và chữ thường khớp nhau."
+    },
+    "sameStart": {
+      "prompt": "Từ nào bắt đầu bằng cùng âm với “{word}”?",
+      "hints": [
+        "Hãy đọc to âm đầu của “{word}”.",
+        "Tìm từ bắt đầu bằng cùng âm đó. Chữ cái đầu có thể khác nhau."
+      ],
+      "expl": "“{word}” và “{ans}” đều bắt đầu bằng âm {sound}."
+    },
+    "storyFirst": {
+      "prompt": "Đọc đoạn văn và chọn điều đã xảy ra đầu tiên.\n\n\"{text}\"",
+      "hints": [
+        "Tìm các từ chỉ thứ tự, như First, Then, Next và Finally.",
+        "Điều xảy ra trong câu có First thì xảy ra đầu tiên."
+      ],
+      "expl": "“{ans}” đứng sau First trong đoạn văn, nên nó xảy ra đầu tiên."
+    },
+    "storyLast": {
+      "prompt": "Đọc đoạn văn và chọn điều đã xảy ra cuối cùng.\n\n\"{text}\"",
+      "hints": [
+        "Tìm các từ chỉ thứ tự, như First, Then, Next và Finally.",
+        "Điều xảy ra trong câu có Finally thì xảy ra cuối cùng."
+      ],
+      "expl": "“{ans}” đứng sau Finally trong đoạn văn, nên nó xảy ra cuối cùng."
+    },
+    "storyAfter": {
+      "prompt": "Đọc đoạn văn và chọn điều đã xảy ra ngay sau '{event}'.\n\n\"{text}\"",
+      "hints": [
+        "Trước tiên hãy tìm câu có “{event}” trong đoạn văn.",
+        "Sau đó xem điều gì xảy ra ở câu ngay kế tiếp."
+      ],
+      "expl": "Ngay sau “{event}”, đoạn văn nói “{ans}”."
+    },
+    "punct": {
+      "prompt": "Chọn câu có chữ hoa và dấu câu đúng.",
+      "hints": [
+        "Viết hoa chữ cái đầu câu, tên người và chữ I.",
+        "Kết thúc câu bằng dấu phù hợp (. ? !)."
+      ],
+      "expl": "Câu đúng là “{ans}”."
+    },
+    "sumPick": {
+      "prompt": "Chọn câu tóm tắt đoạn văn tốt nhất.\n\n\"{text}\"",
+      "hints": [
+        "Tìm ý chính mà cả đoạn văn cứ nhắc lại.",
+        "Câu chỉ nói về một chi tiết, hoặc về điều không có trong đoạn văn, không phải là bản tóm tắt tốt."
+      ],
+      "expl": "“{ans}” nêu được ý chính của cả đoạn văn, nên đây là bản tóm tắt tốt nhất."
+    }
+  },
+  "lesson": {
+    "E3abc1": {
+      "title": "Chữ in hoa và chữ thường",
+      "concept": "Bảng chữ cái có **chữ in hoa** và **chữ thường**. Nhiều cặp trông khác nhau, vì vậy hãy học từng cặp một. Đặc biệt cẩn thận với những chữ cái trông giống nhau, như b, d, p và q.",
+      "example": "A–a, B–b, D–d, G–g"
+    },
+    "E3snd1": {
+      "title": "Âm và chính tả",
+      "concept": "Âm đầu của một từ gắn với chữ cái đầu của nó. Hãy tìm các từ bắt đầu bằng cùng một âm để hiểu âm và chính tả liên quan với nhau thế nào. Đôi khi hai chữ cái, như ph, tạo ra âm f.",
+      "example": "cat → cup, fish → fan"
+    },
+    "E6seq1": {
+      "title": "Tìm thứ tự các sự việc",
+      "concept": "Các từ chỉ thứ tự, như **First**, **Then / Next**, **After that** và **Finally**, cho bạn biết các sự việc xảy ra theo thứ tự nào.",
+      "example": "First, I wake up. Then I eat breakfast. Finally, I go to school."
+    },
+    "E6pun1": {
+      "title": "Chữ hoa và dấu câu",
+      "concept": "Câu bắt đầu bằng **chữ hoa** và kết thúc bằng **dấu câu** đúng: dấu chấm (.) cho câu kể, dấu hỏi (?) cho câu hỏi, và dấu chấm than (!) cho sự ngạc nhiên hoặc cảm xúc mạnh. Tên người và từ I luôn được viết hoa.",
+      "example": "Is this your bag? Yes, it is."
+    },
+    "M2sum1": {
+      "title": "Tóm tắt một đoạn văn",
+      "concept": "Để tóm tắt, hãy tìm **ý chính** và rút gọn thành một hoặc hai câu. Câu chỉ nói về một chi tiết, câu thêm điều không có trong đoạn văn, hoặc câu quá rộng đều không phải là bản tóm tắt tốt.",
+      "example": "Recycling saves resources and reduces trash."
+    }
+  }
+}

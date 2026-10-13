@@ -735,6 +735,126 @@
         "Træk $P(A)$ fra 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "For {mats}, hvad er element ({r}, {c}) i {expr}?",
+      "hints": [
+        "Addition, subtraktion og skalarmultiplikation af matricer sker element for element på samme plads.",
+        "Element (i, j) i produktet $AB$ er summen af produkterne af række i i $A$ og søjle j i $B$, taget i rækkefølge."
+      ],
+      "expl": "{steps}, så svaret er {ans}."
+    },
+    "setCount": {
+      "prompt": "Hvis $n(A)={na}$, $n(B)={nb}$ og $n(A\\cap B)={nab}$, hvad er så $n(A\\cup B)$?",
+      "hints": [
+        "Brug $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Indsæt de givne værdier én ad gangen."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Hvor mange delmængder har en mængde med {n} elementer?",
+      "hints": [
+        "En mængde med n elementer har $2^n$ delmængder.",
+        "Tænk på, at du for hvert element skal beslutte, om det skal med eller ej."
+      ],
+      "expl": "{prod}={ans}, så der er {ans} delmængder."
+    },
+    "setOp": {
+      "prompt": "For {sets}, hvor mange elementer har {expr}?",
+      "hints": [
+        "Fællesmængden indeholder de elementer, der er i begge mængder; foreningsmængden indeholder de elementer, der er i mindst én af dem.",
+        "Skriv elementerne op ét ad gangen, og tæl dem så."
+      ],
+      "expl": "{steps}, så den har {ans} elementer."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "For udsagnet “hvis p, så q” er den omvendte implikation “hvis q, så p”, og kontrapositionen er “hvis ikke q, så ikke p”.",
+        "Kontrapositionen har altid samme sandhedsværdi som det oprindelige udsagn."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Hvis $f(x)={f}$ og $g(x)={g}$, hvad er så {comp}?",
+      "hints": [
+        "Den sammensatte funktion $(g\\circ f)(a)$ betyder $g(f(a))$. Regn fra den indre funktion og udad.",
+        "Find først værdien af den indre funktion, og indsæt den derefter i den ydre funktion."
+      ],
+      "expl": "{steps}, så svaret er {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Hvis $f^{-1}$ er den inverse funktion til $f(x)={f}$, hvad er så $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ betyder det samme som $f(x)=y$.",
+        "Find den værdi af x, der opfylder $f(x)={y}$."
+      ],
+      "expl": "{steps}, så $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Hvad er den største reelle rod i {eq}?",
+      "hints": [
+        "Faktorisér den til et produkt af faktorer. Syntetisk division kan hjælpe med at finde den første rod.",
+        "Rødderne er de værdier af x, der gør en faktor lig med nul."
+      ],
+      "expl": "{fact}, så de reelle rødder er {roots}, og den største er {ans}."
+    },
+    "rootSum": {
+      "prompt": "Hvad er summen af alle de reelle rødder i {eq}?",
+      "hints": [
+        "Faktorisér den til et produkt af faktorer. Syntetisk division kan hjælpe med at finde den første rod.",
+        "Rødderne er de værdier af x, der gør en faktor lig med nul."
+      ],
+      "expl": "{fact}, så de reelle rødder er {roots}, og deres sum er {ans}."
+    },
+    "rootCount": {
+      "prompt": "Hvor mange forskellige reelle rødder har {eq}?",
+      "hints": [
+        "Faktorisér den til lineære eller kvadratiske faktorer.",
+        "Brug diskriminanten til at undersøge, om en kvadratisk faktor $x^2+ax+b$ har reelle rødder."
+      ],
+      "expl": "{fact}, så de forskellige reelle rødder er {roots}: {ans} i alt."
+    },
+    "derivVal": {
+      "prompt": "Hvis $f(x)={f}$, hvad er så $f'({a})$?",
+      "hints": [
+        "For en sammensat funktion differentieres den ydre funktion og ganges med den afledede af den indre; for en brøk er $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Brug $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ og $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "På hvor mange måder kan man vælge {r} ting blandt {n} forskellige ting, med gentagelse tilladt, og stille dem op på række?",
+      "hints": [
+        "Antallet af opstillinger med gentagelse er antallet af valgmuligheder ganget med sig selv én gang for hver plads.",
+        "Hver plads kan udfyldes på {n} måder."
+      ],
+      "expl": "{prod}={ans} måder."
+    },
+    "permSame": {
+      "prompt": "På hvor mange måder kan alle bogstaverne i {word} stilles op på række?",
+      "hints": [
+        "Når bogstaver gentages, skal man dividere fakultetet af det samlede antal bogstaver med fakultetet af hvert gentagelsesantal.",
+        "Tæl, hvor mange gange hvert bogstav forekommer."
+      ],
+      "expl": "{calc}={ans} måder."
+    },
+    "repComb": {
+      "prompt": "På hvor mange måder kan man vælge {r} ting blandt {n} forskellige slags, med gentagelse tilladt?",
+      "hints": [
+        "Med n slags og r valgte ting er antallet lig med antallet af måder at vælge r blandt n+r−1.",
+        "Indsæt antallet af slags og antallet af ting."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Hvad er koefficienten til $x^{{k}}$ i udvidelsen af $(x+1)^{{n}}$?",
+      "hints": [
+        "Ifølge binomialsætningen er koefficienterne kombinationstal.",
+        "Koefficienten til $x^k$ er $_nC_k$, antallet af måder at vælge k blandt n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "At ændre resultater er forfalskning og bryder forskningsetikken, så udsagnet er falsk.",
     "rd_up": "afrunding opad",
     "rd_down": "afrunding nedad",
-    "rd_half": "afrunding til nærmeste"
+    "rd_half": "afrunding til nærmeste",
+    "lg_contra": "Hvis udsagnet “hvis p, så q” er sandt, er dets kontraposition “hvis ikke q, så ikke p” også altid sand.",
+    "lg_contra_r": "Et udsagn og dets kontraposition har altid samme sandhedsværdi, så udsagnet er sandt.",
+    "lg_conv": "Hvis udsagnet “hvis p, så q” er sandt, er dets omvendte “hvis q, så p” også altid sandt.",
+    "lg_conv_r": "Det omvendte kan være falsk, selv om udsagnet er sandt (for eksempel er “hvis x=2, så x²=4” sandt, men “hvis x²=4, så x=2” er falsk), så udsagnet er falsk."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Additionsreglen og komplementærhændelsen",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Sandsynligheden for den komplementære hændelse er $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matricer og regneoperationer med dem",
+      "concept": "En **matrix** er en rektangulær opstilling af tal. Addition, subtraktion og skalarmultiplikation sker element for element; element (i, j) i et produkt $AB$ er summen af produkterne af række i i $A$ og søjle j i $B$, taget i rækkefølge.",
+      "example": "Element (1, 1) i $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ er $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Mængder og udsagn",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, og en mængde med n elementer har $2^n$ delmængder. Kontrapositionen af “hvis p, så q” har altid samme sandhedsværdi som udsagnet, men den omvendte behøver ikke have det.",
+      "example": "Hvis $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$, så er $A\\cap B=\\{3,4\\}$ og $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Sammensatte og inverse funktioner",
+      "concept": "Den sammensatte funktion $(g\\circ f)(x)=g(f(x))$ regnes fra den indre funktion og udad. Den inverse funktion opfylder $f^{-1}(y)=x$, når $f(x)=y$.",
+      "example": "Hvis $f(x)=2x+1$ og $g(x)=x^2$, så er $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Faktorisering og løsning af tredje- og fjerdegradsligninger",
+      "concept": "Løs en tredje- eller fjerdegradsligning ved at **faktorisere** den (syntetisk division eller en substitution hjælper) og finde de værdier, der gør hver faktor lig med nul. Undersøg en kvadratisk faktor med dens diskriminant.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ giver $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Differentiation af eksponential-, logaritme- og trigonometriske funktioner",
+      "concept": "Differentiér en sammensat funktion som (den afledede af den ydre funktion)×(den afledede af den indre funktion), og en brøk med $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Desuden gælder $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ og $(\\cos x)'=-\\sin x$.",
+      "example": "Hvis $f(x)=e^{2x}$, så er $f'(x)=2e^{2x}$ og $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutationer og kombinationer med gentagelse samt binomialsætningen",
+      "concept": "Antallet af opstillinger **med gentagelse** er antallet af valgmuligheder ganget med sig selv én gang pr. plads. Ved gentagne ting divideres fakultetet af det samlede antal med fakultetet af hvert gentagelsesantal; **kombinationer med gentagelse** giver $_nH_r={}_{n+r-1}C_r$. I $(x+1)^n$ er koefficienten til $x^k$ lig med $_nC_k$.",
+      "example": "Bogstaverne aabbc kan stilles op på $5!\\div(2!\\times2!)=30$ måder"
     }
   },
   "course": {

@@ -77,6 +77,12 @@ export const EXAMPLE_KO: Readonly<Record<string, readonly string[]>> = {
   "en-h3-l3": [],
   "en-h3-l4": ["마지막 참을성의 한계"],
   "en-h3-l5": ["비용이 더 들다", "장기적으로 돈을 절약하다"],
+  // tranche 2 (topic lessons added from the curriculum mapping; scripts/learn/topics/english)
+  "en-e3-abc1": [],
+  "en-e3-snd1": ["고양이", "컵", "물고기", "선풍기"],
+  "en-e6-seq1": ["먼저, 나는 일어나요.", "그다음 나는 아침을 먹어요.", "마지막으로 나는 학교에 가요."],
+  "en-e6-pun1": ["이것은 네 가방이니?", "응, 그래."],
+  "en-m2-sum1": ["재활용은 자원을 아끼고 쓰레기를 줄여요."],
 };
 
 /** Lessons whose example has no English to speak, excluded from bilingual listening on purpose (the reason is part of the record). */
@@ -84,4 +90,5 @@ export const EXAMPLE_EXCLUDED: Readonly<Record<string, string>> = {
   "en-h1-l5": "the example is Korean-only notation of a text structure (문제 → 해결 → 효과); there is no English sentence to speak",
   "en-h2-l4": "the example lists prefixes (un-, im-), which are not words or sentences to speak",
   "en-h3-l3": "the example is Korean-only notation of a text structure (원인 → 조치 → 결과); there is no English sentence to speak",
+  "en-e3-abc1": "the example lists single-letter pairs (A–a, B–b), which are not words or sentences to speak",
 };

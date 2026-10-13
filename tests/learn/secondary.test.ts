@@ -7,9 +7,9 @@ import { demoContentRepository } from "@/lib/learn/content/repository";
 import { localizeBundle, overlayFor } from "@/lib/learn/content/localize";
 import mathSecondaryAll from "@/lib/learn/content/secondary/math.json";
 import { stripGeometry } from "./withoutGeometry";
-import englishSecondary from "@/lib/learn/content/secondary/english.json";
+import englishSecondaryAll from "@/lib/learn/content/secondary/english.json";
 import viMathAll from "@/lib/learn/content/vi/secondary-math.json";
-import viEnglish from "@/lib/learn/content/vi/secondary-english.json";
+import viEnglishAll from "@/lib/learn/content/vi/secondary-english.json";
 import mathDemoAll from "@/lib/learn/content/demo/math.json";
 import englishDemo from "@/lib/learn/content/demo/english.json";
 // plain ES modules (the same code the build script and the report run)
@@ -21,6 +21,9 @@ import { assertCoverage, summarize, SECONDARY_NEW, TARGETS } from "../../scripts
 const mathSecondary = stripGeometry(mathSecondaryAll);
 const viMath = stripGeometry<typeof viMathAll>(viMathAll);
 const mathDemo = stripGeometry(mathDemoAll);
+// the English topic lessons are generated separately (scripts/learn/topics/english)
+const englishSecondary = stripGeometry<typeof englishSecondaryAll>(englishSecondaryAll);
+const viEnglish = stripGeometry<typeof viEnglishAll>(viEnglishAll);
 const GRADES = ["M2", "M3", "H1", "H2", "H3"] as const;
 const BUNDLES: Record<SchoolSite, ContentBundle> = { math: mathSecondary as unknown as ContentBundle, english: englishSecondary as unknown as ContentBundle };
 const OVERLAYS = { math: viMath, english: viEnglish } as Record<SchoolSite, { questions: Record<string, { prompt: string; hints: string[]; explanation: string; options?: Record<string, string> }> }>;

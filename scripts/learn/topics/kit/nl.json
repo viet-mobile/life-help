@@ -735,6 +735,126 @@
         "Trek $P(A)$ af van 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Wat is voor {mats} het ({r}, {c})-element van {expr}?",
+      "hints": [
+        "Optellen, aftrekken en scalair vermenigvuldigen van matrices gaat element voor element op dezelfde positie.",
+        "Het (i, j)-element van het product $AB$ is de som van de producten van rij i van $A$ en kolom j van $B$, in volgorde."
+      ],
+      "expl": "{steps}, dus het antwoord is {ans}."
+    },
+    "setCount": {
+      "prompt": "Als $n(A)={na}$, $n(B)={nb}$ en $n(A\\cap B)={nab}$, wat is dan $n(A\\cup B)$?",
+      "hints": [
+        "Gebruik $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Vul de gegeven waarden een voor een in."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Hoeveel deelverzamelingen heeft een verzameling met {n} elementen?",
+      "hints": [
+        "Een verzameling met n elementen heeft $2^n$ deelverzamelingen.",
+        "Bedenk dat je voor elk element kiest of je het wel of niet opneemt."
+      ],
+      "expl": "{prod}={ans}, dus er zijn {ans} deelverzamelingen."
+    },
+    "setOp": {
+      "prompt": "Hoeveel elementen heeft {expr} voor {sets}?",
+      "hints": [
+        "De doorsnede bevat de elementen die in beide verzamelingen zitten; de vereniging bevat de elementen die in minstens een van beide zitten.",
+        "Noteer de elementen een voor een en tel ze dan."
+      ],
+      "expl": "{steps}, dus het heeft {ans} elementen."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Bij de uitspraak “als p dan q” is het omgekeerde “als q dan p” en de contrapositie “als niet q dan niet p”.",
+        "De contrapositie heeft altijd dezelfde waarheidswaarde als de oorspronkelijke uitspraak."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Als $f(x)={f}$ en $g(x)={g}$, wat is dan {comp}?",
+      "hints": [
+        "De samengestelde functie $(g\\circ f)(a)$ betekent $g(f(a))$. Werk van de binnenste functie naar buiten.",
+        "Bereken eerst de waarde van de binnenste functie en vul die dan in de buitenste functie in."
+      ],
+      "expl": "{steps}, dus het antwoord is {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Als $f^{-1}$ de inverse functie is van $f(x)={f}$, wat is dan $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ betekent hetzelfde als $f(x)=y$.",
+        "Zoek de waarde van x waarvoor $f(x)={y}$."
+      ],
+      "expl": "{steps}, dus $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Wat is de grootste reële wortel van {eq}?",
+      "hints": [
+        "Ontbind in factoren. Met het schema van Horner kun je een eerste wortel vinden.",
+        "De wortels zijn de waarden van x waarvoor een factor nul wordt."
+      ],
+      "expl": "{fact}, dus de reële wortels zijn {roots} en de grootste is {ans}."
+    },
+    "rootSum": {
+      "prompt": "Wat is de som van alle reële wortels van {eq}?",
+      "hints": [
+        "Ontbind in factoren. Met het schema van Horner kun je een eerste wortel vinden.",
+        "De wortels zijn de waarden van x waarvoor een factor nul wordt."
+      ],
+      "expl": "{fact}, dus de reële wortels zijn {roots} en hun som is {ans}."
+    },
+    "rootCount": {
+      "prompt": "Hoeveel verschillende reële wortels heeft {eq}?",
+      "hints": [
+        "Ontbind in lineaire of kwadratische factoren.",
+        "Gebruik de discriminant om na te gaan of een kwadratische factor $x^2+ax+b$ reële wortels heeft."
+      ],
+      "expl": "{fact}, dus de verschillende reële wortels zijn {roots}: {ans} in totaal."
+    },
+    "derivVal": {
+      "prompt": "Als $f(x)={f}$, wat is dan $f'({a})$?",
+      "hints": [
+        "Differentieer een samengestelde functie door de buitenste functie af te leiden en te vermenigvuldigen met de afgeleide van de binnenste; voor een quotiënt geldt $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Gebruik $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ en $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Op hoeveel manieren kun je {r} items kiezen uit {n} verschillende items, met herhaling, en op een rij zetten?",
+      "hints": [
+        "Het aantal rangschikkingen met herhaling is het aantal keuzes vermenigvuldigd met zichzelf, voor elke plaats een keer.",
+        "Elke plaats kan op {n} manieren worden ingevuld."
+      ],
+      "expl": "{prod}={ans} manieren."
+    },
+    "permSame": {
+      "prompt": "Op hoeveel manieren kun je alle letters van {word} op een rij zetten?",
+      "hints": [
+        "Bij herhaalde letters deel je de faculteit van het totale aantal letters door de faculteit van elk aantal herhalingen.",
+        "Tel hoe vaak elke letter voorkomt."
+      ],
+      "expl": "{calc}={ans} manieren."
+    },
+    "repComb": {
+      "prompt": "Op hoeveel manieren kun je {r} items kiezen uit {n} verschillende soorten, met herhaling?",
+      "hints": [
+        "Bij n soorten en r gekozen items is het aantal gelijk aan het aantal manieren om r te kiezen uit n+r−1.",
+        "Vul het aantal soorten en het aantal items in."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Wat is de coëfficiënt van $x^{{k}}$ in de ontwikkeling van $(x+1)^{{n}}$?",
+      "hints": [
+        "Volgens de binomiaalstelling zijn de coëfficiënten aantallen combinaties.",
+        "De coëfficiënt van $x^k$ is $_nC_k$, het aantal manieren om k te kiezen uit n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Resultaten veranderen is fraude en schendt de onderzoeksethiek, dus de bewering is onwaar.",
     "rd_up": "naar boven afronden",
     "rd_down": "naar beneden afronden",
-    "rd_half": "afronden op de dichtstbijzijnde"
+    "rd_half": "afronden op de dichtstbijzijnde",
+    "lg_contra": "Als de uitspraak “als p dan q” waar is, dan is de contrapositie “als niet q dan niet p” ook altijd waar.",
+    "lg_contra_r": "Een uitspraak en haar contrapositie hebben altijd dezelfde waarheidswaarde, dus de uitspraak is waar.",
+    "lg_conv": "Als de uitspraak “als p dan q” waar is, dan is het omgekeerde “als q dan p” ook altijd waar.",
+    "lg_conv_r": "Het omgekeerde kan onwaar zijn terwijl de uitspraak waar is (bijvoorbeeld: “als x=2 dan x²=4” is waar, maar “als x²=4 dan x=2” is onwaar), dus de uitspraak is onwaar."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "De somregel en het complement",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. De kans op de complementaire gebeurtenis is $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrices en hun bewerkingen",
+      "concept": "Een **matrix** is een rechthoekig rooster van getallen. Optellen, aftrekken en scalair vermenigvuldigen gaan element voor element; het (i, j)-element van een product $AB$ is de som van de producten van rij i van $A$ en kolom j van $B$, in volgorde.",
+      "example": "Het (1, 1)-element van $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ is $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Verzamelingen en uitspraken",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, en een verzameling met n elementen heeft $2^n$ deelverzamelingen. De contrapositie van “als p dan q” heeft altijd dezelfde waarheidswaarde als de uitspraak, maar het omgekeerde niet noodzakelijk.",
+      "example": "Als $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ dan is $A\\cap B=\\{3,4\\}$ en $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Samengestelde en inverse functies",
+      "concept": "De samenstelling $(g\\circ f)(x)=g(f(x))$ werk je uit van de binnenste functie naar buiten. De inverse functie voldoet aan $f^{-1}(y)=x$ zodra $f(x)=y$.",
+      "example": "Als $f(x)=2x+1$ en $g(x)=x^2$, dan is $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Ontbinden in factoren en oplossen van derde- en vierdegraadsvergelijkingen",
+      "concept": "Los een derde- of vierdegraadsvergelijking op door te **ontbinden in factoren** (het schema van Horner of een substitutie helpt) en de waarden te zoeken waarvoor elke factor nul wordt. Controleer een kwadratische factor met de discriminant.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ geeft $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Differentiëren van exponentiële, logaritmische en goniometrische functies",
+      "concept": "Differentieer een samengestelde functie als (afgeleide van de buitenste functie)×(afgeleide van de binnenste functie), en een quotiënt met $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Verder geldt $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ en $(\\cos x)'=-\\sin x$.",
+      "example": "Als $f(x)=e^{2x}$ dan is $f'(x)=2e^{2x}$ en $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutaties en combinaties met herhaling, en de binomiaalstelling",
+      "concept": "Het aantal rangschikkingen **met herhaling** is het aantal keuzes vermenigvuldigd met zichzelf, voor elke plaats een keer. Bij herhaalde items deel je de faculteit van het totaal door de faculteit van elk aantal herhalingen; **combinaties met herhaling** geven $_nH_r={}_{n+r-1}C_r$. In $(x+1)^n$ is de coëfficiënt van $x^k$ gelijk aan $_nC_k$.",
+      "example": "De letters aabbc kunnen op $5!\\div(2!\\times2!)=30$ manieren worden gerangschikt"
     }
   },
   "course": {

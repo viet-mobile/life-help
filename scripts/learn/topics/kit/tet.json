@@ -735,6 +735,126 @@
         "Subtrai $P(A)$ husi 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Ba {mats}, entrada ({r}, {c}) husi {expr} mak saida?",
+      "hints": [
+        "Matriz nia adisaun, subtrasaun no multiplikasaun ho numeru halo entrada ida-idak iha pozisaun hanesan.",
+        "Entrada (i, j) husi produtu $AB$ mak soma husi produtu entre liña i husi $A$ no kolunu j husi $B$, tuir orden."
+      ],
+      "expl": "{steps}, entaun resposta mak {ans}."
+    },
+    "setCount": {
+      "prompt": "Se $n(A)={na}$, $n(B)={nb}$ no $n(A\\cap B)={nab}$, $n(A\\cup B)$ mak saida?",
+      "hints": [
+        "Uza $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Koloka valor sira ne'ebé fó ida-idak."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Konjuntu ida ho elementu {n} iha subkonjuntu hira?",
+      "hints": [
+        "Konjuntu ho elementu n iha subkonjuntu $2^n$.",
+        "Hanoin katak ba elementu ida-idak ita deside atu inklui ka lae."
+      ],
+      "expl": "{prod}={ans}, entaun iha subkonjuntu {ans}."
+    },
+    "setOp": {
+      "prompt": "Ba {sets}, {expr} iha elementu hira?",
+      "hints": [
+        "Intersesaun iha elementu sira ne'ebé iha konjuntu rua nian; uniaun iha elementu sira ne'ebé iha konjuntu ida ka liu.",
+        "Hakerek elementu ida-idak, depois sura."
+      ],
+      "expl": "{steps}, entaun iha elementu {ans}."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Ba deklarasaun “se p entaun q”, konversu mak “se q entaun p” no kontrapozitivu mak “se la q entaun la p”.",
+        "Kontrapozitivu iha valor lolos hanesan ho deklarasaun orijinál."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Se $f(x)={f}$ no $g(x)={g}$, {comp} mak saida?",
+      "hints": [
+        "Funsaun komposta $(g\\circ f)(a)$ signifika $g(f(a))$. Servisu husi funsaun laran ba liur.",
+        "Hetan uluk valor funsaun laran nian, depois koloka iha funsaun liur."
+      ],
+      "expl": "{steps}, entaun resposta mak {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Se $f^{-1}$ mak funsaun invérsa husi $f(x)={f}$, $f^{-1}({y})$ mak saida?",
+      "hints": [
+        "$f^{-1}(y)=x$ signifika hanesan ho $f(x)=y$.",
+        "Hetan valor x ne'ebé satisfaz $f(x)={y}$."
+      ],
+      "expl": "{steps}, entaun $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Rai-moruk reál ne'ebé boot liu husi {eq} mak saida?",
+      "hints": [
+        "Fatorija nuʼudar produtu fator sira. Divizaun sintétika bele hetan rai-moruk uluk.",
+        "Rai-moruk sira mak valor x ne'ebé halo fator ida sai zero."
+      ],
+      "expl": "{fact}, entaun rai-moruk reál sira mak {roots} no ne'ebé boot liu mak {ans}."
+    },
+    "rootSum": {
+      "prompt": "Soma husi rai-moruk reál hotu husi {eq} mak saida?",
+      "hints": [
+        "Fatorija nuʼudar produtu fator sira. Divizaun sintétika bele hetan rai-moruk uluk.",
+        "Rai-moruk sira mak valor x ne'ebé halo fator ida sai zero."
+      ],
+      "expl": "{fact}, entaun rai-moruk reál sira mak {roots} no sira nia soma mak {ans}."
+    },
+    "rootCount": {
+      "prompt": "{eq} iha rai-moruk reál ne'ebé la hanesan hira?",
+      "hints": [
+        "Fatorija ba fator linear ka kuadrátiku.",
+        "Uza diskriminante atu haree se fator kuadrátiku $x^2+ax+b$ iha rai-moruk reál ka lae."
+      ],
+      "expl": "{fact}, entaun rai-moruk reál sira ne'ebé la hanesan mak {roots}: {ans}."
+    },
+    "derivVal": {
+      "prompt": "Se $f(x)={f}$, $f'({a})$ mak saida?",
+      "hints": [
+        "Ba funsaun komposta, hetan derivadu funsaun liur nian no multiplika ho derivadu funsaun laran nian; ba kosiente, uza $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Uza $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ no $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Ita bele hili objetu {r} husi objetu {n} ne'ebé la hanesan, bele repete, no hatur iha liña ida iha dalan hira?",
+      "hints": [
+        "Númeru arranju ho repetisaun mak númeru eskolla multiplika ho an rasik dala ida ba pozisaun ida-idak.",
+        "Pozisaun ida-idak bele hakot ho dalan {n}."
+      ],
+      "expl": "{prod}={ans} dalan."
+    },
+    "permSame": {
+      "prompt": "Letra hotu husi {word} bele hatur iha liña ida iha dalan hira?",
+      "hints": [
+        "Se iha letra repete, fahe fatoriál husi letra totál ho fatoriál husi repetisaun ida-idak.",
+        "Sura letra ida-idak mosu dala hira."
+      ],
+      "expl": "{calc}={ans} dalan."
+    },
+    "repComb": {
+      "prompt": "Ita bele hili {r} husi tipu {n} ne'ebé la hanesan, bele repete, iha dalan hira?",
+      "hints": [
+        "Ho tipu n no hili r, rezultadu hanesan ho dalan atu hili r husi n+r−1.",
+        "Koloka númeru tipu no númeru objetu."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Koefisiente husi $x^{{k}}$ iha espansaun $(x+1)^{{n}}$ mak saida?",
+      "hints": [
+        "Tuir teorema binomiál, koefisiente sira mak númeru kombinasaun.",
+        "Koefisiente husi $x^k$ mak $_nC_k$, númeru dalan atu hili k husi n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Muda rezultadu mak falsifikasaun no viola étika peskiza, entaun deklarasaun ne'e sala.",
     "rd_up": "arredonda ba leten",
     "rd_down": "arredonda ba kraik",
-    "rd_half": "arredonda ba ne'ebé besik liu"
+    "rd_half": "arredonda ba ne'ebé besik liu",
+    "lg_contra": "Se deklarasaun “se p entaun q” loos, nia kontrapozitivu “se la q entaun la p” mós sempre loos.",
+    "lg_contra_r": "Deklarasaun no nia kontrapozitivu sempre iha valor lolos hanesan, entaun deklarasaun ne'e loos.",
+    "lg_conv": "Se deklarasaun “se p entaun q” loos, nia konversu “se q entaun p” mós sempre loos.",
+    "lg_conv_r": "Konversu bele sala maski deklarasaun loos (hanesan, “se x=2 entaun x²=4” loos maibé “se x²=4 entaun x=2” sala), entaun deklarasaun ne'e sala."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Regra soma no eventu komplementár",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Probabilidade eventu komplementár mak $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matriz no nia operasaun",
+      "concept": "**Matriz** mak arranju númeru nian iha forma retângulu. Adisaun, subtrasaun no multiplikasaun ho numeru halo entrada ida-idak; entrada (i, j) husi produtu $AB$ mak soma husi produtu entre liña i husi $A$ no kolunu j husi $B$, tuir orden.",
+      "example": "Entrada (1, 1) husi $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ mak $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Konjuntu no proposisaun",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, no konjuntu ho elementu n iha subkonjuntu $2^n$. Kontrapozitivu husi “se p entaun q” sempre iha valor lolos hanesan ho deklarasaun, maibé konversu bele la hanesan.",
+      "example": "Se $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ entaun $A\\cap B=\\{3,4\\}$ no $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Funsaun komposta no invérsa",
+      "concept": "Komposta $(g\\circ f)(x)=g(f(x))$ servisu husi funsaun laran ba liur. Funsaun invérsa satisfaz $f^{-1}(y)=x$ bainhira $f(x)=y$.",
+      "example": "Se $f(x)=2x+1$ no $g(x)=x^2$, entaun $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Fatorija no rezolve ekuasaun kúbika no kuártika",
+      "concept": "Rezolve ekuasaun kúbika ka kuártika ho **fatorija** (divizaun sintétika ka substituisaun bele ajuda) no hetan valor sira ne'ebé halo fator ida-idak sai zero. Verifika fator kuadrátiku ho diskriminante.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ fó $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Derivadu funsaun eksponensiál, logaritmu no trigonométrika",
+      "concept": "Derivadu funsaun komposta mak (derivadu funsaun liur)×(derivadu funsaun laran), no kosiente ho $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Mós $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ no $(\\cos x)'=-\\sin x$.",
+      "example": "Se $f(x)=e^{2x}$ entaun $f'(x)=2e^{2x}$ no $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutasaun no kombinasaun ho repetisaun, no teorema binomiál",
+      "concept": "Númeru arranju **ho repetisaun** mak númeru eskolla multiplika ho an rasik dala ida ba pozisaun ida-idak. Se iha objetu repete, fahe fatoriál totál ho fatoriál husi repetisaun ida-idak; **kombinasaun ho repetisaun** fó $_nH_r={}_{n+r-1}C_r$. Iha $(x+1)^n$ koefisiente husi $x^k$ mak $_nC_k$.",
+      "example": "Letra aabbc bele hatur iha dalan $5!\\div(2!\\times2!)=30$"
     }
   },
   "course": {

@@ -735,6 +735,126 @@
         "Subtract $P(A)$ from 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "For {mats}, what is the ({r}, {c}) entry of {expr}?",
+      "hints": [
+        "Addition, subtraction and scalar multiples of matrices work entry by entry in the same position.",
+        "The (i, j) entry of the product $AB$ is the sum of the products of row i of $A$ and column j of $B$, taken in order."
+      ],
+      "expl": "{steps}, so the answer is {ans}."
+    },
+    "setCount": {
+      "prompt": "If $n(A)={na}$, $n(B)={nb}$ and $n(A\\cap B)={nab}$, what is $n(A\\cup B)$?",
+      "hints": [
+        "Use $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Put the given values in one by one."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "How many subsets does a set with {n} elements have?",
+      "hints": [
+        "A set with n elements has $2^n$ subsets.",
+        "Think of deciding for each element whether to include it or not."
+      ],
+      "expl": "{prod}={ans}, so there are {ans} subsets."
+    },
+    "setOp": {
+      "prompt": "For {sets}, how many elements does {expr} have?",
+      "hints": [
+        "The intersection holds the elements in both sets; the union holds the elements in at least one of them.",
+        "List the elements one by one, then count them."
+      ],
+      "expl": "{steps}, so it has {ans} elements."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "For the statement “if p then q”, the converse is “if q then p” and the contrapositive is “if not q then not p”.",
+        "The contrapositive always has the same truth value as the original statement."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "If $f(x)={f}$ and $g(x)={g}$, what is {comp}?",
+      "hints": [
+        "The composite $(g\\circ f)(a)$ means $g(f(a))$. Work from the inner function outwards.",
+        "Find the value of the inner function first, then put it into the outer function."
+      ],
+      "expl": "{steps}, so the answer is {ans}."
+    },
+    "inverseVal": {
+      "prompt": "If $f^{-1}$ is the inverse function of $f(x)={f}$, what is $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ means the same as $f(x)=y$.",
+        "Find the value of x that satisfies $f(x)={y}$."
+      ],
+      "expl": "{steps}, so $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "What is the largest real root of {eq}?",
+      "hints": [
+        "Factorise it into a product of factors. Synthetic division can find a first root.",
+        "The roots are the values of x that make a factor zero."
+      ],
+      "expl": "{fact}, so the real roots are {roots} and the largest is {ans}."
+    },
+    "rootSum": {
+      "prompt": "What is the sum of all the real roots of {eq}?",
+      "hints": [
+        "Factorise it into a product of factors. Synthetic division can find a first root.",
+        "The roots are the values of x that make a factor zero."
+      ],
+      "expl": "{fact}, so the real roots are {roots} and their sum is {ans}."
+    },
+    "rootCount": {
+      "prompt": "How many distinct real roots does {eq} have?",
+      "hints": [
+        "Factorise it into linear or quadratic factors.",
+        "Use the discriminant to check whether a quadratic factor $x^2+ax+b$ has real roots."
+      ],
+      "expl": "{fact}, so the distinct real roots are {roots}: {ans} of them."
+    },
+    "derivVal": {
+      "prompt": "If $f(x)={f}$, what is $f'({a})$?",
+      "hints": [
+        "For a composite function, differentiate the outer function and multiply by the derivative of the inner one; for a quotient, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Use $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ and $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "In how many ways can you choose {r} items from {n} different items, repetition allowed, and arrange them in a row?",
+      "hints": [
+        "The number of arrangements with repetition is the number of choices multiplied by itself once for each place.",
+        "Each place can be filled in {n} ways."
+      ],
+      "expl": "{prod}={ans} ways."
+    },
+    "permSame": {
+      "prompt": "In how many ways can all the letters of {word} be arranged in a row?",
+      "hints": [
+        "With repeated letters, divide the factorial of the total number of letters by the factorial of each repeat count.",
+        "Count how many times each letter appears."
+      ],
+      "expl": "{calc}={ans} ways."
+    },
+    "repComb": {
+      "prompt": "In how many ways can you choose {r} items from {n} different kinds, repetition allowed?",
+      "hints": [
+        "With n kinds and r items chosen, the count equals the number of ways to choose r from n+r−1.",
+        "Put in the number of kinds and the number of items."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "What is the coefficient of $x^{{k}}$ in the expansion of $(x+1)^{{n}}$?",
+      "hints": [
+        "By the binomial theorem the coefficients are numbers of combinations.",
+        "The coefficient of $x^k$ is $_nC_k$, the number of ways to choose k from n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -785,6 +905,10 @@
     "rm_case": "Collecting and comparing real examples from several schools is which research method?",
     "rm_exp": "Rolling dice yourself and recording the results to find a pattern is which research method?",
     "rm_dev": "Building a new tool for learning mathematics and testing how well it works is which research method?",
+    "lg_contra": "If the statement “if p then q” is true, then its contrapositive “if not q then not p” is always true as well.",
+    "lg_contra_r": "A statement and its contrapositive always have the same truth value, so the statement is true.",
+    "lg_conv": "If the statement “if p then q” is true, then its converse “if q then p” is always true as well.",
+    "lg_conv_r": "The converse can be false even when the statement is true (for example, “if x=2 then x²=4” is true but “if x²=4 then x=2” is false), so the statement is false.",
     "et_cite": "Copying another person's writing without saying where it comes from goes against research ethics.",
     "et_cite_r": "Using someone's work without a source is plagiarism, so the statement is true.",
     "et_fake": "If the results differ from the hypothesis, it is fine to change the numbers so that they match.",
@@ -940,6 +1064,36 @@
       "title": "The addition rule and complements",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. The probability of the complement is $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrices and their operations",
+      "concept": "A **matrix** is a rectangular arrangement of numbers. Addition, subtraction and scalar multiples work entry by entry; the (i, j) entry of a product $AB$ is the sum of the products of row i of $A$ and column j of $B$, taken in order.",
+      "example": "The (1, 1) entry of $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ is $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Sets and propositions",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, and a set with n elements has $2^n$ subsets. The contrapositive of “if p then q” always has the same truth value as the statement, but the converse may not.",
+      "example": "If $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ then $A\\cap B=\\{3,4\\}$ and $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Composite and inverse functions",
+      "concept": "The composite $(g\\circ f)(x)=g(f(x))$ is worked from the inner function outwards. The inverse function satisfies $f^{-1}(y)=x$ whenever $f(x)=y$.",
+      "example": "If $f(x)=2x+1$ and $g(x)=x^2$, then $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Factorising and solving cubic and quartic equations",
+      "concept": "Solve a cubic or quartic equation by **factorising** it (synthetic division or a substitution helps) and finding the values that make each factor zero. Check a quadratic factor with its discriminant.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ gives $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Differentiating exponential, logarithmic and trigonometric functions",
+      "concept": "Differentiate a composite function as (derivative of the outer function)×(derivative of the inner function), and a quotient with $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Also $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ and $(\\cos x)'=-\\sin x$.",
+      "example": "If $f(x)=e^{2x}$ then $f'(x)=2e^{2x}$ and $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutations and combinations with repetition, and the binomial theorem",
+      "concept": "The number of arrangements **with repetition** is the number of choices multiplied by itself once per place. With repeated items, divide the factorial of the total by the factorial of each repeat count; **combinations with repetition** give $_nH_r={}_{n+r-1}C_r$. In $(x+1)^n$ the coefficient of $x^k$ is $_nC_k$.",
+      "example": "The letters aabbc can be arranged in $5!\\div(2!\\times2!)=30$ ways"
     }
   },
   "course": {

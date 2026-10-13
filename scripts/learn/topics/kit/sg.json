@@ -735,6 +735,126 @@
         "Zî $P(A)$ na yâ ti 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Na {mats}, ye ti ({r}, {c}) ti {expr} ayeke nyen?",
+      "hints": [
+        "Ti hinga, ti zia na ti mu ye ti matrice na scalaire a yeke sala ye na ye na ye na yâ ti ngu so.",
+        "Ye ti (i, j) ti $AB$ ayeke somme ti produit ti ligne i ti $A$ na colonne j ti $B$, na ngu ti ye."
+      ],
+      "expl": "{steps}, tongana ni answer ayeke {ans}."
+    },
+    "setCount": {
+      "prompt": "Tongana $n(A)={na}$, $n(B)={nb}$ na $n(A\\cap B)={nab}$, $n(A\\cup B)$ ayeke nyen?",
+      "hints": [
+        "Sala na $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Zia ala so a mu na ni, mbeni na mbeni."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Ensemble so ayeke na ye {n} ayeke na sous-ensemble promier?",
+      "hints": [
+        "Ensemble so ayeke na ye n ayeke na sous-ensemble $2^n$.",
+        "Bâ tongana mo ye ti fa na ndo ti chaque ye si a yeke yâ ni wala pëpe."
+      ],
+      "expl": "{prod}={ans}, tongana ni sous-ensemble {ans} ayeke ga."
+    },
+    "setOp": {
+      "prompt": "Na {sets}, {expr} ayeke na ye ôko-ôko ti ngbii?",
+      "hints": [
+        "Intersection ayeke na ye so a yeke na yâ ti ensemble use kue; union ayeke na ye so a yeke na yâ ti ngbii ensemble ôko.",
+        "Koe ye ôko-ôko, na peko ni bâ ni."
+      ],
+      "expl": "{steps}, tongana ni a yeke na ye {ans}."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Na tënë “tongana p, ni q”, converse ayeke “tongana q, ni p” na contrapositive ayeke “tongana q pëpe, ni p pëpe”.",
+        "Contrapositive ayeke na valeur ti vérité so ayeke tâ tënë ti kozo tënë ni kue."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Tongana $f(x)={f}$ na $g(x)={g}$, {comp} ayeke nyen?",
+      "hints": [
+        "Fonction composée $(g\\circ f)(a)$ ayeke $g(f(a))$. Sala ye na yâ ti fonction ti yâ ni na ndö.",
+        "Wara kozo valeur ti fonction ti yâ, na peko ni zia ni na yâ ti fonction ti ndö."
+      ],
+      "expl": "{steps}, tongana ni answer ayeke {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Tongana $f^{-1}$ ayeke fonction inverse ti $f(x)={f}$, $f^{-1}({y})$ ayeke nyen?",
+      "hints": [
+        "$f^{-1}(y)=x$ ayeke tongana $f(x)=y$.",
+        "Wara valeur ti x so asala $f(x)={y}$."
+      ],
+      "expl": "{steps}, tongana ni $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Racine réelle so ayeke kota mingi ti {eq} ayeke nyen?",
+      "hints": [
+        "Sala factorisation na produit ti facteur. Synthetic division alingbi ti mû kozo racine.",
+        "Racine ayeke valeur ti x so asala ti mbeni facteur ayeke zéro."
+      ],
+      "expl": "{fact}, tongana ni racine réelle ayeke {roots} na kota mingi ayeke {ans}."
+    },
+    "rootSum": {
+      "prompt": "Somme ti racine réelle kue ti {eq} ayeke nyen?",
+      "hints": [
+        "Sala factorisation na produit ti facteur. Synthetic division alingbi ti mû kozo racine.",
+        "Racine ayeke valeur ti x so asala ti mbeni facteur ayeke zéro."
+      ],
+      "expl": "{fact}, tongana ni racine réelle ayeke {roots} na somme ti ala ayeke {ans}."
+    },
+    "rootCount": {
+      "prompt": "{eq} ayeke na racine réelle so a gue ndoye ndoye ti ngbii?",
+      "hints": [
+        "Sala factorisation na facteur linéaire wala quadratique.",
+        "Sala na discriminant ti bâ tongana facteur quadratique $x^2+ax+b$ ayeke na racine réelle."
+      ],
+      "expl": "{fact}, tongana ni racine réelle so a gue ndoye ndoye ayeke {roots}: ayeke {ans}."
+    },
+    "derivVal": {
+      "prompt": "Tongana $f(x)={f}$, $f'({a})$ ayeke nyen?",
+      "hints": [
+        "Na fonction composée, sala dérivée ti fonction ti ndö, na peko ni mu ni na dérivée ti fonction ti yâ; na quotient, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Sala na $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ na $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "A lingbi ti mû {r} ye na {n} ye so a yeke bakari, a yeke ngbâ ti mû mbeni ye mbeni tënë, na ti zia ni na mbeni ligne na ngbii lege?",
+      "hints": [
+        "Nombre ti arrangement na répétition ayeke nombre ti choix so a multiplier na ni meme ôko-ôko na chaque place.",
+        "A lingbi ti kangbi chaque place na lege {n}."
+      ],
+      "expl": "{prod}={ans} lege."
+    },
+    "permSame": {
+      "prompt": "A lingbi ti zia lettre kue ti {word} na mbeni ligne na ngbii lege?",
+      "hints": [
+        "Tongana lettre ayeke gue tënë, bâ factorielle ti nombre kue ti lettre na bâ ni na factorielle ti chaque nombre ti répétition.",
+        "Bâ chaque lettre ayeke na ngbii fois."
+      ],
+      "expl": "{calc}={ans} lege."
+    },
+    "repComb": {
+      "prompt": "A lingbi ti mû {r} ye na {n} sorte ti ye so a yeke bakari, a yeke ngbâ ti mû mbeni ye mbeni tënë, na ngbii lege?",
+      "hints": [
+        "Na n sorte na r ye so a mû, nombre ayeke tongana nombre ti lege ti mû r na n+r−1.",
+        "Zia nombre ti sorte na nombre ti ye."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Coefficient ti $x^{{k}}$ na yâ ti développement ti $(x+1)^{{n}}$ ayeke nyen?",
+      "hints": [
+        "Na théorème binomial, coefficient ayeke nombre ti combinaison.",
+        "Coefficient ti $x^k$ ayeke $_nC_k$, nombre ti lege ti mû k na n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Ti change aésultat ayeke fabrication na ayeke ngoi ti éthique ti recherche, tongana ni tënë ni ayeke biani ape.",
     "rd_up": "arrondi na ndüzü",
     "rd_down": "arrondi na gbe",
-    "rd_half": "arrondi na ndo so ayeke pene"
+    "rd_half": "arrondi na ndo so ayeke pene",
+    "lg_contra": "Tongana tënë “tongana p, ni q” ayeke tâ, contrapositive ti ni “tongana q pëpe, ni p pëpe” ayeke tâ kue.",
+    "lg_contra_r": "Tënë na contrapositive ti ni ayeke na valeur ti vérité so ayeke ôko, tongana ni tënë ayeke tâ.",
+    "lg_conv": "Tongana tënë “tongana p, ni q” ayeke tâ, converse ti ni “tongana q, ni p” ayeke tâ kue.",
+    "lg_conv_r": "Converse alingbi ti yeke tâ pëpe atâa tënë ayeke tâ (tongana ye ti fa, “tongana x=2 ni x²=4” ayeke tâ me “tongana x²=4 ni x=2” ayeke tâ pëpe), tongana ni tënë ayeke tâ pëpe."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Loi ti addition na événement complémentaire",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Probabilité ti événement complémentaire ayeke $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrice na ye so a sala na ni",
+      "concept": "**Matrice** ayeke mbeni tableau ti anombre so ayeke na forme ti rectangle. Ti hinga, ti zia na ti mu na scalaire a yeke sala ye na ye na ye; ye ti (i, j) ti produit $AB$ ayeke somme ti produit ti ligne i ti $A$ na colonne j ti $B$, na ngu ti ye.",
+      "example": "Ye ti (1, 1) ti $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ ayeke $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Ensemble na tënë",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, na ensemble so ayeke na ye n ayeke na sous-ensemble $2^n$. Contrapositive ti “tongana p, ni q” ayeke na valeur ti vérité so ayeke tënë ti kozo, me converse alingbi ti yeke tongana ni pëpe.",
+      "example": "Tongana $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ ni $A\\cap B=\\{3,4\\}$ na $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Fonction composée na fonction inverse",
+      "concept": "Fonction composée $(g\\circ f)(x)=g(f(x))$ a sala ni ti yâ ni na ndö. Fonction inverse asala $f^{-1}(y)=x$ tongana $f(x)=y$.",
+      "example": "Tongana $f(x)=2x+1$ na $g(x)=x^2$, ni $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Factorisation na ti sala équation cubique na quartique",
+      "concept": "Sala équation cubique wala quartique na **factorisation** (synthetic division wala substitution alingbi ti mû maboko) na ti wara valeur so asala chaque facteur ayeke zéro. Bâ facteur quadratique na discriminant ti ni.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ amû $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Dérivation ti fonction exponentielle, logarithme na trigonométrique",
+      "concept": "Sala dérivée ti fonction composée tongana (dérivée ti fonction ti ndö)×(dérivée ti fonction ti yâ), na quotient na $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Na $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ na $(\\cos x)'=-\\sin x$.",
+      "example": "Tongana $f(x)=e^{2x}$ ni $f'(x)=2e^{2x}$ na $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Permutation na combinaison na répétition, na théorème binomial",
+      "concept": "Nombre ti arrangement **na répétition** ayeke nombre ti choix so a multiplier na ni meme ôko-ôko na chaque place. Tongana ye ayeke gue tënë, bâ factorielle ti nombre kue na factorielle ti chaque nombre ti répétition; **combinaison na répétition** amû $_nH_r={}_{n+r-1}C_r$. Na yâ ti $(x+1)^n$ coefficient ti $x^k$ ayeke $_nC_k$.",
+      "example": "A lingbi ti zia lettre aabbc na lege $5!\\div(2!\\times2!)=30$"
     }
   },
   "course": {

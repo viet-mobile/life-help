@@ -735,6 +735,126 @@
         "Toa $P(A)$ kutoka 1."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "Kwa {mats}, kipengele cha ({r}, {c}) cha {expr} ni kipi?",
+      "hints": [
+        "Kujumlisha, kutoa na kuzidisha matriki kwa skeli hufanywa kipengele kwa kipengele katika nafasi ileile.",
+        "Kipengele cha (i, j) cha zao $AB$ ni jumla ya mazao ya safu mlalo i ya $A$ na safu wima j ya $B$, kwa mpangilio."
+      ],
+      "expl": "{steps}, kwa hiyo jibu ni {ans}."
+    },
+    "setCount": {
+      "prompt": "Ikiwa $n(A)={na}$, $n(B)={nb}$ na $n(A\\cap B)={nab}$, $n(A\\cup B)$ ni nini?",
+      "hints": [
+        "Tumia $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Weka thamani zilizotolewa moja baada ya nyingine."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Seti yenye vipengele {n} ina seti ndogo ngapi?",
+      "hints": [
+        "Seti yenye vipengele n ina seti ndogo $2^n$.",
+        "Fikiria kuamua kwa kila kipengele kama kitajumuishwa au la."
+      ],
+      "expl": "{prod}={ans}, kwa hiyo kuna seti ndogo {ans}."
+    },
+    "setOp": {
+      "prompt": "Kwa {sets}, {expr} ina vipengele vingapi?",
+      "hints": [
+        "Mkutano una vipengele vilivyo katika seti zote mbili; muungano una vipengele vilivyo katika angalau seti moja.",
+        "Orodhesha vipengele kimoja kimoja, kisha vihesabu."
+      ],
+      "expl": "{steps}, kwa hiyo ina vipengele {ans}."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Kwa kauli “ikiwa p basi q”, kinyume (converse) ni “ikiwa q basi p” na kinyume-badilifu (contrapositive) ni “ikiwa si q basi si p”.",
+        "Kinyume-badilifu daima kina thamani ya ukweli ileile kama kauli ya awali."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "Ikiwa $f(x)={f}$ na $g(x)={g}$, {comp} ni nini?",
+      "hints": [
+        "Kitendakazi changanyishi $(g\\circ f)(a)$ humaanisha $g(f(a))$. Anza na kitendakazi cha ndani kuelekea nje.",
+        "Tafuta kwanza thamani ya kitendakazi cha ndani, kisha ikiweke katika kitendakazi cha nje."
+      ],
+      "expl": "{steps}, kwa hiyo jibu ni {ans}."
+    },
+    "inverseVal": {
+      "prompt": "Ikiwa $f^{-1}$ ni kitendakazi kinyume cha $f(x)={f}$, $f^{-1}({y})$ ni nini?",
+      "hints": [
+        "$f^{-1}(y)=x$ humaanisha sawa na $f(x)=y$.",
+        "Tafuta thamani ya x inayotosheleza $f(x)={y}$."
+      ],
+      "expl": "{steps}, kwa hiyo $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "Shina halisi kubwa zaidi la {eq} ni lipi?",
+      "hints": [
+        "Gawanya katika vigezo vya zao. Mgawanyo sanisi (synthetic division) unaweza kupata shina la kwanza.",
+        "Mashina ni thamani za x zinazofanya kigezo kuwa sifuri."
+      ],
+      "expl": "{fact}, kwa hiyo mashina halisi ni {roots} na kubwa zaidi ni {ans}."
+    },
+    "rootSum": {
+      "prompt": "Jumla ya mashina yote halisi ya {eq} ni nini?",
+      "hints": [
+        "Gawanya katika vigezo vya zao. Mgawanyo sanisi (synthetic division) unaweza kupata shina la kwanza.",
+        "Mashina ni thamani za x zinazofanya kigezo kuwa sifuri."
+      ],
+      "expl": "{fact}, kwa hiyo mashina halisi ni {roots} na jumla yake ni {ans}."
+    },
+    "rootCount": {
+      "prompt": "{eq} ina mashina halisi tofauti mangapi?",
+      "hints": [
+        "Gawanya katika vigezo vya mstari au vya kwadratiki.",
+        "Tumia kibaguzi (discriminant) kuangalia kama kigezo cha kwadratiki $x^2+ax+b$ kina mashina halisi."
+      ],
+      "expl": "{fact}, kwa hiyo mashina halisi tofauti ni {roots}: ni {ans}."
+    },
+    "derivVal": {
+      "prompt": "Ikiwa $f(x)={f}$, $f'({a})$ ni nini?",
+      "hints": [
+        "Kwa kitendakazi changanyishi, tofautisha kitendakazi cha nje kisha zidisha kwa kiingilio cha kitendakazi cha ndani; kwa mgawo, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Tumia $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ na $(\\cos x)'=-\\sin x$."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "Kuna njia ngapi za kuchagua vitu {r} kutoka vitu {n} tofauti, kurudia kukiruhusiwa, na kuvipanga mstarini?",
+      "hints": [
+        "Idadi ya mipangilio yenye kurudia ni idadi ya machaguo ikizidishwa yenyewe mara moja kwa kila nafasi.",
+        "Kila nafasi inaweza kujazwa kwa njia {n}."
+      ],
+      "expl": "{prod}={ans} njia."
+    },
+    "permSame": {
+      "prompt": "Kuna njia ngapi za kupanga herufi zote za {word} mstarini?",
+      "hints": [
+        "Herufi zikijirudia, gawanya faktoria ya jumla ya herufi kwa faktoria ya kila idadi ya kurudia.",
+        "Hesabu kila herufi inaonekana mara ngapi."
+      ],
+      "expl": "{calc}={ans} njia."
+    },
+    "repComb": {
+      "prompt": "Kuna njia ngapi za kuchagua vitu {r} kutoka aina {n} tofauti, kurudia kukiruhusiwa?",
+      "hints": [
+        "Kwa aina n na vitu r vilivyochaguliwa, idadi ni sawa na njia za kuchagua r kutoka n+r−1.",
+        "Weka idadi ya aina na idadi ya vitu."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "Kigawo cha $x^{{k}}$ katika upanuzi wa $(x+1)^{{n}}$ ni nini?",
+      "hints": [
+        "Kwa nadharia ya binomi, vigawo ni idadi za mchanganyiko.",
+        "Kigawo cha $x^k$ ni $_nC_k$, idadi ya njia za kuchagua k kutoka n."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Kubadilisha matokeo ni kughushi na kunakiuka maadili ya utafiti, kwa hiyo kauli si kweli.",
     "rd_up": "kukadiria juu",
     "rd_down": "kukadiria chini",
-    "rd_half": "kukadiria hadi karibu zaidi"
+    "rd_half": "kukadiria hadi karibu zaidi",
+    "lg_contra": "Ikiwa kauli “ikiwa p basi q” ni kweli, basi kinyume-badilifu chake “ikiwa si q basi si p” daima ni kweli pia.",
+    "lg_contra_r": "Kauli na kinyume-badilifu chake daima zina thamani ya ukweli ileile, kwa hiyo kauli ni kweli.",
+    "lg_conv": "Ikiwa kauli “ikiwa p basi q” ni kweli, basi kinyume chake “ikiwa q basi p” daima ni kweli pia.",
+    "lg_conv_r": "Kinyume kinaweza kuwa si kweli hata kauli ikiwa kweli (kwa mfano, “ikiwa x=2 basi x²=4” ni kweli lakini “ikiwa x²=4 basi x=2” si kweli), kwa hiyo kauli si kweli."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Kanuni ya kujumlisha na tukio kinyume",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Uwezekano wa tukio kinyume ni $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matriki na shughuli zake",
+      "concept": "**Matriki** ni mpangilio wa mstatili wa namba. Kujumlisha, kutoa na kuzidisha kwa skeli hufanywa kipengele kwa kipengele; kipengele cha (i, j) cha zao $AB$ ni jumla ya mazao ya safu mlalo i ya $A$ na safu wima j ya $B$, kwa mpangilio.",
+      "example": "Kipengele cha (1, 1) cha $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ ni $1\\times2+2\\times1=4$"
+    },
+    "H1set1": {
+      "title": "Seti na kauli",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$, na seti yenye vipengele n ina seti ndogo $2^n$. Kinyume-badilifu cha “ikiwa p basi q” daima kina thamani ya ukweli ileile kama kauli, lakini kinyume huenda kisiwe hivyo.",
+      "example": "Ikiwa $A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ basi $A\\cap B=\\{3,4\\}$ na $A\\cup B=\\{1,2,3,4,5\\}$"
+    },
+    "H1fnc1": {
+      "title": "Vitendakazi changanyishi na kinyume",
+      "concept": "Kitendakazi changanyishi $(g\\circ f)(x)=g(f(x))$ hukokotolewa kuanzia kitendakazi cha ndani kuelekea nje. Kitendakazi kinyume hutosheleza $f^{-1}(y)=x$ kila wakati $f(x)=y$.",
+      "example": "Ikiwa $f(x)=2x+1$ na $g(x)=x^2$, basi $(g\\circ f)(2)=g(5)=25$"
+    },
+    "H1pol1": {
+      "title": "Kugawanya katika vigezo na kutatua milinganyo ya kubiki na kwatiki",
+      "concept": "Tatua mlinganyo wa kubiki au kwatiki kwa **kuugawanya katika vigezo** (mgawanyo sanisi au ubadilishaji husaidia) na kutafuta thamani zinazofanya kila kigezo kuwa sifuri. Kagua kigezo cha kwadratiki kwa kibaguzi chake.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ hutoa $x=1,\\ 2,\\ -3$"
+    },
+    "H3cal1": {
+      "title": "Kutofautisha vitendakazi vya kielelezo, logarithmi na trigonometria",
+      "concept": "Tofautisha kitendakazi changanyishi kama (kiingilio cha kitendakazi cha nje)×(kiingilio cha kitendakazi cha ndani), na mgawo kwa $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$. Pia $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ na $(\\cos x)'=-\\sin x$.",
+      "example": "Ikiwa $f(x)=e^{2x}$ basi $f'(x)=2e^{2x}$ na $f'(0)=2$"
+    },
+    "H3cnt1": {
+      "title": "Vibali na mchanganyiko wenye kurudia, na nadharia ya binomi",
+      "concept": "Idadi ya mipangilio **yenye kurudia** ni idadi ya machaguo ikizidishwa yenyewe mara moja kwa kila nafasi. Vitu vikijirudia, gawanya faktoria ya jumla kwa faktoria ya kila idadi ya kurudia; **mchanganyiko wenye kurudia** hutoa $_nH_r={}_{n+r-1}C_r$. Katika $(x+1)^n$ kigawo cha $x^k$ ni $_nC_k$.",
+      "example": "Herufi aabbc zinaweza kupangwa kwa njia $5!\\div(2!\\times2!)=30$"
     }
   },
   "course": {

@@ -735,6 +735,126 @@
         "1’den $P(A)$ değerini çıkar."
       ],
       "expl": "1-{pa}={ans}."
+    },
+    "matEntry": {
+      "prompt": "{mats} için {expr} matrisinin ({r}, {c}) elemanı kaçtır?",
+      "hints": [
+        "Matrislerin toplamı, farkı ve bir sayıyla çarpımı aynı konumdaki elemanlar üzerinden tek tek yapılır.",
+        "$AB$ çarpımının (i, j) elemanı, $A$'nın i. satırı ile $B$'nin j. sütunundaki elemanların sırayla çarpımlarının toplamıdır."
+      ],
+      "expl": "{steps}, yani cevap {ans} olur."
+    },
+    "setCount": {
+      "prompt": "$n(A)={na}$, $n(B)={nb}$ ve $n(A\\cap B)={nab}$ ise $n(A\\cup B)$ kaçtır?",
+      "hints": [
+        "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$ formülünü kullan.",
+        "Verilen değerleri sırayla yerine koy."
+      ],
+      "expl": "{na}+{nb}-{nab}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "{n} elemanlı bir kümenin kaç alt kümesi vardır?",
+      "hints": [
+        "n elemanlı bir kümenin $2^n$ tane alt kümesi vardır.",
+        "Her eleman için alt kümeye alınıp alınmayacağına karar verdiğini düşün."
+      ],
+      "expl": "{prod}={ans}, yani {ans} alt küme vardır."
+    },
+    "setOp": {
+      "prompt": "{sets} için {expr} kümesinin kaç elemanı vardır?",
+      "hints": [
+        "Kesişim iki kümede de bulunan elemanlardan, birleşim en az birinde bulunan elemanlardan oluşur.",
+        "Elemanları tek tek yaz, sonra say."
+      ],
+      "expl": "{steps}, yani {ans} elemanı vardır."
+    },
+    "logicTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "“p ise q” önermesinin karşıtı “q ise p”, kontrapozitifi (karşıt-evrik) “q değil ise p değil” önermesidir.",
+        "Kontrapozitif, orijinal önerme ile her zaman aynı doğruluk değerine sahiptir."
+      ],
+      "expl": "{reason}"
+    },
+    "composite": {
+      "prompt": "$f(x)={f}$ ve $g(x)={g}$ ise {comp} kaçtır?",
+      "hints": [
+        "Bileşke $(g\\circ f)(a)$, $g(f(a))$ demektir. İçteki fonksiyondan dışa doğru ilerle.",
+        "Önce içteki fonksiyonun değerini bul, sonra bunu dıştaki fonksiyonda yerine koy."
+      ],
+      "expl": "{steps}, yani cevap {ans} olur."
+    },
+    "inverseVal": {
+      "prompt": "$f^{-1}$, $f(x)={f}$ fonksiyonunun ters fonksiyonu ise $f^{-1}({y})$ kaçtır?",
+      "hints": [
+        "$f^{-1}(y)=x$ ile $f(x)=y$ aynı anlama gelir.",
+        "$f(x)={y}$ eşitliğini sağlayan x değerini bul."
+      ],
+      "expl": "{steps}, yani $f^{-1}({y})={ans}$."
+    },
+    "rootMax": {
+      "prompt": "{eq} denkleminin en büyük gerçek kökü kaçtır?",
+      "hints": [
+        "Denklemi çarpanlarına ayır. Sentetik bölme ile ilk kökü bulabilirsin.",
+        "Kökler, bir çarpanı sıfır yapan x değerleridir."
+      ],
+      "expl": "{fact}, yani gerçek kökler {roots} ve en büyüğü {ans} olur."
+    },
+    "rootSum": {
+      "prompt": "{eq} denkleminin tüm gerçek köklerinin toplamı kaçtır?",
+      "hints": [
+        "Denklemi çarpanlarına ayır. Sentetik bölme ile ilk kökü bulabilirsin.",
+        "Kökler, bir çarpanı sıfır yapan x değerleridir."
+      ],
+      "expl": "{fact}, yani gerçek kökler {roots} ve toplamları {ans} olur."
+    },
+    "rootCount": {
+      "prompt": "{eq} denkleminin kaç farklı gerçek kökü vardır?",
+      "hints": [
+        "Denklemi birinci veya ikinci dereceden çarpanlara ayır.",
+        "$x^2+ax+b$ biçimindeki bir çarpanın gerçek kökü olup olmadığını diskriminant ile kontrol et."
+      ],
+      "expl": "{fact}, yani farklı gerçek kökler {roots} olup {ans} tanedir."
+    },
+    "derivVal": {
+      "prompt": "$f(x)={f}$ ise $f'({a})$ kaçtır?",
+      "hints": [
+        "Bileşke fonksiyonda dıştaki fonksiyonun türevini alıp içtekinin türeviyle çarp; bölümde $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$ kullan.",
+        "$(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ ve $(\\cos x)'=-\\sin x$ türevlerini kullan."
+      ],
+      "expl": "{steps}."
+    },
+    "repPerm": {
+      "prompt": "{n} farklı nesne arasından, tekrarlı olarak {r} nesne seçip bir sıraya dizmek kaç farklı şekilde yapılabilir?",
+      "hints": [
+        "Tekrarlı dizilişlerin sayısı, seçenek sayısının her yer için bir kez kendisiyle çarpılmasıdır.",
+        "Her yer {n} farklı şekilde doldurulabilir."
+      ],
+      "expl": "{prod}={ans} şekilde."
+    },
+    "permSame": {
+      "prompt": "{word} sözcüğünün tüm harfleri bir sıraya kaç farklı şekilde dizilebilir?",
+      "hints": [
+        "Tekrar eden harfler varsa, toplam harf sayısının faktöriyelini her tekrar sayısının faktöriyeline böl.",
+        "Her harfin kaç kez geçtiğini say."
+      ],
+      "expl": "{calc}={ans} şekilde."
+    },
+    "repComb": {
+      "prompt": "{n} farklı çeşitten, tekrarlı olarak {r} tane seçmek kaç farklı şekilde yapılabilir?",
+      "hints": [
+        "n çeşit ve r seçim varsa, sayı n+r−1 elemandan r tanesini seçme sayısına eşittir.",
+        "Çeşit sayısını ve seçilecek sayıyı yerine koy."
+      ],
+      "expl": "{calc}={ans}."
+    },
+    "binomCoef": {
+      "prompt": "$(x+1)^{{n}}$ açılımında $x^{{k}}$ teriminin katsayısı kaçtır?",
+      "hints": [
+        "Binom açılımında katsayılar kombinasyon sayılarıdır.",
+        "$x^k$ teriminin katsayısı $_nC_k$ olup n elemandan k tanesini seçme sayısıdır."
+      ],
+      "expl": "{calc}={ans}."
     }
   },
   "word": {
@@ -788,7 +908,11 @@
     "et_fake_r": "Sonuçları değiştirmek sahtekârlıktır ve araştırma etiğini bozar, yani ifade yanlıştır.",
     "rd_up": "yukarı yuvarlama",
     "rd_down": "aşağı yuvarlama",
-    "rd_half": "en yakına yuvarlama"
+    "rd_half": "en yakına yuvarlama",
+    "lg_contra": "“p ise q” önermesi doğruysa, kontrapozitifi olan “q değil ise p değil” önermesi de her zaman doğrudur.",
+    "lg_contra_r": "Bir önerme ile kontrapozitifi her zaman aynı doğruluk değerine sahiptir, dolayısıyla önerme doğrudur.",
+    "lg_conv": "“p ise q” önermesi doğruysa, karşıtı olan “q ise p” önermesi de her zaman doğrudur.",
+    "lg_conv_r": "Önerme doğru olsa bile karşıtı yanlış olabilir (örneğin “x=2 ise x²=4” doğrudur ama “x²=4 ise x=2” yanlıştır), dolayısıyla önerme yanlıştır."
   },
   "lesson": {
     "E2dat1": {
@@ -940,6 +1064,36 @@
       "title": "Toplama kuralı ve tümleyen olay",
       "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Tümleyen olayın olasılığı $P(A^c)=1-P(A)$.",
       "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
+    },
+    "H1mat1": {
+      "title": "Matrisler ve işlemleri",
+      "concept": "**Matris**, sayıların dikdörtgen biçiminde dizilmesidir. Toplama, çıkarma ve bir sayıyla çarpma eleman eleman yapılır; $AB$ çarpımının (i, j) elemanı, $A$'nın i. satırı ile $B$'nin j. sütunundaki elemanların sırayla çarpımlarının toplamıdır.",
+      "example": "$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ çarpımının (1, 1) elemanı $1\\times2+2\\times1=4$ olur"
+    },
+    "H1set1": {
+      "title": "Kümeler ve önermeler",
+      "concept": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$ olur ve n elemanlı bir kümenin $2^n$ alt kümesi vardır. “p ise q” önermesinin kontrapozitifi önerme ile her zaman aynı doğruluk değerine sahiptir, ama karşıtı farklı olabilir.",
+      "example": "$A=\\{1,2,3,4\\},\\ B=\\{3,4,5\\}$ ise $A\\cap B=\\{3,4\\}$ ve $A\\cup B=\\{1,2,3,4,5\\}$ olur"
+    },
+    "H1fnc1": {
+      "title": "Bileşke ve ters fonksiyonlar",
+      "concept": "Bileşke $(g\\circ f)(x)=g(f(x))$ içteki fonksiyondan dışa doğru hesaplanır. Ters fonksiyon, $f(x)=y$ olduğunda her zaman $f^{-1}(y)=x$ olacak biçimdedir.",
+      "example": "$f(x)=2x+1$ ve $g(x)=x^2$ ise $(g\\circ f)(2)=g(5)=25$ olur"
+    },
+    "H1pol1": {
+      "title": "Üçüncü ve dördüncü dereceden denklemleri çarpanlara ayırarak çözme",
+      "concept": "Üçüncü veya dördüncü dereceden bir denklemi **çarpanlara ayırarak** (sentetik bölme veya değişken değiştirme yardımcı olur) ve her çarpanı sıfır yapan değerleri bularak çöz. İkinci dereceden bir çarpanı diskriminantıyla kontrol et.",
+      "example": "$x^3-7x+6=(x-1)(x-2)(x+3)=0$ denkleminden $x=1,\\ 2,\\ -3$ bulunur"
+    },
+    "H3cal1": {
+      "title": "Üstel, logaritmik ve trigonometrik fonksiyonların türevi",
+      "concept": "Bileşke fonksiyonun türevi (dıştakinin türevi)×(içtekinin türevi), bölümün türevi ise $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$ ile alınır. Ayrıca $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ ve $(\\cos x)'=-\\sin x$.",
+      "example": "$f(x)=e^{2x}$ ise $f'(x)=2e^{2x}$ ve $f'(0)=2$ olur"
+    },
+    "H3cnt1": {
+      "title": "Tekrarlı permütasyon ve kombinasyon, binom açılımı",
+      "concept": "**Tekrarlı** dizilişlerin sayısı, seçenek sayısının her yer için bir kez kendisiyle çarpılmasıdır. Tekrar eden öğeler varsa toplamın faktöriyelini her tekrar sayısının faktöriyeline böl; **tekrarlı kombinasyon** $_nH_r={}_{n+r-1}C_r$ ile bulunur. $(x+1)^n$ açılımında $x^k$ teriminin katsayısı $_nC_k$ olur.",
+      "example": "aabbc harfleri $5!\\div(2!\\times2!)=30$ şekilde dizilebilir"
     }
   },
   "course": {
