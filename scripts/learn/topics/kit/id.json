@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Berapa bilangan untuk {cat} pada tabel?",
+      "hints": [
+        "Temukan sel {cat}.",
+        "Baca bilangan yang tertulis di dalamnya."
+      ],
+      "expl": "Bilangan untuk {cat} adalah {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Berapa jumlah semua bilangan pada tabel?",
+      "hints": [
+        "Baca bilangan pada setiap sel.",
+        "Jumlahkan semuanya."
+      ],
+      "expl": "Jumlahnya {sum}, jadi jawabannya {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Berapa lingkaran pada kolom tertinggi di grafik?",
+      "hints": [
+        "Hitung lingkaran pada setiap kolom.",
+        "Temukan kolom tertinggi."
+      ],
+      "expl": "Kolom tertinggi memiliki {ans} lingkaran."
+    },
+    "symbolDiff": {
+      "prompt": "Berapa lebihnya kolom terbesar dibandingkan kolom terkecil?",
+      "hints": [
+        "Cari dulu banyak terbesar dan terkecil.",
+        "Kurangkan yang kecil dari yang besar."
+      ],
+      "expl": "{max}-{min}={ans}, jadi lebihnya {ans}."
+    },
+    "mostWhich": {
+      "prompt": "Item mana yang paling besar pada grafik?",
+      "hints": [
+        "Bandingkan bilangan setiap item.",
+        "Temukan bilangan terbesar."
+      ],
+      "expl": "Item terbesar adalah {name}."
+    },
+    "compareCount": {
+      "prompt": "Berapa lebihnya {a} dibandingkan {b}?",
+      "hints": [
+        "Baca bilangan untuk {a} dan {b}.",
+        "Kurangkan yang kecil dari yang besar."
+      ],
+      "expl": "{x}-{y}={ans}, jadi {a} lebih banyak {ans}."
+    },
+    "lineRead": {
+      "prompt": "Berapa nilai pada {cat} di grafik garis?",
+      "hints": [
+        "Temukan {cat} pada sumbu mendatar.",
+        "Baca nilai titik di atasnya."
+      ],
+      "expl": "Nilai pada {cat} adalah {ans}."
+    },
+    "lineMax": {
+      "prompt": "Berapa nilai terbesar pada grafik garis?",
+      "hints": [
+        "Bandingkan nilai semua titik.",
+        "Temukan titik tertinggi."
+      ],
+      "expl": "Nilai terbesar adalah {ans}."
+    },
+    "lineChange": {
+      "prompt": "Berapa kenaikan nilai dari {from} ke {to}?",
+      "hints": [
+        "Baca nilai pada {from} dan {to}.",
+        "Kurangkan nilai pertama dari nilai yang kemudian."
+      ],
+      "expl": "{b}-{a}={ans}, jadi naik {ans}."
+    },
+    "mean": {
+      "prompt": "Berapa rata-rata bilangan berikut? {list}",
+      "hints": [
+        "Rata-rata adalah (jumlah semua) ÷ (banyak data).",
+        "Jumlahkan semuanya terlebih dahulu."
+      ],
+      "expl": "({sum})÷{n}={ans}, jadi rata-ratanya {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Rata-rata empat bilangan adalah {m} dan tiga di antaranya {list}. Berapa bilangan keempat?",
+      "hints": [
+        "Jumlah keempat bilangan adalah rata-rata × 4.",
+        "Kurangkan tiga bilangan yang diketahui dari jumlah itu."
+      ],
+      "expl": "{m}×4={total} dan {total}-({known})={ans}, jadi bilangannya {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Sebuah kotak berisi {a} bola A dan {b} bola B. Satu bola diambil. Berapa peluang bola itu bola A, dalam bentuk desimal?",
+      "hints": [
+        "Peluang = (kejadian yang diinginkan) ÷ (semua kejadian).",
+        "Cari dulu banyak seluruh bola."
+      ],
+      "expl": "{a}÷{total}={ans}, jadi peluangnya {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Mustahil bernilai 0 dan pasti bernilai 1.",
+        "Sama mungkin adalah $\\frac{1}{2}$."
+      ],
+      "expl": "Peluang kejadian ini adalah: {name}."
+    },
+    "pieCount": {
+      "prompt": "Pada diagram lingkaran, A adalah {p}% dari seluruhnya. Seluruhnya {t} orang. Berapa orang A?",
+      "hints": [
+        "{p}% adalah $\\frac{p}{100}$.",
+        "Kalikan seluruhnya dengan perbandingan itu."
+      ],
+      "expl": "{t}×{p}÷100={ans}, jadi {ans} orang."
+    },
+    "pieRest": {
+      "prompt": "Tiga bagian diagram lingkaran adalah {a}%, {b}%, dan {c}%. Berapa persen bagian keempat? (%)",
+      "hints": [
+        "Seluruhnya adalah 100%.",
+        "Kurangkan ketiga bagian itu dari 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, jadi {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Berapa persen {cat} dari seluruhnya pada grafik pita? (%)",
+      "hints": [
+        "Temukan bagian {cat}.",
+        "Baca persen yang tertulis di bawahnya."
+      ],
+      "expl": "{cat} adalah {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Hitunglah $({a})+({b})$.",
+      "hints": [
+        "Tanda sama: jumlahkan nilai mutlaknya dan pertahankan tandanya.",
+        "Tanda berbeda: kurangkan nilai mutlaknya dan ambil tanda yang lebih besar."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Hitunglah $({a})-({b})$.",
+      "hints": [
+        "Mengurangi sama dengan menambah lawan bilangan.",
+        "Tulis ulang menjadi $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Hitunglah $({a})\\times({b})$.",
+      "hints": [
+        "Tanda sama menghasilkan positif, tanda berbeda menghasilkan negatif.",
+        "Kalikan nilai mutlaknya."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Hitunglah $({a})\\div({b})$.",
+      "hints": [
+        "Tanda sama menghasilkan positif, tanda berbeda menghasilkan negatif.",
+        "Bagi nilai mutlaknya."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "Berapa $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ dalam bentuk desimal?",
+      "hints": [
+        "Samakan penyebut lalu jumlahkan.",
+        "Ubah pecahan menjadi desimal."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Bilangan berapa yang ditunjukkan titik P pada garis bilangan?",
+      "hints": [
+        "Di kiri 0 negatif, di kanan 0 positif.",
+        "Hitung tanda skalanya."
+      ],
+      "expl": "Titik P menunjukkan {ans}."
+    },
+    "primeCount": {
+      "prompt": "Ada berapa bilangan prima sampai {n}?",
+      "hints": [
+        "Bilangan prima memiliki tepat dua faktor: 1 dan dirinya sendiri.",
+        "Hitung 2, 3, 5, 7, ... secara berurutan."
+      ],
+      "expl": "Bilangan prima sampai {n} adalah {list}: ada {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ difaktorkan menjadi faktor prima $2^a\\times3^b$. Berapa $a+b$?",
+      "hints": [
+        "Bagi {n} dengan 2 selama masih bisa.",
+        "Lalu bagi sisanya dengan 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, jadi $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "Berapa banyak faktor dari {n}?",
+      "hints": [
+        "Cari semua bilangan yang membagi {n} tanpa sisa.",
+        "Periksa dari yang terkecil ke atas."
+      ],
+      "expl": "Faktor dari {n} adalah {list}: ada {ans}."
+    },
+    "gcd": {
+      "prompt": "Berapa faktor persekutuan terbesar (FPB) dari {a} dan {b}?",
+      "hints": [
+        "Cari faktor yang dimiliki kedua bilangan.",
+        "Yang terbesar di antaranya adalah FPB."
+      ],
+      "expl": "FPB dari {a} dan {b} adalah {ans}."
+    },
+    "lcm": {
+      "prompt": "Berapa kelipatan persekutuan terkecil (KPK) dari {a} dan {b}?",
+      "hints": [
+        "Tulis kelipatan yang dimiliki kedua bilangan, mulai dari yang terkecil.",
+        "Kelipatan persekutuan yang terkecil adalah KPK."
+      ],
+      "expl": "KPK dari {a} dan {b} adalah {ans}."
+    },
+    "isPrime": {
+      "prompt": "Apakah {n} bilangan prima?",
+      "hints": [
+        "Cari faktor dari {n}.",
+        "Jika memiliki faktor selain 1 dan dirinya sendiri, bukan bilangan prima."
+      ],
+      "expl": "Faktor dari {n} adalah {list}, jadi {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Berapa koordinat-{axis} titik A?",
+      "hints": [
+        "Pasangan koordinat ditulis (x, y).",
+        "Hitung sepanjang kisi."
+      ],
+      "expl": "Koordinat-{axis} titik A adalah {ans}."
+    },
+    "quadrant": {
+      "prompt": "Di kuadran berapa titik ({a}, {b}) berada?",
+      "hints": [
+        "Lihat tanda koordinat x dan y.",
+        "(+,+) adalah Kuadran 1."
+      ],
+      "expl": "x adalah {a} dan y adalah {b}, jadi terletak di {name}."
+    },
+    "distAxis": {
+      "prompt": "Berapa jarak titik ({a}, {b}) ke sumbu-{axis}?",
+      "hints": [
+        "Jarak ke sumbu adalah nilai mutlak suatu koordinat.",
+        "Untuk sumbu-{axis} lihat koordinat-{which}."
+      ],
+      "expl": "Jaraknya nilai mutlak koordinat-{which} {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Titik ({a}, {b}) dicerminkan terhadap sumbu-x. Berapa koordinat-y titik baru?",
+      "hints": [
+        "Pencerminan terhadap sumbu-x mempertahankan koordinat-x.",
+        "Tanda koordinat-y berubah."
+      ],
+      "expl": "Titik barunya adalah ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y berbanding lurus dengan x, dan y={y1} ketika x={x1}. Berapa y ketika x={x2}?",
+      "hints": [
+        "Perbandingan senilai adalah y=ax.",
+        "Cari a terlebih dahulu."
+      ],
+      "expl": "a={y1}÷{x1}={k}, jadi y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y berbanding terbalik dengan x, dan y={y1} ketika x={x1}. Berapa y ketika x={x2}?",
+      "hints": [
+        "Perbandingan berbalik nilai adalah $y=\\frac{a}{x}$.",
+        "Cari a=xy terlebih dahulu."
+      ],
+      "expl": "a={x1}×{y1}={k}, jadi y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Grafik perbandingan senilai y=ax melalui titik ({x1}, {y1}). Berapa a?",
+      "hints": [
+        "Substitusikan titik ke y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Grafik perbandingan berbalik nilai $y=\\frac{a}{x}$ melalui titik ({x1}, {y1}). Berapa a?",
+      "hints": [
+        "Substitusikan titik ke $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Berapa median data {list}?",
+      "hints": [
+        "Urutkan data dari yang terkecil.",
+        "Nilai tengah adalah median; jika banyak data genap, ambil rata-rata dua nilai tengah."
+      ],
+      "expl": "Setelah diurutkan: {sorted}, jadi mediannya {ans}."
+    },
+    "mode": {
+      "prompt": "Berapa modus data {list}?",
+      "hints": [
+        "Modus adalah nilai yang paling sering muncul.",
+        "Hitung berapa kali tiap nilai muncul."
+      ],
+      "expl": "{ans} paling sering muncul, jadi modusnya {ans}."
+    },
+    "dataRange": {
+      "prompt": "Berapa selisih nilai terbesar dan terkecil dari {list}?",
+      "hints": [
+        "Cari nilai terbesar dan terkecil.",
+        "Kurangkan yang kecil dari yang besar."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Frekuensi total adalah {t} dan satu kelas memiliki frekuensi {f}. Berapa frekuensi relatif kelas itu? (desimal)",
+      "hints": [
+        "Frekuensi relatif = (frekuensi kelas) ÷ (frekuensi total).",
+        "Tulis hasilnya sebagai desimal."
+      ],
+      "expl": "{f}÷{t}={ans}, jadi frekuensi relatifnya {ans}."
+    },
+    "periodLen": {
+      "prompt": "Jika $\\frac{1}{{d}}$ ditulis sebagai desimal, berapa angka pada bagian yang berulang?",
+      "hints": [
+        "Bagi 1 dengan {d}.",
+        "Bagian yang berulang adalah bagian yang muncul terus-menerus."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, jadi bagian yang berulang memiliki {ans} angka."
+    },
+    "repeatFrac": {
+      "prompt": "Desimal berulang $0.\\dot{d}\\dot{e}$ sama dengan $\\frac{x}{99}$. Berapa x?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Tulis bilangan dua angka ab sebagai pembilang."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ menghasilkan x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "Apakah $\\frac{{n}}{{d}}$ desimal berhenti?",
+      "hints": [
+        "Sederhanakan pecahan, lalu faktorkan penyebutnya.",
+        "Jika faktor primanya hanya 2 dan 5, desimalnya berhenti."
+      ],
+      "expl": "Penyebut {d2} memiliki faktor prima {fact}, jadi {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Berapa angka pada tempat desimal ke-{k}?",
+      "hints": [
+        "Bagian berulang 142857 memiliki 6 angka.",
+        "Gunakan sisa {k} ÷ 6 untuk menentukan posisinya."
+      ],
+      "expl": "Sisa {k} ÷ 6 adalah {r}, jadi angka ke-{r}: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Berapa gradien fungsi linear $y={a}x+{b}$?",
+      "hints": [
+        "Pada $y=ax+b$ gradiennya adalah a.",
+        "Baca koefisien x."
+      ],
+      "expl": "Gradiennya {ans}."
+    },
+    "yInt": {
+      "prompt": "Berapa titik potong sumbu-y dari $y={a}x+{b}$?",
+      "hints": [
+        "Titik potong sumbu-y adalah y ketika x=0.",
+        "Pada $y=ax+b$ nilainya b."
+      ],
+      "expl": "Titik potong sumbu-y adalah {ans}."
+    },
+    "xInt": {
+      "prompt": "Berapa titik potong sumbu-x dari $y={a}x+{b}$?",
+      "hints": [
+        "Titik potong sumbu-x adalah x ketika y=0.",
+        "Selesaikan $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ menghasilkan x={ans}."
+    },
+    "crossX": {
+      "prompt": "Grafik $y={a1}x+{b1}$ dan $y={a2}x+{b2}$ berpotongan di P. Berapa koordinat-x P?",
+      "hints": [
+        "Di titik potong kedua nilai y sama.",
+        "Selesaikan $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ menghasilkan x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Untuk fungsi linear $f(x)={a}x+{b}$, berapa $f({c})$?",
+      "hints": [
+        "Gantikan x dengan {c}.",
+        "Kalikan, lalu jumlahkan."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "Uang {p} won ditabung selama {n} tahun dengan bunga tunggal {r}% per tahun. Berapa bunganya? (won)",
+      "hints": [
+        "Bunga tunggal = modal × suku bunga × tahun.",
+        "{r}% adalah {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, jadi bunganya {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "Uang {p} won ditabung selama {n} tahun dengan bunga majemuk {r}% per tahun. Berapa jumlah akhirnya? (won)",
+      "hints": [
+        "Pada bunga majemuk, bunga ikut berbunga.",
+        "Kalikan modal × (1 + suku bunga) sebanyak {n} kali."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, jadi jumlah akhirnya {ans} won."
+    },
+    "exchange": {
+      "prompt": "1 satuan mata uang asing bernilai {r} won. Berapa won untuk {d} satuan mata uang itu? (won)",
+      "hints": [
+        "Kurs adalah nilai 1 satuan mata uang asing dalam won.",
+        "Kalikan jumlah satuan dengan kurs."
+      ],
+      "expl": "{d}×{r}={ans}, jadi {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "Sebuah barang berharga {p} won dan dikenai pajak pertambahan nilai {t}%. Berapa won yang harus dibayar? (won)",
+      "hints": [
+        "Pajaknya adalah harga × {t}%.",
+        "Tambahkan pajak ke harga."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, jadi {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "Kurva permintaan $p={a}-{b}q$ dan kurva penawaran $p={c}+{d}q$ berpotongan pada kuantitas keseimbangan q. Berapa q?",
+      "hints": [
+        "Pada keseimbangan, harga permintaan sama dengan harga penawaran.",
+        "Selesaikan $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ menghasilkan q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Fungsi permintaan adalah $p={a}-{b}q$. Berapa nilai maksimum pendapatan $R=pq$?",
+      "hints": [
+        "$R=({a}-{b}q)q$ adalah fungsi kuadrat.",
+        "Nilai terbesar di titik puncak $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Pada q={q} pendapatan terbesar: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Permintaan adalah $Q={a}-{b}p$. Berapa nilai mutlak elastisitas harga pada $p={p0}$? (desimal)",
+      "hints": [
+        "Nilai mutlak elastisitas adalah $\\frac{bp}{Q}$.",
+        "Cari dulu Q pada $p={p0}$."
+      ],
+      "expl": "Q={q0}, jadi $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Berapa kali A muncul pada urutan kata {seq}?",
+      "hints": [
+        "Tandai hanya huruf A saat menghitung.",
+        "Banyak ini adalah komponen A dari vektor frekuensi."
+      ],
+      "expl": "A muncul {ans} kali."
+    },
+    "freqDot": {
+      "prompt": "Dua dokumen memiliki vektor frekuensi $\\vec{u}=({u1}, {u2}, {u3})$ dan $\\vec{v}=({v1}, {v2}, {v3})$. Berapa hasil kali titik $\\vec{u}\\cdot\\vec{v}$?",
+      "hints": [
+        "Kalikan komponen yang bersesuaian lalu jumlahkan.",
+        "Makin besar hasil kali titik, makin mirip kedua dokumen."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Sebuah gambar disimpan sebagai matriks $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Berapa jumlah semua nilai piksel?",
+      "hints": [
+        "Setiap entri adalah kecerahan satu piksel.",
+        "Jumlahkan keempat entri."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Sebuah piksel bernilai {v}. Setiap piksel dibuat lebih terang sebesar {k}. Berapa nilai barunya?",
+      "hints": [
+        "Mencerahkan berarti menambah bilangan yang sama pada setiap entri matriks.",
+        "Tambahkan {k} ke {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Berapa gradien garis tren yang melalui ({x1}, {y1}) dan ({x2}, {y2})?",
+      "hints": [
+        "Gradien = perubahan y ÷ perubahan x.",
+        "Hitung $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Prediksinya {pred} dan nilai sebenarnya {real}. Berapa galat kuadrat rata-rata (rata-rata kuadrat galat)?",
+      "hints": [
+        "Galat adalah prediksi − nilai sebenarnya.",
+        "Kuadratkan setiap galat, lalu ambil rata-ratanya."
+      ],
+      "expl": "Kuadrat galatnya {sq} dan rata-ratanya {ans}."
+    },
+    "gradStep": {
+      "prompt": "Untuk fungsi kerugian $f(x)=x^2$, satu langkah penurunan gradien dari x={x0} dengan laju belajar {eta} menghasilkan x baru berapa?",
+      "hints": [
+        "Penurunan gradien: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, jadi {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "Berapa cm {v} m? (cm)",
+      "hints": [
+        "1 m adalah 100 cm.",
+        "Kalikan {v} dengan 100."
+      ],
+      "expl": "{v}×100={ans}, jadi {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "Berapa g {v} kg? (g)",
+      "hints": [
+        "1 kg adalah 1000 g.",
+        "Kalikan {v} dengan 1000."
+      ],
+      "expl": "{v}×1000={ans}, jadi {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Berapa menit {v} jam? (menit)",
+      "hints": [
+        "1 jam adalah 60 menit.",
+        "Kalikan {v} dengan 60."
+      ],
+      "expl": "{v}×60={ans}, jadi {ans} menit."
+    },
+    "discount": {
+      "prompt": "Sebuah barang berharga {p} won dan dijual dengan diskon {d}%. Berapa harga jualnya? (won)",
+      "hints": [
+        "Diskonnya adalah harga × {d}%.",
+        "Kurangkan diskon dari harga."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, jadi {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "Bahan A dan B dicampur dengan perbandingan {a}:{b} sehingga totalnya {t} g. Berapa g A yang dibutuhkan? (g)",
+      "hints": [
+        "Seluruhnya adalah {a}+{b}={s} bagian.",
+        "A adalah $\\frac{a}{s}$ dari seluruhnya."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, jadi {ans} g."
+    },
+    "tiles": {
+      "prompt": "Sebuah dinding lebarnya {w} m dan tingginya {h} m. Berapa ubin 1 m × 1 m yang menutupinya? (ubin)",
+      "hints": [
+        "Cari luas dinding.",
+        "Satu ubin memiliki luas 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, jadi {ans} ubin."
+    },
+    "outfit": {
+      "prompt": "Ada {a} kemeja dan {b} celana. Ada berapa pasang pakaian berbeda dari satu kemeja dan satu celana?",
+      "hints": [
+        "Untuk setiap kemeja ada {b} pilihan celana.",
+        "Gunakan aturan perkalian."
+      ],
+      "expl": "{a}×{b}={ans}, jadi {ans} pasang."
+    },
+    "goldenRatio": {
+      "prompt": "Rasio emas memenuhi $a:b=(a+b):a$. Jika b=10, berapa kira-kira a? (dua tempat desimal)",
+      "hints": [
+        "Rasio emas kira-kira 1,618.",
+        "a kira-kira 1,618 kali b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Tinggi nada ditentukan oleh frekuensi. Berapa frekuensi dalam Hz nada satu oktaf di atas 440 Hz? (Hz)",
+      "hints": [
+        "Nada satu oktaf lebih tinggi berfrekuensi dua kali lipat.",
+        "Kalikan 440 dengan 2."
+      ],
+      "expl": "440×2={ans}, jadi {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Satu sel braille memiliki 6 titik, masing-masing timbul atau datar. Tanpa pola yang tidak memiliki titik timbul, ada berapa pola?",
+      "hints": [
+        "Setiap titik memiliki 2 kemungkinan.",
+        "Dengan aturan perkalian $2^6$, lalu kurangi 1."
+      ],
+      "expl": "$2^6-1={ans}$, jadi {ans} pola."
+    },
+    "voteMajority": {
+      "prompt": "{n} orang memberikan suara. Paling sedikit berapa suara yang dibutuhkan seorang calon untuk meraih mayoritas? (suara)",
+      "hints": [
+        "Mayoritas adalah lebih dari setengah seluruh suara.",
+        "Cari bilangan bulat terkecil yang lebih dari setengah {n}."
+      ],
+      "expl": "Setengah dari {n} adalah {half}; bilangan bulat terkecil di atasnya adalah {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Selama 5 hari konsentrasi debu halus adalah {list} (µg/m³). Berapa rata-rata konsentrasinya?",
+      "hints": [
+        "Rata-rata adalah (jumlah) ÷ (banyak hari).",
+        "Jumlahkan dulu kelima nilai."
+      ],
+      "expl": "({sum})÷5={ans}, jadi rata-ratanya {ans}."
+    },
+    "percentChange": {
+      "prompt": "Sebuah nilai berubah dari {a} menjadi {b}. Berapa persen kenaikannya? (%)",
+      "hints": [
+        "Persentase kenaikan = (besar kenaikan) ÷ (nilai awal) × 100.",
+        "Kenaikannya adalah {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, jadi {ans}%."
+    },
+    "stdev": {
+      "prompt": "Berapa simpangan baku data {list}? (simpangan baku populasi)",
+      "hints": [
+        "Cari rata-ratanya terlebih dahulu.",
+        "Akar dari rata-rata kuadrat simpangan (ragam) adalah simpangan baku."
+      ],
+      "expl": "Rata-ratanya {mean} dan ragamnya {var}, jadi simpangan bakunya {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Simpangan baku populasi adalah {s} dan ukuran sampel {n}. Berapa batas galat 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (dua tempat desimal)",
+      "hints": [
+        "Cari dulu $\\sqrt{ n }$.",
+        "Bagi σ dengannya lalu kalikan dengan 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Rata-rata sampel {xbar}, rata-rata hipotesis nol {mu}, σ={s} dan n={n}. Berapa statistik uji $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$?",
+      "hints": [
+        "Cari dulu penyebut $σ/\\sqrt{ n }$.",
+        "Kurangkan rata-rata hipotesis nol dari rata-rata sampel lalu bagi."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Pada uji dua sisi dengan taraf 5%, nilai kritisnya 1,96. Statistik uji z={z}. Apa kesimpulannya?",
+      "hints": [
+        "Jika $|z|$ lebih besar dari 1,96, tolak hipotesis nol.",
+        "Bandingkan nilai mutlak z dengan 1,96."
+      ],
+      "expl": "|z|={az}, jadi: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Perhatikan cara sampel dipilih.",
+        "Pilih yang cocok: acak sederhana, berstrata, klaster, atau sistematik."
+      ],
+      "expl": "Metode ini adalah {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Pikirkan dari mana data penelitian berasal.",
+        "Pilih studi pustaka, studi kasus, eksperimen, atau pengembangan."
+      ],
+      "expl": "Metode penelitian ini adalah {name}."
+    },
+    "researchStep": {
+      "prompt": "Apa yang dilakukan tepat setelah memilih topik penelitian?",
+      "hints": [
+        "Penelitian berjalan: rencana → pelaksanaan → penyajian → refleksi.",
+        "Setelah topik, kamu menentukan cara menyelidikinya."
+      ],
+      "expl": "Setelah memilih topik: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Etika penelitian berlandaskan kejujuran dan mengutip sumber.",
+        "Pikirkan bagaimana karya dan hasil orang lain harus diperlakukan."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Kuadran 1",
+    "q2": "Kuadran 2",
+    "q3": "Kuadran 3",
+    "q4": "Kuadran 4",
+    "p0": "0 (tidak mungkin terjadi)",
+    "phalf": "1/2 (sama mungkin)",
+    "p1": "1 (pasti terjadi)",
+    "random": "pengambilan sampel acak sederhana",
+    "strat": "pengambilan sampel berstrata",
+    "cluster": "pengambilan sampel klaster",
+    "system": "pengambilan sampel sistematik",
+    "reject": "Tolak hipotesis nol",
+    "keep": "Jangan tolak hipotesis nol",
+    "literature": "studi pustaka",
+    "casestudy": "studi kasus",
+    "experiment": "eksperimen matematika",
+    "develop": "penelitian pengembangan",
+    "plan": "Menyusun rencana penelitian",
+    "carry": "Melaksanakan penelitian",
+    "present": "Menyajikan hasil",
+    "reflect": "Merefleksikan proses",
+    "yesPrime": "Ya, bilangan prima",
+    "noPrime": "Tidak, bukan bilangan prima",
+    "yesFinite": "Ya, desimal berhenti",
+    "noFinite": "Tidak, desimal berulang",
+    "yesOk": "Benar",
+    "noOk": "Salah"
+  },
+  "text": {
+    "ev_coin": "Berapa peluang muncul sisi gambar saat sebuah koin dilempar sekali?",
+    "ev_sun": "Berapa peluang matahari terbit di timur besok?",
+    "ev_die": "Berapa peluang muncul angka 7 saat melempar sebuah dadu biasa bersisi enam?",
+    "sm_system": "Setiap siswa urutan ke-10 pada daftar sekolah dipilih untuk survei. Ini metode pengambilan sampel apa?",
+    "sm_random": "Tiga puluh siswa dipilih dari daftar sekolah dengan bilangan acak. Ini metode pengambilan sampel apa?",
+    "sm_strat": "Siswa dipilih dari setiap angkatan sebanding dengan jumlah siswa di angkatan itu. Ini metode pengambilan sampel apa?",
+    "sm_cluster": "Beberapa kelas dipilih lebih dahulu dan setiap siswa di kelas terpilih disurvei. Ini metode pengambilan sampel apa?",
+    "rm_lit": "Membaca makalah dan buku dari perpustakaan serta internet lalu merangkumnya adalah metode penelitian apa?",
+    "rm_case": "Mengumpulkan dan membandingkan contoh nyata dari beberapa sekolah adalah metode penelitian apa?",
+    "rm_exp": "Melempar dadu sendiri dan mencatat hasilnya untuk menemukan pola adalah metode penelitian apa?",
+    "rm_dev": "Membuat alat baru untuk belajar matematika dan menguji seberapa baik alat itu bekerja adalah metode penelitian apa?",
+    "et_cite": "Menyalin tulisan orang lain tanpa menyebutkan sumbernya melanggar etika penelitian.",
+    "et_cite_r": "Memakai karya seseorang tanpa sumber adalah plagiarisme, jadi pernyataan itu benar.",
+    "et_fake": "Jika hasilnya berbeda dari hipotesis, boleh mengubah angka agar sesuai.",
+    "et_fake_r": "Mengubah hasil adalah fabrikasi dan melanggar etika penelitian, jadi pernyataan itu salah."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Mengurutkan dan menyajikan data dalam tabel dan grafik",
+      "concept": "Kelompokkan benda menurut aturan dan hitung; **tabel** atau **grafik** membantu membandingkan sekilas.",
+      "example": "A 3, B 5, C 2 → 10 seluruhnya"
+    },
+    "E4dat1": {
+      "title": "Membaca grafik garis",
+      "concept": "**Grafik garis** menunjukkan perubahan nilai dari waktu ke waktu dengan titik dan garis. Naik berarti bertambah, turun berarti berkurang.",
+      "example": "12 pada hari ke-1 → 20 pada hari ke-3: naik 8"
+    },
+    "E5dat1": {
+      "title": "Mencari rata-rata",
+      "concept": "**Rata-rata** adalah jumlah data dibagi banyak data.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Peluang",
+      "concept": "**Peluang** suatu kejadian adalah bilangan dari 0 (mustahil) sampai 1 (pasti): peluang = (kejadian yang diinginkan) ÷ (semua kejadian).",
+      "example": "3 bola A, 2 bola B → peluang A adalah $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Grafik pita dan diagram lingkaran",
+      "concept": "**Grafik pita** dan **diagram lingkaran** menganggap keseluruhan sebagai 100% dan menunjukkan bagian tiap kategori. Bagian = keseluruhan × persentase.",
+      "example": "25% dari 200 orang → 50 orang"
+    },
+    "M1neg1": {
+      "title": "Bilangan bulat dan bilangan rasional",
+      "concept": "Tanda sama: jumlahkan nilai mutlak. Tanda berbeda: kurangkan dan pakai tanda yang lebih besar. Untuk × dan ÷ hasilnya + jika tanda sama dan − jika berbeda.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Faktorisasi prima, FPB dan KPK",
+      "concept": "Menulis bilangan sebagai hasil kali bilangan prima disebut **faktorisasi prima**. Faktor persekutuan terbesar disebut **FPB**, kelipatan persekutuan terkecil disebut **KPK**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Bidang koordinat",
+      "concept": "Sebuah titik ditulis (x, y). Tanda menentukan Kuadran 1–4, dan pencerminan terhadap sumbu-x mengubah tanda y.",
+      "example": "(−2, 5) berada di Kuadran 2"
+    },
+    "M1prp1": {
+      "title": "Perbandingan senilai dan berbalik nilai",
+      "concept": "**Perbandingan senilai** adalah y=ax dan **perbandingan berbalik nilai** adalah $y=\\frac{a}{x}$. Pada perbandingan senilai y÷x tetap; pada perbandingan berbalik nilai x×y tetap.",
+      "example": "y=6 saat x=2 (senilai): y=3x"
+    },
+    "M1sta1": {
+      "title": "Ukuran pemusatan dan frekuensi relatif",
+      "concept": "**Median** adalah nilai tengah setelah diurutkan, **modus** adalah nilai yang paling sering muncul. **Frekuensi relatif** = frekuensi ÷ total.",
+      "example": "Median dari 1, 3, 5, 7, 9 adalah 5"
+    },
+    "M2rec1": {
+      "title": "Desimal berulang",
+      "concept": "Desimal yang angkanya berulang terus disebut **desimal berulang**; bagian yang berulang disebut **periode**. Pecahan paling sederhana berhenti hanya jika penyebutnya hanya memiliki faktor 2 dan 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Fungsi linear dan persamaan linear",
+      "concept": "Pada y=ax+b, a adalah gradien dan b titik potong sumbu-y. Titik potong dua grafik adalah penyelesaian kedua persamaan bersama-sama.",
+      "example": "y=2x−6 memiliki titik potong sumbu-x 3"
+    },
+    "el.econ1": {
+      "title": "Bunga, kurs, dan pajak",
+      "concept": "Bunga tunggal = modal × suku bunga × tahun; jumlah majemuk = modal × (1 + suku bunga)^tahun. Kurs adalah nilai 1 satuan suatu mata uang; pajak = harga × persentase.",
+      "example": "₩10000, bunga majemuk 10% selama 2 tahun → ₩12100"
+    },
+    "el.econ2": {
+      "title": "Permintaan, penawaran, dan optimasi",
+      "concept": "Keseimbangan terjadi di titik potong kurva permintaan dan penawaran. Pendapatan maksimum R=pq dan elastisitas diperoleh dari fungsi dan turunan.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Data teks dan gambar",
+      "concept": "Dokumen menjadi vektor jumlah kata dan gambar menjadi matriks nilai piksel. Makin besar hasil kali titik, makin mirip dua dokumen.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Prediksi dan optimasi",
+      "concept": "Prediksi membaik dengan gradien garis tren, rata-rata kuadrat galat (kerugian), dan penurunan gradien $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Konversi satuan dan perbandingan",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 jam = 60 menit. Harga jual = harga × (1 − diskon); campuran dengan perbandingan a:b memberi A bagian $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Luas, pencacahan, dan pertumbuhan",
+      "concept": "Luas memberi bahan yang dibutuhkan, aturan perkalian memberi banyak pasangan, dan (kenaikan) ÷ (nilai awal) × 100 memberi laju pertumbuhan.",
+      "example": "4 kemeja, 3 celana → 12 pasang pakaian"
+    },
+    "el.cul1": {
+      "title": "Matematika dalam seni dan kehidupan sehari-hari",
+      "concept": "Rasio emas kira-kira 1,618; nada satu oktaf di atasnya berfrekuensi dua kali lipat; 6 titik braille memberi $2^6-1=63$ pola; mayoritas adalah lebih dari setengah.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Matematika dalam masyarakat dan lingkungan",
+      "concept": "Rata-rata dan laju pertumbuhan membantu menganalisis masalah sosial dan lingkungan secara matematis. Laju pertumbuhan = (kenaikan) ÷ (nilai awal) × 100.",
+      "example": "40 menjadi 50 → naik 25%"
+    },
+    "el.sta1": {
+      "title": "Pertanyaan statistik dan sampel",
+      "concept": "Simpangan baku adalah akar dari rata-rata kuadrat simpangan (ragam). Sampel diambil dengan cara acak, berstrata, klaster, atau sistematik.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 memiliki simpangan baku 2"
+    },
+    "el.sta2": {
+      "title": "Pendugaan dan uji hipotesis",
+      "concept": "Batas galat 95% adalah $1.96\\times\\frac{σ}{\\sqrt{n}}$. Jika $|z|$ dari $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ di atas 1,96, hipotesis nol ditolak pada taraf 5%.",
+      "example": "σ=10, n=100 → batas galat 1,96"
+    },
+    "el.res1": {
+      "title": "Metode penelitian",
+      "concept": "Proyek penelitian matematika dapat memakai studi pustaka, studi kasus, eksperimen matematika, atau penelitian pengembangan.",
+      "example": "Melempar dadu untuk menemukan pola → eksperimen"
+    },
+    "el.res2": {
+      "title": "Langkah penelitian dan etika",
+      "concept": "Penelitian berjalan: topik → rencana → pelaksanaan → penyajian → refleksi. Mengutip sumber dan tidak pernah mengubah hasil adalah etika penelitian.",
+      "example": "Setelah topik datang rencana penelitian"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Matematika Ekonomi",
+      "world": "Kota Ekonomi",
+      "tagline": "Pelajari matematika uang dan pasar",
+      "unit": "Bilangan dan ekonomi, fungsi dan ekonomi"
+    },
+    "ai": {
+      "title": "Matematika untuk AI",
+      "world": "Laboratorium AI",
+      "tagline": "Kenali matematika di dalam data dan optimasi",
+      "unit": "Pengolahan data, prediksi dan optimasi"
+    },
+    "job": {
+      "title": "Matematika Dunia Kerja",
+      "world": "Kota Bengkel",
+      "tagline": "Latih matematika yang dipakai di tempat kerja",
+      "unit": "Bilangan dan satuan, perbandingan, luas dan pencacahan"
+    },
+    "cul": {
+      "title": "Matematika dan Budaya",
+      "world": "Lapangan Budaya",
+      "tagline": "Temukan matematika dalam seni dan kehidupan sehari-hari",
+      "unit": "Seni dan kehidupan, masyarakat dan lingkungan"
+    },
+    "sta": {
+      "title": "Statistika Terapan",
+      "world": "Laboratorium Statistika",
+      "tagline": "Bangun kemampuan menyimpulkan dari data",
+      "unit": "Data dan sampel, pendugaan dan pengujian"
+    },
+    "res": {
+      "title": "Proyek Penelitian Matematika",
+      "world": "Bengkel Penelitian",
+      "tagline": "Pelajari metode dan etika penelitian",
+      "unit": "Metode, prosedur, dan etika"
+    }
+  }
+}

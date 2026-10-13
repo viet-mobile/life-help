@@ -13,6 +13,20 @@ export interface PathNode {
   placedOut: boolean;
 }
 
+/**
+ * The sequential chain a lesson belongs to. Topic lessons added on top of the original course (geometry, data, numbers, ...) each form a
+ * chain of their own per grade, every elective subject is one chain, and the original lessons form one chain per semester.
+ */
+const TOPIC_LESSON = /^math-[a-z]\d-(geo|dat|neg|fac|crd|prp|sta|rec|lfn)\d$/;
+const ELECTIVE_LESSON = /^math-el-([a-z]+)\d$/;
+function chainOf(site: string, lessonId: string): string {
+  const t = lessonId.match(TOPIC_LESSON);
+  if (t) return `${lessonId.split("-")[1]}:${t[1]}`;
+  const e = lessonId.match(ELECTIVE_LESSON);
+  if (e) return `el:${e[1]}`;
+  return `s:${semesterOf(site as never, lessonId)}`;
+}
+
 function isDone(state: PlayerState, lessonId: string) {
   const p = state.lessons[lessonId];
   return !!p && (p.completions > 0 || p.placedOut);
@@ -27,14 +41,14 @@ function isDone(state: PlayerState, lessonId: string) {
  */
 export function buildPath(state: PlayerState, index: ContentIndex): PathNode[] {
   const site = index.bundle.catalog.site;
-  const currentIn = new Set<number>();
+  const currentIn = new Set<string>();
   return index.lessonOrder.map((lessonId) => {
     const p = state.lessons[lessonId];
     let status: LessonStatus;
     if (isDone(state, lessonId)) status = "done";
     else {
       // one chain per semester; the figure-based geometry lessons are their own chain inside it, so shape practice is never behind other topics
-      const group = /-geo\d$/.test(lessonId) ? 100 : semesterOf(site, lessonId);
+      const group = chainOf(site, lessonId);
       if (!currentIn.has(group)) {
         status = "current";
         currentIn.add(group);

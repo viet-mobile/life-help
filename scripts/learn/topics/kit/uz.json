@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Jadvalda {cat} uchun qaysi son yozilgan?",
+      "hints": [
+        "{cat} ning katagini toping.",
+        "Unda yozilgan sonni o'qing."
+      ],
+      "expl": "{cat} uchun son {ans} ga teng."
+    },
+    "tableTotal": {
+      "prompt": "Jadvaldagi barcha sonlarning yig'indisi nimaga teng?",
+      "hints": [
+        "Har bir katakdagi sonni o'qing.",
+        "Hammasini qo'shing."
+      ],
+      "expl": "Yig'indi {sum} ga teng, demak, javob {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Diagrammaning eng baland ustunida nechta doira bor?",
+      "hints": [
+        "Har bir ustundagi doiralarni sanang.",
+        "Eng baland ustunni toping."
+      ],
+      "expl": "Eng baland ustunda {ans} ta doira bor."
+    },
+    "symbolDiff": {
+      "prompt": "Eng katta ustun eng kichik ustundan nechta ko'p?",
+      "hints": [
+        "Avval eng katta va eng kichik sonni toping.",
+        "Kattasidan kichigini ayiring."
+      ],
+      "expl": "{max}-{min}={ans}, demak, {ans} ta ko'p."
+    },
+    "mostWhich": {
+      "prompt": "Diagrammada qaysi element eng katta?",
+      "hints": [
+        "Elementlarning sonlarini solishtiring.",
+        "Eng katta sonni toping."
+      ],
+      "expl": "Eng katta element: {name}."
+    },
+    "compareCount": {
+      "prompt": "{a} {b} dan nechta ko'p?",
+      "hints": [
+        "{a} va {b} uchun sonlarni o'qing.",
+        "Kattasidan kichigini ayiring."
+      ],
+      "expl": "{x}-{y}={ans}, demak, {a} da {ans} ta ko'p."
+    },
+    "lineRead": {
+      "prompt": "Chiziqli grafikda {cat} dagi qiymat nimaga teng?",
+      "hints": [
+        "Gorizontal o'qda {cat} ni toping.",
+        "Uning ustidagi nuqtaning qiymatini o'qing."
+      ],
+      "expl": "{cat} dagi qiymat {ans} ga teng."
+    },
+    "lineMax": {
+      "prompt": "Chiziqli grafikdagi eng katta qiymat nimaga teng?",
+      "hints": [
+        "Barcha nuqtalarning qiymatlarini solishtiring.",
+        "Eng baland nuqtani toping."
+      ],
+      "expl": "Eng katta qiymat {ans} ga teng."
+    },
+    "lineChange": {
+      "prompt": "{from} dan {to} gacha qiymat qanchaga oshdi?",
+      "hints": [
+        "{from} va {to} dagi qiymatlarni o'qing.",
+        "Keyingi qiymatdan birinchisini ayiring."
+      ],
+      "expl": "{b}-{a}={ans}, demak, {ans} ga oshdi."
+    },
+    "mean": {
+      "prompt": "Bu sonlarning o'rta arifmetigi nimaga teng? {list}",
+      "hints": [
+        "O'rta arifmetik = (hammasining yig'indisi) ÷ (nechta ekani).",
+        "Avval hammasini qo'shing."
+      ],
+      "expl": "({sum})÷{n}={ans}, demak, o'rta arifmetik {ans} ga teng."
+    },
+    "meanMissing": {
+      "prompt": "To'rtta sonning o'rta arifmetigi {m} ga teng, ulardan uchtasi: {list}. To'rtinchi son nimaga teng?",
+      "hints": [
+        "To'rtta sonning yig'indisi o'rta arifmetik × 4 ga teng.",
+        "Yig'indidan ma'lum uchta sonni ayiring."
+      ],
+      "expl": "{m}×4={total} va {total}-({known})={ans}, demak, bu {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Qutida {a} ta A-shar va {b} ta B-shar bor. Bitta shar olindi. Uning A-shar bo'lish ehtimoli qancha? O'nli kasr ko'rinishida yozing.",
+      "hints": [
+        "Ehtimol = (qulay holatlar) ÷ (barcha holatlar).",
+        "Avval sharlarning umumiy sonini toping."
+      ],
+      "expl": "{a}÷{total}={ans}, demak, ehtimol {ans} ga teng."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Mumkin bo'lmagan hodisaning ehtimoli 0, muqarrar hodisaniki 1.",
+        "Teng imkoniyatli bo'lsa, ehtimol $\\frac{1}{2}$."
+      ],
+      "expl": "Bu hodisaning ehtimoli: {name}."
+    },
+    "pieCount": {
+      "prompt": "Doiraviy diagrammada A butunning {p}% ini tashkil qiladi. Butun — {t} kishi. A da necha kishi bor?",
+      "hints": [
+        "{p}% — bu $\\frac{p}{100}$.",
+        "Butunni shu nisbatga ko'paytiring."
+      ],
+      "expl": "{t}×{p}÷100={ans}, demak, {ans} kishi."
+    },
+    "pieRest": {
+      "prompt": "Doiraviy diagrammaning uchta qismi {a}%, {b}% va {c}%. To'rtinchi qism necha foiz? (%)",
+      "hints": [
+        "Butun 100% ga teng.",
+        "100 dan uchta qismni ayiring."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, demak, {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Tasmasimon diagrammada {cat} butunning necha foizini tashkil qiladi? (%)",
+      "hints": [
+        "{cat} ning qismini toping.",
+        "Uning ostida yozilgan foizni o'qing."
+      ],
+      "expl": "{cat} — {ans}%."
+    },
+    "intAdd": {
+      "prompt": "$({a})+({b})$ ni hisoblang.",
+      "hints": [
+        "Ishoralari bir xil: modullarini qo'shing va ishorani saqlang.",
+        "Ishoralari har xil: modullarini ayiring va moduli kattasining ishorasini oling."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "$({a})-({b})$ ni hisoblang.",
+      "hints": [
+        "Ayirish — qarama-qarshi sonni qo'shish.",
+        "Uni $({a})+({nb})$ ko'rinishida yozing."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "$({a})\\times({b})$ ni hisoblang.",
+      "hints": [
+        "Ishoralari bir xil bo'lsa natija musbat, har xil bo'lsa manfiy.",
+        "Modullarini ko'paytiring."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "$({a})\\div({b})$ ni hisoblang.",
+      "hints": [
+        "Ishoralari bir xil bo'lsa natija musbat, har xil bo'lsa manfiy.",
+        "Modullarini bo'ling."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ o'nli kasr ko'rinishida nimaga teng?",
+      "hints": [
+        "Umumiy maxrajga keltirib qo'shing.",
+        "Kasrni o'nli kasrga aylantiring."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Son o'qidagi P nuqta qaysi sonni ko'rsatadi?",
+      "hints": [
+        "0 ning chap tomoni manfiy, o'ng tomoni musbat.",
+        "Belgilarni sanang."
+      ],
+      "expl": "P nuqta {ans} ni ko'rsatadi."
+    },
+    "primeCount": {
+      "prompt": "{n} gacha nechta tub son bor?",
+      "hints": [
+        "Tub sonning aynan ikkita bo'luvchisi bor: 1 va o'zi.",
+        "2, 3, 5, 7, ... ni tartib bilan sanang."
+      ],
+      "expl": "{n} gacha tub sonlar: {list}, jami {ans} ta."
+    },
+    "factorExp": {
+      "prompt": "${n}$ ning tub ko'paytuvchilarga yoyilmasi $2^a\\times3^b$. $a+b$ nimaga teng?",
+      "hints": [
+        "{n} ni 2 ga bo'la olguncha bo'ling.",
+        "Keyin qolganini 3 ga bo'ling."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, demak, $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "{n} ning nechta bo'luvchisi bor?",
+      "hints": [
+        "{n} ni qoldiqsiz bo'luvchi barcha sonlarni toping.",
+        "Eng kichigidan boshlab tekshiring."
+      ],
+      "expl": "{n} ning bo'luvchilari: {list}, jami {ans} ta."
+    },
+    "gcd": {
+      "prompt": "{a} va {b} ning eng katta umumiy bo'luvchisi nimaga teng?",
+      "hints": [
+        "Ikki sonning umumiy bo'luvchilarini toping.",
+        "Ularning eng kattasi eng katta umumiy bo'luvchi."
+      ],
+      "expl": "{a} va {b} ning eng katta umumiy bo'luvchisi {ans} ga teng."
+    },
+    "lcm": {
+      "prompt": "{a} va {b} ning eng kichik umumiy karralisi nimaga teng?",
+      "hints": [
+        "Ikkala sonning umumiy karralilarini kichigidan boshlab yozing.",
+        "Eng kichik umumiy karrali — ularning eng kichigi."
+      ],
+      "expl": "{a} va {b} ning eng kichik umumiy karralisi {ans} ga teng."
+    },
+    "isPrime": {
+      "prompt": "{n} tub sonmi?",
+      "hints": [
+        "{n} ning bo'luvchilarini qidiring.",
+        "Agar 1 va o'zidan boshqa bo'luvchisi bo'lsa, u tub emas."
+      ],
+      "expl": "{n} ning bo'luvchilari: {list}, demak, {verdict}."
+    },
+    "coordRead": {
+      "prompt": "A nuqtaning {axis}-koordinatasi nimaga teng?",
+      "hints": [
+        "Koordinatalar juftligi (x, y) ko'rinishida yoziladi.",
+        "To'r bo'ylab sanang."
+      ],
+      "expl": "A ning {axis}-koordinatasi {ans} ga teng."
+    },
+    "quadrant": {
+      "prompt": "({a}, {b}) nuqta qaysi chorakda joylashgan?",
+      "hints": [
+        "x va y koordinatalarining ishoralariga qarang.",
+        "(+,+) — 1-chorak."
+      ],
+      "expl": "x = {a}, y = {b}, demak, u {name} da joylashgan."
+    },
+    "distAxis": {
+      "prompt": "({a}, {b}) nuqtadan {axis}-o'qigacha masofa nimaga teng?",
+      "hints": [
+        "O'qgacha masofa — koordinataning moduli.",
+        "{axis}-o'qi uchun {which}-koordinataga qarang."
+      ],
+      "expl": "Bu {which}-koordinata {v} ning moduli: {ans}."
+    },
+    "reflect": {
+      "prompt": "({a}, {b}) nuqta x-o'qiga nisbatan akslantirildi. Yangi nuqtaning y-koordinatasi nimaga teng?",
+      "hints": [
+        "x-o'qiga nisbatan akslantirishda x-koordinata o'zgarmaydi.",
+        "y-koordinataning ishorasi almashadi."
+      ],
+      "expl": "Yangi nuqta ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y x ga to'g'ri proporsional va x={x1} da y={y1}. x={x2} da y nimaga teng?",
+      "hints": [
+        "To'g'ri proporsionallik y=ax.",
+        "Avval a ni toping."
+      ],
+      "expl": "a={y1}÷{x1}={k}, demak, y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y x ga teskari proporsional va x={x1} da y={y1}. x={x2} da y nimaga teng?",
+      "hints": [
+        "Teskari proporsionallik $y=\\frac{a}{x}$.",
+        "Avval a=xy ni toping."
+      ],
+      "expl": "a={x1}×{y1}={k}, demak, y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "To'g'ri proporsionallik y=ax ning grafigi ({x1}, {y1}) nuqtadan o'tadi. a nimaga teng?",
+      "hints": [
+        "Nuqtani y=ax ga qo'ying.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Teskari proporsionallik $y=\\frac{a}{x}$ ning grafigi ({x1}, {y1}) nuqtadan o'tadi. a nimaga teng?",
+      "hints": [
+        "Nuqtani $y=\\frac{a}{x}$ ga qo'ying.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "{list} ma'lumotlarning medianasi nimaga teng?",
+      "hints": [
+        "Ma'lumotlarni kattaligi bo'yicha tartiblang.",
+        "O'rtadagi qiymat mediana; soni juft bo'lsa, o'rtadagi ikkitasining o'rta arifmetigini oling."
+      ],
+      "expl": "Tartib bilan: {sorted}, demak, mediana {ans} ga teng."
+    },
+    "mode": {
+      "prompt": "{list} ma'lumotlarning modasi nimaga teng?",
+      "hints": [
+        "Moda — eng ko'p uchraydigan qiymat.",
+        "Har bir qiymat necha marta uchrashini sanang."
+      ],
+      "expl": "{ans} eng ko'p uchraydi, demak, moda {ans} ga teng."
+    },
+    "dataRange": {
+      "prompt": "{list} dagi eng katta va eng kichik qiymat orasidagi ayirma nimaga teng?",
+      "hints": [
+        "Eng katta va eng kichik qiymatni toping.",
+        "Kattasidan kichigini ayiring."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Umumiy chastota {t}, bitta sinfning chastotasi {f}. Shu sinfning nisbiy chastotasi nimaga teng? (o'nli kasr)",
+      "hints": [
+        "Nisbiy chastota = (sinf chastotasi) ÷ (umumiy chastota).",
+        "Natijani o'nli kasr ko'rinishida yozing."
+      ],
+      "expl": "{f}÷{t}={ans}, demak, nisbiy chastota {ans} ga teng."
+    },
+    "periodLen": {
+      "prompt": "$\\frac{1}{{d}}$ o'nli kasr ko'rinishida yozilganda, davrida nechta raqam bor?",
+      "hints": [
+        "1 ni {d} ga bo'ling.",
+        "Davr — takrorlanadigan qism."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, demak, davrida {ans} ta raqam bor."
+    },
+    "repeatFrac": {
+      "prompt": "Davriy o'nli kasr $0.\\dot{d}\\dot{e}$ $\\frac{x}{99}$ ga teng. x nimaga teng?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "ab ikki xonali sonni suratga yozing."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ dan x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ chekli o'nli kasrmi?",
+      "hints": [
+        "Kasrni qisqartiring, so'ng maxrajni tub ko'paytuvchilarga ajrating.",
+        "Agar tub ko'paytuvchilar faqat 2 va 5 bo'lsa, u chekli."
+      ],
+      "expl": "{d2} maxrajning tub ko'paytuvchilari {fact}, demak, {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Verguldan keyingi {k}-o'rindagi raqam nimaga teng?",
+      "hints": [
+        "142857 davrida 6 ta raqam bor.",
+        "O'rnini topish uchun {k} ÷ 6 ning qoldig'idan foydalaning."
+      ],
+      "expl": "{k} ÷ 6 ning qoldig'i {r}, demak, bu {r}-raqam: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Chiziqli funksiya $y={a}x+{b}$ ning burchak koeffitsiyenti nimaga teng?",
+      "hints": [
+        "$y=ax+b$ da burchak koeffitsiyenti a.",
+        "x oldidagi koeffitsiyentni o'qing."
+      ],
+      "expl": "Burchak koeffitsiyenti {ans} ga teng."
+    },
+    "yInt": {
+      "prompt": "$y={a}x+{b}$ ning y-o'qi bilan kesishish nuqtasi nimaga teng?",
+      "hints": [
+        "Bu x=0 dagi y qiymati.",
+        "$y=ax+b$ da bu b."
+      ],
+      "expl": "y-o'qi bilan kesishish nuqtasi {ans} ga teng."
+    },
+    "xInt": {
+      "prompt": "$y={a}x+{b}$ ning x-o'qi bilan kesishish nuqtasi nimaga teng?",
+      "hints": [
+        "Bu y=0 dagi x qiymati.",
+        "$0=ax+b$ ni yeching."
+      ],
+      "expl": "$0={a}x+{b}$ dan x={ans}."
+    },
+    "crossX": {
+      "prompt": "$y={a1}x+{b1}$ va $y={a2}x+{b2}$ grafiklari P nuqtada kesishadi. P ning x-koordinatasi nimaga teng?",
+      "hints": [
+        "Kesishish nuqtasida ikkala y qiymati teng.",
+        "$a_1x+b_1=a_2x+b_2$ ni yeching."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ dan x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Chiziqli funksiya $f(x)={a}x+{b}$ uchun $f({c})$ nimaga teng?",
+      "hints": [
+        "x o'rniga {c} ni qo'ying.",
+        "Avval ko'paytiring, keyin qo'shing."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} von {n} yilga yillik {r}% oddiy foiz bilan qo'yildi. Foiz summasi qancha? (von)",
+      "hints": [
+        "Oddiy foiz = asosiy summa × foiz stavkasi × yillar.",
+        "{r}% — bu {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, demak, foiz {ans} von."
+    },
+    "compoundInterest": {
+      "prompt": "{p} von {n} yilga yillik {r}% murakkab foiz bilan qo'yildi. Jami summa qancha? (von)",
+      "hints": [
+        "Murakkab foizda foizning o'zi ham foiz keltiradi.",
+        "Asosiy summani (1 + stavka) ga {n} marta ko'paytiring."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, demak, jami {ans} von."
+    },
+    "exchange": {
+      "prompt": "Xorijiy valyutaning 1 birligi {r} von turadi. Uning {d} birligi necha von? (von)",
+      "hints": [
+        "Valyuta kursi — xorijiy valyuta 1 birligining vondagi qiymati.",
+        "Birliklar sonini kursga ko'paytiring."
+      ],
+      "expl": "{d}×{r}={ans}, demak, {ans} von."
+    },
+    "taxTotal": {
+      "prompt": "Mahsulot {p} von turadi va unga {t}% qo'shilgan qiymat solig'i qo'shiladi. Necha von to'lash kerak? (von)",
+      "hints": [
+        "Soliq = narx × {t}%.",
+        "Soliqni narxga qo'shing."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, demak, {ans} von."
+    },
+    "equilibrium": {
+      "prompt": "Talab egri chizig'i $p={a}-{b}q$ va taklif egri chizig'i $p={c}+{d}q$ muvozanat miqdori q da kesishadi. q nimaga teng?",
+      "hints": [
+        "Muvozanatda talab narxi taklif narxiga teng.",
+        "$a-bq=c+dq$ ni yeching."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ dan q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Talab funksiyasi $p={a}-{b}q$. Daromad $R=pq$ ning eng katta qiymati nimaga teng?",
+      "hints": [
+        "$R=({a}-{b}q)q$ — kvadrat funksiya.",
+        "U $q=\\frac{ a }{ 2b }$ uchida eng katta bo'ladi."
+      ],
+      "expl": "q={q} da daromad eng katta: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Talab $Q={a}-{b}p$. $p={p0}$ da narx bo'yicha elastiklikning moduli nimaga teng? (o'nli kasr)",
+      "hints": [
+        "Elastiklikning moduli $\\frac{bp}{Q}$ ga teng.",
+        "Avval $p={p0}$ da Q ni toping."
+      ],
+      "expl": "Q={q0}, demak, $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "{seq} so'zlar ketma-ketligida A necha marta uchraydi?",
+      "hints": [
+        "Sanashda faqat A larni belgilang.",
+        "Bu son chastota vektorining A komponentasi."
+      ],
+      "expl": "A {ans} marta uchraydi."
+    },
+    "freqDot": {
+      "prompt": "Ikki hujjatning chastota vektorlari $\\vec{u}=({u1}, {u2}, {u3})$ va $\\vec{v}=({v1}, {v2}, {v3})$. Skalyar ko'paytma $\\vec{u}\\cdot\\vec{v}$ nimaga teng?",
+      "hints": [
+        "Mos komponentalarni ko'paytirib, qo'shing.",
+        "Skalyar ko'paytma qancha katta bo'lsa, hujjatlar shuncha o'xshash."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Tasvir $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$ matritsa ko'rinishida saqlangan. Barcha piksel qiymatlarining yig'indisi nimaga teng?",
+      "hints": [
+        "Har bir element bitta pikselning yorqinligi.",
+        "To'rtala elementni qo'shing."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Pikselning qiymati {v}. Har bir piksel {k} ga yorqinroq qilindi. Uning yangi qiymati nimaga teng?",
+      "hints": [
+        "Yorqinlikni oshirish matritsaning har bir elementiga bir xil sonni qo'shadi.",
+        "{v} ga {k} ni qo'shing."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "({x1}, {y1}) va ({x2}, {y2}) nuqtalardan o'tuvchi trend chizig'ining burchak koeffitsiyenti nimaga teng?",
+      "hints": [
+        "Burchak koeffitsiyenti = y ning o'zgarishi ÷ x ning o'zgarishi.",
+        "$\\frac{y_2-y_1}{x_2-x_1}$ ni hisoblang."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Bashoratlar {pred}, haqiqiy qiymatlar {real}. O'rtacha kvadratik xato (xatolar kvadratlarining o'rta arifmetigi) nimaga teng?",
+      "hints": [
+        "Xato = bashorat − haqiqiy qiymat.",
+        "Har bir xatoni kvadratga ko'taring, so'ng o'rta arifmetigini oling."
+      ],
+      "expl": "Xatolarning kvadratlari: {sq}, ularning o'rta arifmetigi {ans} ga teng."
+    },
+    "gradStep": {
+      "prompt": "$f(x)=x^2$ yo'qotish funksiyasi uchun x={x0} dan o'rganish tezligi {eta} bilan gradiyent tushishning bir qadami yangi x ni nimaga teng qiladi?",
+      "hints": [
+        "Gradiyent tushish: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, demak, {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "{v} m necha cm? (cm)",
+      "hints": [
+        "1 m — 100 cm.",
+        "{v} ni 100 ga ko'paytiring."
+      ],
+      "expl": "{v}×100={ans}, demak, {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "{v} kg necha g? (g)",
+      "hints": [
+        "1 kg — 1000 g.",
+        "{v} ni 1000 ga ko'paytiring."
+      ],
+      "expl": "{v}×1000={ans}, demak, {ans} g."
+    },
+    "convHMin": {
+      "prompt": "{v} soat necha minut? (min)",
+      "hints": [
+        "1 soat — 60 minut.",
+        "{v} ni 60 ga ko'paytiring."
+      ],
+      "expl": "{v}×60={ans}, demak, {ans} minut."
+    },
+    "discount": {
+      "prompt": "Mahsulot {p} von turadi va {d}% chegirma bilan sotiladi. Sotuv narxi qancha? (von)",
+      "hints": [
+        "Chegirma = narx × {d}%.",
+        "Chegirmani narxdan ayiring."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, demak, {ans} von."
+    },
+    "mixRatio": {
+      "prompt": "A va B ingredientlar {a}:{b} nisbatda aralashtirilib, jami {t} g olindi. Necha g A kerak? (g)",
+      "hints": [
+        "Butun — {a}+{b}={s} qism.",
+        "A butunning $\\frac{a}{s}$ qismini tashkil qiladi."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, demak, {ans} g."
+    },
+    "tiles": {
+      "prompt": "Devorning eni {w} m, balandligi {h} m. Uni qoplash uchun nechta 1 m × 1 m plitka kerak? (ta)",
+      "hints": [
+        "Devorning yuzini toping.",
+        "Bitta plitkaning yuzi 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, demak, {ans} ta plitka."
+    },
+    "outfit": {
+      "prompt": "{a} ta ko'ylak va {b} ta shim bor. Bitta ko'ylak va bitta shimdan nechta turli kiyim to'plami tuzish mumkin?",
+      "hints": [
+        "Har bir ko'ylak uchun {b} ta shim tanlovi bor.",
+        "Ko'paytirish qoidasidan foydalaning."
+      ],
+      "expl": "{a}×{b}={ans}, demak, {ans} ta to'plam."
+    },
+    "goldenRatio": {
+      "prompt": "Oltin kesim $a:b=(a+b):a$ ni qanoatlantiradi. b=10 bo'lganda a taxminan nimaga teng? (ikki xonagacha)",
+      "hints": [
+        "Oltin kesim taxminan 1,618 ga teng.",
+        "a taxminan b ning 1,618 baravari."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Tovush balandligi chastota bilan belgilanadi. 440 Hz dan bir oktava yuqori notaning chastotasi necha Hz? (Hz)",
+      "hints": [
+        "Bir oktava yuqori notaning chastotasi ikki baravar katta.",
+        "440 ni 2 ga ko'paytiring."
+      ],
+      "expl": "440×2={ans}, demak, {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Brayl katakchasida 6 ta nuqta bor, har biri bo'rtib chiqqan yoki tekis. Bo'rtma nuqtasi yo'q holatni hisobga olmaganda, nechta kombinatsiya bor?",
+      "hints": [
+        "Har bir nuqtaning 2 ta imkoniyati bor.",
+        "Ko'paytirish qoidasi bo'yicha $2^6$, so'ng 1 ni ayiring."
+      ],
+      "expl": "$2^6-1={ans}$, demak, {ans} ta kombinatsiya."
+    },
+    "voteMajority": {
+      "prompt": "{n} kishi ovoz beradi. Nomzodga ko'pchilikni olish uchun kamida nechta ovoz kerak? (ovoz)",
+      "hints": [
+        "Ko'pchilik — barcha ovozlarning yarmidan ko'pi.",
+        "{n} ning yarmidan katta eng kichik butun sonni toping."
+      ],
+      "expl": "{n} ning yarmi {half}; undan katta eng kichik butun son {ans}."
+    },
+    "pmAverage": {
+      "prompt": "5 kun davomida mayda changning konsentratsiyasi {list} (µg/m³) bo'ldi. O'rtacha konsentratsiya nimaga teng?",
+      "hints": [
+        "O'rta arifmetik = (yig'indi) ÷ (kunlar soni).",
+        "Avval 5 ta qiymatni qo'shing."
+      ],
+      "expl": "({sum})÷5={ans}, demak, o'rta arifmetik {ans} ga teng."
+    },
+    "percentChange": {
+      "prompt": "Qiymat {a} dan {b} ga o'zgardi. U necha foizga oshdi? (%)",
+      "hints": [
+        "O'sish sur'ati = (o'sish miqdori) ÷ (birinchi qiymat) × 100.",
+        "O'sish miqdori {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, demak, {ans}%."
+    },
+    "stdev": {
+      "prompt": "{list} ma'lumotlarning standart og'ishi nimaga teng? (bosh to'plamning standart og'ishi)",
+      "hints": [
+        "Avval o'rta arifmetikni toping.",
+        "Chetlanishlar kvadratlarining o'rta arifmetigidan (dispersiyadan) olingan kvadrat ildiz standart og'ish bo'ladi."
+      ],
+      "expl": "O'rta arifmetik {mean}, dispersiya {var}, demak, standart og'ish {ans} ga teng."
+    },
+    "ciHalf": {
+      "prompt": "Bosh to'plamning standart og'ishi {s}, tanlanma hajmi {n}. 95% xato chegarasi $1.96\\times\\frac{σ}{\\sqrt{ n }}$ nimaga teng? (ikki xonagacha)",
+      "hints": [
+        "Avval $\\sqrt{ n }$ ni toping.",
+        "σ ni unga bo'ling va 1,96 ga ko'paytiring."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Tanlanma o'rtachasi {xbar}, nol gipoteza bo'yicha o'rtacha {mu}, σ={s} va n={n}. Test statistikasi $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ nimaga teng?",
+      "hints": [
+        "Avval maxraj $σ/\\sqrt{ n }$ ni toping.",
+        "Tanlanma o'rtachasidan nol gipoteza o'rtachasini ayirib, bo'ling."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "5% darajadagi ikki tomonlama testda kritik qiymat 1,96. Test statistikasi z={z}. Xulosa qanday?",
+      "hints": [
+        "Agar $|z|$ 1,96 dan katta bo'lsa, nol gipoteza rad etiladi.",
+        "z ning modulini 1,96 bilan solishtiring."
+      ],
+      "expl": "|z|={az}, demak: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Tanlanma qanday tanlanganiga qarang.",
+        "Mosini tanlang: tasodifiy, qatlamli, klasterli yoki sistematik."
+      ],
+      "expl": "Bu usul: {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Tadqiqot ma'lumotlari qayerdan olinishini o'ylab ko'ring.",
+        "Adabiyot tadqiqoti, hodisa tahlili, tajriba yoki ishlanma tadqiqotini tanlang."
+      ],
+      "expl": "Bu tadqiqot usuli: {name}."
+    },
+    "researchStep": {
+      "prompt": "Tadqiqot mavzusi tanlangandan keyin darhol nima qilish kerak?",
+      "hints": [
+        "Tadqiqot shunday boradi: reja → bajarish → taqdim etish → xulosa qilish.",
+        "Mavzudan keyin uni qanday o'rganishni belgilaysiz."
+      ],
+      "expl": "Mavzu tanlangandan keyin: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Tadqiqot etikasi halollik va manbalarni ko'rsatishga asoslanadi.",
+        "Boshqalarning ishi va natijalariga qanday munosabatda bo'lish kerakligini o'ylang."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "1-chorak",
+    "q2": "2-chorak",
+    "q3": "3-chorak",
+    "q4": "4-chorak",
+    "p0": "0 (bo'lishi mumkin emas)",
+    "phalf": "1/2 (teng imkoniyatli)",
+    "p1": "1 (muqarrar)",
+    "random": "oddiy tasodifiy tanlanma",
+    "strat": "qatlamli tanlanma",
+    "cluster": "klasterli tanlanma",
+    "system": "sistematik tanlanma",
+    "reject": "Nol gipotezani rad etish",
+    "keep": "Nol gipotezani rad etmaslik",
+    "literature": "adabiyot tadqiqoti",
+    "casestudy": "hodisa tahlili",
+    "experiment": "matematik tajriba",
+    "develop": "ishlanma tadqiqoti",
+    "plan": "Tadqiqot rejasini tuzish",
+    "carry": "Tadqiqotni bajarish",
+    "present": "Natijalarni taqdim etish",
+    "reflect": "Jarayon haqida fikr yuritish",
+    "yesPrime": "Ha, tub son",
+    "noPrime": "Yo'q, tub son emas",
+    "yesFinite": "Ha, chekli o'nli kasr",
+    "noFinite": "Yo'q, davriy o'nli kasr",
+    "yesOk": "To'g'ri",
+    "noOk": "Noto'g'ri"
+  },
+  "text": {
+    "ev_coin": "Tanga bir marta tashlanganda gerb tushish ehtimoli qancha?",
+    "ev_sun": "Ertaga quyosh sharqdan chiqish ehtimoli qancha?",
+    "ev_die": "Oddiy olti yoqli bitta zarni tashlaganda 7 tushish ehtimoli qancha?",
+    "sm_system": "So'rov uchun maktab ro'yxatidagi har 10-o'quvchi tanlandi. Bu qaysi tanlash usuli?",
+    "sm_random": "Maktab ro'yxatidan tasodifiy sonlar yordamida o'ttiz o'quvchi tanlandi. Bu qaysi tanlash usuli?",
+    "sm_strat": "Har bir sinfdan o'quvchilar shu sinfdagi o'quvchilar soniga mutanosib tanlandi. Bu qaysi tanlash usuli?",
+    "sm_cluster": "Avval bir nechta sinf tanlandi, so'ng tanlangan sinflardagi har bir o'quvchi so'rovdan o'tkazildi. Bu qaysi tanlash usuli?",
+    "rm_lit": "Kutubxona va internetdagi maqola va kitoblarni o'qib, ularni umumlashtirish qaysi tadqiqot usuli?",
+    "rm_case": "Bir nechta maktabdan haqiqiy misollarni yig'ib, solishtirish qaysi tadqiqot usuli?",
+    "rm_exp": "Qonuniyatni topish uchun zarni o'zing tashlab, natijalarni yozib borish qaysi tadqiqot usuli?",
+    "rm_dev": "Matematikani o'rganish uchun yangi vosita yasab, uning qanchalik yaxshi ishlashini sinash qaysi tadqiqot usuli?",
+    "et_cite": "Boshqa odamning yozganini manbasini aytmasdan ko'chirish tadqiqot etikasiga zid.",
+    "et_cite_r": "Birovning ishidan manbasiz foydalanish plagiat, shuning uchun bu fikr to'g'ri.",
+    "et_fake": "Agar natijalar gipotezadan farq qilsa, ularni moslashtirish uchun sonlarni o'zgartirsa bo'ladi.",
+    "et_fake_r": "Natijalarni o'zgartirish soxtalashtirish bo'lib, tadqiqot etikasini buzadi, shuning uchun bu fikr noto'g'ri."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Ma'lumotlarni jadval va diagrammalarda tartiblash va ko'rsatish",
+      "concept": "Narsalarni qoida bo'yicha tartiblang va sanang; **jadval** yoki **diagramma** bir qarashda solishtirish imkonini beradi.",
+      "example": "A 3, B 5, C 2 → jami 10"
+    },
+    "E4dat1": {
+      "title": "Chiziqli grafiklarni o'qish",
+      "concept": "**Chiziqli grafik** qiymatning vaqt o'tishi bilan o'zgarishini nuqta va chiziqlar bilan ko'rsatadi. Yuqoriga — o'sish, pastga — kamayish.",
+      "example": "1-kun 12 → 3-kun 20: 8 ga o'sdi"
+    },
+    "E5dat1": {
+      "title": "O'rta arifmetikni topish",
+      "concept": "**O'rta arifmetik** — ma'lumotlar yig'indisini ularning soniga bo'lganda chiqadigan son.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Ehtimol",
+      "concept": "Hodisaning **ehtimoli** — 0 (mumkin emas) dan 1 (muqarrar) gacha bo'lgan son: ehtimol = (qulay holatlar) ÷ (barcha holatlar).",
+      "example": "3 ta A-shar, 2 ta B-shar → A ning ehtimoli $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Tasmasimon va doiraviy diagrammalar",
+      "concept": "**Tasmasimon diagrammalar** va **doiraviy diagrammalar** butunni 100% deb oladi va har bir qismning ulushini ko'rsatadi. Qism = butun × ulush.",
+      "example": "200 kishining 25% i → 50 kishi"
+    },
+    "M1neg1": {
+      "title": "Butun va ratsional sonlar",
+      "concept": "Ishoralari bir xil: modullarini qo'shing. Ishoralari har xil: ularni ayiring va kattasining ishorasini saqlang. × va ÷ da ishoralar bir xil bo'lsa natija +, har xil bo'lsa −.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Tub ko'paytuvchilarga ajratish, EKUB va EKUK",
+      "concept": "Sonni tub sonlar ko'paytmasi ko'rinishida yozish — **tub ko'paytuvchilarga ajratish**. Eng katta umumiy bo'luvchi — **EKUB**, eng kichik umumiy karrali — **EKUK**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Koordinatalar tekisligi",
+      "concept": "Nuqta (x, y) ko'rinishida yoziladi. Ishoralar 1–4-choraklarni belgilaydi, x-o'qiga nisbatan akslantirish y ning ishorasini almashtiradi.",
+      "example": "(−2, 5) 2-chorakda"
+    },
+    "M1prp1": {
+      "title": "To'g'ri va teskari proporsionallik",
+      "concept": "**To'g'ri proporsionallik** y=ax, **teskari proporsionallik** $y=\\frac{a}{x}$. To'g'ri proporsionallikda y÷x o'zgarmas; teskari proporsionallikda x×y o'zgarmas.",
+      "example": "x=2 da y=6 (to'g'ri): y=3x"
+    },
+    "M1sta1": {
+      "title": "O'rtacha qiymatlar va nisbiy chastota",
+      "concept": "**Mediana** — tartiblangan qatorning o'rtasidagi qiymat, **moda** — eng ko'p uchraydigan qiymat. **Nisbiy chastota** = chastota ÷ umumiy son.",
+      "example": "1, 3, 5, 7, 9 ning medianasi 5"
+    },
+    "M2rec1": {
+      "title": "Davriy o'nli kasrlar",
+      "concept": "Raqamlari cheksiz takrorlanadigan o'nli kasr — **davriy o'nli kasr**; takrorlanuvchi qism — uning **davri**. Qisqarmas kasr maxrajida faqat 2 va 5 ko'paytuvchilari bo'lsagina chekli bo'ladi.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Chiziqli funksiyalar va chiziqli tenglamalar",
+      "concept": "y=ax+b da a — burchak koeffitsiyenti, b — y-o'qi bilan kesishish nuqtasi. Ikki grafikning kesishish nuqtasi — ikki tenglamaning umumiy yechimi.",
+      "example": "y=2x−6 x-o'qini 3 da kesadi"
+    },
+    "el.econ1": {
+      "title": "Foiz, valyuta kursi va soliq",
+      "concept": "Oddiy foiz = asosiy summa × stavka × yillar; murakkab foizdagi summa = asosiy summa × (1 + stavka)^yillar. Valyuta kursi — valyutaning 1 birligining qiymati; soliq = narx × foiz.",
+      "example": "₩10000, 2 yilga 10% murakkab foiz → ₩12100"
+    },
+    "el.econ2": {
+      "title": "Talab, taklif va optimallashtirish",
+      "concept": "Muvozanat — talab va taklif egri chiziqlari kesishgan joy. Eng katta daromad R=pq va elastiklik funksiyalar va hosilalardan topiladi.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Matn va tasvir ma'lumotlari",
+      "concept": "Hujjat so'zlar soni vektoriga, tasvir piksel qiymatlari matritsasiga aylanadi. Skalyar ko'paytma qancha katta bo'lsa, hujjatlar shuncha o'xshash.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Bashorat va optimallashtirish",
+      "concept": "Bashoratlar trend chizig'ining burchak koeffitsiyenti, xatolar kvadratlarining o'rta arifmetigi (yo'qotish) va gradiyent tushish $x_{new}=x-\\eta f'(x)$ bilan yaxshilanadi.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Birliklarni almashtirish va nisbatlar",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 soat = 60 minut. Sotuv narxi = narx × (1 − chegirma); a:b nisbatda aralashtirilganda A ning ulushi $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Yuz, sanash va o'sish",
+      "concept": "Yuz kerakli material miqdorini beradi, ko'paytirish qoidasi juftliklar sonini, (o'sish) ÷ (birinchi qiymat) × 100 esa o'sish sur'atini beradi.",
+      "example": "4 ta ko'ylak, 3 ta shim → 12 ta to'plam"
+    },
+    "el.cul1": {
+      "title": "San'at va kundalik hayotdagi matematika",
+      "concept": "Oltin kesim taxminan 1,618; bir oktava yuqori notaning chastotasi ikki baravar katta; Braylning 6 nuqtasi $2^6-1=63$ kombinatsiya beradi; ko'pchilik — yarmidan ko'p.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Jamiyat va atrof-muhitdagi matematika",
+      "concept": "O'rta arifmetik va o'sish sur'atlari ijtimoiy va ekologik muammolarni matematik tahlil qilish imkonini beradi. O'sish sur'ati = (o'sish) ÷ (birinchi qiymat) × 100.",
+      "example": "40 dan 50 gacha → 25% ga o'sdi"
+    },
+    "el.sta1": {
+      "title": "Statistik savollar va tanlanmalar",
+      "concept": "Standart og'ish — chetlanishlar kvadratlarining o'rta arifmetigidan (dispersiyadan) olingan kvadrat ildiz. Tanlanmalar tasodifiy, qatlamli, klasterli yoki sistematik tanlash bilan olinadi.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 ning standart og'ishi 2"
+    },
+    "el.sta2": {
+      "title": "Baholash va gipotezalarni tekshirish",
+      "concept": "95% xato chegarasi $1.96\\times\\frac{σ}{\\sqrt{n}}$ ga teng. Agar $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ ning $|z|$ qiymati 1,96 dan katta bo'lsa, nol gipoteza 5% darajada rad etiladi.",
+      "example": "σ=10, n=100 → xato chegarasi 1,96"
+    },
+    "el.res1": {
+      "title": "Tadqiqot usullari",
+      "concept": "Matematik tadqiqot loyihasida adabiyot tadqiqoti, hodisa tahlili, matematik tajribalar yoki ishlanma tadqiqoti qo'llanishi mumkin.",
+      "example": "Qonuniyatni topish uchun zar tashlash → tajriba"
+    },
+    "el.res2": {
+      "title": "Tadqiqot bosqichlari va etika",
+      "concept": "Tadqiqot shunday boradi: mavzu → reja → bajarish → taqdim etish → xulosa qilish. Manbalarni ko'rsatish va natijalarni hech qachon o'zgartirmaslik — tadqiqot etikasi.",
+      "example": "Mavzudan keyin tadqiqot rejasi keladi"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Iqtisodiy matematika",
+      "world": "Iqtisodiyot shaharchasi",
+      "tagline": "Pul va bozor matematikasini o'rganing",
+      "unit": "Sonlar va iqtisodiyot, funksiyalar va iqtisodiyot"
+    },
+    "ai": {
+      "title": "Sun'iy intellekt uchun matematika",
+      "world": "Sun'iy intellekt laboratoriyasi",
+      "tagline": "Ma'lumotlar va optimallashtirish ichidagi matematika bilan tanishing",
+      "unit": "Ma'lumotlarni qayta ishlash, bashorat va optimallashtirish"
+    },
+    "job": {
+      "title": "Ish joyidagi matematika",
+      "world": "Ustaxonalar shaharchasi",
+      "tagline": "Ishda ishlatiladigan matematikani mashq qiling",
+      "unit": "Sonlar va birliklar, nisbat, yuz va sanash"
+    },
+    "cul": {
+      "title": "Matematika va madaniyat",
+      "world": "Madaniyat maydoni",
+      "tagline": "San'at va kundalik hayotda matematikani toping",
+      "unit": "San'at va hayot, jamiyat va atrof-muhit"
+    },
+    "sta": {
+      "title": "Amaliy statistika",
+      "world": "Statistika laboratoriyasi",
+      "tagline": "Ma'lumotlarga asoslanib baho berish mahoratini rivojlantiring",
+      "unit": "Ma'lumotlar va tanlanmalar, baholash va tekshirish"
+    },
+    "res": {
+      "title": "Matematik tadqiqot loyihalari",
+      "world": "Tadqiqot ustaxonasi",
+      "tagline": "Tadqiqot usullari va etikasini o'rganing",
+      "unit": "Usullar, bosqichlar va etika"
+    }
+  }
+}

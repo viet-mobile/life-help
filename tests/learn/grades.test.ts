@@ -65,11 +65,11 @@ describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
     const seen = new Set<string>();
     for (const g of ["M2", "M3", "H1", "H2", "H3"] as const) {
       const scoped = scopeToGrade(merged, g);
-      expect(scoped.catalog.courses.map((c) => c.grade), g).toEqual([g]);
+      expect(scoped.catalog.courses.filter((c) => !c.elective).map((c) => c.grade), g).toEqual([g]); // elective subject courses sit next to the grade course (H2, H3)
       seen.add(scoped.catalog.courses[0].id);
       expect(scoped.catalog.courses[0].id, g).not.toBe(DEMO[site].catalog.courses[0].id);
       for (const s of scoped.catalog.skills) expect(m1Skills.has(s.id), `${g}: ${s.id} is an M1 skill`).toBe(false);
-      for (const q of scoped.questions) expect(q.id.includes(`-${g.toLowerCase()}-`), `${g}: ${q.id}`).toBe(true);
+      for (const q of scoped.questions) expect(q.id.includes(`-${g.toLowerCase()}-`) || q.id.startsWith("m-el-"), `${g}: ${q.id}`).toBe(true); // m-el-*: elective subjects (H2, H3)
     }
     expect(seen.size).toBe(5);
   });
@@ -87,12 +87,12 @@ describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
     const seenCourses = new Set<string>();
     for (const g of ELEMENTARY_GRADES) {
       const scoped = scopeToGrade(merged, g);
-      expect(scoped.catalog.courses.map((c) => c.grade), g).toEqual([g]);
+      expect(scoped.catalog.courses.filter((c) => !c.elective).map((c) => c.grade), g).toEqual([g]); // elective subject courses sit next to the grade course (H2, H3)
       const course = scoped.catalog.courses[0];
       seenCourses.add(course.id);
       const index = indexContent(toMetaBundle(scoped));
       const lessons = course.units.flatMap((u) => u.lessons);
-      expect(lessons.filter((l) => !/-geo\d$/.test(l.id)).length, `${g} lessons`).toBe(5); // plus the geometry lessons (math)
+      expect(lessons.filter((l) => !/-(geo|dat|neg|fac|crd|prp|sta|rec|lfn)\d$/.test(l.id)).length, `${g} lessons`).toBe(5); // plus the topic lessons (math)
       // every question the student can reach practises a skill that exists in THEIR scoped curriculum
       for (const q of scoped.questions) expect(index.skills.has(q.skillId), q.id).toBe(true);
       // the placement pool is this grade's, and large enough for the 6-question adaptive diagnostic

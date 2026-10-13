@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Số của {cat} trong bảng là bao nhiêu?",
+      "hints": [
+        "Tìm ô của {cat}.",
+        "Đọc số ghi trong ô đó."
+      ],
+      "expl": "Số của {cat} là {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Tổng của tất cả các số trong bảng là bao nhiêu?",
+      "hints": [
+        "Đọc số ở mỗi ô.",
+        "Cộng tất cả lại."
+      ],
+      "expl": "Tổng là {sum}, nên đáp án là {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Cột cao nhất của biểu đồ có bao nhiêu hình tròn?",
+      "hints": [
+        "Đếm số hình tròn ở mỗi cột.",
+        "Tìm cột cao nhất."
+      ],
+      "expl": "Cột cao nhất có {ans} hình tròn."
+    },
+    "symbolDiff": {
+      "prompt": "Cột lớn nhất nhiều hơn cột nhỏ nhất bao nhiêu?",
+      "hints": [
+        "Trước hết hãy tìm số lớn nhất và số nhỏ nhất.",
+        "Lấy số lớn trừ đi số nhỏ."
+      ],
+      "expl": "{max}-{min}={ans}, nên nhiều hơn {ans}."
+    },
+    "mostWhich": {
+      "prompt": "Mục nào lớn nhất trong biểu đồ?",
+      "hints": [
+        "So sánh các số của các mục.",
+        "Tìm số lớn nhất."
+      ],
+      "expl": "Mục lớn nhất là {name}."
+    },
+    "compareCount": {
+      "prompt": "{a} nhiều hơn {b} bao nhiêu?",
+      "hints": [
+        "Đọc số của {a} và {b}.",
+        "Lấy số lớn trừ đi số nhỏ."
+      ],
+      "expl": "{x}-{y}={ans}, nên {a} nhiều hơn {ans}."
+    },
+    "lineRead": {
+      "prompt": "Giá trị tại {cat} trên biểu đồ đường là bao nhiêu?",
+      "hints": [
+        "Tìm {cat} trên trục ngang.",
+        "Đọc giá trị của điểm phía trên nó."
+      ],
+      "expl": "Giá trị tại {cat} là {ans}."
+    },
+    "lineMax": {
+      "prompt": "Giá trị lớn nhất trên biểu đồ đường là bao nhiêu?",
+      "hints": [
+        "So sánh giá trị của tất cả các điểm.",
+        "Tìm điểm cao nhất."
+      ],
+      "expl": "Giá trị lớn nhất là {ans}."
+    },
+    "lineChange": {
+      "prompt": "Giá trị tăng bao nhiêu từ {from} đến {to}?",
+      "hints": [
+        "Đọc giá trị tại {from} và {to}.",
+        "Lấy giá trị sau trừ đi giá trị trước."
+      ],
+      "expl": "{b}-{a}={ans}, nên tăng {ans}."
+    },
+    "mean": {
+      "prompt": "Số trung bình cộng của các số này là bao nhiêu? {list}",
+      "hints": [
+        "Trung bình cộng = (tổng tất cả) ÷ (số lượng).",
+        "Trước hết hãy cộng tất cả lại."
+      ],
+      "expl": "({sum})÷{n}={ans}, nên trung bình cộng là {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Trung bình cộng của bốn số là {m} và ba trong số đó là {list}. Số thứ tư là bao nhiêu?",
+      "hints": [
+        "Tổng của bốn số bằng trung bình cộng × 4.",
+        "Lấy tổng trừ đi ba số đã biết."
+      ],
+      "expl": "{m}×4={total} và {total}-({known})={ans}, nên số đó là {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Một hộp có {a} bóng A và {b} bóng B. Lấy ra một quả bóng. Xác suất lấy được bóng A là bao nhiêu (viết dạng số thập phân)?",
+      "hints": [
+        "Xác suất = (số trường hợp thuận lợi) ÷ (số trường hợp có thể).",
+        "Trước hết hãy tìm tổng số bóng."
+      ],
+      "expl": "{a}÷{total}={ans}, nên xác suất là {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Không thể xảy ra là 0 và chắc chắn xảy ra là 1.",
+        "Khả năng như nhau là $\\frac{1}{2}$."
+      ],
+      "expl": "Xác suất của biến cố này là: {name}."
+    },
+    "pieCount": {
+      "prompt": "Trong biểu đồ tròn, A chiếm {p}% tổng thể. Tổng thể là {t} người. Có bao nhiêu người là A?",
+      "hints": [
+        "{p}% là $\\frac{p}{100}$.",
+        "Nhân tổng thể với tỉ lệ đó."
+      ],
+      "expl": "{t}×{p}÷100={ans}, nên có {ans} người."
+    },
+    "pieRest": {
+      "prompt": "Ba phần của một biểu đồ tròn là {a}%, {b}% và {c}%. Phần thứ tư là bao nhiêu phần trăm? (%)",
+      "hints": [
+        "Tổng thể là 100%.",
+        "Lấy 100 trừ đi ba phần đó."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, nên là {ans}%."
+    },
+    "bandRead": {
+      "prompt": "{cat} chiếm bao nhiêu phần trăm tổng thể trong biểu đồ dải? (%)",
+      "hints": [
+        "Tìm phần của {cat}.",
+        "Đọc số phần trăm ghi bên dưới."
+      ],
+      "expl": "{cat} là {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Tính $({a})+({b})$.",
+      "hints": [
+        "Cùng dấu: cộng các giá trị tuyệt đối và giữ nguyên dấu.",
+        "Khác dấu: lấy hiệu các giá trị tuyệt đối và lấy dấu của số có giá trị tuyệt đối lớn hơn."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Tính $({a})-({b})$.",
+      "hints": [
+        "Trừ một số là cộng với số đối của nó.",
+        "Viết lại thành $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Tính $({a})\\times({b})$.",
+      "hints": [
+        "Cùng dấu cho kết quả dương, khác dấu cho kết quả âm.",
+        "Nhân các giá trị tuyệt đối."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Tính $({a})\\div({b})$.",
+      "hints": [
+        "Cùng dấu cho kết quả dương, khác dấu cho kết quả âm.",
+        "Chia các giá trị tuyệt đối."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ bằng bao nhiêu (viết dạng số thập phân)?",
+      "hints": [
+        "Quy đồng mẫu số rồi cộng.",
+        "Đổi phân số thành số thập phân."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Điểm P biểu diễn số nào trên trục số?",
+      "hints": [
+        "Bên trái 0 là số âm, bên phải 0 là số dương.",
+        "Đếm các vạch."
+      ],
+      "expl": "Điểm P biểu diễn {ans}."
+    },
+    "primeCount": {
+      "prompt": "Có bao nhiêu số nguyên tố không vượt quá {n}?",
+      "hints": [
+        "Số nguyên tố có đúng hai ước: 1 và chính nó.",
+        "Đếm lần lượt 2, 3, 5, 7, ..."
+      ],
+      "expl": "Các số nguyên tố không vượt quá {n} là {list}: có {ans} số."
+    },
+    "factorExp": {
+      "prompt": "Phân tích ${n}$ ra thừa số nguyên tố được $2^a\\times3^b$. $a+b$ bằng bao nhiêu?",
+      "hints": [
+        "Chia {n} cho 2 chừng nào còn chia được.",
+        "Sau đó chia phần còn lại cho 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, nên $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "{n} có bao nhiêu ước?",
+      "hints": [
+        "Tìm mọi số chia hết {n}.",
+        "Kiểm tra từ số nhỏ nhất trở lên."
+      ],
+      "expl": "Các ước của {n} là {list}: có {ans} ước."
+    },
+    "gcd": {
+      "prompt": "Ước chung lớn nhất của {a} và {b} là bao nhiêu?",
+      "hints": [
+        "Tìm các ước mà hai số có chung.",
+        "Số lớn nhất trong đó là ước chung lớn nhất."
+      ],
+      "expl": "Ước chung lớn nhất của {a} và {b} là {ans}."
+    },
+    "lcm": {
+      "prompt": "Bội chung nhỏ nhất của {a} và {b} là bao nhiêu?",
+      "hints": [
+        "Liệt kê các bội chung của hai số, từ nhỏ đến lớn.",
+        "Bội chung nhỏ nhất trong các bội đó là bội chung nhỏ nhất."
+      ],
+      "expl": "Bội chung nhỏ nhất của {a} và {b} là {ans}."
+    },
+    "isPrime": {
+      "prompt": "{n} có phải là số nguyên tố không?",
+      "hints": [
+        "Tìm các ước của {n}.",
+        "Nếu có ước khác 1 và chính nó thì không phải số nguyên tố."
+      ],
+      "expl": "Các ước của {n} là {list}, nên {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Tọa độ {axis} của điểm A là bao nhiêu?",
+      "hints": [
+        "Cặp tọa độ được viết là (x, y).",
+        "Đếm theo các ô lưới."
+      ],
+      "expl": "Tọa độ {axis} của A là {ans}."
+    },
+    "quadrant": {
+      "prompt": "Điểm ({a}, {b}) nằm ở góc phần tư nào?",
+      "hints": [
+        "Xét dấu của hoành độ x và tung độ y.",
+        "(+,+) là góc phần tư thứ nhất."
+      ],
+      "expl": "x là {a} và y là {b}, nên điểm nằm ở {name}."
+    },
+    "distAxis": {
+      "prompt": "Khoảng cách từ điểm ({a}, {b}) đến trục {axis} là bao nhiêu?",
+      "hints": [
+        "Khoảng cách đến một trục là giá trị tuyệt đối của một tọa độ.",
+        "Với trục {axis}, hãy xét tọa độ {which}."
+      ],
+      "expl": "Đó là giá trị tuyệt đối của tọa độ {which} là {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Điểm ({a}, {b}) được lấy đối xứng qua trục x. Tung độ của điểm mới là bao nhiêu?",
+      "hints": [
+        "Phép đối xứng qua trục x giữ nguyên hoành độ.",
+        "Dấu của tung độ bị đổi."
+      ],
+      "expl": "Điểm mới là ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y tỉ lệ thuận với x, và y={y1} khi x={x1}. Khi x={x2} thì y bằng bao nhiêu?",
+      "hints": [
+        "Tỉ lệ thuận là y=ax.",
+        "Trước hết hãy tìm a."
+      ],
+      "expl": "a={y1}÷{x1}={k}, nên y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y tỉ lệ nghịch với x, và y={y1} khi x={x1}. Khi x={x2} thì y bằng bao nhiêu?",
+      "hints": [
+        "Tỉ lệ nghịch là $y=\\frac{a}{x}$.",
+        "Trước hết hãy tìm a=xy."
+      ],
+      "expl": "a={x1}×{y1}={k}, nên y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Đồ thị của hàm số tỉ lệ thuận y=ax đi qua điểm ({x1}, {y1}). a bằng bao nhiêu?",
+      "hints": [
+        "Thay tọa độ điểm vào y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Đồ thị của hàm số tỉ lệ nghịch $y=\\frac{a}{x}$ đi qua ({x1}, {y1}). a bằng bao nhiêu?",
+      "hints": [
+        "Thay tọa độ điểm vào $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Trung vị của dãy số liệu {list} là bao nhiêu?",
+      "hints": [
+        "Sắp xếp số liệu theo thứ tự từ nhỏ đến lớn.",
+        "Giá trị ở giữa là trung vị; nếu số lượng chẵn thì lấy trung bình cộng của hai giá trị ở giữa."
+      ],
+      "expl": "Sau khi sắp xếp: {sorted}, nên trung vị là {ans}."
+    },
+    "mode": {
+      "prompt": "Mốt của dãy số liệu {list} là bao nhiêu?",
+      "hints": [
+        "Mốt là giá trị xuất hiện nhiều nhất.",
+        "Đếm số lần xuất hiện của mỗi giá trị."
+      ],
+      "expl": "{ans} xuất hiện nhiều nhất, nên mốt là {ans}."
+    },
+    "dataRange": {
+      "prompt": "Hiệu giữa giá trị lớn nhất và nhỏ nhất của {list} là bao nhiêu?",
+      "hints": [
+        "Tìm giá trị lớn nhất và nhỏ nhất.",
+        "Lấy số lớn trừ đi số nhỏ."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Tổng tần số là {t} và một lớp có tần số {f}. Tần số tương đối của lớp đó là bao nhiêu? (số thập phân)",
+      "hints": [
+        "Tần số tương đối = (tần số của lớp) ÷ (tổng tần số).",
+        "Viết kết quả dưới dạng số thập phân."
+      ],
+      "expl": "{f}÷{t}={ans}, nên tần số tương đối là {ans}."
+    },
+    "periodLen": {
+      "prompt": "Khi viết $\\frac{1}{{d}}$ dưới dạng số thập phân, chu kỳ có bao nhiêu chữ số?",
+      "hints": [
+        "Chia 1 cho {d}.",
+        "Chu kỳ là phần lặp đi lặp lại."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, nên chu kỳ có {ans} chữ số."
+    },
+    "repeatFrac": {
+      "prompt": "Số thập phân tuần hoàn $0.\\dot{d}\\dot{e}$ bằng $\\frac{x}{99}$. x bằng bao nhiêu?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Viết số có hai chữ số ab làm tử số."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ cho x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ có phải là số thập phân hữu hạn không?",
+      "hints": [
+        "Rút gọn phân số, rồi phân tích mẫu số ra thừa số nguyên tố.",
+        "Nếu mẫu chỉ có các thừa số nguyên tố 2 và 5 thì là số thập phân hữu hạn."
+      ],
+      "expl": "Mẫu số {d2} có các thừa số nguyên tố {fact}, nên {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Chữ số ở hàng thập phân thứ {k} là gì?",
+      "hints": [
+        "Chu kỳ 142857 có 6 chữ số.",
+        "Dùng số dư của {k} ÷ 6 để tìm vị trí."
+      ],
+      "expl": "Số dư của {k} ÷ 6 là {r}, nên đó là chữ số thứ {r}: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Hệ số góc của hàm số bậc nhất $y={a}x+{b}$ là bao nhiêu?",
+      "hints": [
+        "Trong $y=ax+b$ hệ số góc là a.",
+        "Đọc hệ số của x."
+      ],
+      "expl": "Hệ số góc là {ans}."
+    },
+    "yInt": {
+      "prompt": "Tung độ gốc của $y={a}x+{b}$ là bao nhiêu?",
+      "hints": [
+        "Tung độ gốc là giá trị y khi x=0.",
+        "Trong $y=ax+b$ nó là b."
+      ],
+      "expl": "Tung độ gốc là {ans}."
+    },
+    "xInt": {
+      "prompt": "Hoành độ giao điểm với trục x của $y={a}x+{b}$ là bao nhiêu?",
+      "hints": [
+        "Giao điểm với trục x là điểm có y=0.",
+        "Giải $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ cho x={ans}."
+    },
+    "crossX": {
+      "prompt": "Đồ thị của $y={a1}x+{b1}$ và $y={a2}x+{b2}$ cắt nhau tại P. Hoành độ của P là bao nhiêu?",
+      "hints": [
+        "Tại giao điểm hai giá trị y bằng nhau.",
+        "Giải $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ cho x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Với hàm số bậc nhất $f(x)={a}x+{b}$, $f({c})$ bằng bao nhiêu?",
+      "hints": [
+        "Thay {c} vào chỗ x.",
+        "Nhân rồi cộng."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "Gửi {p} won trong {n} năm với lãi suất đơn {r}% mỗi năm. Tiền lãi là bao nhiêu? (won)",
+      "hints": [
+        "Lãi đơn = tiền gốc × lãi suất × số năm.",
+        "{r}% là {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, nên tiền lãi là {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "Gửi {p} won trong {n} năm với lãi kép {r}% mỗi năm. Tổng số tiền nhận được là bao nhiêu? (won)",
+      "hints": [
+        "Với lãi kép, tiền lãi lại sinh ra lãi.",
+        "Nhân tiền gốc với (1 + lãi suất) {n} lần."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, nên tổng số tiền là {ans} won."
+    },
+    "exchange": {
+      "prompt": "1 đơn vị của một ngoại tệ có giá trị {r} won. {d} đơn vị của ngoại tệ đó bằng bao nhiêu won? (won)",
+      "hints": [
+        "Tỉ giá là giá trị của 1 đơn vị ngoại tệ tính bằng won.",
+        "Nhân số đơn vị với tỉ giá."
+      ],
+      "expl": "{d}×{r}={ans}, nên là {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "Một món hàng giá {p} won và phải cộng thêm thuế giá trị gia tăng {t}%. Phải trả bao nhiêu won? (won)",
+      "hints": [
+        "Tiền thuế bằng giá × {t}%.",
+        "Cộng tiền thuế vào giá."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, nên {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "Đường cầu $p={a}-{b}q$ và đường cung $p={c}+{d}q$ cắt nhau tại lượng cân bằng q. q bằng bao nhiêu?",
+      "hints": [
+        "Tại điểm cân bằng, giá theo cầu bằng giá theo cung.",
+        "Giải $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ cho q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Hàm cầu là $p={a}-{b}q$. Doanh thu $R=pq$ lớn nhất bằng bao nhiêu?",
+      "hints": [
+        "$R=({a}-{b}q)q$ là một hàm bậc hai.",
+        "Nó lớn nhất tại đỉnh $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Tại q={q} doanh thu lớn nhất: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Cầu là $Q={a}-{b}p$. Giá trị tuyệt đối của độ co giãn của cầu theo giá tại $p={p0}$ là bao nhiêu? (số thập phân)",
+      "hints": [
+        "Giá trị tuyệt đối của độ co giãn là $\\frac{bp}{Q}$.",
+        "Trước hết hãy tìm Q tại $p={p0}$."
+      ],
+      "expl": "Q={q0}, nên $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Chữ A xuất hiện bao nhiêu lần trong dãy từ {seq}?",
+      "hints": [
+        "Chỉ đánh dấu các chữ A khi đếm.",
+        "Số lần này là thành phần A của vectơ tần số."
+      ],
+      "expl": "A xuất hiện {ans} lần."
+    },
+    "freqDot": {
+      "prompt": "Hai văn bản có vectơ tần số $\\vec{u}=({u1}, {u2}, {u3})$ và $\\vec{v}=({v1}, {v2}, {v3})$. Tích vô hướng $\\vec{u}\\cdot\\vec{v}$ bằng bao nhiêu?",
+      "hints": [
+        "Nhân các thành phần tương ứng rồi cộng lại.",
+        "Tích vô hướng càng lớn thì hai văn bản càng giống nhau."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Một ảnh được lưu dưới dạng ma trận $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Tổng tất cả giá trị điểm ảnh là bao nhiêu?",
+      "hints": [
+        "Mỗi phần tử là độ sáng của một điểm ảnh.",
+        "Cộng cả bốn phần tử."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Một điểm ảnh có giá trị {v}. Mọi điểm ảnh được làm sáng thêm {k}. Giá trị mới của nó là bao nhiêu?",
+      "hints": [
+        "Làm sáng là cộng cùng một số vào mọi phần tử của ma trận.",
+        "Cộng {k} vào {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Hệ số góc của đường xu hướng đi qua ({x1}, {y1}) và ({x2}, {y2}) là bao nhiêu?",
+      "hints": [
+        "Hệ số góc = độ thay đổi của y ÷ độ thay đổi của x.",
+        "Tính $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Các giá trị dự đoán là {pred} và giá trị thực là {real}. Sai số bình phương trung bình (trung bình của các sai số bình phương) là bao nhiêu?",
+      "hints": [
+        "Sai số là giá trị dự đoán − giá trị thực.",
+        "Bình phương từng sai số, rồi lấy trung bình."
+      ],
+      "expl": "Các sai số bình phương là {sq} và trung bình của chúng là {ans}."
+    },
+    "gradStep": {
+      "prompt": "Với hàm mất mát $f(x)=x^2$, một bước giảm gradient từ x={x0} với tốc độ học {eta} cho giá trị x mới là bao nhiêu?",
+      "hints": [
+        "Giảm gradient: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, nên {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "{v} m bằng bao nhiêu cm? (cm)",
+      "hints": [
+        "1 m bằng 100 cm.",
+        "Nhân {v} với 100."
+      ],
+      "expl": "{v}×100={ans}, nên {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "{v} kg bằng bao nhiêu g? (g)",
+      "hints": [
+        "1 kg bằng 1000 g.",
+        "Nhân {v} với 1000."
+      ],
+      "expl": "{v}×1000={ans}, nên {ans} g."
+    },
+    "convHMin": {
+      "prompt": "{v} giờ bằng bao nhiêu phút? (phút)",
+      "hints": [
+        "1 giờ bằng 60 phút.",
+        "Nhân {v} với 60."
+      ],
+      "expl": "{v}×60={ans}, nên {ans} phút."
+    },
+    "discount": {
+      "prompt": "Một món hàng giá {p} won được bán giảm giá {d}%. Giá bán là bao nhiêu? (won)",
+      "hints": [
+        "Tiền giảm bằng giá × {d}%.",
+        "Lấy giá trừ đi tiền giảm."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, nên {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "Nguyên liệu A và B được trộn theo tỉ lệ {a}:{b} để được tổng cộng {t} g. Cần bao nhiêu g A? (g)",
+      "hints": [
+        "Tổng thể gồm {a}+{b}={s} phần.",
+        "A chiếm $\\frac{a}{s}$ tổng thể."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, nên {ans} g."
+    },
+    "tiles": {
+      "prompt": "Một bức tường rộng {w} m và cao {h} m. Cần bao nhiêu viên gạch 1 m × 1 m để lát kín? (viên)",
+      "hints": [
+        "Tìm diện tích bức tường.",
+        "Mỗi viên gạch có diện tích 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, nên {ans} viên."
+    },
+    "outfit": {
+      "prompt": "Có {a} áo sơ mi và {b} quần. Có bao nhiêu cách phối khác nhau gồm một áo và một quần?",
+      "hints": [
+        "Với mỗi áo có {b} cách chọn quần.",
+        "Dùng quy tắc nhân."
+      ],
+      "expl": "{a}×{b}={ans}, nên có {ans} cách."
+    },
+    "goldenRatio": {
+      "prompt": "Tỉ lệ vàng thỏa mãn $a:b=(a+b):a$. Khi b=10, a xấp xỉ bao nhiêu? (hai chữ số thập phân)",
+      "hints": [
+        "Tỉ lệ vàng xấp xỉ 1,618.",
+        "a xấp xỉ 1,618 lần b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Cao độ do tần số quyết định. Nốt cao hơn nốt 440 Hz một quãng tám có tần số bao nhiêu Hz? (Hz)",
+      "hints": [
+        "Nốt cao hơn một quãng tám có tần số gấp đôi.",
+        "Nhân 440 với 2."
+      ],
+      "expl": "440×2={ans}, nên {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Một ô chữ nổi Braille có 6 chấm, mỗi chấm nổi hoặc phẳng. Không tính kiểu không có chấm nổi nào, có bao nhiêu kiểu?",
+      "hints": [
+        "Mỗi chấm có 2 khả năng.",
+        "Theo quy tắc nhân là $2^6$, rồi trừ 1."
+      ],
+      "expl": "$2^6-1={ans}$, nên có {ans} kiểu."
+    },
+    "voteMajority": {
+      "prompt": "Có {n} người bỏ phiếu. Một ứng viên cần ít nhất bao nhiêu phiếu để đạt đa số? (phiếu)",
+      "hints": [
+        "Đa số là hơn một nửa tổng số phiếu.",
+        "Tìm số nguyên nhỏ nhất lớn hơn một nửa của {n}."
+      ],
+      "expl": "Một nửa của {n} là {half}; số nguyên nhỏ nhất lớn hơn nó là {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Trong 5 ngày, nồng độ bụi mịn lần lượt là {list} (µg/m³). Nồng độ trung bình là bao nhiêu?",
+      "hints": [
+        "Trung bình cộng = (tổng) ÷ (số ngày).",
+        "Trước hết hãy cộng 5 giá trị."
+      ],
+      "expl": "({sum})÷5={ans}, nên trung bình là {ans}."
+    },
+    "percentChange": {
+      "prompt": "Một giá trị thay đổi từ {a} đến {b}. Nó tăng bao nhiêu phần trăm? (%)",
+      "hints": [
+        "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+        "Lượng tăng là {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, nên {ans}%."
+    },
+    "stdev": {
+      "prompt": "Độ lệch chuẩn của dãy số liệu {list} là bao nhiêu? (độ lệch chuẩn tổng thể)",
+      "hints": [
+        "Trước hết hãy tìm trung bình cộng.",
+        "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+      ],
+      "expl": "Trung bình là {mean} và phương sai là {var}, nên độ lệch chuẩn là {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Độ lệch chuẩn tổng thể là {s} và cỡ mẫu là {n}. Sai số biên 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$ là bao nhiêu? (hai chữ số thập phân)",
+      "hints": [
+        "Trước hết hãy tính $\\sqrt{ n }$.",
+        "Chia σ cho nó rồi nhân với 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Trung bình mẫu là {xbar}, trung bình theo giả thuyết không là {mu}, σ={s} và n={n}. Thống kê kiểm định $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ là bao nhiêu?",
+      "hints": [
+        "Trước hết hãy tính mẫu số $σ/\\sqrt{ n }$.",
+        "Lấy trung bình mẫu trừ trung bình giả thuyết không rồi chia."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Trong kiểm định hai phía ở mức ý nghĩa 5%, giá trị tới hạn là 1,96. Thống kê kiểm định là z={z}. Kết luận là gì?",
+      "hints": [
+        "Nếu $|z|$ lớn hơn 1,96 thì bác bỏ giả thuyết không.",
+        "So sánh giá trị tuyệt đối của z với 1,96."
+      ],
+      "expl": "|z|={az}, nên: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Hãy xem mẫu được chọn như thế nào.",
+        "Chọn phương pháp phù hợp: ngẫu nhiên, phân tầng, cụm hoặc hệ thống."
+      ],
+      "expl": "Phương pháp này là {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+        "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+      ],
+      "expl": "Phương pháp nghiên cứu này là {name}."
+    },
+    "researchStep": {
+      "prompt": "Cần làm gì ngay sau khi chọn đề tài nghiên cứu?",
+      "hints": [
+        "Nghiên cứu đi theo trình tự lập kế hoạch → thực hiện → trình bày → nhìn lại.",
+        "Sau đề tài là quyết định cách tìm hiểu nó."
+      ],
+      "expl": "Sau khi chọn đề tài: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Đạo đức nghiên cứu dựa trên sự trung thực và việc trích dẫn nguồn.",
+        "Hãy nghĩ xem công trình và kết quả của người khác phải được đối xử thế nào."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Góc phần tư thứ nhất",
+    "q2": "Góc phần tư thứ hai",
+    "q3": "Góc phần tư thứ ba",
+    "q4": "Góc phần tư thứ tư",
+    "p0": "0 (không thể xảy ra)",
+    "phalf": "1/2 (khả năng như nhau)",
+    "p1": "1 (chắc chắn xảy ra)",
+    "random": "chọn mẫu ngẫu nhiên đơn giản",
+    "strat": "chọn mẫu phân tầng",
+    "cluster": "chọn mẫu theo cụm",
+    "system": "chọn mẫu hệ thống",
+    "reject": "Bác bỏ giả thuyết không",
+    "keep": "Không bác bỏ giả thuyết không",
+    "literature": "nghiên cứu tài liệu",
+    "casestudy": "nghiên cứu tình huống",
+    "experiment": "thực nghiệm toán học",
+    "develop": "nghiên cứu phát triển",
+    "plan": "Lập kế hoạch nghiên cứu",
+    "carry": "Thực hiện nghiên cứu",
+    "present": "Trình bày kết quả",
+    "reflect": "Nhìn lại quá trình",
+    "yesPrime": "Có, đó là số nguyên tố",
+    "noPrime": "Không, đó không phải là số nguyên tố",
+    "yesFinite": "Có, đó là số thập phân hữu hạn",
+    "noFinite": "Không, đó là số thập phân tuần hoàn",
+    "yesOk": "Đúng",
+    "noOk": "Sai"
+  },
+  "text": {
+    "ev_coin": "Xác suất được mặt ngửa khi tung một đồng xu một lần là bao nhiêu?",
+    "ev_sun": "Xác suất mặt trời mọc ở hướng đông vào ngày mai là bao nhiêu?",
+    "ev_die": "Xác suất gieo được số 7 bằng một con xúc xắc sáu mặt thông thường là bao nhiêu?",
+    "sm_system": "Cứ cách 10 học sinh trong danh sách của trường thì chọn một học sinh để khảo sát. Đây là phương pháp chọn mẫu nào?",
+    "sm_random": "Ba mươi học sinh được chọn từ danh sách của trường bằng số ngẫu nhiên. Đây là phương pháp chọn mẫu nào?",
+    "sm_strat": "Học sinh được chọn từ mỗi khối lớp theo tỉ lệ với số học sinh của khối đó. Đây là phương pháp chọn mẫu nào?",
+    "sm_cluster": "Trước tiên chọn vài lớp, rồi khảo sát mọi học sinh trong các lớp được chọn. Đây là phương pháp chọn mẫu nào?",
+    "rm_lit": "Đọc các bài báo và sách ở thư viện và trên internet rồi tóm tắt lại là phương pháp nghiên cứu nào?",
+    "rm_case": "Thu thập và so sánh các ví dụ thực tế từ nhiều trường là phương pháp nghiên cứu nào?",
+    "rm_exp": "Tự gieo xúc xắc và ghi lại kết quả để tìm ra quy luật là phương pháp nghiên cứu nào?",
+    "rm_dev": "Tạo ra một công cụ mới để học toán và thử xem nó hiệu quả đến đâu là phương pháp nghiên cứu nào?",
+    "et_cite": "Sao chép bài viết của người khác mà không nói rõ nguồn gốc là vi phạm đạo đức nghiên cứu.",
+    "et_cite_r": "Dùng công trình của người khác mà không nêu nguồn là đạo văn, nên nhận định này đúng.",
+    "et_fake": "Nếu kết quả khác với giả thuyết thì có thể sửa số liệu cho khớp.",
+    "et_fake_r": "Sửa kết quả là làm giả số liệu và vi phạm đạo đức nghiên cứu, nên nhận định này sai."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Phân loại và biểu diễn số liệu bằng bảng và biểu đồ",
+      "concept": "Phân loại các đối tượng theo một quy tắc rồi đếm; **bảng** hoặc **biểu đồ** giúp so sánh ngay.",
+      "example": "A 3, B 5, C 2 → tổng cộng 10"
+    },
+    "E4dat1": {
+      "title": "Đọc biểu đồ đường",
+      "concept": "**Biểu đồ đường** cho thấy một giá trị thay đổi theo thời gian bằng các điểm và đoạn thẳng. Đi lên là tăng, đi xuống là giảm.",
+      "example": "12 ở ngày 1 → 20 ở ngày 3: tăng 8"
+    },
+    "E5dat1": {
+      "title": "Tìm trung bình cộng",
+      "concept": "**Trung bình cộng** là tổng các số liệu chia cho số lượng của chúng.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Khả năng xảy ra",
+      "concept": "**Xác suất** của một biến cố là một số từ 0 (không thể) đến 1 (chắc chắn): xác suất = (số trường hợp thuận lợi) ÷ (số trường hợp có thể).",
+      "example": "3 bóng A, 2 bóng B → xác suất được A là $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Biểu đồ dải và biểu đồ tròn",
+      "concept": "**Biểu đồ dải** và **biểu đồ tròn** coi tổng thể là 100% và cho thấy tỉ lệ của từng phần. Phần = tổng thể × tỉ lệ.",
+      "example": "25% của 200 người → 50 người"
+    },
+    "M1neg1": {
+      "title": "Số nguyên và số hữu tỉ",
+      "concept": "Cùng dấu: cộng các giá trị tuyệt đối. Khác dấu: lấy hiệu và giữ dấu của số lớn hơn. Với phép × và ÷, kết quả là + nếu cùng dấu và − nếu khác dấu.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Phân tích ra thừa số nguyên tố, ƯCLN và BCNN",
+      "concept": "Viết một số thành tích các số nguyên tố là **phân tích ra thừa số nguyên tố**. Ước chung lớn nhất là **ước chung lớn nhất**, bội chung nhỏ nhất là **bội chung nhỏ nhất**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Mặt phẳng tọa độ",
+      "concept": "Một điểm được viết là (x, y). Dấu của các tọa độ quyết định góc phần tư thứ 1–4, và đối xứng qua trục x làm đổi dấu của y.",
+      "example": "(−2, 5) nằm ở góc phần tư thứ hai"
+    },
+    "M1prp1": {
+      "title": "Tỉ lệ thuận và tỉ lệ nghịch",
+      "concept": "**Tỉ lệ thuận** là y=ax và **tỉ lệ nghịch** là $y=\\frac{a}{x}$. Với tỉ lệ thuận y÷x không đổi; với tỉ lệ nghịch x×y không đổi.",
+      "example": "y=6 khi x=2 (tỉ lệ thuận): y=3x"
+    },
+    "M1sta1": {
+      "title": "Giá trị trung bình và tần số tương đối",
+      "concept": "**Trung vị** là giá trị ở giữa khi sắp xếp theo thứ tự, **mốt** là giá trị xuất hiện nhiều nhất. **Tần số tương đối** = tần số ÷ tổng.",
+      "example": "Trung vị của 1, 3, 5, 7, 9 là 5"
+    },
+    "M2rec1": {
+      "title": "Số thập phân tuần hoàn",
+      "concept": "Số thập phân có các chữ số lặp lại mãi là **số thập phân tuần hoàn**; phần lặp lại là **chu kỳ** của nó. Phân số tối giản chỉ là số thập phân hữu hạn khi mẫu số chỉ có các thừa số 2 và 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Hàm số bậc nhất và phương trình bậc nhất",
+      "concept": "Trong y=ax+b, a là hệ số góc và b là tung độ gốc. Giao điểm của hai đồ thị là nghiệm của hệ hai phương trình.",
+      "example": "y=2x−6 cắt trục x tại 3"
+    },
+    "el.econ1": {
+      "title": "Lãi suất, tỉ giá và thuế",
+      "concept": "Lãi đơn = tiền gốc × lãi suất × số năm; số tiền cả gốc lẫn lãi kép = tiền gốc × (1 + lãi suất)^số năm. Tỉ giá là giá trị của 1 đơn vị tiền tệ; thuế là giá × một tỉ lệ phần trăm.",
+      "example": "10000 won, lãi kép 10% trong 2 năm → 12100 won"
+    },
+    "el.econ2": {
+      "title": "Cầu, cung và tối ưu hóa",
+      "concept": "Điểm cân bằng là nơi đường cầu và đường cung cắt nhau. Doanh thu cực đại R=pq và độ co giãn được tìm từ hàm số và đạo hàm.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Dữ liệu văn bản và hình ảnh",
+      "concept": "Một văn bản trở thành vectơ số lần xuất hiện của các từ, và một ảnh trở thành ma trận các giá trị điểm ảnh. Tích vô hướng càng lớn thì hai văn bản càng giống nhau.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Dự đoán và tối ưu hóa",
+      "concept": "Dự đoán tốt hơn nhờ hệ số góc của đường xu hướng, sai số bình phương trung bình (hàm mất mát) và giảm gradient $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Đổi đơn vị và tỉ lệ",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 giờ = 60 phút. Giá bán = giá × (1 − giảm giá); trộn theo tỉ lệ a:b thì A chiếm phần $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Diện tích, đếm và tăng trưởng",
+      "concept": "Diện tích cho biết lượng vật liệu cần dùng, quy tắc nhân cho biết số cặp, và (lượng tăng) ÷ (giá trị ban đầu) × 100 cho biết tốc độ tăng trưởng.",
+      "example": "4 áo, 3 quần → 12 bộ trang phục"
+    },
+    "el.cul1": {
+      "title": "Toán học trong nghệ thuật và đời sống",
+      "concept": "Tỉ lệ vàng xấp xỉ 1,618; nốt cao hơn một quãng tám có tần số gấp đôi; 6 chấm Braille cho $2^6-1=63$ kiểu; đa số là hơn một nửa.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Toán học trong xã hội và môi trường",
+      "concept": "Giá trị trung bình và tốc độ tăng trưởng giúp phân tích các vấn đề xã hội và môi trường bằng toán học. Tốc độ tăng trưởng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+      "example": "40 lên 50 → tăng 25%"
+    },
+    "el.sta1": {
+      "title": "Câu hỏi thống kê và mẫu",
+      "concept": "Độ lệch chuẩn là căn bậc hai của trung bình các bình phương độ lệch (phương sai). Mẫu được chọn bằng phương pháp ngẫu nhiên, phân tầng, cụm hoặc hệ thống.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 có độ lệch chuẩn là 2"
+    },
+    "el.sta2": {
+      "title": "Ước lượng và kiểm định giả thuyết",
+      "concept": "Sai số biên 95% là $1.96\\times\\frac{σ}{\\sqrt{n}}$. Nếu $|z|$ của $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ lớn hơn 1,96 thì bác bỏ giả thuyết không ở mức 5%.",
+      "example": "σ=10, n=100 → sai số biên 1,96"
+    },
+    "el.res1": {
+      "title": "Phương pháp nghiên cứu",
+      "concept": "Một dự án nghiên cứu toán học có thể dùng nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm toán học hoặc nghiên cứu phát triển.",
+      "example": "Gieo xúc xắc để tìm quy luật → thực nghiệm"
+    },
+    "el.res2": {
+      "title": "Các bước nghiên cứu và đạo đức",
+      "concept": "Nghiên cứu đi theo trình tự đề tài → kế hoạch → thực hiện → trình bày → nhìn lại. Trích dẫn nguồn và không bao giờ sửa kết quả là đạo đức nghiên cứu.",
+      "example": "Sau đề tài là kế hoạch nghiên cứu"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Toán kinh tế",
+      "world": "Thị trấn Kinh tế",
+      "tagline": "Học toán về tiền bạc và thị trường",
+      "unit": "Số và kinh tế, hàm số và kinh tế"
+    },
+    "ai": {
+      "title": "Toán cho AI",
+      "world": "Phòng thí nghiệm AI",
+      "tagline": "Khám phá toán học bên trong dữ liệu và tối ưu hóa",
+      "unit": "Xử lý dữ liệu, dự đoán và tối ưu hóa"
+    },
+    "job": {
+      "title": "Toán nơi làm việc",
+      "world": "Thị trấn Xưởng",
+      "tagline": "Luyện tập toán học dùng trong công việc",
+      "unit": "Số và đơn vị, tỉ lệ, diện tích và đếm"
+    },
+    "cul": {
+      "title": "Toán học và văn hóa",
+      "world": "Quảng trường Văn hóa",
+      "tagline": "Tìm toán học trong nghệ thuật và đời sống",
+      "unit": "Nghệ thuật và đời sống, xã hội và môi trường"
+    },
+    "sta": {
+      "title": "Thống kê thực hành",
+      "world": "Phòng thí nghiệm Thống kê",
+      "tagline": "Rèn kỹ năng đánh giá từ dữ liệu",
+      "unit": "Dữ liệu và mẫu, ước lượng và kiểm định"
+    },
+    "res": {
+      "title": "Dự án nghiên cứu toán học",
+      "world": "Xưởng Nghiên cứu",
+      "tagline": "Học phương pháp và đạo đức của nghiên cứu",
+      "unit": "Phương pháp, quy trình và đạo đức"
+    }
+  }
+}

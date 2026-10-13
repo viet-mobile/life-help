@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Hva er tallet for {cat} i tabellen?",
+      "hints": [
+        "Finn cellen for {cat}.",
+        "Les av tallet som står i den."
+      ],
+      "expl": "Tallet for {cat} er {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Hva er summen av alle tallene i tabellen?",
+      "hints": [
+        "Les av tallet i hver celle.",
+        "Legg dem alle sammen."
+      ],
+      "expl": "Summen er {sum}, så svaret er {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Hvor mange sirkler er det i den høyeste søylen i diagrammet?",
+      "hints": [
+        "Tell sirklene i hver søyle.",
+        "Finn den høyeste søylen."
+      ],
+      "expl": "Den høyeste søylen har {ans} sirkler."
+    },
+    "symbolDiff": {
+      "prompt": "Hvor mange flere har den største søylen enn den minste?",
+      "hints": [
+        "Finn først det største og det minste antallet.",
+        "Trekk det minste fra det største."
+      ],
+      "expl": "{max}-{min}={ans}, så den har {ans} flere."
+    },
+    "mostWhich": {
+      "prompt": "Hvilken ting er størst i diagrammet?",
+      "hints": [
+        "Sammenlign tallene for tingene.",
+        "Finn det største tallet."
+      ],
+      "expl": "Den største tingen er {name}."
+    },
+    "compareCount": {
+      "prompt": "Hvor mange flere har {a} enn {b}?",
+      "hints": [
+        "Les av tallene for {a} og {b}.",
+        "Trekk det minste fra det største."
+      ],
+      "expl": "{x}-{y}={ans}, så {a} har {ans} flere."
+    },
+    "lineRead": {
+      "prompt": "Hva er verdien ved {cat} i linjediagrammet?",
+      "hints": [
+        "Finn {cat} på den vannrette aksen.",
+        "Les av verdien til punktet over den."
+      ],
+      "expl": "Verdien ved {cat} er {ans}."
+    },
+    "lineMax": {
+      "prompt": "Hva er den største verdien i linjediagrammet?",
+      "hints": [
+        "Sammenlign verdiene til alle punktene.",
+        "Finn det høyeste punktet."
+      ],
+      "expl": "Den største verdien er {ans}."
+    },
+    "lineChange": {
+      "prompt": "Hvor mye økte verdien fra {from} til {to}?",
+      "hints": [
+        "Les av verdiene ved {from} og {to}.",
+        "Trekk den første verdien fra den senere."
+      ],
+      "expl": "{b}-{a}={ans}, så den økte med {ans}."
+    },
+    "mean": {
+      "prompt": "Hva er gjennomsnittet av disse tallene? {list}",
+      "hints": [
+        "Gjennomsnittet er (summen av alle) ÷ (antallet).",
+        "Legg dem alle sammen først."
+      ],
+      "expl": "({sum})÷{n}={ans}, så gjennomsnittet er {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Gjennomsnittet av fire tall er {m}, og tre av dem er {list}. Hva er det fjerde tallet?",
+      "hints": [
+        "Summen av de fire tallene er gjennomsnitt × 4.",
+        "Trekk de tre kjente tallene fra summen."
+      ],
+      "expl": "{m}×4={total} og {total}-({known})={ans}, så det er {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "En eske har {a} A-kuler og {b} B-kuler. Én kule tas ut. Hva er sannsynligheten for at det er en A-kule, som desimaltall?",
+      "hints": [
+        "Sannsynlighet = (gunstige utfall) ÷ (alle utfall).",
+        "Finn først det totale antallet kuler."
+      ],
+      "expl": "{a}÷{total}={ans}, så sannsynligheten er {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Umulig er 0, og sikkert er 1.",
+        "Like sannsynlig er $\\frac{1}{2}$."
+      ],
+      "expl": "Sannsynligheten for denne hendelsen er: {name}."
+    },
+    "pieCount": {
+      "prompt": "I sektordiagrammet er A {p}% av helheten. Helheten er {t} personer. Hvor mange er A?",
+      "hints": [
+        "{p}% er $\\frac{p}{100}$.",
+        "Multipliser helheten med forholdet."
+      ],
+      "expl": "{t}×{p}÷100={ans}, så {ans} personer."
+    },
+    "pieRest": {
+      "prompt": "Tre deler av et sektordiagram er {a}%, {b}% og {c}%. Hvor mange prosent er den fjerde delen? (%)",
+      "hints": [
+        "Helheten er 100%.",
+        "Trekk de tre delene fra 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, så det er {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Hvor mange prosent av helheten er {cat} i stolpediagrammet med 100%? (%)",
+      "hints": [
+        "Finn delen for {cat}.",
+        "Les av prosenten som står under den."
+      ],
+      "expl": "{cat} er {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Regn ut $({a})+({b})$.",
+      "hints": [
+        "Like fortegn: legg sammen tallverdiene og behold fortegnet.",
+        "Ulike fortegn: trekk tallverdiene fra hverandre og bruk fortegnet til den største."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Regn ut $({a})-({b})$.",
+      "hints": [
+        "Å trekke fra er å legge til det motsatte tallet.",
+        "Skriv det som $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Regn ut $({a})\\times({b})$.",
+      "hints": [
+        "Like fortegn gir et positivt resultat, ulike fortegn et negativt.",
+        "Multipliser tallverdiene."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Regn ut $({a})\\div({b})$.",
+      "hints": [
+        "Like fortegn gir et positivt resultat, ulike fortegn et negativt.",
+        "Divider tallverdiene."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "Hva er $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ som desimaltall?",
+      "hints": [
+        "Bruk felles nevner og legg sammen.",
+        "Gjør brøken om til et desimaltall."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Hvilket tall viser punktet P på tallinjen?",
+      "hints": [
+        "Til venstre for 0 er negativt, til høyre for 0 er positivt.",
+        "Tell strekene."
+      ],
+      "expl": "Punktet P viser {ans}."
+    },
+    "primeCount": {
+      "prompt": "Hvor mange primtall er det opp til {n}?",
+      "hints": [
+        "Et primtall har nøyaktig to divisorer: 1 og seg selv.",
+        "Tell 2, 3, 5, 7, ... i rekkefølge."
+      ],
+      "expl": "Primtallene opp til {n} er {list}: {ans} til sammen."
+    },
+    "factorExp": {
+      "prompt": "${n}$ primtallsfaktorisert er $2^a\\times3^b$. Hva er $a+b$?",
+      "hints": [
+        "Divider {n} med 2 så lenge du kan.",
+        "Divider deretter resten med 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, så $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "Hvor mange divisorer har {n}?",
+      "hints": [
+        "Finn alle tall som går opp i {n}.",
+        "Sjekk fra det minste og oppover."
+      ],
+      "expl": "Divisorene til {n} er {list}: {ans} til sammen."
+    },
+    "gcd": {
+      "prompt": "Hva er største felles faktor for {a} og {b}?",
+      "hints": [
+        "Finn faktorene de to tallene har felles.",
+        "Den største av dem er største felles faktor."
+      ],
+      "expl": "Største felles faktor for {a} og {b} er {ans}."
+    },
+    "lcm": {
+      "prompt": "Hva er minste felles multiplum av {a} og {b}?",
+      "hints": [
+        "Skriv opp multiplene begge tallene har felles, det minste først.",
+        "Det minste felles multiplumet er minste felles multiplum."
+      ],
+      "expl": "Minste felles multiplum av {a} og {b} er {ans}."
+    },
+    "isPrime": {
+      "prompt": "Er {n} et primtall?",
+      "hints": [
+        "Se etter divisorer i {n}.",
+        "Hvis det har en divisor annet enn 1 og seg selv, er det ikke et primtall."
+      ],
+      "expl": "Divisorene til {n} er {list}, så {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Hva er {axis}-koordinaten til punktet A?",
+      "hints": [
+        "Et koordinatpar skrives (x, y).",
+        "Tell langs rutenettet."
+      ],
+      "expl": "{axis}-koordinaten til A er {ans}."
+    },
+    "quadrant": {
+      "prompt": "I hvilken kvadrant ligger punktet ({a}, {b})?",
+      "hints": [
+        "Se på fortegnene til x- og y-koordinaten.",
+        "(+,+) er 1. kvadrant."
+      ],
+      "expl": "x er {a} og y er {b}, så det ligger i {name}."
+    },
+    "distAxis": {
+      "prompt": "Hva er avstanden fra punktet ({a}, {b}) til {axis}-aksen?",
+      "hints": [
+        "Avstanden til en akse er tallverdien av en koordinat.",
+        "For {axis}-aksen ser du på {which}-koordinaten."
+      ],
+      "expl": "Det er tallverdien av {which}-koordinaten {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Punktet ({a}, {b}) speiles i x-aksen. Hva er y-koordinaten til det nye punktet?",
+      "hints": [
+        "En speiling i x-aksen beholder x-koordinaten.",
+        "Fortegnet til y-koordinaten snus."
+      ],
+      "expl": "Det nye punktet er ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y er proporsjonal med x, og y={y1} når x={x1}. Hva er y når x={x2}?",
+      "hints": [
+        "Proporsjonalitet er y=ax.",
+        "Finn først a."
+      ],
+      "expl": "a={y1}÷{x1}={k}, så y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y er omvendt proporsjonal med x, og y={y1} når x={x1}. Hva er y når x={x2}?",
+      "hints": [
+        "Omvendt proporsjonalitet er $y=\\frac{a}{x}$.",
+        "Finn først a=xy."
+      ],
+      "expl": "a={x1}×{y1}={k}, så y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Grafen til den proporsjonale sammenhengen y=ax går gjennom punktet ({x1}, {y1}). Hva er a?",
+      "hints": [
+        "Sett punktet inn i y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Grafen til den omvendt proporsjonale sammenhengen $y=\\frac{a}{x}$ går gjennom ({x1}, {y1}). Hva er a?",
+      "hints": [
+        "Sett punktet inn i $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Hva er medianen av dataene {list}?",
+      "hints": [
+        "Sett dataene i rekkefølge etter størrelse.",
+        "Den midterste verdien er medianen; ved partall brukes gjennomsnittet av de to midterste."
+      ],
+      "expl": "I rekkefølge: {sorted}, så medianen er {ans}."
+    },
+    "mode": {
+      "prompt": "Hva er typetallet i dataene {list}?",
+      "hints": [
+        "Typetallet er verdien som forekommer oftest.",
+        "Tell hvor mange ganger hver verdi forekommer."
+      ],
+      "expl": "{ans} forekommer oftest, så typetallet er {ans}."
+    },
+    "dataRange": {
+      "prompt": "Hva er differansen mellom den største og den minste verdien i {list}?",
+      "hints": [
+        "Finn den største og den minste verdien.",
+        "Trekk det minste fra det største."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Total frekvens er {t}, og en klasse har frekvens {f}. Hva er den relative frekvensen til klassen? (desimaltall)",
+      "hints": [
+        "Relativ frekvens = (klassens frekvens) ÷ (total frekvens).",
+        "Skriv resultatet som desimaltall."
+      ],
+      "expl": "{f}÷{t}={ans}, så den relative frekvensen er {ans}."
+    },
+    "periodLen": {
+      "prompt": "Når $\\frac{1}{{d}}$ skrives som desimaltall, hvor mange sifre har perioden?",
+      "hints": [
+        "Divider 1 med {d}.",
+        "Perioden er delen som gjentar seg."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, så perioden har {ans} sifre."
+    },
+    "repeatFrac": {
+      "prompt": "Det periodiske desimaltallet $0.\\dot{d}\\dot{e}$ er lik $\\frac{x}{99}$. Hva er x?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Skriv det tosifrede tallet ab som teller."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ gir x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "Er $\\frac{{n}}{{d}}$ et endelig desimaltall?",
+      "hints": [
+        "Forkort brøken, og primtallsfaktoriser deretter nevneren.",
+        "Hvis de eneste primfaktorene er 2 og 5, er det endelig."
+      ],
+      "expl": "Nevneren {d2} har primfaktorene {fact}, så {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Hva er sifferet på {k}. desimalplass?",
+      "hints": [
+        "Perioden 142857 har 6 sifre.",
+        "Bruk resten av {k} ÷ 6 for å finne plasseringen."
+      ],
+      "expl": "Resten av {k} ÷ 6 er {r}, så det er siffer nummer {r}: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Hva er stigningstallet til den lineære funksjonen $y={a}x+{b}$?",
+      "hints": [
+        "I $y=ax+b$ er stigningstallet a.",
+        "Les av koeffisienten til x."
+      ],
+      "expl": "Stigningstallet er {ans}."
+    },
+    "yInt": {
+      "prompt": "Hva er skjæringspunktet med y-aksen for $y={a}x+{b}$?",
+      "hints": [
+        "Skjæringspunktet med y-aksen er y når x=0.",
+        "I $y=ax+b$ er det b."
+      ],
+      "expl": "Skjæringspunktet med y-aksen er {ans}."
+    },
+    "xInt": {
+      "prompt": "Hva er skjæringspunktet med x-aksen for $y={a}x+{b}$?",
+      "hints": [
+        "Skjæringspunktet med x-aksen er x når y=0.",
+        "Løs $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ gir x={ans}."
+    },
+    "crossX": {
+      "prompt": "Grafene til $y={a1}x+{b1}$ og $y={a2}x+{b2}$ skjærer hverandre i P. Hva er x-koordinaten til P?",
+      "hints": [
+        "I skjæringspunktet er de to y-verdiene like.",
+        "Løs $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ gir x={ans}."
+    },
+    "funcValue": {
+      "prompt": "For den lineære funksjonen $f(x)={a}x+{b}$, hva er $f({c})$?",
+      "hints": [
+        "Sett {c} inn for x.",
+        "Multipliser, og legg deretter til."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won settes inn i {n} år med {r}% enkel rente per år. Hvor stor er renten? (won)",
+      "hints": [
+        "Enkel rente = kapital × rentesats × år.",
+        "{r}% er {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, så renten er {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "{p} won settes inn i {n} år med {r}% rente på rente per år. Hva er det samlede beløpet? (won)",
+      "hints": [
+        "Med rentes rente får renten også rente.",
+        "Multipliser kapital × (1 + rentesats) {n} ganger."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, så det samlede beløpet er {ans} won."
+    },
+    "exchange": {
+      "prompt": "1 enhet av en utenlandsk valuta er {r} won verdt. Hvor mange won er {d} enheter av den? (won)",
+      "hints": [
+        "Valutakursen er verdien av 1 enhet av den utenlandske valutaen i won.",
+        "Multipliser antall enheter med kursen."
+      ],
+      "expl": "{d}×{r}={ans}, så det er {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "En vare koster {p} won, og {t}% merverdiavgift legges til. Hvor mange won må betales? (won)",
+      "hints": [
+        "Avgiften er pris × {t}%.",
+        "Legg avgiften til prisen."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, så {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "Etterspørselskurven $p={a}-{b}q$ og tilbudskurven $p={c}+{d}q$ skjærer hverandre ved likevektsmengden q. Hva er q?",
+      "hints": [
+        "I likevekt er etterspørselsprisen lik tilbudsprisen.",
+        "Løs $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ gir q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Etterspørselsfunksjonen er $p={a}-{b}q$. Hva er maksimum for inntekten $R=pq$?",
+      "hints": [
+        "$R=({a}-{b}q)q$ er en andregradsfunksjon.",
+        "Den er størst i toppunktet $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Ved q={q} er inntekten størst: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Etterspørselen er $Q={a}-{b}p$. Hva er tallverdien av priselastisiteten ved $p={p0}$? (desimaltall)",
+      "hints": [
+        "Den absolutte elastisiteten er $\\frac{bp}{Q}$.",
+        "Finn først Q ved $p={p0}$."
+      ],
+      "expl": "Q={q0}, så $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Hvor mange ganger forekommer A i ordrekken {seq}?",
+      "hints": [
+        "Marker bare A-ene mens du teller.",
+        "Dette antallet er A-komponenten i frekvensvektoren."
+      ],
+      "expl": "A forekommer {ans} ganger."
+    },
+    "freqDot": {
+      "prompt": "To dokumenter har frekvensvektorene $\\vec{u}=({u1}, {u2}, {u3})$ og $\\vec{v}=({v1}, {v2}, {v3})$. Hva er skalarproduktet $\\vec{u}\\cdot\\vec{v}$?",
+      "hints": [
+        "Multipliser tilsvarende komponenter og legg sammen.",
+        "Jo større skalarprodukt, desto mer like er dokumentene."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Et bilde er lagret som matrisen $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Hva er summen av alle pikselverdiene?",
+      "hints": [
+        "Hvert element er lysstyrken til én piksel.",
+        "Legg sammen alle de fire elementene."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "En piksel har verdien {v}. Alle piksler gjøres {k} lysere. Hva er den nye verdien?",
+      "hints": [
+        "Å gjøre lysere betyr å legge til samme tall i hvert element i matrisen.",
+        "Legg {k} til {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Hva er stigningstallet til trendlinjen gjennom ({x1}, {y1}) og ({x2}, {y2})?",
+      "hints": [
+        "Stigningstall = endring i y ÷ endring i x.",
+        "Regn ut $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Prediksjonene er {pred}, og de virkelige verdiene er {real}. Hva er den gjennomsnittlige kvadratiske feilen (gjennomsnittet av de kvadrerte feilene)?",
+      "hints": [
+        "Feilen er prediksjon − virkelig verdi.",
+        "Kvadrer hver feil, og ta deretter gjennomsnittet."
+      ],
+      "expl": "De kvadrerte feilene er {sq}, og gjennomsnittet av dem er {ans}."
+    },
+    "gradStep": {
+      "prompt": "For tapsfunksjonen $f(x)=x^2$, hva blir ny x etter ett gradientnedstigningstrinn fra x={x0} med læringsrate {eta}?",
+      "hints": [
+        "Gradientnedstigning: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, så {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "Hvor mange cm er {v} m? (cm)",
+      "hints": [
+        "1 m er 100 cm.",
+        "Multipliser {v} med 100."
+      ],
+      "expl": "{v}×100={ans}, så {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "Hvor mange g er {v} kg? (g)",
+      "hints": [
+        "1 kg er 1000 g.",
+        "Multipliser {v} med 1000."
+      ],
+      "expl": "{v}×1000={ans}, så {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Hvor mange minutter er {v} timer? (min)",
+      "hints": [
+        "1 time er 60 minutter.",
+        "Multipliser {v} med 60."
+      ],
+      "expl": "{v}×60={ans}, så {ans} minutter."
+    },
+    "discount": {
+      "prompt": "En vare koster {p} won og selges med {d}% rabatt. Hva er salgsprisen? (won)",
+      "hints": [
+        "Rabatten er pris × {d}%.",
+        "Trekk rabatten fra prisen."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, så {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "Ingrediensene A og B blandes i forholdet {a}:{b} til til sammen {t} g. Hvor mange g A trengs? (g)",
+      "hints": [
+        "Helheten er {a}+{b}={s} deler.",
+        "A er $\\frac{a}{s}$ av helheten."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, så {ans} g."
+    },
+    "tiles": {
+      "prompt": "En vegg er {w} m bred og {h} m høy. Hvor mange fliser på 1 m × 1 m dekker den? (fliser)",
+      "hints": [
+        "Finn arealet av veggen.",
+        "En flis har et areal på 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, så {ans} fliser."
+    },
+    "outfit": {
+      "prompt": "Det er {a} skjorter og {b} bukser. Hvor mange ulike antrekk med én skjorte og én bukse finnes det?",
+      "hints": [
+        "For hver skjorte er det {b} valg av bukse.",
+        "Bruk produktregelen."
+      ],
+      "expl": "{a}×{b}={ans}, så {ans} antrekk."
+    },
+    "goldenRatio": {
+      "prompt": "Det gylne snitt oppfyller $a:b=(a+b):a$. Når b=10, omtrent hvor stor er a? (to desimaler)",
+      "hints": [
+        "Det gylne snitt er omtrent 1,618.",
+        "a er omtrent 1,618 ganger b."
+      ],
+      "expl": "a ≈ 10×1,618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Tonehøyden bestemmes av frekvensen. Hva er frekvensen i Hz til tonen én oktav over 440 Hz? (Hz)",
+      "hints": [
+        "En tone én oktav høyere har dobbelt så høy frekvens.",
+        "Multipliser 440 med 2."
+      ],
+      "expl": "440×2={ans}, så {ans} Hz."
+    },
+    "braille": {
+      "prompt": "En blindeskriftcelle har 6 punkter, hvert hevet eller flatt. Hvis man ikke teller mønsteret uten hevede punkter, hvor mange mønstre finnes det?",
+      "hints": [
+        "Hvert punkt har 2 muligheter.",
+        "Med produktregelen $2^6$, trekk deretter fra 1."
+      ],
+      "expl": "$2^6-1={ans}$, så {ans} mønstre."
+    },
+    "voteMajority": {
+      "prompt": "{n} personer stemmer. Hvor mange stemmer må en kandidat minst ha for å få flertall? (stemmer)",
+      "hints": [
+        "Flertall er mer enn halvparten av alle stemmene.",
+        "Finn det minste hele tallet over halvparten av {n}."
+      ],
+      "expl": "Halvparten av {n} er {half}; det minste hele tallet over det er {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Over 5 dager var konsentrasjonene av fint støv {list} (µg/m³). Hva er gjennomsnittskonsentrasjonen?",
+      "hints": [
+        "Gjennomsnittet er (summen) ÷ (antall dager).",
+        "Legg først sammen de 5 verdiene."
+      ],
+      "expl": "({sum})÷5={ans}, så gjennomsnittet er {ans}."
+    },
+    "percentChange": {
+      "prompt": "En verdi endret seg fra {a} til {b}. Hvor mange prosent økte den? (%)",
+      "hints": [
+        "Prosentvis økning = (økningen) ÷ (startverdien) × 100.",
+        "Økningen er {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, så {ans}%."
+    },
+    "stdev": {
+      "prompt": "Hva er standardavviket til dataene {list}? (populasjonens standardavvik)",
+      "hints": [
+        "Finn først gjennomsnittet.",
+        "Kvadratroten av gjennomsnittet av de kvadrerte avvikene (variansen) er standardavviket."
+      ],
+      "expl": "Gjennomsnittet er {mean} og variansen er {var}, så standardavviket er {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Populasjonens standardavvik er {s}, og utvalgsstørrelsen er {n}. Hva er 95%-feilmarginen $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (to desimaler)",
+      "hints": [
+        "Finn først $\\sqrt{ n }$.",
+        "Divider σ med den og multipliser med 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Utvalgsgjennomsnittet er {xbar}, nullhypotesens gjennomsnitt er {mu}, σ={s} og n={n}. Hva er testobservatoren $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$?",
+      "hints": [
+        "Finn først nevneren $σ/\\sqrt{ n }$.",
+        "Trekk nullhypotesens gjennomsnitt fra utvalgsgjennomsnittet og divider."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "I en tosidig test på 5%-nivå er den kritiske verdien 1,96. Testobservatoren er z={z}. Hva er konklusjonen?",
+      "hints": [
+        "Hvis $|z|$ er større enn 1,96, forkastes nullhypotesen.",
+        "Sammenlign tallverdien av z med 1,96."
+      ],
+      "expl": "|z|={az}, så: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Se på hvordan utvalget velges.",
+        "Velg den som passer: tilfeldig, stratifisert, klynge- eller systematisk."
+      ],
+      "expl": "Denne metoden er {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Tenk på hvor dataene i undersøkelsen kommer fra.",
+        "Velg litteraturstudie, casestudie, eksperiment eller utvikling."
+      ],
+      "expl": "Denne forskningsmetoden er {name}."
+    },
+    "researchStep": {
+      "prompt": "Hva skal gjøres rett etter at man har valgt tema for undersøkelsen?",
+      "hints": [
+        "En undersøkelse går: planlegg → gjennomfør → presenter → reflekter.",
+        "Etter temaet bestemmer man hvordan det skal undersøkes."
+      ],
+      "expl": "Etter valg av tema: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Forskningsetikk bygger på ærlighet og kildehenvisning.",
+        "Tenk på hvordan andres arbeid og resultater skal behandles."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "1. kvadrant",
+    "q2": "2. kvadrant",
+    "q3": "3. kvadrant",
+    "q4": "4. kvadrant",
+    "p0": "0 (det kan ikke skje)",
+    "phalf": "1/2 (like sannsynlig)",
+    "p1": "1 (det er sikkert)",
+    "random": "enkelt tilfeldig utvalg",
+    "strat": "stratifisert utvalg",
+    "cluster": "klyngeutvalg",
+    "system": "systematisk utvalg",
+    "reject": "Forkast nullhypotesen",
+    "keep": "Ikke forkast nullhypotesen",
+    "literature": "litteraturstudie",
+    "casestudy": "casestudie",
+    "experiment": "matematisk eksperiment",
+    "develop": "utviklingsforskning",
+    "plan": "Lag en forskningsplan",
+    "carry": "Gjennomfør undersøkelsen",
+    "present": "Presenter resultatene",
+    "reflect": "Reflekter over prosessen",
+    "yesPrime": "Ja, det er et primtall",
+    "noPrime": "Nei, det er ikke et primtall",
+    "yesFinite": "Ja, det er et endelig desimaltall",
+    "noFinite": "Nei, det er et periodisk desimaltall",
+    "yesOk": "Sant",
+    "noOk": "Usant"
+  },
+  "text": {
+    "ev_coin": "Hva er sannsynligheten for å få mynt når man kaster en mynt én gang?",
+    "ev_sun": "Hva er sannsynligheten for at sola står opp i øst i morgen?",
+    "ev_die": "Hva er sannsynligheten for å få en 7-er med én vanlig sekssidig terning?",
+    "sm_system": "Hver 10. elev på skolens liste ble valgt til en undersøkelse. Hvilken utvalgsmetode er dette?",
+    "sm_random": "Tretti elever ble valgt fra skolens liste med tilfeldige tall. Hvilken utvalgsmetode er dette?",
+    "sm_strat": "Det ble valgt elever fra hvert årstrinn i forhold til antall elever på årstrinnet. Hvilken utvalgsmetode er dette?",
+    "sm_cluster": "Først ble noen klasser valgt, og alle elevene i de valgte klassene ble spurt. Hvilken utvalgsmetode er dette?",
+    "rm_lit": "Å lese artikler og bøker fra biblioteket og internett og sammenfatte dem er hvilken forskningsmetode?",
+    "rm_case": "Å samle inn og sammenligne virkelige eksempler fra flere skoler er hvilken forskningsmetode?",
+    "rm_exp": "Å kaste terninger selv og notere resultatene for å finne et mønster er hvilken forskningsmetode?",
+    "rm_dev": "Å lage et nytt verktøy for å lære matematikk og teste hvor godt det virker er hvilken forskningsmetode?",
+    "et_cite": "Å kopiere en annen persons tekst uten å si hvor den kommer fra, er i strid med forskningsetikken.",
+    "et_cite_r": "Å bruke noen andres arbeid uten kilde er plagiat, så påstanden er sann.",
+    "et_fake": "Hvis resultatene avviker fra hypotesen, er det greit å endre tallene slik at de stemmer.",
+    "et_fake_r": "Å endre resultater er forfalskning og bryter forskningsetikken, så påstanden er usann."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Sortere og vise data i tabeller og diagrammer",
+      "concept": "Sorter ting etter en regel og tell dem; en **tabell** eller et **diagram** gjør det lett å sammenligne med et blikk.",
+      "example": "A 3, B 5, C 2 → 10 til sammen"
+    },
+    "E4dat1": {
+      "title": "Lese linjediagrammer",
+      "concept": "Et **linjediagram** viser hvordan en verdi endrer seg over tid med punkter og linjer. Opp betyr økning, ned betyr nedgang.",
+      "example": "12 på dag 1 → 20 på dag 3: opp med 8"
+    },
+    "E5dat1": {
+      "title": "Finne gjennomsnittet",
+      "concept": "**Gjennomsnittet** er summen av dataene delt på antallet.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Sannsynlighet",
+      "concept": "**Sannsynligheten** for en hendelse er et tall fra 0 (umulig) til 1 (sikkert): sannsynlighet = (gunstige utfall) ÷ (alle utfall).",
+      "example": "3 A-kuler, 2 B-kuler → sannsynligheten for A er $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Stolpediagrammer med 100% og sektordiagrammer",
+      "concept": "**Stolpediagrammer med 100%** og **sektordiagrammer** ser på helheten som 100% og viser hver dels andel. Del = helhet × andel.",
+      "example": "25% av 200 personer → 50 personer"
+    },
+    "M1neg1": {
+      "title": "Hele tall og rasjonale tall",
+      "concept": "Like fortegn: legg sammen tallverdiene. Ulike fortegn: trekk dem fra hverandre og behold fortegnet til den største. Ved × og ÷ er resultatet + hvis fortegnene er like og − hvis ikke.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Primtallsfaktorisering, SFF og MFM",
+      "concept": "Å skrive et tall som et produkt av primtall er **primtallsfaktorisering**. Den største felles divisoren er **største felles faktor**, det minste felles multiplumet er **minste felles multiplum**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Koordinatsystemet",
+      "concept": "Et punkt skrives (x, y). Fortegnene avgjør kvadrant 1–4, og en speiling i x-aksen snur fortegnet til y.",
+      "example": "(−2, 5) ligger i 2. kvadrant"
+    },
+    "M1prp1": {
+      "title": "Proporsjonalitet og omvendt proporsjonalitet",
+      "concept": "**Proporsjonalitet** er y=ax og **omvendt proporsjonalitet** er $y=\\frac{a}{x}$. Ved proporsjonalitet er y÷x konstant; ved omvendt proporsjonalitet er x×y konstant.",
+      "example": "y=6 ved x=2 (proporsjonal): y=3x"
+    },
+    "M1sta1": {
+      "title": "Sentralmål og relativ frekvens",
+      "concept": "**Medianen** er den midterste verdien i rekkefølge, **typetallet** den hyppigste verdien. **Relativ frekvens** = frekvens ÷ total.",
+      "example": "Medianen av 1, 3, 5, 7, 9 er 5"
+    },
+    "M2rec1": {
+      "title": "Periodiske desimaltall",
+      "concept": "Et desimaltall der sifrene gjentar seg i det uendelige, er et **periodisk desimaltall**; den gjentatte delen er **perioden**. En forkortet brøk er endelig bare hvis nevneren kun har faktorene 2 og 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Lineære funksjoner og lineære likninger",
+      "concept": "I y=ax+b er a stigningstallet og b skjæringspunktet med y-aksen. Skjæringspunktet mellom to grafer er løsningen av de to likningene sammen.",
+      "example": "y=2x−6 har skjæring med x-aksen i 3"
+    },
+    "el.econ1": {
+      "title": "Rente, valutakurser og avgift",
+      "concept": "Enkel rente = kapital × rentesats × år; sluttbeløp med rentes rente = kapital × (1 + rentesats)^år. En valutakurs er verdien av 1 enhet av en valuta; avgift er pris × en prosent.",
+      "example": "10000 won, 10% rentes rente i 2 år → 12100 won"
+    },
+    "el.econ2": {
+      "title": "Etterspørsel, tilbud og optimering",
+      "concept": "Likevekt er der etterspørsels- og tilbudskurvene skjærer hverandre. Maksimal inntekt R=pq og elastisitet kommer fra funksjoner og deriverte.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Tekst- og bildedata",
+      "concept": "Et dokument blir til en vektor av ordantall og et bilde til en matrise av pikselverdier. Jo større skalarprodukt, desto mer like er to dokumenter.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Prediksjon og optimering",
+      "concept": "Prediksjoner blir bedre med stigningstallet til en trendlinje, gjennomsnittet av de kvadrerte feilene (tapet) og gradientnedstigning $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Enhetsomregning og forhold",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 time = 60 minutter. Salgspris = pris × (1 − rabatt); å blande i forholdet a:b gir A andelen $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Areal, telling og vekst",
+      "concept": "Arealet gir nødvendig materiale, produktregelen antall par, og (økning) ÷ (startverdi) × 100 vekstraten.",
+      "example": "4 skjorter, 3 bukser → 12 antrekk"
+    },
+    "el.cul1": {
+      "title": "Matematikk i kunst og hverdag",
+      "concept": "Det gylne snitt er omtrent 1,618; en tone én oktav høyere har dobbelt frekvens; 6 blindeskriftpunkter gir $2^6-1=63$ mønstre; flertall er mer enn halvparten.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Matematikk i samfunnet og miljøet",
+      "concept": "Gjennomsnitt og vekstrater gjør det mulig å analysere sosiale og miljømessige problemer matematisk. Vekstrate = (økning) ÷ (startverdi) × 100.",
+      "example": "40 til 50 → opp med 25%"
+    },
+    "el.sta1": {
+      "title": "Statistiske spørsmål og utvalg",
+      "concept": "Standardavviket er kvadratroten av gjennomsnittet av de kvadrerte avvikene (variansen). Utvalg trekkes ved tilfeldig, stratifisert, klynge- eller systematisk utvalg.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 har standardavvik 2"
+    },
+    "el.sta2": {
+      "title": "Estimering og hypotesetester",
+      "concept": "95%-feilmarginen er $1.96\\times\\frac{σ}{\\sqrt{n}}$. Hvis $|z|$ av $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ er over 1,96, forkastes nullhypotesen på 5%-nivå.",
+      "example": "σ=10, n=100 → margin 1,96"
+    },
+    "el.res1": {
+      "title": "Forskningsmetoder",
+      "concept": "Et matematisk forskningsprosjekt kan bruke litteraturstudie, casestudier, matematiske eksperimenter eller utviklingsforskning.",
+      "example": "Å kaste terninger for å finne et mønster → eksperiment"
+    },
+    "el.res2": {
+      "title": "Forskningstrinn og etikk",
+      "concept": "En undersøkelse går tema → plan → gjennomføring → presentasjon → refleksjon. Å vise til kilder og aldri endre resultater er forskningsetikk.",
+      "example": "Etter temaet kommer forskningsplanen"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Økonomisk matematikk",
+      "world": "Økonomibyen",
+      "tagline": "Lær matematikken bak penger og markeder",
+      "unit": "Tall og økonomi, funksjoner og økonomi"
+    },
+    "ai": {
+      "title": "Matematikk for KI",
+      "world": "KI-laboratoriet",
+      "tagline": "Møt matematikken i data og optimering",
+      "unit": "Databehandling, prediksjon og optimering"
+    },
+    "job": {
+      "title": "Matematikk i arbeidslivet",
+      "world": "Verkstedbyen",
+      "tagline": "Øv på matematikken som brukes på jobb",
+      "unit": "Tall og enheter, forhold, areal og telling"
+    },
+    "cul": {
+      "title": "Matematikk og kultur",
+      "world": "Kulturtorget",
+      "tagline": "Finn matematikk i kunst og hverdag",
+      "unit": "Kunst og liv, samfunn og miljø"
+    },
+    "sta": {
+      "title": "Praktisk statistikk",
+      "world": "Statistikklaboratoriet",
+      "tagline": "Bygg evnen til å vurdere ut fra data",
+      "unit": "Data og utvalg, estimering og testing"
+    },
+    "res": {
+      "title": "Matematiske forskningsprosjekter",
+      "world": "Forskningsverkstedet",
+      "tagline": "Lær forskningens metoder og etikk",
+      "unit": "Metoder, framgangsmåte og etikk"
+    }
+  }
+}

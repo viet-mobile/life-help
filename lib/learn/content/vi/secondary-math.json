@@ -34,7 +34,21 @@
   "m.h2.geo1": "Tam giác và hàm số lượng giác",
   "m.h2.geo2": "Radian và hình quạt",
   "m.h3.geo1": "Các đường conic",
-  "m.h3.geo2": "Vectơ trong mặt phẳng"
+  "m.h3.geo2": "Vectơ trong mặt phẳng",
+  "m.m2.rec1": "Số thập phân tuần hoàn",
+  "m.m2.lfn1": "Hàm số bậc nhất và phương trình bậc nhất",
+  "m.el.econ1": "Lãi suất, tỉ giá và thuế",
+  "m.el.econ2": "Cầu, cung và tối ưu hóa",
+  "m.el.ai1": "Dữ liệu văn bản và hình ảnh",
+  "m.el.ai2": "Dự đoán và tối ưu hóa",
+  "m.el.job1": "Đổi đơn vị và tỉ lệ",
+  "m.el.job2": "Diện tích, đếm và tăng trưởng",
+  "m.el.cul1": "Toán học trong nghệ thuật và đời sống",
+  "m.el.cul2": "Toán học trong xã hội và môi trường",
+  "m.el.sta1": "Câu hỏi thống kê và mẫu",
+  "m.el.sta2": "Ước lượng và kiểm định giả thuyết",
+  "m.el.res1": "Phương pháp nghiên cứu",
+  "m.el.res2": "Các bước nghiên cứu và đạo đức"
  },
  "courses": {
   "math-m2-functions-probability": {
@@ -71,6 +85,48 @@
     "name": "Đồng bằng tích phân và biển thống kê",
     "tagline": "Đo diện tích bằng tích phân và đọc sự bất định bằng phân phối xác suất."
    }
+  },
+  "math-el-econ": {
+   "title": "Toán kinh tế",
+   "world": {
+    "name": "Thị trấn Kinh tế",
+    "tagline": "Học toán về tiền bạc và thị trường"
+   }
+  },
+  "math-el-ai": {
+   "title": "Toán cho AI",
+   "world": {
+    "name": "Phòng thí nghiệm AI",
+    "tagline": "Khám phá toán học bên trong dữ liệu và tối ưu hóa"
+   }
+  },
+  "math-el-job": {
+   "title": "Toán nơi làm việc",
+   "world": {
+    "name": "Thị trấn Xưởng",
+    "tagline": "Luyện tập toán học dùng trong công việc"
+   }
+  },
+  "math-el-cul": {
+   "title": "Toán học và văn hóa",
+   "world": {
+    "name": "Quảng trường Văn hóa",
+    "tagline": "Tìm toán học trong nghệ thuật và đời sống"
+   }
+  },
+  "math-el-sta": {
+   "title": "Thống kê thực hành",
+   "world": {
+    "name": "Phòng thí nghiệm Thống kê",
+    "tagline": "Rèn kỹ năng đánh giá từ dữ liệu"
+   }
+  },
+  "math-el-res": {
+   "title": "Dự án nghiên cứu toán học",
+   "world": {
+    "name": "Xưởng Nghiên cứu",
+    "tagline": "Học phương pháp và đạo đức của nghiên cứu"
+   }
   }
  },
  "units": {
@@ -78,7 +134,13 @@
   "math-m3-unit": "Toán lớp 9",
   "math-h1-unit": "Toán lớp 10",
   "math-h2-unit": "Toán lớp 11",
-  "math-h3-unit": "Toán lớp 12"
+  "math-h3-unit": "Toán lớp 12",
+  "math-el-econ-u1": "Số và kinh tế, hàm số và kinh tế",
+  "math-el-ai-u1": "Xử lý dữ liệu, dự đoán và tối ưu hóa",
+  "math-el-job-u1": "Số và đơn vị, tỉ lệ, diện tích và đếm",
+  "math-el-cul-u1": "Nghệ thuật và đời sống, xã hội và môi trường",
+  "math-el-sta-u1": "Dữ liệu và mẫu, ước lượng và kiểm định",
+  "math-el-res-u1": "Phương pháp, quy trình và đạo đức"
  },
  "lessons": {
   "math-m2-l1": {
@@ -255,6 +317,76 @@
    "title": "Vectơ trong mặt phẳng",
    "concept": "Độ dài của $(x,y)$ là $\\sqrt{x^2+y^2}$; tích vô hướng là $x_1x_2+y_1y_2$, và hai vectơ vuông góc có tích vô hướng bằng 0.",
    "example": "Độ dài của $(3,4)$: 5"
+  },
+  "math-m2-rec1": {
+   "title": "Số thập phân tuần hoàn",
+   "concept": "Số thập phân có các chữ số lặp lại mãi là **số thập phân tuần hoàn**; phần lặp lại là **chu kỳ** của nó. Phân số tối giản chỉ là số thập phân hữu hạn khi mẫu số chỉ có các thừa số 2 và 5.",
+   "example": "$\\frac{1}{3}=0.\\dot{3}$"
+  },
+  "math-m2-lfn1": {
+   "title": "Hàm số bậc nhất và phương trình bậc nhất",
+   "concept": "Trong y=ax+b, a là hệ số góc và b là tung độ gốc. Giao điểm của hai đồ thị là nghiệm của hệ hai phương trình.",
+   "example": "y=2x−6 cắt trục x tại 3"
+  },
+  "math-el-econ1": {
+   "title": "Lãi suất, tỉ giá và thuế",
+   "concept": "Lãi đơn = tiền gốc × lãi suất × số năm; số tiền cả gốc lẫn lãi kép = tiền gốc × (1 + lãi suất)^số năm. Tỉ giá là giá trị của 1 đơn vị tiền tệ; thuế là giá × một tỉ lệ phần trăm.",
+   "example": "10000 won, lãi kép 10% trong 2 năm → 12100 won"
+  },
+  "math-el-econ2": {
+   "title": "Cầu, cung và tối ưu hóa",
+   "concept": "Điểm cân bằng là nơi đường cầu và đường cung cắt nhau. Doanh thu cực đại R=pq và độ co giãn được tìm từ hàm số và đạo hàm.",
+   "example": "100−2q = 10+q → q = 30"
+  },
+  "math-el-ai1": {
+   "title": "Dữ liệu văn bản và hình ảnh",
+   "concept": "Một văn bản trở thành vectơ số lần xuất hiện của các từ, và một ảnh trở thành ma trận các giá trị điểm ảnh. Tích vô hướng càng lớn thì hai văn bản càng giống nhau.",
+   "example": "(2,0,1)·(1,3,2) = 4"
+  },
+  "math-el-ai2": {
+   "title": "Dự đoán và tối ưu hóa",
+   "concept": "Dự đoán tốt hơn nhờ hệ số góc của đường xu hướng, sai số bình phương trung bình (hàm mất mát) và giảm gradient $x_{new}=x-\\eta f'(x)$.",
+   "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+  },
+  "math-el-job1": {
+   "title": "Đổi đơn vị và tỉ lệ",
+   "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 giờ = 60 phút. Giá bán = giá × (1 − giảm giá); trộn theo tỉ lệ a:b thì A chiếm phần $\\frac{a}{a+b}$.",
+   "example": "3,5 m = 350 cm"
+  },
+  "math-el-job2": {
+   "title": "Diện tích, đếm và tăng trưởng",
+   "concept": "Diện tích cho biết lượng vật liệu cần dùng, quy tắc nhân cho biết số cặp, và (lượng tăng) ÷ (giá trị ban đầu) × 100 cho biết tốc độ tăng trưởng.",
+   "example": "4 áo, 3 quần → 12 bộ trang phục"
+  },
+  "math-el-cul1": {
+   "title": "Toán học trong nghệ thuật và đời sống",
+   "concept": "Tỉ lệ vàng xấp xỉ 1,618; nốt cao hơn một quãng tám có tần số gấp đôi; 6 chấm Braille cho $2^6-1=63$ kiểu; đa số là hơn một nửa.",
+   "example": "440 Hz → 880 Hz"
+  },
+  "math-el-cul2": {
+   "title": "Toán học trong xã hội và môi trường",
+   "concept": "Giá trị trung bình và tốc độ tăng trưởng giúp phân tích các vấn đề xã hội và môi trường bằng toán học. Tốc độ tăng trưởng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+   "example": "40 lên 50 → tăng 25%"
+  },
+  "math-el-sta1": {
+   "title": "Câu hỏi thống kê và mẫu",
+   "concept": "Độ lệch chuẩn là căn bậc hai của trung bình các bình phương độ lệch (phương sai). Mẫu được chọn bằng phương pháp ngẫu nhiên, phân tầng, cụm hoặc hệ thống.",
+   "example": "2, 4, 4, 4, 5, 5, 7, 9 có độ lệch chuẩn là 2"
+  },
+  "math-el-sta2": {
+   "title": "Ước lượng và kiểm định giả thuyết",
+   "concept": "Sai số biên 95% là $1.96\\times\\frac{σ}{\\sqrt{n} }$. Nếu $|z|$ của $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n} }$ lớn hơn 1,96 thì bác bỏ giả thuyết không ở mức 5%.",
+   "example": "σ=10, n=100 → sai số biên 1,96"
+  },
+  "math-el-res1": {
+   "title": "Phương pháp nghiên cứu",
+   "concept": "Một dự án nghiên cứu toán học có thể dùng nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm toán học hoặc nghiên cứu phát triển.",
+   "example": "Gieo xúc xắc để tìm quy luật → thực nghiệm"
+  },
+  "math-el-res2": {
+   "title": "Các bước nghiên cứu và đạo đức",
+   "concept": "Nghiên cứu đi theo trình tự đề tài → kế hoạch → thực hiện → trình bày → nhìn lại. Trích dẫn nguồn và không bao giờ sửa kết quả là đạo đức nghiên cứu.",
+   "example": "Sau đề tài là kế hoạch nghiên cứu"
   }
  },
  "questions": {
@@ -3332,6 +3464,876 @@
     "Giải $x_1x_2+ky_2=0$."
    ],
    "explanation": "$4\\times1+k\\times(2)=0$, nên $k=-2$."
+  },
+  "m-m2-rec1-1": {
+   "prompt": "Khi viết $\\frac{1}{3}$ dưới dạng số thập phân, chu kỳ có bao nhiêu chữ số?",
+   "hints": [
+    "Chia 1 cho 3.",
+    "Chu kỳ là phần lặp đi lặp lại."
+   ],
+   "explanation": "$\\frac{1}{3}=0.\\dot{3}$, nên chu kỳ có 1 chữ số."
+  },
+  "m-m2-rec1-2": {
+   "prompt": "Khi viết $\\frac{1}{7}$ dưới dạng số thập phân, chu kỳ có bao nhiêu chữ số?",
+   "hints": [
+    "Chia 1 cho 7.",
+    "Chu kỳ là phần lặp đi lặp lại."
+   ],
+   "explanation": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$, nên chu kỳ có 6 chữ số."
+  },
+  "m-m2-rec1-3": {
+   "prompt": "Số thập phân tuần hoàn $0.\\dot3\\dot5$ bằng $\\frac{x}{99}$. x bằng bao nhiêu?",
+   "hints": [
+    "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+    "Viết số có hai chữ số ab làm tử số."
+   ],
+   "explanation": "$0.\\dot{3}\\dot{5}=\\frac{ {x} }{99}$ cho x=35."
+  },
+  "m-m2-rec1-4": {
+   "prompt": "$\\frac{3}{8}$ có phải là số thập phân hữu hạn không?",
+   "hints": [
+    "Rút gọn phân số, rồi phân tích mẫu số ra thừa số nguyên tố.",
+    "Nếu mẫu chỉ có các thừa số nguyên tố 2 và 5 thì là số thập phân hữu hạn."
+   ],
+   "explanation": "Mẫu số 8 có các thừa số nguyên tố 2, nên Có, đó là số thập phân hữu hạn."
+  },
+  "m-m2-rec1-c": {
+   "prompt": "Khi viết $\\frac{1}{13}$ dưới dạng số thập phân, chu kỳ có bao nhiêu chữ số?",
+   "hints": [
+    "Chia 1 cho 13.",
+    "Chu kỳ là phần lặp đi lặp lại."
+   ],
+   "explanation": "$\\frac{1}{13}=0.\\dot{0}7692\\dot{3}$, nên chu kỳ có 6 chữ số."
+  },
+  "m-m2-rec1-v1": {
+   "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Chữ số ở hàng thập phân thứ 20 là gì?",
+   "hints": [
+    "Chu kỳ 142857 có 6 chữ số.",
+    "Dùng số dư của 20 ÷ 6 để tìm vị trí."
+   ],
+   "explanation": "Số dư của 20 ÷ 6 là 2, nên đó là chữ số thứ 2: 4."
+  },
+  "m-m2-rec1-v2": {
+   "prompt": "$\\frac{5}{12}$ có phải là số thập phân hữu hạn không?",
+   "hints": [
+    "Rút gọn phân số, rồi phân tích mẫu số ra thừa số nguyên tố.",
+    "Nếu mẫu chỉ có các thừa số nguyên tố 2 và 5 thì là số thập phân hữu hạn."
+   ],
+   "explanation": "Mẫu số 12 có các thừa số nguyên tố 2, 3, nên Không, đó là số thập phân tuần hoàn."
+  },
+  "m-m2-lfn1-1": {
+   "prompt": "Hệ số góc của hàm số bậc nhất $y=2x+-3$ là bao nhiêu?",
+   "hints": [
+    "Trong $y=ax+b$ hệ số góc là a.",
+    "Đọc hệ số của x."
+   ],
+   "explanation": "Hệ số góc là 2."
+  },
+  "m-m2-lfn1-2": {
+   "prompt": "Tung độ gốc của $y=2x+-3$ là bao nhiêu?",
+   "hints": [
+    "Tung độ gốc là giá trị y khi x=0.",
+    "Trong $y=ax+b$ nó là b."
+   ],
+   "explanation": "Tung độ gốc là -3."
+  },
+  "m-m2-lfn1-3": {
+   "prompt": "Hoành độ giao điểm với trục x của $y=2x+-6$ là bao nhiêu?",
+   "hints": [
+    "Giao điểm với trục x là điểm có y=0.",
+    "Giải $0=ax+b$."
+   ],
+   "explanation": "$0=2x+-6$ cho x=3."
+  },
+  "m-m2-lfn1-4": {
+   "prompt": "Đồ thị của $y=1x+1$ và $y=-1x+5$ cắt nhau tại P. Hoành độ của P là bao nhiêu?",
+   "hints": [
+    "Tại giao điểm hai giá trị y bằng nhau.",
+    "Giải $a_1x+b_1=a_2x+b_2$."
+   ],
+   "explanation": "$1x+1=-1x+5$ cho x=2."
+  },
+  "m-m2-lfn1-c": {
+   "prompt": "Đồ thị của $y=2x+-1$ và $y=1x+2$ cắt nhau tại P. Hoành độ của P là bao nhiêu?",
+   "hints": [
+    "Tại giao điểm hai giá trị y bằng nhau.",
+    "Giải $a_1x+b_1=a_2x+b_2$."
+   ],
+   "explanation": "$2x+-1=1x+2$ cho x=3."
+  },
+  "m-m2-lfn1-v1": {
+   "prompt": "Với hàm số bậc nhất $f(x)=3x+-2$, $f(4)$ bằng bao nhiêu?",
+   "hints": [
+    "Thay 4 vào chỗ x.",
+    "Nhân rồi cộng."
+   ],
+   "explanation": "$f(4)=3\\times4+-2=10$."
+  },
+  "m-m2-lfn1-v2": {
+   "prompt": "Hoành độ giao điểm với trục x của $y=-2x+8$ là bao nhiêu?",
+   "hints": [
+    "Giao điểm với trục x là điểm có y=0.",
+    "Giải $0=ax+b$."
+   ],
+   "explanation": "$0=-2x+8$ cho x=4."
+  },
+  "m-el-econ1-1": {
+   "prompt": "Gửi 100000 won trong 3 năm với lãi suất đơn 5% mỗi năm. Tiền lãi là bao nhiêu? (won)",
+   "hints": [
+    "Lãi đơn = tiền gốc × lãi suất × số năm.",
+    "5% là 0.05."
+   ],
+   "explanation": "100000×0.05×3=15000, nên tiền lãi là 15000 won."
+  },
+  "m-el-econ1-2": {
+   "prompt": "Gửi 10000 won trong 2 năm với lãi kép 10% mỗi năm. Tổng số tiền nhận được là bao nhiêu? (won)",
+   "hints": [
+    "Với lãi kép, tiền lãi lại sinh ra lãi.",
+    "Nhân tiền gốc với (1 + lãi suất) 2 lần."
+   ],
+   "explanation": "10000×(1+0.1)^2=12100, nên tổng số tiền là 12100 won."
+  },
+  "m-el-econ1-3": {
+   "prompt": "1 đơn vị của một ngoại tệ có giá trị 1300 won. 50 đơn vị của ngoại tệ đó bằng bao nhiêu won? (won)",
+   "hints": [
+    "Tỉ giá là giá trị của 1 đơn vị ngoại tệ tính bằng won.",
+    "Nhân số đơn vị với tỉ giá."
+   ],
+   "explanation": "50×1300=65000, nên là 65000 won."
+  },
+  "m-el-econ1-4": {
+   "prompt": "Một món hàng giá 20000 won và phải cộng thêm thuế giá trị gia tăng 10%. Phải trả bao nhiêu won? (won)",
+   "hints": [
+    "Tiền thuế bằng giá × 10%.",
+    "Cộng tiền thuế vào giá."
+   ],
+   "explanation": "20000+20000×0.1=22000, nên 22000 won."
+  },
+  "m-el-econ1-c": {
+   "prompt": "Gửi 50000 won trong 2 năm với lãi kép 4% mỗi năm. Tổng số tiền nhận được là bao nhiêu? (won)",
+   "hints": [
+    "Với lãi kép, tiền lãi lại sinh ra lãi.",
+    "Nhân tiền gốc với (1 + lãi suất) 2 lần."
+   ],
+   "explanation": "50000×(1+0.04)^2=54080, nên tổng số tiền là 54080 won."
+  },
+  "m-el-econ1-v1": {
+   "prompt": "Gửi 200000 won trong 2 năm với lãi suất đơn 2% mỗi năm. Tiền lãi là bao nhiêu? (won)",
+   "hints": [
+    "Lãi đơn = tiền gốc × lãi suất × số năm.",
+    "2% là 0.02."
+   ],
+   "explanation": "200000×0.02×2=8000, nên tiền lãi là 8000 won."
+  },
+  "m-el-econ1-v2": {
+   "prompt": "1 đơn vị của một ngoại tệ có giá trị 1400 won. 120 đơn vị của ngoại tệ đó bằng bao nhiêu won? (won)",
+   "hints": [
+    "Tỉ giá là giá trị của 1 đơn vị ngoại tệ tính bằng won.",
+    "Nhân số đơn vị với tỉ giá."
+   ],
+   "explanation": "120×1400=168000, nên là 168000 won."
+  },
+  "m-el-econ2-1": {
+   "prompt": "Đường cầu $p=100-2q$ và đường cung $p=10+1q$ cắt nhau tại lượng cân bằng q. q bằng bao nhiêu?",
+   "hints": [
+    "Tại điểm cân bằng, giá theo cầu bằng giá theo cung.",
+    "Giải $a-bq=c+dq$."
+   ],
+   "explanation": "$100-2q=10+1q$ cho q=30."
+  },
+  "m-el-econ2-2": {
+   "prompt": "Đường cầu $p=60-1q$ và đường cung $p=10+4q$ cắt nhau tại lượng cân bằng q. q bằng bao nhiêu?",
+   "hints": [
+    "Tại điểm cân bằng, giá theo cầu bằng giá theo cung.",
+    "Giải $a-bq=c+dq$."
+   ],
+   "explanation": "$60-1q=10+4q$ cho q=10."
+  },
+  "m-el-econ2-3": {
+   "prompt": "Hàm cầu là $p=100-2q$. Doanh thu $R=pq$ lớn nhất bằng bao nhiêu?",
+   "hints": [
+    "$R=(100-2q)q$ là một hàm bậc hai.",
+    "Nó lớn nhất tại đỉnh $q=\\frac{ a }{ 2b }$."
+   ],
+   "explanation": "Tại q=25 doanh thu lớn nhất: 1250."
+  },
+  "m-el-econ2-4": {
+   "prompt": "Cầu là $Q=100-2p$. Giá trị tuyệt đối của độ co giãn của cầu theo giá tại $p=25$ là bao nhiêu? (số thập phân)",
+   "hints": [
+    "Giá trị tuyệt đối của độ co giãn là $\\frac{bp}{Q}$.",
+    "Trước hết hãy tìm Q tại $p=25$."
+   ],
+   "explanation": "Q=50, nên $\\frac{2\\times25}{50}=1$."
+  },
+  "m-el-econ2-c": {
+   "prompt": "Đường cầu $p=80-3q$ và đường cung $p=20+2q$ cắt nhau tại lượng cân bằng q. q bằng bao nhiêu?",
+   "hints": [
+    "Tại điểm cân bằng, giá theo cầu bằng giá theo cung.",
+    "Giải $a-bq=c+dq$."
+   ],
+   "explanation": "$80-3q=20+2q$ cho q=12."
+  },
+  "m-el-econ2-v1": {
+   "prompt": "Hàm cầu là $p=60-3q$. Doanh thu $R=pq$ lớn nhất bằng bao nhiêu?",
+   "hints": [
+    "$R=(60-3q)q$ là một hàm bậc hai.",
+    "Nó lớn nhất tại đỉnh $q=\\frac{ a }{ 2b }$."
+   ],
+   "explanation": "Tại q=10 doanh thu lớn nhất: 300."
+  },
+  "m-el-econ2-v2": {
+   "prompt": "Cầu là $Q=90-3p$. Giá trị tuyệt đối của độ co giãn của cầu theo giá tại $p=10$ là bao nhiêu? (số thập phân)",
+   "hints": [
+    "Giá trị tuyệt đối của độ co giãn là $\\frac{bp}{Q}$.",
+    "Trước hết hãy tìm Q tại $p=10$."
+   ],
+   "explanation": "Q=60, nên $\\frac{3\\times10}{60}=0.5$."
+  },
+  "m-el-ai1-1": {
+   "prompt": "Chữ A xuất hiện bao nhiêu lần trong dãy từ A B A C A B?",
+   "hints": [
+    "Chỉ đánh dấu các chữ A khi đếm.",
+    "Số lần này là thành phần A của vectơ tần số."
+   ],
+   "explanation": "A xuất hiện 3 lần."
+  },
+  "m-el-ai1-2": {
+   "prompt": "Hai văn bản có vectơ tần số $\\vec{u}=(2, 0, 1)$ và $\\vec{v}=(1, 3, 2)$. Tích vô hướng $\\vec{u}\\cdot\\vec{v}$ bằng bao nhiêu?",
+   "hints": [
+    "Nhân các thành phần tương ứng rồi cộng lại.",
+    "Tích vô hướng càng lớn thì hai văn bản càng giống nhau."
+   ],
+   "explanation": "$2\\times1+0\\times3+1\\times2=4$."
+  },
+  "m-el-ai1-3": {
+   "prompt": "Một ảnh được lưu dưới dạng ma trận $\\begin{pmatrix}10&20\\\\30&40\\end{pmatrix}$. Tổng tất cả giá trị điểm ảnh là bao nhiêu?",
+   "hints": [
+    "Mỗi phần tử là độ sáng của một điểm ảnh.",
+    "Cộng cả bốn phần tử."
+   ],
+   "explanation": "10+20+30+40=100."
+  },
+  "m-el-ai1-4": {
+   "prompt": "Một điểm ảnh có giá trị 100. Mọi điểm ảnh được làm sáng thêm 30. Giá trị mới của nó là bao nhiêu?",
+   "hints": [
+    "Làm sáng là cộng cùng một số vào mọi phần tử của ma trận.",
+    "Cộng 30 vào 100."
+   ],
+   "explanation": "100+30=130."
+  },
+  "m-el-ai1-c": {
+   "prompt": "Hai văn bản có vectơ tần số $\\vec{u}=(3, 1, 2)$ và $\\vec{v}=(2, 4, 1)$. Tích vô hướng $\\vec{u}\\cdot\\vec{v}$ bằng bao nhiêu?",
+   "hints": [
+    "Nhân các thành phần tương ứng rồi cộng lại.",
+    "Tích vô hướng càng lớn thì hai văn bản càng giống nhau."
+   ],
+   "explanation": "$3\\times2+1\\times4+2\\times1=12$."
+  },
+  "m-el-ai1-v1": {
+   "prompt": "Chữ A xuất hiện bao nhiêu lần trong dãy từ C A A B A A?",
+   "hints": [
+    "Chỉ đánh dấu các chữ A khi đếm.",
+    "Số lần này là thành phần A của vectơ tần số."
+   ],
+   "explanation": "A xuất hiện 4 lần."
+  },
+  "m-el-ai1-v2": {
+   "prompt": "Một ảnh được lưu dưới dạng ma trận $\\begin{pmatrix}5&0\\\\255&255\\end{pmatrix}$. Tổng tất cả giá trị điểm ảnh là bao nhiêu?",
+   "hints": [
+    "Mỗi phần tử là độ sáng của một điểm ảnh.",
+    "Cộng cả bốn phần tử."
+   ],
+   "explanation": "5+0+255+255=515."
+  },
+  "m-el-ai2-1": {
+   "prompt": "Hệ số góc của đường xu hướng đi qua (1, 2) và (3, 8) là bao nhiêu?",
+   "hints": [
+    "Hệ số góc = độ thay đổi của y ÷ độ thay đổi của x.",
+    "Tính $\\frac{y_2-y_1}{x_2-x_1}$."
+   ],
+   "explanation": "$\\frac{8-2}{3-1}=3$."
+  },
+  "m-el-ai2-2": {
+   "prompt": "Các giá trị dự đoán là 2, 4, 6 và giá trị thực là 1, 5, 8. Sai số bình phương trung bình (trung bình của các sai số bình phương) là bao nhiêu?",
+   "hints": [
+    "Sai số là giá trị dự đoán − giá trị thực.",
+    "Bình phương từng sai số, rồi lấy trung bình."
+   ],
+   "explanation": "Các sai số bình phương là 1, 1, 4 và trung bình của chúng là 2."
+  },
+  "m-el-ai2-3": {
+   "prompt": "Với hàm mất mát $f(x)=x^2$, một bước giảm gradient từ x=4 với tốc độ học 0.1 cho giá trị x mới là bao nhiêu?",
+   "hints": [
+    "Giảm gradient: $x_{new}=x-\\eta f'(x)$.",
+    "$f'(x)=2x$."
+   ],
+   "explanation": "$f'(4)=8$, nên 4-0.1×8=3.2."
+  },
+  "m-el-ai2-4": {
+   "prompt": "Với hàm mất mát $f(x)=x^2$, một bước giảm gradient từ x=3 với tốc độ học 0.25 cho giá trị x mới là bao nhiêu?",
+   "hints": [
+    "Giảm gradient: $x_{new}=x-\\eta f'(x)$.",
+    "$f'(x)=2x$."
+   ],
+   "explanation": "$f'(3)=6$, nên 3-0.25×6=1.5."
+  },
+  "m-el-ai2-c": {
+   "prompt": "Các giá trị dự đoán là 3, 5 và giá trị thực là 1, 9. Sai số bình phương trung bình (trung bình của các sai số bình phương) là bao nhiêu?",
+   "hints": [
+    "Sai số là giá trị dự đoán − giá trị thực.",
+    "Bình phương từng sai số, rồi lấy trung bình."
+   ],
+   "explanation": "Các sai số bình phương là 4, 16 và trung bình của chúng là 10."
+  },
+  "m-el-ai2-v1": {
+   "prompt": "Hệ số góc của đường xu hướng đi qua (0, 1) và (4, 9) là bao nhiêu?",
+   "hints": [
+    "Hệ số góc = độ thay đổi của y ÷ độ thay đổi của x.",
+    "Tính $\\frac{y_2-y_1}{x_2-x_1}$."
+   ],
+   "explanation": "$\\frac{9-1}{4-0}=2$."
+  },
+  "m-el-ai2-v2": {
+   "prompt": "Với hàm mất mát $f(x)=x^2$, một bước giảm gradient từ x=10 với tốc độ học 0.1 cho giá trị x mới là bao nhiêu?",
+   "hints": [
+    "Giảm gradient: $x_{new}=x-\\eta f'(x)$.",
+    "$f'(x)=2x$."
+   ],
+   "explanation": "$f'(10)=20$, nên 10-0.1×20=8."
+  },
+  "m-el-job1-1": {
+   "prompt": "3.5 m bằng bao nhiêu cm? (cm)",
+   "hints": [
+    "1 m bằng 100 cm.",
+    "Nhân 3.5 với 100."
+   ],
+   "explanation": "3.5×100=350, nên 350 cm."
+  },
+  "m-el-job1-2": {
+   "prompt": "2.4 kg bằng bao nhiêu g? (g)",
+   "hints": [
+    "1 kg bằng 1000 g.",
+    "Nhân 2.4 với 1000."
+   ],
+   "explanation": "2.4×1000=2400, nên 2400 g."
+  },
+  "m-el-job1-3": {
+   "prompt": "1.5 giờ bằng bao nhiêu phút? (phút)",
+   "hints": [
+    "1 giờ bằng 60 phút.",
+    "Nhân 1.5 với 60."
+   ],
+   "explanation": "1.5×60=90, nên 90 phút."
+  },
+  "m-el-job1-4": {
+   "prompt": "Một món hàng giá 40000 won được bán giảm giá 15%. Giá bán là bao nhiêu? (won)",
+   "hints": [
+    "Tiền giảm bằng giá × 15%.",
+    "Lấy giá trừ đi tiền giảm."
+   ],
+   "explanation": "40000-40000×0.15=34000, nên 34000 won."
+  },
+  "m-el-job1-c": {
+   "prompt": "Nguyên liệu A và B được trộn theo tỉ lệ 3:2 để được tổng cộng 500 g. Cần bao nhiêu g A? (g)",
+   "hints": [
+    "Tổng thể gồm 3+2=5 phần.",
+    "A chiếm $\\frac35$ tổng thể."
+   ],
+   "explanation": "500×3÷5=300, nên 300 g."
+  },
+  "m-el-job1-v1": {
+   "prompt": "0.8 m bằng bao nhiêu cm? (cm)",
+   "hints": [
+    "1 m bằng 100 cm.",
+    "Nhân 0.8 với 100."
+   ],
+   "explanation": "0.8×100=80, nên 80 cm."
+  },
+  "m-el-job1-v2": {
+   "prompt": "Một món hàng giá 12000 won được bán giảm giá 25%. Giá bán là bao nhiêu? (won)",
+   "hints": [
+    "Tiền giảm bằng giá × 25%.",
+    "Lấy giá trừ đi tiền giảm."
+   ],
+   "explanation": "12000-12000×0.25=9000, nên 9000 won."
+  },
+  "m-el-job2-1": {
+   "prompt": "Một bức tường rộng 4 m và cao 3 m. Cần bao nhiêu viên gạch 1 m × 1 m để lát kín? (viên)",
+   "hints": [
+    "Tìm diện tích bức tường.",
+    "Mỗi viên gạch có diện tích 1 m²."
+   ],
+   "explanation": "4×3=12, nên 12 viên."
+  },
+  "m-el-job2-2": {
+   "prompt": "Một bức tường rộng 6 m và cao 3 m. Cần bao nhiêu viên gạch 1 m × 1 m để lát kín? (viên)",
+   "hints": [
+    "Tìm diện tích bức tường.",
+    "Mỗi viên gạch có diện tích 1 m²."
+   ],
+   "explanation": "6×3=18, nên 18 viên."
+  },
+  "m-el-job2-3": {
+   "prompt": "Có 4 áo sơ mi và 3 quần. Có bao nhiêu cách phối khác nhau gồm một áo và một quần?",
+   "hints": [
+    "Với mỗi áo có 3 cách chọn quần.",
+    "Dùng quy tắc nhân."
+   ],
+   "explanation": "4×3=12, nên có 12 cách."
+  },
+  "m-el-job2-4": {
+   "prompt": "Một giá trị thay đổi từ 50 đến 60. Nó tăng bao nhiêu phần trăm? (%)",
+   "hints": [
+    "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+    "Lượng tăng là 60-50."
+   ],
+   "explanation": "(60-50)÷50×100=20, nên 20%."
+  },
+  "m-el-job2-c": {
+   "prompt": "Có 5 áo sơ mi và 4 quần. Có bao nhiêu cách phối khác nhau gồm một áo và một quần?",
+   "hints": [
+    "Với mỗi áo có 4 cách chọn quần.",
+    "Dùng quy tắc nhân."
+   ],
+   "explanation": "5×4=20, nên có 20 cách."
+  },
+  "m-el-job2-v1": {
+   "prompt": "Một bức tường rộng 7 m và cao 2 m. Cần bao nhiêu viên gạch 1 m × 1 m để lát kín? (viên)",
+   "hints": [
+    "Tìm diện tích bức tường.",
+    "Mỗi viên gạch có diện tích 1 m²."
+   ],
+   "explanation": "7×2=14, nên 14 viên."
+  },
+  "m-el-job2-v2": {
+   "prompt": "Một giá trị thay đổi từ 80 đến 100. Nó tăng bao nhiêu phần trăm? (%)",
+   "hints": [
+    "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+    "Lượng tăng là 100-80."
+   ],
+   "explanation": "(100-80)÷80×100=25, nên 25%."
+  },
+  "m-el-cul1-1": {
+   "prompt": "Tỉ lệ vàng thỏa mãn $a:b=(a+b):a$. Khi b=10, a xấp xỉ bao nhiêu? (hai chữ số thập phân)",
+   "hints": [
+    "Tỉ lệ vàng xấp xỉ 1,618.",
+    "a xấp xỉ 1,618 lần b."
+   ],
+   "explanation": "a ≈ 10×1.618 = 16.18."
+  },
+  "m-el-cul1-2": {
+   "prompt": "Cao độ do tần số quyết định. Nốt cao hơn nốt 440 Hz một quãng tám có tần số bao nhiêu Hz? (Hz)",
+   "hints": [
+    "Nốt cao hơn một quãng tám có tần số gấp đôi.",
+    "Nhân 440 với 2."
+   ],
+   "explanation": "440×2=880, nên 880 Hz."
+  },
+  "m-el-cul1-3": {
+   "prompt": "Một ô chữ nổi Braille có 6 chấm, mỗi chấm nổi hoặc phẳng. Không tính kiểu không có chấm nổi nào, có bao nhiêu kiểu?",
+   "hints": [
+    "Mỗi chấm có 2 khả năng.",
+    "Theo quy tắc nhân là $2^6$, rồi trừ 1."
+   ],
+   "explanation": "$2^6-1=63$, nên có 63 kiểu."
+  },
+  "m-el-cul1-4": {
+   "prompt": "Có 100 người bỏ phiếu. Một ứng viên cần ít nhất bao nhiêu phiếu để đạt đa số? (phiếu)",
+   "hints": [
+    "Đa số là hơn một nửa tổng số phiếu.",
+    "Tìm số nguyên nhỏ nhất lớn hơn một nửa của 100."
+   ],
+   "explanation": "Một nửa của 100 là 50; số nguyên nhỏ nhất lớn hơn nó là 51."
+  },
+  "m-el-cul1-c": {
+   "prompt": "Có 75 người bỏ phiếu. Một ứng viên cần ít nhất bao nhiêu phiếu để đạt đa số? (phiếu)",
+   "hints": [
+    "Đa số là hơn một nửa tổng số phiếu.",
+    "Tìm số nguyên nhỏ nhất lớn hơn một nửa của 75."
+   ],
+   "explanation": "Một nửa của 75 là 37.5; số nguyên nhỏ nhất lớn hơn nó là 38."
+  },
+  "m-el-cul1-v1": {
+   "prompt": "Cao độ do tần số quyết định. Nốt cao hơn nốt 440 Hz một quãng tám có tần số bao nhiêu Hz? (Hz)",
+   "hints": [
+    "Nốt cao hơn một quãng tám có tần số gấp đôi.",
+    "Nhân 440 với 2."
+   ],
+   "explanation": "440×2=880, nên 880 Hz."
+  },
+  "m-el-cul1-v2": {
+   "prompt": "Có 200 người bỏ phiếu. Một ứng viên cần ít nhất bao nhiêu phiếu để đạt đa số? (phiếu)",
+   "hints": [
+    "Đa số là hơn một nửa tổng số phiếu.",
+    "Tìm số nguyên nhỏ nhất lớn hơn một nửa của 200."
+   ],
+   "explanation": "Một nửa của 200 là 100; số nguyên nhỏ nhất lớn hơn nó là 101."
+  },
+  "m-el-cul2-1": {
+   "prompt": "Trong 5 ngày, nồng độ bụi mịn lần lượt là 30, 45, 25, 60, 40 (µg/m³). Nồng độ trung bình là bao nhiêu?",
+   "hints": [
+    "Trung bình cộng = (tổng) ÷ (số ngày).",
+    "Trước hết hãy cộng 5 giá trị."
+   ],
+   "explanation": "(30+45+25+60+40)÷5=40, nên trung bình là 40."
+  },
+  "m-el-cul2-2": {
+   "prompt": "Một giá trị thay đổi từ 40 đến 50. Nó tăng bao nhiêu phần trăm? (%)",
+   "hints": [
+    "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+    "Lượng tăng là 50-40."
+   ],
+   "explanation": "(50-40)÷40×100=25, nên 25%."
+  },
+  "m-el-cul2-3": {
+   "prompt": "Trong 5 ngày, nồng độ bụi mịn lần lượt là 12, 18, 15, 20, 10 (µg/m³). Nồng độ trung bình là bao nhiêu?",
+   "hints": [
+    "Trung bình cộng = (tổng) ÷ (số ngày).",
+    "Trước hết hãy cộng 5 giá trị."
+   ],
+   "explanation": "(12+18+15+20+10)÷5=15, nên trung bình là 15."
+  },
+  "m-el-cul2-4": {
+   "prompt": "Một giá trị thay đổi từ 200 đến 250. Nó tăng bao nhiêu phần trăm? (%)",
+   "hints": [
+    "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+    "Lượng tăng là 250-200."
+   ],
+   "explanation": "(250-200)÷200×100=25, nên 25%."
+  },
+  "m-el-cul2-c": {
+   "prompt": "Một giá trị thay đổi từ 25 đến 40. Nó tăng bao nhiêu phần trăm? (%)",
+   "hints": [
+    "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+    "Lượng tăng là 40-25."
+   ],
+   "explanation": "(40-25)÷25×100=60, nên 60%."
+  },
+  "m-el-cul2-v1": {
+   "prompt": "Trong 5 ngày, nồng độ bụi mịn lần lượt là 50, 70, 60, 80, 90 (µg/m³). Nồng độ trung bình là bao nhiêu?",
+   "hints": [
+    "Trung bình cộng = (tổng) ÷ (số ngày).",
+    "Trước hết hãy cộng 5 giá trị."
+   ],
+   "explanation": "(50+70+60+80+90)÷5=70, nên trung bình là 70."
+  },
+  "m-el-cul2-v2": {
+   "prompt": "Một giá trị thay đổi từ 60 đến 69. Nó tăng bao nhiêu phần trăm? (%)",
+   "hints": [
+    "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+    "Lượng tăng là 69-60."
+   ],
+   "explanation": "(69-60)÷60×100=15, nên 15%."
+  },
+  "m-el-sta1-1": {
+   "prompt": "Độ lệch chuẩn của dãy số liệu 2, 4, 4, 4, 5, 5, 7, 9 là bao nhiêu? (độ lệch chuẩn tổng thể)",
+   "hints": [
+    "Trước hết hãy tìm trung bình cộng.",
+    "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+   ],
+   "explanation": "Trung bình là 5 và phương sai là 4, nên độ lệch chuẩn là 2."
+  },
+  "m-el-sta1-2": {
+   "prompt": "Số trung bình cộng của các số này là bao nhiêu? 10, 20, 30, 40",
+   "hints": [
+    "Trung bình cộng = (tổng tất cả) ÷ (số lượng).",
+    "Trước hết hãy cộng tất cả lại."
+   ],
+   "explanation": "(10+20+30+40)÷4=25, nên trung bình cộng là 25."
+  },
+  "m-el-sta1-3": {
+   "prompt": "Cứ cách 10 học sinh trong danh sách của trường thì chọn một học sinh để khảo sát. Đây là phương pháp chọn mẫu nào?",
+   "hints": [
+    "Hãy xem mẫu được chọn như thế nào.",
+    "Chọn phương pháp phù hợp: ngẫu nhiên, phân tầng, cụm hoặc hệ thống."
+   ],
+   "explanation": "Phương pháp này là chọn mẫu hệ thống.",
+   "options": {
+    "a": "chọn mẫu theo cụm",
+    "b": "chọn mẫu hệ thống",
+    "c": "chọn mẫu ngẫu nhiên đơn giản",
+    "d": "chọn mẫu phân tầng"
+   }
+  },
+  "m-el-sta1-4": {
+   "prompt": "Ba mươi học sinh được chọn từ danh sách của trường bằng số ngẫu nhiên. Đây là phương pháp chọn mẫu nào?",
+   "hints": [
+    "Hãy xem mẫu được chọn như thế nào.",
+    "Chọn phương pháp phù hợp: ngẫu nhiên, phân tầng, cụm hoặc hệ thống."
+   ],
+   "explanation": "Phương pháp này là chọn mẫu ngẫu nhiên đơn giản.",
+   "options": {
+    "a": "chọn mẫu phân tầng",
+    "b": "chọn mẫu theo cụm",
+    "c": "chọn mẫu hệ thống",
+    "d": "chọn mẫu ngẫu nhiên đơn giản"
+   }
+  },
+  "m-el-sta1-c": {
+   "prompt": "Độ lệch chuẩn của dãy số liệu 1, 1, 3, 3 là bao nhiêu? (độ lệch chuẩn tổng thể)",
+   "hints": [
+    "Trước hết hãy tìm trung bình cộng.",
+    "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+   ],
+   "explanation": "Trung bình là 2 và phương sai là 1, nên độ lệch chuẩn là 1."
+  },
+  "m-el-sta1-v1": {
+   "prompt": "Trước tiên chọn vài lớp, rồi khảo sát mọi học sinh trong các lớp được chọn. Đây là phương pháp chọn mẫu nào?",
+   "hints": [
+    "Hãy xem mẫu được chọn như thế nào.",
+    "Chọn phương pháp phù hợp: ngẫu nhiên, phân tầng, cụm hoặc hệ thống."
+   ],
+   "explanation": "Phương pháp này là chọn mẫu theo cụm.",
+   "options": {
+    "a": "chọn mẫu ngẫu nhiên đơn giản",
+    "b": "chọn mẫu phân tầng",
+    "c": "chọn mẫu theo cụm",
+    "d": "chọn mẫu hệ thống"
+   }
+  },
+  "m-el-sta1-v2": {
+   "prompt": "Số trung bình cộng của các số này là bao nhiêu? 8, 12",
+   "hints": [
+    "Trung bình cộng = (tổng tất cả) ÷ (số lượng).",
+    "Trước hết hãy cộng tất cả lại."
+   ],
+   "explanation": "(8+12)÷2=10, nên trung bình cộng là 10."
+  },
+  "m-el-sta2-1": {
+   "prompt": "Độ lệch chuẩn tổng thể là 10 và cỡ mẫu là 100. Sai số biên 95% $1.96\\times\\frac{σ}{\\sqrt{ n } }$ là bao nhiêu? (hai chữ số thập phân)",
+   "hints": [
+    "Trước hết hãy tính $\\sqrt{ n }$.",
+    "Chia σ cho nó rồi nhân với 1,96."
+   ],
+   "explanation": "$1.96\\times\\frac{10}{10}=1.96$."
+  },
+  "m-el-sta2-2": {
+   "prompt": "Độ lệch chuẩn tổng thể là 15 và cỡ mẫu là 25. Sai số biên 95% $1.96\\times\\frac{σ}{\\sqrt{ n } }$ là bao nhiêu? (hai chữ số thập phân)",
+   "hints": [
+    "Trước hết hãy tính $\\sqrt{ n }$.",
+    "Chia σ cho nó rồi nhân với 1,96."
+   ],
+   "explanation": "$1.96\\times\\frac{15}{5}=5.88$."
+  },
+  "m-el-sta2-3": {
+   "prompt": "Trung bình mẫu là 52, trung bình theo giả thuyết không là 50, σ=10 và n=100. Thống kê kiểm định $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n } }$ là bao nhiêu?",
+   "hints": [
+    "Trước hết hãy tính mẫu số $σ/\\sqrt{ n }$.",
+    "Lấy trung bình mẫu trừ trung bình giả thuyết không rồi chia."
+   ],
+   "explanation": "$\\frac{52-50}{1}=2$."
+  },
+  "m-el-sta2-4": {
+   "prompt": "Trong kiểm định hai phía ở mức ý nghĩa 5%, giá trị tới hạn là 1,96. Thống kê kiểm định là z=2.3. Kết luận là gì?",
+   "hints": [
+    "Nếu $|z|$ lớn hơn 1,96 thì bác bỏ giả thuyết không.",
+    "So sánh giá trị tuyệt đối của z với 1,96."
+   ],
+   "explanation": "|z|=2.3, nên: Bác bỏ giả thuyết không.",
+   "options": {
+    "a": "Bác bỏ giả thuyết không",
+    "b": "Không bác bỏ giả thuyết không"
+   }
+  },
+  "m-el-sta2-c": {
+   "prompt": "Trung bình mẫu là 48, trung bình theo giả thuyết không là 50, σ=8 và n=64. Thống kê kiểm định $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n } }$ là bao nhiêu?",
+   "hints": [
+    "Trước hết hãy tính mẫu số $σ/\\sqrt{ n }$.",
+    "Lấy trung bình mẫu trừ trung bình giả thuyết không rồi chia."
+   ],
+   "explanation": "$\\frac{48-50}{1}=-2$."
+  },
+  "m-el-sta2-v1": {
+   "prompt": "Trong kiểm định hai phía ở mức ý nghĩa 5%, giá trị tới hạn là 1,96. Thống kê kiểm định là z=1.2. Kết luận là gì?",
+   "hints": [
+    "Nếu $|z|$ lớn hơn 1,96 thì bác bỏ giả thuyết không.",
+    "So sánh giá trị tuyệt đối của z với 1,96."
+   ],
+   "explanation": "|z|=1.2, nên: Không bác bỏ giả thuyết không.",
+   "options": {
+    "a": "Không bác bỏ giả thuyết không",
+    "b": "Bác bỏ giả thuyết không"
+   }
+  },
+  "m-el-sta2-v2": {
+   "prompt": "Độ lệch chuẩn tổng thể là 20 và cỡ mẫu là 100. Sai số biên 95% $1.96\\times\\frac{σ}{\\sqrt{ n } }$ là bao nhiêu? (hai chữ số thập phân)",
+   "hints": [
+    "Trước hết hãy tính $\\sqrt{ n }$.",
+    "Chia σ cho nó rồi nhân với 1,96."
+   ],
+   "explanation": "$1.96\\times\\frac{20}{10}=3.92$."
+  },
+  "m-el-res1-1": {
+   "prompt": "Đọc các bài báo và sách ở thư viện và trên internet rồi tóm tắt lại là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là nghiên cứu tài liệu.",
+   "options": {
+    "a": "nghiên cứu tài liệu",
+    "b": "nghiên cứu tình huống",
+    "c": "thực nghiệm toán học",
+    "d": "nghiên cứu phát triển"
+   }
+  },
+  "m-el-res1-2": {
+   "prompt": "Thu thập và so sánh các ví dụ thực tế từ nhiều trường là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là nghiên cứu tình huống.",
+   "options": {
+    "a": "nghiên cứu phát triển",
+    "b": "nghiên cứu tài liệu",
+    "c": "nghiên cứu tình huống",
+    "d": "thực nghiệm toán học"
+   }
+  },
+  "m-el-res1-3": {
+   "prompt": "Tự gieo xúc xắc và ghi lại kết quả để tìm ra quy luật là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là thực nghiệm toán học.",
+   "options": {
+    "a": "thực nghiệm toán học",
+    "b": "nghiên cứu phát triển",
+    "c": "nghiên cứu tài liệu",
+    "d": "nghiên cứu tình huống"
+   }
+  },
+  "m-el-res1-4": {
+   "prompt": "Tạo ra một công cụ mới để học toán và thử xem nó hiệu quả đến đâu là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là nghiên cứu phát triển.",
+   "options": {
+    "a": "nghiên cứu tình huống",
+    "b": "thực nghiệm toán học",
+    "c": "nghiên cứu phát triển",
+    "d": "nghiên cứu tài liệu"
+   }
+  },
+  "m-el-res1-c": {
+   "prompt": "Tự gieo xúc xắc và ghi lại kết quả để tìm ra quy luật là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là thực nghiệm toán học.",
+   "options": {
+    "a": "nghiên cứu tình huống",
+    "b": "nghiên cứu tài liệu",
+    "c": "nghiên cứu phát triển",
+    "d": "thực nghiệm toán học"
+   }
+  },
+  "m-el-res1-v1": {
+   "prompt": "Thu thập và so sánh các ví dụ thực tế từ nhiều trường là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là nghiên cứu tình huống.",
+   "options": {
+    "a": "thực nghiệm toán học",
+    "b": "nghiên cứu tình huống",
+    "c": "nghiên cứu phát triển",
+    "d": "nghiên cứu tài liệu"
+   }
+  },
+  "m-el-res1-v2": {
+   "prompt": "Đọc các bài báo và sách ở thư viện và trên internet rồi tóm tắt lại là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là nghiên cứu tài liệu.",
+   "options": {
+    "a": "thực nghiệm toán học",
+    "b": "nghiên cứu tình huống",
+    "c": "nghiên cứu tài liệu",
+    "d": "nghiên cứu phát triển"
+   }
+  },
+  "m-el-res2-1": {
+   "prompt": "Sao chép bài viết của người khác mà không nói rõ nguồn gốc là vi phạm đạo đức nghiên cứu.",
+   "hints": [
+    "Đạo đức nghiên cứu dựa trên sự trung thực và việc trích dẫn nguồn.",
+    "Hãy nghĩ xem công trình và kết quả của người khác phải được đối xử thế nào."
+   ],
+   "explanation": "Dùng công trình của người khác mà không nêu nguồn là đạo văn, nên nhận định này đúng."
+  },
+  "m-el-res2-2": {
+   "prompt": "Nếu kết quả khác với giả thuyết thì có thể sửa số liệu cho khớp.",
+   "hints": [
+    "Đạo đức nghiên cứu dựa trên sự trung thực và việc trích dẫn nguồn.",
+    "Hãy nghĩ xem công trình và kết quả của người khác phải được đối xử thế nào."
+   ],
+   "explanation": "Sửa kết quả là làm giả số liệu và vi phạm đạo đức nghiên cứu, nên nhận định này sai."
+  },
+  "m-el-res2-3": {
+   "prompt": "Cần làm gì ngay sau khi chọn đề tài nghiên cứu?",
+   "hints": [
+    "Nghiên cứu đi theo trình tự lập kế hoạch → thực hiện → trình bày → nhìn lại.",
+    "Sau đề tài là quyết định cách tìm hiểu nó."
+   ],
+   "explanation": "Sau khi chọn đề tài: Lập kế hoạch nghiên cứu.",
+   "options": {
+    "a": "Trình bày kết quả",
+    "b": "Nhìn lại quá trình",
+    "c": "Thực hiện nghiên cứu",
+    "d": "Lập kế hoạch nghiên cứu"
+   }
+  },
+  "m-el-res2-4": {
+   "prompt": "Đọc các bài báo và sách ở thư viện và trên internet rồi tóm tắt lại là phương pháp nghiên cứu nào?",
+   "hints": [
+    "Hãy nghĩ xem dữ liệu nghiên cứu đến từ đâu.",
+    "Chọn nghiên cứu tài liệu, nghiên cứu tình huống, thực nghiệm hoặc nghiên cứu phát triển."
+   ],
+   "explanation": "Phương pháp nghiên cứu này là nghiên cứu tài liệu.",
+   "options": {
+    "a": "nghiên cứu tài liệu",
+    "b": "nghiên cứu tình huống",
+    "c": "thực nghiệm toán học",
+    "d": "nghiên cứu phát triển"
+   }
+  },
+  "m-el-res2-c": {
+   "prompt": "Cần làm gì ngay sau khi chọn đề tài nghiên cứu?",
+   "hints": [
+    "Nghiên cứu đi theo trình tự lập kế hoạch → thực hiện → trình bày → nhìn lại.",
+    "Sau đề tài là quyết định cách tìm hiểu nó."
+   ],
+   "explanation": "Sau khi chọn đề tài: Lập kế hoạch nghiên cứu.",
+   "options": {
+    "a": "Thực hiện nghiên cứu",
+    "b": "Lập kế hoạch nghiên cứu",
+    "c": "Nhìn lại quá trình",
+    "d": "Trình bày kết quả"
+   }
+  },
+  "m-el-res2-v1": {
+   "prompt": "Nếu kết quả khác với giả thuyết thì có thể sửa số liệu cho khớp.",
+   "hints": [
+    "Đạo đức nghiên cứu dựa trên sự trung thực và việc trích dẫn nguồn.",
+    "Hãy nghĩ xem công trình và kết quả của người khác phải được đối xử thế nào."
+   ],
+   "explanation": "Sửa kết quả là làm giả số liệu và vi phạm đạo đức nghiên cứu, nên nhận định này sai."
+  },
+  "m-el-res2-v2": {
+   "prompt": "Sao chép bài viết của người khác mà không nói rõ nguồn gốc là vi phạm đạo đức nghiên cứu.",
+   "hints": [
+    "Đạo đức nghiên cứu dựa trên sự trung thực và việc trích dẫn nguồn.",
+    "Hãy nghĩ xem công trình và kết quả của người khác phải được đối xử thế nào."
+   ],
+   "explanation": "Dùng công trình của người khác mà không nêu nguồn là đạo văn, nên nhận định này đúng."
   }
  }
 }

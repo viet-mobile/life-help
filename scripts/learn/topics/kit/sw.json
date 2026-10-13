@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Nambari ya {cat} kwenye jedwali ni ipi?",
+      "hints": [
+        "Tafuta kisanduku cha {cat}.",
+        "Soma nambari iliyoandikwa ndani yake."
+      ],
+      "expl": "Nambari ya {cat} ni {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Jumla ya nambari zote kwenye jedwali ni ngapi?",
+      "hints": [
+        "Soma nambari katika kila kisanduku.",
+        "Zijumlishe zote."
+      ],
+      "expl": "Jumla ni {sum}, kwa hiyo jibu ni {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Safu ndefu zaidi ya grafu ina miduara mingapi?",
+      "hints": [
+        "Hesabu miduara katika kila safu.",
+        "Tafuta safu ndefu zaidi."
+      ],
+      "expl": "Safu ndefu zaidi ina miduara {ans}."
+    },
+    "symbolDiff": {
+      "prompt": "Safu kubwa zaidi ina zaidi ya safu ndogo zaidi kwa kiasi gani?",
+      "hints": [
+        "Tafuta kwanza hesabu kubwa zaidi na ndogo zaidi.",
+        "Toa ndogo kutoka kubwa."
+      ],
+      "expl": "{max}-{min}={ans}, kwa hiyo ina {ans} zaidi."
+    },
+    "mostWhich": {
+      "prompt": "Kipengee kipi ndicho kikubwa zaidi kwenye grafu?",
+      "hints": [
+        "Linganisha nambari za vipengee.",
+        "Tafuta nambari kubwa zaidi."
+      ],
+      "expl": "Kipengee kikubwa zaidi ni {name}."
+    },
+    "compareCount": {
+      "prompt": "{a} ina zaidi ya {b} kwa kiasi gani?",
+      "hints": [
+        "Soma nambari za {a} na {b}.",
+        "Toa ndogo kutoka kubwa."
+      ],
+      "expl": "{x}-{y}={ans}, kwa hiyo {a} ina {ans} zaidi."
+    },
+    "lineRead": {
+      "prompt": "Thamani ya {cat} kwenye grafu ya mstari ni ipi?",
+      "hints": [
+        "Tafuta {cat} kwenye mhimili mlalo.",
+        "Soma thamani ya nukta iliyo juu yake."
+      ],
+      "expl": "Thamani ya {cat} ni {ans}."
+    },
+    "lineMax": {
+      "prompt": "Thamani kubwa zaidi kwenye grafu ya mstari ni ipi?",
+      "hints": [
+        "Linganisha thamani za nukta zote.",
+        "Tafuta nukta ya juu zaidi."
+      ],
+      "expl": "Thamani kubwa zaidi ni {ans}."
+    },
+    "lineChange": {
+      "prompt": "Thamani iliongezeka kwa kiasi gani kutoka {from} hadi {to}?",
+      "hints": [
+        "Soma thamani za {from} na {to}.",
+        "Toa thamani ya kwanza kutoka ya baadaye."
+      ],
+      "expl": "{b}-{a}={ans}, kwa hiyo iliongezeka kwa {ans}."
+    },
+    "mean": {
+      "prompt": "Wastani wa nambari hizi ni upi? {list}",
+      "hints": [
+        "Wastani ni (jumla ya zote) ÷ (idadi yake).",
+        "Kwanza zijumlishe zote."
+      ],
+      "expl": "({sum})÷{n}={ans}, kwa hiyo wastani ni {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Wastani wa nambari nne ni {m} na tatu kati yake ni {list}. Nambari ya nne ni ipi?",
+      "hints": [
+        "Jumla ya nambari nne ni wastani × 4.",
+        "Toa nambari tatu zinazojulikana kutoka kwenye jumla."
+      ],
+      "expl": "{m}×4={total} na {total}-({known})={ans}, kwa hiyo ni {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Sanduku lina mipira {a} ya A na mipira {b} ya B. Mpira mmoja unatolewa. Uwezekano kwamba ni mpira wa A ni upi, kama desimali?",
+      "hints": [
+        "Uwezekano = (hali zinazofaa) ÷ (hali zote).",
+        "Kwanza tafuta jumla ya mipira."
+      ],
+      "expl": "{a}÷{total}={ans}, kwa hiyo uwezekano ni {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Isiyowezekana ni 0 na ya hakika ni 1.",
+        "Uwezekano sawa ni $\\frac{1}{2}$."
+      ],
+      "expl": "Uwezekano wa tukio hili ni: {name}."
+    },
+    "pieCount": {
+      "prompt": "Kwenye chati ya duara A ni {p}% ya jumla. Jumla ni watu {t}. Watu wangapi ni A?",
+      "hints": [
+        "{p}% ni $\\frac{p}{100}$.",
+        "Zidisha jumla kwa uwiano."
+      ],
+      "expl": "{t}×{p}÷100={ans}, kwa hiyo watu {ans}."
+    },
+    "pieRest": {
+      "prompt": "Sehemu tatu za chati ya duara ni {a}%, {b}% na {c}%. Sehemu ya nne ni asilimia ngapi? (%)",
+      "hints": [
+        "Jumla ni 100%.",
+        "Toa sehemu tatu kutoka 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, kwa hiyo ni {ans}%."
+    },
+    "bandRead": {
+      "prompt": "{cat} ni asilimia ngapi ya jumla kwenye grafu ya bendi? (%)",
+      "hints": [
+        "Tafuta sehemu ya {cat}.",
+        "Soma asilimia iliyoandikwa chini yake."
+      ],
+      "expl": "{cat} ni {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Kokotoa $({a})+({b})$.",
+      "hints": [
+        "Alama sawa: jumlisha thamani halisi na uweke alama ileile.",
+        "Alama tofauti: toa thamani halisi na uchukue alama ya kubwa zaidi."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Kokotoa $({a})-({b})$.",
+      "hints": [
+        "Kutoa ni kujumlisha nambari kinyume.",
+        "Iandike upya kama $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Kokotoa $({a})\\times({b})$.",
+      "hints": [
+        "Alama sawa hutoa matokeo chanya, alama tofauti hasi.",
+        "Zidisha thamani halisi."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Kokotoa $({a})\\div({b})$.",
+      "hints": [
+        "Alama sawa hutoa matokeo chanya, alama tofauti hasi.",
+        "Gawanya thamani halisi."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ ni ngapi kama desimali?",
+      "hints": [
+        "Tumia kipeo sawa na ujumlishe.",
+        "Geuza sehemu kuwa desimali."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Nukta P inaonyesha nambari gani kwenye mstari wa nambari?",
+      "hints": [
+        "Kushoto mwa 0 ni hasi, kulia mwa 0 ni chanya.",
+        "Hesabu alama."
+      ],
+      "expl": "Nukta P inaonyesha {ans}."
+    },
+    "primeCount": {
+      "prompt": "Kuna nambari tasa ngapi hadi {n}?",
+      "hints": [
+        "Nambari tasa ina vigawe viwili tu: 1 na yenyewe.",
+        "Hesabu 2, 3, 5, 7, ... kwa mpangilio."
+      ],
+      "expl": "Nambari tasa hadi {n} ni {list}: {ans} kwa jumla."
+    },
+    "factorExp": {
+      "prompt": "${n}$ ikiandikwa kwa vigezo tasa ni $2^a\\times3^b$. $a+b$ ni ngapi?",
+      "hints": [
+        "Gawanya {n} kwa 2 mradi uweze.",
+        "Kisha gawanya kilichobaki kwa 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, kwa hiyo $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "{n} ina vigawe vingapi?",
+      "hints": [
+        "Tafuta kila nambari inayogawanya {n} kikamilifu.",
+        "Kagua kuanzia ndogo zaidi kwenda juu."
+      ],
+      "expl": "Vigawe vya {n} ni {list}: {ans} kwa jumla."
+    },
+    "gcd": {
+      "prompt": "Kigawe kikubwa cha pamoja cha {a} na {b} ni kipi?",
+      "hints": [
+        "Tafuta vigawe vinavyoshirikiwa na nambari hizo mbili.",
+        "Kikubwa kati yake ni kigawe kikubwa cha pamoja."
+      ],
+      "expl": "Kigawe kikubwa cha pamoja cha {a} na {b} ni {ans}."
+    },
+    "lcm": {
+      "prompt": "Kizidisho kidogo cha pamoja cha {a} na {b} ni kipi?",
+      "hints": [
+        "Orodhesha vizidisho vinavyoshirikiwa na nambari zote mbili, kuanzia kidogo.",
+        "Kizidisho kidogo kinachoshirikiwa ni kizidisho kidogo cha pamoja."
+      ],
+      "expl": "Kizidisho kidogo cha pamoja cha {a} na {b} ni {ans}."
+    },
+    "isPrime": {
+      "prompt": "Je, {n} ni nambari tasa?",
+      "hints": [
+        "Tafuta vigawe vya {n}.",
+        "Ikiwa ina kigawe kingine zaidi ya 1 na yenyewe, si tasa."
+      ],
+      "expl": "Vigawe vya {n} ni {list}, kwa hiyo {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Kiratibu cha {axis} cha nukta A ni kipi?",
+      "hints": [
+        "Jozi ya viratibu huandikwa (x, y).",
+        "Hesabu kwenye gridi."
+      ],
+      "expl": "Kiratibu cha {axis} cha A ni {ans}."
+    },
+    "quadrant": {
+      "prompt": "Nukta ({a}, {b}) iko katika robo ipi?",
+      "hints": [
+        "Angalia alama za viratibu vya x na y.",
+        "(+,+) ni Robo ya 1."
+      ],
+      "expl": "x ni {a} na y ni {b}, kwa hiyo iko katika {name}."
+    },
+    "distAxis": {
+      "prompt": "Umbali kutoka nukta ({a}, {b}) hadi mhimili wa {axis} ni upi?",
+      "hints": [
+        "Umbali hadi mhimili ni thamani halisi ya kiratibu.",
+        "Kwa mhimili wa {axis} angalia kiratibu cha {which}."
+      ],
+      "expl": "Ni thamani halisi ya kiratibu cha {which} {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Nukta ({a}, {b}) inaakisiwa kwenye mhimili wa x. Kiratibu cha y cha nukta mpya ni kipi?",
+      "hints": [
+        "Uakisi kwenye mhimili wa x huacha kiratibu cha x kama kilivyo.",
+        "Alama ya kiratibu cha y hugeuka."
+      ],
+      "expl": "Nukta mpya ni ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y inalingana moja kwa moja na x, na y={y1} wakati x={x1}. y ni ngapi wakati x={x2}?",
+      "hints": [
+        "Uwiano wa moja kwa moja ni y=ax.",
+        "Tafuta a kwanza."
+      ],
+      "expl": "a={y1}÷{x1}={k}, kwa hiyo y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y inalingana kinyume na x, na y={y1} wakati x={x1}. y ni ngapi wakati x={x2}?",
+      "hints": [
+        "Uwiano kinyume ni $y=\\frac{a}{x}$.",
+        "Tafuta a=xy kwanza."
+      ],
+      "expl": "a={x1}×{y1}={k}, kwa hiyo y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Grafu ya uwiano wa moja kwa moja y=ax inapita kwenye nukta ({x1}, {y1}). a ni ngapi?",
+      "hints": [
+        "Weka nukta hiyo ndani ya y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Grafu ya uwiano kinyume $y=\\frac{a}{x}$ inapita kwenye ({x1}, {y1}). a ni ngapi?",
+      "hints": [
+        "Weka nukta hiyo ndani ya $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Mediani ya data {list} ni ipi?",
+      "hints": [
+        "Panga data kwa ukubwa.",
+        "Thamani ya kati ni mediani; idadi ikiwa shufwa tumia wastani wa mbili za kati."
+      ],
+      "expl": "Kwa mpangilio: {sorted}, kwa hiyo mediani ni {ans}."
+    },
+    "mode": {
+      "prompt": "Moda ya data {list} ni ipi?",
+      "hints": [
+        "Moda ni thamani inayojitokeza mara nyingi zaidi.",
+        "Hesabu kila thamani inajitokeza mara ngapi."
+      ],
+      "expl": "{ans} inajitokeza mara nyingi zaidi, kwa hiyo moda ni {ans}."
+    },
+    "dataRange": {
+      "prompt": "Tofauti kati ya thamani kubwa zaidi na ndogo zaidi ya {list} ni ipi?",
+      "hints": [
+        "Tafuta thamani kubwa zaidi na ndogo zaidi.",
+        "Toa ndogo kutoka kubwa."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Jumla ya masafa ni {t} na darasa moja lina masafa {f}. Masafa linganishi ya darasa hilo ni yapi? (desimali)",
+      "hints": [
+        "Masafa linganishi = (masafa ya darasa) ÷ (jumla ya masafa).",
+        "Andika matokeo kama desimali."
+      ],
+      "expl": "{f}÷{t}={ans}, kwa hiyo masafa linganishi ni {ans}."
+    },
+    "periodLen": {
+      "prompt": "$\\frac{1}{{d}}$ inapoandikwa kama desimali, kizuizi kinachojirudia kina tarakimu ngapi?",
+      "hints": [
+        "Gawanya 1 kwa {d}.",
+        "Kizuizi kinachojirudia ni sehemu inayojirudia."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, kwa hiyo kizuizi kinachojirudia kina tarakimu {ans}."
+    },
+    "repeatFrac": {
+      "prompt": "Desimali inayojirudia $0.\\dot{d}\\dot{e}$ ni sawa na $\\frac{x}{99}$. x ni ngapi?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Andika nambari ya tarakimu mbili ab kama nambari ya juu."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ inatoa x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "Je, $\\frac{{n}}{{d}}$ ni desimali inayoishia?",
+      "hints": [
+        "Rahisisha sehemu, kisha andika nambari ya chini kwa vigezo tasa.",
+        "Ikiwa vigezo tasa pekee ni 2 na 5 inaishia."
+      ],
+      "expl": "Nambari ya chini {d2} ina vigezo tasa {fact}, kwa hiyo {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Tarakimu katika nafasi ya {k} ya desimali ni ipi?",
+      "hints": [
+        "Kizuizi 142857 kina tarakimu 6.",
+        "Tumia baki ya {k} ÷ 6 kupata nafasi."
+      ],
+      "expl": "Baki ya {k} ÷ 6 ni {r}, kwa hiyo ni tarakimu ya {r}: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Mteremko wa kitendakazi cha mstari $y={a}x+{b}$ ni upi?",
+      "hints": [
+        "Katika $y=ax+b$ mteremko ni a.",
+        "Soma mgawo wa x."
+      ],
+      "expl": "Mteremko ni {ans}."
+    },
+    "yInt": {
+      "prompt": "Kikatiza cha y cha $y={a}x+{b}$ ni kipi?",
+      "hints": [
+        "Kikatiza cha y ni y wakati x=0.",
+        "Katika $y=ax+b$ ni b."
+      ],
+      "expl": "Kikatiza cha y ni {ans}."
+    },
+    "xInt": {
+      "prompt": "Kikatiza cha x cha $y={a}x+{b}$ ni kipi?",
+      "hints": [
+        "Kikatiza cha x ni x wakati y=0.",
+        "Tatua $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ inatoa x={ans}."
+    },
+    "crossX": {
+      "prompt": "Grafu za $y={a1}x+{b1}$ na $y={a2}x+{b2}$ zinakutana kwenye P. Kiratibu cha x cha P ni kipi?",
+      "hints": [
+        "Kwenye makutano thamani zote za y ni sawa.",
+        "Tatua $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ inatoa x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Kwa kitendakazi cha mstari $f(x)={a}x+{b}$, $f({c})$ ni ngapi?",
+      "hints": [
+        "Weka {c} badala ya x.",
+        "Zidisha, kisha jumlisha."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won zimewekwa akiba kwa miaka {n} kwa riba rahisi ya {r}% kwa mwaka. Riba ni kiasi gani? (won)",
+      "hints": [
+        "Riba rahisi = mtaji × kiwango × miaka.",
+        "{r}% ni {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, kwa hiyo riba ni won {ans}."
+    },
+    "compoundInterest": {
+      "prompt": "{p} won zimewekwa akiba kwa miaka {n} kwa riba ya mkusanyiko ya {r}% kwa mwaka. Jumla ya kiasi ni ngapi? (won)",
+      "hints": [
+        "Kwa riba ya mkusanyiko riba pia huzaa riba.",
+        "Zidisha mtaji × (1 + kiwango) mara {n}."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, kwa hiyo jumla ni won {ans}."
+    },
+    "exchange": {
+      "prompt": "Kipimo 1 cha sarafu ya kigeni ni won {r}. Vipimo {d} vya sarafu hiyo ni won ngapi? (won)",
+      "hints": [
+        "Kiwango cha ubadilishaji ni thamani ya kipimo 1 cha sarafu ya kigeni kwa won.",
+        "Zidisha idadi ya vipimo kwa kiwango."
+      ],
+      "expl": "{d}×{r}={ans}, kwa hiyo ni won {ans}."
+    },
+    "taxTotal": {
+      "prompt": "Bidhaa inagharimu won {p} na kodi ya ongezeko la thamani ya {t}% inaongezwa. Inapaswa kulipwa won ngapi? (won)",
+      "hints": [
+        "Kodi ni bei × {t}%.",
+        "Ongeza kodi kwenye bei."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, kwa hiyo won {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Mkunjo wa mahitaji $p={a}-{b}q$ na mkunjo wa ugavi $p={c}+{d}q$ hukutana kwenye kiasi cha usawa q. q ni ngapi?",
+      "hints": [
+        "Kwenye usawa bei ya mahitaji ni sawa na bei ya ugavi.",
+        "Tatua $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ inatoa q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Kitendakazi cha mahitaji ni $p={a}-{b}q$. Kiwango cha juu zaidi cha mapato $R=pq$ ni kipi?",
+      "hints": [
+        "$R=({a}-{b}q)q$ ni kitendakazi cha kwadratiki.",
+        "Ni kubwa zaidi kwenye kilele $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Kwa q={q} mapato ni makubwa zaidi: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Mahitaji ni $Q={a}-{b}p$. Thamani halisi ya unyumbufu wa bei kwa $p={p0}$ ni ipi? (desimali)",
+      "hints": [
+        "Unyumbufu halisi ni $\\frac{bp}{Q}$.",
+        "Kwanza tafuta Q kwa $p={p0}$."
+      ],
+      "expl": "Q={q0}, kwa hiyo $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "A inaonekana mara ngapi kwenye mfuatano wa maneno {seq}?",
+      "hints": [
+        "Weka alama A pekee unapohesabu.",
+        "Hesabu hii ni kijenzi cha A cha vekta ya masafa."
+      ],
+      "expl": "A inaonekana mara {ans}."
+    },
+    "freqDot": {
+      "prompt": "Hati mbili zina vekta za masafa $\\vec{u}=({u1}, {u2}, {u3})$ na $\\vec{v}=({v1}, {v2}, {v3})$. Zidisho la nukta $\\vec{u}\\cdot\\vec{v}$ ni lipi?",
+      "hints": [
+        "Zidisha vijenzi vinavyolingana kisha jumlisha.",
+        "Kadiri zidisho la nukta linavyokuwa kubwa, ndivyo hati zinavyofanana zaidi."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Picha imehifadhiwa kama matriki $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Jumla ya thamani zote za pikseli ni ipi?",
+      "hints": [
+        "Kila kipengele ni mwangaza wa pikseli moja.",
+        "Jumlisha vipengele vyote vinne."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Pikseli ina thamani {v}. Kila pikseli inaongezewa mwangaza kwa {k}. Thamani yake mpya ni ipi?",
+      "hints": [
+        "Kuongeza mwangaza ni kuongeza nambari ileile kwa kila kipengele cha matriki.",
+        "Ongeza {k} kwa {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Mteremko wa mstari wa mwelekeo unaopita kwenye ({x1}, {y1}) na ({x2}, {y2}) ni upi?",
+      "hints": [
+        "Mteremko = badiliko la y ÷ badiliko la x.",
+        "Kokotoa $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Makadirio ni {pred} na thamani halisi ni {real}. Kosa la wastani la mraba (wastani wa makosa ya mraba) ni lipi?",
+      "hints": [
+        "Kosa ni makadirio − thamani halisi.",
+        "Kokotoa mraba wa kila kosa, kisha chukua wastani."
+      ],
+      "expl": "Makosa ya mraba ni {sq} na wastani wake ni {ans}."
+    },
+    "gradStep": {
+      "prompt": "Kwa hasara $f(x)=x^2$, hatua moja ya mteremko wa gradienti kutoka x={x0} kwa kiwango cha kujifunza {eta} hutoa x mpya ya?",
+      "hints": [
+        "Mteremko wa gradienti: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, kwa hiyo {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "{v} m ni sentimita ngapi? (cm)",
+      "hints": [
+        "1 m ni 100 cm.",
+        "Zidisha {v} kwa 100."
+      ],
+      "expl": "{v}×100={ans}, kwa hiyo {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "{v} kg ni gramu ngapi? (g)",
+      "hints": [
+        "1 kg ni 1000 g.",
+        "Zidisha {v} kwa 1000."
+      ],
+      "expl": "{v}×1000={ans}, kwa hiyo {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Saa {v} ni dakika ngapi? (min)",
+      "hints": [
+        "Saa 1 ni dakika 60.",
+        "Zidisha {v} kwa 60."
+      ],
+      "expl": "{v}×60={ans}, kwa hiyo dakika {ans}."
+    },
+    "discount": {
+      "prompt": "Bidhaa inagharimu won {p} na inauzwa kwa punguzo la {d}%. Bei ya kuuzia ni ngapi? (won)",
+      "hints": [
+        "Punguzo ni bei × {d}%.",
+        "Toa punguzo kutoka kwenye bei."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, kwa hiyo won {ans}."
+    },
+    "mixRatio": {
+      "prompt": "Viambato A na B vinachanganywa kwa uwiano {a}:{b} kupata g {t} kwa jumla. Je, g ngapi za A zinahitajika? (g)",
+      "hints": [
+        "Jumla ni {a}+{b}={s} sehemu.",
+        "A ni $\\frac{a}{s}$ ya jumla."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, kwa hiyo g {ans}."
+    },
+    "tiles": {
+      "prompt": "Ukuta una upana wa m {w} na urefu wa m {h}. Vigae vingapi vya m 1 × m 1 vinaufunika? (vigae)",
+      "hints": [
+        "Tafuta eneo la ukuta.",
+        "Kigae kimoja kina eneo la m² 1."
+      ],
+      "expl": "{w}×{h}={ans}, kwa hiyo vigae {ans}."
+    },
+    "outfit": {
+      "prompt": "Kuna mashati {a} na suruali {b}. Kuna mavazi tofauti mangapi ya shati moja na suruali moja?",
+      "hints": [
+        "Kwa kila shati kuna machaguo {b} ya suruali.",
+        "Tumia kanuni ya kuzidisha."
+      ],
+      "expl": "{a}×{b}={ans}, kwa hiyo mavazi {ans}."
+    },
+    "goldenRatio": {
+      "prompt": "Uwiano wa dhahabu unatimiza $a:b=(a+b):a$. Wakati b=10, a ni takriban kiasi gani? (desimali mbili)",
+      "hints": [
+        "Uwiano wa dhahabu ni takriban 1.618.",
+        "a ni takriban mara 1.618 ya b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Mwinuko wa sauti hutegemea masafa. Masafa ya noti iliyo oktava moja juu ya 440 Hz ni Hz ngapi? (Hz)",
+      "hints": [
+        "Noti iliyo oktava moja juu ina masafa mara mbili.",
+        "Zidisha 440 kwa 2."
+      ],
+      "expl": "440×2={ans}, kwa hiyo {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Seli ya breli ina nukta 6, kila moja imeinuka au ni bapa. Bila kuhesabu mchoro usio na nukta iliyoinuka, kuna michoro mingapi?",
+      "hints": [
+        "Kila nukta ina uwezekano 2.",
+        "Kwa kanuni ya kuzidisha $2^6$, kisha toa 1."
+      ],
+      "expl": "$2^6-1={ans}$, kwa hiyo michoro {ans}."
+    },
+    "voteMajority": {
+      "prompt": "Watu {n} wanapiga kura. Mgombea anahitaji angalau kura ngapi ili apate wingi? (kura)",
+      "hints": [
+        "Wingi ni zaidi ya nusu ya kura zote.",
+        "Tafuta nambari nzima ndogo zaidi iliyo juu ya nusu ya {n}."
+      ],
+      "expl": "Nusu ya {n} ni {half}; nambari nzima ndogo zaidi iliyo juu yake ni {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Kwa siku 5 viwango vya vumbi laini vilikuwa {list} (µg/m³). Wastani wa kiwango ni upi?",
+      "hints": [
+        "Wastani ni (jumla) ÷ (idadi ya siku).",
+        "Kwanza jumlisha thamani 5."
+      ],
+      "expl": "({sum})÷5={ans}, kwa hiyo wastani ni {ans}."
+    },
+    "percentChange": {
+      "prompt": "Thamani ilibadilika kutoka {a} hadi {b}. Iliongezeka kwa asilimia ngapi? (%)",
+      "hints": [
+        "Kiwango cha ongezeko = (kiasi kilichoongezeka) ÷ (thamani ya kwanza) × 100.",
+        "Ongezeko ni {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, kwa hiyo {ans}%."
+    },
+    "stdev": {
+      "prompt": "Mkengeuko sanifu wa data {list} ni upi? (mkengeuko sanifu wa idadi nzima)",
+      "hints": [
+        "Tafuta wastani kwanza.",
+        "Mzizi wa mraba wa wastani wa miraba ya mikengeuko (tofauti) ndio mkengeuko sanifu."
+      ],
+      "expl": "Wastani ni {mean} na tofauti ni {var}, kwa hiyo mkengeuko sanifu ni {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Mkengeuko sanifu wa idadi nzima ni {s} na ukubwa wa sampuli ni {n}. Kiwango cha kosa cha 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$ ni kipi? (desimali mbili)",
+      "hints": [
+        "Tafuta kwanza $\\sqrt{ n }$.",
+        "Gawanya σ kwa hiyo kisha zidisha kwa 1.96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Wastani wa sampuli ni {xbar}, wastani wa dhana tupu ni {mu}, σ={s} na n={n}. Takwimu ya jaribio $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ ni ipi?",
+      "hints": [
+        "Tafuta kwanza sehemu ya chini $σ/\\sqrt{ n }$.",
+        "Toa wastani wa dhana tupu kutoka wastani wa sampuli kisha ugawanye."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Kwenye jaribio la pande mbili la kiwango cha 5% thamani ya kikomo ni 1.96. Takwimu ya jaribio ni z={z}. Hitimisho ni lipi?",
+      "hints": [
+        "Ikiwa $|z|$ ni kubwa kuliko 1.96, kataa dhana tupu.",
+        "Linganisha thamani halisi ya z na 1.96."
+      ],
+      "expl": "|z|={az}, kwa hiyo: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Angalia jinsi sampuli inavyochaguliwa.",
+        "Chagua inayolingana: nasibu, tabaka, makundi au kimpangilio."
+      ],
+      "expl": "Njia hii ni {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Fikiria data za utafiti zinatoka wapi.",
+        "Chagua utafiti wa maandiko, uchunguzi kifani, jaribio au uundaji."
+      ],
+      "expl": "Njia hii ya utafiti ni {name}."
+    },
+    "researchStep": {
+      "prompt": "Nini kifanyike mara baada ya kuchagua mada ya utafiti?",
+      "hints": [
+        "Utafiti huenda mpango → utekelezaji → uwasilishaji → tafakari.",
+        "Baada ya mada unaamua jinsi ya kuichunguza."
+      ],
+      "expl": "Baada ya kuchagua mada: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Maadili ya utafiti yanategemea uaminifu na kutaja vyanzo.",
+        "Fikiria jinsi kazi na matokeo ya wengine yanavyopaswa kutendewa."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Robo ya 1",
+    "q2": "Robo ya 2",
+    "q3": "Robo ya 3",
+    "q4": "Robo ya 4",
+    "p0": "0 (haiwezekani)",
+    "phalf": "1/2 (uwezekano sawa)",
+    "p1": "1 (ni hakika)",
+    "random": "uchaguzi nasibu rahisi",
+    "strat": "uchaguzi wa tabaka",
+    "cluster": "uchaguzi wa makundi",
+    "system": "uchaguzi wa kimpangilio",
+    "reject": "Kataa dhana tupu",
+    "keep": "Usikatae dhana tupu",
+    "literature": "utafiti wa maandiko",
+    "casestudy": "uchunguzi kifani",
+    "experiment": "jaribio la hisabati",
+    "develop": "utafiti wa uundaji",
+    "plan": "Tengeneza mpango wa utafiti",
+    "carry": "Tekeleza utafiti",
+    "present": "Wasilisha matokeo",
+    "reflect": "Tafakari mchakato",
+    "yesPrime": "Ndiyo, ni tasa",
+    "noPrime": "Hapana, si tasa",
+    "yesFinite": "Ndiyo, ni desimali inayoishia",
+    "noFinite": "Hapana, ni desimali inayojirudia",
+    "yesOk": "Kweli",
+    "noOk": "Si kweli"
+  },
+  "text": {
+    "ev_coin": "Uwezekano wa kupata kichwa ni upi sarafu ikirushwa mara moja?",
+    "ev_sun": "Uwezekano kwamba jua litachomoza mashariki kesho ni upi?",
+    "ev_die": "Uwezekano wa kupata 7 kwa kurusha kete moja ya kawaida yenye pande sita ni upi?",
+    "sm_system": "Kila mwanafunzi wa 10 kwenye orodha ya shule alichaguliwa kwa utafiti. Hii ni njia gani ya uchaguzi wa sampuli?",
+    "sm_random": "Wanafunzi thelathini walichaguliwa kutoka orodha ya shule kwa nambari nasibu. Hii ni njia gani ya uchaguzi wa sampuli?",
+    "sm_strat": "Wanafunzi walichaguliwa kutoka kila darasa kulingana na idadi ya wanafunzi wa darasa hilo. Hii ni njia gani ya uchaguzi wa sampuli?",
+    "sm_cluster": "Madarasa machache yalichaguliwa kwanza na kila mwanafunzi wa madarasa yaliyochaguliwa alihojiwa. Hii ni njia gani ya uchaguzi wa sampuli?",
+    "rm_lit": "Kusoma makala na vitabu kutoka maktaba na mtandaoni na kuvifupisha ni mbinu gani ya utafiti?",
+    "rm_case": "Kukusanya na kulinganisha mifano halisi kutoka shule kadhaa ni mbinu gani ya utafiti?",
+    "rm_exp": "Kurusha kete mwenyewe na kurekodi matokeo ili kupata mpangilio ni mbinu gani ya utafiti?",
+    "rm_dev": "Kutengeneza zana mpya ya kujifunza hisabati na kupima inavyofanya kazi vizuri ni mbinu gani ya utafiti?",
+    "et_cite": "Kunakili maandishi ya mtu mwingine bila kusema yametoka wapi kunakiuka maadili ya utafiti.",
+    "et_cite_r": "Kutumia kazi ya mtu bila chanzo ni wizi wa kazi za wengine, kwa hiyo kauli ni kweli.",
+    "et_fake": "Matokeo yakitofautiana na dhana, ni sawa kubadilisha nambari ili zilingane.",
+    "et_fake_r": "Kubadilisha matokeo ni kughushi na kunakiuka maadili ya utafiti, kwa hiyo kauli si kweli."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Kupanga na kuonyesha data kwenye majedwali na grafu",
+      "concept": "Panga vitu kwa kanuni na uvihesabu; **jedwali** au **grafu** hukuwezesha kulinganisha kwa mtazamo mmoja.",
+      "example": "A 3, B 5, C 2 → jumla 10"
+    },
+    "E4dat1": {
+      "title": "Kusoma grafu za mstari",
+      "concept": "**Grafu ya mstari** inaonyesha jinsi thamani inavyobadilika kadiri muda unavyopita kwa nukta na mistari. Kupanda ni ongezeko, kushuka ni upungufu.",
+      "example": "12 siku ya 1 → 20 siku ya 3: imeongezeka kwa 8"
+    },
+    "E5dat1": {
+      "title": "Kutafuta wastani",
+      "concept": "**Wastani** ni jumla ya data ikigawanywa kwa idadi yake.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Uwezekano",
+      "concept": "**Uwezekano** wa tukio ni nambari kati ya 0 (haiwezekani) na 1 (ni hakika): uwezekano = (hali zinazofaa) ÷ (hali zote).",
+      "example": "Mipira 3 ya A, mipira 2 ya B → uwezekano wa A ni $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Grafu za bendi na chati za duara",
+      "concept": "**Grafu za bendi** na **chati za duara** huchukulia jumla kama 100% na kuonyesha sehemu ya kila sehemu. Sehemu = jumla × asilimia.",
+      "example": "25% ya watu 200 → watu 50"
+    },
+    "M1neg1": {
+      "title": "Nambari kamili na nambari za kiasi",
+      "concept": "Alama sawa: jumlisha thamani halisi. Alama tofauti: zitoe na uweke alama ya kubwa zaidi. Kwa × na ÷ matokeo ni + alama zikilingana na − zisipolingana.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Kuandika kwa vigezo tasa, kigawe kikubwa cha pamoja na kizidisho kidogo cha pamoja",
+      "concept": "Kuandika nambari kama zidisho la nambari tasa ni **kuandika kwa vigezo tasa**. Kigawe kikubwa kinachoshirikiwa ni **kigawe kikubwa cha pamoja**, kizidisho kidogo kinachoshirikiwa ni **kizidisho kidogo cha pamoja**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Ndege ya viratibu",
+      "concept": "Nukta huandikwa (x, y). Alama huamua Robo ya 1–4, na kuakisi kwenye mhimili wa x hugeuza alama ya y.",
+      "example": "(−2, 5) iko katika Robo ya 2"
+    },
+    "M1prp1": {
+      "title": "Uwiano wa moja kwa moja na wa kinyume",
+      "concept": "**Uwiano wa moja kwa moja** ni y=ax na **uwiano wa kinyume** ni $y=\\frac{a}{x}$. Kwenye uwiano wa moja kwa moja y÷x ni thabiti; kwenye uwiano wa kinyume x×y ni thabiti.",
+      "example": "y=6 kwa x=2 (moja kwa moja): y=3x"
+    },
+    "M1sta1": {
+      "title": "Wastani na masafa linganishi",
+      "concept": "**Mediani** ni thamani ya kati kwa mpangilio, **moda** ni thamani inayojitokeza mara nyingi zaidi. **Masafa linganishi** = masafa ÷ jumla.",
+      "example": "Mediani ya 1, 3, 5, 7, 9 ni 5"
+    },
+    "M2rec1": {
+      "title": "Desimali zinazojirudia",
+      "concept": "Desimali ambayo tarakimu zake hujirudia milele ni **desimali inayojirudia**; sehemu inayojirudia ni **kizuizi** chake. Sehemu iliyorahisishwa huishia tu ikiwa nambari yake ya chini ina vigezo 2 na 5 pekee.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Vitendakazi vya mstari na milinganyo ya mstari",
+      "concept": "Katika y=ax+b, a ni mteremko na b ni kikatiza cha y. Makutano ya grafu mbili ni suluhisho la milinganyo miwili kwa pamoja.",
+      "example": "y=2x−6 ina kikatiza cha x cha 3"
+    },
+    "el.econ1": {
+      "title": "Riba, viwango vya ubadilishaji na kodi",
+      "concept": "Riba rahisi = mtaji × kiwango × miaka; kiasi cha mkusanyiko = mtaji × (1 + kiwango)^miaka. Kiwango cha ubadilishaji ni thamani ya kipimo 1 cha sarafu; kodi ni bei × asilimia.",
+      "example": "won 10000, mkusanyiko wa 10% kwa miaka 2 → won 12100"
+    },
+    "el.econ2": {
+      "title": "Mahitaji, ugavi na uboreshaji",
+      "concept": "Usawa ni mahali mikunjo ya mahitaji na ugavi inapokutana. Mapato ya juu zaidi R=pq na unyumbufu hutokana na vitendakazi na vitokanisho.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Data za maandishi na picha",
+      "concept": "Hati huwa vekta ya hesabu za maneno na picha huwa matriki ya thamani za pikseli. Kadiri zidisho la nukta linavyokuwa kubwa, ndivyo hati mbili zinavyofanana zaidi.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Utabiri na uboreshaji",
+      "concept": "Utabiri huboreka kwa mteremko wa mstari wa mwelekeo, wastani wa makosa ya mraba (hasara) na mteremko wa gradienti $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Ubadilishaji wa vipimo na uwiano",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, saa 1 = dakika 60. Bei ya kuuzia = bei × (1 − punguzo); kuchanganya kwa uwiano a:b humpa A sehemu ya $\\frac{a}{a+b}$.",
+      "example": "3.5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Eneo, kuhesabu na ukuaji",
+      "concept": "Eneo hutoa vifaa vinavyohitajika, kanuni ya kuzidisha hutoa idadi ya jozi, na (ongezeko) ÷ (thamani ya kwanza) × 100 hutoa kiwango cha ukuaji.",
+      "example": "Mashati 4, suruali 3 → mavazi 12"
+    },
+    "el.cul1": {
+      "title": "Hisabati katika sanaa na maisha ya kila siku",
+      "concept": "Uwiano wa dhahabu ni takriban 1.618; noti iliyo oktava moja juu ina masafa mara mbili; nukta 6 za breli hutoa michoro $2^6-1=63$; wingi ni zaidi ya nusu.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Hisabati katika jamii na mazingira",
+      "concept": "Wastani na viwango vya ukuaji hukuwezesha kuchambua matatizo ya kijamii na kimazingira kihisabati. Kiwango cha ukuaji = (ongezeko) ÷ (thamani ya kwanza) × 100.",
+      "example": "40 hadi 50 → juu kwa 25%"
+    },
+    "el.sta1": {
+      "title": "Maswali ya takwimu na sampuli",
+      "concept": "Mkengeuko sanifu ni mzizi wa mraba wa wastani wa miraba ya mikengeuko (tofauti). Sampuli huchukuliwa kwa uchaguzi nasibu, wa tabaka, wa makundi au wa kimpangilio.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 ina mkengeuko sanifu wa 2"
+    },
+    "el.sta2": {
+      "title": "Ukadiriaji na majaribio ya dhana",
+      "concept": "Kiwango cha kosa cha 95% ni $1.96\\times\\frac{σ}{\\sqrt{n}}$. Ikiwa $|z|$ ya $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ iko juu ya 1.96, kataa dhana tupu kwa kiwango cha 5%.",
+      "example": "σ=10, n=100 → kiwango cha kosa 1.96"
+    },
+    "el.res1": {
+      "title": "Mbinu za utafiti",
+      "concept": "Mradi wa utafiti wa hisabati unaweza kutumia utafiti wa maandiko, uchunguzi kifani, majaribio ya kihisabati au utafiti wa uundaji.",
+      "example": "Kurusha kete kutafuta mpangilio → jaribio"
+    },
+    "el.res2": {
+      "title": "Hatua za utafiti na maadili",
+      "concept": "Utafiti huenda mada → mpango → utekelezaji → uwasilishaji → tafakari. Kutaja vyanzo na kutobadilisha matokeo ni maadili ya utafiti.",
+      "example": "Baada ya mada hufuata mpango wa utafiti"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Hisabati ya Uchumi",
+      "world": "Mji wa Uchumi",
+      "tagline": "Jifunze hisabati ya fedha na masoko",
+      "unit": "Nambari na uchumi, vitendakazi na uchumi"
+    },
+    "ai": {
+      "title": "Hisabati kwa AI",
+      "world": "Maabara ya AI",
+      "tagline": "Kutana na hisabati iliyo ndani ya data na uboreshaji",
+      "unit": "Usindikaji wa data, utabiri na uboreshaji"
+    },
+    "job": {
+      "title": "Hisabati ya Kazini",
+      "world": "Mji wa Karakana",
+      "tagline": "Fanya mazoezi ya hisabati inayotumika kazini",
+      "unit": "Nambari na vipimo, uwiano, eneo na kuhesabu"
+    },
+    "cul": {
+      "title": "Hisabati na Utamaduni",
+      "world": "Uwanja wa Utamaduni",
+      "tagline": "Gundua hisabati katika sanaa na maisha ya kila siku",
+      "unit": "Sanaa na maisha, jamii na mazingira"
+    },
+    "sta": {
+      "title": "Takwimu za Vitendo",
+      "world": "Maabara ya Takwimu",
+      "tagline": "Jenga ujuzi wa kuhukumu kutokana na data",
+      "unit": "Data na sampuli, ukadiriaji na majaribio"
+    },
+    "res": {
+      "title": "Miradi ya Utafiti wa Hisabati",
+      "world": "Karakana ya Utafiti",
+      "tagline": "Jifunze mbinu na maadili ya utafiti",
+      "unit": "Mbinu, utaratibu na maadili"
+    }
+  }
+}

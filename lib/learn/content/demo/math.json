@@ -37,6 +37,31 @@
     "id": "m.m1.geo2",
     "title": "부채꼴과 입체도형의 측정",
     "prerequisiteId": "m.m1.geo1"
+   },
+   {
+    "id": "m.m1.neg1",
+    "title": "정수와 유리수의 계산",
+    "prerequisiteId": "m.m1.geo2"
+   },
+   {
+    "id": "m.m1.fac1",
+    "title": "소인수분해와 최대공약수·최소공배수",
+    "prerequisiteId": "m.m1.neg1"
+   },
+   {
+    "id": "m.m1.crd1",
+    "title": "좌표평면",
+    "prerequisiteId": "m.m1.fac1"
+   },
+   {
+    "id": "m.m1.prp1",
+    "title": "정비례와 반비례",
+    "prerequisiteId": "m.m1.crd1"
+   },
+   {
+    "id": "m.m1.sta1",
+    "title": "대푯값과 상대도수",
+    "prerequisiteId": "m.m1.prp1"
    }
   ],
   "courses": [
@@ -149,6 +174,86 @@
          "m-m1-geo2-4"
         ],
         "challengeId": "m-m1-geo2-c"
+       },
+       {
+        "id": "math-m1-neg1",
+        "title": "정수와 유리수의 계산",
+        "skillIds": [
+         "m.m1.neg1"
+        ],
+        "concept": "같은 부호의 두 수를 더하면 절댓값을 더하고, 다른 부호이면 절댓값의 차에 큰 쪽의 부호를 붙여요. 곱셈과 나눗셈은 부호가 같으면 +, 다르면 −예요.",
+        "example": "$(-3)+5=2$, $(-6)\\times4=-24$",
+        "questionIds": [
+         "m-m1-neg1-1",
+         "m-m1-neg1-2",
+         "m-m1-neg1-3",
+         "m-m1-neg1-4"
+        ],
+        "challengeId": "m-m1-neg1-c"
+       },
+       {
+        "id": "math-m1-fac1",
+        "title": "소인수분해와 최대공약수·최소공배수",
+        "skillIds": [
+         "m.m1.fac1"
+        ],
+        "concept": "자연수를 소수의 곱으로 나타내는 것이 **소인수분해**예요. 공통인 약수 중 가장 큰 수가 **최대공약수**, 공통인 배수 중 가장 작은 수가 **최소공배수**예요.",
+        "example": "$72=2^3\\times3^2$",
+        "questionIds": [
+         "m-m1-fac1-1",
+         "m-m1-fac1-2",
+         "m-m1-fac1-3",
+         "m-m1-fac1-4"
+        ],
+        "challengeId": "m-m1-fac1-c"
+       },
+       {
+        "id": "math-m1-crd1",
+        "title": "좌표평면",
+        "skillIds": [
+         "m.m1.crd1"
+        ],
+        "concept": "점의 위치는 (x좌표, y좌표)로 나타내요. 부호에 따라 제1~4사분면이 정해지고, x축에 대한 대칭이동은 y좌표의 부호가 바뀌어요.",
+        "example": "(−2, 5)는 제2사분면",
+        "questionIds": [
+         "m-m1-crd1-1",
+         "m-m1-crd1-2",
+         "m-m1-crd1-3",
+         "m-m1-crd1-4"
+        ],
+        "challengeId": "m-m1-crd1-c"
+       },
+       {
+        "id": "math-m1-prp1",
+        "title": "정비례와 반비례",
+        "skillIds": [
+         "m.m1.prp1"
+        ],
+        "concept": "**정비례**는 y=ax, **반비례**는 $y=\\frac{a}{x}$ 꼴이에요. 정비례에서는 y÷x가, 반비례에서는 x×y가 일정해요.",
+        "example": "x=2일 때 y=6인 정비례: y=3x",
+        "questionIds": [
+         "m-m1-prp1-1",
+         "m-m1-prp1-2",
+         "m-m1-prp1-3",
+         "m-m1-prp1-4"
+        ],
+        "challengeId": "m-m1-prp1-c"
+       },
+       {
+        "id": "math-m1-sta1",
+        "title": "대푯값과 상대도수",
+        "skillIds": [
+         "m.m1.sta1"
+        ],
+        "concept": "**중앙값**은 크기순으로 나열한 가운데 값, **최빈값**은 가장 많이 나온 값이에요. **상대도수**=(도수)÷(전체 도수).",
+        "example": "1, 3, 5, 7, 9의 중앙값은 5",
+        "questionIds": [
+         "m-m1-sta1-1",
+         "m-m1-sta1-2",
+         "m-m1-sta1-3",
+         "m-m1-sta1-4"
+        ],
+        "challengeId": "m-m1-sta1-c"
        }
       ]
      }
@@ -2297,6 +2402,1915 @@
    "expectedSeconds": 60,
    "tags": [
     "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-1",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$(-3)+(5)$를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "부호가 같으면 절댓값을 더하고 같은 부호를 붙여요.",
+    "부호가 다르면 절댓값이 큰 쪽의 부호를 따라 절댓값의 차를 구해요."
+   ],
+   "explanation": "$(-3)+(5)=2$입니다.",
+   "role": "core",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-2",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$(4)-(9)$를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -5
+   },
+   "hints": [
+    "뺄셈은 빼는 수의 부호를 바꿔 더하는 것과 같아요.",
+    "$(4)+(-9)$로 바꿔 계산해요."
+   ],
+   "explanation": "$(4)-(9)=(4)+(-9)=-5$입니다.",
+   "role": "core",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-3",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$(-6)\\times(4)$를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -24
+   },
+   "hints": [
+    "부호가 같으면 양수, 다르면 음수예요.",
+    "절댓값끼리 곱해요."
+   ],
+   "explanation": "$(-6)\\times(4)=-24$입니다.",
+   "role": "core",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-4",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$(-18)\\div(3)$를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -6
+   },
+   "hints": [
+    "부호가 같으면 양수, 다르면 음수예요.",
+    "절댓값끼리 나눠요."
+   ],
+   "explanation": "$(-18)\\div(3)=-6$입니다.",
+   "role": "core",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-c",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "$\\frac{1}{2}+\\frac{3}{4}$의 값을 소수로 나타내면?",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.25,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "분모를 같게 통분해서 더해요.",
+    "분수를 소수로 바꿔요."
+   ],
+   "explanation": "$\\frac{1}{2}+\\frac{3}{4}=1.25$입니다.",
+   "role": "core",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-v1",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$(-7)+(-2)$를 계산하세요.",
+   "answer": {
+    "kind": "numeric",
+    "value": -9
+   },
+   "hints": [
+    "부호가 같으면 절댓값을 더하고 같은 부호를 붙여요.",
+    "부호가 다르면 절댓값이 큰 쪽의 부호를 따라 절댓값의 차를 구해요."
+   ],
+   "explanation": "$(-7)+(-2)=-9$입니다.",
+   "role": "variant",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-neg1-v2",
+   "site": "math",
+   "skillId": "m.m1.neg1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "수직선에서 점 P가 나타내는 수는 얼마일까요?",
+   "figure": {
+    "w": 260,
+    "h": 130,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       10,
+       90,
+       250,
+       90
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       24,
+       85,
+       24,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       24,
+       112
+      ],
+      "t": "-5"
+     },
+     {
+      "k": "line",
+      "p": [
+       45.2,
+       85,
+       45.2,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       45,
+       112
+      ],
+      "t": "-4"
+     },
+     {
+      "k": "line",
+      "p": [
+       66.4,
+       85,
+       66.4,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       66,
+       112
+      ],
+      "t": "-3"
+     },
+     {
+      "k": "line",
+      "p": [
+       87.6,
+       85,
+       87.6,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       88,
+       112
+      ],
+      "t": "-2"
+     },
+     {
+      "k": "line",
+      "p": [
+       108.8,
+       85,
+       108.8,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       109,
+       112
+      ],
+      "t": "-1"
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       85,
+       130,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       112
+      ],
+      "t": "0"
+     },
+     {
+      "k": "line",
+      "p": [
+       151.2,
+       85,
+       151.2,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       151,
+       112
+      ],
+      "t": "1"
+     },
+     {
+      "k": "line",
+      "p": [
+       172.4,
+       85,
+       172.4,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       172,
+       112
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       193.6,
+       85,
+       193.6,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       194,
+       112
+      ],
+      "t": "3"
+     },
+     {
+      "k": "line",
+      "p": [
+       214.8,
+       85,
+       214.8,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       215,
+       112
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       236,
+       85,
+       236,
+       95
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       236,
+       112
+      ],
+      "t": "5"
+     },
+     {
+      "k": "circle",
+      "c": [
+       66.4,
+       90
+      ],
+      "r": 5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       66,
+       76
+      ],
+      "t": "P"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": -3
+   },
+   "hints": [
+    "0의 왼쪽은 음수, 오른쪽은 양수예요.",
+    "눈금을 세어 보세요."
+   ],
+   "explanation": "점 P가 나타내는 수는 -3입니다.",
+   "role": "variant",
+   "family": "m1-neg1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-1",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "20 이하의 소수는 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "소수는 약수가 1과 자기 자신뿐인 2 이상의 자연수예요.",
+    "2, 3, 5, 7, ...을 차례로 세어 보세요."
+   ],
+   "explanation": "20 이하의 소수는 2, 3, 5, 7, 11, 13, 17, 19로 8개입니다.",
+   "role": "core",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-2",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$72$을 소인수분해하면 $2^a\\times3^b$입니다. $a+b$의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "72을 2로 나눌 수 있을 때까지 나눠요.",
+    "남은 수를 3으로 나눠요."
+   ],
+   "explanation": "$72=2^3\\times3^2$이므로 $a+b=5$입니다.",
+   "role": "core",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-3",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "12의 약수는 모두 몇 개일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "12을 나누어떨어지게 하는 수를 모두 찾아요.",
+    "작은 수부터 차례로 확인해요."
+   ],
+   "explanation": "12의 약수는 1, 2, 3, 4, 6, 12로 6개입니다.",
+   "role": "core",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-4",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "12와 18의 최대공약수는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "두 수의 공통인 약수를 찾아요.",
+    "그중 가장 큰 수가 최대공약수예요."
+   ],
+   "explanation": "12와 18의 최대공약수는 6입니다.",
+   "role": "core",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-c",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "12와 18의 최소공배수는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 36
+   },
+   "hints": [
+    "두 수의 공통인 배수를 작은 수부터 찾아요.",
+    "가장 작은 공통 배수가 최소공배수예요."
+   ],
+   "explanation": "12와 18의 최소공배수는 36입니다.",
+   "role": "core",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-v1",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "24와 36의 최대공약수는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "두 수의 공통인 약수를 찾아요.",
+    "그중 가장 큰 수가 최대공약수예요."
+   ],
+   "explanation": "24와 36의 최대공약수는 12입니다.",
+   "role": "variant",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-fac1-v2",
+   "site": "math",
+   "skillId": "m.m1.fac1",
+   "type": "true_false",
+   "difficulty": 3,
+   "prompt": "29은 소수일까요?",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "29의 약수를 찾아 보세요.",
+    "1과 자기 자신 말고 다른 약수가 있으면 소수가 아니에요."
+   ],
+   "explanation": "29의 약수는 1, 29이므로 네, 소수예요.",
+   "role": "variant",
+   "family": "m1-fac1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-1",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "점 A의 x좌표는 얼마일까요?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       128.3,
+       252,
+       128.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       51.7,
+       162,
+       51.7,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       122
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       62,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       45,
+       122
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       125.3,
+       30,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       30,
+       143
+      ],
+      "t": "-1"
+     },
+     {
+      "k": "line",
+      "p": [
+       73.3,
+       125.3,
+       73.3,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       73,
+       143
+      ],
+      "t": "1"
+     },
+     {
+      "k": "line",
+      "p": [
+       95,
+       125.3,
+       95,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       95,
+       143
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       116.7,
+       125.3,
+       116.7,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       143
+      ],
+      "t": "3"
+     },
+     {
+      "k": "line",
+      "p": [
+       138.3,
+       125.3,
+       138.3,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       138,
+       143
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       160,
+       125.3,
+       160,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       160,
+       143
+      ],
+      "t": "5"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       150,
+       54.7,
+       150
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       155
+      ],
+      "t": "-1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       106.7,
+       54.7,
+       106.7
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       112
+      ],
+      "t": "1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       85,
+       54.7,
+       85
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       90
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       63.3,
+       54.7,
+       63.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       68
+      ],
+      "t": "3",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       41.7,
+       54.7,
+       41.7
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       47
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       116.7,
+       85
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       77
+      ],
+      "t": "A",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "좌표는 (x좌표, y좌표) 순서예요.",
+    "눈금을 세어 읽어요."
+   ],
+   "explanation": "점 A의 x좌표는 3입니다.",
+   "role": "core",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-2",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "점 A의 y좌표는 얼마일까요?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       128.3,
+       252,
+       128.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       51.7,
+       162,
+       51.7,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       122
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       62,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       45,
+       122
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       125.3,
+       30,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       30,
+       143
+      ],
+      "t": "-1"
+     },
+     {
+      "k": "line",
+      "p": [
+       73.3,
+       125.3,
+       73.3,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       73,
+       143
+      ],
+      "t": "1"
+     },
+     {
+      "k": "line",
+      "p": [
+       95,
+       125.3,
+       95,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       95,
+       143
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       116.7,
+       125.3,
+       116.7,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       143
+      ],
+      "t": "3"
+     },
+     {
+      "k": "line",
+      "p": [
+       138.3,
+       125.3,
+       138.3,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       138,
+       143
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       160,
+       125.3,
+       160,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       160,
+       143
+      ],
+      "t": "5"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       150,
+       54.7,
+       150
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       155
+      ],
+      "t": "-1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       106.7,
+       54.7,
+       106.7
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       112
+      ],
+      "t": "1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       85,
+       54.7,
+       85
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       90
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       63.3,
+       54.7,
+       63.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       68
+      ],
+      "t": "3",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.7,
+       41.7,
+       54.7,
+       41.7
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       44,
+       47
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       116.7,
+       85
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       77
+      ],
+      "t": "A",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "좌표는 (x좌표, y좌표) 순서예요.",
+    "눈금을 세어 읽어요."
+   ],
+   "explanation": "점 A의 y좌표는 2입니다.",
+   "role": "core",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-3",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "점 (-2, 5)는 어느 사분면에 있을까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "제1사분면"
+    },
+    {
+     "id": "b",
+     "text": "제2사분면"
+    },
+    {
+     "id": "c",
+     "text": "제3사분면"
+    },
+    {
+     "id": "d",
+     "text": "제4사분면"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "x좌표와 y좌표의 부호를 살펴봐요.",
+    "(+,+)는 제1사분면이에요."
+   ],
+   "explanation": "x좌표 -2, y좌표 5이므로 제2사분면입니다.",
+   "role": "core",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-4",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "점 (4, -3)에서 x축까지의 거리는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "축까지의 거리는 좌표의 절댓값이에요.",
+    "x축까지는 y좌표를 봐요."
+   ],
+   "explanation": "y좌표 -3의 절댓값이므로 3입니다.",
+   "role": "core",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-c",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "점 (2, 5)를 x축에 대하여 대칭이동한 점의 y좌표는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": -5
+   },
+   "hints": [
+    "x축 대칭이면 x좌표는 그대로예요.",
+    "y좌표의 부호가 바뀌어요."
+   ],
+   "explanation": "대칭이동한 점은 (2, -5)입니다.",
+   "role": "core",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-v1",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "점 (3, -4)는 어느 사분면에 있을까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "제3사분면"
+    },
+    {
+     "id": "b",
+     "text": "제4사분면"
+    },
+    {
+     "id": "c",
+     "text": "제1사분면"
+    },
+    {
+     "id": "d",
+     "text": "제2사분면"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "x좌표와 y좌표의 부호를 살펴봐요.",
+    "(+,+)는 제1사분면이에요."
+   ],
+   "explanation": "x좌표 3, y좌표 -4이므로 제4사분면입니다.",
+   "role": "variant",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-crd1-v2",
+   "site": "math",
+   "skillId": "m.m1.crd1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "점 A의 x좌표는 얼마일까요?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       128.3,
+       252,
+       128.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       138.3,
+       162,
+       138.3,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       122
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       148,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       131,
+       122
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       125.3,
+       30,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       30,
+       143
+      ],
+      "t": "-5"
+     },
+     {
+      "k": "line",
+      "p": [
+       51.7,
+       125.3,
+       51.7,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       52,
+       143
+      ],
+      "t": "-4"
+     },
+     {
+      "k": "line",
+      "p": [
+       73.3,
+       125.3,
+       73.3,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       73,
+       143
+      ],
+      "t": "-3"
+     },
+     {
+      "k": "line",
+      "p": [
+       95,
+       125.3,
+       95,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       95,
+       143
+      ],
+      "t": "-2"
+     },
+     {
+      "k": "line",
+      "p": [
+       116.7,
+       125.3,
+       116.7,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       143
+      ],
+      "t": "-1"
+     },
+     {
+      "k": "line",
+      "p": [
+       160,
+       125.3,
+       160,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       160,
+       143
+      ],
+      "t": "1"
+     },
+     {
+      "k": "line",
+      "p": [
+       181.7,
+       125.3,
+       181.7,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       182,
+       143
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       203.3,
+       125.3,
+       203.3,
+       131.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       203,
+       143
+      ],
+      "t": "3"
+     },
+     {
+      "k": "line",
+      "p": [
+       135.3,
+       150,
+       141.3,
+       150
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       155
+      ],
+      "t": "-1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       135.3,
+       106.7,
+       141.3,
+       106.7
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       112
+      ],
+      "t": "1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       135.3,
+       85,
+       141.3,
+       85
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       90
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       135.3,
+       63.3,
+       141.3,
+       63.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       68
+      ],
+      "t": "3",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       135.3,
+       41.7,
+       141.3,
+       41.7
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       47
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       51.7,
+       63.3
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       60,
+       55
+      ],
+      "t": "A",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": -4
+   },
+   "hints": [
+    "좌표는 (x좌표, y좌표) 순서예요.",
+    "눈금을 세어 읽어요."
+   ],
+   "explanation": "점 A의 x좌표는 -4입니다.",
+   "role": "variant",
+   "family": "m1-crd1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-1",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "y가 x에 정비례하고 x=2일 때 y=6입니다. x=5일 때 y의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "정비례는 y=ax의 꼴이에요.",
+    "먼저 a를 구해요."
+   ],
+   "explanation": "a=6÷2=3이므로 y=3×5=15입니다.",
+   "role": "core",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-2",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "y가 x에 반비례하고 x=2일 때 y=12입니다. x=3일 때 y의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "반비례는 $y=\\frac{a}{x}$의 꼴이에요.",
+    "a=xy를 먼저 구해요."
+   ],
+   "explanation": "a=2×12=24이므로 y=24÷3=8입니다.",
+   "role": "core",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-3",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "정비례 관계 y=ax의 그래프가 점 (4, 12)을 지날 때 a의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "점의 좌표를 y=ax에 대입해요.",
+    "a=y÷x예요."
+   ],
+   "explanation": "a=12÷4=3입니다.",
+   "role": "core",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-4",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "반비례 관계 $y=\\frac{a}{x}$의 그래프가 점 (3, 8)을 지날 때 a의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 24
+   },
+   "hints": [
+    "점의 좌표를 $y=\\frac{a}{x}$에 대입해요.",
+    "a=x×y예요."
+   ],
+   "explanation": "a=3×8=24입니다.",
+   "role": "core",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-c",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "y가 x에 반비례하고 x=4일 때 y=9입니다. x=6일 때 y의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "반비례는 $y=\\frac{a}{x}$의 꼴이에요.",
+    "a=xy를 먼저 구해요."
+   ],
+   "explanation": "a=4×9=36이므로 y=36÷6=6입니다.",
+   "role": "core",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-v1",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "y가 x에 정비례하고 x=3일 때 y=12입니다. x=7일 때 y의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 28
+   },
+   "hints": [
+    "정비례는 y=ax의 꼴이에요.",
+    "먼저 a를 구해요."
+   ],
+   "explanation": "a=12÷3=4이므로 y=4×7=28입니다.",
+   "role": "variant",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-prp1-v2",
+   "site": "math",
+   "skillId": "m.m1.prp1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "정비례 관계 y=ax의 그래프가 점 (5, -10)을 지날 때 a의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": -2
+   },
+   "hints": [
+    "점의 좌표를 y=ax에 대입해요.",
+    "a=y÷x예요."
+   ],
+   "explanation": "a=-10÷5=-2입니다.",
+   "role": "variant",
+   "family": "m1-prp1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-1",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "자료 3, 9, 5, 7, 1의 중앙값은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "자료를 크기 순서대로 늘어놓아요.",
+    "가운데 값이 중앙값이에요. 개수가 짝수이면 가운데 두 값의 평균이에요."
+   ],
+   "explanation": "크기순으로 1, 3, 5, 7, 9이므로 중앙값은 5입니다.",
+   "role": "core",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-2",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "자료 2, 4, 4, 5, 4, 7의 최빈값은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "가장 많이 나오는 값이 최빈값이에요.",
+    "각 값이 몇 번 나오는지 세어 봐요."
+   ],
+   "explanation": "4이(가) 가장 많이 나오므로 최빈값은 4입니다.",
+   "role": "core",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-3",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "자료 12, 5, 20, 9에서 가장 큰 값과 가장 작은 값의 차는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "가장 큰 값과 가장 작은 값을 찾아요.",
+    "큰 값에서 작은 값을 빼요."
+   ],
+   "explanation": "20-5=15입니다.",
+   "role": "core",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-4",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "전체 도수가 40이고 어떤 계급의 도수가 10일 때, 그 계급의 상대도수는 얼마일까요? (소수)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.25,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "상대도수는 (그 계급의 도수)÷(전체 도수)예요.",
+    "나눗셈 결과를 소수로 써요."
+   ],
+   "explanation": "10÷40=0.25이므로 상대도수는 0.25입니다.",
+   "role": "core",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-c",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "자료 8, 2, 6, 4의 중앙값은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "자료를 크기 순서대로 늘어놓아요.",
+    "가운데 값이 중앙값이에요. 개수가 짝수이면 가운데 두 값의 평균이에요."
+   ],
+   "explanation": "크기순으로 2, 4, 6, 8이므로 중앙값은 5입니다.",
+   "role": "core",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-v1",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "자료 1, 1, 2, 3, 3, 3의 최빈값은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "가장 많이 나오는 값이 최빈값이에요.",
+    "각 값이 몇 번 나오는지 세어 봐요."
+   ],
+   "explanation": "3이(가) 가장 많이 나오므로 최빈값은 3입니다.",
+   "role": "variant",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-sta1-v2",
+   "site": "math",
+   "skillId": "m.m1.sta1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "전체 도수가 50이고 어떤 계급의 도수가 8일 때, 그 계급의 상대도수는 얼마일까요? (소수)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.16,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "상대도수는 (그 계급의 도수)÷(전체 도수)예요.",
+    "나눗셈 결과를 소수로 써요."
+   ],
+   "explanation": "8÷50=0.16이므로 상대도수는 0.16입니다.",
+   "role": "variant",
+   "family": "m1-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
    ],
    "status": "PUBLISHED"
   }

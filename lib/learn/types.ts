@@ -106,7 +106,7 @@ export interface Figure {
   s: FigureShape[];
 }
 /** Labels may only hold numerals, letters, a few math symbols and units. */
-export const FIGURE_TEXT = /^[A-Za-z0-9°²³π√.,+\-−=()′∠⊥∥×÷ ]{1,14}$/u;
+export const FIGURE_TEXT = /^[A-Za-z0-9°²³π√.,+\-−=()′∠⊥∥×÷% ]{1,14}$/u;
 
 export interface Question {
   id: string;
@@ -190,6 +190,8 @@ export interface Course {
   id: string;
   title: string;
   grade: Grade;
+  /** Elective subject course (high school): shown to H2 and H3 learners next to their own grade's course. */
+  elective?: boolean;
   /** Game-world flavour. */
   world: { name: string; emoji: string; tagline: string };
   units: Unit[];

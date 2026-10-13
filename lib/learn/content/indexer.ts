@@ -65,14 +65,16 @@ export function toMetaBundle(bundle: ContentBundle): MetaBundle {
  */
 function coursesFor(all: Course[], grade: Grade, level: ReturnType<typeof schoolLevel>): Course[] {
   if (level === "elementary" || level === "language") return all.filter((c) => c.grade === grade);
-  const secondary = all.filter((c) => schoolLevel(c.grade) === "secondary");
+  const secondary = all.filter((c) => schoolLevel(c.grade) === "secondary" && !c.elective);
+  // elective subjects (economic mathematics, ...) sit next to the grade course of the learners who may take them: H2 and H3
+  const electives = grade === "H2" || grade === "H3" ? all.filter((c) => c.elective) : [];
   const own = secondary.filter((c) => c.grade === grade);
-  if (own.length) return own;
+  if (own.length) return [...own, ...electives];
   for (let i = SECONDARY_GRADES.indexOf(grade as (typeof SECONDARY_GRADES)[number]) - 1; i >= 0; i--) {
     const lower = secondary.filter((c) => c.grade === SECONDARY_GRADES[i]);
-    if (lower.length) return lower;
+    if (lower.length) return [...lower, ...electives];
   }
-  return secondary;
+  return [...secondary, ...electives];
 }
 
 export function scopeToGrade<T extends { catalog: MetaBundle["catalog"]; questions: Array<{ skillId: string }> }>(bundle: T, grade: Grade): T {

@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Qual é o número de {cat} na tabela?",
+      "hints": [
+        "Encontre a célula de {cat}.",
+        "Leia o número escrito nela."
+      ],
+      "expl": "O número de {cat} é {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Qual é a soma de todos os números da tabela?",
+      "hints": [
+        "Leia o número de cada célula.",
+        "Some todos."
+      ],
+      "expl": "A soma é {sum}, então a resposta é {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Quantos círculos há na coluna mais alta do gráfico?",
+      "hints": [
+        "Conte os círculos de cada coluna.",
+        "Encontre a coluna mais alta."
+      ],
+      "expl": "A coluna mais alta tem {ans} círculos."
+    },
+    "symbolDiff": {
+      "prompt": "Quantos a mais tem a maior coluna do que a menor?",
+      "hints": [
+        "Encontre primeiro a maior e a menor quantidade.",
+        "Subtraia o menor do maior."
+      ],
+      "expl": "{max}-{min}={ans}, então tem {ans} a mais."
+    },
+    "mostWhich": {
+      "prompt": "Qual item é o maior no gráfico?",
+      "hints": [
+        "Compare os números dos itens.",
+        "Encontre o maior número."
+      ],
+      "expl": "O maior item é {name}."
+    },
+    "compareCount": {
+      "prompt": "Quantos a mais {a} tem do que {b}?",
+      "hints": [
+        "Leia os números de {a} e de {b}.",
+        "Subtraia o menor do maior."
+      ],
+      "expl": "{x}-{y}={ans}, então {a} tem {ans} a mais."
+    },
+    "lineRead": {
+      "prompt": "Qual é o valor em {cat} no gráfico de linhas?",
+      "hints": [
+        "Encontre {cat} no eixo horizontal.",
+        "Leia o valor do ponto acima dele."
+      ],
+      "expl": "O valor em {cat} é {ans}."
+    },
+    "lineMax": {
+      "prompt": "Qual é o maior valor no gráfico de linhas?",
+      "hints": [
+        "Compare os valores de todos os pontos.",
+        "Encontre o ponto mais alto."
+      ],
+      "expl": "O maior valor é {ans}."
+    },
+    "lineChange": {
+      "prompt": "Em quanto o valor aumentou de {from} para {to}?",
+      "hints": [
+        "Leia os valores em {from} e em {to}.",
+        "Subtraia o primeiro valor do valor posterior."
+      ],
+      "expl": "{b}-{a}={ans}, então aumentou {ans}."
+    },
+    "mean": {
+      "prompt": "Qual é a média destes números? {list}",
+      "hints": [
+        "A média é (soma de todos) ÷ (quantidade).",
+        "Some todos primeiro."
+      ],
+      "expl": "({sum})÷{n}={ans}, então a média é {ans}."
+    },
+    "meanMissing": {
+      "prompt": "A média de quatro números é {m} e três deles são {list}. Qual é o quarto número?",
+      "hints": [
+        "A soma dos quatro números é média × 4.",
+        "Subtraia os três números conhecidos da soma."
+      ],
+      "expl": "{m}×4={total} e {total}-({known})={ans}, então é {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Uma caixa tem {a} bolas A e {b} bolas B. Uma bola é retirada. Qual é a probabilidade de ser uma bola A, em número decimal?",
+      "hints": [
+        "Probabilidade = (casos favoráveis) ÷ (todos os casos).",
+        "Encontre primeiro o total de bolas."
+      ],
+      "expl": "{a}÷{total}={ans}, então a probabilidade é {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Impossível é 0 e certo é 1.",
+        "Igualmente provável é $\\frac{1}{2}$."
+      ],
+      "expl": "A probabilidade deste evento é: {name}."
+    },
+    "pieCount": {
+      "prompt": "No gráfico circular, A é {p}% do total. O total é {t} pessoas. Quantas são A?",
+      "hints": [
+        "{p}% é $\\frac{p}{100}$.",
+        "Multiplique o total pela razão."
+      ],
+      "expl": "{t}×{p}÷100={ans}, então {ans} pessoas."
+    },
+    "pieRest": {
+      "prompt": "Três partes de um gráfico circular são {a}%, {b}% e {c}%. Qual é a porcentagem da quarta parte? (%)",
+      "hints": [
+        "O total é 100%.",
+        "Subtraia as três partes de 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, então é {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Que porcentagem do total é {cat} no gráfico de faixa? (%)",
+      "hints": [
+        "Encontre a parte de {cat}.",
+        "Leia a porcentagem escrita abaixo dela."
+      ],
+      "expl": "{cat} é {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Calcule $({a})+({b})$.",
+      "hints": [
+        "Sinais iguais: some os valores absolutos e mantenha o sinal.",
+        "Sinais diferentes: subtraia os valores absolutos e use o sinal do maior."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Calcule $({a})-({b})$.",
+      "hints": [
+        "Subtrair é somar o número oposto.",
+        "Reescreva como $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Calcule $({a})\\times({b})$.",
+      "hints": [
+        "Sinais iguais dão resultado positivo, sinais diferentes negativo.",
+        "Multiplique os valores absolutos."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Calcule $({a})\\div({b})$.",
+      "hints": [
+        "Sinais iguais dão resultado positivo, sinais diferentes negativo.",
+        "Divida os valores absolutos."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "Quanto é $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ em número decimal?",
+      "hints": [
+        "Use um denominador comum e some.",
+        "Transforme a fração em número decimal."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Que número o ponto P representa na reta numérica?",
+      "hints": [
+        "À esquerda do 0 é negativo, à direita do 0 é positivo.",
+        "Conte as marcas."
+      ],
+      "expl": "O ponto P representa {ans}."
+    },
+    "primeCount": {
+      "prompt": "Quantos números primos há até {n}?",
+      "hints": [
+        "Um número primo tem exatamente dois divisores: 1 e ele mesmo.",
+        "Conte 2, 3, 5, 7, ... em ordem."
+      ],
+      "expl": "Os primos até {n} são {list}: são {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ decomposto em fatores primos é $2^a\\times3^b$. Quanto é $a+b$?",
+      "hints": [
+        "Divida {n} por 2 enquanto for possível.",
+        "Depois divida o que sobrar por 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, então $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "Quantos divisores {n} tem?",
+      "hints": [
+        "Encontre todos os números que dividem {n} exatamente.",
+        "Verifique do menor para o maior."
+      ],
+      "expl": "Os divisores de {n} são {list}: são {ans}."
+    },
+    "gcd": {
+      "prompt": "Qual é o máximo divisor comum de {a} e {b}?",
+      "hints": [
+        "Encontre os divisores que os dois números têm em comum.",
+        "O maior deles é o máximo divisor comum."
+      ],
+      "expl": "O máximo divisor comum de {a} e {b} é {ans}."
+    },
+    "lcm": {
+      "prompt": "Qual é o mínimo múltiplo comum de {a} e {b}?",
+      "hints": [
+        "Liste os múltiplos comuns aos dois números, do menor para o maior.",
+        "O menor múltiplo comum é o mínimo múltiplo comum."
+      ],
+      "expl": "O mínimo múltiplo comum de {a} e {b} é {ans}."
+    },
+    "isPrime": {
+      "prompt": "{n} é um número primo?",
+      "hints": [
+        "Procure os divisores de {n}.",
+        "Se tem um divisor diferente de 1 e dele mesmo, não é primo."
+      ],
+      "expl": "Os divisores de {n} são {list}, então {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Qual é a coordenada {axis} do ponto A?",
+      "hints": [
+        "Um par de coordenadas é escrito (x, y).",
+        "Conte na malha."
+      ],
+      "expl": "A coordenada {axis} de A é {ans}."
+    },
+    "quadrant": {
+      "prompt": "Em que quadrante está o ponto ({a}, {b})?",
+      "hints": [
+        "Observe os sinais das coordenadas x e y.",
+        "(+,+) é o 1.º quadrante."
+      ],
+      "expl": "x é {a} e y é {b}, então está em {name}."
+    },
+    "distAxis": {
+      "prompt": "Qual é a distância do ponto ({a}, {b}) ao eixo {axis}?",
+      "hints": [
+        "A distância a um eixo é o valor absoluto de uma coordenada.",
+        "Para o eixo {axis}, observe a coordenada {which}."
+      ],
+      "expl": "É o valor absoluto da coordenada {which} {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "O ponto ({a}, {b}) é refletido no eixo x. Qual é a coordenada y do novo ponto?",
+      "hints": [
+        "Uma reflexão no eixo x mantém a coordenada x.",
+        "O sinal da coordenada y se inverte."
+      ],
+      "expl": "O novo ponto é ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y é diretamente proporcional a x, e y={y1} quando x={x1}. Quanto é y quando x={x2}?",
+      "hints": [
+        "Proporcionalidade direta é y=ax.",
+        "Encontre a primeiro."
+      ],
+      "expl": "a={y1}÷{x1}={k}, então y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y é inversamente proporcional a x, e y={y1} quando x={x1}. Quanto é y quando x={x2}?",
+      "hints": [
+        "Proporcionalidade inversa é $y=\\frac{a}{x}$.",
+        "Encontre a=xy primeiro."
+      ],
+      "expl": "a={x1}×{y1}={k}, então y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "O gráfico da proporcionalidade direta y=ax passa pelo ponto ({x1}, {y1}). Quanto é a?",
+      "hints": [
+        "Substitua o ponto em y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "O gráfico da proporcionalidade inversa $y=\\frac{a}{x}$ passa por ({x1}, {y1}). Quanto é a?",
+      "hints": [
+        "Substitua o ponto em $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Qual é a mediana dos dados {list}?",
+      "hints": [
+        "Coloque os dados em ordem de tamanho.",
+        "O valor do meio é a mediana; com quantidade par, use a média dos dois do meio."
+      ],
+      "expl": "Em ordem: {sorted}, então a mediana é {ans}."
+    },
+    "mode": {
+      "prompt": "Qual é a moda dos dados {list}?",
+      "hints": [
+        "A moda é o valor que aparece mais vezes.",
+        "Conte quantas vezes cada valor aparece."
+      ],
+      "expl": "{ans} aparece mais vezes, então a moda é {ans}."
+    },
+    "dataRange": {
+      "prompt": "Qual é a diferença entre o maior e o menor valor de {list}?",
+      "hints": [
+        "Encontre o maior e o menor valor.",
+        "Subtraia o menor do maior."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "A frequência total é {t} e uma classe tem frequência {f}. Qual é a frequência relativa dessa classe? (decimal)",
+      "hints": [
+        "Frequência relativa = (frequência da classe) ÷ (frequência total).",
+        "Escreva o resultado como número decimal."
+      ],
+      "expl": "{f}÷{t}={ans}, então a frequência relativa é {ans}."
+    },
+    "periodLen": {
+      "prompt": "Quando $\\frac{1}{{d}}$ é escrito como decimal, quantos algarismos tem o período?",
+      "hints": [
+        "Divida 1 por {d}.",
+        "O período é a parte que se repete."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, então o período tem {ans} algarismos."
+    },
+    "repeatFrac": {
+      "prompt": "A dízima periódica $0.\\dot{d}\\dot{e}$ é igual a $\\frac{x}{99}$. Quanto é x?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Escreva o número de dois algarismos ab como numerador."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ dá x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ é um decimal exato?",
+      "hints": [
+        "Simplifique a fração e depois decomponha o denominador em fatores primos.",
+        "Se os únicos fatores primos são 2 e 5, o decimal é exato."
+      ],
+      "expl": "O denominador {d2} tem fatores primos {fact}, então {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Qual é o algarismo na {k}.ª casa decimal?",
+      "hints": [
+        "O período 142857 tem 6 algarismos.",
+        "Use o resto de {k} ÷ 6 para encontrar a posição."
+      ],
+      "expl": "O resto de {k} ÷ 6 é {r}, então é o {r}.º algarismo: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Qual é o coeficiente angular da função afim $y={a}x+{b}$?",
+      "hints": [
+        "Em $y=ax+b$, o coeficiente angular é a.",
+        "Leia o coeficiente de x."
+      ],
+      "expl": "O coeficiente angular é {ans}."
+    },
+    "yInt": {
+      "prompt": "Qual é o intercepto com o eixo y de $y={a}x+{b}$?",
+      "hints": [
+        "O intercepto com o eixo y é o valor de y quando x=0.",
+        "Em $y=ax+b$ é b."
+      ],
+      "expl": "O intercepto com o eixo y é {ans}."
+    },
+    "xInt": {
+      "prompt": "Qual é o intercepto com o eixo x de $y={a}x+{b}$?",
+      "hints": [
+        "O intercepto com o eixo x é o valor de x quando y=0.",
+        "Resolva $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ dá x={ans}."
+    },
+    "crossX": {
+      "prompt": "Os gráficos de $y={a1}x+{b1}$ e $y={a2}x+{b2}$ se encontram em P. Qual é a coordenada x de P?",
+      "hints": [
+        "Na interseção os dois valores de y são iguais.",
+        "Resolva $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ dá x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Para a função afim $f(x)={a}x+{b}$, quanto é $f({c})$?",
+      "hints": [
+        "Coloque {c} no lugar de x.",
+        "Multiplique e depois some."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won são depositados por {n} anos a juros simples de {r}% ao ano. Quanto é o juro? (won)",
+      "hints": [
+        "Juro simples = capital × taxa × anos.",
+        "{r}% é {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, então o juro é {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "{p} won são depositados por {n} anos a juros compostos de {r}% ao ano. Qual é o montante total? (won)",
+      "hints": [
+        "Com juros compostos, os juros rendem juros.",
+        "Multiplique capital × (1 + taxa) {n} vezes."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, então o total é {ans} won."
+    },
+    "exchange": {
+      "prompt": "1 unidade de uma moeda estrangeira vale {r} won. Quantos won são {d} unidades dela? (won)",
+      "hints": [
+        "A taxa de câmbio é o valor de 1 unidade da moeda estrangeira em won.",
+        "Multiplique o número de unidades pela taxa."
+      ],
+      "expl": "{d}×{r}={ans}, então são {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "Um artigo custa {p} won e é acrescentado imposto sobre valor agregado de {t}%. Quantos won devem ser pagos? (won)",
+      "hints": [
+        "O imposto é preço × {t}%.",
+        "Some o imposto ao preço."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, então {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "A curva de demanda $p={a}-{b}q$ e a curva de oferta $p={c}+{d}q$ se encontram na quantidade de equilíbrio q. Quanto é q?",
+      "hints": [
+        "No equilíbrio o preço de demanda é igual ao preço de oferta.",
+        "Resolva $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ dá q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "A função de demanda é $p={a}-{b}q$. Qual é o máximo da receita $R=pq$?",
+      "hints": [
+        "$R=({a}-{b}q)q$ é uma função quadrática.",
+        "É máxima no vértice $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Em q={q} a receita é máxima: {ans}."
+    },
+    "elasticity": {
+      "prompt": "A demanda é $Q={a}-{b}p$. Qual é o valor absoluto da elasticidade-preço em $p={p0}$? (decimal)",
+      "hints": [
+        "A elasticidade absoluta é $\\frac{bp}{Q}$.",
+        "Primeiro encontre Q em $p={p0}$."
+      ],
+      "expl": "Q={q0}, então $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Quantas vezes A aparece na sequência de palavras {seq}?",
+      "hints": [
+        "Marque apenas os A ao contar.",
+        "Esta contagem é a componente A do vetor de frequências."
+      ],
+      "expl": "A aparece {ans} vezes."
+    },
+    "freqDot": {
+      "prompt": "Dois documentos têm vetores de frequência $\\vec{u}=({u1}, {u2}, {u3})$ e $\\vec{v}=({v1}, {v2}, {v3})$. Qual é o produto escalar $\\vec{u}\\cdot\\vec{v}$?",
+      "hints": [
+        "Multiplique as componentes correspondentes e some.",
+        "Quanto maior o produto escalar, mais parecidos são os documentos."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Uma imagem é guardada como a matriz $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Qual é a soma de todos os valores dos pixels?",
+      "hints": [
+        "Cada entrada é o brilho de um pixel.",
+        "Some as quatro entradas."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Um pixel tem valor {v}. Todos os pixels ficam {k} mais brilhantes. Qual é o novo valor?",
+      "hints": [
+        "Aumentar o brilho soma o mesmo número a cada entrada da matriz.",
+        "Some {k} a {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Qual é o coeficiente angular da reta de tendência que passa por ({x1}, {y1}) e ({x2}, {y2})?",
+      "hints": [
+        "Coeficiente angular = variação de y ÷ variação de x.",
+        "Calcule $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "As previsões são {pred} e os valores reais são {real}. Qual é o erro quadrático médio (a média dos erros ao quadrado)?",
+      "hints": [
+        "O erro é previsão − valor real.",
+        "Eleve cada erro ao quadrado e depois calcule a média."
+      ],
+      "expl": "Os erros ao quadrado são {sq} e a média deles é {ans}."
+    },
+    "gradStep": {
+      "prompt": "Para a perda $f(x)=x^2$, um passo de descida do gradiente a partir de x={x0} com taxa de aprendizagem {eta} dá um novo x igual a?",
+      "hints": [
+        "Descida do gradiente: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, então {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "Quantos cm são {v} m? (cm)",
+      "hints": [
+        "1 m é 100 cm.",
+        "Multiplique {v} por 100."
+      ],
+      "expl": "{v}×100={ans}, então {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "Quantos g são {v} kg? (g)",
+      "hints": [
+        "1 kg é 1000 g.",
+        "Multiplique {v} por 1000."
+      ],
+      "expl": "{v}×1000={ans}, então {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Quantos minutos são {v} horas? (min)",
+      "hints": [
+        "1 hora é 60 minutos.",
+        "Multiplique {v} por 60."
+      ],
+      "expl": "{v}×60={ans}, então {ans} minutos."
+    },
+    "discount": {
+      "prompt": "Um artigo custa {p} won e é vendido com {d}% de desconto. Qual é o preço de venda? (won)",
+      "hints": [
+        "O desconto é preço × {d}%.",
+        "Subtraia o desconto do preço."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, então {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "Os ingredientes A e B são misturados na razão {a}:{b} para fazer {t} g no total. Quantos g de A são necessários? (g)",
+      "hints": [
+        "O todo é {a}+{b}={s} partes.",
+        "A é $\\frac{a}{s}$ do todo."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, então {ans} g."
+    },
+    "tiles": {
+      "prompt": "Uma parede tem {w} m de largura e {h} m de altura. Quantos azulejos de 1 m × 1 m a cobrem? (azulejos)",
+      "hints": [
+        "Encontre a área da parede.",
+        "Um azulejo tem área de 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, então {ans} azulejos."
+    },
+    "outfit": {
+      "prompt": "Há {a} camisas e {b} calças. Quantos conjuntos diferentes de uma camisa e uma calça existem?",
+      "hints": [
+        "Para cada camisa há {b} escolhas de calça.",
+        "Use o princípio multiplicativo."
+      ],
+      "expl": "{a}×{b}={ans}, então {ans} conjuntos."
+    },
+    "goldenRatio": {
+      "prompt": "A razão áurea satisfaz $a:b=(a+b):a$. Quando b=10, quanto vale a aproximadamente? (duas casas decimais)",
+      "hints": [
+        "A razão áurea é cerca de 1,618.",
+        "a é cerca de 1,618 vezes b."
+      ],
+      "expl": "a ≈ 10×1,618 = {ans}."
+    },
+    "octave": {
+      "prompt": "A altura do som é determinada pela frequência. Qual é a frequência em Hz da nota uma oitava acima de 440 Hz? (Hz)",
+      "hints": [
+        "Uma nota uma oitava acima tem o dobro da frequência.",
+        "Multiplique 440 por 2."
+      ],
+      "expl": "440×2={ans}, então {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Uma cela braille tem 6 pontos, cada um em relevo ou plano. Sem contar o padrão sem nenhum ponto em relevo, quantos padrões existem?",
+      "hints": [
+        "Cada ponto tem 2 possibilidades.",
+        "Pelo princípio multiplicativo $2^6$, depois subtraia 1."
+      ],
+      "expl": "$2^6-1={ans}$, então {ans} padrões."
+    },
+    "voteMajority": {
+      "prompt": "{n} pessoas votam. De quantos votos um candidato precisa, no mínimo, para ter a maioria? (votos)",
+      "hints": [
+        "A maioria é mais da metade de todos os votos.",
+        "Encontre o menor número inteiro acima da metade de {n}."
+      ],
+      "expl": "A metade de {n} é {half}; o menor número inteiro acima dela é {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Durante 5 dias, as concentrações de poeira fina foram {list} (µg/m³). Qual é a concentração média?",
+      "hints": [
+        "A média é (soma) ÷ (número de dias).",
+        "Some primeiro os 5 valores."
+      ],
+      "expl": "({sum})÷5={ans}, então a média é {ans}."
+    },
+    "percentChange": {
+      "prompt": "Um valor mudou de {a} para {b}. Em quantos por cento aumentou? (%)",
+      "hints": [
+        "Taxa de aumento = (quantidade aumentada) ÷ (valor inicial) × 100.",
+        "O aumento é {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, então {ans}%."
+    },
+    "stdev": {
+      "prompt": "Qual é o desvio padrão dos dados {list}? (desvio padrão populacional)",
+      "hints": [
+        "Encontre primeiro a média.",
+        "A raiz quadrada da média dos desvios ao quadrado (a variância) é o desvio padrão."
+      ],
+      "expl": "A média é {mean} e a variância é {var}, então o desvio padrão é {ans}."
+    },
+    "ciHalf": {
+      "prompt": "O desvio padrão populacional é {s} e o tamanho da amostra é {n}. Qual é a margem de erro de 95%, $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (duas casas decimais)",
+      "hints": [
+        "Encontre primeiro $\\sqrt{ n }$.",
+        "Divida σ por ele e multiplique por 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "A média amostral é {xbar}, a média nula é {mu}, σ={s} e n={n}. Qual é a estatística de teste $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$?",
+      "hints": [
+        "Encontre primeiro o denominador $σ/\\sqrt{ n }$.",
+        "Subtraia a média nula da média amostral e divida."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Em um teste bilateral ao nível de 5%, o valor crítico é 1,96. A estatística de teste é z={z}. Qual é a conclusão?",
+      "hints": [
+        "Se $|z|$ é maior que 1,96, rejeita-se a hipótese nula.",
+        "Compare o valor absoluto de z com 1,96."
+      ],
+      "expl": "|z|={az}, então: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Observe como a amostra é escolhida.",
+        "Escolha a correspondente: aleatória, estratificada, por conglomerados ou sistemática."
+      ],
+      "expl": "Este método é {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Pense em de onde vêm os dados da pesquisa.",
+        "Escolha pesquisa bibliográfica, estudo de caso, experimento ou desenvolvimento."
+      ],
+      "expl": "Este método de pesquisa é {name}."
+    },
+    "researchStep": {
+      "prompt": "O que se deve fazer logo depois de escolher o tema da pesquisa?",
+      "hints": [
+        "A pesquisa segue: planejar → realizar → apresentar → refletir.",
+        "Depois do tema, decide-se como investigá-lo."
+      ],
+      "expl": "Depois de escolher o tema: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "A ética em pesquisa baseia-se na honestidade e na citação das fontes.",
+        "Pense em como o trabalho e os resultados dos outros devem ser tratados."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "1.º quadrante",
+    "q2": "2.º quadrante",
+    "q3": "3.º quadrante",
+    "q4": "4.º quadrante",
+    "p0": "0 (não pode acontecer)",
+    "phalf": "1/2 (igualmente provável)",
+    "p1": "1 (é certo)",
+    "random": "amostragem aleatória simples",
+    "strat": "amostragem estratificada",
+    "cluster": "amostragem por conglomerados",
+    "system": "amostragem sistemática",
+    "reject": "Rejeitar a hipótese nula",
+    "keep": "Não rejeitar a hipótese nula",
+    "literature": "pesquisa bibliográfica",
+    "casestudy": "estudo de caso",
+    "experiment": "experimento matemático",
+    "develop": "pesquisa de desenvolvimento",
+    "plan": "Fazer um plano de pesquisa",
+    "carry": "Realizar a pesquisa",
+    "present": "Apresentar os resultados",
+    "reflect": "Refletir sobre o processo",
+    "yesPrime": "Sim, é primo",
+    "noPrime": "Não, não é primo",
+    "yesFinite": "Sim, é um decimal exato",
+    "noFinite": "Não, é uma dízima periódica",
+    "yesOk": "Verdadeiro",
+    "noOk": "Falso"
+  },
+  "text": {
+    "ev_coin": "Qual é a probabilidade de sair cara ao lançar uma moeda uma vez?",
+    "ev_sun": "Qual é a probabilidade de o sol nascer a leste amanhã?",
+    "ev_die": "Qual é a probabilidade de sair 7 ao lançar um dado comum de seis faces?",
+    "sm_system": "Cada 10.º aluno da lista da escola foi escolhido para uma pesquisa. Que método de amostragem é este?",
+    "sm_random": "Trinta alunos foram escolhidos da lista da escola com números aleatórios. Que método de amostragem é este?",
+    "sm_strat": "Alunos foram escolhidos de cada ano na proporção do número de alunos desse ano. Que método de amostragem é este?",
+    "sm_cluster": "Algumas turmas foram escolhidas primeiro e todos os alunos das turmas escolhidas foram pesquisados. Que método de amostragem é este?",
+    "rm_lit": "Ler artigos e livros da biblioteca e da internet e resumi-los é qual método de pesquisa?",
+    "rm_case": "Coletar e comparar exemplos reais de várias escolas é qual método de pesquisa?",
+    "rm_exp": "Lançar dados você mesmo e registrar os resultados para encontrar um padrão é qual método de pesquisa?",
+    "rm_dev": "Construir uma nova ferramenta para aprender matemática e testar como ela funciona é qual método de pesquisa?",
+    "et_cite": "Copiar o texto de outra pessoa sem dizer de onde vem vai contra a ética em pesquisa.",
+    "et_cite_r": "Usar o trabalho de alguém sem citar a fonte é plágio, então a afirmação é verdadeira.",
+    "et_fake": "Se os resultados diferem da hipótese, não há problema em mudar os números para que combinem.",
+    "et_fake_r": "Mudar resultados é fabricação e viola a ética em pesquisa, então a afirmação é falsa."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Organizar e mostrar dados em tabelas e gráficos",
+      "concept": "Classifique as coisas por uma regra e conte-as; uma **tabela** ou um **gráfico** permite comparar num relance.",
+      "example": "A 3, B 5, C 2 → 10 no total"
+    },
+    "E4dat1": {
+      "title": "Ler gráficos de linhas",
+      "concept": "Um **gráfico de linhas** mostra como um valor muda ao longo do tempo com pontos e linhas. Subir significa aumento, descer significa diminuição.",
+      "example": "12 no dia 1 → 20 no dia 3: subiu 8"
+    },
+    "E5dat1": {
+      "title": "Calcular a média",
+      "concept": "A **média** é a soma dos dados dividida pela quantidade de dados.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Probabilidade",
+      "concept": "A **probabilidade** de um evento é um número de 0 (impossível) a 1 (certo): probabilidade = (casos favoráveis) ÷ (todos os casos).",
+      "example": "3 bolas A, 2 bolas B → probabilidade de A é $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Gráficos de faixa e gráficos circulares",
+      "concept": "Os **gráficos de faixa** e os **gráficos circulares** tratam o todo como 100% e mostram a parte de cada um. Parte = todo × porcentagem.",
+      "example": "25% de 200 pessoas → 50 pessoas"
+    },
+    "M1neg1": {
+      "title": "Números inteiros e racionais",
+      "concept": "Sinais iguais: some os valores absolutos. Sinais diferentes: subtraia-os e mantenha o sinal do maior. Em × e ÷ o resultado é + se os sinais são iguais e − se não.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Decomposição em fatores primos, MDC e MMC",
+      "concept": "Escrever um número como produto de primos é a **decomposição em fatores primos**. O maior divisor comum é o **máximo divisor comum**, o menor múltiplo comum é o **mínimo múltiplo comum**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "O plano cartesiano",
+      "concept": "Um ponto é escrito (x, y). Os sinais decidem os quadrantes 1 a 4, e refletir no eixo x inverte o sinal de y.",
+      "example": "(−2, 5) está no 2.º quadrante"
+    },
+    "M1prp1": {
+      "title": "Proporcionalidade direta e inversa",
+      "concept": "**Proporcionalidade direta** é y=ax e **proporcionalidade inversa** é $y=\\frac{a}{x}$. Na direta, y÷x é constante; na inversa, x×y é constante.",
+      "example": "y=6 em x=2 (direta): y=3x"
+    },
+    "M1sta1": {
+      "title": "Medidas de tendência central e frequência relativa",
+      "concept": "A **mediana** é o valor do meio em ordem, a **moda** é o valor mais frequente. **Frequência relativa** = frequência ÷ total.",
+      "example": "A mediana de 1, 3, 5, 7, 9 é 5"
+    },
+    "M2rec1": {
+      "title": "Dízimas periódicas",
+      "concept": "Um decimal cujos algarismos se repetem para sempre é uma **dízima periódica**; a parte que se repete é o seu **período**. Uma fração irredutível é um decimal exato só se o denominador tiver apenas os fatores 2 e 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Funções afins e equações do 1.º grau",
+      "concept": "Em y=ax+b, a é o coeficiente angular e b o intercepto com o eixo y. A interseção de dois gráficos é a solução das duas equações juntas.",
+      "example": "y=2x−6 tem intercepto com o eixo x igual a 3"
+    },
+    "el.econ1": {
+      "title": "Juros, taxas de câmbio e impostos",
+      "concept": "Juro simples = capital × taxa × anos; montante composto = capital × (1 + taxa)^anos. A taxa de câmbio é o valor de 1 unidade de uma moeda; imposto é preço × uma porcentagem.",
+      "example": "10000 won, 10% composto por 2 anos → 12100 won"
+    },
+    "el.econ2": {
+      "title": "Demanda, oferta e otimização",
+      "concept": "O equilíbrio é onde as curvas de demanda e oferta se encontram. A receita máxima R=pq e a elasticidade vêm de funções e derivadas.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Dados de texto e imagem",
+      "concept": "Um documento torna-se um vetor de contagens de palavras e uma imagem uma matriz de valores de pixels. Quanto maior o produto escalar, mais parecidos são dois documentos.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Previsão e otimização",
+      "concept": "As previsões melhoram com o coeficiente angular de uma reta de tendência, a média dos erros ao quadrado (a perda) e a descida do gradiente $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Conversão de unidades e razões",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 hora = 60 minutos. Preço de venda = preço × (1 − desconto); misturar na razão a:b dá a A a fração $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Área, contagem e crescimento",
+      "concept": "A área dá o material necessário, o princípio multiplicativo o número de pares, e (aumento) ÷ (valor inicial) × 100 a taxa de crescimento.",
+      "example": "4 camisas, 3 calças → 12 conjuntos"
+    },
+    "el.cul1": {
+      "title": "Matemática na arte e no dia a dia",
+      "concept": "A razão áurea é cerca de 1,618; uma nota uma oitava acima tem o dobro da frequência; 6 pontos braille dão $2^6-1=63$ padrões; maioria é mais da metade.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Matemática na sociedade e no ambiente",
+      "concept": "Médias e taxas de crescimento permitem analisar problemas sociais e ambientais matematicamente. Taxa de crescimento = (aumento) ÷ (valor inicial) × 100.",
+      "example": "De 40 para 50 → aumento de 25%"
+    },
+    "el.sta1": {
+      "title": "Questões estatísticas e amostras",
+      "concept": "O desvio padrão é a raiz quadrada da média dos desvios ao quadrado (a variância). As amostras são obtidas por amostragem aleatória, estratificada, por conglomerados ou sistemática.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 tem desvio padrão 2"
+    },
+    "el.sta2": {
+      "title": "Estimação e testes de hipóteses",
+      "concept": "A margem de erro de 95% é $1.96\\times\\frac{σ}{\\sqrt{n}}$. Se $|z|$ de $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ é maior que 1,96, rejeita-se a hipótese nula ao nível de 5%.",
+      "example": "σ=10, n=100 → margem 1,96"
+    },
+    "el.res1": {
+      "title": "Métodos de pesquisa",
+      "concept": "Um projeto de pesquisa matemática pode usar pesquisa bibliográfica, estudos de caso, experimentos matemáticos ou pesquisa de desenvolvimento.",
+      "example": "Lançar dados para encontrar um padrão → experimento"
+    },
+    "el.res2": {
+      "title": "Etapas da pesquisa e ética",
+      "concept": "A pesquisa segue tema → plano → realização → apresentação → reflexão. Citar fontes e nunca alterar resultados é ética em pesquisa.",
+      "example": "Depois do tema vem o plano de pesquisa"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Matemática Econômica",
+      "world": "Cidade da Economia",
+      "tagline": "Aprenda a matemática do dinheiro e dos mercados",
+      "unit": "Números e economia, funções e economia"
+    },
+    "ai": {
+      "title": "Matemática para IA",
+      "world": "Laboratório de IA",
+      "tagline": "Conheça a matemática dentro dos dados e da otimização",
+      "unit": "Processamento de dados, previsão e otimização"
+    },
+    "job": {
+      "title": "Matemática no Trabalho",
+      "world": "Cidade da Oficina",
+      "tagline": "Pratique a matemática usada no trabalho",
+      "unit": "Números e unidades, razão, área e contagem"
+    },
+    "cul": {
+      "title": "Matemática e Cultura",
+      "world": "Praça da Cultura",
+      "tagline": "Encontre matemática na arte e no dia a dia",
+      "unit": "Arte e vida, sociedade e ambiente"
+    },
+    "sta": {
+      "title": "Estatística Prática",
+      "world": "Laboratório de Estatística",
+      "tagline": "Desenvolva a capacidade de julgar a partir de dados",
+      "unit": "Dados e amostras, estimação e testes"
+    },
+    "res": {
+      "title": "Projetos de Pesquisa Matemática",
+      "world": "Oficina de Pesquisa",
+      "tagline": "Aprenda os métodos e a ética da pesquisa",
+      "unit": "Métodos, procedimento e ética"
+    }
+  }
+}

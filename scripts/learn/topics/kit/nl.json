@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Welk getal staat er in de tabel bij {cat}?",
+      "hints": [
+        "Zoek het vakje van {cat}.",
+        "Lees het getal af dat erin staat."
+      ],
+      "expl": "Het getal bij {cat} is {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Wat is de som van alle getallen in de tabel?",
+      "hints": [
+        "Lees het getal in elk vakje af.",
+        "Tel ze allemaal op."
+      ],
+      "expl": "De som is {sum}, dus het antwoord is {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Hoeveel cirkels staan er in de hoogste kolom van de grafiek?",
+      "hints": [
+        "Tel de cirkels in elke kolom.",
+        "Zoek de hoogste kolom."
+      ],
+      "expl": "De hoogste kolom heeft {ans} cirkels."
+    },
+    "symbolDiff": {
+      "prompt": "Hoeveel meer heeft de grootste kolom dan de kleinste?",
+      "hints": [
+        "Zoek eerst het grootste en het kleinste aantal.",
+        "Trek het kleinste van het grootste af."
+      ],
+      "expl": "{max}-{min}={ans}, dus het zijn er {ans} meer."
+    },
+    "mostWhich": {
+      "prompt": "Welk item is het grootst in de grafiek?",
+      "hints": [
+        "Vergelijk de aantallen van de items.",
+        "Zoek het grootste getal."
+      ],
+      "expl": "Het grootste item is {name}."
+    },
+    "compareCount": {
+      "prompt": "Hoeveel meer heeft {a} dan {b}?",
+      "hints": [
+        "Lees de aantallen van {a} en {b} af.",
+        "Trek het kleinste van het grootste af."
+      ],
+      "expl": "{x}-{y}={ans}, dus {a} heeft er {ans} meer."
+    },
+    "lineRead": {
+      "prompt": "Wat is de waarde bij {cat} in de lijngrafiek?",
+      "hints": [
+        "Zoek {cat} op de horizontale as.",
+        "Lees de waarde van het punt erboven af."
+      ],
+      "expl": "De waarde bij {cat} is {ans}."
+    },
+    "lineMax": {
+      "prompt": "Wat is de grootste waarde in de lijngrafiek?",
+      "hints": [
+        "Vergelijk de waarden van alle punten.",
+        "Zoek het hoogste punt."
+      ],
+      "expl": "De grootste waarde is {ans}."
+    },
+    "lineChange": {
+      "prompt": "Hoeveel is de waarde gestegen van {from} naar {to}?",
+      "hints": [
+        "Lees de waarden bij {from} en {to} af.",
+        "Trek de eerste waarde van de latere af."
+      ],
+      "expl": "{b}-{a}={ans}, dus de stijging is {ans}."
+    },
+    "mean": {
+      "prompt": "Wat is het gemiddelde van deze getallen? {list}",
+      "hints": [
+        "Het gemiddelde is (som van alles) ÷ (aantal).",
+        "Tel eerst alles op."
+      ],
+      "expl": "({sum})÷{n}={ans}, dus het gemiddelde is {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Het gemiddelde van vier getallen is {m} en drie ervan zijn {list}. Wat is het vierde getal?",
+      "hints": [
+        "De som van de vier getallen is gemiddelde × 4.",
+        "Trek de drie bekende getallen van de som af."
+      ],
+      "expl": "{m}×4={total} en {total}-({known})={ans}, dus het is {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "In een doos zitten {a} A-ballen en {b} B-ballen. Er wordt één bal uit gehaald. Hoe groot is de kans dat het een A-bal is, als decimaal getal?",
+      "hints": [
+        "Kans = (gunstige gevallen) ÷ (alle gevallen).",
+        "Bepaal eerst het totale aantal ballen."
+      ],
+      "expl": "{a}÷{total}={ans}, dus de kans is {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Onmogelijk is 0 en zeker is 1.",
+        "Even waarschijnlijk is $\\frac{1}{2}$."
+      ],
+      "expl": "De kans op deze gebeurtenis is: {name}."
+    },
+    "pieCount": {
+      "prompt": "In het cirkeldiagram is A {p}% van het geheel. Het geheel is {t} personen. Hoeveel personen zijn A?",
+      "hints": [
+        "{p}% is $\\frac{p}{100}$.",
+        "Vermenigvuldig het geheel met de verhouding."
+      ],
+      "expl": "{t}×{p}÷100={ans}, dus {ans} personen."
+    },
+    "pieRest": {
+      "prompt": "Drie delen van een cirkeldiagram zijn {a}%, {b}% en {c}%. Hoeveel procent is het vierde deel? (%)",
+      "hints": [
+        "Het geheel is 100%.",
+        "Trek de drie delen van 100 af."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, dus het is {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Hoeveel procent van het geheel is {cat} in het bandendiagram? (%)",
+      "hints": [
+        "Zoek het deel van {cat}.",
+        "Lees het percentage eronder af."
+      ],
+      "expl": "{cat} is {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Bereken $({a})+({b})$.",
+      "hints": [
+        "Gelijke tekens: tel de absolute waarden op en behoud het teken.",
+        "Verschillende tekens: trek de absolute waarden af en neem het teken van de grootste."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Bereken $({a})-({b})$.",
+      "hints": [
+        "Aftrekken is het tegengestelde getal optellen.",
+        "Schrijf het als $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Bereken $({a})\\times({b})$.",
+      "hints": [
+        "Gelijke tekens geven een positief resultaat, verschillende tekens een negatief.",
+        "Vermenigvuldig de absolute waarden."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Bereken $({a})\\div({b})$.",
+      "hints": [
+        "Gelijke tekens geven een positief resultaat, verschillende tekens een negatief.",
+        "Deel de absolute waarden."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "Wat is $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ als decimaal getal?",
+      "hints": [
+        "Gebruik een gemeenschappelijke noemer en tel op.",
+        "Zet de breuk om in een decimaal getal."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Welk getal geeft punt P aan op de getallenlijn?",
+      "hints": [
+        "Links van 0 is negatief, rechts van 0 is positief.",
+        "Tel de streepjes."
+      ],
+      "expl": "Punt P geeft {ans} aan."
+    },
+    "primeCount": {
+      "prompt": "Hoeveel priemgetallen zijn er tot en met {n}?",
+      "hints": [
+        "Een priemgetal heeft precies twee delers: 1 en zichzelf.",
+        "Tel 2, 3, 5, 7, ... op volgorde."
+      ],
+      "expl": "De priemgetallen tot en met {n} zijn {list}: dat zijn er {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ ontbonden in priemfactoren is $2^a\\times3^b$. Wat is $a+b$?",
+      "hints": [
+        "Deel {n} door 2 zolang het kan.",
+        "Deel wat overblijft dan door 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, dus $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "Hoeveel delers heeft {n}?",
+      "hints": [
+        "Zoek elk getal dat {n} zonder rest deelt.",
+        "Controleer vanaf het kleinste omhoog."
+      ],
+      "expl": "De delers van {n} zijn {list}: dat zijn er {ans}."
+    },
+    "gcd": {
+      "prompt": "Wat is de grootste gemene deler van {a} en {b}?",
+      "hints": [
+        "Zoek de delers die beide getallen gemeen hebben.",
+        "De grootste daarvan is de grootste gemene deler."
+      ],
+      "expl": "De grootste gemene deler van {a} en {b} is {ans}."
+    },
+    "lcm": {
+      "prompt": "Wat is het kleinste gemene veelvoud van {a} en {b}?",
+      "hints": [
+        "Schrijf de gemeenschappelijke veelvouden op, het kleinste eerst.",
+        "Het kleinste daarvan is het kleinste gemene veelvoud."
+      ],
+      "expl": "Het kleinste gemene veelvoud van {a} en {b} is {ans}."
+    },
+    "isPrime": {
+      "prompt": "Is {n} een priemgetal?",
+      "hints": [
+        "Zoek de delers van {n}.",
+        "Heeft het een andere deler dan 1 en zichzelf, dan is het geen priemgetal."
+      ],
+      "expl": "De delers van {n} zijn {list}, dus {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Wat is de {axis}-coördinaat van punt A?",
+      "hints": [
+        "Een coördinatenpaar schrijf je als (x, y).",
+        "Tel langs het raster."
+      ],
+      "expl": "De {axis}-coördinaat van A is {ans}."
+    },
+    "quadrant": {
+      "prompt": "In welk kwadrant ligt het punt ({a}, {b})?",
+      "hints": [
+        "Kijk naar de tekens van de x- en y-coördinaat.",
+        "(+,+) is kwadrant 1."
+      ],
+      "expl": "x is {a} en y is {b}, dus het ligt in {name}."
+    },
+    "distAxis": {
+      "prompt": "Wat is de afstand van het punt ({a}, {b}) tot de {axis}-as?",
+      "hints": [
+        "De afstand tot een as is de absolute waarde van een coördinaat.",
+        "Kijk bij de {axis}-as naar de {which}-coördinaat."
+      ],
+      "expl": "Het is de absolute waarde van de {which}-coördinaat {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Het punt ({a}, {b}) wordt gespiegeld in de x-as. Wat is de y-coördinaat van het nieuwe punt?",
+      "hints": [
+        "Bij spiegelen in de x-as blijft de x-coördinaat gelijk.",
+        "Het teken van de y-coördinaat draait om."
+      ],
+      "expl": "Het nieuwe punt is ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y is recht evenredig met x, en y={y1} als x={x1}. Wat is y als x={x2}?",
+      "hints": [
+        "Directe evenredigheid is y=ax.",
+        "Zoek eerst a."
+      ],
+      "expl": "a={y1}÷{x1}={k}, dus y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y is omgekeerd evenredig met x, en y={y1} als x={x1}. Wat is y als x={x2}?",
+      "hints": [
+        "Omgekeerde evenredigheid is $y=\\frac{a}{x}$.",
+        "Zoek eerst a=xy."
+      ],
+      "expl": "a={x1}×{y1}={k}, dus y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "De grafiek van de rechte evenredigheid y=ax gaat door het punt ({x1}, {y1}). Wat is a?",
+      "hints": [
+        "Vul het punt in y=ax in.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "De grafiek van de omgekeerde evenredigheid $y=\\frac{a}{x}$ gaat door ({x1}, {y1}). Wat is a?",
+      "hints": [
+        "Vul het punt in $y=\\frac{a}{x}$ in.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Wat is de mediaan van de gegevens {list}?",
+      "hints": [
+        "Zet de gegevens op volgorde van grootte.",
+        "De middelste waarde is de mediaan; bij een even aantal neem je het gemiddelde van de middelste twee."
+      ],
+      "expl": "Op volgorde: {sorted}, dus de mediaan is {ans}."
+    },
+    "mode": {
+      "prompt": "Wat is de modus van de gegevens {list}?",
+      "hints": [
+        "De modus is de waarde die het vaakst voorkomt.",
+        "Tel hoe vaak elke waarde voorkomt."
+      ],
+      "expl": "{ans} komt het vaakst voor, dus de modus is {ans}."
+    },
+    "dataRange": {
+      "prompt": "Wat is het verschil tussen de grootste en de kleinste waarde van {list}?",
+      "hints": [
+        "Zoek de grootste en de kleinste waarde.",
+        "Trek de kleinste van de grootste af."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "De totale frequentie is {t} en één klasse heeft frequentie {f}. Wat is de relatieve frequentie van die klasse? (decimaal)",
+      "hints": [
+        "Relatieve frequentie = (frequentie van de klasse) ÷ (totale frequentie).",
+        "Schrijf het resultaat als decimaal getal."
+      ],
+      "expl": "{f}÷{t}={ans}, dus de relatieve frequentie is {ans}."
+    },
+    "periodLen": {
+      "prompt": "Als $\\frac{1}{{d}}$ als decimaal getal wordt geschreven, hoeveel cijfers heeft dan het repeterende deel?",
+      "hints": [
+        "Deel 1 door {d}.",
+        "Het repeterende deel is het deel dat zich herhaalt."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, dus het repeterende deel heeft {ans} cijfers."
+    },
+    "repeatFrac": {
+      "prompt": "Het repeterende decimale getal $0.\\dot{d}\\dot{e}$ is gelijk aan $\\frac{x}{99}$. Wat is x?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Schrijf het tweecijferige getal ab als teller."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ geeft x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "Is $\\frac{{n}}{{d}}$ een eindig decimaal getal?",
+      "hints": [
+        "Vereenvoudig de breuk en ontbind dan de noemer in factoren.",
+        "Als de enige priemfactoren 2 en 5 zijn, is het decimaal getal eindig."
+      ],
+      "expl": "De noemer {d2} heeft priemfactoren {fact}, dus {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Welk cijfer staat op de {k}e decimaal?",
+      "hints": [
+        "Het repeterende deel 142857 heeft 6 cijfers.",
+        "Gebruik de rest van {k} ÷ 6 om de plaats te vinden."
+      ],
+      "expl": "De rest van {k} ÷ 6 is {r}, dus het is het {r}e cijfer: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Wat is de richtingscoëfficiënt van de lineaire functie $y={a}x+{b}$?",
+      "hints": [
+        "In $y=ax+b$ is de richtingscoëfficiënt a.",
+        "Lees de coëfficiënt van x af."
+      ],
+      "expl": "De richtingscoëfficiënt is {ans}."
+    },
+    "yInt": {
+      "prompt": "Wat is het snijpunt met de y-as van $y={a}x+{b}$?",
+      "hints": [
+        "Het snijpunt met de y-as is y als x=0.",
+        "In $y=ax+b$ is dat b."
+      ],
+      "expl": "Het snijpunt met de y-as is {ans}."
+    },
+    "xInt": {
+      "prompt": "Wat is het snijpunt met de x-as van $y={a}x+{b}$?",
+      "hints": [
+        "Het snijpunt met de x-as is x als y=0.",
+        "Los $0=ax+b$ op."
+      ],
+      "expl": "$0={a}x+{b}$ geeft x={ans}."
+    },
+    "crossX": {
+      "prompt": "De grafieken van $y={a1}x+{b1}$ en $y={a2}x+{b2}$ snijden elkaar in P. Wat is de x-coördinaat van P?",
+      "hints": [
+        "In het snijpunt zijn beide y-waarden gelijk.",
+        "Los $a_1x+b_1=a_2x+b_2$ op."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ geeft x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Wat is $f({c})$ voor de lineaire functie $f(x)={a}x+{b}$?",
+      "hints": [
+        "Vul {c} in op de plaats van x.",
+        "Vermenigvuldig en tel dan op."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won wordt {n} jaar op een spaarrekening gezet tegen {r}% enkelvoudige rente per jaar. Hoeveel rente is dat? (won)",
+      "hints": [
+        "Enkelvoudige rente = kapitaal × rente × jaren.",
+        "{r}% is {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, dus de rente is {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "{p} won wordt {n} jaar op een spaarrekening gezet tegen {r}% samengestelde rente per jaar. Wat is het totale bedrag? (won)",
+      "hints": [
+        "Bij samengestelde rente levert rente zelf ook rente op.",
+        "Vermenigvuldig het kapitaal {n} keer met (1 + rente)."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, dus het totaal is {ans} won."
+    },
+    "exchange": {
+      "prompt": "1 eenheid van een vreemde valuta is {r} won waard. Hoeveel won zijn {d} eenheden daarvan? (won)",
+      "hints": [
+        "De wisselkoers is de waarde van 1 eenheid van de vreemde valuta in won.",
+        "Vermenigvuldig het aantal eenheden met de koers."
+      ],
+      "expl": "{d}×{r}={ans}, dus het is {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "Een artikel kost {p} won en er komt {t}% btw bij. Hoeveel won moet er betaald worden? (won)",
+      "hints": [
+        "De btw is prijs × {t}%.",
+        "Tel de btw bij de prijs op."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, dus {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "De vraagcurve $p={a}-{b}q$ en de aanbodcurve $p={c}+{d}q$ snijden elkaar bij de evenwichtshoeveelheid q. Wat is q?",
+      "hints": [
+        "In het evenwicht is de vraagprijs gelijk aan de aanbodprijs.",
+        "Los $a-bq=c+dq$ op."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ geeft q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "De vraagfunctie is $p={a}-{b}q$. Wat is het maximum van de opbrengst $R=pq$?",
+      "hints": [
+        "$R=({a}-{b}q)q$ is een kwadratische functie.",
+        "Hij is het grootst in de top $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Bij q={q} is de opbrengst het grootst: {ans}."
+    },
+    "elasticity": {
+      "prompt": "De vraag is $Q={a}-{b}p$. Wat is de absolute waarde van de prijselasticiteit bij $p={p0}$? (decimaal)",
+      "hints": [
+        "De absolute elasticiteit is $\\frac{bp}{Q}$.",
+        "Bereken eerst Q bij $p={p0}$."
+      ],
+      "expl": "Q={q0}, dus $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Hoe vaak komt A voor in de woordenreeks {seq}?",
+      "hints": [
+        "Markeer tijdens het tellen alleen de A's.",
+        "Dit aantal is de A-component van de frequentievector."
+      ],
+      "expl": "A komt {ans} keer voor."
+    },
+    "freqDot": {
+      "prompt": "Twee documenten hebben frequentievectoren $\\vec{u}=({u1}, {u2}, {u3})$ en $\\vec{v}=({v1}, {v2}, {v3})$. Wat is het inproduct $\\vec{u}\\cdot\\vec{v}$?",
+      "hints": [
+        "Vermenigvuldig overeenkomstige componenten en tel op.",
+        "Hoe groter het inproduct, hoe meer de documenten op elkaar lijken."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Een afbeelding is opgeslagen als de matrix $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Wat is de som van alle pixelwaarden?",
+      "hints": [
+        "Elk element is de helderheid van één pixel.",
+        "Tel alle vier de elementen op."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Een pixel heeft waarde {v}. Elke pixel wordt {k} helderder gemaakt. Wat is de nieuwe waarde?",
+      "hints": [
+        "Helderder maken telt hetzelfde getal op bij elk element van de matrix.",
+        "Tel {k} op bij {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Wat is de richtingscoëfficiënt van de trendlijn door ({x1}, {y1}) en ({x2}, {y2})?",
+      "hints": [
+        "Richtingscoëfficiënt = verandering van y ÷ verandering van x.",
+        "Bereken $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "De voorspellingen zijn {pred} en de werkelijke waarden zijn {real}. Wat is de gemiddelde kwadratische fout (het gemiddelde van de gekwadrateerde fouten)?",
+      "hints": [
+        "De fout is voorspelling − werkelijke waarde.",
+        "Kwadrateer elke fout en neem dan het gemiddelde."
+      ],
+      "expl": "De gekwadrateerde fouten zijn {sq} en hun gemiddelde is {ans}."
+    },
+    "gradStep": {
+      "prompt": "Bij de verliesfunctie $f(x)=x^2$ geeft één stap van gradiëntdaling vanaf x={x0} met leersnelheid {eta} een nieuwe x van?",
+      "hints": [
+        "Gradiëntdaling: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, dus {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "Hoeveel cm is {v} m? (cm)",
+      "hints": [
+        "1 m is 100 cm.",
+        "Vermenigvuldig {v} met 100."
+      ],
+      "expl": "{v}×100={ans}, dus {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "Hoeveel g is {v} kg? (g)",
+      "hints": [
+        "1 kg is 1000 g.",
+        "Vermenigvuldig {v} met 1000."
+      ],
+      "expl": "{v}×1000={ans}, dus {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Hoeveel minuten is {v} uur? (min)",
+      "hints": [
+        "1 uur is 60 minuten.",
+        "Vermenigvuldig {v} met 60."
+      ],
+      "expl": "{v}×60={ans}, dus {ans} minuten."
+    },
+    "discount": {
+      "prompt": "Een artikel kost {p} won en wordt verkocht met {d}% korting. Wat is de verkoopprijs? (won)",
+      "hints": [
+        "De korting is prijs × {d}%.",
+        "Trek de korting van de prijs af."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, dus {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "Ingrediënten A en B worden gemengd in de verhouding {a}:{b} tot in totaal {t} g. Hoeveel g A is nodig? (g)",
+      "hints": [
+        "Het geheel is {a}+{b}={s} delen.",
+        "A is $\\frac{a}{s}$ van het geheel."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, dus {ans} g."
+    },
+    "tiles": {
+      "prompt": "Een muur is {w} m breed en {h} m hoog. Hoeveel tegels van 1 m × 1 m bedekken hem? (tegels)",
+      "hints": [
+        "Bereken de oppervlakte van de muur.",
+        "Eén tegel heeft een oppervlakte van 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, dus {ans} tegels."
+    },
+    "outfit": {
+      "prompt": "Er zijn {a} shirts en {b} broeken. Hoeveel verschillende outfits van één shirt en één broek zijn er?",
+      "hints": [
+        "Bij elk shirt zijn er {b} keuzes voor de broek.",
+        "Gebruik de productregel."
+      ],
+      "expl": "{a}×{b}={ans}, dus {ans} outfits."
+    },
+    "goldenRatio": {
+      "prompt": "De gulden snede voldoet aan $a:b=(a+b):a$. Als b=10, hoeveel is a ongeveer? (twee decimalen)",
+      "hints": [
+        "De gulden snede is ongeveer 1,618.",
+        "a is ongeveer 1,618 keer b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "De toonhoogte wordt bepaald door de frequentie. Wat is de frequentie in Hz van de toon een octaaf boven 440 Hz? (Hz)",
+      "hints": [
+        "Een toon een octaaf hoger heeft de dubbele frequentie.",
+        "Vermenigvuldig 440 met 2."
+      ],
+      "expl": "440×2={ans}, dus {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Een braillecel heeft 6 punten, elk verhoogd of vlak. Hoeveel patronen zijn er, het patroon zonder verhoogd punt niet meegeteld?",
+      "hints": [
+        "Elk punt heeft 2 mogelijkheden.",
+        "Met de productregel $2^6$, trek daarna 1 af."
+      ],
+      "expl": "$2^6-1={ans}$, dus {ans} patronen."
+    },
+    "voteMajority": {
+      "prompt": "{n} mensen stemmen. Hoeveel stemmen heeft een kandidaat minstens nodig voor een meerderheid? (stemmen)",
+      "hints": [
+        "Een meerderheid is meer dan de helft van alle stemmen.",
+        "Zoek het kleinste gehele getal boven de helft van {n}."
+      ],
+      "expl": "De helft van {n} is {half}; het kleinste gehele getal erboven is {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Gedurende 5 dagen was de concentratie fijnstof {list} (µg/m³). Wat is de gemiddelde concentratie?",
+      "hints": [
+        "Het gemiddelde is (som) ÷ (aantal dagen).",
+        "Tel eerst de 5 waarden op."
+      ],
+      "expl": "({sum})÷5={ans}, dus het gemiddelde is {ans}."
+    },
+    "percentChange": {
+      "prompt": "Een waarde veranderde van {a} naar {b}. Met hoeveel procent nam ze toe? (%)",
+      "hints": [
+        "Toename in procenten = (toename) ÷ (beginwaarde) × 100.",
+        "De toename is {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, dus {ans}%."
+    },
+    "stdev": {
+      "prompt": "Wat is de standaardafwijking van de gegevens {list}? (standaardafwijking van de populatie)",
+      "hints": [
+        "Bereken eerst het gemiddelde.",
+        "De wortel uit het gemiddelde van de gekwadrateerde afwijkingen (de variantie) is de standaardafwijking."
+      ],
+      "expl": "Het gemiddelde is {mean} en de variantie is {var}, dus de standaardafwijking is {ans}."
+    },
+    "ciHalf": {
+      "prompt": "De standaardafwijking van de populatie is {s} en de steekproefomvang is {n}. Wat is de foutmarge van 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (twee decimalen)",
+      "hints": [
+        "Bereken eerst $\\sqrt{ n }$.",
+        "Deel σ erdoor en vermenigvuldig met 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Het steekproefgemiddelde is {xbar}, het gemiddelde onder de nulhypothese is {mu}, σ={s} en n={n}. Wat is de toetsingsgrootheid $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$?",
+      "hints": [
+        "Bereken eerst de noemer $σ/\\sqrt{ n }$.",
+        "Trek het gemiddelde onder de nulhypothese van het steekproefgemiddelde af en deel."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Bij een tweezijdige toets met significantieniveau 5% is de kritieke waarde 1,96. De toetsingsgrootheid is z={z}. Wat is de conclusie?",
+      "hints": [
+        "Als $|z|$ groter is dan 1,96, verwerp je de nulhypothese.",
+        "Vergelijk de absolute waarde van z met 1,96."
+      ],
+      "expl": "|z|={az}, dus: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Kijk hoe de steekproef wordt gekozen.",
+        "Kies de juiste: aselect, gestratificeerd, cluster- of systematisch."
+      ],
+      "expl": "Deze methode is {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Bedenk waar de onderzoeksgegevens vandaan komen.",
+        "Kies literatuuronderzoek, casestudy, experiment of ontwikkeling."
+      ],
+      "expl": "Deze onderzoeksmethode is {name}."
+    },
+    "researchStep": {
+      "prompt": "Wat moet je doen direct nadat je een onderzoeksonderwerp hebt gekozen?",
+      "hints": [
+        "Onderzoek gaat: plannen → uitvoeren → presenteren → terugblikken.",
+        "Na het onderwerp bepaal je hoe je het gaat onderzoeken."
+      ],
+      "expl": "Na het kiezen van het onderwerp: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Onderzoeksethiek rust op eerlijkheid en bronvermelding.",
+        "Denk na over hoe het werk en de resultaten van anderen behandeld moeten worden."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Kwadrant 1",
+    "q2": "Kwadrant 2",
+    "q3": "Kwadrant 3",
+    "q4": "Kwadrant 4",
+    "p0": "0 (het kan niet gebeuren)",
+    "phalf": "1/2 (even waarschijnlijk)",
+    "p1": "1 (het is zeker)",
+    "random": "aselecte steekproef",
+    "strat": "gestratificeerde steekproef",
+    "cluster": "clusteronderzoek",
+    "system": "systematische steekproef",
+    "reject": "De nulhypothese verwerpen",
+    "keep": "De nulhypothese niet verwerpen",
+    "literature": "literatuuronderzoek",
+    "casestudy": "casestudy",
+    "experiment": "wiskundig experiment",
+    "develop": "ontwikkelonderzoek",
+    "plan": "Een onderzoeksplan maken",
+    "carry": "Het onderzoek uitvoeren",
+    "present": "De resultaten presenteren",
+    "reflect": "Terugblikken op het proces",
+    "yesPrime": "Ja, het is een priemgetal",
+    "noPrime": "Nee, het is geen priemgetal",
+    "yesFinite": "Ja, het is een eindig decimaal getal",
+    "noFinite": "Nee, het is een repeterend decimaal getal",
+    "yesOk": "Waar",
+    "noOk": "Onwaar"
+  },
+  "text": {
+    "ev_coin": "Hoe groot is de kans op kop als je een munt één keer opgooit?",
+    "ev_sun": "Hoe groot is de kans dat de zon morgen in het oosten opkomt?",
+    "ev_die": "Hoe groot is de kans om een 7 te gooien met één gewone dobbelsteen met zes zijden?",
+    "sm_system": "Elke 10e leerling op de schoollijst werd gekozen voor een enquête. Welke steekproefmethode is dit?",
+    "sm_random": "Dertig leerlingen werden met willekeurige getallen uit de schoollijst gekozen. Welke steekproefmethode is dit?",
+    "sm_strat": "Leerlingen werden uit elk leerjaar gekozen in verhouding tot het aantal leerlingen in dat leerjaar. Welke steekproefmethode is dit?",
+    "sm_cluster": "Eerst werden enkele klassen gekozen en daarna werd elke leerling in de gekozen klassen ondervraagd. Welke steekproefmethode is dit?",
+    "rm_lit": "Artikelen en boeken uit de bibliotheek en van internet lezen en samenvatten is welke onderzoeksmethode?",
+    "rm_case": "Echte voorbeelden van verschillende scholen verzamelen en vergelijken is welke onderzoeksmethode?",
+    "rm_exp": "Zelf met dobbelstenen gooien en de resultaten noteren om een patroon te vinden is welke onderzoeksmethode?",
+    "rm_dev": "Een nieuw hulpmiddel bouwen om wiskunde te leren en testen hoe goed het werkt is welke onderzoeksmethode?",
+    "et_cite": "Het werk van iemand anders overschrijven zonder te zeggen waar het vandaan komt, is in strijd met de onderzoeksethiek.",
+    "et_cite_r": "Het werk van iemand gebruiken zonder bron is plagiaat, dus de bewering is waar.",
+    "et_fake": "Als de resultaten afwijken van de hypothese, is het goed om de getallen aan te passen zodat ze kloppen.",
+    "et_fake_r": "Resultaten veranderen is fraude en schendt de onderzoeksethiek, dus de bewering is onwaar."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Gegevens ordenen en weergeven in tabellen en grafieken",
+      "concept": "Ordenen volgens een regel en tellen; met een **tabel** of **grafiek** vergelijk je in één oogopslag.",
+      "example": "A 3, B 5, C 2 → samen 10"
+    },
+    "E4dat1": {
+      "title": "Lijngrafieken lezen",
+      "concept": "Een **lijngrafiek** laat met punten en lijnen zien hoe een waarde in de tijd verandert. Omhoog betekent toename, omlaag afname.",
+      "example": "12 op dag 1 → 20 op dag 3: 8 erbij"
+    },
+    "E5dat1": {
+      "title": "Het gemiddelde bepalen",
+      "concept": "Het **gemiddelde** is de som van de gegevens gedeeld door het aantal gegevens.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Kans",
+      "concept": "De **kans** op een gebeurtenis is een getal van 0 (onmogelijk) tot 1 (zeker): kans = (gunstige gevallen) ÷ (alle gevallen).",
+      "example": "3 A-ballen, 2 B-ballen → kans op A is $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Bandendiagrammen en cirkeldiagrammen",
+      "concept": "**Bandendiagrammen** en **cirkeldiagrammen** zien het geheel als 100% en tonen het aandeel van elk deel. Deel = geheel × aandeel.",
+      "example": "25% van 200 personen → 50 personen"
+    },
+    "M1neg1": {
+      "title": "Gehele getallen en rationale getallen",
+      "concept": "Gelijke tekens: tel de absolute waarden op. Verschillende tekens: trek ze af en behoud het teken van de grootste. Bij × en ÷ is het resultaat + als de tekens gelijk zijn en − als ze verschillen.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Priemontbinding, ggd en kgv",
+      "concept": "Een getal schrijven als product van priemgetallen heet **priemontbinding**. De grootste deler die getallen delen is de **grootste gemene deler**, het kleinste veelvoud dat ze delen het **kleinste gemene veelvoud**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Het coördinatenstelsel",
+      "concept": "Een punt schrijf je als (x, y). De tekens bepalen kwadrant 1–4, en spiegelen in de x-as keert het teken van y om.",
+      "example": "(−2, 5) ligt in kwadrant 2"
+    },
+    "M1prp1": {
+      "title": "Recht en omgekeerd evenredig",
+      "concept": "**Recht evenredig** is y=ax en **omgekeerd evenredig** is $y=\\frac{a}{x}$. Bij recht evenredig is y÷x constant; bij omgekeerd evenredig is x×y constant.",
+      "example": "y=6 bij x=2 (recht evenredig): y=3x"
+    },
+    "M1sta1": {
+      "title": "Gemiddelden en relatieve frequentie",
+      "concept": "De **mediaan** is de middelste waarde op volgorde, de **modus** de waarde die het vaakst voorkomt. **Relatieve frequentie** = frequentie ÷ totaal.",
+      "example": "De mediaan van 1, 3, 5, 7, 9 is 5"
+    },
+    "M2rec1": {
+      "title": "Repeterende decimale getallen",
+      "concept": "Een decimaal getal waarvan de cijfers eindeloos herhalen is een **repeterend decimaal getal**; het herhalende deel is de **periode**. Een vereenvoudigde breuk is eindig als de noemer alleen de factoren 2 en 5 heeft.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Lineaire functies en lineaire vergelijkingen",
+      "concept": "In y=ax+b is a de richtingscoëfficiënt en b het snijpunt met de y-as. Het snijpunt van twee grafieken is de oplossing van beide vergelijkingen samen.",
+      "example": "y=2x−6 heeft snijpunt met de x-as 3"
+    },
+    "el.econ1": {
+      "title": "Rente, wisselkoersen en belasting",
+      "concept": "Enkelvoudige rente = kapitaal × rente × jaren; eindbedrag bij samengestelde rente = kapitaal × (1 + rente)^jaren. Een wisselkoers is de waarde van 1 eenheid van een valuta; belasting is prijs × een percentage.",
+      "example": "10000 won, 10% samengesteld over 2 jaar → 12100 won"
+    },
+    "el.econ2": {
+      "title": "Vraag, aanbod en optimalisatie",
+      "concept": "Evenwicht is waar de vraagcurve en de aanbodcurve elkaar snijden. Maximale opbrengst R=pq en elasticiteit volgen uit functies en afgeleiden.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Tekst- en beeldgegevens",
+      "concept": "Een document wordt een vector van woordaantallen en een afbeelding een matrix van pixelwaarden. Hoe groter het inproduct, hoe meer twee documenten op elkaar lijken.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Voorspelling en optimalisatie",
+      "concept": "Voorspellingen worden beter met de richtingscoëfficiënt van een trendlijn, het gemiddelde van de gekwadrateerde fouten (het verlies) en gradiëntdaling $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Eenheden omrekenen en verhoudingen",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 uur = 60 minuten. Verkoopprijs = prijs × (1 − korting); mengen in de verhouding a:b geeft A een aandeel van $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Oppervlakte, tellen en groei",
+      "concept": "Oppervlakte geeft het benodigde materiaal, de productregel het aantal paren, en (toename) ÷ (beginwaarde) × 100 het groeipercentage.",
+      "example": "4 shirts, 3 broeken → 12 outfits"
+    },
+    "el.cul1": {
+      "title": "Wiskunde in kunst en dagelijks leven",
+      "concept": "De gulden snede is ongeveer 1,618; een toon een octaaf hoger heeft de dubbele frequentie; 6 braillepunten geven $2^6-1=63$ patronen; een meerderheid is meer dan de helft.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Wiskunde in de samenleving en het milieu",
+      "concept": "Met gemiddelden en groeipercentages analyseer je maatschappelijke en milieuproblemen wiskundig. Groeipercentage = (toename) ÷ (beginwaarde) × 100.",
+      "example": "40 naar 50 → 25% erbij"
+    },
+    "el.sta1": {
+      "title": "Statistische vragen en steekproeven",
+      "concept": "De standaardafwijking is de wortel uit het gemiddelde van de gekwadrateerde afwijkingen (de variantie). Steekproeven worden getrokken met aselecte, gestratificeerde, cluster- of systematische steekproeftrekking.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 heeft standaardafwijking 2"
+    },
+    "el.sta2": {
+      "title": "Schatten en hypothesetoetsen",
+      "concept": "De foutmarge van 95% is $1.96\\times\\frac{σ}{\\sqrt{n}}$. Als $|z|$ van $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ boven 1,96 ligt, verwerp je de nulhypothese bij significantieniveau 5%.",
+      "example": "σ=10, n=100 → foutmarge 1,96"
+    },
+    "el.res1": {
+      "title": "Onderzoeksmethoden",
+      "concept": "Een wiskundig onderzoeksproject kan literatuuronderzoek, casestudy's, wiskundige experimenten of ontwikkelonderzoek gebruiken.",
+      "example": "Met dobbelstenen gooien om een patroon te vinden → experiment"
+    },
+    "el.res2": {
+      "title": "Onderzoeksstappen en ethiek",
+      "concept": "Onderzoek gaat: onderwerp → plan → uitvoeren → presenteren → terugblikken. Bronnen vermelden en resultaten nooit vervalsen is onderzoeksethiek.",
+      "example": "Na het onderwerp komt het onderzoeksplan"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Economische wiskunde",
+      "world": "Economiestad",
+      "tagline": "Leer de wiskunde van geld en markten",
+      "unit": "Getallen en economie, functies en economie"
+    },
+    "ai": {
+      "title": "Wiskunde voor AI",
+      "world": "AI-lab",
+      "tagline": "Ontdek de wiskunde in data en optimalisatie",
+      "unit": "Gegevensverwerking, voorspelling en optimalisatie"
+    },
+    "job": {
+      "title": "Wiskunde op de werkvloer",
+      "world": "Werkplaatsstad",
+      "tagline": "Oefen de wiskunde die je op het werk gebruikt",
+      "unit": "Getallen en eenheden, verhoudingen, oppervlakte en tellen"
+    },
+    "cul": {
+      "title": "Wiskunde en cultuur",
+      "world": "Cultuurplein",
+      "tagline": "Ontdek wiskunde in kunst en dagelijks leven",
+      "unit": "Kunst en leven, samenleving en milieu"
+    },
+    "sta": {
+      "title": "Praktische statistiek",
+      "world": "Statistiekenlab",
+      "tagline": "Bouw de vaardigheid om op basis van data te oordelen",
+      "unit": "Gegevens en steekproeven, schatten en toetsen"
+    },
+    "res": {
+      "title": "Wiskundige onderzoeksprojecten",
+      "world": "Onderzoekswerkplaats",
+      "tagline": "Leer de methoden en ethiek van onderzoek",
+      "unit": "Methoden, procedure en ethiek"
+    }
+  }
+}

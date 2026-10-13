@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Númeru ba {cat} iha tabela maka hira?",
+      "hints": [
+        "Hetan {cat} nia kuadru.",
+        "Lee númeru ne'ebé hakerek iha laran."
+      ],
+      "expl": "Númeru ba {cat} mak {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Númeru hotu-hotu iha tabela nia soma maka hira?",
+      "hints": [
+        "Lee númeru iha kuadru ida-idak.",
+        "Soma hotu."
+      ],
+      "expl": "Somá mak {sum}, entaun resposta mak {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Iha grafiku nia kolona aas liu, sirkulu hira mak iha?",
+      "hints": [
+        "Konta sirkulu iha kolona ida-idak.",
+        "Hetan kolona aas liu."
+      ],
+      "expl": "Kolona aas liu iha sirkulu {ans}."
+    },
+    "symbolDiff": {
+      "prompt": "Kolona boot liu iha liu kolona kiik liu hira?",
+      "hints": [
+        "Hetan uluk kuantidade boot liu no kiik liu.",
+        "Subtrai kiik husi boot."
+      ],
+      "expl": "{max}-{min}={ans}, entaun iha liu {ans}."
+    },
+    "mostWhich": {
+      "prompt": "Iha grafiku, sasán ida-ne'ebé mak boot liu?",
+      "hints": [
+        "Kompara sasán sira nia númeru.",
+        "Hetan númeru boot liu."
+      ],
+      "expl": "Sasán boot liu mak {name}."
+    },
+    "compareCount": {
+      "prompt": "{a} iha liu {b} hira?",
+      "hints": [
+        "Lee númeru ba {a} no {b}.",
+        "Subtrai kiik husi boot."
+      ],
+      "expl": "{x}-{y}={ans}, entaun {a} iha liu {ans}."
+    },
+    "lineRead": {
+      "prompt": "Iha grafiku liña, valór iha {cat} maka hira?",
+      "hints": [
+        "Hetan {cat} iha ás horizontál.",
+        "Lee valór husi pontu ne'ebé iha leten."
+      ],
+      "expl": "Valór iha {cat} mak {ans}."
+    },
+    "lineMax": {
+      "prompt": "Iha grafiku liña, valór boot liu maka hira?",
+      "hints": [
+        "Kompara pontu hotu-hotu nia valór.",
+        "Hetan pontu aas liu."
+      ],
+      "expl": "Valór boot liu mak {ans}."
+    },
+    "lineChange": {
+      "prompt": "Valór aumenta hira husi {from} to'o {to}?",
+      "hints": [
+        "Lee valór iha {from} no iha {to}.",
+        "Subtrai valór dahuluk husi valór ikus."
+      ],
+      "expl": "{b}-{a}={ans}, entaun aumenta {ans}."
+    },
+    "mean": {
+      "prompt": "Númeru sira ne'e nia media maka hira? {list}",
+      "hints": [
+        "Media = (soma hotu) ÷ (hira mak iha).",
+        "Soma hotu uluk."
+      ],
+      "expl": "({sum})÷{n}={ans}, entaun media mak {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Númeru haat nia media mak {m} no tolu husi sira mak {list}. Númeru haat-nian maka hira?",
+      "hints": [
+        "Númeru haat nia soma = media × 4.",
+        "Subtrai númeru tolu ne'ebé hatene husi soma."
+      ],
+      "expl": "{m}×4={total} no {total}-({known})={ans}, entaun mak {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Kaixa ida iha bola A {a} no bola B {b}. Foti bola ida. Probabilidade katak bola A maka hira, iha forma desimál?",
+      "hints": [
+        "Probabilidade = (kazu favorável) ÷ (kazu hotu).",
+        "Hetan uluk bola hotu nia totál."
+      ],
+      "expl": "{a}÷{total}={ans}, entaun probabilidade mak {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Imposível mak 0 no sertu mak 1.",
+        "Probabilidade hanesan mak $\\frac{1}{2}$."
+      ],
+      "expl": "Evento ne'e nia probabilidade mak: {name}."
+    },
+    "pieCount": {
+      "prompt": "Iha gráfiku sirkulár A mak {p}% husi totál. Totál mak ema {t}. A mak ema hira?",
+      "hints": [
+        "{p}% mak $\\frac{p}{100}$.",
+        "Multiplika totál ho razaun."
+      ],
+      "expl": "{t}×{p}÷100={ans}, entaun ema {ans}."
+    },
+    "pieRest": {
+      "prompt": "Parte tolu husi gráfiku sirkulár mak {a}%, {b}% no {c}%. Parte haat-nian porsentu hira? (%)",
+      "hints": [
+        "Totál mak 100%.",
+        "Subtrai parte tolu husi 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, entaun mak {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Iha gráfiku bara, {cat} porsentu hira husi totál? (%)",
+      "hints": [
+        "Hetan {cat} nia parte.",
+        "Lee porsentu ne'ebé hakerek iha kraik."
+      ],
+      "expl": "{cat} mak {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Kalkula $({a})+({b})$.",
+      "hints": [
+        "Sinál hanesan: soma valór absolutu no husik sinál.",
+        "Sinál la hanesan: subtrai valór absolutu no foti sinál husi ida boot liu."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Kalkula $({a})-({b})$.",
+      "hints": [
+        "Subtrai katak soma númeru oposto.",
+        "Hakerek fali nu'udar $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Kalkula $({a})\\times({b})$.",
+      "hints": [
+        "Sinál hanesan fó rezultadu pozitivu, sinál la hanesan fó negativu.",
+        "Multiplika valór absolutu."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Kalkula $({a})\\div({b})$.",
+      "hints": [
+        "Sinál hanesan fó rezultadu pozitivu, sinál la hanesan fó negativu.",
+        "Fahe valór absolutu."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ iha forma desimál maka hira?",
+      "hints": [
+        "Uza denominadór komún no soma.",
+        "Troka fraksaun ba desimál."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Pontu P hatudu númeru saida iha liña numérika?",
+      "hints": [
+        "Iha 0 nia kair mak negativu, iha loos mak pozitivu.",
+        "Konta marka sira."
+      ],
+      "expl": "Pontu P hatudu {ans}."
+    },
+    "primeCount": {
+      "prompt": "Númeru primu hira mak iha to'o {n}?",
+      "hints": [
+        "Númeru primu iha divizór rua de'it: 1 no nia an.",
+        "Konta 2, 3, 5, 7, ... tuir orden."
+      ],
+      "expl": "Númeru primu to'o {n} mak {list}: hamutuk {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ dekompozisaun ba faktór primu mak $2^a\\times3^b$. $a+b$ maka hira?",
+      "hints": [
+        "Fahe {n} ho 2 to'o la bele tan.",
+        "Depois fahe sira ne'ebé hela ho 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, entaun $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "{n} iha divizór hira?",
+      "hints": [
+        "Hetan númeru hotu ne'ebé fahe {n} loloos.",
+        "Haree hahú husi ida kiik liu bá leten."
+      ],
+      "expl": "{n} nia divizór mak {list}: hamutuk {ans}."
+    },
+    "gcd": {
+      "prompt": "{a} no {b} nia divizór komún boot liu maka saida?",
+      "hints": [
+        "Hetan divizór ne'ebé númeru rua ne'e iha hamutuk.",
+        "Ida boot liu mak divizór komún boot liu."
+      ],
+      "expl": "{a} no {b} nia divizór komún boot liu mak {ans}."
+    },
+    "lcm": {
+      "prompt": "{a} no {b} nia múltiplu komún kiik liu maka saida?",
+      "hints": [
+        "Hakerek múltiplu ne'ebé númeru rua iha hamutuk, hahú husi kiik liu.",
+        "Múltiplu komún kiik liu mak múltiplu komún kiik liu."
+      ],
+      "expl": "{a} no {b} nia múltiplu komún kiik liu mak {ans}."
+    },
+    "isPrime": {
+      "prompt": "{n} mak númeru primu ka lae?",
+      "hints": [
+        "Buka {n} nia divizór.",
+        "Se iha divizór seluk la'ós 1 no nia an, la'ós primu."
+      ],
+      "expl": "{n} nia divizór mak {list}, entaun: {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Pontu A nia koordenada {axis} maka hira?",
+      "hints": [
+        "Koordenada pár hakerek (x, y).",
+        "Konta tuir grade."
+      ],
+      "expl": "A nia koordenada {axis} mak {ans}."
+    },
+    "quadrant": {
+      "prompt": "Pontu ({a}, {b}) iha kuadrante ida-ne'ebé?",
+      "hints": [
+        "Haree koordenada x no y nia sinál.",
+        "(+,+) mak Kuadrante 1."
+      ],
+      "expl": "x mak {a} no y mak {b}, entaun iha: {name}."
+    },
+    "distAxis": {
+      "prompt": "Pontu ({a}, {b}) nia distánsia ba ás {axis} maka hira?",
+      "hints": [
+        "Distánsia ba ás ida mak koordenada ida nia valór absolutu.",
+        "Ba ás {axis} haree koordenada {which}."
+      ],
+      "expl": "Mak koordenada {which} {v} nia valór absolutu: {ans}."
+    },
+    "reflect": {
+      "prompt": "Pontu ({a}, {b}) reflete iha ás x. Pontu foun nia koordenada y maka hira?",
+      "hints": [
+        "Reflesaun iha ás x husik koordenada x hanesan.",
+        "Koordenada y nia sinál sai kontráriu."
+      ],
+      "expl": "Pontu foun mak ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y proporsionál diretu ba x, no y={y1} bainhira x={x1}. y maka hira bainhira x={x2}?",
+      "hints": [
+        "Proporsaun diretu mak y=ax.",
+        "Hetan uluk a."
+      ],
+      "expl": "a={y1}÷{x1}={k}, entaun y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y proporsionál inversu ba x, no y={y1} bainhira x={x1}. y maka hira bainhira x={x2}?",
+      "hints": [
+        "Proporsaun inversu mak $y=\\frac{a}{x}$.",
+        "Hetan uluk a=xy."
+      ],
+      "expl": "a={x1}×{y1}={k}, entaun y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Proporsaun diretu y=ax nia grafiku pasa iha pontu ({x1}, {y1}). a maka hira?",
+      "hints": [
+        "Troka pontu ba y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Proporsaun inversu $y=\\frac{a}{x}$ nia grafiku pasa iha ({x1}, {y1}). a maka hira?",
+      "hints": [
+        "Troka pontu ba $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Dadus {list} nia mediana maka hira?",
+      "hints": [
+        "Hamoos dadus tuir bo'ot-kiik.",
+        "Valór iha klaran mak mediana; se dadus númeru par, uza media husi rua iha klaran."
+      ],
+      "expl": "Tuir orden: {sorted}, entaun mediana mak {ans}."
+    },
+    "mode": {
+      "prompt": "Dadus {list} nia moda maka hira?",
+      "hints": [
+        "Moda mak valór ne'ebé hatudu dala barak liu.",
+        "Konta valór ida-idak hatudu dala hira."
+      ],
+      "expl": "{ans} hatudu dala barak liu, entaun moda mak {ans}."
+    },
+    "dataRange": {
+      "prompt": "{list} nia valór boot liu no kiik liu nia diferensa maka hira?",
+      "hints": [
+        "Hetan valór boot liu no kiik liu.",
+        "Subtrai kiik husi boot."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Frekuénsia totál mak {t} no klase ida iha frekuénsia {f}. Klase ne'e nia frekuénsia relativa maka hira? (desimál)",
+      "hints": [
+        "Frekuénsia relativa = (klase nia frekuénsia) ÷ (frekuénsia totál).",
+        "Hakerek rezultadu nu'udar desimál."
+      ],
+      "expl": "{f}÷{t}={ans}, entaun frekuénsia relativa mak {ans}."
+    },
+    "periodLen": {
+      "prompt": "Bainhira $\\frac{1}{{d}}$ hakerek nu'udar desimál, bloku ne'ebé repete iha dígitu hira?",
+      "hints": [
+        "Fahe 1 ho {d}.",
+        "Bloku repetitivu mak parte ne'ebé repete."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, entaun bloku repetitivu iha dígitu {ans}."
+    },
+    "repeatFrac": {
+      "prompt": "Desimál repetitivu $0.\\dot{d}\\dot{e}$ hanesan ho $\\frac{x}{99}$. x maka hira?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Hakerek númeru dígitu rua ab nu'udar numeradór."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ fó x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ mak desimál finitu ka lae?",
+      "hints": [
+        "Simplifika fraksaun, depois dekompoe denominadór ba faktór primu.",
+        "Se faktór primu de'it mak 2 no 5, nia finitu."
+      ],
+      "expl": "Denominadór {d2} iha faktór primu {fact}, entaun: {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Dígitu iha pozisaun desimál {k} maka hira?",
+      "hints": [
+        "Bloku repetitivu 142857 iha dígitu 6.",
+        "Uza {k} ÷ 6 nia hela atu hetan pozisaun."
+      ],
+      "expl": "{k} ÷ 6 nia hela mak {r}, entaun mak dígitu {r}: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Funsaun liña $y={a}x+{b}$ nia deklive maka hira?",
+      "hints": [
+        "Iha $y=ax+b$ deklive mak a.",
+        "Lee x nia koefisiente."
+      ],
+      "expl": "Deklive mak {ans}."
+    },
+    "yInt": {
+      "prompt": "$y={a}x+{b}$ nia interseksaun ho ás y maka hira?",
+      "hints": [
+        "Interseksaun ho ás y mak y bainhira x=0.",
+        "Iha $y=ax+b$ mak b."
+      ],
+      "expl": "Interseksaun ho ás y mak {ans}."
+    },
+    "xInt": {
+      "prompt": "$y={a}x+{b}$ nia interseksaun ho ás x maka hira?",
+      "hints": [
+        "Interseksaun ho ás x mak x bainhira y=0.",
+        "Rezolve $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ fó x={ans}."
+    },
+    "crossX": {
+      "prompt": "$y={a1}x+{b1}$ no $y={a2}x+{b2}$ nia grafiku hasoru malu iha P. P nia koordenada x maka hira?",
+      "hints": [
+        "Iha pontu interseksaun y rua hanesan.",
+        "Rezolve $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ fó x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Ba funsaun liña $f(x)={a}x+{b}$, $f({c})$ maka hira?",
+      "hints": [
+        "Hatuur {c} iha x nia fatin.",
+        "Multiplika, depois soma."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "Hatama won {p} ba tinan {n} ho juros simples {r}% kada tinan. Juros ne'e hira? (won)",
+      "hints": [
+        "Juros simples = kapitál × taxa × tinan.",
+        "{r}% mak {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, entaun juros mak won {ans}."
+    },
+    "compoundInterest": {
+      "prompt": "Hatama won {p} ba tinan {n} ho juros kompostu {r}% kada tinan. Montante totál maka hira? (won)",
+      "hints": [
+        "Ho juros kompostu, juros mós hetan juros.",
+        "Multiplika kapitál × (1 + taxa) dala {n}."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, entaun totál mak won {ans}."
+    },
+    "exchange": {
+      "prompt": "Moeda estranjeira unidade 1 mak won {r}. Unidade {d} husi moeda ne'e mak won hira? (won)",
+      "hints": [
+        "Taxa troka mak moeda estranjeira unidade 1 nia valór iha won.",
+        "Multiplika unidade hira ho taxa."
+      ],
+      "expl": "{d}×{r}={ans}, entaun mak won {ans}."
+    },
+    "taxTotal": {
+      "prompt": "Sasán ida folin won {p} no hatama impostu valór aumentadu {t}%. Tenke selu won hira? (won)",
+      "hints": [
+        "Impostu = folin × {t}%.",
+        "Soma impostu ba folin."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, entaun won {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Kurva demanda $p={a}-{b}q$ no kurva ofarta $p={c}+{d}q$ hasoru malu iha kuantidade ekilíbriu q. q maka hira?",
+      "hints": [
+        "Iha ekilíbriu folin demanda hanesan ho folin ofarta.",
+        "Rezolve $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ fó q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Funsaun demanda mak $p={a}-{b}q$. Reseita $R=pq$ nia máximu maka hira?",
+      "hints": [
+        "$R=({a}-{b}q)q$ mak kuadrátika.",
+        "Boot liu iha vértise $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Iha q={q} reseita boot liu: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Demanda mak $Q={a}-{b}p$. Elastisidade folin nia valór absolutu iha $p={p0}$ maka hira? (desimál)",
+      "hints": [
+        "Elastisidade absoluta mak $\\frac{bp}{Q}$.",
+        "Hetan uluk Q iha $p={p0}$."
+      ],
+      "expl": "Q={q0}, entaun $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Iha sekuénsia liafuan {seq}, A hatudu dala hira?",
+      "hints": [
+        "Marka A de'it bainhira konta.",
+        "Konta ne'e mak vetór frekuénsia nia komponente A."
+      ],
+      "expl": "A hatudu dala {ans}."
+    },
+    "freqDot": {
+      "prompt": "Dokumentu rua iha vetór frekuénsia $\\vec{u}=({u1}, {u2}, {u3})$ no $\\vec{v}=({v1}, {v2}, {v3})$. Produtu eskalár $\\vec{u}\\cdot\\vec{v}$ maka hira?",
+      "hints": [
+        "Multiplika komponente ne'ebé hanesan no soma.",
+        "Produtu eskalár boot liu, dokumentu sira hanesan liu."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Imajen ida rai hanesan matriz $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Pixel hotu nia valór nia soma maka hira?",
+      "hints": [
+        "Entrada ida-idak mak pixel ida nia naroman.",
+        "Soma entrada haat hotu."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Pixel ida iha valór {v}. Pixel hotu halo naroman liu {k}. Nia valór foun maka hira?",
+      "hints": [
+        "Halo naroman liu katak soma númeru hanesan ba matriz nia entrada hotu.",
+        "Soma {k} ba {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Liña tendénsia ne'ebé pasa iha ({x1}, {y1}) no ({x2}, {y2}) nia deklive maka hira?",
+      "hints": [
+        "Deklive = mudansa y ÷ mudansa x.",
+        "Kalkula $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Prediksaun sira mak {pred} no valór loos mak {real}. Sala kuadrátiku médiu (media husi sala kuadradu) maka hira?",
+      "hints": [
+        "Sala = prediksaun − valór loos.",
+        "Halo kuadradu ba sala ida-idak, depois foti media."
+      ],
+      "expl": "Sala kuadradu mak {sq} no nia media mak {ans}."
+    },
+    "gradStep": {
+      "prompt": "Ba perda $f(x)=x^2$, pasu ida husi gradiente desende hahú husi x={x0} ho taxa aprendizajen {eta} fó x foun nian maka hira?",
+      "hints": [
+        "Gradiente desende: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, entaun {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "{v} m mak cm hira? (cm)",
+      "hints": [
+        "1 m mak 100 cm.",
+        "Multiplika {v} ho 100."
+      ],
+      "expl": "{v}×100={ans}, entaun {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "{v} kg mak g hira? (g)",
+      "hints": [
+        "1 kg mak 1000 g.",
+        "Multiplika {v} ho 1000."
+      ],
+      "expl": "{v}×1000={ans}, entaun {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Oras {v} mak minutu hira? (min)",
+      "hints": [
+        "Oras 1 mak minutu 60.",
+        "Multiplika {v} ho 60."
+      ],
+      "expl": "{v}×60={ans}, entaun minutu {ans}."
+    },
+    "discount": {
+      "prompt": "Sasán ida folin won {p} no fa'an ho desontu {d}%. Folin fa'an maka hira? (won)",
+      "hints": [
+        "Desontu = folin × {d}%.",
+        "Subtrai desontu husi folin."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, entaun won {ans}."
+    },
+    "mixRatio": {
+      "prompt": "Ingredientes A no B misturadu ho razaun {a}:{b} atu hetan {t} g hamutuk. Presiza A hira g? (g)",
+      "hints": [
+        "Totál mak {a}+{b}={s} parte.",
+        "A mak $\\frac{a}{s}$ husi totál."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, entaun {ans} g."
+    },
+    "tiles": {
+      "prompt": "Didin ida luan {w} m no aas {h} m. Azulejo 1 m × 1 m hira mak taka? (azulejo)",
+      "hints": [
+        "Hetan didin nia área.",
+        "Azulejo ida nia área mak 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, entaun azulejo {ans}."
+    },
+    "outfit": {
+      "prompt": "Iha kamiza {a} no kalsa {b}. Konjuntu kamiza ida ho kalsa ida ne'ebé la hanesan iha hira?",
+      "hints": [
+        "Kamiza ida-idak iha kalsa nia eskolla {b}.",
+        "Uza regra produtu."
+      ],
+      "expl": "{a}×{b}={ans}, entaun konjuntu {ans}."
+    },
+    "goldenRatio": {
+      "prompt": "Razaun osan mean satisfaz $a:b=(a+b):a$. Bainhira b=10, a besik hira? (desimál rua)",
+      "hints": [
+        "Razaun osan mean besik 1,618.",
+        "a besik 1,618 dala b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Altura soru hatudu husi frekuénsia. Nota ne'ebé oktava ida leten husi 440 Hz nia frekuénsia iha Hz maka hira? (Hz)",
+      "hints": [
+        "Nota oktava ida aas liu iha frekuénsia dala rua.",
+        "Multiplika 440 ho 2."
+      ],
+      "expl": "440×2={ans}, entaun {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Selula braille iha pontu 6, ida-idak sai ka la'e. La konta padraun ne'ebé la iha pontu sai, padraun hira mak iha?",
+      "hints": [
+        "Pontu ida-idak iha posibilidade 2.",
+        "Ho regra produtu $2^6$, depois subtrai 1."
+      ],
+      "expl": "$2^6-1={ans}$, entaun padraun {ans}."
+    },
+    "voteMajority": {
+      "prompt": "Ema {n} vota. Kandidatu presiza voto minimu hira atu hetan maioria? (voto)",
+      "hints": [
+        "Maioria mak liu metade husi voto hotu.",
+        "Hetan númeru intreiru kiik liu ne'ebé boot liu {n} nia metade."
+      ],
+      "expl": "{n} nia metade mak {half}; númeru intreiru kiik liu ne'ebé boot liu mak {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Iha loron 5 konsentrasaun rai-ful ne'ebé nurak mak {list} (µg/m³). Konsentrasaun média maka hira?",
+      "hints": [
+        "Media mak (soma) ÷ (hira loron).",
+        "Soma uluk valór 5."
+      ],
+      "expl": "({sum})÷5={ans}, entaun media mak {ans}."
+    },
+    "percentChange": {
+      "prompt": "Valór ida muda husi {a} ba {b}. Aumenta porsentu hira? (%)",
+      "hints": [
+        "Taxa aumentu = (kuantidade aumenta) ÷ (valór dahuluk) × 100.",
+        "Aumentu mak {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, entaun {ans}%."
+    },
+    "stdev": {
+      "prompt": "Dadus {list} nia dezviu padraun maka hira? (dezviu padraun populasaun)",
+      "hints": [
+        "Hetan uluk media.",
+        "Rai kuadradu husi media kuadradu dezviu (variánsia) mak dezviu padraun."
+      ],
+      "expl": "Media mak {mean} no variánsia mak {var}, entaun dezviu padraun mak {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Populasaun nia dezviu padraun mak {s} no amostra nia boot mak {n}. Marjen sala 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$ maka hira? (desimál rua)",
+      "hints": [
+        "Hetan uluk $\\sqrt{ n }$.",
+        "Fahe σ ho nia no multiplika ho 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Amostra nia media mak {xbar}, media nula mak {mu}, σ={s} no n={n}. Estatístika teste $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ maka hira?",
+      "hints": [
+        "Hetan uluk denominadór $σ/\\sqrt{ n }$.",
+        "Subtrai media nula husi amostra nia media no fahe."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Iha teste bilaterál nivel 5% valór krítiku mak 1,96. Estatístika teste mak z={z}. Konkluzaun mak saida?",
+      "hints": [
+        "Se $|z|$ boot liu 1,96, rejeita ipótese nula.",
+        "Kompara z nia valór absolutu ho 1,96."
+      ],
+      "expl": "|z|={az}, entaun: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Haree oinsá amostra hili.",
+        "Hili ne'ebé loos: aleatóriu, estratifikadu, konglomeradu ka sistemátiku."
+      ],
+      "expl": "Métodu ne'e mak: {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Hanoin dadus peskiza mai husi ne'ebé.",
+        "Hili peskiza literatura, estudu kazu, esperimentu ka dezenvolvimentu."
+      ],
+      "expl": "Métodu peskiza ne'e mak: {name}."
+    },
+    "researchStep": {
+      "prompt": "Saida mak tenke halo hafoin hili tópiku peskiza?",
+      "hints": [
+        "Peskiza ba: planu → hala'o → aprezenta → hanoin fali.",
+        "Hafoin tópiku, deside oinsá atu investiga."
+      ],
+      "expl": "Hafoin hili tópiku: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Étika peskiza hakbesik ba onestidade no sita fonte.",
+        "Hanoin oinsá tenke trata ema seluk nia serbisu no rezultadu."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Kuadrante 1",
+    "q2": "Kuadrante 2",
+    "q3": "Kuadrante 3",
+    "q4": "Kuadrante 4",
+    "p0": "0 (la bele akontese)",
+    "phalf": "1/2 (probabilidade hanesan)",
+    "p1": "1 (sertu)",
+    "random": "amostragem aleatória simples",
+    "strat": "amostragem estratifikada",
+    "cluster": "amostragem konglomerada",
+    "system": "amostragem sistemátika",
+    "reject": "Rejeita ipótese nula",
+    "keep": "La rejeita ipótese nula",
+    "literature": "peskiza literatura",
+    "casestudy": "estudu kazu",
+    "experiment": "esperimentu matemátiku",
+    "develop": "peskiza dezenvolvimentu",
+    "plan": "Halo planu peskiza",
+    "carry": "Hala'o peskiza",
+    "present": "Aprezenta rezultadu",
+    "reflect": "Hanoin fali prosesu",
+    "yesPrime": "Sin, nia primu",
+    "noPrime": "Lae, nia la'ós primu",
+    "yesFinite": "Sin, nia desimál finitu",
+    "noFinite": "Lae, nia desimál repetitivu",
+    "yesOk": "Loos",
+    "noOk": "Sala"
+  },
+  "text": {
+    "ev_coin": "Probabilidade atu hetan ulun bainhira soe osan metál dala ida mak saida?",
+    "ev_sun": "Probabilidade katak loron sa'e iha loro-sa'e aban mak saida?",
+    "ev_die": "Probabilidade atu hetan 7 ho dadu ordináriu ne'ebé iha sorin neen dala ida mak saida?",
+    "sm_system": "Estudante ida kada 10 iha eskola nia lista hili ba inkéritu. Ne'e métodu amostragem saida?",
+    "sm_random": "Estudante 30 hili husi eskola nia lista ho númeru aleatóriu. Ne'e métodu amostragem saida?",
+    "sm_strat": "Estudante hili husi tinan ida-idak tuir estudante nia hamutuk iha tinan ne'ebá. Ne'e métodu amostragem saida?",
+    "sm_cluster": "Hili uluk klase balu no hala'o inkéritu ba estudante hotu iha klase ne'ebé hili. Ne'e métodu amostragem saida?",
+    "rm_lit": "Lee artigu no livru husi bibliotéka no internet no rezume sira mak métodu peskiza saida?",
+    "rm_case": "Halibur no kompara ezemplu loos husi eskola oioin mak métodu peskiza saida?",
+    "rm_exp": "Soe dadu rasik no hakerek rezultadu atu hetan padraun mak métodu peskiza saida?",
+    "rm_dev": "Harii ferramenta foun atu aprende matemátika no teste nia efikásia mak métodu peskiza saida?",
+    "et_cite": "Kopia ema seluk nia hakerek la hateten mai husi ne'ebé kontra étika peskiza.",
+    "et_cite_r": "Uza ema nia serbisu la ho fonte mak plajiu, entaun deklarasaun ne'e loos.",
+    "et_fake": "Se rezultadu la hanesan ho ipótese, bele muda númeru atu hanesan.",
+    "et_fake_r": "Muda rezultadu mak falsifikasaun no viola étika peskiza, entaun deklarasaun ne'e sala."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Hamoos no hatudu dadus iha tabela no grafiku",
+      "concept": "Hamoos sasán tuir regra ida no konta; **tabela** ka **grafiku** halo bele kompara lalais.",
+      "example": "A 3, B 5, C 2 → hamutuk 10"
+    },
+    "E4dat1": {
+      "title": "Lee grafiku liña",
+      "concept": "**Grafiku liña** hatudu oinsá valór muda tuir tempu ho pontu no liña. Sa'e katak aumenta, tun katak menus.",
+      "example": "12 iha loron 1 → 20 iha loron 3: sa'e 8"
+    },
+    "E5dat1": {
+      "title": "Hetan media",
+      "concept": "**Media** mak dadus nia soma fahe ho hira mak iha.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Probabilidade",
+      "concept": "Evento ida nia **probabilidade** mak númeru husi 0 (imposível) to'o 1 (sertu): probabilidade = (kazu favorável) ÷ (kazu hotu).",
+      "example": "Bola A 3, bola B 2 → A nia probabilidade mak $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Gráfiku bara no gráfiku sirkulár",
+      "concept": "**Gráfiku bara** no **gráfiku sirkulár** hanoin totál nu'udar 100% no hatudu parte ida-idak nia kuota. Parte = totál × kuota.",
+      "example": "25% husi ema 200 → ema 50"
+    },
+    "M1neg1": {
+      "title": "Númeru intreiru no númeru rasionál",
+      "concept": "Sinál hanesan: soma valór absolutu. Sinál la hanesan: subtrai no husik sinál husi ida boot liu. Ba × no ÷ rezultadu mak + se sinál hanesan no − se la hanesan.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Dekompozisaun ba faktór primu, DKM no MKK",
+      "concept": "Hakerek númeru nu'udar produtu husi númeru primu mak **dekompozisaun ba faktór primu**. Divizór komún boot liu mak **divizór komún boot liu**, múltiplu komún kiik liu mak **múltiplu komún kiik liu**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Planu koordenadu",
+      "concept": "Pontu ida hakerek (x, y). Sinál sira deside Kuadrante 1–4, no reflesaun iha ás x troka y nia sinál.",
+      "example": "(−2, 5) iha Kuadrante 2"
+    },
+    "M1prp1": {
+      "title": "Proporsaun diretu no inversu",
+      "concept": "**Proporsaun diretu** mak y=ax no **proporsaun inversu** mak $y=\\frac{a}{x}$. Iha proporsaun diretu y÷x konstante; iha inversu x×y konstante.",
+      "example": "y=6 bainhira x=2 (diretu): y=3x"
+    },
+    "M1sta1": {
+      "title": "Media no frekuénsia relativa",
+      "concept": "**Mediana** mak valór iha klaran tuir orden, **moda** mak valór ne'ebé barak liu. **Frekuénsia relativa** = frekuénsia ÷ totál.",
+      "example": "1, 3, 5, 7, 9 nia mediana mak 5"
+    },
+    "M2rec1": {
+      "title": "Desimál repetitivu",
+      "concept": "Desimál ne'ebé nia dígitu repete nafatin mak **desimál repetitivu**; parte ne'ebé repete mak nia **bloku**. Fraksaun simplifikadu finitu de'it se nia denominadór iha de'it faktór 2 no 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Funsaun liña no ekuasaun liña",
+      "concept": "Iha y=ax+b, a mak deklive no b mak interseksaun ho ás y. Grafiku rua nia interseksaun mak ekuasaun rua nia solusaun hamutuk.",
+      "example": "y=2x−6 iha interseksaun ho ás x iha 3"
+    },
+    "el.econ1": {
+      "title": "Juros, taxa troka no impostu",
+      "concept": "Juros simples = kapitál × taxa × tinan; montante kompostu = kapitál × (1 + taxa)^tinan. Taxa troka mak moeda ida nia unidade 1 nia valór; impostu = folin × porsentu.",
+      "example": "₩10000, 10% kompostu ba tinan 2 → ₩12100"
+    },
+    "el.econ2": {
+      "title": "Demanda, ofarta no optimizasaun",
+      "concept": "Ekilíbriu mak fatin ne'ebé kurva demanda no ofarta hasoru malu. Reseita máximu R=pq no elastisidade mai husi funsaun no derivada.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Dadus testu no imajen",
+      "concept": "Dokumentu sai vetór husi liafuan nia kontajen no imajen sai matriz husi valór pixel. Produtu eskalár boot liu, dokumentu rua hanesan liu.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Prediksaun no optimizasaun",
+      "concept": "Prediksaun di'ak liu ho liña tendénsia nia deklive, media husi sala kuadradu (perda) no gradiente desende $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Konversaun unidade no razaun",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, oras 1 = minutu 60. Folin fa'an = folin × (1 − desontu); misturadu ho razaun a:b, A nia kuota mak $\\frac{a}{a+b}$.",
+      "example": "3.5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Área, kontajen no kreximentu",
+      "concept": "Área fó material ne'ebé presiza, regra produtu fó númeru parte, no (aumentu) ÷ (valór dahuluk) × 100 fó taxa kreximentu.",
+      "example": "Kamiza 4, kalsa 3 → konjuntu 12"
+    },
+    "el.cul1": {
+      "title": "Matemátika iha arte no moris loroloron",
+      "concept": "Razaun osan mean besik 1,618; nota oktava ida aas liu iha frekuénsia dala rua; pontu braille 6 fó padraun $2^6-1=63$; maioria mak liu metade.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Matemátika iha sosiedade no ambiente",
+      "concept": "Media no taxa kreximentu bele analiza problema sosiál no ambientál ho matemátika. Taxa kreximentu = (aumentu) ÷ (valór dahuluk) × 100.",
+      "example": "40 ba 50 → sa'e 25%"
+    },
+    "el.sta1": {
+      "title": "Pergunta estatístika no amostra",
+      "concept": "Dezviu padraun mak rai kuadradu husi media kuadradu dezviu (variánsia). Amostra hili ho amostragem aleatória, estratifikada, konglomerada ka sistemátika.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 iha dezviu padraun 2"
+    },
+    "el.sta2": {
+      "title": "Estimasaun no teste ipótese",
+      "concept": "Marjen sala 95% mak $1.96\\times\\frac{σ}{\\sqrt{n}}$. Se $|z|$ husi $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ boot liu 1,96, rejeita ipótese nula iha nivel 5%.",
+      "example": "σ=10, n=100 → marjen 1.96"
+    },
+    "el.res1": {
+      "title": "Métodu peskiza",
+      "concept": "Projetu peskiza matemátika bele uza peskiza literatura, estudu kazu, esperimentu matemátiku ka peskiza dezenvolvimentu.",
+      "example": "Soe dadu atu hetan padraun → esperimentu"
+    },
+    "el.res2": {
+      "title": "Pasu peskiza no étika",
+      "concept": "Peskiza ba: tópiku → planu → hala'o → aprezenta → hanoin fali. Sita fonte no la muda rezultadu mak étika peskiza.",
+      "example": "Hafoin tópiku mai planu peskiza"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Matemátika Ekonómika",
+      "world": "Sidade Ekonomia",
+      "tagline": "Aprende matemátika osan no merkadu",
+      "unit": "Númeru no ekonomia, funsaun no ekonomia"
+    },
+    "ai": {
+      "title": "Matemátika ba IA",
+      "world": "Laboratóriu IA",
+      "tagline": "Hetan matemátika iha dadus no optimizasaun laran",
+      "unit": "Prosesamentu dadus, prediksaun no optimizasaun"
+    },
+    "job": {
+      "title": "Matemátika iha Serbisu",
+      "world": "Sidade Ofisina",
+      "tagline": "Pratika matemátika ne'ebé uza iha serbisu",
+      "unit": "Númeru no unidade, razaun, área no kontajen"
+    },
+    "cul": {
+      "title": "Matemátika no Kultura",
+      "world": "Praça Kultura",
+      "tagline": "Hetan matemátika iha arte no moris loroloron",
+      "unit": "Arte no moris, sosiedade no ambiente"
+    },
+    "sta": {
+      "title": "Estatístika Prátika",
+      "world": "Laboratóriu Estatístika",
+      "tagline": "Dezenvolve abilidade atu julga husi dadus",
+      "unit": "Dadus no amostra, estimasaun no teste"
+    },
+    "res": {
+      "title": "Projetu Peskiza Matemátika",
+      "world": "Ofisina Peskiza",
+      "tagline": "Aprende métodu no étika peskiza",
+      "unit": "Métodu, prosedimentu no étika"
+    }
+  }
+}

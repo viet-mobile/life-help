@@ -42,8 +42,8 @@ for (const site of ["math", "english"]) {
     out.push(`update public.learn_skills set prerequisite_skill_id = (select id from public.learn_skills where code = ${q(s.prerequisiteId)}) where code = ${q(s.id)};`);
   }
   catalog.courses.forEach((c, ci) => {
-    out.push(`insert into public.learn_courses(code, curriculum_id, subject_id, school_level, grade, title, world_name, world_emoji, world_tagline, sort_order, status)
-  values (${q(c.id)}, (select id from public.learn_curricula where code = ${q(catalog.curriculum)}), ${subj}, ${q(c.grade.startsWith("E") ? "elementary" : c.grade.startsWith("M") ? "middle" : "high")}, ${q(c.grade)}, ${q(c.title)}, ${q(c.world.name)}, ${q(c.world.emoji)}, ${q(c.world.tagline)}, ${ci}, 'PUBLISHED') on conflict (code) do nothing;`);
+    out.push(`insert into public.learn_courses(code, curriculum_id, subject_id, school_level, grade, title, world_name, world_emoji, world_tagline, elective, sort_order, status)
+  values (${q(c.id)}, (select id from public.learn_curricula where code = ${q(catalog.curriculum)}), ${subj}, ${q(c.grade.startsWith("E") ? "elementary" : c.grade.startsWith("M") ? "middle" : "high")}, ${q(c.grade)}, ${q(c.title)}, ${q(c.world.name)}, ${q(c.world.emoji)}, ${q(c.world.tagline)}, ${c.elective ? "true" : "false"}, ${ci}, 'PUBLISHED') on conflict (code) do nothing;`);
     c.units.forEach((u, ui) => {
       out.push(`insert into public.learn_units(code, course_id, title, sort_order, status) values (${q(u.id)}, (select id from public.learn_courses where code = ${q(c.id)}), ${q(u.title)}, ${ui}, 'PUBLISHED') on conflict (code) do nothing;`);
       u.lessons.forEach((l, li) => {

@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Quel est le nombre pour {cat} dans le tableau ?",
+      "hints": [
+        "Trouve la case de {cat}.",
+        "Lis le nombre écrit dedans."
+      ],
+      "expl": "Le nombre pour {cat} est {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Quelle est la somme de tous les nombres du tableau ?",
+      "hints": [
+        "Lis le nombre de chaque case.",
+        "Additionne-les tous."
+      ],
+      "expl": "La somme est {sum}, donc la réponse est {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Combien y a-t-il de ronds dans la colonne la plus haute du graphique ?",
+      "hints": [
+        "Compte les ronds de chaque colonne.",
+        "Trouve la colonne la plus haute."
+      ],
+      "expl": "La colonne la plus haute a {ans} ronds."
+    },
+    "symbolDiff": {
+      "prompt": "Combien la plus grande colonne en a-t-elle de plus que la plus petite ?",
+      "hints": [
+        "Trouve d'abord le plus grand et le plus petit nombre.",
+        "Soustrais le plus petit du plus grand."
+      ],
+      "expl": "{max}-{min}={ans}, donc elle en a {ans} de plus."
+    },
+    "mostWhich": {
+      "prompt": "Quel élément est le plus grand dans le graphique ?",
+      "hints": [
+        "Compare les nombres des éléments.",
+        "Trouve le plus grand nombre."
+      ],
+      "expl": "Le plus grand élément est {name}."
+    },
+    "compareCount": {
+      "prompt": "Combien {a} en a-t-il de plus que {b} ?",
+      "hints": [
+        "Lis les nombres de {a} et de {b}.",
+        "Soustrais le plus petit du plus grand."
+      ],
+      "expl": "{x}-{y}={ans}, donc {a} en a {ans} de plus."
+    },
+    "lineRead": {
+      "prompt": "Quelle est la valeur en {cat} sur le graphique linéaire ?",
+      "hints": [
+        "Trouve {cat} sur l'axe horizontal.",
+        "Lis la valeur du point au-dessus."
+      ],
+      "expl": "La valeur en {cat} est {ans}."
+    },
+    "lineMax": {
+      "prompt": "Quelle est la plus grande valeur du graphique linéaire ?",
+      "hints": [
+        "Compare les valeurs de tous les points.",
+        "Trouve le point le plus haut."
+      ],
+      "expl": "La plus grande valeur est {ans}."
+    },
+    "lineChange": {
+      "prompt": "De combien la valeur a-t-elle augmenté de {from} à {to} ?",
+      "hints": [
+        "Lis les valeurs en {from} et en {to}.",
+        "Soustrais la première valeur de la dernière."
+      ],
+      "expl": "{b}-{a}={ans}, donc elle a augmenté de {ans}."
+    },
+    "mean": {
+      "prompt": "Quelle est la moyenne de ces nombres ? {list}",
+      "hints": [
+        "La moyenne est (somme de tous) ÷ (combien il y en a).",
+        "Additionne-les tous d'abord."
+      ],
+      "expl": "({sum})÷{n}={ans}, donc la moyenne est {ans}."
+    },
+    "meanMissing": {
+      "prompt": "La moyenne de quatre nombres est {m} et trois d'entre eux sont {list}. Quel est le quatrième nombre ?",
+      "hints": [
+        "La somme des quatre nombres est moyenne × 4.",
+        "Soustrais les trois nombres connus de la somme."
+      ],
+      "expl": "{m}×4={total} et {total}-({known})={ans}, donc c'est {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Une boîte contient {a} boules A et {b} boules B. On tire une boule. Quelle est la probabilité que ce soit une boule A, en écriture décimale ?",
+      "hints": [
+        "Probabilité = (cas favorables) ÷ (cas possibles).",
+        "Trouve d'abord le nombre total de boules."
+      ],
+      "expl": "{a}÷{total}={ans}, donc la probabilité est {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "L'impossible vaut 0 et le certain vaut 1.",
+        "Équiprobable signifie $\\frac{1}{2}$."
+      ],
+      "expl": "La probabilité de cet événement est : {name}."
+    },
+    "pieCount": {
+      "prompt": "Dans le diagramme circulaire, A représente {p} % du total. Le total est de {t} personnes. Combien y a-t-il de personnes A ?",
+      "hints": [
+        "{p} % vaut $\\frac{p}{100}$.",
+        "Multiplie le total par la proportion."
+      ],
+      "expl": "{t}×{p}÷100={ans}, donc {ans} personnes."
+    },
+    "pieRest": {
+      "prompt": "Trois parties d'un diagramme circulaire valent {a} %, {b} % et {c} %. Combien vaut la quatrième partie ? (%)",
+      "hints": [
+        "Le total est 100 %.",
+        "Soustrais les trois parties de 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, donc c'est {ans} %."
+    },
+    "bandRead": {
+      "prompt": "Quel pourcentage du total représente {cat} dans le diagramme en bande ? (%)",
+      "hints": [
+        "Trouve la partie de {cat}.",
+        "Lis le pourcentage écrit en dessous."
+      ],
+      "expl": "{cat} représente {ans} %."
+    },
+    "intAdd": {
+      "prompt": "Calcule $({a})+({b})$.",
+      "hints": [
+        "Mêmes signes : additionne les valeurs absolues et garde le signe.",
+        "Signes différents : soustrais les valeurs absolues et prends le signe de la plus grande."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Calcule $({a})-({b})$.",
+      "hints": [
+        "Soustraire revient à ajouter l'opposé.",
+        "Réécris-le sous la forme $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Calcule $({a})\\times({b})$.",
+      "hints": [
+        "Mêmes signes : résultat positif ; signes différents : résultat négatif.",
+        "Multiplie les valeurs absolues."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Calcule $({a})\\div({b})$.",
+      "hints": [
+        "Mêmes signes : résultat positif ; signes différents : résultat négatif.",
+        "Divise les valeurs absolues."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "Combien vaut $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ en écriture décimale ?",
+      "hints": [
+        "Mets au même dénominateur et additionne.",
+        "Transforme la fraction en nombre décimal."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Quel nombre le point P indique-t-il sur la droite graduée ?",
+      "hints": [
+        "À gauche de 0 c'est négatif, à droite de 0 c'est positif.",
+        "Compte les graduations."
+      ],
+      "expl": "Le point P indique {ans}."
+    },
+    "primeCount": {
+      "prompt": "Combien y a-t-il de nombres premiers jusqu'à {n} ?",
+      "hints": [
+        "Un nombre premier a exactement deux diviseurs : 1 et lui-même.",
+        "Compte 2, 3, 5, 7, ... dans l'ordre."
+      ],
+      "expl": "Les nombres premiers jusqu'à {n} sont {list} : il y en a {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ décomposé en facteurs premiers s'écrit $2^a\\times3^b$. Combien vaut $a+b$ ?",
+      "hints": [
+        "Divise {n} par 2 tant que tu peux.",
+        "Puis divise le reste par 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, donc $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "Combien {n} a-t-il de diviseurs ?",
+      "hints": [
+        "Trouve tous les nombres qui divisent {n} exactement.",
+        "Vérifie en partant du plus petit."
+      ],
+      "expl": "Les diviseurs de {n} sont {list} : il y en a {ans}."
+    },
+    "gcd": {
+      "prompt": "Quel est le plus grand commun diviseur de {a} et {b} ?",
+      "hints": [
+        "Trouve les diviseurs communs aux deux nombres.",
+        "Le plus grand d'entre eux est le plus grand commun diviseur."
+      ],
+      "expl": "Le plus grand commun diviseur de {a} et {b} est {ans}."
+    },
+    "lcm": {
+      "prompt": "Quel est le plus petit commun multiple de {a} et {b} ?",
+      "hints": [
+        "Liste les multiples communs aux deux nombres, du plus petit au plus grand.",
+        "Le plus petit multiple commun est le plus petit commun multiple."
+      ],
+      "expl": "Le plus petit commun multiple de {a} et {b} est {ans}."
+    },
+    "isPrime": {
+      "prompt": "{n} est-il un nombre premier ?",
+      "hints": [
+        "Cherche les diviseurs de {n}.",
+        "S'il a un diviseur autre que 1 et lui-même, il n'est pas premier."
+      ],
+      "expl": "Les diviseurs de {n} sont {list}, donc {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Quelle est la coordonnée {axis} du point A ?",
+      "hints": [
+        "Un couple de coordonnées s'écrit (x, y).",
+        "Compte le long du quadrillage."
+      ],
+      "expl": "La coordonnée {axis} de A est {ans}."
+    },
+    "quadrant": {
+      "prompt": "Dans quel quadrant se trouve le point ({a}, {b}) ?",
+      "hints": [
+        "Regarde les signes des coordonnées x et y.",
+        "(+,+) est le quadrant 1."
+      ],
+      "expl": "x vaut {a} et y vaut {b}, donc il se trouve dans : {name}."
+    },
+    "distAxis": {
+      "prompt": "Quelle est la distance du point ({a}, {b}) à l'axe {axis} ?",
+      "hints": [
+        "La distance à un axe est la valeur absolue d'une coordonnée.",
+        "Pour l'axe {axis}, regarde la coordonnée {which}."
+      ],
+      "expl": "C'est la valeur absolue de la coordonnée {which} {v} : {ans}."
+    },
+    "reflect": {
+      "prompt": "Le point ({a}, {b}) est symétrique par rapport à l'axe des x. Quelle est l'ordonnée du nouveau point ?",
+      "hints": [
+        "Une symétrie par rapport à l'axe des x conserve l'abscisse.",
+        "Le signe de l'ordonnée change."
+      ],
+      "expl": "Le nouveau point est ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y est proportionnel à x, et y={y1} quand x={x1}. Combien vaut y quand x={x2} ?",
+      "hints": [
+        "La proportionnalité directe s'écrit y=ax.",
+        "Trouve d'abord a."
+      ],
+      "expl": "a={y1}÷{x1}={k}, donc y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y est inversement proportionnel à x, et y={y1} quand x={x1}. Combien vaut y quand x={x2} ?",
+      "hints": [
+        "La proportionnalité inverse s'écrit $y=\\frac{a}{x}$.",
+        "Trouve d'abord a=xy."
+      ],
+      "expl": "a={x1}×{y1}={k}, donc y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Le graphique de la proportionnalité directe y=ax passe par le point ({x1}, {y1}). Combien vaut a ?",
+      "hints": [
+        "Remplace le point dans y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Le graphique de la proportionnalité inverse $y=\\frac{a}{x}$ passe par ({x1}, {y1}). Combien vaut a ?",
+      "hints": [
+        "Remplace le point dans $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Quelle est la médiane de la série {list} ?",
+      "hints": [
+        "Range les données par ordre croissant.",
+        "La valeur du milieu est la médiane ; si l'effectif est pair, prends la moyenne des deux valeurs du milieu."
+      ],
+      "expl": "Dans l'ordre : {sorted}, donc la médiane est {ans}."
+    },
+    "mode": {
+      "prompt": "Quel est le mode de la série {list} ?",
+      "hints": [
+        "Le mode est la valeur qui apparaît le plus souvent.",
+        "Compte combien de fois chaque valeur apparaît."
+      ],
+      "expl": "{ans} apparaît le plus souvent, donc le mode est {ans}."
+    },
+    "dataRange": {
+      "prompt": "Quelle est la différence entre la plus grande et la plus petite valeur de {list} ?",
+      "hints": [
+        "Trouve la plus grande et la plus petite valeur.",
+        "Soustrais la plus petite de la plus grande."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "L'effectif total est {t} et une classe a un effectif de {f}. Quelle est la fréquence relative de cette classe ? (décimal)",
+      "hints": [
+        "Fréquence relative = (effectif de la classe) ÷ (effectif total).",
+        "Écris le résultat sous forme décimale."
+      ],
+      "expl": "{f}÷{t}={ans}, donc la fréquence relative est {ans}."
+    },
+    "periodLen": {
+      "prompt": "Quand $\\frac{1}{{d}}$ est écrit en décimal, combien de chiffres la période compte-t-elle ?",
+      "hints": [
+        "Divise 1 par {d}.",
+        "La période est la partie qui se répète."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, donc la période compte {ans} chiffres."
+    },
+    "repeatFrac": {
+      "prompt": "Le nombre décimal périodique $0.\\dot{d}\\dot{e}$ est égal à $\\frac{x}{99}$. Combien vaut x ?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Écris le nombre à deux chiffres ab au numérateur."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ donne x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ est-il un nombre décimal limité ?",
+      "hints": [
+        "Simplifie la fraction, puis décompose le dénominateur en facteurs premiers.",
+        "S'il n'y a que 2 et 5 comme facteurs premiers, le décimal est limité."
+      ],
+      "expl": "Le dénominateur {d2} a pour facteurs premiers {fact}, donc {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Quel est le chiffre à la {k}e décimale ?",
+      "hints": [
+        "La période 142857 compte 6 chiffres.",
+        "Utilise le reste de {k} ÷ 6 pour trouver la position."
+      ],
+      "expl": "Le reste de {k} ÷ 6 est {r}, donc c'est le {r}e chiffre : {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Quel est le coefficient directeur de la fonction affine $y={a}x+{b}$ ?",
+      "hints": [
+        "Dans $y=ax+b$, le coefficient directeur est a.",
+        "Lis le coefficient de x."
+      ],
+      "expl": "Le coefficient directeur est {ans}."
+    },
+    "yInt": {
+      "prompt": "Quelle est l'ordonnée à l'origine de $y={a}x+{b}$ ?",
+      "hints": [
+        "L'ordonnée à l'origine est y quand x=0.",
+        "Dans $y=ax+b$, c'est b."
+      ],
+      "expl": "L'ordonnée à l'origine est {ans}."
+    },
+    "xInt": {
+      "prompt": "Quelle est l'abscisse à l'origine de $y={a}x+{b}$ ?",
+      "hints": [
+        "L'abscisse à l'origine est x quand y=0.",
+        "Résous $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ donne x={ans}."
+    },
+    "crossX": {
+      "prompt": "Les graphiques de $y={a1}x+{b1}$ et de $y={a2}x+{b2}$ se coupent en P. Quelle est l'abscisse de P ?",
+      "hints": [
+        "À l'intersection, les deux valeurs de y sont égales.",
+        "Résous $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ donne x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Pour la fonction affine $f(x)={a}x+{b}$, combien vaut $f({c})$ ?",
+      "hints": [
+        "Remplace x par {c}.",
+        "Multiplie, puis ajoute."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "On place {p} wons pendant {n} ans à {r} % d'intérêts simples par an. Quel est le montant des intérêts ? (wons)",
+      "hints": [
+        "Intérêts simples = capital × taux × années.",
+        "{r} % s'écrit {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, donc les intérêts sont de {ans} wons."
+    },
+    "compoundInterest": {
+      "prompt": "On place {p} wons pendant {n} ans à {r} % d'intérêts composés par an. Quel est le montant total ? (wons)",
+      "hints": [
+        "Avec les intérêts composés, les intérêts rapportent des intérêts.",
+        "Multiplie le capital × (1 + taux) {n} fois."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, donc le total est de {ans} wons."
+    },
+    "exchange": {
+      "prompt": "1 unité d'une monnaie étrangère vaut {r} wons. Combien de wons valent {d} unités de cette monnaie ? (wons)",
+      "hints": [
+        "Le taux de change est la valeur de 1 unité de la monnaie étrangère en wons.",
+        "Multiplie le nombre d'unités par le taux."
+      ],
+      "expl": "{d}×{r}={ans}, donc {ans} wons."
+    },
+    "taxTotal": {
+      "prompt": "Un article coûte {p} wons et une TVA de {t} % s'y ajoute. Combien de wons faut-il payer ? (wons)",
+      "hints": [
+        "La taxe est prix × {t} %.",
+        "Ajoute la taxe au prix."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, donc {ans} wons."
+    },
+    "equilibrium": {
+      "prompt": "La courbe de demande $p={a}-{b}q$ et la courbe d'offre $p={c}+{d}q$ se coupent à la quantité d'équilibre q. Combien vaut q ?",
+      "hints": [
+        "À l'équilibre, le prix de la demande est égal au prix de l'offre.",
+        "Résous $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ donne q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "La fonction de demande est $p={a}-{b}q$. Quel est le maximum de la recette $R=pq$ ?",
+      "hints": [
+        "$R=({a}-{b}q)q$ est un polynôme du second degré.",
+        "Il est maximal au sommet $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Pour q={q}, la recette est maximale : {ans}."
+    },
+    "elasticity": {
+      "prompt": "La demande est $Q={a}-{b}p$. Quelle est la valeur absolue de l'élasticité-prix en $p={p0}$ ? (décimal)",
+      "hints": [
+        "L'élasticité absolue est $\\frac{bp}{Q}$.",
+        "Trouve d'abord Q pour $p={p0}$."
+      ],
+      "expl": "Q={q0}, donc $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Combien de fois A apparaît-il dans la suite de mots {seq} ?",
+      "hints": [
+        "Marque seulement les A en comptant.",
+        "Ce nombre est la composante A du vecteur de fréquences."
+      ],
+      "expl": "A apparaît {ans} fois."
+    },
+    "freqDot": {
+      "prompt": "Deux documents ont pour vecteurs de fréquences $\\vec{u}=({u1}, {u2}, {u3})$ et $\\vec{v}=({v1}, {v2}, {v3})$. Quel est le produit scalaire $\\vec{u}\\cdot\\vec{v}$ ?",
+      "hints": [
+        "Multiplie les composantes correspondantes et additionne.",
+        "Plus le produit scalaire est grand, plus les documents se ressemblent."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Une image est stockée sous la forme de la matrice $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Quelle est la somme de toutes les valeurs des pixels ?",
+      "hints": [
+        "Chaque entrée est la luminosité d'un pixel.",
+        "Additionne les quatre entrées."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Un pixel a la valeur {v}. Chaque pixel est éclairci de {k}. Quelle est sa nouvelle valeur ?",
+      "hints": [
+        "Éclaircir revient à ajouter le même nombre à chaque entrée de la matrice.",
+        "Ajoute {k} à {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Quel est le coefficient directeur de la droite de tendance passant par ({x1}, {y1}) et ({x2}, {y2}) ?",
+      "hints": [
+        "Coefficient directeur = variation de y ÷ variation de x.",
+        "Calcule $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Les prédictions sont {pred} et les valeurs réelles sont {real}. Quelle est l'erreur quadratique moyenne (la moyenne des erreurs au carré) ?",
+      "hints": [
+        "L'erreur est prédiction − valeur réelle.",
+        "Élève chaque erreur au carré, puis calcule la moyenne."
+      ],
+      "expl": "Les erreurs au carré sont {sq} et leur moyenne est {ans}."
+    },
+    "gradStep": {
+      "prompt": "Pour la perte $f(x)=x^2$, un pas de descente de gradient depuis x={x0} avec un taux d'apprentissage de {eta} donne un nouveau x égal à ?",
+      "hints": [
+        "Descente de gradient : $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, donc {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "Combien de cm font {v} m ? (cm)",
+      "hints": [
+        "1 m vaut 100 cm.",
+        "Multiplie {v} par 100."
+      ],
+      "expl": "{v}×100={ans}, donc {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "Combien de g font {v} kg ? (g)",
+      "hints": [
+        "1 kg vaut 1000 g.",
+        "Multiplie {v} par 1000."
+      ],
+      "expl": "{v}×1000={ans}, donc {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Combien de minutes font {v} heures ? (min)",
+      "hints": [
+        "1 heure vaut 60 minutes.",
+        "Multiplie {v} par 60."
+      ],
+      "expl": "{v}×60={ans}, donc {ans} minutes."
+    },
+    "discount": {
+      "prompt": "Un article coûte {p} wons et est vendu avec {d} % de réduction. Quel est le prix de vente ? (wons)",
+      "hints": [
+        "La réduction est prix × {d} %.",
+        "Soustrais la réduction du prix."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, donc {ans} wons."
+    },
+    "mixRatio": {
+      "prompt": "Les ingrédients A et B sont mélangés dans le rapport {a}:{b} pour obtenir {t} g au total. Combien faut-il de g de A ? (g)",
+      "hints": [
+        "Le tout fait {a}+{b}={s} parts.",
+        "A représente $\\frac{a}{s}$ du tout."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, donc {ans} g."
+    },
+    "tiles": {
+      "prompt": "Un mur mesure {w} m de large et {h} m de haut. Combien de carreaux de 1 m × 1 m faut-il pour le couvrir ? (carreaux)",
+      "hints": [
+        "Trouve l'aire du mur.",
+        "Un carreau a une aire de 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, donc {ans} carreaux."
+    },
+    "outfit": {
+      "prompt": "Il y a {a} chemises et {b} pantalons. Combien de tenues différentes d'une chemise et d'un pantalon y a-t-il ?",
+      "hints": [
+        "Pour chaque chemise, il y a {b} choix de pantalon.",
+        "Utilise le principe multiplicatif."
+      ],
+      "expl": "{a}×{b}={ans}, donc {ans} tenues."
+    },
+    "goldenRatio": {
+      "prompt": "Le nombre d'or vérifie $a:b=(a+b):a$. Quand b=10, combien vaut environ a ? (deux décimales)",
+      "hints": [
+        "Le nombre d'or vaut environ 1,618.",
+        "a vaut environ 1,618 fois b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "La hauteur d'un son dépend de sa fréquence. Quelle est la fréquence en Hz de la note située une octave au-dessus de 440 Hz ? (Hz)",
+      "hints": [
+        "Une note une octave plus haut a une fréquence double.",
+        "Multiplie 440 par 2."
+      ],
+      "expl": "440×2={ans}, donc {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Une cellule braille a 6 points, chacun en relief ou plat. Sans compter la configuration sans point en relief, combien y a-t-il de configurations ?",
+      "hints": [
+        "Chaque point a 2 possibilités.",
+        "Par le principe multiplicatif $2^6$, puis soustrais 1."
+      ],
+      "expl": "$2^6-1={ans}$, donc {ans} configurations."
+    },
+    "voteMajority": {
+      "prompt": "{n} personnes votent. Combien de voix un candidat doit-il obtenir au minimum pour avoir la majorité ? (voix)",
+      "hints": [
+        "La majorité, c'est plus de la moitié des voix.",
+        "Trouve le plus petit nombre entier au-dessus de la moitié de {n}."
+      ],
+      "expl": "La moitié de {n} est {half} ; le plus petit entier au-dessus est {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Pendant 5 jours, les concentrations de particules fines étaient {list} (µg/m³). Quelle est la concentration moyenne ?",
+      "hints": [
+        "La moyenne est (somme) ÷ (nombre de jours).",
+        "Additionne d'abord les 5 valeurs."
+      ],
+      "expl": "({sum})÷5={ans}, donc la moyenne est {ans}."
+    },
+    "percentChange": {
+      "prompt": "Une valeur est passée de {a} à {b}. De quel pourcentage a-t-elle augmenté ? (%)",
+      "hints": [
+        "Taux d'augmentation = (augmentation) ÷ (valeur initiale) × 100.",
+        "L'augmentation est {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, donc {ans} %."
+    },
+    "stdev": {
+      "prompt": "Quel est l'écart type de la série {list} ? (écart type de population)",
+      "hints": [
+        "Trouve d'abord la moyenne.",
+        "La racine carrée de la moyenne des carrés des écarts (la variance) est l'écart type."
+      ],
+      "expl": "La moyenne est {mean} et la variance est {var}, donc l'écart type est {ans}."
+    },
+    "ciHalf": {
+      "prompt": "L'écart type de la population est {s} et la taille de l'échantillon est {n}. Quelle est la marge d'erreur à 95 % $1.96\\times\\frac{σ}{\\sqrt{ n }}$ ? (deux décimales)",
+      "hints": [
+        "Trouve d'abord $\\sqrt{ n }$.",
+        "Divise σ par ce nombre et multiplie par 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "La moyenne de l'échantillon est {xbar}, la moyenne de l'hypothèse nulle est {mu}, σ={s} et n={n}. Quelle est la statistique de test $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ ?",
+      "hints": [
+        "Trouve d'abord le dénominateur $σ/\\sqrt{ n }$.",
+        "Soustrais la moyenne de l'hypothèse nulle de la moyenne de l'échantillon et divise."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Dans un test bilatéral au seuil de 5 %, la valeur critique est 1,96. La statistique de test est z={z}. Quelle est la conclusion ?",
+      "hints": [
+        "Si $|z|$ est supérieur à 1,96, on rejette l'hypothèse nulle.",
+        "Compare la valeur absolue de z avec 1,96."
+      ],
+      "expl": "|z|={az}, donc : {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Regarde comment l'échantillon est choisi.",
+        "Choisis la méthode correspondante : aléatoire simple, stratifiée, par grappes ou systématique."
+      ],
+      "expl": "Cette méthode est : {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Réfléchis à l'origine des données de la recherche.",
+        "Choisis entre recherche documentaire, étude de cas, expérience ou recherche-développement."
+      ],
+      "expl": "Cette méthode de recherche est : {name}."
+    },
+    "researchStep": {
+      "prompt": "Que faut-il faire juste après avoir choisi un sujet de recherche ?",
+      "hints": [
+        "La recherche suit l'ordre : plan → réalisation → présentation → bilan.",
+        "Après le sujet, on décide comment l'étudier."
+      ],
+      "expl": "Après le choix du sujet : {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "L'éthique de la recherche repose sur l'honnêteté et la citation des sources.",
+        "Pense à la façon dont il faut traiter le travail et les résultats des autres."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Quadrant 1",
+    "q2": "Quadrant 2",
+    "q3": "Quadrant 3",
+    "q4": "Quadrant 4",
+    "p0": "0 (c'est impossible)",
+    "phalf": "1/2 (équiprobable)",
+    "p1": "1 (c'est certain)",
+    "random": "échantillonnage aléatoire simple",
+    "strat": "échantillonnage stratifié",
+    "cluster": "échantillonnage par grappes",
+    "system": "échantillonnage systématique",
+    "reject": "Rejeter l'hypothèse nulle",
+    "keep": "Ne pas rejeter l'hypothèse nulle",
+    "literature": "recherche documentaire",
+    "casestudy": "étude de cas",
+    "experiment": "expérience mathématique",
+    "develop": "recherche-développement",
+    "plan": "Établir un plan de recherche",
+    "carry": "Réaliser la recherche",
+    "present": "Présenter les résultats",
+    "reflect": "Faire le bilan du processus",
+    "yesPrime": "Oui, il est premier",
+    "noPrime": "Non, il n'est pas premier",
+    "yesFinite": "Oui, c'est un nombre décimal limité",
+    "noFinite": "Non, c'est un nombre décimal périodique",
+    "yesOk": "Vrai",
+    "noOk": "Faux"
+  },
+  "text": {
+    "ev_coin": "Quelle est la probabilité d'obtenir pile quand on lance une pièce une fois ?",
+    "ev_sun": "Quelle est la probabilité que le soleil se lève à l'est demain ?",
+    "ev_die": "Quelle est la probabilité d'obtenir un 7 en lançant un dé ordinaire à six faces ?",
+    "sm_system": "On a choisi un élève sur 10 sur la liste de l'école pour une enquête. De quelle méthode d'échantillonnage s'agit-il ?",
+    "sm_random": "On a choisi trente élèves sur la liste de l'école à l'aide de nombres aléatoires. De quelle méthode d'échantillonnage s'agit-il ?",
+    "sm_strat": "On a choisi des élèves dans chaque niveau proportionnellement au nombre d'élèves de ce niveau. De quelle méthode d'échantillonnage s'agit-il ?",
+    "sm_cluster": "On a d'abord choisi quelques classes, puis on a interrogé tous les élèves des classes choisies. De quelle méthode d'échantillonnage s'agit-il ?",
+    "rm_lit": "Lire des articles et des livres de la bibliothèque et d'internet et les résumer, de quelle méthode de recherche s'agit-il ?",
+    "rm_case": "Rassembler et comparer des exemples réels de plusieurs écoles, de quelle méthode de recherche s'agit-il ?",
+    "rm_exp": "Lancer soi-même des dés et noter les résultats pour trouver une régularité, de quelle méthode de recherche s'agit-il ?",
+    "rm_dev": "Construire un nouvel outil pour apprendre les mathématiques et tester son efficacité, de quelle méthode de recherche s'agit-il ?",
+    "et_cite": "Copier le texte d'une autre personne sans dire d'où il vient va à l'encontre de l'éthique de la recherche.",
+    "et_cite_r": "Utiliser le travail de quelqu'un sans citer la source est du plagiat, donc l'affirmation est vraie.",
+    "et_fake": "Si les résultats diffèrent de l'hypothèse, on peut changer les nombres pour qu'ils correspondent.",
+    "et_fake_r": "Modifier des résultats est une falsification et enfreint l'éthique de la recherche, donc l'affirmation est fausse."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Trier des données et les présenter en tableaux et en graphiques",
+      "concept": "Trie des objets selon une règle et compte-les ; un **tableau** ou un **graphique** permet de comparer d'un coup d'œil.",
+      "example": "A 3, B 5, C 2 → 10 en tout"
+    },
+    "E4dat1": {
+      "title": "Lire des graphiques linéaires",
+      "concept": "Un **graphique linéaire** montre comment une valeur change au cours du temps avec des points et des segments. Ça monte : augmentation ; ça descend : diminution.",
+      "example": "12 au jour 1 → 20 au jour 3 : hausse de 8"
+    },
+    "E5dat1": {
+      "title": "Calculer la moyenne",
+      "concept": "La **moyenne** est la somme des données divisée par leur nombre.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "La probabilité",
+      "concept": "La **probabilité** d'un événement est un nombre de 0 (impossible) à 1 (certain) : probabilité = (cas favorables) ÷ (cas possibles).",
+      "example": "3 boules A, 2 boules B → la probabilité de A est $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Diagrammes en bande et diagrammes circulaires",
+      "concept": "Les **diagrammes en bande** et les **diagrammes circulaires** considèrent le tout comme 100 % et montrent la part de chaque partie. Partie = tout × proportion.",
+      "example": "25 % de 200 personnes → 50 personnes"
+    },
+    "M1neg1": {
+      "title": "Entiers relatifs et nombres rationnels",
+      "concept": "Mêmes signes : on additionne les valeurs absolues. Signes différents : on les soustrait et on garde le signe de la plus grande. Pour × et ÷, le résultat est + si les signes sont identiques et − sinon.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Décomposition en facteurs premiers, PGCD et PPCM",
+      "concept": "Écrire un nombre comme produit de nombres premiers, c'est la **décomposition en facteurs premiers**. Le plus grand diviseur commun est le **plus grand commun diviseur**, le plus petit multiple commun est le **plus petit commun multiple**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Le plan muni d'un repère",
+      "concept": "Un point s'écrit (x, y). Les signes déterminent les quadrants 1 à 4, et la symétrie par rapport à l'axe des x change le signe de y.",
+      "example": "(−2, 5) est dans le quadrant 2"
+    },
+    "M1prp1": {
+      "title": "Proportionnalité directe et inverse",
+      "concept": "La **proportionnalité directe** s'écrit y=ax et la **proportionnalité inverse** $y=\\frac{a}{x}$. En proportionnalité directe, y÷x est constant ; en proportionnalité inverse, x×y est constant.",
+      "example": "y=6 pour x=2 (directe) : y=3x"
+    },
+    "M1sta1": {
+      "title": "Moyennes et fréquence relative",
+      "concept": "La **médiane** est la valeur du milieu une fois les données rangées, le **mode** est la valeur la plus fréquente. **Fréquence relative** = effectif ÷ total.",
+      "example": "La médiane de 1, 3, 5, 7, 9 est 5"
+    },
+    "M2rec1": {
+      "title": "Nombres décimaux périodiques",
+      "concept": "Un nombre décimal dont les chiffres se répètent indéfiniment est un **nombre décimal périodique** ; la partie qui se répète est sa **période**. Une fraction irréductible est un décimal limité seulement si son dénominateur n'a pour facteurs que 2 et 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Fonctions affines et équations linéaires",
+      "concept": "Dans y=ax+b, a est le coefficient directeur et b l'ordonnée à l'origine. L'intersection de deux graphiques est la solution du système des deux équations.",
+      "example": "y=2x−6 a pour abscisse à l'origine 3"
+    },
+    "el.econ1": {
+      "title": "Intérêts, taux de change et taxes",
+      "concept": "Intérêts simples = capital × taux × années ; capital acquis avec intérêts composés = capital × (1 + taux)^années. Un taux de change est la valeur de 1 unité d'une monnaie ; la taxe est le prix × un pourcentage.",
+      "example": "₩10000, 10 % composés pendant 2 ans → ₩12100"
+    },
+    "el.econ2": {
+      "title": "Demande, offre et optimisation",
+      "concept": "L'équilibre est le point où les courbes de demande et d'offre se coupent. La recette maximale R=pq et l'élasticité s'obtiennent à partir des fonctions et des dérivées.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Données textuelles et images",
+      "concept": "Un document devient un vecteur de fréquences de mots et une image une matrice de valeurs de pixels. Plus le produit scalaire est grand, plus deux documents se ressemblent.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Prédiction et optimisation",
+      "concept": "Les prédictions s'améliorent grâce au coefficient directeur d'une droite de tendance, à la moyenne des erreurs au carré (la perte) et à la descente de gradient $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Conversion d'unités et rapports",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 heure = 60 minutes. Prix de vente = prix × (1 − réduction) ; mélanger dans le rapport a:b donne à A une part de $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Aire, dénombrement et croissance",
+      "concept": "L'aire donne la quantité de matériau nécessaire, le principe multiplicatif le nombre de paires, et (augmentation) ÷ (valeur initiale) × 100 le taux de croissance.",
+      "example": "4 chemises, 3 pantalons → 12 tenues"
+    },
+    "el.cul1": {
+      "title": "Les mathématiques dans l'art et la vie quotidienne",
+      "concept": "Le nombre d'or vaut environ 1,618 ; une note une octave plus haut a une fréquence double ; 6 points braille donnent $2^6-1=63$ configurations ; une majorité, c'est plus de la moitié.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Les mathématiques dans la société et l'environnement",
+      "concept": "Les moyennes et les taux de croissance permettent d'analyser mathématiquement des problèmes sociaux et environnementaux. Taux de croissance = (augmentation) ÷ (valeur initiale) × 100.",
+      "example": "De 40 à 50 → hausse de 25 %"
+    },
+    "el.sta1": {
+      "title": "Questions statistiques et échantillons",
+      "concept": "L'écart type est la racine carrée de la moyenne des carrés des écarts (la variance). Les échantillons sont tirés par échantillonnage aléatoire, stratifié, par grappes ou systématique.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 a pour écart type 2"
+    },
+    "el.sta2": {
+      "title": "Estimation et tests d'hypothèse",
+      "concept": "La marge d'erreur à 95 % est $1.96\\times\\frac{σ}{\\sqrt{n}}$. Si $|z|$ avec $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ dépasse 1,96, on rejette l'hypothèse nulle au seuil de 5 %.",
+      "example": "σ=10, n=100 → marge 1,96"
+    },
+    "el.res1": {
+      "title": "Méthodes de recherche",
+      "concept": "Un projet de recherche mathématique peut utiliser la recherche documentaire, des études de cas, des expériences mathématiques ou la recherche-développement.",
+      "example": "Lancer des dés pour trouver une régularité → expérience"
+    },
+    "el.res2": {
+      "title": "Étapes de la recherche et éthique",
+      "concept": "La recherche suit l'ordre sujet → plan → réalisation → présentation → bilan. Citer ses sources et ne jamais modifier les résultats, c'est l'éthique de la recherche.",
+      "example": "Après le sujet vient le plan de recherche"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Mathématiques de l'économie",
+      "world": "Ville de l'Économie",
+      "tagline": "Découvre les mathématiques de l'argent et des marchés",
+      "unit": "Nombres et économie, fonctions et économie"
+    },
+    "ai": {
+      "title": "Mathématiques pour l'IA",
+      "world": "Laboratoire d'IA",
+      "tagline": "Découvre les mathématiques cachées dans les données et l'optimisation",
+      "unit": "Traitement des données, prédiction et optimisation"
+    },
+    "job": {
+      "title": "Mathématiques du travail",
+      "world": "Ville des Ateliers",
+      "tagline": "Entraîne-toi aux mathématiques utilisées au travail",
+      "unit": "Nombres et unités, rapport, aire et dénombrement"
+    },
+    "cul": {
+      "title": "Mathématiques et culture",
+      "world": "Place de la Culture",
+      "tagline": "Trouve les mathématiques dans l'art et la vie quotidienne",
+      "unit": "Art et vie, société et environnement"
+    },
+    "sta": {
+      "title": "Statistiques pratiques",
+      "world": "Laboratoire de statistiques",
+      "tagline": "Développe ta capacité à juger à partir des données",
+      "unit": "Données et échantillons, estimation et tests"
+    },
+    "res": {
+      "title": "Projets de recherche mathématique",
+      "world": "Atelier de recherche",
+      "tagline": "Apprends les méthodes et l'éthique de la recherche",
+      "unit": "Méthodes, démarche et éthique"
+    }
+  }
+}

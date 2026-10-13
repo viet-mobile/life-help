@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Tabloda {cat} için sayı kaçtır?",
+      "hints": [
+        "{cat} hücresini bul.",
+        "İçinde yazan sayıyı oku."
+      ],
+      "expl": "{cat} için sayı {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Tablodaki tüm sayıların toplamı kaçtır?",
+      "hints": [
+        "Her hücredeki sayıyı oku.",
+        "Hepsini topla."
+      ],
+      "expl": "Toplam {sum}, yani cevap {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Grafikte en yüksek sütunda kaç daire var?",
+      "hints": [
+        "Her sütundaki daireleri say.",
+        "En yüksek sütunu bul."
+      ],
+      "expl": "En yüksek sütunda {ans} daire var."
+    },
+    "symbolDiff": {
+      "prompt": "En büyük sütunun en küçük sütundan kaç fazlası var?",
+      "hints": [
+        "Önce en büyük ve en küçük sayıyı bul.",
+        "Küçüğü büyükten çıkar."
+      ],
+      "expl": "{max}-{min}={ans}, yani {ans} fazlası var."
+    },
+    "mostWhich": {
+      "prompt": "Grafikte en büyük öğe hangisidir?",
+      "hints": [
+        "Öğelerin sayılarını karşılaştır.",
+        "En büyük sayıyı bul."
+      ],
+      "expl": "En büyük öğe {name}."
+    },
+    "compareCount": {
+      "prompt": "{a}, {b} öğesinden kaç fazlasına sahip?",
+      "hints": [
+        "{a} ve {b} için sayıları oku.",
+        "Küçüğü büyükten çıkar."
+      ],
+      "expl": "{x}-{y}={ans}, yani {a} öğesinin {ans} fazlası var."
+    },
+    "lineRead": {
+      "prompt": "Çizgi grafiğinde {cat} noktasındaki değer kaçtır?",
+      "hints": [
+        "Yatay eksende {cat} değerini bul.",
+        "Üstündeki noktanın değerini oku."
+      ],
+      "expl": "{cat} noktasındaki değer {ans}."
+    },
+    "lineMax": {
+      "prompt": "Çizgi grafiğindeki en büyük değer kaçtır?",
+      "hints": [
+        "Tüm noktaların değerlerini karşılaştır.",
+        "En yüksek noktayı bul."
+      ],
+      "expl": "En büyük değer {ans}."
+    },
+    "lineChange": {
+      "prompt": "Değer {from} noktasından {to} noktasına kadar ne kadar arttı?",
+      "hints": [
+        "{from} ve {to} noktalarındaki değerleri oku.",
+        "İlk değeri sonraki değerden çıkar."
+      ],
+      "expl": "{b}-{a}={ans}, yani {ans} arttı."
+    },
+    "mean": {
+      "prompt": "Bu sayıların aritmetik ortalaması kaçtır? {list}",
+      "hints": [
+        "Ortalama (hepsinin toplamı) ÷ (kaç tane olduğu) işlemidir.",
+        "Önce hepsini topla."
+      ],
+      "expl": "({sum})÷{n}={ans}, yani ortalama {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Dört sayının ortalaması {m} ve bunlardan üçü {list}. Dördüncü sayı kaçtır?",
+      "hints": [
+        "Dört sayının toplamı ortalama × 4 işlemidir.",
+        "Bilinen üç sayıyı toplamdan çıkar."
+      ],
+      "expl": "{m}×4={total} ve {total}-({known})={ans}, yani {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Bir kutuda {a} A topu ve {b} B topu var. Bir top çekiliyor. Topun A topu olma olasılığı kaçtır (ondalık olarak)?",
+      "hints": [
+        "Olasılık = (istenen durumlar) ÷ (tüm durumlar).",
+        "Önce toplam top sayısını bul."
+      ],
+      "expl": "{a}÷{total}={ans}, yani olasılık {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "İmkânsız 0, kesin 1'dir.",
+        "Eşit olasılık $\\frac{1}{2}$'dir."
+      ],
+      "expl": "Bu olayın olasılığı: {name}."
+    },
+    "pieCount": {
+      "prompt": "Daire grafiğinde A, bütünün %{p} kadarıdır. Bütün {t} kişidir. A kaç kişidir?",
+      "hints": [
+        "%{p}, $\\frac{p}{100}$ demektir.",
+        "Bütünü orana göre çarp."
+      ],
+      "expl": "{t}×{p}÷100={ans}, yani {ans} kişi."
+    },
+    "pieRest": {
+      "prompt": "Bir daire grafiğinin üç parçası %{a}, %{b} ve %{c}'dir. Dördüncü parça yüzde kaçtır? (%)",
+      "hints": [
+        "Bütün %100'dür.",
+        "Üç parçayı 100'den çıkar."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, yani %{ans}."
+    },
+    "bandRead": {
+      "prompt": "Şerit grafiğinde {cat}, bütünün yüzde kaçıdır? (%)",
+      "hints": [
+        "{cat} parçasını bul.",
+        "Altında yazan yüzdeyi oku."
+      ],
+      "expl": "{cat} %{ans}."
+    },
+    "intAdd": {
+      "prompt": "$({a})+({b})$ işlemini hesapla.",
+      "hints": [
+        "Aynı işaretliler: mutlak değerleri topla, işareti koru.",
+        "Farklı işaretliler: mutlak değerleri çıkar, büyüğün işaretini al."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "$({a})-({b})$ işlemini hesapla.",
+      "hints": [
+        "Çıkarma, karşıtını eklemektir.",
+        "$({a})+({nb})$ olarak yaz."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "$({a})\\times({b})$ işlemini hesapla.",
+      "hints": [
+        "Aynı işaretler pozitif, farklı işaretler negatif sonuç verir.",
+        "Mutlak değerleri çarp."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "$({a})\\div({b})$ işlemini hesapla.",
+      "hints": [
+        "Aynı işaretler pozitif, farklı işaretler negatif sonuç verir.",
+        "Mutlak değerleri böl."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ ondalık olarak kaçtır?",
+      "hints": [
+        "Paydaları eşitle ve topla.",
+        "Kesri ondalık sayıya çevir."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "P noktası sayı doğrusunda hangi sayıyı gösterir?",
+      "hints": [
+        "0'ın solu negatif, sağı pozitiftir.",
+        "Çizgileri say."
+      ],
+      "expl": "P noktası {ans} sayısını gösterir."
+    },
+    "primeCount": {
+      "prompt": "{n} sayısına kadar kaç asal sayı vardır?",
+      "hints": [
+        "Asal sayının tam olarak iki böleni vardır: 1 ve kendisi.",
+        "2, 3, 5, 7, ... diye sırayla say."
+      ],
+      "expl": "{n} sayısına kadar asal sayılar {list}: {ans} tane."
+    },
+    "factorExp": {
+      "prompt": "${n}$ sayısının asal çarpanlarına ayrılmış hali $2^a\\times3^b$'dir. $a+b$ kaçtır?",
+      "hints": [
+        "{n} sayısını yapabildiğin kadar 2'ye böl.",
+        "Sonra kalanı 3'e böl."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, yani $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "{n} sayısının kaç böleni vardır?",
+      "hints": [
+        "{n} sayısını tam bölen her sayıyı bul.",
+        "En küçükten başlayarak kontrol et."
+      ],
+      "expl": "{n} sayısının bölenleri {list}: {ans} tane."
+    },
+    "gcd": {
+      "prompt": "{a} ve {b} sayılarının en büyük ortak böleni (EBOB) kaçtır?",
+      "hints": [
+        "İki sayının ortak bölenlerini bul.",
+        "Bunların en büyüğü EBOB'dur."
+      ],
+      "expl": "{a} ve {b} sayılarının EBOB'u {ans}."
+    },
+    "lcm": {
+      "prompt": "{a} ve {b} sayılarının en küçük ortak katı (EKOK) kaçtır?",
+      "hints": [
+        "İki sayının ortak katlarını en küçükten başlayarak yaz.",
+        "Ortak katların en küçüğü EKOK'tur."
+      ],
+      "expl": "{a} ve {b} sayılarının EKOK'u {ans}."
+    },
+    "isPrime": {
+      "prompt": "{n} bir asal sayı mıdır?",
+      "hints": [
+        "{n} sayısının bölenlerini ara.",
+        "1 ve kendisinden başka böleni varsa asal değildir."
+      ],
+      "expl": "{n} sayısının bölenleri {list}, yani {verdict}."
+    },
+    "coordRead": {
+      "prompt": "A noktasının {axis} koordinatı kaçtır?",
+      "hints": [
+        "Koordinat çifti (x, y) olarak yazılır.",
+        "Izgara boyunca say."
+      ],
+      "expl": "A noktasının {axis} koordinatı {ans}."
+    },
+    "quadrant": {
+      "prompt": "({a}, {b}) noktası hangi bölgededir?",
+      "hints": [
+        "x ve y koordinatlarının işaretlerine bak.",
+        "(+,+) 1. bölgedir."
+      ],
+      "expl": "x {a} ve y {b}, yani {name} içinde."
+    },
+    "distAxis": {
+      "prompt": "({a}, {b}) noktasının {axis} eksenine uzaklığı kaçtır?",
+      "hints": [
+        "Bir eksene uzaklık, bir koordinatın mutlak değeridir.",
+        "{axis} ekseni için {which} koordinatına bak."
+      ],
+      "expl": "{which} koordinatı {v} değerinin mutlak değeridir: {ans}."
+    },
+    "reflect": {
+      "prompt": "({a}, {b}) noktası x eksenine göre yansıtılıyor. Yeni noktanın y koordinatı kaçtır?",
+      "hints": [
+        "x eksenine göre yansıma x koordinatını korur.",
+        "y koordinatının işareti değişir."
+      ],
+      "expl": "Yeni nokta ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y, x ile doğru orantılıdır ve x={x1} iken y={y1}'dir. x={x2} iken y kaçtır?",
+      "hints": [
+        "Doğru orantı y=ax biçimindedir.",
+        "Önce a'yı bul."
+      ],
+      "expl": "a={y1}÷{x1}={k}, yani y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y, x ile ters orantılıdır ve x={x1} iken y={y1}'dir. x={x2} iken y kaçtır?",
+      "hints": [
+        "Ters orantı $y=\\frac{a}{x}$ biçimindedir.",
+        "Önce a=xy'yi bul."
+      ],
+      "expl": "a={x1}×{y1}={k}, yani y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "y=ax doğru orantısının grafiği ({x1}, {y1}) noktasından geçer. a kaçtır?",
+      "hints": [
+        "Noktayı y=ax içine yerleştir.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "$y=\\frac{a}{x}$ ters orantısının grafiği ({x1}, {y1}) noktasından geçer. a kaçtır?",
+      "hints": [
+        "Noktayı $y=\\frac{a}{x}$ içine yerleştir.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "{list} verisinin medyanı (ortanca değeri) kaçtır?",
+      "hints": [
+        "Verileri büyüklük sırasına diz.",
+        "Ortadaki değer medyandır; sayı çiftse ortadaki iki değerin ortalamasını al."
+      ],
+      "expl": "Sıralı hali: {sorted}, yani medyan {ans}."
+    },
+    "mode": {
+      "prompt": "{list} verisinin tepe değeri (mod) kaçtır?",
+      "hints": [
+        "Tepe değer, en çok tekrar eden değerdir.",
+        "Her değerin kaç kez geçtiğini say."
+      ],
+      "expl": "{ans} en çok geçiyor, yani tepe değer {ans}."
+    },
+    "dataRange": {
+      "prompt": "{list} verisinde en büyük ve en küçük değer arasındaki fark kaçtır?",
+      "hints": [
+        "En büyük ve en küçük değeri bul.",
+        "Küçüğü büyükten çıkar."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Toplam frekans {t} ve bir sınıfın frekansı {f}'dir. Bu sınıfın bağıl frekansı kaçtır? (ondalık)",
+      "hints": [
+        "Bağıl frekans = (sınıf frekansı) ÷ (toplam frekans).",
+        "Sonucu ondalık olarak yaz."
+      ],
+      "expl": "{f}÷{t}={ans}, yani bağıl frekans {ans}."
+    },
+    "periodLen": {
+      "prompt": "$\\frac{1}{{d}}$ ondalık olarak yazıldığında devreden kısım kaç basamaklıdır?",
+      "hints": [
+        "1'i {d} sayısına böl.",
+        "Devreden kısım tekrar eden kısımdır."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, yani devreden kısım {ans} basamaklıdır."
+    },
+    "repeatFrac": {
+      "prompt": "$0.\\dot{d}\\dot{e}$ devirli ondalık sayısı $\\frac{x}{99}$'a eşittir. x kaçtır?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "İki basamaklı ab sayısını pay olarak yaz."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ için x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ sonlu bir ondalık sayı mıdır?",
+      "hints": [
+        "Kesri sadeleştir, sonra paydayı asal çarpanlarına ayır.",
+        "Tek asal çarpanlar 2 ve 5 ise ondalık açılım sonludur."
+      ],
+      "expl": "{d2} paydasının asal çarpanları {fact}, yani {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Virgülden sonraki {k}. basamaktaki rakam kaçtır?",
+      "hints": [
+        "142857 devri 6 basamaklıdır.",
+        "Konumu bulmak için {k} ÷ 6 işleminin kalanını kullan."
+      ],
+      "expl": "{k} ÷ 6 işleminin kalanı {r}, yani {r}. rakam: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "$y={a}x+{b}$ doğrusal fonksiyonunun eğimi kaçtır?",
+      "hints": [
+        "$y=ax+b$ içinde eğim a'dır.",
+        "x'in katsayısını oku."
+      ],
+      "expl": "Eğim {ans}."
+    },
+    "yInt": {
+      "prompt": "$y={a}x+{b}$ doğrusunun y eksenini kestiği nokta kaçtır?",
+      "hints": [
+        "y ekseninin kesim noktası, x=0 iken y'dir.",
+        "$y=ax+b$ içinde b'dir."
+      ],
+      "expl": "y eksenini kestiği nokta {ans}."
+    },
+    "xInt": {
+      "prompt": "$y={a}x+{b}$ doğrusunun x eksenini kestiği nokta kaçtır?",
+      "hints": [
+        "x ekseninin kesim noktası, y=0 iken x'tir.",
+        "$0=ax+b$ denklemini çöz."
+      ],
+      "expl": "$0={a}x+{b}$ için x={ans}."
+    },
+    "crossX": {
+      "prompt": "$y={a1}x+{b1}$ ve $y={a2}x+{b2}$ grafikleri P noktasında kesişir. P'nin x koordinatı kaçtır?",
+      "hints": [
+        "Kesişim noktasında iki y değeri eşittir.",
+        "$a_1x+b_1=a_2x+b_2$ denklemini çöz."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ için x={ans}."
+    },
+    "funcValue": {
+      "prompt": "$f(x)={a}x+{b}$ doğrusal fonksiyonu için $f({c})$ kaçtır?",
+      "hints": [
+        "x yerine {c} yaz.",
+        "Çarp, sonra topla."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won, yıllık %{r} basit faizle {n} yıl boyunca yatırılıyor. Faiz ne kadardır? (won)",
+      "hints": [
+        "Basit faiz = anapara × oran × yıl.",
+        "%{r}, {rr} demektir."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, yani faiz {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "{p} won, yıllık %{r} bileşik faizle {n} yıl boyunca yatırılıyor. Toplam tutar ne kadardır? (won)",
+      "hints": [
+        "Bileşik faizde faiz de faiz kazanır.",
+        "Anaparayı (1 + oran) ile {n} kez çarp."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, yani toplam {ans} won."
+    },
+    "exchange": {
+      "prompt": "Yabancı bir para biriminin 1 birimi {r} won'dur. Bu para biriminin {d} birimi kaç won eder? (won)",
+      "hints": [
+        "Döviz kuru, yabancı para biriminin 1 biriminin won cinsinden değeridir.",
+        "Birim sayısını kurla çarp."
+      ],
+      "expl": "{d}×{r}={ans}, yani {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "Bir ürünün fiyatı {p} won ve üzerine %{t} katma değer vergisi ekleniyor. Kaç won ödenmelidir? (won)",
+      "hints": [
+        "Vergi, fiyat × %{t} kadardır.",
+        "Vergiyi fiyata ekle."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, yani {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "$p={a}-{b}q$ talep eğrisi ile $p={c}+{d}q$ arz eğrisi denge miktarı q'da kesişir. q kaçtır?",
+      "hints": [
+        "Dengede talep fiyatı arz fiyatına eşittir.",
+        "$a-bq=c+dq$ denklemini çöz."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ için q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Talep fonksiyonu $p={a}-{b}q$'dur. $R=pq$ gelirinin en büyük değeri kaçtır?",
+      "hints": [
+        "$R=({a}-{b}q)q$ bir ikinci dereceden fonksiyondur.",
+        "Tepe noktasında, yani $q=\\frac{ a }{ 2b }$ iken en büyüktür."
+      ],
+      "expl": "q={q} iken gelir en büyüktür: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Talep $Q={a}-{b}p$'dir. $p={p0}$ iken fiyat esnekliğinin mutlak değeri kaçtır? (ondalık)",
+      "hints": [
+        "Mutlak esneklik $\\frac{bp}{Q}$'dir.",
+        "Önce $p={p0}$ iken Q'yu bul."
+      ],
+      "expl": "Q={q0}, yani $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "{seq} kelime dizisinde A kaç kez geçer?",
+      "hints": [
+        "Sayarken yalnızca A'ları işaretle.",
+        "Bu sayı, frekans vektörünün A bileşenidir."
+      ],
+      "expl": "A {ans} kez geçer."
+    },
+    "freqDot": {
+      "prompt": "İki belgenin frekans vektörleri $\\vec{u}=({u1}, {u2}, {u3})$ ve $\\vec{v}=({v1}, {v2}, {v3})$'tür. İç çarpım $\\vec{u}\\cdot\\vec{v}$ kaçtır?",
+      "hints": [
+        "Karşılıklı bileşenleri çarp ve topla.",
+        "İç çarpım ne kadar büyükse belgeler o kadar benzerdir."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Bir görüntü $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$ matrisi olarak saklanıyor. Tüm piksel değerlerinin toplamı kaçtır?",
+      "hints": [
+        "Her girdi bir pikselin parlaklığıdır.",
+        "Dört girdiyi de topla."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Bir pikselin değeri {v}'dir. Her piksel {k} kadar parlaklaştırılıyor. Yeni değeri kaçtır?",
+      "hints": [
+        "Parlaklaştırma, matrisin her girdisine aynı sayıyı ekler.",
+        "{v} değerine {k} ekle."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "({x1}, {y1}) ve ({x2}, {y2}) noktalarından geçen eğilim doğrusunun eğimi kaçtır?",
+      "hints": [
+        "Eğim = y'deki değişim ÷ x'teki değişim.",
+        "$\\frac{y_2-y_1}{x_2-x_1}$ işlemini hesapla."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Tahminler {pred} ve gerçek değerler {real}'dir. Ortalama kare hata (karesel hataların ortalaması) kaçtır?",
+      "hints": [
+        "Hata = tahmin − gerçek değer.",
+        "Her hatanın karesini al, sonra ortalamasını bul."
+      ],
+      "expl": "Karesel hatalar {sq} ve ortalamaları {ans}."
+    },
+    "gradStep": {
+      "prompt": "$f(x)=x^2$ kayıp fonksiyonu için x={x0} noktasından öğrenme oranı {eta} ile bir gradyan inişi adımı yeni x'i kaç yapar?",
+      "hints": [
+        "Gradyan inişi: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, yani {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "{v} m kaç cm'dir? (cm)",
+      "hints": [
+        "1 m 100 cm'dir.",
+        "{v} sayısını 100 ile çarp."
+      ],
+      "expl": "{v}×100={ans}, yani {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "{v} kg kaç g'dır? (g)",
+      "hints": [
+        "1 kg 1000 g'dır.",
+        "{v} sayısını 1000 ile çarp."
+      ],
+      "expl": "{v}×1000={ans}, yani {ans} g."
+    },
+    "convHMin": {
+      "prompt": "{v} saat kaç dakikadır? (dk)",
+      "hints": [
+        "1 saat 60 dakikadır.",
+        "{v} sayısını 60 ile çarp."
+      ],
+      "expl": "{v}×60={ans}, yani {ans} dakika."
+    },
+    "discount": {
+      "prompt": "Bir ürünün fiyatı {p} won ve %{d} indirimle satılıyor. Satış fiyatı kaçtır? (won)",
+      "hints": [
+        "İndirim, fiyat × %{d} kadardır.",
+        "İndirimi fiyattan çıkar."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, yani {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "A ve B malzemeleri {a}:{b} oranında karıştırılarak toplam {t} g elde ediliyor. Kaç g A gerekir? (g)",
+      "hints": [
+        "Bütün {a}+{b}={s} paydır.",
+        "A, bütünün $\\frac{a}{s}$ kadarıdır."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, yani {ans} g."
+    },
+    "tiles": {
+      "prompt": "Bir duvar {w} m genişliğinde ve {h} m yüksekliğindedir. Duvarı kaplamak için kaç tane 1 m × 1 m'lik karo gerekir? (karo)",
+      "hints": [
+        "Duvarın alanını bul.",
+        "Bir karonun alanı 1 m²'dir."
+      ],
+      "expl": "{w}×{h}={ans}, yani {ans} karo."
+    },
+    "outfit": {
+      "prompt": "{a} gömlek ve {b} pantolon var. Bir gömlek ve bir pantolondan oluşan kaç farklı kombin yapılabilir?",
+      "hints": [
+        "Her gömlek için {b} pantolon seçeneği vardır.",
+        "Çarpma kuralını kullan."
+      ],
+      "expl": "{a}×{b}={ans}, yani {ans} kombin."
+    },
+    "goldenRatio": {
+      "prompt": "Altın oran $a:b=(a+b):a$ eşitliğini sağlar. b=10 iken a yaklaşık kaçtır? (virgülden sonra iki basamak)",
+      "hints": [
+        "Altın oran yaklaşık 1,618'dir.",
+        "a, yaklaşık 1,618 kere b'dir."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Ses yüksekliği frekansla belirlenir. 440 Hz'in bir oktav üstündeki notanın frekansı kaç Hz'dir? (Hz)",
+      "hints": [
+        "Bir oktav yüksek nota iki katı frekansa sahiptir.",
+        "440'ı 2 ile çarp."
+      ],
+      "expl": "440×2={ans}, yani {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Bir Braille hücresinde 6 nokta vardır ve her biri kabartık ya da düzdür. Hiç kabartık nokta olmayan örüntü sayılmazsa kaç örüntü vardır?",
+      "hints": [
+        "Her noktanın 2 olasılığı vardır.",
+        "Çarpma kuralıyla $2^6$, sonra 1 çıkar."
+      ],
+      "expl": "$2^6-1={ans}$, yani {ans} örüntü."
+    },
+    "voteMajority": {
+      "prompt": "{n} kişi oy kullanıyor. Bir adayın çoğunluğu kazanması için en az kaç oya ihtiyacı vardır? (oy)",
+      "hints": [
+        "Çoğunluk, oyların yarısından fazlasıdır.",
+        "{n} sayısının yarısından büyük en küçük tam sayıyı bul."
+      ],
+      "expl": "{n} sayısının yarısı {half}; bundan büyük en küçük tam sayı {ans}."
+    },
+    "pmAverage": {
+      "prompt": "5 gün boyunca ince toz derişimleri {list} (µg/m³) idi. Ortalama derişim kaçtır?",
+      "hints": [
+        "Ortalama (toplam) ÷ (gün sayısı) işlemidir.",
+        "Önce 5 değeri topla."
+      ],
+      "expl": "({sum})÷5={ans}, yani ortalama {ans}."
+    },
+    "percentChange": {
+      "prompt": "Bir değer {a} değerinden {b} değerine değişti. Yüzde kaç arttı? (%)",
+      "hints": [
+        "Artış oranı = (artış miktarı) ÷ (ilk değer) × 100.",
+        "Artış {b}-{a} kadardır."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, yani %{ans}."
+    },
+    "stdev": {
+      "prompt": "{list} verisinin standart sapması kaçtır? (anakütle standart sapması)",
+      "hints": [
+        "Önce ortalamayı bul.",
+        "Sapmaların karelerinin ortalamasının (varyansın) kare kökü standart sapmadır."
+      ],
+      "expl": "Ortalama {mean} ve varyans {var}, yani standart sapma {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Anakütle standart sapması {s} ve örneklem büyüklüğü {n}'dir. %95 hata payı $1.96\\times\\frac{σ}{\\sqrt{ n }}$ kaçtır? (virgülden sonra iki basamak)",
+      "hints": [
+        "Önce $\\sqrt{ n }$ değerini bul.",
+        "σ'yı buna böl ve 1,96 ile çarp."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Örneklem ortalaması {xbar}, sıfır hipotezindeki ortalama {mu}, σ={s} ve n={n}'dir. Test istatistiği $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ kaçtır?",
+      "hints": [
+        "Önce paydayı $σ/\\sqrt{ n }$ bul.",
+        "Örneklem ortalamasından sıfır hipotezindeki ortalamayı çıkar ve böl."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "%5 anlamlılık düzeyinde iki yönlü bir testte kritik değer 1,96'dır. Test istatistiği z={z}'dir. Sonuç nedir?",
+      "hints": [
+        "$|z|$ değeri 1,96'dan büyükse sıfır hipotezi reddedilir.",
+        "z'nin mutlak değerini 1,96 ile karşılaştır."
+      ],
+      "expl": "|z|={az}, yani: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Örneklemin nasıl seçildiğine bak.",
+        "Uygun olanı seç: basit rastgele, tabakalı, küme veya sistematik örnekleme."
+      ],
+      "expl": "Bu yöntem {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Araştırma verilerinin nereden geldiğini düşün.",
+        "Literatür taraması, durum çalışması, deney veya geliştirme araştırmasını seç."
+      ],
+      "expl": "Bu araştırma yöntemi {name}."
+    },
+    "researchStep": {
+      "prompt": "Bir araştırma konusu seçildikten hemen sonra ne yapılmalıdır?",
+      "hints": [
+        "Araştırma plan → yürütme → sunum → değerlendirme sırasıyla ilerler.",
+        "Konudan sonra nasıl inceleneceğine karar verirsin."
+      ],
+      "expl": "Konuyu seçtikten sonra: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Araştırma etiği dürüstlük ve kaynak göstermeye dayanır.",
+        "Başkalarının çalışmalarına ve sonuçlarına nasıl davranılması gerektiğini düşün."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "1. bölge",
+    "q2": "2. bölge",
+    "q3": "3. bölge",
+    "q4": "4. bölge",
+    "p0": "0 (olamaz)",
+    "phalf": "1/2 (eşit olasılıklı)",
+    "p1": "1 (kesindir)",
+    "random": "basit rastgele örnekleme",
+    "strat": "tabakalı örnekleme",
+    "cluster": "küme örneklemesi",
+    "system": "sistematik örnekleme",
+    "reject": "Sıfır hipotezini reddet",
+    "keep": "Sıfır hipotezini reddetme",
+    "literature": "literatür taraması",
+    "casestudy": "durum çalışması",
+    "experiment": "matematiksel deney",
+    "develop": "geliştirme araştırması",
+    "plan": "Bir araştırma planı yap",
+    "carry": "Araştırmayı yürüt",
+    "present": "Sonuçları sun",
+    "reflect": "Süreci değerlendir",
+    "yesPrime": "Evet, asaldır",
+    "noPrime": "Hayır, asal değildir",
+    "yesFinite": "Evet, sonlu bir ondalık sayıdır",
+    "noFinite": "Hayır, devirli bir ondalık sayıdır",
+    "yesOk": "Doğru",
+    "noOk": "Yanlış"
+  },
+  "text": {
+    "ev_coin": "Bir madeni para bir kez atıldığında yazı gelme olasılığı nedir?",
+    "ev_sun": "Güneşin yarın doğudan doğma olasılığı nedir?",
+    "ev_die": "Sıradan altı yüzlü bir zarla 7 atma olasılığı nedir?",
+    "sm_system": "Anket için okul listesinden her 10. öğrenci seçildi. Bu hangi örnekleme yöntemidir?",
+    "sm_random": "Okul listesinden rastgele sayılarla otuz öğrenci seçildi. Bu hangi örnekleme yöntemidir?",
+    "sm_strat": "Her sınıf düzeyinden, o düzeydeki öğrenci sayısıyla orantılı olarak öğrenci seçildi. Bu hangi örnekleme yöntemidir?",
+    "sm_cluster": "Önce birkaç sınıf seçildi ve seçilen sınıflardaki her öğrenciye anket uygulandı. Bu hangi örnekleme yöntemidir?",
+    "rm_lit": "Kütüphaneden ve internetten makale ve kitap okuyup özetlemek hangi araştırma yöntemidir?",
+    "rm_case": "Birkaç okuldan gerçek örnekler toplayıp karşılaştırmak hangi araştırma yöntemidir?",
+    "rm_exp": "Bir örüntü bulmak için kendin zar atıp sonuçları kaydetmek hangi araştırma yöntemidir?",
+    "rm_dev": "Matematik öğrenmek için yeni bir araç geliştirip ne kadar iyi çalıştığını denemek hangi araştırma yöntemidir?",
+    "et_cite": "Başka birinin yazısını nereden geldiğini söylemeden kopyalamak araştırma etiğine aykırıdır.",
+    "et_cite_r": "Birinin çalışmasını kaynak göstermeden kullanmak intihaldir, yani ifade doğrudur.",
+    "et_fake": "Sonuçlar hipotezden farklıysa sayıları uyacak şekilde değiştirmek sorun değildir.",
+    "et_fake_r": "Sonuçları değiştirmek sahtekârlıktır ve araştırma etiğini bozar, yani ifade yanlıştır."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Verileri sıralama ve tablo ile grafikte gösterme",
+      "concept": "Nesneleri bir kurala göre sırala ve say; bir **tablo** veya **grafik** bir bakışta karşılaştırma yapmanı sağlar.",
+      "example": "A 3, B 5, C 2 → toplam 10"
+    },
+    "E4dat1": {
+      "title": "Çizgi grafiklerini okuma",
+      "concept": "**Çizgi grafiği**, bir değerin zamanla nasıl değiştiğini noktalar ve çizgilerle gösterir. Yukarı gitmek artış, aşağı gitmek azalıştır.",
+      "example": "1. günde 12 → 3. günde 20: 8 artış"
+    },
+    "E5dat1": {
+      "title": "Aritmetik ortalamayı bulma",
+      "concept": "**Aritmetik ortalama**, verilerin toplamının veri sayısına bölünmesidir.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Olasılık",
+      "concept": "Bir olayın **olasılığı** 0 (imkânsız) ile 1 (kesin) arasında bir sayıdır: olasılık = (istenen durumlar) ÷ (tüm durumlar).",
+      "example": "3 A topu, 2 B topu → A olasılığı $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Şerit grafikleri ve daire grafikleri",
+      "concept": "**Şerit grafikleri** ve **daire grafikleri** bütünü %100 kabul eder ve her parçanın payını gösterir. Parça = bütün × pay.",
+      "example": "200 kişinin %25'i → 50 kişi"
+    },
+    "M1neg1": {
+      "title": "Tam sayılar ve rasyonel sayılar",
+      "concept": "Aynı işaretliler: mutlak değerleri topla. Farklı işaretliler: mutlak değerleri çıkar ve büyüğün işaretini koru. × ve ÷ işlemlerinde işaretler aynıysa sonuç +, değilse −'dir.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Asal çarpanlara ayırma, EBOB ve EKOK",
+      "concept": "Bir sayıyı asal sayıların çarpımı olarak yazmak **asal çarpanlara ayırmadır**. Ortak bölenlerin en büyüğü **en büyük ortak bölen**, ortak katların en küçüğü **en küçük ortak kat**tır.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Koordinat düzlemi",
+      "concept": "Bir nokta (x, y) olarak yazılır. İşaretler 1–4. bölgeleri belirler ve x eksenine göre yansıma y'nin işaretini değiştirir.",
+      "example": "(−2, 5) noktası 2. bölgededir"
+    },
+    "M1prp1": {
+      "title": "Doğru orantı ve ters orantı",
+      "concept": "**Doğru orantı** y=ax, **ters orantı** $y=\\frac{a}{x}$'dir. Doğru orantıda y÷x sabittir; ters orantıda x×y sabittir.",
+      "example": "x=2 iken y=6 (doğru orantı): y=3x"
+    },
+    "M1sta1": {
+      "title": "Ortalamalar ve bağıl frekans",
+      "concept": "**Medyan**, sıralı verilerin ortadaki değeri, **tepe değer** ise en sık görülen değerdir. **Bağıl frekans** = frekans ÷ toplam.",
+      "example": "1, 3, 5, 7, 9 verisinin medyanı 5'tir"
+    },
+    "M2rec1": {
+      "title": "Devirli ondalık sayılar",
+      "concept": "Rakamları sonsuza kadar tekrar eden ondalık sayıya **devirli ondalık sayı** denir; tekrar eden kısım **devir** kısmıdır. Sadeleşmiş bir kesir ancak paydasında yalnızca 2 ve 5 çarpanları varsa sonlu bir ondalık sayıdır.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Doğrusal fonksiyonlar ve doğrusal denklemler",
+      "concept": "y=ax+b içinde a eğim, b y eksenini kestiği noktadır. İki grafiğin kesişimi, iki denklemin ortak çözümüdür.",
+      "example": "y=2x−6 doğrusunun x eksenini kestiği nokta 3'tür"
+    },
+    "el.econ1": {
+      "title": "Faiz, döviz kuru ve vergi",
+      "concept": "Basit faiz = anapara × oran × yıl; bileşik faizle toplam tutar = anapara × (1 + oran)^yıl. Döviz kuru, bir para biriminin 1 biriminin değeridir; vergi, fiyat × bir yüzdedir.",
+      "example": "₩10000, 2 yıl %10 bileşik faiz → ₩12100"
+    },
+    "el.econ2": {
+      "title": "Talep, arz ve optimizasyon",
+      "concept": "Denge, talep ve arz eğrilerinin kesiştiği yerdir. En büyük gelir R=pq ve esneklik, fonksiyonlardan ve türevlerden bulunur.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Metin ve görüntü verileri",
+      "concept": "Bir belge kelime sayılarından oluşan bir vektör, bir görüntü ise piksel değerlerinden oluşan bir matris olur. İç çarpım ne kadar büyükse iki belge o kadar benzerdir.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Tahmin ve optimizasyon",
+      "concept": "Tahminler; eğilim doğrusunun eğimi, karesel hataların ortalaması (kayıp) ve gradyan inişi $x_{new}=x-\\eta f'(x)$ ile iyileşir.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Birim dönüşümü ve oranlar",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 saat = 60 dakika. Satış fiyatı = fiyat × (1 − indirim); a:b oranında karıştırmada A'nın payı $\\frac{a}{a+b}$'dir.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Alan, sayma ve büyüme",
+      "concept": "Alan gereken malzemeyi, çarpma kuralı çiftlerin sayısını, (artış) ÷ (ilk değer) × 100 ise büyüme oranını verir.",
+      "example": "4 gömlek, 3 pantolon → 12 kombin"
+    },
+    "el.cul1": {
+      "title": "Sanatta ve günlük yaşamda matematik",
+      "concept": "Altın oran yaklaşık 1,618'dir; bir oktav yüksek nota iki katı frekansa sahiptir; 6 Braille noktası $2^6-1=63$ örüntü verir; çoğunluk yarıdan fazlasıdır.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Toplumda ve çevrede matematik",
+      "concept": "Ortalamalar ve büyüme oranları, toplumsal ve çevresel sorunları matematiksel olarak çözümlemeni sağlar. Büyüme oranı = (artış) ÷ (ilk değer) × 100.",
+      "example": "40'tan 50'ye → %25 artış"
+    },
+    "el.sta1": {
+      "title": "İstatistiksel sorular ve örneklemler",
+      "concept": "Standart sapma, sapmaların karelerinin ortalamasının (varyansın) kare köküdür. Örneklemler basit rastgele, tabakalı, küme veya sistematik örnekleme ile seçilir.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 verisinin standart sapması 2'dir"
+    },
+    "el.sta2": {
+      "title": "Tahmin ve hipotez testleri",
+      "concept": "%95 hata payı $1.96\\times\\frac{σ}{\\sqrt{n}}$'dir. $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ değerinin $|z|$ büyüklüğü 1,96'dan büyükse sıfır hipotezi %5 düzeyinde reddedilir.",
+      "example": "σ=10, n=100 → hata payı 1,96"
+    },
+    "el.res1": {
+      "title": "Araştırma yöntemleri",
+      "concept": "Bir matematik araştırma projesi literatür taraması, durum çalışmaları, matematiksel deneyler veya geliştirme araştırması kullanabilir.",
+      "example": "Örüntü bulmak için zar atmak → deney"
+    },
+    "el.res2": {
+      "title": "Araştırma adımları ve etik",
+      "concept": "Araştırma konu → plan → yürütme → sunum → değerlendirme sırasıyla ilerler. Kaynak göstermek ve sonuçları asla değiştirmemek araştırma etiğidir.",
+      "example": "Konudan sonra araştırma planı gelir"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Ekonomi Matematiği",
+      "world": "Ekonomi Kasabası",
+      "tagline": "Para ve piyasaların matematiğini öğren",
+      "unit": "Sayılar ve ekonomi, fonksiyonlar ve ekonomi"
+    },
+    "ai": {
+      "title": "Yapay Zekâ için Matematik",
+      "world": "Yapay Zekâ Laboratuvarı",
+      "tagline": "Verilerin ve optimizasyonun içindeki matematikle tanış",
+      "unit": "Veri işleme, tahmin ve optimizasyon"
+    },
+    "job": {
+      "title": "İş Hayatında Matematik",
+      "world": "Atölye Kasabası",
+      "tagline": "İşte kullanılan matematiği uygula",
+      "unit": "Sayılar ve birimler, oran, alan ve sayma"
+    },
+    "cul": {
+      "title": "Matematik ve Kültür",
+      "world": "Kültür Meydanı",
+      "tagline": "Sanatta ve günlük yaşamda matematiği bul",
+      "unit": "Sanat ve yaşam, toplum ve çevre"
+    },
+    "sta": {
+      "title": "Uygulamalı İstatistik",
+      "world": "İstatistik Laboratuvarı",
+      "tagline": "Verilerden karar verme becerisi kazan",
+      "unit": "Veri ve örneklem, tahmin ve test"
+    },
+    "res": {
+      "title": "Matematiksel Araştırma Projeleri",
+      "world": "Araştırma Atölyesi",
+      "tagline": "Araştırmanın yöntemlerini ve etiğini öğren",
+      "unit": "Yöntemler, süreç ve etik"
+    }
+  }
+}

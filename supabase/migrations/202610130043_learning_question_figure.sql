@@ -1,8 +1,11 @@
 -- Geometry questions carry a language-neutral figure (drawing data, never HTML): see Figure in lib/learn/types.ts.
--- Additive: one nullable column and the content RPC re-created with the extra field. Existing rows are untouched.
+-- Elective high-school subjects are courses flagged `elective` (shown to H2 and H3 next to the grade course).
+-- Additive: two columns and the content RPC re-created with the extra fields. Existing rows are untouched.
 
 alter table public.learn_questions add column if not exists figure jsonb
   check (figure is null or (jsonb_typeof(figure) = 'object' and pg_column_size(figure) <= 16384));
+
+alter table public.learn_courses add column if not exists elective boolean not null default false;
 
 create or replace function public.learn_load_content(p_subject text)
 returns jsonb language sql stable security definer set search_path = '' as $$
@@ -28,11 +31,11 @@ returns jsonb language sql stable security definer set search_path = '' as $$
     from public.learn_units u where u.status = 'PUBLISHED'
   ),
   course_json as (
-    select c.sort_order, c.curriculum_id, jsonb_build_object(
+    select c.sort_order, c.curriculum_id, (jsonb_build_object(
       'id', c.code, 'title', c.title, 'grade', c.grade,
       'world', jsonb_build_object('name', c.world_name, 'emoji', c.world_emoji, 'tagline', c.world_tagline),
       'units', coalesce((select jsonb_agg(uj.j order by uj.sort_order) from unit_json uj where uj.course_id = c.id), '[]'::jsonb)
-    ) as j
+    ) || case when c.elective then jsonb_build_object('elective', true) else '{}'::jsonb end) as j
     from public.learn_courses c join subj on subj.id = c.subject_id
     where c.status = 'PUBLISHED'
   )

@@ -45,7 +45,7 @@ describe("canonical 50 / 50 split", () => {
     }
   });
   it("covers Math E1-H3, English E1-H3 and Korean K1-K6 (one course per grade / level)", async () => {
-    const grades = async (site: Site) => buildAccessPlan((await canonical(site)).catalog, []).courses.map((c) => c.grade).sort();
+    const grades = async (site: Site) => buildAccessPlan({ ...(await canonical(site)).catalog, courses: (await canonical(site)).catalog.courses.filter((c) => !c.elective) }, []).courses.map((c) => c.grade).sort();
     expect(await grades("math")).toEqual(["E1", "E2", "E3", "E4", "E5", "E6", "H1", "H2", "H3", "M1", "M2", "M3"]);
     expect(await grades("english")).toEqual(["E1", "E2", "E3", "E4", "E5", "E6", "H1", "H2", "H3", "M1", "M2", "M3"]);
     expect(await grades("korean")).toEqual(["K1", "K2", "K3", "K4", "K5", "K6"]);

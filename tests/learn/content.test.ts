@@ -45,7 +45,7 @@ describe.each(SITES)("demo content: %s", (site) => {
       if (q.options) {
         expect(new Set(q.options.map((o) => o.id)).size).toBe(q.options.length);
       }
-      if (q.type === "multiple_choice") expect(q.options?.length).toBeGreaterThanOrEqual(3);
+      if (q.type === "multiple_choice") expect(q.options?.length).toBeGreaterThanOrEqual(2); // 2 for a reject / do-not-reject decision
     }
   });
 
@@ -55,8 +55,8 @@ describe.each(SITES)("demo content: %s", (site) => {
     expect(bundle.catalog.courses.length).toBeGreaterThanOrEqual(1);
     for (const course of bundle.catalog.courses) {
       const lessons = course.units.flatMap((u) => u.lessons);
-      expect(lessons.length, `${course.id} lessons`).toBeGreaterThanOrEqual(3);
-      expect(lessons.length, `${course.id} lessons`).toBeLessThanOrEqual(9);
+      expect(lessons.length, `${course.id} lessons`).toBeGreaterThanOrEqual(2);
+      expect(lessons.length, `${course.id} lessons`).toBeLessThanOrEqual(12); // 2 lessons of an elective course ... a grade course with its topic lessons
     }
     for (const { lesson } of index.lessons.values()) {
       const n = lesson.questionIds.length + (lesson.challengeId ? 1 : 0);

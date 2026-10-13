@@ -14,19 +14,19 @@ const MATH: Record<string, 0 | 1 | 2> = {
   // E1
   "math-e1-l1": 0, "math-e1-l2": 0, "math-e1-l3": 1, "math-e1-l4": 1, "math-e1-l5": 2, "math-e1-geo1": 2, "math-e1-geo2": 1,
   // E2
-  "math-e2-l1": 0, "math-e2-l2": 1, "math-e2-l3": 1, "math-e2-l4": 2, "math-e2-l5": 2, "math-e2-geo1": 1, "math-e2-geo2": 2,
+  "math-e2-l1": 0, "math-e2-l2": 1, "math-e2-l3": 1, "math-e2-l4": 2, "math-e2-l5": 2, "math-e2-geo1": 1, "math-e2-geo2": 2, "math-e2-dat1": 2,
   // E3
   "math-e3-l1": 0, "math-e3-l2": 0, "math-e3-l3": 0, "math-e3-l4": 0, "math-e3-l5": 2, "math-e3-geo1": 1, "math-e3-geo2": 2,
   // E4
-  "math-e4-l1": 1, "math-e4-l2": 1, "math-e4-l3": 2, "math-e4-l4": 0, "math-e4-l5": 0, "math-e4-geo1": 1, "math-e4-geo2": 2,
+  "math-e4-l1": 1, "math-e4-l2": 1, "math-e4-l3": 2, "math-e4-l4": 0, "math-e4-l5": 0, "math-e4-geo1": 1, "math-e4-geo2": 2, "math-e4-dat1": 2,
   // E5
-  "math-e5-l1": 1, "math-e5-l2": 2, "math-e5-l3": 1, "math-e5-l4": 0, "math-e5-l5": 2, "math-e5-geo1": 1, "math-e5-geo2": 2,
+  "math-e5-l1": 1, "math-e5-l2": 2, "math-e5-l3": 1, "math-e5-l4": 0, "math-e5-l5": 2, "math-e5-geo1": 1, "math-e5-geo2": 2, "math-e5-dat1": 2, "math-e5-dat2": 2,
   // E6
-  "math-e6-l1": 0, "math-e6-l2": 2, "math-e6-l3": 1, "math-e6-l4": 2, "math-e6-l5": 1, "math-e6-geo1": 2, "math-e6-geo2": 1,
+  "math-e6-l1": 0, "math-e6-l2": 2, "math-e6-l3": 1, "math-e6-l4": 2, "math-e6-l5": 1, "math-e6-geo1": 2, "math-e6-geo2": 1, "math-e6-dat1": 1,
   // M1
-  "math-l1": 1, "math-l2": 1, "math-l3": 1, "math-l4": 1, "math-m1-geo1": 2, "math-m1-geo2": 2,
+  "math-l1": 1, "math-l2": 1, "math-l3": 1, "math-l4": 1, "math-m1-geo1": 2, "math-m1-geo2": 2, "math-m1-neg1": 1, "math-m1-fac1": 1, "math-m1-crd1": 2, "math-m1-prp1": 2, "math-m1-sta1": 2,
   // M2
-  "math-m2-l1": 1, "math-m2-l2": 1, "math-m2-l3": 1, "math-m2-l4": 2, "math-m2-l5": 2, "math-m2-geo1": 2, "math-m2-geo2": 2,
+  "math-m2-l1": 1, "math-m2-l2": 1, "math-m2-l3": 1, "math-m2-l4": 2, "math-m2-l5": 2, "math-m2-geo1": 2, "math-m2-geo2": 2, "math-m2-rec1": 1, "math-m2-lfn1": 2,
   // M3
   "math-m3-l1": 1, "math-m3-l2": 1, "math-m3-l3": 1, "math-m3-l4": 2, "math-m3-l5": 2, "math-m3-geo1": 2, "math-m3-geo2": 2,
   // H1

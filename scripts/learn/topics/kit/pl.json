@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Jaka liczba jest w tabeli przy {cat}?",
+      "hints": [
+        "Znajdź komórkę z {cat}.",
+        "Odczytaj liczbę, która w niej jest."
+      ],
+      "expl": "Liczba przy {cat} to {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Jaka jest suma wszystkich liczb w tabeli?",
+      "hints": [
+        "Odczytaj liczbę w każdej komórce.",
+        "Dodaj je wszystkie."
+      ],
+      "expl": "Suma to {sum}, więc odpowiedź to {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Ile kółek jest w najwyższej kolumnie wykresu?",
+      "hints": [
+        "Policz kółka w każdej kolumnie.",
+        "Znajdź najwyższą kolumnę."
+      ],
+      "expl": "Najwyższa kolumna ma {ans} kółek."
+    },
+    "symbolDiff": {
+      "prompt": "O ile więcej ma największa kolumna niż najmniejsza?",
+      "hints": [
+        "Najpierw znajdź największą i najmniejszą liczbę.",
+        "Odejmij mniejszą od większej."
+      ],
+      "expl": "{max}-{min}={ans}, więc ma o {ans} więcej."
+    },
+    "mostWhich": {
+      "prompt": "Który element jest największy na wykresie?",
+      "hints": [
+        "Porównaj liczby przy elementach.",
+        "Znajdź największą liczbę."
+      ],
+      "expl": "Największy element to {name}."
+    },
+    "compareCount": {
+      "prompt": "O ile więcej ma {a} niż {b}?",
+      "hints": [
+        "Odczytaj liczby dla {a} i {b}.",
+        "Odejmij mniejszą od większej."
+      ],
+      "expl": "{x}-{y}={ans}, więc {a} ma o {ans} więcej."
+    },
+    "lineRead": {
+      "prompt": "Jaka jest wartość dla {cat} na wykresie liniowym?",
+      "hints": [
+        "Znajdź {cat} na osi poziomej.",
+        "Odczytaj wartość punktu nad nim."
+      ],
+      "expl": "Wartość dla {cat} to {ans}."
+    },
+    "lineMax": {
+      "prompt": "Jaka jest największa wartość na wykresie liniowym?",
+      "hints": [
+        "Porównaj wartości wszystkich punktów.",
+        "Znajdź najwyższy punkt."
+      ],
+      "expl": "Największa wartość to {ans}."
+    },
+    "lineChange": {
+      "prompt": "O ile wzrosła wartość od {from} do {to}?",
+      "hints": [
+        "Odczytaj wartości dla {from} i {to}.",
+        "Odejmij pierwszą wartość od późniejszej."
+      ],
+      "expl": "{b}-{a}={ans}, więc wzrosła o {ans}."
+    },
+    "mean": {
+      "prompt": "Jaka jest średnia arytmetyczna tych liczb? {list}",
+      "hints": [
+        "Średnia to (suma wszystkich) ÷ (ile ich jest).",
+        "Najpierw dodaj wszystkie."
+      ],
+      "expl": "({sum})÷{n}={ans}, więc średnia to {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Średnia czterech liczb to {m}, a trzy z nich to {list}. Jaka jest czwarta liczba?",
+      "hints": [
+        "Suma czterech liczb to średnia × 4.",
+        "Odejmij trzy znane liczby od sumy."
+      ],
+      "expl": "{m}×4={total} i {total}-({known})={ans}, więc to {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "W pudełku jest {a} kul A i {b} kul B. Wyjmujemy jedną kulę. Jakie jest prawdopodobieństwo, że to kula A, zapisane jako liczba dziesiętna?",
+      "hints": [
+        "Prawdopodobieństwo = (zdarzenia sprzyjające) ÷ (wszystkie zdarzenia).",
+        "Najpierw znajdź łączną liczbę kul."
+      ],
+      "expl": "{a}÷{total}={ans}, więc prawdopodobieństwo to {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Zdarzenie niemożliwe ma 0, a pewne ma 1.",
+        "Jednakowo prawdopodobne to $\\frac{1}{2}$."
+      ],
+      "expl": "Prawdopodobieństwo tego zdarzenia to: {name}."
+    },
+    "pieCount": {
+      "prompt": "Na diagramie kołowym A to {p}% całości. Całość to {t} osób. Ile osób to A?",
+      "hints": [
+        "{p}% to $\\frac{p}{100}$.",
+        "Pomnóż całość przez ułamek."
+      ],
+      "expl": "{t}×{p}÷100={ans}, więc {ans} osób."
+    },
+    "pieRest": {
+      "prompt": "Trzy części diagramu kołowego to {a}%, {b}% i {c}%. Ile procent to czwarta część? (%)",
+      "hints": [
+        "Całość to 100%.",
+        "Odejmij trzy części od 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, więc to {ans}%."
+    },
+    "bandRead": {
+      "prompt": "Ile procent całości to {cat} na diagramie paskowym? (%)",
+      "hints": [
+        "Znajdź część dla {cat}.",
+        "Odczytaj procent zapisany pod nią."
+      ],
+      "expl": "{cat} to {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Oblicz $({a})+({b})$.",
+      "hints": [
+        "Takie same znaki: dodaj wartości bezwzględne i zachowaj znak.",
+        "Różne znaki: odejmij wartości bezwzględne i weź znak większej."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Oblicz $({a})-({b})$.",
+      "hints": [
+        "Odejmowanie to dodawanie liczby przeciwnej.",
+        "Zapisz to jako $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Oblicz $({a})\\times({b})$.",
+      "hints": [
+        "Takie same znaki dają wynik dodatni, różne ujemny.",
+        "Pomnóż wartości bezwzględne."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Oblicz $({a})\\div({b})$.",
+      "hints": [
+        "Takie same znaki dają wynik dodatni, różne ujemny.",
+        "Podziel wartości bezwzględne."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "Ile to jest $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ w postaci dziesiętnej?",
+      "hints": [
+        "Sprowadź do wspólnego mianownika i dodaj.",
+        "Zamień ułamek na liczbę dziesiętną."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Jaką liczbę pokazuje punkt P na osi liczbowej?",
+      "hints": [
+        "Na lewo od 0 są liczby ujemne, na prawo dodatnie.",
+        "Policz kreski."
+      ],
+      "expl": "Punkt P pokazuje {ans}."
+    },
+    "primeCount": {
+      "prompt": "Ile jest liczb pierwszych do {n}?",
+      "hints": [
+        "Liczba pierwsza ma dokładnie dwa dzielniki: 1 i samą siebie.",
+        "Policz po kolei 2, 3, 5, 7, ..."
+      ],
+      "expl": "Liczby pierwsze do {n} to {list}: jest ich {ans}."
+    },
+    "factorExp": {
+      "prompt": "Liczba ${n}$ rozłożona na czynniki pierwsze to $2^a\\times3^b$. Ile wynosi $a+b$?",
+      "hints": [
+        "Dziel {n} przez 2, dopóki się da.",
+        "Potem dziel to, co zostało, przez 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, więc $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "Ile dzielników ma liczba {n}?",
+      "hints": [
+        "Znajdź każdą liczbę, która dzieli {n} bez reszty.",
+        "Sprawdzaj od najmniejszej w górę."
+      ],
+      "expl": "Dzielniki {n} to {list}: jest ich {ans}."
+    },
+    "gcd": {
+      "prompt": "Jaki jest największy wspólny dzielnik liczb {a} i {b}?",
+      "hints": [
+        "Znajdź dzielniki wspólne obu liczb.",
+        "Największy z nich to największy wspólny dzielnik."
+      ],
+      "expl": "Największy wspólny dzielnik liczb {a} i {b} to {ans}."
+    },
+    "lcm": {
+      "prompt": "Jaka jest najmniejsza wspólna wielokrotność liczb {a} i {b}?",
+      "hints": [
+        "Wypisz wspólne wielokrotności obu liczb, od najmniejszej.",
+        "Najmniejsza wspólna wielokrotność to najmniejsza z nich."
+      ],
+      "expl": "Najmniejsza wspólna wielokrotność liczb {a} i {b} to {ans}."
+    },
+    "isPrime": {
+      "prompt": "Czy {n} jest liczbą pierwszą?",
+      "hints": [
+        "Szukaj dzielników liczby {n}.",
+        "Jeśli ma dzielnik inny niż 1 i ona sama, nie jest pierwsza."
+      ],
+      "expl": "Dzielniki {n} to {list}, więc {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Jaka jest współrzędna {axis} punktu A?",
+      "hints": [
+        "Parę współrzędnych zapisujemy (x, y).",
+        "Policz wzdłuż siatki."
+      ],
+      "expl": "Współrzędna {axis} punktu A to {ans}."
+    },
+    "quadrant": {
+      "prompt": "W której ćwiartce leży punkt ({a}, {b})?",
+      "hints": [
+        "Spójrz na znaki współrzędnych x i y.",
+        "(+,+) to ćwiartka 1."
+      ],
+      "expl": "x to {a}, a y to {b}, więc punkt leży w: {name}."
+    },
+    "distAxis": {
+      "prompt": "Jaka jest odległość punktu ({a}, {b}) od osi {axis}?",
+      "hints": [
+        "Odległość od osi to wartość bezwzględna współrzędnej.",
+        "Dla osi {axis} patrzymy na współrzędną {which}."
+      ],
+      "expl": "To wartość bezwzględna współrzędnej {which} {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Punkt ({a}, {b}) odbito symetrycznie względem osi x. Jaka jest współrzędna y nowego punktu?",
+      "hints": [
+        "Odbicie względem osi x zachowuje współrzędną x.",
+        "Znak współrzędnej y zmienia się na przeciwny."
+      ],
+      "expl": "Nowy punkt to ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y jest wprost proporcjonalne do x, i y={y1} dla x={x1}. Ile wynosi y dla x={x2}?",
+      "hints": [
+        "Proporcjonalność prosta to y=ax.",
+        "Najpierw znajdź a."
+      ],
+      "expl": "a={y1}÷{x1}={k}, więc y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y jest odwrotnie proporcjonalne do x, i y={y1} dla x={x1}. Ile wynosi y dla x={x2}?",
+      "hints": [
+        "Proporcjonalność odwrotna to $y=\\frac{a}{x}$.",
+        "Najpierw znajdź a=xy."
+      ],
+      "expl": "a={x1}×{y1}={k}, więc y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Wykres proporcjonalności prostej y=ax przechodzi przez punkt ({x1}, {y1}). Ile wynosi a?",
+      "hints": [
+        "Podstaw punkt do y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Wykres proporcjonalności odwrotnej $y=\\frac{a}{x}$ przechodzi przez ({x1}, {y1}). Ile wynosi a?",
+      "hints": [
+        "Podstaw punkt do $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Jaka jest mediana danych {list}?",
+      "hints": [
+        "Uporządkuj dane według wielkości.",
+        "Środkowa wartość to mediana; przy parzystej liczbie danych weź średnią dwóch środkowych."
+      ],
+      "expl": "Po uporządkowaniu: {sorted}, więc mediana to {ans}."
+    },
+    "mode": {
+      "prompt": "Jaka jest dominanta danych {list}?",
+      "hints": [
+        "Dominanta to wartość występująca najczęściej.",
+        "Policz, ile razy występuje każda wartość."
+      ],
+      "expl": "{ans} występuje najczęściej, więc dominanta to {ans}."
+    },
+    "dataRange": {
+      "prompt": "Jaka jest różnica między największą a najmniejszą wartością w {list}?",
+      "hints": [
+        "Znajdź największą i najmniejszą wartość.",
+        "Odejmij mniejszą od większej."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Łączna liczebność to {t}, a jedna klasa ma liczebność {f}. Jaka jest częstość względna tej klasy? (liczba dziesiętna)",
+      "hints": [
+        "Częstość względna = (liczebność klasy) ÷ (łączna liczebność).",
+        "Zapisz wynik jako liczbę dziesiętną."
+      ],
+      "expl": "{f}÷{t}={ans}, więc częstość względna to {ans}."
+    },
+    "periodLen": {
+      "prompt": "Gdy $\\frac{1}{{d}}$ zapiszemy jako liczbę dziesiętną, ile cyfr ma jej okres?",
+      "hints": [
+        "Podziel 1 przez {d}.",
+        "Okres to powtarzająca się część."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, więc okres ma {ans} cyfr."
+    },
+    "repeatFrac": {
+      "prompt": "Ułamek okresowy $0.\\dot{d}\\dot{e}$ jest równy $\\frac{x}{99}$. Ile wynosi x?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Zapisz liczbę dwucyfrową ab jako licznik."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ daje x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "Czy $\\frac{{n}}{{d}}$ ma skończone rozwinięcie dziesiętne?",
+      "hints": [
+        "Skróć ułamek, potem rozłóż mianownik na czynniki.",
+        "Jeśli jedynymi czynnikami pierwszymi są 2 i 5, rozwinięcie jest skończone."
+      ],
+      "expl": "Mianownik {d2} ma czynniki pierwsze {fact}, więc {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Jaka cyfra stoi na {k}. miejscu po przecinku?",
+      "hints": [
+        "Okres 142857 ma 6 cyfr.",
+        "Użyj reszty z dzielenia {k} ÷ 6, by znaleźć pozycję."
+      ],
+      "expl": "Reszta z {k} ÷ 6 to {r}, więc to {r}. cyfra: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Jaki jest współczynnik kierunkowy funkcji liniowej $y={a}x+{b}$?",
+      "hints": [
+        "W $y=ax+b$ współczynnik kierunkowy to a.",
+        "Odczytaj współczynnik przy x."
+      ],
+      "expl": "Współczynnik kierunkowy to {ans}."
+    },
+    "yInt": {
+      "prompt": "Jaki jest punkt przecięcia z osią y dla $y={a}x+{b}$?",
+      "hints": [
+        "Przecięcie z osią y to y dla x=0.",
+        "W $y=ax+b$ to b."
+      ],
+      "expl": "Przecięcie z osią y to {ans}."
+    },
+    "xInt": {
+      "prompt": "Jaki jest punkt przecięcia z osią x dla $y={a}x+{b}$?",
+      "hints": [
+        "Przecięcie z osią x to x dla y=0.",
+        "Rozwiąż $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ daje x={ans}."
+    },
+    "crossX": {
+      "prompt": "Wykresy $y={a1}x+{b1}$ i $y={a2}x+{b2}$ przecinają się w punkcie P. Jaka jest współrzędna x punktu P?",
+      "hints": [
+        "W punkcie przecięcia obie wartości y są równe.",
+        "Rozwiąż $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ daje x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Ile wynosi $f({c})$ dla funkcji liniowej $f(x)={a}x+{b}$?",
+      "hints": [
+        "Podstaw {c} w miejsce x.",
+        "Pomnóż, potem dodaj."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} wonów wpłacono na {n} lat przy {r}% oprocentowaniu prostym w skali roku. Ile wynoszą odsetki? (won)",
+      "hints": [
+        "Odsetki proste = kapitał × stopa × lata.",
+        "{r}% to {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, więc odsetki to {ans} wonów."
+    },
+    "compoundInterest": {
+      "prompt": "{p} wonów wpłacono na {n} lat przy {r}% oprocentowaniu składanym w skali roku. Ile wynosi łączna kwota? (won)",
+      "hints": [
+        "Przy procencie składanym odsetki też zarabiają odsetki.",
+        "Pomnóż kapitał przez (1 + stopa) {n} razy."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, więc razem {ans} wonów."
+    },
+    "exchange": {
+      "prompt": "1 jednostka obcej waluty jest warta {r} wonów. Ile wonów to {d} jednostek tej waluty? (won)",
+      "hints": [
+        "Kurs wymiany to wartość 1 jednostki obcej waluty w wonach.",
+        "Pomnóż liczbę jednostek przez kurs."
+      ],
+      "expl": "{d}×{r}={ans}, więc to {ans} wonów."
+    },
+    "taxTotal": {
+      "prompt": "Towar kosztuje {p} wonów i dolicza się {t}% VAT. Ile wonów trzeba zapłacić? (won)",
+      "hints": [
+        "Podatek to cena × {t}%.",
+        "Dodaj podatek do ceny."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, więc {ans} wonów."
+    },
+    "equilibrium": {
+      "prompt": "Krzywa popytu $p={a}-{b}q$ i krzywa podaży $p={c}+{d}q$ przecinają się w punkcie równowagi q. Ile wynosi q?",
+      "hints": [
+        "W równowadze cena popytu równa się cenie podaży.",
+        "Rozwiąż $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ daje q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Funkcja popytu to $p={a}-{b}q$. Jaka jest największa wartość przychodu $R=pq$?",
+      "hints": [
+        "$R=({a}-{b}q)q$ jest funkcją kwadratową.",
+        "Największa wartość jest w wierzchołku $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Dla q={q} przychód jest największy: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Popyt to $Q={a}-{b}p$. Jaka jest wartość bezwzględna elastyczności cenowej dla $p={p0}$? (liczba dziesiętna)",
+      "hints": [
+        "Wartość bezwzględna elastyczności to $\\frac{bp}{Q}$.",
+        "Najpierw znajdź Q dla $p={p0}$."
+      ],
+      "expl": "Q={q0}, więc $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "Ile razy występuje A w ciągu słów {seq}?",
+      "hints": [
+        "Przy liczeniu zaznaczaj tylko A.",
+        "Ta liczba to składowa A wektora częstości."
+      ],
+      "expl": "A występuje {ans} razy."
+    },
+    "freqDot": {
+      "prompt": "Dwa dokumenty mają wektory częstości $\\vec{u}=({u1}, {u2}, {u3})$ i $\\vec{v}=({v1}, {v2}, {v3})$. Ile wynosi iloczyn skalarny $\\vec{u}\\cdot\\vec{v}$?",
+      "hints": [
+        "Pomnóż odpowiadające sobie składowe i dodaj.",
+        "Im większy iloczyn skalarny, tym bardziej podobne są dokumenty."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "Obraz zapisano jako macierz $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Ile wynosi suma wartości wszystkich pikseli?",
+      "hints": [
+        "Każdy element to jasność jednego piksela.",
+        "Dodaj wszystkie cztery elementy."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Piksel ma wartość {v}. Każdy piksel rozjaśniono o {k}. Jaka jest jego nowa wartość?",
+      "hints": [
+        "Rozjaśnienie dodaje tę samą liczbę do każdego elementu macierzy.",
+        "Dodaj {k} do {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Jaki jest współczynnik kierunkowy linii trendu przechodzącej przez ({x1}, {y1}) i ({x2}, {y2})?",
+      "hints": [
+        "Współczynnik kierunkowy = zmiana y ÷ zmiana x.",
+        "Oblicz $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Przewidywania to {pred}, a wartości rzeczywiste to {real}. Jaki jest błąd średniokwadratowy (średnia kwadratów błędów)?",
+      "hints": [
+        "Błąd to przewidywanie − wartość rzeczywista.",
+        "Podnieś każdy błąd do kwadratu, potem policz średnią."
+      ],
+      "expl": "Kwadraty błędów to {sq}, a ich średnia to {ans}."
+    },
+    "gradStep": {
+      "prompt": "Dla funkcji straty $f(x)=x^2$ jeden krok spadku gradientowego od x={x0} ze współczynnikiem uczenia {eta} daje nowe x równe?",
+      "hints": [
+        "Spadek gradientowy: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, więc {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "Ile cm to {v} m? (cm)",
+      "hints": [
+        "1 m to 100 cm.",
+        "Pomnóż {v} przez 100."
+      ],
+      "expl": "{v}×100={ans}, więc {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "Ile g to {v} kg? (g)",
+      "hints": [
+        "1 kg to 1000 g.",
+        "Pomnóż {v} przez 1000."
+      ],
+      "expl": "{v}×1000={ans}, więc {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Ile minut to {v} godzin? (min)",
+      "hints": [
+        "1 godzina to 60 minut.",
+        "Pomnóż {v} przez 60."
+      ],
+      "expl": "{v}×60={ans}, więc {ans} minut."
+    },
+    "discount": {
+      "prompt": "Towar kosztuje {p} wonów i jest sprzedawany z {d}% zniżką. Jaka jest cena sprzedaży? (won)",
+      "hints": [
+        "Zniżka to cena × {d}%.",
+        "Odejmij zniżkę od ceny."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, więc {ans} wonów."
+    },
+    "mixRatio": {
+      "prompt": "Składniki A i B miesza się w stosunku {a}:{b}, aby otrzymać łącznie {t} g. Ile g składnika A potrzeba? (g)",
+      "hints": [
+        "Całość to {a}+{b}={s} części.",
+        "A to $\\frac{a}{s}$ całości."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, więc {ans} g."
+    },
+    "tiles": {
+      "prompt": "Ściana ma {w} m szerokości i {h} m wysokości. Ile płytek 1 m × 1 m ją pokrywa? (płytek)",
+      "hints": [
+        "Oblicz pole ściany.",
+        "Jedna płytka ma pole 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, więc {ans} płytek."
+    },
+    "outfit": {
+      "prompt": "Jest {a} koszulek i {b} par spodni. Ile jest różnych zestawów z jedną koszulką i jedną parą spodni?",
+      "hints": [
+        "Do każdej koszulki są {b} możliwości wyboru spodni.",
+        "Użyj reguły mnożenia."
+      ],
+      "expl": "{a}×{b}={ans}, więc {ans} zestawów."
+    },
+    "goldenRatio": {
+      "prompt": "Złoty podział spełnia $a:b=(a+b):a$. Gdy b=10, ile mniej więcej wynosi a? (dwa miejsca po przecinku)",
+      "hints": [
+        "Złota liczba to około 1,618.",
+        "a to około 1,618 razy b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Wysokość dźwięku zależy od częstotliwości. Jaka jest częstotliwość w Hz dźwięku o oktawę wyższego niż 440 Hz? (Hz)",
+      "hints": [
+        "Dźwięk o oktawę wyższy ma dwa razy większą częstotliwość.",
+        "Pomnóż 440 przez 2."
+      ],
+      "expl": "440×2={ans}, więc {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Komórka alfabetu Braille'a ma 6 punktów, każdy wypukły lub płaski. Nie licząc wzoru bez żadnego wypukłego punktu, ile jest wzorów?",
+      "hints": [
+        "Każdy punkt ma 2 możliwości.",
+        "Z reguły mnożenia $2^6$, potem odejmij 1."
+      ],
+      "expl": "$2^6-1={ans}$, więc {ans} wzorów."
+    },
+    "voteMajority": {
+      "prompt": "Głosuje {n} osób. Ile głosów kandydat potrzebuje co najmniej, by uzyskać większość? (głosów)",
+      "hints": [
+        "Większość to więcej niż połowa wszystkich głosów.",
+        "Znajdź najmniejszą liczbę całkowitą większą od połowy {n}."
+      ],
+      "expl": "Połowa {n} to {half}; najmniejsza liczba całkowita większa od niej to {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Przez 5 dni stężenia pyłu zawieszonego wynosiły {list} (µg/m³). Jakie jest średnie stężenie?",
+      "hints": [
+        "Średnia to (suma) ÷ (liczba dni).",
+        "Najpierw dodaj 5 wartości."
+      ],
+      "expl": "({sum})÷5={ans}, więc średnia to {ans}."
+    },
+    "percentChange": {
+      "prompt": "Wartość zmieniła się z {a} na {b}. O ile procent wzrosła? (%)",
+      "hints": [
+        "Wzrost procentowy = (przyrost) ÷ (wartość początkowa) × 100.",
+        "Przyrost to {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, więc {ans}%."
+    },
+    "stdev": {
+      "prompt": "Jakie jest odchylenie standardowe danych {list}? (odchylenie standardowe populacji)",
+      "hints": [
+        "Najpierw znajdź średnią.",
+        "Pierwiastek ze średniej z kwadratów odchyleń (wariancji) to odchylenie standardowe."
+      ],
+      "expl": "Średnia to {mean}, a wariancja to {var}, więc odchylenie standardowe to {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Odchylenie standardowe populacji to {s}, a liczebność próby to {n}. Jaki jest 95% margines błędu $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (dwa miejsca po przecinku)",
+      "hints": [
+        "Najpierw znajdź $\\sqrt{ n }$.",
+        "Podziel σ przez to i pomnóż przez 1,96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Średnia z próby to {xbar}, średnia z hipotezy zerowej to {mu}, σ={s} i n={n}. Ile wynosi statystyka testowa $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$?",
+      "hints": [
+        "Najpierw oblicz mianownik $σ/\\sqrt{ n }$.",
+        "Odejmij średnią z hipotezy zerowej od średniej z próby i podziel."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "W teście dwustronnym na poziomie istotności 5% wartość krytyczna to 1,96. Statystyka testowa to z={z}. Jaki jest wniosek?",
+      "hints": [
+        "Jeśli $|z|$ jest większe niż 1,96, odrzucamy hipotezę zerową.",
+        "Porównaj wartość bezwzględną z z 1,96."
+      ],
+      "expl": "|z|={az}, więc: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Spójrz, jak wybrano próbę.",
+        "Wybierz pasującą: losowanie proste, warstwowe, grupowe lub systematyczne."
+      ],
+      "expl": "Ta metoda to {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Pomyśl, skąd pochodzą dane badawcze.",
+        "Wybierz: badanie literaturowe, studium przypadku, eksperyment lub badanie rozwojowe."
+      ],
+      "expl": "Ta metoda badawcza to {name}."
+    },
+    "researchStep": {
+      "prompt": "Co należy zrobić zaraz po wyborze tematu badania?",
+      "hints": [
+        "Badanie przebiega: planowanie → przeprowadzenie → prezentacja → refleksja.",
+        "Po wyborze tematu decydujesz, jak go zbadać."
+      ],
+      "expl": "Po wyborze tematu: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Etyka badań opiera się na uczciwości i powoływaniu się na źródła.",
+        "Pomyśl, jak należy traktować cudzą pracę i wyniki."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Ćwiartka 1",
+    "q2": "Ćwiartka 2",
+    "q3": "Ćwiartka 3",
+    "q4": "Ćwiartka 4",
+    "p0": "0 (nie może się zdarzyć)",
+    "phalf": "1/2 (jednakowo prawdopodobne)",
+    "p1": "1 (jest pewne)",
+    "random": "losowanie proste",
+    "strat": "losowanie warstwowe",
+    "cluster": "losowanie grupowe",
+    "system": "losowanie systematyczne",
+    "reject": "Odrzucić hipotezę zerową",
+    "keep": "Nie odrzucać hipotezy zerowej",
+    "literature": "badanie literaturowe",
+    "casestudy": "studium przypadku",
+    "experiment": "eksperyment matematyczny",
+    "develop": "badanie rozwojowe",
+    "plan": "Opracować plan badania",
+    "carry": "Przeprowadzić badanie",
+    "present": "Przedstawić wyniki",
+    "reflect": "Przemyśleć przebieg badania",
+    "yesPrime": "Tak, jest pierwsza",
+    "noPrime": "Nie, nie jest pierwsza",
+    "yesFinite": "Tak, ma skończone rozwinięcie dziesiętne",
+    "noFinite": "Nie, jest to ułamek okresowy",
+    "yesOk": "Prawda",
+    "noOk": "Fałsz"
+  },
+  "text": {
+    "ev_coin": "Jakie jest prawdopodobieństwo wyrzucenia orła przy jednym rzucie monetą?",
+    "ev_sun": "Jakie jest prawdopodobieństwo, że jutro słońce wzejdzie na wschodzie?",
+    "ev_die": "Jakie jest prawdopodobieństwo wyrzucenia 7 jedną zwykłą sześcienną kostką?",
+    "sm_system": "Do ankiety wybrano co 10. ucznia z listy szkoły. Jaka to metoda doboru próby?",
+    "sm_random": "Trzydziestu uczniów wybrano z listy szkoły za pomocą liczb losowych. Jaka to metoda doboru próby?",
+    "sm_strat": "Z każdej klasy wybrano uczniów proporcjonalnie do liczby uczniów w tej klasie. Jaka to metoda doboru próby?",
+    "sm_cluster": "Najpierw wybrano kilka klas i zbadano każdego ucznia z wybranych klas. Jaka to metoda doboru próby?",
+    "rm_lit": "Czytanie artykułów i książek z biblioteki i internetu oraz ich streszczanie to jaka metoda badawcza?",
+    "rm_case": "Zbieranie i porównywanie prawdziwych przykładów z kilku szkół to jaka metoda badawcza?",
+    "rm_exp": "Samodzielne rzucanie kostkami i zapisywanie wyników, by znaleźć prawidłowość, to jaka metoda badawcza?",
+    "rm_dev": "Zbudowanie nowego narzędzia do nauki matematyki i sprawdzenie, jak dobrze działa, to jaka metoda badawcza?",
+    "et_cite": "Przepisywanie cudzego tekstu bez podania źródła jest sprzeczne z etyką badań.",
+    "et_cite_r": "Wykorzystanie czyjejś pracy bez podania źródła to plagiat, więc to zdanie jest prawdziwe.",
+    "et_fake": "Jeśli wyniki różnią się od hipotezy, można zmienić liczby tak, by się zgadzały.",
+    "et_fake_r": "Zmiana wyników to fałszowanie danych i łamie etykę badań, więc to zdanie jest fałszywe."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Porządkowanie i przedstawianie danych w tabelach i na wykresach",
+      "concept": "Porządkuj rzeczy według reguły i licz je; **tabela** lub **wykres** pozwala porównać dane na pierwszy rzut oka.",
+      "example": "A 3, B 5, C 2 → razem 10"
+    },
+    "E4dat1": {
+      "title": "Odczytywanie wykresów liniowych",
+      "concept": "**Wykres liniowy** pokazuje punktami i liniami, jak wartość zmienia się w czasie. W górę oznacza wzrost, w dół spadek.",
+      "example": "12 w dniu 1 → 20 w dniu 3: wzrost o 8"
+    },
+    "E5dat1": {
+      "title": "Obliczanie średniej",
+      "concept": "**Średnia arytmetyczna** to suma danych podzielona przez ich liczbę.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Prawdopodobieństwo",
+      "concept": "**Prawdopodobieństwo** zdarzenia to liczba od 0 (niemożliwe) do 1 (pewne): prawdopodobieństwo = (zdarzenia sprzyjające) ÷ (wszystkie zdarzenia).",
+      "example": "3 kule A, 2 kule B → prawdopodobieństwo A to $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Diagramy paskowe i kołowe",
+      "concept": "**Diagramy paskowe** i **kołowe** traktują całość jako 100% i pokazują udział każdej części. Część = całość × udział.",
+      "example": "25% ze 200 osób → 50 osób"
+    },
+    "M1neg1": {
+      "title": "Liczby całkowite i wymierne",
+      "concept": "Takie same znaki: dodaj wartości bezwzględne. Różne znaki: odejmij je i zachowaj znak większej. Przy × i ÷ wynik jest +, gdy znaki są takie same, a − gdy różne.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Rozkład na czynniki pierwsze, NWD i NWW",
+      "concept": "Zapisanie liczby jako iloczynu liczb pierwszych to **rozkład na czynniki pierwsze**. Największy wspólny dzielnik to **NWD**, najmniejsza wspólna wielokrotność to **NWW**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Układ współrzędnych",
+      "concept": "Punkt zapisujemy (x, y). Znaki wyznaczają ćwiartki 1–4, a odbicie względem osi x zmienia znak y.",
+      "example": "(−2, 5) leży w ćwiartce 2"
+    },
+    "M1prp1": {
+      "title": "Proporcjonalność prosta i odwrotna",
+      "concept": "**Proporcjonalność prosta** to y=ax, a **proporcjonalność odwrotna** to $y=\\frac{a}{x}$. W prostej y÷x jest stałe; w odwrotnej stałe jest x×y.",
+      "example": "y=6 dla x=2 (prosta): y=3x"
+    },
+    "M1sta1": {
+      "title": "Średnie i częstość względna",
+      "concept": "**Mediana** to środkowa wartość po uporządkowaniu, **dominanta** to wartość najczęstsza. **Częstość względna** = liczebność ÷ suma.",
+      "example": "Mediana liczb 1, 3, 5, 7, 9 to 5"
+    },
+    "M2rec1": {
+      "title": "Ułamki okresowe",
+      "concept": "Liczba dziesiętna, której cyfry powtarzają się w nieskończoność, to **ułamek okresowy**; powtarzająca się część to jego **okres**. Ułamek nieskracalny ma skończone rozwinięcie tylko wtedy, gdy jego mianownik ma wyłącznie czynniki 2 i 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Funkcje liniowe i równania liniowe",
+      "concept": "W y=ax+b liczba a to współczynnik kierunkowy, a b to punkt przecięcia z osią y. Punkt przecięcia dwóch wykresów to rozwiązanie obu równań razem.",
+      "example": "y=2x−6 ma miejsce zerowe 3"
+    },
+    "el.econ1": {
+      "title": "Odsetki, kursy walut i podatek",
+      "concept": "Odsetki proste = kapitał × stopa × lata; kwota przy procencie składanym = kapitał × (1 + stopa)^lata. Kurs wymiany to wartość 1 jednostki waluty; podatek to cena × procent.",
+      "example": "10000 wonów, 10% składane przez 2 lata → 12100 wonów"
+    },
+    "el.econ2": {
+      "title": "Popyt, podaż i optymalizacja",
+      "concept": "Równowaga jest tam, gdzie przecinają się krzywe popytu i podaży. Maksymalny przychód R=pq i elastyczność wynikają z funkcji i pochodnych.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Dane tekstowe i obrazowe",
+      "concept": "Dokument staje się wektorem liczebności słów, a obraz macierzą wartości pikseli. Im większy iloczyn skalarny, tym bardziej podobne są dwa dokumenty.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Przewidywanie i optymalizacja",
+      "concept": "Przewidywania poprawiają się dzięki współczynnikowi kierunkowemu linii trendu, średniej z kwadratów błędów (stracie) i spadkowi gradientowemu $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Zamiana jednostek i proporcje",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 godzina = 60 minut. Cena sprzedaży = cena × (1 − zniżka); mieszanie w stosunku a:b daje A udział $\\frac{a}{a+b}$.",
+      "example": "3,5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Pole, zliczanie i wzrost",
+      "concept": "Pole daje potrzebny materiał, reguła mnożenia liczbę par, a (przyrost) ÷ (wartość początkowa) × 100 tempo wzrostu.",
+      "example": "4 koszulki, 3 spodnie → 12 zestawów"
+    },
+    "el.cul1": {
+      "title": "Matematyka w sztuce i życiu codziennym",
+      "concept": "Złoty podział to około 1,618; dźwięk o oktawę wyższy ma dwa razy większą częstotliwość; 6 punktów alfabetu Braille'a daje $2^6-1=63$ wzorów; większość to więcej niż połowa.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Matematyka w społeczeństwie i środowisku",
+      "concept": "Średnie i tempo wzrostu pozwalają analizować problemy społeczne i środowiskowe matematycznie. Tempo wzrostu = (przyrost) ÷ (wartość początkowa) × 100.",
+      "example": "z 40 do 50 → wzrost o 25%"
+    },
+    "el.sta1": {
+      "title": "Pytania statystyczne i próby",
+      "concept": "Odchylenie standardowe to pierwiastek ze średniej z kwadratów odchyleń (wariancji). Próby dobiera się losowo, warstwowo, grupowo lub systematycznie.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 mają odchylenie standardowe 2"
+    },
+    "el.sta2": {
+      "title": "Estymacja i testy hipotez",
+      "concept": "95% margines błędu to $1.96\\times\\frac{σ}{\\sqrt{n}}$. Jeśli $|z|$ dla $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ jest większe niż 1,96, odrzucamy hipotezę zerową na poziomie 5%.",
+      "example": "σ=10, n=100 → margines 1,96"
+    },
+    "el.res1": {
+      "title": "Metody badawcze",
+      "concept": "Matematyczny projekt badawczy może wykorzystywać badanie literaturowe, studia przypadku, eksperymenty matematyczne lub badania rozwojowe.",
+      "example": "Rzucanie kostkami w celu znalezienia prawidłowości → eksperyment"
+    },
+    "el.res2": {
+      "title": "Etapy badania i etyka",
+      "concept": "Badanie przebiega: temat → plan → przeprowadzenie → prezentacja → refleksja. Powoływanie się na źródła i niezmienianie wyników to etyka badań.",
+      "example": "Po temacie przychodzi plan badania"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Matematyka ekonomiczna",
+      "world": "Miasto Ekonomii",
+      "tagline": "Poznaj matematykę pieniędzy i rynków",
+      "unit": "Liczby i ekonomia, funkcje i ekonomia"
+    },
+    "ai": {
+      "title": "Matematyka dla AI",
+      "world": "Laboratorium AI",
+      "tagline": "Poznaj matematykę ukrytą w danych i optymalizacji",
+      "unit": "Przetwarzanie danych, przewidywanie i optymalizacja"
+    },
+    "job": {
+      "title": "Matematyka w pracy",
+      "world": "Miasto Warsztatów",
+      "tagline": "Ćwicz matematykę używaną w pracy",
+      "unit": "Liczby i jednostki, proporcje, pole i zliczanie"
+    },
+    "cul": {
+      "title": "Matematyka i kultura",
+      "world": "Plac Kultury",
+      "tagline": "Odkryj matematykę w sztuce i życiu codziennym",
+      "unit": "Sztuka i życie, społeczeństwo i środowisko"
+    },
+    "sta": {
+      "title": "Praktyczna statystyka",
+      "world": "Laboratorium Statystyki",
+      "tagline": "Rozwijaj umiejętność wnioskowania z danych",
+      "unit": "Dane i próby, estymacja i testowanie"
+    },
+    "res": {
+      "title": "Matematyczne projekty badawcze",
+      "world": "Warsztat Badawczy",
+      "tagline": "Poznaj metody i etykę badań",
+      "unit": "Metody, procedura i etyka"
+    }
+  }
+}

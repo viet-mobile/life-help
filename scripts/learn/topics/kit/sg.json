@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "Nambara ti {cat} na yâ ti tableau ayeke nye?",
+      "hints": [
+        "Hunda kâ ti {cat}.",
+        "Bâ nambara so a koe na yâ ni."
+      ],
+      "expl": "Nambara ti {cat} ayeke {ans}."
+    },
+    "tableTotal": {
+      "prompt": "Bungbi ti anambara kue na yâ ti tableau ayeke nye?",
+      "hints": [
+        "Bâ nambara na yâ ti kâ oko oko.",
+        "Bungbi ala kue."
+      ],
+      "expl": "Bungbi ayeke {sum}, so tënë ti ngbâ ayeke {ans}."
+    },
+    "symbolMax": {
+      "prompt": "Angbâ-ngbâ ayeke mingi na yâ ti colonne so ayeke kota ahon ambeni kue na graphique?",
+      "hints": [
+        "Bâ angbâ-ngbâ na yâ ti colonne oko oko.",
+        "Hunda colonne so ayeke kota ahon ambeni kue."
+      ],
+      "expl": "Colonne so ayeke kota ahon ambeni kue ayeke na angbâ-ngbâ {ans}."
+    },
+    "symbolDiff": {
+      "prompt": "Colonne so ayeke kota ahon ambeni kue ayeke na ambeni mingi ahon colonne so ayeke kete ahon ambeni kue na ngbii nye?",
+      "hints": [
+        "Hunda kâ nambara so ayeke kota ahon ambeni kue na so ayeke kete ahon ambeni kue.",
+        "Zî nambara so ayeke kete na nambara so ayeke kota."
+      ],
+      "expl": "{max}-{min}={ans}, tongana ni a yeke na {ans} mingi."
+    },
+    "mostWhich": {
+      "prompt": "Nye ayeke kota ahon ambeni kue na graphique?",
+      "hints": [
+        "Bâ nambara ti ambeni kue na ayeke fa ni.",
+        "Hunda nambara so ayeke kota ahon ambeni kue."
+      ],
+      "expl": "Kota ahon ambeni kue ayeke {name}."
+    },
+    "compareCount": {
+      "prompt": "{a} ayeke na ambeni mingi ahon {b} na ngbii nye?",
+      "hints": [
+        "Bâ anambara ti {a} na ti {b}.",
+        "Zî nambara so ayeke kete na nambara so ayeke kota."
+      ],
+      "expl": "{x}-{y}={ans}, tongana ni {a} ayeke na {ans} mingi."
+    },
+    "lineRead": {
+      "prompt": "Valeur ti {cat} na graphique ti ligne ayeke nye?",
+      "hints": [
+        "Hunda {cat} na axe so ayeke na lege ti ndö-sese.",
+        "Bâ valeur ti point so ayeke na ndö ni."
+      ],
+      "expl": "Valeur ti {cat} ayeke {ans}."
+    },
+    "lineMax": {
+      "prompt": "Valeur so ayeke kota ahon ambeni kue na graphique ti ligne ayeke nye?",
+      "hints": [
+        "Bâ avaleur ti ahon point kue.",
+        "Hunda point so ayeke na ndö ahon ambeni kue."
+      ],
+      "expl": "Valeur so ayeke kota ahon ambeni kue ayeke {ans}."
+    },
+    "lineChange": {
+      "prompt": "Valeur atï na ngbii nye ge na {from} jusqu'à {to}?",
+      "hints": [
+        "Bâ avaleur na {from} na na {to}.",
+        "Zî valeur ti kozo na valeur ti na pekoni."
+      ],
+      "expl": "{b}-{a}={ans}, tongana ni a tï na {ans}."
+    },
+    "mean": {
+      "prompt": "Moyenne ti anambara ni ayeke nye? {list}",
+      "hints": [
+        "Moyenne ayeke (bungbi ti ala kue) ÷ (ngbii ti ala).",
+        "Bungbi ala kue kozoni."
+      ],
+      "expl": "({sum})÷{n}={ans}, tongana ni moyenne ayeke {ans}."
+    },
+    "meanMissing": {
+      "prompt": "Moyenne ti anambara osio ayeke {m} na ala ota ayeke {list}. Nambara ti osio ayeke nye?",
+      "hints": [
+        "Bungbi ti anambara osio ayeke moyenne × 4.",
+        "Zî anambara ota so a lingbi na ni na bungbi ni."
+      ],
+      "expl": "{m}×4={total} na {total}-({known})={ans}, tongana ni ayeke {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Na yâ ti mbeni boîte ayeke na {a} abôle ti A na {b} abôle ti B. A zî mbeni bôle oko. Chance ti bôle ni ayeke ti A ayeke nye, na décimal?",
+      "hints": [
+        "Chance = (aye so ayeke nzoni) ÷ (aye kue so alingbi).",
+        "Hunda kâ ngbii ti abôle kue kozoni."
+      ],
+      "expl": "{a}÷{total}={ans}, tongana ni chance ayeke {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Aye so alingbi ape ayeke 0 na aye so ayeke biani ayeke 1.",
+        "Chance so ayeke pëpe pëpe ayeke $\\frac{1}{2}$."
+      ],
+      "expl": "Chance ti tënë so ayeke: {name}."
+    },
+    "pieCount": {
+      "prompt": "Na yâ ti diagramme circulaire A ayeke {p}% ti kue. Kue ayeke zo {t}. A ayeke zo ngbii nye?",
+      "hints": [
+        "{p}% ayeke $\\frac{p}{100}$.",
+        "Multiplie kue na rapport ni."
+      ],
+      "expl": "{t}×{p}÷100={ans}, tongana ni zo {ans}."
+    },
+    "pieRest": {
+      "prompt": "Akâ ota ti diagramme circulaire ayeke {a}%, {b}% na {c}%. Kâ ti osio ayeke pour cent ngbii nye? (%)",
+      "hints": [
+        "Kue ayeke 100%.",
+        "Zî akâ ota na yâ ti 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, tongana ni ayeke {ans}%."
+    },
+    "bandRead": {
+      "prompt": "{cat} ayeke pour cent ngbii ti kue na graphique ti bande? (%)",
+      "hints": [
+        "Hunda kâ ti {cat}.",
+        "Bâ pour cent so a koe na yâ ni."
+      ],
+      "expl": "{cat} ayeke {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Calcule $({a})+({b})$.",
+      "hints": [
+        "Asigne so ayeke pëpe pëpe: bungbi avaleur absolue na bâ asigne ni.",
+        "Asigne so ayeke pëpe ape: zî avaleur absolue na gbu asigne ti ngbii so ayeke kota."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Calcule $({a})-({b})$.",
+      "hints": [
+        "Zî ayeke bungbi nambara so ayeke contraire.",
+        "Koe ni lo $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Calcule $({a})\\times({b})$.",
+      "hints": [
+        "Asigne so ayeke pëpe pëpe asi na positif, asigne so ayeke pëpe ape asi na négatif.",
+        "Multiplie avaleur absolue."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Calcule $({a})\\div({b})$.",
+      "hints": [
+        "Asigne so ayeke pëpe pëpe asi na positif, asigne so ayeke pëpe ape asi na négatif.",
+        "Divise avaleur absolue."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ ayeke nye na décimal?",
+      "hints": [
+        "Sara dénominateur commun na bungbi ala.",
+        "Sara fraction ni na décimal."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Point P afa nambara nye na yâ ti droite numérique?",
+      "hints": [
+        "Na gauche ti 0 ayeke négatif, na droite ti 0 ayeke positif.",
+        "Bâ ngbii ti akâ-kâ."
+      ],
+      "expl": "Point P afa {ans}."
+    },
+    "primeCount": {
+      "prompt": "Anambara premier ayeke ngbii nye jusqu'à {n}?",
+      "hints": [
+        "Nambara premier ayeke na diviseur use kue: 1 na lo même.",
+        "Bâ 2, 3, 5, 7, ... na ordre ni."
+      ],
+      "expl": "Anambara premier jusqu'à {n} ayeke {list}: {ans} kue."
+    },
+    "factorExp": {
+      "prompt": "${n}$ so a sara facteurs premiers ni ayeke $2^a\\times3^b$. $a+b$ ayeke nye?",
+      "hints": [
+        "Divise {n} na 2 tongana a lingbi.",
+        "Na pekoni divise so angbâ na 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, tongana ni $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "{n} ayeke na adiviseur ngbii nye?",
+      "hints": [
+        "Hunda anambara kue so alingbi ti divise {n} na ngbii ape.",
+        "Bâ ti kete ti kota."
+      ],
+      "expl": "Adiviseur ti {n} ayeke {list}: {ans} kue."
+    },
+    "gcd": {
+      "prompt": "PGCD ti {a} na {b} ayeke nye?",
+      "hints": [
+        "Hunda adiviseur commun ti anambara use ni.",
+        "Kota ni na yâ ala ayeke PGCD."
+      ],
+      "expl": "PGCD ti {a} na {b} ayeke {ans}."
+    },
+    "lcm": {
+      "prompt": "PPCM ti {a} na {b} ayeke nye?",
+      "hints": [
+        "Koe amultiple commun ti anambara use ni, kete ni kozo.",
+        "Multiple commun so ayeke kete ahon ambeni kue ayeke PPCM."
+      ],
+      "expl": "PPCM ti {a} na {b} ayeke {ans}."
+    },
+    "isPrime": {
+      "prompt": "{n} ayeke nambara premier?",
+      "hints": [
+        "Hunda adiviseur ti {n}.",
+        "Tongana lo yeke na diviseur ti nga ape 1 na lo même, lo yeke premier ape."
+      ],
+      "expl": "Adiviseur ti {n} ayeke {list}, tongana ni {verdict}."
+    },
+    "coordRead": {
+      "prompt": "Coordonnée {axis} ti point A ayeke nye?",
+      "hints": [
+        "A koe paire ti acoordonnées na (x, y).",
+        "Bâ ngbii na yâ ti grille."
+      ],
+      "expl": "Coordonnée {axis} ti A ayeke {ans}."
+    },
+    "quadrant": {
+      "prompt": "Point ({a}, {b}) ayeke na quadrant nye?",
+      "hints": [
+        "Bâ asigne ti acoordonnées x na y.",
+        "(+,+) ayeke Quadrant 1."
+      ],
+      "expl": "x ayeke {a} na y ayeke {b}, tongana ni lo yeke na {name}."
+    },
+    "distAxis": {
+      "prompt": "Distance ti point ({a}, {b}) jusqu'à axe {axis} ayeke nye?",
+      "hints": [
+        "Distance jusqu'à mbeni axe ayeke valeur absolue ti mbeni coordonnée.",
+        "Ti axe {axis} bâ coordonnée {which}."
+      ],
+      "expl": "Ayeke valeur absolue ti coordonnée {which} {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "Point ({a}, {b}) a sara réflexion ti lo na axe x. Coordonnée y ti fini point ayeke nye?",
+      "hints": [
+        "Réflexion na axe x angbâ na coordonnée x.",
+        "Signe ti coordonnée y ayeke change."
+      ],
+      "expl": "Fini point ayeke ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y ayeke proportionnel direct na x, na y={y1} tongana x={x1}. y ayeke nye tongana x={x2}?",
+      "hints": [
+        "Proportionnalité directe ayeke y=ax.",
+        "Hunda a kozoni."
+      ],
+      "expl": "a={y1}÷{x1}={k}, tongana ni y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y ayeke proportionnel inverse na x, na y={y1} tongana x={x1}. y ayeke nye tongana x={x2}?",
+      "hints": [
+        "Proportionnalité inverse ayeke $y=\\frac{a}{x}$.",
+        "Hunda a=xy kozoni."
+      ],
+      "expl": "a={x1}×{y1}={k}, tongana ni y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "Graphique ti proportionnalité directe y=ax asï na point ({x1}, {y1}). a ayeke nye?",
+      "hints": [
+        "Mû point ni na yâ ti y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "Graphique ti proportionnalité inverse $y=\\frac{a}{x}$ asï na ({x1}, {y1}). a ayeke nye?",
+      "hints": [
+        "Mû point ni na yâ ti $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "Médiane ti données {list} ayeke nye?",
+      "hints": [
+        "Sara ordre ti données na ngbii ti ala.",
+        "Valeur ti na bê ni ayeke médiane; tongana ngbii ayeke pair, mû moyenne ti use ti na bê."
+      ],
+      "expl": "Na ordre: {sorted}, tongana ni médiane ayeke {ans}."
+    },
+    "mode": {
+      "prompt": "Mode ti données {list} ayeke nye?",
+      "hints": [
+        "Mode ayeke valeur so asï mingi ahon ambeni kue.",
+        "Bâ ngbii ti ngbii so valeur oko oko asï."
+      ],
+      "expl": "{ans} asï mingi ahon ambeni kue, tongana ni mode ayeke {ans}."
+    },
+    "dataRange": {
+      "prompt": "Différence ti valeur so ayeke kota ahon ambeni kue na ti so ayeke kete ahon ambeni kue ti {list} ayeke nye?",
+      "hints": [
+        "Hunda valeur so ayeke kota na so ayeke kete.",
+        "Zî so ayeke kete na so ayeke kota."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "Fréquence totale ayeke {t} na mbeni classe ayeke na fréquence {f}. Fréquence relative ti classe ni ayeke nye? (décimal)",
+      "hints": [
+        "Fréquence relative = (fréquence ti classe) ÷ (fréquence totale).",
+        "Koe tënë ni na décimal."
+      ],
+      "expl": "{f}÷{t}={ans}, tongana ni fréquence relative ayeke {ans}."
+    },
+    "periodLen": {
+      "prompt": "Tongana a koe $\\frac{1}{{d}}$ na décimal, période ni ayeke na chiffre ngbii nye?",
+      "hints": [
+        "Divise 1 na {d}.",
+        "Période ayeke kâ so asara retour mingi."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, tongana ni période ayeke na chiffre {ans}."
+    },
+    "repeatFrac": {
+      "prompt": "Décimal périodique $0.\\dot{d}\\dot{e}$ ayeke tongana $\\frac{x}{99}$. x ayeke nye?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Koe nambara ti chiffre use ab na numérateur."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ amû x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "$\\frac{{n}}{{d}}$ ayeke décimal fini?",
+      "hints": [
+        "Simplifie fraction ni, na pekoni sara facteurs premiers ti dénominateur.",
+        "Tongana facteurs premiers kue ayeke 2 na 5 a fini."
+      ],
+      "expl": "Dénominateur {d2} ayeke na facteurs premiers {fact}, tongana ni {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. Chiffre na place ti {k} ti décimal ayeke nye?",
+      "hints": [
+        "Période 142857 ayeke na chiffre 6.",
+        "Sara ni na reste ti {k} ÷ 6 ti hunda place ni."
+      ],
+      "expl": "Reste ti {k} ÷ 6 ayeke {r}, tongana ni ayeke chiffre ti {r}: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "Pente ti fonction linéaire $y={a}x+{b}$ ayeke nye?",
+      "hints": [
+        "Na yâ ti $y=ax+b$ pente ayeke a.",
+        "Bâ coefficient ti x."
+      ],
+      "expl": "Pente ayeke {ans}."
+    },
+    "yInt": {
+      "prompt": "Ordonnée à l'origine ti $y={a}x+{b}$ ayeke nye?",
+      "hints": [
+        "Ordonnée à l'origine ayeke y tongana x=0.",
+        "Na yâ ti $y=ax+b$ ayeke b."
+      ],
+      "expl": "Ordonnée à l'origine ayeke {ans}."
+    },
+    "xInt": {
+      "prompt": "Abscisse à l'origine ti $y={a}x+{b}$ ayeke nye?",
+      "hints": [
+        "Abscisse à l'origine ayeke x tongana y=0.",
+        "Résous $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ amû x={ans}."
+    },
+    "crossX": {
+      "prompt": "Agraphique ti $y={a1}x+{b1}$ na $y={a2}x+{b2}$ asï na P. Coordonnée x ti P ayeke nye?",
+      "hints": [
+        "Na point ti intersection avaleur y use ayeke pëpe pëpe.",
+        "Résous $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ amû x={ans}."
+    },
+    "funcValue": {
+      "prompt": "Ti fonction linéaire $f(x)={a}x+{b}$, $f({c})$ ayeke nye?",
+      "hints": [
+        "Mû {c} na place ti x.",
+        "Multiplie, na pekoni bungbi."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "A mû won {p} na banque ti ngu {n} na intérêt simple ti {r}% na ngu oko. Intérêt ayeke won ngbii nye? (won)",
+      "hints": [
+        "Intérêt simple = capital × taux × ngu.",
+        "{r}% ayeke {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, tongana ni intérêt ayeke won {ans}."
+    },
+    "compoundInterest": {
+      "prompt": "A mû won {p} na banque ti ngu {n} na intérêt composé ti {r}% na ngu oko. Montant total ayeke nye? (won)",
+      "hints": [
+        "Na intérêt composé intérêt asara nga intérêt.",
+        "Multiplie capital × (1 + taux) mbage {n}."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, tongana ni total ayeke won {ans}."
+    },
+    "exchange": {
+      "prompt": "Unite 1 ti mbeni kobo ti kodoro ni ayeke won {r}. Unite {d} ti kobo ni ayeke won ngbii nye? (won)",
+      "hints": [
+        "Taux de change ayeke valeur ti unite 1 ti kobo ti kodoro na won.",
+        "Multiplie nombre ti aunite na taux."
+      ],
+      "expl": "{d}×{r}={ans}, tongana ni won {ans}."
+    },
+    "taxTotal": {
+      "prompt": "Mbeni aye ayeke won {p} na a bungbi taxe ti valeur ajoutée ti {t}%. A yeke ti futa won ngbii nye? (won)",
+      "hints": [
+        "Taxe = prix × {t}%.",
+        "Bungbi taxe na prix."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, tongana ni won {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Courbe ti demande $p={a}-{b}q$ na courbe ti offre $p={c}+{d}q$ asï na quantité d'équilibre q. q ayeke nye?",
+      "hints": [
+        "Na équilibre prix ti demande ayeke pëpe pëpe na prix ti offre.",
+        "Résous $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ amû q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "Fonction ti demande ayeke $p={a}-{b}q$. Maximum ti revenu $R=pq$ ayeke nye?",
+      "hints": [
+        "$R=({a}-{b}q)q$ ayeke fonction quadratique.",
+        "Lo yeke kota ahon na sommet $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "Na q={q} revenu ayeke kota ahon ambeni kue: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Demande ayeke $Q={a}-{b}p$. Valeur absolue ti élasticité-prix na $p={p0}$ ayeke nye? (décimal)",
+      "hints": [
+        "Élasticité absolue ayeke $\\frac{bp}{Q}$.",
+        "Hunda Q kozoni na $p={p0}$."
+      ],
+      "expl": "Q={q0}, tongana ni $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "A asï mbage ngbii nye na yâ ti suite ti amot {seq}?",
+      "hints": [
+        "Sara marque na A kete tongana mo bâ ngbii.",
+        "Ngbii so ayeke composante A ti vecteur ti fréquence."
+      ],
+      "expl": "A asï mbage {ans}."
+    },
+    "freqDot": {
+      "prompt": "Adocument use ayeke na avecteur ti fréquence $\\vec{u}=({u1}, {u2}, {u3})$ na $\\vec{v}=({v1}, {v2}, {v3})$. Produit scalaire $\\vec{u}\\cdot\\vec{v}$ ayeke nye?",
+      "hints": [
+        "Multiplie acomposante so alingbi na bungbi ala.",
+        "Tongana produit scalaire ayeke kota, adocument ayeke pëpe pëpe mingi."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "A bata mbeni image tongana matrice $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. Bungbi ti avaleur ti apixel kue ayeke nye?",
+      "hints": [
+        "Entrée oko oko ayeke clarté ti pixel oko.",
+        "Bungbi aentrée osio kue."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "Mbeni pixel ayeke na valeur {v}. A sara pixel kue lê-nzoni na {k}. Fini valeur ni ayeke nye?",
+      "hints": [
+        "Sara lê-nzoni ayeke bungbi nambara so oko na entrée oko oko ti matrice.",
+        "Bungbi {k} na {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "Pente ti ligne de tendance so asï na ({x1}, {y1}) na ({x2}, {y2}) ayeke nye?",
+      "hints": [
+        "Pente = changement ti y ÷ changement ti x.",
+        "Calcule $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "Aprédiction ayeke {pred} na avaleur biani ayeke {real}. Erreur quadratique moyenne (moyenne ti aerreur au carré) ayeke nye?",
+      "hints": [
+        "Erreur = prédiction − valeur biani.",
+        "Sara carré ti erreur oko oko, na pekoni mû moyenne."
+      ],
+      "expl": "Aerreur au carré ayeke {sq} na moyenne ti ala ayeke {ans}."
+    },
+    "gradStep": {
+      "prompt": "Ti perte $f(x)=x^2$, mbeni pas ti descente de gradient na ndö ti x={x0} na taux d'apprentissage {eta} amû x so ayeke fini nye?",
+      "hints": [
+        "Descente de gradient: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, tongana ni {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "{v} m ayeke cm ngbii nye? (cm)",
+      "hints": [
+        "1 m ayeke 100 cm.",
+        "Multiplie {v} na 100."
+      ],
+      "expl": "{v}×100={ans}, tongana ni {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "{v} kg ayeke g ngbii nye? (g)",
+      "hints": [
+        "1 kg ayeke 1000 g.",
+        "Multiplie {v} na 1000."
+      ],
+      "expl": "{v}×1000={ans}, tongana ni {ans} g."
+    },
+    "convHMin": {
+      "prompt": "Heure {v} ayeke minute ngbii nye? (min)",
+      "hints": [
+        "Heure 1 ayeke minute 60.",
+        "Multiplie {v} na 60."
+      ],
+      "expl": "{v}×60={ans}, tongana ni minute {ans}."
+    },
+    "discount": {
+      "prompt": "Mbeni aye ayeke won {p} na a yeke ti vo ni na réduction ti {d}%. Prix ti vente ayeke nye? (won)",
+      "hints": [
+        "Réduction = prix × {d}%.",
+        "Zî réduction na yâ ti prix."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, tongana ni won {ans}."
+    },
+    "mixRatio": {
+      "prompt": "A mélange aingrédient A na B na rapport {a}:{b} ti sara g {t} kue. G ngbii ti A a yeke na yâ ni? (g)",
+      "hints": [
+        "Kue ayeke {a}+{b}={s} akâ.",
+        "A ayeke $\\frac{a}{s}$ ti kue."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, tongana ni g {ans}."
+    },
+    "tiles": {
+      "prompt": "Mbeni mur ayeke na lege {w} m na ndö {h} m. Acarreau ti 1 m × 1 m ayeke ngbii nye ti dä ni? (carreau)",
+      "hints": [
+        "Hunda aire ti mur.",
+        "Carreau oko ayeke na aire 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, tongana ni acarreau {ans}."
+    },
+    "outfit": {
+      "prompt": "A yeke na achemise {a} na apantalon {b}. A yeke na atenue ngbii nye ti chemise oko na pantalon oko?",
+      "hints": [
+        "Ti chemise oko oko ayeke na choix {b} ti pantalon.",
+        "Sara na règle ti produit."
+      ],
+      "expl": "{a}×{b}={ans}, tongana ni atenue {ans}."
+    },
+    "goldenRatio": {
+      "prompt": "Nombre d'or alingbi na $a:b=(a+b):a$. Tongana b=10, a ayeke environ nye? (décimal use)",
+      "hints": [
+        "Nombre d'or ayeke environ 1.618.",
+        "a ayeke environ 1.618 mbage ti b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Hauteur ti son ayeke na fréquence. Fréquence ti note so ayeke octave oko na ndö ti 440 Hz ayeke Hz ngbii nye? (Hz)",
+      "hints": [
+        "Note so ayeke octave oko na ndö ayeke na fréquence mbage use.",
+        "Multiplie 440 na 2."
+      ],
+      "expl": "440×2={ans}, tongana ni {ans} Hz."
+    },
+    "braille": {
+      "prompt": "Cellule ti braille ayeke na points 6, oko oko ayeke na ndö wala ayeke plat. Tongana a zî motif so ayeke na point so ayeke na ndö ape, motifs ayeke ngbii nye?",
+      "hints": [
+        "Point oko oko ayeke na possibilités use.",
+        "Na règle ti produit $2^6$, na pekoni zî 1."
+      ],
+      "expl": "$2^6-1={ans}$, tongana ni motifs {ans}."
+    },
+    "voteMajority": {
+      "prompt": "Zo {n} avote. Candidat a yeke na besoin ti avote ngbii nye na kete ni ti wara majorité? (avote)",
+      "hints": [
+        "Majorité ayeke avote so ayeke kota ahon moitié ti avote kue.",
+        "Hunda nambara entier so ayeke kete ahon ambeni kue na ndö ti moitié ti {n}."
+      ],
+      "expl": "Moitié ti {n} ayeke {half}; nambara entier so ayeke kete na ndö ni ayeke {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Na yâ ti jours 5 concentration ti poussière fine ayeke {list} (µg/m³). Concentration moyenne ayeke nye?",
+      "hints": [
+        "Moyenne ayeke (bungbi) ÷ (ngbii ti jours).",
+        "Bungbi avaleur 5 kozoni."
+      ],
+      "expl": "({sum})÷5={ans}, tongana ni moyenne ayeke {ans}."
+    },
+    "percentChange": {
+      "prompt": "Mbeni valeur asi ti {a} na {b}. Lo tï na pour cent ngbii nye? (%)",
+      "hints": [
+        "Taux d'augmentation = (so atï) ÷ (valeur ti kozo) × 100.",
+        "Augmentation ayeke {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, tongana ni {ans}%."
+    },
+    "stdev": {
+      "prompt": "Écart-type ti données {list} ayeke nye? (écart-type ti population)",
+      "hints": [
+        "Hunda moyenne kozoni.",
+        "Racine carrée ti moyenne ti acarré ti aécart (variance) ayeke écart-type."
+      ],
+      "expl": "Moyenne ayeke {mean} na variance ayeke {var}, tongana ni écart-type ayeke {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Écart-type ti population ayeke {s} na taille ti échantillon ayeke {n}. Marge d'erreur ti 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$ ayeke nye? (décimal use)",
+      "hints": [
+        "Hunda $\\sqrt{ n }$ kozoni.",
+        "Divise σ na ni na multiplie na 1.96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "Moyenne ti échantillon ayeke {xbar}, moyenne ti hypothèse nulle ayeke {mu}, σ={s} na n={n}. Statistique ti test $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$ ayeke nye?",
+      "hints": [
+        "Hunda dénominateur $σ/\\sqrt{ n }$ kozoni.",
+        "Zî moyenne nulle na moyenne ti échantillon na pekoni divise."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "Na test bilatéral ti niveau 5% valeur critique ayeke 1.96. Statistique ti test ayeke z={z}. Conclusion ayeke nye?",
+      "hints": [
+        "Tongana $|z|$ ayeke kota ahon 1.96, rejette hypothèse nulle.",
+        "Bâ valeur absolue ti z na 1.96."
+      ],
+      "expl": "|z|={az}, tongana ni: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Bâ lege so a pika échantillon ni.",
+        "Fa ni so alingbi: aléatoire, stratifié, par grappes wala systématique."
+      ],
+      "expl": "Lege so ayeke {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Bâ ndö so adonnées ti recherche asï.",
+        "Fa ni: recherche documentaire, étude de cas, expérience wala développement."
+      ],
+      "expl": "Lege ti recherche so ayeke {name}."
+    },
+    "researchStep": {
+      "prompt": "A lingbi ti sara nye na pekoni ti pika sujet ti recherche?",
+      "hints": [
+        "Recherche ayeke plan → exécution → présentation → réflexion.",
+        "Na pekoni ti sujet a fa ti sara recherche ni tongana nye."
+      ],
+      "expl": "Na pekoni ti sujet: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Éthique ti recherche ayeke na honnêteté na ti fa asource.",
+        "Bâ tongana nye a lingbi ti sara na travail na résultat ti ambeni zo."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Quadrant 1",
+    "q2": "Quadrant 2",
+    "q3": "Quadrant 3",
+    "q4": "Quadrant 4",
+    "p0": "0 (alingbi ape)",
+    "phalf": "1/2 (chance pëpe pëpe)",
+    "p1": "1 (ayeke biani)",
+    "random": "échantillonnage aléatoire simple",
+    "strat": "échantillonnage stratifié",
+    "cluster": "échantillonnage par grappes",
+    "system": "échantillonnage systématique",
+    "reject": "Rejette hypothèse nulle",
+    "keep": "Rejette hypothèse nulle ape",
+    "literature": "recherche documentaire",
+    "casestudy": "étude de cas",
+    "experiment": "expérience mathématique",
+    "develop": "recherche de développement",
+    "plan": "Sara plan ti recherche",
+    "carry": "Sara recherche ni",
+    "present": "Fa résultats",
+    "reflect": "Bâ bê na processus ni",
+    "yesPrime": "Eeh, lo yeke premier",
+    "noPrime": "Ape, lo yeke premier ape",
+    "yesFinite": "Eeh, lo yeke décimal fini",
+    "noFinite": "Ape, lo yeke décimal périodique",
+    "yesOk": "Biani",
+    "noOk": "Ape biani"
+  },
+  "text": {
+    "ev_coin": "Chance ti wara pile tongana a bi mbeni pièce mbage oko ayeke nye?",
+    "ev_sun": "Chance ti so tere ayo na est ape ge ayeke nye?",
+    "ev_die": "Chance ti wara 7 na dé oko ti kâ 6 ayeke nye?",
+    "sm_system": "A pika élève oko oko ti 10 na yâ ti liste ti lékolê ti enquête. Lege ti échantillonnage so ayeke nye?",
+    "sm_random": "A pika aélève 30 na yâ ti liste ti lékolê na anambara aléatoire. Lege ti échantillonnage so ayeke nye?",
+    "sm_strat": "A pika aélève na yâ ti classe oko oko na proportion ti ngbii ti aélève ti classe ni. Lege ti échantillonnage so ayeke nye?",
+    "sm_cluster": "A pika kozoni mbeni aclasse kete na a sara enquête na aélève kue ti aclasse so a pika. Lege ti échantillonnage so ayeke nye?",
+    "rm_lit": "Ti bâ ayafa na abuku na yâ ti bibliothèque na internet na ti sara résumé ti ala ayeke lege ti recherche nye?",
+    "rm_case": "Ti bungbi na ti bâ pëpe pëpe ti aexemple biani ti ambeni alékolê ayeke lege ti recherche nye?",
+    "rm_exp": "Ti bi adé na mo même na ti koe aésultat ti hunda mbeni motif ayeke lege ti recherche nye?",
+    "rm_dev": "Ti sara mbeni outil fini ti manda mathématiques na ti bâ tongana lo sara kua nzoni ayeke lege ti recherche nye?",
+    "et_cite": "Ti sara copie ti mbeni zo ti koe ape ndö so lo yeke ayeke ngoi ti éthique ti recherche.",
+    "et_cite_r": "Ti sara kua na travail ti mbeni zo na source ape ayeke plagiat, tongana ni tënë ni ayeke biani.",
+    "et_fake": "Tongana aésultat ayeke pëpe ape na hypothèse, a lingbi ti change anambara ti ala ti lingbi.",
+    "et_fake_r": "Ti change aésultat ayeke fabrication na ayeke ngoi ti éthique ti recherche, tongana ni tënë ni ayeke biani ape."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Ti sara classement na ti fa adonnées na yâ ti tableau na graphique",
+      "concept": "Sara classement ti aye na règle oko na bâ ngbii ti ala; **tableau** wala **graphique** a fa ti sara comparaison na lê oko.",
+      "example": "A 3, B 5, C 2 → kue 10"
+    },
+    "E4dat1": {
+      "title": "Ti bâ agraphique ti ligne",
+      "concept": "**Graphique ti ligne** afa tongana valeur asara changement na ngoi na apoints na alignes. Ti gue na ndö ayeke augmentation, ti gue na gbe ayeke diminution.",
+      "example": "12 na jour 1 → 20 na jour 3: atï na 8"
+    },
+    "E5dat1": {
+      "title": "Ti hunda moyenne",
+      "concept": "**Moyenne** ayeke bungbi ti adonnées so a divise na ngbii ti ala.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Chance",
+      "concept": "**Chance** ti mbeni tënë ayeke nambara ti 0 (alingbi ape) jusqu'à 1 (ayeke biani): chance = (aye so ayeke nzoni) ÷ (aye kue so alingbi).",
+      "example": "Abôle 3 ti A, abôle 2 ti B → chance ti A ayeke $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Graphique ti bande na diagramme circulaire",
+      "concept": "**Graphique ti bande** na **diagramme circulaire** a bâ kue tongana 100% na a fa part ti kâ oko oko. Kâ = kue × part.",
+      "example": "25% ti zo 200 → zo 50"
+    },
+    "M1neg1": {
+      "title": "Anambara entier na rationnel",
+      "concept": "Asigne so ayeke pëpe pëpe: bungbi avaleur absolue. Asigne so ayeke pëpe ape: zî ala na bâ asigne ti so ayeke kota. Na × na ÷ résultat ayeke + tongana asigne ayeke pëpe pëpe na − tongana ape.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Facteurs premiers, PGCD na PPCM",
+      "concept": "Ti koe nambara tongana produit ti anambara premier ayeke **décomposition en facteurs premiers**. Diviseur commun so ayeke kota ayeke **PGCD**, multiple commun so ayeke kete ayeke **PPCM**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "Plan ti acoordonnées",
+      "concept": "A koe point na (x, y). Asigne asara Quadrants 1–4, na réflexion na axe x achange signe ti y.",
+      "example": "(−2, 5) ayeke na Quadrant 2"
+    },
+    "M1prp1": {
+      "title": "Proportionnalité directe na inverse",
+      "concept": "**Proportionnalité directe** ayeke y=ax na **proportionnalité inverse** ayeke $y=\\frac{a}{x}$. Na proportionnalité directe y÷x ayeke constant; na inverse x×y ayeke constant.",
+      "example": "y=6 na x=2 (directe): y=3x"
+    },
+    "M1sta1": {
+      "title": "Moyennes na fréquence relative",
+      "concept": "**Médiane** ayeke valeur ti na bê na ordre, **mode** ayeke valeur so asï mingi ahon ambeni kue. **Fréquence relative** = fréquence ÷ total.",
+      "example": "Médiane ti 1, 3, 5, 7, 9 ayeke 5"
+    },
+    "M2rec1": {
+      "title": "Décimaux périodiques",
+      "concept": "Décimal so achiffre ni asara retour na ngoi kue ayeke **décimal périodique**; kâ so asara retour ayeke **période** ni. Fraction simplifiée ayeke finie kete tongana dénominateur ni ayeke na facteurs 2 na 5 kete.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Fonctions linéaires na équations linéaires",
+      "concept": "Na yâ ti y=ax+b, a ayeke pente na b ayeke ordonnée à l'origine. Intersection ti agraphique use ayeke solution ti aéquation use na ndâli oko.",
+      "example": "y=2x−6 ayeke na abscisse à l'origine 3"
+    },
+    "el.econ1": {
+      "title": "Intérêt, taux de change na taxe",
+      "concept": "Intérêt simple = capital × taux × ngu; montant composé = capital × (1 + taux)^ngu. Taux de change ayeke valeur ti unité 1 ti monnaie; taxe = prix × pour cent.",
+      "example": "Won 10000, composé 10% ti ngu 2 → won 12100"
+    },
+    "el.econ2": {
+      "title": "Demande, offre na optimisation",
+      "concept": "Équilibre ayeke ndö so acourbe ti demande na ti offre asï. Revenu maximum R=pq na élasticité asï na afonction na adérivée.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Données ti texte na image",
+      "concept": "Document asi vecteur ti ngbii ti amot na image asi matrice ti avaleur ti pixel. Tongana produit scalaire ayeke kota, adocument use ayeke pëpe pëpe mingi.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Prédiction na optimisation",
+      "concept": "Aprédiction ayeke nzoni na pente ti ligne de tendance, moyenne ti aerreur au carré (perte) na descente de gradient $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Conversion ti aunité na rapport",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, heure 1 = minute 60. Prix ti vente = prix × (1 − réduction); mélange na rapport a:b amû na A part ti $\\frac{a}{a+b}$.",
+      "example": "3.5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Aire, dénombrement na croissance",
+      "concept": "Aire afa matériel so a yeke na besoin ni, règle ti produit afa ngbii ti apaires, na (augmentation) ÷ (valeur ti kozo) × 100 afa taux ti croissance.",
+      "example": "Achemise 4, apantalon 3 → atenue 12"
+    },
+    "el.cul1": {
+      "title": "Mathématiques na yâ ti art na vie ti jour oko oko",
+      "concept": "Nombre d'or ayeke environ 1.618; note so ayeke octave oko na ndö ayeke na fréquence mbage use; points 6 ti braille amû motifs $2^6-1=63$; majorité ayeke ahon moitié.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Mathématiques na yâ ti société na environnement",
+      "concept": "Amoyenne na ataux ti croissance a fa ti sara analyse mathématique ti apréoblème ti société na environnement. Taux de croissance = (augmentation) ÷ (valeur ti kozo) × 100.",
+      "example": "40 na 50 → atï na 25%"
+    },
+    "el.sta1": {
+      "title": "Aquestion statistique na aéchantillon",
+      "concept": "Écart-type ayeke racine carrée ti moyenne ti acarré ti aécart (variance). A pika aéchantillon na lege aléatoire, stratifié, par grappes wala systématique.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 ayeke na écart-type 2"
+    },
+    "el.sta2": {
+      "title": "Estimation na test d'hypothèse",
+      "concept": "Marge d'erreur ti 95% ayeke $1.96\\times\\frac{σ}{\\sqrt{n}}$. Tongana $|z|$ ti $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ ayeke kota ahon 1.96, rejette hypothèse nulle na niveau 5%.",
+      "example": "σ=10, n=100 → marge 1.96"
+    },
+    "el.res1": {
+      "title": "Alege ti recherche",
+      "concept": "Projet ti recherche ti mathématiques alingbi ti sara kua na recherche documentaire, étude de cas, expérience mathématique wala recherche de développement.",
+      "example": "Ti bi adé ti hunda motif → expérience"
+    },
+    "el.res2": {
+      "title": "Aétape ti recherche na éthique",
+      "concept": "Recherche ayeke sujet → plan → exécution → présentation → réflexion. Ti fa asource na ti change aésultat ape ayeke éthique ti recherche.",
+      "example": "Na pekoni ti sujet ayeke plan ti recherche"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Mathématiques ti Économie",
+      "world": "Gbata ti Économie",
+      "tagline": "Manda mathématiques ti mbeni nginza na ti marché",
+      "unit": "Anambara na économie, afonction na économie"
+    },
+    "ai": {
+      "title": "Mathématiques ti IA",
+      "world": "Laboratoire ti IA",
+      "tagline": "Bâ mathématiques so ayeke na yâ ti adonnées na optimisation",
+      "unit": "Traitement ti adonnées, prédiction na optimisation"
+    },
+    "job": {
+      "title": "Mathématiques ti Kua",
+      "world": "Gbata ti Atelier",
+      "tagline": "Sara exercice ti mathématiques so a sara kua na ni",
+      "unit": "Anambara na aunité, rapport, aire na dénombrement"
+    },
+    "cul": {
+      "title": "Mathématiques na Culture",
+      "world": "Place ti Culture",
+      "tagline": "Hunda mathématiques na yâ ti art na vie ti jour oko oko",
+      "unit": "Art na vie, société na environnement"
+    },
+    "sta": {
+      "title": "Statistique ti Pratique",
+      "world": "Laboratoire ti Statistique",
+      "tagline": "Sara compétence ti sara jugement na adonnées",
+      "unit": "Adonnées na aéchantillon, estimation na test"
+    },
+    "res": {
+      "title": "Projets ti Recherche Mathématique",
+      "world": "Atelier ti Recherche",
+      "tagline": "Manda alege na éthique ti recherche",
+      "unit": "Alege, procédure na éthique"
+    }
+  }
+}

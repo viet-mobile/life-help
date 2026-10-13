@@ -1,0 +1,886 @@
+{
+  "q": {
+    "tableCell": {
+      "prompt": "What is the number for {cat} in the table?",
+      "hints": [
+        "Find the cell of {cat}.",
+        "Read the number written in it."
+      ],
+      "expl": "The number for {cat} is {ans}."
+    },
+    "tableTotal": {
+      "prompt": "What is the sum of all the numbers in the table?",
+      "hints": [
+        "Read the number in each cell.",
+        "Add them all."
+      ],
+      "expl": "The sum is {sum}, so the answer is {ans}."
+    },
+    "symbolMax": {
+      "prompt": "How many circles are in the tallest column of the graph?",
+      "hints": [
+        "Count the circles in each column.",
+        "Find the tallest column."
+      ],
+      "expl": "The tallest column has {ans} circles."
+    },
+    "symbolDiff": {
+      "prompt": "How many more does the largest column have than the smallest?",
+      "hints": [
+        "Find the largest and the smallest counts first.",
+        "Subtract the smaller from the larger."
+      ],
+      "expl": "{max}-{min}={ans}, so it has {ans} more."
+    },
+    "mostWhich": {
+      "prompt": "Which item is the largest in the graph?",
+      "hints": [
+        "Compare the numbers of the items.",
+        "Find the largest number."
+      ],
+      "expl": "The largest item is {name}."
+    },
+    "compareCount": {
+      "prompt": "How many more does {a} have than {b}?",
+      "hints": [
+        "Read the numbers for {a} and {b}.",
+        "Subtract the smaller from the larger."
+      ],
+      "expl": "{x}-{y}={ans}, so {a} has {ans} more."
+    },
+    "lineRead": {
+      "prompt": "What is the value at {cat} in the line graph?",
+      "hints": [
+        "Find {cat} on the horizontal axis.",
+        "Read the value of the point above it."
+      ],
+      "expl": "The value at {cat} is {ans}."
+    },
+    "lineMax": {
+      "prompt": "What is the largest value in the line graph?",
+      "hints": [
+        "Compare the values of all points.",
+        "Find the highest point."
+      ],
+      "expl": "The largest value is {ans}."
+    },
+    "lineChange": {
+      "prompt": "By how much did the value increase from {from} to {to}?",
+      "hints": [
+        "Read the values at {from} and {to}.",
+        "Subtract the first value from the later one."
+      ],
+      "expl": "{b}-{a}={ans}, so it increased by {ans}."
+    },
+    "mean": {
+      "prompt": "What is the mean of these numbers? {list}",
+      "hints": [
+        "The mean is (sum of all) ÷ (how many).",
+        "Add them all first."
+      ],
+      "expl": "({sum})÷{n}={ans}, so the mean is {ans}."
+    },
+    "meanMissing": {
+      "prompt": "The mean of four numbers is {m} and three of them are {list}. What is the fourth number?",
+      "hints": [
+        "The sum of the four numbers is mean × 4.",
+        "Subtract the three known numbers from the sum."
+      ],
+      "expl": "{m}×4={total} and {total}-({known})={ans}, so it is {ans}."
+    },
+    "chanceFraction": {
+      "prompt": "A box has {a} A-balls and {b} B-balls. One ball is taken out. What is the chance that it is an A-ball, as a decimal?",
+      "hints": [
+        "Chance = (favourable cases) ÷ (all cases).",
+        "Find the total number of balls first."
+      ],
+      "expl": "{a}÷{total}={ans}, so the chance is {ans}."
+    },
+    "chanceWord": {
+      "prompt": "{event}",
+      "hints": [
+        "Impossible is 0 and certain is 1.",
+        "Equally likely is $\\frac{1}{2}$."
+      ],
+      "expl": "The chance of this event is: {name}."
+    },
+    "pieCount": {
+      "prompt": "In the pie chart A is {p}% of the whole. The whole is {t} people. How many are A?",
+      "hints": [
+        "{p}% is $\\frac{p}{100}$.",
+        "Multiply the whole by the ratio."
+      ],
+      "expl": "{t}×{p}÷100={ans}, so {ans} people."
+    },
+    "pieRest": {
+      "prompt": "Three parts of a pie chart are {a}%, {b}% and {c}%. What percent is the fourth part? (%)",
+      "hints": [
+        "The whole is 100%.",
+        "Subtract the three parts from 100."
+      ],
+      "expl": "100-({a}+{b}+{c})={ans}, so it is {ans}%."
+    },
+    "bandRead": {
+      "prompt": "What percent of the whole is {cat} in the band graph? (%)",
+      "hints": [
+        "Find the part of {cat}.",
+        "Read the percent written below it."
+      ],
+      "expl": "{cat} is {ans}%."
+    },
+    "intAdd": {
+      "prompt": "Calculate $({a})+({b})$.",
+      "hints": [
+        "Same signs: add the absolute values and keep the sign.",
+        "Different signs: subtract the absolute values and take the sign of the larger one."
+      ],
+      "expl": "$({a})+({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Calculate $({a})-({b})$.",
+      "hints": [
+        "Subtracting is adding the opposite number.",
+        "Rewrite it as $({a})+({nb})$."
+      ],
+      "expl": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Calculate $({a})\\times({b})$.",
+      "hints": [
+        "Same signs give a positive result, different signs a negative one.",
+        "Multiply the absolute values."
+      ],
+      "expl": "$({a})\\times({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Calculate $({a})\\div({b})$.",
+      "hints": [
+        "Same signs give a positive result, different signs a negative one.",
+        "Divide the absolute values."
+      ],
+      "expl": "$({a})\\div({b})={ans}$."
+    },
+    "rationalSum": {
+      "prompt": "What is $\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}$ as a decimal?",
+      "hints": [
+        "Use a common denominator and add.",
+        "Turn the fraction into a decimal."
+      ],
+      "expl": "$\\frac{{n1}}{{d1}}+\\frac{{n2}}{{d2}}={ans}$."
+    },
+    "nlRead": {
+      "prompt": "Which number does point P show on the number line?",
+      "hints": [
+        "Left of 0 is negative, right of 0 is positive.",
+        "Count the marks."
+      ],
+      "expl": "Point P shows {ans}."
+    },
+    "primeCount": {
+      "prompt": "How many prime numbers are there up to {n}?",
+      "hints": [
+        "A prime has exactly two divisors: 1 and itself.",
+        "Count 2, 3, 5, 7, ... in order."
+      ],
+      "expl": "The primes up to {n} are {list}: {ans} of them."
+    },
+    "factorExp": {
+      "prompt": "${n}$ factorised into primes is $2^a\\times3^b$. What is $a+b$?",
+      "hints": [
+        "Divide {n} by 2 as long as you can.",
+        "Then divide what is left by 3."
+      ],
+      "expl": "${n}=2^{a}\\times3^{b}$, so $a+b={ans}$."
+    },
+    "divisorCount": {
+      "prompt": "How many divisors does {n} have?",
+      "hints": [
+        "Find every number that divides {n} exactly.",
+        "Check from the smallest upwards."
+      ],
+      "expl": "The divisors of {n} are {list}: {ans} of them."
+    },
+    "gcd": {
+      "prompt": "What is the greatest common divisor of {a} and {b}?",
+      "hints": [
+        "Find the divisors the two numbers share.",
+        "The largest of them is the greatest common divisor."
+      ],
+      "expl": "The greatest common divisor of {a} and {b} is {ans}."
+    },
+    "lcm": {
+      "prompt": "What is the least common multiple of {a} and {b}?",
+      "hints": [
+        "List the multiples both numbers share, smallest first.",
+        "The smallest shared multiple is the least common multiple."
+      ],
+      "expl": "The least common multiple of {a} and {b} is {ans}."
+    },
+    "isPrime": {
+      "prompt": "Is {n} a prime number?",
+      "hints": [
+        "Look for divisors of {n}.",
+        "If it has a divisor other than 1 and itself, it is not prime."
+      ],
+      "expl": "The divisors of {n} are {list}, so {verdict}."
+    },
+    "coordRead": {
+      "prompt": "What is the {axis}-coordinate of point A?",
+      "hints": [
+        "A coordinate pair is written (x, y).",
+        "Count along the grid."
+      ],
+      "expl": "The {axis}-coordinate of A is {ans}."
+    },
+    "quadrant": {
+      "prompt": "In which quadrant is the point ({a}, {b})?",
+      "hints": [
+        "Look at the signs of the x- and y-coordinates.",
+        "(+,+) is Quadrant 1."
+      ],
+      "expl": "x is {a} and y is {b}, so it lies in {name}."
+    },
+    "distAxis": {
+      "prompt": "What is the distance from the point ({a}, {b}) to the {axis}-axis?",
+      "hints": [
+        "The distance to an axis is the absolute value of a coordinate.",
+        "For the {axis}-axis look at the {which}-coordinate."
+      ],
+      "expl": "It is the absolute value of the {which}-coordinate {v}: {ans}."
+    },
+    "reflect": {
+      "prompt": "The point ({a}, {b}) is reflected in the x-axis. What is the y-coordinate of the new point?",
+      "hints": [
+        "A reflection in the x-axis keeps the x-coordinate.",
+        "The sign of the y-coordinate flips."
+      ],
+      "expl": "The new point is ({a}, {ans})."
+    },
+    "directFind": {
+      "prompt": "y is directly proportional to x, and y={y1} when x={x1}. What is y when x={x2}?",
+      "hints": [
+        "Direct proportion is y=ax.",
+        "Find a first."
+      ],
+      "expl": "a={y1}÷{x1}={k}, so y={k}×{x2}={ans}."
+    },
+    "inverseFind": {
+      "prompt": "y is inversely proportional to x, and y={y1} when x={x1}. What is y when x={x2}?",
+      "hints": [
+        "Inverse proportion is $y=\\frac{a}{x}$.",
+        "Find a=xy first."
+      ],
+      "expl": "a={x1}×{y1}={k}, so y={k}÷{x2}={ans}."
+    },
+    "directConst": {
+      "prompt": "The graph of the direct proportion y=ax passes through the point ({x1}, {y1}). What is a?",
+      "hints": [
+        "Substitute the point into y=ax.",
+        "a=y÷x."
+      ],
+      "expl": "a={y1}÷{x1}={ans}."
+    },
+    "inverseConst": {
+      "prompt": "The graph of the inverse proportion $y=\\frac{a}{x}$ passes through ({x1}, {y1}). What is a?",
+      "hints": [
+        "Substitute the point into $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "expl": "a={x1}×{y1}={ans}."
+    },
+    "median": {
+      "prompt": "What is the median of the data {list}?",
+      "hints": [
+        "Put the data in order of size.",
+        "The middle value is the median; with an even count use the mean of the middle two."
+      ],
+      "expl": "In order: {sorted}, so the median is {ans}."
+    },
+    "mode": {
+      "prompt": "What is the mode of the data {list}?",
+      "hints": [
+        "The mode is the value that appears most often.",
+        "Count how many times each value appears."
+      ],
+      "expl": "{ans} appears most often, so the mode is {ans}."
+    },
+    "dataRange": {
+      "prompt": "What is the difference between the largest and the smallest value of {list}?",
+      "hints": [
+        "Find the largest and the smallest value.",
+        "Subtract the smaller from the larger."
+      ],
+      "expl": "{max}-{min}={ans}."
+    },
+    "relFreq": {
+      "prompt": "The total frequency is {t} and one class has frequency {f}. What is the relative frequency of that class? (decimal)",
+      "hints": [
+        "Relative frequency = (class frequency) ÷ (total frequency).",
+        "Write the result as a decimal."
+      ],
+      "expl": "{f}÷{t}={ans}, so the relative frequency is {ans}."
+    },
+    "periodLen": {
+      "prompt": "When $\\frac{1}{{d}}$ is written as a decimal, how many digits does the repeating block have?",
+      "hints": [
+        "Divide 1 by {d}.",
+        "The repeating block is the part that repeats."
+      ],
+      "expl": "$\\frac{1}{{d}}={dec}$, so the repeating block has {ans} digits."
+    },
+    "repeatFrac": {
+      "prompt": "The repeating decimal $0.\\dot{d}\\dot{e}$ equals $\\frac{x}{99}$. What is x?",
+      "hints": [
+        "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$.",
+        "Write the two-digit number ab as the numerator."
+      ],
+      "expl": "$0.\\dot{{d}}\\dot{{e}}=\\frac{{x}}{99}$ gives x={ans}."
+    },
+    "finiteTF": {
+      "prompt": "Is $\\frac{{n}}{{d}}$ a terminating decimal?",
+      "hints": [
+        "Reduce the fraction, then factorise the denominator.",
+        "If the only prime factors are 2 and 5 it terminates."
+      ],
+      "expl": "The denominator {d2} has prime factors {fact}, so {verdict}."
+    },
+    "digitAt": {
+      "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$. What is the digit in the {k}th decimal place?",
+      "hints": [
+        "The repeating block 142857 has 6 digits.",
+        "Use the remainder of {k} ÷ 6 to find the position."
+      ],
+      "expl": "The remainder of {k} ÷ 6 is {r}, so it is the {r}th digit: {ans}."
+    },
+    "slopeOf": {
+      "prompt": "What is the slope of the linear function $y={a}x+{b}$?",
+      "hints": [
+        "In $y=ax+b$ the slope is a.",
+        "Read the coefficient of x."
+      ],
+      "expl": "The slope is {ans}."
+    },
+    "yInt": {
+      "prompt": "What is the y-intercept of $y={a}x+{b}$?",
+      "hints": [
+        "The y-intercept is y when x=0.",
+        "In $y=ax+b$ it is b."
+      ],
+      "expl": "The y-intercept is {ans}."
+    },
+    "xInt": {
+      "prompt": "What is the x-intercept of $y={a}x+{b}$?",
+      "hints": [
+        "The x-intercept is x when y=0.",
+        "Solve $0=ax+b$."
+      ],
+      "expl": "$0={a}x+{b}$ gives x={ans}."
+    },
+    "crossX": {
+      "prompt": "The graphs of $y={a1}x+{b1}$ and $y={a2}x+{b2}$ meet at P. What is the x-coordinate of P?",
+      "hints": [
+        "At the intersection both y-values are equal.",
+        "Solve $a_1x+b_1=a_2x+b_2$."
+      ],
+      "expl": "${a1}x+{b1}={a2}x+{b2}$ gives x={ans}."
+    },
+    "funcValue": {
+      "prompt": "For the linear function $f(x)={a}x+{b}$, what is $f({c})$?",
+      "hints": [
+        "Put {c} in place of x.",
+        "Multiply, then add."
+      ],
+      "expl": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won is deposited for {n} years at {r}% simple interest per year. How much interest is that? (won)",
+      "hints": [
+        "Simple interest = principal × rate × years.",
+        "{r}% is {rr}."
+      ],
+      "expl": "{p}×{rr}×{n}={ans}, so the interest is {ans} won."
+    },
+    "compoundInterest": {
+      "prompt": "{p} won is deposited for {n} years at {r}% compound interest per year. What is the total amount? (won)",
+      "hints": [
+        "With compound interest the interest earns interest.",
+        "Multiply principal × (1 + rate) {n} times."
+      ],
+      "expl": "{p}×(1+{rr})^{n}={ans}, so the total is {ans} won."
+    },
+    "exchange": {
+      "prompt": "One unit of a foreign currency is worth {r} won. How many won are {d} units of it? (won)",
+      "hints": [
+        "The exchange rate is the value of 1 unit of the foreign currency in won.",
+        "Multiply the number of units by the rate."
+      ],
+      "expl": "{d}×{r}={ans}, so it is {ans} won."
+    },
+    "taxTotal": {
+      "prompt": "An item costs {p} won and {t}% value-added tax is added. How many won must be paid? (won)",
+      "hints": [
+        "The tax is price × {t}%.",
+        "Add the tax to the price."
+      ],
+      "expl": "{p}+{p}×{tr}={ans}, so {ans} won."
+    },
+    "equilibrium": {
+      "prompt": "The demand curve $p={a}-{b}q$ and the supply curve $p={c}+{d}q$ meet at the equilibrium quantity q. What is q?",
+      "hints": [
+        "At equilibrium the demand price equals the supply price.",
+        "Solve $a-bq=c+dq$."
+      ],
+      "expl": "${a}-{b}q={c}+{d}q$ gives q={ans}."
+    },
+    "revenueMax": {
+      "prompt": "The demand function is $p={a}-{b}q$. What is the maximum of the revenue $R=pq$?",
+      "hints": [
+        "$R=({a}-{b}q)q$ is a quadratic.",
+        "It is largest at the vertex $q=\\frac{ a }{ 2b }$."
+      ],
+      "expl": "At q={q} the revenue is largest: {ans}."
+    },
+    "elasticity": {
+      "prompt": "Demand is $Q={a}-{b}p$. What is the absolute value of the price elasticity at $p={p0}$? (decimal)",
+      "hints": [
+        "The absolute elasticity is $\\frac{bp}{Q}$.",
+        "First find Q at $p={p0}$."
+      ],
+      "expl": "Q={q0}, so $\\frac{{b}\\times{p0}}{{q0}}={ans}$."
+    },
+    "wordFreq": {
+      "prompt": "How many times does A appear in the word sequence {seq}?",
+      "hints": [
+        "Mark only the A's as you count.",
+        "This count is the A component of the frequency vector."
+      ],
+      "expl": "A appears {ans} times."
+    },
+    "freqDot": {
+      "prompt": "Two documents have frequency vectors $\\vec{u}=({u1}, {u2}, {u3})$ and $\\vec{v}=({v1}, {v2}, {v3})$. What is the dot product $\\vec{u}\\cdot\\vec{v}$?",
+      "hints": [
+        "Multiply matching components and add.",
+        "The larger the dot product, the more similar the documents."
+      ],
+      "expl": "${u1}\\times{v1}+{u2}\\times{v2}+{u3}\\times{v3}={ans}$."
+    },
+    "pixelSum": {
+      "prompt": "An image is stored as the matrix $\\begin{pmatrix}{a}&{b}\\\\{c}&{d}\\end{pmatrix}$. What is the sum of all pixel values?",
+      "hints": [
+        "Each entry is the brightness of one pixel.",
+        "Add all four entries."
+      ],
+      "expl": "{a}+{b}+{c}+{d}={ans}."
+    },
+    "pixelBright": {
+      "prompt": "A pixel has value {v}. Every pixel is made {k} brighter. What is its new value?",
+      "hints": [
+        "Brightening adds the same number to every entry of the matrix.",
+        "Add {k} to {v}."
+      ],
+      "expl": "{v}+{k}={ans}."
+    },
+    "trendSlope": {
+      "prompt": "What is the slope of the trend line through ({x1}, {y1}) and ({x2}, {y2})?",
+      "hints": [
+        "Slope = change in y ÷ change in x.",
+        "Compute $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{y2}-{y1}}{{x2}-{x1}}={ans}$."
+    },
+    "mse": {
+      "prompt": "The predictions are {pred} and the real values are {real}. What is the mean squared error (the mean of the squared errors)?",
+      "hints": [
+        "The error is prediction − real value.",
+        "Square each error, then take the mean."
+      ],
+      "expl": "The squared errors are {sq} and their mean is {ans}."
+    },
+    "gradStep": {
+      "prompt": "For the loss $f(x)=x^2$, one gradient-descent step from x={x0} with learning rate {eta} gives a new x of?",
+      "hints": [
+        "Gradient descent: $x_{new}=x-\\eta f'(x)$.",
+        "$f'(x)=2x$."
+      ],
+      "expl": "$f'({x0})={g}$, so {x0}-{eta}×{g}={ans}."
+    },
+    "convMCm": {
+      "prompt": "How many cm is {v} m? (cm)",
+      "hints": [
+        "1 m is 100 cm.",
+        "Multiply {v} by 100."
+      ],
+      "expl": "{v}×100={ans}, so {ans} cm."
+    },
+    "convKgG": {
+      "prompt": "How many g is {v} kg? (g)",
+      "hints": [
+        "1 kg is 1000 g.",
+        "Multiply {v} by 1000."
+      ],
+      "expl": "{v}×1000={ans}, so {ans} g."
+    },
+    "convHMin": {
+      "prompt": "How many minutes is {v} hours? (min)",
+      "hints": [
+        "1 hour is 60 minutes.",
+        "Multiply {v} by 60."
+      ],
+      "expl": "{v}×60={ans}, so {ans} minutes."
+    },
+    "discount": {
+      "prompt": "An item costs {p} won and is sold at {d}% off. What is the selling price? (won)",
+      "hints": [
+        "The discount is price × {d}%.",
+        "Subtract the discount from the price."
+      ],
+      "expl": "{p}-{p}×{dr}={ans}, so {ans} won."
+    },
+    "mixRatio": {
+      "prompt": "Ingredients A and B are mixed in the ratio {a}:{b} to make {t} g in total. How many g of A are needed? (g)",
+      "hints": [
+        "The whole is {a}+{b}={s} parts.",
+        "A is $\\frac{a}{s}$ of the whole."
+      ],
+      "expl": "{t}×{a}÷{s}={ans}, so {ans} g."
+    },
+    "tiles": {
+      "prompt": "A wall is {w} m wide and {h} m high. How many 1 m × 1 m tiles cover it? (tiles)",
+      "hints": [
+        "Find the area of the wall.",
+        "One tile has an area of 1 m²."
+      ],
+      "expl": "{w}×{h}={ans}, so {ans} tiles."
+    },
+    "outfit": {
+      "prompt": "There are {a} shirts and {b} pairs of trousers. How many different outfits of one shirt and one pair of trousers are there?",
+      "hints": [
+        "For each shirt there are {b} choices of trousers.",
+        "Use the product rule."
+      ],
+      "expl": "{a}×{b}={ans}, so {ans} outfits."
+    },
+    "goldenRatio": {
+      "prompt": "The golden ratio satisfies $a:b=(a+b):a$. When b=10, about how much is a? (two decimal places)",
+      "hints": [
+        "The golden ratio is about 1.618.",
+        "a is about 1.618 times b."
+      ],
+      "expl": "a ≈ 10×1.618 = {ans}."
+    },
+    "octave": {
+      "prompt": "Pitch is set by frequency. What is the frequency in Hz of the note one octave above 440 Hz? (Hz)",
+      "hints": [
+        "A note one octave higher has twice the frequency.",
+        "Multiply 440 by 2."
+      ],
+      "expl": "440×2={ans}, so {ans} Hz."
+    },
+    "braille": {
+      "prompt": "A braille cell has 6 dots, each raised or flat. Not counting the pattern with no raised dot, how many patterns are there?",
+      "hints": [
+        "Each dot has 2 possibilities.",
+        "By the product rule $2^6$, then subtract 1."
+      ],
+      "expl": "$2^6-1={ans}$, so {ans} patterns."
+    },
+    "voteMajority": {
+      "prompt": "{n} people vote. How many votes does a candidate need at least to get a majority? (votes)",
+      "hints": [
+        "A majority is more than half of all votes.",
+        "Find the smallest whole number above half of {n}."
+      ],
+      "expl": "Half of {n} is {half}; the smallest whole number above it is {ans}."
+    },
+    "pmAverage": {
+      "prompt": "Over 5 days the fine-dust concentrations were {list} (µg/m³). What is the mean concentration?",
+      "hints": [
+        "The mean is (sum) ÷ (number of days).",
+        "Add the 5 values first."
+      ],
+      "expl": "({sum})÷5={ans}, so the mean is {ans}."
+    },
+    "percentChange": {
+      "prompt": "A value changed from {a} to {b}. By what percent did it increase? (%)",
+      "hints": [
+        "Increase rate = (amount increased) ÷ (first value) × 100.",
+        "The increase is {b}-{a}."
+      ],
+      "expl": "({b}-{a})÷{a}×100={ans}, so {ans}%."
+    },
+    "stdev": {
+      "prompt": "What is the standard deviation of the data {list}? (population standard deviation)",
+      "hints": [
+        "Find the mean first.",
+        "The square root of the mean of squared deviations (the variance) is the standard deviation."
+      ],
+      "expl": "The mean is {mean} and the variance is {var}, so the standard deviation is {ans}."
+    },
+    "ciHalf": {
+      "prompt": "The population standard deviation is {s} and the sample size is {n}. What is the 95% margin of error $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (two decimal places)",
+      "hints": [
+        "Find $\\sqrt{ n }$ first.",
+        "Divide σ by it and multiply by 1.96."
+      ],
+      "expl": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "zStat": {
+      "prompt": "The sample mean is {xbar}, the null mean is {mu}, σ={s} and n={n}. What is the test statistic $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n }}$?",
+      "hints": [
+        "Find the denominator $σ/\\sqrt{ n }$ first.",
+        "Subtract the null mean from the sample mean and divide."
+      ],
+      "expl": "$\\frac{{xbar}-{mu}}{{se}}={ans}$."
+    },
+    "decision": {
+      "prompt": "In a two-sided test at the 5% level the critical value is 1.96. The test statistic is z={z}. What is the conclusion?",
+      "hints": [
+        "If $|z|$ is greater than 1.96, reject the null hypothesis.",
+        "Compare the absolute value of z with 1.96."
+      ],
+      "expl": "|z|={az}, so: {name}."
+    },
+    "sampleMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Look at how the sample is chosen.",
+        "Pick the matching one: random, stratified, cluster or systematic."
+      ],
+      "expl": "This method is {name}."
+    },
+    "researchMethod": {
+      "prompt": "{desc}",
+      "hints": [
+        "Think about where the research data come from.",
+        "Choose literature, case study, experiment or development."
+      ],
+      "expl": "This research method is {name}."
+    },
+    "researchStep": {
+      "prompt": "What should be done right after choosing a research topic?",
+      "hints": [
+        "Research goes plan → carry out → present → reflect.",
+        "After the topic you decide how to investigate it."
+      ],
+      "expl": "After choosing the topic: {name}."
+    },
+    "ethicsTF": {
+      "prompt": "{desc}",
+      "hints": [
+        "Research ethics rests on honesty and citing sources.",
+        "Think about how other people's work and results must be treated."
+      ],
+      "expl": "{reason}"
+    }
+  },
+  "word": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "q1": "Quadrant 1",
+    "q2": "Quadrant 2",
+    "q3": "Quadrant 3",
+    "q4": "Quadrant 4",
+    "p0": "0 (it cannot happen)",
+    "phalf": "1/2 (equally likely)",
+    "p1": "1 (it is certain)",
+    "random": "simple random sampling",
+    "strat": "stratified sampling",
+    "cluster": "cluster sampling",
+    "system": "systematic sampling",
+    "reject": "Reject the null hypothesis",
+    "keep": "Do not reject the null hypothesis",
+    "literature": "literature research",
+    "casestudy": "case study",
+    "experiment": "mathematical experiment",
+    "develop": "development research",
+    "plan": "Make a research plan",
+    "carry": "Carry out the research",
+    "present": "Present the results",
+    "reflect": "Reflect on the process",
+    "yesPrime": "Yes, it is prime",
+    "noPrime": "No, it is not prime",
+    "yesFinite": "Yes, it is a terminating decimal",
+    "noFinite": "No, it is a repeating decimal",
+    "yesOk": "True",
+    "noOk": "False"
+  },
+  "text": {
+    "ev_coin": "What is the chance of getting heads when a coin is tossed once?",
+    "ev_sun": "What is the chance that the sun rises in the east tomorrow?",
+    "ev_die": "What is the chance of rolling a 7 with one ordinary six-sided die?",
+    "sm_system": "Every 10th student on the school list was chosen for a survey. Which sampling method is this?",
+    "sm_random": "Thirty students were chosen from the school list with random numbers. Which sampling method is this?",
+    "sm_strat": "Students were chosen from each year in proportion to the number of students in that year. Which sampling method is this?",
+    "sm_cluster": "A few classes were chosen first and every student in the chosen classes was surveyed. Which sampling method is this?",
+    "rm_lit": "Reading papers and books from the library and the internet and summarising them is which research method?",
+    "rm_case": "Collecting and comparing real examples from several schools is which research method?",
+    "rm_exp": "Rolling dice yourself and recording the results to find a pattern is which research method?",
+    "rm_dev": "Building a new tool for learning mathematics and testing how well it works is which research method?",
+    "et_cite": "Copying another person's writing without saying where it comes from goes against research ethics.",
+    "et_cite_r": "Using someone's work without a source is plagiarism, so the statement is true.",
+    "et_fake": "If the results differ from the hypothesis, it is fine to change the numbers so that they match.",
+    "et_fake_r": "Changing results is fabrication and breaks research ethics, so the statement is false."
+  },
+  "lesson": {
+    "E2dat1": {
+      "title": "Sorting and showing data in tables and graphs",
+      "concept": "Sort things by a rule and count them; a **table** or a **graph** lets you compare at a glance.",
+      "example": "A 3, B 5, C 2 → 10 in all"
+    },
+    "E4dat1": {
+      "title": "Reading line graphs",
+      "concept": "A **line graph** shows how a value changes over time with points and lines. Going up means an increase, going down a decrease.",
+      "example": "12 on day 1 → 20 on day 3: up by 8"
+    },
+    "E5dat1": {
+      "title": "Finding the mean",
+      "concept": "The **mean** is the sum of the data divided by how many there are.",
+      "example": "(4+6+8+10)÷4 = 7"
+    },
+    "E5dat2": {
+      "title": "Chance",
+      "concept": "The **chance** of an event is a number from 0 (impossible) to 1 (certain): chance = (favourable cases) ÷ (all cases).",
+      "example": "3 A-balls, 2 B-balls → chance of A is $\\frac{3}{5}=0.6$"
+    },
+    "E6dat1": {
+      "title": "Band graphs and pie charts",
+      "concept": "**Band graphs** and **pie charts** treat the whole as 100% and show each part's share. Part = whole × share.",
+      "example": "25% of 200 people → 50 people"
+    },
+    "M1neg1": {
+      "title": "Integers and rational numbers",
+      "concept": "Same signs: add the absolute values. Different signs: subtract them and keep the sign of the larger. For × and ÷ the result is + if the signs match and − if not.",
+      "example": "$(-3)+5=2$, $(-6)\\times4=-24$"
+    },
+    "M1fac1": {
+      "title": "Prime factorisation, GCD and LCM",
+      "concept": "Writing a number as a product of primes is **prime factorisation**. The largest shared divisor is the **greatest common divisor**, the smallest shared multiple the **least common multiple**.",
+      "example": "$72=2^3\\times3^2$"
+    },
+    "M1crd1": {
+      "title": "The coordinate plane",
+      "concept": "A point is written (x, y). The signs decide Quadrants 1–4, and reflecting in the x-axis flips the sign of y.",
+      "example": "(−2, 5) is in Quadrant 2"
+    },
+    "M1prp1": {
+      "title": "Direct and inverse proportion",
+      "concept": "**Direct proportion** is y=ax and **inverse proportion** is $y=\\frac{a}{x}$. In direct proportion y÷x is constant; in inverse proportion x×y is constant.",
+      "example": "y=6 at x=2 (direct): y=3x"
+    },
+    "M1sta1": {
+      "title": "Averages and relative frequency",
+      "concept": "The **median** is the middle value in order, the **mode** the most frequent value. **Relative frequency** = frequency ÷ total.",
+      "example": "The median of 1, 3, 5, 7, 9 is 5"
+    },
+    "M2rec1": {
+      "title": "Repeating decimals",
+      "concept": "A decimal whose digits repeat for ever is a **repeating decimal**; the repeating part is its **block**. A reduced fraction terminates only if its denominator has just the factors 2 and 5.",
+      "example": "$\\frac{1}{3}=0.\\dot{3}$"
+    },
+    "M2lfn1": {
+      "title": "Linear functions and linear equations",
+      "concept": "In y=ax+b, a is the slope and b the y-intercept. The intersection of two graphs is the solution of the two equations together.",
+      "example": "y=2x−6 has x-intercept 3"
+    },
+    "el.econ1": {
+      "title": "Interest, exchange rates and tax",
+      "concept": "Simple interest = principal × rate × years; compound amount = principal × (1 + rate)^years. An exchange rate is the value of 1 unit of a currency; tax is price × a percentage.",
+      "example": "10000 won, 10% compound for 2 years → 12100 won"
+    },
+    "el.econ2": {
+      "title": "Demand, supply and optimisation",
+      "concept": "Equilibrium is where the demand and supply curves meet. Maximum revenue R=pq and elasticity come from functions and derivatives.",
+      "example": "100−2q = 10+q → q = 30"
+    },
+    "el.ai1": {
+      "title": "Text and image data",
+      "concept": "A document becomes a vector of word counts and an image a matrix of pixel values. The larger the dot product, the more alike two documents are.",
+      "example": "(2,0,1)·(1,3,2) = 4"
+    },
+    "el.ai2": {
+      "title": "Prediction and optimisation",
+      "concept": "Predictions improve with a trend line's slope, the mean of squared errors (the loss) and gradient descent $x_{new}=x-\\eta f'(x)$.",
+      "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2"
+    },
+    "el.job1": {
+      "title": "Unit conversion and ratios",
+      "concept": "1 m = 100 cm, 1 kg = 1000 g, 1 hour = 60 minutes. Sale price = price × (1 − discount); mixing in the ratio a:b gives A a share of $\\frac{a}{a+b}$.",
+      "example": "3.5 m = 350 cm"
+    },
+    "el.job2": {
+      "title": "Area, counting and growth",
+      "concept": "Area gives the material needed, the product rule the number of pairs, and (increase) ÷ (first value) × 100 the growth rate.",
+      "example": "4 shirts, 3 trousers → 12 outfits"
+    },
+    "el.cul1": {
+      "title": "Mathematics in art and daily life",
+      "concept": "The golden ratio is about 1.618; a note one octave up has twice the frequency; 6 braille dots give $2^6-1=63$ patterns; a majority is more than half.",
+      "example": "440 Hz → 880 Hz"
+    },
+    "el.cul2": {
+      "title": "Mathematics in society and the environment",
+      "concept": "Means and growth rates let you analyse social and environmental problems mathematically. Growth rate = (increase) ÷ (first value) × 100.",
+      "example": "40 to 50 → up 25%"
+    },
+    "el.sta1": {
+      "title": "Statistical questions and samples",
+      "concept": "The standard deviation is the square root of the mean of squared deviations (the variance). Samples are drawn by random, stratified, cluster or systematic sampling.",
+      "example": "2, 4, 4, 4, 5, 5, 7, 9 has standard deviation 2"
+    },
+    "el.sta2": {
+      "title": "Estimation and hypothesis tests",
+      "concept": "The 95% margin of error is $1.96\\times\\frac{σ}{\\sqrt{n}}$. If $|z|$ of $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n}}$ is above 1.96, reject the null hypothesis at the 5% level.",
+      "example": "σ=10, n=100 → margin 1.96"
+    },
+    "el.res1": {
+      "title": "Research methods",
+      "concept": "A mathematics research project can use literature research, case studies, mathematical experiments or development research.",
+      "example": "Rolling dice to find a pattern → experiment"
+    },
+    "el.res2": {
+      "title": "Research steps and ethics",
+      "concept": "Research goes topic → plan → carry out → present → reflect. Citing sources and never altering results is research ethics.",
+      "example": "After the topic comes the research plan"
+    }
+  },
+  "course": {
+    "econ": {
+      "title": "Economic Mathematics",
+      "world": "Economy Town",
+      "tagline": "Learn the mathematics of money and markets",
+      "unit": "Numbers and economics, functions and economics"
+    },
+    "ai": {
+      "title": "Mathematics for AI",
+      "world": "AI Lab",
+      "tagline": "Meet the mathematics inside data and optimisation",
+      "unit": "Data processing, prediction and optimisation"
+    },
+    "job": {
+      "title": "Workplace Mathematics",
+      "world": "Workshop Town",
+      "tagline": "Practise the mathematics used at work",
+      "unit": "Numbers and units, ratio, area and counting"
+    },
+    "cul": {
+      "title": "Mathematics and Culture",
+      "world": "Culture Square",
+      "tagline": "Find mathematics in art and daily life",
+      "unit": "Art and life, society and environment"
+    },
+    "sta": {
+      "title": "Practical Statistics",
+      "world": "Statistics Lab",
+      "tagline": "Build the skill of judging from data",
+      "unit": "Data and samples, estimation and testing"
+    },
+    "res": {
+      "title": "Mathematical Research Projects",
+      "world": "Research Workshop",
+      "tagline": "Learn the methods and ethics of research",
+      "unit": "Methods, procedure and ethics"
+    }
+  }
+}

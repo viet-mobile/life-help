@@ -173,6 +173,70 @@
     "id": "m.h3.geo2",
     "title": "평면벡터",
     "prerequisiteId": "m.h3.geo1"
+   },
+   {
+    "id": "m.m2.rec1",
+    "title": "순환소수",
+    "prerequisiteId": "m.m2.geo2"
+   },
+   {
+    "id": "m.m2.lfn1",
+    "title": "일차함수와 일차방정식",
+    "prerequisiteId": "m.m2.rec1"
+   },
+   {
+    "id": "m.el.econ1",
+    "title": "이자, 환율, 세금"
+   },
+   {
+    "id": "m.el.econ2",
+    "title": "수요·공급과 최적화",
+    "prerequisiteId": "m.el.econ1"
+   },
+   {
+    "id": "m.el.ai1",
+    "title": "텍스트와 이미지 데이터"
+   },
+   {
+    "id": "m.el.ai2",
+    "title": "예측과 최적화",
+    "prerequisiteId": "m.el.ai1"
+   },
+   {
+    "id": "m.el.job1",
+    "title": "단위 환산과 비율"
+   },
+   {
+    "id": "m.el.job2",
+    "title": "넓이, 경우의 수, 증가율",
+    "prerequisiteId": "m.el.job1"
+   },
+   {
+    "id": "m.el.cul1",
+    "title": "예술과 생활 속의 수학"
+   },
+   {
+    "id": "m.el.cul2",
+    "title": "사회와 환경 속의 수학",
+    "prerequisiteId": "m.el.cul1"
+   },
+   {
+    "id": "m.el.sta1",
+    "title": "통계적 문제와 표본"
+   },
+   {
+    "id": "m.el.sta2",
+    "title": "추정과 가설검정",
+    "prerequisiteId": "m.el.sta1"
+   },
+   {
+    "id": "m.el.res1",
+    "title": "탐구 방법"
+   },
+   {
+    "id": "m.el.res2",
+    "title": "탐구 절차와 연구 윤리",
+    "prerequisiteId": "m.el.res1"
    }
   ],
   "courses": [
@@ -301,6 +365,38 @@
          "m-m2-geo2-4"
         ],
         "challengeId": "m-m2-geo2-c"
+       },
+       {
+        "id": "math-m2-rec1",
+        "title": "순환소수",
+        "skillIds": [
+         "m.m2.rec1"
+        ],
+        "concept": "소수점 아래에서 같은 숫자가 계속 반복되는 소수를 **순환소수**라 하고 반복되는 부분을 **순환마디**라 해요. 기약분수의 분모가 2나 5뿐이면 유한소수예요.",
+        "example": "$\\frac{1}{3}=0.\\dot{3}$",
+        "questionIds": [
+         "m-m2-rec1-1",
+         "m-m2-rec1-2",
+         "m-m2-rec1-3",
+         "m-m2-rec1-4"
+        ],
+        "challengeId": "m-m2-rec1-c"
+       },
+       {
+        "id": "math-m2-lfn1",
+        "title": "일차함수와 일차방정식",
+        "skillIds": [
+         "m.m2.lfn1"
+        ],
+        "concept": "일차함수 y=ax+b에서 a는 기울기, b는 y절편이에요. 두 그래프의 교점은 두 식을 연립한 해예요.",
+        "example": "y=2x−6의 x절편은 3",
+        "questionIds": [
+         "m-m2-lfn1-1",
+         "m-m2-lfn1-2",
+         "m-m2-lfn1-3",
+         "m-m2-lfn1-4"
+        ],
+        "challengeId": "m-m2-lfn1-c"
        }
       ]
      }
@@ -821,6 +917,312 @@
          "m-h3-geo2-4"
         ],
         "challengeId": "m-h3-geo2-c"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-el-econ",
+    "title": "경제 수학",
+    "grade": "H3",
+    "elective": true,
+    "world": {
+     "name": "경제 마을",
+     "emoji": "💹",
+     "tagline": "돈과 시장의 수학을 배워요"
+    },
+    "units": [
+     {
+      "id": "math-el-econ-u1",
+      "title": "수와 경제, 함수와 경제",
+      "lessons": [
+       {
+        "id": "math-el-econ1",
+        "title": "이자, 환율, 세금",
+        "skillIds": [
+         "m.el.econ1"
+        ],
+        "concept": "단리 이자=원금×이율×기간, 복리는 원금×(1+이율)^기간이에요. 환율은 외화 1단위의 값이고, 세금은 가격에 비율을 곱해요.",
+        "example": "10000원, 연 10% 복리 2년 → 12100원",
+        "questionIds": [
+         "m-el-econ1-1",
+         "m-el-econ1-2",
+         "m-el-econ1-3",
+         "m-el-econ1-4"
+        ],
+        "challengeId": "m-el-econ1-c"
+       },
+       {
+        "id": "math-el-econ2",
+        "title": "수요·공급과 최적화",
+        "skillIds": [
+         "m.el.econ2"
+        ],
+        "concept": "수요와 공급 곡선이 만나는 곳이 균형이에요. 수입 R=pq의 최대와 탄력성은 함수와 미분으로 구해요.",
+        "example": "100−2q=10+q → q=30",
+        "questionIds": [
+         "m-el-econ2-1",
+         "m-el-econ2-2",
+         "m-el-econ2-3",
+         "m-el-econ2-4"
+        ],
+        "challengeId": "m-el-econ2-c"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-el-ai",
+    "title": "인공지능 수학",
+    "grade": "H3",
+    "elective": true,
+    "world": {
+     "name": "인공지능 연구소",
+     "emoji": "🤖",
+     "tagline": "데이터와 최적화 속의 수학을 만나요"
+    },
+    "units": [
+     {
+      "id": "math-el-ai-u1",
+      "title": "데이터 처리, 예측과 최적화",
+      "lessons": [
+       {
+        "id": "math-el-ai1",
+        "title": "텍스트와 이미지 데이터",
+        "skillIds": [
+         "m.el.ai1"
+        ],
+        "concept": "문서는 단어의 빈도수 벡터로, 이미지는 화소 값의 행렬로 나타내요. 벡터의 내적이 클수록 문서가 비슷해요.",
+        "example": "(2,0,1)·(1,3,2)=4",
+        "questionIds": [
+         "m-el-ai1-1",
+         "m-el-ai1-2",
+         "m-el-ai1-3",
+         "m-el-ai1-4"
+        ],
+        "challengeId": "m-el-ai1-c"
+       },
+       {
+        "id": "math-el-ai2",
+        "title": "예측과 최적화",
+        "skillIds": [
+         "m.el.ai2"
+        ],
+        "concept": "추세선의 기울기, 오차의 제곱의 평균(손실), 경사하강법 $x_{새}=x-\\eta f'(x)$로 예측을 개선해요.",
+        "example": "$f(x)=x^2$, x=4, η=0.1 → 3.2",
+        "questionIds": [
+         "m-el-ai2-1",
+         "m-el-ai2-2",
+         "m-el-ai2-3",
+         "m-el-ai2-4"
+        ],
+        "challengeId": "m-el-ai2-c"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-el-job",
+    "title": "직무 수학",
+    "grade": "H3",
+    "elective": true,
+    "world": {
+     "name": "일터 마을",
+     "emoji": "🧰",
+     "tagline": "일터에서 쓰는 수학을 익혀요"
+    },
+    "units": [
+     {
+      "id": "math-el-job-u1",
+      "title": "수와 단위, 비와 넓이, 경우의 수",
+      "lessons": [
+       {
+        "id": "math-el-job1",
+        "title": "단위 환산과 비율",
+        "skillIds": [
+         "m.el.job1"
+        ],
+        "concept": "1 m=100 cm, 1 kg=1000 g, 1시간=60분이에요. 할인 가격=가격×(1−할인율), 비 a:b로 섞으면 A는 전체의 $\\frac{a}{a+b}$예요.",
+        "example": "3.5 m=350 cm",
+        "questionIds": [
+         "m-el-job1-1",
+         "m-el-job1-2",
+         "m-el-job1-3",
+         "m-el-job1-4"
+        ],
+        "challengeId": "m-el-job1-c"
+       },
+       {
+        "id": "math-el-job2",
+        "title": "넓이, 경우의 수, 증가율",
+        "skillIds": [
+         "m.el.job2"
+        ],
+        "concept": "넓이로 필요한 재료의 양을 구하고, 곱의 법칙으로 가능한 짝의 수를, (늘어난 양)÷(처음 값)×100으로 증가율을 구해요.",
+        "example": "셔츠 4벌, 바지 3벌 → 12가지",
+        "questionIds": [
+         "m-el-job2-1",
+         "m-el-job2-2",
+         "m-el-job2-3",
+         "m-el-job2-4"
+        ],
+        "challengeId": "m-el-job2-c"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-el-cul",
+    "title": "수학과 문화",
+    "grade": "H3",
+    "elective": true,
+    "world": {
+     "name": "문화 광장",
+     "emoji": "🎨",
+     "tagline": "예술과 생활 속의 수학을 찾아요"
+    },
+    "units": [
+     {
+      "id": "math-el-cul-u1",
+      "title": "예술과 생활, 사회와 환경",
+      "lessons": [
+       {
+        "id": "math-el-cul1",
+        "title": "예술과 생활 속의 수학",
+        "skillIds": [
+         "m.el.cul1"
+        ],
+        "concept": "황금비 약 1.618, 한 옥타브 위의 음은 진동수가 2배, 점자 6개 점의 경우의 수는 $2^6-1=63$, 과반수는 전체의 절반을 넘는 수예요.",
+        "example": "440 Hz → 880 Hz",
+        "questionIds": [
+         "m-el-cul1-1",
+         "m-el-cul1-2",
+         "m-el-cul1-3",
+         "m-el-cul1-4"
+        ],
+        "challengeId": "m-el-cul1-c"
+       },
+       {
+        "id": "math-el-cul2",
+        "title": "사회와 환경 속의 수학",
+        "skillIds": [
+         "m.el.cul2"
+        ],
+        "concept": "자료의 평균과 증가율로 사회와 환경 문제를 수학적으로 분석해요. 증가율=(늘어난 양)÷(처음 값)×100.",
+        "example": "40에서 50으로 → 25% 증가",
+        "questionIds": [
+         "m-el-cul2-1",
+         "m-el-cul2-2",
+         "m-el-cul2-3",
+         "m-el-cul2-4"
+        ],
+        "challengeId": "m-el-cul2-c"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-el-sta",
+    "title": "실용 통계",
+    "grade": "H3",
+    "elective": true,
+    "world": {
+     "name": "통계 연구실",
+     "emoji": "📊",
+     "tagline": "자료로 판단하는 힘을 길러요"
+    },
+    "units": [
+     {
+      "id": "math-el-sta-u1",
+      "title": "자료와 표본, 추정과 검정",
+      "lessons": [
+       {
+        "id": "math-el-sta1",
+        "title": "통계적 문제와 표본",
+        "skillIds": [
+         "m.el.sta1"
+        ],
+        "concept": "표준편차는 편차의 제곱의 평균(분산)의 제곱근이에요. 표본은 임의추출, 층화추출, 집락추출, 계통추출 등으로 뽑아요.",
+        "example": "2, 4, 4, 4, 5, 5, 7, 9의 표준편차는 2",
+        "questionIds": [
+         "m-el-sta1-1",
+         "m-el-sta1-2",
+         "m-el-sta1-3",
+         "m-el-sta1-4"
+        ],
+        "challengeId": "m-el-sta1-c"
+       },
+       {
+        "id": "math-el-sta2",
+        "title": "추정과 가설검정",
+        "skillIds": [
+         "m.el.sta2"
+        ],
+        "concept": "95% 신뢰구간의 오차 한계는 $1.96\\times\\frac{σ}{\\sqrt{n} }$이에요. 검정통계량 $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{n} }$의 절댓값이 1.96보다 크면 5% 유의수준에서 귀무가설을 기각해요.",
+        "example": "σ=10, n=100 → 오차 한계 1.96",
+        "questionIds": [
+         "m-el-sta2-1",
+         "m-el-sta2-2",
+         "m-el-sta2-3",
+         "m-el-sta2-4"
+        ],
+        "challengeId": "m-el-sta2-c"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "math-el-res",
+    "title": "수학과제 탐구",
+    "grade": "H3",
+    "elective": true,
+    "world": {
+     "name": "탐구 실험실",
+     "emoji": "🔬",
+     "tagline": "탐구의 방법과 윤리를 익혀요"
+    },
+    "units": [
+     {
+      "id": "math-el-res-u1",
+      "title": "탐구 방법, 절차와 윤리",
+      "lessons": [
+       {
+        "id": "math-el-res1",
+        "title": "탐구 방법",
+        "skillIds": [
+         "m.el.res1"
+        ],
+        "concept": "수학과제 탐구는 문헌 조사, 사례 조사, 수학 실험, 개발 연구 같은 방법으로 해요.",
+        "example": "직접 주사위를 던져 규칙 찾기 → 수학 실험",
+        "questionIds": [
+         "m-el-res1-1",
+         "m-el-res1-2",
+         "m-el-res1-3",
+         "m-el-res1-4"
+        ],
+        "challengeId": "m-el-res1-c"
+       },
+       {
+        "id": "math-el-res2",
+        "title": "탐구 절차와 연구 윤리",
+        "skillIds": [
+         "m.el.res2"
+        ],
+        "concept": "탐구는 주제 선정 → 계획 → 수행 → 발표 → 반성의 순서로 해요. 출처를 밝히고 결과를 조작하지 않는 것이 연구 윤리예요.",
+        "example": "주제를 정한 다음은 탐구 계획",
+        "questionIds": [
+         "m-el-res2-1",
+         "m-el-res2-2",
+         "m-el-res2-3",
+         "m-el-res2-4"
+        ],
+        "challengeId": "m-el-res2-c"
        }
       ]
      }
@@ -16427,6 +16829,3859 @@
    "expectedSeconds": 60,
    "tags": [
     "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-1",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "분수 $\\frac{1}{3}$을 소수로 나타낼 때 순환마디는 몇 자리 숫자일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 1
+   },
+   "hints": [
+    "1을 3로 나누어 몫을 구해 보세요.",
+    "같은 숫자들이 반복되는 부분이 순환마디예요."
+   ],
+   "explanation": "$\\frac{1}{3}=0.\\dot{3}$이므로 순환마디는 1자리입니다.",
+   "role": "core",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-2",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "분수 $\\frac{1}{7}$을 소수로 나타낼 때 순환마디는 몇 자리 숫자일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "1을 7로 나누어 몫을 구해 보세요.",
+    "같은 숫자들이 반복되는 부분이 순환마디예요."
+   ],
+   "explanation": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$이므로 순환마디는 6자리입니다.",
+   "role": "core",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-3",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "순환소수 $0.\\dot3\\dot5$를 $\\frac{x}{99}$로 나타낼 때 x의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 35
+   },
+   "hints": [
+    "$0.\\dot{a}\\dot{b}=\\frac{ab}{99}$예요.",
+    "두 자리 수 ab를 그대로 분자로 써요."
+   ],
+   "explanation": "$0.\\dot{3}\\dot{5}=\\frac{ {x} }{99}$에서 x=35입니다.",
+   "role": "core",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-4",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "true_false",
+   "difficulty": 3,
+   "prompt": "분수 $\\frac{3}{8}$을 소수로 나타내면 유한소수일까요?",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "기약분수로 고친 뒤 분모를 소인수분해해요.",
+    "분모의 소인수가 2나 5뿐이면 유한소수예요."
+   ],
+   "explanation": "분모 8의 소인수가 2이므로 네, 유한소수예요.",
+   "role": "core",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-c",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "분수 $\\frac{1}{13}$을 소수로 나타낼 때 순환마디는 몇 자리 숫자일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "1을 13로 나누어 몫을 구해 보세요.",
+    "같은 숫자들이 반복되는 부분이 순환마디예요."
+   ],
+   "explanation": "$\\frac{1}{13}=0.\\dot{0}7692\\dot{3}$이므로 순환마디는 6자리입니다.",
+   "role": "core",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-v1",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\frac{1}{7}=0.\\dot{1}4285\\dot{7}$입니다. 소수점 아래 20번째 자리의 숫자는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "순환마디 142857은 6자리예요.",
+    "20를 6으로 나눈 나머지로 위치를 찾아요."
+   ],
+   "explanation": "20÷6의 나머지가 2이므로 2번째 숫자 4입니다.",
+   "role": "variant",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-rec1-v2",
+   "site": "math",
+   "skillId": "m.m2.rec1",
+   "type": "true_false",
+   "difficulty": 3,
+   "prompt": "분수 $\\frac{5}{12}$을 소수로 나타내면 유한소수일까요?",
+   "answer": {
+    "kind": "choice",
+    "id": "false"
+   },
+   "hints": [
+    "기약분수로 고친 뒤 분모를 소인수분해해요.",
+    "분모의 소인수가 2나 5뿐이면 유한소수예요."
+   ],
+   "explanation": "분모 12의 소인수가 2, 3이므로 아니요, 순환소수예요.",
+   "role": "variant",
+   "family": "m2-rec1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-1",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "일차함수 $y=2x+-3$의 기울기는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "$y=ax+b$에서 a가 기울기예요.",
+    "x의 계수를 읽어요."
+   ],
+   "explanation": "기울기는 2입니다.",
+   "role": "core",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-2",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "일차함수 $y=2x+-3$의 y절편은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": -3
+   },
+   "hints": [
+    "y절편은 x=0일 때의 y값이에요.",
+    "$y=ax+b$에서는 b예요."
+   ],
+   "explanation": "y절편은 -3입니다.",
+   "role": "core",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-3",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "일차함수 $y=2x+-6$의 x절편은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "x절편은 y=0일 때의 x값이에요.",
+    "$0=ax+b$를 풀어요."
+   ],
+   "explanation": "$0=2x+-6$에서 x=3입니다.",
+   "role": "core",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-4",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "두 일차함수 $y=1x+1$과 $y=-1x+5$의 그래프가 만나는 점 P의 x좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       128,
+       252,
+       128
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       46,
+       164,
+       46,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       246,
+       122
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       58,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       39,
+       122
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       68,
+       125,
+       68,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       68,
+       143
+      ],
+      "t": "1"
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       125,
+       90,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       90,
+       143
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       112,
+       125,
+       112,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       112,
+       143
+      ],
+      "t": "3"
+     },
+     {
+      "k": "line",
+      "p": [
+       134,
+       125,
+       134,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       134,
+       143
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       156,
+       125,
+       156,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       156,
+       143
+      ],
+      "t": "5"
+     },
+     {
+      "k": "line",
+      "p": [
+       178,
+       125,
+       178,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       178,
+       143
+      ],
+      "t": "6"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       106,
+       49,
+       106
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       111
+      ],
+      "t": "1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       84,
+       49,
+       84
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       89
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       62,
+       49,
+       62
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       67
+      ],
+      "t": "3",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       40,
+       49,
+       40
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       45
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       18,
+       49,
+       18
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       23
+      ],
+      "t": "5",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       24,
+       128,
+       142.8,
+       9.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       37.2,
+       9.2,
+       156,
+       128
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       62
+      ],
+      "r": 4,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       98,
+       54
+      ],
+      "t": "P",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "교점에서는 두 식의 y값이 같아요.",
+    "$a_1x+b_1=a_2x+b_2$를 풀어요."
+   ],
+   "explanation": "$1x+1=-1x+5$에서 x=2입니다.",
+   "role": "core",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-c",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 일차함수 $y=2x+-1$과 $y=1x+2$의 그래프가 만나는 점 P의 x좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       128,
+       252,
+       128
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       46,
+       164,
+       46,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       246,
+       122
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       58,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       39,
+       122
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       68,
+       125,
+       68,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       68,
+       143
+      ],
+      "t": "1"
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       125,
+       90,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       90,
+       143
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       112,
+       125,
+       112,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       112,
+       143
+      ],
+      "t": "3"
+     },
+     {
+      "k": "line",
+      "p": [
+       134,
+       125,
+       134,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       134,
+       143
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       156,
+       125,
+       156,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       156,
+       143
+      ],
+      "t": "5"
+     },
+     {
+      "k": "line",
+      "p": [
+       178,
+       125,
+       178,
+       131
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       178,
+       143
+      ],
+      "t": "6"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       106,
+       49,
+       106
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       111
+      ],
+      "t": "1",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       84,
+       49,
+       84
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       89
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       62,
+       49,
+       62
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       67
+      ],
+      "t": "3",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       40,
+       49,
+       40
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       45
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       18,
+       49,
+       18
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       38,
+       23
+      ],
+      "t": "5",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       57,
+       128,
+       116.4,
+       9.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       24,
+       106,
+       120.8,
+       9.2
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       112,
+       18
+      ],
+      "r": 4,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       10
+      ],
+      "t": "P",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "교점에서는 두 식의 y값이 같아요.",
+    "$a_1x+b_1=a_2x+b_2$를 풀어요."
+   ],
+   "explanation": "$2x+-1=1x+2$에서 x=3입니다.",
+   "role": "core",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-v1",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "일차함수 $f(x)=3x+-2$에서 $f(4)$의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "x 대신 4를 넣어요.",
+    "곱셈을 한 뒤 더해요."
+   ],
+   "explanation": "$f(4)=3\\times4+-2=10$입니다.",
+   "role": "variant",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-lfn1-v2",
+   "site": "math",
+   "skillId": "m.m2.lfn1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "일차함수 $y=-2x+8$의 x절편은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "x절편은 y=0일 때의 x값이에요.",
+    "$0=ax+b$를 풀어요."
+   ],
+   "explanation": "$0=-2x+8$에서 x=4입니다.",
+   "role": "variant",
+   "family": "m2-lfn1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-1",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원금 100000원을 연이율 5%의 단리로 3년 맡기면 이자는 모두 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 15000
+   },
+   "hints": [
+    "단리 이자=원금×이율×기간이에요.",
+    "5%는 0.05이에요."
+   ],
+   "explanation": "100000×0.05×3=15000이므로 이자는 15000원입니다.",
+   "role": "core",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-2",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원금 10000원을 연이율 10%의 복리로 2년 맡기면 원리합계는 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 12100
+   },
+   "hints": [
+    "복리는 이자에도 이자가 붙어요.",
+    "원금×(1+이율)을 2번 곱해요."
+   ],
+   "explanation": "10000×(1+0.1)^2=12100이므로 12100원입니다.",
+   "role": "core",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-3",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "외화 1단위의 값이 1300원일 때, 외화 50단위는 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 65000
+   },
+   "hints": [
+    "환율은 외화 1단위의 원화 가치예요.",
+    "외화 단위 수에 환율을 곱해요."
+   ],
+   "explanation": "50×1300=65000이므로 65000원입니다.",
+   "role": "core",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-4",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "20000원짜리 물건에 부가가치세 10%가 더해지면 내야 할 금액은 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 22000
+   },
+   "hints": [
+    "세금은 가격×10%예요.",
+    "가격에 세금을 더해요."
+   ],
+   "explanation": "20000+20000×0.1=22000이므로 22000원입니다.",
+   "role": "core",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-c",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "원금 50000원을 연이율 4%의 복리로 2년 맡기면 원리합계는 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 54080
+   },
+   "hints": [
+    "복리는 이자에도 이자가 붙어요.",
+    "원금×(1+이율)을 2번 곱해요."
+   ],
+   "explanation": "50000×(1+0.04)^2=54080이므로 54080원입니다.",
+   "role": "core",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-v1",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원금 200000원을 연이율 2%의 단리로 2년 맡기면 이자는 모두 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 8000
+   },
+   "hints": [
+    "단리 이자=원금×이율×기간이에요.",
+    "2%는 0.02이에요."
+   ],
+   "explanation": "200000×0.02×2=8000이므로 이자는 8000원입니다.",
+   "role": "variant",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ1-v2",
+   "site": "math",
+   "skillId": "m.el.econ1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "외화 1단위의 값이 1400원일 때, 외화 120단위는 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 168000
+   },
+   "hints": [
+    "환율은 외화 1단위의 원화 가치예요.",
+    "외화 단위 수에 환율을 곱해요."
+   ],
+   "explanation": "120×1400=168000이므로 168000원입니다.",
+   "role": "variant",
+   "family": "el-econ1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-1",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "수요 곡선 $p=100-2q$와 공급 곡선 $p=10+1q$가 만나는 균형 수량 q는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 30
+   },
+   "hints": [
+    "균형에서는 수요 가격과 공급 가격이 같아요.",
+    "$a-bq=c+dq$를 풀어요."
+   ],
+   "explanation": "$100-2q=10+1q$에서 q=30입니다.",
+   "role": "core",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-2",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "수요 곡선 $p=60-1q$와 공급 곡선 $p=10+4q$가 만나는 균형 수량 q는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "균형에서는 수요 가격과 공급 가격이 같아요.",
+    "$a-bq=c+dq$를 풀어요."
+   ],
+   "explanation": "$60-1q=10+4q$에서 q=10입니다.",
+   "role": "core",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-3",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "수요 함수가 $p=100-2q$일 때 수입 $R=pq$의 최댓값은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 1250
+   },
+   "hints": [
+    "$R=(100-2q)q$는 이차식이에요.",
+    "꼭짓점 $q=\\frac{ a }{ 2b }$에서 최대예요."
+   ],
+   "explanation": "q=25일 때 R=1250로 최대입니다.",
+   "role": "core",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-4",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "수요량이 $Q=100-2p$일 때 가격 $p=25$에서 수요의 가격탄력성의 절댓값은? (소수)",
+   "answer": {
+    "kind": "numeric",
+    "value": 1,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "탄력성의 절댓값은 $\\frac{bp}{Q}$예요.",
+    "먼저 $p=25$일 때 Q를 구해요."
+   ],
+   "explanation": "Q=50이므로 $\\frac{2\\times25}{50}=1$입니다.",
+   "role": "core",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-c",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "수요 곡선 $p=80-3q$와 공급 곡선 $p=20+2q$가 만나는 균형 수량 q는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "균형에서는 수요 가격과 공급 가격이 같아요.",
+    "$a-bq=c+dq$를 풀어요."
+   ],
+   "explanation": "$80-3q=20+2q$에서 q=12입니다.",
+   "role": "core",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-v1",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "수요 함수가 $p=60-3q$일 때 수입 $R=pq$의 최댓값은 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 300
+   },
+   "hints": [
+    "$R=(60-3q)q$는 이차식이에요.",
+    "꼭짓점 $q=\\frac{ a }{ 2b }$에서 최대예요."
+   ],
+   "explanation": "q=10일 때 R=300로 최대입니다.",
+   "role": "variant",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-econ2-v2",
+   "site": "math",
+   "skillId": "m.el.econ2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "수요량이 $Q=90-3p$일 때 가격 $p=10$에서 수요의 가격탄력성의 절댓값은? (소수)",
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "탄력성의 절댓값은 $\\frac{bp}{Q}$예요.",
+    "먼저 $p=10$일 때 Q를 구해요."
+   ],
+   "explanation": "Q=60이므로 $\\frac{3\\times10}{60}=0.5$입니다.",
+   "role": "variant",
+   "family": "el-econ2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-1",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "단어 열 A B A C A B에서 A는 몇 번 나올까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "A만 골라 표시하며 세어 보세요.",
+    "이 횟수가 빈도수 벡터의 A 성분이에요."
+   ],
+   "explanation": "A는 3번 나옵니다.",
+   "role": "core",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-2",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 문서의 빈도수 벡터가 $\\vec{u}=(2, 0, 1)$, $\\vec{v}=(1, 3, 2)$일 때 내적 $\\vec{u}\\cdot\\vec{v}$는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "내적은 같은 위치의 성분끼리 곱해 더해요.",
+    "내적이 클수록 두 문서가 비슷해요."
+   ],
+   "explanation": "$2\\times1+0\\times3+1\\times2=4$입니다.",
+   "role": "core",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-3",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "이미지를 행렬 $\\begin{pmatrix}10&20\\\\30&40\\end{pmatrix}$로 나타냈습니다. 모든 화소 값의 합은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 100
+   },
+   "hints": [
+    "행렬의 각 성분이 화소 하나의 밝기예요.",
+    "네 성분을 모두 더해요."
+   ],
+   "explanation": "10+20+30+40=100입니다.",
+   "role": "core",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-4",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "화소 값이 100인 화소의 밝기를 모두 30만큼 높이면 새 화소 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 130
+   },
+   "hints": [
+    "밝기를 높이는 것은 행렬에 같은 수를 더하는 것이에요.",
+    "100에 30를 더해요."
+   ],
+   "explanation": "100+30=130입니다.",
+   "role": "core",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-c",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "두 문서의 빈도수 벡터가 $\\vec{u}=(3, 1, 2)$, $\\vec{v}=(2, 4, 1)$일 때 내적 $\\vec{u}\\cdot\\vec{v}$는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "내적은 같은 위치의 성분끼리 곱해 더해요.",
+    "내적이 클수록 두 문서가 비슷해요."
+   ],
+   "explanation": "$3\\times2+1\\times4+2\\times1=12$입니다.",
+   "role": "core",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-v1",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "단어 열 C A A B A A에서 A는 몇 번 나올까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "A만 골라 표시하며 세어 보세요.",
+    "이 횟수가 빈도수 벡터의 A 성분이에요."
+   ],
+   "explanation": "A는 4번 나옵니다.",
+   "role": "variant",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai1-v2",
+   "site": "math",
+   "skillId": "m.el.ai1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "이미지를 행렬 $\\begin{pmatrix}5&0\\\\255&255\\end{pmatrix}$로 나타냈습니다. 모든 화소 값의 합은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 515
+   },
+   "hints": [
+    "행렬의 각 성분이 화소 하나의 밝기예요.",
+    "네 성분을 모두 더해요."
+   ],
+   "explanation": "5+0+255+255=515입니다.",
+   "role": "variant",
+   "family": "el-ai1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-1",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 점 (1, 2), (3, 8)를 지나는 추세선의 기울기는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       137,
+       252,
+       137
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       43,
+       162,
+       43,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       131
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       53,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       36,
+       131
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       134,
+       30,
+       140
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       56,
+       134,
+       56,
+       140
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       69,
+       134,
+       69,
+       140
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       69,
+       152
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       82,
+       134,
+       82,
+       140
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       95,
+       134,
+       95,
+       140
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       95,
+       152
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       108,
+       134,
+       108,
+       140
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       150,
+       46,
+       150
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       124,
+       46,
+       124
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       111,
+       46,
+       111
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       35,
+       116
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       98,
+       46,
+       98
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       85,
+       46,
+       85
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       35,
+       90
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       72,
+       46,
+       72
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       59,
+       46,
+       59
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       35,
+       64
+      ],
+      "t": "6",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       46,
+       46,
+       46
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       33,
+       46,
+       33
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       35,
+       38
+      ],
+      "t": "8",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       56,
+       111,
+       82,
+       33
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       56,
+       111
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       64,
+       103
+      ],
+      "t": "P",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       82,
+       33
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       90,
+       25
+      ],
+      "t": "Q",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "기울기는 y의 변화량을 x의 변화량으로 나눈 값이에요.",
+    "$\\frac{y_2-y_1}{x_2-x_1}$을 계산해요."
+   ],
+   "explanation": "$\\frac{8-2}{3-1}=3$입니다.",
+   "role": "core",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-2",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "예측값이 2, 4, 6이고 실제값이 1, 5, 8일 때 평균제곱오차(오차를 제곱한 값의 평균)는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "오차는 예측값−실제값이에요.",
+    "오차를 각각 제곱해 평균을 구해요."
+   ],
+   "explanation": "오차의 제곱은 1, 1, 4이고 평균은 2입니다.",
+   "role": "core",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-3",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "손실함수 $f(x)=x^2$에서 x=4, 학습률 0.1로 경사하강법을 한 번 하면 새 x는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3.2,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "경사하강법: $x_{새}=x-\\eta f'(x)$.",
+    "$f'(x)=2x$예요."
+   ],
+   "explanation": "$f'(4)=8$이므로 4-0.1×8=3.2입니다.",
+   "role": "core",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-4",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "손실함수 $f(x)=x^2$에서 x=3, 학습률 0.25로 경사하강법을 한 번 하면 새 x는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.5,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "경사하강법: $x_{새}=x-\\eta f'(x)$.",
+    "$f'(x)=2x$예요."
+   ],
+   "explanation": "$f'(3)=6$이므로 3-0.25×6=1.5입니다.",
+   "role": "core",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-c",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "예측값이 3, 5이고 실제값이 1, 9일 때 평균제곱오차(오차를 제곱한 값의 평균)는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "오차는 예측값−실제값이에요.",
+    "오차를 각각 제곱해 평균을 구해요."
+   ],
+   "explanation": "오차의 제곱은 4, 16이고 평균은 10입니다.",
+   "role": "core",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-v1",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 점 (0, 1), (4, 9)를 지나는 추세선의 기울기는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       138.2,
+       252,
+       138.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       41.8,
+       162,
+       41.8,
+       8
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       132
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       52,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       35,
+       132
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       135.2,
+       30,
+       141.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       53.6,
+       135.2,
+       53.6,
+       141.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       65.5,
+       135.2,
+       65.5,
+       141.2
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       65,
+       153
+      ],
+      "t": "2"
+     },
+     {
+      "k": "line",
+      "p": [
+       77.3,
+       135.2,
+       77.3,
+       141.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       89.1,
+       135.2,
+       89.1,
+       141.2
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       89,
+       153
+      ],
+      "t": "4"
+     },
+     {
+      "k": "line",
+      "p": [
+       100.9,
+       135.2,
+       100.9,
+       141.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       150,
+       44.8,
+       150
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       126.4,
+       44.8,
+       126.4
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       114.5,
+       44.8,
+       114.5
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       34,
+       120
+      ],
+      "t": "2",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       102.7,
+       44.8,
+       102.7
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       90.9,
+       44.8,
+       90.9
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       34,
+       96
+      ],
+      "t": "4",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       79.1,
+       44.8,
+       79.1
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       67.3,
+       44.8,
+       67.3
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       34,
+       72
+      ],
+      "t": "6",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       55.5,
+       44.8,
+       55.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       43.6,
+       44.8,
+       43.6
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       34,
+       49
+      ],
+      "t": "8",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       38.8,
+       31.8,
+       44.8,
+       31.8
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       41.8,
+       126.4,
+       89.1,
+       31.8
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       41.8,
+       126.4
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       50,
+       118
+      ],
+      "t": "P",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       89.1,
+       31.8
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       97,
+       24
+      ],
+      "t": "Q",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "기울기는 y의 변화량을 x의 변화량으로 나눈 값이에요.",
+    "$\\frac{y_2-y_1}{x_2-x_1}$을 계산해요."
+   ],
+   "explanation": "$\\frac{9-1}{4-0}=2$입니다.",
+   "role": "variant",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-ai2-v2",
+   "site": "math",
+   "skillId": "m.el.ai2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "손실함수 $f(x)=x^2$에서 x=10, 학습률 0.1로 경사하강법을 한 번 하면 새 x는?",
+   "answer": {
+    "kind": "numeric",
+    "value": 8,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "경사하강법: $x_{새}=x-\\eta f'(x)$.",
+    "$f'(x)=2x$예요."
+   ],
+   "explanation": "$f'(10)=20$이므로 10-0.1×20=8입니다.",
+   "role": "variant",
+   "family": "el-ai2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-1",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "3.5 m는 몇 cm일까요? (cm)",
+   "answer": {
+    "kind": "numeric",
+    "value": 350
+   },
+   "hints": [
+    "1 m는 100 cm예요.",
+    "3.5에 100을 곱해요."
+   ],
+   "explanation": "3.5×100=350이므로 350 cm입니다.",
+   "role": "core",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-2",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "2.4 kg은 몇 g일까요? (g)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2400
+   },
+   "hints": [
+    "1 kg은 1000 g이에요.",
+    "2.4에 1000을 곱해요."
+   ],
+   "explanation": "2.4×1000=2400이므로 2400 g입니다.",
+   "role": "core",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-3",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "1.5시간은 몇 분일까요? (분)",
+   "answer": {
+    "kind": "numeric",
+    "value": 90
+   },
+   "hints": [
+    "1시간은 60분이에요.",
+    "1.5에 60을 곱해요."
+   ],
+   "explanation": "1.5×60=90이므로 90분입니다.",
+   "role": "core",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-4",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "40000원짜리 물건을 15% 할인하여 팔 때 판매 가격은 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 34000
+   },
+   "hints": [
+    "할인액은 가격×15%예요.",
+    "가격에서 할인액을 빼요."
+   ],
+   "explanation": "40000-40000×0.15=34000이므로 34000원입니다.",
+   "role": "core",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-c",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "재료 A와 B를 3:2의 비로 섞어 모두 500g을 만들려고 합니다. 필요한 A는 몇 g일까요? (g)",
+   "answer": {
+    "kind": "numeric",
+    "value": 300
+   },
+   "hints": [
+    "전체는 3+2=5등분이에요.",
+    "A는 전체의 $\\frac35$예요."
+   ],
+   "explanation": "500×3÷5=300이므로 300g입니다.",
+   "role": "core",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-v1",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "0.8 m는 몇 cm일까요? (cm)",
+   "answer": {
+    "kind": "numeric",
+    "value": 80
+   },
+   "hints": [
+    "1 m는 100 cm예요.",
+    "0.8에 100을 곱해요."
+   ],
+   "explanation": "0.8×100=80이므로 80 cm입니다.",
+   "role": "variant",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job1-v2",
+   "site": "math",
+   "skillId": "m.el.job1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "12000원짜리 물건을 25% 할인하여 팔 때 판매 가격은 몇 원일까요? (원)",
+   "answer": {
+    "kind": "numeric",
+    "value": 9000
+   },
+   "hints": [
+    "할인액은 가격×25%예요.",
+    "가격에서 할인액을 빼요."
+   ],
+   "explanation": "12000-12000×0.25=9000이므로 9000원입니다.",
+   "role": "variant",
+   "family": "el-job1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-1",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "가로 4 m, 세로 3 m인 벽에 한 변이 1 m인 정사각형 타일을 붙이려면 타일은 모두 몇 장 필요할까요? (장)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       60,
+       36.5,
+       200,
+       36.5,
+       200,
+       141.5,
+       60,
+       141.5
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       160
+      ],
+      "t": "4m"
+     },
+     {
+      "k": "text",
+      "p": [
+       208,
+       94
+      ],
+      "t": "3m",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "벽의 넓이를 구해요.",
+    "타일 한 장의 넓이는 1 m²예요."
+   ],
+   "explanation": "4×3=12이므로 12장입니다.",
+   "role": "core",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-2",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "가로 6 m, 세로 3 m인 벽에 한 변이 1 m인 정사각형 타일을 붙이려면 타일은 모두 몇 장 필요할까요? (장)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       46.5,
+       215,
+       46.5,
+       215,
+       131.5,
+       45,
+       131.5
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       150
+      ],
+      "t": "6m"
+     },
+     {
+      "k": "text",
+      "p": [
+       223,
+       94
+      ],
+      "t": "3m",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 18
+   },
+   "hints": [
+    "벽의 넓이를 구해요.",
+    "타일 한 장의 넓이는 1 m²예요."
+   ],
+   "explanation": "6×3=18이므로 18장입니다.",
+   "role": "core",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-3",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "셔츠 4벌과 바지 3벌이 있을 때, 셔츠 한 벌과 바지 한 벌을 짝지어 입는 방법은 모두 몇 가지일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "셔츠마다 바지를 고르는 경우가 3가지예요.",
+    "곱의 법칙을 사용해요."
+   ],
+   "explanation": "4×3=12이므로 12가지입니다.",
+   "role": "core",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-4",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "어떤 값이 50에서 60으로 바뀌었습니다. 몇 % 증가했을까요? (%)",
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "증가율=(늘어난 양)÷(처음 값)×100이에요.",
+    "늘어난 양은 60-50예요."
+   ],
+   "explanation": "(60-50)÷50×100=20이므로 20%입니다.",
+   "role": "core",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-c",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "셔츠 5벌과 바지 4벌이 있을 때, 셔츠 한 벌과 바지 한 벌을 짝지어 입는 방법은 모두 몇 가지일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "셔츠마다 바지를 고르는 경우가 4가지예요.",
+    "곱의 법칙을 사용해요."
+   ],
+   "explanation": "5×4=20이므로 20가지입니다.",
+   "role": "core",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-v1",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "가로 7 m, 세로 2 m인 벽에 한 변이 1 m인 정사각형 타일을 붙이려면 타일은 모두 몇 장 필요할까요? (장)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       64.7,
+       215,
+       64.7,
+       215,
+       113.3,
+       45,
+       113.3
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       131
+      ],
+      "t": "7m"
+     },
+     {
+      "k": "text",
+      "p": [
+       223,
+       94
+      ],
+      "t": "2m",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 14
+   },
+   "hints": [
+    "벽의 넓이를 구해요.",
+    "타일 한 장의 넓이는 1 m²예요."
+   ],
+   "explanation": "7×2=14이므로 14장입니다.",
+   "role": "variant",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-job2-v2",
+   "site": "math",
+   "skillId": "m.el.job2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "어떤 값이 80에서 100으로 바뀌었습니다. 몇 % 증가했을까요? (%)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "증가율=(늘어난 양)÷(처음 값)×100이에요.",
+    "늘어난 양은 100-80예요."
+   ],
+   "explanation": "(100-80)÷80×100=25이므로 25%입니다.",
+   "role": "variant",
+   "family": "el-job2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-1",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "황금비는 $a:b=(a+b):a$를 만족합니다. b=10일 때 a의 값은 약 얼마일까요? (소수 둘째 자리까지)",
+   "answer": {
+    "kind": "numeric",
+    "value": 16.18,
+    "tolerance": 0.01
+   },
+   "hints": [
+    "황금비의 값은 약 1.618이에요.",
+    "a는 b의 약 1.618배예요."
+   ],
+   "explanation": "a≈10×1.618=16.18입니다.",
+   "role": "core",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-2",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "음의 높이는 진동수로 정해집니다. 440 Hz인 음보다 한 옥타브 높은 음의 진동수는 몇 Hz일까요? (Hz)",
+   "answer": {
+    "kind": "numeric",
+    "value": 880
+   },
+   "hints": [
+    "한 옥타브 위의 음은 진동수가 2배예요.",
+    "440에 2를 곱해요."
+   ],
+   "explanation": "440×2=880이므로 880 Hz입니다.",
+   "role": "core",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-3",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "점자의 한 칸은 6개의 점이 각각 볼록하거나 볼록하지 않을 수 있습니다. 아무 점도 볼록하지 않은 모양을 빼면 모양은 모두 몇 가지일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 63
+   },
+   "hints": [
+    "점 하나마다 경우가 2가지예요.",
+    "곱의 법칙으로 $2^6$을 구하고 1을 빼요."
+   ],
+   "explanation": "$2^6-1=63$이므로 63가지입니다.",
+   "role": "core",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-4",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "100명이 투표하는 선거에서 한 후보가 과반수를 얻으려면 적어도 몇 표가 필요할까요? (표)",
+   "answer": {
+    "kind": "numeric",
+    "value": 51
+   },
+   "hints": [
+    "과반수는 전체의 반을 넘는 수예요.",
+    "100의 반보다 큰 가장 작은 자연수를 찾아요."
+   ],
+   "explanation": "100÷2=50보다 큰 가장 작은 자연수는 51입니다.",
+   "role": "core",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-c",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "75명이 투표하는 선거에서 한 후보가 과반수를 얻으려면 적어도 몇 표가 필요할까요? (표)",
+   "answer": {
+    "kind": "numeric",
+    "value": 38
+   },
+   "hints": [
+    "과반수는 전체의 반을 넘는 수예요.",
+    "75의 반보다 큰 가장 작은 자연수를 찾아요."
+   ],
+   "explanation": "75÷2=37.5보다 큰 가장 작은 자연수는 38입니다.",
+   "role": "core",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-v1",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "음의 높이는 진동수로 정해집니다. 440 Hz인 음보다 한 옥타브 높은 음의 진동수는 몇 Hz일까요? (Hz)",
+   "answer": {
+    "kind": "numeric",
+    "value": 880
+   },
+   "hints": [
+    "한 옥타브 위의 음은 진동수가 2배예요.",
+    "440에 2를 곱해요."
+   ],
+   "explanation": "440×2=880이므로 880 Hz입니다.",
+   "role": "variant",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul1-v2",
+   "site": "math",
+   "skillId": "m.el.cul1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "200명이 투표하는 선거에서 한 후보가 과반수를 얻으려면 적어도 몇 표가 필요할까요? (표)",
+   "answer": {
+    "kind": "numeric",
+    "value": 101
+   },
+   "hints": [
+    "과반수는 전체의 반을 넘는 수예요.",
+    "200의 반보다 큰 가장 작은 자연수를 찾아요."
+   ],
+   "explanation": "200÷2=100보다 큰 가장 작은 자연수는 101입니다.",
+   "role": "variant",
+   "family": "el-cul1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-1",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "5일 동안 측정한 미세먼지 농도가 30, 45, 25, 60, 40(µg/m³)일 때 평균 농도는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 40
+   },
+   "hints": [
+    "평균은 (모두 더한 값)÷(날 수)예요.",
+    "먼저 5일의 값을 모두 더해요."
+   ],
+   "explanation": "(30+45+25+60+40)÷5=40이므로 평균은 40입니다.",
+   "role": "core",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-2",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "어떤 값이 40에서 50으로 바뀌었습니다. 몇 % 증가했을까요? (%)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "증가율=(늘어난 양)÷(처음 값)×100이에요.",
+    "늘어난 양은 50-40예요."
+   ],
+   "explanation": "(50-40)÷40×100=25이므로 25%입니다.",
+   "role": "core",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-3",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "5일 동안 측정한 미세먼지 농도가 12, 18, 15, 20, 10(µg/m³)일 때 평균 농도는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "평균은 (모두 더한 값)÷(날 수)예요.",
+    "먼저 5일의 값을 모두 더해요."
+   ],
+   "explanation": "(12+18+15+20+10)÷5=15이므로 평균은 15입니다.",
+   "role": "core",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-4",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "어떤 값이 200에서 250으로 바뀌었습니다. 몇 % 증가했을까요? (%)",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "증가율=(늘어난 양)÷(처음 값)×100이에요.",
+    "늘어난 양은 250-200예요."
+   ],
+   "explanation": "(250-200)÷200×100=25이므로 25%입니다.",
+   "role": "core",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-c",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "어떤 값이 25에서 40으로 바뀌었습니다. 몇 % 증가했을까요? (%)",
+   "answer": {
+    "kind": "numeric",
+    "value": 60
+   },
+   "hints": [
+    "증가율=(늘어난 양)÷(처음 값)×100이에요.",
+    "늘어난 양은 40-25예요."
+   ],
+   "explanation": "(40-25)÷25×100=60이므로 60%입니다.",
+   "role": "core",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-v1",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "5일 동안 측정한 미세먼지 농도가 50, 70, 60, 80, 90(µg/m³)일 때 평균 농도는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "평균은 (모두 더한 값)÷(날 수)예요.",
+    "먼저 5일의 값을 모두 더해요."
+   ],
+   "explanation": "(50+70+60+80+90)÷5=70이므로 평균은 70입니다.",
+   "role": "variant",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-cul2-v2",
+   "site": "math",
+   "skillId": "m.el.cul2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "어떤 값이 60에서 69으로 바뀌었습니다. 몇 % 증가했을까요? (%)",
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "증가율=(늘어난 양)÷(처음 값)×100이에요.",
+    "늘어난 양은 69-60예요."
+   ],
+   "explanation": "(69-60)÷60×100=15이므로 15%입니다.",
+   "role": "variant",
+   "family": "el-cul2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-1",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "자료 2, 4, 4, 4, 5, 5, 7, 9의 표준편차는 얼마일까요? (모집단의 표준편차)",
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "먼저 평균을 구해요.",
+    "편차의 제곱의 평균(분산)의 제곱근이 표준편차예요."
+   ],
+   "explanation": "평균 5, 분산 4이므로 표준편차는 2입니다.",
+   "role": "core",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-2",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "다음 수들의 평균은 얼마일까요? 10, 20, 30, 40",
+   "answer": {
+    "kind": "numeric",
+    "value": 25
+   },
+   "hints": [
+    "평균은 (모두 더한 값)÷(자료의 개수)예요.",
+    "먼저 모두 더해 보세요."
+   ],
+   "explanation": "(10+20+30+40)÷4=25이므로 평균은 25입니다.",
+   "role": "core",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-3",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "전교생 명단에서 매 10번째 학생을 뽑아 조사했습니다. 이 표본추출 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "집락추출"
+    },
+    {
+     "id": "b",
+     "text": "계통추출"
+    },
+    {
+     "id": "c",
+     "text": "단순임의추출"
+    },
+    {
+     "id": "d",
+     "text": "층화추출"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "표본을 어떻게 뽑는지 살펴보세요.",
+    "임의, 층별, 집락, 계통 중 알맞은 것을 골라요."
+   ],
+   "explanation": "이 방법은 계통추출입니다.",
+   "role": "core",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-4",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "전교생 명단에서 난수를 이용해 학생 30명을 무작위로 뽑았습니다. 이 표본추출 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "층화추출"
+    },
+    {
+     "id": "b",
+     "text": "집락추출"
+    },
+    {
+     "id": "c",
+     "text": "계통추출"
+    },
+    {
+     "id": "d",
+     "text": "단순임의추출"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "표본을 어떻게 뽑는지 살펴보세요.",
+    "임의, 층별, 집락, 계통 중 알맞은 것을 골라요."
+   ],
+   "explanation": "이 방법은 단순임의추출입니다.",
+   "role": "core",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-c",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "자료 1, 1, 3, 3의 표준편차는 얼마일까요? (모집단의 표준편차)",
+   "answer": {
+    "kind": "numeric",
+    "value": 1
+   },
+   "hints": [
+    "먼저 평균을 구해요.",
+    "편차의 제곱의 평균(분산)의 제곱근이 표준편차예요."
+   ],
+   "explanation": "평균 2, 분산 1이므로 표준편차는 1입니다.",
+   "role": "core",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-v1",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "몇 개의 학급을 먼저 뽑고 뽑힌 학급의 학생을 모두 조사했습니다. 이 표본추출 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "단순임의추출"
+    },
+    {
+     "id": "b",
+     "text": "층화추출"
+    },
+    {
+     "id": "c",
+     "text": "집락추출"
+    },
+    {
+     "id": "d",
+     "text": "계통추출"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "표본을 어떻게 뽑는지 살펴보세요.",
+    "임의, 층별, 집락, 계통 중 알맞은 것을 골라요."
+   ],
+   "explanation": "이 방법은 집락추출입니다.",
+   "role": "variant",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta1-v2",
+   "site": "math",
+   "skillId": "m.el.sta1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "다음 수들의 평균은 얼마일까요? 8, 12",
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "평균은 (모두 더한 값)÷(자료의 개수)예요.",
+    "먼저 모두 더해 보세요."
+   ],
+   "explanation": "(8+12)÷2=10이므로 평균은 10입니다.",
+   "role": "variant",
+   "family": "el-sta1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-1",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "모표준편차가 10, 표본의 크기가 100일 때 신뢰도 95%의 오차 한계 $1.96\\times\\frac{σ}{\\sqrt{ n } }$의 값은? (소수 둘째 자리까지)",
+   "answer": {
+    "kind": "numeric",
+    "value": 1.96,
+    "tolerance": 0.01
+   },
+   "hints": [
+    "$\\sqrt{ n }$을 먼저 구해요.",
+    "σ를 그 값으로 나누고 1.96을 곱해요."
+   ],
+   "explanation": "$1.96\\times\\frac{10}{10}=1.96$입니다.",
+   "role": "core",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-2",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "모표준편차가 15, 표본의 크기가 25일 때 신뢰도 95%의 오차 한계 $1.96\\times\\frac{σ}{\\sqrt{ n } }$의 값은? (소수 둘째 자리까지)",
+   "answer": {
+    "kind": "numeric",
+    "value": 5.88,
+    "tolerance": 0.01
+   },
+   "hints": [
+    "$\\sqrt{ n }$을 먼저 구해요.",
+    "σ를 그 값으로 나누고 1.96을 곱해요."
+   ],
+   "explanation": "$1.96\\times\\frac{15}{5}=5.88$입니다.",
+   "role": "core",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-3",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "표본평균이 52, 귀무가설의 모평균이 50, 모표준편차가 10, 표본의 크기가 100일 때 검정통계량 $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n } }$의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": 2,
+    "tolerance": 0.01
+   },
+   "hints": [
+    "분모 $σ/\\sqrt{ n }$을 먼저 구해요.",
+    "표본평균에서 모평균을 빼고 분모로 나눠요."
+   ],
+   "explanation": "$\\frac{52-50}{1}=2$입니다.",
+   "role": "core",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-4",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "유의수준 5%의 양측검정에서 임계값은 1.96입니다. 검정통계량이 z=2.3일 때 결론은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "귀무가설을 기각한다"
+    },
+    {
+     "id": "b",
+     "text": "귀무가설을 기각하지 못한다"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "$|z|$가 1.96보다 크면 귀무가설을 기각해요.",
+    "z의 절댓값을 1.96과 비교해요."
+   ],
+   "explanation": "|z|=2.3이므로 귀무가설을 기각한다.",
+   "role": "core",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-c",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "표본평균이 48, 귀무가설의 모평균이 50, 모표준편차가 8, 표본의 크기가 64일 때 검정통계량 $z=\\frac{\\bar{x}-\\mu}{σ/\\sqrt{ n } }$의 값은?",
+   "answer": {
+    "kind": "numeric",
+    "value": -2,
+    "tolerance": 0.01
+   },
+   "hints": [
+    "분모 $σ/\\sqrt{ n }$을 먼저 구해요.",
+    "표본평균에서 모평균을 빼고 분모로 나눠요."
+   ],
+   "explanation": "$\\frac{48-50}{1}=-2$입니다.",
+   "role": "core",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-v1",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "유의수준 5%의 양측검정에서 임계값은 1.96입니다. 검정통계량이 z=1.2일 때 결론은?",
+   "options": [
+    {
+     "id": "a",
+     "text": "귀무가설을 기각하지 못한다"
+    },
+    {
+     "id": "b",
+     "text": "귀무가설을 기각한다"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "$|z|$가 1.96보다 크면 귀무가설을 기각해요.",
+    "z의 절댓값을 1.96과 비교해요."
+   ],
+   "explanation": "|z|=1.2이므로 귀무가설을 기각하지 못한다.",
+   "role": "variant",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-sta2-v2",
+   "site": "math",
+   "skillId": "m.el.sta2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "모표준편차가 20, 표본의 크기가 100일 때 신뢰도 95%의 오차 한계 $1.96\\times\\frac{σ}{\\sqrt{ n } }$의 값은? (소수 둘째 자리까지)",
+   "answer": {
+    "kind": "numeric",
+    "value": 3.92,
+    "tolerance": 0.01
+   },
+   "hints": [
+    "$\\sqrt{ n }$을 먼저 구해요.",
+    "σ를 그 값으로 나누고 1.96을 곱해요."
+   ],
+   "explanation": "$1.96\\times\\frac{20}{10}=3.92$입니다.",
+   "role": "variant",
+   "family": "el-sta2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-1",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "도서관과 인터넷에서 논문과 책을 읽고 정리하며 탐구하는 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "문헌 조사"
+    },
+    {
+     "id": "b",
+     "text": "사례 조사"
+    },
+    {
+     "id": "c",
+     "text": "수학 실험"
+    },
+    {
+     "id": "d",
+     "text": "개발 연구"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 문헌 조사입니다.",
+   "role": "core",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-2",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "여러 학교의 실제 사례를 조사하고 비교하며 탐구하는 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "개발 연구"
+    },
+    {
+     "id": "b",
+     "text": "문헌 조사"
+    },
+    {
+     "id": "c",
+     "text": "사례 조사"
+    },
+    {
+     "id": "d",
+     "text": "수학 실험"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 사례 조사입니다.",
+   "role": "core",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-3",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "주사위를 직접 던져 결과를 기록하며 규칙을 찾는 탐구 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "수학 실험"
+    },
+    {
+     "id": "b",
+     "text": "개발 연구"
+    },
+    {
+     "id": "c",
+     "text": "문헌 조사"
+    },
+    {
+     "id": "d",
+     "text": "사례 조사"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 수학 실험입니다.",
+   "role": "core",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-4",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "수학 학습용 도구를 새로 만들어 그 효과를 검증하는 탐구 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "사례 조사"
+    },
+    {
+     "id": "b",
+     "text": "수학 실험"
+    },
+    {
+     "id": "c",
+     "text": "개발 연구"
+    },
+    {
+     "id": "d",
+     "text": "문헌 조사"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 개발 연구입니다.",
+   "role": "core",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-c",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 5,
+   "prompt": "주사위를 직접 던져 결과를 기록하며 규칙을 찾는 탐구 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "사례 조사"
+    },
+    {
+     "id": "b",
+     "text": "문헌 조사"
+    },
+    {
+     "id": "c",
+     "text": "개발 연구"
+    },
+    {
+     "id": "d",
+     "text": "수학 실험"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 수학 실험입니다.",
+   "role": "core",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-v1",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "여러 학교의 실제 사례를 조사하고 비교하며 탐구하는 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "수학 실험"
+    },
+    {
+     "id": "b",
+     "text": "사례 조사"
+    },
+    {
+     "id": "c",
+     "text": "개발 연구"
+    },
+    {
+     "id": "d",
+     "text": "문헌 조사"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 사례 조사입니다.",
+   "role": "variant",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res1-v2",
+   "site": "math",
+   "skillId": "m.el.res1",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "도서관과 인터넷에서 논문과 책을 읽고 정리하며 탐구하는 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "수학 실험"
+    },
+    {
+     "id": "b",
+     "text": "사례 조사"
+    },
+    {
+     "id": "c",
+     "text": "문헌 조사"
+    },
+    {
+     "id": "d",
+     "text": "개발 연구"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 문헌 조사입니다.",
+   "role": "variant",
+   "family": "el-res1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-1",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "true_false",
+   "difficulty": 4,
+   "prompt": "다른 사람의 글을 출처를 밝히지 않고 그대로 가져다 쓰는 것은 연구 윤리에 어긋난다.",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "연구 윤리는 정직과 출처 표시를 바탕으로 해요.",
+    "다른 사람의 자료나 결과를 어떻게 다루어야 하는지 생각해 보세요."
+   ],
+   "explanation": "출처를 밝히지 않고 쓰는 것은 표절이므로 연구 윤리에 어긋납니다. 맞는 설명입니다.",
+   "role": "core",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-2",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "true_false",
+   "difficulty": 4,
+   "prompt": "탐구 결과가 가설과 다르면 가설에 맞게 값을 고쳐 써도 된다.",
+   "answer": {
+    "kind": "choice",
+    "id": "false"
+   },
+   "hints": [
+    "연구 윤리는 정직과 출처 표시를 바탕으로 해요.",
+    "다른 사람의 자료나 결과를 어떻게 다루어야 하는지 생각해 보세요."
+   ],
+   "explanation": "결과를 고쳐 쓰는 것은 조작이며 연구 윤리에 어긋납니다. 틀린 설명입니다.",
+   "role": "core",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-3",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "탐구 주제를 정한 다음에 해야 할 일은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "결과를 발표한다"
+    },
+    {
+     "id": "b",
+     "text": "과정을 반성하고 평가한다"
+    },
+    {
+     "id": "c",
+     "text": "탐구를 수행한다"
+    },
+    {
+     "id": "d",
+     "text": "탐구 계획을 세운다"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "d"
+   },
+   "hints": [
+    "탐구는 계획 → 수행 → 발표 → 반성의 순서로 이루어져요.",
+    "주제를 정한 뒤에는 어떻게 탐구할지 정해요."
+   ],
+   "explanation": "주제를 정한 다음에는 탐구 계획을 세운다.",
+   "role": "core",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-4",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "multiple_choice",
+   "difficulty": 4,
+   "prompt": "도서관과 인터넷에서 논문과 책을 읽고 정리하며 탐구하는 방법은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "문헌 조사"
+    },
+    {
+     "id": "b",
+     "text": "사례 조사"
+    },
+    {
+     "id": "c",
+     "text": "수학 실험"
+    },
+    {
+     "id": "d",
+     "text": "개발 연구"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "a"
+   },
+   "hints": [
+    "탐구 자료를 어디서 얻는지 생각해 보세요.",
+    "문헌, 사례, 실험, 개발 중 알맞은 방법을 골라요."
+   ],
+   "explanation": "이 탐구 방법은 문헌 조사입니다.",
+   "role": "core",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-c",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "multiple_choice",
+   "difficulty": 5,
+   "prompt": "탐구 주제를 정한 다음에 해야 할 일은 무엇일까요?",
+   "options": [
+    {
+     "id": "a",
+     "text": "탐구를 수행한다"
+    },
+    {
+     "id": "b",
+     "text": "탐구 계획을 세운다"
+    },
+    {
+     "id": "c",
+     "text": "과정을 반성하고 평가한다"
+    },
+    {
+     "id": "d",
+     "text": "결과를 발표한다"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "b"
+   },
+   "hints": [
+    "탐구는 계획 → 수행 → 발표 → 반성의 순서로 이루어져요.",
+    "주제를 정한 뒤에는 어떻게 탐구할지 정해요."
+   ],
+   "explanation": "주제를 정한 다음에는 탐구 계획을 세운다.",
+   "role": "core",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-v1",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "true_false",
+   "difficulty": 4,
+   "prompt": "탐구 결과가 가설과 다르면 가설에 맞게 값을 고쳐 써도 된다.",
+   "answer": {
+    "kind": "choice",
+    "id": "false"
+   },
+   "hints": [
+    "연구 윤리는 정직과 출처 표시를 바탕으로 해요.",
+    "다른 사람의 자료나 결과를 어떻게 다루어야 하는지 생각해 보세요."
+   ],
+   "explanation": "결과를 고쳐 쓰는 것은 조작이며 연구 윤리에 어긋납니다. 틀린 설명입니다.",
+   "role": "variant",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-el-res2-v2",
+   "site": "math",
+   "skillId": "m.el.res2",
+   "type": "true_false",
+   "difficulty": 4,
+   "prompt": "다른 사람의 글을 출처를 밝히지 않고 그대로 가져다 쓰는 것은 연구 윤리에 어긋난다.",
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "연구 윤리는 정직과 출처 표시를 바탕으로 해요.",
+    "다른 사람의 자료나 결과를 어떻게 다루어야 하는지 생각해 보세요."
+   ],
+   "explanation": "출처를 밝히지 않고 쓰는 것은 표절이므로 연구 윤리에 어긋납니다. 맞는 설명입니다.",
+   "role": "variant",
+   "family": "el-res2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
    ],
    "status": "PUBLISHED"
   }

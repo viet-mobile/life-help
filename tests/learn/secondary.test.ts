@@ -156,7 +156,7 @@ describe.each(SCHOOL_SITES)("secondary curriculum (M2..H3): %s", (site) => {
     const merged = await demoContentRepository.getBundle(site);
     const ids = merged.questions.map((q) => q.id);
     expect(new Set(ids).size).toBe(ids.length);
-    for (const g of GRADES) expect(merged.catalog.courses.filter((c) => c.grade === g)).toHaveLength(1);
+    for (const g of GRADES) expect(merged.catalog.courses.filter((c) => !c.elective && c.grade === g)).toHaveLength(1);
   });
 });
 

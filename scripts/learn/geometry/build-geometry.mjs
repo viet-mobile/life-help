@@ -110,6 +110,17 @@ const write = (rel, text, oldRaw) => {
   fs.writeFileSync(path.join(root, rel), text);
   written.push(rel);
 };
+// The data / number / elective layer (scripts/learn/topics) is generated after this one and appends to the same files: geometry entries
+// are inserted BEFORE its entries so that either builder can be re-run (or checked) in any order and the files stay identical.
+const TOPIC_ID = /^(?:m-(?:[a-z]\d|el)-|m\.(?:[a-z]\d|el)\.|math-(?:[a-z]\d|el)-)(?:dat|neg|fac|crd|prp|sta|rec|lfn|econ|ai|job|cul|res)\d|^math-el-/;
+const addBeforeTopics = (arr, items, idOf) => { const at = arr.findIndex((x) => TOPIC_ID.test(idOf(x))); arr.splice(at < 0 ? arr.length : at, 0, ...items); };
+const addKeysBeforeTopics = (obj, entries) => {
+  const out = {}, add = () => { for (const [k, v] of entries) out[k] = v; };
+  let done = false;
+  for (const [k, v] of Object.entries(obj)) { if (!done && TOPIC_ID.test(k)) { add(); done = true; } out[k] = v; }
+  if (!done) add();
+  return out;
+};
 const isGeo = (id) => /^m-[a-z]\d-geo\d/.test(id) || /^m\.[a-z]\d\.geo\d/.test(id) || /^math-[a-z]\d-geo\d/.test(id);
 const bundleFor = (grade) => (grade.startsWith("E") ? "lib/learn/content/elementary/math.json" : grade === "M1" ? "lib/learn/content/demo/math.json" : "lib/learn/content/secondary/math.json");
 const viFor = (grade) => (grade.startsWith("E") || grade === "M1" ? "lib/learn/content/vi/math.json" : "lib/learn/content/vi/secondary-math.json");
@@ -122,18 +133,21 @@ for (const rel of ["lib/learn/content/elementary/math.json", "lib/learn/content/
   data.catalog.skills = data.catalog.skills.filter((s) => !isGeo(s.id));
   for (const c of data.catalog.courses) for (const u of c.units) u.lessons = u.lessons.filter((l) => !isGeo(l.id));
   for (const c of data.catalog.courses) {
+    if (c.elective) continue; // elective subject courses carry no grade geometry lessons
     const mine = ko.lessons.filter((x) => x.grade === c.grade);
     if (!mine.length || bundleFor(c.grade) !== rel) continue;
     const unit = c.units[0];
-    let prev = unit.lessons[unit.lessons.length - 1]?.skillIds[0];
+    let prev = unit.lessons.filter((l) => !TOPIC_ID.test(l.id)).at(-1)?.skillIds[0]; // the original lessons only (the topic layer is appended after this one)
+    const newSkills = [];
     for (const { lesson } of mine) {
-      unit.lessons.push(lesson);
       const sk = ko.skills.find((s) => s.id === lesson.skillIds[0]);
-      data.catalog.skills.push({ ...sk, ...(prev ? { prerequisiteId: prev } : {}) });
+      newSkills.push({ ...sk, ...(prev ? { prerequisiteId: prev } : {}) });
       prev = sk.id;
     }
+    addBeforeTopics(unit.lessons, mine.map((x) => x.lesson), (l) => l.id);
+    addBeforeTopics(data.catalog.skills, newSkills, (x) => x.id);
     const skills = new Set(mine.map((x) => x.lesson.skillIds[0]));
-    for (const q of ko.questions) if (skills.has(q.skillId)) data.questions.push(q); // core, challenge and the follow-up variants
+    addBeforeTopics(data.questions, ko.questions.filter((q) => skills.has(q.skillId)), (q) => q.id); // core, challenge and the follow-up variants
   }
   write(rel, dump(data, raw), raw);
 }
@@ -151,13 +165,16 @@ for (const loc of LOCALES) {
     for (const sec of ["skills", "lessons", "questions"]) for (const id of Object.keys(f.data[sec] ?? {})) if (isGeo(id)) delete f.data[sec][id];
   }
   const pick = (grade) => (loc === "vi" ? files.find((f) => f.rel === viFor(grade)) : files[0]);
-  for (const s of r.skills) pick(GRADES.find((g) => s.id.startsWith(`m.${g.toLowerCase()}.`))).data.skills[s.id] = s.title;
-  for (const { grade, lesson } of r.lessons) pick(grade).data.lessons[lesson.id] = { title: lesson.title, concept: lesson.concept, example: lesson.example };
+  const gradeOf = (id, re) => GRADES.find((g) => id.startsWith(re(g.toLowerCase())));
+  const by = new Map(); // file -> { sec -> [[key, value]] }
+  const put = (file, sec, key, value) => { const m = by.get(file) ?? by.set(file, {}).get(file); (m[sec] ??= []).push([key, value]); };
+  for (const s of r.skills) put(pick(gradeOf(s.id, (g) => `m.${g}.`)), "skills", s.id, s.title);
+  for (const { grade, lesson } of r.lessons) put(pick(grade), "lessons", lesson.id, { title: lesson.title, concept: lesson.concept, example: lesson.example });
   for (const q of r.questions) {
-    const grade = GRADES.find((g) => q.id.startsWith(`m-${g.toLowerCase()}-geo`));
-    pick(grade).data.questions[q.id] = { prompt: q.prompt, hints: q.hints, explanation: q.explanation, ...(q.options ? { options: Object.fromEntries(q.options.map((o) => [o.id, o.text])) } : {}) };
+    put(pick(gradeOf(q.id, (g) => `m-${g}-geo`)), "questions", q.id, { prompt: q.prompt, hints: q.hints, explanation: q.explanation, ...(q.options ? { options: Object.fromEntries(q.options.map((o) => [o.id, o.text])) } : {}) });
     need(!HANGUL.test(JSON.stringify(q)) || loc === "ko", `${loc} ${q.id}: Hangul in a non-Korean overlay`);
   }
+  for (const [f, secs] of by) for (const [sec, entries] of Object.entries(secs)) f.data[sec] = addKeysBeforeTopics(f.data[sec] ?? {}, entries);
   for (const f of files) write(f.rel, dump(f.data, f.raw), f.raw);
 }
 console.log(`${check ? "checked" : "wrote"} geometry: ${LESSONS.length} lessons, ${ko.questions.length} questions; files changed: ${written.length}; locales without kit: ${skipped.length ? skipped.join(" ") : "none"}`);
