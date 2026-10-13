@@ -671,6 +671,70 @@
         "Überlege, wie man mit den Arbeiten und Ergebnissen anderer umgehen muss."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Was ist {a}+{b}?",
+      "hints": [
+        "Addiere von den Einern aus.",
+        "Ergibt eine Spalte 10 oder mehr, übertrage zur nächsten Stelle."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Was ist {a}-{b}?",
+      "hints": [
+        "Subtrahiere von den Einern aus.",
+        "Kannst du nicht abziehen, borge von der nächsten Stelle."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Berechne: {expr}",
+      "hints": [
+        "Rechne zuerst, was in Klammern steht.",
+        "Dann Punkt- vor Strichrechnung, von links nach rechts."
+      ],
+      "expl": "{steps}, also ist das Ergebnis {ans}."
+    },
+    "roundTo": {
+      "prompt": "Was ergibt {n} mit „{mode}“ in Einheiten von {u}?",
+      "hints": [
+        "Sieh dir die Ziffern unterhalb der {u}er-Stelle an.",
+        "Aufrunden erhöht immer, Abrunden lässt immer weg, und Runden auf den nächsten Wert erhöht nur, wenn die nächste Ziffer 5 oder größer ist."
+      ],
+      "expl": "Mit „{mode}“ wird {n} in Einheiten von {u} zu {ans}."
+    },
+    "variance": {
+      "prompt": "Wie groß ist die Varianz der Daten {list}?",
+      "hints": [
+        "Bestimme den Mittelwert und dann jede Abweichung davon.",
+        "Die Varianz ist der Mittelwert der quadrierten Abweichungen."
+      ],
+      "expl": "Der Mittelwert ist {mean} und die quadrierten Abweichungen ergeben zusammen {sq}, also ist die Varianz {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Berechne den Wert dieser Summe: {expr}",
+      "hints": [
+        "Das Zeichen ∑ bedeutet: Setze nacheinander k=1, 2, 3, … ein und addiere alles.",
+        "Du kannst auch die Regeln $\\sum k=\\frac{n(n+1)}{2}$ und $\\sum c=cn$ benutzen."
+      ],
+      "expl": "{steps}, also ist die Summe {ans}."
+    },
+    "probAdd": {
+      "prompt": "Für zwei Ereignisse A und B gilt $P(A)={pa}$, $P(B)={pb}$ und $P(A\\cap B)={pab}$. Wie groß ist $P(A\\cup B)$?",
+      "hints": [
+        "Benutze den Additionssatz $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Setze die gegebenen Werte nacheinander ein."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Die Wahrscheinlichkeit des Ereignisses A ist $P(A)={pa}$. Wie groß ist die Wahrscheinlichkeit des Gegenereignisses $P(A^c)$?",
+      "hints": [
+        "Das Gegenereignis hat die Wahrscheinlichkeit $1-P(A)$.",
+        "Ziehe $P(A)$ von 1 ab."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Den Text einer anderen Person zu kopieren, ohne die Quelle zu nennen, verstößt gegen die Forschungsethik.",
     "et_cite_r": "Die Arbeit anderer ohne Quellenangabe zu verwenden, ist ein Plagiat, also ist die Aussage wahr.",
     "et_fake": "Weichen die Ergebnisse von der Hypothese ab, ist es in Ordnung, die Zahlen so zu ändern, dass sie passen.",
-    "et_fake_r": "Ergebnisse zu ändern ist Fälschung und verstößt gegen die Forschungsethik, also ist die Aussage falsch."
+    "et_fake_r": "Ergebnisse zu ändern ist Fälschung und verstößt gegen die Forschungsethik, also ist die Aussage falsch.",
+    "rd_up": "Aufrunden",
+    "rd_down": "Abrunden",
+    "rd_half": "Runden auf den nächsten Wert"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Forschungsschritte und Ethik",
       "concept": "Forschung geht so: Thema → Plan → Durchführung → Präsentation → Reflexion. Quellen anzugeben und Ergebnisse nie zu verändern ist Forschungsethik.",
       "example": "Nach dem Thema kommt der Forschungsplan"
+    },
+    "E3ari1": {
+      "title": "Dreistellige Zahlen addieren und subtrahieren",
+      "concept": "Rechne von den Einern aus. Ergibt eine Spalte 10 oder mehr, **übertrage** zur nächsten Stelle; kannst du nicht abziehen, **borge** von der nächsten Stelle.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Gemischte Rechnungen",
+      "concept": "Sind die vier Rechenarten gemischt, rechne zuerst **die Klammern**, dann **Multiplikation und Division** und zuletzt **Addition und Subtraktion**, von links nach rechts.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Aufrunden, Abrunden und Runden",
+      "concept": "**Aufrunden** hebt die Zahl auf das nächste Vielfache, **Abrunden** lässt die unteren Ziffern weg, und **Runden auf den nächsten Wert** erhöht nur, wenn die nächste Ziffer 5 oder größer ist.",
+      "example": "3472 in Vielfachen von 100: aufgerundet 3500, abgerundet 3400, gerundet 3500"
+    },
+    "M3sta1": {
+      "title": "Varianz und Standardabweichung",
+      "concept": "Die **Abweichung** ist (Wert) − (Mittelwert). Die **Varianz** ist der Mittelwert der quadrierten Abweichungen und die **Standardabweichung** ihre positive Quadratwurzel. Je größer sie ist, desto stärker streuen die Daten.",
+      "example": "2, 4, 6, 8 → Mittelwert 5, Varianz 5"
+    },
+    "H2seq1": {
+      "title": "Summen von Folgen und ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ bedeutet $a_1+a_2+\\cdots+a_n$. Nützliche Regeln: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ und $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Additionssatz und Gegenereignis",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Die Wahrscheinlichkeit des Gegenereignisses ist $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

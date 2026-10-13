@@ -211,3 +211,11 @@
   좌표평면과 정비례·반비례, 순환소수, 일차함수와 일차방정식, 산포도.
 - 학기 구분은 레슨 단위입니다. 학기별 분량이 충분해지려면 위 ○ 항목을 레슨으로 추가하는 작업이 필요하며, 한 학년당 레슨 1~2개를
   추가할 때마다 47개 언어 번역(템플릿 키트 방식)이 함께 필요합니다.
+
+## 2026-10 update — official standards JSON + arithmetic/statistics/sequence/probability tranche
+
+Reference data: `lib/learn/curriculum/kr/2022/mathematics.json` (435 standards) and `english.json` (270 standards), committed on `release/learning-prod-port`.
+
+Added six math topic lessons (all 45 locale kits, verified numeric answers): E3 `ari1` (3-digit add/subtract), E6 `ari1` (mixed calculation), E6 `ari2` (rounding up/down/nearest), M3 `sta1` (variance / standard deviation), H2 `seq1` (∑ sums), H3 `pro1` (addition rule / complement).
+
+Still open for math: 쌓기나무; 어림셈·소수; 직선·반직선·수직·평행; 도형의 이동; 수의 범위; 대응 관계; 상자그림·산점도; 인수분해; 삼·사차방정식; 행렬; 집합과 명제; 함수 합성·역함수; 유리·무리함수; 지수·로그함수; 수학적 귀납법; 중복순열·확률변수·표본; 미적분Ⅱ; 기하. English has no standard-to-lesson mapping yet.

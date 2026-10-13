@@ -671,6 +671,70 @@
         "Pensa a come vanno trattati il lavoro e i risultati degli altri."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Quanto fa {a}+{b}?",
+      "hints": [
+        "Somma partendo dalle unità.",
+        "Se una colonna fa 10 o più, riporta alla posizione successiva."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Quanto fa {a}-{b}?",
+      "hints": [
+        "Sottrai partendo dalle unità.",
+        "Se non puoi sottrarre, prendi in prestito dalla posizione successiva."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Calcola: {expr}",
+      "hints": [
+        "Calcola prima ciò che è tra parentesi.",
+        "Poi moltiplicazioni e divisioni prima di addizioni e sottrazioni, da sinistra a destra."
+      ],
+      "expl": "{steps}, quindi la risposta è {ans}."
+    },
+    "roundTo": {
+      "prompt": "Con «{mode}», quanto diventa {n} in unità di {u}?",
+      "hints": [
+        "Guarda le cifre sotto la posizione delle {u}.",
+        "L’arrotondamento per eccesso alza sempre, quello per difetto elimina sempre, e quello al più vicino alza solo se la cifra successiva è 5 o più."
+      ],
+      "expl": "Con «{mode}», {n} diventa {ans} in unità di {u}."
+    },
+    "variance": {
+      "prompt": "Qual è la varianza dei dati {list}?",
+      "hints": [
+        "Trova la media, poi lo scarto di ogni dato da essa.",
+        "La varianza è la media dei quadrati degli scarti."
+      ],
+      "expl": "La media è {mean} e i quadrati degli scarti sommano {sq}, quindi la varianza è {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Trova il valore di questa somma: {expr}",
+      "hints": [
+        "Il simbolo ∑ significa: metti k=1, 2, 3, … a turno e somma tutto.",
+        "Puoi anche usare le regole $\\sum k=\\frac{n(n+1)}{2}$ e $\\sum c=cn$."
+      ],
+      "expl": "{steps}, quindi la somma è {ans}."
+    },
+    "probAdd": {
+      "prompt": "Per due eventi A e B, $P(A)={pa}$, $P(B)={pb}$ e $P(A\\cap B)={pab}$. Quanto vale $P(A\\cup B)$?",
+      "hints": [
+        "Usa la regola dell’addizione $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Sostituisci i valori dati uno alla volta."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "La probabilità dell’evento A è $P(A)={pa}$. Qual è la probabilità dell’evento complementare $P(A^c)$?",
+      "hints": [
+        "L’evento complementare ha probabilità $1-P(A)$.",
+        "Sottrai $P(A)$ da 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Copiare lo scritto di un'altra persona senza dire da dove proviene è contrario all'etica della ricerca.",
     "et_cite_r": "Usare il lavoro di qualcuno senza citare la fonte è plagio, quindi l'affermazione è vera.",
     "et_fake": "Se i risultati sono diversi dall'ipotesi, va bene cambiare i numeri perché coincidano.",
-    "et_fake_r": "Cambiare i risultati è falsificazione e viola l'etica della ricerca, quindi l'affermazione è falsa."
+    "et_fake_r": "Cambiare i risultati è falsificazione e viola l'etica della ricerca, quindi l'affermazione è falsa.",
+    "rd_up": "arrotondamento per eccesso",
+    "rd_down": "arrotondamento per difetto",
+    "rd_half": "arrotondamento al più vicino"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Fasi della ricerca ed etica",
       "concept": "La ricerca procede così: argomento → piano → svolgimento → presentazione → riflessione. Citare le fonti e non alterare mai i risultati è l'etica della ricerca.",
       "example": "Dopo l'argomento viene il piano di ricerca"
+    },
+    "E3ari1": {
+      "title": "Addizioni e sottrazioni con numeri a tre cifre",
+      "concept": "Lavora partendo dalle unità. Se una colonna fa 10 o più, **riporta** alla posizione successiva; se non puoi sottrarre, **prendi in prestito** dalla posizione successiva.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Calcoli misti",
+      "concept": "Quando le quattro operazioni sono mescolate, calcola prima **le parentesi**, poi **moltiplicazioni e divisioni** e infine **addizioni e sottrazioni**, da sinistra a destra.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Arrotondare per eccesso, per difetto e al più vicino",
+      "concept": "**L’arrotondamento per eccesso** porta il numero al multiplo successivo, **quello per difetto** elimina le cifre basse e **quello al più vicino** alza solo se la cifra successiva è 5 o più.",
+      "example": "3472 in multipli di 100: per eccesso 3500, per difetto 3400, al più vicino 3500"
+    },
+    "M3sta1": {
+      "title": "Varianza e deviazione standard",
+      "concept": "Lo **scarto** è (valore) − (media). La **varianza** è la media dei quadrati degli scarti e la **deviazione standard** è la sua radice quadrata positiva. Più è grande, più i dati sono dispersi.",
+      "example": "2, 4, 6, 8 → media 5, varianza 5"
+    },
+    "H2seq1": {
+      "title": "Somme di successioni e ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ significa $a_1+a_2+\\cdots+a_n$. Regole utili: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ e $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "La regola dell’addizione e l’evento complementare",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. La probabilità dell’evento complementare è $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

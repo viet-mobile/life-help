@@ -671,6 +671,70 @@
         "Fikiria jinsi kazi na matokeo ya wengine yanavyopaswa kutendewa."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "{a}+{b} ni kiasi gani?",
+      "hints": [
+        "Jumlisha kuanzia nafasi ya mamoja.",
+        "Ikiwa jumla ya safu wima ni 10 au zaidi, beba kwenda nafasi inayofuata."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "{a}-{b} ni kiasi gani?",
+      "hints": [
+        "Toa kuanzia nafasi ya mamoja.",
+        "Ikiwa huwezi kutoa, kopa kutoka nafasi inayofuata."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Kokotoa: {expr}",
+      "hints": [
+        "Fanya kwanza yaliyo ndani ya mabano.",
+        "Kisha zidisha na gawanya kabla ya kujumlisha na kutoa, kutoka kushoto kwenda kulia."
+      ],
+      "expl": "{steps}, kwa hiyo jibu ni {ans}."
+    },
+    "roundTo": {
+      "prompt": "Kwa kutumia “{mode}”, {n} ni kiasi gani katika vizio vya {u}?",
+      "hints": [
+        "Angalia tarakimu zilizo chini ya nafasi ya {u}.",
+        "Kukadiria juu daima huongeza, kukadiria chini daima hupunguza, na kukadiria hadi karibu zaidi huongeza tu pale tarakimu ni 5 au zaidi."
+      ],
+      "expl": "Kwa kutumia “{mode}”, {n} inakuwa {ans} katika vizio vya {u}."
+    },
+    "variance": {
+      "prompt": "Variansi ya data {list} ni ipi?",
+      "hints": [
+        "Tafuta wastani, kisha mkengeuko wa kila thamani kutoka kwake.",
+        "Variansi ni wastani wa miraba ya mikengeuko."
+      ],
+      "expl": "Wastani ni {mean} na jumla ya miraba ya mikengeuko ni {sq}, kwa hiyo variansi ni {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Tafuta thamani ya jumla hii: {expr}",
+      "hints": [
+        "Alama ∑ inamaanisha: weka k=1, 2, 3, … kwa zamu kisha jumlisha vyote.",
+        "Unaweza pia kutumia kanuni $\\sum k=\\frac{n(n+1)}{2}$ na $\\sum c=cn$."
+      ],
+      "expl": "{steps}, kwa hiyo jumla ni {ans}."
+    },
+    "probAdd": {
+      "prompt": "Kwa matukio mawili A na B, $P(A)={pa}$, $P(B)={pb}$ na $P(A\\cap B)={pab}$. $P(A\\cup B)$ ni kiasi gani?",
+      "hints": [
+        "Tumia kanuni ya kujumlisha $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Weka thamani zilizotolewa moja baada ya nyingine."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Uwezekano wa tukio A ni $P(A)={pa}$. Uwezekano wa tukio kinyume, $P(A^c)$, ni kiasi gani?",
+      "hints": [
+        "Tukio kinyume lina uwezekano $1-P(A)$.",
+        "Toa $P(A)$ kutoka 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Kunakili maandishi ya mtu mwingine bila kusema yametoka wapi kunakiuka maadili ya utafiti.",
     "et_cite_r": "Kutumia kazi ya mtu bila chanzo ni wizi wa kazi za wengine, kwa hiyo kauli ni kweli.",
     "et_fake": "Matokeo yakitofautiana na dhana, ni sawa kubadilisha nambari ili zilingane.",
-    "et_fake_r": "Kubadilisha matokeo ni kughushi na kunakiuka maadili ya utafiti, kwa hiyo kauli si kweli."
+    "et_fake_r": "Kubadilisha matokeo ni kughushi na kunakiuka maadili ya utafiti, kwa hiyo kauli si kweli.",
+    "rd_up": "kukadiria juu",
+    "rd_down": "kukadiria chini",
+    "rd_half": "kukadiria hadi karibu zaidi"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Hatua za utafiti na maadili",
       "concept": "Utafiti huenda mada → mpango → utekelezaji → uwasilishaji → tafakari. Kutaja vyanzo na kutobadilisha matokeo ni maadili ya utafiti.",
       "example": "Baada ya mada hufuata mpango wa utafiti"
+    },
+    "E3ari1": {
+      "title": "Kujumlisha na kutoa namba za tarakimu tatu",
+      "concept": "Anza kutoka nafasi ya mamoja. Ikiwa jumla ya safu wima ni 10 au zaidi, **beba** kwenda nafasi inayofuata; ikiwa huwezi kutoa, **kopa** kutoka nafasi inayofuata.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Hesabu mchanganyiko",
+      "concept": "Operesheni nne zikichanganyika, fanya kwanza **mabano**, kisha **kuzidisha na kugawanya**, na mwisho **kujumlisha na kutoa**, kutoka kushoto kwenda kulia.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Kukadiria juu, chini na hadi karibu zaidi",
+      "concept": "**Kukadiria juu** huinua namba hadi kizidisho kinachofuata, **kukadiria chini** huondoa tarakimu za chini, na **kukadiria hadi karibu zaidi** huinua tu ikiwa tarakimu inayofuata ni 5 au zaidi.",
+      "example": "3472 hadi kizidisho cha 100: juu 3500, chini 3400, karibu zaidi 3500"
+    },
+    "M3sta1": {
+      "title": "Variansi na mkengeuko sanifu",
+      "concept": "**Mkengeuko** ni (thamani) − (wastani). **Variansi** ni wastani wa miraba ya mikengeuko na **mkengeuko sanifu** ni mzizi wake wa mraba chanya. Kadiri inavyokuwa kubwa, ndivyo data zinavyotawanyika zaidi.",
+      "example": "2, 4, 6, 8 → wastani 5, variansi 5"
+    },
+    "H2seq1": {
+      "title": "Jumla za mfuatano na ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ inamaanisha $a_1+a_2+\\cdots+a_n$. Kanuni muhimu: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ na $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Kanuni ya kujumlisha na tukio kinyume",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Uwezekano wa tukio kinyume ni $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

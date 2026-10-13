@@ -214,6 +214,11 @@
     "prerequisiteId": "m.e2.geo2"
    },
    {
+    "id": "m.e3.ari1",
+    "title": "세 자리 수의 덧셈과 뺄셈",
+    "prerequisiteId": "m.e3.geo2"
+   },
+   {
     "id": "m.e4.dat1",
     "title": "꺾은선그래프 읽기",
     "prerequisiteId": "m.e4.geo2"
@@ -232,6 +237,16 @@
     "id": "m.e6.dat1",
     "title": "띠그래프와 원그래프",
     "prerequisiteId": "m.e6.geo2"
+   },
+   {
+    "id": "m.e6.ari1",
+    "title": "자연수의 혼합 계산",
+    "prerequisiteId": "m.e6.dat1"
+   },
+   {
+    "id": "m.e6.ari2",
+    "title": "올림, 버림, 반올림",
+    "prerequisiteId": "m.e6.ari1"
    }
   ],
   "courses": [
@@ -636,6 +651,22 @@
          "m-e3-geo2-4"
         ],
         "challengeId": "m-e3-geo2-c"
+       },
+       {
+        "id": "math-e3-ari1",
+        "title": "세 자리 수의 덧셈과 뺄셈",
+        "skillIds": [
+         "m.e3.ari1"
+        ],
+        "concept": "일의 자리부터 차례로 계산해요. 더해서 10이 넘으면 윗자리로 **받아올림**하고, 뺄 수 없으면 윗자리에서 **받아내림**해요.",
+        "example": "346+278=624",
+        "questionIds": [
+         "m-e3-ari1-1",
+         "m-e3-ari1-2",
+         "m-e3-ari1-3",
+         "m-e3-ari1-4"
+        ],
+        "challengeId": "m-e3-ari1-c"
        }
       ]
      }
@@ -1090,6 +1121,38 @@
          "m-e6-dat1-4"
         ],
         "challengeId": "m-e6-dat1-c"
+       },
+       {
+        "id": "math-e6-ari1",
+        "title": "자연수의 혼합 계산",
+        "skillIds": [
+         "m.e6.ari1"
+        ],
+        "concept": "덧셈·뺄셈·곱셈·나눗셈이 섞여 있으면 **괄호 안**을 먼저, 그다음 **곱셈과 나눗셈**, 마지막으로 **덧셈과 뺄셈**을 앞에서부터 계산해요.",
+        "example": "12+3×4=12+12=24",
+        "questionIds": [
+         "m-e6-ari1-1",
+         "m-e6-ari1-2",
+         "m-e6-ari1-3",
+         "m-e6-ari1-4"
+        ],
+        "challengeId": "m-e6-ari1-c"
+       },
+       {
+        "id": "math-e6-ari2",
+        "title": "올림, 버림, 반올림",
+        "skillIds": [
+         "m.e6.ari2"
+        ],
+        "concept": "**올림**은 구하려는 자리 아래를 모두 올려 주고, **버림**은 모두 버려요. **반올림**은 바로 아래 자리가 5 이상이면 올리고 4 이하이면 버려요.",
+        "example": "3472를 100 단위로 올림 3500, 버림 3400, 반올림 3500",
+        "questionIds": [
+         "m-e6-ari2-1",
+         "m-e6-ari2-2",
+         "m-e6-ari2-3",
+         "m-e6-ari2-4"
+        ],
+        "challengeId": "m-e6-ari2-c"
        }
       ]
      }
@@ -16310,6 +16373,174 @@
    "status": "PUBLISHED"
   },
   {
+   "id": "m-e3-ari1-1",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "346+278는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 624
+   },
+   "hints": [
+    "일의 자리부터 차례로 더해요.",
+    "더해서 10이 넘으면 윗자리로 받아올림해요."
+   ],
+   "explanation": "346+278=624입니다.",
+   "role": "core",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-ari1-2",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "503-267는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 236
+   },
+   "hints": [
+    "일의 자리부터 차례로 빼요.",
+    "뺄 수 없으면 윗자리에서 받아내림해요."
+   ],
+   "explanation": "503-267=236입니다.",
+   "role": "core",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-ari1-3",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "458+367는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 825
+   },
+   "hints": [
+    "일의 자리부터 차례로 더해요.",
+    "더해서 10이 넘으면 윗자리로 받아올림해요."
+   ],
+   "explanation": "458+367=825입니다.",
+   "role": "core",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-ari1-4",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "800-352는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 448
+   },
+   "hints": [
+    "일의 자리부터 차례로 빼요.",
+    "뺄 수 없으면 윗자리에서 받아내림해요."
+   ],
+   "explanation": "800-352=448입니다.",
+   "role": "core",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-ari1-c",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "697+305는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 1002
+   },
+   "hints": [
+    "일의 자리부터 차례로 더해요.",
+    "더해서 10이 넘으면 윗자리로 받아올림해요."
+   ],
+   "explanation": "697+305=1002입니다.",
+   "role": "core",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-ari1-v1",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "612-189는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 423
+   },
+   "hints": [
+    "일의 자리부터 차례로 빼요.",
+    "뺄 수 없으면 윗자리에서 받아내림해요."
+   ],
+   "explanation": "612-189=423입니다.",
+   "role": "variant",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e3-ari1-v2",
+   "site": "math",
+   "skillId": "m.e3.ari1",
+   "type": "numeric",
+   "difficulty": 1,
+   "prompt": "275+459는 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 734
+   },
+   "hints": [
+    "일의 자리부터 차례로 더해요.",
+    "더해서 10이 넘으면 윗자리로 받아올림해요."
+   ],
+   "explanation": "275+459=734입니다.",
+   "role": "variant",
+   "family": "e3-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
    "id": "m-e4-dat1-1",
    "site": "math",
    "skillId": "m.e4.dat1",
@@ -18629,6 +18860,342 @@
    "explanation": "100-(10+25+40)=25이므로 25%입니다.",
    "role": "variant",
    "family": "e6-dat1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-1",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음을 계산해 보세요. 12 + 3 × 4",
+   "answer": {
+    "kind": "numeric",
+    "value": 24
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "3×4=12, 12+12=24이므로 24입니다.",
+   "role": "core",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-2",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음을 계산해 보세요. (18 − 6) ÷ 3 + 5",
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "18−6=12, 12÷3=4, 4+5=9이므로 9입니다.",
+   "role": "core",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-3",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음을 계산해 보세요. 40 − 24 ÷ 4 × 2",
+   "answer": {
+    "kind": "numeric",
+    "value": 28
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "24÷4=6, 6×2=12, 40−12=28이므로 28입니다.",
+   "role": "core",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-4",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음을 계산해 보세요. 7 × (9 − 4) + 6",
+   "answer": {
+    "kind": "numeric",
+    "value": 41
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "9−4=5, 7×5=35, 35+6=41이므로 41입니다.",
+   "role": "core",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-c",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "다음을 계산해 보세요. 56 ÷ (3 + 4) × 5 − 9",
+   "answer": {
+    "kind": "numeric",
+    "value": 31
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "3+4=7, 56÷7=8, 8×5=40, 40−9=31이므로 31입니다.",
+   "role": "core",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-v1",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음을 계산해 보세요. 25 + 15 ÷ 3",
+   "answer": {
+    "kind": "numeric",
+    "value": 30
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "15÷3=5, 25+5=30이므로 30입니다.",
+   "role": "variant",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari1-v2",
+   "site": "math",
+   "skillId": "m.e6.ari1",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "다음을 계산해 보세요. (4 + 8) × 3 − 10",
+   "answer": {
+    "kind": "numeric",
+    "value": 26
+   },
+   "hints": [
+    "괄호가 있으면 괄호 안을 가장 먼저 계산해요.",
+    "곱셈과 나눗셈을 덧셈과 뺄셈보다 먼저, 앞에서부터 계산해요."
+   ],
+   "explanation": "4+8=12, 12×3=36, 36−10=26이므로 26입니다.",
+   "role": "variant",
+   "family": "e6-ari1",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-1",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "3472을(를) 100 단위로 올림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3500
+   },
+   "hints": [
+    "100 단위로 나타내려면 100보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "3472을(를) 100 단위로 올림하면 3500입니다.",
+   "role": "core",
+   "family": "e6-ari2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-2",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "3472을(를) 100 단위로 버림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3400
+   },
+   "hints": [
+    "100 단위로 나타내려면 100보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "3472을(를) 100 단위로 버림하면 3400입니다.",
+   "role": "core",
+   "family": "e6-ari2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-3",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "6285을(를) 10 단위로 반올림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 6290
+   },
+   "hints": [
+    "10 단위로 나타내려면 10보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "6285을(를) 10 단위로 반올림하면 6290입니다.",
+   "role": "core",
+   "family": "e6-ari2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-4",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "1248을(를) 10 단위로 올림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 1250
+   },
+   "hints": [
+    "10 단위로 나타내려면 10보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "1248을(를) 10 단위로 올림하면 1250입니다.",
+   "role": "core",
+   "family": "e6-ari2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-c",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "7846을(를) 1000 단위로 반올림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 8000
+   },
+   "hints": [
+    "1000 단위로 나타내려면 1000보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "7846을(를) 1000 단위로 반올림하면 8000입니다.",
+   "role": "core",
+   "family": "e6-ari2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-v1",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "5019을(를) 10 단위로 버림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 5010
+   },
+   "hints": [
+    "10 단위로 나타내려면 10보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "5019을(를) 10 단위로 버림하면 5010입니다.",
+   "role": "variant",
+   "family": "e6-ari2",
+   "expectedSeconds": 60,
+   "tags": [
+    "topic"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-e6-ari2-v2",
+   "site": "math",
+   "skillId": "m.e6.ari2",
+   "type": "numeric",
+   "difficulty": 2,
+   "prompt": "2951을(를) 100 단위로 반올림하면 얼마일까요?",
+   "answer": {
+    "kind": "numeric",
+    "value": 3000
+   },
+   "hints": [
+    "100 단위로 나타내려면 100보다 작은 자리를 살펴봐요.",
+    "올림은 올리고, 버림은 버리고, 반올림은 5 이상이면 올려요."
+   ],
+   "explanation": "2951을(를) 100 단위로 반올림하면 3000입니다.",
+   "role": "variant",
+   "family": "e6-ari2",
    "expectedSeconds": 60,
    "tags": [
     "topic"

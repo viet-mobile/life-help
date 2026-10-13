@@ -671,6 +671,70 @@
         "Hãy nghĩ xem công trình và kết quả của người khác phải được đối xử thế nào."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "{a}+{b} bằng bao nhiêu?",
+      "hints": [
+        "Cộng từ hàng đơn vị.",
+        "Nếu một hàng cộng được 10 trở lên thì nhớ sang hàng kế tiếp."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "{a}-{b} bằng bao nhiêu?",
+      "hints": [
+        "Trừ từ hàng đơn vị.",
+        "Nếu không trừ được thì mượn từ hàng kế tiếp."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Hãy tính: {expr}",
+      "hints": [
+        "Tính phần trong ngoặc trước.",
+        "Sau đó nhân, chia trước cộng, trừ, từ trái sang phải."
+      ],
+      "expl": "{steps}, nên đáp án là {ans}."
+    },
+    "roundTo": {
+      "prompt": "Dùng cách “{mode}”, {n} theo đơn vị {u} là bao nhiêu?",
+      "hints": [
+        "Hãy xem các chữ số ở dưới hàng {u}.",
+        "Làm tròn lên luôn tăng lên, làm tròn xuống luôn bỏ đi, còn làm tròn gần nhất chỉ tăng khi chữ số kế tiếp là 5 trở lên."
+      ],
+      "expl": "Dùng cách “{mode}”, {n} thành {ans} theo đơn vị {u}."
+    },
+    "variance": {
+      "prompt": "Phương sai của dãy số liệu {list} là bao nhiêu?",
+      "hints": [
+        "Tìm trung bình rồi tìm độ lệch của từng số.",
+        "Phương sai là trung bình của các bình phương độ lệch."
+      ],
+      "expl": "Trung bình là {mean} và tổng bình phương độ lệch là {sq}, nên phương sai là {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Hãy tính giá trị của tổng sau: {expr}",
+      "hints": [
+        "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+        "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+      ],
+      "expl": "{steps}, nên tổng là {ans}."
+    },
+    "probAdd": {
+      "prompt": "Cho hai biến cố A và B, $P(A)={pa}$, $P(B)={pb}$ và $P(A\\cap B)={pab}$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+      "hints": [
+        "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Thay lần lượt các giá trị đã cho vào."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Xác suất của biến cố A là $P(A)={pa}$. Xác suất của biến cố đối $P(A^c)$ là bao nhiêu?",
+      "hints": [
+        "Biến cố đối có xác suất $1-P(A)$.",
+        "Lấy 1 trừ $P(A)$."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Sao chép bài viết của người khác mà không nói rõ nguồn gốc là vi phạm đạo đức nghiên cứu.",
     "et_cite_r": "Dùng công trình của người khác mà không nêu nguồn là đạo văn, nên nhận định này đúng.",
     "et_fake": "Nếu kết quả khác với giả thuyết thì có thể sửa số liệu cho khớp.",
-    "et_fake_r": "Sửa kết quả là làm giả số liệu và vi phạm đạo đức nghiên cứu, nên nhận định này sai."
+    "et_fake_r": "Sửa kết quả là làm giả số liệu và vi phạm đạo đức nghiên cứu, nên nhận định này sai.",
+    "rd_up": "làm tròn lên",
+    "rd_down": "làm tròn xuống",
+    "rd_half": "làm tròn gần nhất"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Các bước nghiên cứu và đạo đức",
       "concept": "Nghiên cứu đi theo trình tự đề tài → kế hoạch → thực hiện → trình bày → nhìn lại. Trích dẫn nguồn và không bao giờ sửa kết quả là đạo đức nghiên cứu.",
       "example": "Sau đề tài là kế hoạch nghiên cứu"
+    },
+    "E3ari1": {
+      "title": "Cộng và trừ các số có ba chữ số",
+      "concept": "Tính từ hàng đơn vị. Nếu một hàng cộng được 10 trở lên thì **nhớ** sang hàng kế tiếp; nếu không trừ được thì **mượn** từ hàng kế tiếp.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Tính toán hỗn hợp",
+      "concept": "Khi bốn phép tính trộn lẫn, hãy tính **phần trong ngoặc** trước, rồi **nhân và chia**, cuối cùng **cộng và trừ**, từ trái sang phải.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Làm tròn lên, xuống và gần nhất",
+      "concept": "**Làm tròn lên** nâng số lên bội kế tiếp, **làm tròn xuống** bỏ các chữ số thấp hơn, còn **làm tròn gần nhất** chỉ nâng lên khi chữ số kế tiếp là 5 trở lên.",
+      "example": "3472 theo bội của 100: lên 3500, xuống 3400, gần nhất 3500"
+    },
+    "M3sta1": {
+      "title": "Phương sai và độ lệch chuẩn",
+      "concept": "**Độ lệch** = (giá trị) − (trung bình). **Phương sai** là trung bình của các bình phương độ lệch, còn **độ lệch chuẩn** là căn bậc hai dương của phương sai. Giá trị càng lớn thì dữ liệu càng phân tán.",
+      "example": "2, 4, 6, 8 → trung bình 5, phương sai 5"
+    },
+    "H2seq1": {
+      "title": "Tổng của dãy số và ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ nghĩa là $a_1+a_2+\\cdots+a_n$. Các quy tắc hữu ích: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ và $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Quy tắc cộng và biến cố đối",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Xác suất của biến cố đối là $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

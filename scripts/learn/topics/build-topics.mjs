@@ -22,7 +22,7 @@ const GRADES = ["E1", "E2", "E3", "E4", "E5", "E6", "M1", "M2", "M3", "H1", "H2"
 const OPT = ["a", "b", "c", "d"];
 const HANGUL = /[가-힣]/;
 const need = (cond, msg) => { if (!cond) throw new Error(msg); };
-const TOPIC = "(?:dat|neg|fac|crd|prp|sta|rec|lfn|econ|ai|job|cul|res)";
+const TOPIC = "(?:dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|econ|ai|job|cul|res)";
 const GROUP = `(?:[a-z]\\d|el)`;
 const isTopic = (id) => new RegExp(`^(?:m-${GROUP}-${TOPIC}\\d|m\\.${GROUP}\\.${TOPIC}\\d|math-${GROUP}-${TOPIC}\\d|math-el-${TOPIC})`).test(id);
 

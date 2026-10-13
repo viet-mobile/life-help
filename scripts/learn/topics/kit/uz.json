@@ -671,6 +671,70 @@
         "Boshqalarning ishi va natijalariga qanday munosabatda bo'lish kerakligini o'ylang."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "{a}+{b} nechiga teng?",
+      "hints": [
+        "Birlar xonasidan boshlab qo‘shing.",
+        "Agar ustundagi yig‘indi 10 yoki undan katta bo‘lsa, 1 ni keyingi xonaga ko‘chiring."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "{a}-{b} nechiga teng?",
+      "hints": [
+        "Birlar xonasidan boshlab ayiring.",
+        "Ayirib bo‘lmasa, keyingi xonadan qarz oling."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Hisoblang: {expr}",
+      "hints": [
+        "Avval qavs ichidagini bajaring.",
+        "Keyin ko‘paytirish va bo‘lishni qo‘shish va ayirishdan oldin, chapdan o‘ngga qarab bajaring."
+      ],
+      "expl": "{steps}, demak javob {ans}."
+    },
+    "roundTo": {
+      "prompt": "“{mode}” usulida {n} soni {u} birlikda nechaga teng bo‘ladi?",
+      "hints": [
+        "{u} xonasidan pastdagi raqamlarga qarang.",
+        "Yuqoriga yaxlitlashda son doim kattalashadi, pastga yaxlitlashda doim kamayadi, eng yaqinigacha yaxlitlashda esa raqam 5 yoki undan katta bo‘lsagina kattalashadi."
+      ],
+      "expl": "“{mode}” usulida {n} soni {u} birlikda {ans} bo‘ladi."
+    },
+    "variance": {
+      "prompt": "{list} ma’lumotlarning dispersiyasi nechiga teng?",
+      "hints": [
+        "O‘rtacha qiymatni, so‘ng har bir qiymatning undan chetlanishini toping.",
+        "Dispersiya — chetlanishlar kvadratlarining o‘rtachasi."
+      ],
+      "expl": "O‘rtacha {mean}, chetlanishlar kvadratlarining yig‘indisi {sq}, demak dispersiya {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Bu yig‘indining qiymatini toping: {expr}",
+      "hints": [
+        "∑ belgisi: k=1, 2, 3, … ni ketma-ket qo‘yib, hammasini qo‘shing, degani.",
+        "$\\sum k=\\frac{n(n+1)}{2}$ va $\\sum c=cn$ qoidalaridan ham foydalanishingiz mumkin."
+      ],
+      "expl": "{steps}, demak yig‘indi {ans}."
+    },
+    "probAdd": {
+      "prompt": "A va B ikki hodisa uchun $P(A)={pa}$, $P(B)={pb}$ va $P(A\\cap B)={pab}$. $P(A\\cup B)$ nechiga teng?",
+      "hints": [
+        "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$ qo‘shish qoidasidan foydalaning.",
+        "Berilgan qiymatlarni birma-bir qo‘ying."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "A hodisaning ehtimolligi $P(A)={pa}$. Qarama-qarshi hodisa $P(A^c)$ ning ehtimolligi nechiga teng?",
+      "hints": [
+        "Qarama-qarshi hodisaning ehtimolligi $1-P(A)$.",
+        "1 dan $P(A)$ ni ayiring."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Boshqa odamning yozganini manbasini aytmasdan ko'chirish tadqiqot etikasiga zid.",
     "et_cite_r": "Birovning ishidan manbasiz foydalanish plagiat, shuning uchun bu fikr to'g'ri.",
     "et_fake": "Agar natijalar gipotezadan farq qilsa, ularni moslashtirish uchun sonlarni o'zgartirsa bo'ladi.",
-    "et_fake_r": "Natijalarni o'zgartirish soxtalashtirish bo'lib, tadqiqot etikasini buzadi, shuning uchun bu fikr noto'g'ri."
+    "et_fake_r": "Natijalarni o'zgartirish soxtalashtirish bo'lib, tadqiqot etikasini buzadi, shuning uchun bu fikr noto'g'ri.",
+    "rd_up": "yuqoriga yaxlitlash",
+    "rd_down": "pastga yaxlitlash",
+    "rd_half": "eng yaqinigacha yaxlitlash"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Tadqiqot bosqichlari va etika",
       "concept": "Tadqiqot shunday boradi: mavzu → reja → bajarish → taqdim etish → xulosa qilish. Manbalarni ko'rsatish va natijalarni hech qachon o'zgartirmaslik — tadqiqot etikasi.",
       "example": "Mavzudan keyin tadqiqot rejasi keladi"
+    },
+    "E3ari1": {
+      "title": "Uch xonali sonlarni qo‘shish va ayirish",
+      "concept": "Birlar xonasidan boshlang. Ustun yig‘indisi 10 yoki undan katta bo‘lsa, keyingi xonaga **ko‘chiring**; ayirib bo‘lmasa, keyingi xonadan **qarz oling**.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Aralash hisoblashlar",
+      "concept": "To‘rt amal aralash kelganda avval **qavslarni**, so‘ng **ko‘paytirish va bo‘lishni**, oxirida **qo‘shish va ayirishni** chapdan o‘ngga qarab bajaring.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Yuqoriga, pastga va eng yaqinigacha yaxlitlash",
+      "concept": "**Yuqoriga yaxlitlash** sonni keyingi karralisigacha oshiradi, **pastga yaxlitlash** quyi raqamlarni tashlaydi, **eng yaqinigacha yaxlitlash** esa keyingi raqam 5 yoki undan katta bo‘lsagina oshiradi.",
+      "example": "3472 ni 100 ning karralisigacha: yuqoriga 3500, pastga 3400, eng yaqini 3500"
+    },
+    "M3sta1": {
+      "title": "Dispersiya va standart og‘ish",
+      "concept": "**Chetlanish** = (qiymat) − (o‘rtacha). **Dispersiya** — chetlanishlar kvadratlarining o‘rtachasi, **standart og‘ish** esa uning musbat kvadrat ildizi. U qanchalik katta bo‘lsa, ma’lumotlar shunchalik sochilgan bo‘ladi.",
+      "example": "2, 4, 6, 8 → o‘rtacha 5, dispersiya 5"
+    },
+    "H2seq1": {
+      "title": "Ketma-ketlik yig‘indilari va ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ — bu $a_1+a_2+\\cdots+a_n$. Foydali qoidalar: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ va $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Qo‘shish qoidasi va qarama-qarshi hodisa",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Qarama-qarshi hodisaning ehtimolligi $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

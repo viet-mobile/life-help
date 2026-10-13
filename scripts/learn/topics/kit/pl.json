@@ -671,6 +671,70 @@
         "Pomyśl, jak należy traktować cudzą pracę i wyniki."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Ile to jest {a}+{b}?",
+      "hints": [
+        "Dodawaj, zaczynając od jedności.",
+        "Jeśli kolumna daje 10 lub więcej, przenieś do następnego rzędu."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Ile to jest {a}-{b}?",
+      "hints": [
+        "Odejmuj, zaczynając od jedności.",
+        "Jeśli nie możesz odjąć, pożycz z następnego rzędu."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Oblicz: {expr}",
+      "hints": [
+        "Najpierw policz to, co w nawiasach.",
+        "Potem mnożenie i dzielenie przed dodawaniem i odejmowaniem, od lewej do prawej."
+      ],
+      "expl": "{steps}, więc wynik to {ans}."
+    },
+    "roundTo": {
+      "prompt": "Ile wynosi {n} po „{mode}” do jednostek {u}?",
+      "hints": [
+        "Spójrz na cyfry poniżej rzędu {u}.",
+        "Zaokrąglenie w górę zawsze zwiększa, w dół zawsze odrzuca, a zwykłe zaokrąglenie zwiększa tylko wtedy, gdy kolejna cyfra to 5 lub więcej."
+      ],
+      "expl": "Po „{mode}” liczba {n} do jednostek {u} to {ans}."
+    },
+    "variance": {
+      "prompt": "Ile wynosi wariancja danych {list}?",
+      "hints": [
+        "Znajdź średnią, a potem odchylenie każdej wartości od niej.",
+        "Wariancja to średnia kwadratów odchyleń."
+      ],
+      "expl": "Średnia wynosi {mean}, a suma kwadratów odchyleń to {sq}, więc wariancja to {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Oblicz wartość tej sumy: {expr}",
+      "hints": [
+        "Znak ∑ oznacza: podstawiaj po kolei k=1, 2, 3, … i dodaj wszystko.",
+        "Możesz też użyć wzorów $\\sum k=\\frac{n(n+1)}{2}$ i $\\sum c=cn$."
+      ],
+      "expl": "{steps}, więc suma to {ans}."
+    },
+    "probAdd": {
+      "prompt": "Dla zdarzeń A i B: $P(A)={pa}$, $P(B)={pb}$ oraz $P(A\\cap B)={pab}$. Ile wynosi $P(A\\cup B)$?",
+      "hints": [
+        "Użyj wzoru na sumę zdarzeń $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Podstaw podane wartości po kolei."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Prawdopodobieństwo zdarzenia A wynosi $P(A)={pa}$. Ile wynosi prawdopodobieństwo zdarzenia przeciwnego $P(A^c)$?",
+      "hints": [
+        "Zdarzenie przeciwne ma prawdopodobieństwo $1-P(A)$.",
+        "Odejmij $P(A)$ od 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Przepisywanie cudzego tekstu bez podania źródła jest sprzeczne z etyką badań.",
     "et_cite_r": "Wykorzystanie czyjejś pracy bez podania źródła to plagiat, więc to zdanie jest prawdziwe.",
     "et_fake": "Jeśli wyniki różnią się od hipotezy, można zmienić liczby tak, by się zgadzały.",
-    "et_fake_r": "Zmiana wyników to fałszowanie danych i łamie etykę badań, więc to zdanie jest fałszywe."
+    "et_fake_r": "Zmiana wyników to fałszowanie danych i łamie etykę badań, więc to zdanie jest fałszywe.",
+    "rd_up": "zaokrąglenie w górę",
+    "rd_down": "zaokrąglenie w dół",
+    "rd_half": "zaokrąglenie do najbliższej wartości"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Etapy badania i etyka",
       "concept": "Badanie przebiega: temat → plan → przeprowadzenie → prezentacja → refleksja. Powoływanie się na źródła i niezmienianie wyników to etyka badań.",
       "example": "Po temacie przychodzi plan badania"
+    },
+    "E3ari1": {
+      "title": "Dodawanie i odejmowanie liczb trzycyfrowych",
+      "concept": "Licz, zaczynając od jedności. Jeśli kolumna daje 10 lub więcej, **przenieś** do następnego rzędu; jeśli nie możesz odjąć, **pożycz** z następnego rzędu.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Działania mieszane",
+      "concept": "Gdy działania są pomieszane, najpierw policz **nawiasy**, potem **mnożenie i dzielenie**, a na końcu **dodawanie i odejmowanie**, od lewej do prawej.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Zaokrąglanie w górę, w dół i do najbliższej wartości",
+      "concept": "**Zaokrąglenie w górę** podnosi liczbę do następnej wielokrotności, **w dół** odrzuca niższe cyfry, a **do najbliższej wartości** zwiększa tylko wtedy, gdy kolejna cyfra to 5 lub więcej.",
+      "example": "3472 do wielokrotności 100: w górę 3500, w dół 3400, najbliższa 3500"
+    },
+    "M3sta1": {
+      "title": "Wariancja i odchylenie standardowe",
+      "concept": "**Odchylenie** to (wartość) − (średnia). **Wariancja** to średnia kwadratów odchyleń, a **odchylenie standardowe** to jej dodatni pierwiastek. Im większe, tym bardziej rozproszone dane.",
+      "example": "2, 4, 6, 8 → średnia 5, wariancja 5"
+    },
+    "H2seq1": {
+      "title": "Sumy ciągów i ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ oznacza $a_1+a_2+\\cdots+a_n$. Przydatne wzory: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ i $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Wzór na sumę zdarzeń i zdarzenie przeciwne",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Prawdopodobieństwo zdarzenia przeciwnego to $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

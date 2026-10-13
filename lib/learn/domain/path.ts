@@ -17,7 +17,7 @@ export interface PathNode {
  * The sequential chain a lesson belongs to. Topic lessons added on top of the original course (geometry, data, numbers, ...) each form a
  * chain of their own per grade, every elective subject is one chain, and the original lessons form one chain per semester.
  */
-const TOPIC_LESSON = /^math-[a-z]\d-(geo|dat|neg|fac|crd|prp|sta|rec|lfn)\d$/;
+const TOPIC_LESSON = /^math-[a-z]\d-(geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro)\d$/;
 const ELECTIVE_LESSON = /^math-el-([a-z]+)\d$/;
 function chainOf(site: string, lessonId: string): string {
   const t = lessonId.match(TOPIC_LESSON);

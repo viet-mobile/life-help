@@ -92,7 +92,7 @@ describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
       seenCourses.add(course.id);
       const index = indexContent(toMetaBundle(scoped));
       const lessons = course.units.flatMap((u) => u.lessons);
-      expect(lessons.filter((l) => !/-(geo|dat|neg|fac|crd|prp|sta|rec|lfn)\d$/.test(l.id)).length, `${g} lessons`).toBe(5); // plus the topic lessons (math)
+      expect(lessons.filter((l) => !/-(geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro)\d$/.test(l.id)).length, `${g} lessons`).toBe(5); // plus the topic lessons (math)
       // every question the student can reach practises a skill that exists in THEIR scoped curriculum
       for (const q of scoped.questions) expect(index.skills.has(q.skillId), q.id).toBe(true);
       // the placement pool is this grade's, and large enough for the 6-question adaptive diagnostic

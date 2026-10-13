@@ -671,6 +671,70 @@
         "Tænk på, hvordan andres arbejde og resultater skal behandles."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Hvor meget er {a}+{b}?",
+      "hints": [
+        "Læg sammen fra enerne.",
+        "Hvis en kolonne giver 10 eller mere, så gem og tag med til næste plads."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Hvor meget er {a}-{b}?",
+      "hints": [
+        "Træk fra fra enerne.",
+        "Hvis du ikke kan trække fra, så lån fra næste plads."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Regn ud: {expr}",
+      "hints": [
+        "Regn først det ud, der står i parentes.",
+        "Derefter gange og dividere før plus og minus, fra venstre mod højre."
+      ],
+      "expl": "{steps}, så svaret er {ans}."
+    },
+    "roundTo": {
+      "prompt": "Hvad bliver {n} med “{mode}” i enheder af {u}?",
+      "hints": [
+        "Se på cifrene under {u}-pladsen.",
+        "Afrunding opad hæver altid, afrunding nedad fjerner altid, og afrunding til nærmeste hæver kun, hvis næste ciffer er 5 eller mere."
+      ],
+      "expl": "Med “{mode}” bliver {n} i enheder af {u} til {ans}."
+    },
+    "variance": {
+      "prompt": "Hvad er variansen for tallene {list}?",
+      "hints": [
+        "Find gennemsnittet og derefter hver afvigelse fra det.",
+        "Variansen er gennemsnittet af de kvadrerede afvigelser."
+      ],
+      "expl": "Gennemsnittet er {mean}, og de kvadrerede afvigelser summerer til {sq}, så variansen er {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Find værdien af denne sum: {expr}",
+      "hints": [
+        "Tegnet ∑ betyder: sæt k=1, 2, 3, … ind efter tur og læg det hele sammen.",
+        "Du kan også bruge reglerne $\\sum k=\\frac{n(n+1)}{2}$ og $\\sum c=cn$."
+      ],
+      "expl": "{steps}, så summen er {ans}."
+    },
+    "probAdd": {
+      "prompt": "For to hændelser A og B gælder $P(A)={pa}$, $P(B)={pb}$ og $P(A\\cap B)={pab}$. Hvad er $P(A\\cup B)$?",
+      "hints": [
+        "Brug additionsreglen $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Sæt de givne værdier ind én ad gangen."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Sandsynligheden for hændelsen A er $P(A)={pa}$. Hvad er sandsynligheden for den komplementære hændelse $P(A^c)$?",
+      "hints": [
+        "Den komplementære hændelse har sandsynligheden $1-P(A)$.",
+        "Træk $P(A)$ fra 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "At kopiere en anden persons tekst uden at sige, hvor den kommer fra, strider mod forskningsetikken.",
     "et_cite_r": "At bruge en andens arbejde uden kilde er plagiat, så udsagnet er sandt.",
     "et_fake": "Hvis resultaterne afviger fra hypotesen, er det i orden at ændre tallene, så de passer.",
-    "et_fake_r": "At ændre resultater er forfalskning og bryder forskningsetikken, så udsagnet er falsk."
+    "et_fake_r": "At ændre resultater er forfalskning og bryder forskningsetikken, så udsagnet er falsk.",
+    "rd_up": "afrunding opad",
+    "rd_down": "afrunding nedad",
+    "rd_half": "afrunding til nærmeste"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Undersøgelsestrin og etik",
       "concept": "En undersøgelse går emne → plan → gennemførelse → præsentation → refleksion. At henvise til kilder og aldrig ændre resultater er forskningsetik.",
       "example": "Efter emnet kommer undersøgelsesplanen"
+    },
+    "E3ari1": {
+      "title": "Plus og minus med trecifrede tal",
+      "concept": "Regn fra enerne. Giver en kolonne 10 eller mere, **gemmer** du og tager med til næste plads; kan du ikke trække fra, **låner** du fra næste plads.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Blandede regnestykker",
+      "concept": "Når de fire regnearter er blandet, regner du først **parenteserne**, så **gange og dividere** og til sidst **plus og minus**, fra venstre mod højre.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Afrunding opad, nedad og til nærmeste",
+      "concept": "**Afrunding opad** hæver tallet til næste multiplum, **afrunding nedad** fjerner de lave cifre, og **afrunding til nærmeste** hæver kun, hvis næste ciffer er 5 eller mere.",
+      "example": "3472 i multipla af 100: opad 3500, nedad 3400, nærmeste 3500"
+    },
+    "M3sta1": {
+      "title": "Varians og standardafvigelse",
+      "concept": "**Afvigelsen** er (værdi) − (gennemsnit). **Variansen** er gennemsnittet af de kvadrerede afvigelser, og **standardafvigelsen** er dens positive kvadratrod. Jo større den er, desto mere spredte er tallene.",
+      "example": "2, 4, 6, 8 → gennemsnit 5, varians 5"
+    },
+    "H2seq1": {
+      "title": "Summer af talfølger og ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ betyder $a_1+a_2+\\cdots+a_n$. Nyttige regler: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ og $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Additionsreglen og komplementærhændelsen",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Sandsynligheden for den komplementære hændelse er $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

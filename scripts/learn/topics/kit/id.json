@@ -671,6 +671,70 @@
         "Pikirkan bagaimana karya dan hasil orang lain harus diperlakukan."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Berapa {a}+{b}?",
+      "hints": [
+        "Jumlahkan mulai dari tempat satuan.",
+        "Jika jumlah dalam satu kolom 10 atau lebih, simpan ke tempat berikutnya."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Berapa {a}-{b}?",
+      "hints": [
+        "Kurangkan mulai dari tempat satuan.",
+        "Jika tidak bisa dikurangi, pinjam dari tempat berikutnya."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Hitunglah: {expr}",
+      "hints": [
+        "Kerjakan dulu yang ada di dalam tanda kurung.",
+        "Lalu kerjakan perkalian dan pembagian sebelum penjumlahan dan pengurangan, dari kiri ke kanan."
+      ],
+      "expl": "{steps}, jadi jawabannya {ans}."
+    },
+    "roundTo": {
+      "prompt": "Dengan “{mode}”, berapa {n} dalam satuan {u}?",
+      "hints": [
+        "Perhatikan angka di bawah tempat {u}.",
+        "Pembulatan ke atas selalu menaikkan, pembulatan ke bawah selalu membuang, dan pembulatan ke terdekat hanya menaikkan jika angkanya 5 atau lebih."
+      ],
+      "expl": "Dengan “{mode}”, {n} menjadi {ans} dalam satuan {u}."
+    },
+    "variance": {
+      "prompt": "Berapa varians dari data {list}?",
+      "hints": [
+        "Cari rata-rata, lalu simpangan setiap nilai darinya.",
+        "Varians adalah rata-rata dari kuadrat simpangan."
+      ],
+      "expl": "Rata-ratanya {mean} dan jumlah kuadrat simpangannya {sq}, jadi variansnya {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Tentukan nilai jumlah ini: {expr}",
+      "hints": [
+        "Tanda ∑ berarti: masukkan k=1, 2, 3, … secara berurutan lalu jumlahkan semuanya.",
+        "Anda juga bisa memakai aturan $\\sum k=\\frac{n(n+1)}{2}$ dan $\\sum c=cn$."
+      ],
+      "expl": "{steps}, jadi jumlahnya {ans}."
+    },
+    "probAdd": {
+      "prompt": "Untuk dua kejadian A dan B, $P(A)={pa}$, $P(B)={pb}$, dan $P(A\\cap B)={pab}$. Berapa $P(A\\cup B)$?",
+      "hints": [
+        "Gunakan aturan penjumlahan $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Masukkan nilai-nilai yang diberikan satu per satu."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Peluang kejadian A adalah $P(A)={pa}$. Berapa peluang komplemennya, $P(A^c)$?",
+      "hints": [
+        "Peluang komplemen adalah $1-P(A)$.",
+        "Kurangkan $P(A)$ dari 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Menyalin tulisan orang lain tanpa menyebutkan sumbernya melanggar etika penelitian.",
     "et_cite_r": "Memakai karya seseorang tanpa sumber adalah plagiarisme, jadi pernyataan itu benar.",
     "et_fake": "Jika hasilnya berbeda dari hipotesis, boleh mengubah angka agar sesuai.",
-    "et_fake_r": "Mengubah hasil adalah fabrikasi dan melanggar etika penelitian, jadi pernyataan itu salah."
+    "et_fake_r": "Mengubah hasil adalah fabrikasi dan melanggar etika penelitian, jadi pernyataan itu salah.",
+    "rd_up": "pembulatan ke atas",
+    "rd_down": "pembulatan ke bawah",
+    "rd_half": "pembulatan ke terdekat"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Langkah penelitian dan etika",
       "concept": "Penelitian berjalan: topik → rencana → pelaksanaan → penyajian → refleksi. Mengutip sumber dan tidak pernah mengubah hasil adalah etika penelitian.",
       "example": "Setelah topik datang rencana penelitian"
+    },
+    "E3ari1": {
+      "title": "Penjumlahan dan pengurangan bilangan tiga angka",
+      "concept": "Kerjakan mulai dari tempat satuan. Jika jumlah dalam satu kolom 10 atau lebih, **simpan** ke tempat berikutnya; jika tidak bisa dikurangi, **pinjam** dari tempat berikutnya.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Perhitungan campuran",
+      "concept": "Jika keempat operasi bercampur, kerjakan **tanda kurung** dulu, lalu **perkalian dan pembagian**, dan terakhir **penjumlahan dan pengurangan**, dari kiri ke kanan.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Pembulatan ke atas, ke bawah, dan ke terdekat",
+      "concept": "**Pembulatan ke atas** menaikkan bilangan ke kelipatan berikutnya, **pembulatan ke bawah** membuang angka di bawahnya, dan **pembulatan ke terdekat** hanya menaikkan jika angka berikutnya 5 atau lebih.",
+      "example": "3472 ke kelipatan 100: ke atas 3500, ke bawah 3400, terdekat 3500"
+    },
+    "M3sta1": {
+      "title": "Varians dan simpangan baku",
+      "concept": "**Simpangan** adalah (nilai) − (rata-rata). **Varians** adalah rata-rata kuadrat simpangan dan **simpangan baku** adalah akar kuadrat positifnya. Semakin besar, data semakin tersebar.",
+      "example": "2, 4, 6, 8 → rata-rata 5, varians 5"
+    },
+    "H2seq1": {
+      "title": "Jumlah barisan dan ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ berarti $a_1+a_2+\\cdots+a_n$. Aturan yang berguna: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$, dan $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Aturan penjumlahan dan komplemen",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Peluang komplemen adalah $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

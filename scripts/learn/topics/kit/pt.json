@@ -671,6 +671,70 @@
         "Pense em como o trabalho e os resultados dos outros devem ser tratados."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Quanto é {a}+{b}?",
+      "hints": [
+        "Some a partir das unidades.",
+        "Se uma coluna somar 10 ou mais, leve para a posição seguinte."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Quanto é {a}-{b}?",
+      "hints": [
+        "Subtraia a partir das unidades.",
+        "Se não der para subtrair, peça emprestado à posição seguinte."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Calcule: {expr}",
+      "hints": [
+        "Resolva primeiro o que está entre parênteses.",
+        "Depois multiplicação e divisão antes de adição e subtração, da esquerda para a direita."
+      ],
+      "expl": "{steps}, então a resposta é {ans}."
+    },
+    "roundTo": {
+      "prompt": "Usando «{mode}», quanto é {n} em unidades de {u}?",
+      "hints": [
+        "Veja os algarismos abaixo da posição de {u}.",
+        "Arredondar para cima sempre sobe, para baixo sempre descarta, e arredondar ao mais próximo só sobe se o algarismo seguinte for 5 ou mais."
+      ],
+      "expl": "Usando «{mode}», {n} passa a ser {ans} em unidades de {u}."
+    },
+    "variance": {
+      "prompt": "Qual é a variância dos dados {list}?",
+      "hints": [
+        "Encontre a média e depois o desvio de cada valor em relação a ela.",
+        "A variância é a média dos quadrados dos desvios."
+      ],
+      "expl": "A média é {mean} e os quadrados dos desvios somam {sq}, então a variância é {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Encontre o valor desta soma: {expr}",
+      "hints": [
+        "O sinal ∑ significa: coloque k=1, 2, 3, … em ordem e some tudo.",
+        "Você também pode usar as regras $\\sum k=\\frac{n(n+1)}{2}$ e $\\sum c=cn$."
+      ],
+      "expl": "{steps}, então a soma é {ans}."
+    },
+    "probAdd": {
+      "prompt": "Para dois eventos A e B, $P(A)={pa}$, $P(B)={pb}$ e $P(A\\cap B)={pab}$. Quanto vale $P(A\\cup B)$?",
+      "hints": [
+        "Use a regra da adição $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Substitua os valores dados um a um."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "A probabilidade do evento A é $P(A)={pa}$. Qual é a probabilidade do evento complementar $P(A^c)$?",
+      "hints": [
+        "O evento complementar tem probabilidade $1-P(A)$.",
+        "Subtraia $P(A)$ de 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Copiar o texto de outra pessoa sem dizer de onde vem vai contra a ética em pesquisa.",
     "et_cite_r": "Usar o trabalho de alguém sem citar a fonte é plágio, então a afirmação é verdadeira.",
     "et_fake": "Se os resultados diferem da hipótese, não há problema em mudar os números para que combinem.",
-    "et_fake_r": "Mudar resultados é fabricação e viola a ética em pesquisa, então a afirmação é falsa."
+    "et_fake_r": "Mudar resultados é fabricação e viola a ética em pesquisa, então a afirmação é falsa.",
+    "rd_up": "arredondamento para cima",
+    "rd_down": "arredondamento para baixo",
+    "rd_half": "arredondamento ao mais próximo"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Etapas da pesquisa e ética",
       "concept": "A pesquisa segue tema → plano → realização → apresentação → reflexão. Citar fontes e nunca alterar resultados é ética em pesquisa.",
       "example": "Depois do tema vem o plano de pesquisa"
+    },
+    "E3ari1": {
+      "title": "Somar e subtrair números de três algarismos",
+      "concept": "Trabalhe a partir das unidades. Se uma coluna somar 10 ou mais, **leve** para a posição seguinte; se não der para subtrair, **peça emprestado** à posição seguinte.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Cálculos mistos",
+      "concept": "Quando as quatro operações estão misturadas, resolva primeiro **os parênteses**, depois **multiplicação e divisão** e por fim **adição e subtração**, da esquerda para a direita.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Arredondar para cima, para baixo e ao mais próximo",
+      "concept": "**Arredondar para cima** leva o número ao múltiplo seguinte, **para baixo** descarta os algarismos menores e **ao mais próximo** só sobe se o algarismo seguinte for 5 ou mais.",
+      "example": "3472 em múltiplos de 100: para cima 3500, para baixo 3400, mais próximo 3500"
+    },
+    "M3sta1": {
+      "title": "Variância e desvio padrão",
+      "concept": "O **desvio** é (valor) − (média). A **variância** é a média dos quadrados dos desvios e o **desvio padrão** é sua raiz quadrada positiva. Quanto maior, mais dispersos estão os dados.",
+      "example": "2, 4, 6, 8 → média 5, variância 5"
+    },
+    "H2seq1": {
+      "title": "Somas de sequências e ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ significa $a_1+a_2+\\cdots+a_n$. Regras úteis: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ e $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "A regra da adição e o evento complementar",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. A probabilidade do evento complementar é $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

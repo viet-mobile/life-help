@@ -671,6 +671,70 @@
         "Denk na over hoe het werk en de resultaten van anderen behandeld moeten worden."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Hoeveel is {a}+{b}?",
+      "hints": [
+        "Tel op vanaf de eenheden.",
+        "Als een kolom 10 of meer is, onthoud dan en ga naar de volgende plaats."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Hoeveel is {a}-{b}?",
+      "hints": [
+        "Trek af vanaf de eenheden.",
+        "Als je niet kunt aftrekken, leen dan van de volgende plaats."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Bereken: {expr}",
+      "hints": [
+        "Reken eerst uit wat tussen haakjes staat.",
+        "Daarna vermenigvuldigen en delen vóór optellen en aftrekken, van links naar rechts."
+      ],
+      "expl": "{steps}, dus het antwoord is {ans}."
+    },
+    "roundTo": {
+      "prompt": "Wat wordt {n} bij “{mode}” in eenheden van {u}?",
+      "hints": [
+        "Kijk naar de cijfers onder de plaats van {u}.",
+        "Naar boven afronden maakt het altijd groter, naar beneden afronden laat altijd weg, en afronden op de dichtstbijzijnde maakt het alleen groter als het volgende cijfer 5 of meer is."
+      ],
+      "expl": "Bij “{mode}” wordt {n} in eenheden van {u} gelijk aan {ans}."
+    },
+    "variance": {
+      "prompt": "Wat is de variantie van de gegevens {list}?",
+      "hints": [
+        "Zoek het gemiddelde en dan elke afwijking ervan.",
+        "De variantie is het gemiddelde van de gekwadrateerde afwijkingen."
+      ],
+      "expl": "Het gemiddelde is {mean} en de gekwadrateerde afwijkingen tellen op tot {sq}, dus de variantie is {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Bereken de waarde van deze som: {expr}",
+      "hints": [
+        "Het teken ∑ betekent: vul achtereenvolgens k=1, 2, 3, … in en tel alles op.",
+        "Je kunt ook de regels $\\sum k=\\frac{n(n+1)}{2}$ en $\\sum c=cn$ gebruiken."
+      ],
+      "expl": "{steps}, dus de som is {ans}."
+    },
+    "probAdd": {
+      "prompt": "Voor twee gebeurtenissen A en B geldt $P(A)={pa}$, $P(B)={pb}$ en $P(A\\cap B)={pab}$. Hoeveel is $P(A\\cup B)$?",
+      "hints": [
+        "Gebruik de somregel $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Vul de gegeven waarden een voor een in."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "De kans op gebeurtenis A is $P(A)={pa}$. Wat is de kans op de complementaire gebeurtenis $P(A^c)$?",
+      "hints": [
+        "De complementaire gebeurtenis heeft kans $1-P(A)$.",
+        "Trek $P(A)$ af van 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Het werk van iemand anders overschrijven zonder te zeggen waar het vandaan komt, is in strijd met de onderzoeksethiek.",
     "et_cite_r": "Het werk van iemand gebruiken zonder bron is plagiaat, dus de bewering is waar.",
     "et_fake": "Als de resultaten afwijken van de hypothese, is het goed om de getallen aan te passen zodat ze kloppen.",
-    "et_fake_r": "Resultaten veranderen is fraude en schendt de onderzoeksethiek, dus de bewering is onwaar."
+    "et_fake_r": "Resultaten veranderen is fraude en schendt de onderzoeksethiek, dus de bewering is onwaar.",
+    "rd_up": "naar boven afronden",
+    "rd_down": "naar beneden afronden",
+    "rd_half": "afronden op de dichtstbijzijnde"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Onderzoeksstappen en ethiek",
       "concept": "Onderzoek gaat: onderwerp → plan → uitvoeren → presenteren → terugblikken. Bronnen vermelden en resultaten nooit vervalsen is onderzoeksethiek.",
       "example": "Na het onderwerp komt het onderzoeksplan"
+    },
+    "E3ari1": {
+      "title": "Driecijferige getallen optellen en aftrekken",
+      "concept": "Werk vanaf de eenheden. Als een kolom 10 of meer is, **onthoud** je en ga je naar de volgende plaats; kun je niet aftrekken, dan **leen** je van de volgende plaats.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Gemengde berekeningen",
+      "concept": "Als de vier bewerkingen door elkaar staan, reken je eerst **de haakjes** uit, dan **vermenigvuldigen en delen** en ten slotte **optellen en aftrekken**, van links naar rechts.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Naar boven, naar beneden en op de dichtstbijzijnde afronden",
+      "concept": "**Naar boven afronden** brengt het getal naar het volgende veelvoud, **naar beneden afronden** laat de lagere cijfers weg en **afronden op de dichtstbijzijnde** gaat alleen omhoog als het volgende cijfer 5 of meer is.",
+      "example": "3472 in veelvouden van 100: omhoog 3500, omlaag 3400, dichtstbijzijnde 3500"
+    },
+    "M3sta1": {
+      "title": "Variantie en standaardafwijking",
+      "concept": "De **afwijking** is (waarde) − (gemiddelde). De **variantie** is het gemiddelde van de gekwadrateerde afwijkingen en de **standaardafwijking** is de positieve wortel ervan. Hoe groter, hoe meer de gegevens spreiden.",
+      "example": "2, 4, 6, 8 → gemiddelde 5, variantie 5"
+    },
+    "H2seq1": {
+      "title": "Sommen van rijen en ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ betekent $a_1+a_2+\\cdots+a_n$. Handige regels: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ en $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "De somregel en het complement",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. De kans op de complementaire gebeurtenis is $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

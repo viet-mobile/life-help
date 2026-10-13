@@ -671,6 +671,70 @@
         "Pense à la façon dont il faut traiter le travail et les résultats des autres."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Combien font {a}+{b} ?",
+      "hints": [
+        "Additionne en partant des unités.",
+        "Si une colonne dépasse 10, retiens et reporte à la position suivante."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Combien font {a}-{b} ?",
+      "hints": [
+        "Soustrais en partant des unités.",
+        "Si tu ne peux pas soustraire, emprunte à la position suivante."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Calcule : {expr}",
+      "hints": [
+        "Calcule d’abord ce qui est entre parenthèses.",
+        "Puis les multiplications et divisions avant les additions et soustractions, de gauche à droite."
+      ],
+      "expl": "{steps}, donc la réponse est {ans}."
+    },
+    "roundTo": {
+      "prompt": "Avec « {mode} », que devient {n} en unités de {u} ?",
+      "hints": [
+        "Regarde les chiffres situés sous la position des {u}.",
+        "L’arrondi par excès monte toujours, l’arrondi par défaut supprime toujours, et l’arrondi au plus proche monte seulement si le chiffre suivant est 5 ou plus."
+      ],
+      "expl": "Avec « {mode} », {n} devient {ans} en unités de {u}."
+    },
+    "variance": {
+      "prompt": "Quelle est la variance des données {list} ?",
+      "hints": [
+        "Trouve la moyenne, puis l’écart de chaque valeur à celle-ci.",
+        "La variance est la moyenne des carrés des écarts."
+      ],
+      "expl": "La moyenne est {mean} et la somme des carrés des écarts est {sq}, donc la variance est {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Trouve la valeur de cette somme : {expr}",
+      "hints": [
+        "Le signe ∑ signifie : remplace k par 1, 2, 3, … à tour de rôle et additionne tout.",
+        "Tu peux aussi utiliser les règles $\\sum k=\\frac{n(n+1)}{2}$ et $\\sum c=cn$."
+      ],
+      "expl": "{steps}, donc la somme est {ans}."
+    },
+    "probAdd": {
+      "prompt": "Pour deux événements A et B, $P(A)={pa}$, $P(B)={pb}$ et $P(A\\cap B)={pab}$. Quelle est la valeur de $P(A\\cup B)$ ?",
+      "hints": [
+        "Utilise la formule d’addition $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Remplace les valeurs données une à une."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "La probabilité de l’événement A est $P(A)={pa}$. Quelle est la probabilité de l’événement contraire $P(A^c)$ ?",
+      "hints": [
+        "L’événement contraire a pour probabilité $1-P(A)$.",
+        "Soustrais $P(A)$ de 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Copier le texte d'une autre personne sans dire d'où il vient va à l'encontre de l'éthique de la recherche.",
     "et_cite_r": "Utiliser le travail de quelqu'un sans citer la source est du plagiat, donc l'affirmation est vraie.",
     "et_fake": "Si les résultats diffèrent de l'hypothèse, on peut changer les nombres pour qu'ils correspondent.",
-    "et_fake_r": "Modifier des résultats est une falsification et enfreint l'éthique de la recherche, donc l'affirmation est fausse."
+    "et_fake_r": "Modifier des résultats est une falsification et enfreint l'éthique de la recherche, donc l'affirmation est fausse.",
+    "rd_up": "arrondi par excès",
+    "rd_down": "arrondi par défaut",
+    "rd_half": "arrondi au plus proche"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Étapes de la recherche et éthique",
       "concept": "La recherche suit l'ordre sujet → plan → réalisation → présentation → bilan. Citer ses sources et ne jamais modifier les résultats, c'est l'éthique de la recherche.",
       "example": "Après le sujet vient le plan de recherche"
+    },
+    "E3ari1": {
+      "title": "Additionner et soustraire des nombres à trois chiffres",
+      "concept": "Calcule en partant des unités. Si une colonne atteint 10 ou plus, **retiens** vers la position suivante ; si tu ne peux pas soustraire, **emprunte** à la position suivante.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Calculs mixtes",
+      "concept": "Quand les quatre opérations sont mélangées, calcule d’abord **les parenthèses**, puis **les multiplications et divisions**, enfin **les additions et soustractions**, de gauche à droite.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Arrondir par excès, par défaut et au plus proche",
+      "concept": "**L’arrondi par excès** monte le nombre au multiple suivant, **l’arrondi par défaut** supprime les chiffres inférieurs et **l’arrondi au plus proche** monte seulement si le chiffre suivant est 5 ou plus.",
+      "example": "3472 en multiples de 100 : par excès 3500, par défaut 3400, au plus proche 3500"
+    },
+    "M3sta1": {
+      "title": "Variance et écart type",
+      "concept": "L’**écart** est (valeur) − (moyenne). La **variance** est la moyenne des carrés des écarts et l’**écart type** en est la racine carrée positive. Plus il est grand, plus les données sont dispersées.",
+      "example": "2, 4, 6, 8 → moyenne 5, variance 5"
+    },
+    "H2seq1": {
+      "title": "Sommes de suites et ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ signifie $a_1+a_2+\\cdots+a_n$. Règles utiles : $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ et $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "La formule d’addition et l’événement contraire",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. La probabilité de l’événement contraire est $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

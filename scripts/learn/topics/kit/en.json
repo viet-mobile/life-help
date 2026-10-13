@@ -671,6 +671,70 @@
         "Think about how other people's work and results must be treated."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "What is {a}+{b}?",
+      "hints": [
+        "Add from the ones place.",
+        "If a column adds up to 10 or more, carry to the next place."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "What is {a}-{b}?",
+      "hints": [
+        "Subtract from the ones place.",
+        "If you cannot subtract, borrow from the next place."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Work this out: {expr}",
+      "hints": [
+        "Do what is inside the brackets first.",
+        "Then multiplication and division before addition and subtraction, from left to right."
+      ],
+      "expl": "{steps}, so the answer is {ans}."
+    },
+    "roundTo": {
+      "prompt": "Using “{mode}”, what is {n} in units of {u}?",
+      "hints": [
+        "Look at the digits below the {u} place.",
+        "Rounding up always raises it, rounding down always drops it, and rounding to the nearest raises it only when the digit is 5 or more."
+      ],
+      "expl": "Using “{mode}”, {n} becomes {ans} in units of {u}."
+    },
+    "variance": {
+      "prompt": "What is the variance of the data {list}?",
+      "hints": [
+        "Find the mean, then each deviation from it.",
+        "The variance is the mean of the squared deviations."
+      ],
+      "expl": "The mean is {mean} and the squared deviations add up to {sq}, so the variance is {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Find the value of this sum: {expr}",
+      "hints": [
+        "The ∑ sign means: put k=1, 2, 3, … in turn and add everything up.",
+        "You can also use the rules $\\sum k=\\frac{n(n+1)}{2}$ and $\\sum c=cn$."
+      ],
+      "expl": "{steps}, so the sum is {ans}."
+    },
+    "probAdd": {
+      "prompt": "For two events A and B, $P(A)={pa}$, $P(B)={pb}$ and $P(A\\cap B)={pab}$. What is $P(A\\cup B)$?",
+      "hints": [
+        "Use the addition rule $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Put the given values in one by one."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "The probability of event A is $P(A)={pa}$. What is the probability of the complement, $P(A^c)$?",
+      "hints": [
+        "The complement has probability $1-P(A)$.",
+        "Subtract $P(A)$ from 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -707,6 +771,9 @@
     "noOk": "False"
   },
   "text": {
+    "rd_up": "rounding up",
+    "rd_down": "rounding down",
+    "rd_half": "rounding to the nearest",
     "ev_coin": "What is the chance of getting heads when a coin is tossed once?",
     "ev_sun": "What is the chance that the sun rises in the east tomorrow?",
     "ev_die": "What is the chance of rolling a 7 with one ordinary six-sided die?",
@@ -843,6 +910,36 @@
       "title": "Research steps and ethics",
       "concept": "Research goes topic → plan → carry out → present → reflect. Citing sources and never altering results is research ethics.",
       "example": "After the topic comes the research plan"
+    },
+    "E3ari1": {
+      "title": "Adding and subtracting three-digit numbers",
+      "concept": "Work from the ones place. If a column adds up to 10 or more, **carry** to the next place; if you cannot subtract, **borrow** from the next place.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Mixed calculations",
+      "concept": "When the four operations are mixed, work out **the brackets** first, then **multiplication and division**, and finally **addition and subtraction**, from left to right.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Rounding up, down and to the nearest",
+      "concept": "**Rounding up** raises the number to the next multiple, **rounding down** drops the lower digits, and **rounding to the nearest** raises it only if the next digit is 5 or more.",
+      "example": "3472 to a multiple of 100: up 3500, down 3400, nearest 3500"
+    },
+    "M3sta1": {
+      "title": "Variance and standard deviation",
+      "concept": "The **deviation** is (value) − (mean). The **variance** is the mean of the squared deviations and the **standard deviation** is its positive square root. The larger it is, the more spread out the data are.",
+      "example": "2, 4, 6, 8 → mean 5, variance 5"
+    },
+    "H2seq1": {
+      "title": "Sums of sequences and ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ means $a_1+a_2+\\cdots+a_n$. Useful rules: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ and $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "The addition rule and complements",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. The probability of the complement is $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

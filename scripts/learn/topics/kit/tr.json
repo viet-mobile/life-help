@@ -671,6 +671,70 @@
         "Başkalarının çalışmalarına ve sonuçlarına nasıl davranılması gerektiğini düşün."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "{a}+{b} kaçtır?",
+      "hints": [
+        "Birler basamağından başlayarak topla.",
+        "Bir basamak 10 veya daha fazla ediyorsa bir sonraki basamağa elde ver."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "{a}-{b} kaçtır?",
+      "hints": [
+        "Birler basamağından başlayarak çıkar.",
+        "Çıkaramıyorsan bir sonraki basamaktan onluk bozdur."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Hesapla: {expr}",
+      "hints": [
+        "Önce parantez içini hesapla.",
+        "Sonra toplama ve çıkarmadan önce çarpma ve bölmeyi, soldan sağa yap."
+      ],
+      "expl": "{steps}, yani sonuç {ans}."
+    },
+    "roundTo": {
+      "prompt": "“{mode}” ile {n} sayısı {u} birimine göre kaç olur?",
+      "hints": [
+        "{u} basamağının altındaki rakamlara bak.",
+        "Yukarı yuvarlama her zaman artırır, aşağı yuvarlama her zaman atar, en yakına yuvarlama ise yalnızca sonraki rakam 5 veya daha büyükse artırır."
+      ],
+      "expl": "“{mode}” ile {n} sayısı {u} birimine göre {ans} olur."
+    },
+    "variance": {
+      "prompt": "{list} verilerinin varyansı kaçtır?",
+      "hints": [
+        "Önce ortalamayı, sonra her verinin ortalamadan sapmasını bul.",
+        "Varyans, sapmaların karelerinin ortalamasıdır."
+      ],
+      "expl": "Ortalama {mean}, sapmaların kareleri toplamı {sq}; bu yüzden varyans {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Bu toplamın değerini bul: {expr}",
+      "hints": [
+        "∑ işareti şu demek: k yerine sırayla 1, 2, 3, … koy ve hepsini topla.",
+        "$\\sum k=\\frac{n(n+1)}{2}$ ve $\\sum c=cn$ kurallarını da kullanabilirsin."
+      ],
+      "expl": "{steps}, yani toplam {ans}."
+    },
+    "probAdd": {
+      "prompt": "A ve B olayları için $P(A)={pa}$, $P(B)={pb}$ ve $P(A\\cap B)={pab}$. $P(A\\cup B)$ kaçtır?",
+      "hints": [
+        "Toplama kuralı $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$ ifadesini kullan.",
+        "Verilen değerleri sırayla yerine koy."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "A olayının olasılığı $P(A)={pa}$. Tümleyen olayın olasılığı $P(A^c)$ kaçtır?",
+      "hints": [
+        "Tümleyen olayın olasılığı $1-P(A)$.",
+        "1’den $P(A)$ değerini çıkar."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Başka birinin yazısını nereden geldiğini söylemeden kopyalamak araştırma etiğine aykırıdır.",
     "et_cite_r": "Birinin çalışmasını kaynak göstermeden kullanmak intihaldir, yani ifade doğrudur.",
     "et_fake": "Sonuçlar hipotezden farklıysa sayıları uyacak şekilde değiştirmek sorun değildir.",
-    "et_fake_r": "Sonuçları değiştirmek sahtekârlıktır ve araştırma etiğini bozar, yani ifade yanlıştır."
+    "et_fake_r": "Sonuçları değiştirmek sahtekârlıktır ve araştırma etiğini bozar, yani ifade yanlıştır.",
+    "rd_up": "yukarı yuvarlama",
+    "rd_down": "aşağı yuvarlama",
+    "rd_half": "en yakına yuvarlama"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Araştırma adımları ve etik",
       "concept": "Araştırma konu → plan → yürütme → sunum → değerlendirme sırasıyla ilerler. Kaynak göstermek ve sonuçları asla değiştirmemek araştırma etiğidir.",
       "example": "Konudan sonra araştırma planı gelir"
+    },
+    "E3ari1": {
+      "title": "Üç basamaklı sayıları toplama ve çıkarma",
+      "concept": "Birler basamağından başla. Bir basamak 10 veya daha fazla ediyorsa bir sonraki basamağa **elde ver**; çıkaramıyorsan bir sonraki basamaktan **onluk bozdur**.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Karışık işlemler",
+      "concept": "Dört işlem karışık olduğunda önce **parantez içini**, sonra **çarpma ve bölmeyi**, en son **toplama ve çıkarmayı** soldan sağa yap.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Yukarı, aşağı ve en yakına yuvarlama",
+      "concept": "**Yukarı yuvarlama** sayıyı bir sonraki katına çıkarır, **aşağı yuvarlama** küçük basamakları atar, **en yakına yuvarlama** ise yalnızca sonraki rakam 5 veya daha büyükse artırır.",
+      "example": "3472’yi 100’ün katlarına göre: yukarı 3500, aşağı 3400, en yakın 3500"
+    },
+    "M3sta1": {
+      "title": "Varyans ve standart sapma",
+      "concept": "**Sapma** = (değer) − (ortalama). **Varyans** sapmaların karelerinin ortalaması, **standart sapma** ise onun pozitif kareköküdür. Ne kadar büyükse veriler o kadar dağınıktır.",
+      "example": "2, 4, 6, 8 → ortalama 5, varyans 5"
+    },
+    "H2seq1": {
+      "title": "Dizilerin toplamı ve ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$, $a_1+a_2+\\cdots+a_n$ anlamına gelir. Yararlı kurallar: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ ve $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Toplama kuralı ve tümleyen olay",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Tümleyen olayın olasılığı $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

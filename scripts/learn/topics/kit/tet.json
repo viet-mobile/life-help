@@ -671,6 +671,70 @@
         "Hanoin oinsá tenke trata ema seluk nia serbisu no rezultadu."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "{a}+{b} hanesan saida?",
+      "hints": [
+        "Soma hahú husi fatin unidade.",
+        "Se soma iha koluna ida to'o 10 ka liu, lori ba fatin tuir mai."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "{a}-{b} hanesan saida?",
+      "hints": [
+        "Subtrai hahú husi fatin unidade.",
+        "Se la bele subtrai, empresta husi fatin tuir mai."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Kalkula: {expr}",
+      "hints": [
+        "Halo uluk buat ne'ebé iha laran parêntese.",
+        "Depois multiplika no fahe molok soma no subtrai, husi karuk ba kmanek."
+      ],
+      "expl": "{steps}, entaun resposta mak {ans}."
+    },
+    "roundTo": {
+      "prompt": "Uza “{mode}”, {n} iha unidade {u} hanesan saida?",
+      "hints": [
+        "Hateke ba dígitu sira iha kraik fatin {u}.",
+        "Arredonda ba leten sempre aumenta, arredonda ba kraik sempre tun, no arredonda ba ne'ebé besik liu aumenta de'it se dígitu mak 5 ka liu."
+      ],
+      "expl": "Uza “{mode}”, {n} sai {ans} iha unidade {u}."
+    },
+    "variance": {
+      "prompt": "Varánsia husi dadus {list} mak saida?",
+      "hints": [
+        "Buka média, depois dezviu ida-idak husi média.",
+        "Varánsia mak média husi kuadradu sira husi dezviu."
+      ],
+      "expl": "Média mak {mean} no kuadradu dezviu sira soma {sq}, entaun varánsia mak {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Buka valór husi soma ne'e: {expr}",
+      "hints": [
+        "Sinál ∑ signifika: tau k=1, 2, 3, … ida-idak no soma hotu.",
+        "Ita mós bele uza regra $\\sum k=\\frac{n(n+1)}{2}$ no $\\sum c=cn$."
+      ],
+      "expl": "{steps}, entaun soma mak {ans}."
+    },
+    "probAdd": {
+      "prompt": "Ba eventu rua A no B, $P(A)={pa}$, $P(B)={pb}$ no $P(A\\cap B)={pab}$. $P(A\\cup B)$ hanesan saida?",
+      "hints": [
+        "Uza regra soma $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Tau valór sira ne'ebé fó ida-idak."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Probabilidade eventu A mak $P(A)={pa}$. Probabilidade eventu komplementár, $P(A^c)$, mak saida?",
+      "hints": [
+        "Eventu komplementár iha probabilidade $1-P(A)$.",
+        "Subtrai $P(A)$ husi 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Kopia ema seluk nia hakerek la hateten mai husi ne'ebé kontra étika peskiza.",
     "et_cite_r": "Uza ema nia serbisu la ho fonte mak plajiu, entaun deklarasaun ne'e loos.",
     "et_fake": "Se rezultadu la hanesan ho ipótese, bele muda númeru atu hanesan.",
-    "et_fake_r": "Muda rezultadu mak falsifikasaun no viola étika peskiza, entaun deklarasaun ne'e sala."
+    "et_fake_r": "Muda rezultadu mak falsifikasaun no viola étika peskiza, entaun deklarasaun ne'e sala.",
+    "rd_up": "arredonda ba leten",
+    "rd_down": "arredonda ba kraik",
+    "rd_half": "arredonda ba ne'ebé besik liu"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Pasu peskiza no étika",
       "concept": "Peskiza ba: tópiku → planu → hala'o → aprezenta → hanoin fali. Sita fonte no la muda rezultadu mak étika peskiza.",
       "example": "Hafoin tópiku mai planu peskiza"
+    },
+    "E3ari1": {
+      "title": "Soma no subtrai númeru dígitu tolu",
+      "concept": "Hahú husi fatin unidade. Se soma iha koluna ida to'o 10 ka liu, **lori** ba fatin tuir mai; se la bele subtrai, **empresta** husi fatin tuir mai.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Kalkulu mistura",
+      "concept": "Bainhira operasaun haat misturadu, halo uluk **parêntese**, depois **multiplikasaun no divizaun**, no ikus **adisaun no subtrasaun**, husi karuk ba kmanek.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Arredonda ba leten, ba kraik no ba ne'ebé besik liu",
+      "concept": "**Arredonda ba leten** hasa'e númeru ba múltiplu tuir mai, **arredonda ba kraik** hamoos dígitu sira iha kraik, no **arredonda ba ne'ebé besik liu** hasa'e de'it se dígitu tuir mai mak 5 ka liu.",
+      "example": "3472 ba múltiplu 100: leten 3500, kraik 3400, besik liu 3500"
+    },
+    "M3sta1": {
+      "title": "Varánsia no dezviu padraun",
+      "concept": "**Dezviu** mak (valór) − (média). **Varánsia** mak média husi kuadradu sira husi dezviu, no **dezviu padraun** mak ninia raiz kuadrada pozitivu. Bainhira boot liu, dadus sira sai dispersu liu.",
+      "example": "2, 4, 6, 8 → média 5, varánsia 5"
+    },
+    "H2seq1": {
+      "title": "Soma sekuénsia no ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ signifika $a_1+a_2+\\cdots+a_n$. Regra úteis: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ no $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Regra soma no eventu komplementár",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Probabilidade eventu komplementár mak $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

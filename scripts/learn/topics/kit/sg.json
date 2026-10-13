@@ -671,6 +671,70 @@
         "Bâ tongana nye a lingbi ti sara na travail na résultat ti ambeni zo."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "{a}+{b} ayeke nambre wa?",
+      "hints": [
+        "Zia na kôzo na ndo ti oko-oko (ones).",
+        "Tongana somme ti colonne atï 10 wala ahunzi 10, mû ye oko na ndo so ayeke na pekoni."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "{a}-{b} ayeke nambre wa?",
+      "hints": [
+        "Zî kôzo na ndo ti oko-oko (ones).",
+        "Tongana mo lingbi ti zî pëpe, gbu ye oko na ndo so ayeke na pekoni."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Sara calcul: {expr}",
+      "hints": [
+        "Sara kôzo ye so ayeke na yâ ti brackets.",
+        "Na pekoni, sara multiplication na division kôzo ti addition na subtraction, ti gauche na droite."
+      ],
+      "expl": "{steps}, so ndali ni response ayeke {ans}."
+    },
+    "roundTo": {
+      "prompt": "Na “{mode}”, {n} ayeke nambre wa na yâ ti unité {u}?",
+      "hints": [
+        "Bâ achiffre so ayeke na gbe ti ndo {u}.",
+        "Arrondi na ndüzü amû ye na ndüzü, arrondi na gbe azî ye na gbe, na arrondi na ndo so ayeke pene amû ye na ndüzü gï tongana chiffre ni ayeke 5 wala ahunzi 5."
+      ],
+      "expl": "Na “{mode}”, {n} aga {ans} na yâ ti unité {u}."
+    },
+    "variance": {
+      "prompt": "Variance ti adonnées {list} ayeke nambre wa?",
+      "hints": [
+        "Gbu moyenne, na pekoni écart ti oko-oko ye na moyenne.",
+        "Variance ayeke moyenne ti akare ti aécart."
+      ],
+      "expl": "Moyenne ayeke {mean} na somme ti akare ti aécart ayeke {sq}, so ndali ni variance ayeke {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Gbu valeur ti somme so: {expr}",
+      "hints": [
+        "Signe ∑ afa so: zia k=1, 2, 3, … oko-oko, na zia na ye kue.",
+        "Mo lingbi ti sara kua na aloi $\\sum k=\\frac{n(n+1)}{2}$ na $\\sum c=cn$ nga."
+      ],
+      "expl": "{steps}, so ndali ni somme ayeke {ans}."
+    },
+    "probAdd": {
+      "prompt": "Ti aévénement use A na B, $P(A)={pa}$, $P(B)={pb}$ na $P(A\\cap B)={pab}$. $P(A\\cup B)$ ayeke nambre wa?",
+      "hints": [
+        "Sara kua na loi ti addition $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Zia avaleur so a mû ni oko-oko."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Probabilité ti événement A ayeke $P(A)={pa}$. Probabilité ti événement complémentaire, $P(A^c)$, ayeke nambre wa?",
+      "hints": [
+        "Probabilité ti événement complémentaire ayeke $1-P(A)$.",
+        "Zî $P(A)$ na yâ ti 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Ti sara copie ti mbeni zo ti koe ape ndö so lo yeke ayeke ngoi ti éthique ti recherche.",
     "et_cite_r": "Ti sara kua na travail ti mbeni zo na source ape ayeke plagiat, tongana ni tënë ni ayeke biani.",
     "et_fake": "Tongana aésultat ayeke pëpe ape na hypothèse, a lingbi ti change anambara ti ala ti lingbi.",
-    "et_fake_r": "Ti change aésultat ayeke fabrication na ayeke ngoi ti éthique ti recherche, tongana ni tënë ni ayeke biani ape."
+    "et_fake_r": "Ti change aésultat ayeke fabrication na ayeke ngoi ti éthique ti recherche, tongana ni tënë ni ayeke biani ape.",
+    "rd_up": "arrondi na ndüzü",
+    "rd_down": "arrondi na gbe",
+    "rd_half": "arrondi na ndo so ayeke pene"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Aétape ti recherche na éthique",
       "concept": "Recherche ayeke sujet → plan → exécution → présentation → réflexion. Ti fa asource na ti change aésultat ape ayeke éthique ti recherche.",
       "example": "Na pekoni ti sujet ayeke plan ti recherche"
+    },
+    "E3ari1": {
+      "title": "Zia na nga zî ti anambre ti chiffre ota",
+      "concept": "Sara kua kôzo na ndo ti oko-oko (ones). Tongana somme ti colonne atï 10 wala ahunzi 10, **mû** ye oko na ndo so ayeke na pekoni; tongana mo lingbi ti zî pëpe, **gbu** ye oko na ndo so ayeke na pekoni.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Calcul so ayeke mélangé",
+      "concept": "Tongana akalcul use ti kâ na oko, sara kôzo **brackets**, na pekoni **multiplication na division**, na na nzoni ni **addition na subtraction**, ti gauche na droite.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Arrondi na ndüzü, na gbe na ndo so ayeke pene",
+      "concept": "**Arrondi na ndüzü** amû nambre ti kâ na multiple so ayeke na pekoni, **arrondi na gbe** azî achiffre so ayeke na gbe, na **arrondi na ndo so ayeke pene** amû ni na ndüzü gï tongana chiffre so ayeke na pekoni ayeke 5 wala ahunzi 5.",
+      "example": "3472 na multiple ti 100: ndüzü 3500, gbe 3400, pene 3500"
+    },
+    "M3sta1": {
+      "title": "Variance na écart-type",
+      "concept": "**Écart** ayeke (valeur) − (moyenne). **Variance** ayeke moyenne ti akare ti aécart, na **écart-type** ayeke racine carrée positive ti ni. Tongana ni ayeke kota, adonnées alingbi ti kpo mingi.",
+      "example": "2, 4, 6, 8 → moyenne 5, variance 5"
+    },
+    "H2seq1": {
+      "title": "Somme ti asuite na ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ afa $a_1+a_2+\\cdots+a_n$. Aloi so ayeke nzoni: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ na $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Loi ti addition na événement complémentaire",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Probabilité ti événement complémentaire ayeke $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

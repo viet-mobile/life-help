@@ -37,6 +37,9 @@
   "m.h3.geo2": "Vectơ trong mặt phẳng",
   "m.m2.rec1": "Số thập phân tuần hoàn",
   "m.m2.lfn1": "Hàm số bậc nhất và phương trình bậc nhất",
+  "m.m3.sta1": "Phương sai và độ lệch chuẩn",
+  "m.h2.seq1": "Tổng của dãy số và ∑",
+  "m.h3.pro1": "Quy tắc cộng và biến cố đối",
   "m.el.econ1": "Lãi suất, tỉ giá và thuế",
   "m.el.econ2": "Cầu, cung và tối ưu hóa",
   "m.el.ai1": "Dữ liệu văn bản và hình ảnh",
@@ -327,6 +330,21 @@
    "title": "Hàm số bậc nhất và phương trình bậc nhất",
    "concept": "Trong y=ax+b, a là hệ số góc và b là tung độ gốc. Giao điểm của hai đồ thị là nghiệm của hệ hai phương trình.",
    "example": "y=2x−6 cắt trục x tại 3"
+  },
+  "math-m3-sta1": {
+   "title": "Phương sai và độ lệch chuẩn",
+   "concept": "**Độ lệch** = (giá trị) − (trung bình). **Phương sai** là trung bình của các bình phương độ lệch, còn **độ lệch chuẩn** là căn bậc hai dương của phương sai. Giá trị càng lớn thì dữ liệu càng phân tán.",
+   "example": "2, 4, 6, 8 → trung bình 5, phương sai 5"
+  },
+  "math-h2-seq1": {
+   "title": "Tổng của dãy số và ∑",
+   "concept": "$\\sum_{k=1}^{n} a_k$ nghĩa là $a_1+a_2+\\cdots+a_n$. Các quy tắc hữu ích: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ và $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+   "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+  },
+  "math-h3-pro1": {
+   "title": "Quy tắc cộng và biến cố đối",
+   "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Xác suất của biến cố đối là $P(A^c)=1-P(A)$.",
+   "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
   },
   "math-el-econ1": {
    "title": "Lãi suất, tỉ giá và thuế",
@@ -3576,6 +3594,174 @@
     "Giải $0=ax+b$."
    ],
    "explanation": "$0=-2x+8$ cho x=4."
+  },
+  "m-m3-sta1-1": {
+   "prompt": "Phương sai của dãy số liệu 2, 4, 6, 8 là bao nhiêu?",
+   "hints": [
+    "Tìm trung bình rồi tìm độ lệch của từng số.",
+    "Phương sai là trung bình của các bình phương độ lệch."
+   ],
+   "explanation": "Trung bình là 5 và tổng bình phương độ lệch là 20, nên phương sai là 20÷4=5."
+  },
+  "m-m3-sta1-2": {
+   "prompt": "Phương sai của dãy số liệu 3, 5, 5, 7 là bao nhiêu?",
+   "hints": [
+    "Tìm trung bình rồi tìm độ lệch của từng số.",
+    "Phương sai là trung bình của các bình phương độ lệch."
+   ],
+   "explanation": "Trung bình là 5 và tổng bình phương độ lệch là 8, nên phương sai là 8÷4=2."
+  },
+  "m-m3-sta1-3": {
+   "prompt": "Độ lệch chuẩn của dãy số liệu 1, 1, 5, 5 là bao nhiêu? (độ lệch chuẩn tổng thể)",
+   "hints": [
+    "Trước hết hãy tìm trung bình cộng.",
+    "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+   ],
+   "explanation": "Trung bình là 3 và phương sai là 4, nên độ lệch chuẩn là 2."
+  },
+  "m-m3-sta1-4": {
+   "prompt": "Phương sai của dãy số liệu 1, 2, 3, 4, 5 là bao nhiêu?",
+   "hints": [
+    "Tìm trung bình rồi tìm độ lệch của từng số.",
+    "Phương sai là trung bình của các bình phương độ lệch."
+   ],
+   "explanation": "Trung bình là 3 và tổng bình phương độ lệch là 10, nên phương sai là 10÷5=2."
+  },
+  "m-m3-sta1-c": {
+   "prompt": "Độ lệch chuẩn của dãy số liệu 2, 2, 8, 8 là bao nhiêu? (độ lệch chuẩn tổng thể)",
+   "hints": [
+    "Trước hết hãy tìm trung bình cộng.",
+    "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+   ],
+   "explanation": "Trung bình là 5 và phương sai là 9, nên độ lệch chuẩn là 3."
+  },
+  "m-m3-sta1-v1": {
+   "prompt": "Phương sai của dãy số liệu 10, 20 là bao nhiêu?",
+   "hints": [
+    "Tìm trung bình rồi tìm độ lệch của từng số.",
+    "Phương sai là trung bình của các bình phương độ lệch."
+   ],
+   "explanation": "Trung bình là 15 và tổng bình phương độ lệch là 50, nên phương sai là 50÷2=25."
+  },
+  "m-m3-sta1-v2": {
+   "prompt": "Độ lệch chuẩn của dãy số liệu 3, 3, 9, 9 là bao nhiêu? (độ lệch chuẩn tổng thể)",
+   "hints": [
+    "Trước hết hãy tìm trung bình cộng.",
+    "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+   ],
+   "explanation": "Trung bình là 6 và phương sai là 9, nên độ lệch chuẩn là 3."
+  },
+  "m-h2-seq1-1": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{5} k$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "1+2+3+4+5, nên tổng là 15."
+  },
+  "m-h2-seq1-2": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{4} (2k+1)$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "3+5+7+9, nên tổng là 24."
+  },
+  "m-h2-seq1-3": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{10} k$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "10×11÷2, nên tổng là 55."
+  },
+  "m-h2-seq1-4": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{6} 3$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "3×6, nên tổng là 18."
+  },
+  "m-h2-seq1-c": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{5} k^2$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "1+4+9+16+25, nên tổng là 55."
+  },
+  "m-h2-seq1-v1": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{3} (4k-1)$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "3+7+11, nên tổng là 21."
+  },
+  "m-h2-seq1-v2": {
+   "prompt": "Hãy tính giá trị của tổng sau: $\\sum_{k=1}^{8} k$",
+   "hints": [
+    "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+    "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+   ],
+   "explanation": "8×9÷2, nên tổng là 36."
+  },
+  "m-h3-pro1-1": {
+   "prompt": "Cho hai biến cố A và B, $P(A)=0.5$, $P(B)=0.4$ và $P(A\\cap B)=0.2$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+   "hints": [
+    "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+    "Thay lần lượt các giá trị đã cho vào."
+   ],
+   "explanation": "0.5+0.4-0.2=0.7."
+  },
+  "m-h3-pro1-2": {
+   "prompt": "Cho hai biến cố A và B, $P(A)=0.6$, $P(B)=0.3$ và $P(A\\cap B)=0.1$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+   "hints": [
+    "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+    "Thay lần lượt các giá trị đã cho vào."
+   ],
+   "explanation": "0.6+0.3-0.1=0.8."
+  },
+  "m-h3-pro1-3": {
+   "prompt": "Xác suất của biến cố A là $P(A)=0.3$. Xác suất của biến cố đối $P(A^c)$ là bao nhiêu?",
+   "hints": [
+    "Biến cố đối có xác suất $1-P(A)$.",
+    "Lấy 1 trừ $P(A)$."
+   ],
+   "explanation": "1-0.3=0.7."
+  },
+  "m-h3-pro1-4": {
+   "prompt": "Cho hai biến cố A và B, $P(A)=0.35$, $P(B)=0.45$ và $P(A\\cap B)=0.15$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+   "hints": [
+    "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+    "Thay lần lượt các giá trị đã cho vào."
+   ],
+   "explanation": "0.35+0.45-0.15=0.65."
+  },
+  "m-h3-pro1-c": {
+   "prompt": "Cho hai biến cố A và B, $P(A)=0.7$, $P(B)=0.5$ và $P(A\\cap B)=0.4$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+   "hints": [
+    "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+    "Thay lần lượt các giá trị đã cho vào."
+   ],
+   "explanation": "0.7+0.5-0.4=0.8."
+  },
+  "m-h3-pro1-v1": {
+   "prompt": "Xác suất của biến cố A là $P(A)=0.42$. Xác suất của biến cố đối $P(A^c)$ là bao nhiêu?",
+   "hints": [
+    "Biến cố đối có xác suất $1-P(A)$.",
+    "Lấy 1 trừ $P(A)$."
+   ],
+   "explanation": "1-0.42=0.58."
+  },
+  "m-h3-pro1-v2": {
+   "prompt": "Cho hai biến cố A và B, $P(A)=0.25$, $P(B)=0.5$ và $P(A\\cap B)=0.1$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+   "hints": [
+    "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+    "Thay lần lượt các giá trị đã cho vào."
+   ],
+   "explanation": "0.25+0.5-0.1=0.65."
   },
   "m-el-econ1-1": {
    "prompt": "Gửi 100000 won trong 3 năm với lãi suất đơn 5% mỗi năm. Tiền lãi là bao nhiêu? (won)",

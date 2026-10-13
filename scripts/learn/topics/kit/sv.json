@@ -671,6 +671,70 @@
         "Tänk på hur andras arbete och resultat måste behandlas."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "Hur mycket är {a}+{b}?",
+      "hints": [
+        "Addera från ental.",
+        "Om en kolumn blir 10 eller mer, minnessiffra till nästa plats."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "Hur mycket är {a}-{b}?",
+      "hints": [
+        "Subtrahera från ental.",
+        "Om du inte kan subtrahera, växla från nästa plats."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Beräkna: {expr}",
+      "hints": [
+        "Räkna först det som står inom parentes.",
+        "Sedan multiplikation och division före addition och subtraktion, från vänster till höger."
+      ],
+      "expl": "{steps}, så svaret är {ans}."
+    },
+    "roundTo": {
+      "prompt": "Vad blir {n} med ”{mode}” i enheter om {u}?",
+      "hints": [
+        "Titta på siffrorna under {u}-platsen.",
+        "Avrundning uppåt höjer alltid, avrundning nedåt tar alltid bort, och avrundning till närmaste höjer bara om nästa siffra är 5 eller mer."
+      ],
+      "expl": "Med ”{mode}” blir {n} i enheter om {u} lika med {ans}."
+    },
+    "variance": {
+      "prompt": "Vad är variansen för värdena {list}?",
+      "hints": [
+        "Beräkna medelvärdet och sedan varje avvikelse från det.",
+        "Variansen är medelvärdet av de kvadrerade avvikelserna."
+      ],
+      "expl": "Medelvärdet är {mean} och de kvadrerade avvikelserna summerar till {sq}, så variansen är {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Beräkna värdet av summan: {expr}",
+      "hints": [
+        "Tecknet ∑ betyder: sätt in k=1, 2, 3, … i tur och ordning och addera allt.",
+        "Du kan också använda reglerna $\\sum k=\\frac{n(n+1)}{2}$ och $\\sum c=cn$."
+      ],
+      "expl": "{steps}, så summan är {ans}."
+    },
+    "probAdd": {
+      "prompt": "För två händelser A och B gäller $P(A)={pa}$, $P(B)={pb}$ och $P(A\\cap B)={pab}$. Vad är $P(A\\cup B)$?",
+      "hints": [
+        "Använd additionssatsen $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Sätt in de givna värdena ett i taget."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Sannolikheten för händelsen A är $P(A)={pa}$. Vad är sannolikheten för komplementhändelsen $P(A^c)$?",
+      "hints": [
+        "Komplementhändelsen har sannolikheten $1-P(A)$.",
+        "Dra $P(A)$ från 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Att kopiera en annan persons text utan att säga var den kommer ifrån strider mot forskningsetiken.",
     "et_cite_r": "Att använda någons arbete utan källa är plagiat, så påståendet är sant.",
     "et_fake": "Om resultaten skiljer sig från hypotesen är det okej att ändra siffrorna så att de stämmer.",
-    "et_fake_r": "Att ändra resultat är fusk med data och bryter mot forskningsetiken, så påståendet är falskt."
+    "et_fake_r": "Att ändra resultat är fusk med data och bryter mot forskningsetiken, så påståendet är falskt.",
+    "rd_up": "avrundning uppåt",
+    "rd_down": "avrundning nedåt",
+    "rd_half": "avrundning till närmaste"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Forskningssteg och etik",
       "concept": "Forskning går: ämne → plan → genomföra → presentera → reflektera. Att ange källor och aldrig ändra resultat är forskningsetik.",
       "example": "Efter ämnet kommer forskningsplanen"
+    },
+    "E3ari1": {
+      "title": "Addera och subtrahera tresiffriga tal",
+      "concept": "Räkna från ental. Blir en kolumn 10 eller mer **minnessiffrar** du till nästa plats; kan du inte subtrahera **växlar** du från nästa plats.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Blandade beräkningar",
+      "concept": "När de fyra räknesätten är blandade räknar du först **parenteserna**, sedan **multiplikation och division** och sist **addition och subtraktion**, från vänster till höger.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Avrunda uppåt, nedåt och till närmaste",
+      "concept": "**Avrundning uppåt** höjer talet till nästa multipel, **avrundning nedåt** tar bort de lägre siffrorna och **avrundning till närmaste** höjer bara om nästa siffra är 5 eller mer.",
+      "example": "3472 i multiplar av 100: uppåt 3500, nedåt 3400, närmaste 3500"
+    },
+    "M3sta1": {
+      "title": "Varians och standardavvikelse",
+      "concept": "**Avvikelsen** är (värde) − (medelvärde). **Variansen** är medelvärdet av de kvadrerade avvikelserna och **standardavvikelsen** är dess positiva kvadratrot. Ju större den är, desto mer spridda är värdena.",
+      "example": "2, 4, 6, 8 → medelvärde 5, varians 5"
+    },
+    "H2seq1": {
+      "title": "Summor av talföljder och ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ betyder $a_1+a_2+\\cdots+a_n$. Användbara regler: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ och $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "Additionssatsen och komplementhändelsen",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Sannolikheten för komplementhändelsen är $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {

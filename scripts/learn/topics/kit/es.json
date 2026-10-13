@@ -671,6 +671,70 @@
         "Piensa en cómo deben tratarse el trabajo y los resultados de otras personas."
       ],
       "expl": "{reason}"
+    },
+    "addThree": {
+      "prompt": "¿Cuánto es {a}+{b}?",
+      "hints": [
+        "Suma desde las unidades.",
+        "Si una columna suma 10 o más, lleva a la siguiente posición."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "subThree": {
+      "prompt": "¿Cuánto es {a}-{b}?",
+      "hints": [
+        "Resta desde las unidades.",
+        "Si no puedes restar, pide prestado a la siguiente posición."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Calcula: {expr}",
+      "hints": [
+        "Resuelve primero lo que está entre paréntesis.",
+        "Luego multiplica y divide antes de sumar y restar, de izquierda a derecha."
+      ],
+      "expl": "{steps}, así que la respuesta es {ans}."
+    },
+    "roundTo": {
+      "prompt": "Con «{mode}», ¿cuánto es {n} en unidades de {u}?",
+      "hints": [
+        "Mira las cifras por debajo del lugar de {u}.",
+        "Redondear hacia arriba siempre sube, redondear hacia abajo siempre elimina, y redondear al más cercano sube solo si la cifra siguiente es 5 o más."
+      ],
+      "expl": "Con «{mode}», {n} pasa a ser {ans} en unidades de {u}."
+    },
+    "variance": {
+      "prompt": "¿Cuál es la varianza de los datos {list}?",
+      "hints": [
+        "Halla la media y luego cada desviación respecto a ella.",
+        "La varianza es la media de las desviaciones al cuadrado."
+      ],
+      "expl": "La media es {mean} y las desviaciones al cuadrado suman {sq}, así que la varianza es {sq}÷{n}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Halla el valor de esta suma: {expr}",
+      "hints": [
+        "El signo ∑ significa: pon k=1, 2, 3, … en orden y suma todo.",
+        "También puedes usar las reglas $\\sum k=\\frac{n(n+1)}{2}$ y $\\sum c=cn$."
+      ],
+      "expl": "{steps}, así que la suma es {ans}."
+    },
+    "probAdd": {
+      "prompt": "Para dos sucesos A y B, $P(A)={pa}$, $P(B)={pb}$ y $P(A\\cap B)={pab}$. ¿Cuánto vale $P(A\\cup B)$?",
+      "hints": [
+        "Usa la regla de la suma $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Sustituye los valores dados uno por uno."
+      ],
+      "expl": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "La probabilidad del suceso A es $P(A)={pa}$. ¿Cuál es la probabilidad del suceso contrario, $P(A^c)$?",
+      "hints": [
+        "El suceso contrario tiene probabilidad $1-P(A)$.",
+        "Resta $P(A)$ de 1."
+      ],
+      "expl": "1-{pa}={ans}."
     }
   },
   "word": {
@@ -721,7 +785,10 @@
     "et_cite": "Copiar el escrito de otra persona sin decir de dónde procede va contra la ética de la investigación.",
     "et_cite_r": "Usar el trabajo de alguien sin citar la fuente es plagio, así que la afirmación es verdadera.",
     "et_fake": "Si los resultados difieren de la hipótesis, está bien cambiar los números para que coincidan.",
-    "et_fake_r": "Cambiar los resultados es falsificación y rompe la ética de la investigación, así que la afirmación es falsa."
+    "et_fake_r": "Cambiar los resultados es falsificación y rompe la ética de la investigación, así que la afirmación es falsa.",
+    "rd_up": "redondeo hacia arriba",
+    "rd_down": "redondeo hacia abajo",
+    "rd_half": "redondeo al más cercano"
   },
   "lesson": {
     "E2dat1": {
@@ -843,6 +910,36 @@
       "title": "Pasos de la investigación y ética",
       "concept": "La investigación sigue: tema → plan → realización → presentación → reflexión. Citar las fuentes y no alterar nunca los resultados es ética de la investigación.",
       "example": "Después del tema viene el plan de investigación"
+    },
+    "E3ari1": {
+      "title": "Sumar y restar números de tres cifras",
+      "concept": "Trabaja desde las unidades. Si una columna suma 10 o más, **lleva** a la siguiente posición; si no puedes restar, **pide prestado** a la siguiente posición.",
+      "example": "346+278=624"
+    },
+    "E6ari1": {
+      "title": "Cálculos combinados",
+      "concept": "Cuando se mezclan las cuatro operaciones, resuelve primero **los paréntesis**, luego **la multiplicación y la división** y por último **la suma y la resta**, de izquierda a derecha.",
+      "example": "12+3×4=12+12=24"
+    },
+    "E6ari2": {
+      "title": "Redondear hacia arriba, hacia abajo y al más cercano",
+      "concept": "**Redondear hacia arriba** sube el número al siguiente múltiplo, **redondear hacia abajo** elimina las cifras bajas y **redondear al más cercano** sube solo si la cifra siguiente es 5 o más.",
+      "example": "3472 en múltiplos de 100: arriba 3500, abajo 3400, más cercano 3500"
+    },
+    "M3sta1": {
+      "title": "Varianza y desviación típica",
+      "concept": "La **desviación** es (valor) − (media). La **varianza** es la media de las desviaciones al cuadrado y la **desviación típica** es su raíz cuadrada positiva. Cuanto mayor es, más dispersos están los datos.",
+      "example": "2, 4, 6, 8 → media 5, varianza 5"
+    },
+    "H2seq1": {
+      "title": "Sumas de sucesiones y ∑",
+      "concept": "$\\sum_{k=1}^{n} a_k$ significa $a_1+a_2+\\cdots+a_n$. Reglas útiles: $\\sum k=\\frac{n(n+1)}{2}$, $\\sum c=cn$ y $\\sum(a_k+b_k)=\\sum a_k+\\sum b_k$.",
+      "example": "$\\sum_{k=1}^{4}(2k+1)=3+5+7+9=24$"
+    },
+    "H3pro1": {
+      "title": "La regla de la suma y el suceso contrario",
+      "concept": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. La probabilidad del suceso contrario es $P(A^c)=1-P(A)$.",
+      "example": "$P(A)=0.5,\\ P(B)=0.4,\\ P(A\\cap B)=0.2 \\Rightarrow P(A\\cup B)=0.7$"
     }
   },
   "course": {
