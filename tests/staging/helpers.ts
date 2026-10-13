@@ -117,3 +117,10 @@ export async function deleteFixtureUser(userId: string | null) {
   expect(del.status, "fixture user deleted").toBeLessThan(300);
   for (const table of LEARN_TABLES) expect(await restRows(table, `user_id=eq.${userId}&select=user_id&limit=1`), `${table} purged with the user`).toEqual([]);
 }
+
+/** A confirmed Auth user created through the admin API (the UI has no sign-up while accounts are closed). */
+export async function createConfirmedUser(who: { email: string; password: string }): Promise<string> {
+  const r = await fetch(`${SUPABASE}/auth/v1/admin/users`, { method: "POST", headers: svcHeaders(), body: JSON.stringify({ email: who.email, password: who.password, email_confirm: true }) });
+  if (r.status >= 300) throw new Error(`fixture user creation failed: ${r.status}`);
+  return (await r.json()).id as string;
+}

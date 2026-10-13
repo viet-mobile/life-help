@@ -5,7 +5,7 @@ import { useActionState, useState } from "react";
 import { authenticate, type AuthFormState } from "@/app/study/[site]/actions";
 import { useSite } from "./LearnerProvider";
 
-export function AuthForm({ enabled }: { enabled: boolean }) {
+export function AuthForm({ enabled, signupEnabled = false }: { enabled: boolean; signupEnabled?: boolean }) {
   const { site, t, href } = useSite();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [state, action, pending] = useActionState<AuthFormState | null, FormData>(authenticate, null);
@@ -50,7 +50,7 @@ export function AuthForm({ enabled }: { enabled: boolean }) {
         {state?.confirm && <div className="l-panel l-panel-good" role="status">{t("auth.confirm")}</div>}
         <button className="l-btn l-btn-block" disabled={!enabled || pending}>{t(mode === "login" ? "auth.submit.login" : "auth.submit.signup")}</button>
       </form>
-      <button className="l-link" onClick={() => setMode(mode === "login" ? "signup" : "login")}>{t(mode === "login" ? "auth.switch.signup" : "auth.switch.login")}</button>
+      {signupEnabled && <button className="l-link" onClick={() => setMode(mode === "login" ? "signup" : "login")}>{t(mode === "login" ? "auth.switch.signup" : "auth.switch.login")}</button>}
       <Link className="l-btn l-btn-ghost l-btn-block" href={href("/onboarding")}>{t("auth.guest")}</Link>
       <p className="l-muted">{t("auth.note")}</p>
       <p className="l-muted" style={{ fontSize: "0.85rem" }}>

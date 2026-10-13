@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Hva heter denne figuren?",
+      "hints": [
+        "Tell sidene og hjørnene.",
+        "Sjekk om den har rette sider, eller om den er rund."
+      ],
+      "expl": "Figuren heter: {name}."
+    },
+    "nameSolid": {
+      "prompt": "Hva heter denne romfiguren?",
+      "hints": [
+        "Er den rund fra alle sider?",
+        "Tell de flate sideflatene."
+      ],
+      "expl": "Denne romfiguren er: {name}."
+    },
+    "countOf": {
+      "prompt": "Hvor mange {shape} er det på bildet?",
+      "hints": [
+        "Merk av hver figur mens du teller.",
+        "Pass på at du ikke teller den samme figuren to ganger."
+      ],
+      "expl": "Det er {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Hvor mange hjørner har denne figuren?",
+      "hints": [
+        "Et hjørne er et punkt der to sider møtes.",
+        "Tell de spisse hjørnene ett og ett."
+      ],
+      "expl": "Den har {ans} hjørner."
+    },
+    "countSides": {
+      "prompt": "Hvor mange sider har denne figuren?",
+      "hints": [
+        "En side er en rett kant på figuren.",
+        "Gå rundt figuren og tell sidene."
+      ],
+      "expl": "Den har {ans} sider."
+    },
+    "rulerRead": {
+      "prompt": "Bruk linjalen til å finne lengden på linjen. (cm)",
+      "hints": [
+        "Finn hvor linjen starter og hvor den slutter.",
+        "Trekk startmerket fra sluttmerket."
+      ],
+      "expl": "Linjen går fra {from} til {to}, så lengden er {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Hvor mange cm lengre er den øverste linjen enn den nederste? (cm)",
+      "hints": [
+        "Les av begge lengdene først.",
+        "Trekk den korteste lengden fra den lengste."
+      ],
+      "expl": "{a}-{b}={ans}, så den er {ans} cm lengre."
+    },
+    "rightAngles": {
+      "prompt": "Hvor mange rette vinkler har denne figuren?",
+      "hints": [
+        "En rett vinkel ser ut som hjørnet på et kvadrat.",
+        "Sjekk ett hjørne om gangen."
+      ],
+      "expl": "Den har {ans} rette vinkler."
+    },
+    "clockMinutes": {
+      "prompt": "Klokka viser {h} og noen minutter. Hvor mange minutter? (min)",
+      "hints": [
+        "Gang tallet den lange viseren peker på med 5.",
+        "Hvis den lange viseren peker på 6, er det 30 minutter."
+      ],
+      "expl": "Den lange viseren peker på {n}, så ${n}\\times5={ans}$ minutter."
+    },
+    "mToCm": {
+      "prompt": "Hvor mange cm er {m} m og {c} cm? (cm)",
+      "hints": [
+        "1 m er 100 cm.",
+        "Gjør om m til cm, og legg til de resterende cm."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, så det er {ans} cm."
+    },
+    "triType": {
+      "prompt": "Hva slags trekant har de viste sidelengdene?",
+      "hints": [
+        "Sammenlign de tre sidelengdene.",
+        "To like sider: likebeint. Tre like sider: likesidet."
+      ],
+      "expl": "Denne trekanten er: {name}."
+    },
+    "congruentCond": {
+      "prompt": "De to trekantene er kongruente. Hvilken kongruenssetning gjelder?",
+      "hints": [
+        "Finn ut hvilke sider som er like, og hvilke vinkler som er like.",
+        "Bare sider: SSS. To sider og vinkelen mellom dem: SVS. Én side og de to vinklene ved endene: VSV."
+      ],
+      "expl": "De like delene på bildet er: {cond}. Så det er denne setningen som brukes."
+    },
+    "circleDiameter": {
+      "prompt": "Radien i en sirkel er {r} cm. Hva er diameteren? (cm)",
+      "hints": [
+        "Diameteren er det lengste linjestykket gjennom sentrum.",
+        "Diameteren er dobbelt så lang som radien."
+      ],
+      "expl": "{r}×2={ans}, så diameteren er {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Diameteren i en sirkel er {d} cm. Hva er radien? (cm)",
+      "hints": [
+        "Radien går fra sentrum ut til sirkelen.",
+        "Radien er halvparten av diameteren."
+      ],
+      "expl": "{d}÷2={ans}, så radien er {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Hva slags vinkel er ${a}^\\circ$?",
+      "hints": [
+        "En rett vinkel er $90^\\circ$.",
+        "Mindre enn $90^\\circ$ er spiss; større er stump."
+      ],
+      "expl": "${a}^\\circ$ kalles: {name}."
+    },
+    "angleThird": {
+      "prompt": "To vinkler i en trekant er ${a}^\\circ$ og ${b}^\\circ$. Hva er den tredje vinkelen? (grader)",
+      "hints": [
+        "De tre vinklene i en trekant er til sammen $180^\\circ$.",
+        "Trekk de to kjente vinklene fra $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, så den tredje vinkelen er ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Tre vinkler i en firkant er ${a}^\\circ$, ${b}^\\circ$ og ${c}^\\circ$. Hva er den fjerde vinkelen? (grader)",
+      "hints": [
+        "De fire vinklene i en firkant er til sammen $360^\\circ$.",
+        "Trekk de tre kjente vinklene fra $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, så den fjerde vinkelen er ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Hva heter denne firkanten?",
+      "hints": [
+        "Sjekk om de motstående sidene er parallelle.",
+        "Sjekk også om alle sidene og vinklene er like."
+      ],
+      "expl": "Denne firkanten er: {name}."
+    },
+    "diagonals": {
+      "prompt": "Hvor mange diagonaler har denne figuren?",
+      "hints": [
+        "En diagonal forbinder to hjørner som ikke ligger ved siden av hverandre.",
+        "Tell først diagonalene fra ett hjørne."
+      ],
+      "expl": "Den har {ans} diagonaler."
+    },
+    "perimeterRect": {
+      "prompt": "Hva er omkretsen til rektangelet? (cm)",
+      "hints": [
+        "Omkretsen er lengden rundt figuren.",
+        "Legg sammen bredden og høyden, og gang med 2."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, så omkretsen er {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Hva er arealet til rektangelet? (cm²)",
+      "hints": [
+        "Arealet til et rektangel er bredde × høyde.",
+        "Gang de to lengdene som er vist."
+      ],
+      "expl": "${w}\\times{h}={ans}$, så arealet er {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Et kvadrat har sider på {s} cm. Hva er arealet? (cm²)",
+      "hints": [
+        "Alle fire sidene i et kvadrat er like lange.",
+        "Gang sidelengden med seg selv."
+      ],
+      "expl": "${s}\\times{s}={ans}$, så arealet er {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "En trekant har grunnlinje {b} cm og høyde {h} cm. Hva er arealet? (cm²)",
+      "hints": [
+        "Arealet til en trekant er grunnlinje × høyde ÷ 2.",
+        "Høyden måles vinkelrett på grunnlinjen."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, så arealet er {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Et parallellogram har grunnlinje {b} cm og høyde {h} cm. Hva er arealet? (cm²)",
+      "hints": [
+        "Arealet til et parallellogram er grunnlinje × høyde.",
+        "Bruk høyden, ikke den skrå siden."
+      ],
+      "expl": "${b}\\times{h}={ans}$, så arealet er {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Et trapes har overside {a} cm, underside {b} cm og høyde {h} cm. Hva er arealet? (cm²)",
+      "hints": [
+        "Arealet til et trapes er (overside + underside) × høyde ÷ 2.",
+        "Legg først sammen oversiden og undersiden."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, så arealet er {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Diagonalene i en rombe er {d1} cm og {d2} cm. Hva er arealet? (cm²)",
+      "hints": [
+        "Arealet til en rombe er den ene diagonalen × den andre diagonalen ÷ 2.",
+        "Gang diagonalene og del på 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, så arealet er {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Hvor mange symmetriakser har denne figuren?",
+      "hints": [
+        "En symmetriakse bretter figuren i to like halvdeler.",
+        "Prøv å brette vannrett, loddrett og på skrå."
+      ],
+      "expl": "Den har {ans} symmetriakser."
+    },
+    "congruentSide": {
+      "prompt": "De to trekantene er kongruente. Hva er lengden på siden $x$? (cm)",
+      "hints": [
+        "Kongruente figurer har samme form og størrelse.",
+        "Tilsvarende sider har like lengder."
+      ],
+      "expl": "Tilsvarende sider er like, så $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Hvor mange {item} har en kvader?",
+      "hints": [
+        "Tenk på en eske.",
+        "Se på toppen, bunnen, forsiden, baksiden og begge sidene."
+      ],
+      "expl": "En kvader har {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "En kvader er {l} cm lang, {w} cm bred og {h} cm høy. Hva er volumet? (cm³)",
+      "hints": [
+        "Volumet til en kvader er lengde × bredde × høyde.",
+        "Gang de tre lengdene."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, så volumet er {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "En kube har kanter på {e} cm. Hva er volumet? (cm³)",
+      "hints": [
+        "Alle kantene i en kube er like lange.",
+        "Gang kantlengden med seg selv tre ganger."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, så volumet er {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "En kvader er {l} cm lang, {w} cm bred og {h} cm høy. Hva er overflaten (overflatearealet)? (cm²)",
+      "hints": [
+        "Overflaten er summen av de seks sideflatene.",
+        "Motstående flater er like store: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, så overflaten er {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "En kvader er {l} cm lang, {w} cm bred og {h} cm høy. Hva er den samlede lengden av alle kantene? (cm)",
+      "hints": [
+        "En kvader har 12 kanter.",
+        "Det er 4 kanter av hver av lengden, bredden og høyden."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, så den samlede lengden er {ans} cm."
+    },
+    "circumference": {
+      "prompt": "En sirkel har radius {r} cm. Hva er omkretsen? (bruk $\\pi=3.14$) (cm)",
+      "hints": [
+        "Omkrets = diameter × π.",
+        "Diameteren er dobbelt så lang som radien."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, så omkretsen er {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "En sirkel har radius {r} cm. Hva er arealet? (bruk $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Areal = radius × radius × π.",
+        "Gang radien med seg selv, og deretter med 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, så arealet er {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Hvor mange flater har et prisme med en {n}-kantet grunnflate (medregnet grunnflatene)?",
+      "hints": [
+        "Et prisme har 2 grunnflater og noen sideflater.",
+        "Antall sideflater er lik antall sider i grunnflaten."
+      ],
+      "expl": "{n} sideflater pluss 2 grunnflater er {ans} flater."
+    },
+    "adjacentAngle": {
+      "prompt": "På en rett linje er en vinkel ${a}^\\circ$. Hva er nabovinkelen? (grader)",
+      "hints": [
+        "Vinkler på en rett linje er til sammen $180^\\circ$.",
+        "Trekk den kjente vinkelen fra $180$."
+      ],
+      "expl": "$180-{a}={ans}$, så den er ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "To linjer krysser hverandre, og en vinkel er ${a}^\\circ$. Hva er toppvinkelen? (grader)",
+      "hints": [
+        "Toppvinkler ligger rett overfor hverandre.",
+        "De er like store."
+      ],
+      "expl": "Toppvinkler er like store, så den er ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "To parallelle linjer $l$ og $m$ skjæres av en transversal. En vinkel er ${a}^\\circ$. Hva er $x$? (grader)",
+      "hints": [
+        "Samsvarende vinkler ved parallelle linjer er like store.",
+        "Det samme gjelder for alternate vinkler."
+      ],
+      "expl": "Samsvarende (alternate) vinkler ved parallelle linjer er like store, så $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Hva er vinkelsummen i en mangekant med {n} sider? (grader)",
+      "hints": [
+        "En mangekant med {n} sider kan deles i {m} trekanter.",
+        "Hver trekant har vinkelsummen $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, så vinkelsummen er ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Hva er én vinkel i en regulær mangekant med {n} sider? (grader)",
+      "hints": [
+        "Finn først vinkelsummen: $180\\times({n}-2)$.",
+        "Del summen på antall sider {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, så hver vinkel er ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "En sirkelsektor har radius {r} cm og sentralvinkel ${a}^\\circ$. Buelengden er $k\\pi$ cm. Hva er $k$?",
+      "hints": [
+        "Buelengden er $2\\pi r\\times\\frac{a}{360}$.",
+        "Finn først hvor stor del av hele sirkelen vinkelen utgjør."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, så $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "En sirkelsektor har radius {r} cm og sentralvinkel ${a}^\\circ$. Arealet er $k\\pi$ cm². Hva er $k$?",
+      "hints": [
+        "Arealet av en sirkelsektor er $\\pi r^2\\times\\frac{a}{360}$.",
+        "Gang arealet av sirkelen med brøken vinkelen utgjør."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, så $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "En sylinder har grunnflate med radius {r} cm og høyde {h} cm. Volumet er $k\\pi$ cm³. Hva er $k$?",
+      "hints": [
+        "Volum = grunnflate × høyde.",
+        "Arealet av grunnflaten er $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, så $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "En kjegle har grunnflate med radius {r} cm og høyde {h} cm. Volumet er $k\\pi$ cm³. Hva er $k$?",
+      "hints": [
+        "Volum = grunnflate × høyde ÷ 3.",
+        "Arealet av grunnflaten er $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, så $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "En kule har radius {r} cm. Volumet er $k\\pi$ cm³. Hva er $k$?",
+      "hints": [
+        "Volumet av en kule er $\\frac{4}{3}\\pi r^3$.",
+        "Ta radien i tredje potens, og gang med $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, så $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "En kule har radius {r} cm. Overflaten er $k\\pi$ cm². Hva er $k$?",
+      "hints": [
+        "Overflaten av en kule er $4\\pi r^2$.",
+        "Kvadrer radien og gang med 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, så $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "En sylinder har grunnflate med radius {r} cm og høyde {h} cm. Overflaten er $k\\pi$ cm². Hva er $k$?",
+      "hints": [
+        "Overflate = 2 × grunnflate + sideflate.",
+        "Sideflaten er (omkrets) × høyde $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, så $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "En grunnvinkel i en likebeint trekant er ${b}^\\circ$. Hva er toppvinkelen? (grader)",
+      "hints": [
+        "De to grunnvinklene i en likebeint trekant er like store.",
+        "Trekk begge grunnvinklene fra $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, så toppvinkelen er ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "I parallellogrammet ABCD er $\\angle A={a}^\\circ$. Hva er $\\angle B$? (grader)",
+      "hints": [
+        "Nabovinkler i et parallellogram er til sammen $180^\\circ$.",
+        "Trekk $\\angle A$ fra $180$."
+      ],
+      "expl": "$180-{a}={ans}$, så $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "I en trekant forbinder linjestykket $x$ midtpunktene på to sider og er parallelt med den tredje siden, som er {s} cm. Hva er $x$? (cm)",
+      "hints": [
+        "Linjestykket mellom to midtpunkter er halvparten av den tredje siden.",
+        "Del {s} på 2."
+      ],
+      "expl": "${s}\\div2={ans}$, så $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "De to trekantene er formlike. Hva er lengden på siden $x$? (cm)",
+      "hints": [
+        "I formlike figurer er forholdet mellom tilsvarende sider likt.",
+        "Finn først forholdet (målestokken)."
+      ],
+      "expl": "Forholdet er ${p}:{q}$, så $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "To formlike figurer har forholdet ${p}:{q}$. Den minste har areal {s} cm². Hva er arealet av den største? (cm²)",
+      "hints": [
+        "Forholdet mellom arealene er kvadratet av lengdeforholdet.",
+        "Gang det minste arealet med $({q}/{p})^2$."
+      ],
+      "expl": "Arealforholdet er ${p2}:{q2}$, så ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "De to korteste sidene i en rettvinklet trekant er {a} cm og {b} cm. Hva er den lengste siden $x$? (cm)",
+      "hints": [
+        "Pythagoras' setning: $a^2+b^2=c^2$.",
+        "Kvadrer begge sidene, legg dem sammen og ta kvadratroten."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, så $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "En rettvinklet trekant har hypotenus {c} cm og en katet {a} cm. Hva er den andre kateten $x$? (cm)",
+      "hints": [
+        "Fra $a^2+x^2=c^2$ får vi $x^2=c^2-a^2$.",
+        "Ta kvadratroten av $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, så $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "En trekant har sidene {a} cm, {b} cm og {c} cm. Er den rettvinklet?",
+      "hints": [
+        "Bruk den lengste siden som hypotenus og sammenlign $a^2+b^2$ med $c^2$.",
+        "Hvis de er like, er trekanten rettvinklet."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ og ${c}^2={s2}$, så {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "I den rettvinklede trekanten, hva er $\\{fn} A$? (skriv som desimaltall)",
+      "hints": [
+        "$\\sin A$ = motstående katet ÷ hypotenus, $\\cos A$ = hosliggende katet ÷ hypotenus, $\\tan A$ = motstående ÷ hosliggende.",
+        "Finn ut hvilket katet som er motstående og hvilket som er hosliggende til vinkel $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Hva er $\\{fn}\\ {a}^\\circ$? (skriv som desimaltall)",
+      "hints": [
+        "Husk verdiene for $30^\\circ$, $45^\\circ$ og $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "I en rettvinklet trekant er $\\tan A={t}$ og hosliggende katet er {adj}. Hva er motstående katet $x$?",
+      "hints": [
+        "$\\tan A$ = motstående ÷ hosliggende.",
+        "Motstående $=\\tan A\\times$ hosliggende."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Sentralvinkelen på buen AB er ${c}^\\circ$. Hva er periferivinkelen på den samme buen? (grader)",
+      "hints": [
+        "En periferivinkel er halvparten av sentralvinkelen på den samme buen.",
+        "Del sentralvinkelen på 2."
+      ],
+      "expl": "${c}\\div2={ans}$, så periferivinkelen er ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Fra et punkt P utenfor sirkelen O berører en tangent sirkelen i A. $PO={po}$ og radien er {r}. Hva er $PA$?",
+      "hints": [
+        "En tangent står vinkelrett på radien, så trekant OAP er rettvinklet.",
+        "Bruk $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, så $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "En sirkel har radius {r}. En korde ligger i avstand {d} fra sentrum. Hva er lengden på korden?",
+      "hints": [
+        "Normalen fra sentrum halverer korden.",
+        "Halve korden er $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Halve korden er $\\sqrt{{r}^2-{d}^2}={half}$, så korden er ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "En firkant er innskrevet i en sirkel, og en vinkel er ${a}^\\circ$. Hva er den motstående vinkelen? (grader)",
+      "hints": [
+        "Motstående vinkler i en sirkelinnskrevet firkant er til sammen $180^\\circ$.",
+        "Trekk den oppgitte vinkelen fra $180$."
+      ],
+      "expl": "$180-{a}={ans}$, så den er ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Hva er avstanden mellom punktene A({x1}, {y1}) og B({x2}, {y2}) i koordinatsystemet?",
+      "hints": [
+        "Avstanden er $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kvadrer den vannrette og den loddrette differansen og legg dem sammen."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Hva er ${axis}$-koordinaten til midtpunktet på linjestykket AB med A({x1}, {y1}) og B({x2}, {y2})?",
+      "hints": [
+        "Midtpunktet er gjennomsnittet av koordinatene.",
+        "Legg sammen de tilsvarende koordinatene og del på 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Hva er stigningstallet til linjen gjennom A({x1}, {y1}) og B({x2}, {y2})?",
+      "hints": [
+        "Stigningstall = (endring i $y$) ÷ (endring i $x$).",
+        "Regn ut $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Hva er radien i sirkelen $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "I $(x-a)^2+(y-b)^2=r^2$ er høyre side $r^2$.",
+        "Ta kvadratroten av {r2}."
+      ],
+      "expl": "$r^2={r2}$, så $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Sirkelen $(x-{a})^2+(y-{b})^2={r2}$ har sentrum $(p, q)$. Hva er $p+q$?",
+      "hints": [
+        "Sentrum er $(p, q)$.",
+        "Les av $p$ og $q$ fra $x-p$ og $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Hva er avstanden fra origo til linjen ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "Avstanden fra et punkt til en linje er $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "For origo er $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "I trekant ABC er $a={a}$ og $\\angle A={A}^\\circ$. Hva er radien $R$ i den omskrevne sirkelen?",
+      "hints": [
+        "Sinussetningen: $\\frac{a}{\\sin A}=2R$.",
+        "Bruk verdien av $\\sin {A}^\\circ$ for å finne $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "I trekant ABC er $a={a}$, $b={b}$ og $\\angle C={C}^\\circ$. Hva er $c$?",
+      "hints": [
+        "Cosinussetningen: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Sett inn verdien av $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, så $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "I trekant ABC er $a={a}$, $b={b}$ og $\\angle C={C}^\\circ$. Hva er arealet?",
+      "hints": [
+        "Areal $=\\frac12ab\\sin C$.",
+        "Sett inn verdien av $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ er lik $\\frac{\\pi}{d}$ radianer. Hva er $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ radianer.",
+        "Forkort $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, så $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "En sirkelsektor har radius {r} og sentralvinkel $\\frac{\\pi}{{d}}$. Buelengden er $k\\pi$. Hva er $k$?",
+      "hints": [
+        "Buelengden er $l=r\\theta$.",
+        "Gang $r$ med $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, så $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "En sirkelsektor har radius {r} og sentralvinkel $\\frac{\\pi}{{d}}$. Arealet er $k\\pi$. Hva er $k$?",
+      "hints": [
+        "Arealet av en sirkelsektor er $S=\\frac12r^2\\theta$.",
+        "Gang $r^2$ med $\\theta$, og deretter med $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, så $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Hva er $x$-koordinaten til brennpunktet til parabelen $y^2={k}x$?",
+      "hints": [
+        "Brennpunktet til $y^2=4px$ er $(p, 0)$.",
+        "Løs $4p={k}$ med hensyn på $p$."
+      ],
+      "expl": "$4p={k}$, så $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Ellipsen $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ har brennpunkter $(\\pm c, 0)$. Hva er $c$?",
+      "hints": [
+        "For en ellipse er $c^2=a^2-b^2$.",
+        "Trekk {b2} fra {a2} og ta kvadratroten."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, så $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Hyperbelen $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ har brennpunkter $(\\pm c, 0)$. Hva er $c$?",
+      "hints": [
+        "For en hyperbel er $c^2=a^2+b^2$.",
+        "Legg sammen {a2} og {b2} og ta kvadratroten."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, så $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Hva er lengden $|\\vec{a}|$ av vektoren $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kvadrer hver komponent, legg sammen og ta kvadratroten."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Hva er skalarproduktet $\\vec{a}\\cdot\\vec{b}$ av $\\vec{a}=({x1}, {y1})$ og $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "Skalarproduktet er $x_1x_2+y_1y_2$.",
+        "Gang de tilsvarende komponentene og legg sammen."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Vektorene $\\vec{a}=({x1}, k)$ og $\\vec{b}=({x2}, {y2})$ står vinkelrett på hverandre. Hva er $k$?",
+      "hints": [
+        "Vinkelrette vektorer har skalarprodukt $0$.",
+        "Løs $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, så $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "trekant",
+    "quad": "firkant",
+    "circ": "sirkel",
+    "pent": "femkant",
+    "hex": "sekskant",
+    "rect": "rektangel",
+    "square": "kvadrat",
+    "trap": "trapes",
+    "para": "parallellogram",
+    "rhom": "rombe",
+    "cube": "kube",
+    "cuboid": "kvader (eskeform)",
+    "cyl": "sylinder",
+    "sph": "kule",
+    "cone": "kjegle",
+    "acute": "spiss vinkel",
+    "right": "rett vinkel",
+    "obtuse": "stump vinkel",
+    "faces": "flater",
+    "edges": "kanter",
+    "vertices": "hjørner",
+    "triP": "trekanter",
+    "squareP": "kvadrater",
+    "circP": "sirkler",
+    "iso": "likebeint trekant",
+    "equi": "likesidet trekant",
+    "rtri": "rettvinklet trekant",
+    "sss": "Tre par like sider (SSS)",
+    "sas": "To like sider og vinkelen mellom dem (SVS)",
+    "asa": "Én lik side og de to like vinklene ved endene (VSV)",
+    "yes": "Ja, det er en rettvinklet trekant",
+    "no": "Nei, det er ikke en rettvinklet trekant"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Navn på figurer og hjørner",
+      "concept": "En **trekant** har 3 sider og en **firkant** har 4 sider. En **sirkel** er rund og har ingen hjørner.",
+      "example": "Trekant: 3 sider, 3 hjørner"
+    },
+    "E12": {
+      "title": "Romfigurer",
+      "concept": "En eskeform er en **kvader**, en rund søyle er en **sylinder**, og en ball er en **kule**.",
+      "example": "kvader · sylinder · kule"
+    },
+    "E21": {
+      "title": "Trekanter og firkanter",
+      "concept": "En **trekant** har 3 rette sider og 3 hjørner; en **firkant** har 4 rette sider og 4 hjørner, uansett hvordan den ser ut. Antall sider er lik antall hjørner.",
+      "example": "Firkant: 4 sider, 4 hjørner"
+    },
+    "E22": {
+      "title": "Lengde og tid",
+      "concept": "Legg den ene enden på 0 på linjalen; merket ved den andre enden er lengden. $1\\text{ m}=100\\text{ cm}$. Gang tallet den lange viseren peker på med 5 for å finne minuttene.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Vinkler og rette vinkler",
+      "concept": "To halvlinjer fra samme punkt danner en **vinkel**. En vinkel på $90^\\circ$ er en **rett vinkel**; mindre er **spiss**, større er **stump**.",
+      "example": "$30^\\circ$ spiss · $90^\\circ$ rett · $120^\\circ$ stump"
+    },
+    "E32": {
+      "title": "Radius og diameter",
+      "concept": "**Radien** går fra sentrum ut til sirkelen; **diameteren** går gjennom sentrum. Diameteren er dobbelt så lang som radien.",
+      "example": "Radius 5 cm → diameter 10 cm"
+    },
+    "E41": {
+      "title": "Vinkelsummer",
+      "concept": "De tre vinklene i en trekant er til sammen $180^\\circ$, og de fire vinklene i en firkant er til sammen $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Firkanter og mangekanter",
+      "concept": "Ett par parallelle sider gir et **trapes**, to par gir et **parallellogram**, og fire like sider gir en **rombe**. En **diagonal** forbinder to hjørner som ikke ligger ved siden av hverandre.",
+      "example": "En firkant har 2 diagonaler"
+    },
+    "E51": {
+      "title": "Omkrets og areal",
+      "concept": "Rektangel: bredde × høyde. Trekant: grunnlinje × høyde ÷ 2. Parallellogram: grunnlinje × høyde. Trapes: (overside + underside) × høyde ÷ 2. Rombe: diagonal × diagonal ÷ 2.",
+      "example": "Trekant med grunnlinje 10 og høyde 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Kongruens og symmetri",
+      "concept": "To figurer som passer nøyaktig over hverandre er **kongruente**. En figur som kan brettes sammen langs en linje er **symmetrisk**; linjen er **symmetriaksen**.",
+      "example": "Et kvadrat har 4 symmetriakser"
+    },
+    "E61": {
+      "title": "Omkrets og areal av sirkler",
+      "concept": "Omkrets = diameter × π, areal = radius × radius × π, der π ≈ $3.14$.",
+      "example": "Radius 5 cm → omkrets $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Kvadere og kuber",
+      "concept": "Volum = lengde × bredde × høyde; overflate = (summen av tre flaters areal) × 2. En kvader har 6 flater, 12 kanter og 8 hjørner.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Vinkelregler og mangekanter",
+      "concept": "Toppvinkler er like store; samsvarende og alternate vinkler ved parallelle linjer er like store. Vinkelsummen i en mangekant med $n$ sider er $180^\\circ\\times(n-2)$.",
+      "example": "Femkant: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Sirkelsektorer og romfigurer",
+      "concept": "Buelengde $=2\\pi r\\times\\frac{a}{360}$, areal av sirkelsektor $=\\pi r^2\\times\\frac{a}{360}$, volum av kule $=\\frac43\\pi r^3$, volum av kjegle $=\\frac13\\pi r^2h$.",
+      "example": "Kule $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Trekanter og firkanter",
+      "concept": "Grunnvinklene i en likebeint trekant er like store. Nabovinkler i et parallellogram er til sammen $180^\\circ$, og linjestykket mellom to midtpunkter i en trekant er halvparten av den tredje siden.",
+      "example": "Grunnvinkel $50^\\circ$ → toppvinkel $80^\\circ$"
+    },
+    "M22": {
+      "title": "Formlikhet og Pythagoras' setning",
+      "concept": "Formlike figurer har samme forhold mellom sidene, og arealene står i kvadratet av dette forholdet. I en rettvinklet trekant er $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Trigonometriske forhold",
+      "concept": "I en rettvinklet trekant er: $\\sin A$ = motstående katet ÷ hypotenusen, $\\cos A$ = hosliggende katet ÷ hypotenusen, $\\tan A$ = motstående katet ÷ hosliggende katet.",
+      "example": "3-4-5-trekant: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Egenskaper ved sirkler",
+      "concept": "En periferivinkel er halvparten av sentralvinkelen på den samme buen. En tangent står vinkelrett på radien, og motstående vinkler i en sirkelinnskrevet firkant er til sammen $180^\\circ$.",
+      "example": "Sentralvinkel $100^\\circ$ → periferivinkel $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figurer i koordinatsystemet",
+      "concept": "Avstand $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, midtpunkt = gjennomsnitt av koordinatene, stigningstall $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): avstand 5"
+    },
+    "H12": {
+      "title": "Likningen for en sirkel",
+      "concept": "En sirkel med sentrum $(a, b)$ og radius $r$ har likningen $(x-a)^2+(y-b)^2=r^2$. Avstanden fra $(x_0,y_0)$ til $ax+by+c=0$ er $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: sentrum $(2,3)$, radius 5"
+    },
+    "H21": {
+      "title": "Trekanter og trigonometriske funksjoner",
+      "concept": "Sinussetningen $\\frac{a}{\\sin A}=2R$, cosinussetningen $c^2=a^2+b^2-2ab\\cos C$, arealet av en trekant $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radianer og sirkelsektorer",
+      "concept": "$180^\\circ=\\pi$ radianer. En sirkelsektor med radius $r$ og vinkel $\\theta$ (i radianer) har buelengde $r\\theta$ og areal $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Kjeglesnitt",
+      "concept": "Parabelen $y^2=4px$ har brennpunkt $(p,0)$; for ellipsen $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ er $c^2=a^2-b^2$; for hyperbelen er $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: brennpunkt $(3,0)$"
+    },
+    "H32": {
+      "title": "Vektorer i planet",
+      "concept": "Lengden av $(x,y)$ er $\\sqrt{x^2+y^2}$; skalarproduktet er $x_1x_2+y_1y_2$, og vinkelrette vektorer har skalarprodukt 0.",
+      "example": "Lengden av $(3,4)$: 5"
+    }
+  }
+}

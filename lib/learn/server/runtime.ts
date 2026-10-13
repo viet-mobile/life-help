@@ -33,6 +33,12 @@ export async function loadContent(site: Site, locale?: LearnLocale) {
  * LEARN_SUPABASE_SECRET_KEY, and the project ref matches EXPECTED_LEARN_SUPABASE_REF. The generic marketplace Supabase
  * environment variables are never consulted, so they cannot enable (or redirect) learning accounts.
  */
+/**
+ * New-account sign-up is closed for every learning site for now: learners use the guest mode (progress stays in the browser).
+ * Existing accounts can still sign in. Flip to true to open sign-up again (the form, consent and server action are in place).
+ */
+export const SIGNUP_ENABLED = false;
+
 export function accountsEnabled(): boolean {
   return learnAccountsConfigured();
 }

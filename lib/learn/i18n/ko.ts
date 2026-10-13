@@ -358,6 +358,12 @@ export const ko = {
   "auth.age.guardian": "저는 만 14세 미만 아동의 법정대리인이며, 아동을 위해 직접 가입합니다.",
   "auth.agree": "이용약관과 개인정보처리방침에 동의합니다.",
   "auth.consent.error": "가입하려면 나이 확인과 약관 동의가 필요합니다.",
+  "figure.alt": "문제에 쓰인 그림",
+  "semester.title": "학기",
+  "semester.1": "1학기",
+  "semester.2": "2학기",
+  "semester.empty": "이 학기의 학습 내용은 곧 준비돼요.",
+  "semester.shared": "1·2학기 공통",
 } as const;
 
 export type MessageKey = keyof typeof ko;

@@ -17,11 +17,11 @@ vi.mock("@/components/learn/LearnerProvider", () => ({ useSite: () => ({ site: c
 vi.mock("@/app/study/[site]/actions", () => ({ authenticate: async () => null }));
 vi.mock("next/link", () => ({ default: ({ href, children, className }: { href: string; children: unknown; className?: string }) => createElement("a", { href, className }, children as never) }));
 
-async function render(site: Site, locale: (typeof locales)[number], enabled = true) {
+async function render(site: Site, locale: (typeof locales)[number], enabled = true, signupEnabled = true) {
   const t = createTranslator(await loadMessages(locale));
   current = { site, t: t as (k: string) => string };
   const { AuthForm } = await import("@/components/learn/AuthForm");
-  return { html: renderToStaticMarkup(createElement(AuthForm, { enabled })), label: (t as (k: string) => string)("auth.submit.login") };
+  return { html: renderToStaticMarkup(createElement(AuthForm, { enabled, signupEnabled })), label: (t as (k: string) => string)("auth.submit.login") };
 }
 /** what the Playwright locator resolves to: forms holding both inputs, and the buttons inside them */
 function structure(html: string) {
@@ -29,6 +29,20 @@ function structure(html: string) {
   const buttons = forms.flatMap((f) => [...f.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].map((m) => ({ attrs: m[1], text: m[2].replace(/<[^>]*>/g, "") })));
   return { forms: forms.length, buttons, allButtons: [...html.matchAll(/<button\b/g)].length };
 }
+
+describe("sign-up closed (the shipped default): the login form is the only form and has no sign-up switch", () => {
+  for (const site of SITES) {
+    it(`${site}: one login form and no second button`, async () => {
+      for (const l of ["ko", "en", "vi", "ur"] as const) {
+        const { html } = await render(site, l, true, false);
+        const s = structure(html);
+        expect(s.forms, `${site}/${l}`).toBe(1);
+        expect(s.allButtons, `${site}/${l}: only the submit button`).toBe(1);
+        expect(html).not.toContain('name="ageBasis"');
+      }
+    });
+  }
+});
 
 describe("login form selector across sites and learner locales", () => {
   for (const site of SITES) {

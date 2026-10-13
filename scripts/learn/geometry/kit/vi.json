@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Hình này có tên là gì?",
+      "hints": [
+        "Đếm số cạnh và số góc.",
+        "Xem hình có cạnh thẳng hay hình tròn."
+      ],
+      "expl": "Hình này là hình {name}."
+    },
+    "nameSolid": {
+      "prompt": "Khối hình này có tên là gì?",
+      "hints": [
+        "Nó có tròn ở mọi phía không?",
+        "Đếm số mặt phẳng."
+      ],
+      "expl": "Khối hình này là {name}."
+    },
+    "countOf": {
+      "prompt": "Có bao nhiêu {shape} trong hình?",
+      "hints": [
+        "Đánh dấu từng hình khi đếm.",
+        "Cẩn thận đừng đếm một hình hai lần."
+      ],
+      "expl": "Có {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Hình này có bao nhiêu đỉnh (góc)?",
+      "hints": [
+        "Đỉnh là điểm mà hai cạnh gặp nhau.",
+        "Đếm lần lượt các góc nhọn."
+      ],
+      "expl": "Nó có {ans} đỉnh."
+    },
+    "countSides": {
+      "prompt": "Hình này có bao nhiêu cạnh?",
+      "hints": [
+        "Cạnh là đoạn thẳng bao quanh hình.",
+        "Đi vòng quanh hình và đếm các cạnh."
+      ],
+      "expl": "Nó có {ans} cạnh."
+    },
+    "rulerRead": {
+      "prompt": "Dùng thước để tìm độ dài của đoạn thẳng. (cm)",
+      "hints": [
+        "Tìm điểm bắt đầu và điểm kết thúc của đoạn thẳng.",
+        "Lấy vạch cuối trừ vạch đầu."
+      ],
+      "expl": "Đoạn thẳng đi từ {from} đến {to}, nên độ dài là {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Đoạn thẳng trên dài hơn đoạn thẳng dưới bao nhiêu cm? (cm)",
+      "hints": [
+        "Hãy đọc cả hai độ dài trước.",
+        "Lấy độ dài lớn trừ độ dài nhỏ."
+      ],
+      "expl": "{a}-{b}={ans}, nên dài hơn {ans} cm."
+    },
+    "rightAngles": {
+      "prompt": "Hình này có bao nhiêu góc vuông?",
+      "hints": [
+        "Góc vuông trông giống góc của hình vuông.",
+        "Kiểm tra từng góc một."
+      ],
+      "expl": "Nó có {ans} góc vuông."
+    },
+    "clockMinutes": {
+      "prompt": "Đồng hồ chỉ {h} giờ và một vài phút. Là bao nhiêu phút? (phút)",
+      "hints": [
+        "Lấy số mà kim dài chỉ vào nhân với 5.",
+        "Nếu kim dài chỉ vào số 6 thì là 30 phút."
+      ],
+      "expl": "Kim dài chỉ vào số {n}, nên ${n}\\times5={ans}$ phút."
+    },
+    "mToCm": {
+      "prompt": "{m} m {c} cm bằng bao nhiêu cm? (cm)",
+      "hints": [
+        "1 m bằng 100 cm.",
+        "Đổi m ra cm rồi cộng với số cm còn lại."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, nên bằng {ans} cm."
+    },
+    "triType": {
+      "prompt": "Tam giác có độ dài các cạnh như hình là tam giác gì?",
+      "hints": [
+        "So sánh độ dài ba cạnh.",
+        "Hai cạnh bằng nhau: tam giác cân. Ba cạnh bằng nhau: tam giác đều."
+      ],
+      "expl": "Tam giác này là {name}."
+    },
+    "congruentCond": {
+      "prompt": "Hai tam giác bằng nhau. Trường hợp bằng nhau nào được áp dụng?",
+      "hints": [
+        "Tìm các cạnh bằng nhau và các góc bằng nhau.",
+        "Chỉ có cạnh: c.c.c. Hai cạnh và góc xen giữa: c.g.c. Một cạnh và hai góc kề: g.c.g."
+      ],
+      "expl": "Các yếu tố bằng nhau trong hình là: {cond}. Vậy đây là trường hợp được dùng."
+    },
+    "circleDiameter": {
+      "prompt": "Bán kính của một hình tròn là {r} cm. Đường kính là bao nhiêu? (cm)",
+      "hints": [
+        "Đường kính là đoạn thẳng dài nhất đi qua tâm.",
+        "Đường kính gấp đôi bán kính."
+      ],
+      "expl": "{r}×2={ans}, nên đường kính là {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Đường kính của một hình tròn là {d} cm. Bán kính là bao nhiêu? (cm)",
+      "hints": [
+        "Bán kính đi từ tâm đến đường tròn.",
+        "Bán kính bằng một nửa đường kính."
+      ],
+      "expl": "{d}÷2={ans}, nên bán kính là {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Góc ${a}^\\circ$ là loại góc gì?",
+      "hints": [
+        "Góc vuông bằng $90^\\circ$.",
+        "Nhỏ hơn $90^\\circ$ là góc nhọn; lớn hơn là góc tù."
+      ],
+      "expl": "${a}^\\circ$ là một {name}."
+    },
+    "angleThird": {
+      "prompt": "Hai góc của một tam giác là ${a}^\\circ$ và ${b}^\\circ$. Góc thứ ba là bao nhiêu? (độ)",
+      "hints": [
+        "Ba góc của một tam giác có tổng bằng $180^\\circ$.",
+        "Lấy $180$ trừ hai góc đã biết."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, nên góc thứ ba là ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Ba góc của một tứ giác là ${a}^\\circ$, ${b}^\\circ$ và ${c}^\\circ$. Góc thứ tư là bao nhiêu? (độ)",
+      "hints": [
+        "Bốn góc của một tứ giác có tổng bằng $360^\\circ$.",
+        "Lấy $360$ trừ ba góc đã biết."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, nên góc thứ tư là ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Tứ giác này có tên là gì?",
+      "hints": [
+        "Kiểm tra xem các cạnh đối có song song không.",
+        "Kiểm tra xem tất cả các cạnh và các góc có bằng nhau không."
+      ],
+      "expl": "Tứ giác này là {name}."
+    },
+    "diagonals": {
+      "prompt": "Hình này có bao nhiêu đường chéo?",
+      "hints": [
+        "Đường chéo nối hai đỉnh không kề nhau.",
+        "Trước hết đếm số đường chéo kẻ từ một đỉnh."
+      ],
+      "expl": "Nó có {ans} đường chéo."
+    },
+    "perimeterRect": {
+      "prompt": "Chu vi của hình chữ nhật là bao nhiêu? (cm)",
+      "hints": [
+        "Chu vi là độ dài đường bao quanh hình.",
+        "Cộng chiều rộng và chiều cao rồi nhân đôi."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, nên chu vi là {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Diện tích của hình chữ nhật là bao nhiêu? (cm²)",
+      "hints": [
+        "Diện tích hình chữ nhật bằng chiều rộng × chiều cao.",
+        "Nhân hai độ dài đã cho."
+      ],
+      "expl": "${w}\\times{h}={ans}$, nên diện tích là {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Một hình vuông có cạnh {s} cm. Diện tích của nó là bao nhiêu? (cm²)",
+      "hints": [
+        "Cả bốn cạnh của hình vuông bằng nhau.",
+        "Nhân độ dài cạnh với chính nó."
+      ],
+      "expl": "${s}\\times{s}={ans}$, nên diện tích là {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Một tam giác có đáy {b} cm và chiều cao {h} cm. Diện tích của nó là bao nhiêu? (cm²)",
+      "hints": [
+        "Diện tích tam giác bằng đáy × chiều cao ÷ 2.",
+        "Chiều cao được đo vuông góc với đáy."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, nên diện tích là {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Một hình bình hành có đáy {b} cm và chiều cao {h} cm. Diện tích của nó là bao nhiêu? (cm²)",
+      "hints": [
+        "Diện tích hình bình hành bằng đáy × chiều cao.",
+        "Dùng chiều cao, không dùng cạnh bên."
+      ],
+      "expl": "${b}\\times{h}={ans}$, nên diện tích là {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Một hình thang có đáy trên {a} cm, đáy dưới {b} cm và chiều cao {h} cm. Diện tích của nó là bao nhiêu? (cm²)",
+      "hints": [
+        "Diện tích hình thang bằng (đáy trên + đáy dưới) × chiều cao ÷ 2.",
+        "Trước hết cộng đáy trên và đáy dưới."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, nên diện tích là {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Hai đường chéo của một hình thoi là {d1} cm và {d2} cm. Diện tích của nó là bao nhiêu? (cm²)",
+      "hints": [
+        "Diện tích hình thoi bằng đường chéo này × đường chéo kia ÷ 2.",
+        "Nhân hai đường chéo rồi chia cho 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, nên diện tích là {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Hình này có bao nhiêu trục đối xứng?",
+      "hints": [
+        "Trục đối xứng gấp hình thành hai nửa trùng khít nhau.",
+        "Thử gấp theo chiều ngang, chiều dọc và đường chéo."
+      ],
+      "expl": "Nó có {ans} trục đối xứng."
+    },
+    "congruentSide": {
+      "prompt": "Hai tam giác bằng nhau. Độ dài cạnh $x$ là bao nhiêu? (cm)",
+      "hints": [
+        "Các hình bằng nhau có cùng hình dạng và kích thước.",
+        "Các cạnh tương ứng có độ dài bằng nhau."
+      ],
+      "expl": "Các cạnh tương ứng bằng nhau, nên $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Một hình hộp chữ nhật có bao nhiêu {item}?",
+      "hints": [
+        "Hãy hình dung một chiếc hộp.",
+        "Nhìn mặt trên, mặt dưới, mặt trước, mặt sau và hai mặt bên."
+      ],
+      "expl": "Hình hộp chữ nhật có {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Một hình hộp chữ nhật dài {l} cm, rộng {w} cm và cao {h} cm. Thể tích của nó là bao nhiêu? (cm³)",
+      "hints": [
+        "Thể tích hình hộp chữ nhật bằng chiều dài × chiều rộng × chiều cao.",
+        "Nhân ba độ dài."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, nên thể tích là {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Một hình lập phương có cạnh {e} cm. Thể tích của nó là bao nhiêu? (cm³)",
+      "hints": [
+        "Tất cả các cạnh của hình lập phương bằng nhau.",
+        "Nhân độ dài cạnh với chính nó ba lần."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, nên thể tích là {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Một hình hộp chữ nhật dài {l} cm, rộng {w} cm và cao {h} cm. Diện tích bề mặt của nó là bao nhiêu? (cm²)",
+      "hints": [
+        "Diện tích bề mặt là tổng diện tích sáu mặt.",
+        "Các mặt đối diện bằng nhau: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, nên diện tích bề mặt là {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Một hình hộp chữ nhật dài {l} cm, rộng {w} cm và cao {h} cm. Tổng độ dài tất cả các cạnh của nó là bao nhiêu? (cm)",
+      "hints": [
+        "Hình hộp chữ nhật có 12 cạnh.",
+        "Có 4 cạnh cho mỗi chiều dài, chiều rộng và chiều cao."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, nên tổng là {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Một hình tròn có bán kính {r} cm. Chu vi của nó là bao nhiêu? (dùng $\\pi=3.14$) (cm)",
+      "hints": [
+        "Chu vi = đường kính × π.",
+        "Đường kính gấp đôi bán kính."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, nên chu vi là {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Một hình tròn có bán kính {r} cm. Diện tích của nó là bao nhiêu? (dùng $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Diện tích = bán kính × bán kính × π.",
+        "Nhân bán kính với chính nó, rồi nhân với 3,14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, nên diện tích là {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Một hình lăng trụ có đáy là đa giác {n} cạnh có bao nhiêu mặt?",
+      "hints": [
+        "Hình lăng trụ có 2 đáy và một số mặt bên.",
+        "Số mặt bên bằng số cạnh của đáy."
+      ],
+      "expl": "{n} mặt bên cộng 2 đáy là {ans} mặt."
+    },
+    "adjacentAngle": {
+      "prompt": "Trên một đường thẳng, một góc là ${a}^\\circ$. Góc kề bù với nó là bao nhiêu? (độ)",
+      "hints": [
+        "Các góc trên một đường thẳng có tổng bằng $180^\\circ$.",
+        "Lấy $180$ trừ góc đã biết."
+      ],
+      "expl": "$180-{a}={ans}$, nên nó là ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Hai đường thẳng cắt nhau và một góc là ${a}^\\circ$. Góc đối đỉnh với nó là bao nhiêu? (độ)",
+      "hints": [
+        "Hai góc đối đỉnh nằm đối diện nhau.",
+        "Chúng có số đo bằng nhau."
+      ],
+      "expl": "Hai góc đối đỉnh bằng nhau, nên nó là ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Hai đường thẳng song song $l$ và $m$ bị cắt bởi một cát tuyến. Một góc là ${a}^\\circ$. $x$ bằng bao nhiêu? (độ)",
+      "hints": [
+        "Các góc đồng vị tại hai đường thẳng song song thì bằng nhau.",
+        "Các góc so le trong cũng bằng nhau."
+      ],
+      "expl": "Các góc đồng vị (so le trong) tại hai đường thẳng song song bằng nhau, nên $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Tổng các góc trong của một đa giác {n} cạnh là bao nhiêu? (độ)",
+      "hints": [
+        "Một đa giác {n} cạnh chia được thành {m} tam giác.",
+        "Mỗi tam giác có tổng các góc là $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, nên tổng là ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Mỗi góc trong của một đa giác đều {n} cạnh bằng bao nhiêu? (độ)",
+      "hints": [
+        "Trước hết tìm tổng: $180\\times({n}-2)$.",
+        "Chia tổng cho số cạnh {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, nên mỗi góc là ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Một hình quạt có bán kính {r} cm và góc ở tâm ${a}^\\circ$. Độ dài cung của nó là $k\\pi$ cm. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Độ dài cung là $2\\pi r\\times\\frac{a}{360}$.",
+        "Trước hết tìm góc chiếm bao nhiêu phần của cả hình tròn."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, nên $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Một hình quạt có bán kính {r} cm và góc ở tâm ${a}^\\circ$. Diện tích của nó là $k\\pi$ cm². $k$ bằng bao nhiêu?",
+      "hints": [
+        "Diện tích hình quạt là $\\pi r^2\\times\\frac{a}{360}$.",
+        "Nhân diện tích hình tròn với phần góc chiếm."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, nên $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Một hình trụ có bán kính đáy {r} cm và chiều cao {h} cm. Thể tích của nó là $k\\pi$ cm³. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Thể tích = diện tích đáy × chiều cao.",
+        "Diện tích đáy là $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, nên $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Một hình nón có bán kính đáy {r} cm và chiều cao {h} cm. Thể tích của nó là $k\\pi$ cm³. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Thể tích = diện tích đáy × chiều cao ÷ 3.",
+        "Diện tích đáy là $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, nên $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Một hình cầu có bán kính {r} cm. Thể tích của nó là $k\\pi$ cm³. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Thể tích hình cầu là $\\frac{4}{3}\\pi r^3$.",
+        "Lập phương bán kính, rồi nhân với $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, nên $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Một hình cầu có bán kính {r} cm. Diện tích mặt cầu của nó là $k\\pi$ cm². $k$ bằng bao nhiêu?",
+      "hints": [
+        "Diện tích mặt cầu là $4\\pi r^2$.",
+        "Bình phương bán kính, rồi nhân với 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, nên $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Một hình trụ có bán kính đáy {r} cm và chiều cao {h} cm. Diện tích toàn phần của nó là $k\\pi$ cm². $k$ bằng bao nhiêu?",
+      "hints": [
+        "Diện tích toàn phần = 2 × diện tích đáy + diện tích xung quanh.",
+        "Diện tích xung quanh là (chu vi đáy) × chiều cao $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, nên $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Một góc ở đáy của tam giác cân là ${b}^\\circ$. Góc ở đỉnh là bao nhiêu? (độ)",
+      "hints": [
+        "Hai góc ở đáy của tam giác cân bằng nhau.",
+        "Lấy $180^\\circ$ trừ cả hai góc ở đáy."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, nên góc ở đỉnh là ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "Trong hình bình hành ABCD, $\\angle A={a}^\\circ$. $\\angle B$ bằng bao nhiêu? (độ)",
+      "hints": [
+        "Hai góc kề nhau của hình bình hành có tổng bằng $180^\\circ$.",
+        "Lấy $180$ trừ $\\angle A$."
+      ],
+      "expl": "$180-{a}={ans}$, nên $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Trong một tam giác, đoạn thẳng $x$ nối trung điểm của hai cạnh và song song với cạnh thứ ba dài {s} cm. $x$ bằng bao nhiêu? (cm)",
+      "hints": [
+        "Đoạn thẳng nối trung điểm của hai cạnh bằng một nửa cạnh thứ ba.",
+        "Chia {s} cho 2."
+      ],
+      "expl": "${s}\\div2={ans}$, nên $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Hai tam giác đồng dạng. Độ dài cạnh $x$ là bao nhiêu? (cm)",
+      "hints": [
+        "Trong các hình đồng dạng, tỉ số các cạnh tương ứng bằng nhau.",
+        "Trước hết tìm tỉ số đồng dạng."
+      ],
+      "expl": "Tỉ số là ${p}:{q}$, nên $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Hai hình đồng dạng có tỉ số đồng dạng ${p}:{q}$. Hình nhỏ có diện tích {s} cm². Diện tích hình lớn là bao nhiêu? (cm²)",
+      "hints": [
+        "Tỉ số diện tích bằng bình phương tỉ số đồng dạng.",
+        "Nhân diện tích hình nhỏ với $({q}/{p})^2$."
+      ],
+      "expl": "Tỉ số diện tích là ${p2}:{q2}$, nên ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Hai cạnh góc vuông của một tam giác vuông là {a} cm và {b} cm. Cạnh dài nhất $x$ là bao nhiêu? (cm)",
+      "hints": [
+        "Định lý Pythagore: $a^2+b^2=c^2$.",
+        "Bình phương hai cạnh, cộng lại, rồi lấy căn bậc hai."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, nên $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Một tam giác vuông có cạnh huyền {c} cm và một cạnh góc vuông {a} cm. Cạnh góc vuông còn lại $x$ là bao nhiêu? (cm)",
+      "hints": [
+        "Từ $a^2+x^2=c^2$, suy ra $x^2=c^2-a^2$.",
+        "Lấy căn bậc hai của $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, nên $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Một tam giác có các cạnh {a} cm, {b} cm và {c} cm. Đó có phải là tam giác vuông không?",
+      "hints": [
+        "Lấy cạnh dài nhất làm cạnh huyền và so sánh $a^2+b^2$ với $c^2$.",
+        "Nếu chúng bằng nhau thì đó là tam giác vuông."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ và ${c}^2={s2}$, nên {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Trong tam giác vuông, $\\{fn} A$ bằng bao nhiêu? (viết số thập phân)",
+      "hints": [
+        "$\\sin A$ = cạnh đối ÷ cạnh huyền, $\\cos A$ = cạnh kề ÷ cạnh huyền, $\\tan A$ = cạnh đối ÷ cạnh kề.",
+        "Phân biệt cạnh đối và cạnh kề dựa vào góc $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "$\\{fn}\\ {a}^\\circ$ bằng bao nhiêu? (viết số thập phân)",
+      "hints": [
+        "Hãy nhớ các giá trị của $30^\\circ$, $45^\\circ$ và $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Trong một tam giác vuông có $\\tan A={t}$ và cạnh kề là {adj}. Cạnh đối $x$ là bao nhiêu?",
+      "hints": [
+        "$\\tan A$ = cạnh đối ÷ cạnh kề.",
+        "Cạnh đối $=\\tan A\\times$ × cạnh kề."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Góc ở tâm chắn cung AB là ${c}^\\circ$. Góc nội tiếp chắn cùng cung đó là bao nhiêu? (độ)",
+      "hints": [
+        "Góc nội tiếp bằng một nửa góc ở tâm cùng chắn một cung.",
+        "Chia góc ở tâm cho 2."
+      ],
+      "expl": "${c}\\div2={ans}$, nên góc nội tiếp là ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Từ điểm P nằm ngoài đường tròn tâm O kẻ tiếp tuyến chạm đường tròn tại A. $PO={po}$ và bán kính là {r}. $PA$ bằng bao nhiêu?",
+      "hints": [
+        "Tiếp tuyến vuông góc với bán kính, nên tam giác OAP vuông.",
+        "Dùng $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, nên $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Một đường tròn có bán kính {r}. Một dây cung cách tâm một khoảng {d}. Độ dài của dây cung là bao nhiêu?",
+      "hints": [
+        "Đường vuông góc kẻ từ tâm chia đôi dây cung.",
+        "Nửa dây cung là $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Nửa dây cung là $\\sqrt{{r}^2-{d}^2}={half}$, nên dây cung là ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Một tứ giác nội tiếp đường tròn có một góc là ${a}^\\circ$. Góc đối diện là bao nhiêu? (độ)",
+      "hints": [
+        "Hai góc đối của tứ giác nội tiếp có tổng bằng $180^\\circ$.",
+        "Lấy $180$ trừ góc đã cho."
+      ],
+      "expl": "$180-{a}={ans}$, nên nó là ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Khoảng cách giữa hai điểm A({x1}, {y1}) và B({x2}, {y2}) trên mặt phẳng tọa độ là bao nhiêu?",
+      "hints": [
+        "Khoảng cách là $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Bình phương hiệu hoành độ và hiệu tung độ rồi cộng lại."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Tọa độ ${axis}$ của trung điểm đoạn thẳng AB với A({x1}, {y1}) và B({x2}, {y2}) là bao nhiêu?",
+      "hints": [
+        "Trung điểm có tọa độ là trung bình cộng các tọa độ.",
+        "Cộng các tọa độ tương ứng rồi chia cho 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Hệ số góc của đường thẳng đi qua A({x1}, {y1}) và B({x2}, {y2}) là bao nhiêu?",
+      "hints": [
+        "Hệ số góc = (độ thay đổi của $y$) ÷ (độ thay đổi của $x$).",
+        "Tính $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Bán kính của đường tròn $(x-{a})^2+(y-{b})^2={r2}$ là bao nhiêu?",
+      "hints": [
+        "Trong $(x-a)^2+(y-b)^2=r^2$, vế phải là $r^2$.",
+        "Lấy căn bậc hai của {r2}."
+      ],
+      "expl": "$r^2={r2}$, nên $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Đường tròn $(x-{a})^2+(y-{b})^2={r2}$ có tâm $(p, q)$. $p+q$ bằng bao nhiêu?",
+      "hints": [
+        "Tâm là $(p, q)$.",
+        "Đọc $p$ và $q$ từ $x-p$ và $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Khoảng cách từ gốc tọa độ đến đường thẳng ${A}x+{B}y-{C}=0$ là bao nhiêu?",
+      "hints": [
+        "Khoảng cách từ một điểm đến một đường thẳng là $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Với gốc tọa độ $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "Trong tam giác ABC, $a={a}$ và $\\angle A={A}^\\circ$. Bán kính đường tròn ngoại tiếp $R$ là bao nhiêu?",
+      "hints": [
+        "Định lý sin: $\\frac{a}{\\sin A}=2R$.",
+        "Dùng giá trị của $\\sin {A}^\\circ$ để tìm $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "Trong tam giác ABC, $a={a}$, $b={b}$ và $\\angle C={C}^\\circ$. $c$ bằng bao nhiêu?",
+      "hints": [
+        "Định lý cosin: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Thay giá trị của $\\cos {C}^\\circ$ vào."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, nên $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "Trong tam giác ABC, $a={a}$, $b={b}$ và $\\angle C={C}^\\circ$. Diện tích của nó là bao nhiêu?",
+      "hints": [
+        "Diện tích $=\\frac12ab\\sin C$.",
+        "Thay giá trị của $\\sin {C}^\\circ$ vào."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ bằng $\\frac{\\pi}{d}$ radian. $d$ bằng bao nhiêu?",
+      "hints": [
+        "$180^\\circ=\\pi$ radian.",
+        "Rút gọn $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, nên $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Một hình quạt có bán kính {r} và góc ở tâm $\\frac{\\pi}{{d}}$. Độ dài cung của nó là $k\\pi$. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Độ dài cung là $l=r\\theta$.",
+        "Nhân $r$ với $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, nên $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Một hình quạt có bán kính {r} và góc ở tâm $\\frac{\\pi}{{d}}$. Diện tích của nó là $k\\pi$. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Diện tích hình quạt là $S=\\frac12r^2\\theta$.",
+        "Nhân $r^2$ với $\\theta$, rồi nhân với $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, nên $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Hoành độ $x$ của tiêu điểm của parabol $y^2={k}x$ là bao nhiêu?",
+      "hints": [
+        "Tiêu điểm của $y^2=4px$ là $(p, 0)$.",
+        "Giải $4p={k}$ để tìm $p$."
+      ],
+      "expl": "$4p={k}$, nên $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Elip $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ có các tiêu điểm $(\\pm c, 0)$. $c$ bằng bao nhiêu?",
+      "hints": [
+        "Với elip $c^2=a^2-b^2$.",
+        "Lấy {a2} trừ {b2} rồi lấy căn bậc hai."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, nên $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Hypebol $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ có các tiêu điểm $(\\pm c, 0)$. $c$ bằng bao nhiêu?",
+      "hints": [
+        "Với hypebol $c^2=a^2+b^2$.",
+        "Cộng {a2} và {b2} rồi lấy căn bậc hai."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, nên $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Độ dài $|\\vec{a}|$ của vectơ $\\vec{a}=({x}, {y})$ là bao nhiêu?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Bình phương từng thành phần, cộng lại rồi lấy căn bậc hai."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Tích vô hướng $\\vec{a}\\cdot\\vec{b}$ của $\\vec{a}=({x1}, {y1})$ và $\\vec{b}=({x2}, {y2})$ là bao nhiêu?",
+      "hints": [
+        "Tích vô hướng là $x_1x_2+y_1y_2$.",
+        "Nhân các thành phần tương ứng rồi cộng lại."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Các vectơ $\\vec{a}=({x1}, k)$ và $\\vec{b}=({x2}, {y2})$ vuông góc với nhau. $k$ bằng bao nhiêu?",
+      "hints": [
+        "Hai vectơ vuông góc có tích vô hướng bằng $0$.",
+        "Giải $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, nên $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "tam giác",
+    "quad": "tứ giác",
+    "circ": "hình tròn",
+    "pent": "ngũ giác",
+    "hex": "lục giác",
+    "rect": "hình chữ nhật",
+    "square": "hình vuông",
+    "trap": "hình thang",
+    "para": "hình bình hành",
+    "rhom": "hình thoi",
+    "cube": "hình lập phương",
+    "cuboid": "hình hộp chữ nhật",
+    "cyl": "hình trụ",
+    "sph": "hình cầu",
+    "cone": "hình nón",
+    "acute": "góc nhọn",
+    "right": "góc vuông",
+    "obtuse": "góc tù",
+    "faces": "mặt",
+    "edges": "cạnh",
+    "vertices": "đỉnh",
+    "triP": "tam giác",
+    "squareP": "hình vuông",
+    "circP": "hình tròn",
+    "iso": "tam giác cân",
+    "equi": "tam giác đều",
+    "rtri": "tam giác vuông",
+    "sss": "Ba cặp cạnh bằng nhau (c.c.c)",
+    "sas": "Hai cạnh và góc xen giữa bằng nhau (c.g.c)",
+    "asa": "Một cạnh và hai góc kề bằng nhau (g.c.g)",
+    "yes": "Có, đó là tam giác vuông",
+    "no": "Không, đó không phải là tam giác vuông"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Tên các hình và các góc",
+      "concept": "**Tam giác** có 3 cạnh và **tứ giác** có 4 cạnh. **Hình tròn** thì tròn và không có góc.",
+      "example": "Tam giác: 3 cạnh, 3 góc"
+    },
+    "E12": {
+      "title": "Các khối hình",
+      "concept": "Hình dạng cái hộp là **hình hộp chữ nhật**, cái cột tròn là **hình trụ**, và quả bóng là **hình cầu**.",
+      "example": "hình hộp chữ nhật · hình trụ · hình cầu"
+    },
+    "E21": {
+      "title": "Tam giác và tứ giác",
+      "concept": "**Tam giác** có 3 cạnh thẳng và 3 góc; **tứ giác** có 4 cạnh thẳng và 4 góc, dù hình dạng thế nào. Số cạnh bằng số góc.",
+      "example": "Tứ giác: 4 cạnh, 4 góc"
+    },
+    "E22": {
+      "title": "Độ dài và thời gian",
+      "concept": "Đặt một đầu ở vạch 0 của thước; vạch ở đầu kia là độ dài. $1\\text{ m}=100\\text{ cm}$. Lấy số mà kim dài chỉ vào nhân với 5 để được số phút.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Góc và góc vuông",
+      "concept": "Hai tia xuất phát từ một điểm tạo thành một **góc**. Góc $90^\\circ$ là **góc vuông**; nhỏ hơn là **góc nhọn**, lớn hơn là **góc tù**.",
+      "example": "$30^\\circ$ góc nhọn · $90^\\circ$ góc vuông · $120^\\circ$ góc tù"
+    },
+    "E32": {
+      "title": "Bán kính và đường kính",
+      "concept": "**Bán kính** đi từ tâm đến đường tròn; **đường kính** đi qua tâm. Đường kính gấp đôi bán kính.",
+      "example": "Bán kính 5 cm → đường kính 10 cm"
+    },
+    "E41": {
+      "title": "Tổng các góc",
+      "concept": "Ba góc của một tam giác có tổng bằng $180^\\circ$ và bốn góc của một tứ giác có tổng bằng $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Tứ giác và đa giác",
+      "concept": "Một cặp cạnh song song là **hình thang**, hai cặp là **hình bình hành**, và bốn cạnh bằng nhau là **hình thoi**. **Đường chéo** nối hai đỉnh không kề nhau.",
+      "example": "Một tứ giác có 2 đường chéo"
+    },
+    "E51": {
+      "title": "Chu vi và diện tích",
+      "concept": "Hình chữ nhật: rộng × cao. Tam giác: đáy × cao ÷ 2. Hình bình hành: đáy × cao. Hình thang: (đáy trên + đáy dưới) × cao ÷ 2. Hình thoi: đường chéo × đường chéo ÷ 2.",
+      "example": "Tam giác đáy 10, cao 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Bằng nhau và đối xứng",
+      "concept": "Hai hình trùng khít nhau là hai hình **bằng nhau**. Một hình gấp lại theo một đường thì trùng với chính nó gọi là hình **đối xứng**; đường đó là **trục đối xứng**.",
+      "example": "Hình vuông có 4 trục đối xứng"
+    },
+    "E61": {
+      "title": "Chu vi và diện tích hình tròn",
+      "concept": "Chu vi = đường kính × π, diện tích = bán kính × bán kính × π, với π ≈ $3.14$.",
+      "example": "Bán kính 5 cm → chu vi $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Hình hộp chữ nhật và hình lập phương",
+      "concept": "Thể tích = dài × rộng × cao; diện tích bề mặt = (tổng diện tích ba mặt) × 2. Hình hộp chữ nhật có 6 mặt, 12 cạnh và 8 đỉnh.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Quy tắc về góc và đa giác",
+      "concept": "Hai góc đối đỉnh bằng nhau; các góc đồng vị và so le trong tại hai đường thẳng song song bằng nhau. Tổng các góc trong của đa giác $n$ cạnh là $180^\\circ\\times(n-2)$.",
+      "example": "Ngũ giác: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Hình quạt và các khối",
+      "concept": "Độ dài cung $=2\\pi r\\times\\frac{a}{360}$, diện tích hình quạt $=\\pi r^2\\times\\frac{a}{360}$, thể tích hình cầu $=\\frac43\\pi r^3$, thể tích hình nón $=\\frac13\\pi r^2h$.",
+      "example": "Hình cầu $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Tam giác và tứ giác",
+      "concept": "Hai góc ở đáy của tam giác cân bằng nhau. Hai góc kề nhau của hình bình hành có tổng bằng $180^\\circ$, và đoạn thẳng nối trung điểm của hai cạnh tam giác bằng một nửa cạnh thứ ba.",
+      "example": "Góc ở đáy $50^\\circ$ → góc ở đỉnh $80^\\circ$"
+    },
+    "M22": {
+      "title": "Đồng dạng và định lý Pythagore",
+      "concept": "Các hình đồng dạng có tỉ số các cạnh bằng nhau và diện tích có tỉ số bằng bình phương tỉ số đó. Trong tam giác vuông $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Tỉ số lượng giác",
+      "concept": "Trong tam giác vuông: $\\sin A$ = cạnh đối ÷ cạnh huyền, $\\cos A$ = cạnh kề ÷ cạnh huyền, $\\tan A$ = cạnh đối ÷ cạnh kề.",
+      "example": "Tam giác 3-4-5: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Tính chất của đường tròn",
+      "concept": "Góc nội tiếp bằng một nửa góc ở tâm cùng chắn một cung. Tiếp tuyến vuông góc với bán kính, và hai góc đối của tứ giác nội tiếp có tổng bằng $180^\\circ$.",
+      "example": "Góc ở tâm $100^\\circ$ → góc nội tiếp $50^\\circ$"
+    },
+    "H11": {
+      "title": "Hình trên mặt phẳng tọa độ",
+      "concept": "Khoảng cách $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, trung điểm = trung bình cộng các tọa độ, hệ số góc $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): khoảng cách 5"
+    },
+    "H12": {
+      "title": "Phương trình đường tròn",
+      "concept": "Đường tròn tâm $(a, b)$ và bán kính $r$ có phương trình $(x-a)^2+(y-b)^2=r^2$. Khoảng cách từ $(x_0,y_0)$ đến $ax+by+c=0$ là $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: tâm $(2,3)$, bán kính 5"
+    },
+    "H21": {
+      "title": "Tam giác và hàm số lượng giác",
+      "concept": "Định lý sin $\\frac{a}{\\sin A}=2R$, định lý cosin $c^2=a^2+b^2-2ab\\cos C$, diện tích tam giác $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radian và hình quạt",
+      "concept": "$180^\\circ=\\pi$ radian. Hình quạt có bán kính $r$ và góc $\\theta$ (radian) có độ dài cung $r\\theta$ và diện tích $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Các đường conic",
+      "concept": "Parabol $y^2=4px$ có tiêu điểm $(p,0)$; với elip $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; với hypebol $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: tiêu điểm $(3,0)$"
+    },
+    "H32": {
+      "title": "Vectơ trong mặt phẳng",
+      "concept": "Độ dài của $(x,y)$ là $\\sqrt{x^2+y^2}$; tích vô hướng là $x_1x_2+y_1y_2$, và hai vectơ vuông góc có tích vô hướng bằng 0.",
+      "example": "Độ dài của $(3,4)$: 5"
+    }
+  }
+}

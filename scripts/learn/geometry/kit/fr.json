@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Comment s'appelle cette figure ?",
+      "hints": [
+        "Compte les côtés et les sommets.",
+        "Regarde si les côtés sont droits ou si la figure est ronde."
+      ],
+      "expl": "Il s'agit d'un {name}."
+    },
+    "nameSolid": {
+      "prompt": "Comment s'appelle ce solide ?",
+      "hints": [
+        "Est-il rond de tous les côtés ?",
+        "Compte les faces plates."
+      ],
+      "expl": "Ce solide s'appelle {name}."
+    },
+    "countOf": {
+      "prompt": "Combien de {shape} y a-t-il sur l'image ?",
+      "hints": [
+        "Marque chacune au fur et à mesure que tu comptes.",
+        "Fais attention à ne pas compter deux fois la même figure."
+      ],
+      "expl": "Il y a {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Combien de sommets (coins) cette figure a-t-elle ?",
+      "hints": [
+        "Un sommet est un point où deux côtés se rencontrent.",
+        "Compte les coins pointus un par un."
+      ],
+      "expl": "Elle a {ans} sommets."
+    },
+    "countSides": {
+      "prompt": "Combien de côtés cette figure a-t-elle ?",
+      "hints": [
+        "Un côté est un bord droit de la figure.",
+        "Fais le tour de la figure et compte les côtés."
+      ],
+      "expl": "Elle a {ans} côtés."
+    },
+    "rulerRead": {
+      "prompt": "Utilise la règle pour trouver la longueur du segment. (cm)",
+      "hints": [
+        "Repère où le segment commence et où il finit.",
+        "Soustrais la graduation de départ à la graduation d'arrivée."
+      ],
+      "expl": "Le segment va de {from} à {to}, donc sa longueur est {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "De combien de cm le segment du haut est-il plus long que celui du bas ? (cm)",
+      "hints": [
+        "Lis d'abord les deux longueurs.",
+        "Soustrais la longueur la plus courte de la plus longue."
+      ],
+      "expl": "{a}-{b}={ans}, donc il est plus long de {ans} cm."
+    },
+    "rightAngles": {
+      "prompt": "Combien d'angles droits cette figure a-t-elle ?",
+      "hints": [
+        "Un angle droit ressemble au coin d'un carré.",
+        "Vérifie chaque coin un par un."
+      ],
+      "expl": "Elle a {ans} angles droits."
+    },
+    "clockMinutes": {
+      "prompt": "L'horloge indique {h} heures et quelques minutes. Combien de minutes ? (min)",
+      "hints": [
+        "Multiplie par 5 le nombre que montre la grande aiguille.",
+        "Si la grande aiguille est sur le 6, il y a 30 minutes."
+      ],
+      "expl": "La grande aiguille montre {n}, donc ${n}\\times5={ans}$ minutes."
+    },
+    "mToCm": {
+      "prompt": "Combien de cm font {m} m {c} cm ? (cm)",
+      "hints": [
+        "1 m = 100 cm.",
+        "Convertis les m en cm, puis ajoute les cm restants."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, donc cela fait {ans} cm."
+    },
+    "triType": {
+      "prompt": "Quel type de triangle a les longueurs de côtés indiquées ?",
+      "hints": [
+        "Compare les longueurs des trois côtés.",
+        "Deux côtés égaux : isocèle. Trois côtés égaux : équilatéral."
+      ],
+      "expl": "Il s'agit d'un {name}."
+    },
+    "congruentCond": {
+      "prompt": "Les deux triangles sont isométriques. Quel cas d'isométrie s'applique ?",
+      "hints": [
+        "Repère quels côtés sont égaux et quels angles sont égaux.",
+        "Seulement des côtés : CCC. Deux côtés et l'angle compris : CAC. Un côté et les deux angles adjacents : ACA."
+      ],
+      "expl": "Les éléments égaux sur la figure sont : {cond}. C'est donc ce cas qui s'applique."
+    },
+    "circleDiameter": {
+      "prompt": "Le rayon d'un cercle mesure {r} cm. Quel est son diamètre ? (cm)",
+      "hints": [
+        "Le diamètre est le plus long segment passant par le centre.",
+        "Le diamètre est le double du rayon."
+      ],
+      "expl": "{r}×2={ans}, donc le diamètre est {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Le diamètre d'un cercle mesure {d} cm. Quel est son rayon ? (cm)",
+      "hints": [
+        "Le rayon va du centre au cercle.",
+        "Le rayon est la moitié du diamètre."
+      ],
+      "expl": "{d}÷2={ans}, donc le rayon est {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Quel type d'angle est ${a}^\\circ$ ?",
+      "hints": [
+        "Un angle droit mesure $90^\\circ$.",
+        "Plus petit que $90^\\circ$ : aigu ; plus grand : obtus."
+      ],
+      "expl": "${a}^\\circ$ est un {name}."
+    },
+    "angleThird": {
+      "prompt": "Deux angles d'un triangle mesurent ${a}^\\circ$ et ${b}^\\circ$. Quel est le troisième angle ? (degrés)",
+      "hints": [
+        "Les trois angles d'un triangle ont une somme de $180^\\circ$.",
+        "Soustrais les deux angles connus de $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, donc le troisième angle est ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Trois angles d'un quadrilatère mesurent ${a}^\\circ$, ${b}^\\circ$ et ${c}^\\circ$. Quel est le quatrième angle ? (degrés)",
+      "hints": [
+        "Les quatre angles d'un quadrilatère ont une somme de $360^\\circ$.",
+        "Soustrais les trois angles connus de $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, donc le quatrième angle est ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Comment s'appelle ce quadrilatère ?",
+      "hints": [
+        "Regarde si les côtés opposés sont parallèles.",
+        "Regarde aussi si tous les côtés et tous les angles sont égaux."
+      ],
+      "expl": "Il s'agit d'un {name}."
+    },
+    "diagonals": {
+      "prompt": "Combien de diagonales cette figure a-t-elle ?",
+      "hints": [
+        "Une diagonale relie deux sommets qui ne sont pas voisins.",
+        "Compte d'abord les diagonales issues d'un seul sommet."
+      ],
+      "expl": "Elle a {ans} diagonales."
+    },
+    "perimeterRect": {
+      "prompt": "Quel est le périmètre du rectangle ? (cm)",
+      "hints": [
+        "Le périmètre est la longueur du tour de la figure.",
+        "Additionne la largeur et la hauteur, puis double."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, donc le périmètre est {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Quelle est l'aire du rectangle ? (cm²)",
+      "hints": [
+        "L'aire d'un rectangle est largeur × hauteur.",
+        "Multiplie les deux longueurs indiquées."
+      ],
+      "expl": "${w}\\times{h}={ans}$, donc l'aire est {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Un carré a des côtés de {s} cm. Quelle est son aire ? (cm²)",
+      "hints": [
+        "Les quatre côtés d'un carré sont égaux.",
+        "Multiplie la longueur du côté par elle-même."
+      ],
+      "expl": "${s}\\times{s}={ans}$, donc l'aire est {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Un triangle a une base de {b} cm et une hauteur de {h} cm. Quelle est son aire ? (cm²)",
+      "hints": [
+        "L'aire d'un triangle est base × hauteur ÷ 2.",
+        "La hauteur est perpendiculaire à la base."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, donc l'aire est {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Un parallélogramme a une base de {b} cm et une hauteur de {h} cm. Quelle est son aire ? (cm²)",
+      "hints": [
+        "L'aire d'un parallélogramme est base × hauteur.",
+        "Utilise la hauteur, pas le côté penché."
+      ],
+      "expl": "${b}\\times{h}={ans}$, donc l'aire est {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Un trapèze a une petite base de {a} cm, une grande base de {b} cm et une hauteur de {h} cm. Quelle est son aire ? (cm²)",
+      "hints": [
+        "L'aire d'un trapèze est (petite base + grande base) × hauteur ÷ 2.",
+        "Additionne d'abord les deux bases."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, donc l'aire est {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Les diagonales d'un losange mesurent {d1} cm et {d2} cm. Quelle est son aire ? (cm²)",
+      "hints": [
+        "L'aire d'un losange est une diagonale × l'autre diagonale ÷ 2.",
+        "Multiplie les diagonales, puis divise par 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, donc l'aire est {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Combien d'axes de symétrie cette figure a-t-elle ?",
+      "hints": [
+        "Un axe de symétrie plie la figure en deux moitiés qui se superposent.",
+        "Essaie de plier horizontalement, verticalement et en diagonale."
+      ],
+      "expl": "Elle a {ans} axes de symétrie."
+    },
+    "congruentSide": {
+      "prompt": "Les deux triangles sont isométriques. Quelle est la longueur du côté $x$ ? (cm)",
+      "hints": [
+        "Des figures isométriques ont la même forme et la même taille.",
+        "Les côtés correspondants ont des longueurs égales."
+      ],
+      "expl": "Les côtés correspondants sont égaux, donc $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Combien de {item} un pavé droit a-t-il ?",
+      "hints": [
+        "Imagine une boîte.",
+        "Regarde le dessus, le dessous, l'avant, l'arrière et les deux côtés."
+      ],
+      "expl": "Un pavé droit a {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Un pavé droit mesure {l} cm de long, {w} cm de large et {h} cm de haut. Quel est son volume ? (cm³)",
+      "hints": [
+        "Le volume d'un pavé droit est longueur × largeur × hauteur.",
+        "Multiplie les trois longueurs."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, donc le volume est {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Un cube a des arêtes de {e} cm. Quel est son volume ? (cm³)",
+      "hints": [
+        "Toutes les arêtes d'un cube sont égales.",
+        "Multiplie la longueur de l'arête trois fois par elle-même."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, donc le volume est {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Un pavé droit mesure {l} cm de long, {w} cm de large et {h} cm de haut. Quelle est son aire totale ? (cm²)",
+      "hints": [
+        "L'aire totale est la somme des aires des six faces.",
+        "Les faces opposées sont égales : (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, donc l'aire totale est {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Un pavé droit mesure {l} cm de long, {w} cm de large et {h} cm de haut. Quelle est la longueur totale de toutes ses arêtes ? (cm)",
+      "hints": [
+        "Un pavé droit a 12 arêtes.",
+        "Il y a 4 arêtes pour chacune des dimensions : longueur, largeur et hauteur."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, donc le total est {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Un cercle a un rayon de {r} cm. Quelle est sa circonférence ? (prends $\\pi=3.14$) (cm)",
+      "hints": [
+        "Circonférence = diamètre × π.",
+        "Le diamètre est le double du rayon."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, donc la circonférence est {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Un cercle a un rayon de {r} cm. Quelle est son aire ? (prends $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Aire = rayon × rayon × π.",
+        "Multiplie le rayon par lui-même, puis par 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, donc l'aire est {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Combien de faces a un prisme dont la base a {n} côtés ?",
+      "hints": [
+        "Un prisme a 2 bases et des faces latérales.",
+        "Le nombre de faces latérales est égal au nombre de côtés de la base."
+      ],
+      "expl": "{n} faces latérales plus 2 bases font {ans} faces."
+    },
+    "adjacentAngle": {
+      "prompt": "Sur une droite, un angle mesure ${a}^\\circ$. Quel est l'angle adjacent ? (degrés)",
+      "hints": [
+        "Les angles sur une droite ont une somme de $180^\\circ$.",
+        "Soustrais l'angle connu de $180$."
+      ],
+      "expl": "$180-{a}={ans}$, donc il mesure ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Deux droites se coupent et un angle mesure ${a}^\\circ$. Quel est l'angle opposé par le sommet ? (degrés)",
+      "hints": [
+        "Les angles opposés par le sommet se font face.",
+        "Ils ont la même mesure."
+      ],
+      "expl": "Les angles opposés par le sommet sont égaux, donc il mesure ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Deux droites parallèles $l$ et $m$ sont coupées par une sécante. Un angle mesure ${a}^\\circ$. Que vaut $x$ ? (degrés)",
+      "hints": [
+        "Les angles correspondants formés avec des droites parallèles sont égaux.",
+        "Les angles alternes-internes sont égaux eux aussi."
+      ],
+      "expl": "Les angles correspondants (alternes-internes) formés avec des droites parallèles sont égaux, donc $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Quelle est la somme des angles d'un polygone à {n} côtés ? (degrés)",
+      "hints": [
+        "Un polygone à {n} côtés se découpe en {m} triangles.",
+        "Chaque triangle a une somme d'angles de $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, donc la somme est ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Quelle est la mesure d'un angle d'un polygone régulier à {n} côtés ? (degrés)",
+      "hints": [
+        "Calcule d'abord la somme : $180\\times({n}-2)$.",
+        "Divise la somme par le nombre de côtés {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, donc chaque angle mesure ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Un secteur a un rayon de {r} cm et un angle au centre de ${a}^\\circ$. La longueur de son arc est $k\\pi$ cm. Que vaut $k$ ?",
+      "hints": [
+        "La longueur de l'arc est $2\\pi r\\times\\frac{a}{360}$.",
+        "Trouve d'abord quelle fraction du cercle entier représente l'angle."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, donc $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Un secteur a un rayon de {r} cm et un angle au centre de ${a}^\\circ$. Son aire est $k\\pi$ cm². Que vaut $k$ ?",
+      "hints": [
+        "L'aire du secteur est $\\pi r^2\\times\\frac{a}{360}$.",
+        "Multiplie l'aire du disque par la fraction donnée par l'angle."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, donc $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Un cylindre a une base de rayon {r} cm et une hauteur de {h} cm. Son volume est $k\\pi$ cm³. Que vaut $k$ ?",
+      "hints": [
+        "Volume = aire de la base × hauteur.",
+        "L'aire de la base est $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, donc $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Un cône a une base de rayon {r} cm et une hauteur de {h} cm. Son volume est $k\\pi$ cm³. Que vaut $k$ ?",
+      "hints": [
+        "Volume = aire de la base × hauteur ÷ 3.",
+        "L'aire de la base est $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, donc $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Une sphère a un rayon de {r} cm. Son volume est $k\\pi$ cm³. Que vaut $k$ ?",
+      "hints": [
+        "Le volume d'une sphère est $\\frac{4}{3}\\pi r^3$.",
+        "Élève le rayon au cube, puis multiplie par $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, donc $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Une sphère a un rayon de {r} cm. Son aire est $k\\pi$ cm². Que vaut $k$ ?",
+      "hints": [
+        "L'aire d'une sphère est $4\\pi r^2$.",
+        "Élève le rayon au carré, puis multiplie par 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, donc $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Un cylindre a une base de rayon {r} cm et une hauteur de {h} cm. Son aire totale est $k\\pi$ cm². Que vaut $k$ ?",
+      "hints": [
+        "Aire totale = 2 × aire de la base + aire latérale.",
+        "L'aire latérale est (circonférence) × hauteur $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, donc $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Un angle à la base d'un triangle isocèle mesure ${b}^\\circ$. Quel est l'angle au sommet ? (degrés)",
+      "hints": [
+        "Les deux angles à la base d'un triangle isocèle sont égaux.",
+        "Soustrais les deux angles à la base de $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, donc l'angle au sommet est ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "Dans le parallélogramme ABCD, $\\angle A={a}^\\circ$. Que vaut $\\angle B$ ? (degrés)",
+      "hints": [
+        "Les angles consécutifs d'un parallélogramme ont une somme de $180^\\circ$.",
+        "Soustrais $\\angle A$ de $180$."
+      ],
+      "expl": "$180-{a}={ans}$, donc $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Dans un triangle, le segment $x$ joint les milieux de deux côtés et est parallèle au troisième côté, qui mesure {s} cm. Que vaut $x$ ? (cm)",
+      "hints": [
+        "Le segment qui joint deux milieux mesure la moitié du troisième côté.",
+        "Divise {s} par 2."
+      ],
+      "expl": "${s}\\div2={ans}$, donc $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Les deux triangles sont semblables. Quelle est la longueur du côté $x$ ? (cm)",
+      "hints": [
+        "Dans des figures semblables, les rapports des côtés correspondants sont égaux.",
+        "Trouve d'abord le rapport d'agrandissement."
+      ],
+      "expl": "Le rapport est ${p}:{q}$, donc $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Deux figures semblables ont un rapport ${p}:{q}$. La plus petite a une aire de {s} cm². Quelle est l'aire de la plus grande ? (cm²)",
+      "hints": [
+        "Le rapport des aires est le carré du rapport de similitude.",
+        "Multiplie la plus petite aire par $({q}/{p})^2$."
+      ],
+      "expl": "Le rapport des aires est ${p2}:{q2}$, donc ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Les deux plus petits côtés d'un triangle rectangle mesurent {a} cm et {b} cm. Quelle est la longueur du plus grand côté $x$ ? (cm)",
+      "hints": [
+        "Théorème de Pythagore : $a^2+b^2=c^2$.",
+        "Élève les deux côtés au carré, additionne, puis prends la racine carrée."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, donc $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Un triangle rectangle a une hypoténuse de {c} cm et un côté de l'angle droit de {a} cm. Quelle est la longueur de l'autre côté $x$ ? (cm)",
+      "hints": [
+        "De $a^2+x^2=c^2$, on tire $x^2=c^2-a^2$.",
+        "Prends la racine carrée de $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, donc $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Un triangle a des côtés de {a} cm, {b} cm et {c} cm. Est-il rectangle ?",
+      "hints": [
+        "Prends le plus grand côté comme hypoténuse et compare $a^2+b^2$ avec $c^2$.",
+        "S'ils sont égaux, le triangle est rectangle."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ et ${c}^2={s2}$, donc : {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Dans le triangle rectangle, que vaut $\\{fn} A$ ? (écris un nombre décimal)",
+      "hints": [
+        "$\\sin A$ = côté opposé ÷ hypoténuse, $\\cos A$ = côté adjacent ÷ hypoténuse, $\\tan A$ = côté opposé ÷ côté adjacent.",
+        "Distingue le côté opposé et le côté adjacent à partir de l'angle $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Que vaut $\\{fn}\\ {a}^\\circ$ ? (écris un nombre décimal)",
+      "hints": [
+        "Rappelle-toi les valeurs pour $30^\\circ$, $45^\\circ$ et $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Dans un triangle rectangle, $\\tan A={t}$ et le côté adjacent mesure {adj}. Quelle est la longueur du côté opposé $x$ ?",
+      "hints": [
+        "$\\tan A$ = côté opposé ÷ côté adjacent.",
+        "Côté opposé $=\\tan A\\times$ côté adjacent."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "L'angle au centre qui intercepte l'arc AB mesure ${c}^\\circ$. Quelle est la mesure de l'angle inscrit qui intercepte le même arc ? (degrés)",
+      "hints": [
+        "Un angle inscrit mesure la moitié de l'angle au centre qui intercepte le même arc.",
+        "Divise l'angle au centre par 2."
+      ],
+      "expl": "${c}\\div2={ans}$, donc l'angle inscrit mesure ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "D'un point P extérieur au cercle de centre O, une tangente touche le cercle en A. $PO={po}$ et le rayon est {r}. Que vaut $PA$ ?",
+      "hints": [
+        "Une tangente est perpendiculaire au rayon, donc le triangle OAP est rectangle.",
+        "Utilise $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, donc $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Un cercle a un rayon de {r}. Une corde se trouve à une distance {d} du centre. Quelle est la longueur de la corde ?",
+      "hints": [
+        "La perpendiculaire menée du centre coupe la corde en son milieu.",
+        "La moitié de la corde vaut $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "La moitié de la corde vaut $\\sqrt{{r}^2-{d}^2}={half}$, donc la corde mesure ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Un quadrilatère est inscrit dans un cercle et un de ses angles mesure ${a}^\\circ$. Quelle est la mesure de l'angle opposé ? (degrés)",
+      "hints": [
+        "Les angles opposés d'un quadrilatère inscrit ont une somme de $180^\\circ$.",
+        "Soustrais l'angle donné de $180$."
+      ],
+      "expl": "$180-{a}={ans}$, donc il mesure ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Quelle est la distance entre les points A({x1}, {y1}) et B({x2}, {y2}) dans le plan muni d'un repère ?",
+      "hints": [
+        "La distance est $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Élève au carré les différences horizontale et verticale, puis additionne-les."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Quelle est la coordonnée ${axis}$ du milieu du segment AB, avec A({x1}, {y1}) et B({x2}, {y2}) ?",
+      "hints": [
+        "Le milieu a pour coordonnées les moyennes des coordonnées.",
+        "Additionne les coordonnées correspondantes et divise par 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Quel est le coefficient directeur (la pente) de la droite passant par A({x1}, {y1}) et B({x2}, {y2}) ?",
+      "hints": [
+        "Pente = (variation de $y$) ÷ (variation de $x$).",
+        "Calcule $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Quel est le rayon du cercle $(x-{a})^2+(y-{b})^2={r2}$ ?",
+      "hints": [
+        "Dans $(x-a)^2+(y-b)^2=r^2$, le membre de droite est $r^2$.",
+        "Prends la racine carrée de {r2}."
+      ],
+      "expl": "$r^2={r2}$, donc $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Le cercle $(x-{a})^2+(y-{b})^2={r2}$ a pour centre $(p, q)$. Que vaut $p+q$ ?",
+      "hints": [
+        "Le centre est $(p, q)$.",
+        "Lis $p$ et $q$ dans $x-p$ et $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Quelle est la distance de l'origine à la droite ${A}x+{B}y-{C}=0$ ?",
+      "hints": [
+        "La distance d'un point à une droite est $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Pour l'origine, $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "Dans le triangle ABC, $a={a}$ et $\\angle A={A}^\\circ$. Quel est le rayon $R$ du cercle circonscrit ?",
+      "hints": [
+        "Loi des sinus : $\\frac{a}{\\sin A}=2R$.",
+        "Utilise la valeur de $\\sin {A}^\\circ$ pour trouver $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "Dans le triangle ABC, $a={a}$, $b={b}$ et $\\angle C={C}^\\circ$. Que vaut $c$ ?",
+      "hints": [
+        "Loi des cosinus : $c^2=a^2+b^2-2ab\\cos C$.",
+        "Remplace par la valeur de $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, donc $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "Dans le triangle ABC, $a={a}$, $b={b}$ et $\\angle C={C}^\\circ$. Quelle est son aire ?",
+      "hints": [
+        "Aire $=\\frac12ab\\sin C$.",
+        "Remplace par la valeur de $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ est égal à $\\frac{\\pi}{d}$ radians. Que vaut $d$ ?",
+      "hints": [
+        "$180^\\circ=\\pi$ radians.",
+        "Simplifie $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, donc $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Un secteur a un rayon de {r} et un angle au centre de $\\frac{\\pi}{{d}}$. La longueur de son arc est $k\\pi$. Que vaut $k$ ?",
+      "hints": [
+        "La longueur de l'arc est $l=r\\theta$.",
+        "Multiplie $r$ par $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, donc $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Un secteur a un rayon de {r} et un angle au centre de $\\frac{\\pi}{{d}}$. Son aire est $k\\pi$. Que vaut $k$ ?",
+      "hints": [
+        "L'aire du secteur est $S=\\frac12r^2\\theta$.",
+        "Multiplie $r^2$ par $\\theta$, puis par $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, donc $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Quelle est la coordonnée $x$ du foyer de la parabole $y^2={k}x$ ?",
+      "hints": [
+        "Le foyer de $y^2=4px$ est $(p, 0)$.",
+        "Résous $4p={k}$ pour trouver $p$."
+      ],
+      "expl": "$4p={k}$, donc $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "L'ellipse $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ a pour foyers $(\\pm c, 0)$. Que vaut $c$ ?",
+      "hints": [
+        "Pour une ellipse, $c^2=a^2-b^2$.",
+        "Soustrais {b2} de {a2} et prends la racine carrée."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, donc $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "L'hyperbole $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ a pour foyers $(\\pm c, 0)$. Que vaut $c$ ?",
+      "hints": [
+        "Pour une hyperbole, $c^2=a^2+b^2$.",
+        "Additionne {a2} et {b2} et prends la racine carrée."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, donc $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Quelle est la norme $|\\vec{a}|$ du vecteur $\\vec{a}=({x}, {y})$ ?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Élève chaque composante au carré, additionne, puis prends la racine carrée."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Quel est le produit scalaire $\\vec{a}\\cdot\\vec{b}$ de $\\vec{a}=({x1}, {y1})$ et $\\vec{b}=({x2}, {y2})$ ?",
+      "hints": [
+        "Le produit scalaire est $x_1x_2+y_1y_2$.",
+        "Multiplie les composantes correspondantes et additionne."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Les vecteurs $\\vec{a}=({x1}, k)$ et $\\vec{b}=({x2}, {y2})$ sont perpendiculaires. Que vaut $k$ ?",
+      "hints": [
+        "Des vecteurs perpendiculaires ont un produit scalaire égal à $0$.",
+        "Résous $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, donc $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "triangle",
+    "quad": "quadrilatère",
+    "circ": "cercle",
+    "pent": "pentagone",
+    "hex": "hexagone",
+    "rect": "rectangle",
+    "square": "carré",
+    "trap": "trapèze",
+    "para": "parallélogramme",
+    "rhom": "losange",
+    "cube": "cube",
+    "cuboid": "pavé droit (forme de boîte)",
+    "cyl": "cylindre",
+    "sph": "sphère",
+    "cone": "cône",
+    "acute": "angle aigu",
+    "right": "angle droit",
+    "obtuse": "angle obtus",
+    "faces": "faces",
+    "edges": "arêtes",
+    "vertices": "sommets",
+    "triP": "triangles",
+    "squareP": "carrés",
+    "circP": "cercles",
+    "iso": "triangle isocèle",
+    "equi": "triangle équilatéral",
+    "rtri": "triangle rectangle",
+    "sss": "Les trois paires de côtés sont égales (CCC)",
+    "sas": "Deux côtés et l'angle compris entre eux sont égaux (CAC)",
+    "asa": "Un côté et les deux angles adjacents à ce côté sont égaux (ACA)",
+    "yes": "Oui, c'est un triangle rectangle",
+    "no": "Non, ce n'est pas un triangle rectangle"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Noms des figures et sommets",
+      "concept": "Un **triangle** a 3 côtés et un **quadrilatère** a 4 côtés. Un **cercle** est rond et n'a pas de sommets.",
+      "example": "Triangle : 3 côtés, 3 sommets"
+    },
+    "E12": {
+      "title": "Les solides",
+      "concept": "Une forme de boîte est un **pavé droit**, un pilier rond est un **cylindre** et un ballon est une **sphère**.",
+      "example": "pavé droit · cylindre · sphère"
+    },
+    "E21": {
+      "title": "Triangles et quadrilatères",
+      "concept": "Un **triangle** a 3 côtés droits et 3 sommets ; un **quadrilatère** a 4 côtés droits et 4 sommets, quelle que soit sa forme. Leur nombre de côtés est égal à leur nombre de sommets.",
+      "example": "Quadrilatère : 4 côtés, 4 sommets"
+    },
+    "E22": {
+      "title": "Longueur et temps",
+      "concept": "Place une extrémité sur le 0 de la règle ; la graduation de l'autre extrémité donne la longueur. $1\\text{ m}=100\\text{ cm}$. Multiplie par 5 le nombre que montre la grande aiguille pour obtenir les minutes.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Angles et angles droits",
+      "concept": "Deux demi-droites de même origine forment un **angle**. Un angle de $90^\\circ$ est un **angle droit** ; plus petit, il est **aigu** ; plus grand, il est **obtus**.",
+      "example": "$30^\\circ$ aigu · $90^\\circ$ droit · $120^\\circ$ obtus"
+    },
+    "E32": {
+      "title": "Rayon et diamètre",
+      "concept": "Le **rayon** va du centre au cercle ; le **diamètre** passe par le centre. Le diamètre est le double du rayon.",
+      "example": "Rayon 5 cm → diamètre 10 cm"
+    },
+    "E41": {
+      "title": "Sommes des angles",
+      "concept": "Les trois angles d'un triangle ont une somme de $180^\\circ$ et les quatre angles d'un quadrilatère ont une somme de $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Quadrilatères et polygones",
+      "concept": "Une paire de côtés parallèles donne un **trapèze**, deux paires un **parallélogramme**, et quatre côtés égaux un **losange**. Une **diagonale** relie deux sommets qui ne sont pas voisins.",
+      "example": "Un quadrilatère a 2 diagonales"
+    },
+    "E51": {
+      "title": "Périmètre et aire",
+      "concept": "Rectangle : largeur × hauteur. Triangle : base × hauteur ÷ 2. Parallélogramme : base × hauteur. Trapèze : (petite base + grande base) × hauteur ÷ 2. Losange : diagonale × diagonale ÷ 2.",
+      "example": "Triangle de base 10, hauteur 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Isométrie et symétrie",
+      "concept": "Deux figures qui se superposent exactement sont **isométriques**. Une figure qui se replie sur elle-même le long d'une droite est **symétrique** ; cette droite est l'**axe de symétrie**.",
+      "example": "Un carré a 4 axes de symétrie"
+    },
+    "E61": {
+      "title": "Circonférence et aire du disque",
+      "concept": "Circonférence = diamètre × π, aire = rayon × rayon × π, avec π ≈ $3.14$.",
+      "example": "Rayon 5 cm → circonférence $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Pavés droits et cubes",
+      "concept": "Volume = longueur × largeur × hauteur ; aire totale = (somme des aires de trois faces) × 2. Un pavé droit a 6 faces, 12 arêtes et 8 sommets.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Règles sur les angles et polygones",
+      "concept": "Les angles opposés par le sommet sont égaux ; les angles correspondants et alternes-internes formés avec des droites parallèles sont égaux. La somme des angles d'un polygone à $n$ côtés est $180^\\circ\\times(n-2)$.",
+      "example": "Pentagone : $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Secteurs et solides",
+      "concept": "Longueur de l'arc $=2\\pi r\\times\\frac{a}{360}$, aire du secteur $=\\pi r^2\\times\\frac{a}{360}$, volume de la sphère $=\\frac43\\pi r^3$, volume du cône $=\\frac13\\pi r^2h$.",
+      "example": "Sphère $r=3$ : $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Triangles et quadrilatères",
+      "concept": "Les angles à la base d'un triangle isocèle sont égaux. Les angles consécutifs d'un parallélogramme ont une somme de $180^\\circ$, et le segment qui joint les milieux de deux côtés d'un triangle mesure la moitié du troisième côté.",
+      "example": "Angle à la base $50^\\circ$ → angle au sommet $80^\\circ$"
+    },
+    "M22": {
+      "title": "Similitude et théorème de Pythagore",
+      "concept": "Des figures semblables ont des rapports de côtés égaux et leurs aires sont dans le carré de ce rapport. Dans un triangle rectangle, $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Rapports trigonométriques",
+      "concept": "Dans un triangle rectangle: $\\sin A$ = côté opposé ÷ hypoténuse, $\\cos A$ = côté adjacent ÷ hypoténuse, $\\tan A$ = côté opposé ÷ côté adjacent.",
+      "example": "Triangle 3-4-5 : $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Propriétés des cercles",
+      "concept": "Un angle inscrit mesure la moitié de l'angle au centre qui intercepte le même arc. Une tangente est perpendiculaire au rayon, et les angles opposés d'un quadrilatère inscrit ont une somme de $180^\\circ$.",
+      "example": "Angle au centre $100^\\circ$ → angle inscrit $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figures dans le plan muni d'un repère",
+      "concept": "Distance $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, milieu = moyenne des coordonnées, pente $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4) : distance 5"
+    },
+    "H12": {
+      "title": "Équation d'un cercle",
+      "concept": "Un cercle de centre $(a, b)$ et de rayon $r$ a pour équation $(x-a)^2+(y-b)^2=r^2$. La distance de $(x_0,y_0)$ à la droite $ax+by+c=0$ est $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$ : centre $(2,3)$, rayon 5"
+    },
+    "H21": {
+      "title": "Triangles et fonctions trigonométriques",
+      "concept": "Loi des sinus $\\frac{a}{\\sin A}=2R$, loi des cosinus $c^2=a^2+b^2-2ab\\cos C$, aire du triangle $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radians et secteurs",
+      "concept": "$180^\\circ=\\pi$ radians. Un secteur de rayon $r$ et d'angle $\\theta$ (en radians) a pour longueur d'arc $r\\theta$ et pour aire $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Coniques",
+      "concept": "La parabole $y^2=4px$ a pour foyer $(p,0)$ ; pour l'ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$ ; pour l'hyperbole, $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$ : foyer $(3,0)$"
+    },
+    "H32": {
+      "title": "Vecteurs du plan",
+      "concept": "La norme de $(x,y)$ est $\\sqrt{x^2+y^2}$ ; le produit scalaire est $x_1x_2+y_1y_2$, et des vecteurs perpendiculaires ont un produit scalaire nul.",
+      "example": "Norme de $(3,4)$ : 5"
+    }
+  }
+}

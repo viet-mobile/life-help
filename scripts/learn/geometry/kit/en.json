@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "What is the name of this shape?",
+      "hints": [
+        "Count the sides and the corners.",
+        "Check whether it has straight sides or is round."
+      ],
+      "expl": "This shape is called a {name}."
+    },
+    "nameSolid": {
+      "prompt": "What is the name of this solid shape?",
+      "hints": [
+        "Is it round from every side?",
+        "Count the flat faces."
+      ],
+      "expl": "This solid shape is a {name}."
+    },
+    "countOf": {
+      "prompt": "How many {shape} are there in the picture?",
+      "hints": [
+        "Mark each one as you count it.",
+        "Be careful not to count the same shape twice."
+      ],
+      "expl": "There are {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "How many vertices (corners) does this shape have?",
+      "hints": [
+        "A vertex is a point where two sides meet.",
+        "Count the pointed corners one by one."
+      ],
+      "expl": "It has {ans} vertices."
+    },
+    "countSides": {
+      "prompt": "How many sides does this shape have?",
+      "hints": [
+        "A side is a straight edge of the shape.",
+        "Go around the shape and count the sides."
+      ],
+      "expl": "It has {ans} sides."
+    },
+    "rulerRead": {
+      "prompt": "Use the ruler to find the length of the line. (cm)",
+      "hints": [
+        "Find where the line starts and where it ends.",
+        "Subtract the starting mark from the ending mark."
+      ],
+      "expl": "The line goes from {from} to {to}, so its length is {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "How many cm longer is the upper line than the lower line? (cm)",
+      "hints": [
+        "Read both lengths first.",
+        "Subtract the shorter length from the longer one."
+      ],
+      "expl": "{a}-{b}={ans}, so it is {ans} cm longer."
+    },
+    "rightAngles": {
+      "prompt": "How many right angles does this shape have?",
+      "hints": [
+        "A right angle looks like the corner of a square.",
+        "Check each corner one at a time."
+      ],
+      "expl": "It has {ans} right angles."
+    },
+    "clockMinutes": {
+      "prompt": "The clock shows {h} o'clock and some minutes. How many minutes? (min)",
+      "hints": [
+        "Multiply the number the long hand points to by 5.",
+        "If the long hand points to 6 it is 30 minutes."
+      ],
+      "expl": "The long hand points to {n}, so ${n}\\times5={ans}$ minutes."
+    },
+    "mToCm": {
+      "prompt": "How many cm is {m} m {c} cm? (cm)",
+      "hints": [
+        "1 m is 100 cm.",
+        "Change the m to cm, then add the remaining cm."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, so it is {ans} cm."
+    },
+    "triType": {
+      "prompt": "What kind of triangle has the side lengths shown?",
+      "hints": [
+        "Compare the three side lengths.",
+        "Two equal sides: isosceles. Three equal sides: equilateral."
+      ],
+      "expl": "This triangle is an {name}."
+    },
+    "congruentCond": {
+      "prompt": "The two triangles are congruent. Which congruence condition applies?",
+      "hints": [
+        "Find which sides are equal and which angles are equal.",
+        "Only sides: SSS. Two sides and the included angle: SAS. One side and the two angles at its ends: ASA."
+      ],
+      "expl": "The equal parts in the picture are: {cond}. So this is the condition used."
+    },
+    "circleDiameter": {
+      "prompt": "The radius of a circle is {r} cm. What is the diameter? (cm)",
+      "hints": [
+        "The diameter is the longest segment through the centre.",
+        "The diameter is twice the radius."
+      ],
+      "expl": "{r}×2={ans}, so the diameter is {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "The diameter of a circle is {d} cm. What is the radius? (cm)",
+      "hints": [
+        "The radius goes from the centre to the circle.",
+        "The radius is half of the diameter."
+      ],
+      "expl": "{d}÷2={ans}, so the radius is {ans} cm."
+    },
+    "angleType": {
+      "prompt": "What kind of angle is ${a}^\\circ$?",
+      "hints": [
+        "A right angle is $90^\\circ$.",
+        "Smaller than $90^\\circ$ is acute; larger is obtuse."
+      ],
+      "expl": "${a}^\\circ$ is called an {name}."
+    },
+    "angleThird": {
+      "prompt": "Two angles of a triangle are ${a}^\\circ$ and ${b}^\\circ$. What is the third angle? (degrees)",
+      "hints": [
+        "The three angles of a triangle add up to $180^\\circ$.",
+        "Subtract the two known angles from $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, so the third angle is ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Three angles of a quadrilateral are ${a}^\\circ$, ${b}^\\circ$ and ${c}^\\circ$. What is the fourth angle? (degrees)",
+      "hints": [
+        "The four angles of a quadrilateral add up to $360^\\circ$.",
+        "Subtract the three known angles from $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, so the fourth angle is ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "What is the name of this quadrilateral?",
+      "hints": [
+        "Check whether opposite sides are parallel.",
+        "Also check whether all sides and angles are equal."
+      ],
+      "expl": "This quadrilateral is a {name}."
+    },
+    "diagonals": {
+      "prompt": "How many diagonals does this shape have?",
+      "hints": [
+        "A diagonal joins two vertices that are not next to each other.",
+        "First count the diagonals from one vertex."
+      ],
+      "expl": "It has {ans} diagonals."
+    },
+    "perimeterRect": {
+      "prompt": "What is the perimeter of the rectangle? (cm)",
+      "hints": [
+        "The perimeter is the distance around the shape.",
+        "Add the width and the height, then double it."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, so the perimeter is {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "What is the area of the rectangle? (cm²)",
+      "hints": [
+        "The area of a rectangle is width × height.",
+        "Multiply the two lengths shown."
+      ],
+      "expl": "${w}\\times{h}={ans}$, so the area is {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "A square has sides of {s} cm. What is its area? (cm²)",
+      "hints": [
+        "All four sides of a square are equal.",
+        "Multiply the side length by itself."
+      ],
+      "expl": "${s}\\times{s}={ans}$, so the area is {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "A triangle has base {b} cm and height {h} cm. What is its area? (cm²)",
+      "hints": [
+        "The area of a triangle is base × height ÷ 2.",
+        "The height is measured at a right angle to the base."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, so the area is {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "A parallelogram has base {b} cm and height {h} cm. What is its area? (cm²)",
+      "hints": [
+        "The area of a parallelogram is base × height.",
+        "Use the height, not the slanted side."
+      ],
+      "expl": "${b}\\times{h}={ans}$, so the area is {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "A trapezoid has top {a} cm, bottom {b} cm and height {h} cm. What is its area? (cm²)",
+      "hints": [
+        "The area of a trapezoid is (top + bottom) × height ÷ 2.",
+        "First add the top and the bottom."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, so the area is {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "The diagonals of a rhombus are {d1} cm and {d2} cm. What is its area? (cm²)",
+      "hints": [
+        "The area of a rhombus is one diagonal × the other diagonal ÷ 2.",
+        "Multiply the diagonals, then divide by 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, so the area is {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "How many lines of symmetry does this shape have?",
+      "hints": [
+        "A line of symmetry folds the shape into two matching halves.",
+        "Try folding horizontally, vertically and diagonally."
+      ],
+      "expl": "It has {ans} lines of symmetry."
+    },
+    "congruentSide": {
+      "prompt": "The two triangles are congruent. What is the length of side $x$? (cm)",
+      "hints": [
+        "Congruent shapes have the same shape and size.",
+        "Corresponding sides have equal lengths."
+      ],
+      "expl": "Corresponding sides are equal, so $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "How many {item} does a cuboid have?",
+      "hints": [
+        "Picture a box.",
+        "Look at the top, bottom, front, back and both sides."
+      ],
+      "expl": "A cuboid has {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "A cuboid is {l} cm long, {w} cm wide and {h} cm high. What is its volume? (cm³)",
+      "hints": [
+        "The volume of a cuboid is length × width × height.",
+        "Multiply the three lengths."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, so the volume is {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "A cube has edges of {e} cm. What is its volume? (cm³)",
+      "hints": [
+        "All edges of a cube are equal.",
+        "Multiply the edge length by itself three times."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, so the volume is {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "A cuboid is {l} cm long, {w} cm wide and {h} cm high. What is its surface area? (cm²)",
+      "hints": [
+        "The surface area is the sum of the six faces.",
+        "Opposite faces are equal: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, so the surface area is {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "A cuboid is {l} cm long, {w} cm wide and {h} cm high. What is the total length of all its edges? (cm)",
+      "hints": [
+        "A cuboid has 12 edges.",
+        "There are 4 edges each of length, width and height."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, so the total is {ans} cm."
+    },
+    "circumference": {
+      "prompt": "A circle has radius {r} cm. What is its circumference? (use $\\pi=3.14$) (cm)",
+      "hints": [
+        "Circumference = diameter × π.",
+        "The diameter is twice the radius."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, so the circumference is {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "A circle has radius {r} cm. What is its area? (use $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Area = radius × radius × π.",
+        "Multiply the radius by itself, then by 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, so the area is {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "How many faces does a prism with a {n}-sided base have?",
+      "hints": [
+        "A prism has 2 bases and some side faces.",
+        "The number of side faces equals the number of sides of the base."
+      ],
+      "expl": "{n} side faces plus 2 bases is {ans} faces."
+    },
+    "adjacentAngle": {
+      "prompt": "On a straight line one angle is ${a}^\\circ$. What is the adjacent angle? (degrees)",
+      "hints": [
+        "Angles on a straight line add up to $180^\\circ$.",
+        "Subtract the known angle from $180$."
+      ],
+      "expl": "$180-{a}={ans}$, so it is ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Two lines cross and one angle is ${a}^\\circ$. What is the vertically opposite angle? (degrees)",
+      "hints": [
+        "Vertically opposite angles face each other.",
+        "They are equal in size."
+      ],
+      "expl": "Vertically opposite angles are equal, so it is ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Two parallel lines $l$ and $m$ are cut by a transversal. One angle is ${a}^\\circ$. What is $x$? (degrees)",
+      "hints": [
+        "Corresponding angles on parallel lines are equal.",
+        "Alternate angles are equal as well."
+      ],
+      "expl": "Corresponding (alternate) angles on parallel lines are equal, so $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "What is the sum of the interior angles of a polygon with {n} sides? (degrees)",
+      "hints": [
+        "A polygon with {n} sides splits into {m} triangles.",
+        "Each triangle has angle sum $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, so the sum is ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "What is one interior angle of a regular polygon with {n} sides? (degrees)",
+      "hints": [
+        "First find the sum: $180\\times({n}-2)$.",
+        "Divide the sum by the number of sides {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, so each angle is ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "A sector has radius {r} cm and central angle ${a}^\\circ$. Its arc length is $k\\pi$ cm. What is $k$?",
+      "hints": [
+        "Arc length is $2\\pi r\\times\\frac{a}{360}$.",
+        "First find what fraction of the whole circle the angle is."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, so $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "A sector has radius {r} cm and central angle ${a}^\\circ$. Its area is $k\\pi$ cm². What is $k$?",
+      "hints": [
+        "Sector area is $\\pi r^2\\times\\frac{a}{360}$.",
+        "Multiply the circle's area by the fraction of the angle."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, so $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "A cylinder has base radius {r} cm and height {h} cm. Its volume is $k\\pi$ cm³. What is $k$?",
+      "hints": [
+        "Volume = base area × height.",
+        "The base area is $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, so $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "A cone has base radius {r} cm and height {h} cm. Its volume is $k\\pi$ cm³. What is $k$?",
+      "hints": [
+        "Volume = base area × height ÷ 3.",
+        "The base area is $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, so $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "A sphere has radius {r} cm. Its volume is $k\\pi$ cm³. What is $k$?",
+      "hints": [
+        "The volume of a sphere is $\\frac{4}{3}\\pi r^3$.",
+        "Cube the radius, then multiply by $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, so $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "A sphere has radius {r} cm. Its surface area is $k\\pi$ cm². What is $k$?",
+      "hints": [
+        "The surface area of a sphere is $4\\pi r^2$.",
+        "Square the radius, then multiply by 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, so $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "A cylinder has base radius {r} cm and height {h} cm. Its surface area is $k\\pi$ cm². What is $k$?",
+      "hints": [
+        "Surface area = 2 × base area + lateral area.",
+        "The lateral area is (circumference) × height $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, so $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "A base angle of an isosceles triangle is ${b}^\\circ$. What is the apex angle? (degrees)",
+      "hints": [
+        "The two base angles of an isosceles triangle are equal.",
+        "Subtract both base angles from $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, so the apex angle is ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "In parallelogram ABCD, $\\angle A={a}^\\circ$. What is $\\angle B$? (degrees)",
+      "hints": [
+        "Adjacent angles of a parallelogram add up to $180^\\circ$.",
+        "Subtract $\\angle A$ from $180$."
+      ],
+      "expl": "$180-{a}={ans}$, so $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "In a triangle, segment $x$ joins the midpoints of two sides and is parallel to the third side, which is {s} cm. What is $x$? (cm)",
+      "hints": [
+        "The segment joining two midpoints is half of the third side.",
+        "Divide {s} by 2."
+      ],
+      "expl": "${s}\\div2={ans}$, so $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "The two triangles are similar. What is the length of side $x$? (cm)",
+      "hints": [
+        "In similar figures the ratios of corresponding sides are equal.",
+        "Find the scale factor first."
+      ],
+      "expl": "The ratio is ${p}:{q}$, so $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Two similar figures have scale factor ${p}:{q}$. The smaller has area {s} cm². What is the area of the larger one? (cm²)",
+      "hints": [
+        "The ratio of areas is the square of the scale factor.",
+        "Multiply the smaller area by $({q}/{p})^2$."
+      ],
+      "expl": "The area ratio is ${p2}:{q2}$, so ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "The two shorter sides of a right triangle are {a} cm and {b} cm. What is the longest side $x$? (cm)",
+      "hints": [
+        "Pythagorean theorem: $a^2+b^2=c^2$.",
+        "Square both sides, add them, then take the square root."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, so $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "A right triangle has hypotenuse {c} cm and one leg {a} cm. What is the other leg $x$? (cm)",
+      "hints": [
+        "From $a^2+x^2=c^2$, $x^2=c^2-a^2$.",
+        "Take the square root of $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, so $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "A triangle has sides {a} cm, {b} cm and {c} cm. Is it a right triangle?",
+      "hints": [
+        "Take the longest side as the hypotenuse and compare $a^2+b^2$ with $c^2$.",
+        "If they are equal, it is a right triangle."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ and ${c}^2={s2}$, so {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "In the right triangle, what is $\\{fn} A$? (write a decimal)",
+      "hints": [
+        "$\\sin A$ = opposite ÷ hypotenuse, $\\cos A$ = adjacent ÷ hypotenuse, $\\tan A$ = opposite ÷ adjacent.",
+        "Tell the opposite and adjacent sides apart from angle $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "What is $\\{fn}\\ {a}^\\circ$? (write a decimal)",
+      "hints": [
+        "Recall the values for $30^\\circ$, $45^\\circ$ and $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "In a right triangle $\\tan A={t}$ and the adjacent side is {adj}. What is the opposite side $x$?",
+      "hints": [
+        "$\\tan A$ = opposite ÷ adjacent.",
+        "Opposite $=\\tan A\\times$ adjacent."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "The central angle on arc AB is ${c}^\\circ$. What is the inscribed angle on the same arc? (degrees)",
+      "hints": [
+        "An inscribed angle is half the central angle on the same arc.",
+        "Divide the central angle by 2."
+      ],
+      "expl": "${c}\\div2={ans}$, so the inscribed angle is ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "From a point P outside circle O a tangent touches the circle at A. $PO={po}$ and the radius is {r}. What is $PA$?",
+      "hints": [
+        "A tangent is perpendicular to the radius, so triangle OAP is right-angled.",
+        "Use $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, so $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "A circle has radius {r}. A chord is at distance {d} from the centre. What is the length of the chord?",
+      "hints": [
+        "The perpendicular from the centre bisects the chord.",
+        "Half the chord is $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Half the chord is $\\sqrt{{r}^2-{d}^2}={half}$, so the chord is ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "A quadrilateral is inscribed in a circle and one angle is ${a}^\\circ$. What is the opposite angle? (degrees)",
+      "hints": [
+        "Opposite angles of a cyclic quadrilateral add up to $180^\\circ$.",
+        "Subtract the given angle from $180$."
+      ],
+      "expl": "$180-{a}={ans}$, so it is ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "What is the distance between the points A({x1}, {y1}) and B({x2}, {y2}) on the coordinate plane?",
+      "hints": [
+        "The distance is $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Square the horizontal and vertical differences and add them."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "What is the ${axis}$-coordinate of the midpoint of segment AB with A({x1}, {y1}) and B({x2}, {y2})?",
+      "hints": [
+        "The midpoint is the average of the coordinates.",
+        "Add the matching coordinates and divide by 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "What is the slope of the line through A({x1}, {y1}) and B({x2}, {y2})?",
+      "hints": [
+        "Slope = (change in $y$) ÷ (change in $x$).",
+        "Compute $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "What is the radius of the circle $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$ the right-hand side is $r^2$.",
+        "Take the square root of {r2}."
+      ],
+      "expl": "$r^2={r2}$, so $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "The circle $(x-{a})^2+(y-{b})^2={r2}$ has centre $(p, q)$. What is $p+q$?",
+      "hints": [
+        "The centre is $(p, q)$.",
+        "Read $p$ and $q$ from $x-p$ and $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "What is the distance from the origin to the line ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "The distance from a point to a line is $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "For the origin $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "In triangle ABC, $a={a}$ and $\\angle A={A}^\\circ$. What is the circumradius $R$?",
+      "hints": [
+        "Law of sines: $\\frac{a}{\\sin A}=2R$.",
+        "Use the value of $\\sin {A}^\\circ$ to find $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "In triangle ABC, $a={a}$, $b={b}$ and $\\angle C={C}^\\circ$. What is $c$?",
+      "hints": [
+        "Law of cosines: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Substitute the value of $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, so $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "In triangle ABC, $a={a}$, $b={b}$ and $\\angle C={C}^\\circ$. What is its area?",
+      "hints": [
+        "Area $=\\frac12ab\\sin C$.",
+        "Substitute the value of $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ equals $\\frac{\\pi}{d}$ radians. What is $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ radians.",
+        "Simplify $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, so $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "A sector has radius {r} and central angle $\\frac{\\pi}{{d}}$. Its arc length is $k\\pi$. What is $k$?",
+      "hints": [
+        "Arc length is $l=r\\theta$.",
+        "Multiply $r$ by $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, so $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "A sector has radius {r} and central angle $\\frac{\\pi}{{d}}$. Its area is $k\\pi$. What is $k$?",
+      "hints": [
+        "Sector area is $S=\\frac12r^2\\theta$.",
+        "Multiply $r^2$ by $\\theta$, then by $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, so $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "What is the $x$-coordinate of the focus of the parabola $y^2={k}x$?",
+      "hints": [
+        "The focus of $y^2=4px$ is $(p, 0)$.",
+        "Solve $4p={k}$ for $p$."
+      ],
+      "expl": "$4p={k}$, so $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "The ellipse $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ has foci $(\\pm c, 0)$. What is $c$?",
+      "hints": [
+        "For an ellipse $c^2=a^2-b^2$.",
+        "Subtract {b2} from {a2} and take the square root."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, so $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "The hyperbola $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ has foci $(\\pm c, 0)$. What is $c$?",
+      "hints": [
+        "For a hyperbola $c^2=a^2+b^2$.",
+        "Add {a2} and {b2} and take the square root."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, so $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "What is the magnitude $|\\vec{a}|$ of the vector $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Square each component, add, and take the square root."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "What is the dot product $\\vec{a}\\cdot\\vec{b}$ of $\\vec{a}=({x1}, {y1})$ and $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "The dot product is $x_1x_2+y_1y_2$.",
+        "Multiply matching components and add."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "The vectors $\\vec{a}=({x1}, k)$ and $\\vec{b}=({x2}, {y2})$ are perpendicular. What is $k$?",
+      "hints": [
+        "Perpendicular vectors have dot product $0$.",
+        "Solve $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, so $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "triangle",
+    "quad": "quadrilateral",
+    "circ": "circle",
+    "pent": "pentagon",
+    "hex": "hexagon",
+    "rect": "rectangle",
+    "square": "square",
+    "trap": "trapezoid",
+    "para": "parallelogram",
+    "rhom": "rhombus",
+    "cube": "cube",
+    "cuboid": "cuboid (box shape)",
+    "cyl": "cylinder",
+    "sph": "sphere",
+    "cone": "cone",
+    "acute": "acute angle",
+    "right": "right angle",
+    "obtuse": "obtuse angle",
+    "faces": "faces",
+    "edges": "edges",
+    "vertices": "vertices",
+    "triP": "triangles",
+    "squareP": "squares",
+    "circP": "circles",
+    "iso": "isosceles triangle",
+    "equi": "equilateral triangle",
+    "rtri": "right triangle",
+    "sss": "Three pairs of sides are equal (SSS)",
+    "sas": "Two sides and the angle between them are equal (SAS)",
+    "asa": "One side and the two angles at its ends are equal (ASA)",
+    "yes": "Yes, it is a right triangle",
+    "no": "No, it is not a right triangle"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Shape names and corners",
+      "concept": "A **triangle** has 3 sides and a **quadrilateral** has 4 sides. A **circle** is round and has no corners.",
+      "example": "Triangle: 3 sides, 3 corners"
+    },
+    "E12": {
+      "title": "Solid shapes",
+      "concept": "A box shape is a **cuboid**, a round pillar is a **cylinder**, and a ball is a **sphere**.",
+      "example": "cuboid · cylinder · sphere"
+    },
+    "E21": {
+      "title": "Triangles and quadrilaterals",
+      "concept": "A **triangle** has 3 straight sides and 3 corners; a **quadrilateral** has 4 straight sides and 4 corners, whatever its shape. Their number of sides equals their number of corners.",
+      "example": "Quadrilateral: 4 sides, 4 corners"
+    },
+    "E22": {
+      "title": "Length and time",
+      "concept": "Put one end at 0 on the ruler; the mark at the other end is the length. $1\\text{ m}=100\\text{ cm}$. Multiply the number the long hand points to by 5 to get the minutes.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Angles and right angles",
+      "concept": "Two rays from one point form an **angle**. A $90^\\circ$ angle is a **right angle**; smaller is **acute**, larger is **obtuse**.",
+      "example": "$30^\\circ$ acute · $90^\\circ$ right · $120^\\circ$ obtuse"
+    },
+    "E32": {
+      "title": "Radius and diameter",
+      "concept": "The **radius** goes from the centre to the circle; the **diameter** passes through the centre. The diameter is twice the radius.",
+      "example": "Radius 5 cm → diameter 10 cm"
+    },
+    "E41": {
+      "title": "Angle sums",
+      "concept": "The three angles of a triangle add up to $180^\\circ$ and the four angles of a quadrilateral add up to $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Quadrilaterals and polygons",
+      "concept": "One pair of parallel sides makes a **trapezoid**, two pairs a **parallelogram**, and four equal sides a **rhombus**. A **diagonal** joins two vertices that are not neighbours.",
+      "example": "A quadrilateral has 2 diagonals"
+    },
+    "E51": {
+      "title": "Perimeter and area",
+      "concept": "Rectangle: width × height. Triangle: base × height ÷ 2. Parallelogram: base × height. Trapezoid: (top + bottom) × height ÷ 2. Rhombus: diagonal × diagonal ÷ 2.",
+      "example": "Triangle base 10, height 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Congruence and symmetry",
+      "concept": "Two shapes that match exactly are **congruent**. A shape that folds onto itself along a line is **symmetric**; that line is the **line of symmetry**.",
+      "example": "A square has 4 lines of symmetry"
+    },
+    "E61": {
+      "title": "Circumference and circle area",
+      "concept": "Circumference = diameter × π, area = radius × radius × π, with π ≈ $3.14$.",
+      "example": "Radius 5 cm → circumference $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Cuboids and cubes",
+      "concept": "Volume = length × width × height; surface area = (sum of three face areas) × 2. A cuboid has 6 faces, 12 edges and 8 vertices.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Angle rules and polygons",
+      "concept": "Vertically opposite angles are equal; corresponding and alternate angles on parallel lines are equal. The interior angles of an $n$-sided polygon add up to $180^\\circ\\times(n-2)$.",
+      "example": "Pentagon: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Sectors and solids",
+      "concept": "Arc length $=2\\pi r\\times\\frac{a}{360}$, sector area $=\\pi r^2\\times\\frac{a}{360}$, sphere volume $=\\frac43\\pi r^3$, cone volume $=\\frac13\\pi r^2h$.",
+      "example": "Sphere $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Triangles and quadrilaterals",
+      "concept": "The base angles of an isosceles triangle are equal. Adjacent angles of a parallelogram add up to $180^\\circ$, and the segment joining two midpoints of a triangle is half the third side.",
+      "example": "Base angle $50^\\circ$ → apex angle $80^\\circ$"
+    },
+    "M22": {
+      "title": "Similarity and the Pythagorean theorem",
+      "concept": "Similar figures have equal side ratios and their areas are in the square of that ratio. In a right triangle $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Trigonometric ratios",
+      "concept": "In a right triangle $\\sin A$ = opposite ÷ hypotenuse, $\\cos A$ = adjacent ÷ hypotenuse, $\\tan A$ = opposite ÷ adjacent.",
+      "example": "3-4-5 triangle: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Properties of circles",
+      "concept": "An inscribed angle is half the central angle on the same arc. A tangent is perpendicular to the radius, and opposite angles of a cyclic quadrilateral add up to $180^\\circ$.",
+      "example": "Central angle $100^\\circ$ → inscribed angle $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figures on the coordinate plane",
+      "concept": "Distance $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, midpoint = average of coordinates, slope $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): distance 5"
+    },
+    "H12": {
+      "title": "Equation of a circle",
+      "concept": "A circle with centre $(a, b)$ and radius $r$ is $(x-a)^2+(y-b)^2=r^2$. The distance from $(x_0,y_0)$ to $ax+by+c=0$ is $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: centre $(2,3)$, radius 5"
+    },
+    "H21": {
+      "title": "Triangles and trigonometric functions",
+      "concept": "Law of sines $\\frac{a}{\\sin A}=2R$, law of cosines $c^2=a^2+b^2-2ab\\cos C$, triangle area $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radians and sectors",
+      "concept": "$180^\\circ=\\pi$ radians. A sector with radius $r$ and angle $\\theta$ (radians) has arc length $r\\theta$ and area $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Conic sections",
+      "concept": "The parabola $y^2=4px$ has focus $(p,0)$; for the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; for the hyperbola $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: focus $(3,0)$"
+    },
+    "H32": {
+      "title": "Plane vectors",
+      "concept": "The magnitude of $(x,y)$ is $\\sqrt{x^2+y^2}$; the dot product is $x_1x_2+y_1y_2$, and perpendicular vectors have dot product 0.",
+      "example": "Magnitude of $(3,4)$: 5"
+    }
+  }
+}

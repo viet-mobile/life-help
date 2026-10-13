@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Wie heißt diese Figur?",
+      "hints": [
+        "Zähle die Seiten und die Ecken.",
+        "Prüfe, ob sie gerade Seiten hat oder rund ist."
+      ],
+      "expl": "Diese Figur heißt {name}."
+    },
+    "nameSolid": {
+      "prompt": "Wie heißt dieser Körper?",
+      "hints": [
+        "Ist er von allen Seiten rund?",
+        "Zähle die ebenen Flächen."
+      ],
+      "expl": "Dieser Körper heißt {name}."
+    },
+    "countOf": {
+      "prompt": "Wie viele {shape} sind im Bild?",
+      "hints": [
+        "Markiere jede Figur, während du zählst.",
+        "Pass auf, dass du dieselbe Figur nicht zweimal zählst."
+      ],
+      "expl": "Es sind {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Wie viele Ecken hat diese Figur?",
+      "hints": [
+        "Eine Ecke ist ein Punkt, an dem sich zwei Seiten treffen.",
+        "Zähle die spitzen Ecken nacheinander."
+      ],
+      "expl": "Sie hat {ans} Ecken."
+    },
+    "countSides": {
+      "prompt": "Wie viele Seiten hat diese Figur?",
+      "hints": [
+        "Eine Seite ist ein gerader Rand der Figur.",
+        "Gehe um die Figur herum und zähle die Seiten."
+      ],
+      "expl": "Sie hat {ans} Seiten."
+    },
+    "rulerRead": {
+      "prompt": "Bestimme mit dem Lineal die Länge der Strecke. (cm)",
+      "hints": [
+        "Finde heraus, wo die Strecke beginnt und wo sie endet.",
+        "Ziehe die Anfangsmarke von der Endmarke ab."
+      ],
+      "expl": "Die Strecke geht von {from} bis {to}, also ist sie {ans} cm lang."
+    },
+    "lengthDiff": {
+      "prompt": "Um wie viele cm ist die obere Strecke länger als die untere? (cm)",
+      "hints": [
+        "Lies zuerst beide Längen ab.",
+        "Ziehe die kürzere Länge von der längeren ab."
+      ],
+      "expl": "{a}-{b}={ans}, also ist sie {ans} cm länger."
+    },
+    "rightAngles": {
+      "prompt": "Wie viele rechte Winkel hat diese Figur?",
+      "hints": [
+        "Ein rechter Winkel sieht aus wie die Ecke eines Quadrats.",
+        "Prüfe jede Ecke einzeln."
+      ],
+      "expl": "Sie hat {ans} rechte Winkel."
+    },
+    "clockMinutes": {
+      "prompt": "Die Uhr zeigt {h} Uhr und einige Minuten. Wie viele Minuten sind es? (min)",
+      "hints": [
+        "Multipliziere die Zahl, auf die der große Zeiger zeigt, mit 5.",
+        "Zeigt der große Zeiger auf die 6, sind es 30 Minuten."
+      ],
+      "expl": "Der große Zeiger zeigt auf {n}, also ${n}\\times5={ans}$ Minuten."
+    },
+    "mToCm": {
+      "prompt": "Wie viele cm sind {m} m {c} cm? (cm)",
+      "hints": [
+        "1 m sind 100 cm.",
+        "Wandle die m in cm um und addiere dann die restlichen cm."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, also sind es {ans} cm."
+    },
+    "triType": {
+      "prompt": "Was für ein Dreieck hat die gezeigten Seitenlängen?",
+      "hints": [
+        "Vergleiche die drei Seitenlängen.",
+        "Zwei gleiche Seiten: gleichschenklig. Drei gleiche Seiten: gleichseitig."
+      ],
+      "expl": "Dieses Dreieck ist ein {name}."
+    },
+    "congruentCond": {
+      "prompt": "Die beiden Dreiecke sind kongruent. Welcher Kongruenzsatz gilt?",
+      "hints": [
+        "Finde heraus, welche Seiten und welche Winkel gleich sind.",
+        "Nur Seiten: SSS. Zwei Seiten und der eingeschlossene Winkel: SWS. Eine Seite und die beiden anliegenden Winkel: WSW."
+      ],
+      "expl": "Die gleichen Stücke in der Zeichnung sind: {cond}. Das ist also der verwendete Kongruenzsatz."
+    },
+    "circleDiameter": {
+      "prompt": "Der Radius eines Kreises ist {r} cm. Wie groß ist der Durchmesser? (cm)",
+      "hints": [
+        "Der Durchmesser ist die längste Strecke durch den Mittelpunkt.",
+        "Der Durchmesser ist doppelt so lang wie der Radius."
+      ],
+      "expl": "{r}×2={ans}, also ist der Durchmesser {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Der Durchmesser eines Kreises ist {d} cm. Wie groß ist der Radius? (cm)",
+      "hints": [
+        "Der Radius geht vom Mittelpunkt zum Kreis.",
+        "Der Radius ist halb so lang wie der Durchmesser."
+      ],
+      "expl": "{d}÷2={ans}, also ist der Radius {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Was für ein Winkel ist ${a}^\\circ$?",
+      "hints": [
+        "Ein rechter Winkel hat $90^\\circ$.",
+        "Kleiner als $90^\\circ$ ist spitz; größer ist stumpf."
+      ],
+      "expl": "${a}^\\circ$ ist ein {name}."
+    },
+    "angleThird": {
+      "prompt": "Zwei Winkel eines Dreiecks sind ${a}^\\circ$ und ${b}^\\circ$. Wie groß ist der dritte Winkel? (Grad)",
+      "hints": [
+        "Die drei Winkel eines Dreiecks ergeben zusammen $180^\\circ$.",
+        "Ziehe die beiden bekannten Winkel von $180$ ab."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, also ist der dritte Winkel ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Drei Winkel eines Vierecks sind ${a}^\\circ$, ${b}^\\circ$ und ${c}^\\circ$. Wie groß ist der vierte Winkel? (Grad)",
+      "hints": [
+        "Die vier Winkel eines Vierecks ergeben zusammen $360^\\circ$.",
+        "Ziehe die drei bekannten Winkel von $360$ ab."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, also ist der vierte Winkel ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Wie heißt dieses Viereck?",
+      "hints": [
+        "Prüfe, ob gegenüberliegende Seiten parallel sind.",
+        "Prüfe auch, ob alle Seiten und alle Winkel gleich sind."
+      ],
+      "expl": "Dieses Viereck ist ein {name}."
+    },
+    "diagonals": {
+      "prompt": "Wie viele Diagonalen hat diese Figur?",
+      "hints": [
+        "Eine Diagonale verbindet zwei Ecken, die nicht nebeneinander liegen.",
+        "Zähle zuerst die Diagonalen von einer Ecke aus."
+      ],
+      "expl": "Sie hat {ans} Diagonalen."
+    },
+    "perimeterRect": {
+      "prompt": "Wie groß ist der Umfang des Rechtecks? (cm)",
+      "hints": [
+        "Der Umfang ist die Länge um die Figur herum.",
+        "Addiere Breite und Höhe und verdopple das Ergebnis."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, also ist der Umfang {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Wie groß ist der Flächeninhalt des Rechtecks? (cm²)",
+      "hints": [
+        "Der Flächeninhalt eines Rechtecks ist Breite × Höhe.",
+        "Multipliziere die beiden angegebenen Längen."
+      ],
+      "expl": "${w}\\times{h}={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Ein Quadrat hat die Seitenlänge {s} cm. Wie groß ist sein Flächeninhalt? (cm²)",
+      "hints": [
+        "Alle vier Seiten eines Quadrats sind gleich lang.",
+        "Multipliziere die Seitenlänge mit sich selbst."
+      ],
+      "expl": "${s}\\times{s}={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Ein Dreieck hat die Grundseite {b} cm und die Höhe {h} cm. Wie groß ist sein Flächeninhalt? (cm²)",
+      "hints": [
+        "Der Flächeninhalt eines Dreiecks ist Grundseite × Höhe ÷ 2.",
+        "Die Höhe steht senkrecht auf der Grundseite."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Ein Parallelogramm hat die Grundseite {b} cm und die Höhe {h} cm. Wie groß ist sein Flächeninhalt? (cm²)",
+      "hints": [
+        "Der Flächeninhalt eines Parallelogramms ist Grundseite × Höhe.",
+        "Verwende die Höhe, nicht die schräge Seite."
+      ],
+      "expl": "${b}\\times{h}={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Ein Trapez hat die obere Seite {a} cm, die untere Seite {b} cm und die Höhe {h} cm. Wie groß ist sein Flächeninhalt? (cm²)",
+      "hints": [
+        "Der Flächeninhalt eines Trapezes ist (obere + untere Seite) × Höhe ÷ 2.",
+        "Addiere zuerst die obere und die untere Seite."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Die Diagonalen einer Raute sind {d1} cm und {d2} cm lang. Wie groß ist ihr Flächeninhalt? (cm²)",
+      "hints": [
+        "Der Flächeninhalt einer Raute ist eine Diagonale × die andere Diagonale ÷ 2.",
+        "Multipliziere die Diagonalen und teile durch 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Wie viele Symmetrieachsen hat diese Figur?",
+      "hints": [
+        "Eine Symmetrieachse faltet die Figur in zwei deckungsgleiche Hälften.",
+        "Probiere waagerechtes, senkrechtes und diagonales Falten aus."
+      ],
+      "expl": "Sie hat {ans} Symmetrieachsen."
+    },
+    "congruentSide": {
+      "prompt": "Die beiden Dreiecke sind kongruent. Wie lang ist die Seite $x$? (cm)",
+      "hints": [
+        "Kongruente Figuren haben dieselbe Form und Größe.",
+        "Entsprechende Seiten sind gleich lang."
+      ],
+      "expl": "Entsprechende Seiten sind gleich lang, also ist $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Wie viele {item} hat ein Quader?",
+      "hints": [
+        "Stell dir eine Schachtel vor.",
+        "Schau dir oben, unten, vorne, hinten und beide Seiten an."
+      ],
+      "expl": "Ein Quader hat {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Ein Quader ist {l} cm lang, {w} cm breit und {h} cm hoch. Wie groß ist sein Volumen? (cm³)",
+      "hints": [
+        "Das Volumen eines Quaders ist Länge × Breite × Höhe.",
+        "Multipliziere die drei Längen."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, also ist das Volumen {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Ein Würfel hat die Kantenlänge {e} cm. Wie groß ist sein Volumen? (cm³)",
+      "hints": [
+        "Alle Kanten eines Würfels sind gleich lang.",
+        "Multipliziere die Kantenlänge dreimal mit sich selbst."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, also ist das Volumen {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Ein Quader ist {l} cm lang, {w} cm breit und {h} cm hoch. Wie groß ist seine Oberfläche? (cm²)",
+      "hints": [
+        "Die Oberfläche ist die Summe der sechs Flächen.",
+        "Gegenüberliegende Flächen sind gleich: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, also ist die Oberfläche {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Ein Quader ist {l} cm lang, {w} cm breit und {h} cm hoch. Wie groß ist die Gesamtlänge aller seiner Kanten? (cm)",
+      "hints": [
+        "Ein Quader hat 12 Kanten.",
+        "Es gibt je 4 Kanten der Länge, der Breite und der Höhe."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, also ist die Gesamtlänge {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Ein Kreis hat den Radius {r} cm. Wie groß ist sein Umfang? (verwende $\\pi=3.14$) (cm)",
+      "hints": [
+        "Umfang = Durchmesser × π.",
+        "Der Durchmesser ist doppelt so lang wie der Radius."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, also ist der Umfang {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Ein Kreis hat den Radius {r} cm. Wie groß ist sein Flächeninhalt? (verwende $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Flächeninhalt = Radius × Radius × π.",
+        "Multipliziere den Radius mit sich selbst und dann mit 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, also ist der Flächeninhalt {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Wie viele Flächen hat ein Prisma mit einer {n}-eckigen Grundfläche?",
+      "hints": [
+        "Ein Prisma hat 2 Grundflächen und einige Seitenflächen.",
+        "Die Anzahl der Seitenflächen ist gleich der Anzahl der Seiten der Grundfläche."
+      ],
+      "expl": "{n} Seitenflächen plus 2 Grundflächen sind {ans} Flächen."
+    },
+    "adjacentAngle": {
+      "prompt": "Auf einer Geraden ist ein Winkel ${a}^\\circ$ groß. Wie groß ist der Nebenwinkel? (Grad)",
+      "hints": [
+        "Winkel auf einer Geraden ergeben zusammen $180^\\circ$.",
+        "Ziehe den bekannten Winkel von $180$ ab."
+      ],
+      "expl": "$180-{a}={ans}$, also ist er ${ans}^\\circ$ groß."
+    },
+    "verticalAngle": {
+      "prompt": "Zwei Geraden schneiden sich und ein Winkel ist ${a}^\\circ$ groß. Wie groß ist der Scheitelwinkel? (Grad)",
+      "hints": [
+        "Scheitelwinkel liegen einander gegenüber.",
+        "Sie sind gleich groß."
+      ],
+      "expl": "Scheitelwinkel sind gleich groß, also ist er ${ans}^\\circ$ groß."
+    },
+    "parallelAngle": {
+      "prompt": "Zwei parallele Geraden $l$ und $m$ werden von einer Geraden geschnitten. Ein Winkel ist ${a}^\\circ$ groß. Wie groß ist $x$? (Grad)",
+      "hints": [
+        "Stufenwinkel an parallelen Geraden sind gleich groß.",
+        "Wechselwinkel sind ebenfalls gleich groß."
+      ],
+      "expl": "Stufenwinkel (Wechselwinkel) an parallelen Geraden sind gleich groß, also ist $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Wie groß ist die Summe der Innenwinkel eines Vielecks mit {n} Seiten? (Grad)",
+      "hints": [
+        "Ein Vieleck mit {n} Seiten lässt sich in {m} Dreiecke zerlegen.",
+        "Jedes Dreieck hat die Winkelsumme $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, also ist die Summe ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Wie groß ist ein Innenwinkel eines regelmäßigen Vielecks mit {n} Seiten? (Grad)",
+      "hints": [
+        "Bestimme zuerst die Summe: $180\\times({n}-2)$.",
+        "Teile die Summe durch die Anzahl der Seiten {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, also ist jeder Winkel ${ans}^\\circ$ groß."
+    },
+    "arcLength": {
+      "prompt": "Ein Kreissektor hat den Radius {r} cm und den Mittelpunktswinkel ${a}^\\circ$. Seine Bogenlänge ist $k\\pi$ cm. Wie groß ist $k$?",
+      "hints": [
+        "Die Bogenlänge ist $2\\pi r\\times\\frac{a}{360}$.",
+        "Bestimme zuerst, welchen Bruchteil des ganzen Kreises der Winkel ausmacht."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, also ist $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Ein Kreissektor hat den Radius {r} cm und den Mittelpunktswinkel ${a}^\\circ$. Sein Flächeninhalt ist $k\\pi$ cm². Wie groß ist $k$?",
+      "hints": [
+        "Der Flächeninhalt des Sektors ist $\\pi r^2\\times\\frac{a}{360}$.",
+        "Multipliziere den Flächeninhalt des Kreises mit dem Bruchteil des Winkels."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, also ist $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Ein Zylinder hat den Grundkreisradius {r} cm und die Höhe {h} cm. Sein Volumen ist $k\\pi$ cm³. Wie groß ist $k$?",
+      "hints": [
+        "Volumen = Grundfläche × Höhe.",
+        "Die Grundfläche ist $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, also ist $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Ein Kegel hat den Grundkreisradius {r} cm und die Höhe {h} cm. Sein Volumen ist $k\\pi$ cm³. Wie groß ist $k$?",
+      "hints": [
+        "Volumen = Grundfläche × Höhe ÷ 3.",
+        "Die Grundfläche ist $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, also ist $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Eine Kugel hat den Radius {r} cm. Ihr Volumen ist $k\\pi$ cm³. Wie groß ist $k$?",
+      "hints": [
+        "Das Volumen einer Kugel ist $\\frac{4}{3}\\pi r^3$.",
+        "Bilde die dritte Potenz des Radius und multipliziere mit $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, also ist $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Eine Kugel hat den Radius {r} cm. Ihre Oberfläche ist $k\\pi$ cm². Wie groß ist $k$?",
+      "hints": [
+        "Die Oberfläche einer Kugel ist $4\\pi r^2$.",
+        "Quadriere den Radius und multipliziere mit 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, also ist $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Ein Zylinder hat den Grundkreisradius {r} cm und die Höhe {h} cm. Seine Oberfläche ist $k\\pi$ cm². Wie groß ist $k$?",
+      "hints": [
+        "Oberfläche = 2 × Grundfläche + Mantelfläche.",
+        "Die Mantelfläche ist (Umfang) × Höhe $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, also ist $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Ein Basiswinkel eines gleichschenkligen Dreiecks ist ${b}^\\circ$ groß. Wie groß ist der Winkel an der Spitze? (Grad)",
+      "hints": [
+        "Die beiden Basiswinkel eines gleichschenkligen Dreiecks sind gleich groß.",
+        "Ziehe beide Basiswinkel von $180^\\circ$ ab."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, also ist der Winkel an der Spitze ${ans}^\\circ$ groß."
+    },
+    "parallelogramAngle": {
+      "prompt": "Im Parallelogramm ABCD ist $\\angle A={a}^\\circ$. Wie groß ist $\\angle B$? (Grad)",
+      "hints": [
+        "Benachbarte Winkel eines Parallelogramms ergeben zusammen $180^\\circ$.",
+        "Ziehe $\\angle A$ von $180$ ab."
+      ],
+      "expl": "$180-{a}={ans}$, also ist $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "In einem Dreieck verbindet die Strecke $x$ die Mittelpunkte zweier Seiten und ist parallel zur dritten Seite, die {s} cm lang ist. Wie lang ist $x$? (cm)",
+      "hints": [
+        "Die Strecke zwischen zwei Seitenmitten ist halb so lang wie die dritte Seite.",
+        "Teile {s} durch 2."
+      ],
+      "expl": "${s}\\div2={ans}$, also ist $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Die beiden Dreiecke sind ähnlich. Wie lang ist die Seite $x$? (cm)",
+      "hints": [
+        "Bei ähnlichen Figuren sind die Verhältnisse entsprechender Seiten gleich.",
+        "Bestimme zuerst den Streckungsfaktor."
+      ],
+      "expl": "Das Verhältnis ist ${p}:{q}$, also ist $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Zwei ähnliche Figuren haben das Verhältnis ${p}:{q}$. Die kleinere hat den Flächeninhalt {s} cm². Wie groß ist der Flächeninhalt der größeren? (cm²)",
+      "hints": [
+        "Das Verhältnis der Flächeninhalte ist das Quadrat des Ähnlichkeitsverhältnisses.",
+        "Multipliziere den kleineren Flächeninhalt mit $({q}/{p})^2$."
+      ],
+      "expl": "Das Flächenverhältnis ist ${p2}:{q2}$, also ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Die beiden kürzeren Seiten eines rechtwinkligen Dreiecks sind {a} cm und {b} cm lang. Wie lang ist die längste Seite $x$? (cm)",
+      "hints": [
+        "Satz des Pythagoras: $a^2+b^2=c^2$.",
+        "Quadriere beide Seiten, addiere sie und ziehe die Wurzel."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, also ist $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Ein rechtwinkliges Dreieck hat die Hypotenuse {c} cm und eine Kathete {a} cm. Wie lang ist die andere Kathete $x$? (cm)",
+      "hints": [
+        "Aus $a^2+x^2=c^2$ folgt $x^2=c^2-a^2$.",
+        "Ziehe die Wurzel aus $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, also ist $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Ein Dreieck hat die Seiten {a} cm, {b} cm und {c} cm. Ist es ein rechtwinkliges Dreieck?",
+      "hints": [
+        "Nimm die längste Seite als Hypotenuse und vergleiche $a^2+b^2$ mit $c^2$.",
+        "Sind beide gleich, ist das Dreieck rechtwinklig."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ und ${c}^2={s2}$, also: {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Wie groß ist $\\{fn} A$ im rechtwinkligen Dreieck? (als Dezimalzahl)",
+      "hints": [
+        "$\\sin A$ = Gegenkathete ÷ Hypotenuse, $\\cos A$ = Ankathete ÷ Hypotenuse, $\\tan A$ = Gegenkathete ÷ Ankathete.",
+        "Unterscheide Gegenkathete und Ankathete anhand des Winkels $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Wie groß ist $\\{fn}\\ {a}^\\circ$? (als Dezimalzahl)",
+      "hints": [
+        "Erinnere dich an die Werte für $30^\\circ$, $45^\\circ$ und $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "In einem rechtwinkligen Dreieck ist $\\tan A={t}$ und die Ankathete ist {adj}. Wie lang ist die Gegenkathete $x$?",
+      "hints": [
+        "$\\tan A$ = Gegenkathete ÷ Ankathete.",
+        "Gegenkathete $=\\tan A\\times$ Ankathete."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Der Mittelpunktswinkel über dem Bogen AB ist ${c}^\\circ$ groß. Wie groß ist der Umfangswinkel über demselben Bogen? (Grad)",
+      "hints": [
+        "Ein Umfangswinkel ist halb so groß wie der Mittelpunktswinkel über demselben Bogen.",
+        "Teile den Mittelpunktswinkel durch 2."
+      ],
+      "expl": "${c}\\div2={ans}$, also ist der Umfangswinkel ${ans}^\\circ$ groß."
+    },
+    "tangentLength": {
+      "prompt": "Von einem Punkt P außerhalb des Kreises um O berührt eine Tangente den Kreis in A. $PO={po}$ und der Radius ist {r}. Wie lang ist $PA$?",
+      "hints": [
+        "Eine Tangente steht senkrecht auf dem Radius, also ist das Dreieck OAP rechtwinklig.",
+        "Verwende $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, also ist $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Ein Kreis hat den Radius {r}. Eine Sehne hat den Abstand {d} vom Mittelpunkt. Wie lang ist die Sehne?",
+      "hints": [
+        "Das Lot vom Mittelpunkt halbiert die Sehne.",
+        "Die halbe Sehne ist $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Die halbe Sehne ist $\\sqrt{{r}^2-{d}^2}={half}$, also ist die Sehne ${ans}$ lang."
+    },
+    "cyclicAngle": {
+      "prompt": "Ein Viereck ist einem Kreis einbeschrieben und ein Winkel ist ${a}^\\circ$ groß. Wie groß ist der gegenüberliegende Winkel? (Grad)",
+      "hints": [
+        "Gegenüberliegende Winkel eines Sehnenvierecks ergeben zusammen $180^\\circ$.",
+        "Ziehe den gegebenen Winkel von $180$ ab."
+      ],
+      "expl": "$180-{a}={ans}$, also ist er ${ans}^\\circ$ groß."
+    },
+    "distance": {
+      "prompt": "Wie groß ist der Abstand zwischen den Punkten A({x1}, {y1}) und B({x2}, {y2}) in der Koordinatenebene?",
+      "hints": [
+        "Der Abstand ist $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Quadriere die waagerechte und die senkrechte Differenz und addiere sie."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Wie lautet die ${axis}$-Koordinate des Mittelpunkts der Strecke AB mit A({x1}, {y1}) und B({x2}, {y2})?",
+      "hints": [
+        "Der Mittelpunkt hat den Mittelwert der Koordinaten.",
+        "Addiere die entsprechenden Koordinaten und teile durch 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Wie groß ist die Steigung der Geraden durch A({x1}, {y1}) und B({x2}, {y2})?",
+      "hints": [
+        "Steigung = (Änderung von $y$) ÷ (Änderung von $x$).",
+        "Berechne $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Wie groß ist der Radius des Kreises $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$ steht rechts $r^2$.",
+        "Ziehe die Wurzel aus {r2}."
+      ],
+      "expl": "$r^2={r2}$, also ist $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Der Kreis $(x-{a})^2+(y-{b})^2={r2}$ hat den Mittelpunkt $(p, q)$. Wie groß ist $p+q$?",
+      "hints": [
+        "Der Mittelpunkt ist $(p, q)$.",
+        "Lies $p$ und $q$ aus $x-p$ und $y-q$ ab."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Wie groß ist der Abstand des Ursprungs von der Geraden ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "Der Abstand eines Punktes von einer Geraden ist $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Für den Ursprung ist $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "Im Dreieck ABC ist $a={a}$ und $\\angle A={A}^\\circ$. Wie groß ist der Umkreisradius $R$?",
+      "hints": [
+        "Sinussatz: $\\frac{a}{\\sin A}=2R$.",
+        "Verwende den Wert von $\\sin {A}^\\circ$, um $R$ zu bestimmen."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "Im Dreieck ABC ist $a={a}$, $b={b}$ und $\\angle C={C}^\\circ$. Wie groß ist $c$?",
+      "hints": [
+        "Kosinussatz: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Setze den Wert von $\\cos {C}^\\circ$ ein."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, also ist $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "Im Dreieck ABC ist $a={a}$, $b={b}$ und $\\angle C={C}^\\circ$. Wie groß ist sein Flächeninhalt?",
+      "hints": [
+        "Flächeninhalt $=\\frac12ab\\sin C$.",
+        "Setze den Wert von $\\sin {C}^\\circ$ ein."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ entspricht $\\frac{\\pi}{d}$ im Bogenmaß. Wie groß ist $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ im Bogenmaß.",
+        "Vereinfache $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, also ist $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Ein Kreissektor hat den Radius {r} und den Mittelpunktswinkel $\\frac{\\pi}{{d}}$. Seine Bogenlänge ist $k\\pi$. Wie groß ist $k$?",
+      "hints": [
+        "Die Bogenlänge ist $l=r\\theta$.",
+        "Multipliziere $r$ mit $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, also ist $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Ein Kreissektor hat den Radius {r} und den Mittelpunktswinkel $\\frac{\\pi}{{d}}$. Sein Flächeninhalt ist $k\\pi$. Wie groß ist $k$?",
+      "hints": [
+        "Der Flächeninhalt des Sektors ist $S=\\frac12r^2\\theta$.",
+        "Multipliziere $r^2$ mit $\\theta$ und dann mit $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, also ist $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Wie lautet die $x$-Koordinate des Brennpunkts der Parabel $y^2={k}x$?",
+      "hints": [
+        "Der Brennpunkt von $y^2=4px$ ist $(p, 0)$.",
+        "Löse $4p={k}$ nach $p$ auf."
+      ],
+      "expl": "$4p={k}$, also ist $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Die Ellipse $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ hat die Brennpunkte $(\\pm c, 0)$. Wie groß ist $c$?",
+      "hints": [
+        "Für eine Ellipse gilt $c^2=a^2-b^2$.",
+        "Ziehe {b2} von {a2} ab und ziehe die Wurzel."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, also ist $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Die Hyperbel $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ hat die Brennpunkte $(\\pm c, 0)$. Wie groß ist $c$?",
+      "hints": [
+        "Für eine Hyperbel gilt $c^2=a^2+b^2$.",
+        "Addiere {a2} und {b2} und ziehe die Wurzel."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, also ist $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Wie groß ist der Betrag $|\\vec{a}|$ des Vektors $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Quadriere jede Komponente, addiere und ziehe die Wurzel."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Wie groß ist das Skalarprodukt $\\vec{a}\\cdot\\vec{b}$ von $\\vec{a}=({x1}, {y1})$ und $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "Das Skalarprodukt ist $x_1x_2+y_1y_2$.",
+        "Multipliziere die entsprechenden Komponenten und addiere."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Die Vektoren $\\vec{a}=({x1}, k)$ und $\\vec{b}=({x2}, {y2})$ stehen senkrecht aufeinander. Wie groß ist $k$?",
+      "hints": [
+        "Senkrechte Vektoren haben das Skalarprodukt $0$.",
+        "Löse $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, also ist $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "Dreieck",
+    "quad": "Viereck",
+    "circ": "Kreis",
+    "pent": "Fünfeck",
+    "hex": "Sechseck",
+    "rect": "Rechteck",
+    "square": "Quadrat",
+    "trap": "Trapez",
+    "para": "Parallelogramm",
+    "rhom": "Raute",
+    "cube": "Würfel",
+    "cuboid": "Quader (Schachtelform)",
+    "cyl": "Zylinder",
+    "sph": "Kugel",
+    "cone": "Kegel",
+    "acute": "spitzer Winkel",
+    "right": "rechter Winkel",
+    "obtuse": "stumpfer Winkel",
+    "faces": "Flächen",
+    "edges": "Kanten",
+    "vertices": "Ecken",
+    "triP": "Dreiecke",
+    "squareP": "Quadrate",
+    "circP": "Kreise",
+    "iso": "gleichschenkliges Dreieck",
+    "equi": "gleichseitiges Dreieck",
+    "rtri": "rechtwinkliges Dreieck",
+    "sss": "Drei Paare gleich langer Seiten (SSS)",
+    "sas": "Zwei Seiten und der eingeschlossene Winkel sind gleich (SWS)",
+    "asa": "Eine Seite und die beiden anliegenden Winkel sind gleich (WSW)",
+    "yes": "Ja, es ist ein rechtwinkliges Dreieck",
+    "no": "Nein, es ist kein rechtwinkliges Dreieck"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Namen von Figuren und Ecken",
+      "concept": "Ein **Dreieck** hat 3 Seiten und ein **Viereck** hat 4 Seiten. Ein **Kreis** ist rund und hat keine Ecken.",
+      "example": "Dreieck: 3 Seiten, 3 Ecken"
+    },
+    "E12": {
+      "title": "Körper",
+      "concept": "Eine Schachtelform ist ein **Quader**, eine runde Säule ist ein **Zylinder** und ein Ball ist eine **Kugel**.",
+      "example": "Quader · Zylinder · Kugel"
+    },
+    "E21": {
+      "title": "Dreiecke und Vierecke",
+      "concept": "Ein **Dreieck** hat 3 gerade Seiten und 3 Ecken; ein **Viereck** hat 4 gerade Seiten und 4 Ecken, egal welche Form es hat. Die Anzahl der Seiten ist gleich der Anzahl der Ecken.",
+      "example": "Viereck: 4 Seiten, 4 Ecken"
+    },
+    "E22": {
+      "title": "Länge und Zeit",
+      "concept": "Lege ein Ende an die 0 des Lineals; die Marke am anderen Ende ist die Länge. $1\\text{ m}=100\\text{ cm}$. Multipliziere die Zahl, auf die der große Zeiger zeigt, mit 5, um die Minuten zu erhalten.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Winkel und rechte Winkel",
+      "concept": "Zwei Strahlen von einem Punkt aus bilden einen **Winkel**. Ein Winkel von $90^\\circ$ ist ein **rechter Winkel**; kleiner ist **spitz**, größer ist **stumpf**.",
+      "example": "$30^\\circ$ spitzer · $90^\\circ$ rechter · $120^\\circ$ stumpfer Winkel"
+    },
+    "E32": {
+      "title": "Radius und Durchmesser",
+      "concept": "Der **Radius** geht vom Mittelpunkt zum Kreis; der **Durchmesser** geht durch den Mittelpunkt. Der Durchmesser ist doppelt so lang wie der Radius.",
+      "example": "Radius 5 cm → Durchmesser 10 cm"
+    },
+    "E41": {
+      "title": "Winkelsummen",
+      "concept": "Die drei Winkel eines Dreiecks ergeben zusammen $180^\\circ$ und die vier Winkel eines Vierecks ergeben zusammen $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Vierecke und Vielecke",
+      "concept": "Ein Paar paralleler Seiten ergibt ein **Trapez**, zwei Paare ein **Parallelogramm** und vier gleich lange Seiten eine **Raute**. Eine **Diagonale** verbindet zwei Ecken, die nicht nebeneinander liegen.",
+      "example": "Ein Viereck hat 2 Diagonalen"
+    },
+    "E51": {
+      "title": "Umfang und Flächeninhalt",
+      "concept": "Rechteck: Breite × Höhe. Dreieck: Grundseite × Höhe ÷ 2. Parallelogramm: Grundseite × Höhe. Trapez: (obere + untere Seite) × Höhe ÷ 2. Raute: Diagonale × Diagonale ÷ 2.",
+      "example": "Dreieck mit Grundseite 10, Höhe 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Kongruenz und Symmetrie",
+      "concept": "Zwei Figuren, die genau aufeinander passen, sind **kongruent**. Eine Figur, die sich entlang einer Linie auf sich selbst falten lässt, ist **symmetrisch**; diese Linie ist die **Symmetrieachse**.",
+      "example": "Ein Quadrat hat 4 Symmetrieachsen"
+    },
+    "E61": {
+      "title": "Kreisumfang und Kreisfläche",
+      "concept": "Umfang = Durchmesser × π, Flächeninhalt = Radius × Radius × π, mit π ≈ $3.14$.",
+      "example": "Radius 5 cm → Umfang $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Quader und Würfel",
+      "concept": "Volumen = Länge × Breite × Höhe; Oberfläche = (Summe von drei Flächeninhalten) × 2. Ein Quader hat 6 Flächen, 12 Kanten und 8 Ecken.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Winkelregeln und Vielecke",
+      "concept": "Scheitelwinkel sind gleich; Stufenwinkel und Wechselwinkel an parallelen Geraden sind gleich. Die Innenwinkel eines Vielecks mit $n$ Seiten ergeben zusammen $180^\\circ\\times(n-2)$.",
+      "example": "Fünfeck: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Sektoren und Körper",
+      "concept": "Bogenlänge $=2\\pi r\\times\\frac{a}{360}$, Sektorfläche $=\\pi r^2\\times\\frac{a}{360}$, Kugelvolumen $=\\frac43\\pi r^3$, Kegelvolumen $=\\frac13\\pi r^2h$.",
+      "example": "Kugel $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Dreiecke und Vierecke",
+      "concept": "Die Basiswinkel eines gleichschenkligen Dreiecks sind gleich. Benachbarte Winkel eines Parallelogramms ergeben zusammen $180^\\circ$, und die Strecke zwischen den Mittelpunkten zweier Seiten eines Dreiecks ist halb so lang wie die dritte Seite.",
+      "example": "Basiswinkel $50^\\circ$ → Winkel an der Spitze $80^\\circ$"
+    },
+    "M22": {
+      "title": "Ähnlichkeit und Satz des Pythagoras",
+      "concept": "Ähnliche Figuren haben gleiche Seitenverhältnisse und ihre Flächeninhalte stehen im Quadrat dieses Verhältnisses. In einem rechtwinkligen Dreieck gilt $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Trigonometrische Verhältnisse",
+      "concept": "Im rechtwinkligen Dreieck gilt: $\\sin A$ = Gegenkathete ÷ Hypotenuse, $\\cos A$ = Ankathete ÷ Hypotenuse, $\\tan A$ = Gegenkathete ÷ Ankathete.",
+      "example": "3-4-5-Dreieck: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Eigenschaften von Kreisen",
+      "concept": "Ein Umfangswinkel ist halb so groß wie der Mittelpunktswinkel über demselben Bogen. Eine Tangente steht senkrecht auf dem Radius, und gegenüberliegende Winkel eines Sehnenvierecks ergeben zusammen $180^\\circ$.",
+      "example": "Mittelpunktswinkel $100^\\circ$ → Umfangswinkel $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figuren in der Koordinatenebene",
+      "concept": "Abstand $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, Mittelpunkt = Mittelwert der Koordinaten, Steigung $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): Abstand 5"
+    },
+    "H12": {
+      "title": "Kreisgleichung",
+      "concept": "Ein Kreis mit Mittelpunkt $(a, b)$ und Radius $r$ hat die Gleichung $(x-a)^2+(y-b)^2=r^2$. Der Abstand von $(x_0,y_0)$ zur Geraden $ax+by+c=0$ ist $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: Mittelpunkt $(2,3)$, Radius 5"
+    },
+    "H21": {
+      "title": "Dreiecke und trigonometrische Funktionen",
+      "concept": "Sinussatz $\\frac{a}{\\sin A}=2R$, Kosinussatz $c^2=a^2+b^2-2ab\\cos C$, Dreiecksfläche $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Bogenmaß und Sektoren",
+      "concept": "$180^\\circ=\\pi$ im Bogenmaß. Ein Sektor mit Radius $r$ und Winkel $\\theta$ (im Bogenmaß) hat die Bogenlänge $r\\theta$ und den Flächeninhalt $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Kegelschnitte",
+      "concept": "Die Parabel $y^2=4px$ hat den Brennpunkt $(p,0)$; für die Ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ gilt $c^2=a^2-b^2$; für die Hyperbel gilt $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: Brennpunkt $(3,0)$"
+    },
+    "H32": {
+      "title": "Vektoren in der Ebene",
+      "concept": "Der Betrag von $(x,y)$ ist $\\sqrt{x^2+y^2}$; das Skalarprodukt ist $x_1x_2+y_1y_2$, und senkrechte Vektoren haben das Skalarprodukt 0.",
+      "example": "Betrag von $(3,4)$: 5"
+    }
+  }
+}

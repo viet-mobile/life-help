@@ -1,5 +1,6 @@
 "use client";
 
+import { FigureView } from "./FigureView";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
@@ -134,6 +135,7 @@ export function Diagnostic() {
       <div className="l-bar" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={history.length}><span style={{ width: `${(history.length / total) * 100}%` }} /></div>
       <div className="l-card l-stack">
         <div className="l-qprompt"><RichText text={q.prompt} /></div>
+        {q.figure && <FigureView figure={q.figure} label={t("figure.alt")} />}
         {q.latex && <MathBlock latex={q.latex} />}
         {q.target ? <TargetBlock target={q.target} audioText={q.audioText} /> : q.audioText && <ListenButton text={q.audioText} />}
         <AnswerInput site={site} q={q} value={value} onChange={setValue} disabled={phase !== "question"} onSubmit={submit} />

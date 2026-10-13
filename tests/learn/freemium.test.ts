@@ -14,7 +14,11 @@ const key = (q: Question) => (q.answer.kind === "choice" ? q.answer.id : q.answe
 const canonical = async (site: Site): Promise<ContentBundle> => (await loadIndex(site)).bundle;
 const grant = (over: Partial<EntitlementRecord> = {}): EntitlementRecord => ({ scope: "all", source: "grant", startsAt: "2026-01-01T00:00:00Z", expiresAt: null, revokedAt: null, ...over });
 
-const GATED_SITES = SITES.filter((s) => !FREE_SITES.has(s));
+// Paid Premium is switched off in production (FREE_SITES holds every site). These tests exercise the gating rules themselves, so the set is
+// emptied for this file; the "entirely free" tests at the end restore the shipped default.
+const SHIPPED_FREE = [...FREE_SITES];
+FREE_SITES.clear();
+const GATED_SITES = SITES.filter((s) => s === "math" || s === "english");
 
 describe("canonical 50 / 50 split", () => {
   it("floor(n / 2) free, the rest premium (20 -> 10 / 10, 25 -> 12 / 13)", () => {
@@ -177,21 +181,26 @@ describe.each(GATED_SITES)("server-authoritative premium payload protection: %s"
   });
 });
 
-describe("sites that are entirely free", () => {
-  it("korean is in FREE_SITES and nothing in it is gated", async () => {
-    expect(FREE_SITES.has("korean")).toBe(true);
-    const b = await canonical("korean");
-    const plan = buildAccessPlan(b.catalog, b.questions);
-    for (const c of plan.courses) {
-      expect(c.premiumUnits, c.courseId).toBe(0);
-      expect(c.freeUnits).toBe(c.totalUnits);
-    }
-    expect([...plan.lessonTier.values()].every((t) => t === "FREE")).toBe(true);
-    expect([...plan.questionTier.values()].every((t) => t === "FREE")).toBe(true);
-    const free = accessibleBundle(b, plan, { tier: "FREE", status: "none" });
-    expect(free.questions.length).toBe(b.questions.length);
+describe("sites that are entirely free (the shipped default)", () => {
+  const withShippedDefault = async <T>(fn: () => Promise<T>) => {
+    FREE_SITES.clear();
+    SHIPPED_FREE.forEach((x) => FREE_SITES.add(x));
+    try { return await fn(); } finally { FREE_SITES.clear(); }
+  };
+  it("every learning site ships entirely free: Premium is switched off", () => {
+    expect([...SHIPPED_FREE].sort()).toEqual([...SITES].sort());
   });
-  it("math and english keep the 50 / 50 boundary", () => {
-    expect(FREE_SITES.has("math") || FREE_SITES.has("english")).toBe(false);
+  it.each(SITES)("%s: nothing is gated and a Free learner receives every item", async (site) => {
+    await withShippedDefault(async () => {
+      const b = await canonical(site);
+      const plan = buildAccessPlan(b.catalog, b.questions);
+      for (const c of plan.courses) {
+        expect(c.premiumUnits, c.courseId).toBe(0);
+        expect(c.freeUnits).toBe(c.totalUnits);
+      }
+      expect([...plan.lessonTier.values()].every((t) => t === "FREE")).toBe(true);
+      expect([...plan.questionTier.values()].every((t) => t === "FREE")).toBe(true);
+      expect(accessibleBundle(b, plan, { tier: "FREE", status: "none" }).questions.length).toBe(b.questions.length);
+    });
   });
 });

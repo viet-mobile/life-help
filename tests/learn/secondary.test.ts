@@ -5,17 +5,22 @@ import { SCHOOL_SITES, type ContentBundle, type Question, type Site } from "@/li
 type SchoolSite = (typeof SCHOOL_SITES)[number];
 import { demoContentRepository } from "@/lib/learn/content/repository";
 import { localizeBundle, overlayFor } from "@/lib/learn/content/localize";
-import mathSecondary from "@/lib/learn/content/secondary/math.json";
+import mathSecondaryAll from "@/lib/learn/content/secondary/math.json";
+import { stripGeometry } from "./withoutGeometry";
 import englishSecondary from "@/lib/learn/content/secondary/english.json";
-import viMath from "@/lib/learn/content/vi/secondary-math.json";
+import viMathAll from "@/lib/learn/content/vi/secondary-math.json";
 import viEnglish from "@/lib/learn/content/vi/secondary-english.json";
-import mathDemo from "@/lib/learn/content/demo/math.json";
+import mathDemoAll from "@/lib/learn/content/demo/math.json";
 import englishDemo from "@/lib/learn/content/demo/english.json";
 // plain ES modules (the same code the build script and the report run)
 import { buildSecondaryMath } from "../../scripts/learn/secondary/math.mjs";
 import { buildSecondaryEnglish } from "../../scripts/learn/secondary/english.mjs";
 import { assertCoverage, summarize, SECONDARY_NEW, TARGETS } from "../../scripts/learn/difficulty-report.mjs";
 
+// the geometry layer is generated separately (scripts/learn/geometry) and tested in geometry-semesters.test.ts
+const mathSecondary = stripGeometry(mathSecondaryAll);
+const viMath = stripGeometry<typeof viMathAll>(viMathAll);
+const mathDemo = stripGeometry(mathDemoAll);
 const GRADES = ["M2", "M3", "H1", "H2", "H3"] as const;
 const BUNDLES: Record<SchoolSite, ContentBundle> = { math: mathSecondary as unknown as ContentBundle, english: englishSecondary as unknown as ContentBundle };
 const OVERLAYS = { math: viMath, english: viEnglish } as Record<SchoolSite, { questions: Record<string, { prompt: string; hints: string[]; explanation: string; options?: Record<string, string> }> }>;

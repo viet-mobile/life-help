@@ -2,14 +2,18 @@ import { describe, expect, it } from "vitest";
 import { checkAnswer, validateResponse } from "@/lib/learn/domain/answers";
 import { ELEMENTARY_GRADES, SCHOOL_SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
 type SchoolSite = (typeof SCHOOL_SITES)[number];
-import mathElementary from "@/lib/learn/content/elementary/math.json";
+import mathElementaryAll from "@/lib/learn/content/elementary/math.json";
+import { stripGeometry } from "./withoutGeometry";
 import englishElementary from "@/lib/learn/content/elementary/english.json";
-import viMath from "@/lib/learn/content/vi/math.json";
+import viMathAll from "@/lib/learn/content/vi/math.json";
 import viEnglish from "@/lib/learn/content/vi/english.json";
 // plain ES module generators (the same code the build script runs)
 import { buildMath } from "../../scripts/learn/elementary/math.mjs";
 import { buildEnglish } from "../../scripts/learn/elementary/english.mjs";
 
+// the geometry layer is generated separately (scripts/learn/geometry) and tested in geometry-semesters.test.ts
+const mathElementary = stripGeometry(mathElementaryAll);
+const viMath = stripGeometry<typeof viMathAll>(viMathAll);
 const BUNDLES: Record<SchoolSite, ContentBundle> = { math: mathElementary as unknown as ContentBundle, english: englishElementary as unknown as ContentBundle };
 const HANGUL = /[가-힣]/;
 

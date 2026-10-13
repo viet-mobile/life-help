@@ -30,6 +30,10 @@ export function summarize() {
     const questions = new Map(); const courses = [];
     for (const set of ["elementary", "demo", "secondary"]) {
       const b = read(`lib/learn/content/${set}/${site}.json`);
+      // the figure-based geometry lessons are a separate layer (scripts/learn/geometry) with their own checks
+      const isGeo = (id) => /^(m-[a-z]\d-geo\d|math-[a-z]\d-geo\d)/.test(id);
+      for (const c of b.catalog.courses) for (const u of c.units) u.lessons = u.lessons.filter((l) => !isGeo(l.id));
+      b.questions = b.questions.filter((q) => !isGeo(q.id));
       for (const q of b.questions) questions.set(q.id, q);
       courses.push(...b.catalog.courses);
     }

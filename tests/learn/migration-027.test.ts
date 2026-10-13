@@ -125,7 +125,7 @@ describe("202609300027: static review", () => {
     expect(/\b(auth|storage|supabase_)/i.test(sql.replace(/\bpublic\.learn_/gi, ""))).toBe(false);
   });
   it("sorts after 026, directly before 028 (study.korean); the rollback is a standalone manual file", () => {
-    expect(LEARNING_CHAIN.slice(-3)).toEqual([M027, M028, M029]);
+    expect(LEARNING_CHAIN.slice(-4, -1)).toEqual([M027, M028, M029]); // 043 (question figure) comes after
     expect(M027 > "202609300026_learning_selfcontained_auth.sql").toBe(true);
     expect(ROLLBACK).toMatch(/NOT run by `supabase db push`/);
     expect(/\bcascade\b/i.test(ROLLBACK.replace(/--.*$/gm, ""))).toBe(false);

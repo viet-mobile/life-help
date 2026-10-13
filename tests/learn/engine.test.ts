@@ -131,9 +131,10 @@ describe("lesson completion + daily quest", () => {
   it("unlocks the next lesson in the path", async () => {
     const { index } = await setup();
     const s0 = createInitialState("math");
-    expect(buildPath(s0, index).map((n) => n.status)).toEqual(["current", "locked", "locked", "locked"]);
+    // the four original lessons are one chain (semester 1); the two geometry lessons are in the semester-2 chain (own "current")
+    expect(buildPath(s0, index).map((n) => n.status).slice(0, 4)).toEqual(["current", "locked", "locked", "locked"]);
     const r = applyLessonCompletion(s0, index, { lessonId: "math-l1", sessionId: "sess-0001", firstTryCorrect: 4, total: 5 }, T0);
-    expect(buildPath(r.state, index).map((n) => n.status)).toEqual(["done", "current", "locked", "locked"]);
+    expect(buildPath(r.state, index).map((n) => n.status).slice(0, 4)).toEqual(["done", "current", "locked", "locked"]);
     const rec = recommendNext(r.state, index, T0);
     expect(rec.kind === "lesson" ? rec.lessonId : null).toBe("math-l2");
   });

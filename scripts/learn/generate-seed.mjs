@@ -53,8 +53,8 @@ for (const site of ["math", "english"]) {
     });
   });
   for (const qu of questions) {
-    out.push(`insert into public.learn_questions(code, subject_id, skill_id, type, difficulty, prompt, latex, role, family, expected_seconds, audio_text, tags, status)
-  values (${q(qu.id)}, ${subj}, (select id from public.learn_skills where code = ${q(qu.skillId)}), ${q(qu.type)}, ${qu.difficulty}, ${q(qu.prompt)}, ${q(qu.latex)}, ${q(qu.role)}, ${q(qu.family)}, ${qu.expectedSeconds ?? "null"}, ${q(qu.audioText)}, ${arr(qu.tags)}, ${q(qu.status)}) on conflict (code) do nothing;`);
+    out.push(`insert into public.learn_questions(code, subject_id, skill_id, type, difficulty, prompt, latex, figure, role, family, expected_seconds, audio_text, tags, status)
+  values (${q(qu.id)}, ${subj}, (select id from public.learn_skills where code = ${q(qu.skillId)}), ${q(qu.type)}, ${qu.difficulty}, ${q(qu.prompt)}, ${q(qu.latex)}, ${qu.figure ? `${q(JSON.stringify(qu.figure))}::jsonb` : "null"}, ${q(qu.role)}, ${q(qu.family)}, ${qu.expectedSeconds ?? "null"}, ${q(qu.audioText)}, ${arr(qu.tags)}, ${q(qu.status)}) on conflict (code) do nothing;`);
     const id = `(select id from public.learn_questions where code = ${q(qu.id)})`;
     out.push(`insert into public.learn_question_answers(question_id, answer) values (${id}, ${q(JSON.stringify(qu.answer))}::jsonb) on conflict do nothing;`);
     out.push(`insert into public.learn_question_explanations(question_id, body) values (${id}, ${q(qu.explanation)}) on conflict do nothing;`);

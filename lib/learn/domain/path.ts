@@ -2,6 +2,7 @@ import type { PlayerState } from "@/lib/learn/types";
 import type { ContentIndex } from "@/lib/learn/content/indexer";
 import { effectiveMastery } from "./mastery";
 import { dueSkills } from "./srs";
+import { semesterOf } from "@/lib/learn/content/semesters";
 
 export type LessonStatus = "done" | "current" | "locked";
 
@@ -18,19 +19,25 @@ function isDone(state: PlayerState, lessonId: string) {
 }
 
 /**
- * Sequential path: the first lesson that is not done (or placed out by the
- * diagnostic) is "current"; everything after it is locked until then.
+ * Sequential path: the first lesson that is not done (or placed out by the diagnostic) is "current"; later lessons are locked until then.
+ * Where a site splits its courses by semester (math, english) every semester group has its own chain - semester 1, semester 2 and the
+ * lessons taught in both (0) - so a learner can start the second semester without finishing the first. Sites without semesters
+ * (study.korean) have a single group, i.e. one sequential path as before.
  */
 export function buildPath(state: PlayerState, index: ContentIndex): PathNode[] {
-  let currentFound = false;
+  const site = index.bundle.catalog.site;
+  const currentIn = new Set<number>();
   return index.lessonOrder.map((lessonId) => {
     const p = state.lessons[lessonId];
     let status: LessonStatus;
     if (isDone(state, lessonId)) status = "done";
-    else if (!currentFound) {
-      status = "current";
-      currentFound = true;
-    } else status = "locked";
+    else {
+      const group = semesterOf(site, lessonId);
+      if (!currentIn.has(group)) {
+        status = "current";
+        currentIn.add(group);
+      } else status = "locked";
+    }
     return { lessonId, status, stars: p?.stars ?? 0, placedOut: p?.placedOut ?? false };
   });
 }

@@ -123,6 +123,56 @@
     "id": "m.h3.norm",
     "title": "이항분포와 정규분포",
     "prerequisiteId": "m.h3.cond"
+   },
+   {
+    "id": "m.m2.geo1",
+    "title": "삼각형과 사각형의 성질",
+    "prerequisiteId": "m.m2.prob"
+   },
+   {
+    "id": "m.m2.geo2",
+    "title": "닮음과 피타고라스 정리",
+    "prerequisiteId": "m.m2.geo1"
+   },
+   {
+    "id": "m.m3.geo1",
+    "title": "삼각비",
+    "prerequisiteId": "m.m3.trig"
+   },
+   {
+    "id": "m.m3.geo2",
+    "title": "원의 성질",
+    "prerequisiteId": "m.m3.geo1"
+   },
+   {
+    "id": "m.h1.geo1",
+    "title": "좌표평면 위의 도형",
+    "prerequisiteId": "m.h1.geom"
+   },
+   {
+    "id": "m.h1.geo2",
+    "title": "원의 방정식",
+    "prerequisiteId": "m.h1.geo1"
+   },
+   {
+    "id": "m.h2.geo1",
+    "title": "삼각형과 삼각함수",
+    "prerequisiteId": "m.h2.der"
+   },
+   {
+    "id": "m.h2.geo2",
+    "title": "호도법과 부채꼴",
+    "prerequisiteId": "m.h2.geo1"
+   },
+   {
+    "id": "m.h3.geo1",
+    "title": "이차곡선",
+    "prerequisiteId": "m.h3.norm"
+   },
+   {
+    "id": "m.h3.geo2",
+    "title": "평면벡터",
+    "prerequisiteId": "m.h3.geo1"
    }
   ],
   "courses": [
@@ -219,6 +269,38 @@
          "m-m2-prob-4"
         ],
         "challengeId": "m-m2-prob-5"
+       },
+       {
+        "id": "math-m2-geo1",
+        "title": "삼각형과 사각형의 성질",
+        "skillIds": [
+         "m.m2.geo1"
+        ],
+        "concept": "이등변삼각형의 두 밑각은 같아요. 평행사변형에서 이웃한 두 각의 합은 $180^\\circ$이고, 삼각형의 두 변의 중점을 이은 선분은 나머지 변의 $\\frac12$이에요.",
+        "example": "밑각 $50^\\circ$ → 꼭지각 $80^\\circ$",
+        "questionIds": [
+         "m-m2-geo1-1",
+         "m-m2-geo1-2",
+         "m-m2-geo1-3",
+         "m-m2-geo1-4"
+        ],
+        "challengeId": "m-m2-geo1-c"
+       },
+       {
+        "id": "math-m2-geo2",
+        "title": "닮음과 피타고라스 정리",
+        "skillIds": [
+         "m.m2.geo2"
+        ],
+        "concept": "닮은 도형은 대응하는 변의 비가 같고 넓이의 비는 닮음비의 제곱이에요. 직각삼각형에서 $a^2+b^2=c^2$이에요.",
+        "example": "$3^2+4^2=5^2$",
+        "questionIds": [
+         "m-m2-geo2-1",
+         "m-m2-geo2-2",
+         "m-m2-geo2-3",
+         "m-m2-geo2-4"
+        ],
+        "challengeId": "m-m2-geo2-c"
        }
       ]
      }
@@ -317,6 +399,38 @@
          "m-m3-trig-4"
         ],
         "challengeId": "m-m3-trig-5"
+       },
+       {
+        "id": "math-m3-geo1",
+        "title": "삼각비",
+        "skillIds": [
+         "m.m3.geo1"
+        ],
+        "concept": "직각삼각형에서 $\\sin A$는 (높이)÷(빗변), $\\cos A$는 (밑변)÷(빗변), $\\tan A$는 (높이)÷(밑변)이에요.",
+        "example": "3-4-5 삼각형: $\\sin A=0.6$",
+        "questionIds": [
+         "m-m3-geo1-1",
+         "m-m3-geo1-2",
+         "m-m3-geo1-3",
+         "m-m3-geo1-4"
+        ],
+        "challengeId": "m-m3-geo1-c"
+       },
+       {
+        "id": "math-m3-geo2",
+        "title": "원의 성질",
+        "skillIds": [
+         "m.m3.geo2"
+        ],
+        "concept": "한 호에 대한 원주각은 중심각의 $\\frac12$이에요. 접선은 반지름과 수직이고, 원에 내접하는 사각형의 대각의 합은 $180^\\circ$예요.",
+        "example": "중심각 $100^\\circ$ → 원주각 $50^\\circ$",
+        "questionIds": [
+         "m-m3-geo2-1",
+         "m-m3-geo2-2",
+         "m-m3-geo2-3",
+         "m-m3-geo2-4"
+        ],
+        "challengeId": "m-m3-geo2-c"
        }
       ]
      }
@@ -415,6 +529,38 @@
          "m-h1-geom-4"
         ],
         "challengeId": "m-h1-geom-5"
+       },
+       {
+        "id": "math-h1-geo1",
+        "title": "좌표평면 위의 도형",
+        "skillIds": [
+         "m.h1.geo1"
+        ],
+        "concept": "두 점 사이의 거리 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, 중점은 좌표의 평균, 기울기는 $\\frac{y_2-y_1}{x_2-x_1}$이에요.",
+        "example": "A(0,0), B(3,4): 거리 5",
+        "questionIds": [
+         "m-h1-geo1-1",
+         "m-h1-geo1-2",
+         "m-h1-geo1-3",
+         "m-h1-geo1-4"
+        ],
+        "challengeId": "m-h1-geo1-c"
+       },
+       {
+        "id": "math-h1-geo2",
+        "title": "원의 방정식",
+        "skillIds": [
+         "m.h1.geo2"
+        ],
+        "concept": "중심이 $(a, b)$이고 반지름이 $r$인 원의 방정식은 $(x-a)^2+(y-b)^2=r^2$이에요. 점 $(x_0,y_0)$과 직선 $ax+by+c=0$ 사이의 거리는 $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2} }$예요.",
+        "example": "$(x-2)^2+(y-3)^2=25$: 중심 $(2,3)$, 반지름 5",
+        "questionIds": [
+         "m-h1-geo2-1",
+         "m-h1-geo2-2",
+         "m-h1-geo2-3",
+         "m-h1-geo2-4"
+        ],
+        "challengeId": "m-h1-geo2-c"
        }
       ]
      }
@@ -513,6 +659,38 @@
          "m-h2-der-4"
         ],
         "challengeId": "m-h2-der-5"
+       },
+       {
+        "id": "math-h2-geo1",
+        "title": "삼각형과 삼각함수",
+        "skillIds": [
+         "m.h2.geo1"
+        ],
+        "concept": "사인법칙 $\\frac{a}{\\sin A}=2R$, 코사인법칙 $c^2=a^2+b^2-2ab\\cos C$, 삼각형의 넓이 $\\frac12ab\\sin C$예요.",
+        "example": "$a=5,b=8,C=60^\\circ$ → $c=7$",
+        "questionIds": [
+         "m-h2-geo1-1",
+         "m-h2-geo1-2",
+         "m-h2-geo1-3",
+         "m-h2-geo1-4"
+        ],
+        "challengeId": "m-h2-geo1-c"
+       },
+       {
+        "id": "math-h2-geo2",
+        "title": "호도법과 부채꼴",
+        "skillIds": [
+         "m.h2.geo2"
+        ],
+        "concept": "$180^\\circ=\\pi$ 라디안이에요. 반지름 $r$, 중심각 $\\theta$(라디안)인 부채꼴의 호의 길이는 $r\\theta$, 넓이는 $\\frac12r^2\\theta$예요.",
+        "example": "$60^\\circ=\\frac{\\pi}{3}$",
+        "questionIds": [
+         "m-h2-geo2-1",
+         "m-h2-geo2-2",
+         "m-h2-geo2-3",
+         "m-h2-geo2-4"
+        ],
+        "challengeId": "m-h2-geo2-c"
        }
       ]
      }
@@ -611,6 +789,38 @@
          "m-h3-norm-4"
         ],
         "challengeId": "m-h3-norm-5"
+       },
+       {
+        "id": "math-h3-geo1",
+        "title": "이차곡선",
+        "skillIds": [
+         "m.h3.geo1"
+        ],
+        "concept": "포물선 $y^2=4px$의 초점은 $(p,0)$, 타원 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$에서 $c^2=a^2-b^2$, 쌍곡선에서 $c^2=a^2+b^2$이에요.",
+        "example": "$y^2=12x$: 초점 $(3,0)$",
+        "questionIds": [
+         "m-h3-geo1-1",
+         "m-h3-geo1-2",
+         "m-h3-geo1-3",
+         "m-h3-geo1-4"
+        ],
+        "challengeId": "m-h3-geo1-c"
+       },
+       {
+        "id": "math-h3-geo2",
+        "title": "평면벡터",
+        "skillIds": [
+         "m.h3.geo2"
+        ],
+        "concept": "벡터 $(x,y)$의 크기는 $\\sqrt{x^2+y^2}$, 내적은 $x_1x_2+y_1y_2$이고 두 벡터가 수직이면 내적이 0이에요.",
+        "example": "$(3,4)$의 크기: 5",
+        "questionIds": [
+         "m-h3-geo2-1",
+         "m-h3-geo2-2",
+         "m-h3-geo2-3",
+         "m-h3-geo2-4"
+        ],
+        "challengeId": "m-h3-geo2-c"
        }
       ]
      }
@@ -8927,6 +9137,7296 @@
    "tags": [
     "multistep",
     "reasoning"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-1",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "이등변삼각형의 한 밑각이 $50^\\circ$일 때, 꼭지각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "50°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "50°",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "x"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 80
+   },
+   "hints": [
+    "이등변삼각형의 두 밑각은 크기가 같아요.",
+    "세 각의 합 $180^\\circ$에서 밑각 두 개를 빼요."
+   ],
+   "explanation": "$180-50\\times2=80$이므로 꼭지각은 $80^\\circ$입니다.",
+   "role": "core",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-2",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "평행사변형 ABCD에서 $\\angle A=65^\\circ$일 때, $\\angle B$는 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       60,
+       125,
+       170,
+       125,
+       200,
+       45,
+       90,
+       45
+      ],
+      "f": 1
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 115
+   },
+   "hints": [
+    "평행사변형에서 이웃한 두 각의 합은 $180^\\circ$예요.",
+    "$180$에서 $\\angle A$를 빼요."
+   ],
+   "explanation": "$180-65=115$이므로 $\\angle B=115^\\circ$입니다.",
+   "role": "core",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-3",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "삼각형의 두 변의 중점을 이은 선분 $x$는 나머지 한 변 14 cm와 평행합니다. $x$의 길이는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       135,
+       215,
+       135,
+       104.5,
+       37.9
+      ],
+      "f": 1
+     },
+     {
+      "k": "line",
+      "p": [
+       104.5,
+       37.9,
+       104.5,
+       135
+      ],
+      "d": true
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       153
+      ],
+      "t": "14cm"
+     },
+     {
+      "k": "poly",
+      "p": [
+       104.5,
+       135,
+       112.5,
+       135,
+       112.5,
+       127,
+       104.5,
+       127
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "두 변의 중점을 이은 선분의 길이는 나머지 변의 길이의 절반이에요.",
+    "14를 2로 나눠 보세요."
+   ],
+   "explanation": "$14\\div2=7$이므로 $x=7$ cm입니다.",
+   "role": "core",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-4",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "이등변삼각형의 한 밑각이 $70^\\circ$일 때, 꼭지각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "70°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "70°",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "x"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 40
+   },
+   "hints": [
+    "이등변삼각형의 두 밑각은 크기가 같아요.",
+    "세 각의 합 $180^\\circ$에서 밑각 두 개를 빼요."
+   ],
+   "explanation": "$180-70\\times2=40$이므로 꼭지각은 $40^\\circ$입니다.",
+   "role": "core",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-c",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형의 두 변의 중점을 이은 선분 $x$는 나머지 한 변 18 cm와 평행합니다. $x$의 길이는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       135,
+       215,
+       135,
+       104.5,
+       40.6
+      ],
+      "f": 1
+     },
+     {
+      "k": "line",
+      "p": [
+       104.5,
+       40.6,
+       104.5,
+       135
+      ],
+      "d": true
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       153
+      ],
+      "t": "18cm"
+     },
+     {
+      "k": "poly",
+      "p": [
+       104.5,
+       135,
+       112.5,
+       135,
+       112.5,
+       127,
+       104.5,
+       127
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "두 변의 중점을 이은 선분의 길이는 나머지 변의 길이의 절반이에요.",
+    "18를 2로 나눠 보세요."
+   ],
+   "explanation": "$18\\div2=9$이므로 $x=9$ cm입니다.",
+   "role": "core",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-v1",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "평행사변형 ABCD에서 $\\angle A=110^\\circ$일 때, $\\angle B$는 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       60,
+       125,
+       170,
+       125,
+       200,
+       45,
+       90,
+       45
+      ],
+      "f": 1
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "평행사변형에서 이웃한 두 각의 합은 $180^\\circ$예요.",
+    "$180$에서 $\\angle A$를 빼요."
+   ],
+   "explanation": "$180-110=70$이므로 $\\angle B=70^\\circ$입니다.",
+   "role": "variant",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo1-v2",
+   "site": "math",
+   "skillId": "m.m2.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "이등변삼각형의 한 밑각이 $35^\\circ$일 때, 꼭지각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "35°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "35°",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "x"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 110
+   },
+   "hints": [
+    "이등변삼각형의 두 밑각은 크기가 같아요.",
+    "세 각의 합 $180^\\circ$에서 밑각 두 개를 빼요."
+   ],
+   "explanation": "$180-35\\times2=110$이므로 꼭지각은 $110^\\circ$입니다.",
+   "role": "variant",
+   "family": "m2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-1",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "직각삼각형의 직각을 낀 두 변이 3 cm, 4 cm일 때, 가장 긴 변 $x$는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       183.3,
+       140,
+       50,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       60,
+       140,
+       60,
+       130,
+       50,
+       130
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       42,
+       95
+      ],
+      "t": "3",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       158
+      ],
+      "t": "4"
+     },
+     {
+      "k": "text",
+      "p": [
+       129,
+       86
+      ],
+      "t": "x",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "피타고라스 정리: $a^2+b^2=c^2$.",
+    "두 변을 각각 제곱해서 더한 뒤 제곱근을 구해요."
+   ],
+   "explanation": "$3^2+4^2=25$이므로 $x=5$입니다.",
+   "role": "core",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-2",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "직각삼각형의 직각을 낀 두 변이 6 cm, 8 cm일 때, 가장 긴 변 $x$는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       183.3,
+       140,
+       50,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       60,
+       140,
+       60,
+       130,
+       50,
+       130
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       42,
+       95
+      ],
+      "t": "6",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       158
+      ],
+      "t": "8"
+     },
+     {
+      "k": "text",
+      "p": [
+       129,
+       86
+      ],
+      "t": "x",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "피타고라스 정리: $a^2+b^2=c^2$.",
+    "두 변을 각각 제곱해서 더한 뒤 제곱근을 구해요."
+   ],
+   "explanation": "$6^2+8^2=100$이므로 $x=10$입니다.",
+   "role": "core",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-3",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "직각삼각형의 빗변이 13 cm이고 한 변이 5 cm일 때, 나머지 한 변 $x$는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       200,
+       140,
+       50,
+       77.5
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       60,
+       140,
+       60,
+       130,
+       50,
+       130
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       42,
+       114
+      ],
+      "t": "5",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       137,
+       105
+      ],
+      "t": "13",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "$a^2+x^2=c^2$에서 $x^2=c^2-a^2$이에요.",
+    "$c^2-a^2$의 제곱근을 구해요."
+   ],
+   "explanation": "$13^2-5^2=144$이므로 $x=12$입니다.",
+   "role": "core",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-4",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "두 삼각형은 닮음입니다. 변 $x$의 길이는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 160,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       20,
+       130,
+       110,
+       130,
+       60,
+       45
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       65,
+       148
+      ],
+      "t": "4"
+     },
+     {
+      "k": "text",
+      "p": [
+       30,
+       82
+      ],
+      "t": "5",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       98,
+       82
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "poly",
+      "p": [
+       140,
+       130,
+       240,
+       130,
+       175,
+       45
+      ],
+      "f": 2
+     },
+     {
+      "k": "text",
+      "p": [
+       190,
+       148
+      ],
+      "t": "6"
+     },
+     {
+      "k": "text",
+      "p": [
+       148,
+       82
+      ],
+      "t": "x",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       224,
+       82
+      ],
+      "t": "4.5",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 9
+   },
+   "hints": [
+    "닮은 도형에서 대응하는 변의 길이의 비는 같아요.",
+    "닮음비를 먼저 구해 보세요."
+   ],
+   "explanation": "닮음비가 $2:3$이므로 $x=9$입니다.",
+   "role": "core",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-c",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "닮음비가 $2:3$인 두 도형이 있습니다. 작은 도형의 넓이가 20 cm²일 때 큰 도형의 넓이는 몇 cm²일까요? (cm²)",
+   "figure": {
+    "w": 260,
+    "h": 160,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       20,
+       130,
+       110,
+       130,
+       60,
+       45
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       65,
+       148
+      ],
+      "t": "4"
+     },
+     {
+      "k": "text",
+      "p": [
+       30,
+       82
+      ],
+      "t": "5",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       98,
+       82
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "poly",
+      "p": [
+       140,
+       130,
+       240,
+       130,
+       175,
+       45
+      ],
+      "f": 2
+     },
+     {
+      "k": "text",
+      "p": [
+       190,
+       148
+      ],
+      "t": "6"
+     },
+     {
+      "k": "text",
+      "p": [
+       148,
+       82
+      ],
+      "t": "7.5",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       224,
+       82
+      ],
+      "t": "4.5",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 45
+   },
+   "hints": [
+    "넓이의 비는 닮음비의 제곱이에요.",
+    "작은 도형의 넓이에 $(3/2)^2$을 곱해요."
+   ],
+   "explanation": "넓이의 비는 $4:9$이므로 $20\\times\\frac{9}{4}=45$입니다.",
+   "role": "core",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-v1",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "직각삼각형의 직각을 낀 두 변이 5 cm, 12 cm일 때, 가장 긴 변 $x$는 몇 cm일까요? (cm)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       200,
+       140,
+       50,
+       77.5
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       60,
+       140,
+       60,
+       130,
+       50,
+       130
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       42,
+       114
+      ],
+      "t": "5",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       158
+      ],
+      "t": "12"
+     },
+     {
+      "k": "text",
+      "p": [
+       137,
+       105
+      ],
+      "t": "x",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 13
+   },
+   "hints": [
+    "피타고라스 정리: $a^2+b^2=c^2$.",
+    "두 변을 각각 제곱해서 더한 뒤 제곱근을 구해요."
+   ],
+   "explanation": "$5^2+12^2=169$이므로 $x=13$입니다.",
+   "role": "variant",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m2-geo2-v2",
+   "site": "math",
+   "skillId": "m.m2.geo2",
+   "type": "true_false",
+   "difficulty": 3,
+   "prompt": "세 변의 길이가 6 cm, 8 cm, 10 cm인 삼각형은 직각삼각형일까요?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       183.3,
+       140,
+       50,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       50,
+       140,
+       60,
+       140,
+       60,
+       130,
+       50,
+       130
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       42,
+       95
+      ],
+      "t": "6",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       158
+      ],
+      "t": "8"
+     },
+     {
+      "k": "text",
+      "p": [
+       129,
+       86
+      ],
+      "t": "10",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "choice",
+    "id": "true"
+   },
+   "hints": [
+    "가장 긴 변을 빗변으로 놓고 $a^2+b^2$과 $c^2$을 비교해요.",
+    "두 값이 같으면 직각삼각형이에요."
+   ],
+   "explanation": "$6^2+8^2=100$, $10^2=100$이므로 네, 직각삼각형이에요.",
+   "role": "variant",
+   "family": "m2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-1",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "그림의 직각삼각형에서 $\\sin A$의 값은? (소수로 쓰세요)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       140,
+       178.3,
+       140,
+       178.3,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       168.3,
+       140,
+       178.3,
+       140,
+       178.3,
+       130,
+       168.3,
+       130
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       45,
+       140
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 36.86989764584402
+     },
+     {
+      "k": "text",
+      "p": [
+       85,
+       135
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       186,
+       95
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       112,
+       158
+      ],
+      "t": "4"
+     },
+     {
+      "k": "text",
+      "p": [
+       102,
+       84
+      ],
+      "t": "5",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 0.6,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$\\sin A$는 (높이)÷(빗변), $\\cos A$는 (밑변)÷(빗변), $\\tan A$는 (높이)÷(밑변)이에요.",
+    "각 $A$를 기준으로 높이(마주 보는 변)와 밑변을 구분해요."
+   ],
+   "explanation": "$\\sin A=\\frac{3}{5}=0.6$입니다.",
+   "role": "core",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-2",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "그림의 직각삼각형에서 $\\cos A$의 값은? (소수로 쓰세요)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       140,
+       178.3,
+       140,
+       178.3,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       168.3,
+       140,
+       178.3,
+       140,
+       178.3,
+       130,
+       168.3,
+       130
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       45,
+       140
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 36.86989764584402
+     },
+     {
+      "k": "text",
+      "p": [
+       85,
+       135
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       186,
+       95
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       112,
+       158
+      ],
+      "t": "4"
+     },
+     {
+      "k": "text",
+      "p": [
+       102,
+       84
+      ],
+      "t": "5",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 0.8,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$\\sin A$는 (높이)÷(빗변), $\\cos A$는 (밑변)÷(빗변), $\\tan A$는 (높이)÷(밑변)이에요.",
+    "각 $A$를 기준으로 높이(마주 보는 변)와 밑변을 구분해요."
+   ],
+   "explanation": "$\\cos A=\\frac{4}{5}=0.8$입니다.",
+   "role": "core",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-3",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "그림의 직각삼각형에서 $\\tan A$의 값은? (소수로 쓰세요)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       140,
+       178.3,
+       140,
+       178.3,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       168.3,
+       140,
+       178.3,
+       140,
+       178.3,
+       130,
+       168.3,
+       130
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       45,
+       140
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 36.86989764584402
+     },
+     {
+      "k": "text",
+      "p": [
+       85,
+       135
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       186,
+       95
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       112,
+       158
+      ],
+      "t": "4"
+     },
+     {
+      "k": "text",
+      "p": [
+       102,
+       84
+      ],
+      "t": "5",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 0.75,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$\\sin A$는 (높이)÷(빗변), $\\cos A$는 (밑변)÷(빗변), $\\tan A$는 (높이)÷(밑변)이에요.",
+    "각 $A$를 기준으로 높이(마주 보는 변)와 밑변을 구분해요."
+   ],
+   "explanation": "$\\tan A=\\frac{3}{4}=0.75$입니다.",
+   "role": "core",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-4",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\sin\\ 30^\\circ$의 값은? (소수로 쓰세요)",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       173.9,
+       70
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 30
+     },
+     {
+      "k": "text",
+      "p": [
+       119,
+       124
+      ],
+      "t": "30°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$30^\\circ$, $45^\\circ$, $60^\\circ$의 삼각비 값을 떠올려 보세요.",
+    "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+   ],
+   "explanation": "$\\sin\\ 30^\\circ=0.5$입니다.",
+   "role": "core",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-c",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "직각삼각형에서 $\\tan A=0.75$이고 밑변의 길이가 8일 때, 높이 $x$는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       45,
+       140,
+       178.3,
+       140,
+       178.3,
+       40
+      ],
+      "f": 1
+     },
+     {
+      "k": "poly",
+      "p": [
+       168.3,
+       140,
+       178.3,
+       140,
+       178.3,
+       130,
+       168.3,
+       130
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       45,
+       140
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 36.86989764584402
+     },
+     {
+      "k": "text",
+      "p": [
+       85,
+       135
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       186,
+       95
+      ],
+      "t": "x",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       112,
+       158
+      ],
+      "t": "8"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$\\tan A$는 (높이)÷(밑변)이에요.",
+    "높이=$\\tan A\\times$(밑변)."
+   ],
+   "explanation": "$x=0.75\\times8=6$입니다.",
+   "role": "core",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-v1",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\tan\\ 45^\\circ$의 값은? (소수로 쓰세요)",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       154.9,
+       45.1
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 45
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       118
+      ],
+      "t": "45°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 1,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$30^\\circ$, $45^\\circ$, $60^\\circ$의 삼각비 값을 떠올려 보세요.",
+    "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+   ],
+   "explanation": "$\\tan\\ 45^\\circ=1$입니다.",
+   "role": "variant",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo1-v2",
+   "site": "math",
+   "skillId": "m.m3.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "$\\cos\\ 60^\\circ$의 값은? (소수로 쓰세요)",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       130,
+       26.1
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 60
+     },
+     {
+      "k": "text",
+      "p": [
+       114,
+       113
+      ],
+      "t": "60°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 0.5,
+    "tolerance": 0.001
+   },
+   "hints": [
+    "$30^\\circ$, $45^\\circ$, $60^\\circ$의 삼각비 값을 떠올려 보세요.",
+    "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+   ],
+   "explanation": "$\\cos\\ 60^\\circ=0.5$입니다.",
+   "role": "variant",
+   "family": "m3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-1",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "호 AB에 대한 중심각이 $100^\\circ$일 때, 같은 호에 대한 원주각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 240,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       120,
+       85
+      ],
+      "r": 62
+     },
+     {
+      "k": "line",
+      "p": [
+       66.3,
+       116,
+       120,
+       23
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       120,
+       23,
+       173.7,
+       116
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       120,
+       85,
+       66.3,
+       116
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       120,
+       85,
+       173.7,
+       116
+      ],
+      "d": true
+     },
+     {
+      "k": "circle",
+      "c": [
+       120,
+       85
+      ],
+      "r": 2.5
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       107
+      ],
+      "t": "100°"
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       53
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       114,
+       79
+      ],
+      "t": "O",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 50
+   },
+   "hints": [
+    "한 호에 대한 원주각의 크기는 중심각의 절반이에요.",
+    "중심각을 2로 나눠요."
+   ],
+   "explanation": "$100\\div2=50$이므로 원주각은 $50^\\circ$입니다.",
+   "role": "core",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-2",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "원 O 밖의 점 P에서 원에 그은 접선의 접점을 A라 합니다. $PO=5$, 반지름이 3일 때 $PA$의 길이는?",
+   "figure": {
+    "w": 250,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       80,
+       90
+      ],
+      "r": 45
+     },
+     {
+      "k": "circle",
+      "c": [
+       80,
+       90
+      ],
+      "r": 2.5
+     },
+     {
+      "k": "line",
+      "p": [
+       80,
+       90,
+       215,
+       90
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       80,
+       90,
+       95,
+       47.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       215,
+       90,
+       95,
+       47.6
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       110,
+       108
+      ],
+      "t": "5"
+     },
+     {
+      "k": "text",
+      "p": [
+       90,
+       62
+      ],
+      "t": "3"
+     },
+     {
+      "k": "text",
+      "p": [
+       161,
+       61
+      ],
+      "t": "x",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       223,
+       94
+      ],
+      "t": "P",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       76,
+       106
+      ],
+      "t": "O",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "접선은 반지름과 수직이에요. 삼각형 OAP는 직각삼각형이에요.",
+    "피타고라스 정리로 $PA^2=PO^2-r^2$을 구해요."
+   ],
+   "explanation": "$5^2-3^2=16$이므로 $PA=4$입니다.",
+   "role": "core",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-3",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "반지름이 5인 원에서 중심에서 현까지의 거리가 3일 때, 현의 길이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       130,
+       85
+      ],
+      "r": 62
+     },
+     {
+      "k": "line",
+      "p": [
+       80.4,
+       47.8,
+       179.6,
+       47.8
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       85,
+       130,
+       47.8
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       85,
+       179.6,
+       47.8
+      ],
+      "d": true
+     },
+     {
+      "k": "circle",
+      "c": [
+       130,
+       85
+      ],
+      "r": 2.5
+     },
+     {
+      "k": "text",
+      "p": [
+       138,
+       70
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       159,
+       40
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       169,
+       80
+      ],
+      "t": "5",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 8
+   },
+   "hints": [
+    "중심에서 현에 내린 수선은 현을 이등분해요.",
+    "반 현의 길이는 $\\sqrt{r^2-d^2}$예요."
+   ],
+   "explanation": "반 현은 $\\sqrt{5^2-3^2}=4$이므로 현의 길이는 $8$입니다.",
+   "role": "core",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-4",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "원에 내접하는 사각형에서 한 각이 $75^\\circ$일 때, 그 대각(마주 보는 각)은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       130,
+       85
+      ],
+      "r": 62
+     },
+     {
+      "k": "poly",
+      "p": [
+       99,
+       31.3,
+       188.3,
+       63.8,
+       151.2,
+       143.3,
+       71.7,
+       106.2
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       105,
+       25
+      ],
+      "t": "75°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       145,
+       159
+      ],
+      "t": "x",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 105
+   },
+   "hints": [
+    "원에 내접하는 사각형의 대각의 합은 $180^\\circ$예요.",
+    "$180$에서 주어진 각을 빼요."
+   ],
+   "explanation": "$180-75=105$이므로 $105^\\circ$입니다.",
+   "role": "core",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-c",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원 O 밖의 점 P에서 원에 그은 접선의 접점을 A라 합니다. $PO=13$, 반지름이 5일 때 $PA$의 길이는?",
+   "figure": {
+    "w": 250,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       80,
+       90
+      ],
+      "r": 45
+     },
+     {
+      "k": "circle",
+      "c": [
+       80,
+       90
+      ],
+      "r": 2.5
+     },
+     {
+      "k": "line",
+      "p": [
+       80,
+       90,
+       215,
+       90
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       80,
+       90,
+       95,
+       47.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       215,
+       90,
+       95,
+       47.6
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       110,
+       108
+      ],
+      "t": "13"
+     },
+     {
+      "k": "text",
+      "p": [
+       90,
+       62
+      ],
+      "t": "5"
+     },
+     {
+      "k": "text",
+      "p": [
+       161,
+       61
+      ],
+      "t": "x",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       223,
+       94
+      ],
+      "t": "P",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       76,
+       106
+      ],
+      "t": "O",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "접선은 반지름과 수직이에요. 삼각형 OAP는 직각삼각형이에요.",
+    "피타고라스 정리로 $PA^2=PO^2-r^2$을 구해요."
+   ],
+   "explanation": "$13^2-5^2=144$이므로 $PA=12$입니다.",
+   "role": "core",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-v1",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "호 AB에 대한 중심각이 $140^\\circ$일 때, 같은 호에 대한 원주각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 240,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       120,
+       85
+      ],
+      "r": 62
+     },
+     {
+      "k": "line",
+      "p": [
+       66.3,
+       116,
+       120,
+       23
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       120,
+       23,
+       173.7,
+       116
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       120,
+       85,
+       66.3,
+       116
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       120,
+       85,
+       173.7,
+       116
+      ],
+      "d": true
+     },
+     {
+      "k": "circle",
+      "c": [
+       120,
+       85
+      ],
+      "r": 2.5
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       107
+      ],
+      "t": "140°"
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       53
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       114,
+       79
+      ],
+      "t": "O",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "한 호에 대한 원주각의 크기는 중심각의 절반이에요.",
+    "중심각을 2로 나눠요."
+   ],
+   "explanation": "$140\\div2=70$이므로 원주각은 $70^\\circ$입니다.",
+   "role": "variant",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m3-geo2-v2",
+   "site": "math",
+   "skillId": "m.m3.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "원에 내접하는 사각형에서 한 각이 $100^\\circ$일 때, 그 대각(마주 보는 각)은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       130,
+       85
+      ],
+      "r": 62
+     },
+     {
+      "k": "poly",
+      "p": [
+       99,
+       31.3,
+       188.3,
+       63.8,
+       151.2,
+       143.3,
+       71.7,
+       106.2
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       105,
+       25
+      ],
+      "t": "100°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       145,
+       159
+      ],
+      "t": "x",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 80
+   },
+   "hints": [
+    "원에 내접하는 사각형의 대각의 합은 $180^\\circ$예요.",
+    "$180$에서 주어진 각을 빼요."
+   ],
+   "explanation": "$180-100=80$이므로 $80^\\circ$입니다.",
+   "role": "variant",
+   "family": "m3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-1",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "좌표평면 위의 두 점 A(0, 0), B(3, 4) 사이의 거리는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       35,
+       142
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       41,
+       136
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       113,
+       38
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       119,
+       32
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       142,
+       113,
+       38
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "두 점 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$예요.",
+    "가로 차이와 세로 차이를 각각 제곱해 더해요."
+   ],
+   "explanation": "$\\sqrt{3^2+4^2}=\\sqrt{25}=5$입니다.",
+   "role": "core",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-2",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 점 A(2, 1), B(8, 5)를 잇는 선분 AB의 중점의 $x$좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       79,
+       120
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       85,
+       114
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       211,
+       32
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       217,
+       26
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       79,
+       120,
+       211,
+       32
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "중점의 좌표는 두 점의 좌표의 평균이에요.",
+    "같은 좌표끼리 더해 2로 나눠요."
+   ],
+   "explanation": "$(2+8)\\div2=5$입니다.",
+   "role": "core",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-3",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 점 A(2, 1), B(8, 5)를 잇는 선분 AB의 중점의 $y$좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       79,
+       120
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       85,
+       114
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       211,
+       32
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       217,
+       26
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       79,
+       120,
+       211,
+       32
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "중점의 좌표는 두 점의 좌표의 평균이에요.",
+    "같은 좌표끼리 더해 2로 나눠요."
+   ],
+   "explanation": "$(1+5)\\div2=3$입니다.",
+   "role": "core",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-4",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 점 A(1, 2), B(4, 8)를 지나는 직선의 기울기는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       49,
+       115
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       55,
+       109
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       32
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       26
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       48.8,
+       114.5,
+       90,
+       32
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "기울기는 ($y$의 변화량)÷($x$의 변화량)이에요.",
+    "$\\frac{y_2-y_1}{x_2-x_1}$을 계산해요."
+   ],
+   "explanation": "$\\frac{6}{3}=2$입니다.",
+   "role": "core",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-c",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "좌표평면 위의 두 점 A(1, 1), B(7, 9) 사이의 거리는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       47,
+       130
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       53,
+       124
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       121,
+       32
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       127,
+       26
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       47.2,
+       129.8,
+       120.6,
+       32
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "두 점 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$예요.",
+    "가로 차이와 세로 차이를 각각 제곱해 더해요."
+   ],
+   "explanation": "$\\sqrt{6^2+8^2}=\\sqrt{100}=10$입니다.",
+   "role": "core",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-v1",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "두 점 A(0, 5), B(4, 1)를 지나는 직선의 기울기는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       35,
+       32
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       41,
+       26
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       123,
+       120
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       129,
+       114
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       32,
+       123,
+       120
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": -1
+   },
+   "hints": [
+    "기울기는 ($y$의 변화량)÷($x$의 변화량)이에요.",
+    "$\\frac{y_2-y_1}{x_2-x_1}$을 계산해요."
+   ],
+   "explanation": "$\\frac{-4}{4}=-1$입니다.",
+   "role": "variant",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo1-v2",
+   "site": "math",
+   "skillId": "m.h1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "좌표평면 위의 두 점 A(-2, 1), B(4, 9) 사이의 거리는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       59.4,
+       162,
+       59.4,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       71,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       51,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       35,
+       130
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       41,
+       124
+      ],
+      "t": "A",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       108,
+       32
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       114,
+       26
+      ],
+      "t": "B",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       129.8,
+       108.3,
+       32
+      ]
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "두 점 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$예요.",
+    "가로 차이와 세로 차이를 각각 제곱해 더해요."
+   ],
+   "explanation": "$\\sqrt{6^2+8^2}=\\sqrt{100}=10$입니다.",
+   "role": "variant",
+   "family": "h1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-1",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원 $(x-2)^2+(y-3)^2=25$의 반지름의 길이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       120,
+       252,
+       120
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       68,
+       162,
+       68,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       136
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       80,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       60,
+       134
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       87
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       81
+      ],
+      "t": "O",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       87
+      ],
+      "r": 55
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "원의 방정식 $(x-a)^2+(y-b)^2=r^2$에서 오른쪽 값이 $r^2$이에요.",
+    "25의 제곱근을 구해요."
+   ],
+   "explanation": "$r^2=25$이므로 $r=5$입니다.",
+   "role": "core",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-2",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원 $(x-4)^2+(y-2)^2=9$의 중심의 좌표를 $(p, q)$라 할 때, $p+q$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       123.7,
+       252,
+       123.7
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       140
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       138
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       108,
+       87
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       114,
+       81
+      ],
+      "t": "O",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       108,
+       87
+      ],
+      "r": 55
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "중심의 좌표는 $(p, q)$예요.",
+    "괄호 안의 $x-p$, $y-q$에서 $p$, $q$를 읽어요."
+   ],
+   "explanation": "$p+q=4+2=6$입니다.",
+   "role": "core",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-3",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원 $(x-0)^2+(y-0)^2=49$의 반지름의 길이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       87,
+       252,
+       87
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       162,
+       90,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       103
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       102,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       82,
+       101
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       87
+      ],
+      "r": 55
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "원의 방정식 $(x-a)^2+(y-b)^2=r^2$에서 오른쪽 값이 $r^2$이에요.",
+    "49의 제곱근을 구해요."
+   ],
+   "explanation": "$r^2=49$이므로 $r=7$입니다.",
+   "role": "core",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-4",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원점에서 직선 $3x+4y-10=0$까지의 거리는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       35,
+       142
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       41,
+       136
+      ],
+      "t": "O",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       121.7,
+       142,
+       35,
+       77
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       142,
+       66.2,
+       100.4
+      ],
+      "d": true
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "점과 직선 사이의 거리는 $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2} }$예요.",
+    "원점이면 $x_0=y_0=0$이에요."
+   ],
+   "explanation": "$\\frac{10}{\\sqrt{3^2+4^2} }=\\frac{10}{5}=2$입니다.",
+   "role": "core",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-c",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "원점에서 직선 $6x+8y-30=0$까지의 거리는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       162,
+       35,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       47,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       27,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       35,
+       142
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       41,
+       136
+      ],
+      "t": "O",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       165,
+       142,
+       35,
+       44.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       35,
+       142,
+       81.8,
+       79.6
+      ],
+      "d": true
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "점과 직선 사이의 거리는 $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2} }$예요.",
+    "원점이면 $x_0=y_0=0$이에요."
+   ],
+   "explanation": "$\\frac{30}{\\sqrt{6^2+8^2} }=\\frac{30}{10}=3$입니다.",
+   "role": "core",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-v1",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원 $(x-1)^2+(y-5)^2=16$의 중심의 좌표를 $(p, q)$라 할 때, $p+q$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       71.7,
+       162,
+       71.7,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       158
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       84,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       64,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       84,
+       81
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       90,
+       75
+      ],
+      "t": "O",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       84,
+       81
+      ],
+      "r": 48.9
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "중심의 좌표는 $(p, q)$예요.",
+    "괄호 안의 $x-p$, $y-q$에서 $p$, $q$를 읽어요."
+   ],
+   "explanation": "$p+q=1+5=6$입니다.",
+   "role": "variant",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h1-geo2-v2",
+   "site": "math",
+   "skillId": "m.h1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "원 $(x-3)^2+(y-3)^2=36$의 반지름의 길이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       114.5,
+       252,
+       114.5
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       62.5,
+       162,
+       62.5,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       248,
+       131
+      ],
+      "t": "x"
+     },
+     {
+      "k": "text",
+      "p": [
+       75,
+       16
+      ],
+      "t": "y"
+     },
+     {
+      "k": "text",
+      "p": [
+       55,
+       129
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       87
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       81
+      ],
+      "t": "O",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       87
+      ],
+      "r": 55
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "원의 방정식 $(x-a)^2+(y-b)^2=r^2$에서 오른쪽 값이 $r^2$이에요.",
+    "36의 제곱근을 구해요."
+   ],
+   "explanation": "$r^2=36$이므로 $r=6$입니다.",
+   "role": "variant",
+   "family": "h1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-1",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형 ABC에서 $a=6$, $\\angle A=30^\\circ$일 때, 외접원의 반지름 $R$은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "30°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "B",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "C"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "사인법칙: $\\frac6{\\sin A}=2R$.",
+    "$\\sin 30^\\circ$의 값을 이용해 $R$을 구해요."
+   ],
+   "explanation": "$R=\\frac6{2\\sin A}=\\frac{6}{2\\times\\frac12}=6$입니다.",
+   "role": "core",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-2",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형 ABC에서 $a=5$, $b=8$, $\\angle C=60^\\circ$일 때, $c$의 길이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "b",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "60°"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "코사인법칙: $c^2=a^2+b^2-2ab\\cos C$.",
+    "$\\cos 60^\\circ$의 값을 대입해요."
+   ],
+   "explanation": "$c^2=5^2+8^2-2\\times5\\times8\\times\\frac12=49$이므로 $c=7$입니다.",
+   "role": "core",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-3",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형 ABC에서 $a=6$, $b=8$, $\\angle C=30^\\circ$일 때, 넓이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "b",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "30°"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "넓이 $=\\frac12ab\\sin C$.",
+    "$\\sin 30^\\circ$의 값을 대입해요."
+   ],
+   "explanation": "$\\frac12\\times6\\times8\\times\\frac12=12$입니다.",
+   "role": "core",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-4",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형 ABC에서 $a=10$, $b=4$, $\\angle C=90^\\circ$일 때, 넓이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "b",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "90°"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 20
+   },
+   "hints": [
+    "넓이 $=\\frac12ab\\sin C$.",
+    "$\\sin 90^\\circ$의 값을 대입해요."
+   ],
+   "explanation": "$\\frac12\\times10\\times4\\times1=20$입니다.",
+   "role": "core",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-c",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "삼각형 ABC에서 $a=3$, $b=8$, $\\angle C=60^\\circ$일 때, $c$의 길이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "b",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "60°"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 7
+   },
+   "hints": [
+    "코사인법칙: $c^2=a^2+b^2-2ab\\cos C$.",
+    "$\\cos 60^\\circ$의 값을 대입해요."
+   ],
+   "explanation": "$c^2=3^2+8^2-2\\times3\\times8\\times\\frac12=49$이므로 $c=7$입니다.",
+   "role": "core",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-v1",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형 ABC에서 $a=10$, $\\angle A=30^\\circ$일 때, 외접원의 반지름 $R$은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "30°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "B",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "C"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "사인법칙: $\\frac10{\\sin A}=2R$.",
+    "$\\sin 30^\\circ$의 값을 이용해 $R$을 구해요."
+   ],
+   "explanation": "$R=\\frac10{2\\sin A}=\\frac{10}{2\\times\\frac12}=10$입니다.",
+   "role": "variant",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo1-v2",
+   "site": "math",
+   "skillId": "m.h2.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "삼각형 ABC에서 $a=12$, $b=5$, $\\angle C=30^\\circ$일 때, 넓이는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       40,
+       135,
+       215,
+       135,
+       115,
+       35
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       70,
+       127
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       185,
+       127
+      ],
+      "t": "b",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       115,
+       69
+      ],
+      "t": "30°"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 15
+   },
+   "hints": [
+    "넓이 $=\\frac12ab\\sin C$.",
+    "$\\sin 30^\\circ$의 값을 대입해요."
+   ],
+   "explanation": "$\\frac12\\times12\\times5\\times\\frac12=15$입니다.",
+   "role": "variant",
+   "family": "h2-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-1",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "$60^\\circ$를 라디안으로 나타내면 $\\frac{\\pi}{d}$입니다. $d$의 값은?",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       130,
+       26.1
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 60
+     },
+     {
+      "k": "text",
+      "p": [
+       114,
+       113
+      ],
+      "t": "60°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "$180^\\circ=\\pi$ 라디안이에요.",
+    "$\\frac{60}{180}\\pi$를 약분해 보세요."
+   ],
+   "explanation": "$\\frac{60}{180}\\pi=\\frac{\\pi}{3}$이므로 $d=3$입니다.",
+   "role": "core",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-2",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "$45^\\circ$를 라디안으로 나타내면 $\\frac{\\pi}{d}$입니다. $d$의 값은?",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       154.9,
+       45.1
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 45
+     },
+     {
+      "k": "text",
+      "p": [
+       117,
+       118
+      ],
+      "t": "45°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "$180^\\circ=\\pi$ 라디안이에요.",
+    "$\\frac{45}{180}\\pi$를 약분해 보세요."
+   ],
+   "explanation": "$\\frac{45}{180}\\pi=\\frac{\\pi}{4}$이므로 $d=4$입니다.",
+   "role": "core",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-3",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "$30^\\circ$를 라디안으로 나타내면 $\\frac{\\pi}{d}$입니다. $d$의 값은?",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       173.9,
+       70
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 30
+     },
+     {
+      "k": "text",
+      "p": [
+       119,
+       124
+      ],
+      "t": "30°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "$180^\\circ=\\pi$ 라디안이에요.",
+    "$\\frac{30}{180}\\pi$를 약분해 보세요."
+   ],
+   "explanation": "$\\frac{30}{180}\\pi=\\frac{\\pi}{6}$이므로 $d=6$입니다.",
+   "role": "core",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-4",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "반지름이 6, 중심각이 $\\frac{\\pi}{3}$인 부채꼴의 호의 길이는 $k\\pi$입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       90,
+       120,
+       160,
+       120,
+       159.9,
+       116.9,
+       159.7,
+       113.9,
+       159.4,
+       110.9,
+       158.9,
+       107.8,
+       158.3,
+       104.8,
+       157.6,
+       101.9,
+       156.8,
+       99,
+       155.8,
+       96.1,
+       154.7,
+       93.2,
+       153.4,
+       90.4,
+       152.1,
+       87.7,
+       150.6,
+       85,
+       149,
+       82.4,
+       147.3,
+       79.8,
+       145.5,
+       77.4,
+       143.6,
+       75,
+       141.6,
+       72.7,
+       139.5,
+       70.5,
+       137.3,
+       68.4,
+       135,
+       66.4,
+       132.6,
+       64.5,
+       130.2,
+       62.7,
+       127.6,
+       61,
+       125,
+       59.4
+      ],
+      "f": 1
+     },
+     {
+      "k": "arc",
+      "c": [
+       90,
+       120
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 60
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       138
+      ],
+      "t": "6"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "호의 길이는 $l=r\\theta$예요.",
+    "$r$에 $\\theta=\\frac{\\pi}{3}$를 곱해요."
+   ],
+   "explanation": "$l=6\\times\\frac{\\pi}{3}=2\\pi$이므로 $k=2$입니다.",
+   "role": "core",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-c",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "반지름이 6, 중심각이 $\\frac{\\pi}{3}$인 부채꼴의 넓이는 $k\\pi$입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       90,
+       120,
+       160,
+       120,
+       159.9,
+       116.9,
+       159.7,
+       113.9,
+       159.4,
+       110.9,
+       158.9,
+       107.8,
+       158.3,
+       104.8,
+       157.6,
+       101.9,
+       156.8,
+       99,
+       155.8,
+       96.1,
+       154.7,
+       93.2,
+       153.4,
+       90.4,
+       152.1,
+       87.7,
+       150.6,
+       85,
+       149,
+       82.4,
+       147.3,
+       79.8,
+       145.5,
+       77.4,
+       143.6,
+       75,
+       141.6,
+       72.7,
+       139.5,
+       70.5,
+       137.3,
+       68.4,
+       135,
+       66.4,
+       132.6,
+       64.5,
+       130.2,
+       62.7,
+       127.6,
+       61,
+       125,
+       59.4
+      ],
+      "f": 1
+     },
+     {
+      "k": "arc",
+      "c": [
+       90,
+       120
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 60
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       138
+      ],
+      "t": "6"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "부채꼴의 넓이는 $S=\\frac12r^2\\theta$예요.",
+    "$r^2$에 $\\theta$를 곱하고 $\\frac12$을 곱해요."
+   ],
+   "explanation": "$S=\\frac12\\times6^2\\times\\frac{\\pi}{3}=6\\pi$이므로 $k=6$입니다.",
+   "role": "core",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-v1",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "$90^\\circ$를 라디안으로 나타내면 $\\frac{\\pi}{d}$입니다. $d$의 값은?",
+   "figure": {
+    "w": 240,
+    "h": 160,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       190,
+       130
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       130,
+       70,
+       10
+      ]
+     },
+     {
+      "k": "arc",
+      "c": [
+       70,
+       130
+      ],
+      "r": 30,
+      "a0": 0,
+      "a1": 90
+     },
+     {
+      "k": "text",
+      "p": [
+       107,
+       104
+      ],
+      "t": "90°",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "$180^\\circ=\\pi$ 라디안이에요.",
+    "$\\frac{90}{180}\\pi$를 약분해 보세요."
+   ],
+   "explanation": "$\\frac{90}{180}\\pi=\\frac{\\pi}{2}$이므로 $d=2$입니다.",
+   "role": "variant",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h2-geo2-v2",
+   "site": "math",
+   "skillId": "m.h2.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "반지름이 8, 중심각이 $\\frac{\\pi}{4}$인 부채꼴의 호의 길이는 $k\\pi$입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       90,
+       120,
+       160,
+       120,
+       160,
+       117.7,
+       159.9,
+       115.4,
+       159.7,
+       113.1,
+       159.4,
+       110.9,
+       159.1,
+       108.6,
+       158.7,
+       106.3,
+       158.2,
+       104.1,
+       157.6,
+       101.9,
+       157,
+       99.7,
+       156.3,
+       97.5,
+       155.5,
+       95.3,
+       154.7,
+       93.2,
+       153.8,
+       91.1,
+       152.8,
+       89,
+       151.7,
+       87,
+       150.6,
+       85,
+       149.4,
+       83,
+       148.2,
+       81.1,
+       146.9,
+       79.2,
+       145.5,
+       77.4,
+       144.1,
+       75.6,
+       142.6,
+       73.8,
+       141.1,
+       72.1,
+       139.5,
+       70.5
+      ],
+      "f": 1
+     },
+     {
+      "k": "arc",
+      "c": [
+       90,
+       120
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 45
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       138
+      ],
+      "t": "8"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "호의 길이는 $l=r\\theta$예요.",
+    "$r$에 $\\theta=\\frac{\\pi}{4}$를 곱해요."
+   ],
+   "explanation": "$l=8\\times\\frac{\\pi}{4}=2\\pi$이므로 $k=2$입니다.",
+   "role": "variant",
+   "family": "h2-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-1",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "포물선 $y^2=12x$의 초점의 $x$좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       10,
+       85,
+       250,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       60,
+       160,
+       60,
+       10
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       180,
+       145,
+       157.2,
+       139
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       157.2,
+       139,
+       136.8,
+       133
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       136.8,
+       133,
+       118.8,
+       127
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       118.8,
+       127,
+       103.2,
+       121
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       103.2,
+       121,
+       90,
+       115
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       115,
+       79.2,
+       109
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       79.2,
+       109,
+       70.8,
+       103
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70.8,
+       103,
+       64.8,
+       97
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       64.8,
+       97,
+       61.2,
+       91
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       61.2,
+       91,
+       60,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60,
+       85,
+       61.2,
+       79
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       61.2,
+       79,
+       64.8,
+       73
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       64.8,
+       73,
+       70.8,
+       67
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70.8,
+       67,
+       79.2,
+       61
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       79.2,
+       61,
+       90,
+       55
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       55,
+       103.2,
+       49
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       103.2,
+       49,
+       118.8,
+       43
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       118.8,
+       43,
+       136.8,
+       37
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       136.8,
+       37,
+       157.2,
+       31
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       157.2,
+       31,
+       180,
+       25
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       85
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       105
+      ],
+      "t": "F",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       190,
+       30
+      ],
+      "t": "y²=12x"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 3
+   },
+   "hints": [
+    "$y^2=4px$의 초점은 $(p, 0)$이에요.",
+    "$4p=12$에서 $p$를 구해요."
+   ],
+   "explanation": "$4p=12$이므로 $p=3$입니다.",
+   "role": "core",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-2",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "포물선 $y^2=8x$의 초점의 $x$좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       10,
+       85,
+       250,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       60,
+       160,
+       60,
+       10
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       180,
+       145,
+       157.2,
+       139
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       157.2,
+       139,
+       136.8,
+       133
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       136.8,
+       133,
+       118.8,
+       127
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       118.8,
+       127,
+       103.2,
+       121
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       103.2,
+       121,
+       90,
+       115
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       115,
+       79.2,
+       109
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       79.2,
+       109,
+       70.8,
+       103
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70.8,
+       103,
+       64.8,
+       97
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       64.8,
+       97,
+       61.2,
+       91
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       61.2,
+       91,
+       60,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60,
+       85,
+       61.2,
+       79
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       61.2,
+       79,
+       64.8,
+       73
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       64.8,
+       73,
+       70.8,
+       67
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70.8,
+       67,
+       79.2,
+       61
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       79.2,
+       61,
+       90,
+       55
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       55,
+       103.2,
+       49
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       103.2,
+       49,
+       118.8,
+       43
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       118.8,
+       43,
+       136.8,
+       37
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       136.8,
+       37,
+       157.2,
+       31
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       157.2,
+       31,
+       180,
+       25
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       85
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       105
+      ],
+      "t": "F",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       190,
+       30
+      ],
+      "t": "y²=8x"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "$y^2=4px$의 초점은 $(p, 0)$이에요.",
+    "$4p=8$에서 $p$를 구해요."
+   ],
+   "explanation": "$4p=8$이므로 $p=2$입니다.",
+   "role": "core",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-3",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "타원 $\\frac{x^2}{25}+\\frac{y^2}{9}=1$의 두 초점은 $(\\pm c, 0)$입니다. $c$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       15,
+       85,
+       245,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       160,
+       130,
+       10
+      ],
+      "m": "a"
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       85
+      ],
+      "rx": 80,
+      "ry": 48
+     },
+     {
+      "k": "text",
+      "p": [
+       170,
+       100
+      ],
+      "t": "5"
+     },
+     {
+      "k": "text",
+      "p": [
+       138,
+       61
+      ],
+      "t": "3",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       194,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     },
+     {
+      "k": "circle",
+      "c": [
+       66,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 4
+   },
+   "hints": [
+    "타원에서 $c^2=a^2-b^2$이에요.",
+    "25에서 9를 빼고 제곱근을 구해요."
+   ],
+   "explanation": "$c^2=25-9=16$이므로 $c=4$입니다.",
+   "role": "core",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-4",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "쌍곡선 $\\frac{x^2}{9}-\\frac{y^2}{16}=1$의 두 초점은 $(\\pm c, 0)$입니다. $c$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       10,
+       85,
+       250,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       162,
+       130,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       246,
+       227.5,
+       226.8,
+       199.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       226.8,
+       199.3,
+       211.5,
+       175.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       211.5,
+       175.6,
+       199.4,
+       155.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       199.4,
+       155.5,
+       190.2,
+       138.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       190.2,
+       138.3,
+       183.3,
+       123.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       183.3,
+       123.2,
+       178.6,
+       109.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       178.6,
+       109.6,
+       175.9,
+       97.1
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       175.9,
+       97.1,
+       175,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       175,
+       85,
+       175.9,
+       72.9
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       175.9,
+       72.9,
+       178.6,
+       60.4
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       178.6,
+       60.4,
+       183.3,
+       46.8
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       183.3,
+       46.8,
+       190.2,
+       31.7
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       190.2,
+       31.7,
+       199.4,
+       14.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       199.4,
+       14.5,
+       211.5,
+       -5.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       211.5,
+       -5.6,
+       226.8,
+       -29.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       226.8,
+       -29.3,
+       246,
+       -57.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       14,
+       227.5,
+       33.2,
+       199.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       33.2,
+       199.3,
+       48.5,
+       175.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       48.5,
+       175.6,
+       60.6,
+       155.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60.6,
+       155.5,
+       69.8,
+       138.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       69.8,
+       138.3,
+       76.7,
+       123.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       76.7,
+       123.2,
+       81.4,
+       109.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       81.4,
+       109.6,
+       84.1,
+       97.1
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       84.1,
+       97.1,
+       85,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       85,
+       85,
+       84.1,
+       72.9
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       84.1,
+       72.9,
+       81.4,
+       60.4
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       81.4,
+       60.4,
+       76.7,
+       46.8
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       76.7,
+       46.8,
+       69.8,
+       31.7
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       69.8,
+       31.7,
+       60.6,
+       14.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60.6,
+       14.5,
+       48.5,
+       -5.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       48.5,
+       -5.6,
+       33.2,
+       -29.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       33.2,
+       -29.3,
+       14,
+       -57.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       218.3,
+       230,
+       -48.3
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       -48.3,
+       230,
+       218.3
+      ],
+      "d": true
+     },
+     {
+      "k": "circle",
+      "c": [
+       205,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     },
+     {
+      "k": "circle",
+      "c": [
+       55,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "쌍곡선에서 $c^2=a^2+b^2$이에요.",
+    "9와 16를 더하고 제곱근을 구해요."
+   ],
+   "explanation": "$c^2=9+16=25$이므로 $c=5$입니다.",
+   "role": "core",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-c",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "타원 $\\frac{x^2}{169}+\\frac{y^2}{144}=1$의 두 초점은 $(\\pm c, 0)$입니다. $c$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       15,
+       85,
+       245,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       160,
+       130,
+       10
+      ],
+      "m": "a"
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       85
+      ],
+      "rx": 80,
+      "ry": 74
+     },
+     {
+      "k": "text",
+      "p": [
+       170,
+       100
+      ],
+      "t": "13"
+     },
+     {
+      "k": "text",
+      "p": [
+       138,
+       48
+      ],
+      "t": "12",
+      "a": "s"
+     },
+     {
+      "k": "circle",
+      "c": [
+       160,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     },
+     {
+      "k": "circle",
+      "c": [
+       100,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "타원에서 $c^2=a^2-b^2$이에요.",
+    "169에서 144를 빼고 제곱근을 구해요."
+   ],
+   "explanation": "$c^2=169-144=25$이므로 $c=5$입니다.",
+   "role": "core",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-v1",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "포물선 $y^2=20x$의 초점의 $x$좌표는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       10,
+       85,
+       250,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       60,
+       160,
+       60,
+       10
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       180,
+       145,
+       157.2,
+       139
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       157.2,
+       139,
+       136.8,
+       133
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       136.8,
+       133,
+       118.8,
+       127
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       118.8,
+       127,
+       103.2,
+       121
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       103.2,
+       121,
+       90,
+       115
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       115,
+       79.2,
+       109
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       79.2,
+       109,
+       70.8,
+       103
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70.8,
+       103,
+       64.8,
+       97
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       64.8,
+       97,
+       61.2,
+       91
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       61.2,
+       91,
+       60,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60,
+       85,
+       61.2,
+       79
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       61.2,
+       79,
+       64.8,
+       73
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       64.8,
+       73,
+       70.8,
+       67
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70.8,
+       67,
+       79.2,
+       61
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       79.2,
+       61,
+       90,
+       55
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       90,
+       55,
+       103.2,
+       49
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       103.2,
+       49,
+       118.8,
+       43
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       118.8,
+       43,
+       136.8,
+       37
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       136.8,
+       37,
+       157.2,
+       31
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       157.2,
+       31,
+       180,
+       25
+      ]
+     },
+     {
+      "k": "circle",
+      "c": [
+       90,
+       85
+      ],
+      "r": 3.5,
+      "f": 3
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       105
+      ],
+      "t": "F",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       190,
+       30
+      ],
+      "t": "y²=20x"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "$y^2=4px$의 초점은 $(p, 0)$이에요.",
+    "$4p=20$에서 $p$를 구해요."
+   ],
+   "explanation": "$4p=20$이므로 $p=5$입니다.",
+   "role": "variant",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo1-v2",
+   "site": "math",
+   "skillId": "m.h3.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "쌍곡선 $\\frac{x^2}{36}-\\frac{y^2}{64}=1$의 두 초점은 $(\\pm c, 0)$입니다. $c$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       10,
+       85,
+       250,
+       85
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       162,
+       130,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       246,
+       227.5,
+       226.8,
+       199.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       226.8,
+       199.3,
+       211.5,
+       175.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       211.5,
+       175.6,
+       199.4,
+       155.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       199.4,
+       155.5,
+       190.2,
+       138.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       190.2,
+       138.3,
+       183.3,
+       123.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       183.3,
+       123.2,
+       178.6,
+       109.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       178.6,
+       109.6,
+       175.9,
+       97.1
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       175.9,
+       97.1,
+       175,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       175,
+       85,
+       175.9,
+       72.9
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       175.9,
+       72.9,
+       178.6,
+       60.4
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       178.6,
+       60.4,
+       183.3,
+       46.8
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       183.3,
+       46.8,
+       190.2,
+       31.7
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       190.2,
+       31.7,
+       199.4,
+       14.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       199.4,
+       14.5,
+       211.5,
+       -5.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       211.5,
+       -5.6,
+       226.8,
+       -29.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       226.8,
+       -29.3,
+       246,
+       -57.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       14,
+       227.5,
+       33.2,
+       199.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       33.2,
+       199.3,
+       48.5,
+       175.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       48.5,
+       175.6,
+       60.6,
+       155.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60.6,
+       155.5,
+       69.8,
+       138.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       69.8,
+       138.3,
+       76.7,
+       123.2
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       76.7,
+       123.2,
+       81.4,
+       109.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       81.4,
+       109.6,
+       84.1,
+       97.1
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       84.1,
+       97.1,
+       85,
+       85
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       85,
+       85,
+       84.1,
+       72.9
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       84.1,
+       72.9,
+       81.4,
+       60.4
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       81.4,
+       60.4,
+       76.7,
+       46.8
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       76.7,
+       46.8,
+       69.8,
+       31.7
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       69.8,
+       31.7,
+       60.6,
+       14.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       60.6,
+       14.5,
+       48.5,
+       -5.6
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       48.5,
+       -5.6,
+       33.2,
+       -29.3
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       33.2,
+       -29.3,
+       14,
+       -57.5
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       218.3,
+       230,
+       -48.3
+      ],
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       30,
+       -48.3,
+       230,
+       218.3
+      ],
+      "d": true
+     },
+     {
+      "k": "circle",
+      "c": [
+       205,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     },
+     {
+      "k": "circle",
+      "c": [
+       55,
+       85
+      ],
+      "r": 3,
+      "f": 3
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "쌍곡선에서 $c^2=a^2+b^2$이에요.",
+    "36와 64를 더하고 제곱근을 구해요."
+   ],
+   "explanation": "$c^2=36+64=100$이므로 $c=10$입니다.",
+   "role": "variant",
+   "family": "h3-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-1",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "벡터 $\\vec{a}=(3, 4)$의 크기 $|\\vec{a}|$는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       142,
+       112,
+       46
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       42
+      ],
+      "t": "a",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+    "성분을 각각 제곱해 더한 뒤 제곱근을 구해요."
+   ],
+   "explanation": "$\\sqrt{3^2+4^2}=\\sqrt{25}=5$입니다.",
+   "role": "core",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-2",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "벡터 $\\vec{a}=(1, 2)$, $\\vec{b}=(3, 4)$의 내적 $\\vec{a}\\cdot\\vec{b}$는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       142,
+       64,
+       94
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       72,
+       90
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       142,
+       112,
+       46
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       120,
+       42
+      ],
+      "t": "b",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 11
+   },
+   "hints": [
+    "내적은 $x_1x_2+y_1y_2$예요.",
+    "같은 위치의 성분끼리 곱해 더해요."
+   ],
+   "explanation": "$1\\times3+2\\times4=11$입니다.",
+   "role": "core",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-3",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "벡터 $\\vec{a}=(5, 12)$의 크기 $|\\vec{a}|$는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       142,
+       85.8,
+       32
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       94,
+       28
+      ],
+      "t": "a",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 13
+   },
+   "hints": [
+    "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+    "성분을 각각 제곱해 더한 뒤 제곱근을 구해요."
+   ],
+   "explanation": "$\\sqrt{5^2+12^2}=\\sqrt{169}=13$입니다.",
+   "role": "core",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-4",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "벡터 $\\vec{a}=(2, k)$와 $\\vec{b}=(3, -1)$가 서로 수직일 때, $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       126.3,
+       252,
+       126.3
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       140
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       126.3,
+       71.4,
+       32
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       79,
+       28
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       126.3,
+       87.1,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       95,
+       138
+      ],
+      "t": "b",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "두 벡터가 수직이면 내적이 $0$이에요.",
+    "$x_1x_2+ky_2=0$을 풀어요."
+   ],
+   "explanation": "$2\\times3+k\\times(-1)=0$이므로 $k=6$입니다.",
+   "role": "core",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-c",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 5,
+   "prompt": "벡터 $\\vec{a}=(2, -3)$, $\\vec{b}=(4, 1)$의 내적 $\\vec{a}\\cdot\\vec{b}$는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       70,
+       252,
+       70
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       84
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       70,
+       88,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       96,
+       138
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       70,
+       136,
+       46
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       144,
+       42
+      ],
+      "t": "b",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 5
+   },
+   "hints": [
+    "내적은 $x_1x_2+y_1y_2$예요.",
+    "같은 위치의 성분끼리 곱해 더해요."
+   ],
+   "explanation": "$2\\times4+-3\\times1=5$입니다.",
+   "role": "core",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-v1",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "벡터 $\\vec{a}=(8, 6)$의 크기 $|\\vec{a}|$는?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       142,
+       252,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       156
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       142,
+       186.7,
+       32
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       195,
+       28
+      ],
+      "t": "a",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 10
+   },
+   "hints": [
+    "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+    "성분을 각각 제곱해 더한 뒤 제곱근을 구해요."
+   ],
+   "explanation": "$\\sqrt{8^2+6^2}=\\sqrt{100}=10$입니다.",
+   "role": "variant",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-h3-geo2-v2",
+   "site": "math",
+   "skillId": "m.h3.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "벡터 $\\vec{a}=(4, k)$와 $\\vec{b}=(1, 2)$가 서로 수직일 때, $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       8,
+       94,
+       252,
+       94
+      ],
+      "m": "a"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       162,
+       40,
+       8
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       32,
+       108
+      ],
+      "t": "O",
+      "a": "e"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       94,
+       136,
+       142
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       144,
+       138
+      ],
+      "t": "a",
+      "a": "s"
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       94,
+       64,
+       46
+      ],
+      "m": "a"
+     },
+     {
+      "k": "text",
+      "p": [
+       72,
+       42
+      ],
+      "t": "b",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": -2
+   },
+   "hints": [
+    "두 벡터가 수직이면 내적이 $0$이에요.",
+    "$x_1x_2+ky_2=0$을 풀어요."
+   ],
+   "explanation": "$4\\times1+k\\times(2)=0$이므로 $k=-2$입니다.",
+   "role": "variant",
+   "family": "h3-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
    ],
    "status": "PUBLISHED"
   }

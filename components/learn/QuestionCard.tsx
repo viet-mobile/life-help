@@ -1,5 +1,6 @@
 "use client";
 
+import { FigureView } from "./FigureView";
 import { useMemo, useRef, useState } from "react";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
 import { ApiError, useLearner } from "./LearnerProvider";
@@ -129,6 +130,7 @@ export function QuestionCard({
 
       <div className="l-card l-stack">
         <div className="l-qprompt"><RichText text={q.prompt} /></div>
+        {q.figure && <FigureView figure={q.figure} label={t("figure.alt")} />}
         {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} meaningPending={!resolved} />}
         {q.latex && <MathBlock latex={q.latex} />}
         {q.target ? <TargetBlock target={q.target} audioText={q.audioText} /> : q.audioText && <ListenButton text={q.audioText} />}

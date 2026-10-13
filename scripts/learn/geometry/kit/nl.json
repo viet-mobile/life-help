@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Hoe heet deze vorm?",
+      "hints": [
+        "Tel de zijden en de hoeken.",
+        "Kijk of de vorm rechte zijden heeft of rond is."
+      ],
+      "expl": "Deze vorm heet een {name}."
+    },
+    "nameSolid": {
+      "prompt": "Hoe heet dit ruimtelijke figuur?",
+      "hints": [
+        "Is het aan alle kanten rond?",
+        "Tel de platte vlakken."
+      ],
+      "expl": "Dit ruimtelijke figuur is een {name}."
+    },
+    "countOf": {
+      "prompt": "Hoeveel {shape} zijn er op de afbeelding?",
+      "hints": [
+        "Markeer elk figuur terwijl je telt.",
+        "Let op dat je hetzelfde figuur niet twee keer telt."
+      ],
+      "expl": "Er zijn {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Hoeveel hoekpunten heeft deze vorm?",
+      "hints": [
+        "Een hoekpunt is een punt waar twee zijden samenkomen.",
+        "Tel de scherpe hoeken een voor een."
+      ],
+      "expl": "Het heeft {ans} hoekpunten."
+    },
+    "countSides": {
+      "prompt": "Hoeveel zijden heeft deze vorm?",
+      "hints": [
+        "Een zijde is een rechte rand van de vorm.",
+        "Loop langs de vorm en tel de zijden."
+      ],
+      "expl": "Het heeft {ans} zijden."
+    },
+    "rulerRead": {
+      "prompt": "Meet met de liniaal de lengte van de lijn. (cm)",
+      "hints": [
+        "Zoek waar de lijn begint en waar hij eindigt.",
+        "Trek het beginstreepje af van het eindstreepje."
+      ],
+      "expl": "De lijn loopt van {from} tot {to}, dus de lengte is {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Hoeveel cm langer is de bovenste lijn dan de onderste lijn? (cm)",
+      "hints": [
+        "Lees eerst beide lengtes af.",
+        "Trek de kortere lengte af van de langere."
+      ],
+      "expl": "{a}-{b}={ans}, dus hij is {ans} cm langer."
+    },
+    "rightAngles": {
+      "prompt": "Hoeveel rechte hoeken heeft deze vorm?",
+      "hints": [
+        "Een rechte hoek lijkt op de hoek van een vierkant.",
+        "Controleer elke hoek een voor een."
+      ],
+      "expl": "Het heeft {ans} rechte hoeken."
+    },
+    "clockMinutes": {
+      "prompt": "De klok wijst {h} uur en een aantal minuten aan. Hoeveel minuten? (min)",
+      "hints": [
+        "Vermenigvuldig het getal waar de grote wijzer naar wijst met 5.",
+        "Als de grote wijzer naar 6 wijst, is het 30 minuten."
+      ],
+      "expl": "De grote wijzer wijst naar {n}, dus ${n}\\times5={ans}$ minuten."
+    },
+    "mToCm": {
+      "prompt": "Hoeveel cm is {m} m {c} cm? (cm)",
+      "hints": [
+        "1 m is 100 cm.",
+        "Reken de m om naar cm en tel de resterende cm erbij op."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, dus het is {ans} cm."
+    },
+    "triType": {
+      "prompt": "Wat voor driehoek heeft de getoonde zijden?",
+      "hints": [
+        "Vergelijk de drie zijden.",
+        "Twee gelijke zijden: gelijkbenig. Drie gelijke zijden: gelijkzijdig."
+      ],
+      "expl": "Deze driehoek is een {name}."
+    },
+    "congruentCond": {
+      "prompt": "De twee driehoeken zijn congruent. Welk congruentiekenmerk is van toepassing?",
+      "hints": [
+        "Zoek welke zijden gelijk zijn en welke hoeken gelijk zijn.",
+        "Alleen zijden: ZZZ. Twee zijden en de ingesloten hoek: ZHZ. Een zijde en de twee hoeken aan de uiteinden: HZH."
+      ],
+      "expl": "De gelijke delen in de afbeelding zijn: {cond}. Dit is dus het gebruikte kenmerk."
+    },
+    "circleDiameter": {
+      "prompt": "De straal van een cirkel is {r} cm. Wat is de diameter? (cm)",
+      "hints": [
+        "De diameter is het langste lijnstuk door het middelpunt.",
+        "De diameter is twee keer de straal."
+      ],
+      "expl": "{r}×2={ans}, dus de diameter is {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "De diameter van een cirkel is {d} cm. Wat is de straal? (cm)",
+      "hints": [
+        "De straal loopt van het middelpunt naar de cirkel.",
+        "De straal is de helft van de diameter."
+      ],
+      "expl": "{d}÷2={ans}, dus de straal is {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Wat voor hoek is ${a}^\\circ$?",
+      "hints": [
+        "Een rechte hoek is $90^\\circ$.",
+        "Kleiner dan $90^\\circ$ is scherp; groter is stomp."
+      ],
+      "expl": "${a}^\\circ$ heet een {name}."
+    },
+    "angleThird": {
+      "prompt": "Twee hoeken van een driehoek zijn ${a}^\\circ$ en ${b}^\\circ$. Hoe groot is de derde hoek? (graden)",
+      "hints": [
+        "De drie hoeken van een driehoek zijn samen $180^\\circ$.",
+        "Trek de twee bekende hoeken af van $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, dus de derde hoek is ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Drie hoeken van een vierhoek zijn ${a}^\\circ$, ${b}^\\circ$ en ${c}^\\circ$. Hoe groot is de vierde hoek? (graden)",
+      "hints": [
+        "De vier hoeken van een vierhoek zijn samen $360^\\circ$.",
+        "Trek de drie bekende hoeken af van $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, dus de vierde hoek is ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Hoe heet deze vierhoek?",
+      "hints": [
+        "Kijk of overstaande zijden evenwijdig zijn.",
+        "Kijk ook of alle zijden en hoeken gelijk zijn."
+      ],
+      "expl": "Deze vierhoek is een {name}."
+    },
+    "diagonals": {
+      "prompt": "Hoeveel diagonalen heeft deze vorm?",
+      "hints": [
+        "Een diagonaal verbindt twee hoekpunten die niet naast elkaar liggen.",
+        "Tel eerst de diagonalen vanuit een hoekpunt."
+      ],
+      "expl": "Het heeft {ans} diagonalen."
+    },
+    "perimeterRect": {
+      "prompt": "Wat is de omtrek van de rechthoek? (cm)",
+      "hints": [
+        "De omtrek is de afstand rondom de vorm.",
+        "Tel de breedte en de hoogte op en verdubbel het."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, dus de omtrek is {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Wat is de oppervlakte van de rechthoek? (cm²)",
+      "hints": [
+        "De oppervlakte van een rechthoek is breedte × hoogte.",
+        "Vermenigvuldig de twee getoonde lengtes."
+      ],
+      "expl": "${w}\\times{h}={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Een vierkant heeft zijden van {s} cm. Wat is de oppervlakte? (cm²)",
+      "hints": [
+        "Alle vier de zijden van een vierkant zijn gelijk.",
+        "Vermenigvuldig de zijde met zichzelf."
+      ],
+      "expl": "${s}\\times{s}={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Een driehoek heeft een basis van {b} cm en een hoogte van {h} cm. Wat is de oppervlakte? (cm²)",
+      "hints": [
+        "De oppervlakte van een driehoek is basis × hoogte ÷ 2.",
+        "De hoogte wordt loodrecht op de basis gemeten."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Een parallellogram heeft een basis van {b} cm en een hoogte van {h} cm. Wat is de oppervlakte? (cm²)",
+      "hints": [
+        "De oppervlakte van een parallellogram is basis × hoogte.",
+        "Gebruik de hoogte, niet de schuine zijde."
+      ],
+      "expl": "${b}\\times{h}={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Een trapezium heeft een bovenkant van {a} cm, een onderkant van {b} cm en een hoogte van {h} cm. Wat is de oppervlakte? (cm²)",
+      "hints": [
+        "De oppervlakte van een trapezium is (boven + onder) × hoogte ÷ 2.",
+        "Tel eerst de bovenkant en de onderkant op."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "De diagonalen van een ruit zijn {d1} cm en {d2} cm. Wat is de oppervlakte? (cm²)",
+      "hints": [
+        "De oppervlakte van een ruit is de ene diagonaal × de andere diagonaal ÷ 2.",
+        "Vermenigvuldig de diagonalen en deel door 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Hoeveel symmetrieassen heeft deze vorm?",
+      "hints": [
+        "Een symmetrieas vouwt de vorm in twee gelijke helften.",
+        "Probeer te vouwen horizontaal, verticaal en diagonaal."
+      ],
+      "expl": "Het heeft {ans} symmetrieassen."
+    },
+    "congruentSide": {
+      "prompt": "De twee driehoeken zijn congruent. Hoe lang is zijde $x$? (cm)",
+      "hints": [
+        "Congruente figuren hebben dezelfde vorm en grootte.",
+        "Overeenkomstige zijden zijn even lang."
+      ],
+      "expl": "Overeenkomstige zijden zijn gelijk, dus $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Hoeveel {item} heeft een balk?",
+      "hints": [
+        "Stel je een doos voor.",
+        "Kijk naar boven, onder, voor, achter en beide zijkanten."
+      ],
+      "expl": "Een balk heeft {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Een balk is {l} cm lang, {w} cm breed en {h} cm hoog. Wat is de inhoud? (cm³)",
+      "hints": [
+        "De inhoud van een balk is lengte × breedte × hoogte.",
+        "Vermenigvuldig de drie lengtes."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, dus de inhoud is {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Een kubus heeft ribben van {e} cm. Wat is de inhoud? (cm³)",
+      "hints": [
+        "Alle ribben van een kubus zijn gelijk.",
+        "Vermenigvuldig de ribbe drie keer met zichzelf."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, dus de inhoud is {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Een balk is {l} cm lang, {w} cm breed en {h} cm hoog. Wat is de oppervlakte? (cm²)",
+      "hints": [
+        "De oppervlakte is de som van de zes zijvlakken.",
+        "Overstaande vlakken zijn gelijk: (lb + bh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Een balk is {l} cm lang, {w} cm breed en {h} cm hoog. Wat is de totale lengte van alle ribben? (cm)",
+      "hints": [
+        "Een balk heeft 12 ribben.",
+        "Er zijn 4 ribben van elk: lengte, breedte en hoogte."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, dus het totaal is {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Een cirkel heeft straal {r} cm. Wat is de omtrek? (gebruik $\\pi=3.14$) (cm)",
+      "hints": [
+        "Omtrek = diameter × π.",
+        "De diameter is twee keer de straal."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, dus de omtrek is {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Een cirkel heeft straal {r} cm. Wat is de oppervlakte? (gebruik $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Oppervlakte = straal × straal × π.",
+        "Vermenigvuldig de straal met zichzelf en daarna met 3,14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, dus de oppervlakte is {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Hoeveel vlakken heeft een prisma met een grondvlak met {n} zijden?",
+      "hints": [
+        "Een prisma heeft 2 grondvlakken en een aantal zijvlakken.",
+        "Het aantal zijvlakken is gelijk aan het aantal zijden van het grondvlak."
+      ],
+      "expl": "{n} zijvlakken plus 2 grondvlakken is {ans} vlakken."
+    },
+    "adjacentAngle": {
+      "prompt": "Op een rechte lijn is een hoek ${a}^\\circ$. Hoe groot is de nevenhoek? (graden)",
+      "hints": [
+        "Hoeken op een rechte lijn zijn samen $180^\\circ$.",
+        "Trek de bekende hoek af van $180$."
+      ],
+      "expl": "$180-{a}={ans}$, dus het is ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Twee lijnen snijden elkaar en een hoek is ${a}^\\circ$. Hoe groot is de overstaande hoek? (graden)",
+      "hints": [
+        "Overstaande hoeken liggen tegenover elkaar.",
+        "Ze zijn even groot."
+      ],
+      "expl": "Overstaande hoeken zijn gelijk, dus het is ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Twee evenwijdige lijnen $l$ en $m$ worden gesneden door een snijlijn. Een hoek is ${a}^\\circ$. Hoe groot is $x$? (graden)",
+      "hints": [
+        "F-hoeken bij evenwijdige lijnen zijn gelijk.",
+        "Z-hoeken zijn ook gelijk."
+      ],
+      "expl": "F-hoeken (Z-hoeken) bij evenwijdige lijnen zijn gelijk, dus $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Wat is de som van de hoeken van een veelhoek met {n} zijden? (graden)",
+      "hints": [
+        "Een veelhoek met {n} zijden is op te delen in {m} driehoeken.",
+        "Elke driehoek heeft hoekensom $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, dus de som is ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Hoe groot is een hoek van een regelmatige veelhoek met {n} zijden? (graden)",
+      "hints": [
+        "Zoek eerst de som: $180\\times({n}-2)$.",
+        "Deel de som door het aantal zijden {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, dus elke hoek is ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Een cirkelsector heeft straal {r} cm en middelpuntshoek ${a}^\\circ$. De booglengte is $k\\pi$ cm. Wat is $k$?",
+      "hints": [
+        "De booglengte is $2\\pi r\\times\\frac{a}{360}$.",
+        "Zoek eerst welk deel van de hele cirkel de hoek is."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, dus $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Een cirkelsector heeft straal {r} cm en middelpuntshoek ${a}^\\circ$. De oppervlakte is $k\\pi$ cm². Wat is $k$?",
+      "hints": [
+        "De oppervlakte van een sector is $\\pi r^2\\times\\frac{a}{360}$.",
+        "Vermenigvuldig de oppervlakte van de cirkel met het deel dat de hoek is."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, dus $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Een cilinder heeft grondvlakstraal {r} cm en hoogte {h} cm. De inhoud is $k\\pi$ cm³. Wat is $k$?",
+      "hints": [
+        "Inhoud = oppervlakte grondvlak × hoogte.",
+        "De oppervlakte van het grondvlak is $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, dus $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Een kegel heeft grondvlakstraal {r} cm en hoogte {h} cm. De inhoud is $k\\pi$ cm³. Wat is $k$?",
+      "hints": [
+        "Inhoud = oppervlakte grondvlak × hoogte ÷ 3.",
+        "De oppervlakte van het grondvlak is $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, dus $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Een bol heeft straal {r} cm. De inhoud is $k\\pi$ cm³. Wat is $k$?",
+      "hints": [
+        "De inhoud van een bol is $\\frac{4}{3}\\pi r^3$.",
+        "Neem de derde macht van de straal en vermenigvuldig met $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, dus $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Een bol heeft straal {r} cm. De oppervlakte is $k\\pi$ cm². Wat is $k$?",
+      "hints": [
+        "De oppervlakte van een bol is $4\\pi r^2$.",
+        "Kwadrateer de straal en vermenigvuldig met 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, dus $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Een cilinder heeft grondvlakstraal {r} cm en hoogte {h} cm. De oppervlakte is $k\\pi$ cm². Wat is $k$?",
+      "hints": [
+        "Oppervlakte = 2 × grondvlak + mantel.",
+        "De mantel is (omtrek) × hoogte $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, dus $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Een basishoek van een gelijkbenige driehoek is ${b}^\\circ$. Hoe groot is de tophoek? (graden)",
+      "hints": [
+        "De twee basishoeken van een gelijkbenige driehoek zijn gelijk.",
+        "Trek beide basishoeken af van $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, dus de tophoek is ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "In parallellogram ABCD is $\\angle A={a}^\\circ$. Hoe groot is $\\angle B$? (graden)",
+      "hints": [
+        "Aanliggende hoeken van een parallellogram zijn samen $180^\\circ$.",
+        "Trek $\\angle A$ af van $180$."
+      ],
+      "expl": "$180-{a}={ans}$, dus $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "In een driehoek verbindt lijnstuk $x$ de middens van twee zijden en is evenwijdig aan de derde zijde van {s} cm. Hoe lang is $x$? (cm)",
+      "hints": [
+        "Het lijnstuk tussen twee middens is de helft van de derde zijde.",
+        "Deel {s} door 2."
+      ],
+      "expl": "${s}\\div2={ans}$, dus $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "De twee driehoeken zijn gelijkvormig. Hoe lang is zijde $x$? (cm)",
+      "hints": [
+        "Bij gelijkvormige figuren zijn de verhoudingen van overeenkomstige zijden gelijk.",
+        "Zoek eerst de vergrotingsfactor."
+      ],
+      "expl": "De verhouding is ${p}:{q}$, dus $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Twee gelijkvormige figuren hebben vergrotingsfactor ${p}:{q}$. De kleinste heeft oppervlakte {s} cm². Wat is de oppervlakte van de grootste? (cm²)",
+      "hints": [
+        "De verhouding van de oppervlaktes is het kwadraat van de vergrotingsfactor.",
+        "Vermenigvuldig de kleinste oppervlakte met $({q}/{p})^2$."
+      ],
+      "expl": "De oppervlakteverhouding is ${p2}:{q2}$, dus ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "De twee kortste zijden van een rechthoekige driehoek zijn {a} cm en {b} cm. Hoe lang is de langste zijde $x$? (cm)",
+      "hints": [
+        "Stelling van Pythagoras: $a^2+b^2=c^2$.",
+        "Kwadrateer beide zijden, tel ze op en neem de wortel."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, dus $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Een rechthoekige driehoek heeft schuine zijde {c} cm en een rechthoekszijde {a} cm. Hoe lang is de andere rechthoekszijde $x$? (cm)",
+      "hints": [
+        "Uit $a^2+x^2=c^2$ volgt $x^2=c^2-a^2$.",
+        "Neem de wortel van $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, dus $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Een driehoek heeft zijden van {a} cm, {b} cm en {c} cm. Is het een rechthoekige driehoek?",
+      "hints": [
+        "Neem de langste zijde als schuine zijde en vergelijk $a^2+b^2$ met $c^2$.",
+        "Als ze gelijk zijn, is het een rechthoekige driehoek."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ en ${c}^2={s2}$, dus {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Wat is $\\{fn} A$ in de rechthoekige driehoek? (schrijf een decimaal getal)",
+      "hints": [
+        "$\\sin A$ = overstaande ÷ schuine zijde, $\\cos A$ = aanliggende ÷ schuine zijde, $\\tan A$ = overstaande ÷ aanliggende.",
+        "Bepaal de overstaande en aanliggende zijde vanuit hoek $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Wat is $\\{fn}\\ {a}^\\circ$? (schrijf een decimaal getal)",
+      "hints": [
+        "Onthoud de waarden voor $30^\\circ$, $45^\\circ$ en $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "In een rechthoekige driehoek is $\\tan A={t}$ en de aanliggende zijde is {adj}. Hoe lang is de overstaande zijde $x$?",
+      "hints": [
+        "$\\tan A$ = overstaande ÷ aanliggende.",
+        "Overstaande $=\\tan A\\times$ aanliggende."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "De middelpuntshoek op boog AB is ${c}^\\circ$. Hoe groot is de omtrekshoek op dezelfde boog? (graden)",
+      "hints": [
+        "Een omtrekshoek is de helft van de middelpuntshoek op dezelfde boog.",
+        "Deel de middelpuntshoek door 2."
+      ],
+      "expl": "${c}\\div2={ans}$, dus de omtrekshoek is ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Vanuit een punt P buiten cirkel O raakt een raaklijn de cirkel in A. $PO={po}$ en de straal is {r}. Hoe lang is $PA$?",
+      "hints": [
+        "Een raaklijn staat loodrecht op de straal, dus driehoek OAP is rechthoekig.",
+        "Gebruik $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, dus $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Een cirkel heeft straal {r}. Een koorde ligt op afstand {d} van het middelpunt. Hoe lang is de koorde?",
+      "hints": [
+        "De loodlijn vanuit het middelpunt halveert de koorde.",
+        "De halve koorde is $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "De halve koorde is $\\sqrt{{r}^2-{d}^2}={half}$, dus de koorde is ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Een vierhoek is ingeschreven in een cirkel en een hoek is ${a}^\\circ$. Hoe groot is de overstaande hoek? (graden)",
+      "hints": [
+        "Overstaande hoeken van een koordenvierhoek zijn samen $180^\\circ$.",
+        "Trek de gegeven hoek af van $180$."
+      ],
+      "expl": "$180-{a}={ans}$, dus het is ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Wat is de afstand tussen de punten A({x1}, {y1}) en B({x2}, {y2}) in het assenstelsel?",
+      "hints": [
+        "De afstand is $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kwadrateer het horizontale en verticale verschil en tel ze op."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Wat is de ${axis}$-coördinaat van het midden van lijnstuk AB met A({x1}, {y1}) en B({x2}, {y2})?",
+      "hints": [
+        "Het midden is het gemiddelde van de coördinaten.",
+        "Tel de bijbehorende coördinaten op en deel door 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Wat is de richtingscoëfficiënt van de lijn door A({x1}, {y1}) en B({x2}, {y2})?",
+      "hints": [
+        "Richtingscoëfficiënt = (verandering van $y$) ÷ (verandering van $x$).",
+        "Bereken $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Wat is de straal van de cirkel $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$ is het rechterlid $r^2$.",
+        "Neem de wortel van {r2}."
+      ],
+      "expl": "$r^2={r2}$, dus $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "De cirkel $(x-{a})^2+(y-{b})^2={r2}$ heeft middelpunt $(p, q)$. Wat is $p+q$?",
+      "hints": [
+        "Het middelpunt is $(p, q)$.",
+        "Lees $p$ en $q$ af uit $x-p$ en $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Wat is de afstand van de oorsprong tot de lijn ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "De afstand van een punt tot een lijn is $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Voor de oorsprong is $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "In driehoek ABC is $a={a}$ en $\\angle A={A}^\\circ$. Wat is de straal $R$ van de omgeschreven cirkel?",
+      "hints": [
+        "Sinusregel: $\\frac{a}{\\sin A}=2R$.",
+        "Gebruik de waarde van $\\sin {A}^\\circ$ om $R$ te vinden."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "In driehoek ABC is $a={a}$, $b={b}$ en $\\angle C={C}^\\circ$. Wat is $c$?",
+      "hints": [
+        "Cosinusregel: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Vul de waarde van $\\cos {C}^\\circ$ in."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, dus $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "In driehoek ABC is $a={a}$, $b={b}$ en $\\angle C={C}^\\circ$. Wat is de oppervlakte?",
+      "hints": [
+        "Oppervlakte $=\\frac12ab\\sin C$.",
+        "Vul de waarde van $\\sin {C}^\\circ$ in."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ is gelijk aan $\\frac{\\pi}{d}$ radialen. Wat is $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ radialen.",
+        "Vereenvoudig $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, dus $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Een sector heeft straal {r} en middelpuntshoek $\\frac{\\pi}{{d}}$. De booglengte is $k\\pi$. Wat is $k$?",
+      "hints": [
+        "De booglengte is $l=r\\theta$.",
+        "Vermenigvuldig $r$ met $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, dus $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Een sector heeft straal {r} en middelpuntshoek $\\frac{\\pi}{{d}}$. De oppervlakte is $k\\pi$. Wat is $k$?",
+      "hints": [
+        "De oppervlakte van een sector is $S=\\frac12r^2\\theta$.",
+        "Vermenigvuldig $r^2$ met $\\theta$ en daarna met $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, dus $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Wat is de $x$-coördinaat van het brandpunt van de parabool $y^2={k}x$?",
+      "hints": [
+        "Het brandpunt van $y^2=4px$ is $(p, 0)$.",
+        "Los $4p={k}$ op naar $p$."
+      ],
+      "expl": "$4p={k}$, dus $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "De ellips $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ heeft brandpunten $(\\pm c, 0)$. Wat is $c$?",
+      "hints": [
+        "Voor een ellips is $c^2=a^2-b^2$.",
+        "Trek {b2} af van {a2} en neem de wortel."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, dus $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "De hyperbool $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ heeft brandpunten $(\\pm c, 0)$. Wat is $c$?",
+      "hints": [
+        "Voor een hyperbool is $c^2=a^2+b^2$.",
+        "Tel {a2} en {b2} op en neem de wortel."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, dus $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Wat is de lengte $|\\vec{a}|$ van de vector $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kwadrateer elke component, tel op en neem de wortel."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Wat is het inproduct $\\vec{a}\\cdot\\vec{b}$ van $\\vec{a}=({x1}, {y1})$ en $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "Het inproduct is $x_1x_2+y_1y_2$.",
+        "Vermenigvuldig de bijbehorende componenten en tel op."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "De vectoren $\\vec{a}=({x1}, k)$ en $\\vec{b}=({x2}, {y2})$ staan loodrecht op elkaar. Wat is $k$?",
+      "hints": [
+        "Loodrechte vectoren hebben inproduct $0$.",
+        "Los $x_1x_2+ky_2=0$ op."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, dus $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "driehoek",
+    "quad": "vierhoek",
+    "circ": "cirkel",
+    "pent": "vijfhoek",
+    "hex": "zeshoek",
+    "rect": "rechthoek",
+    "square": "vierkant",
+    "trap": "trapezium",
+    "para": "parallellogram",
+    "rhom": "ruit",
+    "cube": "kubus",
+    "cuboid": "balk (doosvorm)",
+    "cyl": "cilinder",
+    "sph": "bol",
+    "cone": "kegel",
+    "acute": "scherpe hoek",
+    "right": "rechte hoek",
+    "obtuse": "stompe hoek",
+    "faces": "vlakken",
+    "edges": "ribben",
+    "vertices": "hoekpunten",
+    "triP": "driehoeken",
+    "squareP": "vierkanten",
+    "circP": "cirkels",
+    "iso": "gelijkbenige driehoek",
+    "equi": "gelijkzijdige driehoek",
+    "rtri": "rechthoekige driehoek",
+    "sss": "Drie paar zijden zijn gelijk (ZZZ)",
+    "sas": "Twee zijden en de ingesloten hoek zijn gelijk (ZHZ)",
+    "asa": "Een zijde en de twee hoeken aan de uiteinden zijn gelijk (HZH)",
+    "yes": "Ja, het is een rechthoekige driehoek",
+    "no": "Nee, het is geen rechthoekige driehoek"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Namen van vormen en hoeken",
+      "concept": "Een **driehoek** heeft 3 zijden en een **vierhoek** heeft 4 zijden. Een **cirkel** is rond en heeft geen hoeken.",
+      "example": "Driehoek: 3 zijden, 3 hoeken"
+    },
+    "E12": {
+      "title": "Ruimtelijke figuren",
+      "concept": "Een doosvorm is een **balk**, een ronde zuil is een **cilinder** en een bal is een **bol**.",
+      "example": "balk · cilinder · bol"
+    },
+    "E21": {
+      "title": "Driehoeken en vierhoeken",
+      "concept": "Een **driehoek** heeft 3 rechte zijden en 3 hoeken; een **vierhoek** heeft 4 rechte zijden en 4 hoeken, welke vorm hij ook heeft. Het aantal zijden is gelijk aan het aantal hoeken.",
+      "example": "Vierhoek: 4 zijden, 4 hoeken"
+    },
+    "E22": {
+      "title": "Lengte en tijd",
+      "concept": "Leg het ene uiteinde op 0 van de liniaal; het streepje bij het andere uiteinde is de lengte. $1\\text{ m}=100\\text{ cm}$. Vermenigvuldig het getal waar de grote wijzer naar wijst met 5 om de minuten te krijgen.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Hoeken en rechte hoeken",
+      "concept": "Twee halflijnen vanuit een punt vormen een **hoek**. Een hoek van $90^\\circ$ is een **rechte hoek**; kleiner is **scherp**, groter is **stomp**.",
+      "example": "$30^\\circ$ scherp · $90^\\circ$ recht · $120^\\circ$ stomp"
+    },
+    "E32": {
+      "title": "Straal en diameter",
+      "concept": "De **straal** loopt van het middelpunt naar de cirkel; de **diameter** gaat door het middelpunt. De diameter is twee keer de straal.",
+      "example": "Straal 5 cm → diameter 10 cm"
+    },
+    "E41": {
+      "title": "Hoekensommen",
+      "concept": "De drie hoeken van een driehoek zijn samen $180^\\circ$ en de vier hoeken van een vierhoek zijn samen $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Vierhoeken en veelhoeken",
+      "concept": "Een paar evenwijdige zijden maakt een **trapezium**, twee paren een **parallellogram** en vier gelijke zijden een **ruit**. Een **diagonaal** verbindt twee hoekpunten die geen buren zijn.",
+      "example": "Een vierhoek heeft 2 diagonalen"
+    },
+    "E51": {
+      "title": "Omtrek en oppervlakte",
+      "concept": "Rechthoek: breedte × hoogte. Driehoek: basis × hoogte ÷ 2. Parallellogram: basis × hoogte. Trapezium: (boven + onder) × hoogte ÷ 2. Ruit: diagonaal × diagonaal ÷ 2.",
+      "example": "Driehoek met basis 10, hoogte 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Congruentie en symmetrie",
+      "concept": "Twee vormen die precies op elkaar passen zijn **congruent**. Een vorm die langs een lijn op zichzelf valt is **symmetrisch**; die lijn is de **symmetrieas**.",
+      "example": "Een vierkant heeft 4 symmetrieassen"
+    },
+    "E61": {
+      "title": "Omtrek en oppervlakte van een cirkel",
+      "concept": "Omtrek = diameter × π, oppervlakte = straal × straal × π, met π ≈ $3.14$.",
+      "example": "Straal 5 cm → omtrek $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Balken en kubussen",
+      "concept": "Inhoud = lengte × breedte × hoogte; oppervlakte = (som van drie vlakken) × 2. Een balk heeft 6 vlakken, 12 ribben en 8 hoekpunten.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Hoekregels en veelhoeken",
+      "concept": "Overstaande hoeken zijn gelijk; F-hoeken en Z-hoeken bij evenwijdige lijnen zijn gelijk. De hoeken van een veelhoek met $n$ zijden zijn samen $180^\\circ\\times(n-2)$.",
+      "example": "Vijfhoek: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Sectoren en ruimtelijke figuren",
+      "concept": "Booglengte $=2\\pi r\\times\\frac{a}{360}$, oppervlakte sector $=\\pi r^2\\times\\frac{a}{360}$, inhoud bol $=\\frac43\\pi r^3$, inhoud kegel $=\\frac13\\pi r^2h$.",
+      "example": "Bol $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Driehoeken en vierhoeken",
+      "concept": "De basishoeken van een gelijkbenige driehoek zijn gelijk. Aanliggende hoeken van een parallellogram zijn samen $180^\\circ$ en het lijnstuk tussen de middens van twee zijden van een driehoek is de helft van de derde zijde.",
+      "example": "Basishoek $50^\\circ$ → tophoek $80^\\circ$"
+    },
+    "M22": {
+      "title": "Gelijkvormigheid en de stelling van Pythagoras",
+      "concept": "Gelijkvormige figuren hebben gelijke verhoudingen van zijden en hun oppervlaktes verhouden zich als het kwadraat van die verhouding. In een rechthoekige driehoek geldt $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Goniometrische verhoudingen",
+      "concept": "In een rechthoekige driehoek is: $\\sin A$ = overstaande rechthoekszijde ÷ schuine zijde, $\\cos A$ = aanliggende rechthoekszijde ÷ schuine zijde, $\\tan A$ = overstaande rechthoekszijde ÷ aanliggende rechthoekszijde.",
+      "example": "3-4-5-driehoek: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Eigenschappen van cirkels",
+      "concept": "Een omtrekshoek is de helft van de middelpuntshoek op dezelfde boog. Een raaklijn staat loodrecht op de straal en overstaande hoeken van een koordenvierhoek zijn samen $180^\\circ$.",
+      "example": "Middelpuntshoek $100^\\circ$ → omtrekshoek $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figuren in het assenstelsel",
+      "concept": "Afstand $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, midden = gemiddelde van de coördinaten, richtingscoëfficiënt $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): afstand 5"
+    },
+    "H12": {
+      "title": "Vergelijking van een cirkel",
+      "concept": "Een cirkel met middelpunt $(a, b)$ en straal $r$ is $(x-a)^2+(y-b)^2=r^2$. De afstand van $(x_0,y_0)$ tot $ax+by+c=0$ is $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: middelpunt $(2,3)$, straal 5"
+    },
+    "H21": {
+      "title": "Driehoeken en goniometrische functies",
+      "concept": "Sinusregel $\\frac{a}{\\sin A}=2R$, cosinusregel $c^2=a^2+b^2-2ab\\cos C$, oppervlakte van een driehoek $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radialen en sectoren",
+      "concept": "$180^\\circ=\\pi$ radialen. Een sector met straal $r$ en hoek $\\theta$ (radialen) heeft booglengte $r\\theta$ en oppervlakte $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Kegelsneden",
+      "concept": "De parabool $y^2=4px$ heeft brandpunt $(p,0)$; voor de ellips $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ geldt $c^2=a^2-b^2$; voor de hyperbool $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: brandpunt $(3,0)$"
+    },
+    "H32": {
+      "title": "Vectoren in het vlak",
+      "concept": "De lengte van $(x,y)$ is $\\sqrt{x^2+y^2}$; het inproduct is $x_1x_2+y_1y_2$ en loodrechte vectoren hebben inproduct 0.",
+      "example": "Lengte van $(3,4)$: 5"
+    }
+  }
+}

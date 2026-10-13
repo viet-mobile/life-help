@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Vad heter den här formen?",
+      "hints": [
+        "Räkna sidorna och hörnen.",
+        "Kontrollera om den har raka sidor eller är rund."
+      ],
+      "expl": "Den här formen kallas {name}."
+    },
+    "nameSolid": {
+      "prompt": "Vad heter den här kroppen?",
+      "hints": [
+        "Är den rund från alla håll?",
+        "Räkna de platta sidoytorna."
+      ],
+      "expl": "Den här kroppen är en {name}."
+    },
+    "countOf": {
+      "prompt": "Hur många {shape} finns det på bilden?",
+      "hints": [
+        "Markera varje figur när du räknar.",
+        "Se upp så att du inte räknar samma figur två gånger."
+      ],
+      "expl": "Det finns {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Hur många hörn har den här formen?",
+      "hints": [
+        "Ett hörn är en punkt där två sidor möts.",
+        "Räkna de spetsiga hörnen ett i taget."
+      ],
+      "expl": "Den har {ans} hörn."
+    },
+    "countSides": {
+      "prompt": "Hur många sidor har den här formen?",
+      "hints": [
+        "En sida är en rak kant på formen.",
+        "Gå runt formen och räkna sidorna."
+      ],
+      "expl": "Den har {ans} sidor."
+    },
+    "rulerRead": {
+      "prompt": "Använd linjalen och ta reda på linjens längd. (cm)",
+      "hints": [
+        "Hitta var linjen börjar och var den slutar.",
+        "Subtrahera startmärket från slutmärket."
+      ],
+      "expl": "Linjen går från {from} till {to}, så längden är {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Hur många cm längre är den övre linjen än den nedre? (cm)",
+      "hints": [
+        "Läs först av båda längderna.",
+        "Subtrahera den kortare längden från den längre."
+      ],
+      "expl": "{a}-{b}={ans}, så den är {ans} cm längre."
+    },
+    "rightAngles": {
+      "prompt": "Hur många räta vinklar har den här formen?",
+      "hints": [
+        "En rät vinkel ser ut som hörnet på en kvadrat.",
+        "Kontrollera ett hörn i taget."
+      ],
+      "expl": "Den har {ans} räta vinklar."
+    },
+    "clockMinutes": {
+      "prompt": "Klockan visar {h} och några minuter över. Hur många minuter? (min)",
+      "hints": [
+        "Multiplicera talet som den långa visaren pekar på med 5.",
+        "Om den långa visaren pekar på 6 är det 30 minuter."
+      ],
+      "expl": "Den långa visaren pekar på {n}, så ${n}\\times5={ans}$ minuter."
+    },
+    "mToCm": {
+      "prompt": "Hur många cm är {m} m {c} cm? (cm)",
+      "hints": [
+        "1 m är 100 cm.",
+        "Gör om m till cm och addera sedan de återstående cm."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, så det är {ans} cm."
+    },
+    "triType": {
+      "prompt": "Vilken sorts triangel har de visade sidlängderna?",
+      "hints": [
+        "Jämför de tre sidlängderna.",
+        "Två lika sidor: likbent. Tre lika sidor: liksidig."
+      ],
+      "expl": "Den här triangeln är en {name}."
+    },
+    "congruentCond": {
+      "prompt": "De två trianglarna är kongruenta. Vilket kongruensvillkor gäller?",
+      "hints": [
+        "Hitta vilka sidor som är lika och vilka vinklar som är lika.",
+        "Bara sidor: SSS. Två sidor och mellanliggande vinkel: SVS. En sida och de två vinklarna vid dess ändar: VSV."
+      ],
+      "expl": "De lika delarna i figuren är: {cond}. Det här är alltså villkoret som används."
+    },
+    "circleDiameter": {
+      "prompt": "Radien i en cirkel är {r} cm. Vad är diametern? (cm)",
+      "hints": [
+        "Diametern är den längsta sträckan genom medelpunkten.",
+        "Diametern är dubbelt så lång som radien."
+      ],
+      "expl": "{r}×2={ans}, så diametern är {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Diametern i en cirkel är {d} cm. Vad är radien? (cm)",
+      "hints": [
+        "Radien går från medelpunkten till cirkeln.",
+        "Radien är hälften av diametern."
+      ],
+      "expl": "{d}÷2={ans}, så radien är {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Vilken sorts vinkel är ${a}^\\circ$?",
+      "hints": [
+        "En rät vinkel är $90^\\circ$.",
+        "Mindre än $90^\\circ$ är spetsig; större är trubbig."
+      ],
+      "expl": "${a}^\\circ$ kallas en {name}."
+    },
+    "angleThird": {
+      "prompt": "Två vinklar i en triangel är ${a}^\\circ$ och ${b}^\\circ$. Hur stor är den tredje vinkeln? (grader)",
+      "hints": [
+        "De tre vinklarna i en triangel är tillsammans $180^\\circ$.",
+        "Subtrahera de två kända vinklarna från $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, så den tredje vinkeln är ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Tre vinklar i en fyrhörning är ${a}^\\circ$, ${b}^\\circ$ och ${c}^\\circ$. Hur stor är den fjärde vinkeln? (grader)",
+      "hints": [
+        "De fyra vinklarna i en fyrhörning är tillsammans $360^\\circ$.",
+        "Subtrahera de tre kända vinklarna från $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, så den fjärde vinkeln är ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Vad heter den här fyrhörningen?",
+      "hints": [
+        "Kontrollera om motstående sidor är parallella.",
+        "Kontrollera också om alla sidor och vinklar är lika."
+      ],
+      "expl": "Den här fyrhörningen är en {name}."
+    },
+    "diagonals": {
+      "prompt": "Hur många diagonaler har den här formen?",
+      "hints": [
+        "En diagonal förbinder två hörn som inte ligger bredvid varandra.",
+        "Räkna först diagonalerna från ett hörn."
+      ],
+      "expl": "Den har {ans} diagonaler."
+    },
+    "perimeterRect": {
+      "prompt": "Vad är rektangelns omkrets? (cm)",
+      "hints": [
+        "Omkretsen är sträckan runt formen.",
+        "Addera bredden och höjden och dubblera sedan."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, så omkretsen är {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Vad är rektangelns area? (cm²)",
+      "hints": [
+        "Arean av en rektangel är bredd × höjd.",
+        "Multiplicera de två visade längderna."
+      ],
+      "expl": "${w}\\times{h}={ans}$, så arean är {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "En kvadrat har sidor på {s} cm. Vad är dess area? (cm²)",
+      "hints": [
+        "Alla fyra sidor i en kvadrat är lika långa.",
+        "Multiplicera sidlängden med sig själv."
+      ],
+      "expl": "${s}\\times{s}={ans}$, så arean är {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "En triangel har basen {b} cm och höjden {h} cm. Vad är dess area? (cm²)",
+      "hints": [
+        "Arean av en triangel är bas × höjd ÷ 2.",
+        "Höjden mäts vinkelrätt mot basen."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, så arean är {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "En parallellogram har basen {b} cm och höjden {h} cm. Vad är dess area? (cm²)",
+      "hints": [
+        "Arean av en parallellogram är bas × höjd.",
+        "Använd höjden, inte den sneda sidan."
+      ],
+      "expl": "${b}\\times{h}={ans}$, så arean är {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Ett trapets har övre sidan {a} cm, undre sidan {b} cm och höjden {h} cm. Vad är dess area? (cm²)",
+      "hints": [
+        "Arean av ett trapets är (övre + undre) × höjd ÷ 2.",
+        "Addera först den övre och den undre sidan."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, så arean är {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Diagonalerna i en romb är {d1} cm och {d2} cm. Vad är dess area? (cm²)",
+      "hints": [
+        "Arean av en romb är den ena diagonalen × den andra diagonalen ÷ 2.",
+        "Multiplicera diagonalerna och dividera sedan med 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, så arean är {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Hur många symmetrilinjer har den här formen?",
+      "hints": [
+        "En symmetrilinje viker formen i två lika halvor.",
+        "Prova att vika vågrätt, lodrätt och diagonalt."
+      ],
+      "expl": "Den har {ans} symmetrilinjer."
+    },
+    "congruentSide": {
+      "prompt": "De två trianglarna är kongruenta. Hur lång är sidan $x$? (cm)",
+      "hints": [
+        "Kongruenta figurer har samma form och storlek.",
+        "Motsvarande sidor är lika långa."
+      ],
+      "expl": "Motsvarande sidor är lika, så $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Hur många {item} har ett rätblock?",
+      "hints": [
+        "Föreställ dig en låda.",
+        "Titta på ovansidan, undersidan, framsidan, baksidan och båda sidorna."
+      ],
+      "expl": "Ett rätblock har {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Ett rätblock är {l} cm långt, {w} cm brett och {h} cm högt. Vad är dess volym? (cm³)",
+      "hints": [
+        "Volymen av ett rätblock är längd × bredd × höjd.",
+        "Multiplicera de tre längderna."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, så volymen är {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "En kub har kanter på {e} cm. Vad är dess volym? (cm³)",
+      "hints": [
+        "Alla kanter i en kub är lika långa.",
+        "Multiplicera kantlängden med sig själv tre gånger."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, så volymen är {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Ett rätblock är {l} cm långt, {w} cm brett och {h} cm högt. Vad är dess begränsningsarea? (cm²)",
+      "hints": [
+        "Begränsningsarean är summan av de sex sidoytorna.",
+        "Motstående ytor är lika: (lb + bh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, så begränsningsarean är {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Ett rätblock är {l} cm långt, {w} cm brett och {h} cm högt. Vad är den sammanlagda längden av alla kanter? (cm)",
+      "hints": [
+        "Ett rätblock har 12 kanter.",
+        "Det finns 4 kanter vardera med längden, bredden och höjden."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, så summan är {ans} cm."
+    },
+    "circumference": {
+      "prompt": "En cirkel har radien {r} cm. Vad är dess omkrets? (använd $\\pi=3.14$) (cm)",
+      "hints": [
+        "Omkrets = diameter × π.",
+        "Diametern är dubbelt så lång som radien."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, så omkretsen är {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "En cirkel har radien {r} cm. Vad är dess area? (använd $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Area = radie × radie × π.",
+        "Multiplicera radien med sig själv och sedan med 3,14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, så arean är {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Hur många ytor har ett prisma vars basyta har {n} sidor?",
+      "hints": [
+        "Ett prisma har 2 basytor och några mantelytor.",
+        "Antalet mantelytor är lika med antalet sidor i basytan."
+      ],
+      "expl": "{n} mantelytor plus 2 basytor blir {ans} ytor."
+    },
+    "adjacentAngle": {
+      "prompt": "På en rät linje är en vinkel ${a}^\\circ$. Hur stor är sidovinkeln? (grader)",
+      "hints": [
+        "Vinklar på en rät linje är tillsammans $180^\\circ$.",
+        "Subtrahera den kända vinkeln från $180$."
+      ],
+      "expl": "$180-{a}={ans}$, så den är ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Två linjer skär varandra och en vinkel är ${a}^\\circ$. Hur stor är vertikalvinkeln? (grader)",
+      "hints": [
+        "Vertikalvinklar ligger mitt emot varandra.",
+        "De är lika stora."
+      ],
+      "expl": "Vertikalvinklar är lika, så den är ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Två parallella linjer $l$ och $m$ skärs av en transversal. En vinkel är ${a}^\\circ$. Vad är $x$? (grader)",
+      "hints": [
+        "Likbelägna vinklar vid parallella linjer är lika.",
+        "Alternatvinklar är också lika."
+      ],
+      "expl": "Likbelägna (alternat-) vinklar vid parallella linjer är lika, så $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Vad är vinkelsumman i en månghörning med {n} sidor? (grader)",
+      "hints": [
+        "En månghörning med {n} sidor kan delas i {m} trianglar.",
+        "Varje triangel har vinkelsumman $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, så summan är ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Hur stor är en vinkel i en regelbunden månghörning med {n} sidor? (grader)",
+      "hints": [
+        "Beräkna först summan: $180\\times({n}-2)$.",
+        "Dividera summan med antalet sidor {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, så varje vinkel är ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "En cirkelsektor har radien {r} cm och medelpunktsvinkeln ${a}^\\circ$. Bågens längd är $k\\pi$ cm. Vad är $k$?",
+      "hints": [
+        "Båglängden är $2\\pi r\\times\\frac{a}{360}$.",
+        "Ta först reda på hur stor del av hela cirkeln vinkeln är."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, så $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "En cirkelsektor har radien {r} cm och medelpunktsvinkeln ${a}^\\circ$. Dess area är $k\\pi$ cm². Vad är $k$?",
+      "hints": [
+        "Sektorns area är $\\pi r^2\\times\\frac{a}{360}$.",
+        "Multiplicera cirkelns area med vinkelns andel av hela cirkeln."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, så $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "En cylinder har basradien {r} cm och höjden {h} cm. Dess volym är $k\\pi$ cm³. Vad är $k$?",
+      "hints": [
+        "Volym = basarea × höjd.",
+        "Basarean är $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, så $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "En kon har basradien {r} cm och höjden {h} cm. Dess volym är $k\\pi$ cm³. Vad är $k$?",
+      "hints": [
+        "Volym = basarea × höjd ÷ 3.",
+        "Basarean är $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, så $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Ett klot har radien {r} cm. Dess volym är $k\\pi$ cm³. Vad är $k$?",
+      "hints": [
+        "Volymen av ett klot är $\\frac{4}{3}\\pi r^3$.",
+        "Upphöj radien till 3 och multiplicera sedan med $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, så $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Ett klot har radien {r} cm. Dess begränsningsarea är $k\\pi$ cm². Vad är $k$?",
+      "hints": [
+        "Begränsningsarean av ett klot är $4\\pi r^2$.",
+        "Kvadrera radien och multiplicera sedan med 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, så $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "En cylinder har basradien {r} cm och höjden {h} cm. Dess begränsningsarea är $k\\pi$ cm². Vad är $k$?",
+      "hints": [
+        "Begränsningsarea = 2 × basarea + mantelarea.",
+        "Mantelarean är (omkrets) × höjd $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, så $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "En basvinkel i en likbent triangel är ${b}^\\circ$. Hur stor är toppvinkeln? (grader)",
+      "hints": [
+        "De två basvinklarna i en likbent triangel är lika.",
+        "Subtrahera båda basvinklarna från $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, så toppvinkeln är ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "I parallellogrammen ABCD är $\\angle A={a}^\\circ$. Hur stor är $\\angle B$? (grader)",
+      "hints": [
+        "Närliggande vinklar i en parallellogram är tillsammans $180^\\circ$.",
+        "Subtrahera $\\angle A$ från $180$."
+      ],
+      "expl": "$180-{a}={ans}$, så $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "I en triangel förbinder sträckan $x$ mittpunkterna på två sidor och är parallell med den tredje sidan, som är {s} cm. Hur lång är $x$? (cm)",
+      "hints": [
+        "Sträckan mellan två mittpunkter är hälften av den tredje sidan.",
+        "Dividera {s} med 2."
+      ],
+      "expl": "${s}\\div2={ans}$, så $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "De två trianglarna är likformiga. Hur lång är sidan $x$? (cm)",
+      "hints": [
+        "I likformiga figurer är förhållandet mellan motsvarande sidor lika.",
+        "Ta först reda på skalfaktorn."
+      ],
+      "expl": "Förhållandet är ${p}:{q}$, så $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Två likformiga figurer har skalfaktorn ${p}:{q}$. Den mindre har arean {s} cm². Vad är arean av den större? (cm²)",
+      "hints": [
+        "Areaförhållandet är kvadraten på skalfaktorn.",
+        "Multiplicera den mindre arean med $({q}/{p})^2$."
+      ],
+      "expl": "Areaförhållandet är ${p2}:{q2}$, så ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "De två kortare sidorna i en rätvinklig triangel är {a} cm och {b} cm. Hur lång är den längsta sidan $x$? (cm)",
+      "hints": [
+        "Pythagoras sats: $a^2+b^2=c^2$.",
+        "Kvadrera båda sidorna, addera dem och ta sedan kvadratroten."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, så $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "En rätvinklig triangel har hypotenusan {c} cm och en katet {a} cm. Hur lång är den andra kateten $x$? (cm)",
+      "hints": [
+        "Ur $a^2+x^2=c^2$ får vi $x^2=c^2-a^2$.",
+        "Ta kvadratroten ur $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, så $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "En triangel har sidorna {a} cm, {b} cm och {c} cm. Är den rätvinklig?",
+      "hints": [
+        "Ta den längsta sidan som hypotenusa och jämför $a^2+b^2$ med $c^2$.",
+        "Om de är lika är triangeln rätvinklig."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ och ${c}^2={s2}$, så {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Vad är $\\{fn} A$ i den rätvinkliga triangeln? (skriv ett decimaltal)",
+      "hints": [
+        "$\\sin A$ = motstående katet ÷ hypotenusa, $\\cos A$ = närliggande katet ÷ hypotenusa, $\\tan A$ = motstående ÷ närliggande.",
+        "Skilj motstående och närliggande katet åt utifrån vinkel $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Vad är $\\{fn}\\ {a}^\\circ$? (skriv ett decimaltal)",
+      "hints": [
+        "Kom ihåg värdena för $30^\\circ$, $45^\\circ$ och $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "I en rätvinklig triangel är $\\tan A={t}$ och den närliggande kateten är {adj}. Hur lång är den motstående kateten $x$?",
+      "hints": [
+        "$\\tan A$ = motstående ÷ närliggande.",
+        "Motstående $=\\tan A\\times$ närliggande."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Medelpunktsvinkeln på bågen AB är ${c}^\\circ$. Hur stor är periferivinkeln på samma båge? (grader)",
+      "hints": [
+        "En periferivinkel är hälften så stor som medelpunktsvinkeln på samma båge.",
+        "Dividera medelpunktsvinkeln med 2."
+      ],
+      "expl": "${c}\\div2={ans}$, så periferivinkeln är ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Från en punkt P utanför cirkeln O tangerar en tangent cirkeln i A. $PO={po}$ och radien är {r}. Hur lång är $PA$?",
+      "hints": [
+        "En tangent är vinkelrät mot radien, så triangeln OAP är rätvinklig.",
+        "Använd $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, så $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "En cirkel har radien {r}. En korda ligger på avståndet {d} från medelpunkten. Hur lång är kordan?",
+      "hints": [
+        "Vinkelrätet från medelpunkten halverar kordan.",
+        "Halva kordan är $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Halva kordan är $\\sqrt{{r}^2-{d}^2}={half}$, så kordan är ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "En fyrhörning är inskriven i en cirkel och en vinkel är ${a}^\\circ$. Hur stor är motstående vinkel? (grader)",
+      "hints": [
+        "Motstående vinklar i en kordafyrhörning är tillsammans $180^\\circ$.",
+        "Subtrahera den givna vinkeln från $180$."
+      ],
+      "expl": "$180-{a}={ans}$, så den är ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Vad är avståndet mellan punkterna A({x1}, {y1}) och B({x2}, {y2}) i koordinatsystemet?",
+      "hints": [
+        "Avståndet är $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kvadrera skillnaden i x-led och y-led och addera."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Vad är ${axis}$-koordinaten för mittpunkten på sträckan AB med A({x1}, {y1}) och B({x2}, {y2})?",
+      "hints": [
+        "Mittpunkten är medelvärdet av koordinaterna.",
+        "Addera motsvarande koordinater och dividera med 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Vad är riktningskoefficienten för linjen genom A({x1}, {y1}) och B({x2}, {y2})?",
+      "hints": [
+        "Riktningskoefficient = (förändring i $y$) ÷ (förändring i $x$).",
+        "Beräkna $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Vad är radien för cirkeln $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "I $(x-a)^2+(y-b)^2=r^2$ är högerledet $r^2$.",
+        "Ta kvadratroten ur {r2}."
+      ],
+      "expl": "$r^2={r2}$, så $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Cirkeln $(x-{a})^2+(y-{b})^2={r2}$ har medelpunkten $(p, q)$. Vad är $p+q$?",
+      "hints": [
+        "Medelpunkten är $(p, q)$.",
+        "Läs av $p$ och $q$ i $x-p$ och $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Vad är avståndet från origo till linjen ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "Avståndet från en punkt till en linje är $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "För origo är $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "I triangel ABC är $a={a}$ och $\\angle A={A}^\\circ$. Vad är den omskrivna cirkelns radie $R$?",
+      "hints": [
+        "Sinussatsen: $\\frac{a}{\\sin A}=2R$.",
+        "Använd värdet på $\\sin {A}^\\circ$ för att hitta $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "I triangel ABC är $a={a}$, $b={b}$ och $\\angle C={C}^\\circ$. Vad är $c$?",
+      "hints": [
+        "Cosinussatsen: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Sätt in värdet på $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, så $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "I triangel ABC är $a={a}$, $b={b}$ och $\\angle C={C}^\\circ$. Vad är dess area?",
+      "hints": [
+        "Area $=\\frac12ab\\sin C$.",
+        "Sätt in värdet på $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ är lika med $\\frac{\\pi}{d}$ radianer. Vad är $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ radianer.",
+        "Förenkla $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, så $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "En cirkelsektor har radien {r} och medelpunktsvinkeln $\\frac{\\pi}{{d}}$. Båglängden är $k\\pi$. Vad är $k$?",
+      "hints": [
+        "Båglängden är $l=r\\theta$.",
+        "Multiplicera $r$ med $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, så $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "En cirkelsektor har radien {r} och medelpunktsvinkeln $\\frac{\\pi}{{d}}$. Dess area är $k\\pi$. Vad är $k$?",
+      "hints": [
+        "Sektorns area är $S=\\frac12r^2\\theta$.",
+        "Multiplicera $r^2$ med $\\theta$ och sedan med $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, så $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Vad är $x$-koordinaten för fokus till parabeln $y^2={k}x$?",
+      "hints": [
+        "Fokus för $y^2=4px$ är $(p, 0)$.",
+        "Lös $4p={k}$ för $p$."
+      ],
+      "expl": "$4p={k}$, så $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Ellipsen $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ har brännpunkterna $(\\pm c, 0)$. Vad är $c$?",
+      "hints": [
+        "För en ellips är $c^2=a^2-b^2$.",
+        "Subtrahera {b2} från {a2} och ta kvadratroten."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, så $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Hyperbeln $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ har brännpunkterna $(\\pm c, 0)$. Vad är $c$?",
+      "hints": [
+        "För en hyperbel är $c^2=a^2+b^2$.",
+        "Addera {a2} och {b2} och ta kvadratroten."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, så $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Vad är beloppet $|\\vec{a}|$ av vektorn $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kvadrera varje komponent, addera och ta kvadratroten."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Vad är skalärprodukten $\\vec{a}\\cdot\\vec{b}$ av $\\vec{a}=({x1}, {y1})$ och $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "Skalärprodukten är $x_1x_2+y_1y_2$.",
+        "Multiplicera motsvarande komponenter och addera."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Vektorerna $\\vec{a}=({x1}, k)$ och $\\vec{b}=({x2}, {y2})$ är vinkelräta. Vad är $k$?",
+      "hints": [
+        "Vinkelräta vektorer har skalärprodukten $0$.",
+        "Lös $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, så $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "triangel",
+    "quad": "fyrhörning",
+    "circ": "cirkel",
+    "pent": "femhörning",
+    "hex": "sexhörning",
+    "rect": "rektangel",
+    "square": "kvadrat",
+    "trap": "trapets",
+    "para": "parallellogram",
+    "rhom": "romb",
+    "cube": "kub",
+    "cuboid": "rätblock (lådform)",
+    "cyl": "cylinder",
+    "sph": "klot",
+    "cone": "kon",
+    "acute": "spetsig vinkel",
+    "right": "rät vinkel",
+    "obtuse": "trubbig vinkel",
+    "faces": "sidoytor",
+    "edges": "kanter",
+    "vertices": "hörn",
+    "triP": "trianglar",
+    "squareP": "kvadrater",
+    "circP": "cirklar",
+    "iso": "likbent triangel",
+    "equi": "liksidig triangel",
+    "rtri": "rätvinklig triangel",
+    "sss": "Tre par av sidor är lika (SSS)",
+    "sas": "Två sidor och vinkeln mellan dem är lika (SVS)",
+    "asa": "En sida och de två vinklarna vid dess ändar är lika (VSV)",
+    "yes": "Ja, den är rätvinklig",
+    "no": "Nej, den är inte rätvinklig"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Formernas namn och hörn",
+      "concept": "En **triangel** har 3 sidor och en **fyrhörning** har 4 sidor. En **cirkel** är rund och har inga hörn.",
+      "example": "Triangel: 3 sidor, 3 hörn"
+    },
+    "E12": {
+      "title": "Kroppar",
+      "concept": "En lådform är ett **rätblock**, en rund pelare är en **cylinder** och en boll är ett **klot**.",
+      "example": "rätblock · cylinder · klot"
+    },
+    "E21": {
+      "title": "Trianglar och fyrhörningar",
+      "concept": "En **triangel** har 3 raka sidor och 3 hörn; en **fyrhörning** har 4 raka sidor och 4 hörn, oavsett form. Antalet sidor är lika med antalet hörn.",
+      "example": "Fyrhörning: 4 sidor, 4 hörn"
+    },
+    "E22": {
+      "title": "Längd och tid",
+      "concept": "Lägg ena änden vid 0 på linjalen; märket vid den andra änden är längden. $1\\text{ m}=100\\text{ cm}$. Multiplicera talet som den långa visaren pekar på med 5 för att få minuterna.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Vinklar och räta vinklar",
+      "concept": "Två strålar från en punkt bildar en **vinkel**. En vinkel på $90^\\circ$ är en **rät vinkel**; mindre är **spetsig**, större är **trubbig**.",
+      "example": "$30^\\circ$ spetsig · $90^\\circ$ rät · $120^\\circ$ trubbig"
+    },
+    "E32": {
+      "title": "Radie och diameter",
+      "concept": "**Radien** går från medelpunkten till cirkeln; **diametern** går genom medelpunkten. Diametern är dubbelt så lång som radien.",
+      "example": "Radie 5 cm → diameter 10 cm"
+    },
+    "E41": {
+      "title": "Vinkelsummor",
+      "concept": "De tre vinklarna i en triangel är tillsammans $180^\\circ$ och de fyra vinklarna i en fyrhörning är tillsammans $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Fyrhörningar och månghörningar",
+      "concept": "Ett par parallella sidor ger ett **trapets**, två par en **parallellogram** och fyra lika sidor en **romb**. En **diagonal** förbinder två hörn som inte ligger bredvid varandra.",
+      "example": "En fyrhörning har 2 diagonaler"
+    },
+    "E51": {
+      "title": "Omkrets och area",
+      "concept": "Rektangel: bredd × höjd. Triangel: bas × höjd ÷ 2. Parallellogram: bas × höjd. Trapets: (övre + undre) × höjd ÷ 2. Romb: diagonal × diagonal ÷ 2.",
+      "example": "Triangel med bas 10, höjd 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Kongruens och symmetri",
+      "concept": "Två former som passar exakt över varandra är **kongruenta**. En form som viks ihop längs en linje är **symmetrisk**; linjen är **symmetrilinjen**.",
+      "example": "En kvadrat har 4 symmetrilinjer"
+    },
+    "E61": {
+      "title": "Cirkelns omkrets och area",
+      "concept": "Omkrets = diameter × π, area = radie × radie × π, med π ≈ $3.14$.",
+      "example": "Radie 5 cm → omkrets $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Rätblock och kuber",
+      "concept": "Volym = längd × bredd × höjd; begränsningsarea = (summan av tre ytor) × 2. Ett rätblock har 6 sidoytor, 12 kanter och 8 hörn.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Vinkelregler och månghörningar",
+      "concept": "Vertikalvinklar är lika; likbelägna vinklar och alternatvinklar vid parallella linjer är lika. Vinkelsumman i en månghörning med $n$ sidor är $180^\\circ\\times(n-2)$.",
+      "example": "Femhörning: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Sektorer och kroppar",
+      "concept": "Båglängd $=2\\pi r\\times\\frac{a}{360}$, sektorarea $=\\pi r^2\\times\\frac{a}{360}$, klotets volym $=\\frac43\\pi r^3$, konens volym $=\\frac13\\pi r^2h$.",
+      "example": "Klot $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Trianglar och fyrhörningar",
+      "concept": "Basvinklarna i en likbent triangel är lika. Närliggande vinklar i en parallellogram är tillsammans $180^\\circ$, och sträckan mellan två sidors mittpunkter i en triangel är hälften av den tredje sidan.",
+      "example": "Basvinkel $50^\\circ$ → toppvinkel $80^\\circ$"
+    },
+    "M22": {
+      "title": "Likformighet och Pythagoras sats",
+      "concept": "Likformiga figurer har lika förhållanden mellan sidorna och deras areor förhåller sig som kvadraten på detta förhållande. I en rätvinklig triangel gäller $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Trigonometriska förhållanden",
+      "concept": "I en rätvinklig triangel är: $\\sin A$ = motstående katet ÷ hypotenusan, $\\cos A$ = närliggande katet ÷ hypotenusan, $\\tan A$ = motstående katet ÷ närliggande katet.",
+      "example": "3-4-5-triangel: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Cirklars egenskaper",
+      "concept": "En periferivinkel är hälften så stor som medelpunktsvinkeln på samma båge. En tangent är vinkelrät mot radien och motstående vinklar i en kordafyrhörning är tillsammans $180^\\circ$.",
+      "example": "Medelpunktsvinkel $100^\\circ$ → periferivinkel $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figurer i koordinatsystemet",
+      "concept": "Avstånd $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, mittpunkt = medelvärdet av koordinaterna, riktningskoefficient $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): avstånd 5"
+    },
+    "H12": {
+      "title": "Cirkelns ekvation",
+      "concept": "En cirkel med medelpunkt $(a, b)$ och radie $r$ är $(x-a)^2+(y-b)^2=r^2$. Avståndet från $(x_0,y_0)$ till $ax+by+c=0$ är $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: medelpunkt $(2,3)$, radie 5"
+    },
+    "H21": {
+      "title": "Trianglar och trigonometriska funktioner",
+      "concept": "Sinussatsen $\\frac{a}{\\sin A}=2R$, cosinussatsen $c^2=a^2+b^2-2ab\\cos C$, triangelns area $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radianer och sektorer",
+      "concept": "$180^\\circ=\\pi$ radianer. En sektor med radien $r$ och vinkeln $\\theta$ (radianer) har båglängden $r\\theta$ och arean $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Kägelsnitt",
+      "concept": "Parabeln $y^2=4px$ har fokus $(p,0)$; för ellipsen $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ gäller $c^2=a^2-b^2$; för hyperbeln $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: fokus $(3,0)$"
+    },
+    "H32": {
+      "title": "Vektorer i planet",
+      "concept": "Beloppet av $(x,y)$ är $\\sqrt{x^2+y^2}$; skalärprodukten är $x_1x_2+y_1y_2$ och vinkelräta vektorer har skalärprodukten 0.",
+      "example": "Beloppet av $(3,4)$: 5"
+    }
+  }
+}

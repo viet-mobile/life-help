@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Bu shakl nima deb ataladi?",
+      "hints": [
+        "Tomonlari va burchaklarini sanang.",
+        "Uning tomonlari to'g'ri yoki yumaloq ekanligini tekshiring."
+      ],
+      "expl": "Bu shakl {name} deb ataladi."
+    },
+    "nameSolid": {
+      "prompt": "Bu jism nima deb ataladi?",
+      "hints": [
+        "U hamma tomondan yumaloqmi?",
+        "Tekis yoqlarini sanang."
+      ],
+      "expl": "Bu jism — {name}."
+    },
+    "countOf": {
+      "prompt": "Rasmda nechta {shape} bor?",
+      "hints": [
+        "Sanayotganda har birini belgilab boring.",
+        "Bir shaklni ikki marta sanamaslikka e'tibor bering."
+      ],
+      "expl": "{shape} soni: {ans}."
+    },
+    "countVertices": {
+      "prompt": "Bu shaklning nechta uchi (burchagi) bor?",
+      "hints": [
+        "Uch — ikki tomon uchrashadigan nuqta.",
+        "O'tkir burchaklarni birma-bir sanang."
+      ],
+      "expl": "Uning {ans} ta uchi bor."
+    },
+    "countSides": {
+      "prompt": "Bu shaklning nechta tomoni bor?",
+      "hints": [
+        "Tomon — shaklning to'g'ri chizig'i.",
+        "Shakl bo'ylab aylanib chiqib, tomonlarni sanang."
+      ],
+      "expl": "Uning {ans} ta tomoni bor."
+    },
+    "rulerRead": {
+      "prompt": "Chizg'ich yordamida chiziqning uzunligini toping. (cm)",
+      "hints": [
+        "Chiziq qayerdan boshlanib, qayerda tugashini toping.",
+        "Oxirgi belgidan boshlang'ich belgini ayiring."
+      ],
+      "expl": "Chiziq {from} dan {to} gacha boradi, shuning uchun uning uzunligi {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Yuqoridagi chiziq pastdagi chiziqdan necha cm uzunroq? (cm)",
+      "hints": [
+        "Avval ikkala uzunlikni o'qing.",
+        "Uzunidan qisqasini ayiring."
+      ],
+      "expl": "{a}-{b}={ans}, demak, {ans} cm uzunroq."
+    },
+    "rightAngles": {
+      "prompt": "Bu shaklda nechta to'g'ri burchak bor?",
+      "hints": [
+        "To'g'ri burchak kvadratning burchagiga o'xshaydi.",
+        "Har bir burchakni birma-bir tekshiring."
+      ],
+      "expl": "Uning {ans} ta to'g'ri burchagi bor."
+    },
+    "clockMinutes": {
+      "prompt": "Soat {h} bo'lib, yana bir necha daqiqa ko'rsatmoqda. Necha daqiqa? (daqiqa)",
+      "hints": [
+        "Uzun mil ko'rsatgan sonni 5 ga ko'paytiring.",
+        "Uzun mil 6 ni ko'rsatsa, 30 daqiqa bo'ladi."
+      ],
+      "expl": "Uzun mil {n} ni ko'rsatmoqda, demak, ${n}\\times5={ans}$ daqiqa."
+    },
+    "mToCm": {
+      "prompt": "{m} m {c} cm necha cm bo'ladi? (cm)",
+      "hints": [
+        "1 m 100 cm ga teng.",
+        "Avval m ni cm ga aylantiring, keyin qolgan cm ni qo'shing."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, demak, {ans} cm."
+    },
+    "triType": {
+      "prompt": "Tomonlari uzunligi ko'rsatilgan uchburchak qanday uchburchak?",
+      "hints": [
+        "Uchala tomonning uzunligini taqqoslang.",
+        "Ikki tomoni teng — teng yonli. Uch tomoni teng — teng tomonli."
+      ],
+      "expl": "Bu uchburchak — {name}."
+    },
+    "congruentCond": {
+      "prompt": "Ikki uchburchak teng. Qaysi tenglik alomati qo'llaniladi?",
+      "hints": [
+        "Qaysi tomonlar va qaysi burchaklar teng ekanini toping.",
+        "Faqat tomonlar: SSS. Ikki tomon va ular orasidagi burchak: SAS. Bir tomon va uning ikki uchidagi burchaklar: ASA."
+      ],
+      "expl": "Rasmda teng bo'lgan qismlar: {cond}. Demak, aynan shu alomat qo'llanilgan."
+    },
+    "circleDiameter": {
+      "prompt": "Aylananing radiusi {r} cm. Diametri qancha? (cm)",
+      "hints": [
+        "Diametr — markazdan o'tuvchi eng uzun kesma.",
+        "Diametr radiusdan ikki barobar katta."
+      ],
+      "expl": "{r}×2={ans}, demak, diametr {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Aylananing diametri {d} cm. Radiusi qancha? (cm)",
+      "hints": [
+        "Radius markazdan aylanagacha boradi.",
+        "Radius diametrning yarmiga teng."
+      ],
+      "expl": "{d}÷2={ans}, demak, radius {ans} cm."
+    },
+    "angleType": {
+      "prompt": "${a}^\\circ$ qanday burchak?",
+      "hints": [
+        "To'g'ri burchak $90^\\circ$ ga teng.",
+        "$90^\\circ$ dan kichik — o'tkir, katta — o'tmas."
+      ],
+      "expl": "${a}^\\circ$ — {name}."
+    },
+    "angleThird": {
+      "prompt": "Uchburchakning ikki burchagi ${a}^\\circ$ va ${b}^\\circ$. Uchinchi burchagi necha gradus? (gradus)",
+      "hints": [
+        "Uchburchakning uchta burchagi yig'indisi $180^\\circ$ ga teng.",
+        "$180$ dan ma'lum ikki burchakni ayiring."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, demak, uchinchi burchak ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "To'rtburchakning uchta burchagi ${a}^\\circ$, ${b}^\\circ$ va ${c}^\\circ$. To'rtinchi burchagi necha gradus? (gradus)",
+      "hints": [
+        "To'rtburchakning to'rtta burchagi yig'indisi $360^\\circ$ ga teng.",
+        "$360$ dan ma'lum uchta burchakni ayiring."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, demak, to'rtinchi burchak ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Bu to'rtburchak nima deb ataladi?",
+      "hints": [
+        "Qarama-qarshi tomonlari parallel ekanini tekshiring.",
+        "Barcha tomonlari va burchaklari teng ekanini ham tekshiring."
+      ],
+      "expl": "Bu to'rtburchak — {name}."
+    },
+    "diagonals": {
+      "prompt": "Bu shaklning nechta diagonali bor?",
+      "hints": [
+        "Diagonal yonma-yon bo'lmagan ikki uchni tutashtiradi.",
+        "Avval bitta uchdan chiqadigan diagonallarni sanang."
+      ],
+      "expl": "Uning {ans} ta diagonali bor."
+    },
+    "perimeterRect": {
+      "prompt": "To'g'ri to'rtburchakning perimetri qancha? (cm)",
+      "hints": [
+        "Perimetr — shakl chegarasining uzunligi.",
+        "Eni va bo'yini qo'shing, keyin ikki barobarga oshiring."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, demak, perimetr {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "To'g'ri to'rtburchakning yuzi qancha? (cm²)",
+      "hints": [
+        "To'g'ri to'rtburchakning yuzi eni × bo'yi.",
+        "Ko'rsatilgan ikki uzunlikni ko'paytiring."
+      ],
+      "expl": "${w}\\times{h}={ans}$, demak, yuzi {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Kvadratning tomoni {s} cm. Uning yuzi qancha? (cm²)",
+      "hints": [
+        "Kvadratning to'rtala tomoni teng.",
+        "Tomon uzunligini o'ziga ko'paytiring."
+      ],
+      "expl": "${s}\\times{s}={ans}$, demak, yuzi {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Uchburchakning asosi {b} cm, balandligi {h} cm. Uning yuzi qancha? (cm²)",
+      "hints": [
+        "Uchburchakning yuzi asos × balandlik ÷ 2.",
+        "Balandlik asosga perpendikulyar o'lchanadi."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, demak, yuzi {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Parallelogrammning asosi {b} cm, balandligi {h} cm. Uning yuzi qancha? (cm²)",
+      "hints": [
+        "Parallelogrammning yuzi asos × balandlik.",
+        "Yon tomonni emas, balandlikni ishlating."
+      ],
+      "expl": "${b}\\times{h}={ans}$, demak, yuzi {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Trapetsiyaning yuqori asosi {a} cm, pastki asosi {b} cm, balandligi {h} cm. Uning yuzi qancha? (cm²)",
+      "hints": [
+        "Trapetsiyaning yuzi (yuqori asos + pastki asos) × balandlik ÷ 2.",
+        "Avval yuqori va pastki asosni qo'shing."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, demak, yuzi {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Rombning diagonallari {d1} cm va {d2} cm. Uning yuzi qancha? (cm²)",
+      "hints": [
+        "Rombning yuzi birinchi diagonal × ikkinchi diagonal ÷ 2.",
+        "Diagonallarni ko'paytiring, keyin 2 ga bo'ling."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, demak, yuzi {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Bu shaklning nechta simmetriya o'qi bor?",
+      "hints": [
+        "Simmetriya o'qi shaklni ustma-ust tushadigan ikki yarmiga bo'ladi.",
+        "Gorizontal, vertikal va diagonal bo'ylab buklab ko'ring."
+      ],
+      "expl": "Uning {ans} ta simmetriya o'qi bor."
+    },
+    "congruentSide": {
+      "prompt": "Ikki uchburchak teng. $x$ tomonning uzunligi qancha? (cm)",
+      "hints": [
+        "Teng shakllarning shakli va o'lchami bir xil.",
+        "Mos tomonlarning uzunliklari teng."
+      ],
+      "expl": "Mos tomonlar teng, demak, $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "To'g'ri burchakli parallelepipedning nechta {item} bor?",
+      "hints": [
+        "Qutini tasavvur qiling.",
+        "Yuqori, pastki, old, orqa va ikkala yon tomonga qarang."
+      ],
+      "expl": "To'g'ri burchakli parallelepipedning {ans} ta {item} bor."
+    },
+    "cuboidVolume": {
+      "prompt": "To'g'ri burchakli parallelepipedning uzunligi {l} cm, eni {w} cm, balandligi {h} cm. Uning hajmi qancha? (cm³)",
+      "hints": [
+        "Hajm uzunlik × en × balandlik.",
+        "Uchala uzunlikni ko'paytiring."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, demak, hajmi {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Kubning qirrasi {e} cm. Uning hajmi qancha? (cm³)",
+      "hints": [
+        "Kubning barcha qirralari teng.",
+        "Qirra uzunligini uch marta o'ziga ko'paytiring."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, demak, hajmi {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "To'g'ri burchakli parallelepipedning uzunligi {l} cm, eni {w} cm, balandligi {h} cm. Uning sirt yuzi qancha? (cm²)",
+      "hints": [
+        "Sirt yuzi oltita yoq yuzlarining yig'indisi.",
+        "Qarama-qarshi yoqlar teng: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, demak, sirt yuzi {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "To'g'ri burchakli parallelepipedning uzunligi {l} cm, eni {w} cm, balandligi {h} cm. Barcha qirralarining umumiy uzunligi qancha? (cm)",
+      "hints": [
+        "To'g'ri burchakli parallelepipedning 12 ta qirrasi bor.",
+        "Uzunlik, en va balandlikning har biridan 4 tadan qirra bor."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, demak, umumiy uzunlik {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Aylananing radiusi {r} cm. Uning uzunligi qancha? ($\\pi=3.14$ deb oling) (cm)",
+      "hints": [
+        "Aylana uzunligi = diametr × π.",
+        "Diametr radiusdan ikki barobar katta."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, demak, aylana uzunligi {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Doiraning radiusi {r} cm. Uning yuzi qancha? ($\\pi=3.14$ deb oling) (cm²)",
+      "hints": [
+        "Yuzi = radius × radius × π.",
+        "Radiusni o'ziga ko'paytiring, keyin 3.14 ga ko'paytiring."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, demak, yuzi {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Asosi {n} burchakli bo'lgan prizmaning nechta yog'i bor?",
+      "hints": [
+        "Prizmaning 2 ta asosi va bir nechta yon yoqlari bor.",
+        "Yon yoqlar soni asosning tomonlari soniga teng."
+      ],
+      "expl": "{n} ta yon yoq va 2 ta asos — jami {ans} ta yoq."
+    },
+    "adjacentAngle": {
+      "prompt": "To'g'ri chiziqda bir burchak ${a}^\\circ$. Qo'shni burchak necha gradus? (gradus)",
+      "hints": [
+        "To'g'ri chiziqdagi burchaklar yig'indisi $180^\\circ$ ga teng.",
+        "$180$ dan ma'lum burchakni ayiring."
+      ],
+      "expl": "$180-{a}={ans}$, demak, u ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Ikki to'g'ri chiziq kesishgan va bir burchak ${a}^\\circ$. Vertikal burchak necha gradus? (gradus)",
+      "hints": [
+        "Vertikal burchaklar bir-biriga qarama-qarshi turadi.",
+        "Ular o'zaro teng."
+      ],
+      "expl": "Vertikal burchaklar teng, demak, u ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Ikki parallel to'g'ri chiziq $l$ va $m$ kesuvchi bilan kesilgan. Bir burchak ${a}^\\circ$. $x$ necha gradus? (gradus)",
+      "hints": [
+        "Parallel to'g'ri chiziqlarda mos burchaklar teng.",
+        "Ichki almashinuvchi burchaklar ham teng."
+      ],
+      "expl": "Parallel to'g'ri chiziqlarda mos (almashinuvchi) burchaklar teng, demak, $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "{n} burchakli ko'pburchakning ichki burchaklari yig'indisi necha gradus? (gradus)",
+      "hints": [
+        "{n} burchakli ko'pburchakni {m} ta uchburchakka bo'lish mumkin.",
+        "Har bir uchburchakning burchaklari yig'indisi $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, demak, yig'indi ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "{n} burchakli muntazam ko'pburchakning bitta ichki burchagi necha gradus? (gradus)",
+      "hints": [
+        "Avval yig'indini toping: $180\\times({n}-2)$.",
+        "Yig'indini tomonlar soni {n} ga bo'ling."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, demak, har bir burchak ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Sektorning radiusi {r} cm, markaziy burchagi ${a}^\\circ$. Yoy uzunligi $k\\pi$ cm. $k$ nimaga teng?",
+      "hints": [
+        "Yoy uzunligi $2\\pi r\\times\\frac{a}{360}$ ga teng.",
+        "Avval burchak butun aylananing qanday qismini tashkil etishini toping."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, demak, $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Sektorning radiusi {r} cm, markaziy burchagi ${a}^\\circ$. Uning yuzi $k\\pi$ cm². $k$ nimaga teng?",
+      "hints": [
+        "Sektor yuzi $\\pi r^2\\times\\frac{a}{360}$ ga teng.",
+        "Doira yuzini burchak tashkil etgan qismga ko'paytiring."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, demak, $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Silindr asosining radiusi {r} cm, balandligi {h} cm. Uning hajmi $k\\pi$ cm³. $k$ nimaga teng?",
+      "hints": [
+        "Hajm = asos yuzi × balandlik.",
+        "Asos yuzi $\\pi r^2$ ga teng."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, demak, $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Konus asosining radiusi {r} cm, balandligi {h} cm. Uning hajmi $k\\pi$ cm³. $k$ nimaga teng?",
+      "hints": [
+        "Hajm = asos yuzi × balandlik ÷ 3.",
+        "Asos yuzi $\\pi r^2$ ga teng."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, demak, $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Sharning radiusi {r} cm. Uning hajmi $k\\pi$ cm³. $k$ nimaga teng?",
+      "hints": [
+        "Sharning hajmi $\\frac{4}{3}\\pi r^3$ ga teng.",
+        "Radiusni kubga oshiring, keyin $\\frac{4}{3}$ ga ko'paytiring."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, demak, $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Sharning radiusi {r} cm. Uning sirt yuzi $k\\pi$ cm². $k$ nimaga teng?",
+      "hints": [
+        "Sharning sirt yuzi $4\\pi r^2$ ga teng.",
+        "Radiusni kvadratga oshiring, keyin 4 ga ko'paytiring."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, demak, $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Silindr asosining radiusi {r} cm, balandligi {h} cm. Uning to'la sirt yuzi $k\\pi$ cm². $k$ nimaga teng?",
+      "hints": [
+        "To'la sirt yuzi = 2 × asos yuzi + yon sirt yuzi.",
+        "Yon sirt yuzi = (aylana uzunligi) × balandlik $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, demak, $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Teng yonli uchburchakning asosidagi burchagi ${b}^\\circ$. Uchidagi burchagi necha gradus? (gradus)",
+      "hints": [
+        "Teng yonli uchburchakning asosidagi ikki burchagi teng.",
+        "$180^\\circ$ dan asosdagi ikkala burchakni ayiring."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, demak, uchidagi burchak ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "ABCD parallelogrammda $\\angle A={a}^\\circ$. $\\angle B$ necha gradus? (gradus)",
+      "hints": [
+        "Parallelogrammning qo'shni burchaklari yig'indisi $180^\\circ$ ga teng.",
+        "$180$ dan $\\angle A$ ni ayiring."
+      ],
+      "expl": "$180-{a}={ans}$, demak, $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Uchburchakda $x$ kesma ikki tomonning o'rtalarini tutashtiradi va uchinchi tomonga parallel; uchinchi tomon {s} cm. $x$ qancha? (cm)",
+      "hints": [
+        "Ikki tomon o'rtalarini tutashtiruvchi kesma uchinchi tomonning yarmiga teng.",
+        "{s} ni 2 ga bo'ling."
+      ],
+      "expl": "${s}\\div2={ans}$, demak, $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Ikki uchburchak o'xshash. $x$ tomonning uzunligi qancha? (cm)",
+      "hints": [
+        "O'xshash shakllarda mos tomonlar nisbatlari teng.",
+        "Avval o'xshashlik koeffitsiyentini toping."
+      ],
+      "expl": "Nisbat ${p}:{q}$, demak, $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Ikki o'xshash shaklning o'xshashlik koeffitsiyenti ${p}:{q}$. Kichigining yuzi {s} cm². Kattasining yuzi qancha? (cm²)",
+      "hints": [
+        "Yuzlar nisbati o'xshashlik koeffitsiyentining kvadratiga teng.",
+        "Kichik yuzni $({q}/{p})^2$ ga ko'paytiring."
+      ],
+      "expl": "Yuzlar nisbati ${p2}:{q2}$, demak, ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "To'g'ri burchakli uchburchakning ikki kateti {a} cm va {b} cm. Eng uzun tomoni $x$ qancha? (cm)",
+      "hints": [
+        "Pifagor teoremasi: $a^2+b^2=c^2$.",
+        "Ikkala katetni kvadratga oshiring, qo'shing, keyin kvadrat ildiz oling."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, demak, $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "To'g'ri burchakli uchburchakning gipotenuzasi {c} cm, bir kateti {a} cm. Ikkinchi kateti $x$ qancha? (cm)",
+      "hints": [
+        "$a^2+x^2=c^2$ dan $x^2=c^2-a^2$ kelib chiqadi.",
+        "$c^2-a^2$ dan kvadrat ildiz oling."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, demak, $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Uchburchakning tomonlari {a} cm, {b} cm va {c} cm. U to'g'ri burchakli uchburchakmi?",
+      "hints": [
+        "Eng uzun tomonni gipotenuza deb oling va $a^2+b^2$ ni $c^2$ bilan solishtiring.",
+        "Agar teng bo'lsa, u to'g'ri burchakli uchburchak."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ va ${c}^2={s2}$, demak: {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Shu to'g'ri burchakli uchburchakda $\\{fn} A$ nimaga teng? (o'nli kasr bilan yozing)",
+      "hints": [
+        "$\\sin A$ = qarama-qarshi katet ÷ gipotenuza, $\\cos A$ = yopishgan katet ÷ gipotenuza, $\\tan A$ = qarama-qarshi katet ÷ yopishgan katet.",
+        "$A$ burchakka nisbatan qarama-qarshi va yopishgan katetlarni ajrating."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "$\\{fn}\\ {a}^\\circ$ nimaga teng? (o'nli kasr bilan yozing)",
+      "hints": [
+        "$30^\\circ$, $45^\\circ$ va $60^\\circ$ uchun qiymatlarni eslang.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "To'g'ri burchakli uchburchakda $\\tan A={t}$ va yopishgan katet {adj}. Qarama-qarshi katet $x$ nimaga teng?",
+      "hints": [
+        "$\\tan A$ = qarama-qarshi katet ÷ yopishgan katet.",
+        "Qarama-qarshi katet $=\\tan A\\times$ yopishgan katet."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "AB yoyga tiralgan markaziy burchak ${c}^\\circ$. Shu yoyga tiralgan ichki chizilgan burchak necha gradus? (gradus)",
+      "hints": [
+        "Ichki chizilgan burchak shu yoyga tiralgan markaziy burchakning yarmiga teng.",
+        "Markaziy burchakni 2 ga bo'ling."
+      ],
+      "expl": "${c}\\div2={ans}$, demak, ichki chizilgan burchak ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "O markazli aylanadan tashqaridagi P nuqtadan o'tkazilgan urinma aylanaga A nuqtada tegadi. $PO={po}$, radius {r}. $PA$ nimaga teng?",
+      "hints": [
+        "Urinma radiusga perpendikulyar, shuning uchun OAP uchburchak to'g'ri burchakli.",
+        "$PA^2=PO^2-r^2$ dan foydalaning."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, demak, $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Aylananing radiusi {r}. Vatar markazdan {d} masofada joylashgan. Vatarning uzunligi qancha?",
+      "hints": [
+        "Markazdan vatarga tushirilgan perpendikulyar vatarni teng ikkiga bo'ladi.",
+        "Vatarning yarmi $\\sqrt{r^2-d^2}$ ga teng."
+      ],
+      "expl": "Vatarning yarmi $\\sqrt{{r}^2-{d}^2}={half}$, demak, vatar ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "To'rtburchak aylanaga ichki chizilgan va bir burchagi ${a}^\\circ$. Qarama-qarshi burchagi necha gradus? (gradus)",
+      "hints": [
+        "Aylanaga ichki chizilgan to'rtburchakning qarama-qarshi burchaklari yig'indisi $180^\\circ$ ga teng.",
+        "$180$ dan berilgan burchakni ayiring."
+      ],
+      "expl": "$180-{a}={ans}$, demak, u ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Koordinata tekisligida A({x1}, {y1}) va B({x2}, {y2}) nuqtalar orasidagi masofa qancha?",
+      "hints": [
+        "Masofa $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ ga teng.",
+        "Gorizontal va vertikal ayirmalarni kvadratga oshirib, qo'shing."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "A({x1}, {y1}) va B({x2}, {y2}) bo'lgan AB kesma o'rtasining ${axis}$ koordinatasi nimaga teng?",
+      "hints": [
+        "O'rta nuqta koordinatalarning o'rta arifmetigi.",
+        "Mos koordinatalarni qo'shib, 2 ga bo'ling."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "A({x1}, {y1}) va B({x2}, {y2}) nuqtalardan o'tuvchi to'g'ri chiziqning burchak koeffitsiyenti nimaga teng?",
+      "hints": [
+        "Burchak koeffitsiyenti = ($y$ ning o'zgarishi) ÷ ($x$ ning o'zgarishi).",
+        "$\\frac{y_2-y_1}{x_2-x_1}$ ni hisoblang."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "$(x-{a})^2+(y-{b})^2={r2}$ aylananing radiusi nimaga teng?",
+      "hints": [
+        "$(x-a)^2+(y-b)^2=r^2$ da o'ng tomon $r^2$ ga teng.",
+        "{r2} dan kvadrat ildiz oling."
+      ],
+      "expl": "$r^2={r2}$, demak, $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "$(x-{a})^2+(y-{b})^2={r2}$ aylananing markazi $(p, q)$. $p+q$ nimaga teng?",
+      "hints": [
+        "Markaz $(p, q)$ nuqta.",
+        "$p$ va $q$ ni $x-p$ va $y-q$ dan o'qing."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Koordinata boshidan ${A}x+{B}y-{C}=0$ to'g'ri chiziqqacha masofa qancha?",
+      "hints": [
+        "Nuqtadan to'g'ri chiziqqacha masofa $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$ ga teng.",
+        "Koordinata boshi uchun $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "ABC uchburchakda $a={a}$ va $\\angle A={A}^\\circ$. Tashqi chizilgan aylananing radiusi $R$ nimaga teng?",
+      "hints": [
+        "Sinuslar teoremasi: $\\frac{a}{\\sin A}=2R$.",
+        "$R$ ni topish uchun $\\sin {A}^\\circ$ qiymatidan foydalaning."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "ABC uchburchakda $a={a}$, $b={b}$ va $\\angle C={C}^\\circ$. $c$ nimaga teng?",
+      "hints": [
+        "Kosinuslar teoremasi: $c^2=a^2+b^2-2ab\\cos C$.",
+        "$\\cos {C}^\\circ$ qiymatini qo'ying."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, demak, $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "ABC uchburchakda $a={a}$, $b={b}$ va $\\angle C={C}^\\circ$. Uning yuzi nimaga teng?",
+      "hints": [
+        "Yuzi $=\\frac12ab\\sin C$.",
+        "$\\sin {C}^\\circ$ qiymatini qo'ying."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ burchak $\\frac{\\pi}{d}$ radianga teng. $d$ nimaga teng?",
+      "hints": [
+        "$180^\\circ=\\pi$ radian.",
+        "$\\frac{{a}}{180}\\pi$ ni soddalashtiring."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, demak, $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Sektorning radiusi {r}, markaziy burchagi $\\frac{\\pi}{{d}}$. Yoy uzunligi $k\\pi$. $k$ nimaga teng?",
+      "hints": [
+        "Yoy uzunligi $l=r\\theta$.",
+        "$r$ ni $\\theta=\\frac{\\pi}{{d}}$ ga ko'paytiring."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, demak, $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Sektorning radiusi {r}, markaziy burchagi $\\frac{\\pi}{{d}}$. Uning yuzi $k\\pi$. $k$ nimaga teng?",
+      "hints": [
+        "Sektor yuzi $S=\\frac12r^2\\theta$.",
+        "$r^2$ ni $\\theta$ ga, keyin $\\frac12$ ga ko'paytiring."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, demak, $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "$y^2={k}x$ parabola fokusining $x$ koordinatasi nimaga teng?",
+      "hints": [
+        "$y^2=4px$ parabolaning fokusi $(p, 0)$ nuqta.",
+        "$4p={k}$ tenglamadan $p$ ni toping."
+      ],
+      "expl": "$4p={k}$, demak, $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "$\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ ellipsning fokuslari $(\\pm c, 0)$. $c$ nimaga teng?",
+      "hints": [
+        "Ellips uchun $c^2=a^2-b^2$.",
+        "{a2} dan {b2} ni ayiring va kvadrat ildiz oling."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, demak, $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "$\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ giperbolaning fokuslari $(\\pm c, 0)$. $c$ nimaga teng?",
+      "hints": [
+        "Giperbola uchun $c^2=a^2+b^2$.",
+        "{a2} va {b2} ni qo'shing va kvadrat ildiz oling."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, demak, $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "$\\vec{a}=({x}, {y})$ vektorning uzunligi $|\\vec{a}|$ nimaga teng?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Har bir koordinatani kvadratga oshiring, qo'shing va kvadrat ildiz oling."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "$\\vec{a}=({x1}, {y1})$ va $\\vec{b}=({x2}, {y2})$ vektorlarning skalyar ko'paytmasi $\\vec{a}\\cdot\\vec{b}$ nimaga teng?",
+      "hints": [
+        "Skalyar ko'paytma $x_1x_2+y_1y_2$ ga teng.",
+        "Mos koordinatalarni ko'paytirib, qo'shing."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "$\\vec{a}=({x1}, k)$ va $\\vec{b}=({x2}, {y2})$ vektorlar perpendikulyar. $k$ nimaga teng?",
+      "hints": [
+        "Perpendikulyar vektorlarning skalyar ko'paytmasi $0$ ga teng.",
+        "$x_1x_2+ky_2=0$ tenglamani yeching."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, demak, $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "uchburchak",
+    "quad": "to'rtburchak",
+    "circ": "doira",
+    "pent": "beshburchak",
+    "hex": "oltiburchak",
+    "rect": "to'g'ri to'rtburchak",
+    "square": "kvadrat",
+    "trap": "trapetsiya",
+    "para": "parallelogramm",
+    "rhom": "romb",
+    "cube": "kub",
+    "cuboid": "to'g'ri burchakli parallelepiped",
+    "cyl": "silindr",
+    "sph": "shar",
+    "cone": "konus",
+    "acute": "o'tkir burchak",
+    "right": "to'g'ri burchak",
+    "obtuse": "o'tmas burchak",
+    "faces": "yoqlar",
+    "edges": "qirralar",
+    "vertices": "uchlar",
+    "triP": "uchburchaklar",
+    "squareP": "kvadratlar",
+    "circP": "doiralar",
+    "iso": "teng yonli uchburchak",
+    "equi": "teng tomonli uchburchak",
+    "rtri": "to'g'ri burchakli uchburchak",
+    "sss": "Uch juft tomon teng (SSS)",
+    "sas": "Ikki tomon va ular orasidagi burchak teng (SAS)",
+    "asa": "Bir tomon va uning ikki uchidagi burchaklar teng (ASA)",
+    "yes": "Ha, bu to'g'ri burchakli uchburchak",
+    "no": "Yo'q, bu to'g'ri burchakli uchburchak emas"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Shakllarning nomlari va burchaklar",
+      "concept": "**Uchburchak**ning 3 ta tomoni, **to'rtburchak**ning 4 ta tomoni bor. **Doira** yumaloq va burchaklari yo'q.",
+      "example": "Uchburchak: 3 tomon, 3 burchak"
+    },
+    "E12": {
+      "title": "Hajmli jismlar",
+      "concept": "Quti shaklidagi jism — **to'g'ri burchakli parallelepiped**, yumaloq ustun — **silindr**, to'p — **shar**.",
+      "example": "parallelepiped · silindr · shar"
+    },
+    "E21": {
+      "title": "Uchburchaklar va to'rtburchaklar",
+      "concept": "**Uchburchak**ning 3 ta to'g'ri tomoni va 3 ta burchagi bor; **to'rtburchak**ning shakli qanday bo'lmasin, 4 ta to'g'ri tomoni va 4 ta burchagi bor. Tomonlari soni burchaklari soniga teng.",
+      "example": "To'rtburchak: 4 tomon, 4 burchak"
+    },
+    "E22": {
+      "title": "Uzunlik va vaqt",
+      "concept": "Chizg'ichning 0 belgisiga bir uchini qo'ying; ikkinchi uchidagi belgi uzunlikni bildiradi. $1\\text{ m}=100\\text{ cm}$. Daqiqani topish uchun uzun mil ko'rsatgan sonni 5 ga ko'paytiring.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Burchaklar va to'g'ri burchak",
+      "concept": "Bir nuqtadan chiqqan ikki nur **burchak** hosil qiladi. $90^\\circ$ li burchak — **to'g'ri burchak**; kichigi — **o'tkir**, kattasi — **o'tmas**.",
+      "example": "$30^\\circ$ o'tkir · $90^\\circ$ to'g'ri · $120^\\circ$ o'tmas"
+    },
+    "E32": {
+      "title": "Radius va diametr",
+      "concept": "**Radius** markazdan aylanagacha boradi; **diametr** markazdan o'tadi. Diametr radiusdan ikki barobar katta.",
+      "example": "Radius 5 cm → diametr 10 cm"
+    },
+    "E41": {
+      "title": "Burchaklar yig'indisi",
+      "concept": "Uchburchakning uchta burchagi yig'indisi $180^\\circ$, to'rtburchakning to'rtta burchagi yig'indisi $360^\\circ$ ga teng.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "To'rtburchaklar va ko'pburchaklar",
+      "concept": "Bir juft parallel tomon **trapetsiya**, ikki juft **parallelogramm**, to'rtta teng tomon **romb** hosil qiladi. **Diagonal** yonma-yon bo'lmagan ikki uchni tutashtiradi.",
+      "example": "To'rtburchakning 2 ta diagonali bor"
+    },
+    "E51": {
+      "title": "Perimetr va yuz",
+      "concept": "To'g'ri to'rtburchak: eni × bo'yi. Uchburchak: asos × balandlik ÷ 2. Parallelogramm: asos × balandlik. Trapetsiya: (yuqori + pastki asos) × balandlik ÷ 2. Romb: diagonal × diagonal ÷ 2.",
+      "example": "Uchburchak asosi 10, balandligi 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Tenglik va simmetriya",
+      "concept": "To'liq ustma-ust tushadigan ikki shakl **teng** deyiladi. To'g'ri chiziq bo'ylab buklanganda o'zi bilan ustma-ust tushadigan shakl **simmetrik**; bu chiziq **simmetriya o'qi**.",
+      "example": "Kvadratning 4 ta simmetriya o'qi bor"
+    },
+    "E61": {
+      "title": "Aylana uzunligi va doira yuzi",
+      "concept": "Aylana uzunligi = diametr × π, yuzi = radius × radius × π, bunda π ≈ $3.14$.",
+      "example": "Radius 5 cm → aylana uzunligi $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Parallelepiped va kub",
+      "concept": "Hajm = uzunlik × en × balandlik; sirt yuzi = (uchta yoq yuzlari yig'indisi) × 2. To'g'ri burchakli parallelepipedning 6 ta yog'i, 12 ta qirrasi va 8 ta uchi bor.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Burchaklar qoidalari va ko'pburchaklar",
+      "concept": "Vertikal burchaklar teng; parallel to'g'ri chiziqlarda mos va almashinuvchi burchaklar teng. $n$ burchakli ko'pburchakning ichki burchaklari yig'indisi $180^\\circ\\times(n-2)$ ga teng.",
+      "example": "Beshburchak: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Sektorlar va jismlar",
+      "concept": "Yoy uzunligi $=2\\pi r\\times\\frac{a}{360}$, sektor yuzi $=\\pi r^2\\times\\frac{a}{360}$, shar hajmi $=\\frac43\\pi r^3$, konus hajmi $=\\frac13\\pi r^2h$.",
+      "example": "Shar $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Uchburchaklar va to'rtburchaklar",
+      "concept": "Teng yonli uchburchakning asosidagi burchaklari teng. Parallelogrammning qo'shni burchaklari yig'indisi $180^\\circ$, uchburchakning o'rta chizig'i uchinchi tomonning yarmiga teng.",
+      "example": "Asosidagi burchak $50^\\circ$ → uchidagi burchak $80^\\circ$"
+    },
+    "M22": {
+      "title": "O'xshashlik va Pifagor teoremasi",
+      "concept": "O'xshash shakllarning mos tomonlari nisbati teng, yuzlari nisbati esa shu nisbatning kvadratiga teng. To'g'ri burchakli uchburchakda $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Trigonometrik nisbatlar",
+      "concept": "To‘g‘ri burchakli uchburchakda: $\\sin A$ = qarshi katet ÷ gipotenuza, $\\cos A$ = yonidagi katet ÷ gipotenuza, $\\tan A$ = qarshi katet ÷ yonidagi katet.",
+      "example": "3-4-5 uchburchak: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Aylana xossalari",
+      "concept": "Ichki chizilgan burchak shu yoyga tiralgan markaziy burchakning yarmiga teng. Urinma radiusga perpendikulyar, aylanaga ichki chizilgan to'rtburchakning qarama-qarshi burchaklari yig'indisi $180^\\circ$.",
+      "example": "Markaziy burchak $100^\\circ$ → ichki chizilgan burchak $50^\\circ$"
+    },
+    "H11": {
+      "title": "Koordinata tekisligidagi shakllar",
+      "concept": "Masofa $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, o'rta nuqta — koordinatalarning o'rta arifmetigi, burchak koeffitsiyenti $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): masofa 5"
+    },
+    "H12": {
+      "title": "Aylana tenglamasi",
+      "concept": "Markazi $(a, b)$ va radiusi $r$ bo'lgan aylana $(x-a)^2+(y-b)^2=r^2$ tenglama bilan beriladi. $(x_0,y_0)$ nuqtadan $ax+by+c=0$ to'g'ri chiziqqacha masofa $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$ ga teng.",
+      "example": "$(x-2)^2+(y-3)^2=25$: markaz $(2,3)$, radius 5"
+    },
+    "H21": {
+      "title": "Uchburchaklar va trigonometrik funksiyalar",
+      "concept": "Sinuslar teoremasi $\\frac{a}{\\sin A}=2R$, kosinuslar teoremasi $c^2=a^2+b^2-2ab\\cos C$, uchburchak yuzi $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radian va sektorlar",
+      "concept": "$180^\\circ=\\pi$ radian. Radiusi $r$, burchagi $\\theta$ (radianda) bo'lgan sektorning yoy uzunligi $r\\theta$, yuzi $\\frac12r^2\\theta$ ga teng.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Konus kesimlari",
+      "concept": "$y^2=4px$ parabolaning fokusi $(p,0)$; $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ellips uchun $c^2=a^2-b^2$; giperbola uchun $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: fokus $(3,0)$"
+    },
+    "H32": {
+      "title": "Tekislikdagi vektorlar",
+      "concept": "$(x,y)$ vektorning uzunligi $\\sqrt{x^2+y^2}$; skalyar ko'paytma $x_1x_2+y_1y_2$, perpendikulyar vektorlarning skalyar ko'paytmasi 0 ga teng.",
+      "example": "$(3,4)$ vektorning uzunligi: 5"
+    }
+  }
+}

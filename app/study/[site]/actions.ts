@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { isSite } from "@/lib/learn/types";
-import { accountsEnabled } from "@/lib/learn/server/runtime";
+import { SIGNUP_ENABLED, accountsEnabled } from "@/lib/learn/server/runtime";
 import { createLearnSessionClient } from "@/lib/learn/server/supabase/session";
 import { LEGAL_VERSION } from "@/lib/legal/operator";
 
@@ -24,6 +24,7 @@ export async function authenticate(_prev: AuthFormState | null, formData: FormDa
   const mode = formData.get("mode") === "signup" ? "signup" : "login";
   if (!isSite(site)) return { error: "invalid" };
   if (!accountsEnabled()) return { error: "unavailable" };
+  if (mode === "signup" && !SIGNUP_ENABLED) return { error: "unavailable" }; // sign-up is closed: guest mode only
 
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const password = String(formData.get("password") ?? "");

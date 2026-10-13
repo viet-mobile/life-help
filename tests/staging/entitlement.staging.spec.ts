@@ -1,3 +1,6 @@
+// NOT RUN while paid Premium is switched off for every learning site (FREE_SITES in lib/learn/domain/access.ts): with nothing gated there is no
+// Free / Premium boundary to verify. tests/staging/premium-off.staging.spec.ts runs in its place. This spec is kept (and its structure is
+// pinned by tests/service/staging-*.test.ts) for the day a site is removed from FREE_SITES and the boundary returns.
 import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";

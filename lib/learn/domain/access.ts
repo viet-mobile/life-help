@@ -27,10 +27,11 @@ const lessonsOf = (c: Course) => c.units.flatMap((u) => u.lessons);
 const itemsOf = (l: { questionIds: string[]; challengeId?: string }) => [...l.questionIds, ...(l.challengeId ? [l.challengeId] : [])];
 
 /**
- * Sites whose whole curriculum is free for now (no Premium boundary, nothing is gated).
- * Korean: the 50 % rule would cut each short level mid-way; it returns to the normal split once the course is long enough.
+ * Sites whose whole curriculum is free (no Premium boundary, nothing is gated). Paid Premium is switched off for every learning site
+ * for now: remove a site from this set to bring the 50 / 50 Free / Premium split back for it (nothing else changes).
+ * The set is mutable only so that tests can exercise the gating rules; production code never writes to it.
  */
-export const FREE_SITES: ReadonlySet<string> = new Set(["korean"]);
+export const FREE_SITES: Set<string> = new Set(["math", "english", "korean"]);
 
 export function freeCount(total: number, site?: string): number {
   return site && FREE_SITES.has(site) ? total : Math.floor(total / 2);

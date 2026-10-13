@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AuthForm } from "@/components/learn/AuthForm";
-import { accountsEnabled } from "@/lib/learn/server/runtime";
+import { SIGNUP_ENABLED, accountsEnabled } from "@/lib/learn/server/runtime";
 import { getServerT } from "@/lib/learn/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -8,5 +8,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page() {
-  return <AuthForm enabled={accountsEnabled()} />;
+  return <AuthForm enabled={accountsEnabled()} signupEnabled={SIGNUP_ENABLED} />;
 }

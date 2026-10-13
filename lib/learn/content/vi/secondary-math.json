@@ -24,7 +24,17 @@
   "m.h3.area": "Ứng dụng của tích phân",
   "m.h3.ser": "Chuỗi cấp số nhân",
   "m.h3.cond": "Xác suất có điều kiện và độc lập",
-  "m.h3.norm": "Phân phối nhị thức và phân phối chuẩn"
+  "m.h3.norm": "Phân phối nhị thức và phân phối chuẩn",
+  "m.m2.geo1": "Tam giác và tứ giác",
+  "m.m2.geo2": "Đồng dạng và định lý Pythagore",
+  "m.m3.geo1": "Tỉ số lượng giác",
+  "m.m3.geo2": "Tính chất của đường tròn",
+  "m.h1.geo1": "Hình trên mặt phẳng tọa độ",
+  "m.h1.geo2": "Phương trình đường tròn",
+  "m.h2.geo1": "Tam giác và hàm số lượng giác",
+  "m.h2.geo2": "Radian và hình quạt",
+  "m.h3.geo1": "Các đường conic",
+  "m.h3.geo2": "Vectơ trong mặt phẳng"
  },
  "courses": {
   "math-m2-functions-probability": {
@@ -195,6 +205,56 @@
    "title": "Phân phối nhị thức và phân phối chuẩn",
    "concept": "$B(n,p)$ có kỳ vọng $np$ và phương sai $np(1-p)$. Phân phối chuẩn được chuẩn hóa bằng $Z=\\frac{X-m}{\\sigma}$ và đối xứng qua giá trị trung bình.",
    "example": "Nếu $X\\sim N(50,10^2)$ thì $P(X\\ge 60)=P(Z\\ge 1)$"
+  },
+  "math-m2-geo1": {
+   "title": "Tam giác và tứ giác",
+   "concept": "Hai góc ở đáy của tam giác cân bằng nhau. Hai góc kề nhau của hình bình hành có tổng bằng $180^\\circ$, và đoạn thẳng nối trung điểm của hai cạnh tam giác bằng một nửa cạnh thứ ba.",
+   "example": "Góc ở đáy $50^\\circ$ → góc ở đỉnh $80^\\circ$"
+  },
+  "math-m2-geo2": {
+   "title": "Đồng dạng và định lý Pythagore",
+   "concept": "Các hình đồng dạng có tỉ số các cạnh bằng nhau và diện tích có tỉ số bằng bình phương tỉ số đó. Trong tam giác vuông $a^2+b^2=c^2$.",
+   "example": "$3^2+4^2=5^2$"
+  },
+  "math-m3-geo1": {
+   "title": "Tỉ số lượng giác",
+   "concept": "Trong tam giác vuông: $\\sin A$ = cạnh đối ÷ cạnh huyền, $\\cos A$ = cạnh kề ÷ cạnh huyền, $\\tan A$ = cạnh đối ÷ cạnh kề.",
+   "example": "Tam giác 3-4-5: $\\sin A=0.6$"
+  },
+  "math-m3-geo2": {
+   "title": "Tính chất của đường tròn",
+   "concept": "Góc nội tiếp bằng một nửa góc ở tâm cùng chắn một cung. Tiếp tuyến vuông góc với bán kính, và hai góc đối của tứ giác nội tiếp có tổng bằng $180^\\circ$.",
+   "example": "Góc ở tâm $100^\\circ$ → góc nội tiếp $50^\\circ$"
+  },
+  "math-h1-geo1": {
+   "title": "Hình trên mặt phẳng tọa độ",
+   "concept": "Khoảng cách $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, trung điểm = trung bình cộng các tọa độ, hệ số góc $\\frac{y_2-y_1}{x_2-x_1}$.",
+   "example": "A(0,0), B(3,4): khoảng cách 5"
+  },
+  "math-h1-geo2": {
+   "title": "Phương trình đường tròn",
+   "concept": "Đường tròn tâm $(a, b)$ và bán kính $r$ có phương trình $(x-a)^2+(y-b)^2=r^2$. Khoảng cách từ $(x_0,y_0)$ đến $ax+by+c=0$ là $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2} }$.",
+   "example": "$(x-2)^2+(y-3)^2=25$: tâm $(2,3)$, bán kính 5"
+  },
+  "math-h2-geo1": {
+   "title": "Tam giác và hàm số lượng giác",
+   "concept": "Định lý sin $\\frac{a}{\\sin A}=2R$, định lý cosin $c^2=a^2+b^2-2ab\\cos C$, diện tích tam giác $\\frac12ab\\sin C$.",
+   "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+  },
+  "math-h2-geo2": {
+   "title": "Radian và hình quạt",
+   "concept": "$180^\\circ=\\pi$ radian. Hình quạt có bán kính $r$ và góc $\\theta$ (radian) có độ dài cung $r\\theta$ và diện tích $\\frac12r^2\\theta$.",
+   "example": "$60^\\circ=\\frac{\\pi}{3}$"
+  },
+  "math-h3-geo1": {
+   "title": "Các đường conic",
+   "concept": "Parabol $y^2=4px$ có tiêu điểm $(p,0)$; với elip $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; với hypebol $c^2=a^2+b^2$.",
+   "example": "$y^2=12x$: tiêu điểm $(3,0)$"
+  },
+  "math-h3-geo2": {
+   "title": "Vectơ trong mặt phẳng",
+   "concept": "Độ dài của $(x,y)$ là $\\sqrt{x^2+y^2}$; tích vô hướng là $x_1x_2+y_1y_2$, và hai vectơ vuông góc có tích vô hướng bằng 0.",
+   "example": "Độ dài của $(3,4)$: 5"
   }
  },
  "questions": {
@@ -2712,6 +2772,566 @@
     "$m$ là trung điểm của $40$ và $60$; $\\sigma=5$."
    ],
    "explanation": "$m=\\frac{40+60}{2}=50$, $\\sigma=5$ nên $m+\\sigma=55$."
+  },
+  "m-m2-geo1-1": {
+   "prompt": "Một góc ở đáy của tam giác cân là $50^\\circ$. Góc ở đỉnh là bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc ở đáy của tam giác cân bằng nhau.",
+    "Lấy $180^\\circ$ trừ cả hai góc ở đáy."
+   ],
+   "explanation": "$180-50\\times2=80$, nên góc ở đỉnh là $80^\\circ$."
+  },
+  "m-m2-geo1-2": {
+   "prompt": "Trong hình bình hành ABCD, $\\angle A=65^\\circ$. $\\angle B$ bằng bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc kề nhau của hình bình hành có tổng bằng $180^\\circ$.",
+    "Lấy $180$ trừ $\\angle A$."
+   ],
+   "explanation": "$180-65=115$, nên $\\angle B=115^\\circ$."
+  },
+  "m-m2-geo1-3": {
+   "prompt": "Trong một tam giác, đoạn thẳng $x$ nối trung điểm của hai cạnh và song song với cạnh thứ ba dài 14 cm. $x$ bằng bao nhiêu? (cm)",
+   "hints": [
+    "Đoạn thẳng nối trung điểm của hai cạnh bằng một nửa cạnh thứ ba.",
+    "Chia 14 cho 2."
+   ],
+   "explanation": "$14\\div2=7$, nên $x=7$ cm."
+  },
+  "m-m2-geo1-4": {
+   "prompt": "Một góc ở đáy của tam giác cân là $70^\\circ$. Góc ở đỉnh là bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc ở đáy của tam giác cân bằng nhau.",
+    "Lấy $180^\\circ$ trừ cả hai góc ở đáy."
+   ],
+   "explanation": "$180-70\\times2=40$, nên góc ở đỉnh là $40^\\circ$."
+  },
+  "m-m2-geo1-c": {
+   "prompt": "Trong một tam giác, đoạn thẳng $x$ nối trung điểm của hai cạnh và song song với cạnh thứ ba dài 18 cm. $x$ bằng bao nhiêu? (cm)",
+   "hints": [
+    "Đoạn thẳng nối trung điểm của hai cạnh bằng một nửa cạnh thứ ba.",
+    "Chia 18 cho 2."
+   ],
+   "explanation": "$18\\div2=9$, nên $x=9$ cm."
+  },
+  "m-m2-geo1-v1": {
+   "prompt": "Trong hình bình hành ABCD, $\\angle A=110^\\circ$. $\\angle B$ bằng bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc kề nhau của hình bình hành có tổng bằng $180^\\circ$.",
+    "Lấy $180$ trừ $\\angle A$."
+   ],
+   "explanation": "$180-110=70$, nên $\\angle B=70^\\circ$."
+  },
+  "m-m2-geo1-v2": {
+   "prompt": "Một góc ở đáy của tam giác cân là $35^\\circ$. Góc ở đỉnh là bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc ở đáy của tam giác cân bằng nhau.",
+    "Lấy $180^\\circ$ trừ cả hai góc ở đáy."
+   ],
+   "explanation": "$180-35\\times2=110$, nên góc ở đỉnh là $110^\\circ$."
+  },
+  "m-m2-geo2-1": {
+   "prompt": "Hai cạnh góc vuông của một tam giác vuông là 3 cm và 4 cm. Cạnh dài nhất $x$ là bao nhiêu? (cm)",
+   "hints": [
+    "Định lý Pythagore: $a^2+b^2=c^2$.",
+    "Bình phương hai cạnh, cộng lại, rồi lấy căn bậc hai."
+   ],
+   "explanation": "$3^2+4^2=25$, nên $x=5$."
+  },
+  "m-m2-geo2-2": {
+   "prompt": "Hai cạnh góc vuông của một tam giác vuông là 6 cm và 8 cm. Cạnh dài nhất $x$ là bao nhiêu? (cm)",
+   "hints": [
+    "Định lý Pythagore: $a^2+b^2=c^2$.",
+    "Bình phương hai cạnh, cộng lại, rồi lấy căn bậc hai."
+   ],
+   "explanation": "$6^2+8^2=100$, nên $x=10$."
+  },
+  "m-m2-geo2-3": {
+   "prompt": "Một tam giác vuông có cạnh huyền 13 cm và một cạnh góc vuông 5 cm. Cạnh góc vuông còn lại $x$ là bao nhiêu? (cm)",
+   "hints": [
+    "Từ $a^2+x^2=c^2$, suy ra $x^2=c^2-a^2$.",
+    "Lấy căn bậc hai của $c^2-a^2$."
+   ],
+   "explanation": "$13^2-5^2=144$, nên $x=12$."
+  },
+  "m-m2-geo2-4": {
+   "prompt": "Hai tam giác đồng dạng. Độ dài cạnh $x$ là bao nhiêu? (cm)",
+   "hints": [
+    "Trong các hình đồng dạng, tỉ số các cạnh tương ứng bằng nhau.",
+    "Trước hết tìm tỉ số đồng dạng."
+   ],
+   "explanation": "Tỉ số là $2:3$, nên $x=9$."
+  },
+  "m-m2-geo2-c": {
+   "prompt": "Hai hình đồng dạng có tỉ số đồng dạng $2:3$. Hình nhỏ có diện tích 20 cm². Diện tích hình lớn là bao nhiêu? (cm²)",
+   "hints": [
+    "Tỉ số diện tích bằng bình phương tỉ số đồng dạng.",
+    "Nhân diện tích hình nhỏ với $(3/2)^2$."
+   ],
+   "explanation": "Tỉ số diện tích là $4:9$, nên $20\\times\\frac{9}{4}=45$."
+  },
+  "m-m2-geo2-v1": {
+   "prompt": "Hai cạnh góc vuông của một tam giác vuông là 5 cm và 12 cm. Cạnh dài nhất $x$ là bao nhiêu? (cm)",
+   "hints": [
+    "Định lý Pythagore: $a^2+b^2=c^2$.",
+    "Bình phương hai cạnh, cộng lại, rồi lấy căn bậc hai."
+   ],
+   "explanation": "$5^2+12^2=169$, nên $x=13$."
+  },
+  "m-m2-geo2-v2": {
+   "prompt": "Một tam giác có các cạnh 6 cm, 8 cm và 10 cm. Đó có phải là tam giác vuông không?",
+   "hints": [
+    "Lấy cạnh dài nhất làm cạnh huyền và so sánh $a^2+b^2$ với $c^2$.",
+    "Nếu chúng bằng nhau thì đó là tam giác vuông."
+   ],
+   "explanation": "$6^2+8^2=100$ và $10^2=100$, nên Có, đó là tam giác vuông."
+  },
+  "m-m3-geo1-1": {
+   "prompt": "Trong tam giác vuông, $\\sin A$ bằng bao nhiêu? (viết số thập phân)",
+   "hints": [
+    "$\\sin A$ = cạnh đối ÷ cạnh huyền, $\\cos A$ = cạnh kề ÷ cạnh huyền, $\\tan A$ = cạnh đối ÷ cạnh kề.",
+    "Phân biệt cạnh đối và cạnh kề dựa vào góc $A$."
+   ],
+   "explanation": "$\\sin A=\\frac{3}{5}=0.6$."
+  },
+  "m-m3-geo1-2": {
+   "prompt": "Trong tam giác vuông, $\\cos A$ bằng bao nhiêu? (viết số thập phân)",
+   "hints": [
+    "$\\sin A$ = cạnh đối ÷ cạnh huyền, $\\cos A$ = cạnh kề ÷ cạnh huyền, $\\tan A$ = cạnh đối ÷ cạnh kề.",
+    "Phân biệt cạnh đối và cạnh kề dựa vào góc $A$."
+   ],
+   "explanation": "$\\cos A=\\frac{4}{5}=0.8$."
+  },
+  "m-m3-geo1-3": {
+   "prompt": "Trong tam giác vuông, $\\tan A$ bằng bao nhiêu? (viết số thập phân)",
+   "hints": [
+    "$\\sin A$ = cạnh đối ÷ cạnh huyền, $\\cos A$ = cạnh kề ÷ cạnh huyền, $\\tan A$ = cạnh đối ÷ cạnh kề.",
+    "Phân biệt cạnh đối và cạnh kề dựa vào góc $A$."
+   ],
+   "explanation": "$\\tan A=\\frac{3}{4}=0.75$."
+  },
+  "m-m3-geo1-4": {
+   "prompt": "$\\sin\\ 30^\\circ$ bằng bao nhiêu? (viết số thập phân)",
+   "hints": [
+    "Hãy nhớ các giá trị của $30^\\circ$, $45^\\circ$ và $60^\\circ$.",
+    "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+   ],
+   "explanation": "$\\sin\\ 30^\\circ=0.5$."
+  },
+  "m-m3-geo1-c": {
+   "prompt": "Trong một tam giác vuông có $\\tan A=0.75$ và cạnh kề là 8. Cạnh đối $x$ là bao nhiêu?",
+   "hints": [
+    "$\\tan A$ = cạnh đối ÷ cạnh kề.",
+    "Cạnh đối $=\\tan A\\times$ × cạnh kề."
+   ],
+   "explanation": "$x=0.75\\times8=6$."
+  },
+  "m-m3-geo1-v1": {
+   "prompt": "$\\tan\\ 45^\\circ$ bằng bao nhiêu? (viết số thập phân)",
+   "hints": [
+    "Hãy nhớ các giá trị của $30^\\circ$, $45^\\circ$ và $60^\\circ$.",
+    "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+   ],
+   "explanation": "$\\tan\\ 45^\\circ=1$."
+  },
+  "m-m3-geo1-v2": {
+   "prompt": "$\\cos\\ 60^\\circ$ bằng bao nhiêu? (viết số thập phân)",
+   "hints": [
+    "Hãy nhớ các giá trị của $30^\\circ$, $45^\\circ$ và $60^\\circ$.",
+    "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+   ],
+   "explanation": "$\\cos\\ 60^\\circ=0.5$."
+  },
+  "m-m3-geo2-1": {
+   "prompt": "Góc ở tâm chắn cung AB là $100^\\circ$. Góc nội tiếp chắn cùng cung đó là bao nhiêu? (độ)",
+   "hints": [
+    "Góc nội tiếp bằng một nửa góc ở tâm cùng chắn một cung.",
+    "Chia góc ở tâm cho 2."
+   ],
+   "explanation": "$100\\div2=50$, nên góc nội tiếp là $50^\\circ$."
+  },
+  "m-m3-geo2-2": {
+   "prompt": "Từ điểm P nằm ngoài đường tròn tâm O kẻ tiếp tuyến chạm đường tròn tại A. $PO=5$ và bán kính là 3. $PA$ bằng bao nhiêu?",
+   "hints": [
+    "Tiếp tuyến vuông góc với bán kính, nên tam giác OAP vuông.",
+    "Dùng $PA^2=PO^2-r^2$."
+   ],
+   "explanation": "$5^2-3^2=16$, nên $PA=4$."
+  },
+  "m-m3-geo2-3": {
+   "prompt": "Một đường tròn có bán kính 5. Một dây cung cách tâm một khoảng 3. Độ dài của dây cung là bao nhiêu?",
+   "hints": [
+    "Đường vuông góc kẻ từ tâm chia đôi dây cung.",
+    "Nửa dây cung là $\\sqrt{r^2-d^2}$."
+   ],
+   "explanation": "Nửa dây cung là $\\sqrt{5^2-3^2}=4$, nên dây cung là $8$."
+  },
+  "m-m3-geo2-4": {
+   "prompt": "Một tứ giác nội tiếp đường tròn có một góc là $75^\\circ$. Góc đối diện là bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc đối của tứ giác nội tiếp có tổng bằng $180^\\circ$.",
+    "Lấy $180$ trừ góc đã cho."
+   ],
+   "explanation": "$180-75=105$, nên nó là $105^\\circ$."
+  },
+  "m-m3-geo2-c": {
+   "prompt": "Từ điểm P nằm ngoài đường tròn tâm O kẻ tiếp tuyến chạm đường tròn tại A. $PO=13$ và bán kính là 5. $PA$ bằng bao nhiêu?",
+   "hints": [
+    "Tiếp tuyến vuông góc với bán kính, nên tam giác OAP vuông.",
+    "Dùng $PA^2=PO^2-r^2$."
+   ],
+   "explanation": "$13^2-5^2=144$, nên $PA=12$."
+  },
+  "m-m3-geo2-v1": {
+   "prompt": "Góc ở tâm chắn cung AB là $140^\\circ$. Góc nội tiếp chắn cùng cung đó là bao nhiêu? (độ)",
+   "hints": [
+    "Góc nội tiếp bằng một nửa góc ở tâm cùng chắn một cung.",
+    "Chia góc ở tâm cho 2."
+   ],
+   "explanation": "$140\\div2=70$, nên góc nội tiếp là $70^\\circ$."
+  },
+  "m-m3-geo2-v2": {
+   "prompt": "Một tứ giác nội tiếp đường tròn có một góc là $100^\\circ$. Góc đối diện là bao nhiêu? (độ)",
+   "hints": [
+    "Hai góc đối của tứ giác nội tiếp có tổng bằng $180^\\circ$.",
+    "Lấy $180$ trừ góc đã cho."
+   ],
+   "explanation": "$180-100=80$, nên nó là $80^\\circ$."
+  },
+  "m-h1-geo1-1": {
+   "prompt": "Khoảng cách giữa hai điểm A(0, 0) và B(3, 4) trên mặt phẳng tọa độ là bao nhiêu?",
+   "hints": [
+    "Khoảng cách là $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+    "Bình phương hiệu hoành độ và hiệu tung độ rồi cộng lại."
+   ],
+   "explanation": "$\\sqrt{3^2+4^2}=\\sqrt{25}=5$."
+  },
+  "m-h1-geo1-2": {
+   "prompt": "Tọa độ $x$ của trung điểm đoạn thẳng AB với A(2, 1) và B(8, 5) là bao nhiêu?",
+   "hints": [
+    "Trung điểm có tọa độ là trung bình cộng các tọa độ.",
+    "Cộng các tọa độ tương ứng rồi chia cho 2."
+   ],
+   "explanation": "$(2+8)\\div2=5$."
+  },
+  "m-h1-geo1-3": {
+   "prompt": "Tọa độ $y$ của trung điểm đoạn thẳng AB với A(2, 1) và B(8, 5) là bao nhiêu?",
+   "hints": [
+    "Trung điểm có tọa độ là trung bình cộng các tọa độ.",
+    "Cộng các tọa độ tương ứng rồi chia cho 2."
+   ],
+   "explanation": "$(1+5)\\div2=3$."
+  },
+  "m-h1-geo1-4": {
+   "prompt": "Hệ số góc của đường thẳng đi qua A(1, 2) và B(4, 8) là bao nhiêu?",
+   "hints": [
+    "Hệ số góc = (độ thay đổi của $y$) ÷ (độ thay đổi của $x$).",
+    "Tính $\\frac{y_2-y_1}{x_2-x_1}$."
+   ],
+   "explanation": "$\\frac{6}{3}=2$."
+  },
+  "m-h1-geo1-c": {
+   "prompt": "Khoảng cách giữa hai điểm A(1, 1) và B(7, 9) trên mặt phẳng tọa độ là bao nhiêu?",
+   "hints": [
+    "Khoảng cách là $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+    "Bình phương hiệu hoành độ và hiệu tung độ rồi cộng lại."
+   ],
+   "explanation": "$\\sqrt{6^2+8^2}=\\sqrt{100}=10$."
+  },
+  "m-h1-geo1-v1": {
+   "prompt": "Hệ số góc của đường thẳng đi qua A(0, 5) và B(4, 1) là bao nhiêu?",
+   "hints": [
+    "Hệ số góc = (độ thay đổi của $y$) ÷ (độ thay đổi của $x$).",
+    "Tính $\\frac{y_2-y_1}{x_2-x_1}$."
+   ],
+   "explanation": "$\\frac{-4}{4}=-1$."
+  },
+  "m-h1-geo1-v2": {
+   "prompt": "Khoảng cách giữa hai điểm A(-2, 1) và B(4, 9) trên mặt phẳng tọa độ là bao nhiêu?",
+   "hints": [
+    "Khoảng cách là $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+    "Bình phương hiệu hoành độ và hiệu tung độ rồi cộng lại."
+   ],
+   "explanation": "$\\sqrt{6^2+8^2}=\\sqrt{100}=10$."
+  },
+  "m-h1-geo2-1": {
+   "prompt": "Bán kính của đường tròn $(x-2)^2+(y-3)^2=25$ là bao nhiêu?",
+   "hints": [
+    "Trong $(x-a)^2+(y-b)^2=r^2$, vế phải là $r^2$.",
+    "Lấy căn bậc hai của 25."
+   ],
+   "explanation": "$r^2=25$, nên $r=5$."
+  },
+  "m-h1-geo2-2": {
+   "prompt": "Đường tròn $(x-4)^2+(y-2)^2=9$ có tâm $(p, q)$. $p+q$ bằng bao nhiêu?",
+   "hints": [
+    "Tâm là $(p, q)$.",
+    "Đọc $p$ và $q$ từ $x-p$ và $y-q$."
+   ],
+   "explanation": "$p+q=4+2=6$."
+  },
+  "m-h1-geo2-3": {
+   "prompt": "Bán kính của đường tròn $(x-0)^2+(y-0)^2=49$ là bao nhiêu?",
+   "hints": [
+    "Trong $(x-a)^2+(y-b)^2=r^2$, vế phải là $r^2$.",
+    "Lấy căn bậc hai của 49."
+   ],
+   "explanation": "$r^2=49$, nên $r=7$."
+  },
+  "m-h1-geo2-4": {
+   "prompt": "Khoảng cách từ gốc tọa độ đến đường thẳng $3x+4y-10=0$ là bao nhiêu?",
+   "hints": [
+    "Khoảng cách từ một điểm đến một đường thẳng là $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2} }$.",
+    "Với gốc tọa độ $x_0=y_0=0$."
+   ],
+   "explanation": "$\\frac{10}{\\sqrt{3^2+4^2} }=\\frac{10}{5}=2$."
+  },
+  "m-h1-geo2-c": {
+   "prompt": "Khoảng cách từ gốc tọa độ đến đường thẳng $6x+8y-30=0$ là bao nhiêu?",
+   "hints": [
+    "Khoảng cách từ một điểm đến một đường thẳng là $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2} }$.",
+    "Với gốc tọa độ $x_0=y_0=0$."
+   ],
+   "explanation": "$\\frac{30}{\\sqrt{6^2+8^2} }=\\frac{30}{10}=3$."
+  },
+  "m-h1-geo2-v1": {
+   "prompt": "Đường tròn $(x-1)^2+(y-5)^2=16$ có tâm $(p, q)$. $p+q$ bằng bao nhiêu?",
+   "hints": [
+    "Tâm là $(p, q)$.",
+    "Đọc $p$ và $q$ từ $x-p$ và $y-q$."
+   ],
+   "explanation": "$p+q=1+5=6$."
+  },
+  "m-h1-geo2-v2": {
+   "prompt": "Bán kính của đường tròn $(x-3)^2+(y-3)^2=36$ là bao nhiêu?",
+   "hints": [
+    "Trong $(x-a)^2+(y-b)^2=r^2$, vế phải là $r^2$.",
+    "Lấy căn bậc hai của 36."
+   ],
+   "explanation": "$r^2=36$, nên $r=6$."
+  },
+  "m-h2-geo1-1": {
+   "prompt": "Trong tam giác ABC, $a=6$ và $\\angle A=30^\\circ$. Bán kính đường tròn ngoại tiếp $R$ là bao nhiêu?",
+   "hints": [
+    "Định lý sin: $\\frac6{\\sin A}=2R$.",
+    "Dùng giá trị của $\\sin 30^\\circ$ để tìm $R$."
+   ],
+   "explanation": "$R=\\frac6{2\\sin A}=\\frac{6}{2\\times\\frac12}=6$."
+  },
+  "m-h2-geo1-2": {
+   "prompt": "Trong tam giác ABC, $a=5$, $b=8$ và $\\angle C=60^\\circ$. $c$ bằng bao nhiêu?",
+   "hints": [
+    "Định lý cosin: $c^2=a^2+b^2-2ab\\cos C$.",
+    "Thay giá trị của $\\cos 60^\\circ$ vào."
+   ],
+   "explanation": "$c^2=5^2+8^2-2\\times5\\times8\\times\\frac12=49$, nên $c=7$."
+  },
+  "m-h2-geo1-3": {
+   "prompt": "Trong tam giác ABC, $a=6$, $b=8$ và $\\angle C=30^\\circ$. Diện tích của nó là bao nhiêu?",
+   "hints": [
+    "Diện tích $=\\frac12ab\\sin C$.",
+    "Thay giá trị của $\\sin 30^\\circ$ vào."
+   ],
+   "explanation": "$\\frac12\\times6\\times8\\times\\frac12=12$."
+  },
+  "m-h2-geo1-4": {
+   "prompt": "Trong tam giác ABC, $a=10$, $b=4$ và $\\angle C=90^\\circ$. Diện tích của nó là bao nhiêu?",
+   "hints": [
+    "Diện tích $=\\frac12ab\\sin C$.",
+    "Thay giá trị của $\\sin 90^\\circ$ vào."
+   ],
+   "explanation": "$\\frac12\\times10\\times4\\times1=20$."
+  },
+  "m-h2-geo1-c": {
+   "prompt": "Trong tam giác ABC, $a=3$, $b=8$ và $\\angle C=60^\\circ$. $c$ bằng bao nhiêu?",
+   "hints": [
+    "Định lý cosin: $c^2=a^2+b^2-2ab\\cos C$.",
+    "Thay giá trị của $\\cos 60^\\circ$ vào."
+   ],
+   "explanation": "$c^2=3^2+8^2-2\\times3\\times8\\times\\frac12=49$, nên $c=7$."
+  },
+  "m-h2-geo1-v1": {
+   "prompt": "Trong tam giác ABC, $a=10$ và $\\angle A=30^\\circ$. Bán kính đường tròn ngoại tiếp $R$ là bao nhiêu?",
+   "hints": [
+    "Định lý sin: $\\frac10{\\sin A}=2R$.",
+    "Dùng giá trị của $\\sin 30^\\circ$ để tìm $R$."
+   ],
+   "explanation": "$R=\\frac10{2\\sin A}=\\frac{10}{2\\times\\frac12}=10$."
+  },
+  "m-h2-geo1-v2": {
+   "prompt": "Trong tam giác ABC, $a=12$, $b=5$ và $\\angle C=30^\\circ$. Diện tích của nó là bao nhiêu?",
+   "hints": [
+    "Diện tích $=\\frac12ab\\sin C$.",
+    "Thay giá trị của $\\sin 30^\\circ$ vào."
+   ],
+   "explanation": "$\\frac12\\times12\\times5\\times\\frac12=15$."
+  },
+  "m-h2-geo2-1": {
+   "prompt": "$60^\\circ$ bằng $\\frac{\\pi}{d}$ radian. $d$ bằng bao nhiêu?",
+   "hints": [
+    "$180^\\circ=\\pi$ radian.",
+    "Rút gọn $\\frac{60}{180}\\pi$."
+   ],
+   "explanation": "$\\frac{60}{180}\\pi=\\frac{\\pi}{3}$, nên $d=3$."
+  },
+  "m-h2-geo2-2": {
+   "prompt": "$45^\\circ$ bằng $\\frac{\\pi}{d}$ radian. $d$ bằng bao nhiêu?",
+   "hints": [
+    "$180^\\circ=\\pi$ radian.",
+    "Rút gọn $\\frac{45}{180}\\pi$."
+   ],
+   "explanation": "$\\frac{45}{180}\\pi=\\frac{\\pi}{4}$, nên $d=4$."
+  },
+  "m-h2-geo2-3": {
+   "prompt": "$30^\\circ$ bằng $\\frac{\\pi}{d}$ radian. $d$ bằng bao nhiêu?",
+   "hints": [
+    "$180^\\circ=\\pi$ radian.",
+    "Rút gọn $\\frac{30}{180}\\pi$."
+   ],
+   "explanation": "$\\frac{30}{180}\\pi=\\frac{\\pi}{6}$, nên $d=6$."
+  },
+  "m-h2-geo2-4": {
+   "prompt": "Một hình quạt có bán kính 6 và góc ở tâm $\\frac{\\pi}{3}$. Độ dài cung của nó là $k\\pi$. $k$ bằng bao nhiêu?",
+   "hints": [
+    "Độ dài cung là $l=r\\theta$.",
+    "Nhân $r$ với $\\theta=\\frac{\\pi}{3}$."
+   ],
+   "explanation": "$l=6\\times\\frac{\\pi}{3}=2\\pi$, nên $k=2$."
+  },
+  "m-h2-geo2-c": {
+   "prompt": "Một hình quạt có bán kính 6 và góc ở tâm $\\frac{\\pi}{3}$. Diện tích của nó là $k\\pi$. $k$ bằng bao nhiêu?",
+   "hints": [
+    "Diện tích hình quạt là $S=\\frac12r^2\\theta$.",
+    "Nhân $r^2$ với $\\theta$, rồi nhân với $\\frac12$."
+   ],
+   "explanation": "$S=\\frac12\\times6^2\\times\\frac{\\pi}{3}=6\\pi$, nên $k=6$."
+  },
+  "m-h2-geo2-v1": {
+   "prompt": "$90^\\circ$ bằng $\\frac{\\pi}{d}$ radian. $d$ bằng bao nhiêu?",
+   "hints": [
+    "$180^\\circ=\\pi$ radian.",
+    "Rút gọn $\\frac{90}{180}\\pi$."
+   ],
+   "explanation": "$\\frac{90}{180}\\pi=\\frac{\\pi}{2}$, nên $d=2$."
+  },
+  "m-h2-geo2-v2": {
+   "prompt": "Một hình quạt có bán kính 8 và góc ở tâm $\\frac{\\pi}{4}$. Độ dài cung của nó là $k\\pi$. $k$ bằng bao nhiêu?",
+   "hints": [
+    "Độ dài cung là $l=r\\theta$.",
+    "Nhân $r$ với $\\theta=\\frac{\\pi}{4}$."
+   ],
+   "explanation": "$l=8\\times\\frac{\\pi}{4}=2\\pi$, nên $k=2$."
+  },
+  "m-h3-geo1-1": {
+   "prompt": "Hoành độ $x$ của tiêu điểm của parabol $y^2=12x$ là bao nhiêu?",
+   "hints": [
+    "Tiêu điểm của $y^2=4px$ là $(p, 0)$.",
+    "Giải $4p=12$ để tìm $p$."
+   ],
+   "explanation": "$4p=12$, nên $p=3$."
+  },
+  "m-h3-geo1-2": {
+   "prompt": "Hoành độ $x$ của tiêu điểm của parabol $y^2=8x$ là bao nhiêu?",
+   "hints": [
+    "Tiêu điểm của $y^2=4px$ là $(p, 0)$.",
+    "Giải $4p=8$ để tìm $p$."
+   ],
+   "explanation": "$4p=8$, nên $p=2$."
+  },
+  "m-h3-geo1-3": {
+   "prompt": "Elip $\\frac{x^2}{25}+\\frac{y^2}{9}=1$ có các tiêu điểm $(\\pm c, 0)$. $c$ bằng bao nhiêu?",
+   "hints": [
+    "Với elip $c^2=a^2-b^2$.",
+    "Lấy 25 trừ 9 rồi lấy căn bậc hai."
+   ],
+   "explanation": "$c^2=25-9=16$, nên $c=4$."
+  },
+  "m-h3-geo1-4": {
+   "prompt": "Hypebol $\\frac{x^2}{9}-\\frac{y^2}{16}=1$ có các tiêu điểm $(\\pm c, 0)$. $c$ bằng bao nhiêu?",
+   "hints": [
+    "Với hypebol $c^2=a^2+b^2$.",
+    "Cộng 9 và 16 rồi lấy căn bậc hai."
+   ],
+   "explanation": "$c^2=9+16=25$, nên $c=5$."
+  },
+  "m-h3-geo1-c": {
+   "prompt": "Elip $\\frac{x^2}{169}+\\frac{y^2}{144}=1$ có các tiêu điểm $(\\pm c, 0)$. $c$ bằng bao nhiêu?",
+   "hints": [
+    "Với elip $c^2=a^2-b^2$.",
+    "Lấy 169 trừ 144 rồi lấy căn bậc hai."
+   ],
+   "explanation": "$c^2=169-144=25$, nên $c=5$."
+  },
+  "m-h3-geo1-v1": {
+   "prompt": "Hoành độ $x$ của tiêu điểm của parabol $y^2=20x$ là bao nhiêu?",
+   "hints": [
+    "Tiêu điểm của $y^2=4px$ là $(p, 0)$.",
+    "Giải $4p=20$ để tìm $p$."
+   ],
+   "explanation": "$4p=20$, nên $p=5$."
+  },
+  "m-h3-geo1-v2": {
+   "prompt": "Hypebol $\\frac{x^2}{36}-\\frac{y^2}{64}=1$ có các tiêu điểm $(\\pm c, 0)$. $c$ bằng bao nhiêu?",
+   "hints": [
+    "Với hypebol $c^2=a^2+b^2$.",
+    "Cộng 36 và 64 rồi lấy căn bậc hai."
+   ],
+   "explanation": "$c^2=36+64=100$, nên $c=10$."
+  },
+  "m-h3-geo2-1": {
+   "prompt": "Độ dài $|\\vec{a}|$ của vectơ $\\vec{a}=(3, 4)$ là bao nhiêu?",
+   "hints": [
+    "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+    "Bình phương từng thành phần, cộng lại rồi lấy căn bậc hai."
+   ],
+   "explanation": "$\\sqrt{3^2+4^2}=\\sqrt{25}=5$."
+  },
+  "m-h3-geo2-2": {
+   "prompt": "Tích vô hướng $\\vec{a}\\cdot\\vec{b}$ của $\\vec{a}=(1, 2)$ và $\\vec{b}=(3, 4)$ là bao nhiêu?",
+   "hints": [
+    "Tích vô hướng là $x_1x_2+y_1y_2$.",
+    "Nhân các thành phần tương ứng rồi cộng lại."
+   ],
+   "explanation": "$1\\times3+2\\times4=11$."
+  },
+  "m-h3-geo2-3": {
+   "prompt": "Độ dài $|\\vec{a}|$ của vectơ $\\vec{a}=(5, 12)$ là bao nhiêu?",
+   "hints": [
+    "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+    "Bình phương từng thành phần, cộng lại rồi lấy căn bậc hai."
+   ],
+   "explanation": "$\\sqrt{5^2+12^2}=\\sqrt{169}=13$."
+  },
+  "m-h3-geo2-4": {
+   "prompt": "Các vectơ $\\vec{a}=(2, k)$ và $\\vec{b}=(3, -1)$ vuông góc với nhau. $k$ bằng bao nhiêu?",
+   "hints": [
+    "Hai vectơ vuông góc có tích vô hướng bằng $0$.",
+    "Giải $x_1x_2+ky_2=0$."
+   ],
+   "explanation": "$2\\times3+k\\times(-1)=0$, nên $k=6$."
+  },
+  "m-h3-geo2-c": {
+   "prompt": "Tích vô hướng $\\vec{a}\\cdot\\vec{b}$ của $\\vec{a}=(2, -3)$ và $\\vec{b}=(4, 1)$ là bao nhiêu?",
+   "hints": [
+    "Tích vô hướng là $x_1x_2+y_1y_2$.",
+    "Nhân các thành phần tương ứng rồi cộng lại."
+   ],
+   "explanation": "$2\\times4+-3\\times1=5$."
+  },
+  "m-h3-geo2-v1": {
+   "prompt": "Độ dài $|\\vec{a}|$ của vectơ $\\vec{a}=(8, 6)$ là bao nhiêu?",
+   "hints": [
+    "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+    "Bình phương từng thành phần, cộng lại rồi lấy căn bậc hai."
+   ],
+   "explanation": "$\\sqrt{8^2+6^2}=\\sqrt{100}=10$."
+  },
+  "m-h3-geo2-v2": {
+   "prompt": "Các vectơ $\\vec{a}=(4, k)$ và $\\vec{b}=(1, 2)$ vuông góc với nhau. $k$ bằng bao nhiêu?",
+   "hints": [
+    "Hai vectơ vuông góc có tích vô hướng bằng $0$.",
+    "Giải $x_1x_2+ky_2=0$."
+   ],
+   "explanation": "$4\\times1+k\\times(2)=0$, nên $k=-2$."
   }
  }
 }

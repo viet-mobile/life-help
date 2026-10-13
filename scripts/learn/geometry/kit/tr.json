@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Bu şeklin adı nedir?",
+      "hints": [
+        "Kenarları ve köşeleri say.",
+        "Kenarlarının düz mü yoksa yuvarlak mı olduğuna bak."
+      ],
+      "expl": "Bu şeklin adı: {name}."
+    },
+    "nameSolid": {
+      "prompt": "Bu cismin adı nedir?",
+      "hints": [
+        "Her yönden yuvarlak mı?",
+        "Düz yüzleri say."
+      ],
+      "expl": "Bu cismin adı: {name}."
+    },
+    "countOf": {
+      "prompt": "Resimde kaç tane {shape} var?",
+      "hints": [
+        "Saydıkça her birini işaretle.",
+        "Aynı şekli iki kez saymamaya dikkat et."
+      ],
+      "expl": "{ans} tane {shape} var."
+    },
+    "countVertices": {
+      "prompt": "Bu şeklin kaç köşesi var?",
+      "hints": [
+        "Köşe, iki kenarın birleştiği noktadır.",
+        "Sivri köşeleri tek tek say."
+      ],
+      "expl": "{ans} köşesi var."
+    },
+    "countSides": {
+      "prompt": "Bu şeklin kaç kenarı var?",
+      "hints": [
+        "Kenar, şeklin düz bir kenarıdır.",
+        "Şeklin çevresini dolaşarak kenarları say."
+      ],
+      "expl": "{ans} kenarı var."
+    },
+    "rulerRead": {
+      "prompt": "Cetveli kullanarak doğru parçasının uzunluğunu bul. (cm)",
+      "hints": [
+        "Doğru parçasının nerede başlayıp nerede bittiğini bul.",
+        "Bitiş işaretinden başlangıç işaretini çıkar."
+      ],
+      "expl": "Doğru parçası {from} değerinden {to} değerine kadar gidiyor, bu yüzden uzunluğu {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Üstteki doğru parçası alttakinden kaç cm daha uzundur? (cm)",
+      "hints": [
+        "Önce iki uzunluğu da oku.",
+        "Kısa uzunluğu uzun olandan çıkar."
+      ],
+      "expl": "{a}-{b}={ans}, yani {ans} cm daha uzundur."
+    },
+    "rightAngles": {
+      "prompt": "Bu şeklin kaç tane dik açısı var?",
+      "hints": [
+        "Dik açı, bir karenin köşesine benzer.",
+        "Her köşeyi sırayla kontrol et."
+      ],
+      "expl": "{ans} tane dik açısı var."
+    },
+    "clockMinutes": {
+      "prompt": "Saat {h} ve birkaç dakikayı gösteriyor. Kaç dakika? (dk)",
+      "hints": [
+        "Yelkovanın gösterdiği sayıyı 5 ile çarp.",
+        "Yelkovan 6'yı gösteriyorsa 30 dakikadır."
+      ],
+      "expl": "Yelkovan {n} sayısını gösteriyor, bu yüzden ${n}\\times5={ans}$ dakika."
+    },
+    "mToCm": {
+      "prompt": "{m} m {c} cm kaç cm'dir? (cm)",
+      "hints": [
+        "1 m, 100 cm'dir.",
+        "Önce m'yi cm'ye çevir, sonra kalan cm'yi ekle."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, yani {ans} cm."
+    },
+    "triType": {
+      "prompt": "Kenar uzunlukları gösterilen üçgen hangi türdendir?",
+      "hints": [
+        "Üç kenar uzunluğunu karşılaştır.",
+        "İki kenarı eşitse ikizkenar, üç kenarı da eşitse eşkenar üçgendir."
+      ],
+      "expl": "Bu üçgenin türü: {name}."
+    },
+    "congruentCond": {
+      "prompt": "İki üçgen eştir. Hangi eşlik koşulu uygulanır?",
+      "hints": [
+        "Hangi kenarların ve hangi açıların eşit olduğunu bul.",
+        "Yalnızca kenarlar: KKK. İki kenar ve aralarındaki açı: KAK. Bir kenar ve uçlarındaki iki açı: AKA."
+      ],
+      "expl": "Şekilde eşit olan parçalar: {cond}. Kullanılan koşul budur."
+    },
+    "circleDiameter": {
+      "prompt": "Bir çemberin yarıçapı {r} cm'dir. Çapı kaç cm'dir? (cm)",
+      "hints": [
+        "Çap, merkezden geçen en uzun doğru parçasıdır.",
+        "Çap, yarıçapın iki katıdır."
+      ],
+      "expl": "{r}×2={ans}, yani çap {ans} cm'dir."
+    },
+    "circleRadius": {
+      "prompt": "Bir çemberin çapı {d} cm'dir. Yarıçapı kaç cm'dir? (cm)",
+      "hints": [
+        "Yarıçap, merkezden çembere giden doğru parçasıdır.",
+        "Yarıçap, çapın yarısıdır."
+      ],
+      "expl": "{d}÷2={ans}, yani yarıçap {ans} cm'dir."
+    },
+    "angleType": {
+      "prompt": "${a}^\\circ$ hangi tür açıdır?",
+      "hints": [
+        "Dik açı $90^\\circ$'dir.",
+        "$90^\\circ$'den küçükse dar açı, büyükse geniş açıdır."
+      ],
+      "expl": "${a}^\\circ$ açısının türü: {name}."
+    },
+    "angleThird": {
+      "prompt": "Bir üçgenin iki açısı ${a}^\\circ$ ve ${b}^\\circ$'dir. Üçüncü açı kaç derecedir? (derece)",
+      "hints": [
+        "Bir üçgenin üç açısının toplamı $180^\\circ$'dir.",
+        "Bilinen iki açıyı $180$'den çıkar."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, yani üçüncü açı ${ans}^\\circ$'dir."
+    },
+    "angleQuad": {
+      "prompt": "Bir dörtgenin üç açısı ${a}^\\circ$, ${b}^\\circ$ ve ${c}^\\circ$'dir. Dördüncü açı kaç derecedir? (derece)",
+      "hints": [
+        "Bir dörtgenin dört açısının toplamı $360^\\circ$'dir.",
+        "Bilinen üç açıyı $360$'tan çıkar."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, yani dördüncü açı ${ans}^\\circ$'dir."
+    },
+    "quadName": {
+      "prompt": "Bu dörtgenin adı nedir?",
+      "hints": [
+        "Karşılıklı kenarların paralel olup olmadığına bak.",
+        "Ayrıca tüm kenarların ve açıların eşit olup olmadığına bak."
+      ],
+      "expl": "Bu dörtgenin adı: {name}."
+    },
+    "diagonals": {
+      "prompt": "Bu şeklin kaç köşegeni var?",
+      "hints": [
+        "Köşegen, yan yana olmayan iki köşeyi birleştirir.",
+        "Önce bir köşeden çıkan köşegenleri say."
+      ],
+      "expl": "{ans} köşegeni var."
+    },
+    "perimeterRect": {
+      "prompt": "Dikdörtgenin çevresi kaç cm'dir? (cm)",
+      "hints": [
+        "Çevre, şeklin etrafındaki toplam uzunluktur.",
+        "Genişlik ile yüksekliği topla, sonra 2 ile çarp."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, yani çevre {ans} cm'dir."
+    },
+    "areaRect": {
+      "prompt": "Dikdörtgenin alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Dikdörtgenin alanı genişlik × yüksekliktir.",
+        "Gösterilen iki uzunluğu çarp."
+      ],
+      "expl": "${w}\\times{h}={ans}$, yani alan {ans} cm²'dir."
+    },
+    "areaSquare": {
+      "prompt": "Bir karenin kenarı {s} cm'dir. Alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Bir karenin dört kenarı da eşittir.",
+        "Kenar uzunluğunu kendisiyle çarp."
+      ],
+      "expl": "${s}\\times{s}={ans}$, yani alan {ans} cm²'dir."
+    },
+    "areaTriangle": {
+      "prompt": "Bir üçgenin tabanı {b} cm, yüksekliği {h} cm'dir. Alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Üçgenin alanı taban × yükseklik ÷ 2'dir.",
+        "Yükseklik, tabana dik olarak ölçülür."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, yani alan {ans} cm²'dir."
+    },
+    "areaParallelogram": {
+      "prompt": "Bir paralelkenarın tabanı {b} cm, yüksekliği {h} cm'dir. Alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Paralelkenarın alanı taban × yüksekliktir.",
+        "Eğik kenarı değil, yüksekliği kullan."
+      ],
+      "expl": "${b}\\times{h}={ans}$, yani alan {ans} cm²'dir."
+    },
+    "areaTrapezoid": {
+      "prompt": "Bir yamuğun üst tabanı {a} cm, alt tabanı {b} cm, yüksekliği {h} cm'dir. Alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Yamuğun alanı (üst taban + alt taban) × yükseklik ÷ 2'dir.",
+        "Önce üst ve alt tabanı topla."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, yani alan {ans} cm²'dir."
+    },
+    "areaRhombus": {
+      "prompt": "Bir eşkenar dörtgenin köşegenleri {d1} cm ve {d2} cm'dir. Alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Eşkenar dörtgenin alanı bir köşegen × diğer köşegen ÷ 2'dir.",
+        "Köşegenleri çarp, sonra 2'ye böl."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, yani alan {ans} cm²'dir."
+    },
+    "symmetryLines": {
+      "prompt": "Bu şeklin kaç simetri ekseni var?",
+      "hints": [
+        "Simetri ekseni, şekli üst üste oturan iki yarıya katlar.",
+        "Yatay, dikey ve çapraz katlamayı dene."
+      ],
+      "expl": "{ans} simetri ekseni var."
+    },
+    "congruentSide": {
+      "prompt": "İki üçgen eştir. $x$ kenarının uzunluğu kaç cm'dir? (cm)",
+      "hints": [
+        "Eş şekiller aynı biçime ve boyuta sahiptir.",
+        "Karşılık gelen kenarların uzunlukları eşittir."
+      ],
+      "expl": "Karşılık gelen kenarlar eşittir, yani $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Bir dikdörtgenler prizmasında kaç {item} vardır?",
+      "hints": [
+        "Bir kutu düşün.",
+        "Üstüne, altına, önüne, arkasına ve iki yanına bak."
+      ],
+      "expl": "Bir dikdörtgenler prizmasında {ans} {item} vardır."
+    },
+    "cuboidVolume": {
+      "prompt": "Bir dikdörtgenler prizmasının uzunluğu {l} cm, genişliği {w} cm, yüksekliği {h} cm'dir. Hacmi kaç cm³'tür? (cm³)",
+      "hints": [
+        "Dikdörtgenler prizmasının hacmi uzunluk × genişlik × yüksekliktir.",
+        "Üç uzunluğu çarp."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, yani hacim {ans} cm³'tür."
+    },
+    "cubeVolume": {
+      "prompt": "Bir küpün ayrıtı {e} cm'dir. Hacmi kaç cm³'tür? (cm³)",
+      "hints": [
+        "Bir küpün tüm ayrıtları eşittir.",
+        "Ayrıt uzunluğunu kendisiyle üç kez çarp."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, yani hacim {ans} cm³'tür."
+    },
+    "cuboidSurface": {
+      "prompt": "Bir dikdörtgenler prizmasının uzunluğu {l} cm, genişliği {w} cm, yüksekliği {h} cm'dir. Yüzey alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Yüzey alanı, altı yüzün alanlarının toplamıdır.",
+        "Karşılıklı yüzler eşittir: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, yani yüzey alanı {ans} cm²'dir."
+    },
+    "edgeSum": {
+      "prompt": "Bir dikdörtgenler prizmasının uzunluğu {l} cm, genişliği {w} cm, yüksekliği {h} cm'dir. Tüm ayrıtlarının toplam uzunluğu kaç cm'dir? (cm)",
+      "hints": [
+        "Bir dikdörtgenler prizmasının 12 ayrıtı vardır.",
+        "Uzunluk, genişlik ve yükseklikten dörder ayrıt vardır."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, yani toplam {ans} cm'dir."
+    },
+    "circumference": {
+      "prompt": "Bir çemberin yarıçapı {r} cm'dir. Çevresi kaç cm'dir? ($\\pi=3.14$ al) (cm)",
+      "hints": [
+        "Çevre = çap × π.",
+        "Çap, yarıçapın iki katıdır."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, yani çevre {ans} cm'dir."
+    },
+    "circleArea": {
+      "prompt": "Bir dairenin yarıçapı {r} cm'dir. Alanı kaç cm²'dir? ($\\pi=3.14$ al) (cm²)",
+      "hints": [
+        "Alan = yarıçap × yarıçap × π.",
+        "Yarıçapı kendisiyle çarp, sonra 3.14 ile çarp."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, yani alan {ans} cm²'dir."
+    },
+    "prismFaces": {
+      "prompt": "Tabanı {n} kenarlı olan bir prizmanın kaç yüzü vardır?",
+      "hints": [
+        "Bir prizmanın 2 tabanı ve birkaç yan yüzü vardır.",
+        "Yan yüz sayısı, tabanın kenar sayısına eşittir."
+      ],
+      "expl": "{n} yan yüz ile 2 tabanın toplamı {ans} yüzdür."
+    },
+    "adjacentAngle": {
+      "prompt": "Bir doğru üzerinde bir açı ${a}^\\circ$'dir. Komşu açı kaç derecedir? (derece)",
+      "hints": [
+        "Bir doğru üzerindeki açıların toplamı $180^\\circ$'dir.",
+        "Bilinen açıyı $180$'den çıkar."
+      ],
+      "expl": "$180-{a}={ans}$, yani ${ans}^\\circ$'dir."
+    },
+    "verticalAngle": {
+      "prompt": "İki doğru kesişiyor ve bir açı ${a}^\\circ$'dir. Ters açısı kaç derecedir? (derece)",
+      "hints": [
+        "Ters açılar birbirinin karşısındadır.",
+        "Büyüklükleri eşittir."
+      ],
+      "expl": "Ters açılar eşittir, yani ${ans}^\\circ$'dir."
+    },
+    "parallelAngle": {
+      "prompt": "$l$ ve $m$ paralel doğrularını bir kesen kesiyor. Bir açı ${a}^\\circ$'dir. $x$ kaç derecedir? (derece)",
+      "hints": [
+        "Paralel doğrularda yöndeş açılar eşittir.",
+        "Ters yöndeş (iç ters) açılar da eşittir."
+      ],
+      "expl": "Paralel doğrularda yöndeş (iç ters) açılar eşittir, yani $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "{n} kenarlı bir çokgenin iç açılarının toplamı kaç derecedir? (derece)",
+      "hints": [
+        "{n} kenarlı bir çokgen {m} üçgene ayrılır.",
+        "Her üçgenin açılar toplamı $180^\\circ$'dir."
+      ],
+      "expl": "$180\\times{m}={ans}$, yani toplam ${ans}^\\circ$'dir."
+    },
+    "regularAngle": {
+      "prompt": "{n} kenarlı bir düzgün çokgenin bir iç açısı kaç derecedir? (derece)",
+      "hints": [
+        "Önce toplamı bul: $180\\times({n}-2)$.",
+        "Toplamı kenar sayısı {n}'e böl."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, yani her açı ${ans}^\\circ$'dir."
+    },
+    "arcLength": {
+      "prompt": "Bir daire diliminin yarıçapı {r} cm ve merkez açısı ${a}^\\circ$'dir. Yay uzunluğu $k\\pi$ cm'dir. $k$ kaçtır?",
+      "hints": [
+        "Yay uzunluğu $2\\pi r\\times\\frac{a}{360}$'tır.",
+        "Önce açının tüm çemberin kaçta kaçı olduğunu bul."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, yani $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Bir daire diliminin yarıçapı {r} cm ve merkez açısı ${a}^\\circ$'dir. Alanı $k\\pi$ cm²'dir. $k$ kaçtır?",
+      "hints": [
+        "Daire diliminin alanı $\\pi r^2\\times\\frac{a}{360}$'tır.",
+        "Dairenin alanını açının oranıyla çarp."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, yani $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Bir silindirin taban yarıçapı {r} cm, yüksekliği {h} cm'dir. Hacmi $k\\pi$ cm³'tür. $k$ kaçtır?",
+      "hints": [
+        "Hacim = taban alanı × yükseklik.",
+        "Taban alanı $\\pi r^2$'dir."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, yani $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Bir koninin taban yarıçapı {r} cm, yüksekliği {h} cm'dir. Hacmi $k\\pi$ cm³'tür. $k$ kaçtır?",
+      "hints": [
+        "Hacim = taban alanı × yükseklik ÷ 3.",
+        "Taban alanı $\\pi r^2$'dir."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, yani $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Bir kürenin yarıçapı {r} cm'dir. Hacmi $k\\pi$ cm³'tür. $k$ kaçtır?",
+      "hints": [
+        "Kürenin hacmi $\\frac{4}{3}\\pi r^3$'tür.",
+        "Yarıçapın küpünü al, sonra $\\frac{4}{3}$ ile çarp."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, yani $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Bir kürenin yarıçapı {r} cm'dir. Yüzey alanı $k\\pi$ cm²'dir. $k$ kaçtır?",
+      "hints": [
+        "Kürenin yüzey alanı $4\\pi r^2$'dir.",
+        "Yarıçapın karesini al, sonra 4 ile çarp."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, yani $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Bir silindirin taban yarıçapı {r} cm, yüksekliği {h} cm'dir. Yüzey alanı $k\\pi$ cm²'dir. $k$ kaçtır?",
+      "hints": [
+        "Yüzey alanı = 2 × taban alanı + yanal alan.",
+        "Yanal alan (çevre) × yükseklik $=2\\pi r\\times h$'dir."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, yani $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Bir ikizkenar üçgenin bir taban açısı ${b}^\\circ$'dir. Tepe açısı kaç derecedir? (derece)",
+      "hints": [
+        "İkizkenar üçgenin iki taban açısı eşittir.",
+        "İki taban açısını da $180^\\circ$'den çıkar."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, yani tepe açısı ${ans}^\\circ$'dir."
+    },
+    "parallelogramAngle": {
+      "prompt": "ABCD paralelkenarında $\\angle A={a}^\\circ$'dir. $\\angle B$ kaç derecedir? (derece)",
+      "hints": [
+        "Paralelkenarın komşu açılarının toplamı $180^\\circ$'dir.",
+        "$\\angle A$'yı $180$'den çıkar."
+      ],
+      "expl": "$180-{a}={ans}$, yani $\\angle B={ans}^\\circ$'dir."
+    },
+    "midSegment": {
+      "prompt": "Bir üçgende $x$ doğru parçası iki kenarın orta noktalarını birleştirir ve {s} cm olan üçüncü kenara paraleldir. $x$ kaç cm'dir? (cm)",
+      "hints": [
+        "İki orta noktayı birleştiren doğru parçası üçüncü kenarın yarısıdır.",
+        "{s} sayısını 2'ye böl."
+      ],
+      "expl": "${s}\\div2={ans}$, yani $x={ans}$ cm'dir."
+    },
+    "similarSide": {
+      "prompt": "İki üçgen benzerdir. $x$ kenarının uzunluğu kaç cm'dir? (cm)",
+      "hints": [
+        "Benzer şekillerde karşılık gelen kenarların oranları eşittir.",
+        "Önce benzerlik oranını bul."
+      ],
+      "expl": "Oran ${p}:{q}$, yani $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "İki benzer şeklin benzerlik oranı ${p}:{q}$'dur. Küçüğün alanı {s} cm²'dir. Büyüğün alanı kaç cm²'dir? (cm²)",
+      "hints": [
+        "Alanların oranı, benzerlik oranının karesidir.",
+        "Küçük alanı $({q}/{p})^2$ ile çarp."
+      ],
+      "expl": "Alan oranı ${p2}:{q2}$, yani ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Bir dik üçgenin iki dik kenarı {a} cm ve {b} cm'dir. En uzun kenar $x$ kaç cm'dir? (cm)",
+      "hints": [
+        "Pisagor teoremi: $a^2+b^2=c^2$.",
+        "İki kenarın karesini al, topla, sonra karekökünü al."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, yani $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Bir dik üçgenin hipotenüsü {c} cm ve bir dik kenarı {a} cm'dir. Diğer dik kenar $x$ kaç cm'dir? (cm)",
+      "hints": [
+        "$a^2+x^2=c^2$ eşitliğinden $x^2=c^2-a^2$ bulunur.",
+        "$c^2-a^2$ sayısının karekökünü al."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, yani $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Bir üçgenin kenarları {a} cm, {b} cm ve {c} cm'dir. Bu bir dik üçgen midir?",
+      "hints": [
+        "En uzun kenarı hipotenüs al ve $a^2+b^2$ ile $c^2$'yi karşılaştır.",
+        "Eşitlerse üçgen diktir."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ ve ${c}^2={s2}$, bu yüzden: {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Dik üçgende $\\{fn} A$ kaçtır? (ondalık sayı olarak yaz)",
+      "hints": [
+        "$\\sin A$ = karşı kenar ÷ hipotenüs, $\\cos A$ = komşu kenar ÷ hipotenüs, $\\tan A$ = karşı kenar ÷ komşu kenar.",
+        "Karşı ve komşu kenarı $A$ açısına göre ayırt et."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "$\\{fn}\\ {a}^\\circ$ kaçtır? (ondalık sayı olarak yaz)",
+      "hints": [
+        "$30^\\circ$, $45^\\circ$ ve $60^\\circ$ için değerleri hatırla.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Bir dik üçgende $\\tan A={t}$ ve komşu kenar {adj}'dir. Karşı kenar $x$ kaçtır?",
+      "hints": [
+        "$\\tan A$ = karşı kenar ÷ komşu kenar.",
+        "Karşı kenar $=\\tan A\\times$ komşu kenar."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "AB yayına ait merkez açı ${c}^\\circ$'dir. Aynı yaya ait çevre açı kaç derecedir? (derece)",
+      "hints": [
+        "Çevre açı, aynı yaya ait merkez açının yarısıdır.",
+        "Merkez açıyı 2'ye böl."
+      ],
+      "expl": "${c}\\div2={ans}$, yani çevre açı ${ans}^\\circ$'dir."
+    },
+    "tangentLength": {
+      "prompt": "O merkezli çemberin dışındaki bir P noktasından çizilen teğet, çembere A noktasında değiyor. $PO={po}$ ve yarıçap {r}'dir. $PA$ kaçtır?",
+      "hints": [
+        "Teğet yarıçapa diktir, bu yüzden OAP üçgeni diktir.",
+        "$PA^2=PO^2-r^2$ bağıntısını kullan."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, yani $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Bir çemberin yarıçapı {r}'dir. Bir kiriş merkeze {d} uzaklıktadır. Kirişin uzunluğu kaçtır?",
+      "hints": [
+        "Merkezden kirişe indirilen dikme kirişi ortalar.",
+        "Kirişin yarısı $\\sqrt{r^2-d^2}$'dir."
+      ],
+      "expl": "Kirişin yarısı $\\sqrt{{r}^2-{d}^2}={half}$, yani kiriş ${ans}$'dir."
+    },
+    "cyclicAngle": {
+      "prompt": "Bir dörtgen bir çemberin içine çizilmiştir ve bir açısı ${a}^\\circ$'dir. Karşısındaki açı kaç derecedir? (derece)",
+      "hints": [
+        "Kirişler dörtgeninin karşılıklı açılarının toplamı $180^\\circ$'dir.",
+        "Verilen açıyı $180$'den çıkar."
+      ],
+      "expl": "$180-{a}={ans}$, yani ${ans}^\\circ$'dir."
+    },
+    "distance": {
+      "prompt": "Koordinat düzleminde A({x1}, {y1}) ve B({x2}, {y2}) noktaları arasındaki uzaklık kaçtır?",
+      "hints": [
+        "Uzaklık $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$'dir.",
+        "Yatay ve dikey farkların karesini al, sonra topla."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "A({x1}, {y1}) ve B({x2}, {y2}) olan AB doğru parçasının orta noktasının ${axis}$ koordinatı kaçtır?",
+      "hints": [
+        "Orta nokta, koordinatların ortalamasıdır.",
+        "Karşılık gelen koordinatları topla ve 2'ye böl."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "A({x1}, {y1}) ve B({x2}, {y2}) noktalarından geçen doğrunun eğimi kaçtır?",
+      "hints": [
+        "Eğim = ($y$'deki değişim) ÷ ($x$'teki değişim).",
+        "$\\frac{y_2-y_1}{x_2-x_1}$ değerini hesapla."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "$(x-{a})^2+(y-{b})^2={r2}$ çemberinin yarıçapı kaçtır?",
+      "hints": [
+        "$(x-a)^2+(y-b)^2=r^2$ denkleminde sağ taraf $r^2$'dir.",
+        "{r2} sayısının karekökünü al."
+      ],
+      "expl": "$r^2={r2}$, yani $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "$(x-{a})^2+(y-{b})^2={r2}$ çemberinin merkezi $(p, q)$'dur. $p+q$ kaçtır?",
+      "hints": [
+        "Merkez $(p, q)$'dur.",
+        "$p$ ve $q$ değerlerini $x-p$ ve $y-q$ ifadelerinden oku."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Orijinin ${A}x+{B}y-{C}=0$ doğrusuna uzaklığı kaçtır?",
+      "hints": [
+        "Bir noktanın bir doğruya uzaklığı $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$'dir.",
+        "Orijin için $x_0=y_0=0$'dır."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "ABC üçgeninde $a={a}$ ve $\\angle A={A}^\\circ$'dir. Çevrel çemberin yarıçapı $R$ kaçtır?",
+      "hints": [
+        "Sinüs teoremi: $\\frac{a}{\\sin A}=2R$.",
+        "$R$'yi bulmak için $\\sin {A}^\\circ$ değerini kullan."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "ABC üçgeninde $a={a}$, $b={b}$ ve $\\angle C={C}^\\circ$'dir. $c$ kaçtır?",
+      "hints": [
+        "Kosinüs teoremi: $c^2=a^2+b^2-2ab\\cos C$.",
+        "$\\cos {C}^\\circ$ değerini yerine koy."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, yani $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "ABC üçgeninde $a={a}$, $b={b}$ ve $\\angle C={C}^\\circ$'dir. Alanı kaçtır?",
+      "hints": [
+        "Alan $=\\frac12ab\\sin C$.",
+        "$\\sin {C}^\\circ$ değerini yerine koy."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$, $\\frac{\\pi}{d}$ radyana eşittir. $d$ kaçtır?",
+      "hints": [
+        "$180^\\circ=\\pi$ radyandır.",
+        "$\\frac{{a}}{180}\\pi$ ifadesini sadeleştir."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, yani $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Bir daire diliminin yarıçapı {r} ve merkez açısı $\\frac{\\pi}{{d}}$'dir. Yay uzunluğu $k\\pi$'dir. $k$ kaçtır?",
+      "hints": [
+        "Yay uzunluğu $l=r\\theta$'dır.",
+        "$r$ ile $\\theta=\\frac{\\pi}{{d}}$ değerini çarp."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, yani $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Bir daire diliminin yarıçapı {r} ve merkez açısı $\\frac{\\pi}{{d}}$'dir. Alanı $k\\pi$'dir. $k$ kaçtır?",
+      "hints": [
+        "Daire diliminin alanı $S=\\frac12r^2\\theta$'dır.",
+        "$r^2$ ile $\\theta$'yı çarp, sonra $\\frac12$ ile çarp."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, yani $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "$y^2={k}x$ parabolünün odağının $x$ koordinatı kaçtır?",
+      "hints": [
+        "$y^2=4px$ parabolünün odağı $(p, 0)$'dır.",
+        "$4p={k}$ denkleminden $p$'yi bul."
+      ],
+      "expl": "$4p={k}$, yani $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "$\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ elipsinin odakları $(\\pm c, 0)$'dır. $c$ kaçtır?",
+      "hints": [
+        "Elipste $c^2=a^2-b^2$'dir.",
+        "{a2} sayısından {b2} sayısını çıkar ve karekökünü al."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, yani $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "$\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ hiperbolünün odakları $(\\pm c, 0)$'dır. $c$ kaçtır?",
+      "hints": [
+        "Hiperbolde $c^2=a^2+b^2$'dir.",
+        "{a2} ile {b2} sayılarını topla ve karekökünü al."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, yani $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "$\\vec{a}=({x}, {y})$ vektörünün büyüklüğü $|\\vec{a}|$ kaçtır?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Her bileşenin karesini al, topla ve karekökünü al."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "$\\vec{a}=({x1}, {y1})$ ve $\\vec{b}=({x2}, {y2})$ vektörlerinin iç çarpımı $\\vec{a}\\cdot\\vec{b}$ kaçtır?",
+      "hints": [
+        "İç çarpım $x_1x_2+y_1y_2$'dir.",
+        "Karşılık gelen bileşenleri çarpıp topla."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "$\\vec{a}=({x1}, k)$ ve $\\vec{b}=({x2}, {y2})$ vektörleri birbirine diktir. $k$ kaçtır?",
+      "hints": [
+        "Dik vektörlerin iç çarpımı $0$'dır.",
+        "$x_1x_2+ky_2=0$ denklemini çöz."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, yani $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "üçgen",
+    "quad": "dörtgen",
+    "circ": "daire",
+    "pent": "beşgen",
+    "hex": "altıgen",
+    "rect": "dikdörtgen",
+    "square": "kare",
+    "trap": "yamuk",
+    "para": "paralelkenar",
+    "rhom": "eşkenar dörtgen",
+    "cube": "küp",
+    "cuboid": "dikdörtgenler prizması (kutu biçimi)",
+    "cyl": "silindir",
+    "sph": "küre",
+    "cone": "koni",
+    "acute": "dar açı",
+    "right": "dik açı",
+    "obtuse": "geniş açı",
+    "faces": "yüz",
+    "edges": "ayrıt",
+    "vertices": "köşe",
+    "triP": "üçgen",
+    "squareP": "kare",
+    "circP": "daire",
+    "iso": "ikizkenar üçgen",
+    "equi": "eşkenar üçgen",
+    "rtri": "dik üçgen",
+    "sss": "Üç kenar çifti eşit (KKK)",
+    "sas": "İki kenar ve aralarındaki açı eşit (KAK)",
+    "asa": "Bir kenar ve uçlarındaki iki açı eşit (AKA)",
+    "yes": "Evet, dik üçgendir",
+    "no": "Hayır, dik üçgen değildir"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Şekil adları ve köşeler",
+      "concept": "**Üçgen**in 3 kenarı, **dörtgen**in 4 kenarı vardır. **Daire** yuvarlaktır ve köşesi yoktur.",
+      "example": "Üçgen: 3 kenar, 3 köşe"
+    },
+    "E12": {
+      "title": "Cisimler",
+      "concept": "Kutu biçimindeki cisim **dikdörtgenler prizması**, yuvarlak sütun **silindir**, top ise **küre**dir.",
+      "example": "dikdörtgenler prizması · silindir · küre"
+    },
+    "E21": {
+      "title": "Üçgenler ve dörtgenler",
+      "concept": "**Üçgen**in 3 düz kenarı ve 3 köşesi, **dörtgen**in biçimi ne olursa olsun 4 düz kenarı ve 4 köşesi vardır. Kenar sayıları köşe sayılarına eşittir.",
+      "example": "Dörtgen: 4 kenar, 4 köşe"
+    },
+    "E22": {
+      "title": "Uzunluk ve zaman",
+      "concept": "Cetvelin bir ucunu 0'a koy; diğer ucun işareti uzunluktur. $1\\text{ m}=100\\text{ cm}$. Dakikayı bulmak için yelkovanın gösterdiği sayıyı 5 ile çarp.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Açılar ve dik açılar",
+      "concept": "Bir noktadan çıkan iki ışın bir **açı** oluşturur. $90^\\circ$'lik açı **dik açı**dır; daha küçüğü **dar açı**, daha büyüğü **geniş açı**dır.",
+      "example": "$30^\\circ$ dar · $90^\\circ$ dik · $120^\\circ$ geniş açı"
+    },
+    "E32": {
+      "title": "Yarıçap ve çap",
+      "concept": "**Yarıçap** merkezden çembere gider; **çap** merkezden geçer. Çap, yarıçapın iki katıdır.",
+      "example": "Yarıçap 5 cm → çap 10 cm"
+    },
+    "E41": {
+      "title": "Açı toplamları",
+      "concept": "Bir üçgenin üç açısının toplamı $180^\\circ$, bir dörtgenin dört açısının toplamı $360^\\circ$'dir.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Dörtgenler ve çokgenler",
+      "concept": "Bir çift paralel kenar **yamuk**, iki çift paralel kenar **paralelkenar**, dört eşit kenar ise **eşkenar dörtgen** oluşturur. **Köşegen**, yan yana olmayan iki köşeyi birleştirir.",
+      "example": "Bir dörtgenin 2 köşegeni vardır"
+    },
+    "E51": {
+      "title": "Çevre ve alan",
+      "concept": "Dikdörtgen: genişlik × yükseklik. Üçgen: taban × yükseklik ÷ 2. Paralelkenar: taban × yükseklik. Yamuk: (üst taban + alt taban) × yükseklik ÷ 2. Eşkenar dörtgen: köşegen × köşegen ÷ 2.",
+      "example": "Tabanı 10, yüksekliği 6 olan üçgen → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Eşlik ve simetri",
+      "concept": "Tam olarak üst üste oturan iki şekil **eştir**. Bir doğru boyunca kendi üzerine katlanabilen şekil **simetriktir**; bu doğruya **simetri ekseni** denir.",
+      "example": "Bir karenin 4 simetri ekseni vardır"
+    },
+    "E61": {
+      "title": "Çember çevresi ve daire alanı",
+      "concept": "Çevre = çap × π, alan = yarıçap × yarıçap × π, burada π ≈ $3.14$.",
+      "example": "Yarıçap 5 cm → çevre $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Dikdörtgenler prizması ve küp",
+      "concept": "Hacim = uzunluk × genişlik × yükseklik; yüzey alanı = (üç yüzün alanları toplamı) × 2. Bir dikdörtgenler prizmasının 6 yüzü, 12 ayrıtı ve 8 köşesi vardır.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Açı kuralları ve çokgenler",
+      "concept": "Ters açılar eşittir; paralel doğrularda yöndeş ve iç ters açılar eşittir. $n$ kenarlı bir çokgenin iç açıları toplamı $180^\\circ\\times(n-2)$'dir.",
+      "example": "Beşgen: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Daire dilimleri ve cisimler",
+      "concept": "Yay uzunluğu $=2\\pi r\\times\\frac{a}{360}$, daire dilimi alanı $=\\pi r^2\\times\\frac{a}{360}$, küre hacmi $=\\frac43\\pi r^3$, koni hacmi $=\\frac13\\pi r^2h$.",
+      "example": "Küre $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Üçgenler ve dörtgenler",
+      "concept": "İkizkenar üçgenin taban açıları eşittir. Paralelkenarın komşu açılarının toplamı $180^\\circ$'dir ve bir üçgenin iki kenarının orta noktalarını birleştiren doğru parçası üçüncü kenarın yarısıdır.",
+      "example": "Taban açısı $50^\\circ$ → tepe açısı $80^\\circ$"
+    },
+    "M22": {
+      "title": "Benzerlik ve Pisagor teoremi",
+      "concept": "Benzer şekillerde kenar oranları eşittir ve alanları bu oranın karesi kadardır. Bir dik üçgende $a^2+b^2=c^2$'dir.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Trigonometrik oranlar",
+      "concept": "Dik üçgende: $\\sin A$ = karşı dik kenar ÷ hipotenüs, $\\cos A$ = komşu dik kenar ÷ hipotenüs, $\\tan A$ = karşı dik kenar ÷ komşu dik kenar.",
+      "example": "3-4-5 üçgeni: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Çemberin özellikleri",
+      "concept": "Çevre açı, aynı yaya ait merkez açının yarısıdır. Teğet yarıçapa diktir ve kirişler dörtgeninin karşılıklı açılarının toplamı $180^\\circ$'dir.",
+      "example": "Merkez açı $100^\\circ$ → çevre açı $50^\\circ$"
+    },
+    "H11": {
+      "title": "Koordinat düzleminde şekiller",
+      "concept": "Uzaklık $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, orta nokta = koordinatların ortalaması, eğim $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): uzaklık 5"
+    },
+    "H12": {
+      "title": "Çemberin denklemi",
+      "concept": "Merkezi $(a, b)$ ve yarıçapı $r$ olan çemberin denklemi $(x-a)^2+(y-b)^2=r^2$'dir. $(x_0,y_0)$ noktasının $ax+by+c=0$ doğrusuna uzaklığı $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$'dir.",
+      "example": "$(x-2)^2+(y-3)^2=25$: merkez $(2,3)$, yarıçap 5"
+    },
+    "H21": {
+      "title": "Üçgenler ve trigonometrik fonksiyonlar",
+      "concept": "Sinüs teoremi $\\frac{a}{\\sin A}=2R$, kosinüs teoremi $c^2=a^2+b^2-2ab\\cos C$, üçgenin alanı $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radyan ve daire dilimleri",
+      "concept": "$180^\\circ=\\pi$ radyandır. Yarıçapı $r$ ve açısı $\\theta$ (radyan) olan daire diliminin yay uzunluğu $r\\theta$, alanı $\\frac12r^2\\theta$'dır.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Konikler",
+      "concept": "$y^2=4px$ parabolünün odağı $(p,0)$'dır; $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ elipsinde $c^2=a^2-b^2$; hiperbolde $c^2=a^2+b^2$'dir.",
+      "example": "$y^2=12x$: odak $(3,0)$"
+    },
+    "H32": {
+      "title": "Düzlemde vektörler",
+      "concept": "$(x,y)$ vektörünün büyüklüğü $\\sqrt{x^2+y^2}$'dir; iç çarpım $x_1x_2+y_1y_2$'dir ve dik vektörlerin iç çarpımı 0'dır.",
+      "example": "$(3,4)$ vektörünün büyüklüğü: 5"
+    }
+  }
+}

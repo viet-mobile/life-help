@@ -70,7 +70,9 @@ const forgedCall = (page: Page, site: Site, action: string, body: Record<string,
   );
 
 // korean is entirely free for now (FREE_SITES in lib/learn/domain/access.ts), so it has no gate to exercise
-for (const site of ["math", "english"] as const) {
+// Paid Premium is switched off for every learning site (FREE_SITES), so there is no gate to exercise; the loop is empty on purpose and
+// comes back when a site is removed from FREE_SITES.
+for (const site of [] as ("math" | "english")[]) {
   test.describe(`${site}: free / premium boundary`, () => {
     for (const width of [1280, 390]) {
       test(`path badges and the Premium gate across locales @${width}px`, async ({ page }) => {

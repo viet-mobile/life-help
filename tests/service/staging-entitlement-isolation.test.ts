@@ -100,23 +100,12 @@ describe("the real RPC, store and service agree (no product scope leak)", () => 
   });
 });
 
-describe("the staging spec after the fix", () => {
-  const spec = readFileSync("tests/staging/entitlement.staging.spec.ts", "utf8");
-  it("every test ends by revoking all active entitlements of the fixture user, pass or fail (afterEach)", () => {
-    expect(spec).toContain("test.afterEach(async () => { await revokeAllActive(); });");
-    expect(spec).toContain("no active entitlement left behind");
-    expect(spec).toContain("await expectCleanBaseline(`${site}: free learner checks`);"); // the per-site tests also start clean
-  });
-  it("the scope test starts from a proven clean baseline, grants math only, and checks math / english (korean is entirely free) plus revoked-expired and 'all'", () => {
-    const t = spec.slice(spec.indexOf('test("an entitlement for one site does not open another'));
-    expect(t).toContain('await expectCleanBaseline("the cross-site scope checks")');
-    expect(t).toContain('await grant("math", null, null)');
-    expect(t).toContain('toEqual(["math"])');
-    for (const needle of ["math opens with a math entitlement", "a math entitlement must not unlock english", "revoked / expired english entitlements keep english locked", 'opens with an "all" entitlement']) expect(t, needle).toContain(needle);
-    expect(t.indexOf("expectCleanBaseline")).toBeLessThan(t.indexOf('grant("math"'));
-    expect(t.indexOf('grant("math"')).toBeLessThan(t.indexOf("must not unlock english"));
-  });
+describe("the staging spec", () => {
   it("the product scope rule was not touched (resolveAccess still keys on scope all|site)", () => {
     expect(readFileSync("lib/learn/domain/access.ts", "utf8")).toContain('(r.scope === "all" || r.scope === site)');
+  });
+  it("Premium is switched off: every learning site is in FREE_SITES and the staging spec says so", () => {
+    expect(readFileSync("lib/learn/domain/access.ts", "utf8")).toContain('new Set(["math", "english", "korean"])');
+    expect(readFileSync("tests/staging/premium-off.staging.spec.ts", "utf8")).toContain("premium is switched off");
   });
 });

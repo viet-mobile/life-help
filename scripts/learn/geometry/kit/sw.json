@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Umbo hili linaitwa nini?",
+      "hints": [
+        "Hesabu pande na pembe.",
+        "Angalia kama lina pande zilizonyooka au ni la duara."
+      ],
+      "expl": "Umbo hili linaitwa {name}."
+    },
+    "nameSolid": {
+      "prompt": "Umbo hili la pande tatu linaitwa nini?",
+      "hints": [
+        "Je, ni la duara kila upande?",
+        "Hesabu nyuso bapa."
+      ],
+      "expl": "Umbo hili la pande tatu ni {name}."
+    },
+    "countOf": {
+      "prompt": "Kuna {shape} ngapi kwenye picha?",
+      "hints": [
+        "Weka alama kwa kila moja unapohesabu.",
+        "Jihadhari usihesabu umbo lilelile mara mbili."
+      ],
+      "expl": "Kuna {shape} {ans}."
+    },
+    "countVertices": {
+      "prompt": "Umbo hili lina vipeo (pembe) vingapi?",
+      "hints": [
+        "Kipeo ni nukta ambapo pande mbili hukutana.",
+        "Hesabu pembe zenye ncha moja baada ya nyingine."
+      ],
+      "expl": "Lina vipeo {ans}."
+    },
+    "countSides": {
+      "prompt": "Umbo hili lina pande ngapi?",
+      "hints": [
+        "Upande ni ukingo ulionyooka wa umbo.",
+        "Zunguka umbo na uhesabu pande."
+      ],
+      "expl": "Lina pande {ans}."
+    },
+    "rulerRead": {
+      "prompt": "Tumia rula kupata urefu wa mstari. (cm)",
+      "hints": [
+        "Tafuta mahali mstari unapoanzia na unapoishia.",
+        "Toa alama ya mwanzo kutoka alama ya mwisho."
+      ],
+      "expl": "Mstari unaanzia {from} hadi {to}, kwa hiyo urefu wake ni {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Mstari wa juu ni mrefu kuliko mstari wa chini kwa cm ngapi? (cm)",
+      "hints": [
+        "Soma urefu wote wawili kwanza.",
+        "Toa urefu mfupi kutoka urefu mrefu."
+      ],
+      "expl": "{a}-{b}={ans}, kwa hiyo ni mrefu zaidi kwa {ans} cm."
+    },
+    "rightAngles": {
+      "prompt": "Umbo hili lina pembe mraba ngapi?",
+      "hints": [
+        "Pembe mraba inafanana na kona ya mraba.",
+        "Kagua kila kona moja baada ya nyingine."
+      ],
+      "expl": "Lina pembe mraba {ans}."
+    },
+    "clockMinutes": {
+      "prompt": "Saa inaonyesha saa {h} na dakika kadhaa. Ni dakika ngapi? (min)",
+      "hints": [
+        "Zidisha namba ambayo mshale mrefu unaonyesha kwa 5.",
+        "Mshale mrefu ukionyesha 6 ni dakika 30."
+      ],
+      "expl": "Mshale mrefu unaonyesha {n}, kwa hiyo ${n}\\times5={ans}$ dakika."
+    },
+    "mToCm": {
+      "prompt": "{m} m {c} cm ni cm ngapi? (cm)",
+      "hints": [
+        "1 m ni 100 cm.",
+        "Badilisha m kuwa cm, kisha jumlisha cm zilizobaki."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, kwa hiyo ni {ans} cm."
+    },
+    "triType": {
+      "prompt": "Pembetatu yenye urefu wa pande ulioonyeshwa ni ya aina gani?",
+      "hints": [
+        "Linganisha urefu wa pande tatu.",
+        "Pande mbili sawa: isosceli. Pande tatu sawa: pembetatu sawa-pande."
+      ],
+      "expl": "Pembetatu hii ni {name}."
+    },
+    "congruentCond": {
+      "prompt": "Pembetatu mbili ni sanjari. Sharti lipi la usanjari linatumika?",
+      "hints": [
+        "Tafuta pande zipi ni sawa na pembe zipi ni sawa.",
+        "Pande tu: SSS. Pande mbili na pembe iliyo katikati yake: SAS. Upande mmoja na pembe mbili za ncha zake: ASA."
+      ],
+      "expl": "Sehemu zilizo sawa kwenye picha ni: {cond}. Kwa hiyo hili ndilo sharti linalotumika."
+    },
+    "circleDiameter": {
+      "prompt": "Nusu kipenyo cha duara ni {r} cm. Kipenyo ni kiasi gani? (cm)",
+      "hints": [
+        "Kipenyo ni mstari mrefu zaidi unaopita katikati ya duara.",
+        "Kipenyo ni mara mbili ya nusu kipenyo."
+      ],
+      "expl": "{r}×2={ans}, kwa hiyo kipenyo ni {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Kipenyo cha duara ni {d} cm. Nusu kipenyo ni kiasi gani? (cm)",
+      "hints": [
+        "Nusu kipenyo huenda kutoka katikati hadi kwenye duara.",
+        "Nusu kipenyo ni nusu ya kipenyo."
+      ],
+      "expl": "{d}÷2={ans}, kwa hiyo nusu kipenyo ni {ans} cm."
+    },
+    "angleType": {
+      "prompt": "${a}^\\circ$ ni pembe ya aina gani?",
+      "hints": [
+        "Pembe mraba ni $90^\\circ$.",
+        "Ndogo kuliko $90^\\circ$ ni papo hapo; kubwa zaidi ni butu."
+      ],
+      "expl": "${a}^\\circ$ inaitwa {name}."
+    },
+    "angleThird": {
+      "prompt": "Pembe mbili za pembetatu ni ${a}^\\circ$ na ${b}^\\circ$. Pembe ya tatu ni ngapi? (digrii)",
+      "hints": [
+        "Pembe tatu za pembetatu hujumlika kuwa $180^\\circ$.",
+        "Toa pembe mbili zinazojulikana kutoka $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, kwa hiyo pembe ya tatu ni ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Pembe tatu za pembenne ni ${a}^\\circ$, ${b}^\\circ$ na ${c}^\\circ$. Pembe ya nne ni ngapi? (digrii)",
+      "hints": [
+        "Pembe nne za pembenne hujumlika kuwa $360^\\circ$.",
+        "Toa pembe tatu zinazojulikana kutoka $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, kwa hiyo pembe ya nne ni ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Pembenne hii inaitwa nini?",
+      "hints": [
+        "Angalia kama pande zinazokabiliana ni sambamba.",
+        "Angalia pia kama pande zote na pembe zote ni sawa."
+      ],
+      "expl": "Pembenne hii ni {name}."
+    },
+    "diagonals": {
+      "prompt": "Umbo hili lina ulalo ngapi?",
+      "hints": [
+        "Ulalo huunganisha vipeo viwili ambavyo havikaribiani.",
+        "Hesabu kwanza ulalo unaotoka kwenye kipeo kimoja."
+      ],
+      "expl": "Lina ulalo {ans}."
+    },
+    "perimeterRect": {
+      "prompt": "Mzingo wa mstatili ni kiasi gani? (cm)",
+      "hints": [
+        "Mzingo ni umbali unaozunguka umbo.",
+        "Jumlisha upana na urefu, kisha zidisha kwa mbili."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, kwa hiyo mzingo ni {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Eneo la mstatili ni kiasi gani? (cm²)",
+      "hints": [
+        "Eneo la mstatili ni upana × urefu.",
+        "Zidisha urefu mbili ulioonyeshwa."
+      ],
+      "expl": "${w}\\times{h}={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Mraba una pande za {s} cm. Eneo lake ni kiasi gani? (cm²)",
+      "hints": [
+        "Pande zote nne za mraba ni sawa.",
+        "Zidisha urefu wa upande kwa wenyewe."
+      ],
+      "expl": "${s}\\times{s}={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Pembetatu ina msingi {b} cm na kimo {h} cm. Eneo lake ni kiasi gani? (cm²)",
+      "hints": [
+        "Eneo la pembetatu ni msingi × kimo ÷ 2.",
+        "Kimo hupimwa kwa pembe mraba kutoka kwenye msingi."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Msambamba una msingi {b} cm na kimo {h} cm. Eneo lake ni kiasi gani? (cm²)",
+      "hints": [
+        "Eneo la msambamba ni msingi × kimo.",
+        "Tumia kimo, si upande wa mteremko."
+      ],
+      "expl": "${b}\\times{h}={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Trapezoidi ina upande wa juu {a} cm, wa chini {b} cm na kimo {h} cm. Eneo lake ni kiasi gani? (cm²)",
+      "hints": [
+        "Eneo la trapezoidi ni (juu + chini) × kimo ÷ 2.",
+        "Jumlisha kwanza upande wa juu na wa chini."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Ulalo wa rombo ni {d1} cm na {d2} cm. Eneo lake ni kiasi gani? (cm²)",
+      "hints": [
+        "Eneo la rombo ni ulalo mmoja × ulalo mwingine ÷ 2.",
+        "Zidisha ulalo, kisha ugawe kwa 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Umbo hili lina mistari mingapi ya ulinganifu?",
+      "hints": [
+        "Mstari wa ulinganifu hukunja umbo kuwa nusu mbili zinazofanana.",
+        "Jaribu kukunja kwa mlalo, wima na kwa ulalo."
+      ],
+      "expl": "Lina mistari {ans} ya ulinganifu."
+    },
+    "congruentSide": {
+      "prompt": "Pembetatu mbili ni sanjari. Urefu wa upande $x$ ni kiasi gani? (cm)",
+      "hints": [
+        "Maumbo sanjari yana umbo na ukubwa sawa.",
+        "Pande zinazolingana zina urefu sawa."
+      ],
+      "expl": "Pande zinazolingana ni sawa, kwa hiyo $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Kuboidi ina {item} ngapi?",
+      "hints": [
+        "Fikiria sanduku.",
+        "Angalia juu, chini, mbele, nyuma na pande zote mbili."
+      ],
+      "expl": "Kuboidi ina {item} {ans}."
+    },
+    "cuboidVolume": {
+      "prompt": "Kuboidi ina urefu {l} cm, upana {w} cm na kimo {h} cm. Ujazo wake ni kiasi gani? (cm³)",
+      "hints": [
+        "Ujazo wa kuboidi ni urefu × upana × kimo.",
+        "Zidisha vipimo vitatu."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, kwa hiyo ujazo ni {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Mchemraba una kingo za {e} cm. Ujazo wake ni kiasi gani? (cm³)",
+      "hints": [
+        "Kingo zote za mchemraba ni sawa.",
+        "Zidisha urefu wa ukingo kwa wenyewe mara tatu."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, kwa hiyo ujazo ni {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Kuboidi ina urefu {l} cm, upana {w} cm na kimo {h} cm. Eneo la uso wake ni kiasi gani? (cm²)",
+      "hints": [
+        "Eneo la uso ni jumla ya maeneo ya nyuso sita.",
+        "Nyuso zinazokabiliana ni sawa: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, kwa hiyo eneo la uso ni {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Kuboidi ina urefu {l} cm, upana {w} cm na kimo {h} cm. Jumla ya urefu wa kingo zake zote ni kiasi gani? (cm)",
+      "hints": [
+        "Kuboidi ina kingo 12.",
+        "Kuna kingo 4 za urefu, 4 za upana na 4 za kimo."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, kwa hiyo jumla ni {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Duara lina nusu kipenyo {r} cm. Mzingo wake ni kiasi gani? (tumia $\\pi=3.14$) (cm)",
+      "hints": [
+        "Mzingo = kipenyo × π.",
+        "Kipenyo ni mara mbili ya nusu kipenyo."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, kwa hiyo mzingo ni {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Duara lina nusu kipenyo {r} cm. Eneo lake ni kiasi gani? (tumia $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Eneo = nusu kipenyo × nusu kipenyo × π.",
+        "Zidisha nusu kipenyo kwa yenyewe, kisha kwa 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, kwa hiyo eneo ni {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Prisimu yenye msingi wa pande {n} ina nyuso ngapi?",
+      "hints": [
+        "Prisimu ina misingi 2 na nyuso za pembeni.",
+        "Idadi ya nyuso za pembeni ni sawa na idadi ya pande za msingi."
+      ],
+      "expl": "Nyuso {n} za pembeni na misingi 2 ni nyuso {ans}."
+    },
+    "adjacentAngle": {
+      "prompt": "Kwenye mstari ulionyooka pembe moja ni ${a}^\\circ$. Pembe jirani ni ngapi? (digrii)",
+      "hints": [
+        "Pembe kwenye mstari ulionyooka hujumlika kuwa $180^\\circ$.",
+        "Toa pembe inayojulikana kutoka $180$."
+      ],
+      "expl": "$180-{a}={ans}$, kwa hiyo ni ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Mistari miwili inakatana na pembe moja ni ${a}^\\circ$. Pembe kinzani wima ni ngapi? (digrii)",
+      "hints": [
+        "Pembe kinzani wima zinatazamana.",
+        "Zina ukubwa sawa."
+      ],
+      "expl": "Pembe kinzani wima ni sawa, kwa hiyo ni ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Mistari miwili sambamba $l$ na $m$ imekatwa na mkato. Pembe moja ni ${a}^\\circ$. $x$ ni ngapi? (digrii)",
+      "hints": [
+        "Pembe zinazolingana kwenye mistari sambamba ni sawa.",
+        "Pembe mbadala pia ni sawa."
+      ],
+      "expl": "Pembe zinazolingana (mbadala) kwenye mistari sambamba ni sawa, kwa hiyo $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Jumla ya pembe za ndani za poligoni yenye pande {n} ni kiasi gani? (digrii)",
+      "hints": [
+        "Poligoni yenye pande {n} hugawanyika kuwa pembetatu {m}.",
+        "Kila pembetatu ina jumla ya pembe $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, kwa hiyo jumla ni ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Pembe moja ya ndani ya poligoni sawia yenye pande {n} ni kiasi gani? (digrii)",
+      "hints": [
+        "Kwanza pata jumla: $180\\times({n}-2)$.",
+        "Gawanya jumla kwa idadi ya pande {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, kwa hiyo kila pembe ni ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Kisekta kina nusu kipenyo {r} cm na pembe ya kitovu ${a}^\\circ$. Urefu wa tao ni $k\\pi$ cm. $k$ ni kiasi gani?",
+      "hints": [
+        "Urefu wa tao ni $2\\pi r\\times\\frac{a}{360}$.",
+        "Kwanza pata pembe hiyo ni sehemu gani ya duara zima."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, kwa hiyo $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Kisekta kina nusu kipenyo {r} cm na pembe ya kitovu ${a}^\\circ$. Eneo lake ni $k\\pi$ cm². $k$ ni kiasi gani?",
+      "hints": [
+        "Eneo la kisekta ni $\\pi r^2\\times\\frac{a}{360}$.",
+        "Zidisha eneo la duara kwa sehemu ya pembe."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, kwa hiyo $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Silinda ina nusu kipenyo cha msingi {r} cm na kimo {h} cm. Ujazo wake ni $k\\pi$ cm³. $k$ ni kiasi gani?",
+      "hints": [
+        "Ujazo = eneo la msingi × kimo.",
+        "Eneo la msingi ni $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, kwa hiyo $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Koni ina nusu kipenyo cha msingi {r} cm na kimo {h} cm. Ujazo wake ni $k\\pi$ cm³. $k$ ni kiasi gani?",
+      "hints": [
+        "Ujazo = eneo la msingi × kimo ÷ 3.",
+        "Eneo la msingi ni $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, kwa hiyo $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Tufe lina nusu kipenyo {r} cm. Ujazo wake ni $k\\pi$ cm³. $k$ ni kiasi gani?",
+      "hints": [
+        "Ujazo wa tufe ni $\\frac{4}{3}\\pi r^3$.",
+        "Kokotoa mchemraba wa nusu kipenyo, kisha zidisha kwa $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, kwa hiyo $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Tufe lina nusu kipenyo {r} cm. Eneo la uso wake ni $k\\pi$ cm². $k$ ni kiasi gani?",
+      "hints": [
+        "Eneo la uso wa tufe ni $4\\pi r^2$.",
+        "Kokotoa mraba wa nusu kipenyo, kisha zidisha kwa 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, kwa hiyo $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Silinda ina nusu kipenyo cha msingi {r} cm na kimo {h} cm. Eneo la uso wake ni $k\\pi$ cm². $k$ ni kiasi gani?",
+      "hints": [
+        "Eneo la uso = 2 × eneo la msingi + eneo la ubavu.",
+        "Eneo la ubavu ni (mzingo) × kimo $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, kwa hiyo $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Pembe moja ya msingi ya pembetatu isosceli ni ${b}^\\circ$. Pembe ya kileleni ni ngapi? (digrii)",
+      "hints": [
+        "Pembe mbili za msingi za pembetatu isosceli ni sawa.",
+        "Toa pembe zote mbili za msingi kutoka $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, kwa hiyo pembe ya kileleni ni ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "Katika msambamba ABCD, $\\angle A={a}^\\circ$. $\\angle B$ ni ngapi? (digrii)",
+      "hints": [
+        "Pembe jirani za msambamba hujumlika kuwa $180^\\circ$.",
+        "Toa $\\angle A$ kutoka $180$."
+      ],
+      "expl": "$180-{a}={ans}$, kwa hiyo $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Katika pembetatu, mstari $x$ unaunganisha nukta za kati za pande mbili na ni sambamba na upande wa tatu, ambao ni {s} cm. $x$ ni kiasi gani? (cm)",
+      "hints": [
+        "Mstari unaounganisha nukta mbili za kati ni nusu ya upande wa tatu.",
+        "Gawanya {s} kwa 2."
+      ],
+      "expl": "${s}\\div2={ans}$, kwa hiyo $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Pembetatu mbili ni sawia. Urefu wa upande $x$ ni kiasi gani? (cm)",
+      "hints": [
+        "Katika maumbo sawia uwiano wa pande zinazolingana ni sawa.",
+        "Pata kwanza kipimo cha ukuzaji."
+      ],
+      "expl": "Uwiano ni ${p}:{q}$, kwa hiyo $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Maumbo mawili sawia yana kipimo cha ukuzaji ${p}:{q}$. Dogo lina eneo {s} cm². Eneo la kubwa ni kiasi gani? (cm²)",
+      "hints": [
+        "Uwiano wa maeneo ni mraba wa kipimo cha ukuzaji.",
+        "Zidisha eneo dogo kwa $({q}/{p})^2$."
+      ],
+      "expl": "Uwiano wa maeneo ni ${p2}:{q2}$, kwa hiyo ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Pande mbili fupi za pembetatu pembe mraba ni {a} cm na {b} cm. Upande mrefu zaidi $x$ ni kiasi gani? (cm)",
+      "hints": [
+        "Nadharia ya Pythagoras: $a^2+b^2=c^2$.",
+        "Kokotoa mraba wa pande zote mbili, zijumlishe, kisha toa mzizi wa mraba."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, kwa hiyo $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Pembetatu pembe mraba ina hipotenyusi {c} cm na upande mmoja {a} cm. Upande mwingine $x$ ni kiasi gani? (cm)",
+      "hints": [
+        "Kutoka $a^2+x^2=c^2$, $x^2=c^2-a^2$.",
+        "Toa mzizi wa mraba wa $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, kwa hiyo $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Pembetatu ina pande {a} cm, {b} cm na {c} cm. Je, ni pembetatu pembe mraba?",
+      "hints": [
+        "Chukua upande mrefu zaidi kama hipotenyusi na ulinganishe $a^2+b^2$ na $c^2$.",
+        "Zikiwa sawa, ni pembetatu pembe mraba."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ na ${c}^2={s2}$, kwa hiyo {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Katika pembetatu pembe mraba, $\\{fn} A$ ni kiasi gani? (andika desimali)",
+      "hints": [
+        "$\\sin A$ = kinyume ÷ hipotenyusi, $\\cos A$ = jirani ÷ hipotenyusi, $\\tan A$ = kinyume ÷ jirani.",
+        "Tofautisha upande kinyume na upande jirani kwa kutumia pembe $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "$\\{fn}\\ {a}^\\circ$ ni kiasi gani? (andika desimali)",
+      "hints": [
+        "Kumbuka thamani za $30^\\circ$, $45^\\circ$ na $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Katika pembetatu pembe mraba $\\tan A={t}$ na upande jirani ni {adj}. Upande kinyume $x$ ni kiasi gani?",
+      "hints": [
+        "$\\tan A$ = kinyume ÷ jirani.",
+        "Kinyume $=\\tan A\\times$ jirani."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Pembe ya kitovu kwenye tao AB ni ${c}^\\circ$. Pembe ya mzingo kwenye tao hilohilo ni ngapi? (digrii)",
+      "hints": [
+        "Pembe ya mzingo ni nusu ya pembe ya kitovu kwenye tao hilohilo.",
+        "Gawanya pembe ya kitovu kwa 2."
+      ],
+      "expl": "${c}\\div2={ans}$, kwa hiyo pembe ya mzingo ni ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Kutoka nukta P nje ya duara O, tanjenti inagusa duara kwenye A. $PO={po}$ na nusu kipenyo ni {r}. $PA$ ni kiasi gani?",
+      "hints": [
+        "Tanjenti ni pembe mraba na nusu kipenyo, kwa hiyo pembetatu OAP ina pembe mraba.",
+        "Tumia $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, kwa hiyo $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Duara lina nusu kipenyo {r}. Chodi iko umbali {d} kutoka katikati. Urefu wa chodi ni kiasi gani?",
+      "hints": [
+        "Mstari wima kutoka katikati hugawa chodi nusu mbili sawa.",
+        "Nusu ya chodi ni $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Nusu ya chodi ni $\\sqrt{{r}^2-{d}^2}={half}$, kwa hiyo chodi ni ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Pembenne imechorwa ndani ya duara na pembe moja ni ${a}^\\circ$. Pembe iliyo kinyume ni ngapi? (digrii)",
+      "hints": [
+        "Pembe zilizo kinyume za pembenne ya mzingo hujumlika kuwa $180^\\circ$.",
+        "Toa pembe uliyopewa kutoka $180$."
+      ],
+      "expl": "$180-{a}={ans}$, kwa hiyo ni ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Umbali kati ya nukta A({x1}, {y1}) na B({x2}, {y2}) kwenye ndege ya kiratibu ni kiasi gani?",
+      "hints": [
+        "Umbali ni $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kokotoa mraba wa tofauti za mlalo na wima, kisha zijumlishe."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Kiratibu cha ${axis}$ cha nukta ya kati ya mstari AB, ambapo A({x1}, {y1}) na B({x2}, {y2}), ni kiasi gani?",
+      "hints": [
+        "Nukta ya kati ni wastani wa viratibu.",
+        "Jumlisha viratibu vinavyolingana na ugawe kwa 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Mteremko wa mstari unaopita kwenye A({x1}, {y1}) na B({x2}, {y2}) ni kiasi gani?",
+      "hints": [
+        "Mteremko = (badiliko la $y$) ÷ (badiliko la $x$).",
+        "Kokotoa $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Nusu kipenyo cha duara $(x-{a})^2+(y-{b})^2={r2}$ ni kiasi gani?",
+      "hints": [
+        "Katika $(x-a)^2+(y-b)^2=r^2$ upande wa kulia ni $r^2$.",
+        "Toa mzizi wa mraba wa {r2}."
+      ],
+      "expl": "$r^2={r2}$, kwa hiyo $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Duara $(x-{a})^2+(y-{b})^2={r2}$ lina katikati $(p, q)$. $p+q$ ni kiasi gani?",
+      "hints": [
+        "Katikati ni $(p, q)$.",
+        "Soma $p$ na $q$ kutoka $x-p$ na $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Umbali kutoka asili hadi mstari ${A}x+{B}y-{C}=0$ ni kiasi gani?",
+      "hints": [
+        "Umbali kutoka nukta hadi mstari ni $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Kwa asili $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "Katika pembetatu ABC, $a={a}$ na $\\angle A={A}^\\circ$. Nusu kipenyo cha duara lililozunguka $R$ ni kiasi gani?",
+      "hints": [
+        "Kanuni ya sine: $\\frac{a}{\\sin A}=2R$.",
+        "Tumia thamani ya $\\sin {A}^\\circ$ kupata $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "Katika pembetatu ABC, $a={a}$, $b={b}$ na $\\angle C={C}^\\circ$. $c$ ni kiasi gani?",
+      "hints": [
+        "Kanuni ya kosine: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Weka thamani ya $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, kwa hiyo $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "Katika pembetatu ABC, $a={a}$, $b={b}$ na $\\angle C={C}^\\circ$. Eneo lake ni kiasi gani?",
+      "hints": [
+        "Eneo $=\\frac12ab\\sin C$.",
+        "Weka thamani ya $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ ni sawa na $\\frac{\\pi}{d}$ radiani. $d$ ni kiasi gani?",
+      "hints": [
+        "$180^\\circ=\\pi$ radiani.",
+        "Rahisisha $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, kwa hiyo $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Kisekta kina nusu kipenyo {r} na pembe ya kitovu $\\frac{\\pi}{{d}}$. Urefu wa tao ni $k\\pi$. $k$ ni kiasi gani?",
+      "hints": [
+        "Urefu wa tao ni $l=r\\theta$.",
+        "Zidisha $r$ kwa $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, kwa hiyo $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Kisekta kina nusu kipenyo {r} na pembe ya kitovu $\\frac{\\pi}{{d}}$. Eneo lake ni $k\\pi$. $k$ ni kiasi gani?",
+      "hints": [
+        "Eneo la kisekta ni $S=\\frac12r^2\\theta$.",
+        "Zidisha $r^2$ kwa $\\theta$, kisha kwa $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, kwa hiyo $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Kiratibu cha $x$ cha fokasi ya parabola $y^2={k}x$ ni kiasi gani?",
+      "hints": [
+        "Fokasi ya $y^2=4px$ ni $(p, 0)$.",
+        "Tatua $4p={k}$ kupata $p$."
+      ],
+      "expl": "$4p={k}$, kwa hiyo $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Duaradufu $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ ina fokasi $(\\pm c, 0)$. $c$ ni kiasi gani?",
+      "hints": [
+        "Kwa duaradufu $c^2=a^2-b^2$.",
+        "Toa {b2} kutoka {a2} kisha toa mzizi wa mraba."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, kwa hiyo $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Haipabola $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ ina fokasi $(\\pm c, 0)$. $c$ ni kiasi gani?",
+      "hints": [
+        "Kwa haipabola $c^2=a^2+b^2$.",
+        "Jumlisha {a2} na {b2} kisha toa mzizi wa mraba."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, kwa hiyo $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Ukubwa $|\\vec{a}|$ wa vekta $\\vec{a}=({x}, {y})$ ni kiasi gani?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kokotoa mraba wa kila kijenzi, jumlisha, kisha toa mzizi wa mraba."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Zao la nukta $\\vec{a}\\cdot\\vec{b}$ la $\\vec{a}=({x1}, {y1})$ na $\\vec{b}=({x2}, {y2})$ ni kiasi gani?",
+      "hints": [
+        "Zao la nukta ni $x_1x_2+y_1y_2$.",
+        "Zidisha vijenzi vinavyolingana kisha jumlisha."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Vekta $\\vec{a}=({x1}, k)$ na $\\vec{b}=({x2}, {y2})$ ni pembe mraba kwa kila mmoja. $k$ ni kiasi gani?",
+      "hints": [
+        "Vekta zenye pembe mraba zina zao la nukta $0$.",
+        "Tatua $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, kwa hiyo $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "pembetatu",
+    "quad": "pembenne",
+    "circ": "duara",
+    "pent": "pentagoni (pembetano)",
+    "hex": "heksagoni (pembesita)",
+    "rect": "mstatili",
+    "square": "mraba",
+    "trap": "trapezoidi",
+    "para": "msambamba",
+    "rhom": "rombo",
+    "cube": "mchemraba",
+    "cuboid": "kuboidi (umbo la sanduku)",
+    "cyl": "silinda",
+    "sph": "tufe",
+    "cone": "koni",
+    "acute": "pembe ya papo hapo",
+    "right": "pembe mraba",
+    "obtuse": "pembe butu",
+    "faces": "nyuso",
+    "edges": "kingo",
+    "vertices": "vipeo",
+    "triP": "pembetatu",
+    "squareP": "miraba",
+    "circP": "miduara",
+    "iso": "pembetatu isosceli",
+    "equi": "pembetatu sawa-pande",
+    "rtri": "pembetatu pembe mraba",
+    "sss": "Jozi tatu za pande ni sawa (SSS)",
+    "sas": "Pande mbili na pembe iliyo katikati yake ni sawa (SAS)",
+    "asa": "Upande mmoja na pembe mbili za ncha zake ni sawa (ASA)",
+    "yes": "Ndiyo, ni pembetatu pembe mraba",
+    "no": "Hapana, si pembetatu pembe mraba"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Majina ya maumbo na pembe",
+      "concept": "**Pembetatu** ina pande 3 na **pembenne** ina pande 4. **Duara** ni la mviringo na halina pembe.",
+      "example": "Pembetatu: pande 3, pembe 3"
+    },
+    "E12": {
+      "title": "Maumbo ya pande tatu",
+      "concept": "Umbo la sanduku ni **kuboidi**, nguzo ya mviringo ni **silinda**, na mpira ni **tufe**.",
+      "example": "kuboidi · silinda · tufe"
+    },
+    "E21": {
+      "title": "Pembetatu na pembenne",
+      "concept": "**Pembetatu** ina pande 3 zilizonyooka na pembe 3; **pembenne** ina pande 4 zilizonyooka na pembe 4, vyovyote umbo lake lilivyo. Idadi ya pande ni sawa na idadi ya pembe.",
+      "example": "Pembenne: pande 4, pembe 4"
+    },
+    "E22": {
+      "title": "Urefu na wakati",
+      "concept": "Weka ncha moja kwenye 0 ya rula; alama iliyo kwenye ncha nyingine ni urefu. $1\\text{ m}=100\\text{ cm}$. Zidisha namba ambayo mshale mrefu unaonyesha kwa 5 kupata dakika.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Pembe na pembe mraba",
+      "concept": "Miale miwili kutoka nukta moja huunda **pembe**. Pembe ya $90^\\circ$ ni **pembe mraba**; ndogo zaidi ni **papo hapo**, kubwa zaidi ni **butu**.",
+      "example": "$30^\\circ$ papo hapo · $90^\\circ$ mraba · $120^\\circ$ butu"
+    },
+    "E32": {
+      "title": "Nusu kipenyo na kipenyo",
+      "concept": "**Nusu kipenyo** huenda kutoka katikati hadi kwenye duara; **kipenyo** hupita katikati. Kipenyo ni mara mbili ya nusu kipenyo.",
+      "example": "Nusu kipenyo 5 cm → kipenyo 10 cm"
+    },
+    "E41": {
+      "title": "Jumla za pembe",
+      "concept": "Pembe tatu za pembetatu hujumlika kuwa $180^\\circ$ na pembe nne za pembenne hujumlika kuwa $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Pembenne na poligoni",
+      "concept": "Jozi moja ya pande sambamba huunda **trapezoidi**, jozi mbili huunda **msambamba**, na pande nne sawa huunda **rombo**. **Ulalo** huunganisha vipeo viwili ambavyo havikaribiani.",
+      "example": "Pembenne ina ulalo 2"
+    },
+    "E51": {
+      "title": "Mzingo na eneo",
+      "concept": "Mstatili: upana × urefu. Pembetatu: msingi × kimo ÷ 2. Msambamba: msingi × kimo. Trapezoidi: (juu + chini) × kimo ÷ 2. Rombo: ulalo × ulalo ÷ 2.",
+      "example": "Pembetatu msingi 10, kimo 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Usanjari na ulinganifu",
+      "concept": "Maumbo mawili yanayolingana kabisa ni **sanjari**. Umbo linalokunjika na kukaa juu yake lenyewe kwenye mstari ni **lenye ulinganifu**; mstari huo ni **mstari wa ulinganifu**.",
+      "example": "Mraba una mistari 4 ya ulinganifu"
+    },
+    "E61": {
+      "title": "Mzingo wa duara na eneo la duara",
+      "concept": "Mzingo = kipenyo × π, eneo = nusu kipenyo × nusu kipenyo × π, ambapo π ≈ $3.14$.",
+      "example": "Nusu kipenyo 5 cm → mzingo $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Kuboidi na mchemraba",
+      "concept": "Ujazo = urefu × upana × kimo; eneo la uso = (jumla ya maeneo ya nyuso tatu) × 2. Kuboidi ina nyuso 6, kingo 12 na vipeo 8.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Kanuni za pembe na poligoni",
+      "concept": "Pembe kinzani wima ni sawa; pembe zinazolingana na mbadala kwenye mistari sambamba ni sawa. Pembe za ndani za poligoni yenye pande $n$ hujumlika kuwa $180^\\circ\\times(n-2)$.",
+      "example": "Pentagoni: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Kisekta na maumbo ya pande tatu",
+      "concept": "Urefu wa tao $=2\\pi r\\times\\frac{a}{360}$, eneo la kisekta $=\\pi r^2\\times\\frac{a}{360}$, ujazo wa tufe $=\\frac43\\pi r^3$, ujazo wa koni $=\\frac13\\pi r^2h$.",
+      "example": "Tufe $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Pembetatu na pembenne",
+      "concept": "Pembe za msingi za pembetatu isosceli ni sawa. Pembe jirani za msambamba hujumlika kuwa $180^\\circ$, na mstari unaounganisha nukta mbili za kati za pembetatu ni nusu ya upande wa tatu.",
+      "example": "Pembe ya msingi $50^\\circ$ → pembe ya kileleni $80^\\circ$"
+    },
+    "M22": {
+      "title": "Ufanano na nadharia ya Pythagoras",
+      "concept": "Maumbo sawia yana uwiano sawa wa pande na maeneo yake yako katika mraba wa uwiano huo. Katika pembetatu pembe mraba $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Uwiano wa trigonometria",
+      "concept": "Katika pembetatu mraba: $\\sin A$ = upande wa kinyume ÷ hipotenyusi, $\\cos A$ = upande wa jirani ÷ hipotenyusi, $\\tan A$ = upande wa kinyume ÷ upande wa jirani.",
+      "example": "Pembetatu 3-4-5: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Sifa za duara",
+      "concept": "Pembe ya mzingo ni nusu ya pembe ya kitovu kwenye tao hilohilo. Tanjenti ni pembe mraba na nusu kipenyo, na pembe kinyume za pembenne ya mzingo hujumlika kuwa $180^\\circ$.",
+      "example": "Pembe ya kitovu $100^\\circ$ → pembe ya mzingo $50^\\circ$"
+    },
+    "H11": {
+      "title": "Maumbo kwenye ndege ya kiratibu",
+      "concept": "Umbali $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, nukta ya kati = wastani wa viratibu, mteremko $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): umbali 5"
+    },
+    "H12": {
+      "title": "Mlinganyo wa duara",
+      "concept": "Duara lenye katikati $(a, b)$ na nusu kipenyo $r$ ni $(x-a)^2+(y-b)^2=r^2$. Umbali kutoka $(x_0,y_0)$ hadi $ax+by+c=0$ ni $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: katikati $(2,3)$, nusu kipenyo 5"
+    },
+    "H21": {
+      "title": "Pembetatu na kazi za trigonometria",
+      "concept": "Kanuni ya sine $\\frac{a}{\\sin A}=2R$, kanuni ya kosine $c^2=a^2+b^2-2ab\\cos C$, eneo la pembetatu $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radiani na kisekta",
+      "concept": "$180^\\circ=\\pi$ radiani. Kisekta chenye nusu kipenyo $r$ na pembe $\\theta$ (radiani) kina urefu wa tao $r\\theta$ na eneo $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Sehemu za koni",
+      "concept": "Parabola $y^2=4px$ ina fokasi $(p,0)$; kwa duaradufu $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; kwa haipabola $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: fokasi $(3,0)$"
+    },
+    "H32": {
+      "title": "Vekta za ndege",
+      "concept": "Ukubwa wa $(x,y)$ ni $\\sqrt{x^2+y^2}$; zao la nukta ni $x_1x_2+y_1y_2$, na vekta zenye pembe mraba zina zao la nukta 0.",
+      "example": "Ukubwa wa $(3,4)$: 5"
+    }
+  }
+}

@@ -27,6 +27,16 @@
     "id": "m.word",
     "title": "방정식의 활용",
     "prerequisiteId": "m.solve"
+   },
+   {
+    "id": "m.m1.geo1",
+    "title": "각의 성질과 다각형",
+    "prerequisiteId": "m.word"
+   },
+   {
+    "id": "m.m1.geo2",
+    "title": "부채꼴과 입체도형의 측정",
+    "prerequisiteId": "m.m1.geo1"
    }
   ],
   "courses": [
@@ -107,6 +117,38 @@
          "m-word-4"
         ],
         "challengeId": "m-word-5"
+       },
+       {
+        "id": "math-m1-geo1",
+        "title": "각의 성질과 다각형",
+        "skillIds": [
+         "m.m1.geo1"
+        ],
+        "concept": "맞꼭지각은 같고, 평행선에서 동위각·엇각은 같아요. $n$각형의 내각의 합은 $180^\\circ\\times(n-2)$예요.",
+        "example": "오각형: $180^\\circ\\times3=540^\\circ$",
+        "questionIds": [
+         "m-m1-geo1-1",
+         "m-m1-geo1-2",
+         "m-m1-geo1-3",
+         "m-m1-geo1-4"
+        ],
+        "challengeId": "m-m1-geo1-c"
+       },
+       {
+        "id": "math-m1-geo2",
+        "title": "부채꼴과 입체도형의 측정",
+        "skillIds": [
+         "m.m1.geo2"
+        ],
+        "concept": "호의 길이 $=2\\pi r\\times\\frac{a}{360}$, 부채꼴의 넓이 $=\\pi r^2\\times\\frac{a}{360}$, 구의 부피 $=\\frac43\\pi r^3$, 원뿔의 부피 $=\\frac13\\pi r^2h$예요.",
+        "example": "$r=3$인 구: $\\frac43\\pi\\times27=36\\pi$",
+        "questionIds": [
+         "m-m1-geo2-1",
+         "m-m1-geo2-2",
+         "m-m1-geo2-3",
+         "m-m1-geo2-4"
+        ],
+        "challengeId": "m-m1-geo2-c"
        }
       ]
      }
@@ -1138,6 +1180,1124 @@
    "explanation": "$3x+3=42$, $3x=39$, $x=13$ 이에요.",
    "role": "diagnostic",
    "expectedSeconds": 45,
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-1",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "직선 위에서 한 각이 $65^\\circ$일 때, 이웃한 각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       40,
+       140,
+       220,
+       30
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       30,
+       220,
+       140
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       49
+      ],
+      "t": "65°"
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       131
+      ],
+      "t": "x"
+     },
+     {
+      "k": "arc",
+      "c": [
+       130,
+       85
+      ],
+      "r": 22,
+      "a0": 31,
+      "a1": 149
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 115
+   },
+   "hints": [
+    "일직선이 이루는 각은 $180^\\circ$예요.",
+    "$180$에서 아는 각을 빼 보세요."
+   ],
+   "explanation": "$180-65=115$이므로 $115^\\circ$입니다.",
+   "role": "core",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-2",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "두 직선이 만날 때 한 각이 $70^\\circ$입니다. 그 맞꼭지각은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       40,
+       140,
+       220,
+       30
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       40,
+       30,
+       220,
+       140
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       49
+      ],
+      "t": "70°"
+     },
+     {
+      "k": "text",
+      "p": [
+       130,
+       131
+      ],
+      "t": "x"
+     },
+     {
+      "k": "arc",
+      "c": [
+       130,
+       85
+      ],
+      "r": 22,
+      "a0": 31,
+      "a1": 149
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 70
+   },
+   "hints": [
+    "맞꼭지각은 마주 보는 각이에요.",
+    "맞꼭지각의 크기는 서로 같아요."
+   ],
+   "explanation": "맞꼭지각은 크기가 같으므로 $70^\\circ$입니다.",
+   "role": "core",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-3",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "평행한 두 직선 $l$, $m$과 한 직선이 만납니다. 한 각이 $55^\\circ$일 때 $x$의 크기는 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "line",
+      "p": [
+       25,
+       55,
+       235,
+       55
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       25,
+       120,
+       235,
+       120
+      ]
+     },
+     {
+      "k": "line",
+      "p": [
+       70,
+       150,
+       190,
+       25
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       222,
+       48
+      ],
+      "t": "l"
+     },
+     {
+      "k": "text",
+      "p": [
+       222,
+       113
+      ],
+      "t": "m"
+     },
+     {
+      "k": "text",
+      "p": [
+       150,
+       48
+      ],
+      "t": "55°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       118,
+       113
+      ],
+      "t": "x",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 55
+   },
+   "hints": [
+    "평행선에서 동위각의 크기는 같아요.",
+    "엇각의 크기도 같아요."
+   ],
+   "explanation": "평행선에서 동위각(엇각)은 같으므로 $x=55$입니다.",
+   "role": "core",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-4",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "변이 5개인 다각형의 내각의 크기의 합은 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       130,
+       27,
+       189,
+       69.8,
+       166.4,
+       139.2,
+       93.6,
+       139.2,
+       71,
+       69.8
+      ],
+      "f": 1
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 540
+   },
+   "hints": [
+    "변이 5개인 다각형은 삼각형 3개로 나눌 수 있어요.",
+    "삼각형 하나의 내각의 합은 $180^\\circ$예요."
+   ],
+   "explanation": "$180\\times3=540$이므로 $540^\\circ$입니다.",
+   "role": "core",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-c",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "변이 6개인 정다각형의 한 내각의 크기는 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       130,
+       27,
+       183.7,
+       58,
+       183.7,
+       120,
+       130,
+       151,
+       76.3,
+       120,
+       76.3,
+       58
+      ],
+      "f": 1
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 120
+   },
+   "hints": [
+    "먼저 내각의 합을 구해요: $180\\times(6-2)$.",
+    "합을 변의 수 6로 나눠요."
+   ],
+   "explanation": "$180\\times(6-2)\\div6=120$이므로 $120^\\circ$입니다.",
+   "role": "core",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-v1",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "multiple_choice",
+   "difficulty": 3,
+   "prompt": "두 삼각형은 합동입니다. 어떤 합동 조건을 이용하면 될까요?",
+   "figure": {
+    "w": 260,
+    "h": 160,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       20,
+       130,
+       110,
+       130,
+       60,
+       45
+      ],
+      "f": 1
+     },
+     {
+      "k": "text",
+      "p": [
+       65,
+       148
+      ],
+      "t": "5"
+     },
+     {
+      "k": "text",
+      "p": [
+       30,
+       82
+      ],
+      "t": "6",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       98,
+       82
+      ],
+      "t": "7",
+      "a": "s"
+     },
+     {
+      "k": "poly",
+      "p": [
+       140,
+       130,
+       240,
+       130,
+       175,
+       45
+      ],
+      "f": 2
+     },
+     {
+      "k": "text",
+      "p": [
+       190,
+       148
+      ],
+      "t": "5"
+     },
+     {
+      "k": "text",
+      "p": [
+       148,
+       82
+      ],
+      "t": "6",
+      "a": "e"
+     },
+     {
+      "k": "text",
+      "p": [
+       224,
+       82
+      ],
+      "t": "7",
+      "a": "s"
+     }
+    ]
+   },
+   "options": [
+    {
+     "id": "a",
+     "text": "두 변의 길이와 그 끼인각의 크기가 각각 같다 (SAS 합동)"
+    },
+    {
+     "id": "b",
+     "text": "한 변의 길이와 그 양 끝 각의 크기가 각각 같다 (ASA 합동)"
+    },
+    {
+     "id": "c",
+     "text": "세 변의 길이가 각각 같다 (SSS 합동)"
+    }
+   ],
+   "answer": {
+    "kind": "choice",
+    "id": "c"
+   },
+   "hints": [
+    "두 삼각형에서 길이가 같은 변과 크기가 같은 각이 무엇인지 찾아보세요.",
+    "변만 같으면 SSS, 두 변과 끼인각이면 SAS, 한 변과 양 끝 각이면 ASA예요."
+   ],
+   "explanation": "그림에서 같은 것은 세 변의 길이가 각각 같다 (SSS 합동)이므로 이 조건을 이용합니다.",
+   "role": "variant",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo1-v2",
+   "site": "math",
+   "skillId": "m.m1.geo1",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "변이 4개인 정다각형의 한 내각의 크기는 몇 도일까요? (도)",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       130,
+       27,
+       192,
+       89,
+       130,
+       151,
+       68,
+       89
+      ],
+      "f": 1
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 90
+   },
+   "hints": [
+    "먼저 내각의 합을 구해요: $180\\times(4-2)$.",
+    "합을 변의 수 4로 나눠요."
+   ],
+   "explanation": "$180\\times(4-2)\\div4=90$이므로 $90^\\circ$입니다.",
+   "role": "variant",
+   "family": "m1-geo1",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-1",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "반지름이 6 cm이고 중심각이 $60^\\circ$인 부채꼴의 호의 길이는 $k\\pi$ cm입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       90,
+       120,
+       160,
+       120,
+       159.9,
+       116.9,
+       159.7,
+       113.9,
+       159.4,
+       110.9,
+       158.9,
+       107.8,
+       158.3,
+       104.8,
+       157.6,
+       101.9,
+       156.8,
+       99,
+       155.8,
+       96.1,
+       154.7,
+       93.2,
+       153.4,
+       90.4,
+       152.1,
+       87.7,
+       150.6,
+       85,
+       149,
+       82.4,
+       147.3,
+       79.8,
+       145.5,
+       77.4,
+       143.6,
+       75,
+       141.6,
+       72.7,
+       139.5,
+       70.5,
+       137.3,
+       68.4,
+       135,
+       66.4,
+       132.6,
+       64.5,
+       130.2,
+       62.7,
+       127.6,
+       61,
+       125,
+       59.4
+      ],
+      "f": 1
+     },
+     {
+      "k": "arc",
+      "c": [
+       90,
+       120
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 60
+     },
+     {
+      "k": "text",
+      "p": [
+       129,
+       106
+      ],
+      "t": "60°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       138
+      ],
+      "t": "6cm"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 2
+   },
+   "hints": [
+    "호의 길이는 $2\\pi r\\times\\frac60{360}$이에요.",
+    "중심각이 원 전체의 몇 분의 몇인지 먼저 구해요."
+   ],
+   "explanation": "$2\\times6\\times\\frac{60}{360}=2$이므로 $k=2$입니다.",
+   "role": "core",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-2",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "반지름이 6 cm이고 중심각이 $60^\\circ$인 부채꼴의 넓이는 $k\\pi$ cm²입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       90,
+       120,
+       160,
+       120,
+       159.9,
+       116.9,
+       159.7,
+       113.9,
+       159.4,
+       110.9,
+       158.9,
+       107.8,
+       158.3,
+       104.8,
+       157.6,
+       101.9,
+       156.8,
+       99,
+       155.8,
+       96.1,
+       154.7,
+       93.2,
+       153.4,
+       90.4,
+       152.1,
+       87.7,
+       150.6,
+       85,
+       149,
+       82.4,
+       147.3,
+       79.8,
+       145.5,
+       77.4,
+       143.6,
+       75,
+       141.6,
+       72.7,
+       139.5,
+       70.5,
+       137.3,
+       68.4,
+       135,
+       66.4,
+       132.6,
+       64.5,
+       130.2,
+       62.7,
+       127.6,
+       61,
+       125,
+       59.4
+      ],
+      "f": 1
+     },
+     {
+      "k": "arc",
+      "c": [
+       90,
+       120
+      ],
+      "r": 26,
+      "a0": 0,
+      "a1": 60
+     },
+     {
+      "k": "text",
+      "p": [
+       129,
+       106
+      ],
+      "t": "60°",
+      "a": "s"
+     },
+     {
+      "k": "text",
+      "p": [
+       125,
+       138
+      ],
+      "t": "6cm"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 6
+   },
+   "hints": [
+    "부채꼴의 넓이는 $\\pi r^2\\times\\frac60{360}$이에요.",
+    "원의 넓이에 중심각의 비율을 곱해요."
+   ],
+   "explanation": "$6^2\\times\\frac{60}{360}=6$이므로 $k=6$입니다.",
+   "role": "core",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-3",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "밑면의 반지름이 3 cm, 높이가 5 cm인 원기둥의 부피는 $k\\pi$ cm³입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       82,
+       36,
+       178,
+       36,
+       178,
+       130,
+       82,
+       130
+      ],
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       130
+      ],
+      "rx": 48,
+      "ry": 14,
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       36
+      ],
+      "rx": 48,
+      "ry": 14,
+      "f": 2
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       36,
+       178,
+       36
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       154,
+       18
+      ],
+      "t": "3cm"
+     },
+     {
+      "k": "text",
+      "p": [
+       186,
+       88
+      ],
+      "t": "5cm",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 45
+   },
+   "hints": [
+    "원기둥의 부피는 (밑면의 넓이)×(높이)예요.",
+    "밑면의 넓이는 $\\pi r^2$이에요."
+   ],
+   "explanation": "$3^2\\times5=45$이므로 $k=45$입니다.",
+   "role": "core",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-4",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "밑면의 반지름이 3 cm, 높이가 4 cm인 원뿔의 부피는 $k\\pi$ cm³입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       78,
+       130,
+       130,
+       28,
+       182,
+       130
+      ],
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       130
+      ],
+      "rx": 52,
+      "ry": 14,
+      "f": 1
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       28,
+       130,
+       130
+      ],
+      "d": true
+     },
+     {
+      "k": "text",
+      "p": [
+       156,
+       160
+      ],
+      "t": "3cm"
+     },
+     {
+      "k": "text",
+      "p": [
+       124,
+       79
+      ],
+      "t": "4cm",
+      "a": "e"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 12
+   },
+   "hints": [
+    "원뿔의 부피는 (밑면의 넓이)×(높이)÷3이에요.",
+    "밑면의 넓이는 $\\pi r^2$이에요."
+   ],
+   "explanation": "$3^2\\times4\\div3=12$이므로 $k=12$입니다.",
+   "role": "core",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-c",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 4,
+   "prompt": "반지름이 3 cm인 구의 부피는 $k\\pi$ cm³입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       130,
+       85
+      ],
+      "r": 56,
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       85
+      ],
+      "rx": 56,
+      "ry": 16,
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       85,
+       186,
+       85
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       158,
+       78
+      ],
+      "t": "3cm"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 36
+   },
+   "hints": [
+    "구의 부피는 $\\frac{4}{3}\\pi r^3$이에요.",
+    "반지름을 세 번 곱한 뒤 $\\frac{4}{3}$를 곱해요."
+   ],
+   "explanation": "$\\frac{4}{3}\\times3^3=36$이므로 $k=36$입니다.",
+   "role": "core",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-v1",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "반지름이 5 cm인 구의 겉넓이는 $k\\pi$ cm²입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "circle",
+      "c": [
+       130,
+       85
+      ],
+      "r": 56,
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       85
+      ],
+      "rx": 56,
+      "ry": 16,
+      "d": true
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       85,
+       186,
+       85
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       158,
+       78
+      ],
+      "t": "5cm"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 100
+   },
+   "hints": [
+    "구의 겉넓이는 $4\\pi r^2$이에요.",
+    "반지름을 제곱한 뒤 4를 곱해요."
+   ],
+   "explanation": "$4\\times5^2=100$이므로 $k=100$입니다.",
+   "role": "variant",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
+   "status": "PUBLISHED"
+  },
+  {
+   "id": "m-m1-geo2-v2",
+   "site": "math",
+   "skillId": "m.m1.geo2",
+   "type": "numeric",
+   "difficulty": 3,
+   "prompt": "밑면의 반지름이 3 cm, 높이가 5 cm인 원기둥의 겉넓이는 $k\\pi$ cm²입니다. $k$의 값은?",
+   "figure": {
+    "w": 260,
+    "h": 170,
+    "s": [
+     {
+      "k": "poly",
+      "p": [
+       82,
+       36,
+       178,
+       36,
+       178,
+       130,
+       82,
+       130
+      ],
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       130
+      ],
+      "rx": 48,
+      "ry": 14,
+      "f": 1
+     },
+     {
+      "k": "ellipse",
+      "c": [
+       130,
+       36
+      ],
+      "rx": 48,
+      "ry": 14,
+      "f": 2
+     },
+     {
+      "k": "line",
+      "p": [
+       130,
+       36,
+       178,
+       36
+      ]
+     },
+     {
+      "k": "text",
+      "p": [
+       154,
+       18
+      ],
+      "t": "3cm"
+     },
+     {
+      "k": "text",
+      "p": [
+       186,
+       88
+      ],
+      "t": "5cm",
+      "a": "s"
+     }
+    ]
+   },
+   "answer": {
+    "kind": "numeric",
+    "value": 48
+   },
+   "hints": [
+    "겉넓이=(밑넓이)×2+(옆넓이)예요.",
+    "옆넓이는 (밑면의 둘레)×(높이)=$2\\pi r\\times h$예요."
+   ],
+   "explanation": "$2\\times3^2+2\\times3\\times5=48$이므로 $k=48$입니다.",
+   "role": "variant",
+   "family": "m1-geo2",
+   "expectedSeconds": 60,
+   "tags": [
+    "geometry"
+   ],
    "status": "PUBLISHED"
   }
  ]

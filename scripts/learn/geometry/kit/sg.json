@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Iri ti fason so ayeke nye?",
+      "hints": [
+        "Bâ ngbonga ti acôté na ti asommet.",
+        "Bâ so acôté ni ayeke droit wala fason ni ayeke rond."
+      ],
+      "expl": "Fason so iri ni ayeke {name}."
+    },
+    "nameSolid": {
+      "prompt": "Iri ti solide so ayeke nye?",
+      "hints": [
+        "Solide ni ayeke rond na ndo kue wala?",
+        "Bâ ngbonga ti aface so ayeke plat."
+      ],
+      "expl": "Solide so ayeke {name}."
+    },
+    "countOf": {
+      "prompt": "Na yâ ti image so, {shape} ayeke ngbonga nye?",
+      "hints": [
+        "Sara mbeni signe na ndo ti oko oko tongana mo bâ ngbonga ni.",
+        "Bâ nzoni, ke bâ fason oko ngbele use."
+      ],
+      "expl": "{shape} ayeke {ans}."
+    },
+    "countVertices": {
+      "prompt": "Fason so ayeke na asommet (acôté ti angle) ngbonga nye?",
+      "hints": [
+        "Sommet ayeke ndo so acôté use ayeke kpe oko.",
+        "Bâ ngbonga ti asommet so ayeke na pointe, oko oko."
+      ],
+      "expl": "Ni ayeke na asommet {ans}."
+    },
+    "countSides": {
+      "prompt": "Fason so ayeke na acôté ngbonga nye?",
+      "hints": [
+        "Côté ayeke bord droit ti fason ni.",
+        "Gue ndulu ti fason ni, na bâ ngbonga ti acôté."
+      ],
+      "expl": "Ni ayeke na acôté {ans}."
+    },
+    "rulerRead": {
+      "prompt": "Sara na règle ti hinga longueur ti ligne ni. (cm)",
+      "hints": [
+        "Bâ ndo so ligne ni akomanse na ndo so ni asuku.",
+        "Zî signe ti komanse na signe ti suku."
+      ],
+      "expl": "Ligne ni akomanse na {from} na asuku na {to}, ni la longueur ni ayeke {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Ligne ti ndo ni akota ahon ligne ti ndo ngoi ni na cm ngbonga nye? (cm)",
+      "hints": [
+        "Kozo bâ longueur use ni.",
+        "Zî longueur so ayeke kete na longueur so ayeke kota."
+      ],
+      "expl": "{a}-{b}={ans}, ni ayeke kota ahon na {ans} cm."
+    },
+    "rightAngles": {
+      "prompt": "Fason so ayeke na angles droits ngbonga nye?",
+      "hints": [
+        "Angle droit ayeke tongana angle ti carré.",
+        "Bâ angle oko oko."
+      ],
+      "expl": "Ni ayeke na angles droits {ans}."
+    },
+    "clockMinutes": {
+      "prompt": "Montre afa heure {h} na amunite. Amunite ayeke ngbonga nye? (min)",
+      "hints": [
+        "Sara fois 5 na chiffre so grande aiguille ayeke fa.",
+        "Tongana grande aiguille afa 6, ni ayeke minute 30."
+      ],
+      "expl": "Grande aiguille afa {n}, ni ${n}\\times5={ans}$ minute."
+    },
+    "mToCm": {
+      "prompt": "{m} m {c} cm ayeke cm ngbonga nye? (cm)",
+      "hints": [
+        "1 m ayeke 100 cm.",
+        "Kiri m na cm, na pekoni zia cm so ayeke."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, ni ayeke {ans} cm."
+    },
+    "triType": {
+      "prompt": "Triangle so ayeke na longueur ti acôté so, ni ayeke triangle ti nye?",
+      "hints": [
+        "Bâ longueur ti acôté ota ni.",
+        "Acôté use ayeke legeoko: isocèle. Acôté ota ayeke legeoko: équilatéral."
+      ],
+      "expl": "Triangle so ayeke {name}."
+    },
+    "congruentCond": {
+      "prompt": "Triangle use ni ayeke congruent. Condition ti congruence ni ayeke nye?",
+      "hints": [
+        "Bâ acôté so ayeke legeoko na angles so ayeke legeoko.",
+        "Acôté kue: SSS. Acôté use na angle so ayeke na yâ ni: SAS. Côté oko na angles use ti ahoto ni: ASA."
+      ],
+      "expl": "Ayeke legeoko na yâ ti image ayeke: {cond}. Ni la condition so."
+    },
+    "circleDiameter": {
+      "prompt": "Rayon ti cercle ayeke {r} cm. Diamètre ni ayeke nye? (cm)",
+      "hints": [
+        "Diamètre ayeke segment so ayeke kota ahon so apasa na centre.",
+        "Diamètre ayeke rayon fois use."
+      ],
+      "expl": "{r}×2={ans}, ni diamètre ayeke {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Diamètre ti cercle ayeke {d} cm. Rayon ni ayeke nye? (cm)",
+      "hints": [
+        "Rayon ayeke gue na centre kue na cercle.",
+        "Rayon ayeke nda ti diamètre."
+      ],
+      "expl": "{d}÷2={ans}, ni rayon ayeke {ans} cm."
+    },
+    "angleType": {
+      "prompt": "${a}^\\circ$ ayeke angle ti nye?",
+      "hints": [
+        "Angle droit ayeke $90^\\circ$.",
+        "Ti kete ahon $90^\\circ$ ayeke aigu; ti kota ahon ayeke obtus."
+      ],
+      "expl": "${a}^\\circ$ iri ni ayeke {name}."
+    },
+    "angleThird": {
+      "prompt": "Angles use ti triangle ayeke ${a}^\\circ$ na ${b}^\\circ$. Angle ota ni ayeke nye? (degrés)",
+      "hints": [
+        "Angles ota ti triangle, ni kue ayeke $180^\\circ$.",
+        "Zî angles use so mo hinga na $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, ni angle ota ayeke ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Angles ota ti quadrilatère ayeke ${a}^\\circ$, ${b}^\\circ$ na ${c}^\\circ$. Angle ni ti ota-use ayeke nye? (degrés)",
+      "hints": [
+        "Angles ota-use ti quadrilatère, ni kue ayeke $360^\\circ$.",
+        "Zî angles ota so mo hinga na $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, ni angle ota-use ayeke ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Iri ti quadrilatère so ayeke nye?",
+      "hints": [
+        "Bâ so acôté so ayeke na ndo ti oko oko ayeke parallèle wala pepe.",
+        "Bâ nga so acôté kue na angles kue ayeke legeoko wala pepe."
+      ],
+      "expl": "Quadrilatère so ayeke {name}."
+    },
+    "diagonals": {
+      "prompt": "Fason so ayeke na diagonales ngbonga nye?",
+      "hints": [
+        "Diagonale ayeke ligne so ahunzi sommet use so ayeke pepe na ndo oko.",
+        "Kozo bâ ngbonga ti diagonales so ahunzi na sommet oko."
+      ],
+      "expl": "Ni ayeke na diagonales {ans}."
+    },
+    "perimeterRect": {
+      "prompt": "Périmètre ti rectangle ayeke nye? (cm)",
+      "hints": [
+        "Périmètre ayeke longueur ti ndulu ti fason.",
+        "Zia largeur na hauteur legeoko, na pekoni sara fois 2."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, ni périmètre ayeke {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Aire ti rectangle ayeke nye? (cm²)",
+      "hints": [
+        "Aire ti rectangle ayeke largeur × hauteur.",
+        "Sara fois na longueur use so afa."
+      ],
+      "expl": "${w}\\times{h}={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Côté ti carré ayeke {s} cm. Aire ni ayeke nye? (cm²)",
+      "hints": [
+        "Acôté ota-use ti carré kue ayeke legeoko.",
+        "Sara fois na longueur ti côté na ni meme."
+      ],
+      "expl": "${s}\\times{s}={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Triangle ayeke na base {b} cm na hauteur {h} cm. Aire ni ayeke nye? (cm²)",
+      "hints": [
+        "Aire ti triangle ayeke base × hauteur ÷ 2.",
+        "Hauteur ayeke na angle droit na base."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Parallélogramme ayeke na base {b} cm na hauteur {h} cm. Aire ni ayeke nye? (cm²)",
+      "hints": [
+        "Aire ti parallélogramme ayeke base × hauteur.",
+        "Sara na hauteur, ke côté so ayeke oblique."
+      ],
+      "expl": "${b}\\times{h}={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Trapèze ayeke na côté ti ndo {a} cm, côté ti gbe {b} cm na hauteur {h} cm. Aire ni ayeke nye? (cm²)",
+      "hints": [
+        "Aire ti trapèze ayeke (côté ti ndo + côté ti gbe) × hauteur ÷ 2.",
+        "Kozo zia côté ti ndo na côté ti gbe legeoko."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Diagonales ti losange ayeke {d1} cm na {d2} cm. Aire ni ayeke nye? (cm²)",
+      "hints": [
+        "Aire ti losange ayeke diagonale oko × diagonale ni ti use ÷ 2.",
+        "Sara fois na diagonales use, na pekoni kâ na 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Fason so ayeke na axes ti symétrie ngbonga nye?",
+      "hints": [
+        "Axe ti symétrie ayeke ligne so mo pliyé fason na ni, na aye use ayeke legeoko.",
+        "Sara plier ti horizontal, ti vertical na ti diagonal."
+      ],
+      "expl": "Ni ayeke na axes ti symétrie {ans}."
+    },
+    "congruentSide": {
+      "prompt": "Triangle use ni ayeke congruent. Côté $x$ ayeke na longueur nye? (cm)",
+      "hints": [
+        "Fason so ayeke congruent ayeke na meme forme na meme grandeur.",
+        "Acôté so ayeke na ndo oko ayeke na longueur legeoko."
+      ],
+      "expl": "Acôté so ayeke na ndo oko ayeke legeoko, ni $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Pavé ayeke na {item} ngbonga nye?",
+      "hints": [
+        "Bâ ye tongana mbeni boîte.",
+        "Bâ ndo ti ndo, ti gbe, ti kozo, ti pekoni na ti acôté use."
+      ],
+      "expl": "Pavé ayeke na {item} {ans}."
+    },
+    "cuboidVolume": {
+      "prompt": "Pavé ayeke na longueur {l} cm, largeur {w} cm na hauteur {h} cm. Volume ni ayeke nye? (cm³)",
+      "hints": [
+        "Volume ti pavé ayeke longueur × largeur × hauteur.",
+        "Sara fois na longueur ota ni."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, ni volume ayeke {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Arêtes ti cube ayeke {e} cm. Volume ni ayeke nye? (cm³)",
+      "hints": [
+        "Arêtes kue ti cube ayeke legeoko.",
+        "Sara fois na longueur ti arête na ni meme ngoi ota."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, ni volume ayeke {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Pavé ayeke na longueur {l} cm, largeur {w} cm na hauteur {h} cm. Aire ti surface ni ayeke nye? (cm²)",
+      "hints": [
+        "Aire ti surface ayeke ngbonga ti aire ti aface omene.",
+        "Aface so ayeke na ndo ti oko oko ayeke legeoko: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, ni aire ti surface ayeke {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Pavé ayeke na longueur {l} cm, largeur {w} cm na hauteur {h} cm. Longueur ti arêtes kue ayeke nye? (cm)",
+      "hints": [
+        "Pavé ayeke na arêtes 12.",
+        "Ayeke na arêtes 4 ti longueur, 4 ti largeur na 4 ti hauteur."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, ni longueur kue ayeke {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Cercle ayeke na rayon {r} cm. Circonférence ni ayeke nye? (sara na $\\pi=3.14$) (cm)",
+      "hints": [
+        "Circonférence = diamètre × π.",
+        "Diamètre ayeke rayon fois use."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, ni circonférence ayeke {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Cercle ayeke na rayon {r} cm. Aire ni ayeke nye? (sara na $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Aire = rayon × rayon × π.",
+        "Sara fois na rayon na ni meme, na pekoni na 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, ni aire ayeke {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Prisme so base ni ayeke na acôté {n}, ni ayeke na aface ngbonga nye?",
+      "hints": [
+        "Prisme ayeke na bases use na aface ti côté.",
+        "Ngbonga ti aface ti côté ayeke legeoko na ngbonga ti acôté ti base."
+      ],
+      "expl": "Aface ti côté {n} na bases 2 ayeke aface {ans}."
+    },
+    "adjacentAngle": {
+      "prompt": "Na ndo ti mbeni ligne droite, mbeni angle ayeke ${a}^\\circ$. Angle adjacent ni ayeke nye? (degrés)",
+      "hints": [
+        "Angles so ayeke na ndo ti ligne droite, ni kue ayeke $180^\\circ$.",
+        "Zî angle so mo hinga na $180$."
+      ],
+      "expl": "$180-{a}={ans}$, ni ayeke ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Lignes use apasa na ndo oko, na mbeni angle ayeke ${a}^\\circ$. Angle opposé par le sommet ni ayeke nye? (degrés)",
+      "hints": [
+        "Angles opposés par le sommet ayeke na ndo ti ngoi na mbage.",
+        "Ala ayeke legeoko."
+      ],
+      "expl": "Angles opposés par le sommet ayeke legeoko, ni ayeke ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Mbeni sécante akpe lignes parallèles use $l$ na $m$. Mbeni angle ayeke ${a}^\\circ$. $x$ ayeke nye? (degrés)",
+      "hints": [
+        "Angles correspondants na ndo ti lignes parallèles ayeke legeoko.",
+        "Angles alternes ayeke legeoko nga."
+      ],
+      "expl": "Angles correspondants (alternes) na ndo ti lignes parallèles ayeke legeoko, ni $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Polygone so ayeke na acôté {n}, ngbonga ti angles ti yâ ni kue ayeke nye? (degrés)",
+      "hints": [
+        "Polygone so ayeke na acôté {n} akâ na triangles {m}.",
+        "Triangle oko oko ayeke na ngbonga ti angles $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, ni ngbonga ayeke ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Polygone régulier so ayeke na acôté {n}, angle oko ti yâ ni ayeke nye? (degrés)",
+      "hints": [
+        "Kozo wara ngbonga kue: $180\\times({n}-2)$.",
+        "Kâ ngbonga ni na ngbonga ti acôté {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, ni angle oko oko ayeke ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Secteur ayeke na rayon {r} cm na angle au centre ${a}^\\circ$. Longueur ti arc ni ayeke $k\\pi$ cm. $k$ ayeke nye?",
+      "hints": [
+        "Longueur ti arc ayeke $2\\pi r\\times\\frac{a}{360}$.",
+        "Kozo wara so angle ni ayeke partie ti cercle kue."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, ni $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Secteur ayeke na rayon {r} cm na angle au centre ${a}^\\circ$. Aire ni ayeke $k\\pi$ cm². $k$ ayeke nye?",
+      "hints": [
+        "Aire ti secteur ayeke $\\pi r^2\\times\\frac{a}{360}$.",
+        "Sara fois na aire ti cercle na partie ti angle."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, ni $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Cylindre ayeke na rayon ti base {r} cm na hauteur {h} cm. Volume ni ayeke $k\\pi$ cm³. $k$ ayeke nye?",
+      "hints": [
+        "Volume = aire ti base × hauteur.",
+        "Aire ti base ayeke $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, ni $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Cône ayeke na rayon ti base {r} cm na hauteur {h} cm. Volume ni ayeke $k\\pi$ cm³. $k$ ayeke nye?",
+      "hints": [
+        "Volume = aire ti base × hauteur ÷ 3.",
+        "Aire ti base ayeke $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, ni $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Sphère ayeke na rayon {r} cm. Volume ni ayeke $k\\pi$ cm³. $k$ ayeke nye?",
+      "hints": [
+        "Volume ti sphère ayeke $\\frac{4}{3}\\pi r^3$.",
+        "Sara cube ti rayon, na pekoni fois na $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, ni $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Sphère ayeke na rayon {r} cm. Aire ti surface ni ayeke $k\\pi$ cm². $k$ ayeke nye?",
+      "hints": [
+        "Aire ti surface ti sphère ayeke $4\\pi r^2$.",
+        "Sara carré ti rayon, na pekoni fois na 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, ni $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Cylindre ayeke na rayon ti base {r} cm na hauteur {h} cm. Aire ti surface ni ayeke $k\\pi$ cm². $k$ ayeke nye?",
+      "hints": [
+        "Aire ti surface = 2 × aire ti base + aire latérale.",
+        "Aire latérale ayeke (circonférence) × hauteur $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, ni $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Angle ti base ti triangle isocèle ayeke ${b}^\\circ$. Angle ti sommet ni ayeke nye? (degrés)",
+      "hints": [
+        "Angles use ti base ti triangle isocèle ayeke legeoko.",
+        "Zî angles use ti base na $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, ni angle ti sommet ayeke ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "Na yâ ti parallélogramme ABCD, $\\angle A={a}^\\circ$. $\\angle B$ ayeke nye? (degrés)",
+      "hints": [
+        "Angles adjacents ti parallélogramme ayeke $180^\\circ$ na ndo oko.",
+        "Zî $\\angle A$ na $180$."
+      ],
+      "expl": "$180-{a}={ans}$, ni $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Na yâ ti triangle, segment $x$ ahunzi milieux ti acôté use na ayeke parallèle na côté ti ota so ayeke {s} cm. $x$ ayeke nye? (cm)",
+      "hints": [
+        "Segment so ahunzi milieux use ayeke nda ti côté ti ota.",
+        "Kâ {s} na 2."
+      ],
+      "expl": "${s}\\div2={ans}$, ni $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Triangle use ni ayeke semblables. Côté $x$ ayeke na longueur nye? (cm)",
+      "hints": [
+        "Na yâ ti fason semblables, rapports ti acôté so ayeke na ndo oko ayeke legeoko.",
+        "Kozo wara rapport ti agrandissement."
+      ],
+      "expl": "Rapport ayeke ${p}:{q}$, ni $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Fason use semblables ayeke na rapport ${p}:{q}$. Ti kete ayeke na aire {s} cm². Aire ti kota ni ayeke nye? (cm²)",
+      "hints": [
+        "Rapport ti aires ayeke carré ti rapport ti longueurs.",
+        "Sara fois na aire ti kete na $({q}/{p})^2$."
+      ],
+      "expl": "Rapport ti aires ayeke ${p2}:{q2}$, ni ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Acôté use ti kete ti triangle rectangle ayeke {a} cm na {b} cm. Côté ti kota ahon $x$ ayeke nye? (cm)",
+      "hints": [
+        "Théorème ti Pythagore: $a^2+b^2=c^2$.",
+        "Sara carré ti acôté use, zia legeoko, na pekoni wara racine carrée."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, ni $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Triangle rectangle ayeke na hypoténuse {c} cm na mbeni côté {a} cm. Côté ni ti use $x$ ayeke nye? (cm)",
+      "hints": [
+        "Na $a^2+x^2=c^2$, $x^2=c^2-a^2$.",
+        "Wara racine carrée ti $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, ni $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Triangle ayeke na acôté {a} cm, {b} cm na {c} cm. Ni ayeke triangle rectangle wala pepe?",
+      "hints": [
+        "Mu côté so ayeke kota ahon tongana hypoténuse, na pekoni bâ $a^2+b^2$ na $c^2$.",
+        "Tongana ala ayeke legeoko, ni ayeke triangle rectangle."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ na ${c}^2={s2}$, ni {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Na yâ ti triangle rectangle, $\\{fn} A$ ayeke nye? (sara na décimal)",
+      "hints": [
+        "$\\sin A$ = opposé ÷ hypoténuse, $\\cos A$ = adjacent ÷ hypoténuse, $\\tan A$ = opposé ÷ adjacent.",
+        "Hinga côté opposé na côté adjacent na angle $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "$\\{fn}\\ {a}^\\circ$ ayeke nye? (sara na décimal)",
+      "hints": [
+        "Kiri mo bâ valeurs ti $30^\\circ$, $45^\\circ$ na $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Na yâ ti triangle rectangle $\\tan A={t}$ na côté adjacent ayeke {adj}. Côté opposé $x$ ayeke nye?",
+      "hints": [
+        "$\\tan A$ = opposé ÷ adjacent.",
+        "Opposé $=\\tan A\\times$ adjacent."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Angle au centre na ndo ti arc AB ayeke ${c}^\\circ$. Angle inscrit na arc so meme ayeke nye? (degrés)",
+      "hints": [
+        "Angle inscrit ayeke nda ti angle au centre na arc meme.",
+        "Kâ angle au centre na 2."
+      ],
+      "expl": "${c}\\div2={ans}$, ni angle inscrit ayeke ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Na ndo ti point P so ayeke na ndorâ ti cercle O, mbeni tangente ahoto cercle na A. $PO={po}$ na rayon ayeke {r}. $PA$ ayeke nye?",
+      "hints": [
+        "Tangente ayeke perpendiculaire na rayon, ni triangle OAP ayeke rectangle.",
+        "Sara na $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, ni $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Cercle ayeke na rayon {r}. Mbeni corde ayeke na distance {d} na centre. Longueur ti corde ayeke nye?",
+      "hints": [
+        "Perpendiculaire ti centre akâ corde na nda use.",
+        "Nda ti corde ayeke $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Nda ti corde ayeke $\\sqrt{{r}^2-{d}^2}={half}$, ni corde ayeke ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Mbeni quadrilatère ayeke inscrit na yâ ti cercle na mbeni angle ayeke ${a}^\\circ$. Angle opposé ni ayeke nye? (degrés)",
+      "hints": [
+        "Angles opposés ti quadrilatère inscrit ayeke $180^\\circ$ na ndo oko.",
+        "Zî angle so a mu na $180$."
+      ],
+      "expl": "$180-{a}={ans}$, ni ayeke ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Distance na ndagbe ti points A({x1}, {y1}) na B({x2}, {y2}) na plan ayeke nye?",
+      "hints": [
+        "Distance ayeke $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Sara carré ti différences horizontale na verticale, na pekoni zia legeoko."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Coordonnée ${axis}$ ti milieu ti segment AB, so A({x1}, {y1}) na B({x2}, {y2}), ayeke nye?",
+      "hints": [
+        "Milieu ayeke moyenne ti coordonnées.",
+        "Zia coordonnées so ayeke legeoko, na pekoni kâ na 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Pente ti ligne so apasa na A({x1}, {y1}) na B({x2}, {y2}) ayeke nye?",
+      "hints": [
+        "Pente = (changement ti $y$) ÷ (changement ti $x$).",
+        "Sara calcul ti $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Rayon ti cercle $(x-{a})^2+(y-{b})^2={r2}$ ayeke nye?",
+      "hints": [
+        "Na $(x-a)^2+(y-b)^2=r^2$, mbage ti droite ayeke $r^2$.",
+        "Wara racine carrée ti {r2}."
+      ],
+      "expl": "$r^2={r2}$, ni $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Cercle $(x-{a})^2+(y-{b})^2={r2}$ ayeke na centre $(p, q)$. $p+q$ ayeke nye?",
+      "hints": [
+        "Centre ayeke $(p, q)$.",
+        "Bâ $p$ na $q$ na yâ ti $x-p$ na $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Distance ti origine na ligne ${A}x+{B}y-{C}=0$ ayeke nye?",
+      "hints": [
+        "Distance ti point na ligne ayeke $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Na origine, $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "Na yâ ti triangle ABC, $a={a}$ na $\\angle A={A}^\\circ$. Rayon ti cercle circonscrit $R$ ayeke nye?",
+      "hints": [
+        "Loi des sinus: $\\frac{a}{\\sin A}=2R$.",
+        "Sara na valeur ti $\\sin {A}^\\circ$ ti wara $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "Na yâ ti triangle ABC, $a={a}$, $b={b}$ na $\\angle C={C}^\\circ$. $c$ ayeke nye?",
+      "hints": [
+        "Loi des cosinus: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Zia valeur ti $\\cos {C}^\\circ$ na ndo ni."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, ni $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "Na yâ ti triangle ABC, $a={a}$, $b={b}$ na $\\angle C={C}^\\circ$. Aire ni ayeke nye?",
+      "hints": [
+        "Aire $=\\frac12ab\\sin C$.",
+        "Zia valeur ti $\\sin {C}^\\circ$ na ndo ni."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ ayeke legeoko na $\\frac{\\pi}{d}$ radians. $d$ ayeke nye?",
+      "hints": [
+        "$180^\\circ=\\pi$ radians.",
+        "Sara simple ti $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, ni $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Secteur ayeke na rayon {r} na angle au centre $\\frac{\\pi}{{d}}$. Longueur ti arc ni ayeke $k\\pi$. $k$ ayeke nye?",
+      "hints": [
+        "Longueur ti arc ayeke $l=r\\theta$.",
+        "Sara fois na $r$ na $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, ni $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Secteur ayeke na rayon {r} na angle au centre $\\frac{\\pi}{{d}}$. Aire ni ayeke $k\\pi$. $k$ ayeke nye?",
+      "hints": [
+        "Aire ti secteur ayeke $S=\\frac12r^2\\theta$.",
+        "Sara fois na $r^2$ na $\\theta$, na pekoni na $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, ni $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Coordonnée $x$ ti foyer ti parabole $y^2={k}x$ ayeke nye?",
+      "hints": [
+        "Foyer ti $y^2=4px$ ayeke $(p, 0)$.",
+        "Wara $p$ na $4p={k}$."
+      ],
+      "expl": "$4p={k}$, ni $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Ellipse $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ ayeke na foyers $(\\pm c, 0)$. $c$ ayeke nye?",
+      "hints": [
+        "Na ellipse, $c^2=a^2-b^2$.",
+        "Zî {b2} na {a2} na pekoni wara racine carrée."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, ni $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Hyperbole $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ ayeke na foyers $(\\pm c, 0)$. $c$ ayeke nye?",
+      "hints": [
+        "Na hyperbole, $c^2=a^2+b^2$.",
+        "Zia {a2} na {b2} legeoko na pekoni wara racine carrée."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, ni $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Norme $|\\vec{a}|$ ti vecteur $\\vec{a}=({x}, {y})$ ayeke nye?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Sara carré ti composante oko oko, zia legeoko, na wara racine carrée."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Produit scalaire $\\vec{a}\\cdot\\vec{b}$ ti $\\vec{a}=({x1}, {y1})$ na $\\vec{b}=({x2}, {y2})$ ayeke nye?",
+      "hints": [
+        "Produit scalaire ayeke $x_1x_2+y_1y_2$.",
+        "Sara fois na composantes so ayeke na ndo oko, na zia legeoko."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Vecteurs $\\vec{a}=({x1}, k)$ na $\\vec{b}=({x2}, {y2})$ ayeke perpendiculaires. $k$ ayeke nye?",
+      "hints": [
+        "Vecteurs perpendiculaires ayeke na produit scalaire $0$.",
+        "Sara na $x_1x_2+ky_2=0$ ti wara k."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, ni $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "triangle",
+    "quad": "quadrilatère",
+    "circ": "cercle",
+    "pent": "pentagone",
+    "hex": "hexagone",
+    "rect": "rectangle",
+    "square": "carré",
+    "trap": "trapèze",
+    "para": "parallélogramme",
+    "rhom": "losange",
+    "cube": "cube",
+    "cuboid": "pavé (fason ti boîte)",
+    "cyl": "cylindre",
+    "sph": "sphère",
+    "cone": "cône",
+    "acute": "angle aigu",
+    "right": "angle droit",
+    "obtuse": "angle obtus",
+    "faces": "faces",
+    "edges": "arêtes",
+    "vertices": "sommets",
+    "triP": "triangles",
+    "squareP": "carrés",
+    "circP": "cercles",
+    "iso": "triangle isocèle",
+    "equi": "triangle équilatéral",
+    "rtri": "triangle rectangle",
+    "sss": "Pasa ota ti acôté ayeke legeoko (SSS)",
+    "sas": "Acôté use na angle so ayeke na yâ ni ayeke legeoko (SAS)",
+    "asa": "Côté oko na angles use ti ahoto ni ayeke legeoko (ASA)",
+    "yes": "Iä, ni ayeke triangle rectangle",
+    "no": "Ä-ä, ni ayeke triangle rectangle pepe"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Iri ti fason na angles",
+      "concept": "**Triangle** ayeke na acôté 3 na **quadrilatère** ayeke na acôté 4. **Cercle** ayeke rond na ayeke na angle pepe.",
+      "example": "Triangle: acôté 3, angles 3"
+    },
+    "E12": {
+      "title": "Fason solides",
+      "concept": "Fason ti boîte ayeke **pavé**, kota piliere rond ayeke **cylindre**, na ballon ayeke **sphère**.",
+      "example": "pavé · cylindre · sphère"
+    },
+    "E21": {
+      "title": "Triangles na quadrilatères",
+      "concept": "**Triangle** ayeke na acôté droits 3 na angles 3; **quadrilatère** ayeke na acôté droits 4 na angles 4, atâa fason ni ayeke tongana nye. Ngbonga ti acôté ni ayeke legeoko na ngbonga ti angles.",
+      "example": "Quadrilatère: acôté 4, angles 4"
+    },
+    "E22": {
+      "title": "Longueur na ngoi",
+      "concept": "Zia mbeni suku na 0 ti règle; signe ti suku ti use ayeke longueur. $1\\text{ m}=100\\text{ cm}$. Sara fois 5 na chiffre so grande aiguille afa, ti wara minutes.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Angles na angles droits",
+      "concept": "Rayons use so akomanse na point oko asara **angle**. Angle ti $90^\\circ$ ayeke **angle droit**; ti kete ayeke **aigu**, ti kota ayeke **obtus**.",
+      "example": "$30^\\circ$ aigu · $90^\\circ$ droit · $120^\\circ$ obtus"
+    },
+    "E32": {
+      "title": "Rayon na diamètre",
+      "concept": "**Rayon** ayeke gue na centre kue na cercle; **diamètre** apasa na centre. Diamètre ayeke rayon fois use.",
+      "example": "Rayon 5 cm → diamètre 10 cm"
+    },
+    "E41": {
+      "title": "Ngbonga ti angles",
+      "concept": "Angles ota ti triangle ayeke $180^\\circ$ na angles ota-use ti quadrilatère ayeke $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Quadrilatères na polygones",
+      "concept": "Pasa oko ti acôté parallèles asara **trapèze**, pasa use asara **parallélogramme**, na acôté ota-use legeoko asara **losange**. **Diagonale** ahunzi sommets use so ayeke pepe na ndo oko.",
+      "example": "Quadrilatère ayeke na diagonales 2"
+    },
+    "E51": {
+      "title": "Périmètre na aire",
+      "concept": "Rectangle: largeur × hauteur. Triangle: base × hauteur ÷ 2. Parallélogramme: base × hauteur. Trapèze: (côté ti ndo + côté ti gbe) × hauteur ÷ 2. Losange: diagonale × diagonale ÷ 2.",
+      "example": "Triangle base 10, hauteur 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Congruence na symétrie",
+      "concept": "Fason use so ayeke legeoko pëpe-pëpe ayeke **congruentes**. Fason so mo plier na ligne, ni asara oko na ni meme, ayeke **symétrique**; ligne ni ayeke **axe de symétrie**.",
+      "example": "Carré ayeke na axes de symétrie 4"
+    },
+    "E61": {
+      "title": "Circonférence na aire ti cercle",
+      "concept": "Circonférence = diamètre × π, aire = rayon × rayon × π, na π ≈ $3.14$.",
+      "example": "Rayon 5 cm → circonférence $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Pavés na cubes",
+      "concept": "Volume = longueur × largeur × hauteur; aire ti surface = (ngbonga ti aire ti faces ota) × 2. Pavé ayeke na faces 6, arêtes 12 na sommets 8.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Règles ti angles na polygones",
+      "concept": "Angles opposés par le sommet ayeke legeoko; angles correspondants na alternes na ndo ti lignes parallèles ayeke legeoko. Angles ti yâ ti polygone so ayeke na acôté $n$ ayeke $180^\\circ\\times(n-2)$.",
+      "example": "Pentagone: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Secteurs na solides",
+      "concept": "Longueur ti arc $=2\\pi r\\times\\frac{a}{360}$, aire ti secteur $=\\pi r^2\\times\\frac{a}{360}$, volume ti sphère $=\\frac43\\pi r^3$, volume ti cône $=\\frac13\\pi r^2h$.",
+      "example": "Sphère $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Triangles na quadrilatères",
+      "concept": "Angles ti base ti triangle isocèle ayeke legeoko. Angles adjacents ti parallélogramme ayeke $180^\\circ$ na ndo oko, na segment so ahunzi milieux use ti triangle ayeke nda ti côté ti ota.",
+      "example": "Angle ti base $50^\\circ$ → angle ti sommet $80^\\circ$"
+    },
+    "M22": {
+      "title": "Similitude na théorème ti Pythagore",
+      "concept": "Fason semblables ayeke na rapports ti acôté legeoko na aires ni ayeke carré ti rapport so. Na triangle rectangle $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Rapports trigonométriques",
+      "concept": "Na yâ ti triangle ti angle droit: $\\sin A$ = ndo ti angle so ayeke na ngoro ÷ hypoténuse, $\\cos A$ = ndo ti angle so ayeke gbâ ÷ hypoténuse, $\\tan A$ = ndo ti angle so ayeke na ngoro ÷ ndo ti angle so ayeke gbâ.",
+      "example": "Triangle 3-4-5: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Propriétés ti cercles",
+      "concept": "Angle inscrit ayeke nda ti angle au centre na arc meme. Tangente ayeke perpendiculaire na rayon, na angles opposés ti quadrilatère inscrit ayeke $180^\\circ$ na ndo oko.",
+      "example": "Angle au centre $100^\\circ$ → angle inscrit $50^\\circ$"
+    },
+    "H11": {
+      "title": "Fason na plan ti coordonnées",
+      "concept": "Distance $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, milieu = moyenne ti coordonnées, pente $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): distance 5"
+    },
+    "H12": {
+      "title": "Équation ti cercle",
+      "concept": "Cercle so ayeke na centre $(a, b)$ na rayon $r$ ayeke $(x-a)^2+(y-b)^2=r^2$. Distance ti $(x_0,y_0)$ na $ax+by+c=0$ ayeke $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: centre $(2,3)$, rayon 5"
+    },
+    "H21": {
+      "title": "Triangles na fonctions trigonométriques",
+      "concept": "Loi des sinus $\\frac{a}{\\sin A}=2R$, loi des cosinus $c^2=a^2+b^2-2ab\\cos C$, aire ti triangle $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radians na secteurs",
+      "concept": "$180^\\circ=\\pi$ radians. Secteur so ayeke na rayon $r$ na angle $\\theta$ (na radians) ayeke na longueur ti arc $r\\theta$ na aire $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Coniques",
+      "concept": "Parabole $y^2=4px$ ayeke na foyer $(p,0)$; na ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; na hyperbole $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: foyer $(3,0)$"
+    },
+    "H32": {
+      "title": "Vecteurs ti plan",
+      "concept": "Norme ti $(x,y)$ ayeke $\\sqrt{x^2+y^2}$; produit scalaire ayeke $x_1x_2+y_1y_2$, na vecteurs perpendiculaires ayeke na produit scalaire 0.",
+      "example": "Norme ti $(3,4)$: 5"
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import {
   DEMO, authUserId, authUsersWithEmail, correctPayload, deleteFixtureUser, dict, exactCount, restRows, snapshot, url,
   type Locale, type Q, type Site,
+  createConfirmedUser,
 } from "./helpers";
 import { diagnostic, lesson, onboard } from "./flow";
 
@@ -43,12 +44,10 @@ async function signUp(page: Page, who: { email: string; password: string }, loca
     await page.getByRole("link", { name: t["landing.cta.login"] }).click();
   } else await page.goto(url("math", "/login"));
   await expect(page.getByText(t["auth.unavailable"])).toHaveCount(0);
-  await page.getByRole("button", { name: t["auth.switch.signup"] }).click();
+  await createConfirmedUser(who); // sign-up is closed in the UI: accounts are created through Auth admin, then sign in
   await page.locator("#email").fill(who.email);
   await page.locator("#password").fill(who.password);
-  await page.locator('input[name="ageBasis"][value="14plus"]').check();
-  await page.locator('input[name="agree"]').check();
-  await page.getByRole("button", { name: t["auth.submit.signup"], exact: true }).click();
+  await page.getByRole("button", { name: t["auth.submit.login"], exact: true }).click();
   await expect(page).toHaveURL(url("math", "/dashboard"), { timeout: 30_000 });
 }
 async function signOutIn(page: Page, who: { email: string; password: string }, site: Site, locale: Locale) {

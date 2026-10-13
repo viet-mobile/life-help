@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Figura ne'e naran saida?",
+      "hints": [
+        "Konta sorin no kuru-kuru sira.",
+        "Haree figura ne'e iha sorin loos ka nia kabuar."
+      ],
+      "expl": "Figura ne'e naran {name}."
+    },
+    "nameSolid": {
+      "prompt": "Figura sólidu ne'e naran saida?",
+      "hints": [
+        "Nia kabuar husi sorin hotu ka lae?",
+        "Konta fase planu sira."
+      ],
+      "expl": "Figura sólidu ne'e {name}."
+    },
+    "countOf": {
+      "prompt": "{shape} hira mak iha imajen ne'e?",
+      "hints": [
+        "Marka ida-idak bainhira ita konta.",
+        "Tau matan labele konta figura ida hanesan dala rua."
+      ],
+      "expl": "Iha {shape} {ans}."
+    },
+    "countVertices": {
+      "prompt": "Figura ne'e iha vértise (kuru-kuru) hira?",
+      "hints": [
+        "Vértise mak pontu ne'ebé sorin rua hasoru malu.",
+        "Konta kuru-kuru ne'ebé nakukun ida-ida."
+      ],
+      "expl": "Nia iha vértise {ans}."
+    },
+    "countSides": {
+      "prompt": "Figura ne'e iha sorin hira?",
+      "hints": [
+        "Sorin mak ninia ninin ne'ebé loos.",
+        "Hakat tuir figura ne'e no konta sorin sira."
+      ],
+      "expl": "Nia iha sorin {ans}."
+    },
+    "rulerRead": {
+      "prompt": "Uza régua atu hatene liña ne'e naruk hira. (cm)",
+      "hints": [
+        "Hatene liña ne'e hahú iha ne'ebé no remata iha ne'ebé.",
+        "Hasai marka hahú husi marka remata."
+      ],
+      "expl": "Liña ne'e hahú husi {from} to'o {to}, nune'e nia naruk {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Liña leten naruk liu liña kraik cm hira? (cm)",
+      "hints": [
+        "Lee uluk naruk rua nian.",
+        "Hasai naruk kiik husi naruk boot."
+      ],
+      "expl": "{a}-{b}={ans}, nune'e nia naruk liu {ans} cm."
+    },
+    "rightAngles": {
+      "prompt": "Figura ne'e iha ângulu loos hira?",
+      "hints": [
+        "Ângulu loos hanesan kuru-kuru kuadradu nian.",
+        "Haree kuru-kuru ida-idak."
+      ],
+      "expl": "Nia iha ângulu loos {ans}."
+    },
+    "clockMinutes": {
+      "prompt": "Relójiu hatudu oras {h} no minutu balu. Minutu hira? (min)",
+      "hints": [
+        "Multiplika númeru ne'ebé ponteiru naruk hatudu ho 5.",
+        "Se ponteiru naruk hatudu 6, minutu 30."
+      ],
+      "expl": "Ponteiru naruk hatudu {n}, nune'e ${n}\\times5={ans}$ minutu."
+    },
+    "mToCm": {
+      "prompt": "{m} m {c} cm hanesan cm hira? (cm)",
+      "hints": [
+        "1 m hanesan 100 cm.",
+        "Hadi'a m ba cm, depois soma cm ne'ebé sei."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, nune'e hanesan {ans} cm."
+    },
+    "triType": {
+      "prompt": "Triángulu ne'ebé iha sorin naruk hirak ne'e tipu saida?",
+      "hints": [
+        "Kompara sorin tolu nia naruk.",
+        "Sorin rua hanesan: isósseles. Sorin tolu hanesan: ekilátero."
+      ],
+      "expl": "Triángulu ne'e {name}."
+    },
+    "congruentCond": {
+      "prompt": "Triángulu rua ne'e kongruente. Kondisaun kongruénsia saida mak uza?",
+      "hints": [
+        "Buka sorin ne'ebé hanesan no ângulu ne'ebé hanesan.",
+        "Sorin deit: LLL. Sorin rua ho ângulu iha klaran: LAL. Sorin ida ho ângulu rua iha ninia ninin: ALA."
+      ],
+      "expl": "Parte hanesan iha figura mak: {cond}. Ne'e mak kondisaun ne'ebé uza."
+    },
+    "circleDiameter": {
+      "prompt": "Sirkulu nia raiu {r} cm. Diámetru hira? (cm)",
+      "hints": [
+        "Diámetru mak segmentu naruk liu ne'ebé liu husi sentru.",
+        "Diámetru hanesan raiu dala rua."
+      ],
+      "expl": "{r}×2={ans}, nune'e diámetru {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Sirkulu nia diámetru {d} cm. Raiu hira? (cm)",
+      "hints": [
+        "Raiu iha husi sentru to'o sirkulu.",
+        "Raiu hanesan diámetru nia klaran."
+      ],
+      "expl": "{d}÷2={ans}, nune'e raiu {ans} cm."
+    },
+    "angleType": {
+      "prompt": "${a}^\\circ$ ne'e ângulu tipu saida?",
+      "hints": [
+        "Ângulu loos mak $90^\\circ$.",
+        "Ki'ik liu $90^\\circ$ mak agudu; boot liu mak obtusu."
+      ],
+      "expl": "${a}^\\circ$ ne'e {name}."
+    },
+    "angleThird": {
+      "prompt": "Triángulu ida nia ângulu rua mak ${a}^\\circ$ no ${b}^\\circ$. Ângulu datoluk hira? (grau)",
+      "hints": [
+        "Triángulu nia ângulu tolu soma $180^\\circ$.",
+        "Hasai ângulu rua ne'ebé hatene husi $180$."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, nune'e ângulu datoluk mak ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Kuadrilátero ida nia ângulu tolu mak ${a}^\\circ$, ${b}^\\circ$ no ${c}^\\circ$. Ângulu da-haat hira? (grau)",
+      "hints": [
+        "Kuadrilátero nia ângulu haat soma $360^\\circ$.",
+        "Hasai ângulu tolu ne'ebé hatene husi $360$."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, nune'e ângulu da-haat mak ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Kuadrilátero ne'e naran saida?",
+      "hints": [
+        "Haree sorin oposta paralela ka lae.",
+        "Haree mós sorin no ângulu hotu hanesan ka lae."
+      ],
+      "expl": "Kuadrilátero ne'e {name}."
+    },
+    "diagonals": {
+      "prompt": "Figura ne'e iha diagonál hira?",
+      "hints": [
+        "Diagonál mak liña ne'ebé liga vértise rua ne'ebé la besik malu.",
+        "Uluk konta diagonál ne'ebé sai husi vértise ida."
+      ],
+      "expl": "Nia iha diagonál {ans}."
+    },
+    "perimeterRect": {
+      "prompt": "Retángulu nia perímetru hira? (cm)",
+      "hints": [
+        "Perímetru mak distánsia haleu figura.",
+        "Soma luan ho aas, depois multiplika ho 2."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, nune'e perímetru {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Retángulu nia área hira? (cm²)",
+      "hints": [
+        "Retángulu nia área mak luan × aas.",
+        "Multiplika naruk rua ne'ebé hatudu."
+      ],
+      "expl": "${w}\\times{h}={ans}$, nune'e área {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Kuadradu ida nia sorin {s} cm. Nia área hira? (cm²)",
+      "hints": [
+        "Kuadradu nia sorin haat hotu hanesan.",
+        "Multiplika sorin nia naruk ho nia an rasik."
+      ],
+      "expl": "${s}\\times{s}={ans}$, nune'e área {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Triángulu ida nia báze {b} cm no aas {h} cm. Nia área hira? (cm²)",
+      "hints": [
+        "Triángulu nia área mak báze × aas ÷ 2.",
+        "Aas sukat iha ângulu loos ho báze."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, nune'e área {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Paralelogramu ida nia báze {b} cm no aas {h} cm. Nia área hira? (cm²)",
+      "hints": [
+        "Paralelogramu nia área mak báze × aas.",
+        "Uza aas, la'ós sorin ne'ebé ilu."
+      ],
+      "expl": "${b}\\times{h}={ans}$, nune'e área {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Trapéziu ida nia báze leten {a} cm, báze kraik {b} cm no aas {h} cm. Nia área hira? (cm²)",
+      "hints": [
+        "Trapéziu nia área mak (báze leten + báze kraik) × aas ÷ 2.",
+        "Uluk soma báze leten ho báze kraik."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, nune'e área {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Rombu ida nia diagonál mak {d1} cm no {d2} cm. Nia área hira? (cm²)",
+      "hints": [
+        "Rombu nia área mak diagonál ida × diagonál seluk ÷ 2.",
+        "Multiplika diagonál sira, depois fahe ho 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, nune'e área {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Figura ne'e iha eixu simetria hira?",
+      "hints": [
+        "Eixu simetria bele dobra figura ba parte rua ne'ebé hanesan.",
+        "Koko dobra horizontál, vertikál no diagonál."
+      ],
+      "expl": "Nia iha eixu simetria {ans}."
+    },
+    "congruentSide": {
+      "prompt": "Triángulu rua ne'e kongruente. Sorin $x$ naruk hira? (cm)",
+      "hints": [
+        "Figura kongruente iha forma no tamanu hanesan.",
+        "Sorin korrespondente iha naruk hanesan."
+      ],
+      "expl": "Sorin korrespondente hanesan, nune'e $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Kuboid iha {item} hira?",
+      "hints": [
+        "Hanoin kaixa ida.",
+        "Haree leten, kraik, oin, kotuk no sorin rua."
+      ],
+      "expl": "Kuboid iha {item} {ans}."
+    },
+    "cuboidVolume": {
+      "prompt": "Kuboid ida naruk {l} cm, luan {w} cm no aas {h} cm. Nia volume hira? (cm³)",
+      "hints": [
+        "Kuboid nia volume mak naruk × luan × aas.",
+        "Multiplika naruk tolu ne'e."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, nune'e volume {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Kubu ida nia aresta {e} cm. Nia volume hira? (cm³)",
+      "hints": [
+        "Kubu nia aresta hotu hanesan.",
+        "Multiplika aresta nia naruk ho nia an rasik dala tolu."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, nune'e volume {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Kuboid ida naruk {l} cm, luan {w} cm no aas {h} cm. Nia área superfísie hira? (cm²)",
+      "hints": [
+        "Área superfísie mak soma fase neen hotu.",
+        "Fase oposta hanesan: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, nune'e área superfísie {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Kuboid ida naruk {l} cm, luan {w} cm no aas {h} cm. Nia aresta hotu naruk hira ba totál? (cm)",
+      "hints": [
+        "Kuboid iha aresta 12.",
+        "Iha aresta haat ba naruk, luan no aas ida-idak."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, nune'e totál {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Sirkulu ida nia raiu {r} cm. Nia sirkunferénsia hira? (uza $\\pi=3.14$) (cm)",
+      "hints": [
+        "Sirkunferénsia = diámetru × π.",
+        "Diámetru hanesan raiu dala rua."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, nune'e sirkunferénsia {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Sirkulu ida nia raiu {r} cm. Nia área hira? (uza $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Área = raiu × raiu × π.",
+        "Multiplika raiu ho nia an rasik, depois ho 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, nune'e área {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Prizma ida ho báze sorin {n} iha fase hira?",
+      "hints": [
+        "Prizma iha báze rua no fase sorin balu.",
+        "Fase sorin nia kuantidade hanesan báze nia sorin."
+      ],
+      "expl": "Fase sorin {n} soma báze rua mak fase {ans}."
+    },
+    "adjacentAngle": {
+      "prompt": "Iha liña loos ida, ângulu ida mak ${a}^\\circ$. Ângulu adjasente hira? (grau)",
+      "hints": [
+        "Ângulu iha liña loos soma $180^\\circ$.",
+        "Hasai ângulu ne'ebé hatene husi $180$."
+      ],
+      "expl": "$180-{a}={ans}$, nune'e nia ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Liña rua kruza malu no ângulu ida mak ${a}^\\circ$. Ângulu oposta ba vértise hira? (grau)",
+      "hints": [
+        "Ângulu oposta ba vértise hateke malu.",
+        "Sira nia boot hanesan."
+      ],
+      "expl": "Ângulu oposta ba vértise hanesan, nune'e nia ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Liña paralela $l$ no $m$ ne'e transversál ida tesi. Ângulu ida mak ${a}^\\circ$. $x$ hira? (grau)",
+      "hints": [
+        "Ângulu korrespondente iha liña paralela hanesan.",
+        "Ângulu alternu mós hanesan."
+      ],
+      "expl": "Ângulu korrespondente (alternu) iha liña paralela hanesan, nune'e $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Poligonu ho sorin {n} nia ângulu interior soma hira? (grau)",
+      "hints": [
+        "Poligonu ho sorin {n} fahe ba triángulu {m}.",
+        "Triángulu ida-idak nia ângulu soma $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, nune'e soma mak ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Poligonu regulár ho sorin {n} nia ângulu interior ida hira? (grau)",
+      "hints": [
+        "Uluk buka soma: $180\\times({n}-2)$.",
+        "Fahe soma ho sorin nia kuantidade {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, nune'e ângulu ida-idak ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Setór ida nia raiu {r} cm no ângulu sentrál ${a}^\\circ$. Nia arku naruk $k\\pi$ cm. $k$ hira?",
+      "hints": [
+        "Arku nia naruk mak $2\\pi r\\times\\frac{a}{360}$.",
+        "Uluk buka ângulu ne'e fraksaun hira husi sirkulu tomak."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, nune'e $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Setór ida nia raiu {r} cm no ângulu sentrál ${a}^\\circ$. Nia área $k\\pi$ cm². $k$ hira?",
+      "hints": [
+        "Setór nia área mak $\\pi r^2\\times\\frac{a}{360}$.",
+        "Multiplika sirkulu nia área ho ângulu nia fraksaun."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, nune'e $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Silíndru ida nia báze raiu {r} cm no aas {h} cm. Nia volume $k\\pi$ cm³. $k$ hira?",
+      "hints": [
+        "Volume = báze nia área × aas.",
+        "Báze nia área mak $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, nune'e $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Konu ida nia báze raiu {r} cm no aas {h} cm. Nia volume $k\\pi$ cm³. $k$ hira?",
+      "hints": [
+        "Volume = báze nia área × aas ÷ 3.",
+        "Báze nia área mak $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, nune'e $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Esfera ida nia raiu {r} cm. Nia volume $k\\pi$ cm³. $k$ hira?",
+      "hints": [
+        "Esfera nia volume mak $\\frac{4}{3}\\pi r^3$.",
+        "Multiplika raiu dala tolu, depois multiplika ho $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, nune'e $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Esfera ida nia raiu {r} cm. Nia área superfísie $k\\pi$ cm². $k$ hira?",
+      "hints": [
+        "Esfera nia área superfísie mak $4\\pi r^2$.",
+        "Multiplika raiu dala rua, depois multiplika ho 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, nune'e $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Silíndru ida nia báze raiu {r} cm no aas {h} cm. Nia área superfísie $k\\pi$ cm². $k$ hira?",
+      "hints": [
+        "Área superfísie = 2 × báze nia área + área laterál.",
+        "Área laterál mak (sirkunferénsia) × aas $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, nune'e $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Triángulu isósseles nia ângulu báze ida mak ${b}^\\circ$. Ângulu iha tutun hira? (grau)",
+      "hints": [
+        "Triángulu isósseles nia ângulu báze rua hanesan.",
+        "Hasai ângulu báze rua husi $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, nune'e ângulu iha tutun mak ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "Iha paralelogramu ABCD, $\\angle A={a}^\\circ$. $\\angle B$ hira? (grau)",
+      "hints": [
+        "Paralelogramu nia ângulu ne'ebé besik malu soma $180^\\circ$.",
+        "Hasai $\\angle A$ husi $180$."
+      ],
+      "expl": "$180-{a}={ans}$, nune'e $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Iha triángulu ida, segmentu $x$ liga pontu klaran husi sorin rua no paralelu ba sorin datoluk, ne'ebé naruk {s} cm. $x$ hira? (cm)",
+      "hints": [
+        "Segmentu ne'ebé liga pontu klaran rua mak sorin datoluk nia klaran.",
+        "Fahe {s} ho 2."
+      ],
+      "expl": "${s}\\div2={ans}$, nune'e $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Triángulu rua ne'e hanesan forma (similár). Sorin $x$ naruk hira? (cm)",
+      "hints": [
+        "Iha figura similár, razaun sorin korrespondente hanesan.",
+        "Uluk buka eskala."
+      ],
+      "expl": "Razaun mak ${p}:{q}$, nune'e $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Figura similár rua iha eskala ${p}:{q}$. Ne'ebé ki'ik iha área {s} cm². Ne'ebé boot nia área hira? (cm²)",
+      "hints": [
+        "Razaun área mak eskala nia kuadradu.",
+        "Multiplika área ki'ik ho $({q}/{p})^2$."
+      ],
+      "expl": "Razaun área mak ${p2}:{q2}$, nune'e ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Triángulu retángulu nia sorin badak rua mak {a} cm no {b} cm. Sorin naruk liu $x$ hira? (cm)",
+      "hints": [
+        "Teorema Pitágoras: $a^2+b^2=c^2$.",
+        "Multiplika sorin rua ho sira-nia an, soma, depois foti raíz kuadrada."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, nune'e $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Triángulu retángulu ida nia ipotenuza {c} cm no katetu ida {a} cm. Katetu seluk $x$ hira? (cm)",
+      "hints": [
+        "Husi $a^2+x^2=c^2$, $x^2=c^2-a^2$.",
+        "Foti raíz kuadrada husi $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, nune'e $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Triángulu ida nia sorin mak {a} cm, {b} cm no {c} cm. Nia triángulu retángulu ka lae?",
+      "hints": [
+        "Foti sorin naruk liu nu'udar ipotenuza no kompara $a^2+b^2$ ho $c^2$.",
+        "Se hanesan, nia triángulu retángulu."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ no ${c}^2={s2}$, nune'e: {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Iha triángulu retángulu, $\\{fn} A$ hira? (hakerek desimál)",
+      "hints": [
+        "$\\sin A$ = katetu oposta ÷ ipotenuza, $\\cos A$ = katetu adjasente ÷ ipotenuza, $\\tan A$ = katetu oposta ÷ katetu adjasente.",
+        "Hatene diferensia katetu oposta no adjasente husi ângulu $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "$\\{fn}\\ {a}^\\circ$ hira? (hakerek desimál)",
+      "hints": [
+        "Hanoin valór ba $30^\\circ$, $45^\\circ$ no $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Iha triángulu retángulu, $\\tan A={t}$ no katetu adjasente {adj}. Katetu oposta $x$ hira?",
+      "hints": [
+        "$\\tan A$ = katetu oposta ÷ katetu adjasente.",
+        "Katetu oposta $=\\tan A\\times$ katetu adjasente."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Ângulu sentrál iha arku AB mak ${c}^\\circ$. Ângulu inskritu iha arku hanesan hira? (grau)",
+      "hints": [
+        "Ângulu inskritu mak ângulu sentrál nia klaran iha arku hanesan.",
+        "Fahe ângulu sentrál ho 2."
+      ],
+      "expl": "${c}\\div2={ans}$, nune'e ângulu inskritu mak ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Husi pontu P iha sirkulu O nia li'ur, tanjente ida kona sirkulu iha A. $PO={po}$ no raiu {r}. $PA$ hira?",
+      "hints": [
+        "Tanjente perpendikulár ba raiu, nune'e triángulu OAP retángulu.",
+        "Uza $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, nune'e $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Sirkulu ida nia raiu {r}. Korda ida iha distánsia {d} husi sentru. Korda naruk hira?",
+      "hints": [
+        "Perpendikulár husi sentru fahe korda ba parte rua hanesan.",
+        "Korda nia klaran mak $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Korda nia klaran mak $\\sqrt{{r}^2-{d}^2}={half}$, nune'e korda naruk ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Kuadrilátero ida inskritu iha sirkulu no ângulu ida mak ${a}^\\circ$. Ângulu oposta hira? (grau)",
+      "hints": [
+        "Kuadrilátero siklu nia ângulu oposta soma $180^\\circ$.",
+        "Hasai ângulu ne'ebé fó husi $180$."
+      ],
+      "expl": "$180-{a}={ans}$, nune'e nia ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Pontu A({x1}, {y1}) no B({x2}, {y2}) iha planu koordenada nia distánsia hira?",
+      "hints": [
+        "Distánsia mak $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Multiplika diferensa horizontál no vertikál ho sira-nia an no soma."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Segmentu AB ho A({x1}, {y1}) no B({x2}, {y2}) nia pontu klaran nia koordenada ${axis}$ hira?",
+      "hints": [
+        "Pontu klaran mak média koordenada nian.",
+        "Soma koordenada ne'ebé hanesan no fahe ho 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Liña ne'ebé liu husi A({x1}, {y1}) no B({x2}, {y2}) nia deklive hira?",
+      "hints": [
+        "Deklive = (mudansa $y$) ÷ (mudansa $x$).",
+        "Kalkula $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Sirkulu $(x-{a})^2+(y-{b})^2={r2}$ nia raiu hira?",
+      "hints": [
+        "Iha $(x-a)^2+(y-b)^2=r^2$ parte direita mak $r^2$.",
+        "Foti raíz kuadrada husi {r2}."
+      ],
+      "expl": "$r^2={r2}$, nune'e $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Sirkulu $(x-{a})^2+(y-{b})^2={r2}$ iha sentru $(p, q)$. $p+q$ hira?",
+      "hints": [
+        "Sentru mak $(p, q)$.",
+        "Lee $p$ no $q$ husi $x-p$ no $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Distánsia husi orijen ba liña ${A}x+{B}y-{C}=0$ hira?",
+      "hints": [
+        "Distánsia husi pontu ba liña mak $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Ba orijen, $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "Iha triángulu ABC, $a={a}$ no $\\angle A={A}^\\circ$. Raiu sirkunskritu $R$ hira?",
+      "hints": [
+        "Lei seno: $\\frac{a}{\\sin A}=2R$.",
+        "Uza valór $\\sin {A}^\\circ$ atu buka $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "Iha triángulu ABC, $a={a}$, $b={b}$ no $\\angle C={C}^\\circ$. $c$ hira?",
+      "hints": [
+        "Lei kosseno: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Troka ho valór $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, nune'e $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "Iha triángulu ABC, $a={a}$, $b={b}$ no $\\angle C={C}^\\circ$. Nia área hira?",
+      "hints": [
+        "Área $=\\frac12ab\\sin C$.",
+        "Troka ho valór $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ hanesan $\\frac{\\pi}{d}$ radiánu. $d$ hira?",
+      "hints": [
+        "$180^\\circ=\\pi$ radiánu.",
+        "Simplifika $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, nune'e $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Setór ida nia raiu {r} no ângulu sentrál $\\frac{\\pi}{{d}}$. Nia arku naruk $k\\pi$. $k$ hira?",
+      "hints": [
+        "Arku nia naruk mak $l=r\\theta$.",
+        "Multiplika $r$ ho $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, nune'e $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Setór ida nia raiu {r} no ângulu sentrál $\\frac{\\pi}{{d}}$. Nia área $k\\pi$. $k$ hira?",
+      "hints": [
+        "Setór nia área mak $S=\\frac12r^2\\theta$.",
+        "Multiplika $r^2$ ho $\\theta$, depois ho $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, nune'e $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Parábola $y^2={k}x$ nia fokus nia koordenada $x$ hira?",
+      "hints": [
+        "Fokus husi $y^2=4px$ mak $(p, 0)$.",
+        "Rezolve $4p={k}$ atu hetan $p$."
+      ],
+      "expl": "$4p={k}$, nune'e $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Elipse $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ iha fokus $(\\pm c, 0)$. $c$ hira?",
+      "hints": [
+        "Ba elipse, $c^2=a^2-b^2$.",
+        "Hasai {b2} husi {a2} no foti raíz kuadrada."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, nune'e $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Hipérbole $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ iha fokus $(\\pm c, 0)$. $c$ hira?",
+      "hints": [
+        "Ba hipérbole, $c^2=a^2+b^2$.",
+        "Soma {a2} ho {b2} no foti raíz kuadrada."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, nune'e $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Vetór $\\vec{a}=({x}, {y})$ nia módulu $|\\vec{a}|$ hira?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Multiplika komponente ida-idak ho nia an, soma, depois foti raíz kuadrada."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Produtu eskalár $\\vec{a}\\cdot\\vec{b}$ husi $\\vec{a}=({x1}, {y1})$ no $\\vec{b}=({x2}, {y2})$ hira?",
+      "hints": [
+        "Produtu eskalár mak $x_1x_2+y_1y_2$.",
+        "Multiplika komponente ne'ebé hanesan no soma."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Vetór $\\vec{a}=({x1}, k)$ no $\\vec{b}=({x2}, {y2})$ perpendikulár. $k$ hira?",
+      "hints": [
+        "Vetór perpendikulár iha produtu eskalár $0$.",
+        "Rezolve $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, nune'e $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "triángulu",
+    "quad": "kuadrilátero",
+    "circ": "sirkulu",
+    "pent": "pentágonu",
+    "hex": "hexágonu",
+    "rect": "retángulu",
+    "square": "kuadradu",
+    "trap": "trapéziu",
+    "para": "paralelogramu",
+    "rhom": "rombu",
+    "cube": "kubu",
+    "cuboid": "kuboid (forma kaixa)",
+    "cyl": "silíndru",
+    "sph": "esfera",
+    "cone": "konu",
+    "acute": "ângulu agudu",
+    "right": "ângulu loos",
+    "obtuse": "ângulu obtusu",
+    "faces": "fase",
+    "edges": "aresta",
+    "vertices": "vértise",
+    "triP": "triángulu",
+    "squareP": "kuadradu",
+    "circP": "sirkulu",
+    "iso": "triángulu isósseles",
+    "equi": "triángulu ekilátero",
+    "rtri": "triángulu retángulu",
+    "sss": "Sorin tolu-tolu hanesan (LLL)",
+    "sas": "Sorin rua no ângulu iha klaran hanesan (LAL)",
+    "asa": "Sorin ida no ângulu rua iha ninia ninin hanesan (ALA)",
+    "yes": "Sin, nia triángulu retángulu",
+    "no": "Lae, nia la'ós triángulu retángulu"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Naran figura no kuru-kuru",
+      "concept": "**Triángulu** iha sorin 3 no **kuadrilátero** iha sorin 4. **Sirkulu** kabuar no la iha kuru-kuru.",
+      "example": "Triángulu: sorin 3, kuru-kuru 3"
+    },
+    "E12": {
+      "title": "Figura sólidu",
+      "concept": "Kaixa mak **kuboid**, kolunu kabuar mak **silíndru**, no bola mak **esfera**.",
+      "example": "kuboid · silíndru · esfera"
+    },
+    "E21": {
+      "title": "Triángulu no kuadrilátero",
+      "concept": "**Triángulu** iha sorin loos 3 no kuru-kuru 3; **kuadrilátero** iha sorin loos 4 no kuru-kuru 4, forma saida de'it. Sorin nia kuantidade hanesan kuru-kuru nian.",
+      "example": "Kuadrilátero: sorin 4, kuru-kuru 4"
+    },
+    "E22": {
+      "title": "Naruk no tempu",
+      "concept": "Hatuur ninin ida iha 0 husi régua; marka iha ninin seluk mak naruk. $1\\text{ m}=100\\text{ cm}$. Multiplika númeru ne'ebé ponteiru naruk hatudu ho 5 atu hetan minutu.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Ângulu no ângulu loos",
+      "concept": "Raiu rua husi pontu ida forma **ângulu**. Ângulu $90^\\circ$ mak **ângulu loos**; ki'ik liu mak **agudu**, boot liu mak **obtusu**.",
+      "example": "$30^\\circ$ agudu · $90^\\circ$ loos · $120^\\circ$ obtusu"
+    },
+    "E32": {
+      "title": "Raiu no diámetru",
+      "concept": "**Raiu** husi sentru to'o sirkulu; **diámetru** liu husi sentru. Diámetru hanesan raiu dala rua.",
+      "example": "Raiu 5 cm → diámetru 10 cm"
+    },
+    "E41": {
+      "title": "Soma ângulu",
+      "concept": "Triángulu nia ângulu tolu soma $180^\\circ$ no kuadrilátero nia ângulu haat soma $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Kuadrilátero no poligonu",
+      "concept": "Sorin paralelu pár ida mak **trapéziu**, pár rua mak **paralelogramu**, no sorin haat hanesan mak **rombu**. **Diagonál** liga vértise rua ne'ebé la besik malu.",
+      "example": "Kuadrilátero iha diagonál 2"
+    },
+    "E51": {
+      "title": "Perímetru no área",
+      "concept": "Retángulu: luan × aas. Triángulu: báze × aas ÷ 2. Paralelogramu: báze × aas. Trapéziu: (báze leten + báze kraik) × aas ÷ 2. Rombu: diagonál × diagonál ÷ 2.",
+      "example": "Triángulu báze 10, aas 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Kongruénsia no simetria",
+      "concept": "Figura rua ne'ebé hanesan loloos mak **kongruente**. Figura ne'ebé bele dobra ba an rasik tuir liña ida mak **simétrika**; liña ne'e mak **eixu simetria**.",
+      "example": "Kuadradu iha eixu simetria 4"
+    },
+    "E61": {
+      "title": "Sirkunferénsia no área sirkulu",
+      "concept": "Sirkunferénsia = diámetru × π, área = raiu × raiu × π, ho π ≈ $3.14$.",
+      "example": "Raiu 5 cm → sirkunferénsia $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Kuboid no kubu",
+      "concept": "Volume = naruk × luan × aas; área superfísie = (soma área fase tolu) × 2. Kuboid iha fase 6, aresta 12 no vértise 8.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Regra ângulu no poligonu",
+      "concept": "Ângulu oposta ba vértise hanesan; ângulu korrespondente no alternu iha liña paralela hanesan. Poligonu ho sorin $n$ nia ângulu interior soma $180^\\circ\\times(n-2)$.",
+      "example": "Pentágonu: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Setór no sólidu",
+      "concept": "Arku nia naruk $=2\\pi r\\times\\frac{a}{360}$, setór nia área $=\\pi r^2\\times\\frac{a}{360}$, esfera nia volume $=\\frac43\\pi r^3$, konu nia volume $=\\frac13\\pi r^2h$.",
+      "example": "Esfera $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Triángulu no kuadrilátero",
+      "concept": "Triángulu isósseles nia ângulu báze rua hanesan. Paralelogramu nia ângulu ne'ebé besik malu soma $180^\\circ$, no segmentu ne'ebé liga pontu klaran rua husi triángulu mak sorin datoluk nia klaran.",
+      "example": "Ângulu báze $50^\\circ$ → ângulu iha tutun $80^\\circ$"
+    },
+    "M22": {
+      "title": "Similaridade no teorema Pitágoras",
+      "concept": "Figura similár iha razaun sorin hanesan no sira-nia área iha razaun ne'e nia kuadradu. Iha triángulu retángulu $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Razaun trigonométrika",
+      "concept": "Iha triángulu ho ánggulu loos: $\\sin A$ = sorin oposta ÷ ipotenuza, $\\cos A$ = sorin besik ÷ ipotenuza, $\\tan A$ = sorin oposta ÷ sorin besik.",
+      "example": "Triángulu 3-4-5: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Propriedade sirkulu nian",
+      "concept": "Ângulu inskritu mak ângulu sentrál nia klaran iha arku hanesan. Tanjente perpendikulár ba raiu, no kuadrilátero siklu nia ângulu oposta soma $180^\\circ$.",
+      "example": "Ângulu sentrál $100^\\circ$ → ângulu inskritu $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figura iha planu koordenada",
+      "concept": "Distánsia $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, pontu klaran = média koordenada, deklive $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): distánsia 5"
+    },
+    "H12": {
+      "title": "Ekuasaun sirkulu",
+      "concept": "Sirkulu ho sentru $(a, b)$ no raiu $r$ mak $(x-a)^2+(y-b)^2=r^2$. Distánsia husi $(x_0,y_0)$ ba $ax+by+c=0$ mak $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: sentru $(2,3)$, raiu 5"
+    },
+    "H21": {
+      "title": "Triángulu no funsaun trigonométrika",
+      "concept": "Lei seno $\\frac{a}{\\sin A}=2R$, lei kosseno $c^2=a^2+b^2-2ab\\cos C$, triángulu nia área $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radiánu no setór",
+      "concept": "$180^\\circ=\\pi$ radiánu. Setór ho raiu $r$ no ângulu $\\theta$ (radiánu) iha arku naruk $r\\theta$ no área $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Seksaun kónika",
+      "concept": "Parábola $y^2=4px$ iha fokus $(p,0)$; ba elipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; ba hipérbole $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: fokus $(3,0)$"
+    },
+    "H32": {
+      "title": "Vetór iha planu",
+      "concept": "$(x,y)$ nia módulu mak $\\sqrt{x^2+y^2}$; produtu eskalár mak $x_1x_2+y_1y_2$, no vetór perpendikulár iha produtu eskalár 0.",
+      "example": "$(3,4)$ nia módulu: 5"
+    }
+  }
+}

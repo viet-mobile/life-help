@@ -33,7 +33,7 @@ export const STEPS = [
   { id: "service-journey", title: "three-client service journey", browser: true, cmd: [...PW, "tests/staging/service-journey.staging.spec.ts"] },
   { id: "main-locale-smoke", title: "main site 47-locale smoke + country defaults", browser: true, cmd: [...PW, "tests/staging/main-locales.staging.spec.ts", "tests/staging/country-defaults.staging.spec.ts"] },
   { id: "learning-suite", title: "learning staging suite (47-locale aware)", browser: true, cmd: [...PW, "tests/staging/learning-locales.staging.spec.ts"] },
-  { id: "entitlements", title: "free / premium entitlement gates", browser: true, cmd: [...PW, "tests/staging/entitlement.staging.spec.ts"] },
+  { id: "entitlements", title: "premium switched off, sign-up closed (the Free / Premium gate spec returns with the boundary)", browser: true, cmd: [...PW, "tests/staging/premium-off.staging.spec.ts"] },
   { id: "cleanup", title: "run-scoped cleanup + residue verifier", cmd: ["node", "scripts/staging/cleanup.mjs", "--baseline", "{baseline}"], always: true, blockedCodes: { 5: "CLEANUP_BLOCKED_AUTH", 3: "BLOCKED_MISSING_ENV" } },
   { id: "post-smoke", title: "post-cleanup smoke", browser: true, cmd: [...PW, "tests/staging/post-smoke.staging.spec.ts"] },
 ];

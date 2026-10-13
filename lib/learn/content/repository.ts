@@ -76,6 +76,7 @@ export function toPublicQuestion(q: Question): PublicQuestion {
     difficulty: q.difficulty,
     prompt: q.prompt,
     latex: q.latex,
+    figure: q.figure,
     options: q.options,
     audioText: q.audioText,
     target: q.target,

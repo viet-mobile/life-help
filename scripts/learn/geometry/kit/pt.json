@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Qual é o nome desta figura?",
+      "hints": [
+        "Conte os lados e os vértices.",
+        "Veja se ela tem lados retos ou se é redonda."
+      ],
+      "expl": "Esta figura chama-se: {name}."
+    },
+    "nameSolid": {
+      "prompt": "Qual é o nome deste sólido?",
+      "hints": [
+        "Ele é redondo por todos os lados?",
+        "Conte as faces planas."
+      ],
+      "expl": "Este sólido é: {name}."
+    },
+    "countOf": {
+      "prompt": "Quantos {shape} há na imagem?",
+      "hints": [
+        "Marque cada um enquanto conta.",
+        "Cuidado para não contar a mesma figura duas vezes."
+      ],
+      "expl": "Há {ans} {shape}."
+    },
+    "countVertices": {
+      "prompt": "Quantos vértices (cantos) tem esta figura?",
+      "hints": [
+        "Um vértice é um ponto onde dois lados se encontram.",
+        "Conte os cantos pontiagudos um a um."
+      ],
+      "expl": "Ela tem {ans} vértices."
+    },
+    "countSides": {
+      "prompt": "Quantos lados tem esta figura?",
+      "hints": [
+        "Um lado é uma borda reta da figura.",
+        "Percorra a figura e conte os lados."
+      ],
+      "expl": "Ela tem {ans} lados."
+    },
+    "rulerRead": {
+      "prompt": "Use a régua para encontrar o comprimento da linha. (cm)",
+      "hints": [
+        "Veja onde a linha começa e onde termina.",
+        "Subtraia a marca do início da marca do fim."
+      ],
+      "expl": "A linha vai de {from} a {to}, então o seu comprimento é {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "Quantos cm a linha de cima é mais comprida do que a de baixo? (cm)",
+      "hints": [
+        "Leia primeiro os dois comprimentos.",
+        "Subtraia o comprimento menor do maior."
+      ],
+      "expl": "{a}-{b}={ans}, então ela é {ans} cm mais comprida."
+    },
+    "rightAngles": {
+      "prompt": "Quantos ângulos retos tem esta figura?",
+      "hints": [
+        "Um ângulo reto parece o canto de um quadrado.",
+        "Verifique um canto de cada vez."
+      ],
+      "expl": "Ela tem {ans} ângulos retos."
+    },
+    "clockMinutes": {
+      "prompt": "O relógio marca {h} horas e alguns minutos. Quantos minutos? (min)",
+      "hints": [
+        "Multiplique por 5 o número para o qual o ponteiro grande aponta.",
+        "Se o ponteiro grande aponta para o 6, são 30 minutos."
+      ],
+      "expl": "O ponteiro grande aponta para o {n}, então ${n}\\times5={ans}$ minutos."
+    },
+    "mToCm": {
+      "prompt": "Quantos cm são {m} m e {c} cm? (cm)",
+      "hints": [
+        "1 m são 100 cm.",
+        "Converta os m em cm e some os cm restantes."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, então são {ans} cm."
+    },
+    "triType": {
+      "prompt": "Que tipo de triângulo tem os comprimentos de lados mostrados?",
+      "hints": [
+        "Compare os três comprimentos dos lados.",
+        "Dois lados iguais: isósceles. Três lados iguais: equilátero."
+      ],
+      "expl": "Este triângulo é: {name}."
+    },
+    "congruentCond": {
+      "prompt": "Os dois triângulos são congruentes. Que caso de congruência se aplica?",
+      "hints": [
+        "Descubra quais lados são iguais e quais ângulos são iguais.",
+        "Só lados: LLL. Dois lados e o ângulo entre eles: LAL. Um lado e os dois ângulos adjacentes a ele: ALA."
+      ],
+      "expl": "As partes iguais na imagem são: {cond}. Então este é o caso usado."
+    },
+    "circleDiameter": {
+      "prompt": "O raio de um círculo é {r} cm. Qual é o diâmetro? (cm)",
+      "hints": [
+        "O diâmetro é o maior segmento que passa pelo centro.",
+        "O diâmetro é o dobro do raio."
+      ],
+      "expl": "{r}×2={ans}, então o diâmetro é {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "O diâmetro de um círculo é {d} cm. Qual é o raio? (cm)",
+      "hints": [
+        "O raio vai do centro até a circunferência.",
+        "O raio é a metade do diâmetro."
+      ],
+      "expl": "{d}÷2={ans}, então o raio é {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Que tipo de ângulo é ${a}^\\circ$?",
+      "hints": [
+        "Um ângulo reto mede $90^\\circ$.",
+        "Menor que $90^\\circ$ é agudo; maior é obtuso."
+      ],
+      "expl": "${a}^\\circ$ chama-se: {name}."
+    },
+    "angleThird": {
+      "prompt": "Dois ângulos de um triângulo medem ${a}^\\circ$ e ${b}^\\circ$. Quanto mede o terceiro ângulo? (graus)",
+      "hints": [
+        "Os três ângulos de um triângulo somam $180^\\circ$.",
+        "Subtraia de $180$ os dois ângulos conhecidos."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, então o terceiro ângulo mede ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Três ângulos de um quadrilátero medem ${a}^\\circ$, ${b}^\\circ$ e ${c}^\\circ$. Quanto mede o quarto ângulo? (graus)",
+      "hints": [
+        "Os quatro ângulos de um quadrilátero somam $360^\\circ$.",
+        "Subtraia de $360$ os três ângulos conhecidos."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, então o quarto ângulo mede ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Qual é o nome deste quadrilátero?",
+      "hints": [
+        "Veja se os lados opostos são paralelos.",
+        "Veja também se todos os lados e todos os ângulos são iguais."
+      ],
+      "expl": "Este quadrilátero é: {name}."
+    },
+    "diagonals": {
+      "prompt": "Quantas diagonais tem esta figura?",
+      "hints": [
+        "Uma diagonal liga dois vértices que não são vizinhos.",
+        "Conte primeiro as diagonais que saem de um vértice."
+      ],
+      "expl": "Ela tem {ans} diagonais."
+    },
+    "perimeterRect": {
+      "prompt": "Qual é o perímetro do retângulo? (cm)",
+      "hints": [
+        "O perímetro é a distância ao redor da figura.",
+        "Some a largura e a altura e multiplique por 2."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, então o perímetro é {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Qual é a área do retângulo? (cm²)",
+      "hints": [
+        "A área de um retângulo é largura × altura.",
+        "Multiplique os dois comprimentos mostrados."
+      ],
+      "expl": "${w}\\times{h}={ans}$, então a área é {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Um quadrado tem lados de {s} cm. Qual é a sua área? (cm²)",
+      "hints": [
+        "Os quatro lados de um quadrado são iguais.",
+        "Multiplique o comprimento do lado por ele mesmo."
+      ],
+      "expl": "${s}\\times{s}={ans}$, então a área é {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Um triângulo tem base {b} cm e altura {h} cm. Qual é a sua área? (cm²)",
+      "hints": [
+        "A área de um triângulo é base × altura ÷ 2.",
+        "A altura é medida em ângulo reto com a base."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, então a área é {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Um paralelogramo tem base {b} cm e altura {h} cm. Qual é a sua área? (cm²)",
+      "hints": [
+        "A área de um paralelogramo é base × altura.",
+        "Use a altura, não o lado inclinado."
+      ],
+      "expl": "${b}\\times{h}={ans}$, então a área é {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Um trapézio tem base menor {a} cm, base maior {b} cm e altura {h} cm. Qual é a sua área? (cm²)",
+      "hints": [
+        "A área de um trapézio é (base menor + base maior) × altura ÷ 2.",
+        "Some primeiro as duas bases."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, então a área é {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "As diagonais de um losango medem {d1} cm e {d2} cm. Qual é a sua área? (cm²)",
+      "hints": [
+        "A área de um losango é uma diagonal × a outra diagonal ÷ 2.",
+        "Multiplique as diagonais e divida por 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, então a área é {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Quantos eixos de simetria tem esta figura?",
+      "hints": [
+        "Um eixo de simetria dobra a figura em duas metades iguais.",
+        "Tente dobrar na horizontal, na vertical e na diagonal."
+      ],
+      "expl": "Ela tem {ans} eixos de simetria."
+    },
+    "congruentSide": {
+      "prompt": "Os dois triângulos são congruentes. Qual é o comprimento do lado $x$? (cm)",
+      "hints": [
+        "Figuras congruentes têm a mesma forma e o mesmo tamanho.",
+        "Lados correspondentes têm comprimentos iguais."
+      ],
+      "expl": "Lados correspondentes são iguais, então $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Qual é o número de {item} de um paralelepípedo?",
+      "hints": [
+        "Imagine uma caixa.",
+        "Olhe para cima, para baixo, para a frente, para trás e para os dois lados."
+      ],
+      "expl": "Um paralelepípedo tem {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Um paralelepípedo tem {l} cm de comprimento, {w} cm de largura e {h} cm de altura. Qual é o seu volume? (cm³)",
+      "hints": [
+        "O volume de um paralelepípedo é comprimento × largura × altura.",
+        "Multiplique as três medidas."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, então o volume é {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Um cubo tem arestas de {e} cm. Qual é o seu volume? (cm³)",
+      "hints": [
+        "Todas as arestas de um cubo são iguais.",
+        "Multiplique o comprimento da aresta por ele mesmo três vezes."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, então o volume é {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Um paralelepípedo tem {l} cm de comprimento, {w} cm de largura e {h} cm de altura. Qual é a sua área total? (cm²)",
+      "hints": [
+        "A área total é a soma das seis faces.",
+        "Faces opostas são iguais: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, então a área total é {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Um paralelepípedo tem {l} cm de comprimento, {w} cm de largura e {h} cm de altura. Qual é a soma dos comprimentos de todas as suas arestas? (cm)",
+      "hints": [
+        "Um paralelepípedo tem 12 arestas.",
+        "Há 4 arestas de cada medida: comprimento, largura e altura."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, então o total é {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Um círculo tem raio {r} cm. Qual é o comprimento da sua circunferência? (use $\\pi=3.14$) (cm)",
+      "hints": [
+        "Comprimento da circunferência = diâmetro × π.",
+        "O diâmetro é o dobro do raio."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, então o comprimento da circunferência é {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Um círculo tem raio {r} cm. Qual é a sua área? (use $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Área = raio × raio × π.",
+        "Multiplique o raio por ele mesmo e depois por 3.14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, então a área é {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Quantas faces tem um prisma com base de {n} lados?",
+      "hints": [
+        "Um prisma tem 2 bases e algumas faces laterais.",
+        "O número de faces laterais é igual ao número de lados da base."
+      ],
+      "expl": "{n} faces laterais mais 2 bases são {ans} faces."
+    },
+    "adjacentAngle": {
+      "prompt": "Em uma reta, um ângulo mede ${a}^\\circ$. Quanto mede o ângulo adjacente suplementar? (graus)",
+      "hints": [
+        "Ângulos em uma reta somam $180^\\circ$.",
+        "Subtraia de $180$ o ângulo conhecido."
+      ],
+      "expl": "$180-{a}={ans}$, então ele mede ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Duas retas se cruzam e um ângulo mede ${a}^\\circ$. Quanto mede o ângulo oposto pelo vértice? (graus)",
+      "hints": [
+        "Ângulos opostos pelo vértice ficam de frente um para o outro.",
+        "Eles têm a mesma medida."
+      ],
+      "expl": "Ângulos opostos pelo vértice são iguais, então ele mede ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Duas retas paralelas $l$ e $m$ são cortadas por uma transversal. Um ângulo mede ${a}^\\circ$. Quanto vale $x$? (graus)",
+      "hints": [
+        "Ângulos correspondentes em retas paralelas são iguais.",
+        "Ângulos alternos também são iguais."
+      ],
+      "expl": "Ângulos correspondentes (alternos) em retas paralelas são iguais, então $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Qual é a soma dos ângulos internos de um polígono de {n} lados? (graus)",
+      "hints": [
+        "Um polígono de {n} lados divide-se em {m} triângulos.",
+        "Cada triângulo tem soma de ângulos $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, então a soma é ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Quanto mede um ângulo interno de um polígono regular de {n} lados? (graus)",
+      "hints": [
+        "Primeiro encontre a soma: $180\\times({n}-2)$.",
+        "Divida a soma pelo número de lados {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, então cada ângulo mede ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Um setor circular tem raio {r} cm e ângulo central ${a}^\\circ$. O comprimento do arco é $k\\pi$ cm. Quanto vale $k$?",
+      "hints": [
+        "O comprimento do arco é $2\\pi r\\times\\frac{a}{360}$.",
+        "Primeiro encontre que fração da circunferência inteira o ângulo representa."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, então $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Um setor circular tem raio {r} cm e ângulo central ${a}^\\circ$. A sua área é $k\\pi$ cm². Quanto vale $k$?",
+      "hints": [
+        "A área do setor é $\\pi r^2\\times\\frac{a}{360}$.",
+        "Multiplique a área do círculo pela fração do ângulo."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, então $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Um cilindro tem raio da base {r} cm e altura {h} cm. O seu volume é $k\\pi$ cm³. Quanto vale $k$?",
+      "hints": [
+        "Volume = área da base × altura.",
+        "A área da base é $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, então $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Um cone tem raio da base {r} cm e altura {h} cm. O seu volume é $k\\pi$ cm³. Quanto vale $k$?",
+      "hints": [
+        "Volume = área da base × altura ÷ 3.",
+        "A área da base é $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, então $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Uma esfera tem raio {r} cm. O seu volume é $k\\pi$ cm³. Quanto vale $k$?",
+      "hints": [
+        "O volume de uma esfera é $\\frac{4}{3}\\pi r^3$.",
+        "Eleve o raio ao cubo e depois multiplique por $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, então $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Uma esfera tem raio {r} cm. A sua área da superfície é $k\\pi$ cm². Quanto vale $k$?",
+      "hints": [
+        "A área da superfície de uma esfera é $4\\pi r^2$.",
+        "Eleve o raio ao quadrado e depois multiplique por 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, então $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Um cilindro tem raio da base {r} cm e altura {h} cm. A sua área total é $k\\pi$ cm². Quanto vale $k$?",
+      "hints": [
+        "Área total = 2 × área da base + área lateral.",
+        "A área lateral é (comprimento da circunferência) × altura $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, então $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Um ângulo da base de um triângulo isósceles mede ${b}^\\circ$. Quanto mede o ângulo do vértice? (graus)",
+      "hints": [
+        "Os dois ângulos da base de um triângulo isósceles são iguais.",
+        "Subtraia os dois ângulos da base de $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, então o ângulo do vértice mede ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "No paralelogramo ABCD, $\\angle A={a}^\\circ$. Quanto mede $\\angle B$? (graus)",
+      "hints": [
+        "Ângulos consecutivos de um paralelogramo somam $180^\\circ$.",
+        "Subtraia $\\angle A$ de $180$."
+      ],
+      "expl": "$180-{a}={ans}$, então $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "Em um triângulo, o segmento $x$ une os pontos médios de dois lados e é paralelo ao terceiro lado, que mede {s} cm. Quanto vale $x$? (cm)",
+      "hints": [
+        "O segmento que une dois pontos médios é a metade do terceiro lado.",
+        "Divida {s} por 2."
+      ],
+      "expl": "${s}\\div2={ans}$, então $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Os dois triângulos são semelhantes. Qual é o comprimento do lado $x$? (cm)",
+      "hints": [
+        "Em figuras semelhantes, as razões entre lados correspondentes são iguais.",
+        "Encontre primeiro a razão de semelhança."
+      ],
+      "expl": "A razão é ${p}:{q}$, então $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Duas figuras semelhantes têm razão de semelhança ${p}:{q}$. A menor tem área {s} cm². Qual é a área da maior? (cm²)",
+      "hints": [
+        "A razão entre as áreas é o quadrado da razão de semelhança.",
+        "Multiplique a área menor por $({q}/{p})^2$."
+      ],
+      "expl": "A razão das áreas é ${p2}:{q2}$, então ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Os dois lados menores de um triângulo retângulo medem {a} cm e {b} cm. Quanto mede o maior lado $x$? (cm)",
+      "hints": [
+        "Teorema de Pitágoras: $a^2+b^2=c^2$.",
+        "Eleve os dois lados ao quadrado, some e tire a raiz quadrada."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, então $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Um triângulo retângulo tem hipotenusa {c} cm e um cateto {a} cm. Quanto mede o outro cateto $x$? (cm)",
+      "hints": [
+        "De $a^2+x^2=c^2$ obtém-se $x^2=c^2-a^2$.",
+        "Tire a raiz quadrada de $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, então $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Um triângulo tem lados {a} cm, {b} cm e {c} cm. Ele é um triângulo retângulo?",
+      "hints": [
+        "Tome o maior lado como hipotenusa e compare $a^2+b^2$ com $c^2$.",
+        "Se forem iguais, o triângulo é retângulo."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ e ${c}^2={s2}$, então {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "No triângulo retângulo, quanto vale $\\{fn} A$? (escreva um decimal)",
+      "hints": [
+        "$\\sin A$ = cateto oposto ÷ hipotenusa, $\\cos A$ = cateto adjacente ÷ hipotenusa, $\\tan A$ = oposto ÷ adjacente.",
+        "Distinga o cateto oposto do adjacente em relação ao ângulo $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Quanto vale $\\{fn}\\ {a}^\\circ$? (escreva um decimal)",
+      "hints": [
+        "Lembre-se dos valores para $30^\\circ$, $45^\\circ$ e $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "Em um triângulo retângulo, $\\tan A={t}$ e o cateto adjacente mede {adj}. Quanto mede o cateto oposto $x$?",
+      "hints": [
+        "$\\tan A$ = oposto ÷ adjacente.",
+        "Oposto $=\\tan A\\times$ adjacente."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "O ângulo central correspondente ao arco AB mede ${c}^\\circ$. Quanto mede o ângulo inscrito correspondente ao mesmo arco? (graus)",
+      "hints": [
+        "Um ângulo inscrito é a metade do ângulo central correspondente ao mesmo arco.",
+        "Divida o ângulo central por 2."
+      ],
+      "expl": "${c}\\div2={ans}$, então o ângulo inscrito mede ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "De um ponto P fora da circunferência de centro O, uma tangente toca a circunferência em A. $PO={po}$ e o raio é {r}. Quanto vale $PA$?",
+      "hints": [
+        "A tangente é perpendicular ao raio, então o triângulo OAP é retângulo.",
+        "Use $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, então $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Uma circunferência tem raio {r}. Uma corda está a uma distância {d} do centro. Qual é o comprimento da corda?",
+      "hints": [
+        "A perpendicular do centro divide a corda ao meio.",
+        "Metade da corda é $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Metade da corda é $\\sqrt{{r}^2-{d}^2}={half}$, então a corda mede ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Um quadrilátero está inscrito em uma circunferência e um ângulo mede ${a}^\\circ$. Quanto mede o ângulo oposto? (graus)",
+      "hints": [
+        "Ângulos opostos de um quadrilátero inscrito somam $180^\\circ$.",
+        "Subtraia de $180$ o ângulo dado."
+      ],
+      "expl": "$180-{a}={ans}$, então ele mede ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Qual é a distância entre os pontos A({x1}, {y1}) e B({x2}, {y2}) no plano cartesiano?",
+      "hints": [
+        "A distância é $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Eleve ao quadrado as diferenças horizontal e vertical e some."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Qual é a coordenada ${axis}$ do ponto médio do segmento AB, com A({x1}, {y1}) e B({x2}, {y2})?",
+      "hints": [
+        "O ponto médio é a média das coordenadas.",
+        "Some as coordenadas correspondentes e divida por 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Qual é o coeficiente angular da reta que passa por A({x1}, {y1}) e B({x2}, {y2})?",
+      "hints": [
+        "Coeficiente angular = (variação de $y$) ÷ (variação de $x$).",
+        "Calcule $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Qual é o raio da circunferência $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "Em $(x-a)^2+(y-b)^2=r^2$ o lado direito é $r^2$.",
+        "Tire a raiz quadrada de {r2}."
+      ],
+      "expl": "$r^2={r2}$, então $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "A circunferência $(x-{a})^2+(y-{b})^2={r2}$ tem centro $(p, q)$. Quanto vale $p+q$?",
+      "hints": [
+        "O centro é $(p, q)$.",
+        "Leia $p$ e $q$ em $x-p$ e $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Qual é a distância da origem à reta ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "A distância de um ponto a uma reta é $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Para a origem, $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "No triângulo ABC, $a={a}$ e $\\angle A={A}^\\circ$. Qual é o raio $R$ da circunferência circunscrita?",
+      "hints": [
+        "Lei dos senos: $\\frac{a}{\\sin A}=2R$.",
+        "Use o valor de $\\sin {A}^\\circ$ para encontrar $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "No triângulo ABC, $a={a}$, $b={b}$ e $\\angle C={C}^\\circ$. Quanto vale $c$?",
+      "hints": [
+        "Lei dos cossenos: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Substitua o valor de $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, então $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "No triângulo ABC, $a={a}$, $b={b}$ e $\\angle C={C}^\\circ$. Qual é a sua área?",
+      "hints": [
+        "Área $=\\frac12ab\\sin C$.",
+        "Substitua o valor de $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ é igual a $\\frac{\\pi}{d}$ radianos. Quanto vale $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ radianos.",
+        "Simplifique $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, então $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Um setor circular tem raio {r} e ângulo central $\\frac{\\pi}{{d}}$. O comprimento do arco é $k\\pi$. Quanto vale $k$?",
+      "hints": [
+        "O comprimento do arco é $l=r\\theta$.",
+        "Multiplique $r$ por $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, então $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Um setor circular tem raio {r} e ângulo central $\\frac{\\pi}{{d}}$. A sua área é $k\\pi$. Quanto vale $k$?",
+      "hints": [
+        "A área do setor é $S=\\frac12r^2\\theta$.",
+        "Multiplique $r^2$ por $\\theta$ e depois por $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, então $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Qual é a coordenada $x$ do foco da parábola $y^2={k}x$?",
+      "hints": [
+        "O foco de $y^2=4px$ é $(p, 0)$.",
+        "Resolva $4p={k}$ para $p$."
+      ],
+      "expl": "$4p={k}$, então $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "A elipse $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ tem focos $(\\pm c, 0)$. Quanto vale $c$?",
+      "hints": [
+        "Para uma elipse, $c^2=a^2-b^2$.",
+        "Subtraia {b2} de {a2} e tire a raiz quadrada."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, então $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "A hipérbole $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ tem focos $(\\pm c, 0)$. Quanto vale $c$?",
+      "hints": [
+        "Para uma hipérbole, $c^2=a^2+b^2$.",
+        "Some {a2} e {b2} e tire a raiz quadrada."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, então $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Qual é o módulo $|\\vec{a}|$ do vetor $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Eleve cada componente ao quadrado, some e tire a raiz quadrada."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Qual é o produto escalar $\\vec{a}\\cdot\\vec{b}$ de $\\vec{a}=({x1}, {y1})$ e $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "O produto escalar é $x_1x_2+y_1y_2$.",
+        "Multiplique as componentes correspondentes e some."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Os vetores $\\vec{a}=({x1}, k)$ e $\\vec{b}=({x2}, {y2})$ são perpendiculares. Quanto vale $k$?",
+      "hints": [
+        "Vetores perpendiculares têm produto escalar $0$.",
+        "Resolva $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, então $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "triângulo",
+    "quad": "quadrilátero",
+    "circ": "círculo",
+    "pent": "pentágono",
+    "hex": "hexágono",
+    "rect": "retângulo",
+    "square": "quadrado",
+    "trap": "trapézio",
+    "para": "paralelogramo",
+    "rhom": "losango",
+    "cube": "cubo",
+    "cuboid": "paralelepípedo (forma de caixa)",
+    "cyl": "cilindro",
+    "sph": "esfera",
+    "cone": "cone",
+    "acute": "ângulo agudo",
+    "right": "ângulo reto",
+    "obtuse": "ângulo obtuso",
+    "faces": "faces",
+    "edges": "arestas",
+    "vertices": "vértices",
+    "triP": "triângulos",
+    "squareP": "quadrados",
+    "circP": "círculos",
+    "iso": "triângulo isósceles",
+    "equi": "triângulo equilátero",
+    "rtri": "triângulo retângulo",
+    "sss": "Três pares de lados iguais (LLL)",
+    "sas": "Dois lados e o ângulo entre eles são iguais (LAL)",
+    "asa": "Um lado e os dois ângulos adjacentes a ele são iguais (ALA)",
+    "yes": "Sim, é um triângulo retângulo",
+    "no": "Não, não é um triângulo retângulo"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Nomes das figuras e vértices",
+      "concept": "Um **triângulo** tem 3 lados e um **quadrilátero** tem 4 lados. Um **círculo** é redondo e não tem vértices.",
+      "example": "Triângulo: 3 lados, 3 vértices"
+    },
+    "E12": {
+      "title": "Sólidos geométricos",
+      "concept": "Uma forma de caixa é um **paralelepípedo**, uma coluna redonda é um **cilindro** e uma bola é uma **esfera**.",
+      "example": "paralelepípedo · cilindro · esfera"
+    },
+    "E21": {
+      "title": "Triângulos e quadriláteros",
+      "concept": "Um **triângulo** tem 3 lados retos e 3 vértices; um **quadrilátero** tem 4 lados retos e 4 vértices, qualquer que seja a sua forma. O número de lados é igual ao número de vértices.",
+      "example": "Quadrilátero: 4 lados, 4 vértices"
+    },
+    "E22": {
+      "title": "Comprimento e tempo",
+      "concept": "Coloque uma ponta no 0 da régua; a marca na outra ponta é o comprimento. $1\\text{ m}=100\\text{ cm}$. Multiplique por 5 o número para o qual o ponteiro grande aponta para obter os minutos.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Ângulos e ângulos retos",
+      "concept": "Duas semirretas com a mesma origem formam um **ângulo**. Um ângulo de $90^\\circ$ é um **ângulo reto**; menor é **agudo**, maior é **obtuso**.",
+      "example": "$30^\\circ$ agudo · $90^\\circ$ reto · $120^\\circ$ obtuso"
+    },
+    "E32": {
+      "title": "Raio e diâmetro",
+      "concept": "O **raio** vai do centro até a circunferência; o **diâmetro** passa pelo centro. O diâmetro é o dobro do raio.",
+      "example": "Raio 5 cm → diâmetro 10 cm"
+    },
+    "E41": {
+      "title": "Soma dos ângulos",
+      "concept": "Os três ângulos de um triângulo somam $180^\\circ$ e os quatro ângulos de um quadrilátero somam $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Quadriláteros e polígonos",
+      "concept": "Um par de lados paralelos forma um **trapézio**, dois pares formam um **paralelogramo** e quatro lados iguais formam um **losango**. Uma **diagonal** liga dois vértices que não são vizinhos.",
+      "example": "Um quadrilátero tem 2 diagonais"
+    },
+    "E51": {
+      "title": "Perímetro e área",
+      "concept": "Retângulo: largura × altura. Triângulo: base × altura ÷ 2. Paralelogramo: base × altura. Trapézio: (base menor + base maior) × altura ÷ 2. Losango: diagonal × diagonal ÷ 2.",
+      "example": "Triângulo de base 10 e altura 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Congruência e simetria",
+      "concept": "Duas figuras que coincidem exatamente são **congruentes**. Uma figura que se dobra sobre si mesma ao longo de uma linha é **simétrica**; essa linha é o **eixo de simetria**.",
+      "example": "Um quadrado tem 4 eixos de simetria"
+    },
+    "E61": {
+      "title": "Circunferência e área do círculo",
+      "concept": "Circunferência = diâmetro × π, área = raio × raio × π, com π ≈ $3.14$.",
+      "example": "Raio 5 cm → circunferência $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Paralelepípedos e cubos",
+      "concept": "Volume = comprimento × largura × altura; área total = (soma das áreas de três faces) × 2. Um paralelepípedo tem 6 faces, 12 arestas e 8 vértices.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Regras de ângulos e polígonos",
+      "concept": "Ângulos opostos pelo vértice são iguais; ângulos correspondentes e alternos em retas paralelas são iguais. A soma dos ângulos internos de um polígono de $n$ lados é $180^\\circ\\times(n-2)$.",
+      "example": "Pentágono: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Setores circulares e sólidos",
+      "concept": "Comprimento do arco $=2\\pi r\\times\\frac{a}{360}$, área do setor $=\\pi r^2\\times\\frac{a}{360}$, volume da esfera $=\\frac43\\pi r^3$, volume do cone $=\\frac13\\pi r^2h$.",
+      "example": "Esfera $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Triângulos e quadriláteros",
+      "concept": "Os ângulos da base de um triângulo isósceles são iguais. Ângulos consecutivos de um paralelogramo somam $180^\\circ$, e o segmento que une os pontos médios de dois lados de um triângulo é a metade do terceiro lado.",
+      "example": "Ângulo da base $50^\\circ$ → ângulo do vértice $80^\\circ$"
+    },
+    "M22": {
+      "title": "Semelhança e teorema de Pitágoras",
+      "concept": "Figuras semelhantes têm razões iguais entre os lados e as suas áreas estão na razão do quadrado dessa razão. Em um triângulo retângulo $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Razões trigonométricas",
+      "concept": "Num triângulo retângulo: $\\sin A$ = cateto oposto ÷ hipotenusa, $\\cos A$ = cateto adjacente ÷ hipotenusa, $\\tan A$ = cateto oposto ÷ cateto adjacente.",
+      "example": "Triângulo 3-4-5: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Propriedades das circunferências",
+      "concept": "Um ângulo inscrito é a metade do ângulo central correspondente ao mesmo arco. Uma tangente é perpendicular ao raio, e os ângulos opostos de um quadrilátero inscrito somam $180^\\circ$.",
+      "example": "Ângulo central $100^\\circ$ → ângulo inscrito $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figuras no plano cartesiano",
+      "concept": "Distância $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, ponto médio = média das coordenadas, coeficiente angular $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): distância 5"
+    },
+    "H12": {
+      "title": "Equação da circunferência",
+      "concept": "Uma circunferência de centro $(a, b)$ e raio $r$ tem equação $(x-a)^2+(y-b)^2=r^2$. A distância de $(x_0,y_0)$ à reta $ax+by+c=0$ é $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: centro $(2,3)$, raio 5"
+    },
+    "H21": {
+      "title": "Triângulos e funções trigonométricas",
+      "concept": "Lei dos senos $\\frac{a}{\\sin A}=2R$, lei dos cossenos $c^2=a^2+b^2-2ab\\cos C$, área do triângulo $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radianos e setores",
+      "concept": "$180^\\circ=\\pi$ radianos. Um setor de raio $r$ e ângulo $\\theta$ (em radianos) tem comprimento de arco $r\\theta$ e área $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Seções cônicas",
+      "concept": "A parábola $y^2=4px$ tem foco $(p,0)$; para a elipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, $c^2=a^2-b^2$; para a hipérbole $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: foco $(3,0)$"
+    },
+    "H32": {
+      "title": "Vetores no plano",
+      "concept": "O módulo de $(x,y)$ é $\\sqrt{x^2+y^2}$; o produto escalar é $x_1x_2+y_1y_2$, e vetores perpendiculares têm produto escalar 0.",
+      "example": "Módulo de $(3,4)$: 5"
+    }
+  }
+}

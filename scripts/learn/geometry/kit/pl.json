@@ -1,0 +1,808 @@
+{
+  "q": {
+    "nameShape": {
+      "prompt": "Jak nazywa się ta figura?",
+      "hints": [
+        "Policz boki i wierzchołki.",
+        "Sprawdź, czy figura ma proste boki, czy jest okrągła."
+      ],
+      "expl": "Ta figura to {name}."
+    },
+    "nameSolid": {
+      "prompt": "Jak nazywa się ta bryła?",
+      "hints": [
+        "Czy jest okrągła ze wszystkich stron?",
+        "Policz płaskie ściany."
+      ],
+      "expl": "Ta bryła to {name}."
+    },
+    "countOf": {
+      "prompt": "Ile {shape} jest na rysunku?",
+      "hints": [
+        "Zaznaczaj każdą figurę podczas liczenia.",
+        "Uważaj, żeby nie policzyć tej samej figury dwa razy."
+      ],
+      "expl": "Liczba {shape} na rysunku to {ans}."
+    },
+    "countVertices": {
+      "prompt": "Ile wierzchołków ma ta figura?",
+      "hints": [
+        "Wierzchołek to punkt, w którym spotykają się dwa boki.",
+        "Policz kolejno ostre rogi."
+      ],
+      "expl": "Ma {ans} wierzchołków."
+    },
+    "countSides": {
+      "prompt": "Ile boków ma ta figura?",
+      "hints": [
+        "Bok to prosty brzeg figury.",
+        "Obejdź figurę dookoła i policz boki."
+      ],
+      "expl": "Ma {ans} boków."
+    },
+    "rulerRead": {
+      "prompt": "Odczytaj z linijki długość odcinka. (cm)",
+      "hints": [
+        "Znajdź, gdzie odcinek się zaczyna i gdzie kończy.",
+        "Odejmij od końcowej kreski kreskę początkową."
+      ],
+      "expl": "Odcinek biegnie od {from} do {to}, więc jego długość to {ans} cm."
+    },
+    "lengthDiff": {
+      "prompt": "O ile cm górny odcinek jest dłuższy od dolnego? (cm)",
+      "hints": [
+        "Najpierw odczytaj obie długości.",
+        "Odejmij krótszą długość od dłuższej."
+      ],
+      "expl": "{a}-{b}={ans}, więc jest dłuższy o {ans} cm."
+    },
+    "rightAngles": {
+      "prompt": "Ile kątów prostych ma ta figura?",
+      "hints": [
+        "Kąt prosty wygląda jak róg kwadratu.",
+        "Sprawdzaj kolejno każdy kąt."
+      ],
+      "expl": "Ma {ans} kątów prostych."
+    },
+    "clockMinutes": {
+      "prompt": "Zegar pokazuje godzinę {h} i kilka minut. Ile to minut? (min)",
+      "hints": [
+        "Pomnóż liczbę, na którą wskazuje duża wskazówka, przez 5.",
+        "Jeśli duża wskazówka wskazuje 6, to jest 30 minut."
+      ],
+      "expl": "Duża wskazówka wskazuje {n}, więc ${n}\\times5={ans}$ minut."
+    },
+    "mToCm": {
+      "prompt": "Ile cm to {m} m {c} cm? (cm)",
+      "hints": [
+        "1 m to 100 cm.",
+        "Zamień m na cm, a potem dodaj pozostałe cm."
+      ],
+      "expl": "${m}\\times100+{c}={ans}$, więc to {ans} cm."
+    },
+    "triType": {
+      "prompt": "Jaki to trójkąt, jeśli ma boki o podanych długościach?",
+      "hints": [
+        "Porównaj długości trzech boków.",
+        "Dwa równe boki: równoramienny. Trzy równe boki: równoboczny."
+      ],
+      "expl": "Ten trójkąt to {name}."
+    },
+    "congruentCond": {
+      "prompt": "Dwa trójkąty są przystające. Jaka cecha przystawania ma zastosowanie?",
+      "hints": [
+        "Znajdź, które boki są równe i które kąty są równe.",
+        "Same boki: bbb. Dwa boki i kąt między nimi: bkb. Bok i dwa kąty przy nim: kbk."
+      ],
+      "expl": "Równe elementy na rysunku to: {cond}. To jest więc użyta cecha."
+    },
+    "circleDiameter": {
+      "prompt": "Promień koła wynosi {r} cm. Ile wynosi średnica? (cm)",
+      "hints": [
+        "Średnica to najdłuższy odcinek przechodzący przez środek.",
+        "Średnica jest dwa razy dłuższa od promienia."
+      ],
+      "expl": "{r}×2={ans}, więc średnica wynosi {ans} cm."
+    },
+    "circleRadius": {
+      "prompt": "Średnica koła wynosi {d} cm. Ile wynosi promień? (cm)",
+      "hints": [
+        "Promień biegnie od środka do okręgu.",
+        "Promień to połowa średnicy."
+      ],
+      "expl": "{d}÷2={ans}, więc promień wynosi {ans} cm."
+    },
+    "angleType": {
+      "prompt": "Jaki to kąt: ${a}^\\circ$?",
+      "hints": [
+        "Kąt prosty ma $90^\\circ$.",
+        "Mniejszy niż $90^\\circ$ jest ostry, większy jest rozwarty."
+      ],
+      "expl": "${a}^\\circ$ to {name}."
+    },
+    "angleThird": {
+      "prompt": "Dwa kąty trójkąta mają ${a}^\\circ$ i ${b}^\\circ$. Ile ma trzeci kąt? (stopnie)",
+      "hints": [
+        "Suma trzech kątów trójkąta wynosi $180^\\circ$.",
+        "Odejmij od $180$ dwa znane kąty."
+      ],
+      "expl": "$180-{a}-{b}={ans}$, więc trzeci kąt ma ${ans}^\\circ$."
+    },
+    "angleQuad": {
+      "prompt": "Trzy kąty czworokąta mają ${a}^\\circ$, ${b}^\\circ$ i ${c}^\\circ$. Ile ma czwarty kąt? (stopnie)",
+      "hints": [
+        "Suma czterech kątów czworokąta wynosi $360^\\circ$.",
+        "Odejmij od $360$ trzy znane kąty."
+      ],
+      "expl": "$360-{a}-{b}-{c}={ans}$, więc czwarty kąt ma ${ans}^\\circ$."
+    },
+    "quadName": {
+      "prompt": "Jak nazywa się ten czworokąt?",
+      "hints": [
+        "Sprawdź, czy przeciwległe boki są równoległe.",
+        "Sprawdź też, czy wszystkie boki i kąty są równe."
+      ],
+      "expl": "Ten czworokąt to {name}."
+    },
+    "diagonals": {
+      "prompt": "Ile przekątnych ma ta figura?",
+      "hints": [
+        "Przekątna łączy dwa wierzchołki, które nie sąsiadują ze sobą.",
+        "Najpierw policz przekątne wychodzące z jednego wierzchołka."
+      ],
+      "expl": "Ma {ans} przekątnych."
+    },
+    "perimeterRect": {
+      "prompt": "Jaki jest obwód prostokąta? (cm)",
+      "hints": [
+        "Obwód to długość drogi dookoła figury.",
+        "Dodaj szerokość i wysokość, a wynik podwój."
+      ],
+      "expl": "$({w}+{h})\\times2={ans}$, więc obwód wynosi {ans} cm."
+    },
+    "areaRect": {
+      "prompt": "Jakie jest pole prostokąta? (cm²)",
+      "hints": [
+        "Pole prostokąta to szerokość × wysokość.",
+        "Pomnóż dwie podane długości."
+      ],
+      "expl": "${w}\\times{h}={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "areaSquare": {
+      "prompt": "Bok kwadratu ma {s} cm. Jakie jest jego pole? (cm²)",
+      "hints": [
+        "Wszystkie cztery boki kwadratu są równe.",
+        "Pomnóż długość boku przez siebie."
+      ],
+      "expl": "${s}\\times{s}={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "areaTriangle": {
+      "prompt": "Trójkąt ma podstawę {b} cm i wysokość {h} cm. Jakie jest jego pole? (cm²)",
+      "hints": [
+        "Pole trójkąta to podstawa × wysokość ÷ 2.",
+        "Wysokość mierzy się prostopadle do podstawy."
+      ],
+      "expl": "${b}\\times{h}\\div2={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "areaParallelogram": {
+      "prompt": "Równoległobok ma podstawę {b} cm i wysokość {h} cm. Jakie jest jego pole? (cm²)",
+      "hints": [
+        "Pole równoległoboku to podstawa × wysokość.",
+        "Użyj wysokości, a nie skośnego boku."
+      ],
+      "expl": "${b}\\times{h}={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "areaTrapezoid": {
+      "prompt": "Trapez ma górną podstawę {a} cm, dolną podstawę {b} cm i wysokość {h} cm. Jakie jest jego pole? (cm²)",
+      "hints": [
+        "Pole trapezu to (górna + dolna podstawa) × wysokość ÷ 2.",
+        "Najpierw dodaj górną i dolną podstawę."
+      ],
+      "expl": "$({a}+{b})\\times{h}\\div2={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "areaRhombus": {
+      "prompt": "Przekątne rombu mają {d1} cm i {d2} cm. Jakie jest jego pole? (cm²)",
+      "hints": [
+        "Pole rombu to iloczyn przekątnych podzielony przez 2.",
+        "Pomnóż przekątne, a wynik podziel przez 2."
+      ],
+      "expl": "${d1}\\times{d2}\\div2={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "symmetryLines": {
+      "prompt": "Ile osi symetrii ma ta figura?",
+      "hints": [
+        "Oś symetrii składa figurę na dwie pasujące połowy.",
+        "Spróbuj składać poziomo, pionowo i ukośnie."
+      ],
+      "expl": "Ma {ans} osi symetrii."
+    },
+    "congruentSide": {
+      "prompt": "Dwa trójkąty są przystające. Jaką długość ma bok $x$? (cm)",
+      "hints": [
+        "Figury przystające mają ten sam kształt i rozmiar.",
+        "Odpowiadające sobie boki mają równe długości."
+      ],
+      "expl": "Odpowiadające sobie boki są równe, więc $x={ans}$."
+    },
+    "solidCount": {
+      "prompt": "Ile {item} ma prostopadłościan?",
+      "hints": [
+        "Wyobraź sobie pudełko.",
+        "Spójrz na górę, dół, przód, tył i oba boki."
+      ],
+      "expl": "Prostopadłościan ma {ans} {item}."
+    },
+    "cuboidVolume": {
+      "prompt": "Prostopadłościan ma długość {l} cm, szerokość {w} cm i wysokość {h} cm. Jaka jest jego objętość? (cm³)",
+      "hints": [
+        "Objętość prostopadłościanu to długość × szerokość × wysokość.",
+        "Pomnóż trzy długości."
+      ],
+      "expl": "${l}\\times{w}\\times{h}={ans}$, więc objętość wynosi {ans} cm³."
+    },
+    "cubeVolume": {
+      "prompt": "Sześcian ma krawędzie długości {e} cm. Jaka jest jego objętość? (cm³)",
+      "hints": [
+        "Wszystkie krawędzie sześcianu są równe.",
+        "Pomnóż długość krawędzi przez siebie trzy razy."
+      ],
+      "expl": "${e}\\times{e}\\times{e}={ans}$, więc objętość wynosi {ans} cm³."
+    },
+    "cuboidSurface": {
+      "prompt": "Prostopadłościan ma długość {l} cm, szerokość {w} cm i wysokość {h} cm. Jakie jest jego pole powierzchni? (cm²)",
+      "hints": [
+        "Pole powierzchni to suma pól sześciu ścian.",
+        "Przeciwległe ściany są równe: (lw + wh + lh) × 2."
+      ],
+      "expl": "$({l}\\times{w}+{w}\\times{h}+{l}\\times{h})\\times2={ans}$, więc pole powierzchni wynosi {ans} cm²."
+    },
+    "edgeSum": {
+      "prompt": "Prostopadłościan ma długość {l} cm, szerokość {w} cm i wysokość {h} cm. Jaka jest suma długości wszystkich jego krawędzi? (cm)",
+      "hints": [
+        "Prostopadłościan ma 12 krawędzi.",
+        "Są po 4 krawędzie o długości, szerokości i wysokości."
+      ],
+      "expl": "$({l}+{w}+{h})\\times4={ans}$, więc suma wynosi {ans} cm."
+    },
+    "circumference": {
+      "prompt": "Koło ma promień {r} cm. Jaki jest jego obwód? (przyjmij $\\pi=3.14$) (cm)",
+      "hints": [
+        "Obwód = średnica × π.",
+        "Średnica jest dwa razy dłuższa od promienia."
+      ],
+      "expl": "${r}\\times2\\times3.14={ans}$, więc obwód wynosi {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Koło ma promień {r} cm. Jakie jest jego pole? (przyjmij $\\pi=3.14$) (cm²)",
+      "hints": [
+        "Pole = promień × promień × π.",
+        "Pomnóż promień przez siebie, a potem przez 3,14."
+      ],
+      "expl": "${r}\\times{r}\\times3.14={ans}$, więc pole wynosi {ans} cm²."
+    },
+    "prismFaces": {
+      "prompt": "Ile ścian ma graniastosłup, którego podstawa ma {n} boków?",
+      "hints": [
+        "Graniastosłup ma 2 podstawy i kilka ścian bocznych.",
+        "Liczba ścian bocznych jest równa liczbie boków podstawy."
+      ],
+      "expl": "{n} ścian bocznych plus 2 podstawy to {ans} ścian."
+    },
+    "adjacentAngle": {
+      "prompt": "Na prostej jeden kąt ma ${a}^\\circ$. Ile ma kąt przyległy? (stopnie)",
+      "hints": [
+        "Kąty na prostej dają razem $180^\\circ$.",
+        "Odejmij znany kąt od $180$."
+      ],
+      "expl": "$180-{a}={ans}$, więc ma ${ans}^\\circ$."
+    },
+    "verticalAngle": {
+      "prompt": "Dwie proste przecinają się i jeden kąt ma ${a}^\\circ$. Ile ma kąt wierzchołkowy? (stopnie)",
+      "hints": [
+        "Kąty wierzchołkowe leżą naprzeciw siebie.",
+        "Mają taką samą miarę."
+      ],
+      "expl": "Kąty wierzchołkowe są równe, więc ma ${ans}^\\circ$."
+    },
+    "parallelAngle": {
+      "prompt": "Dwie proste równoległe $l$ i $m$ przecięto sieczną. Jeden kąt ma ${a}^\\circ$. Ile wynosi $x$? (stopnie)",
+      "hints": [
+        "Kąty odpowiadające przy prostych równoległych są równe.",
+        "Kąty naprzemianległe też są równe."
+      ],
+      "expl": "Kąty odpowiadające (naprzemianległe) przy prostych równoległych są równe, więc $x={ans}$."
+    },
+    "polygonSum": {
+      "prompt": "Jaka jest suma kątów wewnętrznych wielokąta o {n} bokach? (stopnie)",
+      "hints": [
+        "Wielokąt o {n} bokach dzieli się na {m} trójkątów.",
+        "Suma kątów każdego trójkąta to $180^\\circ$."
+      ],
+      "expl": "$180\\times{m}={ans}$, więc suma wynosi ${ans}^\\circ$."
+    },
+    "regularAngle": {
+      "prompt": "Jaki jest kąt wewnętrzny wielokąta foremnego o {n} bokach? (stopnie)",
+      "hints": [
+        "Najpierw znajdź sumę: $180\\times({n}-2)$.",
+        "Podziel sumę przez liczbę boków {n}."
+      ],
+      "expl": "$180\\times({n}-2)\\div{n}={ans}$, więc każdy kąt ma ${ans}^\\circ$."
+    },
+    "arcLength": {
+      "prompt": "Wycinek koła ma promień {r} cm i kąt środkowy ${a}^\\circ$. Długość łuku wynosi $k\\pi$ cm. Ile wynosi $k$?",
+      "hints": [
+        "Długość łuku to $2\\pi r\\times\\frac{a}{360}$.",
+        "Najpierw znajdź, jaką część całego koła stanowi ten kąt."
+      ],
+      "expl": "$2\\times{r}\\times\\frac{{a}}{360}={ans}$, więc $k={ans}$."
+    },
+    "sectorArea": {
+      "prompt": "Wycinek koła ma promień {r} cm i kąt środkowy ${a}^\\circ$. Jego pole wynosi $k\\pi$ cm². Ile wynosi $k$?",
+      "hints": [
+        "Pole wycinka to $\\pi r^2\\times\\frac{a}{360}$.",
+        "Pomnóż pole koła przez tę część kąta."
+      ],
+      "expl": "${r}^2\\times\\frac{{a}}{360}={ans}$, więc $k={ans}$."
+    },
+    "cylinderVolume": {
+      "prompt": "Walec ma promień podstawy {r} cm i wysokość {h} cm. Jego objętość wynosi $k\\pi$ cm³. Ile wynosi $k$?",
+      "hints": [
+        "Objętość = pole podstawy × wysokość.",
+        "Pole podstawy to $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}={ans}$, więc $k={ans}$."
+    },
+    "coneVolume": {
+      "prompt": "Stożek ma promień podstawy {r} cm i wysokość {h} cm. Jego objętość wynosi $k\\pi$ cm³. Ile wynosi $k$?",
+      "hints": [
+        "Objętość = pole podstawy × wysokość ÷ 3.",
+        "Pole podstawy to $\\pi r^2$."
+      ],
+      "expl": "${r}^2\\times{h}\\div3={ans}$, więc $k={ans}$."
+    },
+    "sphereVolume": {
+      "prompt": "Kula ma promień {r} cm. Jej objętość wynosi $k\\pi$ cm³. Ile wynosi $k$?",
+      "hints": [
+        "Objętość kuli to $\\frac{4}{3}\\pi r^3$.",
+        "Podnieś promień do trzeciej potęgi, a potem pomnóż przez $\\frac{4}{3}$."
+      ],
+      "expl": "$\\frac{4}{3}\\times{r}^3={ans}$, więc $k={ans}$."
+    },
+    "sphereSurface": {
+      "prompt": "Kula ma promień {r} cm. Jej pole powierzchni wynosi $k\\pi$ cm². Ile wynosi $k$?",
+      "hints": [
+        "Pole powierzchni kuli to $4\\pi r^2$.",
+        "Podnieś promień do kwadratu, a potem pomnóż przez 4."
+      ],
+      "expl": "$4\\times{r}^2={ans}$, więc $k={ans}$."
+    },
+    "cylinderSurface": {
+      "prompt": "Walec ma promień podstawy {r} cm i wysokość {h} cm. Jego pole powierzchni wynosi $k\\pi$ cm². Ile wynosi $k$?",
+      "hints": [
+        "Pole powierzchni = 2 × pole podstawy + pole powierzchni bocznej.",
+        "Pole powierzchni bocznej to (obwód) × wysokość $=2\\pi r\\times h$."
+      ],
+      "expl": "$2\\times{r}^2+2\\times{r}\\times{h}={ans}$, więc $k={ans}$."
+    },
+    "isoscelesApex": {
+      "prompt": "Kąt przy podstawie trójkąta równoramiennego ma ${b}^\\circ$. Ile ma kąt przy wierzchołku? (stopnie)",
+      "hints": [
+        "Dwa kąty przy podstawie trójkąta równoramiennego są równe.",
+        "Odejmij oba kąty przy podstawie od $180^\\circ$."
+      ],
+      "expl": "$180-{b}\\times2={ans}$, więc kąt przy wierzchołku ma ${ans}^\\circ$."
+    },
+    "parallelogramAngle": {
+      "prompt": "W równoległoboku ABCD $\\angle A={a}^\\circ$. Ile wynosi $\\angle B$? (stopnie)",
+      "hints": [
+        "Kąty sąsiednie równoległoboku dają razem $180^\\circ$.",
+        "Odejmij $\\angle A$ od $180$."
+      ],
+      "expl": "$180-{a}={ans}$, więc $\\angle B={ans}^\\circ$."
+    },
+    "midSegment": {
+      "prompt": "W trójkącie odcinek $x$ łączy środki dwóch boków i jest równoległy do trzeciego boku, który ma {s} cm. Ile wynosi $x$? (cm)",
+      "hints": [
+        "Odcinek łączący środki dwóch boków to połowa trzeciego boku.",
+        "Podziel {s} przez 2."
+      ],
+      "expl": "${s}\\div2={ans}$, więc $x={ans}$ cm."
+    },
+    "similarSide": {
+      "prompt": "Dwa trójkąty są podobne. Jaką długość ma bok $x$? (cm)",
+      "hints": [
+        "W figurach podobnych stosunki odpowiadających sobie boków są równe.",
+        "Najpierw znajdź skalę podobieństwa."
+      ],
+      "expl": "Stosunek wynosi ${p}:{q}$, więc $x={ans}$."
+    },
+    "similarArea": {
+      "prompt": "Dwie figury podobne mają skalę ${p}:{q}$. Mniejsza ma pole {s} cm². Jakie jest pole większej? (cm²)",
+      "hints": [
+        "Stosunek pól jest kwadratem skali podobieństwa.",
+        "Pomnóż mniejsze pole przez $({q}/{p})^2$."
+      ],
+      "expl": "Stosunek pól to ${p2}:{q2}$, więc ${s}\\times\\frac{{q2}}{{p2}}={ans}$."
+    },
+    "pythagHyp": {
+      "prompt": "Dwa krótsze boki trójkąta prostokątnego mają {a} cm i {b} cm. Jaką długość ma najdłuższy bok $x$? (cm)",
+      "hints": [
+        "Twierdzenie Pitagorasa: $a^2+b^2=c^2$.",
+        "Podnieś oba boki do kwadratu, dodaj je i wyciągnij pierwiastek."
+      ],
+      "expl": "${a}^2+{b}^2={c2}$, więc $x={ans}$."
+    },
+    "pythagLeg": {
+      "prompt": "Trójkąt prostokątny ma przeciwprostokątną {c} cm i jedną przyprostokątną {a} cm. Jaką długość ma druga przyprostokątna $x$? (cm)",
+      "hints": [
+        "Z $a^2+x^2=c^2$ wynika $x^2=c^2-a^2$.",
+        "Wyciągnij pierwiastek z $c^2-a^2$."
+      ],
+      "expl": "${c}^2-{a}^2={x2}$, więc $x={ans}$."
+    },
+    "pythagCheck": {
+      "prompt": "Trójkąt ma boki {a} cm, {b} cm i {c} cm. Czy jest prostokątny?",
+      "hints": [
+        "Weź najdłuższy bok jako przeciwprostokątną i porównaj $a^2+b^2$ z $c^2$.",
+        "Jeśli są równe, trójkąt jest prostokątny."
+      ],
+      "expl": "${a}^2+{b}^2={s1}$ i ${c}^2={s2}$, więc {verdict}."
+    },
+    "trigRatio": {
+      "prompt": "Ile wynosi $\\{fn} A$ w trójkącie prostokątnym? (zapisz liczbę dziesiętną)",
+      "hints": [
+        "$\\sin A$ = przyprostokątna przeciwległa ÷ przeciwprostokątna, $\\cos A$ = przyprostokątna przyległa ÷ przeciwprostokątna, $\\tan A$ = przeciwległa ÷ przyległa.",
+        "Odróżnij przyprostokątną przeciwległą od przyległej względem kąta $A$."
+      ],
+      "expl": "$\\{fn} A=\\frac{{num}}{{den}}={ans}$."
+    },
+    "specialAngle": {
+      "prompt": "Ile wynosi $\\{fn}\\ {a}^\\circ$? (zapisz liczbę dziesiętną)",
+      "hints": [
+        "Przypomnij sobie wartości dla $30^\\circ$, $45^\\circ$ i $60^\\circ$.",
+        "$\\sin30^\\circ=\\frac12$, $\\cos60^\\circ=\\frac12$, $\\tan45^\\circ=1$."
+      ],
+      "expl": "$\\{fn}\\ {a}^\\circ={ans}$."
+    },
+    "trigSide": {
+      "prompt": "W trójkącie prostokątnym $\\tan A={t}$, a przyprostokątna przyległa ma {adj}. Ile wynosi przyprostokątna przeciwległa $x$?",
+      "hints": [
+        "$\\tan A$ = przeciwległa ÷ przyległa.",
+        "Przeciwległa $=\\tan A\\times$ przyległa."
+      ],
+      "expl": "$x={t}\\times{adj}={ans}$."
+    },
+    "inscribedAngle": {
+      "prompt": "Kąt środkowy oparty na łuku AB ma ${c}^\\circ$. Ile ma kąt wpisany oparty na tym samym łuku? (stopnie)",
+      "hints": [
+        "Kąt wpisany jest równy połowie kąta środkowego opartego na tym samym łuku.",
+        "Podziel kąt środkowy przez 2."
+      ],
+      "expl": "${c}\\div2={ans}$, więc kąt wpisany ma ${ans}^\\circ$."
+    },
+    "tangentLength": {
+      "prompt": "Z punktu P leżącego poza okręgiem o środku O poprowadzono styczną, która dotyka okręgu w punkcie A. $PO={po}$, a promień wynosi {r}. Ile wynosi $PA$?",
+      "hints": [
+        "Styczna jest prostopadła do promienia, więc trójkąt OAP jest prostokątny.",
+        "Użyj wzoru $PA^2=PO^2-r^2$."
+      ],
+      "expl": "${po}^2-{r}^2={pa2}$, więc $PA={ans}$."
+    },
+    "chordHalf": {
+      "prompt": "Okrąg ma promień {r}. Cięciwa leży w odległości {d} od środka. Jaką długość ma cięciwa?",
+      "hints": [
+        "Prostopadła poprowadzona ze środka dzieli cięciwę na połowy.",
+        "Połowa cięciwy to $\\sqrt{r^2-d^2}$."
+      ],
+      "expl": "Połowa cięciwy to $\\sqrt{{r}^2-{d}^2}={half}$, więc cięciwa ma ${ans}$."
+    },
+    "cyclicAngle": {
+      "prompt": "Czworokąt wpisano w okrąg i jeden jego kąt ma ${a}^\\circ$. Ile ma kąt przeciwległy? (stopnie)",
+      "hints": [
+        "Kąty przeciwległe czworokąta wpisanego w okrąg dają razem $180^\\circ$.",
+        "Odejmij podany kąt od $180$."
+      ],
+      "expl": "$180-{a}={ans}$, więc ma ${ans}^\\circ$."
+    },
+    "distance": {
+      "prompt": "Jaka jest odległość między punktami A({x1}, {y1}) i B({x2}, {y2}) w układzie współrzędnych?",
+      "hints": [
+        "Odległość to $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Podnieś do kwadratu różnice poziomą i pionową i dodaj je."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "midpoint": {
+      "prompt": "Jaka jest współrzędna ${axis}$ środka odcinka AB, gdzie A({x1}, {y1}) i B({x2}, {y2})?",
+      "hints": [
+        "Środek odcinka to średnia współrzędnych.",
+        "Dodaj odpowiednie współrzędne i podziel przez 2."
+      ],
+      "expl": "$({u}+{v})\\div2={ans}$."
+    },
+    "slope": {
+      "prompt": "Jaki jest współczynnik kierunkowy prostej przechodzącej przez A({x1}, {y1}) i B({x2}, {y2})?",
+      "hints": [
+        "Współczynnik kierunkowy = (zmiana $y$) ÷ (zmiana $x$).",
+        "Oblicz $\\frac{y_2-y_1}{x_2-x_1}$."
+      ],
+      "expl": "$\\frac{{dy}}{{dx}}={ans}$."
+    },
+    "circleEqRadius": {
+      "prompt": "Jaki jest promień okręgu $(x-{a})^2+(y-{b})^2={r2}$?",
+      "hints": [
+        "W równaniu $(x-a)^2+(y-b)^2=r^2$ prawa strona to $r^2$.",
+        "Wyciągnij pierwiastek z {r2}."
+      ],
+      "expl": "$r^2={r2}$, więc $r={ans}$."
+    },
+    "circleEqCenter": {
+      "prompt": "Okrąg $(x-{a})^2+(y-{b})^2={r2}$ ma środek $(p, q)$. Ile wynosi $p+q$?",
+      "hints": [
+        "Środek to $(p, q)$.",
+        "Odczytaj $p$ i $q$ z $x-p$ i $y-q$."
+      ],
+      "expl": "$p+q={a}+{b}={ans}$."
+    },
+    "pointLineDist": {
+      "prompt": "Jaka jest odległość początku układu współrzędnych od prostej ${A}x+{B}y-{C}=0$?",
+      "hints": [
+        "Odległość punktu od prostej to $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+        "Dla początku układu $x_0=y_0=0$."
+      ],
+      "expl": "$\\frac{{C}}{\\sqrt{{A}^2+{B}^2}}=\\frac{{C}}{{ab}}={ans}$."
+    },
+    "lawSinesR": {
+      "prompt": "W trójkącie ABC $a={a}$ i $\\angle A={A}^\\circ$. Ile wynosi promień okręgu opisanego $R$?",
+      "hints": [
+        "Twierdzenie sinusów: $\\frac{a}{\\sin A}=2R$.",
+        "Użyj wartości $\\sin {A}^\\circ$, aby znaleźć $R$."
+      ],
+      "expl": "$R=\\frac{a}{2\\sin A}=\\frac{{a}}{2\\times{sinA}}={ans}$."
+    },
+    "lawCosines": {
+      "prompt": "W trójkącie ABC $a={a}$, $b={b}$ i $\\angle C={C}^\\circ$. Ile wynosi $c$?",
+      "hints": [
+        "Twierdzenie cosinusów: $c^2=a^2+b^2-2ab\\cos C$.",
+        "Podstaw wartość $\\cos {C}^\\circ$."
+      ],
+      "expl": "$c^2={a}^2+{b}^2-2\\times{a}\\times{b}\\times{cosC}={c2}$, więc $c={ans}$."
+    },
+    "areaSin": {
+      "prompt": "W trójkącie ABC $a={a}$, $b={b}$ i $\\angle C={C}^\\circ$. Jakie jest jego pole?",
+      "hints": [
+        "Pole $=\\frac12ab\\sin C$.",
+        "Podstaw wartość $\\sin {C}^\\circ$."
+      ],
+      "expl": "$\\frac12\\times{a}\\times{b}\\times{sinC}={ans}$."
+    },
+    "radianD": {
+      "prompt": "${a}^\\circ$ to $\\frac{\\pi}{d}$ radianów. Ile wynosi $d$?",
+      "hints": [
+        "$180^\\circ=\\pi$ radianów.",
+        "Uprość $\\frac{{a}}{180}\\pi$."
+      ],
+      "expl": "$\\frac{{a}}{180}\\pi=\\frac{\\pi}{{ans}}$, więc $d={ans}$."
+    },
+    "arcRad": {
+      "prompt": "Wycinek koła ma promień {r} i kąt środkowy $\\frac{\\pi}{{d}}$. Długość łuku wynosi $k\\pi$. Ile wynosi $k$?",
+      "hints": [
+        "Długość łuku to $l=r\\theta$.",
+        "Pomnóż $r$ przez $\\theta=\\frac{\\pi}{{d}}$."
+      ],
+      "expl": "$l={r}\\times\\frac{\\pi}{{d}}={ans}\\pi$, więc $k={ans}$."
+    },
+    "sectorRad": {
+      "prompt": "Wycinek koła ma promień {r} i kąt środkowy $\\frac{\\pi}{{d}}$. Jego pole wynosi $k\\pi$. Ile wynosi $k$?",
+      "hints": [
+        "Pole wycinka to $S=\\frac12r^2\\theta$.",
+        "Pomnóż $r^2$ przez $\\theta$, a potem przez $\\frac12$."
+      ],
+      "expl": "$S=\\frac12\\times{r}^2\\times\\frac{\\pi}{{d}}={ans}\\pi$, więc $k={ans}$."
+    },
+    "parabolaFocus": {
+      "prompt": "Jaka jest współrzędna $x$ ogniska paraboli $y^2={k}x$?",
+      "hints": [
+        "Ognisko paraboli $y^2=4px$ to $(p, 0)$.",
+        "Rozwiąż $4p={k}$ względem $p$."
+      ],
+      "expl": "$4p={k}$, więc $p={ans}$."
+    },
+    "ellipseFocal": {
+      "prompt": "Elipsa $\\frac{x^2}{{a2}}+\\frac{y^2}{{b2}}=1$ ma ogniska $(\\pm c, 0)$. Ile wynosi $c$?",
+      "hints": [
+        "Dla elipsy $c^2=a^2-b^2$.",
+        "Odejmij {b2} od {a2} i wyciągnij pierwiastek."
+      ],
+      "expl": "$c^2={a2}-{b2}={c2}$, więc $c={ans}$."
+    },
+    "hyperbolaFocal": {
+      "prompt": "Hiperbola $\\frac{x^2}{{a2}}-\\frac{y^2}{{b2}}=1$ ma ogniska $(\\pm c, 0)$. Ile wynosi $c$?",
+      "hints": [
+        "Dla hiperboli $c^2=a^2+b^2$.",
+        "Dodaj {a2} i {b2} i wyciągnij pierwiastek."
+      ],
+      "expl": "$c^2={a2}+{b2}={c2}$, więc $c={ans}$."
+    },
+    "vectorMag": {
+      "prompt": "Jaka jest długość $|\\vec{a}|$ wektora $\\vec{a}=({x}, {y})$?",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Podnieś każdą współrzędną do kwadratu, dodaj i wyciągnij pierwiastek."
+      ],
+      "expl": "$\\sqrt{{x}^2+{y}^2}=\\sqrt{{s}}={ans}$."
+    },
+    "dotProduct": {
+      "prompt": "Jaki jest iloczyn skalarny $\\vec{a}\\cdot\\vec{b}$ wektorów $\\vec{a}=({x1}, {y1})$ i $\\vec{b}=({x2}, {y2})$?",
+      "hints": [
+        "Iloczyn skalarny to $x_1x_2+y_1y_2$.",
+        "Pomnóż odpowiadające sobie współrzędne i dodaj."
+      ],
+      "expl": "${x1}\\times{x2}+{y1}\\times{y2}={ans}$."
+    },
+    "vectorPerp": {
+      "prompt": "Wektory $\\vec{a}=({x1}, k)$ i $\\vec{b}=({x2}, {y2})$ są prostopadłe. Ile wynosi $k$?",
+      "hints": [
+        "Wektory prostopadłe mają iloczyn skalarny $0$.",
+        "Rozwiąż $x_1x_2+ky_2=0$."
+      ],
+      "expl": "${x1}\\times{x2}+k\\times({y2})=0$, więc $k={ans}$."
+    }
+  },
+  "word": {
+    "tri": "trójkąt",
+    "quad": "czworokąt",
+    "circ": "koło",
+    "pent": "pięciokąt",
+    "hex": "sześciokąt",
+    "rect": "prostokąt",
+    "square": "kwadrat",
+    "trap": "trapez",
+    "para": "równoległobok",
+    "rhom": "romb",
+    "cube": "sześcian",
+    "cuboid": "prostopadłościan",
+    "cyl": "walec",
+    "sph": "kula",
+    "cone": "stożek",
+    "acute": "kąt ostry",
+    "right": "kąt prosty",
+    "obtuse": "kąt rozwarty",
+    "faces": "ścian",
+    "edges": "krawędzi",
+    "vertices": "wierzchołków",
+    "triP": "trójkątów",
+    "squareP": "kwadratów",
+    "circP": "kół",
+    "iso": "trójkąt równoramienny",
+    "equi": "trójkąt równoboczny",
+    "rtri": "trójkąt prostokątny",
+    "sss": "Trzy pary boków są równe (bbb)",
+    "sas": "Dwa boki i kąt między nimi są równe (bkb)",
+    "asa": "Bok i dwa kąty przy nim są równe (kbk)",
+    "yes": "Tak, to trójkąt prostokątny",
+    "no": "Nie, to nie jest trójkąt prostokątny"
+  },
+  "lesson": {
+    "E11": {
+      "title": "Nazwy figur i wierzchołki",
+      "concept": "**Trójkąt** ma 3 boki, a **czworokąt** ma 4 boki. **Koło** jest okrągłe i nie ma wierzchołków.",
+      "example": "Trójkąt: 3 boki, 3 wierzchołki"
+    },
+    "E12": {
+      "title": "Bryły",
+      "concept": "Bryła w kształcie pudełka to **prostopadłościan**, okrągły słup to **walec**, a piłka to **kula**.",
+      "example": "prostopadłościan · walec · kula"
+    },
+    "E21": {
+      "title": "Trójkąty i czworokąty",
+      "concept": "**Trójkąt** ma 3 proste boki i 3 wierzchołki; **czworokąt** ma 4 proste boki i 4 wierzchołki, niezależnie od kształtu. Liczba boków jest równa liczbie wierzchołków.",
+      "example": "Czworokąt: 4 boki, 4 wierzchołki"
+    },
+    "E22": {
+      "title": "Długość i czas",
+      "concept": "Przyłóż jeden koniec do 0 na linijce; kreska przy drugim końcu pokazuje długość. $1\\text{ m}=100\\text{ cm}$. Pomnóż liczbę, na którą wskazuje duża wskazówka, przez 5, aby otrzymać minuty.",
+      "example": "2 m 30 cm = 230 cm"
+    },
+    "E31": {
+      "title": "Kąty i kąty proste",
+      "concept": "Dwie półproste wychodzące z jednego punktu tworzą **kąt**. Kąt $90^\\circ$ to **kąt prosty**; mniejszy jest **ostry**, większy jest **rozwarty**.",
+      "example": "$30^\\circ$ ostry · $90^\\circ$ prosty · $120^\\circ$ rozwarty"
+    },
+    "E32": {
+      "title": "Promień i średnica",
+      "concept": "**Promień** biegnie od środka do okręgu; **średnica** przechodzi przez środek. Średnica jest dwa razy dłuższa od promienia.",
+      "example": "Promień 5 cm → średnica 10 cm"
+    },
+    "E41": {
+      "title": "Sumy kątów",
+      "concept": "Suma trzech kątów trójkąta wynosi $180^\\circ$, a suma czterech kątów czworokąta wynosi $360^\\circ$.",
+      "example": "$50^\\circ+60^\\circ+70^\\circ=180^\\circ$"
+    },
+    "E42": {
+      "title": "Czworokąty i wielokąty",
+      "concept": "Jedna para boków równoległych daje **trapez**, dwie pary **równoległobok**, a cztery równe boki **romb**. **Przekątna** łączy dwa niesąsiednie wierzchołki.",
+      "example": "Czworokąt ma 2 przekątne"
+    },
+    "E51": {
+      "title": "Obwód i pole",
+      "concept": "Prostokąt: szerokość × wysokość. Trójkąt: podstawa × wysokość ÷ 2. Równoległobok: podstawa × wysokość. Trapez: (górna + dolna podstawa) × wysokość ÷ 2. Romb: przekątna × przekątna ÷ 2.",
+      "example": "Trójkąt o podstawie 10 i wysokości 6 → 10×6÷2 = 30"
+    },
+    "E52": {
+      "title": "Przystawanie i symetria",
+      "concept": "Dwie figury, które idealnie na siebie pasują, są **przystające**. Figura, którą można złożyć wzdłuż prostej na dwie pasujące części, jest **symetryczna**; ta prosta to **oś symetrii**.",
+      "example": "Kwadrat ma 4 osie symetrii"
+    },
+    "E61": {
+      "title": "Obwód i pole koła",
+      "concept": "Obwód = średnica × π, pole = promień × promień × π, gdzie π ≈ $3.14$.",
+      "example": "Promień 5 cm → obwód $10\\times3.14=31.4$ cm"
+    },
+    "E62": {
+      "title": "Prostopadłościany i sześciany",
+      "concept": "Objętość = długość × szerokość × wysokość; pole powierzchni = (suma pól trzech ścian) × 2. Prostopadłościan ma 6 ścian, 12 krawędzi i 8 wierzchołków.",
+      "example": "$6\\times4\\times3=72$ cm³"
+    },
+    "M11": {
+      "title": "Zasady dotyczące kątów i wielokąty",
+      "concept": "Kąty wierzchołkowe są równe; kąty odpowiadające i naprzemianległe przy prostych równoległych są równe. Suma kątów wewnętrznych $n$-kąta wynosi $180^\\circ\\times(n-2)$.",
+      "example": "Pięciokąt: $180^\\circ\\times3=540^\\circ$"
+    },
+    "M12": {
+      "title": "Wycinki koła i bryły",
+      "concept": "Długość łuku $=2\\pi r\\times\\frac{a}{360}$, pole wycinka $=\\pi r^2\\times\\frac{a}{360}$, objętość kuli $=\\frac43\\pi r^3$, objętość stożka $=\\frac13\\pi r^2h$.",
+      "example": "Kula $r=3$: $\\frac43\\pi\\times27=36\\pi$"
+    },
+    "M21": {
+      "title": "Trójkąty i czworokąty",
+      "concept": "Kąty przy podstawie trójkąta równoramiennego są równe. Kąty sąsiednie równoległoboku dają razem $180^\\circ$, a odcinek łączący środki dwóch boków trójkąta ma długość połowy trzeciego boku.",
+      "example": "Kąt przy podstawie $50^\\circ$ → kąt przy wierzchołku $80^\\circ$"
+    },
+    "M22": {
+      "title": "Podobieństwo i twierdzenie Pitagorasa",
+      "concept": "Figury podobne mają równe stosunki boków, a ich pola mają się do siebie jak kwadrat tego stosunku. W trójkącie prostokątnym $a^2+b^2=c^2$.",
+      "example": "$3^2+4^2=5^2$"
+    },
+    "M31": {
+      "title": "Funkcje trygonometryczne",
+      "concept": "W trójkącie prostokątnym: $\\sin A$ = przyprostokątna przeciwległa ÷ przeciwprostokątna, $\\cos A$ = przyprostokątna przyległa ÷ przeciwprostokątna, $\\tan A$ = przyprostokątna przeciwległa ÷ przyprostokątna przyległa.",
+      "example": "Trójkąt 3-4-5: $\\sin A=0.6$"
+    },
+    "M32": {
+      "title": "Własności okręgów",
+      "concept": "Kąt wpisany jest równy połowie kąta środkowego opartego na tym samym łuku. Styczna jest prostopadła do promienia, a kąty przeciwległe czworokąta wpisanego w okrąg dają razem $180^\\circ$.",
+      "example": "Kąt środkowy $100^\\circ$ → kąt wpisany $50^\\circ$"
+    },
+    "H11": {
+      "title": "Figury w układzie współrzędnych",
+      "concept": "Odległość $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, środek odcinka = średnia współrzędnych, współczynnik kierunkowy $\\frac{y_2-y_1}{x_2-x_1}$.",
+      "example": "A(0,0), B(3,4): odległość 5"
+    },
+    "H12": {
+      "title": "Równanie okręgu",
+      "concept": "Okrąg o środku $(a, b)$ i promieniu $r$ ma równanie $(x-a)^2+(y-b)^2=r^2$. Odległość punktu $(x_0,y_0)$ od prostej $ax+by+c=0$ wynosi $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+      "example": "$(x-2)^2+(y-3)^2=25$: środek $(2,3)$, promień 5"
+    },
+    "H21": {
+      "title": "Trójkąty i funkcje trygonometryczne",
+      "concept": "Twierdzenie sinusów $\\frac{a}{\\sin A}=2R$, twierdzenie cosinusów $c^2=a^2+b^2-2ab\\cos C$, pole trójkąta $\\frac12ab\\sin C$.",
+      "example": "$a=5,b=8,C=60^\\circ$ → $c=7$"
+    },
+    "H22": {
+      "title": "Radiany i wycinki koła",
+      "concept": "$180^\\circ=\\pi$ radianów. Wycinek koła o promieniu $r$ i kącie $\\theta$ (w radianach) ma długość łuku $r\\theta$ i pole $\\frac12r^2\\theta$.",
+      "example": "$60^\\circ=\\frac{\\pi}{3}$"
+    },
+    "H31": {
+      "title": "Krzywe stożkowe",
+      "concept": "Parabola $y^2=4px$ ma ognisko $(p,0)$; dla elipsy $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ zachodzi $c^2=a^2-b^2$; dla hiperboli $c^2=a^2+b^2$.",
+      "example": "$y^2=12x$: ognisko $(3,0)$"
+    },
+    "H32": {
+      "title": "Wektory na płaszczyźnie",
+      "concept": "Długość wektora $(x,y)$ to $\\sqrt{x^2+y^2}$; iloczyn skalarny to $x_1x_2+y_1y_2$, a wektory prostopadłe mają iloczyn skalarny 0.",
+      "example": "Długość wektora $(3,4)$: 5"
+    }
+  }
+}

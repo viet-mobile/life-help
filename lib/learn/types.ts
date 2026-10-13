@@ -83,6 +83,31 @@ export type AnswerKey =
 /** What a student submits. Always a string or string[] so it is trivially validatable. */
 export type AnswerValue = string | string[];
 
+/**
+ * Language-neutral figure for geometry questions: a tiny declarative drawing (never HTML), rendered as SVG by components/learn/Figure.tsx.
+ * Coordinates are in a w x h box; labels are numerals / letters / units only, so one figure serves every locale.
+ *   poly   closed polygon      p = [x1,y1,x2,y2,...]      f = fill tone 1..3 (optional), d = dashed
+ *   line   segment             p = [x1,y1,x2,y2]          d = dashed, m = "a" arrow head at the end
+ *   circle                     c = [cx,cy], r             f = fill tone
+ *   ellipse                    c = [cx,cy], rx, ry        f = fill tone
+ *   arc    angle mark / arc    c = [cx,cy], r, a0, a1     degrees, counter-clockwise from the +x axis (screen y points down)
+ *   text   label               p = [x,y], t               a = anchor "s" | "m" | "e"
+ */
+export type FigureShape =
+  | { k: "poly"; p: number[]; f?: 1 | 2 | 3; d?: boolean }
+  | { k: "line"; p: [number, number, number, number]; d?: boolean; m?: "a" }
+  | { k: "circle"; c: [number, number]; r: number; f?: 1 | 2 | 3 }
+  | { k: "ellipse"; c: [number, number]; rx: number; ry: number; f?: 1 | 2 | 3; d?: boolean }
+  | { k: "arc"; c: [number, number]; r: number; a0: number; a1: number }
+  | { k: "text"; p: [number, number]; t: string; a?: "s" | "m" | "e" };
+export interface Figure {
+  w: number;
+  h: number;
+  s: FigureShape[];
+}
+/** Labels may only hold numerals, letters, a few math symbols and units. */
+export const FIGURE_TEXT = /^[A-Za-z0-9°²³π√.,+\-−=()′∠⊥∥×÷ ]{1,14}$/u;
+
 export interface Question {
   id: string;
   site: Site;
@@ -93,6 +118,8 @@ export interface Question {
   prompt: string;
   /** Optional display-mode LaTeX block. */
   latex?: string;
+  /** Optional figure (geometry). Language-neutral: never translated, shown with the prompt. */
+  figure?: Figure;
   options?: QuestionOption[];
   answer: AnswerKey;
   /** Progressive hints: hints[0] is small, hints[1] is more concrete. */
@@ -124,6 +151,7 @@ export interface PublicQuestion {
   difficulty: Difficulty;
   prompt: string;
   latex?: string;
+  figure?: Figure;
   options?: QuestionOption[];
   audioText?: string;
   target?: { text: string; romanization?: string; romanizationVi?: string };
