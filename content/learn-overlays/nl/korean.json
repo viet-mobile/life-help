@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Hoe gaat het?",
     "k.k2.helpme": "Om hulp vragen",
     "k.k2.opinions": "Voorkeuren en antwoorden",
+    "k.k2.signs": "Borden en mededelingen",
+    "k.k2.culture": "Tafelmanieren",
     "k.k3.self": "Jezelf voorstellen",
     "k.k3.family": "Familie",
     "k.k3.numbers": "Getallen",
@@ -27,6 +29,8 @@
     "k.k3.people": "Mensen",
     "k.k3.family2": "Meer familiewoorden",
     "k.k3.ourfamily": "Onze familie",
+    "k.k3.messages": "Korte berichten",
+    "k.k3.sounds": "Verbonden klanken",
     "k.k4.verbs": "Alledaagse werkwoorden",
     "k.k4.places": "Ergens heen gaan (에)",
     "k.k4.objects": "Lijdend voorwerp (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 betekent goed of prima, 싫어요 betekent dat je het niet leuk vindt, 맞아요 betekent ‘dat klopt’ en 틀려요 betekent ‘dat is fout’.",
       "example": "좋아요. (joayo.) = Het is goed. / 싫어요. (sireoyo.) = Ik vind het niet leuk."
     },
+    "korean-k2-l10": {
+      "title": "Borden die je zult zien",
+      "concept": "In Korea hangen overal korte borden. **입구** is de ingang, **출구** de uitgang en **화장실** het toilet. Op deuren betekent **미세요** duwen en **당기세요** trekken.",
+      "example": "입구 (ipgu) = Ingang / 출구 (chulgu) = Uitgang"
+    },
+    "korean-k2-l11": {
+      "title": "Bedankt voor de maaltijd",
+      "concept": "Voor het eten zeg je **잘 먹겠습니다** en na het eten **잘 먹었습니다**. De gastheer verwelkomt je met **어서 오세요**, en **맛있어요** prijst het eten.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Zeg je voor het eten: “Ik ga goed eten.” / 잘 먹었습니다. (jal meogeotseumnida.) = Zeg je na het eten: “Ik heb goed gegeten.”"
+    },
     "korean-k3-l1": {
       "title": "Ik ben student",
       "concept": "**저는** betekent ‘ik’ (beleefd). Zet **이에요** na een medeklinker en **예요** na een klinker om ‘ik ben …’ te zeggen.",
@@ -242,6 +256,16 @@
       "title": "Onze familie",
       "concept": "Koreanen zeggen vaak 우리 (wij, ons) in plaats van ‘mijn’: 우리 가족 betekent ‘mijn familie’. Tel mensen met 명: 네 명 (vier personen).",
       "example": "우리 가족 (uri gajok) = onze familie"
+    },
+    "korean-k3-l10": {
+      "title": "Een vriend appen",
+      "concept": "Berichten bestaan uit korte, beleefde zinnen die eindigen op **-요**. **지금 어디예요?** vraagt waar je bent, **곧 가요** betekent “ik kom zo” en **늦어요** betekent “ik ben te laat”.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Waar ben je nu? / 곧 가요. (got gayo.) = Ik kom zo."
+    },
+    "korean-k3-l11": {
+      "title": "Woorden hardop lezen",
+      "concept": "Als een lettergreep op een medeklinker eindigt en de volgende met een klinker begint, schuift de klank door: 책이 lees je als **chaegi** en 밥을 als **babeul**. Sommige klanken veranderen ook hun buren: 국물 lees je als **gungmul** en 같이 als **gachi**.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Alledaagse werkwoorden",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "‘좋아요.’ (joayo.) betekent ‘’."
     },
+    "k-k2-signs-1": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘ipgu’."
+      ],
+      "explanation": "‘입구’ (ipgu) betekent ‘Ingang’.",
+      "options": {
+        "a": "Parkeerplaats",
+        "b": "Ingang",
+        "c": "Uitgang",
+        "d": "Toilet"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘chulgu’."
+      ],
+      "explanation": "‘출구’ (chulgu) betekent ‘Uitgang’.",
+      "options": {
+        "a": "Toilet",
+        "b": "Nooduitgang",
+        "c": "Uitgang",
+        "d": "Ingang"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "Kies het Koreaans voor ‘Toilet’.",
+      "hints": [
+        "Luister naar elk antwoord.",
+        "Het antwoord lees je als ‘hwajangsil’."
+      ],
+      "explanation": "‘화장실’ (hwajangsil) betekent ‘Toilet’."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘juchajang’."
+      ],
+      "explanation": "‘주차장’ (juchajang) betekent ‘Parkeerplaats’.",
+      "options": {
+        "a": "Parkeerplaats",
+        "b": "Toilet",
+        "c": "Uitgang",
+        "d": "Ingang"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "Kies het Koreaans voor ‘Nooduitgang’.",
+      "hints": [
+        "Luister naar elk antwoord.",
+        "Het antwoord lees je als ‘bisanggu’."
+      ],
+      "explanation": "‘비상구’ (bisanggu) betekent ‘Nooduitgang’."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Luister en kies wat je hoort.",
+      "hints": [
+        "Speel het opnieuw af en luister naar de eerste klank.",
+        "Het begint met ‘출’."
+      ],
+      "explanation": "‘출구’ (chulgu) betekent ‘’."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘danggiseyo.’."
+      ],
+      "explanation": "‘당기세요.’ (danggiseyo.) betekent ‘Trekken (deur)’.",
+      "options": {
+        "a": "Trekken (deur)",
+        "b": "Duwen (deur)",
+        "c": "Uitgang",
+        "d": "Ingang"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘jal meokgetseumnida.’."
+      ],
+      "explanation": "‘잘 먹겠습니다.’ (jal meokgetseumnida.) betekent ‘Zeg je voor het eten: “Ik ga goed eten.”’.",
+      "options": {
+        "a": "Dank je.",
+        "b": "Zeg je voor het eten: “Ik ga goed eten.”",
+        "c": "Zeg je na het eten: “Ik heb goed gegeten.”",
+        "d": "Welkom. (tegen een gast)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘jal meogeotseumnida.’."
+      ],
+      "explanation": "‘잘 먹었습니다.’ (jal meogeotseumnida.) betekent ‘Zeg je na het eten: “Ik heb goed gegeten.”’.",
+      "options": {
+        "a": "Het is lekker.",
+        "b": "Welkom. (tegen een gast)",
+        "c": "Zeg je na het eten: “Ik heb goed gegeten.”",
+        "d": "Zeg je voor het eten: “Ik ga goed eten.”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘eoseo oseyo.’."
+      ],
+      "explanation": "‘어서 오세요.’ (eoseo oseyo.) betekent ‘Welkom. (tegen een gast)’.",
+      "options": {
+        "a": "Dag. (vriendelijk)",
+        "b": "Zeg je voor het eten: “Ik ga goed eten.”",
+        "c": "Pardon.",
+        "d": "Welkom. (tegen een gast)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "Kies het Koreaans voor ‘Het is lekker.’.",
+      "hints": [
+        "Luister naar elk antwoord.",
+        "Het antwoord lees je als ‘masisseoyo.’."
+      ],
+      "explanation": "‘맛있어요.’ (masisseoyo.) betekent ‘Het is lekker.’."
+    },
+    "k-k2-culture-c": {
+      "prompt": "Vul het ontbrekende deel in. Betekenis: ‘Zeg je voor het eten: “Ik ga goed eten.”’",
+      "hints": [
+        "Kijk naar de betekenis.",
+        "Het ontbrekende deel lees je als ‘meokgetseumnida’."
+      ],
+      "explanation": "‘잘 먹겠습니다.’ (jal meokgetseumnida.) betekent ‘Zeg je voor het eten: “Ik ga goed eten.”’."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Betekent dit ‘Zeg je voor het eten: “Ik ga goed eten.”’?",
+      "hints": [
+        "Je leest het als ‘jal meogeotseumnida.’.",
+        "Denk aan de voorbeelden uit de les."
+      ],
+      "explanation": "‘잘 먹었습니다.’ (jal meogeotseumnida.) betekent ‘Zeg je na het eten: “Ik heb goed gegeten.”’."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Luister en kies wat je hoort.",
+      "hints": [
+        "Speel het opnieuw af en luister naar de eerste klank.",
+        "Het begint met ‘어’."
+      ],
+      "explanation": "‘어서 오세요.’ (eoseo oseyo.) betekent ‘’."
+    },
     "k-k2-d1": {
       "prompt": "Wat betekent dit?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Denk aan de voorbeelden uit de les."
       ],
       "explanation": "‘우리 가족’ (uri gajok) betekent ‘onze familie’."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘jigeum eodiyeyo?’."
+      ],
+      "explanation": "‘지금 어디예요?’ (jigeum eodiyeyo?) betekent ‘Waar ben je nu?’.",
+      "options": {
+        "a": "Waar ben je nu?",
+        "b": "Ik kom zo.",
+        "c": "Ik ben te laat.",
+        "d": "Ik ben thuisgekomen."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘got gayo.’."
+      ],
+      "explanation": "‘곧 가요.’ (got gayo.) betekent ‘Ik kom zo.’.",
+      "options": {
+        "a": "Ik ben thuisgekomen.",
+        "b": "Ik kom zo.",
+        "c": "Waar ben je nu?",
+        "d": "Ik ben te laat."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘neujeoyo.’."
+      ],
+      "explanation": "‘늦어요.’ (neujeoyo.) betekent ‘Ik ben te laat.’.",
+      "options": {
+        "a": "Ik ben thuisgekomen.",
+        "b": "Waar ben je nu?",
+        "c": "Ik ben te laat.",
+        "d": "Ik kom zo."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Wat betekent dit?",
+      "hints": [
+        "Druk op de luidsprekerknop en luister.",
+        "Je leest het als ‘jibe wasseoyo.’."
+      ],
+      "explanation": "‘집에 왔어요.’ (jibe wasseoyo.) betekent ‘Ik ben thuisgekomen.’.",
+      "options": {
+        "a": "Ik ben te laat.",
+        "b": "Ik kom zo.",
+        "c": "Waar ben je nu?",
+        "d": "Ik ben thuisgekomen."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Tik de woorden in de juiste volgorde om te zeggen: ‘Ik ga nu naar huis.’",
+      "hints": [
+        "In het Koreaans staat het werkwoord aan het eind.",
+        "Begin met ‘지금’."
+      ],
+      "explanation": "‘지금 집에 가요.’ (jigeum jibe gayo.) betekent ‘Ik ga nu naar huis.’."
+    },
+    "k-k3-messages-v1": {
+      "prompt": "Kies het Koreaans voor ‘Ik kom zo.’.",
+      "hints": [
+        "Luister naar elk antwoord.",
+        "Het antwoord lees je als ‘got gayo.’."
+      ],
+      "explanation": "‘곧 가요.’ (got gayo.) betekent ‘Ik kom zo.’."
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Luister en kies wat je hoort.",
+      "hints": [
+        "Speel het opnieuw af en luister naar de eerste klank.",
+        "Het begint met ‘늦’."
+      ],
+      "explanation": "‘늦어요.’ (neujeoyo.) betekent ‘’."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Hoe lees je dit?",
+      "hints": [
+        "Lees elke klank van links naar rechts.",
+        "Druk op de luidsprekerknop en luister."
+      ],
+      "explanation": "‘책이’ lees je als ‘chaegi’."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Hoe lees je dit?",
+      "hints": [
+        "Lees elke klank van links naar rechts.",
+        "Druk op de luidsprekerknop en luister."
+      ],
+      "explanation": "‘밥을’ lees je als ‘babeul’."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Hoe lees je dit?",
+      "hints": [
+        "Lees elke klank van links naar rechts.",
+        "Druk op de luidsprekerknop en luister."
+      ],
+      "explanation": "‘국물’ lees je als ‘gungmul’."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Hoe lees je dit?",
+      "hints": [
+        "Lees elke klank van links naar rechts.",
+        "Druk op de luidsprekerknop en luister."
+      ],
+      "explanation": "‘같이’ lees je als ‘gachi’."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Hoe lees je dit?",
+      "hints": [
+        "Lees elke klank van links naar rechts.",
+        "Druk op de luidsprekerknop en luister."
+      ],
+      "explanation": "‘읽어요’ lees je als ‘ilgeoyo’."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Hoe lees je dit?",
+      "hints": [
+        "Lees elke klank van links naar rechts.",
+        "Druk op de luidsprekerknop en luister."
+      ],
+      "explanation": "‘집에’ lees je als ‘jibe’."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Luister en kies wat je hoort.",
+      "hints": [
+        "Speel het opnieuw af en luister naar de eerste klank.",
+        "Het begint met ‘책’."
+      ],
+      "explanation": "‘책이’ (chaegi) betekent ‘’."
     },
     "k-k3-d1": {
       "prompt": "Wat betekent dit?",

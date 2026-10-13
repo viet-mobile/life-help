@@ -51,10 +51,11 @@ describe("study.korean content quality gates", () => {
   it("the committed course is exactly what the generator produces (all 46 overlays included)", () => {
     expect(() => execFileSync(process.execPath, ["scripts/learn/korean/build-korean-content.mjs", "--check"], { stdio: "pipe" })).not.toThrow();
   });
-  it("K1..K6: one course per level, nine lessons each, a placement pool per level, no duplicate ids", async () => {
+  it("K1..K6: one course per level, nine lessons each (K2 and K3 eleven: signs, culture, messages, sounds), a placement pool per level, no duplicate ids", async () => {
     const b = await canonical("korean");
     expect(b.catalog.courses.map((c) => c.grade)).toEqual([...KOREAN_LEVELS]);
-    for (const c of b.catalog.courses) expect(c.units[0].lessons, c.id).toHaveLength(9);
+    const EXPECTED_LESSONS: Record<string, number> = { "korean-k2": 11, "korean-k3": 11 };
+    for (const c of b.catalog.courses) expect(c.units[0].lessons, c.id).toHaveLength(EXPECTED_LESSONS[c.id] ?? 9);
     for (const lv of KOREAN_LEVELS) expect(b.questions.filter((q) => q.role === "diagnostic" && q.id.startsWith(`k-${lv.toLowerCase()}-`)).length, lv).toBeGreaterThanOrEqual(2);
     expect(new Set(b.questions.map((q) => q.id)).size).toBe(b.questions.length);
   });

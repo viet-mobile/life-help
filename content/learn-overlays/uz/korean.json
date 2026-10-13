@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Ahvolingiz qalay?",
     "k.k2.helpme": "Yordam so‘rash",
     "k.k2.opinions": "Yoqtirish va javoblar",
+    "k.k2.signs": "Belgilar va e’lonlar",
+    "k.k2.culture": "Dasturxon odobi",
     "k.k3.self": "O‘zingizni tanishtirish",
     "k.k3.family": "Oila",
     "k.k3.numbers": "Sonlar",
@@ -27,6 +29,8 @@
     "k.k3.people": "Odamlar",
     "k.k3.family2": "Oila haqida yana so‘zlar",
     "k.k3.ourfamily": "Bizning oila",
+    "k.k3.messages": "Qisqa xabarlar",
+    "k.k3.sounds": "Birikadigan tovushlar",
     "k.k4.verbs": "Kundalik fe’llar",
     "k.k4.places": "Joylarga borish (에)",
     "k.k4.objects": "To‘ldiruvchilar (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 yaxshi yoki bo‘ladi degani, 싫어요 yoqmaydi degani, 맞아요 “to‘g‘ri” va 틀려요 “noto‘g‘ri” degani.",
       "example": "좋아요. (joayo.) = Yaxshi. / 싫어요. (sireoyo.) = Yoqmaydi."
     },
+    "korean-k2-l10": {
+      "title": "Siz ko‘radigan belgilar",
+      "concept": "Koreyada hamma joyda qisqa belgilar bor. **입구** — kirish, **출구** — chiqish, **화장실** — hojatxona. Eshiklarda **미세요** “itaring”, **당기세요** “torting” degani.",
+      "example": "입구 (ipgu) = Kirish / 출구 (chulgu) = Chiqish"
+    },
+    "korean-k2-l11": {
+      "title": "Taom uchun rahmat",
+      "concept": "Ovqatdan oldin **잘 먹겠습니다**, ovqatdan keyin **잘 먹었습니다** deyiladi. Mezbon mehmonni **어서 오세요** deb kutib oladi, **맛있어요** esa taomni maqtashdir.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Ovqatdan oldin aytiladi: “Yaxshilab yeyman.” / 잘 먹었습니다. (jal meogeotseumnida.) = Ovqatdan keyin aytiladi: “Yaxshi ovqatlandim.”"
+    },
     "korean-k3-l1": {
       "title": "Men talabaman",
       "concept": "**저는** “men” degani (hurmat shakli). “Men …man” deyish uchun undoshdan keyin **이에요**, unlidan keyin **예요** qo‘ying.",
@@ -242,6 +256,16 @@
       "title": "Bizning oila",
       "concept": "Koreyslar ko‘pincha “mening” o‘rniga 우리 (biz, bizning) deydi: 우리 가족 “mening oilam” degani. Odamlarni 명 bilan sanang: 네 명 (to‘rt kishi).",
       "example": "우리 가족 (uri gajok) = bizning oila"
+    },
+    "korean-k3-l10": {
+      "title": "Do‘stga xabar yozish",
+      "concept": "Xabarlarda **-요** bilan tugaydigan qisqa, odobli gaplar ishlatiladi. **지금 어디예요?** — “Hozir qayerdasiz?”, **곧 가요** — “Tez orada yetib boraman”, **늦어요** — “Kechikaman”.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Hozir qayerdasiz? / 곧 가요. (got gayo.) = Tez orada yetib boraman."
+    },
+    "korean-k3-l11": {
+      "title": "So‘zlarni ovoz chiqarib o‘qish",
+      "concept": "Bo‘g‘in undosh bilan tugab, keyingisi unli bilan boshlansa, tovush oldinga o‘tadi: 책이 **chaegi**, 밥을 **babeul** deb o‘qiladi. Ba’zi tovushlar qo‘shni tovushni ham o‘zgartiradi: 국물 **gungmul**, 같이 **gachi** deb o‘qiladi.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Kundalik fe’llar",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "“좋아요.” (joayo.) “” degani."
     },
+    "k-k2-signs-1": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “ipgu” deb o‘qiladi."
+      ],
+      "explanation": "“입구” (ipgu) “Kirish” degani.",
+      "options": {
+        "a": "Avtoturargoh",
+        "b": "Kirish",
+        "c": "Chiqish",
+        "d": "Hojatxona"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “chulgu” deb o‘qiladi."
+      ],
+      "explanation": "“출구” (chulgu) “Chiqish” degani.",
+      "options": {
+        "a": "Hojatxona",
+        "b": "Favqulodda chiqish",
+        "c": "Chiqish",
+        "d": "Kirish"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "“Hojatxona” ning koreyschasini tanlang.",
+      "hints": [
+        "Har bir javobni tinglang.",
+        "Javob “hwajangsil” deb o‘qiladi."
+      ],
+      "explanation": "“화장실” (hwajangsil) “Hojatxona” degani."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “juchajang” deb o‘qiladi."
+      ],
+      "explanation": "“주차장” (juchajang) “Avtoturargoh” degani.",
+      "options": {
+        "a": "Avtoturargoh",
+        "b": "Hojatxona",
+        "c": "Chiqish",
+        "d": "Kirish"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "“Favqulodda chiqish” ning koreyschasini tanlang.",
+      "hints": [
+        "Har bir javobni tinglang.",
+        "Javob “bisanggu” deb o‘qiladi."
+      ],
+      "explanation": "“비상구” (bisanggu) “Favqulodda chiqish” degani."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Tinglang va eshitganingizni tanlang.",
+      "hints": [
+        "Yana bir bor qo‘yib, birinchi tovushni tinglang.",
+        "U “출” bilan boshlanadi."
+      ],
+      "explanation": "“출구” (chulgu) “” degani."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “danggiseyo.” deb o‘qiladi."
+      ],
+      "explanation": "“당기세요.” (danggiseyo.) “Torting (eshik)” degani.",
+      "options": {
+        "a": "Torting (eshik)",
+        "b": "Itaring (eshik)",
+        "c": "Chiqish",
+        "d": "Kirish"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “jal meokgetseumnida.” deb o‘qiladi."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) “Ovqatdan oldin aytiladi: “Yaxshilab yeyman.”” degani.",
+      "options": {
+        "a": "Rahmat.",
+        "b": "Ovqatdan oldin aytiladi: “Yaxshilab yeyman.”",
+        "c": "Ovqatdan keyin aytiladi: “Yaxshi ovqatlandim.”",
+        "d": "Xush kelibsiz. (mehmonga)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “jal meogeotseumnida.” deb o‘qiladi."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) “Ovqatdan keyin aytiladi: “Yaxshi ovqatlandim.”” degani.",
+      "options": {
+        "a": "Mazali.",
+        "b": "Xush kelibsiz. (mehmonga)",
+        "c": "Ovqatdan keyin aytiladi: “Yaxshi ovqatlandim.”",
+        "d": "Ovqatdan oldin aytiladi: “Yaxshilab yeyman.”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “eoseo oseyo.” deb o‘qiladi."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) “Xush kelibsiz. (mehmonga)” degani.",
+      "options": {
+        "a": "Xayr. (do‘stona)",
+        "b": "Ovqatdan oldin aytiladi: “Yaxshilab yeyman.”",
+        "c": "Kechirasiz.",
+        "d": "Xush kelibsiz. (mehmonga)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "“Mazali.” ning koreyschasini tanlang.",
+      "hints": [
+        "Har bir javobni tinglang.",
+        "Javob “masisseoyo.” deb o‘qiladi."
+      ],
+      "explanation": "“맛있어요.” (masisseoyo.) “Mazali.” degani."
+    },
+    "k-k2-culture-c": {
+      "prompt": "Bo‘sh joyni to‘ldiring. Ma’nosi: “Ovqatdan oldin aytiladi: “Yaxshilab yeyman.””",
+      "hints": [
+        "Ma’nosiga qarang.",
+        "Tushib qolgan qism “meokgetseumnida” deb o‘qiladi."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) “Ovqatdan oldin aytiladi: “Yaxshilab yeyman.”” degani."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Bu “Ovqatdan oldin aytiladi: “Yaxshilab yeyman.”” degani bo‘ladimi?",
+      "hints": [
+        "U “jal meogeotseumnida.” deb o‘qiladi.",
+        "Darsdagi misollarni eslang."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) “Ovqatdan keyin aytiladi: “Yaxshi ovqatlandim.”” degani."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Tinglang va eshitganingizni tanlang.",
+      "hints": [
+        "Yana bir bor qo‘yib, birinchi tovushni tinglang.",
+        "U “어” bilan boshlanadi."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) “” degani."
+    },
     "k-k2-d1": {
       "prompt": "Bu nima degani?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Darsdagi misollarni eslang."
       ],
       "explanation": "“우리 가족” (uri gajok) “bizning oila” degani."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “jigeum eodiyeyo?” deb o‘qiladi."
+      ],
+      "explanation": "“지금 어디예요?” (jigeum eodiyeyo?) “Hozir qayerdasiz?” degani.",
+      "options": {
+        "a": "Hozir qayerdasiz?",
+        "b": "Tez orada yetib boraman.",
+        "c": "Kechikaman.",
+        "d": "Uyga yetib keldim."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “got gayo.” deb o‘qiladi."
+      ],
+      "explanation": "“곧 가요.” (got gayo.) “Tez orada yetib boraman.” degani.",
+      "options": {
+        "a": "Uyga yetib keldim.",
+        "b": "Tez orada yetib boraman.",
+        "c": "Hozir qayerdasiz?",
+        "d": "Kechikaman."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “neujeoyo.” deb o‘qiladi."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) “Kechikaman.” degani.",
+      "options": {
+        "a": "Uyga yetib keldim.",
+        "b": "Hozir qayerdasiz?",
+        "c": "Kechikaman.",
+        "d": "Tez orada yetib boraman."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Bu nima degani?",
+      "hints": [
+        "Karnay tugmasini bosing va tinglang.",
+        "U “jibe wasseoyo.” deb o‘qiladi."
+      ],
+      "explanation": "“집에 왔어요.” (jibe wasseoyo.) “Uyga yetib keldim.” degani.",
+      "options": {
+        "a": "Kechikaman.",
+        "b": "Tez orada yetib boraman.",
+        "c": "Hozir qayerdasiz?",
+        "d": "Uyga yetib keldim."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Quyidagini aytish uchun so‘zlarni tartib bilan bosing: “Hozir uyga ketyapman.”",
+      "hints": [
+        "Koreys tilida fe’l oxirida keladi.",
+        "“지금” dan boshlang."
+      ],
+      "explanation": "“지금 집에 가요.” (jigeum jibe gayo.) “Hozir uyga ketyapman.” degani."
+    },
+    "k-k3-messages-v1": {
+      "prompt": "“Tez orada yetib boraman.” ning koreyschasini tanlang.",
+      "hints": [
+        "Har bir javobni tinglang.",
+        "Javob “got gayo.” deb o‘qiladi."
+      ],
+      "explanation": "“곧 가요.” (got gayo.) “Tez orada yetib boraman.” degani."
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Tinglang va eshitganingizni tanlang.",
+      "hints": [
+        "Yana bir bor qo‘yib, birinchi tovushni tinglang.",
+        "U “늦” bilan boshlanadi."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) “” degani."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Bu qanday o‘qiladi?",
+      "hints": [
+        "Har bir tovushni chapdan o‘ngga o‘qing.",
+        "Karnay tugmasini bosing va tinglang."
+      ],
+      "explanation": "“책이” “chaegi” deb o‘qiladi."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Bu qanday o‘qiladi?",
+      "hints": [
+        "Har bir tovushni chapdan o‘ngga o‘qing.",
+        "Karnay tugmasini bosing va tinglang."
+      ],
+      "explanation": "“밥을” “babeul” deb o‘qiladi."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Bu qanday o‘qiladi?",
+      "hints": [
+        "Har bir tovushni chapdan o‘ngga o‘qing.",
+        "Karnay tugmasini bosing va tinglang."
+      ],
+      "explanation": "“국물” “gungmul” deb o‘qiladi."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Bu qanday o‘qiladi?",
+      "hints": [
+        "Har bir tovushni chapdan o‘ngga o‘qing.",
+        "Karnay tugmasini bosing va tinglang."
+      ],
+      "explanation": "“같이” “gachi” deb o‘qiladi."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Bu qanday o‘qiladi?",
+      "hints": [
+        "Har bir tovushni chapdan o‘ngga o‘qing.",
+        "Karnay tugmasini bosing va tinglang."
+      ],
+      "explanation": "“읽어요” “ilgeoyo” deb o‘qiladi."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Bu qanday o‘qiladi?",
+      "hints": [
+        "Har bir tovushni chapdan o‘ngga o‘qing.",
+        "Karnay tugmasini bosing va tinglang."
+      ],
+      "explanation": "“집에” “jibe” deb o‘qiladi."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Tinglang va eshitganingizni tanlang.",
+      "hints": [
+        "Yana bir bor qo‘yib, birinchi tovushni tinglang.",
+        "U “책” bilan boshlanadi."
+      ],
+      "explanation": "“책이” (chaegi) “” degani."
     },
     "k-k3-d1": {
       "prompt": "Bu nima degani?",

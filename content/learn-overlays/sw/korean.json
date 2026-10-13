@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Hujambo?",
     "k.k2.helpme": "Kuomba msaada",
     "k.k2.opinions": "Kupenda na kujibu",
+    "k.k2.signs": "Alama na matangazo",
+    "k.k2.culture": "Adabu mezani",
     "k.k3.self": "Kujitambulisha",
     "k.k3.family": "Familia",
     "k.k3.numbers": "Namba",
@@ -27,6 +29,8 @@
     "k.k3.people": "Watu",
     "k.k3.family2": "Maneno zaidi ya familia",
     "k.k3.ourfamily": "Familia yetu",
+    "k.k3.messages": "Ujumbe mfupi",
+    "k.k3.sounds": "Sauti zinazounganika",
     "k.k4.verbs": "Vitenzi vya kila siku",
     "k.k4.places": "Kwenda mahali (에)",
     "k.k4.objects": "Yambwa (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 maana yake nzuri au sawa, 싫어요 maana yake hupendi, 맞아요 maana yake “ni sahihi” na 틀려요 maana yake “si sahihi”.",
       "example": "좋아요. (joayo.) = Ni nzuri. / 싫어요. (sireoyo.) = Siipendi."
     },
+    "korean-k2-l10": {
+      "title": "Alama utakazoziona",
+      "concept": "Nchini Korea kuna alama fupi kila mahali. **입구** ni mlango wa kuingia, **출구** ni mlango wa kutoka na **화장실** ni choo. Kwenye milango, **미세요** inamaanisha sukuma na **당기세요** inamaanisha vuta.",
+      "example": "입구 (ipgu) = Mlango wa kuingia / 출구 (chulgu) = Mlango wa kutoka"
+    },
+    "korean-k2-l11": {
+      "title": "Asante kwa chakula",
+      "concept": "Kabla ya kula husema **잘 먹겠습니다** na baada ya kula **잘 먹었습니다**. Mwenyeji humkaribisha mgeni kwa **어서 오세요**, na **맛있어요** ni kusifu chakula.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Husemwa kabla ya kula: “Nitakula vizuri.” / 잘 먹었습니다. (jal meogeotseumnida.) = Husemwa baada ya kula: “Nimekula vizuri.”"
+    },
     "korean-k3-l1": {
       "title": "Mimi ni mwanafunzi",
       "concept": "**저는** maana yake ni “mimi” (kwa heshima). Weka **이에요** baada ya konsonanti na **예요** baada ya irabu ili kusema “mimi ni …”.",
@@ -242,6 +256,16 @@
       "title": "Familia yetu",
       "concept": "Wakorea mara nyingi husema 우리 (sisi, wetu) badala ya “wangu”: 우리 가족 maana yake “familia yangu”. Hesabu watu kwa 명: 네 명 (watu wanne).",
       "example": "우리 가족 (uri gajok) = familia yetu"
+    },
+    "korean-k3-l10": {
+      "title": "Kumwandikia rafiki ujumbe",
+      "concept": "Ujumbe hutumia sentensi fupi za heshima zinazoishia **-요**. **지금 어디예요?** huuliza uko wapi sasa, **곧 가요** inamaanisha “nakuja punde” na **늦어요** inamaanisha “nitachelewa”.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Uko wapi sasa? / 곧 가요. (got gayo.) = Nakuja punde."
+    },
+    "korean-k3-l11": {
+      "title": "Kusoma maneno kwa sauti",
+      "concept": "Silabi inapoishia kwa konsonanti na inayofuata kuanza kwa irabu, sauti huhamia mbele: 책이 husomwa **chaegi** na 밥을 husomwa **babeul**. Baadhi ya sauti pia hubadilisha jirani zake: 국물 husomwa **gungmul** na 같이 husomwa **gachi**.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Vitenzi vya kila siku",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "“좋아요.” (joayo.) maana yake ni “”."
     },
+    "k-k2-signs-1": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “ipgu”."
+      ],
+      "explanation": "“입구” (ipgu) maana yake ni “Mlango wa kuingia”.",
+      "options": {
+        "a": "Maegesho",
+        "b": "Mlango wa kuingia",
+        "c": "Mlango wa kutoka",
+        "d": "Choo"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “chulgu”."
+      ],
+      "explanation": "“출구” (chulgu) maana yake ni “Mlango wa kutoka”.",
+      "options": {
+        "a": "Choo",
+        "b": "Njia ya dharura",
+        "c": "Mlango wa kutoka",
+        "d": "Mlango wa kuingia"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "Chagua Kikorea cha “Choo”.",
+      "hints": [
+        "Sikiliza kila jibu.",
+        "Jibu linasomwa “hwajangsil”."
+      ],
+      "explanation": "“화장실” (hwajangsil) maana yake ni “Choo”."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “juchajang”."
+      ],
+      "explanation": "“주차장” (juchajang) maana yake ni “Maegesho”.",
+      "options": {
+        "a": "Maegesho",
+        "b": "Choo",
+        "c": "Mlango wa kutoka",
+        "d": "Mlango wa kuingia"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "Chagua Kikorea cha “Njia ya dharura”.",
+      "hints": [
+        "Sikiliza kila jibu.",
+        "Jibu linasomwa “bisanggu”."
+      ],
+      "explanation": "“비상구” (bisanggu) maana yake ni “Njia ya dharura”."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Sikiliza na uchague unachosikia.",
+      "hints": [
+        "Cheza tena na usikilize sauti ya kwanza.",
+        "Inaanza na “출”."
+      ],
+      "explanation": "“출구” (chulgu) maana yake ni “”."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “danggiseyo.”"
+      ],
+      "explanation": "“당기세요.” (danggiseyo.) maana yake ni “Vuta (mlango)”.",
+      "options": {
+        "a": "Vuta (mlango)",
+        "b": "Sukuma (mlango)",
+        "c": "Mlango wa kutoka",
+        "d": "Mlango wa kuingia"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “jal meokgetseumnida.”"
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) maana yake ni “Husemwa kabla ya kula: “Nitakula vizuri.””.",
+      "options": {
+        "a": "Asante.",
+        "b": "Husemwa kabla ya kula: “Nitakula vizuri.”",
+        "c": "Husemwa baada ya kula: “Nimekula vizuri.”",
+        "d": "Karibu. (kwa mgeni)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “jal meogeotseumnida.”"
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) maana yake ni “Husemwa baada ya kula: “Nimekula vizuri.””.",
+      "options": {
+        "a": "Ni tamu.",
+        "b": "Karibu. (kwa mgeni)",
+        "c": "Husemwa baada ya kula: “Nimekula vizuri.”",
+        "d": "Husemwa kabla ya kula: “Nitakula vizuri.”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “eoseo oseyo.”"
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) maana yake ni “Karibu. (kwa mgeni)”.",
+      "options": {
+        "a": "Kwa heri. (kirafiki)",
+        "b": "Husemwa kabla ya kula: “Nitakula vizuri.”",
+        "c": "Samahani.",
+        "d": "Karibu. (kwa mgeni)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "Chagua Kikorea cha “Ni tamu.”",
+      "hints": [
+        "Sikiliza kila jibu.",
+        "Jibu linasomwa “masisseoyo.”"
+      ],
+      "explanation": "“맛있어요.” (masisseoyo.) maana yake ni “Ni tamu.”"
+    },
+    "k-k2-culture-c": {
+      "prompt": "Jaza nafasi iliyo wazi. Maana: “Husemwa kabla ya kula: “Nitakula vizuri.””",
+      "hints": [
+        "Angalia maana.",
+        "Sehemu inayokosekana inasomwa “meokgetseumnida”."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) maana yake ni “Husemwa kabla ya kula: “Nitakula vizuri.””."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Je, hii ina maana ya “Husemwa kabla ya kula: “Nitakula vizuri.””?",
+      "hints": [
+        "Inasomwa “jal meogeotseumnida.”",
+        "Kumbuka mifano ya somo."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) maana yake ni “Husemwa baada ya kula: “Nimekula vizuri.””."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Sikiliza na uchague unachosikia.",
+      "hints": [
+        "Cheza tena na usikilize sauti ya kwanza.",
+        "Inaanza na “어”."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) maana yake ni “”."
+    },
     "k-k2-d1": {
       "prompt": "Hii ina maana gani?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Kumbuka mifano ya somo."
       ],
       "explanation": "“우리 가족” (uri gajok) maana yake ni “familia yetu”."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “jigeum eodiyeyo?”"
+      ],
+      "explanation": "“지금 어디예요?” (jigeum eodiyeyo?) maana yake ni “Uko wapi sasa?”",
+      "options": {
+        "a": "Uko wapi sasa?",
+        "b": "Nakuja punde.",
+        "c": "Nitachelewa.",
+        "d": "Nimefika nyumbani."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “got gayo.”"
+      ],
+      "explanation": "“곧 가요.” (got gayo.) maana yake ni “Nakuja punde.”",
+      "options": {
+        "a": "Nimefika nyumbani.",
+        "b": "Nakuja punde.",
+        "c": "Uko wapi sasa?",
+        "d": "Nitachelewa."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “neujeoyo.”"
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) maana yake ni “Nitachelewa.”",
+      "options": {
+        "a": "Nimefika nyumbani.",
+        "b": "Uko wapi sasa?",
+        "c": "Nitachelewa.",
+        "d": "Nakuja punde."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Hii ina maana gani?",
+      "hints": [
+        "Bonyeza kitufe cha spika na usikilize.",
+        "Inasomwa “jibe wasseoyo.”"
+      ],
+      "explanation": "“집에 왔어요.” (jibe wasseoyo.) maana yake ni “Nimefika nyumbani.”",
+      "options": {
+        "a": "Nitachelewa.",
+        "b": "Nakuja punde.",
+        "c": "Uko wapi sasa?",
+        "d": "Nimefika nyumbani."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Gusa maneno kwa mpangilio ili kusema: “Sasa naenda nyumbani.”",
+      "hints": [
+        "Katika Kikorea, kitenzi huja mwisho.",
+        "Anza na “지금”."
+      ],
+      "explanation": "“지금 집에 가요.” (jigeum jibe gayo.) maana yake ni “Sasa naenda nyumbani.”"
+    },
+    "k-k3-messages-v1": {
+      "prompt": "Chagua Kikorea cha “Nakuja punde.”",
+      "hints": [
+        "Sikiliza kila jibu.",
+        "Jibu linasomwa “got gayo.”"
+      ],
+      "explanation": "“곧 가요.” (got gayo.) maana yake ni “Nakuja punde.”"
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Sikiliza na uchague unachosikia.",
+      "hints": [
+        "Cheza tena na usikilize sauti ya kwanza.",
+        "Inaanza na “늦”."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) maana yake ni “”."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Hii inasomwaje?",
+      "hints": [
+        "Soma kila sauti kutoka kushoto kwenda kulia.",
+        "Bonyeza kitufe cha spika na usikilize."
+      ],
+      "explanation": "“책이” inasomwa “chaegi”."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Hii inasomwaje?",
+      "hints": [
+        "Soma kila sauti kutoka kushoto kwenda kulia.",
+        "Bonyeza kitufe cha spika na usikilize."
+      ],
+      "explanation": "“밥을” inasomwa “babeul”."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Hii inasomwaje?",
+      "hints": [
+        "Soma kila sauti kutoka kushoto kwenda kulia.",
+        "Bonyeza kitufe cha spika na usikilize."
+      ],
+      "explanation": "“국물” inasomwa “gungmul”."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Hii inasomwaje?",
+      "hints": [
+        "Soma kila sauti kutoka kushoto kwenda kulia.",
+        "Bonyeza kitufe cha spika na usikilize."
+      ],
+      "explanation": "“같이” inasomwa “gachi”."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Hii inasomwaje?",
+      "hints": [
+        "Soma kila sauti kutoka kushoto kwenda kulia.",
+        "Bonyeza kitufe cha spika na usikilize."
+      ],
+      "explanation": "“읽어요” inasomwa “ilgeoyo”."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Hii inasomwaje?",
+      "hints": [
+        "Soma kila sauti kutoka kushoto kwenda kulia.",
+        "Bonyeza kitufe cha spika na usikilize."
+      ],
+      "explanation": "“집에” inasomwa “jibe”."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Sikiliza na uchague unachosikia.",
+      "hints": [
+        "Cheza tena na usikilize sauti ya kwanza.",
+        "Inaanza na “책”."
+      ],
+      "explanation": "“책이” (chaegi) maana yake ni “”."
     },
     "k-k3-d1": {
       "prompt": "Hii ina maana gani?",

@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Nasılsınız?",
     "k.k2.helpme": "Yardım isteme",
     "k.k2.opinions": "Beğeniler ve cevaplar",
+    "k.k2.signs": "Tabelalar ve duyurular",
+    "k.k2.culture": "Sofra görgüsü",
     "k.k3.self": "Kendini tanıtma",
     "k.k3.family": "Aile",
     "k.k3.numbers": "Sayılar",
@@ -27,6 +29,8 @@
     "k.k3.people": "İnsanlar",
     "k.k3.family2": "Daha fazla aile kelimesi",
     "k.k3.ourfamily": "Ailemiz",
+    "k.k3.messages": "Kısa mesajlar",
+    "k.k3.sounds": "Birbirine bağlanan sesler",
     "k.k4.verbs": "Gündelik fiiller",
     "k.k4.places": "Bir yere gitmek (에)",
     "k.k4.objects": "Nesneler (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 iyi veya uygun demektir, 싫어요 beğenmediğin anlamına gelir, 맞아요 “doğru” ve 틀려요 “yanlış” demektir.",
       "example": "좋아요. (joayo.) = İyi. / 싫어요. (sireoyo.) = Hoşlanmıyorum."
     },
+    "korean-k2-l10": {
+      "title": "Göreceğiniz tabelalar",
+      "concept": "Kore’de her yerde kısa tabelalar vardır. **입구** giriş, **출구** çıkış, **화장실** tuvalettir. Kapılarda **미세요** “itin”, **당기세요** “çekin” demektir.",
+      "example": "입구 (ipgu) = Giriş / 출구 (chulgu) = Çıkış"
+    },
+    "korean-k2-l11": {
+      "title": "Yemek için teşekkürler",
+      "concept": "Yemekten önce **잘 먹겠습니다**, yemekten sonra **잘 먹었습니다** denir. Ev sahibi **어서 오세요** diyerek karşılar; **맛있어요** yemeği övmektir.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Yemekten önce denir: “Afiyetle yiyeceğim.” / 잘 먹었습니다. (jal meogeotseumnida.) = Yemekten sonra denir: “Çok güzel yedim.”"
+    },
     "korean-k3-l1": {
       "title": "Ben öğrenciyim",
       "concept": "**저는** “ben” demektir (kibar). “Ben …’im” demek için ünsüzden sonra **이에요**, ünlüden sonra **예요** kullan.",
@@ -242,6 +256,16 @@
       "title": "Ailemiz",
       "concept": "Koreliler “benim” yerine sık sık 우리 (biz, bizim) der: 우리 가족 “ailem” demektir. İnsanları 명 ile say: 네 명 (dört kişi).",
       "example": "우리 가족 (uri gajok) = ailemiz"
+    },
+    "korean-k3-l10": {
+      "title": "Arkadaşa mesaj yazmak",
+      "concept": "Mesajlarda **-요** ile biten kısa ve kibar cümleler kullanılır. **지금 어디예요?** “Şimdi neredesin?”, **곧 가요** “Birazdan geliyorum”, **늦어요** “Geç kalacağım” demektir.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Şu an neredesin? / 곧 가요. (got gayo.) = Birazdan geliyorum."
+    },
+    "korean-k3-l11": {
+      "title": "Kelimeleri yüksek sesle okumak",
+      "concept": "Bir hece ünsüzle bitip sonraki ünlüyle başlarsa ses öne geçer: 책이 **chaegi**, 밥을 **babeul** diye okunur. Bazı sesler komşularını da değiştirir: 국물 **gungmul**, 같이 **gachi** diye okunur.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Gündelik fiiller",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "“좋아요.” (joayo.) “” demektir."
     },
+    "k-k2-signs-1": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“ipgu” diye okunur."
+      ],
+      "explanation": "“입구” (ipgu) “Giriş” demektir.",
+      "options": {
+        "a": "Otopark",
+        "b": "Giriş",
+        "c": "Çıkış",
+        "d": "Tuvalet"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“chulgu” diye okunur."
+      ],
+      "explanation": "“출구” (chulgu) “Çıkış” demektir.",
+      "options": {
+        "a": "Tuvalet",
+        "b": "Acil çıkış",
+        "c": "Çıkış",
+        "d": "Giriş"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "“Tuvalet” için Korecesini seç.",
+      "hints": [
+        "Her cevabı dinle.",
+        "Cevap “hwajangsil” diye okunur."
+      ],
+      "explanation": "“화장실” (hwajangsil) “Tuvalet” demektir."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“juchajang” diye okunur."
+      ],
+      "explanation": "“주차장” (juchajang) “Otopark” demektir.",
+      "options": {
+        "a": "Otopark",
+        "b": "Tuvalet",
+        "c": "Çıkış",
+        "d": "Giriş"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "“Acil çıkış” için Korecesini seç.",
+      "hints": [
+        "Her cevabı dinle.",
+        "Cevap “bisanggu” diye okunur."
+      ],
+      "explanation": "“비상구” (bisanggu) “Acil çıkış” demektir."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Dinle ve duyduğunu seç.",
+      "hints": [
+        "Tekrar çal ve ilk sese kulak ver.",
+        "“출” ile başlıyor."
+      ],
+      "explanation": "“출구” (chulgu) “” demektir."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“danggiseyo.” diye okunur."
+      ],
+      "explanation": "“당기세요.” (danggiseyo.) “Çekin (kapı)” demektir.",
+      "options": {
+        "a": "Çekin (kapı)",
+        "b": "İtin (kapı)",
+        "c": "Çıkış",
+        "d": "Giriş"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“jal meokgetseumnida.” diye okunur."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) “Yemekten önce denir: “Afiyetle yiyeceğim.”” demektir.",
+      "options": {
+        "a": "Teşekkür ederim.",
+        "b": "Yemekten önce denir: “Afiyetle yiyeceğim.”",
+        "c": "Yemekten sonra denir: “Çok güzel yedim.”",
+        "d": "Hoş geldiniz. (misafire)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“jal meogeotseumnida.” diye okunur."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) “Yemekten sonra denir: “Çok güzel yedim.”” demektir.",
+      "options": {
+        "a": "Lezzetli.",
+        "b": "Hoş geldiniz. (misafire)",
+        "c": "Yemekten sonra denir: “Çok güzel yedim.”",
+        "d": "Yemekten önce denir: “Afiyetle yiyeceğim.”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“eoseo oseyo.” diye okunur."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) “Hoş geldiniz. (misafire)” demektir.",
+      "options": {
+        "a": "Hoşça kal. (samimi)",
+        "b": "Yemekten önce denir: “Afiyetle yiyeceğim.”",
+        "c": "Affedersiniz.",
+        "d": "Hoş geldiniz. (misafire)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "“Lezzetli.” için Korecesini seç.",
+      "hints": [
+        "Her cevabı dinle.",
+        "Cevap “masisseoyo.” diye okunur."
+      ],
+      "explanation": "“맛있어요.” (masisseoyo.) “Lezzetli.” demektir."
+    },
+    "k-k2-culture-c": {
+      "prompt": "Boşluğu doldur. Anlamı: “Yemekten önce denir: “Afiyetle yiyeceğim.””",
+      "hints": [
+        "Anlamına bak.",
+        "Eksik kısım “meokgetseumnida” diye okunur."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) “Yemekten önce denir: “Afiyetle yiyeceğim.”” demektir."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Bu “Yemekten önce denir: “Afiyetle yiyeceğim.”” anlamına mı geliyor?",
+      "hints": [
+        "“jal meogeotseumnida.” diye okunur.",
+        "Dersteki örnekleri hatırla."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) “Yemekten sonra denir: “Çok güzel yedim.”” demektir."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Dinle ve duyduğunu seç.",
+      "hints": [
+        "Tekrar çal ve ilk sese kulak ver.",
+        "“어” ile başlıyor."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) “” demektir."
+    },
     "k-k2-d1": {
       "prompt": "Bu ne anlama geliyor?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Dersteki örnekleri hatırla."
       ],
       "explanation": "“우리 가족” (uri gajok) “ailemiz” demektir."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“jigeum eodiyeyo?” diye okunur."
+      ],
+      "explanation": "“지금 어디예요?” (jigeum eodiyeyo?) “Şu an neredesin?” demektir.",
+      "options": {
+        "a": "Şu an neredesin?",
+        "b": "Birazdan geliyorum.",
+        "c": "Geç kalacağım.",
+        "d": "Eve vardım."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“got gayo.” diye okunur."
+      ],
+      "explanation": "“곧 가요.” (got gayo.) “Birazdan geliyorum.” demektir.",
+      "options": {
+        "a": "Eve vardım.",
+        "b": "Birazdan geliyorum.",
+        "c": "Şu an neredesin?",
+        "d": "Geç kalacağım."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“neujeoyo.” diye okunur."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) “Geç kalacağım.” demektir.",
+      "options": {
+        "a": "Eve vardım.",
+        "b": "Şu an neredesin?",
+        "c": "Geç kalacağım.",
+        "d": "Birazdan geliyorum."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Bu ne anlama geliyor?",
+      "hints": [
+        "Hoparlör düğmesine bas ve dinle.",
+        "“jibe wasseoyo.” diye okunur."
+      ],
+      "explanation": "“집에 왔어요.” (jibe wasseoyo.) “Eve vardım.” demektir.",
+      "options": {
+        "a": "Geç kalacağım.",
+        "b": "Birazdan geliyorum.",
+        "c": "Şu an neredesin?",
+        "d": "Eve vardım."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Şunu söylemek için kelimelere sırayla dokun: “Şimdi eve gidiyorum.”",
+      "hints": [
+        "Korecede fiil en sona gelir.",
+        "“지금” ile başla."
+      ],
+      "explanation": "“지금 집에 가요.” (jigeum jibe gayo.) “Şimdi eve gidiyorum.” demektir."
+    },
+    "k-k3-messages-v1": {
+      "prompt": "“Birazdan geliyorum.” için Korecesini seç.",
+      "hints": [
+        "Her cevabı dinle.",
+        "Cevap “got gayo.” diye okunur."
+      ],
+      "explanation": "“곧 가요.” (got gayo.) “Birazdan geliyorum.” demektir."
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Dinle ve duyduğunu seç.",
+      "hints": [
+        "Tekrar çal ve ilk sese kulak ver.",
+        "“늦” ile başlıyor."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) “” demektir."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Bu nasıl okunur?",
+      "hints": [
+        "Her sesi soldan sağa oku.",
+        "Hoparlör düğmesine bas ve dinle."
+      ],
+      "explanation": "“책이”, “chaegi” diye okunur."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Bu nasıl okunur?",
+      "hints": [
+        "Her sesi soldan sağa oku.",
+        "Hoparlör düğmesine bas ve dinle."
+      ],
+      "explanation": "“밥을”, “babeul” diye okunur."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Bu nasıl okunur?",
+      "hints": [
+        "Her sesi soldan sağa oku.",
+        "Hoparlör düğmesine bas ve dinle."
+      ],
+      "explanation": "“국물”, “gungmul” diye okunur."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Bu nasıl okunur?",
+      "hints": [
+        "Her sesi soldan sağa oku.",
+        "Hoparlör düğmesine bas ve dinle."
+      ],
+      "explanation": "“같이”, “gachi” diye okunur."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Bu nasıl okunur?",
+      "hints": [
+        "Her sesi soldan sağa oku.",
+        "Hoparlör düğmesine bas ve dinle."
+      ],
+      "explanation": "“읽어요”, “ilgeoyo” diye okunur."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Bu nasıl okunur?",
+      "hints": [
+        "Her sesi soldan sağa oku.",
+        "Hoparlör düğmesine bas ve dinle."
+      ],
+      "explanation": "“집에”, “jibe” diye okunur."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Dinle ve duyduğunu seç.",
+      "hints": [
+        "Tekrar çal ve ilk sese kulak ver.",
+        "“책” ile başlıyor."
+      ],
+      "explanation": "“책이” (chaegi) “” demektir."
     },
     "k-k3-d1": {
       "prompt": "Bu ne anlama geliyor?",

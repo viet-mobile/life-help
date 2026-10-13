@@ -73,6 +73,12 @@ const CHANGED_EXTRA = {
   밤에: "바메",
   월요일: "워료일",
   금요일: "그묘일",
+  입구: "입꾸",
+  먹겠습니다: "먹껃씀니다",
+  먹었습니다: "머걷씀니다",
+  늦어요: "느저요",
+  책이: "채기",
+  국물: "궁물",
   일요일: "이료일",
   일월: "이뤌",
   삼월: "사뭘",
@@ -103,13 +109,13 @@ const CHANGED_EXTRA = {
   말해: "마래",
 };
 // Extended course words whose surface pronunciation equals their spelling (reviewed: no liaison, tensification or assimilation).
-const UNCHANGED_EXTRA = `야 여 요 유 애 라 자 차 카 타 파 까 따 빠 싸 짜 아빠 안 말 밤 강 집 책 사과 친구 사람 나라 하늘 산 고마워요 뭐예요 어느 베트남 미나예요 잘 봐요 또 만나요 지내요 도와주세요 다시 틀려요 일곱 아홉 열 육 칠 십 구 팔 나이 살 스무 서른 의사 여자 오빠 언니 아들 딸 부모님 우리 명이에요 명 형제가 빵 과일 고기 밥 고기를 커요 예뻐요 날씨 더워요 추워요 비가 날씨가 아침 화요일 수요일 토요일 오월 구월 한 시 두 세 매일 자주 가끔 항상 생일 언제예요 주말 선물 메뉴 더 버스 지하철 버스로 로 지하철로 기차 친구에게 보내요 아파요 병원 약 머리가 기다려 잠깐 여기 갈래요 시간`.split(/\s+/);
+const UNCHANGED_EXTRA = `야 여 요 유 애 라 자 차 카 타 파 까 따 빠 싸 짜 아빠 안 말 밤 강 집 책 사과 친구 사람 나라 하늘 산 고마워요 뭐예요 어느 베트남 미나예요 잘 봐요 또 만나요 지내요 도와주세요 다시 틀려요 일곱 아홉 열 육 칠 십 구 팔 나이 살 스무 서른 의사 여자 오빠 언니 아들 딸 부모님 우리 명이에요 명 형제가 빵 과일 고기 밥 고기를 커요 예뻐요 날씨 더워요 추워요 비가 날씨가 아침 화요일 수요일 토요일 오월 구월 한 시 두 세 매일 자주 가끔 항상 생일 언제예요 주말 선물 메뉴 더 버스 지하철 버스로 로 지하철로 기차 친구에게 보내요 아파요 병원 약 머리가 기다려 잠깐 여기 갈래요 시간 출구 화장실 주차장 비상구 당기세요 어서 오세요 곧 까요`.split(/\s+/);
 const WORDS = Object.fromEntries(UNCHANGED.map((w) => [w, w]));
 for (const w of UNCHANGED_EXTRA) WORDS[w] = w;
 Object.assign(WORDS, CHANGED, CHANGED_EXTRA);
 export function pronunciationVi(text) {
   // Obstruent coda + initial ㅅ across this course's phrase boundary.
-  const surface = text.replace(/한국 사람이에요/g, "한국 싸라미에요").replace(/열 시(?![가-힣])/g, "열 씨").replace(/[가-힣]+/g, (word) => {
+  const surface = text.replace(/한국 사람이에요/g, "한국 싸라미에요").replace(/곧 가요/g, "곧 까요").replace(/열 시(?![가-힣])/g, "열 씨").replace(/[가-힣]+/g, (word) => {
     if (word === "싸라미에요" || word === "씨") return word;
     if (!(word in WORDS)) throw new Error(`Review Korean surface pronunciation: ${word}`);
     return WORDS[word];
@@ -128,6 +134,9 @@ export const READ_DISTRACTORS = {
   yeo: "여", yo: "요", yu: "유", ya: "야", e: "에", ae: "애", cha: "차", ka: "카", ta: "타", ppa: "빠", tta: "따", ssa: "싸",
   ang: "앙", am: "암", al: "알", man: "만", mam: "맘", mang: "망", ban: "반", bang: "방", bal: "발",
   gan: "간", gam: "감", gal: "갈", jin: "진", jim: "짐", jil: "질", chaen: "챈", chaem: "챔", chaeng: "챙",
+  chaeki: "채키", chaeni: "채니", chaeji: "채지", bapeul: "밥을", babul: "바불", bameul: "바믈",
+  gukmul: "국물", gugmul: "극물", gungbul: "궁불", gati: "가티", gaji: "가지", gasi: "가시",
+  ikeoyo: "이커요", ilkeoyo: "일커요", igeoyo: "이거요", jipe: "집에", jine: "지네", jime: "지메",
   gaseoyo: "가서요", gatseoyo: "갇서요", gasseyo: "가쎄요",
 };
 export function distractorVi(rr) {

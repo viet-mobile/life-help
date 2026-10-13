@@ -323,6 +323,38 @@
                   "k-k2-opinions-4"
                 ],
                 "challengeId": "k-k2-opinions-c"
+              },
+              {
+                "id": "korean-k2-l10",
+                "title": "Signs you will see",
+                "concept": "Short signs are everywhere in Korea. **입구** is the entrance, **출구** the exit and **화장실** the restroom. On doors, **미세요** means push and **당기세요** means pull.",
+                "example": "입구 (ipgu) = Entrance / 출구 (chulgu) = Exit",
+                "skillIds": [
+                  "k.k2.signs"
+                ],
+                "questionIds": [
+                  "k-k2-signs-1",
+                  "k-k2-signs-2",
+                  "k-k2-signs-3",
+                  "k-k2-signs-4"
+                ],
+                "challengeId": "k-k2-signs-c"
+              },
+              {
+                "id": "korean-k2-l11",
+                "title": "Thank you for the meal",
+                "concept": "Before a meal say **잘 먹겠습니다**, and when you finish say **잘 먹었습니다**. A host welcomes you with **어서 오세요**, and **맛있어요** praises the food.",
+                "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Said before eating: “I will eat well.” / 잘 먹었습니다. (jal meogeotseumnida.) = Said after eating: “I ate well.”",
+                "skillIds": [
+                  "k.k2.culture"
+                ],
+                "questionIds": [
+                  "k-k2-culture-1",
+                  "k-k2-culture-2",
+                  "k-k2-culture-3",
+                  "k-k2-culture-4"
+                ],
+                "challengeId": "k-k2-culture-c"
               }
             ]
           }
@@ -485,6 +517,38 @@
                   "k-k3-ourfamily-4"
                 ],
                 "challengeId": "k-k3-ourfamily-c"
+              },
+              {
+                "id": "korean-k3-l10",
+                "title": "Texting a friend",
+                "concept": "Text messages use short polite sentences ending in **-요**. **지금 어디예요?** asks where you are, **곧 가요** means “I’m coming soon” and **늦어요** means “I’m late”.",
+                "example": "지금 어디예요? (jigeum eodiyeyo?) = Where are you now? / 곧 가요. (got gayo.) = I’m coming soon.",
+                "skillIds": [
+                  "k.k3.messages"
+                ],
+                "questionIds": [
+                  "k-k3-messages-1",
+                  "k-k3-messages-2",
+                  "k-k3-messages-3",
+                  "k-k3-messages-4"
+                ],
+                "challengeId": "k-k3-messages-c"
+              },
+              {
+                "id": "korean-k3-l11",
+                "title": "Reading words aloud",
+                "concept": "When a syllable ends in a consonant and the next one starts with a vowel, the sound moves over: 책이 is read **chaegi** and 밥을 is read **babeul**. Some sounds also change their neighbours: 국물 is read **gungmul** and 같이 is read **gachi**.",
+                "example": "책이 (chaegi) / 밥을 (babeul)",
+                "skillIds": [
+                  "k.k3.sounds"
+                ],
+                "questionIds": [
+                  "k-k3-sounds-1",
+                  "k-k3-sounds-2",
+                  "k-k3-sounds-3",
+                  "k-k3-sounds-4"
+                ],
+                "challengeId": "k-k3-sounds-c"
               }
             ]
           }
@@ -1068,9 +1132,19 @@
         "prerequisiteId": "k.k2.helpme"
       },
       {
+        "id": "k.k2.signs",
+        "title": "Signs and notices",
+        "prerequisiteId": "k.k2.opinions"
+      },
+      {
+        "id": "k.k2.culture",
+        "title": "Manners at the table",
+        "prerequisiteId": "k.k2.signs"
+      },
+      {
         "id": "k.k3.self",
         "title": "Introducing yourself",
-        "prerequisiteId": "k.k2.opinions"
+        "prerequisiteId": "k.k2.culture"
       },
       {
         "id": "k.k3.family",
@@ -1113,9 +1187,19 @@
         "prerequisiteId": "k.k3.family2"
       },
       {
+        "id": "k.k3.messages",
+        "title": "Short messages",
+        "prerequisiteId": "k.k3.ourfamily"
+      },
+      {
+        "id": "k.k3.sounds",
+        "title": "Sounds that link",
+        "prerequisiteId": "k.k3.messages"
+      },
+      {
         "id": "k.k4.verbs",
         "title": "Everyday verbs",
-        "prerequisiteId": "k.k3.ourfamily"
+        "prerequisiteId": "k.k3.sounds"
       },
       {
         "id": "k.k4.places",
@@ -7029,6 +7113,627 @@
       "audioText": "좋아요."
     },
     {
+      "id": "k-k2-signs-1",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “ipgu”."
+      ],
+      "explanation": "“입구” (ipgu) means “Entrance”.",
+      "family": "k2-signs",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parking lot"
+        },
+        {
+          "id": "b",
+          "text": "Entrance"
+        },
+        {
+          "id": "c",
+          "text": "Exit"
+        },
+        {
+          "id": "d",
+          "text": "Restroom"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "b"
+      },
+      "target": {
+        "text": "입구",
+        "romanization": "ipgu",
+        "romanizationVi": "ipqu"
+      },
+      "audioText": "입구"
+    },
+    {
+      "id": "k-k2-signs-2",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “chulgu”."
+      ],
+      "explanation": "“출구” (chulgu) means “Exit”.",
+      "family": "k2-signs",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Restroom"
+        },
+        {
+          "id": "b",
+          "text": "Emergency exit"
+        },
+        {
+          "id": "c",
+          "text": "Exit"
+        },
+        {
+          "id": "d",
+          "text": "Entrance"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "c"
+      },
+      "target": {
+        "text": "출구",
+        "romanization": "chulgu",
+        "romanizationVi": "ch'ulgu"
+      },
+      "audioText": "출구"
+    },
+    {
+      "id": "k-k2-signs-3",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "Choose the Korean for “Restroom”.",
+      "hints": [
+        "Listen to each answer.",
+        "The answer is read “hwajangsil”."
+      ],
+      "explanation": "“화장실” (hwajangsil) means “Restroom”.",
+      "family": "k2-signs",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "toko"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "입구"
+        },
+        {
+          "id": "b",
+          "text": "출구"
+        },
+        {
+          "id": "c",
+          "text": "주차장"
+        },
+        {
+          "id": "d",
+          "text": "화장실"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "d"
+      }
+    },
+    {
+      "id": "k-k2-signs-4",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “juchajang”."
+      ],
+      "explanation": "“주차장” (juchajang) means “Parking lot”.",
+      "family": "k2-signs",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parking lot"
+        },
+        {
+          "id": "b",
+          "text": "Restroom"
+        },
+        {
+          "id": "c",
+          "text": "Exit"
+        },
+        {
+          "id": "d",
+          "text": "Entrance"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      },
+      "target": {
+        "text": "주차장",
+        "romanization": "juchajang",
+        "romanizationVi": "duch'adang"
+      },
+      "audioText": "주차장"
+    },
+    {
+      "id": "k-k2-signs-c",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "Choose the Korean for “Emergency exit”.",
+      "hints": [
+        "Listen to each answer.",
+        "The answer is read “bisanggu”."
+      ],
+      "explanation": "“비상구” (bisanggu) means “Emergency exit”.",
+      "family": "k2-signs",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "toko"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "입구"
+        },
+        {
+          "id": "b",
+          "text": "화장실"
+        },
+        {
+          "id": "c",
+          "text": "주차장"
+        },
+        {
+          "id": "d",
+          "text": "비상구"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "d"
+      }
+    },
+    {
+      "id": "k-k2-signs-v1",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "Listen and choose what you hear.",
+      "hints": [
+        "Play it again and listen to the first sound.",
+        "It starts with “출”."
+      ],
+      "explanation": "“출구” (chulgu) means “”.",
+      "family": "k2-signs",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "listen"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "입구"
+        },
+        {
+          "id": "b",
+          "text": "비상구"
+        },
+        {
+          "id": "c",
+          "text": "화장실"
+        },
+        {
+          "id": "d",
+          "text": "출구"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "d"
+      },
+      "audioText": "출구"
+    },
+    {
+      "id": "k-k2-signs-v2",
+      "site": "korean",
+      "skillId": "k.k2.signs",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “danggiseyo.”"
+      ],
+      "explanation": "“당기세요.” (danggiseyo.) means “Pull (the door)”.",
+      "family": "k2-signs",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pull (the door)"
+        },
+        {
+          "id": "b",
+          "text": "Push (the door)"
+        },
+        {
+          "id": "c",
+          "text": "Exit"
+        },
+        {
+          "id": "d",
+          "text": "Entrance"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      },
+      "target": {
+        "text": "당기세요.",
+        "romanization": "danggiseyo.",
+        "romanizationVi": "đangghisêyô."
+      },
+      "audioText": "당기세요."
+    },
+    {
+      "id": "k-k2-culture-1",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “jal meokgetseumnida.”"
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) means “Said before eating: “I will eat well.””.",
+      "family": "k2-culture",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Thank you."
+        },
+        {
+          "id": "b",
+          "text": "Said before eating: “I will eat well.”"
+        },
+        {
+          "id": "c",
+          "text": "Said after eating: “I ate well.”"
+        },
+        {
+          "id": "d",
+          "text": "Welcome. (said to a guest)"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "b"
+      },
+      "target": {
+        "text": "잘 먹겠습니다.",
+        "romanization": "jal meokgetseumnida.",
+        "romanizationVi": "dal mơccơtxưmniđa."
+      },
+      "audioText": "잘 먹겠습니다."
+    },
+    {
+      "id": "k-k2-culture-2",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “jal meogeotseumnida.”"
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) means “Said after eating: “I ate well.””.",
+      "family": "k2-culture",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "It's delicious."
+        },
+        {
+          "id": "b",
+          "text": "Welcome. (said to a guest)"
+        },
+        {
+          "id": "c",
+          "text": "Said after eating: “I ate well.”"
+        },
+        {
+          "id": "d",
+          "text": "Said before eating: “I will eat well.”"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "c"
+      },
+      "target": {
+        "text": "잘 먹었습니다.",
+        "romanization": "jal meogeotseumnida.",
+        "romanizationVi": "dal mơgơtxưmniđa."
+      },
+      "audioText": "잘 먹었습니다."
+    },
+    {
+      "id": "k-k2-culture-3",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “eoseo oseyo.”"
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) means “Welcome. (said to a guest)”.",
+      "family": "k2-culture",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Goodbye. (friendly)"
+        },
+        {
+          "id": "b",
+          "text": "Said before eating: “I will eat well.”"
+        },
+        {
+          "id": "c",
+          "text": "Excuse me."
+        },
+        {
+          "id": "d",
+          "text": "Welcome. (said to a guest)"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "d"
+      },
+      "target": {
+        "text": "어서 오세요.",
+        "romanization": "eoseo oseyo.",
+        "romanizationVi": "ơsơ ôsêyô."
+      },
+      "audioText": "어서 오세요."
+    },
+    {
+      "id": "k-k2-culture-4",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "Choose the Korean for “It's delicious.”",
+      "hints": [
+        "Listen to each answer.",
+        "The answer is read “masisseoyo.”"
+      ],
+      "explanation": "“맛있어요.” (masisseoyo.) means “It's delicious.”",
+      "family": "k2-culture",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "toko"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "맛있어요."
+        },
+        {
+          "id": "b",
+          "text": "잘 먹었습니다."
+        },
+        {
+          "id": "c",
+          "text": "어서 오세요."
+        },
+        {
+          "id": "d",
+          "text": "잘 먹겠습니다."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      }
+    },
+    {
+      "id": "k-k2-culture-c",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "fill_blank",
+      "difficulty": 2,
+      "prompt": "Fill in the blank. Meaning: “Said before eating: “I will eat well.””",
+      "hints": [
+        "Look at the meaning.",
+        "The missing part is read “meokgetseumnida”."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) means “Said before eating: “I will eat well.””.",
+      "family": "k2-culture",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "fill"
+      ],
+      "status": "PUBLISHED",
+      "answer": {
+        "kind": "text",
+        "accepted": [
+          "먹겠습니다"
+        ]
+      },
+      "target": {
+        "text": "잘 ____."
+      }
+    },
+    {
+      "id": "k-k2-culture-v1",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "true_false",
+      "difficulty": 1,
+      "prompt": "Does this mean “Said before eating: “I will eat well.””?",
+      "hints": [
+        "It is read “jal meogeotseumnida.”",
+        "Remember the lesson's examples."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) means “Said after eating: “I ate well.””.",
+      "family": "k2-culture",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "tf"
+      ],
+      "status": "PUBLISHED",
+      "answer": {
+        "kind": "choice",
+        "id": "false"
+      },
+      "target": {
+        "text": "잘 먹었습니다.",
+        "romanization": "jal meogeotseumnida.",
+        "romanizationVi": "dal mơgơtxưmniđa."
+      },
+      "audioText": "잘 먹었습니다."
+    },
+    {
+      "id": "k-k2-culture-v2",
+      "site": "korean",
+      "skillId": "k.k2.culture",
+      "type": "multiple_choice",
+      "difficulty": 1,
+      "prompt": "Listen and choose what you hear.",
+      "hints": [
+        "Play it again and listen to the first sound.",
+        "It starts with “어”."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) means “”.",
+      "family": "k2-culture",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "listen"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "어서 오세요."
+        },
+        {
+          "id": "b",
+          "text": "잘 먹겠습니다."
+        },
+        {
+          "id": "c",
+          "text": "잘 먹었습니다."
+        },
+        {
+          "id": "d",
+          "text": "맛있어요."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      },
+      "audioText": "어서 오세요."
+    },
+    {
       "id": "k-k2-d1",
       "site": "korean",
       "skillId": "k.k2.greetings",
@@ -9672,6 +10377,659 @@
         "romanizationVi": "uli gadôc"
       },
       "audioText": "우리 가족"
+    },
+    {
+      "id": "k-k3-messages-1",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “jigeum eodiyeyo?”"
+      ],
+      "explanation": "“지금 어디예요?” (jigeum eodiyeyo?) means “Where are you now?”",
+      "family": "k3-messages",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "Where are you now?"
+        },
+        {
+          "id": "b",
+          "text": "I’m coming soon."
+        },
+        {
+          "id": "c",
+          "text": "I’m late."
+        },
+        {
+          "id": "d",
+          "text": "I arrived home."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      },
+      "target": {
+        "text": "지금 어디예요?",
+        "romanization": "jigeum eodiyeyo?",
+        "romanizationVi": "digưm ơđiyêyô?"
+      },
+      "audioText": "지금 어디예요?"
+    },
+    {
+      "id": "k-k3-messages-2",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “got gayo.”"
+      ],
+      "explanation": "“곧 가요.” (got gayo.) means “I’m coming soon.”",
+      "family": "k3-messages",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "I arrived home."
+        },
+        {
+          "id": "b",
+          "text": "I’m coming soon."
+        },
+        {
+          "id": "c",
+          "text": "Where are you now?"
+        },
+        {
+          "id": "d",
+          "text": "I’m late."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "b"
+      },
+      "target": {
+        "text": "곧 가요.",
+        "romanization": "got gayo.",
+        "romanizationVi": "gôt cayô."
+      },
+      "audioText": "곧 가요."
+    },
+    {
+      "id": "k-k3-messages-3",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “neujeoyo.”"
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) means “I’m late.”",
+      "family": "k3-messages",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "I arrived home."
+        },
+        {
+          "id": "b",
+          "text": "Where are you now?"
+        },
+        {
+          "id": "c",
+          "text": "I’m late."
+        },
+        {
+          "id": "d",
+          "text": "I’m coming soon."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "c"
+      },
+      "target": {
+        "text": "늦어요.",
+        "romanization": "neujeoyo.",
+        "romanizationVi": "nưdơyô."
+      },
+      "audioText": "늦어요."
+    },
+    {
+      "id": "k-k3-messages-4",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "What does this mean?",
+      "hints": [
+        "Press the speaker button and listen.",
+        "It is read “jibe wasseoyo.”"
+      ],
+      "explanation": "“집에 왔어요.” (jibe wasseoyo.) means “I arrived home.”",
+      "family": "k3-messages",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "meaning"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "I’m late."
+        },
+        {
+          "id": "b",
+          "text": "I’m coming soon."
+        },
+        {
+          "id": "c",
+          "text": "Where are you now?"
+        },
+        {
+          "id": "d",
+          "text": "I arrived home."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "d"
+      },
+      "target": {
+        "text": "집에 왔어요.",
+        "romanization": "jibe wasseoyo.",
+        "romanizationVi": "dibê oaxơyô."
+      },
+      "audioText": "집에 왔어요."
+    },
+    {
+      "id": "k-k3-messages-c",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "ordering",
+      "difficulty": 3,
+      "prompt": "Tap the words in order to say: “I’m going home now.”",
+      "hints": [
+        "In Korean the verb comes at the end.",
+        "Start with “지금”."
+      ],
+      "explanation": "“지금 집에 가요.” (jigeum jibe gayo.) means “I’m going home now.”",
+      "family": "k3-messages",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "order"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "w2",
+          "text": "집에"
+        },
+        {
+          "id": "w3",
+          "text": "가요."
+        },
+        {
+          "id": "w1",
+          "text": "지금"
+        }
+      ],
+      "answer": {
+        "kind": "order",
+        "ids": [
+          "w1",
+          "w2",
+          "w3"
+        ]
+      },
+      "audioText": "지금 집에 가요."
+    },
+    {
+      "id": "k-k3-messages-v1",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "Choose the Korean for “I’m coming soon.”",
+      "hints": [
+        "Listen to each answer.",
+        "The answer is read “got gayo.”"
+      ],
+      "explanation": "“곧 가요.” (got gayo.) means “I’m coming soon.”",
+      "family": "k3-messages",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "toko"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "곧 가요."
+        },
+        {
+          "id": "b",
+          "text": "늦어요."
+        },
+        {
+          "id": "c",
+          "text": "지금 어디예요?"
+        },
+        {
+          "id": "d",
+          "text": "집에 왔어요."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      }
+    },
+    {
+      "id": "k-k3-messages-v2",
+      "site": "korean",
+      "skillId": "k.k3.messages",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "Listen and choose what you hear.",
+      "hints": [
+        "Play it again and listen to the first sound.",
+        "It starts with “늦”."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) means “”.",
+      "family": "k3-messages",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "listen"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "지금 어디예요?"
+        },
+        {
+          "id": "b",
+          "text": "늦어요."
+        },
+        {
+          "id": "c",
+          "text": "곧 가요."
+        },
+        {
+          "id": "d",
+          "text": "집에 왔어요."
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "b"
+      },
+      "audioText": "늦어요."
+    },
+    {
+      "id": "k-k3-sounds-1",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "How do you read this?",
+      "hints": [
+        "Read each sound from left to right.",
+        "Press the speaker button and listen."
+      ],
+      "explanation": "“책이” is read “chaegi”.",
+      "family": "k3-sounds",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "read"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "chaegi"
+        },
+        {
+          "id": "b",
+          "text": "chaeki"
+        },
+        {
+          "id": "c",
+          "text": "chaeni"
+        },
+        {
+          "id": "d",
+          "text": "chaeji"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      },
+      "target": {
+        "text": "책이"
+      },
+      "audioText": "책이"
+    },
+    {
+      "id": "k-k3-sounds-2",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "How do you read this?",
+      "hints": [
+        "Read each sound from left to right.",
+        "Press the speaker button and listen."
+      ],
+      "explanation": "“밥을” is read “babeul”.",
+      "family": "k3-sounds",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "read"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "bameul"
+        },
+        {
+          "id": "b",
+          "text": "babeul"
+        },
+        {
+          "id": "c",
+          "text": "bapeul"
+        },
+        {
+          "id": "d",
+          "text": "babul"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "b"
+      },
+      "target": {
+        "text": "밥을"
+      },
+      "audioText": "밥을"
+    },
+    {
+      "id": "k-k3-sounds-3",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "How do you read this?",
+      "hints": [
+        "Read each sound from left to right.",
+        "Press the speaker button and listen."
+      ],
+      "explanation": "“국물” is read “gungmul”.",
+      "family": "k3-sounds",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "read"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "gugmul"
+        },
+        {
+          "id": "b",
+          "text": "gungbul"
+        },
+        {
+          "id": "c",
+          "text": "gungmul"
+        },
+        {
+          "id": "d",
+          "text": "gukmul"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "c"
+      },
+      "target": {
+        "text": "국물"
+      },
+      "audioText": "국물"
+    },
+    {
+      "id": "k-k3-sounds-4",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "How do you read this?",
+      "hints": [
+        "Read each sound from left to right.",
+        "Press the speaker button and listen."
+      ],
+      "explanation": "“같이” is read “gachi”.",
+      "family": "k3-sounds",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "read"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "gati"
+        },
+        {
+          "id": "b",
+          "text": "gaji"
+        },
+        {
+          "id": "c",
+          "text": "gasi"
+        },
+        {
+          "id": "d",
+          "text": "gachi"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "d"
+      },
+      "target": {
+        "text": "같이"
+      },
+      "audioText": "같이"
+    },
+    {
+      "id": "k-k3-sounds-c",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 3,
+      "prompt": "How do you read this?",
+      "hints": [
+        "Read each sound from left to right.",
+        "Press the speaker button and listen."
+      ],
+      "explanation": "“읽어요” is read “ilgeoyo”.",
+      "family": "k3-sounds",
+      "role": "core",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "read"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "ilkeoyo"
+        },
+        {
+          "id": "b",
+          "text": "igeoyo"
+        },
+        {
+          "id": "c",
+          "text": "ilgeoyo"
+        },
+        {
+          "id": "d",
+          "text": "ikeoyo"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "c"
+      },
+      "target": {
+        "text": "읽어요"
+      },
+      "audioText": "읽어요"
+    },
+    {
+      "id": "k-k3-sounds-v1",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "How do you read this?",
+      "hints": [
+        "Read each sound from left to right.",
+        "Press the speaker button and listen."
+      ],
+      "explanation": "“집에” is read “jibe”.",
+      "family": "k3-sounds",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "read"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "jibe"
+        },
+        {
+          "id": "b",
+          "text": "jipe"
+        },
+        {
+          "id": "c",
+          "text": "jine"
+        },
+        {
+          "id": "d",
+          "text": "jime"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "a"
+      },
+      "target": {
+        "text": "집에"
+      },
+      "audioText": "집에"
+    },
+    {
+      "id": "k-k3-sounds-v2",
+      "site": "korean",
+      "skillId": "k.k3.sounds",
+      "type": "multiple_choice",
+      "difficulty": 2,
+      "prompt": "Listen and choose what you hear.",
+      "hints": [
+        "Play it again and listen to the first sound.",
+        "It starts with “책”."
+      ],
+      "explanation": "“책이” (chaegi) means “”.",
+      "family": "k3-sounds",
+      "role": "variant",
+      "expectedSeconds": 30,
+      "tags": [
+        "korean",
+        "listen"
+      ],
+      "status": "PUBLISHED",
+      "options": [
+        {
+          "id": "a",
+          "text": "밥을"
+        },
+        {
+          "id": "b",
+          "text": "책이"
+        },
+        {
+          "id": "c",
+          "text": "책을"
+        },
+        {
+          "id": "d",
+          "text": "집에"
+        }
+      ],
+      "answer": {
+        "kind": "choice",
+        "id": "b"
+      },
+      "audioText": "책이"
     },
     {
       "id": "k-k3-d1",

@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Wie geht es dir?",
     "k.k2.helpme": "Um Hilfe bitten",
     "k.k2.opinions": "Vorlieben und Antworten",
+    "k.k2.signs": "Schilder und Hinweise",
+    "k.k2.culture": "Tischmanieren",
     "k.k3.self": "Sich vorstellen",
     "k.k3.family": "Familie",
     "k.k3.numbers": "Zahlen",
@@ -27,6 +29,8 @@
     "k.k3.people": "Menschen",
     "k.k3.family2": "Weitere Familienwörter",
     "k.k3.ourfamily": "Unsere Familie",
+    "k.k3.messages": "Kurze Nachrichten",
+    "k.k3.sounds": "Verbundene Laute",
     "k.k4.verbs": "Alltagsverben",
     "k.k4.places": "Irgendwohin gehen (에)",
     "k.k4.objects": "Objekte (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 bedeutet gut oder in Ordnung, 싫어요 bedeutet, dass du es nicht magst, 맞아요 bedeutet „das stimmt“ und 틀려요 bedeutet „das ist falsch“.",
       "example": "좋아요. (joayo.) = Es ist gut. / 싫어요. (sireoyo.) = Ich mag es nicht."
     },
+    "korean-k2-l10": {
+      "title": "Schilder, die du sehen wirst",
+      "concept": "In Korea gibt es überall kurze Schilder. **입구** ist der Eingang, **출구** der Ausgang und **화장실** die Toilette. An Türen bedeutet **미세요** drücken und **당기세요** ziehen.",
+      "example": "입구 (ipgu) = Eingang / 출구 (chulgu) = Ausgang"
+    },
+    "korean-k2-l11": {
+      "title": "Danke für das Essen",
+      "concept": "Vor dem Essen sagt man **잘 먹겠습니다**, danach **잘 먹었습니다**. Der Gastgeber begrüßt mit **어서 오세요**, und **맛있어요** lobt das Essen.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Vor dem Essen sagt man: „Ich werde gut essen.“ / 잘 먹었습니다. (jal meogeotseumnida.) = Nach dem Essen sagt man: „Ich habe gut gegessen.“"
+    },
     "korean-k3-l1": {
       "title": "Ich bin Schüler",
       "concept": "**저는** bedeutet „ich“ (höflich). Setz **이에요** nach einem Konsonanten und **예요** nach einem Vokal, um „ich bin …“ zu sagen.",
@@ -242,6 +256,16 @@
       "title": "Unsere Familie",
       "concept": "Koreaner sagen oft 우리 (wir, unser) statt „mein“: 우리 가족 bedeutet „meine Familie“. Personen zählt man mit 명: 네 명 (vier Personen).",
       "example": "우리 가족 (uri gajok) = unsere Familie"
+    },
+    "korean-k3-l10": {
+      "title": "Einem Freund schreiben",
+      "concept": "Nachrichten bestehen aus kurzen, höflichen Sätzen mit der Endung **-요**. **지금 어디예요?** fragt, wo du bist, **곧 가요** heißt „Ich komme gleich“ und **늦어요** heißt „Ich komme zu spät“.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Wo bist du gerade? / 곧 가요. (got gayo.) = Ich komme gleich."
+    },
+    "korean-k3-l11": {
+      "title": "Wörter laut lesen",
+      "concept": "Endet eine Silbe auf einen Konsonanten und die nächste beginnt mit einem Vokal, wandert der Laut hinüber: 책이 liest man **chaegi**, 밥을 liest man **babeul**. Manche Laute verändern auch ihre Nachbarn: 국물 liest man **gungmul**, 같이 liest man **gachi**.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Alltagsverben",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "„좋아요.“ (joayo.) bedeutet „“."
     },
+    "k-k2-signs-1": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „ipgu“."
+      ],
+      "explanation": "„입구“ (ipgu) bedeutet „Eingang“.",
+      "options": {
+        "a": "Parkplatz",
+        "b": "Eingang",
+        "c": "Ausgang",
+        "d": "Toilette"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „chulgu“."
+      ],
+      "explanation": "„출구“ (chulgu) bedeutet „Ausgang“.",
+      "options": {
+        "a": "Toilette",
+        "b": "Notausgang",
+        "c": "Ausgang",
+        "d": "Eingang"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "Wähle das Koreanische für „Toilette“.",
+      "hints": [
+        "Hör dir jede Antwort an.",
+        "Die Antwort liest man „hwajangsil“."
+      ],
+      "explanation": "„화장실“ (hwajangsil) bedeutet „Toilette“."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „juchajang“."
+      ],
+      "explanation": "„주차장“ (juchajang) bedeutet „Parkplatz“.",
+      "options": {
+        "a": "Parkplatz",
+        "b": "Toilette",
+        "c": "Ausgang",
+        "d": "Eingang"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "Wähle das Koreanische für „Notausgang“.",
+      "hints": [
+        "Hör dir jede Antwort an.",
+        "Die Antwort liest man „bisanggu“."
+      ],
+      "explanation": "„비상구“ (bisanggu) bedeutet „Notausgang“."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Hör zu und wähle, was du hörst.",
+      "hints": [
+        "Spiel es noch einmal ab und achte auf den ersten Laut.",
+        "Es beginnt mit „출“."
+      ],
+      "explanation": "„출구“ (chulgu) bedeutet „“."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „danggiseyo.“."
+      ],
+      "explanation": "„당기세요.“ (danggiseyo.) bedeutet „Ziehen (Tür)“.",
+      "options": {
+        "a": "Ziehen (Tür)",
+        "b": "Drücken (Tür)",
+        "c": "Ausgang",
+        "d": "Eingang"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „jal meokgetseumnida.“."
+      ],
+      "explanation": "„잘 먹겠습니다.“ (jal meokgetseumnida.) bedeutet „Vor dem Essen sagt man: „Ich werde gut essen.““.",
+      "options": {
+        "a": "Danke.",
+        "b": "Vor dem Essen sagt man: „Ich werde gut essen.“",
+        "c": "Nach dem Essen sagt man: „Ich habe gut gegessen.“",
+        "d": "Willkommen. (zu einem Gast)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „jal meogeotseumnida.“."
+      ],
+      "explanation": "„잘 먹었습니다.“ (jal meogeotseumnida.) bedeutet „Nach dem Essen sagt man: „Ich habe gut gegessen.““.",
+      "options": {
+        "a": "Es ist lecker.",
+        "b": "Willkommen. (zu einem Gast)",
+        "c": "Nach dem Essen sagt man: „Ich habe gut gegessen.“",
+        "d": "Vor dem Essen sagt man: „Ich werde gut essen.“"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „eoseo oseyo.“."
+      ],
+      "explanation": "„어서 오세요.“ (eoseo oseyo.) bedeutet „Willkommen. (zu einem Gast)“.",
+      "options": {
+        "a": "Tschüss. (freundlich)",
+        "b": "Vor dem Essen sagt man: „Ich werde gut essen.“",
+        "c": "Entschuldigung.",
+        "d": "Willkommen. (zu einem Gast)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "Wähle das Koreanische für „Es ist lecker.“.",
+      "hints": [
+        "Hör dir jede Antwort an.",
+        "Die Antwort liest man „masisseoyo.“."
+      ],
+      "explanation": "„맛있어요.“ (masisseoyo.) bedeutet „Es ist lecker.“."
+    },
+    "k-k2-culture-c": {
+      "prompt": "Füll die Lücke aus. Bedeutung: „Vor dem Essen sagt man: „Ich werde gut essen.““",
+      "hints": [
+        "Schau dir die Bedeutung an.",
+        "Der fehlende Teil wird „meokgetseumnida“ gelesen."
+      ],
+      "explanation": "„잘 먹겠습니다.“ (jal meokgetseumnida.) bedeutet „Vor dem Essen sagt man: „Ich werde gut essen.““."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Bedeutet das „Vor dem Essen sagt man: „Ich werde gut essen.““?",
+      "hints": [
+        "Man liest es „jal meogeotseumnida.“.",
+        "Denk an die Beispiele aus der Lektion."
+      ],
+      "explanation": "„잘 먹었습니다.“ (jal meogeotseumnida.) bedeutet „Nach dem Essen sagt man: „Ich habe gut gegessen.““."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Hör zu und wähle, was du hörst.",
+      "hints": [
+        "Spiel es noch einmal ab und achte auf den ersten Laut.",
+        "Es beginnt mit „어“."
+      ],
+      "explanation": "„어서 오세요.“ (eoseo oseyo.) bedeutet „“."
+    },
     "k-k2-d1": {
       "prompt": "Was bedeutet das?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Denk an die Beispiele aus der Lektion."
       ],
       "explanation": "„우리 가족“ (uri gajok) bedeutet „unsere Familie“."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „jigeum eodiyeyo?“."
+      ],
+      "explanation": "„지금 어디예요?“ (jigeum eodiyeyo?) bedeutet „Wo bist du gerade?“.",
+      "options": {
+        "a": "Wo bist du gerade?",
+        "b": "Ich komme gleich.",
+        "c": "Ich komme zu spät.",
+        "d": "Ich bin zu Hause angekommen."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „got gayo.“."
+      ],
+      "explanation": "„곧 가요.“ (got gayo.) bedeutet „Ich komme gleich.“.",
+      "options": {
+        "a": "Ich bin zu Hause angekommen.",
+        "b": "Ich komme gleich.",
+        "c": "Wo bist du gerade?",
+        "d": "Ich komme zu spät."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „neujeoyo.“."
+      ],
+      "explanation": "„늦어요.“ (neujeoyo.) bedeutet „Ich komme zu spät.“.",
+      "options": {
+        "a": "Ich bin zu Hause angekommen.",
+        "b": "Wo bist du gerade?",
+        "c": "Ich komme zu spät.",
+        "d": "Ich komme gleich."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Was bedeutet das?",
+      "hints": [
+        "Drück auf den Lautsprecher und hör zu.",
+        "Man liest es „jibe wasseoyo.“."
+      ],
+      "explanation": "„집에 왔어요.“ (jibe wasseoyo.) bedeutet „Ich bin zu Hause angekommen.“.",
+      "options": {
+        "a": "Ich komme zu spät.",
+        "b": "Ich komme gleich.",
+        "c": "Wo bist du gerade?",
+        "d": "Ich bin zu Hause angekommen."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Tippe die Wörter in der richtigen Reihenfolge an, um zu sagen: „Ich gehe jetzt nach Hause.“",
+      "hints": [
+        "Im Koreanischen steht das Verb am Ende.",
+        "Fang mit „지금“ an."
+      ],
+      "explanation": "„지금 집에 가요.“ (jigeum jibe gayo.) bedeutet „Ich gehe jetzt nach Hause.“."
+    },
+    "k-k3-messages-v1": {
+      "prompt": "Wähle das Koreanische für „Ich komme gleich.“.",
+      "hints": [
+        "Hör dir jede Antwort an.",
+        "Die Antwort liest man „got gayo.“."
+      ],
+      "explanation": "„곧 가요.“ (got gayo.) bedeutet „Ich komme gleich.“."
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Hör zu und wähle, was du hörst.",
+      "hints": [
+        "Spiel es noch einmal ab und achte auf den ersten Laut.",
+        "Es beginnt mit „늦“."
+      ],
+      "explanation": "„늦어요.“ (neujeoyo.) bedeutet „“."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Wie liest man das?",
+      "hints": [
+        "Lies jeden Laut von links nach rechts.",
+        "Drück auf den Lautsprecher und hör zu."
+      ],
+      "explanation": "„책이“ liest man „chaegi“."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Wie liest man das?",
+      "hints": [
+        "Lies jeden Laut von links nach rechts.",
+        "Drück auf den Lautsprecher und hör zu."
+      ],
+      "explanation": "„밥을“ liest man „babeul“."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Wie liest man das?",
+      "hints": [
+        "Lies jeden Laut von links nach rechts.",
+        "Drück auf den Lautsprecher und hör zu."
+      ],
+      "explanation": "„국물“ liest man „gungmul“."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Wie liest man das?",
+      "hints": [
+        "Lies jeden Laut von links nach rechts.",
+        "Drück auf den Lautsprecher und hör zu."
+      ],
+      "explanation": "„같이“ liest man „gachi“."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Wie liest man das?",
+      "hints": [
+        "Lies jeden Laut von links nach rechts.",
+        "Drück auf den Lautsprecher und hör zu."
+      ],
+      "explanation": "„읽어요“ liest man „ilgeoyo“."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Wie liest man das?",
+      "hints": [
+        "Lies jeden Laut von links nach rechts.",
+        "Drück auf den Lautsprecher und hör zu."
+      ],
+      "explanation": "„집에“ liest man „jibe“."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Hör zu und wähle, was du hörst.",
+      "hints": [
+        "Spiel es noch einmal ab und achte auf den ersten Laut.",
+        "Es beginnt mit „책“."
+      ],
+      "explanation": "„책이“ (chaegi) bedeutet „“."
     },
     "k-k3-d1": {
       "prompt": "Was bedeutet das?",

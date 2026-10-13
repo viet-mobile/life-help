@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Ita di'ak ka lae?",
     "k.k2.helpme": "Husu ajuda",
     "k.k2.opinions": "Gosta no resposta",
+    "k.k2.signs": "Sinál no anúnsiu",
+    "k.k2.culture": "Hahalok iha meza han",
     "k.k3.self": "Aprezenta ita-an",
     "k.k3.family": "Família",
     "k.k3.numbers": "Númeru sira",
@@ -27,6 +29,8 @@
     "k.k3.people": "Ema sira",
     "k.k3.family2": "Liafuan família tan",
     "k.k3.ourfamily": "Ami-nia família",
+    "k.k3.messages": "Mensajen badak",
+    "k.k3.sounds": "Lian sira ne’ebé hakbesik",
     "k.k4.verbs": "Verbu loroloron sira",
     "k.k4.places": "Bá fatin sira (에)",
     "k.k4.objects": "Objetu sira (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 signifika di'ak ka diak, 싫어요 signifika la gosta, 맞아요 signifika “loos” no 틀려요 signifika “sala”.",
       "example": "좋아요. (joayo.) = Di'ak. / 싫어요. (sireoyo.) = Ha'u la gosta."
     },
+    "korean-k2-l10": {
+      "title": "Sinál sira ne’ebé ita sei haree",
+      "concept": "Iha Korea iha sinál badak barak iha fatin hotu-hotu. **입구** katak odamatan tama, **출구** odamatan sai no **화장실** katak toilete. Iha odamatan, **미세요** katak “kudu” no **당기세요** katak “sona”.",
+      "example": "입구 (ipgu) = Odamatan tama / 출구 (chulgu) = Odamatan sai"
+    },
+    "korean-k2-l11": {
+      "title": "Obrigadu ba han",
+      "concept": "Molok han ita hateten **잘 먹겠습니다** no kuandu hotu han ita hateten **잘 먹었습니다**. Na’i-uma simu bainaka ho **어서 오세요**, no **맛있어요** katak han ne’e di’ak.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Hateten molok han: “Hau sei han di’ak.” / 잘 먹었습니다. (jal meogeotseumnida.) = Hateten hafoin han: “Hau han di’ak ona.”"
+    },
     "korean-k3-l1": {
       "title": "Ha'u estudante",
       "concept": "**저는** katak “ha'u” (ho respeitu). Tau **이에요** depois konsoante no **예요** depois vogál atu dehan “Ha'u …”.",
@@ -242,6 +256,16 @@
       "title": "Ami-nia família",
       "concept": "Koreanu sira dala barak dehan 우리 (ami, ita-nia) troka “ha'u-nia”: 우리 가족 signifika “ha'u-nia família”. Sura ema ho 명: 네 명 (ema na'in haat).",
       "example": "우리 가족 (uri gajok) = ami-nia família"
+    },
+    "korean-k3-l10": {
+      "title": "Haruka mensajen ba kolega",
+      "concept": "Mensajen uza fraze badak no respeitu ne’ebé remata ho **-요**. **지금 어디예요?** husu “ita iha ne’ebé agora?”, **곧 가요** katak “hau mai lalais” no **늦어요** katak “hau tarde”.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Ita iha ne’ebé agora? / 곧 가요. (got gayo.) = Hau mai lalais."
+    },
+    "korean-k3-l11": {
+      "title": "Lee liafuan sira ho lian ki’ik",
+      "concept": "Bainhira síla-ba ida remata ho konsoante no tuir mai komesa ho vogál, lian ne’e muda ba oin: 책이 lee **chaegi** no 밥을 lee **babeul**. Lian balu mós muda lian viziñu: 국물 lee **gungmul** no 같이 lee **gachi**.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Verbu loroloron sira",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "“좋아요.” (joayo.) katak “”."
     },
+    "k-k2-signs-1": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “ipgu”."
+      ],
+      "explanation": "“입구” (ipgu) katak “Odamatan tama”.",
+      "options": {
+        "a": "Fatin hela kareta",
+        "b": "Odamatan tama",
+        "c": "Odamatan sai",
+        "d": "Toilete"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “chulgu”."
+      ],
+      "explanation": "“출구” (chulgu) katak “Odamatan sai”.",
+      "options": {
+        "a": "Toilete",
+        "b": "Odamatan sai emerjénsia",
+        "c": "Odamatan sai",
+        "d": "Odamatan tama"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "Hili koreanu ba “Toilete”.",
+      "hints": [
+        "Rona resposta ida-idak.",
+        "Resposta lee “hwajangsil”."
+      ],
+      "explanation": "“화장실” (hwajangsil) katak “Toilete”."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “juchajang”."
+      ],
+      "explanation": "“주차장” (juchajang) katak “Fatin hela kareta”.",
+      "options": {
+        "a": "Fatin hela kareta",
+        "b": "Toilete",
+        "c": "Odamatan sai",
+        "d": "Odamatan tama"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "Hili koreanu ba “Odamatan sai emerjénsia”.",
+      "hints": [
+        "Rona resposta ida-idak.",
+        "Resposta lee “bisanggu”."
+      ],
+      "explanation": "“비상구” (bisanggu) katak “Odamatan sai emerjénsia”."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Rona no hili saida mak ita rona.",
+      "hints": [
+        "Toka fali no rona lian dahuluk.",
+        "Ida-ne'e hahú ho “출”."
+      ],
+      "explanation": "“출구” (chulgu) katak “”."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “danggiseyo.”"
+      ],
+      "explanation": "“당기세요.” (danggiseyo.) katak “Sona (odamatan)”.",
+      "options": {
+        "a": "Sona (odamatan)",
+        "b": "Kudu (odamatan)",
+        "c": "Odamatan sai",
+        "d": "Odamatan tama"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “jal meokgetseumnida.”"
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) katak “Hateten molok han: “Hau sei han di’ak.””.",
+      "options": {
+        "a": "Obrigadu.",
+        "b": "Hateten molok han: “Hau sei han di’ak.”",
+        "c": "Hateten hafoin han: “Hau han di’ak ona.”",
+        "d": "Bem-vindu. (ba bainaka)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “jal meogeotseumnida.”"
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) katak “Hateten hafoin han: “Hau han di’ak ona.””.",
+      "options": {
+        "a": "Gostu.",
+        "b": "Bem-vindu. (ba bainaka)",
+        "c": "Hateten hafoin han: “Hau han di’ak ona.”",
+        "d": "Hateten molok han: “Hau sei han di’ak.”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “eoseo oseyo.”"
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) katak “Bem-vindu. (ba bainaka)”.",
+      "options": {
+        "a": "Adeus. (ho belun)",
+        "b": "Hateten molok han: “Hau sei han di’ak.”",
+        "c": "Lisensa.",
+        "d": "Bem-vindu. (ba bainaka)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "Hili koreanu ba “Gostu.”",
+      "hints": [
+        "Rona resposta ida-idak.",
+        "Resposta lee “masisseoyo.”"
+      ],
+      "explanation": "“맛있어요.” (masisseoyo.) katak “Gostu.”"
+    },
+    "k-k2-culture-c": {
+      "prompt": "Prenche fatin mamuk. Signifikadu: “Hateten molok han: “Hau sei han di’ak.””",
+      "hints": [
+        "Haree signifikadu.",
+        "Parte ne'ebé falta lee “meokgetseumnida”."
+      ],
+      "explanation": "“잘 먹겠습니다.” (jal meokgetseumnida.) katak “Hateten molok han: “Hau sei han di’ak.””."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Ida-ne'e katak “Hateten molok han: “Hau sei han di’ak.”” ka?",
+      "hints": [
+        "Ida-ne'e lee “jal meogeotseumnida.”",
+        "Hanoin fali ezemplu sira husi lisaun."
+      ],
+      "explanation": "“잘 먹었습니다.” (jal meogeotseumnida.) katak “Hateten hafoin han: “Hau han di’ak ona.””."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Rona no hili saida mak ita rona.",
+      "hints": [
+        "Toka fali no rona lian dahuluk.",
+        "Ida-ne'e hahú ho “어”."
+      ],
+      "explanation": "“어서 오세요.” (eoseo oseyo.) katak “”."
+    },
     "k-k2-d1": {
       "prompt": "Ida-ne'e katak saida?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Hanoin fali ezemplu sira husi lisaun."
       ],
       "explanation": "“우리 가족” (uri gajok) katak “ami-nia família”."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “jigeum eodiyeyo?”"
+      ],
+      "explanation": "“지금 어디예요?” (jigeum eodiyeyo?) katak “Ita iha ne’ebé agora?”",
+      "options": {
+        "a": "Ita iha ne’ebé agora?",
+        "b": "Hau mai lalais.",
+        "c": "Hau tarde.",
+        "d": "Hau to’o uma ona."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “got gayo.”"
+      ],
+      "explanation": "“곧 가요.” (got gayo.) katak “Hau mai lalais.”",
+      "options": {
+        "a": "Hau to’o uma ona.",
+        "b": "Hau mai lalais.",
+        "c": "Ita iha ne’ebé agora?",
+        "d": "Hau tarde."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “neujeoyo.”"
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) katak “Hau tarde.”",
+      "options": {
+        "a": "Hau to’o uma ona.",
+        "b": "Ita iha ne’ebé agora?",
+        "c": "Hau tarde.",
+        "d": "Hau mai lalais."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Ida-ne'e katak saida?",
+      "hints": [
+        "Baku butaun altifalante no rona.",
+        "Ida-ne'e lee “jibe wasseoyo.”"
+      ],
+      "explanation": "“집에 왔어요.” (jibe wasseoyo.) katak “Hau to’o uma ona.”",
+      "options": {
+        "a": "Hau tarde.",
+        "b": "Hau mai lalais.",
+        "c": "Ita iha ne’ebé agora?",
+        "d": "Hau to’o uma ona."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Baku liafuan sira tuir orden atu dehan: “Agora hau ba uma.”",
+      "hints": [
+        "Iha koreanu, verbu mai iha rohan.",
+        "Hahú ho “지금”."
+      ],
+      "explanation": "“지금 집에 가요.” (jigeum jibe gayo.) katak “Agora hau ba uma.”"
+    },
+    "k-k3-messages-v1": {
+      "prompt": "Hili koreanu ba “Hau mai lalais.”",
+      "hints": [
+        "Rona resposta ida-idak.",
+        "Resposta lee “got gayo.”"
+      ],
+      "explanation": "“곧 가요.” (got gayo.) katak “Hau mai lalais.”"
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Rona no hili saida mak ita rona.",
+      "hints": [
+        "Toka fali no rona lian dahuluk.",
+        "Ida-ne'e hahú ho “늦”."
+      ],
+      "explanation": "“늦어요.” (neujeoyo.) katak “”."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Oinsá lee ida-ne'e?",
+      "hints": [
+        "Lee lian ida-idak husi karuk ba loos.",
+        "Baku butaun altifalante no rona."
+      ],
+      "explanation": "“책이” lee “chaegi”."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Oinsá lee ida-ne'e?",
+      "hints": [
+        "Lee lian ida-idak husi karuk ba loos.",
+        "Baku butaun altifalante no rona."
+      ],
+      "explanation": "“밥을” lee “babeul”."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Oinsá lee ida-ne'e?",
+      "hints": [
+        "Lee lian ida-idak husi karuk ba loos.",
+        "Baku butaun altifalante no rona."
+      ],
+      "explanation": "“국물” lee “gungmul”."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Oinsá lee ida-ne'e?",
+      "hints": [
+        "Lee lian ida-idak husi karuk ba loos.",
+        "Baku butaun altifalante no rona."
+      ],
+      "explanation": "“같이” lee “gachi”."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Oinsá lee ida-ne'e?",
+      "hints": [
+        "Lee lian ida-idak husi karuk ba loos.",
+        "Baku butaun altifalante no rona."
+      ],
+      "explanation": "“읽어요” lee “ilgeoyo”."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Oinsá lee ida-ne'e?",
+      "hints": [
+        "Lee lian ida-idak husi karuk ba loos.",
+        "Baku butaun altifalante no rona."
+      ],
+      "explanation": "“집에” lee “jibe”."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Rona no hili saida mak ita rona.",
+      "hints": [
+        "Toka fali no rona lian dahuluk.",
+        "Ida-ne'e hahú ho “책”."
+      ],
+      "explanation": "“책이” (chaegi) katak “”."
     },
     "k-k3-d1": {
       "prompt": "Ida-ne'e katak saida?",

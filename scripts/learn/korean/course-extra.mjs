@@ -77,6 +77,18 @@ export const EXTRA_LESSONS = {
       M("맞아요.", "majayo.", "correct", ["incorrect", "no", "dislike"]), M("틀려요.", "teullyeoyo.", "incorrect", ["correct", "good", "dislike"]),
       T("맞아요.", "majayo.", "correct", ["틀려요.", "싫어요.", "아니요."], c), TF("싫어요.", "sireoyo.", "good", "dislike", v), L("좋아요.", "joayo.", ["싫어요.", "맞아요.", "틀려요."], v),
     ] },
+    { skill: "signs", items: [
+      M("입구", "ipgu", "entrance", ["exit", "restroom", "parkingLot"]), M("출구", "chulgu", "exit", ["entrance", "restroom", "emergencyExit"]),
+      T("화장실", "hwajangsil", "restroom", ["입구", "출구", "주차장"]), M("주차장", "juchajang", "parkingLot", ["restroom", "exit", "entrance"]),
+      T("비상구", "bisanggu", "emergencyExit", ["입구", "화장실", "주차장"], c), L("출구", "chulgu", ["입구", "비상구", "화장실"], v),
+      M("당기세요.", "danggiseyo.", "pull", ["push", "exit", "entrance"], v),
+    ] },
+    { skill: "culture", items: [
+      M("잘 먹겠습니다.", "jal meokgetseumnida.", "beforeMeal", ["afterMeal", "welcome", "thanks"]), M("잘 먹었습니다.", "jal meogeotseumnida.", "afterMeal", ["beforeMeal", "delicious", "welcome"]),
+      M("어서 오세요.", "eoseo oseyo.", "welcome", ["goodbyeCasual", "beforeMeal", "excuseMe"]), T("맛있어요.", "masisseoyo.", "delicious", ["잘 먹었습니다.", "어서 오세요.", "잘 먹겠습니다."]),
+      F("잘 ____.", "잘 먹겠습니다.", "jal meokgetseumnida.", ["먹겠습니다"], "beforeMeal", "meokgetseumnida", c),
+      TF("잘 먹었습니다.", "jal meogeotseumnida.", "beforeMeal", "afterMeal", v), L("어서 오세요.", "eoseo oseyo.", ["잘 먹겠습니다.", "잘 먹었습니다.", "맛있어요."], v),
+    ] },
   ],
   K3: [
     { skill: "native10", items: [
@@ -110,6 +122,17 @@ export const EXTRA_LESSONS = {
       F("우리 가족은 네 ____이에요.", "우리 가족은 네 명이에요.", "uri gajogeun ne myeongieyo.", ["명"], "familyOfFour", "myeong"),
       O(["우리", "가족은", "네", "명이에요."], "우리 가족은 네 명이에요.", "uri gajogeun ne myeongieyo.", "familyOfFour", c),
       M("형제가 없어요.", "hyeongjega eopseoyo.", "noSiblings", ["haveSiblings", "ourFamily", "myFamily"], v), TF("우리 가족", "uri gajok", "myFamily", "ourFamily", v),
+    ] },
+    { skill: "messages", items: [
+      M("지금 어디예요?", "jigeum eodiyeyo?", "whereAreYouNow", ["comingSoon", "imLate", "arrivedHome"]), M("곧 가요.", "got gayo.", "comingSoon", ["whereAreYouNow", "imLate", "arrivedHome"]),
+      M("늦어요.", "neujeoyo.", "imLate", ["comingSoon", "arrivedHome", "whereAreYouNow"]), M("집에 왔어요.", "jibe wasseoyo.", "arrivedHome", ["imLate", "comingSoon", "whereAreYouNow"]),
+      O(["지금", "집에", "가요."], "지금 집에 가요.", "jigeum jibe gayo.", "goingHomeNow", c),
+      T("곧 가요.", "got gayo.", "comingSoon", ["늦어요.", "지금 어디예요?", "집에 왔어요."], v), L("늦어요.", "neujeoyo.", ["곧 가요.", "집에 왔어요.", "지금 어디예요?"], v),
+    ] },
+    { skill: "sounds", items: [
+      R("책이", "chaegi", ["chaeki", "chaeni", "chaeji"]), R("밥을", "babeul", ["bapeul", "babul", "bameul"]),
+      R("국물", "gungmul", ["gukmul", "gugmul", "gungbul"]), R("같이", "gachi", ["gati", "gaji", "gasi"]),
+      R("읽어요", "ilgeoyo", ["ikeoyo", "ilkeoyo", "igeoyo"], c), R("집에", "jibe", ["jipe", "jine", "jime"], v), L("책이", "chaegi", ["책을", "집에", "밥을"], v),
     ] },
   ],
   K4: [
@@ -235,7 +258,11 @@ export const EXTRA_EXAMPLES = {
   "K2.partings": [["잘 가요.", "jal gayo.", "goodbyeCasual"], ["내일 봐요.", "naeil bwayo.", "seeTomorrow"]],
   "K2.wellbeing": [["잘 지내요.", "jal jinaeyo.", "imFine"]],
   "K2.helpme": [["도와주세요.", "dowajuseyo.", "helpMe"], ["알겠어요.", "algesseoyo.", "understand"]],
+  "K2.signs": [["입구", "ipgu", "entrance"], ["출구", "chulgu", "exit"]],
+  "K2.culture": [["잘 먹겠습니다.", "jal meokgetseumnida.", "beforeMeal"], ["잘 먹었습니다.", "jal meogeotseumnida.", "afterMeal"]],
   "K2.opinions": [["좋아요.", "joayo.", "good"], ["싫어요.", "sireoyo.", "dislike"]],
+  "K3.messages": [["지금 어디예요?", "jigeum eodiyeyo?", "whereAreYouNow"], ["곧 가요.", "got gayo.", "comingSoon"]],
+  "K3.sounds": [["책이", "chaegi", null], ["밥을", "babeul", null]],
   "K3.native10": [["여섯 · 일곱 · 여덟 · 아홉 · 열", "yeoseot · ilgop · yeodeol · ahop · yeol", null]],
   "K3.sino": [["일 · 이 · 삼 · 사 · 오 · 육 · 칠 · 팔 · 구 · 십", "il · i · sam · sa · o · yuk · chil · pal · gu · sip", null]],
   "K3.ages": [["몇 살이에요?", "myeot sarieyo?", "howOld"]],

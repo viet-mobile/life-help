@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "你好吗？",
     "k.k2.helpme": "请求帮助",
     "k.k2.opinions": "喜欢和回答",
+    "k.k2.signs": "标识与告示",
+    "k.k2.culture": "餐桌礼仪",
     "k.k3.self": "自我介绍",
     "k.k3.family": "家人",
     "k.k3.numbers": "数字",
@@ -27,6 +29,8 @@
     "k.k3.people": "人物",
     "k.k3.family2": "更多家人称呼",
     "k.k3.ourfamily": "我们的家人",
+    "k.k3.messages": "简短的短信",
+    "k.k3.sounds": "连读音变",
     "k.k4.verbs": "日常动词",
     "k.k4.places": "去某个地方（에）",
     "k.k4.objects": "宾语（을/를）",
@@ -198,6 +202,16 @@
       "concept": "좋아요 的意思是好或可以，싫어요 的意思是不喜欢，맞아요 的意思是“对”，틀려요 的意思是“不对”。",
       "example": "좋아요. (joayo.) = 很好。 / 싫어요. (sireoyo.) = 我不喜欢。"
     },
+    "korean-k2-l10": {
+      "title": "常见的标识",
+      "concept": "韩国到处都有简短的标识。**입구**是入口，**출구**是出口，**화장실**是洗手间。门上的**미세요**表示“推”，**당기세요**表示“拉”。",
+      "example": "입구 (ipgu) = 入口 / 출구 (chulgu) = 出口"
+    },
+    "korean-k2-l11": {
+      "title": "我要开动了",
+      "concept": "吃饭前说**잘 먹겠습니다**，吃完后说**잘 먹었습니다**。主人迎接客人说**어서 오세요**，**맛있어요**是夸饭菜好吃。",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = 吃饭前说：“我要开动了。” / 잘 먹었습니다. (jal meogeotseumnida.) = 吃饭后说：“我吃好了。”"
+    },
     "korean-k3-l1": {
       "title": "我是学生",
       "concept": "**저는** 的意思是“我”（礼貌）。辅音后面加 **이에요**，元音后面加 **예요**，表示“我是……”。",
@@ -242,6 +256,16 @@
       "title": "我们的家人",
       "concept": "韩国人常用 우리 (我们，我们的) 代替“我的”：우리 가족 的意思是“我的家人”。用 명 数人数：네 명 (四个人)。",
       "example": "우리 가족 (uri gajok) = 我们的家人"
+    },
+    "korean-k3-l10": {
+      "title": "给朋友发短信",
+      "concept": "短信常用以**-요**结尾的简短礼貌句子。**지금 어디예요?**是问“你现在在哪儿”，**곧 가요**是“我马上到”，**늦어요**是“我会晚到”。",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = 你现在在哪儿？ / 곧 가요. (got gayo.) = 我马上到。"
+    },
+    "korean-k3-l11": {
+      "title": "大声朗读",
+      "concept": "当带收音的音节后面接以元音开头的音节时，收音会连到后面：책이读作**chaegi**，밥을读作**babeul**。有些音还会改变相邻的音：국물读作**gungmul**，같이读作**gachi**。",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "日常动词",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "“좋아요.”（joayo.）的意思是“”。"
     },
+    "k-k2-signs-1": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“ipgu”。"
+      ],
+      "explanation": "“입구”（ipgu）的意思是“入口”。",
+      "options": {
+        "a": "停车场",
+        "b": "入口",
+        "c": "出口",
+        "d": "洗手间"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“chulgu”。"
+      ],
+      "explanation": "“출구”（chulgu）的意思是“出口”。",
+      "options": {
+        "a": "洗手间",
+        "b": "紧急出口",
+        "c": "出口",
+        "d": "入口"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "选出“洗手间”的韩语。",
+      "hints": [
+        "听一听每个选项。",
+        "答案读作“hwajangsil”。"
+      ],
+      "explanation": "“화장실”（hwajangsil）的意思是“洗手间”。"
+    },
+    "k-k2-signs-4": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“juchajang”。"
+      ],
+      "explanation": "“주차장”（juchajang）的意思是“停车场”。",
+      "options": {
+        "a": "停车场",
+        "b": "洗手间",
+        "c": "出口",
+        "d": "入口"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "选出“紧急出口”的韩语。",
+      "hints": [
+        "听一听每个选项。",
+        "答案读作“bisanggu”。"
+      ],
+      "explanation": "“비상구”（bisanggu）的意思是“紧急出口”。"
+    },
+    "k-k2-signs-v1": {
+      "prompt": "听一听，选出你听到的内容。",
+      "hints": [
+        "再播放一次，注意听第一个音。",
+        "它以“출”开头。"
+      ],
+      "explanation": "“출구”（chulgu）的意思是“”。"
+    },
+    "k-k2-signs-v2": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“danggiseyo.”"
+      ],
+      "explanation": "“당기세요.”（danggiseyo.）的意思是“拉（门）”。",
+      "options": {
+        "a": "拉（门）",
+        "b": "推（门）",
+        "c": "出口",
+        "d": "入口"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“jal meokgetseumnida.”"
+      ],
+      "explanation": "“잘 먹겠습니다.”（jal meokgetseumnida.）的意思是“吃饭前说：“我要开动了。””。",
+      "options": {
+        "a": "谢谢。",
+        "b": "吃饭前说：“我要开动了。”",
+        "c": "吃饭后说：“我吃好了。”",
+        "d": "欢迎光临。（对客人说）"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“jal meogeotseumnida.”"
+      ],
+      "explanation": "“잘 먹었습니다.”（jal meogeotseumnida.）的意思是“吃饭后说：“我吃好了。””。",
+      "options": {
+        "a": "很好吃。",
+        "b": "欢迎光临。（对客人说）",
+        "c": "吃饭后说：“我吃好了。”",
+        "d": "吃饭前说：“我要开动了。”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“eoseo oseyo.”"
+      ],
+      "explanation": "“어서 오세요.”（eoseo oseyo.）的意思是“欢迎光临。（对客人说）”。",
+      "options": {
+        "a": "再见。（亲切）",
+        "b": "吃饭前说：“我要开动了。”",
+        "c": "打扰一下。",
+        "d": "欢迎光临。（对客人说）"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "选出“很好吃。”的韩语。",
+      "hints": [
+        "听一听每个选项。",
+        "答案读作“masisseoyo.”"
+      ],
+      "explanation": "“맛있어요.”（masisseoyo.）的意思是“很好吃。”。"
+    },
+    "k-k2-culture-c": {
+      "prompt": "填空。意思：“吃饭前说：“我要开动了。””",
+      "hints": [
+        "看看意思。",
+        "空缺部分读作“meokgetseumnida”。"
+      ],
+      "explanation": "“잘 먹겠습니다.”（jal meokgetseumnida.）的意思是“吃饭前说：“我要开动了。””。"
+    },
+    "k-k2-culture-v1": {
+      "prompt": "这个的意思是“吃饭前说：“我要开动了。””吗？",
+      "hints": [
+        "它读作“jal meogeotseumnida.”",
+        "回想一下课上的例子。"
+      ],
+      "explanation": "“잘 먹었습니다.”（jal meogeotseumnida.）的意思是“吃饭后说：“我吃好了。””。"
+    },
+    "k-k2-culture-v2": {
+      "prompt": "听一听，选出你听到的内容。",
+      "hints": [
+        "再播放一次，注意听第一个音。",
+        "它以“어”开头。"
+      ],
+      "explanation": "“어서 오세요.”（eoseo oseyo.）的意思是“”。"
+    },
     "k-k2-d1": {
       "prompt": "这是什么意思？",
       "hints": [
@@ -2325,6 +2503,142 @@
         "回想一下课上的例子。"
       ],
       "explanation": "“우리 가족”（uri gajok）的意思是“我们的家人”。"
+    },
+    "k-k3-messages-1": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“jigeum eodiyeyo?”"
+      ],
+      "explanation": "“지금 어디예요?”（jigeum eodiyeyo?）的意思是“你现在在哪儿？”。",
+      "options": {
+        "a": "你现在在哪儿？",
+        "b": "我马上到。",
+        "c": "我会晚到。",
+        "d": "我到家了。"
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“got gayo.”"
+      ],
+      "explanation": "“곧 가요.”（got gayo.）的意思是“我马上到。”。",
+      "options": {
+        "a": "我到家了。",
+        "b": "我马上到。",
+        "c": "你现在在哪儿？",
+        "d": "我会晚到。"
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“neujeoyo.”"
+      ],
+      "explanation": "“늦어요.”（neujeoyo.）的意思是“我会晚到。”。",
+      "options": {
+        "a": "我到家了。",
+        "b": "你现在在哪儿？",
+        "c": "我会晚到。",
+        "d": "我马上到。"
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "这是什么意思？",
+      "hints": [
+        "按下喇叭按钮听一听。",
+        "它读作“jibe wasseoyo.”"
+      ],
+      "explanation": "“집에 왔어요.”（jibe wasseoyo.）的意思是“我到家了。”。",
+      "options": {
+        "a": "我会晚到。",
+        "b": "我马上到。",
+        "c": "你现在在哪儿？",
+        "d": "我到家了。"
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "按顺序点击单词，说出：“我现在回家。”",
+      "hints": [
+        "韩语的动词放在句末。",
+        "从“지금”开始。"
+      ],
+      "explanation": "“지금 집에 가요.”（jigeum jibe gayo.）的意思是“我现在回家。”。"
+    },
+    "k-k3-messages-v1": {
+      "prompt": "选出“我马上到。”的韩语。",
+      "hints": [
+        "听一听每个选项。",
+        "答案读作“got gayo.”"
+      ],
+      "explanation": "“곧 가요.”（got gayo.）的意思是“我马上到。”。"
+    },
+    "k-k3-messages-v2": {
+      "prompt": "听一听，选出你听到的内容。",
+      "hints": [
+        "再播放一次，注意听第一个音。",
+        "它以“늦”开头。"
+      ],
+      "explanation": "“늦어요.”（neujeoyo.）的意思是“”。"
+    },
+    "k-k3-sounds-1": {
+      "prompt": "这个怎么读？",
+      "hints": [
+        "从左往右读出每个音。",
+        "按下喇叭按钮听一听。"
+      ],
+      "explanation": "“책이”读作“chaegi”。"
+    },
+    "k-k3-sounds-2": {
+      "prompt": "这个怎么读？",
+      "hints": [
+        "从左往右读出每个音。",
+        "按下喇叭按钮听一听。"
+      ],
+      "explanation": "“밥을”读作“babeul”。"
+    },
+    "k-k3-sounds-3": {
+      "prompt": "这个怎么读？",
+      "hints": [
+        "从左往右读出每个音。",
+        "按下喇叭按钮听一听。"
+      ],
+      "explanation": "“국물”读作“gungmul”。"
+    },
+    "k-k3-sounds-4": {
+      "prompt": "这个怎么读？",
+      "hints": [
+        "从左往右读出每个音。",
+        "按下喇叭按钮听一听。"
+      ],
+      "explanation": "“같이”读作“gachi”。"
+    },
+    "k-k3-sounds-c": {
+      "prompt": "这个怎么读？",
+      "hints": [
+        "从左往右读出每个音。",
+        "按下喇叭按钮听一听。"
+      ],
+      "explanation": "“읽어요”读作“ilgeoyo”。"
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "这个怎么读？",
+      "hints": [
+        "从左往右读出每个音。",
+        "按下喇叭按钮听一听。"
+      ],
+      "explanation": "“집에”读作“jibe”。"
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "听一听，选出你听到的内容。",
+      "hints": [
+        "再播放一次，注意听第一个音。",
+        "它以“책”开头。"
+      ],
+      "explanation": "“책이”（chaegi）的意思是“”。"
     },
     "k-k3-d1": {
       "prompt": "这是什么意思？",

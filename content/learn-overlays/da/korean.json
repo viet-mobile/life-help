@@ -18,6 +18,8 @@
     "k.k2.wellbeing": "Hvordan har du det?",
     "k.k2.helpme": "At bede om hjælp",
     "k.k2.opinions": "Præferencer og svar",
+    "k.k2.signs": "Skilte og opslag",
+    "k.k2.culture": "Bordskik",
     "k.k3.self": "Præsenter dig selv",
     "k.k3.family": "Familie",
     "k.k3.numbers": "Tal",
@@ -27,6 +29,8 @@
     "k.k3.people": "Mennesker",
     "k.k3.family2": "Flere familieord",
     "k.k3.ourfamily": "Vores familie",
+    "k.k3.messages": "Korte beskeder",
+    "k.k3.sounds": "Lyde der binder sammen",
     "k.k4.verbs": "Hverdagsverber",
     "k.k4.places": "Gå steder hen (에)",
     "k.k4.objects": "Genstandsled (을/를)",
@@ -198,6 +202,16 @@
       "concept": "좋아요 betyder godt eller fint, 싫어요 betyder, at du ikke kan lide det, 맞아요 betyder »det er rigtigt« og 틀려요 betyder »det er forkert«.",
       "example": "좋아요. (joayo.) = Det er godt. / 싫어요. (sireoyo.) = Jeg kan ikke lide det."
     },
+    "korean-k2-l10": {
+      "title": "Skilte du kommer til at se",
+      "concept": "I Korea er der korte skilte overalt. **입구** er indgangen, **출구** udgangen og **화장실** toilettet. På døre betyder **미세요** skub og **당기세요** træk.",
+      "example": "입구 (ipgu) = Indgang / 출구 (chulgu) = Udgang"
+    },
+    "korean-k2-l11": {
+      "title": "Tak for mad",
+      "concept": "Før maden siger man **잘 먹겠습니다**, og bagefter **잘 먹었습니다**. Værten byder velkommen med **어서 오세요**, og **맛있어요** roser maden.",
+      "example": "잘 먹겠습니다. (jal meokgetseumnida.) = Man siger før maden: “Jeg skal spise godt.” / 잘 먹었습니다. (jal meogeotseumnida.) = Man siger efter maden: “Jeg spiste godt.”"
+    },
     "korean-k3-l1": {
       "title": "Jeg er studerende",
       "concept": "**저는** betyder »jeg« (høfligt). Sæt **이에요** efter en konsonant og **예요** efter en vokal for at sige »jeg er …«.",
@@ -242,6 +256,16 @@
       "title": "Vores familie",
       "concept": "Koreanere siger ofte 우리 (vi, vores) i stedet for »min«: 우리 가족 betyder »min familie«. Tæl personer med 명: 네 명 (fire personer).",
       "example": "우리 가족 (uri gajok) = vores familie"
+    },
+    "korean-k3-l10": {
+      "title": "Skrive til en ven",
+      "concept": "Beskeder bruger korte, høflige sætninger, der ender på **-요**. **지금 어디예요?** spørger, hvor du er, **곧 가요** betyder “jeg kommer snart”, og **늦어요** betyder “jeg bliver forsinket”.",
+      "example": "지금 어디예요? (jigeum eodiyeyo?) = Hvor er du nu? / 곧 가요. (got gayo.) = Jeg kommer snart."
+    },
+    "korean-k3-l11": {
+      "title": "Læse ord højt",
+      "concept": "Når en stavelse ender på en konsonant, og den næste begynder med en vokal, flytter lyden over: 책이 læses **chaegi**, og 밥을 læses **babeul**. Nogle lyde ændrer også naboerne: 국물 læses **gungmul**, og 같이 læses **gachi**.",
+      "example": "책이 (chaegi) / 밥을 (babeul)"
     },
     "korean-k4-l1": {
       "title": "Hverdagsverber",
@@ -1650,6 +1674,160 @@
       ],
       "explanation": "»좋아요.« (joayo.) betyder »«."
     },
+    "k-k2-signs-1": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »ipgu«."
+      ],
+      "explanation": "»입구« (ipgu) betyder »Indgang«.",
+      "options": {
+        "a": "Parkeringsplads",
+        "b": "Indgang",
+        "c": "Udgang",
+        "d": "Toilet"
+      }
+    },
+    "k-k2-signs-2": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »chulgu«."
+      ],
+      "explanation": "»출구« (chulgu) betyder »Udgang«.",
+      "options": {
+        "a": "Toilet",
+        "b": "Nødudgang",
+        "c": "Udgang",
+        "d": "Indgang"
+      }
+    },
+    "k-k2-signs-3": {
+      "prompt": "Vælg det koreanske for »Toilet«.",
+      "hints": [
+        "Lyt til hvert svar.",
+        "Svaret læses »hwajangsil«."
+      ],
+      "explanation": "»화장실« (hwajangsil) betyder »Toilet«."
+    },
+    "k-k2-signs-4": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »juchajang«."
+      ],
+      "explanation": "»주차장« (juchajang) betyder »Parkeringsplads«.",
+      "options": {
+        "a": "Parkeringsplads",
+        "b": "Toilet",
+        "c": "Udgang",
+        "d": "Indgang"
+      }
+    },
+    "k-k2-signs-c": {
+      "prompt": "Vælg det koreanske for »Nødudgang«.",
+      "hints": [
+        "Lyt til hvert svar.",
+        "Svaret læses »bisanggu«."
+      ],
+      "explanation": "»비상구« (bisanggu) betyder »Nødudgang«."
+    },
+    "k-k2-signs-v1": {
+      "prompt": "Lyt, og vælg det, du hører.",
+      "hints": [
+        "Afspil det igen, og lyt til den første lyd.",
+        "Det begynder med »출«."
+      ],
+      "explanation": "»출구« (chulgu) betyder »«."
+    },
+    "k-k2-signs-v2": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »danggiseyo.«."
+      ],
+      "explanation": "»당기세요.« (danggiseyo.) betyder »Træk (døren)«.",
+      "options": {
+        "a": "Træk (døren)",
+        "b": "Skub (døren)",
+        "c": "Udgang",
+        "d": "Indgang"
+      }
+    },
+    "k-k2-culture-1": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »jal meokgetseumnida.«."
+      ],
+      "explanation": "»잘 먹겠습니다.« (jal meokgetseumnida.) betyder »Man siger før maden: “Jeg skal spise godt.”«.",
+      "options": {
+        "a": "Tak.",
+        "b": "Man siger før maden: “Jeg skal spise godt.”",
+        "c": "Man siger efter maden: “Jeg spiste godt.”",
+        "d": "Velkommen. (til en gæst)"
+      }
+    },
+    "k-k2-culture-2": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »jal meogeotseumnida.«."
+      ],
+      "explanation": "»잘 먹었습니다.« (jal meogeotseumnida.) betyder »Man siger efter maden: “Jeg spiste godt.”«.",
+      "options": {
+        "a": "Det er lækkert.",
+        "b": "Velkommen. (til en gæst)",
+        "c": "Man siger efter maden: “Jeg spiste godt.”",
+        "d": "Man siger før maden: “Jeg skal spise godt.”"
+      }
+    },
+    "k-k2-culture-3": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »eoseo oseyo.«."
+      ],
+      "explanation": "»어서 오세요.« (eoseo oseyo.) betyder »Velkommen. (til en gæst)«.",
+      "options": {
+        "a": "Farvel. (venligt)",
+        "b": "Man siger før maden: “Jeg skal spise godt.”",
+        "c": "Undskyld mig.",
+        "d": "Velkommen. (til en gæst)"
+      }
+    },
+    "k-k2-culture-4": {
+      "prompt": "Vælg det koreanske for »Det er lækkert.«.",
+      "hints": [
+        "Lyt til hvert svar.",
+        "Svaret læses »masisseoyo.«."
+      ],
+      "explanation": "»맛있어요.« (masisseoyo.) betyder »Det er lækkert.«."
+    },
+    "k-k2-culture-c": {
+      "prompt": "Udfyld hullet. Betydning: »Man siger før maden: “Jeg skal spise godt.”«",
+      "hints": [
+        "Se på betydningen.",
+        "Den manglende del læses »meokgetseumnida«."
+      ],
+      "explanation": "»잘 먹겠습니다.« (jal meokgetseumnida.) betyder »Man siger før maden: “Jeg skal spise godt.”«."
+    },
+    "k-k2-culture-v1": {
+      "prompt": "Betyder det her »Man siger før maden: “Jeg skal spise godt.”«?",
+      "hints": [
+        "Det læses »jal meogeotseumnida.«.",
+        "Husk eksemplerne fra lektionen."
+      ],
+      "explanation": "»잘 먹었습니다.« (jal meogeotseumnida.) betyder »Man siger efter maden: “Jeg spiste godt.”«."
+    },
+    "k-k2-culture-v2": {
+      "prompt": "Lyt, og vælg det, du hører.",
+      "hints": [
+        "Afspil det igen, og lyt til den første lyd.",
+        "Det begynder med »어«."
+      ],
+      "explanation": "»어서 오세요.« (eoseo oseyo.) betyder »«."
+    },
     "k-k2-d1": {
       "prompt": "Hvad betyder det her?",
       "hints": [
@@ -2325,6 +2503,142 @@
         "Husk eksemplerne fra lektionen."
       ],
       "explanation": "»우리 가족« (uri gajok) betyder »vores familie«."
+    },
+    "k-k3-messages-1": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »jigeum eodiyeyo?«."
+      ],
+      "explanation": "»지금 어디예요?« (jigeum eodiyeyo?) betyder »Hvor er du nu?«.",
+      "options": {
+        "a": "Hvor er du nu?",
+        "b": "Jeg kommer snart.",
+        "c": "Jeg bliver forsinket.",
+        "d": "Jeg er kommet hjem."
+      }
+    },
+    "k-k3-messages-2": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »got gayo.«."
+      ],
+      "explanation": "»곧 가요.« (got gayo.) betyder »Jeg kommer snart.«.",
+      "options": {
+        "a": "Jeg er kommet hjem.",
+        "b": "Jeg kommer snart.",
+        "c": "Hvor er du nu?",
+        "d": "Jeg bliver forsinket."
+      }
+    },
+    "k-k3-messages-3": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »neujeoyo.«."
+      ],
+      "explanation": "»늦어요.« (neujeoyo.) betyder »Jeg bliver forsinket.«.",
+      "options": {
+        "a": "Jeg er kommet hjem.",
+        "b": "Hvor er du nu?",
+        "c": "Jeg bliver forsinket.",
+        "d": "Jeg kommer snart."
+      }
+    },
+    "k-k3-messages-4": {
+      "prompt": "Hvad betyder det her?",
+      "hints": [
+        "Tryk på højttalerknappen, og lyt.",
+        "Det læses »jibe wasseoyo.«."
+      ],
+      "explanation": "»집에 왔어요.« (jibe wasseoyo.) betyder »Jeg er kommet hjem.«.",
+      "options": {
+        "a": "Jeg bliver forsinket.",
+        "b": "Jeg kommer snart.",
+        "c": "Hvor er du nu?",
+        "d": "Jeg er kommet hjem."
+      }
+    },
+    "k-k3-messages-c": {
+      "prompt": "Tryk på ordene i den rigtige rækkefølge for at sige: »Jeg går hjem nu.«",
+      "hints": [
+        "På koreansk kommer verbet til sidst.",
+        "Begynd med »지금«."
+      ],
+      "explanation": "»지금 집에 가요.« (jigeum jibe gayo.) betyder »Jeg går hjem nu.«."
+    },
+    "k-k3-messages-v1": {
+      "prompt": "Vælg det koreanske for »Jeg kommer snart.«.",
+      "hints": [
+        "Lyt til hvert svar.",
+        "Svaret læses »got gayo.«."
+      ],
+      "explanation": "»곧 가요.« (got gayo.) betyder »Jeg kommer snart.«."
+    },
+    "k-k3-messages-v2": {
+      "prompt": "Lyt, og vælg det, du hører.",
+      "hints": [
+        "Afspil det igen, og lyt til den første lyd.",
+        "Det begynder med »늦«."
+      ],
+      "explanation": "»늦어요.« (neujeoyo.) betyder »«."
+    },
+    "k-k3-sounds-1": {
+      "prompt": "Hvordan læses det her?",
+      "hints": [
+        "Læs hver lyd fra venstre mod højre.",
+        "Tryk på højttalerknappen, og lyt."
+      ],
+      "explanation": "»책이« læses »chaegi«."
+    },
+    "k-k3-sounds-2": {
+      "prompt": "Hvordan læses det her?",
+      "hints": [
+        "Læs hver lyd fra venstre mod højre.",
+        "Tryk på højttalerknappen, og lyt."
+      ],
+      "explanation": "»밥을« læses »babeul«."
+    },
+    "k-k3-sounds-3": {
+      "prompt": "Hvordan læses det her?",
+      "hints": [
+        "Læs hver lyd fra venstre mod højre.",
+        "Tryk på højttalerknappen, og lyt."
+      ],
+      "explanation": "»국물« læses »gungmul«."
+    },
+    "k-k3-sounds-4": {
+      "prompt": "Hvordan læses det her?",
+      "hints": [
+        "Læs hver lyd fra venstre mod højre.",
+        "Tryk på højttalerknappen, og lyt."
+      ],
+      "explanation": "»같이« læses »gachi«."
+    },
+    "k-k3-sounds-c": {
+      "prompt": "Hvordan læses det her?",
+      "hints": [
+        "Læs hver lyd fra venstre mod højre.",
+        "Tryk på højttalerknappen, og lyt."
+      ],
+      "explanation": "»읽어요« læses »ilgeoyo«."
+    },
+    "k-k3-sounds-v1": {
+      "prompt": "Hvordan læses det her?",
+      "hints": [
+        "Læs hver lyd fra venstre mod højre.",
+        "Tryk på højttalerknappen, og lyt."
+      ],
+      "explanation": "»집에« læses »jibe«."
+    },
+    "k-k3-sounds-v2": {
+      "prompt": "Lyt, og vælg det, du hører.",
+      "hints": [
+        "Afspil det igen, og lyt til den første lyd.",
+        "Det begynder med »책«."
+      ],
+      "explanation": "»책이« (chaegi) betyder »«."
     },
     "k-k3-d1": {
       "prompt": "Hvad betyder det her?",
