@@ -103,7 +103,8 @@ describe("semesters", () => {
     expect(status["math-e4-l1"]).toBe("current"); // semester 1 chain starts here
     expect(status["math-e4-l2"]).toBe("locked");
     expect(status["math-e4-l3"]).toBe("current"); // semester 2 chain starts here
-    expect(status["math-e4-geo2"]).toBe("locked");
+    expect(status["math-e4-geo1"]).toBe("current"); // geometry is its own chain: never behind other topics
+    expect(status["math-e4-geo2"]).toBe("locked"); // ... and sequential inside it
     expect(status["math-e4-l4"]).toBe("current"); // both-semester chain
   });
 });

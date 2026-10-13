@@ -21,7 +21,8 @@ function isDone(state: PlayerState, lessonId: string) {
 /**
  * Sequential path: the first lesson that is not done (or placed out by the diagnostic) is "current"; later lessons are locked until then.
  * Where a site splits its courses by semester (math, english) every semester group has its own chain - semester 1, semester 2 and the
- * lessons taught in both (0) - so a learner can start the second semester without finishing the first. Sites without semesters
+ * lessons taught in both (0), with the geometry lessons as a chain of their own - so a learner can start the second semester, or the
+ * shape practice, without finishing the rest. Sites without semesters
  * (study.korean) have a single group, i.e. one sequential path as before.
  */
 export function buildPath(state: PlayerState, index: ContentIndex): PathNode[] {
@@ -32,7 +33,8 @@ export function buildPath(state: PlayerState, index: ContentIndex): PathNode[] {
     let status: LessonStatus;
     if (isDone(state, lessonId)) status = "done";
     else {
-      const group = semesterOf(site, lessonId);
+      // one chain per semester; the figure-based geometry lessons are their own chain inside it, so shape practice is never behind other topics
+      const group = /-geo\d$/.test(lessonId) ? 100 : semesterOf(site, lessonId);
       if (!currentIn.has(group)) {
         status = "current";
         currentIn.add(group);
