@@ -9,6 +9,9 @@ import vi from "@/lib/learn/i18n/locales/vi.json";
 import { parsePlayerState } from "@/lib/learn/server/stateCodec";
 import { ELEMENTARY_GRADES, SCHOOL_GRADES as GRADES, SECONDARY_GRADES, SCHOOL_SITES, isGrade, schoolLevel, type ContentBundle, type Grade } from "@/lib/learn/types";
 
+import { isGeneratedLayerId } from "../../scripts/learn/generated-layers.mjs";
+import { stripGeneratedLayers } from "./withoutGeneratedLayers";
+
 const DEMO: Record<string, ContentBundle> = { math: mathDemo as unknown as ContentBundle, english: englishDemo as unknown as ContentBundle };
 
 describe("one canonical grade model (math, english, profile, routing)", () => {
@@ -54,8 +57,12 @@ describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
   it("an M1 student sees EXACTLY the pre-elementary curriculum (the original demo course, unchanged)", async () => {
     const merged = await demoContentRepository.getBundle(site);
     const scoped = scopeToGrade(merged, "M1");
-    expect(scoped.catalog.courses).toEqual(DEMO[site].catalog.courses);
-    expect(scoped.catalog.skills).toEqual(DEMO[site].catalog.skills);
+    const original = stripGeneratedLayers<ContentBundle>(scoped);
+    const originalDemo = stripGeneratedLayers<ContentBundle>(DEMO[site]);
+    expect(original.catalog.courses).toEqual(originalDemo.catalog.courses);
+    expect(original.catalog.skills).toEqual(originalDemo.catalog.skills);
+    expect(original.questions).toEqual(originalDemo.questions.filter((q) => q.status === "PUBLISHED"));
+    // Grade routing still includes every generated layer of the current demo bundle.
     expect(scoped.questions).toEqual(DEMO[site].questions.filter((q) => q.status === "PUBLISHED"));
   });
 
@@ -92,7 +99,7 @@ describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
       seenCourses.add(course.id);
       const index = indexContent(toMetaBundle(scoped));
       const lessons = course.units.flatMap((u) => u.lessons);
-      expect(lessons.filter((l) => !/-(geo|dat|neg|fac|crd|prp|sta|rec|lfn|ari|seq|pro|mat|set|fnc|pol|cal|cnt|abc|snd|pun|sum)\d$/.test(l.id)).length, `${g} lessons`).toBe(5); // plus the topic lessons (math and English)
+      expect(lessons.filter((l) => !isGeneratedLayerId(l.id)).length, `${g} original lessons`).toBe(5); // generated layers remain in the scoped runtime content
       // every question the student can reach practises a skill that exists in THEIR scoped curriculum
       for (const q of scoped.questions) expect(index.skills.has(q.skillId), q.id).toBe(true);
       // the placement pool is this grade's, and large enough for the 6-question adaptive diagnostic

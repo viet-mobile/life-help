@@ -32,7 +32,7 @@ const code = '4영01-01';
 const standards = validateCurriculum(load('english'));
 const content = {
   lessons: new Map([['official', { grade:'E3',questionIds:['q1'],skillIds:['s1'] }], ['extra',{grade:'E1',questionIds:['q1'],skillIds:['s1']}]]),
-  questions: new Map([['q1',{id:'q1',skillId:'s1'}],['unrelated',{id:'unrelated',skillId:'other'}]]),
+  questions: new Map([['q1',{id:'q1',skillId:'s1',status:'PUBLISHED'}],['unrelated',{id:'unrelated',skillId:'other',status:'PUBLISHED'}]]),
 };
 const entry = { code,status:'partial',lesson_ids:['official'],question_ids:['q1'],rationale:'Only sound recognition reviewed.',reviewed_by:'test reviewer' };
 test('accept evidence-backed partial mapping', () => assert.doesNotThrow(() => validateMappings([entry],standards,content)));
@@ -47,3 +47,9 @@ test('reject covered status without evidence or rationale', () => {
 test('reject unrelated question evidence', () => assert.throws(() => validateMappings([{...entry,question_ids:['unrelated']}],standards,content), /not linked/));
 test('reject E1/E2 English as official grade-band evidence', () => assert.throws(() => validateMappings([{...entry,lesson_ids:['extra']}],standards,content), /enrichment/));
 test('explicit gap cannot carry coverage evidence', () => assert.throws(() => validateMappings([{...entry,status:'gap'}],standards,content), /Gap has coverage/));
+
+test('reject duplicated evidence IDs', () => assert.throws(() => validateMappings([{...entry,question_ids:['q1','q1']}],standards,content), /Duplicate evidence/));
+test('reject unpublished evidence', () => {
+  const unpublished = { ...content, questions: new Map([['q1',{id:'q1',skillId:'s1',status:'DRAFT'}]]) };
+  assert.throws(() => validateMappings([entry],standards,unpublished), /Unpublished evidence/);
+});
