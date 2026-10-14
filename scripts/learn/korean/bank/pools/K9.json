@@ -114,8 +114,8 @@
       "blank": "담당자께 메일을 전달해 ____.",
       "ans": "드리겠습니다",
       "w": [
-       "주겠습니다",
-       "주었습니다",
+       "드립니까",
+       "드렸습니까",
        "받겠습니다"
       ]
      }
@@ -196,7 +196,7 @@
     {
      "cat": "sentence",
      "ko": "메일 잘 받았습니다.",
-     "g": "I received your email, thank you.",
+     "g": "I have received your email.",
      "choose": {
       "w": [
        "메일 잘 받으셨습니다.",
@@ -289,7 +289,7 @@
     {
      "cat": "expr",
      "ko": "죄송하지만 지금 자리에 안 계십니다.",
-     "g": "I am sorry, but he or she is not at the desk right now.",
+     "g": "I am sorry, but they are not at their desk right now.",
      "s": "A caller asks for a colleague who has stepped away."
     },
     {
@@ -314,14 +314,13 @@
      "cat": "sentence",
      "ko": "김 과장님 계십니까?",
      "g": "Is Manager Kim in?",
-     "note": "phoneHon",
      "cloze": {
       "blank": "김 과장님 ____?",
       "ans": "계십니까",
       "w": [
        "있습니까",
-       "있으십니까",
-       "계십니다"
+       "계십니다",
+       "계십시오"
       ]
      }
     },
@@ -408,7 +407,7 @@
       "w": [
        "로",
        "에게",
-       "을"
+       "이"
       ]
      }
     },
@@ -461,7 +460,7 @@
     {
      "cat": "word",
      "ko": "약속",
-     "g": "appointment; engagement"
+     "g": "appointment; promise"
     },
     {
      "cat": "word",
@@ -551,7 +550,7 @@
       "blank": "회의를 다음 주 화요일로 ____.",
       "ans": "연기하겠습니다",
       "w": [
-       "연장하겠습니다",
+       "연결하겠습니다",
        "연락하겠습니다",
        "연습하겠습니다"
       ]
@@ -608,21 +607,9 @@
       "blank": "자료는 금요일____ 제출해 주시기 바랍니다.",
       "ans": "까지",
       "w": [
-       "마다",
+       "에게",
        "보다",
        "처럼"
-      ]
-     }
-    },
-    {
-     "cat": "sentence",
-     "ko": "일정이 겹쳐서 참석하기 어렵습니다.",
-     "g": "My schedule overlaps, so it is difficult to attend.",
-     "choose": {
-      "w": [
-       "일정이 겹쳐서 참석하기 어려우십니다.",
-       "일정이 겹쳐서 참석하기 어렵습니까.",
-       "일정이 겹쳐서 참석하기 어렵겠습니까."
       ]
      }
     },
@@ -781,7 +768,7 @@
     {
      "cat": "expr",
      "ko": "좋은 의견 감사합니다.",
-     "g": "Thank you for the good suggestion.",
+     "g": "Thank you for the good input.",
      "s": "A colleague has just offered a useful idea."
     },
     {
@@ -857,7 +844,6 @@
      "cat": "sentence",
      "ko": "회의 내용은 회의록으로 정리하여 공유하겠습니다.",
      "g": "I will organize the contents as minutes and share them.",
-     "note": "meetHon",
      "cloze": {
       "blank": "회의 내용은 회의록으로 정리하여 ____.",
       "ans": "공유하겠습니다",
@@ -931,7 +917,7 @@
     {
      "cat": "passage",
      "ko": "A: 먼저 신제품 출시 일정에 대한 의견을 말씀해 주십시오.\nB: 저는 다음 달 출시가 무리라고 생각합니다. 테스트가 아직 끝나지 않았습니다.\nA: 그렇다면 한 달 늦추는 방안은 어떻습니까?\nB: 네, 그 방안에 찬성합니다.",
-     "g": "A: First, please share your opinions on the new product launch schedule.\nB: I think a launch next month is too much. Testing is not finished yet.\nA: In that case, how about delaying it by a month?\nB: Yes, I agree with that plan.",
+     "g": "A: First, please share your opinions on the new product launch schedule.\nB: I think a launch next month is unrealistic. Testing is not finished yet.\nA: In that case, how about delaying it by a month?\nB: Yes, I agree with that plan.",
      "read": {
       "true": "B는 출시를 한 달 늦추는 방안에 찬성했습니다.",
       "false": [
@@ -980,7 +966,7 @@
     {
      "cat": "word",
      "ko": "성과",
-     "g": "results; achievement"
+     "g": "results; outcome (of work)"
     },
     {
      "cat": "word",
@@ -1046,8 +1032,7 @@
     {
      "cat": "sentence",
      "ko": "현재 전체 작업의 약 80%가 진행되었습니다.",
-     "g": "About 80 percent of the whole work has been completed so far.",
-     "note": "repPass",
+     "g": "About 80 percent of the whole work has been carried out so far.",
      "cloze": {
       "blank": "현재 전체 작업의 약 80%가 ____.",
       "ans": "진행되었습니다",
@@ -1147,14 +1132,13 @@
      "cat": "sentence",
      "ko": "이번 주 안으로 보완해서 다시 보고드리겠습니다.",
      "g": "I will supplement it within this week and report again.",
-     "note": "repHon",
      "cloze": {
       "blank": "이번 주 안으로 보완해서 다시 ____.",
       "ans": "보고드리겠습니다",
       "w": [
        "보고하십시오",
        "보고받겠습니다",
-       "보고해 주겠습니다"
+       "보고하시겠습니다"
       ]
      }
     },
@@ -1319,8 +1303,7 @@
     {
      "cat": "sentence",
      "ko": "시장 점유율이 20%에서 25%로 높아졌습니다.",
-     "g": "Our market share rose from 20 percent to 25 percent.",
-     "note": "statPart",
+     "g": "The market share rose from 20 percent to 25 percent.",
      "cloze": {
       "blank": "시장 점유율이 20%에서 25%____ 높아졌습니다.",
       "ans": "로",
@@ -1384,7 +1367,7 @@
       "w": [
        "그래프가",
        "그래프와",
-       "그래프에"
+       "그래프의"
       ]
      }
     },
@@ -1400,18 +1383,6 @@
        "줄였습니다",
        "줄이셨습니다",
        "줄여졌습니다"
-      ]
-     }
-    },
-    {
-     "cat": "sentence",
-     "ko": "지난달보다 약 3% 하락했습니다.",
-     "g": "It fell by about 3 percent compared with last month.",
-     "choose": {
-      "w": [
-       "지난달보다 약 3% 하락하셨습니다.",
-       "지난달에게 약 3% 하락했습니다.",
-       "지난달보다 약 3% 하락했습니까."
       ]
      }
     },
@@ -1544,7 +1515,7 @@
     {
      "cat": "expr",
      "ko": "조금만 더 양보해 주실 수 있겠습니까?",
-     "g": "Could you give a little more?",
+     "g": "Could you concede a little more?",
      "s": "You ask the other side to make a further concession."
     },
     {
@@ -1558,20 +1529,6 @@
        "낮아",
        "낮은",
        "낮추"
-      ]
-     }
-    },
-    {
-     "cat": "sentence",
-     "ko": "납기를 일주일만 앞당길 수 있습니까?",
-     "g": "Can you move the delivery date up by just one week?",
-     "cloze": {
-      "blank": "납기를 일주일만 ____ 수 있습니까?",
-      "ans": "앞당길",
-      "w": [
-       "앞당기는",
-       "앞당긴",
-       "앞당겨서"
       ]
      }
     },
@@ -1597,9 +1554,9 @@
       "blank": "계약 조건은 양측이 모두 ____ 확정됩니다.",
       "ans": "동의해야",
       "w": [
-       "동의해도",
        "동의하면서",
-       "동의하려고"
+       "동의하려고",
+       "동의하지만"
       ]
      }
     },
@@ -1687,19 +1644,6 @@
        "B는 할인이 전혀 불가능하다고 했습니다."
       ]
      }
-    },
-    {
-     "cat": "passage",
-     "ko": "김 이사님께,\n보내 주신 제안서를 잘 검토했습니다.\n전반적으로 만족스러우나 결제 조건은 조정이 필요합니다.\n다음 주 중에 만나 협의할 수 있을까요?",
-     "g": "To Director Kim,\nI reviewed the proposal you sent carefully.\nOverall we are satisfied, but the payment terms need adjusting.\nCould we meet next week to discuss it?",
-     "read": {
-      "true": "글쓴이는 결제 조건을 조정하고 싶어 합니다.",
-      "false": [
-       "글쓴이는 제안서를 아직 보지 못했습니다.",
-       "글쓴이는 제안 내용 전체에 반대합니다.",
-       "글쓴이는 오늘 만나자고 요청합니다."
-      ]
-     }
     }
    ]
   },
@@ -1751,11 +1695,6 @@
     },
     {
      "cat": "phrase",
-     "ko": "신입 사원",
-     "g": "new employee"
-    },
-    {
-     "cat": "phrase",
      "ko": "거래처 담당자",
      "g": "client's contact person"
     },
@@ -1793,18 +1732,6 @@
      "ko": "말씀 많이 들었습니다.",
      "g": "I have heard a lot about you.",
      "s": "You meet someone you already know of by reputation."
-    },
-    {
-     "cat": "expr",
-     "ko": "먼저 퇴근하겠습니다. 수고하십시오.",
-     "g": "I will leave first. Please keep up the good work.",
-     "s": "You leave the office while senior colleagues are still working."
-    },
-    {
-     "cat": "expr",
-     "ko": "저희 대표님을 소개해 드리겠습니다.",
-     "g": "Let me introduce our CEO to you.",
-     "s": "You present your company's head to a visiting client."
     },
     {
      "cat": "sentence",
@@ -1874,9 +1801,9 @@
       "blank": "사장님, 거래처 손님이 ____.",
       "ans": "오셨습니다",
       "w": [
-       "왔습니다",
-       "왔습니까",
-       "오셨습니까"
+       "오셨습니까",
+       "오십시오",
+       "오시겠습니까"
       ]
      }
     },
@@ -1909,9 +1836,9 @@
       "blank": "회의실까지 안내해 ____.",
       "ans": "드리겠습니다",
       "w": [
-       "주겠습니다",
        "드립니까",
-       "드렸습니까"
+       "드렸습니까",
+       "드리십시오"
       ]
      }
     },
@@ -1997,12 +1924,6 @@
     },
     {
      "cat": "expr",
-     "ko": "결재 부탁드립니다.",
-     "g": "Please approve this.",
-     "s": "You hand a document to a superior who must sign off on it."
-    },
-    {
-     "cat": "expr",
      "ko": "회의 일정을 잠시 확인하겠습니다.",
      "g": "Let me check the meeting schedule for a moment.",
      "s": "Someone asks for a meeting time and you need to look at your calendar."
@@ -2022,7 +1943,7 @@
     {
      "cat": "expr",
      "ko": "오늘 중으로 보내 드리겠습니다.",
-     "g": "I will send it to you within today.",
+     "g": "I will send it to you by the end of today.",
      "s": "You promise a client to deliver a document by the end of the day."
     },
     {
@@ -2119,9 +2040,9 @@
       "blank": "부장님께 ____ 후에 연락드리겠습니다.",
       "ans": "보고드린",
       "w": [
-       "보고하신",
-       "보고받은",
-       "보고해 준"
+       "보고하는",
+       "보고하러",
+       "보고받은"
       ]
      }
     },
@@ -2135,7 +2056,7 @@
       "w": [
        "초과시켰습니다",
        "초과하셨습니다",
-       "초과합니다"
+       "초과되었습니다"
       ]
      }
     },
@@ -2176,9 +2097,9 @@
       "blank": "고객님께 견적서를 보내 ____.",
       "ans": "드렸습니다",
       "w": [
-       "주었습니다",
        "주셨습니다",
-       "받았습니다"
+       "받았습니다",
+       "받으셨습니다"
       ]
      }
     },
@@ -2191,9 +2112,9 @@
       "blank": "이메일에 파일을 ____ 것을 잊었습니다.",
       "ans": "첨부하는",
       "w": [
-       "첨가하는",
        "첨삭하는",
-       "참조하는"
+       "참석하는",
+       "청소하는"
       ]
      }
     },
@@ -2205,7 +2126,7 @@
       "true": "A는 내일 부산으로 출장을 갑니다.",
       "false": [
        "비행기는 오후 두 시입니다.",
-       "A는 내일 서울에서 회의를 합니다.",
+       "거래처 미팅은 오전 열 시입니다.",
        "회의 자료는 아직 보내지 않았습니다."
       ]
      }
