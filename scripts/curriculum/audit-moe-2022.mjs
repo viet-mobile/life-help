@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -36,13 +36,69 @@ export function validateCurriculum(data) {
   return standards;
 }
 
+export function contentSourceFiles(contentRoot, subject) {
+  const site = subject === 'mathematics' ? 'math' : 'english';
+  const files = ['elementary', 'demo', 'secondary'].map(tier => `lib/learn/content/${tier}/${site}.json`);
+  const bank = `lib/learn/content/bank/${site}.json`;
+  if (existsSync(resolve(contentRoot, bank))) files.push(bank);
+  return files;
+}
+
+/** Canonical expansion matches lib/learn/content/bank.ts without importing runtime code into this Node tool. */
+export function expandAuditBank(data, skills, contentFile) {
+  fail(data.format === 1 && ['math', 'english'].includes(data.site), 'Unsupported bank format/site');
+  fail(Array.isArray(data.sets), 'Missing bank sets');
+  const questions = new Map(), sets = new Map();
+  const fill = (text, vars) => text.replace(/\{(\w+)\}/g, (match, name) => name in vars ? String(vars[name]) : match).replace(/\}\}/g, '} }').replace(/\{\{/g, '{ {');
+  for (const set of data.sets) {
+    fail(typeof set.id === 'string' && set.id.length > 0 && !sets.has(set.id), `Duplicate/invalid bank set: ${set.id}`);
+    fail(skills.has(set.skillId), `Unknown bank skill: ${set.skillId}`);
+    fail(Number.isInteger(set.difficulty) && set.difficulty >= 1 && set.difficulty <= 5, `Invalid bank difficulty: ${set.id}`);
+    fail(set.tolerance === undefined || typeof set.tolerance === 'number' && Number.isFinite(set.tolerance) && set.tolerance >= 0, `Invalid bank tolerance: ${set.id}`);
+    fail(Array.isArray(set.cols) && new Set(set.cols).size === set.cols.length && set.cols.every(c => typeof c === 'string' && c !== 'ans'), `Invalid bank columns: ${set.id}`);
+    fail(Array.isArray(set.rows) && set.rows.length > 0, `Empty bank set: ${set.id}`);
+    const template = data.templates?.[set.template];
+    fail(template && typeof template.prompt === 'string' && typeof template.explanation === 'string' && Array.isArray(template.hints) && template.hints.every(h => typeof h === 'string'), `Missing/invalid bank template: ${set.id}`);
+    const ids = [];
+    set.rows.forEach((row, index) => {
+      fail(Array.isArray(row) && row.length === set.cols.length + 1, `Invalid bank row width: ${set.id}-${index + 1}`);
+      const vars = Object.fromEntries(set.cols.map((col, i) => {
+        const value = row[i];
+        fail(typeof value === 'string' || typeof value === 'number' && Number.isFinite(value), `Invalid bank variable: ${set.id}.${col}`);
+        if (typeof value === 'string' && value.startsWith('#')) {
+          fail(typeof data.texts?.[value.slice(1)] === 'string', `Unknown bank text: ${value}`);
+          return [col, data.texts[value.slice(1)]];
+        }
+        return [col, value];
+      }));
+      const answer = row[set.cols.length];
+      fail(typeof answer === 'number' && Number.isFinite(answer), `Invalid bank answer: ${set.id}-${index + 1}`);
+      vars.ans = answer;
+      const id = `${set.id}-${String(index + 1).padStart(3, '0')}`;
+      fail(!questions.has(id), `Duplicate bank question: ${id}`);
+      ids.push(id);
+      questions.set(id, {
+        id, site: data.site, skillId: set.skillId, type: 'numeric', difficulty: set.difficulty,
+        prompt: fill(template.prompt, vars), answer: { kind: 'numeric', value: answer, ...(set.tolerance ? { tolerance: set.tolerance } : {}) },
+        hints: template.hints.map(h => fill(h, vars)), explanation: fill(template.explanation, vars),
+        family: set.family, role: 'variant', expectedSeconds: 60, tags: ['bank'], status: 'PUBLISHED',
+        bank_source: { content_file: contentFile, set_id: set.id, row_number: index + 1 },
+      });
+    });
+    sets.set(set.id, { ...set, content_file: contentFile, question_ids: ids });
+  }
+  return { questions, sets };
+}
+
 export function readContent(contentRoot, subject) {
   const site = subject === 'mathematics' ? 'math' : 'english';
   const lessons = new Map();
   const questions = new Map();
+  const skills = new Set();
   for (const tier of ['elementary', 'demo', 'secondary']) {
     const relative = `lib/learn/content/${tier}/${site}.json`;
     const data = read(resolve(contentRoot, relative));
+    for (const skill of data.catalog.skills) skills.add(skill.id);
     for (const q of data.questions) {
       fail(!questions.has(q.id), `Duplicate question: ${q.id}`);
       questions.set(q.id, q);
@@ -55,7 +111,20 @@ export function readContent(contentRoot, subject) {
   for (const lesson of lessons.values()) for (const id of [...lesson.questionIds, ...(lesson.challengeId ? [lesson.challengeId] : [])]) {
     fail(questions.has(id), `Missing lesson question: ${id}`);
   }
-  return { lessons, questions };
+  const canonicalQuestions = questions.size;
+  const bankSets = new Map();
+  const bankFile = `lib/learn/content/bank/${site}.json`;
+  if (existsSync(resolve(contentRoot, bankFile))) {
+    const data = read(resolve(contentRoot, bankFile));
+    fail(data.site === site, `Wrong bank subject: ${bankFile}`);
+    const expanded = expandAuditBank(data, skills, bankFile);
+    for (const [id, question] of expanded.questions) {
+      fail(!questions.has(id), `Duplicate question: ${id}`);
+      questions.set(id, question);
+    }
+    for (const [id, set] of expanded.sets) bankSets.set(id, set);
+  }
+  return { lessons, questions, bankSets, canonicalQuestions, source_files: contentSourceFiles(contentRoot, subject) };
 }
 
 export function validateMappings(entries, standards, content) {
@@ -88,6 +157,38 @@ export function validateMappings(entries, standards, content) {
   }
 }
 
+/** Validate references and provenance; never promote reviewed status based on a candidate label. */
+export function validateBankEvidence(document, standards, content, mappings = []) {
+  fail(document.bank?.sets === content.bankSets?.size && document.bank?.questions === content.questions.size - content.canonicalQuestions, 'Stale bank evidence inventory');
+  fail(Array.isArray(document.standards), 'Missing bank evidence standards');
+  const reviewed = new Map(mappings.map(e => [e.code, e]));
+  const seen = new Set(), effects = { none: 0, strengthens: 0, could_upgrade: 0 }, candidates = [];
+  for (const entry of document.standards) {
+    fail(standards.has(entry.code) && !seen.has(entry.code), `Unknown/duplicate bank evidence code: ${entry.code}`);
+    seen.add(entry.code);
+    fail(Object.hasOwn(effects, entry.effect), `Invalid bank evidence effect: ${entry.code}`);
+    fail(['unreviewed','gap','partial','covered'].includes(entry.status), `Invalid bank evidence status: ${entry.code}`);
+    if (reviewed.has(entry.code)) fail(reviewed.get(entry.code).status === entry.status, `Stale bank evidence status: ${entry.code}`);
+    fail(Array.isArray(entry.bank_sets) && Array.isArray(entry.sample_question_ids), `Missing bank evidence IDs: ${entry.code}`);
+    fail(new Set(entry.bank_sets).size === entry.bank_sets.length && new Set(entry.sample_question_ids).size === entry.sample_question_ids.length, `Duplicate bank evidence IDs: ${entry.code}`);
+    fail(typeof entry.rationale === 'string' && entry.rationale.trim().length > 0, `Missing bank evidence rationale: ${entry.code}`);
+    fail(entry.bank_sets.every(id => content.bankSets.has(id)), `Unknown bank evidence set: ${entry.code}`);
+    for (const id of entry.sample_question_ids) {
+      const question = content.questions.get(id);
+      fail(question?.status === 'PUBLISHED' && entry.bank_sets.includes(question.bank_source?.set_id), `Invalid bank sample or set membership: ${entry.code}: ${id}`);
+    }
+    fail(entry.effect === 'none' ? entry.bank_sets.length === 0 && entry.sample_question_ids.length === 0 : entry.bank_sets.length > 0 && entry.sample_question_ids.length > 0, `Missing/unexpected bank evidence: ${entry.code}`);
+    effects[entry.effect]++;
+    if (entry.effect === 'could_upgrade') {
+      const bankSkills = new Set(entry.bank_sets.map(id => content.bankSets.get(id).skillId));
+      const lessonIds = [...content.lessons.values()].filter(lesson => lesson.skillIds.some(id => bankSkills.has(id))).map(lesson => lesson.id);
+      candidates.push({ code: entry.code, current_status: entry.status, bank_sets: entry.bank_sets, lesson_ids: lessonIds, question_ids: entry.sample_question_ids, rationale: entry.rationale, status_changed: false });
+    }
+  }
+  fail(seen.size === standards.size, 'Missing bank evidence standard');
+  return { effects, candidates, interpretation: 'Valid references do not prove educational coverage. Candidate statuses are not applied automatically.' };
+}
+
 export function buildAudit(data, content, entries = []) {
   const standards = validateCurriculum(data);
   validateMappings(entries, standards, content);
@@ -101,7 +202,7 @@ export function buildAudit(data, content, entries = []) {
   rows.forEach(row => counts[row.status]++);
   return {
     subject: data.subject, source_sha256: data.source.sha256,
-    summary: { source_pages: data.pages.length, standards: rows.length, lessons: content.lessons.size, questions: content.questions.size, ...counts },
+    summary: { source_pages: data.pages.length, standards: rows.length, lessons: content.lessons.size, questions: content.questions.size, canonical_questions: content.canonicalQuestions ?? content.questions.size, bank_questions: content.questions.size - (content.canonicalQuestions ?? content.questions.size), bank_sets: content.bankSets?.size ?? 0, ...counts },
     interpretation: 'Unreviewed means no evidence-based mapping has been supplied. It does not mean gap. Covered is a reviewer assertion, not proof of pedagogical completeness.',
     enrichment_lesson_ids: data.subject === 'english' ? [...content.lessons.values()].filter(l => ['E1', 'E2'].includes(l.grade)).map(l => l.id) : [],
     lesson_inventory: [...content.lessons.values()].map(l => ({ id: l.id, title: l.title, grade: l.grade, content_file: l.content_file, skill_ids: l.skillIds, question_ids: l.questionIds, challenge_id: l.challengeId ?? null })),
@@ -120,7 +221,13 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     const data = read(resolve(root, `lib/learn/curriculum/kr/2022/${subject}.json`));
     report.subjects.push(buildAudit(data, readContent(contentRoot, subject), mappings[subject] ?? []));
   }
+  const bankEvidencePath = option('--bank-evidence', null);
+  if (bankEvidencePath) {
+    const data = read(resolve(root, 'lib/learn/curriculum/kr/2022/mathematics.json'));
+    report.bank_evidence = validateBankEvidence(read(resolve(bankEvidencePath)), validateCurriculum(data), readContent(contentRoot, 'mathematics'), mappings.mathematics ?? []);
+  }
   const output = option('--output', null);
   if (output) { mkdirSync(dirname(resolve(output)), { recursive: true }); writeFileSync(resolve(output), JSON.stringify(report, null, 2) + '\n'); }
+  if (report.bank_evidence) console.log(JSON.stringify({bank_evidence: report.bank_evidence.effects}, null, 2));
   console.log(JSON.stringify(report.subjects.map(({ subject, summary, enrichment_lesson_ids }) => ({ subject, ...summary, enrichment_lessons: enrichment_lesson_ids.length })), null, 2));
 }
