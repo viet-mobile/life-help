@@ -26,7 +26,7 @@ const extraPath = (l) => path.join(root, "scripts/learn/korean/kit-extra", `${l}
 for (const l of Object.keys(kits)) {
   if (!fs.existsSync(extraPath(l))) { if (process.argv.includes("--draft")) delete kits[l]; continue; }
   const x = JSON.parse(fs.readFileSync(extraPath(l), "utf8"));
-  for (const sec of ["skill", "lesson", "gloss", "note"]) kits[l][sec] = { ...kits[l][sec], ...(x[sec] ?? {}) };
+  for (const sec of ["course", "skill", "lesson", "gloss", "note"]) kits[l][sec] = { ...kits[l][sec], ...(x[sec] ?? {}) };
 }
 const missing = LOCALES.filter((l) => !kits[l] || !fs.existsSync(extraPath(l)));
 // --draft renders only the kits present (development); the committed build (and --check) requires a kit for every registry locale.

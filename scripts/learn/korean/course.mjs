@@ -1,3 +1,4 @@
+import { INTERMEDIATE_LEVELS, INTERMEDIATE_EXAMPLES } from "./course-intermediate.mjs";
 // study.korean.life.help — canonical Korean course data (K1..K6 language levels).
 //
 // TARGET material (Korean text, its Revised Romanization, reviewed Vietnamese pronunciation, accepted answers, audio) lives here ONCE and is never localized.
@@ -239,7 +240,10 @@ const BASE_LEVELS = [
 ];
 
 /** K1..K6: the first three lessons above plus the extended lessons in course-extra.mjs. */
-export const LEVELS = BASE_LEVELS.map((L) => ({ ...L, lessons: [...L.lessons, ...(EXTRA_LESSONS[L.level] ?? [])] }));
+export const LEVELS = [
+  ...BASE_LEVELS.map((L) => ({ ...L, lessons: [...L.lessons, ...(EXTRA_LESSONS[L.level] ?? [])] })),
+  ...INTERMEDIATE_LEVELS,
+];
 
 /** Lesson examples: Korean target + romanization; the gloss after "=" is presentation (kit key). */
 const BASE_EXAMPLES = {
@@ -263,4 +267,4 @@ const BASE_EXAMPLES = {
   "K6.wants": [["가고 싶어요.", "gago sipeoyo.", "wantGo"]],
 };
 
-export const EXAMPLES = { ...BASE_EXAMPLES, ...EXTRA_EXAMPLES };
+export const EXAMPLES = { ...BASE_EXAMPLES, ...EXTRA_EXAMPLES, ...INTERMEDIATE_EXAMPLES };

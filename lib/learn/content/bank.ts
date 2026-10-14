@@ -1,16 +1,11 @@
+// lib/learn/content/bank.ts
+// Unified question bank runtime interface for Math, English, and Korean.
+
 import type { Difficulty, Question, Site } from "@/lib/learn/types";
 import mathBank from "./bank/math.json";
+import englishBank from "./bank/english.json";
+import koreanBank from "./bank/korean.json";
 
-/**
- * The parametric question bank: practice questions that are NOT stored one by one. A set holds a template id and a table of numbers
- * (language-neutral, the answer is the last column, computed and verified when the bank is built: scripts/learn/bank). The learner-facing
- * wording lives in templates, written once in Korean (canonical, in the bank file) and once per locale (the `bank` section of the overlay
- * assets), so a thousand new questions cost a handful of translated sentences, not a thousand.
- *
- * Expansion is pure and deterministic: the same bank + the same templates give the same question ids, prompts and answer keys, so grading
- * is identical in every language. Expanded questions are role "variant" PUBLISHED numeric questions of an existing skill: they feed the
- * practice, review and follow-up pickers on the server and never appear in a lesson, the placement test or the browser's metadata.
- */
 export interface BankTemplate { prompt: string; hints: string[]; explanation: string }
 export interface BankSet {
   id: string;
@@ -19,30 +14,41 @@ export interface BankSet {
   template: string;
   difficulty: Difficulty;
   tolerance?: number;
-  /** names of the template variables, in column order; the answer is one more, last column */
   cols: string[];
   rows: (string | number)[][];
 }
 export interface BankData {
   format: 1;
   site: Site;
-  /** canonical (Korean) templates */
   templates: Record<string, BankTemplate>;
-  /** canonical texts that rows refer to as "#key" (for example the rounding mode word) */
   texts: Record<string, string>;
   sets: BankSet[];
 }
-/** What a locale overlay supplies (`overlay.bank`): the same ids as the canonical bank, in that locale. */
 export interface BankOverlay { templates?: Record<string, BankTemplate>; texts?: Record<string, string> }
 
-export const BANKS: Partial<Record<Site, BankData>> = { math: mathBank as unknown as BankData };
+export interface DiscreteBankPayload {
+  format: 1;
+  site: Site;
+  count: number;
+  grades?: Record<string, number>;
+  levels?: Record<string, number>;
+  questions: Question[];
+}
+
+export const BANKS: Partial<Record<Site, BankData>> = {
+  math: mathBank as unknown as BankData,
+};
+
+export const PRACTICE_BANKS = {
+  english: englishBank as unknown as DiscreteBankPayload,
+  korean: koreanBank as unknown as DiscreteBankPayload,
+};
 
 const HOLES = /\{(\w+)\}/g;
-/** the template filler of the content builders: "{{x}}" must not read as an unresolved placeholder in content QA */
 const noDouble = (t: string) => t.replace(/\}\}/g, "} }").replace(/\{\{/g, "{ {");
 export const fillTemplate = (tpl: string, vars: Record<string, string | number>) => noDouble(tpl.replace(HOLES, (m, k: string) => (k in vars ? String(vars[k]) : m)));
 
-/** Pure: the bank's questions for one language. `skills` limits the result to skills the bundle really has. */
+/** Pure: math parametric bank questions for one language. `skills` limits the result to skills the bundle really has. */
 export function expandBank(data: BankData, overlay: BankOverlay | null | undefined, skills: ReadonlySet<string>): Question[] {
   const templates = overlay?.templates ?? data.templates;
   const texts = overlay?.texts ?? data.texts;
@@ -86,11 +92,76 @@ const cache = new Map<string, Question[]>();
 export function bankQuestions(site: Site, locale: string, overlay: BankOverlay | null | undefined, skills: ReadonlySet<string>, skillsKey: string): Question[] {
   const data = BANKS[site];
   if (!data) return [];
-  const key = `${site}:${locale}:${skillsKey}`;
-  const hit = cache.get(key);
-  if (hit) { cache.delete(key); cache.set(key, hit); return hit; }
-  const made = expandBank(data, overlay, skills);
-  cache.set(key, made);
-  while (cache.size > CACHE_LIMIT) cache.delete(cache.keys().next().value as string);
-  return made;
+  if (site === "math") {
+    const key = `${site}:${locale}:${skillsKey}`;
+    const hit = cache.get(key);
+    if (hit) { cache.delete(key); cache.set(key, hit); return hit; }
+    const made = expandBank(data as BankData, overlay, skills);
+    cache.set(key, made);
+    while (cache.size > CACHE_LIMIT) cache.delete(cache.keys().next().value as string);
+    return made;
+  }
+  return getAllBankQuestions(site);
+}
+
+// Skill-to-questions index map for English and Korean
+const skillIndexCache = new Map<string, Question[]>();
+
+function getSkillIndex(site: "english" | "korean"): Map<string, Question[]> {
+  const cacheKey = `skill-index:${site}`;
+  const hit = (skillIndexCache as unknown as { [key: string]: Map<string, Question[]> })[cacheKey];
+  if (hit) return hit;
+
+  const index = new Map<string, Question[]>();
+  const payload = PRACTICE_BANKS[site];
+  if (payload?.questions) {
+    for (const q of payload.questions) {
+      if (!index.has(q.skillId)) {
+        index.set(q.skillId, []);
+      }
+      index.get(q.skillId)!.push(q);
+    }
+  }
+
+  (skillIndexCache as unknown as { [key: string]: Map<string, Question[]> })[cacheKey] = index;
+  return index;
+}
+
+/** Retrieve all bank questions for a given site */
+export function getAllBankQuestions(site: Site): Question[] {
+  if (site === "english" || site === "korean") {
+    return (PRACTICE_BANKS[site])?.questions ?? [];
+  }
+  return [];
+}
+
+/** Retrieve bank questions for a specific skill */
+export function getBankQuestionsBySkill(site: Site, skillId: string): Question[] {
+  if (site === "english" || site === "korean") {
+    return getSkillIndex(site).get(skillId) ?? [];
+  }
+  return [];
+}
+
+/** Retrieve bank questions for a given grade (E1..H3) or Korean level (K1..K10) */
+export function getBankQuestionsByGrade(site: Site, gradeOrLevel: string): Question[] {
+  if (site !== "english" && site !== "korean") return [];
+  const target = gradeOrLevel.toLowerCase();
+  return ((PRACTICE_BANKS[site])?.questions ?? []).filter((q) => {
+    return (
+      q.id.toLowerCase().includes(`-${target}-`) ||
+      q.tags?.includes(target)
+    );
+  });
+}
+
+/** Retrieve question count summary by grade or level */
+export function getBankSummary(site: Site): Record<string, number> {
+  if (site === "english") {
+    return (PRACTICE_BANKS.english as DiscreteBankPayload).grades ?? {};
+  }
+  if (site === "korean") {
+    return (PRACTICE_BANKS.korean as DiscreteBankPayload).levels ?? {};
+  }
+  return {};
 }
