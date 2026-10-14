@@ -375,8 +375,8 @@ fs.writeFileSync(path.join(viDir, "reading-english.json"), json(viOverlay));
 
 // Helper index module
 const indexModule = `import bundle from "./english.json";
-import viOverlay from "../vi/reading-english.json";
-import type { ContentBundle, ContentOverlay, Course, Skill, Question } from "@/lib/learn/types";
+import type { ContentBundle, Course, Skill, Question } from "@/lib/learn/types";
+import type { ContentOverlay } from "@/lib/learn/content/overlay";
 
 export const advancedReadingBundle = bundle as unknown as ContentBundle;
 export const advancedReadingViOverlay = viOverlay as unknown as ContentOverlay;

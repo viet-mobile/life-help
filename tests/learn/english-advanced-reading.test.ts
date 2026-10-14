@@ -127,7 +127,7 @@ describe("English Advanced Reading Track (CEFR B1-B2 / College Preparatory)", ()
       const overlay = getAdvancedReadingOverlay(locale);
       expect(overlay, `Overlay for ${locale} must load`).toBeDefined();
 
-      const questions = overlay?.questions ?? {};
+      const questions = (overlay?.questions ?? {}) as Record<string, { prompt: string; hints: string[]; explanation: string }>;
       expect(Object.keys(questions), `Questions count for ${locale}`).toHaveLength(56);
 
       // Verify each question has 2 hints and no Hangul
@@ -146,7 +146,7 @@ describe("English Advanced Reading Track (CEFR B1-B2 / College Preparatory)", ()
       }
 
       // Verify courses and units
-      const courses = overlay?.courses ?? {};
+      const courses = (overlay?.courses ?? {}) as Record<string, { title: string }>;
       expect(Object.keys(courses), `Courses count for ${locale}`).toHaveLength(4);
       for (const [cid, c] of Object.entries(courses)) {
         expect(c.title, `${locale} ${cid} title`).toBeTruthy();
