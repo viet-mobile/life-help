@@ -36,7 +36,7 @@ describe("korean bank data", () => {
     for (const q of all) {
       const ans: any = q.answer;
       const correct = ans.kind === "choice" ? (q.type === "true_false" ? `${q.prompt}|${ans.id}` : q.options!.find((o) => o.id === ans.id)!.text) : (ans.ids as string[]).join(",");
-      const key = `${q.skillId}|${q.tags[2]}|${q.target?.text ?? q.audioText ?? q.prompt}|${correct}`;
+      const key = `${q.skillId}|${q.tags![2]}|${q.target?.text ?? q.audioText ?? q.prompt}|${correct}`;
       expect(seen.has(key), `duplicate question ${q.id}`).toBe(false);
       seen.add(key);
     }
@@ -80,13 +80,13 @@ describe("korean bank data", () => {
         for (const h of q.hints) expect(h.includes(`“${correctText}”`) || (HANGUL.test(correctText) && h.includes(correctText)), `${q.id} hint reveals ${correctText}`).toBe(false);
         expect(q.prompt.includes(`“${correctText}”`) || (HANGUL.test(correctText) && q.prompt.includes(correctText)), `${q.id} prompt reveals ${correctText}`).toBe(false);
       }
-      const form = q.tags[2];
+      const form = q.tags![2];
       if (form !== "read" && form !== "fromrr") for (const h of q.hints) expect(HANGUL.test(h), `${q.id} hint has Hangul`).toBe(false);
     }
   });
 
   it("the explanation always names the Korean target", () => {
-    for (const q of all.filter((x) => x.tags[2] !== "passage")) expect(HANGUL.test(q.explanation), q.id).toBe(true);
+    for (const q of all.filter((x) => x.tags![2] !== "passage")) expect(HANGUL.test(q.explanation), q.id).toBe(true);
   });
 
   it("cloze answers rebuild the sentence, particles agree with the final consonant, order parts rebuild the sentence", () => {
@@ -129,6 +129,7 @@ describe("the real service does not hand the quarantined bank to learners", () =
   const NOW = new Date("2026-03-01T03:00:00Z");
   const make = () => { let n = 0; return new LearnService({ store: new MemoryLearnStore(), now: () => NOW, newId: () => `session-${String(++n).padStart(4, "0")}` }); };
   const guest = (grade: string, skills: string[]) => ({
+    userId: null as unknown as string,
     locale: "ko" as const,
     guestState: {
       site: "korean", profile: { nickname: "tester", grade, goal: "habit", avatar: "fox", onboardingDone: true },

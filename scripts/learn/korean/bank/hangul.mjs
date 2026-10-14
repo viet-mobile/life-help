@@ -84,6 +84,12 @@ export function romanizeWord(word) {
           else if (nj === "ㅅ") { fSound = ""; } // 좋습니다 -> joseumnida (tensification is not transcribed)
           else fSound = "t";
         }
+        // cluster + ㅎ: the second consonant aspirates (밟혔어요 -> balpyeosseoyo, 앉혔어요 -> anchyeosseoyo, 읽히다 -> ilkida)
+        if (next.l === JAMO_L["ㅎ"] && CLUSTER[finalJ]) {
+          const [mn, tl] = CLUSTER[finalJ];
+          const asp = { "ㄱ": "ㅋ", "ㅂ": "ㅍ", "ㅈ": "ㅊ", "ㄷ": "ㅌ" }[tl];
+          if (asp) { fSound = FINAL_SOUND[mn]; S[i + 1] = { ...next, l: JAMO_L[asp] }; }
+        }
         // ㄷ/ㅌ + ㅎ + 이/여 -> palatalized ch (닫혀요 -> dachyeoyo)
         if (next.l === JAMO_L["ㅎ"] && (finalJ === "ㄷ" || finalJ === "ㅌ") && (next.v === 20 || next.v === 6)) { fSound = ""; S[i + 1] = { ...next, l: JAMO_L["ㅊ"] }; }
         // ㄱ/ㄷ/ㅂ + ㅎ -> aspirated onset
@@ -134,8 +140,22 @@ export function romanizeWord(word) {
   return out.map((o) => o.on + o.v + o.f).join("");
 }
 
+// Words whose standard pronunciation inserts ㄴ/ㄹ or links across a space; they cannot be derived from the spelling alone, so they are listed
+// (each is a standard 표준 발음 case: 마흔여덟 [마흔녀덜], 나뭇잎 [나문닙], 서울역 [서울력], 몇 월 [며둴], 몇 명 [면명] ...).
+export const RR_EXCEPTIONS = [
+  ["이천이십육", "icheonisimnyuk"], ["스물일곱", "seumullilgop"], ["스물여섯", "seumullyeoseot"], ["마흔여덟", "maheunnyeodeol"], ["서른여덟", "seoreunnyeodeol"],
+  ["열여덟", "yeollyeodeol"], ["열여섯", "yeollyeoseot"], ["열일곱", "yeollilgop"], ["삼십육", "samsimnyuk"], ["이십육", "isimnyuk"], ["십육", "simnyuk"],
+  ["지하철역", "jihacheollyeok"], ["서울역", "seoullyeok"], ["나뭇잎", "namunnip"], 
+];
 /** A phrase/sentence: every run of Hangul syllables is romanized as a word (no liaison across spaces or punctuation); everything else is kept. */
 export function romanize(text) {
-  return text.replace(/[가-힣]+/g, (w) => romanizeWord(w) ?? w);
+  const marks = [];
+  let t = text.replace(/몇 (월|명)([가-힣]*)/g, (_, u, rest) => { marks.push((u === "월" ? "myeod" : "myeon") + (romanizeWord(u + rest) ?? "")); return `\uE000${marks.length - 1}\uE001`; });
+  for (const [ko, rr] of RR_EXCEPTIONS) {
+    if (!t.includes(ko)) continue;
+    t = t.split(ko).join(`\uE000${marks.length}\uE001`);
+    marks.push(rr);
+  }
+  return t.replace(/[가-힣]+/g, (w) => romanizeWord(w) ?? w).replace(/\uE000(\d+)\uE001/g, (_, n) => marks[Number(n)]);
 }
 export const normRR = (s) => s.toLowerCase().replace(/[.,?!“”"']/g, "").replace(/[-]/g, "").replace(/\s+/g, " ").trim();

@@ -65,8 +65,10 @@ const manifest = { format: 1, version: "", sites: {} };
 const outputs = [];
 for (const [site, files] of Object.entries(CANON)) {
   const raw = files.map(read);
-  const bankFile = site === "math" && fs.existsSync(path.join(root, "lib/learn/content/bank/math.json")) ? read("lib/learn/content/bank/math.json") : null;
+  const bankFile = (site === "math" || site === "korean") && fs.existsSync(path.join(root, `lib/learn/content/bank/${site}.json`)) ? read(`lib/learn/content/bank/${site}.json`) : null;
   const bank = bankFile ? JSON.parse(bankFile) : null;
+  const kbank = site === "korean" && bank?.format === 2 ? bank : null; // the study.korean practice bank (korean-bank.ts): items + a presentation kit per locale
+  const kitEn = kbank ? JSON.parse(read("scripts/learn/korean/bank/kit/en.json")) : null;
   const canonicalSha = sha(raw.join("\n") + (bankFile ?? ""));
   const bundles = raw.map((t) => JSON.parse(t));
   const questions = new Map(bundles.flatMap((b) => b.questions).filter((q) => q.status === "PUBLISHED").map((q) => [q.id, q]));
@@ -75,7 +77,7 @@ for (const [site, files] of Object.entries(CANON)) {
     for (const s of b.catalog.skills) ids.skills.add(s.id);
     for (const c of b.catalog.courses) { ids.courses.add(c.id); for (const u of c.units) { ids.units.add(u.id); for (const l of u.lessons) ids.lessons.add(l.id); } }
   }
-  const site_ = { canonicalItems: questions.size, ...(bank ? { bankItems: bank.sets.reduce((n, x) => n + x.rows.length, 0) } : {}), canonicalSha, presentationLocale: PRESENTATION[site], locales: {} };
+  const site_ = { canonicalItems: questions.size, ...(kbank ? { bankItems: Object.values(kbank.skills).reduce((n, x) => n + x.items.length, 0) } : bank ? { bankItems: bank.sets.reduce((n, x) => n + x.rows.length, 0) } : {}), canonicalSha, presentationLocale: PRESENTATION[site], locales: {} };
   const needed = PRESENTATION[site] === "ko" ? koreanStrings(bundles, questions) : [];
   for (const locale of LOCALES) {
     if (locale === PRESENTATION[site]) continue;
@@ -86,7 +88,35 @@ for (const [site, files] of Object.entries(CANON)) {
     for (const k of ["skills", "courses", "units", "lessons"]) for (const id of Object.keys(ov[k])) if (!ids[k].has(id)) fail(`${locale}/${site}: unknown ${k} id ${id}`);
     // the parametric question bank (lib/learn/content/bank): this language's wording of every canonical template and text
     let bankOv;
-    if (bank) {
+    if (kbank) {
+      // Korean bank: every question form's wording plus the English meaning ("g:<id>"), situation ("s:<id>") and grammar note ("n:<key>") in this language.
+      bankOv = { templates: {}, texts: {} };
+      for (const p of parts) { const d = JSON.parse(read(p)); if (d.bank) { Object.assign(bankOv.templates, d.bank.templates ?? {}); Object.assign(bankOv.texts, d.bank.texts ?? {}); } }
+      const holes = (t) => [...new Set([...String(t).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].sort().join(",");
+      // A DRAFT bank (quarantined, never served) may still lack some languages; a PUBLISHED one must be complete in every language.
+      const strictBank = kbank.status !== "DRAFT";
+      for (const [form, c] of Object.entries(kitEn.templates)) {
+        const o = bankOv.templates[form];
+        if (!o && !strictBank) continue;
+        if (!o) fail(`${locale}/${site}: korean bank form ${form} not localized`);
+        const hs = c.hintsSafe ? 1 : 0;
+        if (o.hints.length !== c.hints.length || (hs && (!o.hintsSafe || o.hintsSafe.length !== c.hintsSafe.length))) fail(`${locale}/${site}: korean bank form ${form}: hint count`);
+        const pairs = [[o.prompt, c.prompt], [o.explanation, c.explanation], ...o.hints.map((h, i) => [h, c.hints[i]]), ...(hs ? o.hintsSafe.map((h, i) => [h, c.hintsSafe[i]]) : [])];
+        for (const [x, y] of pairs) { if (typeof x !== "string" || !x.trim() || HANGUL.test(x)) fail(`${locale}/${site}: korean bank form ${form} is empty or still Korean`); if (holes(x) !== holes(y)) fail(`${locale}/${site}: korean bank form ${form}: placeholders differ`); }
+      }
+      const required = new Set();
+      for (const sk of Object.values(kbank.skills)) {
+        for (const nk of new Set(sk.items.map((i) => i.n).filter(Boolean))) required.add(`n:${nk}`);
+        for (const i of sk.items) { if (i.c !== "syl") required.add(`g:${i.id}`); if (i.s) required.add(`s:${i.id}`); }
+      }
+      for (const k of required) {
+        const v = bankOv.texts[k];
+        if (v === undefined && !strictBank) continue;
+        if (typeof v !== "string" || !v.trim() || HANGUL.test(v)) fail(`${locale}/${site}: korean bank text ${k} not localized`);
+      }
+      for (const k of Object.keys(bankOv.texts)) if (!required.has(k)) delete bankOv.texts[k];
+      for (const k of Object.keys(bankOv.templates)) if (!kitEn.templates[k]) delete bankOv.templates[k];
+    } else if (bank) {
       bankOv = { templates: {}, texts: {} };
       for (const p of parts) { const d = JSON.parse(read(p)); if (d.bank) { Object.assign(bankOv.templates, d.bank.templates ?? {}); Object.assign(bankOv.texts, d.bank.texts ?? {}); } }
       const holes = (t) => [...new Set([...String(t).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].sort().join(",");
