@@ -75,13 +75,19 @@ describe("English Advanced Reading Track (CEFR B1-B2 / College Preparatory)", ()
       // Answer verification
       expect(q.answer.kind).toBe("choice");
       if (q.answer.kind === "choice") {
-        expect(q.answer.id).toBe("a");
+        expect(["a", "b", "c", "d"]).toContain(q.answer.id);
       }
 
       // Check grading correctness
       const response = correctResponse(q as unknown as Question);
       const isCorrect = checkAnswer(q as unknown as Question, response);
       expect(isCorrect).toBe(true);
+    }
+
+    // Verify balanced answer key distribution across a, b, c, d (exactly 14 each)
+    const answers = ADVANCED_READING_QUESTIONS.map((q) => (q.answer.kind === "choice" ? q.answer.id : null));
+    for (const opt of ["a", "b", "c", "d"]) {
+      expect(answers.filter((a) => a === opt).length).toBe(14);
     }
   });
 

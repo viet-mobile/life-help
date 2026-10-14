@@ -53,7 +53,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "친구가 온다고 해요.",
             "rr": "chinguga ondago haeyo.",
-            "claim": "friendSaidGoing",
+            "claim": "friendSaidComing",
             "g": "friendSaidComing"
           },
           {
@@ -236,7 +236,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "빨리 오라고 했어요.",
             "rr": "ppalli orago haesseoyo.",
-            "claim": "suggestedGoTogether",
+            "claim": "toldToComeFast",
             "g": "toldToComeFast"
           },
           {
@@ -424,7 +424,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "만날수록 좋아요.",
             "rr": "mannalsurok joayo.",
-            "claim": "boundToMakeMistakes",
+            "claim": "betterAsWeMeet",
             "g": "betterAsWeMeet"
           },
           {
@@ -607,7 +607,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "아는 척해요.",
             "rr": "aneun cheokaeyo.",
-            "claim": "pretendedToSleep",
+            "claim": "pretendsToKnow",
             "g": "pretendsToKnow"
           },
           {
@@ -790,7 +790,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "친구가 온다고 했어요.",
             "rr": "chinguga ondago haesseoyo.",
-            "claim": "suggestedEatTogether",
+            "claim": "friendSaidComing",
             "g": "friendSaidComing"
           },
           {
@@ -991,7 +991,7 @@ export const INTERMEDIATE_LEVELS = [
           {
             "k": "toko",
             "ko": "선생님께 여쭤봐요.",
-            "rr": "seonsaengnimkke yeojjjwobwayo.",
+            "rr": "seonsaengnimkke yeojjwobwayo.",
             "g": "askTeacherHonorific",
             "wrong": [
               "선물을 드려요.",
@@ -1003,7 +1003,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "선물을 드려요.",
             "rr": "seonmureul deuryeoyo.",
-            "claim": "seeTomorrowHonorific",
+            "claim": "giveGiftHonorific",
             "g": "giveGiftHonorific"
           },
           {
@@ -1020,7 +1020,7 @@ export const INTERMEDIATE_LEVELS = [
           {
             "k": "meaning",
             "ko": "선생님께 여쭤봐요.",
-            "rr": "seonsaengnimkke yeojjjwobwayo.",
+            "rr": "seonsaengnimkke yeojjwobwayo.",
             "g": "askTeacherHonorific",
             "wrong": [
               "giveGiftHonorific",
@@ -1191,7 +1191,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "글씨가 써져요.",
             "rr": "geulssiga sseojyeoyo.",
-            "claim": "cameToKnow",
+            "claim": "letterWrittenWell",
             "g": "letterWrittenWell"
           },
           {
@@ -1379,7 +1379,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "웃게 해요.",
             "rr": "utge haeyo.",
-            "claim": "madeWait",
+            "claim": "makesLaugh",
             "g": "makesLaugh"
           },
           {
@@ -1567,7 +1567,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "인사 말씀 올립니다.",
             "rr": "insa malsseum ollimnida.",
-            "claim": "ourSchoolHumble",
+            "claim": "offerGreetingWords",
             "g": "offerGreetingWords"
           },
           {
@@ -1780,7 +1780,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "회의 안건에 관하여 말씀드립니다.",
             "rr": "hoeui angeone gwanhayeo malsseumdeurimnida.",
-            "claim": "pleaseCheckAttachment",
+            "claim": "regardingMeetingAgenda",
             "g": "regardingMeetingAgenda"
           },
           {
@@ -1968,7 +1968,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "일정을 변경하고자 합니다.",
             "rr": "iljeongeul byeongyeonghagoja hamnida.",
-            "claim": "askKindUnderstanding",
+            "claim": "scheduleChangeRequest",
             "g": "scheduleChangeRequest"
           },
           {
@@ -2114,7 +2114,7 @@ export const INTERMEDIATE_LEVELS = [
           ],
           [
             "조치를 완료했습니다.",
-            "jochireul wallyeohaesseoyo.",
+            "jochireul wallyohaesseumnida.",
             "completedAction"
           ]
         ],
@@ -2133,7 +2133,7 @@ export const INTERMEDIATE_LEVELS = [
           {
             "k": "meaning",
             "ko": "조치를 완료했습니다.",
-            "rr": "jochireul wallyeohaesseoyo.",
+            "rr": "jochireul wallyohaesseumnida.",
             "g": "completedAction",
             "wrong": [
               "reportingProjectProgress",
@@ -2156,13 +2156,13 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "프로젝트 진행 상황을 보고합니다.",
             "rr": "peurojekteu jinhaeng sanghwangeul bogohamnida.",
-            "claim": "completedAction",
+            "claim": "reportingProjectProgress",
             "g": "reportingProjectProgress"
           },
           {
             "k": "listen",
             "ko": "조치를 완료했습니다.",
-            "rr": "jochireul wallyeohaesseoyo.",
+            "rr": "jochireul wallyohaesseumnida.",
             "wrong": [
               "프로젝트 진행 상황을 보고합니다.",
               "결과를 공유해 드립니다.",
@@ -2284,7 +2284,7 @@ export const INTERMEDIATE_LEVELS = [
             "wrong": [
               "전년 대비 상승했습니다.",
               "비용이 감소했습니다.",
-              "매출이 올랐습니다."
+              "매출이 감소했습니다."
             ],
             "variant": true
           }
@@ -2344,7 +2344,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "상호 협력을 희망합니다.",
             "rr": "sangho hyeomnyeogeul huimanghamnida.",
-            "claim": "proposeCompromise",
+            "claim": "hopeMutualCooperation",
             "g": "hopeMutualCooperation"
           },
           {
@@ -2532,7 +2532,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "안건을 검토해 주시기 바랍니다.",
             "rr": "angeoneul geomtohae jusigi baramnida.",
-            "claim": "seeYouAtMeeting",
+            "claim": "pleaseReviewAgenda",
             "g": "pleaseReviewAgenda"
           },
           {
@@ -2740,7 +2740,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "친환경 에너지가 주목받고 있습니다.",
             "rr": "chinhwan-gyeong eneojiga jumokbatgo isseumnida.",
-            "claim": "socialInterestGrowing",
+            "claim": "cleanEnergyPopular",
             "g": "cleanEnergyPopular"
           },
           {
@@ -2915,8 +2915,8 @@ export const INTERMEDIATE_LEVELS = [
           },
           {
             "k": "toko",
-            "ko": "발을 벗고 나섰어요.",
-            "rr": "bareul beotgo naseosseoyo.",
+            "ko": "발 벗고 나섰어요.",
+            "rr": "bal beotgo naseosseoyo.",
             "g": "steppedUpToHelp",
             "wrong": [
               "바가지를 썼어요.",
@@ -2928,7 +2928,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "바가지를 썼어요.",
             "rr": "bagajireul sseosseoyo.",
-            "claim": "heavyResponsibilityBurden",
+            "claim": "rippedOffPrice",
             "g": "rippedOffPrice"
           },
           {
@@ -2937,15 +2937,15 @@ export const INTERMEDIATE_LEVELS = [
             "rr": "eokkaega mugeowoyo.",
             "wrong": [
               "바가지를 썼어요.",
-              "발을 벗고 나섰어요.",
+              "발 벗고 나섰어요.",
               "마음이 무거워요."
             ],
             "challenge": true
           },
           {
             "k": "meaning",
-            "ko": "발을 벗고 나섰어요.",
-            "rr": "bareul beotgo naseosseoyo.",
+            "ko": "발 벗고 나섰어요.",
+            "rr": "bal beotgo naseosseoyo.",
             "g": "steppedUpToHelp",
             "wrong": [
               "rippedOffPrice",
@@ -2961,7 +2961,7 @@ export const INTERMEDIATE_LEVELS = [
             "g": "rippedOffPrice",
             "wrong": [
               "어깨가 무거워요.",
-              "발을 벗고 나섰어요.",
+              "발 벗고 나섰어요.",
               "그릇을 샀어요."
             ],
             "variant": true
@@ -3116,7 +3116,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "일석이조예요.",
             "rr": "ilseogijoyeyo.",
-            "claim": "threeDaysResolve",
+            "claim": "twoBirdsOneStone",
             "g": "twoBirdsOneStone"
           },
           {
@@ -3304,7 +3304,7 @@ export const INTERMEDIATE_LEVELS = [
             "k": "tf",
             "ko": "따뜻한 정이 있어요.",
             "rr": "ttatteutan jeongi isseoyo.",
-            "claim": "makeSongpyeonChuseok",
+            "claim": "warmJeongAffection",
             "g": "warmJeongAffection"
           },
           {
@@ -3709,7 +3709,7 @@ export const INTERMEDIATE_EXAMPLES = {
     ],
     [
       "조치를 완료했습니다.",
-      "jochireul wallyeohaesseoyo.",
+      "jochireul wallyohaesseumnida.",
       "completedAction"
     ]
   ],

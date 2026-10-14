@@ -1,5 +1,5 @@
 import bundle from "./english.json";
-import viOverlay from "../vi/reading-english.json";
+import viOverlay from "@/lib/learn/content/vi/reading-english.json";
 import type { ContentBundle, Course, Skill, Question } from "@/lib/learn/types";
 import type { ContentOverlay } from "@/lib/learn/content/overlay";
 

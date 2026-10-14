@@ -64,9 +64,7 @@ export function Onboarding() {
         e instanceof ApiError && e.code === "invalid_nickname"
           ? t("onboarding.nickname.hint")
           : e instanceof ApiError && e.code === "level_requires_db_upgrade"
-            ? (site === "korean"
-                ? "K7~K10 단계는 현재 게스트 모드에서 체험할 수 있으며, 회원 계정 저장은 데이터베이스 업데이트 후 정식 지원됩니다. (K1~K6을 선택해 주세요)"
-                : "선택한 단계는 현재 계정 저장 준비 중입니다.")
+            ? (site === "korean" ? t("onboarding.korean.account_limit") : t("lesson.error"))
             : t("lesson.error"),
       );
     }
@@ -114,7 +112,7 @@ export function Onboarding() {
           ))}
           {isBlockedLevel && (
             <p className="l-panel" style={{ fontSize: "0.9rem", color: "var(--l-accent, #c2410c)" }} role="status">
-              ℹ️ K7~K10 단계는 현재 게스트 모드에서 바로 체험하실 수 있으며, 로그인 계정 저장은 데이터베이스 업데이트 후 정식 지원됩니다. 계정으로 진행하시려면 K1~K6을 선택해 주세요.
+              ℹ️ {t("onboarding.korean.account_limit")}
             </p>
           )}
         </section>

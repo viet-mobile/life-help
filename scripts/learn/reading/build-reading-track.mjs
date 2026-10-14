@@ -278,20 +278,29 @@ for (const c of COURSES) {
       const qid = `${l.id}-q${idx + 1}`;
       qIds.push(qid);
 
+      const rot = questions.length % 4;
+      const reordered = item.opts.map((_, i) => item.opts[(i - rot + 4) % 4]);
+      const correctId = ["a", "b", "c", "d"][rot];
+
+      const isVocab = /meaning to|most nearly means|closest in meaning/i.test(item.q);
+      const isSynthesis = /synthesis|contention|main argument|main topic/i.test(item.q) || idx === 4;
+      const difficulty = isVocab ? 2 : isSynthesis ? 4 : 3;
+      const expectedSeconds = isVocab ? 45 : isSynthesis ? 75 : 60;
+
       questions.push({
         id: qid,
         site: "english",
         skillId: l.skillId,
         type: "multiple_choice",
-        difficulty: 3,
+        difficulty,
         prompt: `글을 읽고 물음에 답하세요. "${l.passage}" 질문: ${item.qKo}`,
-        options: item.opts.map((text, i) => ({ id: ["a", "b", "c", "d"][i], text })),
-        answer: { kind: "choice", id: item.a || "a" },
+        options: reordered.map((text, i) => ({ id: ["a", "b", "c", "d"][i], text })),
+        answer: { kind: "choice", id: correctId },
         hints: [item.h1Ko, item.h2Ko],
         explanation: item.exKo,
         role: idx < 4 ? "core" : idx === 4 ? "challenge" : "variant",
         family: `${l.id}-mc`,
-        expectedSeconds: 60,
+        expectedSeconds,
         tags: ["reading", "advanced", "elective"],
         status: "PUBLISHED"
       });
@@ -375,6 +384,7 @@ fs.writeFileSync(path.join(viDir, "reading-english.json"), json(viOverlay));
 
 // Helper index module
 const indexModule = `import bundle from "./english.json";
+import viOverlay from "@/lib/learn/content/vi/reading-english.json";
 import type { ContentBundle, Course, Skill, Question } from "@/lib/learn/types";
 import type { ContentOverlay } from "@/lib/learn/content/overlay";
 

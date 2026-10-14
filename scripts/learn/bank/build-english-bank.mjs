@@ -121,7 +121,359 @@ const TEMPLATE_FACTORIES = {
       h2: `The item described is a '${it.word}'.`,
       exp: `A '${it.word}' is ${it.clue}.`
     };
-  }
+  },
+  // Elementary Grade 2
+  "e.e2.noun": (i) => {
+    const nouns = [
+      { q: "Which word is a noun naming an animal?", ans: "cat", d: ["run", "fast", "blue"] },
+      { q: "What is the plural form of the noun 'book'?", ans: "books", d: ["booking", "booked", "bookes"] },
+      { q: "Which word is a noun naming a fruit?", ans: "apple", d: ["jump", "slowly", "happy"] },
+      { q: "Which word is a noun naming a place?", ans: "park", d: ["read", "yellow", "swim"] },
+      { q: "What is the plural form of the noun 'dog'?", ans: "dogs", d: ["doges", "doging", "doged"] }
+    ];
+    const item = nouns[i % nouns.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "A noun is a word that names a person, animal, place, or thing.",
+      h2: "Look for the naming word among the choices.",
+      exp: `'${item.ans}' is the correct noun.`
+    };
+  },
+  "e.e2.verb": (i) => {
+    const verbs = [
+      { q: "Which word is an action verb?", ans: "run", d: ["desk", "green", "quiet"] },
+      { q: "Choose the action verb: 'Birds ____ in the sky.'", ans: "fly", d: ["pencil", "blue", "slow"] },
+      { q: "Which word describes an action?", ans: "eat", d: ["table", "happy", "under"] },
+      { q: "Choose the action verb: 'Fish ____ in the water.'", ans: "swim", d: ["river", "shiny", "water"] },
+      { q: "Which word is an action verb?", ans: "jump", d: ["apple", "red", "chair"] }
+    ];
+    const item = verbs[i % verbs.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "A verb tells what someone or something does.",
+      h2: "Find the action word.",
+      exp: `'${item.ans}' is an action verb.`
+    };
+  },
+  "e.e2.like": (i) => {
+    const items = [
+      { q: "Choose the correct sentence:", ans: "I like apples.", d: ["I likes apples.", "I liking apples.", "I am like apples."] },
+      { q: "Choose the correct verb form: 'She ____ reading books.'", ans: "likes", d: ["like", "are like", "liking"] },
+      { q: "Choose the correct sentence:", ans: "We like playing games.", d: ["We likes playing games.", "We are like games.", "We liking games."] },
+      { q: "Choose the correct verb form: 'He ____ sweet ice cream.'", ans: "likes", d: ["like", "liking", "is like"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Use 'like' with I/you/we/they, and 'likes' with he/she/it.",
+      h2: "Check subject-verb agreement for the verb 'like'.",
+      exp: `'${item.ans}' correctly expresses preference.`
+    };
+  },
+  "e.e2.sent": (i) => {
+    const items = [
+      { q: "Choose the correctly ordered sentence:", ans: "This is a cat.", d: ["Cat is a this.", "A this cat is.", "Is this a cat."] },
+      { q: "Which word completes the sentence: 'The ball is ____.'", ans: "red", d: ["runs", "jump", "quickly"] },
+      { q: "Choose the correctly ordered sentence:", ans: "I have a book.", d: ["Have I a book.", "Book I have a.", "A book I have."] },
+      { q: "Which word completes the sentence: 'She has a small ____.'", ans: "puppy", d: ["running", "jump", "walk"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "English sentences start with a subject, followed by a verb.",
+      h2: "Look for natural word order.",
+      exp: `'${item.ans}' is a complete and natural English sentence.`
+    };
+  },
+  "e.e2.read": (i) => {
+    const items = [
+      { q: "Read: 'The cat is on the mat. It is sleeping.' Where is the cat?", ans: "On the mat", d: ["In the tree", "Under the car", "In the box"] },
+      { q: "Read: 'Tom has a red ball. He plays with the ball.' What color is the ball?", ans: "Red", d: ["Blue", "Green", "Yellow"] },
+      { q: "Read: 'The sun is in the sky. It is a bright day.' What is in the sky?", ans: "The sun", d: ["The moon", "The rain", "The cloud"] },
+      { q: "Read: 'Emma eats a sweet apple.' What does Emma eat?", ans: "An apple", d: ["A banana", "A cookie", "An orange"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Read the short text carefully to find the answer.",
+      h2: "Look for the key detail mentioned in the sentence.",
+      exp: `According to the sentence, '${item.ans}' is correct.`
+    };
+  },
+  // Elementary Grade 3
+  "e.e3.build": (i) => {
+    const items = [
+      { q: "Choose the correct sentence with proper word order:", ans: "The boy plays soccer.", d: ["Plays soccer the boy.", "Soccer the boy plays.", "The boy soccer plays."] },
+      { q: "Choose the correct sentence:", ans: "She reads a story.", d: ["A story she reads.", "Reads she a story.", "She a story reads."] },
+      { q: "Choose the correct sentence with proper word order:", ans: "They watch a movie.", d: ["Watch they a movie.", "A movie they watch.", "They a movie watch."] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Basic English word order is Subject + Verb + Object.",
+      h2: "The subject comes first, followed by the action verb.",
+      exp: `'${item.ans}' follows standard Subject-Verb-Object word order.`
+    };
+  },
+  "e.e3.pron": (i) => {
+    const items = [
+      { q: "Choose the pronoun for 'Tom': 'Tom is happy. ____ smiles.'", ans: "He", d: ["She", "It", "They"] },
+      { q: "Choose the pronoun for 'Mary': 'Mary has a book. ____ reads it.'", ans: "She", d: ["He", "It", "They"] },
+      { q: "Choose the pronoun for 'The dog': 'The dog is barking. ____ is hungry.'", ans: "It", d: ["He", "She", "They"] },
+      { q: "Choose the pronoun for 'The students': 'The students are singing. ____ are in the classroom.'", ans: "They", d: ["He", "She", "It"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "A pronoun replaces a noun based on gender and number.",
+      h2: "He is for a male, she is for a female, it is for an object/animal, and they is for plural.",
+      exp: `'${item.ans}' is the correct subject pronoun.`
+    };
+  },
+  "e.e3.routine": (i) => {
+    const items = [
+      { q: "Choose the correct verb for this daily routine: 'I ____ my teeth every morning.'", ans: "brush", d: ["read", "fly", "jump"] },
+      { q: "Choose the correct verb for this daily routine: 'She ____ breakfast at 7 AM.'", ans: "eats", d: ["watches", "wears", "washes"] },
+      { q: "Choose the correct routine phrase: 'We ____ to school on weekdays.'", ans: "walk", d: ["sleep", "cook", "rest"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Think about common morning or daily activities.",
+      h2: "Match the action to the routine noun.",
+      exp: `'${item.ans}' correctly describes the daily routine.`
+    };
+  },
+  "e.e3.read": (i) => {
+    const items = [
+      { q: "Read: 'Sam wakes up at 7. He eats breakfast and walks to school.' How does Sam go to school?", ans: "He walks", d: ["By bus", "By bike", "By train"] },
+      { q: "Read: 'Lucy has a brown dog named Max. Max likes running in the grass.' What color is Max?", ans: "Brown", d: ["Black", "White", "Golden"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Locate the specific detail in the short passage.",
+      h2: "The text directly states the answer.",
+      exp: `Based on the reading passage, '${item.ans}' is correct.`
+    };
+  },
+  // Elementary Grade 4
+  "e.e4.qneg": (i) => {
+    const items = [
+      { q: "Choose the correct question form: '____ you like pizza?'", ans: "Do", d: ["Does", "Are", "Is"] },
+      { q: "Choose the correct negative sentence:", ans: "He does not like cold weather.", d: ["He do not like cold weather.", "He is not like cold weather.", "He not like cold weather."] },
+      { q: "Choose the correct question form: '____ she have a pencil?'", ans: "Does", d: ["Do", "Is", "Has"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Use 'Do' with I/you/we/they and 'Does' with he/she/it.",
+      h2: "Negative present simple uses 'do/does not + base verb'.",
+      exp: `'${item.ans}' is grammatically correct.`
+    };
+  },
+  "e.e4.adj": (i) => {
+    const items = [
+      { q: "Which adjective describes something with high temperature?", ans: "hot", d: ["cold", "slow", "quiet"] },
+      { q: "Choose the adjective describing size: 'An elephant is very ____.'", ans: "large", d: ["loudly", "quickly", "softly"] },
+      { q: "Which adjective is the opposite of 'tall'?", ans: "short", d: ["wide", "heavy", "bright"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Adjectives describe qualities of nouns.",
+      h2: "Look for words indicating temperature, size, or quality.",
+      exp: `'${item.ans}' is the descriptive adjective that fits.`
+    };
+  },
+  "e.e4.prep": (i) => {
+    const items = [
+      { q: "Choose the correct preposition: 'The cat is sitting ____ the table.'", ans: "on", d: ["between", "into", "through"] },
+      { q: "Choose the correct preposition: 'The pencils are ____ the pencil case.'", ans: "in", d: ["off", "over", "across"] },
+      { q: "Choose the correct preposition: 'The shoes are ____ the bed.'", ans: "under", d: ["into", "through", "about"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Prepositions show position in space.",
+      h2: "Think about where the object is located.",
+      exp: `'${item.ans}' correctly indicates the location.`
+    };
+  },
+  "e.e4.read": (i) => {
+    const items = [
+      { q: "Read: 'Kangaroos live in Australia. They can jump very high and carry babies in pouches.' Where do kangaroos live?", ans: "Australia", d: ["Canada", "Brazil", "Egypt"] },
+      { q: "Read: 'Bees collect nectar from flowers to make sweet honey in their hives.' What do bees make?", ans: "Honey", d: ["Bread", "Milk", "Cheese"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Look for the key fact in the text.",
+      h2: "The passage directly provides the answer.",
+      exp: `Based on the reading text, '${item.ans}' is correct.`
+    };
+  },
+  // Elementary Grade 5
+  "e.e5.gram": (i) => {
+    const items = [
+      { q: "Choose the correct verb form: 'Every student in the class ____ a notebook.'", ans: "has", d: ["have", "having", "are having"] },
+      { q: "Choose the correct verb form: 'The dogs in the backyard ____ loudly.'", ans: "bark", d: ["barks", "barking", "is bark"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Check the true grammatical subject of the sentence.",
+      h2: "'Every student' takes a singular verb; plural 'dogs' takes a plural verb.",
+      exp: `'${item.ans}' correctly agrees with the subject.`
+    };
+  },
+  "e.e5.comp": (i) => {
+    const items = [
+      { q: "Choose the correct comparative: 'A cheetah runs ____ than a lion.'", ans: "faster", d: ["fastest", "more fast", "fast"] },
+      { q: "Choose the superlative form: 'Mount Everest is the ____ mountain in the world.'", ans: "highest", d: ["higher", "most high", "high"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Comparatives comparing two items end in -er with 'than'.",
+      h2: "Superlatives comparing three or more use 'the -est'.",
+      exp: `'${item.ans}' is the correct degree of comparison.`
+    };
+  },
+  "e.e5.future": (i) => {
+    const items = [
+      { q: "Choose the correct future form: 'Tomorrow, we ____ visit the science museum.'", ans: "will", d: ["did", "are", "was"] },
+      { q: "Choose the correct future expression: 'She is going to ____ her friend tomorrow.'", ans: "meet", d: ["meets", "met", "meeting"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "'will' and 'be going to' express future events.",
+      h2: "Both take the base form of the verb.",
+      exp: `'${item.ans}' correctly indicates the future tense.`
+    };
+  },
+  "e.e5.transform": (i) => {
+    const items = [
+      { q: "Change into a question: 'He can swim well.'", ans: "Can he swim well?", d: ["Does he can swim well?", "Is he can swim well?", "He can swim well?"] },
+      { q: "Change into a negative sentence: 'They went to school.'", ans: "They did not go to school.", d: ["They not went to school.", "They did not went to school.", "They were not go to school."] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Modal verbs move to the front to form questions.",
+      h2: "Past negative uses 'did not + base verb'.",
+      exp: `'${item.ans}' is the correct sentence transformation.`
+    };
+  },
+  "e.e5.read": (i) => {
+    const items = [
+      { q: "Read: 'The library offers quiet study spaces and digital computers. Many students visit after school to complete homework.' Why do students visit the library?", ans: "To complete homework", d: ["To play games", "To buy snacks", "To sleep"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Find the purpose of the students' visit in the text.",
+      h2: "The last sentence mentions the reason.",
+      exp: `According to the reading, '${item.ans}' is the purpose.`
+    };
+  },
+  // Elementary Grade 6
+  "e.e6.modal": (i) => {
+    const items = [
+      { q: "Choose the modal verb expressing strong necessity or rule: 'Drivers ____ stop at red lights.'", ans: "must", d: ["might", "may", "could"] },
+      { q: "Choose the modal verb giving polite advice: 'You ____ drink water when it is hot.'", ans: "should", d: ["must not", "cannot", "might not"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "'must' expresses obligation, while 'should' offers advice.",
+      h2: "Select the modal verb matching the necessity level.",
+      exp: `'${item.ans}' is the appropriate modal verb.`
+    };
+  },
+  "e.e6.clause": (i) => {
+    const items = [
+      { q: "Choose the correct conjunction: 'She was tired, ____ she went to bed early.'", ans: "so", d: ["because", "although", "unless"] },
+      { q: "Choose the correct conjunction: 'We brought umbrellas ____ it was raining heavily.'", ans: "because", d: ["so", "but", "or"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "'so' introduces a result, while 'because' introduces a reason.",
+      h2: "Determine whether the second clause is a cause or an effect.",
+      exp: `'${item.ans}' correctly links the clauses.`
+    };
+  },
+  "e.e6.vocab": (i) => {
+    const items = [
+      { q: "Which word means 'to protect the environment from harm'?", ans: "conserve", d: ["destroy", "pollute", "neglect"] },
+      { q: "Which word means 'the power to influence people'?", ans: "authority", d: ["weakness", "ignorance", "delay"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Consider vocabulary related to nature, science, and community.",
+      h2: "Choose the positive action meaning preservation.",
+      exp: `'${item.ans}' fits the definition.`
+    };
+  },
+  "e.e6.read": (i) => {
+    const items = [
+      { q: "Read: 'Solar panels convert sunlight into clean electricity, reducing our dependence on fossil fuels.' What is a benefit of solar panels?", ans: "Reducing dependence on fossil fuels", d: ["Increasing pollution", "Creating coal power", "Blocking sunlight"] }
+    ];
+    const item = items[i % items.length];
+    return {
+      prompt: item.q,
+      correct: item.ans,
+      distractors: item.d,
+      h1: "Look for the stated positive outcome in the text.",
+      h2: "The phrase 'reducing dependence' gives the clue.",
+      exp: `'${item.ans}' is the stated benefit in the passage.`
+    };
+  },
 };
 
 // Generic skill generator that produces rich domain-aligned questions (pure English)
@@ -133,14 +485,14 @@ function generateSkillQuestion(grade, skillId, index) {
   // Grammar & Reading drills across grades E2 to H3
   if (skillId.includes("tense") || skillId.includes("perf")) {
     const subjects = [
-      { s: "She", v: "has visited", d: ["visit", "visiting", "have visited"] },
-      { s: "They", v: "have lived", d: ["lives", "living", "has lived"] },
-      { s: "He", v: "has finished", d: ["finish", "finishing", "have finished"] },
-      { s: "We", v: "have studied", d: ["studies", "studying", "has studied"] }
+      { s: "She", v: "has visited", obj: "Seoul three times", d: ["visit", "visiting", "have visited"] },
+      { s: "They", v: "have lived", obj: "in Seoul for three years", d: ["lives", "living", "has lived"] },
+      { s: "He", v: "has finished", obj: "his homework already", d: ["finish", "finishing", "have finished"] },
+      { s: "We", v: "have studied", obj: "English for three years", d: ["studies", "studying", "has studied"] }
     ];
     const sub = subjects[index % subjects.length];
     return {
-      prompt: `Choose the correct verb form for the blank: "${sub.s} ____ Seoul for three years."`,
+      prompt: `Choose the correct verb form for the blank: "${sub.s} ____ ${sub.obj}."`,
       correct: sub.v,
       distractors: sub.d,
       h1: `Notice the subject agreement and the duration phrase 'for three years'.`,

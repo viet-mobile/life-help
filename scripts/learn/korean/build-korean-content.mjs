@@ -88,7 +88,7 @@ function render(kit, locale = "en") {
       }
       q.prompt = fill(kit.prompt[it.k], vars);
       q.hints = kit.hint[it.k].map((h) => fill(h, { ...vars, rr: it.k === "fill" ? reading(it.answers[0], it.ans_rr) : reading(it.ko, it.rr) }));
-      const ex = it.k === "read" ? kit.expl.read : it.k === "number" ? kit.expl.number : kit.expl.meaning;
+      const ex = (it.k === "read" || (it.k === "listen" && !it.g)) ? kit.expl.read : it.k === "number" ? kit.expl.number : kit.expl.meaning;
       q.explanation = fill(ex, { ...vars, rr: reading(it.ko, it.rr), gloss: it.g ? gloss(it.g) : "" }) + (it.note ? ` ${kit.note[it.note]}` : "");
       return q;
     };
@@ -97,7 +97,8 @@ function render(kit, locale = "en") {
       skills.push({ id: sid, title: kit.skill[les.skill], ...(prevSkill ? { prerequisiteId: prevSkill } : {}) });
       prevSkill = sid;
       const family = `${lv}-${les.skill}`;
-      const base = Math.min(5, 1 + Math.floor((Number(L.level[1]) - 1) / 2));
+      const levelNum = parseInt(L.level.slice(1), 10);
+      const base = Math.min(5, 1 + Math.floor((levelNum - 1) / 2));
       let n = 0, v = 0;
       const core = [];
       let challengeId;
@@ -112,7 +113,8 @@ function render(kit, locale = "en") {
       lessons.push({ id: `korean-${lv}-l${li + 1}`, title: kit.lesson[les.skill].title, concept: kit.lesson[les.skill].concept, example: ex, skillIds: [sid], questionIds: core, ...(challengeId ? { challengeId } : {}) });
     });
     L.diagnostic.forEach((it, i) => {
-      const q = make(it, `k-${lv}-d${i + 1}`, "diagnostic", undefined, Math.min(5, 1 + Math.floor((Number(L.level[1]) - 1) / 2)));
+      const levelNum = parseInt(L.level.slice(1), 10);
+      const q = make(it, `k-${lv}-d${i + 1}`, "diagnostic", undefined, Math.min(5, 1 + Math.floor((levelNum - 1) / 2)));
       delete q.family;
       q.skillId = skills.find((s) => s.id.startsWith(`k.${lv}.`) && L.lessons[Math.min(i, L.lessons.length - 1)].skill === s.id.split(".")[2]).id;
       questions.push(q);
