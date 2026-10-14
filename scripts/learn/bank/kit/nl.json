@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Bereken $ {a} + {b} $.",
+      "hints": [
+        "Tel de cijfers op die op dezelfde plaats staan.",
+        "Is de som op een plaats 10 of meer, schuif dan door naar de volgende plaats."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Bereken $ {a} - {b} $.",
+      "hints": [
+        "Trek de cijfers af die op dezelfde plaats staan.",
+        "Lukt het niet, leen dan 10 van de volgende plaats."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Bereken $ {a} \\times {b} $.",
+      "hints": [
+        "Denk aan de tafels of aan gelijke groepen.",
+        "Bij grotere getallen vermenigvuldig je plaats voor plaats en tel je de delen op."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Bereken $ {a} \\div {b} $.",
+      "hints": [
+        "Gebruik de tafel van de deler achterstevoren.",
+        "Zoek welk getal keer {b} gelijk is aan {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Welk cijfer staat op de tientallenplaats van ${n}$? (alleen cijfers)",
+      "hints": [
+        "Het is het tweede cijfer van rechts.",
+        "Zoek het cijfer links van de eenheden."
+      ],
+      "expl": "Het tientallencijfer van {n} is {ans}."
+    },
+    "seqNext": {
+      "prompt": "Zoek de regel en schrijf het ontbrekende getal op: ${list}, \\square$",
+      "hints": [
+        "Zoek het verschil tussen twee getallen die naast elkaar staan.",
+        "De getallen worden bij elke stap met evenveel groter of kleiner."
+      ],
+      "expl": "Het verschil tussen twee getallen naast elkaar is {d}, dus □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Hoeveel meter is {v} km? (alleen cijfers)",
+      "hints": [
+        "1 km is 1000 m.",
+        "Vermenigvuldig {v} met 1000."
+      ],
+      "expl": "{v}×1000={ans}, dus het is {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Hoeveel milliliter is {v} L? (alleen cijfers)",
+      "hints": [
+        "1 L is 1000 mL.",
+        "Vermenigvuldig {v} met 1000."
+      ],
+      "expl": "{v}×1000={ans}, dus het is {ans} mL."
+    },
+    "diameter": {
+      "prompt": "De straal van een cirkel is {r} cm. Hoeveel cm is de diameter? (cm)",
+      "hints": [
+        "De diameter is twee keer de straal.",
+        "Vermenigvuldig de straal met 2."
+      ],
+      "expl": "{r}×2={ans}, dus de diameter is {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Twee hoeken van een driehoek zijn {a}° en {b}°. Hoeveel graden is de derde hoek? (graden)",
+      "hints": [
+        "De drie hoeken van een driehoek zijn samen 180°.",
+        "Trek de twee bekende hoeken af van 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, dus het is {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Welk getal bestaat uit {a} tienduizendtallen en {b} duizendtallen? (alleen cijfers)",
+      "hints": [
+        "{a} tienduizendtallen is {a}0000.",
+        "{b} duizendtallen is {b}000. Tel ze op."
+      ],
+      "expl": "{a} tienduizendtallen en {b} duizendtallen samen zijn {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Bereken $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (een decimaal getal mag, of een breuk geschreven als 3/4)",
+      "hints": [
+        "Schrijf de breuken met een gelijke noemer.",
+        "Tel de tellers op."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Bereken $\\frac{{a}}{{b}} \\div {c}$. (een decimaal getal mag, of een breuk geschreven als 3/4)",
+      "hints": [
+        "Een breuk delen door een geheel getal betekent de noemer met dat getal vermenigvuldigen.",
+        "Vereenvoudig na het rekenen."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Bereken $ {a} \\times {b} $.",
+      "hints": [
+        "Negeer de komma en vermenigvuldig als hele getallen.",
+        "Zet daarna de komma terug, met evenveel decimalen als de factoren samen hadden."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Een rechthoek is {w} cm breed en {h} cm hoog. Hoeveel is de oppervlakte in cm²? (alleen cijfers)",
+      "hints": [
+        "De oppervlakte van een rechthoek is breedte × hoogte.",
+        "Vermenigvuldig de twee zijden."
+      ],
+      "expl": "{w}×{h}={ans}, dus de oppervlakte is {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Een rechthoek is {w} cm breed en {h} cm hoog. Hoe lang is de omtrek in cm? (cm)",
+      "hints": [
+        "De omtrek is de som van de vier zijden.",
+        "Je kunt (breedte + hoogte) × 2 gebruiken."
+      ],
+      "expl": "({w}+{h})×2={ans}, dus de omtrek is {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Schrijf $\\frac{{a}}{{b}}$ als percentage. (alleen cijfers)",
+      "hints": [
+        "Een percentage is de verhouding maal 100.",
+        "Je kunt de breuk ook herschrijven met noemer 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, dus het is {ans}%."
+    },
+    "propX": {
+      "prompt": "Welk getal hoort er in het vakje in de verhouding ${a} : {b} = \\square : {d}$? (alleen cijfers)",
+      "hints": [
+        "In een evenredigheid is het product van de buitenste termen gelijk aan het product van de binnenste termen.",
+        "Los op: □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, dus □={ans}."
+    },
+    "decPct": {
+      "prompt": "Schrijf dit decimale getal als percentage: ${d}$ (alleen cijfers)",
+      "hints": [
+        "Vermenigvuldig het decimale getal met 100 voor het percentage.",
+        "Verschuif de komma twee plaatsen naar rechts."
+      ],
+      "expl": "{d}×100={ans}, dus het is {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Een ribbe van een kubus is {a} cm. Wat is de inhoud in cm³? (alleen cijfers)",
+      "hints": [
+        "De inhoud van een kubus is ribbe × ribbe × ribbe.",
+        "Vermenigvuldig {a} drie keer met zichzelf."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, dus de inhoud is {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Een balk is {a} cm lang, {b} cm breed en {c} cm hoog. Wat is de inhoud in cm³? (cm³)",
+      "hints": [
+        "De inhoud van een balk is lengte × breedte × hoogte.",
+        "Vermenigvuldig alle drie de lengtes."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, dus de inhoud is {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Een cirkel heeft een straal van {r} cm. Hoe lang is de omtrek in cm? (gebruik $3.14$ voor pi) (cm)",
+      "hints": [
+        "De omtrek is diameter × pi.",
+        "De diameter is twee keer de straal."
+      ],
+      "expl": "{r}×2×3.14={ans}, dus het is {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Een cirkel heeft een straal van {r} cm. Wat is de oppervlakte in cm²? (gebruik $3.14$ voor pi) (cm²)",
+      "hints": [
+        "De oppervlakte is straal × straal × pi.",
+        "Kwadrateer de straal en vermenigvuldig dan met 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, dus de oppervlakte is {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Het gemiddelde van {n} getallen is {m}. Wat is de som van deze {n} getallen? (alleen cijfers)",
+      "hints": [
+        "gemiddelde = som ÷ aantal.",
+        "Dus som = gemiddelde × aantal."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Als $x={x}$, wat is dan de waarde van ${expr}$?",
+      "hints": [
+        "Vul het gegeven getal in op de plaats van x.",
+        "Vermenigvuldig eerst, tel daarna op of trek af."
+      ],
+      "expl": "Invullen van x={x} geeft ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Los de lineaire vergelijking ${eq}$ op (zoek x).",
+      "hints": [
+        "Tel bij beide kanten hetzelfde getal op of trek het af, zodat de term met x alleen overblijft.",
+        "Deel daarna beide kanten door het getal voor x."
+      ],
+      "expl": "Uit ${eq}$ volgt x={ans}."
+    },
+    "expMul": {
+      "prompt": "Welk getal hoort er in het vakje bij $x^{{a}} \\times x^{{b}} = x^{\\square}$? (alleen cijfers)",
+      "hints": [
+        "Bij gelijke grondtallen tel je de exponenten op.",
+        "Bereken {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, dus □={ans}."
+    },
+    "expPow": {
+      "prompt": "Welk getal hoort er in het vakje bij $(x^{{a}})^{{b}} = x^{\\square}$? (alleen cijfers)",
+      "hints": [
+        "Bij een macht van een macht vermenigvuldig je de exponenten.",
+        "Bereken {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, dus □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Wat is het grootste gehele getal $x$ dat voldoet aan $x+{a} < {b}$? (alleen cijfers)",
+      "hints": [
+        "Trek aan beide kanten hetzelfde getal af om het gebied van x te vinden.",
+        "x moet kleiner zijn dan de waarde die je vindt; die waarde zelf hoort er niet bij."
+      ],
+      "expl": "x<{bound}, dus het grootste gehele getal is {ans}."
+    },
+    "slope2": {
+      "prompt": "Wat is de helling van de lijn door de punten $({x1},\\,{y1})$ en $({x2},\\,{y2})$? (alleen cijfers)",
+      "hints": [
+        "De helling is (verandering van y) ÷ (verandering van x).",
+        "Deel het verschil van de y-coördinaten door het verschil van de x-coördinaten."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Hoeveel uitkomsten zijn er als je {n} munten tegelijk opgooit? (alleen cijfers)",
+      "hints": [
+        "Eén munt heeft 2 uitkomsten: kop of munt.",
+        "Vermenigvuldig het aantal uitkomsten van elke munt."
+      ],
+      "expl": "2 vermenigvuldigd {n} keer is {ans}, dus er zijn {ans} uitkomsten."
+    },
+    "isoApex": {
+      "prompt": "Een basishoek van een gelijkbenige driehoek is {b}°. Hoeveel graden is de tophoek? (graden)",
+      "hints": [
+        "De twee basishoeken van een gelijkbenige driehoek zijn gelijk.",
+        "Trek beide basishoeken af van 180°, de som van de hoeken van een driehoek."
+      ],
+      "expl": "180-{b}×2={ans}, dus de tophoek is {ans}°."
+    },
+    "hypot": {
+      "prompt": "De twee zijden naast de rechte hoek van een rechthoekige driehoek zijn {a} cm en {b} cm. Hoe lang is de langste zijde in cm? (cm)",
+      "hints": [
+        "Stelling van Pythagoras: (schuine zijde)² = (ene zijde)² + (andere zijde)².",
+        "Kwadrateer beide zijden, tel op en neem dan de wortel."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, dus de langste zijde is {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Wat is de waarde van $\\sqrt{{n}}$? (alleen cijfers)",
+      "hints": [
+        "Zoek het positieve getal waarvan het kwadraat {n} is.",
+        "Denk aan de tafels."
+      ],
+      "expl": "${ans}^2={n}$, dus $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Als $({fa})({fb}) = x^2+px+q$, wat is dan $p+q$? (alleen cijfers)",
+      "hints": [
+        "Gebruik $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p is de som van de twee getallen en q is hun product."
+      ],
+      "expl": "p={p} en q={q}, dus p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Welke is de grootste van de twee oplossingen van ${eq}$? (alleen cijfers)",
+      "hints": [
+        "Ontbind het linkerlid in factoren.",
+        "De oplossingen zijn de waarden van x waarvoor een factor nul wordt."
+      ],
+      "expl": "Uit ${fact}$ volgen de oplossingen {roots}, dus de grootste is {ans}."
+    },
+    "vertexSum": {
+      "prompt": "De top van de kwadratische functie $y={expr}$ is $(p,\\ q)$. Wat is $p+q$? (alleen cijfers)",
+      "hints": [
+        "In $y=a(x-p)^2+q$ is de top $(p,\\ q)$.",
+        "Let op het teken binnen de haakjes."
+      ],
+      "expl": "De top is $({p},\\ {q})$, dus p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Wat is de rest als $P(x)={poly}$ wordt gedeeld door ${div}$? (alleen cijfers)",
+      "hints": [
+        "Reststelling: de rest van P(x) gedeeld door x-a is P(a).",
+        "Vul a in op de plaats van x en bereken."
+      ],
+      "expl": "Volgens de reststelling is P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Wat is de som van het reële deel en het imaginaire deel van ${expr}$? (alleen cijfers)",
+      "hints": [
+        "Tel de reële delen bij elkaar op en de imaginaire delen bij elkaar.",
+        "Behandel i als een letter."
+      ],
+      "expl": "Het reële deel is {re} en het imaginaire deel is {im}, dus de som is {ans}."
+    },
+    "permNP": {
+      "prompt": "Op hoeveel manieren kun je {r} van {n} verschillende mensen kiezen en op een rij zetten? (alleen cijfers)",
+      "hints": [
+        "De volgorde telt, dus dit is een permutatie.",
+        "Begin bij {n} en vermenigvuldig {r} getallen, steeds een lager."
+      ],
+      "expl": "{calc}={ans}, dus er zijn {ans} manieren."
+    },
+    "combNC": {
+      "prompt": "Op hoeveel manieren kun je {r} van {n} verschillende mensen kiezen als de volgorde niet telt? (alleen cijfers)",
+      "hints": [
+        "De volgorde telt niet, dus dit is een combinatie.",
+        "Deel het aantal permutaties door {r}!."
+      ],
+      "expl": "{calc}={ans}, dus er zijn {ans} manieren."
+    },
+    "dist2": {
+      "prompt": "Wat is de afstand tussen de punten A({x1}, {y1}) en B({x2}, {y2})? (alleen cijfers)",
+      "hints": [
+        "De afstand is $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kwadrateer het verschil van de x-coördinaten en van de y-coördinaten en tel dan op."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Wat is de straal van de cirkel $({fx})^2+({fy})^2={r2}$? (alleen cijfers)",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$ is r de straal.",
+        "Het getal rechts is r²."
+      ],
+      "expl": "$r^2={r2}$, dus de straal is {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Hoeveel gehele getallen $x$ voldoen aan de kwadratische ongelijkheid ${eq}<0$? (alleen cijfers)",
+      "hints": [
+        "Ontbind het linkerlid in factoren om de twee nulpunten te vinden.",
+        "Tel de gehele getallen tussen de nulpunten; de nulpunten zelf horen er niet bij."
+      ],
+      "expl": "Uit ${fact}<0$ volgt {r1}<x<{r2}, dus er zijn {ans} gehele getallen."
+    },
+    "logVal": {
+      "prompt": "Wat is de waarde van $\\log_{{b}} {n}$? (alleen cijfers)",
+      "hints": [
+        "$\\log_b n=k$ betekent $b^k=n$.",
+        "Tel hoe vaak je {b} met zichzelf moet vermenigvuldigen om {n} te krijgen."
+      ],
+      "expl": "${b}^{{ans}}={n}$, dus het antwoord is {ans}."
+    },
+    "radDeg": {
+      "prompt": "Schrijf $\\theta=\\dfrac{{num}}{{d}}$ (radialen) in graden. (alleen cijfers)",
+      "hints": [
+        "$\\pi$ radialen is 180°.",
+        "Vul 180° in op de plaats van $\\pi$."
+      ],
+      "expl": "Invullen van $\\pi=180^\\circ$ geeft {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Wat is term nummer {n} van de rekenkundige rij met eerste term {a} en verschil {d}? (alleen cijfers)",
+      "hints": [
+        "De algemene term is $a_n=a+(n-1)d$.",
+        "Vermenigvuldig (n-1) met het verschil en tel het op bij de eerste term."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Wat is term nummer {n} van de meetkundige rij met eerste term {a} en reden {r}? (alleen cijfers)",
+      "hints": [
+        "De algemene term is $a_n=ar^{n-1}$.",
+        "Vermenigvuldig (n-1) keer met de reden."
+      ],
+      "expl": "{a} keer {r} tot de macht ({n}-1) is {ans}."
+    },
+    "limLinear": {
+      "prompt": "Wat is de waarde van $\\lim_{x\\to {a}}({f})$? (alleen cijfers)",
+      "hints": [
+        "Bij een veelterm is de limiet gelijk aan de functiewaarde.",
+        "Vul {a} in op de plaats van x."
+      ],
+      "expl": "Invullen van x={a} geeft {ans}."
+    },
+    "derivAt": {
+      "prompt": "Als $f(x)={poly}$, wat is dan $f'({a})$? (alleen cijfers)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Bepaal de afgeleide en vul dan {a} in op de plaats van x."
+      ],
+      "expl": "$f'(x)={deriv}$, dus $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Wat is de waarde van $\\int_{0}^{{b}} ({fx})\\,dx$? (alleen cijfers)",
+      "hints": [
+        "Zoek de primitieve functie en bereken (waarde bij de bovengrens) - (waarde bij de ondergrens).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ en $\\int c\\,dx=cx$."
+      ],
+      "expl": "Invullen van x={b} in de primitieve functie ${anti}$ geeft {ans}."
+    },
+    "areaX2": {
+      "prompt": "Wat is de oppervlakte die wordt ingesloten door de kromme $y={k}x^2$, de $x$-as en de lijn $x={a}$? (alleen cijfers)",
+      "hints": [
+        "De oppervlakte is de bepaalde integraal van 0 tot {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Wat is de som van de oneindige meetkundige reeks met eerste term {a} en reden ${rtex}$? (een decimaal getal mag, of een breuk geschreven als 3/4)",
+      "hints": [
+        "De som bestaat als de absolute waarde van de reden kleiner is dan 1.",
+        "De som is (eerste term) ÷ (1 - reden)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Als de stochast $X$ de binomiale verdeling $B({n},\\ {p})$ volgt, wat is dan $E(X)$? (alleen cijfers)",
+      "hints": [
+        "Het gemiddelde van $B(n,\\ p)$ is $np$.",
+        "Vermenigvuldig n en p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Wat is de lengte $|\\vec{a}|$ van de vector $\\vec{a}=({x},\\ {y})$? (alleen cijfers)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kwadrateer elke component, tel op en neem dan de wortel."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Wat is de $x$-coördinaat van het brandpunt van de parabool $y^2={c}x$? (alleen cijfers)",
+      "hints": [
+        "Het brandpunt van $y^2=4px$ is $(p,\\ 0)$.",
+        "Bereken p uit {c}=4p."
+      ],
+      "expl": "4p={c}, dus p={ans}."
+    },
+    "condProb": {
+      "prompt": "Voor gebeurtenissen $A,\\ B$ geldt $P(A)={pa}$ en $P(A\\cap B)={pab}$. Wat is $P(B\\mid A)$? (schrijf een decimaal getal)",
+      "hints": [
+        "Voorwaardelijke kans: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Deel de twee waarden."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

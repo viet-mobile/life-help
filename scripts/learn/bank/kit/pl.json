@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Oblicz wartość wyrażenia $ {a} + {b} $.",
+      "hints": [
+        "Dodaj cyfry na tych samych miejscach.",
+        "Gdy suma na danym miejscu wynosi 10 lub więcej, przenieś jedną jednostkę na następne miejsce."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Oblicz wartość wyrażenia $ {a} - {b} $.",
+      "hints": [
+        "Odejmij cyfry na tych samych miejscach.",
+        "Gdy nie możesz odjąć, pożycz 10 z następnego miejsca."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Oblicz wartość wyrażenia $ {a} \\times {b} $.",
+      "hints": [
+        "Pomyśl o tabliczce mnożenia albo o równych grupach.",
+        "Przy większych liczbach mnóż miejsce po miejscu i dodaj wyniki."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Oblicz wartość wyrażenia $ {a} \\div {b} $.",
+      "hints": [
+        "Użyj tabliczki mnożenia dzielnika w drugą stronę.",
+        "Znajdź liczbę, która pomnożona przez {b} daje {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Jaka cyfra jest na miejscu dziesiątek w liczbie ${n}$? (tylko cyfry)",
+      "hints": [
+        "To druga cyfra od prawej.",
+        "Znajdź cyfrę tuż po lewej stronie cyfry jedności."
+      ],
+      "expl": "Cyfra dziesiątek w liczbie {n} to {ans}."
+    },
+    "seqNext": {
+      "prompt": "Znajdź regułę i wpisz brakującą liczbę: ${list}, \\square$",
+      "hints": [
+        "Oblicz różnicę między sąsiednimi liczbami.",
+        "Liczby rosną lub maleją w każdym kroku o tyle samo."
+      ],
+      "expl": "Różnica między sąsiednimi liczbami wynosi {d}, więc □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Ile metrów to {v} km? (tylko cyfry)",
+      "hints": [
+        "1 km to 1000 m.",
+        "Pomnóż {v} przez 1000."
+      ],
+      "expl": "{v}×1000={ans}, czyli {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Ile mililitrów to {v} L? (tylko cyfry)",
+      "hints": [
+        "1 L to 1000 mL.",
+        "Pomnóż {v} przez 1000."
+      ],
+      "expl": "{v}×1000={ans}, czyli {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Promień koła ma {r} cm. Ile cm ma jego średnica? (cm)",
+      "hints": [
+        "Średnica jest dwa razy dłuższa od promienia.",
+        "Pomnóż promień przez 2."
+      ],
+      "expl": "{r}×2={ans}, więc średnica ma {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Dwa kąty trójkąta mają {a}° i {b}°. Ile stopni ma trzeci kąt? (stopnie)",
+      "hints": [
+        "Suma trzech kątów trójkąta wynosi 180°.",
+        "Odejmij od 180 oba znane kąty."
+      ],
+      "expl": "180-{a}-{b}={ans}, czyli {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Jaka liczba składa się z {a} dziesiątek tysięcy i {b} tysięcy? (tylko cyfry)",
+      "hints": [
+        "{a} dziesiątek tysięcy to {a}0000.",
+        "{b} tysięcy to {b}000. Dodaj je."
+      ],
+      "expl": "{a} dziesiątek tysięcy i {b} tysięcy to {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Oblicz wartość wyrażenia $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (może być ułamek dziesiętny albo ułamek zapisany jak 3/4)",
+      "hints": [
+        "Sprowadź ułamki do wspólnego mianownika.",
+        "Dodaj liczniki."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Oblicz wartość wyrażenia $\\frac{{a}}{{b}} \\div {c}$. (może być ułamek dziesiętny albo ułamek zapisany jak 3/4)",
+      "hints": [
+        "Dzieląc ułamek przez liczbę całkowitą, mnożysz jego mianownik przez tę liczbę.",
+        "Po obliczeniu skróć ułamek."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Oblicz wartość wyrażenia $ {a} \\times {b} $.",
+      "hints": [
+        "Pomiń przecinek i pomnóż jak liczby całkowite.",
+        "Potem wstaw przecinek, tak by wynik miał tyle miejsc po przecinku, ile mają razem czynniki."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Prostokąt ma szerokość {w} cm i wysokość {h} cm. Jakie jest jego pole w cm²? (tylko cyfry)",
+      "hints": [
+        "Pole prostokąta to szerokość × wysokość.",
+        "Pomnóż długości dwóch boków."
+      ],
+      "expl": "{w}×{h}={ans}, więc pole wynosi {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Prostokąt ma szerokość {w} cm i wysokość {h} cm. Jaki jest jego obwód w cm? (cm)",
+      "hints": [
+        "Obwód to suma czterech boków.",
+        "Możesz użyć wzoru (szerokość + wysokość) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, więc obwód wynosi {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Zapisz $\\frac{{a}}{{b}}$ jako procent. (tylko cyfry)",
+      "hints": [
+        "Procent to stosunek pomnożony przez 100.",
+        "Możesz też zapisać ułamek z mianownikiem 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, czyli {ans}%."
+    },
+    "propX": {
+      "prompt": "W proporcji ${a} : {b} = \\square : {d}$ jaka liczba pasuje do okienka? (tylko cyfry)",
+      "hints": [
+        "W proporcji iloczyn wyrazów skrajnych jest równy iloczynowi wyrazów środkowych.",
+        "Rozwiąż □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, więc □={ans}."
+    },
+    "decPct": {
+      "prompt": "Zapisz ten ułamek dziesiętny jako procent: ${d}$ (tylko cyfry)",
+      "hints": [
+        "Pomnóż ułamek dziesiętny przez 100, aby otrzymać procent.",
+        "Przesuń przecinek o dwa miejsca w prawo."
+      ],
+      "expl": "{d}×100={ans}, czyli {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Krawędź sześcianu ma {a} cm. Jaka jest jego objętość w cm³? (tylko cyfry)",
+      "hints": [
+        "Objętość sześcianu to krawędź × krawędź × krawędź.",
+        "Pomnóż {a} przez siebie trzy razy."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, więc objętość wynosi {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Prostopadłościan ma długość {a} cm, szerokość {b} cm i wysokość {c} cm. Jaka jest jego objętość w cm³? (cm³)",
+      "hints": [
+        "Objętość prostopadłościanu to długość × szerokość × wysokość.",
+        "Pomnóż wszystkie trzy długości."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, więc objętość wynosi {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Koło ma promień {r} cm. Jaki jest obwód koła w cm? (przyjmij $3.14$ za pi) (cm)",
+      "hints": [
+        "Obwód koła to średnica × pi.",
+        "Średnica jest dwa razy dłuższa od promienia."
+      ],
+      "expl": "{r}×2×3.14={ans}, czyli {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Koło ma promień {r} cm. Jakie jest jego pole w cm²? (przyjmij $3.14$ za pi) (cm²)",
+      "hints": [
+        "Pole to promień × promień × pi.",
+        "Podnieś promień do kwadratu, potem pomnóż przez 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, więc pole wynosi {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Średnia arytmetyczna {n} liczb wynosi {m}. Ile wynosi suma tych {n} liczb? (tylko cyfry)",
+      "hints": [
+        "średnia = suma ÷ liczba składników.",
+        "Zatem suma = średnia × liczba składników."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Dla $x={x}$ oblicz wartość wyrażenia ${expr}$.",
+      "hints": [
+        "Wstaw podaną liczbę w miejsce x.",
+        "Najpierw mnóż, potem dodawaj lub odejmuj."
+      ],
+      "expl": "Po wstawieniu x={x} mamy ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Rozwiąż równanie liniowe ${eq}$ (znajdź x).",
+      "hints": [
+        "Dodaj lub odejmij tę samą liczbę po obu stronach, aby wyraz z x został sam.",
+        "Potem podziel obie strony przez liczbę stojącą przy x."
+      ],
+      "expl": "Z ${eq}$ otrzymujemy x={ans}."
+    },
+    "expMul": {
+      "prompt": "W równości $x^{{a}} \\times x^{{b}} = x^{\\square}$ jaka liczba pasuje do okienka? (tylko cyfry)",
+      "hints": [
+        "Gdy podstawy są równe, dodajemy wykładniki.",
+        "Oblicz {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, więc □={ans}."
+    },
+    "expPow": {
+      "prompt": "W równości $(x^{{a}})^{{b}} = x^{\\square}$ jaka liczba pasuje do okienka? (tylko cyfry)",
+      "hints": [
+        "Przy potęgowaniu potęgi mnożymy wykładniki.",
+        "Oblicz {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, więc □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Jaka jest największa liczba całkowita $x$ spełniająca nierówność $x+{a} < {b}$? (tylko cyfry)",
+      "hints": [
+        "Odejmij tę samą liczbę po obu stronach, aby znaleźć zakres x.",
+        "x musi być mniejsze od znalezionej wartości; sama ta wartość nie należy do zbioru."
+      ],
+      "expl": "x<{bound}, więc największa liczba całkowita to {ans}."
+    },
+    "slope2": {
+      "prompt": "Jaki jest współczynnik kierunkowy prostej przechodzącej przez punkty $({x1},\\,{y1})$ i $({x2},\\,{y2})$? (tylko cyfry)",
+      "hints": [
+        "Współczynnik kierunkowy to (zmiana y) ÷ (zmiana x).",
+        "Podziel różnicę współrzędnych y przez różnicę współrzędnych x."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Ile jest możliwych wyników rzutu {n} monetami naraz? (tylko cyfry)",
+      "hints": [
+        "Jedna moneta ma 2 wyniki: orzeł lub reszka.",
+        "Pomnóż liczby wyników każdej monety."
+      ],
+      "expl": "2 pomnożone {n} razy to {ans}, więc jest {ans} wyników."
+    },
+    "isoApex": {
+      "prompt": "Kąt przy podstawie trójkąta równoramiennego ma {b}°. Ile stopni ma kąt przy wierzchołku? (stopnie)",
+      "hints": [
+        "Dwa kąty przy podstawie trójkąta równoramiennego są równe.",
+        "Odejmij oba kąty przy podstawie od 180°, czyli sumy kątów trójkąta."
+      ],
+      "expl": "180-{b}×2={ans}, więc kąt przy wierzchołku ma {ans}°."
+    },
+    "hypot": {
+      "prompt": "Dwa boki trójkąta prostokątnego przy kącie prostym mają {a} cm i {b} cm. Ile cm ma najdłuższy bok? (cm)",
+      "hints": [
+        "Twierdzenie Pitagorasa: (przeciwprostokątna)² = (jedna przyprostokątna)² + (druga przyprostokątna)².",
+        "Podnieś oba boki do kwadratu, dodaj, potem wyciągnij pierwiastek kwadratowy."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, więc najdłuższy bok ma {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Ile wynosi $\\sqrt{{n}}$? (tylko cyfry)",
+      "hints": [
+        "Znajdź liczbę dodatnią, której kwadrat to {n}.",
+        "Pomyśl o tabliczce mnożenia."
+      ],
+      "expl": "${ans}^2={n}$, więc $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Jeśli $({fa})({fb}) = x^2+px+q$, to ile wynosi $p+q$? (tylko cyfry)",
+      "hints": [
+        "Użyj wzoru $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p to suma dwóch liczb, a q to ich iloczyn."
+      ],
+      "expl": "p={p} i q={q}, więc p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Który z dwóch pierwiastków równania ${eq}$ jest większy? (tylko cyfry)",
+      "hints": [
+        "Rozłóż lewą stronę na czynniki.",
+        "Pierwiastki to wartości x, dla których któryś czynnik jest równy zero."
+      ],
+      "expl": "Z ${fact}$ pierwiastki to {roots}, więc większy pierwiastek to {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Wierzchołek funkcji kwadratowej $y={expr}$ to $(p,\\ q)$. Ile wynosi $p+q$? (tylko cyfry)",
+      "hints": [
+        "W postaci $y=a(x-p)^2+q$ wierzchołek to $(p,\\ q)$.",
+        "Uważaj na znak w nawiasie."
+      ],
+      "expl": "Wierzchołek to $({p},\\ {q})$, więc p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Jaka jest reszta z dzielenia $P(x)={poly}$ przez ${div}$? (tylko cyfry)",
+      "hints": [
+        "Twierdzenie o reszcie: reszta z dzielenia P(x) przez x-a to P(a).",
+        "Wstaw a w miejsce x i oblicz."
+      ],
+      "expl": "Z twierdzenia o reszcie P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Ile wynosi suma części rzeczywistej i części urojonej liczby ${expr}$? (tylko cyfry)",
+      "hints": [
+        "Dodaj osobno części rzeczywiste i osobno części urojone.",
+        "Traktuj i jak literę."
+      ],
+      "expl": "Część rzeczywista to {re}, a część urojona to {im}, więc suma wynosi {ans}."
+    },
+    "permNP": {
+      "prompt": "Na ile sposobów można wybrać {r} spośród {n} różnych osób i ustawić je w rzędzie? (tylko cyfry)",
+      "hints": [
+        "Kolejność ma znaczenie, więc to wariacja bez powtórzeń (permutacja).",
+        "Zacznij od {n} i pomnóż {r} liczb, malejąco."
+      ],
+      "expl": "{calc}={ans}, więc jest {ans} sposobów."
+    },
+    "combNC": {
+      "prompt": "Na ile sposobów można wybrać {r} spośród {n} różnych osób, gdy kolejność nie ma znaczenia? (tylko cyfry)",
+      "hints": [
+        "Kolejność nie ma znaczenia, więc to kombinacja.",
+        "Podziel liczbę wariacji przez {r}!."
+      ],
+      "expl": "{calc}={ans}, więc jest {ans} sposobów."
+    },
+    "dist2": {
+      "prompt": "Jaka jest odległość między punktami A({x1}, {y1}) i B({x2}, {y2})? (tylko cyfry)",
+      "hints": [
+        "Odległość to $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Podnieś do kwadratu różnicę współrzędnych x i różnicę współrzędnych y, potem dodaj."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Jaki jest promień okręgu $({fx})^2+({fy})^2={r2}$? (tylko cyfry)",
+      "hints": [
+        "W równaniu $(x-a)^2+(y-b)^2=r^2$ liczba r to promień.",
+        "Liczba po prawej stronie to r²."
+      ],
+      "expl": "$r^2={r2}$, więc promień wynosi {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Ile liczb całkowitych $x$ spełnia nierówność kwadratową ${eq}<0$? (tylko cyfry)",
+      "hints": [
+        "Rozłóż lewą stronę na czynniki, aby znaleźć dwa pierwiastki.",
+        "Policz liczby całkowite między pierwiastkami; same pierwiastki nie należą do zbioru."
+      ],
+      "expl": "Z ${fact}<0$ mamy {r1}<x<{r2}, więc jest {ans} liczb całkowitych."
+    },
+    "logVal": {
+      "prompt": "Ile wynosi $\\log_{{b}} {n}$? (tylko cyfry)",
+      "hints": [
+        "$\\log_b n=k$ oznacza, że $b^k=n$.",
+        "Policz, ile razy trzeba pomnożyć {b}, aby otrzymać {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, więc odpowiedź to {ans}."
+    },
+    "radDeg": {
+      "prompt": "Zapisz $\\theta=\\dfrac{{num}}{{d}}$ (radianów) w stopniach. (tylko cyfry)",
+      "hints": [
+        "$\\pi$ radianów to 180°.",
+        "Wstaw 180° w miejsce $\\pi$."
+      ],
+      "expl": "Po wstawieniu $\\pi=180^\\circ$ otrzymujemy {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Ile wynosi wyraz o numerze {n} ciągu arytmetycznego o pierwszym wyrazie {a} i różnicy {d}? (tylko cyfry)",
+      "hints": [
+        "Wzór ogólny to $a_n=a+(n-1)d$.",
+        "Pomnóż (n-1) przez różnicę i dodaj do pierwszego wyrazu."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Ile wynosi wyraz o numerze {n} ciągu geometrycznego o pierwszym wyrazie {a} i ilorazie {r}? (tylko cyfry)",
+      "hints": [
+        "Wzór ogólny to $a_n=ar^{n-1}$.",
+        "Pomnóż przez iloraz (n-1) razy."
+      ],
+      "expl": "{a} razy {r} do potęgi ({n}-1) to {ans}."
+    },
+    "limLinear": {
+      "prompt": "Ile wynosi $\\lim_{x\\to {a}}({f})$? (tylko cyfry)",
+      "hints": [
+        "Dla wielomianu granica jest równa wartości funkcji.",
+        "Wstaw {a} w miejsce x."
+      ],
+      "expl": "Po wstawieniu x={a} otrzymujemy {ans}."
+    },
+    "derivAt": {
+      "prompt": "Jeśli $f(x)={poly}$, to ile wynosi $f'({a})$? (tylko cyfry)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Oblicz pochodną, potem wstaw {a} w miejsce x."
+      ],
+      "expl": "$f'(x)={deriv}$, więc $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Ile wynosi $\\int_{0}^{{b}} ({fx})\\,dx$? (tylko cyfry)",
+      "hints": [
+        "Znajdź funkcję pierwotną, potem oblicz (wartość w górnej granicy) - (wartość w dolnej granicy).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ oraz $\\int c\\,dx=cx$."
+      ],
+      "expl": "Po wstawieniu x={b} do funkcji pierwotnej ${anti}$ otrzymujemy {ans}."
+    },
+    "areaX2": {
+      "prompt": "Jakie jest pole obszaru ograniczonego krzywą $y={k}x^2$, osią $x$ i prostą $x={a}$? (tylko cyfry)",
+      "hints": [
+        "Pole to całka oznaczona od 0 do {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Ile wynosi suma nieskończonego ciągu geometrycznego o pierwszym wyrazie {a} i ilorazie ${rtex}$? (może być ułamek dziesiętny albo ułamek zapisany jak 3/4)",
+      "hints": [
+        "Suma istnieje, gdy wartość bezwzględna ilorazu jest mniejsza od 1.",
+        "Suma to (pierwszy wyraz) ÷ (1 - iloraz)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Zmienna losowa $X$ ma rozkład dwumianowy $B({n},\\ {p})$. Ile wynosi $E(X)$? (tylko cyfry)",
+      "hints": [
+        "Wartość oczekiwana rozkładu $B(n,\\ p)$ to $np$.",
+        "Pomnóż n i p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Ile wynosi długość $|\\vec{a}|$ wektora $\\vec{a}=({x},\\ {y})$? (tylko cyfry)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Podnieś każdą współrzędną do kwadratu, dodaj, potem wyciągnij pierwiastek."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Ile wynosi współrzędna $x$ ogniska paraboli $y^2={c}x$? (tylko cyfry)",
+      "hints": [
+        "Ognisko paraboli $y^2=4px$ to $(p,\\ 0)$.",
+        "Znajdź p z równania {c}=4p."
+      ],
+      "expl": "4p={c}, więc p={ans}."
+    },
+    "condProb": {
+      "prompt": "Dla zdarzeń $A,\\ B$ mamy $P(A)={pa}$ i $P(A\\cap B)={pab}$. Ile wynosi $P(B\\mid A)$? (wpisz ułamek dziesiętny)",
+      "hints": [
+        "Prawdopodobieństwo warunkowe: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Podziel obie wartości."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

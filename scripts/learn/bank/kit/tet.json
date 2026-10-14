@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Buka valór ba $ {a} + {b} $.",
+      "hints": [
+        "Soma numeru iha pozisaun hanesan.",
+        "Se pozisaun ida soma to'o 10 ka liu, lori ba pozisaun tuir mai."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Buka valór ba $ {a} - {b} $.",
+      "hints": [
+        "Subtrai numeru iha pozisaun hanesan.",
+        "Se la bele subtrai, empresta 10 husi pozisaun tuir mai."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Buka valór ba $ {a} \\times {b} $.",
+      "hints": [
+        "Hanoin kona-ba tabuada ka grupu hanesan.",
+        "Ba numeru boot, multiplika pozisaun ida-idak no soma parte sira."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Buka valór ba $ {a} \\div {b} $.",
+      "hints": [
+        "Uza tabuada husi divizór nia kotuk.",
+        "Buka numeru ida ne'ebé multiplika ho {b} fó {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Numeru saida mak iha pozisaun sanulu (dezena) husi ${n}$? (numeru de'it)",
+      "hints": [
+        "Ne'e numeru daruak husi sorin loos.",
+        "Buka numeru ne'ebé iha sorin karuk husi pozisaun unidade."
+      ],
+      "expl": "Numeru dezena husi {n} mak {ans}."
+    },
+    "seqNext": {
+      "prompt": "Buka regra no hakerek numeru ne'ebé lakon: ${list}, \\square$",
+      "hints": [
+        "Buka diferensa entre numeru sira ne'ebé besik malu.",
+        "Numeru sira sa'e ka tun ho kuantidade hanesan iha pasu ida-idak."
+      ],
+      "expl": "Diferensa entre numeru sira ne'ebé besik malu mak {d}, entaun □={ans}."
+    },
+    "kmToM": {
+      "prompt": "{v} km hanesan metru hira? (numeru de'it)",
+      "hints": [
+        "1 km hanesan 1000 m.",
+        "Multiplika {v} ho 1000."
+      ],
+      "expl": "{v}×1000={ans}, entaun ne'e {ans} m."
+    },
+    "lToMl": {
+      "prompt": "{v} L hanesan mililitru hira? (numeru de'it)",
+      "hints": [
+        "1 L hanesan 1000 mL.",
+        "Multiplika {v} ho 1000."
+      ],
+      "expl": "{v}×1000={ans}, entaun ne'e {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Raiu husi sirkulu ida mak {r} cm. Nia diámetru cm hira? (cm)",
+      "hints": [
+        "Diámetru hanesan raiu dala rua.",
+        "Multiplika raiu ho 2."
+      ],
+      "expl": "{r}×2={ans}, entaun diámetru mak {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Ângulu rua husi triángulu ida mak {a}° no {b}°. Ângulu datoluk graus hira? (graus)",
+      "hints": [
+        "Ângulu tolu husi triángulu soma hotu hanesan 180°.",
+        "Subtrai ângulu rua ne'ebé hatene husi 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, entaun ne'e {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Numeru saida mak forma husi sanulu-rihun {a} no rihun {b}? (numeru de'it)",
+      "hints": [
+        "Sanulu-rihun {a} mak {a}0000.",
+        "Rihun {b} mak {b}000. Soma ida-ne'e rua."
+      ],
+      "expl": "Sanulu-rihun {a} no rihun {b} forma {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Buka valór ba $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (bele hakerek desimál, ka fraksaun hanesan 3/4)",
+      "hints": [
+        "Hakerek fraksaun sira ho denominadór hanesan.",
+        "Soma numeradór sira."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Buka valór ba $\\frac{{a}}{{b}} \\div {c}$. (bele hakerek desimál, ka fraksaun hanesan 3/4)",
+      "hints": [
+        "Fahe fraksaun ho numeru intreiru signifika multiplika nia denominadór ho numeru ne'e.",
+        "Hafasil (simplifika) depois de kalkula."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Buka valór ba $ {a} \\times {b} $.",
+      "hints": [
+        "Haluha vírgula no multiplika hanesan numeru intreiru.",
+        "Depois tau fali vírgula, ho dígitu depois vírgula hanesan faktór rua nian hamutuk."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Retángulu ida nia luan mak {w} cm no aas mak {h} cm. Nia área iha cm² mak hira? (numeru de'it)",
+      "hints": [
+        "Área husi retángulu mak luan × aas.",
+        "Multiplika sorin rua nia naruk."
+      ],
+      "expl": "{w}×{h}={ans}, entaun área mak {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Retángulu ida nia luan mak {w} cm no aas mak {h} cm. Nia perímetru cm hira? (cm)",
+      "hints": [
+        "Perímetru mak soma husi sorin haat.",
+        "Bele uza (luan + aas) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, entaun perímetru mak {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Hakerek $\\frac{{a}}{{b}}$ nudár persentu. (numeru de'it)",
+      "hints": [
+        "Persentu mak rasaun multiplika ho 100.",
+        "Bele mós hakerek fraksaun ho denominadór 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, entaun ne'e {ans}%."
+    },
+    "propX": {
+      "prompt": "Iha proporsaun ${a} : {b} = \\square : {d}$, numeru saida mak tama iha kaixa? (numeru de'it)",
+      "hints": [
+        "Iha proporsaun, produtu husi termu sira iha liur hanesan produtu husi termu sira iha laran.",
+        "Rezolve □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, entaun □={ans}."
+    },
+    "decPct": {
+      "prompt": "Hakerek desimál ne'e nudár persentu: ${d}$ (numeru de'it)",
+      "hints": [
+        "Multiplika desimál ho 100 atu hetan persentu.",
+        "Muda vírgula ba sorin loos pozisaun rua."
+      ],
+      "expl": "{d}×100={ans}, entaun ne'e {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Kubu ida nia sorin ida naruk {a} cm. Nia volume iha cm³ mak hira? (numeru de'it)",
+      "hints": [
+        "Volume husi kubu mak sorin × sorin × sorin.",
+        "Multiplika {a} ho an rasik dala tolu."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, entaun volume mak {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Kuboíde ida naruk {a} cm, luan {b} cm no aas {c} cm. Nia volume iha cm³ mak hira? (cm³)",
+      "hints": [
+        "Volume husi kuboíde mak naruk × luan × aas.",
+        "Multiplika naruk tolu hotu."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, entaun volume mak {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Sirkulu ida nia raiu mak {r} cm. Nia sirkunferénsia cm hira? (uza $3.14$ ba pi) (cm)",
+      "hints": [
+        "Sirkunferénsia mak diámetru × pi.",
+        "Diámetru hanesan raiu dala rua."
+      ],
+      "expl": "{r}×2×3.14={ans}, entaun ne'e {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Sirkulu ida nia raiu mak {r} cm. Nia área iha cm² mak hira? (uza $3.14$ ba pi) (cm²)",
+      "hints": [
+        "Área mak raiu × raiu × pi.",
+        "Halo raiu kuadradu, depois multiplika ho 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, entaun área mak {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Média husi numeru {n} mak {m}. Soma husi numeru {n} ne'e mak hira? (numeru de'it)",
+      "hints": [
+        "média = soma ÷ kuantidade.",
+        "Entaun soma = média × kuantidade."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Bainhira $x={x}$, valór husi ${expr}$ mak hira?",
+      "hints": [
+        "Tau numeru ne'ebé fó iha x nia fatin.",
+        "Multiplika uluk, depois soma ka subtrai."
+      ],
+      "expl": "Bainhira tau x={x}, hetan ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Rezolve ekuasaun linear ${eq}$ (buka x).",
+      "hints": [
+        "Soma ka subtrai numeru hanesan iha sorin rua atu husik de'it termu x.",
+        "Depois fahe sorin rua ho numeru ne'ebé iha oin x."
+      ],
+      "expl": "Husi ${eq}$ hetan x={ans}."
+    },
+    "expMul": {
+      "prompt": "Iha $x^{{a}} \\times x^{{b}} = x^{\\square}$, numeru saida mak tama iha kaixa? (numeru de'it)",
+      "hints": [
+        "Bainhira baze hanesan, soma espoente sira.",
+        "Kalkula {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, entaun □={ans}."
+    },
+    "expPow": {
+      "prompt": "Iha $(x^{{a}})^{{b}} = x^{\\square}$, numeru saida mak tama iha kaixa? (numeru de'it)",
+      "hints": [
+        "Poténsia husi poténsia multiplika espoente sira.",
+        "Kalkula {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, entaun □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Numeru intreiru $x$ ne'ebé boot liu no kumpre $x+{a} < {b}$ mak hira? (numeru de'it)",
+      "hints": [
+        "Subtrai numeru hanesan husi sorin rua atu buka limite husi x.",
+        "x tenke ki'ik liu valór ne'ebé ita hetan; valór ne'e rasik la tama."
+      ],
+      "expl": "x<{bound}, entaun numeru intreiru boot liu mak {ans}."
+    },
+    "slope2": {
+      "prompt": "Linha ne'ebé pasa iha pontu $({x1},\\,{y1})$ no $({x2},\\,{y2})$ nia deklive (slope) mak hira? (numeru de'it)",
+      "hints": [
+        "Deklive mak (mudansa iha y) ÷ (mudansa iha x).",
+        "Fahe diferensa husi koordenada y ho diferensa husi koordenada x."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Rezultadu hira mak iha bainhira soe osan-metin {n} hamutuk? (numeru de'it)",
+      "hints": [
+        "Osan-metin ida iha rezultadu 2: ulun ka ikun.",
+        "Multiplika rezultadu husi osan-metin ida-idak."
+      ],
+      "expl": "2 multiplika dala {n} hetan {ans}, entaun iha rezultadu {ans}."
+    },
+    "isoApex": {
+      "prompt": "Ângulu báziku ida husi triángulu izósseles mak {b}°. Ângulu iha tutun graus hira? (graus)",
+      "hints": [
+        "Ângulu báziku rua husi triángulu izósseles hanesan.",
+        "Subtrai ângulu báziku rua husi 180°, soma husi ângulu triángulu nian."
+      ],
+      "expl": "180-{b}×2={ans}, entaun ângulu iha tutun mak {ans}°."
+    },
+    "hypot": {
+      "prompt": "Sorin rua besik ângulu loos husi triángulu retángulu mak {a} cm no {b} cm. Sorin naruk liu cm hira? (cm)",
+      "hints": [
+        "Teorema Pitágoras: (ipotenuza)² = (sorin ida)² + (sorin seluk)².",
+        "Halo kuadradu sorin rua, soma, depois hasai raíz kuadrada."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, entaun sorin naruk liu mak {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Valór husi $\\sqrt{{n}}$ mak hira? (numeru de'it)",
+      "hints": [
+        "Buka numeru pozitivu ne'ebé nia kuadradu mak {n}.",
+        "Hanoin kona-ba tabuada."
+      ],
+      "expl": "${ans}^2={n}$, entaun $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Se $({fa})({fb}) = x^2+px+q$, $p+q$ mak hira? (numeru de'it)",
+      "hints": [
+        "Uza $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p mak soma husi numeru rua no q mak sira nia produtu."
+      ],
+      "expl": "p={p} no q={q}, entaun p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Husi raíz rua husi ${eq}$, ida ne'ebé boot liu mak hira? (numeru de'it)",
+      "hints": [
+        "Fatoriza sorin karuk.",
+        "Raíz sira mak valór x ne'ebé halo faktór ida sai zero."
+      ],
+      "expl": "Husi ${fact}$ raíz sira mak {roots}, entaun raíz boot liu mak {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Vértise husi funsaun kuadrátika $y={expr}$ mak $(p,\\ q)$. $p+q$ mak hira? (numeru de'it)",
+      "hints": [
+        "Iha $y=a(x-p)^2+q$ vértise mak $(p,\\ q)$.",
+        "Hare di'ak sinál iha parêntese laran."
+      ],
+      "expl": "Vértise mak $({p},\\ {q})$, entaun p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Sobra (resto) mak hira bainhira $P(x)={poly}$ fahe ho ${div}$? (numeru de'it)",
+      "hints": [
+        "Teorema resto: resto husi P(x) fahe ho x-a mak P(a).",
+        "Tau a iha x nia fatin no kalkula."
+      ],
+      "expl": "Tuir teorema resto, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Soma husi parte real no parte imajináriu husi ${expr}$ mak hira? (numeru de'it)",
+      "hints": [
+        "Soma parte real hamutuk no parte imajináriu hamutuk.",
+        "Hanoin i hanesan letra ida."
+      ],
+      "expl": "Parte real mak {re} no parte imajináriu mak {im}, entaun soma mak {ans}."
+    },
+    "permNP": {
+      "prompt": "Ho dalan hira mak ita bele hili ema {r} husi ema {n} ne'ebé la hanesan no hatuur sira iha linha ida? (numeru de'it)",
+      "hints": [
+        "Orden importante, entaun ne'e permutasaun.",
+        "Hahú husi {n} no multiplika numeru {r}, hakat tun."
+      ],
+      "expl": "{calc}={ans}, entaun iha dalan {ans}."
+    },
+    "combNC": {
+      "prompt": "Ho dalan hira mak ita bele hili ema {r} husi ema {n} ne'ebé la hanesan bainhira orden la importante? (numeru de'it)",
+      "hints": [
+        "Orden la importante, entaun ne'e kombinasaun.",
+        "Fahe númeru permutasaun ho {r}!."
+      ],
+      "expl": "{calc}={ans}, entaun iha dalan {ans}."
+    },
+    "dist2": {
+      "prompt": "Distánsia entre pontu A({x1}, {y1}) no B({x2}, {y2}) mak hira? (numeru de'it)",
+      "hints": [
+        "Distánsia mak $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Halo kuadradu diferensa husi koordenada x no y, depois soma."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Sirkulu $({fx})^2+({fy})^2={r2}$ nia raiu mak hira? (numeru de'it)",
+      "hints": [
+        "Iha $(x-a)^2+(y-b)^2=r^2$, r mak raiu.",
+        "Numeru iha sorin loos mak r²."
+      ],
+      "expl": "$r^2={r2}$, entaun raiu mak {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Numeru intreiru $x$ hira mak kumpre inekuasaun kuadrátika ${eq}<0$? (numeru de'it)",
+      "hints": [
+        "Fatoriza sorin karuk atu buka raíz rua.",
+        "Konta numeru intreiru entre raíz sira; raíz rasik la tama."
+      ],
+      "expl": "Husi ${fact}<0$ hetan {r1}<x<{r2}, entaun iha numeru intreiru {ans}."
+    },
+    "logVal": {
+      "prompt": "Valór husi $\\log_{{b}} {n}$ mak hira? (numeru de'it)",
+      "hints": [
+        "$\\log_b n=k$ signifika $b^k=n$.",
+        "Konta dala hira ita tenke multiplika {b} atu hetan {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, entaun resposta mak {ans}."
+    },
+    "radDeg": {
+      "prompt": "Hakerek $\\theta=\\dfrac{{num}}{{d}}$ (radianu) iha graus. (numeru de'it)",
+      "hints": [
+        "$\\pi$ radianu hanesan 180°.",
+        "Tau 180° iha $\\pi$ nia fatin."
+      ],
+      "expl": "Bainhira tau $\\pi=180^\\circ$ hetan {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Termu numeru {n} husi sekuénsia aritmétika ho termu uluk {a} no diferensa komún {d} mak hira? (numeru de'it)",
+      "hints": [
+        "Termu jerál mak $a_n=a+(n-1)d$.",
+        "Multiplika (n-1) ho diferensa komún no soma ba termu uluk."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Termu numeru {n} husi sekuénsia jeométrika ho termu uluk {a} no rasaun komún {r} mak hira? (numeru de'it)",
+      "hints": [
+        "Termu jerál mak $a_n=ar^{n-1}$.",
+        "Multiplika ho rasaun komún dala (n-1)."
+      ],
+      "expl": "{a} multiplika {r} ho espoente ({n}-1) mak {ans}."
+    },
+    "limLinear": {
+      "prompt": "Valór husi $\\lim_{x\\to {a}}({f})$ mak hira? (numeru de'it)",
+      "hints": [
+        "Ba polinómiu, límite hanesan valór husi funsaun.",
+        "Tau {a} iha x nia fatin."
+      ],
+      "expl": "Bainhira tau x={a} hetan {ans}."
+    },
+    "derivAt": {
+      "prompt": "Se $f(x)={poly}$, $f'({a})$ mak hira? (numeru de'it)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Buka derivada, depois tau {a} iha x nia fatin."
+      ],
+      "expl": "$f'(x)={deriv}$, entaun $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Valór husi $\\int_{0}^{{b}} ({fx})\\,dx$ mak hira? (numeru de'it)",
+      "hints": [
+        "Buka antiderivada, depois kalkula (valór iha limite leten) - (valór iha limite kraik).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ no $\\int c\\,dx=cx$."
+      ],
+      "expl": "Bainhira tau x={b} iha antiderivada ${anti}$ hetan {ans}."
+    },
+    "areaX2": {
+      "prompt": "Área ne'ebé kurva $y={k}x^2$, aksu $x$ no liña $x={a}$ taka mak hira? (numeru de'it)",
+      "hints": [
+        "Área mak integrál definidu husi 0 to'o {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Soma husi série jeométrika infinitu ho termu uluk {a} no rasaun komún ${rtex}$ mak hira? (bele hakerek desimál, ka fraksaun hanesan 3/4)",
+      "hints": [
+        "Soma existe bainhira valór absolutu husi rasaun ki'ik liu 1.",
+        "Soma mak (termu uluk) ÷ (1 - rasaun)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Se variável aleatória $X$ tuir distribuisaun binomial $B({n},\\ {p})$, $E(X)$ mak hira? (numeru de'it)",
+      "hints": [
+        "Média husi $B(n,\\ p)$ mak $np$.",
+        "Multiplika n ho p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Tamanu (magnitude) $|\\vec{a}|$ husi vetór $\\vec{a}=({x},\\ {y})$ mak hira? (numeru de'it)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Halo kuadradu komponente ida-idak, soma, depois hasai raíz kuadrada."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Koordenada $x$ husi fokus husi parábola $y^2={c}x$ mak hira? (numeru de'it)",
+      "hints": [
+        "Fokus husi $y^2=4px$ mak $(p,\\ 0)$.",
+        "Buka p husi {c}=4p."
+      ],
+      "expl": "4p={c}, entaun p={ans}."
+    },
+    "condProb": {
+      "prompt": "Ba eventu $A,\\ B$, $P(A)={pa}$ no $P(A\\cap B)={pab}$. $P(B\\mid A)$ mak hira? (hakerek desimál)",
+      "hints": [
+        "Probabilidade kondisionál: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Fahe valór rua ne'e."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

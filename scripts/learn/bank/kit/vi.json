@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Tính giá trị của $ {a} + {b} $.",
+      "hints": [
+        "Cộng các chữ số cùng hàng với nhau.",
+        "Khi một hàng cộng được từ 10 trở lên, nhớ sang hàng bên cạnh."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Tính giá trị của $ {a} - {b} $.",
+      "hints": [
+        "Trừ các chữ số cùng hàng với nhau.",
+        "Khi không trừ được, mượn 10 từ hàng bên cạnh."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Tính giá trị của $ {a} \\times {b} $.",
+      "hints": [
+        "Hãy nghĩ đến bảng nhân hoặc các nhóm bằng nhau.",
+        "Với số lớn, nhân từng hàng rồi cộng các kết quả lại."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Tính giá trị của $ {a} \\div {b} $.",
+      "hints": [
+        "Dùng bảng nhân của số chia theo chiều ngược lại.",
+        "Tìm số nào nhân với {b} thì bằng {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Chữ số hàng chục của ${n}$ là chữ số nào? (chỉ viết chữ số)",
+      "hints": [
+        "Đó là chữ số thứ hai tính từ bên phải.",
+        "Tìm chữ số ngay bên trái hàng đơn vị."
+      ],
+      "expl": "Chữ số hàng chục của {n} là {ans}."
+    },
+    "seqNext": {
+      "prompt": "Tìm quy luật và viết số còn thiếu: ${list}, \\square$",
+      "hints": [
+        "Tìm hiệu của hai số liền nhau.",
+        "Mỗi bước, các số tăng hoặc giảm cùng một lượng."
+      ],
+      "expl": "Hiệu của hai số liền nhau là {d}, nên □={ans}."
+    },
+    "kmToM": {
+      "prompt": "{v} km bằng bao nhiêu mét? (chỉ viết chữ số)",
+      "hints": [
+        "1 km bằng 1000 m.",
+        "Nhân {v} với 1000."
+      ],
+      "expl": "{v}×1000={ans}, vậy là {ans} m."
+    },
+    "lToMl": {
+      "prompt": "{v} L bằng bao nhiêu mililít? (chỉ viết chữ số)",
+      "hints": [
+        "1 L bằng 1000 mL.",
+        "Nhân {v} với 1000."
+      ],
+      "expl": "{v}×1000={ans}, vậy là {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Bán kính của một hình tròn là {r} cm. Đường kính của nó dài bao nhiêu cm? (cm)",
+      "hints": [
+        "Đường kính gấp đôi bán kính.",
+        "Nhân bán kính với 2."
+      ],
+      "expl": "{r}×2={ans}, vậy đường kính là {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Hai góc của một tam giác là {a}° và {b}°. Góc thứ ba bằng bao nhiêu độ? (độ)",
+      "hints": [
+        "Ba góc của một tam giác có tổng bằng 180°.",
+        "Lấy 180 trừ đi hai góc đã biết."
+      ],
+      "expl": "180-{a}-{b}={ans}, vậy là {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Số gồm {a} chục nghìn và {b} nghìn là số nào? (chỉ viết chữ số)",
+      "hints": [
+        "{a} chục nghìn là {a}0000.",
+        "{b} nghìn là {b}000. Hãy cộng chúng lại."
+      ],
+      "expl": "{a} chục nghìn và {b} nghìn tạo thành {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Tính giá trị của $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (có thể viết số thập phân, hoặc phân số viết như 3/4)",
+      "hints": [
+        "Quy đồng mẫu số các phân số.",
+        "Cộng các tử số."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Tính giá trị của $\\frac{{a}}{{b}} \\div {c}$. (có thể viết số thập phân, hoặc phân số viết như 3/4)",
+      "hints": [
+        "Chia một phân số cho một số tự nhiên thì nhân mẫu số với số đó.",
+        "Rút gọn sau khi tính."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Tính giá trị của $ {a} \\times {b} $.",
+      "hints": [
+        "Bỏ qua dấu phẩy và nhân như với số tự nhiên.",
+        "Sau đó đặt lại dấu phẩy, sao cho có số chữ số thập phân bằng tổng số chữ số thập phân của các thừa số."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Một hình chữ nhật có chiều rộng {w} cm và chiều cao {h} cm. Diện tích của nó là bao nhiêu cm²? (chỉ viết chữ số)",
+      "hints": [
+        "Diện tích hình chữ nhật bằng chiều rộng × chiều cao.",
+        "Nhân độ dài hai cạnh với nhau."
+      ],
+      "expl": "{w}×{h}={ans}, vậy diện tích là {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Một hình chữ nhật có chiều rộng {w} cm và chiều cao {h} cm. Chu vi của nó dài bao nhiêu cm? (cm)",
+      "hints": [
+        "Chu vi là tổng độ dài bốn cạnh.",
+        "Có thể dùng (chiều rộng + chiều cao) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, vậy chu vi là {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Viết $\\frac{{a}}{{b}}$ dưới dạng phần trăm. (chỉ viết chữ số)",
+      "hints": [
+        "Phần trăm là tỉ số nhân với 100.",
+        "Cũng có thể viết phân số với mẫu số là 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, vậy là {ans}%."
+    },
+    "propX": {
+      "prompt": "Trong tỉ lệ thức ${a} : {b} = \\square : {d}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+      "hints": [
+        "Trong tỉ lệ thức, tích hai ngoại tỉ bằng tích hai trung tỉ.",
+        "Giải □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, nên □={ans}."
+    },
+    "decPct": {
+      "prompt": "Viết số thập phân này dưới dạng phần trăm: ${d}$ (chỉ viết chữ số)",
+      "hints": [
+        "Nhân số thập phân với 100 để được phần trăm.",
+        "Chuyển dấu phẩy sang phải hai chữ số."
+      ],
+      "expl": "{d}×100={ans}, vậy là {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Một cạnh của hình lập phương dài {a} cm. Thể tích của nó là bao nhiêu cm³? (chỉ viết chữ số)",
+      "hints": [
+        "Thể tích hình lập phương bằng cạnh × cạnh × cạnh.",
+        "Nhân {a} với chính nó ba lần."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, vậy thể tích là {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Một hình hộp chữ nhật dài {a} cm, rộng {b} cm và cao {c} cm. Thể tích của nó là bao nhiêu cm³? (cm³)",
+      "hints": [
+        "Thể tích hình hộp chữ nhật bằng chiều dài × chiều rộng × chiều cao.",
+        "Nhân cả ba độ dài với nhau."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, vậy thể tích là {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Một hình tròn có bán kính {r} cm. Chu vi của nó dài bao nhiêu cm? (lấy $3.14$ cho số pi) (cm)",
+      "hints": [
+        "Chu vi bằng đường kính × pi.",
+        "Đường kính gấp đôi bán kính."
+      ],
+      "expl": "{r}×2×3.14={ans}, vậy là {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Một hình tròn có bán kính {r} cm. Diện tích của nó là bao nhiêu cm²? (lấy $3.14$ cho số pi) (cm²)",
+      "hints": [
+        "Diện tích bằng bán kính × bán kính × pi.",
+        "Bình phương bán kính rồi nhân với 3,14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, vậy diện tích là {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Trung bình cộng của {n} số là {m}. Tổng của {n} số này là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "trung bình cộng = tổng ÷ số số hạng.",
+        "Vậy tổng = trung bình cộng × số số hạng."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Khi $x={x}$, giá trị của ${expr}$ là bao nhiêu?",
+      "hints": [
+        "Thay số đã cho vào vị trí của x.",
+        "Nhân trước, rồi cộng hoặc trừ."
+      ],
+      "expl": "Thay x={x} ta được ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Giải phương trình bậc nhất ${eq}$ (tìm x).",
+      "hints": [
+        "Cộng hoặc trừ cùng một số ở hai vế để chỉ còn lại số hạng chứa x.",
+        "Sau đó chia hai vế cho số đứng trước x."
+      ],
+      "expl": "Từ ${eq}$ ta được x={ans}."
+    },
+    "expMul": {
+      "prompt": "Trong $x^{{a}} \\times x^{{b}} = x^{\\square}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+      "hints": [
+        "Khi các cơ số bằng nhau, cộng các số mũ.",
+        "Tính {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, nên □={ans}."
+    },
+    "expPow": {
+      "prompt": "Trong $(x^{{a}})^{{b}} = x^{\\square}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+      "hints": [
+        "Lũy thừa của một lũy thừa thì nhân các số mũ.",
+        "Tính {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, nên □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Số nguyên $x$ lớn nhất thỏa mãn $x+{a} < {b}$ là số nào? (chỉ viết chữ số)",
+      "hints": [
+        "Trừ cùng một số ở hai vế để tìm khoảng giá trị của x.",
+        "x phải nhỏ hơn giá trị tìm được; chính giá trị đó không được tính."
+      ],
+      "expl": "x<{bound}, nên số nguyên lớn nhất là {ans}."
+    },
+    "slope2": {
+      "prompt": "Hệ số góc của đường thẳng đi qua hai điểm $({x1},\\,{y1})$ và $({x2},\\,{y2})$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Hệ số góc là (độ thay đổi của y) ÷ (độ thay đổi của x).",
+        "Lấy hiệu các tung độ chia cho hiệu các hoành độ."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Khi tung {n} đồng xu cùng lúc, có bao nhiêu kết quả? (chỉ viết chữ số)",
+      "hints": [
+        "Một đồng xu có 2 kết quả: sấp hoặc ngửa.",
+        "Nhân số kết quả của từng đồng xu với nhau."
+      ],
+      "expl": "2 nhân với chính nó {n} lần là {ans}, vậy có {ans} kết quả."
+    },
+    "isoApex": {
+      "prompt": "Một góc ở đáy của tam giác cân là {b}°. Góc ở đỉnh bằng bao nhiêu độ? (độ)",
+      "hints": [
+        "Hai góc ở đáy của tam giác cân bằng nhau.",
+        "Lấy 180°, tổng các góc của tam giác, trừ đi cả hai góc ở đáy."
+      ],
+      "expl": "180-{b}×2={ans}, vậy góc ở đỉnh là {ans}°."
+    },
+    "hypot": {
+      "prompt": "Hai cạnh kề góc vuông của một tam giác vuông dài {a} cm và {b} cm. Cạnh dài nhất dài bao nhiêu cm? (cm)",
+      "hints": [
+        "Định lý Pythagore: (cạnh huyền)² = (một cạnh góc vuông)² + (cạnh góc vuông kia)².",
+        "Bình phương hai cạnh, cộng lại, rồi lấy căn bậc hai."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, vậy cạnh dài nhất là {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Giá trị của $\\sqrt{{n}}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Tìm số dương có bình phương bằng {n}.",
+        "Hãy nghĩ đến bảng nhân."
+      ],
+      "expl": "${ans}^2={n}$, nên $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Nếu $({fa})({fb}) = x^2+px+q$ thì $p+q$ bằng bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Dùng $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p là tổng của hai số và q là tích của chúng."
+      ],
+      "expl": "p={p} và q={q}, nên p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Nghiệm lớn hơn trong hai nghiệm của ${eq}$ là nghiệm nào? (chỉ viết chữ số)",
+      "hints": [
+        "Phân tích vế trái thành nhân tử.",
+        "Các nghiệm là những giá trị của x làm một nhân tử bằng không."
+      ],
+      "expl": "Từ ${fact}$ các nghiệm là {roots}, nên nghiệm lớn hơn là {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Đỉnh của hàm số bậc hai $y={expr}$ là $(p,\\ q)$. Tính $p+q$. (chỉ viết chữ số)",
+      "hints": [
+        "Trong $y=a(x-p)^2+q$, đỉnh là $(p,\\ q)$.",
+        "Chú ý dấu trong ngoặc."
+      ],
+      "expl": "Đỉnh là $({p},\\ {q})$, nên p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Số dư khi chia $P(x)={poly}$ cho ${div}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Định lý số dư: số dư của P(x) chia cho x-a là P(a).",
+        "Thay a vào vị trí của x rồi tính."
+      ],
+      "expl": "Theo định lý số dư, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Tổng của phần thực và phần ảo của ${expr}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Cộng các phần thực với nhau và các phần ảo với nhau.",
+        "Coi i như một chữ cái."
+      ],
+      "expl": "Phần thực là {re} và phần ảo là {im}, nên tổng là {ans}."
+    },
+    "permNP": {
+      "prompt": "Có bao nhiêu cách chọn {r} người trong {n} người khác nhau và xếp họ thành một hàng? (chỉ viết chữ số)",
+      "hints": [
+        "Thứ tự có quan trọng, nên đây là hoán vị (chỉnh hợp).",
+        "Bắt đầu từ {n} và nhân {r} số, giảm dần."
+      ],
+      "expl": "{calc}={ans}, vậy có {ans} cách."
+    },
+    "combNC": {
+      "prompt": "Có bao nhiêu cách chọn {r} người trong {n} người khác nhau khi không quan tâm thứ tự? (chỉ viết chữ số)",
+      "hints": [
+        "Thứ tự không quan trọng, nên đây là tổ hợp.",
+        "Chia số hoán vị cho {r}!."
+      ],
+      "expl": "{calc}={ans}, vậy có {ans} cách."
+    },
+    "dist2": {
+      "prompt": "Khoảng cách giữa hai điểm A({x1}, {y1}) và B({x2}, {y2}) là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Khoảng cách là $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Bình phương hiệu các hoành độ và hiệu các tung độ, rồi cộng lại."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Bán kính của đường tròn $({fx})^2+({fy})^2={r2}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Trong $(x-a)^2+(y-b)^2=r^2$, r là bán kính.",
+        "Số bên phải là r²."
+      ],
+      "expl": "$r^2={r2}$, nên bán kính là {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Có bao nhiêu số nguyên $x$ thỏa mãn bất phương trình bậc hai ${eq}<0$? (chỉ viết chữ số)",
+      "hints": [
+        "Phân tích vế trái thành nhân tử để tìm hai nghiệm.",
+        "Đếm các số nguyên nằm giữa hai nghiệm; chính hai nghiệm không được tính."
+      ],
+      "expl": "Từ ${fact}<0$ ta được {r1}<x<{r2}, nên có {ans} số nguyên."
+    },
+    "logVal": {
+      "prompt": "Giá trị của $\\log_{{b}} {n}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "$\\log_b n=k$ nghĩa là $b^k=n$.",
+        "Đếm xem phải nhân {b} bao nhiêu lần để được {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, nên đáp án là {ans}."
+    },
+    "radDeg": {
+      "prompt": "Đổi $\\theta=\\dfrac{{num}}{{d}}$ (rađian) sang độ. (chỉ viết chữ số)",
+      "hints": [
+        "$\\pi$ rađian bằng 180°.",
+        "Thay $\\pi$ bằng 180°."
+      ],
+      "expl": "Thay $\\pi=180^\\circ$ ta được {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Số hạng thứ {n} của cấp số cộng có số hạng đầu {a} và công sai {d} là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Số hạng tổng quát là $a_n=a+(n-1)d$.",
+        "Nhân (n-1) với công sai rồi cộng vào số hạng đầu."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Số hạng thứ {n} của cấp số nhân có số hạng đầu {a} và công bội {r} là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Số hạng tổng quát là $a_n=ar^{n-1}$.",
+        "Nhân với công bội (n-1) lần."
+      ],
+      "expl": "{a} nhân {r} lũy thừa ({n}-1) bằng {ans}."
+    },
+    "limLinear": {
+      "prompt": "Giá trị của $\\lim_{x\\to {a}}({f})$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Với đa thức, giới hạn bằng giá trị của hàm số.",
+        "Thay x bằng {a}."
+      ],
+      "expl": "Thay x={a} ta được {ans}."
+    },
+    "derivAt": {
+      "prompt": "Nếu $f(x)={poly}$ thì $f'({a})$ bằng bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Tìm đạo hàm, rồi thay x bằng {a}."
+      ],
+      "expl": "$f'(x)={deriv}$, nên $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Giá trị của $\\int_{0}^{{b}} ({fx})\\,dx$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Tìm nguyên hàm, rồi tính (giá trị tại cận trên) - (giá trị tại cận dưới).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ và $\\int c\\,dx=cx$."
+      ],
+      "expl": "Thay x={b} vào nguyên hàm ${anti}$ ta được {ans}."
+    },
+    "areaX2": {
+      "prompt": "Diện tích hình phẳng giới hạn bởi đường cong $y={k}x^2$, trục $x$ và đường thẳng $x={a}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Diện tích là tích phân xác định từ 0 đến {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Tổng của cấp số nhân lùi vô hạn có số hạng đầu {a} và công bội ${rtex}$ là bao nhiêu? (có thể viết số thập phân, hoặc phân số viết như 3/4)",
+      "hints": [
+        "Tổng tồn tại khi giá trị tuyệt đối của công bội nhỏ hơn 1.",
+        "Tổng bằng (số hạng đầu) ÷ (1 - công bội)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Nếu biến ngẫu nhiên $X$ có phân phối nhị thức $B({n},\\ {p})$ thì $E(X)$ bằng bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Kỳ vọng của $B(n,\\ p)$ là $np$.",
+        "Nhân n với p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Độ dài $|\\vec{a}|$ của vectơ $\\vec{a}=({x},\\ {y})$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Bình phương từng thành phần, cộng lại, rồi lấy căn bậc hai."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Hoành độ $x$ của tiêu điểm của parabol $y^2={c}x$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Tiêu điểm của $y^2=4px$ là $(p,\\ 0)$.",
+        "Tìm p từ {c}=4p."
+      ],
+      "expl": "4p={c}, nên p={ans}."
+    },
+    "condProb": {
+      "prompt": "Với các biến cố $A,\\ B$ có $P(A)={pa}$ và $P(A\\cap B)={pab}$. Tính $P(B\\mid A)$. (viết số thập phân)",
+      "hints": [
+        "Xác suất có điều kiện: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Chia hai giá trị cho nhau."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

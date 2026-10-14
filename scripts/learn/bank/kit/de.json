@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Berechne $ {a} + {b} $.",
+      "hints": [
+        "Addiere die Ziffern der gleichen Stelle.",
+        "Ergibt eine Stelle 10 oder mehr, übertrage auf die nächste Stelle."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Berechne $ {a} - {b} $.",
+      "hints": [
+        "Subtrahiere die Ziffern der gleichen Stelle.",
+        "Wenn es nicht geht, entbündle 10 von der nächsten Stelle."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Berechne $ {a} \\times {b} $.",
+      "hints": [
+        "Denke an das Einmaleins oder an gleich große Gruppen.",
+        "Bei größeren Zahlen multiplizierst du stellenweise und addierst die Teilergebnisse."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Berechne $ {a} \\div {b} $.",
+      "hints": [
+        "Benutze das Einmaleins des Divisors rückwärts.",
+        "Suche die Zahl, die mal {b} gleich {a} ergibt."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Welche Ziffer steht an der Zehnerstelle von ${n}$? (nur Ziffern)",
+      "hints": [
+        "Es ist die zweite Ziffer von rechts.",
+        "Suche die Ziffer direkt links von der Einerstelle."
+      ],
+      "expl": "Die Zehnerziffer von {n} ist {ans}."
+    },
+    "seqNext": {
+      "prompt": "Finde die Regel und schreibe die fehlende Zahl: ${list}, \\square$",
+      "hints": [
+        "Bestimme den Unterschied zwischen benachbarten Zahlen.",
+        "Die Zahlen wachsen oder fallen in jedem Schritt um denselben Betrag."
+      ],
+      "expl": "Der Unterschied zwischen benachbarten Zahlen ist {d}, also □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Wie viele Meter sind {v} km? (nur Ziffern)",
+      "hints": [
+        "1 km sind 1000 m.",
+        "Multipliziere {v} mit 1000."
+      ],
+      "expl": "{v}×1000={ans}, also sind es {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Wie viele Milliliter sind {v} L? (nur Ziffern)",
+      "hints": [
+        "1 L sind 1000 mL.",
+        "Multipliziere {v} mit 1000."
+      ],
+      "expl": "{v}×1000={ans}, also sind es {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Der Radius eines Kreises ist {r} cm. Wie viele cm ist sein Durchmesser? (cm)",
+      "hints": [
+        "Der Durchmesser ist doppelt so groß wie der Radius.",
+        "Multipliziere den Radius mit 2."
+      ],
+      "expl": "{r}×2={ans}, also ist der Durchmesser {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Zwei Winkel eines Dreiecks sind {a}° und {b}°. Wie viel Grad hat der dritte Winkel? (Grad)",
+      "hints": [
+        "Die drei Winkel eines Dreiecks ergeben zusammen 180°.",
+        "Ziehe die zwei bekannten Winkel von 180 ab."
+      ],
+      "expl": "180-{a}-{b}={ans}, also sind es {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Welche Zahl besteht aus {a} Zehntausendern und {b} Tausendern? (nur Ziffern)",
+      "hints": [
+        "{a} Zehntausender sind {a}0000.",
+        "{b} Tausender sind {b}000. Addiere sie."
+      ],
+      "expl": "{a} Zehntausender und {b} Tausender ergeben {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Berechne $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (Eine Dezimalzahl geht auch, oder ein Bruch wie 3/4)",
+      "hints": [
+        "Bringe die Brüche auf den gleichen Nenner.",
+        "Addiere die Zähler."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Berechne $\\frac{{a}}{{b}} \\div {c}$. (Eine Dezimalzahl geht auch, oder ein Bruch wie 3/4)",
+      "hints": [
+        "Einen Bruch durch eine ganze Zahl zu teilen heißt, den Nenner mit dieser Zahl zu multiplizieren.",
+        "Kürze nach dem Rechnen."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Berechne $ {a} \\times {b} $.",
+      "hints": [
+        "Lass das Komma weg und multipliziere wie mit ganzen Zahlen.",
+        "Setze dann das Komma wieder, mit so vielen Nachkommastellen, wie die Faktoren zusammen hatten."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Ein Rechteck ist {w} cm breit und {h} cm hoch. Wie groß ist sein Flächeninhalt in cm²? (nur Ziffern)",
+      "hints": [
+        "Der Flächeninhalt eines Rechtecks ist Breite × Höhe.",
+        "Multipliziere die beiden Seitenlängen."
+      ],
+      "expl": "{w}×{h}={ans}, also ist der Flächeninhalt {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Ein Rechteck ist {w} cm breit und {h} cm hoch. Wie lang ist sein Umfang in cm? (cm)",
+      "hints": [
+        "Der Umfang ist die Summe der vier Seiten.",
+        "Du kannst (Breite + Höhe) × 2 rechnen."
+      ],
+      "expl": "({w}+{h})×2={ans}, also ist der Umfang {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Schreibe $\\frac{{a}}{{b}}$ als Prozentsatz. (nur Ziffern)",
+      "hints": [
+        "Der Prozentsatz ist der Anteil mal 100.",
+        "Du kannst den Bruch auch auf den Nenner 100 erweitern."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, also sind es {ans}%."
+    },
+    "propX": {
+      "prompt": "Wie lautet die fehlende Zahl in der Proportion ${a} : {b} = \\square : {d}$? (nur Ziffern)",
+      "hints": [
+        "In einer Proportion ist das Produkt der äußeren Glieder gleich dem Produkt der inneren Glieder.",
+        "Löse □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, also □={ans}."
+    },
+    "decPct": {
+      "prompt": "Schreibe diese Dezimalzahl als Prozentsatz: ${d}$ (nur Ziffern)",
+      "hints": [
+        "Multipliziere die Dezimalzahl mit 100, um den Prozentsatz zu erhalten.",
+        "Verschiebe das Komma um zwei Stellen nach rechts."
+      ],
+      "expl": "{d}×100={ans}, also sind es {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Eine Kante eines Würfels ist {a} cm lang. Wie groß ist sein Volumen in cm³? (nur Ziffern)",
+      "hints": [
+        "Das Volumen eines Würfels ist Kante × Kante × Kante.",
+        "Multipliziere {a} dreimal mit sich selbst."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, also ist das Volumen {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Ein Quader ist {a} cm lang, {b} cm breit und {c} cm hoch. Wie groß ist sein Volumen in cm³? (cm³)",
+      "hints": [
+        "Das Volumen eines Quaders ist Länge × Breite × Höhe.",
+        "Multipliziere alle drei Längen."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, also ist das Volumen {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Ein Kreis hat den Radius {r} cm. Wie lang ist sein Umfang in cm? (Nimm $3.14$ für Pi.) (cm)",
+      "hints": [
+        "Der Umfang ist Durchmesser × Pi.",
+        "Der Durchmesser ist doppelt so groß wie der Radius."
+      ],
+      "expl": "{r}×2×3.14={ans}, also sind es {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Ein Kreis hat den Radius {r} cm. Wie groß ist seine Fläche in cm²? (Nimm $3.14$ für Pi.) (cm²)",
+      "hints": [
+        "Die Fläche ist Radius × Radius × Pi.",
+        "Quadriere den Radius und multipliziere dann mit 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, also ist die Fläche {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Der Mittelwert von {n} Zahlen ist {m}. Wie groß ist die Summe dieser {n} Zahlen? (nur Ziffern)",
+      "hints": [
+        "Mittelwert = Summe ÷ Anzahl.",
+        "Also Summe = Mittelwert × Anzahl."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Wie groß ist der Wert von ${expr}$, wenn $x={x}$ ist?",
+      "hints": [
+        "Setze die gegebene Zahl für x ein.",
+        "Rechne zuerst Mal, dann Plus oder Minus."
+      ],
+      "expl": "Mit x={x} erhält man ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Löse die lineare Gleichung ${eq}$ (finde x).",
+      "hints": [
+        "Addiere oder subtrahiere auf beiden Seiten dieselbe Zahl, bis der x-Term allein steht.",
+        "Teile dann beide Seiten durch die Zahl vor x."
+      ],
+      "expl": "Aus ${eq}$ folgt x={ans}."
+    },
+    "expMul": {
+      "prompt": "Welche Zahl gehört in $x^{{a}} \\times x^{{b}} = x^{\\square}$ in das Kästchen? (nur Ziffern)",
+      "hints": [
+        "Bei gleicher Basis addiert man die Exponenten.",
+        "Rechne {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, also □={ans}."
+    },
+    "expPow": {
+      "prompt": "Welche Zahl gehört in $(x^{{a}})^{{b}} = x^{\\square}$ in das Kästchen? (nur Ziffern)",
+      "hints": [
+        "Eine Potenz einer Potenz: Die Exponenten werden multipliziert.",
+        "Rechne {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, also □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Was ist die größte ganze Zahl $x$, die $x+{a} < {b}$ erfüllt? (nur Ziffern)",
+      "hints": [
+        "Subtrahiere auf beiden Seiten dieselbe Zahl, um den Bereich von x zu finden.",
+        "x muss kleiner sein als der gefundene Wert; dieser Wert selbst gehört nicht dazu."
+      ],
+      "expl": "x<{bound}, also ist die größte ganze Zahl {ans}."
+    },
+    "slope2": {
+      "prompt": "Wie groß ist die Steigung der Geraden durch die Punkte $({x1},\\,{y1})$ und $({x2},\\,{y2})$? (nur Ziffern)",
+      "hints": [
+        "Die Steigung ist (Änderung von y) ÷ (Änderung von x).",
+        "Teile die Differenz der y-Koordinaten durch die Differenz der x-Koordinaten."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Wie viele Ergebnisse gibt es, wenn man {n} Münzen gleichzeitig wirft? (nur Ziffern)",
+      "hints": [
+        "Eine Münze hat 2 Ergebnisse: Kopf oder Zahl.",
+        "Multipliziere die Anzahl der Ergebnisse jeder Münze."
+      ],
+      "expl": "2, {n}-mal mit sich multipliziert, ist {ans}, also gibt es {ans} Ergebnisse."
+    },
+    "isoApex": {
+      "prompt": "Ein Basiswinkel eines gleichschenkligen Dreiecks ist {b}°. Wie viel Grad hat der Winkel an der Spitze? (Grad)",
+      "hints": [
+        "Die zwei Basiswinkel eines gleichschenkligen Dreiecks sind gleich groß.",
+        "Ziehe beide Basiswinkel von 180° ab, der Winkelsumme im Dreieck."
+      ],
+      "expl": "180-{b}×2={ans}, also ist der Winkel an der Spitze {ans}°."
+    },
+    "hypot": {
+      "prompt": "Die zwei Seiten am rechten Winkel eines rechtwinkligen Dreiecks sind {a} cm und {b} cm lang. Wie lang ist die längste Seite in cm? (cm)",
+      "hints": [
+        "Satz des Pythagoras: (Hypotenuse)² = (Kathete)² + (andere Kathete)².",
+        "Quadriere beide Seiten, addiere und ziehe dann die Wurzel."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, also ist die längste Seite {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Wie groß ist der Wert von $\\sqrt{{n}}$? (nur Ziffern)",
+      "hints": [
+        "Suche die positive Zahl, deren Quadrat {n} ist.",
+        "Denke an das Einmaleins."
+      ],
+      "expl": "${ans}^2={n}$, also $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Wenn $({fa})({fb}) = x^2+px+q$ ist, was ist $p+q$? (nur Ziffern)",
+      "hints": [
+        "Benutze $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p ist die Summe der beiden Zahlen und q ihr Produkt."
+      ],
+      "expl": "p={p} und q={q}, also p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Welche ist die größere der beiden Lösungen von ${eq}$? (nur Ziffern)",
+      "hints": [
+        "Zerlege die linke Seite in Faktoren.",
+        "Die Lösungen sind die Werte von x, für die ein Faktor null wird."
+      ],
+      "expl": "Aus ${fact}$ sind die Lösungen {roots}, also ist die größere Lösung {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Der Scheitelpunkt der quadratischen Funktion $y={expr}$ ist $(p,\\ q)$. Wie groß ist $p+q$? (nur Ziffern)",
+      "hints": [
+        "In $y=a(x-p)^2+q$ ist der Scheitelpunkt $(p,\\ q)$.",
+        "Achte auf das Vorzeichen in der Klammer."
+      ],
+      "expl": "Der Scheitelpunkt ist $({p},\\ {q})$, also p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Welchen Rest lässt $P(x)={poly}$ bei der Division durch ${div}$? (nur Ziffern)",
+      "hints": [
+        "Restsatz: Der Rest von P(x) geteilt durch x-a ist P(a).",
+        "Setze a für x ein und rechne."
+      ],
+      "expl": "Nach dem Restsatz ist P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Wie groß ist die Summe aus Realteil und Imaginärteil von ${expr}$? (nur Ziffern)",
+      "hints": [
+        "Addiere die Realteile und die Imaginärteile jeweils für sich.",
+        "Behandle i wie einen Buchstaben."
+      ],
+      "expl": "Der Realteil ist {re} und der Imaginärteil ist {im}, also ist die Summe {ans}."
+    },
+    "permNP": {
+      "prompt": "Auf wie viele Arten kann man {r} von {n} verschiedenen Personen auswählen und in eine Reihe stellen? (nur Ziffern)",
+      "hints": [
+        "Die Reihenfolge ist wichtig, also ist es eine Permutation.",
+        "Beginne bei {n} und multipliziere {r} Zahlen, jeweils um 1 kleiner."
+      ],
+      "expl": "{calc}={ans}, also gibt es {ans} Möglichkeiten."
+    },
+    "combNC": {
+      "prompt": "Auf wie viele Arten kann man {r} von {n} verschiedenen Personen auswählen, wenn die Reihenfolge keine Rolle spielt? (nur Ziffern)",
+      "hints": [
+        "Die Reihenfolge spielt keine Rolle, also ist es eine Kombination.",
+        "Teile die Anzahl der Permutationen durch {r}!."
+      ],
+      "expl": "{calc}={ans}, also gibt es {ans} Möglichkeiten."
+    },
+    "dist2": {
+      "prompt": "Wie groß ist der Abstand zwischen den Punkten A({x1}, {y1}) und B({x2}, {y2})? (nur Ziffern)",
+      "hints": [
+        "Der Abstand ist $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Quadriere die Differenz der x-Koordinaten und die der y-Koordinaten und addiere dann."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Wie groß ist der Radius des Kreises $({fx})^2+({fy})^2={r2}$? (nur Ziffern)",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$ ist r der Radius.",
+        "Die Zahl auf der rechten Seite ist r²."
+      ],
+      "expl": "$r^2={r2}$, also ist der Radius {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Wie viele ganze Zahlen $x$ erfüllen die quadratische Ungleichung ${eq}<0$? (nur Ziffern)",
+      "hints": [
+        "Zerlege die linke Seite in Faktoren, um die zwei Nullstellen zu finden.",
+        "Zähle die ganzen Zahlen zwischen den Nullstellen; die Nullstellen selbst gehören nicht dazu."
+      ],
+      "expl": "Aus ${fact}<0$ folgt {r1}<x<{r2}, also gibt es {ans} ganze Zahlen."
+    },
+    "logVal": {
+      "prompt": "Wie groß ist der Wert von $\\log_{{b}} {n}$? (nur Ziffern)",
+      "hints": [
+        "$\\log_b n=k$ bedeutet $b^k=n$.",
+        "Zähle, wie oft du {b} multiplizieren musst, um {n} zu erhalten."
+      ],
+      "expl": "${b}^{{ans}}={n}$, also ist die Antwort {ans}."
+    },
+    "radDeg": {
+      "prompt": "Schreibe $\\theta=\\dfrac{{num}}{{d}}$ (im Bogenmaß) in Grad. (nur Ziffern)",
+      "hints": [
+        "$\\pi$ im Bogenmaß sind 180°.",
+        "Setze 180° anstelle von $\\pi$ ein."
+      ],
+      "expl": "Mit $\\pi=180^\\circ$ erhält man {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Wie groß ist das {n}. Glied der arithmetischen Folge mit dem ersten Glied {a} und der Differenz {d}? (nur Ziffern)",
+      "hints": [
+        "Das allgemeine Glied ist $a_n=a+(n-1)d$.",
+        "Multipliziere (n-1) mit der Differenz und addiere das Ergebnis zum ersten Glied."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Wie groß ist das {n}. Glied der geometrischen Folge mit dem ersten Glied {a} und dem Quotienten {r}? (nur Ziffern)",
+      "hints": [
+        "Das allgemeine Glied ist $a_n=ar^{n-1}$.",
+        "Multipliziere (n-1)-mal mit dem Quotienten."
+      ],
+      "expl": "{a} mal {r} hoch ({n}-1) ist {ans}."
+    },
+    "limLinear": {
+      "prompt": "Wie groß ist der Wert von $\\lim_{x\\to {a}}({f})$? (nur Ziffern)",
+      "hints": [
+        "Bei einem Polynom ist der Grenzwert gleich dem Funktionswert.",
+        "Setze {a} für x ein."
+      ],
+      "expl": "Mit x={a} erhält man {ans}."
+    },
+    "derivAt": {
+      "prompt": "Wenn $f(x)={poly}$ ist, wie groß ist $f'({a})$? (nur Ziffern)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Bilde die Ableitung und setze dann {a} für x ein."
+      ],
+      "expl": "$f'(x)={deriv}$, also $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Wie groß ist der Wert von $\\int_{0}^{{b}} ({fx})\\,dx$? (nur Ziffern)",
+      "hints": [
+        "Bestimme die Stammfunktion und rechne dann (Wert an der oberen Grenze) - (Wert an der unteren Grenze).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ und $\\int c\\,dx=cx$."
+      ],
+      "expl": "Setzt man x={b} in die Stammfunktion ${anti}$ ein, erhält man {ans}."
+    },
+    "areaX2": {
+      "prompt": "Wie groß ist die Fläche, die von der Kurve $y={k}x^2$, der $x$-Achse und der Geraden $x={a}$ eingeschlossen wird? (nur Ziffern)",
+      "hints": [
+        "Die Fläche ist das bestimmte Integral von 0 bis {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Wie groß ist die Summe der unendlichen geometrischen Reihe mit dem ersten Glied {a} und dem Quotienten ${rtex}$? (Eine Dezimalzahl geht auch, oder ein Bruch wie 3/4)",
+      "hints": [
+        "Die Summe existiert, wenn der Betrag des Quotienten kleiner als 1 ist.",
+        "Die Summe ist (erstes Glied) ÷ (1 - Quotient)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Die Zufallsvariable $X$ ist binomialverteilt mit $B({n},\\ {p})$. Wie groß ist $E(X)$? (nur Ziffern)",
+      "hints": [
+        "Der Erwartungswert von $B(n,\\ p)$ ist $np$.",
+        "Multipliziere n und p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Wie groß ist der Betrag $|\\vec{a}|$ des Vektors $\\vec{a}=({x},\\ {y})$? (nur Ziffern)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Quadriere jede Komponente, addiere und ziehe dann die Wurzel."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Wie lautet die $x$-Koordinate des Brennpunkts der Parabel $y^2={c}x$? (nur Ziffern)",
+      "hints": [
+        "Der Brennpunkt von $y^2=4px$ ist $(p,\\ 0)$.",
+        "Bestimme p aus {c}=4p."
+      ],
+      "expl": "4p={c}, also p={ans}."
+    },
+    "condProb": {
+      "prompt": "Für die Ereignisse $A,\\ B$ gilt $P(A)={pa}$ und $P(A\\cap B)={pab}$. Wie groß ist $P(B\\mid A)$? (als Dezimalzahl schreiben)",
+      "hints": [
+        "Bedingte Wahrscheinlichkeit: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Teile die beiden Werte."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

@@ -16,7 +16,7 @@ const bank = bankJson as unknown as BankData;
 const num = (s: unknown) => String(s).split(/[,+]\s*/).map(Number);
 const evalExpr = (e: string) => { const s = e.replace(/×/g, "*").replace(/÷/g, "/"); if (!/^[0-9+\-*/(). ]+$/.test(s)) throw new Error(`unsafe expression ${e}`); return Function(`return (${s})`)() as number; };
 /** "2x+1", "-3x+6", "x^2-4", "3x^2+1" evaluated at x */
-const poly = (s: string, x: number) => { const t = s.replace(/(\d)x/g, "$1*x").replace(/(\d|\))\(/g, "$1*(").replace(/x/g, `(${x})`).replace(/\^/g, "**"); return Function(`return (${t})`)() as number; };
+const poly = (s: string, x: number) => { const t0 = s.replace(/(\d)x/g, "$1*x").replace(/(\d|\))\(/g, "$1*(").replace(/x/g, `(${x})`).replace(/\^/g, "**"); const t = t0.startsWith("-") ? `0${t0}` : t0; return Function(`return (${t})`)() as number; };
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 const matrices = (mats: string) => { const [a, b] = [...mats.matchAll(/pmatrix\}([^\\]*?)\\\\([^\\]*?)\\end/g)].map((m) => [m[1].split("&").map(Number), m[2].split("&").map(Number)]); return { A: a, B: b }; };
 const perms = (w: string): number => { const seen = new Set<string>(); const rec = (cur: string, rest: string) => { if (!rest) { seen.add(cur); return; } for (let i = 0; i < rest.length; i++) rec(cur + rest[i], rest.slice(0, i) + rest.slice(i + 1)); }; rec("", w); return seen.size; };
@@ -93,18 +93,18 @@ const VERIFY2: Record<string, (v: V) => number> = {
   slope2: (v) => (v.y2 - v.y1) / (v.x2 - v.x1),
   coinCases: (v) => { let c = 0; for (let m = 0; m < 1 << v.n; m++) c++; return c; },
   isoApex: (v) => 180 - v.b - v.b,
-  hypot: (v) => { const c = Math.hypot(v.a, v.b); expect(v.sq).toBe(c * c); return c; },
+  hypot: (v) => { const c = Math.round(Math.hypot(v.a, v.b)); expect(c * c).toBe(v.a * v.a + v.b * v.b); expect(v.sq).toBe(c * c); return c; },
   sqrtVal: (v) => Math.sqrt(v.n),
-  expandPQ: (v) => { const a = Number(String(v.fa).slice(1)), b = Number(String(v.fb).slice(1)); expect(v.p).toBe(a + b); expect(v.q).toBe(a * b); const e = (x: number) => (x + a) * (x + b) - (x * x + (a + b) * x + a * b); for (const x of [-3, 0, 2, 5]) expect(e(x)).toBe(0); return (a + b) + a * b; },
+  expandPQ: (v) => { const a = Number(String(v.fa).slice(1)), b = Number(String(v.fb).slice(1)); expect(v.p).toBe(a + b); expect(v.q).toBe(a * b); const e = (x: number) => (x + a) * (x + b) - (x * x + (a + b) * x + a * b); for (const x of [-3, 0, 2, 5]) expect(e(x) === 0).toBe(true); return (a + b) + a * b; },
   quadRoot: (v) => { const eq = String(v.eq).replace("=0", ""); const rs: number[] = []; for (let x = -50; x <= 50; x++) if (poly(eq, x) === 0) rs.push(x); expect(rs.length).toBe(2); return Math.max(...rs); },
-  vertexSum: (v) => { const f = (x: number) => poly(String(v.expr), x); const lead = f(1) - f(0) - (f(2) - f(1)) > 0 ? "min" : "max"; let bx = 0; for (let x = -30; x <= 30; x++) if (lead === "min" ? f(x) < f(bx) : f(x) > f(bx)) bx = x; expect([bx, f(bx)]).toEqual([v.p, v.q]); return bx + f(bx); },
+  vertexSum: (v) => { const f = (x: number) => poly(String(v.expr), x); const lead = f(2) - 2 * f(1) + f(0) > 0 ? "min" : "max"; let bx = 0; for (let x = -30; x <= 30; x++) if (lead === "min" ? f(x) < f(bx) : f(x) > f(bx)) bx = x; expect([bx, f(bx)]).toEqual([v.p, v.q]); return bx + f(bx); },
   remainder: (v) => { expect(String(v.div)).toBe(`x${v.a > 0 ? `-${v.a}` : `+${-v.a}`}`); return poly(String(v.poly), v.a); },
   complexSum: (v) => { const [t1, t2] = String(v.expr).split(/\)\+\(/).map((t, i) => (i === 0 ? t + ")" : "(" + t)); const [a, b] = cx(t1), [c, d] = cx(t2); expect(v.re).toBe(a + c); expect(v.im).toBe(b + d); return a + c + b + d; },
   permNP: (v) => { let c = 1; for (let i = 0; i < v.r; i++) c *= v.n - i; return c; },
   combNC: (v) => choose(v.n, v.r),
   dist2: (v) => { expect(v.dx).toBe(Math.abs(v.x2 - v.x1)); expect(v.dy).toBe(Math.abs(v.y2 - v.y1)); return Math.hypot(v.x2 - v.x1, v.y2 - v.y1); },
   circleR: (v) => { const k = Math.sqrt(v.r2); for (const f of [v.fx, v.fy]) expect(/^[xy]([+-]\d+)?$/.test(f)).toBe(true); return k; },
-  ineqCount: (v) => { let c = 0; for (let x = -60; x <= 60; x++) if (poly(String(v.eq), x) < 0) c++; const f = (x: number) => poly(String(v.fact), x); expect(f(v.r1)).toBe(0); expect(f(v.r2)).toBe(0); return c; },
+  ineqCount: (v) => { let c = 0; for (let x = -60; x <= 60; x++) if (poly(String(v.eq), x) < 0) c++; const f = (x: number) => poly(String(v.fact), x); expect(f(v.r1) === 0).toBe(true); expect(f(v.r2) === 0).toBe(true); return c; },
   logVal: (v) => { let k = 0, p = 1; while (p < v.n) { p *= v.b; k++; } expect(p).toBe(v.n); return k; },
   radDeg: (v) => { const k = Number(/^(\d*)\\pi$/.exec(String(v.num))![1] || 1); return (180 * k) / v.d; },
   arithTerm: (v) => { let t = v.a; for (let i = 1; i < v.n; i++) t += v.d; return t; },
@@ -223,6 +223,6 @@ describe("the real service hands the bank out", () => {
     expect(without.some((q) => q.id.startsWith("b-"))).toBe(false);
     const withBank = (await loadIndex("math", { grade: "E3" })).bundle.questions.filter((q) => q.id.startsWith("b-"));
     expect(withBank.length).toBeGreaterThan(200);
-    expect(withBank.every((q) => q.skillId === "m.e3.ari1")).toBe(true);
+    expect(withBank.every((q) => q.skillId.startsWith("m.e3."))).toBe(true); // only the grade's own skills
   });
 });

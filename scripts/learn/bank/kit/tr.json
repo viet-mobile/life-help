@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "$ {a} + {b} $ işleminin sonucunu bulun.",
+      "hints": [
+        "Aynı basamaktaki rakamları toplayın.",
+        "Bir basamak 10 veya daha fazla ediyorsa, bir sonraki basamağa elde olarak ekleyin."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "$ {a} - {b} $ işleminin sonucunu bulun.",
+      "hints": [
+        "Aynı basamaktaki rakamları çıkarın.",
+        "Çıkaramıyorsanız, bir sonraki basamaktan 10 onluk bozun."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "$ {a} \\times {b} $ işleminin sonucunu bulun.",
+      "hints": [
+        "Çarpım tablosunu ya da eşit grupları düşünün.",
+        "Büyük sayılarda basamak basamak çarpın ve kısmi sonuçları toplayın."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "$ {a} \\div {b} $ işleminin sonucunu bulun.",
+      "hints": [
+        "Bölenin çarpım tablosunu tersten kullanın.",
+        "{b} ile çarpıldığında {a} veren sayıyı bulun."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "${n}$ sayısının onlar basamağındaki rakam kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Sağdan ikinci rakamdır.",
+        "Birler basamağının hemen solundaki rakamı bulun."
+      ],
+      "expl": "{n} sayısının onlar basamağı {ans}."
+    },
+    "seqNext": {
+      "prompt": "Kuralı bulun ve eksik sayıyı yazın: ${list}, \\square$",
+      "hints": [
+        "Yan yana sayılar arasındaki farkı bulun.",
+        "Sayılar her adımda aynı miktarda artar veya azalır."
+      ],
+      "expl": "Yan yana sayılar arasındaki fark {d}, bu yüzden □={ans}."
+    },
+    "kmToM": {
+      "prompt": "{v} km kaç metredir? (yalnızca rakam)",
+      "hints": [
+        "1 km, 1000 m'dir.",
+        "{v} sayısını 1000 ile çarpın."
+      ],
+      "expl": "{v}×1000={ans}, yani {ans} m'dir."
+    },
+    "lToMl": {
+      "prompt": "{v} L kaç mililitredir? (yalnızca rakam)",
+      "hints": [
+        "1 L, 1000 mL'dir.",
+        "{v} sayısını 1000 ile çarpın."
+      ],
+      "expl": "{v}×1000={ans}, yani {ans} mL'dir."
+    },
+    "diameter": {
+      "prompt": "Bir çemberin yarıçapı {r} cm'dir. Çapı kaç cm'dir? (cm)",
+      "hints": [
+        "Çap, yarıçapın iki katıdır.",
+        "Yarıçapı 2 ile çarpın."
+      ],
+      "expl": "{r}×2={ans}, yani çap {ans} cm'dir."
+    },
+    "triThird": {
+      "prompt": "Bir üçgenin iki açısı {a}° ve {b}°'dir. Üçüncü açı kaç derecedir? (derece)",
+      "hints": [
+        "Bir üçgenin üç açısının toplamı 180°'dir.",
+        "180'den bilinen iki açıyı çıkarın."
+      ],
+      "expl": "180-{a}-{b}={ans}, yani {ans}°'dir."
+    },
+    "bigNum": {
+      "prompt": "{a} on binlik ve {b} binlikten oluşan sayı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "{a} on binlik, {a}0000'dir.",
+        "{b} binlik, {b}000'dir. Bunları toplayın."
+      ],
+      "expl": "{a} on binlik ve {b} binlik {ans} eder."
+    },
+    "fracAdd": {
+      "prompt": "$\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$ işleminin sonucunu bulun. (ondalık sayı olabilir ya da 3/4 gibi yazılmış kesir)",
+      "hints": [
+        "Kesirleri ortak paydaya getirin.",
+        "Payları toplayın."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "$\\frac{{a}}{{b}} \\div {c}$ işleminin sonucunu bulun. (ondalık sayı olabilir ya da 3/4 gibi yazılmış kesir)",
+      "hints": [
+        "Bir kesri doğal sayıya bölmek, paydasını o sayıyla çarpmaktır.",
+        "Hesapladıktan sonra sadeleştirin."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "$ {a} \\times {b} $ işleminin sonucunu bulun.",
+      "hints": [
+        "Virgülü yok sayıp doğal sayı gibi çarpın.",
+        "Sonra virgülü, çarpanlardaki toplam ondalık basamak sayısı kadar basamak bırakacak şekilde geri koyun."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Bir dikdörtgenin eni {w} cm, boyu {h} cm'dir. Alanı kaç cm²'dir? (yalnızca rakam)",
+      "hints": [
+        "Dikdörtgenin alanı en × boydur.",
+        "İki kenar uzunluğunu çarpın."
+      ],
+      "expl": "{w}×{h}={ans}, yani alan {ans} cm²'dir."
+    },
+    "rectPerim": {
+      "prompt": "Bir dikdörtgenin eni {w} cm, boyu {h} cm'dir. Çevresi kaç cm'dir? (cm)",
+      "hints": [
+        "Çevre, dört kenarın toplamıdır.",
+        "(en + boy) × 2 işlemini kullanabilirsiniz."
+      ],
+      "expl": "({w}+{h})×2={ans}, yani çevre {ans} cm'dir."
+    },
+    "ratioPct": {
+      "prompt": "$\\frac{{a}}{{b}}$ sayısını yüzde olarak yazın. (yalnızca rakam)",
+      "hints": [
+        "Yüzde, oranın 100 ile çarpılmasıdır.",
+        "Kesri paydası 100 olacak şekilde de yazabilirsiniz."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, yani %{ans}."
+    },
+    "propX": {
+      "prompt": "${a} : {b} = \\square : {d}$ orantısında kutuya hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "Bir orantıda içler çarpımı dışlar çarpımına eşittir.",
+        "□ × {b} = {a} × {d} denklemini çözün."
+      ],
+      "expl": "□×{b}={a}×{d}, yani □={ans}."
+    },
+    "decPct": {
+      "prompt": "Bu ondalık sayıyı yüzde olarak yazın: ${d}$ (yalnızca rakam)",
+      "hints": [
+        "Yüzdeyi bulmak için ondalık sayıyı 100 ile çarpın.",
+        "Virgülü iki basamak sağa kaydırın."
+      ],
+      "expl": "{d}×100={ans}, yani %{ans}."
+    },
+    "cubeVol": {
+      "prompt": "Bir küpün bir ayrıtı {a} cm'dir. Hacmi kaç cm³'tür? (yalnızca rakam)",
+      "hints": [
+        "Küpün hacmi ayrıt × ayrıt × ayrıttır.",
+        "{a} sayısını kendisiyle üç kez çarpın."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, yani hacim {ans} cm³'tür."
+    },
+    "cuboidVol": {
+      "prompt": "Bir dikdörtgenler prizmasının uzunluğu {a} cm, eni {b} cm, yüksekliği {c} cm'dir. Hacmi kaç cm³'tür? (cm³)",
+      "hints": [
+        "Dikdörtgenler prizmasının hacmi uzunluk × en × yüksekliktir.",
+        "Üç uzunluğu birbiriyle çarpın."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, yani hacim {ans} cm³'tür."
+    },
+    "circum": {
+      "prompt": "Bir çemberin yarıçapı {r} cm'dir. Çevresi kaç cm'dir? (pi için $3.14$ kullanın) (cm)",
+      "hints": [
+        "Çevre, çap × pi'dir.",
+        "Çap, yarıçapın iki katıdır."
+      ],
+      "expl": "{r}×2×3.14={ans}, yani {ans} cm'dir."
+    },
+    "circleArea": {
+      "prompt": "Bir dairenin yarıçapı {r} cm'dir. Alanı kaç cm²'dir? (pi için $3.14$ kullanın) (cm²)",
+      "hints": [
+        "Alan, yarıçap × yarıçap × pi'dir.",
+        "Yarıçapın karesini alın, sonra 3.14 ile çarpın."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, yani alan {ans} cm²'dir."
+    },
+    "meanSum": {
+      "prompt": "{n} sayının aritmetik ortalaması {m}'dir. Bu {n} sayının toplamı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "ortalama = toplam ÷ sayı adedi.",
+        "Yani toplam = ortalama × sayı adedi."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "$x={x}$ iken ${expr}$ ifadesinin değeri kaçtır?",
+      "hints": [
+        "Verilen sayıyı x yerine yazın.",
+        "Önce çarpma yapın, sonra toplayın veya çıkarın."
+      ],
+      "expl": "x={x} yazınca ${expr}={ans}$ bulunur."
+    },
+    "solveLin": {
+      "prompt": "${eq}$ doğrusal denklemini çözün (x'i bulun).",
+      "hints": [
+        "x'li terimi yalnız bırakmak için iki tarafa da aynı sayıyı ekleyin veya çıkarın.",
+        "Sonra iki tarafı da x'in katsayısına bölün."
+      ],
+      "expl": "${eq}$ denkleminden x={ans} bulunur."
+    },
+    "expMul": {
+      "prompt": "$x^{{a}} \\times x^{{b}} = x^{\\square}$ eşitliğinde kutuya hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "Tabanlar aynıysa üsler toplanır.",
+        "{a}+{b} işlemini yapın."
+      ],
+      "expl": "{a}+{b}={ans}, yani □={ans}."
+    },
+    "expPow": {
+      "prompt": "$(x^{{a}})^{{b}} = x^{\\square}$ eşitliğinde kutuya hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "Üssün üssünde üsler çarpılır.",
+        "{a}×{b} işlemini yapın."
+      ],
+      "expl": "{a}×{b}={ans}, yani □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "$x+{a} < {b}$ eşitsizliğini sağlayan en büyük tam sayı $x$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "x'in aralığını bulmak için iki taraftan da aynı sayıyı çıkarın.",
+        "x, bulduğunuz değerden küçük olmalıdır; o değerin kendisi dahil değildir."
+      ],
+      "expl": "x<{bound}, yani en büyük tam sayı {ans}."
+    },
+    "slope2": {
+      "prompt": "$({x1},\\,{y1})$ ve $({x2},\\,{y2})$ noktalarından geçen doğrunun eğimi kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Eğim, (y'deki değişim) ÷ (x'teki değişim)dir.",
+        "y koordinatlarının farkını x koordinatlarının farkına bölün."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "{n} madeni para birlikte atıldığında kaç farklı sonuç olur? (yalnızca rakam)",
+      "hints": [
+        "Bir paranın 2 sonucu vardır: yazı veya tura.",
+        "Her paranın sonuç sayılarını çarpın."
+      ],
+      "expl": "2'yi {n} kez çarpınca {ans} bulunur, yani {ans} sonuç vardır."
+    },
+    "isoApex": {
+      "prompt": "İkizkenar üçgenin bir taban açısı {b}°'dir. Tepe açısı kaç derecedir? (derece)",
+      "hints": [
+        "İkizkenar üçgenin iki taban açısı eşittir.",
+        "Üçgenin iç açılar toplamı olan 180°'den iki taban açısını çıkarın."
+      ],
+      "expl": "180-{b}×2={ans}, yani tepe açısı {ans}°'dir."
+    },
+    "hypot": {
+      "prompt": "Bir dik üçgenin dik açıya komşu iki kenarı {a} cm ve {b} cm'dir. En uzun kenarı kaç cm'dir? (cm)",
+      "hints": [
+        "Pisagor teoremi: (hipotenüs)² = (bir dik kenar)² + (diğer dik kenar)².",
+        "İki kenarın karesini alın, toplayın, sonra karekökünü alın."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, yani en uzun kenar {ans} cm'dir."
+    },
+    "sqrtVal": {
+      "prompt": "$\\sqrt{{n}}$ değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Karesi {n} olan pozitif sayıyı bulun.",
+        "Çarpım tablosunu düşünün."
+      ],
+      "expl": "${ans}^2={n}$, yani $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "$({fa})({fb}) = x^2+px+q$ ise $p+q$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$(x+a)(x+b)=x^2+(a+b)x+ab$ eşitliğini kullanın.",
+        "p iki sayının toplamı, q ise çarpımıdır."
+      ],
+      "expl": "p={p} ve q={q}, yani p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "${eq}$ denkleminin iki kökünden büyüğü kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Sol tarafı çarpanlarına ayırın.",
+        "Kökler, bir çarpanı sıfır yapan x değerleridir."
+      ],
+      "expl": "${fact}$ ifadesinden kökler {roots} bulunur, yani büyük kök {ans}."
+    },
+    "vertexSum": {
+      "prompt": "$y={expr}$ ikinci dereceden fonksiyonunun tepe noktası $(p,\\ q)$'dur. $p+q$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$y=a(x-p)^2+q$ ifadesinde tepe noktası $(p,\\ q)$'dur.",
+        "Parantez içindeki işarete dikkat edin."
+      ],
+      "expl": "Tepe noktası $({p},\\ {q})$, yani p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "$P(x)={poly}$ polinomu ${div}$ ifadesine bölündüğünde kalan kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Kalan teoremi: P(x)'in x-a'ya bölümünden kalan P(a)'dır.",
+        "x yerine a yazın ve hesaplayın."
+      ],
+      "expl": "Kalan teoremine göre P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "${expr}$ sayısının gerçek kısmı ile sanal kısmının toplamı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Gerçek kısımları kendi aralarında, sanal kısımları kendi aralarında toplayın.",
+        "i'yi bir harf gibi düşünün."
+      ],
+      "expl": "Gerçek kısım {re}, sanal kısım {im}, yani toplam {ans}."
+    },
+    "permNP": {
+      "prompt": "{n} farklı kişiden {r} tanesini kaç farklı şekilde seçip sıraya dizebilirsiniz? (yalnızca rakam)",
+      "hints": [
+        "Sıra önemlidir, bu yüzden bu bir permütasyondur.",
+        "{n}'den başlayıp geriye doğru sayarak {r} sayıyı çarpın."
+      ],
+      "expl": "{calc}={ans}, yani {ans} farklı şekilde yapılabilir."
+    },
+    "combNC": {
+      "prompt": "Sıranın önemi olmadığında, {n} farklı kişiden {r} tanesini kaç farklı şekilde seçebilirsiniz? (yalnızca rakam)",
+      "hints": [
+        "Sıra önemli değildir, bu yüzden bu bir kombinasyondur.",
+        "Permütasyon sayısını {r}! değerine bölün."
+      ],
+      "expl": "{calc}={ans}, yani {ans} farklı şekilde yapılabilir."
+    },
+    "dist2": {
+      "prompt": "A({x1}, {y1}) ve B({x2}, {y2}) noktaları arasındaki uzaklık kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Uzaklık $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ değerine eşittir.",
+        "x koordinatlarının farkının ve y koordinatlarının farkının karesini alın, sonra toplayın."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "$({fx})^2+({fy})^2={r2}$ çemberinin yarıçapı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$(x-a)^2+(y-b)^2=r^2$ denkleminde r yarıçaptır.",
+        "Sağ taraftaki sayı r²'dir."
+      ],
+      "expl": "$r^2={r2}$, yani yarıçap {ans}."
+    },
+    "ineqCount": {
+      "prompt": "${eq}<0$ ikinci dereceden eşitsizliğini sağlayan kaç tam sayı $x$ vardır? (yalnızca rakam)",
+      "hints": [
+        "İki kökü bulmak için sol tarafı çarpanlarına ayırın.",
+        "Kökler arasındaki tam sayıları sayın; köklerin kendisi dahil değildir."
+      ],
+      "expl": "${fact}<0$ ifadesinden {r1}<x<{r2} bulunur, yani {ans} tam sayı vardır."
+    },
+    "logVal": {
+      "prompt": "$\\log_{{b}} {n}$ değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$\\log_b n=k$ demek $b^k=n$ demektir.",
+        "{n} elde etmek için {b} sayısını kaç kez çarptığınızı sayın."
+      ],
+      "expl": "${b}^{{ans}}={n}$, yani cevap {ans}."
+    },
+    "radDeg": {
+      "prompt": "$\\theta=\\dfrac{{num}}{{d}}$ (radyan) değerini derece olarak yazın. (yalnızca rakam)",
+      "hints": [
+        "$\\pi$ radyan 180°'dir.",
+        "$\\pi$ yerine 180° yazın."
+      ],
+      "expl": "$\\pi=180^\\circ$ yazınca {ans}° bulunur."
+    },
+    "arithTerm": {
+      "prompt": "İlk terimi {a} ve ortak farkı {d} olan aritmetik dizinin {n}. terimi kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Genel terim $a_n=a+(n-1)d$ formülüdür.",
+        "(n-1) sayısını ortak farkla çarpıp ilk terime ekleyin."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "İlk terimi {a} ve ortak çarpanı {r} olan geometrik dizinin {n}. terimi kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Genel terim $a_n=ar^{n-1}$ formülüdür.",
+        "Ortak çarpanla (n-1) kez çarpın."
+      ],
+      "expl": "{a} çarpı {r}'nin ({n}-1). kuvveti {ans} eder."
+    },
+    "limLinear": {
+      "prompt": "$\\lim_{x\\to {a}}({f})$ değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Bir polinomda limit, fonksiyonun değerine eşittir.",
+        "x yerine {a} yazın."
+      ],
+      "expl": "x={a} yazınca {ans} bulunur."
+    },
+    "derivAt": {
+      "prompt": "$f(x)={poly}$ ise $f'({a})$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Türevi bulun, sonra x yerine {a} yazın."
+      ],
+      "expl": "$f'(x)={deriv}$, yani $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "$\\int_{0}^{{b}} ({fx})\\,dx$ değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Ters türevi bulun, sonra (üst sınırdaki değer) - (alt sınırdaki değer) işlemini yapın.",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ ve $\\int c\\,dx=cx$."
+      ],
+      "expl": "x={b} değerini ${anti}$ ters türevinde yerine yazınca {ans} bulunur."
+    },
+    "areaX2": {
+      "prompt": "$y={k}x^2$ eğrisi, $x$ ekseni ve $x={a}$ doğrusu arasında kalan bölgenin alanı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Alan, 0'dan {a}'ya kadar alınan belirli integraldir.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "İlk terimi {a} ve ortak çarpanı ${rtex}$ olan sonsuz geometrik serinin toplamı kaçtır? (ondalık sayı olabilir ya da 3/4 gibi yazılmış kesir)",
+      "hints": [
+        "Oranın mutlak değeri 1'den küçükse toplam vardır.",
+        "Toplam (ilk terim) ÷ (1 - oran) değerine eşittir."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "$X$ rastgele değişkeni $B({n},\\ {p})$ binom dağılımına sahipse $E(X)$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$B(n,\\ p)$ dağılımının ortalaması $np$'dir.",
+        "n ile p'yi çarpın."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "$\\vec{a}=({x},\\ {y})$ vektörünün uzunluğu $|\\vec{a}|$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Her bileşenin karesini alın, toplayın, sonra karekökünü alın."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "$y^2={c}x$ parabolünün odağının $x$ koordinatı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$y^2=4px$ parabolünün odağı $(p,\\ 0)$ noktasıdır.",
+        "{c}=4p eşitliğinden p'yi bulun."
+      ],
+      "expl": "4p={c}, yani p={ans}."
+    },
+    "condProb": {
+      "prompt": "$A,\\ B$ olayları için $P(A)={pa}$ ve $P(A\\cap B)={pab}$ ise $P(B\\mid A)$ kaçtır? (ondalık sayı yazın)",
+      "hints": [
+        "Koşullu olasılık: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "İki değeri birbirine bölün."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

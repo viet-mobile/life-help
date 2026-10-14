@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Calcola il valore di $ {a} + {b} $.",
+      "hints": [
+        "Somma le cifre che stanno nella stessa posizione.",
+        "Se una posizione fa 10 o più, riporta alla posizione successiva."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Calcola il valore di $ {a} - {b} $.",
+      "hints": [
+        "Sottrai le cifre che stanno nella stessa posizione.",
+        "Se non puoi sottrarre, fatti prestare 10 dalla posizione successiva."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Calcola il valore di $ {a} \\times {b} $.",
+      "hints": [
+        "Pensa alla tavola pitagorica o a gruppi uguali.",
+        "Per i numeri grandi, moltiplica posizione per posizione e somma le parti."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Calcola il valore di $ {a} \\div {b} $.",
+      "hints": [
+        "Usa al contrario la tavola pitagorica del divisore.",
+        "Trova il numero che moltiplicato per {b} dà {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Qual è la cifra delle decine di ${n}$? (solo cifre)",
+      "hints": [
+        "È la seconda cifra da destra.",
+        "Cerca la cifra subito a sinistra di quella delle unità."
+      ],
+      "expl": "La cifra delle decine di {n} è {ans}."
+    },
+    "seqNext": {
+      "prompt": "Trova la regola e scrivi il numero mancante: ${list}, \\square$",
+      "hints": [
+        "Trova la differenza tra numeri vicini.",
+        "I numeri aumentano o diminuiscono della stessa quantità a ogni passo."
+      ],
+      "expl": "La differenza tra numeri vicini è {d}, quindi □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Quanti metri sono {v} km? (solo cifre)",
+      "hints": [
+        "1 km è 1000 m.",
+        "Moltiplica {v} per 1000."
+      ],
+      "expl": "{v}×1000={ans}, quindi sono {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Quanti millilitri sono {v} L? (solo cifre)",
+      "hints": [
+        "1 L è 1000 mL.",
+        "Moltiplica {v} per 1000."
+      ],
+      "expl": "{v}×1000={ans}, quindi sono {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Il raggio di una circonferenza è {r} cm. Quanti cm misura il diametro? (cm)",
+      "hints": [
+        "Il diametro è il doppio del raggio.",
+        "Moltiplica il raggio per 2."
+      ],
+      "expl": "{r}×2={ans}, quindi il diametro è {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Due angoli di un triangolo misurano {a}° e {b}°. Quanti gradi misura il terzo angolo? (gradi)",
+      "hints": [
+        "I tre angoli di un triangolo sommano 180°.",
+        "Sottrai da 180 i due angoli noti."
+      ],
+      "expl": "180-{a}-{b}={ans}, quindi è {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Quale numero è formato da {a} decine di migliaia e {b} migliaia? (solo cifre)",
+      "hints": [
+        "{a} decine di migliaia sono {a}0000.",
+        "{b} migliaia sono {b}000. Sommali."
+      ],
+      "expl": "{a} decine di migliaia e {b} migliaia formano {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Calcola il valore di $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (va bene un decimale, o una frazione scritta come 3/4)",
+      "hints": [
+        "Riscrivi le frazioni con un denominatore comune.",
+        "Somma i numeratori."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Calcola il valore di $\\frac{{a}}{{b}} \\div {c}$. (va bene un decimale, o una frazione scritta come 3/4)",
+      "hints": [
+        "Dividere una frazione per un numero intero significa moltiplicare il denominatore per quel numero.",
+        "Semplifica dopo aver calcolato."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Calcola il valore di $ {a} \\times {b} $.",
+      "hints": [
+        "Ignora la virgola e moltiplica come numeri interi.",
+        "Poi rimetti la virgola, con tante cifre decimali quante ne avevano i fattori in tutto."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Un rettangolo è largo {w} cm e alto {h} cm. Qual è la sua area in cm²? (solo cifre)",
+      "hints": [
+        "L'area di un rettangolo è base × altezza.",
+        "Moltiplica le lunghezze dei due lati."
+      ],
+      "expl": "{w}×{h}={ans}, quindi l'area è {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Un rettangolo è largo {w} cm e alto {h} cm. Quanto è lungo il suo perimetro in cm? (cm)",
+      "hints": [
+        "Il perimetro è la somma dei quattro lati.",
+        "Puoi usare (base + altezza) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, quindi il perimetro è {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Scrivi $\\frac{{a}}{{b}}$ come percentuale. (solo cifre)",
+      "hints": [
+        "Una percentuale è il rapporto moltiplicato per 100.",
+        "Puoi anche riscrivere la frazione con denominatore 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, quindi è {ans}%."
+    },
+    "propX": {
+      "prompt": "Nella proporzione ${a} : {b} = \\square : {d}$, quale numero va nel riquadro? (solo cifre)",
+      "hints": [
+        "In una proporzione il prodotto degli estremi è uguale al prodotto dei medi.",
+        "Risolvi □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, quindi □={ans}."
+    },
+    "decPct": {
+      "prompt": "Scrivi questo decimale come percentuale: ${d}$ (solo cifre)",
+      "hints": [
+        "Moltiplica il decimale per 100 per ottenere la percentuale.",
+        "Sposta la virgola di due posti a destra."
+      ],
+      "expl": "{d}×100={ans}, quindi è {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Uno spigolo di un cubo misura {a} cm. Qual è il suo volume in cm³? (solo cifre)",
+      "hints": [
+        "Il volume di un cubo è spigolo × spigolo × spigolo.",
+        "Moltiplica {a} per se stesso tre volte."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, quindi il volume è {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Un parallelepipedo è lungo {a} cm, largo {b} cm e alto {c} cm. Qual è il suo volume in cm³? (cm³)",
+      "hints": [
+        "Il volume di un parallelepipedo è lunghezza × larghezza × altezza.",
+        "Moltiplica le tre misure."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, quindi il volume è {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Una circonferenza ha raggio {r} cm. Quanto è lunga in cm? (usa $3.14$ per pi greco) (cm)",
+      "hints": [
+        "La circonferenza è diametro × pi greco.",
+        "Il diametro è il doppio del raggio."
+      ],
+      "expl": "{r}×2×3.14={ans}, quindi è {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Un cerchio ha raggio {r} cm. Qual è la sua area in cm²? (usa $3.14$ per pi greco) (cm²)",
+      "hints": [
+        "L'area è raggio × raggio × pi greco.",
+        "Eleva al quadrato il raggio, poi moltiplica per 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, quindi l'area è {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "La media di {n} numeri è {m}. Qual è la somma di questi {n} numeri? (solo cifre)",
+      "hints": [
+        "media = somma ÷ quantità.",
+        "Quindi somma = media × quantità."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Per $x={x}$, qual è il valore di ${expr}$?",
+      "hints": [
+        "Metti il numero dato al posto di x.",
+        "Prima moltiplica, poi somma o sottrai."
+      ],
+      "expl": "Sostituendo x={x} si ottiene ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Risolvi l'equazione di primo grado ${eq}$ (trova x).",
+      "hints": [
+        "Somma o sottrai lo stesso numero da entrambi i lati per lasciare da solo il termine con x.",
+        "Poi dividi entrambi i lati per il numero davanti a x."
+      ],
+      "expl": "Da ${eq}$ si ricava x={ans}."
+    },
+    "expMul": {
+      "prompt": "In $x^{{a}} \\times x^{{b}} = x^{\\square}$, quale numero va nel riquadro? (solo cifre)",
+      "hints": [
+        "Quando le basi sono uguali, si sommano gli esponenti.",
+        "Calcola {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, quindi □={ans}."
+    },
+    "expPow": {
+      "prompt": "In $(x^{{a}})^{{b}} = x^{\\square}$, quale numero va nel riquadro? (solo cifre)",
+      "hints": [
+        "La potenza di una potenza moltiplica gli esponenti.",
+        "Calcola {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, quindi □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Qual è il più grande numero intero $x$ che soddisfa $x+{a} < {b}$? (solo cifre)",
+      "hints": [
+        "Sottrai lo stesso numero da entrambi i lati per trovare i valori di x.",
+        "x deve essere minore del valore che trovi; quel valore non è incluso."
+      ],
+      "expl": "x<{bound}, quindi il più grande intero è {ans}."
+    },
+    "slope2": {
+      "prompt": "Qual è il coefficiente angolare della retta passante per i punti $({x1},\\,{y1})$ e $({x2},\\,{y2})$? (solo cifre)",
+      "hints": [
+        "Il coefficiente angolare è (variazione di y) ÷ (variazione di x).",
+        "Dividi la differenza delle ordinate per la differenza delle ascisse."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Quanti esiti ci sono lanciando insieme {n} monete? (solo cifre)",
+      "hints": [
+        "Una moneta ha 2 esiti: testa o croce.",
+        "Moltiplica il numero di esiti di ogni moneta."
+      ],
+      "expl": "2 moltiplicato {n} volte è {ans}, quindi ci sono {ans} esiti."
+    },
+    "isoApex": {
+      "prompt": "Un angolo alla base di un triangolo isoscele misura {b}°. Quanti gradi misura l'angolo al vertice? (gradi)",
+      "hints": [
+        "I due angoli alla base di un triangolo isoscele sono uguali.",
+        "Sottrai i due angoli alla base da 180°, la somma degli angoli di un triangolo."
+      ],
+      "expl": "180-{b}×2={ans}, quindi l'angolo al vertice è {ans}°."
+    },
+    "hypot": {
+      "prompt": "I due cateti di un triangolo rettangolo misurano {a} cm e {b} cm. Quanto è lungo in cm il lato più lungo? (cm)",
+      "hints": [
+        "Teorema di Pitagora: (ipotenusa)² = (un cateto)² + (altro cateto)².",
+        "Eleva al quadrato i due cateti, somma, poi calcola la radice quadrata."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, quindi il lato più lungo è {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Qual è il valore di $\\sqrt{{n}}$? (solo cifre)",
+      "hints": [
+        "Trova il numero positivo il cui quadrato è {n}.",
+        "Pensa alla tavola pitagorica."
+      ],
+      "expl": "${ans}^2={n}$, quindi $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Se $({fa})({fb}) = x^2+px+q$, quanto vale $p+q$? (solo cifre)",
+      "hints": [
+        "Usa $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p è la somma dei due numeri e q è il loro prodotto."
+      ],
+      "expl": "p={p} e q={q}, quindi p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Qual è la maggiore delle due radici di ${eq}$? (solo cifre)",
+      "hints": [
+        "Scomponi il membro di sinistra.",
+        "Le radici sono i valori di x che annullano un fattore."
+      ],
+      "expl": "Da ${fact}$ le radici sono {roots}, quindi la radice maggiore è {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Il vertice della funzione quadratica $y={expr}$ è $(p,\\ q)$. Quanto vale $p+q$? (solo cifre)",
+      "hints": [
+        "In $y=a(x-p)^2+q$ il vertice è $(p,\\ q)$.",
+        "Fai attenzione al segno dentro la parentesi."
+      ],
+      "expl": "Il vertice è $({p},\\ {q})$, quindi p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Qual è il resto della divisione di $P(x)={poly}$ per ${div}$? (solo cifre)",
+      "hints": [
+        "Teorema del resto: il resto di P(x) diviso x-a è P(a).",
+        "Metti a al posto di x e calcola."
+      ],
+      "expl": "Per il teorema del resto, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Qual è la somma della parte reale e della parte immaginaria di ${expr}$? (solo cifre)",
+      "hints": [
+        "Somma tra loro le parti reali e tra loro le parti immaginarie.",
+        "Tratta i come una lettera."
+      ],
+      "expl": "La parte reale è {re} e la parte immaginaria è {im}, quindi la somma è {ans}."
+    },
+    "permNP": {
+      "prompt": "In quanti modi si possono scegliere {r} persone su {n} diverse e metterle in fila? (solo cifre)",
+      "hints": [
+        "L'ordine conta, quindi sono disposizioni.",
+        "Parti da {n} e moltiplica {r} numeri, scendendo di uno."
+      ],
+      "expl": "{calc}={ans}, quindi ci sono {ans} modi."
+    },
+    "combNC": {
+      "prompt": "In quanti modi si possono scegliere {r} persone su {n} diverse quando l'ordine non conta? (solo cifre)",
+      "hints": [
+        "L'ordine non conta, quindi sono combinazioni.",
+        "Dividi il numero di disposizioni per {r}!."
+      ],
+      "expl": "{calc}={ans}, quindi ci sono {ans} modi."
+    },
+    "dist2": {
+      "prompt": "Qual è la distanza tra i punti A({x1}, {y1}) e B({x2}, {y2})? (solo cifre)",
+      "hints": [
+        "La distanza è $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Eleva al quadrato la differenza delle ascisse e quella delle ordinate, poi somma."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Qual è il raggio della circonferenza $({fx})^2+({fy})^2={r2}$? (solo cifre)",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$, r è il raggio.",
+        "Il numero a destra è r²."
+      ],
+      "expl": "$r^2={r2}$, quindi il raggio è {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Quanti numeri interi $x$ soddisfano la disequazione di secondo grado ${eq}<0$? (solo cifre)",
+      "hints": [
+        "Scomponi il membro di sinistra per trovare le due radici.",
+        "Conta gli interi tra le radici; le radici stesse non sono incluse."
+      ],
+      "expl": "Da ${fact}<0$ si ottiene {r1}<x<{r2}, quindi ci sono {ans} interi."
+    },
+    "logVal": {
+      "prompt": "Qual è il valore di $\\log_{{b}} {n}$? (solo cifre)",
+      "hints": [
+        "$\\log_b n=k$ significa $b^k=n$.",
+        "Conta quante volte devi moltiplicare {b} per ottenere {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, quindi la risposta è {ans}."
+    },
+    "radDeg": {
+      "prompt": "Scrivi $\\theta=\\dfrac{{num}}{{d}}$ (radianti) in gradi. (solo cifre)",
+      "hints": [
+        "$\\pi$ radianti sono 180°.",
+        "Metti 180° al posto di $\\pi$."
+      ],
+      "expl": "Sostituendo $\\pi=180^\\circ$ si ottiene {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Qual è il termine numero {n} della progressione aritmetica con primo termine {a} e ragione {d}? (solo cifre)",
+      "hints": [
+        "Il termine generale è $a_n=a+(n-1)d$.",
+        "Moltiplica (n-1) per la ragione e somma il risultato al primo termine."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Qual è il termine numero {n} della progressione geometrica con primo termine {a} e ragione {r}? (solo cifre)",
+      "hints": [
+        "Il termine generale è $a_n=ar^{n-1}$.",
+        "Moltiplica per la ragione (n-1) volte."
+      ],
+      "expl": "{a} per {r} elevato a ({n}-1) è {ans}."
+    },
+    "limLinear": {
+      "prompt": "Qual è il valore di $\\lim_{x\\to {a}}({f})$? (solo cifre)",
+      "hints": [
+        "Per un polinomio il limite è uguale al valore della funzione.",
+        "Metti {a} al posto di x."
+      ],
+      "expl": "Sostituendo x={a} si ottiene {ans}."
+    },
+    "derivAt": {
+      "prompt": "Se $f(x)={poly}$, quanto vale $f'({a})$? (solo cifre)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Trova la derivata, poi metti {a} al posto di x."
+      ],
+      "expl": "$f'(x)={deriv}$, quindi $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Qual è il valore di $\\int_{0}^{{b}} ({fx})\\,dx$? (solo cifre)",
+      "hints": [
+        "Trova una primitiva, poi calcola (valore nell'estremo superiore) - (valore nell'estremo inferiore).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ e $\\int c\\,dx=cx$."
+      ],
+      "expl": "Sostituendo x={b} nella primitiva ${anti}$ si ottiene {ans}."
+    },
+    "areaX2": {
+      "prompt": "Qual è l'area racchiusa dalla curva $y={k}x^2$, dall'asse $x$ e dalla retta $x={a}$? (solo cifre)",
+      "hints": [
+        "L'area è l'integrale definito da 0 a {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Qual è la somma della serie geometrica infinita con primo termine {a} e ragione ${rtex}$? (va bene un decimale, o una frazione scritta come 3/4)",
+      "hints": [
+        "La somma esiste quando il valore assoluto della ragione è minore di 1.",
+        "La somma è (primo termine) ÷ (1 - ragione)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Se la variabile casuale $X$ segue la distribuzione binomiale $B({n},\\ {p})$, quanto vale $E(X)$? (solo cifre)",
+      "hints": [
+        "La media di $B(n,\\ p)$ è $np$.",
+        "Moltiplica n e p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Qual è il modulo $|\\vec{a}|$ del vettore $\\vec{a}=({x},\\ {y})$? (solo cifre)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Eleva al quadrato ogni componente, somma, poi calcola la radice quadrata."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Qual è l'ascissa $x$ del fuoco della parabola $y^2={c}x$? (solo cifre)",
+      "hints": [
+        "Il fuoco di $y^2=4px$ è $(p,\\ 0)$.",
+        "Trova p da {c}=4p."
+      ],
+      "expl": "4p={c}, quindi p={ans}."
+    },
+    "condProb": {
+      "prompt": "Per gli eventi $A,\\ B$ si ha $P(A)={pa}$ e $P(A\\cap B)={pab}$. Quanto vale $P(B\\mid A)$? (scrivi un decimale)",
+      "hints": [
+        "Probabilità condizionata: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Dividi i due valori."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

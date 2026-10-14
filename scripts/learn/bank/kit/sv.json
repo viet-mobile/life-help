@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Beräkna $ {a} + {b} $.",
+      "hints": [
+        "Addera siffrorna på samma plats.",
+        "När en plats blir 10 eller mer, flytta ett till nästa plats."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Beräkna $ {a} - {b} $.",
+      "hints": [
+        "Subtrahera siffrorna på samma plats.",
+        "När du inte kan subtrahera, låna 10 från nästa plats."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Beräkna $ {a} \\times {b} $.",
+      "hints": [
+        "Tänk på multiplikationstabellen eller på lika stora grupper.",
+        "För större tal: multiplicera plats för plats och addera delarna."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Beräkna $ {a} \\div {b} $.",
+      "hints": [
+        "Använd multiplikationstabellen för divisorn baklänges.",
+        "Hitta vilket tal gånger {b} som blir {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Vilken siffra står på tiotalsplatsen i ${n}$? (endast siffror)",
+      "hints": [
+        "Det är den andra siffran från höger.",
+        "Hitta siffran precis till vänster om entalsplatsen."
+      ],
+      "expl": "Tiotalssiffran i {n} är {ans}."
+    },
+    "seqNext": {
+      "prompt": "Hitta regeln och skriv det saknade talet: ${list}, \\square$",
+      "hints": [
+        "Hitta skillnaden mellan talen som står bredvid varandra.",
+        "Talen ökar eller minskar lika mycket i varje steg."
+      ],
+      "expl": "Skillnaden mellan grannarna är {d}, så □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Hur många meter är {v} km? (endast siffror)",
+      "hints": [
+        "1 km är 1000 m.",
+        "Multiplicera {v} med 1000."
+      ],
+      "expl": "{v}×1000={ans}, så det är {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Hur många milliliter är {v} L? (endast siffror)",
+      "hints": [
+        "1 L är 1000 mL.",
+        "Multiplicera {v} med 1000."
+      ],
+      "expl": "{v}×1000={ans}, så det är {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Radien i en cirkel är {r} cm. Hur många cm är diametern? (cm)",
+      "hints": [
+        "Diametern är dubbelt så lång som radien.",
+        "Multiplicera radien med 2."
+      ],
+      "expl": "{r}×2={ans}, så diametern är {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Två vinklar i en triangel är {a}° och {b}°. Hur många grader är den tredje vinkeln? (grader)",
+      "hints": [
+        "Vinklarna i en triangel är tillsammans 180°.",
+        "Subtrahera de två kända vinklarna från 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, så den är {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Vilket tal består av {a} tiotusental och {b} tusental? (endast siffror)",
+      "hints": [
+        "{a} tiotusental är {a}0000.",
+        "{b} tusental är {b}000. Addera dem."
+      ],
+      "expl": "{a} tiotusental och {b} tusental blir {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Beräkna $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (ett decimaltal går bra, eller ett bråk skrivet som 3/4)",
+      "hints": [
+        "Skriv om bråken med gemensam nämnare.",
+        "Addera täljarna."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Beräkna $\\frac{{a}}{{b}} \\div {c}$. (ett decimaltal går bra, eller ett bråk skrivet som 3/4)",
+      "hints": [
+        "Att dividera ett bråk med ett heltal betyder att nämnaren multipliceras med talet.",
+        "Förkorta bråket efter beräkningen."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Beräkna $ {a} \\times {b} $.",
+      "hints": [
+        "Bortse från decimaltecknet och multiplicera som heltal.",
+        "Sätt sedan tillbaka decimaltecknet så att svaret har lika många decimaler som faktorerna har tillsammans."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "En rektangel är {w} cm bred och {h} cm hög. Hur stor är dess area i cm²? (endast siffror)",
+      "hints": [
+        "Arean av en rektangel är bredd × höjd.",
+        "Multiplicera de två sidornas längder."
+      ],
+      "expl": "{w}×{h}={ans}, så arean är {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "En rektangel är {w} cm bred och {h} cm hög. Hur lång är dess omkrets i cm? (cm)",
+      "hints": [
+        "Omkretsen är summan av de fyra sidorna.",
+        "Du kan använda (bredd + höjd) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, så omkretsen är {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Skriv $\\frac{{a}}{{b}}$ i procent. (endast siffror)",
+      "hints": [
+        "Procent är kvoten multiplicerad med 100.",
+        "Du kan också skriva om bråket med nämnaren 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, så det är {ans}%."
+    },
+    "propX": {
+      "prompt": "I proportionen ${a} : {b} = \\square : {d}$, vilket tal ska stå i rutan? (endast siffror)",
+      "hints": [
+        "I en proportion är produkten av de yttre leden lika med produkten av de inre leden.",
+        "Lös □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, så □={ans}."
+    },
+    "decPct": {
+      "prompt": "Skriv decimaltalet i procent: ${d}$ (endast siffror)",
+      "hints": [
+        "Multiplicera decimaltalet med 100 för att få procent.",
+        "Flytta decimaltecknet två steg åt höger."
+      ],
+      "expl": "{d}×100={ans}, så det är {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "En kub har kanten {a} cm. Hur stor är dess volym i cm³? (endast siffror)",
+      "hints": [
+        "Volymen av en kub är kant × kant × kant.",
+        "Multiplicera {a} med sig själv tre gånger."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, så volymen är {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Ett rätblock är {a} cm långt, {b} cm brett och {c} cm högt. Hur stor är dess volym i cm³? (cm³)",
+      "hints": [
+        "Volymen av ett rätblock är längd × bredd × höjd.",
+        "Multiplicera alla tre längderna."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, så volymen är {ans} cm³."
+    },
+    "circum": {
+      "prompt": "En cirkel har radien {r} cm. Hur lång är dess omkrets i cm? (använd $3.14$ för pi) (cm)",
+      "hints": [
+        "Omkretsen är diameter × pi.",
+        "Diametern är dubbelt så lång som radien."
+      ],
+      "expl": "{r}×2×3.14={ans}, så den är {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "En cirkel har radien {r} cm. Hur stor är dess area i cm²? (använd $3.14$ för pi) (cm²)",
+      "hints": [
+        "Arean är radie × radie × pi.",
+        "Kvadrera radien och multiplicera sedan med 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, så arean är {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Medelvärdet av {n} tal är {m}. Vad är summan av dessa {n} tal? (endast siffror)",
+      "hints": [
+        "medelvärde = summa ÷ antal.",
+        "Alltså summa = medelvärde × antal."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Vad är värdet av ${expr}$ när $x={x}$?",
+      "hints": [
+        "Sätt in det givna talet istället för x.",
+        "Multiplicera först, addera eller subtrahera sedan."
+      ],
+      "expl": "Insättning av x={x} ger ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Lös den linjära ekvationen ${eq}$ (hitta x).",
+      "hints": [
+        "Addera eller subtrahera samma tal på båda sidor så att x-termen står ensam.",
+        "Dividera sedan båda sidor med talet framför x."
+      ],
+      "expl": "Från ${eq}$ får vi x={ans}."
+    },
+    "expMul": {
+      "prompt": "Vilket tal ska stå i rutan i $x^{{a}} \\times x^{{b}} = x^{\\square}$? (endast siffror)",
+      "hints": [
+        "När baserna är lika adderas exponenterna.",
+        "Beräkna {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, så □={ans}."
+    },
+    "expPow": {
+      "prompt": "Vilket tal ska stå i rutan i $(x^{{a}})^{{b}} = x^{\\square}$? (endast siffror)",
+      "hints": [
+        "En potens av en potens multiplicerar exponenterna.",
+        "Beräkna {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, så □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Vilket är det största heltalet $x$ som uppfyller $x+{a} < {b}$? (endast siffror)",
+      "hints": [
+        "Subtrahera samma tal från båda sidor för att hitta intervallet för x.",
+        "x måste vara mindre än värdet du hittar; själva värdet ingår inte."
+      ],
+      "expl": "x<{bound}, så det största heltalet är {ans}."
+    },
+    "slope2": {
+      "prompt": "Vilken lutning har linjen genom punkterna $({x1},\\,{y1})$ och $({x2},\\,{y2})$? (endast siffror)",
+      "hints": [
+        "Lutningen är (ändring i y) ÷ (ändring i x).",
+        "Dividera skillnaden mellan y-koordinaterna med skillnaden mellan x-koordinaterna."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Hur många utfall finns det när {n} mynt kastas samtidigt? (endast siffror)",
+      "hints": [
+        "Ett mynt har 2 utfall: krona eller klave.",
+        "Multiplicera antalet utfall för varje mynt."
+      ],
+      "expl": "2 multiplicerat {n} gånger är {ans}, så det finns {ans} utfall."
+    },
+    "isoApex": {
+      "prompt": "En basvinkel i en likbent triangel är {b}°. Hur många grader är toppvinkeln? (grader)",
+      "hints": [
+        "De två basvinklarna i en likbent triangel är lika stora.",
+        "Subtrahera båda basvinklarna från 180°, vinkelsumman i en triangel."
+      ],
+      "expl": "180-{b}×2={ans}, så toppvinkeln är {ans}°."
+    },
+    "hypot": {
+      "prompt": "De två sidorna intill den räta vinkeln i en rätvinklig triangel är {a} cm och {b} cm. Hur lång är den längsta sidan i cm? (cm)",
+      "hints": [
+        "Pythagoras sats: (hypotenusa)² = (en katet)² + (andra katetten)².",
+        "Kvadrera båda sidorna, addera och dra sedan roten ur."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, så den längsta sidan är {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Vad är värdet av $\\sqrt{{n}}$? (endast siffror)",
+      "hints": [
+        "Hitta det positiva tal vars kvadrat är {n}.",
+        "Tänk på multiplikationstabellen."
+      ],
+      "expl": "${ans}^2={n}$, så $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Om $({fa})({fb}) = x^2+px+q$, vad är $p+q$? (endast siffror)",
+      "hints": [
+        "Använd $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p är summan av de två talen och q är deras produkt."
+      ],
+      "expl": "p={p} och q={q}, så p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Vilken är den större av de två rötterna till ${eq}$? (endast siffror)",
+      "hints": [
+        "Faktorisera vänsterledet.",
+        "Rötterna är de värden på x som gör en faktor lika med noll."
+      ],
+      "expl": "Från ${fact}$ är rötterna {roots}, så den större roten är {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Den kvadratiska funktionen $y={expr}$ har vertex $(p,\\ q)$. Vad är $p+q$? (endast siffror)",
+      "hints": [
+        "I $y=a(x-p)^2+q$ är vertex $(p,\\ q)$.",
+        "Se upp med tecknet inuti parentesen."
+      ],
+      "expl": "Vertex är $({p},\\ {q})$, så p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Vad är resten när $P(x)={poly}$ divideras med ${div}$? (endast siffror)",
+      "hints": [
+        "Restsatsen: resten när P(x) divideras med x-a är P(a).",
+        "Sätt in a istället för x och beräkna."
+      ],
+      "expl": "Enligt restsatsen är P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Vad är summan av realdelen och imaginärdelen av ${expr}$? (endast siffror)",
+      "hints": [
+        "Addera realdelarna för sig och imaginärdelarna för sig.",
+        "Behandla i som en bokstav."
+      ],
+      "expl": "Realdelen är {re} och imaginärdelen är {im}, så summan är {ans}."
+    },
+    "permNP": {
+      "prompt": "På hur många sätt kan man välja {r} av {n} olika personer och ställa upp dem på rad? (endast siffror)",
+      "hints": [
+        "Ordningen spelar roll, så det är en permutation.",
+        "Börja på {n} och multiplicera {r} tal, räkna nedåt."
+      ],
+      "expl": "{calc}={ans}, så det finns {ans} sätt."
+    },
+    "combNC": {
+      "prompt": "På hur många sätt kan man välja {r} av {n} olika personer när ordningen inte spelar roll? (endast siffror)",
+      "hints": [
+        "Ordningen spelar ingen roll, så det är en kombination.",
+        "Dividera antalet permutationer med {r}!."
+      ],
+      "expl": "{calc}={ans}, så det finns {ans} sätt."
+    },
+    "dist2": {
+      "prompt": "Vad är avståndet mellan punkterna A({x1}, {y1}) och B({x2}, {y2})? (endast siffror)",
+      "hints": [
+        "Avståndet är $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kvadrera skillnaden mellan x-koordinaterna och mellan y-koordinaterna och addera."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Vad är radien i cirkeln $({fx})^2+({fy})^2={r2}$? (endast siffror)",
+      "hints": [
+        "I $(x-a)^2+(y-b)^2=r^2$ är r radien.",
+        "Talet på högra sidan är r²."
+      ],
+      "expl": "$r^2={r2}$, så radien är {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Hur många heltal $x$ uppfyller andragradsolikheten ${eq}<0$? (endast siffror)",
+      "hints": [
+        "Faktorisera vänsterledet för att hitta de två rötterna.",
+        "Räkna heltalen mellan rötterna; själva rötterna ingår inte."
+      ],
+      "expl": "Från ${fact}<0$ får vi {r1}<x<{r2}, så det finns {ans} heltal."
+    },
+    "logVal": {
+      "prompt": "Vad är värdet av $\\log_{{b}} {n}$? (endast siffror)",
+      "hints": [
+        "$\\log_b n=k$ betyder att $b^k=n$.",
+        "Räkna hur många gånger du multiplicerar {b} för att få {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, så svaret är {ans}."
+    },
+    "radDeg": {
+      "prompt": "Skriv $\\theta=\\dfrac{{num}}{{d}}$ (radianer) i grader. (endast siffror)",
+      "hints": [
+        "$\\pi$ radianer är 180°.",
+        "Sätt in 180° istället för $\\pi$."
+      ],
+      "expl": "Insättning av $\\pi=180^\\circ$ ger {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Vilken är term nummer {n} i den aritmetiska talföljden med första term {a} och differens {d}? (endast siffror)",
+      "hints": [
+        "Den allmänna termen är $a_n=a+(n-1)d$.",
+        "Multiplicera (n-1) med differensen och addera till första termen."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Vilken är term nummer {n} i den geometriska talföljden med första term {a} och kvot {r}? (endast siffror)",
+      "hints": [
+        "Den allmänna termen är $a_n=ar^{n-1}$.",
+        "Multiplicera med kvoten (n-1) gånger."
+      ],
+      "expl": "{a} gånger {r} upphöjt till ({n}-1) är {ans}."
+    },
+    "limLinear": {
+      "prompt": "Vad är värdet av $\\lim_{x\\to {a}}({f})$? (endast siffror)",
+      "hints": [
+        "För ett polynom är gränsvärdet lika med funktionsvärdet.",
+        "Sätt in {a} istället för x."
+      ],
+      "expl": "Insättning av x={a} ger {ans}."
+    },
+    "derivAt": {
+      "prompt": "Om $f(x)={poly}$, vad är $f'({a})$? (endast siffror)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Hitta derivatan och sätt sedan in {a} istället för x."
+      ],
+      "expl": "$f'(x)={deriv}$, så $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Vad är värdet av $\\int_{0}^{{b}} ({fx})\\,dx$? (endast siffror)",
+      "hints": [
+        "Hitta primitiv funktion och beräkna sedan (värdet i övre gränsen) - (värdet i nedre gränsen).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ och $\\int c\\,dx=cx$."
+      ],
+      "expl": "Insättning av x={b} i primitiva funktionen ${anti}$ ger {ans}."
+    },
+    "areaX2": {
+      "prompt": "Vilken area innesluts av kurvan $y={k}x^2$, $x$-axeln och linjen $x={a}$? (endast siffror)",
+      "hints": [
+        "Arean är den bestämda integralen från 0 till {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Vad är summan av den oändliga geometriska serien med första term {a} och kvot ${rtex}$? (ett decimaltal går bra, eller ett bråk skrivet som 3/4)",
+      "hints": [
+        "Summan finns om absolutbeloppet av kvoten är mindre än 1.",
+        "Summan är (första termen) ÷ (1 - kvoten)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Om den stokastiska variabeln $X$ är binomialfördelad $B({n},\\ {p})$, vad är $E(X)$? (endast siffror)",
+      "hints": [
+        "Väntevärdet för $B(n,\\ p)$ är $np$.",
+        "Multiplicera n och p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Vilken är längden $|\\vec{a}|$ av vektorn $\\vec{a}=({x},\\ {y})$? (endast siffror)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kvadrera varje komponent, addera och dra sedan roten ur."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Vilken är $x$-koordinaten för fokus till parabeln $y^2={c}x$? (endast siffror)",
+      "hints": [
+        "Fokus för $y^2=4px$ är $(p,\\ 0)$.",
+        "Hitta p från {c}=4p."
+      ],
+      "expl": "4p={c}, så p={ans}."
+    },
+    "condProb": {
+      "prompt": "För händelserna $A,\\ B$ gäller $P(A)={pa}$ och $P(A\\cap B)={pab}$. Vad är $P(B\\mid A)$? (skriv ett decimaltal)",
+      "hints": [
+        "Betingad sannolikhet: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Dividera de två värdena."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

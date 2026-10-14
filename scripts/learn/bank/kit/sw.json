@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Pata thamani ya $ {a} + {b} $.",
+      "hints": [
+        "Jumlisha tarakimu zilizo katika nafasi moja.",
+        "Nafasi ikifikia 10 au zaidi, beba kwenda nafasi inayofuata."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Pata thamani ya $ {a} - {b} $.",
+      "hints": [
+        "Toa tarakimu zilizo katika nafasi moja.",
+        "Usipoweza kutoa, kopa 10 kutoka nafasi inayofuata."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Pata thamani ya $ {a} \\times {b} $.",
+      "hints": [
+        "Fikiria jedwali la kuzidisha au vikundi vilivyo sawa.",
+        "Kwa namba kubwa, zidisha nafasi kwa nafasi kisha jumlisha sehemu."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Pata thamani ya $ {a} \\div {b} $.",
+      "hints": [
+        "Tumia jedwali la kuzidisha la kigawanyo kinyume chake.",
+        "Tafuta namba inayozidishwa kwa {b} ikawa {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Tarakimu ya makumi katika ${n}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Ni tarakimu ya pili kutoka kulia.",
+        "Tafuta tarakimu iliyo upande wa kushoto wa nafasi ya mamoja."
+      ],
+      "expl": "Tarakimu ya makumi ya {n} ni {ans}."
+    },
+    "seqNext": {
+      "prompt": "Tafuta kanuni na uandike namba inayokosekana: ${list}, \\square$",
+      "hints": [
+        "Tafuta tofauti kati ya namba zilizo jirani.",
+        "Namba huongezeka au hupungua kwa kiasi kilekile kila hatua."
+      ],
+      "expl": "Tofauti ya namba jirani ni {d}, kwa hiyo □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Km {v} ni mita ngapi? (tarakimu tu)",
+      "hints": [
+        "Km 1 ni m 1000.",
+        "Zidisha {v} kwa 1000."
+      ],
+      "expl": "{v}×1000={ans}, kwa hiyo ni m {ans}."
+    },
+    "lToMl": {
+      "prompt": "Lita {v} ni mililita ngapi? (tarakimu tu)",
+      "hints": [
+        "L 1 ni mL 1000.",
+        "Zidisha {v} kwa 1000."
+      ],
+      "expl": "{v}×1000={ans}, kwa hiyo ni mL {ans}."
+    },
+    "diameter": {
+      "prompt": "Nusu kipenyo cha duara ni cm {r}. Kipenyo chake ni cm ngapi? (cm)",
+      "hints": [
+        "Kipenyo ni mara mbili ya nusu kipenyo.",
+        "Zidisha nusu kipenyo kwa 2."
+      ],
+      "expl": "{r}×2={ans}, kwa hiyo kipenyo ni cm {ans}."
+    },
+    "triThird": {
+      "prompt": "Pembe mbili za pembetatu ni {a}° na {b}°. Pembe ya tatu ni digrii ngapi? (digrii)",
+      "hints": [
+        "Pembe tatu za pembetatu hujumlika kuwa 180°.",
+        "Toa pembe mbili zinazojulikana kutoka 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, kwa hiyo ni {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Namba iliyo na makumi elfu {a} na maelfu {b} ni ipi? (tarakimu tu)",
+      "hints": [
+        "Makumi elfu {a} ni {a}0000.",
+        "Maelfu {b} ni {b}000. Yajumlishe."
+      ],
+      "expl": "Makumi elfu {a} na maelfu {b} ni {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Pata thamani ya $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (desimali inafaa, au sehemu iliyoandikwa kama 3/4)",
+      "hints": [
+        "Andika upya sehemu hizo kwa kiini kimoja.",
+        "Jumlisha vihesabu."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Pata thamani ya $\\frac{{a}}{{b}} \\div {c}$. (desimali inafaa, au sehemu iliyoandikwa kama 3/4)",
+      "hints": [
+        "Kugawanya sehemu kwa namba kamili ni kuzidisha kiini chake kwa namba hiyo.",
+        "Rahisisha baada ya kukokotoa."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Pata thamani ya $ {a} \\times {b} $.",
+      "hints": [
+        "Puuza nukta ya desimali na uzidishe kama namba kamili.",
+        "Kisha rudisha nukta ya desimali, jibu liwe na tarakimu za desimali sawa na jumla ya zilizokuwa kwenye vigawe."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Mstatili una upana wa cm {w} na urefu wa cm {h}. Eneo lake ni cm² ngapi? (tarakimu tu)",
+      "hints": [
+        "Eneo la mstatili ni upana × urefu.",
+        "Zidisha urefu wa pande mbili."
+      ],
+      "expl": "{w}×{h}={ans}, kwa hiyo eneo ni cm² {ans}."
+    },
+    "rectPerim": {
+      "prompt": "Mstatili una upana wa cm {w} na urefu wa cm {h}. Mzunguko wake ni cm ngapi? (cm)",
+      "hints": [
+        "Mzunguko ni jumla ya pande nne.",
+        "Unaweza kutumia (upana + urefu) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, kwa hiyo mzunguko ni cm {ans}."
+    },
+    "ratioPct": {
+      "prompt": "Andika $\\frac{{a}}{{b}}$ kama asilimia. (tarakimu tu)",
+      "hints": [
+        "Asilimia ni uwiano mara 100.",
+        "Unaweza pia kuandika upya sehemu hiyo na kiini 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, kwa hiyo ni {ans}%."
+    },
+    "propX": {
+      "prompt": "Katika uwiano ${a} : {b} = \\square : {d}$, namba gani inakaa kwenye kisanduku? (tarakimu tu)",
+      "hints": [
+        "Katika uwiano, zao la vipengele vya nje ni sawa na zao la vipengele vya ndani.",
+        "Tatua □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, kwa hiyo □={ans}."
+    },
+    "decPct": {
+      "prompt": "Andika desimali hii kama asilimia: ${d}$ (tarakimu tu)",
+      "hints": [
+        "Zidisha desimali kwa 100 ili kupata asilimia.",
+        "Sogeza nukta ya desimali nafasi mbili kulia."
+      ],
+      "expl": "{d}×100={ans}, kwa hiyo ni {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Ukingo mmoja wa mchemraba ni cm {a}. Ujazo wake ni cm³ ngapi? (tarakimu tu)",
+      "hints": [
+        "Ujazo wa mchemraba ni ukingo × ukingo × ukingo.",
+        "Zidisha {a} kwa yenyewe mara tatu."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, kwa hiyo ujazo ni cm³ {ans}."
+    },
+    "cuboidVol": {
+      "prompt": "Kisanduku cha pembe nne (kuboidi) kina urefu wa cm {a}, upana wa cm {b} na kimo cha cm {c}. Ujazo wake ni cm³ ngapi? (cm³)",
+      "hints": [
+        "Ujazo wa kuboidi ni urefu × upana × kimo.",
+        "Zidisha vipimo vyote vitatu."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, kwa hiyo ujazo ni cm³ {ans}."
+    },
+    "circum": {
+      "prompt": "Duara lina nusu kipenyo cha cm {r}. Mzingo wake ni cm ngapi? (tumia $3.14$ kwa pi) (cm)",
+      "hints": [
+        "Mzingo ni kipenyo × pi.",
+        "Kipenyo ni mara mbili ya nusu kipenyo."
+      ],
+      "expl": "{r}×2×3.14={ans}, kwa hiyo ni cm {ans}."
+    },
+    "circleArea": {
+      "prompt": "Duara lina nusu kipenyo cha cm {r}. Eneo lake ni cm² ngapi? (tumia $3.14$ kwa pi) (cm²)",
+      "hints": [
+        "Eneo ni nusu kipenyo × nusu kipenyo × pi.",
+        "Pandisha nusu kipenyo kwenye kipeo cha 2, kisha zidisha kwa 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, kwa hiyo eneo ni cm² {ans}."
+    },
+    "meanSum": {
+      "prompt": "Wastani wa namba {n} ni {m}. Jumla ya namba hizi {n} ni ngapi? (tarakimu tu)",
+      "hints": [
+        "wastani = jumla ÷ idadi.",
+        "Kwa hiyo jumla = wastani × idadi."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Wakati $x={x}$, thamani ya ${expr}$ ni ipi?",
+      "hints": [
+        "Weka namba uliyopewa badala ya x.",
+        "Zidisha kwanza, kisha jumlisha au toa."
+      ],
+      "expl": "Kuweka x={x} kunatoa ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Tatua mlinganyo huu wa mstari ${eq}$ (tafuta x).",
+      "hints": [
+        "Jumlisha au toa namba ileile pande zote mbili ili kibaki kiwakilishi cha x peke yake.",
+        "Kisha gawanya pande zote mbili kwa namba iliyo mbele ya x."
+      ],
+      "expl": "Kutoka ${eq}$ tunapata x={ans}."
+    },
+    "expMul": {
+      "prompt": "Katika $x^{{a}} \\times x^{{b}} = x^{\\square}$, namba gani inakaa kwenye kisanduku? (tarakimu tu)",
+      "hints": [
+        "Misingi ikiwa sawa, jumlisha vipeo.",
+        "Kokotoa {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, kwa hiyo □={ans}."
+    },
+    "expPow": {
+      "prompt": "Katika $(x^{{a}})^{{b}} = x^{\\square}$, namba gani inakaa kwenye kisanduku? (tarakimu tu)",
+      "hints": [
+        "Kipeo cha kipeo huzidisha vipeo.",
+        "Kokotoa {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, kwa hiyo □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Namba kamili kubwa zaidi $x$ inayotimiza $x+{a} < {b}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Toa namba ileile pande zote mbili ili kupata upeo wa x.",
+        "x lazima iwe ndogo kuliko thamani utakayopata; thamani yenyewe haimo."
+      ],
+      "expl": "x<{bound}, kwa hiyo namba kamili kubwa zaidi ni {ans}."
+    },
+    "slope2": {
+      "prompt": "Mteremko wa mstari upitao kwenye nukta $({x1},\\,{y1})$ na $({x2},\\,{y2})$ ni upi? (tarakimu tu)",
+      "hints": [
+        "Mteremko ni (badiliko la y) ÷ (badiliko la x).",
+        "Gawanya tofauti ya viwianishi vya y kwa tofauti ya viwianishi vya x."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Kuna matokeo mangapi sarafu {n} zikirushwa pamoja? (tarakimu tu)",
+      "hints": [
+        "Sarafu moja ina matokeo 2: kichwa au mkia.",
+        "Zidisha idadi ya matokeo ya kila sarafu."
+      ],
+      "expl": "2 ikizidishwa mara {n} ni {ans}, kwa hiyo kuna matokeo {ans}."
+    },
+    "isoApex": {
+      "prompt": "Pembe moja ya msingi ya pembetatu sawa-mbili ni {b}°. Pembe ya kileleni ni digrii ngapi? (digrii)",
+      "hints": [
+        "Pembe mbili za msingi za pembetatu sawa-mbili ni sawa.",
+        "Toa pembe zote mbili za msingi kutoka 180°, jumla ya pembe za pembetatu."
+      ],
+      "expl": "180-{b}×2={ans}, kwa hiyo pembe ya kileleni ni {ans}°."
+    },
+    "hypot": {
+      "prompt": "Pande mbili zilizo karibu na pembe ya kulia ya pembetatu ya pembe-kulia ni cm {a} na cm {b}. Upande mrefu zaidi ni cm ngapi? (cm)",
+      "hints": [
+        "Nadharia ya Pythagoras: (hipotenyusi)² = (upande mmoja)² + (upande mwingine)².",
+        "Pandisha pande zote mbili kwenye kipeo cha 2, jumlisha, kisha chukua kipeo mraba."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, kwa hiyo upande mrefu zaidi ni cm {ans}."
+    },
+    "sqrtVal": {
+      "prompt": "Thamani ya $\\sqrt{{n}}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Tafuta namba chanya ambayo kipeo chake cha pili ni {n}.",
+        "Fikiria jedwali la kuzidisha."
+      ],
+      "expl": "${ans}^2={n}$, kwa hiyo $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Kama $({fa})({fb}) = x^2+px+q$, $p+q$ ni ngapi? (tarakimu tu)",
+      "hints": [
+        "Tumia $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p ni jumla ya namba mbili na q ni zao lake."
+      ],
+      "expl": "p={p} na q={q}, kwa hiyo p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Ipi ni kubwa kati ya mizizi miwili ya ${eq}$? (tarakimu tu)",
+      "hints": [
+        "Gawa upande wa kushoto katika vipengele.",
+        "Mizizi ni thamani za x zinazofanya kipengele kuwa sifuri."
+      ],
+      "expl": "Kutoka ${fact}$ mizizi ni {roots}, kwa hiyo mzizi mkubwa ni {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Vertex ya kitendakazi cha kwadratiki $y={expr}$ ni $(p,\\ q)$. $p+q$ ni ngapi? (tarakimu tu)",
+      "hints": [
+        "Katika $y=a(x-p)^2+q$ vertex ni $(p,\\ q)$.",
+        "Angalia alama ndani ya mabano."
+      ],
+      "expl": "Vertex ni $({p},\\ {q})$, kwa hiyo p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Baki ni ngapi $P(x)={poly}$ ikigawanywa kwa ${div}$? (tarakimu tu)",
+      "hints": [
+        "Nadharia ya baki: baki ya P(x) kugawanywa kwa x-a ni P(a).",
+        "Weka a badala ya x kisha kokotoa."
+      ],
+      "expl": "Kwa nadharia ya baki, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Jumla ya sehemu halisi na sehemu ya kufikirika ya ${expr}$ ni ngapi? (tarakimu tu)",
+      "hints": [
+        "Jumlisha sehemu halisi pamoja na sehemu za kufikirika pamoja.",
+        "Chukulia i kama herufi."
+      ],
+      "expl": "Sehemu halisi ni {re} na sehemu ya kufikirika ni {im}, kwa hiyo jumla ni {ans}."
+    },
+    "permNP": {
+      "prompt": "Kuna njia ngapi za kuchagua watu {r} kati ya {n} tofauti na kuwapanga mstarini? (tarakimu tu)",
+      "hints": [
+        "Mpangilio ni muhimu, kwa hiyo hii ni mpangilio (permutation).",
+        "Anza na {n} na uzidishe namba {r}, ukishuka chini."
+      ],
+      "expl": "{calc}={ans}, kwa hiyo kuna njia {ans}."
+    },
+    "combNC": {
+      "prompt": "Kuna njia ngapi za kuchagua watu {r} kati ya {n} tofauti, mpangilio usipokuwa muhimu? (tarakimu tu)",
+      "hints": [
+        "Mpangilio si muhimu, kwa hiyo hii ni mchanganyiko (combination).",
+        "Gawanya idadi ya mipangilio kwa {r}!."
+      ],
+      "expl": "{calc}={ans}, kwa hiyo kuna njia {ans}."
+    },
+    "dist2": {
+      "prompt": "Umbali kati ya nukta A({x1}, {y1}) na B({x2}, {y2}) ni upi? (tarakimu tu)",
+      "hints": [
+        "Umbali ni $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Pandisha tofauti ya viwianishi vya x na ya y kwenye kipeo cha 2, kisha jumlisha."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Nusu kipenyo cha duara $({fx})^2+({fy})^2={r2}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Katika $(x-a)^2+(y-b)^2=r^2$, r ni nusu kipenyo.",
+        "Namba iliyo upande wa kulia ni r²."
+      ],
+      "expl": "$r^2={r2}$, kwa hiyo nusu kipenyo ni {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Ni namba kamili ngapi $x$ zinazotimiza ukosefu wa usawa wa kwadratiki ${eq}<0$? (tarakimu tu)",
+      "hints": [
+        "Gawa upande wa kushoto katika vipengele ili kupata mizizi miwili.",
+        "Hesabu namba kamili zilizo kati ya mizizi; mizizi yenyewe haimo."
+      ],
+      "expl": "Kutoka ${fact}<0$ tunapata {r1}<x<{r2}, kwa hiyo kuna namba kamili {ans}."
+    },
+    "logVal": {
+      "prompt": "Thamani ya $\\log_{{b}} {n}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "$\\log_b n=k$ inamaanisha $b^k=n$.",
+        "Hesabu mara ngapi unazidisha {b} ili kupata {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, kwa hiyo jibu ni {ans}."
+    },
+    "radDeg": {
+      "prompt": "Andika $\\theta=\\dfrac{{num}}{{d}}$ (radiani) kwa digrii. (tarakimu tu)",
+      "hints": [
+        "Radiani $\\pi$ ni 180°.",
+        "Weka 180° badala ya $\\pi$."
+      ],
+      "expl": "Kuweka $\\pi=180^\\circ$ kunatoa {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Neno la {n} la mfuatano wa hesabu lenye neno la kwanza {a} na tofauti ya kawaida {d} ni lipi? (tarakimu tu)",
+      "hints": [
+        "Neno la jumla ni $a_n=a+(n-1)d$.",
+        "Zidisha (n-1) kwa tofauti ya kawaida kisha ongeza kwenye neno la kwanza."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Neno la {n} la mfuatano wa kijiometri lenye neno la kwanza {a} na uwiano wa kawaida {r} ni lipi? (tarakimu tu)",
+      "hints": [
+        "Neno la jumla ni $a_n=ar^{n-1}$.",
+        "Zidisha kwa uwiano wa kawaida mara (n-1)."
+      ],
+      "expl": "{a} mara {r} kwa kipeo cha ({n}-1) ni {ans}."
+    },
+    "limLinear": {
+      "prompt": "Thamani ya $\\lim_{x\\to {a}}({f})$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Kwa polinomia, kikomo ni sawa na thamani ya kitendakazi.",
+        "Weka {a} badala ya x."
+      ],
+      "expl": "Kuweka x={a} kunatoa {ans}."
+    },
+    "derivAt": {
+      "prompt": "Kama $f(x)={poly}$, $f'({a})$ ni ngapi? (tarakimu tu)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Pata derivative, kisha weka {a} badala ya x."
+      ],
+      "expl": "$f'(x)={deriv}$, kwa hiyo $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Thamani ya $\\int_{0}^{{b}} ({fx})\\,dx$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Pata antiderivative, kisha kokotoa (thamani kwenye kikomo cha juu) - (thamani kwenye kikomo cha chini).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ na $\\int c\\,dx=cx$."
+      ],
+      "expl": "Kuweka x={b} kwenye antiderivative ${anti}$ kunatoa {ans}."
+    },
+    "areaX2": {
+      "prompt": "Eneo lililozungukwa na mkunjo $y={k}x^2$, mhimili wa $x$ na mstari $x={a}$ ni lipi? (tarakimu tu)",
+      "hints": [
+        "Eneo ni integrali dhahiri kutoka 0 hadi {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Jumla ya mfululizo usio na mwisho wa kijiometri wenye neno la kwanza {a} na uwiano wa kawaida ${rtex}$ ni ipi? (desimali inafaa, au sehemu iliyoandikwa kama 3/4)",
+      "hints": [
+        "Jumla ipo pale thamani halisi ya uwiano ni chini ya 1.",
+        "Jumla ni (neno la kwanza) ÷ (1 - uwiano)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Kama kigeugeu cha nasibu $X$ kina ugawaji binomiali $B({n},\\ {p})$, $E(X)$ ni ngapi? (tarakimu tu)",
+      "hints": [
+        "Wastani wa $B(n,\\ p)$ ni $np$.",
+        "Zidisha n na p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Ukubwa $|\\vec{a}|$ wa vekta $\\vec{a}=({x},\\ {y})$ ni upi? (tarakimu tu)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Pandisha kila kijenzi kwenye kipeo cha 2, jumlisha, kisha chukua kipeo mraba."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Kiwianishi cha $x$ cha focus ya parabola $y^2={c}x$ ni kipi? (tarakimu tu)",
+      "hints": [
+        "Focus ya $y^2=4px$ ni $(p,\\ 0)$.",
+        "Pata p kutoka {c}=4p."
+      ],
+      "expl": "4p={c}, kwa hiyo p={ans}."
+    },
+    "condProb": {
+      "prompt": "Kwa matukio $A,\\ B$, $P(A)={pa}$ na $P(A\\cap B)={pab}$. $P(B\\mid A)$ ni ngapi? (andika desimali)",
+      "hints": [
+        "Uwezekano wa masharti: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Gawanya thamani hizo mbili."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

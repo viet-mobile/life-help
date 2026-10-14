@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Find værdien af $ {a} + {b} $.",
+      "hints": [
+        "Læg cifrene på samme plads sammen.",
+        "Hvis en plads giver 10 eller mere, skal du mente til næste plads."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Find værdien af $ {a} - {b} $.",
+      "hints": [
+        "Træk cifrene på samme plads fra hinanden.",
+        "Hvis du ikke kan trække fra, så lån 10 fra næste plads."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Find værdien af $ {a} \\times {b} $.",
+      "hints": [
+        "Tænk på tabellerne eller på lige store grupper.",
+        "Ved større tal ganger du plads for plads og lægger delene sammen."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Find værdien af $ {a} \\div {b} $.",
+      "hints": [
+        "Brug divisorens tabel baglæns.",
+        "Find ud af, hvilket tal gange {b} giver {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Hvilket ciffer står på tierspladsen i ${n}$? (kun cifre)",
+      "hints": [
+        "Det er det andet ciffer fra højre.",
+        "Find cifferet lige til venstre for enerpladsen."
+      ],
+      "expl": "Tierscifferet i {n} er {ans}."
+    },
+    "seqNext": {
+      "prompt": "Find reglen og skriv det manglende tal: ${list}, \\square$",
+      "hints": [
+        "Find forskellen mellem tallene ved siden af hinanden.",
+        "Tallene vokser eller aftager med det samme beløb hver gang."
+      ],
+      "expl": "Forskellen mellem nabotallene er {d}, så □={ans}."
+    },
+    "kmToM": {
+      "prompt": "Hvor mange meter er {v} km? (kun cifre)",
+      "hints": [
+        "1 km er 1000 m.",
+        "Gang {v} med 1000."
+      ],
+      "expl": "{v}×1000={ans}, så det er {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Hvor mange milliliter er {v} L? (kun cifre)",
+      "hints": [
+        "1 L er 1000 mL.",
+        "Gang {v} med 1000."
+      ],
+      "expl": "{v}×1000={ans}, så det er {ans} mL."
+    },
+    "diameter": {
+      "prompt": "En cirkels radius er {r} cm. Hvor mange cm er dens diameter? (cm)",
+      "hints": [
+        "Diameteren er dobbelt så stor som radius.",
+        "Gang radius med 2."
+      ],
+      "expl": "{r}×2={ans}, så diameteren er {ans} cm."
+    },
+    "triThird": {
+      "prompt": "To vinkler i en trekant er {a}° og {b}°. Hvor mange grader er den tredje vinkel? (grader)",
+      "hints": [
+        "En trekants tre vinkler er tilsammen 180°.",
+        "Træk de to kendte vinkler fra 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, så den er {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Hvilket tal består af {a} titusinder og {b} tusinder? (kun cifre)",
+      "hints": [
+        "{a} titusinder er {a}0000.",
+        "{b} tusinder er {b}000. Læg dem sammen."
+      ],
+      "expl": "{a} titusinder og {b} tusinder giver {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Find værdien af $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (en decimalbrøk er fint, eller en brøk skrevet som 3/4)",
+      "hints": [
+        "Omskriv brøkerne, så de har fælles nævner.",
+        "Læg tællerne sammen."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Find værdien af $\\frac{{a}}{{b}} \\div {c}$. (en decimalbrøk er fint, eller en brøk skrevet som 3/4)",
+      "hints": [
+        "Når man dividerer en brøk med et helt tal, ganger man nævneren med tallet.",
+        "Forkort, når du har regnet."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Find værdien af $ {a} \\times {b} $.",
+      "hints": [
+        "Se bort fra kommaet og gang som hele tal.",
+        "Sæt så kommaet på igen, med lige så mange decimaler som faktorerne havde tilsammen."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Et rektangel er {w} cm bredt og {h} cm højt. Hvad er dets areal i cm²? (kun cifre)",
+      "hints": [
+        "Et rektangels areal er bredde × højde.",
+        "Gang de to sidelængder."
+      ],
+      "expl": "{w}×{h}={ans}, så arealet er {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Et rektangel er {w} cm bredt og {h} cm højt. Hvor lang er dets omkreds i cm? (cm)",
+      "hints": [
+        "Omkredsen er summen af de fire sider.",
+        "Du kan bruge (bredde + højde) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, så omkredsen er {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Skriv $\\frac{{a}}{{b}}$ som procent. (kun cifre)",
+      "hints": [
+        "Procenten er forholdet ganget med 100.",
+        "Du kan også omskrive brøken til nævner 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, så det er {ans}%."
+    },
+    "propX": {
+      "prompt": "I proportionen ${a} : {b} = \\square : {d}$, hvilket tal skal stå i boksen? (kun cifre)",
+      "hints": [
+        "I en proportion er produktet af de ydre led lig med produktet af de indre led.",
+        "Løs □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, så □={ans}."
+    },
+    "decPct": {
+      "prompt": "Skriv dette decimaltal som procent: ${d}$ (kun cifre)",
+      "hints": [
+        "Gang decimaltallet med 100 for at få procent.",
+        "Flyt kommaet to pladser til højre."
+      ],
+      "expl": "{d}×100={ans}, så det er {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "En terning har en kant på {a} cm. Hvad er dens rumfang i cm³? (kun cifre)",
+      "hints": [
+        "En ternings rumfang er kant × kant × kant.",
+        "Gang {a} med sig selv tre gange."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, så rumfanget er {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Et kasse er {a} cm langt, {b} cm bredt og {c} cm højt. Hvad er dets rumfang i cm³? (cm³)",
+      "hints": [
+        "Et kasses rumfang er længde × bredde × højde.",
+        "Gang alle tre længder."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, så rumfanget er {ans} cm³."
+    },
+    "circum": {
+      "prompt": "En cirkel har en radius på {r} cm. Hvor lang er dens omkreds i cm? (brug $3.14$ for pi) (cm)",
+      "hints": [
+        "Omkredsen er diameter × pi.",
+        "Diameteren er dobbelt så stor som radius."
+      ],
+      "expl": "{r}×2×3.14={ans}, så den er {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "En cirkel har en radius på {r} cm. Hvad er dens areal i cm²? (brug $3.14$ for pi) (cm²)",
+      "hints": [
+        "Arealet er radius × radius × pi.",
+        "Kvadrer radius, og gang derefter med 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, så arealet er {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Gennemsnittet af {n} tal er {m}. Hvad er summen af disse {n} tal? (kun cifre)",
+      "hints": [
+        "gennemsnit = sum ÷ antal.",
+        "Så sum = gennemsnit × antal."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Når $x={x}$, hvad er værdien af ${expr}$?",
+      "hints": [
+        "Sæt det givne tal ind på x's plads.",
+        "Gang først, læg derefter sammen eller træk fra."
+      ],
+      "expl": "Når vi sætter x={x} ind, får vi ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Løs den lineære ligning ${eq}$ (find x).",
+      "hints": [
+        "Læg det samme tal til eller træk det fra på begge sider, så x-leddet står alene.",
+        "Divider derefter begge sider med tallet foran x."
+      ],
+      "expl": "Af ${eq}$ får vi x={ans}."
+    },
+    "expMul": {
+      "prompt": "I $x^{{a}} \\times x^{{b}} = x^{\\square}$, hvilket tal skal stå i boksen? (kun cifre)",
+      "hints": [
+        "Når grundtallene er ens, lægger man eksponenterne sammen.",
+        "Udregn {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, så □={ans}."
+    },
+    "expPow": {
+      "prompt": "I $(x^{{a}})^{{b}} = x^{\\square}$, hvilket tal skal stå i boksen? (kun cifre)",
+      "hints": [
+        "En potens af en potens ganger eksponenterne.",
+        "Udregn {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, så □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Hvad er det største hele tal $x$, der opfylder $x+{a} < {b}$? (kun cifre)",
+      "hints": [
+        "Træk det samme tal fra på begge sider for at finde x's område.",
+        "x skal være mindre end den værdi, du finder; selve værdien er ikke med."
+      ],
+      "expl": "x<{bound}, så det største hele tal er {ans}."
+    },
+    "slope2": {
+      "prompt": "Hvad er hældningen for linjen gennem punkterne $({x1},\\,{y1})$ og $({x2},\\,{y2})$? (kun cifre)",
+      "hints": [
+        "Hældningen er (ændring i y) ÷ (ændring i x).",
+        "Divider forskellen mellem y-koordinaterne med forskellen mellem x-koordinaterne."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Hvor mange udfald er der, når {n} mønter kastes samtidig? (kun cifre)",
+      "hints": [
+        "Én mønt har 2 udfald: plat eller krone.",
+        "Gang antallet af udfald for hver mønt."
+      ],
+      "expl": "2 ganget {n} gange er {ans}, så der er {ans} udfald."
+    },
+    "isoApex": {
+      "prompt": "En ligebenet trekant har en basisvinkel på {b}°. Hvor mange grader er toppunktsvinklen? (grader)",
+      "hints": [
+        "De to basisvinkler i en ligebenet trekant er lige store.",
+        "Træk begge basisvinkler fra 180°, som er vinkelsummen i en trekant."
+      ],
+      "expl": "180-{b}×2={ans}, så toppunktsvinklen er {ans}°."
+    },
+    "hypot": {
+      "prompt": "De to sider ved den rette vinkel i en retvinklet trekant er {a} cm og {b} cm. Hvor lang er den længste side i cm? (cm)",
+      "hints": [
+        "Pythagoras' sætning: (hypotenuse)² = (den ene side)² + (den anden side)².",
+        "Kvadrer begge sider, læg sammen, og tag kvadratroden."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, så den længste side er {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Hvad er værdien af $\\sqrt{{n}}$? (kun cifre)",
+      "hints": [
+        "Find det positive tal, hvis kvadrat er {n}.",
+        "Tænk på tabellerne."
+      ],
+      "expl": "${ans}^2={n}$, så $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Hvis $({fa})({fb}) = x^2+px+q$, hvad er $p+q$? (kun cifre)",
+      "hints": [
+        "Brug $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p er summen af de to tal, og q er deres produkt."
+      ],
+      "expl": "p={p} og q={q}, så p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Hvilken er den største af de to rødder i ${eq}$? (kun cifre)",
+      "hints": [
+        "Faktoriser venstre side.",
+        "Rødderne er de værdier af x, der gør en faktor til nul."
+      ],
+      "expl": "Af ${fact}$ er rødderne {roots}, så den største rod er {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Parablen $y={expr}$ har toppunkt $(p,\\ q)$. Hvad er $p+q$? (kun cifre)",
+      "hints": [
+        "I $y=a(x-p)^2+q$ er toppunktet $(p,\\ q)$.",
+        "Pas på fortegnet inde i parentesen."
+      ],
+      "expl": "Toppunktet er $({p},\\ {q})$, så p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Hvad er resten, når $P(x)={poly}$ divideres med ${div}$? (kun cifre)",
+      "hints": [
+        "Restsætningen: resten af P(x) divideret med x-a er P(a).",
+        "Sæt a ind på x's plads og regn ud."
+      ],
+      "expl": "Ifølge restsætningen er P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Hvad er summen af realdelen og imaginærdelen af ${expr}$? (kun cifre)",
+      "hints": [
+        "Læg realdelene sammen og imaginærdelene sammen.",
+        "Behandl i som et bogstav."
+      ],
+      "expl": "Realdelen er {re} og imaginærdelen er {im}, så summen er {ans}."
+    },
+    "permNP": {
+      "prompt": "På hvor mange måder kan man vælge {r} blandt {n} forskellige personer og stille dem op på række? (kun cifre)",
+      "hints": [
+        "Rækkefølgen har betydning, så det er en permutation.",
+        "Start ved {n} og gang {r} tal, mens du tæller ned."
+      ],
+      "expl": "{calc}={ans}, så der er {ans} måder."
+    },
+    "combNC": {
+      "prompt": "På hvor mange måder kan man vælge {r} blandt {n} forskellige personer, når rækkefølgen ikke har betydning? (kun cifre)",
+      "hints": [
+        "Rækkefølgen har ikke betydning, så det er en kombination.",
+        "Divider antallet af permutationer med {r}!."
+      ],
+      "expl": "{calc}={ans}, så der er {ans} måder."
+    },
+    "dist2": {
+      "prompt": "Hvad er afstanden mellem punkterne A({x1}, {y1}) og B({x2}, {y2})? (kun cifre)",
+      "hints": [
+        "Afstanden er $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kvadrer forskellen mellem x-koordinaterne og mellem y-koordinaterne, og læg sammen."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Hvad er radius i cirklen $({fx})^2+({fy})^2={r2}$? (kun cifre)",
+      "hints": [
+        "I $(x-a)^2+(y-b)^2=r^2$ er r radius.",
+        "Tallet på højre side er r²."
+      ],
+      "expl": "$r^2={r2}$, så radius er {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Hvor mange hele tal $x$ opfylder andengradsuligheden ${eq}<0$? (kun cifre)",
+      "hints": [
+        "Faktoriser venstre side for at finde de to rødder.",
+        "Tæl de hele tal mellem rødderne; selve rødderne er ikke med."
+      ],
+      "expl": "Af ${fact}<0$ får vi {r1}<x<{r2}, så der er {ans} hele tal."
+    },
+    "logVal": {
+      "prompt": "Hvad er værdien af $\\log_{{b}} {n}$? (kun cifre)",
+      "hints": [
+        "$\\log_b n=k$ betyder $b^k=n$.",
+        "Tæl, hvor mange gange du skal gange {b} for at få {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, så svaret er {ans}."
+    },
+    "radDeg": {
+      "prompt": "Skriv $\\theta=\\dfrac{{num}}{{d}}$ (radianer) i grader. (kun cifre)",
+      "hints": [
+        "$\\pi$ radianer er 180°.",
+        "Sæt 180° ind på $\\pi$'s plads."
+      ],
+      "expl": "Når vi sætter $\\pi=180^\\circ$ ind, får vi {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Hvad er led nummer {n} i den aritmetiske talfølge med første led {a} og differens {d}? (kun cifre)",
+      "hints": [
+        "Det generelle led er $a_n=a+(n-1)d$.",
+        "Gang (n-1) med differensen og læg det til første led."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Hvad er led nummer {n} i den geometriske talfølge med første led {a} og kvotient {r}? (kun cifre)",
+      "hints": [
+        "Det generelle led er $a_n=ar^{n-1}$.",
+        "Gang med kvotienten (n-1) gange."
+      ],
+      "expl": "{a} gange {r} i potensen ({n}-1) er {ans}."
+    },
+    "limLinear": {
+      "prompt": "Hvad er værdien af $\\lim_{x\\to {a}}({f})$? (kun cifre)",
+      "hints": [
+        "For et polynomium er grænseværdien lig med funktionsværdien.",
+        "Sæt {a} ind på x's plads."
+      ],
+      "expl": "Når vi sætter x={a} ind, får vi {ans}."
+    },
+    "derivAt": {
+      "prompt": "Hvis $f(x)={poly}$, hvad er $f'({a})$? (kun cifre)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Find den afledede, og sæt derefter {a} ind på x's plads."
+      ],
+      "expl": "$f'(x)={deriv}$, så $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Hvad er værdien af $\\int_{0}^{{b}} ({fx})\\,dx$? (kun cifre)",
+      "hints": [
+        "Find stamfunktionen, og beregn (værdi i øvre grænse) - (værdi i nedre grænse).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ og $\\int c\\,dx=cx$."
+      ],
+      "expl": "Når vi sætter x={b} ind i stamfunktionen ${anti}$, får vi {ans}."
+    },
+    "areaX2": {
+      "prompt": "Hvad er arealet afgrænset af kurven $y={k}x^2$, $x$-aksen og linjen $x={a}$? (kun cifre)",
+      "hints": [
+        "Arealet er det bestemte integral fra 0 til {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Hvad er summen af den uendelige geometriske række med første led {a} og kvotient ${rtex}$? (en decimalbrøk er fint, eller en brøk skrevet som 3/4)",
+      "hints": [
+        "Summen findes, når kvotientens numeriske værdi er mindre end 1.",
+        "Summen er (første led) ÷ (1 - kvotient)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Hvis den stokastiske variabel $X$ er binomialfordelt $B({n},\\ {p})$, hvad er $E(X)$? (kun cifre)",
+      "hints": [
+        "Middelværdien af $B(n,\\ p)$ er $np$.",
+        "Gang n og p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Hvad er længden $|\\vec{a}|$ af vektoren $\\vec{a}=({x},\\ {y})$? (kun cifre)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kvadrer hver koordinat, læg sammen, og tag kvadratroden."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Hvad er $x$-koordinaten til brændpunktet for parablen $y^2={c}x$? (kun cifre)",
+      "hints": [
+        "Brændpunktet for $y^2=4px$ er $(p,\\ 0)$.",
+        "Find p ud fra {c}=4p."
+      ],
+      "expl": "4p={c}, så p={ans}."
+    },
+    "condProb": {
+      "prompt": "For hændelserne $A,\\ B$ er $P(A)={pa}$ og $P(A\\cap B)={pab}$. Hvad er $P(B\\mid A)$? (skriv et decimaltal)",
+      "hints": [
+        "Betinget sandsynlighed: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Divider de to værdier."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

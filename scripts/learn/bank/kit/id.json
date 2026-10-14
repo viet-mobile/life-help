@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Tentukan nilai dari $ {a} + {b} $.",
+      "hints": [
+        "Jumlahkan angka-angka yang tempatnya sama.",
+        "Jika jumlah suatu tempat 10 atau lebih, simpan ke tempat berikutnya."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Tentukan nilai dari $ {a} - {b} $.",
+      "hints": [
+        "Kurangkan angka-angka yang tempatnya sama.",
+        "Jika tidak bisa dikurangi, pinjam 10 dari tempat berikutnya."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Tentukan nilai dari $ {a} \\times {b} $.",
+      "hints": [
+        "Ingat tabel perkalian atau kelompok yang sama banyak.",
+        "Untuk bilangan besar, kalikan per tempat lalu jumlahkan hasilnya."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Tentukan nilai dari $ {a} \\div {b} $.",
+      "hints": [
+        "Gunakan tabel perkalian pembagi secara terbalik.",
+        "Cari bilangan yang jika dikalikan {b} hasilnya {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Berapa angka pada tempat puluhan dari ${n}$? (hanya angka)",
+      "hints": [
+        "Itu adalah angka kedua dari kanan.",
+        "Cari angka tepat di sebelah kiri tempat satuan."
+      ],
+      "expl": "Angka puluhan dari {n} adalah {ans}."
+    },
+    "seqNext": {
+      "prompt": "Temukan aturannya dan tulis bilangan yang hilang: ${list}, \\square$",
+      "hints": [
+        "Cari selisih antara bilangan yang berdekatan.",
+        "Bilangan bertambah atau berkurang sebanyak yang sama setiap langkah."
+      ],
+      "expl": "Selisih bilangan yang berdekatan adalah {d}, jadi □={ans}."
+    },
+    "kmToM": {
+      "prompt": "{v} km sama dengan berapa meter? (hanya angka)",
+      "hints": [
+        "1 km = 1000 m.",
+        "Kalikan {v} dengan 1000."
+      ],
+      "expl": "{v}×1000={ans}, jadi {ans} m."
+    },
+    "lToMl": {
+      "prompt": "{v} L sama dengan berapa mililiter? (hanya angka)",
+      "hints": [
+        "1 L = 1000 mL.",
+        "Kalikan {v} dengan 1000."
+      ],
+      "expl": "{v}×1000={ans}, jadi {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Jari-jari sebuah lingkaran {r} cm. Berapa cm diameternya? (cm)",
+      "hints": [
+        "Diameter adalah dua kali jari-jari.",
+        "Kalikan jari-jari dengan 2."
+      ],
+      "expl": "{r}×2={ans}, jadi diameternya {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Dua sudut sebuah segitiga adalah {a}° dan {b}°. Berapa derajat sudut ketiga? (derajat)",
+      "hints": [
+        "Ketiga sudut segitiga berjumlah 180°.",
+        "Kurangkan kedua sudut yang diketahui dari 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, jadi {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Bilangan apa yang terdiri dari {a} puluh ribu dan {b} ribu? (hanya angka)",
+      "hints": [
+        "{a} puluh ribu adalah {a}0000.",
+        "{b} ribu adalah {b}000. Jumlahkan keduanya."
+      ],
+      "expl": "{a} puluh ribu dan {b} ribu membentuk {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Tentukan nilai dari $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (boleh desimal, atau pecahan ditulis seperti 3/4)",
+      "hints": [
+        "Samakan penyebut kedua pecahan.",
+        "Jumlahkan pembilangnya."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Tentukan nilai dari $\\frac{{a}}{{b}} \\div {c}$. (boleh desimal, atau pecahan ditulis seperti 3/4)",
+      "hints": [
+        "Membagi pecahan dengan bilangan bulat berarti mengalikan penyebutnya dengan bilangan itu.",
+        "Sederhanakan setelah menghitung."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Tentukan nilai dari $ {a} \\times {b} $.",
+      "hints": [
+        "Abaikan koma desimal dan kalikan seperti bilangan bulat.",
+        "Lalu letakkan kembali koma desimal, dengan banyak angka di belakang koma sama dengan jumlah pada kedua faktor."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Sebuah persegi panjang berlebar {w} cm dan bertinggi {h} cm. Berapa luasnya dalam cm²? (hanya angka)",
+      "hints": [
+        "Luas persegi panjang = lebar × tinggi.",
+        "Kalikan kedua panjang sisi."
+      ],
+      "expl": "{w}×{h}={ans}, jadi luasnya {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Sebuah persegi panjang berlebar {w} cm dan bertinggi {h} cm. Berapa cm kelilingnya? (cm)",
+      "hints": [
+        "Keliling adalah jumlah keempat sisi.",
+        "Kamu bisa memakai (lebar + tinggi) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, jadi kelilingnya {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Tulis $\\frac{{a}}{{b}}$ sebagai persen. (hanya angka)",
+      "hints": [
+        "Persen adalah perbandingan dikali 100.",
+        "Kamu juga bisa mengubah pecahan menjadi berpenyebut 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, jadi {ans}%."
+    },
+    "propX": {
+      "prompt": "Pada perbandingan ${a} : {b} = \\square : {d}$, bilangan apa yang mengisi kotak? (hanya angka)",
+      "hints": [
+        "Pada perbandingan senilai, hasil kali suku luar sama dengan hasil kali suku dalam.",
+        "Selesaikan □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, jadi □={ans}."
+    },
+    "decPct": {
+      "prompt": "Tulis desimal ini sebagai persen: ${d}$ (hanya angka)",
+      "hints": [
+        "Kalikan desimal dengan 100 untuk mendapat persen.",
+        "Geser koma desimal dua tempat ke kanan."
+      ],
+      "expl": "{d}×100={ans}, jadi {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Satu rusuk sebuah kubus {a} cm. Berapa volumenya dalam cm³? (hanya angka)",
+      "hints": [
+        "Volume kubus = rusuk × rusuk × rusuk.",
+        "Kalikan {a} dengan dirinya sendiri tiga kali."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, jadi volumenya {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Sebuah balok berukuran panjang {a} cm, lebar {b} cm, dan tinggi {c} cm. Berapa volumenya dalam cm³? (cm³)",
+      "hints": [
+        "Volume balok = panjang × lebar × tinggi.",
+        "Kalikan ketiga ukuran."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, jadi volumenya {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Sebuah lingkaran berjari-jari {r} cm. Berapa cm kelilingnya? (gunakan $3.14$ untuk pi) (cm)",
+      "hints": [
+        "Keliling = diameter × pi.",
+        "Diameter adalah dua kali jari-jari."
+      ],
+      "expl": "{r}×2×3.14={ans}, jadi {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Sebuah lingkaran berjari-jari {r} cm. Berapa luasnya dalam cm²? (gunakan $3.14$ untuk pi) (cm²)",
+      "hints": [
+        "Luas = jari-jari × jari-jari × pi.",
+        "Kuadratkan jari-jari, lalu kalikan dengan 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, jadi luasnya {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Rata-rata dari {n} bilangan adalah {m}. Berapa jumlah dari {n} bilangan itu? (hanya angka)",
+      "hints": [
+        "rata-rata = jumlah ÷ banyak data.",
+        "Jadi jumlah = rata-rata × banyak data."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Jika $x={x}$, berapa nilai dari ${expr}$?",
+      "hints": [
+        "Gantikan x dengan bilangan yang diberikan.",
+        "Kalikan dahulu, lalu jumlahkan atau kurangkan."
+      ],
+      "expl": "Dengan x={x} diperoleh ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Selesaikan persamaan linear ${eq}$ (cari x).",
+      "hints": [
+        "Tambah atau kurangi kedua ruas dengan bilangan yang sama agar suku x sendirian.",
+        "Lalu bagi kedua ruas dengan bilangan di depan x."
+      ],
+      "expl": "Dari ${eq}$ diperoleh x={ans}."
+    },
+    "expMul": {
+      "prompt": "Pada $x^{{a}} \\times x^{{b}} = x^{\\square}$, bilangan apa yang mengisi kotak? (hanya angka)",
+      "hints": [
+        "Jika bilangan pokoknya sama, jumlahkan pangkatnya.",
+        "Hitung {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, jadi □={ans}."
+    },
+    "expPow": {
+      "prompt": "Pada $(x^{{a}})^{{b}} = x^{\\square}$, bilangan apa yang mengisi kotak? (hanya angka)",
+      "hints": [
+        "Pangkat dari pangkat berarti pangkatnya dikalikan.",
+        "Hitung {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, jadi □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Berapa bilangan bulat terbesar $x$ yang memenuhi $x+{a} < {b}$? (hanya angka)",
+      "hints": [
+        "Kurangkan kedua ruas dengan bilangan yang sama untuk mencari batas x.",
+        "x harus kurang dari nilai yang kamu temukan; nilai itu sendiri tidak termasuk."
+      ],
+      "expl": "x<{bound}, jadi bilangan bulat terbesar adalah {ans}."
+    },
+    "slope2": {
+      "prompt": "Berapa gradien garis yang melalui titik $({x1},\\,{y1})$ dan $({x2},\\,{y2})$? (hanya angka)",
+      "hints": [
+        "Gradien = (perubahan y) ÷ (perubahan x).",
+        "Bagi selisih koordinat y dengan selisih koordinat x."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Ada berapa hasil yang mungkin jika {n} koin dilempar bersamaan? (hanya angka)",
+      "hints": [
+        "Satu koin punya 2 hasil: gambar atau angka.",
+        "Kalikan banyak hasil setiap koin."
+      ],
+      "expl": "2 dikalikan sebanyak {n} kali adalah {ans}, jadi ada {ans} hasil."
+    },
+    "isoApex": {
+      "prompt": "Satu sudut alas segitiga sama kaki adalah {b}°. Berapa derajat sudut puncaknya? (derajat)",
+      "hints": [
+        "Kedua sudut alas segitiga sama kaki sama besar.",
+        "Kurangkan kedua sudut alas dari 180°, jumlah sudut segitiga."
+      ],
+      "expl": "180-{b}×2={ans}, jadi sudut puncaknya {ans}°."
+    },
+    "hypot": {
+      "prompt": "Dua sisi yang mengapit sudut siku-siku sebuah segitiga siku-siku adalah {a} cm dan {b} cm. Berapa cm sisi terpanjangnya? (cm)",
+      "hints": [
+        "Teorema Pythagoras: (sisi miring)² = (sisi pertama)² + (sisi kedua)².",
+        "Kuadratkan kedua sisi, jumlahkan, lalu tarik akar kuadrat."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, jadi sisi terpanjangnya {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Berapa nilai dari $\\sqrt{{n}}$? (hanya angka)",
+      "hints": [
+        "Cari bilangan positif yang kuadratnya {n}.",
+        "Ingat tabel perkalian."
+      ],
+      "expl": "${ans}^2={n}$, jadi $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Jika $({fa})({fb}) = x^2+px+q$, berapa $p+q$? (hanya angka)",
+      "hints": [
+        "Gunakan $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p adalah jumlah kedua bilangan dan q adalah hasil kalinya."
+      ],
+      "expl": "p={p} dan q={q}, jadi p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Manakah akar yang lebih besar dari ${eq}$? (hanya angka)",
+      "hints": [
+        "Faktorkan ruas kiri.",
+        "Akarnya adalah nilai x yang membuat suatu faktor sama dengan nol."
+      ],
+      "expl": "Dari ${fact}$ akarnya {roots}, jadi akar terbesarnya {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Titik puncak fungsi kuadrat $y={expr}$ adalah $(p,\\ q)$. Berapa $p+q$? (hanya angka)",
+      "hints": [
+        "Pada $y=a(x-p)^2+q$ titik puncaknya $(p,\\ q)$.",
+        "Perhatikan tanda di dalam kurung."
+      ],
+      "expl": "Titik puncaknya $({p},\\ {q})$, jadi p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Berapa sisa jika $P(x)={poly}$ dibagi ${div}$? (hanya angka)",
+      "hints": [
+        "Teorema sisa: sisa P(x) dibagi x-a adalah P(a).",
+        "Gantikan x dengan a lalu hitung."
+      ],
+      "expl": "Dengan teorema sisa, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Berapa jumlah bagian real dan bagian imajiner dari ${expr}$? (hanya angka)",
+      "hints": [
+        "Jumlahkan bagian real dengan bagian real, dan bagian imajiner dengan bagian imajiner.",
+        "Perlakukan i seperti huruf."
+      ],
+      "expl": "Bagian real {re} dan bagian imajiner {im}, jadi jumlahnya {ans}."
+    },
+    "permNP": {
+      "prompt": "Ada berapa cara memilih {r} dari {n} orang berbeda lalu menyusunnya dalam satu barisan? (hanya angka)",
+      "hints": [
+        "Urutan diperhatikan, jadi ini permutasi.",
+        "Mulai dari {n} dan kalikan {r} bilangan yang menurun."
+      ],
+      "expl": "{calc}={ans}, jadi ada {ans} cara."
+    },
+    "combNC": {
+      "prompt": "Ada berapa cara memilih {r} dari {n} orang berbeda jika urutan tidak diperhatikan? (hanya angka)",
+      "hints": [
+        "Urutan tidak diperhatikan, jadi ini kombinasi.",
+        "Bagi banyaknya permutasi dengan {r}!."
+      ],
+      "expl": "{calc}={ans}, jadi ada {ans} cara."
+    },
+    "dist2": {
+      "prompt": "Berapa jarak antara titik A({x1}, {y1}) dan B({x2}, {y2})? (hanya angka)",
+      "hints": [
+        "Jaraknya adalah $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kuadratkan selisih koordinat x dan selisih koordinat y, lalu jumlahkan."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Berapa jari-jari lingkaran $({fx})^2+({fy})^2={r2}$? (hanya angka)",
+      "hints": [
+        "Pada $(x-a)^2+(y-b)^2=r^2$, r adalah jari-jari.",
+        "Bilangan di ruas kanan adalah r²."
+      ],
+      "expl": "$r^2={r2}$, jadi jari-jarinya {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Ada berapa bilangan bulat $x$ yang memenuhi pertidaksamaan kuadrat ${eq}<0$? (hanya angka)",
+      "hints": [
+        "Faktorkan ruas kiri untuk mencari kedua akar.",
+        "Hitung bilangan bulat di antara kedua akar; akarnya sendiri tidak termasuk."
+      ],
+      "expl": "Dari ${fact}<0$ diperoleh {r1}<x<{r2}, jadi ada {ans} bilangan bulat."
+    },
+    "logVal": {
+      "prompt": "Berapa nilai dari $\\log_{{b}} {n}$? (hanya angka)",
+      "hints": [
+        "$\\log_b n=k$ berarti $b^k=n$.",
+        "Hitung berapa kali {b} dikalikan untuk mendapat {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, jadi jawabannya {ans}."
+    },
+    "radDeg": {
+      "prompt": "Tulis $\\theta=\\dfrac{{num}}{{d}}$ (radian) dalam derajat. (hanya angka)",
+      "hints": [
+        "$\\pi$ radian sama dengan 180°.",
+        "Gantikan $\\pi$ dengan 180°."
+      ],
+      "expl": "Dengan $\\pi=180^\\circ$ diperoleh {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Berapa suku ke-{n} barisan aritmetika dengan suku pertama {a} dan beda {d}? (hanya angka)",
+      "hints": [
+        "Suku ke-n adalah $a_n=a+(n-1)d$.",
+        "Kalikan (n-1) dengan beda lalu tambahkan ke suku pertama."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Berapa suku ke-{n} barisan geometri dengan suku pertama {a} dan rasio {r}? (hanya angka)",
+      "hints": [
+        "Suku ke-n adalah $a_n=ar^{n-1}$.",
+        "Kalikan dengan rasio sebanyak (n-1) kali."
+      ],
+      "expl": "{a} dikali {r} pangkat ({n}-1) adalah {ans}."
+    },
+    "limLinear": {
+      "prompt": "Berapa nilai dari $\\lim_{x\\to {a}}({f})$? (hanya angka)",
+      "hints": [
+        "Untuk polinom, limitnya sama dengan nilai fungsinya.",
+        "Gantikan x dengan {a}."
+      ],
+      "expl": "Dengan x={a} diperoleh {ans}."
+    },
+    "derivAt": {
+      "prompt": "Jika $f(x)={poly}$, berapa $f'({a})$? (hanya angka)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Cari turunannya, lalu gantikan x dengan {a}."
+      ],
+      "expl": "$f'(x)={deriv}$, jadi $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Berapa nilai dari $\\int_{0}^{{b}} ({fx})\\,dx$? (hanya angka)",
+      "hints": [
+        "Cari antiturunannya, lalu hitung (nilai di batas atas) - (nilai di batas bawah).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ dan $\\int c\\,dx=cx$."
+      ],
+      "expl": "Dengan x={b} pada antiturunan ${anti}$ diperoleh {ans}."
+    },
+    "areaX2": {
+      "prompt": "Berapa luas daerah yang dibatasi kurva $y={k}x^2$, sumbu $x$, dan garis $x={a}$? (hanya angka)",
+      "hints": [
+        "Luasnya adalah integral tentu dari 0 sampai {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Berapa jumlah deret geometri tak hingga dengan suku pertama {a} dan rasio ${rtex}$? (boleh desimal, atau pecahan ditulis seperti 3/4)",
+      "hints": [
+        "Jumlahnya ada jika nilai mutlak rasio kurang dari 1.",
+        "Jumlah = (suku pertama) ÷ (1 - rasio)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Jika peubah acak $X$ berdistribusi binomial $B({n},\\ {p})$, berapa $E(X)$? (hanya angka)",
+      "hints": [
+        "Rataan $B(n,\\ p)$ adalah $np$.",
+        "Kalikan n dan p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Berapa panjang $|\\vec{a}|$ vektor $\\vec{a}=({x},\\ {y})$? (hanya angka)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kuadratkan setiap komponen, jumlahkan, lalu tarik akar kuadrat."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Berapa koordinat $x$ fokus parabola $y^2={c}x$? (hanya angka)",
+      "hints": [
+        "Fokus $y^2=4px$ adalah $(p,\\ 0)$.",
+        "Cari p dari {c}=4p."
+      ],
+      "expl": "4p={c}, jadi p={ans}."
+    },
+    "condProb": {
+      "prompt": "Untuk kejadian $A,\\ B$, $P(A)={pa}$ dan $P(A\\cap B)={pab}$. Berapa $P(B\\mid A)$? (tulis desimal)",
+      "hints": [
+        "Peluang bersyarat: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Bagi kedua nilai itu."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

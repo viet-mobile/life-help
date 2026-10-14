@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "$ {a} + {b} $ ning qiymatini toping.",
+      "hints": [
+        "Bir xil xonadagi raqamlarni qo'shing.",
+        "Xonadagi yig'indi 10 yoki undan katta bo'lsa, keyingi xonaga 1 ni ko'chiring."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "$ {a} - {b} $ ning qiymatini toping.",
+      "hints": [
+        "Bir xil xonadagi raqamlarni ayiring.",
+        "Ayirib bo'lmasa, keyingi xonadan 10 ni qarz oling."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "$ {a} \\times {b} $ ning qiymatini toping.",
+      "hints": [
+        "Ko'paytirish jadvalini yoki teng guruhlarni eslang.",
+        "Katta sonlarda xona-xona ko'paytirib, qismlarni qo'shing."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "$ {a} \\div {b} $ ning qiymatini toping.",
+      "hints": [
+        "Bo'luvchining ko'paytirish jadvalidan teskari foydalaning.",
+        "{b} ga qaysi sonni ko'paytirsak {a} chiqishini toping."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "${n}$ sonining o'nlar xonasidagi raqam qaysi? (faqat raqam yozing)",
+      "hints": [
+        "Bu o'ngdan ikkinchi raqam.",
+        "Birlar xonasining chap tomonidagi raqamni toping."
+      ],
+      "expl": "{n} ning o'nlar xonasidagi raqami {ans}."
+    },
+    "seqNext": {
+      "prompt": "Qonuniyatni toping va yetishmayotgan sonni yozing: ${list}, \\square$",
+      "hints": [
+        "Qo'shni sonlar orasidagi ayirmani toping.",
+        "Har qadamda sonlar bir xil miqdorga ortadi yoki kamayadi."
+      ],
+      "expl": "Qo'shni sonlar ayirmasi {d}, demak □={ans}."
+    },
+    "kmToM": {
+      "prompt": "{v} km necha metr? (faqat raqam yozing)",
+      "hints": [
+        "1 km 1000 m ga teng.",
+        "{v} ni 1000 ga ko'paytiring."
+      ],
+      "expl": "{v}×1000={ans}, demak {ans} m."
+    },
+    "lToMl": {
+      "prompt": "{v} L necha millilitr? (faqat raqam yozing)",
+      "hints": [
+        "1 L 1000 mL ga teng.",
+        "{v} ni 1000 ga ko'paytiring."
+      ],
+      "expl": "{v}×1000={ans}, demak {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Doiraning radiusi {r} cm. Uning diametri necha cm? (cm)",
+      "hints": [
+        "Diametr radiusdan ikki baravar katta.",
+        "Radiusni 2 ga ko'paytiring."
+      ],
+      "expl": "{r}×2={ans}, demak diametr {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Uchburchakning ikkita burchagi {a}° va {b}°. Uchinchi burchagi necha gradus? (gradus)",
+      "hints": [
+        "Uchburchak burchaklarining yig'indisi 180° ga teng.",
+        "180 dan ma'lum ikki burchakni ayiring."
+      ],
+      "expl": "180-{a}-{b}={ans}, demak {ans}°."
+    },
+    "bigNum": {
+      "prompt": "{a} ta o'n minglik va {b} ta minglikdan iborat son qaysi? (faqat raqam yozing)",
+      "hints": [
+        "{a} ta o'n minglik {a}0000 bo'ladi.",
+        "{b} ta minglik {b}000 bo'ladi. Ularni qo'shing."
+      ],
+      "expl": "{a} ta o'n minglik va {b} ta minglik {ans} ni tashkil qiladi."
+    },
+    "fracAdd": {
+      "prompt": "$\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$ ning qiymatini toping. (o'nli kasr ham bo'ladi yoki 3/4 kabi kasr yozing)",
+      "hints": [
+        "Kasrlarni umumiy maxrajga keltiring.",
+        "Suratlarni qo'shing."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "$\\frac{{a}}{{b}} \\div {c}$ ning qiymatini toping. (o'nli kasr ham bo'ladi yoki 3/4 kabi kasr yozing)",
+      "hints": [
+        "Kasrni butun songa bo'lish uchun uning maxrajini shu songa ko'paytiring.",
+        "Hisoblagandan keyin qisqartiring."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "$ {a} \\times {b} $ ning qiymatini toping.",
+      "hints": [
+        "Vergulni hisobga olmay, butun sonlardek ko'paytiring.",
+        "Keyin vergulni qaytaring: ko'paytuvchilardagi verguldan keyingi raqamlar soni yig'indisicha raqam qolsin."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "To'g'ri to'rtburchakning eni {w} cm, bo'yi {h} cm. Uning yuzi necha cm²? (faqat raqam yozing)",
+      "hints": [
+        "To'g'ri to'rtburchakning yuzi eni × bo'yi.",
+        "Ikki tomonning uzunligini ko'paytiring."
+      ],
+      "expl": "{w}×{h}={ans}, demak yuzi {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "To'g'ri to'rtburchakning eni {w} cm, bo'yi {h} cm. Uning perimetri necha cm? (cm)",
+      "hints": [
+        "Perimetr to'rt tomon uzunliklarining yig'indisi.",
+        "(eni + bo'yi) × 2 dan foydalanish mumkin."
+      ],
+      "expl": "({w}+{h})×2={ans}, demak perimetr {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "$\\frac{{a}}{{b}}$ ni foiz ko'rinishida yozing. (faqat raqam yozing)",
+      "hints": [
+        "Foiz nisbatni 100 ga ko'paytirishdan chiqadi.",
+        "Kasrni maxraji 100 bo'lgan kasrga ham keltirish mumkin."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, demak {ans}%."
+    },
+    "propX": {
+      "prompt": "${a} : {b} = \\square : {d}$ proporsiyada katakka qaysi son yoziladi? (faqat raqam yozing)",
+      "hints": [
+        "Proporsiyada chetki hadlar ko'paytmasi o'rtadagi hadlar ko'paytmasiga teng.",
+        "□ × {b} = {a} × {d} ni yeching."
+      ],
+      "expl": "□×{b}={a}×{d}, demak □={ans}."
+    },
+    "decPct": {
+      "prompt": "Bu o'nli kasrni foiz ko'rinishida yozing: ${d}$ (faqat raqam yozing)",
+      "hints": [
+        "Foiz hosil qilish uchun o'nli kasrni 100 ga ko'paytiring.",
+        "Vergulni o'ngga ikki xona siljiting."
+      ],
+      "expl": "{d}×100={ans}, demak {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Kubning bir qirrasi {a} cm. Uning hajmi necha cm³? (faqat raqam yozing)",
+      "hints": [
+        "Kubning hajmi qirra × qirra × qirra.",
+        "{a} ni o'ziga uch marta ko'paytiring."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, demak hajmi {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "To'g'ri burchakli parallelepipedning uzunligi {a} cm, eni {b} cm, balandligi {c} cm. Uning hajmi necha cm³? (cm³)",
+      "hints": [
+        "Parallelepipedning hajmi uzunlik × en × balandlik.",
+        "Uchala uzunlikni ko'paytiring."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, demak hajmi {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Doiraning radiusi {r} cm. Uning aylana uzunligi necha cm? (pi uchun $3.14$ oling) (cm)",
+      "hints": [
+        "Aylana uzunligi diametr × pi.",
+        "Diametr radiusdan ikki baravar katta."
+      ],
+      "expl": "{r}×2×3.14={ans}, demak {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Doiraning radiusi {r} cm. Uning yuzi necha cm²? (pi uchun $3.14$ oling) (cm²)",
+      "hints": [
+        "Yuzi radius × radius × pi.",
+        "Radiusni kvadratga oshiring, keyin 3.14 ga ko'paytiring."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, demak yuzi {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "{n} ta sonning o'rtacha qiymati {m}. Bu {n} ta sonning yig'indisi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "o'rtacha = yig'indi ÷ sonlar soni.",
+        "Demak yig'indi = o'rtacha × sonlar soni."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "$x={x}$ bo'lganda, ${expr}$ ning qiymati nechaga teng?",
+      "hints": [
+        "Berilgan sonni x o'rniga qo'ying.",
+        "Avval ko'paytiring, keyin qo'shing yoki ayiring."
+      ],
+      "expl": "x={x} ni qo'ysak ${expr}={ans}$ chiqadi."
+    },
+    "solveLin": {
+      "prompt": "${eq}$ chiziqli tenglamani yeching (x ni toping).",
+      "hints": [
+        "Ikkala tomonga bir xil sonni qo'shib yoki ayirib, x li hadni yolg'iz qoldiring.",
+        "Keyin ikkala tomonni x oldidagi songa bo'ling."
+      ],
+      "expl": "${eq}$ dan x={ans} chiqadi."
+    },
+    "expMul": {
+      "prompt": "$x^{{a}} \\times x^{{b}} = x^{\\square}$ da katakka qaysi son yoziladi? (faqat raqam yozing)",
+      "hints": [
+        "Asoslar teng bo'lsa, darajalar qo'shiladi.",
+        "{a}+{b} ni hisoblang."
+      ],
+      "expl": "{a}+{b}={ans}, demak □={ans}."
+    },
+    "expPow": {
+      "prompt": "$(x^{{a}})^{{b}} = x^{\\square}$ da katakka qaysi son yoziladi? (faqat raqam yozing)",
+      "hints": [
+        "Darajaning darajasida daraja ko'rsatkichlari ko'paytiriladi.",
+        "{a}×{b} ni hisoblang."
+      ],
+      "expl": "{a}×{b}={ans}, demak □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "$x+{a} < {b}$ ni qanoatlantiruvchi eng katta butun $x$ qaysi? (faqat raqam yozing)",
+      "hints": [
+        "Ikkala tomondan bir xil sonni ayirib, x ning oraliqini toping.",
+        "x topilgan qiymatdan kichik bo'lishi kerak; qiymatning o'zi kirmaydi."
+      ],
+      "expl": "x<{bound}, demak eng katta butun son {ans}."
+    },
+    "slope2": {
+      "prompt": "$({x1},\\,{y1})$ va $({x2},\\,{y2})$ nuqtalardan o'tuvchi to'g'ri chiziqning burchak koeffitsienti nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Burchak koeffitsienti (y ning o'zgarishi) ÷ (x ning o'zgarishi).",
+        "y koordinatalar ayirmasini x koordinatalar ayirmasiga bo'ling."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "{n} ta tanga birga tashlanganda nechta natija bo'lishi mumkin? (faqat raqam yozing)",
+      "hints": [
+        "Bitta tangada 2 ta natija bor: gerb yoki raqam.",
+        "Har bir tanganing natijalar sonini ko'paytiring."
+      ],
+      "expl": "2 ni {n} marta ko'paytirsak {ans} bo'ladi, demak {ans} ta natija bor."
+    },
+    "isoApex": {
+      "prompt": "Teng yonli uchburchakning asosidagi bir burchak {b}°. Uchidagi burchak necha gradus? (gradus)",
+      "hints": [
+        "Teng yonli uchburchakning asosidagi ikki burchak teng.",
+        "Uchburchak burchaklari yig'indisi 180° dan ikkala asos burchagini ayiring."
+      ],
+      "expl": "180-{b}×2={ans}, demak uchidagi burchak {ans}°."
+    },
+    "hypot": {
+      "prompt": "To'g'ri burchakli uchburchakning to'g'ri burchagiga yopishgan ikki tomoni {a} cm va {b} cm. Eng uzun tomoni necha cm? (cm)",
+      "hints": [
+        "Pifagor teoremasi: (gipotenuza)² = (bir katet)² + (ikkinchi katet)².",
+        "Ikkala tomonni kvadratga oshiring, qo'shing, keyin kvadrat ildiz oling."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, demak eng uzun tomon {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "$\\sqrt{{n}}$ ning qiymati nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Kvadrati {n} ga teng bo'lgan musbat sonni toping.",
+        "Ko'paytirish jadvalini eslang."
+      ],
+      "expl": "${ans}^2={n}$, demak $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Agar $({fa})({fb}) = x^2+px+q$ bo'lsa, $p+q$ nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$(x+a)(x+b)=x^2+(a+b)x+ab$ dan foydalaning.",
+        "p ikki sonning yig'indisi, q esa ularning ko'paytmasi."
+      ],
+      "expl": "p={p} va q={q}, demak p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "${eq}$ ning ikki ildizidan kattasi qaysi? (faqat raqam yozing)",
+      "hints": [
+        "Chap tomonni ko'paytuvchilarga ajrating.",
+        "Ildizlar ko'paytuvchilardan birini nolga aylantiradigan x qiymatlaridir."
+      ],
+      "expl": "${fact}$ dan ildizlar {roots}, demak kattasi {ans}."
+    },
+    "vertexSum": {
+      "prompt": "$y={expr}$ kvadrat funksiyaning uchi $(p,\\ q)$. $p+q$ nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$y=a(x-p)^2+q$ da uchi $(p,\\ q)$ bo'ladi.",
+        "Qavs ichidagi ishoraga e'tibor bering."
+      ],
+      "expl": "Uchi $({p},\\ {q})$, demak p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "$P(x)={poly}$ ni ${div}$ ga bo'lgandagi qoldiq nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Qoldiq haqidagi teorema: P(x) ni x-a ga bo'lgandagi qoldiq P(a) ga teng.",
+        "x o'rniga a ni qo'yib hisoblang."
+      ],
+      "expl": "Qoldiq teoremasiga ko'ra P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "${expr}$ ning haqiqiy qismi va mavhum qismi yig'indisi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Haqiqiy qismlarni o'zaro, mavhum qismlarni o'zaro qo'shing.",
+        "i ni harf kabi hisoblang."
+      ],
+      "expl": "Haqiqiy qismi {re}, mavhum qismi {im}, demak yig'indi {ans}."
+    },
+    "permNP": {
+      "prompt": "{n} ta turli odamdan {r} tasini tanlab, qatorga necha xil usulda tizish mumkin? (faqat raqam yozing)",
+      "hints": [
+        "Tartib muhim, shuning uchun bu o'rinlashtirish.",
+        "{n} dan boshlab, kamayib boruvchi {r} ta sonni ko'paytiring."
+      ],
+      "expl": "{calc}={ans}, demak {ans} xil usul bor."
+    },
+    "combNC": {
+      "prompt": "Tartib muhim bo'lmasa, {n} ta turli odamdan {r} tasini necha xil usulda tanlash mumkin? (faqat raqam yozing)",
+      "hints": [
+        "Tartib muhim emas, shuning uchun bu guruhlash.",
+        "O'rinlashtirishlar sonini {r}! ga bo'ling."
+      ],
+      "expl": "{calc}={ans}, demak {ans} xil usul bor."
+    },
+    "dist2": {
+      "prompt": "A({x1}, {y1}) va B({x2}, {y2}) nuqtalar orasidagi masofa nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Masofa $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ ga teng.",
+        "x koordinatalar va y koordinatalar ayirmasini kvadratga oshirib, qo'shing."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "$({fx})^2+({fy})^2={r2}$ aylananing radiusi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$(x-a)^2+(y-b)^2=r^2$ da r radius bo'ladi.",
+        "O'ng tomondagi son r² dir."
+      ],
+      "expl": "$r^2={r2}$, demak radius {ans}."
+    },
+    "ineqCount": {
+      "prompt": "${eq}<0$ kvadrat tengsizlikni nechta butun $x$ qanoatlantiradi? (faqat raqam yozing)",
+      "hints": [
+        "Ikki ildizni topish uchun chap tomonni ko'paytuvchilarga ajrating.",
+        "Ildizlar orasidagi butun sonlarni sanang; ildizlarning o'zi kirmaydi."
+      ],
+      "expl": "${fact}<0$ dan {r1}<x<{r2}, demak {ans} ta butun son bor."
+    },
+    "logVal": {
+      "prompt": "$\\log_{{b}} {n}$ ning qiymati nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$\\log_b n=k$ degani $b^k=n$ demakdir.",
+        "{n} hosil bo'lishi uchun {b} ni necha marta ko'paytirishni sanang."
+      ],
+      "expl": "${b}^{{ans}}={n}$, demak javob {ans}."
+    },
+    "radDeg": {
+      "prompt": "$\\theta=\\dfrac{{num}}{{d}}$ (radian) ni gradusda yozing. (faqat raqam yozing)",
+      "hints": [
+        "$\\pi$ radian 180° ga teng.",
+        "$\\pi$ o'rniga 180° ni qo'ying."
+      ],
+      "expl": "$\\pi=180^\\circ$ ni qo'ysak {ans}° chiqadi."
+    },
+    "arithTerm": {
+      "prompt": "Birinchi hadi {a}, ayirmasi {d} bo'lgan arifmetik progressiyaning {n}-hadi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Umumiy had formulasi $a_n=a+(n-1)d$.",
+        "(n-1) ni ayirmaga ko'paytiring va birinchi hadga qo'shing."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Birinchi hadi {a}, maxraji {r} bo'lgan geometrik progressiyaning {n}-hadi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Umumiy had formulasi $a_n=ar^{n-1}$.",
+        "Maxrajga (n-1) marta ko'paytiring."
+      ],
+      "expl": "{a} ni {r} ning ({n}-1)-darajasiga ko'paytirsak {ans} bo'ladi."
+    },
+    "limLinear": {
+      "prompt": "$\\lim_{x\\to {a}}({f})$ ning qiymati nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Ko'phad uchun limit funksiyaning qiymatiga teng.",
+        "x o'rniga {a} ni qo'ying."
+      ],
+      "expl": "x={a} ni qo'ysak {ans} chiqadi."
+    },
+    "derivAt": {
+      "prompt": "Agar $f(x)={poly}$ bo'lsa, $f'({a})$ nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Hosilani toping, keyin x o'rniga {a} ni qo'ying."
+      ],
+      "expl": "$f'(x)={deriv}$, demak $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "$\\int_{0}^{{b}} ({fx})\\,dx$ ning qiymati nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Boshlang'ich funksiyani toping, keyin (yuqori chegaradagi qiymat) - (quyi chegaradagi qiymat) ni hisoblang.",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ va $\\int c\\,dx=cx$."
+      ],
+      "expl": "x={b} ni boshlang'ich funksiya ${anti}$ ga qo'ysak {ans} chiqadi."
+    },
+    "areaX2": {
+      "prompt": "$y={k}x^2$ egri chiziq, $x$ o'qi va $x={a}$ to'g'ri chiziq bilan chegaralangan shaklning yuzi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "Yuz 0 dan {a} gacha aniq integralga teng.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Birinchi hadi {a}, maxraji ${rtex}$ bo'lgan cheksiz geometrik qatorning yig'indisi nechaga teng? (o'nli kasr ham bo'ladi yoki 3/4 kabi kasr yozing)",
+      "hints": [
+        "Maxrajning moduli 1 dan kichik bo'lsa, yig'indi mavjud.",
+        "Yig'indi (birinchi had) ÷ (1 - maxraj)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Agar $X$ tasodifiy miqdor $B({n},\\ {p})$ binomial taqsimotga ega bo'lsa, $E(X)$ nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$B(n,\\ p)$ ning matematik kutilmasi $np$ ga teng.",
+        "n va p ni ko'paytiring."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "$\\vec{a}=({x},\\ {y})$ vektorning uzunligi $|\\vec{a}|$ nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Har bir koordinatani kvadratga oshiring, qo'shing, keyin kvadrat ildiz oling."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "$y^2={c}x$ parabola fokusining $x$ koordinatasi nechaga teng? (faqat raqam yozing)",
+      "hints": [
+        "$y^2=4px$ ning fokusi $(p,\\ 0)$ bo'ladi.",
+        "{c}=4p dan p ni toping."
+      ],
+      "expl": "4p={c}, demak p={ans}."
+    },
+    "condProb": {
+      "prompt": "$A,\\ B$ hodisalar uchun $P(A)={pa}$ va $P(A\\cap B)={pab}$. $P(B\\mid A)$ nechaga teng? (o'nli kasr yozing)",
+      "hints": [
+        "Shartli ehtimollik: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Ikki qiymatni bir-biriga bo'ling."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Wara valeur ti $ {a} + {b} $.",
+      "hints": [
+        "Zia chiffre ti ndo oko together (addition).",
+        "Tongana ndo oko asi 10 wala ahon, zia retenue na ndo so alondo."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Wara valeur ti $ {a} - {b} $.",
+      "hints": [
+        "Sara soustraction ti chiffre ti ndo oko.",
+        "Tongana mo lingbi ti kaa ape, mo yeke emprunter 10 na ndo so alondo."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Wara valeur ti $ {a} \\times {b} $.",
+      "hints": [
+        "Bâ table de multiplication wala agroupe so ayeke pëpe-pëpe.",
+        "Na anombre so ayeke ngangu, sara multiplication ndo na ndo, na mo zia akete mbage together."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Wara valeur ti $ {a} \\div {b} $.",
+      "hints": [
+        "Sara na table de multiplication ti diviseur, mo kiri na peko.",
+        "Wara nombre so mo multiplier lo na {b} ti wara {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "Chiffre ti ndo ti dizaine na yâ ti ${n}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Ni ayeke deuxième chiffre na mbage ti droite.",
+        "Wara chiffre so ayeke na gauche ti ndo ti unité."
+      ],
+      "expl": "Chiffre ti dizaine ti {n} ayeke {ans}."
+    },
+    "seqNext": {
+      "prompt": "Wara règle, na sö nombre so akpe: ${list}, \\square$",
+      "hints": [
+        "Wara différence na popo ti anombre so ayeke vandaa.",
+        "Anombre ayeke monter wala descendre na même quantité na chaque pas."
+      ],
+      "expl": "Différence na popo ti anombre ayeke {d}, tongaso □={ans}."
+    },
+    "kmToM": {
+      "prompt": "{v} km ayeke mètre boni? (gï chiffre 0-9)",
+      "hints": [
+        "1 km ayeke 1000 m.",
+        "Multiplier {v} na 1000."
+      ],
+      "expl": "{v}×1000={ans}, tongaso ayeke {ans} m."
+    },
+    "lToMl": {
+      "prompt": "{v} L ayeke millilitre boni? (gï chiffre 0-9)",
+      "hints": [
+        "1 L ayeke 1000 mL.",
+        "Multiplier {v} na 1000."
+      ],
+      "expl": "{v}×1000={ans}, tongaso ayeke {ans} mL."
+    },
+    "diameter": {
+      "prompt": "Rayon ti cercle ayeke {r} cm. Diamètre ti lo ayeke cm boni? (cm)",
+      "hints": [
+        "Diamètre ayeke ûse ti rayon.",
+        "Multiplier rayon na 2."
+      ],
+      "expl": "{r}×2={ans}, tongaso diamètre ayeke {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Angle ûse ti triangle ayeke {a}° na {b}°. Angle ti ôta ayeke degré boni? (degré)",
+      "hints": [
+        "Angle ôta ti triangle asara 180° together.",
+        "Soustraire angle ûse so mo hinga na 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, tongaso ayeke {ans}°."
+    },
+    "bigNum": {
+      "prompt": "Nombre so asara dizaine de mille {a} na mille {b} ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Dizaine de mille {a} ayeke {a}0000.",
+        "Mille {b} ayeke {b}000. Zia ni together."
+      ],
+      "expl": "Dizaine de mille {a} na mille {b} asara {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Wara valeur ti $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (décimal alingbi, wala fraction so mo sö tongana 3/4)",
+      "hints": [
+        "Sö fraction na même dénominateur.",
+        "Zia anumérateur together."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Wara valeur ti $\\frac{{a}}{{b}} \\div {c}$. (décimal alingbi, wala fraction so mo sö tongana 3/4)",
+      "hints": [
+        "Diviser fraction na nombre entier ayeke multiplier dénominateur ti ni na nombre so.",
+        "Simplifier na peko ti calcul."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Wara valeur ti $ {a} \\times {b} $.",
+      "hints": [
+        "Kiri virgule na peko, na sara multiplication tongana anombre entier.",
+        "Na peko, zia virgule ti décimal, na même nombre ti chiffre décimal so ayeke na afacteur together."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "Rectangle ayeke na largeur {w} cm na hauteur {h} cm. Aire ti lo ayeke cm² boni? (gï chiffre 0-9)",
+      "hints": [
+        "Aire ti rectangle ayeke largeur × hauteur.",
+        "Multiplier longueur ti akote ûse."
+      ],
+      "expl": "{w}×{h}={ans}, tongaso aire ayeke {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Rectangle ayeke na largeur {w} cm na hauteur {h} cm. Périmètre ti lo ayeke cm boni? (cm)",
+      "hints": [
+        "Périmètre ayeke somme ti akote osio.",
+        "Mo lingbi ti sara na (largeur + hauteur) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, tongaso périmètre ayeke {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Sö $\\frac{{a}}{{b}}$ tongana pourcentage. (gï chiffre 0-9)",
+      "hints": [
+        "Pourcentage ayeke rapport × 100.",
+        "Mo lingbi ti sö fraction na dénominateur 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, tongaso ayeke {ans}%."
+    },
+    "propX": {
+      "prompt": "Na yâ ti proportion ${a} : {b} = \\square : {d}$, nombre nye ayeke na yâ ti carré? (gï chiffre 0-9)",
+      "hints": [
+        "Na yâ ti proportion, produit ti anombre ti dehors ayeke même na produit ti anombre ti dedans.",
+        "Résoudre □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, tongaso □={ans}."
+    },
+    "decPct": {
+      "prompt": "Sö décimal so tongana pourcentage: ${d}$ (gï chiffre 0-9)",
+      "hints": [
+        "Multiplier décimal na 100 ti wara pourcentage.",
+        "Zia virgule na ndo ti ûse na droite."
+      ],
+      "expl": "{d}×100={ans}, tongaso ayeke {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "Oko arête ti cube ayeke {a} cm. Volume ti lo ayeke cm³ boni? (gï chiffre 0-9)",
+      "hints": [
+        "Volume ti cube ayeke arête × arête × arête.",
+        "Multiplier {a} na lo mveni ôta ngbâ."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, tongaso volume ayeke {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Pavé ayeke na longueur {a} cm, largeur {b} cm na hauteur {c} cm. Volume ti lo ayeke cm³ boni? (cm³)",
+      "hints": [
+        "Volume ti pavé ayeke longueur × largeur × hauteur.",
+        "Multiplier longueur ôta kûê."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, tongaso volume ayeke {ans} cm³."
+    },
+    "circum": {
+      "prompt": "Cercle ayeke na rayon {r} cm. Circonférence ti lo ayeke cm boni? (sara na $3.14$ ti pi) (cm)",
+      "hints": [
+        "Circonférence ayeke diamètre × pi.",
+        "Diamètre ayeke ûse ti rayon."
+      ],
+      "expl": "{r}×2×3.14={ans}, tongaso ayeke {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "Cercle ayeke na rayon {r} cm. Aire ti lo ayeke cm² boni? (sara na $3.14$ ti pi) (cm²)",
+      "hints": [
+        "Aire ayeke rayon × rayon × pi.",
+        "Sara carré ti rayon, na peko multiplier na 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, tongaso aire ayeke {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "Moyenne ti anombre {n} ayeke {m}. Somme ti anombre {n} so ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "moyenne = somme ÷ nombre.",
+        "Tongaso somme = moyenne × nombre."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "Tongana $x={x}$, valeur ti ${expr}$ ayeke nye?",
+      "hints": [
+        "Zia nombre so a mû na ndo ti x.",
+        "Sara multiplication kozo, na peko zia wala soustraire."
+      ],
+      "expl": "Tongana a zia x={x}, a wara ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Résoudre équation ${eq}$ (wara x).",
+      "hints": [
+        "Zia wala soustraire même nombre na akote ûse ti zia terme ti x tongana oko.",
+        "Na peko diviser akote ûse na nombre so ayeke na ndo ti x."
+      ],
+      "expl": "Na ${eq}$ a wara x={ans}."
+    },
+    "expMul": {
+      "prompt": "Na yâ ti $x^{{a}} \\times x^{{b}} = x^{\\square}$, nombre nye ayeke na yâ ti carré? (gï chiffre 0-9)",
+      "hints": [
+        "Tongana base ayeke même, zia aexposant together.",
+        "Sara calcul ti {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, tongaso □={ans}."
+    },
+    "expPow": {
+      "prompt": "Na yâ ti $(x^{{a}})^{{b}} = x^{\\square}$, nombre nye ayeke na yâ ti carré? (gï chiffre 0-9)",
+      "hints": [
+        "Puissance ti puissance ayeke multiplier aexposant.",
+        "Sara calcul ti {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, tongaso □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "Nombre entier ti kota ahon so $x$ asara $x+{a} < {b}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Soustraire même nombre na akote ûse ti wara intervalle ti x.",
+        "x ayeke kete ahon valeur so mo wara; valeur ni mveni ayeke yâ ape."
+      ],
+      "expl": "x<{bound}, tongaso nombre entier ti kota ahon ayeke {ans}."
+    },
+    "slope2": {
+      "prompt": "Pente ti droite so ayeke gue na ahaut ti points $({x1},\\,{y1})$ na $({x2},\\,{y2})$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Pente ayeke (changement ti y) ÷ (changement ti x).",
+        "Diviser différence ti coordonnées ti y na différence ti coordonnées ti x."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "Résultat boni ayeke na yâ tongana a bi pièces {n} together? (gï chiffre 0-9)",
+      "hints": [
+        "Oko pièce ayeke na résultat 2: pile wala face.",
+        "Multiplier nombre ti résultat ti chaque pièce."
+      ],
+      "expl": "2 multiplier {n} ngbâ ayeke {ans}, tongaso résultat {ans} ayeke."
+    },
+    "isoApex": {
+      "prompt": "Oko angle ti base ti triangle isocèle ayeke {b}°. Angle ti sommet ayeke degré boni? (degré)",
+      "hints": [
+        "Angle ti base ûse ti triangle isocèle ayeke même.",
+        "Soustraire angle ti base ûse na 180°, somme ti angle ti triangle."
+      ],
+      "expl": "180-{b}×2={ans}, tongaso angle ti sommet ayeke {ans}°."
+    },
+    "hypot": {
+      "prompt": "Akote ûse so ayeke vandaa na angle droit ti triangle rectangle ayeke {a} cm na {b} cm. Kote ti kota ahon ayeke cm boni? (cm)",
+      "hints": [
+        "Théorème ti Pythagore: (hypoténuse)² = (oko kote)² + (mbeni kote)².",
+        "Sara carré ti akote ûse, zia together, na peko wara racine carrée."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, tongaso kote ti kota ahon ayeke {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "Valeur ti $\\sqrt{{n}}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Wara nombre positif so carré ti lo ayeke {n}.",
+        "Bâ table de multiplication."
+      ],
+      "expl": "${ans}^2={n}$, tongaso $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "Tongana $({fa})({fb}) = x^2+px+q$, $p+q$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Sara na $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p ayeke somme ti anombre ûse na q ayeke produit ti ni."
+      ],
+      "expl": "p={p} na q={q}, tongaso p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Racine ti kota na popo ti racine ûse ti ${eq}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Factoriser mbage ti gauche.",
+        "Aracine ayeke avaleur ti x so asara facteur ayeke zéro."
+      ],
+      "expl": "Na ${fact}$ aracine ayeke {roots}, tongaso racine ti kota ayeke {ans}."
+    },
+    "vertexSum": {
+      "prompt": "Sommet ti fonction quadratique $y={expr}$ ayeke $(p,\\ q)$. $p+q$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Na yâ ti $y=a(x-p)^2+q$ sommet ayeke $(p,\\ q)$.",
+        "Bâ signe na yâ ti parenthèse."
+      ],
+      "expl": "Sommet ayeke $({p},\\ {q})$, tongaso p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "Reste ayeke nye tongana a diviser $P(x)={poly}$ na ${div}$? (gï chiffre 0-9)",
+      "hints": [
+        "Théorème du reste: reste ti P(x) divisé na x-a ayeke P(a).",
+        "Zia a na ndo ti x na sara calcul."
+      ],
+      "expl": "Na théorème du reste, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "Somme ti partie réelle na partie imaginaire ti ${expr}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Zia aparties réelles together na aparties imaginaires together.",
+        "Bâ i tongana lettre."
+      ],
+      "expl": "Partie réelle ayeke {re} na partie imaginaire ayeke {im}, tongaso somme ayeke {ans}."
+    },
+    "permNP": {
+      "prompt": "Na lege boni mo lingbi ti sigi azo {r} na popo ti azo {n} so ayeke tâ mbeni-mbeni na ti zia ala na rang? (gï chiffre 0-9)",
+      "hints": [
+        "Ordre ayeke important, tongaso so ayeke permutation.",
+        "Commencer na {n} na multiplier anombre {r}, mo descendre."
+      ],
+      "expl": "{calc}={ans}, tongaso lege {ans} ayeke."
+    },
+    "combNC": {
+      "prompt": "Na lege boni mo lingbi ti sigi azo {r} na popo ti azo {n} so ayeke tâ mbeni-mbeni, tongana ordre ayeke important ape? (gï chiffre 0-9)",
+      "hints": [
+        "Ordre ayeke important ape, tongaso so ayeke combinaison.",
+        "Diviser nombre ti permutation na {r}!."
+      ],
+      "expl": "{calc}={ans}, tongaso lege {ans} ayeke."
+    },
+    "dist2": {
+      "prompt": "Distance na popo ti points A({x1}, {y1}) na B({x2}, {y2}) ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Distance ayeke $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Sara carré ti différence ti coordonnées ti x na ti y, na zia together."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "Rayon ti cercle $({fx})^2+({fy})^2={r2}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Na yâ ti $(x-a)^2+(y-b)^2=r^2$, r ayeke rayon.",
+        "Nombre na mbage ti droite ayeke r²."
+      ],
+      "expl": "$r^2={r2}$, tongaso rayon ayeke {ans}."
+    },
+    "ineqCount": {
+      "prompt": "Anombre entier $x$ boni asara inéquation quadratique ${eq}<0$? (gï chiffre 0-9)",
+      "hints": [
+        "Factoriser mbage ti gauche ti wara aracine ûse.",
+        "Fa anombre entier na popo ti aracine; aracine mveni ayeke yâ ape."
+      ],
+      "expl": "Na ${fact}<0$ a wara {r1}<x<{r2}, tongaso anombre entier {ans} ayeke."
+    },
+    "logVal": {
+      "prompt": "Valeur ti $\\log_{{b}} {n}$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "$\\log_b n=k$ ayeke $b^k=n$.",
+        "Fa ngbâ boni mo multiplier {b} ti wara {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, tongaso réponse ayeke {ans}."
+    },
+    "radDeg": {
+      "prompt": "Sö $\\theta=\\dfrac{{num}}{{d}}$ (radian) na degré. (gï chiffre 0-9)",
+      "hints": [
+        "$\\pi$ radian ayeke 180°.",
+        "Zia 180° na ndo ti $\\pi$."
+      ],
+      "expl": "Tongana a zia $\\pi=180^\\circ$, a wara {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "Terme numéro {n} ti suite arithmétique so premier terme ayeke {a} na raison ayeke {d} ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Terme général ayeke $a_n=a+(n-1)d$.",
+        "Multiplier (n-1) na raison na zia na premier terme."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "Terme numéro {n} ti suite géométrique so premier terme ayeke {a} na raison ayeke {r} ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Terme général ayeke $a_n=ar^{n-1}$.",
+        "Multiplier na raison (n-1) ngbâ."
+      ],
+      "expl": "{a} multiplier na {r} puissance ({n}-1) ayeke {ans}."
+    },
+    "limLinear": {
+      "prompt": "Valeur ti $\\lim_{x\\to {a}}({f})$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Ti polynôme, limite ayeke même na valeur ti fonction.",
+        "Zia {a} na ndo ti x."
+      ],
+      "expl": "Tongana a zia x={a}, a wara {ans}."
+    },
+    "derivAt": {
+      "prompt": "Tongana $f(x)={poly}$, $f'({a})$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Wara dérivée, na peko zia {a} na ndo ti x."
+      ],
+      "expl": "$f'(x)={deriv}$, tongaso $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "Valeur ti $\\int_{0}^{{b}} ({fx})\\,dx$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Wara primitive, na peko sara calcul (valeur na limite ti ndö) - (valeur na limite ti ndo ti gï).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ na $\\int c\\,dx=cx$."
+      ],
+      "expl": "Tongana a zia x={b} na yâ ti primitive ${anti}$, a wara {ans}."
+    },
+    "areaX2": {
+      "prompt": "Aire so courbe $y={k}x^2$, axe ti $x$ na droite $x={a}$ ayeke kpe ni ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Aire ayeke intégrale définie na 0 jusqu'à {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "Somme ti série géométrique infinie so premier terme ayeke {a} na raison ayeke ${rtex}$ ayeke nye? (décimal alingbi, wala fraction so mo sö tongana 3/4)",
+      "hints": [
+        "Somme ayeke tongana valeur absolue ti raison ayeke kete ahon 1.",
+        "Somme ayeke (premier terme) ÷ (1 - raison)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "Tongana variable aléatoire $X$ alingbi na loi binomiale $B({n},\\ {p})$, $E(X)$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Espérance ti $B(n,\\ p)$ ayeke $np$.",
+        "Multiplier n na p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Norme $|\\vec{a}|$ ti vecteur $\\vec{a}=({x},\\ {y})$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Sara carré ti chaque composante, zia together, na peko wara racine carrée."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "Coordonnée $x$ ti foyer ti parabole $y^2={c}x$ ayeke nye? (gï chiffre 0-9)",
+      "hints": [
+        "Foyer ti $y^2=4px$ ayeke $(p,\\ 0)$.",
+        "Wara p na {c}=4p."
+      ],
+      "expl": "4p={c}, tongaso p={ans}."
+    },
+    "condProb": {
+      "prompt": "Ti événements $A,\\ B$, $P(A)={pa}$ na $P(A\\cap B)={pab}$. $P(B\\mid A)$ ayeke nye? (sö décimal)",
+      "hints": [
+        "Probabilité conditionnelle: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Diviser avaleur ûse so."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}
