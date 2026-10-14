@@ -58,7 +58,7 @@ const COURSES = [
   {
     id: "en-el-eco",
     title: "경제·경영 실전 독해",
-    titleVi: "Đọc hiểu nâng cao · Kinh tế 및 Xu hướng Toàn cầu",
+    titleVi: "Đọc hiểu nâng cao · Kinh tế và Xu hướng Toàn cầu",
     grade: "H3",
     elective: true,
     world: {
@@ -376,12 +376,29 @@ fs.writeFileSync(path.join(viDir, "reading-english.json"), json(viOverlay));
 // Helper index module
 const indexModule = `import bundle from "./english.json";
 import viOverlay from "../vi/reading-english.json";
+import type { ContentBundle, ContentOverlay, Course, Skill, Question } from "@/lib/learn/types";
 
-export const advancedReadingBundle = bundle;
-export const advancedReadingViOverlay = viOverlay;
-export const ADVANCED_READING_COURSES = bundle.catalog.courses;
-export const ADVANCED_READING_SKILLS = bundle.catalog.skills;
-export const ADVANCED_READING_QUESTIONS = bundle.questions;
+export const advancedReadingBundle = bundle as unknown as ContentBundle;
+export const advancedReadingViOverlay = viOverlay as unknown as ContentOverlay;
+export const ADVANCED_READING_COURSES: Course[] = bundle.catalog.courses as unknown as Course[];
+export const ADVANCED_READING_SKILLS: Skill[] = bundle.catalog.skills as unknown as Skill[];
+export const ADVANCED_READING_QUESTIONS: Question[] = bundle.questions as unknown as Question[];
+
+export const ADVANCED_READING_OVERLAY_LOCALES = [
+  "am", "ar", "arz", "bn", "da", "de", "el", "en", "es", "fa", "fr", "gu", "he", "hi", "id", "it",
+  "ja", "kk", "km", "kn", "ml", "mn", "mr", "my", "ne", "nl", "no", "pa", "pl", "pt", "ru", "sg",
+  "si", "sv", "sw", "ta", "te", "tet", "th", "tr", "uk", "ur", "uz", "vi", "zh-Hans", "zh-Hant"
+] as const;
+
+export function getAdvancedReadingOverlay(locale: string): ContentOverlay | null {
+  if (locale === "vi") return advancedReadingViOverlay;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    return require(\`./overlays/\${locale}.json\`) as ContentOverlay;
+  } catch {
+    return null;
+  }
+}
 `;
 fs.writeFileSync(path.join(outDir, "index.ts"), indexModule);
 
@@ -389,3 +406,6 @@ console.log(`Successfully generated English Advanced Reading Track:`);
 console.log(`- Courses: ${courses.length}`);
 console.log(`- Lessons: ${courses.flatMap(c => c.units[0].lessons).length}`);
 console.log(`- Questions: ${questions.length}`);
+
+export { COURSES, LESSON_DEFS };
+

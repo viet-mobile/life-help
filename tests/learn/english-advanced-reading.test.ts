@@ -7,7 +7,11 @@ import {
   ADVANCED_READING_COURSES,
   ADVANCED_READING_SKILLS,
   ADVANCED_READING_QUESTIONS,
+  ADVANCED_READING_OVERLAY_LOCALES,
+  getAdvancedReadingOverlay,
 } from "@/lib/learn/content/reading";
+
+const HANGUL = /[가-힣ㄱ-ㆎ]/;
 
 function correctResponse(q: Question): string | string[] {
   const k = q.answer;
@@ -113,6 +117,41 @@ describe("English Advanced Reading Track (CEFR B1-B2 / College Preparatory)", ()
       expect(locLesson?.title).toBeTruthy();
       expect(locLesson?.concept).toBeTruthy();
       expect(locLesson?.example).toBeTruthy();
+    }
+  });
+
+  it("maintains 100% multi-locale overlay coverage across all 46 non-core locales with no Hangul leaks", () => {
+    expect(ADVANCED_READING_OVERLAY_LOCALES).toHaveLength(46);
+
+    for (const locale of ADVANCED_READING_OVERLAY_LOCALES) {
+      const overlay = getAdvancedReadingOverlay(locale);
+      expect(overlay, `Overlay for ${locale} must load`).toBeDefined();
+
+      const questions = overlay?.questions ?? {};
+      expect(Object.keys(questions), `Questions count for ${locale}`).toHaveLength(56);
+
+      // Verify each question has 2 hints and no Hangul
+      for (const [qid, q] of Object.entries(questions)) {
+        expect(q.prompt, `${locale} ${qid} prompt`).toBeTruthy();
+        expect(q.hints, `${locale} ${qid} hints`).toHaveLength(2);
+        expect(q.hints[0], `${locale} ${qid} hint 0`).toBeTruthy();
+        expect(q.hints[1], `${locale} ${qid} hint 1`).toBeTruthy();
+        expect(q.explanation, `${locale} ${qid} explanation`).toBeTruthy();
+
+        // Quality Gate: No Hangul leaks in any non-Korean presentation overlay
+        expect(HANGUL.test(q.prompt), `${locale} ${qid} prompt has Hangul`).toBe(false);
+        expect(HANGUL.test(q.hints[0]), `${locale} ${qid} hint 0 has Hangul`).toBe(false);
+        expect(HANGUL.test(q.hints[1]), `${locale} ${qid} hint 1 has Hangul`).toBe(false);
+        expect(HANGUL.test(q.explanation), `${locale} ${qid} explanation has Hangul`).toBe(false);
+      }
+
+      // Verify courses and units
+      const courses = overlay?.courses ?? {};
+      expect(Object.keys(courses), `Courses count for ${locale}`).toHaveLength(4);
+      for (const [cid, c] of Object.entries(courses)) {
+        expect(c.title, `${locale} ${cid} title`).toBeTruthy();
+        expect(HANGUL.test(c.title), `${locale} ${cid} title has Hangul`).toBe(false);
+      }
     }
   });
 });
