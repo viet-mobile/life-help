@@ -1,0 +1,295 @@
+{
+ "files_reviewed": [
+  "korean_items_3.json",
+  "korean_items_4.json"
+ ],
+ "items_reviewed": 120,
+ "findings": [
+  {
+   "item_id": "bk-ko-k8-k-k8-honorific_subj-002",
+   "site": "korean",
+   "grade": "K8",
+   "skill": "k.k8.honorific_subj",
+   "question": "사동 접미사('-이/히/리/기/우/구/추-')가 쓰인 사동사는? => 먹이다",
+   "category": "multiple_correct",
+   "severity": "high",
+   "evidence": "Distractor '보이다' is also a causative verb formed with -이- (보다 -> 보이다, 'to show', e.g. '친구에게 사진을 보였어요'); it is a valid answer alongside '먹이다'. The prompt does not restrict to one sense, and the hint 'the form that makes someone eat' only works by leaking the answer. (Identical item appears under 8 example_ids: bk-ko-k8-k-k8-honorific_subj-002, bk-ko-k8-k-k8-honorific_obj-002, bk-ko-k8-k-k8-passive_affix-002, bk-ko-k8-k-k8-passive_compound-002, bk-ko-k8-k-k8-causative_affix-002, bk-ko-k8-k-k8-causative_compound-002, bk-ko-k8-k-k8-formal_style-002, bk-ko-k8-k-k8-modesty-002.)",
+   "suggestion": "Replace '보이다' with a verb that is only passive or neither (e.g. '쓰이다'-passive, '닫히다', '열리다') and replace '먹히다'/'잡히다' only if checked against dictionary: keep clearly passive-only verbs."
+  },
+  {
+   "item_id": "bk-ko-k8-k-k8-honorific_subj-002",
+   "site": "korean",
+   "grade": "K8",
+   "skill": "k.k8.honorific_subj",
+   "question": "사동 접미사('-이/히/리/기/우/구/추-')가 쓰인 사동사는? => 먹이다",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 1 '남에게 먹게 만드는 사동 표현입니다' describes only '먹이다' by name of the verb root, revealing the answer. (Identical item appears under 8 example_ids: bk-ko-k8-k-k8-honorific_subj-002, bk-ko-k8-k-k8-honorific_obj-002, bk-ko-k8-k-k8-passive_affix-002, bk-ko-k8-k-k8-passive_compound-002, bk-ko-k8-k-k8-causative_affix-002, bk-ko-k8-k-k8-causative_compound-002, bk-ko-k8-k-k8-formal_style-002, bk-ko-k8-k-k8-modesty-002.)",
+   "suggestion": "Hint should explain 사동 (주어가 다른 대상에게 동작을 하게 함) without naming 먹다."
+  },
+  {
+   "item_id": "bk-ko-k8-k-k8-honorific_subj-003",
+   "site": "korean",
+   "grade": "K8",
+   "skill": "k.k8.honorific_subj",
+   "question": "객체 높임 특수어휘 '드리다'가 바르게 쓰인 문장은? => 할아버지께 선물을 드렸습니다.",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "The prompt names '드리다'; two distractors ('할아버지가 선물을 주셨습니다', and '선생님이 책을 드렸습니다' with subject 선생님이) are structurally off, and the first contains no '드리다' at all, so it can be eliminated without knowing the grammar. '친구에게 선물을 드렸습니다' is also not unambiguously wrong in everyday speech (some speakers use 드리다 to anyone politely). (Identical item appears under 8 example_ids: bk-ko-k8-k-k8-honorific_subj-003, bk-ko-k8-k-k8-honorific_obj-003, bk-ko-k8-k-k8-passive_affix-003, bk-ko-k8-k-k8-passive_compound-003, bk-ko-k8-k-k8-causative_affix-003, bk-ko-k8-k-k8-causative_compound-003, bk-ko-k8-k-k8-formal_style-003, bk-ko-k8-k-k8-modesty-003.)",
+   "suggestion": "Make every option contain '드리다'/'주다' in parallel frames, and make the wrong option about a clearly non-honorable recipient with a different error type (e.g. '동생에게 선물을 드렸습니다')."
+  },
+  {
+   "item_id": "bk-ko-k7-k-k7-indirect_state-001",
+   "site": "korean",
+   "grade": "K7",
+   "skill": "k.k7.indirect_state",
+   "question": "평서문 간접화법('-다고 하다')이 바르게 쓰인 문장은? => 민수가 내일 고향에 간다고 했어요.",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "The prompt gives the target ending '-다고 하다', and hint 2 lists '-냐고/-라고/-자고', so matching the surface ending ('간다고') solves it with no knowledge needed. (Identical item appears under 9 example_ids: bk-ko-k7-k-k7-indirect_state-001, bk-ko-k7-k-k7-indirect_ask-001, bk-ko-k7-k-k7-indirect_cmd-001, bk-ko-k7-k-k7-cause_contrast-001, bk-ko-k7-k-k7-proportion-001, bk-ko-k7-k-k7-appearance-001, bk-ko-k7-k-k7-pretense-001, bk-ko-k7-k-k7-regret-001, bk-ko-k7-k-k7-review_k7-001.)",
+   "suggestion": "Drop the parenthetical '-다고 하다' from the prompt and the hint list; ask 'Which sentence correctly reports a statement?'"
+  },
+  {
+   "item_id": "bk-ko-k7-k-k7-indirect_state-003",
+   "site": "korean",
+   "grade": "K7",
+   "skill": "k.k7.indirect_state",
+   "question": "후회나 아쉬움을 나타낼 때 쓰는 문형은? => -ㄹ 걸 그랬어요",
+   "category": "giveaway",
+   "severity": "medium",
+   "evidence": "Hint 2 literally says \"'~할 걸 그랬다'를 씁니다\", which is the correct answer '-ㄹ 걸 그랬어요'. (Identical item appears under 9 example_ids: bk-ko-k7-k-k7-indirect_state-003, bk-ko-k7-k-k7-indirect_ask-003, bk-ko-k7-k-k7-indirect_cmd-003, bk-ko-k7-k-k7-cause_contrast-003, bk-ko-k7-k-k7-proportion-003, bk-ko-k7-k-k7-appearance-003, bk-ko-k7-k-k7-pretense-003, bk-ko-k7-k-k7-regret-003, bk-ko-k7-k-k7-review_k7-003.)",
+   "suggestion": "Rewrite hint 2 to describe the meaning (과거에 하지 못한/한 일이 아쉬움) without quoting the answer."
+  },
+  {
+   "item_id": "bk-ko-k7-k-k7-indirect_state-002",
+   "site": "korean",
+   "grade": "K7",
+   "skill": "k.k7.indirect_state",
+   "question": "비례나 정도의 심화를 나타내는 연결어미는? => -ㄹ수록",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 2 'the more... the more...' plus the prompt wording '비례' makes '-ㄹ수록' the only plausible option; also answer is written '-ㄹ수록' while explanation uses standard '-(으)ㄹ수록' (inconsistent notation, and '-ㄹ 걸' / '-ㄹ 뿐' similarly drop '(으)'). (Identical item appears under 9 example_ids: bk-ko-k7-k-k7-indirect_state-002, bk-ko-k7-k-k7-indirect_ask-002, bk-ko-k7-k-k7-indirect_cmd-002, bk-ko-k7-k-k7-cause_contrast-002, bk-ko-k7-k-k7-proportion-002, bk-ko-k7-k-k7-appearance-002, bk-ko-k7-k-k7-pretense-002, bk-ko-k7-k-k7-regret-002, bk-ko-k7-k-k7-review_k7-002.)",
+   "suggestion": "Use the standard notation '-(으)ㄹ수록' consistently in options and explanation; trim the English-pattern hint."
+  },
+  {
+   "item_id": "bk-ko-k5-k-k5-time-003",
+   "site": "korean",
+   "grade": "K5",
+   "skill": "k.k5.time",
+   "question": "'오후 3시 30분'의 올바른 우리말 시각 표현은? => 오후 세 시 반",
+   "category": "language_error",
+   "severity": "low",
+   "evidence": "Hint 1 says '시간은 고유어 수사, 분은 한자어 수사' but means 시(hour), not 시간(duration); distractor '오후 삼 시 삼십분' also uses inconsistent spacing ('삼십분'). Distractor '오전 세 시 서른' contradicts '오후' in the prompt, so it is trivially eliminable. The explanation also accepts '세 시 삼십 분' which is fine but not listed. (Identical item appears under 9 example_ids: bk-ko-k5-k-k5-time-003, bk-ko-k5-k-k5-past-003, bk-ko-k5-k-k5-plans-003, bk-ko-k5-k-k5-weekdays-003, bk-ko-k5-k-k5-months-003, bk-ko-k5-k-k5-clock-003, bk-ko-k5-k-k5-frequency-003, bk-ko-k5-k-k5-past2-003, bk-ko-k5-k-k5-birthday-003.)",
+   "suggestion": "Change hint to '시(hour)는 고유어 수사, 분은 한자어 수사'; replace '오전 세 시 서른' with e.g. '오후 세 시 삼십 번'-type error not contradicting the prompt (or '오후 셋 시 삼십 분')."
+  },
+  {
+   "item_id": "bk-ko-k5-k-k5-time-002",
+   "site": "korean",
+   "grade": "K5",
+   "skill": "k.k5.time",
+   "question": "요일 중 수요일 다음 날을 가리키는 요일은? => 목요일",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 2 \"한자 '나무 목(木)' 자 요일입니다\" nearly names the answer (목요일); item is also trivially easy for K5 (stated difficulty 3). (Identical item appears under 9 example_ids: bk-ko-k5-k-k5-time-002, bk-ko-k5-k-k5-past-002, bk-ko-k5-k-k5-plans-002, bk-ko-k5-k-k5-weekdays-002, bk-ko-k5-k-k5-months-002, bk-ko-k5-k-k5-clock-002, bk-ko-k5-k-k5-frequency-002, bk-ko-k5-k-k5-past2-002, bk-ko-k5-k-k5-birthday-002.)",
+   "suggestion": "Remove hint 2 or give the weekday order instead; raise task difficulty (e.g. 'the day before 금요일 + 2 days')."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-likes-002",
+   "site": "korean",
+   "grade": "K4",
+   "skill": "k.k4.likes",
+   "question": "다음 중 음식을 나타내는 낱말이 아닌 것은? => 도서관",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 1 '책을 읽고 빌리는 장소입니다' describes 도서관 directly; the odd one out is also the only non-food (place) word, a different type of word from the three dishes. (Identical item appears under 5 example_ids: bk-ko-k4-k-k4-likes-002, bk-ko-k4-k-k4-adjectives-002, bk-ko-k4-k-k4-weather-002, bk-ko-k4-k-k4-negation-002, bk-ko-k4-k-k4-daily-002.)",
+   "suggestion": "Use hints that explain the category (음식 vs. 장소) without defining the answer; consider a less visible odd-one-out such as another food-adjacent word."
+  },
+  {
+   "item_id": "bk-ko-k6-k-k6-shopping-003",
+   "site": "korean",
+   "grade": "K6",
+   "skill": "k.k6.shopping",
+   "question": "물건 가격을 물어보는 올바른 표현은? => 이 사과 얼마예요?",
+   "category": "level_mismatch",
+   "severity": "low",
+   "evidence": "Asking '얼마예요?' is a K1-K2 beginner pattern, yet it sits at K6 with difficulty 4; hint 2 'how much에 해당합니다' and the odd distractors '이 사과 누구예요?/어디예요?' make it guessable. (Identical item appears under 9 example_ids: bk-ko-k6-k-k6-shopping-003, bk-ko-k6-k-k6-directions-003, bk-ko-k6-k-k6-wants-003, bk-ko-k6-k-k6-restaurant-003, bk-ko-k6-k-k6-transport-003, bk-ko-k6-k-k6-phone-003, bk-ko-k6-k-k6-hospital-003, bk-ko-k6-k-k6-requests-003, bk-ko-k6-k-k6-invitations-003.)",
+   "suggestion": "Move to an earlier level or raise difficulty (e.g. 깎아 달라고 요청하기, 할인/단위 표현)."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-likes-003",
+   "site": "korean",
+   "grade": "K4",
+   "skill": "k.k4.likes",
+   "question": "'가다'의 반대 의미를 나타내는 동사는? => 오다",
+   "category": "language_error",
+   "severity": "low",
+   "evidence": "Hint 1 '출발하여 이곳으로 향하는 동작입니다' is phrased as if 오다 = start from somewhere, which describes 가다 more than 오다; hint 2 'go의 반대인 come' gives the answer in English. Difficulty 4 is also too high for this K4 antonym. (Identical item appears under 5 example_ids: bk-ko-k4-k-k4-likes-003, bk-ko-k4-k-k4-adjectives-003, bk-ko-k4-k-k4-weather-003, bk-ko-k4-k-k4-negation-003, bk-ko-k4-k-k4-daily-003.)",
+   "suggestion": "Reword hint 1 to '말하는 사람 쪽으로 향해 움직이는 동작입니다' and drop the English hint."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-likes-001",
+   "site": "korean",
+   "grade": "K4",
+   "skill": "k.k4.likes",
+   "question": "빈칸에 들어갈 알맞은 조사는? \"저는 식당____ 점심을 먹어요.\" => 에서",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k4.adjectives, k.k4.daily, k.k4.likes, k.k4.negation, k.k4.weather); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 5 example_ids: bk-ko-k4-k-k4-likes-001, bk-ko-k4-k-k4-adjectives-001, bk-ko-k4-k-k4-weather-001, bk-ko-k4-k-k4-negation-001, bk-ko-k4-k-k4-daily-001.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-likes-002",
+   "site": "korean",
+   "grade": "K4",
+   "skill": "k.k4.likes",
+   "question": "다음 중 음식을 나타내는 낱말이 아닌 것은? => 도서관",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k4.adjectives, k.k4.daily, k.k4.likes, k.k4.negation, k.k4.weather); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 5 example_ids: bk-ko-k4-k-k4-likes-002, bk-ko-k4-k-k4-adjectives-002, bk-ko-k4-k-k4-weather-002, bk-ko-k4-k-k4-negation-002, bk-ko-k4-k-k4-daily-002.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-likes-003",
+   "site": "korean",
+   "grade": "K4",
+   "skill": "k.k4.likes",
+   "question": "'가다'의 반대 의미를 나타내는 동사는? => 오다",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k4.adjectives, k.k4.daily, k.k4.likes, k.k4.negation, k.k4.weather); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 5 example_ids: bk-ko-k4-k-k4-likes-003, bk-ko-k4-k-k4-adjectives-003, bk-ko-k4-k-k4-weather-003, bk-ko-k4-k-k4-negation-003, bk-ko-k4-k-k4-daily-003.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k5-k-k5-time-001",
+   "site": "korean",
+   "grade": "K5",
+   "skill": "k.k5.time",
+   "question": "과거 시제를 나타내는 알맞은 문장은? => 어제 친구와 영화를 보았어요.",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k5.birthday, k.k5.clock, k.k5.frequency, k.k5.months, k.k5.past, k.k5.past2, k.k5.plans, k.k5.time, k.k5.weekdays); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k5-k-k5-time-001, bk-ko-k5-k-k5-past-001, bk-ko-k5-k-k5-plans-001, bk-ko-k5-k-k5-weekdays-001, bk-ko-k5-k-k5-months-001, bk-ko-k5-k-k5-clock-001, bk-ko-k5-k-k5-frequency-001, bk-ko-k5-k-k5-past2-001, bk-ko-k5-k-k5-birthday-001.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k5-k-k5-time-002",
+   "site": "korean",
+   "grade": "K5",
+   "skill": "k.k5.time",
+   "question": "요일 중 수요일 다음 날을 가리키는 요일은? => 목요일",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k5.birthday, k.k5.clock, k.k5.frequency, k.k5.months, k.k5.past, k.k5.past2, k.k5.plans, k.k5.time, k.k5.weekdays); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k5-k-k5-time-002, bk-ko-k5-k-k5-past-002, bk-ko-k5-k-k5-plans-002, bk-ko-k5-k-k5-weekdays-002, bk-ko-k5-k-k5-months-002, bk-ko-k5-k-k5-clock-002, bk-ko-k5-k-k5-frequency-002, bk-ko-k5-k-k5-past2-002, bk-ko-k5-k-k5-birthday-002.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k5-k-k5-time-003",
+   "site": "korean",
+   "grade": "K5",
+   "skill": "k.k5.time",
+   "question": "'오후 3시 30분'의 올바른 우리말 시각 표현은? => 오후 세 시 반",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k5.birthday, k.k5.clock, k.k5.frequency, k.k5.months, k.k5.past, k.k5.past2, k.k5.plans, k.k5.time, k.k5.weekdays); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k5-k-k5-time-003, bk-ko-k5-k-k5-past-003, bk-ko-k5-k-k5-plans-003, bk-ko-k5-k-k5-weekdays-003, bk-ko-k5-k-k5-months-003, bk-ko-k5-k-k5-clock-003, bk-ko-k5-k-k5-frequency-003, bk-ko-k5-k-k5-past2-003, bk-ko-k5-k-k5-birthday-003.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k6-k-k6-shopping-001",
+   "site": "korean",
+   "grade": "K6",
+   "skill": "k.k6.shopping",
+   "question": "길을 물어볼 때 쓰는 가장 자연스러운 표현은? => 실례지만 지하철역이 어디에 있습니까?",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k6.directions, k.k6.hospital, k.k6.invitations, k.k6.phone, k.k6.requests, k.k6.restaurant, k.k6.shopping, k.k6.transport, k.k6.wants); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k6-k-k6-shopping-001, bk-ko-k6-k-k6-directions-001, bk-ko-k6-k-k6-wants-001, bk-ko-k6-k-k6-restaurant-001, bk-ko-k6-k-k6-transport-001, bk-ko-k6-k-k6-phone-001, bk-ko-k6-k-k6-hospital-001, bk-ko-k6-k-k6-requests-001, bk-ko-k6-k-k6-invitations-001.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k6-k-k6-shopping-002",
+   "site": "korean",
+   "grade": "K6",
+   "skill": "k.k6.shopping",
+   "question": "병원에서 의사에게 증상을 설명할 때 알맞은 표현은? => 어제부터 머리가 아프고 열이 나요.",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k6.directions, k.k6.hospital, k.k6.invitations, k.k6.phone, k.k6.requests, k.k6.restaurant, k.k6.shopping, k.k6.transport, k.k6.wants); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k6-k-k6-shopping-002, bk-ko-k6-k-k6-directions-002, bk-ko-k6-k-k6-wants-002, bk-ko-k6-k-k6-restaurant-002, bk-ko-k6-k-k6-transport-002, bk-ko-k6-k-k6-phone-002, bk-ko-k6-k-k6-hospital-002, bk-ko-k6-k-k6-requests-002, bk-ko-k6-k-k6-invitations-002.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k6-k-k6-shopping-003",
+   "site": "korean",
+   "grade": "K6",
+   "skill": "k.k6.shopping",
+   "question": "물건 가격을 물어보는 올바른 표현은? => 이 사과 얼마예요?",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k6.directions, k.k6.hospital, k.k6.invitations, k.k6.phone, k.k6.requests, k.k6.restaurant, k.k6.shopping, k.k6.transport, k.k6.wants); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k6-k-k6-shopping-003, bk-ko-k6-k-k6-directions-003, bk-ko-k6-k-k6-wants-003, bk-ko-k6-k-k6-restaurant-003, bk-ko-k6-k-k6-transport-003, bk-ko-k6-k-k6-phone-003, bk-ko-k6-k-k6-hospital-003, bk-ko-k6-k-k6-requests-003, bk-ko-k6-k-k6-invitations-003.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k7-k-k7-indirect_state-001",
+   "site": "korean",
+   "grade": "K7",
+   "skill": "k.k7.indirect_state",
+   "question": "평서문 간접화법('-다고 하다')이 바르게 쓰인 문장은? => 민수가 내일 고향에 간다고 했어요.",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k7.appearance, k.k7.cause_contrast, k.k7.indirect_ask, k.k7.indirect_cmd, k.k7.indirect_state, k.k7.pretense, k.k7.proportion, k.k7.regret, k.k7.review_k7); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k7-k-k7-indirect_state-001, bk-ko-k7-k-k7-indirect_ask-001, bk-ko-k7-k-k7-indirect_cmd-001, bk-ko-k7-k-k7-cause_contrast-001, bk-ko-k7-k-k7-proportion-001, bk-ko-k7-k-k7-appearance-001, bk-ko-k7-k-k7-pretense-001, bk-ko-k7-k-k7-regret-001, bk-ko-k7-k-k7-review_k7-001.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k7-k-k7-indirect_state-002",
+   "site": "korean",
+   "grade": "K7",
+   "skill": "k.k7.indirect_state",
+   "question": "비례나 정도의 심화를 나타내는 연결어미는? => -ㄹ수록",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k7.appearance, k.k7.cause_contrast, k.k7.indirect_ask, k.k7.indirect_cmd, k.k7.indirect_state, k.k7.pretense, k.k7.proportion, k.k7.regret, k.k7.review_k7); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k7-k-k7-indirect_state-002, bk-ko-k7-k-k7-indirect_ask-002, bk-ko-k7-k-k7-indirect_cmd-002, bk-ko-k7-k-k7-cause_contrast-002, bk-ko-k7-k-k7-proportion-002, bk-ko-k7-k-k7-appearance-002, bk-ko-k7-k-k7-pretense-002, bk-ko-k7-k-k7-regret-002, bk-ko-k7-k-k7-review_k7-002.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k7-k-k7-indirect_state-003",
+   "site": "korean",
+   "grade": "K7",
+   "skill": "k.k7.indirect_state",
+   "question": "후회나 아쉬움을 나타낼 때 쓰는 문형은? => -ㄹ 걸 그랬어요",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k7.appearance, k.k7.cause_contrast, k.k7.indirect_ask, k.k7.indirect_cmd, k.k7.indirect_state, k.k7.pretense, k.k7.proportion, k.k7.regret, k.k7.review_k7); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 9 example_ids: bk-ko-k7-k-k7-indirect_state-003, bk-ko-k7-k-k7-indirect_ask-003, bk-ko-k7-k-k7-indirect_cmd-003, bk-ko-k7-k-k7-cause_contrast-003, bk-ko-k7-k-k7-proportion-003, bk-ko-k7-k-k7-appearance-003, bk-ko-k7-k-k7-pretense-003, bk-ko-k7-k-k7-regret-003, bk-ko-k7-k-k7-review_k7-003.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k8-k-k8-honorific_subj-001",
+   "site": "korean",
+   "grade": "K8",
+   "skill": "k.k8.honorific_subj",
+   "question": "주체 높임 선어말어미 '-(으)시-'가 바르게 쓰인 문장은? => 선생님께서 교실로 들어가셨습니다.",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k8.causative_affix, k.k8.causative_compound, k.k8.formal_style, k.k8.honorific_obj, k.k8.honorific_subj, k.k8.modesty, k.k8.passive_affix, k.k8.passive_compound); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 8 example_ids: bk-ko-k8-k-k8-honorific_subj-001, bk-ko-k8-k-k8-honorific_obj-001, bk-ko-k8-k-k8-passive_affix-001, bk-ko-k8-k-k8-passive_compound-001, bk-ko-k8-k-k8-causative_affix-001, bk-ko-k8-k-k8-causative_compound-001, bk-ko-k8-k-k8-formal_style-001, bk-ko-k8-k-k8-modesty-001.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k8-k-k8-honorific_subj-002",
+   "site": "korean",
+   "grade": "K8",
+   "skill": "k.k8.honorific_subj",
+   "question": "사동 접미사('-이/히/리/기/우/구/추-')가 쓰인 사동사는? => 먹이다",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k8.causative_affix, k.k8.causative_compound, k.k8.formal_style, k.k8.honorific_obj, k.k8.honorific_subj, k.k8.modesty, k.k8.passive_affix, k.k8.passive_compound); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 8 example_ids: bk-ko-k8-k-k8-honorific_subj-002, bk-ko-k8-k-k8-honorific_obj-002, bk-ko-k8-k-k8-passive_affix-002, bk-ko-k8-k-k8-passive_compound-002, bk-ko-k8-k-k8-causative_affix-002, bk-ko-k8-k-k8-causative_compound-002, bk-ko-k8-k-k8-formal_style-002, bk-ko-k8-k-k8-modesty-002.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  },
+  {
+   "item_id": "bk-ko-k8-k-k8-honorific_subj-003",
+   "site": "korean",
+   "grade": "K8",
+   "skill": "k.k8.honorific_subj",
+   "question": "객체 높임 특수어휘 '드리다'가 바르게 쓰인 문장은? => 할아버지께 선물을 드렸습니다.",
+   "category": "other",
+   "severity": "medium",
+   "evidence": "The same question is reused verbatim under many unrelated skills (k.k8.causative_affix, k.k8.causative_compound, k.k8.formal_style, k.k8.honorific_obj, k.k8.honorific_subj, k.k8.modesty, k.k8.passive_affix, k.k8.passive_compound); the prompt content does not match most of those skill labels, so learners practicing that skill get off-topic questions and the skill has no real item variety. (Identical item appears under 8 example_ids: bk-ko-k8-k-k8-honorific_subj-003, bk-ko-k8-k-k8-honorific_obj-003, bk-ko-k8-k-k8-passive_affix-003, bk-ko-k8-k-k8-passive_compound-003, bk-ko-k8-k-k8-causative_affix-003, bk-ko-k8-k-k8-causative_compound-003, bk-ko-k8-k-k8-formal_style-003, bk-ko-k8-k-k8-modesty-003.)",
+   "suggestion": "Write skill-specific items per skill id (or remove/merge the skills); do not clone one 3-question set across all skills."
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "files_reviewed": [
+  "english_items_3.json",
+  "english_items_4.json"
+ ],
+ "items_reviewed": 108,
+ "findings": [
+  {
+   "item_id": "bk-en-e6-e-e6-tense-001",
+   "site": "english",
+   "grade": "E6 (also M2 e.m2.perf-001, H1 e.h1.tense-001)",
+   "skill": "e.e6.tense",
+   "question": "\"She ____ Seoul for three years.\" -> has visited",
+   "category": "wrong_answer",
+   "severity": "high",
+   "evidence": "'has visited Seoul for three years' is not acceptable: 'for three years' needs a continuing state/duration, but 'visit' is a punctual event; explanation claims '경험/계속' but the sentence reads wrongly.",
+   "suggestion": "Use a duration-compatible verb and a complete sentence, e.g. 'She ____ in Seoul for three years.' -> 'has lived'; keep the verb/subject varied properly."
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-tense-002",
+   "site": "english",
+   "grade": "E6 (also M2 perf-002, H1 tense-002)",
+   "skill": "e.e6.tense",
+   "question": "\"They ____ Seoul for three years.\" -> have lived",
+   "category": "language_error",
+   "severity": "high",
+   "evidence": "'have lived Seoul' is ungrammatical; the preposition 'in' is missing from the stem ('lived in Seoul'). Template reuses the same sentence frame for every verb.",
+   "suggestion": "Change stem to 'They ____ in Seoul for three years.'"
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-tense-003",
+   "site": "english",
+   "grade": "E6 (also M2 perf-003, H1 tense-003)",
+   "skill": "e.e6.tense",
+   "question": "\"He ____ Seoul for three years.\" -> has finished",
+   "category": "wrong_answer",
+   "severity": "high",
+   "evidence": "'He has finished Seoul for three years' is meaningless; 'finish' with 'for three years' is not acceptable, so the marked answer cannot be correct.",
+   "suggestion": "Replace with a sensible sentence, e.g. 'He ____ his homework already.' (has finished) or rewrite the item."
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-tense-004",
+   "site": "english",
+   "grade": "E6 (also M2 perf-004, H1 tense-004)",
+   "skill": "e.e6.tense",
+   "question": "\"We ____ Seoul for three years.\" -> have studied",
+   "category": "language_error",
+   "severity": "high",
+   "evidence": "'have studied Seoul for three years' reads as studying the city; sentence is unnatural/ambiguous and the hint about 'for three years' misleads. Same broken frame as siblings.",
+   "suggestion": "Use 'We ____ English for three years.' (have studied)."
+  },
+  {
+   "item_id": "bk-en-m2-e-m2-perf-001",
+   "site": "english",
+   "grade": "H1 (e.h1.tense-001..004)",
+   "skill": "e.h1.tense",
+   "question": "Present perfect with have/has + for three years",
+   "category": "level_mismatch",
+   "severity": "medium",
+   "evidence": "Same present-perfect have/has choice item is reused unchanged for E6, M2 and H1; at H1 it is far too easy (and arguably above E6).",
+   "suggestion": "Give H1 a harder tense item (e.g. past perfect vs. present perfect, or perfect continuous); keep this only at M2."
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-clause-003",
+   "site": "english",
+   "grade": "E6 (also M3 e.m3.rel-003, H1 e.h1.clause-003)",
+   "skill": "e.e6.clause",
+   "question": "\"I know the place ____ won first prize.\" -> where",
+   "category": "wrong_answer",
+   "severity": "high",
+   "evidence": "'the place where won first prize' is ungrammatical (where needs its own subject); also distractor 'which' ('the place which won first prize') is grammatical, so there is a second acceptable answer. Hint/explanation say '주어 역할을 하는 주격 관계대명사' and '선행사가 사람이고', which contradicts 'where'.",
+   "suggestion": "Use a stem like 'I know the place ____ he was born.' (where) and make explanation/hints specific to relative adverbs."
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-clause-004",
+   "site": "english",
+   "grade": "E6 (also M3 rel-004, H1 clause-004)",
+   "skill": "e.e6.clause",
+   "question": "\"I know the time ____ won first prize.\" -> when",
+   "category": "wrong_answer",
+   "severity": "high",
+   "evidence": "'the time when won first prize' is ungrammatical; 'when' cannot be the subject. Distractor 'which' is not clearly wrong either. Hint says subject-role relative pronoun and explanation says 선행사가 사람, inconsistent with 'when'.",
+   "suggestion": "Rewrite, e.g. 'I remember the day ____ we met.' (when), with correct hints."
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-clause-002",
+   "site": "english",
+   "grade": "E6 (also M3 rel-002, H1 clause-002)",
+   "skill": "e.e6.clause",
+   "question": "\"I know the house ____ won first prize.\" -> which",
+   "category": "language_error",
+   "severity": "medium",
+   "evidence": "Explanation says '선행사가 사람이고 뒤에 동사가 오므로 주격 관계대명사 which' but 'the house' is not a person; also 'a house won first prize' is odd. ('that' would also be acceptable, but is not offered.)",
+   "suggestion": "Fix explanation to 사물 선행사; use a natural sentence ('I know the dog which won first prize')."
+  },
+  {
+   "item_id": "bk-en-e6-e-e6-clause-001",
+   "site": "english",
+   "grade": "H1 (e.h1.clause-001..004), E6, M3",
+   "skill": "e.h1.clause",
+   "question": "\"I know the boy ____ won first prize.\" -> who",
+   "category": "level_mismatch",
+   "severity": "medium",
+   "evidence": "Same simple relative-pronoun item is used at E6, M3 and H1; at H1 it is trivially easy, and the explanation template is wrong for 3 of 4 variants. ('that' is also correct but not offered.)",
+   "suggestion": "Create distinct H1 items (restrictive vs. non-restrictive, preposition + whom, what vs. that)."
+  },
+  {
+   "item_id": "bk-en-m2-e-m2-pass-002",
+   "site": "english",
+   "grade": "M2",
+   "skill": "e.m2.pass",
+   "question": "\"The bridge ____ the famous author.\" -> was built by (also pass-003 window/broken, pass-004 cake/baked)",
+   "category": "ambiguous",
+   "severity": "medium",
+   "evidence": "Fixed object-less tail 'the famous author' with different nouns gives odd meaning: an author building a bridge, breaking a window, baking a cake. Stem is a template, not natural.",
+   "suggestion": "Vary the agent to match the noun (The bridge ... the engineers; The cake ... my mother)."
+  },
+  {
+   "item_id": "bk-en-m3-e-m3-cond-002",
+   "site": "english",
+   "grade": "M3",
+   "skill": "e.m3.cond",
+   "question": "\"If she knew the answer, ____ around the world.\" -> she would tell us",
+   "category": "wrong_answer",
+   "severity": "high",
+   "evidence": "Stem ends with 'around the world', so 'she would tell us around the world' is nonsensical; correct answer does not fit the sentence.",
+   "suggestion": "Drop the fixed tail: 'If she knew the answer, ____.' -> 'she would tell us'."
+  },
+  {
+   "item_id": "bk-en-m3-e-m3-cond-001",
+   "site": "english",
+   "grade": "M3",
+   "skill": "e.m3.cond",
+   "question": "If I had enough time, ____ around the world. -> I would travel (cond-003: we could fly)",
+   "category": "language_error",
+   "severity": "low",
+   "evidence": "Explanation template appends particle incorrectly: \"'I would travel'을\" / \"'we could fly'을\" (should be 를 after a vowel-ending quote or reworded). cond-003 'If we had wings ... fly around the world' is also hyperbolic.",
+   "suggestion": "Reword explanation to avoid the particle ('주절에 I would travel이 알맞습니다')."
+  },
+  {
+   "item_id": "bk-en-e5-e-e5-gram-001",
+   "site": "english",
+   "grade": "E5 (e5-comp-001, e5-future-003)",
+   "skill": "e.e5.gram",
+   "question": "\"He was exhausted; ____, he continued working.\" -> nevertheless",
+   "category": "level_mismatch",
+   "severity": "medium",
+   "evidence": "Discourse connectives (nevertheless/furthermore/similarly) are well above elementary grade 5; also same item reused under gram/comp/future skills.",
+   "suggestion": "Move to M3/H1 or replace with a simple connector item (but/so/because)."
+  },
+  {
+   "item_id": "bk-en-e5-e-e5-gram-002",
+   "site": "english",
+   "grade": "E5 (also e5-comp-002, e5-future-004; m1 e.plural-003)",
+   "skill": "e.e5.gram",
+   "question": "Hardly had I arrived when the concert began.",
+   "category": "level_mismatch",
+   "severity": "high",
+   "evidence": "Negative-adverb inversion ('Hardly had I arrived when') is high-school-level grammar; hint even spells out the pattern. Item is also filed under skills gram, comp, future and (M1) 'plural', none of which it tests.",
+   "suggestion": "Use at H2/H3 under a grammar/inversion skill; give E5/M1 age-appropriate items matching their skill tag."
+  },
+  {
+   "item_id": "bk-en-e5-e-e5-gram-003",
+   "site": "english",
+   "grade": "E5 (also comp-003, future-001)",
+   "skill": "e.e5.gram",
+   "question": "Main idea: 'Collaboration fosters creative problem solving across diverse disciplines.' -> Interdisciplinary teamwork sparks innovation",
+   "category": "giveaway",
+   "severity": "medium",
+   "evidence": "Distractors are absurd extremes ('always superior', 'should avoid teamwork', 'Standardized tests measure all human skills') and the answer is a paraphrase using the same words; also far above E5 and under a grammar/future skill.",
+   "suggestion": "Use plausible, topic-related distractors; move to H-level reading skill."
+  },
+  {
+   "item_id": "bk-en-e5-e-e5-gram-004",
+   "site": "english",
+   "grade": "E5 (also comp-004, future-002)",
+   "skill": "e.e5.gram",
+   "question": "Synonym of *significant* in 'The experiment yielded significant results.' -> meaningful",
+   "category": "giveaway",
+   "severity": "medium",
+   "evidence": "Hint names the distractor ('trivial(사소한)과 반대되는'), prompt says '밑줄' but marks word with *asterisks*; vocabulary (significant/yielded/trivial) is above E5; filed under grammar/future skill.",
+   "suggestion": "Remove the 'trivial' hint, underline properly (<u>), and use H-level vocab skill."
+  }
+ ]
+}

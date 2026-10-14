@@ -1,0 +1,289 @@
+{
+ "files_reviewed": [
+  "korean_items_1.json",
+  "korean_items_2.json"
+ ],
+ "items_reviewed": 120,
+ "distinct_items": 15,
+ "findings": [
+  {
+   "item_id": "bk-ko-k2-k-k2-greetings-002",
+   "also_identical_item_ids": [
+    "bk-ko-k2-k-k2-answers-002",
+    "bk-ko-k2-k-k2-meeting-002",
+    "bk-ko-k2-k-k2-manners-002",
+    "bk-ko-k2-k-k2-introduce-002",
+    "bk-ko-k2-k-k2-partings-002",
+    "bk-ko-k2-k-k2-wellbeing-002",
+    "bk-ko-k2-k-k2-helpme-002",
+    "bk-ko-k2-k-k2-opinions-002"
+   ],
+   "site": "korean",
+   "grade": "K2",
+   "skill": "(multiple, see items)",
+   "question": "식사를 시작하기 전에 하는 인사말은? => 잘 먹겠습니다.",
+   "category": "multiple_correct",
+   "severity": "high",
+   "evidence": "Distractor '맛있게 드세요.' is also a greeting said before a meal (by the host/person serving); the prompt 'who is speaking' is unspecified. Only hint 1 ('음식을 준비해 준 사람에게 감사하는 말') disambiguates.",
+   "suggestion": "Add speaker to the prompt, e.g. '식사를 대접받고 먹기 전에 먹는 사람이 하는 인사말은?', or replace the distractor '맛있게 드세요.' with a clearly non-mealtime phrase."
+  },
+  {
+   "item_id": "bk-ko-k1-k-k1-vowels-005",
+   "also_identical_item_ids": [
+    "bk-ko-k1-k-k1-consonants-005",
+    "bk-ko-k1-k-k1-words-005",
+    "bk-ko-k1-k-k1-yvowels-005",
+    "bk-ko-k1-k-k1-consonants2-005",
+    "bk-ko-k1-k-k1-doubled-005",
+    "bk-ko-k1-k-k1-batchim-005",
+    "bk-ko-k1-k-k1-words2-005",
+    "bk-ko-k1-k-k1-words3-005"
+   ],
+   "site": "korean",
+   "grade": "K1",
+   "skill": "(multiple, see items)",
+   "question": "된소리(쌍자음) 'ㄲ'의 올바른 표기는? => 쌍기역",
+   "category": "language_error",
+   "severity": "medium",
+   "evidence": "Prompt asks for 'ㄲ의 올바른 표기' but the answer '쌍기역' is the letter's name, not its notation; hint 2 '이름은 쌍기역입니다' also states the answer outright.",
+   "suggestion": "Reword to 'ㄲ의 이름은?' and replace hint 2 with a non-answer hint (e.g. 'ㄱ을 두 번 쓴 모양')."
+  },
+  {
+   "item_id": "bk-ko-k1-k-k1-vowels-002",
+   "also_identical_item_ids": [
+    "bk-ko-k1-k-k1-consonants-002",
+    "bk-ko-k1-k-k1-words-002",
+    "bk-ko-k1-k-k1-yvowels-002",
+    "bk-ko-k1-k-k1-consonants2-002",
+    "bk-ko-k1-k-k1-doubled-002",
+    "bk-ko-k1-k-k1-batchim-002",
+    "bk-ko-k1-k-k1-words2-002",
+    "bk-ko-k1-k-k1-words3-002"
+   ],
+   "site": "korean",
+   "grade": "K1",
+   "skill": "(multiple, see items)",
+   "question": "자음 'ㄱ'의 이름과 첫소리는? => 기역 [g/k]",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 2 '이름은 \\'기역\\'입니다' states the correct answer verbatim.",
+   "suggestion": "Replace with a hint that does not reveal the name, e.g. 'ㅏ 앞에 쓰면 \"가\"가 됩니다.'"
+  },
+  {
+   "item_id": "bk-ko-k1-k-k1-vowels-003",
+   "also_identical_item_ids": [
+    "bk-ko-k1-k-k1-consonants-003",
+    "bk-ko-k1-k-k1-words-003",
+    "bk-ko-k1-k-k1-yvowels-003",
+    "bk-ko-k1-k-k1-consonants2-003",
+    "bk-ko-k1-k-k1-doubled-003",
+    "bk-ko-k1-k-k1-batchim-003",
+    "bk-ko-k1-k-k1-words2-003",
+    "bk-ko-k1-k-k1-words3-003"
+   ],
+   "site": "korean",
+   "grade": "K1",
+   "skill": "(multiple, see items)",
+   "question": "다음 중 받침 'ㅇ'이 들어간 글자는? => 강",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 2 \"'ㄱ+ㅏ+ㅇ' 형태입니다\" spells out 강. Explanation uses IPA [ŋ], too advanced for K1 beginners.",
+   "suggestion": "Drop hint 2 or make it generic; use '[ng]' or omit IPA in the explanation."
+  },
+  {
+   "item_id": "bk-ko-k3-k-k3-self-002",
+   "also_identical_item_ids": [
+    "bk-ko-k3-k-k3-family-002",
+    "bk-ko-k3-k-k3-numbers-002",
+    "bk-ko-k3-k-k3-native10-002",
+    "bk-ko-k3-k-k3-sino-002",
+    "bk-ko-k3-k-k3-ages-002",
+    "bk-ko-k3-k-k3-people-002",
+    "bk-ko-k3-k-k3-family2-002",
+    "bk-ko-k3-k-k3-ourfamily-002"
+   ],
+   "site": "korean",
+   "grade": "K3",
+   "skill": "(multiple, see items)",
+   "question": "한자어 수사 '삼십오'를 아라비아 숫자로 바르게 쓴 것은? => 35",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 1 '십의 자리가 3, 일의 자리가 5입니다' effectively gives 35; hint 2 gives '서른다섯' equivalence.",
+   "suggestion": "Make hints generic (e.g. '삼=3, 십=10, 오=5를 더해 보세요')."
+  },
+  {
+   "item_id": "bk-ko-k3-k-k3-self-003",
+   "also_identical_item_ids": [
+    "bk-ko-k3-k-k3-family-003",
+    "bk-ko-k3-k-k3-numbers-003",
+    "bk-ko-k3-k-k3-native10-003",
+    "bk-ko-k3-k-k3-sino-003",
+    "bk-ko-k3-k-k3-ages-003",
+    "bk-ko-k3-k-k3-people-003",
+    "bk-ko-k3-k-k3-family2-003",
+    "bk-ko-k3-k-k3-ourfamily-003"
+   ],
+   "site": "korean",
+   "grade": "K3",
+   "skill": "(multiple, see items)",
+   "question": "어머니의 어머니를 가리키는 올바른 가족 호칭은? => 외할머니",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Two of three distractors (이모, 고모) are aunts, not grandmothers, so the only real choice is 외/친할머니; the hint '외(外) 자가 붙습니다' then settles it.",
+   "suggestion": "Use grandparent-type distractors (e.g. 외할아버지, 친할머니, 증조할머니) and drop the '외 자' hint."
+  },
+  {
+   "item_id": "bk-ko-k3-k-k3-self-001",
+   "also_identical_item_ids": [
+    "bk-ko-k3-k-k3-family-001",
+    "bk-ko-k3-k-k3-numbers-001",
+    "bk-ko-k3-k-k3-native10-001",
+    "bk-ko-k3-k-k3-sino-001",
+    "bk-ko-k3-k-k3-ages-001",
+    "bk-ko-k3-k-k3-people-001",
+    "bk-ko-k3-k-k3-family2-001",
+    "bk-ko-k3-k-k3-ourfamily-001"
+   ],
+   "site": "korean",
+   "grade": "K3",
+   "skill": "(multiple, see items)",
+   "question": "나이를 말할 때 고유어 수사 '스물'에 붙는 알맞은 단위성 의존명사는? => 살",
+   "category": "level_mismatch",
+   "severity": "low",
+   "evidence": "Prompt uses grammar terminology ('고유어 수사', '단위성 의존명사') heavy for K3 beginner learners; also hint gives '스무 살' pattern directly.",
+   "suggestion": "Simplify: '나이를 셀 때 \"스무 ___\"에 들어갈 말은?'"
+  },
+  {
+   "item_id": "bk-ko-k2-k-k2-greetings-003",
+   "also_identical_item_ids": [
+    "bk-ko-k2-k-k2-answers-003",
+    "bk-ko-k2-k-k2-meeting-003",
+    "bk-ko-k2-k-k2-manners-003",
+    "bk-ko-k2-k-k2-introduce-003",
+    "bk-ko-k2-k-k2-partings-003",
+    "bk-ko-k2-k-k2-wellbeing-003",
+    "bk-ko-k2-k-k2-helpme-003",
+    "bk-ko-k2-k-k2-opinions-003"
+   ],
+   "site": "korean",
+   "grade": "K2",
+   "skill": "(multiple, see items)",
+   "question": "상대방의 배려나 도움에 감사할 때 쓰는 표현은? => 도와주셔서 대단히 감사합니다.",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Only the correct option contains '감사' and hint 2 says \"'감사합니다'를 씁니다\"; '천만에요' is a reply to thanks, a close but easily excluded distractor.",
+   "suggestion": "Remove hint 2's phrase or add distractors containing similar thanks/apology words."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-verbs-002",
+   "also_identical_item_ids": [
+    "bk-ko-k4-k-k4-places-002",
+    "bk-ko-k4-k-k4-objects-002",
+    "bk-ko-k4-k-k4-food-002"
+   ],
+   "site": "korean",
+   "grade": "K4",
+   "skill": "(multiple, see items)",
+   "question": "다음 중 음식을 나타내는 낱말이 아닌 것은? => 도서관",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Trivially easy odd-one-out (a place vs three dishes); hint 1 '책을 읽고 빌리는 장소입니다' describes the answer outright and hint 2 '사물/장소 낱말을 고르세요' is vague/misleading.",
+   "suggestion": "Use a harder odd-one-out (e.g. a drink or utensil among foods) and give non-revealing hints."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-verbs-003",
+   "also_identical_item_ids": [
+    "bk-ko-k4-k-k4-places-003",
+    "bk-ko-k4-k-k4-objects-003",
+    "bk-ko-k4-k-k4-food-003"
+   ],
+   "site": "korean",
+   "grade": "K4",
+   "skill": "(multiple, see items)",
+   "question": "'가다'의 반대 의미를 나타내는 동사는? => 오다",
+   "category": "giveaway",
+   "severity": "low",
+   "evidence": "Hint 2 'go의 반대인 come에 해당합니다' gives the answer via English; hint 1 '이곳으로 향하는 동작' is true of 오다 only from the speaker's viewpoint.",
+   "suggestion": "Remove English gloss from hints."
+  },
+  {
+   "item_id": "bk-ko-k1-k-k1-vowels-001",
+   "also_identical_item_ids": [
+    "bk-ko-k1-k-k1-consonants-001",
+    "bk-ko-k1-k-k1-words-001",
+    "bk-ko-k1-k-k1-yvowels-001",
+    "bk-ko-k1-k-k1-consonants2-001",
+    "bk-ko-k1-k-k1-doubled-001",
+    "bk-ko-k1-k-k1-batchim-001",
+    "bk-ko-k1-k-k1-words2-001",
+    "bk-ko-k1-k-k1-words3-001"
+   ],
+   "site": "korean",
+   "grade": "K1",
+   "skill": "k.k1.vowels, k.k1.consonants, k.k1.words",
+   "question": "모음 'ㅏ'의 올바른 발음 소리는? => [a]",
+   "category": "other",
+   "severity": "low",
+   "evidence": "The same 5 vowel/consonant items appear identically under k.k1.vowels, k.k1.consonants and k.k1.words; no item covers 'words' and vowel items sit in the consonants skill.",
+   "suggestion": "Provide skill-specific items or de-duplicate."
+  },
+  {
+   "item_id": "bk-ko-k2-k-k2-greetings-001",
+   "also_identical_item_ids": [
+    "bk-ko-k2-k-k2-answers-001",
+    "bk-ko-k2-k-k2-meeting-001",
+    "bk-ko-k2-k-k2-manners-001",
+    "bk-ko-k2-k-k2-introduce-001",
+    "bk-ko-k2-k-k2-partings-001",
+    "bk-ko-k2-k-k2-wellbeing-001",
+    "bk-ko-k2-k-k2-helpme-001",
+    "bk-ko-k2-k-k2-opinions-001"
+   ],
+   "site": "korean",
+   "grade": "K2",
+   "skill": "k.k2.greetings, k.k2.answers, k.k2.meeting, k.k2.manners",
+   "question": "처음 만난 사람에게 건네는 가장 알맞은 정중한 인사는? => 처음 뵙겠습니다. 반갑습니다.",
+   "category": "other",
+   "severity": "low",
+   "evidence": "The same 4 greeting items are reused under all K2 skills (answers, meeting, manners), so skill labels do not match content.",
+   "suggestion": "Provide skill-specific items or de-duplicate."
+  },
+  {
+   "item_id": "bk-ko-k3-k-k3-self-003",
+   "also_identical_item_ids": [
+    "bk-ko-k3-k-k3-family-003",
+    "bk-ko-k3-k-k3-numbers-003",
+    "bk-ko-k3-k-k3-native10-003",
+    "bk-ko-k3-k-k3-sino-003",
+    "bk-ko-k3-k-k3-ages-003",
+    "bk-ko-k3-k-k3-people-003",
+    "bk-ko-k3-k-k3-family2-003",
+    "bk-ko-k3-k-k3-ourfamily-003"
+   ],
+   "site": "korean",
+   "grade": "K3",
+   "skill": "k.k3.self, k.k3.family, k.k3.numbers",
+   "question": "어머니의 어머니를 가리키는 올바른 가족 호칭은? => 외할머니",
+   "category": "other",
+   "severity": "low",
+   "evidence": "The same 3 items (age counter, numerals, family term) are reused under self, family and numbers; e.g. the family item appears in numbers.",
+   "suggestion": "Provide skill-specific items or de-duplicate."
+  },
+  {
+   "item_id": "bk-ko-k4-k-k4-verbs-001",
+   "also_identical_item_ids": [
+    "bk-ko-k4-k-k4-places-001",
+    "bk-ko-k4-k-k4-objects-001",
+    "bk-ko-k4-k-k4-food-001"
+   ],
+   "site": "korean",
+   "grade": "K4",
+   "skill": "k.k4.verbs, k.k4.places, k.k4.objects",
+   "question": "빈칸에 들어갈 알맞은 조사는? \"저는 식당____ 점심을 먹어요.\" => 에서",
+   "category": "other",
+   "severity": "low",
+   "evidence": "The same 3 items (particle, food odd-one-out, antonym) are reused under verbs, places and objects, so skill labels do not match content.",
+   "suggestion": "Provide skill-specific items or de-duplicate."
+  }
+ ]
+}
