@@ -6,7 +6,7 @@ import mathBank from "./bank/math.json";
 import englishBank from "./bank/english.json";
 import koreanBank from "./bank/korean.json";
 import { KOREAN_BANK_LIVE, expandKoreanBank, type KBankData, type KKit, type KForm } from "./korean-bank";
-import koreanKitEn from "@/scripts/learn/korean/bank/kit/en.json";
+import koreanKitEn from "@/lib/learn/content/bank/korean-kit.en.json";
 
 export interface BankTemplate { prompt: string; hints: string[]; explanation: string }
 export interface BankSet {

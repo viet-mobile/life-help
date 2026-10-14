@@ -12,6 +12,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { L, V, T, com, isSyl, romanize, normRR, josa } from "./hangul.mjs";
 import { pronunciationVi } from "../vietnamese-pronunciation.mjs";
+import { BRIDGE_EN, BRIDGE_USED_IDS } from "../course-bridge.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
 const check = process.argv.includes("--check");
@@ -133,16 +134,32 @@ for (const [sid, sk] of Object.entries(ordered)) for (const it of sk.items) { ne
 
 const bank = { format: 2, site: "korean", status: "DRAFT", skills: ordered };
 const text = JSON.stringify(bank) + "\n";
+
+// ---- the canonical English presentation kit = the source every locale kit is translated from (templates + one text per learning item / situation / note)
+const KIT_DIR = path.join(root, "scripts/learn/korean/bank/kit");
+const kitTemplates = JSON.parse(fs.readFileSync(path.join(root, "lib/learn/content/bank/korean-kit.en.json"), "utf8")).templates;
+const texts = {};
+for (const [sid, sk] of Object.entries(ordered)) {
+  for (const it of sk.items) { if (it.c !== "syl") texts[`g:${it.id}`] = it.g; if (it.s) texts[`s:${it.id}`] = it.s; }
+  for (const nk of new Set(sk.items.map((i) => i.n).filter(Boolean))) texts[`n:${sid}:${nk}`] = sk.notes[nk];
+}
+const kitEn = JSON.stringify({ templates: kitTemplates, texts, bridge: BRIDGE_EN }, null, 1) + "\n";
+// the minimum every language needs even while the full bank is untranslated: templates, bridge course strings and the texts the bridge lessons use
+const minimalTexts = Object.fromEntries(BRIDGE_USED_IDS.map((id) => [`g:${id}`, texts[`g:${id}`]]));
+for (const [k, v] of Object.entries(minimalTexts)) need(typeof v === "string", `bridge text ${k} missing`);
+const kitMin = JSON.stringify({ templates: kitTemplates, texts: minimalTexts, bridge: BRIDGE_EN }, null, 1) + "\n";
 if (problems.length) {
   console.error(`${problems.length} pool problems:`);
   for (const p of problems.slice(0, 400)) console.error("  " + p);
   if (!process.argv.includes("--allow-problems")) process.exit(1);
 }
 if (check) {
-  if (!fs.existsSync(OUT) || fs.readFileSync(OUT, "utf8") !== text) { console.error("korean bank is out of date: run node scripts/learn/korean/bank/build.mjs"); process.exit(1); }
+  if (!fs.existsSync(OUT) || fs.readFileSync(OUT, "utf8") !== text || !fs.existsSync(path.join(KIT_DIR, "source.en.json")) || fs.readFileSync(path.join(KIT_DIR, "source.en.json"), "utf8") !== kitEn) { console.error("korean bank is out of date: run node scripts/learn/korean/bank/build.mjs"); process.exit(1); }
   console.log("korean bank is up to date");
 } else {
   fs.writeFileSync(OUT, text);
+  fs.writeFileSync(path.join(KIT_DIR, "source.en.json"), kitEn);
+  fs.writeFileSync(path.join(KIT_DIR, "source.minimal.en.json"), kitMin);
   const n = Object.values(ordered).reduce((a, s) => a + s.items.length, 0);
   console.log(`wrote korean bank data: ${Object.keys(ordered).length} skills, ${n} entries`);
 }

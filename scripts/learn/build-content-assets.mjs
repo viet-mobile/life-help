@@ -68,7 +68,7 @@ for (const [site, files] of Object.entries(CANON)) {
   const bankFile = (site === "math" || site === "korean") && fs.existsSync(path.join(root, `lib/learn/content/bank/${site}.json`)) ? read(`lib/learn/content/bank/${site}.json`) : null;
   const bank = bankFile ? JSON.parse(bankFile) : null;
   const kbank = site === "korean" && bank?.format === 2 ? bank : null; // the study.korean practice bank (korean-bank.ts): items + a presentation kit per locale
-  const kitEn = kbank ? JSON.parse(read("scripts/learn/korean/bank/kit/en.json")) : null;
+  const kitEn = kbank ? JSON.parse(read("lib/learn/content/bank/korean-kit.en.json")) : null;
   const canonicalSha = sha(raw.join("\n") + (bankFile ?? ""));
   const bundles = raw.map((t) => JSON.parse(t));
   const questions = new Map(bundles.flatMap((b) => b.questions).filter((q) => q.status === "PUBLISHED").map((q) => [q.id, q]));
@@ -102,17 +102,17 @@ for (const [site, files] of Object.entries(CANON)) {
         const hs = c.hintsSafe ? 1 : 0;
         if (o.hints.length !== c.hints.length || (hs && (!o.hintsSafe || o.hintsSafe.length !== c.hintsSafe.length))) fail(`${locale}/${site}: korean bank form ${form}: hint count`);
         const pairs = [[o.prompt, c.prompt], [o.explanation, c.explanation], ...o.hints.map((h, i) => [h, c.hints[i]]), ...(hs ? o.hintsSafe.map((h, i) => [h, c.hintsSafe[i]]) : [])];
-        for (const [x, y] of pairs) { if (typeof x !== "string" || !x.trim() || HANGUL.test(x)) fail(`${locale}/${site}: korean bank form ${form} is empty or still Korean`); if (holes(x) !== holes(y)) fail(`${locale}/${site}: korean bank form ${form}: placeholders differ`); }
+        for (const [x, y] of pairs) { if (typeof x !== "string" || !x.trim() || (locale !== "ko" && HANGUL.test(x))) fail(`${locale}/${site}: korean bank form ${form} is empty or still Korean`); if (holes(x) !== holes(y)) fail(`${locale}/${site}: korean bank form ${form}: placeholders differ`); }
       }
       const required = new Set();
-      for (const sk of Object.values(kbank.skills)) {
-        for (const nk of new Set(sk.items.map((i) => i.n).filter(Boolean))) required.add(`n:${nk}`);
+      for (const [sid, sk] of Object.entries(kbank.skills)) {
+        for (const nk of new Set(sk.items.map((i) => i.n).filter(Boolean))) required.add(`n:${sid}:${nk}`);
         for (const i of sk.items) { if (i.c !== "syl") required.add(`g:${i.id}`); if (i.s) required.add(`s:${i.id}`); }
       }
       for (const k of required) {
         const v = bankOv.texts[k];
         if (v === undefined && !strictBank) continue;
-        if (typeof v !== "string" || !v.trim() || HANGUL.test(v)) fail(`${locale}/${site}: korean bank text ${k} not localized`);
+        if (typeof v !== "string" || !v.trim() || (locale !== "ko" && HANGUL.test(v) && !k.startsWith("n:"))) fail(`${locale}/${site}: korean bank text ${k} not localized`);
       }
       for (const k of Object.keys(bankOv.texts)) if (!required.has(k)) delete bankOv.texts[k];
       for (const k of Object.keys(bankOv.templates)) if (!kitEn.templates[k]) delete bankOv.templates[k];

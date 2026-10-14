@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import bank from "../../../../lib/learn/content/bank/korean.json";
-import kitEn from "./kit/en.json";
+import kitEn from "../../../../lib/learn/content/bank/korean-kit.en.json";
 import { expandKoreanBank, formsOf, type KBankData, type KKit } from "../../../../lib/learn/content/korean-bank";
 
 const data = bank as unknown as KBankData;

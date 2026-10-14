@@ -191,7 +191,7 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
   const leaks = !item.rr && (form === "meaning" || form === "tf") || (form === "meaning" || form === "tf") && letters(String(vars.rr)).length >= 3 && letters(String(vars.meaning)).length >= 3 && (letters(String(vars.rr)).includes(letters(String(vars.meaning))) || letters(String(vars.meaning)).includes(letters(String(vars.rr))));
   const hints = (leaks && tpl.hintsSafe ? tpl.hintsSafe : tpl.hints).map((h) => fill(h, vars));
   const tidy = (x: string) => x.replace(/\s*\(\s*\)/g, "");
-  const note = item.n && (kit.texts[`n:${item.n}`] ?? notes[item.n]);
+  const note = item.n && (kit.texts[`n:${skillId}:${item.n}`] ?? notes[item.n]);
   const explanation = tidy(fill(tpl.explanation, vars)) + (note ? ` ${note}` : "");
   return {
     id: qid, site: "korean", skillId, type, difficulty: difficulty as Question["difficulty"], prompt, hints, explanation,
