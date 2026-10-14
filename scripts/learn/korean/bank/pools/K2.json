@@ -4,7 +4,7 @@
   "k.k2.greetings": {
    "notes": {
     "greetTime": "Korean has set greetings for specific moments such as bedtime, leaving home and returning home.",
-    "honPart": "The particle kke is the honorific form of the to-someone particle ege and is used for people you respect."
+    "honPart": "Honorific forms replace ordinary particles when the person receiving the action is someone you respect."
    },
    "entries": [
     {
@@ -29,15 +29,15 @@
     {
      "cat": "expr",
      "ko": "다녀오겠습니다.",
-     "g": "I'll be going and coming back.",
+     "g": "I'm heading out; I'll be back. (said when leaving home)",
      "s": "You leave home for school and say it to your family.",
      "note": "greetTime"
     },
     {
      "cat": "expr",
      "ko": "다녀오세요.",
-     "g": "Take care and come back soon.",
-     "s": "Your child is leaving home and you answer from the doorway.",
+     "g": "Have a safe trip and come back soon.",
+     "s": "Your spouse or parent is leaving home for work and you answer from the doorway.",
      "note": "greetTime"
     },
     {
@@ -69,11 +69,6 @@
      "cat": "word",
      "ko": "인사",
      "g": "greeting"
-    },
-    {
-     "cat": "word",
-     "ko": "인사말",
-     "g": "words of greeting"
     },
     {
      "cat": "word",
@@ -128,7 +123,7 @@
       "w": [
        "선생님을 인사해요.",
        "선생님에서 인사해요.",
-       "선생님와 인사해요."
+       "선생님께서 인사해요."
       ]
      }
     },
@@ -154,7 +149,7 @@
       "blank": "저는 이웃____ 인사해요.",
       "ans": "에게",
       "w": [
-       "를",
+       "을",
        "에서",
        "보다"
       ]
@@ -168,9 +163,9 @@
       "blank": "오랜만____ 친구를 만나요.",
       "ans": "에",
       "w": [
-       "를",
+       "을",
        "이",
-       "와"
+       "과"
       ]
      }
     },
@@ -187,8 +182,8 @@
       "true": "한 사람이 집 밖으로 나가요.",
       "false": [
        "두 사람이 모두 집에 와요.",
-       "두 사람이 같이 밥을 먹어요.",
-       "한 사람이 집에 돌아와요."
+       "A는 '다녀오세요'라고 말해요.",
+       "B가 '다녀오겠습니다'라고 말해요."
       ]
      }
     }
@@ -212,13 +207,6 @@
      "ko": "아니에요.",
      "g": "No, not at all.",
      "s": "Someone thanks you too much, or says something wrong about you, and you politely deny it.",
-     "note": "shortAns"
-    },
-    {
-     "cat": "expr",
-     "ko": "아직이요.",
-     "g": "Not yet.",
-     "s": "Someone asks if you have finished and you have not.",
      "note": "shortAns"
     },
     {
@@ -329,9 +317,9 @@
       "blank": "아니요, 물이 ____.",
       "ans": "없어요",
       "w": [
-       "맞아요",
-       "틀려요",
-       "와요"
+       "먹어요",
+       "읽어요",
+       "마셔요"
       ]
      }
     },
@@ -343,9 +331,9 @@
       "blank": "네, 커피가 ____.",
       "ans": "있어요",
       "w": [
-       "맞아요",
-       "틀려요",
-       "갔어요"
+       "먹어요",
+       "읽어요",
+       "마셔요"
       ]
      }
     },
@@ -375,8 +363,8 @@
       "true": "B는 커피가 있어요.",
       "false": [
        "B는 커피가 없어요.",
-       "A는 커피를 줘요.",
-       "B는 물이 없어요."
+       "B는 '아니요'라고 말해요.",
+       "B가 먼저 물어요."
       ]
      }
     }
@@ -384,7 +372,7 @@
   },
   "k.k2.meeting": {
    "notes": {
-    "firstMeet": "Set phrases for a first meeting are used only when you meet someone for the first time or begin a new relationship.",
+    "firstMeet": "Set phrases for a first meeting are typically used when you meet someone for the first time or begin a new relationship.",
     "objP": "The object particle is eul after a consonant and reul after a vowel."
    },
    "entries": [
@@ -467,16 +455,6 @@
      "g": "new friend"
     },
     {
-     "cat": "phrase",
-     "ko": "첫 만남",
-     "g": "first meeting"
-    },
-    {
-     "cat": "phrase",
-     "ko": "제 친구",
-     "g": "my friend"
-    },
-    {
      "cat": "sentence",
      "ko": "이쪽은 제 친구예요.",
      "g": "This is my friend."
@@ -506,9 +484,9 @@
       "blank": "명함____ 주세요.",
       "ans": "을",
       "w": [
-       "를",
        "이",
-       "은"
+       "에",
+       "의"
       ]
      }
     },
@@ -525,9 +503,9 @@
       "blank": "친구____ 소개해요.",
       "ans": "를",
       "w": [
-       "이",
+       "에서",
        "에",
-       "와"
+       "의"
       ]
      }
     },
@@ -554,7 +532,7 @@
       "false": [
        "두 사람은 오래된 친구예요.",
        "두 사람의 이름이 같아요.",
-       "두 사람은 헤어져요."
+       "두 사람은 서로 잘 알아요."
       ]
      }
     }
@@ -730,7 +708,7 @@
   },
   "k.k2.introduce": {
    "notes": {
-    "fromPart": "The particle eseo can mark a starting point, so a country plus eseo plus the verb for coming means coming from that country.",
+    "fromPart": "A particle that marks a starting point goes after the country name before the verb for coming.",
     "isCop": "After a noun, the copula is ieyo after a consonant and yeyo after a vowel."
    },
    "entries": [
@@ -786,11 +764,6 @@
     },
     {
      "cat": "phrase",
-     "ko": "외국 사람",
-     "g": "foreign person"
-    },
-    {
-     "cat": "phrase",
      "ko": "다른 나라",
      "g": "another country"
     },
@@ -821,9 +794,9 @@
       "blank": "저는 일본____ 왔어요.",
       "ans": "에서",
       "w": [
-       "를",
-       "에게",
-       "와"
+       "에",
+       "으로",
+       "에게"
       ]
      }
     },
@@ -980,7 +953,7 @@
     {
      "cat": "expr",
      "ko": "잘 있어요.",
-     "g": "Take care. (to someone staying, casual)",
+     "g": "Goodbye. (said by the one leaving to a friend who is staying)",
      "s": "You leave a friend's house and your friend stays.",
      "note": "partWho"
     },
@@ -995,7 +968,7 @@
      "cat": "expr",
      "ko": "다음 주에 봐요.",
      "g": "See you next week.",
-     "s": "You will meet your teacher at the next class.",
+     "s": "You will meet a classmate again next week.",
      "note": "seeYou"
     },
     {
@@ -1021,17 +994,12 @@
     {
      "cat": "word",
      "ko": "하루",
-     "g": "one day"
+     "g": "a day (24 hours)"
     },
     {
      "cat": "word",
      "ko": "헤어지다",
      "g": "to part"
-    },
-    {
-     "cat": "phrase",
-     "ko": "좋은 하루",
-     "g": "a good day"
     },
     {
      "cat": "phrase",
@@ -1051,9 +1019,9 @@
       "blank": "친구____ 연락해요.",
       "ans": "에게",
       "w": [
-       "를",
        "에서",
-       "보다"
+       "의",
+       "에"
       ]
      }
     },
@@ -1141,9 +1109,9 @@
       "blank": "머리가 ____.",
       "ans": "아파요",
       "w": [
-       "좋아요",
        "싸요",
-       "예뻐요"
+       "맛있어요",
+       "멀어요"
       ]
      }
     },
@@ -1156,8 +1124,8 @@
       "ans": "좋아요",
       "w": [
        "아파요",
-       "피곤해요",
-       "배고파요"
+       "배고파요",
+       "멀어요"
       ]
      }
     },
@@ -1242,7 +1210,7 @@
      "cat": "expr",
      "ko": "한국어를 잘 못해요.",
      "g": "I can't speak Korean well.",
-     "s": "You tell a shop clerk who speaks fast to Korean."
+     "s": "You try to order in Korean at a shop but you are only a beginner, so you warn the clerk."
     },
     {
      "cat": "expr",
@@ -1255,12 +1223,6 @@
      "ko": "이게 뭐예요?",
      "g": "What is this?",
      "s": "You point at an unfamiliar object."
-    },
-    {
-     "cat": "expr",
-     "ko": "이거 한국어로 뭐예요?",
-     "g": "What is this in Korean?",
-     "s": "You point at an object and want to learn its Korean name."
     },
     {
      "cat": "expr",
@@ -1398,7 +1360,7 @@
       "true": "A는 이해하지 못해요.",
       "false": [
        "B가 이해가 안 돼요.",
-       "A는 한국어를 아주 잘해요.",
+       "A는 천천히 말해요.",
        "B는 말하지 않아요."
       ]
      }
@@ -1495,7 +1457,7 @@
     {
      "cat": "expr",
      "ko": "저는 그렇게 생각해요.",
-     "g": "I think so too.",
+     "g": "I think so.",
      "s": "A friend gives an opinion that you agree with."
     },
     {
@@ -1507,9 +1469,9 @@
       "blank": "한국 음식을 ____.",
       "ans": "좋아해요",
       "w": [
-       "싫어요",
        "어려워요",
-       "비싸요"
+       "비싸요",
+       "피곤해요"
       ]
      }
     },
@@ -1549,8 +1511,8 @@
       "ans": "재미있어요",
       "w": [
        "맛있어요",
-       "비싸요",
-       "피곤해요"
+       "피곤해요",
+       "배고파요"
       ]
      }
     },
@@ -1562,9 +1524,9 @@
       "blank": "저는 이게 ____.",
       "ans": "좋아요",
       "w": [
-       "싫어해요",
-       "예뻐해요",
-       "어려워해요"
+       "먹어요",
+       "읽어요",
+       "가요"
       ]
      }
     },
@@ -1572,11 +1534,6 @@
      "cat": "word",
      "ko": "의견",
      "g": "opinion"
-    },
-    {
-     "cat": "word",
-     "ko": "생각",
-     "g": "thought"
     },
     {
      "cat": "passage",
@@ -1662,7 +1619,7 @@
     {
      "cat": "word",
      "ko": "고장",
-     "g": "out of order"
+     "g": "breakdown; out of order"
     },
     {
      "cat": "word",
@@ -1770,7 +1727,7 @@
      "cat": "expr",
      "ko": "많이 드세요.",
      "g": "Please eat a lot.",
-     "s": "You serve food to a guest in your home.",
+     "s": "A guest at your home is too shy to eat, so you urge them to eat plenty.",
      "note": "tableMan"
     },
     {
@@ -1816,7 +1773,6 @@
      "cat": "sentence",
      "ko": "집에서 신발을 벗어요.",
      "g": "I take off my shoes at home.",
-     "note": "tableMan",
      "cloze": {
       "blank": "집에서 신발을 ____.",
       "ans": "벗어요",
@@ -1831,12 +1787,6 @@
      "cat": "sentence",
      "ko": "선물을 두 손으로 받아요.",
      "g": "I receive a gift with both hands.",
-     "note": "tableMan"
-    },
-    {
-     "cat": "sentence",
-     "ko": "어른이 먼저 먹어요.",
-     "g": "The elder eats first.",
      "note": "tableMan"
     },
     {
