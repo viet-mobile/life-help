@@ -35,8 +35,16 @@ export interface DiscreteBankPayload {
   questions: Question[];
 }
 
-export const BANKS: Partial<Record<Site, BankData>> = {
+export interface BankRegistry {
+  math: BankData;
+  english: DiscreteBankPayload;
+  korean: DiscreteBankPayload;
+}
+
+export const BANKS: BankRegistry = {
   math: mathBank as unknown as BankData,
+  english: englishBank as unknown as DiscreteBankPayload,
+  korean: koreanBank as unknown as DiscreteBankPayload,
 };
 
 export const PRACTICE_BANKS = {
@@ -101,7 +109,12 @@ export function bankQuestions(site: Site, locale: string, overlay: BankOverlay |
     while (cache.size > CACHE_LIMIT) cache.delete(cache.keys().next().value as string);
     return made;
   }
-  return getAllBankQuestions(site);
+  if (site === "english" || site === "korean") {
+    const payload = data as DiscreteBankPayload;
+    if (!payload?.questions) return [];
+    return payload.questions.filter((q) => skills.has(q.skillId));
+  }
+  return [];
 }
 
 // Skill-to-questions index map for English and Korean

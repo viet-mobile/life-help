@@ -4,11 +4,13 @@ import type { Question } from "@/lib/learn/types";
 import {
   BANKS,
   PRACTICE_BANKS,
+  bankQuestions,
   getAllBankQuestions,
   getBankQuestionsByGrade,
   getBankQuestionsBySkill,
   getBankSummary,
 } from "@/lib/learn/content/bank";
+import { loadIndex } from "@/lib/learn/content/repository";
 
 import engEl from "@/lib/learn/content/elementary/english.json";
 import engDemo from "@/lib/learn/content/demo/english.json";
@@ -175,6 +177,67 @@ describe("Skill-Linked Practice Question Bank (Bank) Expansion", () => {
 
       const k7Questions = getBankQuestionsByGrade("korean", "k7");
       expect(k7Questions.length).toBeGreaterThanOrEqual(350);
+    });
+  });
+
+  describe("Repository loadIndex Integration with Practice Banks", () => {
+    it("connects English bank to loadIndex and respects bank:false and grade filters", async () => {
+      const fullEnglish = await loadIndex("english");
+      expect(fullEnglish.bundle.questions.length).toBeGreaterThan(4000);
+      const bankQs = fullEnglish.bundle.questions.filter((q) => q.tags?.includes("bank"));
+      expect(bankQs.length).toBeGreaterThanOrEqual(4300);
+
+      const noBankEnglish = await loadIndex("english", { bank: false });
+      expect(noBankEnglish.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
+      expect(noBankEnglish.bundle.questions.length).toBe(628);
+
+      const e1WithBank = await loadIndex("english", { grade: "E1" });
+      const e1BankQs = e1WithBank.bundle.questions.filter((q) => q.tags?.includes("bank"));
+      expect(e1BankQs.length).toBeGreaterThan(0);
+      // All questions must belong only to E1 skills
+      const e1Skills = new Set(e1WithBank.bundle.catalog.skills.map((s) => s.id));
+      for (const q of e1WithBank.bundle.questions) {
+        expect(e1Skills.has(q.skillId)).toBe(true);
+      }
+
+      const e1NoBank = await loadIndex("english", { grade: "E1", bank: false });
+      expect(e1NoBank.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
+      expect(e1WithBank.bundle.questions.length).toBeGreaterThan(e1NoBank.bundle.questions.length);
+    });
+
+    it("connects Korean bank to loadIndex and respects bank:false and grade/level filters", async () => {
+      const fullKorean = await loadIndex("korean");
+      expect(fullKorean.bundle.questions.length).toBeGreaterThan(3500);
+      const bankQs = fullKorean.bundle.questions.filter((q) => q.tags?.includes("bank"));
+      expect(bankQs.length).toBeGreaterThanOrEqual(3500);
+
+      const noBankKorean = await loadIndex("korean", { bank: false });
+      expect(noBankKorean.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
+      expect(noBankKorean.bundle.questions.length).toBe(korCanonical.questions.length);
+
+      const k7WithBank = await loadIndex("korean", { grade: "K7" });
+      const k7BankQs = k7WithBank.bundle.questions.filter((q) => q.tags?.includes("bank"));
+      expect(k7BankQs.length).toBeGreaterThan(0);
+      const k7Skills = new Set(k7WithBank.bundle.catalog.skills.map((s) => s.id));
+      for (const q of k7WithBank.bundle.questions) {
+        expect(k7Skills.has(q.skillId)).toBe(true);
+      }
+
+      const k7NoBank = await loadIndex("korean", { grade: "K7", bank: false });
+      expect(k7NoBank.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
+      expect(k7WithBank.bundle.questions.length).toBeGreaterThan(k7NoBank.bundle.questions.length);
+    });
+
+    it("bankQuestions filters questions strictly by skill subset", () => {
+      const skillsSubset = new Set(["e.e1.alpha", "e.e1.phonics"]);
+      const filtered = bankQuestions("english", "ko", null, skillsSubset, "2");
+      expect(filtered.length).toBeGreaterThan(0);
+      for (const q of filtered) {
+        expect(skillsSubset.has(q.skillId)).toBe(true);
+      }
+
+      const empty = bankQuestions("english", "ko", null, new Set(), "0");
+      expect(empty.length).toBe(0);
     });
   });
 });

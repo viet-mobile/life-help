@@ -1,6 +1,7 @@
 // scripts/learn/bank/build-english-bank.mjs
 // Builds the skill-linked practice question bank for English across all 12 grades (E1..H3)
-// Generating 350+ questions per grade to bring total questions to 400+ per grade.
+// Generating 360+ questions per grade to bring total questions to 400+ per grade.
+// All prompts, hints, and explanations are English-native (zero Hangul) for universal 47-locale compatibility.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -34,7 +35,7 @@ const GRADE_SKILLS = {
   H3: ["e.h3.par", "e.h3.tone", "e.h3.ins", "e.h3.col", "e.h3.sum"]
 };
 
-// Templates per grade/skill domain
+// Templates per grade/skill domain (pure English)
 const TEMPLATE_FACTORIES = {
   // Elementary Grade 1
   "e.e1.alpha": (i) => {
@@ -44,105 +45,107 @@ const TEMPLATE_FACTORIES = {
     const ch = letters[idx];
     const word = words[idx];
     return {
-      prompt: `단어 '${word}'의 첫 알파벳 대문자로 알맞은 것은?`,
+      prompt: `What is the correct uppercase first letter for the word '${word}'?`,
       correct: ch,
       distractors: [letters[(idx + 1) % 26], letters[(idx + 2) % 26], letters[(idx + 3) % 26]],
-      h1: `단어의 첫 소리를 생각해보세요.`,
-      h2: `'${word}'는 '${ch}'로 시작합니다.`,
-      exp: `'${word}'의 첫 글자는 알파벳 '${ch}'입니다.`
+      h1: `Think about the initial sound of the word.`,
+      h2: `'${word}' begins with the letter '${ch}'.`,
+      exp: `The word '${word}' starts with the uppercase letter '${ch}'.`
     };
   },
   "e.e1.greet": (i) => {
     const contexts = [
-      { sit: "아침에 만났을 때", ans: "Good morning.", d: ["Good night.", "Goodbye.", "Thank you."] },
-      { sit: "헤어질 때", ans: "Goodbye, see you later.", d: ["Good morning.", "Hello.", "I am fine."] },
-      { sit: "처음 만난 사람에게", ans: "Nice to meet you.", d: ["Good night.", "Sorry.", "I am ten."] },
-      { sit: "감사를 표현할 때", ans: "Thank you very much.", d: ["Hello.", "Goodbye.", "No, I am not."] }
+      { sit: "in the morning", ans: "Good morning.", d: ["Good night.", "Goodbye.", "Thank you."] },
+      { sit: "when parting with a friend", ans: "Goodbye, see you later.", d: ["Good morning.", "Hello.", "I am fine."] },
+      { sit: "when meeting someone for the first time", ans: "Nice to meet you.", d: ["Good night.", "Sorry.", "I am ten."] },
+      { sit: "to express gratitude", ans: "Thank you very much.", d: ["Hello.", "Goodbye.", "No, I am not."] }
     ];
     const item = contexts[i % contexts.length];
     return {
-      prompt: `${item.sit} 알맞은 영어 인사는?`,
+      prompt: `Which greeting is appropriate ${item.sit}?`,
       correct: item.ans,
       distractors: item.d,
-      h1: `상황에 어울리는 인사 표현을 고르세요.`,
-      h2: `${item.sit}에는 '${item.ans.split(" ")[0]}' 표현을 씁니다.`,
-      exp: `${item.sit}에는 '${item.ans}'라고 인사합니다.`
+      h1: `Consider the social context of the situation.`,
+      h2: `When you speak ${item.sit}, '${item.ans.split(" ")[0]}' is commonly used.`,
+      exp: `'${item.ans}' is the standard polite greeting ${item.sit}.`
     };
   },
   "e.e1.numcol": (i) => {
     const colors = [
-      { ko: "빨간색", en: "red" }, { ko: "파란색", en: "blue" }, { ko: "노란색", en: "yellow" },
-      { ko: "초록색", en: "green" }, { ko: "검은색", en: "black" }, { ko: "흰색", en: "white" }
+      { name: "red", sample: "an apple" }, { name: "blue", sample: "the clear sky" }, { name: "yellow", sample: "a ripe banana" },
+      { name: "green", sample: "fresh leaves" }, { name: "black", sample: "the night sky" }, { name: "white", sample: "pure snow" }
     ];
     const c = colors[i % colors.length];
-    const others = colors.filter(x => x.en !== c.en).map(x => x.en).slice(0, 3);
+    const others = colors.filter(x => x.name !== c.name).map(x => x.name).slice(0, 3);
     return {
-      prompt: `색깔 '${c.ko}'을 나타내는 영어 단어는?`,
-      correct: c.en,
+      prompt: `Which color word typically describes ${c.sample}?`,
+      correct: c.name,
       distractors: others,
-      h1: `색깔 단어를 떠올려보세요.`,
-      h2: `'${c.ko}'의 영어 표기는 '${c.en}'입니다.`,
-      exp: `'${c.ko}'은 영어로 '${c.en}'입니다.`
+      h1: `Think about the natural color of the object.`,
+      h2: `${c.sample} is famously '${c.name}'.`,
+      exp: `'${c.name}' is the color word that describes ${c.sample}.`
     };
   },
   "e.e1.family": (i) => {
     const family = [
-      { ko: "어머니", en: "mother" }, { ko: "아버지", en: "father" }, { ko: "여동생/언니", en: "sister" },
-      { ko: "남동생/형", en: "brother" }, { ko: "할머니", en: "grandmother" }, { ko: "할아버지", en: "grandfather" }
+      { word: "mother", clue: "a female parent" }, { word: "father", clue: "a male parent" }, { word: "sister", clue: "a female sibling" },
+      { word: "brother", clue: "a male sibling" }, { word: "grandmother", clue: "the mother of a parent" }, { word: "grandfather", clue: "the father of a parent" }
     ];
     const f = family[i % family.length];
-    const others = family.filter(x => x.en !== f.en).map(x => x.en).slice(0, 3);
+    const others = family.filter(x => x.word !== f.word).map(x => x.word).slice(0, 3);
     return {
-      prompt: `가족 관계 '${f.ko}'를 뜻하는 영어 단어는?`,
-      correct: f.en,
+      prompt: `Which family word means '${f.clue}'?`,
+      correct: f.word,
       distractors: others,
-      h1: `가족을 부르는 명칭을 생각해보세요.`,
-      h2: `'${f.ko}'의 영어 단어는 '${f.en}'입니다.`,
-      exp: `'${f.ko}'는 영어로 '${f.en}'입니다.`
+      h1: `Look at the family relationship clue.`,
+      h2: `'${f.clue}' refers to a '${f.word}'.`,
+      exp: `The word '${f.word}' refers to ${f.clue}.`
     };
   },
   "e.e1.class": (i) => {
     const items = [
-      { ko: "연필", en: "pencil" }, { ko: "책", en: "book" }, { ko: "의자", en: "chair" },
-      { ko: "책상", en: "desk" }, { ko: "지우개", en: "eraser" }, { ko: "가방", en: "bag" }
+      { word: "pencil", clue: "an instrument used for writing or drawing" },
+      { word: "book", clue: "written or printed work consisting of bound pages" },
+      { word: "chair", clue: "a piece of furniture designed for one person to sit on" },
+      { word: "desk", clue: "a piece of furniture with a flat surface for reading and writing" },
+      { word: "eraser", clue: "an object used for removing pencil marks" },
+      { word: "bag", clue: "a container used for carrying books and school supplies" }
     ];
     const it = items[i % items.length];
-    const others = items.filter(x => x.en !== it.en).map(x => x.en).slice(0, 3);
+    const others = items.filter(x => x.word !== it.word).map(x => x.word).slice(0, 3);
     return {
-      prompt: `교실 물건 '${it.ko}'을 뜻하는 영어 단어는?`,
-      correct: it.en,
+      prompt: `Which classroom item is '${it.clue}'?`,
+      correct: it.word,
       distractors: others,
-      h1: `학용품 및 교실 사물의 이름을 고르세요.`,
-      h2: `'${it.ko}'는 영어로 '${it.en}'입니다.`,
-      exp: `'${it.ko}'의 영어 단어는 '${it.en}'입니다.`
+      h1: `Think about classroom objects and their functions.`,
+      h2: `The item described is a '${it.word}'.`,
+      exp: `A '${it.word}' is ${it.clue}.`
     };
   }
 };
 
-// Generic skill generator that produces rich domain-aligned questions
+// Generic skill generator that produces rich domain-aligned questions (pure English)
 function generateSkillQuestion(grade, skillId, index) {
   if (TEMPLATE_FACTORIES[skillId]) {
     return TEMPLATE_FACTORIES[skillId](index);
   }
 
   // Grammar & Reading drills across grades E2 to H3
-  const rng = createRng((grade.charCodeAt(0) * 1000 + grade.charCodeAt(1 || 0)) * 100 + index);
-  
   if (skillId.includes("tense") || skillId.includes("perf")) {
     const subjects = [
-      { s: "She", v: "has visited", base: "visit", d: ["visit", "visiting", "have visited"] },
-      { s: "They", v: "have lived", base: "live", d: ["lives", "living", "has lived"] },
-      { s: "He", v: "has finished", base: "finish", d: ["finish", "finishing", "have finished"] },
-      { s: "We", v: "have studied", base: "study", d: ["studies", "studying", "has studied"] }
+      { s: "She", v: "has visited", d: ["visit", "visiting", "have visited"] },
+      { s: "They", v: "have lived", d: ["lives", "living", "has lived"] },
+      { s: "He", v: "has finished", d: ["finish", "finishing", "have finished"] },
+      { s: "We", v: "have studied", d: ["studies", "studying", "has studied"] }
     ];
     const sub = subjects[index % subjects.length];
     return {
-      prompt: `빈칸에 들어갈 알맞은 동사 형태는? "${sub.s} ____ Seoul for three years."`,
+      prompt: `Choose the correct verb form for the blank: "${sub.s} ____ Seoul for three years."`,
       correct: sub.v,
       distractors: sub.d,
-      h1: `주어의 인칭과 수, 기간을 나타내는 'for three years'에 주의하세요.`,
-      h2: `현재완료 형태는 'have/has + 과거분사'입니다.`,
-      exp: `주어가 ${sub.s}이고 과거부터 이어진 경험/계속을 나타내므로 '${sub.v}'가 정답입니다.`
+      h1: `Notice the subject agreement and the duration phrase 'for three years'.`,
+      h2: `Present perfect requires 'have/has + past participle'.`,
+      exp: `With subject '${sub.s}' indicating action continuing up to the present, '${sub.v}' is the correct form.`
     };
   }
 
@@ -155,30 +158,30 @@ function generateSkillQuestion(grade, skillId, index) {
     ];
     const p = passives[index % passives.length];
     return {
-      prompt: `수동태 문장의 빈칸에 들어갈 말은? "${p.obj} ____ the famous author."`,
+      prompt: `Choose the correct passive voice verb phrase: "${p.obj} ____ the famous author."`,
       correct: p.verb,
       distractors: p.d,
-      h1: `수동태는 'be동사 + 과거분사 + by' 구조입니다.`,
-      h2: `행위의 대상이 주어이므로 수동태를 씁니다.`,
-      exp: `주어가 사물이고 행위자가 'by ~'로 이어지므로 수동태 '${p.verb}'가 알맞습니다.`
+      h1: `Passive voice uses 'be + past participle + by'.`,
+      h2: `The grammatical subject receives the action.`,
+      exp: `'${p.verb}' correctly forms the past passive voice.`
     };
   }
 
   if (skillId.includes("rel") || skillId.includes("clause") || skillId.includes("wh")) {
     const relatives = [
-      { antecedent: "the boy", rel: "who", d: ["which", "whose", "where"] },
-      { antecedent: "the house", rel: "which", d: ["who", "whom", "whose"] },
-      { antecedent: "the place", rel: "where", d: ["who", "which", "whom"] },
-      { antecedent: "the time", rel: "when", d: ["who", "which", "where"] }
+      { antecedent: "the student", rel: "who", d: ["which", "whose", "where"] },
+      { antecedent: "the museum", rel: "which", d: ["who", "whom", "whose"] },
+      { antecedent: "the town", rel: "where", d: ["who", "which", "whom"] },
+      { antecedent: "the year", rel: "when", d: ["who", "which", "where"] }
     ];
     const r = relatives[index % relatives.length];
     return {
-      prompt: `관계사 빈칸에 알맞은 것은? "I know ${r.antecedent} ____ won first prize."`,
+      prompt: `Choose the correct relative pronoun: "I know ${r.antecedent} ____ won first prize."`,
       correct: r.rel,
       distractors: r.d,
-      h1: `선행사가 사람인지 사물/장소인지 확인하세요.`,
-      h2: `선행사 '${r.antecedent}' 뒤에서 주어 역할을 하는 관계대명사입니다.`,
-      exp: `선행사가 사람이고 뒤에 동사가 오므로 주격 관계대명사 '${r.rel}'가 정답입니다.`
+      h1: `Determine whether the antecedent is a person, thing, place, or time.`,
+      h2: `Use the subject relative pronoun referring to a person.`,
+      exp: `'${r.rel}' is the appropriate subject relative pronoun for '${r.antecedent}'.`
     };
   }
 
@@ -190,48 +193,48 @@ function generateSkillQuestion(grade, skillId, index) {
     ];
     const cond = conditionals[index % conditionals.length];
     return {
-      prompt: `가정법 과거 문장의 빈칸에 알맞은 것은? "${cond.ifClause} ____ around the world."`,
+      prompt: `Choose the correct conditional verb form: "${cond.ifClause} ____ around the world."`,
       correct: cond.main,
       distractors: cond.d,
-      h1: `If절의 동사가 과거형인 가정법 과거 구조를 확인하세요.`,
-      h2: `주절에는 '조동사 과거형(would/could) + 동사원형'을 씁니다.`,
-      exp: `현재 사실과 반대되는 가정이므로 주절에 '${cond.main}'을 씁니다.`
+      h1: `Notice the past tense verb in the hypothetical if-clause.`,
+      h2: `The main clause takes 'would/could + base verb'.`,
+      exp: `'${cond.main}' correctly completes the second conditional structure.`
     };
   }
 
   // General vocabulary, reading comprehension, and syntax patterns
   const drills = [
     {
-      q: `다음 중 밑줄 친 단어의 문맥상 동의어로 알맞은 것은? (The experiment yielded *significant* results.)`,
+      q: `Which word is closest in meaning to the underlined word in the sentence? "The experiment yielded *significant* results."`,
       ans: "meaningful",
       d: ["trivial", "accidental", "unfortunate"],
-      h1: "significant는 '중대한, 의미 있는'의 뜻입니다.",
-      h2: "trivial(사소한)과 반대되는 단어를 고르세요.",
-      exp: "significant는 'meaningful(유의미한, 중대한)'과 동의어입니다."
+      h1: "Significant means having a major effect or importance.",
+      h2: "Look for a synonym of important or meaningful.",
+      exp: "'Significant' means noteworthy and is synonymous with 'meaningful'."
     },
     {
-      q: `문장의 빈칸에 들어갈 알맞은 연결사는? "He was exhausted; ____, he continued working."`,
+      q: `Choose the transition word that best completes the sentence: "He was exhausted; ____, he continued working."`,
       ans: "nevertheless",
       d: ["therefore", "furthermore", "similarly"],
-      h1: "앞 문장(피곤함)과 뒷 문장(계속 일함)의 역접 관계를 파악하세요.",
-      h2: "그럼에도 불구하고라는 뜻의 부사를 찾으세요.",
-      exp: "역접의 양보를 나타내는 nevertheless(그럼에도 불구하고)가 알맞습니다."
+      h1: "Identify the contrast between being tired and working continuously.",
+      h2: "Choose an adverb expressing concession or contrast.",
+      exp: "'Nevertheless' introduces a contrast meaning 'in spite of that'."
     },
     {
-      q: `어법상 가장 자연스러운 문장은?`,
+      q: `Which sentence is grammatically correct with proper negative inversion?`,
       ans: "Hardly had I arrived when the concert began.",
       d: ["Hardly I had arrived when the concert began.", "Hardly did I arrived when the concert began.", "Hardly have I arrive when the concert began."],
-      h1: "부정어(Hardly)가 문두에 올 때의 도치 구조에 유의하세요.",
-      h2: "Hardly + had + 주어 + p.p. + when ~ 구문입니다.",
-      exp: "부정어 도치 구문으로 'Hardly had I arrived when ~' 형태가 정확합니다."
+      h1: "Negative words like 'Hardly' trigger inversion of auxiliary verb and subject.",
+      h2: "The pattern is 'Hardly + had + subject + past participle'.",
+      exp: "'Hardly had I arrived when...' correctly applies negative inversion."
     },
     {
-      q: `다음 글의 핵심 주장으로 가장 적절한 것은? (Collaboration fosters creative problem solving across diverse disciplines.)`,
+      q: `What is the central claim of the following statement? "Collaboration across diverse disciplines fosters creative problem solving."`,
       ans: "Interdisciplinary teamwork sparks innovation",
       d: ["Individual isolated work is always superior", "Creative efforts should avoid teamwork", "Standardized tests measure all human skills"],
-      h1: "Collaboration(협업)과 creative problem solving(창의적 문제 해결)의 관계를 확인하세요.",
-      h2: "팀워크가 혁신을 촉진한다는 핵심을 파악하세요.",
-      exp: "학제 간 협업이 창의적 문제 해결과 혁신을 낳는다는 요지입니다."
+      h1: "Identify the relationship between collaboration and creative problem solving.",
+      h2: "Recognize that working together across fields produces innovation.",
+      exp: "The statement argues that teamwork across disciplines drives creative solutions and innovation."
     }
   ];
 

@@ -47,8 +47,32 @@ export function contentSourceFiles(contentRoot, subject) {
 /** Canonical expansion matches lib/learn/content/bank.ts without importing runtime code into this Node tool. */
 export function expandAuditBank(data, skills, contentFile) {
   fail(data.format === 1 && ['math', 'english'].includes(data.site), 'Unsupported bank format/site');
-  fail(Array.isArray(data.sets), 'Missing bank sets');
   const questions = new Map(), sets = new Map();
+  if (Array.isArray(data.questions)) {
+    fail(data.questions.length > 0, 'Empty discrete bank questions');
+    for (const q of data.questions) {
+      fail(typeof q.id === 'string' && q.id.length > 0 && !questions.has(q.id), `Duplicate/invalid bank question: ${q.id}`);
+      fail(skills.has(q.skillId), `Unknown bank skill: ${q.skillId}`);
+      fail(Number.isInteger(q.difficulty) && q.difficulty >= 1 && q.difficulty <= 5, `Invalid bank difficulty: ${q.id}`);
+      fail(q.status === 'PUBLISHED', `Unpublished bank question: ${q.id}`);
+      fail(typeof q.prompt === 'string' && q.prompt.length > 0, `Empty bank prompt: ${q.id}`);
+      fail(Array.isArray(q.hints) && q.hints.length === 2 && q.hints.every(h => typeof h === 'string' && h.length > 0), `Invalid bank hints: ${q.id}`);
+      fail(typeof q.explanation === 'string' && q.explanation.length > 0, `Empty bank explanation: ${q.id}`);
+      fail(q.type === 'multiple_choice' && Array.isArray(q.options) && q.options.length === 4, `Invalid bank options: ${q.id}`);
+      fail(q.answer?.kind === 'choice' && typeof q.answer?.id === 'string', `Invalid bank answer: ${q.id}`);
+      questions.set(q.id, {
+        ...q,
+        bank_source: { content_file: contentFile, question_id: q.id },
+      });
+      const fam = q.family || q.skillId;
+      if (!sets.has(fam)) {
+        sets.set(fam, { id: fam, skillId: q.skillId, difficulty: q.difficulty, content_file: contentFile, question_ids: [] });
+      }
+      sets.get(fam).question_ids.push(q.id);
+    }
+    return { questions, sets };
+  }
+  fail(Array.isArray(data.sets), 'Missing bank sets');
   const fill = (text, vars) => text.replace(/\{(\w+)\}/g, (match, name) => name in vars ? String(vars[name]) : match).replace(/\}\}/g, '} }').replace(/\{\{/g, '{ {');
   for (const set of data.sets) {
     fail(typeof set.id === 'string' && set.id.length > 0 && !sets.has(set.id), `Duplicate/invalid bank set: ${set.id}`);
