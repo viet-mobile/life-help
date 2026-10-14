@@ -26,8 +26,20 @@ test("coverage doc includes all current content and is deterministic", () => {
   );
   assert.match(body, /\| 수학 \| 119 \| 7750 \|/);
   assert.match(body, /\| 영어 \| 64 \| 628 \|/);
-  assert.match(body, /\| \*\*합계\*\* \| 435 \| 64 \| 201 \| 170 \| 0 \|/);
-  assert.match(body, /\| \*\*합계\*\* \| 270 \| 35 \| 57 \| 178 \| 0 \|/);
+  const reviewed = mappings();
+  for (const [subject, label] of [["mathematics", "수학"], ["english", "영어"]]) {
+    const { achievement_standards: standards } = JSON.parse(readFileSync(
+      new URL(`../../lib/learn/curriculum/kr/2022/${subject}.json`, import.meta.url), "utf8",
+    ));
+    const statuses = ["covered", "partial", "gap", "unreviewed"];
+    const counts = statuses.map(status => standards.filter(standard =>
+      (reviewed[subject].find(entry => entry.code === standard.code)?.status ?? "unreviewed") === status,
+    ).length);
+    assert.equal(counts.reduce((sum, count) => sum + count, 0), standards.length);
+    const section = body.split(`## ${label}\n`)[1].split("\n## ")[0];
+    const total = section.split("\n").find(line => line.startsWith("| **합계** |"));
+    assert.equal(total, `| **합계** | ${standards.length} | ${counts.join(" | ")} |`);
+  }
 });
 test("doc generation rejects unknown evidence rather than publishing a table", () => {
   const invalid = mappings();
