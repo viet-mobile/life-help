@@ -1,0 +1,2227 @@
+{
+ "level": "K6",
+ "skills": {
+  "k.k6.shopping": {
+   "notes": {
+    "iEyo": "Copula choice depends on whether the noun ends in a consonant or a vowel.",
+    "euroE": "One particle marks the means or tool used for an action, with a form that depends on the final sound.",
+    "gaeCount": "Objects are counted with a native number plus a general counter.",
+    "bwadoDwae": "A special pattern of a verb plus a helper asks for permission to try something."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "가게",
+     "g": "shop, store"
+    },
+    {
+     "cat": "word",
+     "ko": "시장",
+     "g": "market"
+    },
+    {
+     "cat": "word",
+     "ko": "현금",
+     "g": "cash"
+    },
+    {
+     "cat": "word",
+     "ko": "영수증",
+     "g": "receipt"
+    },
+    {
+     "cat": "word",
+     "ko": "할인",
+     "g": "discount"
+    },
+    {
+     "cat": "phrase",
+     "ko": "작은 사이즈",
+     "g": "a small size"
+    },
+    {
+     "cat": "phrase",
+     "ko": "다른 색깔",
+     "g": "a different color"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 티셔츠는 만 원이에요.",
+     "g": "This T-shirt is 10,000 won.",
+     "cloze": {
+      "blank": "이 티셔츠는 만 원____.",
+      "ans": "이에요",
+      "w": [
+       "예요",
+       "이에",
+       "였어요"
+      ]
+     },
+     "choose": {
+      "w": [
+       "이 티셔츠은 만 원이에요.",
+       "이 티셔츠는 만 원예요.",
+       "이 티셔츠는 만 원을 이에요."
+      ]
+     },
+     "note": "iEyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "카드로 계산할 수 있어요?",
+     "g": "Can I pay by card?",
+     "cloze": {
+      "blank": "카드____ 계산할 수 있어요?",
+      "ans": "로",
+      "w": [
+       "를",
+       "에",
+       "와"
+      ]
+     },
+     "note": "euroE"
+    },
+    {
+     "cat": "sentence",
+     "ko": "더 싼 것 있어요?",
+     "g": "Do you have a cheaper one?",
+     "choose": {
+      "w": [
+       "더 싸 것 있어요?",
+       "더 싸는 것 있어요?",
+       "더 싼 것 이에요?"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "이거 두 개 주세요.",
+     "g": "Two of these, please.",
+     "cloze": {
+      "blank": "이거 두 ____ 주세요.",
+      "ans": "개",
+      "w": [
+       "명",
+       "시",
+       "살"
+      ]
+     },
+     "note": "gaeCount"
+    },
+    {
+     "cat": "sentence",
+     "ko": "입어 봐도 돼요?",
+     "g": "May I try this on?",
+     "choose": {
+      "w": [
+       "입어 보면 돼요?",
+       "입어 봐도 주세요?",
+       "입어 봐도 되요?"
+      ]
+     },
+     "note": "bwadoDwae"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사이즈가 너무 커요.",
+     "g": "The size is too big.",
+     "cloze": {
+      "blank": "사이즈____ 너무 커요.",
+      "ans": "가",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "현금으로 낼게요.",
+     "g": "I'll pay in cash.",
+     "cloze": {
+      "blank": "현금____ 낼게요.",
+      "ans": "으로",
+      "w": [
+       "로",
+       "를",
+       "이"
+      ]
+     },
+     "note": "euroE"
+    },
+    {
+     "cat": "sentence",
+     "ko": "모두 얼마예요?",
+     "g": "How much is it all together?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "봉지는 필요 없어요.",
+     "g": "I don't need a bag."
+    },
+    {
+     "cat": "expr",
+     "ko": "어서 오세요.",
+     "g": "Welcome!",
+     "s": "You walk into a shop and the staff greet you."
+    },
+    {
+     "cat": "expr",
+     "ko": "그냥 구경하는 거예요.",
+     "g": "I'm just looking around.",
+     "s": "A clerk asks if you need help, but you only want to browse."
+    },
+    {
+     "cat": "expr",
+     "ko": "좀 깎아 주세요.",
+     "g": "Could you give me a little discount, please?",
+     "s": "You are at a market stall and want a lower price."
+    },
+    {
+     "cat": "expr",
+     "ko": "이걸로 할게요.",
+     "g": "I'll take this one.",
+     "s": "You have compared several items and have just decided which to buy."
+    },
+    {
+     "cat": "expr",
+     "ko": "안녕히 계세요.",
+     "g": "Goodbye.",
+     "s": "You are leaving a shop and the staff stay behind."
+    },
+    {
+     "cat": "expr",
+     "ko": "안녕히 가세요.",
+     "g": "Goodbye (to a customer who is leaving).",
+     "s": "You are the shop staff and a customer is walking out of the door."
+    },
+    {
+     "cat": "expr",
+     "ko": "포장해 주세요.",
+     "g": "Please wrap it up.",
+     "s": "You are buying a present and want it gift-wrapped."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이 신발 얼마예요?\nB: 삼만 원이에요.\nA: 좀 비싸요. 더 싼 것 있어요?\nB: 네, 이거 이만 원이에요.",
+     "g": "A: How much are these shoes?\nB: They are 30,000 won.\nA: That's a bit expensive. Do you have a cheaper pair?\nB: Yes, these are 20,000 won.",
+     "read": {
+      "true": "더 싼 신발이 있어요.",
+      "false": [
+       "신발이 만 원이에요.",
+       "손님은 신발이 싸다고 해요.",
+       "가게에 신발이 없어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 카드로 계산할게요.\nB: 죄송해요. 카드는 안 돼요. 현금만 돼요.\nA: 그럼 현금으로 낼게요.",
+     "g": "A: I'll pay by card.\nB: I'm sorry. Cards don't work. Only cash.\nA: Then I'll pay in cash.",
+     "read": {
+      "true": "그 가게에서는 카드를 쓸 수 없어요.",
+      "false": [
+       "손님이 카드로 계산했어요.",
+       "가게는 현금을 안 받아요.",
+       "손님은 현금이 없어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이 바지 입어 봐도 돼요?\nB: 네, 저쪽으로 가세요.\nA: 조금 작아요. 큰 사이즈 있어요?\nB: 잠깐만 기다려 주세요.",
+     "g": "A: May I try these pants on?\nB: Yes, go over there.\nA: They're a little small. Do you have a bigger size?\nB: Please wait a moment.",
+     "read": {
+      "true": "손님은 더 큰 바지를 원해요.",
+      "false": [
+       "바지가 너무 커요.",
+       "손님은 바지를 입어 볼 수 없어요.",
+       "점원이 바지를 안 팔아요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.directions": {
+   "notes": {
+    "euroDir": "A direction word plus a particle meaning toward gives the direction to go.",
+    "locE": "Position words such as front, back and side are followed by a location particle.",
+    "bunTime": "Minutes use Sino-Korean numbers with a unit word; the verb for taking time is used for duration."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "길",
+     "g": "road, street"
+    },
+    {
+     "cat": "word",
+     "ko": "앞",
+     "g": "front"
+    },
+    {
+     "cat": "word",
+     "ko": "뒤",
+     "g": "back, behind"
+    },
+    {
+     "cat": "word",
+     "ko": "옆",
+     "g": "side, next to"
+    },
+    {
+     "cat": "word",
+     "ko": "건너편",
+     "g": "the opposite side"
+    },
+    {
+     "cat": "word",
+     "ko": "사거리",
+     "g": "intersection"
+    },
+    {
+     "cat": "word",
+     "ko": "횡단보도",
+     "g": "crosswalk"
+    },
+    {
+     "cat": "word",
+     "ko": "신호등",
+     "g": "traffic light"
+    },
+    {
+     "cat": "word",
+     "ko": "지도",
+     "g": "map"
+    },
+    {
+     "cat": "phrase",
+     "ko": "이쪽으로",
+     "g": "this way"
+    },
+    {
+     "cat": "phrase",
+     "ko": "저쪽으로",
+     "g": "that way, over there"
+    },
+    {
+     "cat": "sentence",
+     "ko": "우체국은 은행 옆에 있어요.",
+     "g": "The post office is next to the bank.",
+     "cloze": {
+      "blank": "우체국은 은행 ____ 있어요.",
+      "ans": "옆에",
+      "w": [
+       "옆을",
+       "옆이",
+       "옆와"
+      ]
+     },
+     "note": "locE"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 근처에 편의점이 있어요?",
+     "g": "Is there a convenience store near here?",
+     "cloze": {
+      "blank": "이 근처____ 편의점이 있어요?",
+      "ans": "에",
+      "w": [
+       "를",
+       "로",
+       "와"
+      ]
+     },
+     "note": "locE"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사거리에서 오른쪽으로 가세요.",
+     "g": "Turn right at the intersection.",
+     "cloze": {
+      "blank": "사거리에서 오른쪽____ 가세요.",
+      "ans": "으로",
+      "w": [
+       "에서",
+       "을",
+       "가"
+      ]
+     },
+     "note": "euroDir"
+    },
+    {
+     "cat": "sentence",
+     "ko": "신호등에서 왼쪽으로 가세요.",
+     "g": "Turn left at the traffic light.",
+     "choose": {
+      "w": [
+       "신호등에서 왼쪽을 가세요.",
+       "신호등에 왼쪽으로 가세요.",
+       "신호등에서 왼쪽으로 가요세요."
+      ]
+     },
+     "note": "euroDir"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저 횡단보도를 건너세요.",
+     "g": "Cross that crosswalk.",
+     "cloze": {
+      "blank": "저 횡단보도____ 건너세요.",
+      "ans": "를",
+      "w": [
+       "가",
+       "에",
+       "와"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "조금만 더 가세요.",
+     "g": "Go just a little further."
+    },
+    {
+     "cat": "sentence",
+     "ko": "걸어서 오 분 걸려요.",
+     "g": "It takes five minutes on foot.",
+     "cloze": {
+      "blank": "걸어서 오 ____ 걸려요.",
+      "ans": "분",
+      "w": [
+       "시",
+       "살",
+       "명"
+      ]
+     },
+     "note": "bunTime"
+    },
+    {
+     "cat": "sentence",
+     "ko": "길을 잃었어요.",
+     "g": "I'm lost."
+    },
+    {
+     "cat": "sentence",
+     "ko": "지도를 보여 주세요.",
+     "g": "Please show me the map.",
+     "choose": {
+      "w": [
+       "지도를 보여 주세요요.",
+       "지도가 보여 주세요.",
+       "지도를 보세요 주세요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "버스 정류장은 어느 쪽이에요?",
+     "g": "Which way is the bus stop?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "길 건너편에 카페가 있어요.",
+     "g": "There is a cafe across the street.",
+     "cloze": {
+      "blank": "길 ____ 카페가 있어요.",
+      "ans": "건너편에",
+      "w": [
+       "건너편을",
+       "건너편이",
+       "건너편과"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "학교 뒤에 공원이 있어요.",
+     "g": "There is a park behind the school."
+    },
+    {
+     "cat": "expr",
+     "ko": "실례합니다.",
+     "g": "Excuse me.",
+     "s": "You want to ask a stranger on the street for directions."
+    },
+    {
+     "cat": "expr",
+     "ko": "길 좀 알려 주세요.",
+     "g": "Could you tell me the way, please?",
+     "s": "You are lost and ask a passer-by to point you to a place."
+    },
+    {
+     "cat": "expr",
+     "ko": "다시 한 번 말해 주세요.",
+     "g": "Please say that once more.",
+     "s": "A passer-by gave you directions too fast and you did not catch them."
+    },
+    {
+     "cat": "expr",
+     "ko": "알겠어요. 감사합니다.",
+     "g": "I see. Thank you.",
+     "s": "A stranger has finished explaining the way and you understood."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 실례합니다. 지하철역이 어디예요?\nB: 이 길로 쭉 가세요.\nA: 멀어요?\nB: 아니요, 걸어서 오 분 걸려요.",
+     "g": "A: Excuse me. Where is the subway station?\nB: Go straight along this road.\nA: Is it far?\nB: No, it takes five minutes on foot.",
+     "read": {
+      "true": "지하철역은 걸어서 오 분이에요.",
+      "false": [
+       "지하철역은 아주 멀어요.",
+       "지하철역은 오른쪽에 있어요.",
+       "두 사람은 버스를 타고 가요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이 근처에 약국이 있어요?\nB: 네, 사거리에서 왼쪽으로 가세요.\nA: 사거리에서 왼쪽이요?\nB: 네, 은행 옆에 있어요.",
+     "g": "A: Is there a pharmacy near here?\nB: Yes, turn left at the intersection.\nA: Left at the intersection?\nB: Yes, it's next to the bank.",
+     "read": {
+      "true": "약국은 은행 옆에 있어요.",
+      "false": [
+       "약국은 사거리에서 오른쪽에 있어요.",
+       "약국은 이 근처에 없어요.",
+       "약국은 병원 뒤에 있어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 죄송해요. 길을 잃었어요.\nB: 어디에 가요?\nA: 시장에 가요.\nB: 저쪽으로 가세요.",
+     "g": "A: I'm sorry. I'm lost.\nB: Where are you going?\nA: I'm going to the market.\nB: Go that way.",
+     "read": {
+      "true": "A는 시장에 가요.",
+      "false": [
+       "두 사람은 시장에 있어요.",
+       "B는 길을 잃었어요.",
+       "A는 병원에 가요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.wants": {
+   "notes": {
+    "singo": "A verb connected to a helper adjective expresses what the speaker wants to do.",
+    "negWant": "The negative form of the want pattern says the speaker does not want to do something.",
+    "clockSi": "Clock hours use native numbers, minutes use Sino-Korean numbers, and a time particle marks the time.",
+    "ban": "A special word for half is added after the hour to give the half hour."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "지금",
+     "g": "now"
+    },
+    {
+     "cat": "word",
+     "ko": "나중에",
+     "g": "later"
+    },
+    {
+     "cat": "word",
+     "ko": "일찍",
+     "g": "early"
+    },
+    {
+     "cat": "word",
+     "ko": "늦게",
+     "g": "late"
+    },
+    {
+     "cat": "phrase",
+     "ko": "한 시 반",
+     "g": "half past one"
+    },
+    {
+     "cat": "phrase",
+     "ko": "열 시 오 분",
+     "g": "five past ten"
+    },
+    {
+     "cat": "sentence",
+     "ko": "커피를 마시고 싶어요.",
+     "g": "I want to drink coffee.",
+     "cloze": {
+      "blank": "커피____ 마시고 싶어요.",
+      "ans": "를",
+      "w": [
+       "에",
+       "로",
+       "와"
+      ]
+     },
+     "choose": {
+      "w": [
+       "커피를 마시고 싶 있어요.",
+       "커피를 마시고 싶어서요.",
+       "커피를 마시고 싶요."
+      ]
+     },
+     "note": "singo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "영화를 보고 싶지 않아요.",
+     "g": "I don't want to watch a movie.",
+     "choose": {
+      "w": [
+       "영화를 보고 싶어요.",
+       "영화를 보지 않고 싶어요.",
+       "영화를 보고 싶지 않아서요."
+      ]
+     },
+     "note": "negWant"
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 집에 가고 싶어요.",
+     "g": "I want to go home now.",
+     "cloze": {
+      "blank": "지금 집____ 가고 싶어요.",
+      "ans": "에",
+      "w": [
+       "에서",
+       "와",
+       "의"
+      ]
+     },
+     "note": "singo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "한국어를 더 배우고 싶어요.",
+     "g": "I want to learn more Korean.",
+     "cloze": {
+      "blank": "한국어를 더 배우____ 싶어요.",
+      "ans": "고",
+      "w": [
+       "서",
+       "면",
+       "지"
+      ]
+     },
+     "note": "singo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "친구를 만나고 싶어요.",
+     "g": "I want to meet a friend.",
+     "cloze": {
+      "blank": "친구를 만나____ 싶어요.",
+      "ans": "고",
+      "w": [
+       "서",
+       "면",
+       "지"
+      ]
+     },
+     "note": "singo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "뭐 먹고 싶어요?",
+     "g": "What do you want to eat?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "어디에 가고 싶어요?",
+     "g": "Where do you want to go?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "오늘은 쉬고 싶어요.",
+     "g": "I want to rest today."
+    },
+    {
+     "cat": "sentence",
+     "ko": "수업은 아홉 시에 시작해요.",
+     "g": "Class starts at nine o'clock.",
+     "cloze": {
+      "blank": "수업은 아홉 시____ 시작해요.",
+      "ans": "에",
+      "w": [
+       "를",
+       "가",
+       "로"
+      ]
+     },
+     "note": "clockSi"
+    },
+    {
+     "cat": "sentence",
+     "ko": "영화는 두 시 반에 끝나요.",
+     "g": "The movie ends at half past two.",
+     "choose": {
+      "w": [
+       "영화는 두 시 반을 끝나요.",
+       "영화는 두 시 반에서 끝나요.",
+       "영화는 반 두 시에 끝나요."
+      ]
+     },
+     "note": "ban"
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 세 시 십 분이에요.",
+     "g": "It's ten past three now.",
+     "choose": {
+      "w": [
+       "지금 세 시 십 시예요.",
+       "지금 삼 시 십 분이에요.",
+       "지금 세 분 십 시이에요."
+      ]
+     },
+     "note": "clockSi"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 매일 일곱 시에 일어나요.",
+     "g": "I get up at seven every day."
+    },
+    {
+     "cat": "sentence",
+     "ko": "시간이 없어요.",
+     "g": "I don't have time."
+    },
+    {
+     "cat": "expr",
+     "ko": "저도 같이 가고 싶어요.",
+     "g": "I'd like to come along too.",
+     "s": "Friends are planning a trip and you want to join them."
+    },
+    {
+     "cat": "expr",
+     "ko": "빨리 가요!",
+     "g": "Let's hurry!",
+     "s": "You are running late and urge your friend to move faster."
+    },
+    {
+     "cat": "expr",
+     "ko": "조금 더 자고 싶어요.",
+     "g": "I want to sleep a little more.",
+     "s": "Your alarm rings in the morning but you are still sleepy."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 내일 뭐 하고 싶어요?\nB: 영화를 보고 싶어요.\nA: 몇 시에 볼까요?\nB: 세 시에 봐요.",
+     "g": "A: What do you want to do tomorrow?\nB: I want to watch a movie.\nA: What time shall we watch it?\nB: Let's watch it at three.",
+     "read": {
+      "true": "B는 내일 영화를 보고 싶어요.",
+      "false": [
+       "B는 내일 쉬고 싶어요.",
+       "영화는 두 시에 시작해요.",
+       "A는 영화를 보고 싶지 않아요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 지금 몇 시예요?\nB: 열두 시 반이에요.\nA: 배고파요. 점심 먹고 싶어요.\nB: 저도요. 같이 먹어요.",
+     "g": "A: What time is it now?\nB: It's half past twelve.\nA: I'm hungry. I want to have lunch.\nB: Me too. Let's eat together.",
+     "read": {
+      "true": "두 사람은 점심을 같이 먹고 싶어요.",
+      "false": [
+       "지금은 한 시 반이에요.",
+       "A는 저녁을 먹고 싶어요.",
+       "B는 먹고 싶지 않아요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.restaurant": {
+   "notes": {
+    "counterIn": "Food and drinks are counted with a native number plus a suitable counter.",
+    "geHae": "An adverbial ending on an adjective plus a request verb asks someone to make something a certain way."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "식당",
+     "g": "restaurant"
+    },
+    {
+     "cat": "word",
+     "ko": "반찬",
+     "g": "side dishes"
+    },
+    {
+     "cat": "word",
+     "ko": "숟가락",
+     "g": "spoon"
+    },
+    {
+     "cat": "word",
+     "ko": "젓가락",
+     "g": "chopsticks"
+    },
+    {
+     "cat": "word",
+     "ko": "자리",
+     "g": "seat, table"
+    },
+    {
+     "cat": "word",
+     "ko": "맥주",
+     "g": "beer"
+    },
+    {
+     "cat": "sentence",
+     "ko": "메뉴판 좀 주세요.",
+     "g": "Could I have the menu, please?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "뭐가 맛있어요?",
+     "g": "What is good here?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "비빔밥 하나 주세요.",
+     "g": "One bibimbap, please.",
+     "cloze": {
+      "blank": "비빔밥 ____ 주세요.",
+      "ans": "하나",
+      "w": [
+       "한",
+       "두",
+       "세"
+      ]
+     },
+     "note": "counterIn"
+    },
+    {
+     "cat": "sentence",
+     "ko": "불고기 이 인분 주세요.",
+     "g": "Two servings of bulgogi, please.",
+     "cloze": {
+      "blank": "불고기 이 ____ 주세요.",
+      "ans": "인분",
+      "w": [
+       "개",
+       "병",
+       "살"
+      ]
+     },
+     "note": "counterIn"
+    },
+    {
+     "cat": "sentence",
+     "ko": "커피 한 잔 주세요.",
+     "g": "One cup of coffee, please.",
+     "cloze": {
+      "blank": "커피 한 ____ 주세요.",
+      "ans": "잔",
+      "w": [
+       "명",
+       "인분",
+       "시"
+      ]
+     },
+     "note": "counterIn"
+    },
+    {
+     "cat": "sentence",
+     "ko": "너무 매워요.",
+     "g": "It's too spicy."
+    },
+    {
+     "cat": "sentence",
+     "ko": "안 맵게 해 주세요.",
+     "g": "Please make it not spicy.",
+     "choose": {
+      "w": [
+       "안 맵게 줘요.",
+       "안 맵은 해 주세요.",
+       "안 맵게 해요 주세요."
+      ]
+     },
+     "note": "geHae"
+    },
+    {
+     "cat": "sentence",
+     "ko": "포장할 수 있어요?",
+     "g": "Can I get this to go?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "계산은 어디에서 해요?",
+     "g": "Where do I pay?",
+     "cloze": {
+      "blank": "계산은 어디____ 해요?",
+      "ans": "에서",
+      "w": [
+       "를",
+       "로",
+       "와"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "자리가 있어요?",
+     "g": "Do you have a table available?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "예약했어요.",
+     "g": "I have made a reservation.",
+     "choose": {
+      "w": [
+       "예약하고 싶어요.",
+       "예약하세요.",
+       "예약해 있어요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "김치찌개가 정말 맛있어요.",
+     "g": "The kimchi stew is really delicious.",
+     "cloze": {
+      "blank": "김치찌개____ 정말 맛있어요.",
+      "ans": "가",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 고기를 안 먹어요.",
+     "g": "I don't eat meat."
+    },
+    {
+     "cat": "sentence",
+     "ko": "숟가락이 없어요.",
+     "g": "There is no spoon."
+    },
+    {
+     "cat": "sentence",
+     "ko": "배가 불러요.",
+     "g": "I'm full."
+    },
+    {
+     "cat": "sentence",
+     "ko": "배가 고파요.",
+     "g": "I'm hungry."
+    },
+    {
+     "cat": "expr",
+     "ko": "여기요!",
+     "g": "Excuse me! (to call a waiter)",
+     "s": "You want the staff's attention in a busy restaurant."
+    },
+    {
+     "cat": "expr",
+     "ko": "두 명이에요.",
+     "g": "It's two people.",
+     "s": "The host at the door asks how many people are in your group."
+    },
+    {
+     "cat": "expr",
+     "ko": "맛있게 드세요.",
+     "g": "Enjoy your meal.",
+     "s": "You are the server putting the food on a customer's table."
+    },
+    {
+     "cat": "expr",
+     "ko": "잘 먹겠습니다.",
+     "g": "Thank you for the meal (said before eating).",
+     "s": "The food has arrived and you are about to start eating."
+    },
+    {
+     "cat": "expr",
+     "ko": "잘 먹었습니다.",
+     "g": "Thank you for the meal (said after eating).",
+     "s": "You have finished eating and are leaving the restaurant."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 어서 오세요. 몇 분이세요?\nB: 두 명이에요.\nA: 이쪽 자리로 오세요.\nB: 감사합니다.",
+     "g": "A: Welcome. How many people?\nB: Two.\nA: Please come to this table.\nB: Thank you.",
+     "read": {
+      "true": "손님은 두 명이에요.",
+      "false": [
+       "손님은 세 명이에요.",
+       "손님은 한 명이에요.",
+       "자리가 없다고 해요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 뭐 드릴까요?\nB: 비빔밥 하나 주세요.\nA: 음료수는요?\nB: 물 주세요.",
+     "g": "A: What can I get you?\nB: One bibimbap, please.\nA: And to drink?\nB: Water, please.",
+     "read": {
+      "true": "손님은 비빔밥과 물을 시켰어요.",
+      "false": [
+       "손님은 불고기를 시켰어요.",
+       "손님은 커피를 시켰어요.",
+       "손님은 비빔밥을 두 개 시켰어요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.transport": {
+   "notes": {
+    "euroMeans": "One particle can mark a means of transport or a destination; walking has its own adverb form.",
+    "eGoes": "A destination particle marks where a vehicle goes.",
+    "ggaji": "One particle marks an end point and a different one marks the starting point.",
+    "bunTime": "Minutes use Sino-Korean numbers with a unit word; the verb for taking time is used for duration.",
+    "eseoDown": "The place-of-action particle also marks where you get on or off."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "정류장",
+     "g": "bus stop"
+    },
+    {
+     "cat": "word",
+     "ko": "출구",
+     "g": "exit"
+    },
+    {
+     "cat": "word",
+     "ko": "표",
+     "g": "ticket"
+    },
+    {
+     "cat": "word",
+     "ko": "공항",
+     "g": "airport"
+    },
+    {
+     "cat": "word",
+     "ko": "요금",
+     "g": "fare"
+    },
+    {
+     "cat": "word",
+     "ko": "교통카드",
+     "g": "transit card"
+    },
+    {
+     "cat": "word",
+     "ko": "막차",
+     "g": "last bus or train"
+    },
+    {
+     "cat": "word",
+     "ko": "주소",
+     "g": "address"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 버스는 시청에 가요?",
+     "g": "Does this bus go to City Hall?",
+     "cloze": {
+      "blank": "이 버스는 시청____ 가요?",
+      "ans": "에",
+      "w": [
+       "에서",
+       "의",
+       "와"
+      ]
+     },
+     "note": "eGoes"
+    },
+    {
+     "cat": "sentence",
+     "ko": "명동까지 얼마나 걸려요?",
+     "g": "How long does it take to Myeongdong?",
+     "cloze": {
+      "blank": "명동____ 얼마나 걸려요?",
+      "ans": "까지",
+      "w": [
+       "부터",
+       "처럼",
+       "마다"
+      ]
+     },
+     "note": "ggaji"
+    },
+    {
+     "cat": "sentence",
+     "ko": "여기에서 지하철을 타요.",
+     "g": "I take the subway from here.",
+     "choose": {
+      "w": [
+       "여기에서 지하철에 타요.",
+       "여기에서 지하철이 타요.",
+       "여기에서 지하철을 내려요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "시청역에서 내려요.",
+     "g": "I get off at City Hall Station.",
+     "cloze": {
+      "blank": "시청역____ 내려요.",
+      "ans": "에서",
+      "w": [
+       "을",
+       "에게",
+       "와"
+      ]
+     },
+     "note": "eseoDown"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이호선으로 갈아타세요.",
+     "g": "Please transfer to Line 2.",
+     "cloze": {
+      "blank": "이호선____ 갈아타세요.",
+      "ans": "으로",
+      "w": [
+       "에서",
+       "을",
+       "이"
+      ]
+     },
+     "note": "euroMeans"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 걸어서 학교에 가요.",
+     "g": "I walk to school.",
+     "choose": {
+      "w": [
+       "저는 걸어서 학교에 가세요.",
+       "저는 걸어서 학교에서 가요.",
+       "저는 걷어서 학교에 가요."
+      ]
+     },
+     "note": "euroMeans"
+    },
+    {
+     "cat": "sentence",
+     "ko": "택시를 불러 주세요.",
+     "g": "Please call a taxi.",
+     "choose": {
+      "w": [
+       "택시를 불러요 주세요.",
+       "택시가 불러 주세요.",
+       "택시를 부르 주세요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "공항까지 택시로 삼십 분 걸려요.",
+     "g": "It takes thirty minutes to the airport by taxi.",
+     "choose": {
+      "w": [
+       "공항까지 택시를 삼십 분 걸려요.",
+       "공항부터 택시로 삼십 시 걸려요.",
+       "공항까지 택시로 서른 분 걸려요."
+      ]
+     },
+     "note": "bunTime"
+    },
+    {
+     "cat": "sentence",
+     "ko": "표를 어디에서 사요?",
+     "g": "Where do I buy a ticket?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "다음 역은 어디예요?",
+     "g": "What is the next station?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "버스가 안 와요.",
+     "g": "The bus isn't coming."
+    },
+    {
+     "cat": "sentence",
+     "ko": "막차가 몇 시예요?",
+     "g": "What time is the last train?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "교통카드가 없어요.",
+     "g": "I don't have a transit card."
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 주소로 가 주세요.",
+     "g": "Please go to this address.",
+     "cloze": {
+      "blank": "이 주소____ 가 주세요.",
+      "ans": "로",
+      "w": [
+       "를",
+       "에서",
+       "가"
+      ]
+     },
+     "note": "euroMeans"
+    },
+    {
+     "cat": "sentence",
+     "ko": "요금은 얼마예요?",
+     "g": "How much is the fare?"
+    },
+    {
+     "cat": "expr",
+     "ko": "여기에서 세워 주세요.",
+     "g": "Please stop here.",
+     "s": "You are in a taxi and have reached your destination."
+    },
+    {
+     "cat": "expr",
+     "ko": "내릴게요.",
+     "g": "I'm getting off.",
+     "s": "You are in a crowded bus and need to push toward the door."
+    },
+    {
+     "cat": "expr",
+     "ko": "어서 타세요.",
+     "g": "Hop in.",
+     "s": "You are a taxi driver and a passenger has just opened the door."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 공항에 어떻게 가요?\nB: 지하철이 싸요.\nA: 얼마나 걸려요?\nB: 한 시간쯤 걸려요.",
+     "g": "A: How do I get to the airport?\nB: The subway is cheap.\nA: How long does it take?\nB: It takes about an hour.",
+     "read": {
+      "true": "지하철로 공항에 가면 한 시간쯤 걸려요.",
+      "false": [
+       "공항까지 십 분 걸려요.",
+       "B는 택시가 싸다고 해요.",
+       "두 사람은 지금 공항에 있어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이 버스 시청에 가요?\nB: 아니요, 저쪽 버스를 타세요.\nA: 몇 번이에요?\nB: 오 번이에요.",
+     "g": "A: Does this bus go to City Hall?\nB: No, take the bus over there.\nA: Which number is it?\nB: Number five.",
+     "read": {
+      "true": "시청에 가는 버스는 오 번이에요.",
+      "false": [
+       "이 버스는 시청에 가요.",
+       "시청에 가는 버스는 십 번이에요.",
+       "두 사람은 지하철역에 있어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 기사님, 이 주소로 가 주세요.\nB: 네, 알겠어요.\nA: 얼마나 걸려요?\nB: 이십 분쯤 걸려요.",
+     "g": "A: Driver, please take me to this address.\nB: Yes, understood.\nA: How long will it take?\nB: About twenty minutes.",
+     "read": {
+      "true": "두 사람은 택시 안에 있어요.",
+      "false": [
+       "두 사람은 버스 안에 있어요.",
+       "오십 분쯤 걸려요.",
+       "손님은 공항에 가요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.phone": {
+   "notes": {
+    "irregularTalk": "A promise made at the moment of speaking uses a special ending on the verb stem.",
+    "ggaeJuse": "A verb plus a helper verb for giving makes a polite request for a favor.",
+    "gaPart": "A question word is paired with a subject particle on the topic noun.",
+    "negMot": "A short negative adverb before the verb means inability or circumstances prevent the action."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "휴대폰",
+     "g": "mobile phone"
+    },
+    {
+     "cat": "word",
+     "ko": "통화",
+     "g": "phone conversation"
+    },
+    {
+     "cat": "word",
+     "ko": "배터리",
+     "g": "battery"
+    },
+    {
+     "cat": "word",
+     "ko": "충전기",
+     "g": "charger"
+    },
+    {
+     "cat": "word",
+     "ko": "비밀번호",
+     "g": "password"
+    },
+    {
+     "cat": "word",
+     "ko": "사진",
+     "g": "photo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "제가 다시 전화할게요.",
+     "g": "I'll call you back.",
+     "choose": {
+      "w": [
+       "제가 다시 전화받을게요.",
+       "제가 다시 전화를 줄게요.",
+       "제가 다시 전화할까요."
+      ]
+     },
+     "note": "irregularTalk"
+    },
+    {
+     "cat": "sentence",
+     "ko": "전화번호가 뭐예요?",
+     "g": "What is your phone number?",
+     "cloze": {
+      "blank": "전화번호____ 뭐예요?",
+      "ans": "가",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     },
+     "note": "gaPart"
+    },
+    {
+     "cat": "sentence",
+     "ko": "문자 보낼게요.",
+     "g": "I'll send you a text.",
+     "choose": {
+      "w": [
+       "문자 받을게요.",
+       "문자 보냈어요.",
+       "문자 보낼까요?"
+      ]
+     },
+     "note": "irregularTalk"
+    },
+    {
+     "cat": "sentence",
+     "ko": "문자를 받았어요.",
+     "g": "I got a text message.",
+     "cloze": {
+      "blank": "문자를 ____.",
+      "ans": "받았어요",
+      "w": [
+       "보냈어요",
+       "줬어요",
+       "샀어요"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "전화를 못 받았어요.",
+     "g": "I couldn't answer the call.",
+     "choose": {
+      "w": [
+       "전화를 받았어요.",
+       "전화를 못 받아요.",
+       "전화를 못 받을게요."
+      ]
+     },
+     "note": "negMot"
+    },
+    {
+     "cat": "sentence",
+     "ko": "잘 안 들려요.",
+     "g": "I can't hear well."
+    },
+    {
+     "cat": "sentence",
+     "ko": "천천히 말해 주세요.",
+     "g": "Please speak slowly.",
+     "cloze": {
+      "blank": "천천히 말해 ____.",
+      "ans": "주세요",
+      "w": [
+       "있어요",
+       "없어요",
+       "싶어요"
+      ]
+     },
+     "note": "ggaeJuse"
+    },
+    {
+     "cat": "sentence",
+     "ko": "배터리가 없어요.",
+     "g": "My battery is dead."
+    },
+    {
+     "cat": "sentence",
+     "ko": "충전기 있어요?",
+     "g": "Do you have a charger?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "와이파이 비밀번호가 뭐예요?",
+     "g": "What is the Wi-Fi password?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 통화 중이에요.",
+     "g": "I'm on the phone right now."
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 어디예요?",
+     "g": "Where are you now?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사진을 보내 주세요.",
+     "g": "Please send me the photo.",
+     "cloze": {
+      "blank": "사진을 보내 ____.",
+      "ans": "주세요",
+      "w": [
+       "있어요",
+       "없어요",
+       "싶어요"
+      ]
+     },
+     "note": "ggaeJuse"
+    },
+    {
+     "cat": "sentence",
+     "ko": "전화 좀 받아 주세요.",
+     "g": "Please answer the phone.",
+     "choose": {
+      "w": [
+       "전화 좀 받아 있어요.",
+       "전화 좀 받으 주세요.",
+       "전화 좀 받아서 주세요."
+      ]
+     },
+     "note": "ggaeJuse"
+    },
+    {
+     "cat": "expr",
+     "ko": "여보세요.",
+     "g": "Hello?",
+     "s": "You pick up the phone and answer a call."
+    },
+    {
+     "cat": "expr",
+     "ko": "누구세요?",
+     "g": "Who is this?",
+     "s": "The phone rings from an unknown number and you answer."
+    },
+    {
+     "cat": "expr",
+     "ko": "지금 통화할 수 있어요?",
+     "g": "Can you talk right now?",
+     "s": "You call a friend and want to check it is a good time."
+    },
+    {
+     "cat": "expr",
+     "ko": "전화를 잘못 걸었어요.",
+     "g": "I dialed the wrong number.",
+     "s": "Someone answers and you realize it is not the person you wanted."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 여보세요? 민수 씨예요?\nB: 네, 저예요.\nA: 지금 통화할 수 있어요?\nB: 죄송해요. 지금 바빠요. 제가 다시 전화할게요.",
+     "g": "A: Hello? Is this Minsu?\nB: Yes, speaking.\nA: Can you talk now?\nB: Sorry. I'm busy now. I'll call you back.",
+     "read": {
+      "true": "B는 나중에 다시 전화할 거예요.",
+      "false": [
+       "B는 지금 시간이 많아요.",
+       "A는 문자를 보냈어요.",
+       "A는 B의 이름을 몰라요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 전화 잘 안 들려요.\nB: 지금 어디예요?\nA: 지하철이에요.\nB: 그럼 문자 보낼게요.",
+     "g": "A: I can't hear you well.\nB: Where are you now?\nA: I'm on the subway.\nB: Then I'll send a text.",
+     "read": {
+      "true": "A는 지하철에 있어요.",
+      "false": [
+       "A는 집에 있어요.",
+       "B는 전화를 하고 싶어요.",
+       "B는 A에게 사진을 보냈어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 와이파이 비밀번호가 뭐예요?\nB: 메뉴판에 있어요.\nA: 아, 감사합니다.\nB: 네.",
+     "g": "A: What's the Wi-Fi password?\nB: It's on the menu.\nA: Oh, thank you.\nB: You're welcome.",
+     "read": {
+      "true": "와이파이 비밀번호는 메뉴판에 있어요.",
+      "false": [
+       "와이파이 비밀번호는 영수증에 있어요.",
+       "B는 비밀번호를 몰라요.",
+       "두 사람은 병원에 있어요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.hospital": {
+   "notes": {
+    "gaSubj": "Body parts and symptoms are marked with the subject particle.",
+    "gamgiE": "The expression for catching a cold uses a specific particle on the illness noun.",
+    "bonPlace": "One particle marks where an action happens and another marks a destination.",
+    "afterEat": "A connecting ending links two actions in sequence.",
+    "pastSick": "The past tense ending describes something that already happened and may still be true."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "의사",
+     "g": "doctor"
+    },
+    {
+     "cat": "word",
+     "ko": "간호사",
+     "g": "nurse"
+    },
+    {
+     "cat": "word",
+     "ko": "약국",
+     "g": "pharmacy"
+    },
+    {
+     "cat": "word",
+     "ko": "감기",
+     "g": "a cold"
+    },
+    {
+     "cat": "word",
+     "ko": "주사",
+     "g": "injection"
+    },
+    {
+     "cat": "word",
+     "ko": "치과",
+     "g": "dentist's office"
+    },
+    {
+     "cat": "sentence",
+     "ko": "배가 아파요.",
+     "g": "My stomach hurts.",
+     "cloze": {
+      "blank": "배____ 아파요.",
+      "ans": "가",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     },
+     "note": "gaSubj"
+    },
+    {
+     "cat": "sentence",
+     "ko": "열이 나요.",
+     "g": "I have a fever.",
+     "cloze": {
+      "blank": "열____ 나요.",
+      "ans": "이",
+      "w": [
+       "을",
+       "에",
+       "와"
+      ]
+     },
+     "note": "gaSubj"
+    },
+    {
+     "cat": "sentence",
+     "ko": "기침이 나요.",
+     "g": "I have a cough.",
+     "choose": {
+      "w": [
+       "기침을 나요.",
+       "기침이 가요.",
+       "기침에 나요."
+      ]
+     },
+     "note": "gaSubj"
+    },
+    {
+     "cat": "sentence",
+     "ko": "감기에 걸렸어요.",
+     "g": "I caught a cold.",
+     "cloze": {
+      "blank": "감기____ 걸렸어요.",
+      "ans": "에",
+      "w": [
+       "를",
+       "로",
+       "와"
+      ]
+     },
+     "choose": {
+      "w": [
+       "감기를 걸렸어요.",
+       "감기에 갔어요.",
+       "감기에 걸리고 싶어요."
+      ]
+     },
+     "note": "gamgiE"
+    },
+    {
+     "cat": "sentence",
+     "ko": "약국에서 약을 사요.",
+     "g": "I buy medicine at the pharmacy.",
+     "cloze": {
+      "blank": "약국____ 약을 사요.",
+      "ans": "에서",
+      "w": [
+       "에게",
+       "를",
+       "로"
+      ]
+     },
+     "note": "bonPlace"
+    },
+    {
+     "cat": "sentence",
+     "ko": "밥을 먹고 약을 드세요.",
+     "g": "Please eat and then take the medicine.",
+     "choose": {
+      "w": [
+       "밥을 먹고 약이 드세요.",
+       "밥을 먹고 약에 드세요.",
+       "밥을 먹고 약을 드셨어요."
+      ]
+     },
+     "note": "afterEat"
+    },
+    {
+     "cat": "sentence",
+     "ko": "어제부터 아팠어요.",
+     "g": "I have been sick since yesterday.",
+     "choose": {
+      "w": [
+       "어제부터 아플래요.",
+       "어제부터 아프겠어요.",
+       "어제부터 아팠세요."
+      ]
+     },
+     "note": "pastSick"
+    },
+    {
+     "cat": "sentence",
+     "ko": "많이 아파요?",
+     "g": "Does it hurt a lot?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "다리를 다쳤어요.",
+     "g": "I hurt my leg."
+    },
+    {
+     "cat": "sentence",
+     "ko": "알레르기가 있어요.",
+     "g": "I have an allergy."
+    },
+    {
+     "cat": "sentence",
+     "ko": "병원에 예약하고 싶어요.",
+     "g": "I'd like to make an appointment at the hospital."
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 주사가 무서워요.",
+     "g": "I'm afraid of injections."
+    },
+    {
+     "cat": "sentence",
+     "ko": "이가 아파요.",
+     "g": "My tooth hurts."
+    },
+    {
+     "cat": "expr",
+     "ko": "어디가 아프세요?",
+     "g": "Where does it hurt?",
+     "s": "You are the doctor and a patient has just sat down in front of you."
+    },
+    {
+     "cat": "expr",
+     "ko": "푹 쉬세요.",
+     "g": "Get plenty of rest.",
+     "s": "The doctor finishes the check-up and gives advice to the patient."
+    },
+    {
+     "cat": "expr",
+     "ko": "빨리 나으세요.",
+     "g": "Get well soon.",
+     "s": "Your friend is sick and you are saying goodbye after visiting."
+    },
+    {
+     "cat": "expr",
+     "ko": "어지러워요.",
+     "g": "I feel dizzy.",
+     "s": "You tell a nurse that the room seems to be spinning."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 어디가 아프세요?\nB: 목이 아파요. 그리고 열이 나요.\nA: 감기예요. 약을 드세요.\nB: 네, 감사합니다.",
+     "g": "A: Where does it hurt?\nB: My throat hurts. And I have a fever.\nA: It's a cold. Please take medicine.\nB: Yes, thank you.",
+     "read": {
+      "true": "의사는 감기라고 해요.",
+      "false": [
+       "B는 배가 아파요.",
+       "의사는 주사를 놓아요.",
+       "B는 열이 없어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 약을 하루에 세 번 드세요.\nB: 밥 먹고 먹어요?\nA: 네, 밥을 먹고 드세요.\nB: 알겠어요.",
+     "g": "A: Take the medicine three times a day.\nB: Do I take it after eating?\nA: Yes, take it after eating.\nB: Understood.",
+     "read": {
+      "true": "약은 하루에 세 번 먹어요.",
+      "false": [
+       "약은 하루에 한 번 먹어요.",
+       "약은 하루에 두 번 먹어요.",
+       "약은 하루에 다섯 번 먹어요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 어제부터 기침이 나요.\nB: 열도 있어요?\nA: 아니요, 열은 없어요.\nB: 그럼 약국에서 약을 사세요.",
+     "g": "A: I've had a cough since yesterday.\nB: Do you have a fever, too?\nA: No, I don't have a fever.\nB: Then buy some medicine at the pharmacy.",
+     "read": {
+      "true": "A는 기침이 나지만 열은 없어요.",
+      "false": [
+       "A는 열이 나요.",
+       "A는 어제 아프지 않았어요.",
+       "B는 병원에 가요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.requests": {
+   "notes": {
+    "juseyo": "A verb plus a helper verb for giving makes a polite request for a favor.",
+    "jiMa": "A verb stem plus a negative-command ending politely asks someone not to do something.",
+    "doDwae": "A verb plus a permission pattern asks whether an action is allowed.",
+    "euroLang": "One particle marks the language or tool used.",
+    "euseyo": "A polite command or invitation is formed from the verb stem plus a polite ending."
+   },
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "창문을 닫아 주세요.",
+     "g": "Please close the window.",
+     "cloze": {
+      "blank": "창문을 닫아 ____.",
+      "ans": "주세요",
+      "w": [
+       "있어요",
+       "없어요",
+       "싶어요"
+      ]
+     },
+     "note": "juseyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "불을 켜 주세요.",
+     "g": "Please turn on the light.",
+     "choose": {
+      "w": [
+       "불을 켜 있어요.",
+       "불을 켜서 주세요요.",
+       "불이 켜 주세요."
+      ]
+     },
+     "note": "juseyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "불을 꺼 주세요.",
+     "g": "Please turn off the light.",
+     "cloze": {
+      "blank": "불을 꺼 ____.",
+      "ans": "주세요",
+      "w": [
+       "있어요",
+       "없어요",
+       "싶어요"
+      ]
+     },
+     "note": "juseyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "에어컨을 틀어 주세요.",
+     "g": "Please turn on the air conditioner.",
+     "choose": {
+      "w": [
+       "에어컨을 틀어 있어요.",
+       "에어컨이 틀어 주세요.",
+       "에어컨을 틀 주세요."
+      ]
+     },
+     "note": "juseyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "여기에 이름을 써 주세요.",
+     "g": "Please write your name here.",
+     "cloze": {
+      "blank": "여기____ 이름을 써 주세요.",
+      "ans": "에",
+      "w": [
+       "를",
+       "가",
+       "와"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "사진 좀 찍어 주세요.",
+     "g": "Could you take a photo for me, please?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이거 좀 들어 주세요.",
+     "g": "Could you hold this for me, please?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "음악 소리를 줄여 주세요.",
+     "g": "Please turn the music down."
+    },
+    {
+     "cat": "sentence",
+     "ko": "조용히 해 주세요.",
+     "g": "Please be quiet.",
+     "choose": {
+      "w": [
+       "조용히 해 있어요.",
+       "조용히 하세요 주세요.",
+       "조용한 해 주세요."
+      ]
+     },
+     "note": "juseyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "한국어로 말해 주세요.",
+     "g": "Please speak in Korean.",
+     "cloze": {
+      "blank": "한국어____ 말해 주세요.",
+      "ans": "로",
+      "w": [
+       "를",
+       "에서",
+       "가"
+      ]
+     },
+     "note": "euroLang"
+    },
+    {
+     "cat": "sentence",
+     "ko": "크게 말해 주세요.",
+     "g": "Please speak loudly."
+    },
+    {
+     "cat": "sentence",
+     "ko": "창문을 열어도 돼요?",
+     "g": "Is it okay if I open the window?",
+     "choose": {
+      "w": [
+       "창문을 열어도 해요?",
+       "창문을 열어서 돼요?",
+       "창문을 열어도 줘요?"
+      ]
+     },
+     "note": "doDwae"
+    },
+    {
+     "cat": "sentence",
+     "ko": "여기에 앉아도 돼요?",
+     "g": "May I sit here?",
+     "cloze": {
+      "blank": "여기에 앉아____ 돼요?",
+      "ans": "도",
+      "w": [
+       "를",
+       "가",
+       "는데"
+      ]
+     },
+     "note": "doDwae"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사진을 찍지 마세요.",
+     "g": "Please don't take photos.",
+     "choose": {
+      "w": [
+       "사진을 찍지 말세요.",
+       "사진을 찍지 않세요.",
+       "사진을 찍어 마세요."
+      ]
+     },
+     "note": "jiMa"
+    },
+    {
+     "cat": "sentence",
+     "ko": "여기에서 담배를 피우지 마세요.",
+     "g": "Please don't smoke here.",
+     "cloze": {
+      "blank": "여기에서 담배를 피우____ 마세요.",
+      "ans": "지",
+      "w": [
+       "고",
+       "서",
+       "면"
+      ]
+     },
+     "note": "jiMa"
+    },
+    {
+     "cat": "sentence",
+     "ko": "들어오세요.",
+     "g": "Please come in.",
+     "choose": {
+      "w": [
+       "들어가세요.",
+       "들어왔세요.",
+       "들어오지 마세요."
+      ]
+     },
+     "note": "euseyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이것 좀 보세요.",
+     "g": "Please look at this."
+    },
+    {
+     "cat": "expr",
+     "ko": "잠깐만요.",
+     "g": "Just a moment!",
+     "s": "Someone is about to leave and you want them to wait for you."
+    },
+    {
+     "cat": "expr",
+     "ko": "도와주세요.",
+     "g": "Please help me!",
+     "s": "You are in trouble and need someone nearby to help."
+    },
+    {
+     "cat": "expr",
+     "ko": "죄송하지만 좀 비켜 주세요.",
+     "g": "Sorry, but could you move aside, please?",
+     "s": "You are on a crowded subway and need to get past someone."
+    },
+    {
+     "cat": "expr",
+     "ko": "잠깐 이쪽으로 와 주세요.",
+     "g": "Please come over here for a moment.",
+     "s": "You call a colleague to look at something at your desk."
+    },
+    {
+     "cat": "expr",
+     "ko": "조심하세요.",
+     "g": "Be careful.",
+     "s": "Your friend is about to step on a wet floor."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 죄송하지만 사진 좀 찍어 주세요.\nB: 네, 여기를 보세요.\nA: 감사합니다.\nB: 하나, 둘, 셋!",
+     "g": "A: Sorry, but could you take a photo for me?\nB: Sure, look here.\nA: Thank you.\nB: One, two, three!",
+     "read": {
+      "true": "B가 A의 사진을 찍어 줘요.",
+      "false": [
+       "A가 B의 사진을 찍어 줘요.",
+       "B는 사진을 찍고 싶지 않아요.",
+       "B가 A에게 돈을 줘요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 창문을 열어도 돼요?\nB: 네, 열어 주세요.\nA: 감사합니다. 너무 더워요.\nB: 저도 더워요.",
+     "g": "A: May I open the window?\nB: Yes, please open it.\nA: Thank you. It's too hot.\nB: I'm hot too.",
+     "read": {
+      "true": "두 사람 다 더워요.",
+      "false": [
+       "A는 추워요.",
+       "B는 창문을 열고 싶지 않아요.",
+       "B는 안 더워요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이 사진 좀 보세요.\nB: 어디예요?\nA: 한국이에요.\nB: 정말 예뻐요.",
+     "g": "A: Please look at this photo.\nB: Where is it?\nA: It's Korea.\nB: It's really pretty.",
+     "read": {
+      "true": "사진은 한국에서 찍었어요.",
+      "false": [
+       "사진은 일본에서 찍었어요.",
+       "B는 사진이 안 예쁘다고 해요.",
+       "B가 사진을 보여 줘요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k6.invitations": {
+   "notes": {
+    "lkkayo": "A suggestion pattern asks whether the two of you should do something.",
+    "lraeyo": "An ending asking about the listener's wish means would you like to do something.",
+    "eseoMeet": "The place-of-action particle marks where people meet."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "약속",
+     "g": "appointment, plan"
+    },
+    {
+     "cat": "word",
+     "ko": "초대",
+     "g": "invitation"
+    },
+    {
+     "cat": "word",
+     "ko": "파티",
+     "g": "party"
+    },
+    {
+     "cat": "word",
+     "ko": "주말",
+     "g": "weekend"
+    },
+    {
+     "cat": "sentence",
+     "ko": "주말에 뭐 해요?",
+     "g": "What are you doing on the weekend?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이번 주말에 시간 있어요?",
+     "g": "Do you have time this weekend?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "같이 영화 볼까요?",
+     "g": "Shall we watch a movie together?",
+     "choose": {
+      "w": [
+       "같이 영화 보까요?",
+       "같이 영화를 볼가요?",
+       "같이 영화 볼까서요?"
+      ]
+     },
+     "note": "lkkayo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저녁 같이 먹을래요?",
+     "g": "Would you like to have dinner together?",
+     "choose": {
+      "w": [
+       "저녁 같이 먹을가요?",
+       "저녁 같이 먹는래요?",
+       "저녁 같이 먹을래서요?"
+      ]
+     },
+     "note": "lraeyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "어디에서 만날까요?",
+     "g": "Where shall we meet?",
+     "cloze": {
+      "blank": "어디____ 만날까요?",
+      "ans": "에서",
+      "w": [
+       "를",
+       "가",
+       "의"
+      ]
+     },
+     "note": "eseoMeet"
+    },
+    {
+     "cat": "sentence",
+     "ko": "몇 시에 만날까요?",
+     "g": "What time shall we meet?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "토요일 어때요?",
+     "g": "How about Saturday?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "내일 우리 집에 올래요?",
+     "g": "Would you like to come to my house tomorrow?",
+     "choose": {
+      "w": [
+       "내일 우리 집에 올가요?",
+       "내일 우리 집에 올래서요?",
+       "내일 우리 집에 오을래요?"
+      ]
+     },
+     "note": "lraeyo"
+    },
+    {
+     "cat": "sentence",
+     "ko": "커피 마실래요?",
+     "g": "Would you like to have some coffee?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "주말에 같이 산책해요.",
+     "g": "Let's take a walk together on the weekend."
+    },
+    {
+     "cat": "sentence",
+     "ko": "생일 파티에 오세요.",
+     "g": "Please come to the birthday party.",
+     "cloze": {
+      "blank": "생일 파티____ 오세요.",
+      "ans": "에",
+      "w": [
+       "를",
+       "가",
+       "의"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저도 같이 가도 돼요?",
+     "g": "May I come along too?"
+    },
+    {
+     "cat": "sentence",
+     "ko": "그날은 바빠요.",
+     "g": "I'm busy that day."
+    },
+    {
+     "cat": "sentence",
+     "ko": "저녁에 우리 집에서 만나요.",
+     "g": "Let's meet at my house in the evening.",
+     "cloze": {
+      "blank": "저녁에 우리 집____ 만나요.",
+      "ans": "에서",
+      "w": [
+       "를",
+       "가",
+       "로"
+      ]
+     },
+     "note": "eseoMeet"
+    },
+    {
+     "cat": "expr",
+     "ko": "좋아요, 그래요.",
+     "g": "Sure, let's do that.",
+     "s": "A friend invites you to do something and you happily accept."
+    },
+    {
+     "cat": "expr",
+     "ko": "미안해요, 약속이 있어요.",
+     "g": "Sorry, I have plans.",
+     "s": "A friend invites you but you are already busy."
+    },
+    {
+     "cat": "expr",
+     "ko": "다음에 같이 가요.",
+     "g": "Let's go together next time.",
+     "s": "You cannot join this time but want to politely suggest another occasion."
+    },
+    {
+     "cat": "expr",
+     "ko": "제가 살게요.",
+     "g": "It's on me.",
+     "s": "You and your friend have finished eating and you want to pay."
+    },
+    {
+     "cat": "expr",
+     "ko": "좋은 생각이에요.",
+     "g": "That's a good idea.",
+     "s": "A friend has just made a suggestion that you like."
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이번 주말에 시간 있어요?\nB: 네, 있어요.\nA: 같이 영화 볼까요?\nB: 좋아요. 토요일 어때요?",
+     "g": "A: Do you have time this weekend?\nB: Yes, I do.\nA: Shall we watch a movie together?\nB: Sure. How about Saturday?",
+     "read": {
+      "true": "두 사람은 토요일에 영화를 볼 거예요.",
+      "false": [
+       "B는 주말에 약속이 있어요.",
+       "두 사람은 일요일에 만나요.",
+       "A는 영화를 보고 싶지 않아요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 내일 저녁 같이 먹을래요?\nB: 미안해요. 내일은 약속이 있어요.\nA: 그럼 모레는요?\nB: 모레는 괜찮아요.",
+     "g": "A: Would you like to have dinner together tomorrow?\nB: Sorry, I have plans tomorrow.\nA: Then what about the day after tomorrow?\nB: The day after tomorrow is fine.",
+     "read": {
+      "true": "B는 모레에 시간이 있어요.",
+      "false": [
+       "B는 내일 시간이 있어요.",
+       "B는 모레에 바빠요.",
+       "A는 저녁을 먹고 싶지 않아요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이번 토요일이 제 생일이에요.\nB: 정말요? 축하해요!\nA: 우리 집에서 파티를 해요. 올래요?\nB: 네, 갈게요.",
+     "g": "A: This Saturday is my birthday.\nB: Really? Congratulations!\nA: We're having a party at my house. Will you come?\nB: Yes, I'll come.",
+     "read": {
+      "true": "파티는 A의 집에서 해요.",
+      "false": [
+       "파티는 식당에서 해요.",
+       "B는 파티에 안 갈 거예요.",
+       "B의 생일이 토요일이에요."
+      ]
+     }
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 커피 마실래요?\nB: 좋아요. 제가 살게요.\nA: 아니에요. 제가 살게요.\nB: 그럼 다음에 제가 살게요.",
+     "g": "A: Would you like some coffee?\nB: Sure. It's on me.\nA: No, it's on me.\nB: Then I'll treat you next time.",
+     "read": {
+      "true": "B는 다음에 커피를 살 거예요.",
+      "false": [
+       "B는 커피를 마시고 싶지 않아요.",
+       "A는 커피를 못 사요.",
+       "두 사람은 집에서 만나요."
+      ]
+     }
+    }
+   ]
+  }
+ }
+}

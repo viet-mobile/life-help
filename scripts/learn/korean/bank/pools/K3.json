@@ -1,0 +1,2196 @@
+{
+ "level": "K3",
+ "skills": {
+  "k.k3.self": {
+   "notes": {
+    "copula": "To say 'I am a ...', the noun is followed by a copula whose form depends on whether the noun ends in a vowel or a consonant.",
+    "negCop": "To say 'is not', the noun takes the subject particle and is followed by a special negative copula.",
+    "alsoP": "The particle meaning 'also' takes the place of the topic particle.",
+    "natQ": "Question words such as 'what', 'who' and 'which' replace the unknown part of the sentence; the word order stays the same."
+   },
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "안녕하세요? 저는 김민수예요.",
+     "g": "Hello. I am Kim Minsu.",
+     "note": "copula"
+    },
+    {
+     "cat": "expr",
+     "ko": "만나서 반가워요.",
+     "g": "Nice to meet you.",
+     "s": "You have just been introduced to someone for the first time and want to say you are glad to meet them."
+    },
+    {
+     "cat": "sentence",
+     "ko": "이름이 뭐예요?",
+     "g": "What is your name?",
+     "note": "natQ",
+     "choose": {
+      "w": [
+       "이름이 누구예요?",
+       "이름이 어디예요?",
+       "이름이 몇 살이에요?"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 이름은 이지수예요.",
+     "g": "My name is Lee Jisu.",
+     "note": "copula",
+     "cloze": {
+      "blank": "제 이름____ 이지수예요.",
+      "ans": "은",
+      "w": [
+       "을",
+       "를",
+       "에"
+      ]
+     },
+     "choose": {
+      "w": [
+       "제 이름은 이지수이에요.",
+       "제 이름을 이지수예요.",
+       "제 이름은 이지수가예요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 회사원이에요.",
+     "g": "I am an office worker.",
+     "note": "copula",
+     "cloze": {
+      "blank": "____ 회사원이에요.",
+      "ans": "저는",
+      "w": [
+       "저를",
+       "저에",
+       "저의"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 간호사예요.",
+     "g": "I am a nurse.",
+     "note": "copula",
+     "choose": {
+      "w": [
+       "저는 간호사이에요.",
+       "저는 간호사가에요.",
+       "저는 간호사를 예요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 한국 사람이 아니에요.",
+     "g": "I am not Korean.",
+     "note": "negCop",
+     "cloze": {
+      "blank": "저는 한국 사람____ 아니에요.",
+      "ans": "이",
+      "w": [
+       "을",
+       "를",
+       "에"
+      ]
+     },
+     "choose": {
+      "w": [
+       "저는 한국 사람이 안이에요.",
+       "저는 한국 사람을 아니에요.",
+       "저는 한국 사람이 없어요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "어느 나라 사람이에요?",
+     "g": "Which country are you from?",
+     "note": "natQ",
+     "cloze": {
+      "blank": "____ 나라 사람이에요?",
+      "ans": "어느",
+      "w": [
+       "어디",
+       "누구",
+       "언제"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 일본 사람이에요.",
+     "g": "I am Japanese.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이분은 제 친구예요.",
+     "g": "This person is my friend.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "직업이 뭐예요?",
+     "g": "What is your job?",
+     "note": "natQ",
+     "choose": {
+      "w": [
+       "직업이 어디예요?",
+       "직업이 누구예요?",
+       "직업이 몇 살이에요?"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 대학생이에요.",
+     "g": "I am a university student.",
+     "note": "copula"
+    },
+    {
+     "cat": "expr",
+     "ko": "잘 부탁드립니다.",
+     "g": "Please treat me well.",
+     "s": "You have just introduced yourself to new colleagues and politely ask for their goodwill from now on."
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 요리사예요.",
+     "g": "I am a cook.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이분은 누구예요?",
+     "g": "Who is this person?",
+     "note": "natQ"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저도 학생이에요.",
+     "g": "I am a student, too.",
+     "note": "alsoP",
+     "cloze": {
+      "blank": "저____ 학생이에요.",
+      "ans": "도",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 친구는 의사예요.",
+     "g": "My friend is a doctor.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 영국 사람이에요.",
+     "g": "I am British.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 한국어 선생님이에요.",
+     "g": "I am a Korean language teacher.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 고등학생이에요.",
+     "g": "I am a high school student.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 민수 씨 친구예요.",
+     "g": "I am Minsu's friend.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 가수가 아니에요.",
+     "g": "I am not a singer.",
+     "note": "negCop",
+     "cloze": {
+      "blank": "저는 가수____ 아니에요.",
+      "ans": "가",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "이분은 제 선생님이에요.",
+     "g": "This person is my teacher.",
+     "note": "copula"
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 직업은 은행원이에요.",
+     "g": "My job is bank clerk.",
+     "note": "copula"
+    }
+   ]
+  },
+  "k.k3.family": {
+   "notes": {
+    "topicP": "The topic particle comes in two forms; use the longer one after a final consonant and the shorter one after a vowel.",
+    "objP": "The object particle has two forms depending on whether the noun ends in a vowel or a consonant.",
+    "possP": "A possessive particle links two nouns, like 's in English.",
+    "countP": "To count people, a native number is placed before the counter for people, and one shortens before it."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "할아버지",
+     "g": "grandfather"
+    },
+    {
+     "cat": "word",
+     "ko": "가족사진",
+     "g": "family photo"
+    },
+    {
+     "cat": "word",
+     "ko": "친척",
+     "g": "relatives"
+    },
+    {
+     "cat": "word",
+     "ko": "아기",
+     "g": "baby"
+    },
+    {
+     "cat": "word",
+     "ko": "부부",
+     "g": "married couple"
+    },
+    {
+     "cat": "word",
+     "ko": "막내",
+     "g": "youngest child in a family"
+    },
+    {
+     "cat": "word",
+     "ko": "쌍둥이",
+     "g": "twins"
+    },
+    {
+     "cat": "word",
+     "ko": "손자",
+     "g": "grandson"
+    },
+    {
+     "cat": "word",
+     "ko": "손녀",
+     "g": "granddaughter"
+    },
+    {
+     "cat": "word",
+     "ko": "외동딸",
+     "g": "only daughter"
+    },
+    {
+     "cat": "sentence",
+     "ko": "어머니는 선생님이에요.",
+     "g": "My mother is a teacher.",
+     "note": "topicP",
+     "choose": {
+      "w": [
+       "어머니는 선생님예요.",
+       "어머니를 선생님이에요.",
+       "어머니는 선생님이 아니에요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "아버지는 회사원이에요.",
+     "g": "My father is an office worker.",
+     "note": "topicP",
+     "cloze": {
+      "blank": "____ 회사원이에요.",
+      "ans": "아버지는",
+      "w": [
+       "아버지를",
+       "아버지에",
+       "아버지로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "할머니는 집에 있어요.",
+     "g": "My grandmother is at home.",
+     "cloze": {
+      "blank": "할머니는 집____ 있어요.",
+      "ans": "에",
+      "w": [
+       "을",
+       "가",
+       "와"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "할아버지는 의사예요.",
+     "g": "My grandfather is a doctor.",
+     "note": "topicP"
+    },
+    {
+     "cat": "sentence",
+     "ko": "동생이 한 명 있어요.",
+     "g": "I have one younger brother or sister.",
+     "note": "countP",
+     "cloze": {
+      "blank": "동생이 ____ 명 있어요.",
+      "ans": "한",
+      "w": [
+       "하나",
+       "일",
+       "원"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 가족은 부산에 있어요.",
+     "g": "My family is in Busan.",
+     "cloze": {
+      "blank": "제 가족은 부산____ 있어요.",
+      "ans": "에",
+      "w": [
+       "을",
+       "와",
+       "로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "가족과 같이 밥을 먹어요.",
+     "g": "I eat a meal together with my family.",
+     "cloze": {
+      "blank": "가족과 같이 밥을 ____.",
+      "ans": "먹어요",
+      "w": [
+       "가요",
+       "자요",
+       "와요"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 할머니를 좋아해요.",
+     "g": "I like my grandmother.",
+     "note": "objP",
+     "cloze": {
+      "blank": "저는 할머니____ 좋아해요.",
+      "ans": "를",
+      "w": [
+       "을",
+       "이",
+       "와"
+      ]
+     }
+    },
+    {
+     "cat": "phrase",
+     "ko": "아버지의 이름",
+     "g": "father's name",
+     "note": "possP"
+    },
+    {
+     "cat": "phrase",
+     "ko": "할머니의 집",
+     "g": "grandmother's house",
+     "note": "possP"
+    },
+    {
+     "cat": "sentence",
+     "ko": "할머니는 아기를 좋아해요.",
+     "g": "My grandmother likes the baby.",
+     "note": "objP",
+     "cloze": {
+      "blank": "할머니는 아기____ 좋아해요.",
+      "ans": "를",
+      "w": [
+       "을",
+       "와",
+       "로"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "아버지는 의사가 아니에요.",
+     "g": "My father is not a doctor.",
+     "cloze": {
+      "blank": "아버지는 의사____ 아니에요.",
+      "ans": "가",
+      "w": [
+       "를",
+       "에",
+       "로"
+      ]
+     }
+    }
+   ]
+  },
+  "k.k3.numbers": {
+   "notes": {
+    "nat": "Native Korean numbers count things and people; one, two, three and four change shape before a counter.",
+    "sinoN": "Sino-Korean numbers are used for floors, months, route numbers and arithmetic.",
+    "ctr": "Each counter word (cups, books, animals, bottles, people) is placed after the number and the noun.",
+    "mathN": "In arithmetic, Sino-Korean numbers are used and the answer is followed by the copula."
+   },
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "책이 세 권 있어요.",
+     "g": "There are three books.",
+     "note": "nat",
+     "cloze": {
+      "blank": "책이 ____ 권 있어요.",
+      "ans": "세",
+      "w": [
+       "삼",
+       "이",
+       "오"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "친구가 네 명 있어요.",
+     "g": "I have four friends.",
+     "note": "nat",
+     "cloze": {
+      "blank": "친구가 ____ 명 있어요.",
+      "ans": "네",
+      "w": [
+       "사",
+       "삼",
+       "오"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "학생이 둘 있어요.",
+     "g": "There are two students.",
+     "note": "nat",
+     "cloze": {
+      "blank": "학생이 ____ 있어요.",
+      "ans": "둘",
+      "w": [
+       "이",
+       "삼",
+       "사"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "커피 두 잔 주세요.",
+     "g": "Two coffees, please.",
+     "note": "ctr",
+     "cloze": {
+      "blank": "커피 ____ 잔 주세요.",
+      "ans": "두",
+      "w": [
+       "이",
+       "삼",
+       "오"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "물 한 병 주세요.",
+     "g": "One bottle of water, please.",
+     "note": "ctr",
+     "cloze": {
+      "blank": "물 ____ 병 주세요.",
+      "ans": "한",
+      "w": [
+       "일",
+       "삼",
+       "사"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "사과 다섯 개 주세요.",
+     "g": "Five apples, please.",
+     "note": "ctr"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 더하기 삼은 오예요.",
+     "g": "Two plus three is five.",
+     "note": "mathN",
+     "cloze": {
+      "blank": "이 더하기 삼은 ____예요.",
+      "ans": "오",
+      "w": [
+       "사",
+       "육",
+       "칠"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "사 빼기 일은 삼이에요.",
+     "g": "Four minus one is three.",
+     "note": "mathN",
+     "cloze": {
+      "blank": "사 빼기 일은 ____이에요.",
+      "ans": "삼",
+      "w": [
+       "십",
+       "팔",
+       "육"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 집은 이 층이에요.",
+     "g": "Our home is on the second floor.",
+     "note": "sinoN",
+     "choose": {
+      "w": [
+       "우리 집은 두 층이에요.",
+       "우리 집은 둘 층이에요.",
+       "우리 집은 이 번이에요."
+      ]
+     }
+    },
+    {
+     "cat": "phrase",
+     "ko": "삼 층",
+     "g": "third floor",
+     "note": "sinoN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "사 층",
+     "g": "fourth floor",
+     "note": "sinoN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "오 층",
+     "g": "fifth floor",
+     "note": "sinoN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "삼월",
+     "g": "March",
+     "note": "sinoN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "오월",
+     "g": "May",
+     "note": "sinoN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "삼 번 버스",
+     "g": "bus number 3",
+     "note": "sinoN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "이 번 출구",
+     "g": "exit number 2",
+     "note": "sinoN"
+    },
+    {
+     "cat": "word",
+     "ko": "오",
+     "g": "five (Sino-Korean)",
+     "note": "sinoN"
+    },
+    {
+     "cat": "word",
+     "ko": "영",
+     "g": "zero"
+    },
+    {
+     "cat": "phrase",
+     "ko": "하나, 둘, 셋, 넷, 다섯",
+     "g": "one to five (counting in native Korean numbers)",
+     "note": "nat"
+    },
+    {
+     "cat": "phrase",
+     "ko": "한 명",
+     "g": "one person",
+     "note": "nat"
+    },
+    {
+     "cat": "phrase",
+     "ko": "두 명",
+     "g": "two people",
+     "note": "nat"
+    },
+    {
+     "cat": "phrase",
+     "ko": "고양이 세 마리",
+     "g": "three cats",
+     "note": "ctr"
+    },
+    {
+     "cat": "phrase",
+     "ko": "연필 한 자루",
+     "g": "one pencil",
+     "note": "ctr"
+    }
+   ]
+  },
+  "k.k3.native10": {
+   "notes": {
+    "nat6": "Native numbers six to ten keep the same shape before a counter, unlike one to four.",
+    "hour": "Hours are counted with native numbers, but minutes are counted with Sino-Korean numbers.",
+    "ordN": "A suffix added to a native number makes it an ordinal, like 'th' in English.",
+    "ctr": "Each counter word (people, cups, animals, bottles, books, pieces) follows the number."
+   },
+   "entries": [
+    {
+     "cat": "phrase",
+     "ko": "일곱 명",
+     "g": "seven people",
+     "note": "ctr"
+    },
+    {
+     "cat": "phrase",
+     "ko": "커피 열 잔",
+     "g": "ten cups of coffee",
+     "note": "ctr"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여덟 시",
+     "g": "eight o'clock",
+     "note": "hour"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여섯 시 반",
+     "g": "half past six",
+     "note": "hour"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여섯 시간",
+     "g": "six hours",
+     "note": "hour"
+    },
+    {
+     "cat": "phrase",
+     "ko": "열 시 오 분",
+     "g": "five past ten",
+     "note": "hour"
+    },
+    {
+     "cat": "phrase",
+     "ko": "일곱 번",
+     "g": "seven times",
+     "note": "nat6"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여덟 번째",
+     "g": "eighth",
+     "note": "ordN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "하나부터 열까지",
+     "g": "from one to ten",
+     "note": "nat6"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여섯, 일곱, 여덟",
+     "g": "six, seven, eight (counting in native Korean numbers)",
+     "note": "nat6"
+    },
+    {
+     "cat": "phrase",
+     "ko": "물 아홉 병",
+     "g": "nine bottles of water",
+     "note": "ctr"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여덟 개",
+     "g": "eight pieces",
+     "note": "ctr"
+    },
+    {
+     "cat": "phrase",
+     "ko": "열 번",
+     "g": "ten times",
+     "note": "nat6"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사과 여섯 개 주세요.",
+     "g": "Six apples, please.",
+     "note": "ctr",
+     "cloze": {
+      "blank": "사과 ____ 개 주세요.",
+      "ans": "여섯",
+      "w": [
+       "육",
+       "십",
+       "팔"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 반 학생은 열 명이에요.",
+     "g": "There are ten students in our class.",
+     "note": "ctr"
+    },
+    {
+     "cat": "sentence",
+     "ko": "고양이가 여덟 마리 있어요.",
+     "g": "There are eight cats.",
+     "note": "ctr",
+     "cloze": {
+      "blank": "고양이가 ____ 마리 있어요.",
+      "ans": "여덟",
+      "w": [
+       "팔",
+       "칠",
+       "구"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "책이 아홉 권 있어요.",
+     "g": "There are nine books.",
+     "note": "ctr",
+     "cloze": {
+      "blank": "책이 ____ 권 있어요.",
+      "ans": "아홉",
+      "w": [
+       "구",
+       "육",
+       "십"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "아홉 다음은 열이에요.",
+     "g": "Ten comes after nine.",
+     "note": "nat6",
+     "cloze": {
+      "blank": "아홉 다음은 ____이에요.",
+      "ans": "열",
+      "w": [
+       "여덟",
+       "일곱",
+       "여섯"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "여섯 다음은 일곱이에요.",
+     "g": "Seven comes after six.",
+     "note": "nat6"
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 집에는 의자가 일곱 개 있어요.",
+     "g": "There are seven chairs in our house.",
+     "note": "ctr"
+    },
+    {
+     "cat": "sentence",
+     "ko": "아홉 시에 학교에 가요.",
+     "g": "I go to school at nine o'clock.",
+     "note": "hour"
+    },
+    {
+     "cat": "sentence",
+     "ko": "일곱 시에 일어나요.",
+     "g": "I get up at seven o'clock.",
+     "note": "hour",
+     "cloze": {
+      "blank": "____ 시에 일어나요.",
+      "ans": "일곱",
+      "w": [
+       "칠",
+       "팔",
+       "구"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리는 여섯 명이에요.",
+     "g": "There are six of us.",
+     "note": "ctr",
+     "choose": {
+      "w": [
+       "우리는 육 명이에요.",
+       "우리는 여섯 번이에요.",
+       "우리는 여섯 개예요."
+      ]
+     }
+    }
+   ]
+  },
+  "k.k3.sino": {
+   "notes": {
+    "money": "Prices are said with a Sino-Korean number followed by the currency word; ten thousand is its own unit above thousands.",
+    "irrMonth": "Two month names change their spelling: the number loses its final sound in one and takes a different vowel in the other.",
+    "mathS": "Arithmetic and phone numbers are read with Sino-Korean numbers, and the answer is followed by the copula.",
+    "dateS": "Dates are said as month, then day, using Sino-Korean numbers with the units for month and day.",
+    "bigN": "Large Sino-Korean numbers are built from tens, hundreds and thousands read left to right."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "십일",
+     "g": "eleven",
+     "note": "bigN"
+    },
+    {
+     "cat": "word",
+     "ko": "이십",
+     "g": "twenty",
+     "note": "bigN"
+    },
+    {
+     "cat": "word",
+     "ko": "삼십오",
+     "g": "thirty-five",
+     "note": "bigN"
+    },
+    {
+     "cat": "word",
+     "ko": "구십구",
+     "g": "ninety-nine",
+     "note": "bigN"
+    },
+    {
+     "cat": "word",
+     "ko": "이백",
+     "g": "two hundred",
+     "note": "bigN"
+    },
+    {
+     "cat": "word",
+     "ko": "백이십삼",
+     "g": "one hundred twenty-three",
+     "note": "bigN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "이천이십육 년",
+     "g": "the year 2026",
+     "note": "bigN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "천 원",
+     "g": "1,000 won",
+     "note": "money"
+    },
+    {
+     "cat": "phrase",
+     "ko": "오백 원",
+     "g": "500 won",
+     "note": "money"
+    },
+    {
+     "cat": "phrase",
+     "ko": "만 원",
+     "g": "10,000 won",
+     "note": "money"
+    },
+    {
+     "cat": "phrase",
+     "ko": "오만 원",
+     "g": "50,000 won",
+     "note": "money"
+    },
+    {
+     "cat": "phrase",
+     "ko": "칠월",
+     "g": "July",
+     "note": "dateS"
+    },
+    {
+     "cat": "phrase",
+     "ko": "유월",
+     "g": "June",
+     "note": "irrMonth"
+    },
+    {
+     "cat": "phrase",
+     "ko": "시월",
+     "g": "October",
+     "note": "irrMonth"
+    },
+    {
+     "cat": "phrase",
+     "ko": "십이월",
+     "g": "December",
+     "note": "dateS"
+    },
+    {
+     "cat": "phrase",
+     "ko": "십 분",
+     "g": "ten minutes"
+    },
+    {
+     "cat": "phrase",
+     "ko": "삼십 분",
+     "g": "thirty minutes"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 사과는 삼천 원이에요.",
+     "g": "This apple is 3,000 won.",
+     "note": "money",
+     "cloze": {
+      "blank": "이 사과는 ____ 원이에요.",
+      "ans": "삼천",
+      "w": [
+       "셋",
+       "세",
+       "서른"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "커피는 오천 원이에요.",
+     "g": "The coffee is 5,000 won.",
+     "note": "money",
+     "cloze": {
+      "blank": "커피는 ____ 원이에요.",
+      "ans": "오천",
+      "w": [
+       "다섯",
+       "여섯",
+       "열"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 책은 만 이천 원이에요.",
+     "g": "This book is 12,000 won.",
+     "note": "money"
+    },
+    {
+     "cat": "sentence",
+     "ko": "오늘은 사월 오 일이에요.",
+     "g": "Today is April 5th.",
+     "note": "dateS",
+     "cloze": {
+      "blank": "오늘은 ____ 오 일이에요.",
+      "ans": "사월",
+      "w": [
+       "사 개월",
+       "사 번",
+       "사 명"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 생일은 구월 십 일이에요.",
+     "g": "My birthday is September 10th.",
+     "note": "dateS"
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 전화번호는 공일공 이삼사오 육칠팔구예요.",
+     "g": "My phone number is zero-one-zero, two-three-four-five, six-seven-eight-nine.",
+     "note": "mathS"
+    },
+    {
+     "cat": "sentence",
+     "ko": "삼 곱하기 삼은 구예요.",
+     "g": "Three times three is nine.",
+     "note": "mathS",
+     "cloze": {
+      "blank": "삼 곱하기 삼은 ____예요.",
+      "ans": "구",
+      "w": [
+       "육",
+       "칠",
+       "팔"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "십 더하기 십은 이십이에요.",
+     "g": "Ten plus ten is twenty.",
+     "note": "mathS",
+     "cloze": {
+      "blank": "십 더하기 십은 ____이에요.",
+      "ans": "이십",
+      "w": [
+       "십",
+       "삼십",
+       "오십"
+      ]
+     }
+    }
+   ]
+  },
+  "k.k3.ages": {
+   "notes": {
+    "ageN": "Age is counted with native numbers followed by the counter for years; twenty takes a special short form before it.",
+    "ageQ": "To ask someone's age, the question word 'how many' is combined with the counter for years.",
+    "tens": "The native tens (thirty, forty, fifty, and so on) are separate words and join directly to the ones digit.",
+    "compare": "The particle meaning 'than' marks the thing being compared with."
+   },
+   "entries": [
+    {
+     "cat": "phrase",
+     "ko": "두 살",
+     "g": "two years old",
+     "note": "ageN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "여섯 살",
+     "g": "six years old",
+     "note": "ageN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "열다섯 살",
+     "g": "fifteen years old",
+     "note": "ageN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "열여덟 살",
+     "g": "eighteen years old",
+     "note": "ageN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "스물한 살",
+     "g": "twenty-one years old",
+     "note": "ageN"
+    },
+    {
+     "cat": "phrase",
+     "ko": "서른다섯 살",
+     "g": "thirty-five years old",
+     "note": "tens"
+    },
+    {
+     "cat": "phrase",
+     "ko": "마흔 살",
+     "g": "forty years old",
+     "note": "tens"
+    },
+    {
+     "cat": "phrase",
+     "ko": "쉰 살",
+     "g": "fifty years old",
+     "note": "tens"
+    },
+    {
+     "cat": "phrase",
+     "ko": "예순 살",
+     "g": "sixty years old",
+     "note": "tens"
+    },
+    {
+     "cat": "phrase",
+     "ko": "일흔 살",
+     "g": "seventy years old",
+     "note": "tens"
+    },
+    {
+     "cat": "phrase",
+     "ko": "아흔 살",
+     "g": "ninety years old",
+     "note": "tens"
+    },
+    {
+     "cat": "word",
+     "ko": "생일",
+     "g": "birthday"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 스물다섯 살이에요.",
+     "g": "I am twenty-five years old.",
+     "note": "ageN",
+     "cloze": {
+      "blank": "저는 ____ 살이에요.",
+      "ans": "스물다섯",
+      "w": [
+       "이십오",
+       "이십",
+       "오십"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 동생은 열두 살이에요.",
+     "g": "My younger brother or sister is twelve years old.",
+     "note": "ageN",
+     "cloze": {
+      "blank": "제 동생은 열두 ____.",
+      "ans": "살이에요",
+      "w": [
+       "개예요",
+       "명이에요",
+       "번이에요"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "동생은 몇 살이에요?",
+     "g": "How old is your younger brother or sister?",
+     "note": "ageQ",
+     "choose": {
+      "w": [
+       "동생은 몇 개예요?",
+       "동생은 얼마예요?",
+       "동생은 누구예요?"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "할머니는 여든 살이에요.",
+     "g": "My grandmother is eighty years old.",
+     "note": "tens",
+     "cloze": {
+      "blank": "할머니는 ____ 살이에요.",
+      "ans": "여든",
+      "w": [
+       "팔십",
+       "팔",
+       "일흔"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "아버지는 쉰다섯 살이에요.",
+     "g": "My father is fifty-five years old.",
+     "note": "tens"
+    },
+    {
+     "cat": "sentence",
+     "ko": "어머니는 마흔여덟 살이에요.",
+     "g": "My mother is forty-eight years old.",
+     "note": "tens"
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리는 동갑이에요.",
+     "g": "We are the same age."
+    },
+    {
+     "cat": "sentence",
+     "ko": "아기는 한 살이에요.",
+     "g": "The baby is one year old.",
+     "note": "ageN",
+     "cloze": {
+      "blank": "아기는 ____ 살이에요.",
+      "ans": "한",
+      "w": [
+       "일",
+       "하나",
+       "첫"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 친구보다 한 살 많아요.",
+     "g": "I am one year older than my friend.",
+     "note": "compare",
+     "cloze": {
+      "blank": "저는 친구____ 한 살 많아요.",
+      "ans": "보다",
+      "w": [
+       "처럼",
+       "하고",
+       "에게"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 친구는 스물여섯 살이에요.",
+     "g": "My friend is twenty-six years old.",
+     "note": "ageN"
+    },
+    {
+     "cat": "sentence",
+     "ko": "아이는 일곱 살이에요.",
+     "g": "The child is seven years old.",
+     "note": "ageN"
+    }
+   ]
+  },
+  "k.k3.people": {
+   "notes": {
+    "dem": "A demonstrative word placed before a noun points at a person or thing that is far from both speakers.",
+    "cnt": "To count people, a native number goes before the counter for people.",
+    "occ": "Job titles are nouns, so they take the copula to say what someone does."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "아이",
+     "g": "child"
+    },
+    {
+     "cat": "word",
+     "ko": "어른",
+     "g": "adult"
+    },
+    {
+     "cat": "word",
+     "ko": "손님",
+     "g": "customer or guest"
+    },
+    {
+     "cat": "word",
+     "ko": "외국인",
+     "g": "foreigner"
+    },
+    {
+     "cat": "word",
+     "ko": "경찰",
+     "g": "police officer"
+    },
+    {
+     "cat": "word",
+     "ko": "간호사",
+     "g": "nurse"
+    },
+    {
+     "cat": "word",
+     "ko": "요리사",
+     "g": "cook"
+    },
+    {
+     "cat": "word",
+     "ko": "가수",
+     "g": "singer"
+    },
+    {
+     "cat": "word",
+     "ko": "군인",
+     "g": "soldier"
+    },
+    {
+     "cat": "word",
+     "ko": "회사원",
+     "g": "office worker"
+    },
+    {
+     "cat": "word",
+     "ko": "은행원",
+     "g": "bank clerk"
+    },
+    {
+     "cat": "word",
+     "ko": "변호사",
+     "g": "lawyer"
+    },
+    {
+     "cat": "word",
+     "ko": "대학생",
+     "g": "university student"
+    },
+    {
+     "cat": "word",
+     "ko": "사장님",
+     "g": "company president"
+    },
+    {
+     "cat": "word",
+     "ko": "이웃",
+     "g": "neighbor"
+    },
+    {
+     "cat": "word",
+     "ko": "동료",
+     "g": "coworker"
+    },
+    {
+     "cat": "word",
+     "ko": "주부",
+     "g": "homemaker"
+    },
+    {
+     "cat": "word",
+     "ko": "배우",
+     "g": "actor"
+    },
+    {
+     "cat": "word",
+     "ko": "기자",
+     "g": "reporter"
+    },
+    {
+     "cat": "word",
+     "ko": "약사",
+     "g": "pharmacist"
+    },
+    {
+     "cat": "word",
+     "ko": "소방관",
+     "g": "firefighter"
+    },
+    {
+     "cat": "word",
+     "ko": "화가",
+     "g": "painter"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저 남자는 제 친구예요.",
+     "g": "That man is my friend.",
+     "note": "dem",
+     "choose": {
+      "w": [
+       "저 여자는 제 친구예요.",
+       "저 남자는 제 선생님이에요.",
+       "저 남자는 친구가 아니에요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저 여자는 의사예요.",
+     "g": "That woman is a doctor.",
+     "note": "dem",
+     "choose": {
+      "w": [
+       "저 남자는 의사예요.",
+       "저 여자는 간호사예요.",
+       "저 여자는 의사가 아니에요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "이 사람은 가수예요.",
+     "g": "This person is a singer.",
+     "note": "occ"
+    },
+    {
+     "cat": "sentence",
+     "ko": "아이가 두 명 있어요.",
+     "g": "There are two children.",
+     "note": "cnt"
+    },
+    {
+     "cat": "sentence",
+     "ko": "손님이 와요.",
+     "g": "A customer is coming."
+    }
+   ]
+  },
+  "k.k3.family2": {
+   "notes": {
+    "who": "Siblings have different words depending on whether the speaker is male or female, and on whether the sibling is older or younger.",
+    "side": "Aunts and uncles have separate words depending on whether they are on the father's side or the mother's side.",
+    "topicP": "The topic particle comes in two forms; use the longer one after a final consonant and the shorter one after a vowel.",
+    "countP": "To count people, a native number goes before the counter for people, and one shortens before it."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "형",
+     "g": "older brother (said by a man)",
+     "note": "who"
+    },
+    {
+     "cat": "word",
+     "ko": "누나",
+     "g": "older sister (said by a man)",
+     "note": "who"
+    },
+    {
+     "cat": "word",
+     "ko": "남동생",
+     "g": "younger brother",
+     "note": "who"
+    },
+    {
+     "cat": "word",
+     "ko": "여동생",
+     "g": "younger sister",
+     "note": "who"
+    },
+    {
+     "cat": "word",
+     "ko": "아내",
+     "g": "wife"
+    },
+    {
+     "cat": "word",
+     "ko": "남편",
+     "g": "husband"
+    },
+    {
+     "cat": "word",
+     "ko": "삼촌",
+     "g": "uncle (father's brother)",
+     "note": "side"
+    },
+    {
+     "cat": "word",
+     "ko": "외삼촌",
+     "g": "uncle (mother's brother)",
+     "note": "side"
+    },
+    {
+     "cat": "word",
+     "ko": "이모",
+     "g": "aunt (mother's sister)",
+     "note": "side"
+    },
+    {
+     "cat": "word",
+     "ko": "고모",
+     "g": "aunt (father's sister)",
+     "note": "side"
+    },
+    {
+     "cat": "word",
+     "ko": "사촌",
+     "g": "cousin"
+    },
+    {
+     "cat": "word",
+     "ko": "조카",
+     "g": "nephew or niece"
+    },
+    {
+     "cat": "word",
+     "ko": "외할머니",
+     "g": "grandmother (mother's mother)",
+     "note": "side"
+    },
+    {
+     "cat": "word",
+     "ko": "외할아버지",
+     "g": "grandfather (mother's father)",
+     "note": "side"
+    },
+    {
+     "cat": "word",
+     "ko": "며느리",
+     "g": "daughter-in-law"
+    },
+    {
+     "cat": "word",
+     "ko": "사위",
+     "g": "son-in-law"
+    },
+    {
+     "cat": "word",
+     "ko": "큰아들",
+     "g": "eldest son"
+    },
+    {
+     "cat": "word",
+     "ko": "큰딸",
+     "g": "eldest daughter"
+    },
+    {
+     "cat": "sentence",
+     "ko": "형은 회사원이에요.",
+     "g": "My older brother is an office worker.",
+     "note": "topicP"
+    },
+    {
+     "cat": "sentence",
+     "ko": "누나는 선생님이에요.",
+     "g": "My older sister is a teacher.",
+     "note": "topicP"
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 여동생은 학생이에요.",
+     "g": "My younger sister is a student.",
+     "note": "topicP",
+     "choose": {
+      "w": [
+       "제 여동생은 학생예요.",
+       "제 여동생을 학생이에요.",
+       "제 여동생은 학생가 아니에요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "남편은 의사예요.",
+     "g": "My husband is a doctor.",
+     "note": "topicP",
+     "choose": {
+      "w": [
+       "남편은 의사이에요.",
+       "남편을 의사예요.",
+       "남편은 의사가에요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "아내는 간호사예요.",
+     "g": "My wife is a nurse.",
+     "note": "topicP"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이모는 요리사예요.",
+     "g": "My aunt on my mother's side is a cook.",
+     "note": "side"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 오빠가 한 명 있어요.",
+     "g": "I have one older brother (a woman is speaking).",
+     "note": "who"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 누나가 두 명 있어요.",
+     "g": "I have two older sisters (a man is speaking).",
+     "note": "countP",
+     "cloze": {
+      "blank": "저는 누나가 ____ 명 있어요.",
+      "ans": "두",
+      "w": [
+       "이",
+       "둘",
+       "둘째"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "삼촌은 서울에 있어요.",
+     "g": "My uncle is in Seoul.",
+     "cloze": {
+      "blank": "삼촌은 서울____ 있어요.",
+      "ans": "에",
+      "w": [
+       "을",
+       "와",
+       "이"
+      ]
+     }
+    }
+   ]
+  },
+  "k.k3.ourfamily": {
+   "notes": {
+    "ourK": "Koreans often say 'our' where English says 'my', especially for family members, home and school.",
+    "famN": "To give the number of family members, a native number goes before the counter for people.",
+    "birth": "Birth-order words say where someone stands among the children of a family.",
+    "ask": "A question word meaning 'how many' goes before the counter for people."
+   },
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "우리 가족은 다섯 명이에요.",
+     "g": "We are a family of five.",
+     "note": "famN",
+     "cloze": {
+      "blank": "우리 가족은 ____ 명이에요.",
+      "ans": "다섯",
+      "w": [
+       "오",
+       "육",
+       "칠"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 가족은 세 명이에요.",
+     "g": "We are a family of three.",
+     "note": "famN",
+     "cloze": {
+      "blank": "우리 가족은 ____ 명이에요.",
+      "ans": "세",
+      "w": [
+       "삼",
+       "이",
+       "일"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 외동딸이에요.",
+     "g": "I am an only daughter."
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 외동아들이에요.",
+     "g": "I am an only son."
+    },
+    {
+     "cat": "sentence",
+     "ko": "형제가 두 명 있어요.",
+     "g": "I have two siblings.",
+     "note": "famN"
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 부모님은 선생님이에요.",
+     "g": "My parents are teachers.",
+     "note": "ourK"
+    },
+    {
+     "cat": "phrase",
+     "ko": "우리 집",
+     "g": "our house",
+     "note": "ourK"
+    },
+    {
+     "cat": "phrase",
+     "ko": "우리 학교",
+     "g": "our school",
+     "note": "ourK"
+    },
+    {
+     "cat": "word",
+     "ko": "우리나라",
+     "g": "our country",
+     "note": "ourK"
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 어머니는 간호사예요.",
+     "g": "My mother is a nurse.",
+     "note": "ourK"
+    },
+    {
+     "cat": "word",
+     "ko": "대가족",
+     "g": "large family"
+    },
+    {
+     "cat": "word",
+     "ko": "핵가족",
+     "g": "nuclear family"
+    },
+    {
+     "cat": "sentence",
+     "ko": "제 가족이에요.",
+     "g": "This is my family."
+    },
+    {
+     "cat": "sentence",
+     "ko": "아버지, 어머니, 오빠, 그리고 저예요.",
+     "g": "It is my father, my mother, my older brother, and me."
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리는 가족이에요.",
+     "g": "We are a family."
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 집에는 고양이가 한 마리 있어요.",
+     "g": "We have one cat at home.",
+     "note": "ourK"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 첫째예요.",
+     "g": "I am the eldest child.",
+     "note": "birth"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 둘째예요.",
+     "g": "I am the second child.",
+     "note": "birth"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 막내예요.",
+     "g": "I am the youngest child.",
+     "note": "birth"
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 가족은 모두 한국 사람이에요.",
+     "g": "Everyone in my family is Korean.",
+     "note": "ourK"
+    },
+    {
+     "cat": "sentence",
+     "ko": "가족이 몇 명이에요?",
+     "g": "How many people are in your family?",
+     "note": "ask",
+     "cloze": {
+      "blank": "가족이 ____ 명이에요?",
+      "ans": "몇",
+      "w": [
+       "누구",
+       "어디",
+       "무슨"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "우리 가족은 서울에 있어요.",
+     "g": "My family is in Seoul.",
+     "note": "ourK"
+    }
+   ]
+  },
+  "k.k3.messages": {
+   "notes": {
+    "ask": "Question words such as 'what', 'where' and 'what time' replace the unknown part and the word order stays the same.",
+    "loc": "A place word followed by a location particle tells where someone is or is going.",
+    "past": "A past-tense ending shows that something has already happened."
+   },
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "잘 지내요?",
+     "g": "Are you doing well?"
+    },
+    {
+     "cat": "expr",
+     "ko": "괜찮아요.",
+     "g": "It's okay.",
+     "s": "A friend apologizes for being a few minutes late and you tell them it is no problem."
+    },
+    {
+     "cat": "expr",
+     "ko": "알겠어요.",
+     "g": "Got it.",
+     "s": "Your teacher explains the homework and you reply that you have understood."
+    },
+    {
+     "cat": "expr",
+     "ko": "고마워요.",
+     "g": "Thank you.",
+     "s": "A friend has just helped you carry your heavy bags."
+    },
+    {
+     "cat": "expr",
+     "ko": "미안해요.",
+     "g": "I'm sorry.",
+     "s": "You accidentally stepped on someone's foot."
+    },
+    {
+     "cat": "expr",
+     "ko": "잠깐만요.",
+     "g": "Just a moment.",
+     "s": "You need someone to wait for a very short time."
+    },
+    {
+     "cat": "expr",
+     "ko": "내일 봐요.",
+     "g": "See you tomorrow.",
+     "s": "You finish chatting with a friend and you will meet again the next day."
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 뭐 해요?",
+     "g": "What are you doing now?",
+     "note": "ask",
+     "cloze": {
+      "blank": "지금 ____ 해요?",
+      "ans": "뭐",
+      "w": [
+       "누구",
+       "어디",
+       "몇"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "오늘 시간 있어요?",
+     "g": "Do you have time today?",
+     "cloze": {
+      "blank": "오늘 시간 ____?",
+      "ans": "있어요",
+      "w": [
+       "가요",
+       "와요",
+       "먹어요"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "밥 먹었어요?",
+     "g": "Have you eaten?",
+     "note": "past"
+    },
+    {
+     "cat": "sentence",
+     "ko": "학교에 가요.",
+     "g": "I'm going to school.",
+     "note": "loc",
+     "cloze": {
+      "blank": "학교____ 가요.",
+      "ans": "에",
+      "w": [
+       "이",
+       "와",
+       "의"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "집에 있어요.",
+     "g": "I'm at home.",
+     "note": "loc",
+     "cloze": {
+      "blank": "집____ 있어요.",
+      "ans": "에",
+      "w": [
+       "을",
+       "를",
+       "와"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "회사에 있어요.",
+     "g": "I'm at the office.",
+     "note": "loc"
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 도착했어요.",
+     "g": "I've just arrived.",
+     "note": "past"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사랑해요.",
+     "g": "I love you."
+    },
+    {
+     "cat": "expr",
+     "ko": "잘 자요.",
+     "g": "Sleep well.",
+     "s": "Late at night you text a friend who is going to bed."
+    },
+    {
+     "cat": "expr",
+     "ko": "생일 축하해요!",
+     "g": "Happy birthday!",
+     "s": "It is your friend's birthday and you send a greeting."
+    },
+    {
+     "cat": "sentence",
+     "ko": "몇 시에 만나요?",
+     "g": "What time shall we meet?",
+     "note": "ask",
+     "cloze": {
+      "blank": "____ 시에 만나요?",
+      "ans": "몇",
+      "w": [
+       "누구",
+       "어디",
+       "뭐"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "어디에서 만나요?",
+     "g": "Where shall we meet?",
+     "note": "ask",
+     "cloze": {
+      "blank": "____에서 만나요?",
+      "ans": "어디",
+      "w": [
+       "누구",
+       "몇",
+       "언제"
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 바빠요.",
+     "g": "I'm busy now.",
+     "choose": {
+      "w": [
+       "지금 바뻐요.",
+       "지금 바쁘어요.",
+       "지금 바쁜요."
+      ]
+     }
+    },
+    {
+     "cat": "sentence",
+     "ko": "지금 못 가요.",
+     "g": "I can't go now."
+    },
+    {
+     "cat": "sentence",
+     "ko": "거의 다 왔어요.",
+     "g": "I'm almost there.",
+     "note": "past"
+    },
+    {
+     "cat": "expr",
+     "ko": "맞아요.",
+     "g": "That's right.",
+     "s": "A friend states a fact and you confirm that it is correct."
+    },
+    {
+     "cat": "expr",
+     "ko": "좋아요!",
+     "g": "Sounds good!",
+     "s": "A friend suggests having dinner together and you happily agree."
+    }
+   ]
+  },
+  "k.k3.sounds": {
+   "notes": {
+    "linkC": "A final consonant moves over to the next syllable when that syllable begins with a silent consonant letter, so it sounds linked.",
+    "doubleC": "Of two final consonants, only one is pronounced before a consonant, but before a vowel the second one links to the next syllable.",
+    "neutral": "At the end of a word or before a consonant, a final consonant is pronounced as only one of a few basic sounds.",
+    "hDrop": "The h sound is silent after a vowel or n, m, l, ng; the neighbouring sounds then link smoothly.",
+    "nasal": "A p, t or k sound becomes m, n or ng when a nasal consonant follows.",
+    "lateral": "The sound n next to l is pronounced l.",
+    "rToN": "An l sound after a stop or ng is pronounced n, and a stop before it may also turn nasal.",
+    "wolLink": "A final l sound links to the next vowel-initial syllable, so the syllable boundary does not match the spelling."
+   },
+   "entries": [
+    {
+     "cat": "word",
+     "ko": "음악을",
+     "g": "music (as the object)",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "옷이",
+     "g": "clothes (as the subject)",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "꽃이",
+     "g": "flowers (as the subject)",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "부엌에",
+     "g": "in the kitchen",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "앞에",
+     "g": "in front",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "밖에",
+     "g": "outside",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "닭이",
+     "g": "chicken (as the subject)",
+     "note": "doubleC"
+    },
+    {
+     "cat": "word",
+     "ko": "한국어",
+     "g": "Korean language",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "일본어",
+     "g": "Japanese language",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "발음",
+     "g": "pronunciation",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "먹어요",
+     "g": "eat(s)",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "앉아요",
+     "g": "sit(s)",
+     "note": "doubleC"
+    },
+    {
+     "cat": "word",
+     "ko": "넓어요",
+     "g": "is wide",
+     "note": "doubleC"
+    },
+    {
+     "cat": "word",
+     "ko": "좋아요",
+     "g": "It's good.",
+     "note": "hDrop"
+    },
+    {
+     "cat": "word",
+     "ko": "많아요",
+     "g": "there is a lot",
+     "note": "hDrop"
+    },
+    {
+     "cat": "word",
+     "ko": "괜찮아요",
+     "g": "It's okay.",
+     "note": "hDrop"
+    },
+    {
+     "cat": "word",
+     "ko": "싫어요",
+     "g": "I don't like it.",
+     "note": "hDrop"
+    },
+    {
+     "cat": "word",
+     "ko": "감사합니다",
+     "g": "Thank you (formal).",
+     "note": "nasal"
+    },
+    {
+     "cat": "word",
+     "ko": "입니다",
+     "g": "is or am or are (formal)",
+     "note": "nasal"
+    },
+    {
+     "cat": "word",
+     "ko": "십육",
+     "g": "sixteen",
+     "note": "rToN"
+    },
+    {
+     "cat": "word",
+     "ko": "십만",
+     "g": "one hundred thousand",
+     "note": "nasal"
+    },
+    {
+     "cat": "word",
+     "ko": "대통령",
+     "g": "president",
+     "note": "rToN"
+    },
+    {
+     "cat": "word",
+     "ko": "설날",
+     "g": "Lunar New Year's Day",
+     "note": "lateral"
+    },
+    {
+     "cat": "word",
+     "ko": "연락",
+     "g": "contact",
+     "note": "lateral"
+    },
+    {
+     "cat": "word",
+     "ko": "십일",
+     "g": "eleven",
+     "note": "linkC"
+    },
+    {
+     "cat": "word",
+     "ko": "칠월",
+     "g": "July",
+     "note": "wolLink"
+    },
+    {
+     "cat": "phrase",
+     "ko": "만 원",
+     "g": "10,000 won",
+     "note": "linkC"
+    },
+    {
+     "cat": "phrase",
+     "ko": "백 원",
+     "g": "100 won",
+     "note": "linkC"
+    },
+    {
+     "cat": "phrase",
+     "ko": "몇 월",
+     "g": "which month",
+     "note": "neutral"
+    },
+    {
+     "cat": "phrase",
+     "ko": "몇 명",
+     "g": "how many people",
+     "note": "neutral"
+    }
+   ]
+  }
+ }
+}
