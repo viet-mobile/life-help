@@ -1,0 +1,460 @@
+{
+  "q": {
+    "plus": {
+      "prompt": "Find the value of $ {a} + {b} $.",
+      "hints": [
+        "Add the digits in the same place.",
+        "When a place adds up to 10 or more, carry to the next place."
+      ],
+      "expl": "{a}+{b}={ans}."
+    },
+    "minus": {
+      "prompt": "Find the value of $ {a} - {b} $.",
+      "hints": [
+        "Subtract the digits in the same place.",
+        "When you cannot subtract, borrow 10 from the next place."
+      ],
+      "expl": "{a}-{b}={ans}."
+    },
+    "times": {
+      "prompt": "Find the value of $ {a} \\times {b} $.",
+      "hints": [
+        "Think of the times table or of equal groups.",
+        "For bigger numbers, multiply place by place and add the parts."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "divide": {
+      "prompt": "Find the value of $ {a} \\div {b} $.",
+      "hints": [
+        "Use the times table of the divisor backwards.",
+        "Find what number times {b} gives {a}."
+      ],
+      "expl": "{a}÷{b}={ans}."
+    },
+    "tensDigit": {
+      "prompt": "What is the digit in the tens place of ${n}$? (digits only)",
+      "hints": [
+        "It is the second digit from the right.",
+        "Find the digit just to the left of the ones place."
+      ],
+      "expl": "The tens digit of {n} is {ans}."
+    },
+    "seqNext": {
+      "prompt": "Find the rule and write the missing number: ${list}, \\square$",
+      "hints": [
+        "Find the difference between neighbouring numbers.",
+        "The numbers grow or shrink by the same amount each step."
+      ],
+      "expl": "The difference between neighbours is {d}, so □={ans}."
+    },
+    "kmToM": {
+      "prompt": "How many metres is {v} km? (digits only)",
+      "hints": [
+        "1 km is 1000 m.",
+        "Multiply {v} by 1000."
+      ],
+      "expl": "{v}×1000={ans}, so it is {ans} m."
+    },
+    "lToMl": {
+      "prompt": "How many millilitres is {v} L? (digits only)",
+      "hints": [
+        "1 L is 1000 mL.",
+        "Multiply {v} by 1000."
+      ],
+      "expl": "{v}×1000={ans}, so it is {ans} mL."
+    },
+    "diameter": {
+      "prompt": "The radius of a circle is {r} cm. How many cm is its diameter? (cm)",
+      "hints": [
+        "The diameter is twice the radius.",
+        "Multiply the radius by 2."
+      ],
+      "expl": "{r}×2={ans}, so the diameter is {ans} cm."
+    },
+    "triThird": {
+      "prompt": "Two angles of a triangle are {a}° and {b}°. How many degrees is the third angle? (degrees)",
+      "hints": [
+        "The three angles of a triangle add up to 180°.",
+        "Subtract the two known angles from 180."
+      ],
+      "expl": "180-{a}-{b}={ans}, so it is {ans}°."
+    },
+    "bigNum": {
+      "prompt": "What number is made of {a} ten-thousands and {b} thousands? (digits only)",
+      "hints": [
+        "{a} ten-thousands is {a}0000.",
+        "{b} thousands is {b}000. Add them."
+      ],
+      "expl": "{a} ten-thousands and {b} thousands make {ans}."
+    },
+    "fracAdd": {
+      "prompt": "Find the value of $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (a decimal is fine, or a fraction written like 3/4)",
+      "hints": [
+        "Rewrite the fractions with a common denominator.",
+        "Add the numerators."
+      ],
+      "expl": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Find the value of $\\frac{{a}}{{b}} \\div {c}$. (a decimal is fine, or a fraction written like 3/4)",
+      "hints": [
+        "Dividing a fraction by a whole number multiplies its denominator by that number.",
+        "Simplify after you calculate."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "decTimes": {
+      "prompt": "Find the value of $ {a} \\times {b} $.",
+      "hints": [
+        "Ignore the decimal point and multiply as whole numbers.",
+        "Then put the decimal point back, with as many decimal places as the factors had."
+      ],
+      "expl": "{a}×{b}={ans}."
+    },
+    "rectArea": {
+      "prompt": "A rectangle is {w} cm wide and {h} cm tall. What is its area in cm²? (digits only)",
+      "hints": [
+        "The area of a rectangle is width × height.",
+        "Multiply the two side lengths."
+      ],
+      "expl": "{w}×{h}={ans}, so the area is {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "A rectangle is {w} cm wide and {h} cm tall. How long is its perimeter in cm? (cm)",
+      "hints": [
+        "The perimeter is the sum of the four sides.",
+        "You can use (width + height) × 2."
+      ],
+      "expl": "({w}+{h})×2={ans}, so the perimeter is {ans} cm."
+    },
+    "ratioPct": {
+      "prompt": "Write $\\frac{{a}}{{b}}$ as a percentage. (digits only)",
+      "hints": [
+        "A percentage is the ratio multiplied by 100.",
+        "You can also rewrite the fraction with denominator 100."
+      ],
+      "expl": "$\\frac{{a}}{{b}}\\times100={ans}$, so it is {ans}%."
+    },
+    "propX": {
+      "prompt": "In the proportion ${a} : {b} = \\square : {d}$, what number goes in the box? (digits only)",
+      "hints": [
+        "In a proportion, the product of the outer terms equals the product of the inner terms.",
+        "Solve □ × {b} = {a} × {d}."
+      ],
+      "expl": "□×{b}={a}×{d}, so □={ans}."
+    },
+    "decPct": {
+      "prompt": "Write this decimal as a percentage: ${d}$ (digits only)",
+      "hints": [
+        "Multiply the decimal by 100 to get a percentage.",
+        "Move the decimal point two places to the right."
+      ],
+      "expl": "{d}×100={ans}, so it is {ans}%."
+    },
+    "cubeVol": {
+      "prompt": "One edge of a cube is {a} cm. What is its volume in cm³? (digits only)",
+      "hints": [
+        "The volume of a cube is edge × edge × edge.",
+        "Multiply {a} by itself three times."
+      ],
+      "expl": "{a}×{a}×{a}={ans}, so the volume is {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "A cuboid is {a} cm long, {b} cm wide and {c} cm high. What is its volume in cm³? (cm³)",
+      "hints": [
+        "The volume of a cuboid is length × width × height.",
+        "Multiply all three lengths."
+      ],
+      "expl": "{a}×{b}×{c}={ans}, so the volume is {ans} cm³."
+    },
+    "circum": {
+      "prompt": "A circle has a radius of {r} cm. How long is its circumference in cm? (use $3.14$ for pi) (cm)",
+      "hints": [
+        "The circumference is diameter × pi.",
+        "The diameter is twice the radius."
+      ],
+      "expl": "{r}×2×3.14={ans}, so it is {ans} cm."
+    },
+    "circleArea": {
+      "prompt": "A circle has a radius of {r} cm. What is its area in cm²? (use $3.14$ for pi) (cm²)",
+      "hints": [
+        "The area is radius × radius × pi.",
+        "Square the radius, then multiply by 3.14."
+      ],
+      "expl": "{r}×{r}×3.14={ans}, so the area is {ans} cm²."
+    },
+    "meanSum": {
+      "prompt": "The mean of {n} numbers is {m}. What is the sum of these {n} numbers? (digits only)",
+      "hints": [
+        "mean = sum ÷ count.",
+        "So sum = mean × count."
+      ],
+      "expl": "{m}×{n}={ans}."
+    },
+    "exprValue": {
+      "prompt": "When $x={x}$, what is the value of ${expr}$?",
+      "hints": [
+        "Put the given number in place of x.",
+        "Multiply first, then add or subtract."
+      ],
+      "expl": "Putting in x={x} gives ${expr}={ans}$."
+    },
+    "solveLin": {
+      "prompt": "Solve the linear equation ${eq}$ (find x).",
+      "hints": [
+        "Add or subtract the same number on both sides to leave the x term alone.",
+        "Then divide both sides by the number in front of x."
+      ],
+      "expl": "From ${eq}$ we get x={ans}."
+    },
+    "expMul": {
+      "prompt": "In $x^{{a}} \\times x^{{b}} = x^{\\square}$, what number goes in the box? (digits only)",
+      "hints": [
+        "When the bases are equal, add the exponents.",
+        "Calculate {a}+{b}."
+      ],
+      "expl": "{a}+{b}={ans}, so □={ans}."
+    },
+    "expPow": {
+      "prompt": "In $(x^{{a}})^{{b}} = x^{\\square}$, what number goes in the box? (digits only)",
+      "hints": [
+        "A power of a power multiplies the exponents.",
+        "Calculate {a}×{b}."
+      ],
+      "expl": "{a}×{b}={ans}, so □={ans}."
+    },
+    "ineqMax": {
+      "prompt": "What is the largest integer $x$ that satisfies $x+{a} < {b}$? (digits only)",
+      "hints": [
+        "Subtract the same number from both sides to find the range of x.",
+        "x must be less than the value you find; that value itself is not included."
+      ],
+      "expl": "x<{bound}, so the largest integer is {ans}."
+    },
+    "slope2": {
+      "prompt": "What is the slope of the line through the points $({x1},\\,{y1})$ and $({x2},\\,{y2})$? (digits only)",
+      "hints": [
+        "The slope is (change in y) ÷ (change in x).",
+        "Divide the difference of the y-coordinates by the difference of the x-coordinates."
+      ],
+      "expl": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "coinCases": {
+      "prompt": "How many outcomes are there when {n} coins are tossed together? (digits only)",
+      "hints": [
+        "One coin has 2 outcomes: heads or tails.",
+        "Multiply the number of outcomes of each coin."
+      ],
+      "expl": "2 multiplied {n} times is {ans}, so there are {ans} outcomes."
+    },
+    "isoApex": {
+      "prompt": "One base angle of an isosceles triangle is {b}°. How many degrees is the apex angle? (degrees)",
+      "hints": [
+        "The two base angles of an isosceles triangle are equal.",
+        "Subtract both base angles from 180°, the sum of the angles of a triangle."
+      ],
+      "expl": "180-{b}×2={ans}, so the apex angle is {ans}°."
+    },
+    "hypot": {
+      "prompt": "The two sides next to the right angle of a right triangle are {a} cm and {b} cm. How long is the longest side in cm? (cm)",
+      "hints": [
+        "Pythagorean theorem: (hypotenuse)² = (one side)² + (other side)².",
+        "Square both sides, add, then take the square root."
+      ],
+      "expl": "${a}^2+{b}^2={sq}$, so the longest side is {ans} cm."
+    },
+    "sqrtVal": {
+      "prompt": "What is the value of $\\sqrt{{n}}$? (digits only)",
+      "hints": [
+        "Find the positive number whose square is {n}.",
+        "Think of the times table."
+      ],
+      "expl": "${ans}^2={n}$, so $\\sqrt{{n}}={ans}$."
+    },
+    "expandPQ": {
+      "prompt": "If $({fa})({fb}) = x^2+px+q$, what is $p+q$? (digits only)",
+      "hints": [
+        "Use $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p is the sum of the two numbers and q is their product."
+      ],
+      "expl": "p={p} and q={q}, so p+q={ans}."
+    },
+    "quadRoot": {
+      "prompt": "Which is the larger of the two roots of ${eq}$? (digits only)",
+      "hints": [
+        "Factorise the left-hand side.",
+        "The roots are the values of x that make a factor zero."
+      ],
+      "expl": "From ${fact}$ the roots are {roots}, so the larger root is {ans}."
+    },
+    "vertexSum": {
+      "prompt": "The vertex of the quadratic function $y={expr}$ is $(p,\\ q)$. What is $p+q$? (digits only)",
+      "hints": [
+        "In $y=a(x-p)^2+q$ the vertex is $(p,\\ q)$.",
+        "Watch the sign inside the brackets."
+      ],
+      "expl": "The vertex is $({p},\\ {q})$, so p+q={ans}."
+    },
+    "remainder": {
+      "prompt": "What is the remainder when $P(x)={poly}$ is divided by ${div}$? (digits only)",
+      "hints": [
+        "Remainder theorem: the remainder of P(x) divided by x-a is P(a).",
+        "Put a in place of x and calculate."
+      ],
+      "expl": "By the remainder theorem, P({a})={ans}."
+    },
+    "complexSum": {
+      "prompt": "What is the sum of the real part and the imaginary part of ${expr}$? (digits only)",
+      "hints": [
+        "Add the real parts together and the imaginary parts together.",
+        "Treat i like a letter."
+      ],
+      "expl": "The real part is {re} and the imaginary part is {im}, so the sum is {ans}."
+    },
+    "permNP": {
+      "prompt": "In how many ways can you choose {r} of {n} different people and line them up? (digits only)",
+      "hints": [
+        "Order matters, so this is a permutation.",
+        "Start at {n} and multiply {r} numbers, counting down."
+      ],
+      "expl": "{calc}={ans}, so there are {ans} ways."
+    },
+    "combNC": {
+      "prompt": "In how many ways can you choose {r} of {n} different people when order does not matter? (digits only)",
+      "hints": [
+        "Order does not matter, so this is a combination.",
+        "Divide the number of permutations by {r}!."
+      ],
+      "expl": "{calc}={ans}, so there are {ans} ways."
+    },
+    "dist2": {
+      "prompt": "What is the distance between the points A({x1}, {y1}) and B({x2}, {y2})? (digits only)",
+      "hints": [
+        "The distance is $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Square the difference of the x-coordinates and of the y-coordinates, then add."
+      ],
+      "expl": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "circleR": {
+      "prompt": "What is the radius of the circle $({fx})^2+({fy})^2={r2}$? (digits only)",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$, r is the radius.",
+        "The number on the right is r²."
+      ],
+      "expl": "$r^2={r2}$, so the radius is {ans}."
+    },
+    "ineqCount": {
+      "prompt": "How many integers $x$ satisfy the quadratic inequality ${eq}<0$? (digits only)",
+      "hints": [
+        "Factorise the left-hand side to find the two roots.",
+        "Count the integers between the roots; the roots themselves are not included."
+      ],
+      "expl": "From ${fact}<0$ we get {r1}<x<{r2}, so there are {ans} integers."
+    },
+    "logVal": {
+      "prompt": "What is the value of $\\log_{{b}} {n}$? (digits only)",
+      "hints": [
+        "$\\log_b n=k$ means $b^k=n$.",
+        "Count how many times you multiply {b} to get {n}."
+      ],
+      "expl": "${b}^{{ans}}={n}$, so the answer is {ans}."
+    },
+    "radDeg": {
+      "prompt": "Write $\\theta=\\dfrac{{num}}{{d}}$ (radians) in degrees. (digits only)",
+      "hints": [
+        "$\\pi$ radians is 180°.",
+        "Put 180° in place of $\\pi$."
+      ],
+      "expl": "Putting in $\\pi=180^\\circ$ gives {ans}°."
+    },
+    "arithTerm": {
+      "prompt": "What is term number {n} of the arithmetic sequence with first term {a} and common difference {d}? (digits only)",
+      "hints": [
+        "The general term is $a_n=a+(n-1)d$.",
+        "Multiply (n-1) by the common difference and add it to the first term."
+      ],
+      "expl": "{a}+({n}-1)×({d})={ans}."
+    },
+    "geoTerm": {
+      "prompt": "What is term number {n} of the geometric sequence with first term {a} and common ratio {r}? (digits only)",
+      "hints": [
+        "The general term is $a_n=ar^{n-1}$.",
+        "Multiply by the common ratio (n-1) times."
+      ],
+      "expl": "{a} times {r} to the power ({n}-1) is {ans}."
+    },
+    "limLinear": {
+      "prompt": "What is the value of $\\lim_{x\\to {a}}({f})$? (digits only)",
+      "hints": [
+        "For a polynomial, the limit equals the value of the function.",
+        "Put {a} in place of x."
+      ],
+      "expl": "Putting in x={a} gives {ans}."
+    },
+    "derivAt": {
+      "prompt": "If $f(x)={poly}$, what is $f'({a})$? (digits only)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Find the derivative, then put {a} in place of x."
+      ],
+      "expl": "$f'(x)={deriv}$, so $f'({a})={ans}$."
+    },
+    "defInt": {
+      "prompt": "What is the value of $\\int_{0}^{{b}} ({fx})\\,dx$? (digits only)",
+      "hints": [
+        "Find the antiderivative, then calculate (value at the upper limit) - (value at the lower limit).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ and $\\int c\\,dx=cx$."
+      ],
+      "expl": "Putting x={b} into the antiderivative ${anti}$ gives {ans}."
+    },
+    "areaX2": {
+      "prompt": "What is the area enclosed by the curve $y={k}x^2$, the $x$-axis and the line $x={a}$? (digits only)",
+      "hints": [
+        "The area is the definite integral from 0 to {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "expl": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "geoSeries": {
+      "prompt": "What is the sum of the infinite geometric series with first term {a} and common ratio ${rtex}$? (a decimal is fine, or a fraction written like 3/4)",
+      "hints": [
+        "The sum exists when the absolute value of the ratio is less than 1.",
+        "The sum is (first term) ÷ (1 - ratio)."
+      ],
+      "expl": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "binomMean": {
+      "prompt": "If the random variable $X$ follows the binomial distribution $B({n},\\ {p})$, what is $E(X)$? (digits only)",
+      "hints": [
+        "The mean of $B(n,\\ p)$ is $np$.",
+        "Multiply n and p."
+      ],
+      "expl": "E(X)={n}×{p}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "What is the magnitude $|\\vec{a}|$ of the vector $\\vec{a}=({x},\\ {y})$? (digits only)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Square each component, add, then take the square root."
+      ],
+      "expl": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "focusX": {
+      "prompt": "What is the $x$-coordinate of the focus of the parabola $y^2={c}x$? (digits only)",
+      "hints": [
+        "The focus of $y^2=4px$ is $(p,\\ 0)$.",
+        "Find p from {c}=4p."
+      ],
+      "expl": "4p={c}, so p={ans}."
+    },
+    "condProb": {
+      "prompt": "For events $A,\\ B$, $P(A)={pa}$ and $P(A\\cap B)={pab}$. What is $P(B\\mid A)$? (write a decimal)",
+      "hints": [
+        "Conditional probability: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Divide the two values."
+      ],
+      "expl": "{pab}÷{pa}={ans}."
+    }
+  }
+}

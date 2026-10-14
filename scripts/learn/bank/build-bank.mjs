@@ -10,9 +10,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { GEN, rngOf } from "./generators.mjs";
 import { TEMPLATES, TEXTS } from "../topics/templates.mjs";
+import { BANK_TEMPLATES } from "./templates.mjs";
+
+// a bank set may use a template of the topic kit (already translated) or one of this directory's own templates (kit/<locale>.json)
+const TPL = { ...TEMPLATES, ...BANK_TEMPLATES };
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const check = process.argv.includes("--check");
+const emitKits = process.argv.includes("--emit-kits");
 const read = (rel) => fs.readFileSync(path.join(root, rel), "utf8");
 const registry = read("messages/registry.ts");
 const LOCALES = [...registry.match(/export const locales = \[([\s\S]*?)\] as const/)[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
@@ -47,6 +52,34 @@ const PLAN = [
   S("m.h3.cnt1", "h3-cnt1", "H3", "repComb", [1], 40), S("m.h3.cnt1", "h3-cnt1", "H3", "binomCoef", [1], 40),
   S("m.el.job2", "el-job2", "H3", "percentChange", [1], 30),
   S("m.el.econ1", "el-econ1", "H3", "simpleInterest", [1], 30), S("m.el.econ1", "el-econ1", "H3", "taxTotal", [1], 30),
+
+  // ---- second tranche: the rest of the core curriculum (grades E1..H3)
+  S("m.e1.addsub", "e1-addsub", "E1", "plus", [1], 30), S("m.e1.addsub", "e1-addsub", "E1", "minus", [1], 30),
+  S("m.e2.addsub", "e2-addsub", "E2", "plus", [2, 3], 35), S("m.e2.addsub", "e2-addsub", "E2", "minus", [2, 3], 35),
+  S("m.e2.mul", "e2-mul", "E2", "times", [1], 30), S("m.e2.place", "e2-place", "E2", "tensDigit", [1], 30), S("m.e2.pattern", "e2-pattern", "E2", "seqNext", [1], 40), S("m.e2.time", "e2-time", "E2", "convMCm", [1], 8),
+  S("m.e3.muldiv", "e3-muldiv", "E3", "times", [2], 40), S("m.e3.muldiv", "e3-muldiv", "E3", "divide", [1], 40),
+  S("m.e3.unit", "e3-unit", "E3", "kmToM", [1], 25), S("m.e3.unit", "e3-unit", "E3", "lToMl", [1], 20), S("m.e3.unit", "e3-unit", "E3", "convKgG", [1], 30), S("m.e3.geo2", "e3-geo2", "E3", "diameter", [1], 30),
+  S("m.e4.muldiv", "e4-muldiv", "E4", "times", [3], 40), S("m.e4.muldiv", "e4-muldiv", "E4", "divide", [2], 30), S("m.e4.angle", "e4-angle", "E4", "triThird", [1], 35),
+  S("m.e4.big", "e4-big", "E4", "bigNum", [1], 40), S("m.e4.data", "e4-data", "E4", "mean", [1], 30),
+  S("m.e5.frac", "e5-frac", "E5", "fracAdd", [1], 40), S("m.e5.dec", "e5-dec", "E5", "decTimes", [1, 2], 30),
+  S("m.e5.factor", "e5-factor", "E5", "divisorCount", [1], 40), S("m.e5.factor", "e5-factor", "E5", "gcd", [1, 2], 25), S("m.e5.factor", "e5-factor", "E5", "lcm", [1], 30),
+  S("m.e5.area", "e5-area", "E5", "rectArea", [1], 35), S("m.e5.geo1", "e5-geo1", "E5", "rectPerim", [1], 35), S("m.e5.ratio", "e5-ratio", "E5", "ratioPct", [1], 40), S("m.e5.dat2", "e5-dat2", "E5", "chanceFraction", [1], 30),
+  S("m.e6.frac", "e6-frac", "E6", "fracDivInt", [1], 40), S("m.e6.ratio", "e6-ratio", "E6", "propX", [1], 40), S("m.e6.pct", "e6-pct", "E6", "decPct", [1], 45),
+  S("m.e6.geo", "e6-geo", "E6", "cubeVol", [1], 11), S("m.e6.geo2", "e6-geo2", "E6", "cuboidVol", [1], 40), S("m.e6.geo1", "e6-geo1", "E6", "circum", [1], 35), S("m.e6.geo1", "e6-geo1", "E6", "circleArea", [1], 15),
+  S("m.e6.stat", "e6-stat", "E6", "meanSum", [1], 40), S("m.e6.stat", "e6-stat", "E6", "mean", [2], 30), S("m.e6.dat1", "e6-dat1", "E6", "pieCount", [1], 40),
+  S("m.expr", "m1-expr", "M1", "exprValue", [1], 45), S("m.solve", "m1-solve", "M1", "solveLin", [1, 2], 30), S("m.m1.prp1", "m1-prp1", "M1", "directConst", [1], 30), S("m.m1.prp1", "m1-prp1", "M1", "inverseConst", [1], 30),
+  S("m.m2.exp", "m2-exp", "M2", "expMul", [1], 30), S("m.m2.exp", "m2-exp", "M2", "expPow", [1], 20), S("m.m2.ineq", "m2-ineq", "M2", "ineqMax", [1], 40),
+  S("m.m2.func", "m2-func", "M2", "slope2", [1], 40), S("m.m2.func", "m2-func", "M2", "funcValue", [1], 30), S("m.m2.func", "m2-func", "M2", "xInt", [1], 30),
+  S("m.m2.prob", "m2-prob", "M2", "coinCases", [1], 7), S("m.m2.geo1", "m2-geo1", "M2", "isoApex", [1], 40), S("m.m2.geo2", "m2-geo2", "M2", "hypot", [1], 40),
+  S("m.m3.sqrt", "m3-sqrt", "M3", "sqrtVal", [1], 24), S("m.m3.fact", "m3-fact", "M3", "expandPQ", [1], 50), S("m.m3.quad", "m3-quad", "M3", "quadRoot", [1], 50), S("m.m3.qfunc", "m3-qfunc", "M3", "vertexSum", [1], 50),
+  S("m.h1.poly", "h1-poly", "H1", "remainder", [1], 50), S("m.h1.cplx", "h1-cplx", "H1", "complexSum", [1], 50), S("m.h1.ineq", "h1-ineq", "H1", "ineqCount", [1], 40),
+  S("m.h1.comb", "h1-comb", "H1", "permNP", [1], 30), S("m.h1.comb", "h1-comb", "H1", "combNC", [1], 30), S("m.h1.geom", "h1-geom", "H1", "dist2", [1], 40), S("m.h1.geo1", "h1-geo1", "H1", "dist2", [1], 40), S("m.h1.geo2", "h1-geo2", "H1", "circleR", [1], 40),
+  S("m.h2.log", "h2-log", "H2", "logVal", [1], 30), S("m.h2.trig", "h2-trig", "H2", "radDeg", [1], 40), S("m.h2.seq", "h2-seq", "H2", "arithTerm", [1], 40), S("m.h2.seq", "h2-seq", "H2", "geoTerm", [1], 30),
+  S("m.h2.lim", "h2-lim", "H2", "limLinear", [1], 40), S("m.h2.der", "h2-der", "H2", "derivAt", [1], 50),
+  S("m.h3.int", "h3-int", "H3", "defInt", [1], 50), S("m.h3.area", "h3-area", "H3", "areaX2", [1], 40), S("m.h3.ser", "h3-ser", "H3", "geoSeries", [1], 40), S("m.h3.cond", "h3-cond", "H3", "condProb", [1], 40),
+  S("m.h3.norm", "h3-norm", "H3", "binomMean", [1], 40), S("m.h3.geo1", "h3-geo1", "H3", "focusX", [1], 9), S("m.h3.geo2", "h3-geo2", "H3", "vecNorm", [1], 40),
+  S("m.el.econ2", "el-econ2", "H3", "equilibrium", [1], 40), S("m.el.job1", "el-job1", "H3", "discount", [1], 30), S("m.el.cul2", "el-cul2", "H3", "pmAverage", [1], 30),
+  S("m.el.sta1", "el-sta1", "H3", "stdev", [1], 30), S("m.el.sta2", "el-sta2", "H3", "ciHalf", [1], 30),
 ];
 
 // ---- skills that really exist in the canonical bundles
@@ -56,7 +89,7 @@ for (const f of ["elementary", "demo", "secondary"]) for (const s of JSON.parse(
 const sets = [];
 for (const p of PLAN) {
   if (!skills.has(p.skill)) fail(`unknown skill ${p.skill}`);
-  if (!GEN[p.template] || !TEMPLATES[p.template]) fail(`unknown template ${p.template}`);
+  if (!GEN[p.template] || !TPL[p.template]) fail(`unknown template ${p.template}`);
   for (const lvl of p.levels) {
     const id = `b-${p.family}-${p.template.toLowerCase()}${p.levels.length > 1 ? lvl : ""}`;
     const rng = rngOf(id);
@@ -78,15 +111,26 @@ for (const p of PLAN) {
   }
 }
 const used = [...new Set(sets.map((s) => s.template))].sort();
+if (emitKits) {
+  const kitDir = path.join(root, "scripts/learn/bank/kit");
+  fs.mkdirSync(kitDir, { recursive: true });
+  for (const [lang, i] of [["en", 0], ["ko", 1]]) {
+    const q = {};
+    for (const [k, t] of Object.entries(BANK_TEMPLATES)) { const [prompt, hints, expl] = t[lang]; q[k] = { prompt, hints, expl }; }
+    fs.writeFileSync(path.join(kitDir, `${lang}.json`), JSON.stringify({ q }, null, 2) + "\n");
+  }
+  console.log("bank kits written");
+  process.exit(0);
+}
 const usedTexts = [...new Set(sets.flatMap((s) => s.rows.flatMap((r) => r.filter((v) => typeof v === "string" && v.startsWith("#")).map((v) => v.slice(1)))))].sort();
 const bank = {
   format: 1, site: "math",
-  templates: Object.fromEntries(used.map((t) => { const [prompt, hints, explanation] = TEMPLATES[t].ko; return [t, { prompt, hints, explanation }]; })),
+  templates: Object.fromEntries(used.map((t) => { const [prompt, hints, explanation] = TPL[t].ko; return [t, { prompt, hints, explanation }]; })),
   texts: Object.fromEntries(usedTexts.map((k) => [k, TEXTS[k][1]])),
   sets,
 };
 // a bank template must not need words the numeric path cannot fill (option words "@x" are for choice questions)
-for (const t of used) if (/\{(name|verdict)\}/.test(TEMPLATES[t].ko[0])) fail(`template ${t} needs choice words`);
+for (const t of used) if (/\{(name|verdict)\}/.test(TPL[t].ko[0])) fail(`template ${t} needs choice words`);
 
 const written = [];
 const write = (rel, text) => {
@@ -107,9 +151,11 @@ for (const loc of LOCALES) {
   const kitFile = path.join(root, `scripts/learn/topics/kit/${loc}.json`);
   if (!fs.existsSync(kitFile)) fail(`no topic kit for ${loc}`);
   const kit = JSON.parse(fs.readFileSync(kitFile, "utf8"));
+  const ownFile = path.join(root, `scripts/learn/bank/kit/${loc}.json`);
+  const own = fs.existsSync(ownFile) ? JSON.parse(fs.readFileSync(ownFile, "utf8")) : { q: {} };
   const templates = {};
   for (const t of used) {
-    const k = kit.q[t];
+    const k = BANK_TEMPLATES[t] ? own.q[t] : kit.q[t];
     if (!k) fail(`${loc}: kit has no template ${t}`);
     const c = bank.templates[t];
     const mine = { prompt: k.prompt, hints: k.hints, explanation: k.expl };

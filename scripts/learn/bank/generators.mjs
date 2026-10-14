@@ -198,8 +198,110 @@ export const GEN = {
   percentChange: (r) => { for (;;) { const a = r.pick([20, 25, 40, 50, 80, 100, 120, 200]), pct = r.pick([5, 10, 15, 20, 25, 30, 40, 50]); if ((a * pct) % 100) continue; return { v: { a, b: a + (a * pct) / 100 }, ans: pct }; } },
   simpleInterest: (r) => { const p = r.pick([50000, 100000, 200000, 300000, 500000]), rate = r.pick([2, 3, 4, 5, 6]), n = r.int(1, 5); return { v: { p, r: rate, rr: String(rate / 100), n }, ans: (p * rate * n) / 100 }; },
   taxTotal: (r) => { const p = r.pick([10000, 12000, 15000, 20000, 25000, 30000, 45000]), t = r.pick([5, 8, 10]); return { v: { p, t, tr: String(t / 100) }, ans: p + (p * t) / 100 }; },
+
+  // ======================= second tranche: the rest of the core curriculum (templates: scripts/learn/bank/templates.mjs) =======================
+  plus: (r, lvl) => {
+    if (lvl === 1) { const a = r.int(1, 9), b = r.int(1, 9); return { v: { a, b }, ans: a + b }; }
+    for (;;) {
+      const a = r.int(10, 89), b = r.int(10, 89), c = a % 10 + b % 10 >= 10;
+      if (a + b > 99) continue;
+      if ((lvl === 2 && !c) || (lvl === 3 && c)) return { v: { a, b }, ans: a + b };
+    }
+  },
+  minus: (r, lvl) => {
+    if (lvl === 1) { const a = r.int(5, 18), b = r.int(1, Math.min(9, a - 1)); return { v: { a, b }, ans: a - b }; }
+    for (;;) {
+      const a = r.int(20, 99), b = r.int(10, a - 1), bw = a % 10 < b % 10;
+      if ((lvl === 2 && !bw) || (lvl === 3 && bw)) return { v: { a, b }, ans: a - b };
+    }
+  },
+  times: (r, lvl) => {
+    if (lvl === 1) { const a = r.int(2, 5), b = r.int(2, 9); return { v: { a, b }, ans: a * b }; }
+    if (lvl === 2) { const a = r.int(2, 9), b = r.int(2, 9); return { v: { a, b }, ans: a * b }; }
+    const a = r.int(12, 49), b = r.int(11, 19); return { v: { a, b }, ans: a * b };
+  },
+  divide: (r, lvl) => { const b = r.int(2, 9), q = lvl === 1 ? r.int(2, 9) : r.int(11, 99); return { v: { a: b * q, b }, ans: q }; },
+  tensDigit: (r) => { const n = r.int(10, 99); return { v: { n }, ans: Math.floor(n / 10) }; },
+  seqNext: (r) => { const s0 = r.int(1, 30), d = r.pick([-5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 10]); const xs = [0, 1, 2, 3].map((i) => s0 + i * d); if (xs.some((x) => x < 0) || s0 + 4 * d < 0) return GEN.seqNext(r); return { v: { list: xs.join(", "), d: d > 0 ? `+${d}` : `${d}` }, ans: s0 + 4 * d }; },
+  kmToM: (r) => { const v = r.int(1, 30); return { v: { v }, ans: v * 1000 }; },
+  lToMl: (r) => { const v = r.int(1, 20); return { v: { v }, ans: v * 1000 }; },
+  convMCm: (r) => { const v = r.int(2, 9); return { v: { v }, ans: v * 100 }; },
+  convKgG: (r) => { const t = r.int(10, 99); const v = r.next() < 0.5 ? t / 10 : Math.floor(t / 10); return { v: { v }, ans: Math.round(v * 1000) }; },
+  diameter: (r) => { const x = r.int(1, 40); return { v: { r: x }, ans: x * 2 }; },
+  triThird: (r) => { for (;;) { const a = r.int(20, 100), b = r.int(20, 100); if (a + b <= 170) return { v: { a, b }, ans: 180 - a - b }; } },
+  bigNum: (r) => { const a = r.int(1, 9), b = r.int(1, 9); return { v: { a, b }, ans: a * 10000 + b * 1000 }; },
+  fracAdd: (r) => { for (;;) { const b = r.int(2, 9), d = r.int(2, 9), a = r.int(1, b - 1), c = r.int(1, d - 1); if (b === d) continue; const num = a * d + c * b, den = b * d, g = gcd(num, den); return { v: { a, b, c, d, num: num / g, den: den / g }, ans: Math.round((num / den) * 1e6) / 1e6, tol: 0.001 }; } },
+  fracDivInt: (r) => { for (;;) { const b = r.int(2, 9), a = r.int(1, b - 1), c = r.int(2, 9), num = a, den = b * c, g = gcd(num, den); if (gcd(a, b) !== 1) continue; return { v: { a, b, c, num: num / g, den: den / g }, ans: Math.round((num / den) * 1e6) / 1e6, tol: 0.001 }; } },
+  decTimes: (r, lvl) => { const a = lvl === 1 ? r.int(2, 99) / 10 : r.int(11, 199) / 100, b = r.int(2, 9); const dp = lvl === 1 ? 1 : 2; return { v: { a, b }, ans: Number((a * b).toFixed(dp)) }; },
+  rectArea: (r) => { const w = r.int(2, 20), h = r.int(2, 20); return { v: { w, h }, ans: w * h }; },
+  rectPerim: (r) => { const w = r.int(2, 20), h = r.int(2, 20); return { v: { w, h }, ans: (w + h) * 2 }; },
+  ratioPct: (r) => { const b = r.pick([2, 4, 5, 10, 20, 25, 50]), a = r.int(1, b - 1); return { v: { a, b }, ans: (a * 100) / b }; },
+  propX: (r) => { const p = r.int(1, 8), q = r.int(1, 8), s = r.int(1, 5), t = r.int(1, 5); if (p === q) return GEN.propX(r); return { v: { a: p * s, b: q * s, d: q * t }, ans: p * t }; },
+  decPct: (r) => { const n = r.int(5, 99); return { v: { d: n / 100 }, ans: n }; },
+  cubeVol: (r) => { const a = r.int(2, 12); return { v: { a }, ans: a ** 3 }; },
+  cuboidVol: (r) => { const a = r.int(2, 9), b = r.int(2, 9), c = r.int(2, 9); return { v: { a, b, c }, ans: a * b * c }; },
+  circum: (r) => { const x = r.int(1, 20); return { v: { r: x }, ans: Math.round(2 * 3.14 * x * 100) / 100, tol: 0.001 }; },
+  circleArea: (r) => { const x = r.int(1, 15); return { v: { r: x }, ans: Math.round(3.14 * x * x * 100) / 100, tol: 0.001 }; },
+  meanSum: (r) => { const n = r.int(3, 9), m = r.int(4, 40); return { v: { n, m }, ans: n * m }; },
+  exprValue: (r) => { const a = r.nonzero(-5, 6), b = r.int(-9, 9), x = r.int(-3, 6); return { v: { x, expr: lin(a, b) }, ans: a * x + b }; },
+  solveLin: (r, lvl) => {
+    const x = r.nonzero(-9, 12), a = r.int(2, 9), b = r.int(1, 12);
+    if (lvl === 1) return r.next() < 0.5 ? { v: { eq: `x+${b}=${x + b}` }, ans: x } : { v: { eq: `x-${b}=${x - b}` }, ans: x };
+    return r.next() < 0.5 ? { v: { eq: `${a}x+${b}=${a * x + b}` }, ans: x } : { v: { eq: `${a}x-${b}=${a * x - b}` }, ans: x };
+  },
+  expMul: (r) => { const a = r.int(2, 9), b = r.int(2, 9); return { v: { a, b }, ans: a + b }; },
+  expPow: (r) => { const a = r.int(2, 6), b = r.int(2, 6); return { v: { a, b }, ans: a * b }; },
+  ineqMax: (r) => { const a = r.int(1, 9), b = r.int(a + 2, a + 15); return { v: { a, b, bound: b - a }, ans: b - a - 1 }; },
+  slope2: (r) => { const m = r.nonzero(-5, 5), dx = r.int(1, 4), x1 = r.int(-4, 4), y1 = r.int(-6, 6); return { v: { x1, y1, x2: x1 + dx, y2: y1 + m * dx }, ans: m }; },
+  coinCases: (r) => { const n = r.int(2, 8); return { v: { n }, ans: 2 ** n }; },
+  isoApex: (r) => { const b = r.int(20, 80); return { v: { b }, ans: 180 - 2 * b }; },
+  hypot: (r) => { const [a, b, c] = r.pick(TRIPLES); const k = r.int(1, 4); const [x, y] = r.next() < 0.5 ? [a * k, b * k] : [b * k, a * k]; return { v: { a: x, b: y, sq: (c * k) ** 2 }, ans: c * k }; },
+  sqrtVal: (r) => { const k = r.int(2, 25); return { v: { n: k * k }, ans: k }; },
+  expandPQ: (r) => { const a = r.nonzero(-9, 9), b = r.nonzero(-9, 9); return { v: { fa: `x${sgn(a)}`, fb: `x${sgn(b)}`, p: a + b, q: a * b }, ans: a + b + a * b }; },
+  quadRoot: (r) => { for (;;) { const r1 = r.int(-8, 8), r2 = r.int(-8, 8); if (r1 === r2 || r1 === 0 || r2 === 0) continue; const eq = `x^2${r1 + r2 === 0 ? "" : `${-(r1 + r2) === 1 ? "+x" : -(r1 + r2) === -1 ? "-x" : `${sgn(-(r1 + r2))}x`}`}${sgn(r1 * r2)}=0`; const f = (x) => `(x${x > 0 ? `-${x}` : `+${-x}`})`; return { v: { eq, fact: `${f(r1)}${f(r2)}=0`, roots: `${r1}, ${r2}` }, ans: Math.max(r1, r2) }; } },
+  vertexSum: (r) => { const a = r.pick([1, 2, 3, -1, -2]), p = r.int(-6, 6), q = r.int(-9, 9); const sq = `(x${p > 0 ? `-${p}` : p < 0 ? `+${-p}` : ""})`.replace("(x)", "x"); const lead = a === 1 ? "" : a === -1 ? "-" : String(a); return { v: { expr: `${lead}${sq}^2${q > 0 ? `+${q}` : q < 0 ? `${q}` : ""}`, p, q }, ans: p + q }; },
+  remainder: (r) => { const deg = r.pick([2, 3]); const cs = Array.from({ length: deg + 1 }, (_, i) => (i === 0 ? r.nonzero(1, 3) : r.int(-6, 6))); const a = r.nonzero(-3, 3); const val = cs.reduce((acc, c) => acc * a + c, 0); return { v: { poly: polyStr(cs), div: `x${a > 0 ? `-${a}` : `+${-a}`}`, a }, ans: val }; },
+  complexSum: (r) => { const a = r.int(-6, 9), c = r.int(-6, 9), b = r.nonzero(-6, 6), d = r.nonzero(-6, 6); const im = (n) => (n === 1 ? "i" : n === -1 ? "-i" : `${n}i`); const part = (re, n) => `(${re}${n > 0 ? "+" : ""}${im(n)})`; return { v: { expr: `${part(a, b)}+${part(c, d)}`, re: a + c, im: b + d }, ans: a + c + b + d }; },
+  permNP: (r) => { const n = r.int(4, 9), k = r.int(2, 3); const seq = Array.from({ length: k }, (_, i) => n - i); return { v: { n, r: k, calc: seq.join("×") }, ans: seq.reduce((p, x) => p * x, 1) }; },
+  combNC: (r) => { const n = r.int(4, 10), k = r.int(2, 3); const seq = Array.from({ length: k }, (_, i) => n - i); const top = seq.reduce((p, x) => p * x, 1), bottom = fact(k); return { v: { n, r: k, calc: `(${seq.join("×")})÷${bottom}` }, ans: top / bottom }; },
+  dist2: (r) => { const [a, b, c] = r.pick(TRIPLES); const k = r.int(1, 3); const sx = r.next() < 0.5 ? 1 : -1, sy = r.next() < 0.5 ? 1 : -1; const x1 = r.int(-5, 5), y1 = r.int(-5, 5); return { v: { x1, y1, x2: x1 + sx * a * k, y2: y1 + sy * b * k, dx: a * k, dy: b * k }, ans: c * k }; },
+  circleR: (r) => { const a = r.int(-5, 5), b = r.int(-5, 5), k = r.int(2, 12); const f = (ch, n) => (n === 0 ? ch : `${ch}${n > 0 ? `-${n}` : `+${-n}`}`); return { v: { fx: f("x", a), fy: f("y", b), r2: k * k }, ans: k }; },
+  ineqCount: (r) => { for (;;) { const r1 = r.int(-6, 4), r2 = r.int(r1 + 2, r1 + 9); if (r1 === 0 || r2 === 0) continue; const f = (x) => `(x${x > 0 ? `-${x}` : `+${-x}`})`; const b = -(r1 + r2), c = r1 * r2; return { v: { eq: `x^2${b === 0 ? "" : `${b === 1 ? "+x" : b === -1 ? "-x" : `${sgn(b)}x`}`}${c === 0 ? "" : sgn(c)}`, fact: `${f(r1)}${f(r2)}`, r1, r2 }, ans: r2 - r1 - 1 }; } },
+  logVal: (r) => { const b = r.pick([2, 3, 4, 5, 10]); const k = r.int(1, b === 10 ? 5 : b === 2 ? 8 : 4); return { v: { b, n: b ** k }, ans: k }; },
+  radDeg: (r) => { const d = r.pick([2, 3, 4, 6, 9, 12]), k = r.int(1, 2 * d - 1); if (gcd(k, d) !== 1) return GEN.radDeg(r); return { v: { num: k === 1 ? "\\pi" : `${k}\\pi`, d }, ans: (180 * k) / d }; },
+  arithTerm: (r) => { const a = r.int(-5, 20), d = r.nonzero(-4, 8), n = r.int(5, 30); return { v: { a, d, n }, ans: a + (n - 1) * d }; },
+  geoTerm: (r) => { const a = r.int(1, 5), q = r.pick([2, 3]), n = r.int(3, 7); return { v: { a, r: q, n }, ans: a * q ** (n - 1) }; },
+  limLinear: (r) => { const p = r.nonzero(-5, 6), q = r.int(-9, 9), a = r.int(-4, 6); return { v: { f: lin(p, q), a }, ans: p * a + q }; },
+  derivAt: (r) => { const cs = [r.nonzero(1, 4), r.int(-5, 5), r.nonzero(-6, 6), r.int(-9, 9)]; const a = r.int(-3, 4); const d = [3 * cs[0], 2 * cs[1], cs[2]]; const ans = d[0] * a * a + d[1] * a + d[2]; return { v: { poly: polyStr(cs), a, deriv: polyStr(d) }, ans }; },
+  defInt: (r) => { const p = 2 * r.nonzero(-3, 4), q = r.int(-6, 6), b = r.int(1, 8); const half = p / 2; const anti = `${half === 1 ? "" : half === -1 ? "-" : half}x^2${q === 0 ? "" : `${q === 1 ? "+x" : q === -1 ? "-x" : `${sgn(q)}x`}`}`; return { v: { b, fx: lin(p, q), anti }, ans: half * b * b + q * b }; },
+  areaX2: (r) => { for (;;) { const k = r.int(1, 6), a = r.int(1, 8); if ((k * a ** 3) % 3) continue; return { v: { k, a }, ans: (k * a ** 3) / 3 }; } },
+  geoSeries: (r) => {
+    const a = r.pick([1, 2, 3, 4, 6, 8, 9, 12]), [pn, qn] = r.pick([[1, 2], [1, 3], [2, 3], [1, 4], [3, 4], [-1, 2], [-1, 3]]);
+    const num = a * qn, den = qn - pn, g = gcd(num, den), n2 = num / g, d2 = den / g;
+    const rtex = pn < 0 ? `-\\frac{${-pn}}{${qn}}` : `\\frac{${pn}}{${qn}}`;
+    return { v: { a, rtex, res: d2 === 1 ? String(n2) : `\\frac{${n2}}{${d2}}` }, ans: Math.round((num / den) * 1e6) / 1e6, tol: 0.001 };
+  },
+  binomMean: (r) => { const n = r.pick([10, 20, 30, 40, 50, 100]), p = r.pick([0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6]); return { v: { n, p }, ans: Math.round(n * p * 1e4) / 1e4 }; },
+  vecNorm: (r) => { const [a, b, c] = r.pick(TRIPLES); const k = r.int(1, 3); const [x, y] = r.next() < 0.5 ? [a * k, b * k] : [b * k, a * k]; return { v: { x: r.next() < 0.5 ? x : -x, y: r.next() < 0.5 ? y : -y }, ans: c * k }; },
+  focusX: (r) => { const c = r.pick([2, 4, 6, 8, 10, 12, 16, 20, 24]); return { v: { c }, ans: c / 4 }; },
+  condProb: (r) => { for (;;) { const pa = r.pick([0.4, 0.5, 0.6, 0.8]), pab = r.int(1, Math.round(pa * 20) - 1) / 20; const ans = pab / pa; if (Math.abs(Math.round(ans * 1000) - ans * 1000) < 1e-9) return { v: { pa, pab }, ans: Math.round(ans * 1000) / 1000, tol: 0.001 }; } },
+  // ---- reused templates of the topic kit, for other skills
+  chanceFraction: (r) => { const total = r.pick([2, 4, 5, 8, 10, 20]), a = r.int(1, total - 1); return { v: { a, b: total - a, total }, ans: a / total, tol: 0.001 }; },
+  pieCount: (r) => { const t = r.pick([100, 200, 300, 400, 500, 600]), p = r.int(1, 19) * 5; return { v: { p, t }, ans: (t * p) / 100 }; },
+  directConst: (r) => { const a = r.int(2, 12), x1 = r.int(2, 9); return { v: { x1, y1: a * x1 }, ans: a }; },
+  inverseConst: (r) => { const x1 = r.int(2, 12), y1 = r.int(2, 12); return { v: { x1, y1 }, ans: x1 * y1 }; },
+  discount: (r) => { const p = r.pick([10000, 20000, 30000, 40000, 50000, 80000]), d = r.pick([5, 10, 15, 20, 25, 30, 40]); return { v: { p, d, dr: String(d / 100) }, ans: p - (p * d) / 100 }; },
+  pmAverage: (r) => { for (;;) { const xs = Array.from({ length: 5 }, () => r.int(15, 70)); const sum = xs.reduce((s, x) => s + x, 0); if (sum % 5 === 0) return { v: { list: list(xs), sum: xs.join("+") }, ans: sum / 5 }; } },
+  equilibrium: (r) => { const q = r.int(2, 30), b = r.int(1, 4), d = r.int(1, 4), c = r.int(5, 40); return { v: { a: c + (b + d) * q, b, c, d }, ans: q }; },
+  ciHalf: (r) => { const s = r.pick([5, 10, 15, 20, 25, 30]), rt = r.pick([5, 6, 7, 8, 9, 10, 12]); return { v: { s, n: rt * rt, rt }, ans: Math.round(((1.96 * s) / rt) * 100) / 100, tol: 0.01 }; },
 };
 
+const TRIPLES = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [20, 21, 29], [9, 40, 41]];
+/** coefficients (highest degree first) as a polynomial in x, e.g. [2,-3,1] -> 2x^2-3x+1 */
+function polyStr(cs) {
+  const n = cs.length - 1;
+  return cs.map((c, i) => [c, n - i]).filter(([c]) => c !== 0).map(([c, pw], i) => { const mag = Math.abs(c) === 1 && pw > 0 ? "" : String(Math.abs(c)); const body = pw === 0 ? String(Math.abs(c)) : `${mag}x${pw > 1 ? `^${pw}` : ""}`; return `${c < 0 ? "-" : i === 0 ? "" : "+"}${body}`; }).join("") || "0";
+}
 /** n distinct integers in [lo, hi] */
 function distinct(r, n, lo, hi) { const s = new Set(); while (s.size < n) s.add(r.int(lo, hi)); return [...s].sort((a, b) => a - b); }
 /** x^3 + ... = 0 from three integer roots, with its factored form */
