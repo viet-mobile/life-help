@@ -1,7 +1,9 @@
 import type { LearnLocale } from "@/lib/learn/i18n";
 import type { ContentBundle, Grade, PublicQuestion, Question, Site } from "@/lib/learn/types";
 import { indexContent, publishedOnly, scopeToGrade, type ContentIndex } from "./indexer";
-import { localizedBundle } from "./localize";
+import { localizedBundle, overlayFor } from "./localize";
+import { BANKS, bankQuestions } from "./bank";
+import { siteConfig } from "@/lib/learn/sites";
 import mathDemo from "./demo/math.json";
 import englishDemo from "./demo/english.json";
 import mathElementary from "./elementary/math.json";
@@ -58,10 +60,18 @@ export function getContentRepository(): ContentRepository {
  * grade (see scopeToGrade); `locale` swaps the learner-facing strings for that locale's overlay. Neither changes ids, question types
  * or answer keys.
  */
-export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: LearnLocale } = {}): Promise<{ bundle: ContentBundle; index: ContentIndex }> {
+export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: LearnLocale; bank?: boolean } = {}): Promise<{ bundle: ContentBundle; index: ContentIndex }> {
   // study.korean is code-reviewed bundled content only (the database content source holds math / english): never a DB round trip.
   let bundle = await (site === "korean" ? demoContentRepository : getContentRepository()).getBundle(site);
   if (opts.locale) bundle = await localizedBundle(bundle, opts.locale);
+  // The parametric practice bank (bank.ts) joins the server-side bundle only: pages and the browser's metadata ask with bank:false.
+  if (opts.bank !== false && BANKS[site]) {
+    const locale = opts.locale ?? siteConfig(site).presentationLocale;
+    const ov = locale === siteConfig(site).presentationLocale ? null : await overlayFor(locale, site);
+    const skills = new Set(bundle.catalog.skills.map((s) => s.id));
+    const extra = bankQuestions(site, locale, ov?.bank, skills, `${skills.size}`);
+    if (extra.length) bundle = { ...bundle, questions: [...bundle.questions, ...extra] };
+  }
   if (opts.grade) bundle = scopeToGrade(bundle, opts.grade);
   return { bundle, index: indexContent(bundle) };
 }

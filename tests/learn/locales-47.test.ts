@@ -14,7 +14,7 @@ import { KOREAN_LEVELS, SITES, type ContentBundle, type Question, type Site } fr
 
 const HANGUL = /[가-힣ㄱ-ㆎ]/;
 const key = (q: Question) => (q.answer.kind === "choice" ? q.answer.id : q.answer.kind === "numeric" ? String(q.answer.value) : q.answer.kind === "text" ? q.answer.accepted[0] : q.answer.ids);
-const canonical = async (site: Site): Promise<ContentBundle> => (await loadIndex(site)).bundle;
+const canonical = async (site: Site): Promise<ContentBundle> => (await loadIndex(site, { bank: false })).bundle; // stored content: the practice bank has its own wording checks (bank.test.ts)
 
 describe("learner locales come from the registry", () => {
   it("is exactly the 47 registry locales, with rtl taken from the registry metadata", () => {

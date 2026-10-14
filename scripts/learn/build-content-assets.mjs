@@ -65,7 +65,9 @@ const manifest = { format: 1, version: "", sites: {} };
 const outputs = [];
 for (const [site, files] of Object.entries(CANON)) {
   const raw = files.map(read);
-  const canonicalSha = sha(raw.join("\n"));
+  const bankFile = site === "math" && fs.existsSync(path.join(root, "lib/learn/content/bank/math.json")) ? read("lib/learn/content/bank/math.json") : null;
+  const bank = bankFile ? JSON.parse(bankFile) : null;
+  const canonicalSha = sha(raw.join("\n") + (bankFile ?? ""));
   const bundles = raw.map((t) => JSON.parse(t));
   const questions = new Map(bundles.flatMap((b) => b.questions).filter((q) => q.status === "PUBLISHED").map((q) => [q.id, q]));
   const ids = { skills: new Set(), courses: new Set(), units: new Set(), lessons: new Set() };
@@ -73,7 +75,7 @@ for (const [site, files] of Object.entries(CANON)) {
     for (const s of b.catalog.skills) ids.skills.add(s.id);
     for (const c of b.catalog.courses) { ids.courses.add(c.id); for (const u of c.units) { ids.units.add(u.id); for (const l of u.lessons) ids.lessons.add(l.id); } }
   }
-  const site_ = { canonicalItems: questions.size, canonicalSha, presentationLocale: PRESENTATION[site], locales: {} };
+  const site_ = { canonicalItems: questions.size, ...(bank ? { bankItems: bank.sets.reduce((n, x) => n + x.rows.length, 0) } : {}), canonicalSha, presentationLocale: PRESENTATION[site], locales: {} };
   const needed = PRESENTATION[site] === "ko" ? koreanStrings(bundles, questions) : [];
   for (const locale of LOCALES) {
     if (locale === PRESENTATION[site]) continue;
@@ -82,6 +84,24 @@ for (const [site, files] of Object.entries(CANON)) {
     const ov = Object.fromEntries(SECTIONS.map((k) => [k, {}]));
     for (const p of parts) { const d = JSON.parse(read(p)); for (const k of SECTIONS) Object.assign(ov[k], d[k] ?? {}); }
     for (const k of ["skills", "courses", "units", "lessons"]) for (const id of Object.keys(ov[k])) if (!ids[k].has(id)) fail(`${locale}/${site}: unknown ${k} id ${id}`);
+    // the parametric question bank (lib/learn/content/bank): this language's wording of every canonical template and text
+    let bankOv;
+    if (bank) {
+      bankOv = { templates: {}, texts: {} };
+      for (const p of parts) { const d = JSON.parse(read(p)); if (d.bank) { Object.assign(bankOv.templates, d.bank.templates ?? {}); Object.assign(bankOv.texts, d.bank.texts ?? {}); } }
+      const holes = (t) => [...new Set([...String(t).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].sort().join(",");
+      for (const [tid, c] of Object.entries(bank.templates)) {
+        const o = bankOv.templates[tid];
+        if (!o) fail(`${locale}/${site}: bank template ${tid} not localized`);
+        if (o.hints.length !== c.hints.length) fail(`${locale}/${site}: bank template ${tid}: hint count`);
+        const pairs = [[o.prompt, c.prompt], [o.explanation, c.explanation], ...o.hints.map((h, i) => [h, c.hints[i]])];
+        for (const [x, y] of pairs) { if (typeof x !== "string" || !x.trim() || HANGUL.test(x)) fail(`${locale}/${site}: bank template ${tid} is empty or still Korean`); if (holes(x) !== holes(y)) fail(`${locale}/${site}: bank template ${tid}: placeholders differ`); }
+      }
+      for (const k of Object.keys(bank.texts)) if (typeof bankOv.texts[k] !== "string" || !bankOv.texts[k].trim() || HANGUL.test(bankOv.texts[k])) fail(`${locale}/${site}: bank text ${k} not localized`);
+      for (const k of Object.keys(bankOv.templates)) if (!bank.templates[k]) delete bankOv.templates[k];
+      for (const k of Object.keys(bankOv.texts)) if (!bank.texts[k]) delete bankOv.texts[k];
+    }
+
     for (const [id, o] of Object.entries(ov.questions)) {
       const q = questions.get(id);
       if (!q) { delete ov.questions[id]; continue; } // an overlay may still carry an unpublished item: never shipped
@@ -93,7 +113,7 @@ for (const [site, files] of Object.entries(CANON)) {
     if (report) { remaining.push([locale, site, untranslated.length]); continue; }
     if (untranslated.length) fail(`${locale}/${site}: ${untranslated.length} learner-facing Korean string(s) not localized, e.g. ${untranslated.slice(0, 3).map((k) => k.join(":")).join(", ")}`);
     const sorted = Object.fromEntries(SECTIONS.map((k) => [k, Object.fromEntries(Object.entries(ov[k]).sort(([a], [b]) => (a < b ? -1 : 1)))]));
-    const body = JSON.stringify({ format: 1, site, locale, canonicalSha, overlay: sorted });
+    const body = JSON.stringify({ format: 1, site, locale, canonicalSha, overlay: bankOv ? { ...sorted, bank: bankOv } : sorted });
     const translated = Object.keys(ov.questions).length;
     site_.locales[locale] = { sha256: sha(body), bytes: Buffer.byteLength(body), questions: translated };
     outputs.push({ site, locale, body });

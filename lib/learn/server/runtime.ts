@@ -25,7 +25,7 @@ function ensureContentSource() {
 /** Server pages load curriculum through this so the configured content source is always applied. */
 export async function loadContent(site: Site, locale?: LearnLocale) {
   ensureContentSource();
-  return loadIndex(site, { locale });
+  return loadIndex(site, { locale, bank: false }); // pages and the browser's metadata never carry the practice bank
 }
 
 /**

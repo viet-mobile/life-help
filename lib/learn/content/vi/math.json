@@ -5078,5 +5078,350 @@
    ],
    "explanation": "Dùng cách “làm tròn gần nhất”, 2951 thành 3000 theo đơn vị 100."
   }
+ },
+ "bank": {
+  "templates": {
+   "addThree": {
+    "prompt": "{a}+{b} bằng bao nhiêu?",
+    "hints": [
+     "Cộng từ hàng đơn vị.",
+     "Nếu một hàng cộng được 10 trở lên thì nhớ sang hàng kế tiếp."
+    ],
+    "explanation": "{a}+{b}={ans}."
+   },
+   "binomCoef": {
+    "prompt": "Hệ số của $x^{{k}}$ trong khai triển $(x+1)^{{n}}$ là bao nhiêu?",
+    "hints": [
+     "Theo định lý nhị thức, các hệ số là số tổ hợp.",
+     "Hệ số của $x^k$ là $_nC_k$, số cách chọn k từ n."
+    ],
+    "explanation": "{calc}={ans}."
+   },
+   "composite": {
+    "prompt": "Nếu $f(x)={f}$ và $g(x)={g}$ thì {comp} bằng bao nhiêu?",
+    "hints": [
+     "Hàm hợp $(g\\circ f)(a)$ nghĩa là $g(f(a))$. Tính từ hàm trong ra hàm ngoài.",
+     "Tìm giá trị của hàm trong trước, rồi thay vào hàm ngoài."
+    ],
+    "explanation": "{steps}, nên đáp án là {ans}."
+   },
+   "crossX": {
+    "prompt": "Đồ thị của $y={a1}x+{b1}$ và $y={a2}x+{b2}$ cắt nhau tại P. Hoành độ của P là bao nhiêu?",
+    "hints": [
+     "Tại giao điểm hai giá trị y bằng nhau.",
+     "Giải $a_1x+b_1=a_2x+b_2$."
+    ],
+    "explanation": "${a1}x+{b1}={a2}x+{b2}$ cho x={ans}."
+   },
+   "dataRange": {
+    "prompt": "Hiệu giữa giá trị lớn nhất và nhỏ nhất của {list} là bao nhiêu?",
+    "hints": [
+     "Tìm giá trị lớn nhất và nhỏ nhất.",
+     "Lấy số lớn trừ đi số nhỏ."
+    ],
+    "explanation": "{max}-{min}={ans}."
+   },
+   "derivVal": {
+    "prompt": "Nếu $f(x)={f}$ thì $f'({a})$ bằng bao nhiêu?",
+    "hints": [
+     "Với hàm hợp, lấy đạo hàm hàm ngoài rồi nhân với đạo hàm của hàm trong; với thương, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+     "Dùng $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ và $(\\cos x)'=-\\sin x$."
+    ],
+    "explanation": "{steps}."
+   },
+   "divisorCount": {
+    "prompt": "{n} có bao nhiêu ước?",
+    "hints": [
+     "Tìm mọi số chia hết {n}.",
+     "Kiểm tra từ số nhỏ nhất trở lên."
+    ],
+    "explanation": "Các ước của {n} là {list}: có {ans} ước."
+   },
+   "factorExp": {
+    "prompt": "Phân tích ${n}$ ra thừa số nguyên tố được $2^a\\times3^b$. $a+b$ bằng bao nhiêu?",
+    "hints": [
+     "Chia {n} cho 2 chừng nào còn chia được.",
+     "Sau đó chia phần còn lại cho 3."
+    ],
+    "explanation": "${n}=2^{a}\\times3^{b}$, nên $a+b={ans}$."
+   },
+   "funcValue": {
+    "prompt": "Với hàm số bậc nhất $f(x)={a}x+{b}$, $f({c})$ bằng bao nhiêu?",
+    "hints": [
+     "Thay {c} vào chỗ x.",
+     "Nhân rồi cộng."
+    ],
+    "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+   },
+   "gcd": {
+    "prompt": "Ước chung lớn nhất của {a} và {b} là bao nhiêu?",
+    "hints": [
+     "Tìm các ước mà hai số có chung.",
+     "Số lớn nhất trong đó là ước chung lớn nhất."
+    ],
+    "explanation": "Ước chung lớn nhất của {a} và {b} là {ans}."
+   },
+   "intAdd": {
+    "prompt": "Tính $({a})+({b})$.",
+    "hints": [
+     "Cùng dấu: cộng các giá trị tuyệt đối và giữ nguyên dấu.",
+     "Khác dấu: lấy hiệu các giá trị tuyệt đối và lấy dấu của số có giá trị tuyệt đối lớn hơn."
+    ],
+    "explanation": "$({a})+({b})={ans}$."
+   },
+   "intDiv": {
+    "prompt": "Tính $({a})\\div({b})$.",
+    "hints": [
+     "Cùng dấu cho kết quả dương, khác dấu cho kết quả âm.",
+     "Chia các giá trị tuyệt đối."
+    ],
+    "explanation": "$({a})\\div({b})={ans}$."
+   },
+   "intMul": {
+    "prompt": "Tính $({a})\\times({b})$.",
+    "hints": [
+     "Cùng dấu cho kết quả dương, khác dấu cho kết quả âm.",
+     "Nhân các giá trị tuyệt đối."
+    ],
+    "explanation": "$({a})\\times({b})={ans}$."
+   },
+   "intSub": {
+    "prompt": "Tính $({a})-({b})$.",
+    "hints": [
+     "Trừ một số là cộng với số đối của nó.",
+     "Viết lại thành $({a})+({nb})$."
+    ],
+    "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+   },
+   "inverseVal": {
+    "prompt": "Nếu $f^{-1}$ là hàm ngược của $f(x)={f}$ thì $f^{-1}({y})$ bằng bao nhiêu?",
+    "hints": [
+     "$f^{-1}(y)=x$ có nghĩa giống như $f(x)=y$.",
+     "Tìm giá trị của x thỏa mãn $f(x)={y}$."
+    ],
+    "explanation": "{steps}, nên $f^{-1}({y})={ans}$."
+   },
+   "lcm": {
+    "prompt": "Bội chung nhỏ nhất của {a} và {b} là bao nhiêu?",
+    "hints": [
+     "Liệt kê các bội chung của hai số, từ nhỏ đến lớn.",
+     "Bội chung nhỏ nhất trong các bội đó là bội chung nhỏ nhất."
+    ],
+    "explanation": "Bội chung nhỏ nhất của {a} và {b} là {ans}."
+   },
+   "matEntry": {
+    "prompt": "Với {mats}, phần tử ở vị trí ({r}, {c}) của {expr} là bao nhiêu?",
+    "hints": [
+     "Phép cộng, phép trừ và phép nhân một số với ma trận được thực hiện lần lượt trên từng phần tử cùng vị trí.",
+     "Phần tử (i, j) của tích $AB$ là tổng các tích của hàng i của $A$ với cột j của $B$, lấy theo thứ tự."
+    ],
+    "explanation": "{steps}, nên đáp án là {ans}."
+   },
+   "mean": {
+    "prompt": "Số trung bình cộng của các số này là bao nhiêu? {list}",
+    "hints": [
+     "Trung bình cộng = (tổng tất cả) ÷ (số lượng).",
+     "Trước hết hãy cộng tất cả lại."
+    ],
+    "explanation": "({sum})÷{n}={ans}, nên trung bình cộng là {ans}."
+   },
+   "median": {
+    "prompt": "Trung vị của dãy số liệu {list} là bao nhiêu?",
+    "hints": [
+     "Sắp xếp số liệu theo thứ tự từ nhỏ đến lớn.",
+     "Giá trị ở giữa là trung vị; nếu số lượng chẵn thì lấy trung bình cộng của hai giá trị ở giữa."
+    ],
+    "explanation": "Sau khi sắp xếp: {sorted}, nên trung vị là {ans}."
+   },
+   "mixedCalc": {
+    "prompt": "Hãy tính: {expr}",
+    "hints": [
+     "Tính phần trong ngoặc trước.",
+     "Sau đó nhân, chia trước cộng, trừ, từ trái sang phải."
+    ],
+    "explanation": "{steps}, nên đáp án là {ans}."
+   },
+   "mode": {
+    "prompt": "Mốt của dãy số liệu {list} là bao nhiêu?",
+    "hints": [
+     "Mốt là giá trị xuất hiện nhiều nhất.",
+     "Đếm số lần xuất hiện của mỗi giá trị."
+    ],
+    "explanation": "{ans} xuất hiện nhiều nhất, nên mốt là {ans}."
+   },
+   "percentChange": {
+    "prompt": "Một giá trị thay đổi từ {a} đến {b}. Nó tăng bao nhiêu phần trăm? (%)",
+    "hints": [
+     "Tỉ lệ tăng = (lượng tăng) ÷ (giá trị ban đầu) × 100.",
+     "Lượng tăng là {b}-{a}."
+    ],
+    "explanation": "({b}-{a})÷{a}×100={ans}, nên {ans}%."
+   },
+   "permSame": {
+    "prompt": "Có bao nhiêu cách xếp tất cả các chữ cái của {word} thành một hàng?",
+    "hints": [
+     "Khi có chữ cái lặp, lấy giai thừa của tổng số chữ cái chia cho giai thừa số lần lặp của từng chữ cái.",
+     "Đếm xem mỗi chữ cái xuất hiện bao nhiêu lần."
+    ],
+    "explanation": "{calc}={ans} cách."
+   },
+   "probAdd": {
+    "prompt": "Cho hai biến cố A và B, $P(A)={pa}$, $P(B)={pb}$ và $P(A\\cap B)={pab}$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
+    "hints": [
+     "Dùng quy tắc cộng $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+     "Thay lần lượt các giá trị đã cho vào."
+    ],
+    "explanation": "{pa}+{pb}-{pab}={ans}."
+   },
+   "probComplement": {
+    "prompt": "Xác suất của biến cố A là $P(A)={pa}$. Xác suất của biến cố đối $P(A^c)$ là bao nhiêu?",
+    "hints": [
+     "Biến cố đối có xác suất $1-P(A)$.",
+     "Lấy 1 trừ $P(A)$."
+    ],
+    "explanation": "1-{pa}={ans}."
+   },
+   "relFreq": {
+    "prompt": "Tổng tần số là {t} và một lớp có tần số {f}. Tần số tương đối của lớp đó là bao nhiêu? (số thập phân)",
+    "hints": [
+     "Tần số tương đối = (tần số của lớp) ÷ (tổng tần số).",
+     "Viết kết quả dưới dạng số thập phân."
+    ],
+    "explanation": "{f}÷{t}={ans}, nên tần số tương đối là {ans}."
+   },
+   "repComb": {
+    "prompt": "Có bao nhiêu cách chọn {r} vật từ {n} loại khác nhau, cho phép lặp?",
+    "hints": [
+     "Với n loại và chọn r vật, số cách bằng số cách chọn r từ n+r−1.",
+     "Thay số loại và số vật vào."
+    ],
+    "explanation": "{calc}={ans}."
+   },
+   "repPerm": {
+    "prompt": "Có bao nhiêu cách chọn {r} vật từ {n} vật khác nhau, cho phép lặp, rồi xếp thành một hàng?",
+    "hints": [
+     "Số cách xếp có lặp bằng số cách chọn nhân với chính nó, mỗi vị trí một lần.",
+     "Mỗi vị trí có thể được điền theo {n} cách."
+    ],
+    "explanation": "{prod}={ans} cách."
+   },
+   "rootMax": {
+    "prompt": "Nghiệm thực lớn nhất của {eq} là bao nhiêu?",
+    "hints": [
+     "Phân tích thành tích các nhân tử. Có thể dùng sơ đồ Horner (chia tổng hợp) để tìm nghiệm đầu tiên.",
+     "Các nghiệm là những giá trị của x làm cho một nhân tử bằng không."
+    ],
+    "explanation": "{fact}, nên các nghiệm thực là {roots} và nghiệm lớn nhất là {ans}."
+   },
+   "rootSum": {
+    "prompt": "Tổng tất cả các nghiệm thực của {eq} là bao nhiêu?",
+    "hints": [
+     "Phân tích thành tích các nhân tử. Có thể dùng sơ đồ Horner (chia tổng hợp) để tìm nghiệm đầu tiên.",
+     "Các nghiệm là những giá trị của x làm cho một nhân tử bằng không."
+    ],
+    "explanation": "{fact}, nên các nghiệm thực là {roots} và tổng của chúng là {ans}."
+   },
+   "roundTo": {
+    "prompt": "Dùng cách “{mode}”, {n} theo đơn vị {u} là bao nhiêu?",
+    "hints": [
+     "Hãy xem các chữ số ở dưới hàng {u}.",
+     "Làm tròn lên luôn tăng lên, làm tròn xuống luôn bỏ đi, còn làm tròn gần nhất chỉ tăng khi chữ số kế tiếp là 5 trở lên."
+    ],
+    "explanation": "Dùng cách “{mode}”, {n} thành {ans} theo đơn vị {u}."
+   },
+   "setCount": {
+    "prompt": "Nếu $n(A)={na}$, $n(B)={nb}$ và $n(A\\cap B)={nab}$ thì $n(A\\cup B)$ bằng bao nhiêu?",
+    "hints": [
+     "Dùng $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+     "Thay lần lượt các giá trị đã cho vào."
+    ],
+    "explanation": "{na}+{nb}-{nab}={ans}."
+   },
+   "sigmaSum": {
+    "prompt": "Hãy tính giá trị của tổng sau: {expr}",
+    "hints": [
+     "Dấu ∑ nghĩa là: lần lượt thay k=1, 2, 3, … rồi cộng tất cả lại.",
+     "Bạn cũng có thể dùng các quy tắc $\\sum k=\\frac{n(n+1)}{2}$ và $\\sum c=cn$."
+    ],
+    "explanation": "{steps}, nên tổng là {ans}."
+   },
+   "simpleInterest": {
+    "prompt": "Gửi {p} won trong {n} năm với lãi suất đơn {r}% mỗi năm. Tiền lãi là bao nhiêu? (won)",
+    "hints": [
+     "Lãi đơn = tiền gốc × lãi suất × số năm.",
+     "{r}% là {rr}."
+    ],
+    "explanation": "{p}×{rr}×{n}={ans}, nên tiền lãi là {ans} won."
+   },
+   "slopeOf": {
+    "prompt": "Hệ số góc của hàm số bậc nhất $y={a}x+{b}$ là bao nhiêu?",
+    "hints": [
+     "Trong $y=ax+b$ hệ số góc là a.",
+     "Đọc hệ số của x."
+    ],
+    "explanation": "Hệ số góc là {ans}."
+   },
+   "stdev": {
+    "prompt": "Độ lệch chuẩn của dãy số liệu {list} là bao nhiêu? (độ lệch chuẩn tổng thể)",
+    "hints": [
+     "Trước hết hãy tìm trung bình cộng.",
+     "Căn bậc hai của trung bình các bình phương độ lệch (phương sai) là độ lệch chuẩn."
+    ],
+    "explanation": "Trung bình là {mean} và phương sai là {var}, nên độ lệch chuẩn là {ans}."
+   },
+   "subThree": {
+    "prompt": "{a}-{b} bằng bao nhiêu?",
+    "hints": [
+     "Trừ từ hàng đơn vị.",
+     "Nếu không trừ được thì mượn từ hàng kế tiếp."
+    ],
+    "explanation": "{a}-{b}={ans}."
+   },
+   "subsetCount": {
+    "prompt": "Một tập hợp có {n} phần tử thì có bao nhiêu tập con?",
+    "hints": [
+     "Tập hợp có n phần tử có $2^n$ tập con.",
+     "Hãy nghĩ đến việc với mỗi phần tử, ta chọn lấy hoặc không lấy."
+    ],
+    "explanation": "{prod}={ans}, nên có {ans} tập con."
+   },
+   "taxTotal": {
+    "prompt": "Một món hàng giá {p} won và phải cộng thêm thuế giá trị gia tăng {t}%. Phải trả bao nhiêu won? (won)",
+    "hints": [
+     "Tiền thuế bằng giá × {t}%.",
+     "Cộng tiền thuế vào giá."
+    ],
+    "explanation": "{p}+{p}×{tr}={ans}, nên {ans} won."
+   },
+   "variance": {
+    "prompt": "Phương sai của dãy số liệu {list} là bao nhiêu?",
+    "hints": [
+     "Tìm trung bình rồi tìm độ lệch của từng số.",
+     "Phương sai là trung bình của các bình phương độ lệch."
+    ],
+    "explanation": "Trung bình là {mean} và tổng bình phương độ lệch là {sq}, nên phương sai là {sq}÷{n}={ans}."
+   },
+   "xInt": {
+    "prompt": "Hoành độ giao điểm với trục x của $y={a}x+{b}$ là bao nhiêu?",
+    "hints": [
+     "Giao điểm với trục x là điểm có y=0.",
+     "Giải $0=ax+b$."
+    ],
+    "explanation": "$0={a}x+{b}$ cho x={ans}."
+   },
+   "yInt": {
+    "prompt": "Tung độ gốc của $y={a}x+{b}$ là bao nhiêu?",
+    "hints": [
+     "Tung độ gốc là giá trị y khi x=0.",
+     "Trong $y=ax+b$ nó là b."
+    ],
+    "explanation": "Tung độ gốc là {ans}."
+   }
+  },
+  "texts": {
+   "rd_down": "làm tròn xuống",
+   "rd_half": "làm tròn gần nhất",
+   "rd_up": "làm tròn lên"
+  }
  }
 }
