@@ -35,82 +35,717 @@
     "phone": "電話和簡訊",
     "hospital": "在醫院",
     "requests": "禮貌的請求",
-    "invitations": "一起做計畫"
+    "invitations": "一起做計畫",
+    "indirect_state": "Indirect statements (-다고 하다)",
+    "indirect_ask": "Indirect questions (-냐고 하다)",
+    "indirect_cmd": "Indirect commands and suggestions (-라고 / -자고 하다)",
+    "cause_contrast": "Complex causes and contrasts (-느라고, -는데도)",
+    "proportion": "Proportion and inevitability (-을수록, -기 마련이다)",
+    "appearance": "Appearance and inference (-아/어 보이다, -는 모양이다)",
+    "pretense": "Pretending (-는 척하다)",
+    "regret": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
+    "review_k7": "K7 Comprehensive Review",
+    "honorific_subj": "Honorific vocabulary for subjects",
+    "honorific_obj": "Object honorific verbs (드리다, 뵙다, 여쭙다)",
+    "passive_affix": "Affix passives (-이/히/리/기-)",
+    "passive_compound": "Syntactic passives (-어지다, -게 되다)",
+    "causative_affix": "Affix causatives (-이/히/리/기/우-)",
+    "causative_compound": "Syntactic causatives (-게 하다)",
+    "formal_style": "Public formal style (-하십시오)",
+    "modesty": "Modest and humble expressions",
+    "review_k8": "K8 Comprehensive Review",
+    "biz_email": "Business email writing and requests",
+    "biz_phone": "Business telephone etiquette",
+    "biz_schedule": "Scheduling and rescheduling",
+    "biz_meeting": "Meeting discussions and opinions",
+    "biz_report": "Reporting project progress",
+    "biz_stats": "Statistical figures and data trends",
+    "biz_negotiate": "Business negotiations and partnerships",
+    "biz_etiquette": "Business cards and professional titles",
+    "review_k9": "K9 Comprehensive Review",
+    "media_headline": "Headlines and compressed style",
+    "media_article": "Current affairs and editorials",
+    "idioms_body": "Body-part idioms (발, 눈, 귀, 손)",
+    "idioms_action": "Everyday action idioms (바가지, 어깨)",
+    "proverbs_life": "Essential Korean proverbs",
+    "sino_four": "Four-character idioms (사자성어)",
+    "logic_debate": "Logical connectors and discourse markers",
+    "culture_deep": "Deep Korean cultural values and customs",
+    "review_k10": "K10 Comprehensive Review"
   },
   "lesson": {
-    "yvowels": { "title": "Y 母音", "concept": "加一短畫就會發出 **y** 音：ㅏ → ㅑ (ya)，ㅓ → ㅕ (yeo)，ㅗ → ㅛ (yo)，ㅜ → ㅠ (yu)。在現代韓語中，ㅐ (ae) 和 ㅔ (e) 的發音非常相近。" },
-    "consonants2": { "title": "更多子音", "concept": "ㄹ 介於「r」和「l」之間。ㅈ (j)、ㅊ (ch，送氣)、ㅋ (k，送氣)、ㅌ (t，送氣) 和 ㅍ (p，送氣) 補全了基本子音。" },
-    "doubled": { "title": "雙子音", "concept": "ㄲ、ㄸ、ㅃ、ㅆ 和 ㅉ 是緊音：發音時喉嚨收緊，不送氣，就像英語 「skate」 中的第一個音。" },
-    "batchim": { "title": "收音", "concept": "音節下面的子音叫作 **받침 (batchim)**。它使音節閉合：안 (an)、말 (mal)、밤 (bam)、강 (gang)、집 (jip)、책 (chaek)。結尾只可能有七個音：ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ。" },
-    "words2": { "title": "日常單字", "concept": "逐個音節地讀每個單字。학교 讀作「hakgyo」：학 的收音 ㄱ 要閉合，下一個音節要讀得緊一些。" },
-    "words3": { "title": "關於世界的單字", "concept": "人和自然：사람 (人)、나라 (國家)、하늘 (天空)、산 (山)、강 (河)、꽃 (花)。" },
-    "manners": { "title": "禮貌用語", "concept": "用 실례합니다 引起別人注意或請人讓路，用 고마워요 親切地道謝，用 천만에요 回應感謝，用 축하해요 表示祝賀。" },
-    "introduce": { "title": "姓名和國家", "concept": "用 이름이 뭐예요? 詢問姓名，用 어느 나라 사람이에요? 詢問國家。回答時說 제 이름은 ___예요 或 저는 ___ 사람이에요。" },
-    "partings": { "title": "說再見", "concept": "和朋友之間可以說 잘 가요 (再見)、내일 봐요 (明天見)、또 만나요 (改天再見) 和 잘 자요 (晚安)。" },
-    "wellbeing": { "title": "你好嗎？", "concept": "問 잘 지냈어요? (你過得好嗎？)，回答 잘 지내요 (我過得很好)。좋은 아침이에요 的意思是「早安。」" },
-    "helpme": { "title": "請求幫助", "concept": "請求幫助說 도와주세요，不知道時說 모르겠어요，明白時說 알겠어요，請對方再說一遍說 다시 말해 주세요。" },
-    "opinions": { "title": "喜歡和回答", "concept": "좋아요 的意思是好或可以，싫어요 的意思是不喜歡，맞아요 的意思是「對」，틀려요 的意思是「不對」。" },
-    "native10": { "title": "固有詞數字 6–10", "concept": "繼續學習固有詞數字：여섯 (6)、일곱 (7)、여덟 (8)、아홉 (9)、열 (10)。" },
-    "sino": { "title": "漢字詞數字", "concept": "漢字詞數字：일 (1)、이 (2)、삼 (3)、사 (4)、오 (5)、육 (6)、칠 (7)、팔 (8)、구 (9)、십 (10)。它們用於金額、日期、電話號碼和分鐘。" },
-    "ages": { "title": "年齡", "concept": "問 몇 살이에요? (你幾歲？)。年齡用固有詞數字加 살：열 살 (10 歲)、스무 살 (20 歲)、서른 살 (30 歲)。" },
-    "people": { "title": "人物", "concept": "친구 (朋友)、의사 (醫生)、사람 (人)、남자 (男人)、여자 (女人)。" },
-    "family2": { "title": "更多家人稱呼", "concept": "兄弟姊妹的稱呼因說話人而異：女性稱哥哥為 오빠，稱姊姊為 언니。另外還有 아들 (兒子)、딸 (女兒)、부모님 (父母)。" },
-    "ourfamily": { "title": "我們的家人", "concept": "韓國人常用 우리 (我們，我們的) 代替「我的」：우리 가족 的意思是「我的家人」。用 명 數人數：네 명 (四個人)。" },
-    "food": { "title": "飲食", "concept": "밥 (米飯，飯)、빵 (麵包)、과일 (水果)、고기 (肉)、물 (水)、우유 (牛奶)。" },
-    "likes": { "title": "喜歡和不喜歡", "concept": "用 -를/을 좋아해요 表示喜歡，用 -를/을 싫어해요 表示不喜歡：저는 사과를 좋아해요。" },
-    "adjectives": { "title": "描述事物", "concept": "形容詞也以 -요 結尾：커요 (大)、작아요 (小)、많아요 (多)、맛있어요 (好吃)、예뻐요 (漂亮)。" },
-    "weather": { "title": "天氣", "concept": "날씨 (天氣)、더워요 (很熱)、추워요 (很冷)、비가 와요 (下雨)、눈이 와요 (下雪)。" },
-    "negation": { "title": "用 안 和 못 表示否定", "concept": "把 **안** 放在動詞前，表示不做某事 (안 가요)。把 **못** 放在動詞前，表示不能做某事 (못 가요)。" },
-    "daily": { "title": "日常作息", "concept": "일어나요 (起床)、씻어요 (盥洗)、일해요 (工作)、자요 (睡覺)。像 아침 (早上) 和 밤 (夜晚) 這樣的時間詞要加 에：아침에。" },
-    "weekdays": { "title": "星期", "concept": "월요일 (週一)、화요일 (週二)、수요일 (週三)、목요일 (週四)、금요일 (週五)、토요일 (週六)、일요일 (週日)。" },
-    "months": { "title": "月份", "concept": "月份是漢字詞數字加 월：일월 (一月)、삼월 (三月)、오월 (五月)、칠월 (七月)、구월 (九月)、십이월 (十二月)。" },
-    "clock": { "title": "說幾點", "concept": "鐘點用固有詞數字加 시：한 시 (1:00)、두 시 (2:00)、세 시 (3:00)、열 시 (10:00)。問 몇 시예요?" },
-    "frequency": { "title": "頻率", "concept": "매일 (每天)、자주 (經常)、가끔 (有時)、항상 (總是)。把它們放在動詞前面。" },
-    "past2": { "title": "更多過去式", "concept": "過去式詞尾是 -았/었어요：했어요 (做了)、왔어요 (來了)、만났어요 (見了)、샀어요 (買了)、잤어요 (睡了)。" },
-    "birthday": { "title": "生日和週末", "concept": "생일 (生日)、주말 (週末)、선물 (禮物)。問 생일이 언제예요?，回答 제 생일은 오월이에요。" },
-    "restaurant": { "title": "在餐廳", "concept": "메뉴 (菜單)、주문할게요 (我要點餐)、물 더 주세요 (請再給我一些水)、계산해 주세요 (請結帳)。" },
-    "transport": { "title": "出行", "concept": "버스 (公車)、지하철 (捷運)、택시 (計程車)、기차 (火車)。用 -로/으로 說明交通方式：버스로 가요。" },
-    "phone": { "title": "電話和簡訊", "concept": "전화 (電話)、전화번호 (電話號碼)、문자 (簡訊)。전화해요 的意思是「我打電話」。" },
-    "hospital": { "title": "在醫院", "concept": "병원 (醫院)、약 (藥)、아파요 (痛)。先說身體部位：머리가 아파요 (我頭痛)。" },
-    "requests": { "title": "禮貌的請求", "concept": "-세요 和 -아/어 주세요 構成禮貌的請求：앉으세요 (請坐)、기다려 주세요 (請等一下)、문을 열어 주세요 (請開門)。" },
-    "invitations": { "title": "一起做計畫", "concept": "같이 (一起) 用來邀請別人：같이 가요。갈래요? 的意思是「你想去嗎？」，시간 있어요? 的意思是「你有時間嗎？」" }
+    "yvowels": {
+      "title": "Y 母音",
+      "concept": "加一短畫就會發出 **y** 音：ㅏ → ㅑ (ya)，ㅓ → ㅕ (yeo)，ㅗ → ㅛ (yo)，ㅜ → ㅠ (yu)。在現代韓語中，ㅐ (ae) 和 ㅔ (e) 的發音非常相近。"
+    },
+    "consonants2": {
+      "title": "更多子音",
+      "concept": "ㄹ 介於「r」和「l」之間。ㅈ (j)、ㅊ (ch，送氣)、ㅋ (k，送氣)、ㅌ (t，送氣) 和 ㅍ (p，送氣) 補全了基本子音。"
+    },
+    "doubled": {
+      "title": "雙子音",
+      "concept": "ㄲ、ㄸ、ㅃ、ㅆ 和 ㅉ 是緊音：發音時喉嚨收緊，不送氣，就像英語 「skate」 中的第一個音。"
+    },
+    "batchim": {
+      "title": "收音",
+      "concept": "音節下面的子音叫作 **받침 (batchim)**。它使音節閉合：안 (an)、말 (mal)、밤 (bam)、강 (gang)、집 (jip)、책 (chaek)。結尾只可能有七個音：ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ。"
+    },
+    "words2": {
+      "title": "日常單字",
+      "concept": "逐個音節地讀每個單字。학교 讀作「hakgyo」：학 的收音 ㄱ 要閉合，下一個音節要讀得緊一些。"
+    },
+    "words3": {
+      "title": "關於世界的單字",
+      "concept": "人和自然：사람 (人)、나라 (國家)、하늘 (天空)、산 (山)、강 (河)、꽃 (花)。"
+    },
+    "manners": {
+      "title": "禮貌用語",
+      "concept": "用 실례합니다 引起別人注意或請人讓路，用 고마워요 親切地道謝，用 천만에요 回應感謝，用 축하해요 表示祝賀。"
+    },
+    "introduce": {
+      "title": "姓名和國家",
+      "concept": "用 이름이 뭐예요? 詢問姓名，用 어느 나라 사람이에요? 詢問國家。回答時說 제 이름은 ___예요 或 저는 ___ 사람이에요。"
+    },
+    "partings": {
+      "title": "說再見",
+      "concept": "和朋友之間可以說 잘 가요 (再見)、내일 봐요 (明天見)、또 만나요 (改天再見) 和 잘 자요 (晚安)。"
+    },
+    "wellbeing": {
+      "title": "你好嗎？",
+      "concept": "問 잘 지냈어요? (你過得好嗎？)，回答 잘 지내요 (我過得很好)。좋은 아침이에요 的意思是「早安。」"
+    },
+    "helpme": {
+      "title": "請求幫助",
+      "concept": "請求幫助說 도와주세요，不知道時說 모르겠어요，明白時說 알겠어요，請對方再說一遍說 다시 말해 주세요。"
+    },
+    "opinions": {
+      "title": "喜歡和回答",
+      "concept": "좋아요 的意思是好或可以，싫어요 的意思是不喜歡，맞아요 的意思是「對」，틀려요 的意思是「不對」。"
+    },
+    "native10": {
+      "title": "固有詞數字 6–10",
+      "concept": "繼續學習固有詞數字：여섯 (6)、일곱 (7)、여덟 (8)、아홉 (9)、열 (10)。"
+    },
+    "sino": {
+      "title": "漢字詞數字",
+      "concept": "漢字詞數字：일 (1)、이 (2)、삼 (3)、사 (4)、오 (5)、육 (6)、칠 (7)、팔 (8)、구 (9)、십 (10)。它們用於金額、日期、電話號碼和分鐘。"
+    },
+    "ages": {
+      "title": "年齡",
+      "concept": "問 몇 살이에요? (你幾歲？)。年齡用固有詞數字加 살：열 살 (10 歲)、스무 살 (20 歲)、서른 살 (30 歲)。"
+    },
+    "people": {
+      "title": "人物",
+      "concept": "친구 (朋友)、의사 (醫生)、사람 (人)、남자 (男人)、여자 (女人)。"
+    },
+    "family2": {
+      "title": "更多家人稱呼",
+      "concept": "兄弟姊妹的稱呼因說話人而異：女性稱哥哥為 오빠，稱姊姊為 언니。另外還有 아들 (兒子)、딸 (女兒)、부모님 (父母)。"
+    },
+    "ourfamily": {
+      "title": "我們的家人",
+      "concept": "韓國人常用 우리 (我們，我們的) 代替「我的」：우리 가족 的意思是「我的家人」。用 명 數人數：네 명 (四個人)。"
+    },
+    "food": {
+      "title": "飲食",
+      "concept": "밥 (米飯，飯)、빵 (麵包)、과일 (水果)、고기 (肉)、물 (水)、우유 (牛奶)。"
+    },
+    "likes": {
+      "title": "喜歡和不喜歡",
+      "concept": "用 -를/을 좋아해요 表示喜歡，用 -를/을 싫어해요 表示不喜歡：저는 사과를 좋아해요。"
+    },
+    "adjectives": {
+      "title": "描述事物",
+      "concept": "形容詞也以 -요 結尾：커요 (大)、작아요 (小)、많아요 (多)、맛있어요 (好吃)、예뻐요 (漂亮)。"
+    },
+    "weather": {
+      "title": "天氣",
+      "concept": "날씨 (天氣)、더워요 (很熱)、추워요 (很冷)、비가 와요 (下雨)、눈이 와요 (下雪)。"
+    },
+    "negation": {
+      "title": "用 안 和 못 表示否定",
+      "concept": "把 **안** 放在動詞前，表示不做某事 (안 가요)。把 **못** 放在動詞前，表示不能做某事 (못 가요)。"
+    },
+    "daily": {
+      "title": "日常作息",
+      "concept": "일어나요 (起床)、씻어요 (盥洗)、일해요 (工作)、자요 (睡覺)。像 아침 (早上) 和 밤 (夜晚) 這樣的時間詞要加 에：아침에。"
+    },
+    "weekdays": {
+      "title": "星期",
+      "concept": "월요일 (週一)、화요일 (週二)、수요일 (週三)、목요일 (週四)、금요일 (週五)、토요일 (週六)、일요일 (週日)。"
+    },
+    "months": {
+      "title": "月份",
+      "concept": "月份是漢字詞數字加 월：일월 (一月)、삼월 (三月)、오월 (五月)、칠월 (七月)、구월 (九月)、십이월 (十二月)。"
+    },
+    "clock": {
+      "title": "說幾點",
+      "concept": "鐘點用固有詞數字加 시：한 시 (1:00)、두 시 (2:00)、세 시 (3:00)、열 시 (10:00)。問 몇 시예요?"
+    },
+    "frequency": {
+      "title": "頻率",
+      "concept": "매일 (每天)、자주 (經常)、가끔 (有時)、항상 (總是)。把它們放在動詞前面。"
+    },
+    "past2": {
+      "title": "更多過去式",
+      "concept": "過去式詞尾是 -았/었어요：했어요 (做了)、왔어요 (來了)、만났어요 (見了)、샀어요 (買了)、잤어요 (睡了)。"
+    },
+    "birthday": {
+      "title": "生日和週末",
+      "concept": "생일 (生日)、주말 (週末)、선물 (禮物)。問 생일이 언제예요?，回答 제 생일은 오월이에요。"
+    },
+    "restaurant": {
+      "title": "在餐廳",
+      "concept": "메뉴 (菜單)、주문할게요 (我要點餐)、물 더 주세요 (請再給我一些水)、계산해 주세요 (請結帳)。"
+    },
+    "transport": {
+      "title": "出行",
+      "concept": "버스 (公車)、지하철 (捷運)、택시 (計程車)、기차 (火車)。用 -로/으로 說明交通方式：버스로 가요。"
+    },
+    "phone": {
+      "title": "電話和簡訊",
+      "concept": "전화 (電話)、전화번호 (電話號碼)、문자 (簡訊)。전화해요 的意思是「我打電話」。"
+    },
+    "hospital": {
+      "title": "在醫院",
+      "concept": "병원 (醫院)、약 (藥)、아파요 (痛)。先說身體部位：머리가 아파요 (我頭痛)。"
+    },
+    "requests": {
+      "title": "禮貌的請求",
+      "concept": "-세요 和 -아/어 주세요 構成禮貌的請求：앉으세요 (請坐)、기다려 주세요 (請等一下)、문을 열어 주세요 (請開門)。"
+    },
+    "invitations": {
+      "title": "一起做計畫",
+      "concept": "같이 (一起) 用來邀請別人：같이 가요。갈래요? 的意思是「你想去嗎？」，시간 있어요? 的意思是「你有時間嗎？」"
+    },
+    "indirect_state": {
+      "title": "Indirect statements (-다고 하다)",
+      "concept": "Report what someone says or said: verb/adj + -다고 하다."
+    },
+    "indirect_ask": {
+      "title": "Indirect questions (-냐고 하다)",
+      "concept": "Report a question: verb/adj + -냐고 묻다/하다."
+    },
+    "indirect_cmd": {
+      "title": "Indirect commands and suggestions (-라고 / -자고 하다)",
+      "concept": "Report an imperative (-라고 하다) or propositive (-자고 하다)."
+    },
+    "cause_contrast": {
+      "title": "Complex causes and contrasts (-느라고, -는데도)",
+      "concept": "Negative cause or delay (-느라고) and contrast despite circumstances (-는데도)."
+    },
+    "proportion": {
+      "title": "Proportion and inevitability (-을수록, -기 마련이다)",
+      "concept": "The more... the more (-을수록) and natural inevitability (-기 마련이다)."
+    },
+    "appearance": {
+      "title": "Appearance and inference (-아/어 보이다, -는 모양이다)",
+      "concept": "Looks like (-아/어 보이다) and appears to be (-는 모양이다)."
+    },
+    "pretense": {
+      "title": "Pretending (-는 척하다)",
+      "concept": "Pretend to do or be something: -(으)ㄴ/는 척하다."
+    },
+    "regret": {
+      "title": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
+      "concept": "Express regret: 'I should have done...' -(으)ㄹ 걸 그랬어요."
+    },
+    "review_k7": {
+      "title": "K7 Comprehensive Review",
+      "concept": "Review indirect speech, complex connectors and nuanced expressions."
+    },
+    "honorific_subj": {
+      "title": "Honorific vocabulary for subjects",
+      "concept": "Special honorific nouns and verbs for revered people: 진지, 주무시다, 편찮으시다."
+    },
+    "honorific_obj": {
+      "title": "Object honorific verbs (드리다, 뵙다, 여쭙다)",
+      "concept": "Humble/honorific verbs when the action is directed toward an elder: 드리다, 뵙다, 여쭙다."
+    },
+    "passive_affix": {
+      "title": "Affix passives (-이/히/리/기-)",
+      "concept": "Passive verbs formed by adding -이/히/리/기-: 보이다, 들리다, 열리다, 닫히다."
+    },
+    "passive_compound": {
+      "title": "Syntactic passives (-어지다, -게 되다)",
+      "concept": "Verbs taking spontaneous or resulting passive forms: -아/어지다, -게 되다."
+    },
+    "causative_affix": {
+      "title": "Affix causatives (-이/히/리/기/우-)",
+      "concept": "Causative verbs that make someone do an action: 보여 주다, 먹이다, 입히다."
+    },
+    "causative_compound": {
+      "title": "Syntactic causatives (-게 하다)",
+      "concept": "Make or cause someone to do something: -게 하다."
+    },
+    "formal_style": {
+      "title": "Public formal style (-하십시오)",
+      "concept": "High formal deferential style for announcements and ceremonies: -하십시오, -하십시다."
+    },
+    "modesty": {
+      "title": "Modest and humble expressions",
+      "concept": "Polite speech using humble pronouns and verbs: 저희, 말씀 올리다."
+    },
+    "review_k8": {
+      "title": "K8 Comprehensive Review",
+      "concept": "Review honorifics, passive, causative and formal polite registers."
+    },
+    "biz_email": {
+      "title": "Business email writing and requests",
+      "concept": "Formal business email conventions: -에 관하여, 검토 부탁드립니다."
+    },
+    "biz_phone": {
+      "title": "Business telephone etiquette",
+      "concept": "Handling calls and messages: 통화 가능하신지요, 연결해 드리겠습니다."
+    },
+    "biz_schedule": {
+      "title": "Scheduling and rescheduling",
+      "concept": "Proposing and changing appointment times: 변경하고자 합니다, 양해 부탁드립니다."
+    },
+    "biz_meeting": {
+      "title": "Meeting discussions and opinions",
+      "concept": "Expressing views during meetings: 제 생각으로는, 찬성합니다, 추가 검토."
+    },
+    "biz_report": {
+      "title": "Reporting project progress",
+      "concept": "Giving status updates: 진행 상황을 보고합니다, 조치를 완료했습니다."
+    },
+    "biz_stats": {
+      "title": "Statistical figures and data trends",
+      "concept": "Describing trends and numbers: 증가했습니다, 전년 대비."
+    },
+    "biz_negotiate": {
+      "title": "Business negotiations and partnerships",
+      "concept": "Professional collaboration: 상호 협력을 희망합니다, 절충안 제시."
+    },
+    "biz_etiquette": {
+      "title": "Business cards and professional titles",
+      "concept": "Exchanging cards and titles: 처음 뵙겠습니다, 명함 드립니다."
+    },
+    "review_k9": {
+      "title": "K9 Comprehensive Review",
+      "concept": "Review professional communications, formal correspondence and meetings."
+    },
+    "media_headline": {
+      "title": "Headlines and compressed style",
+      "concept": "News headlines and compressed noun phrases: 물가 안정 대책 발표."
+    },
+    "media_article": {
+      "title": "Current affairs and editorials",
+      "concept": "Reading short news articles: 친환경 에너지가 주목받고 있습니다."
+    },
+    "idioms_body": {
+      "title": "Body-part idioms (발, 눈, 귀, 손)",
+      "concept": "Common idioms with body parts: 발이 넓다 (wide network), 눈이 높다 (high standards)."
+    },
+    "idioms_action": {
+      "title": "Everyday action idioms (바가지, 어깨)",
+      "concept": "Expressions for common situations: 바가지를 쓰다 (ripped off), 어깨가 무겁다 (heavy duty)."
+    },
+    "proverbs_life": {
+      "title": "Essential Korean proverbs",
+      "concept": "Wisdom in proverbs: 소 잃고 외양간 고친다, 쇠뿔도 단김에 빼라."
+    },
+    "sino_four": {
+      "title": "Four-character idioms (사자성어)",
+      "concept": "Common four-character Chinese-derived idioms: 일석이조, 작심삼일, 다다익선."
+    },
+    "logic_debate": {
+      "title": "Logical connectors and discourse markers",
+      "concept": "Formal discourse markers: -에 따르면, 한편, 요컨대, 따라서."
+    },
+    "culture_deep": {
+      "title": "Deep Korean cultural values and customs",
+      "concept": "Cultural concepts and holiday traditions: 따뜻한 정, 송편을 빚다."
+    },
+    "review_k10": {
+      "title": "K10 Comprehensive Review",
+      "concept": "Mastery of Korean culture, media, idioms and formal debate expressions."
+    }
   },
   "gloss": {
-    "dad": "爸爸", "apple": "蘋果", "book": "書", "water": "水", "house": "房子", "person": "人", "country": "國家",
-    "sky": "天空", "mountain": "山", "flower": "花", "river": "河",
-    "excuseMe": "不好意思。", "thanksCasual": "謝謝。（親切）", "youreWelcome": "不客氣。", "congrats": "恭喜。",
-    "whatsYourName": "你叫什麼名字？", "whereFrom": "你是哪個國家的人？", "iAmVietnamese": "我是越南人。", "myNameMina": "我叫美娜。",
-    "goodbyeCasual": "再見。（親切）", "seeTomorrow": "明天見。", "seeAgain": "改天再見。", "goodNight": "晚安。",
-    "imFine": "我過得很好。", "howHaveYouBeen": "你過得好嗎？", "goodMorning": "早安。",
-    "helpMe": "請幫幫我。", "dontKnow": "我不知道。", "understand": "我明白了。", "sayAgain": "請再說一遍。", "speakSlowly": "請說慢一點。",
-    "good": "很好。", "dislike": "我不喜歡。", "correct": "對。", "incorrect": "不對。",
-    "six": "六", "eight": "八", "nine": "九", "ten": "十",
-    "age": "年齡", "howOld": "你幾歲？", "iAmTenYears": "我十歲。", "iAmTwentyYears": "我二十歲。", "iAmThirtyYears": "我三十歲。",
-    "twentyYears": "二十歲", "thirtyYears": "三十歲", "tenYears": "十歲", "oneYear": "一歲",
-    "man": "男人", "woman": "女人", "olderBrotherF": "哥哥（女性稱呼）", "olderSisterF": "姊姊（女性稱呼）",
-    "daughter": "女兒", "son": "兒子", "parents": "父母", "we": "我們", "I": "我", "you": "你",
-    "ourFamily": "我們的家人", "myFamily": "我的家人", "familyOfFour": "我們家有四口人。", "noSiblings": "我沒有兄弟姊妹。", "haveSiblings": "我有兄弟姊妹。",
-    "bread": "麵包", "rice": "米飯 / 飯", "fruit": "水果", "meat": "肉",
-    "like": "我喜歡。", "dontLike": "我不喜歡。", "iLikeApples": "我喜歡蘋果。", "iLikeKimchi": "我喜歡泡菜。", "iLikeMeat": "我喜歡肉。",
-    "big": "很大。", "small": "很小。", "many": "很多。", "delicious": "很好吃。", "pretty": "很漂亮。",
-    "weather": "天氣", "hot": "很熱。", "cold": "很冷。", "itRains": "下雨了。", "itSnows": "下雪了。", "weatherGood": "今天天氣很好。",
-    "dontEat": "我不吃。", "dontGo": "我不去。", "cantGo": "我不能去。", "dontDrinkCoffee": "我不喝咖啡。", "cantEat": "我不能吃。", "cantDrink": "我不能喝。",
-    "wakeUp": "我起床。", "wash": "我盥洗。", "work": "我工作。", "iWakeUpMorning": "我早上起床。", "iSleepNight": "我晚上睡覺。",
-    "morning": "早上", "night": "夜晚", "afternoon": "下午",
-    "monday": "星期一", "tuesday": "星期二", "wednesday": "星期三", "friday": "星期五", "saturday": "星期六", "sunday": "星期日",
-    "january": "一月", "march": "三月", "may": "五月", "july": "七月", "september": "九月", "december": "十二月",
-    "oneOclock": "一點", "twoOclock": "兩點", "threeOclock": "三點", "tenOclock": "十點", "nowThree": "現在是三點。", "nowTen": "現在是十點。",
-    "everyDay": "每天", "often": "經常", "sometimes": "有時", "always": "總是", "iStudyEveryDay": "我每天學習。", "iDrinkCoffeeEveryDay": "我每天喝咖啡。",
-    "did": "做了", "met": "見了", "bought": "買了", "slept": "睡了", "metFriendYesterday": "我昨天見了一個朋友。",
-    "birthday": "生日", "weekend": "週末", "gift": "禮物", "whenBirthday": "你的生日是什麼時候？", "myBirthdayMay": "我的生日在五月。",
-    "menu": "菜單", "checkPlease": "請結帳。", "iWillOrder": "我要點餐。", "moreWaterPlease": "請再給我一些水。", "moreKimchiPlease": "請再給我一些泡菜。",
-    "bus": "公車", "subway": "捷運", "taxi": "計程車", "train": "火車", "goByBus": "我搭公車去。", "goBySubway": "我搭捷運去。",
-    "phone": "電話", "textMessage": "簡訊", "phoneNumber": "電話號碼", "callFriend": "我打電話給朋友。", "sendFriendText": "我傳簡訊給朋友。", "call": "我打電話。",
-    "hurts": "很痛。", "hospital": "醫院", "medicine": "藥", "headache": "我頭痛。", "goHospital": "我去醫院。",
-    "pleaseSit": "請坐。", "pleaseWait": "請等一下。", "openDoorPlease": "請開門。", "waitAMoment": "請稍等。", "sitHerePlease": "請坐這裡。",
-    "letsGoTogether": "我們一起去吧。", "wantToGo": "你想去嗎？", "haveTime": "你有時間嗎？", "letsEatTogether": "我們一起吃吧。", "studyTogether": "我們一起學習吧。"
+    "dad": "爸爸",
+    "apple": "蘋果",
+    "book": "書",
+    "water": "水",
+    "house": "房子",
+    "person": "人",
+    "country": "國家",
+    "sky": "天空",
+    "mountain": "山",
+    "flower": "花",
+    "river": "河",
+    "excuseMe": "不好意思。",
+    "thanksCasual": "謝謝。（親切）",
+    "youreWelcome": "不客氣。",
+    "congrats": "恭喜。",
+    "whatsYourName": "你叫什麼名字？",
+    "whereFrom": "你是哪個國家的人？",
+    "iAmVietnamese": "我是越南人。",
+    "myNameMina": "我叫美娜。",
+    "goodbyeCasual": "再見。（親切）",
+    "seeTomorrow": "明天見。",
+    "seeAgain": "改天再見。",
+    "goodNight": "晚安。",
+    "imFine": "我過得很好。",
+    "howHaveYouBeen": "你過得好嗎？",
+    "goodMorning": "早安。",
+    "helpMe": "請幫幫我。",
+    "dontKnow": "我不知道。",
+    "understand": "我明白了。",
+    "sayAgain": "請再說一遍。",
+    "speakSlowly": "請說慢一點。",
+    "good": "很好。",
+    "dislike": "我不喜歡。",
+    "correct": "對。",
+    "incorrect": "不對。",
+    "six": "六",
+    "eight": "八",
+    "nine": "九",
+    "ten": "十",
+    "age": "年齡",
+    "howOld": "你幾歲？",
+    "iAmTenYears": "我十歲。",
+    "iAmTwentyYears": "我二十歲。",
+    "iAmThirtyYears": "我三十歲。",
+    "twentyYears": "二十歲",
+    "thirtyYears": "三十歲",
+    "tenYears": "十歲",
+    "oneYear": "一歲",
+    "man": "男人",
+    "woman": "女人",
+    "olderBrotherF": "哥哥（女性稱呼）",
+    "olderSisterF": "姊姊（女性稱呼）",
+    "daughter": "女兒",
+    "son": "兒子",
+    "parents": "父母",
+    "we": "我們",
+    "I": "我",
+    "you": "你",
+    "ourFamily": "我們的家人",
+    "myFamily": "我的家人",
+    "familyOfFour": "我們家有四口人。",
+    "noSiblings": "我沒有兄弟姊妹。",
+    "haveSiblings": "我有兄弟姊妹。",
+    "bread": "麵包",
+    "rice": "米飯 / 飯",
+    "fruit": "水果",
+    "meat": "肉",
+    "like": "我喜歡。",
+    "dontLike": "我不喜歡。",
+    "iLikeApples": "我喜歡蘋果。",
+    "iLikeKimchi": "我喜歡泡菜。",
+    "iLikeMeat": "我喜歡肉。",
+    "big": "很大。",
+    "small": "很小。",
+    "many": "很多。",
+    "delicious": "很好吃。",
+    "pretty": "很漂亮。",
+    "weather": "天氣",
+    "hot": "很熱。",
+    "cold": "很冷。",
+    "itRains": "下雨了。",
+    "itSnows": "下雪了。",
+    "weatherGood": "今天天氣很好。",
+    "dontEat": "我不吃。",
+    "dontGo": "我不去。",
+    "cantGo": "我不能去。",
+    "dontDrinkCoffee": "我不喝咖啡。",
+    "cantEat": "我不能吃。",
+    "cantDrink": "我不能喝。",
+    "wakeUp": "我起床。",
+    "wash": "我盥洗。",
+    "work": "我工作。",
+    "iWakeUpMorning": "我早上起床。",
+    "iSleepNight": "我晚上睡覺。",
+    "morning": "早上",
+    "night": "夜晚",
+    "afternoon": "下午",
+    "monday": "星期一",
+    "tuesday": "星期二",
+    "wednesday": "星期三",
+    "friday": "星期五",
+    "saturday": "星期六",
+    "sunday": "星期日",
+    "january": "一月",
+    "march": "三月",
+    "may": "五月",
+    "july": "七月",
+    "september": "九月",
+    "december": "十二月",
+    "oneOclock": "一點",
+    "twoOclock": "兩點",
+    "threeOclock": "三點",
+    "tenOclock": "十點",
+    "nowThree": "現在是三點。",
+    "nowTen": "現在是十點。",
+    "everyDay": "每天",
+    "often": "經常",
+    "sometimes": "有時",
+    "always": "總是",
+    "iStudyEveryDay": "我每天學習。",
+    "iDrinkCoffeeEveryDay": "我每天喝咖啡。",
+    "did": "做了",
+    "met": "見了",
+    "bought": "買了",
+    "slept": "睡了",
+    "metFriendYesterday": "我昨天見了一個朋友。",
+    "birthday": "生日",
+    "weekend": "週末",
+    "gift": "禮物",
+    "whenBirthday": "你的生日是什麼時候？",
+    "myBirthdayMay": "我的生日在五月。",
+    "menu": "菜單",
+    "checkPlease": "請結帳。",
+    "iWillOrder": "我要點餐。",
+    "moreWaterPlease": "請再給我一些水。",
+    "moreKimchiPlease": "請再給我一些泡菜。",
+    "bus": "公車",
+    "subway": "捷運",
+    "taxi": "計程車",
+    "train": "火車",
+    "goByBus": "我搭公車去。",
+    "goBySubway": "我搭捷運去。",
+    "phone": "電話",
+    "textMessage": "簡訊",
+    "phoneNumber": "電話號碼",
+    "callFriend": "我打電話給朋友。",
+    "sendFriendText": "我傳簡訊給朋友。",
+    "call": "我打電話。",
+    "hurts": "很痛。",
+    "hospital": "醫院",
+    "medicine": "藥",
+    "headache": "我頭痛。",
+    "goHospital": "我去醫院。",
+    "pleaseSit": "請坐。",
+    "pleaseWait": "please wait",
+    "openDoorPlease": "請開門。",
+    "waitAMoment": "請稍等。",
+    "sitHerePlease": "請坐這裡。",
+    "letsGoTogether": "我們一起去吧。",
+    "wantToGo": "你想去嗎？",
+    "haveTime": "你有時間嗎？",
+    "letsEatTogether": "我們一起吃吧。",
+    "studyTogether": "我們一起學習吧。",
+    "friendSaidComing": "friend said coming",
+    "friendSaidGoing": "friend said going",
+    "friendAskedCome": "friend asked come",
+    "friendSaidGood": "friend said good",
+    "weatherSaidGood": "weather said good",
+    "weatherSaidCold": "weather said cold",
+    "rainSaidComing": "rain said coming",
+    "saidDelicious": "said delicious",
+    "askedWhereGoing": "asked where going",
+    "askedWhatTime": "asked what time",
+    "askedWhatEat": "asked what eat",
+    "askedWhyCome": "asked why come",
+    "askedWhoIs": "asked who is",
+    "askedHowMuch": "asked how much",
+    "askedIfAte": "asked if ate",
+    "askedWhenComing": "asked when coming",
+    "toldToComeFast": "told to come fast",
+    "suggestedGoTogether": "suggested go together",
+    "toldToBeQuiet": "told to be quiet",
+    "toldToWait": "told to wait",
+    "suggestedEatTogether": "suggested eat together",
+    "busyStudying": "busy studying",
+    "wentDespiteRain": "went despite rain",
+    "lateDueToWork": "late due to work",
+    "tiredWorking": "tired working",
+    "ateDespiteFull": "ate despite full",
+    "studiedDespiteTired": "studied despite tired",
+    "betterAsWeMeet": "better as we meet",
+    "boundToMakeMistakes": "bound to make mistakes",
+    "harderAsItGoes": "harder as it goes",
+    "happierStudying": "happier studying",
+    "boundToGetTired": "bound to get tired",
+    "prettierAsLook": "prettier as look",
+    "looksHappy": "looks happy",
+    "seemsRaining": "seems raining",
+    "looksTired": "looks tired",
+    "looksDelicious": "looks delicious",
+    "seemsBusy": "seems busy",
+    "pretendsToKnow": "pretends to know",
+    "pretendedToSleep": "pretended to sleep",
+    "pretendsToBeBusy": "pretends to be busy",
+    "pretendsNotToHear": "pretends not to hear",
+    "pretendedToEat": "pretended to eat",
+    "pretendsNotToKnow": "pretends not to know",
+    "shouldHaveComeEarly": "should have come early",
+    "shouldHaveStudied": "should have studied",
+    "shouldHaveBought": "should have bought",
+    "shouldHaveEaten": "should have eaten",
+    "shouldHaveRested": "should have rested",
+    "shouldHaveTold": "should have told",
+    "grandmotherEatsMeal": "grandmother eats meal",
+    "motherSleeps": "mother sleeps",
+    "teacherIsSick": "teacher is sick",
+    "grandmotherGoes": "grandmother goes",
+    "fatherSpeaks": "father speaks",
+    "giveGiftHonorific": "give gift honorific",
+    "seeTomorrowHonorific": "see tomorrow honorific",
+    "askTeacherHonorific": "ask teacher honorific",
+    "receiveGift": "receive gift",
+    "seeYesterday": "see yesterday",
+    "helpTeacher": "help teacher",
+    "doorOpens": "door opens",
+    "windowCloses": "window closes",
+    "mountainSeen": "mountain seen",
+    "musicHeard": "music heard",
+    "doorLocked": "door locked",
+    "letterWrittenWell": "letter written well",
+    "cameToKnow": "came to know",
+    "wentToKorea": "went to korea",
+    "forgotName": "forgot name",
+    "metFriend": "met friend",
+    "wentToKoreaResult": "went to korea result",
+    "studiedKorean": "studied korean",
+    "showsPhoto": "shows photo",
+    "feedsBaby": "feeds baby",
+    "dressesClothes": "dresses clothes",
+    "takesPhoto": "takes photo",
+    "eatsMeal": "eats meal",
+    "wearsClothes": "wears clothes",
+    "makesLaugh": "makes laugh",
+    "madeWait": "made wait",
+    "makesCry": "makes cry",
+    "makesStudy": "makes study",
+    "makesGo": "makes go",
+    "waitedLong": "waited long",
+    "madeCry": "made cry",
+    "laughedTogether": "laughed together",
+    "pleaseBeSeated": "please be seated",
+    "letUsDepart": "let us depart",
+    "pleaseComeIn": "please come in",
+    "arrivedNow": "arrived now",
+    "doYouHaveQuestions": "do you have questions",
+    "haveNoQuestions": "have no questions",
+    "offerGreetingWords": "offer greeting words",
+    "ourSchoolHumble": "our school humble",
+    "ourCountryHumble": "our country humble",
+    "thankYouSincerely": "thank you sincerely",
+    "mySchool": "my school",
+    "ourHouse": "our house",
+    "conveyGratitude": "convey gratitude",
+    "apologizeSincerely": "apologize sincerely",
+    "gaveGiftToGrandmother": "gave gift to grandmother",
+    "doorClosedByItself": "door closed by itself",
+    "regardingMeetingAgenda": "regarding meeting agenda",
+    "pleaseCheckAttachment": "please check attachment",
+    "pleaseReviewRequest": "please review request",
+    "scheduleChangeRequest": "schedule change request",
+    "connectingPersonInCharge": "connecting person in charge",
+    "availableToSpeakNow": "available to speak now",
+    "shallITakeMessage": "shall i take message",
+    "callAgainLater": "call again later",
+    "askKindUnderstanding": "ask kind understanding",
+    "convenientTimeRequest": "convenient time request",
+    "meetingCancelled": "meeting cancelled",
+    "callMeLater": "call me later",
+    "inMyOpinionProposalGood": "in my opinion proposal good",
+    "stronglyAgree": "strongly agree",
+    "additionalReviewNeeded": "additional review needed",
+    "opposeStrongly": "oppose strongly",
+    "suggestAlternative": "suggest alternative",
+    "approveImmediately": "approve immediately",
+    "reportingProjectProgress": "reporting project progress",
+    "completedAction": "completed action",
+    "salesIncreased": "sales increased",
+    "cooperationHoped": "cooperation hoped",
+    "projectDelayed": "project delayed",
+    "sharingResults": "sharing results",
+    "scheduleDelayed": "schedule delayed",
+    "increasedComparedToLastYear": "increased compared to last year",
+    "hopeMutualCooperation": "hope mutual cooperation",
+    "exchangeBusinessCards": "exchange business cards",
+    "salesDecreased": "sales decreased",
+    "costsDecreased": "costs decreased",
+    "profitsDecreased": "profits decreased",
+    "proposeCompromise": "propose compromise",
+    "acceptContract": "accept contract",
+    "refuseProposal": "refuse proposal",
+    "signedContract": "signed contract",
+    "delayedContract": "delayed contract",
+    "pleasedToMeetCard": "pleased to meet card",
+    "departmentManagerKim": "department manager kim",
+    "teamLeaderPark": "team leader park",
+    "thankYouGreeting": "thank you greeting",
+    "generalManagerLee": "general manager lee",
+    "deputyKim": "deputy kim",
+    "pleaseReviewAgenda": "please review agenda",
+    "seeYouAtMeeting": "see you at meeting",
+    "announcedPriceMeasures": "announced price measures",
+    "recordHighExports": "record high exports",
+    "aiDevelopingRapidly": "ai developing rapidly",
+    "heavyResponsibilityBurden": "heavy responsibility burden",
+    "protectEnvironment": "protect environment",
+    "cleanEnergyPopular": "clean energy popular",
+    "hasWideConnections": "has wide connections",
+    "highStandardsChoose": "high standards choose",
+    "socialInterestGrowing": "social interest growing",
+    "scientificDebate": "scientific debate",
+    "adoptedNewTech": "adopted new tech",
+    "stoppedNewTech": "stopped new tech",
+    "easilyInfluenced": "easily influenced",
+    "rippedOffPrice": "ripped off price",
+    "earHurt": "ear hurt",
+    "steppedUpToHelp": "stepped up to help",
+    "boughtCheaply": "bought cheaply",
+    "shoulderAches": "shoulder aches",
+    "tookOffShoes": "took off shoes",
+    "mendBarnAfterLosingCow": "mend barn after losing cow",
+    "strikeWhileIronHot": "strike while iron hot",
+    "wordsTravelFarProverb": "words travel far proverb",
+    "twoBirdsOneStone": "two birds one stone",
+    "threeDaysResolve": "three days resolve",
+    "horseRunsFast": "horse runs fast",
+    "theMoreTheBetter": "the more the better",
+    "empathyPutInOthersShoes": "empathy put in others shoes",
+    "effortPaysOff": "effort pays off",
+    "goodDeed": "good deed",
+    "accordingToOpinion": "according to opinion",
+    "onOtherHandAnotherAspect": "on other hand another aspect",
+    "inShortEssential": "in short essential",
+    "thereforeConclude": "therefore conclude",
+    "agreeEntirely": "agree entirely",
+    "importantDetail": "important detail",
+    "warmJeongAffection": "warm jeong affection",
+    "makeSongpyeonChuseok": "make songpyeon chuseok",
+    "shareFoodNeighbors": "share food neighbors",
+    "cleanEnvironment": "clean environment",
+    "eatTteokgukNewYear": "eat tteokguk new year",
+    "eatAlone": "eat alone",
+    "achievedTwoBirdsEffect": "achieved two birds effect",
+    "cooperateBasedOnMutualUnderstanding": "cooperate based on mutual understanding",
+    "relationshipEnded": "relationship ended"
   },
   "note": {
     "native": "固有詞數字（하나, 둘, 셋 …）用於數東西和表示鐘點。"
+  },
+  "course": {
+    "K7": {
+      "title": "Korean Level 7 · Conjunctions and Indirect Speech",
+      "world": "Speech Garden",
+      "tagline": "Connect complex thoughts and report what others say",
+      "unit": "Indirect speech and complex connectors"
+    },
+    "K8": {
+      "title": "Korean Level 8 · Honorifics, Passive and Causative",
+      "world": "River of Courtesy",
+      "tagline": "Nuances of polite speech and causative/passive voice",
+      "unit": "Precision honorifics and voice"
+    },
+    "K9": {
+      "title": "Korean Level 9 · Professional and Workplace Korean",
+      "world": "Office Tower",
+      "tagline": "Practical business communication for email, phone and meetings",
+      "unit": "Workplace and business Korean"
+    },
+    "K10": {
+      "title": "Korean Level 10 · Culture, Media and Idioms",
+      "world": "Forest of Culture",
+      "tagline": "Explore Korean society through news, idioms and proverbs",
+      "unit": "Culture, media and idioms"
+    }
   }
 }

@@ -20,7 +20,7 @@ export const SCHOOL_GRADES = [...ELEMENTARY_GRADES, ...SECONDARY_GRADES] as cons
  * Language-course LEVELS (study.korean): K1..K6 are proficiency levels, not school grades. They share the Grade slot of a course /
  * profile so the engine (paths, placement, scoping) is one engine; which list a site offers comes from its SiteConfig (lib/learn/sites.ts).
  */
-export const KOREAN_LEVELS = ["K1", "K2", "K3", "K4", "K5", "K6"] as const;
+export const KOREAN_LEVELS = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "K10"] as const;
 export const GRADES = [...SCHOOL_GRADES, ...KOREAN_LEVELS] as const;
 export type Grade = (typeof GRADES)[number];
 export type SchoolGrade = (typeof SCHOOL_GRADES)[number];

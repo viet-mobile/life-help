@@ -35,82 +35,717 @@
     "phone": "Téléphone na message",
     "hospital": "Na lopitô",
     "requests": "Hûnda na nê",
-    "invitations": "Sâra âprojet tî e kûê"
+    "invitations": "Sâra âprojet tî e kûê",
+    "indirect_state": "Indirect statements (-다고 하다)",
+    "indirect_ask": "Indirect questions (-냐고 하다)",
+    "indirect_cmd": "Indirect commands and suggestions (-라고 / -자고 하다)",
+    "cause_contrast": "Complex causes and contrasts (-느라고, -는데도)",
+    "proportion": "Proportion and inevitability (-을수록, -기 마련이다)",
+    "appearance": "Appearance and inference (-아/어 보이다, -는 모양이다)",
+    "pretense": "Pretending (-는 척하다)",
+    "regret": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
+    "review_k7": "K7 Comprehensive Review",
+    "honorific_subj": "Honorific vocabulary for subjects",
+    "honorific_obj": "Object honorific verbs (드리다, 뵙다, 여쭙다)",
+    "passive_affix": "Affix passives (-이/히/리/기-)",
+    "passive_compound": "Syntactic passives (-어지다, -게 되다)",
+    "causative_affix": "Affix causatives (-이/히/리/기/우-)",
+    "causative_compound": "Syntactic causatives (-게 하다)",
+    "formal_style": "Public formal style (-하십시오)",
+    "modesty": "Modest and humble expressions",
+    "review_k8": "K8 Comprehensive Review",
+    "biz_email": "Business email writing and requests",
+    "biz_phone": "Business telephone etiquette",
+    "biz_schedule": "Scheduling and rescheduling",
+    "biz_meeting": "Meeting discussions and opinions",
+    "biz_report": "Reporting project progress",
+    "biz_stats": "Statistical figures and data trends",
+    "biz_negotiate": "Business negotiations and partnerships",
+    "biz_etiquette": "Business cards and professional titles",
+    "review_k9": "K9 Comprehensive Review",
+    "media_headline": "Headlines and compressed style",
+    "media_article": "Current affairs and editorials",
+    "idioms_body": "Body-part idioms (발, 눈, 귀, 손)",
+    "idioms_action": "Everyday action idioms (바가지, 어깨)",
+    "proverbs_life": "Essential Korean proverbs",
+    "sino_four": "Four-character idioms (사자성어)",
+    "logic_debate": "Logical connectors and discourse markers",
+    "culture_deep": "Deep Korean cultural values and customs",
+    "review_k10": "K10 Comprehensive Review"
   },
   "lesson": {
-    "yvowels": { "title": "Âvoyelle Y", "concept": "Tî zîa mbênî kêtê tîrî a tene sïngö tî **y**: ㅏ → ㅑ (ya), ㅓ → ㅕ (yeo), ㅗ → ㅛ (yo), ㅜ → ㅠ (yu). ㅐ (ae) na ㅔ (e) a yeke yâ tî ôko na yângâ tî Korée tî fadësô." },
-    "consonants2": { "title": "Âconsonne mîngi", "concept": "ㄹ ayeke na popo tî “r” na “l”. ㅈ (j), ㅊ (ch, na mbâgë tî ngû-mbîrî), ㅋ (k, na mbâgë tî ngû-mbîrî), ㅌ (t, na mbâgë tî ngû-mbîrî) na ㅍ (p, na mbâgë tî ngû-mbîrî) asâra si âconsonne tî gbe nî ahûnzi." },
-    "doubled": { "title": "Âconsonne tî ûse-ûse", "concept": "ㄲ, ㄸ, ㅃ, ㅆ na ㅉ ayeke âsïngö so aköngbâ ngangü: tene ni na ngangü tî ngangü na mbâgë tî ngû-mbîrî pëpe, tongaso tî sïngö tî kozo nî na “skate”." },
-    "batchim": { "title": "Âconsonne tî ndâ", "concept": "Mbênî consonne so ayeke na gbe tî syllabe a iri nî **받침 (batchim)**. A kangbi syllabe nî: 안 (an), 말 (mal), 밤 (bam), 강 (gang), 집 (jip), 책 (chaek). Gï âsïngö oku-ûse-ûta (7) ayeke na ndâ nî: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ." },
-    "words2": { "title": "Âtënë tî lâ kûê", "concept": "Dïko tënë ôko ôko syllabe na syllabe. A dïko 학교 tongaso “hakgyo”: ㄱ tî ndâ tî 학 akangbi, na syllabe so alîngbi na pekô ayeke tene na ngangü." },
-    "words3": { "title": "Âtënë tî sese", "concept": "Âzo na sese: 사람 (zo), 나라 (ködörö), 하늘 (yayu), 산 (montagne), 강 (rivière), 꽃 (fleur)." },
-    "manners": { "title": "Âtënë na nê", "concept": "Sâra kua na 실례합니다 tî hûnda na zo tî bâ mo wala tî tï na lêgë, 고마워요 tî tene singîla na kamarâde, 천만에요 tî kîri tënë na singîla, na 축하해요 tî tene singîla mîngi." },
-    "introduce": { "title": "Ïrï na ködörö", "concept": "Hûnda ïrï na 이름이 뭐예요? na ködörö na 어느 나라 사람이에요? Kîri tënë na 제 이름은 ___예요 wala 저는 ___ 사람이에요." },
-    "partings": { "title": "Tene gue nzönî", "concept": "Popo tî âkamarâde mo lîngbi tî tene 잘 가요 (gue nzönî), 내일 봐요 (kêkerêke e bâ e), 또 만나요 (e tingbi nga) na 잘 자요 (lângö nzönî)." },
-    "wellbeing": { "title": "Mo yeke nzönî?", "concept": "Hûnda 잘 지냈어요? (Mo yeke nzönî?) na kîri tënë na 잘 지내요 (Mbï yeke nzönî). 좋은 아침이에요 atene “Matin ayeke nzönî”." },
-    "helpme": { "title": "Hûnda maboko", "concept": "Tene 도와주세요 tî hûnda maboko, 모르겠어요 tî tene mo hînga pëpe, 알겠어요 tî tene mo hînga, na 다시 말해 주세요 tî hûnda na zo tî tene nî nga." },
-    "opinions": { "title": "Yê so mo yê na âkîrîngö-tënë", "concept": "좋아요 atene a yeke nzönî, 싫어요 atene mo yê pëpe, 맞아요 atene “a yeke tënë nî”, na 틀려요 atene “a yeke tënë nî pëpe”." },
-    "native10": { "title": "Ânömörö tî Korée 6–10", "concept": "Ngbâ na ânömörö tî Korée: 여섯 (6), 일곱 (7), 여덟 (8), 아홉 (9), 열 (10)." },
-    "sino": { "title": "Ânömörö sino-coréen", "concept": "Ânömörö sino-coréen: 일 (1), 이 (2), 삼 (3), 사 (4), 오 (5), 육 (6), 칠 (7), 팔 (8), 구 (9), 십 (10). A yeke sâra kua na ni tî nginza, âdate, ânömörö tî téléphone na âminute." },
-    "ages": { "title": "Ngû", "concept": "Hûnda 몇 살이에요? (Mo yeke na ngû ôke?). Ngû tî zo ayeke nömörö tî Korée na 살: 열 살 (ngû 10), 스무 살 (20), 서른 살 (30)." },
-    "people": { "title": "Âzo", "concept": "친구 (kamarâde), 의사 (wanganga), 사람 (zo), 남자 (kôlï), 여자 (wâlï)." },
-    "family2": { "title": "Âtënë tî sêwä mîngi", "concept": "Âita ayeke na âtënë so andê na zo so ayeke tene: wâlï atene 오빠 (ita-kôlï so kötä) na 언니 (ita-wâlï so kötä). Nga 아들 (môlengê-kôlï), 딸 (môlengê-wâlï), 부모님 (babâ na mamâ)." },
-    "ourfamily": { "title": "Sêwä tî e", "concept": "Âzo tî Korée atene mîngi 우리 (e, tî e) na ndo tî “tî mbï”: 우리 가족 atene “sêwä tî mbï”. Bâ âzo na 명: 네 명 (âzo 4)." },
-    "food": { "title": "Kôbe na yê tî nyön", "concept": "밥 (riz, kôbe), 빵 (pain), 과일 (fruit), 고기 (nyama), 물 (ngû), 우유 (lait)." },
-    "likes": { "title": "Yê so mo yê na so mo yê pëpe", "concept": "Tene yê so mo yê na -를/을 좋아해요 na yê so mo yê pëpe na -를/을 싫어해요: 저는 사과를 좋아해요." },
-    "adjectives": { "title": "Tene lêgë tî yê", "concept": "Âtënë so afa lêgë tî yê nga akomanse na -요: 커요 (kötä), 작아요 (kêtê), 많아요 (mîngi), 맛있어요 (nzönî tî te), 예뻐요 (nzönî tî bâ)." },
-    "weather": { "title": "Météo", "concept": "날씨 (météo), 더워요 (chaud), 추워요 (froid), 비가 와요 (ngû atï), 눈이 와요 (neige atï)." },
-    "negation": { "title": "Tene ên-ën na 안 na 못", "concept": "Zîa **안** na li tî verbe tî tene mo sâra yê pëpe (안 가요). Zîa **못** na li nî tî tene mo lîngbi tî sâra pëpe (못 가요)." },
-    "daily": { "title": "Âyê tî lâ kûê", "concept": "일어나요 (mbï zîa lângö), 씻어요 (mbï sukûla), 일해요 (mbï sâra kua), 자요 (mbï lângö). Âtënë tî ngoi tongana 아침 (matin) na 밤 (nuit) asâra kua na 에: 아침에." },
-    "weekdays": { "title": "Âlâ tî sêmêne", "concept": "월요일 (lundi), 화요일 (mardi), 수요일 (mercredi), 목요일 (jeudi), 금요일 (vendredi), 토요일 (samedi), 일요일 (dimanche)." },
-    "months": { "title": "Ânze", "concept": "Nze ayeke nömörö sino-coréen na 월: 일월 (janvier), 삼월 (mars), 오월 (mai), 칠월 (juillet), 구월 (septembre), 십이월 (décembre)." },
-    "clock": { "title": "Tene ngbonga", "concept": "Ngbonga ayeke nömörö tî Korée na 시: 한 시 (1:00), 두 시 (2:00), 세 시 (3:00), 열 시 (10:00). Hûnda 몇 시예요?" },
-    "frequency": { "title": "Ngoi ôke ôke", "concept": "매일 (lâ kûê), 자주 (ngoi mîngi), 가끔 (mbênî ngoi), 항상 (ngoi kûê). Zîa ni na li tî verbe." },
-    "past2": { "title": "Ngoi so ahûnzi awe mîngi", "concept": "Ndâ tî ngoi so ahûnzi awe ayeke -았/었어요: 했어요 (sâra awe), 왔어요 (gä awe), 만났어요 (tingbi awe), 샀어요 (vo awe), 잤어요 (lângö awe)." },
-    "birthday": { "title": "Anniversaire na weekend", "concept": "생일 (anniversaire), 주말 (weekend), 선물 (cadeau). Hûnda 생일이 언제예요? na kîri tënë na 제 생일은 오월이에요." },
-    "restaurant": { "title": "Na restaurant", "concept": "메뉴 (menu), 주문할게요 (fadë mbï hûnda yê), 물 더 주세요 (ngû mbênî nga, mbï hûnda mo), 계산해 주세요 (addition, mbï hûnda mo)." },
-    "transport": { "title": "Gue na lêgë", "concept": "버스 (bus), 지하철 (métro), 택시 (taxi), 기차 (train). Tene lêgë tî gue na -로/으로: 버스로 가요." },
-    "phone": { "title": "Téléphone na message", "concept": "전화 (appel tî téléphone), 전화번호 (nömörö tî téléphone), 문자 (message). 전화해요 atene “mbï sâra appel”." },
-    "hospital": { "title": "Na lopitô", "concept": "병원 (lopitô), 약 (médicament), 아파요 (pîka ayeke). Tene kâ tî yâ-mbï kozo: 머리가 아파요 (li tî mbï ayeke na pîka)." },
-    "requests": { "title": "Hûnda na nê", "concept": "-세요 na -아/어 주세요 asâra âhûnda na nê: 앉으세요 (dutï, mbï hûnda mo), 기다려 주세요 (ngbâ, mbï hûnda mo), 문을 열어 주세요 (fungola kpängbä nî, mbï hûnda mo)." },
-    "invitations": { "title": "Sâra âprojet tî e kûê", "concept": "같이 (ôko) a yeke ïrï tî zo: 같이 가요. 갈래요? a hûnda “Mo yê tî gue?” na 시간 있어요? a hûnda “Mo yeke na ngoi?”" }
+    "yvowels": {
+      "title": "Âvoyelle Y",
+      "concept": "Tî zîa mbênî kêtê tîrî a tene sïngö tî **y**: ㅏ → ㅑ (ya), ㅓ → ㅕ (yeo), ㅗ → ㅛ (yo), ㅜ → ㅠ (yu). ㅐ (ae) na ㅔ (e) a yeke yâ tî ôko na yângâ tî Korée tî fadësô."
+    },
+    "consonants2": {
+      "title": "Âconsonne mîngi",
+      "concept": "ㄹ ayeke na popo tî “r” na “l”. ㅈ (j), ㅊ (ch, na mbâgë tî ngû-mbîrî), ㅋ (k, na mbâgë tî ngû-mbîrî), ㅌ (t, na mbâgë tî ngû-mbîrî) na ㅍ (p, na mbâgë tî ngû-mbîrî) asâra si âconsonne tî gbe nî ahûnzi."
+    },
+    "doubled": {
+      "title": "Âconsonne tî ûse-ûse",
+      "concept": "ㄲ, ㄸ, ㅃ, ㅆ na ㅉ ayeke âsïngö so aköngbâ ngangü: tene ni na ngangü tî ngangü na mbâgë tî ngû-mbîrî pëpe, tongaso tî sïngö tî kozo nî na “skate”."
+    },
+    "batchim": {
+      "title": "Âconsonne tî ndâ",
+      "concept": "Mbênî consonne so ayeke na gbe tî syllabe a iri nî **받침 (batchim)**. A kangbi syllabe nî: 안 (an), 말 (mal), 밤 (bam), 강 (gang), 집 (jip), 책 (chaek). Gï âsïngö oku-ûse-ûta (7) ayeke na ndâ nî: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ."
+    },
+    "words2": {
+      "title": "Âtënë tî lâ kûê",
+      "concept": "Dïko tënë ôko ôko syllabe na syllabe. A dïko 학교 tongaso “hakgyo”: ㄱ tî ndâ tî 학 akangbi, na syllabe so alîngbi na pekô ayeke tene na ngangü."
+    },
+    "words3": {
+      "title": "Âtënë tî sese",
+      "concept": "Âzo na sese: 사람 (zo), 나라 (ködörö), 하늘 (yayu), 산 (montagne), 강 (rivière), 꽃 (fleur)."
+    },
+    "manners": {
+      "title": "Âtënë na nê",
+      "concept": "Sâra kua na 실례합니다 tî hûnda na zo tî bâ mo wala tî tï na lêgë, 고마워요 tî tene singîla na kamarâde, 천만에요 tî kîri tënë na singîla, na 축하해요 tî tene singîla mîngi."
+    },
+    "introduce": {
+      "title": "Ïrï na ködörö",
+      "concept": "Hûnda ïrï na 이름이 뭐예요? na ködörö na 어느 나라 사람이에요? Kîri tënë na 제 이름은 ___예요 wala 저는 ___ 사람이에요."
+    },
+    "partings": {
+      "title": "Tene gue nzönî",
+      "concept": "Popo tî âkamarâde mo lîngbi tî tene 잘 가요 (gue nzönî), 내일 봐요 (kêkerêke e bâ e), 또 만나요 (e tingbi nga) na 잘 자요 (lângö nzönî)."
+    },
+    "wellbeing": {
+      "title": "Mo yeke nzönî?",
+      "concept": "Hûnda 잘 지냈어요? (Mo yeke nzönî?) na kîri tënë na 잘 지내요 (Mbï yeke nzönî). 좋은 아침이에요 atene “Matin ayeke nzönî”."
+    },
+    "helpme": {
+      "title": "Hûnda maboko",
+      "concept": "Tene 도와주세요 tî hûnda maboko, 모르겠어요 tî tene mo hînga pëpe, 알겠어요 tî tene mo hînga, na 다시 말해 주세요 tî hûnda na zo tî tene nî nga."
+    },
+    "opinions": {
+      "title": "Yê so mo yê na âkîrîngö-tënë",
+      "concept": "좋아요 atene a yeke nzönî, 싫어요 atene mo yê pëpe, 맞아요 atene “a yeke tënë nî”, na 틀려요 atene “a yeke tënë nî pëpe”."
+    },
+    "native10": {
+      "title": "Ânömörö tî Korée 6–10",
+      "concept": "Ngbâ na ânömörö tî Korée: 여섯 (6), 일곱 (7), 여덟 (8), 아홉 (9), 열 (10)."
+    },
+    "sino": {
+      "title": "Ânömörö sino-coréen",
+      "concept": "Ânömörö sino-coréen: 일 (1), 이 (2), 삼 (3), 사 (4), 오 (5), 육 (6), 칠 (7), 팔 (8), 구 (9), 십 (10). A yeke sâra kua na ni tî nginza, âdate, ânömörö tî téléphone na âminute."
+    },
+    "ages": {
+      "title": "Ngû",
+      "concept": "Hûnda 몇 살이에요? (Mo yeke na ngû ôke?). Ngû tî zo ayeke nömörö tî Korée na 살: 열 살 (ngû 10), 스무 살 (20), 서른 살 (30)."
+    },
+    "people": {
+      "title": "Âzo",
+      "concept": "친구 (kamarâde), 의사 (wanganga), 사람 (zo), 남자 (kôlï), 여자 (wâlï)."
+    },
+    "family2": {
+      "title": "Âtënë tî sêwä mîngi",
+      "concept": "Âita ayeke na âtënë so andê na zo so ayeke tene: wâlï atene 오빠 (ita-kôlï so kötä) na 언니 (ita-wâlï so kötä). Nga 아들 (môlengê-kôlï), 딸 (môlengê-wâlï), 부모님 (babâ na mamâ)."
+    },
+    "ourfamily": {
+      "title": "Sêwä tî e",
+      "concept": "Âzo tî Korée atene mîngi 우리 (e, tî e) na ndo tî “tî mbï”: 우리 가족 atene “sêwä tî mbï”. Bâ âzo na 명: 네 명 (âzo 4)."
+    },
+    "food": {
+      "title": "Kôbe na yê tî nyön",
+      "concept": "밥 (riz, kôbe), 빵 (pain), 과일 (fruit), 고기 (nyama), 물 (ngû), 우유 (lait)."
+    },
+    "likes": {
+      "title": "Yê so mo yê na so mo yê pëpe",
+      "concept": "Tene yê so mo yê na -를/을 좋아해요 na yê so mo yê pëpe na -를/을 싫어해요: 저는 사과를 좋아해요."
+    },
+    "adjectives": {
+      "title": "Tene lêgë tî yê",
+      "concept": "Âtënë so afa lêgë tî yê nga akomanse na -요: 커요 (kötä), 작아요 (kêtê), 많아요 (mîngi), 맛있어요 (nzönî tî te), 예뻐요 (nzönî tî bâ)."
+    },
+    "weather": {
+      "title": "Météo",
+      "concept": "날씨 (météo), 더워요 (chaud), 추워요 (froid), 비가 와요 (ngû atï), 눈이 와요 (neige atï)."
+    },
+    "negation": {
+      "title": "Tene ên-ën na 안 na 못",
+      "concept": "Zîa **안** na li tî verbe tî tene mo sâra yê pëpe (안 가요). Zîa **못** na li nî tî tene mo lîngbi tî sâra pëpe (못 가요)."
+    },
+    "daily": {
+      "title": "Âyê tî lâ kûê",
+      "concept": "일어나요 (mbï zîa lângö), 씻어요 (mbï sukûla), 일해요 (mbï sâra kua), 자요 (mbï lângö). Âtënë tî ngoi tongana 아침 (matin) na 밤 (nuit) asâra kua na 에: 아침에."
+    },
+    "weekdays": {
+      "title": "Âlâ tî sêmêne",
+      "concept": "월요일 (lundi), 화요일 (mardi), 수요일 (mercredi), 목요일 (jeudi), 금요일 (vendredi), 토요일 (samedi), 일요일 (dimanche)."
+    },
+    "months": {
+      "title": "Ânze",
+      "concept": "Nze ayeke nömörö sino-coréen na 월: 일월 (janvier), 삼월 (mars), 오월 (mai), 칠월 (juillet), 구월 (septembre), 십이월 (décembre)."
+    },
+    "clock": {
+      "title": "Tene ngbonga",
+      "concept": "Ngbonga ayeke nömörö tî Korée na 시: 한 시 (1:00), 두 시 (2:00), 세 시 (3:00), 열 시 (10:00). Hûnda 몇 시예요?"
+    },
+    "frequency": {
+      "title": "Ngoi ôke ôke",
+      "concept": "매일 (lâ kûê), 자주 (ngoi mîngi), 가끔 (mbênî ngoi), 항상 (ngoi kûê). Zîa ni na li tî verbe."
+    },
+    "past2": {
+      "title": "Ngoi so ahûnzi awe mîngi",
+      "concept": "Ndâ tî ngoi so ahûnzi awe ayeke -았/었어요: 했어요 (sâra awe), 왔어요 (gä awe), 만났어요 (tingbi awe), 샀어요 (vo awe), 잤어요 (lângö awe)."
+    },
+    "birthday": {
+      "title": "Anniversaire na weekend",
+      "concept": "생일 (anniversaire), 주말 (weekend), 선물 (cadeau). Hûnda 생일이 언제예요? na kîri tënë na 제 생일은 오월이에요."
+    },
+    "restaurant": {
+      "title": "Na restaurant",
+      "concept": "메뉴 (menu), 주문할게요 (fadë mbï hûnda yê), 물 더 주세요 (ngû mbênî nga, mbï hûnda mo), 계산해 주세요 (addition, mbï hûnda mo)."
+    },
+    "transport": {
+      "title": "Gue na lêgë",
+      "concept": "버스 (bus), 지하철 (métro), 택시 (taxi), 기차 (train). Tene lêgë tî gue na -로/으로: 버스로 가요."
+    },
+    "phone": {
+      "title": "Téléphone na message",
+      "concept": "전화 (appel tî téléphone), 전화번호 (nömörö tî téléphone), 문자 (message). 전화해요 atene “mbï sâra appel”."
+    },
+    "hospital": {
+      "title": "Na lopitô",
+      "concept": "병원 (lopitô), 약 (médicament), 아파요 (pîka ayeke). Tene kâ tî yâ-mbï kozo: 머리가 아파요 (li tî mbï ayeke na pîka)."
+    },
+    "requests": {
+      "title": "Hûnda na nê",
+      "concept": "-세요 na -아/어 주세요 asâra âhûnda na nê: 앉으세요 (dutï, mbï hûnda mo), 기다려 주세요 (ngbâ, mbï hûnda mo), 문을 열어 주세요 (fungola kpängbä nî, mbï hûnda mo)."
+    },
+    "invitations": {
+      "title": "Sâra âprojet tî e kûê",
+      "concept": "같이 (ôko) a yeke ïrï tî zo: 같이 가요. 갈래요? a hûnda “Mo yê tî gue?” na 시간 있어요? a hûnda “Mo yeke na ngoi?”"
+    },
+    "indirect_state": {
+      "title": "Indirect statements (-다고 하다)",
+      "concept": "Report what someone says or said: verb/adj + -다고 하다."
+    },
+    "indirect_ask": {
+      "title": "Indirect questions (-냐고 하다)",
+      "concept": "Report a question: verb/adj + -냐고 묻다/하다."
+    },
+    "indirect_cmd": {
+      "title": "Indirect commands and suggestions (-라고 / -자고 하다)",
+      "concept": "Report an imperative (-라고 하다) or propositive (-자고 하다)."
+    },
+    "cause_contrast": {
+      "title": "Complex causes and contrasts (-느라고, -는데도)",
+      "concept": "Negative cause or delay (-느라고) and contrast despite circumstances (-는데도)."
+    },
+    "proportion": {
+      "title": "Proportion and inevitability (-을수록, -기 마련이다)",
+      "concept": "The more... the more (-을수록) and natural inevitability (-기 마련이다)."
+    },
+    "appearance": {
+      "title": "Appearance and inference (-아/어 보이다, -는 모양이다)",
+      "concept": "Looks like (-아/어 보이다) and appears to be (-는 모양이다)."
+    },
+    "pretense": {
+      "title": "Pretending (-는 척하다)",
+      "concept": "Pretend to do or be something: -(으)ㄴ/는 척하다."
+    },
+    "regret": {
+      "title": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
+      "concept": "Express regret: 'I should have done...' -(으)ㄹ 걸 그랬어요."
+    },
+    "review_k7": {
+      "title": "K7 Comprehensive Review",
+      "concept": "Review indirect speech, complex connectors and nuanced expressions."
+    },
+    "honorific_subj": {
+      "title": "Honorific vocabulary for subjects",
+      "concept": "Special honorific nouns and verbs for revered people: 진지, 주무시다, 편찮으시다."
+    },
+    "honorific_obj": {
+      "title": "Object honorific verbs (드리다, 뵙다, 여쭙다)",
+      "concept": "Humble/honorific verbs when the action is directed toward an elder: 드리다, 뵙다, 여쭙다."
+    },
+    "passive_affix": {
+      "title": "Affix passives (-이/히/리/기-)",
+      "concept": "Passive verbs formed by adding -이/히/리/기-: 보이다, 들리다, 열리다, 닫히다."
+    },
+    "passive_compound": {
+      "title": "Syntactic passives (-어지다, -게 되다)",
+      "concept": "Verbs taking spontaneous or resulting passive forms: -아/어지다, -게 되다."
+    },
+    "causative_affix": {
+      "title": "Affix causatives (-이/히/리/기/우-)",
+      "concept": "Causative verbs that make someone do an action: 보여 주다, 먹이다, 입히다."
+    },
+    "causative_compound": {
+      "title": "Syntactic causatives (-게 하다)",
+      "concept": "Make or cause someone to do something: -게 하다."
+    },
+    "formal_style": {
+      "title": "Public formal style (-하십시오)",
+      "concept": "High formal deferential style for announcements and ceremonies: -하십시오, -하십시다."
+    },
+    "modesty": {
+      "title": "Modest and humble expressions",
+      "concept": "Polite speech using humble pronouns and verbs: 저희, 말씀 올리다."
+    },
+    "review_k8": {
+      "title": "K8 Comprehensive Review",
+      "concept": "Review honorifics, passive, causative and formal polite registers."
+    },
+    "biz_email": {
+      "title": "Business email writing and requests",
+      "concept": "Formal business email conventions: -에 관하여, 검토 부탁드립니다."
+    },
+    "biz_phone": {
+      "title": "Business telephone etiquette",
+      "concept": "Handling calls and messages: 통화 가능하신지요, 연결해 드리겠습니다."
+    },
+    "biz_schedule": {
+      "title": "Scheduling and rescheduling",
+      "concept": "Proposing and changing appointment times: 변경하고자 합니다, 양해 부탁드립니다."
+    },
+    "biz_meeting": {
+      "title": "Meeting discussions and opinions",
+      "concept": "Expressing views during meetings: 제 생각으로는, 찬성합니다, 추가 검토."
+    },
+    "biz_report": {
+      "title": "Reporting project progress",
+      "concept": "Giving status updates: 진행 상황을 보고합니다, 조치를 완료했습니다."
+    },
+    "biz_stats": {
+      "title": "Statistical figures and data trends",
+      "concept": "Describing trends and numbers: 증가했습니다, 전년 대비."
+    },
+    "biz_negotiate": {
+      "title": "Business negotiations and partnerships",
+      "concept": "Professional collaboration: 상호 협력을 희망합니다, 절충안 제시."
+    },
+    "biz_etiquette": {
+      "title": "Business cards and professional titles",
+      "concept": "Exchanging cards and titles: 처음 뵙겠습니다, 명함 드립니다."
+    },
+    "review_k9": {
+      "title": "K9 Comprehensive Review",
+      "concept": "Review professional communications, formal correspondence and meetings."
+    },
+    "media_headline": {
+      "title": "Headlines and compressed style",
+      "concept": "News headlines and compressed noun phrases: 물가 안정 대책 발표."
+    },
+    "media_article": {
+      "title": "Current affairs and editorials",
+      "concept": "Reading short news articles: 친환경 에너지가 주목받고 있습니다."
+    },
+    "idioms_body": {
+      "title": "Body-part idioms (발, 눈, 귀, 손)",
+      "concept": "Common idioms with body parts: 발이 넓다 (wide network), 눈이 높다 (high standards)."
+    },
+    "idioms_action": {
+      "title": "Everyday action idioms (바가지, 어깨)",
+      "concept": "Expressions for common situations: 바가지를 쓰다 (ripped off), 어깨가 무겁다 (heavy duty)."
+    },
+    "proverbs_life": {
+      "title": "Essential Korean proverbs",
+      "concept": "Wisdom in proverbs: 소 잃고 외양간 고친다, 쇠뿔도 단김에 빼라."
+    },
+    "sino_four": {
+      "title": "Four-character idioms (사자성어)",
+      "concept": "Common four-character Chinese-derived idioms: 일석이조, 작심삼일, 다다익선."
+    },
+    "logic_debate": {
+      "title": "Logical connectors and discourse markers",
+      "concept": "Formal discourse markers: -에 따르면, 한편, 요컨대, 따라서."
+    },
+    "culture_deep": {
+      "title": "Deep Korean cultural values and customs",
+      "concept": "Cultural concepts and holiday traditions: 따뜻한 정, 송편을 빚다."
+    },
+    "review_k10": {
+      "title": "K10 Comprehensive Review",
+      "concept": "Mastery of Korean culture, media, idioms and formal debate expressions."
+    }
   },
   "gloss": {
-    "dad": "babâ", "apple": "pomme", "book": "mbëtï", "water": "ngû", "house": "da", "person": "zo", "country": "ködörö",
-    "sky": "yayu", "mountain": "montagne", "flower": "fleur", "river": "rivière",
-    "excuseMe": "Pardon.", "thanksCasual": "Singîla. (na kamarâde)", "youreWelcome": "A yeke nzönî.", "congrats": "Singîla mîngi.",
-    "whatsYourName": "Ïrï tî mo ayeke nyen?", "whereFrom": "Mo yeke zo tî ködörö wa?", "iAmVietnamese": "Mbï yeke zo tî Vietnam.", "myNameMina": "Ïrï tî mbï ayeke Mina.",
-    "goodbyeCasual": "Gue nzönî. (na kamarâde)", "seeTomorrow": "Kêkerêke e tingbi.", "seeAgain": "E tingbi nga.", "goodNight": "Lângö nzönî.",
-    "imFine": "Mbï yeke nzönî.", "howHaveYouBeen": "Mo yeke nzönî?", "goodMorning": "Matin ayeke nzönî.",
-    "helpMe": "Mû maboko na mbï, mbï hûnda mo.", "dontKnow": "Mbï hînga pëpe.", "understand": "Mbï hînga tënë nî.", "sayAgain": "Tene nî nga, mbï hûnda mo.", "speakSlowly": "Tene kêtê-kêtê, mbï hûnda mo.",
-    "good": "A yeke nzönî.", "dislike": "Mbï yê nî pëpe.", "correct": "A yeke tënë nî.", "incorrect": "A yeke tënë nî pëpe.",
-    "six": "6", "eight": "8", "nine": "9", "ten": "10",
-    "age": "ngû", "howOld": "Mo yeke na ngû ôke?", "iAmTenYears": "Mbï yeke na ngû 10.", "iAmTwentyYears": "Mbï yeke na ngû 20.", "iAmThirtyYears": "Mbï yeke na ngû 30.",
-    "twentyYears": "ngû 20", "thirtyYears": "ngû 30", "tenYears": "ngû 10", "oneYear": "ngû ôko",
-    "man": "kôlï", "woman": "wâlï", "olderBrotherF": "ita-kôlï so kötä (wâlï atene)", "olderSisterF": "ita-wâlï so kötä (wâlï atene)",
-    "daughter": "môlengê-wâlï", "son": "môlengê-kôlï", "parents": "babâ na mamâ", "we": "e", "I": "mbï", "you": "mo",
-    "ourFamily": "sêwä tî e", "myFamily": "sêwä tî mbï", "familyOfFour": "E yeke zo 4 na sêwä.", "noSiblings": "Mbï yeke na ita pëpe.", "haveSiblings": "Mbï yeke na âita.",
-    "bread": "pain", "rice": "riz / kôbe", "fruit": "fruit", "meat": "nyama",
-    "like": "Mbï yê nî.", "dontLike": "Mbï yê nî pëpe.", "iLikeApples": "Mbï yê âpomme.", "iLikeKimchi": "Mbï yê kimchi.", "iLikeMeat": "Mbï yê nyama.",
-    "big": "A yeke kötä.", "small": "A yeke kêtê.", "many": "A yeke mîngi.", "delicious": "A yeke nzönî tî te.", "pretty": "A yeke nzönî tî bâ.",
-    "weather": "météo", "hot": "Lâ ayeke chaud.", "cold": "Lâ ayeke froid.", "itRains": "Ngû atï.", "itSnows": "Neige atï.", "weatherGood": "Lâsô ngoi nî ayeke nzönî.",
-    "dontEat": "Mbï te pëpe.", "dontGo": "Mbï gue pëpe.", "cantGo": "Mbï lîngbi tî gue pëpe.", "dontDrinkCoffee": "Mbï nyön café pëpe.", "cantEat": "Mbï lîngbi tî te pëpe.", "cantDrink": "Mbï lîngbi tî nyön pëpe.",
-    "wakeUp": "Mbï zîa lângö.", "wash": "Mbï sukûla.", "work": "Mbï sâra kua.", "iWakeUpMorning": "Na matin mbï zîa lângö.", "iSleepNight": "Na nuit mbï lângö.",
-    "morning": "matin", "night": "nuit", "afternoon": "après-midi",
-    "monday": "lundi", "tuesday": "mardi", "wednesday": "mercredi", "friday": "vendredi", "saturday": "samedi", "sunday": "dimanche",
-    "january": "janvier", "march": "mars", "may": "mai", "july": "juillet", "september": "septembre", "december": "décembre",
-    "oneOclock": "ngbonga 1", "twoOclock": "ngbonga 2", "threeOclock": "ngbonga 3", "tenOclock": "ngbonga 10", "nowThree": "Fadësô ayeke ngbonga 3.", "nowTen": "Fadësô ayeke ngbonga 10.",
-    "everyDay": "lâ kûê", "often": "ngoi mîngi", "sometimes": "mbênî ngoi", "always": "ngoi kûê", "iStudyEveryDay": "Mbï manda mbëtï lâ kûê.", "iDrinkCoffeeEveryDay": "Mbï nyön café lâ kûê.",
-    "did": "sâra awe", "met": "tingbi awe", "bought": "vo awe", "slept": "lângö awe", "metFriendYesterday": "Bîrî mbï tingbi na mbênî kamarâde.",
-    "birthday": "anniversaire", "weekend": "weekend", "gift": "cadeau", "whenBirthday": "Anniversaire tî mo ayeke lâ wa?", "myBirthdayMay": "Anniversaire tî mbï ayeke na nze tî mai.",
-    "menu": "menu", "checkPlease": "Addition, mbï hûnda mo.", "iWillOrder": "Fadë mbï hûnda yê.", "moreWaterPlease": "Ngû mbênî nga, mbï hûnda mo.", "moreKimchiPlease": "Kimchi mbênî nga, mbï hûnda mo.",
-    "bus": "bus", "subway": "métro", "taxi": "taxi", "train": "train", "goByBus": "Mbï gue na bus.", "goBySubway": "Mbï gue na métro.",
-    "phone": "appel tî téléphone", "textMessage": "message", "phoneNumber": "nömörö tî téléphone", "callFriend": "Mbï sâra appel na kamarâde.", "sendFriendText": "Mbï zîa message na kamarâde tî mbï.", "call": "Mbï sâra appel.",
-    "hurts": "Pîka ayeke.", "hospital": "lopitô", "medicine": "médicament", "headache": "Li tî mbï ayeke na pîka.", "goHospital": "Mbï gue na lopitô.",
-    "pleaseSit": "Dutï, mbï hûnda mo.", "pleaseWait": "Ngbâ, mbï hûnda mo.", "openDoorPlease": "Fungola kpängbä nî, mbï hûnda mo.", "waitAMoment": "Kü kêtê, mbï hûnda mo.", "sitHerePlease": "Dutï na ndo so, mbï hûnda mo.",
-    "letsGoTogether": "E gue ôko.", "wantToGo": "Mo yê tî gue?", "haveTime": "Mo yeke na ngoi?", "letsEatTogether": "E te ôko.", "studyTogether": "E manda mbëtï ôko."
+    "dad": "babâ",
+    "apple": "pomme",
+    "book": "mbëtï",
+    "water": "ngû",
+    "house": "da",
+    "person": "zo",
+    "country": "ködörö",
+    "sky": "yayu",
+    "mountain": "montagne",
+    "flower": "fleur",
+    "river": "rivière",
+    "excuseMe": "Pardon.",
+    "thanksCasual": "Singîla. (na kamarâde)",
+    "youreWelcome": "A yeke nzönî.",
+    "congrats": "Singîla mîngi.",
+    "whatsYourName": "Ïrï tî mo ayeke nyen?",
+    "whereFrom": "Mo yeke zo tî ködörö wa?",
+    "iAmVietnamese": "Mbï yeke zo tî Vietnam.",
+    "myNameMina": "Ïrï tî mbï ayeke Mina.",
+    "goodbyeCasual": "Gue nzönî. (na kamarâde)",
+    "seeTomorrow": "Kêkerêke e tingbi.",
+    "seeAgain": "E tingbi nga.",
+    "goodNight": "Lângö nzönî.",
+    "imFine": "Mbï yeke nzönî.",
+    "howHaveYouBeen": "Mo yeke nzönî?",
+    "goodMorning": "Matin ayeke nzönî.",
+    "helpMe": "Mû maboko na mbï, mbï hûnda mo.",
+    "dontKnow": "Mbï hînga pëpe.",
+    "understand": "Mbï hînga tënë nî.",
+    "sayAgain": "Tene nî nga, mbï hûnda mo.",
+    "speakSlowly": "Tene kêtê-kêtê, mbï hûnda mo.",
+    "good": "A yeke nzönî.",
+    "dislike": "Mbï yê nî pëpe.",
+    "correct": "A yeke tënë nî.",
+    "incorrect": "A yeke tënë nî pëpe.",
+    "six": "6",
+    "eight": "8",
+    "nine": "9",
+    "ten": "10",
+    "age": "ngû",
+    "howOld": "Mo yeke na ngû ôke?",
+    "iAmTenYears": "Mbï yeke na ngû 10.",
+    "iAmTwentyYears": "Mbï yeke na ngû 20.",
+    "iAmThirtyYears": "Mbï yeke na ngû 30.",
+    "twentyYears": "ngû 20",
+    "thirtyYears": "ngû 30",
+    "tenYears": "ngû 10",
+    "oneYear": "ngû ôko",
+    "man": "kôlï",
+    "woman": "wâlï",
+    "olderBrotherF": "ita-kôlï so kötä (wâlï atene)",
+    "olderSisterF": "ita-wâlï so kötä (wâlï atene)",
+    "daughter": "môlengê-wâlï",
+    "son": "môlengê-kôlï",
+    "parents": "babâ na mamâ",
+    "we": "e",
+    "I": "mbï",
+    "you": "mo",
+    "ourFamily": "sêwä tî e",
+    "myFamily": "sêwä tî mbï",
+    "familyOfFour": "E yeke zo 4 na sêwä.",
+    "noSiblings": "Mbï yeke na ita pëpe.",
+    "haveSiblings": "Mbï yeke na âita.",
+    "bread": "pain",
+    "rice": "riz / kôbe",
+    "fruit": "fruit",
+    "meat": "nyama",
+    "like": "Mbï yê nî.",
+    "dontLike": "Mbï yê nî pëpe.",
+    "iLikeApples": "Mbï yê âpomme.",
+    "iLikeKimchi": "Mbï yê kimchi.",
+    "iLikeMeat": "Mbï yê nyama.",
+    "big": "A yeke kötä.",
+    "small": "A yeke kêtê.",
+    "many": "A yeke mîngi.",
+    "delicious": "A yeke nzönî tî te.",
+    "pretty": "A yeke nzönî tî bâ.",
+    "weather": "météo",
+    "hot": "Lâ ayeke chaud.",
+    "cold": "Lâ ayeke froid.",
+    "itRains": "Ngû atï.",
+    "itSnows": "Neige atï.",
+    "weatherGood": "Lâsô ngoi nî ayeke nzönî.",
+    "dontEat": "Mbï te pëpe.",
+    "dontGo": "Mbï gue pëpe.",
+    "cantGo": "Mbï lîngbi tî gue pëpe.",
+    "dontDrinkCoffee": "Mbï nyön café pëpe.",
+    "cantEat": "Mbï lîngbi tî te pëpe.",
+    "cantDrink": "Mbï lîngbi tî nyön pëpe.",
+    "wakeUp": "Mbï zîa lângö.",
+    "wash": "Mbï sukûla.",
+    "work": "Mbï sâra kua.",
+    "iWakeUpMorning": "Na matin mbï zîa lângö.",
+    "iSleepNight": "Na nuit mbï lângö.",
+    "morning": "matin",
+    "night": "nuit",
+    "afternoon": "après-midi",
+    "monday": "lundi",
+    "tuesday": "mardi",
+    "wednesday": "mercredi",
+    "friday": "vendredi",
+    "saturday": "samedi",
+    "sunday": "dimanche",
+    "january": "janvier",
+    "march": "mars",
+    "may": "mai",
+    "july": "juillet",
+    "september": "septembre",
+    "december": "décembre",
+    "oneOclock": "ngbonga 1",
+    "twoOclock": "ngbonga 2",
+    "threeOclock": "ngbonga 3",
+    "tenOclock": "ngbonga 10",
+    "nowThree": "Fadësô ayeke ngbonga 3.",
+    "nowTen": "Fadësô ayeke ngbonga 10.",
+    "everyDay": "lâ kûê",
+    "often": "ngoi mîngi",
+    "sometimes": "mbênî ngoi",
+    "always": "ngoi kûê",
+    "iStudyEveryDay": "Mbï manda mbëtï lâ kûê.",
+    "iDrinkCoffeeEveryDay": "Mbï nyön café lâ kûê.",
+    "did": "sâra awe",
+    "met": "tingbi awe",
+    "bought": "vo awe",
+    "slept": "lângö awe",
+    "metFriendYesterday": "Bîrî mbï tingbi na mbênî kamarâde.",
+    "birthday": "anniversaire",
+    "weekend": "weekend",
+    "gift": "cadeau",
+    "whenBirthday": "Anniversaire tî mo ayeke lâ wa?",
+    "myBirthdayMay": "Anniversaire tî mbï ayeke na nze tî mai.",
+    "menu": "menu",
+    "checkPlease": "Addition, mbï hûnda mo.",
+    "iWillOrder": "Fadë mbï hûnda yê.",
+    "moreWaterPlease": "Ngû mbênî nga, mbï hûnda mo.",
+    "moreKimchiPlease": "Kimchi mbênî nga, mbï hûnda mo.",
+    "bus": "bus",
+    "subway": "métro",
+    "taxi": "taxi",
+    "train": "train",
+    "goByBus": "Mbï gue na bus.",
+    "goBySubway": "Mbï gue na métro.",
+    "phone": "appel tî téléphone",
+    "textMessage": "message",
+    "phoneNumber": "nömörö tî téléphone",
+    "callFriend": "Mbï sâra appel na kamarâde.",
+    "sendFriendText": "Mbï zîa message na kamarâde tî mbï.",
+    "call": "Mbï sâra appel.",
+    "hurts": "Pîka ayeke.",
+    "hospital": "lopitô",
+    "medicine": "médicament",
+    "headache": "Li tî mbï ayeke na pîka.",
+    "goHospital": "Mbï gue na lopitô.",
+    "pleaseSit": "Dutï, mbï hûnda mo.",
+    "pleaseWait": "please wait",
+    "openDoorPlease": "Fungola kpängbä nî, mbï hûnda mo.",
+    "waitAMoment": "Kü kêtê, mbï hûnda mo.",
+    "sitHerePlease": "Dutï na ndo so, mbï hûnda mo.",
+    "letsGoTogether": "E gue ôko.",
+    "wantToGo": "Mo yê tî gue?",
+    "haveTime": "Mo yeke na ngoi?",
+    "letsEatTogether": "E te ôko.",
+    "studyTogether": "E manda mbëtï ôko.",
+    "friendSaidComing": "friend said coming",
+    "friendSaidGoing": "friend said going",
+    "friendAskedCome": "friend asked come",
+    "friendSaidGood": "friend said good",
+    "weatherSaidGood": "weather said good",
+    "weatherSaidCold": "weather said cold",
+    "rainSaidComing": "rain said coming",
+    "saidDelicious": "said delicious",
+    "askedWhereGoing": "asked where going",
+    "askedWhatTime": "asked what time",
+    "askedWhatEat": "asked what eat",
+    "askedWhyCome": "asked why come",
+    "askedWhoIs": "asked who is",
+    "askedHowMuch": "asked how much",
+    "askedIfAte": "asked if ate",
+    "askedWhenComing": "asked when coming",
+    "toldToComeFast": "told to come fast",
+    "suggestedGoTogether": "suggested go together",
+    "toldToBeQuiet": "told to be quiet",
+    "toldToWait": "told to wait",
+    "suggestedEatTogether": "suggested eat together",
+    "busyStudying": "busy studying",
+    "wentDespiteRain": "went despite rain",
+    "lateDueToWork": "late due to work",
+    "tiredWorking": "tired working",
+    "ateDespiteFull": "ate despite full",
+    "studiedDespiteTired": "studied despite tired",
+    "betterAsWeMeet": "better as we meet",
+    "boundToMakeMistakes": "bound to make mistakes",
+    "harderAsItGoes": "harder as it goes",
+    "happierStudying": "happier studying",
+    "boundToGetTired": "bound to get tired",
+    "prettierAsLook": "prettier as look",
+    "looksHappy": "looks happy",
+    "seemsRaining": "seems raining",
+    "looksTired": "looks tired",
+    "looksDelicious": "looks delicious",
+    "seemsBusy": "seems busy",
+    "pretendsToKnow": "pretends to know",
+    "pretendedToSleep": "pretended to sleep",
+    "pretendsToBeBusy": "pretends to be busy",
+    "pretendsNotToHear": "pretends not to hear",
+    "pretendedToEat": "pretended to eat",
+    "pretendsNotToKnow": "pretends not to know",
+    "shouldHaveComeEarly": "should have come early",
+    "shouldHaveStudied": "should have studied",
+    "shouldHaveBought": "should have bought",
+    "shouldHaveEaten": "should have eaten",
+    "shouldHaveRested": "should have rested",
+    "shouldHaveTold": "should have told",
+    "grandmotherEatsMeal": "grandmother eats meal",
+    "motherSleeps": "mother sleeps",
+    "teacherIsSick": "teacher is sick",
+    "grandmotherGoes": "grandmother goes",
+    "fatherSpeaks": "father speaks",
+    "giveGiftHonorific": "give gift honorific",
+    "seeTomorrowHonorific": "see tomorrow honorific",
+    "askTeacherHonorific": "ask teacher honorific",
+    "receiveGift": "receive gift",
+    "seeYesterday": "see yesterday",
+    "helpTeacher": "help teacher",
+    "doorOpens": "door opens",
+    "windowCloses": "window closes",
+    "mountainSeen": "mountain seen",
+    "musicHeard": "music heard",
+    "doorLocked": "door locked",
+    "letterWrittenWell": "letter written well",
+    "cameToKnow": "came to know",
+    "wentToKorea": "went to korea",
+    "forgotName": "forgot name",
+    "metFriend": "met friend",
+    "wentToKoreaResult": "went to korea result",
+    "studiedKorean": "studied korean",
+    "showsPhoto": "shows photo",
+    "feedsBaby": "feeds baby",
+    "dressesClothes": "dresses clothes",
+    "takesPhoto": "takes photo",
+    "eatsMeal": "eats meal",
+    "wearsClothes": "wears clothes",
+    "makesLaugh": "makes laugh",
+    "madeWait": "made wait",
+    "makesCry": "makes cry",
+    "makesStudy": "makes study",
+    "makesGo": "makes go",
+    "waitedLong": "waited long",
+    "madeCry": "made cry",
+    "laughedTogether": "laughed together",
+    "pleaseBeSeated": "please be seated",
+    "letUsDepart": "let us depart",
+    "pleaseComeIn": "please come in",
+    "arrivedNow": "arrived now",
+    "doYouHaveQuestions": "do you have questions",
+    "haveNoQuestions": "have no questions",
+    "offerGreetingWords": "offer greeting words",
+    "ourSchoolHumble": "our school humble",
+    "ourCountryHumble": "our country humble",
+    "thankYouSincerely": "thank you sincerely",
+    "mySchool": "my school",
+    "ourHouse": "our house",
+    "conveyGratitude": "convey gratitude",
+    "apologizeSincerely": "apologize sincerely",
+    "gaveGiftToGrandmother": "gave gift to grandmother",
+    "doorClosedByItself": "door closed by itself",
+    "regardingMeetingAgenda": "regarding meeting agenda",
+    "pleaseCheckAttachment": "please check attachment",
+    "pleaseReviewRequest": "please review request",
+    "scheduleChangeRequest": "schedule change request",
+    "connectingPersonInCharge": "connecting person in charge",
+    "availableToSpeakNow": "available to speak now",
+    "shallITakeMessage": "shall i take message",
+    "callAgainLater": "call again later",
+    "askKindUnderstanding": "ask kind understanding",
+    "convenientTimeRequest": "convenient time request",
+    "meetingCancelled": "meeting cancelled",
+    "callMeLater": "call me later",
+    "inMyOpinionProposalGood": "in my opinion proposal good",
+    "stronglyAgree": "strongly agree",
+    "additionalReviewNeeded": "additional review needed",
+    "opposeStrongly": "oppose strongly",
+    "suggestAlternative": "suggest alternative",
+    "approveImmediately": "approve immediately",
+    "reportingProjectProgress": "reporting project progress",
+    "completedAction": "completed action",
+    "salesIncreased": "sales increased",
+    "cooperationHoped": "cooperation hoped",
+    "projectDelayed": "project delayed",
+    "sharingResults": "sharing results",
+    "scheduleDelayed": "schedule delayed",
+    "increasedComparedToLastYear": "increased compared to last year",
+    "hopeMutualCooperation": "hope mutual cooperation",
+    "exchangeBusinessCards": "exchange business cards",
+    "salesDecreased": "sales decreased",
+    "costsDecreased": "costs decreased",
+    "profitsDecreased": "profits decreased",
+    "proposeCompromise": "propose compromise",
+    "acceptContract": "accept contract",
+    "refuseProposal": "refuse proposal",
+    "signedContract": "signed contract",
+    "delayedContract": "delayed contract",
+    "pleasedToMeetCard": "pleased to meet card",
+    "departmentManagerKim": "department manager kim",
+    "teamLeaderPark": "team leader park",
+    "thankYouGreeting": "thank you greeting",
+    "generalManagerLee": "general manager lee",
+    "deputyKim": "deputy kim",
+    "pleaseReviewAgenda": "please review agenda",
+    "seeYouAtMeeting": "see you at meeting",
+    "announcedPriceMeasures": "announced price measures",
+    "recordHighExports": "record high exports",
+    "aiDevelopingRapidly": "ai developing rapidly",
+    "heavyResponsibilityBurden": "heavy responsibility burden",
+    "protectEnvironment": "protect environment",
+    "cleanEnergyPopular": "clean energy popular",
+    "hasWideConnections": "has wide connections",
+    "highStandardsChoose": "high standards choose",
+    "socialInterestGrowing": "social interest growing",
+    "scientificDebate": "scientific debate",
+    "adoptedNewTech": "adopted new tech",
+    "stoppedNewTech": "stopped new tech",
+    "easilyInfluenced": "easily influenced",
+    "rippedOffPrice": "ripped off price",
+    "earHurt": "ear hurt",
+    "steppedUpToHelp": "stepped up to help",
+    "boughtCheaply": "bought cheaply",
+    "shoulderAches": "shoulder aches",
+    "tookOffShoes": "took off shoes",
+    "mendBarnAfterLosingCow": "mend barn after losing cow",
+    "strikeWhileIronHot": "strike while iron hot",
+    "wordsTravelFarProverb": "words travel far proverb",
+    "twoBirdsOneStone": "two birds one stone",
+    "threeDaysResolve": "three days resolve",
+    "horseRunsFast": "horse runs fast",
+    "theMoreTheBetter": "the more the better",
+    "empathyPutInOthersShoes": "empathy put in others shoes",
+    "effortPaysOff": "effort pays off",
+    "goodDeed": "good deed",
+    "accordingToOpinion": "according to opinion",
+    "onOtherHandAnotherAspect": "on other hand another aspect",
+    "inShortEssential": "in short essential",
+    "thereforeConclude": "therefore conclude",
+    "agreeEntirely": "agree entirely",
+    "importantDetail": "important detail",
+    "warmJeongAffection": "warm jeong affection",
+    "makeSongpyeonChuseok": "make songpyeon chuseok",
+    "shareFoodNeighbors": "share food neighbors",
+    "cleanEnvironment": "clean environment",
+    "eatTteokgukNewYear": "eat tteokguk new year",
+    "eatAlone": "eat alone",
+    "achievedTwoBirdsEffect": "achieved two birds effect",
+    "cooperateBasedOnMutualUnderstanding": "cooperate based on mutual understanding",
+    "relationshipEnded": "relationship ended"
   },
   "note": {
     "native": "A yeke sâra kua na ânömörö tî Korée (하나, 둘, 셋 …) tî bâ âyê na tî tene ngbonga."
+  },
+  "course": {
+    "K7": {
+      "title": "Korean Level 7 · Conjunctions and Indirect Speech",
+      "world": "Speech Garden",
+      "tagline": "Connect complex thoughts and report what others say",
+      "unit": "Indirect speech and complex connectors"
+    },
+    "K8": {
+      "title": "Korean Level 8 · Honorifics, Passive and Causative",
+      "world": "River of Courtesy",
+      "tagline": "Nuances of polite speech and causative/passive voice",
+      "unit": "Precision honorifics and voice"
+    },
+    "K9": {
+      "title": "Korean Level 9 · Professional and Workplace Korean",
+      "world": "Office Tower",
+      "tagline": "Practical business communication for email, phone and meetings",
+      "unit": "Workplace and business Korean"
+    },
+    "K10": {
+      "title": "Korean Level 10 · Culture, Media and Idioms",
+      "world": "Forest of Culture",
+      "tagline": "Explore Korean society through news, idioms and proverbs",
+      "unit": "Culture, media and idioms"
+    }
   }
 }

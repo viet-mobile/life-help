@@ -35,82 +35,717 @@
     "phone": "Telefon görüşmeleri ve mesajlar",
     "hospital": "Hastanede",
     "requests": "Nazik rica",
-    "invitations": "Birlikte plan yapma"
+    "invitations": "Birlikte plan yapma",
+    "indirect_state": "Indirect statements (-다고 하다)",
+    "indirect_ask": "Indirect questions (-냐고 하다)",
+    "indirect_cmd": "Indirect commands and suggestions (-라고 / -자고 하다)",
+    "cause_contrast": "Complex causes and contrasts (-느라고, -는데도)",
+    "proportion": "Proportion and inevitability (-을수록, -기 마련이다)",
+    "appearance": "Appearance and inference (-아/어 보이다, -는 모양이다)",
+    "pretense": "Pretending (-는 척하다)",
+    "regret": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
+    "review_k7": "K7 Comprehensive Review",
+    "honorific_subj": "Honorific vocabulary for subjects",
+    "honorific_obj": "Object honorific verbs (드리다, 뵙다, 여쭙다)",
+    "passive_affix": "Affix passives (-이/히/리/기-)",
+    "passive_compound": "Syntactic passives (-어지다, -게 되다)",
+    "causative_affix": "Affix causatives (-이/히/리/기/우-)",
+    "causative_compound": "Syntactic causatives (-게 하다)",
+    "formal_style": "Public formal style (-하십시오)",
+    "modesty": "Modest and humble expressions",
+    "review_k8": "K8 Comprehensive Review",
+    "biz_email": "Business email writing and requests",
+    "biz_phone": "Business telephone etiquette",
+    "biz_schedule": "Scheduling and rescheduling",
+    "biz_meeting": "Meeting discussions and opinions",
+    "biz_report": "Reporting project progress",
+    "biz_stats": "Statistical figures and data trends",
+    "biz_negotiate": "Business negotiations and partnerships",
+    "biz_etiquette": "Business cards and professional titles",
+    "review_k9": "K9 Comprehensive Review",
+    "media_headline": "Headlines and compressed style",
+    "media_article": "Current affairs and editorials",
+    "idioms_body": "Body-part idioms (발, 눈, 귀, 손)",
+    "idioms_action": "Everyday action idioms (바가지, 어깨)",
+    "proverbs_life": "Essential Korean proverbs",
+    "sino_four": "Four-character idioms (사자성어)",
+    "logic_debate": "Logical connectors and discourse markers",
+    "culture_deep": "Deep Korean cultural values and customs",
+    "review_k10": "K10 Comprehensive Review"
   },
   "lesson": {
-    "yvowels": { "title": "Y'li ünlüler", "concept": "Kısa bir çizgi eklemek **y** sesi verir: ㅏ → ㅑ (ya), ㅓ → ㅕ (yeo), ㅗ → ㅛ (yo), ㅜ → ㅠ (yu). ㅐ (ae) ve ㅔ (e) modern Korecede birbirine çok benzer." },
-    "consonants2": { "title": "Daha fazla ünsüz", "concept": "ㄹ, “r” ile “l” arasında bir sestir. ㅈ (j), ㅊ (ch, nefesli), ㅋ (k, nefesli), ㅌ (t, nefesli) ve ㅍ (p, nefesli) temel ünsüzleri tamamlar." },
-    "doubled": { "title": "Çift ünsüzler", "concept": "ㄲ, ㄸ, ㅃ, ㅆ ve ㅉ gergin seslerdir: boğazı sıkarak ve nefes vermeden söyle, “spor” sözcüğündeki “p” gibi." },
-    "batchim": { "title": "Son ünsüzler", "concept": "Hecenin altındaki ünsüze **받침 (batchim)** denir. Heceyi kapatır: 안 (an), 말 (mal), 밤 (bam), 강 (gang), 집 (jip), 책 (chaek). Sonda yalnızca yedi ses mümkündür: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ." },
-    "words2": { "title": "Gündelik kelimeler", "concept": "Her kelimeyi hece hece oku. 학교 “hakgyo” diye okunur: 학 hecesindeki son ㄱ kapalıdır ve sonraki hece sıkı telaffuz edilir." },
-    "words3": { "title": "Dünyayla ilgili kelimeler", "concept": "İnsanlar ve doğa: 사람 (kişi), 나라 (ülke), 하늘 (gökyüzü), 산 (dağ), 강 (nehir), 꽃 (çiçek)." },
-    "manners": { "title": "Nazik ifadeler", "concept": "Birinin dikkatini çekmek veya yanından geçmek için 실례합니다, samimi biçimde teşekkür etmek için 고마워요, teşekküre karşılık vermek için 천만에요, tebrik etmek için 축하해요 kullan." },
-    "introduce": { "title": "İsimler ve ülkeler", "concept": "Adı 이름이 뭐예요? ile, ülkeyi 어느 나라 사람이에요? ile sor. 제 이름은 ___예요 veya 저는 ___ 사람이에요 ile cevap ver." },
-    "partings": { "title": "Vedalaşma", "concept": "Arkadaşlar arasında 잘 가요 (hoşça kal), 내일 봐요 (yarın görüşürüz), 또 만나요 (tekrar görüşürüz) ve 잘 자요 (iyi uykular) diyebilirsin." },
-    "wellbeing": { "title": "Nasılsınız?", "concept": "잘 지냈어요? (İyi miydiniz?) diye sor, 잘 지내요 (İyiyim) diye cevap ver. 좋은 아침이에요 “Güzel bir sabah.” anlamına gelir." },
-    "helpme": { "title": "Yardım isteme", "concept": "Yardım istemek için 도와주세요, bilmediğinde 모르겠어요, anladığında 알겠어요, birinden tekrar söylemesini istemek için 다시 말해 주세요 de." },
-    "opinions": { "title": "Beğeniler ve cevaplar", "concept": "좋아요 iyi veya uygun demektir, 싫어요 beğenmediğin anlamına gelir, 맞아요 “doğru” ve 틀려요 “yanlış” demektir." },
-    "native10": { "title": "Öz Korece sayılar 6–10", "concept": "Öz Korece sayılara devam: 여섯 (6), 일곱 (7), 여덟 (8), 아홉 (9), 열 (10)." },
-    "sino": { "title": "Çin kökenli Korece sayılar", "concept": "Çin kökenli Korece sayılar: 일 (1), 이 (2), 삼 (3), 사 (4), 오 (5), 육 (6), 칠 (7), 팔 (8), 구 (9), 십 (10). Para, tarih, telefon numarası ve dakika için kullanılırlar." },
-    "ages": { "title": "Yaş", "concept": "몇 살이에요? (Kaç yaşındasınız?) diye sor. Yaş için öz Korece sayılar ve 살 kullanılır: 열 살 (10 yaşında), 스무 살 (20), 서른 살 (30)." },
-    "people": { "title": "İnsanlar", "concept": "친구 (arkadaş), 의사 (doktor), 사람 (kişi), 남자 (erkek), 여자 (kadın)." },
-    "family2": { "title": "Daha fazla aile kelimesi", "concept": "Kardeş kelimeleri konuşanın kim olduğuna göre değişir: bir kadın 오빠 (ağabey) ve 언니 (abla) der. Ayrıca 아들 (oğul), 딸 (kız çocuğu), 부모님 (anne baba)." },
-    "ourfamily": { "title": "Ailemiz", "concept": "Koreliler “benim” yerine sık sık 우리 (biz, bizim) der: 우리 가족 “ailem” demektir. İnsanları 명 ile say: 네 명 (dört kişi)." },
-    "food": { "title": "Yiyecek ve içecek", "concept": "밥 (pilav, yemek), 빵 (ekmek), 과일 (meyve), 고기 (et), 물 (su), 우유 (süt)." },
-    "likes": { "title": "Sevdiklerimiz ve sevmediklerimiz", "concept": "Sevdiğini -를/을 좋아해요, sevmediğini -를/을 싫어해요 ile söyle: 저는 사과를 좋아해요." },
-    "adjectives": { "title": "Şeyleri tanımlama", "concept": "Niteleme sözcükleri de -요 ile biter: 커요 (büyük), 작아요 (küçük), 많아요 (çok), 맛있어요 (lezzetli), 예뻐요 (güzel)." },
-    "weather": { "title": "Hava durumu", "concept": "날씨 (hava durumu), 더워요 (hava sıcak), 추워요 (hava soğuk), 비가 와요 (yağmur yağıyor), 눈이 와요 (kar yağıyor)." },
-    "negation": { "title": "안 ve 못 ile olumsuzlama", "concept": "Bir şeyi yapmadığını söylemek için fiilin önüne **안** koy (안 가요). Yapamadığını söylemek için önüne **못** koy (못 가요)." },
-    "daily": { "title": "Günlük rutin", "concept": "일어나요 (kalkıyorum), 씻어요 (yıkanıyorum), 일해요 (çalışıyorum), 자요 (uyuyorum). 아침 (sabah) ve 밤 (gece) gibi zaman sözcükleri 에 alır: 아침에." },
-    "weekdays": { "title": "Haftanın günleri", "concept": "월요일 (Pzt), 화요일 (Sal), 수요일 (Çar), 목요일 (Per), 금요일 (Cum), 토요일 (Cmt), 일요일 (Paz)." },
-    "months": { "title": "Aylar", "concept": "Aylar, Çin kökenli bir sayı artı 월 ile kurulur: 일월 (Ocak), 삼월 (Mart), 오월 (Mayıs), 칠월 (Temmuz), 구월 (Eylül), 십이월 (Aralık)." },
-    "clock": { "title": "Saati söyleme", "concept": "Saatler öz Korece sayı artı 시 ile söylenir: 한 시 (1:00), 두 시 (2:00), 세 시 (3:00), 열 시 (10:00). Sormak için 몇 시예요?" },
-    "frequency": { "title": "Ne sıklıkla", "concept": "매일 (her gün), 자주 (sık sık), 가끔 (bazen), 항상 (her zaman). Bunları fiilin önüne koy." },
-    "past2": { "title": "Geçmiş zamana devam", "concept": "Geçmiş zaman eki -았/었어요: 했어요 (yaptım), 왔어요 (geldim), 만났어요 (buluştum), 샀어요 (satın aldım), 잤어요 (uyudum)." },
-    "birthday": { "title": "Doğum günleri ve hafta sonları", "concept": "생일 (doğum günü), 주말 (hafta sonu), 선물 (hediye). 생일이 언제예요? diye sor, 제 생일은 오월이에요 diye cevap ver." },
-    "restaurant": { "title": "Restoranda", "concept": "메뉴 (menü), 주문할게요 (sipariş vereceğim), 물 더 주세요 (biraz daha su lütfen), 계산해 주세요 (hesap lütfen)." },
-    "transport": { "title": "Ulaşım", "concept": "버스 (otobüs), 지하철 (metro), 택시 (taksi), 기차 (tren). Nasıl gittiğini -로/으로 ile söyle: 버스로 가요." },
-    "phone": { "title": "Telefon görüşmeleri ve mesajlar", "concept": "전화 (telefon görüşmesi), 전화번호 (telefon numarası), 문자 (kısa mesaj). 전화해요 “arıyorum” demektir." },
-    "hospital": { "title": "Hastanede", "concept": "병원 (hastane), 약 (ilaç), 아파요 (acıyor). Önce vücut bölümünü söyle: 머리가 아파요 (başım ağrıyor)." },
-    "requests": { "title": "Nazik rica", "concept": "-세요 ve -아/어 주세요 nazik rica kalıpları kurar: 앉으세요 (lütfen oturun), 기다려 주세요 (lütfen bekleyin), 문을 열어 주세요 (lütfen kapıyı açın)." },
-    "invitations": { "title": "Birlikte plan yapma", "concept": "같이 (birlikte) davet eder: 같이 가요. 갈래요? “Gitmek ister misin?” ve 시간 있어요? “Vaktin var mı?” diye sorar." }
+    "yvowels": {
+      "title": "Y'li ünlüler",
+      "concept": "Kısa bir çizgi eklemek **y** sesi verir: ㅏ → ㅑ (ya), ㅓ → ㅕ (yeo), ㅗ → ㅛ (yo), ㅜ → ㅠ (yu). ㅐ (ae) ve ㅔ (e) modern Korecede birbirine çok benzer."
+    },
+    "consonants2": {
+      "title": "Daha fazla ünsüz",
+      "concept": "ㄹ, “r” ile “l” arasında bir sestir. ㅈ (j), ㅊ (ch, nefesli), ㅋ (k, nefesli), ㅌ (t, nefesli) ve ㅍ (p, nefesli) temel ünsüzleri tamamlar."
+    },
+    "doubled": {
+      "title": "Çift ünsüzler",
+      "concept": "ㄲ, ㄸ, ㅃ, ㅆ ve ㅉ gergin seslerdir: boğazı sıkarak ve nefes vermeden söyle, “spor” sözcüğündeki “p” gibi."
+    },
+    "batchim": {
+      "title": "Son ünsüzler",
+      "concept": "Hecenin altındaki ünsüze **받침 (batchim)** denir. Heceyi kapatır: 안 (an), 말 (mal), 밤 (bam), 강 (gang), 집 (jip), 책 (chaek). Sonda yalnızca yedi ses mümkündür: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ."
+    },
+    "words2": {
+      "title": "Gündelik kelimeler",
+      "concept": "Her kelimeyi hece hece oku. 학교 “hakgyo” diye okunur: 학 hecesindeki son ㄱ kapalıdır ve sonraki hece sıkı telaffuz edilir."
+    },
+    "words3": {
+      "title": "Dünyayla ilgili kelimeler",
+      "concept": "İnsanlar ve doğa: 사람 (kişi), 나라 (ülke), 하늘 (gökyüzü), 산 (dağ), 강 (nehir), 꽃 (çiçek)."
+    },
+    "manners": {
+      "title": "Nazik ifadeler",
+      "concept": "Birinin dikkatini çekmek veya yanından geçmek için 실례합니다, samimi biçimde teşekkür etmek için 고마워요, teşekküre karşılık vermek için 천만에요, tebrik etmek için 축하해요 kullan."
+    },
+    "introduce": {
+      "title": "İsimler ve ülkeler",
+      "concept": "Adı 이름이 뭐예요? ile, ülkeyi 어느 나라 사람이에요? ile sor. 제 이름은 ___예요 veya 저는 ___ 사람이에요 ile cevap ver."
+    },
+    "partings": {
+      "title": "Vedalaşma",
+      "concept": "Arkadaşlar arasında 잘 가요 (hoşça kal), 내일 봐요 (yarın görüşürüz), 또 만나요 (tekrar görüşürüz) ve 잘 자요 (iyi uykular) diyebilirsin."
+    },
+    "wellbeing": {
+      "title": "Nasılsınız?",
+      "concept": "잘 지냈어요? (İyi miydiniz?) diye sor, 잘 지내요 (İyiyim) diye cevap ver. 좋은 아침이에요 “Güzel bir sabah.” anlamına gelir."
+    },
+    "helpme": {
+      "title": "Yardım isteme",
+      "concept": "Yardım istemek için 도와주세요, bilmediğinde 모르겠어요, anladığında 알겠어요, birinden tekrar söylemesini istemek için 다시 말해 주세요 de."
+    },
+    "opinions": {
+      "title": "Beğeniler ve cevaplar",
+      "concept": "좋아요 iyi veya uygun demektir, 싫어요 beğenmediğin anlamına gelir, 맞아요 “doğru” ve 틀려요 “yanlış” demektir."
+    },
+    "native10": {
+      "title": "Öz Korece sayılar 6–10",
+      "concept": "Öz Korece sayılara devam: 여섯 (6), 일곱 (7), 여덟 (8), 아홉 (9), 열 (10)."
+    },
+    "sino": {
+      "title": "Çin kökenli Korece sayılar",
+      "concept": "Çin kökenli Korece sayılar: 일 (1), 이 (2), 삼 (3), 사 (4), 오 (5), 육 (6), 칠 (7), 팔 (8), 구 (9), 십 (10). Para, tarih, telefon numarası ve dakika için kullanılırlar."
+    },
+    "ages": {
+      "title": "Yaş",
+      "concept": "몇 살이에요? (Kaç yaşındasınız?) diye sor. Yaş için öz Korece sayılar ve 살 kullanılır: 열 살 (10 yaşında), 스무 살 (20), 서른 살 (30)."
+    },
+    "people": {
+      "title": "İnsanlar",
+      "concept": "친구 (arkadaş), 의사 (doktor), 사람 (kişi), 남자 (erkek), 여자 (kadın)."
+    },
+    "family2": {
+      "title": "Daha fazla aile kelimesi",
+      "concept": "Kardeş kelimeleri konuşanın kim olduğuna göre değişir: bir kadın 오빠 (ağabey) ve 언니 (abla) der. Ayrıca 아들 (oğul), 딸 (kız çocuğu), 부모님 (anne baba)."
+    },
+    "ourfamily": {
+      "title": "Ailemiz",
+      "concept": "Koreliler “benim” yerine sık sık 우리 (biz, bizim) der: 우리 가족 “ailem” demektir. İnsanları 명 ile say: 네 명 (dört kişi)."
+    },
+    "food": {
+      "title": "Yiyecek ve içecek",
+      "concept": "밥 (pilav, yemek), 빵 (ekmek), 과일 (meyve), 고기 (et), 물 (su), 우유 (süt)."
+    },
+    "likes": {
+      "title": "Sevdiklerimiz ve sevmediklerimiz",
+      "concept": "Sevdiğini -를/을 좋아해요, sevmediğini -를/을 싫어해요 ile söyle: 저는 사과를 좋아해요."
+    },
+    "adjectives": {
+      "title": "Şeyleri tanımlama",
+      "concept": "Niteleme sözcükleri de -요 ile biter: 커요 (büyük), 작아요 (küçük), 많아요 (çok), 맛있어요 (lezzetli), 예뻐요 (güzel)."
+    },
+    "weather": {
+      "title": "Hava durumu",
+      "concept": "날씨 (hava durumu), 더워요 (hava sıcak), 추워요 (hava soğuk), 비가 와요 (yağmur yağıyor), 눈이 와요 (kar yağıyor)."
+    },
+    "negation": {
+      "title": "안 ve 못 ile olumsuzlama",
+      "concept": "Bir şeyi yapmadığını söylemek için fiilin önüne **안** koy (안 가요). Yapamadığını söylemek için önüne **못** koy (못 가요)."
+    },
+    "daily": {
+      "title": "Günlük rutin",
+      "concept": "일어나요 (kalkıyorum), 씻어요 (yıkanıyorum), 일해요 (çalışıyorum), 자요 (uyuyorum). 아침 (sabah) ve 밤 (gece) gibi zaman sözcükleri 에 alır: 아침에."
+    },
+    "weekdays": {
+      "title": "Haftanın günleri",
+      "concept": "월요일 (Pzt), 화요일 (Sal), 수요일 (Çar), 목요일 (Per), 금요일 (Cum), 토요일 (Cmt), 일요일 (Paz)."
+    },
+    "months": {
+      "title": "Aylar",
+      "concept": "Aylar, Çin kökenli bir sayı artı 월 ile kurulur: 일월 (Ocak), 삼월 (Mart), 오월 (Mayıs), 칠월 (Temmuz), 구월 (Eylül), 십이월 (Aralık)."
+    },
+    "clock": {
+      "title": "Saati söyleme",
+      "concept": "Saatler öz Korece sayı artı 시 ile söylenir: 한 시 (1:00), 두 시 (2:00), 세 시 (3:00), 열 시 (10:00). Sormak için 몇 시예요?"
+    },
+    "frequency": {
+      "title": "Ne sıklıkla",
+      "concept": "매일 (her gün), 자주 (sık sık), 가끔 (bazen), 항상 (her zaman). Bunları fiilin önüne koy."
+    },
+    "past2": {
+      "title": "Geçmiş zamana devam",
+      "concept": "Geçmiş zaman eki -았/었어요: 했어요 (yaptım), 왔어요 (geldim), 만났어요 (buluştum), 샀어요 (satın aldım), 잤어요 (uyudum)."
+    },
+    "birthday": {
+      "title": "Doğum günleri ve hafta sonları",
+      "concept": "생일 (doğum günü), 주말 (hafta sonu), 선물 (hediye). 생일이 언제예요? diye sor, 제 생일은 오월이에요 diye cevap ver."
+    },
+    "restaurant": {
+      "title": "Restoranda",
+      "concept": "메뉴 (menü), 주문할게요 (sipariş vereceğim), 물 더 주세요 (biraz daha su lütfen), 계산해 주세요 (hesap lütfen)."
+    },
+    "transport": {
+      "title": "Ulaşım",
+      "concept": "버스 (otobüs), 지하철 (metro), 택시 (taksi), 기차 (tren). Nasıl gittiğini -로/으로 ile söyle: 버스로 가요."
+    },
+    "phone": {
+      "title": "Telefon görüşmeleri ve mesajlar",
+      "concept": "전화 (telefon görüşmesi), 전화번호 (telefon numarası), 문자 (kısa mesaj). 전화해요 “arıyorum” demektir."
+    },
+    "hospital": {
+      "title": "Hastanede",
+      "concept": "병원 (hastane), 약 (ilaç), 아파요 (acıyor). Önce vücut bölümünü söyle: 머리가 아파요 (başım ağrıyor)."
+    },
+    "requests": {
+      "title": "Nazik rica",
+      "concept": "-세요 ve -아/어 주세요 nazik rica kalıpları kurar: 앉으세요 (lütfen oturun), 기다려 주세요 (lütfen bekleyin), 문을 열어 주세요 (lütfen kapıyı açın)."
+    },
+    "invitations": {
+      "title": "Birlikte plan yapma",
+      "concept": "같이 (birlikte) davet eder: 같이 가요. 갈래요? “Gitmek ister misin?” ve 시간 있어요? “Vaktin var mı?” diye sorar."
+    },
+    "indirect_state": {
+      "title": "Indirect statements (-다고 하다)",
+      "concept": "Report what someone says or said: verb/adj + -다고 하다."
+    },
+    "indirect_ask": {
+      "title": "Indirect questions (-냐고 하다)",
+      "concept": "Report a question: verb/adj + -냐고 묻다/하다."
+    },
+    "indirect_cmd": {
+      "title": "Indirect commands and suggestions (-라고 / -자고 하다)",
+      "concept": "Report an imperative (-라고 하다) or propositive (-자고 하다)."
+    },
+    "cause_contrast": {
+      "title": "Complex causes and contrasts (-느라고, -는데도)",
+      "concept": "Negative cause or delay (-느라고) and contrast despite circumstances (-는데도)."
+    },
+    "proportion": {
+      "title": "Proportion and inevitability (-을수록, -기 마련이다)",
+      "concept": "The more... the more (-을수록) and natural inevitability (-기 마련이다)."
+    },
+    "appearance": {
+      "title": "Appearance and inference (-아/어 보이다, -는 모양이다)",
+      "concept": "Looks like (-아/어 보이다) and appears to be (-는 모양이다)."
+    },
+    "pretense": {
+      "title": "Pretending (-는 척하다)",
+      "concept": "Pretend to do or be something: -(으)ㄴ/는 척하다."
+    },
+    "regret": {
+      "title": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
+      "concept": "Express regret: 'I should have done...' -(으)ㄹ 걸 그랬어요."
+    },
+    "review_k7": {
+      "title": "K7 Comprehensive Review",
+      "concept": "Review indirect speech, complex connectors and nuanced expressions."
+    },
+    "honorific_subj": {
+      "title": "Honorific vocabulary for subjects",
+      "concept": "Special honorific nouns and verbs for revered people: 진지, 주무시다, 편찮으시다."
+    },
+    "honorific_obj": {
+      "title": "Object honorific verbs (드리다, 뵙다, 여쭙다)",
+      "concept": "Humble/honorific verbs when the action is directed toward an elder: 드리다, 뵙다, 여쭙다."
+    },
+    "passive_affix": {
+      "title": "Affix passives (-이/히/리/기-)",
+      "concept": "Passive verbs formed by adding -이/히/리/기-: 보이다, 들리다, 열리다, 닫히다."
+    },
+    "passive_compound": {
+      "title": "Syntactic passives (-어지다, -게 되다)",
+      "concept": "Verbs taking spontaneous or resulting passive forms: -아/어지다, -게 되다."
+    },
+    "causative_affix": {
+      "title": "Affix causatives (-이/히/리/기/우-)",
+      "concept": "Causative verbs that make someone do an action: 보여 주다, 먹이다, 입히다."
+    },
+    "causative_compound": {
+      "title": "Syntactic causatives (-게 하다)",
+      "concept": "Make or cause someone to do something: -게 하다."
+    },
+    "formal_style": {
+      "title": "Public formal style (-하십시오)",
+      "concept": "High formal deferential style for announcements and ceremonies: -하십시오, -하십시다."
+    },
+    "modesty": {
+      "title": "Modest and humble expressions",
+      "concept": "Polite speech using humble pronouns and verbs: 저희, 말씀 올리다."
+    },
+    "review_k8": {
+      "title": "K8 Comprehensive Review",
+      "concept": "Review honorifics, passive, causative and formal polite registers."
+    },
+    "biz_email": {
+      "title": "Business email writing and requests",
+      "concept": "Formal business email conventions: -에 관하여, 검토 부탁드립니다."
+    },
+    "biz_phone": {
+      "title": "Business telephone etiquette",
+      "concept": "Handling calls and messages: 통화 가능하신지요, 연결해 드리겠습니다."
+    },
+    "biz_schedule": {
+      "title": "Scheduling and rescheduling",
+      "concept": "Proposing and changing appointment times: 변경하고자 합니다, 양해 부탁드립니다."
+    },
+    "biz_meeting": {
+      "title": "Meeting discussions and opinions",
+      "concept": "Expressing views during meetings: 제 생각으로는, 찬성합니다, 추가 검토."
+    },
+    "biz_report": {
+      "title": "Reporting project progress",
+      "concept": "Giving status updates: 진행 상황을 보고합니다, 조치를 완료했습니다."
+    },
+    "biz_stats": {
+      "title": "Statistical figures and data trends",
+      "concept": "Describing trends and numbers: 증가했습니다, 전년 대비."
+    },
+    "biz_negotiate": {
+      "title": "Business negotiations and partnerships",
+      "concept": "Professional collaboration: 상호 협력을 희망합니다, 절충안 제시."
+    },
+    "biz_etiquette": {
+      "title": "Business cards and professional titles",
+      "concept": "Exchanging cards and titles: 처음 뵙겠습니다, 명함 드립니다."
+    },
+    "review_k9": {
+      "title": "K9 Comprehensive Review",
+      "concept": "Review professional communications, formal correspondence and meetings."
+    },
+    "media_headline": {
+      "title": "Headlines and compressed style",
+      "concept": "News headlines and compressed noun phrases: 물가 안정 대책 발표."
+    },
+    "media_article": {
+      "title": "Current affairs and editorials",
+      "concept": "Reading short news articles: 친환경 에너지가 주목받고 있습니다."
+    },
+    "idioms_body": {
+      "title": "Body-part idioms (발, 눈, 귀, 손)",
+      "concept": "Common idioms with body parts: 발이 넓다 (wide network), 눈이 높다 (high standards)."
+    },
+    "idioms_action": {
+      "title": "Everyday action idioms (바가지, 어깨)",
+      "concept": "Expressions for common situations: 바가지를 쓰다 (ripped off), 어깨가 무겁다 (heavy duty)."
+    },
+    "proverbs_life": {
+      "title": "Essential Korean proverbs",
+      "concept": "Wisdom in proverbs: 소 잃고 외양간 고친다, 쇠뿔도 단김에 빼라."
+    },
+    "sino_four": {
+      "title": "Four-character idioms (사자성어)",
+      "concept": "Common four-character Chinese-derived idioms: 일석이조, 작심삼일, 다다익선."
+    },
+    "logic_debate": {
+      "title": "Logical connectors and discourse markers",
+      "concept": "Formal discourse markers: -에 따르면, 한편, 요컨대, 따라서."
+    },
+    "culture_deep": {
+      "title": "Deep Korean cultural values and customs",
+      "concept": "Cultural concepts and holiday traditions: 따뜻한 정, 송편을 빚다."
+    },
+    "review_k10": {
+      "title": "K10 Comprehensive Review",
+      "concept": "Mastery of Korean culture, media, idioms and formal debate expressions."
+    }
   },
   "gloss": {
-    "dad": "baba", "apple": "elma", "book": "kitap", "water": "su", "house": "ev", "person": "kişi", "country": "ülke",
-    "sky": "gökyüzü", "mountain": "dağ", "flower": "çiçek", "river": "nehir",
-    "excuseMe": "Affedersiniz.", "thanksCasual": "Teşekkürler. (samimi)", "youreWelcome": "Rica ederim.", "congrats": "Tebrikler.",
-    "whatsYourName": "Adınız ne?", "whereFrom": "Hangi ülkedensiniz?", "iAmVietnamese": "Ben Vietnamlıyım.", "myNameMina": "Benim adım Mina.",
-    "goodbyeCasual": "Hoşça kal. (samimi)", "seeTomorrow": "Yarın görüşürüz.", "seeAgain": "Tekrar görüşürüz.", "goodNight": "İyi uykular.",
-    "imFine": "İyiyim.", "howHaveYouBeen": "İyi miydiniz?", "goodMorning": "Güzel bir sabah.",
-    "helpMe": "Lütfen bana yardım edin.", "dontKnow": "Bilmiyorum.", "understand": "Anlıyorum.", "sayAgain": "Lütfen tekrar söyleyin.", "speakSlowly": "Lütfen yavaş konuşun.",
-    "good": "İyi.", "dislike": "Hoşlanmıyorum.", "correct": "Doğru.", "incorrect": "Yanlış.",
-    "six": "altı", "eight": "sekiz", "nine": "dokuz", "ten": "on",
-    "age": "yaş", "howOld": "Kaç yaşındasınız?", "iAmTenYears": "Ben on yaşındayım.", "iAmTwentyYears": "Ben yirmi yaşındayım.", "iAmThirtyYears": "Ben otuz yaşındayım.",
-    "twentyYears": "yirmi yaşında", "thirtyYears": "otuz yaşında", "tenYears": "on yaşında", "oneYear": "bir yaşında",
-    "man": "erkek", "woman": "kadın", "olderBrotherF": "ağabey (kadının söylediği)", "olderSisterF": "abla (kadının söylediği)",
-    "daughter": "kız çocuğu", "son": "oğul", "parents": "anne baba", "we": "biz", "I": "ben", "you": "sen",
-    "ourFamily": "ailemiz", "myFamily": "ailem", "familyOfFour": "Biz dört kişilik bir aileyiz.", "noSiblings": "Kardeşim yok.", "haveSiblings": "Kardeşlerim var.",
-    "bread": "ekmek", "rice": "pilav / yemek", "fruit": "meyve", "meat": "et",
-    "like": "Seviyorum.", "dontLike": "Sevmiyorum.", "iLikeApples": "Elmayı severim.", "iLikeKimchi": "Kimchiyi severim.", "iLikeMeat": "Eti severim.",
-    "big": "Büyük.", "small": "Küçük.", "many": "Çok var.", "delicious": "Lezzetli.", "pretty": "Güzel.",
-    "weather": "hava durumu", "hot": "Hava sıcak.", "cold": "Hava soğuk.", "itRains": "Yağmur yağıyor.", "itSnows": "Kar yağıyor.", "weatherGood": "Bugün hava güzel.",
-    "dontEat": "Yemiyorum.", "dontGo": "Gitmiyorum.", "cantGo": "Gidemiyorum.", "dontDrinkCoffee": "Kahve içmiyorum.", "cantEat": "Yiyemiyorum.", "cantDrink": "İçemiyorum.",
-    "wakeUp": "Kalkıyorum.", "wash": "Yıkanıyorum.", "work": "Çalışıyorum.", "iWakeUpMorning": "Sabah kalkarım.", "iSleepNight": "Geceleri uyurum.",
-    "morning": "sabah", "night": "gece", "afternoon": "öğleden sonra",
-    "monday": "Pazartesi", "tuesday": "Salı", "wednesday": "Çarşamba", "friday": "Cuma", "saturday": "Cumartesi", "sunday": "Pazar",
-    "january": "Ocak", "march": "Mart", "may": "Mayıs", "july": "Temmuz", "september": "Eylül", "december": "Aralık",
-    "oneOclock": "saat bir", "twoOclock": "saat iki", "threeOclock": "saat üç", "tenOclock": "saat on", "nowThree": "Şimdi saat üç.", "nowTen": "Şimdi saat on.",
-    "everyDay": "her gün", "often": "sık sık", "sometimes": "bazen", "always": "her zaman", "iStudyEveryDay": "Her gün ders çalışırım.", "iDrinkCoffeeEveryDay": "Her gün kahve içerim.",
-    "did": "yaptım", "met": "buluştum", "bought": "satın aldım", "slept": "uyudum", "metFriendYesterday": "Dün bir arkadaşımla buluştum.",
-    "birthday": "doğum günü", "weekend": "hafta sonu", "gift": "hediye", "whenBirthday": "Doğum gününüz ne zaman?", "myBirthdayMay": "Doğum günüm mayısta.",
-    "menu": "menü", "checkPlease": "Hesap lütfen.", "iWillOrder": "Sipariş vereceğim.", "moreWaterPlease": "Biraz daha su lütfen.", "moreKimchiPlease": "Biraz daha kimchi lütfen.",
-    "bus": "otobüs", "subway": "metro", "taxi": "taksi", "train": "tren", "goByBus": "Otobüsle giderim.", "goBySubway": "Metroyla giderim.",
-    "phone": "telefon görüşmesi", "textMessage": "kısa mesaj", "phoneNumber": "telefon numarası", "callFriend": "Bir arkadaşımı ararım.", "sendFriendText": "Arkadaşıma mesaj gönderirim.", "call": "Ararım.",
-    "hurts": "Acıyor.", "hospital": "hastane", "medicine": "ilaç", "headache": "Başım ağrıyor.", "goHospital": "Hastaneye giderim.",
-    "pleaseSit": "Lütfen oturun.", "pleaseWait": "Lütfen bekleyin.", "openDoorPlease": "Lütfen kapıyı açın.", "waitAMoment": "Lütfen bir dakika bekleyin.", "sitHerePlease": "Lütfen buraya oturun.",
-    "letsGoTogether": "Birlikte gidelim.", "wantToGo": "Gitmek ister misin?", "haveTime": "Vaktin var mı?", "letsEatTogether": "Birlikte yiyelim.", "studyTogether": "Birlikte ders çalışalım."
+    "dad": "baba",
+    "apple": "elma",
+    "book": "kitap",
+    "water": "su",
+    "house": "ev",
+    "person": "kişi",
+    "country": "ülke",
+    "sky": "gökyüzü",
+    "mountain": "dağ",
+    "flower": "çiçek",
+    "river": "nehir",
+    "excuseMe": "Affedersiniz.",
+    "thanksCasual": "Teşekkürler. (samimi)",
+    "youreWelcome": "Rica ederim.",
+    "congrats": "Tebrikler.",
+    "whatsYourName": "Adınız ne?",
+    "whereFrom": "Hangi ülkedensiniz?",
+    "iAmVietnamese": "Ben Vietnamlıyım.",
+    "myNameMina": "Benim adım Mina.",
+    "goodbyeCasual": "Hoşça kal. (samimi)",
+    "seeTomorrow": "Yarın görüşürüz.",
+    "seeAgain": "Tekrar görüşürüz.",
+    "goodNight": "İyi uykular.",
+    "imFine": "İyiyim.",
+    "howHaveYouBeen": "İyi miydiniz?",
+    "goodMorning": "Güzel bir sabah.",
+    "helpMe": "Lütfen bana yardım edin.",
+    "dontKnow": "Bilmiyorum.",
+    "understand": "Anlıyorum.",
+    "sayAgain": "Lütfen tekrar söyleyin.",
+    "speakSlowly": "Lütfen yavaş konuşun.",
+    "good": "İyi.",
+    "dislike": "Hoşlanmıyorum.",
+    "correct": "Doğru.",
+    "incorrect": "Yanlış.",
+    "six": "altı",
+    "eight": "sekiz",
+    "nine": "dokuz",
+    "ten": "on",
+    "age": "yaş",
+    "howOld": "Kaç yaşındasınız?",
+    "iAmTenYears": "Ben on yaşındayım.",
+    "iAmTwentyYears": "Ben yirmi yaşındayım.",
+    "iAmThirtyYears": "Ben otuz yaşındayım.",
+    "twentyYears": "yirmi yaşında",
+    "thirtyYears": "otuz yaşında",
+    "tenYears": "on yaşında",
+    "oneYear": "bir yaşında",
+    "man": "erkek",
+    "woman": "kadın",
+    "olderBrotherF": "ağabey (kadının söylediği)",
+    "olderSisterF": "abla (kadının söylediği)",
+    "daughter": "kız çocuğu",
+    "son": "oğul",
+    "parents": "anne baba",
+    "we": "biz",
+    "I": "ben",
+    "you": "sen",
+    "ourFamily": "ailemiz",
+    "myFamily": "ailem",
+    "familyOfFour": "Biz dört kişilik bir aileyiz.",
+    "noSiblings": "Kardeşim yok.",
+    "haveSiblings": "Kardeşlerim var.",
+    "bread": "ekmek",
+    "rice": "pilav / yemek",
+    "fruit": "meyve",
+    "meat": "et",
+    "like": "Seviyorum.",
+    "dontLike": "Sevmiyorum.",
+    "iLikeApples": "Elmayı severim.",
+    "iLikeKimchi": "Kimchiyi severim.",
+    "iLikeMeat": "Eti severim.",
+    "big": "Büyük.",
+    "small": "Küçük.",
+    "many": "Çok var.",
+    "delicious": "Lezzetli.",
+    "pretty": "Güzel.",
+    "weather": "hava durumu",
+    "hot": "Hava sıcak.",
+    "cold": "Hava soğuk.",
+    "itRains": "Yağmur yağıyor.",
+    "itSnows": "Kar yağıyor.",
+    "weatherGood": "Bugün hava güzel.",
+    "dontEat": "Yemiyorum.",
+    "dontGo": "Gitmiyorum.",
+    "cantGo": "Gidemiyorum.",
+    "dontDrinkCoffee": "Kahve içmiyorum.",
+    "cantEat": "Yiyemiyorum.",
+    "cantDrink": "İçemiyorum.",
+    "wakeUp": "Kalkıyorum.",
+    "wash": "Yıkanıyorum.",
+    "work": "Çalışıyorum.",
+    "iWakeUpMorning": "Sabah kalkarım.",
+    "iSleepNight": "Geceleri uyurum.",
+    "morning": "sabah",
+    "night": "gece",
+    "afternoon": "öğleden sonra",
+    "monday": "Pazartesi",
+    "tuesday": "Salı",
+    "wednesday": "Çarşamba",
+    "friday": "Cuma",
+    "saturday": "Cumartesi",
+    "sunday": "Pazar",
+    "january": "Ocak",
+    "march": "Mart",
+    "may": "Mayıs",
+    "july": "Temmuz",
+    "september": "Eylül",
+    "december": "Aralık",
+    "oneOclock": "saat bir",
+    "twoOclock": "saat iki",
+    "threeOclock": "saat üç",
+    "tenOclock": "saat on",
+    "nowThree": "Şimdi saat üç.",
+    "nowTen": "Şimdi saat on.",
+    "everyDay": "her gün",
+    "often": "sık sık",
+    "sometimes": "bazen",
+    "always": "her zaman",
+    "iStudyEveryDay": "Her gün ders çalışırım.",
+    "iDrinkCoffeeEveryDay": "Her gün kahve içerim.",
+    "did": "yaptım",
+    "met": "buluştum",
+    "bought": "satın aldım",
+    "slept": "uyudum",
+    "metFriendYesterday": "Dün bir arkadaşımla buluştum.",
+    "birthday": "doğum günü",
+    "weekend": "hafta sonu",
+    "gift": "hediye",
+    "whenBirthday": "Doğum gününüz ne zaman?",
+    "myBirthdayMay": "Doğum günüm mayısta.",
+    "menu": "menü",
+    "checkPlease": "Hesap lütfen.",
+    "iWillOrder": "Sipariş vereceğim.",
+    "moreWaterPlease": "Biraz daha su lütfen.",
+    "moreKimchiPlease": "Biraz daha kimchi lütfen.",
+    "bus": "otobüs",
+    "subway": "metro",
+    "taxi": "taksi",
+    "train": "tren",
+    "goByBus": "Otobüsle giderim.",
+    "goBySubway": "Metroyla giderim.",
+    "phone": "telefon görüşmesi",
+    "textMessage": "kısa mesaj",
+    "phoneNumber": "telefon numarası",
+    "callFriend": "Bir arkadaşımı ararım.",
+    "sendFriendText": "Arkadaşıma mesaj gönderirim.",
+    "call": "Ararım.",
+    "hurts": "Acıyor.",
+    "hospital": "hastane",
+    "medicine": "ilaç",
+    "headache": "Başım ağrıyor.",
+    "goHospital": "Hastaneye giderim.",
+    "pleaseSit": "Lütfen oturun.",
+    "pleaseWait": "please wait",
+    "openDoorPlease": "Lütfen kapıyı açın.",
+    "waitAMoment": "Lütfen bir dakika bekleyin.",
+    "sitHerePlease": "Lütfen buraya oturun.",
+    "letsGoTogether": "Birlikte gidelim.",
+    "wantToGo": "Gitmek ister misin?",
+    "haveTime": "Vaktin var mı?",
+    "letsEatTogether": "Birlikte yiyelim.",
+    "studyTogether": "Birlikte ders çalışalım.",
+    "friendSaidComing": "friend said coming",
+    "friendSaidGoing": "friend said going",
+    "friendAskedCome": "friend asked come",
+    "friendSaidGood": "friend said good",
+    "weatherSaidGood": "weather said good",
+    "weatherSaidCold": "weather said cold",
+    "rainSaidComing": "rain said coming",
+    "saidDelicious": "said delicious",
+    "askedWhereGoing": "asked where going",
+    "askedWhatTime": "asked what time",
+    "askedWhatEat": "asked what eat",
+    "askedWhyCome": "asked why come",
+    "askedWhoIs": "asked who is",
+    "askedHowMuch": "asked how much",
+    "askedIfAte": "asked if ate",
+    "askedWhenComing": "asked when coming",
+    "toldToComeFast": "told to come fast",
+    "suggestedGoTogether": "suggested go together",
+    "toldToBeQuiet": "told to be quiet",
+    "toldToWait": "told to wait",
+    "suggestedEatTogether": "suggested eat together",
+    "busyStudying": "busy studying",
+    "wentDespiteRain": "went despite rain",
+    "lateDueToWork": "late due to work",
+    "tiredWorking": "tired working",
+    "ateDespiteFull": "ate despite full",
+    "studiedDespiteTired": "studied despite tired",
+    "betterAsWeMeet": "better as we meet",
+    "boundToMakeMistakes": "bound to make mistakes",
+    "harderAsItGoes": "harder as it goes",
+    "happierStudying": "happier studying",
+    "boundToGetTired": "bound to get tired",
+    "prettierAsLook": "prettier as look",
+    "looksHappy": "looks happy",
+    "seemsRaining": "seems raining",
+    "looksTired": "looks tired",
+    "looksDelicious": "looks delicious",
+    "seemsBusy": "seems busy",
+    "pretendsToKnow": "pretends to know",
+    "pretendedToSleep": "pretended to sleep",
+    "pretendsToBeBusy": "pretends to be busy",
+    "pretendsNotToHear": "pretends not to hear",
+    "pretendedToEat": "pretended to eat",
+    "pretendsNotToKnow": "pretends not to know",
+    "shouldHaveComeEarly": "should have come early",
+    "shouldHaveStudied": "should have studied",
+    "shouldHaveBought": "should have bought",
+    "shouldHaveEaten": "should have eaten",
+    "shouldHaveRested": "should have rested",
+    "shouldHaveTold": "should have told",
+    "grandmotherEatsMeal": "grandmother eats meal",
+    "motherSleeps": "mother sleeps",
+    "teacherIsSick": "teacher is sick",
+    "grandmotherGoes": "grandmother goes",
+    "fatherSpeaks": "father speaks",
+    "giveGiftHonorific": "give gift honorific",
+    "seeTomorrowHonorific": "see tomorrow honorific",
+    "askTeacherHonorific": "ask teacher honorific",
+    "receiveGift": "receive gift",
+    "seeYesterday": "see yesterday",
+    "helpTeacher": "help teacher",
+    "doorOpens": "door opens",
+    "windowCloses": "window closes",
+    "mountainSeen": "mountain seen",
+    "musicHeard": "music heard",
+    "doorLocked": "door locked",
+    "letterWrittenWell": "letter written well",
+    "cameToKnow": "came to know",
+    "wentToKorea": "went to korea",
+    "forgotName": "forgot name",
+    "metFriend": "met friend",
+    "wentToKoreaResult": "went to korea result",
+    "studiedKorean": "studied korean",
+    "showsPhoto": "shows photo",
+    "feedsBaby": "feeds baby",
+    "dressesClothes": "dresses clothes",
+    "takesPhoto": "takes photo",
+    "eatsMeal": "eats meal",
+    "wearsClothes": "wears clothes",
+    "makesLaugh": "makes laugh",
+    "madeWait": "made wait",
+    "makesCry": "makes cry",
+    "makesStudy": "makes study",
+    "makesGo": "makes go",
+    "waitedLong": "waited long",
+    "madeCry": "made cry",
+    "laughedTogether": "laughed together",
+    "pleaseBeSeated": "please be seated",
+    "letUsDepart": "let us depart",
+    "pleaseComeIn": "please come in",
+    "arrivedNow": "arrived now",
+    "doYouHaveQuestions": "do you have questions",
+    "haveNoQuestions": "have no questions",
+    "offerGreetingWords": "offer greeting words",
+    "ourSchoolHumble": "our school humble",
+    "ourCountryHumble": "our country humble",
+    "thankYouSincerely": "thank you sincerely",
+    "mySchool": "my school",
+    "ourHouse": "our house",
+    "conveyGratitude": "convey gratitude",
+    "apologizeSincerely": "apologize sincerely",
+    "gaveGiftToGrandmother": "gave gift to grandmother",
+    "doorClosedByItself": "door closed by itself",
+    "regardingMeetingAgenda": "regarding meeting agenda",
+    "pleaseCheckAttachment": "please check attachment",
+    "pleaseReviewRequest": "please review request",
+    "scheduleChangeRequest": "schedule change request",
+    "connectingPersonInCharge": "connecting person in charge",
+    "availableToSpeakNow": "available to speak now",
+    "shallITakeMessage": "shall i take message",
+    "callAgainLater": "call again later",
+    "askKindUnderstanding": "ask kind understanding",
+    "convenientTimeRequest": "convenient time request",
+    "meetingCancelled": "meeting cancelled",
+    "callMeLater": "call me later",
+    "inMyOpinionProposalGood": "in my opinion proposal good",
+    "stronglyAgree": "strongly agree",
+    "additionalReviewNeeded": "additional review needed",
+    "opposeStrongly": "oppose strongly",
+    "suggestAlternative": "suggest alternative",
+    "approveImmediately": "approve immediately",
+    "reportingProjectProgress": "reporting project progress",
+    "completedAction": "completed action",
+    "salesIncreased": "sales increased",
+    "cooperationHoped": "cooperation hoped",
+    "projectDelayed": "project delayed",
+    "sharingResults": "sharing results",
+    "scheduleDelayed": "schedule delayed",
+    "increasedComparedToLastYear": "increased compared to last year",
+    "hopeMutualCooperation": "hope mutual cooperation",
+    "exchangeBusinessCards": "exchange business cards",
+    "salesDecreased": "sales decreased",
+    "costsDecreased": "costs decreased",
+    "profitsDecreased": "profits decreased",
+    "proposeCompromise": "propose compromise",
+    "acceptContract": "accept contract",
+    "refuseProposal": "refuse proposal",
+    "signedContract": "signed contract",
+    "delayedContract": "delayed contract",
+    "pleasedToMeetCard": "pleased to meet card",
+    "departmentManagerKim": "department manager kim",
+    "teamLeaderPark": "team leader park",
+    "thankYouGreeting": "thank you greeting",
+    "generalManagerLee": "general manager lee",
+    "deputyKim": "deputy kim",
+    "pleaseReviewAgenda": "please review agenda",
+    "seeYouAtMeeting": "see you at meeting",
+    "announcedPriceMeasures": "announced price measures",
+    "recordHighExports": "record high exports",
+    "aiDevelopingRapidly": "ai developing rapidly",
+    "heavyResponsibilityBurden": "heavy responsibility burden",
+    "protectEnvironment": "protect environment",
+    "cleanEnergyPopular": "clean energy popular",
+    "hasWideConnections": "has wide connections",
+    "highStandardsChoose": "high standards choose",
+    "socialInterestGrowing": "social interest growing",
+    "scientificDebate": "scientific debate",
+    "adoptedNewTech": "adopted new tech",
+    "stoppedNewTech": "stopped new tech",
+    "easilyInfluenced": "easily influenced",
+    "rippedOffPrice": "ripped off price",
+    "earHurt": "ear hurt",
+    "steppedUpToHelp": "stepped up to help",
+    "boughtCheaply": "bought cheaply",
+    "shoulderAches": "shoulder aches",
+    "tookOffShoes": "took off shoes",
+    "mendBarnAfterLosingCow": "mend barn after losing cow",
+    "strikeWhileIronHot": "strike while iron hot",
+    "wordsTravelFarProverb": "words travel far proverb",
+    "twoBirdsOneStone": "two birds one stone",
+    "threeDaysResolve": "three days resolve",
+    "horseRunsFast": "horse runs fast",
+    "theMoreTheBetter": "the more the better",
+    "empathyPutInOthersShoes": "empathy put in others shoes",
+    "effortPaysOff": "effort pays off",
+    "goodDeed": "good deed",
+    "accordingToOpinion": "according to opinion",
+    "onOtherHandAnotherAspect": "on other hand another aspect",
+    "inShortEssential": "in short essential",
+    "thereforeConclude": "therefore conclude",
+    "agreeEntirely": "agree entirely",
+    "importantDetail": "important detail",
+    "warmJeongAffection": "warm jeong affection",
+    "makeSongpyeonChuseok": "make songpyeon chuseok",
+    "shareFoodNeighbors": "share food neighbors",
+    "cleanEnvironment": "clean environment",
+    "eatTteokgukNewYear": "eat tteokguk new year",
+    "eatAlone": "eat alone",
+    "achievedTwoBirdsEffect": "achieved two birds effect",
+    "cooperateBasedOnMutualUnderstanding": "cooperate based on mutual understanding",
+    "relationshipEnded": "relationship ended"
   },
   "note": {
     "native": "Öz Korece sayılar (하나, 둘, 셋 …) şeyleri saymak ve saatler için kullanılır."
+  },
+  "course": {
+    "K7": {
+      "title": "Korean Level 7 · Conjunctions and Indirect Speech",
+      "world": "Speech Garden",
+      "tagline": "Connect complex thoughts and report what others say",
+      "unit": "Indirect speech and complex connectors"
+    },
+    "K8": {
+      "title": "Korean Level 8 · Honorifics, Passive and Causative",
+      "world": "River of Courtesy",
+      "tagline": "Nuances of polite speech and causative/passive voice",
+      "unit": "Precision honorifics and voice"
+    },
+    "K9": {
+      "title": "Korean Level 9 · Professional and Workplace Korean",
+      "world": "Office Tower",
+      "tagline": "Practical business communication for email, phone and meetings",
+      "unit": "Workplace and business Korean"
+    },
+    "K10": {
+      "title": "Korean Level 10 · Culture, Media and Idioms",
+      "world": "Forest of Culture",
+      "tagline": "Explore Korean society through news, idioms and proverbs",
+      "unit": "Culture, media and idioms"
+    }
   }
 }
