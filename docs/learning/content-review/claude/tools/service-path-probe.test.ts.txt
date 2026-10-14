@@ -1,0 +1,123 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Read-only verification harness (not part of the repo): probes real service paths for quarantined content. Writes JSON, asserts nothing.
+import fs from "node:fs";
+import { describe, it } from "vitest";
+import { loadIndex } from "@/lib/learn/content/repository";
+import { LearnService } from "@/lib/learn/server/service";
+import { MemoryLearnStore } from "@/lib/learn/server/memoryStore";
+import { BANKS, expandBank } from "@/lib/learn/content/bank";
+
+const OUT = process.env.RECHECK_OUT as string;
+const NOW = new Date("2026-03-01T03:00:00Z");
+const res: Record<string, any> = {};
+const make = () => { let n = 0; return new LearnService({ store: new MemoryLearnStore(), now: () => NOW, newId: () => `session-${String(++n).padStart(4, "0")}` }); };
+const err = async (f: () => Promise<any>) => { try { const r = await f(); return { ok: true, result: r }; } catch (e: any) { return { ok: false, code: e?.code ?? String(e?.message ?? e).slice(0, 80) }; } };
+const past = "2026-02-01T00:00:00.000Z";
+const guestState = (site: string, grade: string, skills: string[]) => ({
+  site, profile: { nickname: "tester", grade, goal: "habit", avatar: "fox", onboardingDone: true },
+  mastery: Object.fromEntries(skills.map((s) => [s, { skillId: s, score: 40, attempts: 5, correct: 2, streak: 0, box: 1, lastPracticedAt: past, nextReviewAt: past }])),
+  lessons: {},
+});
+
+describe("recheck probes", () => {
+  it("content counts and preservation", async () => {
+    const m = await loadIndex("math", { locale: "ko" });
+    const mb = m.bundle.questions.filter((q) => q.id.startsWith("b-"));
+    const e = await loadIndex("english", { locale: "ko" });
+    const k = await loadIndex("korean", { locale: "ko" });
+    res.counts = {
+      mathBankExpanded: expandBank(BANKS.math as any, null, new Set(m.bundle.catalog.skills.map((s) => s.id))).length,
+      mathBankInStudentBundle: mb.length,
+      mathCanonical: m.bundle.questions.length - mb.length,
+      englishStudentBundle: e.bundle.questions.length,
+      englishBankLike: e.bundle.questions.filter((q) => q.id.startsWith("bk-") || q.id.startsWith("en-el-")).length,
+      koreanStudentBundle: k.bundle.questions.length,
+      koreanK7toK10: k.bundle.questions.filter((q) => /^k-k(7|8|9|10)-/.test(q.id) || q.id.startsWith("bk-")).length,
+      koreanCourses: k.bundle.catalog.courses.map((c) => c.grade),
+      koreanSkillsK7plus: k.bundle.catalog.skills.filter((s) => /^k\.k(7|8|9|10)\./.test(s.id)).length,
+      koreanLessonsK7plus: [...k.index.lessons.keys()].filter((id) => /^korean-k(7|8|9|10)-/.test(id)).length,
+    };
+  });
+
+  it("guest service paths", async () => {
+    const svc = make();
+    const out: Record<string, any> = {};
+    const k7skills = ["k.k7.indirect_state", "k.k8.honorific_subj", "k.k9.biz_email", "k.k10.idioms_body"];
+    const guest = (grade: string, skills: string[] = []) => ({ guestState: guestState("korean", grade, skills), locale: "ko" as const });
+    // positive control: K1 content works through the same code
+    out.k1_practice = await err(() => svc.startSession(guest("K1"), "korean", { kind: "practice", skillId: "k.k1.vowels" }).then((s: any) => ({ n: s.questions.length })));
+    for (const g of ["K6", "K7", "K8", "K9", "K10"]) {
+      const a = guest(g, k7skills);
+      out[`onboarding_${g}`] = await err(() => svc.saveOnboarding({ guestState: null, locale: "ko" } as any, "korean", { nickname: "tester", grade: g, goal: "habit", avatar: "fox" }).then((s: any) => ({ grade: s.profile?.grade })));
+      out[`state_${g}`] = await err(() => svc.getState(a, "korean").then((s: any) => ({ grade: s.profile?.grade })));
+      out[`review_${g}`] = await err(() => svc.startSession(a, "korean", { kind: "review" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id).slice(0, 5), n: s.questions.length })));
+    }
+    for (const sk of k7skills) out[`practice_${sk}`] = await err(() => svc.startSession(guest("K7"), "korean", { kind: "practice", skillId: sk }).then((s: any) => ({ n: s.questions.length, ids: s.questions.map((q: any) => q.id).slice(0, 3) })));
+    for (const l of ["korean-k7-l1", "korean-k8-l1", "korean-k9-l1", "korean-k10-l1"]) out[`lesson_${l}`] = await err(() => svc.startSession(guest("K7"), "korean", { kind: "lesson", lessonId: l }).then((s: any) => ({ n: s.questions.length })));
+    const direct = ["k-k7-indirect_state-1", "k-k9-biz_email-1", "k-k10-idioms_body-1", "bk-ko-k7-k-k7-indirect_state-001", "bk-ko-k1-k-k1-vowels-001"];
+    for (const q of direct) {
+      out[`hint_${q}`] = await err(() => svc.requestHint(guest("K7"), "korean", { questionId: q, level: 1 }));
+      out[`attempt_${q}`] = await err(() => svc.submitAttempt(guest("K7"), "korean", { questionId: q, sessionId: "session-9999", answer: "a", attemptNo: 1, hintsUsed: 0, timeMs: 2000 } as any).then((r: any) => ({ correct: r.correct })));
+      out[`retry_review_${q}`] = await err(() => svc.submitAttempt(guest("K7"), "korean", { questionId: q, sessionId: "session-9998", answer: "a", attemptNo: 2, hintsUsed: 1, timeMs: 2000, isReview: true, seenIds: [q] } as any).then((r: any) => ({ correct: r.correct })));
+    }
+    out.diagnostic_K7 = await err(() => svc.diagnosticStep(guest("K7"), "korean", { history: [] }).then((r: any) => ({ done: r.done, next: r.next && (r.next.id ?? r.next) })));
+    out.access = await err(() => svc.getAccess(guest("K7"), "korean").then((a: any) => ({ tier: a.tier })));
+    res.guestKorean = out;
+
+    const out2: Record<string, any> = {};
+    const eg = (skills: string[] = []) => ({ guestState: guestState("english", "H3", skills), locale: "ko" as const });
+    const eng = ["bk-en-h2-e-h2-wh-003", "en-el-hum1-q1", "bk-en-e1-e-e1-alpha-024"];
+    for (const q of eng) {
+      out2[`hint_${q}`] = await err(() => svc.requestHint(eg(), "english", { questionId: q, level: 1 }));
+      out2[`attempt_${q}`] = await err(() => svc.submitAttempt(eg(), "english", { questionId: q, sessionId: "session-9999", answer: "a", attemptNo: 1, hintsUsed: 0, timeMs: 2000 } as any).then((r: any) => ({ correct: r.correct })));
+    }
+    out2.lesson_reading = await err(() => svc.startSession(eg(), "english", { kind: "lesson", lessonId: "en-el-hum1" }));
+    out2.practice_reading = await err(() => svc.startSession(eg(), "english", { kind: "practice", skillId: "en.el.hum1" }));
+    out2.review_reading = await err(() => svc.startSession(eg(["en.el.hum1", "e.h2.wh"]), "english", { kind: "review" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    out2.practice_h2wh = await err(() => svc.startSession(eg(), "english", { kind: "practice", skillId: "e.h2.wh" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    res.guestEnglish = out2;
+  });
+
+  it("signed-in account paths (memory store)", async () => {
+    const svc = make();
+    const out: Record<string, any> = {};
+    const a = { userId: "u-recheck", locale: "ko" as const };
+    out.onboard_K7 = await err(() => svc.saveOnboarding(a, "korean", { nickname: "tester", grade: "K7", goal: "habit", avatar: "fox" }));
+    out.onboard_K6 = await err(() => svc.saveOnboarding(a, "korean", { nickname: "tester", grade: "K6", goal: "habit", avatar: "fox" }).then((s: any) => ({ grade: s.profile?.grade })));
+    out.lesson_k7 = await err(() => svc.startSession(a, "korean", { kind: "lesson", lessonId: "korean-k7-l1" }));
+    out.hint_k7 = await err(() => svc.requestHint(a, "korean", { questionId: "k-k7-indirect_state-1", level: 1 }));
+    out.attempt_k7 = await err(() => svc.submitAttempt(a, "korean", { questionId: "k-k7-indirect_state-1", sessionId: "session-9999", answer: "a", attemptNo: 1, hintsUsed: 0, timeMs: 2000 } as any));
+    res.accountKorean = out;
+  });
+
+
+  it("positive controls and extra paths", async () => {
+    const svc = make();
+    const out: Record<string, any> = {};
+    const g = (grade: string, skills: string[]) => ({ guestState: guestState("korean", grade, skills), locale: "ko" as const });
+    out.review_mixed_K1_plus_K7 = await err(() => svc.startSession(g("K6", ["k.k1.vowels", "k.k7.indirect_state", "k.k10.idioms_body"]), "korean", { kind: "review" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    out.attempt_control_K1 = await err(() => svc.submitAttempt(g("K1", []), "korean", { questionId: "k-k1-vowels-1", sessionId: "session-9999", answer: "a", attemptNo: 1, hintsUsed: 0, timeMs: 2000 } as any).then((r: any) => ({ correct: r.correct })));
+    out.hint_control_K1 = await err(() => svc.requestHint(g("K1", []), "korean", { questionId: "k-k1-vowels-1", level: 1 }).then((r: any) => ({ level: r.level })));
+    out.complete_lesson_k7 = await err(() => (svc as any).completeLesson(g("K7", []), "korean", { lessonId: "korean-k7-l1", sessionId: "session-9999", correct: 5, total: 5 }));
+    const eg = { guestState: guestState("english", "H3", ["e.h2.wh", "e.e1.alpha"]), locale: "ko" as const };
+    out.review_english = await err(() => svc.startSession(eg, "english", { kind: "review" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    out.english_control_attempt = await err(() => svc.submitAttempt(eg, "english", { questionId: "m-e1-count-1", sessionId: "session-9999", answer: "a", attemptNo: 1, hintsUsed: 0, timeMs: 2000 } as any).then((r: any) => ({ ok: true })));
+    const mg = { guestState: guestState("math", "E3", ["m.e3.ari1"]), locale: "ko" as const };
+    const ms = await svc.startSession(mg, "math", { kind: "review" }).catch((e: any) => ({ err: e.code }));
+    out.review_math_bank = (ms as any).questions ? { ids: (ms as any).questions.map((q: any) => q.id), bankCount: (ms as any).questions.filter((q: any) => q.id.startsWith("b-")).length } : ms;
+    res.controls = out;
+  });
+
+
+  it("english controls", async () => {
+    const svc = make();
+    const out: Record<string, any> = {};
+    const eg = (grade: string, skills: string[]) => ({ guestState: guestState("english", grade, skills), locale: "ko" as const });
+    out.review_E1 = await err(() => svc.startSession(eg("E1", ["e.e1.alpha"]), "english", { kind: "review" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    out.practice_E1 = await err(() => svc.startSession(eg("E1", []), "english", { kind: "practice", skillId: "e.e1.alpha" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    out.practice_H2 = await err(() => svc.startSession(eg("H2", []), "english", { kind: "practice", skillId: "e.h2.wh" }).then((s: any) => ({ ids: s.questions.map((q: any) => q.id), n: s.questions.length })));
+    res.englishControls = out;
+  });
+
+  it("write", () => { fs.writeFileSync(OUT, JSON.stringify(res, null, 1)); });
+});
