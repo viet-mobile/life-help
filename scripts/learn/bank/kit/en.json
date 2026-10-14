@@ -455,6 +455,190 @@
         "Divide the two values."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Which is the biggest of {list}? (digits only)",
+      "hints": [
+        "Compare the numbers one by one.",
+        "Find the number that stands for the most."
+      ],
+      "expl": "The biggest of {list} is {ans}."
+    },
+    "minOf": {
+      "prompt": "Which is the smallest of {list}? (digits only)",
+      "hints": [
+        "Compare the numbers one by one.",
+        "Find the number that stands for the least."
+      ],
+      "expl": "The smallest of {list} is {ans}."
+    },
+    "nextNum": {
+      "prompt": "What number comes right after {n}? (digits only)",
+      "hints": [
+        "Count the numbers in order.",
+        "Count one more from {n}."
+      ],
+      "expl": "The number right after {n} is {ans}."
+    },
+    "prevNum": {
+      "prompt": "What number comes right before {n}? (digits only)",
+      "hints": [
+        "Count backwards.",
+        "Count one fewer from {n}."
+      ],
+      "expl": "The number right before {n} is {ans}."
+    },
+    "makeTen": {
+      "prompt": "What number added to {a} makes 10? (digits only)",
+      "hints": [
+        "Subtract {a} from 10.",
+        "Think of your ten fingers."
+      ],
+      "expl": "{a}+{ans}=10, so the answer is {ans}."
+    },
+    "missAdd": {
+      "prompt": "In $\\square + {b} = {c}$, what number goes in the box? (digits only)",
+      "hints": [
+        "Subtract the known number from the total to find □.",
+        "Calculate {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, so □={ans}."
+    },
+    "missSub": {
+      "prompt": "In $ {a} - \\square = {c}$, what number goes in the box? (digits only)",
+      "hints": [
+        "Subtract the result from the first number to find □.",
+        "Calculate {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, so □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "What is the digit in the ones place of ${n}$? (digits only)",
+      "hints": [
+        "It is the digit on the far right.",
+        "The ones place shows the single units."
+      ],
+      "expl": "The ones digit of {n} is {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "What is the digit in the hundreds place of ${n}$? (digits only)",
+      "hints": [
+        "It is the third digit from the right.",
+        "In a three-digit number it is the first digit."
+      ],
+      "expl": "The hundreds digit of {n} is {ans}."
+    },
+    "moreBy": {
+      "prompt": "What number is {k} more than {n}? (digits only)",
+      "hints": [
+        "It is the same as skip-counting up by {k}.",
+        "Only the digit in one place changes."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "What number is {k} less than {n}? (digits only)",
+      "hints": [
+        "It is the same as skip-counting down by {k}.",
+        "Only the digit in one place changes."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "There are {a} in each bundle and {b} bundles. How many are there in all? (digits only)",
+      "hints": [
+        "Equal groups can be counted with multiplication.",
+        "It is the same as adding {a} a total of {b} times."
+      ],
+      "expl": "{a}×{b}={ans}, so there are {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Three angles of a quadrilateral are {a}°, {b}° and {c}°. How many degrees is the fourth angle? (degrees)",
+      "hints": [
+        "The four angles of a quadrilateral add up to 360°.",
+        "Subtract the three known angles from 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, so it is {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Write the fraction $\\frac{{a}}{{b}}$ as a decimal. (write a decimal)",
+      "hints": [
+        "Rewrite the fraction so that the denominator is 10 or 100.",
+        "Or divide the numerator by the denominator."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "What is the value of $\\sqrt{{a}} \\times \\sqrt{{b}}$? (digits only)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Check whether the product is a square number."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "If $({e})^2 = x^2+px+q$, what is $p+q$? (digits only)",
+      "hints": [
+        "Use $(x+a)^2=x^2+2ax+a^2$.",
+        "p is 2a and q is a²."
+      ],
+      "expl": "p={p} and q={q}, so p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "When ${poly}$ is factorised as $(x+m)(x+n)$, what is the difference between m and n (bigger minus smaller)? (digits only)",
+      "hints": [
+        "Find two numbers whose sum is the coefficient of x and whose product is the constant term.",
+        "After finding them, subtract the smaller from the bigger."
+      ],
+      "expl": "${poly}=({fm})({fn})$, so the two numbers are {m} and {n}, and the difference is {ans}."
+    },
+    "quadDisc": {
+      "prompt": "What is the value of the discriminant $D=b^2-4ac$ of the quadratic equation ${eq}=0$? (digits only)",
+      "hints": [
+        "The discriminant of $ax^2+bx+c=0$ is $D=b^2-4ac$.",
+        "Watch the signs of a, b and c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, so D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "For the quadratic function $y={expr}$, what is $y$ when $x={x}$? (digits only)",
+      "hints": [
+        "Put the given value in place of x.",
+        "Calculate the square first."
+      ],
+      "expl": "Putting in x={x} gives y={ans}."
+    },
+    "logAdd": {
+      "prompt": "What is the value of $\\log_{{b}} {m} + \\log_{{b}} {n}$? (digits only)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "First find the product {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "What is the sum of the first {n} terms of the arithmetic sequence with first term {a} and common difference {d}? (digits only)",
+      "hints": [
+        "The sum formula is $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "You can also find the last term and calculate (first + last) × number of terms ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "A geometric sequence has first term {a} and third term {c}. What is the common ratio? (positive, digits only)",
+      "hints": [
+        "The third term is the first term multiplied by the ratio twice.",
+        "From $ar^2=c$ find $r^2$."
+      ],
+      "expl": "From {a}×r²={c} we get r²={sq}, so the common ratio is {ans}."
+    },
+    "limFactor": {
+      "prompt": "What is the value of $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (digits only)",
+      "hints": [
+        "The numerator factorises as $(x-a)(x+a)$.",
+        "Cancel, then put the limit value in place of x."
+      ],
+      "expl": "After factorising the numerator and cancelling, putting in x={a} gives {ans}."
     }
   }
 }

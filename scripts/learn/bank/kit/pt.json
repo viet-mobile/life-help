@@ -455,6 +455,190 @@
         "Divida os dois valores."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Qual é o maior de {list}? (só algarismos)",
+      "hints": [
+        "Compare os números um a um.",
+        "Encontre o número que representa mais."
+      ],
+      "expl": "O maior de {list} é {ans}."
+    },
+    "minOf": {
+      "prompt": "Qual é o menor de {list}? (só algarismos)",
+      "hints": [
+        "Compare os números um a um.",
+        "Encontre o número que representa menos."
+      ],
+      "expl": "O menor de {list} é {ans}."
+    },
+    "nextNum": {
+      "prompt": "Que número vem logo depois de {n}? (só algarismos)",
+      "hints": [
+        "Conte os números em ordem.",
+        "Conte mais um a partir de {n}."
+      ],
+      "expl": "O número logo depois de {n} é {ans}."
+    },
+    "prevNum": {
+      "prompt": "Que número vem logo antes de {n}? (só algarismos)",
+      "hints": [
+        "Conte para trás.",
+        "Conte menos um a partir de {n}."
+      ],
+      "expl": "O número logo antes de {n} é {ans}."
+    },
+    "makeTen": {
+      "prompt": "Que número somado a {a} dá 10? (só algarismos)",
+      "hints": [
+        "Subtraia {a} de 10.",
+        "Pense nos seus dez dedos."
+      ],
+      "expl": "{a}+{ans}=10, então a resposta é {ans}."
+    },
+    "missAdd": {
+      "prompt": "Em $\\square + {b} = {c}$, que número vai na caixa? (só algarismos)",
+      "hints": [
+        "Subtraia o número conhecido do total para achar □.",
+        "Calcule {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, então □={ans}."
+    },
+    "missSub": {
+      "prompt": "Em $ {a} - \\square = {c}$, que número vai na caixa? (só algarismos)",
+      "hints": [
+        "Subtraia o resultado do primeiro número para achar □.",
+        "Calcule {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, então □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Qual é o algarismo da casa das unidades de ${n}$? (só algarismos)",
+      "hints": [
+        "É o algarismo mais à direita.",
+        "A casa das unidades mostra as unidades simples."
+      ],
+      "expl": "O algarismo das unidades de {n} é {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Qual é o algarismo da casa das centenas de ${n}$? (só algarismos)",
+      "hints": [
+        "É o terceiro algarismo da direita para a esquerda.",
+        "Num número de três algarismos, é o primeiro algarismo."
+      ],
+      "expl": "O algarismo das centenas de {n} é {ans}."
+    },
+    "moreBy": {
+      "prompt": "Que número é {k} a mais que {n}? (só algarismos)",
+      "hints": [
+        "É o mesmo que contar para cima, somando {k}.",
+        "Só muda o algarismo de uma casa."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Que número é {k} a menos que {n}? (só algarismos)",
+      "hints": [
+        "É o mesmo que contar para baixo, subtraindo {k}.",
+        "Só muda o algarismo de uma casa."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Há {a} em cada pacote e {b} pacotes. Quantos há ao todo? (só algarismos)",
+      "hints": [
+        "Grupos iguais podem ser contados com a multiplicação.",
+        "É o mesmo que somar {a} um total de {b} vezes."
+      ],
+      "expl": "{a}×{b}={ans}, então há {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Três ângulos de um quadrilátero medem {a}°, {b}° e {c}°. Quantos graus mede o quarto ângulo? (graus)",
+      "hints": [
+        "Os quatro ângulos de um quadrilátero somam 360°.",
+        "Subtraia de 360 os três ângulos conhecidos."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, então mede {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Escreva a fração $\\frac{{a}}{{b}}$ na forma decimal. (escreva um número decimal)",
+      "hints": [
+        "Reescreva a fração de modo que o denominador seja 10 ou 100.",
+        "Ou divida o numerador pelo denominador."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Qual é o valor de $\\sqrt{{a}} \\times \\sqrt{{b}}$? (só algarismos)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Veja se o produto é um quadrado perfeito."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Se $({e})^2 = x^2+px+q$, quanto vale $p+q$? (só algarismos)",
+      "hints": [
+        "Use $(x+a)^2=x^2+2ax+a^2$.",
+        "p é 2a e q é a²."
+      ],
+      "expl": "p={p} e q={q}, então p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Quando ${poly}$ é fatorado como $(x+m)(x+n)$, qual é a diferença entre m e n (maior menos menor)? (só algarismos)",
+      "hints": [
+        "Encontre dois números cuja soma seja o coeficiente de x e cujo produto seja o termo independente.",
+        "Depois de achá-los, subtraia o menor do maior."
+      ],
+      "expl": "${poly}=({fm})({fn})$, então os dois números são {m} e {n}, e a diferença é {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Qual é o valor do discriminante $D=b^2-4ac$ da equação do segundo grau ${eq}=0$? (só algarismos)",
+      "hints": [
+        "O discriminante de $ax^2+bx+c=0$ é $D=b^2-4ac$.",
+        "Atenção aos sinais de a, b e c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, então D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Para a função quadrática $y={expr}$, quanto vale $y$ quando $x={x}$? (só algarismos)",
+      "hints": [
+        "Coloque o valor dado no lugar de x.",
+        "Calcule primeiro o quadrado."
+      ],
+      "expl": "Substituindo x={x} obtemos y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Qual é o valor de $\\log_{{b}} {m} + \\log_{{b}} {n}$? (só algarismos)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Primeiro encontre o produto {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Qual é a soma dos {n} primeiros termos da progressão aritmética de primeiro termo {a} e razão {d}? (só algarismos)",
+      "hints": [
+        "A fórmula da soma é $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Você também pode achar o último termo e calcular (primeiro + último) × número de termos ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Uma progressão geométrica tem primeiro termo {a} e terceiro termo {c}. Qual é a razão? (positiva, só algarismos)",
+      "hints": [
+        "O terceiro termo é o primeiro termo multiplicado duas vezes pela razão.",
+        "De $ar^2=c$ encontre $r^2$."
+      ],
+      "expl": "De {a}×r²={c} obtemos r²={sq}, então a razão é {ans}."
+    },
+    "limFactor": {
+      "prompt": "Qual é o valor de $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (só algarismos)",
+      "hints": [
+        "O numerador se fatora como $(x-a)(x+a)$.",
+        "Simplifique e depois coloque o valor do limite no lugar de x."
+      ],
+      "expl": "Depois de fatorar o numerador e simplificar, substituir x={a} dá {ans}."
     }
   }
 }

@@ -455,6 +455,190 @@
         "Dividera de två värdena."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Vilket är störst av {list}? (endast siffror)",
+      "hints": [
+        "Jämför talen ett i taget.",
+        "Hitta talet som står för mest."
+      ],
+      "expl": "Störst av {list} är {ans}."
+    },
+    "minOf": {
+      "prompt": "Vilket är minst av {list}? (endast siffror)",
+      "hints": [
+        "Jämför talen ett i taget.",
+        "Hitta talet som står för minst."
+      ],
+      "expl": "Minst av {list} är {ans}."
+    },
+    "nextNum": {
+      "prompt": "Vilket tal kommer direkt efter {n}? (endast siffror)",
+      "hints": [
+        "Räkna talen i ordning.",
+        "Räkna ett steg till från {n}."
+      ],
+      "expl": "Talet direkt efter {n} är {ans}."
+    },
+    "prevNum": {
+      "prompt": "Vilket tal kommer direkt före {n}? (endast siffror)",
+      "hints": [
+        "Räkna baklänges.",
+        "Räkna ett steg mindre från {n}."
+      ],
+      "expl": "Talet direkt före {n} är {ans}."
+    },
+    "makeTen": {
+      "prompt": "Vilket tal ska läggas till {a} för att få 10? (endast siffror)",
+      "hints": [
+        "Subtrahera {a} från 10.",
+        "Tänk på dina tio fingrar."
+      ],
+      "expl": "{a}+{ans}=10, så svaret är {ans}."
+    },
+    "missAdd": {
+      "prompt": "I $\\square + {b} = {c}$ vilket tal ska stå i rutan? (endast siffror)",
+      "hints": [
+        "Subtrahera det kända talet från summan för att hitta □.",
+        "Beräkna {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, så □={ans}."
+    },
+    "missSub": {
+      "prompt": "I $ {a} - \\square = {c}$ vilket tal ska stå i rutan? (endast siffror)",
+      "hints": [
+        "Subtrahera differensen från det första talet för att hitta □.",
+        "Beräkna {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, så □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Vilken siffra står på entalsplatsen i ${n}$? (endast siffror)",
+      "hints": [
+        "Det är siffran längst till höger.",
+        "Entalsplatsen visar de enskilda ental."
+      ],
+      "expl": "Entalssiffran i {n} är {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Vilken siffra står på hundratalsplatsen i ${n}$? (endast siffror)",
+      "hints": [
+        "Det är den tredje siffran från höger.",
+        "I ett tresiffrigt tal är det första siffran."
+      ],
+      "expl": "Hundratalssiffran i {n} är {ans}."
+    },
+    "moreBy": {
+      "prompt": "Vilket tal är {k} mer än {n}? (endast siffror)",
+      "hints": [
+        "Det är samma sak som att hoppräkna uppåt med {k}.",
+        "Bara siffran på en plats ändras."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Vilket tal är {k} mindre än {n}? (endast siffror)",
+      "hints": [
+        "Det är samma sak som att hoppräkna nedåt med {k}.",
+        "Bara siffran på en plats ändras."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Det är {a} i varje knippe och {b} knippen. Hur många är det sammanlagt? (endast siffror)",
+      "hints": [
+        "Lika stora grupper kan räknas med multiplikation.",
+        "Det är samma sak som att addera {a} totalt {b} gånger."
+      ],
+      "expl": "{a}×{b}={ans}, så det är {ans} sammanlagt."
+    },
+    "quadFourth": {
+      "prompt": "Tre vinklar i en fyrhörning är {a}°, {b}° och {c}°. Hur många grader är den fjärde vinkeln? (grader)",
+      "hints": [
+        "Vinklarna i en fyrhörning har summan 360°.",
+        "Subtrahera de tre kända vinklarna från 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, så den är {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Skriv bråket $\\frac{{a}}{{b}}$ som decimaltal. (skriv ett decimaltal)",
+      "hints": [
+        "Förläng bråket så att nämnaren blir 10 eller 100.",
+        "Eller dividera täljaren med nämnaren."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Vilket värde har $\\sqrt{{a}} \\times \\sqrt{{b}}$? (endast siffror)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Kontrollera om produkten är ett kvadrattal."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Om $({e})^2 = x^2+px+q$ vad är $p+q$? (endast siffror)",
+      "hints": [
+        "Använd $(x+a)^2=x^2+2ax+a^2$.",
+        "p är 2a och q är a²."
+      ],
+      "expl": "p={p} och q={q}, så p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "När ${poly}$ faktoriseras som $(x+m)(x+n)$, vad är skillnaden mellan m och n (störst minus minst)? (endast siffror)",
+      "hints": [
+        "Hitta två tal vars summa är koefficienten för x och vars produkt är konstanttermen.",
+        "När du har hittat dem, subtrahera det minsta från det största."
+      ],
+      "expl": "${poly}=({fm})({fn})$, så de två talen är {m} och {n}, och skillnaden är {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Vilket värde har diskriminanten $D=b^2-4ac$ för andragradsekvationen ${eq}=0$? (endast siffror)",
+      "hints": [
+        "Diskriminanten för $ax^2+bx+c=0$ är $D=b^2-4ac$.",
+        "Se upp med tecknen på a, b och c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, så D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "För andragradsfunktionen $y={expr}$ vad är $y$ när $x={x}$? (endast siffror)",
+      "hints": [
+        "Sätt in det givna värdet istället för x.",
+        "Beräkna kvadraten först."
+      ],
+      "expl": "Insättning av x={x} ger y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Vilket värde har $\\log_{{b}} {m} + \\log_{{b}} {n}$? (endast siffror)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Hitta först produkten {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Vad är summan av de {n} första termerna i den aritmetiska talföljden med första term {a} och differens {d}? (endast siffror)",
+      "hints": [
+        "Summaformeln är $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Du kan också hitta sista termen och beräkna (första + sista) × antal termer ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "En geometrisk talföljd har första term {a} och tredje term {c}. Vad är kvoten? (positiv, endast siffror)",
+      "hints": [
+        "Tredje termen är första termen multiplicerad med kvoten två gånger.",
+        "Utifrån $ar^2=c$ hittar du $r^2$."
+      ],
+      "expl": "Av {a}×r²={c} får vi r²={sq}, så kvoten är {ans}."
+    },
+    "limFactor": {
+      "prompt": "Vilket värde har $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (endast siffror)",
+      "hints": [
+        "Täljaren kan faktoriseras som $(x-a)(x+a)$.",
+        "Förkorta och sätt sedan in gränsvärdet istället för x."
+      ],
+      "expl": "Efter att ha faktoriserat täljaren och förkortat ger insättning av x={a} värdet {ans}."
     }
   }
 }

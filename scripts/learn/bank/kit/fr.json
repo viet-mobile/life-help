@@ -455,6 +455,190 @@
         "Divise les deux valeurs."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Quel est le plus grand nombre parmi {list} ? (chiffres uniquement)",
+      "hints": [
+        "Compare les nombres un par un.",
+        "Trouve le nombre qui a la plus grande valeur."
+      ],
+      "expl": "Le plus grand nombre parmi {list} est {ans}."
+    },
+    "minOf": {
+      "prompt": "Quel est le plus petit nombre parmi {list} ? (chiffres uniquement)",
+      "hints": [
+        "Compare les nombres un par un.",
+        "Trouve le nombre qui a la plus petite valeur."
+      ],
+      "expl": "Le plus petit nombre parmi {list} est {ans}."
+    },
+    "nextNum": {
+      "prompt": "Quel nombre vient juste après {n} ? (chiffres uniquement)",
+      "hints": [
+        "Compte les nombres dans l'ordre.",
+        "Compte un de plus à partir de {n}."
+      ],
+      "expl": "Le nombre juste après {n} est {ans}."
+    },
+    "prevNum": {
+      "prompt": "Quel nombre vient juste avant {n} ? (chiffres uniquement)",
+      "hints": [
+        "Compte à rebours.",
+        "Compte un de moins à partir de {n}."
+      ],
+      "expl": "Le nombre juste avant {n} est {ans}."
+    },
+    "makeTen": {
+      "prompt": "Quel nombre faut-il ajouter à {a} pour obtenir 10 ? (chiffres uniquement)",
+      "hints": [
+        "Soustrais {a} de 10.",
+        "Pense à tes dix doigts."
+      ],
+      "expl": "{a}+{ans}=10, donc la réponse est {ans}."
+    },
+    "missAdd": {
+      "prompt": "Dans $\\square + {b} = {c}$, quel nombre faut-il mettre dans la case ? (chiffres uniquement)",
+      "hints": [
+        "Soustrais le nombre connu du total pour trouver □.",
+        "Calcule {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, donc □={ans}."
+    },
+    "missSub": {
+      "prompt": "Dans $ {a} - \\square = {c}$, quel nombre faut-il mettre dans la case ? (chiffres uniquement)",
+      "hints": [
+        "Soustrais le résultat du premier nombre pour trouver □.",
+        "Calcule {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, donc □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Quel est le chiffre des unités de ${n}$ ? (chiffres uniquement)",
+      "hints": [
+        "C'est le chiffre tout à droite.",
+        "Le rang des unités indique les unités simples."
+      ],
+      "expl": "Le chiffre des unités de {n} est {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Quel est le chiffre des centaines de ${n}$ ? (chiffres uniquement)",
+      "hints": [
+        "C'est le troisième chiffre en partant de la droite.",
+        "Dans un nombre à trois chiffres, c'est le premier chiffre."
+      ],
+      "expl": "Le chiffre des centaines de {n} est {ans}."
+    },
+    "moreBy": {
+      "prompt": "Quel nombre est {k} de plus que {n} ? (chiffres uniquement)",
+      "hints": [
+        "C'est comme compter en avant par bonds de {k}.",
+        "Seul le chiffre d'un rang change."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Quel nombre est {k} de moins que {n} ? (chiffres uniquement)",
+      "hints": [
+        "C'est comme compter en arrière par bonds de {k}.",
+        "Seul le chiffre d'un rang change."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Il y a {a} dans chaque paquet et il y a {b} paquets. Combien y en a-t-il en tout ? (chiffres uniquement)",
+      "hints": [
+        "On peut compter des groupes égaux avec une multiplication.",
+        "C'est comme additionner {a} un total de {b} fois."
+      ],
+      "expl": "{a}×{b}={ans}, donc il y en a {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Trois angles d'un quadrilatère mesurent {a}°, {b}° et {c}°. Combien de degrés mesure le quatrième angle ? (en degrés)",
+      "hints": [
+        "Les quatre angles d'un quadrilatère ont une somme de 360°.",
+        "Soustrais les trois angles connus de 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, donc il mesure {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Écris la fraction $\\frac{{a}}{{b}}$ sous forme décimale. (écris un nombre décimal)",
+      "hints": [
+        "Transforme la fraction pour que le dénominateur soit 10 ou 100.",
+        "Ou divise le numérateur par le dénominateur."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Quelle est la valeur de $\\sqrt{{a}} \\times \\sqrt{{b}}$ ? (chiffres uniquement)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Vérifie si le produit est un carré parfait."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Si $({e})^2 = x^2+px+q$, combien vaut $p+q$ ? (chiffres uniquement)",
+      "hints": [
+        "Utilise $(x+a)^2=x^2+2ax+a^2$.",
+        "p est égal à 2a et q à a²."
+      ],
+      "expl": "p={p} et q={q}, donc p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Quand on factorise ${poly}$ sous la forme $(x+m)(x+n)$, quelle est la différence entre m et n (le plus grand moins le plus petit) ? (chiffres uniquement)",
+      "hints": [
+        "Cherche deux nombres dont la somme est le coefficient de x et dont le produit est le terme constant.",
+        "Une fois trouvés, soustrais le plus petit du plus grand."
+      ],
+      "expl": "${poly}=({fm})({fn})$, donc les deux nombres sont {m} et {n}, et la différence est {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Quelle est la valeur du discriminant $D=b^2-4ac$ de l'équation du second degré ${eq}=0$ ? (chiffres uniquement)",
+      "hints": [
+        "Le discriminant de $ax^2+bx+c=0$ est $D=b^2-4ac$.",
+        "Fais attention aux signes de a, b et c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, donc D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Pour la fonction du second degré $y={expr}$, combien vaut $y$ quand $x={x}$ ? (chiffres uniquement)",
+      "hints": [
+        "Remplace x par la valeur donnée.",
+        "Calcule d'abord le carré."
+      ],
+      "expl": "En remplaçant x={x}, on obtient y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Quelle est la valeur de $\\log_{{b}} {m} + \\log_{{b}} {n}$ ? (chiffres uniquement)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Calcule d'abord le produit {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Quelle est la somme des {n} premiers termes de la suite arithmétique de premier terme {a} et de raison {d} ? (chiffres uniquement)",
+      "hints": [
+        "La formule de la somme est $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Tu peux aussi trouver le dernier terme et calculer (premier + dernier) × nombre de termes ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Une suite géométrique a pour premier terme {a} et pour troisième terme {c}. Quelle est sa raison ? (positive, chiffres uniquement)",
+      "hints": [
+        "Le troisième terme est le premier terme multiplié deux fois par la raison.",
+        "À partir de $ar^2=c$, trouve $r^2$."
+      ],
+      "expl": "De {a}×r²={c}, on obtient r²={sq}, donc la raison est {ans}."
+    },
+    "limFactor": {
+      "prompt": "Quelle est la valeur de $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ ? (chiffres uniquement)",
+      "hints": [
+        "Le numérateur se factorise en $(x-a)(x+a)$.",
+        "Simplifie, puis remplace x par la valeur de la limite."
+      ],
+      "expl": "Après avoir factorisé le numérateur et simplifié, en remplaçant x={a} on obtient {ans}."
     }
   }
 }

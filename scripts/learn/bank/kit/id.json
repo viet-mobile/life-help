@@ -455,6 +455,190 @@
         "Bagi kedua nilai itu."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Manakah yang terbesar dari {list}? (hanya angka)",
+      "hints": [
+        "Bandingkan bilangan satu per satu.",
+        "Cari bilangan yang menyatakan nilai paling banyak."
+      ],
+      "expl": "Yang terbesar dari {list} adalah {ans}."
+    },
+    "minOf": {
+      "prompt": "Manakah yang terkecil dari {list}? (hanya angka)",
+      "hints": [
+        "Bandingkan bilangan satu per satu.",
+        "Cari bilangan yang menyatakan nilai paling sedikit."
+      ],
+      "expl": "Yang terkecil dari {list} adalah {ans}."
+    },
+    "nextNum": {
+      "prompt": "Bilangan berapa yang tepat setelah {n}? (hanya angka)",
+      "hints": [
+        "Hitung bilangan secara berurutan.",
+        "Hitung satu lagi dari {n}."
+      ],
+      "expl": "Bilangan tepat setelah {n} adalah {ans}."
+    },
+    "prevNum": {
+      "prompt": "Bilangan berapa yang tepat sebelum {n}? (hanya angka)",
+      "hints": [
+        "Hitung mundur.",
+        "Hitung satu kurang dari {n}."
+      ],
+      "expl": "Bilangan tepat sebelum {n} adalah {ans}."
+    },
+    "makeTen": {
+      "prompt": "Bilangan berapa yang jika ditambahkan ke {a} menghasilkan 10? (hanya angka)",
+      "hints": [
+        "Kurangkan {a} dari 10.",
+        "Bayangkan kesepuluh jarimu."
+      ],
+      "expl": "{a}+{ans}=10, jadi jawabannya {ans}."
+    },
+    "missAdd": {
+      "prompt": "Pada $\\square + {b} = {c}$, bilangan berapa yang mengisi kotak? (hanya angka)",
+      "hints": [
+        "Kurangkan bilangan yang diketahui dari jumlahnya untuk mencari □.",
+        "Hitung {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, jadi □={ans}."
+    },
+    "missSub": {
+      "prompt": "Pada $ {a} - \\square = {c}$, bilangan berapa yang mengisi kotak? (hanya angka)",
+      "hints": [
+        "Kurangkan hasilnya dari bilangan pertama untuk mencari □.",
+        "Hitung {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, jadi □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Berapakah angka satuan dari ${n}$? (hanya angka)",
+      "hints": [
+        "Itu angka paling kanan.",
+        "Tempat satuan menunjukkan satuan tunggal."
+      ],
+      "expl": "Angka satuan dari {n} adalah {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Berapakah angka ratusan dari ${n}$? (hanya angka)",
+      "hints": [
+        "Itu angka ketiga dari kanan.",
+        "Pada bilangan tiga angka, itu angka pertama."
+      ],
+      "expl": "Angka ratusan dari {n} adalah {ans}."
+    },
+    "moreBy": {
+      "prompt": "Bilangan berapa yang {k} lebih banyak dari {n}? (hanya angka)",
+      "hints": [
+        "Sama seperti menghitung maju dengan loncatan {k}.",
+        "Hanya angka pada satu tempat yang berubah."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Bilangan berapa yang {k} lebih sedikit dari {n}? (hanya angka)",
+      "hints": [
+        "Sama seperti menghitung mundur dengan loncatan {k}.",
+        "Hanya angka pada satu tempat yang berubah."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Ada {a} di setiap ikat dan ada {b} ikat. Berapa banyak semuanya? (hanya angka)",
+      "hints": [
+        "Kelompok yang sama banyak dapat dihitung dengan perkalian.",
+        "Sama seperti menjumlahkan {a} sebanyak {b} kali."
+      ],
+      "expl": "{a}×{b}={ans}, jadi semuanya ada {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Tiga sudut segi empat adalah {a}°, {b}° dan {c}°. Berapa derajat sudut keempat? (derajat)",
+      "hints": [
+        "Keempat sudut segi empat berjumlah 360°.",
+        "Kurangkan ketiga sudut yang diketahui dari 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, jadi sudutnya {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Tuliskan pecahan $\\frac{{a}}{{b}}$ sebagai desimal. (tulis bilangan desimal)",
+      "hints": [
+        "Ubah pecahan sehingga penyebutnya 10 atau 100.",
+        "Atau bagi pembilang dengan penyebut."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Berapakah nilai $\\sqrt{{a}} \\times \\sqrt{{b}}$? (hanya angka)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Periksa apakah hasil kalinya bilangan kuadrat."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Jika $({e})^2 = x^2+px+q$, berapakah $p+q$? (hanya angka)",
+      "hints": [
+        "Gunakan $(x+a)^2=x^2+2ax+a^2$.",
+        "p adalah 2a dan q adalah a²."
+      ],
+      "expl": "p={p} dan q={q}, jadi p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Jika ${poly}$ difaktorkan menjadi $(x+m)(x+n)$, berapakah selisih m dan n (yang besar dikurangi yang kecil)? (hanya angka)",
+      "hints": [
+        "Cari dua bilangan yang jumlahnya koefisien x dan hasil kalinya suku konstanta.",
+        "Setelah ditemukan, kurangkan yang kecil dari yang besar."
+      ],
+      "expl": "${poly}=({fm})({fn})$, jadi kedua bilangan itu {m} dan {n}, dan selisihnya {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Berapakah nilai diskriminan $D=b^2-4ac$ dari persamaan kuadrat ${eq}=0$? (hanya angka)",
+      "hints": [
+        "Diskriminan dari $ax^2+bx+c=0$ adalah $D=b^2-4ac$.",
+        "Perhatikan tanda a, b, dan c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, jadi D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Untuk fungsi kuadrat $y={expr}$, berapakah $y$ saat $x={x}$? (hanya angka)",
+      "hints": [
+        "Gantikan x dengan nilai yang diberikan.",
+        "Hitung kuadratnya lebih dulu."
+      ],
+      "expl": "Dengan x={x} diperoleh y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Berapakah nilai $\\log_{{b}} {m} + \\log_{{b}} {n}$? (hanya angka)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Cari dulu hasil kali {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Berapakah jumlah {n} suku pertama deret aritmetika dengan suku pertama {a} dan beda {d}? (hanya angka)",
+      "hints": [
+        "Rumus jumlahnya adalah $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Kamu juga bisa mencari suku terakhir lalu menghitung (pertama + terakhir) × banyak suku ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Suatu barisan geometri memiliki suku pertama {a} dan suku ketiga {c}. Berapakah rasionya? (positif, hanya angka)",
+      "hints": [
+        "Suku ketiga adalah suku pertama dikalikan rasio dua kali.",
+        "Dari $ar^2=c$ cari $r^2$."
+      ],
+      "expl": "Dari {a}×r²={c} diperoleh r²={sq}, jadi rasionya {ans}."
+    },
+    "limFactor": {
+      "prompt": "Berapakah nilai $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (hanya angka)",
+      "hints": [
+        "Pembilang difaktorkan menjadi $(x-a)(x+a)$.",
+        "Sederhanakan, lalu gantikan x dengan nilai limit."
+      ],
+      "expl": "Setelah memfaktorkan pembilang dan menyederhanakan, x={a} memberi {ans}."
     }
   }
 }

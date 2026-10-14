@@ -455,6 +455,190 @@
         "Del de to verdiene."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Hvilket er størst av {list}? (kun sifre)",
+      "hints": [
+        "Sammenlign tallene ett og ett.",
+        "Finn tallet som står for mest."
+      ],
+      "expl": "Det største av {list} er {ans}."
+    },
+    "minOf": {
+      "prompt": "Hvilket er minst av {list}? (kun sifre)",
+      "hints": [
+        "Sammenlign tallene ett og ett.",
+        "Finn tallet som står for minst."
+      ],
+      "expl": "Det minste av {list} er {ans}."
+    },
+    "nextNum": {
+      "prompt": "Hvilket tall kommer rett etter {n}? (kun sifre)",
+      "hints": [
+        "Tell tallene i rekkefølge.",
+        "Tell ett mer fra {n}."
+      ],
+      "expl": "Tallet rett etter {n} er {ans}."
+    },
+    "prevNum": {
+      "prompt": "Hvilket tall kommer rett før {n}? (kun sifre)",
+      "hints": [
+        "Tell bakover.",
+        "Tell ett mindre fra {n}."
+      ],
+      "expl": "Tallet rett før {n} er {ans}."
+    },
+    "makeTen": {
+      "prompt": "Hvilket tall må legges til {a} for å få 10? (kun sifre)",
+      "hints": [
+        "Trekk {a} fra 10.",
+        "Tenk på de ti fingrene dine."
+      ],
+      "expl": "{a}+{ans}=10, så svaret er {ans}."
+    },
+    "missAdd": {
+      "prompt": "I $\\square + {b} = {c}$, hvilket tall skal stå i ruta? (kun sifre)",
+      "hints": [
+        "Trekk det kjente tallet fra summen for å finne □.",
+        "Regn ut {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, så □={ans}."
+    },
+    "missSub": {
+      "prompt": "I $ {a} - \\square = {c}$, hvilket tall skal stå i ruta? (kun sifre)",
+      "hints": [
+        "Trekk svaret fra det første tallet for å finne □.",
+        "Regn ut {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, så □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Hvilket siffer står på enerplassen i ${n}$? (kun sifre)",
+      "hints": [
+        "Det er sifferet lengst til høyre.",
+        "Enerplassen viser enkeltenhetene."
+      ],
+      "expl": "Enersifferet i {n} er {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Hvilket siffer står på hundrerplassen i ${n}$? (kun sifre)",
+      "hints": [
+        "Det er det tredje sifferet fra høyre.",
+        "I et tresifret tall er det det første sifferet."
+      ],
+      "expl": "Hundrersifferet i {n} er {ans}."
+    },
+    "moreBy": {
+      "prompt": "Hvilket tall er {k} mer enn {n}? (kun sifre)",
+      "hints": [
+        "Det er det samme som å telle opp med {k}.",
+        "Bare sifferet på én plass endres."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Hvilket tall er {k} mindre enn {n}? (kun sifre)",
+      "hints": [
+        "Det er det samme som å telle ned med {k}.",
+        "Bare sifferet på én plass endres."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Det er {a} i hver bunt og {b} bunter. Hvor mange er det til sammen? (kun sifre)",
+      "hints": [
+        "Like store grupper kan telles med multiplikasjon.",
+        "Det er det samme som å legge til {a} totalt {b} ganger."
+      ],
+      "expl": "{a}×{b}={ans}, så det er {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Tre vinkler i en firkant er {a}°, {b}° og {c}°. Hvor mange grader er den fjerde vinkelen? (grader)",
+      "hints": [
+        "De fire vinklene i en firkant er til sammen 360°.",
+        "Trekk de tre kjente vinklene fra 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, så den er {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Skriv brøken $\\frac{{a}}{{b}}$ som et desimaltall. (skriv et desimaltall)",
+      "hints": [
+        "Skriv om brøken slik at nevneren er 10 eller 100.",
+        "Eller del telleren på nevneren."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Hva er verdien av $\\sqrt{{a}} \\times \\sqrt{{b}}$? (kun sifre)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Sjekk om produktet er et kvadrattall."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Hvis $({e})^2 = x^2+px+q$, hva er $p+q$? (kun sifre)",
+      "hints": [
+        "Bruk $(x+a)^2=x^2+2ax+a^2$.",
+        "p er 2a og q er a²."
+      ],
+      "expl": "p={p} og q={q}, så p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Når ${poly}$ faktoriseres som $(x+m)(x+n)$, hva er differansen mellom m og n (største minus minste)? (kun sifre)",
+      "hints": [
+        "Finn to tall som har summen lik koeffisienten til x og produktet lik konstantleddet.",
+        "Når du har funnet dem, trekk det minste fra det største."
+      ],
+      "expl": "${poly}=({fm})({fn})$, så de to tallene er {m} og {n}, og differansen er {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Hva er verdien av diskriminanten $D=b^2-4ac$ i andregradsligningen ${eq}=0$? (kun sifre)",
+      "hints": [
+        "Diskriminanten til $ax^2+bx+c=0$ er $D=b^2-4ac$.",
+        "Pass på fortegnene til a, b og c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, så D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "For andregradsfunksjonen $y={expr}$ , hva er $y$ når $x={x}$? (kun sifre)",
+      "hints": [
+        "Sett inn den gitte verdien i stedet for x.",
+        "Regn ut kvadratet først."
+      ],
+      "expl": "Innsetting av x={x} gir y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Hva er verdien av $\\log_{{b}} {m} + \\log_{{b}} {n}$? (kun sifre)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Finn først produktet {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Hva er summen av de {n} første leddene i den aritmetiske rekken med første ledd {a} og differanse {d}? (kun sifre)",
+      "hints": [
+        "Summeformelen er $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Du kan også finne det siste leddet og regne ut (første + siste) × antall ledd ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "En geometrisk rekke har første ledd {a} og tredje ledd {c}. Hva er kvotienten? (positiv, kun sifre)",
+      "hints": [
+        "Det tredje leddet er det første leddet multiplisert med kvotienten to ganger.",
+        "Fra $ar^2=c$ finner du $r^2$."
+      ],
+      "expl": "Fra {a}×r²={c} får vi r²={sq}, så kvotienten er {ans}."
+    },
+    "limFactor": {
+      "prompt": "Hva er verdien av $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (kun sifre)",
+      "hints": [
+        "Telleren faktoriseres som $(x-a)(x+a)$.",
+        "Forkort, og sett deretter inn grenseverdien i stedet for x."
+      ],
+      "expl": "Etter å ha faktorisert telleren og forkortet gir innsetting av x={a} svaret {ans}."
     }
   }
 }

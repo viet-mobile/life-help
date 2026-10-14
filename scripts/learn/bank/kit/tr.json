@@ -455,6 +455,190 @@
         "İki değeri birbirine bölün."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "{list} içinde en büyük sayı hangisidir? (yalnızca rakam)",
+      "hints": [
+        "Sayıları tek tek karşılaştır.",
+        "En çok değeri olan sayıyı bul."
+      ],
+      "expl": "{list} içinde en büyük sayı {ans} sayısıdır."
+    },
+    "minOf": {
+      "prompt": "{list} içinde en küçük sayı hangisidir? (yalnızca rakam)",
+      "hints": [
+        "Sayıları tek tek karşılaştır.",
+        "En az değeri olan sayıyı bul."
+      ],
+      "expl": "{list} içinde en küçük sayı {ans} sayısıdır."
+    },
+    "nextNum": {
+      "prompt": "{n} sayısından hemen sonra hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "Sayıları sırayla say.",
+        "{n} sayısından bir fazla say."
+      ],
+      "expl": "{n} sayısından hemen sonra gelen sayı {ans} sayısıdır."
+    },
+    "prevNum": {
+      "prompt": "{n} sayısından hemen önce hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "Geriye doğru say.",
+        "{n} sayısından bir eksik say."
+      ],
+      "expl": "{n} sayısından hemen önce gelen sayı {ans} sayısıdır."
+    },
+    "makeTen": {
+      "prompt": "{a} sayısına hangi sayıyı eklersek 10 eder? (yalnızca rakam)",
+      "hints": [
+        "10 sayısından {a} sayısını çıkar.",
+        "On parmağını düşün."
+      ],
+      "expl": "{a}+{ans}=10 olduğundan cevap {ans} olur."
+    },
+    "missAdd": {
+      "prompt": "$\\square + {b} = {c}$ işleminde kutuya hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "□ değerini bulmak için toplamdan bilinen sayıyı çıkar.",
+        "{c}-{b} işlemini yap."
+      ],
+      "expl": "{c}-{b}={ans} olduğundan □={ans} olur."
+    },
+    "missSub": {
+      "prompt": "$ {a} - \\square = {c}$ işleminde kutuya hangi sayı gelir? (yalnızca rakam)",
+      "hints": [
+        "□ değerini bulmak için ilk sayıdan sonucu çıkar.",
+        "{a}-{c} işlemini yap."
+      ],
+      "expl": "{a}-{c}={ans} olduğundan □={ans} olur."
+    },
+    "onesDigit": {
+      "prompt": "${n}$ sayısının birler basamağındaki rakam kaçtır? (yalnızca rakam)",
+      "hints": [
+        "En sağdaki rakamdır.",
+        "Birler basamağı tek tek birimleri gösterir."
+      ],
+      "expl": "{n} sayısının birler basamağındaki rakam {ans} rakamıdır."
+    },
+    "hundredsDigit": {
+      "prompt": "${n}$ sayısının yüzler basamağındaki rakam kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Sağdan üçüncü rakamdır.",
+        "Üç basamaklı bir sayıda ilk rakamdır."
+      ],
+      "expl": "{n} sayısının yüzler basamağındaki rakam {ans} rakamıdır."
+    },
+    "moreBy": {
+      "prompt": "{n} sayısından {k} fazla olan sayı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "{k} ritmik sayarak ilerlemekle aynıdır.",
+        "Yalnızca bir basamaktaki rakam değişir."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "{n} sayısından {k} eksik olan sayı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "{k} ritmik sayarak geriye gitmekle aynıdır.",
+        "Yalnızca bir basamaktaki rakam değişir."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Her demette {a} tane var ve {b} demet var. Hepsi kaç tane eder? (yalnızca rakam)",
+      "hints": [
+        "Eşit grupları çarpma ile sayabiliriz.",
+        "{a} sayısını {b} kez toplamakla aynıdır."
+      ],
+      "expl": "{a}×{b}={ans} olduğundan toplam {ans} tane vardır."
+    },
+    "quadFourth": {
+      "prompt": "Bir dörtgenin üç açısı {a}°, {b}° ve {c}° dir. Dördüncü açı kaç derecedir? (derece)",
+      "hints": [
+        "Dörtgenin dört açısının toplamı 360° dir.",
+        "360 sayısından bilinen üç açıyı çıkar."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans} olduğundan açı {ans}° dir."
+    },
+    "fracToDec": {
+      "prompt": "$\\frac{{a}}{{b}}$ kesrini ondalık sayı olarak yaz. (ondalık sayı yaz)",
+      "hints": [
+        "Kesri paydası 10 veya 100 olacak şekilde yeniden yaz.",
+        "Ya da payı paydaya böl."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "$\\sqrt{{a}} \\times \\sqrt{{b}}$ ifadesinin değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Çarpımın bir tam kare sayı olup olmadığına bak."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "$({e})^2 = x^2+px+q$ ise $p+q$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$(x+a)^2=x^2+2ax+a^2$ özdeşliğini kullan.",
+        "p değeri 2a, q değeri a² dir."
+      ],
+      "expl": "p={p} ve q={q} olduğundan p+q={ans} olur."
+    },
+    "factorDiff": {
+      "prompt": "${poly}$ ifadesi $(x+m)(x+n)$ biçiminde çarpanlarına ayrılınca m ile n arasındaki fark kaçtır (büyük eksi küçük)? (yalnızca rakam)",
+      "hints": [
+        "Toplamı x in katsayısına, çarpımı sabit terime eşit olan iki sayıyı bul.",
+        "Bulduktan sonra küçük sayıyı büyük sayıdan çıkar."
+      ],
+      "expl": "${poly}=({fm})({fn})$ olduğundan iki sayı {m} ve {n} dir, fark {ans} olur."
+    },
+    "quadDisc": {
+      "prompt": "${eq}=0$ ikinci derece denkleminin $D=b^2-4ac$ diskriminantının değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$ax^2+bx+c=0$ denkleminin diskriminantı $D=b^2-4ac$ dir.",
+        "a, b ve c nin işaretlerine dikkat et."
+      ],
+      "expl": "a={a}, b={b}, c={c} olduğundan D=({b})²-4×({a})×({c})={ans} olur."
+    },
+    "qfuncValue": {
+      "prompt": "$y={expr}$ ikinci derece fonksiyonunda $x={x}$ iken $y$ kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Verilen değeri x yerine yaz.",
+        "Önce kareyi hesapla."
+      ],
+      "expl": "x={x} yazınca y={ans} bulunur."
+    },
+    "logAdd": {
+      "prompt": "$\\log_{{b}} {m} + \\log_{{b}} {n}$ ifadesinin değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Önce {m}×{n} çarpımını bul."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "İlk terimi {a} ve ortak farkı {d} olan aritmetik dizinin ilk {n} teriminin toplamı kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Toplam formülü $S_n=\\frac{n(2a+(n-1)d)}{2}$ dir.",
+        "Son terimi bulup (ilk + son) × terim sayısı ÷ 2 işlemini de yapabilirsin."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Bir geometrik dizinin ilk terimi {a}, üçüncü terimi {c} dir. Ortak çarpan kaçtır? (pozitif, yalnızca rakam)",
+      "hints": [
+        "Üçüncü terim, ilk terimin ortak çarpanla iki kez çarpılmasıdır.",
+        "$ar^2=c$ eşitliğinden $r^2$ değerini bul."
+      ],
+      "expl": "{a}×r²={c} eşitliğinden r²={sq} bulunur, dolayısıyla ortak çarpan {ans} olur."
+    },
+    "limFactor": {
+      "prompt": "$\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ limitinin değeri kaçtır? (yalnızca rakam)",
+      "hints": [
+        "Pay $(x-a)(x+a)$ biçiminde çarpanlarına ayrılır.",
+        "Sadeleştir, sonra x yerine limit değerini yaz."
+      ],
+      "expl": "Payı çarpanlarına ayırıp sadeleştirdikten sonra x={a} yazınca {ans} bulunur."
     }
   }
 }

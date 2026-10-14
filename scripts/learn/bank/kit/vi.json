@@ -455,6 +455,190 @@
         "Chia hai giá trị cho nhau."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Số nào lớn nhất trong {list}? (chỉ viết chữ số)",
+      "hints": [
+        "So sánh lần lượt từng số.",
+        "Tìm số biểu thị giá trị nhiều nhất."
+      ],
+      "expl": "Số lớn nhất trong {list} là {ans}."
+    },
+    "minOf": {
+      "prompt": "Số nào bé nhất trong {list}? (chỉ viết chữ số)",
+      "hints": [
+        "So sánh lần lượt từng số.",
+        "Tìm số biểu thị giá trị ít nhất."
+      ],
+      "expl": "Số bé nhất trong {list} là {ans}."
+    },
+    "nextNum": {
+      "prompt": "Số liền sau của {n} là số nào? (chỉ viết chữ số)",
+      "hints": [
+        "Đếm các số theo thứ tự.",
+        "Đếm thêm một đơn vị từ {n}."
+      ],
+      "expl": "Số liền sau của {n} là {ans}."
+    },
+    "prevNum": {
+      "prompt": "Số liền trước của {n} là số nào? (chỉ viết chữ số)",
+      "hints": [
+        "Đếm ngược lại.",
+        "Đếm bớt một đơn vị từ {n}."
+      ],
+      "expl": "Số liền trước của {n} là {ans}."
+    },
+    "makeTen": {
+      "prompt": "Cộng {a} với số nào để được 10? (chỉ viết chữ số)",
+      "hints": [
+        "Lấy 10 trừ đi {a}.",
+        "Hãy nghĩ đến mười ngón tay của em."
+      ],
+      "expl": "{a}+{ans}=10, nên đáp án là {ans}."
+    },
+    "missAdd": {
+      "prompt": "Trong $\\square + {b} = {c}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+      "hints": [
+        "Lấy tổng trừ đi số đã biết để tìm □.",
+        "Tính {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, nên □={ans}."
+    },
+    "missSub": {
+      "prompt": "Trong $ {a} - \\square = {c}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+      "hints": [
+        "Lấy số bị trừ trừ đi hiệu để tìm □.",
+        "Tính {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, nên □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Chữ số hàng đơn vị của ${n}$ là gì? (chỉ viết chữ số)",
+      "hints": [
+        "Đó là chữ số ngoài cùng bên phải.",
+        "Hàng đơn vị cho biết số đơn vị lẻ."
+      ],
+      "expl": "Chữ số hàng đơn vị của {n} là {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Chữ số hàng trăm của ${n}$ là gì? (chỉ viết chữ số)",
+      "hints": [
+        "Đó là chữ số thứ ba tính từ bên phải.",
+        "Trong số có ba chữ số, đó là chữ số đầu tiên."
+      ],
+      "expl": "Chữ số hàng trăm của {n} là {ans}."
+    },
+    "moreBy": {
+      "prompt": "Số nào lớn hơn {n} là {k} đơn vị? (chỉ viết chữ số)",
+      "hints": [
+        "Giống như đếm tiếp lên {k} đơn vị.",
+        "Chỉ có chữ số ở một hàng thay đổi."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Số nào bé hơn {n} là {k} đơn vị? (chỉ viết chữ số)",
+      "hints": [
+        "Giống như đếm lùi {k} đơn vị.",
+        "Chỉ có chữ số ở một hàng thay đổi."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Mỗi bó có {a} cái và có {b} bó. Có tất cả bao nhiêu cái? (chỉ viết chữ số)",
+      "hints": [
+        "Các nhóm bằng nhau có thể đếm bằng phép nhân.",
+        "Giống như cộng {a} với chính nó {b} lần."
+      ],
+      "expl": "{a}×{b}={ans}, nên có tất cả {ans} cái."
+    },
+    "quadFourth": {
+      "prompt": "Ba góc của một tứ giác là {a}°, {b}° và {c}°. Góc thứ tư bằng bao nhiêu độ? (độ)",
+      "hints": [
+        "Bốn góc của tứ giác có tổng bằng 360°.",
+        "Lấy 360 trừ đi ba góc đã biết."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, nên góc đó là {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Viết phân số $\\frac{{a}}{{b}}$ thành số thập phân. (viết số thập phân)",
+      "hints": [
+        "Viết lại phân số sao cho mẫu số là 10 hoặc 100.",
+        "Hoặc lấy tử số chia cho mẫu số."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Giá trị của $\\sqrt{{a}} \\times \\sqrt{{b}}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Kiểm tra xem tích có phải là số chính phương không."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Nếu $({e})^2 = x^2+px+q$ thì $p+q$ bằng bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Dùng $(x+a)^2=x^2+2ax+a^2$.",
+        "p bằng 2a và q bằng a²."
+      ],
+      "expl": "p={p} và q={q}, nên p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Khi phân tích ${poly}$ thành $(x+m)(x+n)$, hiệu của m và n (số lớn trừ số bé) là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Tìm hai số có tổng bằng hệ số của x và tích bằng số hạng tự do.",
+        "Tìm được rồi thì lấy số lớn trừ số bé."
+      ],
+      "expl": "${poly}=({fm})({fn})$, nên hai số là {m} và {n}, và hiệu là {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Biệt thức $D=b^2-4ac$ của phương trình bậc hai ${eq}=0$ có giá trị bằng bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Biệt thức của $ax^2+bx+c=0$ là $D=b^2-4ac$.",
+        "Chú ý dấu của a, b và c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, nên D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Với hàm số bậc hai $y={expr}$, giá trị của $y$ khi $x={x}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Thay giá trị đã cho vào chỗ của x.",
+        "Tính bình phương trước."
+      ],
+      "expl": "Thay x={x} ta được y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Giá trị của $\\log_{{b}} {m} + \\log_{{b}} {n}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Trước hết tìm tích {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Cấp số cộng có số hạng đầu {a} và công sai {d}. Tổng của {n} số hạng đầu tiên là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Công thức tổng là $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Em cũng có thể tìm số hạng cuối rồi tính (số đầu + số cuối) × số số hạng ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Một cấp số nhân có số hạng đầu {a} và số hạng thứ ba {c}. Công bội là bao nhiêu? (số dương, chỉ viết chữ số)",
+      "hints": [
+        "Số hạng thứ ba bằng số hạng đầu nhân với công bội hai lần.",
+        "Từ $ar^2=c$ hãy tìm $r^2$."
+      ],
+      "expl": "Từ {a}×r²={c} ta có r²={sq}, nên công bội là {ans}."
+    },
+    "limFactor": {
+      "prompt": "Giá trị của $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ là bao nhiêu? (chỉ viết chữ số)",
+      "hints": [
+        "Tử số phân tích được thành $(x-a)(x+a)$.",
+        "Rút gọn, rồi thay giá trị giới hạn vào chỗ của x."
+      ],
+      "expl": "Sau khi phân tích tử số và rút gọn, thay x={a} ta được {ans}."
     }
   }
 }

@@ -455,6 +455,190 @@
         "Divide los dos valores."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "¿Cuál es el mayor de {list}? (solo dígitos)",
+      "hints": [
+        "Compara los números uno por uno.",
+        "Busca el número que vale más."
+      ],
+      "expl": "El mayor de {list} es {ans}."
+    },
+    "minOf": {
+      "prompt": "¿Cuál es el menor de {list}? (solo dígitos)",
+      "hints": [
+        "Compara los números uno por uno.",
+        "Busca el número que vale menos."
+      ],
+      "expl": "El menor de {list} es {ans}."
+    },
+    "nextNum": {
+      "prompt": "¿Qué número va justo después de {n}? (solo dígitos)",
+      "hints": [
+        "Cuenta los números en orden.",
+        "Cuenta uno más desde {n}."
+      ],
+      "expl": "El número justo después de {n} es {ans}."
+    },
+    "prevNum": {
+      "prompt": "¿Qué número va justo antes de {n}? (solo dígitos)",
+      "hints": [
+        "Cuenta hacia atrás.",
+        "Cuenta uno menos desde {n}."
+      ],
+      "expl": "El número justo antes de {n} es {ans}."
+    },
+    "makeTen": {
+      "prompt": "¿Qué número sumado a {a} da 10? (solo dígitos)",
+      "hints": [
+        "Resta {a} de 10.",
+        "Piensa en tus diez dedos."
+      ],
+      "expl": "{a}+{ans}=10, así que la respuesta es {ans}."
+    },
+    "missAdd": {
+      "prompt": "En $\\square + {b} = {c}$, ¿qué número va en el cuadro? (solo dígitos)",
+      "hints": [
+        "Resta el número conocido del total para hallar □.",
+        "Calcula {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, así que □={ans}."
+    },
+    "missSub": {
+      "prompt": "En $ {a} - \\square = {c}$, ¿qué número va en el cuadro? (solo dígitos)",
+      "hints": [
+        "Resta el resultado del primer número para hallar □.",
+        "Calcula {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, así que □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "¿Cuál es la cifra de las unidades de ${n}$? (solo dígitos)",
+      "hints": [
+        "Es la cifra que está más a la derecha.",
+        "El lugar de las unidades muestra las unidades sueltas."
+      ],
+      "expl": "La cifra de las unidades de {n} es {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "¿Cuál es la cifra de las centenas de ${n}$? (solo dígitos)",
+      "hints": [
+        "Es la tercera cifra empezando por la derecha.",
+        "En un número de tres cifras es la primera cifra."
+      ],
+      "expl": "La cifra de las centenas de {n} es {ans}."
+    },
+    "moreBy": {
+      "prompt": "¿Qué número es {k} más que {n}? (solo dígitos)",
+      "hints": [
+        "Es lo mismo que contar hacia adelante con saltos de {k}.",
+        "Solo cambia la cifra de un lugar."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "¿Qué número es {k} menos que {n}? (solo dígitos)",
+      "hints": [
+        "Es lo mismo que contar hacia atrás con saltos de {k}.",
+        "Solo cambia la cifra de un lugar."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "En cada paquete hay {a} y hay {b} paquetes. ¿Cuántos hay en total? (solo dígitos)",
+      "hints": [
+        "Los grupos iguales se pueden contar con una multiplicación.",
+        "Es lo mismo que sumar {a} un total de {b} veces."
+      ],
+      "expl": "{a}×{b}={ans}, así que hay {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Tres ángulos de un cuadrilátero miden {a}°, {b}° y {c}°. ¿Cuántos grados mide el cuarto ángulo? (en grados)",
+      "hints": [
+        "Los cuatro ángulos de un cuadrilátero suman 360°.",
+        "Resta los tres ángulos conocidos de 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, así que mide {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Escribe la fracción $\\frac{{a}}{{b}}$ como número decimal. (escribe un decimal)",
+      "hints": [
+        "Reescribe la fracción para que el denominador sea 10 o 100.",
+        "O divide el numerador entre el denominador."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "¿Cuál es el valor de $\\sqrt{{a}} \\times \\sqrt{{b}}$? (solo dígitos)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Comprueba si el producto es un cuadrado perfecto."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Si $({e})^2 = x^2+px+q$, ¿cuánto es $p+q$? (solo dígitos)",
+      "hints": [
+        "Usa $(x+a)^2=x^2+2ax+a^2$.",
+        "p es 2a y q es a²."
+      ],
+      "expl": "p={p} y q={q}, así que p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Al factorizar ${poly}$ como $(x+m)(x+n)$, ¿cuál es la diferencia entre m y n (el mayor menos el menor)? (solo dígitos)",
+      "hints": [
+        "Busca dos números cuya suma sea el coeficiente de x y cuyo producto sea el término independiente.",
+        "Cuando los encuentres, resta el menor del mayor."
+      ],
+      "expl": "${poly}=({fm})({fn})$, así que los dos números son {m} y {n}, y la diferencia es {ans}."
+    },
+    "quadDisc": {
+      "prompt": "¿Cuál es el valor del discriminante $D=b^2-4ac$ de la ecuación de segundo grado ${eq}=0$? (solo dígitos)",
+      "hints": [
+        "El discriminante de $ax^2+bx+c=0$ es $D=b^2-4ac$.",
+        "Cuidado con los signos de a, b y c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, así que D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Para la función cuadrática $y={expr}$, ¿cuánto vale $y$ cuando $x={x}$? (solo dígitos)",
+      "hints": [
+        "Sustituye x por el valor dado.",
+        "Calcula primero el cuadrado."
+      ],
+      "expl": "Al sustituir x={x} se obtiene y={ans}."
+    },
+    "logAdd": {
+      "prompt": "¿Cuál es el valor de $\\log_{{b}} {m} + \\log_{{b}} {n}$? (solo dígitos)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Primero halla el producto {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "¿Cuál es la suma de los primeros {n} términos de la progresión aritmética con primer término {a} y diferencia {d}? (solo dígitos)",
+      "hints": [
+        "La fórmula de la suma es $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "También puedes hallar el último término y calcular (primero + último) × número de términos ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Una progresión geométrica tiene primer término {a} y tercer término {c}. ¿Cuál es la razón? (positiva, solo dígitos)",
+      "hints": [
+        "El tercer término es el primero multiplicado dos veces por la razón.",
+        "De $ar^2=c$ halla $r^2$."
+      ],
+      "expl": "De {a}×r²={c} obtenemos r²={sq}, así que la razón es {ans}."
+    },
+    "limFactor": {
+      "prompt": "¿Cuál es el valor de $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (solo dígitos)",
+      "hints": [
+        "El numerador se factoriza como $(x-a)(x+a)$.",
+        "Simplifica y luego sustituye x por el valor del límite."
+      ],
+      "expl": "Tras factorizar el numerador y simplificar, al sustituir x={a} se obtiene {ans}."
     }
   }
 }

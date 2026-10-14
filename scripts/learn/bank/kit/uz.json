@@ -455,6 +455,190 @@
         "Ikki qiymatni bir-biriga bo'ling."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "{list} ichida eng kattasi qaysi? (faqat raqamlar)",
+      "hints": [
+        "Sonlarni birma-bir taqqoslang.",
+        "Eng ko'p miqdorni bildiradigan sonni toping."
+      ],
+      "expl": "{list} ichida eng kattasi {ans}."
+    },
+    "minOf": {
+      "prompt": "{list} ichida eng kichigi qaysi? (faqat raqamlar)",
+      "hints": [
+        "Sonlarni birma-bir taqqoslang.",
+        "Eng kam miqdorni bildiradigan sonni toping."
+      ],
+      "expl": "{list} ichida eng kichigi {ans}."
+    },
+    "nextNum": {
+      "prompt": "{n} dan keyin darhol qaysi son keladi? (faqat raqamlar)",
+      "hints": [
+        "Sonlarni tartib bilan sanang.",
+        "{n} dan bitta ko'proq sanang."
+      ],
+      "expl": "{n} dan keyingi son {ans}."
+    },
+    "prevNum": {
+      "prompt": "{n} dan oldin darhol qaysi son keladi? (faqat raqamlar)",
+      "hints": [
+        "Orqaga qarab sanang.",
+        "{n} dan bitta kam sanang."
+      ],
+      "expl": "{n} dan oldingi son {ans}."
+    },
+    "makeTen": {
+      "prompt": "{a} ga qaysi sonni qo'shsak, 10 hosil bo'ladi? (faqat raqamlar)",
+      "hints": [
+        "10 dan {a} ni ayiring.",
+        "O'n barmog'ingizni eslang."
+      ],
+      "expl": "{a}+{ans}=10, demak javob {ans}."
+    },
+    "missAdd": {
+      "prompt": "$\\square + {b} = {c}$ da katakka qaysi son yoziladi? (faqat raqamlar)",
+      "hints": [
+        "□ ni topish uchun yig'indidan ma'lum sonni ayiring.",
+        "{c}-{b} ni hisoblang."
+      ],
+      "expl": "{c}-{b}={ans}, demak □={ans}."
+    },
+    "missSub": {
+      "prompt": "$ {a} - \\square = {c}$ da katakka qaysi son yoziladi? (faqat raqamlar)",
+      "hints": [
+        "□ ni topish uchun birinchi sondan natijani ayiring.",
+        "{a}-{c} ni hisoblang."
+      ],
+      "expl": "{a}-{c}={ans}, demak □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "${n}$ sonining birlar xonasidagi raqam nima? (faqat raqamlar)",
+      "hints": [
+        "Bu eng o'ngdagi raqam.",
+        "Birlar xonasi yakka birliklarni bildiradi."
+      ],
+      "expl": "{n} sonining birlar xonasidagi raqami {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "${n}$ sonining yuzlar xonasidagi raqam nima? (faqat raqamlar)",
+      "hints": [
+        "Bu o'ngdan uchinchi raqam.",
+        "Uch xonali sonda bu birinchi raqam."
+      ],
+      "expl": "{n} sonining yuzlar xonasidagi raqami {ans}."
+    },
+    "moreBy": {
+      "prompt": "{n} dan {k} ta ko'p son qaysi? (faqat raqamlar)",
+      "hints": [
+        "Bu {k} dan oldinga sanash bilan bir xil.",
+        "Faqat bitta xonadagi raqam o'zgaradi."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "{n} dan {k} ta kam son qaysi? (faqat raqamlar)",
+      "hints": [
+        "Bu {k} dan orqaga sanash bilan bir xil.",
+        "Faqat bitta xonadagi raqam o'zgaradi."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Har bir bog'lamda {a} tadan bor, bog'lamlar soni {b} ta. Hammasi bo'lib nechta? (faqat raqamlar)",
+      "hints": [
+        "Teng guruhlarni ko'paytirish bilan sanash mumkin.",
+        "Bu {a} ni {b} marta qo'shish bilan bir xil."
+      ],
+      "expl": "{a}×{b}={ans}, demak hammasi bo'lib {ans} ta."
+    },
+    "quadFourth": {
+      "prompt": "To'rtburchakning uchta burchagi {a}°, {b}° va {c}°. To'rtinchi burchak necha gradus? (gradus)",
+      "hints": [
+        "To'rtburchakning to'rt burchagi yig'indisi 360° bo'ladi.",
+        "360 dan uchta ma'lum burchakni ayiring."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, demak u {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "$\\frac{{a}}{{b}}$ kasrni o'nli kasr shaklida yozing. (o'nli kasr yozing)",
+      "hints": [
+        "Kasrni maxraji 10 yoki 100 bo'ladigan qilib yozing.",
+        "Yoki suratni maxrajga bo'ling."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "$\\sqrt{{a}} \\times \\sqrt{{b}}$ ning qiymati nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Ko'paytma to'la kvadrat son ekanini tekshiring."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Agar $({e})^2 = x^2+px+q$ bo'lsa, $p+q$ nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "$(x+a)^2=x^2+2ax+a^2$ dan foydalaning.",
+        "p = 2a, q = a²."
+      ],
+      "expl": "p={p} va q={q}, demak p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "${poly}$ ko'phad $(x+m)(x+n)$ ko'rinishida ko'paytuvchilarga ajratilsa, m va n ning ayirmasi nechaga teng (kattasidan kichigi ayriladi)? (faqat raqamlar)",
+      "hints": [
+        "Yig'indisi x oldidagi koeffitsiyentga, ko'paytmasi ozod hadga teng ikki sonni toping.",
+        "Ularni topgach, kattasidan kichigini ayiring."
+      ],
+      "expl": "${poly}=({fm})({fn})$, demak ikki son {m} va {n}, ayirma esa {ans}."
+    },
+    "quadDisc": {
+      "prompt": "${eq}=0$ kvadrat tenglamaning $D=b^2-4ac$ diskriminanti nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "$ax^2+bx+c=0$ tenglamaning diskriminanti $D=b^2-4ac$.",
+        "a, b va c ishoralariga e'tibor bering."
+      ],
+      "expl": "a={a}, b={b}, c={c}, demak D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "$y={expr}$ kvadrat funksiyada $x={x}$ bo'lganda $y$ nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "Berilgan qiymatni x o'rniga qo'ying.",
+        "Avval kvadratga ko'taring."
+      ],
+      "expl": "x={x} ni qo'ysak, y={ans} bo'ladi."
+    },
+    "logAdd": {
+      "prompt": "$\\log_{{b}} {m} + \\log_{{b}} {n}$ ning qiymati nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Avval {m}×{n} ko'paytmani toping."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Birinchi hadi {a}, ayirmasi {d} bo'lgan arifmetik progressiyaning dastlabki {n} ta hadi yig'indisi nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "Yig'indi formulasi: $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Oxirgi hadni topib, (birinchi + oxirgi) × hadlar soni ÷ 2 ni ham hisoblash mumkin."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Geometrik progressiyaning birinchi hadi {a}, uchinchi hadi {c}. Progressiya maxraji nimaga teng? (musbat, faqat raqamlar)",
+      "hints": [
+        "Uchinchi had birinchi hadni maxrajga ikki marta ko'paytirishdan hosil bo'ladi.",
+        "$ar^2=c$ dan $r^2$ ni toping."
+      ],
+      "expl": "{a}×r²={c} dan r²={sq}, demak maxraj {ans}."
+    },
+    "limFactor": {
+      "prompt": "$\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ limitning qiymati nimaga teng? (faqat raqamlar)",
+      "hints": [
+        "Suratni ko'paytuvchilarga ajratsak: $(x-a)(x+a)$.",
+        "Qisqartiring, so'ng x o'rniga limit qiymatini qo'ying."
+      ],
+      "expl": "Suratni ko'paytuvchilarga ajratib qisqartirgach, x={a} ni qo'ysak, {ans} chiqadi."
     }
   }
 }

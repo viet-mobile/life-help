@@ -80,6 +80,20 @@ const PLAN = [
   S("m.h3.norm", "h3-norm", "H3", "binomMean", [1], 40), S("m.h3.geo1", "h3-geo1", "H3", "focusX", [1], 9), S("m.h3.geo2", "h3-geo2", "H3", "vecNorm", [1], 40),
   S("m.el.econ2", "el-econ2", "H3", "equilibrium", [1], 40), S("m.el.job1", "el-job1", "H3", "discount", [1], 30), S("m.el.cul2", "el-cul2", "H3", "pmAverage", [1], 30),
   S("m.el.sta1", "el-sta1", "H3", "stdev", [1], 30), S("m.el.sta2", "el-sta2", "H3", "ciHalf", [1], 30),
+
+  // ---- third tranche: at least 400 questions for every grade (E1, E2, E4, M3, H2 were short)
+  S("m.e1.cmp", "e1-cmp", "E1", "maxOf", [1, 2], 60), S("m.e1.cmp", "e1-cmp", "E1", "minOf", [1, 2], 60),
+  S("m.e1.count", "e1-count", "E1", "nextNum", [1, 2], 60), S("m.e1.count", "e1-count", "E1", "prevNum", [1, 2], 60),
+  S("m.e1.addsub", "e1-addsub", "E1", "makeTen", [1], 9), S("m.e1.addsub", "e1-addsub", "E1", "missAdd", [1, 2, 3], 30), S("m.e1.addsub", "e1-addsub", "E1", "missSub", [1, 2, 3], 30),
+  S("m.e2.place", "e2-place", "E2", "onesDigit", [1], 60), S("m.e2.place", "e2-place", "E2", "hundredsDigit", [1], 60),
+  S("m.e2.place", "e2-place", "E2", "moreBy", [1], 60), S("m.e2.place", "e2-place", "E2", "lessBy", [1], 60), S("m.e2.mul", "e2-mul", "E2", "groups", [1], 60),
+  S("m.e4.big", "e4-big", "E4", "plus", [4, 5], 50), S("m.e4.big", "e4-big", "E4", "minus", [4, 5], 50),
+  S("m.e4.muldiv", "e4-muldiv2", "E4", "times", [4], 50), S("m.e4.muldiv", "e4-muldiv2", "E4", "divide", [3], 50),
+  S("m.e4.frac", "e4-frac", "E4", "plus", [6], 40), S("m.e4.frac", "e4-frac", "E4", "minus", [6], 40), S("m.e4.frac", "e4-frac", "E4", "fracToDec", [1], 50),
+  S("m.e4.geo1", "e4-geo1", "E4", "quadFourth", [1], 40),
+  S("m.m3.sqrt", "m3-sqrt", "M3", "sqrtProd", [1], 40), S("m.m3.fact", "m3-fact", "M3", "expandSquare", [1], 50), S("m.m3.fact", "m3-fact", "M3", "factorDiff", [1], 50),
+  S("m.m3.quad", "m3-quad", "M3", "quadDisc", [1], 50), S("m.m3.qfunc", "m3-qfunc", "M3", "qfuncValue", [1], 50),
+  S("m.h2.log", "h2-log", "H2", "logAdd", [1], 30), S("m.h2.seq", "h2-seq", "H2", "arithSum", [1], 60), S("m.h2.seq", "h2-seq", "H2", "geoRatio", [1], 40), S("m.h2.lim", "h2-lim", "H2", "limFactor", [1], 40),
 ];
 
 // ---- skills that really exist in the canonical bundles

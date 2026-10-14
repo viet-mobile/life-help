@@ -202,6 +202,9 @@ export const GEN = {
   // ======================= second tranche: the rest of the core curriculum (templates: scripts/learn/bank/templates.mjs) =======================
   plus: (r, lvl) => {
     if (lvl === 1) { const a = r.int(1, 9), b = r.int(1, 9); return { v: { a, b }, ans: a + b }; }
+    if (lvl === 4) { const a = r.int(100, 899), b = r.int(100, 899); return { v: { a, b }, ans: a + b }; }
+    if (lvl === 5) { const a = r.int(1000, 49999), b = r.int(1000, 49999); return { v: { a, b }, ans: a + b }; }
+    if (lvl === 6) { const a = r.int(11, 99) / 10, b = r.int(11, 99) / 10; return { v: { a, b }, ans: Math.round((a + b) * 10) / 10 }; }
     for (;;) {
       const a = r.int(10, 89), b = r.int(10, 89), c = a % 10 + b % 10 >= 10;
       if (a + b > 99) continue;
@@ -210,6 +213,9 @@ export const GEN = {
   },
   minus: (r, lvl) => {
     if (lvl === 1) { const a = r.int(5, 18), b = r.int(1, Math.min(9, a - 1)); return { v: { a, b }, ans: a - b }; }
+    if (lvl === 4) { const a = r.int(200, 999), b = r.int(100, a - 1); return { v: { a, b }, ans: a - b }; }
+    if (lvl === 5) { const a = r.int(2000, 99999), b = r.int(1000, a - 1); return { v: { a, b }, ans: a - b }; }
+    if (lvl === 6) { const a = r.int(21, 99) / 10, b = r.int(11, Math.round(a * 10) - 1) / 10; return { v: { a, b }, ans: Math.round((a - b) * 10) / 10 }; }
     for (;;) {
       const a = r.int(20, 99), b = r.int(10, a - 1), bw = a % 10 < b % 10;
       if ((lvl === 2 && !bw) || (lvl === 3 && bw)) return { v: { a, b }, ans: a - b };
@@ -218,9 +224,10 @@ export const GEN = {
   times: (r, lvl) => {
     if (lvl === 1) { const a = r.int(2, 5), b = r.int(2, 9); return { v: { a, b }, ans: a * b }; }
     if (lvl === 2) { const a = r.int(2, 9), b = r.int(2, 9); return { v: { a, b }, ans: a * b }; }
+    if (lvl === 4) { const a = r.int(101, 399), b = r.int(11, 29); return { v: { a, b }, ans: a * b }; }
     const a = r.int(12, 49), b = r.int(11, 19); return { v: { a, b }, ans: a * b };
   },
-  divide: (r, lvl) => { const b = r.int(2, 9), q = lvl === 1 ? r.int(2, 9) : r.int(11, 99); return { v: { a: b * q, b }, ans: q }; },
+  divide: (r, lvl) => { if (lvl === 3) { const b = r.int(11, 49), q = r.int(11, 99); return { v: { a: b * q, b }, ans: q }; } const b = r.int(2, 9), q = lvl === 1 ? r.int(2, 9) : r.int(11, 99); return { v: { a: b * q, b }, ans: q }; },
   tensDigit: (r) => { const n = r.int(10, 99); return { v: { n }, ans: Math.floor(n / 10) }; },
   seqNext: (r) => { const s0 = r.int(1, 30), d = r.pick([-5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 10]); const xs = [0, 1, 2, 3].map((i) => s0 + i * d); if (xs.some((x) => x < 0) || s0 + 4 * d < 0) return GEN.seqNext(r); return { v: { list: xs.join(", "), d: d > 0 ? `+${d}` : `${d}` }, ans: s0 + 4 * d }; },
   kmToM: (r) => { const v = r.int(1, 30); return { v: { v }, ans: v * 1000 }; },
@@ -294,6 +301,31 @@ export const GEN = {
   pmAverage: (r) => { for (;;) { const xs = Array.from({ length: 5 }, () => r.int(15, 70)); const sum = xs.reduce((s, x) => s + x, 0); if (sum % 5 === 0) return { v: { list: list(xs), sum: xs.join("+") }, ans: sum / 5 }; } },
   equilibrium: (r) => { const q = r.int(2, 30), b = r.int(1, 4), d = r.int(1, 4), c = r.int(5, 40); return { v: { a: c + (b + d) * q, b, c, d }, ans: q }; },
   ciHalf: (r) => { const s = r.pick([5, 10, 15, 20, 25, 30]), rt = r.pick([5, 6, 7, 8, 9, 10, 12]); return { v: { s, n: rt * rt, rt }, ans: Math.round(((1.96 * s) / rt) * 100) / 100, tol: 0.01 }; },
+
+  // ======================= third tranche: grade volume =======================
+  maxOf: (r, lvl) => { const [lo, hi] = lvl === 1 ? [1, 20] : [10, 99]; const xs = distinct(r, 3, lo, hi); const o = xs.sort(() => r.next() - 0.5); return { v: { list: list(o) }, ans: Math.max(...xs) }; },
+  minOf: (r, lvl) => { const [lo, hi] = lvl === 1 ? [1, 20] : [10, 99]; const xs = distinct(r, 3, lo, hi); const o = xs.sort(() => r.next() - 0.5); return { v: { list: list(o) }, ans: Math.min(...xs) }; },
+  nextNum: (r, lvl) => { const n = lvl === 1 ? r.int(1, 19) : r.int(20, 98); return { v: { n }, ans: n + 1 }; },
+  prevNum: (r, lvl) => { const n = lvl === 1 ? r.int(2, 20) : r.int(21, 99); return { v: { n }, ans: n - 1 }; },
+  makeTen: (r) => { const a = r.int(1, 9); return { v: { a }, ans: 10 - a }; },
+  missAdd: (r, lvl) => { const cap = lvl === 1 ? 10 : lvl === 2 ? 20 : 100; const c = r.int(3, cap), b = r.int(1, c - 1); return { v: { b, c }, ans: c - b }; },
+  missSub: (r, lvl) => { const cap = lvl === 1 ? 10 : lvl === 2 ? 20 : 100; const a = r.int(3, cap), c = r.int(1, a - 1); return { v: { a, c }, ans: a - c }; },
+  onesDigit: (r) => { const n = r.int(10, 999); return { v: { n }, ans: n % 10 }; },
+  hundredsDigit: (r) => { const n = r.int(100, 999); return { v: { n }, ans: Math.floor(n / 100) }; },
+  moreBy: (r) => { const k = r.pick([10, 100]), n = r.int(100, k === 100 ? 899 : 989); return { v: { n, k }, ans: n + k }; },
+  lessBy: (r) => { const k = r.pick([10, 100]), n = r.int(k === 100 ? 200 : 110, 999); return { v: { n, k }, ans: n - k }; },
+  groups: (r) => { const a = r.int(2, 9), b = r.int(2, 9); return { v: { a, b }, ans: a * b }; },
+  quadFourth: (r) => { for (;;) { const a = r.int(50, 130), b = r.int(50, 130), c = r.int(50, 130); if (a + b + c < 330) return { v: { a, b, c }, ans: 360 - a - b - c }; } },
+  fracToDec: (r) => { const b = r.pick([2, 4, 5, 10, 20, 25]), a = r.int(1, b - 1); return { v: { a, b }, ans: Math.round((a / b) * 1e4) / 1e4 }; },
+  sqrtProd: (r) => { for (;;) { const k = r.int(2, 12), m = r.int(1, 6), a = m * m * r.int(1, 5), b = (k * k) / (m * m) * 1; if (!Number.isInteger(b) || b === a) continue; const prod = a * b; const root = Math.round(Math.sqrt(prod)); if (root * root !== prod) continue; return { v: { a, b, prod }, ans: root }; } },
+  expandSquare: (r) => { const a = r.nonzero(-9, 9); return { v: { e: `x${sgn(a)}`, p: 2 * a, q: a * a }, ans: 2 * a + a * a }; },
+  factorDiff: (r) => { for (;;) { const m = r.nonzero(-9, 9), n = r.nonzero(-9, 9); if (m >= n) continue; const b = m + n, c = m * n; const poly = `x^2${b === 0 ? "" : b === 1 ? "+x" : b === -1 ? "-x" : `${sgn(b)}x`}${sgn(c)}`; return { v: { poly, fm: `x${sgn(m)}`, fn: `x${sgn(n)}`, m, n }, ans: n - m }; } },
+  quadDisc: (r) => { const a = r.nonzero(-4, 5), b = r.int(-9, 9), c = r.nonzero(-9, 9); const t = (co, p) => (co === 0 ? "" : `${co > 0 ? "+" : "-"}${Math.abs(co) === 1 && p > 0 ? "" : Math.abs(co)}${p === 0 ? "" : p === 1 ? "x" : `x^${p}`}`); const eq = (t(a, 2) + t(b, 1) + t(c, 0)).replace(/^\+/, ""); return { v: { eq, a, b, c }, ans: b * b - 4 * a * c }; },
+  qfuncValue: (r) => { const a = r.nonzero(-3, 4), b = r.int(-6, 6), c = r.int(-9, 9), x = r.int(-4, 5); const t = (co, p) => (co === 0 ? "" : `${co > 0 ? "+" : "-"}${Math.abs(co) === 1 && p > 0 ? "" : Math.abs(co)}${p === 0 ? "" : p === 1 ? "x" : `x^${p}`}`); const expr = (t(a, 2) + t(b, 1) + t(c, 0)).replace(/^\+/, ""); return { v: { expr, x }, ans: a * x * x + b * x + c }; },
+  logAdd: (r) => { const b = r.pick([2, 3, 5, 10]), k = r.int(2, b === 10 ? 5 : b === 2 ? 8 : 4); for (;;) { const i = r.int(1, k - 1); const m = b ** i, n = b ** (k - i); if (m > 1 && n > 1) return { v: { b, m, n, prod: b ** k }, ans: k }; } },
+  arithSum: (r) => { const a = r.int(-5, 20), d = r.nonzero(-4, 8), n = r.int(4, 20); return { v: { a, d, n }, ans: (n * (2 * a + (n - 1) * d)) / 2 }; },
+  geoRatio: (r) => { const a = r.int(1, 6), q = r.int(2, 6); return { v: { a, c: a * q * q, sq: q * q }, ans: q }; },
+  limFactor: (r) => { const a = r.nonzero(-9, 9); return { v: { a, sq: a * a, den: `x${a > 0 ? `-${a}` : `+${-a}`}` }, ans: 2 * a }; },
 };
 
 const TRIPLES = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [20, 21, 29], [9, 40, 41]];

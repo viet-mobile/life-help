@@ -455,6 +455,190 @@
         "Teile die beiden Werte."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Welche Zahl ist die größte von {list}? (nur Ziffern)",
+      "hints": [
+        "Vergleiche die Zahlen nacheinander.",
+        "Suche die Zahl, die den größten Wert hat."
+      ],
+      "expl": "Die größte Zahl von {list} ist {ans}."
+    },
+    "minOf": {
+      "prompt": "Welche Zahl ist die kleinste von {list}? (nur Ziffern)",
+      "hints": [
+        "Vergleiche die Zahlen nacheinander.",
+        "Suche die Zahl, die den kleinsten Wert hat."
+      ],
+      "expl": "Die kleinste Zahl von {list} ist {ans}."
+    },
+    "nextNum": {
+      "prompt": "Welche Zahl kommt direkt nach {n}? (nur Ziffern)",
+      "hints": [
+        "Zähle die Zahlen der Reihe nach.",
+        "Zähle von {n} aus eins weiter."
+      ],
+      "expl": "Die Zahl direkt nach {n} ist {ans}."
+    },
+    "prevNum": {
+      "prompt": "Welche Zahl kommt direkt vor {n}? (nur Ziffern)",
+      "hints": [
+        "Zähle rückwärts.",
+        "Zähle von {n} aus eins zurück."
+      ],
+      "expl": "Die Zahl direkt vor {n} ist {ans}."
+    },
+    "makeTen": {
+      "prompt": "Welche Zahl muss man zu {a} addieren, um 10 zu erhalten? (nur Ziffern)",
+      "hints": [
+        "Subtrahiere {a} von 10.",
+        "Denke an deine zehn Finger."
+      ],
+      "expl": "{a}+{ans}=10, also ist die Antwort {ans}."
+    },
+    "missAdd": {
+      "prompt": "Welche Zahl gehört in das Kästchen bei $\\square + {b} = {c}$? (nur Ziffern)",
+      "hints": [
+        "Subtrahiere die bekannte Zahl von der Summe, um □ zu finden.",
+        "Rechne {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, also □={ans}."
+    },
+    "missSub": {
+      "prompt": "Welche Zahl gehört in das Kästchen bei $ {a} - \\square = {c}$? (nur Ziffern)",
+      "hints": [
+        "Subtrahiere das Ergebnis von der ersten Zahl, um □ zu finden.",
+        "Rechne {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, also □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Welche Ziffer steht an der Einerstelle von ${n}$? (nur Ziffern)",
+      "hints": [
+        "Es ist die Ziffer ganz rechts.",
+        "Die Einerstelle zeigt die einzelnen Einer."
+      ],
+      "expl": "Die Einerziffer von {n} ist {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Welche Ziffer steht an der Hunderterstelle von ${n}$? (nur Ziffern)",
+      "hints": [
+        "Es ist die dritte Ziffer von rechts.",
+        "Bei einer dreistelligen Zahl ist es die erste Ziffer."
+      ],
+      "expl": "Die Hunderterziffer von {n} ist {ans}."
+    },
+    "moreBy": {
+      "prompt": "Welche Zahl ist um {k} größer als {n}? (nur Ziffern)",
+      "hints": [
+        "Das ist dasselbe wie in {k}er-Schritten vorwärts zu zählen.",
+        "Nur die Ziffer an einer Stelle ändert sich."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Welche Zahl ist um {k} kleiner als {n}? (nur Ziffern)",
+      "hints": [
+        "Das ist dasselbe wie in {k}er-Schritten rückwärts zu zählen.",
+        "Nur die Ziffer an einer Stelle ändert sich."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "In jedem Bündel sind {a}, und es gibt {b} Bündel. Wie viele sind es insgesamt? (nur Ziffern)",
+      "hints": [
+        "Gleich große Gruppen kann man mit der Multiplikation zählen.",
+        "Das ist dasselbe, wie {a} insgesamt {b}-mal zu addieren."
+      ],
+      "expl": "{a}×{b}={ans}, also sind es {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Drei Winkel eines Vierecks sind {a}°, {b}° und {c}°. Wie viel Grad hat der vierte Winkel? (in Grad)",
+      "hints": [
+        "Die vier Winkel eines Vierecks ergeben zusammen 360°.",
+        "Subtrahiere die drei bekannten Winkel von 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, also sind es {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Schreibe den Bruch $\\frac{{a}}{{b}}$ als Dezimalzahl. (als Dezimalzahl schreiben)",
+      "hints": [
+        "Erweitere oder kürze den Bruch so, dass der Nenner 10 oder 100 ist.",
+        "Oder teile den Zähler durch den Nenner."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Welchen Wert hat $\\sqrt{{a}} \\times \\sqrt{{b}}$? (nur Ziffern)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Prüfe, ob das Produkt eine Quadratzahl ist."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Wenn $({e})^2 = x^2+px+q$ gilt, was ist dann $p+q$? (nur Ziffern)",
+      "hints": [
+        "Benutze $(x+a)^2=x^2+2ax+a^2$.",
+        "p ist 2a und q ist a²."
+      ],
+      "expl": "p={p} und q={q}, also p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Wenn man ${poly}$ als $(x+m)(x+n)$ faktorisiert, wie groß ist der Unterschied zwischen m und n (größere minus kleinere Zahl)? (nur Ziffern)",
+      "hints": [
+        "Suche zwei Zahlen, deren Summe der Koeffizient von x ist und deren Produkt das konstante Glied ist.",
+        "Subtrahiere danach die kleinere Zahl von der größeren."
+      ],
+      "expl": "${poly}=({fm})({fn})$, also sind die beiden Zahlen {m} und {n}, und der Unterschied ist {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Welchen Wert hat die Diskriminante $D=b^2-4ac$ der quadratischen Gleichung ${eq}=0$? (nur Ziffern)",
+      "hints": [
+        "Die Diskriminante von $ax^2+bx+c=0$ ist $D=b^2-4ac$.",
+        "Achte auf die Vorzeichen von a, b und c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, also D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Welchen Wert hat $y$ bei der quadratischen Funktion $y={expr}$ für $x={x}$? (nur Ziffern)",
+      "hints": [
+        "Setze den gegebenen Wert für x ein.",
+        "Berechne zuerst das Quadrat."
+      ],
+      "expl": "Einsetzen von x={x} ergibt y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Welchen Wert hat $\\log_{{b}} {m} + \\log_{{b}} {n}$? (nur Ziffern)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Berechne zuerst das Produkt {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Wie groß ist die Summe der ersten {n} Glieder der arithmetischen Folge mit dem ersten Glied {a} und der Differenz {d}? (nur Ziffern)",
+      "hints": [
+        "Die Summenformel lautet $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Du kannst auch das letzte Glied bestimmen und (erstes + letztes) × Anzahl der Glieder ÷ 2 rechnen."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Eine geometrische Folge hat das erste Glied {a} und das dritte Glied {c}. Wie groß ist der Quotient q? (positiv, nur Ziffern)",
+      "hints": [
+        "Das dritte Glied ist das erste Glied, zweimal mit dem Quotienten multipliziert.",
+        "Bestimme aus $ar^2=c$ den Wert $r^2$."
+      ],
+      "expl": "Aus {a}×r²={c} folgt r²={sq}, also ist der Quotient {ans}."
+    },
+    "limFactor": {
+      "prompt": "Welchen Wert hat $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (nur Ziffern)",
+      "hints": [
+        "Der Zähler lässt sich als $(x-a)(x+a)$ faktorisieren.",
+        "Kürze und setze dann den Grenzwert für x ein."
+      ],
+      "expl": "Nach dem Faktorisieren des Zählers und dem Kürzen ergibt das Einsetzen von x={a} den Wert {ans}."
     }
   }
 }

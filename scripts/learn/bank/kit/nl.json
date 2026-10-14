@@ -455,6 +455,190 @@
         "Deel de twee waarden."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Welk getal is het grootste van {list}? (alleen cijfers)",
+      "hints": [
+        "Vergelijk de getallen één voor één.",
+        "Zoek het getal dat het meeste voorstelt."
+      ],
+      "expl": "Het grootste getal van {list} is {ans}."
+    },
+    "minOf": {
+      "prompt": "Welk getal is het kleinste van {list}? (alleen cijfers)",
+      "hints": [
+        "Vergelijk de getallen één voor één.",
+        "Zoek het getal dat het minste voorstelt."
+      ],
+      "expl": "Het kleinste getal van {list} is {ans}."
+    },
+    "nextNum": {
+      "prompt": "Welk getal komt direct na {n}? (alleen cijfers)",
+      "hints": [
+        "Tel de getallen op volgorde.",
+        "Tel er één bij op vanaf {n}."
+      ],
+      "expl": "Het getal direct na {n} is {ans}."
+    },
+    "prevNum": {
+      "prompt": "Welk getal komt direct voor {n}? (alleen cijfers)",
+      "hints": [
+        "Tel terug.",
+        "Tel er één af vanaf {n}."
+      ],
+      "expl": "Het getal direct voor {n} is {ans}."
+    },
+    "makeTen": {
+      "prompt": "Welk getal moet je bij {a} optellen om 10 te krijgen? (alleen cijfers)",
+      "hints": [
+        "Trek {a} af van 10.",
+        "Denk aan je tien vingers."
+      ],
+      "expl": "{a}+{ans}=10, dus het antwoord is {ans}."
+    },
+    "missAdd": {
+      "prompt": "Welk getal komt in het vakje in $\\square + {b} = {c}$? (alleen cijfers)",
+      "hints": [
+        "Trek het bekende getal af van het totaal om □ te vinden.",
+        "Bereken {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, dus □={ans}."
+    },
+    "missSub": {
+      "prompt": "Welk getal komt in het vakje in $ {a} - \\square = {c}$? (alleen cijfers)",
+      "hints": [
+        "Trek het antwoord af van het eerste getal om □ te vinden.",
+        "Bereken {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, dus □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Wat is het cijfer op de plaats van de eenheden van ${n}$? (alleen cijfers)",
+      "hints": [
+        "Het is het cijfer helemaal rechts.",
+        "De eenheden zijn de losse enen."
+      ],
+      "expl": "Het cijfer van de eenheden van {n} is {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Wat is het cijfer op de plaats van de honderdtallen van ${n}$? (alleen cijfers)",
+      "hints": [
+        "Het is het derde cijfer van rechts.",
+        "Bij een getal van drie cijfers is het het eerste cijfer."
+      ],
+      "expl": "Het cijfer van de honderdtallen van {n} is {ans}."
+    },
+    "moreBy": {
+      "prompt": "Welk getal is {k} meer dan {n}? (alleen cijfers)",
+      "hints": [
+        "Het is hetzelfde als {k} verder tellen.",
+        "Alleen het cijfer op één plaats verandert."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Welk getal is {k} minder dan {n}? (alleen cijfers)",
+      "hints": [
+        "Het is hetzelfde als {k} terugtellen.",
+        "Alleen het cijfer op één plaats verandert."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Er zitten {a} in elk bundeltje en er zijn {b} bundeltjes. Hoeveel zijn het er samen? (alleen cijfers)",
+      "hints": [
+        "Gelijke groepen kun je tellen met vermenigvuldigen.",
+        "Het is hetzelfde als {a} in totaal {b} keer optellen."
+      ],
+      "expl": "{a}×{b}={ans}, dus het zijn er {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Drie hoeken van een vierhoek zijn {a}°, {b}° en {c}°. Hoeveel graden is de vierde hoek? (graden)",
+      "hints": [
+        "De vier hoeken van een vierhoek zijn samen 360°.",
+        "Trek de drie bekende hoeken af van 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, dus het is {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Schrijf de breuk $\\frac{{a}}{{b}}$ als decimaal getal. (schrijf een decimaal getal)",
+      "hints": [
+        "Schrijf de breuk zo om dat de noemer 10 of 100 is.",
+        "Of deel de teller door de noemer."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Wat is de waarde van $\\sqrt{{a}} \\times \\sqrt{{b}}$? (alleen cijfers)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Controleer of het product een kwadraat is."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Als $({e})^2 = x^2+px+q$, wat is $p+q$? (alleen cijfers)",
+      "hints": [
+        "Gebruik $(x+a)^2=x^2+2ax+a^2$.",
+        "p is 2a en q is a²."
+      ],
+      "expl": "p={p} en q={q}, dus p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Als ${poly}$ wordt ontbonden als $(x+m)(x+n)$, wat is dan het verschil tussen m en n (groter min kleiner)? (alleen cijfers)",
+      "hints": [
+        "Zoek twee getallen met som gelijk aan de coëfficiënt van x en product gelijk aan de constante term.",
+        "Trek daarna het kleinere getal af van het grotere."
+      ],
+      "expl": "${poly}=({fm})({fn})$, dus de twee getallen zijn {m} en {n} en het verschil is {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Wat is de waarde van de discriminant $D=b^2-4ac$ van de kwadratische vergelijking ${eq}=0$? (alleen cijfers)",
+      "hints": [
+        "De discriminant van $ax^2+bx+c=0$ is $D=b^2-4ac$.",
+        "Let op de tekens van a, b en c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, dus D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Wat is $y$ bij de kwadratische functie $y={expr}$ als $x={x}$? (alleen cijfers)",
+      "hints": [
+        "Vul de gegeven waarde in op de plaats van x.",
+        "Bereken eerst het kwadraat."
+      ],
+      "expl": "Invullen van x={x} geeft y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Wat is de waarde van $\\log_{{b}} {m} + \\log_{{b}} {n}$? (alleen cijfers)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Bereken eerst het product {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Wat is de som van de eerste {n} termen van de rekenkundige rij met eerste term {a} en verschil {d}? (alleen cijfers)",
+      "hints": [
+        "De somformule is $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Je kunt ook de laatste term zoeken en (eerste + laatste) × aantal termen ÷ 2 berekenen."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Een meetkundige rij heeft eerste term {a} en derde term {c}. Wat is de reden? (positief, alleen cijfers)",
+      "hints": [
+        "De derde term is de eerste term twee keer vermenigvuldigd met de reden.",
+        "Bereken uit $ar^2=c$ de waarde van $r^2$."
+      ],
+      "expl": "Uit {a}×r²={c} volgt r²={sq}, dus de reden is {ans}."
+    },
+    "limFactor": {
+      "prompt": "Wat is de waarde van $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (alleen cijfers)",
+      "hints": [
+        "De teller ontbind je als $(x-a)(x+a)$.",
+        "Schrap de gemeenschappelijke factor en vul dan de limietwaarde in op de plaats van x."
+      ],
+      "expl": "Na het ontbinden van de teller en het wegstrepen vind je door x={a} in te vullen {ans}."
     }
   }
 }

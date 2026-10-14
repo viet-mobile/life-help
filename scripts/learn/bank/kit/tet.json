@@ -455,6 +455,190 @@
         "Fahe valór rua ne'e."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Iha {list}, né'ebé mak boot liu? (numeru deit)",
+      "hints": [
+        "Kompara numeru sira ida-ida.",
+        "Buka numeru ne'ebé iha folin boot liu."
+      ],
+      "expl": "Iha {list}, numeru boot liu mak {ans}."
+    },
+    "minOf": {
+      "prompt": "Iha {list}, né'ebé mak ki'ik liu? (numeru deit)",
+      "hints": [
+        "Kompara numeru sira ida-ida.",
+        "Buka numeru ne'ebé iha folin ki'ik liu."
+      ],
+      "expl": "Iha {list}, numeru ki'ik liu mak {ans}."
+    },
+    "nextNum": {
+      "prompt": "Numeru saida mak mai hafoin {n} ho direta? (numeru deit)",
+      "hints": [
+        "Sura numeru sira tuir malu.",
+        "Sura tan ida husi {n}."
+      ],
+      "expl": "Numeru ne'ebé mai hafoin {n} mak {ans}."
+    },
+    "prevNum": {
+      "prompt": "Numeru saida mak mai molok {n} ho direta? (numeru deit)",
+      "hints": [
+        "Sura fila-fali.",
+        "Sura ida menus husi {n}."
+      ],
+      "expl": "Numeru ne'ebé mai molok {n} mak {ans}."
+    },
+    "makeTen": {
+      "prompt": "Numeru saida mak tau ba {a} hodi sai 10? (numeru deit)",
+      "hints": [
+        "Hasai {a} husi 10.",
+        "Hanoin ba ita-nia liman-fuan sanulu."
+      ],
+      "expl": "{a}+{ans}=10, nune'e resposta mak {ans}."
+    },
+    "missAdd": {
+      "prompt": "Iha $\\square + {b} = {c}$, numeru saida mak tama iha kaixa? (numeru deit)",
+      "hints": [
+        "Hasai numeru ne'ebé hatene husi total atu hetan □.",
+        "Kalkula {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, nune'e □={ans}."
+    },
+    "missSub": {
+      "prompt": "Iha $ {a} - \\square = {c}$, numeru saida mak tama iha kaixa? (numeru deit)",
+      "hints": [
+        "Hasai rezultadu husi numeru dahuluk atu hetan □.",
+        "Kalkula {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, nune'e □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Dígitu saida mak iha fatin unidade husi ${n}$? (numeru deit)",
+      "hints": [
+        "Nia mak dígitu iha parte ofodi liu.",
+        "Fatin unidade hatudu unidade ida-ida."
+      ],
+      "expl": "Dígitu unidade husi {n} mak {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Dígitu saida mak iha fatin sentena husi ${n}$? (numeru deit)",
+      "hints": [
+        "Nia mak dígitu datoluk husi ofodi.",
+        "Iha numeru dígitu tolu nian, nia mak dígitu dahuluk."
+      ],
+      "expl": "Dígitu sentena husi {n} mak {ans}."
+    },
+    "moreBy": {
+      "prompt": "Numeru saida mak {k} liu {n}? (numeru deit)",
+      "hints": [
+        "Hanesan sura ba oin ho {k}.",
+        "Dígitu iha fatin ida deit mak troka."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Numeru saida mak {k} menus husi {n}? (numeru deit)",
+      "hints": [
+        "Hanesan sura fila-fali ho {k}.",
+        "Dígitu iha fatin ida deit mak troka."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Iha {a} iha pakote ida-idak no iha pakote {b}. Hotu-hotu iha hira? (numeru deit)",
+      "hints": [
+        "Grupu hanesan bele sura ho multiplikasaun.",
+        "Hanesan soma {a} dala {b}."
+      ],
+      "expl": "{a}×{b}={ans}, nune'e hotu-hotu iha {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Iha kuadrilátero ida, ânglu tolu mak {a}°, {b}° no {c}°. Ânglu daruak sira-nia grau hira? (grau)",
+      "hints": [
+        "Ânglu haat husi kuadrilátero soma hamutuk 360°.",
+        "Hasai ânglu tolu ne'ebé hatene husi 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, nune'e nia {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Hakerek frasaun $\\frac{{a}}{{b}}$ nu'udar desimal. (hakerek desimal)",
+      "hints": [
+        "Troka frasaun atu denominador sai 10 ka 100.",
+        "Ka fahe numeradór ho denominador."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Folin husi $\\sqrt{{a}} \\times \\sqrt{{b}}$ mak saida? (numeru deit)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Haree se produtu ne'e mak numeru kuadradu."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Se $({e})^2 = x^2+px+q$, $p+q$ mak hira? (numeru deit)",
+      "hints": [
+        "Uza $(x+a)^2=x^2+2ax+a^2$.",
+        "p mak 2a no q mak a²."
+      ],
+      "expl": "p={p} no q={q}, nune'e p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Bainhira ${poly}$ fahe ba fator sai $(x+m)(x+n)$, diferensa entre m no n mak hira (boot menus ki'ik)? (numeru deit)",
+      "hints": [
+        "Buka numeru rua ne'ebé soma sira mak koefisiente x no produtu sira mak konstante.",
+        "Hafoin hetan sira, hasai ki'ik husi boot."
+      ],
+      "expl": "${poly}=({fm})({fn})$, nune'e numeru rua mak {m} no {n}, no diferensa mak {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Diskriminante $D=b^2-4ac$ husi ekuasaun kuadrátika ${eq}=0$ iha folin hira? (numeru deit)",
+      "hints": [
+        "Diskriminante husi $ax^2+bx+c=0$ mak $D=b^2-4ac$.",
+        "Hateten ba sinál husi a, b no c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, nune'e D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Ba funsaun kuadrátika $y={expr}$, $y$ iha folin hira bainhira $x={x}$? (numeru deit)",
+      "hints": [
+        "Tau folin ne'ebé fó iha fatin x nian.",
+        "Kalkula kuadradu uluk."
+      ],
+      "expl": "Bainhira tau x={x}, hetan y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Folin husi $\\log_{{b}} {m} + \\log_{{b}} {n}$ mak saida? (numeru deit)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Uluk buka produtu {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Soma termu {n} dahuluk husi sekuénsia aritmétika ho termu dahuluk {a} no diferensa komún {d} mak hira? (numeru deit)",
+      "hints": [
+        "Formula soma mak $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Bele mós buka termu ikus no kalkula (dahuluk + ikus) × númeru termu ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Sekuénsia jeométrika ida iha termu dahuluk {a} no termu datoluk {c}. Razaun komún mak hira? (pozitivu, numeru deit)",
+      "hints": [
+        "Termu datoluk mak termu dahuluk multiplika ho razaun dala rua.",
+        "Husi $ar^2=c$ buka $r^2$."
+      ],
+      "expl": "Husi {a}×r²={c} ita hetan r²={sq}, nune'e razaun komún mak {ans}."
+    },
+    "limFactor": {
+      "prompt": "Folin husi $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ mak saida? (numeru deit)",
+      "hints": [
+        "Numeradór bele fahe ba fator sai $(x-a)(x+a)$.",
+        "Kansela, depois tau folin limite iha fatin x nian."
+      ],
+      "expl": "Hafoin fahe numeradór ba fator no kansela, tau x={a} fó {ans}."
     }
   }
 }

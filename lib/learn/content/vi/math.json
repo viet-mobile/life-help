@@ -5097,6 +5097,14 @@
     ],
     "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
    },
+   "arithSum": {
+    "prompt": "Cấp số cộng có số hạng đầu {a} và công sai {d}. Tổng của {n} số hạng đầu tiên là bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "Công thức tổng là $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+     "Em cũng có thể tìm số hạng cuối rồi tính (số đầu + số cuối) × số số hạng ÷ 2."
+    ],
+    "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+   },
    "arithTerm": {
     "prompt": "Số hạng thứ {n} của cấp số cộng có số hạng đầu {a} và công sai {d} là bao nhiêu? (chỉ viết chữ số)",
     "hints": [
@@ -5377,6 +5385,14 @@
     ],
     "explanation": "p={p} và q={q}, nên p+q={ans}."
    },
+   "expandSquare": {
+    "prompt": "Nếu $({e})^2 = x^2+px+q$ thì $p+q$ bằng bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "Dùng $(x+a)^2=x^2+2ax+a^2$.",
+     "p bằng 2a và q bằng a²."
+    ],
+    "explanation": "p={p} và q={q}, nên p+q={ans}."
+   },
    "exprValue": {
     "prompt": "Khi $x={x}$, giá trị của ${expr}$ là bao nhiêu?",
     "hints": [
@@ -5384,6 +5400,14 @@
      "Nhân trước, rồi cộng hoặc trừ."
     ],
     "explanation": "Thay x={x} ta được ${expr}={ans}$."
+   },
+   "factorDiff": {
+    "prompt": "Khi phân tích ${poly}$ thành $(x+m)(x+n)$, hiệu của m và n (số lớn trừ số bé) là bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "Tìm hai số có tổng bằng hệ số của x và tích bằng số hạng tự do.",
+     "Tìm được rồi thì lấy số lớn trừ số bé."
+    ],
+    "explanation": "${poly}=({fm})({fn})$, nên hai số là {m} và {n}, và hiệu là {ans}."
    },
    "factorExp": {
     "prompt": "Phân tích ${n}$ ra thừa số nguyên tố được $2^a\\times3^b$. $a+b$ bằng bao nhiêu?",
@@ -5417,6 +5441,14 @@
     ],
     "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
    },
+   "fracToDec": {
+    "prompt": "Viết phân số $\\frac{{a}}{{b}}$ thành số thập phân. (viết số thập phân)",
+    "hints": [
+     "Viết lại phân số sao cho mẫu số là 10 hoặc 100.",
+     "Hoặc lấy tử số chia cho mẫu số."
+    ],
+    "explanation": "$\\frac{{a}}{{b}}={ans}$."
+   },
    "funcValue": {
     "prompt": "Với hàm số bậc nhất $f(x)={a}x+{b}$, $f({c})$ bằng bao nhiêu?",
     "hints": [
@@ -5433,6 +5465,14 @@
     ],
     "explanation": "Ước chung lớn nhất của {a} và {b} là {ans}."
    },
+   "geoRatio": {
+    "prompt": "Một cấp số nhân có số hạng đầu {a} và số hạng thứ ba {c}. Công bội là bao nhiêu? (số dương, chỉ viết chữ số)",
+    "hints": [
+     "Số hạng thứ ba bằng số hạng đầu nhân với công bội hai lần.",
+     "Từ $ar^2=c$ hãy tìm $r^2$."
+    ],
+    "explanation": "Từ {a}×r²={c} ta có r²={sq}, nên công bội là {ans}."
+   },
    "geoSeries": {
     "prompt": "Tổng của cấp số nhân lùi vô hạn có số hạng đầu {a} và công bội ${rtex}$ là bao nhiêu? (có thể viết số thập phân, hoặc phân số viết như 3/4)",
     "hints": [
@@ -5448,6 +5488,22 @@
      "Nhân với công bội (n-1) lần."
     ],
     "explanation": "{a} nhân {r} lũy thừa ({n}-1) bằng {ans}."
+   },
+   "groups": {
+    "prompt": "Mỗi bó có {a} cái và có {b} bó. Có tất cả bao nhiêu cái? (chỉ viết chữ số)",
+    "hints": [
+     "Các nhóm bằng nhau có thể đếm bằng phép nhân.",
+     "Giống như cộng {a} với chính nó {b} lần."
+    ],
+    "explanation": "{a}×{b}={ans}, nên có tất cả {ans} cái."
+   },
+   "hundredsDigit": {
+    "prompt": "Chữ số hàng trăm của ${n}$ là gì? (chỉ viết chữ số)",
+    "hints": [
+     "Đó là chữ số thứ ba tính từ bên phải.",
+     "Trong số có ba chữ số, đó là chữ số đầu tiên."
+    ],
+    "explanation": "Chữ số hàng trăm của {n} là {ans}."
    },
    "hypot": {
     "prompt": "Hai cạnh kề góc vuông của một tam giác vuông dài {a} cm và {b} cm. Cạnh dài nhất dài bao nhiêu cm? (cm)",
@@ -5553,6 +5609,22 @@
     ],
     "explanation": "Bội chung nhỏ nhất của {a} và {b} là {ans}."
    },
+   "lessBy": {
+    "prompt": "Số nào bé hơn {n} là {k} đơn vị? (chỉ viết chữ số)",
+    "hints": [
+     "Giống như đếm lùi {k} đơn vị.",
+     "Chỉ có chữ số ở một hàng thay đổi."
+    ],
+    "explanation": "{n}-{k}={ans}."
+   },
+   "limFactor": {
+    "prompt": "Giá trị của $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ là bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "Tử số phân tích được thành $(x-a)(x+a)$.",
+     "Rút gọn, rồi thay giá trị giới hạn vào chỗ của x."
+    ],
+    "explanation": "Sau khi phân tích tử số và rút gọn, thay x={a} ta được {ans}."
+   },
    "limLinear": {
     "prompt": "Giá trị của $\\lim_{x\\to {a}}({f})$ là bao nhiêu? (chỉ viết chữ số)",
     "hints": [
@@ -5560,6 +5632,14 @@
      "Thay x bằng {a}."
     ],
     "explanation": "Thay x={a} ta được {ans}."
+   },
+   "logAdd": {
+    "prompt": "Giá trị của $\\log_{{b}} {m} + \\log_{{b}} {n}$ là bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "$\\log_b m+\\log_b n=\\log_b mn$.",
+     "Trước hết tìm tích {m}×{n}."
+    ],
+    "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
    },
    "logVal": {
     "prompt": "Giá trị của $\\log_{{b}} {n}$ là bao nhiêu? (chỉ viết chữ số)",
@@ -5569,6 +5649,14 @@
     ],
     "explanation": "${b}^{{ans}}={n}$, nên đáp án là {ans}."
    },
+   "makeTen": {
+    "prompt": "Cộng {a} với số nào để được 10? (chỉ viết chữ số)",
+    "hints": [
+     "Lấy 10 trừ đi {a}.",
+     "Hãy nghĩ đến mười ngón tay của em."
+    ],
+    "explanation": "{a}+{ans}=10, nên đáp án là {ans}."
+   },
    "matEntry": {
     "prompt": "Với {mats}, phần tử ở vị trí ({r}, {c}) của {expr} là bao nhiêu?",
     "hints": [
@@ -5576,6 +5664,14 @@
      "Phần tử (i, j) của tích $AB$ là tổng các tích của hàng i của $A$ với cột j của $B$, lấy theo thứ tự."
     ],
     "explanation": "{steps}, nên đáp án là {ans}."
+   },
+   "maxOf": {
+    "prompt": "Số nào lớn nhất trong {list}? (chỉ viết chữ số)",
+    "hints": [
+     "So sánh lần lượt từng số.",
+     "Tìm số biểu thị giá trị nhiều nhất."
+    ],
+    "explanation": "Số lớn nhất trong {list} là {ans}."
    },
    "mean": {
     "prompt": "Số trung bình cộng của các số này là bao nhiêu? {list}",
@@ -5601,6 +5697,14 @@
     ],
     "explanation": "Sau khi sắp xếp: {sorted}, nên trung vị là {ans}."
    },
+   "minOf": {
+    "prompt": "Số nào bé nhất trong {list}? (chỉ viết chữ số)",
+    "hints": [
+     "So sánh lần lượt từng số.",
+     "Tìm số biểu thị giá trị ít nhất."
+    ],
+    "explanation": "Số bé nhất trong {list} là {ans}."
+   },
    "minus": {
     "prompt": "Tính giá trị của $ {a} - {b} $.",
     "hints": [
@@ -5608,6 +5712,22 @@
      "Khi không trừ được, mượn 10 từ hàng bên cạnh."
     ],
     "explanation": "{a}-{b}={ans}."
+   },
+   "missAdd": {
+    "prompt": "Trong $\\square + {b} = {c}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+    "hints": [
+     "Lấy tổng trừ đi số đã biết để tìm □.",
+     "Tính {c}-{b}."
+    ],
+    "explanation": "{c}-{b}={ans}, nên □={ans}."
+   },
+   "missSub": {
+    "prompt": "Trong $ {a} - \\square = {c}$, số nào điền vào ô trống? (chỉ viết chữ số)",
+    "hints": [
+     "Lấy số bị trừ trừ đi hiệu để tìm □.",
+     "Tính {a}-{c}."
+    ],
+    "explanation": "{a}-{c}={ans}, nên □={ans}."
    },
    "mixedCalc": {
     "prompt": "Hãy tính: {expr}",
@@ -5624,6 +5744,30 @@
      "Đếm số lần xuất hiện của mỗi giá trị."
     ],
     "explanation": "{ans} xuất hiện nhiều nhất, nên mốt là {ans}."
+   },
+   "moreBy": {
+    "prompt": "Số nào lớn hơn {n} là {k} đơn vị? (chỉ viết chữ số)",
+    "hints": [
+     "Giống như đếm tiếp lên {k} đơn vị.",
+     "Chỉ có chữ số ở một hàng thay đổi."
+    ],
+    "explanation": "{n}+{k}={ans}."
+   },
+   "nextNum": {
+    "prompt": "Số liền sau của {n} là số nào? (chỉ viết chữ số)",
+    "hints": [
+     "Đếm các số theo thứ tự.",
+     "Đếm thêm một đơn vị từ {n}."
+    ],
+    "explanation": "Số liền sau của {n} là {ans}."
+   },
+   "onesDigit": {
+    "prompt": "Chữ số hàng đơn vị của ${n}$ là gì? (chỉ viết chữ số)",
+    "hints": [
+     "Đó là chữ số ngoài cùng bên phải.",
+     "Hàng đơn vị cho biết số đơn vị lẻ."
+    ],
+    "explanation": "Chữ số hàng đơn vị của {n} là {ans}."
    },
    "percentChange": {
     "prompt": "Một giá trị thay đổi từ {a} đến {b}. Nó tăng bao nhiêu phần trăm? (%)",
@@ -5673,6 +5817,14 @@
     ],
     "explanation": "({sum})÷5={ans}, nên trung bình là {ans}."
    },
+   "prevNum": {
+    "prompt": "Số liền trước của {n} là số nào? (chỉ viết chữ số)",
+    "hints": [
+     "Đếm ngược lại.",
+     "Đếm bớt một đơn vị từ {n}."
+    ],
+    "explanation": "Số liền trước của {n} là {ans}."
+   },
    "probAdd": {
     "prompt": "Cho hai biến cố A và B, $P(A)={pa}$, $P(B)={pb}$ và $P(A\\cap B)={pab}$. Giá trị của $P(A\\cup B)$ là bao nhiêu?",
     "hints": [
@@ -5696,6 +5848,30 @@
      "Giải □ × {b} = {a} × {d}."
     ],
     "explanation": "□×{b}={a}×{d}, nên □={ans}."
+   },
+   "qfuncValue": {
+    "prompt": "Với hàm số bậc hai $y={expr}$, giá trị của $y$ khi $x={x}$ là bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "Thay giá trị đã cho vào chỗ của x.",
+     "Tính bình phương trước."
+    ],
+    "explanation": "Thay x={x} ta được y={ans}."
+   },
+   "quadDisc": {
+    "prompt": "Biệt thức $D=b^2-4ac$ của phương trình bậc hai ${eq}=0$ có giá trị bằng bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "Biệt thức của $ax^2+bx+c=0$ là $D=b^2-4ac$.",
+     "Chú ý dấu của a, b và c."
+    ],
+    "explanation": "a={a}, b={b}, c={c}, nên D=({b})²-4×({a})×({c})={ans}."
+   },
+   "quadFourth": {
+    "prompt": "Ba góc của một tứ giác là {a}°, {b}° và {c}°. Góc thứ tư bằng bao nhiêu độ? (độ)",
+    "hints": [
+     "Bốn góc của tứ giác có tổng bằng 360°.",
+     "Lấy 360 trừ đi ba góc đã biết."
+    ],
+    "explanation": "360-{a}-{b}-{c}={ans}, nên góc đó là {ans}°."
    },
    "quadRoot": {
     "prompt": "Nghiệm lớn hơn trong hai nghiệm của ${eq}$ là nghiệm nào? (chỉ viết chữ số)",
@@ -5848,6 +6024,14 @@
      "Sau đó chia hai vế cho số đứng trước x."
     ],
     "explanation": "Từ ${eq}$ ta được x={ans}."
+   },
+   "sqrtProd": {
+    "prompt": "Giá trị của $\\sqrt{{a}} \\times \\sqrt{{b}}$ là bao nhiêu? (chỉ viết chữ số)",
+    "hints": [
+     "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+     "Kiểm tra xem tích có phải là số chính phương không."
+    ],
+    "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
    },
    "sqrtVal": {
     "prompt": "Giá trị của $\\sqrt{{n}}$ là bao nhiêu? (chỉ viết chữ số)",

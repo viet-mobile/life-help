@@ -455,6 +455,190 @@
         "Divider de to værdier."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Hvilket af {list} er det største? (kun cifre)",
+      "hints": [
+        "Sammenlign tallene et ad gangen.",
+        "Find det tal, der står for den største mængde."
+      ],
+      "expl": "Det største af {list} er {ans}."
+    },
+    "minOf": {
+      "prompt": "Hvilket af {list} er det mindste? (kun cifre)",
+      "hints": [
+        "Sammenlign tallene et ad gangen.",
+        "Find det tal, der står for den mindste mængde."
+      ],
+      "expl": "Det mindste af {list} er {ans}."
+    },
+    "nextNum": {
+      "prompt": "Hvilket tal kommer lige efter {n}? (kun cifre)",
+      "hints": [
+        "Tæl tallene i rækkefølge.",
+        "Tæl én mere fra {n}."
+      ],
+      "expl": "Tallet lige efter {n} er {ans}."
+    },
+    "prevNum": {
+      "prompt": "Hvilket tal kommer lige før {n}? (kun cifre)",
+      "hints": [
+        "Tæl baglæns.",
+        "Tæl én mindre fra {n}."
+      ],
+      "expl": "Tallet lige før {n} er {ans}."
+    },
+    "makeTen": {
+      "prompt": "Hvilket tal skal lægges til {a} for at få 10? (kun cifre)",
+      "hints": [
+        "Træk {a} fra 10.",
+        "Tænk på dine ti fingre."
+      ],
+      "expl": "{a}+{ans}=10, så svaret er {ans}."
+    },
+    "missAdd": {
+      "prompt": "I $\\square + {b} = {c}$, hvilket tal står i feltet? (kun cifre)",
+      "hints": [
+        "Træk det kendte tal fra summen for at finde □.",
+        "Beregn {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, så □={ans}."
+    },
+    "missSub": {
+      "prompt": "I $ {a} - \\square = {c}$, hvilket tal står i feltet? (kun cifre)",
+      "hints": [
+        "Træk resultatet fra det første tal for at finde □.",
+        "Beregn {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, så □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Hvad er cifferet på enerpladsen i ${n}$? (kun cifre)",
+      "hints": [
+        "Det er cifferet længst til højre.",
+        "Enerpladsen viser de enkelte enere."
+      ],
+      "expl": "Cifferet på enerpladsen i {n} er {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Hvad er cifferet på hundredepladsen i ${n}$? (kun cifre)",
+      "hints": [
+        "Det er det tredje ciffer fra højre.",
+        "I et trecifret tal er det det første ciffer."
+      ],
+      "expl": "Cifferet på hundredepladsen i {n} er {ans}."
+    },
+    "moreBy": {
+      "prompt": "Hvilket tal er {k} mere end {n}? (kun cifre)",
+      "hints": [
+        "Det er det samme som at springe-tælle op med {k}.",
+        "Kun cifferet på én plads ændrer sig."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Hvilket tal er {k} mindre end {n}? (kun cifre)",
+      "hints": [
+        "Det er det samme som at springe-tælle ned med {k}.",
+        "Kun cifferet på én plads ændrer sig."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Der er {a} i hvert bundt og {b} bundter. Hvor mange er der i alt? (kun cifre)",
+      "hints": [
+        "Lige store grupper kan tælles med multiplikation.",
+        "Det er det samme som at lægge {a} sammen {b} gange."
+      ],
+      "expl": "{a}×{b}={ans}, så der er {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Tre vinkler i en firkant er {a}°, {b}° og {c}°. Hvor mange grader er den fjerde vinkel? (grader)",
+      "hints": [
+        "De fire vinkler i en firkant er tilsammen 360°.",
+        "Træk de tre kendte vinkler fra 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, så den er {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Skriv brøken $\\frac{{a}}{{b}}$ som decimaltal. (skriv et decimaltal)",
+      "hints": [
+        "Omskriv brøken, så nævneren bliver 10 eller 100.",
+        "Eller divider tælleren med nævneren."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Hvad er værdien af $\\sqrt{{a}} \\times \\sqrt{{b}}$? (kun cifre)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Tjek, om produktet er et kvadrattal."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Hvis $({e})^2 = x^2+px+q$, hvad er $p+q$? (kun cifre)",
+      "hints": [
+        "Brug $(x+a)^2=x^2+2ax+a^2$.",
+        "p er 2a, og q er a²."
+      ],
+      "expl": "p={p} og q={q}, så p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Når ${poly}$ faktoriseres som $(x+m)(x+n)$, hvad er forskellen mellem m og n (største minus mindste)? (kun cifre)",
+      "hints": [
+        "Find to tal, hvis sum er koefficienten til x, og hvis produkt er konstantleddet.",
+        "Når du har fundet dem, træk det mindste fra det største."
+      ],
+      "expl": "${poly}=({fm})({fn})$, så de to tal er {m} og {n}, og forskellen er {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Hvad er værdien af diskriminanten $D=b^2-4ac$ for andengradsligningen ${eq}=0$? (kun cifre)",
+      "hints": [
+        "Diskriminanten for $ax^2+bx+c=0$ er $D=b^2-4ac$.",
+        "Pas på fortegnene for a, b og c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, så D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "For andengradsfunktionen $y={expr}$, hvad er $y$, når $x={x}$? (kun cifre)",
+      "hints": [
+        "Sæt den givne værdi ind i stedet for x.",
+        "Beregn kvadratet først."
+      ],
+      "expl": "Når x={x}, får vi y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Hvad er værdien af $\\log_{{b}} {m} + \\log_{{b}} {n}$? (kun cifre)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Find først produktet {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Hvad er summen af de første {n} led i den aritmetiske talfølge med første led {a} og differens {d}? (kun cifre)",
+      "hints": [
+        "Summen findes med formlen $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Du kan også finde det sidste led og regne (første + sidste) × antal led ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "En kvotientfølge har første led {a} og tredje led {c}. Hvad er kvotienten? (positiv, kun cifre)",
+      "hints": [
+        "Det tredje led er det første led ganget med kvotienten to gange.",
+        "Find $r^2$ ud fra $ar^2=c$."
+      ],
+      "expl": "Af {a}×r²={c} får vi r²={sq}, så kvotienten er {ans}."
+    },
+    "limFactor": {
+      "prompt": "Hvad er værdien af $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (kun cifre)",
+      "hints": [
+        "Tælleren kan faktoriseres som $(x-a)(x+a)$.",
+        "Forkort, og sæt derefter grænseværdien ind i stedet for x."
+      ],
+      "expl": "Efter faktorisering af tælleren og forkortning giver x={a} værdien {ans}."
     }
   }
 }

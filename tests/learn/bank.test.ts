@@ -74,7 +74,7 @@ const simpson = (f: (x: number) => number, lo: number, hi: number) => { const n 
 const cx = (t: string) => { const m = /^\((-?\d+)([+-]\d*)i\)$/.exec(t)!; const im = m[2] === "+" ? 1 : m[2] === "-" ? -1 : Number(m[2]); return [Number(m[1]), im]; };
 const frac = (t: string) => { const m = /^(-?)\\frac\{(\d+)\}\{(\d+)\}$/.exec(t); return m ? (m[1] ? -1 : 1) * (Number(m[2]) / Number(m[3])) : Number(t); };
 const VERIFY2: Record<string, (v: V) => number> = {
-  plus: (v) => v.a + v.b, minus: (v) => v.a - v.b, times: (v) => v.a * v.b, divide: (v) => { expect(v.a % v.b).toBe(0); return v.a / v.b; },
+  plus: (v) => Math.round((v.a + v.b) * 100) / 100, minus: (v) => Math.round((v.a - v.b) * 100) / 100, times: (v) => v.a * v.b, divide: (v) => { expect(v.a % v.b).toBe(0); return v.a / v.b; },
   tensDigit: (v) => Number(String(v.n)[String(v.n).length - 2]),
   seqNext: (v) => { const xs = num(v.list); const d = xs[1] - xs[0]; xs.slice(1).forEach((x, i) => expect(x - xs[i]).toBe(d)); expect(Number(v.d)).toBe(d); return xs[xs.length - 1] + d; },
   kmToM: (v) => v.v * 1000, lToMl: (v) => v.v * 1000, convMCm: (v) => v.v * 100, convKgG: (v) => Math.round(v.v * 1000),
@@ -122,6 +122,27 @@ const VERIFY2: Record<string, (v: V) => number> = {
   ciHalf: (v) => { expect(v.rt * v.rt).toBe(v.n); return Math.round(((1.96 * v.s) / v.rt) * 100) / 100; },
 };
 Object.assign(VERIFY, VERIFY2);
+
+const VERIFY3: Record<string, (v: V) => number> = {
+  maxOf: (v) => Math.max(...num(v.list)), minOf: (v) => Math.min(...num(v.list)),
+  nextNum: (v) => v.n + 1, prevNum: (v) => v.n - 1, makeTen: (v) => { for (let x = 0; x <= 10; x++) if (v.a + x === 10) return x; throw new Error("none"); },
+  missAdd: (v) => { for (let x = 0; x <= 200; x++) if (x + v.b === v.c) return x; throw new Error("none"); },
+  missSub: (v) => { for (let x = 0; x <= 200; x++) if (v.a - x === v.c) return x; throw new Error("none"); },
+  onesDigit: (v) => Number(String(v.n).slice(-1)), hundredsDigit: (v) => Number(String(v.n)[0]),
+  moreBy: (v) => v.n + v.k, lessBy: (v) => v.n - v.k, groups: (v) => { let t = 0; for (let i = 0; i < v.b; i++) t += v.a; return t; },
+  quadFourth: (v) => 360 - v.a - v.b - v.c,
+  fracToDec: (v) => v.a / v.b,
+  sqrtProd: (v) => { const r = Math.round(Math.sqrt(v.a * v.b)); expect(r * r).toBe(v.a * v.b); expect(v.prod).toBe(v.a * v.b); return r; },
+  expandSquare: (v) => { const a = Number(String(v.e).slice(1)); const f = (x: number) => (x + a) ** 2 - (x * x + v.p * x + v.q); for (const x of [-4, 0, 3, 7]) expect(f(x) === 0).toBe(true); return v.p + v.q; },
+  factorDiff: (v) => { const m = Number(String(v.fm).slice(1)), n = Number(String(v.fn).slice(1)); expect([m, n]).toEqual([v.m, v.n]); for (const x of [-3, 0, 2, 5]) expect(poly(String(v.poly), x) === (x + m) * (x + n)).toBe(true); expect(m).toBeLessThan(n); return n - m; },
+  quadDisc: (v) => { const f = (x: number) => poly(String(v.eq), x); expect(f(0)).toBe(v.c); expect(f(1)).toBe(v.a + v.b + v.c); expect(f(-1)).toBe(v.a - v.b + v.c); return v.b * v.b - 4 * v.a * v.c; },
+  qfuncValue: (v) => poly(String(v.expr), v.x),
+  logAdd: (v) => { expect(v.m * v.n).toBe(v.prod); let k = 0, p = 1; while (p < v.prod) { p *= v.b; k++; } expect(p).toBe(v.prod); return k; },
+  arithSum: (v) => { let t = 0, term = v.a; for (let i = 0; i < v.n; i++) { t += term; term += v.d; } return t; },
+  geoRatio: (v) => { for (let q = 1; q <= 50; q++) if (v.a * q * q === v.c) { expect(v.sq).toBe(q * q); return q; } throw new Error("none"); },
+  limFactor: (v) => { const a = v.a; const f = (x: number) => (x * x - v.sq) / (x - a); return Math.round(f(a + 1e-6)); },
+};
+Object.assign(VERIFY, VERIFY3);
 
 function roots(v: V): number[] {
   const rs = (String(v.fact).replace(/\$|=0/g, "").match(/\(x[+-]\d+\)|x/g) ?? []).map((t) => (t === "x" ? 0 : -Number(t.slice(2, -1))));

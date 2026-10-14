@@ -455,6 +455,190 @@
         "Diviser avaleur ûse so."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Nömörö wa ayeke kota ahön na yâ ti {list}? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Sara comparaison ti nömörö oko oko.",
+        "Gi nömörö so ayeke kota ahön."
+      ],
+      "expl": "Nömörö so ayeke kota ahön na yâ ti {list} ayeke {ans}."
+    },
+    "minOf": {
+      "prompt": "Nömörö wa ayeke kete ahön na yâ ti {list}? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Sara comparaison ti nömörö oko oko.",
+        "Gi nömörö so ayeke kete ahön."
+      ],
+      "expl": "Nömörö so ayeke kete ahön na yâ ti {list} ayeke {ans}."
+    },
+    "nextNum": {
+      "prompt": "Nömörö wa aga mîngi na pekoni ti {n}? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Bâ nömörö na ndö ti ala.",
+        "Bâ oko ahön na {n}."
+      ],
+      "expl": "Nömörö so aga na pekoni ti {n} ayeke {ans}."
+    },
+    "prevNum": {
+      "prompt": "Nömörö wa ayeke na kûê ti {n}? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Bâ nömörö na pekoni.",
+        "Bâ oko kete na {n}."
+      ],
+      "expl": "Nömörö so ayeke na kûê ti {n} ayeke {ans}."
+    },
+    "makeTen": {
+      "prompt": "Nömörö wa mo yeke tîngbi na {a} ti wara 10? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Zîa {a} na 10.",
+        "Bâ ndo ti mo ti oko ti yâ ti ala 10."
+      ],
+      "expl": "{a}+{ans}=10, ndö ti ni ayeke {ans}."
+    },
+    "missAdd": {
+      "prompt": "Na yâ ti $\\square + {b} = {c}$, nömörö wa ayeke na yâ ti kare? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Zîa nömörö so mo hinga na yâ ti total ti wara □.",
+        "Sara calcul ti {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, tongana □={ans}."
+    },
+    "missSub": {
+      "prompt": "Na yâ ti $ {a} - \\square = {c}$, nömörö wa ayeke na yâ ti kare? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Zîa résultat na yâ ti premier nömörö ti wara □.",
+        "Sara calcul ti {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, tongana □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Chiffre wa ayeke na place ti unités ti ${n}$? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Ni ayeke chiffre so ayeke na droite mîngi.",
+        "Place ti unités amû unités oko oko."
+      ],
+      "expl": "Chiffre ti unités ti {n} ayeke {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Chiffre wa ayeke na place ti centaines ti ${n}$? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Ni ayeke troisième chiffre na droite.",
+        "Na yâ ti nömörö ti chiffre ota, ni ayeke premier chiffre."
+      ],
+      "expl": "Chiffre ti centaines ti {n} ayeke {ans}."
+    },
+    "moreBy": {
+      "prompt": "Nömörö wa ayeke {k} mîngi ahön {n}? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Ni ayeke tongana mo bâ na ndö {k} oko oko.",
+        "Chiffre ti place oko hoto ayeke changé."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Nömörö wa ayeke {k} kete ahön {n}? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Ni ayeke tongana mo bâ na kûê {k} oko oko.",
+        "Chiffre ti place oko hoto ayeke changé."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "{a} ayeke na yâ ti paquet oko oko, na paquet ayeke {b}. Ala kûê ayeke asi anga? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Agroupe so ayeke tî ngangu oko, mo lingbi ti bâ ala na multiplication.",
+        "Ni ayeke tongana mo bâ {a} ti {b} fois."
+      ],
+      "expl": "{a}×{b}={ans}, tongana ala kûê ayeke {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Angle ota ti quadrilatère ayeke {a}°, {b}° na {c}°. Angle ti ota-oko ayeke degré wa? (degré)",
+      "hints": [
+        "Angle osio ti quadrilatère atîngbi na 360°.",
+        "Zîa angle ota so mo hinga na yâ ti 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, tongana ni ayeke {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Koli fraction $\\frac{{a}}{{b}}$ tongana nömörö décimal. (koli nömörö décimal)",
+      "hints": [
+        "Sara fraction ni nga ti dénominateur ayeke 10 wala 100.",
+        "Wala mo partager numérateur na dénominateur."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Valeur ti $\\sqrt{{a}} \\times \\sqrt{{b}}$ ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Bâ si produit ni ayeke nömörö carré."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Tongana $({e})^2 = x^2+px+q$, $p+q$ ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Sara na $(x+a)^2=x^2+2ax+a^2$.",
+        "p ayeke 2a na q ayeke a²."
+      ],
+      "expl": "p={p} na q={q}, tongana p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Tongana mo factoriser ${poly}$ tongana $(x+m)(x+n)$, différence na ndö ti m na n (kota zîa kete) ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Gi nömörö use so somme ti ala ayeke coefficient ti x na produit ti ala ayeke constante.",
+        "Tongana mo wara ala, zîa kete na yâ ti kota."
+      ],
+      "expl": "${poly}=({fm})({fn})$, tongana nömörö use ayeke {m} na {n}, na différence ayeke {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Valeur ti discriminant $D=b^2-4ac$ ti équation quadratique ${eq}=0$ ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Discriminant ti $ax^2+bx+c=0$ ayeke $D=b^2-4ac$.",
+        "Bâ signe ti a, b na c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, tongana D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Na yâ ti fonction quadratique $y={expr}$, $y$ ayeke nini tongana $x={x}$? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Zîa valeur so ala mû na place ti x.",
+        "Sara calcul ti carré kozo."
+      ],
+      "expl": "Tongana mo zîa x={x}, mo wara y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Valeur ti $\\log_{{b}} {m} + \\log_{{b}} {n}$ ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Gi kozo produit {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Somme ti {n} terme ti kozo ti suite arithmétique so premier terme ayeke {a} na raison ayeke {d} ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Formule ti somme ayeke $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Mo lingbi nga ti gi terme ti suka na sara calcul (premier + dernier) × nömörö ti terme ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Suite géométrique so premier terme ni ayeke {a} na troisième terme ayeke {c}. Raison ayeke nini? (positif, nömörö ti 0-9 kûê)",
+      "hints": [
+        "Troisième terme ayeke premier terme so mo multiplier na raison ti use.",
+        "Na yâ ti $ar^2=c$, gi $r^2$."
+      ],
+      "expl": "Na yâ ti {a}×r²={c} e wara r²={sq}, tongana raison ayeke {ans}."
+    },
+    "limFactor": {
+      "prompt": "Valeur ti $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ ayeke nini? (nömörö ti 0-9 kûê)",
+      "hints": [
+        "Numérateur lingbi ti factoriser tongana $(x-a)(x+a)$.",
+        "Zîa ala so atîngbi, na pekoni zîa valeur ti limite na place ti x."
+      ],
+      "expl": "Na pekoni ti factorisation na simplification, tongana mo zîa x={a}, mo wara {ans}."
     }
   }
 }

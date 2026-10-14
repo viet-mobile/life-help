@@ -455,6 +455,190 @@
         "Dividi i due valori."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Qual è il più grande tra {list}? (solo cifre)",
+      "hints": [
+        "Confronta i numeri uno alla volta.",
+        "Trova il numero che rappresenta di più."
+      ],
+      "expl": "Il più grande tra {list} è {ans}."
+    },
+    "minOf": {
+      "prompt": "Qual è il più piccolo tra {list}? (solo cifre)",
+      "hints": [
+        "Confronta i numeri uno alla volta.",
+        "Trova il numero che rappresenta di meno."
+      ],
+      "expl": "Il più piccolo tra {list} è {ans}."
+    },
+    "nextNum": {
+      "prompt": "Qual è il numero che viene subito dopo {n}? (solo cifre)",
+      "hints": [
+        "Conta i numeri in ordine.",
+        "Conta uno in più a partire da {n}."
+      ],
+      "expl": "Il numero subito dopo {n} è {ans}."
+    },
+    "prevNum": {
+      "prompt": "Qual è il numero che viene subito prima di {n}? (solo cifre)",
+      "hints": [
+        "Conta all'indietro.",
+        "Conta uno in meno a partire da {n}."
+      ],
+      "expl": "Il numero subito prima di {n} è {ans}."
+    },
+    "makeTen": {
+      "prompt": "Quale numero aggiunto a {a} fa 10? (solo cifre)",
+      "hints": [
+        "Sottrai {a} da 10.",
+        "Pensa alle tue dieci dita."
+      ],
+      "expl": "{a}+{ans}=10, quindi la risposta è {ans}."
+    },
+    "missAdd": {
+      "prompt": "In $\\square + {b} = {c}$, quale numero va nel riquadro? (solo cifre)",
+      "hints": [
+        "Sottrai il numero noto dal totale per trovare □.",
+        "Calcola {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, quindi □={ans}."
+    },
+    "missSub": {
+      "prompt": "In $ {a} - \\square = {c}$, quale numero va nel riquadro? (solo cifre)",
+      "hints": [
+        "Sottrai il risultato dal primo numero per trovare □.",
+        "Calcola {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, quindi □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Qual è la cifra delle unità di ${n}$? (solo cifre)",
+      "hints": [
+        "È la cifra più a destra.",
+        "Il posto delle unità indica le unità singole."
+      ],
+      "expl": "La cifra delle unità di {n} è {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Qual è la cifra delle centinaia di ${n}$? (solo cifre)",
+      "hints": [
+        "È la terza cifra da destra.",
+        "In un numero di tre cifre è la prima cifra."
+      ],
+      "expl": "La cifra delle centinaia di {n} è {ans}."
+    },
+    "moreBy": {
+      "prompt": "Quale numero è {k} in più di {n}? (solo cifre)",
+      "hints": [
+        "È come contare in avanti di {k} in {k}.",
+        "Cambia solo la cifra di un posto."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Quale numero è {k} in meno di {n}? (solo cifre)",
+      "hints": [
+        "È come contare all'indietro di {k} in {k}.",
+        "Cambia solo la cifra di un posto."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Ci sono {a} in ogni mazzo e ci sono {b} mazzi. Quanti ce ne sono in tutto? (solo cifre)",
+      "hints": [
+        "I gruppi uguali si contano con la moltiplicazione.",
+        "È come sommare {a} per {b} volte in tutto."
+      ],
+      "expl": "{a}×{b}={ans}, quindi ce ne sono {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Tre angoli di un quadrilatero misurano {a}°, {b}° e {c}°. Quanti gradi misura il quarto angolo? (gradi)",
+      "hints": [
+        "I quattro angoli di un quadrilatero sommano 360°.",
+        "Sottrai da 360 i tre angoli noti."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, quindi misura {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Scrivi la frazione $\\frac{{a}}{{b}}$ come numero decimale. (scrivi un numero decimale)",
+      "hints": [
+        "Riscrivi la frazione in modo che il denominatore sia 10 o 100.",
+        "Oppure dividi il numeratore per il denominatore."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Qual è il valore di $\\sqrt{{a}} \\times \\sqrt{{b}}$? (solo cifre)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Controlla se il prodotto è un quadrato perfetto."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Se $({e})^2 = x^2+px+q$, quanto vale $p+q$? (solo cifre)",
+      "hints": [
+        "Usa $(x+a)^2=x^2+2ax+a^2$.",
+        "p è 2a e q è a²."
+      ],
+      "expl": "p={p} e q={q}, quindi p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Quando ${poly}$ è scomposto come $(x+m)(x+n)$, qual è la differenza tra m e n (il maggiore meno il minore)? (solo cifre)",
+      "hints": [
+        "Trova due numeri la cui somma è il coefficiente di x e il cui prodotto è il termine noto.",
+        "Dopo averli trovati, sottrai il minore dal maggiore."
+      ],
+      "expl": "${poly}=({fm})({fn})$, quindi i due numeri sono {m} e {n}, e la differenza è {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Qual è il valore del discriminante $D=b^2-4ac$ dell'equazione di secondo grado ${eq}=0$? (solo cifre)",
+      "hints": [
+        "Il discriminante di $ax^2+bx+c=0$ è $D=b^2-4ac$.",
+        "Fai attenzione ai segni di a, b e c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, quindi D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Per la funzione quadratica $y={expr}$, quanto vale $y$ quando $x={x}$? (solo cifre)",
+      "hints": [
+        "Sostituisci il valore dato al posto di x.",
+        "Calcola prima il quadrato."
+      ],
+      "expl": "Sostituendo x={x} si ottiene y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Qual è il valore di $\\log_{{b}} {m} + \\log_{{b}} {n}$? (solo cifre)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Trova prima il prodotto {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Qual è la somma dei primi {n} termini della progressione aritmetica con primo termine {a} e ragione {d}? (solo cifre)",
+      "hints": [
+        "La formula della somma è $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Puoi anche trovare l'ultimo termine e calcolare (primo + ultimo) × numero di termini ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Una progressione geometrica ha primo termine {a} e terzo termine {c}. Qual è la ragione? (positiva, solo cifre)",
+      "hints": [
+        "Il terzo termine è il primo moltiplicato due volte per la ragione.",
+        "Da $ar^2=c$ trova $r^2$."
+      ],
+      "expl": "Da {a}×r²={c} si ottiene r²={sq}, quindi la ragione è {ans}."
+    },
+    "limFactor": {
+      "prompt": "Qual è il valore di $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (solo cifre)",
+      "hints": [
+        "Il numeratore si scompone come $(x-a)(x+a)$.",
+        "Semplifica, poi sostituisci il valore del limite al posto di x."
+      ],
+      "expl": "Dopo aver scomposto il numeratore e semplificato, sostituendo x={a} si ottiene {ans}."
     }
   }
 }

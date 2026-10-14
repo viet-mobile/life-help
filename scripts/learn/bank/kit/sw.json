@@ -455,6 +455,190 @@
         "Gawanya thamani hizo mbili."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Ni nambari ipi kubwa zaidi kati ya {list}? (tarakimu tu)",
+      "hints": [
+        "Linganisha nambari moja moja.",
+        "Tafuta nambari yenye thamani kubwa zaidi."
+      ],
+      "expl": "Kubwa zaidi kati ya {list} ni {ans}."
+    },
+    "minOf": {
+      "prompt": "Ni nambari ipi ndogo zaidi kati ya {list}? (tarakimu tu)",
+      "hints": [
+        "Linganisha nambari moja moja.",
+        "Tafuta nambari yenye thamani ndogo zaidi."
+      ],
+      "expl": "Ndogo zaidi kati ya {list} ni {ans}."
+    },
+    "nextNum": {
+      "prompt": "Ni nambari gani inakuja mara baada ya {n}? (tarakimu tu)",
+      "hints": [
+        "Hesabu nambari kwa mpangilio.",
+        "Hesabu moja zaidi kutoka {n}."
+      ],
+      "expl": "Nambari inayokuja mara baada ya {n} ni {ans}."
+    },
+    "prevNum": {
+      "prompt": "Ni nambari gani inakuja mara kabla ya {n}? (tarakimu tu)",
+      "hints": [
+        "Hesabu kurudi nyuma.",
+        "Hesabu moja pungufu kutoka {n}."
+      ],
+      "expl": "Nambari inayokuja mara kabla ya {n} ni {ans}."
+    },
+    "makeTen": {
+      "prompt": "Ni nambari gani ukiongeza kwa {a} unapata 10? (tarakimu tu)",
+      "hints": [
+        "Toa {a} kutoka 10.",
+        "Fikiria vidole vyako kumi."
+      ],
+      "expl": "{a}+{ans}=10, kwa hiyo jibu ni {ans}."
+    },
+    "missAdd": {
+      "prompt": "Katika $\\square + {b} = {c}$, ni nambari gani inaingia kwenye kisanduku? (tarakimu tu)",
+      "hints": [
+        "Toa nambari inayojulikana kutoka kwenye jumla ili kupata □.",
+        "Kokotoa {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, kwa hiyo □={ans}."
+    },
+    "missSub": {
+      "prompt": "Katika $ {a} - \\square = {c}$, ni nambari gani inaingia kwenye kisanduku? (tarakimu tu)",
+      "hints": [
+        "Toa jibu kutoka kwenye nambari ya kwanza ili kupata □.",
+        "Kokotoa {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, kwa hiyo □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Tarakimu ya mahali pa mamoja katika ${n}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Ni tarakimu ya mwisho upande wa kulia.",
+        "Mahali pa mamoja panaonyesha mamoja moja."
+      ],
+      "expl": "Tarakimu ya mamoja ya {n} ni {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Tarakimu ya mahali pa mamia katika ${n}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Ni tarakimu ya tatu kutoka kulia.",
+        "Katika nambari ya tarakimu tatu ni tarakimu ya kwanza."
+      ],
+      "expl": "Tarakimu ya mamia ya {n} ni {ans}."
+    },
+    "moreBy": {
+      "prompt": "Ni nambari gani iliyozidi {n} kwa {k}? (tarakimu tu)",
+      "hints": [
+        "Ni sawa na kuruka kuhesabu kwenda juu kwa {k}.",
+        "Tarakimu ya mahali pamoja tu ndiyo inabadilika."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Ni nambari gani iliyopungua {n} kwa {k}? (tarakimu tu)",
+      "hints": [
+        "Ni sawa na kuruka kuhesabu kwenda chini kwa {k}.",
+        "Tarakimu ya mahali pamoja tu ndiyo inabadilika."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "Kuna {a} katika kila furushi na kuna furushi {b}. Kuna vingapi kwa jumla? (tarakimu tu)",
+      "hints": [
+        "Vikundi sawa vinaweza kuhesabiwa kwa kuzidisha.",
+        "Ni sawa na kujumlisha {a} mara {b}."
+      ],
+      "expl": "{a}×{b}={ans}, kwa hiyo kuna {ans} kwa jumla."
+    },
+    "quadFourth": {
+      "prompt": "Pembe tatu za pembenne ni {a}°, {b}° na {c}°. Pembe ya nne ni digrii ngapi? (digrii)",
+      "hints": [
+        "Pembe nne za pembenne hujumlika kuwa 360°.",
+        "Toa pembe tatu zinazojulikana kutoka 360."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, kwa hiyo ni {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Andika sehemu $\\frac{{a}}{{b}}$ kama desimali. (andika desimali)",
+      "hints": [
+        "Andika upya sehemu hiyo ili kipeo chini kiwe 10 au 100.",
+        "Au gawanya kiasi cha juu kwa kiasi cha chini."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Thamani ya $\\sqrt{{a}} \\times \\sqrt{{b}}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Angalia kama zao ni nambari ya mraba."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Kama $({e})^2 = x^2+px+q$, $p+q$ ni ngapi? (tarakimu tu)",
+      "hints": [
+        "Tumia $(x+a)^2=x^2+2ax+a^2$.",
+        "p ni 2a na q ni a²."
+      ],
+      "expl": "p={p} na q={q}, kwa hiyo p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "${poly}$ ikigawanywa kwa vigezo kama $(x+m)(x+n)$, tofauti kati ya m na n (kubwa toa ndogo) ni ipi? (tarakimu tu)",
+      "hints": [
+        "Tafuta nambari mbili ambazo jumla yake ni kigawo cha x na zao ni kiambato thabiti.",
+        "Ukishazipata, toa ndogo kutoka kubwa."
+      ],
+      "expl": "${poly}=({fm})({fn})$, kwa hiyo nambari hizo mbili ni {m} na {n}, na tofauti ni {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Thamani ya kibaguzi $D=b^2-4ac$ cha mlinganyo wa kwadratiki ${eq}=0$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Kibaguzi cha $ax^2+bx+c=0$ ni $D=b^2-4ac$.",
+        "Angalia alama za a, b na c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, kwa hiyo D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Kwa chaguo za kwadratiki $y={expr}$, $y$ ni ngapi wakati $x={x}$? (tarakimu tu)",
+      "hints": [
+        "Weka thamani uliyopewa badala ya x.",
+        "Kokotoa mraba kwanza."
+      ],
+      "expl": "Kuweka x={x} kunatoa y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Thamani ya $\\log_{{b}} {m} + \\log_{{b}} {n}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Kwanza tafuta zao {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Jumla ya vipengele {n} vya kwanza vya mfuatano wa hesabu wenye kipengele cha kwanza {a} na tofauti ya kawaida {d} ni ipi? (tarakimu tu)",
+      "hints": [
+        "Fomula ya jumla ni $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Unaweza pia kutafuta kipengele cha mwisho na kukokotoa (cha kwanza + cha mwisho) × idadi ya vipengele ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Mfuatano wa kijiometri una kipengele cha kwanza {a} na cha tatu {c}. Uwiano wa kawaida ni upi? (chanya, tarakimu tu)",
+      "hints": [
+        "Kipengele cha tatu ni cha kwanza kikizidishwa na uwiano mara mbili.",
+        "Kutoka $ar^2=c$ tafuta $r^2$."
+      ],
+      "expl": "Kutoka {a}×r²={c} tunapata r²={sq}, kwa hiyo uwiano wa kawaida ni {ans}."
+    },
+    "limFactor": {
+      "prompt": "Thamani ya $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ ni ipi? (tarakimu tu)",
+      "hints": [
+        "Kiasi cha juu kinagawanyika kwa vigezo kama $(x-a)(x+a)$.",
+        "Futa vinavyofanana, kisha weka thamani ya kikomo badala ya x."
+      ],
+      "expl": "Baada ya kugawa kiasi cha juu kwa vigezo na kufuta, kuweka x={a} kunatoa {ans}."
     }
   }
 }

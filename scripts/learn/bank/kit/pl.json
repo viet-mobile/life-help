@@ -455,6 +455,190 @@
         "Podziel obie wartości."
       ],
       "expl": "{pab}÷{pa}={ans}."
+    },
+    "maxOf": {
+      "prompt": "Która z liczb {list} jest największa? (same cyfry)",
+      "hints": [
+        "Porównuj liczby po kolei.",
+        "Znajdź liczbę, która oznacza najwięcej."
+      ],
+      "expl": "Największa z liczb {list} to {ans}."
+    },
+    "minOf": {
+      "prompt": "Która z liczb {list} jest najmniejsza? (same cyfry)",
+      "hints": [
+        "Porównuj liczby po kolei.",
+        "Znajdź liczbę, która oznacza najmniej."
+      ],
+      "expl": "Najmniejsza z liczb {list} to {ans}."
+    },
+    "nextNum": {
+      "prompt": "Jaka liczba występuje zaraz po {n}? (same cyfry)",
+      "hints": [
+        "Licz liczby po kolei.",
+        "Policz o jeden więcej od {n}."
+      ],
+      "expl": "Liczba zaraz po {n} to {ans}."
+    },
+    "prevNum": {
+      "prompt": "Jaka liczba występuje zaraz przed {n}? (same cyfry)",
+      "hints": [
+        "Licz wstecz.",
+        "Policz o jeden mniej od {n}."
+      ],
+      "expl": "Liczba zaraz przed {n} to {ans}."
+    },
+    "makeTen": {
+      "prompt": "Jaką liczbę trzeba dodać do {a}, aby otrzymać 10? (same cyfry)",
+      "hints": [
+        "Odejmij {a} od 10.",
+        "Pomyśl o swoich dziesięciu palcach."
+      ],
+      "expl": "{a}+{ans}=10, więc odpowiedź to {ans}."
+    },
+    "missAdd": {
+      "prompt": "Jaka liczba wpisana w kratkę spełnia równanie $\\square + {b} = {c}$? (same cyfry)",
+      "hints": [
+        "Odejmij znaną liczbę od sumy, aby znaleźć □.",
+        "Oblicz {c}-{b}."
+      ],
+      "expl": "{c}-{b}={ans}, więc □={ans}."
+    },
+    "missSub": {
+      "prompt": "Jaka liczba wpisana w kratkę spełnia równanie $ {a} - \\square = {c}$? (same cyfry)",
+      "hints": [
+        "Odejmij wynik od pierwszej liczby, aby znaleźć □.",
+        "Oblicz {a}-{c}."
+      ],
+      "expl": "{a}-{c}={ans}, więc □={ans}."
+    },
+    "onesDigit": {
+      "prompt": "Jaka cyfra jest na miejscu jedności w liczbie ${n}$? (same cyfry)",
+      "hints": [
+        "To cyfra na samym końcu, z prawej strony.",
+        "Miejsce jedności pokazuje pojedyncze jednostki."
+      ],
+      "expl": "Cyfra jedności liczby {n} to {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Jaka cyfra jest na miejscu setek w liczbie ${n}$? (same cyfry)",
+      "hints": [
+        "To trzecia cyfra od prawej.",
+        "W liczbie trzycyfrowej to pierwsza cyfra."
+      ],
+      "expl": "Cyfra setek liczby {n} to {ans}."
+    },
+    "moreBy": {
+      "prompt": "Jaka liczba jest o {k} większa od {n}? (same cyfry)",
+      "hints": [
+        "To to samo, co liczenie w górę co {k}.",
+        "Zmienia się tylko cyfra na jednym miejscu."
+      ],
+      "expl": "{n}+{k}={ans}."
+    },
+    "lessBy": {
+      "prompt": "Jaka liczba jest o {k} mniejsza od {n}? (same cyfry)",
+      "hints": [
+        "To to samo, co liczenie w dół co {k}.",
+        "Zmienia się tylko cyfra na jednym miejscu."
+      ],
+      "expl": "{n}-{k}={ans}."
+    },
+    "groups": {
+      "prompt": "W każdej wiązce jest {a}, a wiązek jest {b}. Ile jest razem? (same cyfry)",
+      "hints": [
+        "Równe grupy można policzyć za pomocą mnożenia.",
+        "To to samo, co dodanie {a} łącznie {b} razy."
+      ],
+      "expl": "{a}×{b}={ans}, więc jest {ans}."
+    },
+    "quadFourth": {
+      "prompt": "Trzy kąty czworokąta mają miary {a}°, {b}° i {c}°. Ile stopni ma czwarty kąt? (stopnie)",
+      "hints": [
+        "Cztery kąty czworokąta dają w sumie 360°.",
+        "Odejmij od 360 trzy znane kąty."
+      ],
+      "expl": "360-{a}-{b}-{c}={ans}, więc ma {ans}°."
+    },
+    "fracToDec": {
+      "prompt": "Zapisz ułamek $\\frac{{a}}{{b}}$ w postaci dziesiętnej. (zapisz liczbę dziesiętną)",
+      "hints": [
+        "Przekształć ułamek tak, aby mianownik wynosił 10 lub 100.",
+        "Albo podziel licznik przez mianownik."
+      ],
+      "expl": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "sqrtProd": {
+      "prompt": "Ile wynosi $\\sqrt{{a}} \\times \\sqrt{{b}}$? (same cyfry)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Sprawdź, czy iloczyn jest kwadratem liczby."
+      ],
+      "expl": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "expandSquare": {
+      "prompt": "Jeśli $({e})^2 = x^2+px+q$, to ile wynosi $p+q$? (same cyfry)",
+      "hints": [
+        "Skorzystaj ze wzoru $(x+a)^2=x^2+2ax+a^2$.",
+        "p to 2a, a q to a²."
+      ],
+      "expl": "p={p} i q={q}, więc p+q={ans}."
+    },
+    "factorDiff": {
+      "prompt": "Gdy ${poly}$ rozłożymy na czynniki jako $(x+m)(x+n)$, ile wynosi różnica między m i n (większa minus mniejsza)? (same cyfry)",
+      "hints": [
+        "Znajdź dwie liczby, których suma jest współczynnikiem przy x, a iloczyn wyrazem wolnym.",
+        "Gdy je znajdziesz, odejmij mniejszą od większej."
+      ],
+      "expl": "${poly}=({fm})({fn})$, więc te dwie liczby to {m} i {n}, a różnica wynosi {ans}."
+    },
+    "quadDisc": {
+      "prompt": "Ile wynosi wyróżnik $D=b^2-4ac$ równania kwadratowego ${eq}=0$? (same cyfry)",
+      "hints": [
+        "Wyróżnik równania $ax^2+bx+c=0$ to $D=b^2-4ac$.",
+        "Uważaj na znaki a, b i c."
+      ],
+      "expl": "a={a}, b={b}, c={c}, więc D=({b})²-4×({a})×({c})={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Dla funkcji kwadratowej $y={expr}$ ile wynosi $y$, gdy $x={x}$? (same cyfry)",
+      "hints": [
+        "Podstaw podaną wartość w miejsce x.",
+        "Najpierw oblicz kwadrat."
+      ],
+      "expl": "Po podstawieniu x={x} otrzymujemy y={ans}."
+    },
+    "logAdd": {
+      "prompt": "Ile wynosi $\\log_{{b}} {m} + \\log_{{b}} {n}$? (same cyfry)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Najpierw oblicz iloczyn {m}×{n}."
+      ],
+      "expl": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Ile wynosi suma pierwszych {n} wyrazów ciągu arytmetycznego o pierwszym wyrazie {a} i różnicy {d}? (same cyfry)",
+      "hints": [
+        "Wzór na sumę to $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Możesz też znaleźć ostatni wyraz i obliczyć (pierwszy + ostatni) × liczba wyrazów ÷ 2."
+      ],
+      "expl": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "geoRatio": {
+      "prompt": "Ciąg geometryczny ma pierwszy wyraz {a} i trzeci wyraz {c}. Ile wynosi iloraz? (dodatni, same cyfry)",
+      "hints": [
+        "Trzeci wyraz to pierwszy wyraz pomnożony dwa razy przez iloraz.",
+        "Z $ar^2=c$ znajdź $r^2$."
+      ],
+      "expl": "Z {a}×r²={c} dostajemy r²={sq}, więc iloraz wynosi {ans}."
+    },
+    "limFactor": {
+      "prompt": "Ile wynosi $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (same cyfry)",
+      "hints": [
+        "Licznik rozkłada się na czynniki jako $(x-a)(x+a)$.",
+        "Skróć, a potem podstaw wartość graniczną w miejsce x."
+      ],
+      "expl": "Po rozłożeniu licznika na czynniki i skróceniu podstawienie x={a} daje {ans}."
     }
   }
 }
