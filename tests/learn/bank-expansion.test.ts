@@ -181,64 +181,45 @@ describe("Skill-Linked Practice Question Bank (Bank) Expansion", () => {
   });
 
   describe("Repository loadIndex Integration with Practice Banks", () => {
-    it("connects English bank to loadIndex and respects bank:false and grade filters", async () => {
+    it("quarantines new English bank from loadIndex while preserving canonical content", async () => {
       const fullEnglish = await loadIndex("english");
-      expect(fullEnglish.bundle.questions.length).toBeGreaterThan(4000);
       const bankQs = fullEnglish.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(bankQs.length).toBeGreaterThanOrEqual(4300);
+      // Discrete English bank is quarantined from student runtime
+      expect(bankQs.length).toBe(0);
+      // Canonical English content remains intact
+      expect(fullEnglish.bundle.questions.length).toBeGreaterThanOrEqual(600);
 
-      const noBankEnglish = await loadIndex("english", { bank: false });
-      expect(noBankEnglish.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
-      expect(noBankEnglish.bundle.questions.length).toBe(628);
-
-      const e1WithBank = await loadIndex("english", { grade: "E1" });
-      const e1BankQs = e1WithBank.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(e1BankQs.length).toBeGreaterThan(0);
-      // All questions must belong only to E1 skills
-      const e1Skills = new Set(e1WithBank.bundle.catalog.skills.map((s) => s.id));
-      for (const q of e1WithBank.bundle.questions) {
-        expect(e1Skills.has(q.skillId)).toBe(true);
-      }
-
-      const e1NoBank = await loadIndex("english", { grade: "E1", bank: false });
-      expect(e1NoBank.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
-      expect(e1WithBank.bundle.questions.length).toBeGreaterThan(e1NoBank.bundle.questions.length);
+      const e1Bundle = await loadIndex("english", { grade: "E1" });
+      expect(e1Bundle.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
+      expect(e1Bundle.bundle.questions.length).toBeGreaterThan(0);
     });
 
-    it("connects Korean bank to loadIndex and respects bank:false and grade/level filters", async () => {
+    it("quarantines new Korean bank and K7..K10 from loadIndex while preserving K1..K6 canonical content", async () => {
       const fullKorean = await loadIndex("korean");
-      expect(fullKorean.bundle.questions.length).toBe(2524);
       const bankQs = fullKorean.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(bankQs.length).toBe(2106);
+      // Discrete Korean bank is quarantined from student runtime
+      expect(bankQs.length).toBe(0);
+      // Canonical Korean published content strictly K1..K6 (418 questions)
+      expect(fullKorean.bundle.questions.length).toBe(418);
 
-      const noBankKorean = await loadIndex("korean", { bank: false });
-      expect(noBankKorean.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
-      expect(noBankKorean.bundle.questions.length).toBe(418);
+      // K7..K10 remain excluded
+      const k7Bundle = await loadIndex("korean", { grade: "K7" });
+      expect(k7Bundle.bundle.questions.length).toBe(0);
+      expect(k7Bundle.bundle.catalog.courses.length).toBe(0);
 
-      // K7..K10 are draft and excluded from active student pathways
-      const k7WithBank = await loadIndex("korean", { grade: "K7" });
-      expect(k7WithBank.bundle.questions.length).toBe(0);
-      expect(k7WithBank.bundle.catalog.courses.length).toBe(0);
-
-      // Active levels (e.g. K1) have bank questions connected
-      const k1WithBank = await loadIndex("korean", { grade: "K1" });
-      const k1BankQs = k1WithBank.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(k1BankQs.length).toBe(351);
-      const k1NoBank = await loadIndex("korean", { grade: "K1", bank: false });
-      expect(k1NoBank.bundle.questions.length).toBe(65);
-      expect(k1WithBank.bundle.questions.length).toBe(65 + 351);
+      // K1 canonical content intact
+      const k1Bundle = await loadIndex("korean", { grade: "K1" });
+      expect(k1Bundle.bundle.questions.length).toBe(65);
     });
 
-    it("bankQuestions filters questions strictly by skill subset", () => {
-      const skillsSubset = new Set(["e.e1.alpha", "e.e1.phonics"]);
-      const filtered = bankQuestions("english", "ko", null, skillsSubset, "2");
-      expect(filtered.length).toBeGreaterThan(0);
-      for (const q of filtered) {
-        expect(skillsSubset.has(q.skillId)).toBe(true);
-      }
+    it("preserves Claude math bank in loadIndex while discrete banks are quarantined", async () => {
+      const fullMath = await loadIndex("math");
+      const mathBankQs = fullMath.bundle.questions.filter((q) => q.tags?.includes("bank"));
+      expect(mathBankQs.length).toBeGreaterThan(0);
 
-      const empty = bankQuestions("english", "ko", null, new Set(), "0");
-      expect(empty.length).toBe(0);
+      // bankQuestions returns empty for quarantined sites
+      expect(bankQuestions("english", "ko", null, new Set(["e.e1.alpha"]), "1")).toEqual([]);
+      expect(bankQuestions("korean", "ko", null, new Set(["k.k1.vowels"]), "1")).toEqual([]);
     });
   });
 });

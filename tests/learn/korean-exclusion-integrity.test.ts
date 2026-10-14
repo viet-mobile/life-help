@@ -85,11 +85,8 @@ describe("Korean K7~K10 Exclusion from Student Pathways & Reference Integrity", 
     const full = await loadIndex("korean");
     const bankQs = full.bundle.questions.filter((q) => q.tags?.includes("bank"));
 
-    // Exactly 6 levels * 351 questions = 2,106 bank questions connected
-    expect(bankQs.length).toBe(2106);
-    for (const q of bankQs) {
-      expect(q.skillId).not.toMatch(/^k\.k(7|8|9|10)\./);
-    }
+    // Korean bank is quarantined pending quality review; 0 bank questions in student bundle
+    expect(bankQs.length).toBe(0);
 
     // Scoping to K7 yields 0 courses and 0 questions
     const scopedK7 = await loadIndex("korean", { grade: "K7" });

@@ -15,6 +15,11 @@ const viFile = path.join(root, "lib/learn/content/vi/reading-english.json");
 
 fs.mkdirSync(outDir, { recursive: true });
 
+const canonReadingPath = path.join(root, "lib/learn/content/reading/english.json");
+const canonAnswers = new Map(
+  JSON.parse(fs.readFileSync(canonReadingPath, "utf8")).questions.map((q) => [q.id, q.answer.id.toUpperCase()])
+);
+
 // Read 47 locales from registry
 const registry = fs.readFileSync(path.join(root, "messages/registry.ts"), "utf8");
 const LOCALES = [...registry.match(/export const locales = \[([\s\S]*?)\] as const/)[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
@@ -282,7 +287,7 @@ export function generateOverlayForLocale(locale) {
 
         const explanation = isVi
           ? item.exVi
-          : `Correct answer is option (A). The passage directly supports this by emphasizing: "${l.passage.slice(0, 60)}..."`;
+          : `Correct answer is option (${canonAnswers.get(qid) || "A"}). The passage directly supports this by emphasizing: "${l.passage.slice(0, 60)}..."`;
 
         questions[qid] = {
           prompt,

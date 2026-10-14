@@ -302,7 +302,7 @@ for (const c of COURSES) {
         family: `${l.id}-mc`,
         expectedSeconds,
         tags: ["reading", "advanced", "elective"],
-        status: "PUBLISHED"
+        status: "DRAFT"
       });
 
       viQuestions[qid] = {

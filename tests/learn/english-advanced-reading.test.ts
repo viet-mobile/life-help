@@ -49,11 +49,11 @@ describe("English Advanced Reading Track (CEFR B1-B2 / College Preparatory)", ()
     expect(new Set(lessonIds).size).toBe(8);
   });
 
-  it("contains 56 published questions with full multiple-choice attributes", () => {
+  it("contains 56 draft questions quarantined pending quality review", () => {
     expect(ADVANCED_READING_QUESTIONS).toHaveLength(56);
 
     for (const q of ADVANCED_READING_QUESTIONS) {
-      expect(q.status).toBe("PUBLISHED");
+      expect(q.status).toBe("DRAFT");
       expect(q.difficulty).toBeGreaterThanOrEqual(1);
       expect(q.difficulty).toBeLessThanOrEqual(5);
       expect(q.type).toBe("multiple_choice");

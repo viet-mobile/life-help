@@ -109,11 +109,8 @@ export function bankQuestions(site: Site, locale: string, overlay: BankOverlay |
     while (cache.size > CACHE_LIMIT) cache.delete(cache.keys().next().value as string);
     return made;
   }
-  if (site === "english" || site === "korean") {
-    const payload = data as DiscreteBankPayload;
-    if (!payload?.questions) return [];
-    return payload.questions.filter((q) => skills.has(q.skillId));
-  }
+  // Quarantined: English and Korean discrete banks are held in draft pending quality review.
+  // Claude's parametric math bank remains fully active above.
   return [];
 }
 
