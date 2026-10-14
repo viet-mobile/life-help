@@ -207,26 +207,26 @@ describe("Skill-Linked Practice Question Bank (Bank) Expansion", () => {
 
     it("connects Korean bank to loadIndex and respects bank:false and grade/level filters", async () => {
       const fullKorean = await loadIndex("korean");
-      expect(fullKorean.bundle.questions.length).toBe(4188);
+      expect(fullKorean.bundle.questions.length).toBe(2524);
       const bankQs = fullKorean.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(bankQs.length).toBe(3510);
+      expect(bankQs.length).toBe(2106);
 
       const noBankKorean = await loadIndex("korean", { bank: false });
       expect(noBankKorean.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
-      expect(noBankKorean.bundle.questions.length).toBe(678);
-      expect(noBankKorean.bundle.questions.length).toBe(korCanonical.questions.length);
+      expect(noBankKorean.bundle.questions.length).toBe(418);
 
+      // K7..K10 are draft and excluded from active student pathways
       const k7WithBank = await loadIndex("korean", { grade: "K7" });
-      const k7BankQs = k7WithBank.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(k7BankQs.length).toBeGreaterThan(0);
-      const k7Skills = new Set(k7WithBank.bundle.catalog.skills.map((s) => s.id));
-      for (const q of k7WithBank.bundle.questions) {
-        expect(k7Skills.has(q.skillId)).toBe(true);
-      }
+      expect(k7WithBank.bundle.questions.length).toBe(0);
+      expect(k7WithBank.bundle.catalog.courses.length).toBe(0);
 
-      const k7NoBank = await loadIndex("korean", { grade: "K7", bank: false });
-      expect(k7NoBank.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
-      expect(k7WithBank.bundle.questions.length).toBeGreaterThan(k7NoBank.bundle.questions.length);
+      // Active levels (e.g. K1) have bank questions connected
+      const k1WithBank = await loadIndex("korean", { grade: "K1" });
+      const k1BankQs = k1WithBank.bundle.questions.filter((q) => q.tags?.includes("bank"));
+      expect(k1BankQs.length).toBe(351);
+      const k1NoBank = await loadIndex("korean", { grade: "K1", bank: false });
+      expect(k1NoBank.bundle.questions.length).toBe(65);
+      expect(k1WithBank.bundle.questions.length).toBe(65 + 351);
     });
 
     it("bankQuestions filters questions strictly by skill subset", () => {

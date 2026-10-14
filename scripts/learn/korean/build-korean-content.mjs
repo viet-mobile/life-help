@@ -51,9 +51,10 @@ function render(kit, locale = "en") {
   let prevSkill;
   LEVELS.forEach((L) => {
     const lv = L.level.toLowerCase();
+    const isIntermediate = ["K7", "K8", "K9", "K10"].includes(L.level);
     const lessons = [];
     const make = (it, id, role, family, difficulty) => {
-      const q = { id, site: "korean", skillId: null, type: "multiple_choice", difficulty, prompt: "", hints: [], explanation: "", family, role, expectedSeconds: 30, tags: ["korean", it.k], status: "PUBLISHED" };
+      const q = { id, site: "korean", skillId: null, type: "multiple_choice", difficulty, prompt: "", hints: [], explanation: "", family, role, expectedSeconds: 30, tags: ["korean", it.k], status: isIntermediate ? "DRAFT" : "PUBLISHED" };
       const choice = (texts, localized) => {
         const r = rot(id, texts.length);
         const ordered = texts.map((_, i) => texts[(i - r + texts.length) % texts.length]);
