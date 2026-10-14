@@ -30,7 +30,7 @@
     {
      "cat": "word",
      "ko": "오전",
-     "g": "a.m. (before noon)"
+     "g": "a.m. (as in '10 a.m.')"
     },
     {
      "cat": "word",
@@ -171,9 +171,9 @@
       "blank": "점심에 ____ 먹을 거예요?",
       "ans": "뭐",
       "w": [
-       "어디",
-       "언제",
-       "누구"
+       "누구",
+       "몇",
+       "어느"
       ]
      }
     },
@@ -438,7 +438,7 @@
       "w": [
        "어제 날씨가 좋아요.",
        "어제 날씨가 좋을 거예요.",
-       "어제 날씨가 좋았을 거예요."
+       "어제 날씨를 좋았어요."
       ]
      }
     },
@@ -449,9 +449,9 @@
      "read": {
       "true": "B는 어제 친구를 만났어요.",
       "false": [
-       "B는 어제 집에서 쉬었어요.",
-       "B는 어제 학교에 갔어요.",
-       "B는 어제 영화를 안 봤어요."
+       "B는 어제 친구를 안 만났어요.",
+       "B는 어제 영화를 안 봤어요.",
+       "B는 어제 아무것도 안 했어요."
       ]
      }
     },
@@ -462,9 +462,9 @@
      "read": {
       "true": "B는 주말에 책을 읽었어요.",
       "false": [
-       "B는 주말에 친구를 만났어요.",
-       "B는 주말에 운동했어요.",
-       "B는 주말에 학교에 갔어요."
+       "B는 주말에 책을 안 읽었어요.",
+       "B는 주말에 학교에서 쉬었어요.",
+       "B는 주말에 집에서 안 쉬었어요."
       ]
      }
     }
@@ -528,9 +528,9 @@
       "blank": "주말에 친구와 쇼핑____.",
       "ans": "할 거예요",
       "w": [
-       "했어요",
-       "하세요",
-       "봤어요"
+       "봤어요",
+       "마실 거예요",
+       "먹을 거예요"
       ]
      }
     },
@@ -559,7 +559,7 @@
       "ans": "볼 거예요",
       "w": [
        "봤어요",
-       "보세요",
+       "마실 거예요",
        "먹을 거예요"
       ]
      }
@@ -581,7 +581,7 @@
      "cat": "sentence",
      "ko": "오늘 밤에는 일찍 잘 거예요.",
      "g": "I will go to bed early tonight.",
-     "note": "planB",
+     "note": "planA",
      "choose": {
       "w": [
        "오늘 밤에는 일찍 자을 거예요.",
@@ -627,9 +627,9 @@
       "blank": "방학에 친구와 제주도____ 갈 거예요.",
       "ans": "에",
       "w": [
-       "를",
-       "이",
-       "에서"
+       "의",
+       "와",
+       "이"
       ]
      }
     },
@@ -650,7 +650,7 @@
      "cat": "sentence",
      "ko": "저는 이번 주말에 집에서 쉴 거예요.",
      "g": "I will rest at home this weekend.",
-     "note": "planB",
+     "note": "planA",
      "choose": {
       "w": [
        "저는 이번 주말에 집에서 쉬을 거예요.",
@@ -663,14 +663,14 @@
      "cat": "sentence",
      "ko": "무엇을 살 거예요?",
      "g": "What will you buy?",
-     "note": "planB",
+     "note": "planA",
      "cloze": {
       "blank": "무엇을 ____?",
       "ans": "살 거예요",
       "w": [
        "샀어요",
-       "사세요 거예요",
-       "사을 거예요"
+       "사을 거예요",
+       "사 거예요"
       ]
      }
     },
@@ -719,7 +719,7 @@
      "cat": "sentence",
      "ko": "내일 몇 시에 올 거예요?",
      "g": "What time will you come tomorrow?",
-     "note": "planB",
+     "note": "planA",
      "cloze": {
       "blank": "내일 ____ 시에 올 거예요?",
       "ans": "몇",
@@ -775,11 +775,6 @@
     },
     {
      "cat": "phrase",
-     "ko": "무슨 요일",
-     "g": "which day of the week"
-    },
-    {
-     "cat": "phrase",
      "ko": "이번 주 금요일",
      "g": "this Friday"
     },
@@ -822,7 +817,7 @@
       "w": [
        "오늘은 무슨 요일에요?",
        "오늘은 무슨 일요일이에요?",
-       "오늘은 몇 요일이에요?"
+       "오늘은 무슨 요일을 이에요?"
       ]
      }
     },
@@ -882,12 +877,12 @@
      "g": "I rest on Sundays.",
      "note": "wdA",
      "cloze": {
-      "blank": "저는 일요일에 ____.",
-      "ans": "쉬어요",
+      "blank": "저는 일요일____ 쉬어요.",
+      "ans": "에",
       "w": [
-       "쉬었어요",
-       "쉬세요",
-       "쉴 거예요"
+       "를",
+       "와",
+       "의"
       ]
      }
     },
@@ -969,9 +964,9 @@
       "blank": "이번 주 토요일에 ____ 해요?",
       "ans": "뭐",
       "w": [
-       "어디",
+       "어느",
        "누구",
-       "언제"
+       "몇"
       ]
      }
     },
@@ -1018,7 +1013,7 @@
   },
   "k.k5.months": {
    "notes": {
-    "moA": "Month names are Sino-Korean numbers plus the word for month; two of them are pronounced irregularly.",
+    "moA": "Month names are Sino-Korean numbers plus the word for month; two of them are written with a dropped final consonant.",
     "moB": "Dates are read month first, then day, and both parts use Sino-Korean numbers.",
     "moC": "Season words take the time particle meaning 'in', often with the topic marker added."
    },
@@ -1250,7 +1245,7 @@
      "note": "moA",
      "choose": {
       "w": [
-       "지금은 무슨 월이에요?",
+       "지금은 몇 월이예요?",
        "지금은 몇 월에요?",
        "지금은 몇 요일이에요?"
       ]
@@ -1360,12 +1355,6 @@
      "cat": "phrase",
      "ko": "네 시 이십 분",
      "g": "4:20",
-     "note": "clA"
-    },
-    {
-     "cat": "phrase",
-     "ko": "오전 아홉 시",
-     "g": "9 a.m.",
      "note": "clA"
     },
     {
@@ -1648,7 +1637,7 @@
       "w": [
        "의",
        "에",
-       "로"
+       "에서"
       ]
      }
     },
@@ -1838,7 +1827,7 @@
     {
      "cat": "phrase",
      "ko": "내렸어요",
-     "g": "got off",
+     "g": "got off (a bus, train, etc.)",
      "note": "p2A"
     },
     {
@@ -1906,7 +1895,7 @@
     {
      "cat": "sentence",
      "ko": "그 사람은 선생님이었어요.",
-     "g": "He was a teacher.",
+     "g": "That person was a teacher.",
      "note": "p2B",
      "cloze": {
       "blank": "그 사람은 선생님____.",
@@ -2095,11 +2084,6 @@
    "entries": [
     {
      "cat": "word",
-     "ko": "파티",
-     "g": "party"
-    },
-    {
-     "cat": "word",
      "ko": "케이크",
      "g": "cake"
     },
@@ -2157,13 +2141,6 @@
     },
     {
      "cat": "expr",
-     "ko": "축하해요!",
-     "g": "Congratulations!",
-     "s": "Your friend tells you they passed an important exam.",
-     "note": "bdB"
-    },
-    {
-     "cat": "expr",
      "ko": "주말 잘 보내세요!",
      "g": "Have a good weekend!",
      "s": "It is Friday and you say goodbye to your teacher.",
@@ -2202,7 +2179,7 @@
       "w": [
        "를",
        "와",
-       "로"
+       "에게"
       ]
      }
     },
@@ -2217,7 +2194,7 @@
       "w": [
        "가",
        "에",
-       "로"
+       "을"
       ]
      }
     },
@@ -2272,8 +2249,8 @@
       "ans": "뭐",
       "w": [
        "누구",
-       "어디",
-       "언제"
+       "몇",
+       "어느"
       ]
      }
     },
@@ -2385,7 +2362,7 @@
       "false": [
        "B는 케이크를 샀어요.",
        "B는 이번 주말에 약속이 없어요.",
-       "A는 친구 생일 파티에 가요."
+       "B는 책을 샀어요."
       ]
      }
     }
