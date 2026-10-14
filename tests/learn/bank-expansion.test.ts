@@ -17,7 +17,7 @@ import engDemo from "@/lib/learn/content/demo/english.json";
 import engSec from "@/lib/learn/content/secondary/english.json";
 import engRead from "@/lib/learn/content/reading/english.json";
 import korCanonical from "@/lib/learn/content/korean/korean.json";
-import koreanKit from "@/scripts/learn/korean/bank/kit/en.json";
+import koreanKit from "@/lib/learn/content/bank/korean-kit.en.json";
 import { expandKoreanBank, type KBankData, type KKit } from "@/lib/learn/content/korean-bank";
 
 function correctResponse(q: Question): string | string[] {

@@ -118,8 +118,8 @@ describe("Korean K7~K10 Exclusion from Student Pathways & Reference Integrity", 
     expect(totalLessonQuestions).toBeGreaterThan(0);
   });
 
-  it("7. Canonical uniqueness audit: 676 distinct content items across 678 IDs with exactly 2 intentional placement duplicates", () => {
-    expect(korCanonical.questions.length).toBe(678);
+  it("7. Canonical uniqueness audit: 716 distinct content items across 718 IDs with exactly 2 intentional placement duplicates", () => {
+    expect(korCanonical.questions.length).toBe(718);
     const contentKeys = new Map<string, string[]>();
 
     for (const q of korCanonical.questions) {
@@ -132,7 +132,7 @@ describe("Korean K7~K10 Exclusion from Student Pathways & Reference Integrity", 
     }
 
     // 676 distinct items
-    expect(contentKeys.size).toBe(676);
+    expect(contentKeys.size).toBe(716);
 
     const duplicateGroups = [...contentKeys.values()].filter((ids) => ids.length > 1);
     expect(duplicateGroups).toEqual([

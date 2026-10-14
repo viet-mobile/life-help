@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import bankJson from "@/lib/learn/content/bank/korean.json";
-import enKit from "@/scripts/learn/korean/bank/kit/en.json";
+import enKit from "@/lib/learn/content/bank/korean-kit.en.json";
 import { KFORMS, KOREAN_BANK_LIVE, expandKoreanBank, formsOf, type KBankData, type KKit } from "@/lib/learn/content/korean-bank";
 import { josa, romanize, normRR, isSyl } from "@/scripts/learn/korean/bank/hangul.mjs";
 import { loadIndex } from "@/lib/learn/content/repository";
