@@ -67,7 +67,7 @@ function scan(root = ".", names = dirs) {
     let text;
     try { text = fs.readFileSync(file, "utf8"); } catch { continue; }
     count++; bytes += text.length;
-    if (/updateLearnSession/.test(text)) proxyFiles++;
+    if (/updateLearnSession/.test(text) || (/LEARN_SUPABASE_URL/.test(text) && /createServerClient/.test(text))) proxyFiles++;
     rawSupabaseCo += (text.match(/\.supabase\.co/g) ?? []).length; // mostly documentation examples inside the supabase-js library code
     supabaseCo += (text.match(/https?:\/\/[a-z0-9]{20}\.supabase\.(?:co|in)/g) ?? []).length; // a REAL project URL (20-character ref)
     for (const { name, value } of needles) if (text.includes(value)) hits.push(`${file}: ${name}`);
@@ -94,7 +94,7 @@ console.log(`scanned ${count} files (${Math.round(bytes / 1024)} KiB) in ${dirs.
 const label = mode === "clean" ? "no staging / production project ref, sb_ token or service_role JWT in any client, proxy, server or Worker bundle" : "no learning / generic credential value, sb_ token or service_role JWT in any bundle";
 console.log(`${hits.length === 0 ? "PASS" : "FAIL"} ${label}`);
 for (const h of hits.slice(0, 20)) console.log(`  HIT ${h}`);
-console.log(`${proxyFiles > 0 ? "PASS" : "FAIL"} the proxy bundle containing updateLearnSession was among the scanned files`);
+console.log(`${proxyFiles > 0 ? "PASS" : "FAIL"} the proxy bundle containing the learning session handler was among the scanned files`);
 console.log(`INFO real project URLs (20-char ref) in this build: ${supabaseCo}; raw ".supabase.co" strings (library doc examples included): ${rawSupabaseCo}`);
 let baselineOk = true;
 if (baselineDir) {

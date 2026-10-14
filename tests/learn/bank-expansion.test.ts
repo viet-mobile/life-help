@@ -207,12 +207,13 @@ describe("Skill-Linked Practice Question Bank (Bank) Expansion", () => {
 
     it("connects Korean bank to loadIndex and respects bank:false and grade/level filters", async () => {
       const fullKorean = await loadIndex("korean");
-      expect(fullKorean.bundle.questions.length).toBeGreaterThan(3500);
+      expect(fullKorean.bundle.questions.length).toBe(4188);
       const bankQs = fullKorean.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(bankQs.length).toBeGreaterThanOrEqual(3500);
+      expect(bankQs.length).toBe(3510);
 
       const noBankKorean = await loadIndex("korean", { bank: false });
       expect(noBankKorean.bundle.questions.some((q) => q.tags?.includes("bank"))).toBe(false);
+      expect(noBankKorean.bundle.questions.length).toBe(678);
       expect(noBankKorean.bundle.questions.length).toBe(korCanonical.questions.length);
 
       const k7WithBank = await loadIndex("korean", { grade: "K7" });

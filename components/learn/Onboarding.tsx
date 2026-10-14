@@ -44,8 +44,9 @@ export function Onboarding() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const isBlockedLevel = mode === "account" && site === "korean" && !!grade && ["K7", "K8", "K9", "K10"].includes(grade);
   const nickOk = nickname.trim().length >= 2 && nickname.trim().length <= 16 && !/[<>&"'`\\]/.test(nickname);
-  const canNext = step === 1 ? nickOk : step === 2 ? !!grade : step === 3 ? !!goal : true;
+  const canNext = step === 1 ? nickOk : step === 2 ? (!!grade && !isBlockedLevel) : step === 3 ? !!goal : true;
 
   const next = () => {
     if (canNext && step < TOTAL) setStep(step + 1);
@@ -59,7 +60,15 @@ export function Onboarding() {
       router.replace(href(state.diagnosticDone ? "/dashboard" : "/diagnostic"));
     } catch (e) {
       setSaving(false);
-      setError(e instanceof ApiError && e.code === "invalid_nickname" ? t("onboarding.nickname.hint") : t("lesson.error"));
+      setError(
+        e instanceof ApiError && e.code === "invalid_nickname"
+          ? t("onboarding.nickname.hint")
+          : e instanceof ApiError && e.code === "level_requires_db_upgrade"
+            ? (site === "korean"
+                ? "K7~K10 단계는 현재 게스트 모드에서 체험할 수 있으며, 회원 계정 저장은 데이터베이스 업데이트 후 정식 지원됩니다. (K1~K6을 선택해 주세요)"
+                : "선택한 단계는 현재 계정 저장 준비 중입니다.")
+            : t("lesson.error"),
+      );
     }
   };
 
@@ -103,6 +112,11 @@ export function Onboarding() {
               </div>
             </div>
           ))}
+          {isBlockedLevel && (
+            <p className="l-panel" style={{ fontSize: "0.9rem", color: "var(--l-accent, #c2410c)" }} role="status">
+              ℹ️ K7~K10 단계는 현재 게스트 모드에서 바로 체험하실 수 있으며, 로그인 계정 저장은 데이터베이스 업데이트 후 정식 지원됩니다. 계정으로 진행하시려면 K1~K6을 선택해 주세요.
+            </p>
+          )}
         </section>
       )}
 

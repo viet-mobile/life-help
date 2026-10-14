@@ -8,7 +8,6 @@ import { readLearnPublicConfig } from "./config";
  * configuration it does nothing (no network call). getUser() verifies the token with Supabase and refreshes it if needed.
  */
 export async function updateLearnSession(request: NextRequest): Promise<{ response: NextResponse }> {
-  if (request.headers.get("x-marker") === "updateLearnSession") return { response: NextResponse.next({ request }) };
   let response = NextResponse.next({ request });
   const config = readLearnPublicConfig();
   if (!config) return { response };
