@@ -1,0 +1,4793 @@
+{
+  "note": "수학 문항 은행(lib/learn/content/bank/math.json) 증거. reviewed.json의 상태를 바꾸지 않는다: 감사 도구가 은행 문항 ID를 읽지 못한다. effect=could_upgrade는 도구가 은행 ID를 지원하고 교사가 확인하면 상태 상향을 검토할 후보다.",
+  "bank": {
+    "sets": 194,
+    "questions": 6672
+  },
+  "standards": [
+    {
+      "code": "2수01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e1-count-nextnum1",
+        "b-e1-count-nextnum2",
+        "b-e1-count-prevnum1",
+        "b-e1-count-prevnum2"
+      ],
+      "sample_question_ids": [
+        "b-e1-count-nextnum1-001",
+        "b-e1-count-nextnum2-001"
+      ],
+      "rationale": "바로 다음·바로 앞의 수를 말하는 수 세기(100 이하)를 연습한다. 0과 100까지 전 범위의 읽고 쓰기와 수의 필요성 인식은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e2-place-onesdigit",
+        "b-e2-place-tensdigit",
+        "b-e2-place-hundredsdigit",
+        "b-e2-place-moreby",
+        "b-e2-place-lessby"
+      ],
+      "sample_question_ids": [
+        "b-e2-place-onesdigit-001",
+        "b-e2-place-tensdigit-001"
+      ],
+      "rationale": "일·십·백의 자리 숫자 찾기와 100 더/덜 큰 수 구하기로 자릿값을 연습한다. 천의 자리와 네 자리 수 읽고 쓰기는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e1-cmp-maxof1",
+        "b-e1-cmp-maxof2",
+        "b-e1-cmp-minof1",
+        "b-e1-cmp-minof2",
+        "b-e2-place-moreby",
+        "b-e2-place-lessby"
+      ],
+      "sample_question_ids": [
+        "b-e1-cmp-maxof1-001",
+        "b-e1-cmp-maxof2-001"
+      ],
+      "rationale": "세 수 중 가장 큰 수·작은 수 고르기(두 자리 수)와 100 더/덜 큰 수로 수의 크기 비교와 계열을 연습한다. 네 자리 수 범위는 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-04",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e1-addsub-maketen",
+        "b-e1-addsub-missadd1",
+        "b-e1-addsub-missadd2",
+        "b-e1-addsub-missadd3"
+      ],
+      "sample_question_ids": [
+        "b-e1-addsub-maketen-001",
+        "b-e1-addsub-missadd1-001"
+      ],
+      "rationale": "10 만들기와 □+a=b로 수를 두 수로 분해·합성하는 감각을 연습한다. 구체물·여러 가지 분해 방법을 다루는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-05",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "은행 문항은 맨 계산식 위주여서 실생활 상황과 연결한 덧셈·뺄셈 의미 이해를 연습시키지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-06",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e2-addsub-plus2",
+        "b-e2-addsub-plus3",
+        "b-e2-addsub-minus2",
+        "b-e2-addsub-minus3"
+      ],
+      "sample_question_ids": [
+        "b-e2-addsub-plus2-001",
+        "b-e2-addsub-plus3-001"
+      ],
+      "rationale": "두 자리 수 덧셈·뺄셈(올림·내림 포함) 계산을 반복 연습한다. 계산 원리를 설명하는 활동은 은행이 아니라 기존 레슨에 의존한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-07",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e1-addsub-missadd1",
+        "b-e1-addsub-missadd2",
+        "b-e1-addsub-missadd3",
+        "b-e1-addsub-misssub1",
+        "b-e1-addsub-misssub2",
+        "b-e1-addsub-misssub3"
+      ],
+      "sample_question_ids": [
+        "b-e1-addsub-missadd1-001",
+        "b-e1-addsub-missadd2-001"
+      ],
+      "rationale": "□를 구하는 덧셈·뺄셈 식으로 역관계를 간접 활용한다. 관계를 설명하거나 확인하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-08",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "은행에는 두 자리 수 세 수 계산 세트가 없다(addthree/subthree는 세 자리 수 두 항 계산이다).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-09",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e1-addsub-missadd1",
+        "b-e1-addsub-missadd2",
+        "b-e1-addsub-missadd3",
+        "b-e1-addsub-misssub1",
+        "b-e1-addsub-misssub2",
+        "b-e1-addsub-misssub3"
+      ],
+      "sample_question_ids": [
+        "b-e1-addsub-missadd1-001",
+        "b-e1-addsub-missadd2-001"
+      ],
+      "rationale": "□가 있는 덧셈식·뺄셈식의 □ 값을 구하는 연습을 제공하여 뺄셈 □ 문항 공백을 메운다. □를 사용한 식을 스스로 만드는 활동은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-10",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e2-mul-groups"
+      ],
+      "sample_question_ids": [
+        "b-e2-mul-groups-001"
+      ],
+      "rationale": "\"묶음당 개수 × 묶음 수\"로 전체 개수를 구하며 곱셈의 의미를 상황과 연결해 연습한다. 문항 수와 상황 다양성은 제한적이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수01-11",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e2-mul-times",
+        "b-e3-muldiv-times",
+        "b-e2-mul-groups"
+      ],
+      "sample_question_ids": [
+        "b-e2-mul-times-001",
+        "b-e3-muldiv-times-001"
+      ],
+      "rationale": "한 자리 수 곱셈(7×9 등 7~9단 포함 표본)을 반복 연습하여 기존의 2~6단 중심 한계를 보완할 수 있다. 곱셈구구의 구성 원리 이해 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e2-pattern-seqnext"
+      ],
+      "sample_question_ids": [
+        "b-e2-pattern-seqnext-001"
+      ],
+      "rationale": "수 배열의 규칙을 찾아 빈칸을 채우는 연습을 한다. 물체·무늬 배열과 규칙을 여러 방법으로 표현하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "자신이 정한 규칙으로 배열을 만드는 문항은 은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-06",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-07",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-08",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-10",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-11",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e2-time-convmcm"
+      ],
+      "sample_question_ids": [
+        "b-e2-time-convmcm-001"
+      ],
+      "rationale": "몇 m를 cm로 바꾸며 1m=100cm 관계를 연습한다. cm를 몇 m 몇 cm로 표현하는 방향은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-12",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수03-13",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수04-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수04-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "2수04-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e4-big-bignum"
+      ],
+      "sample_question_ids": [
+        "b-e4-big-bignum-001"
+      ],
+      "rationale": "만·천 단위로 이루어진 수를 자릿값에 맞게 써 보는 연습을 한다. 억·조 이상의 수와 읽고 쓰기 표기는 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-03",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-ari1-addthree1",
+        "b-e3-ari1-addthree2",
+        "b-e3-ari1-addthree3",
+        "b-e3-ari1-subthree1",
+        "b-e3-ari1-subthree2",
+        "b-e3-ari1-subthree3",
+        "b-e4-big-plus4",
+        "b-e4-big-minus4"
+      ],
+      "sample_question_ids": [
+        "b-e3-ari1-addthree1-001",
+        "b-e3-ari1-addthree2-001"
+      ],
+      "rationale": "받아올림·받아내림이 있는 세 자리 수 덧셈·뺄셈 계산을 많이 연습한다. 계산 원리의 설명은 기존 개념 레슨에 의존한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-muldiv-times",
+        "b-e4-muldiv-times",
+        "b-e4-muldiv2-times"
+      ],
+      "sample_question_ids": [
+        "b-e3-muldiv-times-001",
+        "b-e4-muldiv-times-001"
+      ],
+      "rationale": "(두 자리)×(한 자리), (두 자리)×(두 자리), (세 자리)×(두 자리) 곱셈 계산을 연습한다. 계산 원리 설명은 기존 레슨에 의존한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-05",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "나눗셈 세트는 맨 계산식(35÷7 등)이어서 나눗셈의 상황적 의미나 곱셈·나눗셈 관계 이해를 직접 연습시키지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-06",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-muldiv-divide",
+        "b-e4-muldiv-divide"
+      ],
+      "sample_question_ids": [
+        "b-e3-muldiv-divide-001",
+        "b-e4-muldiv-divide-001"
+      ],
+      "rationale": "나누는 수가 한 자리 수인 나눗셈(예: 450÷6)을 연습한다. 나머지가 있는 경우와 몫·나머지의 의미는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-07",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e4-muldiv2-divide"
+      ],
+      "sample_question_ids": [
+        "b-e4-muldiv2-divide-001"
+      ],
+      "rationale": "나누는 수가 두 자리 수인 나눗셈(예: 1274÷13) 계산을 연습한다. 계산 원리 설명은 기존 레슨에 의존한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-09",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-10",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-11",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-12",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e4-frac-fractodec"
+      ],
+      "sample_question_ids": [
+        "b-e4-frac-fractodec-001"
+      ],
+      "rationale": "분수를 소수로 나타내는 연습을 하나, 표본이 분모 2인 분수여서 분모 10인 진분수와의 연결·읽고 쓰기는 확인되지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-13",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-14",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-15",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수01-16",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e4-frac-plus",
+        "b-e4-frac-minus"
+      ],
+      "sample_question_ids": [
+        "b-e4-frac-plus-001",
+        "b-e4-frac-minus-001"
+      ],
+      "rationale": "소수 덧셈·뺄셈을 연습한다(표본은 소수 한 자리). 소수 두 자리 범위와 자리 맞추기 원리 설명은 기존 레슨에 의존한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수02-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수02-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-02",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-06",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-geo2-diameter"
+      ],
+      "sample_question_ids": [
+        "b-e3-geo2-diameter-001"
+      ],
+      "rationale": "반지름이 주어졌을 때 지름을 구하며 지름=반지름의 2배 성질을 연습한다. 중심 개념과 지름→반지름 방향은 확인되지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-08",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-geo1-isoapex"
+      ],
+      "sample_question_ids": [
+        "b-m2-geo1-isoapex-001"
+      ],
+      "rationale": "이등변삼각형의 밑각이 같다는 성질을 이용해 꼭지각을 구한다. 삼각형 분류와 성질 탐구·설명 활동은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-10",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-11",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-12",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-13",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-14",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-15",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-unit-kmtom"
+      ],
+      "sample_question_ids": [
+        "b-e3-unit-kmtom-001"
+      ],
+      "rationale": "km를 m로 바꾸는 연습을 한다. mm, 길이 측정·어림 활동은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-16",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-unit-kmtom"
+      ],
+      "sample_question_ids": [
+        "b-e3-unit-kmtom-001"
+      ],
+      "rationale": "km를 m로 바꾸며 1km=1000m 관계를 연습한다. cm-mm 관계와 몇 km 몇 m로 표현하는 방향은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-17",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-unit-ltoml"
+      ],
+      "sample_question_ids": [
+        "b-e3-unit-ltoml-001"
+      ],
+      "rationale": "L를 mL로 바꾸는 연습을 한다. 들이 측정·어림 활동은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-18",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-unit-ltoml"
+      ],
+      "sample_question_ids": [
+        "b-e3-unit-ltoml-001"
+      ],
+      "rationale": "L를 mL로 바꾸며 1L=1000mL 관계를 연습한다. mL를 몇 L 몇 mL로 표현하는 방향은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-19",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-20",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-unit-convkgg"
+      ],
+      "sample_question_ids": [
+        "b-e3-unit-convkgg-001"
+      ],
+      "rationale": "kg을 g으로 바꾸는 연습을 한다. 무게 측정·어림 활동은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-21",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e3-unit-convkgg"
+      ],
+      "sample_question_ids": [
+        "b-e3-unit-convkgg-001"
+      ],
+      "rationale": "kg을 g으로 바꾸며 1kg=1000g 관계를 연습한다. g을 몇 kg 몇 g으로 표현하는 방향은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-22",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-23",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-24",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수03-25",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e4-angle-trithird",
+        "b-e4-geo1-quadfourth"
+      ],
+      "sample_question_ids": [
+        "b-e4-angle-trithird-001",
+        "b-e4-geo1-quadfourth-001"
+      ],
+      "rationale": "삼각형 세 번째 각, 사각형 네 번째 각을 내각의 합으로 구한다. 합을 추론하고 설명하는 활동은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수04-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수04-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "4수04-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 표준의 기능(활동)을 연습시키는 은행 세트가 없다(은행은 수치 계산 위주).",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-01",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-ari1-mixedcalc1",
+        "b-e6-ari1-mixedcalc2",
+        "b-e6-ari1-mixedcalc3",
+        "b-e6-ari1-mixedcalc4",
+        "b-e6-ari1-mixedcalc5"
+      ],
+      "sample_question_ids": [
+        "b-e6-ari1-mixedcalc1-001",
+        "b-e6-ari1-mixedcalc5-001"
+      ],
+      "rationale": "괄호와 곱셈·나눗셈·덧셈·뺄셈이 섞인 자연수 혼합 계산 문항으로 계산 순서를 적용하는 연습을 추가로 제공한다. 이미 충족으로 판단된 기준의 증거를 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-ari2-roundto1",
+        "b-e6-ari2-roundto2",
+        "b-e6-ari2-roundto3"
+      ],
+      "sample_question_ids": [
+        "b-e6-ari2-roundto1-001",
+        "b-e6-ari2-roundto3-001"
+      ],
+      "rationale": "올림·버림·반올림을 지정한 자리까지 적용해 구하는 계산 연습이다. 올림·버림·반올림의 의미와 필요성을 설명하거나 실생활에 활용하는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-factor-gcd1",
+        "b-e5-factor-gcd2",
+        "b-e5-factor-divisorcount",
+        "b-m1-fac1-gcd1",
+        "b-m1-fac1-gcd2",
+        "b-m1-fac1-divisorcount"
+      ],
+      "sample_question_ids": [
+        "b-e5-factor-gcd1-001",
+        "b-m1-fac1-divisorcount-001"
+      ],
+      "rationale": "약수의 개수와 최대공약수를 구하는 문항으로 약수·공약수·최대공약수를 구하는 연습을 제공한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-factor-lcm",
+        "b-m1-fac1-lcm1",
+        "b-m1-fac1-lcm2"
+      ],
+      "sample_question_ids": [
+        "b-e5-factor-lcm-001",
+        "b-m1-fac1-lcm2-001"
+      ],
+      "rationale": "최소공배수를 구하는 문항으로 공배수·최소공배수 구하기를 연습한다. 배수와 공배수의 의미를 직접 묻는 문항은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-06",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-08",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-frac-fracadd"
+      ],
+      "sample_question_ids": [
+        "b-e5-frac-fracadd-001"
+      ],
+      "rationale": "분모가 다른 분수의 덧셈 계산 연습이다. 뺄셈과 계산 원리를 탐구·설명하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-09",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-10",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-11",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-frac-fracdivint"
+      ],
+      "sample_question_ids": [
+        "b-e6-frac-fracdivint-001"
+      ],
+      "rationale": "(분수)÷(자연수) 계산 연습이다. (분수)÷(분수)와 계산 원리 탐구는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-12",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e4-frac-fractodec"
+      ],
+      "sample_question_ids": [
+        "b-e4-frac-fractodec-001"
+      ],
+      "rationale": "분수를 소수로 나타내는 문항으로 분수와 소수의 관계 중 변환 부분을 연습한다. 소수를 분수로 바꾸기, 크기 비교와 그 방법 설명은 문항이 없어 추가가 필요하며, 이것이 보완되면 공백에서 부분 충족으로 올릴 수 있다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-13",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-dec-dectimes1",
+        "b-e5-dec-dectimes2"
+      ],
+      "sample_question_ids": [
+        "b-e5-dec-dectimes1-001",
+        "b-e5-dec-dectimes2-001"
+      ],
+      "rationale": "(소수)×(자연수) 계산 연습이다. (소수)×(소수)와 계산 원리 탐구·설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-14",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수01-15",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수02-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수02-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수02-03",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-ratio-ratiopct",
+        "b-e6-pct-decpct"
+      ],
+      "sample_question_ids": [
+        "b-e5-ratio-ratiopct-001",
+        "b-e6-pct-decpct-001"
+      ],
+      "rationale": "분수와 소수를 백분율로 나타내는 문항이다. 이미 충족으로 판단된 기준의 백분율 표현 연습을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수02-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-ratio-propx"
+      ],
+      "sample_question_ids": [
+        "b-e6-ratio-propx-001"
+      ],
+      "rationale": "비례식의 빈칸에 알맞은 수를 구하는 문항으로 간단한 비례식 풀이를 연습한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수02-05",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-10",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-11",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-geo1-rectperim"
+      ],
+      "sample_question_ids": [
+        "b-e5-geo1-rectperim-001"
+      ],
+      "rationale": "직사각형의 둘레를 구하는 연습이다. 다른 평면도형의 둘레와 둘레의 개념 이해는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-12",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-13",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-area-rectarea"
+      ],
+      "sample_question_ids": [
+        "b-e5-area-rectarea-001"
+      ],
+      "rationale": "직사각형의 넓이를 구하는 계산 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-14",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-15",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-geo1-circum"
+      ],
+      "sample_question_ids": [
+        "b-e6-geo1-circum-001"
+      ],
+      "rationale": "원주율 3.14를 사용해 원주를 구하는 연습이다. 원주와 지름을 측정하여 원주율이 일정함을 알아보는 활동은 문항으로 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-16",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-geo1-circum",
+        "b-e6-geo1-circlearea"
+      ],
+      "sample_question_ids": [
+        "b-e6-geo1-circum-001",
+        "b-e6-geo1-circlearea-001"
+      ],
+      "rationale": "원주율 3.14로 원주와 원의 넓이를 구하는 문항이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-17",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-18",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수03-19",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-geo-cubevol",
+        "b-e6-geo2-cuboidvol"
+      ],
+      "sample_question_ids": [
+        "b-e6-geo-cubevol-001",
+        "b-e6-geo2-cuboidvol-001"
+      ],
+      "rationale": "정육면체와 직육면체의 부피를 구하는 계산 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수04-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-dat1-mean1",
+        "b-e5-dat1-mean2",
+        "b-e4-data-mean",
+        "b-e6-stat-mean",
+        "b-e6-stat-meansum",
+        "b-el-cul2-pmaverage"
+      ],
+      "sample_question_ids": [
+        "b-e5-dat1-mean1-001",
+        "b-el-cul2-pmaverage-001"
+      ],
+      "rationale": "주어진 자료의 평균을 구하거나 평균으로 합계를 구하는 연습이다. 자료를 직접 수집하는 활동과 평균의 해석은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수04-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-dat1-piecount"
+      ],
+      "sample_question_ids": [
+        "b-e6-dat1-piecount-001"
+      ],
+      "rationale": "원그래프의 백분율과 전체 인원으로 항목의 값을 구하는 해석 연습이다. 자료 수집과 그래프 작성은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수04-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수04-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수04-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-dat2-chancefraction"
+      ],
+      "sample_question_ids": [
+        "b-e5-dat2-chancefraction-001"
+      ],
+      "rationale": "상자 속 공의 개수로 가능성을 수(소수)로 나타내는 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "6수04-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-fac1-factorexp"
+      ],
+      "sample_question_ids": [
+        "b-m1-fac1-factorexp-001"
+      ],
+      "rationale": "소인수분해한 결과의 지수를 구하는 문항이다. 소인수분해를 직접 수행해 표현하는 활동과 뜻의 이해는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-05",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-neg1-intadd1",
+        "b-m1-neg1-intadd2",
+        "b-m1-neg1-intsub1",
+        "b-m1-neg1-intsub2",
+        "b-m1-neg1-intmul1",
+        "b-m1-neg1-intmul2",
+        "b-m1-neg1-intdiv1",
+        "b-m1-neg1-intdiv2"
+      ],
+      "sample_question_ids": [
+        "b-m1-neg1-intadd1-001",
+        "b-m1-neg1-intdiv2-001"
+      ],
+      "rationale": "정수의 덧셈·뺄셈·곱셈·나눗셈 계산 연습이다. 유리수 계산과 계산 원리의 이해·설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-06",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-07",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-sqrt-sqrtval",
+        "b-m3-sqrt-sqrtprod"
+      ],
+      "sample_question_ids": [
+        "b-m3-sqrt-sqrtval-001",
+        "b-m3-sqrt-sqrtprod-001"
+      ],
+      "rationale": "제곱근의 값을 구하고 곱의 성질을 적용하는 연습이다. 제곱근의 대소 관계 판단은 문항이 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수01-10",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-sqrt-sqrtprod"
+      ],
+      "sample_question_ids": [
+        "b-m3-sqrt-sqrtprod-001"
+      ],
+      "rationale": "근호를 포함한 곱셈 계산 연습이다. 나눗셈과 계산 원리의 이해는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-expr-exprvalue"
+      ],
+      "sample_question_ids": [
+        "b-m1-expr-exprvalue-001"
+      ],
+      "rationale": "문자식에 값을 대입해 식의 값을 구하는 연습이다. 상황을 문자식으로 나타내는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-solve-solvelin1",
+        "b-m1-solve-solvelin2"
+      ],
+      "sample_question_ids": [
+        "b-m1-solve-solvelin1-001",
+        "b-m1-solve-solvelin2-001"
+      ],
+      "rationale": "일차방정식을 푸는 계산 연습이다. 문장제 활용은 이 문항 묶음에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-05",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-07",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-prp1-directconst",
+        "b-m1-prp1-inverseconst"
+      ],
+      "sample_question_ids": [
+        "b-m1-prp1-directconst-001",
+        "b-m1-prp1-inverseconst-001"
+      ],
+      "rationale": "정비례·반비례 그래프가 지나는 점으로 비례상수를 구해 식을 세우는 연습이다. 표와 그래프를 직접 나타내는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-08",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-exp-expmul",
+        "b-m2-exp-exppow"
+      ],
+      "sample_question_ids": [
+        "b-m2-exp-expmul-001",
+        "b-m2-exp-exppow-001"
+      ],
+      "rationale": "지수법칙(곱, 거듭제곱의 거듭제곱)을 적용해 지수를 구하는 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-09",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-10",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-11",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-12",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-ineq-ineqmax"
+      ],
+      "sample_question_ids": [
+        "b-m2-ineq-ineqmax-001"
+      ],
+      "rationale": "일차부등식의 해에서 조건을 만족하는 최대 정수를 구하는 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-13",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-14",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-lfn1-funcvalue",
+        "b-m2-func-funcvalue"
+      ],
+      "sample_question_ids": [
+        "b-m2-lfn1-funcvalue-001",
+        "b-m2-func-funcvalue-001"
+      ],
+      "rationale": "일차함수의 함숫값을 구하는 연습이다. 함수 개념(대응 관계)의 이해는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-15",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-lfn1-slopeof",
+        "b-m2-lfn1-yint",
+        "b-m2-lfn1-xint",
+        "b-m2-func-slope2",
+        "b-m2-func-xint"
+      ],
+      "sample_question_ids": [
+        "b-m2-lfn1-slopeof-001",
+        "b-m2-func-xint-001"
+      ],
+      "rationale": "일차함수의 기울기와 x·y절편을 구하는 연습이다. 그래프를 직접 그리는 활동은 문항으로 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-16",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-lfn1-slopeof",
+        "b-m2-lfn1-yint",
+        "b-m2-lfn1-xint",
+        "b-m2-func-slope2",
+        "b-m2-func-xint"
+      ],
+      "sample_question_ids": [
+        "b-m2-lfn1-slopeof-001",
+        "b-m2-func-xint-001"
+      ],
+      "rationale": "일차함수 그래프의 기울기와 절편을 구하는 문항으로 그래프의 성질을 다루는 연습을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-17",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-18",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-lfn1-crossx"
+      ],
+      "sample_question_ids": [
+        "b-m2-lfn1-crossx-001"
+      ],
+      "rationale": "두 일차함수 그래프의 교점의 x좌표를 구하는 연습으로 연립방정식과의 연결을 일부 다룬다. 관계를 설명하는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-19",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-fact-expandpq",
+        "b-m3-fact-expandsquare",
+        "b-m3-fact-factordiff"
+      ],
+      "sample_question_ids": [
+        "b-m3-fact-expandpq-001",
+        "b-m3-fact-factordiff-001"
+      ],
+      "rationale": "다항식의 곱셈 전개와 인수분해 결과를 구하는 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-20",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-quad-quadroot"
+      ],
+      "sample_question_ids": [
+        "b-m3-quad-quadroot-001"
+      ],
+      "rationale": "이차방정식의 근을 구하는 연습이다. 활용 문장제는 이 문항 묶음에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-21",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-qfunc-qfuncvalue"
+      ],
+      "sample_question_ids": [
+        "b-m3-qfunc-qfuncvalue-001"
+      ],
+      "rationale": "이차함수의 함숫값을 구하는 연습이다. 이차함수의 개념(정의)을 묻는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수02-22",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-qfunc-vertexsum"
+      ],
+      "sample_question_ids": [
+        "b-m3-qfunc-vertexsum-001"
+      ],
+      "rationale": "이차함수 표준형에서 꼭짓점을 읽는 연습이다. 그래프를 그리거나 성질을 설명하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-05",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e4-angle-trithird",
+        "b-e4-geo1-quadfourth"
+      ],
+      "sample_question_ids": [
+        "b-e4-angle-trithird-001",
+        "b-e4-geo1-quadfourth-001"
+      ],
+      "rationale": "삼각형과 사각형의 내각의 합을 이용해 나머지 각을 구하는 연습이다. 다각형 성질의 설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-06",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-08",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-09",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-geo1-isoapex"
+      ],
+      "sample_question_ids": [
+        "b-m2-geo1-isoapex-001"
+      ],
+      "rationale": "이등변삼각형의 밑각으로 꼭지각을 구하는 계산 연습이다. 성질의 정당화는 문항으로 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-10",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-11",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-12",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-13",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-14",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-15",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-geo2-hypot"
+      ],
+      "sample_question_ids": [
+        "b-m2-geo2-hypot-001"
+      ],
+      "rationale": "피타고라스 정리로 빗변의 길이를 구하는 계산 연습이다. 정당화(증명) 활동은 문항으로 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-16",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-17",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-18",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수03-19",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-sta1-median1",
+        "b-m1-sta1-median2",
+        "b-m1-sta1-mode"
+      ],
+      "sample_question_ids": [
+        "b-m1-sta1-median1-001",
+        "b-m1-sta1-mode-001"
+      ],
+      "rationale": "중앙값과 최빈값을 구하는 연습이다. 자료의 특성에 따라 적절한 대푯값을 선택하는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-sta1-relfreq"
+      ],
+      "sample_question_ids": [
+        "b-m1-sta1-relfreq-001"
+      ],
+      "rationale": "상대도수를 구하는 계산 연습이다. 분포를 표나 그래프로 나타내고 해석하는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-prob-coincases",
+        "b-h1-comb-permnp",
+        "b-h1-comb-combnc"
+      ],
+      "sample_question_ids": [
+        "b-m2-prob-coincases-001",
+        "b-h1-comb-combnc-001"
+      ],
+      "rationale": "동전의 경우의 수와 순열·조합의 수를 구하는 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-06",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-pro1-probadd",
+        "b-h3-pro1-probcomplement"
+      ],
+      "sample_question_ids": [
+        "b-h3-pro1-probadd-001",
+        "b-h3-pro1-probcomplement-001"
+      ],
+      "rationale": "확률의 덧셈정리와 여사건 확률을 구하는 연습이다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-07",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-sta1-variance",
+        "b-m3-sta1-stdev",
+        "b-el-sta1-stdev"
+      ],
+      "sample_question_ids": [
+        "b-m3-sta1-variance-001",
+        "b-el-sta1-stdev-001"
+      ],
+      "rationale": "분산과 표준편차를 구하는 계산 연습이다. 자료의 분포를 설명하는 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "9수04-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "이 기준의 동사와 내용을 직접 연습하는 문항 묶음이 문항은행에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-01-01",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m3-fact-expandpq",
+        "b-m3-fact-expandsquare"
+      ],
+      "sample_question_ids": [
+        "b-m3-fact-expandpq-001",
+        "b-m3-fact-expandsquare-001"
+      ],
+      "rationale": "이항식 곱을 전개하는 계산(곱셈)만 연습하며 덧셈·뺄셈·나눗셈과 사칙연산 원리의 설명은 다루지 않는다. 이 세트가 있으면 공백이 부분 충족으로 바뀔 가능성은 있으나 계산 범위가 이차식 곱으로 한정된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-01-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-poly-remainder"
+      ],
+      "sample_question_ids": [
+        "b-h1-poly-remainder-001"
+      ],
+      "rationale": "일차식으로 나눈 나머지를 구하는 나머지정리 계산을 연습한다. 항등식의 성질(미정계수법 등)은 여전히 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-01-03",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m3-fact-factordiff"
+      ],
+      "sample_question_ids": [
+        "b-m3-fact-factordiff-001"
+      ],
+      "rationale": "이차 삼항식을 (x+m)(x+n) 꼴로 인수분해하는 활동을 연습한다. 삼차 이상 다항식과 공식 활용 인수분해는 다루지 않아 이 범위에서만 보강된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-cplx-complexsum"
+      ],
+      "sample_question_ids": [
+        "b-h1-cplx-complexsum-001"
+      ],
+      "rationale": "복소수의 덧셈과 실수부·허수부 구분을 연습한다. 복소수의 뜻·성질 설명과 나눗셈은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-quad-quaddisc"
+      ],
+      "sample_question_ids": [
+        "b-m3-quad-quaddisc-001"
+      ],
+      "rationale": "이차방정식의 판별식 D의 값을 계산하는 연습이다. 판별식 부호로 실근·허근을 판별하거나 근의 존재성을 판단하는 활동은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-06",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-07",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-pol1-rootmax",
+        "b-h1-pol1-rootsum"
+      ],
+      "sample_question_ids": [
+        "b-h1-pol1-rootmax-001",
+        "b-h1-pol1-rootsum-001"
+      ],
+      "rationale": "인수분해된 삼차방정식의 실근을 구해 최대근·합을 구하는 연습으로 기존 증거를 보강한다. 사차방정식은 이 세트에 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-10",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-02-11",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-ineq-ineqcount"
+      ],
+      "sample_question_ids": [
+        "b-h1-ineq-ineqcount-001"
+      ],
+      "rationale": "이차부등식을 풀어 해의 정수 개수를 구하는 연습이다. 연립이차부등식과 함수와의 관계 설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-03-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-prob-coincases"
+      ],
+      "sample_question_ids": [
+        "b-m2-prob-coincases-001"
+      ],
+      "rationale": "동전 두 개를 던질 때의 경우의 수를 세는 기초 연습이다. 합의 법칙과 곱의 법칙을 직접 구분해 쓰는 문항은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-03-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-comb-permnp"
+      ],
+      "sample_question_ids": [
+        "b-h1-comb-permnp-001"
+      ],
+      "rationale": "서로 다른 대상 중 일부를 뽑아 일렬로 세우는 순열의 수를 구하는 연습이다. 방법을 설명하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-03-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-comb-combnc"
+      ],
+      "sample_question_ids": [
+        "b-h1-comb-combnc-001"
+      ],
+      "rationale": "순서를 고려하지 않고 뽑는 조합의 수를 구하는 연습이다. 방법을 설명하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-04-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수1-04-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-mat1-matentry1",
+        "b-h1-mat1-matentry2",
+        "b-h1-mat1-matentry3"
+      ],
+      "sample_question_ids": [
+        "b-h1-mat1-matentry1-001",
+        "b-h1-mat1-matentry2-001"
+      ],
+      "rationale": "행렬의 합·실수배·곱의 지정 성분을 계산하는 연습이다. 연산 결과를 활용한 문제 해결은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-04",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-geo2-circler"
+      ],
+      "sample_question_ids": [
+        "b-h1-geo2-circler-001"
+      ],
+      "rationale": "원의 방정식에서 반지름을 읽는 연습이다. 조건으로부터 방정식을 구하거나 그래프를 그리는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-01-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-set1-subsetcount",
+        "b-h1-set1-setcount"
+      ],
+      "sample_question_ids": [
+        "b-h1-set1-subsetcount-001",
+        "b-h1-set1-setcount-001"
+      ],
+      "rationale": "집합의 원소 수와 부분집합의 개수를 구하는 연습이다. 집합을 직접 표현하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-set1-setcount"
+      ],
+      "sample_question_ids": [
+        "b-h1-set1-setcount-001"
+      ],
+      "rationale": "n(A∪B)를 구하는 집합 연산 계산 연습이다. 벤 다이어그램으로 나타내는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-02-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-03-01",
+      "status": "gap",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-func-funcvalue",
+        "b-m2-lfn1-funcvalue"
+      ],
+      "sample_question_ids": [
+        "b-m2-func-funcvalue-001",
+        "b-m2-lfn1-funcvalue-001"
+      ],
+      "rationale": "일차함수의 함숫값을 구하는 연습이다. 함수 개념의 설명과 그래프 이해는 다루지 않으므로 공백 판단을 바꾸기에는 부족하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-03-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-fnc1-composite1",
+        "b-h1-fnc1-composite2"
+      ],
+      "sample_question_ids": [
+        "b-h1-fnc1-composite1-001",
+        "b-h1-fnc1-composite2-001"
+      ],
+      "rationale": "합성함수의 함숫값을 구하는 연습이다. 합성함수 식을 구하는 활동과 설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-03-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-fnc1-inverseval"
+      ],
+      "sample_question_ids": [
+        "b-h1-fnc1-inverseval-001"
+      ],
+      "rationale": "역함수의 함숫값을 구하는 연습이다. 역함수 식을 구하는 활동과 설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10공수2-03-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-01-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-01-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-fact-expandpq",
+        "b-m3-fact-expandsquare"
+      ],
+      "sample_question_ids": [
+        "b-m3-fact-expandpq-001",
+        "b-m3-fact-expandsquare-001"
+      ],
+      "rationale": "이항식의 곱을 전개하는 계산을 연습한다. 나눗셈과 곱셈·나눗셈 원리의 이해는 여전히 별도 증거가 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-01-03",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m3-fact-factordiff"
+      ],
+      "sample_question_ids": [
+        "b-m3-fact-factordiff-001"
+      ],
+      "rationale": "이차 삼항식을 (x+m)(x+n) 꼴로 인수분해하는 활동을 연습한다. 삼차 이상 다항식과 공식 활용 인수분해는 다루지 않아 이 범위에서만 보강된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-01",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m3-quad-quadroot"
+      ],
+      "sample_question_ids": [
+        "b-m3-quad-quadroot-001"
+      ],
+      "rationale": "인수분해로 풀리는 이차방정식의 근을 구하는 연습이다. 간단한 이차방정식 풀이 수준이며 근의 공식 등 다른 풀이는 다루지 않으나 공백이 충족으로 바뀔 가능성이 있다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-quad-quaddisc"
+      ],
+      "sample_question_ids": [
+        "b-m3-quad-quaddisc-001"
+      ],
+      "rationale": "이차방정식의 판별식 D의 값을 계산하는 연습이다. 판별식 부호로 실근·허근을 판별하거나 근의 존재성을 판단하는 활동은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-03",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m3-qfunc-vertexsum",
+        "b-m3-qfunc-qfuncvalue"
+      ],
+      "sample_question_ids": [
+        "b-m3-qfunc-vertexsum-001",
+        "b-m3-qfunc-qfuncvalue-001"
+      ],
+      "rationale": "이차함수의 꼭짓점 읽기와 함숫값 계산을 연습한다. 그래프 성질을 설명하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-06",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m2-ineq-ineqmax"
+      ],
+      "sample_question_ids": [
+        "b-m2-ineq-ineqmax-001"
+      ],
+      "rationale": "일차부등식을 풀어 조건을 만족하는 최대 정수를 구하는 연습이다. 부등식의 성질을 설명하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-02-09",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-ineq-ineqcount"
+      ],
+      "sample_question_ids": [
+        "b-h1-ineq-ineqcount-001"
+      ],
+      "rationale": "이차부등식을 풀어 해의 정수 개수를 구하는 연습이다. 연립이차부등식과 함수와의 관계 설명은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-03-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-prob-coincases"
+      ],
+      "sample_question_ids": [
+        "b-m2-prob-coincases-001"
+      ],
+      "rationale": "동전 두 개를 던질 때의 경우의 수를 세는 기초 연습이다. 합의 법칙과 곱의 법칙을 직접 구분해 쓰는 문항은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-03-02",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-comb-permnp"
+      ],
+      "sample_question_ids": [
+        "b-h1-comb-permnp-001"
+      ],
+      "rationale": "서로 다른 대상 중 일부를 뽑아 일렬로 세우는 순열의 수를 구하는 연습이다. 방법을 설명하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-03-03",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-comb-combnc"
+      ],
+      "sample_question_ids": [
+        "b-h1-comb-combnc-001"
+      ],
+      "rationale": "순서를 고려하지 않고 뽑는 조합의 수를 구하는 연습이다. 방법을 설명하는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-04-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수1-04-02",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-h1-mat1-matentry1",
+        "b-h1-mat1-matentry2",
+        "b-h1-mat1-matentry3"
+      ],
+      "sample_question_ids": [
+        "b-h1-mat1-matentry1-001",
+        "b-h1-mat1-matentry2-001"
+      ],
+      "rationale": "행렬의 덧셈·실수배·곱의 성분 계산을 연습한다. 성분 단위 계산에 그쳐 간단한 문제 해결은 부분적으로만 뒷받침된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-01",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-geom-dist2",
+        "b-h1-geo1-dist2"
+      ],
+      "sample_question_ids": [
+        "b-h1-geom-dist2-001",
+        "b-h1-geo1-dist2-001"
+      ],
+      "rationale": "좌표평면 위 두 점 사이의 거리를 계산하는 연습으로 기존 충족 근거를 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-func-slope2"
+      ],
+      "sample_question_ids": [
+        "b-m2-func-slope2-001"
+      ],
+      "rationale": "두 점을 지나는 직선의 기울기를 구하는 연습이다. 직선의 방정식을 구하거나 그래프를 그리는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-04",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-geo2-circler"
+      ],
+      "sample_question_ids": [
+        "b-h1-geo2-circler-001"
+      ],
+      "rationale": "원의 방정식에서 반지름을 읽는 연습이다. 조건으로부터 방정식을 구하거나 그래프를 그리는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-01-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-02-01",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-h1-set1-subsetcount",
+        "b-h1-set1-setcount"
+      ],
+      "sample_question_ids": [
+        "b-h1-set1-subsetcount-001",
+        "b-h1-set1-setcount-001"
+      ],
+      "rationale": "집합의 원소 수와 부분집합의 개수를 구하는 연습이다. 집합을 표현하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-02-03",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-h1-set1-setcount"
+      ],
+      "sample_question_ids": [
+        "b-h1-set1-setcount-001"
+      ],
+      "rationale": "합집합의 원소 수를 구하는 연산 연습이다. 벤 다이어그램으로 나타내는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-02-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-02-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-03-01",
+      "status": "gap",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-func-funcvalue",
+        "b-m2-lfn1-funcvalue"
+      ],
+      "sample_question_ids": [
+        "b-m2-func-funcvalue-001",
+        "b-m2-lfn1-funcvalue-001"
+      ],
+      "rationale": "일차함수의 함숫값을 구하는 연습이다. 함수 개념의 설명과 그래프 이해는 다루지 않으므로 공백 판단을 바꾸기에는 부족하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-03-02",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-h1-fnc1-composite1",
+        "b-h1-fnc1-composite2"
+      ],
+      "sample_question_ids": [
+        "b-h1-fnc1-composite1-001",
+        "b-h1-fnc1-composite2-001"
+      ],
+      "rationale": "합성함수의 함숫값 계산을 연습한다. 합성함수 식을 구하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-03-03",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-h1-fnc1-inverseval"
+      ],
+      "sample_question_ids": [
+        "b-h1-fnc1-inverseval-001"
+      ],
+      "rationale": "역함수의 함숫값 계산을 연습한다. 역함수 식을 구하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "10기수2-03-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항은행에 이 성취기준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m3-sqrt-sqrtval",
+        "b-m3-sqrt-sqrtprod"
+      ],
+      "sample_question_ids": [
+        "b-m3-sqrt-sqrtval-001",
+        "b-m3-sqrt-sqrtprod-001"
+      ],
+      "rationale": "제곱근(n=2)의 값과 곱 계산만 연습하므로 거듭제곱근 전반의 뜻과 n제곱근 계산은 여전히 부족하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-exp-expmul",
+        "b-m2-exp-exppow"
+      ],
+      "sample_question_ids": [
+        "b-m2-exp-expmul-001",
+        "b-m2-exp-exppow-001"
+      ],
+      "rationale": "같은 밑의 곱과 거듭제곱의 거듭제곱 지수 채우기를 연습해 기존 부족분 일부를 보완하나, 곱의 거듭제곱·나눗셈 등 식을 간단히 나타내는 범위는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-log-logval",
+        "b-h2-log-logadd"
+      ],
+      "sample_question_ids": [
+        "b-h2-log-logval-001",
+        "b-h2-log-logadd-001"
+      ],
+      "rationale": "로그 값과 로그의 합 계산을 반복 연습하며 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수01-08",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-trig-raddeg"
+      ],
+      "sample_question_ids": [
+        "b-h2-trig-raddeg-001"
+      ],
+      "rationale": "호도법을 도 단위로 변환하는 계산을 연습하나 일반각의 뜻과 관계를 설명하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수02-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수02-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-02",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-seq-arithterm",
+        "b-h2-seq-arithsum"
+      ],
+      "sample_question_ids": [
+        "b-h2-seq-arithterm-001",
+        "b-h2-seq-arithsum-001"
+      ],
+      "rationale": "등차수열의 일반항(제n항)과 첫째항부터의 합 계산을 반복 연습하며 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-seq-geoterm",
+        "b-h2-seq-georatio"
+      ],
+      "sample_question_ids": [
+        "b-h2-seq-geoterm-001",
+        "b-h2-seq-georatio-001"
+      ],
+      "rationale": "등비수열의 항과 공비를 구하는 연습이나, 첫째항부터 제n항까지의 합을 구하는 문항은 뱅크에도 없어 부분 충족 상태가 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-seq1-sigmasum1",
+        "b-h2-seq1-sigmasum2",
+        "b-h2-seq1-sigmasum3",
+        "b-h2-seq1-sigmasum4"
+      ],
+      "sample_question_ids": [
+        "b-h2-seq1-sigmasum1-001",
+        "b-h2-seq1-sigmasum2-001"
+      ],
+      "rationale": "∑ 기호로 나타낸 합(k, 일차식, 상수, k^2)의 값을 구하는 연습으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-05",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-seq1-sigmasum4",
+        "b-h2-seq-arithsum"
+      ],
+      "sample_question_ids": [
+        "b-h2-seq1-sigmasum4-001",
+        "b-h2-seq-arithsum-001"
+      ],
+      "rationale": "제곱의 합과 등차수열의 합 계산을 연습하나 합을 구하는 방법을 설명하는 활동은 아니므로 설명 요소는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12대수03-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-lim-limlinear",
+        "b-h2-lim-limfactor"
+      ],
+      "sample_question_ids": [
+        "b-h2-lim-limlinear-001",
+        "b-h2-lim-limfactor-001"
+      ],
+      "rationale": "극한값을 구하는 계산을 연습하나 극한의 뜻을 설명하는 활동은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-01-02",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-lim-limlinear",
+        "b-h2-lim-limfactor"
+      ],
+      "sample_question_ids": [
+        "b-h2-lim-limlinear-001",
+        "b-h2-lim-limfactor-001"
+      ],
+      "rationale": "다항식 및 약분이 필요한 유리식 형태의 극한값 계산을 반복 연습하며 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-01-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-01",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-der-derivat",
+        "b-h3-cal1-derivval3"
+      ],
+      "sample_question_ids": [
+        "b-h2-der-derivat-001",
+        "b-h3-cal1-derivval3-001"
+      ],
+      "rationale": "주어진 점에서의 미분계수 f'(a)를 구하는 연습으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-03",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-der-derivat"
+      ],
+      "sample_question_ids": [
+        "b-h2-der-derivat-001"
+      ],
+      "rationale": "x^n 꼴 항으로 이루어진 다항함수를 미분해 미분계수를 구하는 연습으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-04",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-der-derivat"
+      ],
+      "sample_question_ids": [
+        "b-h2-der-derivat-001"
+      ],
+      "rationale": "다항함수의 항별 미분(실수배·합·차)을 연습하나 함수의 곱의 미분법 문항은 뱅크에도 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-05",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-07",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-08",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-02-10",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-03-02",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-03-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-03-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-int-defint"
+      ],
+      "sample_question_ids": [
+        "b-h3-int-defint-001"
+      ],
+      "rationale": "다항함수의 정적분 값을 구하는 연습으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-03-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-area-areax2"
+      ],
+      "sample_question_ids": [
+        "b-h3-area-areax2-001"
+      ],
+      "rationale": "곡선과 x축·직선으로 둘러싸인 넓이를 구하는 연습으로 기존 문항을 보강하나 두 곡선 사이 넓이는 포함하지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅰ-03-06",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cnt1-repperm",
+        "b-h3-cnt1-permsame"
+      ],
+      "sample_question_ids": [
+        "b-h3-cnt1-repperm-001",
+        "b-h3-cnt1-permsame-001"
+      ],
+      "rationale": "중복순열과 같은 것이 있는 순열의 수를 구하는 연습이며, 방법을 설명하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통01-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cnt1-repcomb"
+      ],
+      "sample_question_ids": [
+        "b-h3-cnt1-repcomb-001"
+      ],
+      "rationale": "중복조합의 수를 구하는 연습이며, 방법을 설명하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통01-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cnt1-binomcoef"
+      ],
+      "sample_question_ids": [
+        "b-h3-cnt1-binomcoef-001"
+      ],
+      "rationale": "이항정리로 전개식의 항의 계수를 구하는 연습이며, 이항정리를 활용한 응용 문제는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-pro1-probadd",
+        "b-h3-pro1-probcomplement"
+      ],
+      "sample_question_ids": [
+        "b-h3-pro1-probadd-001",
+        "b-h3-pro1-probcomplement-001"
+      ],
+      "rationale": "확률의 덧셈과 여사건 성질을 적용한 계산을 연습하나 개념과 기본 성질을 설명하는 활동은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통02-02",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-pro1-probadd"
+      ],
+      "sample_question_ids": [
+        "b-h3-pro1-probadd-001"
+      ],
+      "rationale": "P(A∪B)=P(A)+P(B)-P(A∩B)를 이용한 합사건 확률 계산으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통02-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-pro1-probcomplement"
+      ],
+      "sample_question_ids": [
+        "b-h3-pro1-probcomplement-001"
+      ],
+      "rationale": "여사건의 확률을 직접 구하는 연습이며, '적어도 하나' 등 여사건을 활용한 문제 해결 문항은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통02-04",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cond-condprob"
+      ],
+      "sample_question_ids": [
+        "b-h3-cond-condprob-001"
+      ],
+      "rationale": "조건부확률 P(B|A)를 구하는 계산 연습으로 기존 문항을 보강하나 실생활 맥락 문항은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통02-05",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통02-06",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-03",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-norm-binommean"
+      ],
+      "sample_question_ids": [
+        "b-h3-norm-binommean-001"
+      ],
+      "rationale": "이항분포의 평균 E(X)를 구하는 연습으로 기존 문항을 보강하나 표준편차는 포함하지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-05",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12확통03-07",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-sta2-cihalf"
+      ],
+      "sample_question_ids": [
+        "b-el-sta2-cihalf-001"
+      ],
+      "rationale": "모표준편차와 표본 크기로 95% 오차 한계를 계산하는 연습이며, 공학 도구 활용과 추정 결과 해석은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-01-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-01-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-01-04",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-01-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-ser-geoseries"
+      ],
+      "sample_question_ids": [
+        "b-h3-ser-geoseries-001"
+      ],
+      "rationale": "공비 절댓값이 1보다 작은 무한등비급수의 합을 구하는 연습으로 기존 문항을 보강하나 활용 맥락은 아니다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cal1-derivval1",
+        "b-h3-cal1-derivval4"
+      ],
+      "sample_question_ids": [
+        "b-h3-cal1-derivval1-001",
+        "b-h3-cal1-derivval4-001"
+      ],
+      "rationale": "지수함수 e^{ax}와 로그함수 ln(ax)의 미분계수를 구하는 연습이며, 지수·로그함수의 극한은 여전히 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cal1-derivval2"
+      ],
+      "sample_question_ids": [
+        "b-h3-cal1-derivval2-001"
+      ],
+      "rationale": "sin(ax)의 미분계수를 구하는 연습이며, 삼각함수의 극한은 여전히 다루지 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-cal1-derivval1",
+        "b-h3-cal1-derivval2",
+        "b-h3-cal1-derivval3",
+        "b-h3-cal1-derivval4"
+      ],
+      "sample_question_ids": [
+        "b-h3-cal1-derivval1-001",
+        "b-h3-cal1-derivval2-001"
+      ],
+      "rationale": "지수·삼각·다항·로그의 합성함수 형태에서 미분계수를 구하는 연습으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-07",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-08",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-09",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-10",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-02-11",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-05",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-area-areax2"
+      ],
+      "sample_question_ids": [
+        "b-h3-area-areax2-001"
+      ],
+      "rationale": "곡선과 x축·직선으로 둘러싸인 넓이를 구하는 연습으로 기존 문항을 보강한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12미적Ⅱ-03-07",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-geo1-focusx"
+      ],
+      "sample_question_ids": [
+        "b-h3-geo1-focusx-001"
+      ],
+      "rationale": "포물선 방정식에서 초점의 좌표를 구하는 연습이며, 포물선의 뜻과 방정식으로 표현하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하01-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하02-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하02-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하02-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하02-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하03-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h3-geo2-vecnorm"
+      ],
+      "sample_question_ids": [
+        "b-h3-geo2-vecnorm-001"
+      ],
+      "rationale": "성분으로 표현된 벡터의 크기를 구하는 연습이며, 위치벡터의 뜻을 다루지는 않는다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하03-03",
+      "status": "covered",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12기하03-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "뱅크 문항 중 이 성취기준의 기능을 직접 연습하는 세트가 없어 기존 판단이 유지된다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수01-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수01-03",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-econ1-taxtotal"
+      ],
+      "sample_question_ids": [
+        "b-el-econ1-taxtotal-001"
+      ],
+      "rationale": "부가가치세를 더한 지불 금액을 구하는 단일 유형의 세금 계산을 연습한다. 소득세 등 다른 세금 상황과 다양한 문제 맥락은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수01-04",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-econ1-simpleinterest"
+      ],
+      "sample_question_ids": [
+        "b-el-econ1-simpleinterest-001"
+      ],
+      "rationale": "단리 이자 계산을 반복 연습한다. 복리 원리합계와 미래 금액의 현재가치 문항은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수01-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수02-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수02-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-econ2-equilibrium"
+      ],
+      "sample_question_ids": [
+        "b-el-econ2-equilibrium-001"
+      ],
+      "rationale": "수요곡선과 공급곡선의 교점(균형 수량)을 계산하는 연습이다. 그래프 활용과 곡선 의미 탐구는 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수02-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수02-04",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-econ2-equilibrium"
+      ],
+      "sample_question_ids": [
+        "b-el-econ2-equilibrium-001"
+      ],
+      "rationale": "수요·공급 방정식으로 균형 수량을 구하는 계산을 연습한다. 균형가격 결정 과정을 설명하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수02-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수02-06",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수03-01",
+      "status": "gap",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-mat1-matentry1",
+        "b-h1-mat1-matentry2",
+        "b-h1-mat1-matentry3"
+      ],
+      "sample_question_ids": [
+        "b-h1-mat1-matentry1-001",
+        "b-h1-mat1-matentry2-001"
+      ],
+      "rationale": "행렬의 덧셈·실수배·곱셈 성분 계산을 연습한다. 경제 현상을 행렬로 나타내는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수03-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수04-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h2-der-derivat",
+        "b-h3-cal1-derivval3"
+      ],
+      "sample_question_ids": [
+        "b-h2-der-derivat-001",
+        "b-h3-cal1-derivval3-001"
+      ],
+      "rationale": "다항함수 등의 도함수 값을 구하는 미분 계산을 연습한다. 미분 개념 이해와 경제 현상을 나타내는 함수의 미분은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수04-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수04-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12경수04-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수01-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수01-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수01-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수02-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수02-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수02-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수03-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-h1-mat1-matentry1",
+        "b-h1-mat1-matentry2"
+      ],
+      "sample_question_ids": [
+        "b-h1-mat1-matentry1-001",
+        "b-h1-mat1-matentry2-001"
+      ],
+      "rationale": "행렬의 덧셈과 실수배 성분 계산을 연습하며 밝기 조절 같은 변환의 연산 기초가 된다. 이미지 데이터에 적용하는 맥락과 다양한 변환은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수04-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수04-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m2-func-slope2"
+      ],
+      "sample_question_ids": [
+        "b-m2-func-slope2-001"
+      ],
+      "rationale": "두 점을 지나는 직선의 기울기 계산을 연습한다. 공학 도구 사용, 추세선 작성, 예측 활용은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수04-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수04-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수05-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12인수05-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수01-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-job1-discount",
+        "b-el-job2-percentchange"
+      ],
+      "sample_question_ids": [
+        "b-el-job1-discount-001",
+        "b-el-job2-percentchange-001"
+      ],
+      "rationale": "할인 가격과 변화율 계산 같은 직무형 기초 연산을 연습한다. 수 개념과 사칙연산의 폭, 유용성 인식 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수01-02",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e6-ari2-roundto1",
+        "b-e6-ari2-roundto2",
+        "b-e6-ari2-roundto3"
+      ],
+      "sample_question_ids": [
+        "b-e6-ari2-roundto1-001",
+        "b-e6-ari2-roundto2-001"
+      ],
+      "rationale": "올림·버림·반올림으로 자리 단위 어림값을 구하는 연습이다. 어림을 문제 해결에 쓰는 활동과 어림값으로 크기를 비교하는 활동은 추가로 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수01-03",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e2-time-convmcm",
+        "b-e3-unit-kmtom",
+        "b-e3-unit-ltoml",
+        "b-e3-unit-convkgg"
+      ],
+      "sample_question_ids": [
+        "b-e2-time-convmcm-001",
+        "b-e3-unit-kmtom-001"
+      ],
+      "rationale": "길이·들이·무게 단위 환산을 연습하며 기존에 없던 들이(L-mL) 환산을 채운다. 시간 환산은 기존 문항에 의존하며 표준 단위를 아는지에 대한 확인은 부족하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수02-01",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-ratio-propx"
+      ],
+      "sample_question_ids": [
+        "b-e6-ratio-propx-001"
+      ],
+      "rationale": "비례식의 빈칸을 구하며 비의 성질을 연습한다. 비를 직무 상황에 연결하는 맥락은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수02-02",
+      "status": "covered",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e5-ratio-ratiopct",
+        "b-e6-pct-decpct",
+        "b-el-job1-discount",
+        "b-el-job2-percentchange"
+      ],
+      "sample_question_ids": [
+        "b-e5-ratio-ratiopct-001",
+        "b-e6-pct-decpct-001"
+      ],
+      "rationale": "분수·소수의 백분율 표현과 할인·증가율 적용을 연습한다. 이미 충분히 다루는 기준에 연습량을 더한다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수02-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수02-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수02-05",
+      "status": "gap",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-m1-solve-solvelin1",
+        "b-m1-solve-solvelin2",
+        "b-m2-ineq-ineqmax"
+      ],
+      "sample_question_ids": [
+        "b-m1-solve-solvelin1-001",
+        "b-m1-solve-solvelin2-001"
+      ],
+      "rationale": "일차방정식과 일차부등식의 풀이 기능을 연습한다. 직무 상황의 문장제를 식으로 세우는 활동은 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수03-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수03-04",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e5-area-rectarea",
+        "b-e5-geo1-rectperim",
+        "b-e6-geo1-circum",
+        "b-e6-geo1-circlearea"
+      ],
+      "sample_question_ids": [
+        "b-e5-area-rectarea-001",
+        "b-e5-geo1-rectperim-001"
+      ],
+      "rationale": "직사각형의 넓이와 둘레, 원의 둘레와 넓이를 구하는 연습이다. 직무 상황 맥락과 삼각형 등 다른 평면도형이 남아 있다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수03-05",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e6-geo-cubevol",
+        "b-e6-geo2-cuboidvol"
+      ],
+      "sample_question_ids": [
+        "b-e6-geo-cubevol-001",
+        "b-e6-geo2-cuboidvol-001"
+      ],
+      "rationale": "정육면체와 직육면체의 부피 계산을 연습한다. 겉넓이, 다른 입체도형, 직무 상황 맥락은 여전히 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수04-01",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m2-prob-coincases",
+        "b-h1-comb-permnp",
+        "b-h1-comb-combnc",
+        "b-h3-cnt1-repperm",
+        "b-h3-cnt1-permsame"
+      ],
+      "sample_question_ids": [
+        "b-m2-prob-coincases-001",
+        "b-h1-comb-permnp-001"
+      ],
+      "rationale": "동전 경우의 수, 순열, 조합 등 여러 경우의 수 계산을 연습한다. 직무 상황 맥락과 합의 법칙 문항은 추가로 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수04-02",
+      "status": "gap",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-e5-dat2-chancefraction"
+      ],
+      "sample_question_ids": [
+        "b-e5-dat2-chancefraction-001"
+      ],
+      "rationale": "공에서 하나를 뽑을 때의 가능성을 소수로 수치화하는 연습이다. 가능성을 말로 설명하는 활동은 추가로 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수04-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수04-04",
+      "status": "gap",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-e6-dat1-piecount"
+      ],
+      "sample_question_ids": [
+        "b-e6-dat1-piecount-001"
+      ],
+      "rationale": "원그래프의 백분율로 인원을 구하는 해석 연습이다. 다양한 표와 그래프, 직무 상황은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12직수04-05",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문01-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문01-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문01-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문02-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문02-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문02-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문03-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문04-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문04-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-cul2-pmaverage"
+      ],
+      "sample_question_ids": [
+        "b-el-cul2-pmaverage-001"
+      ],
+      "rationale": "미세먼지 농도의 평균 계산을 연습한다. 문제 분석과 개선 방법 제안은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문04-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수문04-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통01-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통01-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통01-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통02-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통02-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통02-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통02-04",
+      "status": "partial",
+      "effect": "could_upgrade",
+      "bank_sets": [
+        "b-m1-sta1-median1",
+        "b-m1-sta1-median2",
+        "b-m1-sta1-mode",
+        "b-m1-sta1-datarange",
+        "b-e5-dat1-mean1",
+        "b-e6-stat-mean",
+        "b-m3-sta1-variance",
+        "b-m3-sta1-stdev",
+        "b-el-sta1-stdev"
+      ],
+      "sample_question_ids": [
+        "b-m1-sta1-median1-001",
+        "b-m1-sta1-median2-001"
+      ],
+      "rationale": "평균·중앙값·최빈값·범위·분산·표준편차 계산을 연습해 대푯값과 산포도 종류를 폭넓게 다룬다. 값을 해석해 자료의 특성을 요약하는 활동은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통03-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통03-02",
+      "status": "partial",
+      "effect": "strengthens",
+      "bank_sets": [
+        "b-el-sta2-cihalf"
+      ],
+      "sample_question_ids": [
+        "b-el-sta2-cihalf-001"
+      ],
+      "rationale": "신뢰구간의 오차 한계 계산을 연습한다. 공학 도구 사용과 실생활 모평균 추정은 여전히 필요하다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통03-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통04-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12실통04-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과01-01",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과01-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과02-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과02-02",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과02-03",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과02-04",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과03-01",
+      "status": "partial",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과03-02",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과03-03",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    },
+    {
+      "code": "12수과03-04",
+      "status": "gap",
+      "effect": "none",
+      "bank_sets": [],
+      "sample_question_ids": [],
+      "rationale": "문항 은행에는 이 표준의 기능을 직접 연습하는 세트가 없다.",
+      "reviewed_by": "Claude (자동 검토; 교사 미검토)"
+    }
+  ]
+}
