@@ -1,5 +1,5 @@
 {
-  "note": "수학 문항 은행(lib/learn/content/bank/math.json) 증거. reviewed.json의 상태를 바꾸지 않는다: 감사 도구가 은행 문항 ID를 읽지 못한다. effect=could_upgrade는 도구가 은행 ID를 지원하고 교사가 확인하면 상태 상향을 검토할 후보다.",
+  "note": "수학 문항 은행(lib/learn/content/bank/math.json) 증거. effect=could_upgrade는 상향 후보이며 decision에 검토 결과를 적는다. status는 reviewed.json의 현재 상태와 일치해야 한다.",
   "bank": {
     "sets": 194,
     "questions": 6672
@@ -176,6 +176,7 @@
         "b-e3-muldiv-times-001"
       ],
       "rationale": "한 자리 수 곱셈(7×9 등 7~9단 포함 표본)을 반복 연습하여 기존의 2~6단 중심 한계를 보완할 수 있다. 곱셈구구의 구성 원리 이해 활동은 여전히 필요하다.",
+      "decision": "유지(partial): 계산 범위는 채워졌으나 구성 원리 이해 활동 없음",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -994,7 +995,7 @@
     },
     {
       "code": "6수01-12",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-e4-frac-fractodec"
@@ -1003,6 +1004,7 @@
         "b-e4-frac-fractodec-001"
       ],
       "rationale": "분수를 소수로 나타내는 문항으로 분수와 소수의 관계 중 변환 부분을 연습한다. 소수를 분수로 바꾸기, 크기 비교와 그 방법 설명은 문항이 없어 추가가 필요하며, 이것이 보완되면 공백에서 부분 충족으로 올릴 수 있다.",
+      "decision": "gap→partial: 관계 중 변환 한 방향만 근거가 생김",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2057,6 +2059,7 @@
         "b-m3-fact-expandsquare-001"
       ],
       "rationale": "이항식 곱을 전개하는 계산(곱셈)만 연습하며 덧셈·뺄셈·나눗셈과 사칙연산 원리의 설명은 다루지 않는다. 이 세트가 있으면 공백이 부분 충족으로 바뀔 가능성은 있으나 계산 범위가 이차식 곱으로 한정된다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2083,6 +2086,7 @@
         "b-m3-fact-factordiff-001"
       ],
       "rationale": "이차 삼항식을 (x+m)(x+n) 꼴로 인수분해하는 활동을 연습한다. 삼차 이상 다항식과 공식 활용 인수분해는 다루지 않아 이 범위에서만 보강된다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2511,6 +2515,7 @@
         "b-m3-fact-factordiff-001"
       ],
       "rationale": "이차 삼항식을 (x+m)(x+n) 꼴로 인수분해하는 활동을 연습한다. 삼차 이상 다항식과 공식 활용 인수분해는 다루지 않아 이 범위에서만 보강된다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2524,6 +2529,7 @@
         "b-m3-quad-quadroot-001"
       ],
       "rationale": "인수분해로 풀리는 이차방정식의 근을 구하는 연습이다. 간단한 이차방정식 풀이 수준이며 근의 공식 등 다른 풀이는 다루지 않으나 공백이 충족으로 바뀔 가능성이 있다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2552,6 +2558,7 @@
         "b-m3-qfunc-qfuncvalue-001"
       ],
       "rationale": "이차함수의 꼭짓점 읽기와 함숫값 계산을 연습한다. 그래프 성질을 설명하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2583,6 +2590,7 @@
         "b-m2-ineq-ineqmax-001"
       ],
       "rationale": "일차부등식을 풀어 조건을 만족하는 최대 정수를 구하는 연습이다. 부등식의 성질을 설명하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2666,7 +2674,7 @@
     },
     {
       "code": "10기수1-04-02",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-h1-mat1-matentry1",
@@ -2678,6 +2686,7 @@
         "b-h1-mat1-matentry2-001"
       ],
       "rationale": "행렬의 덧셈·실수배·곱의 성분 계산을 연습한다. 성분 단위 계산에 그쳐 간단한 문제 해결은 부분적으로만 뒷받침된다.",
+      "decision": "gap→partial: 연산 수행 근거",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2770,6 +2779,7 @@
         "b-h1-set1-setcount-001"
       ],
       "rationale": "집합의 원소 수와 부분집합의 개수를 구하는 연습이다. 집합을 표현하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2792,6 +2802,7 @@
         "b-h1-set1-setcount-001"
       ],
       "rationale": "합집합의 원소 수를 구하는 연산 연습이다. 벤 다이어그램으로 나타내는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "decision": "유지: 은행이 부족한 점을 채우지 못함(M3 이하 학년 세트이거나 설명·표현·그래프 활동 없음)",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -2829,7 +2840,7 @@
     },
     {
       "code": "10기수2-03-02",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-h1-fnc1-composite1",
@@ -2840,11 +2851,12 @@
         "b-h1-fnc1-composite2-001"
       ],
       "rationale": "합성함수의 함숫값 계산을 연습한다. 합성함수 식을 구하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "decision": "gap→partial: 합성함수 값 계산",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
       "code": "10기수2-03-03",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-h1-fnc1-inverseval"
@@ -2853,6 +2865,7 @@
         "b-h1-fnc1-inverseval-001"
       ],
       "rationale": "역함수의 함숫값 계산을 연습한다. 역함수 식을 구하는 활동은 없어 부분 충족 정도까지만 가능하다.",
+      "decision": "gap→partial: 역함수 값 계산",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -4201,7 +4214,7 @@
     },
     {
       "code": "12직수01-02",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-e6-ari2-roundto1",
@@ -4213,11 +4226,12 @@
         "b-e6-ari2-roundto2-001"
       ],
       "rationale": "올림·버림·반올림으로 자리 단위 어림값을 구하는 연습이다. 어림을 문제 해결에 쓰는 활동과 어림값으로 크기를 비교하는 활동은 추가로 필요하다.",
+      "decision": "gap→partial: 어림 자체의 근거",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
       "code": "12직수01-03",
-      "status": "partial",
+      "status": "covered",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-e2-time-convmcm",
@@ -4230,6 +4244,7 @@
         "b-e3-unit-kmtom-001"
       ],
       "rationale": "길이·들이·무게 단위 환산을 연습하며 기존에 없던 들이(L-mL) 환산을 채운다. 시간 환산은 기존 문항에 의존하며 표준 단위를 아는지에 대한 확인은 부족하다.",
+      "decision": "partial→covered: 기존에 지적한 유일한 공백(들이)이 채워짐",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -4338,11 +4353,12 @@
         "b-e5-geo1-rectperim-001"
       ],
       "rationale": "직사각형의 넓이와 둘레, 원의 둘레와 넓이를 구하는 연습이다. 직무 상황 맥락과 삼각형 등 다른 평면도형이 남아 있다.",
+      "decision": "유지(partial): 도형 범위 일부 확대, 직무 맥락 없음",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
       "code": "12직수03-05",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-e6-geo-cubevol",
@@ -4353,6 +4369,7 @@
         "b-e6-geo2-cuboidvol-001"
       ],
       "rationale": "정육면체와 직육면체의 부피 계산을 연습한다. 겉넓이, 다른 입체도형, 직무 상황 맥락은 여전히 없다.",
+      "decision": "gap→partial: 부피 한 가지",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -4371,11 +4388,12 @@
         "b-h1-comb-permnp-001"
       ],
       "rationale": "동전 경우의 수, 순열, 조합 등 여러 경우의 수 계산을 연습한다. 직무 상황 맥락과 합의 법칙 문항은 추가로 필요하다.",
+      "decision": "유지(partial): 순열·조합 계산 추가, 합의 법칙·직무 맥락 없음",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
       "code": "12직수04-02",
-      "status": "gap",
+      "status": "partial",
       "effect": "could_upgrade",
       "bank_sets": [
         "b-e5-dat2-chancefraction"
@@ -4384,6 +4402,7 @@
         "b-e5-dat2-chancefraction-001"
       ],
       "rationale": "공에서 하나를 뽑을 때의 가능성을 소수로 수치화하는 연습이다. 가능성을 말로 설명하는 활동은 추가로 필요하다.",
+      "decision": "gap→partial: 수치화만 근거",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {
@@ -4639,6 +4658,7 @@
         "b-m1-sta1-median2-001"
       ],
       "rationale": "평균·중앙값·최빈값·범위·분산·표준편차 계산을 연습해 대푯값과 산포도 종류를 폭넓게 다룬다. 값을 해석해 자료의 특성을 요약하는 활동은 여전히 필요하다.",
+      "decision": "유지(partial): 종류별 계산은 채워졌으나 요약·해석 활동 없음",
       "reviewed_by": "Claude (자동 검토; 교사 미검토)"
     },
     {

@@ -17,7 +17,7 @@ const EFFECTS = new Set(["none", "strengthens", "could_upgrade"]);
 const REVIEWER = "Claude (자동 검토; 교사 미검토)";
 
 let entries;
-if (check) entries = JSON.parse(fs.readFileSync(OUT, "utf8")).standards;
+if (check || dir === "-") entries = JSON.parse(fs.readFileSync(OUT, "utf8")).standards;
 else {
   entries = [];
   for (const f of fs.readdirSync(dir).filter((x) => /^out_[A-Z]\.json$/.test(x)).sort()) entries.push(...JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
@@ -45,11 +45,11 @@ if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 
 entries = std.map((s) => {
   const e = byCode.get(s.code);
-  return { code: s.code, status: reviewed.get(s.code).status, effect: e.effect, bank_sets: e.bank_sets, sample_question_ids: e.sample_question_ids, rationale: e.rationale, reviewed_by: REVIEWER };
+  return { code: s.code, status: reviewed.get(s.code).status, effect: e.effect, bank_sets: e.bank_sets, sample_question_ids: e.sample_question_ids, rationale: e.rationale, ...(e.decision ? { decision: e.decision } : {}), reviewed_by: REVIEWER };
 });
 const tally = (k) => entries.reduce((a, e) => ((a[e[k]] = (a[e[k]] || 0) + 1), a), {});
 const doc = {
-  note: "수학 문항 은행(lib/learn/content/bank/math.json) 증거. reviewed.json의 상태를 바꾸지 않는다: 감사 도구가 은행 문항 ID를 읽지 못한다. effect=could_upgrade는 도구가 은행 ID를 지원하고 교사가 확인하면 상태 상향을 검토할 후보다.",
+  note: "수학 문항 은행(lib/learn/content/bank/math.json) 증거. effect=could_upgrade는 상향 후보이며 decision에 검토 결과를 적는다. status는 reviewed.json의 현재 상태와 일치해야 한다.",
   bank: { sets: bank.sets.length, questions: bank.sets.reduce((n, s) => n + s.rows.length, 0) },
   standards: entries,
 };
@@ -62,9 +62,9 @@ const lines = [
   `은행 ${doc.bank.sets}세트 ${doc.bank.questions.toLocaleString("en-US")}문항이 성취기준 435개 중 어디에 연습 근거가 되는지 정리했습니다. 자동 검토이며 교사 검토를 받지 않았습니다. \`reviewed.json\`의 상태는 바꾸지 않았습니다(감사 도구가 은행 문항 ID를 읽지 못함).`, "",
   `- 은행 근거 없음: ${tally("effect").none}`, `- 계산 연습으로 보강(strengthens): ${tally("effect").strengthens}`, `- 상향 후보(could_upgrade): ${tally("effect").could_upgrade}`, "",
   "은행 문항은 숫자 답을 내는 계산·적용 연습입니다. 설명·증명·작도·모델링·자료 수집 성취기준은 은행만으로 충족되지 않습니다.", "",
-  "## 상향 후보", "", "| 기준 | 현재 | 세트 | 남은 한계 |", "|---|---|---|---|",
-  ...up.map((e) => `| ${e.code} | ${e.status} | ${e.bank_sets.map((s) => "`" + s + "`").join(", ")} | ${e.rationale.replace(/\|/g, "/")} |`), "",
-  "전체 목록은 `bank-evidence.json`입니다. 재생성: `node scripts/learn/bank-evidence.mjs <조각 디렉터리>`, 검증: `--check`.", "",
+  "## 상향 후보", "", "| 기준 | 현재 | 검토 결과 | 세트 | 남은 한계 |", "|---|---|---|---|---|",
+  ...up.map((e) => `| ${e.code} | ${e.status} | ${(e.decision ?? "").replace(/\|/g, "/")} | ${e.bank_sets.map((s) => "`" + s + "`").join(", ")} | ${e.rationale.replace(/\|/g, "/")} |`), "",
+  "전체 목록은 `bank-evidence.json`입니다. 재생성: `node scripts/learn/bank-evidence.mjs -`(기존 JSON에서), 검증: `--check`.", "",
 ];
 fs.writeFileSync(MD, lines.join("\n"));
 console.log("written", tally("effect"));
