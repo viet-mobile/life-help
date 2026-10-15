@@ -1,0 +1,857 @@
+{
+ "packet": "S17-h2-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 15,
+  "questions": 120
+ },
+ "patches": [
+  {
+   "item": "ce92e3e4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"flexible\" mean in the passage?",
+      "o": [
+       "able to be adjusted to suit one's needs",
+       "extremely strict and unchangeable by anyone",
+       "fully paid",
+       "limited to mornings"
+      ],
+      "a": 0,
+      "why": "출퇴근 시간을 자기 사정에 맞게 조정할 수 있다는 뜻이에요."
+     },
+     {
+      "q": "What does \"blur\" mean in \"the boundary ... begins to blur\"?",
+      "o": [
+       "become unclear",
+       "become wider",
+       "be fixed in place",
+       "disappear overnight"
+      ],
+      "a": 0,
+      "why": "일과 휴식의 경계가 모호해진다는 뜻이에요."
+     },
+     {
+      "q": "What does \"adapting\" mean in the passage?",
+      "o": [
+       "arguing about the rules",
+       "moving to a new city",
+       "changing to fit new conditions",
+       "copying other companies exactly"
+      ],
+      "a": 2,
+      "why": "회사들이 하이브리드 방식을 도입하며 새 상황에 맞춰 변화하고 있다는 문맥이에요."
+     },
+     {
+      "q": "According to the survey, what helped reduce stress?",
+      "o": [
+       "working only on weekends",
+       "stopping work at a set time",
+       "using a bigger laptop",
+       "speaking less with colleagues"
+      ],
+      "a": 1,
+      "why": "종료 시간을 정한 직원들이 스트레스를 덜 보고했다고 해요."
+     },
+     {
+      "q": "What is the main purpose of the hybrid model?",
+      "o": [
+       "to reduce the number of employees on the payroll",
+       "to replace video calls with face-to-face meetings only",
+       "to raise salaries for people who work at home",
+       "to combine the advantages of working at home and in the office"
+      ],
+      "a": 3,
+      "why": "사무실과 재택 양쪽의 이점을 모두 얻으려는 것이에요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "2ca225e7",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"endure\" mean in the passage?",
+      "o": [
+       "survive difficult conditions",
+       "enjoy a long vacation somewhere",
+       "escape quickly",
+       "compete with others"
+      ],
+      "a": 0,
+      "why": "혹독한 사막의 여름을 견디고 살아남는다는 뜻이에요."
+     },
+     {
+      "q": "What does \"scorching\" describe?",
+      "o": [
+       "very bright but cool",
+       "covered in clouds",
+       "extremely hot",
+       "strangely quiet"
+      ],
+      "a": 2,
+      "why": "뜨거운 태양을 피해 굴로 들어간다는 문맥이에요."
+     },
+     {
+      "q": "What does \"declining\" mean in \"its numbers are declining\"?",
+      "o": [
+       "staying the same",
+       "becoming fewer",
+       "changing color",
+       "moving north"
+      ],
+      "a": 1,
+      "why": "도로와 건물이 서식지를 차지해 개체 수가 줄고 있다는 뜻이에요."
+     },
+     {
+      "q": "When does the tortoise usually come out of its burrow?",
+      "o": [
+       "every night in winter",
+       "only after midnight",
+       "for a few weeks in spring",
+       "throughout the summer"
+      ],
+      "a": 2,
+      "why": "비가 와서 풀과 꽃이 나는 봄 몇 주 동안만 나온다고 해요."
+     },
+     {
+      "q": "What is the main goal of the conservation groups?",
+      "o": [
+       "to move all the tortoises into zoos where they can be fed",
+       "to build more roads through the desert for visitors",
+       "to stop the spring rain from flooding the burrows",
+       "to protect the tortoise's habitat and prevent road accidents"
+      ],
+      "a": 3,
+      "why": "서식지를 보호하고 운전자가 거북이를 조심하도록 교육하는 것이 목표예요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "1642e2b4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"equipped with\" mean in the passage?",
+      "o": [
+       "connected to the nearest power line",
+       "surrounded by walls",
+       "supplied with the necessary tools",
+       "named after"
+      ],
+      "a": 2,
+      "why": "방 안에 3D 프린터, 재봉틀 등이 갖춰져 있다는 뜻이에요."
+     },
+     {
+      "q": "What does \"hands-on\" mean here?",
+      "o": [
+       "involving direct practical experience",
+       "extremely difficult for most beginners",
+       "taught only by video lessons",
+       "limited to experts with years of training"
+      ],
+      "a": 0,
+      "why": "긴 강의 대신 램프 만들기 같은 직접 해 보는 프로젝트를 한다는 대비가 나와요."
+     },
+     {
+      "q": "What does \"collaborate\" mean in the passage?",
+      "o": [
+       "work together",
+       "compete fiercely",
+       "speak quietly",
+       "wait in line"
+      ],
+      "a": 0,
+      "why": "십대와 은퇴한 목수가 함께 모델을 설계하는 예시가 나와요."
+     },
+     {
+      "q": "Why has a waiting list formed?",
+      "o": [
+       "The room is too small for all the visitors.",
+       "Volunteers are not available.",
+       "Many people want to use the 3D printer.",
+       "The printer is broken."
+      ],
+      "a": 2,
+      "why": "3D 프린터를 쓰려는 사람이 많아서 대기자 명단이 생겼어요."
+     },
+     {
+      "q": "What can be inferred about the library's plan?",
+      "o": [
+       "It plans to close the makerspace once the printer wears out.",
+       "It will start charging for all of its Saturday workshops.",
+       "It wants to expand what it offers with help from the community.",
+       "It hopes to move the recording booth into the reading room."
+      ],
+      "a": 2,
+      "why": "두 번째 기계를 사려고 하고 지역 기업의 기부로 일부 충당한다는 데서 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "c8f2974e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"commuters\" refer to?",
+      "o": [
+       "tourists who are on holiday in the city",
+       "city officials",
+       "shop owners",
+       "people who travel regularly to work or school"
+      ],
+      "a": 3,
+      "why": "기차역과 학교 근처 정거장을 이용해 정기적으로 이동하는 사람들이에요."
+     },
+     {
+      "q": "What does \"congestion\" mean in the passage?",
+      "o": [
+       "quiet roads at night",
+       "damage to the pavement",
+       "too much traffic in one area",
+       "a ban on cars"
+      ],
+      "a": 2,
+      "why": "주요 대로의 혼잡이 줄었다는 문맥이에요."
+     },
+     {
+      "q": "What does \"overflow\" mean in \"others overflow with bikes\"?",
+      "o": [
+       "have no electricity",
+       "stay open all night",
+       "sell bikes cheaply",
+       "have more than they can hold"
+      ],
+      "a": 3,
+      "why": "일부 정거장은 자전거가 넘쳐나서 수용량을 초과한다는 뜻이에요."
+     },
+     {
+      "q": "How did the number of riders compare with the officials' expectation?",
+      "o": [
+       "It was exactly the same.",
+       "It was a little lower.",
+       "It was far higher.",
+       "It could not be counted."
+      ],
+      "a": 2,
+      "why": "수백 명을 예상했는데 6개월 만에 2만 명 이상이 가입했어요."
+     },
+     {
+      "q": "Why do workers carry bikes between stations each evening?",
+      "o": [
+       "to repair broken wheels and flat tires at the workshop",
+       "to clean the bikes before they are sold to residents",
+       "to move them closer to the train station for tourists",
+       "to balance the supply between full and empty stations"
+      ],
+      "a": 3,
+      "why": "일부 정거장은 비고 일부는 넘쳐서 옮겨 균형을 맞춰요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "1fe7b19e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"evolve\" mean in the passage?",
+      "o": [
+       "stay exactly the same",
+       "disappear suddenly",
+       "become simpler every year",
+       "change gradually over time"
+      ],
+      "a": 3,
+      "why": "언어가 끝나지 않고 계속 변화한다는 뜻이에요."
+     },
+     {
+      "q": "What does \"coined\" mean in \"coined by writers\"?",
+      "o": [
+       "invented",
+       "borrowed",
+       "corrected",
+       "translated"
+      ],
+      "a": 0,
+      "why": "작가나 과학자가 새 단어를 만들어 낸다는 문맥이에요."
+     },
+     {
+      "q": "What does \"widespread\" mean?",
+      "o": [
+       "used by only one person",
+       "hard to pronounce",
+       "found or used in many places",
+       "limited to scientists"
+      ],
+      "a": 2,
+      "why": "전 세계로 빠르게 퍼져 사전에 실릴 정도가 되었다는 뜻이에요."
+     },
+     {
+      "q": "According to linguists, which new words usually stay?",
+      "o": [
+       "those that sound funny",
+       "those that were invented only by scientists",
+       "those that are very long",
+       "those that name something with no short term"
+      ],
+      "a": 3,
+      "why": "실제 빈틈을 채우는 단어가 남는다고 해요."
+     },
+     {
+      "q": "What is the writer's attitude toward older speakers' complaints?",
+      "o": [
+       "They are always correct, since language should never change.",
+       "They are not new, since people have complained for centuries.",
+       "They are rude and should always be ignored by everyone.",
+       "They are a modern habit that began with social media."
+      ],
+      "a": 1,
+      "why": "사람들이 수 세기 동안 그렇게 말해 왔다고 하며 담담하게 지적해요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "63a30610",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"conveys\" mean in the passage?",
+      "o": [
+       "hides",
+       "communicates",
+       "carries physically",
+       "measures exactly"
+      ],
+      "a": 1,
+      "why": "waggle의 길이가 거리를 '전달한다'는 뜻이므로 communicates가 맞아요."
+     },
+     {
+      "q": "What does \"forage\" mean in the passage?",
+      "o": [
+       "build a new nest",
+       "clean the hive",
+       "rest in the sun",
+       "search for food"
+      ],
+      "a": 3,
+      "why": "춤을 본 벌들이 올바른 장소로 날아가 먹이를 찾는다는 문맥이에요."
+     },
+     {
+      "q": "What does \"scarce\" mean in \"food is scarce nearby\"?",
+      "o": [
+       "unsafe to eat unless it is cooked first",
+       "too heavy to carry",
+       "already collected",
+       "hard to find in large amounts"
+      ],
+      "a": 3,
+      "why": "가까이에 먹이가 부족해 먼 곳으로 안내할 때 유용하다는 문맥이에요."
+     },
+     {
+      "q": "What does the length of the waggle show?",
+      "o": [
+       "how many bees should go",
+       "how far away the flowers are",
+       "what kind of flowers are growing there",
+       "what time of day it is"
+      ],
+      "a": 1,
+      "why": "본문에서 waggle의 길이가 거리를 나타낸다고 해요."
+     },
+     {
+      "q": "What can be inferred about early scientists?",
+      "o": [
+       "They taught the bees to dance in order to guide them to flowers.",
+       "They found it hard to believe insects could share detailed information.",
+       "They kept bees as pets and watched them every day.",
+       "They disliked studying flowers and avoided the hives."
+      ],
+      "a": 1,
+      "why": "과학자들이 곤충이 그렇게 자세히 소통한다는 것을 의심했다고 나와요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "1622b2cf",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"initiative\" mean in the passage?",
+      "o": [
+       "a school holiday",
+       "a new plan to solve a problem",
+       "a type of test",
+       "a rule from the government"
+      ],
+      "a": 1,
+      "why": "학교가 물 절약을 위해 시작한 새로운 계획이라는 뜻이에요."
+     },
+     {
+      "q": "What does \"conserve\" mean?",
+      "o": [
+       "buy in large amounts",
+       "use carefully to avoid waste",
+       "clean thoroughly",
+       "collect from rain"
+      ],
+      "a": 1,
+      "why": "물 사용량을 줄이는 활동이므로 아껴 쓴다는 뜻이에요."
+     },
+     {
+      "q": "What does \"gradual\" mean in \"The changes were gradual\"?",
+      "o": [
+       "happening all at once without any warning",
+       "costing a lot",
+       "hard to measure",
+       "happening slowly over time"
+      ],
+      "a": 3,
+      "why": "처음에는 효과가 작아 보였다는 말과 이어져 서서히 일어났다는 뜻이에요."
+     },
+     {
+      "q": "How much did the daily water use fall?",
+      "o": [
+       "by almost half",
+       "by a few liters",
+       "by almost one quarter",
+       "by about ten percent"
+      ],
+      "a": 2,
+      "why": "3개월 후 하루 사용량이 거의 4분의 1 줄었다고 나와요."
+     },
+     {
+      "q": "What can be inferred from the parents' comments?",
+      "o": [
+       "The project influenced students' habits outside school.",
+       "Parents began to join the student team that measured the water.",
+       "The school stopped using water completely after the project.",
+       "Students asked to move to a school with a better program."
+      ],
+      "a": 0,
+      "why": "아이들이 집에서도 물을 잠그라고 상기시킨다는 말에서 습관이 학교 밖으로 확산됨을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "df16b80a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"dilapidated\" mean in the passage?",
+      "o": [
+       "freshly painted",
+       "unusually tall compared with nearby buildings",
+       "protected by a fence",
+       "in poor condition from lack of care"
+      ],
+      "a": 3,
+      "why": "돌이 거리에 떨어질 정도로 낡고 방치된 상태를 뜻해요."
+     },
+     {
+      "q": "What does \"demolished\" mean?",
+      "o": [
+       "moved to a new place",
+       "repaired quickly",
+       "torn down completely",
+       "covered with a tent"
+      ],
+      "a": 2,
+      "why": "탑을 부수자는 의견과 보존하자는 의견이 대립하는 문맥이에요."
+     },
+     {
+      "q": "What does \"restore\" mean in the passage?",
+      "o": [
+       "sell to a private collector for a high price",
+       "draw a detailed picture of for a postcard",
+       "turn into a museum with a gift shop",
+       "bring back to its earlier good condition"
+      ],
+      "a": 3,
+      "why": "돌을 점검하고 장치를 청소하는 작업이므로 원래 상태로 되돌린다는 뜻이에요."
+     },
+     {
+      "q": "How did the volunteers get the money they needed?",
+      "o": [
+       "They asked the town council for a large loan.",
+       "They charged for early tours.",
+       "They sold postcards and held bake sales.",
+       "They received a prize."
+      ],
+      "a": 2,
+      "why": "엽서 판매와 베이크 세일로 기금을 모았다고 나와요."
+     },
+     {
+      "q": "Why does the old woman's comment matter in the passage?",
+      "o": [
+       "It proves the tower is the tallest.",
+       "It explains how the clock mechanism works.",
+       "It criticizes the volunteers.",
+       "It shows how much the clock meant to residents."
+      ],
+      "a": 3,
+      "why": "평생 그 소리를 기다렸다는 말로 주민들에게 시계가 얼마나 소중한지 보여줘요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "bdc886dc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"demanding\" mean when B describes the trail?",
+      "o": [
+       "asking for payment",
+       "leading to a dangerous cliff",
+       "requiring a lot of effort",
+       "popular with tourists"
+      ],
+      "a": 2,
+      "why": "가파르고 12km라는 설명에서 힘이 많이 드는 길임을 알 수 있어요."
+     },
+     {
+      "q": "What does \"more my speed\" mean?",
+      "o": [
+       "quicker than I expected",
+       "cheaper than the other trail",
+       "closer to my house",
+       "better suited to my ability"
+      ],
+      "a": 3,
+      "why": "오랫동안 등산을 안 한 B에게 평평한 호수 코스가 더 맞는다는 뜻이에요."
+     },
+     {
+      "q": "What does \"hold you back\" mean in B's line?",
+      "o": [
+       "carry your heavy bag for the whole trip",
+       "prevent you from going at your own pace",
+       "stop you from starting the hike at all",
+       "make you feel lonely during the hike"
+      ],
+      "a": 1,
+      "why": "B가 느려서 A의 속도를 늦출까 걱정하는 말이에요."
+     },
+     {
+      "q": "Why does A suggest bringing a rain jacket?",
+      "o": [
+       "The trail goes through deep water at the bottom.",
+       "It rained last Saturday.",
+       "The weather can change quickly.",
+       "The lake loop is muddy."
+      ],
+      "a": 2,
+      "why": "A는 산 위 날씨가 빠르게 변할 수 있다고 말해요."
+     },
+     {
+      "q": "What do A and B decide about the route?",
+      "o": [
+       "They will start with the lake loop and decide later.",
+       "They will climb the ridge first and walk the loop later.",
+       "They will skip hiking entirely.",
+       "They will go on separate trails."
+      ],
+      "a": 0,
+      "why": "호수 코스로 시작해서 갈림길에서 결정하기로 해요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "22071f54",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"rehearse\" mean in the dialogue?",
+      "o": [
+       "cancel a planned event",
+       "explain an unfamiliar rule to someone else",
+       "practice before the real event",
+       "watch a performance"
+      ],
+      "a": 2,
+      "why": "실제 면접 전에 연습해 보자는 뜻이에요."
+     },
+     {
+      "q": "What does A mean by \"make you stand out\"?",
+      "o": [
+       "make you stand up from your seat when you answer",
+       "make you noticeable among other candidates",
+       "make you feel proud of your own work",
+       "make you speak louder than the others"
+      ],
+      "a": 1,
+      "why": "일반적인 답이 아니라 다른 지원자와 구별되게 하는 예시를 말하라는 뜻이에요."
+     },
+     {
+      "q": "In the dialogue, what does \"came across as nervous\" mean?",
+      "o": [
+       "suddenly met a nervous person",
+       "traveled across the room",
+       "seemed nervous to others",
+       "felt calm and relaxed"
+      ],
+      "a": 2,
+      "why": "'come across as'는 남에게 ~하게 보이다라는 뜻이에요."
+     },
+     {
+      "q": "Why does A call B's first answer \"generic\"?",
+      "o": [
+       "It contained spelling mistakes.",
+       "It was too general to be memorable.",
+       "It was far too long and had too many details.",
+       "It was rude to the interviewer."
+      ],
+      "a": 1,
+      "why": "A는 구체적인 예시가 없어 일반적이라고 평가해요."
+     },
+     {
+      "q": "What does A advise about mentioning shyness?",
+      "o": [
+       "Never talk about it under any circumstances.",
+       "Talk about it at the beginning.",
+       "Mention it only with a way to handle it.",
+       "Pretend that it does not exist."
+      ],
+      "a": 2,
+      "why": "A는 대처 방법을 덧붙일 때에만 언급하라고 조언해요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "45e8a2ff",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"bother\" mean in A's first line?",
+      "o": [
+       "greet someone warmly after a long time apart",
+       "disturb someone with a request or complaint",
+       "hurt someone physically",
+       "visit someone for a meal"
+      ],
+      "a": 1,
+      "why": "A는 불평하러 와서 상대를 방해하는 것에 미안해하고 있어요."
+     },
+     {
+      "q": "What does \"keep it down\" mean?",
+      "o": [
+       "lower the furniture",
+       "stay inside the room",
+       "finish quickly",
+       "make less noise"
+      ],
+      "a": 3,
+      "why": "밤에 소음을 줄이겠다는 뜻이에요."
+     },
+     {
+      "q": "What does \"considerate\" describe in B's behavior?",
+      "o": [
+       "spending a lot of money on gifts for others",
+       "speaking very loudly",
+       "acting in a hurry",
+       "thinking about the feelings of others"
+      ],
+      "a": 3,
+      "why": "B가 이웃의 수면을 배려해 소음을 줄이기로 해서 한 말이에요."
+     },
+     {
+      "q": "Why does A need to sleep early?",
+      "o": [
+       "A studies late every night for a big test.",
+       "A has to start work early.",
+       "A is feeling ill.",
+       "A is moving out soon."
+      ],
+      "a": 1,
+      "why": "A는 이른 근무가 있어서 잠이 필요하다고 해요."
+     },
+     {
+      "q": "What does A mean by \"I'll pass tonight\"?",
+      "o": [
+       "A will walk past B's door on the way home.",
+       "A will not take the cookies this evening.",
+       "A will bake some cookies for B tomorrow.",
+       "A will not talk to B ever again."
+      ],
+      "a": 1,
+      "why": "'pass'는 여기서 제안을 사양한다는 뜻이고, 내일은 받을 수도 있다고 덧붙여요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "2deb38b1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"molten\" mean in the passage?",
+      "o": [
+       "frozen into ice",
+       "melted by great heat",
+       "painted in bright colors",
+       "broken into pieces"
+      ],
+      "a": 1,
+      "why": "노(furnace)에서 꺼낸 꿀처럼 부드러운 빛나는 유리를 가리켜요."
+     },
+     {
+      "q": "What does \"meticulous\" mean in the passage?",
+      "o": [
+       "quick and careless in every step",
+       "very careful about small details",
+       "loud and energetic in the workshop",
+       "easy and relaxing for a beginner"
+      ],
+      "a": 1,
+      "why": "한 번의 부주의한 동작이 작업을 망칠 수 있다는 점에서 세심함을 뜻해요."
+     },
+     {
+      "q": "What does \"apprentices\" mean?",
+      "o": [
+       "customers who order vases",
+       "inspectors of furnaces",
+       "owners of workshops",
+       "learners who train under an expert"
+      ],
+      "a": 3,
+      "why": "몇 달 동안 파이프 돌리기만 하며 기술을 배운다는 문맥이에요."
+     },
+     {
+      "q": "Why are finished pieces placed in a special oven?",
+      "o": [
+       "to melt them again and reshape them",
+       "to add color",
+       "to cool slowly and avoid cracking",
+       "to make them heavier"
+      ],
+      "a": 2,
+      "why": "천천히 식히지 않으면 금이 간다고 나와요."
+     },
+     {
+      "q": "What can be inferred from the last sentence?",
+      "o": [
+       "Glassblowers find the work deeply rewarding.",
+       "The work is quick and easy for almost everyone.",
+       "Apprentices learn the whole craft within a single week.",
+       "Glass cannot be reused once it has cooled down."
+      ],
+      "a": 0,
+      "why": "끝까지 하는 사람들은 아름다운 결과물을 보는 것이 가장 큰 기쁨이라고 말해요."
+     }
+    ]
+   },
+   "why": "Lengthen/specify distractors to remove length cue (key text unchanged, key index updated to new order).",
+   "severity": "minor"
+  },
+  {
+   "item": "7c194142",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"putting off\" mean in the dialogue?",
+      "o": [
+       "delaying something that should be done",
+       "refusing politely to accept something that was offered",
+       "carrying something to another place",
+       "disliking something strongly"
+      ],
+      "a": 0,
+      "why": "A가 책 반납을 미루고 있었다는 뜻이므로 '미루다(delaying)'가 맞아요."
+     },
+     {
+      "q": "What does \"waive\" most likely mean when B talks about the fine?",
+      "o": [
+       "reduce it by a small amount",
+       "collect it at a later date",
+       "choose not to charge it",
+       "record it in the system"
+      ],
+      "a": 2,
+      "why": "B가 A가 스스로 찾아왔기 때문에 벌금을 받지 않겠다고 말하므로 'choose not to charge it'이 맞아요."
+     },
+     {
+      "q": "What does \"in mint condition\" suggest about the book?",
+      "o": [
+       "It has a pleasant smell.",
+       "It is very popular now.",
+       "It looks almost new.",
+       "It is a little damaged."
+      ],
+      "a": 2,
+      "why": "방금 들어온 책이라는 말에서 새것처럼 상태가 좋다는 뜻임을 알 수 있어요."
+     },
+     {
+      "q": "Why was the novel so late?",
+      "o": [
+       "A kept renewing it until no more renewals were allowed.",
+       "A lost it on a trip and found it again much later.",
+       "A forgot the library was closed.",
+       "A lent it to a friend for a while."
+      ],
+      "a": 0,
+      "why": "A는 책을 내려놓을 수 없어서 대출 연장이 막힐 때까지 계속 연장했다고 말해요."
+     },
+     {
+      "q": "What can be inferred about the sequel?",
+      "o": [
+       "Someone else has it right now.",
+       "It has not been published yet.",
+       "It is too damaged to lend.",
+       "It is not part of the library."
+      ],
+      "a": 0,
+      "why": "'checked out at the moment'는 지금 다른 사람이 빌려 갔다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Korean explanation of Q2 misstates the reason for the waiver.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 105,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

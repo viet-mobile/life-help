@@ -1,0 +1,207 @@
+{
+ "packet": "S14-h1-conn",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 13,
+  "questions": 140
+ },
+ "patches": [
+  {
+   "item": "971f4c8a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which connective best fills the blank? \"One idea was that stripes help zebras hide. ______, zebras live mostly on open plains, where stripes do little to hide them.\"",
+      "o": [
+       "However",
+       "Therefore",
+       "For example",
+       "In addition"
+      ],
+      "a": 0,
+      "why": "숨는다는 가설과 대비되는 사실이 이어지므로 However가 알맞아요."
+     },
+     {
+      "q": "How does the sentence about horses in striped coats relate to the one before it?",
+      "o": [
+       "It presents a view that opposes the claim",
+       "It summarizes the whole passage",
+       "It offers evidence for the fly claim",
+       "It explains why zebras live on plains"
+      ],
+      "a": 2,
+      "why": "파리가 줄무늬를 피한다는 주장의 증거로 연구 결과를 제시해요."
+     },
+     {
+      "q": "What is the writer's attitude toward the insect explanation?",
+      "o": [
+       "Cautiously supportive",
+       "Completely certain of it",
+       "Strongly doubtful of it",
+       "Not really interested"
+      ],
+      "a": 0,
+      "why": "many researchers now believe, other benefits may exist, not completely settled 등에서 신중하게 지지하는 태도를 알 수 있어요."
+     },
+     {
+      "q": "The word \"avoid\" in the passage is closest in meaning to ______.",
+      "o": [
+       "stay away from",
+       "fly close to",
+       "search for",
+       "settle down on"
+      ],
+      "a": 0,
+      "why": "avoid landing on striped surfaces는 줄무늬 표면에 앉는 것을 피한다는 뜻이에요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How lions hunt animals on the open plains",
+       "How horses are trained to wear striped coats",
+       "A new idea on why zebras have stripes",
+       "Why zebras travel together in large groups"
+      ],
+      "a": 2,
+      "why": "줄무늬의 이유에 대한 오래된 가설과 새로운 가설을 다루고 있어요."
+     }
+    ]
+   },
+   "why": "Q4 asked about \"spot\" in \"easy to spot\", which does not appear in the passage; replaced with a word that does (avoid).",
+   "severity": "major"
+  },
+  {
+   "item": "47239aff",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which connective best fills the blank? \"Online stores sell books cheaply, so many small shops have closed. ______, a few have survived.\"",
+      "o": [
+       "As a result",
+       "However",
+       "For example",
+       "Similarly"
+      ],
+      "a": 1,
+      "why": "많은 서점이 문을 닫았다는 것과 대비되는 내용이므로 However가 알맞아요."
+     },
+     {
+      "q": "How does the sentence about used books and coffee relate to the sentence before it?",
+      "o": [
+       "It shows the result of closing a shop",
+       "It gives a second example of a special shop",
+       "It disagrees with the first example",
+       "It explains why books are so cheap online today"
+      ],
+      "a": 1,
+      "why": "독서 모임 사례에 이어 또 다른 서점의 사례를 덧붙여요."
+     },
+     {
+      "q": "What does the writer suggest about the shops that sell online?",
+      "o": [
+       "They use technology to support their strengths",
+       "They think websites can never be useful",
+       "They have decided to close their real stores soon",
+       "They want to be the cheapest shops"
+      ],
+      "a": 0,
+      "why": "not rejecting technology but borrowing from it에서 기술을 활용해 자신들의 강점을 보완한다는 것을 알 수 있어요."
+     },
+     {
+      "q": "The word \"browse\" in the passage is closest in meaning to ______.",
+      "o": [
+       "look through casually",
+       "pay for it later",
+       "carry out carefully",
+       "read aloud to friends"
+      ],
+      "a": 0,
+      "why": "browse는 가볍게 훑어보는 것을 뜻해요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How small bookshops survive today",
+       "Why people prefer reading to watching videos",
+       "How a seaside town became famous for books",
+       "Which books sell best in used bookstores"
+      ],
+      "a": 0,
+      "why": "온라인 서점과의 경쟁 속에서 동네 서점이 살아남는 방법을 다뤄요."
+     }
+    ]
+   },
+   "why": "Q3 options b and c were near-identical (plan to close vs decided to close); replaced b with a distinct plausible-but-wrong option.",
+   "severity": "minor"
+  },
+  {
+   "item": "6dab6682",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which connective best fills the blank? \"Not yet. ______, the train is still on its route, so the crew may find it at the last stop.\"",
+      "o": [
+       "Therefore",
+       "For instance",
+       "In addition",
+       "However"
+      ],
+      "a": 3,
+      "why": "아직 접수되지 않았다는 말과 대비되는 희망적인 사실이므로 However가 알맞아요."
+     },
+     {
+      "q": "What does the clerk's \"For example\" introduce?",
+      "o": [
+       "A reason the train was late",
+       "Details to write on the form",
+       "A rule about waiting in the station",
+       "A list of lost items in the office"
+      ],
+      "a": 1,
+      "why": "For example 뒤에 양식에 적을 수 있는 구체적인 정보가 이어져요."
+     },
+     {
+      "q": "What will most likely happen next?",
+      "o": [
+       "The traveler will take the next express train",
+       "The clerk will give the traveler a new bag",
+       "The traveler will give a number and go home",
+       "The traveler will wait at the station overnight"
+      ],
+      "a": 2,
+      "why": "전화번호를 남기고 집에 가 있으라는 안내를 받았으므로 그렇게 할 거예요."
+     },
+     {
+      "q": "The phrase \"handed one in\" is closest in meaning to ______.",
+      "o": [
+       "thrown away",
+       "turned in to the staff",
+       "shown to friends",
+       "carried onto the train"
+      ],
+      "a": 1,
+      "why": "handed in은 분실물을 직원에게 제출했다는 뜻이에요."
+     },
+     {
+      "q": "Which detail will help identify the bag?",
+      "o": [
+       "A sticker of a train on the side",
+       "A broken zipper on the pocket",
+       "A leaf-shaped green keychain",
+       "A name tag on the front"
+      ],
+      "a": 2,
+      "why": "a green keychain shaped like a leaf on the zipper라고 했어요."
+     }
+    ]
+   },
+   "why": "Q4 quoted \"handed in\" but the dialogue says \"handed one in\"; quote corrected.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 137,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

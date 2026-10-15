@@ -1,0 +1,77 @@
+{
+ "packet": "S11-m3-dialogue",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 11,
+  "questions": 80
+ },
+ "patches": [
+  {
+   "item": "5424e78f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is different about the new room?",
+      "o": [
+       "It has a larger bed",
+       "It is next to the construction site",
+       "It looks out on the parking lot",
+       "It is next to the front desk"
+      ],
+      "a": 2,
+      "why": "새 방은 바다 대신 주차장 쪽이에요(faces the parking lot instead of the sea)."
+     },
+     {
+      "q": "What does the guest care about most?",
+      "o": [
+       "Having a beautiful view of the sea from the window",
+       "Eating breakfast early",
+       "Getting a good night's sleep",
+       "Saving money on the room"
+      ],
+      "a": 2,
+      "why": "'I don't mind. I only need to sleep well'이라며 전망보다 숙면을 우선해요."
+     },
+     {
+      "q": "Why does the clerk offer free breakfast?",
+      "o": [
+       "To thank the guest for staying long",
+       "To advertise the hotel restaurant",
+       "To get the guest to leave early",
+       "To make up for the guest's trouble"
+      ],
+      "a": 3,
+      "why": "'for the trouble', 즉 불편을 끼친 것에 대한 보상이에요."
+     },
+     {
+      "q": "In the dialogue, \"I don't mind\" means",
+      "o": [
+       "I am not listening",
+       "I do not remember",
+       "it does not bother me",
+       "it is not my business"
+      ],
+      "a": 2,
+      "why": "I don't mind는 신경 쓰지 않는다, 괜찮다는 뜻이에요."
+     },
+     {
+      "q": "What will happen next?",
+      "o": [
+       "The clerk will bring the bags to the bus",
+       "The guest will move to a quieter room",
+       "The construction will stop today",
+       "The guest will leave the hotel"
+      ],
+      "a": 1,
+      "why": "직원이 바로 조용한 방으로 옮겨 주고 짐도 들어 준다고 했어요."
+     }
+    ]
+   },
+   "why": "Fix second correct answer in q1 (fifth floor is higher than room 408); only option text changed, no identity field.",
+   "severity": "major"
+  }
+ ],
+ "ok": 79,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

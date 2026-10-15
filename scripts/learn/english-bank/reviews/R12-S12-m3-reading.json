@@ -1,0 +1,402 @@
+{
+ "packet": "S12-m3-reading",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 12,
+  "questions": 70
+ },
+ "patches": [
+  {
+   "item": "4c5fba69",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did the teacher change last term?",
+      "o": [
+       "She stopped giving tests to the whole class.",
+       "She added a new writing subject each week.",
+       "She taught longer lessons after school.",
+       "She shortened the nightly homework."
+      ],
+      "a": 3,
+      "why": "one hour of homework 대신 twenty minutes of focused practice를 주었어요."
+     },
+     {
+      "q": "Which is most likely true about the writer's earlier long homework?",
+      "o": [
+       "It was always too difficult for the writer to finish.",
+       "Some of it was done without much thought.",
+       "It was never checked by the teacher afterward.",
+       "It taught the writer how to write much better."
+      ],
+      "a": 1,
+      "why": "Long assignments often become copying exercises라고 했으므로 생각 없이 베끼는 경우가 있었음을 알 수 있어요."
+     },
+     {
+      "q": "Why does the writer mention that writing may need more time?",
+      "o": [
+       "To admit that the idea has limits",
+       "To show that the teacher was wrong",
+       "To suggest adding more homework",
+       "To complain about writing classes"
+      ],
+      "a": 0,
+      "why": "Of course, some subjects ... may need more time은 자신의 주장에도 예외가 있다고 인정하는 말이에요."
+     },
+     {
+      "q": "In the passage, \"focused\" is closest in meaning to",
+      "o": [
+       "done together with other people",
+       "easy enough to finish quickly",
+       "paying full attention to one task",
+       "chosen freely by each student"
+      ],
+      "a": 2,
+      "why": "focused practice는 한 가지에 집중하는 연습을 뜻해요."
+     },
+     {
+      "q": "What does the writer mainly argue?",
+      "o": [
+       "Homework should be given only in the subject of writing.",
+       "Students should never have to take any tests.",
+       "The quality of homework matters more than its length.",
+       "Teachers should give much more time for each task."
+      ],
+      "a": 2,
+      "why": "the real problem was never the amount of time but the quality라고 주장해요."
+     }
+    ]
+   },
+   "why": "focused: key was the only long, detailed option; distractors lengthened",
+   "severity": "minor"
+  },
+  {
+   "item": "30c8de2d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did the writer's uncle do while teaching?",
+      "o": [
+       "He cooked all the meals himself.",
+       "He left to answer the phone.",
+       "He stayed beside the writer.",
+       "He gave written tests."
+      ],
+      "a": 2,
+      "why": "He stayed next to me the whole time이라고 했어요."
+     },
+     {
+      "q": "What can be inferred about the writer as a young child?",
+      "o": [
+       "The writer cooked a full meal every day at that age.",
+       "The writer disliked all the members of the family.",
+       "The writer did not eat some foods.",
+       "The writer was afraid of using any kitchen knives."
+      ],
+      "a": 2,
+      "why": "ingredients I once refused to eat에서 가리는 음식이 있었음을 알 수 있어요."
+     },
+     {
+      "q": "Why does the writer tell the story about the uncle?",
+      "o": [
+       "To show that cooking can be safe with guidance",
+       "To praise the uncle's restaurant to the readers",
+       "To explain exactly how to wash vegetables properly",
+       "To prove that rice is healthier than other foods"
+      ],
+      "a": 0,
+      "why": "삼촌이 곁에서 지켜보며 가르쳐 준 경험으로 안전하게 요리를 배울 수 있음을 보여 줘요."
+     },
+     {
+      "q": "In the passage, \"supervision\" is closest in meaning to",
+      "o": [
+       "trying out new recipes together",
+       "careful watching by an adult",
+       "buying fresh food at a market",
+       "cleaning up the kitchen afterward"
+      ],
+      "a": 1,
+      "why": "supervision은 어른이 지켜보며 돌보는 것을 뜻해요."
+     },
+     {
+      "q": "What does the writer mainly argue?",
+      "o": [
+       "Children should learn to cook with adult help.",
+       "Children should cook alone every night of the week.",
+       "Kitchens should be closed to all young children.",
+       "Parents should stop eating meals at home."
+      ],
+      "a": 0,
+      "why": "young cooks need supervision이라고 하면서 아이들이 요리를 배워야 한다고 주장해요."
+     }
+    ]
+   },
+   "why": "supervision: key \"watching over by an adult\" is ungrammatical for a noun and uniquely longest; reworded key, lengthened distractors",
+   "severity": "minor"
+  },
+  {
+   "item": "42386ad3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did Dae-ho lose the game?",
+      "o": [
+       "He lost his queen after a mistake.",
+       "He ran out of time before the last move.",
+       "He forgot some of the rules of chess.",
+       "He was asked by Elena to stop playing."
+      ],
+      "a": 0,
+      "why": "he made a mistake and lost his queen이라고 했어요."
+     },
+     {
+      "q": "How did Dae-ho feel after ten moves of the game?",
+      "o": [
+       "Bored by the slow pace",
+       "Proud of his clever plan",
+       "Nervous about losing",
+       "Sleepy after a long day"
+      ],
+      "a": 2,
+      "why": "he knew he was in trouble과 he began to sweat에서 지고 있다는 걱정에 긴장했음을 알 수 있어요."
+     },
+     {
+      "q": "What is the turning point of the story?",
+      "o": [
+       "Elena joins the chess club at the start of the term.",
+       "Dae-ho pushes the board off the table in anger.",
+       "The two players stop talking and leave the room.",
+       "Dae-ho asks a question instead of getting upset."
+      ],
+      "a": 3,
+      "why": "분위기가 바뀌는 순간은 Dae-ho가 화내는 대신 질문하는 때예요."
+     },
+     {
+      "q": "In the passage, \"diagrams\" are",
+      "o": [
+       "short notes written for a teacher",
+       "simple drawings that explain something",
+       "small pieces moved around the board",
+       "official rules printed on paper"
+      ],
+      "a": 1,
+      "why": "diagram은 설명을 돕는 간단한 그림이나 도표예요."
+     },
+     {
+      "q": "What does the last sentence suggest about Dae-ho?",
+      "o": [
+       "He wants to leave the club and never play again.",
+       "He plans to beat Elena as soon as he can.",
+       "He is tired of playing chess with new players.",
+       "He now values learning more than winning."
+      ],
+      "a": 3,
+      "why": "For the first time, he did not care who would win은 이기는 것보다 배우는 것을 중요하게 여기게 되었음을 보여 줘요."
+     }
+    ]
+   },
+   "why": "diagrams: key uniquely longest, lengthened distractors; q2 (Elena surprised) replaced because its key duplicated the turning-point key of q3 (cross-reveal)",
+   "severity": "minor"
+  },
+  {
+   "item": "3f70ec0e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What was wrong with the umbrella the next morning?",
+      "o": [
+       "The color had faded.",
+       "A metal part was broken.",
+       "The handle had come off.",
+       "The cloth had a large hole."
+      ],
+      "a": 1,
+      "why": "one of its metal ribs had snapped라고 했어요."
+     },
+     {
+      "q": "Why did Sora hand the umbrella back with both hands?",
+      "o": [
+       "Because it was very heavy",
+       "Because her arms were tired",
+       "To keep it from getting wet",
+       "To show respect and regret"
+      ],
+      "a": 3,
+      "why": "두 손으로 건네는 행동은 미안함과 예의를 나타내요."
+     },
+     {
+      "q": "Why did Sora feel awful the next morning?",
+      "o": [
+       "She had damaged a classmate's umbrella.",
+       "She had made the boy wait for her.",
+       "She had left her own bag at the library.",
+       "She had lost her way home in the rain."
+      ],
+      "a": 0,
+      "why": "우산의 철제 살이 부러진 것을 보고 빌린 물건을 망가뜨렸다는 생각에 마음이 무거웠어요."
+     },
+     {
+      "q": "In the passage, \"snapped\" is closest in meaning to",
+      "o": [
+       "bent slowly",
+       "shone brightly",
+       "broke suddenly",
+       "opened wide"
+      ],
+      "a": 2,
+      "why": "snap은 갑자기 부러지다라는 뜻이에요."
+     },
+     {
+      "q": "What happens at the turning point of the story?",
+      "o": [
+       "Sora decides to keep the umbrella.",
+       "Sora learns the boy is not upset.",
+       "The rain stops at last.",
+       "The boy asks for a new umbrella."
+      ],
+      "a": 1,
+      "why": "Sora가 사과하자 소년이 화내지 않고 대수롭지 않게 반응하면서 이야기의 분위기가 바뀌어요."
+     }
+    ]
+   },
+   "why": "q1 key reused the tested word \"snapped\" (leaks q4); q3 (boy is relaxed) was restated by q5 key (Sora learns he is not upset), so q3 replaced",
+   "severity": "minor"
+  },
+  {
+   "item": "3ceef925",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How do rooftop gardens help a building in summer?",
+      "o": [
+       "They keep the inside cooler.",
+       "They block the sunlight completely.",
+       "They make the roof stronger.",
+       "They bring in more fresh air."
+      ],
+      "a": 0,
+      "why": "plants keep the building underneath cooler라고 했어요."
+     },
+     {
+      "q": "What do city planners probably think about rooftop gardens?",
+      "o": [
+       "They are only a passing fashion that will end soon.",
+       "The spending will pay off over time.",
+       "They should replace all of the parks in a city.",
+       "They are too costly to be useful to anyone."
+      ],
+      "a": 1,
+      "why": "Even so, ... the long-term benefits are worth the cost라고 했으므로 시간이 지나면 비용이 보상된다고 봐요."
+     },
+     {
+      "q": "How does the writer treat the topic?",
+      "o": [
+       "Strongly against the whole idea of rooftop gardens",
+       "Amused by the idea, but not taking it seriously",
+       "Unsure that gardens can grow on roofs at all",
+       "Fair-minded, giving more than one side"
+      ],
+      "a": 3,
+      "why": "장점을 설명한 뒤 However로 비용 문제도 함께 언급해요."
+     },
+     {
+      "q": "In the passage, \"argue\" is closest in meaning to",
+      "o": [
+       "say with reasons",
+       "fight angrily",
+       "ask politely",
+       "forget easily"
+      ],
+      "a": 0,
+      "why": "여기서 argue는 이유를 들어 주장한다는 뜻이에요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to grow herbs and vegetables in a small home",
+       "The advantages and costs of gardens on roofs",
+       "Why cities have too little electricity in summer",
+       "The long history of public parks in big cities"
+      ],
+      "a": 1,
+      "why": "옥상 정원의 장점과 비용을 함께 설명하는 글이에요."
+     }
+    ]
+   },
+   "why": "q3 key restated q5 key (benefits and costs); reworded",
+   "severity": "minor"
+  },
+  {
+   "item": "39556e93",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How do visitors get tickets?",
+      "o": [
+       "They get one for each item they bring.",
+       "They buy them from the volunteers at the door.",
+       "They win them by playing a game at the tables.",
+       "They get one for each hour that they stay."
+      ],
+      "a": 0,
+      "why": "volunteers will count the items you bring and give you one ticket for each라고 했어요."
+     },
+     {
+      "q": "What can be inferred about a first-time visitor with no clothes to bring?",
+      "o": [
+       "The visitor must leave the shop without any clothes.",
+       "The visitor must pay money for each piece of clothing.",
+       "The visitor can only help the volunteers all day.",
+       "The visitor can still take some clothes home."
+      ],
+      "a": 3,
+      "why": "first-timers receive three free tickets이므로 빈손이어도 옷을 가져갈 수 있어요."
+     },
+     {
+      "q": "Why does the writer begin with a question?",
+      "o": [
+       "To test what readers already know about fashion",
+       "To introduce the volunteers who run the swap shop",
+       "To make readers think about their own unused clothes",
+       "To complain about closets that are always messy"
+      ],
+      "a": 2,
+      "why": "옷장에 안 입는 옷이 가득하냐는 질문으로 독자가 자신의 상황을 떠올리게 해요."
+     },
+     {
+      "q": "In the passage, \"browse\" means",
+      "o": [
+       "look through things casually",
+       "carry heavy items",
+       "count one by one",
+       "clean carefully"
+      ],
+      "a": 0,
+      "why": "browse는 가볍게 훑어보다라는 뜻이에요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A sale of brand-new shoes and winter coats",
+       "A tour of a large clothing factory",
+       "An event where people trade used clothes",
+       "A class on how to sew on missing buttons"
+      ],
+      "a": 2,
+      "why": "안 입는 옷을 가져와 다른 옷과 교환하는 행사를 안내하는 글이에요."
+     }
+    ]
+   },
+   "why": "q3: key uniquely longest and most specific (51 vs 28-32); distractors lengthened",
+   "severity": "minor"
+  }
+ ],
+ "ok": 62,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,272 @@
+{
+ "packet": "S13-h1-main",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 14,
+  "questions": 140
+ },
+ "patches": [
+  {
+   "item": "c13eaff3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the conversation?",
+      "o": [
+       "A student wants to cancel his place on the museum trip today.",
+       "A student is reminded of what he must do before a school trip.",
+       "A teacher changes the date of the museum visit.",
+       "A teacher asks parents to pay for lunch."
+      ],
+      "a": 1,
+      "why": "허가서 제출과 준비물을 안내받는 내용이에요."
+     },
+     {
+      "q": "What can be inferred about Dan's mother?",
+      "o": [
+       "She refuses to let him go on the trip to the museum.",
+       "She is busy and forgot to sign the form.",
+       "She works at the museum.",
+       "She will drive Dan to school."
+      ],
+      "a": 1,
+      "why": "늦게까지 일하고 서명을 깜빡했다고 했어요."
+     },
+     {
+      "q": "What does \"still on\" mean in Dan's question \"Is the trip still on if it rains?\"",
+      "o": [
+       "The trip begins in the afternoon.",
+       "The bus will wait for Dan.",
+       "The trip will not be cancelled.",
+       "The museum is turning on its lights."
+      ],
+      "a": 2,
+      "why": "비가 와도 여행이 취소되지 않고 진행된다는 뜻이에요."
+     },
+     {
+      "q": "In the conversation, \"board\" in \"board the bus\" is closest in meaning to",
+      "o": [
+       "clean",
+       "paint",
+       "leave",
+       "get on"
+      ],
+      "a": 3,
+      "why": "board는 '(차·배에) 타다'라는 동사예요."
+     },
+     {
+      "q": "Why does the teacher suggest bringing lunch?",
+      "o": [
+       "The trip will last two weeks.",
+       "Students must pay for food.",
+       "The museum cafe is small.",
+       "The cafe is closed for repairs."
+      ],
+      "a": 2,
+      "why": "박물관 카페가 작아서 도시락이 더 편하다고 했어요."
+     }
+    ]
+   },
+   "why": "Q3 stem attributed Dan's words to the teacher (\"What does the teacher mean by the trip is still on\"); the teacher only answered Yes. Stem rewritten; key unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "ac158257",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Sofia learned that adapting to a problem can matter more than sticking to a plan.",
+       "Sofia lost her science report somewhere on the way to school that morning.",
+       "Leo wanted to borrow Sofia's printer to finish his own homework.",
+       "The teacher refused to accept an email and demanded a paper copy."
+      ],
+      "a": 0,
+      "why": "프린터가 고장 나자 방식을 바꿔 제출한 경험에서 융통성의 중요성을 깨달아요."
+     },
+     {
+      "q": "What can be inferred about Sofia before the printer broke?",
+      "o": [
+       "She usually preferred paper copies for important work.",
+       "She had not started working on the report yet.",
+       "She did not know Leo.",
+       "She often handed in assignments late."
+      ],
+      "a": 0,
+      "why": "'always insisted on handing in paper copies'에서 알 수 있어요."
+     },
+     {
+      "q": "Which word best fills the blank?",
+      "o": [
+       "flexible",
+       "helpful",
+       "thankful",
+       "strict"
+      ],
+      "a": 3,
+      "why": "유연함이 더 중요하다는 대조이므로 '엄격한, 고집스러운'이 와야 해요."
+     },
+     {
+      "q": "In the passage, \"hesitated\" is closest in meaning to",
+      "o": [
+       "jumped up with great joy",
+       "spoke very loudly to the class",
+       "left the room",
+       "paused because she was unsure"
+      ],
+      "a": 3,
+      "why": "hesitate는 확신이 없어 망설이는 것을 뜻해요."
+     },
+     {
+      "q": "In the passage, \"which\" in \"which blinked a red light\" refers to",
+      "o": [
+       "the science report",
+       "the red light",
+       "the clock",
+       "the school printer"
+      ],
+      "a": 3,
+      "why": "관계대명사 which는 앞의 'the school printer'를 가리켜요."
+     }
+    ]
+   },
+   "why": "Q1 key (81 chars) was uniquely longest and most specific; distractors lengthened, still clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "722613f7",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Violinists earn more money than most other workers in a large city.",
+       "Commuters should never stop to listen to or talk with street performers.",
+       "Street music in stations can improve people's day, and the city supports it with rules.",
+       "Stations are far too crowded to allow any kind of music to be played."
+      ],
+      "a": 2,
+      "why": "역에서의 거리 음악이 사람들의 기분을 좋게 하고 도시가 허가제로 지원한다는 내용이에요."
+     },
+     {
+      "q": "What can be inferred about most commuters?",
+      "o": [
+       "They dislike all kinds of music being played in public places.",
+       "They know the violinist personally because they went to school with her.",
+       "They enjoy the music but are in too much of a hurry to stop.",
+       "They usually give large amounts of money to the performer."
+      ],
+      "a": 2,
+      "why": "음악을 즐기지만 지각할까 봐 멈추지 않는다고 했어요."
+     },
+     {
+      "q": "Which word best fills the blank?",
+      "o": [
+       "luggage",
+       "coat",
+       "ticket",
+       "morning"
+      ],
+      "a": 3,
+      "why": "낯선 이의 미소 하나만으로도 아침(의 연주)이 가치 있다는 뜻이에요."
+     },
+     {
+      "q": "In the passage, \"permits\" in \"give permits to selected performers\" is closest in meaning to",
+      "o": [
+       "official permissions",
+       "musical instruments for beginners",
+       "small gifts",
+       "free tickets"
+      ],
+      "a": 0,
+      "why": "permit은 '허가증'을 뜻해요."
+     },
+     {
+      "q": "According to the passage, where must performers stay?",
+      "o": [
+       "Near the ticket gates",
+       "On top of the stairs",
+       "Inside the trains",
+       "In designated spots"
+      ],
+      "a": 3,
+      "why": "허가 규칙은 지정된 장소에만 있으라고 요구해요."
+     }
+    ]
+   },
+   "why": "Q1 and Q2 keys were uniquely longest/most specific; distractors lengthened, still clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "0dea3832",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Loud music helps students understand every school subject better.",
+       "The best background sound depends on the type of study task.",
+       "Students should always study in complete silence at a library.",
+       "Copying notes is harder than reading science."
+      ],
+      "a": 1,
+      "why": "과제의 종류에 따라 배경 소리가 도움이 되기도 해롭기도 한다는 것이 요지예요."
+     },
+     {
+      "q": "What can be inferred about music with lyrics?",
+      "o": [
+       "It helps students memorize long word lists more easily.",
+       "It makes even simple tasks impossible to finish.",
+       "It is banned in most school and public libraries.",
+       "It may interfere with reading because both use language."
+      ],
+      "a": 3,
+      "why": "가사가 있는 음악은 글과 함께 언어 처리를 경쟁하게 해 이해를 떨어뜨려요."
+     },
+     {
+      "q": "Which expression best fills the blank?",
+      "o": [
+       "keep the sound low or turn it off",
+       "add more words to the music",
+       "study in a louder place",
+       "listen to several songs at once"
+      ],
+      "a": 0,
+      "why": "어려운 자료일 때는 소리를 줄이거나 끄는 것이 안전하다는 결론이에요."
+     },
+     {
+      "q": "In the passage, \"demands\" is closest in meaning to",
+      "o": [
+       "refuses politely",
+       "forgives",
+       "requires",
+       "sells"
+      ],
+      "a": 2,
+      "why": "여기서 demand는 '요구하다, 필요로 하다'라는 뜻이에요."
+     },
+     {
+      "q": "According to the passage, which task may go faster with background sound?",
+      "o": [
+       "Reading a science chapter",
+       "Copying notes",
+       "Writing a long essay",
+       "Solving a hard puzzle"
+      ],
+      "a": 1,
+      "why": "단순 반복 작업인 노트 베끼기는 소리가 있으면 더 빨리 하는 사람도 있다고 해요."
+     }
+    ]
+   },
+   "why": "Q2 key (56 chars) uniquely longest vs 31-38; distractors lengthened.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 135,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,346 @@
+{
+ "packet": "S16-h3-tone",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 17,
+  "questions": 140
+ },
+ "patches": [
+  {
+   "item": "221c22f1",
+   "op": "set",
+   "set": {
+    "text": "Kai: Behold. Eleven gears, a carbon frame, and a bell that sounds like a tiny cathedral.\nSunny: Wow. You have been waving this bike at me for three days.\nKai: Because it is the best purchase of my life. Feel how light it is.\nSunny: It is light. So is your wallet now, I assume.\nKai: Money well spent. I will be at the lake in twenty minutes, while you are still waiting for the bus.\nSunny: Sure. Last time you said that, you went home pushing the bike because of a flat tire.\nKai: That was the old bike. Completely different.\nSunny: Is it? Is the rider also different?\nKai: The rider is a legend, thank you very much.\nSunny: A legend who remembers to carry a pump, I hope.\nKai: Ha, ha. Fine. Come with me on Saturday and test it yourself.\nSunny: Now that is an offer I cannot refuse. Okay, I am in."
+   },
+   "why": "Sunny's last line \"an offer I cannot tease\" is not English; the idiom is \"an offer I cannot refuse\" (the line answers Kai's invitation).",
+   "severity": "major"
+  },
+  {
+   "item": "ef4d351e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the judge's attitude toward Priya?",
+      "why": "마지막 줄을 서두른 점은 지적하지만 음색을 칭찬하고 연습 참여를 제안해요. 친절하고 격려하면서도 솔직해요.",
+      "o": [
+       "Harsh and impatient",
+       "Careless and uninterested",
+       "Kind and encouraging, yet honest",
+       "Flattering without any criticism"
+      ],
+      "a": 2
+     },
+     {
+      "q": "Why does Priya tell the story about the wedding?",
+      "why": "경험이 없음을 우스운 일화로 말하는 건 긴장을 농담으로 덮으려는 거예요.",
+      "o": [
+       "To prove that she has trained as a singer for years",
+       "To cover her nervousness with humor",
+       "To complain about the microphone",
+       "To ask for another chance"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What does Priya's comment, \"I always do that when I am nervous,\" show?",
+      "why": "자신의 약점을 알고 있다는 자기 인식을 보여 줘요.",
+      "o": [
+       "She does not care about the audition",
+       "She blames the judge for the mistake",
+       "She is aware of her own weakness",
+       "She has sung many times in groups"
+      ],
+      "a": 2
+     },
+     {
+      "q": "What does the judge most likely mean by \"Do not thank me yet\"?",
+      "why": "연습이 엄격할 것이라며 가볍게 경고하는 말이에요. 합격을 취소하는 건 아니에요.",
+      "o": [
+       "A refusal of Priya's request to join the choir",
+       "A promise of a high salary",
+       "A request to wait outside",
+       "A gentle warning that the work will be hard"
+      ],
+      "a": 3
+     },
+     {
+      "q": "What kind of voices does the choir need?",
+      "why": "'we are short of voices in the middle'라고 했어요. 알토는 이미 충분하다고 했어요.",
+      "o": [
+       "Low voices",
+       "Very high voices",
+       "Solo voices",
+       "Middle voices"
+      ],
+      "a": 3
+     }
+    ]
+   },
+   "why": "Key lacks the article that the parallel noun-phrase distractors (A refusal / A promise / A request) have, so its form differs from them.",
+   "severity": "minor"
+  },
+  {
+   "item": "b4308e92",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair of words best describes Sam's manner?",
+      "why": "상황과 상관없이 'Wonderful!', 'Marvelous!'를 반복하며 변함없이 밝은 말투를 유지해요.",
+      "o": [
+       "Gloomy, slow and uninterested in callers",
+       "Unfailingly upbeat, whatever the caller says",
+       "Rude and sarcastic",
+       "Confused and hesitant"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What is the caller's attitude?",
+      "why": "20분 기다린 불만과 빈정대는 질문에서 짜증 섞인 태도가 드러나요.",
+      "o": [
+       "Cheerful and relaxed",
+       "Impatient and sarcastic",
+       "Shy and confused",
+       "Grateful and warm"
+      ],
+      "a": 1
+     },
+     {
+      "q": "Why does the caller say, \"Do I look like someone who enjoys holding buttons?\"",
+      "why": "묻는 형태의 반어적 표현으로 단계마다 시키는 것에 짜증이 났음을 드러내요.",
+      "o": [
+       "To ask for a different button on the front of the router",
+       "To show irritation at the instruction",
+       "To compliment Sam's patience",
+       "To refuse to follow any instruction"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What can be inferred about Sam's repeated praise?",
+      "why": "사소한 일에도 똑같이 과장된 칭찬을 하는 건 정해진 응대 방식임을 시사해요.",
+      "o": [
+       "It shows real surprise at the caller's skill",
+       "It is probably a routine part of the job",
+       "It was meant to hide the caller's mistakes",
+       "It was written by the caller's manager"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What finally turned the router light green?",
+      "why": "손님이 옆 버튼을 10초 누른 뒤 불이 초록색이 되었어요. 전원 껐다 켜기는 이미 해 본 방법이에요.",
+      "o": [
+       "Unplugging the back cable and plugging it in again",
+       "Turning the router off and on twice",
+       "Waiting for twenty minutes",
+       "Holding the side button for ten seconds"
+      ],
+      "a": 3
+     }
+    ]
+   },
+   "why": "Key word \"scripted\" gives away Q4 (\"routine part of the job\"); questions reveal each other.",
+   "severity": "minor"
+  },
+  {
+   "item": "c5df0608",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which description best fits the mood of the passage?",
+      "why": "긴 기다림의 불안이 의사의 소식으로 안도로 바뀌어요.",
+      "o": [
+       "Tension that turns into relief",
+       "Boredom that turns into anger",
+       "Calm that turns into fear",
+       "Excitement that turns into regret"
+      ],
+      "a": 0
+     },
+     {
+      "q": "Why does the writer mention that Rina counted the ceiling tiles twice?",
+      "why": "타일을 두 번이나 세는 행동은 초조함을 달래려는 몸짓이에요.",
+      "o": [
+       "To explain that the corridor was newly built",
+       "To suggest that the hospital was badly run",
+       "To show that she enjoyed counting",
+       "To show how anxious and restless she was"
+      ],
+      "a": 3
+     },
+     {
+      "q": "What can be inferred from \"the laugh turned into something else halfway through\"?",
+      "why": "웃음이 다른 것으로 바뀌었다는 건 감정이 북받쳐 울음이 터졌다는 뜻이에요. 좋은 소식을 들은 직후라 안도감 때문이에요.",
+      "o": [
+       "Rina became angry at the surgeon",
+       "Rina was suddenly embarrassed by the joke",
+       "Rina was overwhelmed and began to cry",
+       "Rina suspected bad news was coming"
+      ],
+      "a": 2
+     },
+     {
+      "q": "In the passage, \"lurched\" most nearly means",
+      "why": "lurch는 갑작스럽게 휘청하며 움직이는 거예요. 문이 열릴 때마다 가슴이 철렁했다는 뜻이에요.",
+      "o": [
+       "jumped suddenly",
+       "slowed down gently",
+       "faded away",
+       "settled firmly"
+      ],
+      "a": 0
+     },
+     {
+      "q": "Why had Rina bought nothing from the vending machine?",
+      "why": "'she had bought nothing from it because her hands refused to stop trembling'이라고 했어요.",
+      "o": [
+       "It was out of order and showed an error message",
+       "Her hands would not stop trembling",
+       "She had no money with her",
+       "A nurse had told her not to eat"
+      ],
+      "a": 1
+     }
+    ]
+   },
+   "why": "Q1 key (\"turns into relief\") makes Q3 key (\"cry from relief\") guessable.",
+   "severity": "minor"
+  },
+  {
+   "item": "4e5c606a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair of words best describes Dr. Hale's manner?",
+      "why": "어려운 보고서를 쉽게 풀어 주고 가방 농담까지 하는 따뜻하고 차분하며 가벼운 유머가 있는 태도예요.",
+      "o": [
+       "Hurried, curt and impatient",
+       "Strict, gloomy and discouraging",
+       "Excited, careless and distracted",
+       "Warm, calm and lightly humorous"
+      ],
+      "a": 3
+     },
+     {
+      "q": "Why does Mateo say, \"I am in a band\"?",
+      "why": "6주 깁스로 드럼을 못 칠까 걱정되어 한 말이에요.",
+      "o": [
+       "To brag about his talent as a drummer",
+       "To ask for a shorter treatment",
+       "To express concern about his hobby",
+       "To change the topic"
+      ],
+      "a": 2
+     },
+     {
+      "q": "What does \"Your patience will need exercise\" imply?",
+      "why": "드럼은 돌아오겠지만 참을성이 시험받을 것이라는 말은 기다림이 답답할 것임을 뜻해요.",
+      "o": [
+       "Mateo must do special wrist exercises every day",
+       "Mateo is usually very patient",
+       "Mateo's band will break up",
+       "Mateo will find the waiting frustrating"
+      ],
+      "a": 3
+     },
+     {
+      "q": "In the dialogue, \"Let me translate\" means that Dr. Hale will",
+      "why": "전문 용어로 쓰인 보고서를 쉬운 말로 풀어 설명하겠다는 비유적 표현이에요.",
+      "o": [
+       "write the report in another language",
+       "ask another doctor to read it",
+       "explain the report in plain language",
+       "repeat the exact words"
+      ],
+      "a": 2
+     },
+     {
+      "q": "What does the scan show?",
+      "why": "'a small crack in the bone of your wrist. It is clean, it has not moved'라고 했어요.",
+      "o": [
+       "A badly broken bone that needs surgery soon",
+       "A small crack that has not moved",
+       "A swollen muscle",
+       "No problem at all"
+      ],
+      "a": 1
+     }
+    ]
+   },
+   "why": "Key (3 adjectives) is the only three-adjective option, the other options are two-word pairs; lengthen distractors to match.",
+   "severity": "minor"
+  },
+  {
+   "item": "da39dd0c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How would you describe Ms. Duarte's attitude toward Wen?",
+      "why": "솔직함을 인정하며 기한을 주지만 'third chance'는 없다고 선을 그어요. 이해심 있지만 단호한 태도예요.",
+      "o": [
+       "Cold and uninterested",
+       "Understanding but firm",
+       "Angry and mocking",
+       "Easily persuaded and careless"
+      ],
+      "a": 1
+     },
+     {
+      "q": "Why does Ms. Duarte say, \"I am not offering a third chance\"?",
+      "why": "금요일까지 연장을 허락하면서 다음에는 봐주지 않겠다는 경고를 하는 거예요.",
+      "o": [
+       "To refuse Wen's request for an extension",
+       "To warn Wen that the teacher's patience has a limit",
+       "To suggest that Wen should drop the course",
+       "To praise Wen for working so hard"
+      ],
+      "a": 1
+     },
+     {
+      "q": "How does Wen most likely feel during the conversation?",
+      "why": "먼저 설명하겠다고 나서고 사과하며 기한을 부탁하는 모습에서 불안하지만 기대를 거는 마음이 보여요.",
+      "o": [
+       "Proud and confident",
+       "Uneasy but hopeful",
+       "Bored and careless",
+       "Furious and defensive"
+      ],
+      "a": 1
+     },
+     {
+      "q": "In the dialogue, \"counts for more than you might think\" means that",
+      "why": "솔직히 말하는 것이 생각보다 훨씬 가치 있다는 뜻의 표현이에요.",
+      "o": [
+       "the truth will lower Wen's grade",
+       "Wen has many late assignments to count",
+       "honesty is more valuable than Wen expects",
+       "the teacher dislikes long excuses"
+      ],
+      "a": 2
+     },
+     {
+      "q": "According to Wen, why was the essay late this week?",
+      "why": "할머니가 한 주 내내 머물러 조용한 방이 형제와 같이 쓰는 방뿐이었다고 했어요.",
+      "o": [
+       "Wen lost the notes for the essay",
+       "A visiting relative left no quiet place to work",
+       "Wen was ill for most of the week",
+       "The brother borrowed the computer"
+      ],
+      "a": 1
+     }
+    ]
+   },
+   "why": "\"her patience\" is ambiguous (Wen or Ms. Duarte); name the teacher.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 130,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,339 @@
+{
+ "packet": "S15-h2-logic",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 16,
+  "questions": 140
+ },
+ "patches": [
+  {
+   "item": "b15776cd",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did the number of deaths fall in the doctor's hospital?",
+      "o": [
+       "Midwives were no longer allowed to help with births.",
+       "Everyone began to wash their hands with a cleaning liquid.",
+       "The hospital moved into a cleaner new building.",
+       "Doctors stopped examining the mothers altogether."
+      ],
+      "a": 1,
+      "why": "의사들이 특수 세정액으로 손을 씻은 뒤 사망자가 크게 줄었다고 나와요."
+     },
+     {
+      "q": "What can be inferred about the doctor's colleagues?",
+      "o": [
+       "They were unable to read the scientific articles of that time.",
+       "They did not accept ideas that conflicted with their beliefs.",
+       "They had already discovered the bacteria themselves.",
+       "They preferred to work together with the midwives."
+      ],
+      "a": 1,
+      "why": "세균이 병을 일으킨다는 증거가 아직 없어서 이 생각을 모욕적으로 여기고 거부했어요."
+     },
+     {
+      "q": "In the passage, 'puzzling' means...",
+      "o": [
+       "clear and simple at first sight.",
+       "very frightening for the doctors.",
+       "hard to understand at first sight.",
+       "extremely funny to the patients."
+      ],
+      "a": 2,
+      "why": "puzzling은 이해하기 어려운, 수수께끼 같은이라는 뜻이에요."
+     },
+     {
+      "q": "In the sentence 'They found the idea insulting', what does 'They' refer to?",
+      "o": [
+       "the mothers in the hospital",
+       "the midwives who helped",
+       "the scientists who found bacteria",
+       "the doctor's colleagues"
+      ],
+      "a": 3,
+      "why": "앞 문장 'many of his colleagues rejected his advice'를 받아요."
+     },
+     {
+      "q": "What is the main point of the final sentence?",
+      "o": [
+       "Doctors should never change their old habits in a hospital.",
+       "A true idea may be rejected for a long time before people accept it.",
+       "Hand washing is useful only in hospitals and nowhere else.",
+       "Evidence is always less important than what people believe."
+      ],
+      "a": 1,
+      "why": "옳은 생각도 기존 믿음과 부딪히면 거부될 수 있고 증거가 인정받기까지 시간이 걸린다는 결론이에요."
+     }
+    ]
+   },
+   "why": "Q3 had two synonymous correct options; rewrote options so only one fits (key index 2)",
+   "severity": "blocker"
+  },
+  {
+   "item": "5a9468fc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does Omar think perfect scores can be a warning sign?",
+      "o": [
+       "Real opinions usually vary from person to person.",
+       "Headphones rarely receive any reviews from buyers.",
+       "Sellers are not allowed to read the reviews of their goods.",
+       "Customers prefer to buy products without any stars."
+      ],
+      "a": 0,
+      "why": "진짜 의견은 보통 다양하기 때문에 전부 만점이면 판매자가 쓴 것일 수 있다고 해요."
+     },
+     {
+      "q": "What can be inferred about the twelve reviews?",
+      "o": [
+       "Some may have been written by the seller.",
+       "All of them describe both good and bad points.",
+       "They were posted over several months.",
+       "They compare many different models."
+      ],
+      "a": 0,
+      "why": "같은 날 올라오고 같은 단어를 반복해서 수상하다고 했으므로 판매자가 썼을 가능성이 있어요."
+     },
+     {
+      "q": "In the dialogue, 'suspicious' means...",
+      "o": [
+       "proving without any doubt that something is true.",
+       "causing laughter among all the readers.",
+       "making people doubt that something is honest.",
+       "causing hunger after a long day."
+      ],
+      "a": 2,
+      "why": "suspicious는 정직성에 의심이 가는, 수상한이라는 뜻이에요."
+     },
+     {
+      "q": "What does 'them' refer to in 'Compare them with a model'?",
+      "o": [
+       "the hundreds of reviews of another model",
+       "the stars shown beside the price",
+       "the dates shown at the top of the page",
+       "the twelve reviews of the headphones"
+      ],
+      "a": 3,
+      "why": "Omar는 Nari가 본 12개의 후기를 후기가 많은 다른 모델과 비교하라고 해요."
+     },
+     {
+      "q": "What is the main point Omar wants to make?",
+      "o": [
+       "Cheaper headphones are always the best choice for anyone.",
+       "A perfect score means little without many varied reviews.",
+       "Reviews should never be read before you buy a product.",
+       "A product with only 4.4 stars should always be avoided."
+      ],
+      "a": 1,
+      "why": "점수만 보지 말고 후기의 수와 다양성으로 신뢰성을 판단해야 한다는 것이 핵심이에요."
+     }
+    ]
+   },
+   "why": "Q3 had two equivalent correct options; rewrote so only one is correct (key index 2)",
+   "severity": "blocker"
+  },
+  {
+   "item": "f6f6ecb0",
+   "op": "set",
+   "set": {
+    "text": "Jihun: I got two job offers, and I can't decide. One is a café, and the other is tutoring middle school students.\nSora: What are the hours?\nJihun: The café needs me four evenings a week, but the tutoring is only two afternoons.\nSora: Then tutoring leaves more time for your own studying.\nJihun: True, but the café pays more per hour, and I'm saving for a laptop.\nSora: How much more?\nJihun: About three thousand won. That sounds small, but I'd work more hours at the café, and the café has tips.\nSora: Hmm, so the café could earn much more in total.\nJihun: Yes, although I'd come home late and be tired for class.\nSora: Then think about what matters more now. If grades are your priority, tutoring fits better.\nJihun: You're right. And tutoring would help me review my own math, so it has a double benefit.",
+    "qs": [
+     {
+      "q": "Why does Sora say tutoring leaves more time for studying?",
+      "o": [
+       "It requires fewer working hours each week.",
+       "It pays less per hour than the café job does.",
+       "It takes place in the evenings only, after dinner.",
+       "It lets Jihun stop attending his own classes."
+      ],
+      "a": 0,
+      "why": "과외는 일주일에 오후 이틀뿐이라 공부할 시간이 더 남는다는 뜻이에요."
+     },
+     {
+      "q": "What can be inferred about Jihun at the end?",
+      "o": [
+       "He is leaning toward the tutoring job.",
+       "He has already accepted the job at the café.",
+       "He thinks that money does not matter at all.",
+       "He wants to refuse both of the job offers."
+      ],
+      "a": 0,
+      "why": "Sora의 조언에 'You're right'라고 하고 과외의 이중 이점을 말하므로 과외 쪽으로 기울었어요."
+     },
+     {
+      "q": "In the dialogue, 'a double benefit' means...",
+      "o": [
+       "two good results from one choice.",
+       "a job that pays twice as much as another.",
+       "a discount on the price of two laptops.",
+       "two different jobs done at the same time."
+      ],
+      "a": 0,
+      "why": "과외로 돈도 벌고 자기 수학 복습도 되므로 한 선택에서 두 가지 이득이라는 뜻이에요."
+     },
+     {
+      "q": "What does 'That' refer to in 'That sounds small'?",
+      "o": [
+       "the number of working days in a week",
+       "the price of the laptop that he wants",
+       "the length of a class at school",
+       "the difference in hourly pay"
+      ],
+      "a": 3,
+      "why": "바로 앞의 'About three thousand won', 즉 시급 차이를 가리켜요."
+     },
+     {
+      "q": "What is Sora's main purpose in the last turns of the conversation?",
+      "o": [
+       "To persuade Jihun to buy a new laptop at once.",
+       "To help Jihun decide by thinking about his priorities.",
+       "To complain about the long hours of both jobs.",
+       "To ask Jihun to find her a part-time job too."
+      ],
+      "a": 1,
+      "why": "Sora는 무엇이 더 중요한지 생각해 보라며 우선순위에 따라 결정하도록 도와요."
+     }
+    ]
+   },
+   "why": "Fix incoherent line and Q4 stem that quoted it",
+   "severity": "major"
+  },
+  {
+   "item": "5a6b5f47",
+   "op": "set",
+   "set": {
+    "text": "Outside a small café, there is a refrigerator that anyone can open. Neighbors leave extra vegetables, bread or cooked meals inside, and anyone who needs food can take what they like, with no questions asked. The idea began when a café owner noticed how much good food was thrown away at the end of each day. She wanted to give it a second chance, but a food bank was too far away. Within weeks, the fridge was emptied every evening. Some residents worry that the fridge might attract mice or spread illness, so volunteers wipe it clean daily and check the dates on every item. Others fear that people will take more than they need. In practice, this rarely happens; most users take one meal and leave a little something in return. The fridge has not solved hunger in the town, yet it has made neighbors talk to each other, and that, the owner says, is an unexpected gift.",
+    "qs": [
+     {
+      "q": "Why did the café owner start the community fridge?",
+      "o": [
+       "A food bank nearby had asked her to open the fridge.",
+       "The town council had paid her to run a café.",
+       "Her neighbors were all unable to cook at home.",
+       "She saw that a lot of good food was being thrown away."
+      ],
+      "a": 3,
+      "why": "하루가 끝날 때 버려지는 음식이 많은 것을 보고 시작했다고 나와요."
+     },
+     {
+      "q": "What can be inferred about the volunteers' daily cleaning?",
+      "o": [
+       "It is required by the customers of the café.",
+       "It happens because the fridge is rarely used by anyone.",
+       "It is done so that mice can find some food.",
+       "It is meant to calm worries about health and safety."
+      ],
+      "a": 3,
+      "why": "쥐나 병이 생길 걱정에 대응하려고 매일 청소하고 날짜를 확인한다고 했어요."
+     },
+     {
+      "q": "In the passage, 'a second chance' means...",
+      "o": [
+       "a faster delivery of bread to the shops.",
+       "another opportunity to be useful.",
+       "a higher price for good food in the market.",
+       "a longer walk from the café to the food bank."
+      ],
+      "a": 1,
+      "why": "버려질 음식에 다시 쓰일 기회를 준다는 뜻이에요."
+     },
+     {
+      "q": "In the sentence 'In practice, this rarely happens', what does 'this' refer to?",
+      "o": [
+       "the fridge being cleaned by volunteers every day",
+       "people taking more food than they need",
+       "mice getting into the café through the door",
+       "neighbors leaving extra vegetables inside the fridge"
+      ],
+      "a": 1,
+      "why": "바로 앞의 우려 'people will take more than they need'를 가리켜요."
+     },
+     {
+      "q": "What does the owner mean by calling the neighbors' conversations 'an unexpected gift'?",
+      "o": [
+       "They are a benefit she did not plan when she began.",
+       "They show that the fridge is always completely full.",
+       "They are a present from the customers of the café.",
+       "They prove that hunger is solved in the whole town."
+      ],
+      "a": 0,
+      "why": "음식 나눔이 목적이었는데 이웃끼리 대화하게 된 것은 예상하지 못한 이점이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Consistent café/bakery reference",
+   "severity": "minor"
+  },
+  {
+   "item": "eab0e1fe",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does the museum offer a free day each month?",
+      "o": [
+       "The galleries are too quiet on ordinary weekdays.",
+       "Many local families find the ticket price too high.",
+       "The city has ordered the museum to close for a month.",
+       "Regular visitors have asked the museum for lower prices."
+      ],
+      "a": 1,
+      "why": "많은 지역 가족이 미술을 좋아하지만 가격이 비싸다고 느끼기 때문이라고 설명돼요."
+     },
+     {
+      "q": "What can be inferred about the visitors who 'returned and paid for a ticket'?",
+      "o": [
+       "They disliked the crowds that gather on free days.",
+       "The free day gave them a reason to value the museum.",
+       "They received a free membership card at the door.",
+       "They had worked for the museum before the visit."
+      ],
+      "a": 1,
+      "why": "무료 입장이 낯선 사람을 후원자로 바꾼다는 결론이므로, 무료의 날이 박물관의 가치를 알게 했다고 볼 수 있어요."
+     },
+     {
+      "q": "In the passage, 'a supporter' is someone who...",
+      "o": [
+       "draws pictures of the works inside a museum.",
+       "carries heavy objects for the visitors.",
+       "sells the tickets at the main entrance.",
+       "helps and stays loyal to an organization."
+      ],
+      "a": 3,
+      "why": "supporter는 단체를 돕고 지지하는 사람을 뜻해요."
+     },
+     {
+      "q": "In the sentence 'This suggests that an open door can turn a stranger into a supporter', what does 'This' refer to?",
+      "o": [
+       "the noise that visitors make in the galleries",
+       "the director's plan for adding a free evening",
+       "the fact that over half of first-time visitors returned",
+       "the lines of visitors around the corner"
+      ],
+      "a": 2,
+      "why": "바로 앞 문장의 설문 결과(절반 이상이 다시 와서 표를 샀다)를 가리켜요."
+     },
+     {
+      "q": "What is the purpose of the phrase 'as long as the building can handle the extra visitors safely'?",
+      "o": [
+       "To explain why the museum is old.",
+       "To describe how visitors enter the galleries.",
+       "To criticize the survey results.",
+       "To set a condition for the director's plan."
+      ],
+      "a": 3,
+      "why": "as long as는 조건을 뜻해서, 안전하게 수용할 수 있을 때만 계획한다는 조건이에요."
+     }
+    ]
+   },
+   "why": "Exact quotation in stem",
+   "severity": "minor"
+  }
+ ],
+ "ok": 130,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
