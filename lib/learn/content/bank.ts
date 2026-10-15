@@ -3,7 +3,6 @@ import { siteConfig } from "@/lib/learn/sites";
 import mathBank from "./bank/math.json";
 import mathHsBank from "./bank/math-hs.json";
 import mathHsKitEn from "./bank/math-hs-kit.en.json";
-import englishDraftBank from "./bank/english-draft.json";
 import koreanBank from "./bank/korean.json";
 import koreanKitEn from "./bank/korean-kit.en.json";
 import { KOREAN_BANK_LIVE, expandKoreanBank, type KBankData, type KKit, type KForm } from "./korean-bank";
@@ -106,19 +105,11 @@ export function expandBank(data: BankData, overlay: BankOverlay | null | undefin
 }
 
 /**
- * Claude's English practice bank (english-draft.json; discrete questions, Korean instructions around English content). It is practice-only
- * ("variant") like the other banks. Its wording is Korean, so it is served to learners of the site's own language only: there is no
- * overlay for it yet, and a question is never shown in another language than the learner's. `packet` / `standards` are authoring fields.
+ * Claude's English practice bank (english-draft.json: discrete questions, Korean instructions around English content) is NOT in this module or
+ * the Worker code: it is read per skill from server-only static assets (assets.ts loadEnglishBank, joined in repository.ts loadIndex).
+ * It is practice-only ("variant"), served to learners of the site's own language only: there is no overlay for it yet, and a question is
+ * never shown in another language than the learner's.
  */
-type EnglishDraftQuestion = Question & { packet?: string; standards?: unknown };
-const ENGLISH_BANK = (englishDraftBank as unknown as { questions: EnglishDraftQuestion[] }).questions;
-export function englishBankQuestions(skills: ReadonlySet<string>): Question[] {
-  const out: Question[] = [];
-  for (const { packet: _packet, standards: _standards, ...q } of ENGLISH_BANK) {
-    if (skills.has(q.skillId)) out.push({ ...q, status: "PUBLISHED" });
-  }
-  return out;
-}
 /** Sites whose practice bank joins the server-side bundle. */
 export const hasBank = (site: Site): boolean => site === "math" || site === "english" || site === "korean";
 
@@ -150,7 +141,7 @@ export function bankQuestions(site: Site, locale: string, overlay: BankOverlay |
     const kit: KKit = !canonical && overlay ? { templates: overlay.templates as unknown as Record<KForm, KKit["templates"][KForm]>, texts: overlay.texts ?? {} } : { templates: koreanKitEn.templates as unknown as KKit["templates"], texts: {} };
     return expandKoreanBank(KOREAN_BANK_DATA, kit, skills, { draft: false });
   }
-  if (site === "english") return locale === siteConfig("english").presentationLocale ? englishBankQuestions(skills) : [];
+  if (site === "english") return []; // asynchronous server-only assets: see repository.ts loadIndex
   const data = BANKS[site];
   if (!data) return [];
   const key = `${site}:${locale}:${skillsKey}`;

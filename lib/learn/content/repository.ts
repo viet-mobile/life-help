@@ -3,6 +3,7 @@ import type { ContentBundle, Grade, PublicQuestion, Question, Site } from "@/lib
 import { indexContent, publishedOnly, scopeToGrade, type ContentIndex } from "./indexer";
 import { localizedBundle, overlayFor } from "./localize";
 import { bankQuestions, hasBank } from "./bank";
+import { loadEnglishBank, loadEnglishBankIndex } from "./assets";
 import { siteConfig } from "@/lib/learn/sites";
 import mathDemo from "./demo/math.json";
 import englishDemo from "./demo/english.json";
@@ -60,7 +61,7 @@ export function getContentRepository(): ContentRepository {
  * grade (see scopeToGrade); `locale` swaps the learner-facing strings for that locale's overlay. Neither changes ids, question types
  * or answer keys.
  */
-export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: LearnLocale; bank?: boolean } = {}): Promise<{ bundle: ContentBundle; index: ContentIndex }> {
+export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: LearnLocale; bank?: boolean; bankQuestionId?: string } = {}): Promise<{ bundle: ContentBundle; index: ContentIndex }> {
   // study.korean is code-reviewed bundled content only (the database content source holds math / english): never a DB round trip.
   let bundle = await (site === "korean" ? demoContentRepository : getContentRepository()).getBundle(site);
   if (opts.locale) bundle = await localizedBundle(bundle, opts.locale);
@@ -69,7 +70,16 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
     const locale = opts.locale ?? siteConfig(site).presentationLocale;
     const ov = locale === siteConfig(site).presentationLocale ? null : await overlayFor(locale, site);
     const skills = new Set(bundle.catalog.skills.map((s) => s.id));
-    const extra = bankQuestions(site, locale, ov?.bank, skills, `${skills.size}`);
+    let extra = bankQuestions(site, locale, ov?.bank, skills, `${skills.size}`);
+    if (site === "english" && locale === siteConfig("english").presentationLocale) {
+      // English practice bank: server-only assets, read for the skills this request can reach (one question's skill, the learner's grade scope, or all)
+      let wanted: ReadonlySet<string> = skills;
+      if (opts.bankQuestionId) {
+        const sk = (await loadEnglishBankIndex()).get(opts.bankQuestionId);
+        wanted = new Set(sk && skills.has(sk) ? [sk] : []);
+      } else if (opts.grade) wanted = new Set(scopeToGrade(bundle, opts.grade).catalog.skills.map((s) => s.id));
+      extra = await loadEnglishBank(wanted);
+    }
     if (extra.length) bundle = { ...bundle, questions: [...bundle.questions, ...extra] };
   }
   if (opts.grade) bundle = scopeToGrade(bundle, opts.grade);
@@ -92,4 +102,10 @@ export function toPublicQuestion(q: Question): PublicQuestion {
     target: q.target,
     hintCount: q.hints.length,
   };
+}
+
+/** Id + skill (+ role) of every English-bank question, for the access plan: no answers, hints or explanations. */
+export async function bankIndexEntries(site: Site): Promise<Array<{ id: string; skillId: string; role: "variant" }>> {
+  if (site !== "english") return [];
+  return [...(await loadEnglishBankIndex())].map(([id, skillId]) => ({ id, skillId, role: "variant" as const }));
 }

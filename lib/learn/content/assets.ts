@@ -1,5 +1,5 @@
 import type { LearnLocale } from "@/lib/learn/i18n";
-import type { Site } from "@/lib/learn/types";
+import type { Question, Site } from "@/lib/learn/types";
 import type { ContentOverlay } from "./overlay";
 import manifest from "./asset-manifest.json";
 
@@ -15,7 +15,7 @@ import manifest from "./asset-manifest.json";
  * Either way the bytes must match the manifest's sha256.
  * A missing or mismatching asset is an error (learn_content_asset_*): never another locale, never a silent fallback.
  */
-type Manifest = { version: string; sites: Record<string, { canonicalSha: string; presentationLocale: string; locales: Record<string, { sha256: string; bytes: number; questions: number }> }> };
+type Manifest = { version: string; englishBank?: { bankSha: string; total: number; index: { sha256: string; bytes: number }; shards: Record<string, { sha256: string; bytes: number; questions: number }> }; sites: Record<string, { canonicalSha: string; presentationLocale: string; locales: Record<string, { sha256: string; bytes: number; questions: number }> }> };
 const M = manifest as Manifest;
 export const CONTENT_VERSION = M.version;
 export const contentAssetPath = (site: Site, locale: LearnLocale) => `/learn-content/${M.version}/${site}/${locale}.json`;
@@ -75,3 +75,60 @@ export function loadOverlayAsset(site: Site, locale: LearnLocale): Promise<Conte
   }
   return hit;
 }
+
+/* ------------------------------ English practice bank ------------------------------
+ * 12k+ questions with answer keys, hints and explanations: SERVER-ONLY static assets (never Worker code, never sent to a browser).
+ *   /learn-content/<version>/english-bank/index.json        [[questionId, skillId], ...]   (small; resolves an id to its shard)
+ *   /learn-content/<version>/english-bank/<skillId>.json    the skill's questions
+ * The same worker-first, refused-to-browsers path and the same sha256 pinning as the overlays. A request reads only the skills it needs
+ * (the learner's grade scope, or the skill of one question), and the parsed shards sit in a small byte-bounded LRU. */
+const BANK_CACHE_BYTES = 6 * 1024 * 1024; // source bytes of parsed shards kept per isolate
+const shardCache = new Map<string, { bytes: number; data: Promise<Question[]> }>();
+let bankIndex: Promise<Map<string, string>> | undefined;
+
+function bankManifest() {
+  if (!M.englishBank) throw new ContentAssetError("learn_content_asset_not_in_manifest:english-bank");
+  return M.englishBank;
+}
+async function readPinned(rel: string, pin: { sha256: string }, label: string): Promise<{ format: number; kind: string; bankSha: string; [k: string]: unknown }> {
+  const text = await readAsset(`/learn-content/${M.version}/${rel}`);
+  if ((await sha256(text)) !== pin.sha256) throw new ContentAssetError(`learn_content_asset_checksum:${label}`);
+  const data = JSON.parse(text);
+  if (data.bankSha !== bankManifest().bankSha) throw new ContentAssetError(`learn_content_asset_version:${label}`);
+  return data;
+}
+/** question id -> skill id for every question of the English bank (ids and skill ids only; no answers). */
+export function loadEnglishBankIndex(): Promise<Map<string, string>> {
+  if (!bankIndex) {
+    const mf = bankManifest();
+    bankIndex = readPinned("english-bank/index.json", mf.index, "english-bank/index").then((d) => {
+      const m = new Map((d.items as [string, string][]));
+      if (m.size !== mf.total) throw new ContentAssetError(`learn_content_asset_mismatch:english-bank/index:${m.size}!=${mf.total}`);
+      return m;
+    });
+    bankIndex.catch(() => { bankIndex = undefined; });
+  }
+  return bankIndex;
+}
+/** The served questions of one skill (PUBLISHED practice variants); [] for a skill the bank has no questions for. */
+export function loadEnglishBankSkill(skillId: string): Promise<Question[]> {
+  const pin = bankManifest().shards[skillId];
+  if (!pin) return Promise.resolve([]);
+  const hit = shardCache.get(skillId);
+  if (hit) { shardCache.delete(skillId); shardCache.set(skillId, hit); return hit.data; }
+  const data = readPinned(`english-bank/${skillId}.json`, pin, `english-bank/${skillId}`).then((d) => {
+    const qs = d.questions as Question[];
+    if (d.skillId !== skillId || qs.length !== pin.questions) throw new ContentAssetError(`learn_content_asset_mismatch:english-bank/${skillId}`);
+    return qs.map((q) => ({ ...q, status: "PUBLISHED" as const }));
+  });
+  data.catch(() => shardCache.delete(skillId)); // a failed read is retried on the next request, never cached
+  shardCache.set(skillId, { bytes: pin.bytes, data });
+  let total = [...shardCache.values()].reduce((n, e) => n + e.bytes, 0);
+  for (const k of shardCache.keys()) { if (total <= BANK_CACHE_BYTES || shardCache.size <= 1) break; total -= shardCache.get(k)!.bytes; shardCache.delete(k); }
+  return data;
+}
+export async function loadEnglishBank(skills: ReadonlySet<string>): Promise<Question[]> {
+  const ids = [...skills].filter((id) => bankManifest().shards[id]);
+  return (await Promise.all(ids.map(loadEnglishBankSkill))).flat();
+}
+export const englishBankSkillIds = (): string[] => Object.keys(bankManifest().shards);

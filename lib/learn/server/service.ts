@@ -15,7 +15,7 @@ import {
 import { levelForXp } from "@/lib/learn/domain/level";
 import { buildPath } from "@/lib/learn/domain/path";
 import { dueSkills } from "@/lib/learn/domain/srs";
-import { toPublicQuestion, loadIndex } from "@/lib/learn/content/repository";
+import { toPublicQuestion, loadIndex, bankIndexEntries } from "@/lib/learn/content/repository";
 import { indexContent } from "@/lib/learn/content/indexer";
 import { FREE_ACCESS, accessibleBundle, buildAccessPlan, resolveAccess, type Access, type AccessPlan } from "@/lib/learn/domain/access";
 import type { LearnLocale } from "@/lib/learn/i18n";
@@ -85,9 +85,10 @@ export class LearnService {
 
   /** The canonical free / premium plan of a site (memoised per canonical bundle object). */
   async accessPlan(site: Site): Promise<AccessPlan> {
-    const { bundle } = await loadIndex(site);
+    // canonical bundle (same object every call) + the bank's ids/skills from the small index asset: the plan never needs bank answers or text
+    const { bundle } = await loadIndex(site, { bank: site === "english" ? false : undefined });
     let plan = PLANS.get(bundle);
-    if (!plan) PLANS.set(bundle, (plan = buildAccessPlan(bundle.catalog, bundle.questions)));
+    if (!plan) PLANS.set(bundle, (plan = buildAccessPlan(bundle.catalog, [...bundle.questions, ...(await bankIndexEntries(site))])));
     return plan;
   }
 
@@ -267,7 +268,7 @@ export class LearnService {
   /* ------------------------------- attempts ------------------------------- */
 
   async requestHint(actor: Actor, site: Site, body: { questionId: string; level: number }) {
-    const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko" });
+    const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko", bankQuestionId: body.questionId });
     const [access, plan] = await Promise.all([this.getAccess(actor, site), this.accessPlan(site)]);
     if (plan.questionTier.get(body.questionId) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
     const bundle = accessibleBundle(full, plan, access);

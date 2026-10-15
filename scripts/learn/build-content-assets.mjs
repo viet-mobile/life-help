@@ -156,7 +156,31 @@ if (report) {
   console.log(`MATH_ENGLISH_FALLBACKS_REMAINING = ${bad.reduce((n, [, , k]) => n + k, 0)} (${bad.length} locale/site pairs)`);
   process.exit(0);
 }
-manifest.version = sha(JSON.stringify(manifest.sites)).slice(0, 16);
+// English practice bank (lib/learn/content/bank/english-draft.json, 12k+ questions): SERVER-ONLY assets, one shard per skill + a small id index,
+// never part of the Worker code bundle. Presentation text (Korean) is canonical, so there is no per-locale copy. `packet` / `standards` are
+// authoring fields and are not shipped. Every shard and the index are pinned by sha256 in the manifest.
+{
+  const bankText = read("lib/learn/content/bank/english-draft.json");
+  const bankSha = sha(bankText);
+  const all = JSON.parse(bankText).questions;
+  const bySkill = new Map();
+  for (const { packet: _p, standards: _s, ...q } of all) {
+    if (!bySkill.has(q.skillId)) bySkill.set(q.skillId, []);
+    bySkill.get(q.skillId).push(q);
+  }
+  const shards = {};
+  const bankOutputs = [];
+  for (const [skillId, qs] of [...bySkill].sort(([a], [b]) => (a < b ? -1 : 1))) {
+    const body = JSON.stringify({ format: 1, kind: "english-bank", skillId, bankSha, questions: qs });
+    shards[skillId] = { sha256: sha(body), bytes: Buffer.byteLength(body), questions: qs.length };
+    bankOutputs.push({ rel: `english-bank/${skillId}.json`, body });
+  }
+  const indexBody = JSON.stringify({ format: 1, kind: "english-bank-index", bankSha, items: all.map((q) => [q.id, q.skillId]) });
+  bankOutputs.push({ rel: "english-bank/index.json", body: indexBody });
+  manifest.englishBank = { bankSha, total: all.length, index: { sha256: sha(indexBody), bytes: Buffer.byteLength(indexBody) }, shards };
+  outputs.push(...bankOutputs.map((o) => ({ rel: o.rel, body: o.body })));
+}
+manifest.version = sha(JSON.stringify({ sites: manifest.sites, englishBank: manifest.englishBank })).slice(0, 16);
 const manifestText = JSON.stringify(manifest, null, 1) + "\n";
 const manifestPath = path.join(root, "lib/learn/content/asset-manifest.json");
 
@@ -168,10 +192,10 @@ if (check) {
   const dir = path.join(root, "public/learn-content");
   fs.rmSync(dir, { recursive: true, force: true }); // only the current version is ever published: no stale overlay can be served
   for (const o of outputs) {
-    const file = path.join(dir, manifest.version, o.site, `${o.locale}.json`);
+    const file = path.join(dir, manifest.version, o.rel ?? `${o.site}/${o.locale}.json`);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, o.body);
   }
   const total = outputs.reduce((n, o) => n + Buffer.byteLength(o.body), 0);
-  console.log(`wrote learn content assets: version ${manifest.version}, ${outputs.length} overlays, ${(total / 1048576).toFixed(1)} MiB`);
+  console.log(`wrote learn content assets: version ${manifest.version}, ${outputs.length} files (overlays + English bank shards), ${(total / 1048576).toFixed(1)} MiB`);
 }
