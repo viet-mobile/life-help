@@ -1,0 +1,538 @@
+{
+ "packet": "M13-m3-ques",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 111
+ },
+ "patches": [
+  {
+   "item": "29130fa5",
+   "op": "set",
+   "set": {
+    "q": "간접의문문에 대한 설명으로 옳은 것은?",
+    "o": [
+     "의문사 뒤에 do, does, did를 붙여 쓴다.",
+     "의문사가 문장의 맨 끝에 온다.",
+     "의문사 뒤에 be동사가 주어보다 먼저 온다.",
+     "의문사 뒤에 '주어 + 동사' 순서로 쓴다."
+    ],
+    "a": 3,
+    "why": "간접의문문은 '의문사 + 주어 + 동사' 순서이고 do/does/did를 쓰지 않아요."
+   },
+   "why": "Rewrote distractors without absolute words (all still clearly wrong); key unchanged (o/why changed).",
+   "severity": "major"
+  },
+  {
+   "item": "d479e920",
+   "op": "set",
+   "set": {
+    "q": "가장 정중하게 화장실의 위치를 묻는 표현은?",
+    "o": [
+     "Where is the restroom? I need it now.",
+     "Tell me where the restroom is, and be quick.",
+     "Where's the restroom, quick? Don't be slow.",
+     "Could you tell me where the restroom is?"
+    ],
+    "a": 3,
+    "why": "Could you tell me ...?처럼 간접의문문을 쓰면 더 정중하게 들려요."
+   },
+   "why": "Lengthened distractors, still impolite/direct.",
+   "severity": "minor"
+  },
+  {
+   "item": "d498e7cf",
+   "op": "set",
+   "set": {
+    "q": "What does he do on Sundays? → Do you know ____?",
+    "o": [
+     "what does he do on Sundays",
+     "what he do on Sundays",
+     "what he is do on Sundays",
+     "what he does on Sundays"
+    ],
+    "a": 3,
+    "why": "does를 없애고 동사에 -s를 붙여 what he does on Sundays로 써요."
+   },
+   "why": "Replaced with the clearly wrong 'what he is do on Sundays'.",
+   "severity": "minor"
+  },
+  {
+   "item": "02cd25ea",
+   "op": "set",
+   "set": {
+    "q": "A: Excuse me. Do you know ____?\nB: Yes, the post office is next to the bank.",
+    "o": [
+     "who the post office is",
+     "where the post office is",
+     "where is the post office",
+     "where the post office are"
+    ],
+    "a": 1,
+    "why": "B의 대답이 위치이므로 where가 알맞고, 어순은 where the post office is예요."
+   },
+   "why": "Fixed particle in explanation.",
+   "severity": "minor"
+  },
+  {
+   "item": "f60d983d",
+   "op": "set",
+   "set": {
+    "q": "'Nobody knows who will win the contest.' 의 who will win the contest 절 안에서 who의 역할은?",
+    "o": [
+     "목적어",
+     "주어",
+     "보어",
+     "전치사의 목적어"
+    ],
+    "a": 1,
+    "why": "who는 will win의 주어 역할을 해서 바로 뒤에 동사구가 와요."
+   },
+   "why": "Stem rewritten to ask the role of who inside the clause (q changed; identity field).",
+   "severity": "minor"
+  },
+  {
+   "item": "1124d6dc",
+   "op": "set",
+   "set": {
+    "q": "길을 묻는 다음 문장 중 어법상 틀린 것은?",
+    "o": [
+     "Please tell me where the bus stop is.",
+     "Please tell me where is the bus stop.",
+     "Could you show me how I can get there?",
+     "I'd like to know which bus I should take."
+    ],
+    "a": 1,
+    "why": "where is the bus stop은 직접 의문문 어순이에요. 간접의문문에서는 where the bus stop is로 써야 해요."
+   },
+   "why": "Stem reworded to '다음 문장 중 어법상 틀린 것은?' (q changed; identity field).",
+   "severity": "minor"
+  },
+  {
+   "item": "722223e3",
+   "op": "set",
+   "set": {
+    "q": "여행자가 쓴 다음 문장 중 어법상 틀린 것은?",
+    "o": [
+     "Do you know where the ticket office is?",
+     "Can you tell me where do I buy tickets?",
+     "I wonder how much a ticket costs.",
+     "Please tell me when the train leaves."
+    ],
+    "a": 1,
+    "why": "where do I buy는 직접 의문문 어순이에요. where I buy tickets로 써야 해요."
+   },
+   "why": "Stem reworded to '다음 문장 중 어법상 틀린 것은?' (q changed; identity field).",
+   "severity": "minor"
+  },
+  {
+   "item": "2a1b3870",
+   "op": "set",
+   "set": {
+    "q": "전화 통화에 관한 다음 문장 중 어법상 틀린 것은?",
+    "o": [
+     "I wonder who is calling me.",
+     "Tell me who she is calling.",
+     "She asked me who was at the door.",
+     "Do you know who is she calling?"
+    ],
+    "a": 3,
+    "why": "목적어인 who 뒤에는 '주어 + 동사'가 와야 하므로 who she is calling이 맞아요. who is calling me의 who는 주어예요."
+   },
+   "why": "Stem reworded to '다음 문장 중 어법상 틀린 것은?' (q changed; identity field).",
+   "severity": "minor"
+  },
+  {
+   "item": "83508904",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A new school rule about eating food in the classroom",
+       "A cooking contest between two classes at the school",
+       "The long history of the school cafeteria building",
+       "A survey about school lunch and what the council did"
+      ],
+      "a": 3,
+      "why": "학생회가 급식 설문을 하고 그 결과로 조치를 정한 내용이에요."
+     },
+     {
+      "q": "How often did most students eat in the cafeteria?",
+      "o": [
+       "Only on Fridays each week",
+       "Once or twice a month",
+       "Four or five days a week",
+       "Every day, even on weekends"
+      ],
+      "a": 2,
+      "why": "Most students ate there four or five days a week."
+     },
+     {
+      "q": "Why will the council put up a menu board?",
+      "o": [
+       "The cooks asked for more space in the kitchen.",
+       "Students did not know what was in some meals.",
+       "The fish dishes sold out too quickly each day.",
+       "The principal wanted a new color for the walls."
+      ],
+      "a": 1,
+      "why": "Many students wrote that they did not know what was in some meals."
+     },
+     {
+      "q": "Which dish did only a few students like?",
+      "o": [
+       "Fish dishes",
+       "Vegetable dishes",
+       "Noodle dishes",
+       "Rice dishes"
+      ],
+      "a": 0,
+      "why": "only a few liked the fish dishes"
+     },
+     {
+      "q": "What does \"worth trying\" show about the principal's opinion?",
+      "o": [
+       "The idea is too expensive for the school.",
+       "The idea has already failed once before.",
+       "The idea should be kept secret from them.",
+       "The idea seems useful enough to test."
+      ],
+      "a": 3,
+      "why": "worth trying은 시도해 볼 가치가 있다는 긍정적 의견이에요."
+     }
+    ]
+   },
+   "why": "Lengthened distractors so the key is not the longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "373385e0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did Jiho write this email?",
+      "o": [
+       "To thank the staff for a recent tour",
+       "To change the date of a school event",
+       "To ask for a job at the museum",
+       "To get information before a class visit"
+      ],
+      "a": 3,
+      "why": "Jiho는 방문 전에 궁금한 점을 묻기 위해 이메일을 썼어요."
+     },
+     {
+      "q": "What must the class do by three o'clock?",
+      "o": [
+       "Finish lunch",
+       "Leave the museum shop",
+       "Return to school",
+       "Take photos inside"
+      ],
+      "a": 2,
+      "why": "we must return to school by three o'clock라고 했어요."
+     },
+     {
+      "q": "Which question does the email NOT ask?",
+      "o": [
+       "What time the museum opens",
+       "How much the tickets cost",
+       "Where students can eat lunch",
+       "How long the tour takes"
+      ],
+      "a": 1,
+      "why": "입장권 가격은 묻지 않았어요. 나머지는 모두 본문에 있어요."
+     },
+     {
+      "q": "In the email, \"tour\" most likely means ...",
+      "o": [
+       "a guided walk around a place",
+       "a long trip taken by train",
+       "a written test about science",
+       "a short break to eat lunch"
+      ],
+      "a": 0,
+      "why": "how long the tour takes는 박물관을 안내받으며 둘러보는 시간을 뜻해요."
+     },
+     {
+      "q": "What is the tone of Jiho's email?",
+      "o": [
+       "Angry and impatient",
+       "Playful and joking",
+       "Polite and respectful",
+       "Nervous and afraid"
+      ],
+      "a": 2,
+      "why": "Dear Ms. Park, Could you tell me ..., Thank you for your help 같은 표현을 써서 공손하고 예의 바른 어조예요."
+     }
+    ]
+   },
+   "why": "Q4: lengthened distractors. Q5 replaced with a tone question (old Q5's key repeated Q2's answer 'return to school by three', so the two questions revealed each other, and its key was longest).",
+   "severity": "major"
+  },
+  {
+   "item": "6b486fd8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A family trip planned for the winter holidays",
+       "The writer learning to cook from a grandmother",
+       "A contest for the best soup in the town",
+       "Why rice cakes are so hard to buy in winter"
+      ],
+      "a": 1,
+      "why": "할머니에게 국 끓이는 법을 배우는 이야기예요."
+     },
+     {
+      "q": "What would Grandma say when the writer asked about the secret?",
+      "o": [
+       "Time and patience",
+       "Fresh eggs and salt",
+       "A hot stove and pot",
+       "Water from the hills"
+      ],
+      "a": 0,
+      "why": "She would only smile and say, \"Time and patience.\""
+     },
+     {
+      "q": "Why was the writer surprised?",
+      "o": [
+       "The soup was too hot.",
+       "The kitchen was very small.",
+       "Grandma left the room.",
+       "The recipe was simple."
+      ],
+      "a": 3,
+      "why": "I was surprised that the recipe was so simple."
+     },
+     {
+      "q": "What does Grandma mean by \"a few more winters\"?",
+      "o": [
+       "The writer should move to another town.",
+       "The writer has to buy better rice cakes.",
+       "The writer needs more practice over time.",
+       "The writer must wait for colder weather."
+      ],
+      "a": 2,
+      "why": "몇 번의 겨울이 더 필요하다는 말은 시간이 지나며 더 익혀야 한다는 뜻이에요."
+     },
+     {
+      "q": "What is the writer's attitude at the end?",
+      "o": [
+       "Disappointed",
+       "Hopeful",
+       "Jealous",
+       "Bored"
+      ],
+      "a": 1,
+      "why": "I hope she is right에서 희망적인 태도를 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "91c56204",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did the town hold the event?",
+      "o": [
+       "To sell bags and gloves",
+       "To teach swimming",
+       "To plan a new road",
+       "To clean the beach"
+      ],
+      "a": 3,
+      "why": "해변을 청소하기 위한 행사예요."
+     },
+     {
+      "q": "How many bags did the group fill by noon?",
+      "o": [
+       "Fifty",
+       "Sixteen",
+       "Sixty",
+       "Five hundred"
+      ],
+      "a": 2,
+      "why": "By noon, the group had filled sixty bags."
+     },
+     {
+      "q": "Why did Minjun change his mind about small pieces?",
+      "o": [
+       "The leader told him to keep working.",
+       "He saw how much trash was hidden in the sand.",
+       "He found a valuable item in the sand.",
+       "His friends said it was fun."
+      ],
+      "a": 1,
+      "why": "모래 속에 얼마나 많은 쓰레기가 숨어 있는지 보고 생각이 바뀌었어요."
+     },
+     {
+      "q": "What did many volunteers agree on?",
+      "o": [
+       "People should throw trash away more carefully.",
+       "The beach should be closed for the whole year.",
+       "Glass is the worst kind of trash in the sea.",
+       "Cans cannot be recycled at all by the town."
+      ],
+      "a": 0,
+      "why": "Many of them agreed that people should throw away their trash more carefully."
+     },
+     {
+      "q": "What will Minjun probably do next time?",
+      "o": [
+       "Stay home",
+       "Come without gloves",
+       "Ask for a bigger prize",
+       "Bring his own bag"
+      ],
+      "a": 3,
+      "why": "Minjun decided to bring his own bag next time."
+     }
+    ]
+   },
+   "why": "Lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "ba0fb9c9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Dan's cousin ask?",
+      "o": [
+       "Where the nearest river was",
+       "Whether it would rain that night",
+       "How far the town was",
+       "When breakfast would be ready"
+      ],
+      "a": 1,
+      "why": "Do you think it will rain tonight?라고 물었어요."
+     },
+     {
+      "q": "How did Dan guess the weather?",
+      "o": [
+       "He looked at the clouds.",
+       "He listened to the radio.",
+       "He felt the wind on his hands.",
+       "He asked his father by phone."
+      ],
+      "a": 0,
+      "why": "He looked at the thick, gray clouds in the west."
+     },
+     {
+      "q": "Why did everyone stay dry?",
+      "o": [
+       "They left the mountains before the rain began.",
+       "They slept in a nearby house for the night.",
+       "The rain stopped after only a minute or so.",
+       "They moved the bags inside and tied the cover."
+      ],
+      "a": 3,
+      "why": "비가 오기 전에 짐을 텐트 안으로 옮기고 덮개를 단단히 묶었어요."
+     },
+     {
+      "q": "Which word best describes Dan at the end?",
+      "o": [
+       "Afraid",
+       "Lonely",
+       "Proud",
+       "Confused"
+      ],
+      "a": 2,
+      "why": "Dan felt proud of himself."
+     },
+     {
+      "q": "What can we infer about Dan's father?",
+      "o": [
+       "He was camping with them.",
+       "He had taught Dan useful outdoor skills.",
+       "He did not like the mountains.",
+       "He worked as a weather reporter."
+      ],
+      "a": 1,
+      "why": "아버지가 구름 읽는 법을 가르쳐 주었다는 데서 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Lengthened distractors and shortened key.",
+   "severity": "minor"
+  },
+  {
+   "item": "bebd664a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did Mr. Han go to the clinic?",
+      "o": [
+       "He had hurt his leg.",
+       "He felt tired all the time.",
+       "He needed a paper for work.",
+       "He wanted to lose weight."
+      ],
+      "a": 1,
+      "why": "because he felt tired all the time"
+     },
+     {
+      "q": "What did the doctor NOT ask about?",
+      "o": [
+       "His job",
+       "His sleeping hours",
+       "His dinner",
+       "His exercise"
+      ],
+      "a": 0,
+      "why": "의사는 수면 시간, 저녁 식사, 운동에 대해 물었고 직업은 묻지 않았어요."
+     },
+     {
+      "q": "What does the doctor mean by \"It is asking for better habits\"?",
+      "o": [
+       "His body needs a stronger medicine.",
+       "He should buy new exercise clothes.",
+       "He is too busy to see a doctor.",
+       "His daily habits are causing his problem."
+      ],
+      "a": 3,
+      "why": "몸이 아픈 것이 아니라 생활 습관이 문제라는 뜻이에요."
+     },
+     {
+      "q": "Which advice did the doctor give?",
+      "o": [
+       "Skip dinner on busy weekdays",
+       "Sleep fewer hours on weekends",
+       "Walk for thirty minutes every day",
+       "Take a long trip to rest abroad"
+      ],
+      "a": 2,
+      "why": "walk for thirty minutes every day"
+     },
+     {
+      "q": "What happened after Mr. Han followed the advice?",
+      "o": [
+       "He changed his job.",
+       "He felt much better.",
+       "He stopped visiting the clinic.",
+       "He ate more instant noodles."
+      ],
+      "a": 1,
+      "why": "Two weeks later, he felt much better."
+     }
+    ]
+   },
+   "why": "Lengthened distractors.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 92,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
