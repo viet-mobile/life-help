@@ -29,7 +29,7 @@ function questionHints(q, text, key) {
   const LOW = ["이유를 묻는", "글쓴이(말하는", "글에 직접", "보기를 하나씩 지문", "first, then", "넣을 문장"];
   let t = TYPES.find(([re]) => re.test(q))?.[1];
   if (t && LOW.some((p) => t[0].startsWith(p))) t = undefined;
-  const h1 = t ? t[0] : (() => { const inText = content(text); const w = [...String(q).toLowerCase().match(/[a-z']{4,}/g) ?? []].filter((x) => !STOP.has(x) && !FRAME.has(x) && inText.has(stem(x))).sort((a, b) => b.length - a.length)[0]; return w ? `질문의 핵심 낱말은 “${w}”예요. 지문에서 같은 낱말이나 비슷한 뜻의 말을 찾아보세요.` : "질문이 무엇을 묻는지 먼저 한 문장으로 말해 보세요."; })();
+  const h1 = t ? t[0] : (() => { const inText = content(text); const w = [...String(q).toLowerCase().match(/[a-z']{4,}/g) ?? []].filter((x) => !STOP.has(x) && !FRAME.has(x) && inText.has(stem(x))).sort((a, b) => b.length - a.length)[0]; return w ? `질문의 핵심 낱말: “${w}”. 지문에서 같은 낱말이나 비슷한 뜻의 말을 찾아보세요.` : "질문이 무엇을 묻는지 먼저 한 문장으로 말해 보세요."; })();
   // 2nd hint: point at the sentence / line that shares the most content with the correct option (never the option itself)
   const lines = String(text).split(/\n/).flatMap((l) => (/^[A-Z][A-Za-z.' ]{0,24}:\s/.test(l) ? [l] : l.split(/(?<=[.!?])\s+/))).map((s) => s.trim()).filter(Boolean);
   const kc = content(key), qc = content(q);
