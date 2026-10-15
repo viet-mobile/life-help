@@ -1,0 +1,516 @@
+{
+ "packet": "S02-e3-reading",
+ "skill": "e.e3.read",
+ "items": [
+  {
+   "k": "r",
+   "title": "Bus Stop Notice",
+   "text": "Notice: Bus 12 will not stop at Green Street this week. Workers are fixing the road there. Please walk to the Park Street stop. It is only two minutes away. The bus will stop at Green Street again next Monday. We are sorry for the trouble.",
+   "qs": [
+    {
+     "q": "When will Bus 12 stop at Green Street again?",
+     "o": [
+      "Tomorrow",
+      "Next Monday",
+      "In two weeks",
+      "This Friday"
+     ],
+     "a": 1,
+     "why": "글에 'again next Monday'라고 나와 있어요."
+    },
+    {
+     "q": "Who is this notice mostly for?",
+     "o": [
+      "Workers who are fixing the road",
+      "People who live on Park Street",
+      "Children who go to school by car",
+      "Riders who use Bus 12 at Green Street"
+     ],
+     "a": 3,
+     "why": "이번 주 Green Street에서 Bus 12가 서지 않아 Park Street 정류장으로 가라고 안내하므로, 평소 그곳에서 Bus 12를 타는 사람들을 위한 글이에요."
+    },
+    {
+     "q": "In the notice, 'fixing' means ___.",
+     "o": [
+      "repairing",
+      "painting",
+      "crossing",
+      "cleaning"
+     ],
+     "a": 0,
+     "why": "'Workers are fixing the road'에서 fixing은 '고치다(repair)'라는 뜻이에요."
+    },
+    {
+     "q": "What does 'It' in 'It is only two minutes away' mean?",
+     "o": [
+      "Bus 12",
+      "The road",
+      "The Park Street stop",
+      "Green Street"
+     ],
+     "a": 2,
+     "why": "바로 앞 문장 'walk to the Park Street stop'의 정류장을 가리켜요. 걸어서 2분 거리라는 뜻이에요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "A Note for Sora",
+   "text": "Hi Sora, I came to your house, but you were not home. I left my blue umbrella by your door by mistake. Please keep it for me. I will get it after school tomorrow. It is a gift from my aunt, so please take care of it. Thanks! Hana",
+   "qs": [
+    {
+     "q": "When will Hana get the umbrella?",
+     "o": [
+      "After school tomorrow",
+      "Tonight",
+      "This weekend",
+      "Before school today"
+     ],
+     "a": 0,
+     "why": "'I will get it after school tomorrow'라고 쓰여 있어요."
+    },
+    {
+     "q": "What do we know about Sora?",
+     "o": [
+      "Sora is Hana's aunt.",
+      "Sora lost the umbrella.",
+      "Sora was out when Hana came.",
+      "Sora took the umbrella to school."
+     ],
+     "a": 2,
+     "why": "Hana가 'you were not home'이라고 했으므로 Hana가 왔을 때 Sora는 집에 없었어요."
+    },
+    {
+     "q": "'keep' in the note means ___.",
+     "o": [
+      "throw it away",
+      "use it every day",
+      "give it back now",
+      "hold it safely"
+     ],
+     "a": 3,
+     "why": "'Please keep it for me'는 Hana가 가져갈 때까지 잘 보관해 달라는 뜻이에요."
+    },
+    {
+     "q": "'It' in 'It is a gift from my aunt' means ___.",
+     "o": [
+      "the door",
+      "the umbrella",
+      "Sora's house",
+      "tomorrow"
+     ],
+     "a": 1,
+     "why": "이모에게 받은 선물은 앞에서 말한 파란 우산(my blue umbrella)이에요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "The Night Market",
+   "text": "Every Friday evening, a small night market opens near the river. People sell hot snacks, warm socks and paper lanterns. Music plays on a little stage. Families walk slowly and talk with the sellers. The market is busy, but everyone is kind. It closes at ten.",
+   "qs": [
+    {
+     "q": "What is the passage mainly about?",
+     "o": [
+      "A school music show",
+      "A shop that sells socks",
+      "A trip to the river",
+      "A weekly market by the river"
+     ],
+     "a": 3,
+     "why": "매주 금요일 저녁 강 근처에서 열리는 야시장을 설명하는 글이에요."
+    },
+    {
+     "q": "Where is the market?",
+     "o": [
+      "On a little stage",
+      "Near the river",
+      "Behind a school",
+      "In a big mall"
+     ],
+     "a": 1,
+     "why": "'opens near the river'라고 나와 있어요. stage는 음악이 나오는 곳이에요."
+    },
+    {
+     "q": "'busy' in the passage means ___.",
+     "o": [
+      "quiet and empty",
+      "far from town",
+      "full of people",
+      "closed for the night"
+     ],
+     "a": 2,
+     "why": "시장에 사람들이 많이 오가며 활기찬 모습을 말해요. busy는 '붐비는, 바쁜'이라는 뜻이에요."
+    },
+    {
+     "q": "What can we guess about the market?",
+     "o": [
+      "It is open every morning.",
+      "People go there to enjoy the evening.",
+      "Only children can enter.",
+      "It sells only warm clothes."
+     ],
+     "a": 1,
+     "why": "가족들이 천천히 걷고 판매자와 이야기하며 음악도 즐기므로 저녁 시간을 즐기러 가는 곳임을 짐작할 수 있어요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "Dara's New Glasses",
+   "text": "Dara could not read the board at school. She sat in the front, but the words were still small. Her teacher called her mom. The next week, Dara got new glasses. Now she can see every word. She smiled and said, \"The board is so clear!\"",
+   "qs": [
+    {
+     "q": "Where did Dara sit in class?",
+     "o": [
+      "In the back",
+      "By the window",
+      "In the front",
+      "Next to her teacher"
+     ],
+     "a": 2,
+     "why": "'She sat in the front'라고 나와 있어요."
+    },
+    {
+     "q": "Why did the teacher call Dara's mom?",
+     "o": [
+      "Dara was often late.",
+      "Dara could not see well.",
+      "Dara lost her glasses.",
+      "Dara forgot her lunch."
+     ],
+     "a": 1,
+     "why": "앞자리에 앉아도 글자가 작아 보였다고 했으므로 Dara가 잘 보지 못한다는 것을 알리려고 한 거예요."
+    },
+    {
+     "q": "'clear' in the last sentence means ___.",
+     "o": [
+      "very big",
+      "not new",
+      "far away",
+      "easy to see"
+     ],
+     "a": 3,
+     "why": "안경을 쓰고 모든 글자가 보이니 칠판이 '또렷하다(easy to see)'는 뜻이에요."
+    },
+    {
+     "q": "What is the story mainly about?",
+     "o": [
+      "Glasses help Dara see the board",
+      "Dara changes her seat",
+      "Dara has a new teacher",
+      "Dara reads a long book"
+     ],
+     "a": 0,
+     "why": "칠판이 잘 보이지 않던 Dara가 새 안경으로 잘 보게 된 이야기예요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "Why Leaves Fall",
+   "text": "Why do leaves fall in autumn? In cool weather, trees get less sunlight. They stop making food in their leaves. The green color goes away, and the leaves turn red or yellow. Then the leaves dry up and fall to the ground.",
+   "qs": [
+    {
+     "q": "What color do leaves turn?",
+     "o": [
+      "Red or yellow",
+      "Blue or white",
+      "Purple or pink",
+      "Black or gray"
+     ],
+     "a": 0,
+     "why": "'the leaves turn red or yellow'라고 쓰여 있어요."
+    },
+    {
+     "q": "What does 'They' in 'They stop making food' mean?",
+     "o": [
+      "the leaves",
+      "the trees",
+      "the days",
+      "the colors"
+     ],
+     "a": 1,
+     "why": "햇빛을 덜 받는 trees가 잎에서 양분 만들기를 멈춘다는 뜻이고, 'their leaves'가 나무의 잎임을 보여 줘요."
+    },
+    {
+     "q": "'goes away' in the passage means ___.",
+     "o": [
+      "gets stronger",
+      "comes back",
+      "disappears",
+      "turns blue"
+     ],
+     "a": 2,
+     "why": "초록색이 사라지고 잎이 붉거나 노랗게 변한다는 뜻이에요."
+    },
+    {
+     "q": "In winter, the trees will probably have ___.",
+     "o": [
+      "green leaves everywhere",
+      "new red flowers",
+      "taller leaves",
+      "almost no leaves"
+     ],
+     "a": 3,
+     "why": "잎이 마르고 땅에 떨어진다고 했으므로 겨울에는 잎이 거의 없을 거라고 짐작할 수 있어요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "A Day at the Clinic",
+   "text": "Min has a bad cough, so Mom takes him to the clinic. The nurse checks his temperature. The doctor listens to his chest and says, \"You need rest and warm water.\" Min must stay home for two days. He is sad because he cannot play, but he feels better on the second day.",
+   "qs": [
+    {
+     "q": "What does the doctor say Min needs?",
+     "o": [
+      "Cold juice and ice",
+      "A long walk outside",
+      "Rest and warm water",
+      "A new school"
+     ],
+     "a": 2,
+     "why": "의사가 'You need rest and warm water'라고 말했어요."
+    },
+    {
+     "q": "What will Min probably do for two days?",
+     "o": [
+      "Go to school",
+      "Rest at home",
+      "Play with friends",
+      "Travel with Mom"
+     ],
+     "a": 1,
+     "why": "집에 있어야 하고 놀 수 없다고 했으므로 집에서 쉴 거예요."
+    },
+    {
+     "q": "'bad' in 'a bad cough' means ___.",
+     "o": [
+      "funny",
+      "very short",
+      "serious",
+      "kind"
+     ],
+     "a": 2,
+     "why": "병원에 가야 할 만큼 심한 기침이라는 뜻이므로 bad는 '심한'에 가까워요."
+    },
+    {
+     "q": "Who is 'He' in 'He is sad'?",
+     "o": [
+      "The doctor",
+      "The nurse",
+      "Mom",
+      "Min"
+     ],
+     "a": 3,
+     "why": "바로 앞 문장의 Min이 이틀간 집에 있어야 해서 슬픈 거예요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "Sam's Lemonade",
+   "text": "Sam wants a new ball, so he sells lemonade on his street. One cup costs one dollar. By noon, he sells ten cups. A neighbor gives him a big tip and says, \"Good job!\" Sam counts his money. Now he has enough for the ball.",
+   "qs": [
+    {
+     "q": "How many cups does Sam sell by noon?",
+     "o": [
+      "Two",
+      "Five",
+      "Twelve",
+      "Ten"
+     ],
+     "a": 3,
+     "why": "'By noon, he sells ten cups'라고 나와 있어요."
+    },
+    {
+     "q": "'tip' in the story means ___.",
+     "o": [
+      "an extra gift of money",
+      "a paper cup",
+      "a lemon tree",
+      "a sports game"
+     ],
+     "a": 0,
+     "why": "이웃이 'Good job!'이라며 주는 tip은 고마움의 표시로 더 주는 돈이에요."
+    },
+    {
+     "q": "What can we guess about the neighbor?",
+     "o": [
+      "The neighbor sold lemonade too.",
+      "The neighbor wanted a ball.",
+      "The neighbor was happy with Sam.",
+      "The neighbor was angry."
+     ],
+     "a": 2,
+     "why": "큰 팁을 주며 'Good job!'이라고 했으므로 Sam에게 만족한 것을 알 수 있어요."
+    },
+    {
+     "q": "Who is 'him' in 'gives him a big tip'?",
+     "o": [
+      "a neighbor",
+      "Sam",
+      "the ball",
+      "a cup"
+     ],
+     "a": 1,
+     "why": "이웃이 팁을 주는 대상은 레모네이드를 판 Sam이에요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "Sun Pool Sign",
+   "text": "Welcome to Sun Pool! Please take a shower before you swim. Do not run on the wet floor. Children under eight must stay with an adult. The pool is open from nine to six. It closes early on rainy days. Have fun and be safe!",
+   "qs": [
+    {
+     "q": "Who must stay with an adult?",
+     "o": [
+      "Anyone over ten",
+      "Everyone at the pool",
+      "Children under eight",
+      "Only the lifeguards"
+     ],
+     "a": 2,
+     "why": "'Children under eight must stay with an adult'라고 쓰여 있어요."
+    },
+    {
+     "q": "Why should people not run on the wet floor?",
+     "o": [
+      "The pool is too small.",
+      "It is closing time.",
+      "They need a shower.",
+      "They might fall."
+     ],
+     "a": 3,
+     "why": "젖은 바닥은 미끄러워서 달리면 넘어질 수 있기 때문이에요."
+    },
+    {
+     "q": "'safe' in the last sentence means ___.",
+     "o": [
+      "free from danger",
+      "very tired",
+      "full of fun",
+      "quiet"
+     ],
+     "a": 0,
+     "why": "'be safe'는 다치지 않고 위험하지 않게 지내라는 뜻이에요."
+    },
+    {
+     "q": "Why was this sign written?",
+     "o": [
+      "To sell swim lessons",
+      "To tell people the pool rules",
+      "To ask workers for help",
+      "To say the pool is closed"
+     ],
+     "a": 1,
+     "why": "샤워, 뛰지 않기, 어린이 보호자 동반 등 수영장 규칙을 알리는 안내문이에요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "The Slow Snail",
+   "text": "A snail moves very slowly. It has a soft body and a hard shell on its back. When it is afraid, it pulls its body into the shell. Snails like wet places, so they come out on rainy days. In the hot sun, they hide under leaves.",
+   "qs": [
+    {
+     "q": "What does a snail do when it is afraid?",
+     "o": [
+      "Pulls its body into its shell",
+      "Runs to a wet place",
+      "Climbs a tall tree",
+      "Digs a hole fast"
+     ],
+     "a": 0,
+     "why": "'it pulls its body into the shell'이라고 나와 있어요."
+    },
+    {
+     "q": "When would you most likely see snails?",
+     "o": [
+      "On a hot, dry noon",
+      "After a rainy morning",
+      "In a sunny desert",
+      "By a cold, snowy lake"
+     ],
+     "a": 1,
+     "why": "달팽이는 축축한 곳을 좋아해 비 오는 날 나오고, 더운 햇볕에서는 숨는다고 했어요."
+    },
+    {
+     "q": "'hard' in 'a hard shell' means ___.",
+     "o": [
+      "very fast",
+      "hot to touch",
+      "small and light",
+      "not soft"
+     ],
+     "a": 3,
+     "why": "부드러운 몸(soft body)과 대조되어 단단하다는 뜻이에요."
+    },
+    {
+     "q": "What does 'they' in 'they hide under leaves' mean?",
+     "o": [
+      "leaves",
+      "rainy days",
+      "snails",
+      "wet places"
+     ],
+     "a": 2,
+     "why": "뜨거운 햇볕을 피해 나뭇잎 아래에 숨는 것은 snails예요."
+    }
+   ]
+  },
+  {
+   "k": "r",
+   "title": "Online English Class",
+   "text": "Hi everyone, our English class starts at four today. It is online. Please click the link in your email and turn on your camera. Have your book and a pencil ready. If the sound does not work, send me a message and I will help you. See you soon! Teacher Lee",
+   "qs": [
+    {
+     "q": "What should students have ready?",
+     "o": [
+      "A book and a pencil",
+      "A pen and a ruler",
+      "A camera and a bag",
+      "A phone and a lunch box"
+     ],
+     "a": 0,
+     "why": "'Have your book and a pencil ready'라고 쓰여 있어요."
+    },
+    {
+     "q": "What will students probably need?",
+     "o": [
+      "A school bus pass",
+      "A swimming bag",
+      "A computer or tablet",
+      "A new desk"
+     ],
+     "a": 2,
+     "why": "수업이 온라인이고 링크를 누르고 카메라를 켜야 하므로 화면이 있는 기기가 필요해요."
+    },
+    {
+     "q": "'ready' in the message means ___.",
+     "o": [
+      "very new",
+      "not working",
+      "in a bag",
+      "prepared to use"
+     ],
+     "a": 3,
+     "why": "'Have ... ready'는 수업에서 바로 쓸 수 있게 준비해 두라는 뜻이에요."
+    },
+    {
+     "q": "Why did the teacher write this message?",
+     "o": [
+      "To cancel today's class",
+      "To tell students how to join",
+      "To give a math test",
+      "To ask about lunch"
+     ],
+     "a": 1,
+     "why": "링크를 누르고 카메라를 켜는 등 온라인 수업에 참여하는 방법을 알려 주는 글이에요."
+    }
+   ]
+  }
+ ]
+}
