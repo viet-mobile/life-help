@@ -1,0 +1,78 @@
+{
+ "packet": "E08-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 105
+ },
+ "patches": [
+  {
+   "item": "b86679e4",
+   "op": "set",
+   "set": {
+    "ex": "School is over, so I come home.",
+    "exko": "학교가 끝나서 나는 집에 와요.",
+    "z": [
+     "get up",
+     "go to school",
+     "eat breakfast"
+    ]
+   },
+   "why": "Context now forces 'come home'; distractors are clearly wrong for the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "58a04a29",
+   "op": "set",
+   "set": {
+    "z": [
+     "umbrella",
+     "homework",
+     "pencil"
+    ]
+   },
+   "why": "Remove 'breakfast', which fits 'My breakfast is nine o'clock' in an elliptical reading.",
+   "severity": "minor"
+  },
+  {
+   "item": "59df8e01",
+   "op": "set",
+   "set": {
+    "bad": [
+     "I washes my face and brush my teeth.",
+     "I wash my face and brushing my teeth.",
+     "I wash my face and brush my teeths."
+    ],
+    "rule": "and로 이어지는 동사는 같은 모양으로 써요. tooth의 여러 개는 teeth이고, teeths라고 쓰지 않아요."
+   },
+   "why": "'brush my tooth' is grammatical; replaced by a definitely wrong 'teeths'.",
+   "severity": "major"
+  },
+  {
+   "item": "dd59de0e",
+   "op": "set",
+   "set": {
+    "q": "School is over. What do you do now?",
+    "o": [
+     "I get up.",
+     "I eat breakfast.",
+     "I come home.",
+     "I go to school."
+    ],
+    "a": 2,
+    "why": "학교가 끝났으니 집에 오는 I come home.이 알맞아요."
+   },
+   "why": "Identity field q changed: the antonym stem was vague; now a clear context question.",
+   "severity": "minor"
+  },
+  {
+   "item": "c095560b",
+   "op": "drop",
+   "set": {},
+   "why": "Restates the go to bed vocabulary item and duplicates 9105d203 (same option set).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 93,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

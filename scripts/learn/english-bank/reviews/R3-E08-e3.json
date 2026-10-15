@@ -1,0 +1,96 @@
+{
+ "packet": "E08-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "6134ca7b",
+   "op": "set",
+   "set": {
+    "q": "Whales ___ in the sea. (지금도 맞는 사실을 말해요.)",
+    "o": [
+     "lived",
+     "live",
+     "lives",
+     "living"
+    ],
+    "a": 1,
+    "why": "whales는 여러 마리이고 지금도 맞는 사실이라서 현재형 live를 써요. 여러 마리일 때는 -s를 붙이지 않아요."
+   },
+   "why": "Identity field q changed: removes fish/zero-plural ambiguity.",
+   "severity": "minor"
+  },
+  {
+   "item": "d5e52f6e",
+   "op": "set",
+   "set": {
+    "z": [
+     "wash my face",
+     "brush my teeth",
+     "tie my shoes"
+    ]
+   },
+   "why": "Old z (go to the beach/a party) fit 'Students ___ to learn' on a plausible reading; first-person 'my' phrases clearly do not fit.",
+   "severity": "minor"
+  },
+  {
+   "item": "3a536bdc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "글쓴이의 가족은 언제 바닷가에 갔나요?",
+      "o": [
+       "지난 일요일",
+       "지난 토요일",
+       "다음 주 토요일",
+       "이번 주 금요일"
+      ],
+      "a": 1,
+      "why": "Last Saturday라고 했으므로 지난 토요일이에요."
+     },
+     {
+      "q": "남동생은 무엇을 모았나요?",
+      "o": [
+       "조개껍데기",
+       "돌멩이",
+       "나뭇가지",
+       "물고기"
+      ],
+      "a": 0,
+      "why": "My little brother collected shells라고 했어요. shells는 조개껍데기예요."
+     },
+     {
+      "q": "We stayed there until sunset.이라는 문장으로 보아 알 수 있는 것은?",
+      "o": [
+       "가족이 비 때문에 갑자기 일찍 떠났어요.",
+       "가족이 점심을 먹기 전에 집으로 돌아갔어요.",
+       "가족이 바닷가 근처 호텔에서 밤새 잠을 잤어요.",
+       "가족이 바닷가에서 하루의 많은 시간을 보냈어요."
+      ],
+      "a": 3,
+      "why": "until sunset(해가 질 때까지)은 오랫동안 머물렀다는 뜻이에요. 점심도 그곳에서 먹었고, 비나 호텔 이야기는 글에 없어요."
+     },
+     {
+      "q": "이 글의 중심 내용으로 알맞은 것은?",
+      "o": [
+       "바닷가에서 길을 잃어 무서웠던 하루",
+       "가족이 함께 시장에서 장을 보고 온 하루",
+       "가족과 함께 바닷가에서 즐겁게 보낸 하루",
+       "친구들과 함께 학교 운동장에서 논 하루"
+      ],
+      "a": 2,
+      "why": "바닷가에서 놀고, 걷고, 점심을 먹은 가족의 즐거운 하루를 이야기해요."
+     }
+    ]
+   },
+   "why": "Remove text-independent grammar q and the repeated detail lookups; add inference and main idea; vary key positions (1,0,3,2).",
+   "severity": "major"
+  }
+ ],
+ "ok": 115,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

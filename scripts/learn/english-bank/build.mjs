@@ -124,7 +124,7 @@ for (const { skill, packet, item } of valid) {
     const wide = (wordsOfGroup[groupOf(skill)] ?? []).filter((x) => x.pos === item.pos);
     const nearOk = (c) => c.en !== item.en && norm(c.ko) !== norm(item.ko) && !subOf(c.ko, item.ko) && !(item.syn ?? []).map(norm).includes(norm(c.en)) && !(c.syn ?? []).map(norm).includes(norm(item.en));
     const pickN = (qid) => { const a = pickOthers(qid, same, nearOk, 3); return a.length === 3 ? a : [...a, ...pickOthers(qid + "+", wide, (c) => nearOk(c) && !a.includes(c), 3 - a.length)]; };
-    const posKo = POS[item.pos]; const hintPos = `이 ${posKo === "표현" ? "말" : "단어"}는 ${posKo}${(posKo.charCodeAt(posKo.length - 1) - 0xac00) % 28 === 0 ? "예요" : "이에요"}.`;
+    const posKo = POS[item.pos]; const hintPos = `이 ${posKo === "표현" ? "말은" : "단어는"} ${posKo}${(posKo.charCodeAt(posKo.length - 1) - 0xac00) % 28 === 0 ? "예요" : "이에요"}.`;
     const expl = `“${item.en}” → “${item.ko}”. 예문: ${item.ex} (${item.exko})${item.note ? ` ${item.note}` : ""}`;
     let qid = `eb-${id}-enko`, o = pickN(qid);
     if (o.length === 3) { const r = shuffled(qid, [item.ko, ...o.map((x) => x.ko)]); push(skill, packet, item, "enko", mk(skill, qid, { skillId: skill, difficulty: d, prompt: `영어 단어 “${item.en}”의 뜻으로 알맞은 것은?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `예문: ${item.ex}`], explanation: expl })); }

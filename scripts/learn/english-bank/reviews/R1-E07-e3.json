@@ -1,0 +1,177 @@
+{
+ "packet": "E07-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "ab6713db",
+   "op": "set",
+   "set": {
+    "ex": "A period is a small dot at the end of a sentence.",
+    "exko": "마침표는 문장 끝에 찍는 작은 점이에요."
+   },
+   "why": "Distractors shoe/tiger/cloud fit the old context; new context makes them wrong in meaning.",
+   "severity": "major"
+  },
+  {
+   "item": "69a21b23",
+   "op": "set",
+   "set": {
+    "q": "'벤과 에바는 합창단에서 노래해요.'를 영어로 바르게 쓴 것은?",
+    "o": [
+     "Ben and Eva sings in the choir.",
+     "Ben and Eva sing in the choir.",
+     "Ben and sing Eva in the choir.",
+     "Ben Eva and in sing the choir."
+    ],
+    "a": 1,
+    "why": "Ben and Eva는 두 사람이라서 동사에 -s를 붙이지 않아요. 순서는 '누가 → 한다'예요."
+   },
+   "why": "Identity field q changed (stem no longer contains the answer sentence).",
+   "severity": "major"
+  },
+  {
+   "item": "975ddf87",
+   "op": "set",
+   "set": {
+    "o": [
+     "a green chair",
+     "a thick book",
+     "some juice",
+     "a small bag"
+    ],
+    "a": 2,
+    "why": "drink(마시다) 뒤에는 마실 수 있는 것이 와요. juice만 알맞아요."
+   },
+   "why": "Identity field o changed; equalises option form so the article does not cue the key.",
+   "severity": "minor"
+  },
+  {
+   "item": "09543d90",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the writer eat for breakfast?",
+      "o": [
+       "Rice and fish soup",
+       "Noodles and an apple",
+       "Bread and an egg",
+       "Toast and orange juice"
+      ],
+      "a": 2,
+      "why": "지문에 'I eat bread and an egg.'라고 나와요."
+     },
+     {
+      "q": "Who reads the news?",
+      "o": [
+       "The writer's mom",
+       "The writer's dad",
+       "The writer's sister",
+       "The writer's teacher"
+      ],
+      "a": 1,
+      "why": "'my dad reads the news'라고 했어요."
+     },
+     {
+      "q": "What does the writer do after breakfast?",
+      "o": [
+       "Plays games with a friend at home",
+       "Brushes teeth and goes to school",
+       "Cooks lunch for the family",
+       "Walks the dog in the park"
+      ],
+      "a": 1,
+      "why": "'Then I brush my teeth and go to school'에서 알 수 있어요."
+     },
+     {
+      "q": "What does 'wake up' mean?",
+      "o": [
+       "go to bed",
+       "eat lunch",
+       "take a bath",
+       "stop sleeping"
+      ],
+      "a": 3,
+      "why": "wake up은 잠에서 깬다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Fixes the fragmentary key of q3; other questions unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "7b531059",
+   "op": "set",
+   "set": {
+    "ko": "내 형은 키가 크고, 농구를 해요."
+   },
+   "why": "ko is not in the listed s fields but is the only change needed (contradictory 형(남동생)); if ko cannot be patched, apply by hand.",
+   "severity": "minor"
+  },
+  {
+   "item": "2cb60474",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence item has more than one valid order.",
+   "severity": "minor"
+  },
+  {
+   "item": "2a540a2d",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence item has more than one valid order.",
+   "severity": "minor"
+  },
+  {
+   "item": "6dbd8da8",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence item has more than one valid order.",
+   "severity": "minor"
+  },
+  {
+   "item": "e4f96ff4",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Look at the birds. It are blue.",
+     "Look at the birds. He are blue.",
+     "Look at the birds. Them are blue."
+    ],
+    "ord": false
+   },
+   "why": "Removes the defensible 'It is blue' reading; two sentences so no ordering question.",
+   "severity": "minor"
+  },
+  {
+   "item": "fec2750d",
+   "op": "set",
+   "set": {
+    "q": "다음 단어를 알맞은 순서로 배열해 만든 문장은? (is / your / name / What)"
+   },
+   "why": "Identity field q changed (wording only).",
+   "severity": "minor"
+  },
+  {
+   "item": "d8ebea33",
+   "op": "set",
+   "set": {
+    "q": "다음 단어를 알맞은 순서로 배열해 만든 문장은? (plays / Jina / the piano)"
+   },
+   "why": "Identity field q changed (wording only).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 116,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

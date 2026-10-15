@@ -1,0 +1,138 @@
+{
+ "packet": "E07-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 73
+ },
+ "patches": [
+  {
+   "item": "adbb0e09",
+   "op": "set",
+   "set": {
+    "good": "Mr. Kim is our teacher. He teaches English.",
+    "bad": [
+     "Mr. Kim is our teacher. Him teaches English.",
+     "Mr. Kim is our teacher. His teaches English.",
+     "Mr. Kim is our teacher. He teach English."
+    ],
+    "cz": {
+     "st": "Mr. Kim is our teacher. ___ teaches English.",
+     "ok": "He",
+     "wr": [
+      "She",
+      "They",
+      "We"
+     ]
+    },
+    "rule": "Mr. Kim은 남자 한 명이라서 he로 바꿔요. He 뒤의 동사에는 -s를 붙여요."
+   },
+   "why": "Pick distractors She/It teaches are grammatical; replaced by ungrammatical ones. Identity field good unchanged.",
+   "severity": "major"
+  },
+  {
+   "item": "c39d7732",
+   "op": "set",
+   "set": {
+    "good": "The cookies are sweet. I like them.",
+    "bad": [
+     "The cookies are sweet. I like they.",
+     "The cookies are sweet. I like he.",
+     "The cookies are sweet. I like she."
+    ],
+    "cz": {
+     "st": "The cookies are sweet. I like ___.",
+     "ok": "them",
+     "wr": [
+      "they",
+      "him",
+      "he"
+     ]
+    },
+    "rule": "여러 개를 가리키는 '그것들을'은 them이에요. 동사 뒤에는 they를 쓰지 않아요."
+   },
+   "why": "'I like him.' is grammatical, so the pick had two defensible answers; good unchanged.",
+   "severity": "major"
+  },
+  {
+   "item": "c19412cd",
+   "op": "set",
+   "set": {
+    "good": "Tom has a dog. Its name is Max.",
+    "bad": [
+     "Tom has a dog. It name is Max.",
+     "Tom has a dog. Hers name is Max.",
+     "Tom has a dog. Him name is Max."
+    ],
+    "cz": {
+     "st": "Tom has a dog. ___ name is Max.",
+     "ok": "Its",
+     "wr": [
+      "It",
+      "Them",
+      "Hers"
+     ]
+    },
+    "rule": "'그것의'는 its예요. 동물이나 사물의 것을 말할 때 명사 앞에 써요."
+   },
+   "why": "'Their name is Max.' is grammatical; replaced with ungrammatical 'Hers name'. good unchanged.",
+   "severity": "major"
+  },
+  {
+   "item": "9fd039a9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where is Ana's brother?",
+      "o": [
+       "In the garden",
+       "In the kitchen",
+       "In his room",
+       "At school"
+      ],
+      "a": 2,
+      "why": "'He is in his room.'에서 He는 Ana의 오빠(남동생)예요."
+     },
+     {
+      "q": "In 'They are in the garden', who are 'they'?",
+      "o": [
+       "Ana's sisters",
+       "Ana and Mom",
+       "Ana's brother and Mom",
+       "The cat and the fish"
+      ],
+      "a": 0,
+      "why": "엄마가 'your sisters'를 물었고, They는 그 자매들이에요."
+     },
+     {
+      "q": "In 'Is it hungry?', what does 'it' mean?",
+      "o": [
+       "The room",
+       "The map",
+       "The garden",
+       "The cat"
+      ],
+      "a": 3,
+      "why": "바로 앞에서 고양이와 노는 이야기가 나왔으니 it은 고양이예요."
+     },
+     {
+      "q": "What can Ana give the cat?",
+      "o": [
+       "Some milk",
+       "Some fish",
+       "Some bread",
+       "A toy"
+      ],
+      "a": 1,
+      "why": "'I can give it some fish.'라고 말해요."
+     }
+    ]
+   },
+   "why": "Stem 'will' did not match text 'can give'; changed to 'can'.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 69,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
