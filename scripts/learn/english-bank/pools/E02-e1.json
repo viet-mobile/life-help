@@ -7,7 +7,7 @@
     {
      "k": "w",
      "en": "one",
-     "pos": "n",
+     "pos": "det",
      "ko": "하나",
      "ex": "I have one nose.",
      "exko": "나는 코가 하나 있어요.",
@@ -26,7 +26,7 @@
     {
      "k": "w",
      "en": "two",
-     "pos": "n",
+     "pos": "det",
      "ko": "둘",
      "ex": "I have two eyes.",
      "exko": "나는 눈이 두 개 있어요.",
@@ -45,7 +45,7 @@
     {
      "k": "w",
      "en": "three",
-     "pos": "n",
+     "pos": "det",
      "ko": "셋",
      "ex": "Mom, Dad, and I are in the car. We are three.",
      "exko": "엄마, 아빠, 나는 차 안에 있어요. 우리는 셋이에요.",
@@ -64,7 +64,7 @@
     {
      "k": "w",
      "en": "four",
-     "pos": "n",
+     "pos": "det",
      "ko": "넷",
      "ex": "Two plus two is four.",
      "exko": "2 더하기 2는 4예요.",
@@ -83,7 +83,7 @@
     {
      "k": "w",
      "en": "five",
-     "pos": "n",
+     "pos": "det",
      "ko": "다섯",
      "ex": "I have five fingers on one hand.",
      "exko": "나는 한 손에 손가락이 다섯 개 있어요.",
@@ -102,7 +102,7 @@
     {
      "k": "w",
      "en": "six",
-     "pos": "n",
+     "pos": "det",
      "ko": "여섯",
      "ex": "Three plus three is six.",
      "exko": "3 더하기 3은 6이에요.",
@@ -121,7 +121,7 @@
     {
      "k": "w",
      "en": "seven",
-     "pos": "n",
+     "pos": "det",
      "ko": "일곱",
      "ex": "Five, six, seven, eight.",
      "exko": "다섯, 여섯, 일곱, 여덟.",
@@ -140,7 +140,7 @@
     {
      "k": "w",
      "en": "eight",
-     "pos": "n",
+     "pos": "det",
      "ko": "여덟",
      "ex": "Ten minus two is eight.",
      "exko": "10 빼기 2는 8이에요.",
@@ -152,14 +152,14 @@
      "syn": [],
      "sp": [
       "eigt",
-      "aight",
-      "eihgt"
+      "eihgt",
+      "eigth"
      ]
     },
     {
      "k": "w",
      "en": "nine",
-     "pos": "n",
+     "pos": "det",
      "ko": "아홉",
      "ex": "Seven, eight, nine, ten.",
      "exko": "일곱, 여덟, 아홉, 열.",
@@ -178,7 +178,7 @@
     {
      "k": "w",
      "en": "ten",
-     "pos": "n",
+     "pos": "det",
      "ko": "열",
      "ex": "I have ten fingers on two hands.",
      "exko": "나는 두 손에 손가락이 열 개 있어요.",
@@ -197,7 +197,7 @@
     {
      "k": "w",
      "en": "zero",
-     "pos": "n",
+     "pos": "det",
      "ko": "영",
      "ex": "The box is empty. I see zero apples.",
      "exko": "상자가 비었어요. 사과가 하나도 안 보여요.",
@@ -216,7 +216,7 @@
     {
      "k": "w",
      "en": "eleven",
-     "pos": "n",
+     "pos": "det",
      "ko": "열하나",
      "ex": "Ten, eleven, twelve.",
      "exko": "열, 열하나, 열둘.",
@@ -235,7 +235,7 @@
     {
      "k": "w",
      "en": "twenty",
-     "pos": "n",
+     "pos": "det",
      "ko": "스물",
      "ex": "Ten plus ten is twenty.",
      "exko": "10 더하기 10은 20이에요.",
@@ -341,7 +341,7 @@
      ],
      "syn": [],
      "sp": [
-      "bleu",
+      "bluu",
       "blu",
       "bloo"
      ]
@@ -484,8 +484,8 @@
      "en": "purple",
      "pos": "adj",
      "ko": "보라색",
-     "ex": "Red and blue make purple.",
-     "exko": "빨강과 파랑을 섞으면 보라색이 돼요.",
+     "ex": "Red and blue make purple paint.",
+     "exko": "빨강과 파랑을 섞으면 보라색 물감이 돼요.",
      "z": [
       "green",
       "black",
@@ -792,11 +792,11 @@
      "q": "10(ten) 바로 다음에 오는 수는?",
      "o": [
       "nine",
+      "twelve",
       "eleven",
-      "eight",
-      "seven"
+      "twenty"
      ],
-     "a": 1,
+     "a": 2,
      "why": "10 다음은 11, 즉 eleven이에요."
     },
     {
@@ -827,10 +827,10 @@
      "k": "m",
      "q": "과일 'orange'(오렌지)가 쓰인 문장은?",
      "o": [
-      "The sky is orange.",
-      "My bag is orange.",
+      "The cat is orange.",
+      "I have an orange bag.",
       "I eat an orange.",
-      "The cat is orange."
+      "Orange is a nice color."
      ],
      "a": 2,
      "why": "I eat an orange.에서는 먹는 과일이에요. 나머지는 주황색을 뜻해요."
@@ -890,7 +890,9 @@
       "brother",
       "cousin"
      ],
-     "syn": [],
+     "syn": [
+      "woman"
+     ],
      "sp": [
       "grandmuther",
       "granmother",
@@ -1055,7 +1057,7 @@
      "pos": "n",
      "ko": "아들",
      "ex": "Mrs. Lee is his mother. He is her son.",
-     "exko": "이 부인은 그의 엄마예요. 그는 그녀의 아들이에요.",
+     "exko": "리 부인은 그의 엄마예요. 그는 그녀의 아들이에요.",
      "z": [
       "sister",
       "aunt",
@@ -1272,7 +1274,7 @@
      ],
      "syn": [],
      "sp": [
-      "luv",
+      "lvoe",
       "lofe",
       "lovve"
      ]
@@ -1418,7 +1420,7 @@
     {
      "k": "s",
      "good": "I have a big family.",
-     "ko": "나는 대가족이에요.",
+     "ko": "나는 대가족이 있어요.",
      "bad": [
       "I have big a family.",
       "I has a big family.",
@@ -1433,7 +1435,7 @@
        "many"
       ]
      },
-     "rule": "하나일 때는 a를 쓰고, 꾸미는 말(big)은 그 뒤, 명사 앞에 와요."
+     "rule": "하나일 때는 a를 쓰고, 꾸미는 말(big)은 a 뒤, 명사 앞에 와요."
     },
     {
      "k": "s",
@@ -1493,7 +1495,7 @@
     },
     {
      "k": "m",
-     "q": "Which word begins with the sound /m/?",
+     "q": "다음 중 /m/ 소리로 시작하는 낱말은?",
      "o": [
       "father",
       "brother",
@@ -1601,15 +1603,15 @@
     },
     {
      "k": "m",
-     "q": "'나는 우리 가족을 안아요'와 가장 가까운 뜻의 문장은?",
+     "q": "다음 중 바르게 쓴 문장은?",
      "o": [
-      "I help my family.",
-      "I see my family.",
-      "I visit my family.",
-      "I hug my family."
+      "my dad is tall.",
+      "My dad is tall.",
+      "My dad is tall",
+      "My dad is tall,"
      ],
-     "a": 3,
-     "why": "hug는 '안아 주다'라는 뜻이에요."
+     "a": 1,
+     "why": "문장은 대문자로 시작하고 마침표(.)로 끝나요."
     },
     {
      "k": "m",

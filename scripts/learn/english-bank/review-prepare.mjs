@@ -30,8 +30,8 @@ for (const [packet, byItem] of byPacket) {
 }
 // Canaries: known-bad / known-good questions mixed into every blind file so a careless solver is detected by review-collect.mjs.
 const CANARIES = [
-  { id: "canary-none", type: "multiple_choice", prompt: "다음 중 문법적으로 옳은 문장은?", options: [{ id: "a", text: "She go to school every day." }, { id: "b", text: "She goes to schools every day." }, { id: "c", text: "She going to school every day." }, { id: "d", text: "She gone to school every day." }] },
-  { id: "canary-two", type: "multiple_choice", prompt: "빈칸에 알맞은 말은?\nMy sister ___ a student. (내 여동생은 학생이에요.)", options: [{ id: "a", text: "is" }, { id: "b", text: "was" }, { id: "c", text: "am" }, { id: "d", text: "are" }] },
+  { id: "canary-none", type: "multiple_choice", prompt: "다음 중 문법적으로 옳은 문장은?", options: [{ id: "a", text: "She go to school every day." }, { id: "b", text: "She goes at school every day." }, { id: "c", text: "She going to school every day." }, { id: "d", text: "She gone to school every day." }] },
+  { id: "canary-two", type: "multiple_choice", prompt: "영어 단어 “big”과 뜻이 같은 낱말은?", options: [{ id: "a", text: "large" }, { id: "b", text: "huge" }, { id: "c", text: "tiny" }, { id: "d", text: "little" }] },
   { id: "canary-ok", type: "multiple_choice", prompt: "영어 단어 “apple”의 뜻으로 알맞은 것은?", options: [{ id: "a", text: "사자" }, { id: "b", text: "사과" }, { id: "c", text: "공" }, { id: "d", text: "얼룩말" }] },
 ];
 let written = 0;

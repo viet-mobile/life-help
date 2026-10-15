@@ -1,0 +1,74 @@
+{
+ "packet": "E02-e1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "06169f8d",
+   "op": "set",
+   "set": {
+    "ex": "Red and blue make purple paint.",
+    "exko": "빨강과 파랑을 섞으면 보라색 물감이 돼요."
+   },
+   "why": "purple used as adjective to match pos adj and hints; z (green/black/white) still wrong by meaning.",
+   "severity": "minor"
+  },
+  {
+   "item": "d0049d35",
+   "op": "set",
+   "set": {
+    "o": [
+     "nine",
+     "twelve",
+     "eleven",
+     "twenty"
+    ],
+    "a": 2,
+    "why": "10 다음은 11, 즉 eleven이에요."
+   },
+   "why": "Remove length/uniqueness cue; changes option identity (o).",
+   "severity": "minor"
+  },
+  {
+   "item": "0c5a021c",
+   "op": "set",
+   "set": {
+    "o": [
+     "The cat is orange.",
+     "I have an orange bag.",
+     "I eat an orange.",
+     "Orange is a nice color."
+    ],
+    "a": 2,
+    "why": "I eat an orange.에서는 먹는 과일이에요. 나머지는 주황색을 뜻해요."
+   },
+   "why": "Vary distractor frames so key is not the odd one out; changes o (identity).",
+   "severity": "minor"
+  },
+  {
+   "item": "463d9ed9",
+   "op": "set",
+   "set": {
+    "syn": [
+     "woman"
+    ]
+   },
+   "why": "woman can gloss an old woman (할머니); keep it out of distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "6b07d21a",
+   "op": "set",
+   "set": {
+    "exko": "리 부인은 그의 엄마예요. 그는 그녀의 아들이에요."
+   },
+   "why": "Fix mistranslation of Mrs. Lee.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 91,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

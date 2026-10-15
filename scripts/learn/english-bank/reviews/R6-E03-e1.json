@@ -1,0 +1,60 @@
+{
+ "packet": "E03-e1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "cb4d339f",
+   "op": "set",
+   "set": {
+    "ex": "The clock shows the time.",
+    "exko": "시계가 시간을 알려 줘요."
+   },
+   "why": "Example too long for E1 (7 words); z still wrong in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "961cb197",
+   "op": "set",
+   "set": {
+    "ex": "I wear my backpack.",
+    "exko": "나는 책가방을 메요."
+   },
+   "why": "Example too long for E1 (7 words).",
+   "severity": "minor"
+  },
+  {
+   "item": "f4a9f9d9",
+   "op": "set",
+   "set": {
+    "ex": "Please stand up.",
+    "exko": "일어서 주세요.",
+    "z": [
+     "cut",
+     "draw",
+     "write"
+    ]
+   },
+   "why": "Example too long for E1 (7 words); z chosen so none makes a natural phrase with 'up'.",
+   "severity": "minor"
+  },
+  {
+   "item": "08c142ad",
+   "op": "set",
+   "set": {
+    "sp": [
+     "sut",
+     "sytt",
+     "sitd"
+    ]
+   },
+   "why": "Remove length cue (key uniquely shortest).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 87,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

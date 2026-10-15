@@ -1,0 +1,83 @@
+{
+ "packet": "E02-e1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "e1990791",
+   "op": "set",
+   "set": {
+    "sp": [
+     "eigt",
+     "eihgt",
+     "eigth"
+    ]
+   },
+   "why": "Replace slang word aight with a true misspelling.",
+   "severity": "minor"
+  },
+  {
+   "item": "b13a4358",
+   "op": "set",
+   "set": {
+    "sp": [
+     "bluu",
+     "blu",
+     "bloo"
+    ]
+   },
+   "why": "Replace French word bleu with a true misspelling.",
+   "severity": "minor"
+  },
+  {
+   "item": "1d5895c4",
+   "op": "set",
+   "set": {
+    "pos": "det"
+   },
+   "why": "numerals are determiners/quantity words: the builder POS hint said 'noun'",
+   "severity": "minor"
+  },
+  {
+   "item": "2ab94ad1",
+   "op": "set",
+   "set": {
+    "pos": "det"
+   },
+   "why": "numerals are determiners/quantity words: the builder POS hint said 'noun'",
+   "severity": "minor"
+  },
+  {
+   "item": "d0e675b1",
+   "op": "set",
+   "set": {
+    "pos": "det"
+   },
+   "why": "numerals are determiners/quantity words: the builder POS hint said 'noun'",
+   "severity": "minor"
+  },
+  {
+   "item": "7e2f58d0",
+   "op": "set",
+   "set": {
+    "pos": "det"
+   },
+   "why": "numerals are determiners/quantity words: the builder POS hint said 'noun'",
+   "severity": "minor"
+  },
+  {
+   "item": "d8cafa3d",
+   "op": "set",
+   "set": {
+    "pos": "det"
+   },
+   "why": "numerals are determiners/quantity words: the builder POS hint said 'noun'",
+   "severity": "minor"
+  }
+ ],
+ "ok": 91,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

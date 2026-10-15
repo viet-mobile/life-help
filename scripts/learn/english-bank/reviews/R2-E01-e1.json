@@ -1,0 +1,104 @@
+{
+ "packet": "E01-e1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 68
+ },
+ "patches": [
+  {
+   "item": "3c2c7b6b",
+   "op": "set",
+   "set": {
+    "sp": [
+     "sie",
+     "se",
+     "seee"
+    ]
+   },
+   "why": "sp must be non-words",
+   "severity": "minor"
+  },
+  {
+   "item": "839081cc",
+   "op": "set",
+   "set": {
+    "z": [
+     "go",
+     "sit",
+     "sing"
+    ],
+    "sp": [
+     "thnk",
+     "thenk",
+     "thakn"
+    ]
+   },
+   "why": "tank is a real word; 'I eat my teacher' is odd",
+   "severity": "minor"
+  },
+  {
+   "item": "a5ff0353",
+   "op": "set",
+   "set": {
+    "sp": [
+     "heer",
+     "hier",
+     "heare"
+    ]
+   },
+   "why": "hear/hare are real words",
+   "severity": "major"
+  },
+  {
+   "item": "e29bf385",
+   "op": "set",
+   "set": {
+    "sp": [
+     "gho",
+     "gow",
+     "gou"
+    ],
+    "exko": "학교에 가자."
+   },
+   "why": "goo is a real word; Let's = suggestion",
+   "severity": "minor"
+  },
+  {
+   "item": "088d62b2",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Nice to ___ you.",
+     "ok": "meet",
+     "wr": [
+      "go",
+      "run",
+      "sit"
+     ]
+    }
+   },
+   "why": "avoid 'Nice to eat you'",
+   "severity": "minor"
+  },
+  {
+   "item": "9f3baf3a",
+   "op": "set",
+   "set": {
+    "q": "연필을 빌릴 때 공손하게 말한 것은?",
+    "o": [
+     "I want a pencil right now.",
+     "Give me your pencil, quickly!",
+     "Can I have a pencil, please?",
+     "Pencil, give it to me now!"
+    ],
+    "a": 2,
+    "why": "please를 넣어 공손하게 부탁해요."
+   },
+   "why": "length leak; q/o changed (identity fields)",
+   "severity": "minor"
+  }
+ ],
+ "ok": 58,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
