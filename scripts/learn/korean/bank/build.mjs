@@ -42,8 +42,31 @@ const skills = {};
 const problems = [];
 const warn = (sid, msg) => problems.push(`${sid}: ${msg}`);
 
+// Supplementary authored entries (scripts/learn/korean/bank/additions/*.json = { packet, skills: { <skillId>: { notes?, entries[] } } }) are appended to the
+// pool skill they name, so a new packet never edits a reviewed pool file. Entries may carry authoring-only fields (grade, area, std) the builder ignores.
+const ADD_DIR = path.join(root, "scripts/learn/korean/bank/additions");
+const addBySkill = {};
+for (const f of fs.existsSync(ADD_DIR) ? fs.readdirSync(ADD_DIR).filter((x) => x.endsWith(".json")).sort() : []) {
+  const add = JSON.parse(fs.readFileSync(path.join(ADD_DIR, f), "utf8"));
+  for (const [sid, sk] of Object.entries(add.skills ?? {})) {
+    const slot = (addBySkill[sid] ??= { notes: {}, entries: [] });
+    Object.assign(slot.notes, sk.notes ?? {});
+    for (const e of sk.entries ?? []) slot.entries.push(e);
+  }
+}
+const poolSkills = new Set();
 for (const f of files) {
   const pool = JSON.parse(fs.readFileSync(path.join(POOL_DIR, f), "utf8"));
+  for (const sid of Object.keys(pool.skills)) poolSkills.add(sid);
+}
+for (const sid of Object.keys(addBySkill)) if (!poolSkills.has(sid)) problems.push(`${sid}: addition names a skill that has no pool`);
+
+for (const f of files) {
+  const pool = JSON.parse(fs.readFileSync(path.join(POOL_DIR, f), "utf8"));
+  for (const [sid, add] of Object.entries(addBySkill)) {
+    const sk0 = pool.skills[sid];
+    if (sk0) { sk0.entries = [...sk0.entries, ...add.entries]; sk0.notes = { ...(sk0.notes ?? {}), ...add.notes }; }
+  }
   for (const [sid, sk] of Object.entries(pool.skills)) {
     need(/^k\.k(10|[1-9])\.[a-z0-9_]+$/.test(sid), `bad skill id ${sid}`);
     need(!skills[sid], `duplicate skill ${sid}`);
@@ -153,6 +176,7 @@ if (problems.length) {
   for (const p of problems.slice(0, 400)) console.error("  " + p);
   if (!process.argv.includes("--allow-problems")) process.exit(1);
 }
+if (process.argv.includes("--no-write")) { console.log(`validated: ${Object.keys(ordered).length} skills, ${Object.values(ordered).reduce((a, x) => a + x.items.length, 0)} entries (nothing written)`); process.exit(0); }
 if (check) {
   if (!fs.existsSync(OUT) || fs.readFileSync(OUT, "utf8") !== text || !fs.existsSync(path.join(KIT_DIR, "source.en.json")) || fs.readFileSync(path.join(KIT_DIR, "source.en.json"), "utf8") !== kitEn) { console.error("korean bank is out of date: run node scripts/learn/korean/bank/build.mjs"); process.exit(1); }
   console.log("korean bank is up to date");
