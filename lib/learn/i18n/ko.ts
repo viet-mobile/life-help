@@ -50,7 +50,7 @@ export const ko = {
   "onboarding.back": "이전",
   "onboarding.finish": "진단 퀘스트로 출발!",
   "onboarding.saving": "저장하는 중…",
-  "onboarding.korean.account_limit": "현재 로그인 학습은 K1~K6까지 지원합니다. K7~K10은 게스트로 이용해 주세요.",
+  "onboarding.korean.account_limit": "K7~K10은 검토 중이라 아직 이용할 수 없습니다. K1~K6 중에서 레벨을 선택해 주세요.",
 
   "grade.E1": "초1",
   "grade.E2": "초2",

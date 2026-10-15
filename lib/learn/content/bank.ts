@@ -5,6 +5,8 @@ import type { Difficulty, Question, Site } from "@/lib/learn/types";
 import mathBank from "./bank/math.json";
 import englishBank from "./bank/english.json";
 import koreanBank from "./bank/korean.json";
+import { KOREAN_BANK_LIVE, expandKoreanBank, type KBankData, type KKit, type KForm } from "./korean-bank";
+import koreanKitEn from "@/lib/learn/content/bank/korean-kit.en.json";
 
 export interface BankTemplate { prompt: string; hints: string[]; explanation: string }
 export interface BankSet {
@@ -109,8 +111,13 @@ export function bankQuestions(site: Site, locale: string, overlay: BankOverlay |
     while (cache.size > CACHE_LIMIT) cache.delete(cache.keys().next().value as string);
     return made;
   }
-  // Quarantined: English and Korean discrete banks are held in draft pending quality review.
-  // Claude's parametric math bank remains fully active above.
+  // Quarantined: the English discrete bank is held in draft pending quality review. Claude's parametric math bank is active above.
+  if (site === "korean") {
+    // The Korean bank (format 2, korean-bank.ts) is DRAFT: it only expands once KOREAN_BANK_LIVE is switched on after an independent review.
+    if (!KOREAN_BANK_LIVE) return [];
+    const kit: KKit = overlay ? { templates: overlay.templates as unknown as Record<KForm, KKit["templates"][KForm]>, texts: overlay.texts ?? {} } : { templates: koreanKitEn.templates as unknown as KKit["templates"], texts: {} };
+    return expandKoreanBank(data as unknown as KBankData, kit, skills);
+  }
   return [];
 }
 

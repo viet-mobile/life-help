@@ -118,8 +118,8 @@ describe("Korean K7~K10 Exclusion from Student Pathways & Reference Integrity", 
     expect(totalLessonQuestions).toBeGreaterThan(0);
   });
 
-  it("7. Canonical uniqueness audit: 676 distinct content items across 678 IDs with exactly 2 intentional placement duplicates", () => {
-    expect(korCanonical.questions.length).toBe(678);
+  it("7. Canonical uniqueness audit: 716 distinct content items across 718 IDs with exactly 2 intentional placement duplicates", () => {
+    expect(korCanonical.questions.length).toBe(718);
     const contentKeys = new Map<string, string[]>();
 
     for (const q of korCanonical.questions) {
@@ -132,7 +132,7 @@ describe("Korean K7~K10 Exclusion from Student Pathways & Reference Integrity", 
     }
 
     // 676 distinct items
-    expect(contentKeys.size).toBe(676);
+    expect(contentKeys.size).toBe(716);
 
     const duplicateGroups = [...contentKeys.values()].filter((ids) => ids.length > 1);
     expect(duplicateGroups).toEqual([
@@ -141,17 +141,19 @@ describe("Korean K7~K10 Exclusion from Student Pathways & Reference Integrity", 
     ]);
   });
 
-  it("8. Korean bank repetition audit: 3,510 IDs based on only 33 prompt/item templates (unresolved)", () => {
-    expect(korBank.questions.length).toBe(3510);
-    const uniquePrompts = new Set(korBank.questions.map((q: any) => q.prompt));
-    expect(uniquePrompts.size).toBe(33);
-
-    const contentKeys = new Set(
-      korBank.questions.map((q: any) => {
-        const opts = (q.options || []).map((o: any) => o.text).sort().join("|");
-        return `${q.prompt}::${opts}`;
-      })
-    );
-    expect(contentKeys.size).toBe(33);
+  it("8. Korean bank (format 2): no clone questions, every learning item distinct, still quarantined", () => {
+    const kb = korBank as unknown as { format: number; status: string; skills: Record<string, { items: { id: string; c: string; ko: string; g: string }[] }> };
+    expect(kb.format).toBe(2);
+    expect(kb.status).toBe("DRAFT");
+    const seen = new Set<string>();
+    let items = 0;
+    for (const [sid, sk] of Object.entries(kb.skills)) {
+      for (const it of sk.items) {
+        const key = `${sid}|${it.ko}`;
+        expect(seen.has(key), `duplicate learning item ${key}`).toBe(false);
+        seen.add(key); items++;
+      }
+    }
+    expect(items).toBeGreaterThan(2000);
   });
 });

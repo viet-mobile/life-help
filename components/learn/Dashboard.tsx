@@ -9,6 +9,7 @@ import { ensureQuest } from "@/lib/learn/domain/quests";
 import { displayStreak } from "@/lib/learn/domain/streak";
 import { avatarEmoji } from "@/lib/learn/avatars";
 import { useLearner } from "./LearnerProvider";
+import { LevelUnavailable } from "./LevelUnavailable";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
 
@@ -45,6 +46,8 @@ export function Dashboard() {
       <h1 className="l-h1">
         <span aria-hidden="true">{avatarEmoji(state.profile?.avatar)}</span> {t("dash.hello", { name: state.profile?.nickname ?? "" })}
       </h1>
+
+      {index.lessons.size === 0 && <LevelUnavailable />}
 
       <section className="l-card l-card-accent l-stack" aria-labelledby="cta-h">
         <h2 id="cta-h" className="l-h2">{t("dash.continue")}</h2>

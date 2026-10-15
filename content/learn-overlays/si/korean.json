@@ -58,6 +58,11 @@
     "k.k6.hospital": "රෝහලේදී",
     "k.k6.requests": "ආචාරශීලී ඉල්ලීම්",
     "k.k6.invitations": "එකට සැලසුම් කිරීම",
+    "k.k7.bridge_formal": "විධිමත් ගෞරවනීය අවසාන (-ㅂ/습니다, -ㅂ/습니까)",
+    "k.k7.bridge_plain": "සරල ස්වරූප (-ㄴ/는다, -았/었다), වක්‍ර කථනයේ පදනම",
+    "k.k7.bridge_adnominal": "නාම පද විස්තර කිරීම (-(으)ㄴ / -는 / -(으)ㄹ + නාමපදය)",
+    "k.k7.bridge_connect": "මූලික සම්බන්ධක (-아/어서, -지만, -(으)니까, -(으)면, -(으)려고)",
+    "k.k7.bridge_modal": "හැකියාව, යුතුකම සහ අවසරය (-(으)ㄹ 수 있다, -아/어야 하다, -아/어도 되다)",
     "k.k7.indirect_state": "Indirect statements (-다고 하다)",
     "k.k7.indirect_ask": "Indirect questions (-냐고 하다)",
     "k.k7.indirect_cmd": "Indirect commands and suggestions (-라고 / -자고 하다)",
@@ -471,46 +476,71 @@
       "example": "같이 가요. (gachi gayo.) = අපි එකට යමු."
     },
     "korean-k7-l1": {
+      "title": "විධිමත් ගෞරවනීය අවසාන",
+      "concept": "විධිමත් කථනයේදී සහ රැකියා ස්ථානයේදී, ස්වරයකින් අවසන් වන ක්‍රියා හෝ විශේෂණ ධාතුවකට -ㅂ니다 ද, ව්‍යංජනයකින් අවසන් වන ධාතුවකට -습니다 ද එක් කරයි. ප්‍රශ්න අවසන් වන්නේ -ㅂ니까 / -습니까 වලිනි.",
+      "example": "저는 학생입니다. (jeoneun haksaengimnida.) = මම ශිෂ්‍යයෙක්/ශිෂ්‍යාවක්. / 이름이 무엇입니까? (ireumi mueosimnikka?) = ඔබේ නම කුමක්ද?"
+    },
+    "korean-k7-l2": {
+      "title": "සරල ස්වරූප",
+      "concept": "සරල (ලිඛිත) ශෛලියේදී ප්‍රකාශ -ㄴ다 / -는다 වලින් ද අතීත ප්‍රකාශ -았다 / -었다 වලින් ද අවසන් වේ. මෙම ස්වරූප ඉදිරි පාඩම්වල වක්‍ර කථනයේ පදනම වේ.",
+      "example": "나는 학교에 간다. (naneun hakgyoe ganda.) = මම පාසලට යනවා. / 동생은 책을 읽는다. (dongsaengeun chaegeul ingneunda.) = මගේ බාල සහෝදරයා/සහෝදරිය පොතක් කියවනවා."
+    },
+    "korean-k7-l3": {
+      "title": "නාම පද විස්තර කිරීම",
+      "concept": "ක්‍රියාපදයකට හෝ විශේෂණයකට නාමපදයක් විස්තර කළ හැක: විශේෂණ සහ අතීත ක්‍රියා සඳහා -(으)ㄴ, වර්තමාන ක්‍රියා සඳහා -는, අනාගත හෝ සැලසුම් කළ ක්‍රියා සඳහා -(으)ㄹ, නාමපදයට පෙර යොදයි.",
+      "example": "저는 맛있는 음식을 좋아해요. (jeoneun masinneun eumsigeul joahaeyo.) = මම රසවත් කෑම වලට කැමතියි. / 예쁜 꽃을 샀어요. (yeppeun kkocheul sasseoyo.) = මම ලස්සන මල් මිලදී ගත්තා."
+    },
+    "korean-k7-l4": {
+      "title": "මූලික සම්බන්ධක",
+      "concept": "වාක්‍ය ඛණ්ඩ දෙකක් සම්බන්ධ කිරීමට: -아/어서 (හේතුව හෝ අනුපිළිවෙළ), -지만 (වෙනස), -(으)니까 (හේතුව), -(으)면 (නම්) සහ -(으)려고 (පිණිස).",
+      "example": "피곤해서 일찍 잤어요. (pigonhaeseo iljjik jasseoyo.) = මට මහන්සි වුණා, ඉතින් කලින් නිදාගත්තා. / 비가 와서 집에 있었어요. (biga waseo jibe isseosseoyo.) = වැස්ස වැටුණා, ඉතින් මම ගෙදරම හිටියා."
+    },
+    "korean-k7-l5": {
+      "title": "හැකියාව, යුතුකම, අවසරය",
+      "concept": "-(으)ㄹ 수 있다/없다 හැකියාව හෝ ඉඩකඩ ද, -아/어야 하다 යුතුකම ද, -아/어도 되다 අවසරය ද පෙන්වයි.",
+      "example": "저는 수영할 수 있어요. (jeoneun suyeonghal su isseoyo.) = මට පිහිනන්න පුළුවන්. / 저는 한국어로 이야기할 수 있어요. (jeoneun hangugeoro iyagihal su isseoyo.) = මට කොරියානු භාෂාවෙන් කතා කරන්න පුළුවන්."
+    },
+    "korean-k7-l6": {
       "title": "Indirect statements (-다고 하다)",
       "concept": "Report what someone says or said: verb/adj + -다고 하다.",
       "example": "친구가 온다고 해요. (chinguga ondago haeyo.) = friend said coming"
     },
-    "korean-k7-l2": {
+    "korean-k7-l7": {
       "title": "Indirect questions (-냐고 하다)",
       "concept": "Report a question: verb/adj + -냐고 묻다/하다.",
       "example": "어디 가냐고 물었어요. (eodi ganyago mureosseoyo.) = asked where going"
     },
-    "korean-k7-l3": {
+    "korean-k7-l8": {
       "title": "Indirect commands and suggestions (-라고 / -자고 하다)",
       "concept": "Report an imperative (-라고 하다) or propositive (-자고 하다).",
       "example": "빨리 오라고 했어요. (ppalli orago haesseoyo.) = told to come fast / 같이 가자고 했어요. (gachi gajago haesseoyo.) = suggested go together"
     },
-    "korean-k7-l4": {
+    "korean-k7-l9": {
       "title": "Complex causes and contrasts (-느라고, -는데도)",
       "concept": "Negative cause or delay (-느라고) and contrast despite circumstances (-는데도).",
       "example": "공부하느라고 바빴어요. (gongbuhaneurago bapasseoyo.) = busy studying / 비가 오는데도 갔어요. (biga oneundedo gasseoyo.) = went despite rain"
     },
-    "korean-k7-l5": {
+    "korean-k7-l10": {
       "title": "Proportion and inevitability (-을수록, -기 마련이다)",
       "concept": "The more... the more (-을수록) and natural inevitability (-기 마련이다).",
       "example": "만날수록 좋아요. (mannalsurok joayo.) = better as we meet / 사람은 실수하기 마련이에요. (sarameun silsuhagi maryeonieyo.) = bound to make mistakes"
     },
-    "korean-k7-l6": {
+    "korean-k7-l11": {
       "title": "Appearance and inference (-아/어 보이다, -는 모양이다)",
       "concept": "Looks like (-아/어 보이다) and appears to be (-는 모양이다).",
       "example": "행복해 보여요. (haengbokae boyeoyo.) = looks happy / 비가 오는 모양이에요. (biga oneun moyangieyo.) = seems raining"
     },
-    "korean-k7-l7": {
+    "korean-k7-l12": {
       "title": "Pretending (-는 척하다)",
       "concept": "Pretend to do or be something: -(으)ㄴ/는 척하다.",
       "example": "아는 척해요. (aneun cheokaeyo.) = pretends to know"
     },
-    "korean-k7-l8": {
+    "korean-k7-l13": {
       "title": "Regret and counterfactuals (-(으)ㄹ 걸 그랬어요)",
       "concept": "Express regret: 'I should have done...' -(으)ㄹ 걸 그랬어요.",
       "example": "일찍 올 걸 그랬어요. (iljjik ol geol geuraesseoyo.) = should have come early"
     },
-    "korean-k7-l9": {
+    "korean-k7-l14": {
       "title": "K7 Comprehensive Review",
       "concept": "Review indirect speech, complex connectors and nuanced expressions.",
       "example": "친구가 온다고 했어요. (chinguga ondago haesseoyo.) = friend said coming / 같이 밥 먹자고 했어요. (gachi bap meokjago haesseoyo.) = suggested eat together"
@@ -5022,6 +5052,386 @@
         "d": "මට යන්න ඕන."
       }
     },
+    "k-k7-bridge_formal-1": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “jeoneun haksaengimnida.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 학생입니다.” (jeoneun haksaengimnida.) යනු “මම ශිෂ්‍යයෙක්/ශිෂ්‍යාවක්.” යන්නයි.",
+      "options": {
+        "a": "මම කෑම කනවා.",
+        "b": "මම ශිෂ්‍යයෙක්/ශිෂ්‍යාවක්.",
+        "c": "ඔබේ නම කුමක්ද?",
+        "d": "මම කොරියානු භාෂාව ඉගෙන ගන්නවා."
+      }
+    },
+    "k-k7-bridge_formal-2": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “ireumi mueosimnikka?” ලෙස කියවේ."
+      ],
+      "explanation": "“이름이 무엇입니까?” (ireumi mueosimnikka?) යනු “ඔබේ නම කුමක්ද?” යන්නයි.",
+      "options": {
+        "a": "මම කොරියානු භාෂාව ඉගෙන ගන්නවා.",
+        "b": "මම කෝපි බොනවා.",
+        "c": "ඔබේ නම කුමක්ද?",
+        "d": "මම ශිෂ්‍යයෙක්/ශිෂ්‍යාවක්."
+      }
+    },
+    "k-k7-bridge_formal-3": {
+      "prompt": "“මම කොරියානු භාෂාව ඉගෙන ගන්නවා.” සඳහා කොරියානු වචනය තෝරන්න.",
+      "hints": [
+        "එක් එක් පිළිතුර අහන්න.",
+        "පිළිතුර “jeoneun hangugeoreul gongbuhamnida.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 한국어를 공부합니다.” (jeoneun hangugeoreul gongbuhamnida.) යනු “මම කොරියානු භාෂාව ඉගෙන ගන්නවා.” යන්නයි."
+    },
+    "k-k7-bridge_formal-4": {
+      "prompt": "“මම කෑම කනවා.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “jeoneun babeul meokseumnida.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 밥을 먹습니다.” (jeoneun babeul meokseumnida.) යනු “මම කෑම කනවා.” යන්නයි."
+    },
+    "k-k7-bridge_formal-5": {
+      "prompt": "“මම කෝපි බොනවා.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “jeoneun keopireul masimnida.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 커피를 마십니다.” (jeoneun keopireul masimnida.) යනු “මම කෝපි බොනවා.” යන්නයි."
+    },
+    "k-k7-bridge_formal-c": {
+      "prompt": "“මම පාසලට යනවා.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “jeoneun hakgyoe gamnida.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 학교에 갑니다.” (jeoneun hakgyoe gamnida.) යනු “මම පාසලට යනවා.” යන්නයි."
+    },
+    "k-k7-bridge_formal-v1": {
+      "prompt": "මෙහි තේරුම “දැන් වැස්ස වහිනවා.” ද?",
+      "hints": [
+        "එය “jeoneun jigeum jibe itseumnida.” ලෙස කියවේ.",
+        "පාඩමේ උදාහරණ මතක් කරගන්න."
+      ],
+      "explanation": "“저는 지금 집에 있습니다.” (jeoneun jigeum jibe itseumnida.) යනු “මම දැන් ගෙදර ඉන්නවා.” යන්නයි."
+    },
+    "k-k7-bridge_formal-v2": {
+      "prompt": "අහලා, ඔබට ඇසෙන දේ තෝරන්න.",
+      "hints": [
+        "නැවත වාදනය කර පළමු ශබ්දයට සවන් දෙන්න.",
+        "එය “저” වලින් පටන් ගනී."
+      ],
+      "explanation": "“저는 학생입니다.” කියවන්නේ “jeoneun haksaengimnida.” ලෙසයි."
+    },
+    "k-k7-bridge_plain-1": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “naneun hakgyoe ganda.” ලෙස කියවේ."
+      ],
+      "explanation": "“나는 학교에 간다.” (naneun hakgyoe ganda.) යනු “මම පාසලට යනවා.” යන්නයි.",
+      "options": {
+        "a": "මම පාසලට යනවා.",
+        "b": "මගේ බාල සහෝදරයා/සහෝදරිය පොතක් කියවනවා.",
+        "c": "මගේ යාළුවා දැන් කනවා.",
+        "d": "ඊයේ වැස්ස වැටුණා."
+      }
+    },
+    "k-k7-bridge_plain-2": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “dongsaengeun chaegeul ingneunda.” ලෙස කියවේ."
+      ],
+      "explanation": "“동생은 책을 읽는다.” (dongsaengeun chaegeul ingneunda.) යනු “මගේ බාල සහෝදරයා/සහෝදරිය පොතක් කියවනවා.” යන්නයි.",
+      "options": {
+        "a": "මම ඊයේ චිත්‍රපටයක් බැලුවා.",
+        "b": "මගේ බාල සහෝදරයා/සහෝදරිය පොතක් කියවනවා.",
+        "c": "මම පාසලට යනවා.",
+        "d": "මගේ යාළුවා දැන් කනවා."
+      }
+    },
+    "k-k7-bridge_plain-3": {
+      "prompt": "“මගේ යාළුවා දැන් කනවා.” සඳහා කොරියානු වචනය තෝරන්න.",
+      "hints": [
+        "එක් එක් පිළිතුර අහන්න.",
+        "පිළිතුර “chinguga jigeum babeul meongneunda.” ලෙස කියවේ."
+      ],
+      "explanation": "“친구가 지금 밥을 먹는다.” (chinguga jigeum babeul meongneunda.) යනු “මගේ යාළුවා දැන් කනවා.” යන්නයි."
+    },
+    "k-k7-bridge_plain-4": {
+      "prompt": "“ඊයේ වැස්ස වැටුණා.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “eoje biga watda.” ලෙස කියවේ."
+      ],
+      "explanation": "“어제 비가 왔다.” (eoje biga watda.) යනු “ඊයේ වැස්ස වැටුණා.” යන්නයි."
+    },
+    "k-k7-bridge_plain-5": {
+      "prompt": "“මම ඊයේ චිත්‍රපටයක් බැලුවා.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “naneun eoje yeonghwareul bwatda.” ලෙස කියවේ."
+      ],
+      "explanation": "“나는 어제 영화를 봤다.” (naneun eoje yeonghwareul bwatda.) යනු “මම ඊයේ චිත්‍රපටයක් බැලුවා.” යන්නයි."
+    },
+    "k-k7-bridge_plain-c": {
+      "prompt": "“මෙය මගේ පොතයි.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “igeoseun nae chaegida.” ලෙස කියවේ."
+      ],
+      "explanation": "“이것은 내 책이다.” (igeoseun nae chaegida.) යනු “මෙය මගේ පොතයි.” යන්නයි."
+    },
+    "k-k7-bridge_plain-v1": {
+      "prompt": "මෙහි තේරුම “ඊයේ ඉරිදා.” ද?",
+      "hints": [
+        "එය “naeireun toyoirida.” ලෙස කියවේ.",
+        "පාඩමේ උදාහරණ මතක් කරගන්න."
+      ],
+      "explanation": "“내일은 토요일이다.” (naeireun toyoirida.) යනු “හෙට සෙනසුරාදා.” යන්නයි."
+    },
+    "k-k7-bridge_plain-v2": {
+      "prompt": "අහලා, ඔබට ඇසෙන දේ තෝරන්න.",
+      "hints": [
+        "නැවත වාදනය කර පළමු ශබ්දයට සවන් දෙන්න.",
+        "එය “나” වලින් පටන් ගනී."
+      ],
+      "explanation": "“나는 학교에 간다.” කියවන්නේ “naneun hakgyoe ganda.” ලෙසයි."
+    },
+    "k-k7-bridge_adnominal-1": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “jeoneun masinneun eumsigeul joahaeyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 맛있는 음식을 좋아해요.” (jeoneun masinneun eumsigeul joahaeyo.) යනු “මම රසවත් කෑම වලට කැමතියි.” යන්නයි.",
+      "options": {
+        "a": "මම ලස්සන මල් මිලදී ගත්තා.",
+        "b": "මට පුංචි බෑගයක් ඕනේ.",
+        "c": "මට විශාල ගෙයක ජීවත් වෙන්න ඕනේ.",
+        "d": "මම රසවත් කෑම වලට කැමතියි."
+      }
+    },
+    "k-k7-bridge_adnominal-2": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “yeppeun kkocheul sasseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“예쁜 꽃을 샀어요.” (yeppeun kkocheul sasseoyo.) යනු “මම ලස්සන මල් මිලදී ගත්තා.” යන්නයි.",
+      "options": {
+        "a": "මම ලස්සන මල් මිලදී ගත්තා.",
+        "b": "මම රසවත් කෑම වලට කැමතියි.",
+        "c": "මට පුංචි බෑගයක් ඕනේ.",
+        "d": "මට හොඳ යාළුවෙක් ඉන්නවා."
+      }
+    },
+    "k-k7-bridge_adnominal-3": {
+      "prompt": "“මට පුංචි බෑගයක් ඕනේ.” සඳහා කොරියානු වචනය තෝරන්න.",
+      "hints": [
+        "එක් එක් පිළිතුර අහන්න.",
+        "පිළිතුර “jageun gabangi piryohaeyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“작은 가방이 필요해요.” (jageun gabangi piryohaeyo.) යනු “මට පුංචි බෑගයක් ඕනේ.” යන්නයි."
+    },
+    "k-k7-bridge_adnominal-4": {
+      "prompt": "“මට විශාල ගෙයක ජීවත් වෙන්න ඕනේ.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “keun jibe salgo sipeoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“큰 집에 살고 싶어요.” (keun jibe salgo sipeoyo.) යනු “මට විශාල ගෙයක ජීවත් වෙන්න ඕනේ.” යන්නයි."
+    },
+    "k-k7-bridge_adnominal-5": {
+      "prompt": "“මට හොඳ යාළුවෙක් ඉන්නවා.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “jeoneun joeun chinguga isseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 좋은 친구가 있어요.” (jeoneun joeun chinguga isseoyo.) යනු “මට හොඳ යාළුවෙක් ඉන්නවා.” යන්නයි."
+    },
+    "k-k7-bridge_adnominal-c": {
+      "prompt": "“අර පොතක් කියවන කෙනා මගේ බාල සහෝදරයා/සහෝදරිය.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “jeogieseo chaegeul ingneun sarami je dongsaengieyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“저기에서 책을 읽는 사람이 제 동생이에요.” (jeogieseo chaegeul ingneun sarami je dongsaengieyo.) යනු “අර පොතක් කියවන කෙනා මගේ බාල සහෝදරයා/සහෝදරිය.” යන්නයි."
+    },
+    "k-k7-bridge_adnominal-v1": {
+      "prompt": "මෙහි තේරුම “මම ඊයේ බැලූ චිත්‍රපටය විනෝදජනක වුණා.” ද?",
+      "hints": [
+        "එය “eoje meogeun eumsigi masisseosseoyo.” ලෙස කියවේ.",
+        "පාඩමේ උදාහරණ මතක් කරගන්න."
+      ],
+      "explanation": "“어제 먹은 음식이 맛있었어요.” (eoje meogeun eumsigi masisseosseoyo.) යනු “මම ඊයේ කාපු කෑම රසවත් වුණා.” යන්නයි."
+    },
+    "k-k7-bridge_adnominal-v2": {
+      "prompt": "අහලා, ඔබට ඇසෙන දේ තෝරන්න.",
+      "hints": [
+        "නැවත වාදනය කර පළමු ශබ්දයට සවන් දෙන්න.",
+        "එය “저” වලින් පටන් ගනී."
+      ],
+      "explanation": "“저는 맛있는 음식을 좋아해요.” කියවන්නේ “jeoneun masinneun eumsigeul joahaeyo.” ලෙසයි."
+    },
+    "k-k7-bridge_connect-1": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “pigonhaeseo iljjik jasseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“피곤해서 일찍 잤어요.” (pigonhaeseo iljjik jasseoyo.) යනු “මට මහන්සි වුණා, ඉතින් කලින් නිදාගත්තා.” යන්නයි.",
+      "options": {
+        "a": "මට මහන්සි වුණා, ඉතින් කලින් නිදාගත්තා.",
+        "b": "වැස්ස වැටුණා, ඉතින් මම ගෙදරම හිටියා.",
+        "c": "මම පාසලට ගිහින් යාළුවෙක් මුණගැසුණා.",
+        "d": "මේ ඇඳුම ලස්සනයි, ඒත් මිල අධිකයි."
+      }
+    },
+    "k-k7-bridge_connect-2": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “biga waseo jibe isseosseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“비가 와서 집에 있었어요.” (biga waseo jibe isseosseoyo.) යනු “වැස්ස වැටුණා, ඉතින් මම ගෙදරම හිටියා.” යන්නයි.",
+      "options": {
+        "a": "කොරියානු භාෂාව අමාරුයි, ඒත් විනෝදජනකයි.",
+        "b": "වැස්ස වැටුණා, ඉතින් මම ගෙදරම හිටියා.",
+        "c": "මට මහන්සි වුණා, ඉතින් කලින් නිදාගත්තා.",
+        "d": "මම පාසලට ගිහින් යාළුවෙක් මුණගැසුණා."
+      }
+    },
+    "k-k7-bridge_connect-3": {
+      "prompt": "“මම පාසලට ගිහින් යාළුවෙක් මුණගැසුණා.” සඳහා කොරියානු වචනය තෝරන්න.",
+      "hints": [
+        "එක් එක් පිළිතුර අහන්න.",
+        "පිළිතුර “hakgyoe gaseo chingureul mannasseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“학교에 가서 친구를 만났어요.” (hakgyoe gaseo chingureul mannasseoyo.) යනු “මම පාසලට ගිහින් යාළුවෙක් මුණගැසුණා.” යන්නයි."
+    },
+    "k-k7-bridge_connect-4": {
+      "prompt": "“මේ ඇඳුම ලස්සනයි, ඒත් මිල අධිකයි.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “i oseun yeppeujiman bissayo.” ලෙස කියවේ."
+      ],
+      "explanation": "“이 옷은 예쁘지만 비싸요.” (i oseun yeppeujiman bissayo.) යනු “මේ ඇඳුම ලස්සනයි, ඒත් මිල අධිකයි.” යන්නයි."
+    },
+    "k-k7-bridge_connect-5": {
+      "prompt": "“කොරියානු භාෂාව අමාරුයි, ඒත් විනෝදජනකයි.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “hangugeoneun eoryeopjiman jaemiisseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“한국어는 어렵지만 재미있어요.” (hangugeoneun eoryeopjiman jaemiisseoyo.) යනු “කොරියානු භාෂාව අමාරුයි, ඒත් විනෝදජනකයි.” යන්නයි."
+    },
+    "k-k7-bridge_connect-c": {
+      "prompt": "“සීතලයි, ඒ නිසා කරුණාකර දොර වසන්න.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “chuunikka muneul dadeuseyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“추우니까 문을 닫으세요.” (chuunikka muneul dadeuseyo.) යනු “සීතලයි, ඒ නිසා කරුණාකර දොර වසන්න.” යන්නයි."
+    },
+    "k-k7-bridge_connect-v1": {
+      "prompt": "මෙහි තේරුම “ඔබට වේලාවක් තිබුණොත්, අපි එකට චිත්‍රපටයක් බලමු.” ද?",
+      "hints": [
+        "එය “muneul yeonikka goyangiga isseosseoyo.” ලෙස කියවේ.",
+        "පාඩමේ උදාහරණ මතක් කරගන්න."
+      ],
+      "explanation": "“문을 여니까 고양이가 있었어요.” (muneul yeonikka goyangiga isseosseoyo.) යනු “මම දොර ඇරිය විට බළලෙක් හිටියා.” යන්නයි."
+    },
+    "k-k7-bridge_connect-v2": {
+      "prompt": "අහලා, ඔබට ඇසෙන දේ තෝරන්න.",
+      "hints": [
+        "නැවත වාදනය කර පළමු ශබ්දයට සවන් දෙන්න.",
+        "එය “피” වලින් පටන් ගනී."
+      ],
+      "explanation": "“피곤해서 일찍 잤어요.” කියවන්නේ “pigonhaeseo iljjik jasseoyo.” ලෙසයි."
+    },
+    "k-k7-bridge_modal-1": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “jeoneun suyeonghal su isseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 수영할 수 있어요.” (jeoneun suyeonghal su isseoyo.) යනු “මට පිහිනන්න පුළුවන්.” යන්නයි.",
+      "options": {
+        "a": "මට කොරියානු භාෂාවෙන් කතා කරන්න පුළුවන්.",
+        "b": "අද මම කාර්යබහුලයි, ඒ නිසා යන්න බැහැ.",
+        "c": "මට සැරට කෑම කන්න බැහැ.",
+        "d": "මට පිහිනන්න පුළුවන්."
+      }
+    },
+    "k-k7-bridge_modal-2": {
+      "prompt": "මෙහි තේරුම කුමක්ද?",
+      "hints": [
+        "ස්පීකර් බොත්තම ඔබා අහන්න.",
+        "එය “jeoneun hangugeoro iyagihal su isseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 한국어로 이야기할 수 있어요.” (jeoneun hangugeoro iyagihal su isseoyo.) යනු “මට කොරියානු භාෂාවෙන් කතා කරන්න පුළුවන්.” යන්නයි.",
+      "options": {
+        "a": "මට කොරියානු භාෂාවෙන් කතා කරන්න පුළුවන්.",
+        "b": "මට පිහිනන්න පුළුවන්.",
+        "c": "අද මම කාර්යබහුලයි, ඒ නිසා යන්න බැහැ.",
+        "d": "ඔබට හෙට එන්න පුළුවන්ද?"
+      }
+    },
+    "k-k7-bridge_modal-3": {
+      "prompt": "“අද මම කාර්යබහුලයි, ඒ නිසා යන්න බැහැ.” සඳහා කොරියානු වචනය තෝරන්න.",
+      "hints": [
+        "එක් එක් පිළිතුර අහන්න.",
+        "පිළිතුර “oneureun bappaseo gal su eopseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“오늘은 바빠서 갈 수 없어요.” (oneureun bappaseo gal su eopseoyo.) යනු “අද මම කාර්යබහුලයි, ඒ නිසා යන්න බැහැ.” යන්නයි."
+    },
+    "k-k7-bridge_modal-4": {
+      "prompt": "“මට සැරට කෑම කන්න බැහැ.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “jeoneun maeun eumsigeul meogeul su eopseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“저는 매운 음식을 먹을 수 없어요.” (jeoneun maeun eumsigeul meogeul su eopseoyo.) යනු “මට සැරට කෑම කන්න බැහැ.” යන්නයි."
+    },
+    "k-k7-bridge_modal-5": {
+      "prompt": "“ඔබට හෙට එන්න පුළුවන්ද?” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “naeil ol su isseoyo?” ලෙස කියවේ."
+      ],
+      "explanation": "“내일 올 수 있어요?” (naeil ol su isseoyo?) යනු “ඔබට හෙට එන්න පුළුවන්ද?” යන්නයි."
+    },
+    "k-k7-bridge_modal-c": {
+      "prompt": "“මේ ගැටලුව අමාරුයි, ඒ නිසා මට විසඳන්න බැහැ.” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+      "hints": [
+        "එක් එක් වාක්‍යයේ අග බලන්න.",
+        "පිළිතුර “i munjeneun eoryeowoseo pul su eopseoyo.” ලෙස කියවේ."
+      ],
+      "explanation": "“이 문제는 어려워서 풀 수 없어요.” (i munjeneun eoryeowoseo pul su eopseoyo.) යනු “මේ ගැටලුව අමාරුයි, ඒ නිසා මට විසඳන්න බැහැ.” යන්නයි."
+    },
+    "k-k7-bridge_modal-v1": {
+      "prompt": "මෙහි තේරුම “මට අද ගෙදර වැඩ කරන්න ඕනේ.” ද?",
+      "hints": [
+        "එය “naeil iljjik ireonaya haeyo.” ලෙස කියවේ.",
+        "පාඩමේ උදාහරණ මතක් කරගන්න."
+      ],
+      "explanation": "“내일 일찍 일어나야 해요.” (naeil iljjik ireonaya haeyo.) යනු “මට හෙට කලින් නැගිටින්න ඕනේ.” යන්නයි."
+    },
+    "k-k7-bridge_modal-v2": {
+      "prompt": "අහලා, ඔබට ඇසෙන දේ තෝරන්න.",
+      "hints": [
+        "නැවත වාදනය කර පළමු ශබ්දයට සවන් දෙන්න.",
+        "එය “저” වලින් පටන් ගනී."
+      ],
+      "explanation": "“저는 수영할 수 있어요.” කියවන්නේ “jeoneun suyeonghal su isseoyo.” ලෙසයි."
+    },
     "k-k7-indirect_state-1": {
       "prompt": "මෙහි තේරුම කුමක්ද?",
       "hints": [
@@ -7797,6 +8207,148 @@
         "c": "two birds one stone",
         "d": "ripped off price"
       }
+    }
+  },
+  "bank": {
+    "templates": {
+      "meaning": {
+        "prompt": "මෙහි තේරුම කුමක්ද?",
+        "hints": [
+          "ස්පීකර් බොත්තම ඔබා සවන් දෙන්න.",
+          "මෙය “{rr}” ලෙස කියවයි."
+        ],
+        "explanation": "“{ko}” ({rr}) යන්නෙහි තේරුම “{meaning}” ය.",
+        "hintsSafe": [
+          "ස්පීකර් බොත්තම ඔබා සවන් දෙන්න.",
+          "හෙමින් හෙමින්, අක්ෂරයෙන් අක්ෂරය ශබ්ද නඟා කියන්න."
+        ]
+      },
+      "toko": {
+        "prompt": "“{gloss}” සඳහා නිවැරදි කොරියානු වචනය තෝරන්න.",
+        "hints": [
+          "අවස්ථාව හෝ වචන කණ්ඩායම ගැන සිතන්න.",
+          "එක් එක් විකල්පයේ අක්ෂර කීයක් තිබේදැයි සසඳන්න."
+        ],
+        "explanation": "“{meaning}” යනු “{ko}” ({rr}) ය."
+      },
+      "listen": {
+        "prompt": "සවන් දී ඔබට ඇසුණු දේ තෝරන්න.",
+        "hints": [
+          "නැවත වාදනය කර එක් එක් අක්ෂරයට සවන් දෙන්න.",
+          "විකල්ප අක්ෂරයෙන් අක්ෂරය සසඳන්න."
+        ],
+        "explanation": "ඔබට ඇසුණේ “{ko}” ({rr}) ය."
+      },
+      "tf": {
+        "prompt": "මෙහි තේරුම “{gloss}” ද?",
+        "hints": [
+          "මෙය “{rr}” ලෙස කියවයි.",
+          "එක් කොටසක් ගැන නොව, මුළු වචනයේ හෝ වාක්‍ය ඛණ්ඩයේ තේරුම ගැන සිතන්න."
+        ],
+        "explanation": "“{ko}” ({rr}) යන්නෙහි තේරුම “{meaning}” ය.",
+        "hintsSafe": [
+          "හෙමින් හෙමින්, අක්ෂරයෙන් අක්ෂරය ශබ්ද නඟා කියන්න.",
+          "එක් කොටසක් ගැන නොව, මුළු වචනයේ හෝ වාක්‍ය ඛණ්ඩයේ තේරුම ගැන සිතන්න."
+        ]
+      },
+      "read": {
+        "prompt": "මෙය කියවන්නේ කෙසේද?",
+        "hints": [
+          "එක් එක් ශබ්දය වමේ සිට දකුණට කියවන්න.",
+          "එක් එක් අක්ෂරයේ අවසාන ව්‍යංජනය (බච්ම්) පරීක්ෂා කරන්න."
+        ],
+        "explanation": "“{ko}” කියවන්නේ “{rr}” ලෙස ය."
+      },
+      "fromrr": {
+        "prompt": "“{rr}” ලෙස කියවෙන්නේ කුමක්ද?",
+        "hints": [
+          "ශබ්දය හඬ නගා කියන්න.",
+          "ස්වරය සහ අවසාන ව්‍යංජනය පරීක්ෂා කරන්න."
+        ],
+        "explanation": "“{ko}” කියවන්නේ “{rr}” ලෙස ය."
+      },
+      "sit": {
+        "prompt": "මෙම අවස්ථාවේදී ඔබ කුමක් කියනවාද? {gloss}",
+        "hints": [
+          "කතා කරන්නේ කවුද, කාටද යන්න ගැන සිතන්න.",
+          "එක් එක් විකල්පයේ ගෞරව මට්ටම පරීක්ෂා කරන්න."
+        ],
+        "explanation": "මෙම අවස්ථාවේදී ඔබ “{ko}” ({rr}) කියයි; එහි තේරුම “{meaning}” ය."
+      },
+      "cloze": {
+        "prompt": "හිස්තැනට ගැළපෙන වචනය තෝරන්න. තේරුම: “{gloss}”",
+        "hints": [
+          "හිස්තැනට පෙර වචනය සහ තේරුම බලන්න.",
+          "අවසාන ව්‍යංජනයට අනුව නිපාතය (පාර්ටිකල්) හෝ අවසානය පරීක්ෂා කරන්න."
+        ],
+        "explanation": "සම්පූර්ණ වාක්‍යය “{ko}” ({rr}) වන අතර එහි තේරුම “{meaning}” ය."
+      },
+      "choose": {
+        "prompt": "“{gloss}” සඳහා නිවැරදි කොරියානු වාක්‍යය තෝරන්න.",
+        "hints": [
+          "විකල්පවල ඇති එක් එක් නිපාතය (පාර්ටිකල්) සහ අවසානය පරීක්ෂා කරන්න.",
+          "වචන තේරීම සහ ගෞරව මට්ටම තේරුමට ගැළපෙන්නේදැයි පරීක්ෂා කරන්න."
+        ],
+        "explanation": "නිවැරදි වාක්‍යය “{ko}” ({rr}) වන අතර එහි තේරුම “{meaning}” ය."
+      },
+      "order": {
+        "prompt": "මෙය කීමට වචන පිළිවෙළට ස්පර්ශ කරන්න: “{gloss}”",
+        "hints": [
+          "කොරියානු භාෂාවේ ක්‍රියාපදය අගට එයි.",
+          "නිපාත (පාර්ටිකල්) තමන්ට පෙර වචනයට සම්බන්ධව පවතී."
+        ],
+        "explanation": "වාක්‍යය “{ko}” ({rr}) වන අතර එහි තේරුම “{meaning}” ය."
+      },
+      "passage": {
+        "prompt": "පාඨය කියවන්න. සත්‍ය ප්‍රකාශය කුමක්ද?",
+        "hints": [
+          "ප්‍රධාන අදහස සඳහා පාඨය එක් වරක් කියවන්න.",
+          "එක් එක් ප්‍රකාශය පාඨයේ පේළි සමඟ සසඳා බලන්න."
+        ],
+        "explanation": "පාඨයේ තේරුම: {meaning}"
+      }
+    },
+    "texts": {
+      "g:b147e095": "මම ශිෂ්‍යයෙක්/ශිෂ්‍යාවක්.",
+      "g:2797d5d5": "ඔබේ නම කුමක්ද?",
+      "g:85fabb16": "මම කොරියානු භාෂාව ඉගෙන ගන්නවා.",
+      "g:11e348d0": "මම කෑම කනවා.",
+      "g:53f48eff": "මම කෝපි බොනවා.",
+      "g:84109c1f": "මම පාසලට යනවා.",
+      "g:09735488": "මම දැන් ගෙදර ඉන්නවා.",
+      "g:4e1a3362": "දැන් වැස්ස වහිනවා.",
+      "g:0cc75831": "මම පාසලට යනවා.",
+      "g:c3c42619": "මගේ බාල සහෝදරයා/සහෝදරිය පොතක් කියවනවා.",
+      "g:a4c25bb9": "මගේ යාළුවා දැන් කනවා.",
+      "g:40388968": "ඊයේ වැස්ස වැටුණා.",
+      "g:28c3cb48": "මම ඊයේ චිත්‍රපටයක් බැලුවා.",
+      "g:c1370618": "මෙය මගේ පොතයි.",
+      "g:e6718101": "හෙට සෙනසුරාදා.",
+      "g:6a911044": "ඊයේ ඉරිදා.",
+      "g:6c25d0a8": "මම රසවත් කෑම වලට කැමතියි.",
+      "g:7c38f16f": "මම ලස්සන මල් මිලදී ගත්තා.",
+      "g:2650ff16": "මට පුංචි බෑගයක් ඕනේ.",
+      "g:b7ff116c": "මට විශාල ගෙයක ජීවත් වෙන්න ඕනේ.",
+      "g:74a7c4d4": "මට හොඳ යාළුවෙක් ඉන්නවා.",
+      "g:c881268c": "අර පොතක් කියවන කෙනා මගේ බාල සහෝදරයා/සහෝදරිය.",
+      "g:794afe1c": "මම ඊයේ කාපු කෑම රසවත් වුණා.",
+      "g:154aa784": "මම ඊයේ බැලූ චිත්‍රපටය විනෝදජනක වුණා.",
+      "g:95cd30d3": "මට මහන්සි වුණා, ඉතින් කලින් නිදාගත්තා.",
+      "g:fd58ef4e": "වැස්ස වැටුණා, ඉතින් මම ගෙදරම හිටියා.",
+      "g:883d12f7": "මම පාසලට ගිහින් යාළුවෙක් මුණගැසුණා.",
+      "g:62ba390d": "මේ ඇඳුම ලස්සනයි, ඒත් මිල අධිකයි.",
+      "g:c6bfdae5": "කොරියානු භාෂාව අමාරුයි, ඒත් විනෝදජනකයි.",
+      "g:4f2d4ba7": "සීතලයි, ඒ නිසා කරුණාකර දොර වසන්න.",
+      "g:7a1b03b5": "මම දොර ඇරිය විට බළලෙක් හිටියා.",
+      "g:34d3e472": "ඔබට වේලාවක් තිබුණොත්, අපි එකට චිත්‍රපටයක් බලමු.",
+      "g:d9440d81": "මට පිහිනන්න පුළුවන්.",
+      "g:812f9e67": "මට කොරියානු භාෂාවෙන් කතා කරන්න පුළුවන්.",
+      "g:a7cd322b": "අද මම කාර්යබහුලයි, ඒ නිසා යන්න බැහැ.",
+      "g:c847fd00": "මට සැරට කෑම කන්න බැහැ.",
+      "g:8783e54b": "ඔබට හෙට එන්න පුළුවන්ද?",
+      "g:518516e5": "මේ ගැටලුව අමාරුයි, ඒ නිසා මට විසඳන්න බැහැ.",
+      "g:4665cf3f": "මට හෙට කලින් නැගිටින්න ඕනේ.",
+      "g:3d327c4c": "මට අද ගෙදර වැඩ කරන්න ඕනේ."
     }
   }
 }

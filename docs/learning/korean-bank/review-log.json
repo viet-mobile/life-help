@@ -1,0 +1,4139 @@
+{
+ "note": "AI independent review (not native-speaker or teacher review). Round 1: 22 packets over every non-syllable entry. Round 2: second independent review of every entry round 1 edited. Patches are applied to the authored pools; unmatched = a patch whose entry text was not found.",
+ "applied": [
+  {
+   "packet": "review_02.json",
+   "skill": "k.k1.words3",
+   "ko": "지구",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Pool conflict with 세계: glosses 'Earth' and 'world' are near-equal in English, so 지구/세계 can answer each other's meaning/toko questions. Make the glosses distinct.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k1.words3",
+   "ko": "세계",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Near-synonym of 지구 in English ('world' vs 'Earth'); disambiguate gloss.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k1.words3",
+   "ko": "독수리",
+   "action": "edit",
+   "severity": "low",
+   "reason": "In the standard dictionary 독수리 is the cinereous vulture (the generic 'eagle' is 수리); gloss 'eagle' alone is not strictly accurate, so I am not certain of it.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.answers",
+   "ko": "아직이요.",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "Not standard: the adverb 아직 takes the polite 요 directly, giving 아직요. '아직이요' (copula-style) is a non-standard form; the entry's Korean cannot be edited through patches, so remove."
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.answers",
+   "ko": "아니요, 물이 없어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze wrong fillers 맞아요/틀려요/와요 are not definitely wrong: '물이 와요' (water comes) and '물이 맞아요' are acceptable sentences; they are also gibberish-ish as answers. Use fillers that cannot take 물이 as subject.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.answers",
+   "ko": "네, 커피가 있어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze: '네, 커피가 맞아요.' is perfectly natural (e.g. confirming an order), so 맞아요 is also acceptable; 틀려요 is borderline too. Two valid answers. Replace fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.answers",
+   "ko": "A: 커피 있어요?\nB: 네, 있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Passage false statements not definitely false: 'B는 물이 없어요' and 'A는 커피를 줘요' are simply not stated in the dialogue (undetermined, not false).",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.culture",
+   "ko": "많이 드세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "sit conflict with 맛있게 드세요: 'You serve food to a guest in your home' fits both expressions (a server placing food also fits 많이 드세요 less well, but the host situation fits 맛있게 드세요 equally). Make situation specific to 'eat plenty'.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.culture",
+   "ko": "집에서 신발을 벗어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "note tableMan (table manners) is unrelated to taking off shoes; mismatched note.",
+   "applied": [
+    "note cleared"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.culture",
+   "ko": "어른이 먼저 먹어요.",
+   "action": "remove",
+   "severity": "low",
+   "reason": "Honorific/register mismatch: for an elder as subject the standard polite form is 어른이 먼저 드세요/드셔요 (먹어요 is plain verb), which is inappropriate in a lesson about respecting elders; Korean text cannot be patched."
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "인사말",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 인사: 'words of greeting' vs 'greeting' are near-synonyms, so each Korean could answer the other's meaning/toko question."
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "다녀오겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'I'll be going and coming back.' is a literal word-for-word fragment, not natural English.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "다녀오세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Situation: 다녀오세요 is honorific and not what a parent normally says to a child (that would be 다녀와/잘 다녀와). Use a person it suits.",
+   "applied": [
+    "g",
+    "s"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "선생님께 인사해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "note honPart ('kke is the honorific form of ege') states the cloze answer 께 outright; also choose wrong '선생님와' is a pure spelling error. Replace note with one that does not name the particle.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "저는 이웃에게 인사해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze wrong filler 를 is the wrong allomorph after consonant-ending 이웃 (would be 을), so it is wrong by spelling only; use 을 so it is wrong by grammar.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "오랜만에 친구를 만나요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze fillers 를 and 와 are wrong allomorphs after consonant-ending 오랜만 (would be 을/과); wrong only by form, gibberish-looking.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_02.json",
+   "skill": "k.k2.greetings",
+   "ko": "A: 다녀오겠습니다.\nB: 네, 다녀오세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "false statements not definitely false: '한 사람이 집에 돌아와요' (다녀오겠습니다 means leaving and coming back) is arguably true later; '두 사람이 같이 밥을 먹어요' is merely unstated.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.helpme",
+   "ko": "한국어를 잘 못해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Situation text is garbled: 'a shop clerk who speaks fast to Korean'.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.helpme",
+   "ko": "이거 한국어로 뭐예요?",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 이게 뭐예요?: gloss 'What is this in Korean?' contains 'What is this?', so each Korean could answer the other's meaning/toko/tf question."
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.helpme",
+   "ko": "A: 죄송해요. 이해가 안 돼요.\nB: 네, 천천히 다시 말할게요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement 'A는 한국어를 아주 잘해요' is not definitively false: the text never says how good A's Korean is.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.introduce",
+   "ko": "외국 사람",
+   "action": "remove",
+   "severity": "high",
+   "reason": "conflicts with 외국인: 'foreign person' and 'foreigner' are synonyms, either Korean answers the other's meaning/toko question."
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.introduce",
+   "ko": "저는 일본에서 왔어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note fromPart names the particle 'eseo', which gives away the cloze answer.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.meeting",
+   "ko": "제 친구",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 친구: 'my friend' vs 'friend'; for the toko question 'friend' both 친구 and 제 친구 are acceptable."
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.meeting",
+   "ko": "첫 만남",
+   "action": "remove",
+   "severity": "low",
+   "reason": "near-conflict with 처음 ('first time' vs 'first meeting'): glosses overlap and the Korean can answer each other's questions."
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.meeting",
+   "ko": "잘 부탁드립니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note firstMeet says these phrases are 'used only' at a first meeting; false, 잘 부탁드립니다 is also used for ongoing requests/relationships.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.meeting",
+   "ko": "명함을 주세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze filler 은 is not definitely wrong: '명함은 주세요' is acceptable contrastive Korean ('at least give me your card').",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.meeting",
+   "ko": "친구를 소개해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Cloze filler 와 is arguable: '친구와 소개해요' can be read as introducing together with a friend.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.meeting",
+   "ko": "A: 처음 뵙겠습니다. 김민수입니다.\nB: 저도 반갑습니다. 이수진입니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement '두 사람은 헤어져요' is not clearly false (nothing says they do not part at the end).",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.opinions",
+   "ko": "저는 그렇게 생각해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Gloss 'I think so too' adds 'too', which needs 저도; ko has 저는. Gloss does not match the Korean.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.opinions",
+   "ko": "한국 음식을 좋아해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze filler 싫어요 is not definitely wrong: '한국 음식을 싫어요' is common colloquial Korean meaning 'I dislike Korean food'.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.opinions",
+   "ko": "이 영화가 재미있어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Cloze filler 비싸요 is arguably acceptable ('this movie is expensive'/ticket price).",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.opinions",
+   "ko": "저는 이게 좋아요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Fillers 예뻐해요 and 어려워해요 are unnatural, above-level -해요 derivations, and 싫어해요 with 이게 is heard colloquially; the options look contrived and not clearly wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_03.json",
+   "skill": "k.k2.opinions",
+   "ko": "생각",
+   "action": "remove",
+   "severity": "low",
+   "reason": "near-conflict with 의견: 생각 also means 'opinion' (제 생각은...), so it can answer the 'opinion' toko question."
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.wellbeing",
+   "ko": "머리가 아파요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze '머리가 ____.': distractors 좋아요 (머리가 좋아요 = 'is smart', natural Korean) and 예뻐요 (머리가 예뻐요 = 'hair is pretty', natural) also fit; not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.wellbeing",
+   "ko": "오늘 기분이 좋아요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze distractor 피곤해요 ('기분이 피곤해요') is borderline acceptable as 'feeling tired'; replace with a definite wrong filler.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k3.ages",
+   "ko": "제 동생은 열두 살이에요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze: '제 동생은 열두 명이에요' is grammatical and meaningful ('I have twelve siblings'), and 개예요/번이에요 odd; so 명이에요 is not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k3.ages",
+   "ko": "할머니는 여든 살이에요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze distractor 일흔 ('할머니는 일흔 살이에요') is fully correct Korean; it is wrong only by number, so two options fit the sentence.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k3.ages",
+   "ko": "저는 친구보다 한 살 많아요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze distractor 하고/처럼 produce grammatical-looking sentences; 처럼 ('like my friend') is grammatical. Also note 'compare' states the particle meaning 'than', nearly giving away the answer.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k3.family",
+   "ko": "동생이 한 명 있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note countP says 'one shortens before it', which gives away the cloze answer 한.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k3.family",
+   "ko": "어머니는 선생님이에요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note topicP says use 'the longer one after a final consonant and the shorter after a vowel': inaccurate, both 은/는 are one syllable, and in romanization neun (vowel) is the longer; misleading.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k3.family",
+   "ko": "외동딸",
+   "action": "edit",
+   "severity": "low",
+   "reason": "gloss 'only daughter' is ambiguous (could mean the only girl among sons, which is 고명딸); 외동딸 = an only child who is a daughter.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.partings",
+   "ko": "잘 있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "gloss 'Take care. (casual)' is wrong register (-어요 is informal polite, not casual) and collides with 조심히 가세요 'Take care on your way' / 건강하세요; 'Take care' is ambiguous for tf/meaning questions.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.partings",
+   "ko": "다음 주에 봐요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "s: meeting 'your teacher' with 봐요 is not honorific (뵈어요/봬요 would be expected), and 'the next class' does not necessarily mean next week.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.partings",
+   "ko": "친구에게 연락해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze: 친구보다 연락해요 is grammatical (comparison) so 보다 is not definitely wrong; 친구를 연락해요 is only a colloquial error.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.partings",
+   "ko": "하루",
+   "action": "edit",
+   "severity": "low",
+   "reason": "gloss 'one day' is ambiguous with 'someday'; 하루 = a day (24 hours).",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.partings",
+   "ko": "좋은 하루",
+   "action": "remove",
+   "severity": "low",
+   "reason": "conflicts with 좋은 하루 보내세요.: gloss 'a good day' vs 'Have a good day' - toko/meaning for either could be answered by the other Korean (same for 즐거운 주말 vs 주말 잘 보내세요.)."
+  },
+  {
+   "packet": "review_04.json",
+   "skill": "k.k2.signs",
+   "ko": "고장",
+   "action": "edit",
+   "severity": "low",
+   "reason": "as a bare word 고장 means 'breakdown/malfunction'; gloss 'out of order' is the sign usage only.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_05.json",
+   "skill": "k.k3.family2",
+   "ko": "남편은 의사예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose wrong option '남편은 의사이에요.' is the uncontracted 이에요 after a vowel noun; it is attested/acceptable to many speakers, so it is not definitely wrong. Replace with a definitely wrong sentence.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_05.json",
+   "skill": "k.k3.family2",
+   "ko": "삼촌은 서울에 있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze wrong filler '이' gives '서울이 있어요', a grammatical double-subject sentence ('Seoul exists'), so not definitely wrong; replace with 의.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_05.json",
+   "skill": "k.k3.messages",
+   "ko": "괜찮아요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "gloss \"It's okay.\" overlaps with 좋아요 (also usable as 'okay/fine'); make the glosses distinct.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_05.json",
+   "skill": "k.k3.numbers",
+   "ko": "이 번 출구",
+   "action": "remove",
+   "severity": "low",
+   "reason": "spelled-out '이 번 출구' is unnatural (normally 2번 출구) and '이 번' is confusable with 이번 'this time/this' (also used in a choose distractor); ambiguous for learners."
+  },
+  {
+   "packet": "review_05.json",
+   "skill": "k.k3.numbers",
+   "ko": "우리 집은 이 층이에요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "choose wrong '우리 집은 두 층이에요.' is acceptable Korean meaning 'our house has two floors/storeys', so not clearly wrong versus the gloss; replace.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_05.json",
+   "skill": "k.k3.ourfamily",
+   "ko": "대가족",
+   "action": "edit",
+   "severity": "low",
+   "reason": "level: vocabulary (대가족/핵가족) is somewhat advanced for k3; gloss fine but consider removing if level is strict. Low-confidence flag only.",
+   "applied": []
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.self",
+   "ko": "제 이름은 이지수예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose wrong '제 이름은 이지수이에요.' is not definitely wrong: 이에요 is the uncontracted form of 예요 and is accepted after a vowel-final noun (이에요 -> 예요 is a contraction). Replace with a clearly wrong sentence.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.self",
+   "ko": "저는 간호사예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose wrong '저는 간호사이에요.' is arguably acceptable (uncontracted 이에요 after vowel), so it could also be correct for g. Replace.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.self",
+   "ko": "제 직업은 은행원이에요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "g 'My job is bank clerk.' is an unnatural word-for-word fragment (missing article).",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.sino",
+   "ko": "유월",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note irrMonth is inaccurate: 'the number loses its final sound in one and takes a different vowel in the other'. Both 유월 (육->유) and 시월 (십->시) simply drop the final consonant; neither changes vowel. Rewrite notes.irrMonth, e.g. 'Two month names change their spelling: in both, the number drops its final consonant before the month word.'",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.sino",
+   "ko": "시월",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "same irrMonth note is wrong (no vowel change in 시월 or 유월); fix the shared note text.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.sounds",
+   "ko": "괜찮아요",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 좋아요: glosses 'It's okay.' and 'It's good.' are near-synonyms (괜찮아요 also means fine/good); meaning/toko/tf questions become ambiguous."
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.sounds",
+   "ko": "많아요",
+   "action": "edit",
+   "severity": "low",
+   "reason": "g 'there is a lot' is awkward/fragmentary English.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.sounds",
+   "ko": "몇 월",
+   "action": "edit",
+   "severity": "low",
+   "reason": "note 'neutral' (final consonant at word end or before a consonant) does not fit: 월 begins with a vowel (silent ㅇ), so ㅊ links over ([며둴]); linkC is the relevant rule.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_06.json",
+   "skill": "k.k3.sounds",
+   "ko": "몇 명",
+   "action": "edit",
+   "severity": "low",
+   "reason": "the key sound change is nasalization (ㅊ->ㄷ then n before m, [면명]); 'nasal' is more accurate than 'neutral' (note says p,t,k -> m,n,ng before nasal).",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 학교에 안 가요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 학교에 아니 가요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong. Also the note states the answer word (안/못) outright, giving away the cloze; show it only after answering or remove.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 오늘 못 가요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 오늘 아니 가요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong. Also the note states the answer word (안/못) outright, giving away the cloze; show it only after answering or remove.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "우유를 안 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('우유를 아니 마셔요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "한국어를 못 읽어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('한국어를 아니 읽어요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 고기를 안 먹어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 고기를 아니 먹어요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 김치를 못 먹어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 김치를 아니 먹어요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 아침을 안 먹어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 아침을 아니 먹어요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "친구가 오늘 못 와요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('친구가 오늘 아니 와요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "아기는 못 걸어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('아기는 아니 걸어요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 차를 안 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 차를 아니 마셔요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 한국어를 못 써요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 한국어를 아니 써요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 자전거를 못 타요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 자전거를 아니 타요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "비가 안 와요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('비가 아니 와요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "오늘은 안 추워요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('오늘은 아니 추워요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "이 책은 안 비싸요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('이 책은 아니 비싸요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 안 피곤해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('저는 아니 피곤해요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "오늘은 안 바빠요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('오늘은 아니 바빠요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "이 빵은 안 맛있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('이 빵은 아니 맛있어요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "방이 안 깨끗해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler/sentence uses '아니' as a bare negative adverb ('방이 아니 깨끗해요.'). 아니 is the full form of 안 (literary/archaic) and is not definitely wrong Korean; also bare fillers 없/아니 are not natural. Replaced with spelling error 않 and a plain particle so every distractor is definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "A: 커피를 마셔요?\nB: 아니요, 저는 커피를 안 마셔요. 차를 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statements 'A는 차를 안 마셔요' and 'B는 우유를 마셔요' are not stated or contradicted by the passage (A's habits/B's milk unknown), so not definitely false.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.negation",
+   "ko": "A: 수영을 해요?\nB: 아니요, 못 해요. 그렇지만 운동은 좋아해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement 'A는 수영을 못 해요' is not stated in the passage (A only asks), so not definitely false. Also 그렇지만 is likely above k4.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.likes",
+   "ko": "A: 커피를 좋아해요?\nB: 아니요, 저는 커피를 싫어해요. 차를 좋아해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statements 'A는 차를 싫어해요' and 'B는 우유를 좋아해요' are not stated or contradicted (A's taste unknown; B could also like milk), so not definitely false.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.food",
+   "ko": "A: 아침에 뭐 먹어요?\nB: 빵과 계란을 먹어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statements 'B는 아침에 밥을 먹어요' (B may also eat rice, unstated) and 'A는 아침에 빵을 먹어요' (A's meal unstated) are not definitely false.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.food",
+   "ko": "우유를 많이 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze filler '들어요' is not definitely wrong: 우유를 들어요 is grammatical (들다 = lift/hold); '타요' also valid (우유를 타다 = mix in milk).",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.food",
+   "ko": "야채를 많이 먹어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note foodWords says food nouns go with 먹어요 and drinks with 마셔요, which directly gives away the cloze answer (야채 vs drinks).",
+   "applied": []
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.daily",
+   "ko": "점심을 먹어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Cloze filler '에' is also acceptable: 점심에 먹어요 ('I eat at lunchtime') is correct Korean, so two options fit. Replaced.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.daily",
+   "ko": "아침을 먹어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note dailyTime (time words take 에, 매일/일찍/늦게 no particle) is irrelevant to this sentence (object 을 + 먹어요) and would mislead. Also cloze filler '열어요' is borderline (아침을 열다 is a figurative idiom).",
+   "applied": [
+    "cloze",
+    "note cleared"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.daily",
+   "ko": "저는 일찍 일어나요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong fillers '늦게를', and choose distractors '일어나가요', '일어나요를' are gibberish, not natural-looking wrong answers. Replaced with natural, definitely-wrong ones.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.daily",
+   "ko": "저는 늦게 자요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong fillers '일찍을' and choose distractors '늦게를 자요', '자요를' are gibberish, not natural wrong answers. Replaced.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.daily",
+   "ko": "저는 아침에 일어나요. 점심을 먹어요. 밤에 자요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement '저는 점심에 일해요' is not contradicted by the passage (merely unstated), so not definitely false.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_07.json",
+   "skill": "k.k4.adjectives",
+   "ko": "자동차가 빨라요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note adjSubj says the subject is marked with 이/가, which gives away the cloze answer 가.",
+   "applied": []
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k4.objects",
+   "ko": "우유를 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze wrong filler 먹어요 is also acceptable: 우유를 먹어요 is used colloquially (e.g. cereal with milk, babies), so two options can fit. Replace with definitely-wrong verbs.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k4.objects",
+   "ko": "A: 무엇을 먹어요?\nB: 빵을 먹어요. 그리고 우유를 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "false statement 'A는 빵을 먹어요.' is not definitely false: the text never says what A eats (A is only asking). Replace with a statement that contradicts the text.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k5.birthday",
+   "ko": "생일에 친구들이 선물을 줬어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze wrong filler 로 ('생일로 ... 선물을 줬어요', as/for birthday) can be read as acceptable; replace with a definitely wrong filler.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k5.birthday",
+   "ko": "주말에 생일 파티를 할 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze wrong filler 로: '생일 파티로 할 거예요' (will do it as a birthday party) is grammatical and plausible, so not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k5.birthday",
+   "ko": "주말에 뭐 해요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze wrong filler 언제 ('주말에 언제 해요?' = when on the weekend do you do it) is grammatical, and 어디 해요 is borderline; use fillers that are clearly wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k5.birthday",
+   "ko": "A: 이번 주말에 뭐 해요?\nB: 친구 생일 파티에 가요.\nA: 선물은 샀어요?\nB: 네, 꽃을 샀어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "false statement 'A는 친구 생일 파티에 가요.' is not stated as false in the text (A's plans are never given). Replace with a contradicted statement.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k5.birthday",
+   "ko": "축하해요!",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 생일 축하해요!: the sit question for 생일 축하해요! ('It is your friend's birthday and you greet them') is also answerable by 축하해요! (generic congratulations is acceptable), and toko 'Happy birthday!' vs 'Congratulations!' are near-overlapping."
+  },
+  {
+   "packet": "review_08.json",
+   "skill": "k.k5.birthday",
+   "ko": "파티",
+   "action": "remove",
+   "severity": "low",
+   "reason": "near-conflict with 생일 파티: gloss 'party' vs 'birthday party'; 생일 파티 can answer the 'party' toko/tf question. Remove 파티 or drop one of the pair."
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.clock",
+   "ko": "오전 아홉 시",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 아홉 시: gloss '9 a.m.' vs 'nine o'clock'; 아홉 시 can answer the toko/meaning question of 오전 아홉 시 and vice versa (near-equal). 오후 두 시 already teaches 오전/오후."
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.frequency",
+   "ko": "저는 주말마다 친구를 만나요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze wrong filler 로 is not definitely wrong: '친구로 만나요' (meet as friends) is grammatical. Replace with a definitely wrong filler.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.months",
+   "ko": "지금은 몇 월이에요?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "choose wrong sentence '지금은 무슨 월이에요?' is not clearly incorrect (무슨 월/무슨 달 is understood and used by some speakers); replace with a definite misspelling.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.months",
+   "ko": "유월",
+   "action": "edit",
+   "severity": "low",
+   "reason": "note moA says two months are 'pronounced irregularly'; 유월/시월 are irregular in spelling (육월/십월 drop the final consonant), so the note is inaccurate (key-level note, shared by all moA entries).",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.past",
+   "ko": "어제 날씨가 좋았어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose wrong sentence '어제 날씨가 좋았을 거예요.' is acceptable Korean ('the weather yesterday was probably nice'), too close to g. Replace with a definitely wrong sentence.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.past",
+   "ko": "A: 어제 뭐 했어요?\nB: 친구를 만났어요. 그리고 영화를 봤어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "false statements '집에서 쉬었어요' and '학교에 갔어요' are merely unmentioned, not contradicted by the passage (could also be true); falses must be really false.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_09.json",
+   "skill": "k.k5.past",
+   "ko": "A: 주말에 뭐 했어요?\nB: 집에서 쉬었어요. 그리고 책을 읽었어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "false statements '친구를 만났어요', '운동했어요', '학교에 갔어요' are merely unmentioned, not contradicted by the passage; make them contradictions.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "오늘 밤에는 일찍 잘 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note planB is wrong: 자다 is a vowel stem (자), not an l-final stem; planB says l-final stems drop the consonant. It should be planA (vowel stem, no linking vowel).",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "저는 이번 주말에 집에서 쉴 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note planB is wrong: 쉬다 is a vowel stem, not an l-final stem. Should be planA.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "무엇을 살 거예요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note planB is wrong: 사다 (buy) is a vowel stem, not an l-final stem. Also the wrong filler '사세요 거예요' is gibberish rather than natural-looking.",
+   "applied": [
+    "cloze",
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "내일 몇 시에 올 거예요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "note planB is wrong: 오다 is a vowel stem, not an l-final stem. Should be planA.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "주말에 친구와 쇼핑할 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze fillers not definitely wrong: '하세요' is a valid imperative ('go shopping with a friend this weekend') and '했어요' is natural past for '주말에 친구와 쇼핑했어요'; only the English gloss separates them.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "다음 주에 한국어 시험을 볼 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze filler '보세요' is a valid imperative ('take the Korean exam next week'), so it is not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.plans",
+   "ko": "방학에 친구와 제주도에 갈 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze fillers '를' (제주도를 가다, common colloquially) and '에서' (제주도에서 갈 거예요 = go from Jeju) are acceptable Korean, not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.time",
+   "ko": "점심에 뭐 먹을 거예요?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze filler '언제' ('점심에 언제 먹을 거예요?', when during lunch) and '어디' (colloquially dropped 서) are marginally acceptable; use clearly wrong fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.time",
+   "ko": "오전",
+   "action": "edit",
+   "severity": "low",
+   "reason": "near-conflict with 아침 'morning': 오전 is commonly glossed 'morning', so toko/tf questions about 'morning' are ambiguous. Make the gloss clearly the clock term.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.weekdays",
+   "ko": "오늘은 무슨 요일이에요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose wrong option '오늘은 몇 요일이에요?' is a colloquial/nonstandard variant heard from natives; not definitely incorrect. Replace with a clear error.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.weekdays",
+   "ko": "저는 일요일에 쉬어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze ambiguous: with only '저는 일요일에', '쉬었어요' (past) and '쉴 거예요' (future) are both natural Korean; only the English gloss distinguishes them. Switch the blank to the particle.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.weekdays",
+   "ko": "이번 주 토요일에 뭐 해요?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze filler '언제' ('이번 주 토요일에 언제 해요?', when do you do it) is grammatical and not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.weekdays",
+   "ko": "무슨 요일",
+   "action": "remove",
+   "severity": "low",
+   "reason": "conflicts with 요일 ('day of the week'): gloss 'which day of the week' is near-equal, so the Korean of one can answer the other's meaning/toko/tf questions."
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.past2",
+   "ko": "그 사람은 선생님이었어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "gloss 'He' adds gender not in 그 사람 ('that person').",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_10.json",
+   "skill": "k.k5.past2",
+   "ko": "내렸어요",
+   "action": "edit",
+   "severity": "low",
+   "reason": "bare '내렸어요' without an object is ambiguous (got off / it fell, e.g. rain or snow); gloss should disambiguate to avoid wrong tf/meaning.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.directions",
+   "ko": "사거리에서 오른쪽으로 가세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '을' (오른쪽을 가세요) is not definitely wrong: 가다 takes 을 for a path ('오른쪽 길을 가세요'), and '오른쪽가' is a malformed gibberish option. Replace with clearly wrong, natural-looking fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.directions",
+   "ko": "신호등에서 왼쪽으로 가세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong sentences '신호등에서 왼쪽을 가세요.' (path-object use of 가다 is arguably acceptable) and '신호등에 왼쪽으로 가세요.' (에 vs 에서, borderline) are not definitely incorrect. Replace with definitely wrong/different-meaning options.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.directions",
+   "ko": "길 건너편에 카페가 있어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Cloze filler '건너편이' ('길 건너편이 카페가 있어요') could be read as a double-subject construction; replace with a clearly wrong filler.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.directions",
+   "ko": "실례합니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Situation 'ask a stranger on the street for directions' fits 길 좀 알려 주세요 equally (its s is also asking a passer-by for directions) -> sit question has two right answers.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.directions",
+   "ko": "A: 실례합니다. 지하철역이 어디예요?\nB: 이 길로 쭉 가세요.\nA: 멀어요?\nB: 아니요, 걸어서 오 분 걸려요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "False statement '지하철역은 오른쪽에 있어요.' is not stated in the passage (undetermined, not clearly false); '버스를 타고 가요' also weak. Replace with definitely false statements.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.hospital",
+   "ko": "빨리 나으세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Situation (friend sick, saying goodbye) also fits 푹 쉬세요 perfectly; sit question ambiguous. Make the situation specific to wishing recovery.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.hospital",
+   "ko": "A: 어제부터 기침이 나요.\nB: 열도 있어요?\nA: 아니요, 열은 없어요.\nB: 그럼 약국에서 약을 사세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "True statement uses -지만 and a false one uses -지 않았어요 (not likely taught at K6). Also '어제 아프지 않았어요' is not definitely false (a cough is not necessarily 'hurting'). Simplify.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.invitations",
+   "ko": "좋은 생각이에요.",
+   "action": "remove",
+   "severity": "high",
+   "reason": "conflicts with 좋아요, 그래요.: both are 'happy agreement to a friend's suggestion/invitation'; each sit situation ('friend invites you and you accept' / 'friend made a suggestion you like') fits both expressions and glosses 'Sure, let's do that' / 'That's a good idea' are near-equal."
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.invitations",
+   "ko": "다음에 같이 가요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Situation overlaps with 미안해요, 약속이 있어요 (both: cannot join this time); make this one distinctly about proposing a later occasion.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.invitations",
+   "ko": "A: 이번 주말에 시간 있어요?\nB: 네, 있어요.\nA: 같이 영화 볼까요?\nB: 좋아요. 토요일 어때요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "True statement '토요일에 영화를 볼 거예요' is not settled: Saturday is only proposed ('어때요?'), also uses -ㄹ 거예요; false '일요일에 만나요' is not clearly false. Use definite statements.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.invitations",
+   "ko": "A: 커피 마실래요?\nB: 좋아요. 제가 살게요.\nA: 아니에요. 제가 살게요.\nB: 그럼 다음에 제가 살게요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "False statement '두 사람은 집에서 만나요' is never mentioned (not definitely false). Replace.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.phone",
+   "ko": "제가 다시 전화할게요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong sentence '제가 다시 전화를 줄게요.' is colloquially used for 'I'll call you (back)' and may be acceptable for g. Replace with definitely different/wrong options.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.phone",
+   "ko": "문자를 받았어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Filler '보냈어요' makes a fully valid, natural sentence ('I sent a text'); only the English gloss rules it out. Use fillers wrong in the sentence itself.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.phone",
+   "ko": "누구세요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Situation 'phone rings ... you answer' equals the s of 여보세요 -> sit question ambiguous. 누구세요 is also mostly 'who is it' at a door.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.phone",
+   "ko": "A: 전화 잘 안 들려요.\nB: 지금 어디예요?\nA: 지하철이에요.\nB: 그럼 문자 보낼게요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "False 'B는 전화를 하고 싶어요' is not clearly false (undetermined). Replace with a definite falsehood.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_11.json",
+   "skill": "k.k6.phone",
+   "ko": "A: 와이파이 비밀번호가 뭐예요?\nB: 메뉴판에 있어요.\nA: 아, 감사합니다.\nB: 네.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Translation of B's final '네.' as 'You're welcome.' is not faithful; it is 'Sure/Yes.'",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.requests",
+   "ko": "한국어로 말해 주세요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze: wrong filler 를 is also acceptable ('한국어를 말해 주세요' = please speak Korean is standard Korean, 말하다 takes an object). Replace with definitely wrong fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.requests",
+   "ko": "들어오세요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "choose: wrong sentence '들어가세요.' (please go in) can be said to invite someone to enter and is acceptable for 'Please come in'; replace with a clearly different meaning.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.requests",
+   "ko": "A: 이 사진 좀 보세요.\nB: 어디예요?\nA: 한국이에요.\nB: 정말 예뻐요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "passage: true statement '사진은 한국에서 찍었어요' is not stated (only that the place is Korea; who took it/where is inferred). Use a statement directly supported.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.restaurant",
+   "ko": "안 맵게 해 주세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose: wrong sentence '안 맵게 줘요.' is colloquially acceptable (give it non-spicy) and close in meaning to g; replace with a definitely wrong sentence.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.restaurant",
+   "ko": "계산은 어디에서 해요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze: wrong filler 로 ('어디로 해요') is plausible/ambiguous Korean (to where); replace with a definitely wrong filler.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.shopping",
+   "ko": "입어 봐도 돼요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "choose: '입어 보면 돼요?' is natural Korean (should I just try it on / will trying it on do?) and close to permission meaning; replace. ('되요' kept as spelling error distractor.)",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.shopping",
+   "ko": "안녕히 계세요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "pool conflict with 안녕히 가세요.: gloss 'Goodbye.' is also a valid gloss of 안녕히 가세요 (meaning/toko/tf ambiguous). Make gloss specific to the leaver.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.transport",
+   "ko": "여기에서 지하철을 타요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "choose: wrong sentence '여기에서 지하철에 타요.' is acceptable standard Korean (X에 타다, same as 버스에 타다) with the same meaning.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.transport",
+   "ko": "이호선으로 갈아타세요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze: wrong filler 에서 ('이호선에서 갈아타세요', transfer at Line 2) is grammatical and arguably acceptable; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.transport",
+   "ko": "A: 공항에 어떻게 가요?\nB: 지하철이 싸요.\nA: 얼마나 걸려요?\nB: 한 시간쯤 걸려요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "passage: true statement uses conditional '가면' (-(으)면), likely above K6 level; also ties duration to subway only by inference. Simplify.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_12.json",
+   "skill": "k.k6.transport",
+   "ko": "A: 기사님, 이 주소로 가 주세요.\nB: 네, 알겠어요.\nA: 얼마나 걸려요?\nB: 이십 분쯤 걸려요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "passage: false statement '손님은 공항에 가요' is not definitely false (the destination is only an address, could be the airport). Replace with a definitely false one.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k6.wants",
+   "ko": "커피를 마시고 싶어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze fillers 로 ('drink it as coffee') and 와 are acceptable readings; 커피로 마시고 싶어요 is natural Korean",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k6.wants",
+   "ko": "지금 집에 가고 싶어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze filler 에서 gives '지금 집에서 가고 싶어요' (want to go from home), which is grammatical Korean, so two options fit",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k6.wants",
+   "ko": "한국어를 더 배우고 싶어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze filler 지 forms the real construction -지 싶다 ('I suspect that...'), so '배우지 싶어요'/'만나지 싶어요' is not definitely wrong (and is above level)",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k6.wants",
+   "ko": "친구를 만나고 싶어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze filler 지 forms the real construction -지 싶다 ('I suspect that...'), so '배우지 싶어요'/'만나지 싶어요' is not definitely wrong (and is above level)",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k6.wants",
+   "ko": "수업은 아홉 시에 시작해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze filler 로 ('아홉 시로 시작해요', starting as of nine) is arguably acceptable; replace with a definitely wrong particle",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k6.wants",
+   "ko": "A: 내일 뭐 하고 싶어요?\nB: 영화를 보고 싶어요.\nA: 몇 시에 볼까요?\nB: 세 시에 봐요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "false statement '영화는 두 시에 시작해요' is not contradicted by the passage (start time never stated, only 'watch at three'); also -(으)ㄹ까요 may be above K6",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "오늘 기분이 좋아 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "그 옷을 입으니까 젊어 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "얼굴이 피곤해 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "이 음식은 매워 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "아이가 아주 건강해 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "그 가방은 비싸 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "오늘은 바빠 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "동생이 슬퍼 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "그 문제는 쉬워 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "이 방은 커 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "그 사람은 나이가 많아 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.appearance",
+   "ko": "이 빵은 부드러워 보여요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler with -게 (e.g. 젊게/피곤하게/쉽게 보여요) is natural, grammatical Korean ('-게 보이다' = looks ...), so two options fit; replace with a definitely wrong -고 form (and remove gibberish like 크서)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_adnominal",
+   "ko": "내일 만날 친구는 학생이에요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "filler 만나는: '내일 만나는 친구' (present adnominal for a scheduled future event) is natural Korean, so it is also acceptable; also 만날는 is gibberish",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_adnominal",
+   "ko": "내일 입을 옷을 샀어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "filler 입는: '내일 입는 옷' (scheduled future) is also acceptable Korean",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_adnominal",
+   "ko": "저는 맛있는 음식을 좋아해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "note adAdj wording '-(으)ㄴ (after a consonant) or -ㄴ (after a vowel)' is garbled; should be -은 after a consonant, -ㄴ after a vowel (edit note text for key adAdj in notes: 'An adjective before a noun takes -은 after a consonant and -ㄴ after a vowel; adjectives ending in 있다/없다 take -는.')",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_adnominal",
+   "ko": "내일 갈 곳",
+   "action": "edit",
+   "severity": "low",
+   "reason": "gloss 'the place (I) will go tomorrow' is ungrammatical English",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "피곤해서 일찍 잤어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 피곤하면 (habitual 'when tired I went to bed early') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "비가 와서 집에 있었어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 오면 (habitual past 'when it rained I stayed home') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "학교에 가서 친구를 만났어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 가면 (habitual) and 가지만 ('went to school but met a friend') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "이 옷은 예쁘지만 비싸요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 예뻐서 ('pretty, so expensive') and 예쁘면 gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "한국어는 어렵지만 재미있어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 어려워서 ('because it is hard it is fun') and 어려우면 gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "문을 여니까 고양이가 있었어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze/choose filler 열면 ('when I opened the door') and 열지만 gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "시간이 있으면 같이 영화를 봐요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 있어서 and 있지만 ('봐요' can be a plain statement) gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "내일 비가 오면 집에 있을 거예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze/choose filler 오지만 ('it will rain but I will stay home') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "한국에 가려고 한국어를 공부해요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 가면 ('if I go to Korea I study Korean') and 가지만 gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "음식은 맛있는데 너무 비싸요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze/choose filler 맛있어서 ('delicious so expensive') and 맛있으면; 맛있려고 is gibberish gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "비가 오는데 우산이 없어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 오지만 ('it rains but I have no umbrella') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "저는 밥을 먹고 커피를 마셔요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 먹지만 and 먹으면 ('when I eat a meal I drink coffee') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "언니는 키가 크고 예뻐요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 커서 ('tall so pretty') and 크지만 ('tall but pretty') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "주말에 영화를 보고 쇼핑도 했어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 봐서 (sequence) and 보지만 gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "돈이 없어서 못 샀어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze/choose filler 없으면 ('if I had no money I couldn't buy', habitual) gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "머리가 아파서 병원에 갔어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 아프지만 ('though my head hurt I went to the hospital') and 아프면 gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "일이 많지만 오늘 일찍 갈 거예요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 많으면 ('if there is much work I will leave early') gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "한국어를 몰라서 어려워요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 모르면 ('if you don't know Korean it is hard') is perfectly natural gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "커피를 마시면 잠이 안 와요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze/choose filler 마시는지 is a not-yet-taught -는지 form gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "공부하려고 도서관에 갔어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "cloze/choose filler 공부하면 (habitual) and 공부하지만 are acceptable gives a grammatical, acceptable sentence (so two options fit); replace with definitely wrong forms",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "비가 와서",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 비가 와서 집에 있었어요.: gloss 'because it rains / since it rained' vs 'It rained, so I stayed home' near-equal for meaning/toko/tf questions; also two glosses joined by slash"
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "저는 한국어를 공부합니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 공부했습니다 ('I studied Korean') is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "저는 밥을 먹습니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 먹었습니다 ('I ate') is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "저는 커피를 마십니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 마셨습니다 is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "저는 학교에 갑니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 갔습니다 is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "저는 지금 집에 있습니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 없습니다 ('I am not at home now') is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "아침 일곱 시에 일어납니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 일어났습니다 is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "동생은 키가 큽니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze/choose filler 컸습니다 is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "지금 비가 옵니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "cloze/choose filler 왔습니다 (borderline with 지금) is a correct Korean sentence (no cue in the blank), so two options fit; replace with an ill-formed form",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "갑니다",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 저는 학교에 갑니다.: same form/meaning ('I go' vs '(I/he/she) goes'), either could answer the other's meaning/toko question"
+  },
+  {
+   "packet": "review_13.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "잘 먹겠습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "gloss 'Thank you for the meal.' is near-equal to 감사합니다 'Thank you.' and is really the post-meal phrase; literal meaning is 'I will eat well' (said before eating)",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "저는 매운 음식을 먹을 수 없어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "wrong filler '먹을 것 없어요' is acceptable Korean ('nothing to eat / no need to eat')",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "오늘은 바빠서 갈 수 없어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "wrong filler '갈 것 없어요' is a real phrase (no need to go)",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "지금 가야 돼요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '가면' gives '지금 가면 돼요' (it's fine if you go now), which is acceptable Korean and fits the blank sentence",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "여기에서 사진을 찍어도 돼요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '-(으)면' gives '...-(으)면 돼요' (just do X / it's fine if X), which is natural, acceptable Korean here",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "이 책을 읽어도 돼요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '-(으)면' gives '...-(으)면 돼요' (just do X / it's fine if X), which is natural, acceptable Korean here",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "지금 먹어도 돼요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '-(으)면' gives '...-(으)면 돼요' (just do X / it's fine if X), which is natural, acceptable Korean here",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "여기에 앉아도 돼요?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '-(으)면' gives '...-(으)면 돼요' (just do X / it's fine if X), which is natural, acceptable Korean here",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_modal",
+   "ko": "내일은 일찍 안 와도 돼요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '오면' gives '일찍 안 오면 돼요' (it's fine if you don't come early), acceptable Korean with nearly the same meaning",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_plain",
+   "ko": "나는 학교에 간다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "wrong filler '갔다' ('나는 학교에 갔다') is correct Korean and the blank has no time cue",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_plain",
+   "ko": "이것은 내 책이다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "wrong filler '이었다' ('이것은 내 책이었다' = this was my book) is correct Korean and the blank has no time cue",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_plain",
+   "ko": "그 영화는 재미없었다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "wrong filler '재미없다' ('그 영화는 재미없다') is correct Korean and the blank has no time cue",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.bridge_plain",
+   "ko": "오늘은 일요일이다.\n나는 친구를 만났다.\n우리는 같이 영화를 봤다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "false statement '우리는 같이 밥을 먹었다.' is not contradicted by the passage (they may also have eaten)",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "청소하느라고 힘들었어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '청소하면 힘들었어요' (cleaning is tiring) and '청소하는데도' are acceptable readings",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "요리하느라고 바빴어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong fillers '요리하면 바빴어요' (habitual) / '요리하려고 바빴어요' are acceptable readings",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "게임하느라고 숙제를 안 했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '게임하려고 숙제를 안 했어요' (didn't do homework in order to play games) is natural Korean; '게임하면' habitual also acceptable",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "늦게까지 책을 읽느라고 늦게 일어났어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '읽으려고' (read late on purpose, so woke late) and '읽으면' (habitual) are acceptable",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "시험 준비하느라고 요즘 바빠요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '시험 준비하려고 요즘 바빠요' (busy in order to prepare) is natural Korean",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "눈이 오는데도 사람들이 많아요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong filler '와서' ('눈이 와서 사람들이 많아요', e.g. snow festival) is acceptable Korean",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "약을 먹었는데도 머리가 아파요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "wrong filler '먹어서' ('약을 먹어서 머리가 아파요', side effect) is very natural Korean",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.cause_contrast",
+   "ko": "시간이 많은데도 숙제를 안 했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "wrong fillers '많아서/많으니까' (plenty of time so procrastinated) are plausible, acceptable Korean",
+   "applied": [
+    "drop cloze",
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_14.json",
+   "skill": "k.k7.indirect_ask",
+   "ko": "엄마가 숙제를 다 했냐고 해요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "cloze wrong fillers '했다고 해요' (Mom says she did it all) and '하라고 해요' (Mom tells me to finish) are both natural Korean; sentence has no disambiguating context",
+   "applied": [
+    "drop cloze"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.indirect_cmd",
+   "ko": "친구가 거기에 가지 말자고 했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor '가지 않자고' is widely said colloquially and is acceptable for g (standard grammar prefers 말자고, but -자 on 않다 is used); not DEFINITELY wrong. Replace with clearly wrong forms.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.indirect_state",
+   "ko": "A: 민수 씨는 왜 안 왔어요?\nB: 감기에 걸려서 오늘은 못 온다고 했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement '민수 씨는 내일 온다고 했어요' is not definitely false (text never says anything about tomorrow); '숙제를 하느라고' uses untaught -느라고; '학교' is not mentioned in passage.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.pretense",
+   "ko": "그는 돈이 많은 척해요.",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 그 사람은 부자인 척해요: 'pretends to have a lot of money' vs 'pretends to be rich' are near-synonyms."
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.pretense",
+   "ko": "슬픈 영화를 보고 안 우는 척했어요.",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 아이가 울지 않는 척했어요: both 'pretended not to cry' (only subject/context differ)."
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.pretense",
+   "ko": "아이가 아프지 않은 척했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Note preNeg says 'V지 않는 척' (and the cloze uses 않는 as a WRONG distractor) but the answer 않은 (adjective) contradicts the note; note is misleading. Use the adjective rule note.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.pretense",
+   "ko": "동생이 화가 안 난 척했어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note preNeg says 안 + verb becomes '안 V는 척', but the entry uses past-form '안 난 척'; note does not match the answer. Use the past-form note.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.proportion",
+   "ko": "이 과자는 먹을수록 더 먹고 싶어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor '먹으면' gives a natural sentence ('If I eat this snack I want more') very close to the answer's meaning; also '먹어서' acceptable. Use clearly wrong forms.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.proportion",
+   "ko": "높이 올라갈수록 추워요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor '올라가면 추워요' ('if you go up it's cold') is fully natural and near-equal in meaning to g.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.proportion",
+   "ko": "연습할수록 더 잘해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor '연습하면 더 잘해요' ('if I practice I do better') is natural and essentially equivalent to g, so choose/cloze have two acceptable answers.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.proportion",
+   "ko": "일찍 갈수록 좋아요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor '일찍 가면 좋아요' ('it's good if you go early') is natural and near-equal in meaning to g.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.proportion",
+   "ko": "많이 쓸수록 더 편해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractors '써서'/'쓰면' ('if I use it a lot it is more comfortable') are natural and near-equal in meaning to g.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.proportion",
+   "ko": "친구는 이야기할수록 더 친해져요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Distractor '이야기하면 더 친해져요' is natural and close in meaning to g.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_15.json",
+   "skill": "k.k7.regret",
+   "ko": "그 옷을 입어 볼 걸 그랬어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Distractor '입어 보' is a truncated stem (gibberish-looking), unlike the other natural-looking wrong forms.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "한국 음식은 먹을수록 맛있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '먹으면' (and choose sentence '한국 음식은 먹으면 맛있어요.') is fully acceptable Korean ('Korean food is tasty when you eat it'), so the cloze/choose are not unique. Replace with a definitely wrong filler.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "오늘 얼굴이 좋아 보여요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '좋게' ('얼굴이 좋게 보여요') is grammatical (-게 보이다 'looks favourable'), so not definitely wrong; same in choose.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "가방이 무거워 보여요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '무겁게' ('가방이 무겁게 보여요') is acceptable Korean (-게 보이다), so the cloze/choose are not unique.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "돈이 있으면 그 가방을 사고 싶어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong fillers '있어서' ('Because I have money I want to buy it') and '있지만' ('Although I have money...') both give natural, acceptable sentences; only the gloss, not the grammar, excludes them.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "한국에 가려고 돈을 모아요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '가면' ('한국에 가면 돈을 모아요', 'If I go to Korea I save money') and '가지만' are grammatical and acceptable Korean; not definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "배가 아파서 학교에 못 갔어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong filler '아프지만' ('배가 아프지만 학교에 못 갔어요') is a grammatical sentence that can be acceptable; replace with a definitely wrong one.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "친구가 내일 못 온다고 했어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Cloze 'b' has no cue other than g: '못 오냐고 했어요' (friend asked 'can't you come tomorrow?') is natural, so two options fit grammatically. Also note rvRep ('statement -다고') gives away the answer. Drop the cloze (choose still works with g).",
+   "applied": [
+    "drop cloze"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "어머니가 일찍 들어오라고 했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "'어머니가 일찍 들어온다고 했어요' (Mom said she'd come home early) and '들어오냐고 했어요' are natural; cloze blank is not unique without g (the verb is 했어요, not 물었어요).",
+   "applied": [
+    "drop cloze"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k7.review_k7",
+   "ko": "동생이 같이 게임을 하자고 했어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "'한다고 했어요', '하냐고 했어요' and '하라고 했어요' are all natural Korean with 했어요; cloze is determined only by g, not by the sentence.",
+   "applied": [
+    "drop cloze"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.causative_compound",
+   "ko": "이 영화는 사람들을 생각하게 해요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong choice '이 영화는 사람들을 생각하게 돼요.' is grammatical and natural ('this movie makes one come to think of people'), nearly the same meaning as g.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.causative_compound",
+   "ko": "우리 아이를 슬프게 하지 마세요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong choice '슬프게 하지 않으십시오' is widely used and an understandable polite negative command, so arguably also acceptable (and formal register differs only slightly); replace with a clearly wrong one.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.causative_compound",
+   "ko": "회사에서는 직원들이 일찍 퇴근하게 해 줘요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note ccReq says 'request ending', but this is a statement ('The company lets...'), so the note is inaccurate for this entry.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.honorific_obj",
+   "ko": "전화드리다",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "Spacing: standard is '전화 드리다' (전화를 드리다), '전화드리다' is not a standard single word; not certain it is correct 맞춤법."
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.honorific_obj",
+   "ko": "사장님께 전화드렸어요.",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "Same spacing problem: should be '전화 드렸어요'; ko cannot be patched via edit fields."
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.honorific_obj",
+   "ko": "사장님을 공항에서 뵀어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note hoPart ('meeting verbs take the ordinary object particle') gives away the cloze answer 을.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_16.json",
+   "skill": "k.k8.honorific_obj",
+   "ko": "찾아뵙다",
+   "action": "remove",
+   "severity": "low",
+   "reason": "conflicts with 뵙다: gloss 'to visit (a respected person)' vs 'to meet, to see (a respected person)' are near-equal; in a true/false item '찾아뵙다 means to meet/see' is arguably true. (The sentence 찾아뵐 거예요 still teaches the word.)"
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.honorific_subj",
+   "ko": "어제 사장님께서 회사에 오셨어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'came to the company' is awkward/redundant ('company president ... to the company').",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.honorific_subj",
+   "ko": "사장님, 지금 시간 있으세요?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "'Sir' loses the title 사장님 (president/boss).",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.modesty",
+   "ko": "제",
+   "action": "edit",
+   "severity": "low",
+   "reason": "제 is the form of 저 before 가 (제가 = 'I'), so for the toko question 'I, me (humble)' both 저 and 제 could be defended; gloss should make clear 제 is the possessive form.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.modesty",
+   "ko": "한 말씀 드리겠습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong choice '한 말씀 하시겠습니다.' has no subject and is perfectly good Korean (MC: '회장님께서 한 말씀 하시겠습니다' = the chairman will say a few words), so it is not definitely wrong. '한 말씀 주시겠습니다.' is also odd rather than clearly wrong. Drop the choose part.",
+   "applied": [
+    "drop choose"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.modesty",
+   "ko": "저희 회사를 방문해 주셔서 감사합니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong filler '그들의' (thank you for visiting their company) is grammatical and conceivable; replace with a filler that is clearly wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.modesty",
+   "ko": "미리 말씀드리지 못해서 죄송합니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong choice '미리 말씀하시지 못해서 죄송합니다.' (sorry that you could not tell me in advance) is grammatical, only odd; replace.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.modesty",
+   "ko": "부끄럽지만 노래를 한 곡 부르겠습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong choices without 제가 are acceptable in other contexts (an MC: '부르시겠습니다', or inviting someone: '부르십시오'); make the self-subject explicit so they are definitely wrong.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_affix",
+   "ko": "이 책은 요즘 잘 팔려요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze filler '팔아요' is acceptable: 이 책은 can be an object topic ('this book, (we) sell well these days').",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_affix",
+   "ko": "모기에게 팔을 물렸어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Fillers '잡혔어요' and '찍혔어요' are grammatical retained-object passives with 에게; only semantically odd. Use clearly wrong fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_affix",
+   "ko": "우리 반 대표로 민수가 뽑혔어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Filler '뽑았어요' is possible with omitted object (Minsu picked someone as rep) and '잡혔어요' is also conceivable; use definitely wrong fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_affix",
+   "ko": "그 가수는 '국민 가수'라고 불려요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Filler '불러요' is acceptable with 그 가수는 as object topic ('they call that singer the nation's singer').",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_affix",
+   "ko": "이 단어는 일상에서 자주 쓰여요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Filler '쓰세요' is perfectly natural ('you often use this word in everyday life', 이 단어는 as object topic) so two options fit.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_compound",
+   "ko": "이 의자는 나무로 만들어졌어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "All three fillers (만드세요, 만들게요, 만들까요) are acceptable with 이 의자는 as an object topic ('make/I'll make/shall we make this chair out of wood'), so the cloze has several valid answers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.passive_compound",
+   "ko": "요즘 날씨가 점점 추워져요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "'추울까요' (will it be increasingly cold?) is grammatical and '추웠어요' is borderline; the only definite-wrong filler is 추워지세요. Replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.review_k8",
+   "ko": "어머니께 편지를 써 드렸어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Filler '주셨어요' is acceptable with omitted subject (someone honored wrote a letter to Mother), so it is not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_17.json",
+   "skill": "k.k8.review_k8",
+   "ko": "맑은 날에는 이 창문에서 한강이 보여요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Filler '보이게 해요' is a grammatical causative ('(someone) makes the Han River visible'), not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_etiquette",
+   "ko": "먼저 퇴근하겠습니다. 수고하십시오.",
+   "action": "remove",
+   "severity": "high",
+   "reason": "Telling senior colleagues 수고하십시오/수고하세요 is widely considered inappropriate (it is said to juniors; to superiors one says e.g. 먼저 퇴근하겠습니다/내일 뵙겠습니다). The situation (seniors still working) makes this a wrong model. Also two sentences in one expression."
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_etiquette",
+   "ko": "사장님, 거래처 손님이 오셨습니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Cloze distractor 왔습니다 is also acceptable polite Korean (손님이 왔습니다 is natural and commonly said even to a president), so two options fit.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_etiquette",
+   "ko": "저희 대표님을 소개해 드리겠습니다.",
+   "action": "remove",
+   "severity": "low",
+   "reason": "Honorific 대표님 attached to one's own company head when speaking to an outside client; contradicts the spirit of the etHon note (do not honor your own side to outsiders) and is debated in etiquette teaching; not certain it is the intended standard model."
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_etiquette",
+   "ko": "신입 사원",
+   "action": "remove",
+   "severity": "low",
+   "reason": "conflicts with 사원: 'staff member; junior employee' vs 'new employee' are near-equal, so a tf/meaning question for 사원 could also be answered by 'new employee'."
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_etiquette",
+   "ko": "회의실까지 안내해 드리겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Distractor 주겠습니다 is grammatical and only a register issue; make all wrong fillers definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_email",
+   "ko": "담당자께 메일을 전달해 드리겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Distractor 주겠습니다 is grammatical (only less polite), so not definitely wrong; 주었습니다 also differs only by tense/gloss.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_email",
+   "ko": "메일 잘 받았습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss adds 'thank you' that ko does not contain.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_meeting",
+   "ko": "회의 내용은 회의록으로 정리하여 공유하겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note meetHon (opposing an idea, 께서 ... -시-) does not relate to this sentence and misleads; remove the note.",
+   "applied": [
+    "note cleared"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_meeting",
+   "ko": "좋은 의견 감사합니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'suggestion' does not match 의견 (opinion/input).",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_meeting",
+   "ko": "A: 먼저 신제품 출시 일정에 대한 의견을 말씀해 주십시오.\nB: 저는 다음 달 출시가 무리라고 생각합니다. 테스트가 아직 끝나지 않았습니다.\nA: 그렇다면 한 달 늦추는 방안은 어떻습니까?\nB: 네, 그 방안에 찬성합니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Translation 'is too much' is not natural for 무리다.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_negotiate",
+   "ko": "납기를 일주일만 앞당길 수 있습니까?",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "Asks the other company 'can you' without honorific (앞당기실 수 있습니까 / 앞당겨 주실 수 있습니까 expected); inconsistent with the skill's own 주실 수 있겠습니까 and the business honorific lesson."
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_negotiate",
+   "ko": "조금만 더 양보해 주실 수 있겠습니까?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'give a little more' is vague and does not convey concession.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_negotiate",
+   "ko": "계약 조건은 양측이 모두 동의해야 확정됩니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Distractor 동의해도 is grammatical and only semantically odd, borderline; use clearly wrong fillers.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_18.json",
+   "skill": "k.k9.biz_negotiate",
+   "ko": "김 이사님께,\n보내 주신 제안서를 잘 검토했습니다.\n전반적으로 만족스러우나 결제 조건은 조정이 필요합니다.\n다음 주 중에 만나 협의할 수 있을까요?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Final question has no honorific toward 김 이사님 (should be e.g. 만나 뵙고 협의드릴 수 있을까요?); passage statements and translation stay valid, so only the register is flagged. Suggest drop of read only if text cannot be changed.",
+   "applied": [
+    "drop read"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_phone",
+   "ko": "김 과장님 계십니까?",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractor 있으십니까 is a widely heard (if prescriptively nonstandard) way to ask whether someone is in, so it is not DEFINITELY wrong; also note phoneHon states the answer (use 계시다). Replace the distractor with a clearly ungrammatical one and drop the giveaway note.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_phone",
+   "ko": "내선 312번으로 연결해 드리겠습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractor 을: '내선 312번을 연결해 드리겠습니다' is natural, acceptable Korean (connect extension 312), so two options fit. Replace with 이 (subject, clearly wrong).",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_phone",
+   "ko": "제가 대신 전달해 드려도 되겠습니까?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note phoneHon ('humble -드리- verbs for your own actions') directly gives away the cloze answer 드려도.",
+   "applied": []
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_phone",
+   "ko": "죄송하지만 지금 자리에 안 계십니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'he or she is not at the desk' is awkward English; also should read as one natural sentence.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_report",
+   "ko": "성과",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Gloss 'results; achievement' is near-equal to 목표 달성 'achieving a goal' (synonym conflict, toko/meaning questions could cross-answer). Narrow the gloss to 'result/outcome'.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_report",
+   "ko": "현재 전체 작업의 약 80%가 진행되었습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Gloss says 'has been completed' but 진행되었습니다 means 'has progressed / has been carried out', not completed. Note repPass also gives away the passive answer (low).",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_report",
+   "ko": "이번 주 안으로 보완해서 다시 보고드리겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note repHon literally names the answer (보고드리다) for the cloze.",
+   "applied": [
+    "note cleared"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_schedule",
+   "ko": "약속",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Gloss 'appointment; engagement' is near-equal to 선약 'prior engagement' (conflict pair). Change 약속 gloss to avoid 'engagement'.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_schedule",
+   "ko": "일정이 겹쳐서 참석하기 어렵습니다.",
+   "action": "remove",
+   "severity": "medium",
+   "reason": "conflicts with 그날은 선약이 있어서 어렵겠습니다.: both decline because of a schedule conflict ('my schedule overlaps, difficult' vs 'prior engagement that day, difficult'); near-synonymous glosses."
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_schedule",
+   "ko": "자료는 금요일까지 제출해 주시기 바랍니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Cloze distractor 마다 gives '금요일마다 제출해 주시기 바랍니다' (submit every Friday), fully natural Korean; only the gloss rules it out. Replace with a clearly wrong particle.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_schedule",
+   "ko": "미리 말씀드리지 못해 죄송합니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note schedHon ('apologize for your own actions with humble 드리다 verbs') gives away the answer 말씀드리지.",
+   "applied": []
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_schedule",
+   "ko": "회의를 다음 주 화요일로 연기하겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Cloze distractor 연장하겠습니다 can mean pushing a date later (e.g. 마감을 화요일로 연장) so it is not definitely wrong; replace with 연결하겠습니다.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_stats",
+   "ko": "월별 판매량의 변화를 그래프로 정리했습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractor 그래프에 ('변화를 그래프에 정리했습니다', organized onto a graph) is natural, like 표에 정리하다, so two options fit. Replace with 그래프의.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_stats",
+   "ko": "시장 점유율이 20%에서 25%로 높아졌습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss adds 'Our' which is not in the Korean (same register/meaning needed); note statPart ('percentages end in a vowel sound') gives away 로 vs 으로.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_stats",
+   "ko": "이번 조사에서 응답자의 60%가 제품에 만족했습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note statPart ('percentages end in a vowel sound when choosing a particle') gives away 가 vs 이.",
+   "applied": []
+  },
+  {
+   "packet": "review_19.json",
+   "skill": "k.k9.biz_stats",
+   "ko": "지난달보다 약 3% 하락했습니다.",
+   "action": "remove",
+   "severity": "low",
+   "reason": "conflicts with 신규 고객이 전월 대비 5% 감소했습니다.: glosses 'It fell by about 3 percent compared with last month' vs 'New customers decreased by 5 percent compared with last month' are near-identical in meaning; this one also has no subject."
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "부장님께 보고드린 후에 연락드리겠습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong fillers not definitely wrong: '보고하신' (부장님께 보고하신 후에) is a grammatical honorific if the omitted subject is read as someone else, and '보고해 준' (reported for someone) is acceptable Korean. Replace with fillers that are ungrammatical here.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "이번 분기 매출은 목표를 10% 초과했습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '초과합니다' (present tense) is acceptable as a news/historical present, so not definitely wrong. Replace with a passive form that clashes with the object particle 를.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "고객님께 견적서를 보내 드렸습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '주었습니다' (보내 주었습니다) is acceptable Korean with the same meaning as the answer, only less humble; not definitely wrong.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "이메일에 파일을 첨부하는 것을 잊었습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler '참조하는' (forgot to refer to the file in the email) is grammatical and plausible; '첨가하는' is also borderline (add to). Replace with definitely wrong verbs.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "A: 대리님, 내일 출장 일정을 확인해 주시겠습니까?\nB: 네, 오전 아홉 시 비행기로 부산에 가십니다.\nA: 거래처 미팅은 몇 시입니까?\nB: 오후 두 시이고, 회의 자료는 메일로 보내 드렸습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement 'A는 내일 서울에서 회의를 합니다.' is not definitely false: the passage never states where the meeting is (a Busan trip implies Busan but is not said). Replace with a statement the text clearly contradicts.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "오늘 중으로 보내 드리겠습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'within today' is not natural English.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k9.review_k9",
+   "ko": "결재 부탁드립니다.",
+   "action": "remove",
+   "severity": "low",
+   "reason": "conflicts with 결재: shares the key word; as a toko/tf distractor against the gloss 'approval' it is near-ambiguous (both concern 결재/approval). Only if a pair must go; otherwise keep."
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k10.culture_deep",
+   "ko": "눈치가 빠른 사람은 말하지 않아도 상대방의 기분을 알아챕니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note 'custom' (customs described in formal style, pattern 'when you do A, you do B') does not fit this sentence, which is not a custom and has no such pattern; misleading note.",
+   "applied": [
+    "note cleared"
+   ]
+  },
+  {
+   "packet": "review_20.json",
+   "skill": "k.k10.culture_deep",
+   "ko": "어른께 물건을 드릴 때는 두 손으로 드립니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze: wrong filler '으로' (어른으로 물건을 드릴 때는, 'as an adult') parses as grammatical; '를' is a spelling error type (어른를). Use clearly wrong particles. Choose: third wrong '두 손으로 줍니다' is acceptable Korean for g (just plainer register), so not definitely wrong.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.logic_debate",
+   "ko": "아무리 바빠도 가족에게 안부 전화를 드려야 합니다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Wrong filler/choose option '만약 바빠도 ...' is acceptable Korean ('even if you are busy', 만약 + -아도), so cloze has two valid answers and choose has a second acceptable sentence. Replace 만약 with a definitely wrong filler.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.logic_debate",
+   "ko": "운동을 너무 많이 하면 도움이 되기는커녕 오히려 해가 될 수 있습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Gloss 'can actually do harm, let alone help' is wrong English ('let alone' does not express 되기는커녕 = far from helping).",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.logic_debate",
+   "ko": "저는 이 계획에 반대합니다, 왜냐하면 비용이 너무 많이 들기 때문입니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "choose wrong sentence '이 계획을 반대합니다' is widely used and arguably acceptable (반대하다 + 을), so not definitely wrong. Replace with an unambiguous wrong sentence.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.media_article",
+   "ko": "청소년의 스마트폰 사용 시간이 해마다 늘어나는 추세이다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong sentence '늘어난 추세이다' is not definitely wrong (past-form modifier before 추세 occurs in news Korean), so it could be an acceptable alternative.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.media_article",
+   "ko": "정부는 세금 인상에 앞서 국민을 설득해야 한다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong sentence with '뒤서' is gibberish (not a real word), not natural-looking. Replace with a natural but clearly wrong/different-meaning sentence.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.media_article",
+   "ko": "수출 호조에 힘입어 올해 경제 성장률이 상향 조정되었다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'growth forecast' does not match 성장률 (growth rate); the Korean has no 전망/forecast word.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.media_headline",
+   "ko": "여야, 예산안 합의",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Note 'commaClause' says the comma joins two compressed clauses (cause then result), but here the comma only replaces the subject particle (여야 = subject, 예산안 합의 = predicate), so the note is inaccurate for this entry.",
+   "applied": [
+    "note key"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.media_headline",
+   "ko": "환율 급등, 수입 물가 부담",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Gloss 'burdening import prices' is a word-for-word fragment and unnatural; meaning is that the surge adds pressure on import prices / raises import cost burden.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_21.json",
+   "skill": "k.k10.proverbs_life",
+   "ko": "되로 주고 말로 받는다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'You give a little and get back much more, usually in trouble.' is awkward/ungrammatical fragment ('usually in trouble').",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "packet": "review_22.json",
+   "skill": "k.k10.review_k10",
+   "ko": "비록 결과는 좋지 않았지만 최선을 다했습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Wrong filler 결코 is not definitely wrong: the clause already contains a negative (좋지 않았지만), and '결코 결과는 좋지 않았지만' is acceptable-sounding Korean. Replace with 반드시 (needs an affirmative/obligation, clearly wrong here) in both cloze and choose.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "packet": "review_22.json",
+   "skill": "k.k10.review_k10",
+   "ko": "아무리 어려운 상황이라도 포기하지 맙시다.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Wrong filler 만약 is also acceptable: '만약 어려운 상황이라도 포기하지 맙시다' is natural Korean (만약 ~(이)라도 = even if), so two options fit. Replace with 마치.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k1.words3",
+   "ko": "독수리",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Gloss 'eagle (strictly, a vulture)' is awkward and self-contradicting for a meaning question. 독수리 is the cinereous vulture, though English speakers often render it 'eagle'.",
+   "applied": [
+    "g"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k2.greetings",
+   "ko": "선생님께 인사해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Choose wrong option '선생님와 인사해요.' is a pure spelling error (the right allomorph is 과). Replace it with a plausible learner error that is definitely wrong for g: the subject-honorific 께서, which makes the teacher the one greeting.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k2.helpme",
+   "ko": "한국어를 잘 못해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "The situation (clerk speaks fast, you cannot keep up) is a listening-comprehension problem and overlaps with 이해가 안 돼요. The gloss is about speaking ability.",
+   "applied": [
+    "s"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k2.introduce",
+   "ko": "저는 일본에서 왔어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze wrong options 를 and 와 are wrong allomorphs after consonant-final 일본 (they would be 을/과), so they fail only by spelling. Replace with 에 (classic 'to' vs 'from' error, wrong for 'come from') and 으로 (direction 'to').",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k2.meeting",
+   "ko": "명함을 주세요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong option 를 is wrong only by allomorph after consonant-final 명함 (a spelling error, not a grammar lesson). Replace it with 의, which is plainly wrong grammatically.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k2.meeting",
+   "ko": "친구를 소개해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong option 이 after vowel-final 친구 is a misspelled allomorph (the subject particle would be 가). Replace it with 에서, a real particle that is definitely wrong here.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k3.ages",
+   "ko": "저는 친구보다 한 살 많아요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Note 'compare' still states that the particle means 'than', which gives the cloze answer away, so drop the note. Wrong option 이 after vowel-final 친구 is a misspelled allomorph, and 으로 should be 로 after a vowel. Replace both with definitely wrong particles (에게, 에).",
+   "applied": [
+    "drop note",
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k3.family",
+   "ko": "동생이 한 명 있어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong option 원 (won, currency) is an unrelated word dropped in, and '원 명' is gibberish. Replace it with Sino-Korean 이, which is the wrong number system.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k3.family2",
+   "ko": "남편은 의사예요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Note text is the old inaccurate version ('longer' form after a consonant, 'shorter' after a vowel). 은 and 는 are both one syllable, so this misleads. The k.k3.family entry with the same note key already has the corrected wording. Use that text.",
+   "applied": [
+    "note text"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k3.family2",
+   "ko": "삼촌은 서울에 있어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong option 와 after consonant-final 서울 is a misspelled allomorph (would be 과). Use 과 so the option is wrong by meaning ('with Seoul') rather than by spelling.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_01.json",
+   "skill": "k.k2.partings",
+   "ko": "친구에게 연락해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Wrong option 이 after vowel-final 친구 is a misspelled allomorph. Wrong option 를 ('친구를 연락해요') is heard colloquially, so it is not definitely wrong. Replace both with plainly wrong 에 and 의 (에 vs 에게 is a real look-alike error).",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 학교에 안 가요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are unrelated/implausible (a stem and a particle in an adverb slot). Use the real contrast 못, the 안/않 spelling confusion, and a plain adverb.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 오늘 못 가요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are implausible fillers; replace with the 안 contrast, the 않 error and a plain adverb (all excluded by g).",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "우유를 안 마셔요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Verb slot filled with 못/않/없 (bare negators, not verbs) - gives the answer away by elimination and teaches nothing. Use look-alike/unrelated verbs that are definitely wrong with 우유.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "한국어를 못 읽어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Verb slot filled with 못/않/없 (the blank even follows 못 and repeats it). Replace with real verbs that do not fit 'read Korean'.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 고기를 안 먹어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are implausible; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 김치를 못 먹어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Verb slot filled with 못/않/없 (repeats 못). Replace with real verbs that do not mean 'eat'.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 아침을 안 먹어요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Verb slot filled with 못/않/없. Replace with real verbs that are definitely wrong for 'breakfast'.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "친구가 오늘 못 와요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are implausible; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "아기는 못 걸어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are implausible; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 차를 안 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are implausible; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 한국어를 못 써요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Verb slot filled with 못/않/없 (repeats 못). Replace with real verbs.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 자전거를 못 타요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Cloze distractors 없 and 를 are implausible; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "비가 안 와요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Verb slot filled with 못/않/없. Replace with real verbs that do not fit 'rain comes'.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "오늘은 안 추워요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "없 is not a plausible filler; replace with a plain adverb that the gloss excludes.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "이 책은 안 비싸요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "없 is not a plausible filler; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "저는 안 피곤해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "없 is not a plausible filler; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "오늘은 안 바빠요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "없 is not a plausible filler; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "이 빵은 안 맛있어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "없 is not a plausible filler; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.negation",
+   "ko": "방이 안 깨끗해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "없 is not a plausible filler; replace.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.objects",
+   "ko": "A: 무엇을 먹어요?\nB: 빵을 먹어요. 그리고 우유를 마셔요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "All three false statements (커피/밥/주스) are merely unstated, not contradicted by the text (B may also drink coffee or eat rice). Replace with statements the text contradicts.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.daily",
+   "ko": "저는 일찍 일어나요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Noun+을 distractors (밤을/낮을/저녁을) are an odd set; 늦게 is the natural look-alike adverb error that teaches the contrast and is excluded by g.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_02.json",
+   "skill": "k.k4.daily",
+   "ko": "저는 늦게 자요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Same: replace one noun+을 distractor with the natural opposite adverb 일찍.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_03.json",
+   "skill": "k.k5.weekdays",
+   "ko": "이번 주 토요일에 뭐 해요?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Filler 어디 is borderline (colloquially 어디(서) 해요), and was judged borderline in the sibling birthday entry. Replace with a clearly wrong 어느.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_03.json",
+   "skill": "k.k6.directions",
+   "ko": "길 건너편에 카페가 있어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Filler 건너편의 gives '길 건너편의 카페가 있어요', which is grammatical and natural, so it is not definitely wrong. Replace with 에서 (wrong with static 있다).",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_03.json",
+   "skill": "k.k6.directions",
+   "ko": "A: 실례합니다. 지하철역이 어디예요?\nB: 이 길로 쭉 가세요.\nA: 멀어요?\nB: 아니요, 걸어서 오 분 걸려요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "False statement '두 사람은 버스를 타고 가요' is not really addressed by the text (the two are not travelling together). Use a statement the text contradicts.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_03.json",
+   "skill": "k.k6.hospital",
+   "ko": "A: 어제부터 기침이 나요.\nB: 열도 있어요?\nA: 아니요, 열은 없어요.\nB: 그럼 약국에서 약을 사세요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "False statement 'B는 병원에 가요' is merely unmentioned (B only advises). Replace with a contradicted statement.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_03.json",
+   "skill": "k.k6.phone",
+   "ko": "A: 와이파이 비밀번호가 뭐예요?\nB: 메뉴판에 있어요.\nA: 아, 감사합니다.\nB: 네.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "False statement '두 사람은 병원에 있어요' is never addressed (only implied unlikely). Replace with a contradicted statement.",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_04.json",
+   "skill": "k.k6.transport",
+   "ko": "이호선으로 갈아타세요.",
+   "action": "edit",
+   "severity": "high",
+   "reason": "Filler 을 is acceptable: 갈아타다 takes an object ('이호선을 갈아타세요' is common). Replace with definitely wrong fillers; 과 is the correct comitative after a final consonant, so it is a plausible particle error.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_04.json",
+   "skill": "k.k6.wants",
+   "ko": "A: 내일 뭐 하고 싶어요?\nB: 영화를 보고 싶어요.\nA: 몇 시에 볼까요?\nB: 세 시에 봐요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "False statement 'A는 영화를 보고 싶지 않아요' is not definitely contradicted: A only asks B's wish and then asks when to watch, and A's own wish is never stated. Replace with a statement the text contradicts (the plan is for tomorrow).",
+   "applied": [
+    "read"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_04.json",
+   "skill": "k.k7.bridge_adnominal",
+   "ko": "저는 맛있는 음식을 좋아해요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "The note text is still garbled: '-(으)ㄴ (after a consonant) or -ㄴ (after a vowel)'. Correct note text for key adAdj: 'An adjective before a noun takes -은 after a consonant and -ㄴ after a vowel; adjectives ending in 있다/없다 take -는.' Entry options are correct.",
+   "applied": []
+  },
+  {
+   "round": 2,
+   "packet": "vreview_04.json",
+   "skill": "k.k6.wants",
+   "ko": "커피를 마시고 싶어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Choose wrong sentence '커피를 마시고 싶어서요.' is a grammatical fragment ('because I want to drink coffee') that works as a short answer, so it is only weakly wrong. Optional: replace with a clearly wrong form. Cloze is fine.",
+   "applied": [
+    "choose"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_05.json",
+   "skill": "k.k7.bridge_connect",
+   "ko": "공부하려고 도서관에 갔어요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "'공부하게' (-게 'so that') is a marginally acceptable purpose clause ('went to the library so that I could study'), so it may also fit; replace with a clearly ungrammatical modifier form.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_05.json",
+   "skill": "k.k7.bridge_formal",
+   "ko": "저는 지금 집에 있습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "'있입니다' is gibberish no learner would produce (and 잇습니다 is a pure typo); replace with realistic ㅂ니다/으 attachment errors parallel to 먹니다/먹으습니다.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_06.json",
+   "skill": "k.k8.passive_affix",
+   "ko": "그 가수는 '국민 가수'라고 불려요.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor 쓰여요 (and 팔려요 figuratively) can be read as 'is written/sold as the nation's singer', so not definitely wrong. Replace with clearly wrong passives.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_06.json",
+   "skill": "k.k8.modesty",
+   "ko": "저희 회사를 방문해 주셔서 감사합니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Business rule: distractor 너희 is blunt/rude, not an educational business error. Replace with a polite but wrong referent.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_06.json",
+   "skill": "k.k7.review_k7",
+   "ko": "배가 아파서 학교에 못 갔어요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "배가 아프면 학교에 못 갔어요 can mean 'whenever my stomach hurt, I couldn't go' (habitual past), so it is not definitely wrong; replace with a clearly wrong ending.",
+   "applied": [
+    "cloze",
+    "choose"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_06.json",
+   "skill": "k.k8.causative_compound",
+   "ko": "회사에서는 직원들이 일찍 퇴근하게 해 줘요.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note ccGe says the person made to act is marked with an object or dative particle, but this sentence marks 직원들 with 이; note contradicts the sentence. Drop the note.",
+   "applied": []
+  },
+  {
+   "round": 2,
+   "packet": "vreview_07.json",
+   "skill": "k.k9.biz_phone",
+   "ko": "김 과장님 계십니까?",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note phoneHon still states the answer (use 계시다, not 있다) for the cloze; drop it.",
+   "applied": [
+    "drop note"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_07.json",
+   "skill": "k.k9.biz_report",
+   "ko": "현재 전체 작업의 약 80%가 진행되었습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note repPass still gives away the passive answer; drop it.",
+   "applied": [
+    "drop note"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_07.json",
+   "skill": "k.k9.biz_report",
+   "ko": "이번 주 안으로 보완해서 다시 보고드리겠습니다.",
+   "action": "edit",
+   "severity": "medium",
+   "reason": "Distractor 보고해 주겠습니다 is only less humble and acceptable for the gloss, so it is not definitely wrong. Replace with the honorific misuse 보고하시겠습니다.",
+   "applied": [
+    "cloze"
+   ]
+  },
+  {
+   "round": 2,
+   "packet": "vreview_07.json",
+   "skill": "k.k9.biz_stats",
+   "ko": "시장 점유율이 20%에서 25%로 높아졌습니다.",
+   "action": "edit",
+   "severity": "low",
+   "reason": "Note statPart ('percentages end in a vowel sound when choosing a particle') gives away 로 vs 으로 and the comparison part is irrelevant; drop it.",
+   "applied": [
+    "drop note"
+   ]
+  }
+ ],
+ "unmatched": []
+}
