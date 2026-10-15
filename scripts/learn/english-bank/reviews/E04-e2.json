@@ -1,0 +1,35 @@
+{
+ "packet": "E04-e2",
+ "reviewer": "AI (Claude), independent of the author; not a native-speaker or teacher review",
+ "scope": {
+  "items": 100,
+  "questionsRead": 280,
+  "notes": "All 100 items (50 noun, 50 verb) and all 280 generated questions in dump.mjs output were read. No wrong answer keys and no second correct option were found in any pick/cloze/enko/koen question; the defects are one broken spelling distractor set, level mismatch of third-person -s, a few semantically leaky cloze distractors, exact-format duplicates, and narrow topic/distractor variety. No std tags are used (honest for grade 2). Content is child-safe."
+ },
+ "patches": [
+  {"item": "2581c5e1", "op": "set", "set": {"sp": ["shou", "shue", "sho"]}, "why": "The spelling distractors for 'shoe' are copy-pasted misspellings of 'umbrella' (umbrela, umbralla, unbrella). The spelling question is trivially solved (only option not resembling umbrella) and teaches nothing about 'shoe'.", "severity": "major"},
+  {"item": "c7b7a64f", "op": "set", "set": {"sp": ["rin", "runn", "ron"]}, "why": "'ran' is a real, correct English form of run (past tense), so it is a defensible alternative in 'spelling of 달리다'; 'rum' is also a real word. Use non-words.", "severity": "minor"},
+  {"item": "29dde725", "op": "set", "set": {"z": ["sing", "read", "dance"]}, "why": "'The cat can wash a mouse' is grammatical and can be read as plausible; use verbs that clearly do not fit.", "severity": "minor"},
+  {"item": "abe03793", "op": "set", "set": {"z": ["read", "sing", "sleep"]}, "why": "'Monkeys eat trees' is arguable (monkeys do eat parts of trees); replace 'eat' with a verb that cannot take 'trees' naturally.", "severity": "minor"},
+  {"item": "297e18a5", "op": "set", "set": {"z": ["write", "cook", "read"]}, "why": "'Fish fly in the sea' is arguable (flying fish); remove 'fly' from the cloze distractors.", "severity": "minor"},
+  {"item": "ccef5d6d", "op": "set", "set": {"ex": "We play at the park.", "exko": "우리는 공원에서 놀아요."}, "why": "Gloss is 놀다 but the example is 'play soccer' translated as 축구를 해요, so the gloss and example disagree and the example does not show the taught meaning.", "severity": "minor"},
+  {"item": "1f2b6193", "op": "set", "set": {"ex": "Babies sleep a lot.", "exko": "아기들은 잠을 많이 자요."}, "why": "Example 'I sleep in my bed.' is identical to the example of the noun 'bed' (same sentence tested twice across the skill pair).", "severity": "minor"},
+  {"item": "4988ba52", "op": "drop", "why": "Exact duplicate of the spelling question of item 'rabbit' (same prompt/answer/distractors), only moved to a standalone item.", "severity": "minor"},
+  {"item": "d71762d3", "op": "drop", "why": "Duplicate of the spelling question of item 'climb' (same distractors); not a new learning item.", "severity": "minor"},
+  {"item": "d382695f", "op": "drop", "why": "Duplicate of the generated ko-to-en question of item 'umbrella' ('우산' -> umbrella).", "severity": "minor"},
+  {"item": "84c32106", "op": "set", "set": {"rule": "한 마리(하나)가 주어일 때는 동사 끝에 -s를 붙여요."}, "why": "Third-person singular -s is above grade 2 and the rule uses the term 3인칭 단수, unsuitable for the level. Rule simplified; consider replacing the item at E3 or later.", "severity": "major"},
+  {"item": "dea870be", "op": "drop", "why": "Second item for the same above-level -s agreement point (He eats), same concept as 'The dog runs fast'; the rule 'He 뒤에는 -s' is also over-narrow (she/it).", "severity": "major"}
+ ],
+ "ok": 88,
+ "criteria": [
+  "Spelling distractors (sp) must be misspellings of THIS word; check they are not pasted from another item and are not real words or inflected forms of it (ran, rite, hose, bat).",
+  "A distractor in z must be clearly wrong in meaning AND grammar for the example, including odd readings (wash a mouse, eat trees, fish fly); test each z against the blank by reading it aloud.",
+  "Do not teach grammar above the level: third-person -s, 3인칭 단수, plural -es, There is/are belong to E3-E4 or later; at E2 keep to words, a/an, this/that, simple plurals and imperatives.",
+  "Do not add standalone m items that restate a w item's own question (same spelling check, same ko to en) with the same options; they are duplicates, not new items. Concept m items should add something (category, odd-one-out, context).",
+  "Do not reuse the same example sentence for two items (sleep/bed, fly/bird, swim/fish); each item needs its own context.",
+  "Keep the gloss and the example consistent: if ko is 놀다, the example must show 놀다, not another Korean verb.",
+  "Vary topics: this packet is only animals, school objects and basic action verbs; later packets should add family, food, body, colours, numbers, weather, places, greetings.",
+  "Keep example sentences to 3-6 words at E2; several here are 7-8 words (umbrella, clock, pencil).",
+  "Reuse of the same 6-8 object words (hat, spoon, cup, pencil, book, chair) as z makes the distractors predictable; draw z from a wider set."
+ ]
+}

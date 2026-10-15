@@ -1,0 +1,398 @@
+{
+ "packet": "M06-m2-perf",
+ "reviewer": "AI (Claude), independent of the author; not a native-speaker or teacher review",
+ "scope": {
+  "items": 115,
+  "questionsRead": 208,
+  "notes": "Read SPEC, the pool JSON (115 items: 46 s, 56 m, 7 r, 3 d, 3 w) and the full dump (208 expanded questions; dump collapses colliding ids). Content of the English is largely sound: every s-item distractor checked and wrong; cloze sets have one answer. BLOCKER (infrastructure, not patchable by item id): question id = sha1(skill|kind|q) so m-items with the same stem collide: 'Which sentence is correct?' x4 (all id 0065abb9: last-night film, She's already left, snowy since Tuesday, Have you ever ridden a camel) and 'Which sentence has a mistake?' x2 (id 67da9294: Rome last year, never rode a horse). Duplicate question ids; the dump shows them under one header. Author must give each a unique stem, e.g. 'Which sentence is correct? (film, last night)' / 'Which sentence uses the short form 's correctly?' / 'Which sentence about Tuesday is correct?' / 'Which question about experience is correct?' / 'Which sentence has a mistake in the time expression?' / '... in the verb form?'; or builder must hash q+options. MAJOR (systemic): the cloze/pick hint 2 is the Korean rule text, and in ~25 s-items the rule states the answer outright (e.g. 'eat의 과거분사는 eaten이고', 'draw-drew-drawn', 'know의 과거분사는 known', 'has gone to'), so the hint gives the cloze answer away. Needs separate hint wording that does not name the key form (rule is fine for the explanation). Also: reading-question answer positions follow a rotating pattern (a descends by one each question, e.g. 1,0,3,2,1 / 3,2,1,0 / 0,3,2,1 in all 10 passages), which is guessable. Repetition: ~22 of 46 s-items are the same frame 'has/have + irregular participle + object' (draw, write, take, break, grow, ride, hide, choose, teach, do, hear, sing, spend, rise, meet, bring, win, lose, become, eat) with word swaps (6 tagged sub:true by patches, SPEC cap 5%); been/gone contrast asked 5 times (Tom gone to Paris, Ann post office, Busan, Mina not here, She has gone to London); since/for about 20 of 115; 'ride' appears twice. Topics narrow (home/school chores); little on 'How often/so far/recently/lately' or have been -ing contrast (correctly excluded at this level). Weak passage distractors (e.g. 'Doctors dislike teenagers') and passages with only detail questions; passages 80-91 words fit M. Not patched: Hobby Q3 and Q5 overlap (never taken a lesson / learns mostly by herself); Nugget Q2 and Q4 share 'escape'; correct option often the longest in m items 'Mia has not traveled to another country', '그녀는 런던에 가 버려서...', Korean translation items."
+ },
+ "patches": [
+  {
+   "item": "80bafd0a",
+   "op": "set",
+   "why": "'Our team haven't won' is acceptable British English (collective noun treated as plural), so a distractor is defensible; replaced by clearly wrong forms (the cloze set already tests won/win/winned/wins).",
+   "severity": "major",
+   "set": {
+    "bad": [
+     "Our team hasn't win a game this season.",
+     "Our team hasn't winned a game this season.",
+     "Our team doesn't won a game this season."
+    ]
+   }
+  },
+  {
+   "item": "5b87373b",
+   "op": "set",
+   "why": "Rule says just marks a thing that has 'just finished' (막 끝난 일), but the sentence is about something that just started; wording is misleading.",
+   "severity": "minor",
+   "set": {
+    "rule": "just는 '방금, 막'이라는 뜻으로, have/has와 과거분사 사이에 써서 방금 일어난 일을 나타내요."
+   }
+  },
+  {
+   "item": "94f79a85",
+   "op": "set",
+   "why": "'I have since seen it' is grammatical English, so 'since' is a risky distractor; 'still' is plainly wrong here.",
+   "severity": "minor",
+   "set": {
+    "o": [
+     "yet",
+     "ever",
+     "already",
+     "still"
+    ],
+    "a": 2
+   }
+  },
+  {
+   "item": "96cb2c21",
+   "op": "set",
+   "why": "Explanation is sloppy: 'last night' and 'this morning' take no preposition (since last night), and in/on is irrelevant. State the real rule.",
+   "severity": "minor",
+   "set": {
+    "why": "for 뒤에는 three hours 같은 기간이 와요. 나머지는 모두 시점을 나타내므로 for가 아니라 since와 함께 써요."
+   }
+  },
+  {
+   "item": "eaa2e704",
+   "op": "set",
+   "why": "Option 'I lost it ten years ago and forgot it' is also consistent with 'I do not have my phone now', so the key is only defensible by tense implication. Make the distractor clearly wrong.",
+   "severity": "minor",
+   "set": {
+    "o": [
+     "I took my phone to school today.",
+     "I have found it again.",
+     "I don't have my phone now.",
+     "I will lose it tomorrow."
+    ],
+    "a": 2
+   }
+  },
+  {
+   "item": "b6385611",
+   "op": "drop",
+   "why": "Third restatement of the has gone / has been to contrast already covered by items 'Tom has gone to Paris', 'Ann isn't here...', 'Which sentence means Mina is not here now'; correct option is also the longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "2e3b8c0b",
+   "op": "set",
+   "why": "'Already have I eaten lunch.' is archaic/poetic but grammatical inversion, so a learner can defend it; use a plainly wrong order.",
+   "severity": "minor",
+   "set": {
+    "o": [
+     "I eaten have already lunch.",
+     "Have already I eaten lunch.",
+     "I have already eaten lunch.",
+     "I have eaten already lunch."
+    ],
+    "a": 2
+   }
+  },
+  {
+   "item": "fdc7f03a",
+   "op": "set",
+   "why": "Stem says 'sentence' but the task is a blank; confusing.",
+   "severity": "minor",
+   "set": {
+    "q": "Choose the best answer: We ___ the results yet."
+   }
+  },
+  {
+   "item": "35417e13",
+   "op": "set",
+   "why": "Cloze distractor 'later' is grammatical-ish in 'has later built' and not clearly wrong; also 'tomorrow/tonight' recur in three vocab items.",
+   "severity": "minor",
+   "set": {
+    "z": [
+     "tomorrow",
+     "yesterday",
+     "tonight"
+    ]
+   }
+  },
+  {
+   "item": "9f49036e",
+   "op": "set",
+   "why": "hide/choose/spend/rise/meet/bring: same frame 'has/have + irregular participle + object', 1 of ~22 near-identical drills; tag as substitution variant (SPEC caps at 5%).",
+   "severity": "minor",
+   "set": {
+    "sub": true
+   }
+  },
+  {
+   "item": "d62a93fc",
+   "op": "set",
+   "why": "same irregular-participle drill frame; tag as substitution variant (SPEC caps at 5%).",
+   "severity": "minor",
+   "set": {
+    "sub": true
+   }
+  },
+  {
+   "item": "fd7e3501",
+   "op": "set",
+   "why": "same irregular-participle drill frame; tag as substitution variant (SPEC caps at 5%).",
+   "severity": "minor",
+   "set": {
+    "sub": true
+   }
+  },
+  {
+   "item": "3f753149",
+   "op": "set",
+   "why": "same irregular-participle drill frame; tag as substitution variant (SPEC caps at 5%).",
+   "severity": "minor",
+   "set": {
+    "sub": true
+   }
+  },
+  {
+   "item": "39768e88",
+   "op": "set",
+   "why": "same irregular-participle drill frame; tag as substitution variant (SPEC caps at 5%).",
+   "severity": "minor",
+   "set": {
+    "sub": true
+   }
+  },
+  {
+   "item": "f9e282d5",
+   "op": "set",
+   "why": "same irregular-participle drill frame; tag as substitution variant (SPEC caps at 5%).",
+   "severity": "minor",
+   "set": {
+    "sub": true
+   }
+  },
+  {
+   "item": "24d0f32a",
+   "op": "set",
+   "why": "Q3 (feeling: tired but excited) and Q4 (I can't wait = very excited) give each other away; also tagged 9영01-03 (central idea) but no main-idea question. Q4 replaced by a detail question; std now honest (details + feelings).",
+   "severity": "major",
+   "set": {
+    "std": [
+     "9영01-02",
+     "9영01-05"
+    ],
+    "qs": [
+     {
+      "q": "What did the writer do in the morning?",
+      "o": [
+       "Visited a museum",
+       "Bought souvenirs",
+       "Climbed a hill and watched the sunrise",
+       "Had lunch in a royal garden"
+      ],
+      "a": 2,
+      "why": "오늘 아침에 언덕에 올라 일출을 봤다고 했어요."
+     },
+     {
+      "q": "What has the writer NOT done yet?",
+      "o": [
+       "Visited temples",
+       "Bought souvenirs",
+       "Walked about ten kilometers",
+       "Climbed a hill"
+      ],
+      "a": 1,
+      "why": "I haven't bought any souvenirs yet이라고 했어요."
+     },
+     {
+      "q": "How does the writer feel?",
+      "o": [
+       "Tired but excited",
+       "Bored and angry",
+       "Sick and afraid",
+       "Lonely and sad"
+      ],
+      "a": 0,
+      "why": "다리는 피곤하지만 지루하지 않았고 내일을 기대하고 있어요."
+     },
+     {
+      "q": "What has the guide promised?",
+      "o": [
+       "To buy souvenirs for the students",
+       "To show them an old royal garden",
+       "To take them to a beach",
+       "To give them a free day"
+      ],
+      "a": 1,
+      "why": "Our guide has promised to show us an old royal garden이라고 했어요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "d945a3a0",
+   "op": "set",
+   "why": "Q1 correct option is clearly the longest and spells out 'plan a visit', which gives away Q4; shortened and neutralised.",
+   "severity": "minor",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did Jun write this email?",
+      "o": [
+       "To invite Grandma to join the chess club",
+       "To thank Grandma for a new sweater",
+       "To share his news and say hello",
+       "To say that he is sick"
+      ],
+      "a": 2,
+      "why": "준이는 근황을 전하고 안부를 묻기 위해 이메일을 썼어요."
+     },
+     {
+      "q": "How many contests has Jun won?",
+      "o": [
+       "Two",
+       "One",
+       "Three",
+       "None"
+      ],
+      "a": 1,
+      "why": "두 번 대회에 나가 그중 하나에서 이겼다고 했어요."
+     },
+     {
+      "q": "Why does Jun miss Grandma?",
+      "o": [
+       "He hasn't visited her for a month.",
+       "She moved to another city.",
+       "She is in the hospital.",
+       "She forgot his birthday."
+      ],
+      "a": 0,
+      "why": "한 달 동안 찾아뵙지 못해서 보고 싶다고 했어요."
+     },
+     {
+      "q": "What will probably happen next weekend?",
+      "o": [
+       "Jun will play in a chess contest.",
+       "Grandma will bake cookies.",
+       "Mom will buy a sweater.",
+       "Jun's family will visit Grandma."
+      ],
+      "a": 3,
+      "why": "아빠가 다음 주말에 할머니 댁에 갈 수 있다고 했어요."
+     },
+     {
+      "q": "What can we infer about Grandma?",
+      "o": [
+       "She dislikes chess.",
+       "She lives in the same house as Jun.",
+       "She is making a sweater for Jun.",
+       "She has already finished baking."
+      ],
+      "a": 2,
+      "why": "할머니가 뜨고 있던 스웨터를 다 끝냈는지 묻는 것으로 보아 준이를 위해 뜨고 있다고 짐작할 수 있어요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "b0da3e7c",
+   "op": "set",
+   "why": "Q1 is ambiguous: he saw it last winter and has watched it twice SINCE then, but 'since last winter' can be read as including the first viewing (three). Also explanations in English while all other packets' whys are Korean; std 9영01-03 claimed but no main-idea question.",
+   "severity": "major",
+   "set": {
+    "std": [
+     "9영01-02",
+     "9영01-04"
+    ],
+    "qs": [
+     {
+      "q": "After he first saw the movie last winter, how many more times has Tae watched it?",
+      "o": [
+       "Once",
+       "Twice",
+       "Three times",
+       "Never"
+      ],
+      "a": 1,
+      "why": "태이는 지난겨울에 처음 봤고 그 뒤로 두 번 더 봤다고 했어요."
+     },
+     {
+      "q": "What is true about Ella?",
+      "o": [
+       "She has never watched a space movie.",
+       "She has watched it twice.",
+       "She saw it with Tae last winter.",
+       "She dislikes popcorn."
+      ],
+      "a": 0,
+      "why": "엘라는 우주 영화를 본 적이 없다고 했어요."
+     },
+     {
+      "q": "What is the movie like, according to Tae?",
+      "o": [
+       "Scary and long",
+       "Sad and slow",
+       "Boring and old",
+       "Funny and exciting"
+      ],
+      "a": 3,
+      "why": "태이는 영화가 재미있고 신난다고 했어요."
+     },
+     {
+      "q": "Why does Ella ask about Tae's homework?",
+      "o": [
+       "She wants to help him with it.",
+       "She has finished it for him.",
+       "She wants to know if he can watch the movie tonight.",
+       "She thinks it is too difficult."
+      ],
+      "a": 2,
+      "why": "저녁에 영화를 보자고 한 뒤 숙제를 물은 것은 그가 시간이 되는지 알고 싶어서예요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "21dd33f4",
+   "op": "set",
+   "why": "std 9영01-03 (central idea) is cited but no question asks for the main idea/gist; every question is a detail or cause question.",
+   "severity": "minor",
+   "set": {
+    "std": [
+     "9영01-02",
+     "9영01-04"
+    ]
+   }
+  },
+  {
+   "item": "291f8f2f",
+   "op": "set",
+   "why": "std 9영01-03 (central idea) is cited but no question asks for the main idea/gist; every question is a detail or cause question.",
+   "severity": "minor",
+   "set": {
+    "std": [
+     "9영01-02",
+     "9영01-04"
+    ]
+   }
+  },
+  {
+   "item": "f362d935",
+   "op": "set",
+   "why": "std 9영01-03 (central idea) is cited but no question asks for the main idea/gist; every question is a detail or cause question.",
+   "severity": "minor",
+   "set": {
+    "std": [
+     "9영01-02"
+    ]
+   }
+  }
+ ],
+ "ok": 94,
+ "criteria": [
+  "Question identity must be unique: never reuse a generic stem ('Which sentence is correct?') for several m items; put the topic or the blank sentence in the stem so the id differs.",
+  "Hints/rules must not state the answer form: write a separate hint field for the cloze or keep rules abstract (the rule may name the key form only in the explanation).",
+  "Vary the position of the correct option in passage questions randomly; do not cycle a, b, c, d in a fixed order.",
+  "Do not make 'a collective noun plus plural verb' (team, family, class, government) or other US/UK-variable usage a wrong distractor; use unambiguous errors.",
+  "Do not cite std 9영01-03 (central idea) unless a question really asks for the main idea; tag details 9영01-02, cause/effect 9영01-04, feelings 9영01-05.",
+  "A question about 'since X' must say whether the first event counts (ambiguous counting questions are blockers).",
+  "Sentence items that differ only in the verb of the same 'has + irregular participle' frame are substitution drills: write at most a handful, tag sub:true, and use varied frames (questions, negatives, time expressions, contrasts) instead.",
+  "Within a packet, each contrast (been/gone, since/for, past vs perfect) should be practised through different contexts and formats a few times, not 5 to 20 re-skins.",
+  "Passage questions must not reveal each other (e.g. a 'purpose' option that names the later plan; a feeling question next to an 'I can't wait' meaning question); correct options should not be the longest.",
+  "Keep the language of explanations consistent (Korean whys throughout; do not mix English whys in one passage)."
+ ]
+}
