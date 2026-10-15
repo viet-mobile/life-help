@@ -1,0 +1,29 @@
+{
+ "packet": "E03-e1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 40
+ },
+ "patches": [
+  {
+   "item": "498d5e6c",
+   "op": "set",
+   "set": {
+    "q": "‘map’처럼 -ap로 끝나는 낱말은?",
+    "o": [
+     "cup",
+     "mop",
+     "men",
+     "cap"
+    ],
+    "a": 3,
+    "why": "map과 cap은 둘 다 -ap로 끝나요. mop은 -op, cup은 -up, men은 -en으로 끝나요."
+   },
+   "why": "Original stem 끝소리 was ambiguous (cap/mop/cup all end in /p/). Changed q only; options unchanged.",
+   "severity": "major"
+  }
+ ],
+ "ok": 39,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

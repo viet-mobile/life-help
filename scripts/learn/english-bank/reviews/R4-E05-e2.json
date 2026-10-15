@@ -1,0 +1,118 @@
+{
+ "packet": "E05-e2",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "c3a15ac2",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "cats/dogs can swap, so the ordering form is ambiguous; no identity field changed.",
+   "severity": "major"
+  },
+  {
+   "item": "edf0ba0a",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "dog/cat can swap and duplicate token 'a'; no identity field changed.",
+   "severity": "major"
+  },
+  {
+   "item": "e9b23b4a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "이 글의 주제로 알맞은 것은?",
+      "o": [
+       "동물원에 가는 방법을 알려 줌",
+       "원숭이 장난감을 직접 만드는 법",
+       "집에서 키우는 반려동물을 소개함",
+       "동물원과 원숭이를 좋아함"
+      ],
+      "a": 3,
+      "why": "동물원과 원숭이, 원숭이 장난감을 좋아한다는 내용이에요."
+     },
+     {
+      "q": "글쓴이가 집에 가지고 있는 것은?",
+      "o": [
+       "a monkey toy",
+       "a dog toy",
+       "a zoo ticket",
+       "a monkey book"
+      ],
+      "a": 0,
+      "why": "I have a monkey toy at home.이라고 나와요."
+     },
+     {
+      "q": "‘They’는 무엇을 가리키나요?",
+      "o": [
+       "toys",
+       "zoos",
+       "monkeys",
+       "I"
+      ],
+      "a": 2,
+      "why": "앞 문장의 monkeys를 가리켜요."
+     },
+     {
+      "q": "글쓴이는 장난감을 어떻게 생각하나요?",
+      "o": [
+       "조금 무서워해요",
+       "아주 좋아해요",
+       "별로 마음에 안 들어요",
+       "없어서 아쉬워해요"
+      ],
+      "a": 1,
+      "why": "I like it very much.라고 나와요."
+     }
+    ]
+   },
+   "why": "Lengthen main-idea and attitude distractors so the key is not the longest; vary key position of Q4.",
+   "severity": "minor"
+  },
+  {
+   "item": "128392d7",
+   "op": "set",
+   "set": {
+    "q": "‘가지고 있는 것’을 말하는 문장은?",
+    "o": [
+     "I like music.",
+     "I am in my class.",
+     "I have a robot.",
+     "I see a bird."
+    ],
+    "a": 2,
+    "why": "I have ...는 가지고 있는 것을 말할 때 써요."
+   },
+   "why": "Remove the odd-one-out pattern; q unchanged, o changed (identity field).",
+   "severity": "minor"
+  },
+  {
+   "item": "4d3f8166",
+   "op": "set",
+   "set": {
+    "q": "철자가 바른 문장은?",
+    "o": [
+     "I have a bok.",
+     "I have a book.",
+     "I have a boock.",
+     "I have a bukk."
+    ],
+    "a": 1,
+    "why": "책은 book으로 써요."
+   },
+   "why": "Replaces a duplicate of the like-spelling question with another word; q/o changed (identity).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 122,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

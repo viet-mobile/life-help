@@ -1,0 +1,232 @@
+{
+ "packet": "E04-e2",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 96
+ },
+ "patches": [
+  {
+   "item": "ccef5d6d",
+   "op": "set",
+   "set": {
+    "ex": "The kids play with a ball.",
+    "exko": "아이들은 공을 가지고 놀아요.",
+    "z": [
+     "cook",
+     "write",
+     "wash"
+    ]
+   },
+   "why": "Replace ambiguous example; new distractors cannot fit \"___ with a ball\".",
+   "severity": "major"
+  },
+  {
+   "item": "84c32106",
+   "op": "set",
+   "set": {
+    "good": "I run fast.",
+    "ko": "나는 빨리 달려요.",
+    "bad": [
+     "I runs fast.",
+     "I running fast.",
+     "I run fastly."
+    ],
+    "cz": {
+     "st": "I ___ fast.",
+     "ok": "run",
+     "wr": [
+      "runs",
+      "running",
+      "runned"
+     ]
+    },
+    "rule": "I 다음에는 동사를 그대로 써요."
+   },
+   "why": "Level: removes 3인칭 단수 -s; identity field good and ko changed.",
+   "severity": "major"
+  },
+  {
+   "item": "cccdd2bd",
+   "op": "set",
+   "set": {
+    "good": "We fly kites.",
+    "ko": "우리는 연을 날려요.",
+    "bad": [
+     "We flies kites.",
+     "We flying kites.",
+     "We to fly kites."
+    ],
+    "cz": {
+     "st": "We ___ kites.",
+     "ok": "fly",
+     "wr": [
+      "flies",
+      "flying",
+      "flyed"
+     ]
+    },
+    "rule": "We 다음에는 동사를 그대로 써요."
+   },
+   "why": "Level: removes 3인칭 단수 -s; identity field good and ko changed.",
+   "severity": "major"
+  },
+  {
+   "item": "a68ddf2d",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item sing; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "146f07f7",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item clap; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "c0a3557a",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item kick; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "3b1020c0",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item drink; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "1fcabac1",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item fly; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "638499ed",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item cook; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "c3630588",
+   "op": "drop",
+   "set": {},
+   "why": "Pure restatement of vocab item throw; no new concept or context.",
+   "severity": "major"
+  },
+  {
+   "item": "193503c9",
+   "op": "set",
+   "set": {
+    "sp": [
+     "cuk",
+     "coock",
+     "cok"
+    ]
+   },
+   "why": "kook is a real word",
+   "severity": "minor"
+  },
+  {
+   "item": "d52bf791",
+   "op": "set",
+   "set": {
+    "sp": [
+     "thro",
+     "throo",
+     "throww"
+    ],
+    "ex": "I throw a stone.",
+    "exko": "나는 돌을 던져요."
+   },
+   "why": "trow is a real (archaic) word; example shortened to E2 length (3-6 words).",
+   "severity": "minor"
+  },
+  {
+   "item": "29dde725",
+   "op": "set",
+   "set": {
+    "sp": [
+     "cach",
+     "catsh",
+     "kach"
+    ]
+   },
+   "why": "ketch is a real word",
+   "severity": "minor"
+  },
+  {
+   "item": "abe03793",
+   "op": "set",
+   "set": {
+    "sp": [
+     "clim",
+     "climp",
+     "clymb"
+    ]
+   },
+   "why": "clime is a real word",
+   "severity": "minor"
+  },
+  {
+   "item": "a34bcfae",
+   "op": "set",
+   "set": {
+    "ex": "I draw a house.",
+    "exko": "나는 집을 그려요."
+   },
+   "why": "E2 example length",
+   "severity": "minor"
+  },
+  {
+   "item": "5d94e933",
+   "op": "set",
+   "set": {
+    "ex": "I look at the stars.",
+    "exko": "나는 별을 봐요."
+   },
+   "why": "E2 example length",
+   "severity": "minor"
+  },
+  {
+   "item": "2ece13f8",
+   "op": "set",
+   "set": {
+    "ex": "We clap our hands.",
+    "exko": "우리는 손뼉을 쳐요."
+   },
+   "why": "E2 example length",
+   "severity": "minor"
+  },
+  {
+   "item": "1f2b6193",
+   "op": "set",
+   "set": {
+    "z": [
+     "fly",
+     "cook",
+     "write"
+    ]
+   },
+   "why": "swim distractor arguable",
+   "severity": "minor"
+  },
+  {
+   "item": "a0db5d40",
+   "op": "set",
+   "set": {
+    "why": "dog는 '개'라는 동물 이름이에요. 나머지는 움직임을 나타내는 동사예요."
+   },
+   "why": "particle fix",
+   "severity": "minor"
+  }
+ ],
+ "ok": 73,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

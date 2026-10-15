@@ -1,0 +1,210 @@
+{
+ "packet": "E04-e2",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "cc6a3120",
+   "op": "set",
+   "set": {
+    "ex": "A cat can sleep on my bed.",
+    "exko": "고양이는 내 침대에서 잘 수 있어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "585e16e5",
+   "op": "set",
+   "set": {
+    "ex": "I walk my dog every day.",
+    "exko": "나는 매일 개를 산책시켜요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "77163d9d",
+   "op": "set",
+   "set": {
+    "ex": "A rabbit can run fast.",
+    "exko": "토끼는 빨리 달릴 수 있어요.",
+    "sp": [
+     "rabit",
+     "rabbitt",
+     "rabbbit"
+    ]
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3); sp의 rabbet은 실제 단어",
+   "severity": "minor"
+  },
+  {
+   "item": "8d445669",
+   "op": "set",
+   "set": {
+    "ex": "A fish can swim in the water.",
+    "exko": "물고기는 물속에서 헤엄칠 수 있어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "c74a2cd3",
+   "op": "set",
+   "set": {
+    "ex": "We get milk from a cow.",
+    "exko": "우리는 소에게서 우유를 얻어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "3159222b",
+   "op": "set",
+   "set": {
+    "ex": "A duck can swim.",
+    "exko": "오리는 헤엄칠 수 있어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "7f9608a7",
+   "op": "set",
+   "set": {
+    "ex": "A monkey can climb a tree.",
+    "exko": "원숭이는 나무에 오를 수 있어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "8aeaff73",
+   "op": "set",
+   "set": {
+    "ex": "An elephant can walk far.",
+    "exko": "코끼리는 멀리 걸을 수 있어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "a0ea08f1",
+   "op": "set",
+   "set": {
+    "ex": "A frog can swim in the pond.",
+    "exko": "개구리는 연못에서 헤엄칠 수 있어요.",
+    "sp": [
+     "frogg",
+     "forg",
+     "frrog"
+    ]
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3); sp의 frag는 실제 단어",
+   "severity": "minor"
+  },
+  {
+   "item": "a0dd1b49",
+   "op": "set",
+   "set": {
+    "ex": "A pig can eat a lot.",
+    "exko": "돼지는 많이 먹을 수 있어요.",
+    "sp": [
+     "pik",
+     "pigg",
+     "pyg"
+    ]
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3); sp의 peg는 실제 단어",
+   "severity": "minor"
+  },
+  {
+   "item": "3c4e176c",
+   "op": "set",
+   "set": {
+    "ex": "I can sit on the box.",
+    "exko": "나는 상자 위에 앉을 수 있어요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "d37bb000",
+   "op": "set",
+   "set": {
+    "ex": "I wear a red hat.",
+    "exko": "나는 빨간 모자를 써요."
+   },
+   "why": "E2 수준 초과: 예문의 3인칭 단수 -s(E3-E4 항목, SPEC 교훈 3)",
+   "severity": "minor"
+  },
+  {
+   "item": "113d43ac",
+   "op": "set",
+   "set": {
+    "sp": [
+     "hores",
+     "horce",
+     "horsee"
+    ]
+   },
+   "why": "sp의 hose는 실제 단어(SPEC 교훈 2)",
+   "severity": "minor"
+  },
+  {
+   "item": "3524d0a7",
+   "op": "set",
+   "set": {
+    "sp": [
+     "cupp",
+     "kup",
+     "cuup"
+    ]
+   },
+   "why": "sp의 cop은 실제 단어",
+   "severity": "minor"
+  },
+  {
+   "item": "d1ccd918",
+   "op": "set",
+   "set": {
+    "sp": [
+     "bedd",
+     "beed",
+     "bbed"
+    ]
+   },
+   "why": "sp의 bad, bet은 실제 단어",
+   "severity": "minor"
+  },
+  {
+   "item": "0cf260ee",
+   "op": "set",
+   "set": {
+    "good": "A cup is on the desk.",
+    "bad": [
+     "A cup are on the desk.",
+     "A cup is the on desk.",
+     "A is cup on the desk."
+    ],
+    "cz": {
+     "st": "A cup ___ on the desk.",
+     "ok": "is",
+     "wr": [
+      "are",
+      "am",
+      "do"
+     ]
+    },
+    "rule": "컵 하나가 주어이므로 is를 써요. on the desk는 '책상 위에'라는 뜻이에요."
+   },
+   "why": "There is/are는 E3-E4 이후 항목(SPEC 교훈 3)이라 E2 초과. ko 필드는 그대로 두어도 새 문장과 맞음(good 자체는 변경)",
+   "severity": "major"
+  }
+ ],
+ "ok": 67,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
