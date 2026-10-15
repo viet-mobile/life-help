@@ -1,0 +1,45 @@
+{
+ "packet": "T08-e6-functions",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 5,
+  "questions": 8
+ },
+ "patches": [
+  {
+   "item": "392f25ae",
+   "op": "set",
+   "set": {
+    "o": [
+     "You must park your bike in this spot.",
+     "You can't park your bike in this spot.",
+     "You are allowed to park a bike here.",
+     "You should buy a new bike in this shop."
+    ],
+    "a": 2
+   },
+   "why": "Lengthen distractors (all still clearly wrong for 'may park') so the key is not the only longest option; key and answer meaning unchanged, identity field q/o changed (o) only for wording of distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "106fd2ea",
+   "op": "set",
+   "set": {
+    "q": "must와 비교할 때, should의 뜻을 바르게 설명한 것은?",
+    "o": [
+     "should는 어기면 벌을 받는 반드시 지켜야 하는 규칙이다.",
+     "should는 '~해도 된다'고 허락해 주는 말이다.",
+     "should는 '~할 수 있다'는 능력을 나타내는 말이다.",
+     "should는 '~하는 게 좋다'는 부드러운 조언이다."
+    ],
+    "a": 3,
+    "why": "should는 '~하는 게 좋다'는 부드러운 조언이고, must는 규칙이나 의무예요.",
+    "hint": "should와 must 중 어느 쪽이 더 약하고 부드러운 말인지 생각해 보세요."
+   },
+   "why": "Stem now matches the options (all about should); distractors lengthened to match the key; hint no longer quotes the key phrase. Identity fields q/o changed. If the builder does not accept 'hint' in the set, drop that field and keep the hint fix as a follow-up.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 5,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
