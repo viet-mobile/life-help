@@ -25,7 +25,10 @@ const TYPES = [
   [/^\W*(when|what time|which day|what day|how often)\b/i, ["시각, 요일, 날짜, 순서를 나타내는 말을 찾아보세요.", "시간 표현이 여러 개라면 질문이 묻는 일과 짝이 되는 것을 고르세요."]],
 ];
 function questionHints(q, text, key) {
-  const t = TYPES.find(([re]) => re.test(q))?.[1];
+  // reviewers found the cause / purpose / inference / true-false / sequence / insertion hints wrong for about 1 in 8 passage questions: only the high-precision types keep a type hint
+  const LOW = ["이유를 묻는", "글쓴이(말하는", "글에 직접", "보기를 하나씩 지문", "first, then", "넣을 문장"];
+  let t = TYPES.find(([re]) => re.test(q))?.[1];
+  if (t && LOW.some((p) => t[0].startsWith(p))) t = undefined;
   const h1 = t ? t[0] : (() => { const inText = content(text); const w = [...String(q).toLowerCase().match(/[a-z']{4,}/g) ?? []].filter((x) => !STOP.has(x) && !FRAME.has(x) && inText.has(stem(x))).sort((a, b) => b.length - a.length)[0]; return w ? `질문의 핵심 낱말은 “${w}”예요. 지문에서 같은 낱말이나 비슷한 뜻의 말을 찾아보세요.` : "질문이 무엇을 묻는지 먼저 한 문장으로 말해 보세요."; })();
   // 2nd hint: point at the sentence / line that shares the most content with the correct option (never the option itself)
   const lines = String(text).split(/\n/).flatMap((l) => (/^[A-Z][A-Za-z.' ]{0,24}:\s/.test(l) ? [l] : l.split(/(?<=[.!?])\s+/))).map((s) => s.trim()).filter(Boolean);
@@ -33,7 +36,7 @@ function questionHints(q, text, key) {
   let best = null, bs = 0;
   lines.forEach((l, i) => { const lc = content(l.replace(/^[A-Z][A-Za-z.' ]{0,24}:\s*/, "")); let s = 0; for (const w of kc) if (lc.has(w)) s += 1; if (s) for (const w of qc) if (lc.has(w)) s += 0.25; if (s > bs) { bs = s; best = i; } });
   const tooBroad = t && /mainly about|main idea|best title|infer|probably|most likely|suggest|imply|tone|attitude|opinion|purpose/i.test(q);
-  if (best !== null && bs >= 2 && !tooBroad && lines.length >= 3) {
+  if (best !== null && bs >= 3 && !tooBroad && lines.length >= 3) {
     // WHERE to look, never the words themselves (quoting the opening words of the answer sentence can give part of the key away)
     const labelled = lines.every((l) => /^[A-Z][A-Za-z.' ]{0,24}:\s/.test(l));
     const third = Math.min(2, Math.floor((best * 3) / lines.length));
@@ -62,10 +65,11 @@ export function pickHint1(good, bad) {
 }
 /** Sentence cloze: what surrounds the blank. */
 export function clozeHint1(st) {
-  const strip = (w) => (w ?? "").replace(/[“”"'.,!?;:()_]/g, "");
+  const strip = (w) => (w ?? "").replace(/[“”".,!?;:()_]/g, "").replace(/^'+|'+$/g, "");
   const m = /_{2,}/.exec(st);
   if (!m) return "빈칸 앞뒤의 낱말과 어울리는 형태를 찾아보세요.";
-  const prev = strip(st.slice(0, m.index).trim().split(/\s+/).pop()), next = strip(st.slice(m.index + m[0].length).trim().split(/\s+/)[0]);
+  const art = (w) => (/^(a|an|a\(n\))$/i.test(w) ? "" : w); // the article before a blank is neutralised to a(n) in the prompt
+  const prev = art(strip(st.slice(0, m.index).trim().split(/\s+/).pop())), next = strip(st.slice(m.index + m[0].length).trim().split(/\s+/)[0]);
   if (prev && next) return `빈칸 바로 앞의 “${prev}”, 바로 뒤의 “${next}”에 어울리는 말을 찾아보세요.`;
   if (prev) return `빈칸 바로 앞의 “${prev}”와 자연스럽게 이어지는 말을 찾아보세요.`;
   if (next) return `문장이 빈칸으로 시작해요. 바로 뒤의 “${next}”에 어울리는 말을 찾아보세요.`;
@@ -100,19 +104,15 @@ const M_TYPES = [
   [/syllable|beat|마디|음절/i, "낱말을 손뼉을 치며 소리 내어 읽고 박수 수를 세어 보세요.", true],
   [/\bopposite\b|반대/i, "반대되는 뜻을 가진 낱말 쌍을 떠올려 보세요."],
   [/best response|\bbest reply\b|대답|응답/i, "상대방이 무엇을 묻거나 말했는지 먼저 파악하고, 자연스럽게 이어지는 말을 고르세요."],
-  [/which question|question fits/i, "주어진 대답이 어떤 질문에 대한 것인지 거꾸로 생각해 보세요."],
-  [/\bmissing\b|빈칸|\b(complete|fill)\b/i, "빈칸 앞뒤 낱말과 문장의 뜻을 함께 살펴보세요."],
-  [/\bmeans?\b|뜻/i, "문장 속에서 그 낱말이 어떤 뜻으로 쓰였는지 살펴보세요."],
-  [/odd one|\bdifferent\b|not belong|다른 하나/i, "나머지 낱말들의 공통점을 먼저 찾아보세요."],
-  [/\b(correct|wrong|mistake|error)\b|옳은|맞는|틀린/i, "문장을 하나씩 소리 내어 읽으며 어색한 곳을 찾아보세요."],
-];
+          ];
 const M_H2 = "보기를 하나씩 문제에 넣어 읽고 알맞지 않은 것부터 지워 보세요.";
 export function mHints(item) {
-  if (item.hint) return [item.hint, M_H2];
+  const own = safeHint(item.hint, item.o[item.a], item.o);
+  if (own) return [own, M_H2];
   const sound = /sound|소리|syllable|rhym|음절|마디|발음|\/[a-z]+\//i.test(item.q);
   const longText = /summary|main idea|mainly|passage|paragraph|email|요약|중심/i.test(item.q) || item.q.length > 160;
   const t = longText ? undefined : M_TYPES.find(([re, , needsSound]) => (!needsSound || sound) && re.test(item.q))?.[1];
-  const quoted = /[“"']([^“”"']{1,24})[”"']/.exec(item.q)?.[1];
+  const quoted = /[“"]([^“”"]{1,24})[”"]/.exec(item.q)?.[1];
   return [t ?? (quoted ? `문제에 나온 “${quoted}”에 집중해서 다시 읽어 보세요.` : "문제가 무엇을 묻는지 한 문장으로 말해 본 뒤 보기를 보세요."), M_H2];
 }
 
@@ -122,4 +122,16 @@ export function koenHint2(item, others) {
   if (others.some((o) => o[0]?.toLowerCase() === first)) return `첫 글자: “${item.en[0]}”`;
   const blank = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____");
   return `예문: ${blank.replace(/\b(a|an)(\s+)(_{4})/gi, "a(n)$2$3")}`;
+}
+
+/** An author-written hint is shown only if it does not name the key (or a word that only the key contains). */
+export function safeHint(hint, key, options) {
+  if (!hint) return undefined;
+  const k = String(key).trim();
+  const words = k.toLowerCase().match(/[a-z']{2,}/g) ?? [];
+  const others = options.filter((o) => o !== key).map((o) => String(o).toLowerCase());
+  const uniq = words.filter((w) => others.every((o) => !new RegExp(`(^|[^a-z'])${w}([^a-z']|$)`).test(o)));
+  const has = (w) => new RegExp(`(^|[^A-Za-z'])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z']|$)`, "i").test(hint);
+  if (k.length >= 3 && hint.toLowerCase().includes(k.toLowerCase())) return undefined;
+  return uniq.some(has) ? undefined : hint;
 }

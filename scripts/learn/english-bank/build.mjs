@@ -3,7 +3,7 @@
 //   node scripts/learn/english-bank/build.mjs [--only <packetId,...>] [--no-write]
 // Rules: see SPEC.md. Validates every item, expands vocabulary / sentence items into question forms, drops duplicates (normalised prompt+answer,
 // prompt+option set; a copy under another skill is a duplicate too) and reports counts by group, skill, kind and form.
-import { readingHints, pickHint1, clozeHint1, orderHint1, spellHint1, wordClozeHint1, mHints, koenHint2 } from "./hints.mjs";
+import { readingHints, pickHint1, clozeHint1, orderHint1, spellHint1, wordClozeHint1, mHints, koenHint2, safeHint } from "./hints.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -47,7 +47,7 @@ for (const f of files) {
   }
 }
 const wordsSeen = new Map(); // en|pos -> first skill (a word is one learning item across levels)
-const dropped = { vocabRepeat: 0, duplicateQuestion: 0, clozeBroken: 0, badItem: 0 };
+const dropped = { frameDuplicate: 0, vocabRepeat: 0, duplicateQuestion: 0, clozeBroken: 0, badItem: 0 };
 const skillOrder = (s) => plan.skills.findIndex((x) => x.id === s);
 // Reviewed items keep their place when a newer (unreviewed) item duplicates them: the first-seen copy survives de-duplication.
 const reviewedIds = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8")).reviewed;
@@ -103,14 +103,19 @@ for (const { skill, item } of valid) if (item.k === "w") (wordsOfGroup[groupOf(s
 const questions = [];
 const seenKeys = new Map(); // normalised prompt+answer -> id
 const seenSets = new Set();
+const seenFrames = new Set();
 const byKind = {};
 const push = (skill, packet, item, form, q) => {
   const answerText = q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
   if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, (_m, art, sp, bl) => `${art[0] === "A" ? "A" : "a"}(n)${sp}${bl}`) }; // the article would single out the one option that starts with the matching sound
   const k1 = `${norm(q.prompt)}|${norm(answerText ?? "")}`;
   const k2 = `${norm(q.prompt)}|${q.options.map((o) => norm(o.text)).sort().join("|")}`;
+  // name-masked frame (prompt + options, capitalised words masked): the same item with only a name / pronoun swapped is a substitution duplicate (docs/english-bank/dedup-policy.md)
+  const mk3 = (t) => norm(t.replace(/\b[A-Z][a-z]+\b/g, "<N>"));
+  const k3 = `${mk3(q.prompt)}|${q.options.map((o) => mk3(o.text)).sort().join("|")}`;
   if (seenKeys.has(k1) || seenSets.has(k2)) { dropped.duplicateQuestion++; return; }
-  seenKeys.set(k1, q.id); seenSets.add(k2);
+  if (seenFrames.has(k3)) { dropped.frameDuplicate++; return; }
+  seenKeys.set(k1, q.id); seenSets.add(k2); seenFrames.add(k3);
   questions.push({ ...q, skillId: skill, tags: ["english", "bank", form, item.k], packet, ...(item.std ? { standards: item.std } : {}) });
 };
 const mk = (skill, qid, o) => ({ id: qid, site: "english", type: "multiple_choice", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 40, status: "DRAFT", ...o });
@@ -123,7 +128,7 @@ const subOf = (a, b) => a.includes(b) || b.includes(a);
 // 2nd hint of a sentence item: the author's own `hint`, else the first clause of the grammar note when it does not state the answer
 function ruleHint(item) {
   // the grammar note states the rule that pins the form down (reviewers found it leaks the key), so only an author-written hint is shown
-  return item.hint ?? "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
+  return safeHint(item.hint, item.cz?.ok ?? item.good, [item.cz?.ok, ...(item.cz?.wr ?? [])].filter(Boolean)) ?? "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
 }
 for (const { skill, packet, item } of valid) {
   const id = itemId(skill, item);
