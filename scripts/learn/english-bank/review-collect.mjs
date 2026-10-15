@@ -36,8 +36,15 @@ for (const id of [...mismatch, ...ambiguous]) defective.add(id);
 const patched = new Set((rev.patches ?? []).map((p) => p.item));
 const acceptArg = process.argv.indexOf("--accept"); const accepted = new Set(acceptArg > 0 ? process.argv[acceptArg + 1].split(",") : []); // items whose blind-solver disagreement was adjudicated in favour of the key
 const flaggedItems = new Set([...defective].map(itemOf).filter((i) => !accepted.has(i) || patched.has(i)));
-const unresolved = [...flaggedItems].filter((i) => !patched.has(i));
-const summary = { batch: n, packet: full.packet, questions: ids.length, items: Object.keys(full.items).length, blindMismatch: mismatch.length, blindAmbiguous: ambiguous.length, reviewerDefects: (rev.defects ?? []).length, bySeverity: (rev.defects ?? []).reduce((m, d) => (m[d.severity] = (m[d.severity] ?? 0) + 1, m), {}), patches: (rev.patches ?? []).length, unresolvedFlaggedItems: unresolved, problems, canary: canaryFail.length ? canaryFail : "ok" };
+const sevOf = new Map(); // item -> worst severity among its unresolved defects
+for (const d of rev.defects ?? []) { const i = itemOf(String(d.id)); const rank = { minor: 1, major: 2, blocker: 3 }[d.severity] ?? 3; sevOf.set(i, Math.max(sevOf.get(i) ?? 0, rank)); }
+const blindFlagged = new Set([...mismatch, ...ambiguous].map(itemOf));
+// unresolved = flagged, not patched, not accepted. Items whose only unresolved defects are MINOR (and the blind solver agreed) are auto-accepted and logged in reviews/known-issues.json.
+const minorOnly = (i) => (sevOf.get(i) ?? 3) <= 1 && !blindFlagged.has(i);
+const unresolvedAll = [...flaggedItems].filter((i) => !patched.has(i));
+const autoAccepted = unresolvedAll.filter(minorOnly);
+const unresolved = unresolvedAll.filter((i) => !minorOnly(i));
+const summary = { batch: n, packet: full.packet, questions: ids.length, items: Object.keys(full.items).length, blindMismatch: mismatch.length, blindAmbiguous: ambiguous.length, reviewerDefects: (rev.defects ?? []).length, bySeverity: (rev.defects ?? []).reduce((m, d) => (m[d.severity] = (m[d.severity] ?? 0) + 1, m), {}), patches: (rev.patches ?? []).length, unresolvedFlaggedItems: unresolved, autoAcceptedMinor: autoAccepted.length, problems, canary: canaryFail.length ? canaryFail : "ok" };
 console.log(JSON.stringify(summary));
 if (canaryFail.length && !process.argv.includes("--allow-no-canary")) { console.error("UNRELIABLE BLIND SOLVER:\n  " + canaryFail.join("\n  ")); process.exit(4); }
 if (problems.length) { console.error("INCOMPLETE REVIEW:\n  " + problems.slice(0, 10).join("\n  ")); process.exit(3); }
@@ -58,8 +65,9 @@ for (const [item, entry] of Object.entries(full.items)) {
   const p = patchOf.get(item);
   if (p?.op === "drop") { counts.dropped++; continue; }
   if (p?.op === "set") { const newId = idOf(entry.skill, { ...entry.item, ...p.set }); ledger.reviewed[newId] = { batch: n, verdict: "patched", at: when }; if (newId !== item) delete ledger.reviewed[item]; counts.patched++; continue; }
-  if (flaggedItems.has(item)) { counts.unresolved++; continue; }
-  ledger.reviewed[item] = { batch: n, verdict: "ok", at: when }; counts.ok++;
+  if (flaggedItems.has(item) && !autoAccepted.includes(item)) { counts.unresolved++; continue; }
+  ledger.reviewed[item] = { batch: n, verdict: autoAccepted.includes(item) ? "ok-minor-noted" : "ok", at: when }; counts.ok++;
 }
 fs.writeFileSync(path.join(here, "ledger.json"), JSON.stringify(ledger));
+if (autoAccepted.length) { const kf = path.join(here, "reviews", "known-issues.json"); const k = fs.existsSync(kf) ? read(kf) : { note: "Minor defects the reviewers could not fix at item level; the item was accepted. For the builder / a later pass.", issues: [] }; for (const d of rev.defects ?? []) if (autoAccepted.includes(itemOf(String(d.id)))) k.issues.push({ batch: n, ...d }); fs.writeFileSync(kf, JSON.stringify(k, null, 1) + "\n"); }
 console.log(JSON.stringify({ applied: log, ledger: counts, unresolvedFlaggedItems: unresolved }));

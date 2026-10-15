@@ -9,7 +9,7 @@ pending=()
 for n in "$@"; do
   if [ ! -f "$DIR/blind-$n.out.json" ] || [ ! -f "$DIR/review-$n.out.json" ]; then pending+=("$n:waiting"); continue; fi
   sum=$(node "$HERE/review-collect.mjs" "$DIR" "$n" ${COLLECT_FLAGS:-} 2>/tmp/rw-err-$n.txt); rc=$?
-  line=$(echo "$sum" | tail -1 | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const j=JSON.parse(s);console.log(`b${j.batch} ${j.packet} q=${j.questions} blindMiss=${j.blindMismatch} amb=${j.blindAmbiguous} defects=${j.reviewerDefects} ${JSON.stringify(j.bySeverity)} patches=${j.patches} unresolved=${j.unresolvedFlaggedItems.length} canary=${JSON.stringify(j.canary)}`)}catch(e){console.log("unparsable")}})')
+  line=$(echo "$sum" | tail -1 | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const j=JSON.parse(s);console.log(`b${j.batch} ${j.packet} q=${j.questions} blindMiss=${j.blindMismatch} amb=${j.blindAmbiguous} defects=${j.reviewerDefects} ${JSON.stringify(j.bySeverity)} patches=${j.patches} unresolved=${j.unresolvedFlaggedItems.length} minorAccepted=${j.autoAcceptedMinor} canary=${JSON.stringify(j.canary)}`)}catch(e){console.log("unparsable")}})')
   echo "$line"
   if [ $rc -ne 0 ]; then pending+=("$n:rc$rc"); head -3 /tmp/rw-err-$n.txt; continue; fi
   unres=$(echo "$sum" | tail -1 | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{console.log(JSON.parse(s).unresolvedFlaggedItems.join(","))})')
