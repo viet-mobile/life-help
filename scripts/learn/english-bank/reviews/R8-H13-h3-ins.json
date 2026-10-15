@@ -1,0 +1,525 @@
+{
+ "packet": "H13-h3-ins",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 8,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "27be7484",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(A)-(B)-(C)",
+       "(C)-(A)-(B)",
+       "(A)-(C)-(B)",
+       "(B)-(C)-(A)"
+      ],
+      "a": 1,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. ‘This summer’ → ‘After a week’ → ‘By the end of the month’의 시간 순서예요."
+     },
+     {
+      "q": "What did Seoyeon's cousin let her hold while she practiced kicking?",
+      "o": [
+       "A floating board from the shop",
+       "A long rope tied to a post",
+       "The edge of the pool",
+       "His arm near the deep end"
+      ],
+      "a": 2,
+      "why": "사촌은 그녀가 수영장 가장자리를 잡고 발차기를 연습하게 했어요."
+     },
+     {
+      "q": "Why was Seoyeon surprised during the lessons?",
+      "o": [
+       "Her cousin stopped teaching her suddenly.",
+       "The pool became much deeper than before.",
+       "She could swim a full length without help.",
+       "Her body floated when she let go of the edge."
+      ],
+      "a": 3,
+      "why": "가장자리를 놓았는데 몸이 떴기 때문이에요."
+     },
+     {
+      "q": "What can be inferred about Seoyeon at the end?",
+      "o": [
+       "She will avoid deep water in future.",
+       "She has overcome her old fear.",
+       "She dislikes swimming with her cousin.",
+       "She plans to stop taking lessons."
+      ],
+      "a": 1,
+      "why": "더 이상 예전의 두려움을 느끼지 않는다고 해요."
+     }
+    ]
+   },
+   "why": "Q1 stem 'first step' plus Q2 'after a week of lessons' plus Q3 'at the end' reveal the order asked in Q0; reworded Q1/Q2 so they no longer give the sequence (Q1 also had the uniquely longest key).",
+   "severity": "minor"
+  },
+  {
+   "item": "eee5d5f3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(B)-(C)-(A)",
+       "(C)-(B)-(A)",
+       "(A)-(B)-(C)",
+       "(B)-(A)-(C)"
+      ],
+      "a": 0,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. ‘We began by’ → ‘After that’ → ‘At the end of the day’의 순서예요."
+     },
+     {
+      "q": "What took the students almost two hours?",
+      "o": [
+       "Walking the dogs around the park",
+       "Finding new homes for the cats",
+       "Cleaning cages and sorting blankets",
+       "Saying goodbye to the puppies"
+      ],
+      "a": 2,
+      "why": "우리를 청소하고 담요를 정리하는 데 두 시간 가까이 걸렸어요."
+     },
+     {
+      "q": "In the passage, \"paired with\" is closest in meaning to",
+      "o": [
+       "compared with",
+       "scolded by",
+       "carried by",
+       "matched with"
+      ],
+      "a": 3,
+      "why": "각자 한 마리씩 짝지어졌다는 뜻이에요."
+     },
+     {
+      "q": "Why did the writer decide to return the next week?",
+      "o": [
+       "The staff offered payment for helping.",
+       "The shelter had no other volunteers.",
+       "The puppy responded warmly at the end.",
+       "The teacher required another visit."
+      ],
+      "a": 2,
+      "why": "강아지가 꼬리를 흔든 일이 계기가 되었어요."
+     }
+    ]
+   },
+   "why": "Q1 'What did the students do first?' (key = (B)) leaks the order asked in Q0; replaced with a detail question that does not state sequence.",
+   "severity": "minor"
+  },
+  {
+   "item": "f7fb1f15",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(A)-(C)-(B)",
+       "(B)-(C)-(A)",
+       "(C)-(B)-(A)",
+       "(B)-(A)-(C)"
+      ],
+      "a": 3,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. ‘that promise’(첫 문단 약속) → 요리 과정 → ‘When we sat down to eat’ 순이에요."
+     },
+     {
+      "q": "Why did the writer write down words like \"a little\"?",
+      "o": [
+       "The writer could not read the recipe.",
+       "The grandmother did not measure the ingredients.",
+       "The soup needed only a little salt.",
+       "The notebook had very few pages."
+      ],
+      "a": 1,
+      "why": "계량스푼을 쓰지 않아서 표현을 그대로 적었어요."
+     },
+     {
+      "q": "What does \"that promise\" in (B) refer to?",
+      "o": [
+       "arriving early at the kitchen",
+       "learning to cook the soup",
+       "buying a notebook for her",
+       "inviting the whole family"
+      ],
+      "a": 1,
+      "why": "(B)의 ‘that promise’는 첫 문단에서 말한 ‘요리를 배우겠다는 약속’을 가리켜요."
+     },
+     {
+      "q": "What did the grandmother's last comment show?",
+      "o": [
+       "She wanted to keep the recipe secret.",
+       "She thought the soup needed more salt.",
+       "She planned to write a notebook herself.",
+       "She was pleased with the writer's careful effort."
+      ],
+      "a": 3,
+      "why": "노트가 가장 좋은 부분이라고 말한 것은 정성을 칭찬한 거예요."
+     }
+    ]
+   },
+   "why": "Stem said 'that promise' is in the first paragraph, but the phrase occurs in (B); the promise itself is in the first paragraph.",
+   "severity": "major"
+  },
+  {
+   "item": "88ba6fd3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(A)-(B)-(C)",
+       "(B)-(A)-(C)",
+       "(C)-(A)-(B)",
+       "(A)-(C)-(B)"
+      ],
+      "a": 3,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. 대응 → ‘At first’ 우려와 약속 → 결과 순이에요."
+     },
+     {
+      "q": "Why did the school compare the test scores?",
+      "o": [
+       "To answer the parents' worry about learning less",
+       "To reward the students with the best marks",
+       "To find out which teacher had given the least homework",
+       "To prepare for the school festival next spring"
+      ],
+      "a": 0,
+      "why": "학부모의 우려를 확인하려고 점수를 비교했어요."
+     },
+     {
+      "q": "What was the result of the new rule?",
+      "o": [
+       "Scores dropped a little, but students felt happier.",
+       "Scores rose sharply, and students had more homework.",
+       "Scores did not drop, and students felt more rested.",
+       "Parents stopped asking about the scores altogether."
+      ],
+      "a": 2,
+      "why": "성적은 떨어지지 않았고 학생들은 더 잘 쉬었다고 해요."
+     },
+     {
+      "q": "In the passage, \"permanent\" is closest in meaning to",
+      "o": [
+       "changed again every week",
+       "lasting for a long time",
+       "limited to a single short test",
+       "decided only by the parents"
+      ],
+      "a": 1,
+      "why": "permanent는 오래 지속되는, 영구적이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Key was the uniquely longest option in 3 of 4 questions; distractors lengthened/specific, key positions varied; 'stayed the same' changed to 'did not drop' to match the text.",
+   "severity": "minor"
+  },
+  {
+   "item": "df6bb6e2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(C)-(A)-(B)",
+       "(C)-(B)-(A)",
+       "(B)-(A)-(C)",
+       "(A)-(C)-(B)"
+      ],
+      "a": 3,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. 설계 → 인쇄 → 마무리 순이에요. ‘The first step’, ‘Next’, ‘When the final layer is done’가 단서예요."
+     },
+     {
+      "q": "How does a 3D printer create a shape?",
+      "o": [
+       "By carving a large block of solid plastic",
+       "By pressing hot metal into a heavy mold",
+       "By adding thin layers one on top of another",
+       "By cutting sheets of paper into small pieces"
+      ],
+      "a": 2,
+      "why": "도입부에서 얇은 층을 하나씩 쌓아 만든다고 해요."
+     },
+     {
+      "q": "What does the software do with the design?",
+      "o": [
+       "It lifts the object off the plate carefully.",
+       "It cuts the design into many thin layers.",
+       "It melts the plastic thread for printing.",
+       "It removes rough edges from the finished object."
+      ],
+      "a": 1,
+      "why": "소프트웨어가 설계를 수백 개의 얇은 층으로 나눠요."
+     },
+     {
+      "q": "What happens after the final layer is finished?",
+      "o": [
+       "Rough edges are smoothed by hand.",
+       "The plastic thread is melted again.",
+       "The design is drawn on a computer.",
+       "The printer begins another layer."
+      ],
+      "a": 0,
+      "why": "마지막 층 뒤에 사람이 손으로 거친 부분을 다듬어요."
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q1 and Q2; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "46c8cd6b",
+   "op": "set",
+   "set": {
+    "text": "Many people think sunscreen is only necessary at the beach, but dermatologists say that sunlight can damage skin even on a cloudy day, when the weather seems harmless and the sun is hard to see. Health experts therefore give several pieces of advice that are worth knowing before the summer begins.\n\n(A) They also advise applying it again every two hours when you are outside, because sweat and water gradually wash it away.\n\n(B) Because of these rays, doctors recommend putting sunscreen on every morning, particularly on the face, neck and hands, which are always exposed.\n\n(C) The main reason is that ultraviolet rays pass through thin clouds, so a gray sky may still deliver most of the harmful energy.",
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(C)-(B)-(A)",
+       "(A)-(C)-(B)",
+       "(B)-(A)-(C)",
+       "(C)-(A)-(B)"
+      ],
+      "a": 0,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. 이유(C) → ‘these rays’를 받는 권고(B) → ‘They also advise’ 추가 권고(A) 순이에요."
+     },
+     {
+      "q": "Why can a cloudy day still harm the skin?",
+      "o": [
+       "Clouds make the air much hotter.",
+       "Sunscreen stops working in the shade.",
+       "Ultraviolet rays can pass through thin clouds.",
+       "The sun is closer on gray days."
+      ],
+      "a": 2,
+      "why": "얇은 구름을 자외선이 통과하기 때문이에요."
+     },
+     {
+      "q": "Which parts of the body are described as always exposed?",
+      "o": [
+       "The back, legs and feet",
+       "The arms, knees and ears",
+       "The hair, nose and shoulders",
+       "The face, neck and hands"
+      ],
+      "a": 3,
+      "why": "(B)에서 얼굴, 목, 손이 항상 노출된다고 말해요."
+     },
+     {
+      "q": "Why should people apply sunscreen again?",
+      "o": [
+       "The first layer becomes too thick.",
+       "Sunlight changes the color of the skin.",
+       "Sweat and water gradually wash it away.",
+       "Clouds move during the afternoon."
+      ],
+      "a": 2,
+      "why": "땀과 물이 선크림을 씻어내기 때문이에요."
+     }
+    ]
+   },
+   "why": "(B) 'As a result' could directly follow the intro, making (B)-(A)-(C) defensible; 'these rays' now forces (C) first. Q2 explanation 'second paragraph' was ambiguous.",
+   "severity": "minor"
+  },
+  {
+   "item": "014569e4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does the following line best fit in the dialogue?\n\"That is no problem, because I enjoy working with numbers, and I can make the charts tonight.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "Eun의 어려움(차트) 바로 뒤에 Jun이 도움을 제안하고, 다음 줄의 ‘then I will send you my notes’가 그 제안에 대한 응답이에요."
+     },
+     {
+      "q": "What problem does Eun mention?",
+      "o": [
+       "She cannot write a long report.",
+       "She does not enjoy working with Jun.",
+       "She lost the notes for the project.",
+       "She is not good at making charts."
+      ],
+      "a": 3,
+      "why": "Eun은 차트를 만드는 데 서툴다고 말해요."
+     },
+     {
+      "q": "Why does Eun prefer to practice together?",
+      "o": [
+       "They must decide who speaks and who answers questions.",
+       "They want to finish the report by Thursday evening.",
+       "Jun is afraid to speak in front of the teacher alone.",
+       "The library does not allow students to practice alone."
+      ],
+      "a": 0,
+      "why": "발표 순서와 질문에 답할 사람을 정해야 하기 때문이에요."
+     },
+     {
+      "q": "What will they do tomorrow after class?",
+      "o": [
+       "Send notes to each other by e-mail",
+       "Practice the presentation in the classroom",
+       "Meet in the library and print the charts",
+       "Ask the teacher to move the deadline"
+      ],
+      "a": 2,
+      "why": "내일 방과 후 도서관에서 만나 차트를 인쇄해요."
+     }
+    ]
+   },
+   "why": "Q2 key was by far the longest option; shortened key, lengthened distractors, moved key to position 1.",
+   "severity": "minor"
+  },
+  {
+   "item": "8aa17a35",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "In the dialogue, \"appreciate\" is closest in meaning to",
+      "o": [
+       "be curious about",
+       "be afraid of",
+       "be grateful for",
+       "be worried about"
+      ],
+      "a": 2,
+      "why": "‘appreciate’는 고마워한다는 뜻으로 ‘be grateful for’와 가까워요."
+     },
+     {
+      "q": "Why does the customer choose an exchange?",
+      "o": [
+       "The headphones are needed for class tonight.",
+       "The shop does not give refunds on headphones.",
+       "The card cannot receive any more payments now.",
+       "The clerk recommended a different, newer model."
+      ],
+      "a": 0,
+      "why": "오늘 저녁 온라인 수업에 필요하기 때문이에요."
+     },
+     {
+      "q": "Where does the following line best fit in the dialogue?\n\"That is fine, since our policy only requires proof of purchase and the product itself.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 2,
+      "why": "손님이 상자를 버렸다고 한 뒤에 ‘That is fine’이 오고, 다음 줄의 ‘In that case’가 이 대답을 받아 교환이나 환불을 물어요."
+     },
+     {
+      "q": "What will the clerk do next?",
+      "o": [
+       "Refund the money to the card",
+       "Bring a new pair and test it",
+       "Call the maker of the headphones",
+       "Check the receipt a second time"
+      ],
+      "a": 1,
+      "why": "새 제품을 가져와 시험해 주겠다고 해요."
+     }
+    ]
+   },
+   "why": "Q0's answer (shop policy: proof of purchase and product only) appears nowhere in the shown dialogue; it is only in the removed line given in the insertion question, so it cannot be answered from the text and it leaks the insertion answer. Replaced with a vocabulary-in-context question. Q1 key was uniquely longest.",
+   "severity": "major"
+  },
+  {
+   "item": "0ec6da07",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What problem does Sora mention about the bus tickets?",
+      "o": [
+       "They were bought for the wrong destination.",
+       "They are too expensive to change.",
+       "They have already been used once.",
+       "They are valid only for Saturday."
+      ],
+      "a": 3,
+      "why": "버스표가 토요일에만 유효하다고 해요."
+     },
+     {
+      "q": "Where does the following line best fit in the dialogue?\n\"We could go on Sunday instead, because the forecast says the weather will be clear all day.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 2,
+      "why": "Sora의 실망 뒤에 Minho가 일요일을 제안하고, 다음 줄의 ‘That would work for me’가 그 제안을 받아요."
+     },
+     {
+      "q": "What do they plan to do tomorrow morning?",
+      "o": [
+       "Buy new tickets for Sunday morning",
+       "Call the bus company about the date",
+       "Bring the food to the bus station",
+       "Check the trail again with a map"
+      ],
+      "a": 1,
+      "why": "내일 아침 버스 회사에 전화해 날짜 변경을 물을 거예요."
+     },
+     {
+      "q": "What will Minho do to prepare?",
+      "o": [
+       "Bring the maps for the trail",
+       "Pay for the tickets again",
+       "Pack the food for the hike",
+       "Cancel the trip completely"
+      ],
+      "a": 2,
+      "why": "일찍 출발하도록 음식을 챙기겠다고 해요."
+     }
+    ]
+   },
+   "why": "Q0 stem 'going on Sunday' reveals the removed line's content for the insertion question; Q2 key longest and its distractor 'Pack the food' overlaps Q3's key (timing 'in the meantime' is unspecified).",
+   "severity": "minor"
+  },
+  {
+   "item": "e3b0400e",
+   "op": "set",
+   "set": {
+    "q": "Choose the most natural order of the sentences.\nOur school library recently introduced a new rule about borrowing books.\n(A) To prevent this, every book must now be returned within two weeks, so more readers can enjoy it.\n(B) Previously, students could keep a book for as long as they wished.\n(C) As a result, popular titles often disappeared from the shelves for months.",
+    "o": [
+     "(B)-(C)-(A)",
+     "(A)-(B)-(C)",
+     "(A)-(C)-(B)",
+     "(C)-(A)-(B)"
+    ],
+    "a": 0,
+    "why": "연결어와 지시어, 시간 표현을 단서로 순서를 정해요. 과거의 상황(Previously) → 결과(As a result) → 문제를 막기 위한 새 규칙(To prevent this) 순서예요."
+   },
+   "why": "(A)-(B)-(C) was also natural (rule stated right after the intro, then 'Previously'). (A) now begins 'To prevent this', which requires (C) before it. Changes q (identity field).",
+   "severity": "major"
+  },
+  {
+   "item": "7dc52579",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Ordering question has two identical tokens 'I' (answer checked by token id, so a correct sentence with them swapped is marked wrong) and the word order is not unique (I would have left earlier had I known...).",
+   "severity": "major"
+  }
+ ],
+ "ok": 111,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

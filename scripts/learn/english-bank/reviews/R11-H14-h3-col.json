@@ -1,0 +1,51 @@
+{
+ "packet": "H14-h3-col",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 11,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "a2739111",
+   "op": "set",
+   "set": {
+    "z": [
+     "get along with",
+     "get rid of",
+     "get used to"
+    ]
+   },
+   "why": "Original distractors get on my nerves / get a kick out of it can complete the cloze sentence.",
+   "severity": "major"
+  },
+  {
+   "item": "d370fca0",
+   "op": "set",
+   "set": {
+    "sp": [
+     "jump on the bandwagen",
+     "jump on the bandwegon",
+     "jump on the bandwagoon"
+    ]
+   },
+   "why": "bandwaggon is a real variant spelling.",
+   "severity": "minor"
+  },
+  {
+   "item": "784c0b55",
+   "op": "set",
+   "set": {
+    "z": [
+     "paint the town red",
+     "tie the knot",
+     "kick the habit"
+    ]
+   },
+   "why": "blow a fuse and pull strings fit the cloze plausibly.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 125,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

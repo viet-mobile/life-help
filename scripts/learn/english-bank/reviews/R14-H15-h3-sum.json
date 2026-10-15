@@ -1,0 +1,324 @@
+{
+ "packet": "H15-h3-sum",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 14,
+  "questions": 107
+ },
+ "patches": [
+  {
+   "item": "05a7361c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Tourism brings (A) to the island, but the crowds put pressure on its (B).",
+      "o": [
+       "pollution / income",
+       "income / resources",
+       "income / weather",
+       "culture / airports"
+      ],
+      "a": 1,
+      "why": "관광은 소득을 주지만 물과 쓰레기 처리 같은 자원에 부담을 줘요."
+     },
+     {
+      "q": "What is the debate on the island really about?",
+      "o": [
+       "How many visitors the island can welcome without harm",
+       "Whether tourism should be stopped completely",
+       "Which beach on the island has the finest sand",
+       "How to build many more guesthouses near the busiest beaches"
+      ],
+      "a": 0,
+      "why": "방문객을 어느 수준으로 받아야 섬이 살기 좋은 곳으로 남는가가 쟁점이에요."
+     },
+     {
+      "q": "Why do some business owners oppose a limit on visitors?",
+      "o": [
+       "They dislike cleaning the beaches.",
+       "They want higher rents on the coast.",
+       "They believe water is unlimited.",
+       "They fear losing customers."
+      ],
+      "a": 3,
+      "why": "방문객이 줄면 손님이 줄 것을 걱정해요."
+     },
+     {
+      "q": "Which problem is caused by higher rents?",
+      "o": [
+       "Boat owners have to leave the island to find new kinds of work.",
+       "Tourists refuse to visit in summer.",
+       "Some local families cannot afford to live near the coast.",
+       "Rubbish is collected twice as often."
+      ],
+      "a": 2,
+      "why": "집세가 올라 일부 주민이 해안가에 살기 어려워졌어요."
+     }
+    ]
+   },
+   "why": "q0 stem no longer mentions the visitor-limit debate (leaked q1 key).",
+   "severity": "major"
+  },
+  {
+   "item": "48bab23f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main point of Dr. Lee's explanation?",
+      "o": [
+       "Dolphins never need any rest at all.",
+       "Dolphins sleep with half the brain resting at a time.",
+       "Dolphins sleep as deeply as humans do.",
+       "Dolphins breathe underwater without coming up."
+      ],
+      "a": 1,
+      "why": "돌고래는 뇌의 절반씩 번갈아 쉬며 잔다는 것이 핵심이에요."
+     },
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: A dolphin cannot sleep deeply because it must (A) to breathe and needs to stay (B) to its surroundings.",
+      "o": [
+       "surface / alert",
+       "dive / asleep",
+       "surface / hungry",
+       "hide / alert"
+      ],
+      "a": 0,
+      "why": "호흡하려면 수면으로 올라와야 하고 주변을 살피며 깨어 있어야 해요."
+     },
+     {
+      "q": "Why does Dr. Lee call the common idea 'a simplification'?",
+      "o": [
+       "It is completely true in every case.",
+       "It was invented by the host.",
+       "It describes animals that fly.",
+       "It is partly true but leaves out how dolphins really rest."
+      ],
+      "a": 3,
+      "why": "돌고래가 아예 자지 않는다는 말은 일부만 맞고 실제 방식을 생략했다는 뜻이에요."
+     },
+     {
+      "q": "What does the mention of birds show?",
+      "o": [
+       "Birds cannot fly for long distances.",
+       "Birds sleep far more deeply than dolphins do at night.",
+       "Some other animals may also rest half the brain.",
+       "Dolphins were once a kind of bird that lived near the sea."
+      ],
+      "a": 2,
+      "why": "일부 새도 비슷하게 쉬는 것으로 보인다는 예를 들었어요."
+     }
+    ]
+   },
+   "why": "Removes the half-brain fact from the summary stem (leaked q0 key).",
+   "severity": "major"
+  },
+  {
+   "item": "3f3a9e21",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main purpose of the meeting?",
+      "o": [
+       "To choose a way to promote the recycling campaign",
+       "To collect used paper from every classroom",
+       "To choose a new leader for the recycling club",
+       "To plan a school trip to a recycling center"
+      ],
+      "a": 0,
+      "why": "회의의 목적은 재활용 캠페인을 홍보할 방법을 정하는 것이에요."
+     },
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Since few students read posters or visit the website, the club will show a (A) in homeroom and print (B) posters on used paper.",
+      "o": [
+       "video / black-and-white",
+       "poster / color",
+       "video / color",
+       "script / large and colorful"
+      ],
+      "a": 0,
+      "why": "영상은 조회 시간에 보여 주고 포스터는 재활용지에 흑백으로 인쇄해요."
+     },
+     {
+      "q": "Why does the leader suggest printing posters on used paper?",
+      "o": [
+       "It makes the posters easier to read.",
+       "It is required by the school rules.",
+       "It helps the posters last much longer.",
+       "It matches the theme of the campaign."
+      ],
+      "a": 3,
+      "why": "재활용 캠페인의 주제와 어울리기 때문이에요."
+     },
+     {
+      "q": "Who will write the script?",
+      "o": [
+       "Minho",
+       "The leader",
+       "Eun",
+       "A teacher"
+      ],
+      "a": 2,
+      "why": "Eun이 대본을 쓰겠다고 했어요."
+     }
+    ]
+   },
+   "why": "q0 replaced because the summary stem of q1 answered it.",
+   "severity": "major"
+  },
+  {
+   "item": "0e0fa814",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does Tom want?",
+      "o": [
+       "To stop drawing and spend all his time on games",
+       "More time on the tablet for learning to draw",
+       "To buy a new tablet with his own savings",
+       "To play games for the whole day"
+      ],
+      "a": 1,
+      "why": "그림을 배우기 위한 추가 태블릿 시간을 원해요."
+     },
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Tom will offer his father a (A) and back it up with a (B) of his activities.",
+      "o": [
+       "deal / record",
+       "gift / secret",
+       "deal / complaint",
+       "rule / game"
+      ],
+      "a": 0,
+      "why": "추가 학습 시간을 거래로 제안하고 활동 기록으로 뒷받침해요."
+     },
+     {
+      "q": "Why does Yuna suggest showing Dad the drawings?",
+      "o": [
+       "Dad enjoys looking at drawings on tablets.",
+       "Tom's drawings are better than her own drawings.",
+       "Dad has already promised to give more time.",
+       "Evidence is more convincing than words alone."
+      ],
+      "a": 3,
+      "why": "증거가 말보다 설득력이 있다고 했어요."
+     },
+     {
+      "q": "What advice does Yuna give for the talk with Dad?",
+      "o": [
+       "Talk to him as soon as possible tonight",
+       "Pretend to agree with him",
+       "Stay calm instead of arguing",
+       "Bring a friend to help argue"
+      ],
+      "a": 2,
+      "why": "침착하게 말하라고 조언해요."
+     }
+    ]
+   },
+   "why": "Stem no longer reveals extra learning time (q0 key).",
+   "severity": "minor"
+  },
+  {
+   "item": "2b1bf7ea",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: A thirty percent chance of rain means that in (A) conditions in the past, it rained on about (B) of the occasions.",
+      "o": [
+       "different / three out of ten",
+       "similar / three out of ten",
+       "similar / seven out of ten",
+       "different / seven out of ten"
+      ],
+      "a": 1,
+      "why": "30% 확률은 비슷한 조건에서 과거 열 번 중 약 세 번 비가 왔다는 뜻이에요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Forecasts should be read as probabilities, not guarantees.",
+       "Forecasters are often careless with the data they collect each day.",
+       "It rains on three days out of every ten.",
+       "Umbrellas are unnecessary on dry days."
+      ],
+      "a": 0,
+      "why": "예보는 보장이 아니라 확률이라는 점이 요지예요."
+     },
+     {
+      "q": "Why can predictions several days ahead differ?",
+      "o": [
+       "Computers stop working properly after about one day of use.",
+       "Clouds disappear from the sky at night.",
+       "Forecasters change the model on purpose to surprise the public.",
+       "Small differences in starting data can change the results."
+      ],
+      "a": 3,
+      "why": "초기 자료의 작은 차이가 결과를 바꿀 수 있기 때문이에요."
+     },
+     {
+      "q": "What does 'A forecast is not a verdict' mean?",
+      "o": [
+       "It is always decided by a judge in a court of law.",
+       "It cannot be useful to anyone.",
+       "It does not give a final and certain judgment.",
+       "It is decided after the weather happens."
+      ],
+      "a": 2,
+      "why": "예보는 확정된 판정이 아니라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "q0 was a near-copy of the main-idea key; now tests a detail.",
+   "severity": "major"
+  },
+  {
+   "item": "74f1e995",
+   "op": "set",
+   "set": {
+    "q": "Some schools now let students choose their own seats at lunch rather than assigning tables by class. At first, teachers worried that groups would exclude others. In practice, students often sat with new classmates from shared clubs, and the lunchroom grew noisier but friendlier.\n\nWhich sentence is the best summary of the paragraph?",
+    "o": [
+     "Assigned tables remain the surest way to keep a lunchroom quiet.",
+     "Free seating at lunch can lead students to make new friendships.",
+     "Teachers have banned school clubs because of conflicts at lunch.",
+     "Students who choose their seats prefer to eat alone each day."
+    ],
+    "a": 1,
+    "why": "자유 좌석이 새로운 친구 관계로 이어졌다는 것이 요지예요."
+   },
+   "why": "Lengthen key (was uniquely shortest).",
+   "severity": "minor"
+  },
+  {
+   "item": "801c6220",
+   "op": "set",
+   "set": {
+    "good": "The author supports teaching skills rather than memorizing facts.",
+    "bad": [
+     "The author supports teaching skills rather memorizing facts.",
+     "The author supports to teach skills rather than memorizing facts.",
+     "The author supports teaching skills instead than memorizing facts."
+    ],
+    "cz": {
+     "st": "The author supports teaching skills rather than ___ facts.",
+     "ok": "memorizing",
+     "wr": [
+      "memorizes",
+      "to memorizing",
+      "memorized"
+     ]
+    },
+    "rule": "rather than은 앞뒤를 같은 형태로 연결해요. teaching과 짝이 되도록 memorizing을 써요. support는 동명사를 목적어로 취해요.",
+    "ord": false
+   },
+   "why": "cz.wr: replace memorize with memorizes; good unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 99,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

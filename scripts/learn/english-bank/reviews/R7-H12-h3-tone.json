@@ -1,0 +1,461 @@
+{
+ "packet": "H12-h3-tone",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 114
+ },
+ "patches": [
+  {
+   "item": "bf4c8af8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the coach's tone?",
+      "o": [
+       "Angry and mocking of the players",
+       "Nervous and unsure",
+       "Bored and impatient",
+       "Confident and encouraging"
+      ],
+      "a": 3,
+      "why": "자신감을 주며 격려하는 어조예요."
+     },
+     {
+      "q": "Why does the coach ask how many times Hana missed?",
+      "o": [
+       "To scold her for making mistakes",
+       "To change the order of players",
+       "To remind her that she is well prepared",
+       "To find out who should leave the team"
+      ],
+      "a": 2,
+      "why": "연습 성과를 일깨워 자신감을 주려는 거예요."
+     },
+     {
+      "q": "What is Hana's feeling at the beginning?",
+      "o": [
+       "Proud of her team",
+       "Worried about the opposing team",
+       "Disappointed with the coach's decision",
+       "Excited about the match"
+      ],
+      "a": 1,
+      "why": "상대 팀이 크다고 걱정해요."
+     },
+     {
+      "q": "What does the coach mean by \"Do not try. Do it\"?",
+      "o": [
+       "Hana should act with full commitment instead of doubting herself.",
+       "Hana should stay out of the game and watch from the bench.",
+       "Hana should practice fifty more times before the final starts.",
+       "Hana should stop talking to her teammates until the game ends."
+      ],
+      "a": 0,
+      "why": "망설임 없이 실행하라는 격려예요."
+     }
+    ]
+   },
+   "why": "Key was far longer than the distractors (60 vs 33-39 chars); lengthened distractors, kept them clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "7b69a68e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which word best describes the narrator's attitude?",
+      "o": [
+       "Determined",
+       "Careless",
+       "Resentful",
+       "Cheerful"
+      ],
+      "a": 0,
+      "why": "지쳤지만 끝까지 해내겠다는 의지가 드러나요."
+     },
+     {
+      "q": "Why does the narrator continue studying?",
+      "o": [
+       "The narrator's parents are watching from behind.",
+       "The exam was moved to an earlier date by the school without notice.",
+       "The narrator wants to win a prize tonight.",
+       "A promise to the grandmother gives the narrator motivation."
+      ],
+      "a": 3,
+      "why": "할머니와의 약속이 동기가 돼요."
+     },
+     {
+      "q": "What does \"It is not heroic, and no one is watching\" suggest?",
+      "o": [
+       "The narrator is performing for a large and admiring audience.",
+       "The narrator regrets studying so seriously this late at night.",
+       "The narrator is working steadily without praise or attention.",
+       "The narrator is ashamed of the grades from the last exam."
+      ],
+      "a": 2,
+      "why": "누가 보지 않아도 묵묵히 해 나간다는 뜻이에요."
+     },
+     {
+      "q": "What is the mood created by the silent house and the late hour?",
+      "o": [
+       "Noisy and festive",
+       "Quiet and weary",
+       "Dangerous and tense",
+       "Silly and relaxed"
+      ],
+      "a": 1,
+      "why": "고요하고 지친 분위기예요."
+     }
+    ]
+   },
+   "why": "Key longest (61 vs 38-48); lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "5faebef2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How does the father's attitude change during the conversation?",
+      "o": [
+       "From stern to gentle and understanding",
+       "From playful to serious and cold",
+       "From calm to furious and shouting",
+       "From distant to proud of his son"
+      ],
+      "a": 0,
+      "why": "처음의 추궁에서 사과와 경청으로 부드러워져요."
+     },
+     {
+      "q": "What is Jin's main emotion when he says \"I froze\"?",
+      "o": [
+       "Pride in his hard work and results",
+       "Anger toward the teacher",
+       "Boredom with the subject",
+       "Fear of letting his father down"
+      ],
+      "a": 3,
+      "why": "아버지를 실망시킬까 두려웠다고 말해요."
+     },
+     {
+      "q": "What does the father mean by \"You could never disappoint me by being human\"?",
+      "o": [
+       "Only machines are allowed to make no mistakes at all.",
+       "Jin must study harder to become a better person someday.",
+       "Making mistakes is natural and will not lower his love.",
+       "He is secretly pleased that Jin failed the test today."
+      ],
+      "a": 2,
+      "why": "실수는 인간적이며 사랑이 줄지 않는다는 뜻이에요."
+     },
+     {
+      "q": "Why does Jin answer \"Fine\" at the beginning?",
+      "o": [
+       "He has just passed the test with a high score and wants to hide it.",
+       "He wants to avoid talking about something that upset him.",
+       "He has not heard his father's question.",
+       "He believes his father is not interested."
+      ],
+      "a": 1,
+      "why": "불편한 이야기를 피하려는 짧은 대답이에요."
+     },
+     {
+      "q": "What is the purpose of the last line, \"eat before the soup gets cold\"?",
+      "o": [
+       "To end the tension and show everyday care",
+       "To order Jin to leave the table",
+       "To complain about the quality of the soup",
+       "To change the subject because he is bored"
+      ],
+      "a": 0,
+      "why": "일상적인 말로 분위기를 풀고 배려를 표현해요."
+     }
+    ]
+   },
+   "why": "Key longest (55 vs 38-41); lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "0f2bb29a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which phrase best describes Mr. Lee's tone?",
+      "o": [
+       "Rude and shouting",
+       "Joking and careless",
+       "Fearful and quiet",
+       "Polite but firm"
+      ],
+      "a": 3,
+      "why": "불만을 정중하게, 그러나 분명히 말해요."
+     },
+     {
+      "q": "What is the waiter's attitude?",
+      "o": [
+       "Defensive and rather annoyed",
+       "Bored and silent",
+       "Apologetic and helpful",
+       "Proud and boastful"
+      ],
+      "a": 2,
+      "why": "사과하고 해결책을 제시해요."
+     },
+     {
+      "q": "Why does the waiter offer bread and a drink on the house?",
+      "o": [
+       "To tell the guests to leave quickly",
+       "To make up for the delay",
+       "To advertise the new menu",
+       "To collect money from the guests"
+      ],
+      "a": 1,
+      "why": "지연에 대한 보상이에요."
+     },
+     {
+      "q": "What is the main problem in the conversation?",
+      "o": [
+       "Mr. Lee's fish order still has not arrived after a long wait.",
+       "The restaurant has run out of fish for the whole evening.",
+       "The guests have refused to pay the bill for their meal.",
+       "The tables are all full, so no new guests can be seated."
+      ],
+      "a": 0,
+      "why": "40분이 지나도록 주문이 나오지 않았어요."
+     }
+    ]
+   },
+   "why": "Key \"was served much later\" is inaccurate: the fish has not been served yet at all (40 minutes, still waiting); also key was longest. Rewrote key accurately and lengthened distractors.",
+   "severity": "major"
+  },
+  {
+   "item": "55b4b4e1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the mood of the passage?",
+      "o": [
+       "Melancholy",
+       "Triumphant",
+       "Furious",
+       "Humorous"
+      ],
+      "a": 0,
+      "why": "마지막 날의 쓸쓸하고 애잔한 분위기예요."
+     },
+     {
+      "q": "Why did no one stand up when the clock struck five?",
+      "o": [
+       "They were waiting for a new librarian to arrive that evening.",
+       "They did not hear the clock strike over the street noise.",
+       "They wanted to start reading new books before closing time.",
+       "They were reluctant to say goodbye to a place they loved."
+      ],
+      "a": 3,
+      "why": "떠나기 싫은 마음을 나타내요."
+     },
+     {
+      "q": "What does Mr. Han's reaction to the girl's request suggest?",
+      "o": [
+       "He was angry at the girl's request.",
+       "He had not understood her question.",
+       "He was too moved to speak.",
+       "He was bored with the end of his job."
+      ],
+      "a": 2,
+      "why": "목소리가 떨린 적이 없던 그가 고개만 끄덕이고 시선을 돌린 것은 감정이 북받쳤기 때문이에요."
+     },
+     {
+      "q": "What is implied by \"it would be different\"?",
+      "o": [
+       "The new library would have fewer books.",
+       "The new building could not replace the feeling of the old one.",
+       "The new library would be built in a different city far from the old one.",
+       "The librarian would no longer be needed."
+      ],
+      "a": 1,
+      "why": "새 건물이 크고 밝아도 옛 도서관의 정서를 대신할 수는 없다는 암시예요."
+     }
+    ]
+   },
+   "why": "Key longest (57 vs 35-48); lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "efb01dff",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the tone of Eli's first remarks (\"Oh, fantastic...\")?",
+      "o": [
+       "Sincere",
+       "Frightened",
+       "Admiring",
+       "Sarcastic"
+      ],
+      "a": 3,
+      "why": "칭찬하는 척하며 실제로는 계획을 비판하는 빈정거림이에요."
+     },
+     {
+      "q": "What does Eli really think of Nora's plan?",
+      "o": [
+       "It is a wonderful plan that needs no help.",
+       "It is unnecessary because there are enough posters.",
+       "It is unrealistic for one person to finish alone.",
+       "It will be a success within a few hours."
+      ],
+      "a": 2,
+      "why": "40장을 혼자 하기는 많다고 직접 말해요."
+     },
+     {
+      "q": "How does the conversation end?",
+      "o": [
+       "Nora refuses and leaves angrily.",
+       "Eli offers help and Nora accepts gratefully.",
+       "Eli decides to stop being friends with Nora.",
+       "They agree to cancel the posters."
+      ],
+      "a": 1,
+      "why": "Eli가 그림을 돕겠다고 하고 Nora가 고마워하며 수락해요."
+     },
+     {
+      "q": "What is suggested by Eli's last remark, \"Besides pointing out my own bad ideas\"?",
+      "o": [
+       "Eli can laugh at himself and has made similar mistakes.",
+       "Eli believes he has never had a single bad idea in his life.",
+       "Eli wants to blame Nora for mistakes that were really his own.",
+       "Eli does not value their friendship as much as Nora does."
+      ],
+      "a": 0,
+      "why": "자기도 나쁜 계획을 세운 적이 있다는 자기 풍자예요."
+     }
+    ]
+   },
+   "why": "Key longest (55 vs 28-45); lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "b6e334c6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which phrase best describes the tone of the speech?",
+      "o": [
+       "Warm and lightly humorous",
+       "Strict, cold, and unforgiving",
+       "Sad and apologetic",
+       "Cold and distant"
+      ],
+      "a": 0,
+      "why": "따뜻하고 가벼운 유머가 섞인 어조예요."
+     },
+     {
+      "q": "What is the main purpose of the speech?",
+      "o": [
+       "To criticize students for their poor behavior",
+       "To announce changes in school rules",
+       "To advertise next year's courses",
+       "To send graduates off with encouragement and thanks"
+      ],
+      "a": 3,
+      "why": "졸업생에게 격려와 감사를 전하는 연설이에요."
+     },
+     {
+      "q": "Why does the principal mention \"my speeches\"?",
+      "o": [
+       "To warn students about an unusually long speech",
+       "To introduce the next speaker on the program",
+       "To make a joke at the speaker's own expense",
+       "To blame the teachers for the delay today"
+      ],
+      "a": 2,
+      "why": "자기 연설을 농담거리로 삼아 분위기를 풀어요."
+     },
+     {
+      "q": "What does the principal believe about the graduates' future?",
+      "o": [
+       "They will find life easy and carefree.",
+       "They will cope well with its challenges.",
+       "They will forget their school immediately.",
+       "They will have no need of further help."
+      ],
+      "a": 1,
+      "why": "삶이 쉽지 않지만 잘 해낼 것이라 믿어요."
+     }
+    ]
+   },
+   "why": "Option said \"his own expense\" but the principal's gender is never stated in the text; made neutral.",
+   "severity": "minor"
+  },
+  {
+   "item": "266e2664",
+   "op": "set",
+   "set": {
+    "text": "Ms. Berg: Mr. Adams, thank you for taking my call. I am calling about your son, Peter.\nMr. Adams: Is something wrong? He did not come home on time yesterday.\nMs. Berg: Nothing serious, I hope. He missed three classes this week, and I wanted to understand why.\nMr. Adams: Three? I had no idea. He leaves every morning with his bag.\nMs. Berg: I thought as much. Peter is a bright boy, and I do not want to punish him. I want to help.\nMr. Adams: I appreciate that. I will talk to him tonight.\nMs. Berg: If I may suggest, perhaps listen first. Sometimes there is something behind it.\nMr. Adams: You are right. I tend to shout first and ask later.\nMs. Berg: Many of us do. Please call me whenever you wish.\nMr. Adams: Thank you, Ms. Berg. I will."
+   },
+   "why": "Speaker labels were inconsistent (Ms. Berg/Teacher, Father/Mr. Adams); unified to names. Questions unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "84a149df",
+   "op": "set",
+   "set": {
+    "q": "Which sentence is the most formal?",
+    "o": [
+     "Hey, can you send me that file real quick, please?",
+     "Send it over to me, would ya, when you get a minute?",
+     "Gimme the file now, okay, and don't take too long?",
+     "I would be grateful if you could forward the document."
+    ],
+    "a": 3,
+    "why": "would be grateful if you could는 격식 있는 요청 표현이에요."
+   },
+   "why": "Key far longer than distractors (54 vs 21-31); lengthened distractors, identity (q) unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "21f54f0e",
+   "op": "set",
+   "set": {
+    "q": "A writer says a neighbor's promise was \"as reliable as a chocolate teapot.\" What is the tone?",
+    "o": [
+     "Admiring",
+     "Neutral",
+     "Mocking",
+     "Shy"
+    ],
+    "a": 2,
+    "why": "초콜릿 찻주전자는 쓸모없다는 뜻으로, 약속을 비웃는 어조예요."
+   },
+   "why": "Spec forbids politics; replaced 'politician' with 'neighbor'. Changes identity field q.",
+   "severity": "minor"
+  },
+  {
+   "item": "5e833663",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "I wish I ___ more kindly to him.",
+     "ok": "had spoken",
+     "wr": [
+      "having spoken",
+      "had spoke",
+      "did speaking"
+     ]
+    }
+   },
+   "why": "Blind solver found \"have spoken\" defensible for a past wish; replaced with the plainly wrong \"having spoken\".",
+   "severity": "minor"
+  }
+ ],
+ "ok": 103,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

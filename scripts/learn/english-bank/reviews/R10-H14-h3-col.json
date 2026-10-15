@@ -1,0 +1,90 @@
+{
+ "packet": "H14-h3-col",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "59d623b5",
+   "op": "set",
+   "set": {
+    "z": [
+     "sweet majority",
+     "wet majority",
+     "sleepy majority"
+    ]
+   },
+   "why": "\"heavy majority\" is attested in English, so a distractor may be defensible",
+   "severity": "minor"
+  },
+  {
+   "item": "3b91ae13",
+   "op": "set",
+   "set": {
+    "z": [
+     "tall escape",
+     "loud escape",
+     "salty escape"
+    ]
+   },
+   "why": "\"sweet escape\" is a real collocation (a pleasant getaway)",
+   "severity": "minor"
+  },
+  {
+   "item": "6e2b8ead",
+   "op": "set",
+   "set": {
+    "z": [
+     "sleepy competition",
+     "square competition",
+     "damp competition"
+    ]
+   },
+   "why": "\"silent competition\" is a plausible phrase for quiet rivalry",
+   "severity": "minor"
+  },
+  {
+   "item": "77ecf1ce",
+   "op": "set",
+   "set": {
+    "z": [
+     "a storm in a teacup",
+     "a needle in a haystack",
+     "a bull in a china shop"
+    ]
+   },
+   "why": "key uniquely longest in cloze; lengthened distractors",
+   "severity": "minor"
+  },
+  {
+   "item": "f00c54c0",
+   "op": "set",
+   "set": {
+    "z": [
+     "burn the midnight oil",
+     "jump on the bandwagon",
+     "cost an arm and a leg"
+    ]
+   },
+   "why": "key uniquely longest in cloze; lengthened distractors (and removed \"beat the clock\"/\"kick the bucket\" short ones)",
+   "severity": "minor"
+  },
+  {
+   "item": "3337c79c",
+   "op": "set",
+   "set": {
+    "z": [
+     "on top of the world",
+     "as happy as a clam",
+     "head over heels"
+    ]
+   },
+   "why": "key longest in cloze; lengthened distractors, all contradict fever",
+   "severity": "minor"
+  }
+ ],
+ "ok": 122,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

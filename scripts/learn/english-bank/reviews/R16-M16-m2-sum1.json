@@ -1,0 +1,493 @@
+{
+ "packet": "M16-m2-sum1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 16,
+  "questions": 105
+ },
+ "patches": [
+  {
+   "item": "47e54268",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence is the best summary of the passage?",
+      "o": [
+       "People today use bikes for fun, sport, and daily travel.",
+       "Bicycles changed over time until they reached today's safe design.",
+       "People today use bikes only for sport and for fun on weekends.",
+       "Inventors made bikes faster by putting the pedals on large front wheels."
+      ],
+      "a": 1,
+      "why": "시간이 지나며 자전거가 오늘날의 안전한 모양으로 발전했다는 것이 중심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "What made later bicycles easier and safer?",
+      "o": [
+       "Large pedals on the front wheel only",
+       "A larger back wheel",
+       "No pedals at all",
+       "A back-wheel chain and equal wheels"
+      ],
+      "a": 3,
+      "why": "뒷바퀴 체인과 같은 크기의 두 바퀴가 더 안전하고 쉬웠어요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "Which came first?",
+      "o": [
+       "Bikes with no pedals",
+       "Bikes with a chain",
+       "Bikes with equal wheels",
+       "Bikes with pedals on the front wheel"
+      ],
+      "a": 0,
+      "why": "페달 없는 자전거가 가장 먼저 나왔어요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "How did riders move the earliest bikes?",
+      "o": [
+       "By using a very small engine",
+       "By turning a handle",
+       "By pushing off the ground",
+       "By pedaling on the back wheel"
+      ],
+      "a": 2,
+      "why": "발로 땅을 밀어 앞으로 나아갔어요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ],
+    "text": "The first bicycles looked very different from the ones we ride today. About two hundred years ago, some had no pedals at all; riders pushed against the ground with their feet to move. Later, inventors added pedals to the front wheel, which made the bike faster but harder to ride. Then, makers put a chain on the back wheel and gave both wheels the same size. This design was safer and easier, and it is still the basic shape of most bicycles. Today, people use bikes for fun, sport, and daily travel."
+   },
+   "why": "Summary option c (\"The first bicycles had no pedals, so riders pushed with their feet\") gives away the answers of the Which-came-first and How-did-riders-move questions; replaced with a true but too-narrow detail. Also \"pushed the ground\" -> \"pushed against the ground\".",
+   "severity": "major"
+  },
+  {
+   "item": "7cfcac74",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to make oatmeal with fruit quickly",
+       "Why students never have time in the morning",
+       "How sugary snacks are made",
+       "Why students should eat breakfast"
+      ],
+      "a": 3,
+      "why": "건강한 아침 식사가 학생에게 왜 좋은지가 중심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Which sentence is too narrow to be the main idea of the passage?",
+      "o": [
+       "A boiled egg and toast is one quick breakfast that a student can make.",
+       "Eating breakfast helps students feel and learn better.",
+       "Students should not skip breakfast, because it is quick to make and good for them.",
+       "Breakfast gives students energy for the day, and a good one is easy to prepare."
+      ],
+      "a": 0,
+      "why": "삶은 달걀과 토스트는 글에 나온 한 가지 예시일 뿐이라 중심 생각으로는 너무 좁아요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "According to the passage, what happens after a sugary snack?",
+      "o": [
+       "You sleep for many hours.",
+       "You listen better.",
+       "You get hungry soon.",
+       "You need less lunch."
+      ],
+      "a": 2,
+      "why": "당분 간식은 에너지가 금방 사라져 점심 전에 다시 배가 고파요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does the writer want to say with \"this can be a mistake\"?",
+      "o": [
+       "Students should eat only fruit.",
+       "Skipping breakfast is unwise.",
+       "Hurrying is a good habit.",
+       "Mornings are always busy."
+      ],
+      "a": 1,
+      "why": "아침을 거르는 것은 좋지 않다는 뜻이에요.",
+      "std": [
+       "9영01-06"
+      ]
+     }
+    ]
+   },
+   "why": "Original distractors c and d each cover only one supporting point (easy to prepare / energy after sleep), so they are also arguably too narrow, and the key is the uniquely shortest option. Reworded stem and made b-d genuinely broad, parallel in length.",
+   "severity": "major"
+  },
+  {
+   "item": "25766616",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which is the best summary of the conversation?",
+      "o": [
+       "Jack and Sumi cannot decide because the bus ride takes too long.",
+       "The class will visit an amusement park to ride all of the exciting rides.",
+       "Sumi persuades Jack that the science garden is a better trip.",
+       "Sumi asks the teacher to build robots for the class during the trip."
+      ],
+      "a": 2,
+      "why": "수미가 과학 정원이 더 좋은 선택이라고 잭을 설득했어요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Why does Sumi not like the amusement park idea?",
+      "o": [
+       "The teacher says that parks are boring.",
+       "It is much too far from the school.",
+       "Tickets cost a lot and the lines are long.",
+       "The rides are too scary for the class."
+      ],
+      "a": 2,
+      "why": "표가 비싸고 줄이 길다고 말해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "How does Jack feel at the end?",
+      "o": [
+       "He is angry at Sumi.",
+       "He is tired of waiting.",
+       "He is afraid of robots.",
+       "He likes the new plan."
+      ],
+      "a": 3,
+      "why": "robots sound great, you have convinced me라고 했어요.",
+      "std": [
+       "9영01-05"
+      ]
+     },
+     {
+      "q": "How far is the science garden from school?",
+      "o": [
+       "Half an hour by bus",
+       "One hour by bus",
+       "Ten minutes on foot",
+       "Two hours by train"
+      ],
+      "a": 0,
+      "why": "버스로 30분이에요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "\"Tickets cost much\" is unnatural in an affirmative sentence; key also was the most detailed option. Reworded key and lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "ad03b4af",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does Dad advise Eun to do?",
+      "o": [
+       "Write about the parrot first.",
+       "Start with a short summary.",
+       "Read the book a second time.",
+       "Copy the story from the cover."
+      ],
+      "a": 1,
+      "why": "두 문장 요약으로 시작하고 세부 내용은 중간에 넣으라고 조언해요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Which sentence is the best summary of the conversation?",
+      "o": [
+       "Dad reads the book about an island and tells Eun about the parrot.",
+       "Eun is upset because her father does not like adventure stories.",
+       "Eun and her father plan a trip to find a hidden island.",
+       "Dad shows Eun how to begin a book report with a summary."
+      ],
+      "a": 3,
+      "why": "아빠가 독후감을 요약으로 시작하는 법을 알려 줘요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Which of these does Dad call a detail?",
+      "o": [
+       "The funny parrot",
+       "The boy's younger sister",
+       "The map in the attic",
+       "The hidden island"
+      ],
+      "a": 0,
+      "why": "아빠가 폭풍, 동굴, 앵무새를 세부 내용이라고 불러요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does Eun probably do next?",
+      "o": [
+       "She throws away the book.",
+       "She asks for a new topic.",
+       "She begins with two sentences.",
+       "She writes about the storm first."
+      ],
+      "a": 2,
+      "why": "마지막에 두 문장으로 시작하겠다고 했어요.",
+      "std": [
+       "9영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "In the dialogue Dad says \"Those are details\" (about the storm, cave and parrot); Eun does not call anything a detail. Stem corrected to match text and explanation.",
+   "severity": "major"
+  },
+  {
+   "item": "f024e69e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which is the best summary of the conversation?",
+      "o": [
+       "Ben gets help choosing a gift for a friend who likes art.",
+       "Ben and Anna are painting pictures for Dana's party on Saturday.",
+       "Anna wants to buy music for Ben's birthday after school.",
+       "Dana is going to the stationery shop to buy some paper."
+      ],
+      "a": 0,
+      "why": "친구의 생일 선물을 고르는 것을 도와주는 대화예요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Why does Ben reject the paints?",
+      "o": [
+       "They cost too much.",
+       "Dana dislikes painting.",
+       "Dana already owns some.",
+       "The shop is closed."
+      ],
+      "a": 2,
+      "why": "다나가 이미 물감이 있다고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What do they decide to do?",
+      "o": [
+       "Buy a sketchbook and write a card",
+       "Wait until Saturday to choose a gift",
+       "Paint a picture together for her",
+       "Make a music box as her gift"
+      ],
+      "a": 0,
+      "why": "스케치북을 사고 그 안에 카드를 쓰기로 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What will Ben and Anna do after school?",
+      "o": [
+       "Visit Dana's house together",
+       "Paint in the art room",
+       "Go to a music store",
+       "Go to a stationery shop"
+      ],
+      "a": 3,
+      "why": "방과 후 문구점에 가요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Key said they buy \"a sketchbook and a card\", but the text only says Ben could WRITE a short card inside the sketchbook (nothing about buying a card). Key corrected and distractors lengthened.",
+   "severity": "major"
+  },
+  {
+   "item": "f90b97d9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence is the best summary of the conversation?",
+      "o": [
+       "Hana wants to cook food for the teachers at the school.",
+       "Mr. Lee asks the cooking club to take photos on Friday.",
+       "Mr. Lee explains the job, and Hana agrees to write about a club.",
+       "The school newspaper is closing because it has too few writers."
+      ],
+      "a": 2,
+      "why": "리 선생님이 기사 방향을 설명하고, 하나(Hana)가 요리 동아리 기사를 쓰기로 해요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "How long should the article be?",
+      "o": [
+       "About one hundred words",
+       "About two hundred words",
+       "About five hundred words",
+       "One page with photos"
+      ],
+      "a": 1,
+      "why": "약 200단어를 요청해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why does Hana choose the cooking club?",
+      "o": [
+       "She is a member of it.",
+       "It has many photos.",
+       "Mr. Lee asked her to.",
+       "It won a prize."
+      ],
+      "a": 3,
+      "why": "지난달 상을 받았기 때문이에요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does Mr. Lee mean by \"focused on the main points\"?",
+      "o": [
+       "Include only the key points.",
+       "Add as many facts as possible.",
+       "Use long and difficult words.",
+       "Make the article funny."
+      ],
+      "a": 0,
+      "why": "핵심만 담으라는 요약의 원칙과 같아요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "Explanation wrote 하나가 for the student Hana, which reads as the number \"one\"; clarified as 하나(Hana).",
+   "severity": "minor"
+  },
+  {
+   "item": "a2d39f38",
+   "op": "set",
+   "set": {
+    "q": "Many birds fly south before winter. They look for places where food is easy to find and the weather is warmer. Some travel thousands of kilometers each year. Many fly together in large groups, which helps them save energy. Before the trip, they eat a lot to store extra energy in their bodies, and most of them return in spring.\n\nWhich sentence is the best summary of the text?",
+    "o": [
+     "Birds need thousands of kilometers of space in every season of the year.",
+     "Winter is the most dangerous time of the year for all animals on Earth.",
+     "Some birds can fly farther than airplanes that carry people across the sea.",
+     "Many birds travel far to warmer places to find food in winter."
+    ],
+    "a": 3,
+    "why": "철새가 먹이와 따뜻한 날씨를 찾아 먼 곳으로 이동한다는 내용이에요."
+   },
+   "why": "Passage was 28 words (3 sentences); level M requires at least 60 words. Extended to about 65 words; options, key and explanation unchanged. Identity field q changes. (Other kind-m passages in this batch are 29-43 words, same shortfall; only the shortest is patched.)",
+   "severity": "minor"
+  },
+  {
+   "item": "f2dcafb7",
+   "op": "set",
+   "set": {
+    "q": "Which of the following does NOT belong in a good summary?",
+    "o": [
+     "Your own opinion about the topic",
+     "The ideas written in your own words",
+     "The main idea of the text",
+     "The most important supporting points"
+    ],
+    "a": 0,
+    "why": "요약에는 글쓴이가 아닌 내 의견이나 느낌을 넣지 않아요."
+   },
+   "why": "\"The writer's own opinion\" is ambiguous: the original author's stance can legitimately appear in a summary, so the key could be wrong; changed to \"Your own opinion about the topic\" (identity field o changes).",
+   "severity": "major"
+  },
+  {
+   "item": "78d00cd7",
+   "op": "set",
+   "set": {
+    "q": "A text says: \"Reading helps people learn new words and understand other people better.\" A student wrote this summary: \"Reading makes people smarter, richer, and more famous than others.\" What is the problem with the summary?",
+    "o": [
+     "It is too short to be useful.",
+     "It repeats the title three times.",
+     "It adds ideas not in the text.",
+     "It is written in the wrong language."
+    ],
+    "a": 2,
+    "why": "글에 없는 내용을 덧붙이면 좋은 요약이 아니에요."
+   },
+   "why": "Original stem refers to an unseen text (\"a text about the benefits of reading\"), so the key cannot be verified from the item; the source text is now included. Identity field q changes.",
+   "severity": "major"
+  },
+  {
+   "item": "d06776eb",
+   "op": "set",
+   "set": {
+    "good": "She asked me what the passage was mainly about.",
+    "bad": [
+     "She asked me what was the passage mainly about.",
+     "She asked me what the passage mainly was about it.",
+     "She asked me what does the passage mainly about."
+    ],
+    "cz": {
+     "st": "She asked me what the passage ___ mainly about.",
+     "ok": "was",
+     "wr": [
+      "did",
+      "were",
+      "be"
+     ]
+    },
+    "rule": "간접의문문에서는 의문사 뒤에 '주어 + 동사' 순서를 쓰고, 전달 동사가 과거(asked)이면 시제를 과거(was)로 맞춰요.",
+    "ord": false
+   },
+   "why": "Word order is not unique: \"She asked me what the passage mainly was about\" uses the same words and is acceptable; ordering question dropped via ord:false.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 95,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

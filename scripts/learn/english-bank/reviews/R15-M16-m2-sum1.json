@@ -1,0 +1,482 @@
+{
+ "packet": "M16-m2-sum1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 15,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "05d0cd0b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main message of the story?",
+      "o": [
+       "Summer is the best time to learn any sport.",
+       "Friends should never leave a scared child alone.",
+       "Swimming boards are needed for every beginner.",
+       "Small steps can help you overcome a fear."
+      ],
+      "a": 3,
+      "why": "두려움도 작은 단계를 차근차근 밟으면 이겨낼 수 있다는 것이 핵심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Which sentence is too detailed to be a good summary of the whole story?",
+      "o": [
+       "On the second day, the writer held a board and kicked.",
+       "A child who feared water learned to swim step by step.",
+       "The writer feels proud of overcoming a childhood fear.",
+       "With an aunt's help, the writer finally swam across the pool."
+      ],
+      "a": 0,
+      "why": "둘째 날 이야기는 하루의 세부 내용일 뿐 전체를 요약하지 못해요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Who taught the writer to swim?",
+      "o": [
+       "The writer's friends",
+       "A pool lifeguard",
+       "The writer's aunt",
+       "The writer's cousin"
+      ],
+      "a": 2,
+      "why": "여름에 이모(고모)가 가르쳐 주겠다고 했어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does \"far wall\" refer to?",
+      "o": [
+       "The wall behind the writer's house",
+       "The wall at the pool's far end",
+       "The wall next to the writer's feet",
+       "The wall near the school gate"
+      ],
+      "a": 1,
+      "why": "수영장을 가로질러 맞은편 벽을 짚었다는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "Passage never gives the writer's gender; 'A girl', 'Her friends/aunt' invent it. Neutralized wording (key unchanged).",
+   "severity": "minor"
+  },
+  {
+   "item": "39a659fa",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence is the best summary of the passage?",
+      "o": [
+       "Fennec foxes have big ears, and camels can walk for days without any water.",
+       "Desert animals have special ways to survive with little water.",
+       "Deserts are the hottest places on Earth, and no plants can grow there.",
+       "Small animals leave their holes only at night because they are afraid of camels."
+      ],
+      "a": 1,
+      "why": "중심 내용은 사막 동물들이 물이 적은 곳에서 살아남는 방법이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "According to the passage, why do fennec foxes have large ears?",
+      "o": [
+       "To hear sounds from far away",
+       "To dig holes in hot sand",
+       "To store water for later",
+       "To let body heat escape"
+      ],
+      "a": 3,
+      "why": "큰 귀가 열을 내보내 몸을 시원하게 해 줘요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "When do many small desert animals look for food?",
+      "o": [
+       "At night",
+       "At noon",
+       "In the early afternoon",
+       "Just after the rain"
+      ],
+      "a": 0,
+      "why": "더운 낮에는 구멍에서 자고 밤에 나와요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "The word \"rare\" is closest in meaning to",
+      "o": [
+       "easy to carry",
+       "good to drink",
+       "hard to find",
+       "far from home"
+      ],
+      "a": 2,
+      "why": "rare는 '드문'이라는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "Real-world fact: fennec ears also help hearing, so 'To hear sounds from far away' is defensible without the 'according to the passage' frame; stem now anchors to the text.",
+   "severity": "major"
+  },
+  {
+   "item": "dd42c668",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the best summary of the passage?",
+      "o": [
+       "Fishers use tide tables to find small crabs and shells on the sand.",
+       "Tides are daily changes in sea level that affect people at the beach.",
+       "The moon is a large ball of rock that pulls on every beach in the world.",
+       "Waves always reach far up the sand when people want to swim."
+      ],
+      "a": 1,
+      "why": "조수가 하루에 두 번 바닷물 높이가 바뀌는 현상이고 사람들에게 영향을 준다는 것이 중심 내용이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "According to the passage, what mainly causes tides?",
+      "o": [
+       "The strength of the wind",
+       "The heat of the sun",
+       "The shape of the beach",
+       "The pull of the moon"
+      ],
+      "a": 3,
+      "why": "달의 인력이 주된 원인이에요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why do sailors check a tide table?",
+      "o": [
+       "Water depth affects their boats.",
+       "They want to find shells and crabs.",
+       "They need to know the weather.",
+       "They want to avoid the moon."
+      ],
+      "a": 0,
+      "why": "물의 깊이가 배에 영향을 주기 때문이에요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "When can you find shells and small crabs?",
+      "o": [
+       "When the tide is high",
+       "When the waves are very big",
+       "When the tide is low",
+       "When the moon is bright"
+      ],
+      "a": 2,
+      "why": "물이 빠지면 해변이 넓어져 조개와 작은 게를 찾을 수 있어요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Q1 key stated the cause ('caused mostly by the moon'), giving away Q2 (what mainly causes tides). Key now summarizes without the cause.",
+   "severity": "minor"
+  },
+  {
+   "item": "1d620905",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence is the best summary of the passage?",
+      "o": [
+       "People yawn only when they are very tired, and babies yawn the most of all.",
+       "Cool air is the main reason why a person's brain begins to work well again.",
+       "Yawning is catching, so people should avoid looking at each other's faces at all.",
+       "Scientists have different ideas about why people yawn, but no final answer."
+      ],
+      "a": 3,
+      "why": "하품의 이유에 대한 여러 가설이 있지만 아직 확실한 답은 없다는 것이 중심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Which idea about yawning is mentioned?",
+      "o": [
+       "It may cool the brain.",
+       "It makes the heart slow down.",
+       "It helps people breathe less.",
+       "It warms the body at night."
+      ],
+      "a": 0,
+      "why": "큰 하품이 시원한 공기를 들여 뇌를 식힌다는 가설이 나와요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does \"spread\" mean in this passage?",
+      "o": [
+       "Become wider in size",
+       "Make something much thinner",
+       "Pass from person to person",
+       "Be hidden from other people"
+      ],
+      "a": 2,
+      "why": "하품이 사람에서 사람으로 옮는다는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "What does the writer mean by \"that is not the whole story\" in the second sentence?",
+      "o": [
+       "Scientists wrote a long book about sleep.",
+       "Sleepiness is only one reason people yawn.",
+       "Babies have a different story about yawning.",
+       "The writer will tell a longer story later."
+      ],
+      "a": 1,
+      "why": "'that is not the whole story'는 졸릴 때만 하품하는 것이 전부는 아니라는 뜻이에요.",
+      "std": [
+       "9영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Q1 key was uniquely longest (77 vs 63-66) and revealed Q4's answer (no one knows yet); Q4 replaced with an idiom-in-context question.",
+   "severity": "major"
+  },
+  {
+   "item": "796d209e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence summarizes the passage best?",
+      "o": [
+       "The writer's mother loves loud music and often claps for her neighbors.",
+       "The writer stopped the lessons because sore fingers made playing painful.",
+       "Guitar is the most difficult instrument that any student can learn.",
+       "The writer improved at the guitar by practicing a little every day."
+      ],
+      "a": 3,
+      "why": "매일 조금씩 연습해 실력이 늘었다는 것이 핵심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "What did the teacher advise?",
+      "o": [
+       "Practice ten minutes every day.",
+       "Practice one hour on the weekend.",
+       "Change to an easier instrument.",
+       "Play only for the family."
+      ],
+      "a": 0,
+      "why": "하루 10분씩 연습하라고 조언했어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does \"like a cat in trouble\" suggest about the sound?",
+      "o": [
+       "It sounded sleepy.",
+       "It sounded very quiet.",
+       "It sounded bad.",
+       "It sounded beautiful."
+      ],
+      "a": 2,
+      "why": "고양이가 곤경에 빠졌을 때의 소리 같다는 건 듣기 안 좋았다는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "How does the writer feel at the end?",
+      "o": [
+       "Tired and bored",
+       "Proud and happy",
+       "Angry and worried",
+       "Shy and sad"
+      ],
+      "a": 1,
+      "why": "가족 앞에서 연주하고 박수를 받아 뿌듯하고 기뻐요.",
+      "std": [
+       "9영01-05"
+      ]
+     }
+    ]
+   },
+   "why": "Distractor 'his fingers' invents the writer's gender (unspecified).",
+   "severity": "minor"
+  },
+  {
+   "item": "fde2268e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence is the best summary of the story?",
+      "o": [
+       "The writer's kind invitation helped a new student feel welcome.",
+       "Mina taught her classmates a game from her old school on Wednesday.",
+       "The writer felt lonely because no one asked the writer to play cards.",
+       "Students from other cities should be careful when they change schools."
+      ],
+      "a": 0,
+      "why": "필자의 친절한 초대가 전학생이 적응하게 도왔다는 것이 핵심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Why did the writer ask Mina to join the game?",
+      "o": [
+       "The teacher told the writer to ask Mina.",
+       "Mina asked the writer for some help.",
+       "The writer remembered feeling lonely.",
+       "The game needed one more player to start."
+      ],
+      "a": 2,
+      "why": "자신이 처음 왔을 때 외로웠던 것이 기억났기 때문이에요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "How did Mina feel on Monday morning?",
+      "o": [
+       "Excited and proud",
+       "Nervous and alone",
+       "Angry and bored",
+       "Tired and hungry"
+      ],
+      "a": 1,
+      "why": "가방을 꼭 쥐고 혼자 앉아 있었어요.",
+      "std": [
+       "9영01-05"
+      ]
+     },
+     {
+      "q": "What happened by Wednesday?",
+      "o": [
+       "Mina moved to another city.",
+       "Mina stopped playing games.",
+       "Mina changed her seat.",
+       "Mina laughed with the group."
+      ],
+      "a": 3,
+      "why": "수요일에는 점심때 함께 웃고 있었어요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Writer gender is not given ('her', 'She remembered' in key); neutralized; Q2 options lengthened so key is not uniquely longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "924b503f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the best summary of the report?",
+      "o": [
+       "A group of students and teachers worked together to clean up a beach.",
+       "Yuna counted the plastic and discovered a crab in a cup on the beach.",
+       "Forty students and teachers ate sandwiches on the sand after school.",
+       "Fishing nets and old bottles are very dangerous for people at the beach."
+      ],
+      "a": 0,
+      "why": "학생들과 선생님들이 함께 해변을 청소한 활동이 핵심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "What did most of the collected items turn out to be?",
+      "o": [
+       "Old fishing nets",
+       "Glass bottles",
+       "Plastic pieces",
+       "Pieces of paper"
+      ],
+      "a": 2,
+      "why": "절반 넘게가 플라스틱 조각이었어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What do the volunteers plan to do next month?",
+      "o": [
+       "Visit the crab",
+       "Hold another clean-up",
+       "Have a sandwich party",
+       "Build a new beach"
+      ],
+      "a": 1,
+      "why": "다음 달에 또 청소하기로 계획해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What is the purpose of the last sentence?",
+      "o": [
+       "To say the beach is now clean",
+       "To thank the teachers for helping",
+       "To describe the weather",
+       "To show they want more helpers"
+      ],
+      "a": 3,
+      "why": "더 많은 가족이 참여하길 바란다는 희망을 나타내요.",
+      "std": [
+       "9영01-06"
+      ]
+     }
+    ]
+   },
+   "why": "Q1 key ('plans to do it again with more people') gave away Q3 (next month) and Q4 (more helpers).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 118,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

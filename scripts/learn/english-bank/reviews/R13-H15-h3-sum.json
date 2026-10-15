@@ -1,0 +1,444 @@
+{
+ "packet": "H15-h3-sum",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 13,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "486cb1f1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Crowdfunding (A) access to money for many creators, but donors should be (B) because projects may fail.",
+      "o": [
+       "limits / careful",
+       "widens / careful",
+       "widens / generous",
+       "ends / quick"
+      ],
+      "a": 1,
+      "why": "크라우드펀딩은 자금 접근을 넓히지만 실패 가능성 때문에 후원자는 신중해야 해요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Crowdfunding offers opportunity together with real risk.",
+       "Banks are better than websites at choosing projects.",
+       "Attractive videos are the best way to design products.",
+       "Strangers should never support new ideas."
+      ],
+      "a": 0,
+      "why": "기회와 위험을 함께 가진다는 것이 요지예요."
+     },
+     {
+      "q": "How does crowdfunding 'test interest'?",
+      "o": [
+       "Donors must answer a list of questions before they give money.",
+       "Banks check how many videos have been watched.",
+       "Designers have to pay a fee for each visitor.",
+       "A project without donors shows that people may not want it."
+      ],
+      "a": 3,
+      "why": "후원자가 모이지 않으면 아이디어에 대한 수요가 적다는 신호예요."
+     },
+     {
+      "q": "What does 'those who give are rarely protected as customers are' mean?",
+      "o": [
+       "Customers are never allowed to support a project online.",
+       "Donors always get the finished product from the creator.",
+       "Donors usually have fewer rights than people who buy products.",
+       "Customers are usually asked to give more money than donors."
+      ],
+      "a": 2,
+      "why": "후원자는 구매자만큼 보호받지 못한다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q4: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "2056bae8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Living abroad gives learners plenty of (A), but progress still depends on how much they actually (B) the language.",
+      "o": [
+       "grammar / avoid",
+       "exposure / use",
+       "teachers / hear",
+       "money / study"
+      ],
+      "a": 1,
+      "why": "해외 생활은 노출을 주지만 실제로 언어를 사용하는 양이 중요해요."
+     },
+     {
+      "q": "Which is the best summary of the passage?",
+      "o": [
+       "Immersion helps, but it works best when combined with careful study.",
+       "Classrooms at home are always better than living abroad.",
+       "Learners should avoid people from their own country completely.",
+       "Making mistakes is the main reason people stop learning."
+      ],
+      "a": 0,
+      "why": "몰입 학습과 체계적 학습을 결합하는 것이 가장 좋다는 내용이에요."
+     },
+     {
+      "q": "What is the writer's purpose in the sentence beginning 'By contrast'?",
+      "o": [
+       "To prove that living abroad is a waste of time and money",
+       "To describe the writer's own experience in a language classroom",
+       "To warn students about expensive language schools in other countries",
+       "To introduce an alternative way of learning with its own strengths"
+      ],
+      "a": 3,
+      "why": "By contrast는 대안적 학습 방식의 장점을 소개해요."
+     },
+     {
+      "q": "Which of the following is mentioned as a problem of living abroad?",
+      "o": [
+       "Having almost no chance to hear the language spoken during the day",
+       "Not being able to find a patient teacher in the city",
+       "Spending most of the time with people from one's own country",
+       "Learning grammar in a step-by-step order"
+      ],
+      "a": 2,
+      "why": "같은 나라 사람들과만 시간을 보내면 새 언어를 거의 쓰지 않아요."
+     }
+    ]
+   },
+   "why": "Q3: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "33470632",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Drip irrigation (A) water by delivering it directly to roots, but its (B) can keep small farmers from using it.",
+      "o": [
+       "wastes / cost",
+       "saves / cost",
+       "saves / noise",
+       "adds / noise"
+      ],
+      "a": 1,
+      "why": "점적 관개는 물을 아끼지만 비용이 소규모 농가에게 걸림돌이 돼요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A water-saving method and the difficulty of sharing it widely",
+       "How floods help most crops to grow in very dry regions of the world",
+       "Why farmers dislike thin tubes in their fields",
+       "The history of loans for poor governments"
+      ],
+      "a": 0,
+      "why": "물을 아끼는 기술과 그것을 널리 보급하는 어려움이 중심 내용이에요."
+     },
+     {
+      "q": "What does the last sentence suggest?",
+      "o": [
+       "Governments should stop lending money to poorer farmers.",
+       "Farmers do not need any new tools or equipment at all.",
+       "Technology alone will solve every problem in farming.",
+       "New technology also needs ways to reach the people who need it."
+      ],
+      "a": 3,
+      "why": "기술은 필요한 사람에게 닿을 방법과 함께해야 한다는 의미예요."
+     },
+     {
+      "q": "According to the passage, why might a farm harvest more with drip irrigation?",
+      "o": [
+       "The tubes provide extra sunlight.",
+       "Fields are flooded more often.",
+       "The soil stays evenly moist.",
+       "Fewer plants are grown on the land."
+      ],
+      "a": 2,
+      "why": "토양이 고르게 촉촉하게 유지되기 때문이에요."
+     }
+    ]
+   },
+   "why": "Q3: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "a911bb75",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Placebos can change how patients (A) symptoms, but they cannot (B) the disease itself.",
+      "o": [
+       "create / cure",
+       "experience / cure",
+       "experience / spread",
+       "ignore / describe"
+      ],
+      "a": 1,
+      "why": "플라세보는 증상의 체감을 바꾸지만 질병 자체를 치료하지는 못해요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "What placebos can and cannot do",
+       "How new drugs are sold in shops",
+       "Why patients should not trust doctors",
+       "A method of curing infections without medicine"
+      ],
+      "a": 0,
+      "why": "플라세보가 할 수 있는 일과 못 하는 일이 중심이에요."
+     },
+     {
+      "q": "Why do researchers use placebos in drug tests?",
+      "o": [
+       "To make sure that patients never feel any pain at all during tests",
+       "To help the drug company save money on its advertising",
+       "To prevent patients from reading the label",
+       "To judge whether a drug works better than expectation alone"
+      ],
+      "a": 3,
+      "why": "약이 기대만으로 생기는 효과보다 나은지 판단하기 위해서예요."
+     },
+     {
+      "q": "What does 'support, but never replace' mean in the last sentence?",
+      "o": [
+       "Doctors will soon stop using real medicine in hospitals.",
+       "Patients can choose any treatment they like without advice.",
+       "Expectation may assist treatment but cannot take its place.",
+       "The placebo effect is stronger than most real drugs are."
+      ],
+      "a": 2,
+      "why": "기대의 힘은 치료를 돕지만 대신할 수는 없다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q4: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "22a6fc4b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Remote work offers (A), while office work offers (B), so a mixture of the two may be the most satisfying choice.",
+      "o": [
+       "casual contact / focus and flexibility",
+       "focus and flexibility / casual contact",
+       "long commutes / quiet hours",
+       "video calls / long commutes"
+      ],
+      "a": 1,
+      "why": "재택은 집중과 유연성을, 사무실은 비공식 교류를 줘요."
+     },
+     {
+      "q": "Which statement best summarizes the passage?",
+      "o": [
+       "A balance of home and office work can give the benefits of both.",
+       "Employees should be forced to work in the office every day.",
+       "Video calls build stronger trust than face-to-face talks.",
+       "Commuting is the main reason people dislike their jobs."
+      ],
+      "a": 0,
+      "why": "재택과 출근을 섞는 것이 둘의 장점을 모두 준다는 요지예요."
+     },
+     {
+      "q": "What does the writer mean by 'something less visible'?",
+      "o": [
+       "A problem that only the managers of large offices can notice",
+       "A rule that is written on the office wall",
+       "A kind of technology hidden inside computers",
+       "A benefit that is hard to see but still important"
+      ],
+      "a": 3,
+      "why": "눈에 잘 띄지 않지만 중요한 사무실의 비공식 대화를 가리켜요."
+     },
+     {
+      "q": "According to the surveys, who report higher satisfaction?",
+      "o": [
+       "People who work from home on most days of the week",
+       "People who work in the office five days every week",
+       "People who work in the office two or three days a week",
+       "People who change jobs every year or every two years"
+      ],
+      "a": 2,
+      "why": "주 2~3일 출근하는 사람들의 만족도가 가장 높았어요."
+     }
+    ]
+   },
+   "why": "Q4: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "3f2f6281",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: GPS is (A) and fast, but relying on it too much may (B) our sense of direction.",
+      "o": [
+       "convenient / improve",
+       "convenient / weaken",
+       "unsafe / weaken",
+       "costly / improve"
+      ],
+      "a": 1,
+      "why": "GPS는 편리하고 빠르지만 지나친 의존은 방향 감각을 약화시킬 수 있어요."
+     },
+     {
+      "q": "What is the writer's attitude toward GPS?",
+      "o": [
+       "It is useful if people stay actively involved.",
+       "It should be abandoned as soon as possible.",
+       "It is the only way to avoid getting lost.",
+       "It is unsafe in unfamiliar places."
+      ],
+      "a": 0,
+      "why": "GPS를 버리지 말고 의식적으로 사용하자는 입장이에요."
+     },
+     {
+      "q": "Why does the writer mention taxi drivers?",
+      "o": [
+       "To show that taxis are safer than phones",
+       "To explain how maps are drawn",
+       "To argue that taxi drivers never get lost in their city",
+       "To contrast memory-based navigation with GPS use"
+      ],
+      "a": 3,
+      "why": "기억에 의존하는 운전사와 GPS 의존자를 대조하기 위해서예요."
+     },
+     {
+      "q": "Which advice is given in the passage?",
+      "o": [
+       "Turn off the phone and never use maps on any trip.",
+       "Ask taxi drivers to plan your route before you leave.",
+       "Try some routes from memory and notice landmarks.",
+       "Buy a larger screen so the map is easier to read."
+      ],
+      "a": 2,
+      "why": "가끔은 기억으로 길을 찾고 랜드마크를 살피라고 조언해요."
+     }
+    ]
+   },
+   "why": "Q4: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "03d4a921",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: The effect of social media on attention depends less on (A) than on (B) it is used.",
+      "o": [
+       "how long it lasts / why",
+       "whether it is used / how",
+       "who designs the app / when",
+       "what it costs / where"
+      ],
+      "a": 1,
+      "why": "핵심은 사용 여부가 아니라 사용 방식이에요."
+     },
+     {
+      "q": "Which of the following is the best title for the passage?",
+      "o": [
+       "Social Media and Attention: It Depends on Use",
+       "Why Every Teenager Should Delete Social Apps",
+       "The Secret Rewards Hidden in Online Photos",
+       "How Short Videos Replaced Long Books for Good"
+      ],
+      "a": 0,
+      "why": "사용 방식에 따라 영향이 달라진다는 균형 잡힌 내용이에요."
+     },
+     {
+      "q": "What does the writer imply by saying 'researchers warn against simple conclusions'?",
+      "o": [
+       "Researchers have not studied social media for a very long time.",
+       "Most people already know exactly how apps change the brain and mind.",
+       "Social media apps should be banned for everyone until more is known.",
+       "The effects of social media cannot be described as only good or bad."
+      ],
+      "a": 3,
+      "why": "단순한 결론을 경계한다는 것은 좋다/나쁘다로만 말할 수 없다는 뜻이에요."
+     },
+     {
+      "q": "Which people report feeling tired and distracted?",
+      "o": [
+       "Those who choose carefully and set limits",
+       "Those who join online groups about hobbies",
+       "Those who scroll without a clear purpose",
+       "Those who only watch short educational videos"
+      ],
+      "a": 2,
+      "why": "목적 없이 스크롤하는 사람들이 피곤하고 산만하다고 해요."
+     }
+    ]
+   },
+   "why": "Q3: distractors lengthened to match the key; key unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "a01eab92",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Choose the pair that best fills in (A) and (B).\n\nSummary: Space debris moves at (A) speed, and each collision can cause (B) collisions.",
+      "o": [
+       "low / further",
+       "high / further",
+       "high / fewer",
+       "steady / extremely rare"
+      ],
+      "a": 1,
+      "why": "우주 쓰레기는 빠르게 움직여 충돌이 다시 충돌을 부르는 악순환을 만들어요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why objects left in orbit are a growing danger",
+       "How the first satellite was built",
+       "Which metals are best for building spacecraft and satellites",
+       "Why engineers dislike working with paint"
+      ],
+      "a": 0,
+      "why": "궤도에 남은 물체가 점점 위험해진다는 내용이에요."
+     },
+     {
+      "q": "What do experts agree on?",
+      "o": [
+       "Tracking the smallest pieces is simple.",
+       "Old satellites should stay where they are.",
+       "Larger pieces are less dangerous than small ones.",
+       "Avoiding waste is easier than cleaning it up."
+      ],
+      "a": 3,
+      "why": "예방이 정리보다 쉽다는 데 전문가들이 동의해요."
+     },
+     {
+      "q": "Why is a fleck of paint dangerous?",
+      "o": [
+       "It blocks the light of the sun completely.",
+       "It is heavier than a rocket.",
+       "It travels at very high speed.",
+       "It dissolves the metal skin of every spacecraft."
+      ],
+      "a": 2,
+      "why": "페인트 조각도 초속 수 킬로미터로 움직이면 우주선을 손상시킬 수 있어요."
+     }
+    ]
+   },
+   "why": "Q4: replace the arguable distractor with a clearly wrong one; key unchanged",
+   "severity": "minor"
+  }
+ ],
+ "ok": 120,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
