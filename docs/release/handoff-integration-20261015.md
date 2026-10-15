@@ -55,7 +55,18 @@
 - `learn_set_course_level(uuid,text,text)`: K1..K10 허용. `SECURITY DEFINER`, 빈 `search_path`, **service_role만 실행**(anon·authenticated 거부)을 유지하고 사후 조건이 이를 확인
 - 행을 읽거나 바꾸거나 지우지 않습니다. 기존 K1~K6 데이터·RLS 정책은 그대로.
 - 로컬 검증: `tests/learn/db-korean-k7-k10.test.ts`(K1~K10 저장, K11·K0·소문자·다른 사이트 거부, anon/authenticated 거부, 테이블 직접 쓰기 거부), `npm run test:learn:db` 141/141.
-- **적용 순서**: 스테이징 프로젝트(`wreebowcbiymodswajwe`) → 계정으로 K7 저장 확인 → 프로덕션. 마이그레이션이 적용되기 **전에** 새 코드를 배포하면 로그인 계정의 K7~K10 저장이 DB 제약에서 실패합니다. 반드시 DB 먼저.
+- **확정 순서** (2026-10-15 확인: 스테이징·운영 DB 모두 044 **미적용**): ① 스테이징 DB 적용 → ② 로그인 계정 검증 → ③ 운영 DB 적용 → ④ 배포. 044가 적용되기 **전에** 새 코드를 배포하면 로그인 계정의 K7~K10 저장이 DB 제약에서 실패하므로 ④는 ③ 뒤에만 합니다.
+
+| 단계 | 할 일 | 통과 기준 |
+|---|---|---|
+| 0. 적용 전 기록 | 스테이징 SQL 편집기에서 `scripts/staging/044-check.sql` 실행, 결과 저장. `node scripts/staging/probe-044.mjs` | `levels_allow_k10=false`, 프로브 `NOT_APPLIED`. 두 번째 쿼리(레벨별 행 수)를 기록 |
+| ① 스테이징 적용 | `supabase/migrations/202610150044_learning_korean_k7_k10.sql` 전체를 스테이징(`wreebowcbiymodswajwe`)에서 실행(SQL 편집기 또는 `supabase db push`). 파일 끝의 사후 조건 블록이 실패하면 전체가 롤백됨 | 오류 없이 종료 |
+| ② 로그인 계정 검증 | `044-check.sql` 재실행. `node scripts/staging/probe-044.mjs --user <스테이징 테스트 계정 uuid>`. 이어서 스테이징 워커에 새 코드를 올리고 그 계정으로 로그인해 K7·K10 선택→새로고침 유지, 진단·레슨·연습 | `levels_allow_k10=true`, `grade_allows_k10=true`, `function_allows_k10=true`, 각 check 1개, `anon_can_execute=false`, `authed_can_execute=false`, `service_can_execute=true`, 레벨별 행 수가 0단계와 동일, 프로브 `APPLIED` + `ACCOUNT_PATH_K7_K10 = PASS` |
+| ③ 운영 DB 적용 | ②가 모두 통과한 뒤에만. 운영(`wstdbymmkrqgtsibhcjz`) SQL 편집기에서 `044-check.sql`(적용 전) → 044 실행 → `044-check.sql`(적용 후) | 위 ②와 같은 기준. `probe-044.mjs`는 스테이징 전용이라 운영에는 쓰지 않음(SQL로 확인) |
+| ④ 배포 | §8 | §9 |
+
+- 044가 이미 적용된 DB에서 다시 실행해도 안전합니다(제약은 drop if exists 후 재생성, 함수는 `create or replace`).
+- `probe-044.mjs`는 `.env.staging.local`의 스테이징 서비스 키를 쓰고 대상이 스테이징 프로젝트가 아니면 거부합니다. 기본 모드는 아무것도 쓰지 않으며, `--user` 모드는 테스트 계정의 레벨을 바꿨다가 원래 상태로 복원합니다. 반드시 일회용 스테이징 계정을 쓰세요.
 
 ## 7. 해결되지 않은 차단: Cloudflare 업로드 401
 - 증상: `wrangler deploy` 에셋 업로드 `POST /accounts/<id>/workers/assets/upload` → `401 Unauthorized`.
