@@ -1,0 +1,344 @@
+{
+ "modules": [
+  "alg",
+  "bm"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 63,
+  "rowsRead": 1244,
+  "notes": "alg: 47 structures / 84 sets / 1012 rows; bm: 16 structures / 17 sets / 232 rows (counts of the HS_ONLY dumps). Read SPEC, both module files and both verifiers completely; rendered ALL rows of both modules to text and read the first, second and last row of every set in full, plus machine checks over all rows: answer format (integer / terminating / non-terminating / >3 places), answer-distribution per set, artefact grep ('+0', '^{1}', '(x)'), a separate parse of bm absIneq/ineqSystem/propRange explanation strings against the prompt (0 mismatches), numeric comparison of alg_trigPeriod `code` with the displayed f (consistent), hand re-derivation of every generator's formula and uniqueness argument, and a comparison with the official 2022 notes in lib/learn/curriculum/kr/2022/mathematics.json (기본수학 / 대수 scope notes). Re-ran both verifiers: bm 232/232, alg 1012/1012, failures 0. No row was found with a wrong answer, two answers or no answer; all mathematical content I re-derived is correct. Main problems are format hints, course scope, explanation artefacts and verifier independence. Teacher judgement needed for the 2022-scope questions (trigIdentity, circleLine)."
+ },
+ "findings": [
+  {
+   "template": "alg_trigPoint, alg_trigGiven, alg_trigIdentity, alg_sigmaTelescope, alg_trigPeriod (level 1)",
+   "severity": "blocker",
+   "kind": "format",
+   "detail": "The shared prompt ending '(소수로 써도 되고 3/4 처럼 분수로 써도 돼요)' promises that a decimal is accepted, but in these sets almost every answer is a non-terminating fraction (17/13, -2/29, 25/26, 8/3 ...). A student who follows the hint and types 1.3077 or 0.9615 is marked wrong: the grader compares with tolerance 1e-9 (lib/learn/domain/answers.ts numeric check) and no generator sets `tol`. Counted over the dump: 129 of 1012 alg rows have a non-terminating answer: trigPoint 11/12 (lvl1) and 10/12 (lvl2), trigGiven 10/12, trigIdentity 12/12 (lvl1) and 9/12 (lvl2), sigmaTelescope 10/12 and 12/12, trigPeriod lvl1 8/12, circumradius 5+5, sectorForward lvl1 4, rationalExp 2+4, logChain lvl2 3, expFuncParams lvl2 3, inverseGraph 3+3, expShiftA 2+2, expMaxMin lvl2 1, logExpress lvl2 2, trigGraphParam 1. The spec text itself prescribes this phrase, but spec rule 2 only allows 'simple fractions' and says rounded answers need a named rounding and `tol`.",
+   "evidence": "b-hs-alg-trigpoint1 #2 ans 17/13 = 1.3076923076923077; b-hs-alg-trigidentity1 #1 ans 49/289; b-hs-alg-sigmatelescope2 #1 ans 27/110; b-hs-alg-trigperiod1 #1 ans 8/3 (2.6666666666666665)",
+   "fix": "For every set whose answers are not all terminating, use a fraction-only ending such as '(기약분수로 쓰세요, 예: 3/4)' / '(as a fraction like 3/4)', or choose parameters so the result terminates within 3 decimals (denominators 2,4,5,8,10,20,25 ...), or give a rounding rule + `tol` 0.005. Make the ending depend on the level (a per-level template or a `v.fmt` text) so integer/terminating levels keep the decimal wording."
+  },
+  {
+   "template": "alg_rationalExp, alg_logChain, alg_logExpress, alg_expFuncParams, alg_expShiftA, alg_inverseGraph, alg_circumradius, alg_sectorForward, alg_expMaxMin, alg_geoTwoTerms, alg_recAffine, alg_trigGraphParam",
+   "severity": "major",
+   "kind": "format",
+   "detail": "Same fraction-hint problem in the milder sets (about 1/4 of the rows are 1/3, 2/3, 1/7 ... and 15 rows have 4-5 decimal places, outside the spec limit of 3 places).",
+   "evidence": "b-hs-alg-expshifta1 a=1/3 (0.3333333333333333) in 2 of 12 rows; b-hs-alg-rationalexp1 #2 = 1/256 = 0.00390625; b-hs-alg-geotwoterms2 #2 = 6561/32 = 205.03125 and 5 rows with 5 decimals; b-hs-alg-circumradius2 #2 = 561/16 = 35.0625; b-hs-alg-recaffine2 #1 = 87/8 and a=-13.8125",
+   "fix": "Same fix as above. Additionally cap denominators at <=1000/terminating, or tell the student to answer as a fraction when a=1/3 type values occur (base problems: restrict the candidate bases to 2,3,4,5,1/2,1/4,1/5 so every answer terminates, or say 'a를 기약분수로')."
+  },
+  {
+   "template": "bm_circleLine",
+   "severity": "major",
+   "kind": "level",
+   "detail": "The intended solution (and hint 2 and explanation) uses the point-to-line distance formula |ap+bq+c|/sqrt(a^2+b^2). That is 공통수학2 10공수2-01-03; 기본수학2 (10기수2-01) has only 10기수2-01-01 (distance between two points), -04 (circle equation) and -05 (position of circle and line) and the curriculum note says 'calculation-heavy problems are not treated'. A basic-level student would substitute the line into the circle and use the discriminant. The generator also uses (5,12,13)/(6,8,10) triples with radius multiples, so the interval has 2R-1 up to 51 integers and the sqrt(a2) in the explanation is a computation outside the course.",
+   "evidence": "b-hs-bm-circleline #1: '원 x^2+(y+2)^2=4 과 직선 3x+4y=m' answer 19 via |m+8|<10",
+   "fix": "Either move the structure to the 공통수학2 module (cm2) with standard 10공수2-01-03/-05, or rewrite for 기본수학2: substitute y (or x) from the line into the circle, require D>0 and count integer m; keep radii small so D is a perfect-square-free quadratic in m only with small coefficients."
+  },
+  {
+   "template": "alg_trigIdentity",
+   "severity": "major",
+   "kind": "level",
+   "detail": "Symmetric-identity chains (given sin+cos or sin-cos or sin*cos, ask sin^4+cos^4, sin^3 +/- cos^3, tan+1/tan, (sin-cos)^2) are the 2015 수학I 'relations between trigonometric functions' chapter. The 2022 대수 note says properties of trigonometric functions are treated 'only as far as needed to understand the graphs' and 'too complicated problems are not treated'; 12대수02-02 is about the concept/graph. I could not confirm a standard in 대수 that asks for these identities (medium confidence).",
+   "evidence": "b-hs-alg-trigidentity2 #1: 'sin t cos t = -12/25, find sin^4 t+cos^4 t' = 337/625",
+   "fix": "Ask a teacher; if kept, label evidence 'concept' with a note, limit to sin^2+cos^2=1 and (sin+-cos)^2, and drop sin^3, sin^4 and tan+1/tan variants."
+  },
+  {
+   "template": "alg_recAffine",
+   "severity": "major",
+   "kind": "hint",
+   "detail": "Hint 2 recommends rewriting as a_{n+1}-alpha=p(a_n-alpha) 'to get the general term'. The 2022 대수 note says problems asking for the general term of a recursively defined sequence are NOT treated (12대수03-06 is 'explain the recursive definition'). The items themselves are iteration (fine) but the hint steers to out-of-scope technique.",
+   "evidence": "b-hs-alg-recaffine2 #1 hint 2: 'a_{n+1}-alpha=p(a_n-alpha) 꼴로 바꾸어 일반항을 구할 수도 있어요'",
+   "fix": "Replace hint 2 by 'Write out a_2, a_3, ... in a table and check each step', keep k <= 8."
+  },
+  {
+   "template": "alg_sigmaTelescope",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "12대수03-05 note: only sums of the powers of natural numbers and 'simple' sums are treated. Level 2 (1/(k(k+3)) and 1/(k(k+1)(k+2))) is heavier than 'simple'; also the arithmetic with 3-4 unit fractions in the explanation is long.",
+   "evidence": "b-hs-alg-sigmatelescope2 #2: sum_{k=1}^{6} 1/(k(k+3)) = 733/1512",
+   "fix": "Keep d=1,2 and 1/((2k-1)(2k+1)); drop d=3 and the triple product, or at least mark them d=5."
+  },
+  {
+   "template": "bm_propRange",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "10기수2-02-04 note: propositions/conditions are treated 'at the level of understanding a mathematical sentence'; 'p->q true iff truth set P is contained in Q with a parameter, largest integer m' is the 공통수학 sufficient/necessary-condition type (10공수2-02-06). Still solvable and correct; just above 기본수학2.",
+   "evidence": "b-hs-bm-proprange #1: |3x+5|<2, q: m<=x<=0, answer -3",
+   "fix": "Keep but set d=4 and cite 10기수2-02-02 only, or move to cm2."
+  },
+  {
+   "template": "bm_funcCount",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "10기수2-03 notes: functions are assessed 'at the level of understanding concepts'. Counting functions with f(1)=1 that are not one-to-one (n^(m-1) minus a falling product) is a counting puzzle above that level; the parameter space is exactly 12 combinations (m 3..5, n m..7), i.e. the whole space is used.",
+   "evidence": "b-hs-bm-funccount #1: X={1..5}, Y={1..6}: 1296-120=1176",
+   "fix": "Keep as a challenge (d=4) or replace by 'number of one-to-one functions' (falling product only)."
+  },
+  {
+   "template": "bm_countDigits",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "10기수1-03-01 note: sum and product rules are treated for two events only; the k=3 rows need a three-step product (P(n-1,2) etc.). The permutation standard 10기수1-03-02 covers it, so acceptable, but the label '합의 법칙' in explanation implies the rule alone.",
+   "evidence": "b-hs-bm-countdigits #1 (6 cards, k=3): z=P(5,2)=20, o=48",
+   "fix": "Cite 10기수1-03-02 first; explain z and o with permutation counts."
+  },
+  {
+   "template": "alg_sectorForward, alg_arithSumMax, alg_expMaxMin",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "evidence label 'application' is used for purely symbolic items without any context (no real-life situation). Honest labels would be calc/concept. Similarly alg_rationalExp lists class-C standard 12대수01-02 (understanding that the exponent extends to rationals) but the items are plain evaluations (label calc is honest; the standard is only weakly practised); alg_arithTwoTerms/alg_geoTwoTerms 'reverse' is really forward calculation of a third term.",
+   "evidence": "PLAN entries alg_sectorForward (application), alg_arithSumMax (application), alg_expMaxMin (application)",
+   "fix": "Relabel evidence as calc/concept; keep 12대수01-02 only if one item per level asks e.g. 'is the base required to be positive' style counts, otherwise remove it from alg_rationalExp."
+  },
+  {
+   "template": "bm_countDigits",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "The explanation gives only the two case counts ('0인 경우는 20개, 0이 아닌 짝수인 경우는 48개') without showing how they arise, contrary to the spec 'explanation: the actual solution steps with the numbers'. In the 5 of 14 rows without a 0 card it says 'last digit 0: 0 numbers' and hint 2 plus the prompt still talk about a leading 0.",
+   "evidence": "b-hs-bm-countdigits #1: '일의 자리가 0인 경우는 20개, ... 48개입니다. 합의 법칙에 의해 20+48=68'",
+   "fix": "Add the factorisation: z = P(n-1,k-1) = 5x4 = 20; o = (number of nonzero even digits) x (choices for the first digit) x P(.,k-2). Suppress the 0-case sentence and the leading-0 remark when the card set has no 0."
+  },
+  {
+   "template": "alg_sigmaSubseq (level 2)",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "Level 2 explanation jumps from the rewritten summand straight to the final value ('sum_{k=1}^{14}(-2k^2-9k-9) = -3101') with no use of the sigma formulas, although the spec requires working with numbers and hint 2 lists the formulas.",
+   "evidence": "b-hs-alg-sigmasubseq2 #1",
+   "fix": "Show p*S2+q*S1+r*m with the three numbers, as level 1 already does."
+  },
+  {
+   "template": "alg_trigIdentity (level 2), alg_expInequality",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Level-2 trigIdentity ('sin t cos t = g => E = value') and expInequality ('quadratic <= 0, so the integers are ...') state the result without the intermediate step (e.g. s^4+c^4 = 1-2(sc)^2; roots of the quadratic).",
+   "evidence": "b-hs-alg-trigidentity2 #1: 'sin t cos t=-12/25 => sin^4+cos^4 = 337/625'",
+   "fix": "Insert the identity used and the numeric substitution; give the real roots of the quadratic in expInequality."
+  },
+  {
+   "template": "alg_logDomain, alg_inverseGraph, alg_logInequality (level 1), alg_recParam, alg_expFuncParams, alg_rationalExp, alg_trigPeriod, bm_quadRoots, bm_matUnknown, bm_quadRange",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Explanation text shows generator artefacts: '(x+0)(x-4)<0' (logDomain, r1=0), 'log_a(9+0)+4' (inverseGraph, m=0), '4^{1}<=x+0<=4^{3}' (logInequality, k=0), '3p^2+1p+1' (recParam, q=1), 'b^{1}=3' (expFuncParams), '5^{1}=5' (rationalExp), '\\frac{\\pi}{1}=\\pi' (trigPeriod, b=1), '(x+1)(x)=0' and '3(x+2)(x)=0' (quadRoots, a root is 0; 33 explanation lines in bm), 'y=0 이므로 y=0' tautology (matUnknown, p=1 and q*B=0), '(1)(x-(4))^2+(5)' (quadRange, all constants parenthesised).",
+   "evidence": "b-hs-alg-logdomain1 explanation of '-x^2+4x>0'; b-hs-alg-recparam #12; b-hs-bm-quadroots #1",
+   "fix": "Use lin()/poly()-style printing for these pieces (omit +0, ^1, coefficient 1, factor (x) -> x, print constants without parentheses unless negative)."
+  },
+  {
+   "template": "bm_transform, bm_countDigits, bm_funcCount, bm_propRange, bm_circleLine, alg_arithFirstExceeds (and other 'formula + 을/를/와/과/이/가')",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Particles are fixed after a formula or letter and are wrong for many rows: '점 R를' (R = 알 -> 을), 'Y으로의' (Y = 와이 -> 로의), '카드 0, 2, 4, 7, 8가' (last digit 7/8 -> 이; 5 of 14 rows end in 7 or 8; also 0,1,3,6), 'p의 진리집합은 x가 -7/3와 -1 사이' (와/과 depends on the number), '원 x^2+...=9 과 직선' (과/와), 'S_n>N 을' (N ending in 이/사/오/구 -> 를), 'P(14,48) 를' etc.",
+   "evidence": "b-hs-bm-transform #1 '점 R를'; b-hs-bm-funccount #1 'Y으로의'; b-hs-bm-countdigits rows ending in 7/8",
+   "fix": "Rephrase to avoid particles after formulas (use '... 일 때', '~의 값은', '와(과)' or a colon), or compute 을/를 from the last digit in the generator. For R: write '점 R을'."
+  },
+  {
+   "template": "bm_setOps, bm_funcCount",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Korean words are typed inside math mode as '\\{x\\mid x는\\ 25\\ 이하의\\ 자연수\\}'. KaTeX renders Hangul in math mode only with a 'unicodeTextInMathMode' warning and with wrong spacing/fonts; the English version correctly uses \\text{}.",
+   "evidence": "b-hs-bm-setops #1, b-hs-bm-funccount #1",
+   "fix": "Wrap the Hangul in \\text{...} (ko) like the en version, or write the set in prose."
+  },
+  {
+   "template": "alg_growthYears",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "The prompt ends with two parentheses in a row: '(단, log 1.06=..., 정수 연수로 답하세요.) (숫자만 쓰세요)'; also 'compound interest per year' is implicit.",
+   "evidence": "b-hs-alg-growthyears1 #1",
+   "fix": "Move '정수 연수로' into the sentence ('정수 연수로 구하세요') and say '1년마다 복리로'."
+  },
+  {
+   "template": "alg_logEquation",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "'(해가 하나뿐입니다)' tells the student that the other root is extraneous, removing part of the point of the domain check; wording 'x는 실수일 때 방정식 ... 의 해는?' is also slightly unnatural.",
+   "evidence": "b-hs-alg-logequation1 #1",
+   "fix": "Say '방정식 ... 을 만족시키는 실수 x의 값은?' and delete the parenthetical (the answer is unique anyway)."
+  },
+  {
+   "template": "alg_realRootCount",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Level 2 writes A=-3^{2} and A=-(-2)^{3} to test sign precedence; -3^2 = -9 is correct but a mis-read of '-3^{2}' as 9 is a common trap that the question does not need. Answer depends only on sign(A) and N, so numbers of A are decoration.",
+   "evidence": "b-hs-alg-realrootcount2 #1: A=-3^{2}, N=16 -> 7",
+   "fix": "Write A=-(3^{2}) or (-3)^{2} with explicit brackets; see diversity note."
+  },
+  {
+   "template": "alg_trigPeriod",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hint 2 says that with an absolute value or a square 'the negative part is folded up, so the period can be half'. True for |.|, but for sin^2/cos^2 nothing is folded (sin^2 = (1-cos 2x)/2); the sentence is misleading for squares.",
+   "evidence": "b-hs-alg-trigperiod2 #2: y=sin^2 5x, k=1/5",
+   "fix": "Write 'sin^2 x = (1-cos 2x)/2 has half the period of sin x' for squares."
+  },
+  {
+   "template": "alg_arithSumMax, alg_arithFirstExceeds",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "alg_arithSumMax says the terms are 'positive (or 0) up to term n_m' although n_m is the last strictly positive term (the generator takes the first maximiser); alg_arithFirstExceeds level 2 (a<0) only shows S_(n-1)<=N<S_n, which does not prove minimality because S_n is not monotone at first.",
+   "evidence": "b-hs-alg-arithsummax #1 (a_32=1>0, a_33=-1); b-hs-alg-arithfirstexceeds2 #1",
+   "fix": "Say 'a_n>0 for n<=32 and a_n<0 for n>=33'; for a<0 state that S_n decreases then increases and S_n<=N for all n<=n0 (list the minimum)."
+  },
+  {
+   "template": "bm_countDigits",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Prompt and hint 2 talk about 'a leading 0 is not allowed' even when the cards contain no 0 (about 5 of 14 rows).",
+   "evidence": "b-hs-bm-countdigits rows with deck without 0",
+   "fix": "Generate a different hint/prompt tail when 0 is absent, or force 0 into the deck."
+  },
+  {
+   "template": "alg_collatz, alg_seqIntTerms, alg_halfAngleQuad",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "alg_collatz level 2 asks for up to 19-step hand iteration (3a+1 rule) and alg_seqIntTerms has 10-15 divisors of 120/144/180: long, mechanical, not a 대수 skill; alg_halfAngleQuad's n>=4 rows all give 1+2+3+4 = 10.",
+   "evidence": "b-hs-alg-collatz2 #2 (30 -> ... -> 1, 19 terms); b-hs-alg-seqintterms #14 (15 divisors); b-hs-alg-halfanglequad answers [10,10,10,10,10,6,10,8,10,10,10,9,6,10]",
+   "fix": "Cap collatz length at 12 and seqIntTerms at D0 <= 72; see drop list for halfAngleQuad."
+  },
+  {
+   "template": "alg_halfAngleQuad",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Parameter space is only 4 x 5 = 20 (m, n). For n>=4 the answer is always 10 (all four quadrants), i.e. 12 of 20 possible rows are the same 'trick'; only 8 combinations are real problems (n=2: 4 or 6; n=3: 6,7,8,9).",
+   "evidence": "n=2: {13,13,24,24}; n=3: {123,124,134,234}; n>=4: always 1234 (computed for all 20 combos)",
+   "fix": "Restrict to n in {2,3} and add a second structure (e.g. 'smallest positive theta such that theta/3 is in quadrant 2') or drop."
+  },
+  {
+   "template": "alg_expShiftA (level 2) / alg_inverseGraph (level 2)",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 2 of inverseGraph is expShiftA with the point's coordinates swapped: both reduce to c*a^e = W (or a^e = W) with the same candidate bases {2,3,4,5,1/2,1/3,1/4}; expShiftA level 1 and inverseGraph level 1 (log form) differ only by exponent/log. Answer set is only 7 values, so rows are guessable.",
+   "evidence": "b-hs-alg-expshifta2 #2 (4a^x+1 through (1,21)) vs b-hs-alg-inversegraph2 #2 (a^x+3, inverse through (128,3))",
+   "fix": "Merge: keep expShiftA (levels 1-2) and make inverseGraph level 1 only (log form) plus a second level that really needs the inverse (two points on the inverse, find a and b)."
+  },
+  {
+   "template": "alg_trigPoint (level 2) / alg_trigGiven / alg_trigIdentity",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "trigPoint level 2 and trigGiven draw from the same expression bank (trigE) and the same Pythagorean triples; they differ only in whether the point or a ratio+quadrant is given. trigIdentity overlaps in the expressions sin*cos, tan+1/tan, sin+cos.",
+   "evidence": "b-hs-alg-trigpoint2 vs b-hs-alg-triggiven",
+   "fix": "Merge trigGiven into trigPoint as level 3, or give trigGiven new expression types (e.g. sin(theta+pi), cos(pi/2-theta))."
+  },
+  {
+   "template": "alg_expEquation (level 1), alg_realRootCount, alg_logInequality (level 3), alg_recParam",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Small parameter spaces: expEquation lvl1 has about 32 distinct equations (b in {2,3}, exponent pairs 0..4, two forms), realRootCount depends only on (sign A, N), logInequality lvl3 differs from its twin only in < vs <= (rows #1 and #12 have the same solution set {-2,-1,2,3}), recParam has 3 distinct answers (2,3,5) in 12 rows.",
+   "evidence": "b-hs-alg-loginequality3 #1 and #12; b-hs-alg-recparam answers",
+   "fix": "Enlarge the parameter ranges or accept fewer rows (builder minimum is 12 distinct prompts, not 12 distinct ideas)."
+  },
+  {
+   "template": "bm_absIneq / bm_discK / bm_circleLine / bm_ineqSystem",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Four structures end in 'count the integers in an interval derived from an inequality'; fine as different topics, but absIneq and propRange share the |ax+b|<c solution step, and discK second form (k^2 > 4ac) is the same count as absIneq with ax=k.",
+   "evidence": "b-hs-bm-absineq vs b-hs-bm-proprange vs b-hs-bm-disck",
+   "fix": "Keep; if the bank is thinned, drop the second discK form (a x^2 + k x + c) first."
+  },
+  {
+   "template": "alg_rootEval, alg_rationalExp, alg_expSum, alg_logChain, alg_logExpress, alg_digitsPow, alg_trigPeriod, alg_sigmaTelescope, alg_seriesPattern, alg_recAffine, alg_collatz, alg_seqIntTerms",
+   "severity": "major",
+   "kind": "verifier",
+   "detail": "These verifiers recompute from the generator's helper columns instead of parsing the prompt: rootEval (kind, ra, rb, rn, rm), rationalExp (a1,n1,d1,a2,n2,d2), expSum (a,g,e1,k,e2), logChain (args), logExpress (Rn,Rd,m), digitsPow (b1,n1,b2,n2), trigPeriod (`code` = Python source built by the generator), sigmaTelescope (kind), seriesPattern (t, n), recAffine (pn, pd, q), collatz (p, q), seqIntTerms (p, q, r). A bug in the displayed expression/equation (the thing the student sees) would pass. I checked trigPeriod `code` against `f` numerically for all 24 rows (consistent), and bm explanation strings (absIneq sol, ineqSystem s1/s2, propRange lo/hi) against the prompts: 0 mismatches, but the verifier would not have caught one.",
+   "evidence": "verify/alg.py: trigPeriod uses eval(v['code']); seriesPattern(v) switches on v['t']; logChain uses v['args']",
+   "fix": "Parse the expression/equation from the prompt column (expr, f, ineq, rule, num/den, eq) like the other verifiers do (trigSpecial, expEquation, logEquation do); then compare with the helper columns as an extra assertion."
+  },
+  {
+   "template": "alg_sumToTerm, alg_collatz, bm_quadRange, bm_circleLine, bm_compUnknown",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "sumToTerm computes f(1)+f(k)-f(k-1) (the definition used by the generator, not an independent route); collatz repeats the generator simulation; bm verifiers assert helper columns (M, m, lo, hi, x0, Rs, ints) against their own recomputation, which is good, but the explanatory strings (e.g. alg `work`, bm `cond`, `sol`) are never checked.",
+   "evidence": "verify/alg.py sumToTerm, collatz",
+   "fix": "For sumToTerm also check a_n by partial sums with Fraction/brute force; add a check that `work` numbers match (e.g. compare listed ints/roots with the recomputed ones as ineq_system already does)."
+  },
+  {
+   "template": "alg_logEquation, alg_expEquation, alg_trigRootCount",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Uniqueness is checked numerically on a finite grid (logEquation: pts -60..400 step 1/32; expEquation: |x|<=14 step 1/64; trigRootCount: grid+golden section with 1e-2 / 1e-7 thresholds). Sound for the generated parameter ranges, but a root outside the grid or a double root cluster would be missed.",
+   "evidence": "verify/alg.py logEquation, expEquation, trigRootCount",
+   "fix": "Add a symbolic cross-check (sympy solve over the reals) for these three."
+  }
+ ],
+ "drop": [
+  {
+   "template": "alg_halfAngleQuad",
+   "why": "20-point parameter space, 12 of 20 rows have the trivial answer 10 (n>=4), only 8 real problems; replace by a richer structure or restrict to n=2,3 and fold into another set"
+  },
+  {
+   "template": "alg_expShiftA (level 2) or alg_inverseGraph (level 2)",
+   "why": "same equation c*a^e=W after swapping the point's coordinates, same 7 possible answers; keep one"
+  },
+  {
+   "template": "alg_trigGiven",
+   "why": "merge into alg_trigPoint as a third level (same Pythagorean points and expression bank), unless given new expression types"
+  },
+  {
+   "template": "bm_circleLine",
+   "why": "conditional: relies on the point-line distance formula which is a 공통수학2 standard (10공수2-01-03) not in 기본수학2; drop or rewrite with the discriminant method"
+  },
+  {
+   "template": "alg_trigIdentity",
+   "why": "conditional: classic 2015 수학I identity chain; 2022 대수 limits trigonometric properties to what the graphs need; keep only after teacher confirmation, otherwise drop sin^3/sin^4/tan+1/tan variants"
+  }
+ ],
+ "ok": [
+  "alg_rootEval",
+  "alg_realRootCount (maths ok; low variety)",
+  "alg_expSum",
+  "alg_digitsPow (stated 4-digit logs agree with the true digit count in every row)",
+  "alg_growthYears (exact check n equals ceil of the rounded-log quotient in every row)",
+  "alg_expEquation",
+  "alg_expInequality",
+  "alg_logEquation (other root is always extraneous: both arguments negative)",
+  "alg_logInequality",
+  "alg_logDomain",
+  "alg_expMaxMin",
+  "alg_logChain",
+  "alg_logExpress (1, log2 3, log2 5 are Q-independent so x,y,z are unique)",
+  "alg_expFuncParams",
+  "alg_expShiftA",
+  "alg_inverseGraph",
+  "alg_coterminal",
+  "alg_sectorForward",
+  "alg_sectorPerimArea (both radii give a central angle < 2 pi because r2 < 3 r1)",
+  "alg_trigPoint",
+  "alg_trigGiven",
+  "alg_trigRootCount (counts 2m / m / 0 correct incl. tan and tangency)",
+  "alg_trigGraphParam",
+  "alg_trigSpecial",
+  "alg_circumradius",
+  "alg_survey",
+  "alg_cosLawSide",
+  "alg_obtuseCount (union x^2>a^2+b^2 or x^2<b^2-a^2 is exactly the obtuse set)",
+  "alg_arithTwoTerms",
+  "alg_arithSumMax",
+  "alg_arithFirstExceeds",
+  "alg_arithGeoMix (other root of d^2+kd-yk=0 is negative, so d unique)",
+  "alg_sumToTerm",
+  "alg_geoTwoTerms",
+  "alg_geoSumRatio (answer independent of r)",
+  "alg_sigmaSquare",
+  "alg_sigmaSubseq",
+  "alg_seriesPattern",
+  "alg_collatz",
+  "alg_recParam (exactly one positive root)",
+  "alg_seqIntTerms",
+  "bm_ineqSystem",
+  "bm_absIneq",
+  "bm_quadRange (vertex always strictly inside)",
+  "bm_discK",
+  "bm_polyFactor (factor pair unique under the stated ordering)",
+  "bm_polyExpand",
+  "bm_quadRoots",
+  "bm_matUnknown",
+  "bm_lineParPerp (intercepts always integer)",
+  "bm_transform",
+  "bm_setOps",
+  "bm_compUnknown",
+  "bm_funcCount (maths ok)",
+  "bm_countDigits (counts correct; explanation thin)",
+  "bm_propRange (maths ok)",
+  "bm_circleLine (maths ok; scope issue only)",
+  "English versions: no meaning differences found in any of the 63 templates (placeholders, conditions, answer-format hints match); only the Hangul-in-math issue exists in ko."
+ ]
+}

@@ -1,0 +1,335 @@
+{
+ "modules": [
+  "cm1",
+  "cm2"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 74,
+  "rowsRead": 1335,
+  "notes": "37 cm1 + 37 cm2 structures (53 + 74 sets). Read both generator files and both verifiers in full; read the filled Korean prompt/hints/explanation of all 1335 built rows programmatically (pattern scans for sign glitches, answer-format scan) and by eye for 4-12 rows of every set; built-in verifiers re-run: 638/638 and 697/697, failures 0. Additionally generated ~11.8k extra rows (100 per structure and level) from the GENs to measure rates (non-terminating answers, non-real premises, degenerate rows) but the re-verification of that extra sample was too slow (sympy) and was stopped unfinished, so only generator-side statistics are claimed for it. Independently recomputed by hand/sympy the displayed working of discrimCount, quadIneqAlways, vietaExpr, parabolaLineCount, rootSignCond, cubicOneReal, quadIneqSol and quadRange (all consistent). Not checked: grading of fractions/decimals by the runtime, English polish beyond meaning equivalence (EN and KO were compared template by template: same math and conditions, including the same ⊂ gap in cm2_inclusionParam), real textbooks for the 근의 위치 topic of cm1_rootSignCond (claimed 02-02/02-03; plausible but not an explicit 2022 achievement-standard wording)."
+ },
+ "findings": [
+  {
+   "template": "cm1_vietaExpr",
+   "severity": "blocker",
+   "kind": "format",
+   "detail": "Level 2 (leading coefficient a != 1) often yields a non-terminating or ugly rational, but the prompt says '소수로 써도 되고 3/4 처럼 분수로 써도 돼요'. ans is stored as a double, so a student who follows the prompt and types a decimal for -17/9 or -5/49 cannot give an exact answer (and 3-decimal rounding would not match). In a 100-row sample of the generator space (level 2): 70 fractional, 33 non-terminating, 21 with denominator > 16 (the generator only caps val.q <= 400). The verifier compares non-terminating values with |diff|<1e-12 and never asserts the 'terminating decimal' promise.",
+   "evidence": "set b-hs-cm1-vietaexpr2 rows 3 (-17/9 = -1.888..), 7 (-5/49 = -0.10204..), 8 (-17/12 = -1.41666..)",
+   "fix": "Filter in the generator: keep only values with Q.terminates(3) (denominator 2^a5^b) or q<=12, and for the rest change the prompt to '기약분수로 쓰세요 (예: 3/4)'. Add an assertion in verify/cm1.py that a prompt offering decimals has a terminating answer."
+  },
+  {
+   "template": "cm1_symmetricEval",
+   "severity": "major",
+   "kind": "domain",
+   "detail": "x, y are not declared real or complex, but about one third of the rows describe numbers that do not exist as reals: lvl1 (x-y)^2 = -11 for x+y=1, xy=3; x^2+y^2 etc. with (x+y)^2<4xy; lvl2 x+1/x=1, -1, 0, +-1 (|k|<2) so x^4+1/x^4 = -1. A student who assumes real x,y (the default) sees an impossible premise. Measured in 100 generator rows per level: 33 and 34 rows have no real solution.",
+   "evidence": "b-hs-cm1-symmetriceval1 row 8 (x+y=1, xy=3 -> (x-y)^2 = -11); b-hs-cm1-symmetriceval2 rows 0,3,7,9 (x+1/x=+-1)",
+   "fix": "Either say '복소수 x, y 에 대하여' in the prompt, or filter so that s^2-4p>=0 and |k|>=2 (real numbers exist)."
+  },
+  {
+   "template": "cm2_inclusionParam",
+   "severity": "major",
+   "kind": "uniqueness",
+   "detail": "The prompt only says 'A⊂B는 A=B인 경우도 포함한다' but is silent about B⊂C. The stated answer counts B=C as allowed; a reader who takes ⊂ as proper (or who reads the remark as applying only to A⊂B) gets (na*nb)-1, so the item has two defensible answers. The verifier uses is_subset (non-strict) and cannot detect the wording gap.",
+   "evidence": "b-hs-cm2-inclusionparam1 row 1: A=[-2,0], C=[-6,1] -> 10 (9 if B=C is excluded)",
+   "fix": "Write '(⊂ 는 두 집합이 같은 경우도 포함한다.)' once for both inclusions (and in the English: 'the symbol ⊂ allows equality')."
+  },
+  {
+   "template": "cm2_rationalParam",
+   "severity": "major",
+   "kind": "uniqueness",
+   "detail": "About 24% of the rows are degenerate: the given point P already lies on the x-axis (y0 = 0), so the asked 'x-coordinate of the point where the graph meets the x-axis' is simply x0 (the k computation is irrelevant). 5 of 18 built rows, 25/100 and 23/100 in the generator space. In addition ~12% of rows translate by 'x축의 방향으로 0만큼' (p=0), an unnatural statement. The verifier does not assert y0 != 0.",
+   "evidence": "b-hs-cm2-rationalparam1 rows 0 (P(4,0)->4), 2 (P(-5,0)->-5), 6 (P(0,0)->0); rows 4,5 use '0만큼'",
+   "fix": "Reject d0 = -u (y0 = 0) and p = 0 in the generator; assert y0 != 0 in the verifier; optionally ask for the y-intercept or for k instead."
+  },
+  {
+   "template": "cm2_forallQuad",
+   "severity": "major",
+   "kind": "diversity",
+   "detail": "Same computation as cm1_quadIneqAlways (discriminant of a quadratic in k < 0), only with the phrase '모든 실수 x에 대하여' and a minimum instead of a count. Standard 10공수2-02-04 is class C ('모든','어떤' propositions) and the evidence label says 'concept', but the quantifier carries no extra concept: the number is a pure discriminant calculation (a disguised calculation, SPEC class C rule). cm2_existsInterval is the item that really uses '어떤'.",
+   "evidence": "b-hs-cm2-forallquad1 row 0: x^2-x+k>0 for all x -> k>1/4 -> 1",
+   "fix": "Drop it, or turn it into a genuine quantifier item (e.g. negation: 'the smallest integer k for which the statement \"어떤 실수 x에 대하여 x^2+bx+k<=0\" is true' / compare truth values of the statement and its negation), and relabel evidence 'calc' if kept."
+  },
+  {
+   "template": "cm1_matWord",
+   "severity": "major",
+   "kind": "standard",
+   "detail": "Standard 10공수1-04-01 (class C: '실생활 상황을 행렬로 표현') is claimed, but both matrices are handed to the student, who only multiplies them and takes column minima. Nothing is represented as a matrix by the student; the numeric result does not depend on the concept of representing a situation (disguised calculation). 04-02 alone is honest.",
+   "evidence": "b-hs-cm1-matword rows 0-11",
+   "fix": "Keep only 10공수1-04-02, or change the task so that the matrices must be written from a table/word description (e.g. ask for an entry of the product after giving only the shop price table and the demand table in words)."
+  },
+  {
+   "template": "cm1_discrimCount",
+   "severity": "major",
+   "kind": "diversity",
+   "detail": "cm1_quadIneqAlways level 1 uses literally the same parameter family and the same code path (x^2 ± 2(k+a)x + n1 k + n0, count integers k with D/4 < 0 or <= 0) as cm1_discrimCount; the two items differ only in dressing ('허근을 갖는다' vs '모든 실수 x에서 > 0'). cm1_parabolaLineCount and cm1_sysReal (x+y=k, xy=p -> D=k^2-4p>=0) are again the same 'count the integers k in a range for which a discriminant has a sign' idea.",
+   "evidence": "b-hs-cm1-discrimcount2 row 1 'x^2-2(k+4)x+2k+11=0' vs b-hs-cm1-quadineqalways1 row 3 'x^2-2(k-2)x+k+2>0'",
+   "fix": "Keep discrimCount (lvl 1,2) and parabolaLineCount; drop quadIneqAlways level 1 (keep its level 2 'kx^2+2mkx+n', which really needs the k=0 case) and drop sysReal level 2 (identical to a discriminant count) or make it ask for something else (e.g. the integer solution count)."
+  },
+  {
+   "template": "cm2_contraRange",
+   "severity": "major",
+   "kind": "diversity",
+   "detail": "cm2_contraRange and cm2_converseRange are the same item family (quadratic <=0 gives [m,n]; |x-c|<=a gives [c-a,c+a]; compare intervals): min a with P⊂Q vs number of a with Q⊂P. Same prompt skeleton, same numbers' ranges, answers in a tiny set (converse lvl1 answers {1,2,3}).",
+   "evidence": "b-hs-cm2-contrarange1 row 0 and b-hs-cm2-converserange1 row 0",
+   "fix": "Merge into one template with three variants (원 명제 / 역 / 대우, and 'min a' / 'number of a'), or drop one."
+  },
+  {
+   "template": "cm1_iPower",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 is only z=i or z=-i; the answer set over all rows is {-2,-1,0,1} (6 of 12 answers are -1), so the answer can be guessed. When n is divisible by 4 the explanation reads 'n = 15×4+0 ... 처음 0개 항의 합' (an empty sum), which is awkward.",
+   "evidence": "b-hs-cm1-ipower row 6 (z=-i, n=60 -> 0)",
+   "fix": "Mix in a different base (z=(1+i)/sqrt2 is not allowed, but z=(1+i)/(1-i)^... or sums of two different powers) and treat n%4==0 with a separate sentence ('네 항씩 묶으면 모두 0')."
+  },
+  {
+   "template": "cm1_omega",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 answers are only {2,1,-1,-2}; level 2 only {0,-1,-2,1,2} (9 of 24 built rows are -1). The two periodic-power structures cm1_iPower and cm1_omega are close in idea (reduce the exponent modulo the period).",
+   "evidence": "b-hs-cm1-omega1 (answer -1 in 6 of 12 rows)",
+   "fix": "Ask for a quantity with a wider range (e.g. ω^n + ω^(2n) + ... with different exponents, or the smallest n for which ...), or merge with iPower."
+  },
+  {
+   "template": "cm1_factorEval",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hint 2 lists only N^3-1 and N^4+N^2+1; the generator also produces (N^4+4)/(N^2+2N+2), which needs the Sophie-Germain trick N^4+4=(N^2+2N+2)(N^2-2N+2), not in the 공통수학1 formula list and not suggested by either hint. The student who does not know it gets no usable help (also borderline for the level d3).",
+   "evidence": "any row with '\\frac{N^4+4}{N^2+2\\cdot N+2}'",
+   "fix": "Drop the N^4+4 type or add the hint 'N^4+4 = (N^2+2)^2-(2N)^2'."
+  },
+  {
+   "template": "cm1_*",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Particles after variable formulas are fixed strings, so about half of the rows have a wrong 이/가, 을/를, 와/과, 로/으로 depending on how the formula ends when read aloud: '${dv}$ 로' (x+3 -> 으로), '$x^{{k}}$ 가' and '$3$ 가 되는' (-> 이), '${lhs}={rhs}$ 가 x에 대한 항등식', '$y={f}$ 와' (…+1 -> 과), '${eq}=0$ 이', 'A$(5,1)$ 를' (-> 을). The same holds in cm2: 'P({y0})$와', 'P(…)$를', '${dom}$을', '${Rl}$이', '$k<0$이'.",
+   "evidence": "b-hs-cm1-polyprodcoef1 hint1 '곱해서 $x^{3}$ 가 되는'; b-hs-cm1-parabolaline1 row 4 '$y=x^2+1$ 와'; b-hs-cm2-pointlinedist1 row 0 '점 $P(-1, 0)$와'",
+   "fix": "Rephrase to avoid particles after variable formulas (e.g. '… 를 나눈' -> '$P(x)=…$ 에 대하여 …', '점 $P(…)$ 과 직선' -> '점 P(…) 에서 직선 … 까지의 거리'), or add a tiny particle helper keyed on the last reading of the formula; at least use the neutral forms 이(가)/을(를)."
+  },
+  {
+   "template": "cm2_rationalAsym",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "The displayed working is typeset sloppily in 12 of 20 built rows: 'p+q=5+-4=1', 'p+q=\\frac{1}{4}+-\\frac{1}{2}=-0.25' (sign glued as '+-', fraction and decimal mixed).",
+   "evidence": "b-hs-cm2-rationalasym1 rows 1,3,5..; b-hs-cm2-rationalasym2 row 2",
+   "fix": "Build the sum with a helper that writes '(−4)' or uses 'px - |qy|'; end with the same number format as the allowed answers."
+  },
+  {
+   "template": "cm1_symmetricEval",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hints talk about 'a, b' and cubes; for the x+1/x rows the 'two numbers' x and 1/x with product 1 are never mentioned, so the hint does not match the rows; hint 2 mentions cubes in rows that contain none.",
+   "evidence": "b-hs-cm1-symmetriceval2 row 1 (x+1/x=-4 -> x^2+1/x^2)",
+   "fix": "Add a second hint variant per cond type (x+1/x: 'x·(1/x)=1 이므로 합 x+1/x 와 곱 1')."
+  },
+  {
+   "template": "cm1_coloring",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Single-level PLAN entry, but the wrapper GEN[k]=(r)=>fn(r, r.next()<0.5?1:2) mixes 4-region and 5-region graphs (and wheel/cycle shapes) in one set with one difficulty tag. The same mixing happens for cm1_iPower, complexCond, rootSignCond, quadRevenue, quadFence, cubicOneReal (cubic vs quartic), sysReal, linIneqCount, absIneqRep. The set-level difficulty (d) is therefore wrong for about half of the rows.",
+   "evidence": "wrapper loop at the end of GEN in cm1.mjs; b-hs-cm1-conereal rows 0-4 cubic vs rows 5,7,9 quartic",
+   "fix": "Declare levels [1,2] in PLAN for those structures (two sets with their own d) instead of mixing at random."
+  },
+  {
+   "template": "cm1_coloring",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "For n=4 the prompt reads '영역 1, 2, \\ldots, 4 가 있고' (ellipsis for four items).",
+   "evidence": "b-hs-cm1-coloring row 0",
+   "fix": "Print the list explicitly for n<=5 (as cm2's setTxt does)."
+  },
+  {
+   "template": "cm1_complexCond",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Level 1 has a single root of the real part, but the explanation says '실수부분이 0이어야 하므로 x=… 이고, 이 중 허수부분 … 이 0이 아닌 것은 x=… 뿐입니다' as if there were several candidates; the check 'imaginary part != 0' is asserted without computing it (c(a^2+b^2)/a != 0).",
+   "evidence": "b-hs-cm1-complexcond rows 3,4,6,9,10",
+   "fix": "Use a level-specific sentence: 'x=… 일 때 허수부분은 …≠0 이므로 순허수입니다'."
+  },
+  {
+   "template": "cm1_quadIneqAlways",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Explanations of cm1_discrimCount / quadIneqAlways / parabolaLineCount state the inequality D/4<0 and jump to the list of integers without solving it, and the level-2 'cond' string 'k\\ge0, D/4=… <0 (k\\ne0)' does not say why k=0 is counted (n>0 so 0·x^2+0·x+n>n>0) although the answer includes it.",
+   "evidence": "b-hs-cm1-quadineqalways2 row 0 (k=0..5 -> 6)",
+   "fix": "Show the solved range (e.g. '-3<k+2<3 이므로 -5<k<1') and one sentence on k=0."
+  },
+  {
+   "template": "cm1_quadRevenue",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "'판매 가격을 100 원씩 0 번 이상의 정수 번 올릴 수 있을 때' is unnatural Korean.",
+   "evidence": "b-hs-cm1-quadrevenue row 0",
+   "fix": "'판매 가격을 100 원씩 정수 번(0번 포함) 올릴 수 있을 때'."
+  },
+  {
+   "template": "cm1_matCayley",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "The wording 'A^n = pA + qE 를 만족시키는 실수 p, q 가 있다' is the Cayley-Hamilton framing, which is not part of the 2022 공통수학1 matrix standards (04-02 is entry-wise operations). The item remains solvable by direct multiplication, so it is safe, but the 'concept' behind it is out of course.",
+   "evidence": "b-hs-cm1-matcayley1/2",
+   "fix": "Keep (uniqueness is guaranteed because scalar A is excluded) but label strategy 'matrix power by multiplication' and avoid asking for p,q at n=3 beyond the course; or ask for the (1,2) entry of A^n."
+  },
+  {
+   "template": "cm2_reflectPointChain",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "All 18 rows use the identical chain (reflect in y=x, reflect in the y-axis, translate), so the set is one structure with different numbers; the task reduces to undoing a translation and a swap.",
+   "evidence": "b-hs-cm2-reflectpointchain rows 0-17",
+   "fix": "Randomise the chain (axes/origin/y=x/translation order) or reduce count to ~9 and merge with cm2_reflectCurve."
+  },
+  {
+   "template": "cm2_funcMonotone",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "The size n of Y is irrelevant once u and w are fixed (the answer is C(w-u+1, m)); rows differing only in n are near-duplicates (only 13 distinct (m,u,w) among 18 stress rows).",
+   "evidence": "b-hs-cm2-funcmonotone1 rows 0 and 1 (Y={1..7} vs Y={1..8}, both answer 10)",
+   "fix": "Make the bound depend on n (e.g. f(m)<=n-1) or drop the redundant Y variation."
+  },
+  {
+   "template": "cm2_setOpSum",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Within OPS1 'A-B' and 'A∩B^c' are the same set; within OPS2 '(A-B)∪(B-A)' and '(A∪B)-(A∩B)' are the same set (symmetric difference), so these are 2 of 12 'different' operations.",
+   "evidence": "OPS1 / OPS2 lists in GEN.cm2_setOpSum",
+   "fix": "Replace the duplicates by A^c∪B^c or (A∩B)^c∩B."
+  },
+  {
+   "template": "cm2_compFindG",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 1: f linear and g linear, g(x)=(comp-q)/p is a one-line inversion; difficulty d=3 is too high for it. cm2_irrationalMinMax level 1 is evaluation of sqrt at the right endpoint (a>0 always increasing), d3 is also too high; hint 1 already gives the method.",
+   "evidence": "b-hs-cm2-compfindg1 row 0 (f=4x+3, f∘g=12x+3 -> g(x)=3x)",
+   "fix": "Set d=2 for these levels, or use a quadratic f at level 2 so that g has two possible forms (and add a condition)."
+  },
+  {
+   "template": "cm2_chordLength",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Evidence label 'application' is not earned by cm2_chordLength, cm2_tangentAtPoint (pure geometric calculation) or cm2_irrationalMinMax (evaluation of a monotone function). The standards (01-03/05, 01-05, 03-05) are fine.",
+   "evidence": "PLAN entries of those three templates",
+   "fix": "Relabel evidence 'calc' for them."
+  },
+  {
+   "template": "cm2_inverseQuadDom",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "With p=0 the rewritten form prints '2(x)^2+1' and 'xp=(x)'; likewise cm2_irrationalPass prints 'y=\\sqrt{a(x)}+3' when p=0.",
+   "evidence": "b-hs-cm2-inversequaddom2 row 5; b-hs-cm2-irrationalpass2 row 9",
+   "fix": "In xs() return 'x' without parentheses for the squared/bracket contexts, or forbid p=0 there."
+  },
+  {
+   "template": "cm2_pointLineDist",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "The working goes from sqrt((a)^2+(b)^2) directly to N/h without evaluating the square root (h=5, 10), the one step a student would trip over.",
+   "evidence": "b-hs-cm2-pointlinedist1 row 0",
+   "fix": "Show '\\sqrt{(−4)^2+(−3)^2}=5'."
+  },
+  {
+   "template": "cm2_converseRange",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Answer spaces are tiny/guessable: converse lvl1 {1,2,3}, necessaryDiv lvl1 {3,...} (6 of 9 equal 3), compTable {1,2,3}, irrLineCount {1,2,3}. A random guess has a high hit rate.",
+   "evidence": "b-hs-cm2-converserange1, b-hs-cm2-necessarydiv1, b-hs-cm2-comptable1, b-hs-cm2-irrlinecount1",
+   "fix": "Widen parameter ranges (n up to 60 for necessaryDiv, wider intervals for converseRange, n=6..8 for compTable)."
+  },
+  {
+   "template": "verify/cm1.py",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "All 638 built rows pass (re-run by me), and almost every verifier is genuinely independent (sympy solve/roots, brute force over integers, permutation/colouring enumeration). Gaps: (1) the displayed working strings (d4, ks, kr, sf/pf, work, step, fac) are not asserted, only the final answer (I checked discrimCount, quadIneqAlways, vietaExpr, parabolaLineCount, rootSignCond, cubicOneReal, quadIneqSol, quadRange myself: all consistent, but nothing enforces it); (2) quad_fence restates the modelling assumption k=j+2 (assert pieces == v['k']) so the model itself is not independently tested; (3) vieta_expr never asserts the terminating-decimal promise (see the blocker); (4) cm1_symmetricEval verifier computes the value for complex roots without asserting that real x,y exist, so the missing-domain defect is invisible.",
+   "evidence": "verify/cm1.py: quad_fence, vieta_expr, sym_eval",
+   "fix": "Add assertions on the printed working (parse d4/kr/ks/work and compare); build the fence model by enumerating widths with explicit length accounting; assert Fraction terminating when the prompt offers decimals; assert real roots when the prompt says nothing about complex numbers."
+  },
+  {
+   "template": "verify/cm2.py",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Independent and thorough (sympy circle/tangent_lines/solveset/limit, brute-force function counts, exhaustive set-algebra via eval). Gaps: inclusionParam uses non-strict is_subset, so the B=C wording gap goes undetected; rationalParam does not assert y0 != 0; lineCircleCount only counts k up to 399 (it does assert the leading coefficient of D(k) is negative, so this is sound); necessaryDiv checks divisibility on a finite window of integers (fine because the window is >> n^2); reflectShortest uses a float ternary search (acceptable, with 1e-6 integer check); working strings (u,w,K0,R2,lo,hi,d1,d2,pairs,rest,nstr,bad) are not asserted.",
+   "evidence": "verify/cm2.py inclusionParam, rationalParam",
+   "fix": "Add non-degeneracy asserts (y0 != 0, P not on an axis) and assert the displayed intermediate numbers."
+  }
+ ],
+ "drop": [
+  {
+   "template": "cm2_forallQuad",
+   "why": "Duplicates cm1_quadIneqAlways (discriminant < 0) and overclaims 10공수2-02-04 'concept'; cm2_existsInterval already covers the genuine quantifier idea."
+  },
+  {
+   "template": "cm1_quadIneqAlways (level 1 only)",
+   "why": "Same generator family as cm1_discrimCount; keep level 2 (k=0 case)."
+  },
+  {
+   "template": "cm1_sysReal (level 2)",
+   "why": "x+y=k, xy=p is exactly the discriminant count k^2-4p>=0 already covered by cm1_discrimCount."
+  },
+  {
+   "template": "cm2_converseRange",
+   "why": "Merge with cm2_contraRange into one 원/역/대우 template (same intervals, same skeleton)."
+  },
+  {
+   "template": "cm1_symmetricEval (level 1)",
+   "why": "x+y, xy rewriting is repeated by cm1_vietaExpr level 1; keep level 2 (x+1/x, x^3+y^3, x^4+y^4) once the domain is fixed."
+  }
+ ],
+ "ok": [
+  "cm1_polyProdCoef",
+  "cm1_polyDivQR",
+  "cm1_remUnknown",
+  "cm1_remQuadDiv",
+  "cm1_identity",
+  "cm1_complexCond (answer unique for both levels: the imaginary part is c(a^2+b^2)/a != 0 resp. (q-p)(q-s) != 0)",
+  "cm1_discrimCount",
+  "cm1_vietaUnknown (positive k unique; every condition re-derived by sympy)",
+  "cm1_rootSignCond (smallest integer search starts at the lower bound k>t, so it is the true minimum)",
+  "cm1_parabolaLine",
+  "cm1_parabolaLineCount",
+  "cm1_parabolaXaxis",
+  "cm1_quadRange",
+  "cm1_quadRevenue (integer vertex, positive sales at the optimum)",
+  "cm1_quadFence",
+  "cm1_cubicOneReal",
+  "cm1_sysTwo (all real solutions found, max x unique)",
+  "cm1_sysReal",
+  "cm1_linIneqCount",
+  "cm1_linIneqParam (brute force over x and k, consecutive k asserted)",
+  "cm1_absIneqCount",
+  "cm1_absIneqRep",
+  "cm1_quadIneqSol (sign of the inequality flips correctly for negative leading coefficient)",
+  "cm1_divisorCount",
+  "cm1_coloring (brute-force checked for all shapes)",
+  "cm1_permArrange",
+  "cm1_permNumbers",
+  "cm1_combCommittee",
+  "cm1_gridPaths",
+  "cm1_matCayley (scalar A excluded so p,q unique)",
+  "cm2_divPoint",
+  "cm2_divRatioFind",
+  "cm2_lineThroughPerp",
+  "cm2_perpParam (coincident lines excluded and checked; k3 distinct from k1,k2)",
+  "cm2_pointLineDist (denominators 5 or 10, always terminating)",
+  "cm2_circleGeneral",
+  "cm2_circleTangentAxes",
+  "cm2_lineCircleCount (no tangent case possible because R2 is never a perfect square)",
+  "cm2_chordLength",
+  "cm2_tangentAtPoint",
+  "cm2_translateCurve",
+  "cm2_reflectCurve",
+  "cm2_reflectShortest",
+  "cm2_setSumCount",
+  "cm2_vennReverse",
+  "cm2_existsInterval",
+  "cm2_necessaryDiv",
+  "cm2_sufficientQuad",
+  "cm2_amgmMin (equality point checked to lie in the domain)",
+  "cm2_funcInjective",
+  "cm2_compTable",
+  "cm2_inverseQuadDom",
+  "cm2_inverseRational",
+  "cm2_rationalAsym (values; only the working text has the '+-' glitch)",
+  "cm2_rationalIntersectCount (D>0 with no root at the asymptote, u=0 impossible since k != 0)",
+  "cm2_irrationalPass",
+  "cm2_irrLineCount (conditions D>0, product>=0, sum>0 correct; lt<=k<ht)"
+ ]
+}

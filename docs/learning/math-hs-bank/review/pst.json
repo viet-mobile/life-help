@@ -1,0 +1,221 @@
+{
+ "modules": [
+  "pst"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 37,
+  "rowsRead": 768,
+  "notes": "All 37 templates, all 54 sets/768 rows built with HS_ONLY=pst and analysed by script (answer type, denominators, parameter ranges, dedupe); every generator branch read; samples-pst.md and sample.mjs output read for each template; verifier read in full and run (failures 0). Specific suspicions computed: non-terminating answers (245/768), ciSampleSize rounding of the displayed bound (no row misleads, 590 combos tested), negative CI lower bounds (9/18), distinct-answer counts per set. No row was found with an answer that is mathematically wrong, a probability >1, or a non-unique answer; the one blocker is answer format."
+ },
+ "findings": [
+  {
+   "template": "pst_diceSum, pst_diceQuad, pst_atLeast, pst_lineUp, pst_multiplesUnion, pst_condTable, pst_condDice, pst_indepUnknown, pst_urnChain, pst_totalProb, pst_bayes, pst_expectTable, pst_varTable, pst_binomTail, pst_binomPmfEq, pst_bestOf, pst_sampleMeanDist",
+   "severity": "blocker",
+   "kind": "format",
+   "detail": "These 17 templates all end with FRK '(소수로 써도 되고 3/4 처럼 분수로 써도 돼요)', but for 245 of the 768 rows (32%) the exact answer is a non-terminating decimal (13/18, 11/14, 26/29, 11/21, 87/17 ...). The checker (lib/learn/domain/answers.ts) accepts a typed number only within the default tolerance 1e-9, and the generators set no `tol`. A student who follows the prompt and types 0.72, 0.7222, 0.786 or 5.12 is marked wrong although the prompt said a decimal is fine; a rounded decimal is also the natural thing to type for 3136-type numbers. Per-template counts of non-terminating rows: atLeast 22/24, sampleMeanDist 24/24, expectTable 21/24, lineUp 20/24, totalProb 18/18, condDice 16/24, bayes 15/18, urnChain 15/18, multiplesUnion 15/18, diceSum 14/24, condTable 13/18, binomPmfEq 12/18, diceQuad 10/24, indepUnknown 10/24, binomTail 8/18, varTable 6/18, bestOf 6/18. In addition 20 rows have terminating decimals longer than 4 places (1/64=0.015625, bestOf/binomTail with denominators 5^6 or 3^7 etc.), which nobody would type as a decimal. On the reveal step describeAnswer() prints String(k.value), so the student is shown '0.7222222222222222' instead of 13/18.",
+   "evidence": "b-hs-pst-dicesum1 #1 (13/18 -> 0.7222222222222222), b-hs-pst-atleast1 #1 (11/14), b-hs-pst-condtable #1 (26/29), b-hs-pst-lineup2 #1 (30/91), b-hs-pst-expecttable2 #1 (87/17), b-hs-pst-bestof (up to den 15625)",
+   "fix": "Replace FRK in these templates by an explicit reduced-fraction instruction, e.g. '(기약분수로 쓰세요. 예: 3/4)' / '(write it as a reduced fraction, e.g. 3/4)' (the checker evaluates a/b numerically, so 6/8 is also fine). Keep the 'decimal or fraction' wording only for rows whose answer terminates within <=4 places (decide per row: use a second prompt variant or a `fmt` variable chosen in the generator). Alternative: give a rounding rule 'ans rounded to 3 decimal places' and set tol=0.0005 with ans correctly rounded, but that makes the exact-probability items less clean; the fraction instruction is preferred. Also ask the integrator to let describeAnswer print a fraction for these rows."
+  },
+  {
+   "template": "pst_binomUnknown",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Only a in {2,3,4} is ever the answer (3 distinct answers in 18 rows; 2 rows have k=1). A student who spots 'a^(n-k)=q' can guess; the parameter space (a x n x nk = 36) is also only just enough for 18 rows.",
+   "evidence": "b-hs-pst-binomunknown: distinct answers = 3",
+   "fix": "Allow a in 2..6 (or 1/2, 2/3 as fraction answers with FRK), n up to 9, and add a second level where the unknown is in (ax+1)^n or the coefficient is of the form C(n,k)a^(n-k) with a negative root excluded by 'a>0' explicitly; or merge into binomCoef2 as a reverse level."
+  },
+  {
+   "template": "pst_atLeast",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Hint 1 and explanation say '흰 공이 0개 이하' for every level-1 row (r=1). '0개 이하' is awkward; the complement of 'at least 1' is 'no white ball'. 12 of 12 level-1 rows are affected.",
+   "evidence": "b-hs-pst-atleast1 #1: \"'1개 이상'의 여사건은 흰 공이 0개 이하인 경우예요\"",
+   "fix": "Use a variable `cmp` = '하나도 나오지 않는' when r=1 and '{rm1}개 이하' when r=2."
+  },
+  {
+   "template": "pst_monotoneSeq",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Explanation and hint 1 assume at least one '<'. For the 6 rows with s=0 (all signs <=) the text says '<가 0개이므로 뒤의 수에서 차례로 1씩 빼면 ...' which is vacuous, and hint 1 ('부등호가 <인 곳은 ...') does not apply. Also the answer depends only on the number s of strict signs (4 possible values per m), so the 8 sign patterns are mostly cosmetic variation. Leading '_{4}\\mathrm{H}_{4}' has an empty base; write '{}_{4}\\mathrm{H}_{4}'.",
+   "evidence": "b-hs-pst-monotoneseq2 #1: a<=b<=c<=d, s=0",
+   "fix": "Add a `note` variable that is '뒤의 수에서 차례로 1씩 빼면' only if s>0 and otherwise says '부등호가 모두 <=이므로 그대로'; make hint 1 conditional; prefix the H symbol with {}."
+  },
+  {
+   "template": "pst_repCombEq",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Level 1/2 explanation prints trivial substitutions 'y'=y-0, z'=z-0, w'=w-0' for lower bounds equal to 0 (18 of 24 rows have at least one 0 bound), and the prompt prints 'x>=0'. Correct but clumsy; the 'x>=0' conditions are redundant noise.",
+   "evidence": "b-hs-pst-repcombeq1 #1: x>=1, y>=0, z>=0, w>=0",
+   "fix": "Only mention variables with a>0 in the substitution and in the conditions (variable-length text), or require at least two nonzero bounds."
+  },
+  {
+   "template": "pst_binomCoef2",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hint 2 says '$x$가 $k$번 곱해지는 항을 찾아요' with a literal letter k although the prompt contains a number; the student must translate k to the number. Hint 1 uses N, A, B literally (fine as a formula).",
+   "evidence": "b-hs-pst-binomcoef21 #1: (3x-2)^5, x^3",
+   "fix": "Use {k} in hint 2 ('$x$가 ${k}$번 곱해지는 항')."
+  },
+  {
+   "template": "pst_deMorgan",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 has four events in two equivalent pairs (A^c∩B^c vs (A∪B)^c, A^c∪B^c vs (A∩B)^c) so only 2 distinct answers per (P(A),P(B),P(A∩B)). The explanation always goes through the four Venn regions and never states the complement/De Morgan rule, so the template named deMorgan does not practise 12확통02-03 (여사건 1-P) directly; level 2 (A∩B^c, A^c∩B, ...) is a plain subtraction. Mostly a low-information Venn lookup.",
+   "evidence": "b-hs-pst-demorgan1 #1: P((A∩B)^c) solved as 0.58+0.21+0.10",
+   "fix": "Give the 02-03 relation in the explanation when the event is a complement ('1-P(A∩B)=0.89'), and at level 2 add events that need the addition theorem backwards (give P(A∪B) instead of P(A∩B) and ask P(A^c∩B))."
+  },
+  {
+   "template": "pst_lineUp",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Labelled 12확통02-01 + 12확통02-03. The solution counts gender patterns with a gap argument (combinations / permutations with repetition, 12확통01-01) and no complement/여사건 is used, so 02-03 is not practised. The prompt sentence '(같은 성별끼리는 구별하지 않고 성별의 배열만 생각해도 됩니다)' is mathematically fine (all C(n,w) patterns are equiprobable) but it is a hint inside the stem.",
+   "evidence": "PLAN standards [\"12확통02-01\",\"12확통02-03\"]",
+   "fix": "Standards -> [\"12확통01-01\",\"12확통02-01\"]; move the parenthetical to hint 1."
+  },
+  {
+   "template": "pst_indepFindN",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "The explanation shows only that multiples of pq are independent and then says 'the larger n are not independent (직접 확인할 수 있습니다)' - the actual reason is never given, so a student who answers 'largest multiple of pq' is guessing from a pattern and a student who wonders why gets nothing. Also n<min(p,q) are 'independent' only because A is empty; this degenerate case is not mentioned (harmless for 'largest n'). Pattern is one trick: answer = floor(M/pq)*pq.",
+   "evidence": "b-hs-pst-indepfindn #1: 3 and 4, M=97, answer 96",
+   "fix": "Add the argument: with n=pq*t+r, 0<r<pq, floor(n/pq)*n = floor(n/p)*floor(n/q) forces ... (or restrict to a clean case) and show the failure of the neighbouring n (n=M for non-multiples, e.g. 97: floor(97/12)*97=776 vs 32*24=768). Change the question to 'independent exactly when pq | n' style: ask for the NUMBER of n in [2,M] giving independence among n>= max(p,q) to make the result depend on the concept more than on the trick."
+  },
+  {
+   "template": "pst_urnChain, pst_bestOf, pst_binomTail, pst_expectTable",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "SPEC asks the explanation to show the working with the numbers. These show only the setup and the final value: urnChain prints the product of fractions then jumps to the reduced answer; binomTail says 'add the terms for j=2,3,4,5, namely 63/64' without any term; bestOf jumps from the general term to the sum; expectTable skips the computation of the sum of x(x+c) (S2) in the middle (prints 348/68 directly).",
+   "evidence": "b-hs-pst-binomtail #1, b-hs-pst-bestof #1",
+   "fix": "Print the terms: for binomTail use the complement or list each C(n,j)p^j q^(n-j) numerically; for bestOf list the w terms with their values; for expectTable show S2."
+  },
+  {
+   "template": "pst_bestOf",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "For w=2 (7 of 18 rows) the explanation reads 'j=0, 1, …, 1' (wm1=1) which is odd; w=2,3,4 only. Standard 12확통03-03 (binomial distribution) is doubtful: the solution is a sum of negative-binomial terms (or the binomial tail of a 2w-1 game series - which would be a real 03-03 link but is not hinted).",
+   "evidence": "b-hs-pst-bestof #1 (w=2, p=3/4)",
+   "fix": "Write 'j=0 ~ {wm1}' or '(j=0, 1, …, {wm1})' only when wm1>=2 and 'j=0, 1' when wm1=1; hint 2 could mention playing all 2w-1 games and using a binomial tail so that 03-03 is genuinely practised, otherwise drop 03-03 from standards."
+  },
+  {
+   "template": "pst_normalFindParam",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "The explanation contains an unspecialised sentence 'pv가 0.5보다 작으면 z0>0, 크면 z0<0' (e.g. '0.8413가 0.5보다 작으면 ... 크면 ...') although the row's pv is known to be one case; the particle after the number is also row-dependent ('0.8413가'). The student has to decide the case himself in the explanation. Level 1 always pv<0.5 (z>0), level 2 always pv>0.5: that is, no row ever mixes the cases.",
+   "evidence": "b-hs-pst-normalfindparam2 #1: \"0.8413가 0.5보다 작으면 z0>0, 크면 z0<0\"",
+   "fix": "Add a variable `side` ('0.5보다 크므로 z0<0') chosen by the generator; rewrite 'pv와 0.5의 크기를 비교하면 ...'. Optionally let one level pick z sign at random."
+  },
+  {
+   "template": "pst_normalSymmetric",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Answer is k in 3..15; the set of 18 rows contains only 6 distinct answers; the standard deviation s is irrelevant (fine as a distractor, but it is the whole template: one symmetry trick, hint 2 states the rule 'sum = 2m'). Evidence label 'concept' is honest.",
+   "evidence": "b-hs-pst-normalsymmetric: distinct answers 6",
+   "fix": "Allow k up to 25 and negative coefficients (P(X<=a-k) = P(X>=b+k)), and add the variant P(X>=...)=P(X<=...) with the three-term version (m unknown, one known k)."
+  },
+  {
+   "template": "pst_normalBetween, pst_binomNormal, pst_sampleMeanNormal",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Three templates are the same procedure (standardise to z in the six-entry table, then 0.5±T or T±T). binomNormal and sampleMeanNormal have at most 12 possible answers {0.5±T(z)} (8 and 10 distinct values in 18 rows), so the answer can be remembered; normalBetween level 1 is a pure table lookup (P(-z<=Z<=z) = 2T or T). The mean/variance preliminaries differ, which justifies keeping them, but the number of rows (18 each) is high for such a small answer space.",
+   "evidence": "b-hs-pst-binomnormal: 8 distinct answers; b-hs-pst-samplemeannormal: 10",
+   "fix": "Reduce counts to 12 or add a second level that asks for an interval P(a<=X<=b) or a reverse question (find n or the threshold such that P=...) so that the table values are combined."
+  },
+  {
+   "template": "pst_sampleMeanDist",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Labelled 12확통03-05 (모집단과 표본, 표본추출 방법) and 03-06 (표본평균과 모평균의 관계). The item is an enumeration of 3^n equally likely outcomes for P(X̄>=t); it does not use the mean/variance relation of 03-06, and 03-05 is only touched by 'with replacement'. In 12 of 24 rows t is so low/high that the answer is 8/9, 26/27 etc. (little information).",
+   "evidence": "b-hs-pst-samplemeandist2 #1: balls 1,6,9, t=2, answer 26/27",
+   "fix": "Standards -> [\"12확통03-05\"] only (or 03-06 with an extra question about E(X̄)); choose t so that 0.2<P<0.8; fix the answer format (see the format finding)."
+  },
+  {
+   "template": "pst_stratified",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "A proportional-ratio computation (30 x 8/80). Evidence label 'concept' is generous; this is a one-line proportion and only 7 distinct answers (2..9) over 18 rows. It does practise 03-05 (표본추출 방법: 층화추출) which is a class C standard, so the numeric result does depend on knowing proportional allocation - acceptable, but weak.",
+   "evidence": "b-hs-pst-stratified: answers 2..9 only",
+   "fix": "Evidence -> 'calc'; vary: give the total sample size and ask for group C (sample = n*Nc/N), or ask for the total sample size from the A count; allow non-integer-ratio rows to be avoided by construction as now."
+  },
+  {
+   "template": "pst_ciBounds",
+   "severity": "minor",
+   "kind": "domain",
+   "detail": "Half of the rows (9 of 18) have a negative lower bound for the interval (e.g. x̄=1.04, σ=23, n=64: [-4.595, 6.675]) while the sample mean is a small positive number; mathematically fine but unrealistic for a context-free normal population. Standard 12확통03-07 says '공학 도구를 이용하여 ... 추정하고 결과를 해석' - the item is a formula substitution with z given, no interpretation, so the label is only partly honest; no 모비율 (표본비율) item exists for 03-06/03-07.",
+   "evidence": "b-hs-pst-cibounds #1 style rows; xb 1.04, s 23, n 64",
+   "fix": "Restrict s so that the lower bound is positive, or draw xb from 20..200; keep evidence 'calc'. Add a '해석' variant (does the interval contain value m0? count of integers in the interval) to give the item a reason to carry 03-07."
+  },
+  {
+   "template": "pst_ciSampleSize",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Rows need (2*1.645*13/0.9)^2 = 2258.36 type calculations with 4-digit z and n up to ~3000; the answers 2259, 1559... are heavy hand computations with rounding risk (hand rounding of intermediate values is risky, and the arithmetic burden is far above exam practice (the displayed bound never changes the integer answer: checked for all 590 parameter combinations)). 11 combinations give an exact integer (e.g. 2401) where 'n>=2401' with '≈' is displayed.",
+   "evidence": "b-hs-pst-cisamplesize #1: s=13, 90%, L=0.9, answer 2259",
+   "fix": "Restrict to s,L such that 2zs/L is nice (sigma in {5,10,15,20,25}, L in {0.2,0.4,0.5,1}) and cl in {95,99}; replace '≈' by '=' when exact."
+  },
+  {
+   "template": "pst_linTransform, pst_multiplesUnion, pst_stratified",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Evidence labels: linTransform is labelled 'application' but is a pure formula computation (E(aX+b), V(aX+b)) -> 'calc'; multiplesUnion labelled 'application' is an inclusion-exclusion count with no context -> 'counting'; multiplesUnion also allows p|q (4 of 18 rows, e.g. 9 and 3) where the union equals the larger set; harmless but then the lcm discussion is trivial.",
+   "evidence": "PLAN entries pst_linTransform (application), pst_multiplesUnion (application)",
+   "fix": "Relabel; require gcd(p,q)>=1 and neither divides the other for at least half the rows (or add `if (p % q === 0 || q % p === 0) continue;`)."
+  },
+  {
+   "template": "pst_diceSum, pst_diceQuad, pst_condDice, pst_totalProb, pst_bayes",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Three templates share the 'two dice' sample space and two share the identical two-box set-up (totalProb and bayes have the same generator and stem, only the last question differs). The structures are different concepts (probability, discriminant condition, conditional probability / total vs reverse conditional), so keep, but the dice ones are a counting grid; diceSum level 1 (a+b>=t, =t, <=t on ordinary dice) is the bank's most standard item. Dice with 4,8,10,12 faces ('눈') are fine but not 'normal' dice; and for s=4 a tetrahedron has no 'faces shown'.",
+   "evidence": "b-hs-pst-dicesum2 #1 (8-sided, a+b=16, prob 1/64)",
+   "fix": "Drop s=4 from level 2 or say '정사면체 모양의 주사위(눈 1~4)'; in diceSum add a conditional/sum-of-two-conditions level; keep totalProb/bayes but vary stem (A/B chosen by a coin or by a card)."
+  },
+  {
+   "template": "pst_binomSumId",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Hint 2 literally says 'x=a를 대입해요', which is the whole idea; level 2 with a=-2 and odd/even n gives +-1. For 12확통01-03 (class N) this is legitimate but d=3 is high: the item is a one-step recognition of (1+x)^n.",
+   "evidence": "b-hs-pst-binomsumid2 #1: sum C(4,k)(-2)^k = 1",
+   "fix": "Make hint 2 less direct ('x에 알맞은 수를 찾기 위해 1+x를 계산해 보세요') and lower d to 2; add rows with a sum from k=1 (subtract the k=0 term) for variety."
+  },
+  {
+   "template": "verify/pst.py",
+   "severity": "major",
+   "kind": "verifier",
+   "detail": "The verifier recomputes ANSWERS independently (good: brute force for 10+ templates, DP for bestOf, sympy for indepUnknown/binomPmfEq, erf check of the table in binomNormal), but most displayed intermediate numbers used in hints/explanations are not checked: latticePath via1/via2/via, atLeast bad, condTable f/gy/fn/ng, totalProb tA/tB/pw1/pw2, bayes tA/tB, urnChain prod, expectTable S1/S2, varTable fE/f2, repCombEq m2/m3, ciSampleSize nq (the displayed '≈2258.3616'), linTransform em/vy/ya, binomFindN q/pp, stratified (sa/na), binomTail js. Only deMorgan, normalBetween, binomNormal, sampleMeanNormal, sampleSd, ciBounds assert these. In linTransform there is a no-op line `assert ... or True` and the Y=aX+b string `ya` is never compared with a,b. binomUnknown only scans integer a in 1..59 (positive real root is unique by monotonicity, but the assertion does not show it). indepFindN is the same enumeration as the generator (acceptable, no shared code but same method).",
+   "evidence": "verify/pst.py: linTransform, binomUnknown, ciSampleSize",
+   "fix": "Add per-template assertions on the displayed values (e.g. Fraction(v['tA'] parsed) == joint_A; v['nq'] == round(Fraction((2*z*s)**2)/L**2, 4)); parse ya with sympy and compare to a*X+b; for binomUnknown solve a**nk == q with sympy positive real root; remove the `or True` assertion."
+  },
+  {
+   "template": "pst_diceQuad",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Hint 2 prints '(a)^2' when p=1 (pa is the string 'a') and '4×b' fine; level 1 has only 12 parameter pairs (p in 1..3, q in 1..4) for 12 rows, so every parameter pair appears once and there is no spare in case a pair is dropped (cnt=0/36).",
+   "evidence": "b-hs-pst-dicequad1",
+   "fix": "Allow p up to 4 or q up to 6 to widen the space."
+  },
+  {
+   "template": "(general)",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Korean particles after numeric expressions: '점 $(2, 1)$를' (should be 을/를 depending on the last digit: 1,3,6,7,8,0 -> 을), '$0.8413$가', '$1$ 이하의 눈' are fine, but latticePath uses a fixed '를' for all rows (point (p,q) ends in 1/3/6/7/8 in about half of the rows). English equivalents were compared with the Korean: no meaning differences found; the en explanation for normalFindParam keeps the generic if-sentence too.",
+   "evidence": "pst_latticePath prompt and hint 2 ('점 (p,q)를 지나지 않는')",
+   "fix": "Use '을(를)' or reword as '점 $(p,\\ q)$ 이외의 ...' / '점 $(p,\\ q)$를 거치지 않는'."
+  }
+ ],
+ "drop": [],
+ "ok": [
+  "pst_repPermCond (complement count verified by brute force; t=0 case handled)",
+  "pst_latticePath",
+  "pst_binomCoef2 (apart from hint wording)",
+  "pst_binomUnknown (answer unique; weak diversity only)",
+  "pst_diceSum, pst_diceQuad, pst_atLeast, pst_condDice, pst_condTable (answers/explanations correct; only the answer-format issue)",
+  "pst_indepUnknown (unique, P(B) in (0,1))",
+  "pst_totalProb, pst_bayes (conditions enforced, explanations right)",
+  "pst_varTable, pst_linTransform, pst_binomFindN (V/E=1-p gives unique n), pst_binomPmfEq (p=(r+1)/(n+1) unique in (0,1))",
+  "pst_normalBetween, pst_normalFindParam (inverse lookup unique), pst_normalSymmetric (unique linear solution, L>R case still valid)",
+  "pst_binomNormal (all n,p chosen with np(1-p) a perfect square, np and nq >= 18; no continuity correction stated)",
+  "pst_sampleSd, pst_sampleMeanNormal (terminology 모평균/표본평균, 분산/표준편차 correct)",
+  "pst_ciBounds (z stated, answer <=3 decimals)",
+  "pst_ciSampleSize (ceil computation exact, nq display never changes the integer answer)"
+ ]
+}

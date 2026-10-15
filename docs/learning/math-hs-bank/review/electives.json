@@ -1,0 +1,247 @@
+{
+ "modules": [
+  "econ",
+  "job",
+  "ai",
+  "stat",
+  "cul"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 50,
+  "rowsRead": 783,
+  "notes": "Read SPEC, all 5 module generators/templates and 5 verifiers; built each module (HS_ONLY) and ran verify/run.py (failures 0 for all: econ 220, job 164, ai 196, stat 156, cul 47 rows). Scanned all 783 dumped rows programmatically (repeating decimals, long decimals, odd '$', negative/zero parameters, near-integer floors) and hand-read about 180 rendered rows (all templates, 3-8 rows each). Computed small cases with fractions/sympy (exchange 3-decimal share, Leontief d<=0 share 18%, profitCubic negative-MC share about 45%, cosine pool size). Checked standard codes against lib/learn/curriculum/kr/2022/mathematics.json and scripts/learn/bank/hs/standards.json classes. Grader tolerance read from lib/learn/domain/answers.ts (default 1e-9). Not checked: rendering in the real UI, translations beyond en."
+ },
+ "findings": [
+  {
+   "template": "cul_bordaTotal",
+   "severity": "blocker",
+   "kind": "wording",
+   "detail": "Korean prompt writes the voter counts as `'A>B>C' ${n1}명`: a literal `$` opens math mode and is never closed, so the rendered text has an odd number of `$` and the math renderer swallows the ballots sentence (and mis-pairs the following `$`). Every row is affected (en is fine).",
+   "evidence": "b-hs-cul-bordatotal #1: \"'A>B>C' $24명, 'B>C>A' $23명, 'C>A>B' $26명일 때\"; odd-`$` scan of all rendered samples finds only these lines",
+   "fix": "Write `${n1}$명` (closed math) or plain `{n1}명` without `$`, in the prompt; keep en as is."
+  },
+  {
+   "template": "ai_cosine / ai_jaccard / ai_bayesSpam; job_chanceDraw; econ_elasticityPoint (econ_inverseEntry)",
+   "severity": "blocker",
+   "kind": "format",
+   "detail": "Prompt says '소수로 써도 되고 3/4 처럼 분수로 써도 돼요' but many answers are repeating decimals and the set has no tolerance (checker default 1e-9, lib/learn/domain/answers.ts). A student who writes 0.33 for 1/3, 0.29 for 2/7 or 0.57 for 19/33 is marked wrong although the prompt invites decimals and gives no rounding rule (SPEC rule 2 requires terminating decimals or a named rounding with tol).",
+   "evidence": "repeating-decimal answers: cosine1 7/12 rows, cosine2 12/12, jaccard 10/16, bayesSpam 11/16, chanceDraw 12/14, elasticityPoint 11/14, inverseEntry 2/16 (e.g. jaccard 2/9 -> 0.2222222222222222; bayes 0.37037..; elasticity 32/9)",
+   "fix": "Either restrict generators to terminating answers, or change the prompt to '기약분수로 쓰세요 (예: 3/4)' for those sets, or name a rounding ('소수 셋째 자리에서 반올림') with tol 0.0005 and ans correctly rounded. Do not offer a free decimal."
+  },
+  {
+   "template": "econ_leontief",
+   "severity": "major",
+   "kind": "domain",
+   "detail": "Final demands can be negative or zero, which is economically meaningless (final demand is what households/government buy). Generator picks x1,x2 first and derives d1=x1-(a11 x1+a12 x2)/10, which is <=0 whenever the intermediate use exceeds output; about 18% of the whole parameter space, 4 of 14 built rows (d2=-6, d2=-36, d1=-45, d1=-16 and two rows with d2=0). Verifier only asserts x>0, not d>0.",
+   "evidence": "b-hs-econ-leontief rows 4,6,12,14: (d1,d2)=(118,-6),(124,-36),(-45,135),(-16,124); rows 7,8 have d2=0",
+   "fix": "Reject draws unless d1>0 and d2>0 (e.g. also require x_i > sum of row of A*x); add `assert d1>0 and d2>0` to verify/econ.py leontief."
+  },
+  {
+   "template": "econ_profitCubic",
+   "severity": "major",
+   "kind": "domain",
+   "detail": "Cost C(q)=q^3-bq^2+cq+f has negative marginal cost (total cost falls as output rises) on an interval for about 45% of rows (b in {3,6,9,12}, c in 5..40: min MC = c-b^2/3 < 0 when b=12 for all c, b=9 for c<27, b=6 for c<12). A cost function that decreases with output is not a real cost function; the maximum-profit logic is mathematically fine but the context is false.",
+   "evidence": "b-hs-econ-profitcubic #1: C=q^3-12q^2+16q+180, C'(4)=-32",
+   "fix": "Generate c so that c > b^2/3 (c from floor(b^2/3)+1 up), and assert in the verifier that C'(q)>0 for all q>=0."
+  },
+  {
+   "template": "job_floorPlan",
+   "severity": "major",
+   "kind": "hint",
+   "detail": "Korean hint 2 says the d-wide side is removed 'and two c-deep sides appear' (it omits the new d-wide far wall). A student who follows it literally gets perimeter 2(a+b)-d+2c, i.e. a wrong answer. The English hint and the explanation are correct (they say the d side is replaced by two c sides and one d side). ko and en are not equivalent.",
+   "evidence": "b-hs-job-floorplan #1: a=10,b=4,d=2,c=2,w=1: literal ko hint gives 32-2... wrong; answer 31",
+   "fix": "Rewrite ko hint 2: '폭 ${d}$ m인 변 하나가 사라지는 대신 깊이 ${c}$ m인 변 두 개와 폭 ${d}$ m인 변 하나가 생겨요.'"
+  },
+  {
+   "template": "econ_utilityBundle",
+   "severity": "major",
+   "kind": "standard",
+   "detail": "Attached to 12경수02-03 (class C: understand utility, express utility as function and graph) with evidence 'concept'. The item is a lattice search over budget solutions and evaluation of a given formula; the numeric result does not depend on the concept of utility or on the graph. It is a disguised calculation. (Also, when two bundles tie the explanation names only one as 'the largest'.)",
+   "evidence": "b-hs-econ-utilitybundle, all rows (e.g. a=400,b=100,I=1900,U=xy)",
+   "fix": "Relabel evidence 'calc' and drop 02-03 (or add an item whose count/parameter depends on indifference-curve or marginal-utility reasoning). Fix the tie wording ('최대인 것 중 하나')."
+  },
+  {
+   "template": "ai_jaccard / ai_jaccardRev",
+   "severity": "major",
+   "kind": "standard",
+   "detail": "Both are attached to 12인수02-01 (class C: represent text data with sets and vectors, 'representation'/'reverse'). Computing n(A∩B)/n(A∪B) from already-given sets, or solving x/(na+nb-x)=p/q, evidences set arithmetic, not choosing a representation of text. Same for ai_flipTranspose on 12인수03-01 (class C): a flip+transpose of a given matrix is an operation (03-02), not a representation choice.",
+   "evidence": "ai_jaccard #1: sets are handed over; ai_flipTranspose: matrix A is given",
+   "fix": "Label evidence 'calc'; keep standards only as secondary (02-02 for similarity of frequency vectors). For a true 02-01 item, ask for a count that depends on how a text is encoded (e.g. number of distinct words / dimension of the frequency vector built from given sentences)."
+  },
+  {
+   "template": "stat_tCiLower; stat_stratified",
+   "severity": "major",
+   "kind": "standard",
+   "detail": "stat_tCiLower lists 12실통03-01 (explore normal and t distributions with a tool): the t value is given in the prompt, nothing is explored. stat_stratified is on 12실통01-03 (class C: choose a sampling method suited to the situation): the method (stratified, proportional) is already stated and only s2 = ns*n2/N is computed. Both over-claim.",
+   "evidence": "stat_tCiLower standards ['12실통03-02','12실통03-01']; stat_stratified evidence 'application'",
+   "fix": "Drop 03-01 from tCiLower; mark stratified evidence 'calc' or add a question that depends on the choice (e.g. which allocation gives a whole number of students / how many per stratum so each stratum has >= x)."
+  },
+  {
+   "template": "ai_cosine",
+   "severity": "major",
+   "kind": "diversity",
+   "detail": "Level 1 uses only 2-D vectors from a pool of 8 Pythagorean vectors ((3,4),(4,3),(6,8),(8,6),(5,12),(12,5),(9,12),(12,9)); after removing parallel pairs only about 44 ordered pairs remain with 3-4 distinct answers. The 12 rows are nearly the same question (e.g. (4,3)·(3,4) and (3,4)·(4,3), (6,8)·(4,3) and (12,9)·(6,8) all 0.96). A 2-component 'word-frequency vector' is also a weak text model.",
+   "evidence": "b-hs-ai-cosine1: answers 0.9692..(5x), 0.96 (5x), 0.8615..(4x)",
+   "fix": "Use 3-D and 4-D pools at level 1 as well (level 2 = 4-D), or require distinct answers within a set; do not draw ordered duplicates."
+  },
+  {
+   "template": "ai_convolve",
+   "severity": "minor",
+   "kind": "uniqueness",
+   "detail": "Prompt does not say that the filter stays fully inside the image (no padding/stride 1). 'overlapping entries' can be read as zero-padded 'same' convolution, giving a different number of outputs and a different sum.",
+   "evidence": "b-hs-ai-convolve1 #1: 3x3 image, 2x2 filter -> 2x2 map is assumed",
+   "fix": "Add '(필터가 이미지 밖으로 나가지 않는 위치만 사용하고 0으로 채우지 않아요)' / English equivalent."
+  },
+  {
+   "template": "ai_gradStep",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Prompt says the loss is being reduced, but several rows overshoot so that the loss increases: e.g. L=3w^2-18w+6, eta=0.5, w0=8 gives w1=-7 (L: 54 -> 279); a=3 with eta=1/2 gives factor -2 (diverges); a=2, eta=1/2 oscillates. The arithmetic is right, the story is false. Also the en explanation reads '. so ' (lowercase after full stop).",
+   "evidence": "b-hs-ai-gradstep1 row 11 (3w^2-18w+6, eta 0.5, w0=8 -> -7)",
+   "fix": "Require |1-2*a*eta|<1 (and ideally the loss decreasing at every shown step) in the generator; add verifier assertion L(w_{k+1})<L(w_k)."
+  },
+  {
+   "template": "econ_regionLP",
+   "severity": "minor",
+   "kind": "domain",
+   "detail": "Daily working time limit T goes up to 240 'hours per day' (T=t1*x0+t2*y0 with x0,y0<=20), impossible for one day unless it is total labour hours of many workers, which the prompt does not say.",
+   "evidence": "b-hs-econ-regionlp row 5: T=131 hours/day, row 13: T=104",
+   "fix": "Say '하루 총 작업 시간(작업자 전체)' or cap T at 24 / use 'kg' and 'm' resources."
+  },
+  {
+   "template": "job_scaleDrawing",
+   "severity": "minor",
+   "kind": "domain",
+   "detail": "With k=500 and w up to 24 cm the 'room' is up to 120 m x 90 m (areas like 3575 m^2); also 1:500 is not a floor-plan scale.",
+   "evidence": "b-hs-job-scaledrawing #2: k=500, w=11,h=13 -> 55 m x 65 m = 3575 m^2",
+   "fix": "Limit the real size (e.g. w*k<=2000 cm) or call the object a hall/field; keep k in {50,100,200}."
+  },
+  {
+   "template": "econ_compoundFV",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Korean particle: '연이율을 {m}으로 나눈' gives '4으로', '2으로', '1으로' (should be 4로, 2로, 1로). For m=1 (half of the rows) the sentence '1년에 1번 ... 연이율을 1으로 나눈 값' is odd. Annual rates 10% and 12% are not realistic deposit rates.",
+   "evidence": "b-hs-econ-compoundfv #1: '연이율을 4으로 나눈 값'",
+   "fix": "Use '{m}로' wording or a particle-free phrase ('연이율의 1/{m}'); for m=1 drop the sentence (two templates or conditional text); cap rate at 6-8%."
+  },
+  {
+   "template": "econ_marginalRevenue; econ_elasticityPoint; ai_pixelBright; ai_mseLoss",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Korean particles after numbers are fixed in the template and wrong for some rows: '${m}이 되게' (5이, 45이 -> 5가, 45가), '$p={p0}$를' (18를 -> 18을), '${a}p+{b}$를' (47를 -> 47을), 'n={np}으로 나눠요' (4으로, 5으로, 8으로 -> 로).",
+   "evidence": "econ_marginalRevenue #2 hint 2 '45이 되게'; econ_elasticityPoint #2 hint 1 '$p=18$를'; ai_pixelBright #1 hint 1 '$3p+47$를'",
+   "fix": "Rephrase to avoid a particle after the number ('값이 $45$가 되도록' -> '... 가 ${m}$이 되는' / 'p=18일 때')."
+  },
+  {
+   "template": "econ_exchangeCross",
+   "severity": "minor",
+   "kind": "domain",
+   "detail": "Generator allows e<d (1 euro cheaper than 1 dollar: d=1400,e=1380) and answers with three decimals in dollars (about 4% of possible rows, e.g. x.125), which is not a currency amount; first prompt value is 1000 won/dollar (stylised).",
+   "evidence": "possible rows: 255 of 5893 have 3-decimal dollar answers",
+   "fix": "Require e>d and a result with at most 2 decimals."
+  },
+  {
+   "template": "econ_inverseEntry; econ_elasticityUnit",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Displayed working has unreadable forms: '0\\times-1-(-2)\\times(1)' (sign directly after times) and '(5)' for positive b; elasticityUnit prints '1p=6-p' when b=1 (and 'q=a-p' omits coefficient on the right but not the left).",
+   "evidence": "b-hs-econ-inverseentry #1; elasticityUnit with b=1",
+   "fix": "Use paren() for negatives only and drop the coefficient 1 on both sides."
+  },
+  {
+   "template": "ai_trendPredict",
+   "severity": "minor",
+   "kind": "format",
+   "detail": "The data lines follow the '(숫자만 쓰세요)' sentence, so the prompt does not end with the answer format; decimal answers (14.1) with 'digits only'.",
+   "evidence": "b-hs-ai-trendpredict1 prompt layout",
+   "fix": "Put the x/y lists before the question or end with the format line."
+  },
+  {
+   "template": "stat_ciProp",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "n=25 and n=36 rows use a Wald interval with the normal approximation although the sample is small (n*p*(1-p) < 10 for some pool entries). Not wrong given the printed formula, but poor practice.",
+   "evidence": "pool includes [25,x] for x with x(25-x) a square",
+   "fix": "Restrict to n>=100 or add 'np>=10 and n(1-p)>=10' as a generator rule."
+  },
+  {
+   "template": "stat_linTransform",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Asks for 'mean of y plus variance of y', adding quantities of different units; contrived. The concept (mean scales by a, variance by a^2, shift doesn't change variance) is right.",
+   "evidence": "b-hs-stat-lintransform",
+   "fix": "Ask for the variance of y and the mean separately in two templates, or use standard deviation."
+  },
+  {
+   "template": "stat_stratified",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "k can be 5 so a grade has only 10 students, and the answer is simply s2 (the generator builds sizes as k*s_i), i.e. the question reduces to reading the ratio; the 'ans = s2' pattern is the only variation.",
+   "evidence": "n1..n3 = 5*s_i .. 50*s_i with s_i in 2..14",
+   "fix": "Draw k from 20..60, ask other strata / the total of two strata."
+  },
+  {
+   "template": "cul_bordaTotal",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Only one pattern (A's total with the same three cyclic ballots, ans = 2*n1+n3). Re-scaling of one pattern, contrary to SPEC rule 4.",
+   "evidence": "b-hs-cul-bordatotal, 20 rows",
+   "fix": "Vary ballot types, ask for the winner's margin or for the number of voters needed for a tie, or add a plurality-vs-Borda comparison."
+  },
+  {
+   "template": "cul_brailleCells",
+   "severity": "minor",
+   "kind": "domain",
+   "detail": "d is 2..8; real braille cells have 6 (or 8 for computer braille) dot positions, so d=2..5,7 do not describe braille. Only 7 distinct rows, ans = 2^d-1 only.",
+   "evidence": "b-hs-cul-braillecells (7 rows)",
+   "fix": "Fix d in {6,8} with extra conditions (e.g. at most k raised dots: sum C(d,j)) for more variety."
+  },
+  {
+   "template": "job_boxesCeil",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Attached to 12직수01-02 (estimate large numbers by rounding, compare estimates) and 01-01; a ceiling division of packaging is not estimation of large numbers (n only up to 5000).",
+   "evidence": "job_boxesCeil standards ['12직수01-02','12직수01-01']",
+   "fix": "Keep 01-01 only, or add a true estimation item (round to the nearest hundred/thousand and compare)."
+  },
+  {
+   "template": "econ_equilibriumTable; econ_taxEquilibrium; econ_elasticityPoint/Unit",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Standards are 'explain/explore' verbs (12경수02-02, 02-04, 02-05, 04-03) but the items are computations; evidence labels 'representation'/'application'/'calc' are honest, but the standard code claims more than a number evidences.",
+   "evidence": "econ_equilibriumTable standards ['12경수02-02','12경수02-04']",
+   "fix": "Keep as 'calc/application' evidence and do not count these as evidence for the 'explain' part of the standard."
+  },
+  {
+   "template": "verify/econ.py (leontief); verify/ai.py (gradstep, trend); verify/stat.py (cimean, tci)",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Missing assertions: leontief does not assert d1,d2>0 (so the negative-demand rows pass); gradstep does not assert loss decrease or terminating answer; trend does not assert the terminating <=3 decimal rule; profit_cubic does not assert C'(q)>=0. No verifier checks the rendered text (odd `$`, particles) or that fraction-answer rows are terminating when the prompt says 'decimal'. stat cimean/tci/ciprop/zstat re-implement the same one-line formula (independence is nominal for those, fine because nothing else can be checked).",
+   "evidence": "verify run: 'failures 0' for all five modules although the defects above exist",
+   "fix": "Add the assertions above plus a tolerance/termination check on ans and a `$`-balance check in run.py."
+  }
+ ],
+ "drop": [
+  {
+   "template": "econ_utilityBundle",
+   "why": "only a lattice search with a given formula; relabel or replace before using it as evidence for 12경수02-03"
+  },
+  {
+   "template": "ai_cosine (level 1)",
+   "why": "2-D pool of 8 vectors gives ~3 distinct questions in 12 rows; rebuild with 3-D/4-D pools"
+  }
+ ],
+ "ok": [
+  "econ_taxBracket (progressive brackets, rates plausible, bracket boundaries inclusive-stated)",
+  "econ_presentValue / econ_annuityPV (conventions stated: yearly compounding, ordinary annuity, floor in won; only exact-integer FV rows)",
+  "econ_taxEquilibrium (incidence stated: seller receives p-t; ans unique, algebra correct)",
+  "econ_equilibriumTable (two lines, unique intersection, quantities positive)",
+  "econ_regionLP (optimum unique and integral, ties excluded; only the 'hours/day' realism issue)",
+  "econ_marginalRevenue, econ_elasticityUnit (unique positive root, q>0 and q'<0 stated and true for every row)",
+  "job_flowUnits, job_boxesCeil (conventions stated), job_ratioChain, job_markupProfit, job_tableRule, job_planCompare (strict inequality and floor+1 correct), job_workTogether, job_boxTunnel (surface-area identity verified by cell counting), job_outfitCount",
+  "ai_jaccardRev (unique x), ai_pixelBright, ai_flipTranspose, ai_mseLoss, ai_gradMse, ai_trendPredict (math right)",
+  "stat_quartileIqr (method stated, even/odd handled), stat_sdFreq (population SD stated, all means and variances terminate), stat_ciMean, stat_tCiLower (t values 3.182, 2.306, 2.131, 2.064, 2.030, 2.011, 1.998, 1.984 are the correct 0.975 quantiles), stat_zStat, stat_rejectN (strict inequality, brute-force verified), no CI-interpretation claims anywhere",
+  "cul_pitchFifth (ratio 3:2 stated), cul_brailleCells arithmetic"
+ ]
+}
