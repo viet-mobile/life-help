@@ -130,7 +130,8 @@ export function LearnerProvider({
 
   const api = useCallback(
     async <T extends object>(action: string, body: Record<string, unknown> = {}): Promise<T & { state?: PlayerState }> => {
-      const payload: Record<string, unknown> = { ...body, site };
+      // API URLs have no /<locale> prefix: send the page's resolved presentation language explicitly.
+      const payload: Record<string, unknown> = { ...body, site, locale };
       if (mode === "guest") payload.state = stateRef.current;
       let res: Response;
       try {
@@ -148,7 +149,7 @@ export function LearnerProvider({
       if (data.state) adopt(data.state as PlayerState);
       return data as T & { state?: PlayerState };
     },
-    [mode, site, adopt],
+    [mode, site, locale, adopt],
   );
 
   const resetGuest = useCallback(() => {

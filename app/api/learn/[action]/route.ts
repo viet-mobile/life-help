@@ -2,6 +2,7 @@ import { isSite } from "@/lib/learn/types";
 import { LearnError } from "@/lib/learn/server/errors";
 import { assertSameOrigin, errorResponse, jsonResponse, rateLimit, readJson } from "@/lib/learn/server/http";
 import { getLearnService, resolveActor } from "@/lib/learn/server/runtime";
+import { isLocale } from "@/lib/learn/i18n";
 
 /**
  * Learning API. Every action:
@@ -18,8 +19,11 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
     const body = await readJson(request);
     if (!isSite(body.site)) throw new LearnError("invalid_site");
     const site = body.site;
+    if (body.locale !== undefined && !isLocale(body.locale)) throw new LearnError("invalid_locale");
 
     const actor = await resolveActor(body.state);
+    // Presentation only; the authenticated identity still comes exclusively from the session.
+    if (isLocale(body.locale)) actor.locale = body.locale;
     const ip = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for") ?? "local";
     rateLimit(`${actor.userId ?? ip}:${action}`, action === "attempt" ? 120 : 60, 60_000);
 
