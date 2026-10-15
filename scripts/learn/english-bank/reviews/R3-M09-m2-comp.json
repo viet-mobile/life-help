@@ -1,0 +1,200 @@
+{
+ "packet": "M09-m2-comp",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 122
+ },
+ "patches": [
+  {
+   "item": "5c3bedb2",
+   "op": "set",
+   "set": {
+    "o": [
+     "slow",
+     "slowest",
+     "slowly",
+     "slower"
+    ],
+    "a": 3
+   },
+   "why": "Replace defensible distractor \"more slow\" with \"slowly\".",
+   "severity": "major"
+  },
+  {
+   "item": "6f535662",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Of the three cakes, the chocolate cake is the sweeter.",
+     "Of the three cakes, the chocolate cake is the sweet.",
+     "Of the three cakes, the chocolate cake is the sweetest than."
+    ]
+   },
+   "why": "\"is sweetest\" without the is arguably acceptable; replaced.",
+   "severity": "minor"
+  },
+  {
+   "item": "a387f104",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which beach had warmer water?",
+      "o": [
+       "Pine Cove",
+       "Sunny Bay",
+       "Both were the same.",
+       "The writer did not say."
+      ],
+      "a": 0,
+      "why": "Pine Cove의 바다가 더 따뜻하고 맑았다고 했어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why did the writer's brother like Sunny Bay best?",
+      "o": [
+       "The sea was clearer.",
+       "It was quieter than Pine Cove.",
+       "There were more things to do.",
+       "He could see small fish."
+      ],
+      "a": 2,
+      "why": "할 것이 더 많았기 때문이에요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "What kind of traveler is the writer?",
+      "o": [
+       "Someone who loves busy shopping",
+       "Someone who dislikes the sea",
+       "Someone who enjoys calm places",
+       "Someone who wants big crowds"
+      ],
+      "a": 2,
+      "why": "조용하고 편안한 Pine Cove를 선호했어요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "The word \"crowded\" is closest in meaning to ___.",
+      "o": [
+       "quiet and empty",
+       "full of people",
+       "cold and clear",
+       "small and cheap"
+      ],
+      "a": 1,
+      "why": "crowded는 사람이 많아 붐비는 상태를 뜻해요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "What does the family plan to do next year?",
+      "o": [
+       "Visit only Sunny Bay for the whole week",
+       "Move to a small town near Pine Cove",
+       "Find a third, cheaper beach",
+       "Stay at both beaches and compare them again"
+      ],
+      "a": 3,
+      "why": "각 해변에서 이틀씩 머물며 다시 비교할 계획이에요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Q4 replaced to stop leaking Q3 key.",
+   "severity": "minor"
+  },
+  {
+   "item": "bd4f7e1d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Mina do to improve Pip?",
+      "o": [
+       "She changed its wheels after school.",
+       "She bought a faster battery online.",
+       "She asked Dan to rebuild the robot.",
+       "She painted it a brighter color."
+      ],
+      "a": 0,
+      "why": "방과 후에 사흘 동안 바퀴를 바꿨어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why was Mina worried at first?",
+      "o": [
+       "She did not have enough time to finish.",
+       "Dan told her not to join the fair.",
+       "Her teacher did not like robots.",
+       "Pip was slow and kept turning left."
+      ],
+      "a": 3,
+      "why": "Pip이 느리고 계속 왼쪽으로 돌았기 때문이에요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "Which prize did Pip win?",
+      "o": [
+       "The prize for the fastest robot of all",
+       "The prize for the most creative design",
+       "The prize for the best teamwork in class",
+       "The prize for the safest wheels"
+      ],
+      "a": 1,
+      "why": "Pip은 가장 창의적인 디자인 상을 받았어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does Mina's last speech suggest?",
+      "o": [
+       "She wants a faster robot than Dan's.",
+       "She values learning more than winning.",
+       "She thinks Dan did not deserve first prize.",
+       "She is disappointed in her robot."
+      ],
+      "a": 1,
+      "why": "Dan의 로봇이 더 빠르지만 자신은 더 많이 배웠다고 말해요.",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "The word \"stable\" in the passage is closest in meaning to ___.",
+      "o": [
+       "heavy",
+       "colorful",
+       "noisy",
+       "steady"
+      ],
+      "a": 3,
+      "why": "stable은 흔들리지 않고 안정적이라는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "Consistent final periods in Q2 options.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 117,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

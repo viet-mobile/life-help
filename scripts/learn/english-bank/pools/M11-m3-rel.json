@@ -817,9 +817,9 @@
       "st": "I have a dog ___ likes swimming.",
       "ok": "that",
       "wr": [
-       "who",
        "what",
-       "whose"
+       "whose",
+       "whom"
       ]
      },
      "rule": "두 문장을 이을 때 관계대명사가 주어 it을 대신해요. 선행사가 dog(단수)이므로 likes로 써요."
@@ -902,7 +902,8 @@
        "when"
       ]
      },
-     "rule": "‘그 가게에서’의 뜻을 대신하는 장소의 관계부사는 where예요."
+     "rule": "‘그 가게에서’의 뜻을 대신하는 장소의 관계부사는 where예요.",
+     "ord": false
     },
     {
      "k": "s",
@@ -1410,10 +1411,10 @@
      "k": "m",
      "q": "다음 문장에 대한 설명으로 알맞은 것은?\nMy sister, who lives in Daegu, is a nurse.",
      "o": [
-      "who lives in Daegu는 이미 정해진 언니에 대한 추가 설명이다.",
-      "who 대신 that을 써도 같은 문장이 된다.",
-      "who를 생략해도 문장이 올바르다.",
-      "who 대신 whose를 써도 뜻이 같다."
+      "who lives in Daegu는 이미 정해진 My sister에 정보를 덧붙이는 설명이다.",
+      "who 대신 that을 써도 문장이 올바르고 뜻도 같다.",
+      "who를 생략해도 쉼표를 그대로 두면 문장이 올바르다.",
+      "who 대신 whose를 써도 문장의 뜻이 그대로 같다."
      ],
      "a": 0,
      "why": "쉼표가 있는 관계절은 이미 정해진 대상에 정보를 덧붙여요. 이때 that은 쓰지 않고 관계대명사를 생략하지도 않아요.",
@@ -1671,9 +1672,9 @@
      "q": "A person who writes books is called an ___.",
      "o": [
       "author",
-      "farmer",
-      "pilot",
-      "athlete"
+      "actor",
+      "engineer",
+      "artist"
      ],
      "a": 0,
      "why": "책을 쓰는 사람은 author(작가)예요.",
@@ -1694,15 +1695,15 @@
     },
     {
      "k": "m",
-     "q": "A tool that you use to cut paper is called ___.",
+     "q": "A tool that you use to cut paper is ___.",
      "o": [
-      "a ladder",
-      "a mirror",
-      "a blanket",
-      "scissors"
+      "a pair of scissors",
+      "a roll of tape",
+      "a bag of crayons",
+      "a bottle of glue"
      ],
-     "a": 3,
-     "why": "종이를 자르는 도구는 scissors(가위)예요.",
+     "a": 0,
+     "why": "종이를 자르는 도구는 a pair of scissors(가위)예요.",
      "cat": "relative clauses"
     },
     {
@@ -1821,12 +1822,12 @@
       {
        "q": "The word “shy” in the passage is closest in meaning to",
        "o": [
+        "excited about learning the new game rules",
+        "unable to understand what other people say",
         "not comfortable talking to new people",
-        "excited about learning new rules",
-        "unable to understand a language",
-        "tired after a long trip"
+        "tired after a long trip by boat"
        ],
-       "a": 0,
+       "a": 2,
        "why": "At first ... shy, but he soon became friends라는 흐름에서 낯선 사람과 말하기 어려워하는 뜻이에요."
       }
      ]
@@ -1850,12 +1851,12 @@
       {
        "q": "What does a worker’s dance tell the other bees?",
        "o": [
-        "Where a good place to find flowers is",
-        "When the queen wants to lay eggs",
-        "Which bees should make the honey",
-        "How many seeds a plant has"
+        "When the queen is ready to lay more eggs",
+        "Which of the bees should make the honey today",
+        "Where a good field of flowers is",
+        "How many seeds each flower plant makes"
        ],
-       "a": 0,
+       "a": 2,
        "why": "she dances to tell the others where to go라고 했어요."
       },
       {
@@ -1890,12 +1891,12 @@
       {
        "q": "What is the passage mainly about?",
        "o": [
-        "A shop that repairs watches for free",
         "A watch that carries a special family memory",
-        "A drawer that is full of old photographs",
-        "A grandfather who works on trains"
+        "A shop where a kind woman repairs watches for free",
+        "A drawer in which a family keeps old photographs",
+        "A grandfather who spent his working life fixing trains"
        ],
-       "a": 1,
+       "a": 0,
        "why": "낡은 시계가 가족의 추억을 담고 있다는 내용이 중심이에요."
       },
       {
@@ -1912,12 +1913,12 @@
       {
        "q": "The word “useless” in the passage means",
        "o": [
-        "worth keeping",
-        "not able to be used well",
-        "very expensive",
-        "hard to find"
+        "worth keeping for many years",
+        "very expensive to buy in a shop",
+        "hard to find in a small town",
+        "not able to be used well"
        ],
-       "a": 1,
+       "a": 3,
        "why": "use + less는 쓸모가 없다는 뜻이에요. 할아버지는 추억을 담은 물건은 쓸모없지 않다고 말했어요."
       },
       {
@@ -1953,9 +1954,9 @@
        "q": "What is the main idea of the passage?",
        "o": [
         "A night market is a lively place that offers more than food.",
-        "Vendors should learn the names of every single customer.",
-        "Spicy food is too dangerous for most of the tourists.",
-        "Cities should close their busy streets in the evening."
+        "Vendors should learn the names of every single customer who visits.",
+        "Spicy food is too dangerous for most of the tourists who come.",
+        "Cities should close their busy streets in the evening for safety."
        ],
        "a": 0,
        "why": "음식뿐 아니라 도시의 분위기까지 보여 주는 활기찬 장소라는 내용이에요."
@@ -1994,15 +1995,15 @@
        "why": "regular는 자주 오는 단골을 뜻해요."
       },
       {
-       "q": "In the sentence “a dish which made him cry,” “which” refers to",
+       "q": "In the sentence “Stalls that sell hot snacks fill the street,” “that” refers to",
        "o": [
-        "the cousin",
-        "the market",
-        "the dish",
-        "the city"
+        "the street",
+        "the snacks",
+        "the evening",
+        "the stalls"
        ],
-       "a": 2,
-       "why": "which는 바로 앞의 a dish를 가리켜요."
+       "a": 3,
+       "why": "that의 선행사는 바로 앞의 Stalls예요."
       }
      ]
     },
@@ -2014,23 +2015,23 @@
       {
        "q": "What is Mr. Choi’s attitude toward the robot?",
        "o": [
+        "He believes it should also teach younger students how to read.",
+        "He worries that the robot will take his job as a librarian one day.",
         "He thinks it is useful but cannot replace people’s advice.",
-        "He believes it should also teach the students to read.",
-        "He worries that it will take his job one day.",
-        "He wants to remove it from the library this year."
+        "He wants to remove the robot from the library before this year ends."
        ],
-       "a": 0,
+       "a": 2,
        "why": "도구로서는 유익하지만 사람의 조언을 대신할 수는 없다고 말해요."
       },
       {
        "q": "What can the robot do?",
        "o": [
         "Choose the best book for each reader",
-        "Bring high books to a table",
         "Teach reading to young children",
-        "Repair broken books"
+        "Repair broken books",
+        "Carry hard-to-reach books to a table"
        ],
-       "a": 1,
+       "a": 3,
        "why": "find books which are hard to reach and carry them to a table이라고 했어요."
       },
       {
@@ -2048,11 +2049,11 @@
        "q": "The word “taste” in the passage means",
        "o": [
         "the flavor of food",
-        "what a person likes",
         "a kind of library rule",
+        "what a person likes",
         "a sound in the library"
        ],
-       "a": 1,
+       "a": 2,
        "why": "책을 골라 줄 수 있는 선생님이 아니라는 문맥에서 사람의 취향을 뜻해요."
       },
       {
@@ -2076,12 +2077,12 @@
       {
        "q": "What is the passage mainly about?",
        "o": [
-        "Why phones and tablets are bad for school",
+        "Why phones and tablets should be banned from schools",
+        "What kind of quiet music helps students study best",
         "How teenagers can build a routine for better sleep",
-        "What kind of music helps students study",
-        "How many hours doctors sleep every day"
+        "How many hours doctors need to sleep every day"
        ],
-       "a": 1,
+       "a": 2,
        "why": "십 대가 잘 자기 위한 습관을 소개하는 글이에요."
       },
       {
@@ -2109,12 +2110,12 @@
       {
        "q": "The word “routine” in the passage means",
        "o": [
-        "a set of things you do in the same order",
-        "a song with a quiet beat",
-        "a test that is given every week",
-        "a list of foods before bed"
+        "a quiet song with a slow and gentle beat",
+        "a short test that students take every week",
+        "a list of foods that people eat before bed",
+        "a set of things you do in the same order"
        ],
-       "a": 0,
+       "a": 3,
        "why": "잠자기 전에 매일 같은 순서로 하는 행동을 뜻해요."
       }
      ]
@@ -2138,12 +2139,12 @@
       {
        "q": "Where was the second box placed?",
        "o": [
+        "Inside the library of Sora’s school",
         "At the door of an electronics shop",
-        "In the school library",
-        "Next to the old posters",
-        "In Sora’s classroom"
+        "On the wall next to the old posters",
+        "In the classroom where the club meets"
        ],
-       "a": 0,
+       "a": 1,
        "why": "a shop owner whose store sells electronics ... a second box at his door라고 했어요."
       },
       {
@@ -2151,7 +2152,7 @@
        "o": [
         "the club",
         "a box",
-        "the project",
+        "the batteries",
         "the classroom"
        ],
        "a": 1,
@@ -2160,10 +2161,10 @@
       {
        "q": "What does the club want to do next?",
        "o": [
-        "Throw away the old posters",
-        "Ask Sora to leave the club",
+        "Throw away the old posters on the walls",
+        "Ask Sora to step down as the club leader",
         "Find more places for collection boxes",
-        "Stop meeting on Thursdays"
+        "Stop holding meetings on Thursday afternoons"
        ],
        "a": 2,
        "why": "마지막 문장에서 상자를 더 둘 장소를 찾고 싶다고 했어요."
@@ -2171,12 +2172,12 @@
       {
        "q": "The word “ignored” in the passage is closest in meaning to",
        "o": [
+        "looked at very carefully",
+        "talked about with joy",
         "paid no attention to",
-        "carefully studied",
-        "happily celebrated",
-        "quickly repaired"
+        "fixed in a short time"
        ],
-       "a": 0,
+       "a": 2,
        "why": "ignore는 관심을 주지 않는다는 뜻이에요."
       }
      ]
@@ -2284,12 +2285,12 @@
       {
        "q": "Why does the writer say “bring an instrument if you have one”?",
        "o": [
-        "Everyone must play a solo.",
-        "Anyone can take part in the final concert.",
-        "The festival sells instruments.",
-        "The band needs new members."
+        "Everyone must play a solo on the stage.",
+        "The festival sells instruments to visitors.",
+        "The band needs new members this spring.",
+        "Anyone can take part in the final concert."
        ],
-       "a": 1,
+       "a": 3,
        "why": "a concert that anyone can join이라고 했으니 누구나 참여할 수 있다는 뜻이에요."
       },
       {

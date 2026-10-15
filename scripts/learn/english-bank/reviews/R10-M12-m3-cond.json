@@ -1,0 +1,304 @@
+{
+ "packet": "M12-m3-cond",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 125
+ },
+ "patches": [
+  {
+   "item": "34d8b869",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did the writer feel on Saturday?",
+      "o": [
+       "Bored",
+       "Excited",
+       "Angry",
+       "Proud"
+      ],
+      "a": 0,
+      "why": "첫 문장에서 지루한 하루였다고 했어요."
+     },
+     {
+      "q": "Why can't the writer have a dog?",
+      "o": [
+       "The sister is allergic to dogs.",
+       "The apartment does not allow animals.",
+       "Dogs are too expensive for the family to feed.",
+       "Mom does not like walks in the rain."
+      ],
+      "a": 1,
+      "why": "아파트에서 동물을 허락하지 않는다고 했어요."
+     },
+     {
+      "q": "What will the sister probably do if the writer wakes up early for a month?",
+      "o": [
+       "Take the dog for a long walk in the park",
+       "Give the writer a comic book",
+       "Set the alarm for the writer",
+       "Talk to Mom about getting a dog"
+      ],
+      "a": 3,
+      "why": "한 달 동안 일찍 일어나면 글쓴이의 sister가 엄마에게 이야기해 주겠다고 했어요."
+     },
+     {
+      "q": "In the passage, 'allow' is closest in meaning to",
+      "o": [
+       "let",
+       "hide",
+       "break",
+       "sell"
+      ],
+      "a": 0,
+      "why": "allow는 '허락하다'라는 뜻이에요."
+     },
+     {
+      "q": "What time will the writer set the alarm for?",
+      "o": [
+       "Six thirty",
+       "Seven o'clock",
+       "Five thirty",
+       "Eight fifteen"
+      ],
+      "a": 0,
+      "why": "내일 아침 알람을 여섯 시 삼십 분에 맞추겠다고 했어요."
+     }
+    ]
+   },
+   "why": "Q3 stem ('wakes up early for a month') gives away Q5 key ('Start waking up early'); Q5 replaced by a detail question (alarm time). Q3 explanation said 언니 though sister's age/writer's gender is not given.",
+   "severity": "minor"
+  },
+  {
+   "item": "373ba7b1",
+   "op": "set",
+   "set": {
+    "text": "Summer is here, and Sunny Wheels has great deals for you! If you buy any bike this month, you will get a free water bottle. If you bring your old bike, we will give you a 10 percent discount on a new one. Do you worry about safety? Don't! If you buy a helmet with your bike, the helmet costs only half price. We are open from ten to six every day except Monday. Not sure which bike to choose? Our friendly staff would be happy to help you. You can also try any bike for ten minutes unless the store is very busy. Come and find your perfect ride!",
+    "qs": [
+     {
+      "q": "Why was this advertisement written?",
+      "o": [
+       "To teach people how to repair a bike",
+       "To advertise bikes and special offers",
+       "To warn about unsafe roads",
+       "To invite people to a race"
+      ],
+      "a": 1,
+      "why": "자전거 가게의 특별 행사를 알리는 광고예요."
+     },
+     {
+      "q": "What will you get if you buy any bike this month?",
+      "o": [
+       "A free helmet",
+       "A free repair",
+       "A ten-minute lesson",
+       "A free water bottle"
+      ],
+      "a": 3,
+      "why": "이번 달에 자전거를 사면 무료 물병을 준다고 했어요."
+     },
+     {
+      "q": "When is the shop closed?",
+      "o": [
+       "On Mondays",
+       "On Sundays",
+       "In the evening only",
+       "During the summer"
+      ],
+      "a": 0,
+      "why": "월요일은 문을 닫는다고 했어요."
+     },
+     {
+      "q": "In which situation might you not be able to test-ride a bike?",
+      "o": [
+       "When you bring an old bike to us",
+       "When you choose a red bike",
+       "When the store is very busy",
+       "When you ask the staff"
+      ],
+      "a": 2,
+      "why": "가게가 매우 붐비지 않는 한 10분간 타 볼 수 있다고 했으니 붐비면 어려울 수 있어요."
+     },
+     {
+      "q": "In the passage, 'deals' is closest in meaning to",
+      "o": [
+       "long trips",
+       "hard tests",
+       "free repair visits",
+       "special offers"
+      ],
+      "a": 3,
+      "why": "deals는 싸게 살 수 있는 '특가, 거래 조건'이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Text contradicted itself ('open every day' but 'closed on Mondays'); Q2 distractor 'A half-price helmet' is partly supported by the text, changed to 'A free helmet'.",
+   "severity": "major"
+  },
+  {
+   "item": "8898f062",
+   "op": "set",
+   "set": {
+    "text": "Saving energy is not difficult. If you turn off the lights when you leave a room, you use less electricity. A phone charger keeps using a little power even when nothing is connected. If you unplug it, it stops using power. Many families forget this simple step. Another good habit is to take shorter showers. If everyone in your house saves just five minutes a day, you will save a lot of water in a year. Finally, if you walk or ride a bike to school, you will make less pollution. Unless we change our daily habits, the planet will keep getting warmer. Small actions really do matter.",
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why phones and chargers use too much power",
+       "How small habits can help the planet",
+       "Which bike is best for school",
+       "When showers became popular"
+      ],
+      "a": 1,
+      "why": "일상의 작은 습관으로 에너지를 아낄 수 있다는 내용이에요."
+     },
+     {
+      "q": "According to the passage, what happens if you unplug a phone charger?",
+      "o": [
+       "It charges phones faster.",
+       "It becomes cheaper to use.",
+       "It stops using power.",
+       "It breaks more easily."
+      ],
+      "a": 2,
+      "why": "충전기를 뽑으면 전력 사용이 멈춘다고 했어요."
+     },
+     {
+      "q": "What will happen if everyone in a house saves five minutes of shower time a day?",
+      "o": [
+       "They will save a lot of water in a year.",
+       "They will stop using electricity.",
+       "Their water bills will double in a year.",
+       "The planet will cool down at once."
+      ],
+      "a": 0,
+      "why": "하루 5분씩 줄이면 1년에 많은 물을 절약한다고 했어요."
+     },
+     {
+      "q": "In the passage, 'habit' means something people",
+      "o": [
+       "do again and again",
+       "find in a school library",
+       "find in a book",
+       "make in a lab"
+      ],
+      "a": 0,
+      "why": "habit은 반복해서 하는 '습관'이에요."
+     },
+     {
+      "q": "What does the writer want readers to do?",
+      "o": [
+       "Change their daily habits a little",
+       "Stop using water and electricity completely",
+       "Wait for the government to act",
+       "Buy new energy-saving machines"
+      ],
+      "a": 0,
+      "why": "작은 행동이 중요하니 일상 습관을 바꾸자는 것이 글쓴이의 메시지예요."
+     }
+    ]
+   },
+   "why": "Unplug sentence illogical; rewritten. Q3 distractor 'will become double' ungrammatical.",
+   "severity": "minor"
+  },
+  {
+   "item": "1a9d2218",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to build a window",
+       "Why plants need light",
+       "What makes food taste sweet",
+       "Where plants are sold"
+      ],
+      "a": 1,
+      "why": "식물이 자라는 데 빛이 왜 필요한지를 설명하는 글이에요."
+     },
+     {
+      "q": "What happens to a plant that does not get enough light?",
+      "o": [
+       "It makes more sugar every day.",
+       "It needs much less water.",
+       "It turns pale and grows weak.",
+       "It grows toward the closet."
+      ],
+      "a": 2,
+      "why": "빛이 부족하면 창백해지고 약해진다고 했어요."
+     },
+     {
+      "q": "What will happen if you turn the pot around?",
+      "o": [
+       "The plant will slowly bend the other way.",
+       "The plant will stop growing for good this week.",
+       "The plant will turn bright red.",
+       "The plant will fall down at once."
+      ],
+      "a": 0,
+      "why": "화분을 돌리면 식물이 천천히 반대쪽으로 굽는다고 했어요."
+     },
+     {
+      "q": "In the passage, 'process' means",
+      "o": [
+       "a heavy box of tools",
+       "a loud sound",
+       "a cold season",
+       "a series of steps"
+      ],
+      "a": 3,
+      "why": "process는 여러 단계로 이루어진 '과정'이에요."
+     },
+     {
+      "q": "According to the passage, where should a houseplant be kept?",
+      "o": [
+       "In a bright spot at home",
+       "In a dark closet",
+       "Under a pile of boxes",
+       "In a cold basement"
+      ],
+      "a": 0,
+      "why": "집 안의 밝은 자리가 필요하다고 했어요."
+     }
+    ]
+   },
+   "why": "Q5 key repeated Q2's answer (pale and weak), so questions revealed each other; replaced with a different detail question.",
+   "severity": "minor"
+  },
+  {
+   "item": "bbe80596",
+   "op": "set",
+   "set": {
+    "z": [
+     "than",
+     "nor",
+     "both"
+    ]
+   },
+   "why": "'whether' can read as grammatical ('...whether you have a ticket'); replaced with 'nor'.",
+   "severity": "minor"
+  },
+  {
+   "item": "eb0ff4f4",
+   "op": "set",
+   "set": {
+    "q": "'I wish I were taller.'의 뜻으로 알맞은 것은?",
+    "o": [
+     "나는 키가 많이 커졌다",
+     "나는 곧 키가 클 것이다",
+     "나는 키가 더 크면 좋겠다",
+     "나는 원래 키가 큰 편이다"
+    ],
+    "a": 2,
+    "why": "I wish + 과거형은 지금과 다른 상황을 바라는 말이에요."
+   },
+   "why": "Key was the only option not starting with '나는' (format cue). q unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 116,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

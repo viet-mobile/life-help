@@ -1,0 +1,165 @@
+{
+ "packet": "M10-m2-read",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "56703bf3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does Jina ask about the soup?",
+      "o": [
+       "She dislikes tomatoes.",
+       "She cannot have dairy foods.",
+       "She wants a cheaper meal.",
+       "She is in a hurry."
+      ],
+      "a": 1,
+      "why": "우유 알레르기가 있다고 했어요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "Which soup does Jina choose?",
+      "o": [
+       "The tomato soup",
+       "The mushroom soup",
+       "The chicken soup",
+       "No soup"
+      ],
+      "a": 0,
+      "why": "토마토 수프가 유제품이 없어서 골랐어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does Jina drink?",
+      "o": [
+       "Milk",
+       "Juice",
+       "Tea",
+       "Water"
+      ],
+      "a": 3,
+      "why": "“Just water, thank you.”",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "How long will the food take?",
+      "o": [
+       "About twenty minutes",
+       "Only two minutes",
+       "About ten minutes",
+       "An hour"
+      ],
+      "a": 2,
+      "why": "“ready in about ten minutes”",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What is the dialogue mainly about?",
+      "o": [
+       "A cooking teacher giving a class to a guest",
+       "A customer ordering lunch and asking about dairy",
+       "Two friends planning a picnic for the weekend",
+       "A chef changing the menu for a new season"
+      ],
+      "a": 1,
+      "why": "음식 주문과 알레르기 확인이 중심이에요.",
+      "std": [
+       "9영01-03"
+      ]
+     }
+    ]
+   },
+   "why": "Fix unnatural key of Q5 (qs array only; no identity change).",
+   "severity": "minor"
+  },
+  {
+   "item": "9519ad40",
+   "op": "set",
+   "set": {
+    "q": "What happened first in the story?\n\n“We stayed in and played cards while it rained. After the rain stopped, we went out to the garden. There we found a rainbow over the roof.”",
+    "o": [
+     "They found a rainbow.",
+     "They went to the garden.",
+     "They played cards.",
+     "The rain stopped."
+    ],
+    "a": 2,
+    "why": "비가 오는 동안 실내에서 카드놀이를 했고, 그다음에 비가 그쳐서 정원에 나갔어요."
+   },
+   "why": "Passage logic fixed; q text changes (identity field q).",
+   "severity": "major"
+  },
+  {
+   "item": "429a7261",
+   "op": "set",
+   "set": {
+    "q": "Which sentence introduces the topic of the paragraph?\n\n“(1) Learning a language takes time. (2) Some people practice by watching films. (3) Others prefer to talk with friends. (4) Whatever the way, regular practice is the key.”",
+    "o": [
+     "(2)",
+     "(1)",
+     "(3)",
+     "(4)"
+    ],
+    "a": 1,
+    "why": "(1)이 단락의 주제(언어 학습에는 시간이 걸린다)를 처음 소개하는 문장이에요."
+   },
+   "why": "Remove 'topic sentence' ambiguity; q changes (identity field q).",
+   "severity": "minor"
+  },
+  {
+   "item": "98628ab3",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Although it was raining, but we played outside.",
+     "Although it was raining, we play outside yesterday.",
+     "Although it was raining we plays outside."
+    ],
+    "cz": {
+     "st": "___ it was raining, we played outside.",
+     "ok": "Although",
+     "wr": [
+      "Because",
+      "So",
+      "Therefore"
+     ]
+    }
+   },
+   "why": "Remove grammatical distractor and 'Unless'.",
+   "severity": "major"
+  },
+  {
+   "item": "8e774bfa",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "I'm happy ___ the good news.",
+     "ok": "to hear",
+     "wr": [
+      "heard",
+      "for hear",
+      "hear"
+     ]
+    }
+   },
+   "why": "'hearing' is defensible colloquially.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 123,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

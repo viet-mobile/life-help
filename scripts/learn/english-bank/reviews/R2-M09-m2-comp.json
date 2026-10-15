@@ -1,0 +1,93 @@
+{
+ "packet": "M09-m2-comp",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "d20edcb1",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Minho is the tallest in the four players.",
+     "Minho is the taller of the four players.",
+     "Minho is the tallest from the four players."
+    ]
+   },
+   "why": "Old bad option without the is also acceptable English; replaced.",
+   "severity": "major"
+  },
+  {
+   "item": "700c9199",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "This is the ___ bridge in our town.",
+     "ok": "longest",
+     "wr": [
+      "longer",
+      "longgest",
+      "most long"
+     ]
+    }
+   },
+   "why": "Base form long fits the blank grammatically.",
+   "severity": "minor"
+  },
+  {
+   "item": "f52a2c60",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "That is the ___ room in the museum.",
+     "ok": "largest",
+     "wr": [
+      "largeest",
+      "larger",
+      "largist"
+     ]
+    }
+   },
+   "why": "Base form large fits the blank grammatically.",
+   "severity": "minor"
+  },
+  {
+   "item": "b69a0ca0",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Friday was the ___ day of my week.",
+     "ok": "busiest",
+     "wr": [
+      "busyest",
+      "busier",
+      "busyer"
+     ]
+    }
+   },
+   "why": "Base form busy fits the blank grammatically.",
+   "severity": "minor"
+  },
+  {
+   "item": "c776cb8a",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Which is ___, the tower or the tree?",
+     "ok": "taller",
+     "wr": [
+      "tallest",
+      "more taller",
+      "more tall"
+     ]
+    }
+   },
+   "why": "Base form tall fits the blank grammatically.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 124,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

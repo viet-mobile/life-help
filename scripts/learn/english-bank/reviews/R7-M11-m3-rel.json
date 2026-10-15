@@ -1,0 +1,586 @@
+{
+ "packet": "M11-m3-rel",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "76511123",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why phones and tablets should be banned from schools",
+       "What kind of quiet music helps students study best",
+       "How teenagers can build a routine for better sleep",
+       "How many hours doctors need to sleep every day"
+      ],
+      "a": 2,
+      "why": "십 대가 잘 자기 위한 습관을 소개하는 글이에요."
+     },
+     {
+      "q": "Why does the writer suggest putting away phones and tablets?",
+      "o": [
+       "Their bright screens keep the brain awake.",
+       "They are too expensive for students to keep.",
+       "They make the quiet music sound too loud.",
+       "They break more easily when used at night."
+      ],
+      "a": 0,
+      "why": "whose bright screens can keep your brain awake라고 했어요."
+     },
+     {
+      "q": "Which statement is true according to the passage?",
+      "o": [
+       "The advice works only on weekdays.",
+       "Students who sleep late remember more.",
+       "Teenagers need about nine hours of sleep.",
+       "People feel worse after a week of the routine."
+      ],
+      "a": 2,
+      "why": "teenagers need about nine hours every night라고 했어요."
+     },
+     {
+      "q": "The word “routine” in the passage means",
+      "o": [
+       "a quiet song with a slow and gentle beat",
+       "a short test that students take every week",
+       "a list of foods that people eat before bed",
+       "a set of things you do in the same order"
+      ],
+      "a": 3,
+      "why": "잠자기 전에 매일 같은 순서로 하는 행동을 뜻해요."
+     }
+    ]
+   },
+   "why": "Lengthen distractors of Q1 and Q4 (key uniquely longest); reposition keys.",
+   "severity": "minor"
+  },
+  {
+   "item": "9efd3d08",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A watch that carries a special family memory",
+       "A shop where a kind woman repairs watches for free",
+       "A drawer in which a family keeps old photographs",
+       "A grandfather who spent his working life fixing trains"
+      ],
+      "a": 0,
+      "why": "낡은 시계가 가족의 추억을 담고 있다는 내용이 중심이에요."
+     },
+     {
+      "q": "Who gave the watch to Grandfather?",
+      "o": [
+       "The woman at the shop",
+       "His grandson",
+       "His friend from school",
+       "His father"
+      ],
+      "a": 3,
+      "why": "his own father ... gave it to him이라고 했어요."
+     },
+     {
+      "q": "The word “useless” in the passage means",
+      "o": [
+       "worth keeping for many years",
+       "very expensive to buy in a shop",
+       "hard to find in a small town",
+       "not able to be used well"
+      ],
+      "a": 3,
+      "why": "use + less는 쓸모가 없다는 뜻이에요. 할아버지는 추억을 담은 물건은 쓸모없지 않다고 말했어요."
+     },
+     {
+      "q": "Why did Grandfather’s eyes become wet?",
+      "o": [
+       "He was sad that the shop closed.",
+       "He was angry that the writer took the watch.",
+       "He was moved to see the watch repaired.",
+       "He was tired after a long walk."
+      ],
+      "a": 2,
+      "why": "추억이 담긴 시계를 고쳐 오자 감동해서 눈이 젖고 손을 잡았다는 흐름이에요."
+     },
+     {
+      "q": "In the sentence “a drawer where he also keeps old photos,” what does “where” refer to?",
+      "o": [
+       "The drawer",
+       "The shop",
+       "The watch",
+       "The train"
+      ],
+      "a": 0,
+      "why": "where는 앞의 a drawer를 가리켜요."
+     }
+    ]
+   },
+   "why": "Lengthen distractors in Q1 and Q3 (key uniquely longest).",
+   "severity": "minor"
+  },
+  {
+   "item": "080fdb5d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "A night market is a lively place that offers more than food.",
+       "Vendors should learn the names of every single customer who visits.",
+       "Spicy food is too dangerous for most of the tourists who come.",
+       "Cities should close their busy streets in the evening for safety."
+      ],
+      "a": 0,
+      "why": "음식뿐 아니라 도시의 분위기까지 보여 주는 활기찬 장소라는 내용이에요."
+     },
+     {
+      "q": "What made the writer’s cousin cry?",
+      "o": [
+       "A story told by a vendor",
+       "A very spicy dish",
+       "The smoke of a lamp",
+       "A sad ending to a visit"
+      ],
+      "a": 1,
+      "why": "a dish which made him cry에서 매운 음식 때문이라는 걸 알 수 있어요."
+     },
+     {
+      "q": "What can we say about the cousin?",
+      "o": [
+       "He dislikes trying any kind of new food.",
+       "He cannot eat anything hot or spicy at all.",
+       "He likes bold flavors, even painful ones.",
+       "He never goes to night markets with his family."
+      ],
+      "a": 2,
+      "why": "울 정도였는데도 웃으며 하나 더 주문했으니 강한 맛을 즐기는 사람이에요."
+     },
+     {
+      "q": "In the sentence “Vendors who work there every night know their regular customers by name,” “regular customers” are people who",
+      "o": [
+       "visit a stall for the first time",
+       "come to the market again and again",
+       "sell food at the stalls",
+       "take photos of the lamps"
+      ],
+      "a": 1,
+      "why": "regular는 자주 오는 단골을 뜻해요."
+     },
+     {
+      "q": "In the sentence “Stalls that sell hot snacks fill the street,” “that” refers to",
+      "o": [
+       "the street",
+       "the snacks",
+       "the evening",
+       "the stalls"
+      ],
+      "a": 3,
+      "why": "that의 선행사는 바로 앞의 Stalls예요."
+     }
+    ]
+   },
+   "why": "Q5 stem quoted 'a dish which made him cry', which gave away Q2's answer; Q5 now asks about another sentence. Q1 distractors lengthened.",
+   "severity": "major"
+  },
+  {
+   "item": "f9d4f38b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is Mr. Choi’s attitude toward the robot?",
+      "o": [
+       "He believes it should also teach younger students how to read.",
+       "He worries that the robot will take his job as a librarian one day.",
+       "He thinks it is useful but cannot replace people’s advice.",
+       "He wants to remove the robot from the library before this year ends."
+      ],
+      "a": 2,
+      "why": "도구로서는 유익하지만 사람의 조언을 대신할 수는 없다고 말해요."
+     },
+     {
+      "q": "What can the robot do?",
+      "o": [
+       "Choose the best book for each reader",
+       "Teach reading to young children",
+       "Repair broken books",
+       "Carry hard-to-reach books to a table"
+      ],
+      "a": 3,
+      "why": "find books which are hard to reach and carry them to a table이라고 했어요."
+     },
+     {
+      "q": "In the sentence “It is a tool that saves time,” “It” refers to",
+      "o": [
+       "the library",
+       "the table",
+       "the librarian",
+       "the robot"
+      ],
+      "a": 3,
+      "why": "It은 앞에서 말한 robot을 가리켜요."
+     },
+     {
+      "q": "The word “taste” in the passage means",
+      "o": [
+       "the flavor of food",
+       "a kind of library rule",
+       "what a person likes",
+       "a sound in the library"
+      ],
+      "a": 2,
+      "why": "책을 골라 줄 수 있는 선생님이 아니라는 문맥에서 사람의 취향을 뜻해요."
+     },
+     {
+      "q": "According to the passage, who usually reads more?",
+      "o": [
+       "A student who uses the robot every day",
+       "A reader whose friends share books",
+       "A librarian who has many books",
+       "A child who borrows only short books"
+      ],
+      "a": 1,
+      "why": "a reader whose friends share books usually reads more라고 했어요."
+     }
+    ]
+   },
+   "why": "Q2 key 'Bring high books' was unnatural and not what the text says (hard to reach); Q1 key uniquely longest; keys repositioned (three 1s).",
+   "severity": "minor"
+  },
+  {
+   "item": "4d38b20e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Sora learn from the project?",
+      "o": [
+       "Shop owners dislike recycling boxes.",
+       "Batteries cannot be collected at school.",
+       "Posters help students remember to recycle.",
+       "Many people recycle when it is made easy."
+      ],
+      "a": 3,
+      "why": "쉬워지면 사람들이 동참한다는 점을 깨달았다고 했어요."
+     },
+     {
+      "q": "Where was the second box placed?",
+      "o": [
+       "Inside the library of Sora’s school",
+       "At the door of an electronics shop",
+       "On the wall next to the old posters",
+       "In the classroom where the club meets"
+      ],
+      "a": 1,
+      "why": "a shop owner whose store sells electronics ... a second box at his door라고 했어요."
+     },
+     {
+      "q": "In the sentence “Their latest project is a box that collects used batteries,” “that” refers to",
+      "o": [
+       "the club",
+       "a box",
+       "the batteries",
+       "the classroom"
+      ],
+      "a": 1,
+      "why": "that의 선행사는 a box예요."
+     },
+     {
+      "q": "What does the club want to do next?",
+      "o": [
+       "Throw away the old posters on the walls",
+       "Ask Sora to step down as the club leader",
+       "Find more places for collection boxes",
+       "Stop holding meetings on Thursday afternoons"
+      ],
+      "a": 2,
+      "why": "마지막 문장에서 상자를 더 둘 장소를 찾고 싶다고 했어요."
+     },
+     {
+      "q": "The word “ignored” in the passage is closest in meaning to",
+      "o": [
+       "looked at very carefully",
+       "talked about with joy",
+       "paid no attention to",
+       "fixed in a short time"
+      ],
+      "a": 2,
+      "why": "ignore는 관심을 주지 않는다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q2/Q4 key uniquely longest or more specific; Q3 distractor 'the project' is the same thing as 'a box' (project is a box) so it is arguably also correct: replaced by 'the batteries'.",
+   "severity": "minor"
+  },
+  {
+   "item": "4d2f9538",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What happened when the singer forgot the first line?",
+      "o": [
+       "The band stopped the concert.",
+       "The audience sang it for her.",
+       "Another singer took her place.",
+       "The teenagers left the stage."
+      ],
+      "a": 1,
+      "why": "the audience ... sang it for her라고 했어요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Teenagers should always practice their songs in garages.",
+       "Singers must learn every line well before a show.",
+       "The town’s festival is a place for sharing music.",
+       "Spring is the best season of the year for concerts."
+      ],
+      "a": 2,
+      "why": "마을 축제에서 사람들이 함께 음악을 나누는 모습이 글 전체의 중심이에요."
+     },
+     {
+      "q": "In the sentence “the audience, which had come to support them,” “them” refers to",
+      "o": [
+       "the teenagers in the band",
+       "the people who play instruments",
+       "the festival workers",
+       "the people in the garage"
+      ],
+      "a": 0,
+      "why": "them은 무대에서 공연한 십 대 밴드를 가리켜요."
+     },
+     {
+      "q": "Why does the writer say “bring an instrument if you have one”?",
+      "o": [
+       "Everyone must play a solo on the stage.",
+       "The festival sells instruments to visitors.",
+       "The band needs new members this spring.",
+       "Anyone can take part in the final concert."
+      ],
+      "a": 3,
+      "why": "a concert that anyone can join이라고 했으니 누구나 참여할 수 있다는 뜻이에요."
+     },
+     {
+      "q": "How did the singer probably feel before the show?",
+      "o": [
+       "Nervous",
+       "Bored",
+       "Angry",
+       "Proud"
+      ],
+      "a": 0,
+      "why": "who had been nervous all week라고 했어요."
+     }
+    ]
+   },
+   "why": "Q4 key uniquely longest; lengthened distractors, repositioned.",
+   "severity": "minor"
+  },
+  {
+   "item": "00f3b2eb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A teacher who invents a new lunch rule for the class",
+       "A new student who shares a game and makes friends",
+       "A shy boy who is afraid of living on the island",
+       "A class that argues about the rules of a new game"
+      ],
+      "a": 1,
+      "why": "새로 온 학생이 게임을 알려 주며 친구를 사귄다는 내용이에요."
+     },
+     {
+      "q": "Who sits next to Haru?",
+      "o": [
+       "Minseo",
+       "The teacher",
+       "A boy from the island",
+       "The writer"
+      ],
+      "a": 0,
+      "why": "Minseo, whose desk is next to his라고 했어요."
+     },
+     {
+      "q": "In the sentence “Our teacher, who watched us from the door, smiled,” what does “who” refer to?",
+      "o": [
+       "Haru",
+       "Minseo",
+       "The teacher",
+       "The writer"
+      ],
+      "a": 2,
+      "why": "who의 선행사는 바로 앞의 Our teacher예요."
+     },
+     {
+      "q": "Why did the teacher smile?",
+      "o": [
+       "She liked the idea of students teaching one another.",
+       "She was happy that the long lunch was finally over.",
+       "She wanted to join the game with the students herself.",
+       "She thought Haru had lost the game on purpose."
+      ],
+      "a": 0,
+      "why": "학생들이 서로 가르치는 날을 만들고 싶다고 말했으므로 그 생각이 마음에 든 거예요."
+     },
+     {
+      "q": "The word “shy” in the passage is closest in meaning to",
+      "o": [
+       "excited about learning the new game rules",
+       "unable to understand what other people say",
+       "not comfortable talking to new people",
+       "tired after a long trip by boat"
+      ],
+      "a": 2,
+      "why": "At first ... shy, but he soon became friends라는 흐름에서 낯선 사람과 말하기 어려워하는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q5 key uniquely longest; lengthened distractors, repositioned.",
+   "severity": "minor"
+  },
+  {
+   "item": "7503716f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How honey is sold in stores around the world",
+       "Why female workers are stronger than the queen",
+       "How bees live and why they are important",
+       "How scientists build homes for insects"
+      ],
+      "a": 2,
+      "why": "벌의 생활 방식과 벌이 중요한 이유를 설명하는 글이에요."
+     },
+     {
+      "q": "What does a worker’s dance tell the other bees?",
+      "o": [
+       "When the queen is ready to lay more eggs",
+       "Which of the bees should make the honey today",
+       "Where a good field of flowers is",
+       "How many seeds each flower plant makes"
+      ],
+      "a": 2,
+      "why": "she dances to tell the others where to go라고 했어요."
+     },
+     {
+      "q": "In the sentence “The honey that we eat is made from this juice,” what does “that” refer to?",
+      "o": [
+       "The queen",
+       "The honey",
+       "The juice",
+       "The field"
+      ],
+      "a": 1,
+      "why": "that의 선행사는 바로 앞의 The honey예요."
+     },
+     {
+      "q": "What would probably happen if bees disappeared?",
+      "o": [
+       "Queens would live in much larger colonies than before.",
+       "Workers would find many more fields of flowers.",
+       "Honey would become much easier for people to make.",
+       "Some fruit plants would have trouble making seeds."
+      ],
+      "a": 3,
+      "why": "벌이 없으면 과일을 맺는 많은 식물이 씨를 만들 수 없다고 했어요."
+     }
+    ]
+   },
+   "why": "Q2 key uniquely longest and awkward 'Where a good place to find flowers is'; reworded and distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "f7f757be",
+   "op": "set",
+   "set": {
+    "good": "Is there a shop near here where I can buy a bike?",
+    "bad": [
+     "Is there a shop near here which I can buy a bike?",
+     "Is there a shop near here who I can buy a bike?",
+     "Is there a shop near here when I can buy a bike?"
+    ],
+    "cz": {
+     "st": "Is there a shop near here ___ I can buy a bike?",
+     "ok": "where",
+     "wr": [
+      "which",
+      "who",
+      "when"
+     ]
+    },
+    "rule": "‘그 가게에서’의 뜻을 대신하는 장소의 관계부사는 where예요.",
+    "ord": false
+   },
+   "why": "Word order not unique: 'Is there a shop where I can buy a bike near here?' is also natural, so the ordering question must not be built (ord:false).",
+   "severity": "major"
+  },
+  {
+   "item": "9462b994",
+   "op": "set",
+   "set": {
+    "q": "다음 문장에 대한 설명으로 알맞은 것은?\nMy sister, who lives in Daegu, is a nurse.",
+    "o": [
+     "who lives in Daegu는 이미 정해진 My sister에 정보를 덧붙이는 설명이다.",
+     "who 대신 that을 써도 문장이 올바르고 뜻도 같다.",
+     "who를 생략해도 쉼표를 그대로 두면 문장이 올바르다.",
+     "who 대신 whose를 써도 문장의 뜻이 그대로 같다."
+    ],
+    "a": 0,
+    "why": "쉼표가 있는 관계절은 이미 정해진 대상에 정보를 덧붙여요. 이때 that은 쓰지 않고 관계대명사를 생략하지도 않아요."
+   },
+   "why": "Key said '언니' (older sister) although 'My sister' does not say older; key was the only long, detailed option. Reworded and distractors lengthened (o changed, q unchanged).",
+   "severity": "minor"
+  },
+  {
+   "item": "68f56ab5",
+   "op": "set",
+   "set": {
+    "q": "A person who writes books is called an ___.",
+    "o": [
+     "author",
+     "actor",
+     "engineer",
+     "artist"
+    ],
+    "a": 0,
+    "why": "책을 쓰는 사람은 author(작가)예요."
+   },
+   "why": "'an ___' makes farmer/pilot ungrammatical and leaks the answer; all options now start with a vowel (o changed).",
+   "severity": "minor"
+  },
+  {
+   "item": "9846d609",
+   "op": "set",
+   "set": {
+    "q": "A tool that you use to cut paper is ___.",
+    "o": [
+     "a pair of scissors",
+     "a roll of tape",
+     "a bag of crayons",
+     "a bottle of glue"
+    ],
+    "a": 0,
+    "why": "종이를 자르는 도구는 a pair of scissors(가위)예요."
+   },
+   "why": "Key 'scissors' was the only option without an article (form cue); options now parallel 'a ... of ...' (q and o changed; identity changed).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 109,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,111 @@
+{
+ "packet": "M08-m2-inf",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 119
+ },
+ "patches": [
+  {
+   "item": "f72446c0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the best title for the passage?",
+      "o": [
+       "A Science Test About Worms and Beans",
+       "Growing a Garden Together",
+       "How One Student Won a Cooking Contest",
+       "Why Schools Should Sell Fresh Tomatoes"
+      ],
+      "a": 1,
+      "why": "학급 친구들이 함께 텃밭을 만드는 이야기예요."
+     },
+     {
+      "q": "What did the students do on two weekends?",
+      "o": [
+       "They visited a farm and bought some tomatoes.",
+       "They built a fence around the school building.",
+       "They listened to their teacher talk about worms.",
+       "They dug the soil and planted vegetables and herbs."
+      ],
+      "a": 3,
+      "why": "본문: we spent two weekends digging the soil and planting..."
+     },
+     {
+      "q": "In the passage, “take turns” means to ___.",
+      "o": [
+       "do something one after another",
+       "do something all at the same time",
+       "stop doing something for a while",
+       "ask a teacher to do something"
+      ],
+      "a": 0,
+      "why": "take turns는 '교대로 하다'라는 뜻이에요."
+     },
+     {
+      "q": "Who does “they” in “they soon learned” refer to?",
+      "o": [
+       "The science teacher and her class",
+       "The tomatoes and the beans in the garden",
+       "Some students who were afraid of worms",
+       "Everyone who shared lunch last week"
+      ],
+      "a": 2,
+      "why": "they는 같은 문장 앞부분의 Some students(벌레를 무서워하던 학생들)를 가리켜요."
+     },
+     {
+      "q": "Which statement is true?",
+      "o": [
+       "The class planted flowers instead of vegetables.",
+       "The class has already picked some tomatoes.",
+       "The teacher chose a spot without much sun.",
+       "The students watered the garden after class."
+      ],
+      "a": 1,
+      "why": "본문: Last week, we picked our first tomatoes."
+     }
+    ]
+   },
+   "why": "Fix explanation of the \"they\" reference question (same sentence, not previous sentence). No identity field changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "7c3aa8d6",
+   "op": "set",
+   "set": {
+    "q": "The students were excited ___ the new robot.",
+    "o": [
+     "for see",
+     "see",
+     "saw",
+     "to see"
+    ],
+    "a": 3,
+    "why": "감정을 나타내는 형용사 뒤의 to V는 감정의 원인을 나타내요: excited to see."
+   },
+   "why": "Replace arguably acceptable distractor \"seeing\" with \"for see\" (option list changes; q unchanged).",
+   "severity": "minor"
+  },
+  {
+   "item": "be4b1333",
+   "op": "set",
+   "set": {
+    "q": "Choose the part that must be corrected: He avoids to eat sweet food after dinner.",
+    "o": [
+     "avoids",
+     "sweet food",
+     "after dinner",
+     "to eat"
+    ],
+    "a": 3,
+    "why": "avoid는 동명사를 취하므로 to eat를 eating으로 고쳐야 해요."
+   },
+   "why": "Remove (A)-(D) labels from stem; identity field q changes, options and key unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 116,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

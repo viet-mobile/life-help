@@ -1,0 +1,121 @@
+{
+ "packet": "M12-m3-cond",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "dafbb4ad",
+   "op": "set",
+   "set": {
+    "bad": [
+     "If she will study hard, she will pass the test.",
+     "If she studying hard, she will pass the test.",
+     "If she studies hard, she would passes the test."
+    ]
+   },
+   "why": "Distractor \"If she studied hard, she will pass the test.\" is defensible with a past-fact reading. Replaced with unambiguously wrong forms; good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "49b68f09",
+   "op": "set",
+   "set": {
+    "bad": [
+     "If Mina will keep trying, she will win a medal.",
+     "If Mina keep trying, she will win a medal.",
+     "If Mina keeps trying, she would wins a medal."
+    ]
+   },
+   "why": "Distractor \"If Mina kept trying, she will win a medal.\" is defensible (past fact, future result). Replaced with unambiguously wrong forms; good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "8313ef46",
+   "op": "set",
+   "set": {
+    "bad": [
+     "If you will eat too much candy, you will get a toothache.",
+     "If you eats too much candy, you will get a toothache.",
+     "If you eat too much candy, you will to get a toothache."
+    ],
+    "cz": {
+     "st": "If you ___ too much candy, you will get a toothache.",
+     "ok": "eat",
+     "wr": [
+      "will eat",
+      "eaten",
+      "eating"
+     ]
+    }
+   },
+   "why": "Distractor/cloze option with \"ate\" (If you ate too much candy, you will get a toothache) is natural with a past reading. Replaced with unambiguously wrong forms; good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "fccc3312",
+   "op": "set",
+   "set": {
+    "bad": [
+     "She will be happy if you will visit her.",
+     "She will be happy if you visits her.",
+     "She will happy if you visit her."
+    ],
+    "cz": {
+     "st": "She will be happy if you ___ her.",
+     "ok": "visit",
+     "wr": [
+      "will visit",
+      "visits",
+      "visiting"
+     ]
+    }
+   },
+   "why": "Distractor/cloze option \"visited\" (if you visited her) has a valid past reading. Replaced with unambiguously wrong forms; good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "07311fd0",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "She would help us if she ___ free today.",
+     "ok": "were",
+     "wr": [
+      "been",
+      "will be",
+      "being"
+     ]
+    }
+   },
+   "why": "Cloze distractor \"is\": \"She would help us if she is free today\" is acceptable English. Replaced with unambiguously wrong forms; good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "2af99a90",
+   "op": "set",
+   "set": {
+    "bad": [
+     "If he studied more, he could to get better grades.",
+     "If he study more, he could get better grades.",
+     "If he studied more, he could gets better grades."
+    ],
+    "cz": {
+     "st": "If he studied more, he ___ get better grades.",
+     "ok": "could",
+     "wr": [
+      "to",
+      "is",
+      "has"
+     ]
+    }
+   },
+   "why": "Distractor/option \"he can get\" (If he studied more, he can get better grades) has a past-fact reading. Replaced with unambiguously wrong forms; good unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 120,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
