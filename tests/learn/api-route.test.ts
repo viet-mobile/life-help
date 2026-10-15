@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MemoryLearnStore } from "@/lib/learn/server/memoryStore";
 import { LearnService } from "@/lib/learn/server/service";
+import { createInitialState } from "@/lib/learn/domain/engine";
 
 /**
  * Exercises the real HTTP route with the authenticated user mocked at the session
@@ -37,6 +38,33 @@ beforeEach(() => {
 });
 
 describe("learning API route", () => {
+  it("uses the learner page locale for Korean instructions and meaning options, preserving Korean targets", async () => {
+    const state = createInitialState("korean");
+    state.profile = { nickname: "Tester", grade: "K6", goal: "habit", avatar: "fox", onboardingDone: true };
+    for (const locale of ["en", "vi"]) {
+      const response = await call("start", { site: "korean", locale, state, kind: "lesson", lessonId: "korean-k6-l1" });
+      expect(response.status).toBe(200);
+      const data = await response.json();
+      const meaning = data.questions.find((q: { id: string }) => q.id === "k-k6-shopping-1");
+      expect(meaning.prompt).toBe(locale === "en" ? "What does this mean?" : "Từ này có nghĩa là gì?");
+      expect(meaning.options).toHaveLength(4);
+      for (const option of meaning.options) expect(option.text).not.toMatch(/[가-힣]/);
+      expect(meaning.target.text).toBe("얼마예요?");
+    }
+    state.lessons["korean-k6-l1"] = { lessonId: "korean-k6-l1", stars: 3, completions: 1, placedOut: false, bestAccuracy: 1, firstCompletedAt: null, lastCompletedAt: null };
+    state.lessons["korean-k6-l2"] = { lessonId: "korean-k6-l2", stars: 3, completions: 1, placedOut: false, bestAccuracy: 1, firstCompletedAt: null, lastCompletedAt: null };
+    const response = await call("start", { site: "korean", locale: "en", state, kind: "lesson", lessonId: "korean-k6-l3" });
+    expect(response.status).toBe(200);
+    const { questions } = await response.json();
+    const order = questions.find((q: { id: string }) => q.id === "k-k6-wants-c");
+    expect(order.prompt).toBe("Tap the words in order to say: “I want to eat kimchi.”");
+    expect(order.options.map((o: { text: string }) => o.text).sort()).toEqual(["저는", "김치를", "먹고", "싶어요."].sort());
+  });
+
+  it("rejects unrecognized presentation locales", async () => {
+    expect((await call("state", { site: "korean", locale: "unknown" })).status).toBe(400);
+  });
+
   it("rejects cross-origin, non-JSON and oversized requests", async () => {
     expect((await call("state", { site: "math" }, { origin: "https://evil.example" })).status).toBe(403);
     const noOrigin = new Request(`https://${HOST}/api/learn/state`, { method: "POST", headers: { host: HOST, "content-type": "application/json" }, body: "{}" });
