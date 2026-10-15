@@ -33,12 +33,11 @@ function questionHints(q, text, key) {
   let best = null, bs = 0;
   lines.forEach((l, i) => { const lc = content(l.replace(/^[A-Z][A-Za-z.' ]{0,24}:\s*/, "")); let s = 0; for (const w of kc) if (lc.has(w)) s += 1; if (s) for (const w of qc) if (lc.has(w)) s += 0.25; if (s > bs) { bs = s; best = i; } });
   const tooBroad = t && /mainly about|main idea|best title|infer|probably|most likely|suggest|imply|tone|attitude|opinion|purpose/i.test(q);
-  if (best !== null && bs >= 1 && !tooBroad && lines.length >= 3) {
+  if (best !== null && bs >= 2 && !tooBroad && lines.length >= 3) {
     // WHERE to look, never the words themselves (quoting the opening words of the answer sentence can give part of the key away)
     const labelled = lines.every((l) => /^[A-Z][A-Za-z.' ]{0,24}:\s/.test(l));
-    if (labelled) return [h1, `대화의 ${ord(best)} 줄을 다시 읽어 보세요.`];
     const third = Math.min(2, Math.floor((best * 3) / lines.length));
-    return [h1, `지문의 ${["앞부분", "중간 부분", "뒷부분"][third]}에 단서가 있어요. 그 부분을 다시 읽어 보세요.`];
+    return [h1, `${labelled ? "대화" : "지문"}의 ${["앞부분", "중간 부분", "뒷부분"][third]}에 단서가 있어요. 그 부분을 다시 읽어 보세요.`];
   }
   return [h1, t ? t[1] : "보기를 하나씩 지문과 비교하며 맞지 않는 곳에 표시해 보세요."];
 }
@@ -76,7 +75,7 @@ export function clozeHint1(st) {
 export function orderHint1(good) {
   const t = good.split(/\s+/); const last = good.trim().slice(-1);
   const kind = last === "?" ? "물음표로 끝나는 질문" : last === "!" ? "느낌표로 끝나는 문장" : /^(please|let's|don't|do not|be|go|come|look|open|close|take|put|sit|stand|stop|listen|wait|turn)\b/i.test(t[0]) ? "상대에게 말하는 문장" : "마침표로 끝나는 문장";
-  return `모두 ${t.length}개의 낱말로 만드는 ${kind}이에요.`;
+  return `낱말이 모두 ${t.length}개예요. ${kind}이에요.`;
 }
 export function spellHint1(en, sp = []) {
   const words = en.trim().split(/\s+/).length;
@@ -95,10 +94,10 @@ export function wordClozeHint1(stemText) {
 }
 /** Standalone m: derive from the stem when the author gave no hint. */
 const M_TYPES = [
-  [/\brhym/i, "끝소리가 같은 낱말끼리 짝을 지어 보세요."],
-  [/\b(begins?|starts?|first sound|initial)\b/i, "낱말을 천천히 소리 내어 읽고 맨 처음 소리에 집중해 보세요."],
-  [/\b(ends?|ending|last sound|final sound)\b/i, "낱말을 천천히 소리 내어 읽고 맨 끝소리에 집중해 보세요."],
-  [/syllable|beat|마디|음절/i, "낱말을 손뼉을 치며 소리 내어 읽고 박수 수를 세어 보세요."],
+  [/\brhym/i, "끝소리가 같은 낱말끼리 짝을 지어 보세요.", true],
+  [/\b(begins?|starts?|first sound|initial)\b/i, "낱말을 천천히 소리 내어 읽고 맨 처음 소리에 집중해 보세요.", true],
+  [/\b(ends?|ending|last sound|final sound)\b/i, "낱말을 천천히 소리 내어 읽고 맨 끝소리에 집중해 보세요.", true],
+  [/syllable|beat|마디|음절/i, "낱말을 손뼉을 치며 소리 내어 읽고 박수 수를 세어 보세요.", true],
   [/\bopposite\b|반대/i, "반대되는 뜻을 가진 낱말 쌍을 떠올려 보세요."],
   [/best response|\bbest reply\b|대답|응답/i, "상대방이 무엇을 묻거나 말했는지 먼저 파악하고, 자연스럽게 이어지는 말을 고르세요."],
   [/which question|question fits/i, "주어진 대답이 어떤 질문에 대한 것인지 거꾸로 생각해 보세요."],
@@ -110,7 +109,9 @@ const M_TYPES = [
 const M_H2 = "보기를 하나씩 문제에 넣어 읽고 알맞지 않은 것부터 지워 보세요.";
 export function mHints(item) {
   if (item.hint) return [item.hint, M_H2];
-  const t = M_TYPES.find(([re]) => re.test(item.q))?.[1];
+  const sound = /sound|소리|syllable|rhym|음절|마디|발음|\/[a-z]+\//i.test(item.q);
+  const longText = /summary|main idea|mainly|passage|paragraph|email|요약|중심/i.test(item.q) || item.q.length > 160;
+  const t = longText ? undefined : M_TYPES.find(([re, , needsSound]) => (!needsSound || sound) && re.test(item.q))?.[1];
   const quoted = /[“"']([^“”"']{1,24})[”"']/.exec(item.q)?.[1];
   return [t ?? (quoted ? `문제에 나온 “${quoted}”에 집중해서 다시 읽어 보세요.` : "문제가 무엇을 묻는지 한 문장으로 말해 본 뒤 보기를 보세요."), M_H2];
 }
@@ -120,5 +121,5 @@ export function koenHint2(item, others) {
   const first = item.en[0].toLowerCase();
   if (others.some((o) => o[0]?.toLowerCase() === first)) return `첫 글자: “${item.en[0]}”`;
   const blank = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____");
-  return `예문: ${blank}`;
+  return `예문: ${blank.replace(/\b(a|an)(\s+)(_{4})/gi, "a(n)$2$3")}`;
 }

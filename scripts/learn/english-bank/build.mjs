@@ -122,11 +122,8 @@ const pickOthers = (qid, cands, ok, n) => {
 const subOf = (a, b) => a.includes(b) || b.includes(a);
 // 2nd hint of a sentence item: the author's own `hint`, else the first clause of the grammar note when it does not state the answer
 function ruleHint(item) {
-  if (item.hint) return item.hint;
-  const first = String(item.rule ?? "").split(/(?<=[.。])\s|(?<=[요다])\.\s/)[0].trim();
-  const keys = [item.cz?.ok, ...String(item.good).split(/\s+/).filter((w) => item.bad.every((b) => !b.split(/\s+/).includes(w)))].filter(Boolean);
-  const leaks = keys.some((k) => new RegExp(`(^|[^A-Za-z])${String(k).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`, "i").test(first));
-  return first && first.length >= 8 && !leaks && !/\.\.\.|…/.test(first) ? first.replace(/[.。]$/, "") + "." : "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
+  // the grammar note states the rule that pins the form down (reviewers found it leaks the key), so only an author-written hint is shown
+  return item.hint ?? "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
 }
 for (const { skill, packet, item } of valid) {
   const id = itemId(skill, item);
@@ -143,7 +140,7 @@ for (const { skill, packet, item } of valid) {
     qid = `eb-${id}-koen`; o = pickN(qid);
     if (o.length === 3) { const r = shuffled(qid, [item.en, ...o.map((x) => x.en)]); push(skill, packet, item, "koen", mk(skill, qid, { difficulty: d, prompt: `뜻이 “${item.ko}”인 영어 단어(표현)는?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, koenHint2(item, o.map((x) => x.en))], explanation: expl })); }
     qid = `eb-${id}-cloze`;
-    { const stem = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____"); const r = shuffled(qid, [item.en, ...item.z]); push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${stem}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [wordClozeHint1(stem), `빈칸에는 ${POS[item.pos]}에 해당하는 말이 들어가요.`], explanation: expl })); }
+    { const stem = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____"); const r = shuffled(qid, [item.en, ...item.z]); push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${stem}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [wordClozeHint1(stem), (item.pos === "phr" || item.pos === "interj" ? "빈칸 앞뒤 낱말과 함께 읽었을 때 뜻과 문법이 모두 맞는 것을 고르세요." : `빈칸에는 ${POS[item.pos]}에 해당하는 말이 들어가요.`)], explanation: expl })); }
     if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [spellHint1(item.en, item.sp), `첫 글자: “${item.en[0]}”`], explanation: expl })); }
   } else if (item.k === "s") {
     let qid = `eb-${id}-pick`; let r = shuffled(qid, [item.good, ...item.bad]);
