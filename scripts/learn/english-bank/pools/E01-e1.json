@@ -1,0 +1,2060 @@
+{
+ "packet": "E01-e1",
+ "sections": [
+  {
+   "skill": "e.e1.alpha",
+   "items": [
+    {
+     "k": "w",
+     "en": "apple",
+     "pos": "n",
+     "ko": "사과",
+     "ex": "I eat an apple for lunch.",
+     "exko": "나는 점심에 사과를 먹어요.",
+     "z": [
+      "bag",
+      "desk",
+      "chair"
+     ],
+     "syn": [],
+     "sp": [
+      "appel",
+      "aple",
+      "appple"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "ball",
+     "pos": "n",
+     "ko": "공",
+     "ex": "I kick the ball in the park.",
+     "exko": "나는 공원에서 공을 차요.",
+     "z": [
+      "milk",
+      "rice",
+      "soup"
+     ],
+     "syn": [],
+     "sp": [
+      "bal",
+      "balll",
+      "bahl"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "egg",
+     "pos": "n",
+     "ko": "달걀",
+     "ex": "I eat an egg for breakfast.",
+     "exko": "나는 아침에 달걀을 먹어요.",
+     "z": [
+      "bag",
+      "desk",
+      "hat"
+     ],
+     "syn": [],
+     "sp": [
+      "eg",
+      "egge",
+      "eeg"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "goat",
+     "pos": "n",
+     "ko": "염소",
+     "ex": "A goat eats grass.",
+     "exko": "염소는 풀을 먹어요.",
+     "z": [
+      "chair",
+      "desk",
+      "bag"
+     ],
+     "syn": [],
+     "sp": [
+      "gote",
+      "goet",
+      "goatt"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "jam",
+     "pos": "n",
+     "ko": "잼",
+     "ex": "I put jam on my bread.",
+     "exko": "나는 빵에 잼을 발라요.",
+     "z": [
+      "hat",
+      "desk",
+      "shoe"
+     ],
+     "syn": [],
+     "sp": [
+      "jamm",
+      "jem",
+      "jaam"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "kite",
+     "pos": "n",
+     "ko": "연",
+     "ex": "I fly a kite in the park.",
+     "exko": "나는 공원에서 연을 날려요.",
+     "z": [
+      "spoon",
+      "chair",
+      "shoe"
+     ],
+     "syn": [],
+     "sp": [
+      "kight",
+      "kyte",
+      "kitte"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "lion",
+     "pos": "n",
+     "ko": "사자",
+     "ex": "A lion is a big animal.",
+     "exko": "사자는 큰 동물이에요.",
+     "z": [
+      "chair",
+      "pencil",
+      "spoon"
+     ],
+     "syn": [],
+     "sp": [
+      "lyon",
+      "lian",
+      "lione"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "nose",
+     "pos": "n",
+     "ko": "코",
+     "ex": "I smell with my nose.",
+     "exko": "나는 코로 냄새를 맡아요.",
+     "z": [
+      "hat",
+      "bag",
+      "shoe"
+     ],
+     "syn": [],
+     "sp": [
+      "nosee",
+      "nowse",
+      "nosse"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "umbrella",
+     "pos": "n",
+     "ko": "우산",
+     "ex": "I use an umbrella on a rainy day.",
+     "exko": "나는 비 오는 날 우산을 써요.",
+     "z": [
+      "hat",
+      "desk",
+      "pen"
+     ],
+     "syn": [],
+     "sp": [
+      "umbrela",
+      "umbrelle",
+      "umbrellla"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "violin",
+     "pos": "n",
+     "ko": "바이올린",
+     "ex": "She plays the violin.",
+     "exko": "그녀는 바이올린을 연주해요.",
+     "z": [
+      "pencil",
+      "desk",
+      "shoe"
+     ],
+     "syn": [],
+     "sp": [
+      "vialin",
+      "violen",
+      "violinn"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "zebra",
+     "pos": "n",
+     "ko": "얼룩말",
+     "ex": "A zebra has black and white lines.",
+     "exko": "얼룩말은 검은색과 흰색 줄무늬가 있어요.",
+     "z": [
+      "table",
+      "pencil",
+      "book"
+     ],
+     "syn": [],
+     "sp": [
+      "zebla",
+      "zebrah",
+      "zebbra"
+     ]
+    },
+    {
+     "k": "s",
+     "good": "I want an apple.",
+     "ko": "나는 사과가 먹고 싶어요.",
+     "bad": [
+      "I want a apple.",
+      "I an want apple.",
+      "I want apple an."
+     ],
+     "cz": {
+      "st": "I want ___ apple.",
+      "ok": "an",
+      "wr": [
+       "a",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "apple처럼 모음 소리로 시작하는 낱말 앞에는 a 대신 an을 써요.",
+     "hint": "낱말의 첫소리를 소리 내어 보세요."
+    },
+    {
+     "k": "s",
+     "good": "I have a ball.",
+     "ko": "나는 공이 하나 있어요.",
+     "bad": [
+      "I have an ball.",
+      "I a have ball.",
+      "I have ball a."
+     ],
+     "cz": {
+      "st": "I have ___ ball.",
+      "ok": "a",
+      "wr": [
+       "an",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "ball처럼 자음 소리로 시작하는 낱말 앞에는 an이 아니라 a를 써요.",
+     "hint": "낱말의 첫소리를 소리 내어 보세요."
+    },
+    {
+     "k": "s",
+     "good": "I see an egg.",
+     "ko": "나는 달걀이 보여요.",
+     "bad": [
+      "I see a egg.",
+      "I an see egg.",
+      "See I an egg."
+     ],
+     "cz": {
+      "st": "I see ___ egg.",
+      "ok": "an",
+      "wr": [
+       "a",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "egg는 모음 소리로 시작해서 an을 써요.",
+     "hint": "낱말의 첫소리를 소리 내어 보세요."
+    },
+    {
+     "k": "s",
+     "good": "It is a kite.",
+     "ko": "그것은 연이에요.",
+     "bad": [
+      "It is an kite.",
+      "It a is kite.",
+      "It kite is a."
+     ],
+     "cz": {
+      "st": "It is ___ kite.",
+      "ok": "a",
+      "wr": [
+       "an",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "kite는 자음 소리로 시작해서 a를 써요.",
+     "hint": "낱말의 첫소리를 소리 내어 보세요."
+    },
+    {
+     "k": "s",
+     "good": "That is an umbrella.",
+     "ko": "저것은 우산이에요.",
+     "bad": [
+      "That is a umbrella.",
+      "That an is umbrella.",
+      "That is umbrella an."
+     ],
+     "cz": {
+      "st": "That is ___ umbrella.",
+      "ok": "an",
+      "wr": [
+       "a",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "umbrella는 모음 소리로 시작해서 an을 써요.",
+     "hint": "낱말의 첫소리를 소리 내어 보세요."
+    },
+    {
+     "k": "s",
+     "good": "Look at the zebra.",
+     "ko": "얼룩말을 보세요.",
+     "bad": [
+      "Look at zebra the.",
+      "At look the zebra.",
+      "Look the at zebra."
+     ],
+     "cz": {
+      "st": "Look ___ the zebra.",
+      "ok": "at",
+      "wr": [
+       "is",
+       "an",
+       "and"
+      ]
+     },
+     "rule": "‘~을 보세요’라고 할 때는 look at 뒤에 보는 대상을 써요."
+    },
+    {
+     "k": "m",
+     "q": "“apple”의 첫 글자는 무엇일까요?",
+     "o": [
+      "E",
+      "O",
+      "P",
+      "A"
+     ],
+     "a": 3,
+     "why": "“apple”는 A로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“bus”의 첫 글자는 무엇일까요?",
+     "o": [
+      "D",
+      "B",
+      "P",
+      "V"
+     ],
+     "a": 1,
+     "why": "“bus”는 B로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“cup”의 첫 글자는 무엇일까요?",
+     "o": [
+      "G",
+      "K",
+      "Q",
+      "C"
+     ],
+     "a": 3,
+     "why": "“cup”는 C로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“desk”의 첫 글자는 무엇일까요?",
+     "o": [
+      "B",
+      "P",
+      "D",
+      "T"
+     ],
+     "a": 2,
+     "why": "“desk”는 D로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“egg”의 첫 글자는 무엇일까요?",
+     "o": [
+      "E",
+      "A",
+      "I",
+      "G"
+     ],
+     "a": 0,
+     "why": "“egg”는 E로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“fan”의 첫 글자는 무엇일까요?",
+     "o": [
+      "P",
+      "T",
+      "F",
+      "H"
+     ],
+     "a": 2,
+     "why": "“fan”는 F로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“goat”의 첫 글자는 무엇일까요?",
+     "o": [
+      "G",
+      "J",
+      "Q",
+      "C"
+     ],
+     "a": 0,
+     "why": "“goat”는 G로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“hat”의 첫 글자는 무엇일까요?",
+     "o": [
+      "N",
+      "M",
+      "H",
+      "A"
+     ],
+     "a": 2,
+     "why": "“hat”는 H로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“ice”의 첫 글자는 무엇일까요?",
+     "o": [
+      "L",
+      "E",
+      "I",
+      "Y"
+     ],
+     "a": 2,
+     "why": "“ice”는 I로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“jam”의 첫 글자는 무엇일까요?",
+     "o": [
+      "G",
+      "Y",
+      "Z",
+      "J"
+     ],
+     "a": 3,
+     "why": "“jam”는 J로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“lemon”의 첫 글자는 무엇일까요?",
+     "o": [
+      "I",
+      "N",
+      "L",
+      "M"
+     ],
+     "a": 2,
+     "why": "“lemon”는 L로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“pen”의 첫 글자는 무엇일까요?",
+     "o": [
+      "P",
+      "B",
+      "Q",
+      "D"
+     ],
+     "a": 0,
+     "why": "“pen”는 P로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter M?",
+     "o": [
+      "sun",
+      "moon",
+      "pen",
+      "rice"
+     ],
+     "a": 1,
+     "why": "moon는 M로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter N?",
+     "o": [
+      "nose",
+      "ear",
+      "leg",
+      "hand"
+     ],
+     "a": 0,
+     "why": "nose는 N로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter P?",
+     "o": [
+      "cow",
+      "hen",
+      "pig",
+      "duck"
+     ],
+     "a": 2,
+     "why": "pig는 P로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter R?",
+     "o": [
+      "red",
+      "pink",
+      "blue",
+      "green"
+     ],
+     "a": 0,
+     "why": "red는 R로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter S?",
+     "o": [
+      "bag",
+      "hat",
+      "milk",
+      "sun"
+     ],
+     "a": 3,
+     "why": "sun는 S로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter T?",
+     "o": [
+      "lion",
+      "bear",
+      "tiger",
+      "zebra"
+     ],
+     "a": 2,
+     "why": "tiger는 T로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter W?",
+     "o": [
+      "juice",
+      "milk",
+      "tea",
+      "water"
+     ],
+     "a": 3,
+     "why": "water는 W로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter Z?",
+     "o": [
+      "zoo",
+      "farm",
+      "park",
+      "shop"
+     ],
+     "a": 0,
+     "why": "zoo는 Z로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter V?",
+     "o": [
+      "van",
+      "bus",
+      "car",
+      "bike"
+     ],
+     "a": 0,
+     "why": "van는 V로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter Y?",
+     "o": [
+      "red",
+      "yellow",
+      "blue",
+      "green"
+     ],
+     "a": 1,
+     "why": "yellow는 Y로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the letter Q?",
+     "o": [
+      "king",
+      "queen",
+      "prince",
+      "lady"
+     ],
+     "a": 1,
+     "why": "queen는 Q로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the sound /b/?",
+     "o": [
+      "cow",
+      "sun",
+      "fish",
+      "bed"
+     ],
+     "a": 3,
+     "why": "bed는 /b/ 소리로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the sound /m/?",
+     "o": [
+      "cat",
+      "pig",
+      "mouse",
+      "tree"
+     ],
+     "a": 2,
+     "why": "mouse는 /m/ 소리로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the sound /s/?",
+     "o": [
+      "sock",
+      "bag",
+      "hand",
+      "leg"
+     ],
+     "a": 0,
+     "why": "sock는 /s/ 소리로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the sound /t/?",
+     "o": [
+      "sun",
+      "tree",
+      "bird",
+      "cup"
+     ],
+     "a": 1,
+     "why": "tree는 /t/ 소리로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with the sound /f/?",
+     "o": [
+      "pen",
+      "bus",
+      "cup",
+      "fox"
+     ],
+     "a": 3,
+     "why": "fox는 /f/ 소리로 시작해요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "알파벳에서 C 바로 다음 글자는?",
+     "o": [
+      "D",
+      "B",
+      "E",
+      "F"
+     ],
+     "a": 0,
+     "why": "C 다음은 D예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "G 바로 앞에 오는 글자는?",
+     "o": [
+      "E",
+      "F",
+      "H",
+      "I"
+     ],
+     "a": 1,
+     "why": "F 다음이 G예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "L과 N 사이에 있는 글자는?",
+     "o": [
+      "M",
+      "K",
+      "O",
+      "P"
+     ],
+     "a": 0,
+     "why": "L, M, N 순서예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "T 다음에 오는 글자는?",
+     "o": [
+      "U",
+      "S",
+      "V",
+      "W"
+     ],
+     "a": 0,
+     "why": "T 다음은 U예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "Y 다음에 오는 글자는?",
+     "o": [
+      "X",
+      "Z",
+      "A",
+      "W"
+     ],
+     "a": 1,
+     "why": "Y 다음은 Z예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "B 바로 앞에 오는 글자는?",
+     "o": [
+      "A",
+      "C",
+      "D",
+      "Z"
+     ],
+     "a": 0,
+     "why": "A 다음이 B예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "P와 R 사이에 있는 글자는?",
+     "o": [
+      "Q",
+      "O",
+      "S",
+      "T"
+     ],
+     "a": 0,
+     "why": "P, Q, R 순서예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "E와 G 사이에 있는 글자는?",
+     "o": [
+      "F",
+      "D",
+      "H",
+      "I"
+     ],
+     "a": 0,
+     "why": "E, F, G 순서예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "알파벳의 마지막 글자는?",
+     "o": [
+      "A",
+      "M",
+      "Z",
+      "Y"
+     ],
+     "a": 2,
+     "why": "알파벳은 A로 시작해서 Z로 끝나요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "알파벳의 첫 번째 글자는?",
+     "o": [
+      "B",
+      "Z",
+      "A",
+      "M"
+     ],
+     "a": 2,
+     "why": "알파벳은 A로 시작해요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "R 바로 다음 글자는?",
+     "o": [
+      "S",
+      "Q",
+      "T",
+      "U"
+     ],
+     "a": 0,
+     "why": "R 다음은 S예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "소문자 u 바로 앞에 오는 글자는?",
+     "o": [
+      "s",
+      "v",
+      "w",
+      "t"
+     ],
+     "a": 3,
+     "why": "t, u, v 순서예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "대문자 A의 소문자는?",
+     "o": [
+      "e",
+      "a",
+      "o",
+      "u"
+     ],
+     "a": 1,
+     "why": "A의 소문자는 a예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "대문자 D의 소문자는?",
+     "o": [
+      "b",
+      "p",
+      "d",
+      "q"
+     ],
+     "a": 2,
+     "why": "D의 소문자는 d예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "대문자 R의 소문자는?",
+     "o": [
+      "r",
+      "n",
+      "h",
+      "m"
+     ],
+     "a": 0,
+     "why": "R의 소문자는 r이에요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "대문자 N의 소문자는?",
+     "o": [
+      "n",
+      "m",
+      "h",
+      "u"
+     ],
+     "a": 0,
+     "why": "N의 소문자는 n이에요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "소문자 g의 대문자는?",
+     "o": [
+      "C",
+      "J",
+      "Q",
+      "G"
+     ],
+     "a": 3,
+     "why": "g의 대문자는 G예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "소문자 q의 대문자는?",
+     "o": [
+      "O",
+      "Q",
+      "P",
+      "G"
+     ],
+     "a": 1,
+     "why": "q의 대문자는 Q예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "소문자 h의 대문자는?",
+     "o": [
+      "K",
+      "M",
+      "H",
+      "N"
+     ],
+     "a": 2,
+     "why": "h의 대문자는 H예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "소문자 t의 대문자는?",
+     "o": [
+      "F",
+      "I",
+      "T",
+      "L"
+     ],
+     "a": 2,
+     "why": "t의 대문자는 T예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "다음 글자 중 a, e, i, o, u 가운데 하나인 것은?",
+     "o": [
+      "B",
+      "K",
+      "T",
+      "E"
+     ],
+     "a": 3,
+     "why": "E는 a, e, i, o, u 중 하나인 모음 글자예요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "다음 글자 중 a, e, i, o, u가 아닌 것은?",
+     "o": [
+      "a",
+      "i",
+      "u",
+      "m"
+     ],
+     "a": 3,
+     "why": "m은 a, e, i, o, u에 들어가지 않아요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word begins with a, e, i, o or u?",
+     "o": [
+      "bag",
+      "orange",
+      "tree",
+      "milk"
+     ],
+     "a": 1,
+     "why": "orange는 o로 시작해요. o는 a, e, i, o, u 중 하나예요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“dog”의 마지막 글자는 무엇일까요?",
+     "o": [
+      "d",
+      "o",
+      "b",
+      "g"
+     ],
+     "a": 3,
+     "why": "d-o-g, 마지막 글자는 g예요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“sun”의 마지막 글자는 무엇일까요?",
+     "o": [
+      "s",
+      "u",
+      "m",
+      "n"
+     ],
+     "a": 3,
+     "why": "s-u-n, 마지막 글자는 n이에요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word ends with the letter T?",
+     "o": [
+      "hat",
+      "bag",
+      "sun",
+      "pen"
+     ],
+     "a": 0,
+     "why": "hat는 t로 끝나요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word ends with the letter P?",
+     "o": [
+      "cup",
+      "bus",
+      "dog",
+      "egg"
+     ],
+     "a": 0,
+     "why": "cup은 p로 끝나요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word rhymes with “cat”?",
+     "o": [
+      "dog",
+      "cup",
+      "hat",
+      "bed"
+     ],
+     "a": 2,
+     "why": "cat과 hat는 끝소리가 같아요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word rhymes with “sun”?",
+     "o": [
+      "run",
+      "sit",
+      "cat",
+      "bed"
+     ],
+     "a": 0,
+     "why": "sun과 run은 끝소리가 같아요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word rhymes with “bed”?",
+     "o": [
+      "big",
+      "red",
+      "bus",
+      "pen"
+     ],
+     "a": 1,
+     "why": "bed와 red는 끝소리가 같아요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "Which word rhymes with “pig”?",
+     "o": [
+      "pen",
+      "cup",
+      "big",
+      "hat"
+     ],
+     "a": 2,
+     "why": "pig와 big은 끝소리가 같아요.",
+     "cat": "phonics"
+    },
+    {
+     "k": "m",
+     "q": "“cat”에는 글자가 모두 몇 개 있을까요?",
+     "o": [
+      "2",
+      "4",
+      "3",
+      "5"
+     ],
+     "a": 2,
+     "why": "c-a-t, 모두 3개예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "“apple”에는 글자가 모두 몇 개 있을까요?",
+     "o": [
+      "4",
+      "6",
+      "5",
+      "7"
+     ],
+     "a": 2,
+     "why": "a-p-p-l-e, 모두 5개예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "Which letter sounds like “bee”?",
+     "o": [
+      "D",
+      "B",
+      "P",
+      "T"
+     ],
+     "a": 1,
+     "why": "B의 이름 소리는 ‘비’예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "Which letter sounds like “see”?",
+     "o": [
+      "E",
+      "K",
+      "C",
+      "Q"
+     ],
+     "a": 2,
+     "why": "C의 이름 소리는 ‘씨’예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "Which letter sounds like “eye”?",
+     "o": [
+      "I",
+      "A",
+      "E",
+      "O"
+     ],
+     "a": 0,
+     "why": "I의 이름 소리는 ‘아이’예요.",
+     "cat": "alphabet"
+    },
+    {
+     "k": "m",
+     "q": "Which letter sounds like “you”?",
+     "o": [
+      "Q",
+      "W",
+      "U",
+      "Y"
+     ],
+     "a": 2,
+     "why": "U의 이름 소리는 ‘유’예요.",
+     "cat": "alphabet"
+    }
+   ]
+  },
+  {
+   "skill": "e.e1.greet",
+   "items": [
+    {
+     "k": "w",
+     "en": "hello",
+     "pos": "interj",
+     "ko": "안녕하세요",
+     "ex": "Oh, hello! I am Tom.",
+     "exko": "아, 안녕하세요! 저는 톰이에요.",
+     "z": [
+      "goodbye",
+      "please",
+      "thanks"
+     ],
+     "syn": [
+      "hi"
+     ],
+     "sp": [
+      "helo",
+      "hallo",
+      "hellow"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "hi",
+     "pos": "interj",
+     "ko": "안녕",
+     "ex": "Oh, hi! How are you?",
+     "exko": "아, 안녕! 잘 지내니?",
+     "z": [
+      "goodbye",
+      "please",
+      "thanks"
+     ],
+     "syn": [
+      "hello"
+     ],
+     "sp": [
+      "hy",
+      "hii",
+      "hie"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "goodbye",
+     "pos": "interj",
+     "ko": "안녕히 가세요",
+     "ex": "Mom, goodbye! See you tomorrow.",
+     "exko": "엄마, 안녕히 계세요! 내일 만나요.",
+     "z": [
+      "hello",
+      "sorry",
+      "please"
+     ],
+     "syn": [
+      "bye"
+     ],
+     "sp": [
+      "goodby",
+      "gudbye",
+      "godbye"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "sorry",
+     "pos": "interj",
+     "ko": "미안해요",
+     "ex": "Oh, sorry! I broke your cup.",
+     "exko": "아, 미안해요! 제가 네 컵을 깼어요.",
+     "z": [
+      "goodbye",
+      "please",
+      "thanks"
+     ],
+     "syn": [],
+     "sp": [
+      "sory",
+      "sorri",
+      "sorrry"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "please",
+     "pos": "interj",
+     "ko": "부탁해요",
+     "ex": "Water, please.",
+     "exko": "물 주세요.",
+     "z": [
+      "hello",
+      "goodbye",
+      "sorry"
+     ],
+     "syn": [],
+     "sp": [
+      "pleese",
+      "plese",
+      "pleasse"
+     ],
+     "note": "please는 부탁할 때 말 끝에 붙여서 정중하게 말해요."
+    },
+    {
+     "k": "w",
+     "en": "thanks",
+     "pos": "interj",
+     "ko": "고마워요",
+     "ex": "Oh, thanks for the gift!",
+     "exko": "아, 선물 고마워요!",
+     "z": [
+      "hello",
+      "goodbye",
+      "please"
+     ],
+     "syn": [],
+     "sp": [
+      "thanx",
+      "thenks",
+      "thankss"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "morning",
+     "pos": "n",
+     "ko": "아침",
+     "ex": "I eat breakfast in the morning.",
+     "exko": "나는 아침에 아침밥을 먹어요.",
+     "z": [
+      "bag",
+      "desk",
+      "pen"
+     ],
+     "syn": [],
+     "sp": [
+      "mornig",
+      "morming",
+      "morrning"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "afternoon",
+     "pos": "n",
+     "ko": "오후",
+     "ex": "We play ball in the afternoon.",
+     "exko": "우리는 오후에 공놀이를 해요.",
+     "z": [
+      "bag",
+      "desk",
+      "pen"
+     ],
+     "syn": [],
+     "sp": [
+      "afternon",
+      "aftrenoon",
+      "afternoom"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "evening",
+     "pos": "n",
+     "ko": "저녁",
+     "ex": "We eat dinner in the evening.",
+     "exko": "우리는 저녁에 저녁밥을 먹어요.",
+     "z": [
+      "bag",
+      "desk",
+      "pen"
+     ],
+     "syn": [],
+     "sp": [
+      "evning",
+      "eavning",
+      "evenning"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "night",
+     "pos": "n",
+     "ko": "밤",
+     "ex": "The moon is bright at night.",
+     "exko": "달은 밤에 밝아요.",
+     "z": [
+      "bag",
+      "desk",
+      "pen"
+     ],
+     "syn": [],
+     "sp": [
+      "nite",
+      "nigth",
+      "nigt"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "friend",
+     "pos": "n",
+     "ko": "친구",
+     "ex": "Jun is my friend.",
+     "exko": "준은 내 친구예요.",
+     "z": [
+      "pen",
+      "bag",
+      "desk"
+     ],
+     "syn": [],
+     "sp": [
+      "freind",
+      "frend",
+      "friand"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "name",
+     "pos": "n",
+     "ko": "이름",
+     "ex": "What is your name?",
+     "exko": "네 이름이 뭐니?",
+     "z": [
+      "bag",
+      "desk",
+      "pen"
+     ],
+     "syn": [],
+     "sp": [
+      "nam",
+      "naim",
+      "namme"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "day",
+     "pos": "n",
+     "ko": "날",
+     "ex": "Have a nice day!",
+     "exko": "좋은 하루 보내세요!",
+     "z": [
+      "bag",
+      "pen",
+      "desk"
+     ],
+     "syn": [],
+     "sp": [
+      "dey",
+      "daay",
+      "dai"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "birthday",
+     "pos": "n",
+     "ko": "생일",
+     "ex": "Happy birthday, Mina!",
+     "exko": "생일 축하해, 미나야!",
+     "z": [
+      "bag",
+      "pen",
+      "desk"
+     ],
+     "syn": [],
+     "sp": [
+      "birthdey",
+      "brithday",
+      "birtday"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "nice",
+     "pos": "adj",
+     "ko": "친절한",
+     "ex": "It is nice to meet you.",
+     "exko": "만나서 반가워요.",
+     "z": [
+      "tall",
+      "heavy",
+      "hungry"
+     ],
+     "syn": [
+      "good",
+      "great"
+     ],
+     "sp": [
+      "nise",
+      "nicce",
+      "neice"
+     ],
+     "note": "“It is nice to meet you.”는 처음 만났을 때 하는 인사말이에요."
+    },
+    {
+     "k": "w",
+     "en": "good",
+     "pos": "adj",
+     "ko": "좋은",
+     "ex": "Have a good day!",
+     "exko": "좋은 하루 보내세요!",
+     "z": [
+      "tall",
+      "heavy",
+      "hungry"
+     ],
+     "syn": [
+      "nice",
+      "great"
+     ],
+     "sp": [
+      "gud",
+      "goood",
+      "goud"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "great",
+     "pos": "adj",
+     "ko": "굉장한",
+     "ex": "You did a great job!",
+     "exko": "정말 잘했어요!",
+     "z": [
+      "tall",
+      "heavy",
+      "hungry"
+     ],
+     "syn": [
+      "good",
+      "nice"
+     ],
+     "sp": [
+      "grate",
+      "grat",
+      "greate"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "happy",
+     "pos": "adj",
+     "ko": "행복한",
+     "ex": "I am happy to see you.",
+     "exko": "너를 봐서 기뻐요.",
+     "z": [
+      "tall",
+      "heavy",
+      "hungry"
+     ],
+     "syn": [],
+     "sp": [
+      "hapy",
+      "happi",
+      "happpy"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "see",
+     "pos": "v",
+     "ko": "보다",
+     "ex": "I can see the moon at night.",
+     "exko": "나는 밤에 달을 볼 수 있어요.",
+     "z": [
+      "eat",
+      "sit",
+      "run"
+     ],
+     "syn": [],
+     "sp": [
+      "sea",
+      "se",
+      "seee"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "thank",
+     "pos": "v",
+     "ko": "감사하다",
+     "ex": "I thank my teacher.",
+     "exko": "나는 선생님께 감사해요.",
+     "z": [
+      "eat",
+      "sit",
+      "run"
+     ],
+     "syn": [],
+     "sp": [
+      "tank",
+      "thenk",
+      "thakn"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "say",
+     "pos": "v",
+     "ko": "말하다",
+     "ex": "I say hello to my friend.",
+     "exko": "나는 친구에게 안녕이라고 말해요.",
+     "z": [
+      "eat",
+      "sit",
+      "run"
+     ],
+     "syn": [],
+     "sp": [
+      "sey",
+      "saay",
+      "sai"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "go",
+     "pos": "v",
+     "ko": "가다",
+     "ex": "Let's go to school.",
+     "exko": "학교에 가요.",
+     "z": [
+      "eat",
+      "sit",
+      "sing"
+     ],
+     "syn": [],
+     "sp": [
+      "goo",
+      "gow",
+      "gou"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "again",
+     "pos": "adv",
+     "ko": "다시",
+     "ex": "Hello again!",
+     "exko": "또 만났네요!",
+     "z": [
+      "very",
+      "never",
+      "always"
+     ],
+     "syn": [],
+     "sp": [
+      "agen",
+      "agian",
+      "agaain"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "tomorrow",
+     "pos": "adv",
+     "ko": "내일",
+     "ex": "See you tomorrow.",
+     "exko": "내일 만나요.",
+     "z": [
+      "very",
+      "never",
+      "always"
+     ],
+     "syn": [],
+     "sp": [
+      "tomorow",
+      "tommorow",
+      "tomorrw"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "soon",
+     "pos": "adv",
+     "ko": "곧",
+     "ex": "See you soon.",
+     "exko": "곧 만나요.",
+     "z": [
+      "very",
+      "never",
+      "always"
+     ],
+     "syn": [],
+     "sp": [
+      "sone",
+      "soun",
+      "sooon"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "here",
+     "pos": "adv",
+     "ko": "여기에",
+     "ex": "Come here, Mina.",
+     "exko": "미나야, 이리 와.",
+     "z": [
+      "very",
+      "never",
+      "always"
+     ],
+     "syn": [],
+     "sp": [
+      "hear",
+      "heer",
+      "hare"
+     ]
+    },
+    {
+     "k": "s",
+     "good": "Nice to meet you.",
+     "ko": "만나서 반가워요.",
+     "bad": [
+      "Nice to you meet.",
+      "Meet nice to you.",
+      "Nice meet to you."
+     ],
+     "cz": {
+      "st": "Nice to ___ you.",
+      "ok": "meet",
+      "wr": [
+       "eat",
+       "run",
+       "sit"
+      ]
+     },
+     "rule": "처음 만났을 때는 Nice to meet you.라고 말해요.",
+     "hint": "처음 만난 사람에게 하는 인사예요."
+    },
+    {
+     "k": "s",
+     "good": "My name is Mina.",
+     "ko": "내 이름은 미나예요.",
+     "bad": [
+      "Name my is Mina.",
+      "My name am Mina.",
+      "I name is Mina."
+     ],
+     "cz": {
+      "st": "My ___ is Mina.",
+      "ok": "name",
+      "wr": [
+       "bag",
+       "desk",
+       "pen"
+      ]
+     },
+     "rule": "이름을 말할 때는 My name is ...라고 해요."
+    },
+    {
+     "k": "s",
+     "good": "I am fine, thank you.",
+     "ko": "잘 지내요, 고마워요.",
+     "bad": [
+      "I am fine, thanks you.",
+      "I fine am, thank you.",
+      "I is fine, thank you."
+     ],
+     "cz": {
+      "st": "I am fine, ___ you.",
+      "ok": "thank",
+      "wr": [
+       "thanks",
+       "thanked",
+       "thanking"
+      ]
+     },
+     "rule": "고마움을 말할 때는 Thank you.라고 해요."
+    },
+    {
+     "k": "s",
+     "good": "Good morning, Jun.",
+     "ko": "좋은 아침이야, 준.",
+     "bad": [
+      "Morning good, Jun.",
+      "Good morning Jun is.",
+      "Good a morning, Jun."
+     ],
+     "cz": {
+      "st": "Good ___, Jun.",
+      "ok": "morning",
+      "wr": [
+       "name",
+       "hungry",
+       "bag"
+      ]
+     },
+     "rule": "아침 인사는 Good morning.이에요."
+    },
+    {
+     "k": "s",
+     "good": "Thank you very much.",
+     "ko": "정말 고마워요.",
+     "bad": [
+      "Thank you much very.",
+      "Thank very you much.",
+      "Thanks you very much."
+     ],
+     "cz": {
+      "st": "Thank you very ___.",
+      "ok": "much",
+      "wr": [
+       "many",
+       "lot",
+       "big"
+      ]
+     },
+     "rule": "‘정말 고마워요’는 Thank you very much.라고 해요."
+    },
+    {
+     "k": "s",
+     "good": "Hello, I am Tom.",
+     "ko": "안녕하세요, 저는 톰이에요.",
+     "bad": [
+      "Hello, I are Tom.",
+      "Hello, I is Tom.",
+      "Hello, me am Tom."
+     ],
+     "cz": {
+      "st": "Hello, I ___ Tom.",
+      "ok": "am",
+      "wr": [
+       "is",
+       "are",
+       "be"
+      ]
+     },
+     "rule": "I 다음에는 am을 써요."
+    },
+    {
+     "k": "m",
+     "q": "친구를 처음 만났을 때 하는 말로 알맞은 것은?",
+     "o": [
+      "Good night.",
+      "See you tomorrow.",
+      "Goodbye.",
+      "Nice to meet you."
+     ],
+     "a": 3,
+     "why": "처음 만났을 때는 Nice to meet you.라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "잠자리에 들기 전에 가족에게 하는 인사로 알맞은 것은?",
+     "o": [
+      "Good morning.",
+      "Hello.",
+      "Good night.",
+      "Thank you."
+     ],
+     "a": 2,
+     "why": "자기 전에는 Good night.라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "아침에 일어나서 엄마를 만났어요. 뭐라고 말할까요?",
+     "o": [
+      "Good morning.",
+      "Good night.",
+      "Goodbye.",
+      "I'm sorry."
+     ],
+     "a": 0,
+     "why": "아침에는 Good morning.이라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "친구에게 선물을 받았을 때 하는 말은?",
+     "o": [
+      "I'm sorry.",
+      "Thank you.",
+      "Goodbye.",
+      "Hello."
+     ],
+     "a": 1,
+     "why": "선물을 받으면 Thank you.라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "A: Thank you.\nB: ______.",
+     "o": [
+      "Good night.",
+      "See you.",
+      "Nice to meet you.",
+      "You're welcome."
+     ],
+     "a": 3,
+     "why": "고맙다는 말에는 You're welcome.이라고 대답해요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "A: I'm sorry.\nB: ______.",
+     "o": [
+      "Good morning.",
+      "Nice to meet you.",
+      "It's okay.",
+      "Thank you very much."
+     ],
+     "a": 2,
+     "why": "미안하다는 말에는 It's okay.라고 대답해요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "A: What's your name?\nB: ______.",
+     "o": [
+      "I'm nine.",
+      "My name is Jun.",
+      "Good night.",
+      "Thank you."
+     ],
+     "a": 1,
+     "why": "이름을 물으면 My name is ...라고 대답해요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "A: How are you?\nB: ______.",
+     "o": [
+      "I'm fine, thank you.",
+      "My name is Tom.",
+      "Nice to meet you.",
+      "Good night."
+     ],
+     "a": 0,
+     "why": "안부를 물으면 I'm fine, thank you.라고 대답할 수 있어요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "A: Goodbye!\nB: ______",
+     "o": [
+      "Hello!",
+      "Good morning!",
+      "Bye!",
+      "I'm sorry."
+     ],
+     "a": 2,
+     "why": "헤어질 때 하는 인사에는 Bye!라고 대답해요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "점심을 먹은 뒤에 쓰는 인사로 알맞은 것은?",
+     "o": [
+      "Good morning.",
+      "Good night.",
+      "Good afternoon.",
+      "Goodbye."
+     ],
+     "a": 2,
+     "why": "오후에는 Good afternoon.이라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "A: Good morning, Tom!\nB: ______, Mina!",
+     "o": [
+      "Good morning",
+      "Good night",
+      "Thank you",
+      "Goodbye"
+     ],
+     "a": 0,
+     "why": "아침 인사에는 같은 인사로 대답해요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "A: See you tomorrow.\nB: ______",
+     "o": [
+      "Good morning.",
+      "See you!",
+      "Nice to meet you.",
+      "I'm sorry."
+     ],
+     "a": 1,
+     "why": "헤어질 때 하는 인사에는 See you!라고 대답해요.",
+     "cat": "dialogue"
+    },
+    {
+     "k": "m",
+     "q": "학교가 끝나서 집에 가요. 친구에게 뭐라고 말할까요?",
+     "o": [
+      "Hello.",
+      "Goodbye.",
+      "Good morning.",
+      "Nice to meet you."
+     ],
+     "a": 1,
+     "why": "헤어질 때는 Goodbye.라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "친구의 발을 밟았어요. 뭐라고 말할까요?",
+     "o": [
+      "Thank you.",
+      "Good night.",
+      "Nice to meet you.",
+      "I'm sorry."
+     ],
+     "a": 3,
+     "why": "실수했을 때는 I'm sorry.라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "연필을 빌릴 때 공손하게 말한 것은?",
+     "o": [
+      "Pencil now!",
+      "I want pencil.",
+      "Can I have a pencil, please?",
+      "Give me pencil."
+     ],
+     "a": 2,
+     "why": "please를 넣어 공손하게 부탁해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "내 이름을 말하는 문장은?",
+     "o": [
+      "How are you?",
+      "Thank you.",
+      "See you.",
+      "My name is Sora."
+     ],
+     "a": 3,
+     "why": "이름을 말할 때는 My name is ...라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "상대의 이름을 묻는 문장은?",
+     "o": [
+      "How are you?",
+      "What's your name?",
+      "Thank you.",
+      "Good night."
+     ],
+     "a": 1,
+     "why": "이름을 물을 때는 What's your name?이라고 해요.",
+     "cat": "greeting"
+    },
+    {
+     "k": "m",
+     "q": "저녁에 친구를 만났어요. 알맞은 인사는?",
+     "o": [
+      "Good morning.",
+      "Good afternoon.",
+      "Good luck.",
+      "Good evening."
+     ],
+     "a": 3,
+     "why": "저녁에는 Good evening.이라고 해요.",
+     "cat": "greeting"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,535 @@
+{
+ "packet": "H04-h1-conn",
+ "reviewer": "AI (Claude), independent of the author; not a native-speaker or teacher review",
+ "scope": {
+  "items": 94,
+  "questionsRead": 253,
+  "notes": "Read all 94 pool items (37 reading, 6 dialogue, 40 standalone connective/coherence items, 11 sentence items) and the expanded dump (253 questions). SYSTEMIC ISSUES (no per-item patch, fix in authoring): (1) every passage is only 55-94 words (most 75-90) while SPEC asks 120-250 for H; (2) in the non-cloze reading questions the correct option is the longest in 120 of 150 (80%) and in 25 of 25 main-idea questions - a strong length giveaway; the pair-cloze questions are balanced, correct positions are evenly spread (0-3); (3) many passages are easy for H1 (grade 2 band 'd' items such as the notice, recipe, restaurant dialogue) and nearly all follow the same frame 'Which pair best fills (A) and (B)? / What is the passage mainly about? / detail / vocabulary'; (4) topic repeats: volunteering x3 (16, 19, 28), notices/emails x6; (5) std 12영Ⅰ-01-04 on grammar-level clause items (Despite/Although/so...that) is generous. Connective-cloze answers were otherwise checked individually; apart from the patched ones, each has one defensible answer among the options offered (the author avoided offering near-synonyms together, e.g. never both However and Nevertheless). Standalone coherence items (60-64) are much easier than suneung irrelevant-sentence/insertion items; insertion items 27, 63, 64 each have one defensible position."
+ },
+ "patches": [
+  {
+   "item": "6edcbdd4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) So that / (B) In addition",
+       "(A) Although / (B) In contrast",
+       "(A) Unless / (B) For example",
+       "(A) Although / (B) In addition"
+      ],
+      "a": 3,
+      "why": "Although는 양보(건물은 닫지만 반납함은 열림), In addition은 정보를 덧붙여요."
+     },
+     {
+      "q": "What is the main purpose of the notice?",
+      "o": [
+       "To ask members for money to buy new computers",
+       "To announce a new library at the community center",
+       "To inform members of a closure and the services still available",
+       "To invite members to join a book club"
+      ],
+      "a": 2,
+      "why": "휴관과 이용 가능한 서비스를 알리는 공지예요."
+     },
+     {
+      "q": "When will the mobile library van visit the community center?",
+      "o": [
+       "Every day of the week",
+       "On Tuesdays and Saturdays",
+       "On Mondays and Fridays",
+       "Only on Sundays"
+      ],
+      "a": 1,
+      "why": "화요일과 토요일에 방문한다고 했어요."
+     },
+     {
+      "q": "What will happen if a member returns a book on April 20?",
+      "o": [
+       "No late fee will be charged",
+       "A late fee will be charged",
+       "The book will not be accepted",
+       "The member cannot borrow books again"
+      ],
+      "a": 0,
+      "why": "반납 기한이 4월 21일까지 연장되고 연체료가 없어요."
+     }
+    ]
+   },
+   "why": "Q1 has two defensible answers: 'Because the main building will be closed, the book-return box will stay open every day' is a sensible cause reading (the box is open precisely because the building is closed), so (A) Because / (B) In addition also fits. Replaced the distractor with 'So that', which cannot grammatically or logically fill (A).",
+   "severity": "major"
+  },
+  {
+   "item": "62a5c130",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) so",
+       "(A) As a result / (B) because",
+       "(A) As a result / (B) so",
+       "(A) For example / (B) unless"
+      ],
+      "a": 2,
+      "why": "분리배출의 결과로 일반 쓰레기가 줄었고(As a result), 일부가 지키지 않아서 포스터를 붙이려는 것이니 so예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to open a pizza restaurant at school",
+       "A school recycling program and its results so far",
+       "Why students dislike colored bins",
+       "A plan to close the student council"
+      ],
+      "a": 1,
+      "why": "학교 재활용 프로그램과 지금까지의 성과를 다뤄요."
+     },
+     {
+      "q": "How are the bins organized?",
+      "o": [
+       "Paper, cans, and plastic bottles go in three colored bins",
+       "Each student has one personal bin",
+       "Only plastic bottles are collected",
+       "There is one bin for the whole school"
+      ],
+      "a": 0,
+      "why": "종이, 캔, 플라스틱을 세 가지 색 통에 분리한다고 했어요."
+     },
+     {
+      "q": "Why did the student council start the competition?",
+      "o": [
+       "To lower the price of pizza",
+       "To replace the colored bins",
+       "To punish classes that recycle less",
+       "To encourage classes to recycle more"
+      ],
+      "a": 3,
+      "why": "경쟁으로 더 많이 재활용하게 하려는 의도예요."
+     },
+     {
+      "q": "What does the council plan to do about students who do not recycle?",
+      "o": [
+       "Remove the pizza party",
+       "Close the classroom bins",
+       "Put up reminder posters",
+       "Ask teachers to sort the waste"
+      ],
+      "a": 2,
+      "why": "일부 학생들을 위해 안내 포스터를 붙일 계획이에요."
+     }
+    ]
+   },
+   "why": "Q1 distractor '(A) As a result / (B) although' is defensible: 'Some still throw everything into the nearest bin, although the council plans to put up reminder posters' is natural English and a plausible concession. Replaced with 'because', which is clearly wrong.",
+   "severity": "major"
+  },
+  {
+   "item": "9bcf4672",
+   "op": "set",
+   "set": {
+    "text": "I started learning the guitar six months ago, and my progress has been slower than I hoped. Although I practice for thirty minutes every day, my fingers still hurt, and some chords sound terrible. My teacher says this is normal and tells me not to feel discouraged. (A) giving up, she suggests that I record myself once a week. When I listen to old recordings, I can hear how much I have improved. That small habit has changed my attitude, and I now look forward to practice rather than dreading it.",
+    "qs": [
+     {
+      "q": "Which expression best fills (A)?",
+      "o": [
+       "Instead of",
+       "Because of",
+       "In spite of",
+       "According to"
+      ],
+      "a": 0,
+      "why": "포기하는 대신 녹음을 해 보라는 뜻이므로 Instead of가 알맞아요. 뒤에 동명사(giving up)가 와요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why the guitar is the hardest instrument",
+       "How to choose a good guitar teacher",
+       "How a simple habit helped the writer stay positive about learning",
+       "The writer's plan to give up music"
+      ],
+      "a": 2,
+      "why": "녹음하는 작은 습관이 학습 태도를 바꿨다는 내용이에요."
+     },
+     {
+      "q": "What does the teacher suggest?",
+      "o": [
+       "Practicing for two hours a day",
+       "Recording a practice session once a week",
+       "Changing to an easier instrument",
+       "Stopping until the fingers heal"
+      ],
+      "a": 1,
+      "why": "일주일에 한 번 녹음해 보라고 했어요."
+     },
+     {
+      "q": "How has the writer's attitude changed?",
+      "o": [
+       "From dreading practice to looking forward to it",
+       "From loving practice to avoiding it",
+       "From teaching others to learning alone",
+       "From using a guitar to using a piano"
+      ],
+      "a": 0,
+      "why": "연습이 두렵던 상태에서 기대하는 상태로 바뀌었어요."
+     },
+     {
+      "q": "In the passage, \"discouraged\" is closest in meaning to",
+      "o": [
+       "angry and loud",
+       "tired from walking",
+       "ready to teach",
+       "less confident and hopeful"
+      ],
+      "a": 3,
+      "why": "discouraged는 낙담한, 의욕을 잃은이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q1 is flawed: with the stem '(A) of getting discouraged', 'Because' makes the grammatical, sensible 'Because of getting discouraged, she suggests ...' (teacher reacts to the writer's discouragement), and 'In spite' + of is unnatural but 'Besides' was also not clearly excluded; two readings. Rewritten so only 'Instead of' fits ('giving up'); 'discouraged' kept in an earlier sentence for the vocabulary question. Q3 option 'Recording himself or herself' is awkward/odd English (the teacher suggests the writer record himself/herself, and the teacher is 'she'); replaced with a neutral paraphrase.",
+   "severity": "major"
+  },
+  {
+   "item": "3eaafa98",
+   "op": "set",
+   "set": {
+    "q": "Which sentence does NOT belong in the paragraph?\n(1) The Han River is a popular place for leisure in Seoul. (2) Many families have picnics along its banks. (3) Many cyclists ride along the paths beside the water. (4) Calculators were first sold in the 1960s."
+   },
+   "why": "'The river is also known for its fish-shaped boats' is an invented, false-sounding fact about the Han River; sentence (3) should be a plain on-topic sentence. (Item is also very easy: the off-topic sentence is absurd, unlike suneung irrelevant-sentence items.)",
+   "severity": "major"
+  },
+  {
+   "item": "9474fa2e",
+   "op": "set",
+   "set": {
+    "o": [
+     "In contrast, it breaks down within a few weeks.",
+     "Otherwise, many countries have banned plastic bags.",
+     "Similarly, glass bottles are made from sand.",
+     "Therefore, reducing its use helps the environment."
+    ],
+    "a": 3
+   },
+   "why": "Distractors such as 'Meanwhile, I had lunch yesterday' and 'red toys are popular' are absurd, so the item is solved without reading the connective; replaced with on-topic sentences whose connectives are logically wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "eba81b19",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"Meanwhile\" show about Sora's plan?",
+      "o": [
+       "She will write the text while Ethan draws the charts",
+       "She will write the text after the photos are done",
+       "She will not write any text",
+       "She will draw the charts instead of Ethan"
+      ],
+      "a": 0,
+      "why": "Meanwhile은 같은 시간에 다른 일을 한다는 뜻이에요."
+     },
+     {
+      "q": "Why does Sora change the plan for the photos?",
+      "o": [
+       "Dahye does not want to join the group",
+       "The photos are already finished",
+       "Ethan wants to collect them",
+       "Dahye was sick and has not started"
+      ],
+      "a": 3,
+      "why": "Dahye가 아파서 시작하지 못했기 때문이에요."
+     },
+     {
+      "q": "What does Dahye mean by \"Otherwise, I'd be too stressed\"?",
+      "o": [
+       "If Sora said thank you, she would be stressed",
+       "If the poster were finished, she would be stressed",
+       "If she had to collect the photos herself, she would be too stressed",
+       "If Ethan helped her, she would be stressed"
+      ],
+      "a": 2,
+      "why": "Otherwise는 '그렇지 않으면', 즉 사진까지 모아야 했다면 부담이 컸을 것이라는 뜻이에요."
+     },
+     {
+      "q": "What will Dahye do for the poster?",
+      "o": [
+       "Draw the charts",
+       "Proofread everything at the end",
+       "Write the text",
+       "Design the layout"
+      ],
+      "a": 1,
+      "why": "마지막에 전체를 교정하기로 해요."
+     }
+    ]
+   },
+   "why": "Q3 correct option says 'collect the photos too', but collecting the photos was never Dahye's extra task ('too' is confusing: she was originally assigned them). 'herself' says what the plan avoids.",
+   "severity": "minor"
+  },
+  {
+   "item": "40329dec",
+   "op": "set",
+   "set": {
+    "std": [
+     "12영Ⅰ-01-04",
+     "12영Ⅰ-01-03"
+    ]
+   },
+   "why": "std 12영Ⅰ-02-05 (writing a letter/application form) is not practised: students only read the letter. Use the reading standards (logical relations; writer's purpose/tone).",
+   "severity": "minor"
+  },
+  {
+   "item": "634d08b0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) On the one hand / (B) On the other hand",
+       "(A) On the other hand / (B) On the one hand",
+       "(A) For example / (B) Therefore",
+       "(A) In addition / (B) In contrast"
+      ],
+      "a": 0,
+      "why": "두 입장을 비교할 때는 On the one hand ... On the other hand 순서로 써요."
+     },
+     {
+      "q": "Which word best fills (C)?",
+      "o": [
+       "For example",
+       "Otherwise",
+       "Likewise",
+       "Therefore"
+      ],
+      "a": 3,
+      "why": "양쪽 모두 일리가 있다는 데서 절충안이 나오므로 결과를 나타내는 Therefore예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A ban on phones in every school in the world",
+       "How teachers can record their lessons on phones",
+       "Arguments for and against phones in class, and a compromise",
+       "Why notifications are useful for learning"
+      ],
+      "a": 2,
+      "why": "찬반 양측 주장과 절충안을 소개하는 글이에요."
+     },
+     {
+      "q": "According to opponents, what can one notification do?",
+      "o": [
+       "Help students find unfamiliar words",
+       "Pull a student's attention away for several minutes",
+       "Remind teachers to start the lesson",
+       "Tell students when the class ends"
+      ],
+      "a": 1,
+      "why": "알림 하나가 몇 분 동안 집중을 흐트러뜨린다고 했어요."
+     },
+     {
+      "q": "What does the writer think of the two sides?",
+      "o": [
+       "Each side has some good points",
+       "Supporters are completely right",
+       "Opponents are completely right",
+       "Neither side cares about learning"
+      ],
+      "a": 0,
+      "why": "Neither side is entirely wrong 에서 양쪽 모두 일리가 있다고 봐요."
+     }
+    ],
+    "std": [
+     "12영Ⅰ-01-04",
+     "12영Ⅰ-01-06"
+    ]
+   },
+   "why": "Q2 distractor 'In contrast' is arguable: 'Neither side is entirely wrong. In contrast, a growing number of schools take a middle path' reads as a contrast with the two sides. Replaced with 'For example'. std 12영Ⅰ-01-08 (attitude toward other cultures) is not practised here.",
+   "severity": "minor"
+  },
+  {
+   "item": "5ff0323c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Moreover / (B) For this reason",
+       "(A) However / (B) For this reason",
+       "(A) However / (B) Similarly",
+       "(A) For example / (B) Otherwise"
+      ],
+      "a": 1,
+      "why": "장점 뒤에 문제를 말하므로 However, 문제 때문에 지원금이 있으므로 For this reason이에요."
+     },
+     {
+      "q": "Why are the running costs of electric cars low?",
+      "o": [
+       "Electricity is usually cheaper than gasoline",
+       "They never need any repairs",
+       "Governments pay for the electricity",
+       "They are much smaller than other cars"
+      ],
+      "a": 0,
+      "why": "전기가 보통 휘발유보다 싸기 때문이에요."
+     },
+     {
+      "q": "In the last sentence, \"these obstacles\" refers to",
+      "o": [
+       "exhaust and dirty air",
+       "cheap electricity and low running costs",
+       "government money and expert opinions",
+       "high prices and a lack of charging stations"
+      ],
+      "a": 3,
+      "why": "these obstacles는 앞에서 말한 높은 가격과 부족한 충전소를 가리켜요."
+     },
+     {
+      "q": "What do experts expect?",
+      "o": [
+       "Charging stations will disappear",
+       "Gasoline will become cheaper",
+       "Cheaper batteries will make the problems smaller",
+       "Governments will stop giving money"
+      ],
+      "a": 2,
+      "why": "배터리가 싸지면 장애물이 점차 사라질 것이라고 해요."
+     }
+    ]
+   },
+   "why": "Distractor '(A) However / (B) In contrast' is arguable ('In contrast, governments offer money to help') since the sentence contrasts problems with help; replaced with 'Similarly'.",
+   "severity": "minor"
+  },
+  {
+   "item": "30af1a70",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) As a result",
+       "(A) Therefore / (B) As a result",
+       "(A) However / (B) For instance",
+       "(A) For example / (B) Otherwise"
+      ],
+      "a": 0,
+      "why": "임시용이었지만 실제로는 남는다는 대조(However), 위험의 결과로 계획을 세우는 As a result예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "The first satellite launched in 1957",
+       "How to track objects larger than a tennis ball",
+       "Why spacecraft travel at high speed",
+       "The growing problem of junk in space and efforts to deal with it"
+      ],
+      "a": 3,
+      "why": "우주 쓰레기 문제와 대응 노력을 다뤄요."
+     },
+     {
+      "q": "Why can a tiny fragment damage a spacecraft?",
+      "o": [
+       "It is made of heavy metal",
+       "It is always sharp",
+       "It moves at an extremely high speed",
+       "It is hotter than the sun"
+      ],
+      "a": 2,
+      "why": "시속 약 28,000km로 움직이기 때문이에요."
+     },
+     {
+      "q": "What are space agencies planning?",
+      "o": [
+       "A ban on all satellite launches",
+       "Satellites that can be removed from orbit after use",
+       "Larger satellites that stay for longer",
+       "A way to track the smallest pieces"
+      ],
+      "a": 1,
+      "why": "임무 후 궤도에서 제거할 수 있는 위성을 계획해요."
+     }
+    ]
+   },
+   "why": "Distractor '(B) In contrast, space agencies now plan ...' is arguable (agencies' response contrasts with the junk problem); replaced with 'For instance'.",
+   "severity": "minor"
+  },
+  {
+   "item": "16d76fa9",
+   "op": "drop",
+   "why": "Duplicate of the sentence item 'Although it rained, we went hiking' (cloze Although/Despite/Because) - same learning point.",
+   "severity": "minor"
+  },
+  {
+   "item": "73b9c211",
+   "op": "drop",
+   "why": "Near-duplicate of 'Despite the heavy rain, the game continued' (Despite + noun phrase, rain frame).",
+   "severity": "minor"
+  },
+  {
+   "item": "36394655",
+   "op": "drop",
+   "why": "Duplicate of the 'Because of the storm, ...' sentence item (because of + noun phrase).",
+   "severity": "minor"
+  },
+  {
+   "item": "efe46d57",
+   "op": "drop",
+   "why": "Duplicate of the 'She was so tired that ...' sentence item (so ... that); also middle-school level.",
+   "severity": "minor"
+  },
+  {
+   "item": "a4356999",
+   "op": "drop",
+   "why": "Duplicate of 'He was late because he missed the train.' (because + clause).",
+   "severity": "minor"
+  },
+  {
+   "item": "360dc884",
+   "op": "drop",
+   "why": "Same Unless lesson as 'Unless you hurry, you will miss the bus.'",
+   "severity": "minor"
+  },
+  {
+   "item": "0660bd54",
+   "op": "drop",
+   "why": "Same whereas lesson as 'Whereas Tom likes tea, Mia prefers coffee.'",
+   "severity": "minor"
+  },
+  {
+   "item": "8dcd2e23",
+   "op": "drop",
+   "why": "Duplicate of the result-connective item with 'Consequently' (cause then result); too easy for H1.",
+   "severity": "minor"
+  },
+  {
+   "item": "b91c6596",
+   "op": "drop",
+   "why": "Middle-school level (so/because/but); trivial for H1.",
+   "severity": "minor"
+  },
+  {
+   "item": "371cf1e0",
+   "op": "drop",
+   "why": "Meta-question whose answer ('For instance' = Example) is given away by the item name and is trivial for H1.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 74,
+ "criteria": [
+  "Passages must meet the SPEC length for the level (H: 120-250 words); a 55-90 word passage is too thin for suneung-style connective/flow items.",
+  "For every connective cloze, test each distractor in the blank AND with its sentence neighbours: 'Because/Although', 'although/so', 'In contrast/Therefore' often produce a second sensible reading when the clause is about a purpose or consequence. Never put a concession and a cause conjunction together unless the context excludes one explicitly.",
+  "Do not offer a distractor that is merely a different word for the same relation (However/Nevertheless/Still, For example/For instance, Moreover/In addition/Also, Therefore/As a result/Thus).",
+  "Make correct answers shorter or equal in length to distractors in main-idea and detail questions; in this packet the key was the longest option in 80% of such questions.",
+  "Vary question frames: do not ask 'Which pair best fills (A) and (B)?' + 'What is the passage mainly about?' for 30 passages; add true/false, reference, inference, order and insertion questions.",
+  "Irrelevant-sentence / insertion distractors must be on-topic and subtle, never absurd ('I had lunch yesterday'); do not invent facts (fish-shaped boats) for filler sentences.",
+  "Do not write several standalone items with the same frame and answer (Although/Despite + rain, because/because of + noun, so...that, Unless, whereas); one per grammar point per packet.",
+  "std tags must describe what the student actually does (reading a letter is not 'writing a letter'); keep cultural-attitude tags for items that really discuss culture.",
+  "Ordinary ad-hoc phrases like 'Recording himself or herself' or a dialogue answer with 'too' that has no antecedent are wording defects: read each option aloud against the text."
+ ]
+}

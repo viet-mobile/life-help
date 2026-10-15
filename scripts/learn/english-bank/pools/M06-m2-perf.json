@@ -1,0 +1,2325 @@
+{
+ "packet": "M06-m2-perf",
+ "sections": [
+  {
+   "skill": "e.m2.perf",
+   "items": [
+    {
+     "k": "s",
+     "good": "She has studied English since 2020.",
+     "ko": "그녀는 2020년부터 영어를 공부해 왔어요.",
+     "bad": [
+      "She has studied English for 2020.",
+      "She studies English since 2020.",
+      "She have studied English since 2020."
+     ],
+     "cz": {
+      "st": "She ___ English since 2020.",
+      "ok": "has studied",
+      "wr": [
+       "studied",
+       "studies",
+       "have studied"
+      ]
+     },
+     "rule": "since 뒤에 시작 시점이 오면 계속을 나타내는 현재완료(have/has + 과거분사)를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "We have known each other for ten years.",
+     "ko": "우리는 10년 동안 서로 알고 지냈어요.",
+     "bad": [
+      "We know each other for ten years.",
+      "We have known each other since ten years.",
+      "We has known each other for ten years."
+     ],
+     "cz": {
+      "st": "We have ___ each other for ten years.",
+      "ok": "known",
+      "wr": [
+       "knew",
+       "knowing",
+       "knowed"
+      ]
+     },
+     "rule": "know의 과거분사는 known이에요. for 뒤에는 기간(ten years)이 와요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Minho has never eaten raw fish.",
+     "ko": "민호는 생선회를 한 번도 먹어 본 적이 없어요.",
+     "bad": [
+      "Minho has never ate raw fish.",
+      "Minho have never eaten raw fish.",
+      "Minho has not never eaten raw fish."
+     ],
+     "cz": {
+      "st": "Minho has never ___ raw fish.",
+      "ok": "eaten",
+      "wr": [
+       "ate",
+       "eat",
+       "eating"
+      ]
+     },
+     "rule": "경험을 나타내는 현재완료는 have/has + 과거분사예요. eat의 과거분사는 eaten이고, 부정어는 never 하나만 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Have you ever visited Jeju Island?",
+     "ko": "제주도에 가 본 적이 있나요?",
+     "bad": [
+      "Did you ever visited Jeju Island?",
+      "Have you ever visit Jeju Island?",
+      "Are you ever visited Jeju Island?"
+     ],
+     "cz": {
+      "st": "Have you ever ___ Jeju Island?",
+      "ok": "visited",
+      "wr": [
+       "visit",
+       "visiting",
+       "to visit"
+      ]
+     },
+     "rule": "경험을 묻는 현재완료 의문문은 Have/Has + 주어 + ever + 과거분사 ~?의 순서예요."
+    },
+    {
+     "k": "s",
+     "good": "My brother has already finished his homework.",
+     "ko": "내 형은 이미 숙제를 끝냈어요.",
+     "bad": [
+      "My brother have already finished his homework.",
+      "My brother has already finish his homework.",
+      "My brother is already finished his homework."
+     ],
+     "cz": {
+      "st": "My brother ___ already finished his homework.",
+      "ok": "has",
+      "wr": [
+       "have",
+       "is",
+       "did"
+      ]
+     },
+     "rule": "주어가 3인칭 단수(My brother)이면 현재완료는 has + 과거분사예요. already는 완료의 느낌을 더해요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "They haven't arrived yet.",
+     "ko": "그들은 아직 도착하지 않았어요.",
+     "bad": [
+      "They hasn't arrived yet.",
+      "They haven't arrive yet.",
+      "They didn't have arrived yet."
+     ],
+     "cz": {
+      "st": "They ___ arrived yet.",
+      "ok": "haven't",
+      "wr": [
+       "hasn't",
+       "didn't",
+       "aren't"
+      ]
+     },
+     "rule": "부정문의 yet은 '아직'이라는 뜻이고 현재완료 haven't/hasn't + 과거분사와 함께 써요. 주어 They에는 haven't를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Has the bus left yet?",
+     "ko": "버스가 벌써 떠났나요?",
+     "bad": [
+      "Have the bus left yet?",
+      "Has the bus leave yet?",
+      "Does the bus left yet?"
+     ],
+     "cz": {
+      "st": "___ the bus left yet?",
+      "ok": "Has",
+      "wr": [
+       "Have",
+       "Does",
+       "Do"
+      ]
+     },
+     "rule": "현재완료 의문문은 Has/Have + 주어 + 과거분사 ~?예요. the bus는 단수이므로 Has를 써요."
+    },
+    {
+     "k": "s",
+     "good": "The movie has just started.",
+     "ko": "영화가 막 시작했어요.",
+     "bad": [
+      "The movie have just started.",
+      "The movie has just start.",
+      "The movie has just starting."
+     ],
+     "cz": {
+      "st": "The movie has just ___.",
+      "ok": "started",
+      "wr": [
+       "start",
+       "starts",
+       "starting"
+      ]
+     },
+     "rule": "just는 '방금, 막'이라는 뜻으로, have/has와 과거분사 사이에 써서 방금 일어난 일을 나타내요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Tom has gone to Paris, so he isn't at home now.",
+     "ko": "톰은 파리에 가 버려서 지금 집에 없어요.",
+     "bad": [
+      "Tom has gone Paris, so he isn't at home now.",
+      "Tom have gone to Paris, so he isn't at home now.",
+      "Tom has went to Paris, so he isn't at home now."
+     ],
+     "cz": {
+      "st": "Tom has ___ to Paris, so he isn't at home now.",
+      "ok": "gone",
+      "wr": [
+       "went",
+       "go",
+       "going"
+      ]
+     },
+     "rule": "has gone to는 '~에 가 버리고 지금 여기 없다'는 결과를 나타내요. go의 과거분사는 gone이에요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "I have been to Japan twice.",
+     "ko": "나는 일본에 두 번 가 본 적이 있어요.",
+     "bad": [
+      "I have be to Japan twice.",
+      "I am been to Japan twice.",
+      "I has been to Japan twice."
+     ],
+     "cz": {
+      "st": "I have ___ to Japan twice.",
+      "ok": "been",
+      "wr": [
+       "be",
+       "was",
+       "being"
+      ]
+     },
+     "rule": "have been to는 '~에 가 본 적이 있다'는 경험을 나타내요. be의 과거분사는 been이에요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "My uncle visited Canada last summer.",
+     "ko": "우리 삼촌은 지난여름에 캐나다를 방문했어요.",
+     "bad": [
+      "My uncle has visited Canada last summer.",
+      "My uncle visit Canada last summer.",
+      "My uncle visiting Canada last summer."
+     ],
+     "cz": {
+      "st": "My uncle ___ Canada last summer.",
+      "ok": "visited",
+      "wr": [
+       "has visited",
+       "visit",
+       "visiting"
+      ]
+     },
+     "rule": "last summer처럼 과거의 특정 시점을 나타내는 말과는 현재완료가 아니라 과거 시제를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "When did you buy that bike?",
+     "ko": "그 자전거를 언제 샀어요?",
+     "bad": [
+      "When have you bought that bike?",
+      "When did you bought that bike?",
+      "When are you buy that bike?"
+     ],
+     "cz": {
+      "st": "When ___ you buy that bike?",
+      "ok": "did",
+      "wr": [
+       "have",
+       "has",
+       "were"
+      ]
+     },
+     "rule": "when으로 과거의 특정 시점을 물을 때는 현재완료를 쓰지 않고 did + 동사원형을 써요."
+    },
+    {
+     "k": "s",
+     "good": "Sora has played the violin since she was seven.",
+     "ko": "소라는 일곱 살 때부터 바이올린을 연주해 왔어요.",
+     "bad": [
+      "Sora has played the violin since she is seven.",
+      "Sora has played the violin for she was seven.",
+      "Sora plays the violin since she was seven."
+     ],
+     "cz": {
+      "st": "Sora has played the violin ___ she was seven.",
+      "ok": "since",
+      "wr": [
+       "for",
+       "ago",
+       "at"
+      ]
+     },
+     "rule": "since 뒤에는 시점이나 과거 시제의 절이 와요. 기간 앞에는 for를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "It has rained for three days.",
+     "ko": "사흘 동안 비가 내리고 있어요.",
+     "bad": [
+      "It has rained since three days.",
+      "It has rain for three days.",
+      "It have rained for three days."
+     ],
+     "cz": {
+      "st": "It has rained ___ three days.",
+      "ok": "for",
+      "wr": [
+       "since",
+       "at",
+       "ago"
+      ]
+     },
+     "rule": "for 뒤에는 three days 같은 기간이 와요. since 뒤에는 시작 시점이 와요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Our team hasn't won a game this season.",
+     "ko": "우리 팀은 이번 시즌에 한 경기도 이기지 못했어요.",
+     "bad": [
+      "Our team hasn't win a game this season.",
+      "Our team hasn't winned a game this season.",
+      "Our team doesn't won a game this season."
+     ],
+     "cz": {
+      "st": "Our team hasn't ___ a game this season.",
+      "ok": "won",
+      "wr": [
+       "win",
+       "winned",
+       "wins"
+      ]
+     },
+     "rule": "win의 과거분사는 won이에요. -ed를 붙이지 않는 불규칙 동사예요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "How long has your sister lived abroad?",
+     "ko": "네 언니는 외국에서 얼마나 오래 살았어요?",
+     "bad": [
+      "How long has your sister live abroad?",
+      "How long have your sister lived abroad?",
+      "How long your sister has lived abroad?"
+     ],
+     "cz": {
+      "st": "How long ___ your sister lived abroad?",
+      "ok": "has",
+      "wr": [
+       "have",
+       "did",
+       "is"
+      ]
+     },
+     "rule": "How long ~?은 계속 기간을 묻는 현재완료 의문문이에요. 주어가 your sister(3인칭 단수)이므로 has를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "She has drawn a picture of the lake.",
+     "ko": "그녀는 호수 그림을 그렸어요.",
+     "bad": [
+      "She has drew a picture of the lake.",
+      "She has drawed a picture of the lake.",
+      "She have drawn a picture of the lake."
+     ],
+     "cz": {
+      "st": "She has ___ a picture of the lake.",
+      "ok": "drawn",
+      "wr": [
+       "drew",
+       "drawed",
+       "draw"
+      ]
+     },
+     "rule": "draw-drew-drawn으로 변하는 불규칙 동사예요. 현재완료에는 과거분사 drawn을 써요."
+    },
+    {
+     "k": "s",
+     "good": "The children have written letters to their grandparents.",
+     "ko": "아이들은 조부모님께 편지를 썼어요.",
+     "bad": [
+      "The children have wrote letters to their grandparents.",
+      "The children has written letters to their grandparents.",
+      "The children have writed letters to their grandparents."
+     ],
+     "cz": {
+      "st": "The children have ___ letters to their grandparents.",
+      "ok": "written",
+      "wr": [
+       "wrote",
+       "writed",
+       "write"
+      ]
+     },
+     "rule": "write-wrote-written. have 뒤에는 과거형 wrote가 아니라 과거분사 written을 써요."
+    },
+    {
+     "k": "s",
+     "good": "Has anyone taken my umbrella?",
+     "ko": "누가 내 우산을 가져갔나요?",
+     "bad": [
+      "Has anyone took my umbrella?",
+      "Have anyone taken my umbrella?",
+      "Has anyone taked my umbrella?"
+     ],
+     "cz": {
+      "st": "Has anyone ___ my umbrella?",
+      "ok": "taken",
+      "wr": [
+       "took",
+       "taked",
+       "take"
+      ]
+     },
+     "rule": "take-took-taken. anyone은 단수 취급하므로 Has를 쓰고, 뒤에는 과거분사 taken을 써요."
+    },
+    {
+     "k": "s",
+     "good": "I have never broken a bone.",
+     "ko": "나는 뼈가 부러진 적이 한 번도 없어요.",
+     "bad": [
+      "I have never broke a bone.",
+      "I has never broken a bone.",
+      "I have never breaked a bone."
+     ],
+     "cz": {
+      "st": "I have never ___ a bone.",
+      "ok": "broken",
+      "wr": [
+       "broke",
+       "breaked",
+       "break"
+      ]
+     },
+     "rule": "break-broke-broken. 현재완료에는 과거분사 broken을 써요."
+    },
+    {
+     "k": "s",
+     "good": "My grandfather has grown tomatoes in his garden for years.",
+     "ko": "우리 할아버지는 수년 동안 정원에서 토마토를 키워 오셨어요.",
+     "bad": [
+      "My grandfather has growed tomatoes in his garden for years.",
+      "My grandfather have grown tomatoes in his garden for years.",
+      "My grandfather has grow tomatoes in his garden for years."
+     ],
+     "cz": {
+      "st": "My grandfather has ___ tomatoes in his garden for years.",
+      "ok": "grown",
+      "wr": [
+       "grew",
+       "growed",
+       "grow"
+      ]
+     },
+     "rule": "grow-grew-grown. 기간(for years)과 함께 쓴 현재완료에는 과거분사 grown을 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "My cousin has ridden a horse only once.",
+     "ko": "내 사촌은 말을 딱 한 번 타 봤어요.",
+     "bad": [
+      "My cousin has rode a horse only once.",
+      "My cousin have ridden a horse only once.",
+      "My cousin has rided a horse only once."
+     ],
+     "cz": {
+      "st": "My cousin has ___ a horse only once.",
+      "ok": "ridden",
+      "wr": [
+       "rode",
+       "rided",
+       "ride"
+      ]
+     },
+     "rule": "ride-rode-ridden. 경험을 나타내는 현재완료에는 ridden을 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "The little boy has hidden his shoes under the bed.",
+     "ko": "그 어린 남자아이는 침대 밑에 신발을 숨겼어요.",
+     "bad": [
+      "The little boy has hided his shoes under the bed.",
+      "The little boy have hidden his shoes under the bed.",
+      "The little boy has hide his shoes under the bed."
+     ],
+     "cz": {
+      "st": "The little boy has ___ his shoes under the bed.",
+      "ok": "hidden",
+      "wr": [
+       "hided",
+       "hide",
+       "hiding"
+      ]
+     },
+     "rule": "hide-hid-hidden. 3인칭 단수 주어에는 has + hidden을 써요.",
+     "ord": false,
+     "sub": true
+    },
+    {
+     "k": "s",
+     "good": "We have chosen a name for our band.",
+     "ko": "우리는 밴드 이름을 정했어요.",
+     "bad": [
+      "We have choosed a name for our band.",
+      "We has chosen a name for our band.",
+      "We have choose a name for our band."
+     ],
+     "cz": {
+      "st": "We have ___ a name for our band.",
+      "ok": "chosen",
+      "wr": [
+       "choosed",
+       "choose",
+       "choosing"
+      ]
+     },
+     "rule": "choose-chose-chosen. 규칙형 -ed를 붙인 choosed는 틀린 형태예요.",
+     "ord": false,
+     "sub": true
+    },
+    {
+     "k": "s",
+     "good": "Mina has been absent since Monday.",
+     "ko": "미나는 월요일부터 결석하고 있어요.",
+     "bad": [
+      "Mina has been absent for Monday.",
+      "Mina is absent since Monday.",
+      "Mina has be absent since Monday."
+     ],
+     "cz": {
+      "st": "Mina has ___ absent since Monday.",
+      "ok": "been",
+      "wr": [
+       "be",
+       "was",
+       "being"
+      ]
+     },
+     "rule": "상태가 계속되는 현재완료는 has been + 형용사로 나타내고, 시작 시점(Monday) 앞에는 since를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Haven't you finished your lunch yet?",
+     "ko": "아직 점심을 다 먹지 않았어요?",
+     "bad": [
+      "Hasn't you finished your lunch yet?",
+      "Haven't you finish your lunch yet?",
+      "Don't you finished your lunch yet?"
+     ],
+     "cz": {
+      "st": "___ you finished your lunch yet?",
+      "ok": "Haven't",
+      "wr": [
+       "Hasn't",
+       "Didn't",
+       "Doesn't"
+      ]
+     },
+     "rule": "부정 의문문도 Haven't/Hasn't + 주어 + 과거분사 ~? 순서예요. 주어 you에는 Haven't를 써요."
+    },
+    {
+     "k": "s",
+     "good": "I have lost my wallet, so I can't pay.",
+     "ko": "지갑을 잃어버려서 계산할 수 없어요.",
+     "bad": [
+      "I have lose my wallet, so I can't pay.",
+      "I has lost my wallet, so I can't pay.",
+      "I have losed my wallet, so I can't pay."
+     ],
+     "cz": {
+      "st": "I have ___ my wallet, so I can't pay.",
+      "ok": "lost",
+      "wr": [
+       "lose",
+       "losed",
+       "loses"
+      ]
+     },
+     "rule": "과거에 잃어버려서 지금도 없는 결과를 나타낼 때 현재완료를 써요. lose의 과거분사는 lost예요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Our teacher has taught at this school for eleven years.",
+     "ko": "우리 선생님은 이 학교에서 11년 동안 가르쳐 오셨어요.",
+     "bad": [
+      "Our teacher has taught at this school since eleven years.",
+      "Our teacher has teached at this school for eleven years.",
+      "Our teacher has teach at this school for eleven years."
+     ],
+     "cz": {
+      "st": "Our teacher has ___ at this school for eleven years.",
+      "ok": "taught",
+      "wr": [
+       "teached",
+       "teach",
+       "teaching"
+      ]
+     },
+     "rule": "teach-taught-taught. 기간(eleven years) 앞에는 for를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "My phone has stopped working.",
+     "ko": "내 휴대전화가 작동을 멈췄어요.",
+     "bad": [
+      "My phone has stop working.",
+      "My phone have stopped working.",
+      "My phone has stopped worked."
+     ],
+     "cz": {
+      "st": "My phone has ___ working.",
+      "ok": "stopped",
+      "wr": [
+       "stop",
+       "stops",
+       "stopping"
+      ]
+     },
+     "rule": "현재완료는 has + 과거분사(stopped)예요. 지금 작동하지 않는 결과를 나타내요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Nobody has answered the question yet.",
+     "ko": "아직 아무도 그 질문에 답하지 않았어요.",
+     "bad": [
+      "Nobody have answered the question yet.",
+      "Nobody has answer the question yet.",
+      "Nobody has answering the question yet."
+     ],
+     "cz": {
+      "st": "Nobody has ___ the question yet.",
+      "ok": "answered",
+      "wr": [
+       "answer",
+       "answering",
+       "answers"
+      ]
+     },
+     "rule": "Nobody는 단수로 취급해서 has를 쓰고, 뒤에는 과거분사 answered를 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "I haven't seen you for ages!",
+     "ko": "오랜만이에요!",
+     "bad": [
+      "I hasn't seen you for ages!",
+      "I haven't saw you for ages!",
+      "I haven't seen you since ages!"
+     ],
+     "cz": {
+      "st": "I haven't ___ you for ages!",
+      "ok": "seen",
+      "wr": [
+       "saw",
+       "see",
+       "seeing"
+      ]
+     },
+     "rule": "see-saw-seen. haven't 뒤에는 과거분사 seen을 써요. for ages는 '오랫동안'이라는 뜻이에요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "What has Jisu done with my pen?",
+     "ko": "지수가 내 펜을 어떻게 했나요?",
+     "bad": [
+      "What has Jisu did with my pen?",
+      "What have Jisu done with my pen?",
+      "What Jisu has done with my pen?"
+     ],
+     "cz": {
+      "st": "What has Jisu ___ with my pen?",
+      "ok": "done",
+      "wr": [
+       "did",
+       "do",
+       "doing"
+      ]
+     },
+     "rule": "do-did-done. 의문사가 있는 현재완료 의문문은 의문사 + has/have + 주어 + 과거분사 ~?예요."
+    },
+    {
+     "k": "s",
+     "good": "The singer has become famous all over the world.",
+     "ko": "그 가수는 전 세계에서 유명해졌어요.",
+     "bad": [
+      "The singer has became famous all over the world.",
+      "The singer have become famous all over the world.",
+      "The singer has becomed famous all over the world."
+     ],
+     "cz": {
+      "st": "The singer has ___ famous all over the world.",
+      "ok": "become",
+      "wr": [
+       "became",
+       "becomed",
+       "becoming"
+      ]
+     },
+     "rule": "become은 과거분사도 become으로 현재형과 같아요. became은 과거형이에요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "We have been friends since elementary school.",
+     "ko": "우리는 초등학교 때부터 친구로 지내 왔어요.",
+     "bad": [
+      "We are friends since elementary school.",
+      "We have been friends for elementary school.",
+      "We has been friends since elementary school."
+     ],
+     "cz": {
+      "st": "We have been friends ___ elementary school.",
+      "ok": "since",
+      "wr": [
+       "for",
+       "ago",
+       "at"
+      ]
+     },
+     "rule": "since 뒤에는 시작 시점이 와요. 계속을 나타내는 현재완료와 함께 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "I have never heard such a funny story.",
+     "ko": "나는 그렇게 웃긴 이야기를 들어 본 적이 없어요.",
+     "bad": [
+      "I have never heared such a funny story.",
+      "I have never hear such a funny story.",
+      "I has never heard such a funny story."
+     ],
+     "cz": {
+      "st": "I have never ___ such a funny story.",
+      "ok": "heard",
+      "wr": [
+       "heared",
+       "hear",
+       "hearing"
+      ]
+     },
+     "rule": "hear-heard-heard. 과거형과 과거분사가 같은 heard예요. heared라는 형태는 없어요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Many students have joined the reading club this year.",
+     "ko": "올해 많은 학생이 독서 동아리에 가입했어요.",
+     "bad": [
+      "Many students has joined the reading club this year.",
+      "Many students have join the reading club this year.",
+      "Many students have joinning the reading club this year."
+     ],
+     "cz": {
+      "st": "Many students ___ joined the reading club this year.",
+      "ok": "have",
+      "wr": [
+       "has",
+       "are",
+       "do"
+      ]
+     },
+     "rule": "주어 Many students는 복수이므로 현재완료는 have + 과거분사예요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "The scientists have discovered a new kind of fish.",
+     "ko": "과학자들이 새로운 종류의 물고기를 발견했어요.",
+     "bad": [
+      "The scientists has discovered a new kind of fish.",
+      "The scientists have discover a new kind of fish.",
+      "The scientists have discovering a new kind of fish."
+     ],
+     "cz": {
+      "st": "The scientists have ___ a new kind of fish.",
+      "ok": "discovered",
+      "wr": [
+       "discover",
+       "discovering",
+       "discovers"
+      ]
+     },
+     "rule": "현재완료는 have/has + 과거분사예요. 규칙 동사는 -ed를 붙여 과거분사를 만들어요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Sam moved here two years ago.",
+     "ko": "샘은 2년 전에 이곳으로 이사 왔어요.",
+     "bad": [
+      "Sam has moved here two years ago.",
+      "Sam moves here two years ago.",
+      "Sam moving here two years ago."
+     ],
+     "cz": {
+      "st": "Sam ___ here two years ago.",
+      "ok": "moved",
+      "wr": [
+       "has moved",
+       "moves",
+       "moving"
+      ]
+     },
+     "rule": "ago는 과거의 특정 시점을 나타내므로 현재완료가 아니라 과거 시제와 함께 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "It is the best pizza I have ever eaten.",
+     "ko": "그건 내가 먹어 본 피자 중 최고예요.",
+     "bad": [
+      "It is the best pizza I have ever ate.",
+      "It is the best pizza I has ever eaten.",
+      "It is the best pizza I am ever eaten."
+     ],
+     "cz": {
+      "st": "It is the best pizza I have ever ___.",
+      "ok": "eaten",
+      "wr": [
+       "ate",
+       "eat",
+       "eating"
+      ]
+     },
+     "rule": "최상급 뒤에 '지금까지 ~한 중에서'라는 경험은 I have ever + 과거분사로 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "Has your dog ever bitten anyone?",
+     "ko": "네 개가 누군가를 문 적이 있나요?",
+     "bad": [
+      "Has your dog ever bite anyone?",
+      "Have your dog ever bitten anyone?",
+      "Did your dog ever bitten anyone?"
+     ],
+     "cz": {
+      "st": "___ your dog ever bitten anyone?",
+      "ok": "Has",
+      "wr": [
+       "Have",
+       "Did",
+       "Is"
+      ]
+     },
+     "rule": "경험을 묻는 현재완료 의문문이에요. your dog은 단수이므로 Has를 쓰고, bite의 과거분사는 bitten이에요."
+    },
+    {
+     "k": "s",
+     "good": "We haven't had a test this week.",
+     "ko": "우리는 이번 주에 시험을 보지 않았어요.",
+     "bad": [
+      "We hasn't had a test this week.",
+      "We haven't have a test this week.",
+      "We haven't has a test this week."
+     ],
+     "cz": {
+      "st": "We haven't ___ a test this week.",
+      "ok": "had",
+      "wr": [
+       "have",
+       "has",
+       "having"
+      ]
+     },
+     "rule": "현재완료 부정문은 haven't/hasn't + 과거분사예요. have의 과거분사는 had예요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "She has brought her own lunch every day this week.",
+     "ko": "그녀는 이번 주에 매일 도시락을 가져왔어요.",
+     "bad": [
+      "She has bring her own lunch every day this week.",
+      "She has brang her own lunch every day this week.",
+      "She have brought her own lunch every day this week."
+     ],
+     "cz": {
+      "st": "She has ___ her own lunch every day this week.",
+      "ok": "brought",
+      "wr": [
+       "bring",
+       "brang",
+       "bringed"
+      ]
+     },
+     "rule": "bring-brought-brought. 불규칙 동사이므로 -ed를 붙이지 않아요.",
+     "ord": false,
+     "sub": true
+    },
+    {
+     "k": "s",
+     "good": "My parents have sung in a choir for many years.",
+     "ko": "우리 부모님은 여러 해 동안 합창단에서 노래해 오셨어요.",
+     "bad": [
+      "My parents have sang in a choir for many years.",
+      "My parents has sung in a choir for many years.",
+      "My parents have singed in a choir for many years."
+     ],
+     "cz": {
+      "st": "My parents have ___ in a choir for many years.",
+      "ok": "sung",
+      "wr": [
+       "sang",
+       "singed",
+       "sing"
+      ]
+     },
+     "rule": "sing-sang-sung. have 뒤에는 과거형 sang이 아니라 과거분사 sung을 써요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "He has spent all his money on games.",
+     "ko": "그는 게임에 돈을 다 써 버렸어요.",
+     "bad": [
+      "He has spended all his money on games.",
+      "He have spent all his money on games.",
+      "He has spend all his money on games."
+     ],
+     "cz": {
+      "st": "He has ___ all his money on games.",
+      "ok": "spent",
+      "wr": [
+       "spended",
+       "spend",
+       "spending"
+      ]
+     },
+     "rule": "spend-spent-spent. spended라는 형태는 없어요.",
+     "ord": false,
+     "sub": true
+    },
+    {
+     "k": "s",
+     "good": "The price of tickets has risen again.",
+     "ko": "표 가격이 다시 올랐어요.",
+     "bad": [
+      "The price of tickets has rose again.",
+      "The price of tickets have risen again.",
+      "The price of tickets has rised again."
+     ],
+     "cz": {
+      "st": "The price of tickets has ___ again.",
+      "ok": "risen",
+      "wr": [
+       "rose",
+       "rised",
+       "rise"
+      ]
+     },
+     "rule": "rise-rose-risen. 주어 The price는 단수이므로 has + risen이에요.",
+     "ord": false,
+     "sub": true
+    },
+    {
+     "k": "s",
+     "good": "Yuri has met her pen pal twice.",
+     "ko": "유리는 펜팔 친구를 두 번 만난 적이 있어요.",
+     "bad": [
+      "Yuri has meet her pen pal twice.",
+      "Yuri has meeted her pen pal twice.",
+      "Yuri have met her pen pal twice."
+     ],
+     "cz": {
+      "st": "Yuri has ___ her pen pal twice.",
+      "ok": "met",
+      "wr": [
+       "meet",
+       "meeted",
+       "meets"
+      ]
+     },
+     "rule": "meet-met-met. 경험을 나타내는 현재완료에 과거분사 met을 써요.",
+     "ord": false,
+     "sub": true
+    },
+    {
+     "k": "m",
+     "q": "Choose the best word: I have known Sumi ___ we were in first grade.",
+     "o": [
+      "since",
+      "for",
+      "ago",
+      "during"
+     ],
+     "a": 0,
+     "why": "we were in first grade는 과거의 한 시점을 나타내는 절이므로 since를 써요. for는 기간 앞에 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "My grandmother has been in the hospital ___ two weeks.",
+     "o": [
+      "since",
+      "ago",
+      "from",
+      "for"
+     ],
+     "a": 3,
+     "why": "two weeks는 기간이므로 for를 써요. since 뒤에는 시작 시점이 와요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence is correct?",
+     "o": [
+      "I have seen that film last night.",
+      "I have saw that film last night.",
+      "I saw that film last night.",
+      "I see that film last night."
+     ],
+     "a": 2,
+     "why": "last night은 과거의 특정 시점이므로 과거 시제를 써요. 현재완료와는 함께 쓰지 않아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Ann isn't here. She ___ to the post office. She will come back soon.",
+     "o": [
+      "has been",
+      "has gone",
+      "had been",
+      "is been"
+     ],
+     "a": 1,
+     "why": "지금 여기에 없고 곧 돌아온다는 뜻이므로 '가고 없다'는 has gone to를 써요. has been to는 갔다가 돌아온 경험을 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I'm back from Busan. I ___ to Busan for the festival.",
+     "o": [
+      "have gone",
+      "have been",
+      "has been",
+      "has gone"
+     ],
+     "a": 1,
+     "why": "이미 돌아왔으므로 '다녀왔다'는 have been to를 써요. 주어 I에는 have를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "___ you ever tried kimchi pancakes?",
+     "o": [
+      "Have",
+      "Has",
+      "Are",
+      "Do"
+     ],
+     "a": 0,
+     "why": "경험을 묻는 현재완료 의문문은 Have you ever + 과거분사 ~?예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Sujin ___ been to a concert before.",
+     "o": [
+      "never",
+      "is never",
+      "did never",
+      "has never"
+     ],
+     "a": 3,
+     "why": "경험이 없음은 has never + 과거분사로 나타내요. 주어 Sujin은 3인칭 단수이므로 has를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence uses yet correctly?",
+     "o": [
+      "You have called your aunt yet.",
+      "I called my aunt yet yesterday.",
+      "Have you called your aunt yet?",
+      "I have called my aunt yet."
+     ],
+     "a": 2,
+     "why": "yet은 의문문과 부정문에서 '벌써, 아직'의 뜻으로 써요. 긍정문에서는 쓰지 않아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: Do you want to see this film? B: No, thanks. I have ___ seen it.",
+     "o": [
+      "yet",
+      "ever",
+      "already",
+      "still"
+     ],
+     "a": 2,
+     "why": "이미 본 적이 있다는 뜻이므로 긍정문에서 '이미'를 뜻하는 already를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: Is Dad home? B: No, he ___ home yet.",
+     "o": [
+      "haven't come",
+      "hasn't come",
+      "hasn't came",
+      "didn't has come"
+     ],
+     "a": 1,
+     "why": "yet이 있는 부정문은 hasn't + 과거분사예요. come의 과거분사는 come이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which is the past participle of speak?",
+     "o": [
+      "spoken",
+      "spoke",
+      "speaked",
+      "speaking"
+     ],
+     "a": 0,
+     "why": "speak-spoke-spoken. 현재완료에는 spoke가 아니라 spoken을 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which line shows the correct three forms (base - past - past participle)?",
+     "o": [
+      "take - took - taked",
+      "eat - ate - ate",
+      "know - knew - knowed",
+      "go - went - gone"
+     ],
+     "a": 3,
+     "why": "take-took-taken, eat-ate-eaten, know-knew-known이 맞아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which verb has the same past and past participle form?",
+     "o": [
+      "give",
+      "begin",
+      "drive",
+      "buy"
+     ],
+     "a": 3,
+     "why": "buy-bought-bought예요. give-gave-given, begin-began-begun, drive-drove-driven은 세 형태가 모두 달라요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which verb has three different forms (base, past, past participle)?",
+     "o": [
+      "cut",
+      "teach",
+      "sing",
+      "hear"
+     ],
+     "a": 2,
+     "why": "sing-sang-sung은 세 형태가 모두 달라요. cut은 모두 같고, teach와 hear는 과거와 과거분사가 같아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 현재완료가 쓰인 문장은?",
+     "o": [
+      "She finished her homework.",
+      "She has finished her homework.",
+      "She is finishing her homework.",
+      "She will finish her homework."
+     ],
+     "a": 1,
+     "why": "현재완료는 have/has + 과거분사 형태예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 현재완료의 '경험'을 나타내는 문장은?",
+     "o": [
+      "I have met a famous singer once.",
+      "I have just washed the dishes.",
+      "He has lived here for ten years.",
+      "She has gone to the market."
+     ],
+     "a": 0,
+     "why": "once(한 번)는 경험을 나타내요. just는 완료, for ten years는 계속, has gone은 결과를 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 현재완료의 '계속'을 나타내는 문장은?",
+     "o": [
+      "Dad has worked at a bank since 2015.",
+      "Dad has never worked at a bank.",
+      "Dad has just left the bank.",
+      "Did Dad work at a bank?"
+     ],
+     "a": 0,
+     "why": "since 2015는 과거부터 지금까지 이어지는 상태를 나타내는 계속의 표현이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 현재완료의 '완료'를 나타내는 문장은?",
+     "o": [
+      "We have visited the station twice.",
+      "We have waited here for an hour.",
+      "We arrived at the station last night.",
+      "We have just arrived at the station."
+     ],
+     "a": 3,
+     "why": "just는 '방금 막 ~했다'는 완료의 뜻이에요. twice는 경험, for an hour는 계속을 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence has a mistake?",
+     "o": [
+      "She has lived here since May.",
+      "He has worked here for a year.",
+      "I have visited Rome last year.",
+      "They have gone to the park."
+     ],
+     "a": 2,
+     "why": "last year는 과거의 특정 시점이므로 현재완료와 함께 쓸 수 없어요. visited Rome last year로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence has a mistake?",
+     "o": [
+      "Has she finished lunch?",
+      "I have never rode a horse.",
+      "We have known him for years.",
+      "They haven't left yet."
+     ],
+     "a": 1,
+     "why": "ride의 과거분사는 rode가 아니라 ridden이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: How long have you played the piano? B: ___",
+     "o": [
+      "Six years ago has.",
+      "For six years.",
+      "Since six years.",
+      "At six years."
+     ],
+     "a": 1,
+     "why": "How long으로 기간을 물으면 for + 기간으로 답해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: When did you start learning Chinese? B: ___",
+     "o": [
+      "In 2022.",
+      "For 2022.",
+      "Since two years.",
+      "Has 2022."
+     ],
+     "a": 0,
+     "why": "시작한 시점을 묻는 말에는 In 2022처럼 시점으로 답해요. for 뒤에는 기간이 와요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which question is correct?",
+     "o": [
+      "How many books you have read this month?",
+      "How many books has you read this month?",
+      "How many books have you readed this month?",
+      "How many books have you read this month?"
+     ],
+     "a": 3,
+     "why": "의문사가 있는 현재완료 의문문은 의문사 + have/has + 주어 + 과거분사 순서예요. read의 과거분사는 read예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which time expression is NOT used with the present perfect?",
+     "o": [
+      "since Monday",
+      "for a week",
+      "two days ago",
+      "so far"
+     ],
+     "a": 2,
+     "why": "ago는 과거의 특정 시점을 나타내므로 현재완료와 함께 쓰지 않아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which time word usually goes with the simple past, not the present perfect?",
+     "o": [
+      "already",
+      "ever",
+      "yesterday",
+      "just"
+     ],
+     "a": 2,
+     "why": "yesterday는 분명한 과거 시점이라 과거 시제와 쓰고, already, ever, just는 현재완료와 자주 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "In the present perfect, which phrase can follow for?",
+     "o": [
+      "last night",
+      "three hours",
+      "this morning",
+      "2018"
+     ],
+     "a": 1,
+     "why": "for 뒤에는 three hours 같은 기간이 와요. 나머지는 모두 시점을 나타내므로 for가 아니라 since와 함께 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which phrase can follow since?",
+     "o": [
+      "last winter",
+      "ten minutes",
+      "a long time",
+      "five weeks"
+     ],
+     "a": 0,
+     "why": "since 뒤에는 last winter 같은 시점이 와요. 나머지는 기간이므로 for와 함께 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Jisu moved to Ulsan in 2020 and still lives there. Which sentence describes this?",
+     "o": [
+      "Jisu lives in Ulsan for 2020.",
+      "Jisu lived in Ulsan since 2020.",
+      "Jisu has lived in Ulsan in 2020.",
+      "Jisu has lived in Ulsan since 2020."
+     ],
+     "a": 3,
+     "why": "과거부터 지금까지 계속되는 상태는 현재완료와 since + 시점으로 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Tom lost his bike, and he still doesn't have it. Which sentence describes this?",
+     "o": [
+      "Tom lost his bike since yesterday.",
+      "Tom has lose his bike.",
+      "Tom is lost his bike.",
+      "Tom has lost his bike."
+     ],
+     "a": 3,
+     "why": "과거에 잃어버려서 지금도 없는 결과는 현재완료 has lost로 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "What does 'I have lost my phone' tell us?",
+     "o": [
+      "I took my phone to school today.",
+      "I have found it again.",
+      "I don't have my phone now.",
+      "I will lose it tomorrow."
+     ],
+     "a": 2,
+     "why": "현재완료는 과거의 일이 지금까지 영향을 미칠 때 써요. 지금도 휴대전화가 없다는 뜻이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence means 'Mina is not here now'?",
+     "o": [
+      "Mina has been to Daejeon.",
+      "Mina has gone to Daejeon.",
+      "Mina has never been to Daejeon.",
+      "Mina has visited Daejeon twice."
+     ],
+     "a": 1,
+     "why": "has gone to는 '가 버리고 지금 없다'는 뜻이에요. has been to는 다녀온 경험을 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: Have you finished your science report? B: ___",
+     "o": [
+      "Yes, I have.",
+      "Yes, I am.",
+      "Yes, I do.",
+      "Yes, I has."
+     ],
+     "a": 0,
+     "why": "현재완료 의문문에는 같은 조동사로 Yes, I have.라고 답해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: Has Jun ever been late for school? B: ___",
+     "o": [
+      "No, he hasn't.",
+      "No, he doesn't.",
+      "No, he didn't have.",
+      "No, he haven't."
+     ],
+     "a": 0,
+     "why": "Has로 물으면 No, he hasn't.로 답해요. 주어 he에는 haven't를 쓰지 않아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the best answer: We ___ the results yet.",
+     "o": [
+      "hasn't received",
+      "didn't has received",
+      "haven't receive",
+      "haven't received"
+     ],
+     "a": 3,
+     "why": "주어 We에는 haven't를 쓰고 뒤에는 과거분사 received가 와요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence is correct?",
+     "o": [
+      "She's already leaved.",
+      "She'd already leaving.",
+      "She's already left.",
+      "She's already leave."
+     ],
+     "a": 2,
+     "why": "She's는 She has의 줄임말이에요. leave의 과거분사는 left예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "'He has never played chess.'의 뜻으로 알맞은 것은?",
+     "o": [
+      "그는 어제 체스를 하지 않았다.",
+      "그는 체스를 한 번도 해 본 적이 없다.",
+      "그는 체스를 곧 할 것이다.",
+      "그는 지금 체스를 하고 있지 않다."
+     ],
+     "a": 1,
+     "why": "has never + 과거분사는 '한 번도 ~한 적이 없다'는 경험의 부정이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "'나는 이 노래를 세 번 들어 봤다.'를 영어로 바르게 옮긴 것은?",
+     "o": [
+      "I have heard this song three times.",
+      "I heard this song three time ago.",
+      "I have hear this song three times.",
+      "I am heard this song three times."
+     ],
+     "a": 0,
+     "why": "경험은 have + 과거분사로 나타내요. hear의 과거분사는 heard예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "'그는 어렸을 때부터 이 마을에 살고 있다.'를 영어로 바르게 옮긴 것은?",
+     "o": [
+      "He lives in this town since he was a child.",
+      "He has lived in this town for he was a child.",
+      "He have lived in this town since he was a child.",
+      "He has lived in this town since he was a child."
+     ],
+     "a": 3,
+     "why": "어렸을 때라는 시점부터 계속되므로 has lived와 since를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence has the correct word order?",
+     "o": [
+      "I eaten have already lunch.",
+      "Have already I eaten lunch.",
+      "I have already eaten lunch.",
+      "I have eaten already lunch."
+     ],
+     "a": 2,
+     "why": "already는 보통 have와 과거분사 사이에 써요. 주어 + have + already + 과거분사 순서예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Last week, we ___ a school trip to Gyeongju.",
+     "o": [
+      "have taken",
+      "has taken",
+      "took",
+      "had took"
+     ],
+     "a": 2,
+     "why": "Last week은 과거의 특정 시점이므로 과거형 took을 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I ___ my keys. I can't open the door now.",
+     "o": [
+      "lose",
+      "have lost",
+      "have lose",
+      "am lost"
+     ],
+     "a": 1,
+     "why": "과거에 잃어버려서 지금 문을 열 수 없는 결과를 나타내므로 have lost를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "My aunt ___ in London in 2010, but now she lives in Seoul.",
+     "o": [
+      "lived",
+      "has lived",
+      "have lived",
+      "is living"
+     ],
+     "a": 0,
+     "why": "in 2010은 과거의 특정 시점이고 지금은 살지 않으므로 과거형을 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I ___ him at the mall an hour ago.",
+     "o": [
+      "have seen",
+      "has seen",
+      "have saw",
+      "saw"
+     ],
+     "a": 3,
+     "why": "an hour ago는 과거의 특정 시점이므로 과거형 saw를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "___ you ever ___ a whale?",
+     "o": [
+      "Did / seen",
+      "Has / saw",
+      "Have / saw",
+      "Have / seen"
+     ],
+     "a": 3,
+     "why": "경험을 묻는 현재완료는 Have you ever + 과거분사예요. see의 과거분사는 seen이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence is correct?",
+     "o": [
+      "It has been snowy for Tuesday.",
+      "It is snowy since Tuesday.",
+      "It has been snowy since Tuesday.",
+      "It have been snowy since Tuesday."
+     ],
+     "a": 2,
+     "why": "Tuesday는 시작 시점이므로 since를 쓰고, 주어 It에는 has를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: ___ has Hana lived in Incheon? B: For about eight years.",
+     "o": [
+      "How often",
+      "How long",
+      "How much",
+      "How far"
+     ],
+     "a": 1,
+     "why": "for about eight years로 답했으므로 기간을 묻는 How long이 알맞아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: ___ have you been to the dentist this year? B: Only once.",
+     "o": [
+      "How many times",
+      "How long",
+      "How old",
+      "How far"
+     ],
+     "a": 0,
+     "why": "Only once는 횟수에 대한 답이므로 How many times가 알맞아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "So far, I ___ five pages of my essay.",
+     "o": [
+      "have written",
+      "write",
+      "am written",
+      "has written"
+     ],
+     "a": 0,
+     "why": "so far(지금까지)는 현재완료와 함께 써요. 주어 I에는 have를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence is a question in the present perfect?",
+     "o": [
+      "Is your mother arrive?",
+      "Did your mother arrived?",
+      "Does your mother arrived?",
+      "Has your mother arrived?"
+     ],
+     "a": 3,
+     "why": "현재완료 의문문은 Has/Have + 주어 + 과거분사 ~?예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I have lived here ___.",
+     "o": [
+      "last year",
+      "two years ago",
+      "since last year",
+      "yesterday"
+     ],
+     "a": 2,
+     "why": "현재완료의 계속에는 since last year처럼 since + 시점을 써요. 나머지는 과거 시제와 쓰는 표현이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "'I haven't eaten anything since breakfast.'의 뜻으로 알맞은 것은?",
+     "o": [
+      "나는 아침을 먹지 않았다.",
+      "나는 아침 이후로 아무것도 먹지 않았다.",
+      "나는 아침에 아무것도 먹지 않을 것이다.",
+      "나는 아침마다 아무것도 먹지 않는다."
+     ],
+     "a": 1,
+     "why": "since breakfast는 '아침 식사 이후로'라는 뜻이고, haven't eaten은 지금까지 먹지 않았음을 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence is correct?",
+     "o": [
+      "Did you ever have ridden a camel?",
+      "Have you ever ridden a camel?",
+      "You have ever ridden a camel.",
+      "Ever have you ridden a camel."
+     ],
+     "a": 1,
+     "why": "경험을 묻는 질문은 Have you ever + 과거분사 ~?예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence uses just correctly?",
+     "o": [
+      "The bell has just rung.",
+      "The bell has just ring.",
+      "The bell has just ringed.",
+      "The bell have just rung."
+     ],
+     "a": 0,
+     "why": "just는 has와 과거분사 사이에 써요. ring의 과거분사는 rung이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Mia says, 'I have never been abroad.' What do we know?",
+     "o": [
+      "Mia is traveling abroad now.",
+      "Mia lives in another country.",
+      "Mia has visited many countries.",
+      "Mia has not traveled to another country."
+     ],
+     "a": 3,
+     "why": "have never been abroad는 외국에 한 번도 가 본 적이 없다는 뜻이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Dad ___ the dishes yet, so the sink is still full.",
+     "o": [
+      "hasn't wash",
+      "haven't washed",
+      "hasn't washed",
+      "didn't has washed"
+     ],
+     "a": 2,
+     "why": "yet이 있는 부정문이므로 hasn't + 과거분사예요. 주어 Dad에는 hasn't를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "r",
+     "title": "A New Hobby",
+     "text": "Ha-eun has been interested in photography since last spring. Her uncle gave her an old camera for her birthday, and she has taken more than five hundred pictures with it. She has photographed flowers, buildings, and even her neighbor's dog. Last month she showed her best photos at a school event, and many students asked her for tips. However, she has never taken a lesson. She learns from videos online. Next year she hopes to join the photography club, which has existed for ten years.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "How to buy an old camera",
+        "Ha-eun's growing interest in photography",
+        "A school event about flowers",
+        "Her uncle's job as a photographer"
+       ],
+       "a": 1,
+       "why": "글 전체가 하은이의 사진 취미를 다루고 있어요."
+      },
+      {
+       "q": "Since when has Ha-eun been interested in photography?",
+       "o": [
+        "Since last spring",
+        "Since last winter",
+        "Since her uncle's birthday",
+        "Since she joined the club"
+       ],
+       "a": 0,
+       "why": "첫 문장에서 since last spring이라고 했어요."
+      },
+      {
+       "q": "Which is true about Ha-eun?",
+       "o": [
+        "She has taken only five pictures.",
+        "She has already joined the photography club.",
+        "She has photographed only her dog.",
+        "She has never taken a photography lesson."
+       ],
+       "a": 3,
+       "why": "However 뒤 문장에서 한 번도 수업을 들은 적이 없다고 했어요."
+      },
+      {
+       "q": "The word \"tips\" in the passage is closest in meaning to ___.",
+       "o": [
+        "small gifts",
+        "strong feelings",
+        "useful advice",
+        "short stories"
+       ],
+       "a": 2,
+       "why": "사진을 어떻게 찍는지 알려 달라는 맥락이므로 '유용한 조언'이에요."
+      },
+      {
+       "q": "What can we infer from the passage?",
+       "o": [
+        "Ha-eun's uncle teaches her every week.",
+        "Ha-eun is learning photography mostly by herself.",
+        "Ha-eun is a member of the photography club now.",
+        "Ha-eun does not like taking pictures of animals."
+       ],
+       "a": 1,
+       "why": "수업을 들은 적이 없고 영상으로 배운다고 했으므로 혼자 배우고 있어요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "An Email to Grandma",
+     "text": "Dear Grandma, How are you? I have been very busy since school started. I have joined the chess club, and I have already played in two small contests. I have won one of them! Mom has baked cookies for you, and I have helped her. I haven't visited you for a month, so I miss you a lot. Dad says we can come to your house next weekend. Have you finished the sweater you were knitting? I hope it is not too big for me! Love, Jun",
+     "qs": [
+      {
+       "q": "Why did Jun write this email?",
+       "o": [
+        "To invite Grandma to join the chess club",
+        "To thank Grandma for a new sweater",
+        "To share his news and say hello",
+        "To say that he is sick"
+       ],
+       "a": 2,
+       "why": "준이는 근황을 전하고 안부를 묻기 위해 이메일을 썼어요."
+      },
+      {
+       "q": "How many contests has Jun won?",
+       "o": [
+        "Two",
+        "One",
+        "Three",
+        "None"
+       ],
+       "a": 1,
+       "why": "두 번 대회에 나가 그중 하나에서 이겼다고 했어요."
+      },
+      {
+       "q": "Why does Jun miss Grandma?",
+       "o": [
+        "He hasn't visited her for a month.",
+        "She moved to another city.",
+        "She is in the hospital.",
+        "She forgot his birthday."
+       ],
+       "a": 0,
+       "why": "한 달 동안 찾아뵙지 못해서 보고 싶다고 했어요."
+      },
+      {
+       "q": "What will probably happen next weekend?",
+       "o": [
+        "Jun will play in a chess contest.",
+        "Grandma will bake cookies.",
+        "Mom will buy a sweater.",
+        "Jun's family will visit Grandma."
+       ],
+       "a": 3,
+       "why": "아빠가 다음 주말에 할머니 댁에 갈 수 있다고 했어요."
+      },
+      {
+       "q": "What can we infer about Grandma?",
+       "o": [
+        "She dislikes chess.",
+        "She lives in the same house as Jun.",
+        "She is making a sweater for Jun.",
+        "She has already finished baking."
+       ],
+       "a": 2,
+       "why": "할머니가 뜨고 있던 스웨터를 다 끝냈는지 묻는 것으로 보아 준이를 위해 뜨고 있다고 짐작할 수 있어요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Nugget the Hamster",
+     "text": "Our class has had a pet hamster since March. His name is Nugget. Students have taken turns feeding him, and so far nobody has forgotten. Last week, however, Nugget disappeared from his cage. We have searched the whole room, and Mr. Park has even looked behind the bookshelves. At last, Yuna found him sleeping in a teacher's slipper! Now we have put a small lock on the cage, so he cannot escape again. Everyone is happy, and Nugget seems to be happy, too.",
+     "qs": [
+      {
+       "q": "Where did Yuna find Nugget?",
+       "o": [
+        "Behind the bookshelves",
+        "In his cage",
+        "Under Mr. Park's desk",
+        "In a teacher's slipper"
+       ],
+       "a": 3,
+       "why": "유나가 선생님의 슬리퍼 안에서 자고 있는 너겟을 찾았어요."
+      },
+      {
+       "q": "Why have the students put a lock on the cage?",
+       "o": [
+        "To keep other students away",
+        "To make Nugget sleep",
+        "To stop Nugget from escaping again",
+        "To hide Nugget from Mr. Park"
+       ],
+       "a": 2,
+       "why": "잠금장치를 달아 다시 도망치지 못하게 했다고 했어요."
+      },
+      {
+       "q": "What is true about feeding Nugget?",
+       "o": [
+        "Only Mr. Park feeds him.",
+        "Nobody has forgotten to feed him so far.",
+        "He eats only on Fridays.",
+        "Students stopped feeding him last week."
+       ],
+       "a": 1,
+       "why": "학생들이 돌아가며 먹이를 주었고 지금까지 잊은 사람이 없다고 했어요."
+      },
+      {
+       "q": "In the passage, \"escape\" is closest in meaning to ___.",
+       "o": [
+        "get away",
+        "fall asleep",
+        "come back",
+        "grow up"
+       ],
+       "a": 0,
+       "why": "우리에서 빠져나가 도망친다는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Sleep and Students",
+     "text": "Doctors have said for many years that sleep is very important for teenagers. Studies have shown that students need eight to ten hours of sleep every night. However, many students have started to use their phones late at night, and they have become more tired in class. Some schools have changed their start time to a little later, and the results have been good. Students in those schools have paid more attention and have felt happier. Experts say that a regular bedtime has helped many young people to stay healthy.",
+     "qs": [
+      {
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Enough sleep is important for teenagers.",
+        "Phones are the best way to study.",
+        "Schools should never change their start time.",
+        "Doctors dislike teenagers."
+       ],
+       "a": 0,
+       "why": "글 전체가 청소년에게 충분한 수면이 중요하다는 내용이에요."
+      },
+      {
+       "q": "How much sleep do students need, according to the studies?",
+       "o": [
+        "Five to six hours",
+        "Eleven to twelve hours",
+        "Two to three hours",
+        "Eight to ten hours"
+       ],
+       "a": 3,
+       "why": "연구에 따르면 매일 밤 8~10시간의 수면이 필요하다고 했어요."
+      },
+      {
+       "q": "What happened in schools that started later?",
+       "o": [
+        "Students stopped using phones.",
+        "Teachers became more tired.",
+        "Students paid more attention and felt happier.",
+        "Students got less sleep."
+       ],
+       "a": 2,
+       "why": "수업 시작 시간을 늦춘 학교의 학생들은 더 집중하고 더 행복해졌다고 했어요."
+      },
+      {
+       "q": "In the passage, \"regular\" in \"a regular bedtime\" means ___.",
+       "o": [
+        "very late",
+        "the same every day",
+        "very early",
+        "different each night"
+       ],
+       "a": 1,
+       "why": "regular bedtime은 매일 같은 시간에 자는 습관을 뜻해요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Our Town Has Changed",
+     "text": "Our town has changed a lot in the past five years. The city has built three new parks, and volunteers have planted hundreds of trees. Recycling has become part of daily life: families have separated paper, plastic, and glass since 2021. As a result, the amount of garbage has fallen by twenty percent. The river, which looked dirty for a long time, has become clean enough for fish to return. Still, the mayor says the work has not finished. She hopes more people will walk or ride bikes instead of driving.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A plan to build a new airport",
+        "Positive changes in a town over five years",
+        "Why people moved out of the town",
+        "The history of a river"
+       ],
+       "a": 1,
+       "why": "공원, 재활용, 강 등 마을이 5년간 좋게 변한 내용이에요."
+      },
+      {
+       "q": "What has happened to the amount of garbage?",
+       "o": [
+        "It has fallen by twenty percent.",
+        "It has doubled.",
+        "It has not changed.",
+        "It has risen by twenty percent."
+       ],
+       "a": 0,
+       "why": "재활용의 결과로 쓰레기 양이 20퍼센트 줄었다고 했어요."
+      },
+      {
+       "q": "What sign shows that the river is cleaner?",
+       "o": [
+        "People have built a bridge over it.",
+        "Trees have been planted beside it.",
+        "The mayor swims in it.",
+        "Fish have returned to it."
+       ],
+       "a": 3,
+       "why": "강이 깨끗해져 물고기가 돌아올 수 있게 되었다고 했어요."
+      },
+      {
+       "q": "What does the mayor hope for?",
+       "o": [
+        "More cars will use the river road.",
+        "The town will stop recycling.",
+        "More people will walk or ride bikes.",
+        "Volunteers will leave the town."
+       ],
+       "a": 2,
+       "why": "시장은 사람들이 운전 대신 걷거나 자전거를 타기를 바란다고 했어요."
+      },
+      {
+       "q": "What does \"the work has not finished\" suggest?",
+       "o": [
+        "The town has given up its plans.",
+        "The town still wants to make more improvements.",
+        "All the problems are solved.",
+        "The mayor is leaving her job."
+       ],
+       "a": 1,
+       "why": "아직 일이 끝나지 않았다는 것은 더 개선하려는 계획이 남아 있다는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Gyeongju Diary",
+     "text": "Saturday, May 10. Today we arrived in Gyeongju. We have visited two temples so far, and we have walked about ten kilometers. My legs are tired, but I haven't felt bored once. In the morning, we climbed a hill and watched the sunrise. I have never seen such a beautiful sky. Tomorrow we will visit a museum. I haven't bought any souvenirs yet, so I will do that after lunch. Our guide has promised to show us an old royal garden, too. I can't wait!",
+     "qs": [
+      {
+       "q": "What did the writer do in the morning?",
+       "o": [
+        "Visited a museum",
+        "Bought souvenirs",
+        "Climbed a hill and watched the sunrise",
+        "Had lunch in a royal garden"
+       ],
+       "a": 2,
+       "why": "오늘 아침에 언덕에 올라 일출을 봤다고 했어요."
+      },
+      {
+       "q": "What has the writer NOT done yet?",
+       "o": [
+        "Visited temples",
+        "Bought souvenirs",
+        "Walked about ten kilometers",
+        "Climbed a hill"
+       ],
+       "a": 1,
+       "why": "I haven't bought any souvenirs yet이라고 했어요."
+      },
+      {
+       "q": "How does the writer feel?",
+       "o": [
+        "Tired but excited",
+        "Bored and angry",
+        "Sick and afraid",
+        "Lonely and sad"
+       ],
+       "a": 0,
+       "why": "다리는 피곤하지만 지루하지 않았고 내일을 기대하고 있어요."
+      },
+      {
+       "q": "What has the guide promised?",
+       "o": [
+        "To buy souvenirs for the students",
+        "To show them an old royal garden",
+        "To take them to a beach",
+        "To give them a free day"
+       ],
+       "a": 1,
+       "why": "Our guide has promised to show us an old royal garden이라고 했어요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "The Old Clock Tower",
+     "text": "The clock tower in our town square has stood there since 1925. It has survived storms, a fire, and two big floods. Workers have repaired it three times, and each time the clock has started ticking again. Many visitors have taken pictures of it, and some have even written songs about it. Last year the town painted the tower white. Local people say the tower has become a symbol of their town. For them, it has never been just a clock.",
+     "qs": [
+      {
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Clocks should be repaired every year.",
+        "Visitors do not like the clock tower.",
+        "The town square was built last year.",
+        "The clock tower is an important symbol of the town."
+       ],
+       "a": 3,
+       "why": "시계탑이 오랫동안 마을의 상징이 되어 왔다는 내용이에요."
+      },
+      {
+       "q": "How many times have workers repaired the tower?",
+       "o": [
+        "Twice",
+        "Five times",
+        "Three times",
+        "Never"
+       ],
+       "a": 2,
+       "why": "Workers have repaired it three times라고 했어요."
+      },
+      {
+       "q": "What did the town do last year?",
+       "o": [
+        "It built a new square.",
+        "It painted the tower white.",
+        "It moved the tower.",
+        "It held a big concert."
+       ],
+       "a": 1,
+       "why": "Last year the town painted the tower white라고 했어요."
+      },
+      {
+       "q": "What does \"it has never been just a clock\" mean?",
+       "o": [
+        "It means more to the people than a clock.",
+        "It has never told the time.",
+        "It was always broken.",
+        "It is a very small clock."
+       ],
+       "a": 0,
+       "why": "그냥 시계가 아니라 마을 사람들에게 더 큰 의미가 있다는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "d",
+     "title": "Packing for Camp",
+     "text": "Mom: Have you packed your bag yet, Jiho?\nJiho: Not yet. I have only packed my clothes.\nMom: Have you remembered your toothbrush?\nJiho: Oh no, I haven't! Thanks for reminding me.\nMom: And have you found your flashlight? You lost it last month.\nJiho: Yes, I found it under my bed yesterday.\nMom: Great. Has Dad called the bus company?\nJiho: He has already called them. The bus leaves at seven.\nMom: Then you should go to bed early tonight.",
+     "qs": [
+      {
+       "q": "What has Jiho packed so far?",
+       "o": [
+        "His clothes",
+        "His toothbrush",
+        "His flashlight",
+        "His shoes"
+       ],
+       "a": 0,
+       "why": "I have only packed my clothes라고 했어요."
+      },
+      {
+       "q": "When did Jiho find his flashlight?",
+       "o": [
+        "Last month",
+        "Tonight",
+        "This morning",
+        "Yesterday"
+       ],
+       "a": 3,
+       "why": "지호는 어제 침대 밑에서 손전등을 찾았다고 했어요."
+      },
+      {
+       "q": "Why does Mom tell Jiho to go to bed early?",
+       "o": [
+        "He has a cold.",
+        "He lost his bag.",
+        "The bus leaves at seven.",
+        "Dad is angry."
+       ],
+       "a": 2,
+       "why": "버스가 7시에 떠나므로 일찍 자라고 한 거예요."
+      },
+      {
+       "q": "Who has already called the bus company?",
+       "o": [
+        "Mom",
+        "Dad",
+        "Jiho",
+        "The teacher"
+       ],
+       "a": 1,
+       "why": "Has Dad called ...? 질문에 He has already called them이라고 답했어요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "d",
+     "title": "Movie Night",
+     "text": "Ella: Have you ever seen a movie about space, Tae?\nTae: Yes, I have. I saw one last winter with my cousin.\nElla: Did you like it?\nTae: Very much. I have watched it twice since then.\nElla: I have never watched a space movie. Is it scary?\nTae: Not at all. It is funny and exciting.\nElla: Then let's watch it tonight. Have you finished your homework?\nTae: Not yet, but I will do it after dinner.\nElla: Okay. I will bring some popcorn.",
+     "qs": [
+      {
+       "q": "After he first saw the movie last winter, how many more times has Tae watched it?",
+       "o": [
+        "Once",
+        "Twice",
+        "Three times",
+        "Never"
+       ],
+       "a": 1,
+       "why": "태이는 지난겨울에 처음 봤고 그 뒤로 두 번 더 봤다고 했어요."
+      },
+      {
+       "q": "What is true about Ella?",
+       "o": [
+        "She has never watched a space movie.",
+        "She has watched it twice.",
+        "She saw it with Tae last winter.",
+        "She dislikes popcorn."
+       ],
+       "a": 0,
+       "why": "엘라는 우주 영화를 본 적이 없다고 했어요."
+      },
+      {
+       "q": "What is the movie like, according to Tae?",
+       "o": [
+        "Scary and long",
+        "Sad and slow",
+        "Boring and old",
+        "Funny and exciting"
+       ],
+       "a": 3,
+       "why": "태이는 영화가 재미있고 신난다고 했어요."
+      },
+      {
+       "q": "Why does Ella ask about Tae's homework?",
+       "o": [
+        "She wants to help him with it.",
+        "She has finished it for him.",
+        "She wants to know if he can watch the movie tonight.",
+        "She thinks it is too difficult."
+       ],
+       "a": 2,
+       "why": "저녁에 영화를 보자고 한 뒤 숙제를 물은 것은 그가 시간이 되는지 알고 싶어서예요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "d",
+     "title": "At the Lost and Found",
+     "text": "Student: Excuse me. I have lost my blue umbrella.\nTeacher: When did you lose it?\nStudent: I think I left it in the cafeteria on Monday. I have looked for it everywhere since then.\nTeacher: Have you checked the library?\nStudent: Yes, I have. It isn't there.\nTeacher: Let me see. Someone has brought in a red one and a black one, but no blue one.\nStudent: Oh, that's too bad.\nTeacher: Don't worry. I will tell the cafeteria staff. Please come back on Friday.\nStudent: Thank you very much.",
+     "qs": [
+      {
+       "q": "Where does the student think he left his umbrella?",
+       "o": [
+        "In the library",
+        "On the bus",
+        "In the cafeteria",
+        "In the gym"
+       ],
+       "a": 2,
+       "why": "월요일에 구내식당에 두고 온 것 같다고 했어요."
+      },
+      {
+       "q": "Which place has the student already checked?",
+       "o": [
+        "The gym",
+        "The library",
+        "The office",
+        "The playground"
+       ],
+       "a": 1,
+       "why": "Have you checked the library? 질문에 Yes, I have라고 답했어요."
+      },
+      {
+       "q": "What umbrellas has someone brought in?",
+       "o": [
+        "A red one and a black one",
+        "A blue one and a red one",
+        "A black one only",
+        "A blue one only"
+       ],
+       "a": 0,
+       "why": "빨간 우산과 검은 우산이 들어왔지만 파란 우산은 없다고 했어요."
+      },
+      {
+       "q": "What will the teacher do?",
+       "o": [
+        "Buy a new umbrella",
+        "Check the library",
+        "Call the student's mother",
+        "Tell the cafeteria staff"
+       ],
+       "a": 3,
+       "why": "선생님은 구내식당 직원에게 알리겠다고 했어요."
+      }
+     ],
+     "std": [
+      "9영01-02"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "already",
+     "pos": "adv",
+     "ko": "이미",
+     "ex": "I have already eaten dinner.",
+     "exko": "나는 이미 저녁을 먹었어요.",
+     "z": [
+      "tomorrow",
+      "soon",
+      "tonight"
+     ],
+     "syn": [],
+     "sp": [
+      "allready",
+      "alredy",
+      "alreddy"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "recently",
+     "pos": "adv",
+     "ko": "최근에",
+     "ex": "Our school has recently built a new gym.",
+     "exko": "우리 학교는 최근에 새 체육관을 지었어요.",
+     "z": [
+      "tomorrow",
+      "yesterday",
+      "tonight"
+     ],
+     "syn": [],
+     "sp": [
+      "resently",
+      "recentely",
+      "recenly"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "ever",
+     "pos": "adv",
+     "ko": "한 번이라도",
+     "ex": "Have you ever visited a farm?",
+     "exko": "농장에 가 본 적이 있나요?",
+     "z": [
+      "yesterday",
+      "soon",
+      "tomorrow"
+     ],
+     "syn": [],
+     "sp": [
+      "evre",
+      "evar",
+      "eaver"
+     ]
+    }
+   ]
+  }
+ ]
+}
