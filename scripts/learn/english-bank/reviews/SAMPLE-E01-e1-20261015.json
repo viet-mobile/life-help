@@ -1,0 +1,47 @@
+{
+ "packet": "E01-e1",
+ "reviewer": "AI (Claude) sample review, independent of the author; not a native-speaker or teacher review",
+ "scope": {
+  "notes": "Findings of the 2026-10-15 stratified sample review (799 of 3,581 E-packet questions, 5 reviewers); patches applied by apply-review.mjs"
+ },
+ "patches": [
+  {
+   "item": "04d552ae",
+   "op": "set",
+   "set": {
+    "ko": "안녕",
+    "exko": "엄마, 안녕! 내일 만나요."
+   },
+   "why": "gloss and example translation disagreed (안녕히 가세요 / 안녕히 계세요)",
+   "severity": "minor"
+  },
+  {
+   "item": "4cc66f84",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "What is your ___? (네 이름이 뭐니?)",
+     "ok": "name",
+     "wr": [
+      "bag",
+      "desk",
+      "pen"
+     ]
+    }
+   },
+   "why": "cloze had no context; bag/desk/pen are grammatically possible",
+   "severity": "minor"
+  },
+  {
+   "item": "9a6b1cf8",
+   "op": "set",
+   "set": {
+    "ko": "좋은"
+   },
+   "why": "nice was glossed 친절한 but the example means 반가운",
+   "severity": "minor"
+  }
+ ],
+ "ok": 0,
+ "criteria": "answer key, single correct answer, natural English, correct Korean, explanation consistent"
+}

@@ -17,7 +17,7 @@
     "deploy": "node scripts/learn/build-content-assets.mjs && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:learn": "vitest run",
     "test:learn:db": "node scripts/test_learning_migration_db.mjs",

@@ -90,11 +90,13 @@ const defs: Record<QuestionType, QuestionTypeDef> = {
       r.every((id) => (q.options ?? []).some((o) => o.id === id))
         ? null
         : "invalid_order",
-    check: (k, r) =>
-      k.kind === "order" &&
-      Array.isArray(r) &&
-      r.length === k.ids.length &&
-      r.every((id, i) => id === k.ids[i]),
+    // Same id order, or the same WORDS in the same order: a sentence with a repeated word ("I think I can") has two interchangeable tiles.
+    check: (k, r, q) => {
+      if (k.kind !== "order" || !Array.isArray(r) || r.length !== k.ids.length) return false;
+      if (r.every((id, i) => id === k.ids[i])) return true;
+      const text = (id: string) => (q.options ?? []).find((o) => o.id === id)?.text;
+      return r.every((id, i) => { const a = text(id), b = text(k.ids[i]); return a !== undefined && a === b; });
+    },
   },
 };
 

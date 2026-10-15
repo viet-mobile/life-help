@@ -124,7 +124,7 @@ for (const { skill, packet, item } of valid) {
     const wide = (wordsOfGroup[groupOf(skill)] ?? []).filter((x) => x.pos === item.pos);
     const nearOk = (c) => c.en !== item.en && norm(c.ko) !== norm(item.ko) && !subOf(c.ko, item.ko) && !(item.syn ?? []).map(norm).includes(norm(c.en)) && !(c.syn ?? []).map(norm).includes(norm(item.en));
     const pickN = (qid) => { const a = pickOthers(qid, same, nearOk, 3); return a.length === 3 ? a : [...a, ...pickOthers(qid + "+", wide, (c) => nearOk(c) && !a.includes(c), 3 - a.length)]; };
-    const hintPos = `이 단어는 ${POS[item.pos]}예요.`;
+    const posKo = POS[item.pos]; const hintPos = `이 ${posKo === "표현" ? "말" : "단어"}는 ${posKo}${(posKo.charCodeAt(posKo.length - 1) - 0xac00) % 28 === 0 ? "예요" : "이에요"}.`;
     const expl = `“${item.en}” → “${item.ko}”. 예문: ${item.ex} (${item.exko})${item.note ? ` ${item.note}` : ""}`;
     let qid = `eb-${id}-enko`, o = pickN(qid);
     if (o.length === 3) { const r = shuffled(qid, [item.ko, ...o.map((x) => x.ko)]); push(skill, packet, item, "enko", mk(skill, qid, { skillId: skill, difficulty: d, prompt: `영어 단어 “${item.en}”의 뜻으로 알맞은 것은?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `예문: ${item.ex}`], explanation: expl })); }
@@ -144,7 +144,7 @@ for (const { skill, packet, item } of valid) {
       qid = `eb-${id}-order`;
       const ids = toks.map((_, i) => `w${i + 1}`); const rot = 1 + (hash(qid) % (ids.length - 1));
       const shown = ids.map((_, i) => ids[(i * 5 + rot) % ids.length]); const uniq = new Set(shown).size === ids.length ? shown : ids.map((_, i) => ids[(i + rot) % ids.length]);
-      push(skill, packet, item, "order", { id: qid, site: "english", type: "ordering", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 50, status: "DRAFT", difficulty: clamp(d + 1), prompt: `단어를 올바른 순서로 배열하세요. (${item.ko})`, options: uniq.map((w) => ({ id: w, text: toks[Number(w.slice(1)) - 1] })), answer: { kind: "order", ids }, hints: ["문장은 주어로 시작해요.", `첫 단어는 “${toks[0]}”예요.`], explanation: expl });
+      push(skill, packet, item, "order", { id: qid, site: "english", type: "ordering", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 50, status: "DRAFT", difficulty: clamp(d + 1), prompt: `단어를 올바른 순서로 배열하세요. (${item.ko})`, options: uniq.map((w) => ({ id: w, text: toks[Number(w.slice(1)) - 1] })), answer: { kind: "order", ids }, hints: ["문장의 첫 낱말은 대문자로 시작해요.", `첫 단어는 “${toks[0]}”예요.`], explanation: expl });
     }
   } else if (item.k === "r" || item.k === "d") {
     item.qs.forEach((q, i) => {

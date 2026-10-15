@@ -1,0 +1,20 @@
+{
+ "packet": "E14-e5",
+ "reviewer": "AI (Claude) sample review, independent of the author; not a native-speaker or teacher review",
+ "scope": {
+  "notes": "Findings of the 2026-10-15 stratified sample review (799 of 3,581 E-packet questions, 5 reviewers); patches applied by apply-review.mjs"
+ },
+ "patches": [
+  {
+   "item": "e2f0ad7b",
+   "op": "set",
+   "set": {
+    "rule": "비교하는 대상 앞에는 than을 써요. cheap처럼 짧은 형용사는 -er을 붙이므로 more cheap이나 cheapest than은 틀려요."
+   },
+   "why": "rule mentioned 'then', which is not an option",
+   "severity": "minor"
+  }
+ ],
+ "ok": 0,
+ "criteria": "answer key, single correct answer, natural English, correct Korean, explanation consistent"
+}

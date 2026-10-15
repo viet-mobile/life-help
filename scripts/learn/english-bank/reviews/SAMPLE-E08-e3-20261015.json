@@ -1,0 +1,130 @@
+{
+ "packet": "E08-e3",
+ "reviewer": "AI (Claude) sample review, independent of the author; not a native-speaker or teacher review",
+ "scope": {
+  "notes": "Findings of the 2026-10-15 stratified sample review (799 of 3,581 E-packet questions, 5 reviewers); patches applied by apply-review.mjs"
+ },
+ "patches": [
+  {
+   "item": "3a536bdc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "글쓴이의 가족은 언제 바닷가에 갔나요?",
+      "o": [
+       "지난 일요일",
+       "지난 토요일",
+       "다음 주 토요일",
+       "이번 주 금요일"
+      ],
+      "a": 1,
+      "why": "Last Saturday라고 했으므로 지난 토요일이에요."
+     },
+     {
+      "q": "남동생은 무엇을 모았나요?",
+      "o": [
+       "조개껍데기",
+       "돌멩이",
+       "나뭇가지",
+       "물고기"
+      ],
+      "a": 0,
+      "why": "My little brother collected shells라고 했어요. shells는 조개껍데기예요."
+     },
+     {
+      "q": "점심으로 아빠는 무엇을 요리했나요?",
+      "o": [
+       "고기",
+       "국수",
+       "생선",
+       "달걀"
+      ],
+      "a": 2,
+      "why": "Dad cooked fish for lunch라고 했어요. fish는 생선이에요."
+     },
+     {
+      "q": "가족은 바닷가에서 언제까지 있었나요?",
+      "o": [
+       "점심시간까지",
+       "해가 질 때까지",
+       "한밤중까지",
+       "비가 올 때까지"
+      ],
+      "a": 1,
+      "why": "until sunset은 해가 질 때까지라는 뜻이에요."
+     },
+     {
+      "q": "We walked를 지금 일어나는 일로 바꾸어 We ___ 라고 쓸 때(현재형) 알맞은 낱말은?",
+      "o": [
+       "walk",
+       "walks",
+       "walking",
+       "walkes"
+      ],
+      "a": 0,
+      "why": "walked는 walk의 과거형이에요. 주어 We에는 -s 없이 walk를 써요."
+     }
+    ]
+   },
+   "why": "'walked' present form was ambiguous without the subject (walk / walks)",
+   "severity": "major"
+  },
+  {
+   "item": "c9f69926",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "글쓴이가 버스를 놓친 이유는 무엇인가요?",
+      "o": [
+       "늦게 일어나서",
+       "길이 막혀서",
+       "정류장을 몰라서",
+       "숙제를 하지 않아서"
+      ],
+      "a": 0,
+      "why": "I woke up late, so I missed the bus라고 했어요. so가 이유와 결과를 이어 줘요."
+     },
+     {
+      "q": "글쓴이는 점심에 무엇을 먹었나요?",
+      "o": [
+       "김밥",
+       "국수",
+       "피자",
+       "샌드위치"
+      ],
+      "a": 1,
+      "why": "At lunch I ate noodles라고 했어요. noodles는 국수예요."
+     },
+     {
+      "q": "선생님은 늦은 글쓴이에게 어떻게 했나요?",
+      "o": [
+       "화를 내며 교실 밖에 서 있게 했어요.",
+       "다음부터 오지 말라고 말했어요.",
+       "웃으며 걱정하지 말라고 했어요.",
+       "늦은 이유를 적어 오라고 했어요."
+      ],
+      "a": 2,
+      "why": "My teacher smiled and told me not to worry라고 했어요."
+     },
+     {
+      "q": "글쓴이는 학교 가는 날 밤에 보통 어떻게 하나요?",
+      "o": [
+       "늦게까지 TV를 봐요.",
+       "친구와 오래 전화해요.",
+       "책을 읽다가 밤을 새워요.",
+       "일찍 자요."
+      ],
+      "a": 3,
+      "why": "I go to bed early on school nights는 현재형이라서 평소 습관을 말해요."
+     }
+    ]
+   },
+   "why": "questions named Mina but the diary text never does",
+   "severity": "major"
+  }
+ ],
+ "ok": 0,
+ "criteria": "answer key, single correct answer, natural English, correct Korean, explanation consistent"
+}
