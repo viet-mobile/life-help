@@ -1,0 +1,47 @@
+{
+ "packet": "E18-e6",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "711772bd",
+   "op": "set",
+   "set": {
+    "q": "-less는 '~이 없는'이라는 뜻이에요. 'without hope'를 뜻하는 낱말은?",
+    "o": [
+     "helpless",
+     "hopeless",
+     "careless",
+     "homeless"
+    ],
+    "a": 1,
+    "why": "hope에 -less를 붙인 hopeless는 '희망이 없는'이라는 뜻이에요. helpless는 도움이 없는, careless는 조심성이 없는, homeless는 집이 없는 뜻이에요."
+   },
+   "why": "Options (identity field o) changed to remove the suffix leak; q unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "b3295e81",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Adverb can precede the verb, so ordering is ambiguous.",
+   "severity": "minor"
+  },
+  {
+   "item": "707bc3df",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Fronted locative phrase gives a second valid order.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 125,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

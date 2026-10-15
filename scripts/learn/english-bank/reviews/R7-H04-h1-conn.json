@@ -1,0 +1,1261 @@
+{
+ "packet": "H04-h1-conn",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "8d612fcc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Therefore / (B) For example",
+       "(A) However / (B) Otherwise",
+       "(A) Similarly / (B) In contrast",
+       "(A) However / (B) For example"
+      ],
+      "a": 3,
+      "why": "장점 뒤에 단점이 오므로 However, 단점의 구체적 예는 For example이에요."
+     },
+     {
+      "q": "What can shoppers NOT do when buying online?",
+      "o": [
+       "Compare prices from different stores quickly",
+       "Read reviews written by other customers",
+       "Try on or test the products before paying",
+       "Have items delivered to their homes"
+      ],
+      "a": 2,
+      "why": "온라인에서는 구입 전에 만지거나 입어 볼 수 없어요."
+     },
+     {
+      "q": "What does \"so\" in the last sentence show?",
+      "o": [
+       "A contrast between stores and customers",
+       "A result: free returns make shoppers feel safer",
+       "An example of an unsafe product",
+       "The order of two events"
+      ],
+      "a": 1,
+      "why": "so는 결과를 나타내요: 무료 반품 덕분에 더 안심하고 주문해요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Online shopping is convenient but has some drawbacks",
+       "Stores should stop selling clothes on the Internet",
+       "Most shoppers prefer paying in cash at a store",
+       "Customer reviews are always false and cannot be trusted"
+      ],
+      "a": 0,
+      "why": "온라인 쇼핑의 편리함과 단점을 함께 다뤄요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "c7142c70",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Therefore / (B) Instead",
+       "(A) However / (B) For example",
+       "(A) Similarly / (B) In addition",
+       "(A) However / (B) Instead"
+      ],
+      "a": 3,
+      "why": "혹에 물이 없다는 반전은 However, 대신 지방이 있다는 것은 Instead예요."
+     },
+     {
+      "q": "What does the hump of a camel store?",
+      "o": [
+       "Water",
+       "Sand",
+       "Fat",
+       "Air"
+      ],
+      "a": 2,
+      "why": "혹에는 지방이 저장되어 있어요."
+     },
+     {
+      "q": "What does the last sentence do?",
+      "o": [
+       "It adds a new and unrelated fact",
+       "It restates the idea with a simple comparison",
+       "It contradicts the previous sentence",
+       "It describes the cause of a problem"
+      ],
+      "a": 1,
+      "why": "In other words는 앞 내용을 쉬운 비유로 다시 말해요."
+     },
+     {
+      "q": "Why are a camel's feet wide and flat?",
+      "o": [
+       "They stop the camel from sinking into the sand",
+       "They help the camel store water for long trips",
+       "They keep the camel's body cool in the afternoon heat",
+       "They help the camel find food and water far away"
+      ],
+      "a": 0,
+      "why": "넓고 평평한 발은 모래에 빠지지 않게 해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "9bcf4672",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which expression best fills (A)?",
+      "o": [
+       "Instead of",
+       "Because of",
+       "In spite of",
+       "According to"
+      ],
+      "a": 0,
+      "why": "포기하는 대신 녹음을 해 보라는 뜻이므로 Instead of가 알맞아요. 뒤에 동명사(giving up)가 와요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why the guitar is the hardest instrument for young beginners",
+       "How to choose a good guitar teacher for your children",
+       "How one simple habit helped the writer stay positive",
+       "The writer's plan to give up music after six months"
+      ],
+      "a": 2,
+      "why": "녹음하는 작은 습관이 학습 태도를 바꿨다는 내용이에요."
+     },
+     {
+      "q": "What does the teacher suggest?",
+      "o": [
+       "Practicing for two hours a day",
+       "Recording a practice session once a week",
+       "Changing to an easier instrument",
+       "Stopping until the fingers heal"
+      ],
+      "a": 1,
+      "why": "일주일에 한 번 녹음해 보라고 했어요."
+     },
+     {
+      "q": "How has the writer's attitude changed?",
+      "o": [
+       "From dreading practice to looking forward to it",
+       "From loving practice to avoiding it almost every day",
+       "From teaching other students to learning alone",
+       "From playing the guitar to playing the piano"
+      ],
+      "a": 0,
+      "why": "연습이 두렵던 상태에서 기대하는 상태로 바뀌었어요."
+     },
+     {
+      "q": "In the passage, \"discouraged\" is closest in meaning to",
+      "o": [
+       "angry and loud at the teacher",
+       "tired from walking a long way",
+       "ready to teach other beginners",
+       "less confident and hopeful"
+      ],
+      "a": 3,
+      "why": "discouraged는 낙담한, 의욕을 잃은이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "461b27e4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In contrast / (B) Thanks to",
+       "(A) In addition / (B) Despite",
+       "(A) In addition / (B) Thanks to",
+       "(A) Otherwise / (B) Because"
+      ],
+      "a": 2,
+      "why": "대여 서비스에 수업을 덧붙이는 In addition, 서비스 덕분에는 Thanks to예요."
+     },
+     {
+      "q": "Which word best fills (C)?",
+      "o": [
+       "Therefore",
+       "However",
+       "For instance",
+       "Similarly"
+      ],
+      "a": 1,
+      "why": "도서관이 불필요하다는 믿음과 반대되는 사실을 말하므로 However예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Modern libraries offer many services beyond books",
+       "Libraries should go back to lending only printed books",
+       "Free classes in coding and cooking are a waste of money",
+       "The Internet has closed most libraries"
+      ],
+      "a": 0,
+      "why": "현대 도서관이 책 외에도 다양한 서비스를 제공한다는 내용이에요."
+     },
+     {
+      "q": "According to the passage, what do many libraries now lend besides books?",
+      "o": [
+       "Winter coats, shoes, and school uniforms for children",
+       "Tools, musical instruments, and board games",
+       "Cars, boats, and small airplanes to ride",
+       "Houses, gardens, and farm animals"
+      ],
+      "a": 1,
+      "why": "도서관은 책 말고도 도구, 악기, 보드게임을 빌려줘요."
+     },
+     {
+      "q": "What can be inferred about libraries?",
+      "o": [
+       "They no longer need librarians or other staff",
+       "They have replaced schools in most of the large cities",
+       "They still serve people who lack resources at home",
+       "They only help young children who cannot read"
+      ],
+      "a": 2,
+      "why": "집에 자원이 없는 사람들에게 여전히 필요하다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "5ff0323c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Moreover / (B) For this reason",
+       "(A) However / (B) For this reason",
+       "(A) However / (B) Similarly",
+       "(A) For example / (B) Otherwise"
+      ],
+      "a": 1,
+      "why": "장점 뒤에 문제를 말하므로 However, 문제 때문에 지원금이 있으므로 For this reason이에요."
+     },
+     {
+      "q": "Why are the running costs of electric cars low?",
+      "o": [
+       "Electricity is usually cheaper than gasoline",
+       "They never need any repairs or new tires",
+       "Governments pay for most of the electricity used",
+       "They are much smaller and lighter than other cars"
+      ],
+      "a": 0,
+      "why": "전기가 보통 휘발유보다 싸기 때문이에요."
+     },
+     {
+      "q": "In the last sentence, \"these obstacles\" refers to",
+      "o": [
+       "exhaust and dirty air",
+       "cheap electricity and low running costs",
+       "government money and expert opinions",
+       "high prices and a lack of charging stations"
+      ],
+      "a": 3,
+      "why": "these obstacles는 앞에서 말한 높은 가격과 부족한 충전소를 가리켜요."
+     },
+     {
+      "q": "What do experts expect?",
+      "o": [
+       "Charging stations will disappear from rural areas",
+       "Gasoline will become cheaper than electricity again",
+       "Cheaper batteries will make the problems smaller",
+       "Governments will stop giving money to car buyers soon"
+      ],
+      "a": 2,
+      "why": "배터리가 싸지면 장애물이 점차 사라질 것이라고 해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "e79c78eb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where would the following sentence best fit?\n\"That is why it can be kept for months in a cool place.\"",
+      "o": [
+       "[1]",
+       "[4]",
+       "[2]",
+       "[3]"
+      ],
+      "a": 1,
+      "why": "That is why 앞에는 보존이 가능한 이유(산이 부패를 막음)가 와야 하므로 [4]가 알맞아요."
+     },
+     {
+      "q": "Which word could replace \"because\" in the last sentence without changing the meaning?",
+      "o": [
+       "since",
+       "although",
+       "unless",
+       "but"
+      ],
+      "a": 0,
+      "why": "because는 이유를 나타내며 since로 바꿔 쓸 수 있어요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why Koreans eat kimchi at every meal",
+       "How to salt vegetables at home",
+       "Which bacteria are harmful to the stomach",
+       "How fermentation gives kimchi its taste and helps it last"
+      ],
+      "a": 3,
+      "why": "발효가 김치의 맛과 보존에 미치는 영향을 설명해요."
+     },
+     {
+      "q": "What does lactic acid do to kimchi?",
+      "o": [
+       "It makes it sweeter, softer, and easier to chew",
+       "It turns the vegetables bright red during storage",
+       "It makes it sour and protects it from spoiling",
+       "It keeps the vegetables cold while they are stored"
+      ],
+      "a": 2,
+      "why": "산은 신맛을 내고 부패를 막아 줘요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "40329dec",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which set best fills (A), (B), and (C)?",
+      "o": [
+       "(A) However / (B) Moreover / (C) Therefore",
+       "(A) Moreover / (B) However / (C) Therefore",
+       "(A) Therefore / (B) Moreover / (C) However",
+       "(A) Moreover / (B) Therefore / (C) However"
+      ],
+      "a": 1,
+      "why": "시간 여유를 덧붙이는 Moreover, 나이 제한이라는 걸림돌을 말하는 However, 그래서 문의하는 Therefore예요."
+     },
+     {
+      "q": "Why did Hyun-woo write this letter?",
+      "o": [
+       "To ask whether he can volunteer at the museum",
+       "To apply for a paid job as a guide at the museum",
+       "To complain about a broken museum exhibit",
+       "To invite the museum staff to visit his school club"
+      ],
+      "a": 0,
+      "why": "박물관 봉사 기회에 대해 문의하는 편지예요."
+     },
+     {
+      "q": "When is Hyun-woo free to volunteer?",
+      "o": [
+       "On weekday evenings and Friday nights only",
+       "During the winter holidays and on Sundays",
+       "Every day after school and also on Sundays and holidays",
+       "On Saturday mornings and during summer holidays"
+      ],
+      "a": 3,
+      "why": "토요일 오전과 여름방학에 시간이 된다고 했어요."
+     },
+     {
+      "q": "Why does he mention November?",
+      "o": [
+       "The museum will open then",
+       "His school club meets then",
+       "He will reach the minimum age then",
+       "The summer holidays will end then"
+      ],
+      "a": 2,
+      "why": "11월에 16세가 되어 최소 연령 조건을 충족해요."
+     },
+     {
+      "q": "What is the tone of the letter?",
+      "o": [
+       "Funny and casual",
+       "Polite and formal",
+       "Angry and demanding",
+       "Sad and hopeless"
+      ],
+      "a": 1,
+      "why": "정중하고 격식 있는 어조예요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "07b4587b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) so / (B) However",
+       "(A) because / (B) However",
+       "(A) so / (B) For example",
+       "(A) but / (B) Therefore"
+      ],
+      "a": 0,
+      "why": "해가 다른 시각에 도달한 결과가 so, 옛 방식이 철도 때문에 문제가 된 대조가 However예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to make a clock that uses the sun",
+       "Why Seoul is ahead of every other city",
+       "How railways were built in the 1800s",
+       "Why time zones exist and how they came to be shared"
+      ],
+      "a": 3,
+      "why": "시간대가 생긴 이유와 표준 시간대가 정해진 과정을 설명해요."
+     },
+     {
+      "q": "Why was the old system confusing for train passengers?",
+      "o": [
+       "Trains never left on time from any station",
+       "The train stations were too far from the towns",
+       "They had to adjust their watch at every station",
+       "Tickets showed the wrong date for every single trip"
+      ],
+      "a": 2,
+      "why": "역마다 시계를 맞춰야 했기 때문이에요."
+     },
+     {
+      "q": "In the passage, \"standard\" is closest in meaning to",
+      "o": [
+       "very expensive",
+       "the same for everyone",
+       "difficult to read",
+       "popular with travelers"
+      ],
+      "a": 1,
+      "why": "standard time은 모두에게 같은 표준 시간을 뜻해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "d1b72eef",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) By contrast",
+       "(A) Likewise / (B) By contrast",
+       "(A) However / (B) Likewise",
+       "(A) Therefore / (B) For example"
+      ],
+      "a": 0,
+      "why": "닮은 점을 말한 뒤 차이를 말하므로 However, 두 도시의 대비는 By contrast예요."
+     },
+     {
+      "q": "What does the second sentence do?",
+      "o": [
+       "It explains why the two kinds of markets are so different",
+       "It gives an example of a popular dish in Bangkok",
+       "It tells what happens at the markets in the morning hours",
+       "It describes ways the two kinds of markets are similar"
+      ],
+      "a": 3,
+      "why": "Both ... and both ... 로 공통점을 설명해요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Bangkok has better street food than Seoul in every way",
+       "Street food is unhealthy for communities and should be limited",
+       "Street food markets in two regions are alike and different",
+       "Markets in Korea only sell fried and grilled snacks to tourists"
+      ],
+      "a": 2,
+      "why": "두 시장의 공통점과 차이점을 비교하는 글이에요."
+     },
+     {
+      "q": "What does \"Despite these differences\" suggest about the writer's view?",
+      "o": [
+       "The differences are too big for the two to be compared",
+       "The markets share an important common value",
+       "One market should copy the other one's best dishes",
+       "Tourists dislike both kinds of markets very much"
+      ],
+      "a": 1,
+      "why": "차이에도 불구하고 공동체를 모은다는 공통점을 강조해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "30af1a70",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) As a result",
+       "(A) Therefore / (B) As a result",
+       "(A) However / (B) For instance",
+       "(A) For example / (B) Otherwise"
+      ],
+      "a": 0,
+      "why": "임시용이었지만 실제로는 남는다는 대조(However), 위험의 결과로 계획을 세우는 As a result예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "The history of the first satellite launched in 1957",
+       "How scientists track objects larger than a tennis ball",
+       "Why spacecraft must travel at such a high speed in orbit",
+       "The growing problem of space junk and efforts to solve it"
+      ],
+      "a": 3,
+      "why": "우주 쓰레기 문제와 대응 노력을 다뤄요."
+     },
+     {
+      "q": "Why can a tiny fragment damage a spacecraft?",
+      "o": [
+       "It is made of very heavy metal",
+       "It is always as sharp as a knife",
+       "It moves at an extremely high speed",
+       "It is hotter than the surface of the sun"
+      ],
+      "a": 2,
+      "why": "시속 약 28,000km로 움직이기 때문이에요."
+     },
+     {
+      "q": "What are space agencies planning?",
+      "o": [
+       "A ban on all satellite launches from every country",
+       "Satellites that can be removed from orbit after use",
+       "Larger satellites that stay in orbit for many more years",
+       "A new way to track even the smallest pieces of junk"
+      ],
+      "a": 1,
+      "why": "임무 후 궤도에서 제거할 수 있는 위성을 계획해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "513d8938",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which set best fills (A), (B), and (C)?",
+      "o": [
+       "(A) However / (B) In contrast / (C) In short",
+       "(A) In short / (B) However / (C) In contrast",
+       "(A) For example / (B) In contrast / (C) However",
+       "(A) However / (B) Therefore / (C) For example"
+      ],
+      "a": 0,
+      "why": "다른 견해와 대비되는 However, 정직한 친구와 대비되는 In contrast, 결론의 In short예요."
+     },
+     {
+      "q": "What is the purpose of the first three sentences?",
+      "o": [
+       "To list all of the writer's favorite friends from school",
+       "To prove that honesty is not important for friendship",
+       "To describe a recent argument between two friends",
+       "To present other views before stating the writer's own"
+      ],
+      "a": 3,
+      "why": "다른 사람들의 의견을 먼저 제시한 뒤 자신의 의견을 말해요."
+     },
+     {
+      "q": "According to the writer, what is the most important quality of a friend?",
+      "o": [
+       "Having the same hobbies",
+       "Always being available",
+       "Honesty",
+       "Being very funny"
+      ],
+      "a": 2,
+      "why": "필자는 정직을 가장 중요하게 봐요."
+     },
+     {
+      "q": "What does the writer say about a friend who only says what you want to hear?",
+      "o": [
+       "Such a friend is the best kind of friend to have",
+       "Such a friend is pleasant but not fully trustworthy",
+       "Such a friend always tells you the whole truth",
+       "Such a friend is difficult to find in school"
+      ],
+      "a": 1,
+      "why": "듣기 좋은 말만 하면 즐겁지만 완전히 믿을 수는 없다고 했어요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "6df20c04",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) On the other hand / (B) but",
+       "(A) For example / (B) but",
+       "(A) On the other hand / (B) so",
+       "(A) Therefore / (B) because"
+      ],
+      "a": 0,
+      "why": "닫힌 전시관과 대비되는 열린 전시관은 On the other hand, 허용과 제한을 잇는 접속어는 but이에요."
+     },
+     {
+      "q": "What is the purpose of this notice?",
+      "o": [
+       "To advertise a new job at the museum for students",
+       "To announce that the whole museum is closing forever soon",
+       "To ask visitors to donate old documents to the museum",
+       "To give visitors useful information about the museum"
+      ],
+      "a": 3,
+      "why": "방문객에게 박물관 이용 정보를 알려 줘요."
+     },
+     {
+      "q": "Who pays half price?",
+      "o": [
+       "All children under seven who come with a parent",
+       "Visitors who bring a camera to the whale exhibit",
+       "Students aged seven to eighteen with a school ID",
+       "Adults who visit the museum on Sundays only"
+      ],
+      "a": 2,
+      "why": "7~18세 학생은 학생증이 있으면 반값이에요."
+     },
+     {
+      "q": "Which statement is true?",
+      "o": [
+       "The museum is open every day of the week",
+       "The Space Hall will reopen after June 30",
+       "The Ocean Gallery is on the first floor",
+       "Photography is not allowed anywhere"
+      ],
+      "a": 1,
+      "why": "우주관은 6월 30일까지 수리로 닫혀요. 박물관은 화~일 개방, 해양관은 2층이에요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "68ea385b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Otherwise / (B) However",
+       "(A) Otherwise / (B) Therefore",
+       "(A) Similarly / (B) However",
+       "(A) In contrast / (B) For example"
+      ],
+      "a": 0,
+      "why": "천천히 늘리지 않으면(Otherwise) 부상, 거리를 늘리는 단계와 대비되는 마지막 주(However)예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why most marathons are held early in the morning",
+       "How to choose the best running shoes for a marathon",
+       "The history of long-distance racing in many countries",
+       "How runners should plan their training for a marathon"
+      ],
+      "a": 3,
+      "why": "마라톤 준비 훈련 계획을 설명하는 글이에요."
+     },
+     {
+      "q": "What do runners do in the final weeks?",
+      "o": [
+       "They run thirty kilometers every day",
+       "They stop all exercise for a month",
+       "They run less and rest",
+       "They add a second long run"
+      ],
+      "a": 2,
+      "why": "마지막 몇 주에는 거리를 줄이고 쉬어요."
+     },
+     {
+      "q": "Which step comes right after building weekly distance slowly?",
+      "o": [
+       "Cutting the distance and resting",
+       "Adding a long run on weekends",
+       "Running twenty kilometers suddenly",
+       "Running the actual race"
+      ],
+      "a": 1,
+      "why": "약 두 달 뒤 주말 장거리 달리기를 추가해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "2c1739f8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) For example / (B) Similarly",
+       "(A) However / (B) Similarly",
+       "(A) For example / (B) In contrast",
+       "(A) Therefore / (B) Otherwise"
+      ],
+      "a": 0,
+      "why": "간단한 방법의 예(For example)와 또 다른 비슷한 방법(Similarly)이에요."
+     },
+     {
+      "q": "What does \"so\" in the second-to-last sentence show?",
+      "o": [
+       "A contrast with the idea of saving water",
+       "An example of a household habit that saves water",
+       "The order of two actions in the kitchen",
+       "A result of farms and factories using more water"
+      ],
+      "a": 3,
+      "why": "농장과 공장이 더 많이 쓰므로 개인의 노력만으로는 부족하다는 결과예요."
+     },
+     {
+      "q": "What is the writer's conclusion?",
+      "o": [
+       "Households alone can solve the whole water problem",
+       "Farms and factories should stop using water completely",
+       "Both individuals and large water users need to act",
+       "Fresh water will never run out in most countries"
+      ],
+      "a": 2,
+      "why": "개인뿐 아니라 정부와 기업도 변해야 한다고 결론지어요."
+     },
+     {
+      "q": "About how much of the world's water is fresh?",
+      "o": [
+       "Thirty percent",
+       "Three percent",
+       "Half",
+       "Almost all of it"
+      ],
+      "a": 1,
+      "why": "세계 물의 약 3퍼센트만 담수예요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "f8efa69a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) As a result / (B) Eventually",
+       "(A) In contrast / (B) Eventually",
+       "(A) As a result / (B) For example",
+       "(A) Otherwise / (B) Meanwhile"
+      ],
+      "a": 0,
+      "why": "점자의 효과를 결과로 이어 주는 As a result, 시간이 지나 퍼졌다는 Eventually예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why large printed books were popular in schools for the blind",
+       "How to write quickly with a simple tool at school",
+       "Why blind students prefer listening to stories to reading",
+       "How a new system of dots made reading easier for blind people"
+      ],
+      "a": 3,
+      "why": "점자가 시각장애인의 읽기를 쉽게 만든 과정을 다뤄요."
+     },
+     {
+      "q": "Why were the old books hard to use?",
+      "o": [
+       "They were printed in many different languages at once",
+       "They had no raised letters for fingers to feel",
+       "They were huge, expensive, and slow to read",
+       "They were only meant for young children in schools"
+      ],
+      "a": 2,
+      "why": "크고 비싸며 읽는 속도가 느렸어요."
+     },
+     {
+      "q": "In the passage, \"recognize\" is closest in meaning to",
+      "o": [
+       "destroy",
+       "identify",
+       "borrow",
+       "ignore"
+      ],
+      "a": 1,
+      "why": "recognize는 알아보다, 식별하다라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "d990edd1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"Nevertheless\" signal?",
+      "o": [
+       "A contrast with the benefits just mentioned",
+       "An example of the benefits that robots bring",
+       "A result of the robots' high accuracy in surgery",
+       "A time order of two events in the hospital"
+      ],
+      "a": 0,
+      "why": "Nevertheless는 앞의 장점과 대비되는 우려를 이끌어요."
+     },
+     {
+      "q": "What is the function of the sentence \"A machine cannot comfort a frightened child\"?",
+      "o": [
+       "It explains how robots carry medicine",
+       "It shows that nurses dislike robots",
+       "It repeats the benefits for patients",
+       "It gives an example of a limit of robots"
+      ],
+      "a": 3,
+      "why": "로봇의 한계를 보여 주는 예시 문장이에요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Robots should perform all operations without any human help",
+       "Hospitals cannot afford any machines because they cost too much",
+       "Robots can help in hospitals but should not replace staff",
+       "Nurses prefer working with robots to working with doctors"
+      ],
+      "a": 2,
+      "why": "로봇은 도움이 되지만 의료진을 대체해서는 안 된다는 내용이에요."
+     },
+     {
+      "q": "Which is mentioned as a benefit of robots?",
+      "o": [
+       "They cost much less than the human staff they would replace",
+       "They cut mistakes and give nurses more time for patients",
+       "They can comfort frightened patients as well as nurses can",
+       "They work for many years without any maintenance or repair"
+      ],
+      "a": 1,
+      "why": "실수를 줄이고 간호사가 환자와 보낼 시간을 늘려 줘요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "733d04b6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does Mina's \"However\" show?",
+      "o": [
+       "She sees a problem with Joon's suggestion",
+       "She agrees completely with Joon",
+       "She gives an example of an exhibition",
+       "She changes the subject"
+      ],
+      "a": 0,
+      "why": "However 뒤에서 박물관이 멀다는 문제점을 말해요."
+     },
+     {
+      "q": "What does \"Besides\" introduce?",
+      "o": [
+       "A reason to choose the science museum instead",
+       "A result of the two-hour bus ride to school",
+       "A new place to visit after the aquarium",
+       "An additional reason in favor of the aquarium"
+      ],
+      "a": 3,
+      "why": "Besides는 수족관을 선택하는 또 하나의 이유(싼 입장권)를 덧붙여요."
+     },
+     {
+      "q": "What do they decide to do?",
+      "o": [
+       "Visit the science museum first",
+       "Cancel the class trip because of the cost",
+       "Propose the aquarium for the class trip",
+       "Ask the teacher to choose the place for them"
+      ],
+      "a": 2,
+      "why": "수족관을 제안하기로 해요."
+     },
+     {
+      "q": "What will Joon do for the proposal?",
+      "o": [
+       "Write the whole proposal",
+       "Add the price list",
+       "Call the aquarium",
+       "Book the bus"
+      ],
+      "a": 1,
+      "why": "Mina가 제안서를 쓰고 Joon이 가격표를 추가해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "eba81b19",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"Meanwhile\" show about Sora's plan?",
+      "o": [
+       "She will write the text while Ethan draws the charts",
+       "She will write the text after the photos are done",
+       "She will not write any text",
+       "She will draw the charts instead of Ethan"
+      ],
+      "a": 0,
+      "why": "Meanwhile은 같은 시간에 다른 일을 한다는 뜻이에요."
+     },
+     {
+      "q": "Why does Sora change the plan for the photos?",
+      "o": [
+       "Dahye does not want to join the group",
+       "The photos are already finished",
+       "Ethan wants to collect them",
+       "Dahye was sick and has not started"
+      ],
+      "a": 3,
+      "why": "Dahye가 아파서 시작하지 못했기 때문이에요."
+     },
+     {
+      "q": "What does Dahye mean by \"Otherwise, I'd be too stressed\"?",
+      "o": [
+       "If Sora forgot to say thank you, she would be very stressed",
+       "If the poster were finished early, she would be very stressed about it",
+       "If she had to collect the photos herself, she would be too stressed",
+       "If Ethan helped her with the layout, she would be very stressed"
+      ],
+      "a": 2,
+      "why": "Otherwise는 '그렇지 않으면', 즉 사진까지 모아야 했다면 부담이 컸을 것이라는 뜻이에요."
+     },
+     {
+      "q": "What will Dahye do for the poster?",
+      "o": [
+       "Draw all of the charts",
+       "Proofread everything at the end",
+       "Write the text for the poster",
+       "Design the layout of the poster"
+      ],
+      "a": 1,
+      "why": "마지막에 전체를 교정하기로 해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "7f03d9ac",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"Instead\" show?",
+      "o": [
+       "The waiter offers a substitute for the sold-out dish",
+       "The waiter refuses to serve the customer any more food",
+       "The customer decides to change to another restaurant",
+       "The waiter repeats the customer's order to check it"
+      ],
+      "a": 0,
+      "why": "Instead는 품절된 메뉴 대신 다른 메뉴를 제안해요."
+     },
+     {
+      "q": "Why does the customer ask about the sauce?",
+      "o": [
+       "The customer dislikes chicken",
+       "The customer wants a cheaper dish",
+       "The customer is in a hurry",
+       "The customer is allergic to nuts"
+      ],
+      "a": 3,
+      "why": "견과류 알레르기가 있기 때문이에요."
+     },
+     {
+      "q": "What does \"Still\" show in the waiter's answer?",
+      "o": [
+       "He agrees that the chicken is unsafe",
+       "He asks the customer to leave",
+       "He offers a solution despite the problem",
+       "He adds a new price"
+      ],
+      "a": 2,
+      "why": "문제가 있어도 해결책(plain gravy)을 제시해요."
+     },
+     {
+      "q": "What will the customer order?",
+      "o": [
+       "Grilled salmon with a side salad and water",
+       "Roast chicken with plain gravy, a side salad, and water",
+       "Roast chicken with nut sauce, a side salad, and water",
+       "Grilled salmon with plain gravy, a side salad, and water"
+      ],
+      "a": 1,
+      "why": "일반 그레이비를 곁들인 로스트 치킨, 샐러드, 물을 주문해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "71d815ba",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why was the cleanup canceled?",
+      "o": [
+       "It rained",
+       "The park was closed",
+       "Few members could come",
+       "Min was at the dentist"
+      ],
+      "a": 0,
+      "why": "비 때문에 취소되었어요."
+     },
+     {
+      "q": "Why does Min prefer the afternoon?",
+      "o": [
+       "He wants to sleep late on Saturday morning this week",
+       "The weather forecast is bad in the morning",
+       "He plays in a soccer match all morning",
+       "He has a dentist appointment in the morning"
+      ],
+      "a": 3,
+      "why": "오전에 치과 예약이 있기 때문이에요."
+     },
+     {
+      "q": "What does \"Moreover\" introduce?",
+      "o": [
+       "A reason to cancel the cleanup again",
+       "A problem with the forecast",
+       "Another reason for choosing the afternoon",
+       "An example of soccer practice"
+      ],
+      "a": 2,
+      "why": "Moreover는 오후가 좋은 또 하나의 이유(더 많은 회원 참여)를 덧붙여요."
+     },
+     {
+      "q": "According to Min, what will happen if more members join?",
+      "o": [
+       "They will finish before lunch",
+       "They can clean a bigger area",
+       "They will skip soccer practice",
+       "They will need a new park"
+      ],
+      "a": 1,
+      "why": "As a result 뒤에서 더 넓은 구역을 청소할 수 있다고 해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "26e06d62",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What example does Jun give of the middle part dragging on?",
+      "o": [
+       "A twenty-minute scene in a train station",
+       "A long conversation about music",
+       "The final scene of the movie",
+       "A scene with too many characters"
+      ],
+      "a": 0,
+      "why": "For instance 뒤에 기차역 장면이 20분 이어졌다는 예가 나와요."
+     },
+     {
+      "q": "What does Yuna's \"Still\" show?",
+      "o": [
+       "She completely agrees with everything that Jun says",
+       "She changes the topic to the music of the film",
+       "She says she did not see the whole movie",
+       "She partly agrees but defends the movie's length"
+      ],
+      "a": 3,
+      "why": "Still은 인정하면서도 반대 의견을 이어 줘요."
+     },
+     {
+      "q": "What does \"so\" show in Jun's last turn?",
+      "o": [
+       "A contrast between the music and the story of the film",
+       "An example of a long scene in the middle",
+       "A result: the music made him forgive the length",
+       "The order in which the two scenes happen"
+      ],
+      "a": 2,
+      "why": "아름다운 음악 때문에 길이를 용서할 수 있었다는 결과예요."
+     },
+     {
+      "q": "What can be inferred about the two speakers?",
+      "o": [
+       "They both hated the whole movie from the start",
+       "They differ on some points but agree on the music",
+       "They both loved every scene of the movie",
+       "They have not decided what movie to watch next week"
+      ],
+      "a": 1,
+      "why": "영화 길이에는 이견이 있지만 음악에는 의견이 같아요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "2944a557",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What problem does the student describe?",
+      "o": [
+       "Long study hours are not improving the grades",
+       "The student has no time to study after school",
+       "The student dislikes the teacher's way of teaching",
+       "The student sleeps too much every night"
+      ],
+      "a": 0,
+      "why": "오래 공부해도 성적이 오르지 않는다고 말해요."
+     },
+     {
+      "q": "What does \"In addition\" add?",
+      "o": [
+       "A reason the student studies late",
+       "An example of a good habit",
+       "A result of sleeping five hours",
+       "Skipping breakfast as another poor habit"
+      ],
+      "a": 3,
+      "why": "In addition은 수면 부족에 더해 아침을 거르는 습관을 덧붙여요."
+     },
+     {
+      "q": "What does the teacher mean by \"Rather, you should study smarter\"?",
+      "o": [
+       "Study even more hours every night than now",
+       "Stop studying completely until the exam is over",
+       "Study more effectively, not simply less",
+       "Sleep during the study time to save energy"
+      ],
+      "a": 2,
+      "why": "Rather는 '오히려'로, 덜 하는 게 아니라 더 효과적으로 하라는 뜻이에요."
+     },
+     {
+      "q": "What does \"For example\" introduce?",
+      "o": [
+       "Reasons for the student's low grades",
+       "Specific ways to study smarter",
+       "A list of the student's subjects",
+       "A comparison with other students"
+      ],
+      "a": 1,
+      "why": "For example 뒤에 휴식과 취침 시간 같은 구체적 방법이 나와요."
+     },
+     {
+      "q": "What does the teacher think is causing the problem?",
+      "o": [
+       "A tired brain from too little rest",
+       "Too little time spent studying every day",
+       "Poor handwriting in class notes",
+       "A lack of interest in the subject"
+      ],
+      "a": 0,
+      "why": "공부를 많이 해도 뇌가 피곤하다고 말해요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance distractors so the key is not the uniquely longest option (key was longest in most questions of this item).",
+   "severity": "minor"
+  },
+  {
+   "item": "7c4c776b",
+   "op": "set",
+   "set": {
+    "q": "What does \"In fact\" mainly do in this text?\nAna likes reading. In fact, she reads two books every week.",
+    "o": [
+     "It introduces a contrast with the first sentence",
+     "It adds a stronger, more specific point",
+     "It gives the cause of the first sentence",
+     "It shows the time order of two events"
+    ],
+    "a": 1,
+    "why": "In fact는 앞 내용을 더 강하고 구체적으로 보충해요."
+   },
+   "why": "Original sentence (Ana seems shy. In fact...) allows a second reading of In fact as contrast, and the key was the only long option. Changed identity field q (sentence content) and o.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 82,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,182 @@
+{
+ "packet": "M01-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "81014016",
+   "op": "set",
+   "set": {
+    "z": [
+     "umbrella",
+     "elephant",
+     "notebook"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "4726b850",
+   "op": "set",
+   "set": {
+    "z": [
+     "classroom",
+     "playground",
+     "furniture"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "aeeda300",
+   "op": "set",
+   "set": {
+    "z": [
+     "breakfast",
+     "elephant",
+     "hospital"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "f7a04fad",
+   "op": "set",
+   "set": {
+    "z": [
+     "playground",
+     "refrigerator",
+     "strawberry"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "b399f5e8",
+   "op": "set",
+   "set": {
+    "z": [
+     "furniture",
+     "elephant",
+     "umbrella"
+    ],
+    "syn": [
+     "custom"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank. Also add syn custom (near-synonym of tradition).",
+   "severity": "minor"
+  },
+  {
+   "item": "16663266",
+   "op": "set",
+   "set": {
+    "z": [
+     "bookshelf",
+     "umbrella",
+     "notebook"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "b0e6019e",
+   "op": "set",
+   "set": {
+    "z": [
+     "elephant",
+     "umbrella",
+     "playground"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "3578f1f3",
+   "op": "set",
+   "set": {
+    "z": [
+     "umbrella",
+     "notebook",
+     "sandwich"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "591ac2ae",
+   "op": "set",
+   "set": {
+    "z": [
+     "whisper",
+     "stumble",
+     "giggle"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "4343ef79",
+   "op": "set",
+   "set": {
+    "z": [
+     "giggle",
+     "stumble",
+     "shiver"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "49b0d110",
+   "op": "set",
+   "set": {
+    "z": [
+     "playground",
+     "classroom",
+     "furniture"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "657acc97",
+   "op": "set",
+   "set": {
+    "z": [
+     "dictionary",
+     "refrigerator",
+     "wheelchair"
+    ]
+   },
+   "why": "Lengthen distractors to remove length cue; all remain wrong in meaning/grammar in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "a2313af3",
+   "op": "set",
+   "set": {
+    "syn": [
+     "tradition"
+    ]
+   },
+   "why": "관습 and 전통 are near-synonyms; builder could pair them as ko options in other batches. Not a defect in this batch (they never co-occur here).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 116,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

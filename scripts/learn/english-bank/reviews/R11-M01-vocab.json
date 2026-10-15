@@ -1,0 +1,78 @@
+{
+ "packet": "M01-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 11,
+  "questions": 28
+ },
+ "patches": [
+  {
+   "item": "f5c0d200",
+   "op": "set",
+   "set": {
+    "o": [
+     "clearness",
+     "clearest",
+     "clearly",
+     "clearing"
+    ],
+    "a": 2,
+    "why": "동사 spoke를 꾸미려면 부사 clearly가 알맞아요."
+   },
+   "why": "remove defensible flat adverb 'clear'; o changed (identity field)",
+   "severity": "minor"
+  },
+  {
+   "item": "8291f92a",
+   "op": "set",
+   "set": {
+    "o": [
+     "Fill in",
+     "Put on",
+     "Give up",
+     "Take off"
+    ],
+    "a": 1,
+    "why": "put on은 '입다'라는 뜻이고, take off는 '벗다'라는 뜻이라 추운 날씨와 맞지 않아요."
+   },
+   "why": "replace 'Look for' (plausible reading); o changed (identity field)",
+   "severity": "minor"
+  },
+  {
+   "item": "61ffe657",
+   "op": "set",
+   "set": {
+    "q": "Which person does NOT work in a hospital or clinic?",
+    "o": [
+     "doctor",
+     "nurse",
+     "dentist",
+     "teacher"
+    ],
+    "a": 3,
+    "why": "doctor, nurse, dentist는 병원이나 치과에서 일하는 사람이고 teacher는 학교에서 가르치는 사람이에요."
+   },
+   "why": "specific stem; q changed (identity field)",
+   "severity": "minor"
+  },
+  {
+   "item": "ec705fd0",
+   "op": "set",
+   "set": {
+    "q": "Which word is NOT a day of the week?",
+    "o": [
+     "Monday",
+     "Friday",
+     "January",
+     "Sunday"
+    ],
+    "a": 2,
+    "why": "January는 달 이름이고 나머지는 요일이에요."
+   },
+   "why": "specific stem; q changed (identity field)",
+   "severity": "minor"
+  }
+ ],
+ "ok": 24,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

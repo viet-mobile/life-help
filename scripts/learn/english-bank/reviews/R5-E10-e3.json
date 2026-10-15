@@ -1,0 +1,221 @@
+{
+ "packet": "E10-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 5,
+  "questions": 123
+ },
+ "patches": [
+  {
+   "item": "89032357",
+   "op": "set",
+   "set": {
+    "z": [
+     "wall",
+     "cloud",
+     "rainbow"
+    ]
+   },
+   "why": "pencil/flower fit the blank",
+   "severity": "major"
+  },
+  {
+   "item": "3939c8a4",
+   "op": "set",
+   "set": {
+    "z": [
+     "milk",
+     "tooth",
+     "lamp"
+    ]
+   },
+   "why": "kite could sail",
+   "severity": "minor"
+  },
+  {
+   "item": "c7181e4b",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "___ you like chicken soup?",
+     "ok": "Do",
+     "wr": [
+      "Does",
+      "Is",
+      "Am"
+     ]
+    }
+   },
+   "why": "Are you like chicken soup? is grammatical",
+   "severity": "major"
+  },
+  {
+   "item": "cd196211",
+   "op": "set",
+   "set": {
+    "bad": [
+     "The queen have a red hat.",
+     "The queen has red a hat.",
+     "The queen having a red hat."
+    ]
+   },
+   "why": "\"The queen is a red hat.\" is grammatical",
+   "severity": "major"
+  },
+  {
+   "item": "cf15b933",
+   "op": "set",
+   "set": {
+    "q": "“hop”에 e를 붙인 “hope”에서 o는 어떻게 읽힐까요?",
+    "o": [
+     "짧게 /아/ 소리로 그대로 읽혀요",
+     "소리가 나지 않고 e가 대신 읽혀요",
+     "알파벳 이름처럼 /오우/로 읽혀요",
+     "/우/ 소리로 길게 읽혀요"
+    ],
+    "a": 2,
+    "why": "끝에 e가 붙으면 앞의 모음이 알파벳 이름처럼 길게 읽히는 경우가 많아요."
+   },
+   "why": "length cue",
+   "severity": "minor"
+  },
+  {
+   "item": "c32d8049",
+   "op": "set",
+   "set": {
+    "q": "“banana”(ba-na-na)에서 가장 세게 읽는 부분은?",
+    "o": [
+     "첫 번째 마디",
+     "세 번째 마디",
+     "두 번째 마디",
+     "모두 똑같이 세게"
+    ],
+    "a": 2,
+    "why": "banana는 가운데 마디 NA를 가장 세게 읽어요."
+   },
+   "why": "stem leak",
+   "severity": "major"
+  },
+  {
+   "item": "b7c2080d",
+   "op": "set",
+   "set": {
+    "q": "“apple”(ap-ple)에서 가장 세게 읽는 부분은?",
+    "o": [
+     "두 번째 마디",
+     "두 마디 모두 똑같이",
+     "끝소리만",
+     "첫 번째 마디"
+    ],
+    "a": 3,
+    "why": "apple은 첫 마디 AP를 더 세게 읽어요."
+   },
+   "why": "stem leak",
+   "severity": "major"
+  },
+  {
+   "item": "6637134b",
+   "op": "set",
+   "set": {
+    "q": "“ship”은 글자가 4개지만 소리는 몇 개일까요?",
+    "o": [
+     "3개",
+     "2개",
+     "4개",
+     "5개"
+    ],
+    "a": 0,
+    "why": "sh는 두 글자가 한 소리를 내서 sh, i, p 세 소리예요."
+   },
+   "why": "stem leak",
+   "severity": "minor"
+  },
+  {
+   "item": "021c6ed4",
+   "op": "set",
+   "set": {
+    "q": "“banana”를 소리 내어 읽을 때 마디마다 박수를 치면 몇 번일까요?",
+    "o": [
+     "1번",
+     "2번",
+     "4번",
+     "3번"
+    ],
+    "a": 3,
+    "why": "banana는 ba, na, na 세 마디로 나뉘어요."
+   },
+   "why": "stem leak",
+   "severity": "minor"
+  },
+  {
+   "item": "71bbea2c",
+   "op": "set",
+   "set": {
+    "q": "ten, hen, pen, pan 중 라임(끝부분 소리)이 다른 하나는?",
+    "o": [
+     "ten",
+     "pan",
+     "hen",
+     "pen"
+    ],
+    "a": 1,
+    "why": "ten, hen, pen은 -en 소리가 같고 pan은 -an이라서 달라요."
+   },
+   "why": "ambiguous stem",
+   "severity": "minor"
+  },
+  {
+   "item": "6b3cda99",
+   "op": "set",
+   "set": {
+    "q": "fox, box, socks, fix 중 라임(끝부분 소리)이 다른 하나는?",
+    "o": [
+     "fox",
+     "box",
+     "socks",
+     "fix"
+    ],
+    "a": 3,
+    "why": "fox, box, socks는 -ox 소리가 같지만 fix는 -ix 소리라서 달라요."
+   },
+   "why": "ambiguous stem",
+   "severity": "minor"
+  },
+  {
+   "item": "32132674",
+   "op": "set",
+   "set": {
+    "q": "“___eel”(바퀴)의 빈칸에 알맞은 글자 두 개는?",
+    "o": [
+     "wh",
+     "ch",
+     "sh",
+     "th"
+    ],
+    "a": 0,
+    "why": "바퀴는 wheel이에요. wh는 /w/ 소리를 내요."
+   },
+   "why": "identity change q/o: avoid restating whale vocab item",
+   "severity": "minor"
+  },
+  {
+   "item": "da39238c",
+   "op": "set",
+   "set": {
+    "q": "“___ee”(무릎)의 빈칸에 알맞은 글자 두 개는?",
+    "o": [
+     "gn",
+     "nn",
+     "kn",
+     "nk"
+    ],
+    "a": 2,
+    "why": "무릎은 knee예요. k는 소리 나지 않고 n 소리만 나요."
+   },
+   "why": "identity change q/o: avoid restating knife vocab item",
+   "severity": "minor"
+  }
+ ],
+ "ok": 110,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

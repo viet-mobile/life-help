@@ -1,0 +1,126 @@
+{
+ "packet": "M01-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "b1cbedad",
+   "op": "set",
+   "set": {
+    "z": [
+     "upward",
+     "twice",
+     "seldom"
+    ],
+    "syn": [],
+    "sp": [
+     "nerby",
+     "neerby",
+     "nearbye"
+    ],
+    "ex": "Is there a bank nearby?",
+    "exko": "근처에 은행이 있나요?",
+    "ko": "근처에"
+   },
+   "why": "z 'anymore' is acceptable in 'Is there a bank anymore?'; replaced with 'upward'.",
+   "severity": "major"
+  },
+  {
+   "item": "5357abe2",
+   "op": "set",
+   "set": {
+    "z": [
+     "thirsty",
+     "fluffy",
+     "salty"
+    ],
+    "syn": [],
+    "sp": [
+     "ordinery",
+     "ordinairy",
+     "ordinarry"
+    ],
+    "ex": "The day was ordinary, and nothing special happened.",
+    "exko": "그날은 평범했고 특별한 일은 일어나지 않았어요.",
+    "ko": "평범한"
+   },
+   "why": "Removes the 'an' article cue that gives away the vowel-initial key.",
+   "severity": "major"
+  },
+  {
+   "item": "4e84dd08",
+   "op": "set",
+   "set": {
+    "z": [
+     "spicy",
+     "narrow",
+     "plastic"
+    ],
+    "syn": [],
+    "sp": [
+     "honist",
+     "honnest",
+     "onest"
+    ],
+    "ex": "Tom is honest, so he always tells the truth.",
+    "exko": "톰은 정직해서 언제나 진실을 말해요.",
+    "ko": "정직한"
+   },
+   "why": "Removes the 'An' article cue that favors the vowel-sound key.",
+   "severity": "minor"
+  },
+  {
+   "item": "3795e79d",
+   "op": "set",
+   "set": {
+    "good": "I borrowed a book from the library.",
+    "bad": [
+     "I borrow a book from the library yesterday.",
+     "I borrowed a book to the library.",
+     "I borrowing a book from the library."
+    ],
+    "cz": {
+     "st": "I ___ a book from the library.",
+     "ok": "borrowed",
+     "wr": [
+      "lent",
+      "lend",
+      "lending"
+     ]
+    },
+    "rule": "borrow는 '(남에게서) 빌려 오다', lend는 '(남에게) 빌려 주다'예요. from the library와 함께 쓰려면 빌려 오는 borrowed가 맞아요."
+   },
+   "why": "bad 'I lent a book from the library.' is grammatical on a second reading; replaced with a clearly ungrammatical sentence. good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "3e8b028f",
+   "op": "set",
+   "set": {
+    "good": "She did her homework before dinner.",
+    "bad": [
+     "She does her homework before dinner yesterday.",
+     "She did homework her before dinner.",
+     "She doing her homework before dinner."
+    ],
+    "cz": {
+     "st": "She ___ her homework before dinner.",
+     "ok": "did",
+     "wr": [
+      "made",
+      "makes",
+      "doing"
+     ]
+    },
+    "rule": "'숙제를 하다'는 do homework라고 하고, make homework라고 하지 않아요. 과거의 일이므로 did를 써요."
+   },
+   "why": "bad 'She made her homework...' is grammatical (made = created); replaced. good unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 125,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

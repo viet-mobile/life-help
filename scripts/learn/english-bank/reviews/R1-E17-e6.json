@@ -1,0 +1,224 @@
+{
+ "packet": "E17-e6",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "87923665",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where is Mina now?",
+      "o": [
+       "At the dentist",
+       "At the supermarket",
+       "At home",
+       "At A's house"
+      ],
+      "a": 1,
+      "why": "I'm at the supermarket now."
+     },
+     {
+      "q": "Why did Mina miss the calls this morning?",
+      "o": [
+       "She was at the dentist and her phone was in her bag.",
+       "She was cooking and her phone was broken.",
+       "She was sleeping and her phone was off.",
+       "She was shopping and her phone was at home."
+      ],
+      "a": 0,
+      "why": "I was at the dentist. My phone was in my bag."
+     },
+     {
+      "q": "In \"I'll be there at five,\" what does \"there\" mean?",
+      "o": [
+       "At the supermarket",
+       "At the dentist's office",
+       "At A's house",
+       "At Mina's home"
+      ],
+      "a": 2,
+      "why": "A가 Will you come to my house later?라고 물었으므로 there는 A's house를 가리켜요."
+     },
+     {
+      "q": "What are they going to make?",
+      "o": [
+       "Fruit salad",
+       "Sandwiches",
+       "Pizza",
+       "Cheese cake"
+      ],
+      "a": 2,
+      "why": "We're going to make pizza."
+     },
+     {
+      "q": "What will Mina bring?",
+      "o": [
+       "Some milk",
+       "Some cheese",
+       "Some pizza dough",
+       "Some drinks"
+      ],
+      "a": 1,
+      "why": "I'll bring the cheese.라고 했어요."
+     }
+    ]
+   },
+   "why": "Q5 distractor 'Some fruit' is not ruled out by the text (Mina is buying fruit and was asked to come over), so two readings; replaced with 'Some milk'. Q3 was a 5th plain detail question (time); replaced by a reference question (there = A's house) so the set covers more than detail.",
+   "severity": "major"
+  },
+  {
+   "item": "61d67115",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Jisu do on Saturday morning?",
+      "o": [
+       "She played badminton with her cousin outside.",
+       "She baked cookies for her friend.",
+       "She cleaned her room and washed her dog.",
+       "She went shopping with her cousin."
+      ],
+      "a": 2,
+      "why": "첫 문장에 토요일 아침에 방을 청소하고 개를 씻겼다고 나와요."
+     },
+     {
+      "q": "What is Jisu doing now?",
+      "o": [
+       "Writing a letter",
+       "Playing badminton",
+       "Washing her dog",
+       "Going to school"
+      ],
+      "a": 0,
+      "why": "Now it is Sunday evening, and she is writing a letter에서 지금 편지를 쓰고 있어요."
+     },
+     {
+      "q": "What is Jisu going to do tomorrow morning?",
+      "o": [
+       "Visit her cousin",
+       "Wash her dog again",
+       "Play in the park",
+       "Get up early"
+      ],
+      "a": 3,
+      "why": "Tomorrow is Monday, so she is going to get up early.에서 알 수 있어요."
+     },
+     {
+      "q": "When will Jisu go to the post office?",
+      "o": [
+       "On Saturday afternoon",
+       "After school on Monday",
+       "Tonight, before bed",
+       "On Sunday morning"
+      ],
+      "a": 1,
+      "why": "내일(월요일) 방과 후에 편지를 가지고 우체국에 갈 거예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Jisu's weekend and her plans",
+       "How to write a letter to Canada",
+       "Jisu's favorite sports at school",
+       "A dog that needs a bath"
+      ],
+      "a": 0,
+      "why": "토요일에 한 일, 지금 하는 일, 내일 할 일을 차례로 말하고 있어요."
+     }
+    ]
+   },
+   "why": "Answer leaks between questions: Q4 stem 'take the letter' and Q1 options 'wrote a letter ... Canada' reveal Q2's answer (only option with a letter), and Q1 option 'went to the post office after school' reveals Q4's answer. Reworded Q4 stem; replaced Q1 distractors 2 and 4 with options not found in the other questions.",
+   "severity": "major"
+  },
+  {
+   "item": "aadd7fb3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "When is the school sports day?",
+      "o": [
+       "This Monday",
+       "Next Friday",
+       "Last Friday",
+       "Tomorrow morning"
+      ],
+      "a": 1,
+      "why": "첫 문장에 sports day is next Friday라고 나와요."
+     },
+     {
+      "q": "What happened last year?",
+      "o": [
+       "They played the relay race outside.",
+       "They had sports day at a nearby park.",
+       "They stayed in the gym because of rain.",
+       "They watched the games at home."
+      ],
+      "a": 2,
+      "why": "Last year it rained, so we stayed inside the gym."
+     },
+     {
+      "q": "What are students doing this week?",
+      "o": [
+       "Cleaning the gym",
+       "Buying water bottles",
+       "Practicing the relay race",
+       "Watching the weather report"
+      ],
+      "a": 2,
+      "why": "Students are practicing the relay race every afternoon this week."
+     },
+     {
+      "q": "What will the weather be like on sports day?",
+      "o": [
+       "Sunny",
+       "Rainy",
+       "Cloudy and cold",
+       "Windy and wet"
+      ],
+      "a": 0,
+      "why": "the weather report says it will be sunny."
+     },
+     {
+      "q": "Why was this notice written?",
+      "o": [
+       "To report last year's winners",
+       "To tell people about sports day",
+       "To ask parents to join the race",
+       "To sell hats and bottles"
+      ],
+      "a": 1,
+      "why": "운동회 일정과 준비물을 알리는 안내문이에요."
+     }
+    ]
+   },
+   "why": "Q2 distractors 'Students practiced every afternoon' and 'Parents cheered from the stands' repeat the answers/content of Q3 (practicing the relay race) and Q5, so Q2 reveals Q3; replaced with options that are clearly wrong for last year and not reused elsewhere. Key no longer the longest.",
+   "severity": "major"
+  },
+  {
+   "item": "d65620ac",
+   "op": "set",
+   "set": {
+    "q": "was는 어떤 말의 과거형일까요?",
+    "o": [
+     "are, were",
+     "do, does",
+     "am, is",
+     "have, has"
+    ],
+    "a": 2,
+    "why": "was는 am과 is의 과거형이고, are의 과거형은 were예요."
+   },
+   "why": "Option 'are만' is oddly formatted (stray 만 marks it as a distractor and the key is the only comma pair); made all options the same format. Options changed (identity field o).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 118,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,192 @@
+{
+ "packet": "E18-e6",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 109
+ },
+ "patches": [
+  {
+   "item": "c49bceda",
+   "op": "set",
+   "set": {
+    "text": "Our school sports day was on Tuesday. When we woke up, it was raining hard, so the teacher moved the games to Friday. I was a little sad because I practiced running for two weeks and wanted to race on Tuesday. But my friend Sara said, \"If it is sunny on Friday, we can run even faster!\" I felt better after that.",
+    "qs": [
+     {
+      "q": "Why did the teacher move the games?",
+      "o": [
+       "Several students were sick that day.",
+       "It was raining hard that morning.",
+       "The playground was being repaired.",
+       "The games were not ready yet."
+      ],
+      "a": 1,
+      "why": "글에서 비가 많이 와서(raining hard, so ...) 선생님이 경기를 금요일로 옮겼다고 했어요."
+     },
+     {
+      "q": "Why was the writer a little sad?",
+      "o": [
+       "The writer lost a race against Sara last week.",
+       "The writer forgot about the sports day itself.",
+       "The writer had practiced running for two weeks.",
+       "The writer did not like the teacher very much."
+      ],
+      "a": 2,
+      "why": "because 뒤에 이유가 나와요. 두 주 동안 달리기를 연습했는데 경기를 못 하게 되어 조금 슬펐어요."
+     },
+     {
+      "q": "What does Sara say about Friday?",
+      "o": [
+       "She wants to cancel all of the games.",
+       "She will be absent from school on that day.",
+       "She hopes to practice more at home first.",
+       "They can run even faster if it is sunny."
+      ],
+      "a": 3,
+      "why": "Sara는 금요일에 날씨가 맑으면 더 빨리 달릴 수 있다고 했어요."
+     },
+     {
+      "q": "How did the writer feel at the end?",
+      "o": [
+       "The writer became angry at Sara for talking.",
+       "The writer felt better after Sara spoke.",
+       "The writer wanted to go home right away.",
+       "The writer decided to stop running for good."
+      ],
+      "a": 1,
+      "why": "마지막 문장에서 I felt better after that이라고 했어요."
+     }
+    ]
+   },
+   "why": "Fix illogical cause in text; remove length cue in q2-q4.",
+   "severity": "minor"
+  },
+  {
+   "item": "ccb454f8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "이 글의 중심 내용으로 가장 알맞은 것은?",
+      "o": [
+       "할머니의 정원에서 보내는 즐거운 시간",
+       "집 근처 시장에서 신선한 채소를 사는 방법",
+       "여름방학에 가족과 가기 좋은 여행 장소",
+       "샐러드에 어울리는 여러 가지 채소의 종류"
+      ],
+      "a": 0,
+      "why": "글 전체가 할머니의 정원과 그곳에서 함께 보내는 시간에 대한 이야기예요."
+     },
+     {
+      "q": "할머니가 당근을 기르지 않는 이유는?",
+      "o": [
+       "정원이 너무 작고 좁아서",
+       "당근 맛을 좋아하지 않으셔서",
+       "흙이 너무 단단해서",
+       "물을 줄 사람이 부족해서"
+      ],
+      "a": 2,
+      "why": "because 뒤에 이유가 나와요. 흙이 너무 단단하기 때문이에요."
+     },
+     {
+      "q": "글쓴이는 여름에 할머니 댁에 가면 무엇을 하나요?",
+      "o": [
+       "정원의 잡초를 뽑아 줘요",
+       "시장에서 씨앗을 사 와요",
+       "울타리에 페인트를 칠해요",
+       "식물에 물을 줘요"
+      ],
+      "a": 3,
+      "why": "여름에 가면 할머니를 도와 식물에 물을 준다고 했어요."
+     },
+     {
+      "q": "토마토가 빨갛게 익으면 어떻게 하나요?",
+      "o": [
+       "시장에 가져가서 사람들에게 팔아요",
+       "따서 함께 샐러드를 만들어요",
+       "그대로 두고 조금 더 키워요",
+       "이웃에게 모두 나눠 주어요"
+      ],
+      "a": 1,
+      "why": "토마토가 빨가면 따서 함께 샐러드를 만든다고 했어요."
+     }
+    ]
+   },
+   "why": "Drop q5 (duplicates q1); lengthen distractors to remove length cue.",
+   "severity": "major"
+  },
+  {
+   "item": "09cdbe9e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "가을에 잎이 빨강, 노랑, 주황색으로 보이는 이유는?",
+      "o": [
+       "가을에 비가 많이 내리기 때문에",
+       "초록색을 만드는 일을 멈추기 때문에",
+       "여름보다 햇빛이 더 강해지기 때문에",
+       "나무가 땅에서 물을 더 많이 마시기 때문에"
+      ],
+      "a": 1,
+      "why": "잎이 초록색을 만드는 일을 멈추면(so) 빨강, 노랑, 주황색이 보인다고 했어요."
+     },
+     {
+      "q": "많은 나무가 잎을 떨어뜨리는 이유는?",
+      "o": [
+       "벌레들이 잎을 모두 먹어 버려서",
+       "새 잎이 너무 빨리 자라나서",
+       "찬 바람이 너무 세게 불어서",
+       "겨울에 에너지를 아끼기 위해서"
+      ],
+      "a": 3,
+      "why": "because 뒤에 이유가 나와요. 겨울에 에너지를 아껴야 하기 때문이에요."
+     },
+     {
+      "q": "소나무에 대해 알맞은 것은?",
+      "o": [
+       "일 년 내내 잎을 달고 있어요",
+       "가을이 되면 노란색으로 변해요",
+       "겨울에는 잎이 모두 떨어져 버려요",
+       "10월에만 볼 수 있는 나무예요"
+      ],
+      "a": 0,
+      "why": "But pine trees keep their needles all year. 소나무는 일 년 내내 잎을 달고 있어요."
+     },
+     {
+      "q": "이 글의 중심 내용은?",
+      "o": [
+       "숲에서 길을 잃지 않고 찾아가는 방법",
+       "가을에 나무가 변하는 모습과 그 까닭",
+       "겨울잠을 자는 동물들의 생활 모습",
+       "나무를 심기에 알맞은 계절과 방법"
+      ],
+      "a": 1,
+      "why": "글 전체가 가을에 나뭇잎의 색이 변하고 잎이 지는 까닭을 설명하고 있어요."
+     }
+    ]
+   },
+   "why": "Remove length cue: distractors lengthened.",
+   "severity": "major"
+  },
+  {
+   "item": "df652bfe",
+   "op": "set",
+   "set": {
+    "q": "다음 중 문장과 문장을 이어 주는 말(접속사)로만 짝지어진 것은?",
+    "o": [
+     "so, but",
+     "run, jump",
+     "apple, pencil",
+     "happy, sad"
+    ],
+    "a": 0,
+    "why": "so(그래서)와 but(그러나)은 문장을 이어 주는 접속사이고, 나머지는 동사나 명사, 형용사예요."
+   },
+   "why": "Identity fields q/o changed: replace near-duplicate with a distinct question.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 95,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

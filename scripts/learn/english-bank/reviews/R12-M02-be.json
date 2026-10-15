@@ -1,0 +1,52 @@
+{
+ "packet": "M02-be",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 12,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "5daf0c31",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Tom and Jisu can be swapped, so the ordering question has two valid answers.",
+   "severity": "major"
+  },
+  {
+   "item": "d0f6e9a8",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "\"My birthday was yesterday.\" is also valid, so the ordering is not unique.",
+   "severity": "major"
+  },
+  {
+   "item": "4045a7b3",
+   "op": "set",
+   "set": {
+    "bad": [
+     "There isn't chairs in the room.",
+     "There aren't no chairs in the room.",
+     "There don't any chairs in the room."
+    ],
+    "cz": {
+     "st": "There ___ any chairs in the room.",
+     "ok": "aren't",
+     "wr": [
+      "am not",
+      "don't",
+      "hasn't"
+     ]
+    }
+   },
+   "why": "Remove distractors that are colloquially acceptable (isn't any + plural). Identity field good is unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 127,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,87 @@
+{
+ "packet": "E17-e6",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 70
+ },
+ "patches": [
+  {
+   "item": "f96dc9e2",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence key can be reordered into a second valid sequence; disable ordering question.",
+   "severity": "major"
+  },
+  {
+   "item": "b974b3e2",
+   "op": "set",
+   "set": {
+    "q": "can이 들어간 바른 의문문은?",
+    "o": [
+     "Does he can swim?",
+     "Can he swim?",
+     "Can he swims?",
+     "Can he to swim?"
+    ],
+    "a": 1,
+    "why": "can이 있는 질문은 Can + 주어 + 동사원형 ~?으로 써요. Does를 쓰지 않고, swim에 -s나 to를 붙이지 않아요."
+   },
+   "why": "Original had two defensible wrong parts (Does and can). Identity fields q and o are changed.",
+   "severity": "major"
+  },
+  {
+   "item": "ca82cc67",
+   "op": "set",
+   "set": {
+    "o": [
+     "여기서는 조용히 해도 돼요.",
+     "여기서는 조용히 할 수 있어요.",
+     "여기서는 조용히 해야 해요.",
+     "여기서는 조용히 하지 않아도 돼요."
+    ],
+    "a": 2,
+    "why": "must는 '~해야 한다'는 뜻이에요."
+   },
+   "why": "Equalise option length; key no longer uniquely longest. Identity field o changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "674e20dd",
+   "op": "set",
+   "set": {
+    "o": [
+     "You must open the door right now.",
+     "Can you open the door, please?",
+     "Open the door, you should, please.",
+     "Do you can open the door, please?"
+    ],
+    "a": 1,
+    "why": "Can you ~, please?는 부탁할 때 쓰는 말이에요. must는 명령, Do you can은 어순이 틀려요."
+   },
+   "why": "Lengthen distractors to remove length cue. Identity field o changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "2f981e84",
+   "op": "set",
+   "set": {
+    "q": "병뚜껑이 너무 꽉 닫혀 있어요.\nI ___ open this jar. It is too tight.",
+    "o": [
+     "must",
+     "may",
+     "can't",
+     "should"
+    ],
+    "a": 2,
+    "why": "뚜껑이 너무 꽉 조여 있어서 '열 수 없다'는 뜻이므로 can't가 알맞아요."
+   },
+   "why": "Add Korean context to remove the 'must open it anyway' reading. Identity field q changed.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 65,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

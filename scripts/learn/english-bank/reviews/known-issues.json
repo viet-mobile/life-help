@@ -56,6 +56,34 @@
    "severity": "minor",
    "problem": "Hint 2 reads '첫 단어는 “Seoul”예요.' but 서울 ends in a consonant, so it must be 이에요.",
    "fix": "Same builder hint-template fix as eb-b3d682a5-order. Not fixable at item level."
+  },
+  {
+   "batch": 1,
+   "id": "eb-1c8db105-order",
+   "severity": "minor",
+   "problem": "Repeated identical word tokens with separate ids: swapping them gives the same sentence but may be marked wrong.",
+   "fix": "ord:false (patch)"
+  },
+  {
+   "batch": 1,
+   "id": "eb-71a083b9-order",
+   "severity": "minor",
+   "problem": "Repeated identical word tokens with separate ids: swapping them gives the same sentence but may be marked wrong.",
+   "fix": "ord:false (patch)"
+  },
+  {
+   "batch": 1,
+   "id": "eb-6a215411-cloze",
+   "severity": "minor",
+   "problem": "Korean gloss '이 상자 옮기는 것을 도와줄 수 있니?' adds 'moving' that the English (help me with this box) does not say. Not fixable via the allowed patch fields (ko is not in the s patch set); suggest ko '이 상자 좀 도와줄 수 있니?'.",
+   "fix": "Change ko in the pool file by hand."
+  },
+  {
+   "batch": 1,
+   "id": "eb-6a215411-order",
+   "severity": "minor",
+   "problem": "Same Korean gloss adds 'moving'.",
+   "fix": "Same manual ko change."
   }
  ]
 }
