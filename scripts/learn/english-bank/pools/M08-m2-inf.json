@@ -1,0 +1,2389 @@
+{
+ "packet": "M08-m2-inf",
+ "sections": [
+  {
+   "skill": "e.m2.inf",
+   "items": [
+    {
+     "k": "s",
+     "good": "I want to buy a new bike.",
+     "ko": "나는 새 자전거를 사고 싶어요.",
+     "bad": [
+      "I want buying a new bike.",
+      "I want buy a new bike.",
+      "I want to buying a new bike."
+     ],
+     "cz": {
+      "st": "I want ___ a new bike.",
+      "ok": "to buy",
+      "wr": [
+       "buying",
+       "buy",
+       "to buying"
+      ]
+     },
+     "rule": "want는 to부정사(to + 동사원형)를 목적어로 취해요.",
+     "hint": "want 뒤에 올 수 있는 형태를 생각해 보세요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "She enjoys singing in the choir.",
+     "ko": "그녀는 합창단에서 노래하는 것을 즐겨요.",
+     "bad": [
+      "She enjoys to sing in the choir.",
+      "She enjoys sing in the choir.",
+      "She enjoys to singing in the choir."
+     ],
+     "cz": {
+      "st": "She enjoys ___ in the choir.",
+      "ok": "singing",
+      "wr": [
+       "to sing",
+       "sing",
+       "to singing"
+      ]
+     },
+     "rule": "enjoy는 동명사(V-ing)만 목적어로 취해요. to부정사는 쓸 수 없어요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "We decided to take the early train.",
+     "ko": "우리는 이른 기차를 타기로 결정했어요.",
+     "bad": [
+      "We decided taking the early train.",
+      "We decided take the early train.",
+      "We decided to taking the early train."
+     ],
+     "cz": {
+      "st": "We decided ___ the early train.",
+      "ok": "to take",
+      "wr": [
+       "taking",
+       "take",
+       "to taking"
+      ]
+     },
+     "rule": "decide는 to부정사를 목적어로 취해요: decide + to V."
+    },
+    {
+     "k": "s",
+     "good": "He avoided answering the question.",
+     "ko": "그는 그 질문에 대답하는 것을 피했어요.",
+     "bad": [
+      "He avoided to answer the question.",
+      "He avoided answer the question.",
+      "He avoided to answering the question."
+     ],
+     "cz": {
+      "st": "He avoided ___ the question.",
+      "ok": "answering",
+      "wr": [
+       "to answer",
+       "answer",
+       "to answering"
+      ]
+     },
+     "rule": "avoid는 동명사를 목적어로 취해요: avoid + V-ing."
+    },
+    {
+     "k": "s",
+     "good": "They finished painting the fence.",
+     "ko": "그들은 울타리 페인트칠을 끝냈어요.",
+     "bad": [
+      "They finished to paint the fence.",
+      "They finished paint the fence.",
+      "They finished to painting the fence."
+     ],
+     "cz": {
+      "st": "They finished ___ the fence.",
+      "ok": "painting",
+      "wr": [
+       "to paint",
+       "paint",
+       "to painting"
+      ]
+     },
+     "rule": "finish는 동명사를 목적어로 취해요: finish + V-ing."
+    },
+    {
+     "k": "s",
+     "good": "Mia hopes to visit Jeju next summer.",
+     "ko": "미아는 다음 여름에 제주도를 방문하기를 바라요.",
+     "bad": [
+      "Mia hopes visiting Jeju next summer.",
+      "Mia hopes visit Jeju next summer.",
+      "Mia hopes to visiting Jeju next summer."
+     ],
+     "cz": {
+      "st": "Mia hopes ___ Jeju next summer.",
+      "ok": "to visit",
+      "wr": [
+       "visiting",
+       "visit",
+       "to visiting"
+      ]
+     },
+     "rule": "hope는 to부정사를 목적어로 취해요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "He was thirsty, so he stopped to drink some water.",
+     "ko": "그는 목이 말라서 물을 마시려고 멈춰 섰어요.",
+     "bad": [
+      "He was thirsty, so he stopped drink some water.",
+      "He was thirsty, so he stopped drinks some water.",
+      "He was thirsty, so he stopped to drinking some water."
+     ],
+     "cz": {
+      "st": "He was thirsty, so he stopped ___ some water.",
+      "ok": "to drink",
+      "wr": [
+       "drink",
+       "drinks",
+       "to drinking"
+      ]
+     },
+     "rule": "stop + to V는 '~하기 위해 멈추다(목적)'라는 뜻이에요.",
+     "hint": "멈춘 이유(목적)가 무엇인지 생각해 보세요.",
+     "ord": false,
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "The baby stopped crying when she heard the song.",
+     "ko": "아기는 그 노래를 듣자 울음을 멈췄어요.",
+     "bad": [
+      "The baby stopped cry when she heard the song.",
+      "The baby stopped to crying when she heard the song.",
+      "The baby stopped cries when she heard the song."
+     ],
+     "cz": {
+      "st": "The baby stopped ___ when she heard the song.",
+      "ok": "crying",
+      "wr": [
+       "cry",
+       "to crying",
+       "cries"
+      ]
+     },
+     "rule": "stop + V-ing는 '~하던 것을 멈추다(중단)'라는 뜻이에요.",
+     "ord": false,
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "My brother promised to help me with homework.",
+     "ko": "내 형은 숙제를 도와주겠다고 약속했어요.",
+     "bad": [
+      "My brother promised helping me with homework.",
+      "My brother promised help me with homework.",
+      "My brother promised to helping me with homework."
+     ],
+     "cz": {
+      "st": "My brother promised ___ me with homework.",
+      "ok": "to help",
+      "wr": [
+       "helping",
+       "help",
+       "to helping"
+      ]
+     },
+     "rule": "promise는 to부정사를 목적어로 취해요."
+    },
+    {
+     "k": "s",
+     "good": "Would you mind opening the window?",
+     "ko": "창문을 열어 주시겠어요?",
+     "bad": [
+      "Would you mind open the window?",
+      "Would you mind to open the window?",
+      "Would you mind to opening the window?"
+     ],
+     "cz": {
+      "st": "Would you mind ___ the window?",
+      "ok": "opening",
+      "wr": [
+       "open",
+       "to open",
+       "to opening"
+      ]
+     },
+     "rule": "mind는 동명사를 목적어로 취해요: Would you mind + V-ing?"
+    },
+    {
+     "k": "s",
+     "good": "It is important to drink enough water.",
+     "ko": "충분한 물을 마시는 것은 중요해요.",
+     "bad": [
+      "It is important drink enough water.",
+      "It is important for drink enough water.",
+      "It important is to drink enough water."
+     ],
+     "cz": {
+      "st": "It is important ___ enough water.",
+      "ok": "to drink",
+      "wr": [
+       "drink",
+       "for drink",
+       "drinks"
+      ]
+     },
+     "rule": "가주어 It ... to V 구문에서 진주어는 to부정사로 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "Reading books is my favorite hobby.",
+     "ko": "책 읽기는 내가 가장 좋아하는 취미예요.",
+     "bad": [
+      "Read books is my favorite hobby.",
+      "Reads books is my favorite hobby.",
+      "To reading books is my favorite hobby."
+     ],
+     "cz": {
+      "st": "___ books is my favorite hobby.",
+      "ok": "Reading",
+      "wr": [
+       "Read",
+       "Reads",
+       "To reading"
+      ]
+     },
+     "rule": "동명사(V-ing)는 문장의 주어가 될 수 있어요. 동명사 주어는 단수로 취급해요."
+    },
+    {
+     "k": "s",
+     "good": "She is good at drawing animals.",
+     "ko": "그녀는 동물 그리기를 잘해요.",
+     "bad": [
+      "She is good at draw animals.",
+      "She is good at to draw animals.",
+      "She is good at drawn animals."
+     ],
+     "cz": {
+      "st": "She is good at ___ animals.",
+      "ok": "drawing",
+      "wr": [
+       "draw",
+       "to draw",
+       "drawn"
+      ]
+     },
+     "rule": "전치사(at) 뒤에는 동명사를 써요."
+    },
+    {
+     "k": "s",
+     "good": "I'm looking forward to seeing you again.",
+     "ko": "나는 당신을 다시 만나기를 기대하고 있어요.",
+     "bad": [
+      "I'm looking forward to see you again.",
+      "I'm looking forward seeing you again.",
+      "I'm looking forward to saw you again."
+     ],
+     "cz": {
+      "st": "I'm looking forward to ___ you again.",
+      "ok": "seeing",
+      "wr": [
+       "see",
+       "saw",
+       "seen"
+      ]
+     },
+     "rule": "look forward to에서 to는 전치사이므로 뒤에 동명사가 와요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "He was too tired to walk home.",
+     "ko": "그는 너무 피곤해서 집까지 걸어갈 수 없었어요.",
+     "bad": [
+      "He was too tired walking home.",
+      "He was too tired for walk home.",
+      "He was too tired to walking home."
+     ],
+     "cz": {
+      "st": "He was too tired ___ home.",
+      "ok": "to walk",
+      "wr": [
+       "walking",
+       "for walk",
+       "to walking"
+      ]
+     },
+     "rule": "too + 형용사 + to V는 '너무 ~해서 ...할 수 없다'는 뜻이에요."
+    },
+    {
+     "k": "s",
+     "good": "The box is light enough to carry.",
+     "ko": "그 상자는 들고 가기에 충분히 가벼워요.",
+     "bad": [
+      "The box is enough light to carry.",
+      "The box is light enough carry.",
+      "The box is light enough to carrying."
+     ],
+     "cz": {
+      "st": "The box is light ___ to carry.",
+      "ok": "enough",
+      "wr": [
+       "very",
+       "so",
+       "much"
+      ]
+     },
+     "rule": "형용사 + enough + to V는 '~할 만큼 충분히 ...하다'는 뜻이에요. enough는 형용사 뒤에 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "My mom told me to clean my room.",
+     "ko": "엄마는 나에게 방을 청소하라고 말씀하셨어요.",
+     "bad": [
+      "My mom told me clean my room.",
+      "My mom told me cleaning my room.",
+      "My mom told to me clean my room."
+     ],
+     "cz": {
+      "st": "My mom told me ___ my room.",
+      "ok": "to clean",
+      "wr": [
+       "clean",
+       "cleaning",
+       "cleaned"
+      ]
+     },
+     "rule": "tell + 목적어 + to V: '~에게 ...하라고 말하다'."
+    },
+    {
+     "k": "s",
+     "good": "The teacher let us leave early.",
+     "ko": "선생님은 우리가 일찍 떠나게 해 주셨어요.",
+     "bad": [
+      "The teacher let us to leave early.",
+      "The teacher let us leaving early.",
+      "The teacher let us left early."
+     ],
+     "cz": {
+      "st": "The teacher let us ___ early.",
+      "ok": "leave",
+      "wr": [
+       "to leave",
+       "leaving",
+       "left"
+      ]
+     },
+     "rule": "사역동사 let 뒤 목적격보어에는 동사원형을 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "This app helps me learn English.",
+     "ko": "이 앱은 내가 영어를 배우도록 도와줘요.",
+     "bad": [
+      "This app helps me learning English.",
+      "This app helps me learns English.",
+      "This app helps me learned English."
+     ],
+     "cz": {
+      "st": "This app helps ___ English.",
+      "ok": "me learn",
+      "wr": [
+       "me learning",
+       "me learns",
+       "me learned"
+      ]
+     },
+     "rule": "help + 목적어 뒤에는 동사원형(또는 to V)이 와요. V-ing나 3인칭 -s는 쓸 수 없어요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "We use a map to find the way.",
+     "ko": "우리는 길을 찾기 위해 지도를 사용해요.",
+     "bad": [
+      "We use a map for find the way.",
+      "We use a map to finding the way.",
+      "We use a map find the way."
+     ],
+     "cz": {
+      "st": "We use a map ___ the way.",
+      "ok": "to find",
+      "wr": [
+       "for find",
+       "to finding",
+       "finds"
+      ]
+     },
+     "rule": "to부정사는 '~하기 위해'라는 목적의 뜻으로도 쓰여요."
+    },
+    {
+     "k": "s",
+     "good": "I forgot to lock the door, so it was open all night.",
+     "ko": "나는 문을 잠그는 것을 잊어서 밤새 열려 있었어요.",
+     "bad": [
+      "I forgot lock the door, so it was open all night.",
+      "I forgot to locking the door, so it was open all night.",
+      "I forgot locks the door, so it was open all night."
+     ],
+     "cz": {
+      "st": "I forgot ___ the door, so it was open all night.",
+      "ok": "to lock",
+      "wr": [
+       "lock",
+       "locked",
+       "to locking"
+      ]
+     },
+     "rule": "forget + to V는 '해야 할 일을 잊다'라는 뜻이에요.",
+     "ord": false,
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "I remember visiting this park when I was five.",
+     "ko": "나는 다섯 살 때 이 공원을 방문했던 것을 기억해요.",
+     "bad": [
+      "I remember visit this park when I was five.",
+      "I remember to visiting this park when I was five.",
+      "I remember visited this park when I was five."
+     ],
+     "cz": {
+      "st": "I remember ___ this park when I was five.",
+      "ok": "visiting",
+      "wr": [
+       "visit",
+       "to visiting",
+       "visited"
+      ]
+     },
+     "rule": "remember + V-ing는 '이미 한 일을 기억하다'라는 뜻이에요.",
+     "ord": false,
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "She tried to open the jar, but it was too tight.",
+     "ko": "그녀는 병을 열려고 애썼지만 너무 꽉 닫혀 있었어요.",
+     "bad": [
+      "She tried open the jar, but it was too tight.",
+      "She tried to opening the jar, but it was too tight.",
+      "She tried opens the jar, but it was too tight."
+     ],
+     "cz": {
+      "st": "She tried ___ the jar, but it was too tight.",
+      "ok": "to open",
+      "wr": [
+       "open",
+       "to opening",
+       "opened"
+      ]
+     },
+     "rule": "try + to V는 '~하려고 애쓰다'라는 뜻이에요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "They offered to carry my bag.",
+     "ko": "그들은 내 가방을 들어 주겠다고 제안했어요.",
+     "bad": [
+      "They offered carrying my bag.",
+      "They offered carry my bag.",
+      "They offered to carrying my bag."
+     ],
+     "cz": {
+      "st": "They offered ___ my bag.",
+      "ok": "to carry",
+      "wr": [
+       "carrying",
+       "carry",
+       "to carrying"
+      ]
+     },
+     "rule": "offer는 to부정사를 목적어로 취해요."
+    },
+    {
+     "k": "s",
+     "good": "Jun needs to finish his project by Friday.",
+     "ko": "준은 금요일까지 프로젝트를 끝내야 해요.",
+     "bad": [
+      "Jun needs finish his project by Friday.",
+      "Jun need to finish his project by Friday.",
+      "Jun needs to finishing his project by Friday."
+     ],
+     "cz": {
+      "st": "Jun needs ___ his project by Friday.",
+      "ok": "to finish",
+      "wr": [
+       "finish",
+       "to finishing",
+       "finishes"
+      ]
+     },
+     "rule": "need는 to부정사를 목적어로 취해요. 주어가 3인칭 단수이면 needs가 돼요."
+    },
+    {
+     "k": "s",
+     "good": "He refused to give up.",
+     "ko": "그는 포기하기를 거부했어요.",
+     "bad": [
+      "He refused giving up.",
+      "He refused give up.",
+      "He refused to giving up."
+     ],
+     "cz": {
+      "st": "He refused ___ up.",
+      "ok": "to give",
+      "wr": [
+       "giving",
+       "give",
+       "gave"
+      ]
+     },
+     "rule": "refuse는 to부정사를 목적어로 취해요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "We gave up waiting for the bus and walked.",
+     "ko": "우리는 버스를 기다리는 것을 포기하고 걸어갔어요.",
+     "bad": [
+      "We gave up wait for the bus and walked.",
+      "We gave up to wait for the bus and walked.",
+      "We gave up waited for the bus and walked."
+     ],
+     "cz": {
+      "st": "We gave up ___ for the bus and walked.",
+      "ok": "waiting",
+      "wr": [
+       "wait",
+       "to wait",
+       "waited"
+      ]
+     },
+     "rule": "give up은 동명사를 목적어로 취해요."
+    },
+    {
+     "k": "s",
+     "good": "My sister keeps losing her keys.",
+     "ko": "내 여동생은 계속 열쇠를 잃어버려요.",
+     "bad": [
+      "My sister keeps to lose her keys.",
+      "My sister keeps lose her keys.",
+      "My sister keeps lost her keys."
+     ],
+     "cz": {
+      "st": "My sister keeps ___ her keys.",
+      "ok": "losing",
+      "wr": [
+       "to lose",
+       "lose",
+       "lost"
+      ]
+     },
+     "rule": "keep + V-ing는 '계속 ~하다'라는 뜻이에요."
+    },
+    {
+     "k": "s",
+     "good": "I'm used to getting up early.",
+     "ko": "나는 일찍 일어나는 것에 익숙해요.",
+     "bad": [
+      "I'm used to get up early.",
+      "I'm used to got up early.",
+      "I'm used getting up early."
+     ],
+     "cz": {
+      "st": "I'm used to ___ up early.",
+      "ok": "getting",
+      "wr": [
+       "get",
+       "got",
+       "gets"
+      ]
+     },
+     "rule": "be used to + V-ing는 '~하는 데 익숙하다'라는 뜻이고, 이때 to는 전치사예요.",
+     "d": 5
+    },
+    {
+     "k": "s",
+     "good": "Ben is busy preparing for the test.",
+     "ko": "벤은 시험을 준비하느라 바빠요.",
+     "bad": [
+      "Ben is busy prepare for the test.",
+      "Ben is busy to prepare for the test.",
+      "Ben is busy prepared for the test."
+     ],
+     "cz": {
+      "st": "Ben is busy ___ for the test.",
+      "ok": "preparing",
+      "wr": [
+       "prepare",
+       "to prepare",
+       "prepared"
+      ]
+     },
+     "rule": "be busy + V-ing: '~하느라 바쁘다'."
+    },
+    {
+     "k": "s",
+     "good": "They spent the weekend cleaning the garden.",
+     "ko": "그들은 주말을 정원을 청소하며 보냈어요.",
+     "bad": [
+      "They spent the weekend clean the garden.",
+      "They spent the weekend to clean the garden.",
+      "They spent the weekend cleaned the garden."
+     ],
+     "cz": {
+      "st": "They spent the weekend ___ the garden.",
+      "ok": "cleaning",
+      "wr": [
+       "clean",
+       "to clean",
+       "cleaned"
+      ]
+     },
+     "rule": "spend + 시간 + V-ing: '~하며 시간을 보내다'."
+    },
+    {
+     "k": "s",
+     "good": "She has trouble remembering names.",
+     "ko": "그녀는 이름을 기억하는 데 어려움을 겪어요.",
+     "bad": [
+      "She has trouble remember names.",
+      "She has trouble to remember names.",
+      "She has trouble remembered names."
+     ],
+     "cz": {
+      "st": "She has trouble ___ names.",
+      "ok": "remembering",
+      "wr": [
+       "remember",
+       "to remember",
+       "remembered"
+      ]
+     },
+     "rule": "have trouble + V-ing: '~하는 데 어려움을 겪다'.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "I don't know how to use this machine.",
+     "ko": "나는 이 기계를 어떻게 사용하는지 몰라요.",
+     "bad": [
+      "I don't know how use this machine.",
+      "I don't know how using this machine.",
+      "I don't know how to using this machine."
+     ],
+     "cz": {
+      "st": "I don't know how ___ this machine.",
+      "ok": "to use",
+      "wr": [
+       "use",
+       "using",
+       "to using"
+      ]
+     },
+     "rule": "의문사 + to V는 '~하는 방법/무엇을 ~할지'를 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "She didn't know what to say.",
+     "ko": "그녀는 무슨 말을 해야 할지 몰랐어요.",
+     "bad": [
+      "She didn't know what say.",
+      "She didn't know what saying.",
+      "She didn't know what to saying."
+     ],
+     "cz": {
+      "st": "She didn't know what ___.",
+      "ok": "to say",
+      "wr": [
+       "say",
+       "saying",
+       "to saying"
+      ]
+     },
+     "rule": "what + to V는 '무엇을 ~할지'라는 뜻의 명사구예요."
+    },
+    {
+     "k": "s",
+     "good": "I'd like to order a pizza.",
+     "ko": "피자를 주문하고 싶어요.",
+     "bad": [
+      "I'd like order a pizza.",
+      "I'd like ordering a pizza.",
+      "I'd like to ordering a pizza."
+     ],
+     "cz": {
+      "st": "I'd like ___ a pizza.",
+      "ok": "to order",
+      "wr": [
+       "order",
+       "ordering",
+       "ordered"
+      ]
+     },
+     "rule": "would like 뒤에는 to부정사가 와요: would like + to V.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "My dad advised me not to skip breakfast.",
+     "ko": "아빠는 나에게 아침을 거르지 말라고 조언하셨어요.",
+     "bad": [
+      "My dad advised me don't skip breakfast.",
+      "My dad advised me not skipping breakfast.",
+      "My dad advised me to not skipping breakfast."
+     ],
+     "cz": {
+      "st": "My dad advised me ___ skip breakfast.",
+      "ok": "not to",
+      "wr": [
+       "don't",
+       "not",
+       "no"
+      ]
+     },
+     "rule": "to부정사의 부정은 to 앞에 not을 붙여요: not to V.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "Not eating breakfast is bad for your health.",
+     "ko": "아침을 먹지 않는 것은 건강에 나빠요.",
+     "bad": [
+      "Don't eating breakfast is bad for your health.",
+      "Not eat breakfast is bad for your health.",
+      "No eating breakfast is bad for your health."
+     ],
+     "cz": {
+      "st": "___ breakfast is bad for your health.",
+      "ok": "Not eating",
+      "wr": [
+       "Don't eating",
+       "Not eat",
+       "No eating"
+      ]
+     },
+     "rule": "동명사의 부정은 V-ing 앞에 not을 붙여요: not + V-ing.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "I'm sorry for being late.",
+     "ko": "늦어서 미안해요.",
+     "bad": [
+      "I'm sorry for be late.",
+      "I'm sorry for to be late.",
+      "I'm sorry for been late."
+     ],
+     "cz": {
+      "st": "I'm sorry for ___ late.",
+      "ok": "being",
+      "wr": [
+       "be",
+       "to be",
+       "been"
+      ]
+     },
+     "rule": "전치사(for) 뒤에는 동명사를 써요."
+    },
+    {
+     "k": "s",
+     "good": "Thank you for helping me.",
+     "ko": "도와줘서 고마워요.",
+     "bad": [
+      "Thank you for help me.",
+      "Thank you for to help me.",
+      "Thank you for helped me."
+     ],
+     "cz": {
+      "st": "Thank you for ___ me.",
+      "ok": "helping",
+      "wr": [
+       "help",
+       "to help",
+       "helped"
+      ]
+     },
+     "rule": "전치사(for) 뒤에는 동명사를 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "She left without saying goodbye.",
+     "ko": "그녀는 작별 인사도 없이 떠났어요.",
+     "bad": [
+      "She left without say goodbye.",
+      "She left without to say goodbye.",
+      "She left without said goodbye."
+     ],
+     "cz": {
+      "st": "She left without ___ goodbye.",
+      "ok": "saying",
+      "wr": [
+       "say",
+       "to say",
+       "said"
+      ]
+     },
+     "rule": "전치사(without) 뒤에는 동명사를 써요."
+    },
+    {
+     "k": "s",
+     "good": "He is interested in learning Spanish.",
+     "ko": "그는 스페인어를 배우는 데 관심이 있어요.",
+     "bad": [
+      "He is interested in learn Spanish.",
+      "He is interested in to learn Spanish.",
+      "He is interested in learned Spanish."
+     ],
+     "cz": {
+      "st": "He is interested in ___ Spanish.",
+      "ok": "learning",
+      "wr": [
+       "learn",
+       "to learn",
+       "learned"
+      ]
+     },
+     "rule": "be interested in + V-ing: 전치사 in 뒤에는 동명사를 써요."
+    },
+    {
+     "k": "s",
+     "good": "It took me an hour to finish the puzzle.",
+     "ko": "그 퍼즐을 끝내는 데 한 시간이 걸렸어요.",
+     "bad": [
+      "It took me an hour finishing the puzzle.",
+      "It took me an hour for finish the puzzle.",
+      "It took me an hour to finishing the puzzle."
+     ],
+     "cz": {
+      "st": "It took me an hour ___ the puzzle.",
+      "ok": "to finish",
+      "wr": [
+       "finishing",
+       "for finish",
+       "finished"
+      ]
+     },
+     "rule": "It takes/took + (사람) + 시간 + to V: '~하는 데 시간이 걸리다'.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "It's fun to play games with friends.",
+     "ko": "친구들과 게임을 하는 것은 재미있어요.",
+     "bad": [
+      "It's fun play games with friends.",
+      "It's fun to playing games with friends.",
+      "It fun to play games with friends."
+     ],
+     "cz": {
+      "st": "It's fun ___ games with friends.",
+      "ok": "to play",
+      "wr": [
+       "play",
+       "to playing",
+       "for play"
+      ]
+     },
+     "rule": "가주어 It ... to V 구문: 진주어는 to부정사로 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "Our teacher asked us to be quiet.",
+     "ko": "선생님은 우리에게 조용히 하라고 부탁하셨어요.",
+     "bad": [
+      "Our teacher asked us be quiet.",
+      "Our teacher asked us being quiet.",
+      "Our teacher asked to us be quiet."
+     ],
+     "cz": {
+      "st": "Our teacher asked us ___ quiet.",
+      "ok": "to be",
+      "wr": [
+       "be",
+       "being",
+       "been"
+      ]
+     },
+     "rule": "ask + 목적어 + to V: '~에게 ...해 달라고 부탁하다'."
+    },
+    {
+     "k": "s",
+     "good": "He suggested going to the science museum.",
+     "ko": "그는 과학관에 가자고 제안했어요.",
+     "bad": [
+      "He suggested to go to the science museum.",
+      "He suggested go to the science museum.",
+      "He suggested to going to the science museum."
+     ],
+     "cz": {
+      "st": "He suggested ___ to the science museum.",
+      "ok": "going",
+      "wr": [
+       "to go",
+       "go",
+       "to going"
+      ]
+     },
+     "rule": "suggest는 동명사를 목적어로 취해요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "You should practice speaking English every day.",
+     "ko": "매일 영어로 말하는 연습을 해야 해요.",
+     "bad": [
+      "You should practice speak English every day.",
+      "You should practice to speak English every day.",
+      "You should practice to speaking English every day."
+     ],
+     "cz": {
+      "st": "You should practice ___ English every day.",
+      "ok": "speaking",
+      "wr": [
+       "speak",
+       "to speak",
+       "to speaking"
+      ]
+     },
+     "rule": "practice는 동명사를 목적어로 취해요.",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "‘그는 사진을 찍으려고 멈춰 섰다.’를 영어로 바르게 옮긴 것은?",
+     "o": [
+      "He stopped taking a photo.",
+      "He stopped to take a photo.",
+      "He stopped take a photo.",
+      "He stopped to taking a photo."
+     ],
+     "a": 1,
+     "why": "stop + to V는 '~하기 위해 멈추다(목적)', stop + V-ing는 '~하던 것을 멈추다'예요. 사진을 찍으려고 멈춰 섰다는 뜻이므로 to take가 맞아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "‘Anna는 통화하던 것을 멈췄다.’와 같은 뜻의 문장은?",
+     "o": [
+      "Anna stopped talking on the phone.",
+      "Anna stopped to talk on the phone.",
+      "Anna stopped talk on the phone.",
+      "Anna stopped to talking on the phone."
+     ],
+     "a": 0,
+     "why": "하던 일을 멈추는 것은 stop + V-ing로 나타내요. stopped to talk는 '이야기하려고 멈췄다'는 뜻이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "‘나는 어제 그 영화를 본 것을 기억한다.’에 해당하는 문장은?",
+     "o": [
+      "I remember to watch the movie yesterday.",
+      "I remember watch the movie yesterday.",
+      "I remember to watching the movie yesterday.",
+      "I remember watching the movie yesterday."
+     ],
+     "a": 3,
+     "why": "remember + V-ing는 이미 한 일을 기억한다는 뜻이고, remember + to V는 앞으로 할 일을 잊지 않고 기억한다는 뜻이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "‘Sam은 우유 사는 것을 깜빡해서 사지 않았다.’에 해당하는 문장은?",
+     "o": [
+      "Sam forgot buying milk.",
+      "Sam forgot buy milk.",
+      "Sam forgot to buy milk.",
+      "Sam forgot to buying milk."
+     ],
+     "a": 2,
+     "why": "forget + to V는 해야 할 일을 잊었다는 뜻이에요. forget + V-ing는 이미 한 일을 잊었다는 뜻이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I'll never forget ___ the sea for the first time. (처음 바다를 본 경험)",
+     "o": [
+      "to see",
+      "seeing",
+      "see",
+      "saw"
+     ],
+     "a": 1,
+     "why": "이미 한 경험을 잊지 못한다는 뜻이므로 forget + V-ing를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Don't forget ___ the lights when you leave the room.",
+     "o": [
+      "to turn off",
+      "turning off",
+      "turn off",
+      "turned off"
+     ],
+     "a": 0,
+     "why": "앞으로 할 일을 잊지 말라는 뜻이므로 forget + to V를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Mina was so tired that she stopped ___ and took a rest.",
+     "o": [
+      "to work",
+      "work",
+      "works",
+      "working"
+     ],
+     "a": 3,
+     "why": "하던 일을 멈추는 것은 stop + V-ing예요. 쉬려고 일을 멈춘 상황이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which verb is usually followed by V-ing, not by to V?",
+     "o": [
+      "hope",
+      "decide",
+      "enjoy",
+      "plan"
+     ],
+     "a": 2,
+     "why": "enjoy는 동명사를 목적어로 취하고, hope, decide, plan은 to부정사를 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which verb is followed by to V, not by V-ing?",
+     "o": [
+      "finish",
+      "agree",
+      "mind",
+      "avoid"
+     ],
+     "a": 1,
+     "why": "agree는 to부정사를 취하고, finish, mind, avoid는 동명사를 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 동명사를 목적어로 취하는 동사끼리 짝지은 것은?",
+     "o": [
+      "avoid, finish",
+      "hope, plan",
+      "want, need",
+      "decide, refuse"
+     ],
+     "a": 0,
+     "why": "avoid와 finish는 동명사만 목적어로 취해요. 나머지 동사들은 to부정사를 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 to부정사를 목적어로 취하는 동사끼리 짝지은 것은?",
+     "o": [
+      "enjoy, mind",
+      "avoid, keep",
+      "finish, give up",
+      "hope, decide"
+     ],
+     "a": 3,
+     "why": "hope와 decide는 to부정사를 취하고, 나머지 짝의 동사들은 동명사를 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which pair of verbs can take both to V and V-ing with almost the same meaning?",
+     "o": [
+      "enjoy, finish",
+      "want, hope",
+      "like, love",
+      "avoid, mind"
+     ],
+     "a": 2,
+     "why": "like와 love는 to V와 V-ing를 모두 목적어로 취할 수 있어요. 나머지 짝은 한쪽 형태만 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which verb is NOT followed by V-ing?",
+     "o": [
+      "suggest",
+      "promise",
+      "practice",
+      "consider"
+     ],
+     "a": 1,
+     "why": "promise는 to부정사를 취해요. suggest, practice, consider는 동명사를 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which verb is NOT usually followed by to V?",
+     "o": [
+      "mind",
+      "manage",
+      "offer",
+      "expect"
+     ],
+     "a": 0,
+     "why": "mind는 동명사를 취해요. manage, offer, expect는 to부정사를 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I'm planning ___ my grandparents this weekend.",
+     "o": [
+      "visiting",
+      "visit",
+      "visited",
+      "to visit"
+     ],
+     "a": 3,
+     "why": "plan은 to부정사를 목적어로 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Would you like ___ some tea?",
+     "o": [
+      "having",
+      "have",
+      "to have",
+      "had"
+     ],
+     "a": 2,
+     "why": "would like 뒤에는 to부정사가 와요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "My grandfather is tired of ___ the same food every day.",
+     "o": [
+      "to eat",
+      "eating",
+      "eat",
+      "ate"
+     ],
+     "a": 1,
+     "why": "전치사(of) 뒤에는 동명사를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Thanks for ___ me carry the bags.",
+     "o": [
+      "helping",
+      "to help",
+      "help",
+      "helped"
+     ],
+     "a": 0,
+     "why": "전치사(for) 뒤에는 동명사를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "The students were excited ___ the new robot.",
+     "o": [
+      "seeing",
+      "see",
+      "saw",
+      "to see"
+     ],
+     "a": 3,
+     "why": "감정을 나타내는 형용사 뒤의 to V는 감정의 원인을 나타내요: excited to see.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I got up early ___ the sunrise.",
+     "o": [
+      "saw",
+      "see",
+      "to see",
+      "for see"
+     ],
+     "a": 2,
+     "why": "'~하기 위해'라는 목적은 to부정사로 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "She went to the library ___ some books.",
+     "o": [
+      "borrowing",
+      "to borrow",
+      "for borrow",
+      "borrowed"
+     ],
+     "a": 1,
+     "why": "목적을 나타내는 to부정사가 필요해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "It's too cold ___ outside today.",
+     "o": [
+      "to play",
+      "playing",
+      "for play",
+      "play"
+     ],
+     "a": 0,
+     "why": "too + 형용사 + to V: '너무 ~해서 ...할 수 없다'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Tom isn't old enough ___ a car.",
+     "o": [
+      "driving",
+      "for drive",
+      "drive",
+      "to drive"
+     ],
+     "a": 3,
+     "why": "형용사 + enough + to V: '~할 만큼 충분히 ...하다'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "My uncle taught me ___ the guitar.",
+     "o": [
+      "playing",
+      "play",
+      "to play",
+      "played"
+     ],
+     "a": 2,
+     "why": "teach + 목적어 + to V: '~에게 ...하는 법을 가르치다'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "It was kind of you ___ me.",
+     "o": [
+      "helping",
+      "to help",
+      "help",
+      "for help"
+     ],
+     "a": 1,
+     "why": "사람의 성질을 나타내는 형용사(kind) 뒤에서 'of + 사람 + to V'를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I can't help ___ when I hear that joke.",
+     "o": [
+      "laughing",
+      "to laugh",
+      "laugh",
+      "laughed"
+     ],
+     "a": 0,
+     "why": "can't help + V-ing: '~하지 않을 수 없다'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Do you feel like ___ for a walk?",
+     "o": [
+      "to go",
+      "go",
+      "went",
+      "going"
+     ],
+     "a": 3,
+     "why": "feel like + V-ing: '~하고 싶다'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "She came home early ___ dinner for her family.",
+     "o": [
+      "for cook",
+      "cook",
+      "to cook",
+      "cooks"
+     ],
+     "a": 2,
+     "why": "'~하기 위해'라는 목적을 나타내는 to부정사가 필요해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "The movie made me ___.",
+     "o": [
+      "to cry",
+      "cry",
+      "crying",
+      "cried"
+     ],
+     "a": 1,
+     "why": "사역동사 make + 목적어 뒤에는 동사원형을 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "It was not easy for him ___ the answer.",
+     "o": [
+      "to find",
+      "finding",
+      "find",
+      "found"
+     ],
+     "a": 0,
+     "why": "It is + 형용사 + for + 사람 + to V 구문이에요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "___ a foreign language takes time and patience.",
+     "o": [
+      "Learn",
+      "To learning",
+      "Learns",
+      "Learning"
+     ],
+     "a": 3,
+     "why": "동명사가 문장의 주어가 될 수 있어요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "He warned the kids ___ near the fire.",
+     "o": [
+      "don't go",
+      "not going",
+      "not to go",
+      "no go"
+     ],
+     "a": 2,
+     "why": "warn + 목적어 + not to V: '~하지 말라고 경고하다'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I have a lot of homework ___ today.",
+     "o": [
+      "doing",
+      "to do",
+      "for do",
+      "did"
+     ],
+     "a": 1,
+     "why": "명사 뒤에서 명사를 꾸미는 to부정사: homework to do (해야 할 숙제).",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Would you like something cold ___?",
+     "o": [
+      "to drink",
+      "drinking",
+      "for drink",
+      "drank"
+     ],
+     "a": 0,
+     "why": "something + 형용사 + to V: '마실 차가운 것'.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "He pretended ___ asleep when his mom came in.",
+     "o": [
+      "being",
+      "be",
+      "been",
+      "to be"
+     ],
+     "a": 3,
+     "why": "pretend는 to부정사를 목적어로 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "They couldn't afford ___ a new car.",
+     "o": [
+      "buying",
+      "buy",
+      "to buy",
+      "bought"
+     ],
+     "a": 2,
+     "why": "afford는 to부정사를 목적어로 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "I'm thinking of ___ a pet dog.",
+     "o": [
+      "to get",
+      "getting",
+      "get",
+      "got"
+     ],
+     "a": 1,
+     "why": "전치사(of) 뒤에는 동명사를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "How about ___ a picnic on Sunday?",
+     "o": [
+      "having",
+      "to have",
+      "have",
+      "had"
+     ],
+     "a": 0,
+     "why": "How about 뒤에는 동명사를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: He (A) avoids (B) to eat (C) sweet food (D) after dinner.",
+     "o": [
+      "avoids",
+      "sweet food",
+      "after dinner",
+      "to eat"
+     ],
+     "a": 3,
+     "why": "avoid는 동명사를 취하므로 to eat를 eating으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: My brother is good at to cook pasta.",
+     "o": [
+      "is",
+      "good at",
+      "to cook",
+      "pasta"
+     ],
+     "a": 2,
+     "why": "전치사 at 뒤에는 동명사가 와야 하므로 to cook을 cooking으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: We decided taking a taxi because it was raining.",
+     "o": [
+      "decided",
+      "taking",
+      "a taxi",
+      "because"
+     ],
+     "a": 1,
+     "why": "decide는 to부정사를 취하므로 taking을 to take로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: I'm looking forward to see my grandparents next week.",
+     "o": [
+      "to see",
+      "looking forward",
+      "my grandparents",
+      "next week"
+     ],
+     "a": 0,
+     "why": "look forward to의 to는 전치사이므로 to see를 seeing으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: Mina promised being on time.",
+     "o": [
+      "Mina",
+      "promised",
+      "on time",
+      "being"
+     ],
+     "a": 3,
+     "why": "promise는 to부정사를 취하므로 being을 to be로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: They were too excited sleeping last night.",
+     "o": [
+      "were",
+      "too excited",
+      "sleeping",
+      "last night"
+     ],
+     "a": 2,
+     "why": "too + 형용사 + to V 구문이므로 sleeping을 to sleep으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: My teacher let us to use dictionaries during the test.",
+     "o": [
+      "My teacher",
+      "to use",
+      "dictionaries",
+      "during the test"
+     ],
+     "a": 1,
+     "why": "사역동사 let 뒤에는 동사원형을 써야 하므로 to use를 use로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: Thank you for to invite me to your party.",
+     "o": [
+      "to invite",
+      "Thank you",
+      "me",
+      "your party"
+     ],
+     "a": 0,
+     "why": "전치사 for 뒤에는 동명사가 와야 하므로 to invite를 inviting으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: Jisu wants learning how to swim this summer.",
+     "o": [
+      "wants",
+      "how to swim",
+      "this summer",
+      "learning"
+     ],
+     "a": 3,
+     "why": "want는 to부정사를 취하므로 learning을 to learn으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Choose the part that must be corrected: Do you mind to close the door?",
+     "o": [
+      "Do you",
+      "mind",
+      "to close",
+      "the door"
+     ],
+     "a": 2,
+     "why": "mind는 동명사를 취하므로 to close를 closing으로 고쳐야 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence has the same meaning as ‘He is so tired that he can't walk.’?",
+     "o": [
+      "He is tired enough to walk.",
+      "He is too tired to walk.",
+      "He is too tired walking.",
+      "He is so tired to walk."
+     ],
+     "a": 1,
+     "why": "too ... to V는 '너무 ~해서 ...할 수 없다'는 뜻이라 so ... that ... can't와 같아요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "‘She went to the clinic to see the doctor.’에서 to see의 의미로 알맞은 것은?",
+     "o": [
+      "~하기 위해서",
+      "~하는 것은",
+      "~할 (명사 수식)",
+      "~해서 (감정의 원인)"
+     ],
+     "a": 0,
+     "why": "to see the doctor는 병원에 간 목적(~을 보기 위해서)을 나타내요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "‘My dream is to become a pilot.’에서 to become a pilot의 문장 성분은?",
+     "o": [
+      "주어",
+      "목적어",
+      "수식어(부사)",
+      "보어"
+     ],
+     "a": 3,
+     "why": "to become a pilot은 be동사 뒤에서 주어 My dream을 설명하는 보어 역할을 해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence uses a gerund as the subject?",
+     "o": [
+      "I like to swim.",
+      "She wants to swim.",
+      "Swimming is good exercise.",
+      "We went swimming."
+     ],
+     "a": 2,
+     "why": "Swimming이 문장의 주어 자리에 쓰인 동명사예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "‘It is fun to learn new words.’에서 It의 역할로 알맞은 것은?",
+     "o": [
+      "진주어",
+      "가주어",
+      "목적어",
+      "보어"
+     ],
+     "a": 1,
+     "why": "It은 가주어이고 진짜 주어(진주어)는 to learn new words예요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: Why did you go to the bookstore?\nB: ___ a gift for my sister.",
+     "o": [
+      "To buy",
+      "For buy",
+      "To buying",
+      "Bought"
+     ],
+     "a": 0,
+     "why": "이유(목적)를 말할 때 to부정사를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: What do you hope to do this winter?\nB: I hope ___ snowboarding.",
+     "o": [
+      "trying",
+      "try",
+      "tried",
+      "to try"
+     ],
+     "a": 3,
+     "why": "hope는 to부정사를 목적어로 취해요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "m",
+     "q": "A: Did you finish your report?\nB: Not yet. I need two more hours ___ it.",
+     "o": [
+      "finishing",
+      "for finish",
+      "to finish",
+      "finished"
+     ],
+     "a": 2,
+     "why": "시간 뒤에서 '~하기 위한'의 뜻으로 to부정사를 써요.",
+     "cat": "grammar"
+    },
+    {
+     "k": "r",
+     "title": "A New Hobby",
+     "text": "Last spring, Jina decided to start running. She had never enjoyed exercising, but her doctor advised her to move more. At first, she could not run for even five minutes without stopping to rest. Her friend Hana suggested keeping a small notebook to record each day. Jina refused to give up, and she wrote down every run. After two months, she finished running three kilometers without stopping. Now she looks forward to jogging every morning, and she has even started helping her little brother train for his school race.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "Why Jina's doctor told her to stop exercising",
+        "How Hana trained for a school race last year",
+        "How Jina turned running into a habit",
+        "Where Jina bought her first pair of running shoes"
+       ],
+       "a": 2,
+       "why": "Jina starts running, keeps a notebook, and improves until she enjoys it. 중심 내용은 달리기 습관 만들기예요."
+      },
+      {
+       "q": "Why did Jina begin running?",
+       "o": [
+        "Her doctor told her to be more active.",
+        "Her friend Hana asked her to join a school team.",
+        "She wanted to win a race against her brother.",
+        "She had always loved sports since she was a child."
+       ],
+       "a": 0,
+       "why": "본문: her doctor advised her to move more."
+      },
+      {
+       "q": "What did Hana suggest?",
+       "o": [
+        "Running only on the weekends with her brother",
+        "Resting for a week after every long run",
+        "Practicing at a track near her school",
+        "Writing down each run in a notebook"
+       ],
+       "a": 3,
+       "why": "본문: Hana suggested keeping a small notebook to record each day."
+      },
+      {
+       "q": "What can we infer about Jina now?",
+       "o": [
+        "She plans to stop running when summer comes.",
+        "She has become more positive about exercise.",
+        "She still cannot run for more than five minutes.",
+        "She dislikes helping other people with sports."
+       ],
+       "a": 1,
+       "why": "아침마다 조깅을 기대하고 동생을 돕는 모습에서 운동에 긍정적으로 바뀌었음을 알 수 있어요."
+      },
+      {
+       "q": "Which statement is true?",
+       "o": [
+        "Jina ran three kilometers on her very first day.",
+        "Jina's little brother taught her how to run.",
+        "Jina can run three kilometers without stopping now.",
+        "Jina stopped recording her runs after a week."
+       ],
+       "a": 2,
+       "why": "본문: After two months, she finished running three kilometers without stopping."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "The Class Garden",
+     "text": "Our class decided to make a small garden behind the school. First, we asked our science teacher to help us choose the right place. She told us to look for a spot with a lot of sunlight. Then we spent two weekends digging the soil and planting tomatoes, beans, and herbs. Some students were afraid of touching worms, but they soon learned that worms help plants grow. Now we take turns watering the garden before class. Last week, we picked our first tomatoes and shared them at lunch. Everyone agreed that working together was the best part.",
+     "qs": [
+      {
+       "q": "What is the best title for the passage?",
+       "o": [
+        "A Science Test About Worms and Beans",
+        "Growing a Garden Together",
+        "How One Student Won a Cooking Contest",
+        "Why Schools Should Sell Fresh Tomatoes"
+       ],
+       "a": 1,
+       "why": "학급 친구들이 함께 텃밭을 만드는 이야기예요."
+      },
+      {
+       "q": "What did the students do on two weekends?",
+       "o": [
+        "They visited a farm and bought some tomatoes.",
+        "They built a fence around the school building.",
+        "They listened to their teacher talk about worms.",
+        "They dug the soil and planted vegetables and herbs."
+       ],
+       "a": 3,
+       "why": "본문: we spent two weekends digging the soil and planting..."
+      },
+      {
+       "q": "In the passage, “take turns” means to ___.",
+       "o": [
+        "do something one after another",
+        "do something all at the same time",
+        "stop doing something for a while",
+        "ask a teacher to do something"
+       ],
+       "a": 0,
+       "why": "take turns는 '교대로 하다'라는 뜻이에요."
+      },
+      {
+       "q": "Who does “they” in “they soon learned” refer to?",
+       "o": [
+        "The science teacher and her class",
+        "The tomatoes and the beans in the garden",
+        "Some students who were afraid of worms",
+        "Everyone who shared lunch last week"
+       ],
+       "a": 2,
+       "why": "they는 바로 앞 문장의 Some students를 가리켜요."
+      },
+      {
+       "q": "Which statement is true?",
+       "o": [
+        "The class planted flowers instead of vegetables.",
+        "The class has already picked some tomatoes.",
+        "The teacher chose a spot without much sun.",
+        "The students watered the garden after class."
+       ],
+       "a": 1,
+       "why": "본문: Last week, we picked our first tomatoes."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Day at the Market",
+     "text": "On Saturday, my family went to the old market near our town. My father wanted to buy fresh fish, and my mother needed to find some cheap vegetables. I did not enjoy walking in the crowd at first, but then I smelled something delicious. A woman was selling hot rice cakes, so I stopped to buy some. She smiled and gave me an extra one for free. My little sister kept asking to try everything. In the end, we spent three hours there and went home with heavy bags and happy faces.",
+     "qs": [
+      {
+       "q": "Why did the writer stop at the rice cake stand?",
+       "o": [
+        "To buy some hot rice cakes",
+        "To ask the woman where the fish was sold",
+        "To rest because the bags were too heavy",
+        "To meet a friend who worked at the market"
+       ],
+       "a": 0,
+       "why": "본문: I stopped to buy some. to buy는 멈춘 목적이에요."
+      },
+      {
+       "q": "What did the woman do for the writer?",
+       "o": [
+        "She carried the writer's heavy bags.",
+        "She showed the family the way out.",
+        "She gave an extra rice cake for free.",
+        "She taught the writer how to cook."
+       ],
+       "a": 2,
+       "why": "본문: gave me an extra one for free."
+      },
+      {
+       "q": "How did the writer feel at the end of the day?",
+       "o": [
+        "Tired and angry at the crowd",
+        "Happy and satisfied",
+        "Worried about the heavy bags",
+        "Bored by the long visit"
+       ],
+       "a": 1,
+       "why": "heavy bags and happy faces에서 즐거운 하루였음을 알 수 있어요."
+      },
+      {
+       "q": "In the passage, “in the end” means ___.",
+       "o": [
+        "at the front",
+        "for a short time",
+        "from the beginning",
+        "finally"
+       ],
+       "a": 3,
+       "why": "in the end는 '결국, 마침내'라는 뜻이에요."
+      },
+      {
+       "q": "What did the writer's mother need to find?",
+       "o": [
+        "A gift for her youngest daughter",
+        "Some cheap vegetables",
+        "Fresh fish for dinner that night",
+        "A warm coat for the cold season"
+       ],
+       "a": 1,
+       "why": "본문: my mother needed to find some cheap vegetables."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Learning to Code",
+     "text": "Min-jun joined the school coding club because he wanted to make his own game. At first, he had trouble understanding even simple commands, and he nearly gave up. His teacher, Ms. Choi, told him not to worry about mistakes. “Every programmer makes errors,” she said. “The important thing is finding them and fixing them.” After that, Min-jun began testing his code after every few lines. It took him a month to finish a small game about a jumping cat. He was proud of it, and now he enjoys teaching new members how to start.",
+     "qs": [
+      {
+       "q": "Why did Ms. Choi say, “Every programmer makes errors”?",
+       "o": [
+        "To warn Min-jun about a hard exam",
+        "To explain why the club was closing",
+        "To encourage Min-jun not to lose hope",
+        "To blame Min-jun for his careless code"
+       ],
+       "a": 2,
+       "why": "실수는 누구나 한다는 말로 민준이를 격려하려는 의도예요."
+      },
+      {
+       "q": "How long did it take Min-jun to finish the game?",
+       "o": [
+        "About a month",
+        "Only a few days",
+        "Nearly a whole year",
+        "Two weekends"
+       ],
+       "a": 0,
+       "why": "본문: It took him a month to finish a small game."
+      },
+      {
+       "q": "In the passage, “gave up” means ___.",
+       "o": [
+        "started again",
+        "stopped trying",
+        "asked for help",
+        "made a plan"
+       ],
+       "a": 1,
+       "why": "nearly gave up은 '거의 포기할 뻔했다'는 뜻이에요."
+      },
+      {
+       "q": "What changed Min-jun's way of coding?",
+       "o": [
+        "He stopped using the school computers.",
+        "He wrote longer programs without any rest.",
+        "He copied the games of other members.",
+        "He started testing his code after every few lines."
+       ],
+       "a": 3,
+       "why": "격려를 들은 뒤 몇 줄마다 코드를 시험해 보기 시작했어요."
+      },
+      {
+       "q": "What can we infer about Min-jun now?",
+       "o": [
+        "He feels confident enough to help others.",
+        "He thinks coding is too difficult for him.",
+        "He wants to leave the club soon.",
+        "He has never made a mistake in his code."
+       ],
+       "a": 0,
+       "why": "신입 회원을 가르치는 것을 즐기는 모습에서 자신감을 알 수 있어요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Helping Sea Turtles",
+     "text": "Every summer, volunteers visit a quiet beach to protect baby sea turtles. Before the eggs hatch, they put a small fence around the nests to keep animals away. When night comes, the volunteers must avoid using bright lights, because the little turtles may follow the light instead of going to the sea. Some tourists forget to turn off their flashlights, so the volunteers politely ask them to do it. Thanks to this work, more baby turtles can reach the water safely. The volunteers hope to make the beach a safe home for turtles for many years.",
+     "qs": [
+      {
+       "q": "Why must the volunteers avoid bright lights at night?",
+       "o": [
+        "Bright lights make the eggs too hot to hatch.",
+        "Baby turtles may follow the light away from the sea.",
+        "Tourists cannot sleep when the beach is bright.",
+        "The fence around the nests might break."
+       ],
+       "a": 1,
+       "why": "본문: the little turtles may follow the light instead of going to the sea."
+      },
+      {
+       "q": "What do the volunteers ask some tourists to do?",
+       "o": [
+        "Move away from the fence",
+        "Help them dig new nests",
+        "Bring food for the turtles",
+        "Turn off their flashlights"
+       ],
+       "a": 3,
+       "why": "본문: volunteers politely ask them to turn off flashlights."
+      },
+      {
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Volunteers work to keep baby sea turtles safe.",
+        "Tourists are the only people who love turtles.",
+        "Sea turtles lay their eggs in many different seasons.",
+        "A beach should be closed to visitors forever."
+       ],
+       "a": 0,
+       "why": "자원봉사자들이 아기 바다거북을 보호하는 활동이 중심 내용이에요."
+      },
+      {
+       "q": "In the passage, “hatch” means ___.",
+       "o": [
+        "to swim far away",
+        "to build a nest",
+        "to come out of an egg",
+        "to hide from tourists"
+       ],
+       "a": 2,
+       "why": "hatch는 '(알이) 부화하다'라는 뜻이에요."
+      },
+      {
+       "q": "Which statement is true?",
+       "o": [
+        "The volunteers visit the beach only in winter.",
+        "The volunteers put a fence around the nests.",
+        "The tourists put the fence around the nests.",
+        "The volunteers use bright lights at night."
+       ],
+       "a": 1,
+       "why": "본문: they put a small fence around the nests."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Kimjang Day",
+     "text": "In late autumn, my grandmother's house is full of people. It is the day for making kimchi for the winter. My aunts begin washing cabbages early in the morning, and my uncles carry them to the yard. My grandmother does not like using too much salt, so she checks every cabbage herself. I am too young to make the sauce, but she lets me spread it on the leaves. Our hands become red and sticky, and we laugh a lot. By evening, we have more than fifty boxes. Grandmother says that kimchi tastes better when many people make it together.",
+     "qs": [
+      {
+       "q": "Why doesn't the writer make the sauce?",
+       "o": [
+        "The writer dislikes spicy food.",
+        "The writer has to wash the cabbages.",
+        "The writer's hands are too sticky.",
+        "The writer is too young to do it."
+       ],
+       "a": 3,
+       "why": "본문: I am too young to make the sauce."
+      },
+      {
+       "q": "What does the writer's grandmother care about?",
+       "o": [
+        "The taste of the kimchi",
+        "The price of the cabbages",
+        "The size of the yard",
+        "The number of guests"
+       ],
+       "a": 0,
+       "why": "그녀는 소금을 많이 쓰지 않으려고 배추를 일일이 확인해요. 맛을 중시한다고 볼 수 있어요."
+      },
+      {
+       "q": "What does “it” refer to in the last sentence?",
+       "o": [
+        "The yard",
+        "Kimchi",
+        "The winter",
+        "Salt"
+       ],
+       "a": 1,
+       "why": "tastes better when many people make it에서 it은 kimchi를 가리켜요."
+      },
+      {
+       "q": "What is the mood of the day?",
+       "o": [
+        "Quiet and lonely",
+        "Serious and worried",
+        "Cheerful and busy",
+        "Sad and tired"
+       ],
+       "a": 2,
+       "why": "많은 사람이 모여 웃으며 일하는 즐겁고 바쁜 분위기예요."
+      },
+      {
+       "q": "Which statement is true?",
+       "o": [
+        "The family makes more than fifty boxes of kimchi.",
+        "The uncles wash all the cabbages.",
+        "The writer makes all the sauce alone.",
+        "The work finishes before lunch."
+       ],
+       "a": 0,
+       "why": "본문: By evening, we have more than fifty boxes."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Kind Neighbor",
+     "text": "Mr. Han lives alone on the third floor of our building, and the elevator is often broken. Last Tuesday, I saw him carrying two heavy bags up the stairs. He stopped on every floor to rest. I felt worried, so I offered to help him. At first he refused to let me carry the bags, but then he smiled and handed me one. When we reached his door, he thanked me for being so kind and gave me an orange. Since then, I have tried to say hello whenever I see him. Helping others can make an ordinary day feel special.",
+     "qs": [
+      {
+       "q": "Why did Mr. Han stop on every floor?",
+       "o": [
+        "He wanted to say hello to his neighbors.",
+        "He was tired from carrying heavy bags.",
+        "He was waiting for the elevator to work.",
+        "He had forgotten which floor he lived on."
+       ],
+       "a": 1,
+       "why": "무거운 가방을 들고 계단을 올라서 쉬어야 했다고 추론할 수 있어요."
+      },
+      {
+       "q": "What did the writer do when feeling worried?",
+       "o": [
+        "Called the building manager",
+        "Waited for the elevator",
+        "Carried both bags at once",
+        "Offered to help Mr. Han"
+       ],
+       "a": 3,
+       "why": "본문: I felt worried, so I offered to help him."
+      },
+      {
+       "q": "What did Mr. Han do at the end?",
+       "o": [
+        "He thanked the writer and gave an orange.",
+        "He refused the help again and went inside.",
+        "He asked the writer to fix the elevator.",
+        "He carried the writer's bags upstairs."
+       ],
+       "a": 0,
+       "why": "본문: he thanked me ... and gave me an orange."
+      },
+      {
+       "q": "In the passage, “handed” means ___.",
+       "o": [
+        "threw far away",
+        "took without asking",
+        "gave with one's hand",
+        "held for a long time"
+       ],
+       "a": 2,
+       "why": "handed me one은 '나에게 하나를 건네주었다'는 뜻이에요."
+      },
+      {
+       "q": "What is the writer's message in the last sentence?",
+       "o": [
+        "Elevators should be repaired every week.",
+        "Small acts of kindness can make a day special.",
+        "Old people should live on the first floor.",
+        "Neighbors should never carry anything."
+       ],
+       "a": 1,
+       "why": "마지막 문장은 남을 돕는 작은 행동의 가치를 말하고 있어요."
+      }
+     ],
+     "std": [
+      "9영01-03",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Cooking Without a Recipe",
+     "text": "My uncle never uses a recipe when he cooks. He says that following every step makes him bored. Instead, he tastes the food again and again and adds a little salt or sugar. Last night, he made a vegetable soup for our family. I was worried because he forgot to buy onions, but he used extra carrots and it tasted great. “Cooking is like drawing,” he told me. “You should not be afraid of making mistakes.” I still prefer to follow a recipe, but I am learning to trust my taste a little more.",
+     "qs": [
+      {
+       "q": "What did the uncle do when he had no onions?",
+       "o": [
+        "He went out to buy some more.",
+        "He asked the writer to cook.",
+        "He used extra carrots instead.",
+        "He stopped making the soup."
+       ],
+       "a": 2,
+       "why": "본문: he used extra carrots and it tasted great."
+      },
+      {
+       "q": "What does the uncle mean by “Cooking is like drawing”?",
+       "o": [
+        "You can try freely and learn from mistakes",
+        "You must follow each line exactly",
+        "You need special tools to start",
+        "You should cook only for your family"
+       ],
+       "a": 0,
+       "why": "그림처럼 요리도 자유롭게 시도하고 실수를 두려워하지 말라는 뜻이에요."
+      },
+      {
+       "q": "How is the writer different from the uncle?",
+       "o": [
+        "The writer never tastes the food.",
+        "The writer likes following a recipe.",
+        "The writer cooks every night.",
+        "The writer hates vegetable soup."
+       ],
+       "a": 1,
+       "why": "본문: I still prefer to follow a recipe."
+      },
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A recipe for a vegetable soup",
+        "A family trip to buy onions",
+        "A cooking class for children",
+        "An uncle's free way of cooking"
+       ],
+       "a": 3,
+       "why": "레시피 없이 요리하는 삼촌의 방식과 그에 대한 글쓴이의 생각이 중심이에요."
+      }
+     ],
+     "std": [
+      "9영01-03",
+      "9영01-07"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Sleeping Better",
+     "text": "Many teenagers go to bed late and feel tired the next day. Experts say that avoiding screens for an hour before bed can help you fall asleep faster. It is also a good idea to keep your room dark and cool. Some students like reading a paper book instead of watching videos. Others try to write down tomorrow's plans so that they can stop worrying. Of course, you cannot change everything in one night. Start by choosing one habit and keeping it for a week. Small changes are easier to continue, and soon you may wake up feeling much better.",
+     "qs": [
+      {
+       "q": "What is the writer's purpose?",
+       "o": [
+        "To give advice about better sleep",
+        "To sell a new type of bed",
+        "To tell a story about a tired student",
+        "To explain how screens are made"
+       ],
+       "a": 0,
+       "why": "잠을 잘 자는 방법에 대한 조언을 주는 글이에요."
+      },
+      {
+       "q": "Which is NOT suggested in the passage?",
+       "o": [
+        "Keeping the bedroom dark and cool",
+        "Reading a paper book before bed",
+        "Writing down plans for tomorrow",
+        "Drinking warm milk every night"
+       ],
+       "a": 3,
+       "why": "따뜻한 우유는 언급되지 않았어요."
+      },
+      {
+       "q": "How long should we avoid screens before bed?",
+       "o": [
+        "For a whole week",
+        "For about an hour",
+        "For ten minutes",
+        "Until the next morning"
+       ],
+       "a": 1,
+       "why": "본문: avoiding screens for an hour before bed."
+      },
+      {
+       "q": "What does the writer advise at the end?",
+       "o": [
+        "Change every habit on the first night.",
+        "Go to bed at midnight every day.",
+        "Choose one habit and keep it for a week.",
+        "Stop reading before you sleep."
+       ],
+       "a": 2,
+       "why": "본문: Start by choosing one habit and keeping it for a week."
+      },
+      {
+       "q": "In the passage, “habit” means ___.",
+       "o": [
+        "something you do regularly",
+        "a place where you sleep",
+        "a plan for tomorrow",
+        "a kind of book"
+       ],
+       "a": 0,
+       "why": "habit은 '습관'이라는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Letter to Jake",
+     "text": "Dear Jake, Thank you for your last letter! I was happy to hear that you finally started learning Korean. I am writing to tell you about my summer plan. I hope to visit your city in August if my parents agree. I am really looking forward to seeing the clock tower you told me about. Would you mind showing me around? I am also planning to bring some snacks from Korea for your family. Please write back soon and tell me what you want to eat or do. Your friend, Somin",
+     "qs": [
+      {
+       "q": "Why did Somin write this letter?",
+       "o": [
+        "To say sorry for not writing back earlier",
+        "To share her travel plan and ask for his help",
+        "To invite Jake to a party in her city",
+        "To complain about her summer homework"
+       ],
+       "a": 1,
+       "why": "여행 계획을 알리고 안내를 부탁하려는 목적이에요."
+      },
+      {
+       "q": "What does Somin plan to bring for Jake's family?",
+       "o": [
+        "A book about clock towers",
+        "Fruit from her garden",
+        "Some snacks from Korea",
+        "Pictures of her family"
+       ],
+       "a": 2,
+       "why": "본문: I am also planning to bring some snacks from Korea."
+      },
+      {
+       "q": "What can we infer about Somin's trip?",
+       "o": [
+        "She has already bought the tickets.",
+        "She will travel with Jake's parents.",
+        "She plans to stay for a whole year.",
+        "It is not completely decided yet."
+       ],
+       "a": 3,
+       "why": "if my parents agree라는 표현에서 아직 확정되지 않았음을 알 수 있어요."
+      },
+      {
+       "q": "In the letter, “show me around” means ___.",
+       "o": [
+        "guide me through a place",
+        "write to me often",
+        "visit me at home",
+        "give me some money"
+       ],
+       "a": 0,
+       "why": "show someone around는 '~에게 곳곳을 안내해 주다'라는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "avoid",
+     "pos": "v",
+     "ko": "피하다",
+     "ex": "You should avoid eating too much sugar.",
+     "exko": "너는 설탕을 너무 많이 먹는 것을 피해야 해요.",
+     "z": [
+      "hope",
+      "decide",
+      "wish"
+     ],
+     "syn": [],
+     "sp": [
+      "avoyd",
+      "avoide",
+      "avvoid"
+     ],
+     "d": 3
+    },
+    {
+     "k": "w",
+     "en": "refuse",
+     "pos": "v",
+     "ko": "거절하다",
+     "ex": "She will refuse to sign the paper.",
+     "exko": "그녀는 그 서류에 서명하기를 거절할 거예요.",
+     "z": [
+      "enjoy",
+      "avoid",
+      "finish"
+     ],
+     "syn": [
+      "decline"
+     ],
+     "sp": [
+      "refiuse",
+      "reffuse",
+      "refus"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "suggest",
+     "pos": "v",
+     "ko": "제안하다",
+     "ex": "I suggest taking a short break.",
+     "exko": "저는 잠깐 쉬는 것을 제안해요.",
+     "z": [
+      "hope",
+      "decide",
+      "want"
+     ],
+     "syn": [
+      "recommend",
+      "propose"
+     ],
+     "sp": [
+      "sugest",
+      "suggst",
+      "sugget"
+     ]
+    }
+   ]
+  }
+ ]
+}

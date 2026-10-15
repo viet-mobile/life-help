@@ -1,0 +1,2464 @@
+{
+ "packet": "M04-plural",
+ "sections": [
+  {
+   "skill": "e.plural",
+   "items": [
+    {
+     "k": "s",
+     "good": "The children are playing in the park.",
+     "ko": "아이들이 공원에서 놀고 있어요.",
+     "bad": [
+      "The childs are playing in the park.",
+      "The childrens are playing in the park.",
+      "The children is playing in the park."
+     ],
+     "cz": {
+      "st": "The ___ are playing in the park.",
+      "ok": "children",
+      "wr": [
+       "childs",
+       "childrens",
+       "child"
+      ]
+     },
+     "rule": "child의 복수형은 불규칙형 children이에요. 이미 복수이므로 -s를 또 붙이지 않아요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "There are three boxes on the table.",
+     "ko": "탁자 위에 상자가 세 개 있어요.",
+     "bad": [
+      "There are three boxs on the table.",
+      "There are three box on the table.",
+      "There is three boxes on the table."
+     ],
+     "cz": {
+      "st": "There are three ___ on the table.",
+      "ok": "boxes",
+      "wr": [
+       "boxs",
+       "box",
+       "boxies"
+      ]
+     },
+     "rule": "-x로 끝나는 명사는 -es를 붙이고, 셋 이상이면 복수형을 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "My mother bought five tomatoes.",
+     "ko": "어머니가 토마토를 다섯 개 사셨어요.",
+     "bad": [
+      "My mother bought five tomatos.",
+      "My mother bought five tomatoies.",
+      "My mother bought five tomato."
+     ],
+     "cz": {
+      "st": "My mother bought five ___.",
+      "ok": "tomatoes",
+      "wr": [
+       "tomatos",
+       "tomatoies",
+       "tomato"
+      ]
+     },
+     "rule": "tomato처럼 자음 + o로 끝나는 일부 명사는 -es를 붙여요. 숫자 five 뒤에는 복수형이 와요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "We took many photos on the trip.",
+     "ko": "우리는 여행에서 사진을 많이 찍었어요.",
+     "bad": [
+      "We took many photoes on the trip.",
+      "We took many photo on the trip.",
+      "We took many photoss on the trip."
+     ],
+     "cz": {
+      "st": "We took many ___ on the trip.",
+      "ok": "photos",
+      "wr": [
+       "photoes",
+       "photo",
+       "photoss"
+      ]
+     },
+     "rule": "photo처럼 줄임말이나 외래어 성격의 -o 명사는 보통 -s만 붙여요. many 뒤에는 복수형이 와요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "The baby has two teeth now.",
+     "ko": "아기에게 이제 이가 두 개 있어요.",
+     "bad": [
+      "The baby has two tooths now.",
+      "The baby has two tooth now.",
+      "The baby has two teeths now."
+     ],
+     "cz": {
+      "st": "The baby has two ___ now.",
+      "ok": "teeth",
+      "wr": [
+       "tooths",
+       "tooth",
+       "teeths"
+      ]
+     },
+     "rule": "tooth의 복수형은 teeth예요. 불규칙 복수형에는 -s를 더 붙이지 않아요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "Two women are waiting at the bus stop.",
+     "ko": "두 여자가 버스 정류장에서 기다리고 있어요.",
+     "bad": [
+      "Two womans are waiting at the bus stop.",
+      "Two womens are waiting at the bus stop.",
+      "Two woman are waiting at the bus stop."
+     ],
+     "cz": {
+      "st": "Two ___ are waiting at the bus stop.",
+      "ok": "women",
+      "wr": [
+       "womans",
+       "womens",
+       "woman"
+      ]
+     },
+     "rule": "woman의 복수형은 women이에요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "Those sheep are eating grass.",
+     "ko": "저 양들은 풀을 먹고 있어요.",
+     "bad": [
+      "Those sheeps are eating grass.",
+      "That sheep are eating grass.",
+      "Those sheepes are eating grass."
+     ],
+     "cz": {
+      "st": "Those ___ are eating grass.",
+      "ok": "sheep",
+      "wr": [
+       "sheeps",
+       "sheepes",
+       "sheeper"
+      ]
+     },
+     "rule": "sheep은 단수와 복수의 모양이 같아요. those는 복수 명사와 함께 써요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "We caught five fish at the lake.",
+     "ko": "우리는 호수에서 물고기를 다섯 마리 잡았어요.",
+     "bad": [
+      "We caught five fishs at the lake.",
+      "We caught five fishies at the lake.",
+      "We caught five a fish at the lake."
+     ],
+     "cz": {
+      "st": "We caught five ___ at the lake.",
+      "ok": "fish",
+      "wr": [
+       "fishs",
+       "fishies",
+       "a fish"
+      ]
+     },
+     "rule": "fish는 마릿수를 셀 때 단수와 복수의 모양이 같아요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Two mice are in the kitchen.",
+     "ko": "주방에 쥐 두 마리가 있어요.",
+     "bad": [
+      "Two mouses are in the kitchen.",
+      "Two mices are in the kitchen.",
+      "Two mouse are in the kitchen."
+     ],
+     "cz": {
+      "st": "Two ___ are in the kitchen.",
+      "ok": "mice",
+      "wr": [
+       "mouses",
+       "mices",
+       "mouse"
+      ]
+     },
+     "rule": "mouse의 복수형은 mice예요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "My feet are cold today.",
+     "ko": "오늘은 발이 차가워요.",
+     "bad": [
+      "My foots are cold today.",
+      "My feets are cold today.",
+      "My foot are cold today."
+     ],
+     "cz": {
+      "st": "My ___ are cold today.",
+      "ok": "feet",
+      "wr": [
+       "foots",
+       "feets",
+       "foot"
+      ]
+     },
+     "rule": "foot의 복수형은 feet예요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "The geese are swimming on the lake.",
+     "ko": "거위들이 호수에서 헤엄치고 있어요.",
+     "bad": [
+      "The gooses are swimming on the lake.",
+      "The geeses are swimming on the lake.",
+      "The goose are swimming on the lake."
+     ],
+     "cz": {
+      "st": "The ___ are swimming on the lake.",
+      "ok": "geese",
+      "wr": [
+       "gooses",
+       "geeses",
+       "goose"
+      ]
+     },
+     "rule": "goose의 복수형은 geese예요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Three men are cooking dinner.",
+     "ko": "남자 세 명이 저녁을 요리하고 있어요.",
+     "bad": [
+      "Three mans are cooking dinner.",
+      "Three mens are cooking dinner.",
+      "Three man are cooking dinner."
+     ],
+     "cz": {
+      "st": "Three ___ are cooking dinner.",
+      "ok": "men",
+      "wr": [
+       "mans",
+       "mens",
+       "man"
+      ]
+     },
+     "rule": "man의 복수형은 men이에요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "A lot of people are waiting outside.",
+     "ko": "많은 사람들이 밖에서 기다리고 있어요.",
+     "bad": [
+      "A lot of people is waiting outside.",
+      "A lot of people am waiting outside.",
+      "A lot of people be waiting outside."
+     ],
+     "cz": {
+      "st": "A lot of people ___ waiting outside.",
+      "ok": "are",
+      "wr": [
+       "is",
+       "am",
+       "be"
+      ]
+     },
+     "rule": "people은 복수로 취급하므로 are와 함께 써요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "There are two babies in the room.",
+     "ko": "방에 아기가 두 명 있어요.",
+     "bad": [
+      "There are two babys in the room.",
+      "There are two babyes in the room.",
+      "There are two baby in the room."
+     ],
+     "cz": {
+      "st": "There are two ___ in the room.",
+      "ok": "babies",
+      "wr": [
+       "babys",
+       "babyes",
+       "baby"
+      ]
+     },
+     "rule": "자음 + y로 끝나는 명사는 y를 i로 바꾸고 -es를 붙여요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "The city has many libraries.",
+     "ko": "그 도시에는 도서관이 많아요.",
+     "bad": [
+      "The city has many librarys.",
+      "The city has many libraryes.",
+      "The city has many library."
+     ],
+     "cz": {
+      "st": "The city has many ___.",
+      "ok": "libraries",
+      "wr": [
+       "librarys",
+       "libraryes",
+       "library"
+      ]
+     },
+     "rule": "자음 + y로 끝나는 명사는 y를 i로 바꾸고 -es를 붙여요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "The zoo has three monkeys.",
+     "ko": "그 동물원에는 원숭이가 세 마리 있어요.",
+     "bad": [
+      "The zoo has three monkies.",
+      "The zoo has three monkeyes.",
+      "The zoo has three monkey."
+     ],
+     "cz": {
+      "st": "The zoo has three ___.",
+      "ok": "monkeys",
+      "wr": [
+       "monkies",
+       "monkeyes",
+       "monkey"
+      ]
+     },
+     "rule": "모음 + y로 끝나는 명사는 y를 그대로 두고 -s만 붙여요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "There are seven days in a week.",
+     "ko": "일주일은 7일이에요.",
+     "bad": [
+      "There are seven dayes in a week.",
+      "There are seven daies in a week.",
+      "There are seven day in a week."
+     ],
+     "cz": {
+      "st": "There are seven ___ in a week.",
+      "ok": "days",
+      "wr": [
+       "dayes",
+       "daies",
+       "day"
+      ]
+     },
+     "rule": "모음 + y로 끝나는 명사(day)는 -s만 붙여요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "The leaves are turning red.",
+     "ko": "나뭇잎이 빨갛게 변하고 있어요.",
+     "bad": [
+      "The leafs are turning red.",
+      "The leafes are turning red.",
+      "The leave are turning red."
+     ],
+     "cz": {
+      "st": "The ___ are turning red.",
+      "ok": "leaves",
+      "wr": [
+       "leafs",
+       "leafes",
+       "leave"
+      ]
+     },
+     "rule": "leaf처럼 -f로 끝나는 일부 명사는 f를 v로 바꾸고 -es를 붙여요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Three knives are on the table.",
+     "ko": "탁자 위에 칼이 세 자루 있어요.",
+     "bad": [
+      "Three knifes are on the table.",
+      "Three knifs are on the table.",
+      "Three knive are on the table."
+     ],
+     "cz": {
+      "st": "Three ___ are on the table.",
+      "ok": "knives",
+      "wr": [
+       "knifes",
+       "knifs",
+       "knive"
+      ]
+     },
+     "rule": "knife처럼 -fe로 끝나는 일부 명사는 f를 v로 바꾸고 -s를 붙여요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Doctors save many lives.",
+     "ko": "의사들은 많은 생명을 구해요.",
+     "bad": [
+      "Doctors save many lifes.",
+      "Doctors save many life.",
+      "Doctors save many lifs."
+     ],
+     "cz": {
+      "st": "Doctors save many ___.",
+      "ok": "lives",
+      "wr": [
+       "lifes",
+       "life",
+       "lifs"
+      ]
+     },
+     "rule": "life의 복수형은 lives예요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Cut the apple into two halves.",
+     "ko": "사과를 반쪽 두 개로 자르세요.",
+     "bad": [
+      "Cut the apple into two halfs.",
+      "Cut the apple into two halfes.",
+      "Cut the apple into two half."
+     ],
+     "cz": {
+      "st": "Cut the apple into two ___.",
+      "ok": "halves",
+      "wr": [
+       "halfs",
+       "halfes",
+       "half"
+      ]
+     },
+     "rule": "half의 복수형은 halves예요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "Two churches are near my school.",
+     "ko": "우리 학교 근처에 교회가 두 곳 있어요.",
+     "bad": [
+      "Two churchs are near my school.",
+      "Two churchies are near my school.",
+      "Two church are near my school."
+     ],
+     "cz": {
+      "st": "Two ___ are near my school.",
+      "ok": "churches",
+      "wr": [
+       "churchs",
+       "churchies",
+       "church"
+      ]
+     },
+     "rule": "-ch로 끝나는 명사는 -es를 붙여요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Please wash the dishes after lunch.",
+     "ko": "점심 식사 후에 설거지를 해 주세요.",
+     "bad": [
+      "Please wash the dishs after lunch.",
+      "Please wash the dishies after lunch.",
+      "Please wash the dishe after lunch."
+     ],
+     "cz": {
+      "st": "Please wash the ___ after lunch.",
+      "ok": "dishes",
+      "wr": [
+       "dishs",
+       "dishies",
+       "dishe"
+      ]
+     },
+     "rule": "-sh로 끝나는 명사는 -es를 붙여요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "These scissors are sharp.",
+     "ko": "이 가위는 날카로워요.",
+     "bad": [
+      "These scissors is sharp.",
+      "These scissor are sharp.",
+      "These scissors was sharp."
+     ],
+     "cz": {
+      "st": "These scissors ___ sharp.",
+      "ok": "are",
+      "wr": [
+       "is",
+       "was",
+       "be"
+      ]
+     },
+     "rule": "scissors는 늘 복수형으로 쓰고 복수 동사 are와 함께 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "Where are my new trousers?",
+     "ko": "내 새 바지 어디 있어요?",
+     "bad": [
+      "Where is my new trousers?",
+      "Where are my new trouser?",
+      "Where be my new trousers?"
+     ],
+     "cz": {
+      "st": "Where ___ my new trousers?",
+      "ok": "are",
+      "wr": [
+       "is",
+       "am",
+       "be"
+      ]
+     },
+     "rule": "trousers처럼 두 짝으로 이루어진 옷은 늘 복수형이라 복수 동사 are를 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "Two buses are late today.",
+     "ko": "버스 두 대가 오늘 늦어요.",
+     "bad": [
+      "Two buss are late today.",
+      "Two buses is late today.",
+      "Two bus are late today."
+     ],
+     "cz": {
+      "st": "Two ___ are late today.",
+      "ok": "buses",
+      "wr": [
+       "buss",
+       "buse",
+       "busies"
+      ]
+     },
+     "rule": "-s로 끝나는 명사는 -es를 붙여요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "She gave me good advice.",
+     "ko": "그녀는 나에게 좋은 조언을 해 주었어요.",
+     "bad": [
+      "She gave me good advices.",
+      "She gave me a good advices.",
+      "She gave me good advice are."
+     ],
+     "cz": {
+      "st": "She gave me good ___.",
+      "ok": "advice",
+      "wr": [
+       "advices",
+       "an advice",
+       "advicees"
+      ]
+     },
+     "rule": "advice는 셀 수 없는 명사라서 -s를 붙이지 않고 a/an도 쓰지 않아요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "The news is good.",
+     "ko": "그 소식은 좋아요.",
+     "bad": [
+      "The news are good.",
+      "The newses is good.",
+      "The new is good."
+     ],
+     "cz": {
+      "st": "The news ___ good.",
+      "ok": "is",
+      "wr": [
+       "are",
+       "were",
+       "be"
+      ]
+     },
+     "rule": "news는 -s로 끝나지만 셀 수 없는 단수 취급이라 is를 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "I have a lot of homework today.",
+     "ko": "오늘 숙제가 많아요.",
+     "bad": [
+      "I have a lot of homeworks today.",
+      "I have many homeworks today.",
+      "I have a homeworks today."
+     ],
+     "cz": {
+      "st": "I have a lot of ___ today.",
+      "ok": "homework",
+      "wr": [
+       "homeworks",
+       "homeworkes",
+       "homeworking"
+      ]
+     },
+     "rule": "homework는 셀 수 없는 명사라서 복수형이 없어요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "There is new furniture in my room.",
+     "ko": "내 방에 새 가구가 있어요.",
+     "bad": [
+      "There are new furnitures in my room.",
+      "There is new furnitures in my room.",
+      "There are new furniture in my room."
+     ],
+     "cz": {
+      "st": "There ___ new furniture in my room.",
+      "ok": "is",
+      "wr": [
+       "are",
+       "were",
+       "be"
+      ]
+     },
+     "rule": "furniture는 셀 수 없는 명사라서 -s를 붙이지 않고 단수 동사를 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "This website has useful information.",
+     "ko": "이 웹사이트에는 유용한 정보가 있어요.",
+     "bad": [
+      "This website has useful informations.",
+      "This website has a useful information.",
+      "This website have useful information."
+     ],
+     "cz": {
+      "st": "This website has useful ___.",
+      "ok": "information",
+      "wr": [
+       "informations",
+       "an information",
+       "informating"
+      ]
+     },
+     "rule": "information은 셀 수 없는 명사이므로 -s나 a/an을 붙이지 않아요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "How many students are in your class?",
+     "ko": "너희 반에는 학생이 몇 명 있니?",
+     "bad": [
+      "How much students are in your class?",
+      "How many student are in your class?",
+      "How many students is in your class?"
+     ],
+     "cz": {
+      "st": "How ___ students are in your class?",
+      "ok": "many",
+      "wr": [
+       "much",
+       "a little",
+       "little"
+      ]
+     },
+     "rule": "셀 수 있는 복수 명사 앞에는 many를 써요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "There isn't much water in the bottle.",
+     "ko": "병에 물이 많지 않아요.",
+     "bad": [
+      "There isn't many water in the bottle.",
+      "There isn't much waters in the bottle.",
+      "There isn't a many water in the bottle."
+     ],
+     "cz": {
+      "st": "There isn't ___ water in the bottle.",
+      "ok": "much",
+      "wr": [
+       "many",
+       "few",
+       "a few"
+      ]
+     },
+     "rule": "셀 수 없는 명사 앞에는 much를 써요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "I have a few friends in Busan.",
+     "ko": "나는 부산에 친구가 몇 명 있어요.",
+     "bad": [
+      "I have a few friend in Busan.",
+      "I have a little friends in Busan.",
+      "I have a few friendes in Busan."
+     ],
+     "cz": {
+      "st": "I have a ___ friends in Busan.",
+      "ok": "few",
+      "wr": [
+       "little",
+       "much",
+       "lot"
+      ]
+     },
+     "rule": "a few 뒤에는 셀 수 있는 복수 명사가 와요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "We have a little time left.",
+     "ko": "우리에게는 시간이 조금 남았어요.",
+     "bad": [
+      "We have a few time left.",
+      "We have a little times left.",
+      "We have a littles time left."
+     ],
+     "cz": {
+      "st": "We have a ___ time left.",
+      "ok": "little",
+      "wr": [
+       "few",
+       "many",
+       "lot"
+      ]
+     },
+     "rule": "a little 뒤에는 셀 수 없는 명사가 와요.",
+     "d": 3
+    },
+    {
+     "k": "s",
+     "good": "Each student has a locker.",
+     "ko": "학생마다 사물함이 하나씩 있어요.",
+     "bad": [
+      "Each students has a locker.",
+      "Each student have a locker.",
+      "Every students have a locker."
+     ],
+     "cz": {
+      "st": "Each student ___ a locker.",
+      "ok": "has",
+      "wr": [
+       "have",
+       "are",
+       "having"
+      ]
+     },
+     "rule": "each 뒤에는 단수 명사와 단수 동사가 와요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "One of my friends lives in Jeju.",
+     "ko": "내 친구 중 한 명은 제주에 살아요.",
+     "bad": [
+      "One of my friend lives in Jeju.",
+      "One of my friends live in Jeju.",
+      "One of my friends living in Jeju."
+     ],
+     "cz": {
+      "st": "One of my ___ lives in Jeju.",
+      "ok": "friends",
+      "wr": [
+       "friend",
+       "friendes",
+       "friendies"
+      ]
+     },
+     "rule": "one of 뒤에는 복수 명사가 오고, 동사는 주어 one에 맞춰 단수로 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "These books are heavy.",
+     "ko": "이 책들은 무거워요.",
+     "bad": [
+      "This books are heavy.",
+      "These book are heavy.",
+      "These books is heavy."
+     ],
+     "cz": {
+      "st": "___ books are heavy.",
+      "ok": "These",
+      "wr": [
+       "This",
+       "That",
+       "It"
+      ]
+     },
+     "rule": "these는 복수 명사 앞에 쓰고 복수 동사 are와 함께 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "I have two brothers and one sister.",
+     "ko": "나는 형제가 둘, 자매가 한 명 있어요.",
+     "bad": [
+      "I have two brother and one sister.",
+      "I have two brothers and one sisters.",
+      "I have twos brothers and one sister."
+     ],
+     "cz": {
+      "st": "I have two ___ and one sister.",
+      "ok": "brothers",
+      "wr": [
+       "brother",
+       "brotheres",
+       "brother's"
+      ]
+     },
+     "rule": "둘 이상의 수 뒤에는 복수형을 쓰고, one 뒤에는 단수형을 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "She is ten years old.",
+     "ko": "그녀는 열 살이에요.",
+     "bad": [
+      "She is ten year old.",
+      "She is ten yeares old.",
+      "She is ten yearies old."
+     ],
+     "cz": {
+      "st": "She is ten ___ old.",
+      "ok": "years",
+      "wr": [
+       "year",
+       "yeares",
+       "yearies"
+      ]
+     },
+     "rule": "수가 1보다 크면 year를 복수형 years로 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "She is a ten-year-old girl.",
+     "ko": "그녀는 열 살 소녀예요.",
+     "bad": [
+      "She is a ten-years-old girl.",
+      "She is a ten-year-olds girl.",
+      "She is a ten-year-old girls."
+     ],
+     "cz": {
+      "st": "She is a ___ girl.",
+      "ok": "ten-year-old",
+      "wr": [
+       "ten-years-old",
+       "ten-year-olds",
+       "ten-yeares-old"
+      ]
+     },
+     "rule": "하이픈으로 연결해 명사를 꾸밀 때는 단위를 단수형(year)으로 써요.",
+     "d": 5
+    },
+    {
+     "k": "s",
+     "good": "I bought two pairs of socks.",
+     "ko": "나는 양말 두 켤레를 샀어요.",
+     "bad": [
+      "I bought two pairs of sock.",
+      "I bought two pairs socks.",
+      "I bought two paires of socks."
+     ],
+     "cz": {
+      "st": "I bought two ___ of socks.",
+      "ok": "pairs",
+      "wr": [
+       "pair",
+       "paires",
+       "pairing"
+      ]
+     },
+     "rule": "pair를 센 경우에는 pairs로 쓰고, of 뒤에는 복수 명사를 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "Please give me two pieces of paper.",
+     "ko": "종이 두 장만 주세요.",
+     "bad": [
+      "Please give me two pieces of papers.",
+      "Please give me two piece of paper.",
+      "Please give me two pieces paper."
+     ],
+     "cz": {
+      "st": "Please give me two ___ of paper.",
+      "ok": "pieces",
+      "wr": [
+       "piece",
+       "peaces",
+       "pieced"
+      ]
+     },
+     "rule": "셀 수 없는 명사는 단위(piece)를 복수로 써서 개수를 나타내요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "The Smiths live next door.",
+     "ko": "스미스 씨네 가족은 옆집에 살아요.",
+     "bad": [
+      "The Smith live next door.",
+      "The Smithes live next door.",
+      "The Smiths lives next door."
+     ],
+     "cz": {
+      "st": "The ___ live next door.",
+      "ok": "Smiths",
+      "wr": [
+       "Smith",
+       "Smithes",
+       "Smith's"
+      ]
+     },
+     "rule": "'~네 가족'은 성에 -s를 붙여 복수로 나타내고 복수 동사를 써요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "Our class has twenty-five students.",
+     "ko": "우리 반에는 학생이 스물다섯 명 있어요.",
+     "bad": [
+      "Our class has twenty-five student.",
+      "Our class has twenty-five studentes.",
+      "Our class has twenty-five studentss."
+     ],
+     "cz": {
+      "st": "Our class has twenty-five ___.",
+      "ok": "students",
+      "wr": [
+       "student",
+       "studentes",
+       "studentss"
+      ]
+     },
+     "rule": "twenty-five처럼 둘 이상의 수 뒤에는 복수형을 써요.",
+     "d": 2
+    },
+    {
+     "k": "s",
+     "good": "The farmers grow potatoes and onions.",
+     "ko": "농부들은 감자와 양파를 길러요.",
+     "bad": [
+      "The farmers grow potatos and onions.",
+      "The farmers grows potatoes and onions.",
+      "The farmer grow potatoes and onions."
+     ],
+     "cz": {
+      "st": "The farmers grow ___ and onions.",
+      "ok": "potatoes",
+      "wr": [
+       "potatos",
+       "potatoe",
+       "potatoies"
+      ]
+     },
+     "rule": "potato처럼 자음 + o로 끝나는 일부 명사는 -es를 붙여요. 복수 주어에는 동사 원형을 써요.",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “bush”?",
+     "o": [
+      "bushs",
+      "bushes",
+      "bushies",
+      "bushen"
+     ],
+     "a": 1,
+     "why": "-sh로 끝나는 명사는 -es를 붙여서 bushes가 돼요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “country”?",
+     "o": [
+      "countries",
+      "countrys",
+      "countryes",
+      "countrees"
+     ],
+     "a": 0,
+     "why": "자음 + y로 끝나는 명사는 y를 i로 바꾸고 -es를 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “shelf”?",
+     "o": [
+      "shelfs",
+      "shelfes",
+      "shelvs",
+      "shelves"
+     ],
+     "a": 3,
+     "why": "shelf처럼 -f로 끝나는 일부 명사는 f를 v로 바꾸고 -es를 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “hero”?",
+     "o": [
+      "heros",
+      "heroies",
+      "heroes",
+      "heroz"
+     ],
+     "a": 2,
+     "why": "hero는 자음 + o로 끝나서 -es를 붙여요.",
+     "cat": "plural",
+     "d": 4
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “zoo”?",
+     "o": [
+      "zooes",
+      "zoes",
+      "zoos",
+      "zooies"
+     ],
+     "a": 2,
+     "why": "모음 + o로 끝나는 명사는 -s만 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “wife”?",
+     "o": [
+      "wifes",
+      "wives",
+      "wifs",
+      "wivs"
+     ],
+     "a": 1,
+     "why": "-fe로 끝나는 wife는 f를 v로 바꾸고 -s를 붙여 wives가 돼요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “class”?",
+     "o": [
+      "classes",
+      "class's",
+      "classs",
+      "classies"
+     ],
+     "a": 0,
+     "why": "-s로 끝나는 명사는 -es를 붙여요. class's는 소유격이에요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “watch”?",
+     "o": [
+      "watchs",
+      "watchies",
+      "watchen",
+      "watches"
+     ],
+     "a": 3,
+     "why": "-ch로 끝나는 명사는 -es를 붙여요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “story”?",
+     "o": [
+      "storys",
+      "storyes",
+      "storeis",
+      "stories"
+     ],
+     "a": 3,
+     "why": "자음 + y로 끝나는 명사는 y를 i로 바꾸고 -es를 붙여요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “radio”?",
+     "o": [
+      "radioes",
+      "radioss",
+      "radios",
+      "radies"
+     ],
+     "a": 2,
+     "why": "radio처럼 모음 + o로 끝나는 명사는 -s만 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “lady”?",
+     "o": [
+      "ladys",
+      "ladies",
+      "ladyes",
+      "ladyies"
+     ],
+     "a": 1,
+     "why": "자음 + y로 끝나는 명사는 y를 i로 바꾸고 -es를 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “sandwich”?",
+     "o": [
+      "sandwiches",
+      "sandwichs",
+      "sandwichies",
+      "sandwichen"
+     ],
+     "a": 0,
+     "why": "-ch로 끝나는 명사는 -es를 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “thief”?",
+     "o": [
+      "thieves",
+      "thiefs",
+      "thiefes",
+      "thievs"
+     ],
+     "a": 0,
+     "why": "thief는 f를 v로 바꾸고 -es를 붙여 thieves가 돼요.",
+     "cat": "plural",
+     "d": 4
+    },
+    {
+     "k": "m",
+     "q": "Which is the plural of “piano”?",
+     "o": [
+      "pianoes",
+      "pianoss",
+      "pianoz",
+      "pianos"
+     ],
+     "a": 3,
+     "why": "음악 악기나 줄임말에서 온 -o 명사(piano)는 -s만 붙여요.",
+     "cat": "plural",
+     "d": 4
+    },
+    {
+     "k": "m",
+     "q": "Which noun has the same form in the singular and the plural?",
+     "o": [
+      "child",
+      "goose",
+      "deer",
+      "wife"
+     ],
+     "a": 2,
+     "why": "deer는 단수와 복수의 모양이 같아요. 나머지는 children, geese, wives로 바뀌어요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which of these nouns is always plural?",
+     "o": [
+      "window",
+      "scissors",
+      "pencil",
+      "table"
+     ],
+     "a": 1,
+     "why": "scissors는 두 날로 이루어진 물건이라 늘 복수형으로 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Which of these nouns is uncountable?",
+     "o": [
+      "picture",
+      "furniture",
+      "bench",
+      "mirror"
+     ],
+     "a": 1,
+     "why": "furniture는 셀 수 없는 명사이므로 a furniture, furnitures로 쓰지 않아요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "다음 중 복수형이 잘못된 것은?",
+     "o": [
+      "two mouses",
+      "three boxes",
+      "four wolves",
+      "five women"
+     ],
+     "a": 0,
+     "why": "mouse의 복수형은 mice예요. mouses는 틀린 형태예요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "다음 중 복수형을 만들 때 -es가 아니라 -s만 붙이는 단어는?",
+     "o": [
+      "dish",
+      "bus",
+      "watch",
+      "toy"
+     ],
+     "a": 3,
+     "why": "toy는 모음 + y로 끝나서 -s만 붙여요. 나머지는 -sh, -s, -ch로 끝나 -es를 붙여요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "baby, city처럼 자음 + y로 끝나는 명사의 복수형은 어떻게 만들까요?",
+     "o": [
+      "y를 그대로 두고 -s만 붙인다",
+      "y를 빼고 -s를 붙인다",
+      "y를 i로 바꾸고 -es를 붙인다",
+      "y 앞에 -es를 붙인다"
+     ],
+     "a": 2,
+     "why": "babies, cities처럼 y를 i로 바꾸고 -es를 붙여요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which word is an irregular plural?",
+     "o": [
+      "boys",
+      "books",
+      "teeth",
+      "pens"
+     ],
+     "a": 2,
+     "why": "teeth는 -s를 붙이지 않고 모양이 바뀌는 불규칙 복수형이에요.",
+     "cat": "plural",
+     "d": 1
+    },
+    {
+     "k": "m",
+     "q": "Which of these nouns is uncountable?",
+     "o": [
+      "idea",
+      "advice",
+      "rule",
+      "tip"
+     ],
+     "a": 1,
+     "why": "advice는 셀 수 없는 명사라서 advices라고 쓰지 않아요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "How many plural nouns are in this sentence?\nTwo boys and a girl bought apples and a pen.",
+     "o": [
+      "2",
+      "3",
+      "4",
+      "1"
+     ],
+     "a": 0,
+     "why": "복수 명사는 boys와 apples, 두 개예요. girl과 pen은 단수예요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Which word changes -f or -fe to -ves in the plural?",
+     "o": [
+      "roof",
+      "cliff",
+      "chief",
+      "knife"
+     ],
+     "a": 3,
+     "why": "knife는 knives가 돼요. roofs, cliffs, chiefs는 -s만 붙여요.",
+     "cat": "plural",
+     "d": 4
+    },
+    {
+     "k": "m",
+     "q": "다음 중 항상 복수로 쓰는 명사가 아닌 것은?",
+     "o": [
+      "glasses",
+      "jeans",
+      "trousers",
+      "pencil"
+     ],
+     "a": 3,
+     "why": "pencil은 셀 수 있는 단수 명사예요. 나머지는 두 짝으로 이루어져 늘 복수형이에요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Which singular → plural pair is correct?",
+     "o": [
+      "mouse → mouses",
+      "child → childs",
+      "foot → feet",
+      "man → mans"
+     ],
+     "a": 2,
+     "why": "foot의 복수형은 feet예요. 나머지는 mice, children, men이에요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "There ___ a lot of homework today.",
+     "o": [
+      "are",
+      "is",
+      "were",
+      "be"
+     ],
+     "a": 1,
+     "why": "homework는 셀 수 없는 명사라서 단수 동사 is를 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "These ___ my favorite songs.",
+     "o": [
+      "are",
+      "is",
+      "am",
+      "be"
+     ],
+     "a": 0,
+     "why": "these 뒤 복수 주어에는 are를 써요.",
+     "cat": "plural",
+     "d": 1
+    },
+    {
+     "k": "m",
+     "q": "My two brothers ___ playing soccer now.",
+     "o": [
+      "are",
+      "is",
+      "am",
+      "be"
+     ],
+     "a": 0,
+     "why": "복수 주어 brothers에는 are를 써요.",
+     "cat": "plural",
+     "d": 1
+    },
+    {
+     "k": "m",
+     "q": "The money in my wallet ___ not enough.",
+     "o": [
+      "are",
+      "were",
+      "be",
+      "is"
+     ],
+     "a": 3,
+     "why": "money는 셀 수 없는 명사라서 단수 동사 is를 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "How ___ eggs do we need for the cake?",
+     "o": [
+      "much",
+      "a little",
+      "many",
+      "little"
+     ],
+     "a": 2,
+     "why": "eggs는 셀 수 있는 복수 명사라 many를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "I drink too ___ juice in summer.",
+     "o": [
+      "many",
+      "much",
+      "few",
+      "a few"
+     ],
+     "a": 1,
+     "why": "juice는 셀 수 없는 명사라서 much를 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "There aren't ___ chairs in the room, so some students stand.",
+     "o": [
+      "much",
+      "many",
+      "a little",
+      "little"
+     ],
+     "a": 1,
+     "why": "chairs는 셀 수 있는 복수 명사라 many가 알맞아요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "We need a little ___ for the soup.",
+     "o": [
+      "salt",
+      "onions",
+      "carrots",
+      "eggs"
+     ],
+     "a": 0,
+     "why": "a little은 셀 수 없는 명사 앞에 써요. salt만 셀 수 없는 명사예요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "I have a few ___ in my pocket.",
+     "o": [
+      "coin",
+      "money",
+      "rice",
+      "coins"
+     ],
+     "a": 3,
+     "why": "a few 뒤에는 셀 수 있는 복수 명사 coins가 와요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Each of the ___ got a prize.",
+     "o": [
+      "player",
+      "playerses",
+      "players",
+      "playing"
+     ],
+     "a": 2,
+     "why": "each of 뒤에는 the와 복수 명사가 와요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "All the ___ in my class like music.",
+     "o": [
+      "student",
+      "studentes",
+      "students",
+      "student's"
+     ],
+     "a": 2,
+     "why": "all the 뒤에는 복수 명사가 와요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Mr. Kim has two ___ and a dog.",
+     "o": [
+      "daughter",
+      "daughters",
+      "daughtres",
+      "daughter's"
+     ],
+     "a": 1,
+     "why": "two 뒤에는 복수형 daughters를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "The ___ are under the bed.",
+     "o": [
+      "shoes",
+      "shoe",
+      "shoe's",
+      "a shoes"
+     ],
+     "a": 0,
+     "why": "주어가 복수 동사 are와 함께 있으므로 복수 명사 shoes를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Seven ___ visited our class today.",
+     "o": [
+      "firefighter",
+      "firefighter's",
+      "firefighterses",
+      "firefighters"
+     ],
+     "a": 3,
+     "why": "seven 뒤에는 복수형 firefighters를 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "I washed all the ___ after dinner.",
+     "o": [
+      "dish",
+      "dishs",
+      "dishies",
+      "dishes"
+     ],
+     "a": 3,
+     "why": "all the 뒤에는 복수 명사가 오고 -sh로 끝나므로 -es를 붙여요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "My grandparents ___ in the countryside.",
+     "o": [
+      "lives",
+      "living",
+      "live",
+      "is living"
+     ],
+     "a": 2,
+     "why": "grandparents는 복수이므로 동사 원형 live를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "The police ___ looking for the missing dog.",
+     "o": [
+      "is",
+      "are",
+      "am",
+      "be"
+     ],
+     "a": 1,
+     "why": "the police는 복수로 취급하므로 are를 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Everyone ___ ready for the show.",
+     "o": [
+      "is",
+      "are",
+      "were",
+      "be"
+     ],
+     "a": 0,
+     "why": "everyone은 단수로 취급하므로 is를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "Two ___ of rice are on the table.",
+     "o": [
+      "bowls",
+      "bowl",
+      "bowlses",
+      "bowling"
+     ],
+     "a": 0,
+     "why": "two 뒤에는 복수형 bowls를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "I need two ___ of bread.",
+     "o": [
+      "slice",
+      "sliced",
+      "slicing",
+      "slices"
+     ],
+     "a": 3,
+     "why": "two 뒤에는 단위 명사의 복수형 slices를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "We saw twenty ___ at the beach.",
+     "o": [
+      "seagull",
+      "seagull's",
+      "seagulls",
+      "seagullen"
+     ],
+     "a": 2,
+     "why": "twenty 뒤에는 복수형 seagulls를 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "A: How many ___ does a spider have? B: Eight.",
+     "o": [
+      "leg",
+      "legs",
+      "leg's",
+      "legged"
+     ],
+     "a": 1,
+     "why": "how many 뒤에는 복수 명사 legs가 와요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "There are many ___ in the sky tonight.",
+     "o": [
+      "star",
+      "stars",
+      "starr",
+      "a star"
+     ],
+     "a": 1,
+     "why": "many 뒤에는 복수 명사 stars가 와요.",
+     "cat": "plural",
+     "d": 1
+    },
+    {
+     "k": "m",
+     "q": "Mom put ___ on the salad.",
+     "o": [
+      "some tomatoes",
+      "a tomatoes",
+      "many tomato",
+      "one tomatoes"
+     ],
+     "a": 0,
+     "why": "some 뒤에는 복수형 tomatoes를 써요. a, one은 단수 명사와 써요.",
+     "cat": "plural",
+     "d": 3
+    },
+    {
+     "k": "m",
+     "q": "Please give me ___.",
+     "o": [
+      "two glass of milks",
+      "two glasses of milks",
+      "two glass milk",
+      "two glasses of milk"
+     ],
+     "a": 3,
+     "why": "단위 glass는 복수로 쓰고, 셀 수 없는 milk는 그대로 써요.",
+     "cat": "plural",
+     "d": 4
+    },
+    {
+     "k": "m",
+     "q": "___ of my classmates walk to school.",
+     "o": [
+      "Much",
+      "A little",
+      "Most",
+      "Every"
+     ],
+     "a": 2,
+     "why": "most of 뒤에는 복수 명사가 올 수 있어요. much, a little, every of는 쓸 수 없어요.",
+     "cat": "plural",
+     "d": 4
+    },
+    {
+     "k": "m",
+     "q": "How ___ water do you drink every day?",
+     "o": [
+      "many",
+      "few",
+      "much",
+      "a few"
+     ],
+     "a": 2,
+     "why": "water는 셀 수 없는 명사라서 much를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "My friends and I ___ going to the park.",
+     "o": [
+      "is",
+      "are",
+      "am",
+      "be"
+     ],
+     "a": 1,
+     "why": "my friends and I는 복수 주어라서 are를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "He wears ___ because his eyes are weak.",
+     "o": [
+      "glasses",
+      "a glasses",
+      "glass",
+      "glassing"
+     ],
+     "a": 0,
+     "why": "안경은 늘 복수형 glasses를 써요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "m",
+     "q": "I bought a new pair of ___.",
+     "o": [
+      "jean",
+      "a jeans",
+      "jeanes",
+      "jeans"
+     ],
+     "a": 3,
+     "why": "pair of 뒤에는 복수형 jeans가 와요.",
+     "cat": "plural",
+     "d": 2
+    },
+    {
+     "k": "r",
+     "title": "A Day at the Farm",
+     "text": "Last Saturday, our class visited a farm near the lake. First, we saw a group of sheep in a big field. The farmer told us that the sheep give wool, and he showed us the scissors he uses to cut it. Then we walked to the pond, where two geese were swimming with their babies. In the barn, some mice ran across the floor, and the children laughed. At lunch, we ate sandwiches with fresh tomatoes from the garden. Everyone agreed that the trip was fun, and many students wanted to visit again.",
+     "qs": [
+      {
+       "q": "What does the farmer use the scissors for?",
+       "o": [
+        "To cut the grass near the pond",
+        "To cut the wool of the sheep",
+        "To cut the tomatoes for lunch",
+        "To cut the ropes in the barn"
+       ],
+       "why": "농부는 양털을 깎는 데 가위를 쓴다고 했어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 1
+      },
+      {
+       "q": "Where did the class see the geese?",
+       "o": [
+        "On the pond",
+        "In the barn",
+        "In a big field",
+        "In the garden"
+       ],
+       "why": "거위는 연못(pond)에서 헤엄치고 있었어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 0
+      },
+      {
+       "q": "What does “their babies” mean in the passage?",
+       "o": [
+        "The young sheep",
+        "The farmer's children",
+        "The little mice",
+        "The young geese"
+       ],
+       "why": "their는 geese를 가리키므로 babies는 새끼 거위예요.",
+       "std": [
+        "9영01-07"
+       ],
+       "a": 3
+      },
+      {
+       "q": "What can we guess from the last sentence?",
+       "o": [
+        "The farmer was angry at the class",
+        "The class lost their lunch",
+        "The students enjoyed the trip",
+        "The trip was too short to learn"
+       ],
+       "why": "모두 즐거웠고 다시 가고 싶어 했으므로 여행을 즐겼다는 것을 알 수 있어요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "Packing for Camp",
+     "text": "Dear Mina, I am packing for our camping trip. My list is long! I need two pairs of socks, a warm jacket, and my glasses, because I cannot read the map without them. My mom says I should also bring a first-aid kit with some bandages. I will pack three flashlights, since the batteries in one of them are old. Do you have any good advice about food? I only have a little bread and some cheese at home. Maybe we can buy fruit on the way. I cannot wait to see the stars! Your friend, Jiho",
+     "qs": [
+      {
+       "q": "Why does Jiho write to Mina?",
+       "o": [
+        "To share his list and ask about food",
+        "To say sorry for missing the trip",
+        "To invite her to his house for dinner",
+        "To ask her to bring a map"
+       ],
+       "why": "지호는 준비물을 알리고 음식에 대한 조언을 구하려고 편지를 썼어요.",
+       "std": [
+        "9영01-06"
+       ],
+       "a": 0
+      },
+      {
+       "q": "Why will Jiho pack three flashlights?",
+       "o": [
+        "Mina asked him to bring three",
+        "The campsite has no electricity",
+        "His mom lost the other ones",
+        "The batteries in one are old"
+       ],
+       "why": "그중 하나의 건전지가 낡았기 때문이에요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 3
+      },
+      {
+       "q": "What does “them” refer to in “without them”?",
+       "o": [
+        "The socks",
+        "The bandages",
+        "His glasses",
+        "The flashlights"
+       ],
+       "why": "지도를 읽는 데 필요한 것은 안경(glasses)이에요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 2
+      },
+      {
+       "q": "Which food does Jiho have at home?",
+       "o": [
+        "Fruit and cheese",
+        "Bread and cheese",
+        "Bread and fruit",
+        "Rice and cheese"
+       ],
+       "why": "집에 빵과 치즈가 조금 있다고 했어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 1
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "School Library Notice",
+     "text": "Starting Monday, students may borrow up to three books at one time. Each book can be kept for two weeks. Please return your books on time, because other children are waiting for them. The library also has new computers and ten comfortable chairs near the window. Please do not bring food or drinks inside; crumbs and spills can hurt the books. If you lose a book, tell the librarian, and she will give you advice. Quiet readers are welcome all day, but no group meetings are allowed after school this month.",
+     "qs": [
+      {
+       "q": "How many books can a student borrow at one time?",
+       "o": [
+        "Two",
+        "Three",
+        "Four",
+        "Ten"
+       ],
+       "why": "한 번에 최대 세 권까지 빌릴 수 있다고 했어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 1
+      },
+      {
+       "q": "Why can students not bring food or drinks inside?",
+       "o": [
+        "Crumbs and spills can hurt the books",
+        "The librarian is allergic to snacks",
+        "Other children are waiting outside",
+        "The computers are too expensive"
+       ],
+       "why": "부스러기와 쏟은 음료가 책을 상하게 할 수 있다고 했어요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 0
+      },
+      {
+       "q": "What is the main purpose of the notice?",
+       "o": [
+        "To invite students to a book party",
+        "To ask students to buy more books",
+        "To announce a change of teachers",
+        "To explain new rules and services"
+       ],
+       "why": "도서관의 새 규칙과 서비스를 알리는 공지예요.",
+       "std": [
+        "9영01-06"
+       ],
+       "a": 3
+      },
+      {
+       "q": "What is NOT allowed this month after school?",
+       "o": [
+        "Reading alone",
+        "Using computers",
+        "Group meetings",
+        "Borrowing books"
+       ],
+       "why": "이번 달 방과 후에는 단체 모임이 허용되지 않아요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "Grandma's Kitchen",
+     "text": "My grandmother lives in a small house with a big kitchen. Every weekend, my cousins and I go there. She keeps her knives on a high shelf, and we are not allowed to touch them. Instead, we wash the dishes and cut the bread. Her stories about the old days are my favorite part. She says that long ago, there were no supermarkets in her village, so people made their own cheese, and the whole family helped. Grandma's soup always has potatoes and onions, and it makes our weekends warm and happy.",
+     "qs": [
+      {
+       "q": "What is the writer's favorite part of the weekend visit?",
+       "o": [
+        "Washing the dishes in the kitchen",
+        "Grandma's stories about the old days",
+        "Cutting the bread for lunch",
+        "Eating potatoes and onions"
+       ],
+       "why": "글쓴이는 할머니의 옛날이야기가 가장 좋다고 했어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 1
+      },
+      {
+       "q": "Why did people make their own cheese long ago?",
+       "o": [
+        "There were no supermarkets in the village",
+        "Cheese was a gift from the farmers",
+        "The whole family disliked bread",
+        "Cheese tasted better in soup"
+       ],
+       "why": "그 마을에는 슈퍼마켓이 없었기 때문이에요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 0
+      },
+      {
+       "q": "Why can the children not touch the knives?",
+       "o": [
+        "Grandma wants to use them herself",
+        "The knives belong to a neighbor",
+        "The children are too tired",
+        "They could be dangerous for children"
+       ],
+       "why": "칼은 위험할 수 있어서 아이들에게 만지지 못하게 한다고 추측할 수 있어요.",
+       "std": [
+        "9영01-07"
+       ],
+       "a": 3
+      },
+      {
+       "q": "In the passage, “the whole family” means ___.",
+       "o": [
+        "only the grandmother",
+        "a few of the cousins",
+        "every person in the family",
+        "the family's neighbors"
+       ],
+       "why": "whole은 '전체의'라는 뜻이라서 가족 모두를 뜻해요.",
+       "std": [
+        "9영01-07"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "A Trip to the Zoo",
+     "text": "At the zoo, we saw two giraffes, five monkeys, and a family of penguins. The zookeeper explained that the monkeys love bananas, but they also eat leaves and insects. The giraffes have very long necks, so they can reach leaves on tall trees. Penguins cannot fly, but they swim very fast. We took many photos, and Yuna drew pictures of the animals in her notebook. After the show, we bought small toys in the gift shop. On the bus home, everyone was tired but happy.",
+     "qs": [
+      {
+       "q": "Why can giraffes reach leaves on tall trees?",
+       "o": [
+        "They can climb the branches",
+        "They have very long necks",
+        "They are taller than the zookeeper",
+        "They jump very high"
+       ],
+       "why": "기린은 목이 아주 길어서 높은 나무의 잎에 닿을 수 있어요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 1
+      },
+      {
+       "q": "What did Yuna do at the zoo?",
+       "o": [
+        "She drew pictures of animals",
+        "She took photos of the penguins",
+        "She fed bananas to the monkeys",
+        "She bought a toy giraffe"
+       ],
+       "why": "유나는 공책에 동물 그림을 그렸어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 0
+      },
+      {
+       "q": "Which sentence about penguins is true?",
+       "o": [
+        "They fly higher than other birds",
+        "They eat leaves and insects",
+        "They live in the gift shop",
+        "They cannot fly but swim fast"
+       ],
+       "why": "펭귄은 날지 못하지만 빠르게 헤엄친다고 했어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 3
+      },
+      {
+       "q": "How did the students feel on the bus home?",
+       "o": [
+        "Bored and hungry",
+        "Excited and noisy",
+        "Tired but happy",
+        "Afraid and angry"
+       ],
+       "why": "버스에서 모두 피곤했지만 행복했다고 했어요.",
+       "std": [
+        "9영01-05"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "An Email to Aunt Rosa",
+     "text": "Hi Aunt Rosa, Thank you for having us next week! The weather news says it will rain on Tuesday and Wednesday, so we will bring raincoats and boots. My little sisters need dry shoes, so each of them is packing two extra pairs. I also have a small request: do you have any information about the town museum? We love old pictures and want to see them. If you have a map, please send us a photo of it. See you soon! Daniel",
+     "qs": [
+      {
+       "q": "Why will Daniel's family bring raincoats and boots?",
+       "o": [
+        "Aunt Rosa asked for them",
+        "Rain is expected on two days",
+        "The museum is near a river",
+        "His sisters lost their shoes"
+       ],
+       "why": "화요일과 수요일에 비가 올 거라는 예보 때문이에요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 1
+      },
+      {
+       "q": "What does Daniel ask Aunt Rosa for?",
+       "o": [
+        "Information about the museum",
+        "A ride to the airport",
+        "Some old pictures of the town",
+        "Boots for his sisters"
+       ],
+       "why": "박물관에 대한 정보와 지도 사진을 부탁하고 있어요.",
+       "std": [
+        "9영01-06"
+       ],
+       "a": 0
+      },
+      {
+       "q": "How many extra pairs of shoes will each sister pack?",
+       "o": [
+        "One",
+        "Three",
+        "Four",
+        "Two"
+       ],
+       "why": "동생들은 각자 여분의 신발 두 켤레를 챙겨요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 3
+      },
+      {
+       "q": "How does Daniel sound in the email?",
+       "o": [
+        "Angry and rude",
+        "Sad and tired",
+        "Friendly and polite",
+        "Shy and afraid"
+       ],
+       "why": "감사 인사와 정중한 부탁이 있어 다정하고 예의 바르게 들려요.",
+       "std": [
+        "9영01-05"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "The Lost Keys",
+     "text": "Hana came home from school and could not find her keys. She looked in her bag, in her coat pockets, and under the sofa. Her brother Sam was playing games, and he did not look up. \"Have you seen my keys?\" she asked. \"No,\" he said, \"but you were in the kitchen this morning.\" Hana laughed. She went to the kitchen and found the keys next to her lunch box. She had put them down while she was washing the dishes. \"I always lose things,\" she said. \"Maybe I need a small box for my keys.\"",
+     "qs": [
+      {
+       "q": "Where did Hana find her keys?",
+       "o": [
+        "Under the sofa",
+        "Next to her lunch box",
+        "In her coat pockets",
+        "In Sam's room"
+       ],
+       "why": "열쇠는 부엌의 도시락 통 옆에 있었어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 1
+      },
+      {
+       "q": "Why did Hana put the keys down in the kitchen?",
+       "o": [
+        "She was washing the dishes",
+        "She was cooking dinner",
+        "She was talking to Sam",
+        "She was eating lunch"
+       ],
+       "why": "설거지를 하다가 열쇠를 내려놓았어요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 0
+      },
+      {
+       "q": "What does Sam's answer show about him?",
+       "o": [
+        "He was angry with his sister",
+        "He wanted to hide the keys",
+        "He did not know the kitchen",
+        "He was busy but still helped"
+       ],
+       "why": "게임 중이었지만 부엌에 있었다고 알려 주며 도와줬어요.",
+       "std": [
+        "9영01-07"
+       ],
+       "a": 3
+      },
+      {
+       "q": "What does Hana decide at the end?",
+       "o": [
+        "To ask Sam to find her keys",
+        "To buy a new bag tomorrow",
+        "To keep her keys in a small box",
+        "To stop washing the dishes"
+       ],
+       "why": "열쇠를 넣을 작은 상자가 필요할지도 모른다고 했어요.",
+       "std": [
+        "9영01-03"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "Sports Day",
+     "text": "Our school Sports Day is next Friday. There are four teams: red, blue, green, and yellow. Each team has twenty students. The day begins with a race for the youngest children, and then the older students play soccer matches. Parents can sit on the benches near the field, but they must not enter the track. After lunch, there is a relay where the teams pass a baton, and the loudest cheers usually come from the green team. The winners will get medals, but every student will receive a bottle of water and a certificate. Please wear comfortable shoes and bring a hat.",
+     "qs": [
+      {
+       "q": "How many students take part in Sports Day?",
+       "o": [
+        "Twenty",
+        "Forty",
+        "Eighty",
+        "Sixty"
+       ],
+       "why": "네 팀에 각 팀 20명이므로 모두 80명이에요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 2
+      },
+      {
+       "q": "What happens right after lunch?",
+       "o": [
+        "Soccer matches",
+        "A relay race",
+        "A race for small children",
+        "A water break"
+       ],
+       "why": "점심 식사 후에 이어달리기가 있어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 1
+      },
+      {
+       "q": "What must parents NOT do?",
+       "o": [
+        "Enter the track",
+        "Sit on the benches",
+        "Wear comfortable shoes",
+        "Bring a hat"
+       ],
+       "why": "부모님은 벤치에 앉을 수 있지만 트랙에 들어가서는 안 돼요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 0
+      },
+      {
+       "q": "Who will get a certificate?",
+       "o": [
+        "Only the winners",
+        "Only the green team",
+        "The parents",
+        "Every student"
+       ],
+       "why": "모든 학생이 물과 증서를 받는다고 했어요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 3
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "Why Do We Need Sleep?",
+     "text": "Doctors say that teenagers need eight to ten hours of sleep every night. While we sleep, our bodies rest and our brains sort the information from the day. Students who sleep well often remember lessons better and feel happier. However, many teenagers stay up late because they use their phones or watch videos. Bright screens can make it harder to fall asleep. One simple piece of advice is to turn off all devices an hour before bed. Reading a book or listening to quiet music can also help. With good habits, most people will wake up with more energy.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "How to choose a good mobile phone",
+        "Why sleep matters and how to sleep well",
+        "Which books are best before bed",
+        "What doctors eat for breakfast"
+       ],
+       "why": "수면이 왜 중요한지와 잘 자는 방법을 설명하는 글이에요.",
+       "std": [
+        "9영01-03"
+       ],
+       "a": 1
+      },
+      {
+       "q": "Why do many teenagers sleep too little?",
+       "o": [
+        "They use phones or watch videos late",
+        "They have too many early classes",
+        "Their rooms are too quiet",
+        "Their doctors tell them to stay up"
+       ],
+       "why": "휴대폰이나 영상 때문에 늦게까지 깨어 있기 때문이에요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 0
+      },
+      {
+       "q": "What does “sort” mean in the passage?",
+       "o": [
+        "Throw away",
+        "Make louder",
+        "Copy by hand",
+        "Put in order"
+       ],
+       "why": "뇌가 정보를 정리한다는 뜻이므로 sort는 '정리하다'예요.",
+       "std": [
+        "9영01-07"
+       ],
+       "a": 3
+      },
+      {
+       "q": "What advice does the writer give?",
+       "o": [
+        "Sleep in a bright room",
+        "Exercise right before sleep",
+        "Turn off devices before bed",
+        "Eat a big meal at night"
+       ],
+       "why": "잠자리에 들기 한 시간 전에 기기를 끄라고 조언해요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 2
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "r",
+     "title": "The Night Market",
+     "text": "On Friday evenings, the street near my house becomes a night market. Sellers put up small tents and hang colorful lights above the stalls. You can buy hot snacks, such as fish cakes and sweet potatoes, and cold drinks from big boxes of ice. Some stalls sell handmade goods like scarves, socks, and phone cases. My aunt makes candles, and her customers are mostly tourists who want a souvenir. Although the market is crowded, people are friendly, and the sellers often give small gifts to children. I think the market shows the best side of our neighborhood.",
+     "qs": [
+      {
+       "q": "Who buys most of the candles that the writer's aunt makes?",
+       "o": [
+        "Tourists",
+        "Neighbors",
+        "Children",
+        "Other sellers"
+       ],
+       "why": "고모의 손님은 대부분 기념품을 찾는 관광객이에요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 0
+      },
+      {
+       "q": "What is the writer's opinion of the market?",
+       "o": [
+        "It is too crowded to enjoy",
+        "It should open every day",
+        "It sells only cold drinks",
+        "It shows the best side of the town"
+       ],
+       "why": "글쓴이는 시장이 동네의 가장 좋은 모습을 보여 준다고 생각해요.",
+       "std": [
+        "9영01-06"
+       ],
+       "a": 3
+      },
+      {
+       "q": "Which item is sold at the handmade stalls?",
+       "o": [
+        "Fish cakes",
+        "Sweet potatoes",
+        "Scarves",
+        "Ice"
+       ],
+       "why": "수공예품 가게에서는 스카프, 양말, 휴대폰 케이스를 팔아요.",
+       "std": [
+        "9영01-02"
+       ],
+       "a": 2
+      },
+      {
+       "q": "What does “Although” show in “Although the market is crowded”?",
+       "o": [
+        "A reason",
+        "A contrast",
+        "A time",
+        "An example"
+       ],
+       "why": "붐비지만 사람들이 친절하다는 대조를 나타내요.",
+       "std": [
+        "9영01-04"
+       ],
+       "a": 1
+      }
+     ],
+     "d": 3
+    },
+    {
+     "k": "w",
+     "en": "pair",
+     "pos": "n",
+     "ko": "한 쌍, 한 켤레",
+     "ex": "I bought a pair of gloves yesterday.",
+     "exko": "나는 어제 장갑 한 켤레를 샀어요.",
+     "z": [
+      "tooth",
+      "cloud",
+      "desk"
+     ],
+     "syn": [
+      "couple"
+     ],
+     "sp": [
+      "paer",
+      "pairr",
+      "piar"
+     ],
+     "d": 3
+    },
+    {
+     "k": "w",
+     "en": "furniture",
+     "pos": "n",
+     "ko": "가구",
+     "ex": "We need new furniture for the living room.",
+     "exko": "우리는 거실에 놓을 새 가구가 필요해요.",
+     "z": [
+      "weather",
+      "traffic",
+      "rain"
+     ],
+     "syn": [],
+     "sp": [
+      "furnitur",
+      "furniter",
+      "furnicher"
+     ],
+     "d": 3,
+     "note": "furniture는 셀 수 없는 명사예요."
+    },
+    {
+     "k": "w",
+     "en": "scissors",
+     "pos": "n",
+     "ko": "가위",
+     "ex": "Please pass me the scissors.",
+     "exko": "가위 좀 건네주세요.",
+     "z": [
+      "mountain",
+      "season",
+      "opinion"
+     ],
+     "syn": [],
+     "sp": [
+      "sissors",
+      "scisors",
+      "scissers"
+     ],
+     "d": 3,
+     "note": "scissors는 늘 복수형으로 써요."
+    }
+   ]
+  }
+ ]
+}

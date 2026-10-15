@@ -1,0 +1,2680 @@
+{
+ "packet": "H02-h1-clause",
+ "sections": [
+  {
+   "skill": "e.h1.clause",
+   "items": [
+    {
+     "k": "s",
+     "good": "Seoul is the city where my grandparents have lived for decades.",
+     "ko": "서울은 우리 조부모님이 수십 년 동안 살아오신 도시예요.",
+     "bad": [
+      "Seoul is the city which my grandparents have lived for decades.",
+      "Seoul is the city where my grandparents have lived there for decades.",
+      "Seoul is the city when my grandparents have lived for decades."
+     ],
+     "cz": {
+      "st": "Seoul is the city ___ my grandparents have lived for decades.",
+      "ok": "where",
+      "wr": [
+       "which",
+       "what",
+       "how"
+      ]
+     },
+     "rule": "선행사가 장소(city)이고 뒤따르는 절이 완전하면 관계부사 where를 써요. where는 in which의 뜻이라 there나 in을 또 쓰지 않아요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "I still remember the day when we first met.",
+     "ko": "나는 우리가 처음 만난 날을 아직도 기억해요.",
+     "bad": [
+      "I still remember the day where we first met.",
+      "I still remember the day which we first met.",
+      "I still remember the day when we first met in."
+     ],
+     "cz": {
+      "st": "I still remember the day ___ we first met.",
+      "ok": "when",
+      "wr": [
+       "where",
+       "which",
+       "why"
+      ]
+     },
+     "rule": "선행사가 시간(day)이면 관계부사 when을 써요. 뒤의 절이 완전한 문장이므로 which를 쓰면 안 돼요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Tell me the reason why you were late for the meeting.",
+     "ko": "회의에 늦은 이유를 말해 주세요.",
+     "bad": [
+      "Tell me the reason where you were late for the meeting.",
+      "Tell me the reason how you were late for the meeting.",
+      "Tell me the reason when you were late for the meeting."
+     ],
+     "cz": {
+      "st": "Tell me the reason ___ you were late for the meeting.",
+      "ok": "why",
+      "wr": [
+       "where",
+       "when",
+       "how"
+      ]
+     },
+     "rule": "선행사가 이유(reason)이면 관계부사 why를 써요."
+    },
+    {
+     "k": "s",
+     "good": "Nobody knows how the pyramids were built.",
+     "ko": "아무도 피라미드가 어떻게 지어졌는지 몰라요.",
+     "bad": [
+      "Nobody knows how were the pyramids built.",
+      "Nobody knows how the pyramids built.",
+      "Nobody knows how the pyramids were build."
+     ],
+     "cz": {
+      "st": "Nobody knows ___ the pyramids were built.",
+      "ok": "how",
+      "wr": [
+       "what",
+       "which",
+       "whose"
+      ]
+     },
+     "rule": "how가 이끄는 명사절은 「how + 주어 + 동사」의 평서문 어순이에요. 수동태(were built)의 형태도 확인해요."
+    },
+    {
+     "k": "s",
+     "good": "She told us that the museum would close early.",
+     "ko": "그녀는 박물관이 일찍 닫을 거라고 우리에게 말했어요.",
+     "bad": [
+      "She told that the museum would close early.",
+      "She told us the museum that would close early.",
+      "She told us what the museum would close early."
+     ],
+     "cz": {
+      "st": "She told us ___ the museum would close early.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "whose"
+      ]
+     },
+     "rule": "tell A that절 구조에서 that은 완전한 절을 목적어 자리로 이끌어요. tell 뒤에는 듣는 사람(us)이 먼저 와요."
+    },
+    {
+     "k": "s",
+     "good": "I wonder whether he will accept the offer.",
+     "ko": "나는 그가 그 제안을 받아들일지 궁금해요.",
+     "bad": [
+      "I wonder that he will accept the offer.",
+      "I wonder whether will he accept the offer.",
+      "I wonder whether does he accept the offer."
+     ],
+     "cz": {
+      "st": "I wonder ___ he will accept the offer.",
+      "ok": "whether",
+      "wr": [
+       "that",
+       "what",
+       "which"
+      ]
+     },
+     "rule": "wonder 뒤에서 ‘~인지 아닌지’를 뜻하는 명사절은 whether로 이끌어요. 명사절 안은 평서문 어순(주어 + 동사)이에요."
+    },
+    {
+     "k": "s",
+     "good": "The question is whether we can finish the project on time.",
+     "ko": "문제는 우리가 그 프로젝트를 제시간에 끝낼 수 있는지예요.",
+     "bad": [
+      "The question is whether can we finish the project on time.",
+      "The question is what we can finish the project on time.",
+      "The question is whether we can finishing the project on time."
+     ],
+     "cz": {
+      "st": "The question is ___ we can finish the project on time.",
+      "ok": "whether",
+      "wr": [
+       "what",
+       "who",
+       "which"
+      ]
+     },
+     "rule": "be동사 뒤의 whether절은 보어 역할을 하는 명사절이에요. 절 안에서는 조동사 can이 주어 뒤에 와요."
+    },
+    {
+     "k": "s",
+     "good": "Whether she will join us is still unclear.",
+     "ko": "그녀가 우리와 함께할지는 아직 분명하지 않아요.",
+     "bad": [
+      "Whether will she join us is still unclear.",
+      "If she will join us is still unclear.",
+      "Whether she will join us are still unclear."
+     ],
+     "cz": {
+      "st": "___ she will join us is still unclear.",
+      "ok": "Whether",
+      "wr": [
+       "If",
+       "What",
+       "Which"
+      ]
+     },
+     "rule": "‘~인지 아닌지’가 문장의 주어가 될 때는 whether를 써요. 주어 자리의 명사절은 단수로 받아 is를 써요."
+    },
+    {
+     "k": "s",
+     "good": "It is well known that the Earth moves around the Sun.",
+     "ko": "지구가 태양 주위를 돈다는 것은 잘 알려져 있어요.",
+     "bad": [
+      "It is well known what the Earth moves around the Sun.",
+      "It is well known the Earth moves that around the Sun.",
+      "It well known that the Earth moves around the Sun."
+     ],
+     "cz": {
+      "st": "It is well known ___ the Earth moves around the Sun.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "whose"
+      ]
+     },
+     "rule": "가주어 It과 진주어 that절의 구조예요. that절은 완전한 문장이므로 what이나 which를 쓰지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "What you said made me think about my habits.",
+     "ko": "네가 한 말이 내 습관을 돌아보게 했어요.",
+     "bad": [
+      "That you said made me think about my habits.",
+      "What did you say made me think about my habits.",
+      "What you said make me think about my habits."
+     ],
+     "cz": {
+      "st": "___ you said made me think about my habits.",
+      "ok": "What",
+      "wr": [
+       "That",
+       "Which",
+       "Whether"
+      ]
+     },
+     "rule": "what은 ‘~하는 것’이라는 뜻으로, said의 목적어 자리가 비어 있을 때 쓰는 명사절을 이끌어요."
+    },
+    {
+     "k": "s",
+     "good": "I can't remember where I put my keys.",
+     "ko": "나는 열쇠를 어디에 두었는지 기억나지 않아요.",
+     "bad": [
+      "I can't remember where did I put my keys.",
+      "I can't remember where I put my keys there.",
+      "I can't remember where I puts my keys."
+     ],
+     "cz": {
+      "st": "I can't remember ___ I put my keys.",
+      "ok": "where",
+      "wr": [
+       "what",
+       "who",
+       "whose"
+      ]
+     },
+     "rule": "의문사가 이끄는 명사절은 평서문 어순이에요. where 자체가 ‘거기에’의 뜻을 포함하므로 there를 덧붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "Do you know why the train is late?",
+     "ko": "기차가 왜 늦는지 알아요?",
+     "bad": [
+      "Do you know why is the train late?",
+      "Do you know why the train late is?",
+      "Do you know the train why is late?"
+     ],
+     "cz": {
+      "st": "Do you know ___ the train is late?",
+      "ok": "why",
+      "wr": [
+       "what",
+       "who",
+       "which"
+      ]
+     },
+     "rule": "간접의문문에서는 의문사 뒤에 「주어 + 동사」 순서를 써요."
+    },
+    {
+     "k": "s",
+     "good": "I'm not sure when the next bus arrives.",
+     "ko": "나는 다음 버스가 언제 도착하는지 잘 모르겠어요.",
+     "bad": [
+      "I'm not sure when does the next bus arrive.",
+      "I'm not sure when the next bus arrive.",
+      "I'm not sure when will arrive the next bus."
+     ],
+     "cz": {
+      "st": "I'm not sure ___ the next bus arrives.",
+      "ok": "when",
+      "wr": [
+       "what",
+       "who",
+       "whom"
+      ]
+     },
+     "rule": "when이 이끄는 명사절도 평서문 어순을 따르고, 주어(the next bus)가 단수라서 동사에 -s가 붙어요."
+    },
+    {
+     "k": "s",
+     "good": "The teacher asked the students what they had learned.",
+     "ko": "선생님은 학생들에게 무엇을 배웠는지 물었어요.",
+     "bad": [
+      "The teacher asked the students what had they learned.",
+      "The teacher asked the students that they had learned.",
+      "The teacher asked the students what they had learn."
+     ],
+     "cz": {
+      "st": "The teacher asked the students ___ they had learned.",
+      "ok": "what",
+      "wr": [
+       "that",
+       "whose",
+       "whom"
+      ]
+     },
+     "rule": "learned의 목적어가 비어 있으므로 ‘무엇을’에 해당하는 what이 알맞아요. 절 안은 「주어 + had + 과거분사」 순서예요."
+    },
+    {
+     "k": "s",
+     "good": "He is interested in what makes a good leader.",
+     "ko": "그는 무엇이 좋은 지도자를 만드는지에 관심이 있어요.",
+     "bad": [
+      "He is interested in that makes a good leader.",
+      "He is interested in whether makes a good leader.",
+      "He is interested in what make a good leader."
+     ],
+     "cz": {
+      "st": "He is interested in ___ makes a good leader.",
+      "ok": "what",
+      "wr": [
+       "that",
+       "whether",
+       "how"
+      ]
+     },
+     "rule": "전치사 뒤에도 명사절이 올 수 있어요. 여기서 what은 절의 주어 역할을 하므로 뒤의 동사는 3인칭 단수형 makes예요."
+    },
+    {
+     "k": "s",
+     "good": "The fact that she apologized surprised everyone.",
+     "ko": "그녀가 사과했다는 사실이 모두를 놀라게 했어요.",
+     "bad": [
+      "The fact what she apologized surprised everyone.",
+      "The fact that she apologized surprise everyone.",
+      "The fact she apologized that surprised everyone."
+     ],
+     "cz": {
+      "st": "The fact ___ she apologized surprised everyone.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "who"
+      ]
+     },
+     "rule": "fact 뒤의 that절은 그 사실의 내용을 설명하는 동격절이에요. 동격절은 완전한 문장이라 which나 what을 쓰지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "I'm glad that you could come to the party.",
+     "ko": "네가 파티에 올 수 있어서 기뻐요.",
+     "bad": [
+      "I'm glad what you could come to the party.",
+      "I'm glad that you can came to the party.",
+      "I'm glad of that you could come to the party."
+     ],
+     "cz": {
+      "st": "I'm glad ___ you could come to the party.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "whether",
+       "who"
+      ]
+     },
+     "rule": "감정을 나타내는 형용사(glad) 뒤에는 이유를 말하는 that절이 올 수 있어요."
+    },
+    {
+     "k": "s",
+     "good": "Her dream is that her children will study abroad.",
+     "ko": "그녀의 꿈은 자녀들이 해외에서 공부하는 거예요.",
+     "bad": [
+      "Her dream is what her children will study abroad.",
+      "Her dream is that her children will studying abroad.",
+      "Her dream that is her children will study abroad."
+     ],
+     "cz": {
+      "st": "Her dream is ___ her children will study abroad.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "whose"
+      ]
+     },
+     "rule": "be동사 뒤의 that절은 보어 역할을 하는 명사절이에요. 절 안에서는 will 뒤에 동사원형을 써요."
+    },
+    {
+     "k": "s",
+     "good": "I believe that honesty is the best policy.",
+     "ko": "나는 정직이 최선의 방책이라고 믿어요.",
+     "bad": [
+      "I believe what honesty is the best policy.",
+      "I believe honesty that is the best policy.",
+      "I believe that honesty are the best policy."
+     ],
+     "cz": {
+      "st": "I believe ___ honesty is the best policy.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "whether",
+       "how"
+      ]
+     },
+     "rule": "생각·믿음을 나타내는 동사 believe 뒤에는 that절을 목적어로 써요. honesty는 단수 취급이라 is가 알맞아요."
+    },
+    {
+     "k": "s",
+     "good": "Whether you stay or leave is up to you.",
+     "ko": "머물지 떠날지는 너에게 달려 있어요.",
+     "bad": [
+      "If you stay or leave is up to you.",
+      "Whether you stay or leave are up to you.",
+      "Whether you stay or leave up to you is."
+     ],
+     "cz": {
+      "st": "___ you stay or leave is up to you.",
+      "ok": "Whether",
+      "wr": [
+       "If",
+       "That",
+       "What"
+      ]
+     },
+     "rule": "‘A이든 B이든 (그것은)’처럼 선택을 나타내는 주어절은 whether ~ or ~로 써요. 문장 맨 앞의 주어절에서는 if를 쓰지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "I asked her if she needed any help.",
+     "ko": "나는 그녀에게 도움이 필요한지 물었어요.",
+     "bad": [
+      "I asked her that she needed any help.",
+      "I asked her if did she need any help.",
+      "I asked her if she needed any helps."
+     ],
+     "cz": {
+      "st": "I asked her ___ she needed any help.",
+      "ok": "if",
+      "wr": [
+       "that",
+       "what",
+       "which"
+      ]
+     },
+     "rule": "‘~인지 아닌지’를 묻는 간접의문문의 목적어절은 if나 whether로 이끌어요. help는 셀 수 없는 명사라 -s를 붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "We talked about whether we should move to a bigger house.",
+     "ko": "우리는 더 큰 집으로 이사해야 할지에 대해 이야기했어요.",
+     "bad": [
+      "We talked about if we should move to a bigger house.",
+      "We talked about that we should move to a bigger house.",
+      "We talked about whether should we move to a bigger house."
+     ],
+     "cz": {
+      "st": "We talked about ___ we should move to a bigger house.",
+      "ok": "whether",
+      "wr": [
+       "that",
+       "what",
+       "which"
+      ]
+     },
+     "rule": "전치사 뒤에서는 ‘~인지 아닌지’의 명사절을 whether로 이끌고 if는 쓰지 않아요. that절은 전치사의 목적어가 될 수 없어요."
+    },
+    {
+     "k": "s",
+     "good": "The place where the festival is held changes every year.",
+     "ko": "축제가 열리는 장소는 해마다 바뀌어요.",
+     "bad": [
+      "The place where the festival is held in changes every year.",
+      "The place which the festival is held changes every year.",
+      "The place when the festival is held changes every year."
+     ],
+     "cz": {
+      "st": "The place ___ the festival is held changes every year.",
+      "ok": "where",
+      "wr": [
+       "when",
+       "why",
+       "how"
+      ]
+     },
+     "rule": "장소를 나타내는 선행사 뒤의 완전한 절은 where로 이끌어요. where가 in which를 대신하므로 문장 끝에 in을 또 붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "This is the house in which my father grew up.",
+     "ko": "이곳은 우리 아버지가 자란 집이에요.",
+     "bad": [
+      "This is the house in where my father grew up.",
+      "This is the house in which my father grew up in.",
+      "This is the house which in my father grew up."
+     ],
+     "cz": {
+      "st": "This is the house ___ my father grew up.",
+      "ok": "in which",
+      "wr": [
+       "in where",
+       "which",
+       "in what"
+      ]
+     },
+     "rule": "「전치사 + 관계대명사」는 관계부사로 바꿔 쓸 수 있지만, 전치사 뒤에 where를 또 쓰지는 않아요. in which나 where 하나만 써요."
+    },
+    {
+     "k": "s",
+     "good": "That is why many people prefer living in cities.",
+     "ko": "그것이 많은 사람들이 도시에 사는 것을 선호하는 이유예요.",
+     "bad": [
+      "That is why prefer many people living in cities.",
+      "That is why many people prefers living in cities.",
+      "That is why of many people prefer living in cities."
+     ],
+     "cz": {
+      "st": "That is ___ many people prefer living in cities.",
+      "ok": "why",
+      "wr": [
+       "whose",
+       "whom",
+       "which"
+      ]
+     },
+     "rule": "That is why ~는 ‘그것이 ~하는 이유예요’라는 뜻이에요. why 뒤에는 「주어 + 동사」가 바로 와요."
+    },
+    {
+     "k": "s",
+     "good": "She explained how she solved the puzzle.",
+     "ko": "그녀는 퍼즐을 어떻게 풀었는지 설명했어요.",
+     "bad": [
+      "She explained the way how she solved the puzzle.",
+      "She explained how did she solve the puzzle.",
+      "She explained how she solved it the puzzle."
+     ],
+     "cz": {
+      "st": "She explained ___ she solved the puzzle.",
+      "ok": "how",
+      "wr": [
+       "what",
+       "whose",
+       "whom"
+      ]
+     },
+     "rule": "the way와 how는 함께 쓰지 않고 둘 중 하나만 써요. how절은 평서문 어순이에요."
+    },
+    {
+     "k": "s",
+     "good": "I'll never forget how kind the nurse was.",
+     "ko": "나는 그 간호사가 얼마나 친절했는지 결코 잊지 못할 거예요.",
+     "bad": [
+      "I'll never forget how the nurse kind was.",
+      "I'll never forget how kindly the nurse was.",
+      "I'll never forget that kind the nurse was."
+     ],
+     "cz": {
+      "st": "I'll never forget ___ kind the nurse was.",
+      "ok": "how",
+      "wr": [
+       "that",
+       "where",
+       "when"
+      ]
+     },
+     "rule": "「how + 형용사 + 주어 + 동사」는 ‘얼마나 ~한지’를 뜻하는 명사절이에요. be동사 뒤의 보어는 형용사(kind)를 써요."
+    },
+    {
+     "k": "s",
+     "good": "The coach decided who would play in the final match.",
+     "ko": "감독은 결승전에 누가 뛸지 결정했어요.",
+     "bad": [
+      "The coach decided who would play it in the final match.",
+      "The coach decided whom would play in the final match.",
+      "The coach decided that would play in the final match."
+     ],
+     "cz": {
+      "st": "The coach decided ___ would play in the final match.",
+      "ok": "who",
+      "wr": [
+       "that",
+       "whom",
+       "where"
+      ]
+     },
+     "rule": "의문사가 절의 주어 역할을 하면 who 바로 뒤에 동사가 와요. 주어 자리에는 목적격 whom이 아니라 who를 써요."
+    },
+    {
+     "k": "s",
+     "good": "Please tell me which bus goes to the airport.",
+     "ko": "어느 버스가 공항에 가는지 알려 주세요.",
+     "bad": [
+      "Please tell me which bus does go to the airport.",
+      "Please tell me which bus going to the airport.",
+      "Please tell me which bus go to the airport."
+     ],
+     "cz": {
+      "st": "Please tell me ___ bus goes to the airport.",
+      "ok": "which",
+      "wr": [
+       "whether",
+       "how",
+       "why"
+      ]
+     },
+     "rule": "which + 명사는 ‘어느 ~’라는 뜻으로 명사절을 이끌어요. 주어 bus가 단수이므로 동사는 goes예요."
+    },
+    {
+     "k": "s",
+     "good": "It doesn't matter whether it rains tomorrow.",
+     "ko": "내일 비가 오든 말든 상관없어요.",
+     "bad": [
+      "It doesn't matter whether does it rain tomorrow.",
+      "It doesn't matter if or not it rains tomorrow.",
+      "It doesn't matter whether it rain tomorrow."
+     ],
+     "cz": {
+      "st": "It doesn't matter ___ it rains tomorrow.",
+      "ok": "whether",
+      "wr": [
+       "what",
+       "which",
+       "who"
+      ]
+     },
+     "rule": "It doesn't matter whether ~는 ‘~이든 아니든 상관없다’는 뜻의 가주어 구문이에요. 절 안에서는 평서문 어순을 지켜요."
+    },
+    {
+     "k": "s",
+     "good": "The problem is how we can protect the forest.",
+     "ko": "문제는 우리가 숲을 어떻게 보호할 수 있느냐예요.",
+     "bad": [
+      "The problem is how can we protect the forest.",
+      "The problem is that how we can protect the forest.",
+      "The problem is how we protect can the forest."
+     ],
+     "cz": {
+      "st": "The problem is ___ we can protect the forest.",
+      "ok": "how",
+      "wr": [
+       "what",
+       "which",
+       "whose"
+      ]
+     },
+     "rule": "보어 자리의 how절은 ‘어떻게 ~하는가’를 뜻해요. that과 how를 겹쳐 쓰지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "Many people are curious about why the sky is blue.",
+     "ko": "많은 사람들이 하늘이 왜 파란지 궁금해해요.",
+     "bad": [
+      "Many people are curious about why is the sky blue.",
+      "Many people are curious about the sky why is blue.",
+      "Many people are curious about because the sky is blue."
+     ],
+     "cz": {
+      "st": "Many people are curious about ___ the sky is blue.",
+      "ok": "why",
+      "wr": [
+       "because",
+       "that",
+       "what"
+      ]
+     },
+     "rule": "전치사 about 뒤에 why절이 올 수 있어요. because는 접속사라서 전치사의 목적어가 되는 명사절을 이끌 수 없어요."
+    },
+    {
+     "k": "s",
+     "good": "Scientists are studying what causes earthquakes.",
+     "ko": "과학자들은 무엇이 지진을 일으키는지 연구하고 있어요.",
+     "bad": [
+      "Scientists are studying that causes earthquakes.",
+      "Scientists are studying whether causes earthquakes.",
+      "Scientists are studying what cause earthquakes."
+     ],
+     "cz": {
+      "st": "Scientists are studying ___ causes earthquakes.",
+      "ok": "what",
+      "wr": [
+       "that",
+       "whether",
+       "how"
+      ]
+     },
+     "rule": "what이 절의 주어로 쓰이면 뒤에 바로 동사가 오고, 단수 취급하여 causes가 돼요."
+    },
+    {
+     "k": "s",
+     "good": "We were surprised that the old bridge was still open.",
+     "ko": "우리는 그 오래된 다리가 아직도 열려 있어서 놀랐어요.",
+     "bad": [
+      "We were surprised what the old bridge was still open.",
+      "We were surprised that the old bridge were still open.",
+      "We were surprised the old bridge that was still open."
+     ],
+     "cz": {
+      "st": "We were surprised ___ the old bridge was still open.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "who"
+      ]
+     },
+     "rule": "surprised 같은 감정 형용사 뒤의 that절은 놀란 이유를 나타내요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "The news that he had won the prize made his parents proud.",
+     "ko": "그가 상을 탔다는 소식은 그의 부모님을 자랑스럽게 했어요.",
+     "bad": [
+      "The news what he had won the prize made his parents proud.",
+      "The news that he had won the prize make his parents proud.",
+      "The news which he had won the prize made his parents proud."
+     ],
+     "cz": {
+      "st": "The news ___ he had won the prize made his parents proud.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "where"
+      ]
+     },
+     "rule": "news의 내용을 설명하는 동격의 that절이에요. 뒤의 절이 완전하므로 관계대명사 which는 쓸 수 없어요."
+    },
+    {
+     "k": "s",
+     "good": "Whoever finishes first will get a prize.",
+     "ko": "먼저 끝내는 사람은 누구든 상을 받을 거예요.",
+     "bad": [
+      "Whoever finishes first will gets a prize.",
+      "Whoever finish first will get a prize.",
+      "Whoever he finishes first will get a prize."
+     ],
+     "cz": {
+      "st": "___ finishes first will get a prize.",
+      "ok": "Whoever",
+      "wr": [
+       "Whomever",
+       "Whenever",
+       "Wherever"
+      ]
+     },
+     "rule": "whoever는 ‘~하는 사람은 누구든’이라는 뜻으로 절 안에서 주어 역할을 하는 명사절을 이끌어요."
+    },
+    {
+     "k": "s",
+     "good": "My uncle showed me where the old school used to stand.",
+     "ko": "삼촌은 그 옛 학교가 서 있던 곳을 내게 보여 주었어요.",
+     "bad": [
+      "My uncle showed me where did the old school used to stand.",
+      "My uncle showed me where the old school used to stood.",
+      "My uncle showed me the old school where used to stand."
+     ],
+     "cz": {
+      "st": "My uncle showed me ___ the old school used to stand.",
+      "ok": "where",
+      "wr": [
+       "what",
+       "who",
+       "whose"
+      ]
+     },
+     "rule": "show 뒤의 where절은 ‘~한 곳’이라는 명사절이에요. used to 다음에는 동사원형(stand)을 써요."
+    },
+    {
+     "k": "s",
+     "good": "It is not clear who broke the window.",
+     "ko": "누가 창문을 깼는지는 분명하지 않아요.",
+     "bad": [
+      "It is not clear whom broke the window.",
+      "It is not clear that broke the window.",
+      "It not is clear who broke the window."
+     ],
+     "cz": {
+      "st": "It is not clear ___ broke the window.",
+      "ok": "who",
+      "wr": [
+       "whom",
+       "that",
+       "whose"
+      ]
+     },
+     "rule": "가주어 It 뒤의 진주어 who절에서 who는 절의 주어예요. 주어 자리이므로 whom이 아니라 who를 써요."
+    },
+    {
+     "k": "s",
+     "good": "She asked me what time the concert started.",
+     "ko": "그녀는 콘서트가 몇 시에 시작했는지 내게 물었어요.",
+     "bad": [
+      "She asked me what time did the concert start.",
+      "She asked me that time the concert started.",
+      "She asked me what time the concert start."
+     ],
+     "cz": {
+      "st": "She asked me ___ time the concert started.",
+      "ok": "what",
+      "wr": [
+       "that",
+       "whether",
+       "who"
+      ]
+     },
+     "rule": "what time은 ‘몇 시’라는 뜻의 의문사구예요. 간접의문문이라 did를 쓰지 않고 과거형 started를 써요."
+    },
+    {
+     "k": "s",
+     "good": "The reason I called you is that I need your advice.",
+     "ko": "내가 너에게 전화한 이유는 네 조언이 필요해서예요.",
+     "bad": [
+      "The reason I called you is what I need your advice.",
+      "The reason I called you is that I need for your advice.",
+      "The reason I called you is that need I your advice."
+     ],
+     "cz": {
+      "st": "The reason I called you is ___ I need your advice.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "whose"
+      ]
+     },
+     "rule": "reason is that ~ 구조에서 that절은 이유의 내용을 밝히는 보어예요."
+    },
+    {
+     "k": "s",
+     "good": "I wonder how many people will attend the meeting.",
+     "ko": "나는 회의에 몇 명이 참석할지 궁금해요.",
+     "bad": [
+      "I wonder how many people will they attend the meeting.",
+      "I wonder how many people attend will the meeting.",
+      "I wonder how much people will attend the meeting."
+     ],
+     "cz": {
+      "st": "I wonder how ___ people will attend the meeting.",
+      "ok": "many",
+      "wr": [
+       "much",
+       "great",
+       "wide"
+      ]
+     },
+     "rule": "people처럼 셀 수 있는 복수 명사 앞에는 how many를 써요. how much는 셀 수 없는 명사에 써요."
+    },
+    {
+     "k": "s",
+     "good": "The result depends on how hard you practice.",
+     "ko": "결과는 네가 얼마나 열심히 연습하느냐에 달려 있어요.",
+     "bad": [
+      "The result depends on that you practice hard.",
+      "The result depends on how hard do you practice.",
+      "The result depends how hard you practice on."
+     ],
+     "cz": {
+      "st": "The result depends on ___ hard you practice.",
+      "ok": "how",
+      "wr": [
+       "that",
+       "what",
+       "whether"
+      ]
+     },
+     "rule": "전치사 on 뒤에 「how + 부사 + 주어 + 동사」의 명사절이 왔어요. 전치사 뒤에는 that절을 쓸 수 없어요."
+    },
+    {
+     "k": "s",
+     "good": "I have no idea what she wants for her birthday.",
+     "ko": "나는 그녀가 생일에 무엇을 원하는지 전혀 몰라요.",
+     "bad": [
+      "I have no idea that she wants for her birthday.",
+      "I have no idea what does she want for her birthday.",
+      "I have no idea what she wants it for her birthday."
+     ],
+     "cz": {
+      "st": "I have no idea ___ she wants for her birthday.",
+      "ok": "what",
+      "wr": [
+       "that",
+       "whether",
+       "how"
+      ]
+     },
+     "rule": "wants의 목적어가 빠져 있으므로 what이 알맞아요. 목적어가 비어 있는 절은 that으로 이끌 수 없어요."
+    },
+    {
+     "k": "s",
+     "good": "Can you tell me where the nearest library is?",
+     "ko": "가장 가까운 도서관이 어디에 있는지 알려 주실 수 있나요?",
+     "bad": [
+      "Can you tell me where is the nearest library?",
+      "Can you tell me where the nearest library?",
+      "Can you tell me where the library nearest is?"
+     ],
+     "cz": {
+      "st": "Can you tell me ___ the nearest library is?",
+      "ok": "where",
+      "wr": [
+       "that",
+       "who",
+       "whose"
+      ]
+     },
+     "rule": "간접의문문에서는 where 뒤에 「주어 + be동사」 순서를 써요."
+    },
+    {
+     "k": "s",
+     "good": "The teacher didn't say when the test would be held.",
+     "ko": "선생님은 시험이 언제 치러질지 말하지 않았어요.",
+     "bad": [
+      "The teacher didn't say when would the test be held.",
+      "The teacher didn't say when the test would hold.",
+      "The teacher didn't say when the test would held."
+     ],
+     "cz": {
+      "st": "The teacher didn't say ___ the test would be held.",
+      "ok": "when",
+      "wr": [
+       "what",
+       "who",
+       "whom"
+      ]
+     },
+     "rule": "시험은 ‘치러지는’ 것이므로 수동태 be held를 써요. 절은 평서문 어순이에요."
+    },
+    {
+     "k": "s",
+     "good": "I was told that the shop opens at nine.",
+     "ko": "나는 그 가게가 9시에 문을 연다고 들었어요.",
+     "bad": [
+      "I was told what the shop opens at nine.",
+      "I was told that the shop open at nine.",
+      "I was told which the shop opens at nine."
+     ],
+     "cz": {
+      "st": "I was told ___ the shop opens at nine.",
+      "ok": "that",
+      "wr": [
+       "what",
+       "which",
+       "who"
+      ]
+     },
+     "rule": "수동태 뒤에도 that절이 올 수 있어요. 주어 the shop이 단수이므로 opens가 알맞아요."
+    },
+    {
+     "k": "s",
+     "good": "He is proud of what he has achieved.",
+     "ko": "그는 자신이 이룬 것을 자랑스러워해요.",
+     "bad": [
+      "He is proud of that he has achieved.",
+      "He is proud of what he has achieved it.",
+      "He is proud what he has achieved."
+     ],
+     "cz": {
+      "st": "He is proud of ___ he has achieved.",
+      "ok": "what",
+      "wr": [
+       "that",
+       "which",
+       "whether"
+      ]
+     },
+     "rule": "achieved의 목적어가 비어 있고 ‘~한 것’을 뜻하므로 what을 써요. 이미 what이 목적어이므로 it을 덧붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "That is the moment when she realized the truth.",
+     "ko": "그때가 그녀가 진실을 깨달은 순간이에요.",
+     "bad": [
+      "That is the moment which she realized the truth.",
+      "That is the moment when she realized the truth it.",
+      "That is the moment why she realized the truth."
+     ],
+     "cz": {
+      "st": "That is the moment ___ she realized the truth.",
+      "ok": "when",
+      "wr": [
+       "which",
+       "why",
+       "how"
+      ]
+     },
+     "rule": "moment 같은 시간 선행사 뒤에는 관계부사 when을 써요. 뒤의 절이 이미 완전해요."
+    },
+    {
+     "k": "s",
+     "good": "Nobody can explain why the lights went out.",
+     "ko": "아무도 불이 왜 꺼졌는지 설명하지 못해요.",
+     "bad": [
+      "Nobody can explain why did the lights go out.",
+      "Nobody can explain why went the lights out.",
+      "Nobody can explain the lights why went out."
+     ],
+     "cz": {
+      "st": "Nobody can explain ___ the lights went out.",
+      "ok": "why",
+      "wr": [
+       "whom",
+       "whose",
+       "which"
+      ]
+     },
+     "rule": "explain 뒤의 why절은 명사절이라 「why + 주어 + 동사」의 평서문 어순을 써요. 의문문처럼 did를 쓰지 않아요."
+    },
+    {
+     "k": "m",
+     "q": "Which word completes the sentence?\n\"The garden ___ my grandmother grows herbs is behind the house.\"",
+     "o": [
+      "which",
+      "where",
+      "when",
+      "why"
+     ],
+     "a": 1,
+     "why": "garden은 장소이고 뒤의 절이 완전하므로 장소 관계부사 where가 알맞아요. which를 쓰려면 in이 필요해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"The year ___ the war ended is remembered in every history book.\" Choose the best word.",
+     "o": [
+      "where",
+      "why",
+      "how",
+      "when"
+     ],
+     "a": 3,
+     "why": "year는 시간을 나타내는 선행사라서 관계부사 when을 써요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"Nobody understands the reason ___ the shop closed so early.\"",
+     "o": [
+      "why",
+      "where",
+      "when",
+      "whether"
+     ],
+     "a": 0,
+     "why": "reason을 선행사로 하는 관계부사는 why예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence has a noun clause used as its subject?",
+     "o": [
+      "She studies in a quiet place near the lake.",
+      "The quiet place where she studies is open.",
+      "What she wants is a quiet place to study.",
+      "She likes to study when the house is quiet."
+     ],
+     "a": 2,
+     "why": "첫 문장은 What she wants(그녀가 원하는 것)가 주어 역할을 하는 명사절이에요. 다른 절들은 장소를 꾸미거나 때를 나타내요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In \"I doubt that he will come,\" the clause \"that he will come\" works as...",
+     "o": [
+      "the subject of the sentence",
+      "the object of the verb doubt",
+      "an adverb of time in the sentence",
+      "an adjective that describes he"
+     ],
+     "a": 1,
+     "why": "that절은 doubt의 목적어 자리에 온 명사절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"This is the lab where they test new batteries.\" Which phrase can replace \"where\" without changing the meaning?",
+     "o": [
+      "which",
+      "in what",
+      "that",
+      "in which"
+     ],
+     "a": 3,
+     "why": "where = 전치사 + which예요. which만 쓰면 전치사 in이 빠져 틀려요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"Where does Mina live?\" Which sentence reports this question correctly?",
+     "o": [
+      "He asked where Mina lives.",
+      "He asked where does Mina live.",
+      "He asked where Mina live.",
+      "He asked where lives Mina."
+     ],
+     "a": 0,
+     "why": "간접의문문은 「의문사 + 주어 + 동사」 순서이고 do/does를 쓰지 않아요. 주어 Mina에 맞춰 lives를 써요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"The coach hasn't decided ___ the new player will start the match.\"",
+     "o": [
+      "what",
+      "which",
+      "whether",
+      "whose"
+     ],
+     "a": 2,
+     "why": "‘~인지 아닌지’를 뜻하는 명사절은 whether로 이끌어요. 나머지는 뒤의 절이 완전해서 알맞지 않아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In which sentence is \"that\" a conjunction that starts a noun clause?",
+     "o": [
+      "That book is on the table.",
+      "I knew that she would call.",
+      "The song that she sang was lovely.",
+      "I don't like that color."
+     ],
+     "a": 1,
+     "why": "I knew that she would call에서 that은 knew의 목적어절을 이끌어요. 나머지는 지시어이거나 관계대명사예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"I'm afraid ___ we have run out of tickets.\"",
+     "o": [
+      "what",
+      "whether",
+      "where",
+      "that"
+     ],
+     "a": 3,
+     "why": "afraid 뒤에서 말하는 내용을 이끄는 접속사는 that이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which part has an error?\n\"Do you know / what time / does the film start / tonight?\"",
+     "o": [
+      "does the film start",
+      "Do you know",
+      "what time",
+      "tonight"
+     ],
+     "a": 0,
+     "why": "간접의문문이므로 what time the film starts의 평서문 어순이어야 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Combine the two sentences:\n\"I don't know.\" + \"Where did he put the key?\"",
+     "o": [
+      "I don't know where did he put the key.",
+      "I don't know that he put the key.",
+      "I don't know where he put the key.",
+      "I don't know where he put it the key."
+     ],
+     "a": 2,
+     "why": "두 문장을 합칠 때 의문문은 평서문 어순의 where절이 되고, did는 사라지며 동사가 과거형으로 바뀌어요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Combine the two sentences:\n\"She is pleased.\" + \"Her team won the final.\"",
+     "o": [
+      "She is pleased what her team won the final.",
+      "She is pleased that her team won the final.",
+      "She is pleased her team that won the final.",
+      "She is pleased that her team winning the final."
+     ],
+     "a": 1,
+     "why": "감정 형용사 pleased 뒤에 이유를 나타내는 that절이 와요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장에서 whether가 이끄는 절의 역할은?\n\"I can't decide whether I should join the club.\"",
+     "o": [
+      "club을 꾸며 주는 형용사절",
+      "이유를 나타내는 부사절",
+      "문장 전체의 주어 역할을 하는 절",
+      "decide의 목적어 역할을 하는 명사절"
+     ],
+     "a": 3,
+     "why": "decide는 ‘무엇을’ 결정하는지를 목적어로 취하고, whether절이 그 목적어 역할을 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"Tell me the reason ___ you changed your mind.\"",
+     "o": [
+      "why",
+      "where",
+      "what",
+      "when"
+     ],
+     "a": 0,
+     "why": "reason 뒤의 관계부사는 why예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"We were surprised ___ the old bridge was still open.\"",
+     "o": [
+      "what",
+      "which",
+      "that",
+      "who"
+     ],
+     "a": 2,
+     "why": "surprised 뒤에는 놀란 이유를 말하는 that절이 와요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence is a correct indirect question for \"What time is it?\"",
+     "o": [
+      "Could you tell me what time is it?",
+      "Could you tell me what time it is?",
+      "Could you tell me that time it is?",
+      "Could you tell me what is time it?"
+     ],
+     "a": 1,
+     "why": "간접의문문은 「의문사구 + 주어 + 동사」 순서예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"The fact ___ she apologized surprised everyone.\" Choose the correct word.",
+     "o": [
+      "what",
+      "who",
+      "where",
+      "that"
+     ],
+     "a": 3,
+     "why": "fact의 내용을 설명하는 동격 that절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 “I'll never forget how kind she was.”의 뜻으로 알맞은 것은?",
+     "o": [
+      "나는 그녀가 얼마나 친절했는지 결코 잊지 못할 거예요.",
+      "나는 그녀가 친절하게 지내던 방법을 잊지 못할 거예요.",
+      "나는 그녀가 친절하다는 것을 잊어버렸어요.",
+      "나는 그녀처럼 친절했던 적이 한 번도 없어요."
+     ],
+     "a": 0,
+     "why": "how kind she was는 ‘그녀가 얼마나 친절했는지’라는 뜻의 명사절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In which sentence does \"what\" mean \"the thing that\"?",
+     "o": [
+      "What is your favorite subject?",
+      "What a lovely view this is!",
+      "I like what you wrote in the card.",
+      "What time does the train leave?"
+     ],
+     "a": 2,
+     "why": "첫 문장의 what you wrote는 ‘네가 쓴 것’이라는 뜻의 관계대명사 what절이에요. 나머지는 의문문이나 감탄문이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In \"The news that he had won made his parents proud,\" the word \"that\"...",
+     "o": [
+      "replaces the noun news inside its own clause",
+      "introduces a clause that states what the news is",
+      "works as the object of the verb had won",
+      "means the same as the word this"
+     ],
+     "a": 1,
+     "why": "이 that은 news의 내용을 설명하는 동격절을 이끄는 접속사이고, 절 안에서 별도의 문장 성분이 아니에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"Their decision depends on ___ the weather improves.\"",
+     "o": [
+      "that",
+      "what",
+      "which",
+      "whether"
+     ],
+     "a": 3,
+     "why": "전치사 on 뒤에는 whether절을 쓸 수 있고, that절은 올 수 없어요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"Please tell me ___ the best way to learn English vocabulary is.\"",
+     "o": [
+      "what",
+      "that",
+      "whether",
+      "who"
+     ],
+     "a": 0,
+     "why": "is 뒤가 비어 있으므로 보어 자리를 채우는 what이 알맞아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence about planting a tree contains a grammar error?",
+     "o": [
+      "I remember the place where we planted this tree.",
+      "I remember when we planted this tree.",
+      "I remember the day where we planted this tree.",
+      "I remember that we planted this tree."
+     ],
+     "a": 2,
+     "why": "day는 시간을 나타내므로 where가 아니라 when이어야 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence about a late train contains an error?",
+     "o": [
+      "He wondered why the train was so late.",
+      "He wondered why was the train so late.",
+      "He asked me why the train was late.",
+      "I know that the train was late."
+     ],
+     "a": 1,
+     "why": "간접의문문은 why the train was ~의 평서문 어순이어야 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"I agree with what she said at the meeting.\" What does \"what she said\" mean?",
+     "o": [
+      "the person who spoke up",
+      "the time when she spoke",
+      "the reason why she spoke",
+      "the things that she said"
+     ],
+     "a": 3,
+     "why": "what은 ‘~하는 것’이라는 뜻이라 what she said는 ‘그녀가 말한 것’이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"The teacher didn't say when the test would be held.\" Which sentence is closest in meaning?",
+     "o": [
+      "The teacher did not give the date of the test.",
+      "The teacher said the test was already over.",
+      "The teacher told us the test would never be held.",
+      "The teacher did not explain why we need the test."
+     ],
+     "a": 0,
+     "why": "when the test would be held는 ‘시험이 언제 열릴지’이므로 날짜를 말하지 않았다는 뜻이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"Midnight is the moment ___ the new year begins.\"",
+     "o": [
+      "why",
+      "how",
+      "when",
+      "whose"
+     ],
+     "a": 2,
+     "why": "moment는 시간 선행사이므로 관계부사 when이 알맞아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "“나는 그녀가 왜 화가 났는지 모르겠다.”를 영어로 바르게 옮긴 것은?",
+     "o": [
+      "I don't know why is she angry.",
+      "I don't know why she is angry.",
+      "I don't know what she is angry.",
+      "I don't know she why is angry."
+     ],
+     "a": 1,
+     "why": "why가 이끄는 간접의문문은 「why + 주어 + 동사」 순서예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "“그곳은 우리가 처음 만난 카페이다.”를 영어로 바르게 옮긴 것은?",
+     "o": [
+      "That is the café when we first met.",
+      "That is the café which we first met.",
+      "That is the café where we first met there.",
+      "That is the café where we first met."
+     ],
+     "a": 3,
+     "why": "장소 선행사 café 뒤에 완전한 절이 오면 where를 써요. where가 ‘거기서’의 뜻을 포함해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which word can follow \"possibility\" in this sentence?\n\"The possibility ___ the plan may fail worries me.\"",
+     "o": [
+      "that",
+      "which",
+      "what",
+      "where"
+     ],
+     "a": 0,
+     "why": "possibility의 내용을 설명하는 동격 that절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"It is a pity ___ you can't join us.\"",
+     "o": [
+      "what",
+      "whether",
+      "that",
+      "how"
+     ],
+     "a": 2,
+     "why": "It is a pity that ~는 ‘~라니 안타깝다’라는 뜻의 가주어 구문이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"She asked me ___ I needed a ride.\"",
+     "o": [
+      "that",
+      "if",
+      "what",
+      "which"
+     ],
+     "a": 1,
+     "why": "‘~인지 아닌지’를 묻는 목적어절은 if나 whether로 이끌어요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"Are you hungry?\" he asked. Which sentence reports this correctly?",
+     "o": [
+      "He asked me that I was hungry.",
+      "He asked me if was I hungry.",
+      "He asked me whether was I hungry.",
+      "He asked me whether I was hungry."
+     ],
+     "a": 3,
+     "why": "yes/no 질문은 whether(if)로 전달하고, 평서문 어순을 써요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In \"He showed me the house where he was born and told me that he missed it,\" which is a noun clause?",
+     "o": [
+      "that he missed it",
+      "where he was born",
+      "the house where he was born",
+      "He showed me the house"
+     ],
+     "a": 0,
+     "why": "that he missed it은 told의 목적어절이에요. where he was born은 house를 꾸미는 절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In which sentence does \"how\" start a noun clause?",
+     "o": [
+      "How did she bake the cake?",
+      "How about baking a cake?",
+      "I learned how she baked the cake.",
+      "How delicious!"
+     ],
+     "a": 2,
+     "why": "첫 문장의 how she baked the cake는 learned의 목적어 역할을 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"That is ___ many students choose to study abroad.\"",
+     "o": [
+      "whose",
+      "why",
+      "whom",
+      "whether"
+     ],
+     "a": 1,
+     "why": "That is why ~는 ‘그것이 ~하는 이유예요’라는 뜻이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "What does \"Whatever you decide is fine with me\" mean?",
+     "o": [
+      "I will go wherever you go.",
+      "The reason you decide is not clear.",
+      "I wonder if you will decide.",
+      "Any choice that you make is fine."
+     ],
+     "a": 3,
+     "why": "whatever you decide는 ‘네가 무엇을 결정하든’이라는 뜻의 명사절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 that이 접속사로 쓰인 문장은?",
+     "o": [
+      "She said that she was tired.",
+      "That is my bicycle.",
+      "The movie that we saw was long.",
+      "I don't like that color."
+     ],
+     "a": 0,
+     "why": "첫 문장의 that은 said의 목적어절을 이끄는 접속사예요. 나머지는 지시대명사, 관계대명사, 지시형용사예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "다음 중 if를 쓸 수 없고 whether만 쓸 수 있는 문장은?",
+     "o": [
+      "I wonder ___ she will call.",
+      "He asked me ___ I liked tea.",
+      "___ it will rain tomorrow is not certain.",
+      "Let me know ___ you are free."
+     ],
+     "a": 2,
+     "why": "주어 자리에 오는 ‘~인지 아닌지’ 절은 if가 아니라 whether로 써야 해요. 나머지는 if가 가능해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"He gave no reason ___ he left early.\"",
+     "o": [
+      "where",
+      "why",
+      "when",
+      "what"
+     ],
+     "a": 1,
+     "why": "reason 뒤의 관계부사는 why예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence means the same as \"I know the reason why he is angry\"?",
+     "o": [
+      "I know that he is angry.",
+      "I know whether he is angry.",
+      "I know when he is angry.",
+      "I know why he is angry."
+     ],
+     "a": 3,
+     "why": "the reason why he is angry에서 reason을 생략하면 why he is angry가 돼요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"The village in ___ I spent my childhood is famous for apples.\"",
+     "o": [
+      "which",
+      "where",
+      "what",
+      "whom"
+     ],
+     "a": 0,
+     "why": "전치사 in 뒤에는 관계대명사 which를 써요. in where라고는 하지 않아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In which sentence is \"when\" a relative adverb?",
+     "o": [
+      "When did you move here?",
+      "I asked when the shop opens.",
+      "I remember the day when we met.",
+      "Call me when you arrive."
+     ],
+     "a": 2,
+     "why": "첫 문장의 when은 선행사 day를 꾸미는 관계부사예요. 나머지는 의문사, 명사절 접속사, 시간 부사절 접속사예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence has a noun clause as the complement after \"be\"?",
+     "o": [
+      "The problem we discussed is old.",
+      "The problem is that we have no time.",
+      "The problem appeared when we left.",
+      "The problem with the plan remains."
+     ],
+     "a": 1,
+     "why": "The problem is that ~에서 that절이 be동사 뒤 보어 역할을 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"I'm not sure ___ she lives.\"",
+     "o": [
+      "that",
+      "what",
+      "who",
+      "where"
+     ],
+     "a": 3,
+     "why": "‘어디에 사는지’를 나타내는 where가 알맞아요. 나머지는 뒤의 절이 완전해서 어색해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which is the correct word order?\n\"Do you remember ___?\"",
+     "o": [
+      "where we parked the car",
+      "where did we park the car",
+      "where parked we the car",
+      "we parked where the car"
+     ],
+     "a": 0,
+     "why": "간접의문문은 「의문사 + 주어 + 동사」 순서예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence about a visit contains a relative adverb?",
+     "o": [
+      "We visited the old market that my aunt recommended.",
+      "We visited the old market because my aunt asked.",
+      "We visited the old market where my aunt sells tea.",
+      "We visited the old market, which was crowded."
+     ],
+     "a": 2,
+     "why": "where가 market을 꾸미는 관계부사예요. that과 which는 관계대명사이고 because는 접속사예요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "\"Her question was whether the museum accepted cards.\" Here, \"whether the museum accepted cards\" is...",
+     "o": [
+      "an adverb clause of condition",
+      "a noun clause used as a complement",
+      "a relative clause that modifies question",
+      "a noun clause used as a subject"
+     ],
+     "a": 1,
+     "why": "be동사 뒤에 와서 주어를 설명하는 보어 역할의 명사절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 들어갈 수 있는 것은?\n\"That is ___ I wear a coat in winter.\"",
+     "o": [
+      "because of",
+      "the because",
+      "so why",
+      "why"
+     ],
+     "a": 3,
+     "why": "That is why ~는 ‘그래서 ~하는 거예요’라는 뜻의 표현이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which noun is most likely to be followed by the relative adverb \"when\"?",
+     "o": [
+      "moment",
+      "kitchen",
+      "garden",
+      "library"
+     ],
+     "a": 0,
+     "why": "moment는 시간을 나타내는 명사라서 when 앞의 선행사로 알맞아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which noun is most likely to be followed by the relative adverb \"where\"?",
+     "o": [
+      "moment",
+      "reason",
+      "station",
+      "season"
+     ],
+     "a": 2,
+     "why": "station은 장소를 나타내는 명사라서 where의 선행사가 될 수 있어요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In which sentence can \"that\" NOT be left out?",
+     "o": [
+      "I hope that you feel better.",
+      "That he lied surprised us.",
+      "She said that she was late.",
+      "We know that it is true."
+     ],
+     "a": 1,
+     "why": "문장 맨 앞에서 주어절을 이끄는 that은 생략할 수 없어요. 목적어절의 that은 생략할 수 있어요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "In which sentence is the \"why\" clause a noun clause?",
+     "o": [
+      "Why did you call me?",
+      "The reason why I called you is simple.",
+      "I called you because I was lost.",
+      "That is why I called you."
+     ],
+     "a": 3,
+     "why": "why I called you가 be동사 뒤 보어 역할을 하는 명사절이에요. 세 번째 보기는 reason을 꾸미는 관계부사절이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"Nobody knows ___ the project will end.\"",
+     "o": [
+      "when",
+      "what",
+      "who",
+      "whom"
+     ],
+     "a": 0,
+     "why": "‘언제 끝날지’를 뜻하는 when이 알맞아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Complete the sentence.\n\"I'm sure ___ she will pass the exam.\"",
+     "o": [
+      "whom",
+      "whose",
+      "that",
+      "which"
+     ],
+     "a": 2,
+     "why": "sure 뒤에서 확신하는 내용을 이끄는 접속사는 that이에요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence about a lost wallet contains an error?",
+     "o": [
+      "She asked me where her wallet was.",
+      "She asked me where was her wallet.",
+      "I wonder whether my wallet is here.",
+      "He said that the wallet was lost."
+     ],
+     "a": 1,
+     "why": "간접의문문은 where her wallet was의 평서문 어순이어야 해요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은? (나는 그가 어디에 사는지 궁금하다.)\n\"I wonder ___ he lives.\"",
+     "o": [
+      "what",
+      "which",
+      "whose",
+      "where"
+     ],
+     "a": 3,
+     "why": "‘어디에’를 뜻하는 where가 알맞아요. 나머지는 뒤에 이어질 명사가 필요하거나 의미가 맞지 않아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "m",
+     "q": "Which sentence correctly joins these two?\n\"This is the room.\" + \"I study in the room.\"",
+     "o": [
+      "This is the room where I study.",
+      "This is the room which I study.",
+      "This is the room when I study.",
+      "This is the room where I study in."
+     ],
+     "a": 0,
+     "why": "장소 선행사 room과 in the room을 where 하나로 합쳐요. 전치사 in을 또 쓰지 않아요.",
+     "cat": "clause"
+    },
+    {
+     "k": "r",
+     "title": "The Temporary Reading Room",
+     "text": "When the city library closed for repairs last spring, many students lost the quiet place where they used to study. A group of volunteers asked the council whether the old train station could be used instead. At first, officials doubted that the building was safe, so engineers checked the roof and the floors. They reported that only a few small repairs were needed. By June, the station had become a temporary reading room with long tables, soft lamps, and free internet. Nobody knows how long it will stay open, but the students say it is the reason they can prepare for exams without stress.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A plan to take down an unsafe old train station in the city",
+        "A temporary study space that opened while the library was closed",
+        "A group of engineers who built a new kind of reading lamp",
+        "A debate about whether students should have free internet"
+       ],
+       "a": 1,
+       "why": "도서관이 닫힌 동안 옛 기차역이 임시 열람실이 된 이야기가 중심이에요.",
+       "std": [
+        "12영Ⅰ-01-02"
+       ]
+      },
+      {
+       "q": "Why did engineers check the station?",
+       "o": [
+        "The council wanted to add more internet cables to it",
+        "Volunteers asked them to paint the old walls again",
+        "Students complained that the lamps were far too bright",
+        "Officials were not sure that the building was safe"
+       ],
+       "a": 3,
+       "why": "관리들이 건물의 안전을 의심했기 때문에 기술자들이 지붕과 바닥을 점검했어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What can be inferred about the reading room?",
+       "o": [
+        "Its future is still uncertain",
+        "It will replace the library for good",
+        "It will close right after the exams end",
+        "Only the volunteers are allowed to use it"
+       ],
+       "a": 0,
+       "why": "‘얼마나 오래 열려 있을지 아무도 모른다’고 했으므로 앞날이 불확실하다고 추론할 수 있어요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      },
+      {
+       "q": "In the passage, \"doubted\" is closest in meaning to...",
+       "o": [
+        "was completely sure",
+        "was very angry about",
+        "was not convinced",
+        "was greatly pleased by"
+       ],
+       "a": 2,
+       "why": "doubted that ~은 ‘~라는 것을 확신하지 못했다’는 뜻이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "What does \"the quiet place where they used to study\" refer to?",
+       "o": [
+        "the old train station",
+        "the city library",
+        "the council office",
+        "the students' school"
+       ],
+       "a": 1,
+       "why": "학생들이 예전에 공부하던 조용한 장소는 수리를 위해 문을 닫은 도서관이에요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Sleep and Memory",
+     "text": "Scientists at a university wanted to find out whether sleeping after studying helps people remember more. They asked forty students to learn a list of new words in the evening. Half of the group slept for eight hours, while the other half stayed awake all night. The next morning, everyone took the same test. The students who had slept remembered about twenty percent more words. The researchers concluded that sleep gives the brain time to store new information. However, they warned that one small study cannot show why the effect happens in every person.",
+     "qs": [
+      {
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Staying awake all night usually leads to higher test scores",
+        "Forty students found a quick way to learn a long word list",
+        "Studying in the evening works better than in the morning",
+        "Sleep may help people remember what they have learned"
+       ],
+       "a": 3,
+       "why": "수면이 학습한 내용을 기억하는 데 도움이 될 수 있다는 것이 요지예요.",
+       "std": [
+        "12영Ⅰ-01-02"
+       ]
+      },
+      {
+       "q": "How did the two groups differ in the experiment?",
+       "o": [
+        "One group slept and the other stayed awake",
+        "One group studied more words than the other",
+        "One group took the test in the evening",
+        "One group learned the list in a noisy room"
+       ],
+       "a": 0,
+       "why": "한 집단은 8시간을 잤고 다른 집단은 밤새 깨어 있었어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What did the students who slept do better on the test?",
+       "o": [
+        "They finished the test in half the time",
+        "They wrote longer answers than the others",
+        "They remembered about twenty percent more words",
+        "They guessed more of the answers correctly"
+       ],
+       "a": 2,
+       "why": "잠을 잔 학생들은 약 20퍼센트 더 많은 단어를 기억했어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "Why do the researchers give a warning at the end?",
+       "o": [
+        "The students did not follow the test rules",
+        "A single small study may not apply to every person",
+        "Sleeping too long can harm the brain's memory",
+        "The experiment ended before the morning test"
+       ],
+       "a": 1,
+       "why": "연구가 작아서 모든 사람에게 같은 효과가 나타난다고 말할 수 없다는 경고예요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      },
+      {
+       "q": "In the passage, \"concluded\" is closest in meaning to...",
+       "o": [
+        "argued with the other scientists",
+        "repeated the same test again",
+        "refused to accept the findings",
+        "decided after studying the results"
+       ],
+       "a": 3,
+       "why": "concluded는 결과를 보고 ‘결론을 내렸다’는 뜻이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Sharing the Road",
+     "text": "In one mid-sized city, a bike-sharing system started last year, and it quickly changed how people travel to work. Commuters can borrow a bike at any station and return it at the one nearest their office. The city chose this plan because traffic was getting worse and many residents complained about air pollution. Surprisingly, the busiest time is not the morning rush hour but the lunch break, when workers ride to the riverside park where food trucks gather. Some critics argue that the bikes are unsafe on narrow roads, so the city is now building new lanes.",
+     "qs": [
+      {
+       "q": "Why did the city start the bike-sharing system?",
+       "o": [
+        "Heavy traffic and polluted air were becoming serious",
+        "Visitors asked for cheaper tickets to the riverside park",
+        "Food trucks needed an easier way to reach the offices",
+        "Local shops wanted more customers on the narrow roads"
+       ],
+       "a": 0,
+       "why": "교통 체증과 대기 오염이 문제여서 도시가 이 계획을 선택했어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "According to the passage, when are the bikes used most?",
+       "o": [
+        "In the early morning rush hour",
+        "On the weekend afternoons by the river",
+        "During the lunch break",
+        "At night after the food trucks leave"
+       ],
+       "a": 2,
+       "why": "가장 붐비는 때는 출근 시간이 아니라 점심시간이에요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What does the building of new lanes suggest?",
+       "o": [
+        "The city plans to remove the bike stations soon",
+        "The city takes the critics' safety concerns seriously",
+        "The critics have already stopped using the bikes",
+        "Most roads in the city are wide enough for bikes"
+       ],
+       "a": 1,
+       "why": "안전 문제를 지적한 비판에 대응해 새 자전거 도로를 만든다는 점에서 추론할 수 있어요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      },
+      {
+       "q": "In the passage, \"commuters\" means people who...",
+       "o": [
+        "repair bikes at the stations",
+        "run food trucks near the park",
+        "visit the city for a short holiday",
+        "travel regularly between home and work"
+       ],
+       "a": 3,
+       "why": "commuters는 집과 직장을 정기적으로 오가는 사람들이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "How a bike-sharing system affects daily travel",
+        "Why food trucks are popular with office workers",
+        "How narrow roads were made safer for walkers",
+        "Which cities have the cleanest air in the country"
+       ],
+       "a": 0,
+       "why": "자전거 공유 제도와 그것이 사람들의 이동에 준 변화를 다뤄요.",
+       "std": [
+        "12영Ⅰ-01-02"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "The Lantern Night",
+     "text": "Every year, on the night when the first full moon of autumn rises, the people of a small mountain village gather in the square. They hang paper lanterns from the trees and cook rice cakes together. Older residents explain that the festival began long ago, when farmers wanted to thank the land for a good harvest. Today, young people who have moved to the cities often return home just for this evening. One visitor said that the reason she comes back is not the food but the feeling that she still belongs there.",
+     "qs": [
+      {
+       "q": "According to the passage, when does the festival take place?",
+       "o": [
+        "On the last evening of the harvest week",
+        "On the first night of spring each year",
+        "On the night of the first autumn full moon",
+        "On the day the farmers leave for the cities"
+       ],
+       "a": 2,
+       "why": "축제는 가을의 첫 보름달이 뜨는 밤에 열려요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "Why did the festival begin, according to the older residents?",
+       "o": [
+        "Villagers wanted to welcome visitors from the cities",
+        "Farmers wanted to give thanks for a good harvest",
+        "The council hoped to sell more rice cakes in autumn",
+        "Children needed a place to play under the moon"
+       ],
+       "a": 1,
+       "why": "농부들이 풍작에 대해 땅에 감사하려고 시작한 축제예요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What does the visitor's comment suggest?",
+       "o": [
+        "She dislikes the lanterns hung in the village trees",
+        "She plans to move back to the mountain village soon",
+        "She thinks the rice cakes are too hard to make",
+        "Feeling at home matters to her more than the food"
+       ],
+       "a": 3,
+       "why": "음식이 아니라 소속감이 돌아오는 이유라고 했어요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      },
+      {
+       "q": "In the passage, \"belongs\" is closest in meaning to...",
+       "o": [
+        "feels like a welcome part of a place",
+        "owns a house in the square",
+        "keeps something for a short time",
+        "pays for the festival each year"
+       ],
+       "a": 0,
+       "why": "belong there는 ‘그곳의 일원으로 느낀다’는 뜻이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Life Under the Sea",
+     "text": "Coral reefs cover less than one percent of the ocean floor, yet they are home to about a quarter of all sea creatures. Scientists explain that reefs grow slowly in warm, clear water where sunlight can reach tiny algae living inside the coral. When the water becomes too warm, the corals push the algae out and turn white, a process known as bleaching. Many researchers believe that rising sea temperatures are the main reason why large areas of reef are dying. Fortunately, some teams are growing healthy coral in labs and planting it where the damage is worst.",
+     "qs": [
+      {
+       "q": "What happens to coral when the water becomes too warm?",
+       "o": [
+        "It grows faster toward the sunlight",
+        "It pushes out the algae and turns white",
+        "It starts to hide from sea creatures",
+        "It breaks into tiny pieces of algae"
+       ],
+       "a": 1,
+       "why": "물이 너무 따뜻해지면 산호는 조류를 내보내고 하얗게 변해요(백화 현상).",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What is the main reason large areas of reef are dying, according to many researchers?",
+       "o": [
+        "Too much sunlight in clear water",
+        "The slow growth of tiny algae",
+        "A lack of sea creatures nearby",
+        "Rising sea temperatures"
+       ],
+       "a": 3,
+       "why": "연구자들은 해수 온도 상승을 가장 큰 원인으로 봐요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "How does the writer feel about the future of coral reefs?",
+       "o": [
+        "Concerned but a little hopeful",
+        "Completely certain they will recover",
+        "Not interested in the problem at all",
+        "Sure that nothing can be done"
+       ],
+       "a": 0,
+       "why": "문제를 걱정하면서도 연구실에서 산호를 키우는 노력에 희망을 보여요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      },
+      {
+       "q": "In the passage, the word \"bleaching\" refers to...",
+       "o": [
+        "algae growing faster in the sun",
+        "scientists cleaning the ocean floor",
+        "coral losing its color",
+        "water becoming clear and cold"
+       ],
+       "a": 2,
+       "why": "bleaching은 산호가 색을 잃고 하얗게 변하는 과정이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "Why do some teams plant coral grown in labs?",
+       "o": [
+        "To study how algae live in warm water",
+        "To repair places where the damage is worst",
+        "To make the ocean floor cover more area",
+        "To show visitors how coral grows slowly"
+       ],
+       "a": 1,
+       "why": "피해가 가장 심한 곳에 건강한 산호를 심어 복구하려는 거예요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Ten Minutes a Day",
+     "text": "My cousin Jina had always believed that she was bad at languages. She changed her mind after she started using a learning app on her phone. The app asks short questions every day and shows her when she is ready to review an old word. At first, she doubted whether ten minutes a day could make any difference. After three months, however, she was able to follow a simple conversation with a tourist who asked her where the nearest subway station was. Jina now says that regular practice matters more than natural talent.",
+     "qs": [
+      {
+       "q": "What did Jina change her mind about?",
+       "o": [
+        "Her opinion of the tourist she met",
+        "The kind of phone she wanted to buy",
+        "The subway station she used each day",
+        "Her belief that she could not learn languages"
+       ],
+       "a": 3,
+       "why": "she was bad at languages라는 믿음을 바꿨어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "How long did Jina practice each day?",
+       "o": [
+        "About ten minutes",
+        "About thirty minutes",
+        "About an hour",
+        "About three hours"
+       ],
+       "a": 0,
+       "why": "하루 10분 연습한다고 했어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What does Jina's story suggest?",
+       "o": [
+        "Learning apps work only for young students",
+        "Tourists are the best language teachers",
+        "Steady practice can matter more than talent",
+        "Three months is too short to improve at all"
+       ],
+       "a": 2,
+       "why": "꾸준한 연습이 타고난 재능보다 중요하다는 것이 이야기의 교훈이에요.",
+       "std": [
+        "12영Ⅰ-01-02"
+       ]
+      },
+      {
+       "q": "In the passage, \"review\" means to...",
+       "o": [
+        "say goodbye to an old friend",
+        "look at something again to remember it",
+        "write a new word on a card",
+        "ask a tourist a simple question"
+       ],
+       "a": 1,
+       "why": "review an old word는 이미 배운 단어를 다시 보며 기억하는 것을 뜻해요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "What did the tourist ask Jina?",
+       "o": [
+        "When the next subway train would leave",
+        "Why the app was so helpful to her",
+        "Whether she could teach him her language",
+        "Where the nearest subway station was"
+       ],
+       "a": 3,
+       "why": "관광객은 가장 가까운 지하철역이 어디인지 물었어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "More Than a Drink",
+     "text": "In many cultures, drinking tea is more than a way to quench thirst. In Japan, the tea ceremony is a calm ritual in which a host prepares tea slowly for guests, and every movement has a meaning. In Britain, afternoon tea became popular in the nineteenth century, when people began to enjoy a light meal between lunch and dinner. In Morocco, tea is poured from a height to make small bubbles, and refusing a glass can seem impolite. These customs show that the same drink can express respect, friendship, or hospitality depending on where you are.",
+     "qs": [
+      {
+       "q": "What is the main point of the passage?",
+       "o": [
+        "Tea can carry different meanings in different cultures",
+        "Tea is the most popular drink around the world",
+        "The best tea is always prepared very slowly",
+        "Afternoon tea is older than the tea ceremony"
+       ],
+       "a": 0,
+       "why": "같은 차라도 문화마다 다른 의미를 지닌다는 것이 요지예요.",
+       "std": [
+        "12영Ⅰ-01-02"
+       ]
+      },
+      {
+       "q": "When did afternoon tea become popular in Britain?",
+       "o": [
+        "Before lunch was invented",
+        "During a recent summer",
+        "In the nineteenth century",
+        "At the time of the tea ceremony"
+       ],
+       "a": 2,
+       "why": "영국의 오후 차는 19세기에 인기를 얻었어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What might happen if a guest refuses tea in Morocco?",
+       "o": [
+        "The host may pour the tea from a lower height",
+        "The host may feel the guest is impolite",
+        "The guest may be asked to prepare the tea",
+        "The guest may be given a light meal instead"
+       ],
+       "a": 1,
+       "why": "모로코에서는 차를 거절하면 무례하게 보일 수 있다고 했어요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      },
+      {
+       "q": "In the passage, \"hospitality\" means...",
+       "o": [
+        "a quiet and calm place",
+        "the skill of making tea",
+        "a feeling of being tired",
+        "kind treatment of guests"
+       ],
+       "a": 3,
+       "why": "hospitality는 손님을 친절하게 대접하는 태도예요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "Why does the writer mention three different countries?",
+       "o": [
+        "To show how customs differ from place to place",
+        "To argue that one country makes better tea",
+        "To explain where tea plants grow best",
+        "To describe a trip taken by the writer"
+       ],
+       "a": 0,
+       "why": "세 나라의 예로 풍습이 지역마다 다르다는 것을 보여 주려는 거예요.",
+       "std": [
+        "12영Ⅰ-01-06"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Rethinking the Fridge",
+     "text": "Households throw away a large part of the food they buy. Experts say that the main reason why this happens is poor planning: people buy too much, forget what is in the fridge, and let it spoil. Some supermarkets now sell slightly bent vegetables at a lower price, which helps farmers earn money from crops that would otherwise be thrown away. A few families have also started keeping a weekly menu so that they know exactly what to buy. It is clear that small changes at home can reduce waste and save money.",
+     "qs": [
+      {
+       "q": "According to experts, what is the main cause of food waste at home?",
+       "o": [
+        "Supermarkets sell food at lower prices",
+        "Farmers grow more crops than they need",
+        "People do not plan what they buy",
+        "Fridges are too small for fresh vegetables"
+       ],
+       "a": 2,
+       "why": "전문가들은 계획 없이 사는 것을 주된 이유로 들어요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "How do cheaper bent vegetables help farmers?",
+       "o": [
+        "They teach farmers how to grow straight vegetables",
+        "They let farmers sell crops that would be thrown away",
+        "They reduce the price farmers pay for seeds",
+        "They make shoppers visit farms more often"
+       ],
+       "a": 1,
+       "why": "모양이 고르지 않은 채소를 싸게 팔아 농부가 버릴 작물로도 돈을 벌 수 있어요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "Why do some families keep a weekly menu?",
+       "o": [
+        "To save money on the electricity bill",
+        "To cook meals for a large group of guests",
+        "To use up the vegetables sold at a lower price",
+        "To know exactly what food to buy"
+       ],
+       "a": 3,
+       "why": "주간 식단표로 무엇을 사야 할지 정확히 알 수 있어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "In the passage, \"spoil\" means to...",
+       "o": [
+        "become bad and unfit to eat",
+        "be sold for a lower price",
+        "become cold inside the fridge",
+        "grow bigger after a few days"
+       ],
+       "a": 0,
+       "why": "let it spoil은 음식이 상해서 먹을 수 없게 되는 것을 뜻해요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "What is the writer's attitude toward the problem?",
+       "o": [
+        "Doubtful that anything will change",
+        "Angry at the shops that sell food",
+        "Positive that small changes can help",
+        "Uninterested in how families behave"
+       ],
+       "a": 2,
+       "why": "마지막 문장에서 작은 변화가 도움이 된다고 긍정적으로 말해요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Clearer Look at the Sky",
+     "text": "When a new space telescope sent back its first pictures, astronomers were amazed by how sharp the images were. The telescope can detect light that has traveled for billions of years, so it shows galaxies as they looked when the universe was young. Engineers had worried that the delicate mirror would not unfold correctly in space, but it opened perfectly. Now scientists hope to learn whether distant planets have air that could support life. They stress, however, that finding such a planet would only be the beginning of a long search.",
+     "qs": [
+      {
+       "q": "Why can the telescope show the young universe?",
+       "o": [
+        "It flies much closer to the galaxies than other telescopes",
+        "It detects light that has traveled for billions of years",
+        "It takes pictures at night when the sky is darkest",
+        "It records the sounds that old galaxies send out"
+       ],
+       "a": 1,
+       "why": "아주 오래 여행한 빛을 포착하기 때문에 젊은 우주의 모습을 볼 수 있어요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "What had the engineers worried about?",
+       "o": [
+        "Whether the pictures would be sharp",
+        "Whether the planets would have air",
+        "Whether the launch would take place on time",
+        "Whether the mirror would open correctly"
+       ],
+       "a": 3,
+       "why": "섬세한 거울이 우주에서 제대로 펼쳐질지 걱정했어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "In the passage, \"delicate\" is closest in meaning to...",
+       "o": [
+        "easily damaged",
+        "extremely heavy",
+        "brightly colored",
+        "very old"
+       ],
+       "a": 0,
+       "why": "delicate mirror는 쉽게 손상될 수 있는 섬세한 거울이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "What does \"it\" refer to in \"it opened perfectly\"?",
+       "o": [
+        "the telescope's first picture",
+        "the distant planet",
+        "the mirror",
+        "the universe"
+       ],
+       "a": 2,
+       "why": "it은 앞에서 말한 delicate mirror를 가리켜요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "What is the scientists' attitude at the end of the passage?",
+       "o": [
+        "Surprised and disappointed",
+        "Hopeful but careful",
+        "Bored and unconcerned",
+        "Certain and impatient"
+       ],
+       "a": 1,
+       "why": "희망을 품지만 긴 탐색의 시작일 뿐이라고 조심스럽게 말해요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "The Beach Cleanup",
+     "text": "Last Saturday, our class spent the morning cleaning the beach where we had our school picnic in May. We were shocked to see how much plastic had washed up since then. Mr. Park explained that most of it comes from boats and rivers far away, which means that cleaning one beach is not enough. Even so, we filled thirty bags in three hours, and a few residents joined us when they saw what we were doing. Our teacher said that the real result of the day was not the clean sand but the fact that we had begun to care.",
+     "qs": [
+      {
+       "q": "Why did the writer's class go to the beach?",
+       "o": [
+        "To collect shells for a science project in May",
+        "To look for the boats that had lost their plastic",
+        "To meet the residents who lived near the river",
+        "To clean up the place where they had held a picnic"
+       ],
+       "a": 3,
+       "why": "5월에 소풍을 갔던 해변을 청소하러 갔어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "According to Mr. Park, why is cleaning one beach not enough?",
+       "o": [
+        "Most of the plastic arrives from faraway places",
+        "Most visitors leave their trash on the sand",
+        "The bags are too small to hold all the plastic",
+        "The residents refuse to help clean the sand"
+       ],
+       "a": 0,
+       "why": "플라스틱 대부분이 멀리 떨어진 배와 강에서 오기 때문이에요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "What did the teacher mean by \"the real result of the day\"?",
+       "o": [
+        "The beach had been made perfectly clean",
+        "The class had broken a record for the most bags",
+        "The students had started to care about the problem",
+        "The residents had promised to stop using plastic"
+       ],
+       "a": 2,
+       "why": "깨끗한 모래보다 학생들이 관심을 갖게 된 것이 진짜 성과라는 뜻이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "In the passage, \"washed up\" means...",
+       "o": [
+        "was cleaned with soap and water",
+        "was carried onto the shore by the water",
+        "was thrown into the sea by boats",
+        "was collected in bags by the class"
+       ],
+       "a": 1,
+       "why": "washed up은 물에 실려 해안으로 밀려왔다는 뜻이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "How many bags did the class fill?",
+       "o": [
+        "Three",
+        "Thirteen",
+        "Three hundred",
+        "Thirty"
+       ],
+       "a": 3,
+       "why": "세 시간 동안 서른 개의 자루를 채웠어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Who Can See Your Photos?",
+     "text": "Many teenagers say they know exactly who can see their photos online, but a recent survey suggests otherwise. When researchers asked students to check their account settings, more than half discovered that strangers could view at least one post. The students had assumed that their profiles were private because they had never changed anything. Experts advise that users should review their settings every few months, since apps often update the way they share information. They also recommend asking whether a photo is something you would be comfortable showing to everyone before you post it.",
+     "qs": [
+      {
+       "q": "What did the survey find?",
+       "o": [
+        "Many students were wrong about who could see their posts",
+        "Most teenagers never post photos of themselves online",
+        "Strangers rarely look at the photos that students share",
+        "Apps stopped sharing information with other users"
+       ],
+       "a": 0,
+       "why": "절반 넘는 학생이 낯선 사람이 게시물을 볼 수 있다는 걸 몰랐어요.",
+       "std": [
+        "12영Ⅰ-01-01"
+       ]
+      },
+      {
+       "q": "Why did the students think their profiles were private?",
+       "o": [
+        "They had set a new password recently",
+        "They only followed their close friends",
+        "They had never changed the settings",
+        "They had read the privacy rules carefully"
+       ],
+       "a": 2,
+       "why": "설정을 바꾼 적이 없는데도 비공개라고 가정했어요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "Why do experts suggest checking settings every few months?",
+       "o": [
+        "Photos become blurry when they get old",
+        "Apps may change how they share information",
+        "Teenagers forget their passwords too often",
+        "Strangers send requests at regular times"
+       ],
+       "a": 1,
+       "why": "앱이 정보 공유 방식을 자주 업데이트하기 때문이에요.",
+       "std": [
+        "12영Ⅰ-01-04"
+       ]
+      },
+      {
+       "q": "In the passage, \"assumed\" is closest in meaning to...",
+       "o": [
+        "proved with clear evidence",
+        "refused to accept",
+        "learned from a teacher",
+        "believed without checking"
+       ],
+       "a": 3,
+       "why": "assumed는 확인 없이 ‘그렇다고 믿었다’는 뜻이에요.",
+       "std": [
+        "12영Ⅰ-01-05"
+       ]
+      },
+      {
+       "q": "What is the main purpose of the last sentence?",
+       "o": [
+        "To suggest a question to ask before posting",
+        "To warn that photos can never be deleted",
+        "To explain how a survey was carried out",
+        "To describe how strangers find a profile"
+       ],
+       "a": 0,
+       "why": "게시하기 전에 스스로 던져 볼 질문을 제안하는 문장이에요.",
+       "std": [
+        "12영Ⅰ-01-03"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "w",
+     "en": "assume",
+     "pos": "v",
+     "ko": "가정하다, 추정하다",
+     "ex": "Don't assume that everyone knows the rule.",
+     "exko": "모든 사람이 그 규칙을 안다고 가정하지 마세요.",
+     "z": [
+      "drink",
+      "paint",
+      "carry"
+     ],
+     "syn": [
+      "suppose"
+     ],
+     "sp": [
+      "asume",
+      "assum",
+      "assumme"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "claim",
+     "pos": "v",
+     "ko": "주장하다",
+     "ex": "They claim that the store is open all night.",
+     "exko": "그들은 그 가게가 밤새 연다고 주장해요.",
+     "z": [
+      "wash",
+      "swim",
+      "bake"
+     ],
+     "syn": [
+      "insist",
+      "maintain"
+     ],
+     "sp": [
+      "clame",
+      "claime",
+      "cliam"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "doubt",
+     "pos": "n",
+     "ko": "의심, 의문",
+     "ex": "There is no doubt that she will win.",
+     "exko": "그녀가 이길 것이라는 데는 의심의 여지가 없어요.",
+     "z": [
+      "sugar",
+      "bridge",
+      "pocket"
+     ],
+     "syn": [
+      "suspicion"
+     ],
+     "sp": [
+      "dout",
+      "doupt",
+      "doubbt"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "reveal",
+     "pos": "v",
+     "ko": "드러내다, 밝히다",
+     "ex": "The test will reveal whether you understand the lesson.",
+     "exko": "그 시험은 네가 수업을 이해하는지 보여줄 거예요.",
+     "z": [
+      "borrow",
+      "climb",
+      "paint"
+     ],
+     "syn": [
+      "show",
+      "disclose",
+      "expose"
+     ],
+     "sp": [
+      "revael",
+      "reveel",
+      "reveil"
+     ]
+    }
+   ]
+  }
+ ]
+}
