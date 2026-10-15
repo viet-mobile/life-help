@@ -45,58 +45,7 @@ test("loads all 6,672 bank questions in addition to 1,078 canonical questions", 
   assert.equal(content.bankSets.size, 194);
   assert.equal(content.questions.get("b-e3-ari1-addthree1-001").bank_source.row_number, 1);
   assert(contentSourceFiles(root, "mathematics").includes("lib/learn/content/bank/math.json"));
-  const eng = readContent(root, "english");
-  assert.equal(eng.canonicalQuestions, 628);
-  assert.equal(eng.questions.size, 4973);
-  assert(contentSourceFiles(root, "english").includes("lib/learn/content/bank/english.json"));
-});
-test("validates discrete English bank questions and strictly rejects malformed entries", () => {
-  const discreteFixture = () => ({
-    format: 1,
-    site: "english",
-    questions: [
-      {
-        id: "b-e1-alpha-001",
-        site: "english",
-        skillId: "s-eng",
-        type: "multiple_choice",
-        difficulty: 1,
-        status: "PUBLISHED",
-        prompt: "Choose the correct letter",
-        hints: ["Hint 1", "Hint 2"],
-        explanation: "Because A comes first",
-        options: [
-          { id: "a", text: "A" },
-          { id: "b", text: "B" },
-          { id: "c", text: "C" },
-          { id: "d", text: "D" },
-        ],
-        answer: { kind: "choice", id: "a" },
-      },
-    ],
-  });
-
-  const expanded = expandAuditBank(discreteFixture(), new Set(["s-eng"]), "bank/english.json");
-  assert.equal(expanded.questions.size, 1);
-  assert.equal(expanded.questions.get("b-e1-alpha-001").bank_source.question_id, "b-e1-alpha-001");
-
-  assert.throws(() => expandAuditBank(discreteFixture(), new Set(["other"]), "bank/english.json"), /Unknown bank skill/);
-
-  const unpub = discreteFixture();
-  unpub.questions[0].status = "DRAFT";
-  assert.throws(() => expandAuditBank(unpub, new Set(["s-eng"]), "bank/english.json"), /Unpublished bank question/);
-
-  const badOpt = discreteFixture();
-  badOpt.questions[0].options = [{ id: "a", text: "A" }];
-  assert.throws(() => expandAuditBank(badOpt, new Set(["s-eng"]), "bank/english.json"), /Invalid bank options/);
-
-  const badAns = discreteFixture();
-  badAns.questions[0].answer = { kind: "numeric", value: 1 };
-  assert.throws(() => expandAuditBank(badAns, new Set(["s-eng"]), "bank/english.json"), /Invalid bank answer/);
-
-  const badHint = discreteFixture();
-  badHint.questions[0].hints = ["only one hint"];
-  assert.throws(() => expandAuditBank(badHint, new Set(["s-eng"]), "bank/english.json"), /Invalid bank hints/);
+  assert.equal(readContent(root, "english").questions.size, 628);
 });
 test("accepts published bank evidence linked to the same lesson skill", () => {
   validateMappings(

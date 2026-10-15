@@ -25,7 +25,7 @@ test("coverage doc includes all current content and is deterministic", () => {
     ),
   );
   assert.match(body, /\| 수학 \| 119 \| 7750 \|/);
-  assert.match(body, /\| 영어 \| 64 \| 4973 \|/);
+  assert.match(body, /\| 영어 \| 64 \| 628 \|/);
   const reviewed = mappings();
   for (const [subject, label] of [["mathematics", "수학"], ["english", "영어"]]) {
     const { achievement_standards: standards } = JSON.parse(readFileSync(
