@@ -1,5 +1,6 @@
 "use client";
 
+import { formatPrompt } from "@/lib/learn/promptFormat";
 import { FigureView } from "./FigureView";
 import { useMemo, useRef, useState } from "react";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
@@ -129,7 +130,7 @@ export function QuestionCard({
       <p className="l-muted" aria-live="polite">{label} · {t("common.diff", { n: q.difficulty })}</p>
 
       <div className="l-card l-stack">
-        <div className="l-qprompt"><RichText text={q.prompt} /></div>
+        <div className="l-qprompt"><RichText text={formatPrompt(q.prompt)} /></div>
         {q.figure && <FigureView figure={q.figure} label={t("figure.alt")} />}
         {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} meaningPending={!resolved} />}
         {q.latex && <MathBlock latex={q.latex} />}
