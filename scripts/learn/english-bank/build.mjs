@@ -174,13 +174,23 @@ const byGroup = cnt(questions, (q) => skillInfo[q.skillId].group);
 const itemsByGroup = cnt(valid, (x) => skillInfo[x.skill].group);
 const bySkill = cnt(questions, (q) => q.skillId);
 const byForm = cnt(questions, (q) => q.tags[2]);
-const out = { format: "english-draft-1", site: "english", status: "DRAFT", note: "DRAFT English practice bank (scripts/learn/english-bank). AI-made; independent AI review and teacher review pending. Not loaded by the runtime.", questions };
-if (!noWrite) fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-draft.json"), JSON.stringify(out) + "\n");
-console.log(`english-draft: ${questions.length} questions from ${valid.length} learning items (${items.length - valid.length} items rejected/skipped)`);
+// ---- publication gate (scripts/learn/english-bank/ledger.json): only reviewed / carried-over items reach the file the runtime imports
+const ledger = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8"));
+const itemOfQuestion = (q) => q.id.split("-")[1];
+const carryQ = new Set(ledger.carryOverQuestions);
+const stateOf = (q) => (ledger.reviewed[itemOfQuestion(q)] ? "reviewed" : carryQ.has(q.id) ? "carryOver" : "pending");
+const served = questions.filter((q) => stateOf(q) !== "pending");
+const pending = questions.filter((q) => stateOf(q) === "pending");
+const byState = cnt(questions, stateOf);
+const NOTE = "English practice bank (scripts/learn/english-bank). AI-made; imported by lib/learn/content/bank.ts. Only items in ledger.json (independently AI-reviewed, or carried over from the 2026-10-15 release) are in this file; the rest is in english-pending.json (not loaded). No teacher or native-speaker review.";
+const out = { format: "english-draft-1", site: "english", status: "DRAFT", note: NOTE, questions: served };
+const outPending = { format: "english-draft-1", site: "english", status: "PENDING", note: "Authored but not yet independently reviewed: NOT loaded by the runtime.", questions: pending };
+if (!noWrite) { fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-draft.json"), JSON.stringify(out) + "\n"); fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-pending.json"), JSON.stringify(outPending) + "\n"); }
+console.log(`english-draft: ${questions.length} questions from ${valid.length} learning items (${items.length - valid.length} items rejected/skipped); served ${served.length}, pending ${pending.length}`, byState);
 console.log("by group:", byGroup, "items by group:", itemsByGroup);
 console.log("by form:", byForm);
 console.log("longest-correct rate (reading/dialogue/standalone) by packet:", Object.fromEntries(Object.entries(longest).map(([k, v]) => [k, `${Math.round((100 * v.longestCorrect) / v.n)}% of ${v.n}`])));
 console.log("passages below the minimum length:", Object.fromEntries(Object.entries(wordsShort).map(([k, v]) => [k, v.length])));
 console.log("dropped:", dropped, `${errors.length ? errors.length + " validation errors" : "no validation errors"}`);
-if (!noWrite) fs.writeFileSync(path.join(here, "report.json"), JSON.stringify({ total: questions.length, items: valid.length, byGroup, itemsByGroup, byForm, bySkill, dropped }, null, 1) + "\n");
+if (!noWrite) fs.writeFileSync(path.join(here, "report.json"), JSON.stringify({ total: questions.length, items: valid.length, served: served.length, pending: pending.length, byState, byGroup, itemsByGroup, byForm, bySkill, dropped }, null, 1) + "\n");
 process.exit(errors.length ? 1 : 0);
