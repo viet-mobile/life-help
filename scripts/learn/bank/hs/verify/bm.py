@@ -132,11 +132,14 @@ def quad_roots(v):
 
 def count_digits(v):
     ds = [int(t) for t in v["ds"].split(",")]
-    kk = v["k"]
+    kk = 3  # the prompt fixes: choose 3 cards, three-digit number
     assert len(set(ds)) == len(ds)
     nums = {int("".join(map(str, p))) for p in itertools.permutations(ds, kk) if p[0] != 0}
     assert all(len(str(n)) == kk for n in nums)
-    return sum(1 for n in nums if n % 2 == 0)
+    ev = [n for n in nums if n % 2 == 0]
+    assert v["z"] == sum(1 for n in ev if n % 10 == 0) and v["o"] == sum(1 for n in ev if n % 10 != 0)
+    assert 0 in ds and v["n"] == len(ds)
+    return len(ev)
 
 
 def parse_mat(s):
@@ -174,34 +177,33 @@ def line_par_perp(v):
 
 
 def circle_line(v):
+    # circle x^2 + y^2 = N, line y = p x + m  or  p x + y = m  (parsed from the printed strings)
     l, r = v["circ"].split("=")
-    ce = sp.expand(P(l) - P(r))
+    ce = sp.expand(P(l.replace("{", "(").replace("}", ")")) - int(r))
     pc = sp.Poly(ce, x, y)
-    D, E, F = pc.coeff_monomial(x), pc.coeff_monomial(y), pc.coeff_monomial(1)
-    h, kk = -D / 2, -E / 2
-    r2 = h * h + kk * kk - F
+    assert pc.coeff_monomial(x) == 0 and pc.coeff_monomial(y) == 0 and pc.coeff_monomial(x ** 2) == 1 and pc.coeff_monomial(y ** 2) == 1
+    r2 = -pc.coeff_monomial(1)
     assert r2 > 0
-    if "=m" in v["line"] and v["line"].endswith("=m"):
-        le = P(v["line"].split("=")[0]) - m
-    else:
-        assert v["line"].endswith("+m=0")
-        le = P(v["line"].split("=")[0])
-    a, b = le.coeff(x), le.coeff(y)
+    lhs, rhs = v["line"].split("=")
+    le = P(lhs) - P(rhs)                      # linear in x, y, m
+    a, b, mc = le.coeff(x), le.coeff(y), le.coeff(m)
+    assert le.subs({x: 0, y: 0, m: 0}) == 0 and b != 0 and a != 0 and mc != 0
     good = []
-    for mv in range(-600, 601):
-        cc = le.subs({x: 0, y: 0, m: mv})
-        # squared distance from the centre to the line, compared with r^2 exactly
-        if (a * h + b * kk + cc) ** 2 < r2 * (a * a + b * b):
+    for mv in range(-300, 301):
+        # exact squared distance from the centre (0,0) to the line  a x + b y + mc*m = 0, compared with r^2
+        if (mc * mv) ** 2 < r2 * (a * a + b * b):
             good.append(mv)
-    assert good and good == list(range(good[0], good[-1] + 1)) and abs(good[0]) < 590 and abs(good[-1]) < 590
-    # spot-check with sympy geometry around the boundary of the solution set
-    circle = sp.Circle(sp.Point(h, kk), sp.sqrt(r2))
+    assert good and good == list(range(good[0], good[-1] + 1)) and abs(good[0]) < 290
+    # sympy geometry at the boundary: number of intersection points is 2 inside, <2 outside
+    circle = sp.Circle(sp.Point(0, 0), sp.sqrt(r2))
     for mv in (good[0] - 1, good[0], good[-1], good[-1] + 1):
         ln_e = le.subs(m, mv)
         p1 = sp.Point(0, sp.solve(ln_e.subs(x, 0), y)[0]); p2 = sp.Point(1, sp.solve(ln_e.subs(x, 1), y)[0])
         n_int = len(circle.intersection(sp.Line(p1, p2)))
         assert (n_int == 2) == (mv in good), (mv, n_int)
-    assert (v["lo"], v["hi"]) == (good[0] - 1, good[-1] + 1)
+    # explanation columns: B = (1+p^2) N and the symmetric range
+    assert v["hi"] == good[-1] and -v["hi"] == good[0]
+    assert v["cond"] == "m^{2}<%d" % ((a * a + b * b) * r2 // (mc * mc))
     return len(good)
 
 

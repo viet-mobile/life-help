@@ -13,11 +13,14 @@ import sympy as sp
 x, y, k, t = sp.symbols("x y k t")
 AL, BE, W = sp.symbols("al be w")
 LOC = {ch: sp.Symbol(ch) for ch in "abcdefghjklmnopqrstuvwxyz"}
-LOC.update({"al": AL, "be": BE, "i": sp.I})
+LOC.update({"al": AL, "be": BE, "i": sp.I, "N": sp.Symbol("N"), "z": sp.Symbol("z")})
 
 
 def conv(s):
     """LaTeX-ish string -> python/sympy source (explicit '*' inserted)"""
+    s = re.sub(r"\\sqrt\{(\d+)\}", lambda m: str(sp.N(sp.sqrt(int(m.group(1))), 45)), s)
+    s = re.sub(r"\^\{(-?\d+)\}", r"^\1", s)
+    s = s.replace("\\div", "/").replace("[", "(").replace("]", ")").replace("\\ne0", "")
     s = s.replace("\\left", "").replace("\\right", "").replace("\\cdot", "*").replace("\\times", "*").replace("\\ ", " ")
     s = s.replace("\\alpha", "al").replace("\\beta", "be").replace("\\omega", "w")
     while True:
@@ -59,6 +62,35 @@ def ratify(val):
     f = Fraction(str(re_)).limit_denominator(10**8)
     assert abs(sp.Float(str(re_), 70) - sp.Rational(f.numerator, f.denominator)) < 1e-35, f"not rational: {val}"
     return f
+
+
+def same(a, b, tol=1e-25):
+    return abs(sp.N(sp.sympify(a) - sp.sympify(b), 60)) < tol
+
+
+def seq_bounds(txt):
+    """first / last integer of a displayed run 'a, b, c' or 'a, a+1, \\ldots, c' (the run must really be consecutive)"""
+    nums = [int(z) for z in re.findall(r"-?\d+", txt)]
+    if "\\ldots" in txt:
+        assert len(nums) >= 3 and nums[1] == nums[0] + 1, txt
+    else:
+        assert nums == list(range(nums[0], nums[-1] + 1)), txt
+    return nums[0], nums[-1]
+
+
+def chain(txt, subs, expect):
+    """every '='-chain in a displayed working string (segments split at ',\\ ' and '\\Rightarrow') must have equal values, the last one = expect"""
+    last = None
+    for seg in re.split(r",\\ |\\ \\Rightarrow\\ ", txt):
+        parts = [p for p in seg.split("=")]
+        vals = []
+        for p in parts:
+            e = P(p)
+            vals.append(sp.sympify(e).subs(subs) if subs else e)
+        for a_, b_ in zip(vals, vals[1:]):
+            assert same(a_, b_, 1e-20), f"working differs: {seg} -> {vals}"
+        last = vals[-1]
+    assert same(last, expect, 1e-20), f"working ends in {last}, answer {expect}"
 
 
 def fr(v):
@@ -128,31 +160,43 @@ def identity(v):
 
 
 def sym_eval(v):
-    cond = v["cond"]
-    m = re.fullmatch(r"x\+y=(-?\d+),\\ xy=(-?\d+)", cond)
-    if m:
-        s, p = int(m.group(1)), int(m.group(2))
-        z1, z2 = sp.roots(sp.Poly(t ** 2 - s * t + p, t), multiple=True)
-        assert sp.expand((z1 + z2) - s) == 0 and sp.expand(z1 * z2 - p) == 0
-        val = P(v["expr"]).subs({x: z1, y: z2})
-        val2 = P(v["expr"]).subs({x: z2, y: z1})
-        a1, a2 = ratify(val), ratify(val2)
-        assert a1 == a2
-        return a1
-    m = re.fullmatch(r"x\+\\frac\{1\}\{x\}=(-?\d+)", cond)
-    assert m, cond
-    kk = int(m.group(1))
+    m = re.fullmatch(r"x\+y=(-?\d+),\\ xy=(-?\d+)", v["cond"])
+    assert m, v["cond"]
+    s_, p_ = int(m.group(1)), int(m.group(2))
+    assert s_ * s_ - 4 * p_ >= 0 and v["dd"] == s_ * s_ - 4 * p_, "real x, y must exist (prompt says real numbers)"
+    z1, z2 = sp.roots(sp.Poly(t ** 2 - s_ * t + p_, t), multiple=True)
+    assert z1.is_real and z2.is_real and sp.expand(z1 + z2 - s_) == 0 and sp.expand(z1 * z2 - p_) == 0
+    a1, a2 = ratify(P(v["expr"]).subs({x: z1, y: z2})), ratify(P(v["expr"]).subs({x: z2, y: z1}))
+    assert a1 == a2
+    chain(v["work"], {x: z1, y: z2}, sp.Rational(a1.numerator, a1.denominator))
+    return a1
+
+
+def sym_inv(v):
+    kk = v["k"]
+    assert abs(kk) >= 2, "real x with x+1/x=k needs |k|>=2"
     z1, z2 = sp.roots(sp.Poly(t ** 2 - kk * t + 1, t), multiple=True)
     for z in (z1, z2):
-        assert sp.simplify(z + 1 / z - kk) == 0
+        assert z.is_real and sp.simplify(z + 1 / z - kk) == 0
     a1, a2 = ratify(P(v["expr"]).subs(x, z1)), ratify(P(v["expr"]).subs(x, z2))
     assert a1 == a2
+    chain(v["work"], {x: z1}, sp.Rational(a1.numerator, a1.denominator))
     return a1
 
 
 def factor_eval(v):
     val = P(v["expr"])
     assert val.is_Integer
+    Nn, Nsym = v["N"], LOC["N"]
+    m = re.fullmatch(r"\\frac\{(.*)\}\{(.*)\}", v["expr"])
+    num, den = P(m.group(1)), P(m.group(2))
+    # the displayed factorisation really is the numerator, and the displayed simplification is the quotient
+    numN = sp.expand(num)  # numerator with the number already inserted
+    fac = P(v["fac"]).subs(Nsym, Nn)
+    assert sp.expand(fac) == numN, "factorisation differs from numerator"
+    left, right = v["simp"].split("=")
+    assert P(left).subs(Nsym, Nn) == P(right) == val
+    assert num / den == val
     return fr(val)
 
 
@@ -160,13 +204,26 @@ def factor_eval(v):
 def i_power(v):
     zc = sp.simplify(P(v["z"]))
     assert sp.simplify(zc - P(v["zs"])) == 0, "z does not simplify to the stated value"
-    s = sp.Integer(0)
+    assert sp.expand(zc ** 4) == 1
+    e = sp.expand(P(v["expr"]).subs(LOC["z"], zc))
+    chain(v["work"], {LOC["z"]: zc}, e)
+    return fr(sp.re(e) + sp.im(e))
+
+
+def i_power_sum(v):
+    zc = sp.simplify(P(v["z"]))
+    assert sp.simplify(zc - P(v["zs"])) == 0
+    n, c = v["n"], v["c"]
+    assert v["expr"] == f"{c}\\left(z+z^2+z^3+\\cdots+z^{{{n}}}\\right)"
+    s_ = sp.Integer(0)
     pw = sp.Integer(1)
-    for _ in range(v["n"]):
-        pw = sp.expand(sp.simplify(pw * zc))
-        s += pw
-    s = sp.expand(s)
-    return fr(sp.re(s) + sp.im(s))
+    for _ in range(n):
+        pw = sp.expand(pw * zc)
+        s_ += pw
+    s_ = sp.expand(c * s_)
+    assert v["rm"] == n % 4 and v["q4"] == n // 4 and n % 4 != 0
+    chain(v["work"], {LOC["z"]: zc}, sp.expand(c * sum(zc ** j for j in range(1, v["rm"] + 1))))
+    return fr(sp.re(s_) + sp.im(s_))
 
 
 def complex_cond(v):
@@ -177,18 +234,40 @@ def complex_cond(v):
     cands = [c for c in sp.solve(sp.Eq(re_, 0), xr) if c.is_real]
     good = [c for c in cands if sp.simplify(im_.subs(xr, c)) != 0]
     assert len(good) == 1, f"pure-imaginary solutions: {good}"
+    # displayed roots and displayed imaginary-part values
+    shown = sorted(int(z_) for z_ in re.findall(r"x=(-?\d+)", v["roots"]))
+    assert shown == sorted(int(c) for c in cands), (shown, cands)
+    items = re.findall(r"(-?\d+)(\\ne0)?\\ \(x=(-?\d+)\)", v["chk"])
+    assert len(items) == len(cands)
+    for val, ne, x0 in items:
+        iv = im_.subs(xr, int(x0))
+        assert iv == int(val) and ((iv != 0) == bool(ne)), (v["chk"], iv)
     return fr(good[0])
 
 
 def discrim_count(v):
     eq = P(v["eq"])
-    cnt = 0
+    pl = sp.Poly(eq, x)
+    a1, b1, c1 = pl.all_coeffs()
+    d4 = sp.expand((b1 / 2) ** 2 - a1 * c1)
+    assert sp.expand(P(v["d4"]) - d4) == 0, "displayed D/4 is wrong"
+    cnt, good = 0, []
     for kk in range(v["lo"], v["hi"] + 1):
-        pl = sp.Poly(eq.subs(k, kk), x)
-        a, b, c = pl.all_coeffs()
+        a, b, c = sp.Poly(eq.subs(k, kk), x).all_coeffs()
         assert a != 0
         if b * b - 4 * a * c < 0:
             cnt += 1
+            good.append(kk)
+    # displayed solved range of D/4 < 0
+    r1, r2 = sorted(sp.solve(d4, k), key=lambda z: float(z))
+    left, right = v["kr"].split("<k<", 1)
+    if "\\approx" in right:
+        right, apx = right.split("\\ \\left(\\approx ")
+        lo_, hi_ = re.fullmatch(r"(-?\d+\.\d+)<k<(-?\d+\.\d+)\\right\)", apx).groups()
+        assert abs(float(lo_) - float(r1)) < 0.006 and abs(float(hi_) - float(r2)) < 0.006
+    assert same(P(left), r1) and same(P(right), r2), v["kr"]
+    assert seq_bounds(v["ks"]) == (min(good), max(good)), v["ks"]
+    assert len(good) == len(range(min(good), max(good) + 1))
     return cnt
 
 
@@ -200,6 +279,15 @@ def vieta_expr(v):
     val1 = ratify(e.subs({AL: r1, BE: r2}))
     val2 = ratify(e.subs({AL: r2, BE: r1}))
     assert val1 == val2
+    # displayed Vieta values and working
+    assert same(P(v["sf"]), sp.Rational(-b, a)) and same(P(v["pf"]), sp.Rational(c, a))
+    ans = sp.Rational(val1.numerator, val1.denominator)
+    assert same(P(v["res"]), ans)
+    chain(v["work"], {AL: r1, BE: r2}, ans)
+    # the answer is a modest fraction (denominator <= 12); if the prompt offers decimals the builder has verified termination
+    assert val1.denominator <= 12, f"denominator {val1.denominator}"
+    if "ansf" in v:
+        assert Fraction(str(v["ansf"])) == val1, (v["ansf"], val1)
     return val1
 
 
@@ -232,6 +320,10 @@ def vieta_unknown(v):
 
 def root_sign(v):
     eq, tt = P(v["eq"]), v["t"]
+    # displayed D/4 and f(t) as functions of k
+    a1, b1, c1 = sp.Poly(eq, x).all_coeffs()
+    assert a1 == 1 and sp.expand(P(v["d4"]) - ((b1 / 2) ** 2 - c1)) == 0, "displayed D/4"
+    assert sp.expand(P(v["ft"]) - eq.subs(x, tt)) == 0, "displayed f(t)"
     found = []
     for kk in range(-80, 81):
         pl = sp.Poly(eq.subs(k, kk), x)
@@ -260,13 +352,21 @@ def parabola_line_count(v):
     f, g = P(v["f"]), P(v["g"])
     assert sp.expand(P(v["eq2"]) - (f - g)) == 0
     D = sp.discriminant(sp.expand(f - g), x)
-    cnt = sum(1 for kk in range(v["lo"], v["hi"] + 1) if D.subs(k, kk) < 0)
+    assert sp.expand(P(v["dk"]) - D) == 0, "displayed D"
+    good = [kk for kk in range(v["lo"], v["hi"] + 1) if D.subs(k, kk) < 0]
     # cross-check one value per row with an explicit root computation
     for kk in (v["lo"], v["hi"]):
         roots = sp.solve(sp.expand((f - g).subs(k, kk)), x)
         has_real = any(abs(sp.im(sp.N(z, 30))) < 1e-20 for z in roots)
         assert has_real == (D.subs(k, kk) >= 0)
-    return cnt
+    th = sp.solve(D, k)[0]
+    m_ = re.fullmatch(r"k([<>])(.*)", v["kr"])
+    assert same(P(m_.group(2)), th)
+    # D = -4a*k + const: D<0 exactly on the displayed side
+    side = [kk for kk in range(int(th) - 40, int(th) + 41) if (kk < th if m_.group(1) == "<" else kk > th)]
+    assert all(D.subs(k, kk) < 0 for kk in side[:6]) and all(D.subs(k, kk) >= 0 for kk in range(int(th) - 40, int(th) + 41) if kk not in side)
+    assert seq_bounds(v["ks"]) == (min(good), max(good)) and len(good) == max(good) - min(good) + 1
+    return len(good)
 
 
 def parabola_xaxis(v):
@@ -287,10 +387,13 @@ def quad_range(v):
     pl = sp.Poly(P(v["f"]), x)
     a, b, c = (Fraction(int(z)) for z in pl.all_coeffs())
     lo, hi = v["m"], v["n"]
+    f_ = lambda z: a * z * z + b * z + c
+    assert f_(Fraction(lo)) == v["fm"] and f_(Fraction(hi)) == v["fn"], "displayed end values"
     pts = [Fraction(lo) + Fraction(j, 12) for j in range((hi - lo) * 12 + 1)]
     pts.append(-b / (2 * a)) if lo <= -b / (2 * a) <= hi else None
-    vals = [a * z * z + b * z + c for z in pts]
+    vals = [f_(z) for z in pts]
     assert a * Fraction(v["h"]) ** 2 + b * Fraction(v["h"]) + c == v["kv"]
+    assert -b / (2 * a) == v["h"], "displayed vertex"
     return max(vals) + min(vals)
 
 
@@ -308,17 +411,24 @@ def quad_revenue(v):
 
 
 def quad_fence(v):
-    L = sp.Integer(v["L"])
-    pieces = v["j"] + 2
-    assert pieces == v["k"]
-    A = x * (L - pieces * x)
-    crit = sp.solve(sp.diff(A, x), x)
-    assert len(crit) == 1 and sp.diff(A, x, 2) < 0 and 0 < crit[0] < L / pieces
-    assert crit[0] == v["u"]
-    # grid check of the maximum over x = i/2
-    grid = max(Fraction(i, 2) * (v["L"] - pieces * Fraction(i, 2)) for i in range(1, v["L"] * 2 // pieces))
-    assert grid == A.subs(x, crit[0])
-    return fr(A.subs(x, crit[0]))
+    # independent geometric model: rectangle with depth d (perpendicular to the wall) and width w (along the wall);
+    # perpendicular fence lines are the two ends plus j equally spaced partitions; fencing = w + (#lines) * d = L
+    j, L = v["j"], v["L"]
+    best, arg = None, []
+    for i in range(1, 8 * L):
+        d = Fraction(i, 8)
+        lines = [Fraction(0)] + [Fraction(m_ + 1, j + 1) for m_ in range(j)] + [Fraction(1)]   # relative positions along the width
+        w = L - len(lines) * d
+        if w <= 0:
+            break
+        area = w * d
+        if best is None or area > best:
+            best, arg = area, [d]
+        elif area == best:
+            arg.append(d)
+    assert len(arg) == 1, arg
+    assert len(lines) == v["k"] and arg[0] == v["u"], (arg, v["u"])
+    return best
 
 
 # ---------------------------------------------------------------- higher-degree equations, systems
@@ -329,13 +439,19 @@ def omega(v):
     assert len(ws) == 2
     vals = set()
     for w in ws:
-        if v["a"] > 0:
-            assert v["expr"] == f"\\omega^{{{v['a']}}}+\\frac{{1}}{{\\omega^{{{v['a']}}}}}"
-            val = w ** v["a"] + w ** (-v["a"])
-        else:
-            val = sum(w ** j + w ** (-j) for j in range(1, v["n"] + 1))
-        vals.add(ratify(val))
+        e = P(v["expr"]).subs(W, w) if "n" not in v else None
+        if "n" in v:
+            n, c = v["n"], v["c"]
+            assert v["expr"].startswith(f"{c}\\left[") and v["expr"].endswith(f"\\left(\\omega^{{{n}}}+\\frac{{1}}{{\\omega^{{{n}}}}}\\right)\\right]")
+            e = c * sum(w ** j + w ** (-j) for j in range(1, n + 1))
+            assert n % v["per"] != 0
+        vals.add(ratify(e))
+        ve = ratify(e)
+        chain(v["step"], {W: w}, sp.Rational(ve.numerator, ve.denominator))
     assert len(vals) == 1
+    # displayed relation: w^3 = +-1 holds for the roots
+    for w in ws:
+        assert sp.simplify(w ** v["per"] - 1) == 0 and sp.simplify(w ** 3 - (1 if v["per"] == 3 else -1)) == 0
     return vals.pop()
 
 
@@ -349,6 +465,11 @@ def cubic_one_real(v):
     assert len(non) == 2
     S = sum(real)
     T = sp.simplify(non[0] * non[1])
+    # displayed factorisation, discriminant, T, S
+    assert sp.expand(P(v["fac"]) - P(v["eq"])) == 0
+    qd = sp.Poly(P(v["quad"]), x)
+    assert qd.discriminant() == v["D"] < 0 and qd.all_coeffs()[-1] == v["q"] == T and v["S"] == S
+    assert sp.Poly(P(v["eq"]), x).degree() == 3 + (0 if len(real) == 1 else 1)
     return fr(sp.simplify(S + T))
 
 
@@ -384,6 +505,7 @@ def lin_ineq_count(v):
     xs = [z for z in range(-300, 301) if all(holds(A * z + B, op) for A, B, op in cons)]
     assert xs and all(abs(z) < 200 for z in xs), "unbounded or empty"
     assert xs == list(range(xs[0], xs[-1] + 1))
+    assert seq_bounds(v["ints"]) == (xs[0], xs[-1]), v["ints"]
     return len(xs)
 
 
@@ -413,6 +535,7 @@ def abs_ineq_count(v):
     op = m.group(4)
     xs = [z for z in range(-400, 401) if holds(mm * abs(inner(z)) + d - c, op)]
     assert xs and xs == list(range(xs[0], xs[-1] + 1)) and abs(xs[0]) < 300 and abs(xs[-1]) < 300
+    assert seq_bounds(v["ints"]) == (xs[0], xs[-1]), v["ints"]
     return len(xs)
 
 
@@ -446,6 +569,8 @@ def quad_ineq_sol(v):
     S = sp.solve_univariate_inequality(rel, x, relational=False)
     want = sp.Interval.open(lo, hi) if mo.group(2) == "<" else sp.Interval(lo, hi)
     assert S == want, f"{S} != {want}"
+    assert sp.expand(P(v["full"]) - ex) == 0, "displayed expansion"
+    assert (v["a"], v["b"]) == (av, bv)
     return fr(P(v["ask"]).subs({LOC["a"]: av, LOC["b"]: bv}))
 
 
@@ -467,6 +592,14 @@ def quad_ineq_always(v):
         if ok:
             good.append(kk)
     assert good and good == list(range(good[0], good[-1] + 1)) and good[0] > -55 and good[-1] < 55
+    pk = sp.Poly(ex, x, k)
+    m_, n_ = pk.coeff_monomial(x * k) / 2, pk.coeff_monomial(1)
+    assert pk.coeff_monomial(x ** 2 * k) == 1 and n_ == v["n"] > 0
+    assert sp.expand(P(v["d4"]) - (m_ ** 2 * k ** 2 - n_ * k)) == 0, "displayed D/4"
+    mo = re.fullmatch(r"0<k(<|\\le )(.*)", v["kr"])
+    assert (mo.group(1) == "<") == strict and mo.group(1).strip() == v["rel"].strip()
+    assert same(P(mo.group(2)), sp.Rational(n_) / m_ ** 2)
+    assert seq_bounds(v["ks"]) == (0, good[-1])
     return len(good)
 
 
@@ -568,8 +701,10 @@ VERIFY = {
     "cm1_remQuadDiv": rem_quad,
     "cm1_identity": identity,
     "cm1_symmetricEval": sym_eval,
+    "cm1_symmetricInv": sym_inv,
     "cm1_factorEval": factor_eval,
     "cm1_iPower": i_power,
+    "cm1_iPowerSum": i_power_sum,
     "cm1_complexCond": complex_cond,
     "cm1_discrimCount": discrim_count,
     "cm1_vietaExpr": vieta_expr,

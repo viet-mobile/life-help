@@ -36,69 +36,96 @@ function polyK(coefs, j, m) {
   }
   return s;
 }
+const IP_L1 = [["i", "i"], ["-i", "-i"]];
+const IP_L2 = [["\\frac{1+i}{1-i}", "i"], ["\\frac{2}{1-i}-1", "i"], ["\\frac{-1+i}{1+i}", "i"], ["\\frac{1}{i^3}", "i"], ["\\frac{1-i}{1+i}", "-i"], ["\\frac{1}{i}", "-i"], ["\\frac{2}{1+i}-1", "-i"], ["-\\frac{1+i}{1-i}", "-i"]];
+/** [re, im] of z^0..z^3 for z = i or z = -i */
+const ipows = (zs) => (zs === "i" ? [[1, 0], [0, 1], [-1, 0], [0, -1]] : [[1, 0], [0, -1], [-1, 0], [0, 1]]);
+/** a+bi as text */
+const cxs = (re, im) => (im === 0 ? `${re}` : `${re === 0 ? "" : re}${im === 1 ? (re === 0 ? "i" : "+i") : im === -1 ? "-i" : re === 0 ? `${im}i` : `${sg(im)}i`}`);
+/** solved range of k^2 + Bk + C < 0 as LaTeX (exact endpoints when the discriminant is a square, else surds with decimals) */
+function openRange(B, C) {
+  const Dd = B * B - 4 * C;
+  if (Dd <= 0) throw new Error("openRange: empty");
+  const sq = Math.round(Math.sqrt(Dd));
+  const l = (-B - Math.sqrt(Dd)) / 2, h = (-B + Math.sqrt(Dd)) / 2;
+  if (sq * sq === Dd) return `${tfrac(-B - sq, 2)}<k<${tfrac(-B + sq, 2)}`;
+  const side = (sgn) => `\\frac{${-B === 0 ? "" : -B}${sgn}\\sqrt{${Dd}}}{2}`;
+  return `${side("-")}<k<${side("+")}\\ \\left(\\approx ${l.toFixed(2)}<k<${h.toFixed(2)}\\right)`;
+}
 const pmat = (rows) => `\\begin{pmatrix}${rows.map((r) => r.join("&")).join("\\\\")}\\end{pmatrix}`;
 const matMul = (A, B) => A.map((row) => B[0].map((_, j) => row.reduce((s, v, k) => s + v * B[k][j], 0)));
 const rngShuffle = (r, arr) => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r.next() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 export const TEMPLATES = {
   cm1_polyProdCoef: {
-    ko: ["두 다항식 $A={pa}$, $B={pb}$ 에 대하여 $AB$ 를 전개했을 때 $x^{{k}}$ 의 계수는? (숫자만 쓰세요)", ["$AB$ 를 전부 전개하지 않아도 돼요. 곱해서 $x^{{k}}$ 가 되는 항의 짝만 찾아요.", "$A$ 의 항과 $B$ 의 항의 차수를 더해서 ${k}$ 가 되는 짝마다 계수를 곱하고, 그 값들을 모두 더해요."], "곱해서 $x^{{k}}$ 가 되는 항끼리 계수의 곱을 모두 더하면 ${terms}={ans}$ 입니다. (실제로 전개하면 $AB={prod}$ 입니다.)"],
+    ko: ["두 다항식 $A={pa}$, $B={pb}$ 에 대하여 $AB$ 를 전개했을 때 $x^{{k}}$ 의 계수는? (숫자만 쓰세요)", ["$AB$ 를 전부 전개하지 않아도 돼요. 곱이 $x^{{k}}$ 꼴이 되는 항의 짝만 찾아요.", "$A$ 의 항과 $B$ 의 항의 차수를 더한 값이 ${k}$ 인 짝마다 계수를 곱하고, 그 값들을 모두 더해요."], "곱이 $x^{{k}}$ 꼴인 항끼리 계수의 곱을 모두 더하면 ${terms}={ans}$ 입니다. (실제로 전개하면 $AB={prod}$ 입니다.)"],
     en: ["For the polynomials $A={pa}$ and $B={pb}$, what is the coefficient of $x^{{k}}$ in the expansion of $AB$? (digits only)", ["You do not have to expand everything; look only for the pairs of terms whose product is $x^{{k}}$.", "For every pair whose degrees add up to ${k}$, multiply the two coefficients, then add all these products."], "Adding the products of the coefficients of the term pairs that multiply to $x^{{k}}$ gives ${terms}={ans}$. (Expanding completely gives $AB={prod}$.)"],
   },
   cm1_polyDivQR: {
-    ko: ["다항식 $P(x)={pp}$ 를 ${dv}$ 로 나누었을 때의 몫을 $Q(x)$, 나머지를 $R(x)$ 라 할 때, $Q({t})+R({t})$ 의 값은? (숫자만 쓰세요)", ["최고차항끼리 나누어 몫의 첫 항을 정하고, 나누는 식을 곱해 빼는 과정을 되풀이해요.", "몫의 첫 항은 ${qlead}$ 이고, 나머지의 차수는 나누는 식의 차수보다 낮아요."], "나눗셈을 하면 $P(x)=({dv})({qq})+({rr})$ 이므로 $Q(x)={qq}$, $R(x)={rr}$ 입니다. 따라서 $Q({t})+R({t})={ans}$ 입니다."],
+    ko: ["다항식 $P(x)={pp}$ 에 대하여 $P(x)\\div({dv})$ 의 몫을 $Q(x)$, 나머지를 $R(x)$ 라 할 때, $Q({t})+R({t})$ 의 값은? (숫자만 쓰세요)", ["최고차항끼리 나누어 몫의 첫 항을 정하고, 나누는 식을 곱해 빼는 과정을 되풀이해요.", "몫의 첫 항은 ${qlead}$ 이고, 나머지의 차수는 나누는 식의 차수보다 낮아요."], "나눗셈을 하면 $P(x)=({dv})({qq})+({rr})$ 이므로 $Q(x)={qq}$, $R(x)={rr}$ 입니다. 따라서 $Q({t})+R({t})={ans}$ 입니다."],
     en: ["Divide $P(x)={pp}$ by ${dv}$; let $Q(x)$ be the quotient and $R(x)$ the remainder. What is $Q({t})+R({t})$? (digits only)", ["Divide the leading terms to get the first term of the quotient, multiply it back, subtract, and repeat.", "The first term of the quotient is ${qlead}$, and the remainder has smaller degree than the divisor."], "Long division gives $P(x)=({dv})({qq})+({rr})$, so $Q(x)={qq}$ and $R(x)={rr}$. Hence $Q({t})+R({t})={ans}$."],
   },
   cm1_remUnknown: {
-    ko: ["다항식 $P(x)={pp}$ 를 ${dv}$ 로 나누었을 때의 나머지가 ${R}$ 이다. 상수 $k$ 의 값은? (숫자만 쓰세요)", ["나머지정리: 다항식 $P(x)$ 를 $x-a$ 로 나눈 나머지는 $P(a)$ 와 같아요.", "나누는 식이 $0$ 이 되는 $x$ 의 값은 $x={t}$ 예요. 이 값을 $P(x)$ 에 대입하면 $k$ 에 대한 일차방정식이 돼요."], "나머지정리에 의해 $P({t})={R}$ 이어야 합니다. $P({t})={lhs}$ 이므로 ${lhs}={R}$ 에서 $k={ans}$ 입니다."],
+    ko: ["다항식 $P(x)={pp}$ 에 대하여 $P(x)\\div({dv})$ 의 나머지가 ${R}$ 이다. 상수 $k$ 의 값은? (숫자만 쓰세요)", ["나머지정리: 다항식 $P(x)$ 를 $x-a$ 로 나눈 나머지는 $P(a)$ 와 같아요.", "나누는 식이 $0$ 이 되는 $x$ 의 값은 다음과 같아요: $x={t}$. 이 값을 $P(x)$ 에 대입하면 $k$ 에 대한 일차방정식이 돼요."], "나머지정리에 의해 $P({t})={R}$ 이어야 합니다. $P({t})={lhs}$ 이므로 ${lhs}={R}$ 에서 $k={ans}$ 입니다."],
     en: ["When $P(x)={pp}$ is divided by ${dv}$, the remainder is ${R}$. What is the constant $k$? (digits only)", ["Remainder theorem: the remainder of $P(x)$ divided by $x-a$ equals $P(a)$.", "Substitute the value ${t}$ that makes the divisor $0$ into $P(x)$; you get a linear equation in $k$."], "By the remainder theorem $P({t})={R}$. Since $P({t})={lhs}$, solving ${lhs}={R}$ gives $k={ans}$."],
   },
   cm1_remQuadDiv: {
-    ko: ["다항식 $P(x)$ 를 ${dv1}$ 로 나눈 나머지가 ${r1}$, ${dv2}$ 로 나눈 나머지가 ${r2}$ 이다. $P(x)$ 를 $({dv1})({dv2})$ 로 나눈 나머지를 $R(x)$ 라 할 때, $R({c})$ 의 값은? (숫자만 쓰세요)", ["이차식으로 나눈 나머지는 일차 이하의 식이에요. $R(x)=px+q$ 로 놓아요.", "$P(x)=({dv1})({dv2})Q(x)+R(x)$ 에서 나누는 식이 $0$ 이 되는 두 값을 대입해 보세요."], "$R(x)=px+q$ 라 하면 $R({a})=P({a})={r1}$, $R({b})=P({b})={r2}$ 입니다. 두 식을 연립하면 $p={p}$, $q={q}$ 이므로 $R(x)={Rx}$ 이고 $R({c})={ans}$ 입니다."],
+    ko: ["다항식 $P(x)$ 에 대하여 $P(x)\\div({dv1})$ 의 나머지가 ${r1}$ 이고 $P(x)\\div({dv2})$ 의 나머지가 ${r2}$ 이다. $P(x)\\div\\left(({dv1})({dv2})\\right)$ 의 나머지를 $R(x)$ 라 할 때, $R({c})$ 의 값은? (숫자만 쓰세요)", ["이차식으로 나눈 나머지는 일차 이하의 식이에요. $R(x)=px+q$ 로 놓아요.", "$P(x)=({dv1})({dv2})Q(x)+R(x)$ 에서 나누는 식이 $0$ 이 되는 두 값을 대입해 보세요."], "$R(x)=px+q$ 라 하면 $R({a})=P({a})={r1}$, $R({b})=P({b})={r2}$ 입니다. 두 식을 연립하면 $p={p}$, $q={q}$ 이므로 $R(x)={Rx}$ 이고 $R({c})={ans}$ 입니다."],
     en: ["When a polynomial $P(x)$ is divided by ${dv1}$ the remainder is ${r1}$, and when divided by ${dv2}$ the remainder is ${r2}$. Let $R(x)$ be the remainder of $P(x)$ divided by $({dv1})({dv2})$. What is $R({c})$? (digits only)", ["The remainder on division by a quadratic has degree at most 1. Write $R(x)=px+q$.", "In $P(x)=({dv1})({dv2})Q(x)+R(x)$, substitute the two values that make the divisor $0$."], "Let $R(x)=px+q$. Then $R({a})=P({a})={r1}$ and $R({b})=P({b})={r2}$. Solving gives $p={p}$, $q={q}$, so $R(x)={Rx}$ and $R({c})={ans}$."],
   },
   cm1_identity: {
-    ko: ["등식 ${lhs}={rhs}$ 가 $x$ 에 대한 항등식일 때, 상수 ${consts}$ 에 대하여 ${ask}$ 의 값은? (숫자만 쓰세요)", ["항등식은 $x$ 에 어떤 값을 넣어도 성립하는 등식이에요. 좌변을 전개해서 같은 차수의 계수를 비교할 수 있어요.", "$x={p}$ 일 때 괄호 안의 식이 $0$ 이 돼요. 이 값을 대입하면 상수항에 해당하는 값이 바로 나와요."], "계수를 비교하거나 $x$ 에 알맞은 값을 대입하여 구하면 ${sol}$ 입니다. 따라서 ${ask}={ans}$ 입니다."],
+    ko: ["$x$ 에 대한 항등식 ${lhs}={rhs}$ 에서, 상수 ${consts}$ 에 대하여 ${ask}$ 의 값은? (숫자만 쓰세요)", ["항등식은 $x$ 에 어떤 값을 넣어도 성립하는 등식이에요. 좌변을 전개해서 같은 차수의 계수를 비교할 수 있어요.", "$x={p}$ 일 때 괄호 안의 식이 $0$ 이 돼요. 이 값을 대입하면 상수항에 해당하는 값이 바로 나와요."], "계수를 비교하거나 $x$ 에 알맞은 값을 대입하여 구하면 ${sol}$ 입니다. 따라서 ${ask}={ans}$ 입니다."],
     en: ["The equation ${lhs}={rhs}$ is an identity in $x$. For the constants ${consts}$, what is the value of ${ask}$? (digits only)", ["An identity holds for every value of $x$. Expand the left side and compare coefficients of equal powers.", "Substituting $x={p}$, which makes the bracket $0$, gives the constant-term value directly."], "Comparing coefficients (or substituting suitable values of $x$) gives ${sol}$. Hence ${ask}={ans}$."],
   },
+
   cm1_symmetricEval: {
-    ko: ["${cond}$ 일 때, ${expr}$ 의 값은? (숫자만 쓰세요)", ["구하는 식을 두 수의 합과 곱으로 나타내는 곱셈 공식의 변형을 떠올려요. 예를 들어 $a^2+b^2=(a+b)^2-2ab$ 예요.", "두 수의 합과 곱의 값만 알면 되는 식이에요. 세제곱은 $a^3+b^3=(a+b)^3-3ab(a+b)$ 를 써요."], "곱셈 공식을 변형하면 ${expr}={work}$ 입니다. 따라서 구하는 값은 ${ans}$ 입니다."],
-    en: ["Given ${cond}$, what is the value of ${expr}$? (digits only)", ["Rewrite the expression through the sum and the product of two numbers; for example $a^2+b^2=(a+b)^2-2ab$.", "Only the sum and the product are needed. For cubes use $a^3+b^3=(a+b)^3-3ab(a+b)$."], "Rewriting with the product formulas gives ${expr}={work}$. So the value is ${ans}$."],
+    ko: ["실수 $x$, $y$ 에 대하여 ${cond}$ 일 때, ${expr}$ 의 값은? (숫자만 쓰세요)", ["구하는 식을 합 $x+y$ 와 곱 $xy$ 로 나타내요. 예를 들어 $x^2+y^2=(x+y)^2-2xy$ 예요.", "세제곱은 $x^3+y^3=(x+y)^3-3xy(x+y)$ 를 쓰고, 네제곱은 먼저 $x^2+y^2$ 을 구한 뒤 $x^4+y^4=(x^2+y^2)^2-2(xy)^2$ 을 써요."], "곱셈 공식을 변형하면 ${expr}={work}$ 입니다. (이때 $(x-y)^2=(x+y)^2-4xy={dd}\\ge0$ 이므로 조건을 만족시키는 실수 $x$, $y$ 가 존재합니다.) 따라서 구하는 값은 ${ans}$ 입니다."],
+    en: ["For real numbers $x$ and $y$ with ${cond}$, what is the value of ${expr}$? (digits only)", ["Write the required expression through the sum $x+y$ and the product $xy$; for example $x^2+y^2=(x+y)^2-2xy$.", "For cubes use $x^3+y^3=(x+y)^3-3xy(x+y)$; for fourth powers first find $x^2+y^2$ and then use $x^4+y^4=(x^2+y^2)^2-2(xy)^2$."], "Rewriting with the product formulas gives ${expr}={work}$. (Also $(x-y)^2=(x+y)^2-4xy={dd}\\ge0$, so real numbers $x$, $y$ with the given condition exist.) So the value is ${ans}$."],
+  },
+  cm1_symmetricInv: {
+    ko: ["실수 $x$ 에 대하여 $x+\\frac{1}{x}={k}$ 일 때, ${expr}$ 의 값은? (숫자만 쓰세요)", ["$x$ 와 $\\frac{1}{x}$ 의 곱은 $1$ 이에요. 그래서 합 $x+\\frac{1}{x}$ 의 값만 알면 거듭제곱의 합을 구할 수 있어요.", "$x^2+\\frac{1}{x^2}=\\left(x+\\frac{1}{x}\\right)^2-2$, $x^3+\\frac{1}{x^3}=\\left(x+\\frac{1}{x}\\right)^3-3\\left(x+\\frac{1}{x}\\right)$ 이고, 네제곱은 $x^2+\\frac{1}{x^2}$ 을 한 번 더 제곱해서 구해요."], "곱셈 공식을 변형하면 ${expr}={work}$ 입니다. (실수 $x$ 에 대하여 $\\left|x+\\frac{1}{x}\\right|\\ge2$ 이므로 이 조건을 만족시키는 실수가 존재합니다.) 따라서 구하는 값은 ${ans}$ 입니다."],
+    en: ["For a real number $x$ with $x+\\frac{1}{x}={k}$, what is the value of ${expr}$? (digits only)", ["The product of $x$ and $\\frac{1}{x}$ is $1$, so the value of the sum $x+\\frac{1}{x}$ is enough to get sums of powers.", "$x^2+\\frac{1}{x^2}=\\left(x+\\frac{1}{x}\\right)^2-2$ and $x^3+\\frac{1}{x^3}=\\left(x+\\frac{1}{x}\\right)^3-3\\left(x+\\frac{1}{x}\\right)$; for the fourth power square $x^2+\\frac{1}{x^2}$ once more."], "Rewriting with the product formulas gives ${expr}={work}$. (For real $x$ we have $\\left|x+\\frac{1}{x}\\right|\\ge2$, so a real number with this condition exists.) So the value is ${ans}$."],
   },
   cm1_factorEval: {
-    ko: ["인수분해를 이용하여 ${expr}$ 의 값을 구하면? (숫자만 쓰세요)", ["큰 수를 문자 $N$ 으로 놓고, 분자를 인수분해하여 분모와 약분해요.", "예를 들어 $N^3-1=(N-1)(N^2+N+1)$, $N^4+N^2+1=(N^2+N+1)(N^2-N+1)$ 처럼 분모와 같은 식이 분자의 인수로 나와요."], "$N={N}$ 로 놓으면 분자는 ${fac}$ 로 인수분해되고 분모와 약분하면 ${simp}$ 입니다. 따라서 값은 ${ans}$ 입니다."],
-    en: ["Use factorization to find the value of ${expr}$. (digits only)", ["Let $N$ be the large number, factor the numerator and cancel against the denominator.", "For instance $N^3-1=(N-1)(N^2+N+1)$ and $N^4+N^2+1=(N^2+N+1)(N^2-N+1)$: the denominator shows up as a factor of the numerator."], "With $N={N}$ the numerator factors as ${fac}$; cancelling the denominator leaves ${simp}$. So the value is ${ans}$."],
+    ko: ["인수분해를 이용하여 ${expr}$ 의 값을 구하면? (숫자만 쓰세요)", ["큰 수를 문자 $N$ 으로 놓고, 분자를 인수분해하여 분모와 약분해요.", "예를 들어 $N^3-1=(N-1)(N^2+N+1)$, $N^4+N^2+1=(N^2+N+1)(N^2-N+1)$, $N^4-1=(N^2+1)(N^2-1)$ 처럼 분모와 같은 식이 분자의 인수로 나와요."], "$N={N}$ 일 때 분자를 인수분해하면 ${fac}$ 이고, 분모와 약분하면 ${simp}$ 입니다. 따라서 값은 ${ans}$ 입니다."],
+    en: ["Use factorization to find the value of ${expr}$. (digits only)", ["Let $N$ be the large number, factor the numerator and cancel against the denominator.", "For instance $N^3-1=(N-1)(N^2+N+1)$, $N^4+N^2+1=(N^2+N+1)(N^2-N+1)$ and $N^4-1=(N^2+1)(N^2-1)$: the denominator shows up as a factor of the numerator."], "With $N={N}$ the numerator factors as ${fac}$; cancelling the denominator leaves ${simp}$. So the value is ${ans}$."],
   },
+
   cm1_iPower: {
-    ko: ["$z={z}$ 일 때, $z+z^2+z^3+\\cdots+z^{{n}}$ 의 실수부분과 허수부분의 합은? (숫자만 쓰세요)", ["$i$ 의 거듭제곱은 $i,\\ -1,\\ -i,\\ 1$ 이 이 순서로 반복돼요. 먼저 $z$ 를 $a+bi$ 꼴로 간단히 해요.", "$z^4=1$ 이면 연속한 네 거듭제곱의 합 $z+z^2+z^3+z^4$ 는 $0$ 이에요. 그러면 항의 개수를 $4$ 로 나눈 나머지에 해당하는 항들만 남아요."], "$z$ 를 간단히 하면 $z={zs}$ 이므로 $z^4=1$ 이고 $z+z^2+z^3+z^4=0$ 입니다. ${n}={q4}\\times4+{rm}$ 이므로 $z+z^2+\\cdots+z^{{n}}$ 은 처음 ${rm}$ 개 항의 합과 같고 그 값은 ${val}$ 입니다. 따라서 실수부분과 허수부분의 합은 ${ans}$ 입니다."],
-    en: ["For $z={z}$, what is the sum of the real part and the imaginary part of $z+z^2+z^3+\\cdots+z^{{n}}$? (digits only)", ["The powers of $i$ repeat as $i,\\ -1,\\ -i,\\ 1$. First simplify $z$ to the form $a+bi$.", "If $z^4=1$, then four consecutive powers $z+z^2+z^3+z^4$ add up to $0$, so only the terms left over after dividing the number of terms by $4$ remain."], "Simplifying gives $z={zs}$, so $z^4=1$ and $z+z^2+z^3+z^4=0$. Since ${n}={q4}\\times4+{rm}$, the sum $z+z^2+\\cdots+z^{{n}}$ equals the sum of the first ${rm}$ terms, which is ${val}$. So the sum of the real and imaginary parts is ${ans}$."],
+    ko: ["$z={z}$ 일 때, ${expr}$ 의 실수부분과 허수부분의 합은? (숫자만 쓰세요)", ["$i$ 의 거듭제곱은 $i,\\ -1,\\ -i,\\ 1$ 이 이 순서로 반복돼요. $z$ 가 복잡한 꼴이면 먼저 $a+bi$ 꼴로 간단히 해요.", "$z^4=1$ 이므로 $z$ 의 거듭제곱은 $4$ 개마다 같은 값이 반복돼요. 지수를 $4$ 로 나눈 나머지만 보면 돼요."], "먼저 간단히 하면 $z={zs}$ 이고 $z^4=1$ 입니다. 지수를 $4$ 로 나눈 나머지로 바꾸면 ${work}$ 입니다. 따라서 실수부분과 허수부분의 합은 ${ans}$ 입니다."],
+    en: ["For $z={z}$, what is the sum of the real part and the imaginary part of ${expr}$? (digits only)", ["The powers of $i$ repeat as $i,\\ -1,\\ -i,\\ 1$. If $z$ looks complicated, first simplify it to the form $a+bi$.", "Since $z^4=1$, the powers of $z$ repeat after every $4$ steps; only the exponent modulo $4$ matters."], "Simplifying first gives $z={zs}$ and $z^4=1$. Reducing the exponents modulo $4$ gives ${work}$. So the sum of the real and imaginary parts is ${ans}$."],
   },
+  cm1_iPowerSum: {
+    ko: ["$z={z}$ 일 때, ${expr}$ 의 실수부분과 허수부분의 합은? (숫자만 쓰세요)", ["$z$ 를 먼저 $a+bi$ 꼴로 간단히 하고, $z^4=1$ 인지 확인해요. 그러면 연속한 네 거듭제곱의 합 $z+z^2+z^3+z^4$ 의 값을 알 수 있어요.", "네 항씩 묶으면 묶음마다 합이 같아요. 항의 개수를 $4$ 로 나눈 나머지만큼의 항이 마지막에 남아요."], "먼저 간단히 하면 $z={zs}$ 이므로 $z^4=1$ 이고 $z+z^2+z^3+z^4=0$ 입니다. 네 항씩 묶으면 각 묶음의 합이 $0$ 이고, ${n}={q4}\\times4+{rm}$ 이므로 남는 항은 처음 ${rm}$ 개뿐이므로 ${work}$ 입니다. 따라서 실수부분과 허수부분의 합은 ${ans}$ 입니다."],
+    en: ["For $z={z}$, what is the sum of the real part and the imaginary part of ${expr}$? (digits only)", ["First simplify $z$ to the form $a+bi$ and check that $z^4=1$; then you know the value of four consecutive powers $z+z^2+z^3+z^4$.", "Group the terms four at a time; every group has the same sum. Only as many terms as the remainder of the number of terms divided by $4$ are left at the end."], "Simplifying first gives $z={zs}$, so $z^4=1$ and $z+z^2+z^3+z^4=0$. Every group of four terms sums to $0$, and ${n}={q4}\\times4+{rm}$, so only the first ${rm}$ terms remain, so ${work}$. So the sum of the real and imaginary parts is ${ans}$."],
+  },
+
   cm1_complexCond: {
-    ko: ["복소수 $z={zs}$ 가 순허수가 되도록 하는 실수 $x$ 의 값은? (단, 순허수는 실수부분이 $0$ 이고 허수부분이 $0$ 이 아닌 복소수이다.) (숫자만 쓰세요)", ["$z$ 를 (실수부분)$+$(허수부분)$i$ 꼴로 정리해요. $i^2=-1$ 이에요.", "실수부분이 $0$ 이 되는 $x$ 를 구한 뒤, 그 값에서 허수부분이 $0$ 이 아닌지도 꼭 확인해요."], "$z$ 의 실수부분은 ${re}$, 허수부분은 ${im}$ 입니다. 실수부분이 $0$ 이어야 하므로 ${roots}$ 이고, 이 중 허수부분 ${im}$ 이 $0$ 이 아닌 것은 $x={ans}$ 뿐입니다."],
-    en: ["For which real number $x$ is the complex number $z={zs}$ purely imaginary? (A purely imaginary number has real part $0$ and imaginary part not $0$.) (digits only)", ["Write $z$ as (real part)$+$(imaginary part)$i$, using $i^2=-1$.", "Find the $x$ that makes the real part $0$, then check that the imaginary part is not $0$ there."], "The real part of $z$ is ${re}$ and the imaginary part is ${im}$. The real part must be $0$, giving ${roots}$; among these the imaginary part ${im}$ is nonzero only for $x={ans}$."],
+    ko: ["실수 $x$ 에 대하여 복소수 $z={zs}$ 에서, $z$ 가 순허수가 되는 $x$ 의 값은? (단, 순허수는 실수부분이 $0$ 이고 허수부분이 $0$ 이 아닌 복소수이다.) (숫자만 쓰세요)", ["$z$ 를 (실수부분)$+$(허수부분)$i$ 꼴로 정리해요. $i^2=-1$ 이에요.", "실수부분이 $0$ 이 되는 $x$ 를 구한 뒤, 그 값에서 허수부분이 $0$ 이 아닌지도 꼭 확인해요."], "$z$ 의 실수부분은 ${re}$, 허수부분은 ${im}$ 입니다. 실수부분이 $0$ 이어야 하므로 ${roots}$ 입니다. 이때 허수부분의 값은 ${chk}$ 이므로 순허수가 되는 것은 $x={ans}$ 입니다."],
+    en: ["For a real number $x$, consider the complex number $z={zs}$. For which $x$ is $z$ purely imaginary? (A purely imaginary number has real part $0$ and imaginary part not $0$.) (digits only)", ["Write $z$ as (real part)$+$(imaginary part)$i$, using $i^2=-1$.", "Find the $x$ that makes the real part $0$, then check that the imaginary part is not $0$ there."], "The real part of $z$ is ${re}$ and the imaginary part is ${im}$. The real part must be $0$, giving ${roots}$. The value of the imaginary part there is ${chk}$, so $z$ is purely imaginary exactly for $x={ans}$."],
   },
   cm1_discrimCount: {
-    ko: ["이차방정식 ${eq}=0$ 이 허근을 갖도록 하는 정수 $k$ 는 ${lo}\\le k\\le {hi}$ 에서 모두 몇 개인가요? (숫자만 쓰세요)", ["이차방정식이 허근을 가지려면 판별식 $D<0$ 이어야 해요.", "$x$ 의 계수가 짝수이면 $\\frac{D}{4}=\\left(\\frac{b}{2}\\right)^2-ac$ 를 쓰면 편해요. 이 식을 $k$ 에 대한 부등식으로 풀어요."], "$\\frac{D}{4}={d4}<0$ 이어야 하므로 이를 만족시키는 정수 $k$ 는 ${ks}$ 이고, 모두 ${ans}$ 개입니다."],
-    en: ["For how many integers $k$ with ${lo}\\le k\\le {hi}$ does the quadratic equation ${eq}=0$ have non-real roots? (digits only)", ["A quadratic has non-real roots exactly when its discriminant satisfies $D<0$.", "If the coefficient of $x$ is even, $\\frac{D}{4}=\\left(\\frac{b}{2}\\right)^2-ac$ is convenient. Solve the resulting inequality in $k$."], "We need $\\frac{D}{4}={d4}<0$. The integers $k$ satisfying this are ${ks}$, so there are ${ans}$ of them."],
+    ko: ["이차방정식 ${eq}=0$ 의 두 근이 모두 허근이 되도록 하는 정수 $k$ 는 ${lo}\\le k\\le {hi}$ 에서 모두 몇 개인가요? (숫자만 쓰세요)", ["이차방정식이 허근을 가지려면 판별식 $D<0$ 이어야 해요.", "$x$ 의 계수가 짝수이면 $\\frac{D}{4}=\\left(\\frac{b}{2}\\right)^2-ac$ 를 쓰면 편해요. 이 식을 $k$ 에 대한 부등식으로 풀어요."], "$\\frac{D}{4}={d4}<0$ 이어야 하고, 이를 풀면 ${kr}$ 입니다. 이를 만족시키는 정수 $k$ 는 ${ks}$ 이므로 ${lo}\\le k\\le {hi}$ 안에서 모두 ${ans}$ 개입니다."],
+    en: ["For how many integers $k$ with ${lo}\\le k\\le {hi}$ does the quadratic equation ${eq}=0$ have non-real roots? (digits only)", ["A quadratic has non-real roots exactly when its discriminant satisfies $D<0$.", "If the coefficient of $x$ is even, $\\frac{D}{4}=\\left(\\frac{b}{2}\\right)^2-ac$ is convenient. Solve the resulting inequality in $k$."], "We need $\\frac{D}{4}={d4}<0$, which gives ${kr}$. The integers $k$ in ${lo}\\le k\\le {hi}$ satisfying this are ${ks}$, so there are ${ans}$ of them."],
   },
   cm1_vietaExpr: {
     ko: ["이차방정식 ${eq}=0$ 의 두 근을 $\\alpha$, $\\beta$ 라 할 때, ${expr}$ 의 값은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["이차방정식 $ax^2+bx+c=0$ 의 두 근의 합은 $-\\frac{b}{a}$, 곱은 $\\frac{c}{a}$ 예요.", "구하는 식을 $\\alpha+\\beta$ 와 $\\alpha\\beta$ 로 나타낸 다음 값을 대입해요."], "근과 계수의 관계에서 $\\alpha+\\beta={sf}$, $\\alpha\\beta={pf}$ 입니다. 따라서 ${expr}={work}={res}$ 입니다."],
     en: ["Let $\\alpha$ and $\\beta$ be the two roots of ${eq}=0$. What is the value of ${expr}$? (write a decimal, or a fraction like 3/4)", ["For $ax^2+bx+c=0$ the sum of the roots is $-\\frac{b}{a}$ and the product is $\\frac{c}{a}$.", "Express the required quantity through $\\alpha+\\beta$ and $\\alpha\\beta$, then substitute."], "By Vieta's formulas $\\alpha+\\beta={sf}$ and $\\alpha\\beta={pf}$. Hence ${expr}={work}={res}$."],
   },
   cm1_vietaUnknown: {
-    ko: ["이차방정식 $x^2-kx{cs}=0$ 의 두 근을 $\\alpha$, $\\beta$ 라 하자. ${cond}$ 일 때, 양수 $k$ 의 값은? (숫자만 쓰세요)", ["두 근의 합은 $k$, 두 근의 곱은 ${c}$ 예요 (근과 계수의 관계).", "주어진 조건을 $\\alpha+\\beta$, $\\alpha\\beta$ 로 나타내거나, 한 근을 문자로 놓고 다른 근을 그 식으로 나타내어 $k$ 를 구해요."], "근과 계수의 관계에서 $\\alpha+\\beta=k$, $\\alpha\\beta={c}$ 입니다. ${work}$ 따라서 $k={ans}$ 입니다."],
+    ko: ["이차방정식 $x^2-kx{cs}=0$ 의 두 근을 $\\alpha$, $\\beta$ 라 하자. ${cond}$ 일 때, 양수 $k$ 의 값은? (숫자만 쓰세요)", ["근과 계수의 관계에서 두 근의 합은 $k$, 두 근의 곱은 ${c}$ 입니다.", "주어진 조건을 $\\alpha+\\beta$, $\\alpha\\beta$ 로 나타내거나, 한 근을 문자로 놓고 다른 근을 그 식으로 나타내어 $k$ 를 구해요."], "근과 계수의 관계에서 $\\alpha+\\beta=k$, $\\alpha\\beta={c}$ 입니다. ${work}$ 따라서 $k={ans}$ 입니다."],
     en: ["Let $\\alpha$ and $\\beta$ be the roots of $x^2-kx{cs}=0$. If ${cond}$, what is the positive number $k$? (digits only)", ["The sum of the roots is $k$ and the product is ${c}$ (Vieta's formulas).", "Express the given condition through $\\alpha+\\beta$ and $\\alpha\\beta$, or write one root in terms of the other, and solve for $k$."], "By Vieta's formulas $\\alpha+\\beta=k$ and $\\alpha\\beta={c}$. ${work}$ Hence $k={ans}$."],
   },
   cm1_rootSignCond: {
-    ko: ["이차방정식 ${eq}=0$ 이 서로 다른 두 실근을 갖고 두 근이 모두 ${t}$ 보다 크도록 하는 정수 $k$ 의 최솟값은? (숫자만 쓰세요)", ["좌변을 $f(x)$ 라 하면, $y=f(x)$ 의 그래프가 $x$ 축과 서로 다른 두 점에서 만나고 두 교점이 모두 $x={t}$ 의 오른쪽에 있는 경우예요.", "판별식 $D>0$, 축의 위치(축 $x>{t}$), $f({t})>0$ 세 조건을 모두 확인해요."], "$f(x)={eq}$ 라 하면 두 근이 모두 ${t}$ 보다 크려면 (i) $\\frac{D}{4}={d4}>0$, (ii) 축 $x=k$ 가 ${t}$ 보다 오른쪽이므로 $k>{t}$, (iii) $f({t})={ft}>0$ 을 모두 만족해야 합니다. 이를 만족시키는 가장 작은 정수 $k$ 는 ${ans}$ 입니다."],
+    ko: ["이차방정식 ${eq}=0$ 에서 서로 다른 두 실근이 모두 ${t}$ 보다 크도록 하는 정수 $k$ 의 최솟값은? (숫자만 쓰세요)", ["좌변을 $f(x)$ 라 하면, $y=f(x)$ 의 그래프가 $x$ 축과 서로 다른 두 점에서 만나고 두 교점이 모두 $x={t}$ 의 오른쪽에 있는 경우예요.", "판별식 $D>0$, 축의 위치(축 $x>{t}$), $f({t})>0$ 세 조건을 모두 확인해요."], "$f(x)={eq}$ 에서 두 근이 모두 ${t}$ 보다 크려면 (i) $\\frac{D}{4}={d4}>0$, (ii) 축 $x=k$ 에서 $k>{t}$, (iii) $f({t})={ft}>0$ 세 조건을 모두 만족해야 합니다. 이를 만족시키는 가장 작은 정수 $k$ 는 ${ans}$ 입니다."],
     en: ["What is the smallest integer $k$ for which ${eq}=0$ has two distinct real roots, both greater than ${t}$? (digits only)", ["Call the left side $f(x)$. The graph of $y=f(x)$ must cut the $x$-axis at two points, both to the right of $x={t}$.", "Check all three conditions: discriminant $D>0$, axis position (axis $>{t}$), and $f({t})>0$."], "With $f(x)={eq}$, both roots exceed ${t}$ exactly when (i) $\\frac{D}{4}={d4}>0$, (ii) the axis $x=k$ satisfies $k>{t}$, and (iii) $f({t})={ft}>0$. The smallest integer $k$ satisfying all three is ${ans}$."],
   },
   cm1_parabolaLine: {
-    ko: ["포물선 $y={f}$ 와 직선 $y={g}$ 가 접할 때, 상수 $k$ 의 값은? (숫자만 쓰세요)", ["접한다는 것은 두 식을 연립한 이차방정식이 중근을 갖는다는 뜻이에요.", "두 식에서 $y$ 를 없앤 이차방정식의 판별식이 $0$ 이 되도록 해요."], "${f}={g}$ 에서 ${eq2}=0$ 이고, 접하므로 판별식 $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)=0$ 입니다. 이를 풀면 $k={ans}$ 입니다."],
+    ko: ["다음 포물선과 직선이 접할 때, 상수 $k$ 의 값은? (포물선 $y={f}$, 직선 $y={g}$) (숫자만 쓰세요)", ["접한다는 것은 두 식을 연립한 이차방정식이 중근을 갖는다는 뜻이에요.", "두 식에서 $y$ 를 없앤 이차방정식의 판별식이 $0$ 이 되도록 해요."], "${f}={g}$ 에서 ${eq2}=0$ 이고, 접하므로 판별식 $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)=0$ 입니다. 이를 풀면 $k={ans}$ 입니다."],
     en: ["The parabola $y={f}$ is tangent to the line $y={g}$. What is the constant $k$? (digits only)", ["Tangency means the quadratic obtained by equating the two expressions has a double root.", "Eliminate $y$ and make the discriminant of the resulting quadratic equal to $0$."], "Equating gives ${eq2}=0$. Tangency requires the discriminant $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)=0$, which gives $k={ans}$."],
   },
   cm1_parabolaLineCount: {
-    ko: ["포물선 $y={f}$ 와 직선 $y={g}$ 가 만나지 않도록 하는 정수 $k$ 는 ${lo}\\le k\\le {hi}$ 에서 모두 몇 개인가요? (숫자만 쓰세요)", ["두 그래프가 만나지 않는다는 것은 두 식을 연립한 이차방정식이 실근을 갖지 않는다는 뜻이에요.", "두 식에서 $y$ 를 없앤 이차방정식의 판별식이 $D<0$ 이 되는 $k$ 의 범위를 구한 뒤, 그 안에 들어 있는 정수를 세요."], "${f}={g}$ 에서 ${eq2}=0$ 이고, 만나지 않으려면 판별식 $D<0$ 이어야 합니다. $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)={dk}<0$ 에서 ${kr}$ 이므로 ${lo}\\le k\\le {hi}$ 안의 정수는 ${ks}$ 로 모두 ${ans}$ 개입니다."],
+    ko: ["다음 포물선과 직선이 만나지 않도록 하는 정수 $k$ 는 ${lo}\\le k\\le {hi}$ 에서 모두 몇 개인가요? (포물선 $y={f}$, 직선 $y={g}$) (숫자만 쓰세요)", ["두 그래프가 만나지 않는다는 것은 두 식을 연립한 이차방정식이 실근을 갖지 않는다는 뜻이에요.", "두 식에서 $y$ 를 없앤 이차방정식의 판별식이 $D<0$ 이 되는 $k$ 의 범위를 구한 뒤, 그 안에 들어 있는 정수를 세요."], "${f}={g}$ 에서 ${eq2}=0$ 이고, 만나지 않으려면 판별식 $D<0$ 이어야 합니다. $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)={dk}<0$ 에서 ${kr}$ 이므로 ${lo}\\le k\\le {hi}$ 안의 정수는 ${ks}$ 이고, 모두 ${ans}$ 개입니다."],
     en: ["For how many integers $k$ with ${lo}\\le k\\le {hi}$ do the parabola $y={f}$ and the line $y={g}$ have no common point? (digits only)", ["No common point means that the quadratic obtained by equating the two expressions has no real root.", "Eliminate $y$, find the range of $k$ for which the discriminant satisfies $D<0$, and count the integers in it."], "Equating gives ${eq2}=0$, and there is no intersection exactly when $D<0$. Here $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)={dk}<0$, which gives ${kr}$, so the integers in ${lo}\\le k\\le {hi}$ are ${ks}$, which is ${ans}$ integers."],
   },
   cm1_parabolaXaxis: {
@@ -106,11 +133,11 @@ export const TEMPLATES = {
     en: ["The graph of $y={f}$ meets the $x$-axis at two distinct points whose distance apart is ${d}$. What is the constant $k$? (digits only)", ["The $x$-coordinates of the two points are the two roots of ${f}=0$.", "If the roots are $\\alpha,\\beta$, the distance is $|\\alpha-\\beta|$, and $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$."], "The $x$-coordinates $\\alpha,\\beta$ are the roots of ${f}=0$, so $\\alpha+\\beta={sm}$. From $(\\alpha-\\beta)^2=({sm})^2-4\\alpha\\beta={d}^2$ we get $\\alpha\\beta={ab}$, and Vieta gives $\\alpha\\beta=\\frac{k}{{p}}$, so $k={ans}$."],
   },
   cm1_quadRange: {
-    ko: ["함수 $y={f}$ 의 ${m}\\le x\\le {n}$ 에서의 최댓값과 최솟값의 합은? (단, $x$ 는 실수이다.) (숫자만 쓰세요)", ["이차함수는 꼭짓점의 $x$ 좌표가 주어진 구간 안에 있는지부터 확인해요.", "꼭짓점이 구간 안에 있으면 꼭짓점과 두 끝점에서, 밖에 있으면 두 끝점에서의 함숫값을 비교해요."], "이 함수의 꼭짓점은 $({h},{kv})$ 이고, 구간의 양 끝에서 $y$ 의 값은 $x={m}$ 일 때 ${fm}$, $x={n}$ 일 때 ${fn}$ 입니다. 꼭짓점의 $x$ 좌표 ${h}$ 가 구간에 속하는지 살펴 최댓값과 최솟값을 구하면 그 합은 ${ans}$ 입니다."],
+    ko: ["함수 $y={f}$ 의 ${m}\\le x\\le {n}$ 에서의 최댓값과 최솟값의 합은? (단, $x$ 는 실수이다.) (숫자만 쓰세요)", ["이차함수는 꼭짓점의 $x$ 좌표가 주어진 구간 안에 있는지부터 확인해요.", "꼭짓점이 구간 안에 있으면 꼭짓점과 두 끝점에서, 밖에 있으면 두 끝점에서의 함숫값을 비교해요."], "이 함수의 꼭짓점은 $({h},{kv})$ 이고, 구간의 양 끝에서 $y$ 의 값은 $x={m}$ 일 때 ${fm}$, $x={n}$ 일 때 ${fn}$ 입니다. 꼭짓점의 $x$ 좌표가 구간 ${m}\\le x\\le {n}$ 안에 있는지 살펴 최댓값과 최솟값을 구하면 그 합은 ${ans}$ 입니다."],
     en: ["For real $x$ with ${m}\\le x\\le {n}$, what is the sum of the maximum and the minimum value of $y={f}$? (digits only)", ["First check whether the $x$-coordinate of the vertex lies inside the given interval.", "If the vertex is inside, compare the values at the vertex and at both endpoints; otherwise compare the two endpoints."], "The vertex of the graph is $({h},{kv})$, and at the ends of the interval $y={fm}$ for $x={m}$ and $y={fn}$ for $x={n}$. Deciding whether the vertex abscissa ${h}$ lies in the interval gives the maximum and minimum, whose sum is ${ans}$."],
   },
   cm1_quadRevenue: {
-    ko: ["원가가 ${w}$ 원인 물건을 한 개에 ${a}$ 원에 팔면 하루에 ${b}$ 개가 팔립니다. 판매 가격을 ${s}$ 원 올릴 때마다 하루 판매량은 ${c}$ 개씩 줄어듭니다. 판매 가격을 ${s}$ 원씩 $0$ 번 이상의 정수 번 올릴 수 있을 때, 하루 이익의 최댓값은 몇 원인가요? (이익은 (판매 가격 $-$ 원가)$\\times$(판매량)으로 계산합니다.) (숫자만 쓰세요)", ["가격을 올리는 횟수를 $t$ 로 놓고 판매 가격과 판매량을 $t$ 로 나타내요.", "(개당 이익)$\\times$(판매량)은 $t$ 에 대한 이차식이에요. 꼭짓점의 $t$ 가 정수인지 확인해요."], "올리는 횟수를 $t$ 라 하면 개당 이익은 $({e1}+{s}t)$ 원, 판매량은 $({b}-{c}t)$ 개이므로 이익은 $({e1}+{s}t)({b}-{c}t)$ 원입니다. 이 이차식은 $t={tstar}$ 에서 최대가 되고, 그때의 이익은 ${ans}$ 원입니다."],
+    ko: ["원가가 ${w}$ 원인 물건을 한 개에 ${a}$ 원에 팔면 하루에 ${b}$ 개가 팔립니다. 판매 가격을 ${s}$ 원 올릴 때마다 하루 판매량은 ${c}$ 개씩 줄어듭니다. 판매 가격을 ${s}$ 원씩 정수 번($0$ 번 포함) 올릴 수 있을 때, 하루 이익의 최댓값은 몇 원인가요? (이익은 (판매 가격 $-$ 원가)$\\times$(판매량)으로 계산합니다.) (숫자만 쓰세요)", ["가격을 올리는 횟수를 $t$ 로 놓고 판매 가격과 판매량을 $t$ 로 나타내요.", "(개당 이익)$\\times$(판매량)은 $t$ 에 대한 이차식이에요. 꼭짓점의 $t$ 가 정수인지 확인해요."], "올리는 횟수를 $t$ 라 하면 개당 이익은 $({e1}+{s}t)$ 원, 판매량은 $({b}-{c}t)$ 개이므로 이익은 $({e1}+{s}t)({b}-{c}t)$ 원입니다. 이 이차식은 $t={tstar}$ 에서 최대가 되고, 그때의 이익은 ${ans}$ 원입니다."],
     en: ["An item with a cost of ${w}$ won sells ${b}$ per day at a price of ${a}$ won each. Every time the price is raised by ${s}$ won, the daily sales drop by ${c}$ items. If the price can be raised by ${s}$ won any whole number of times (including $0$), what is the maximum daily profit in won? (Profit = (selling price $-$ cost) $\\times$ (number sold).) (digits only)", ["Let $t$ be the number of price rises and write the price and the number sold in terms of $t$.", "(profit per item) $\\times$ (number sold) is a quadratic in $t$. Check whether its vertex has an integer $t$."], "After $t$ rises the profit per item is $({e1}+{s}t)$ won and the number sold is $({b}-{c}t)$, so the profit is $({e1}+{s}t)({b}-{c}t)$ won. This quadratic is largest at $t={tstar}$, where the profit is ${ans}$ won."],
   },
   cm1_quadFence: {
@@ -122,7 +149,7 @@ export const TEMPLATES = {
     en: ["Let $\\omega$ be a non-real root of ${eq}$. What is the value of ${expr}$? (digits only)", ["Multiplying both sides of the equation by $x-1$ or $x+1$ gives the value of $\\omega^3$.", "If $\\omega^3=\\pm1$ then $\\omega^6=1$. Only the exponent modulo the period matters."], "Since $\\omega$ is a root of ${eq}$, ${rel}$. The powers therefore repeat with period ${per}$, and reducing the exponents modulo ${per}$ gives ${step}$. So the value is ${ans}$."],
   },
   cm1_cubicOneReal: {
-    ko: ["방정식 ${eq}=0$ 의 서로 다른 실근의 합을 $S$, 서로 다른 허근을 모두 곱한 값을 $T$ 라 할 때, $S+T$ 의 값은? (숫자만 쓰세요)", ["최고차항의 계수가 $1$ 인 정수 계수 방정식의 정수인 근은 상수항의 약수 중에 있어요. 인수정리로 확인해요.", "근 하나를 찾아 조립제법으로 나누면 낮은 차수의 식이 남아요. 남은 이차식의 판별식으로 허근인지 확인해요."], "${eq}={fac}$ 로 인수분해됩니다. 이차식 ${quad}$ 의 판별식은 $D={D}<0$ 이므로 두 허근을 가지며 그 곱은 $T={q}$ 이고, 실근의 합은 $S={S}$ 입니다. 따라서 $S+T={ans}$ 입니다."],
+    ko: ["방정식 ${eq}=0$ 의 서로 다른 실근의 합을 $S$, 서로 다른 허근을 모두 곱한 값을 $T$ 라 할 때, $S+T$ 의 값은? (숫자만 쓰세요)", ["최고차항의 계수가 $1$ 인 정수 계수 방정식의 정수인 근은 상수항의 약수 중에 있어요. 인수정리로 확인해요.", "근 하나를 찾아 조립제법으로 나누면 낮은 차수의 식이 남아요. 남은 이차식의 판별식으로 허근인지 확인해요."], "인수분해하면 ${eq}={fac}$ 입니다. 이차식 ${quad}$ 의 판별식은 $D={D}<0$ 이므로 두 허근을 가지며 그 곱은 $T={q}$ 이고, 실근의 합은 $S={S}$ 입니다. 따라서 $S+T={ans}$ 입니다."],
     en: ["Let $S$ be the sum of the distinct real roots and $T$ the product of all distinct non-real roots of ${eq}=0$. What is $S+T$? (digits only)", ["An integer root of a monic integer-coefficient equation divides the constant term; test candidates with the factor theorem.", "Once you find a root, divide (synthetic division) to leave a lower-degree factor, and use the discriminant of the remaining quadratic to see that its roots are non-real."], "${eq}={fac}$. The discriminant of the quadratic ${quad}$ is $D={D}<0$, so it has two non-real roots whose product is $T={q}$, and the real roots add up to $S={S}$. Hence $S+T={ans}$."],
   },
   cm1_sysTwo: {
@@ -153,17 +180,19 @@ export const TEMPLATES = {
     ko: ["이차부등식 ${mx2}+ax+b{op}0$ 의 해가 ${sol}$ 일 때, 상수 $a$, $b$ 에 대하여 ${ask}$ 의 값은? (숫자만 쓰세요)", ["부등식의 해의 양 끝값은 이차방정식 ${mx2}+ax+b=0$ 의 두 근이에요.", "이차식을 ($x^2$ 의 계수)$\\times(x-\\alpha)(x-\\beta)$ 꼴로 나타내어 전개한 모양과 비교해요."], "해가 ${sol}$ 이므로 두 근은 ${lo}$, ${hi}$ 이고, $x^2$ 의 계수가 ${m}$ 이므로 ${mx2}+ax+b={fac}={full}$ 입니다. 따라서 $a={a}$, $b={b}$ 이고 ${ask}={ans}$ 입니다."],
     en: ["The solution of the quadratic inequality ${mx2}+ax+b{op}0$ is ${sol}$. For the constants $a$ and $b$, what is the value of ${ask}$? (digits only)", ["The endpoints of the solution are the two roots of ${mx2}+ax+b=0$.", "Write the quadratic as (coefficient of $x^2$)$\\times(x-\\alpha)(x-\\beta)$ and compare with the expanded form."], "Since the solution is ${sol}$, the roots are ${lo}$ and ${hi}$, and the coefficient of $x^2$ is ${m}$, so ${mx2}+ax+b={fac}={full}$. Hence $a={a}$, $b={b}$ and ${ask}={ans}$."],
   },
+
   cm1_quadIneqAlways: {
-    ko: ["모든 실수 $x$ 에 대하여 부등식 ${ineq}$ 이 성립하도록 하는 정수 $k$ 의 개수는? (숫자만 쓰세요)", ["이차식이 모든 실수 $x$ 에서 $>0$ (또는 $\\ge0$) 이려면 아래로 볼록하고 판별식이 $D<0$ (또는 $D\\le0$) 이어야 해요.", "판별식 $D$ 를 $k$ 에 대한 식으로 쓰고 부등식을 풀어요. 이차항의 계수가 $k$ 이면 $k=0$ 일 때를 따로 확인해요."], "조건을 정리하면 ${cond}$ 입니다. 이를 만족시키는 정수 $k$ 는 ${ks}$ 이므로 모두 ${ans}$ 개입니다."],
-    en: ["For how many integers $k$ does the inequality ${ineq}$ hold for every real number $x$? (digits only)", ["A quadratic is $>0$ (or $\\ge0$) for all real $x$ when it opens upward and its discriminant satisfies $D<0$ (or $D\\le0$).", "Write $D$ in terms of $k$ and solve the inequality. If the coefficient of $x^2$ is $k$, check the case $k=0$ separately."], "The condition becomes ${cond}$. The integers $k$ satisfying it are ${ks}$, so there are ${ans}$ of them."],
+    ko: ["부등식 ${ineq}$ 의 해가 모든 실수가 되도록 하는 정수 $k$ 의 개수는? (숫자만 쓰세요)", ["$x^2$ 의 계수가 $k$ 이므로 $k=0$ 인 경우와 아닌 경우로 나누어요. $k\\ne0$ 이면 아래로 볼록하고 판별식이 $D<0$ (또는 $D\\le0$) 이어야 해요.", "판별식 $D$ 를 $k$ 에 대한 식으로 쓰고 부등식을 풀어요. 위로 볼록한 경우($k<0$)는 모든 실수에서 성립할 수 없어요."], "$k=0$ 이면 좌변이 상수 ${n}$ 하나뿐이고 이 값은 $0$ 보다 크므로 부등식이 항상 성립합니다. $k\\ne0$ 이면 아래로 볼록해야 하므로 $k>0$ 이고 $\\frac{D}{4}={d4}{rel}0$ 이어야 하며, 이를 풀면 ${kr}$ 입니다. 따라서 $k=0$ 을 포함하여 정수 $k$ 는 ${ks}$ 이므로 모두 ${ans}$ 개입니다."],
+    en: ["For how many integers $k$ is every real number a solution of the inequality ${ineq}$? (digits only)", ["The coefficient of $x^2$ is $k$, so treat $k=0$ separately. For $k\\ne0$ the parabola must open upward and the discriminant must satisfy $D<0$ (or $D\\le0$).", "Write $D$ in terms of $k$ and solve the inequality. If it opens downward ($k<0$), the inequality cannot hold for all real $x$."], "For $k=0$ the left side is just the constant ${n}$, which is positive, so the inequality always holds. For $k\\ne0$ the parabola must open upward, so $k>0$ and $\\frac{D}{4}={d4}{rel}0$, which gives ${kr}$. Including $k=0$, the integers $k$ are ${ks}$, so there are ${ans}$ of them."],
   },
   cm1_divisorCount: {
-    ko: ["자연수 $N={fac}$ 의 양의 약수 중에서 ${m}$ 의 배수인 것은 모두 몇 개인가요? (숫자만 쓰세요)", ["${m}$ 의 배수인 약수는 $N$ 의 약수이면서 ${m}$ 을 인수로 가지는 수예요.", "그런 약수는 ${m}\\times t$ 꼴이고, $t$ 는 $\\frac{N}{{m}}$ 의 약수예요."], "${m}$ 의 배수인 약수는 ${m}\\times t$ 꼴이고, $t$ 는 $\\frac{N}{{m}}={Nm}$ 의 약수입니다. 그 약수의 개수는 ${prod}={ans}$ 입니다."],
+    ko: ["자연수 $N={fac}$ 의 양의 약수 중에서 ${m}$ 의 배수인 것은 모두 몇 개인가요? (숫자만 쓰세요)", ["${m}$ 의 배수인 약수는 ${m}\\times t$ 꼴로 쓸 수 있어요. 이때 $t$ 가 될 수 있는 수를 생각해요.", "그런 약수는 ${m}\\times t$ 꼴이고, $t$ 는 $\\frac{N}{{m}}$ 의 약수예요."], "${m}$ 의 배수인 약수는 ${m}\\times t$ 꼴이고, $t$ 는 $\\frac{N}{{m}}={Nm}$ 의 약수입니다. 그 약수의 개수는 ${prod}={ans}$ 입니다."],
     en: ["How many positive divisors of $N={fac}$ are multiples of ${m}$? (digits only)", ["A divisor that is a multiple of ${m}$ is a divisor of $N$ that contains the factor ${m}$.", "Such a divisor has the form ${m}\\times t$ where $t$ is a divisor of $\\frac{N}{{m}}$."], "A divisor that is a multiple of ${m}$ has the form ${m}\\times t$ with $t$ a divisor of $\\frac{N}{{m}}={Nm}$. The number of such divisors is ${prod}={ans}$."],
   },
+
   cm1_coloring: {
-    ko: ["영역 $1, 2, \\ldots, {n}$ 가 있고, 다음 쌍의 영역끼리만 서로 맞닿아 있습니다: ${edges}$. 맞닿아 있는 두 영역은 서로 다른 색으로 칠하려고 합니다. ${k}$ 가지 색을 사용할 수 있고 같은 색을 여러 영역에 칠해도 되며 사용하지 않는 색이 있어도 될 때, 모든 영역을 칠하는 방법의 수는? (숫자만 쓰세요)", ["칠하는 순서를 정하고, 영역을 하나씩 칠할 때 이미 칠해진 이웃 영역에 쓰인 색을 제외한 색의 수를 세요.", "앞에서 칠한 이웃 영역들이 같은 색인지 다른 색인지에 따라 쓸 수 있는 색의 수가 달라지면 경우를 나누어 합의 법칙을 써요."], "순서대로 칠하면서 쓸 수 있는 색의 수를 곱의 법칙과 합의 법칙으로 세면 ${work}={ans}$ 가지입니다."],
-    en: ["There are regions $1, 2, \\ldots, {n}$, and only the following pairs of regions touch each other: ${edges}$. Regions that touch must get different colors. With ${k}$ colors available (a color may be used for several regions, and some colors may stay unused), in how many ways can all regions be colored? (digits only)", ["Fix an order and color one region at a time, counting the colors not used by already-colored neighbours.", "If the number of available colors depends on whether earlier neighbours share a color, split into cases and add (sum rule)."], "Coloring in order and counting the available colors with the product and sum rules gives ${work}={ans}$ ways."],
+    ko: ["영역이 ${n}$ 개 있고 번호는 ${regs}$ 입니다. 다음 쌍의 영역끼리만 서로 맞닿아 있습니다: ${edges}$. 맞닿아 있는 두 영역은 서로 다른 색으로 칠하려고 합니다. ${k}$ 가지 색을 사용할 수 있고 같은 색을 여러 영역에 칠해도 되며 사용하지 않는 색이 있어도 될 때, 모든 영역을 칠하는 방법의 수는? (숫자만 쓰세요)", ["칠하는 순서를 정하고, 영역을 하나씩 칠할 때 이미 칠해진 이웃 영역에 쓰인 색을 제외한 색의 수를 세요.", "앞에서 칠한 이웃 영역들이 같은 색인지 다른 색인지에 따라 쓸 수 있는 색의 수가 달라지면 경우를 나누어 합의 법칙을 써요."], "순서대로 칠하면서 쓸 수 있는 색의 수를 곱의 법칙과 합의 법칙으로 세면 ${work}={ans}$ 가지입니다."],
+    en: ["There are ${n}$ regions numbered ${regs}$, and only the following pairs of regions touch each other: ${edges}$. Regions that touch must get different colors. With ${k}$ colors available (a color may be used for several regions, and some colors may stay unused), in how many ways can all regions be colored? (digits only)", ["Fix an order and color one region at a time, counting the colors not used by already-colored neighbours.", "If the number of available colors depends on whether earlier neighbours share a color, split into cases and add (sum rule)."], "Coloring in order and counting the available colors with the product and sum rules gives ${work}={ans}$ ways."],
   },
   cm1_permArrange: {
     ko: ["남학생 ${m}$ 명과 여학생 ${w}$ 명을 일렬로 세울 때, 여학생끼리는 어느 두 명도 서로 이웃하지 않도록 세우는 방법의 수는? (학생은 모두 서로 다른 사람입니다.) (숫자만 쓰세요)", ["이웃하지 않아야 하는 쪽(여학생)을 나중에 넣는 것이 편해요. 먼저 남학생을 일렬로 세워요.", "남학생 사이사이와 양 끝에 여학생이 들어갈 자리가 생겨요. 그 자리 중에서 서로 다른 자리를 골라 여학생을 세워요."], "남학생 ${m}$ 명을 먼저 세우는 방법은 ${m}!={mf}$ 가지입니다. 남학생 사이와 양 끝의 ${m1}$ 곳 중 서로 다른 ${w}$ 곳을 골라 여학생을 세우는 방법은 ${}_{{m1}}\\mathrm{P}_{{w}}={pv}$ 가지입니다. 따라서 ${mf}\\times{pv}={ans}$ 가지입니다."],
@@ -178,7 +207,7 @@ export const TEMPLATES = {
     en: ["A committee of ${r}$ is chosen from ${m}$ boys and ${w}$ girls. One particular boy must be chosen, one particular girl must not be chosen, and at least ${a}$ girls must be on the committee. In how many ways can it be chosen? (digits only)", ["Once the person who must join and the person who must not are fixed, the rest is a selection of the remaining members from the remaining people.", "Split by the number of girls (${a}$, ${a}+1$, $\\ldots$) and add (ways to choose the girls)$\\times$(ways to choose the boys)."], "One boy is already chosen and one girl is excluded, so ${r1}$ more members are chosen from ${m1}$ boys and ${w1}$ girls with at least ${a}$ girls: ${work}={ans}$."],
   },
   cm1_gridPaths: {
-    ko: ["좌표평면에서 점 $(0,0)$ 에서 점 $({a},{b})$ 까지 한 번에 $x$ 축 방향 또는 $y$ 축 방향으로 $+1$ 만큼씩만 이동하여 가는 최단 경로 중에서, 점 A$({p},{q})$ 를 지나고 점 B$({u},{v})$ 는 지나지 않는 경로는 모두 몇 가지인가요? (숫자만 쓰세요)", ["$(0,0)$ 에서 $(m,n)$ 까지의 최단 경로의 수는 오른쪽으로 $m$ 번, 위로 $n$ 번 가는 순서를 정하는 수 ${}_{m+n}\\mathrm{C}_{m}$ 이에요.", "'지나는' 경로는 구간별 경로의 수를 곱하고, '지나지 않는' 경로는 점 A 를 지나는 전체 경로에서 점 B 도 지나는 경로를 빼요."], "점 A 를 지나는 경로는 ${t1}$ 가지입니다. 이 중 점 B 도 지나는 경로는 ${t2}$ 가지입니다. 따라서 구하는 경로의 수는 ${ans}$ 입니다."],
+    ko: ["좌표평면에서 점 $(0,0)$ 에서 점 $({a},{b})$ 까지 한 번에 $x$ 축 방향 또는 $y$ 축 방향으로 $+1$ 만큼씩만 이동하여 가는 최단 경로 중에서, 점 A$({p},{q})$ 지점을 지나고 점 B$({u},{v})$ 지점은 지나지 않는 경로는 모두 몇 가지인가요? (숫자만 쓰세요)", ["$(0,0)$ 에서 $(m,n)$ 까지의 최단 경로의 수는 오른쪽으로 $m$ 번, 위로 $n$ 번 가는 순서를 정하는 수 ${}_{m+n}\\mathrm{C}_{m}$ 이에요.", "'지나는' 경로는 구간별 경로의 수를 곱하고, '지나지 않는' 경로는 점 A 를 지나는 전체 경로에서 점 B 도 지나는 경로를 빼요."], "점 A 를 지나는 경로는 ${t1}$ 가지입니다. 이 중 점 B 도 지나는 경로는 ${t2}$ 가지입니다. 따라서 구하는 경로의 수는 ${ans}$ 입니다."],
     en: ["On the coordinate plane, you move from $(0,0)$ to $({a},{b})$ by steps of $+1$ in the $x$ direction or $+1$ in the $y$ direction. How many such shortest paths pass through the point A$({p},{q})$ but do not pass through the point B$({u},{v})$? (digits only)", ["The number of shortest paths from $(0,0)$ to $(m,n)$ is the number of orderings of $m$ steps right and $n$ steps up, ${}_{m+n}\\mathrm{C}_{m}$.", "For 'passes through', multiply the path counts of the stages; for 'does not pass', subtract from the paths through A those that also pass through B."], "The number of paths through A is ${t1}$. Of these, the number that also pass through B is ${t2}$. So the required number of paths is ${ans}$."],
   },
   cm1_matCayley: {
@@ -271,36 +300,32 @@ export const GEN = {
     return { v: { lhs: `a(${xp})^3+b(${xp})^2+c(${xp})+d`, rhs: poly(rhs), consts: "a, b, c, d", ask, sol: `a=${a},\\ b=${b},\\ c=${c},\\ d=${d}`, p }, ans };
   },
 
-  cm1_symmetricEval: (r, lvl) => {
+
+  cm1_symmetricEval: (r) => {
     for (;;) {
-      if (lvl === 1) {
-        const s = r.nonzero(-6, 6), p = r.nonzero(-8, 8);
-        const types = [
-          ["x^2+y^2", s * s - 2 * p, `(x+y)^2-2xy=(${s})^2-2\\cdot(${p})=${s * s - 2 * p}`],
-          ["(x-y)^2", s * s - 4 * p, `(x+y)^2-4xy=(${s})^2-4\\cdot(${p})=${s * s - 4 * p}`],
-          ["x^2y+xy^2", p * s, `xy(x+y)=(${p})(${s})=${p * s}`],
-          ["x^2-xy+y^2", s * s - 3 * p, `(x+y)^2-3xy=(${s})^2-3\\cdot(${p})=${s * s - 3 * p}`],
-        ];
-        const [expr, ans, work] = r.pick(types);
-        return { v: { cond: `x+y=${s},\\ xy=${p}`, expr, work }, ans };
-      }
-      if (r.next() < 0.5) {
-        const s = r.nonzero(-5, 5), p = r.nonzero(-6, 6);
-        const types = [
-          ["x^3+y^3", s ** 3 - 3 * p * s, `(x+y)^3-3xy(x+y)=(${s})^3-3\\cdot(${p})(${s})=${s ** 3 - 3 * p * s}`],
-          ["x^4+y^4", (s * s - 2 * p) ** 2 - 2 * p * p, `(x^2+y^2)^2-2(xy)^2=(${s * s - 2 * p})^2-2\\cdot(${p})^2=${(s * s - 2 * p) ** 2 - 2 * p * p}`],
-        ];
-        const [expr, ans, work] = r.pick(types);
-        return { v: { cond: `x+y=${s},\\ xy=${p}`, expr, work }, ans };
-      }
-      const k = r.int(-5, 5);
+      const s = r.nonzero(-7, 7), p = r.nonzero(-9, 9);
+      const dd = s * s - 4 * p; // real x, y exist iff (x-y)^2 = (x+y)^2 - 4xy >= 0
+      if (dd < 0) continue;
+      const types = [
+        ["x^3+y^3", s ** 3 - 3 * p * s, `(x+y)^3-3xy(x+y)=(${s})^3-3\\cdot(${p})(${s})=${s ** 3 - 3 * p * s}`],
+        ["x^4+y^4", (s * s - 2 * p) ** 2 - 2 * p * p, `(x^2+y^2)^2-2(xy)^2=(${s * s - 2 * p})^2-2\\cdot(${p})^2=${(s * s - 2 * p) ** 2 - 2 * p * p}`],
+      ];
+      const [expr, ans, work] = r.pick(types);
+      return { v: { cond: `x+y=${s},\\ xy=${p}`, expr, work, dd }, ans };
+    }
+  },
+
+  cm1_symmetricInv: (r) => {
+    for (;;) {
+      const k = r.nonzero(-8, 8);
+      if (Math.abs(k) < 2) continue; // a real x with x+1/x=k needs |k| >= 2
       const types = [
         ["x^2+\\frac{1}{x^2}", k * k - 2, `(x+\\frac{1}{x})^2-2=(${k})^2-2=${k * k - 2}`],
         ["x^3+\\frac{1}{x^3}", k ** 3 - 3 * k, `(x+\\frac{1}{x})^3-3(x+\\frac{1}{x})=(${k})^3-3\\cdot(${k})=${k ** 3 - 3 * k}`],
         ["x^4+\\frac{1}{x^4}", (k * k - 2) ** 2 - 2, `(x^2+\\frac{1}{x^2})^2-2=(${k * k - 2})^2-2=${(k * k - 2) ** 2 - 2}`],
       ];
       const [expr, ans, work] = r.pick(types);
-      return { v: { cond: `x+\\frac{1}{x}=${k}`, expr, work }, ans };
+      return { v: { k, expr, work }, ans };
     }
   },
 
@@ -311,24 +336,40 @@ export const GEN = {
       [`\\frac{${N}^3+1}{${N}^2-${N}+1}`, "(N+1)(N^2-N+1)", `N+1=${N}+1`, N + 1],
       [`\\frac{${N}^4+${N}^2+1}{${N}^2+${N}+1}`, "(N^2+N+1)(N^2-N+1)", `N^2-N+1=${N}^2-${N}+1`, N * N - N + 1],
       [`\\frac{${N}^4-1}{${N}^2+1}`, "(N^2+1)(N+1)(N-1)", `(N+1)(N-1)=(${N}+1)(${N}-1)`, N * N - 1],
-      [`\\frac{${N}^4+4}{${N}^2+2\\cdot${N}+2}`, "(N^2+2N+2)(N^2-2N+2)", `N^2-2N+2=${N}^2-2\\cdot${N}+2`, N * N - 2 * N + 2],
     ]);
     return { v: { expr: t[0], N, fac: t[1], simp: t[2] }, ans: t[3] };
   },
 
+
   cm1_iPower: (r, lvl) => {
-    const L1 = [["i", "i"], ["-i", "-i"]];
-    const L2 = [["\\frac{1+i}{1-i}", "i"], ["\\frac{2}{1-i}-1", "i"], ["\\frac{-1+i}{1+i}", "i"], ["\\frac{1}{i^3}", "i"], ["\\frac{1-i}{1+i}", "-i"], ["\\frac{1}{i}", "-i"], ["\\frac{2}{1+i}-1", "-i"], ["-\\frac{1+i}{1-i}", "-i"]];
-    const [z, zs] = r.pick(lvl === 1 ? L1 : L2);
-    const n = r.int(6, 60);
-    const pw = zs === "i" ? [[0, 1], [-1, 0], [0, -1], [1, 0]] : [[0, -1], [-1, 0], [0, 1], [1, 0]];
-    const rm = n % 4;
-    let re = 0, im = 0;
-    for (let k = 0; k < rm; k++) { re += pw[k][0]; im += pw[k][1]; }
-    const ims = im === 1 ? "i" : im === -1 ? "-i" : `${im}i`;
-    const val = re === 0 && im === 0 ? "0" : im === 0 ? `${re}` : re === 0 ? ims : `${re}${im === 1 ? "+i" : im === -1 ? "-i" : `${sg(im)}i`}`;
-    return { v: { z, zs, n, q4: Math.floor(n / 4), rm, val }, ans: re + im };
+    for (;;) {
+      const [z, zs] = r.pick(lvl === 1 ? IP_L1 : IP_L2);
+      const pw = ipows(zs);
+      const a = r.int(7, 60), b = r.int(7, 60), p = r.nonzero(-6, 6), q0 = r.nonzero(-6, 6);
+      if (a === b || a % 4 === b % 4) continue;
+      const va = pw[a % 4], vb = pw[b % 4];
+      const re = p * va[0] + q0 * vb[0], im = p * va[1] + q0 * vb[1];
+      const expr = `${cf(p)}z^{${a}}${q0 < 0 ? "-" : "+"}${Math.abs(q0) === 1 ? "" : Math.abs(q0)}z^{${b}}`;
+      const work = `z^{${a}}=z^{${a % 4}}=${cxs(va[0], va[1])},\\ z^{${b}}=z^{${b % 4}}=${cxs(vb[0], vb[1])},\\ ${expr}=(${p})\\cdot(${cxs(va[0], va[1])})+(${q0})\\cdot(${cxs(vb[0], vb[1])})=${cxs(re, im)}`;
+      return { v: { z, zs, expr, work, a, b, p, q: q0 }, ans: re + im };
+    }
   },
+
+  cm1_iPowerSum: (r) => {
+    for (;;) {
+      const [z, zs] = r.pick([...IP_L1, ...IP_L2]);
+      const pw = ipows(zs);
+      const n = r.int(6, 60), c = r.pick([2, 3, 4, 5, -2, -3, -4]);
+      const rm = n % 4;
+      if (rm === 0) continue;
+      let re = 0, im = 0;
+      for (let k = 1; k <= rm; k++) { re += pw[k][0]; im += pw[k][1]; }
+      const left = ["z", "z+z^2", "z+z^2+z^3"][rm - 1];
+      const val = cxs(re, im);
+      return { v: { z, zs, n, c, expr: `${c}\\left(z+z^2+z^3+\\cdots+z^{${n}}\\right)`, q4: Math.floor(n / 4), rm, work: `${left}=${val},\\ ${c}\\cdot(${val})=${cxs(c * re, c * im)}` }, ans: c * (re + im) };
+    }
+  },
+
 
   cm1_complexCond: (r, lvl) => {
     if (lvl === 1) {
@@ -337,7 +378,8 @@ export const GEN = {
         if ((b * c) % a !== 0) continue;
         const x = (b * c) / a;
         const ci = c === 1 ? "+i" : c === -1 ? "-i" : `${sg(c)}i`;
-        return { v: { zs: `(${cplx(a, b)})(x${ci})`, re: poly([a, -b * c]), im: poly([b, a * c]), roots: `x=${x}` }, ans: x };
+        const iv = b * x + a * c;
+        return { v: { zs: `(${cplx(a, b)})(x${ci})`, re: poly([a, -b * c]), im: poly([b, a * c]), roots: `x=${x}`, chk: `${iv}\\ne0\\ (x=${x})` }, ans: x };
       }
     }
     for (;;) {
@@ -345,9 +387,11 @@ export const GEN = {
       if (p === q0 || q0 === s || p === s) continue;
       const re = poly([1, -(p + q0), p * q0]), im = poly([1, -(p + s), p * s]);
       const rts = [p, q0].sort((x, y) => x - y);
-      return { v: { zs: `(${re})+(${im})i`, re, im, roots: `x=${rts[0]},\\ x=${rts[1]}` }, ans: q0 };
+      const chk = rts.map((x0) => { const val = (x0 - p) * (x0 - s); return val === 0 ? `0\\ (x=${x0})` : `${val}\\ne0\\ (x=${x0})`; }).join(",\\ ");
+      return { v: { zs: `(${re})+(${im})i`, re, im, roots: `x=${rts[0]},\\ x=${rts[1]}`, chk }, ans: q0 };
     }
   },
+
 
   cm1_discrimCount: (r, lvl) => {
     for (;;) {
@@ -359,7 +403,7 @@ export const GEN = {
       if (ks.length < 1 || ks.length > 14 || ks.length === hi - lo + 1) continue;
       const mid = `${m < 0 ? "-" : "+"}2${a === 0 ? "k" : `(k${sg(a)})`}x`;
       const cst = n1 === 0 ? sg(n0) : sgnAppend(lin(n1, n0, "k"));
-      return { v: { eq: `x^2${mid}${cst}`, lo, hi, d4: poly([1, 2 * a - n1, a * a - n0], "k"), ks: seq(ks[0], ks[ks.length - 1]) }, ans: ks.length };
+      return { v: { eq: `x^2${mid}${cst}`, lo, hi, d4: poly([1, 2 * a - n1, a * a - n0], "k"), kr: openRange(2 * a - n1, a * a - n0), ks: seq(ks[0], ks[ks.length - 1]) }, ans: ks.length };
     }
   },
 
@@ -385,7 +429,7 @@ export const GEN = {
           ["\\frac{1}{\\alpha^2}+\\frac{1}{\\beta^2}", sq.sub(P.mul(2)).div(P.mul(P)), `\\frac{(\\alpha+\\beta)^2-2\\alpha\\beta}{(\\alpha\\beta)^2}=\\left(${sP}^2-2\\cdot${pP}\\right)\\div${pP}^2`],
         ];
       const [expr, val, work] = r.pick(T);
-      if (Number(val.q) > 400 || Math.abs(qNum(val)) > 5000) continue;
+      if (Number(val.q) > 12 || Math.abs(qNum(val)) > 2000) continue; // keep the denominators of the answers small
       return { v: { eq: poly([a, b, c]), expr, sf: qt(S), pf: qt(P), work, res: qt(val) }, ans: qNum(val) };
     }
   },
@@ -500,24 +544,32 @@ export const GEN = {
     return { v: { L: 2 * k * u, j, k, u }, ans: k * u * u };
   },
 
+
   cm1_omega: (r, lvl) => {
-    const six = r.next() < 0.5;
-    const per = six ? 6 : 3;
-    const tk = (k) => (six ? [2, 1, -1, -2, -1, 1][k % 6] : [2, -1, -1][k % 3]);
-    const eq = six ? "x^2-x+1=0" : "x^2+x+1=0";
-    const rel = six ? "(\\omega+1)(\\omega^2-\\omega+1)=\\omega^3+1=0\\ \\Rightarrow\\ \\omega^3=-1,\\ \\omega^6=1" : "(\\omega-1)(\\omega^2+\\omega+1)=\\omega^3-1=0\\ \\Rightarrow\\ \\omega^3=1";
-    if (lvl === 1) {
-      const a = r.int(7, 120);
-      const rr = a % per;
-      return { v: { eq, expr: `\\omega^{${a}}+\\frac{1}{\\omega^{${a}}}`, rel, per, step: `\\omega^{${a}}+\\frac{1}{\\omega^{${a}}}=\\omega^{${rr}}+\\frac{1}{\\omega^{${rr}}}=${tk(a)}`, a, n: 0 }, ans: tk(a) };
+    for (;;) {
+      const six = r.next() < 0.5;
+      const per = six ? 6 : 3;
+      const tk = (k) => (six ? [2, 1, -1, -2, -1, 1][k % 6] : [2, -1, -1][k % 3]);
+      const eq = six ? "x^2-x+1=0" : "x^2+x+1=0";
+      const rel = six ? "(\\omega+1)(\\omega^2-\\omega+1)=\\omega^3+1=0\\ \\Rightarrow\\ \\omega^3=-1,\\ \\omega^6=1" : "(\\omega-1)(\\omega^2+\\omega+1)=\\omega^3-1=0\\ \\Rightarrow\\ \\omega^3=1";
+      const wr = (e) => `\\left(\\omega^{${e}}+\\frac{1}{\\omega^{${e}}}\\right)`;
+      if (lvl === 1) {
+        const a = r.int(7, 120), b = r.int(7, 120), p = r.nonzero(-5, 5), q0 = r.nonzero(-5, 5);
+        if (a % per === b % per) continue;
+        const ta = tk(a), tb = tk(b), ans = p * ta + q0 * tb;
+        const red = (e) => `\\omega^{${e}}+\\frac{1}{\\omega^{${e}}}=\\omega^{${e % per}}+\\frac{1}{\\omega^{${e % per}}}=${tk(e)}`;
+        const expr = `${cf(p)}${wr(a)}${q0 < 0 ? "-" : "+"}${Math.abs(q0) === 1 ? "" : Math.abs(q0)}${wr(b)}`;
+        return { v: { eq, expr, rel, per, step: `${red(a)},\\ ${red(b)}\\ \\Rightarrow\\ (${p})\\cdot(${ta})+(${q0})\\cdot(${tb})=${ans}`, a, b, p, q: q0 }, ans };
+      }
+      const n = r.int(7, 60), c = r.pick([2, 3, 4, 5, -2, -3]);
+      const rr = n % per, qn = Math.floor(n / per);
+      if (rr === 0) continue;
+      let sum = 0;
+      const ts = [];
+      for (let k = 1; k <= rr; k++) { sum += tk(k); ts.push(`(${tk(k)})`); }
+      const expr = `${c}\\left[\\left(\\omega+\\frac{1}{\\omega}\\right)+\\left(\\omega^{2}+\\frac{1}{\\omega^{2}}\\right)+\\cdots+\\left(\\omega^{${n}}+\\frac{1}{\\omega^{${n}}}\\right)\\right]`;
+      return { v: { eq, expr, rel, per, step: `${n}=${per}\\times${qn}+${rr},\\ ${c}\\left[0\\times${qn}+${ts.join("+")}\\right]=${c}\\cdot(${sum})=${c * sum}`, n, c }, ans: c * sum };
     }
-    const n = r.int(7, 60);
-    const rr = n % per, qn = Math.floor(n / per);
-    let sum = 0;
-    const ts = [];
-    for (let k = 1; k <= rr; k++) { sum += tk(k); ts.push(`(${tk(k)})`); }
-    const expr = `\\left(\\omega+\\frac{1}{\\omega}\\right)+\\left(\\omega^{2}+\\frac{1}{\\omega^{2}}\\right)+\\cdots+\\left(\\omega^{${n}}+\\frac{1}{\\omega^{${n}}}\\right)`;
-    return { v: { eq, expr, rel, per, step: `${n}=${per}\\times${qn}+${rr},\\ 0\\times${qn}${rr ? `+${ts.join("+")}` : ""}=${sum}`, a: 0, n }, ans: sum };
   },
 
   cm1_cubicOneReal: (r, lvl) => {
@@ -577,9 +629,7 @@ export const GEN = {
       const M = f + r.int(2, 6);
       return { v: { e1: r.pick(["x+y=k", "x-y=k"]), e2: `x^2+y^2=${N}`, M, dcond: `\\frac{D}{4}=${2 * N}-k^2\\ge0`, kr: `-${f}\\le k\\le ${f}` }, ans: 2 * f + 1 };
     }
-    const p = r.int(1, 30), c0 = Math.ceil(Math.sqrt(4 * p) - 1e-9);
-    const M = c0 + r.int(2, 8);
-    return { v: { e1: "x+y=k", e2: `xy=${p}`, M, dcond: `D=k^2-${4 * p}\\ge0`, kr: `k\\le ${-c0},\\ k\\ge ${c0}` }, ans: 2 * (M - c0 + 1) };
+    throw new Error("cm1_sysReal has a single level");
   },
 
   cm1_linIneqCount: (r, lvl) => {
@@ -684,24 +734,15 @@ export const GEN = {
     return { v: { mx2: `${cf(m)}x^2`, op, sol: `${qt(lo)}${so}x${so}${qt(hi)}`, ask, lo: qt(lo), hi: qt(hi), m, fac: `${cf(m)}${xf(lo)}${xf(hi)}`, full: poly([m, a, b]), a, b }, ans };
   },
 
-  cm1_quadIneqAlways: (r, lvl) => {
+
+  cm1_quadIneqAlways: (r) => {
     for (;;) {
       const strict = r.next() < 0.5;
       const OP = strict ? ">" : "\\ge ", rel = strict ? "<" : "\\le ";
-      if (lvl === 1) {
-        const m = r.pick([2, -2]), a = r.int(-4, 4), n1 = r.nonzero(-4, 4), n0 = r.int(-6, 12);
-        const ks = [];
-        for (let k = -60; k <= 60; k++) { const d4 = (k + a) * (k + a) - (n1 * k + n0); if (strict ? d4 < 0 : d4 <= 0) ks.push(k); }
-        if (ks.length < 1 || ks.length > 10 || ks[0] <= -50 || ks[ks.length - 1] >= 50) continue;
-        const mid = `${m < 0 ? "-" : "+"}2${a === 0 ? "k" : `(k${sg(a)})`}x`;
-        const cst = sgnAppend(lin(n1, n0, "k"));
-        const d4 = poly([1, 2 * a - n1, a * a - n0], "k");
-        return { v: { ineq: `x^2${mid}${cst}${OP}0`, cond: `\\frac{D}{4}=${d4}${rel}0`, ks: seq(ks[0], ks[ks.length - 1]) }, ans: ks.length };
-      }
       const m = r.int(1, 3), n = r.int(3, 40);
       const kmax = strict ? Math.ceil(n / (m * m)) - 1 : Math.floor(n / (m * m));
       if (kmax < 2 || kmax > 11) continue;
-      return { v: { ineq: `kx^2+${2 * m}kx${sg(n)}${OP}0`, cond: `k\\ge0,\\ \\frac{D}{4}=${poly([m * m, -n, 0], "k")}${rel}0\\ (k\\ne0)`, ks: seq(0, kmax) }, ans: kmax + 1 };
+      return { v: { ineq: `kx^2+${2 * m}kx${sg(n)}${OP}0`, n, rel, d4: poly([m * m, -n, 0], "k"), kr: `0<k${rel}${qt(q(n, m * m))}`, ks: seq(0, kmax) }, ans: kmax + 1 };
     }
   },
 
@@ -742,12 +783,13 @@ export const GEN = {
       ],
     };
     const n = lvl === 1 ? 4 : 5;
+    const regs = Array.from({ length: n }, (_, i) => i + 1).join(", ");
     const sh = r.pick(SH[n]);
     const k = r.int(Math.max(sh.min, 3), 5);
     const perm = rngShuffle(r, Array.from({ length: n }, (_, i) => i + 1));
     const edges = sh.e.map(([a, b]) => [perm[a - 1], perm[b - 1]].sort((x, y) => x - y)).sort((x, y) => x[0] - y[0] || x[1] - y[1]);
     const [ans, work] = sh.f(k);
-    return { v: { n, k, edges: edges.map(([a, b]) => `(${a},${b})`).join(",\\ "), work }, ans };
+    return { v: { n, regs, k, edges: edges.map(([a, b]) => `(${a},${b})`).join(",\\ "), work }, ans };
   },
 
   cm1_permArrange: (r) => {
@@ -852,12 +894,6 @@ export const GEN = {
   },
 };
 
-// single-level structures draw both of their forms (easier / harder) at random
-for (const k of ["cm1_iPower", "cm1_complexCond", "cm1_rootSignCond", "cm1_quadRevenue", "cm1_quadFence", "cm1_cubicOneReal", "cm1_sysReal", "cm1_linIneqCount", "cm1_absIneqRep", "cm1_coloring"]) {
-  const fn = GEN[k];
-  GEN[k] = (r) => fn(r, r.next() < 0.5 ? 1 : 2);
-}
-
 const S = (code) => `10공수1-${code}`;
 export const PLAN = [
   { skill: "m.h1.poly", template: "cm1_polyProdCoef", levels: [1, 2], count: 12, d: 1, standards: [S("01-01")], strategy: "coefficient-pairing", evidence: "calc" },
@@ -865,36 +901,38 @@ export const PLAN = [
   { skill: "m.h1.poly", template: "cm1_remUnknown", levels: [1, 2], count: 12, d: 2, standards: [S("01-02")], strategy: "remainder-theorem-for-parameter", evidence: "reverse" },
   { skill: "m.h1.poly", template: "cm1_remQuadDiv", levels: [1], count: 12, d: 3, standards: [S("01-02")], strategy: "remainder-of-quadratic-divisor", evidence: "concept" },
   { skill: "m.h1.poly", template: "cm1_identity", levels: [1, 2], count: 12, d: 2, standards: [S("01-02")], strategy: "identity-coefficient-matching", evidence: "reverse" },
-  { skill: "m.h1.poly", template: "cm1_symmetricEval", levels: [1, 2], count: 12, d: 2, standards: [S("01-01")], strategy: "sum-product-rewriting", evidence: "calc" },
+  { skill: "m.h1.poly", template: "cm1_symmetricEval", levels: [1], count: 12, d: 3, standards: [S("01-01")], strategy: "sum-product-powers-of-real-pair", evidence: "calc" },
+  { skill: "m.h1.poly", template: "cm1_symmetricInv", levels: [1], count: 12, d: 3, standards: [S("01-01")], strategy: "x-plus-reciprocal-powers", evidence: "calc" },
   { skill: "m.h1.pol1", template: "cm1_factorEval", levels: [1], count: 12, d: 3, standards: [S("01-03")], strategy: "factor-and-cancel", evidence: "calc" },
-  { skill: "m.h1.cplx", template: "cm1_iPower", levels: [1], count: 12, d: 2, standards: [S("02-01")], strategy: "periodicity-of-powers", evidence: "calc" },
-  { skill: "m.h1.cplx", template: "cm1_complexCond", levels: [1], count: 12, d: 3, standards: [S("02-01")], strategy: "pure-imaginary-condition", evidence: "reverse" },
+  { skill: "m.h1.cplx", template: "cm1_iPower", levels: [1,2], count: 12, d: 2, standards: [S("02-01")], strategy: "periodicity-of-powers-two-terms", evidence: "calc" },
+  { skill: "m.h1.cplx", template: "cm1_iPowerSum", levels: [1], count: 12, d: 3, standards: [S("02-01")], strategy: "periodicity-of-powers-series", evidence: "calc" },
+  { skill: "m.h1.cplx", template: "cm1_complexCond", levels: [1,2], count: 12, d: 3, standards: [S("02-01")], strategy: "pure-imaginary-condition", evidence: "reverse" },
   { skill: "m.h1.cplx", template: "cm1_discrimCount", levels: [1, 2], count: 12, d: 2, standards: [S("02-02")], strategy: "discriminant-integer-count", evidence: "counting" },
   { skill: "m.h1.cplx", template: "cm1_vietaExpr", levels: [1, 2], count: 12, d: 2, standards: [S("02-03")], strategy: "vieta-symmetric-expression", evidence: "calc" },
   { skill: "m.h1.cplx", template: "cm1_vietaUnknown", levels: [1, 2], count: 12, d: 3, standards: [S("02-03")], strategy: "vieta-for-parameter", evidence: "reverse" },
-  { skill: "m.h1.cplx", template: "cm1_rootSignCond", levels: [1], count: 12, d: 4, standards: [S("02-02"), S("02-03")], strategy: "root-location-conditions", evidence: "concept" },
+  { skill: "m.h1.cplx", template: "cm1_rootSignCond", levels: [1,2], count: 12, d: 4, standards: [S("02-02"), S("02-03")], strategy: "root-location-conditions", evidence: "concept" },
   { skill: "m.h1.ineq", template: "cm1_parabolaLine", levels: [1, 2], count: 12, d: 2, standards: [S("02-05")], strategy: "tangency-discriminant", evidence: "reverse" },
   { skill: "m.h1.ineq", template: "cm1_parabolaLineCount", levels: [1], count: 12, d: 3, standards: [S("02-05")], strategy: "no-intersection-discriminant-count", evidence: "counting" },
   { skill: "m.h1.ineq", template: "cm1_parabolaXaxis", levels: [1], count: 12, d: 3, standards: [S("02-04")], strategy: "x-intercept-distance", evidence: "concept" },
   { skill: "m.h1.cplx", template: "cm1_quadRange", levels: [1, 2], count: 12, d: 2, standards: [S("02-06")], strategy: "extrema-on-closed-interval", evidence: "calc" },
-  { skill: "m.h1.cplx", template: "cm1_quadRevenue", levels: [1], count: 12, d: 3, standards: [S("02-06")], strategy: "profit-maximisation-model", evidence: "application" },
-  { skill: "m.h1.cplx", template: "cm1_quadFence", levels: [1], count: 12, d: 3, standards: [S("02-06")], strategy: "area-maximisation-model", evidence: "application" },
-  { skill: "m.h1.pol1", template: "cm1_omega", levels: [1, 2], count: 12, d: 3, standards: [S("02-07")], strategy: "cube-root-of-unity-powers", evidence: "concept" },
-  { skill: "m.h1.pol1", template: "cm1_cubicOneReal", levels: [1], count: 12, d: 3, standards: [S("02-07"), S("01-03")], strategy: "factor-theorem-then-discriminant", evidence: "calc" },
+  { skill: "m.h1.cplx", template: "cm1_quadRevenue", levels: [1,2], count: 12, d: 3, standards: [S("02-06")], strategy: "profit-maximisation-model", evidence: "application" },
+  { skill: "m.h1.cplx", template: "cm1_quadFence", levels: [1,2], count: 12, d: 3, standards: [S("02-06")], strategy: "area-maximisation-model", evidence: "application" },
+  { skill: "m.h1.pol1", template: "cm1_omega", levels: [1,2], count: 12, d: 3, standards: [S("02-07")], strategy: "cube-root-of-unity-powers", evidence: "concept" },
+  { skill: "m.h1.pol1", template: "cm1_cubicOneReal", levels: [1,2], count: 12, d: 3, standards: [S("02-07"), S("01-03")], strategy: "factor-theorem-then-discriminant", evidence: "calc" },
   { skill: "m.h1.pol1", template: "cm1_sysTwo", levels: [1, 2], count: 12, d: 3, standards: [S("02-08")], strategy: "eliminate-or-factor-system", evidence: "calc" },
   { skill: "m.h1.pol1", template: "cm1_sysReal", levels: [1], count: 12, d: 4, standards: [S("02-08")], strategy: "existence-of-real-solution", evidence: "counting" },
-  { skill: "m.h1.ineq", template: "cm1_linIneqCount", levels: [1], count: 12, d: 2, standards: [S("02-09")], strategy: "intersect-ranges-count-integers", evidence: "counting" },
+  { skill: "m.h1.ineq", template: "cm1_linIneqCount", levels: [1,2], count: 12, d: 2, standards: [S("02-09")], strategy: "intersect-ranges-count-integers", evidence: "counting" },
   { skill: "m.h1.ineq", template: "cm1_linIneqParam", levels: [1], count: 12, d: 4, standards: [S("02-09")], strategy: "integer-count-fixes-parameter", evidence: "reverse" },
   { skill: "m.h1.ineq", template: "cm1_absIneqCount", levels: [1, 2], count: 12, d: 2, standards: [S("02-10")], strategy: "remove-absolute-value-count", evidence: "counting" },
-  { skill: "m.h1.ineq", template: "cm1_absIneqRep", levels: [1], count: 12, d: 3, standards: [S("02-10")], strategy: "solution-set-to-constants", evidence: "representation" },
+  { skill: "m.h1.ineq", template: "cm1_absIneqRep", levels: [1,2], count: 12, d: 3, standards: [S("02-10")], strategy: "solution-set-to-constants", evidence: "representation" },
   { skill: "m.h1.ineq", template: "cm1_quadIneqSol", levels: [1, 2], count: 12, d: 2, standards: [S("02-11")], strategy: "solution-set-to-coefficients", evidence: "representation" },
-  { skill: "m.h1.ineq", template: "cm1_quadIneqAlways", levels: [1, 2], count: 12, d: 4, standards: [S("02-11")], strategy: "always-true-discriminant", evidence: "counting" },
+  { skill: "m.h1.ineq", template: "cm1_quadIneqAlways", levels: [1], count: 12, d: 5, standards: [S("02-11")], strategy: "always-true-with-leading-k-case", evidence: "counting" },
   { skill: "m.h1.comb", template: "cm1_divisorCount", levels: [1], count: 12, d: 3, standards: [S("03-01")], strategy: "product-rule-divisors", evidence: "counting" },
-  { skill: "m.h1.comb", template: "cm1_coloring", levels: [1], count: 12, d: 3, standards: [S("03-01")], strategy: "region-coloring-cases", evidence: "counting" },
+  { skill: "m.h1.comb", template: "cm1_coloring", levels: [1,2], count: 12, d: 3, standards: [S("03-01")], strategy: "region-coloring-cases", evidence: "counting" },
   { skill: "m.h1.comb", template: "cm1_permArrange", levels: [1], count: 14, d: 3, standards: [S("03-02")], strategy: "non-adjacent-gap-method", evidence: "counting" },
   { skill: "m.h1.comb", template: "cm1_permNumbers", levels: [1], count: 12, d: 3, standards: [S("03-02")], strategy: "digit-cards-with-condition", evidence: "counting" },
   { skill: "m.h1.comb", template: "cm1_combCommittee", levels: [1], count: 12, d: 3, standards: [S("03-03")], strategy: "committee-with-constraints", evidence: "counting" },
   { skill: "m.h1.comb", template: "cm1_gridPaths", levels: [1], count: 12, d: 4, standards: [S("03-01"), S("03-03")], strategy: "lattice-paths-pass-avoid", evidence: "counting" },
-  { skill: "m.h1.mat1", template: "cm1_matCayley", levels: [1, 2], count: 12, d: 3, standards: [S("04-02")], strategy: "matrix-power-as-linear-combination", evidence: "reverse" },
-  { skill: "m.h1.mat1", template: "cm1_matWord", levels: [1], count: 12, d: 3, standards: [S("04-01"), S("04-02")], strategy: "price-quantity-matrix-product", evidence: "application" },
+  { skill: "m.h1.mat1", template: "cm1_matCayley", levels: [1,2], count: 12, d: 3, standards: [S("04-02")], strategy: "matrix-power-by-multiplication-then-compare", evidence: "reverse" },
+  { skill: "m.h1.mat1", template: "cm1_matWord", levels: [1], count: 12, d: 3, standards: [S("04-02")], strategy: "price-quantity-matrix-product", evidence: "application" },
 ];
