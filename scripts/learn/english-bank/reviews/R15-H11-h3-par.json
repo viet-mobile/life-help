@@ -1,0 +1,643 @@
+{
+ "packet": "H11-h3-par",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 15,
+  "questions": 124
+ },
+ "patches": [
+  {
+   "item": "118f38d5",
+   "op": "set",
+   "set": {
+    "q": "다음 문장에서 어법상 어색한 부분의 기호는?\nShe wanted neither (A)to wait for the bus (B)nor (C)taking (D)a taxi.",
+    "o": [
+     "(C)",
+     "(A)",
+     "(B)",
+     "(D)"
+    ],
+    "a": 0,
+    "why": "neither A nor B로 이어진 두 어구는 형태가 같아야 하므로 (C)는 앞의 to wait for the bus와 같은 to take a taxi 형태여야 해요."
+   },
+   "why": "Original sentence had a misplaced correlative (neither before wanted, nor before a bare gerund), so (A) neither wanted ... nor to take is also non-parallel; rewritten with neither placed before the infinitive (stem q changed, key now (C)).",
+   "severity": "major"
+  },
+  {
+   "item": "fc25639f",
+   "op": "set",
+   "set": {
+    "q": "다음 문장을 어법에 맞게 가장 알맞게 고친 것은?\n\"The cost of repairing the bridges and roads are higher than expected.\""
+   },
+   "why": "Stem asked for parallel-structure fix but the error is subject-verb agreement (explanation says so); stem q changed only.",
+   "severity": "major"
+  },
+  {
+   "item": "2979dcf4",
+   "op": "set",
+   "set": {
+    "q": "다음 문장을 병렬 구조에 맞게 가장 알맞게 고친 것은?\n\"You can pay by credit card, by bank transfer, or paying in cash.\"",
+    "o": [
+     "You can pay by credit card, by bank transfer, or to pay in cash.",
+     "You can pay by credit card, by bank transfer, or in cash.",
+     "You can pay by credit card, by bank transfer, or you pay in cash.",
+     "You can pay by credit card, bank transfer, or to use cash."
+    ],
+    "a": 1,
+    "why": "by credit card, by bank transfer, in cash는 모두 지불 방법을 나타내는 전치사구라서 형태가 맞아요."
+   },
+   "why": "Original had two defensible keys: 'online, by phone, or in person' and 'online, by calling, or in person' are both prepositional/adverbial lists; also the key dropped 'either' and changed meaning. Rewritten with an unambiguous list (stem sentence changed).",
+   "severity": "major"
+  },
+  {
+   "item": "0159be34",
+   "op": "set",
+   "set": {
+    "o": [
+     "its fast delivery",
+     "it delivers fast",
+     "that it delivers fast",
+     "fast to deliver"
+    ]
+   },
+   "why": "'delivering fast' after 'known for' is itself grammatical (gerund), so a learner could defend it; replaced with a clearly non-parallel clause.",
+   "severity": "minor"
+  },
+  {
+   "item": "e4e9963b",
+   "op": "set",
+   "set": {
+    "o": [
+     "Each of the hikers in the group carry a map and a flashlight.",
+     "The members of the hiking committee has already voted on the proposal.",
+     "A number of the hikers from the village is waiting at the gate for the bus.",
+     "The leader of the hikers, along with two guides, was waiting at the gate."
+    ]
+   },
+   "why": "Key was uniquely longest (73 vs 48-63) and the only one with commas; distractors lengthened (all still wrong).",
+   "severity": "minor"
+  },
+  {
+   "item": "0d42326a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main point of the passage?",
+      "o": [
+       "Teenagers should be allowed to choose their own class schedules each year",
+       "Sports teams are more important than early morning lessons for students",
+       "Bus drivers are the group most harmed by changes in school schedules",
+       "A later start brought learning benefits as well as practical difficulties"
+      ],
+      "a": 3,
+      "why": "늦은 등교의 학습상 이점과 현실적인 어려움을 함께 보여 주는 글이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "Which problem was caused by the new schedule?",
+      "o": [
+       "Some sports teams had less time to practice",
+       "Many students began to miss more days of school",
+       "Teachers had to shorten every lesson in the morning",
+       "Bus companies refused to continue serving the school"
+      ],
+      "a": 0,
+      "why": "방과 후 연습 시간이 줄어든 팀이 있었다고 해요. 결석은 오히려 줄었어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "Why are other schools \"watching the results closely\"?",
+      "o": [
+       "They have already decided to copy the new schedule",
+       "They believe the plan has failed in the small town",
+       "They are not yet sure the change is worth making",
+       "They want to hire the principal as a consultant"
+      ],
+      "a": 2,
+      "why": "아직 따라 할지 결정하지 않았다는 말에서 변화의 가치를 확신하지 못한다고 추론할 수 있어요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "In the passage, \"outweighed\" is closest in meaning to",
+      "o": [
+       "were about the same as",
+       "were covered up by",
+       "were more important than",
+       "were paid for by parents"
+      ],
+      "a": 2,
+      "why": "이점이 비용보다 더 중요했다는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "Which statement is NOT supported by the passage?",
+      "o": [
+       "Students were absent more often after the change.",
+       "Students made fewer mistakes in the first period.",
+       "The body clock shifts during adolescence.",
+       "The principal admits that the plan has weaknesses."
+      ],
+      "a": 0,
+      "why": "결석은 줄었다고 했으므로 '더 자주 결석했다'는 진술은 지문과 맞지 않아요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q0 (73 vs 58-63) and Q3 (24 vs 14-16); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "4b57f6b9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why the sea leaves small basins on the rocks twice every day",
+       "Which sea animals are most dangerous to people visiting the shore",
+       "How tide-pool animals survive rapid changes in their surroundings",
+       "How scientists build artificial pools in laboratories for research"
+      ],
+      "a": 2,
+      "why": "조수 웅덩이 생물들이 급격한 환경 변화를 견디는 방식과 그 연구 가치를 다뤄요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "How do sea stars stay in place?",
+      "o": [
+       "They clamp their shells tightly to the stone",
+       "They hide in cracks until the water returns",
+       "They hold on with many tiny tube feet",
+       "They float near the surface of the pool"
+      ],
+      "a": 2,
+      "why": "불가사리는 수백 개의 작은 관족으로 달라붙어요. 삿갓조개와 게의 방식과 구분해야 해요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What happens to the water as it warms under the sun?",
+      "o": [
+       "It holds less oxygen and becomes saltier",
+       "It becomes colder and holds more oxygen",
+       "It rises quickly and floods nearby rocks",
+       "It turns clear and attracts new animals"
+      ],
+      "a": 0,
+      "why": "따뜻해지면 산소를 잃고 더 짜진다고 해요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "In the passage, \"cope with\" is closest in meaning to",
+      "o": [
+       "feel sad and sorry about",
+       "stay as far away from",
+       "make a written record of",
+       "deal successfully with"
+      ],
+      "a": 3,
+      "why": "급격한 변화에 잘 대처한다는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "Why are tide-pool creatures valuable to scientists?",
+      "o": [
+       "They are easier to catch than most animals in deep water",
+       "They may show how other sea life will react to warmer oceans",
+       "They produce extra oxygen that helps to cool the ocean",
+       "They have never been affected by any change in the sea water"
+      ],
+      "a": 1,
+      "why": "급변에 적응한 이들을 연구하면 바다가 따뜻해질 때 다른 생물의 반응을 예측할 수 있다고 해요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q0, Q3, Q4 by 9-12 chars; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "7c3b4453",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did Mr. Lee feel when he first heard the crash?",
+      "o": [
+       "Alarmed",
+       "Amused",
+       "Bored",
+       "Embarrassed"
+      ],
+      "a": 0,
+      "why": "심장이 뛰는 채로 손전등을 들고 달려갔다는 데서 놀라고 긴장했음을 알 수 있어요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "What did Mr. Lee do after finding the broken vase?",
+      "o": [
+       "He called the director and waited for her at the front gate",
+       "He chased the cat out through the open window into the garden",
+       "He searched the other galleries for a human thief all night",
+       "He gathered the pieces, shut the window, and took the cat away"
+      ],
+      "a": 3,
+      "why": "그는 조각을 천에 싸고 창문을 닫은 뒤 고양이를 직원실로 데려갔어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What can be inferred about how the vase broke?",
+      "o": [
+       "Mr. Lee accidentally dropped it while hurrying down the corridor",
+       "The cat most likely knocked it over after entering through the window",
+       "A visitor broke it earlier and hid it before the museum closed",
+       "It fell because the crowds at the winter festival shook the building"
+      ],
+      "a": 1,
+      "why": "열린 창문, 깨진 꽃병 옆의 고양이, 쪽지의 '도둑' 표현에서 고양이가 원인임을 추론할 수 있어요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "What is the tone of the note on the director's desk?",
+      "o": [
+       "Furious",
+       "Playful",
+       "Sorrowful",
+       "Formal"
+      ],
+      "a": 1,
+      "why": "고양이를 '도둑'이라 부르는 장난스러운 표현이고, 이사는 읽고 미소 지었어요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "In the passage, \"echoed\" is closest in meaning to",
+      "o": [
+       "faded away slowly",
+       "was explained clearly",
+       "was heard only once",
+       "sounded again and again"
+      ],
+      "a": 3,
+      "why": "큰 소리가 갤러리에 울려 퍼졌다는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q1 (62 vs 45-53) and Q2 (69 vs 41-54); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "3fb1ecd3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A small experiment on learning expressions through singing",
+       "The best songs for beginners to study in English class",
+       "Why reading from a list is the worst way to study",
+       "How teachers should choose students for a class choir"
+      ],
+      "a": 0,
+      "why": "노래로 표현을 외우는 효과를 작은 학급 실험으로 살펴보는 글이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "How was the class divided in the experiment?",
+      "o": [
+       "Half studied at home and half studied in class",
+       "Half learned ten expressions and half learned twenty",
+       "Half read the expressions and half sang them",
+       "Half were beginners and half were advanced learners"
+      ],
+      "a": 2,
+      "why": "절반은 목록을 읽고 나머지 절반은 간단한 곡조에 맞춰 노래했어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "Why does the teacher warn against large conclusions?",
+      "o": [
+       "The singers forgot most of the expressions after only one week",
+       "The experiment was stopped because the school did not allow it",
+       "Other factors may have influenced the results of one small class",
+       "The list readers actually did better in everyday conversation"
+      ],
+      "a": 2,
+      "why": "동기, 나이, 사전 지식의 차이가 결과에 영향을 줬을 수 있다고 말해요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "In the passage, \"them\" in \"connect them to emotions\" refers to",
+      "o": [
+       "phrases",
+       "learners",
+       "memories",
+       "melodies"
+      ],
+      "a": 0,
+      "why": "노래는 구절을 반복하고 리듬으로 묶으며 감정과 연결한다는 흐름이에요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "What is the teacher's attitude toward music in language study?",
+      "o": [
+       "Strongly opposed",
+       "Completely certain",
+       "Quite indifferent",
+       "Positive but careful"
+      ],
+      "a": 3,
+      "why": "음악을 여러 도구 중 하나로 권하지만 정규 연습의 대체는 아니라고 신중하게 말해요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     }
+    ]
+   },
+   "why": "Q2 key uniquely longest (64 vs 44-52); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "d13fa8ad",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Vendors earn more money at night than they do during the day",
+       "Street food is cheaper than the food in most restaurants nearby",
+       "A night market offers a lively social experience beyond shopping",
+       "Markets should close early to protect the neighborhood at night"
+      ],
+      "a": 2,
+      "why": "단순한 저녁 식사 장소를 넘어서 분위기와 공동체를 제공하는 곳이라는 내용이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "What do visitors remember most, according to the passage?",
+      "o": [
+       "The atmosphere of the place",
+       "The prices of phone cases",
+       "The names of the sellers",
+       "The taste of the pancakes"
+      ],
+      "a": 0,
+      "why": "많은 사람들이 기억하는 것은 분위기라고 해요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What does the writer suggest about the vendors?",
+      "o": [
+       "They are tired of selling to the same customers every night",
+       "They dislike the noise of the street performers and the crowd",
+       "They plan to open their own shops with fixed hours soon",
+       "They value the community more than a quiet, fixed schedule"
+      ],
+      "a": 3,
+      "why": "상인들에게 시장은 생계이자 공동체이며 고정된 시간의 조용한 가게와 바꾸지 않겠다고 해요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "In the passage, \"livelihood\" is closest in meaning to",
+      "o": [
+       "place to rest at night",
+       "means of earning a living",
+       "habit of making friends",
+       "way of travelling abroad"
+      ],
+      "a": 1,
+      "why": "시장이 상인들에게 생계 수단이라는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "Which sentence from the passage is a general statement rather than a description of what happens in the evening?",
+      "o": [
+       "\"Vendors string up lights, light their grills, and arrange their goods.\"",
+       "\"A night market is more than a place to buy dinner.\"",
+       "\"Families wander slowly from stall to stall.\"",
+       "\"Couples share sweet pancakes.\""
+      ],
+      "a": 1,
+      "why": "첫 문장만 일반적인 주장이고 나머지는 저녁에 벌어지는 장면을 묘사해요.",
+      "std": [
+       "12영Ⅰ-01-06"
+      ]
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q0 (64 vs 51-54) and Q2 (58 vs 43-47); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "27ef1599",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's main message?",
+      "o": [
+       "Autocorrect should be removed from every phone and computer",
+       "Software can now read exactly what its users are thinking",
+       "Spelling skills no longer matter much in modern daily life",
+       "Autocorrect is useful, but users should still write carefully"
+      ],
+      "a": 3,
+      "why": "자동 고침이 유용하지만 신중한 글쓰기를 대체해서는 안 된다는 내용이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "According to the passage, how does autocorrect work?",
+      "o": [
+       "It compares typed words with a list and guesses the intended word",
+       "It asks the user to check each word one by one before sending",
+       "It copies the words that the user's friends have typed before",
+       "It sends the message to language experts for their approval"
+      ],
+      "a": 0,
+      "why": "입력한 단어를 단어 목록과 비교해 의도한 단어를 추정하고 오류를 바꿔요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "In the passage, \"it\" in \"people who rely on it completely\" refers to",
+      "o": [
+       "the message",
+       "the habit",
+       "autocorrect",
+       "the list"
+      ],
+      "a": 2,
+      "why": "자동 고침 기능에 완전히 의존하는 사람들을 말해요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "What is the function of the word \"Ironically\" in the last sentence?",
+      "o": [
+       "It shows that the writer is making fun of every expert mentioned",
+       "It signals that a new topic is about to begin in the next paragraph",
+       "It introduces a result that is the opposite of what one would expect",
+       "It repeats the same advice that was given in the previous sentence"
+      ],
+      "a": 2,
+      "why": "도움을 주는 도구에 의존하면 오히려 철자 실력이 약해질 수 있다는 반대되는 결과를 소개해요.",
+      "std": [
+       "12영Ⅰ-01-06"
+      ]
+     },
+     {
+      "q": "Why does autocorrect sometimes make mistakes?",
+      "o": [
+       "It cannot know exactly what the user means",
+       "It has no list of words to compare with",
+       "It forgets the names of the user's friends",
+       "It only works for messages that are short"
+      ],
+      "a": 0,
+      "why": "사용자의 마음을 읽을 수 없고 드문 단어를 실수로 착각하기도 해서예요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q0, Q1, Q3 by 12-18 chars; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "b93473f4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why growing vegetables is easier in the city than in the country",
+       "How the writer's grandmother became a famous gardener",
+       "Why the writer wants to move back to the old house",
+       "How a community garden helped the writer feel at home in a new city"
+      ],
+      "a": 3,
+      "why": "새 도시에 적응하지 못하던 글쓴이가 공동체 텃밭을 통해 소속감을 찾게 된 이야기예요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "What did Mr. Alvarez teach the writer?",
+      "o": [
+       "How to rent a plot from the city office",
+       "How to sow carrots and care for tomato plants",
+       "How to cook a pumpkin for the family dinner",
+       "How to build tools for the garden"
+      ],
+      "a": 1,
+      "why": "당근 심기, 토마토를 지지대에 묶기, 잡초와 모종 구별하기를 가르쳐 주었어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "In the passage, \"plot\" is closest in meaning to",
+      "o": [
+       "the main events of a story",
+       "a small piece of land",
+       "a secret plan to cause harm",
+       "a long list of tasks"
+      ],
+      "a": 1,
+      "why": "가족마다 빌리는 작은 땅 한 구획을 뜻해요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "Why did the grandmother cry a little at the harvest?",
+      "o": [
+       "She was disappointed with the size of the first pumpkin",
+       "She missed the fields behind the old house they used to have",
+       "She was sad that summer was over and the nights were getting cold",
+       "The pumpkin showed that the family had begun to belong there"
+      ],
+      "a": 3,
+      "why": "첫 호박을 수확하며 가족이 이곳에 뿌리내리기 시작했음을 느꼈다는 흐름이에요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "What does the writer imply by mentioning \"a reason to leave my phone at home\"?",
+      "o": [
+       "The garden offered a more satisfying activity than the phone",
+       "The writer was forbidden to use a phone anywhere in the city",
+       "The phone was broken when the family moved to the new city",
+       "The grandmother disliked all modern technology in the house"
+      ],
+      "a": 0,
+      "why": "텃밭이 휴대전화를 두고 나올 만한 이유가 되었다는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     }
+    ]
+   },
+   "why": "Key uniquely longest in Q3 (60 vs 36-49) and Q4 (60 vs 42-51); distractors lengthened.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 84,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

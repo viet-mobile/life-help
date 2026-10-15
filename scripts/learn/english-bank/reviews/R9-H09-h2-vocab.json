@@ -1,0 +1,31 @@
+{
+ "packet": "H09-h2-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "1252d1c0",
+   "op": "set",
+   "set": {
+    "z": [
+     "hostile",
+     "vacant",
+     "bitter"
+    ],
+    "syn": [
+     "adjustable"
+    ],
+    "ex": "Workers like a flexible schedule because it lets them choose when to start and finish each day.",
+    "exko": "근로자들은 유연한 일정을 좋아해요. 매일 시작하고 끝내는 시간을 스스로 고를 수 있기 때문이에요.",
+    "ko": "유연한"
+   },
+   "why": "Example began with the article so the cloze stem started in lowercase \"a(n)\"; en/identity unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 128,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

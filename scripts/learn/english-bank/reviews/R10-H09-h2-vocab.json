@@ -1,0 +1,128 @@
+{
+ "packet": "H09-h2-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "bbfef1a4",
+   "op": "set",
+   "set": {
+    "ko": "보여 주다"
+   },
+   "why": "Gloss 입증하여 보여 주다 mismatches the example sense and is a length outlier; 보여 주다 matches 'show how volcanoes erupt'.",
+   "severity": "major"
+  },
+  {
+   "item": "0a18e5d7",
+   "op": "set",
+   "set": {
+    "ko": "검사하다"
+   },
+   "why": "Removes the uniquely-longest key cue in enko; fits the baggage-check example.",
+   "severity": "minor"
+  },
+  {
+   "item": "58507918",
+   "op": "set",
+   "set": {
+    "ex": "The mayor decided to withdraw the plan after many citizens complained.",
+    "exko": "시장은 많은 시민이 불평하자 그 계획을 철회하기로 결정했어요."
+   },
+   "why": "Example sense now matches gloss 철회하다; z words (wander, dwell, glance) remain wrong in the blank.",
+   "severity": "minor"
+  },
+  {
+   "item": "212fb9ce",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Adverb 'confidently' can precede 'spoke', so word order is not unique; do not build the ordering question.",
+   "severity": "major"
+  },
+  {
+   "item": "dc97e7d5",
+   "op": "set",
+   "set": {
+    "bad": [
+     "The map was uselessness because it showed the wrong city.",
+     "The map was usefully because it showed the wrong city.",
+     "The map was use because it showed the wrong city."
+    ]
+   },
+   "why": "Old bad[0] 'useful' was grammatical, giving two defensible answers for a grammar-correctness stem.",
+   "severity": "major"
+  },
+  {
+   "item": "e7d61fe9",
+   "op": "set",
+   "set": {
+    "o": [
+     "once again",
+     "ahead of time",
+     "more than enough",
+     "the opposite of"
+    ],
+    "a": 3,
+    "why": "dis-는 반대나 부정을 나타내므로 disagree는 '동의하지 않다'예요."
+   },
+   "why": "Lengthen distractors so the key is not uniquely longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "e69cdf38",
+   "op": "set",
+   "set": {
+    "o": [
+     "a good advice",
+     "some advices",
+     "a piece of advice",
+     "a lot of advices"
+    ],
+    "a": 2,
+    "why": "advice는 셀 수 없는 명사라서 a piece of advice로 세요. advices나 a good advice처럼 쓰지 않아요."
+   },
+   "why": "Lengthen distractors (all clearly wrong: advice is uncountable); key no longer far longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "8dc1c521",
+   "op": "set",
+   "set": {
+    "q": "Which word means \"to cook food for too long\"?",
+    "o": [
+     "precook",
+     "overcook",
+     "recook",
+     "undercook"
+    ],
+    "a": 1,
+    "why": "접두사 over-는 '지나치게'를 뜻하므로 overcook은 '너무 오래 익히다'예요."
+   },
+   "why": "Identity change (q/o): replaces duplicate negative-prefix drill with a different prefix concept.",
+   "severity": "minor"
+  },
+  {
+   "item": "0bb918cb",
+   "op": "set",
+   "set": {
+    "q": "Which word means \"to work together with others\"?",
+    "o": [
+     "overwork",
+     "rework",
+     "cooperate",
+     "outwork"
+    ],
+    "a": 2,
+    "why": "접두사 co-는 '함께'를 뜻하므로 cooperate는 '협력하다'예요."
+   },
+   "why": "Identity change (q/o): replaces duplicate il-/in- drill with a different prefix concept.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 116,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

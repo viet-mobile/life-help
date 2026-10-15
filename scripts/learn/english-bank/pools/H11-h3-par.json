@@ -9,7 +9,7 @@
      "good": "The new library offers free tutoring, quiet study rooms, and access to online journals.",
      "ko": "새 도서관은 무료 개인 지도, 조용한 학습실, 온라인 학술지 이용을 제공해요.",
      "bad": [
-      "The new library offers free tutoring, quiet study rooms, and accessing online journals.",
+      "The new library offers free tutoring, quiet study rooms, and accessed online journals.",
       "The new library offers free tutoring, quiet study rooms, and to access online journals.",
       "The new library offers free tutoring, quiet study rooms, and that students can access online journals."
      ],
@@ -66,7 +66,8 @@
       ]
      },
      "rule": "both A and B에서는 A와 B의 품사와 형태를 같게 해요. 둘 다 형용사예요.",
-     "hint": "and/but/or로 이어진 어구의 형태를 서로 비교해 보세요."
+     "hint": "and/but/or로 이어진 어구의 형태를 서로 비교해 보세요.",
+     "ord": false
     },
     {
      "k": "s",
@@ -151,7 +152,7 @@
       ]
      },
      "rule": "prefer A to B에서 A와 B는 같은 형태예요. walking에 맞춰 B도 동명사(taking)로 써요.",
-     "hint": "and/but/or로 이어진 어구의 형태를 서로 비교해 보세요."
+     "hint": "prefer A to B에서 A와 B의 형태를 서로 비교해 보세요."
     },
     {
      "k": "s",
@@ -247,7 +248,7 @@
      "ko": "그 보고서는 지연의 원인, 회사의 대응 방식, 가격이 오른 이유를 설명해요.",
      "bad": [
       "The report explains what caused the delay, how the company responded, and the reason of price increase.",
-      "The report explains what caused the delay, the response of the company, and why prices rose.",
+      "The report explains what caused the delay, how the company responded, and why did prices rise.",
       "The report explains what caused the delay, how did the company respond, and why prices rose."
      ],
      "cz": {
@@ -256,7 +257,7 @@
       "wr": [
        "because",
        "therefore",
-       "which"
+       "due to"
       ]
      },
      "rule": "explains의 목적어로 의문사절 세 개를 같은 어순(의문사+주어+동사)으로 나열해요.",
@@ -397,7 +398,7 @@
      "good": "The island is famous not only for its beaches but also for its seafood.",
      "ko": "그 섬은 해변뿐 아니라 해산물로도 유명해요.",
      "bad": [
-      "The island is famous not only for its beaches but also because of its seafood.",
+      "The island is famous not only for its beaches but also about its seafood.",
       "The island is famous not only for its beaches but also famous seafood.",
       "The island is famous not only its beaches but also for its seafood."
      ],
@@ -633,7 +634,7 @@
      "ko": "홍역은 백신으로 예방할 수 있는 전염병이에요.",
      "bad": [
       "Measles are a contagious disease that vaccines can prevent.",
-      "Measles is a contagious disease that vaccine can prevent.",
+      "Measles is a contagious disease that vaccines can prevents.",
       "Measles are contagious diseases that vaccines can prevent."
      ],
      "cz": {
@@ -1348,15 +1349,15 @@
     },
     {
      "k": "m",
-     "q": "다음 문장에서 어법상 어색한 부분의 기호는?\nShe (A)neither wanted to (B)wait for the bus (C)nor (D)taking a taxi.",
+     "q": "다음 문장에서 어법상 어색한 부분의 기호는?\nShe wanted neither (A)to wait for the bus (B)nor (C)taking (D)a taxi.",
      "o": [
-      "(D)",
+      "(C)",
       "(A)",
       "(B)",
-      "(C)"
+      "(D)"
      ],
      "a": 0,
-     "why": "neither ... nor로 이어진 두 어구는 형태가 같아야 하므로 (D)는 to take a taxi여야 해요.",
+     "why": "neither A nor B로 이어진 두 어구는 형태가 같아야 하므로 (C)는 앞의 to wait for the bus와 같은 to take a taxi 형태여야 해요.",
      "std": [
       "12영Ⅰ-02-06"
      ]
@@ -1453,7 +1454,7 @@
     },
     {
      "k": "m",
-     "q": "다음 문장을 병렬 구조에 맞게 가장 알맞게 고친 것은?\n\"The cost of repairing the bridges and roads are higher than expected.\"",
+     "q": "다음 문장을 어법에 맞게 가장 알맞게 고친 것은?\n\"The cost of repairing the bridges and roads are higher than expected.\"",
      "o": [
       "The costs of repairing the bridges and roads is higher than expected.",
       "The cost of repairing the bridges and roads are being higher than expected.",
@@ -1483,15 +1484,15 @@
     },
     {
      "k": "m",
-     "q": "다음 문장을 병렬 구조에 맞게 가장 알맞게 고친 것은?\n\"Students can either register online, by phone, or visiting the office.\"",
+     "q": "다음 문장을 병렬 구조에 맞게 가장 알맞게 고친 것은?\n\"You can pay by credit card, by bank transfer, or paying in cash.\"",
      "o": [
-      "Students can register online, by phone, or to visit the office.",
-      "Students can register online, by phone, or in person.",
-      "Students can register online, by calling, or in person.",
-      "Students can register online, by phone, or they visit the office."
+      "You can pay by credit card, by bank transfer, or to pay in cash.",
+      "You can pay by credit card, by bank transfer, or in cash.",
+      "You can pay by credit card, by bank transfer, or you pay in cash.",
+      "You can pay by credit card, bank transfer, or to use cash."
      ],
      "a": 1,
-     "why": "online, by phone, in person은 모두 방법을 나타내는 부사(구)로 형태가 맞아요.",
+     "why": "by credit card, by bank transfer, in cash는 모두 지불 방법을 나타내는 전치사구라서 형태가 맞아요.",
      "std": [
       "12영Ⅰ-02-06"
      ]
@@ -1500,9 +1501,9 @@
      "k": "m",
      "q": "다음 중 주어와 동사의 수가 일치하는 문장은?",
      "o": [
-      "Each of the hikers carry a map and a flashlight.",
-      "The members of the committee has already voted on the proposal.",
-      "A number of the hikers is waiting at the gate for the bus.",
+      "Each of the hikers in the group carry a map and a flashlight.",
+      "The members of the hiking committee has already voted on the proposal.",
+      "A number of the hikers from the village is waiting at the gate for the bus.",
       "The leader of the hikers, along with two guides, was waiting at the gate."
      ],
      "a": 3,
@@ -1615,7 +1616,7 @@
      "q": "빈칸에 알맞은 말은?\nThe company is known for its quality, its low prices, and ___.",
      "o": [
       "its fast delivery",
-      "delivering fast",
+      "it delivers fast",
       "that it delivers fast",
       "fast to deliver"
      ],
@@ -1899,9 +1900,9 @@
       {
        "q": "What is the main point of the passage?",
        "o": [
-        "Teenagers should be allowed to choose their own class schedules",
-        "Sports teams are more important than early morning lessons",
-        "Bus drivers are the group most harmed by changes in schools",
+        "Teenagers should be allowed to choose their own class schedules each year",
+        "Sports teams are more important than early morning lessons for students",
+        "Bus drivers are the group most harmed by changes in school schedules",
         "A later start brought learning benefits as well as practical difficulties"
        ],
        "a": 3,
@@ -1941,10 +1942,10 @@
       {
        "q": "In the passage, \"outweighed\" is closest in meaning to",
        "o": [
-        "were similar to",
-        "were hidden by",
+        "were about the same as",
+        "were covered up by",
         "were more important than",
-        "were paid for by"
+        "were paid for by parents"
        ],
        "a": 2,
        "why": "이점이 비용보다 더 중요했다는 뜻이에요.",
@@ -2053,10 +2054,10 @@
       {
        "q": "What is the passage mainly about?",
        "o": [
-        "Why the sea leaves the rocks twice every day",
-        "Which sea animals are most dangerous to people",
+        "Why the sea leaves small basins on the rocks twice every day",
+        "Which sea animals are most dangerous to people visiting the shore",
         "How tide-pool animals survive rapid changes in their surroundings",
-        "How scientists build artificial pools in laboratories"
+        "How scientists build artificial pools in laboratories for research"
        ],
        "a": 2,
        "why": "조수 웅덩이 생물들이 급격한 환경 변화를 견디는 방식과 그 연구 가치를 다뤄요.",
@@ -2095,9 +2096,9 @@
       {
        "q": "In the passage, \"cope with\" is closest in meaning to",
        "o": [
-        "feel sorry about",
-        "stay far away from",
-        "make a record of",
+        "feel sad and sorry about",
+        "stay as far away from",
+        "make a written record of",
         "deal successfully with"
        ],
        "a": 3,
@@ -2109,10 +2110,10 @@
       {
        "q": "Why are tide-pool creatures valuable to scientists?",
        "o": [
-        "They are easier to catch than animals in deep water",
+        "They are easier to catch than most animals in deep water",
         "They may show how other sea life will react to warmer oceans",
-        "They produce oxygen that cools the ocean",
-        "They have never been affected by changes in the sea"
+        "They produce extra oxygen that helps to cool the ocean",
+        "They have never been affected by any change in the sea water"
        ],
        "a": 1,
        "why": "급변에 적응한 이들을 연구하면 바다가 따뜻해질 때 다른 생물의 반응을 예측할 수 있다고 해요.",
@@ -2221,9 +2222,9 @@
       {
        "q": "What did Mr. Lee do after finding the broken vase?",
        "o": [
-        "He called the director and waited for her at the gate",
-        "He chased the cat out through the open window",
-        "He searched the other galleries for a human thief",
+        "He called the director and waited for her at the front gate",
+        "He chased the cat out through the open window into the garden",
+        "He searched the other galleries for a human thief all night",
         "He gathered the pieces, shut the window, and took the cat away"
        ],
        "a": 3,
@@ -2235,10 +2236,10 @@
       {
        "q": "What can be inferred about how the vase broke?",
        "o": [
-        "Mr. Lee dropped it while hurrying down the corridor",
+        "Mr. Lee accidentally dropped it while hurrying down the corridor",
         "The cat most likely knocked it over after entering through the window",
-        "A visitor hid it before the museum closed",
-        "It fell because the winter festival shook the building"
+        "A visitor broke it earlier and hid it before the museum closed",
+        "It fell because the crowds at the winter festival shook the building"
        ],
        "a": 1,
        "why": "열린 창문, 깨진 꽃병 옆의 고양이, 쪽지의 '도둑' 표현에서 고양이가 원인임을 추론할 수 있어요.",
@@ -2312,10 +2313,10 @@
       {
        "q": "Why does the teacher warn against large conclusions?",
        "o": [
-        "The singers forgot most expressions after a week",
-        "The experiment was not allowed by the school",
+        "The singers forgot most of the expressions after only one week",
+        "The experiment was stopped because the school did not allow it",
         "Other factors may have influenced the results of one small class",
-        "The list readers actually did better in conversation"
+        "The list readers actually did better in everyday conversation"
        ],
        "a": 2,
        "why": "동기, 나이, 사전 지식의 차이가 결과에 영향을 줬을 수 있다고 말해요.",
@@ -2438,10 +2439,10 @@
       {
        "q": "What is the main idea of the passage?",
        "o": [
-        "Vendors earn more money at night than during the day",
-        "Street food is cheaper than the food in restaurants",
+        "Vendors earn more money at night than they do during the day",
+        "Street food is cheaper than the food in most restaurants nearby",
         "A night market offers a lively social experience beyond shopping",
-        "Markets should close early to protect the neighborhood"
+        "Markets should close early to protect the neighborhood at night"
        ],
        "a": 2,
        "why": "단순한 저녁 식사 장소를 넘어서 분위기와 공동체를 제공하는 곳이라는 내용이에요.",
@@ -2466,9 +2467,9 @@
       {
        "q": "What does the writer suggest about the vendors?",
        "o": [
-        "They are tired of selling to the same customers",
-        "They dislike the noise of street performers",
-        "They plan to open shops with fixed hours soon",
+        "They are tired of selling to the same customers every night",
+        "They dislike the noise of the street performers and the crowd",
+        "They plan to open their own shops with fixed hours soon",
         "They value the community more than a quiet, fixed schedule"
        ],
        "a": 3,
@@ -2515,9 +2516,9 @@
       {
        "q": "What is the writer's main message?",
        "o": [
-        "Autocorrect should be removed from every phone",
-        "Software can already read what users are thinking",
-        "Spelling skills no longer matter in modern life",
+        "Autocorrect should be removed from every phone and computer",
+        "Software can now read exactly what its users are thinking",
+        "Spelling skills no longer matter much in modern daily life",
         "Autocorrect is useful, but users should still write carefully"
        ],
        "a": 3,
@@ -2530,9 +2531,9 @@
        "q": "According to the passage, how does autocorrect work?",
        "o": [
         "It compares typed words with a list and guesses the intended word",
-        "It asks the user to check each word before sending",
-        "It copies the words that friends have typed before",
-        "It sends the message to experts for approval"
+        "It asks the user to check each word one by one before sending",
+        "It copies the words that the user's friends have typed before",
+        "It sends the message to language experts for their approval"
        ],
        "a": 0,
        "why": "입력한 단어를 단어 목록과 비교해 의도한 단어를 추정하고 오류를 바꿔요.",
@@ -2557,10 +2558,10 @@
       {
        "q": "What is the function of the word \"Ironically\" in the last sentence?",
        "o": [
-        "It shows that the writer is joking about every expert",
-        "It signals that a new topic is about to begin",
+        "It shows that the writer is making fun of every expert mentioned",
+        "It signals that a new topic is about to begin in the next paragraph",
         "It introduces a result that is the opposite of what one would expect",
-        "It repeats the advice given in the previous sentence"
+        "It repeats the same advice that was given in the previous sentence"
        ],
        "a": 2,
        "why": "도움을 주는 도구에 의존하면 오히려 철자 실력이 약해질 수 있다는 반대되는 결과를 소개해요.",
@@ -2634,9 +2635,9 @@
       {
        "q": "Why did the grandmother cry a little at the harvest?",
        "o": [
-        "She was disappointed with the size of the pumpkin",
-        "She missed the fields behind the old house",
-        "She was sad that the summer was over",
+        "She was disappointed with the size of the first pumpkin",
+        "She missed the fields behind the old house they used to have",
+        "She was sad that summer was over and the nights were getting cold",
         "The pumpkin showed that the family had begun to belong there"
        ],
        "a": 3,
@@ -2649,9 +2650,9 @@
        "q": "What does the writer imply by mentioning \"a reason to leave my phone at home\"?",
        "o": [
         "The garden offered a more satisfying activity than the phone",
-        "The writer was forbidden to use a phone in the city",
-        "The phone was broken when the family moved",
-        "The grandmother disliked all modern technology"
+        "The writer was forbidden to use a phone anywhere in the city",
+        "The phone was broken when the family moved to the new city",
+        "The grandmother disliked all modern technology in the house"
        ],
        "a": 0,
        "why": "텃밭이 휴대전화를 두고 나올 만한 이유가 되었다는 뜻이에요.",

@@ -1,0 +1,366 @@
+{
+ "packet": "H06-h2-inv",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 126
+ },
+ "patches": [
+  {
+   "item": "61bac1b8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A father who teaches his daughter to sail",
+       "A lighthouse that is closed to all visitors",
+       "A girl who helps a boat reach safety",
+       "A fishing trip that ends with a big catch"
+      ],
+      "a": 2,
+      "why": "노라가 아버지와 함께 빛 신호로 배를 안전하게 인도한 이야기예요."
+     },
+     {
+      "q": "When did Nora's father turn on the light?",
+      "o": [
+       "Every morning before breakfast",
+       "After the sun had set",
+       "Whenever a visitor asked him",
+       "Right after the storm ended"
+      ],
+      "a": 1,
+      "why": "'Only when the sun had completely set'에서 해가 완전히 진 뒤에 켰다고 했어요."
+     },
+     {
+      "q": "How did Nora find out that the boat needed help?",
+      "o": [
+       "She saw a small red lantern near the rocks.",
+       "She heard fishermen shouting from the sea.",
+       "She watched the boat hit the harbor wall.",
+       "Her father told her about the fog."
+      ],
+      "a": 0,
+      "why": "'Not until Nora noticed a tiny red lantern near the rocks'에서 확인할 수 있어요."
+     },
+     {
+      "q": "In the passage, \"this signal\" refers to",
+      "o": [
+       "the red lantern near the rocks",
+       "Nora's shout to her father",
+       "the sound of the storm",
+       "the steady pattern of flashes"
+      ],
+      "a": 3,
+      "why": "this signal은 앞 문장에서 둘이 보낸 규칙적인 빛의 깜박임을 가리켜요."
+     },
+     {
+      "q": "What can be inferred about Nora?",
+      "o": [
+       "She was afraid of the lighthouse stairs.",
+       "She wanted to leave the town someday.",
+       "She stayed calm and acted quickly.",
+       "She disliked her father's work."
+      ],
+      "a": 2,
+      "why": "위험한 상황에서 침착하게 아버지를 부르고 신호를 보낸 것으로 보아 침착하고 재빠르게 행동했다고 추론할 수 있어요."
+     }
+    ]
+   },
+   "why": "q4 stem said \"In the last sentences\" but \"this signal\" is in the second-to-last sentence; made the stem location-neutral.",
+   "severity": "minor"
+  },
+  {
+   "item": "9e3df6a7",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which task did Ms. Park give Haru?",
+      "o": [
+       "Write a closing statement",
+       "Time the other students' speeches",
+       "Argue about school uniforms",
+       "Invite parents to the club"
+      ],
+      "a": 1,
+      "why": "'small tasks, such as timing the other students' speeches'에서 확인돼요."
+     },
+     {
+      "q": "In the passage, \"dare\" is closest in meaning to",
+      "o": [
+       "have the courage",
+       "be given permission",
+       "forget to",
+       "pretend to"
+      ],
+      "a": 0,
+      "why": "dare to ~ 는 용기를 내어 ~하다라는 뜻이에요."
+     },
+     {
+      "q": "In the passage, \"this gentle approach\" refers to",
+      "o": [
+       "asking Haru to speak to fifty parents right away",
+       "making Haru argue in front of the club every week",
+       "letting Haru stay away from the club for months",
+       "giving Haru small tasks without pushing him"
+      ],
+      "a": 3,
+      "why": "코치가 무리하게 시키지 않고 작은 일을 맡긴 방식을 가리켜요."
+     },
+     {
+      "q": "How did Haru most likely feel when he finished the speech?",
+      "o": [
+       "Angry that the parents were late",
+       "Bored by the long debate",
+       "Proud of how far he had come",
+       "Worried that he would quit the club"
+      ],
+      "a": 2,
+      "why": "처음에는 목소리가 떨렸지만 마지막에 웃으며 대답한 것으로 보아 성장에 대한 뿌듯함을 느꼈을 거예요."
+     },
+     {
+      "q": "What does Haru say taught him how to speak?",
+      "o": [
+       "Practicing alone every single night",
+       "Listening carefully to others",
+       "Winning the school contest",
+       "Reading books about speeches"
+      ],
+      "a": 1,
+      "why": "마지막 문장에서 남의 말을 주의 깊게 듣는 것이 도움이 되었다고 말해요."
+     }
+    ]
+   },
+   "why": "q1 \"first\" is not supported by the text (small tasks such as timing); q3 key was uniquely and much the longest, distractors lengthened; q5 \"helped the most\" is not stated (text says listening taught him how to speak).",
+   "severity": "minor"
+  },
+  {
+   "item": "b130577d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Athletes should drink as much as they can at once.",
+       "Thirst is the best signal for when to drink.",
+       "Doctors disagree about how much water the body holds.",
+       "Drinking water steadily keeps the body working well."
+      ],
+      "a": 3,
+      "why": "꾸준하고 적당한 물 섭취가 몸에 중요하다는 것이 요지예요."
+     },
+     {
+      "q": "What may happen when people lose too much water through sweat?",
+      "o": [
+       "They may grow taller.",
+       "They may sleep too long.",
+       "They may feel dizzy.",
+       "They may get hungry sooner."
+      ],
+      "a": 2,
+      "why": "'they may feel dizzy or find it hard to concentrate'에서 확인할 수 있어요."
+     },
+     {
+      "q": "Why is waiting for thirst not wise?",
+      "o": [
+       "Thirst makes the body lose heat.",
+       "Thirst often shows up late.",
+       "Thirst only appears during sports.",
+       "Thirst can be cured by eating."
+      ],
+      "a": 1,
+      "why": "목마름은 이미 수분이 부족해진 뒤에야 나타나기 때문이에요."
+     },
+     {
+      "q": "In the passage, \"moderate\" is closest in meaning to",
+      "o": [
+       "not too much and not too little",
+       "extremely strong and sudden",
+       "different from what most people do",
+       "badly planned and uneven"
+      ],
+      "a": 0,
+      "why": "moderate는 지나치거나 부족하지 않은 적당한 정도를 뜻해요."
+     },
+     {
+      "q": "The writer mentions athletes in order to",
+      "o": [
+       "show that exercise is always bad for the body",
+       "explain why sweating is harmful to health",
+       "prove that water has no effect on energy",
+       "give an example of people who need extra care"
+      ],
+      "a": 3,
+      "why": "운동선수를 수분 섭취에 특별히 신경 써야 하는 예로 들었어요."
+     }
+    ]
+   },
+   "why": "q4 and q5 keys were the longest options with short, silly distractors (length cue); distractors made equally specific.",
+   "severity": "minor"
+  },
+  {
+   "item": "28d0330f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did the writer expect to do at first?",
+      "o": [
+       "Teach children to read",
+       "Put books back on the shelves",
+       "Organize a book sale",
+       "Repair old books"
+      ],
+      "a": 1,
+      "why": "'expected to do nothing but put books back on the shelves'에서 확인돼요."
+     },
+     {
+      "q": "In the passage, \"contagious\" is closest in meaning to",
+      "o": [
+       "spreading easily to others",
+       "hard to understand or explain",
+       "quiet and slow",
+       "dangerous to health"
+      ],
+      "a": 0,
+      "why": "contagious는 다른 사람에게 쉽게 퍼진다는 뜻이에요."
+     },
+     {
+      "q": "What surprised the writer the most?",
+      "o": [
+       "The number of books",
+       "The speed of the shelving",
+       "The kindness of the librarian",
+       "The thanks from the parents"
+      ],
+      "a": 3,
+      "why": "'It was the gratitude of the parents that surprised me most.'에서 확인돼요."
+     },
+     {
+      "q": "Why did the writer's speaking skills most likely improve?",
+      "o": [
+       "The writer read aloud to the children each week.",
+       "The writer joined a speech contest at school.",
+       "The writer talked with the librarians all day.",
+       "The writer took a language class at the library."
+      ],
+      "a": 0,
+      "why": "매주 화요일 아이들에게 책을 소리 내어 읽어 주면서 말하기 실력이 늘었을 거예요."
+     },
+     {
+      "q": "What is the writer's attitude toward volunteering?",
+      "o": [
+       "Disappointed by its difficulty",
+       "Appreciative of its value",
+       "Worried about its cost",
+       "Bored by its routine"
+      ],
+      "a": 1,
+      "why": "마지막 문장에서 작은 봉사가 큰 영향을 줄 수 있다고 믿는다고 했으므로 긍정적이에요."
+     }
+    ]
+   },
+   "why": "q4 stem (why were the parents grateful) revealed the answer to q3 (the thanks from the parents); replaced with a different inference question.",
+   "severity": "major"
+  },
+  {
+   "item": "69b798b2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A night train ride that led to a new friendship",
+       "A train that arrived many hours late at night",
+       "A lesson about how to knit a warm winter scarf",
+       "A busy day of visiting a famous city by the sea"
+      ],
+      "a": 0,
+      "why": "야간열차에서 노인과 대화하며 새 친구를 사귄 이야기예요."
+     },
+     {
+      "q": "Why did the elderly man ride the train every month?",
+      "o": [
+       "To sell his scarves",
+       "To watch the sunrise",
+       "To meet new friends",
+       "To visit his sister"
+      ],
+      "a": 3,
+      "why": "'he rode this train every month to visit his sister'에서 확인돼요."
+     },
+     {
+      "q": "When did the writer notice how long they had talked?",
+      "o": [
+       "At ten o'clock",
+       "When the train left",
+       "At dawn",
+       "After arriving home"
+      ],
+      "a": 2,
+      "why": "'Not until dawn did I realize'에서 새벽이 되어서야 알았다고 했어요."
+     },
+     {
+      "q": "In the passage, \"vanished\" is closest in meaning to",
+      "o": [
+       "changed very slowly over time",
+       "disappeared completely",
+       "grew stronger",
+       "became hard to see"
+      ],
+      "a": 1,
+      "why": "vanish는 완전히 사라진다는 뜻이에요."
+     },
+     {
+      "q": "How did the writer's feeling change during the trip?",
+      "o": [
+       "From expecting boredom to feeling happy",
+       "From feeling joy to feeling worried",
+       "From feeling calm to feeling angry",
+       "From feeling proud to feeling lonely"
+      ],
+      "a": 0,
+      "why": "처음에는 지루할 것으로 예상했지만 마지막에는 새 친구와 좋은 추억을 얻어 기뻐했어요."
+     }
+    ]
+   },
+   "why": "q1 key (\"unexpectedly pleasant\") duplicated and revealed q5 (boredom to happiness) and was uniquely longest; rewritten around the friendship and distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "13bcf113",
+   "op": "set",
+   "set": {
+    "ko": "좀처럼 ~않는",
+    "syn": [
+     "rarely",
+     "hardly ever",
+     "scarcely",
+     "hardly"
+    ]
+   },
+   "why": "Gloss \"좀처럼 ~하지 않게\" is unnatural Korean; seldom and scarcely are near-synonyms, so the other item's gloss/word was a defensible distractor in en->ko and ko->en. Added synonyms so the builder excludes them.",
+   "severity": "major"
+  },
+  {
+   "item": "f54d67ba",
+   "op": "set",
+   "set": {
+    "ko": "거의 ~않는",
+    "syn": [
+     "hardly",
+     "seldom",
+     "rarely"
+    ]
+   },
+   "why": "Unnatural gloss \"거의 ~하지 않게\"; near-synonym of seldom (ambiguous distractor). Added synonyms.",
+   "severity": "major"
+  }
+ ],
+ "ok": 111,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

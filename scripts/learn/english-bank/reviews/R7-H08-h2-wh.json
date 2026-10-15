@@ -1,0 +1,108 @@
+{
+ "packet": "H08-h2-wh",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "bb2c3982",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "No matter ___ you ask, the answer will be the same.",
+     "ok": "who",
+     "wr": [
+      "that",
+      "whose",
+      "because"
+     ]
+    }
+   },
+   "why": "'whether' distractor can form a grammatical sentence.",
+   "severity": "major"
+  },
+  {
+   "item": "3a6bfcf3",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Whether we wins or lose, we will have fun.",
+     "Whether win we or lose, we will have fun.",
+     "Whether we win or lose, we will having fun."
+    ],
+    "rule": "whether A or B에서 or는 짝이 되는 말이에요. 양보의 whether절은 'Whether we win or lose'처럼 현재시제로 쓰는 것이 자연스럽고, 주어 we에는 win을 써요. 주절의 will 뒤에는 동사원형이 와요."
+   },
+   "why": "'Whether we will win or lose' is grammatical; replace with a clear error and soften rule.",
+   "severity": "major"
+  },
+  {
+   "item": "92421bae",
+   "op": "set",
+   "set": {
+    "bad": [
+     "We can meet whenever it are convenient for you.",
+     "We can meet whenever it convenient for you.",
+     "We can meet whenever of it is convenient for you."
+    ]
+   },
+   "why": "'whenever is convenient' is attested; replace with a clearly wrong form.",
+   "severity": "minor"
+  },
+  {
+   "item": "762de29a",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Wherever there ___ water, plants can grow.",
+     "ok": "is",
+     "wr": [
+      "are",
+      "has",
+      "been"
+     ]
+    }
+   },
+   "why": "'there be' is a literary subjunctive; avoid.",
+   "severity": "minor"
+  },
+  {
+   "item": "3dfe62f2",
+   "op": "set",
+   "set": {
+    "q": "빈칸에 알맞은 말은?\n___ his poor health, my grandfather walks to the park every morning.",
+    "o": [
+     "Although",
+     "Despite",
+     "Even though",
+     "Whereas"
+    ],
+    "a": 1,
+    "why": "빈칸 뒤에 명사구(his poor health)만 있으므로 전치사 despite가 알맞아요. 나머지는 절을 이끄는 접속사예요."
+   },
+   "why": "Determiner fix; changes identity field q.",
+   "severity": "minor"
+  },
+  {
+   "item": "ca6e4589",
+   "op": "drop",
+   "why": "Near-duplicate of ce456445.",
+   "severity": "major"
+  },
+  {
+   "item": "e26e36fa",
+   "op": "drop",
+   "why": "Substitution variant of 'adj + as' frame already covered by 59827097 etc.",
+   "severity": "minor"
+  },
+  {
+   "item": "49b8774a",
+   "op": "drop",
+   "why": "Near-duplicate of b3b47c36.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 122,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

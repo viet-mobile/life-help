@@ -1,0 +1,59 @@
+{
+ "packet": "H06-h2-inv",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 5,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "5d6ff50d",
+   "op": "set",
+   "set": {
+    "bad": [
+     "He wasn't at the party, nor his sister was.",
+     "He wasn't at the party, nor were his sister.",
+     "He wasn't at the party, nor his sister wasn't."
+    ],
+    "cz": {
+     "st": "He wasn't at the party, nor ___ his sister.",
+     "ok": "was",
+     "wr": [
+      "were",
+      "has",
+      "does"
+     ]
+    }
+   },
+   "why": "\"nor did his sister\" can be read as elliptical (did [attend]) so it is not definitely wrong; replaced with clearly wrong forms. Identity field good unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "e003b508",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "\"finally\" may follow \"stop\"; ordering not unique.",
+   "severity": "minor"
+  },
+  {
+   "item": "c2983d8c",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "\"immediately\" may precede \"call\"; ordering not unique.",
+   "severity": "minor"
+  },
+  {
+   "item": "8f198c45",
+   "op": "drop",
+   "set": {},
+   "why": "Redundant re-skin of Scarcely/Hardly ... when already covered by 2e874513 and fca9d411.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 125,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

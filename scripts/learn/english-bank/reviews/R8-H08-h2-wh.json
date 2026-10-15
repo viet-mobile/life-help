@@ -1,0 +1,227 @@
+{
+ "packet": "H08-h2-wh",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 8,
+  "questions": 106
+ },
+ "patches": [
+  {
+   "item": "82bd813b",
+   "op": "set",
+   "set": {
+    "q": "다음 문장에서 though는 그대로 둘 때, 어법상 불필요한 단어는?\nThough the road was long, but we enjoyed the walk.",
+    "o": [
+     "Though",
+     "but",
+     "road",
+     "enjoyed"
+    ],
+    "a": 1,
+    "why": "though와 but은 함께 쓰지 않아요. 접속사 though가 있으므로 but을 빼야 해요."
+   },
+   "why": "Identity field q changed: disambiguates that though is kept.",
+   "severity": "minor"
+  },
+  {
+   "item": "8e247d93",
+   "op": "set",
+   "set": {
+    "q": "다음 중 'no matter wh-'로 바꿔 쓸 수 없는 복합관계사절이 있는 문장은?",
+    "o": [
+     "Whatever she cooks, it tastes great.",
+     "Whoever calls, I will not answer.",
+     "Wherever he goes, he takes a book.",
+     "Whatever she cooks tastes great."
+    ],
+    "a": 3,
+    "why": "'Whatever she cooks tastes great.'의 whatever절은 주어 역할을 하는 명사절이라 no matter what으로 바꿀 수 없어요. 나머지는 양보의 부사절이에요."
+   },
+   "why": "Identity field q changed: stem wording matches all options.",
+   "severity": "minor"
+  },
+  {
+   "item": "d3406fd3",
+   "op": "set",
+   "set": {
+    "q": "다음 두 문장을 한 문장으로 바르게 연결한 것은?\nShe was very tired. She finished the race.",
+    "o": [
+     "Because she was very tired, she finished the race.",
+     "Unless she was very tired, she finished the race.",
+     "So that she was very tired, she finished the race.",
+     "Although she was very tired, she finished the race."
+    ],
+    "a": 3,
+    "why": "피곤했다는 사실과 경주를 끝냈다는 내용이 대조되므로 although가 알맞아요."
+   },
+   "why": "Identity field q/o changed: original 'cold/played outside' allowed a causal reading with because.",
+   "severity": "minor"
+  },
+  {
+   "item": "8e8b37bf",
+   "op": "set",
+   "set": {
+    "q": "다음 문장에서 어법상 틀린 부분을 바르게 고친 것은?\nHowever I try hard, I cannot lift this rock.",
+    "o": [
+     "However I try → Whatever I try",
+     "cannot lift → cannot lifting",
+     "this rock → these rock",
+     "However I try hard → However hard I try"
+    ],
+    "a": 3,
+    "why": "'아무리 열심히 해도'는 however 바로 뒤에 hard를 붙인 However hard I try 어순이에요."
+   },
+   "why": "Identity field o changed: distractor lengths balanced.",
+   "severity": "minor"
+  },
+  {
+   "item": "6c29bc0d",
+   "op": "set",
+   "set": {
+    "q": "다음 문장에서 어법상 틀린 부분을 바르게 고친 것은?\nNo matter what do you choose, I will respect it.",
+    "o": [
+     "what do you choose → what you choose",
+     "I will respect → I will respects",
+     "No matter what → No matters what",
+     "respect it → respecting it"
+    ],
+    "a": 0,
+    "why": "no matter what절 안에서는 의문문이 아닌 평서문 어순(you choose)을 써요."
+   },
+   "why": "Identity field o changed: distractors lengthened to avoid length cue.",
+   "severity": "minor"
+  },
+  {
+   "item": "1dc34878",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why is Mina writing to Dana?",
+      "o": [
+       "To share news about her trip so far",
+       "To invite Dana to join the cabin trip tomorrow",
+       "To complain about the cabin and the food",
+       "To ask Dana for help with a fishing game"
+      ],
+      "a": 0,
+      "why": "편지는 산장에서의 여행 상황을 친구에게 전하는 내용이에요."
+     },
+     {
+      "q": "What do Mina's cousins do whenever the rain eases?",
+      "o": [
+       "They cook pasta in the kitchen.",
+       "They hike to the old tower.",
+       "They take photos of the mountains.",
+       "They go fishing at the lake."
+      ],
+      "a": 3,
+      "why": "비가 잦아들 때마다 낚싯대를 들고 호수로 달려간다고 했어요."
+     },
+     {
+      "q": "What can be inferred about the fishing game?",
+      "o": [
+       "Mina has won it twice.",
+       "No one has won it yet.",
+       "The winner must cook every dinner.",
+       "It was cancelled because of the rain."
+      ],
+      "a": 1,
+      "why": "아직 아무도 물고기를 잡지 못했다고 했으므로 이긴 사람이 없어요."
+     },
+     {
+      "q": "How does Mina seem to feel about the trip?",
+      "o": [
+       "Angry that the forecast was wrong",
+       "Worried about the cousins' safety",
+       "Happy despite the bad weather",
+       "Bored because nothing has happened"
+      ],
+      "a": 2,
+      "why": "날씨가 나쁜데도 계속 웃고 있다고 했으므로 즐거워하고 있어요."
+     },
+     {
+      "q": "What does Mina ask Dana to do at the end?",
+      "o": [
+       "Send a photo from her holiday",
+       "Call her on the phone tonight",
+       "Visit the cabin next week",
+       "Write back about the forecast"
+      ],
+      "a": 0,
+      "why": "마지막에 휴가를 어디서 보내든 사진을 보내 달라고 했어요."
+     }
+    ]
+   },
+   "why": "Q1 key was inaccurate (asked for photo not news; overlapped Q5).",
+   "severity": "minor"
+  },
+  {
+   "item": "c1d547ad",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main point of the passage?",
+      "o": [
+       "Phones should be banned in every public restaurant.",
+       "Children complain whenever parents make new rules.",
+       "Washing dishes is the best punishment at home.",
+       "A basket rule helped one family enjoy dinner."
+      ],
+      "a": 3,
+      "why": "가족이 바구니 규칙으로 저녁 식사를 즐기게 되었다는 것이 중심 내용이에요."
+     },
+     {
+      "q": "What must the person who reaches for a phone first do?",
+      "o": [
+       "Clean the kitchen floor",
+       "Wash the dishes",
+       "Cook dinner the next day",
+       "Leave the table early"
+      ],
+      "a": 1,
+      "why": "먼저 휴대전화에 손을 뻗는 사람은 설거지를 해야 한다고 했어요."
+     },
+     {
+      "q": "How does the writer feel about the family's rule?",
+      "o": [
+       "Doubtful, and rather bitter",
+       "Surprised, and strongly opposed",
+       "Approving, with a touch of humor",
+       "Indifferent, with no real opinion"
+      ],
+      "a": 2,
+      "why": "바구니를 '가장 조용한 영웅'이라 부르는 유머러스하고 긍정적인 어조예요."
+     },
+     {
+      "q": "Why did the children stop complaining?",
+      "o": [
+       "The habit soon felt natural to them.",
+       "They were given extra dessert each night.",
+       "Their father removed the basket.",
+       "They were allowed to use phones later."
+      ],
+      "a": 0,
+      "why": "2주 안에 그 습관이 자연스럽게 느껴졌다고 했어요."
+     },
+     {
+      "q": "In the sentence \"it can wait until dessert is over,\" \"it\" refers to",
+      "o": [
+       "the basket",
+       "the habit",
+       "the dinner",
+       "an online message"
+      ],
+      "a": 3,
+      "why": "같은 문장 앞부분의 an online message를 가리켜요."
+     }
+    ]
+   },
+   "why": "Fix explanation wording of Q5.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 99,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,422 @@
+{
+ "packet": "H10-h2-logic",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 12,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "def5aa09",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did the ondol system heat a room?",
+      "o": [
+       "Heated water ran through clay pipes built inside the walls of each room.",
+       "A stove in the middle of the room warmed the air.",
+       "Hot air from the kitchen fire warmed the stones under the floor.",
+       "Sunlight was stored in large wooden boards."
+      ],
+      "a": 2,
+      "why": "부엌의 열기가 바닥 아래 통로를 지나 돌을 데웠어요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "Why was furniture in these houses low and light?",
+      "o": [
+       "People used the floor for sitting and sleeping.",
+       "Stone was too expensive for large furniture.",
+       "Wooden floors could not support heavy objects.",
+       "The houses were too small for tall chairs."
+      ],
+      "a": 0,
+      "why": "As a result 앞의 내용이 원인이에요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does 'however' show in the fourth sentence?",
+      "o": [
+       "A repetition of the winter heating method",
+       "A contrast between winter and summer arrangements",
+       "A reason why stones keep heat for hours",
+       "An example of modern apartment heating"
+      ],
+      "a": 1,
+      "why": "겨울 난방과 여름 시원함의 대조예요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "According to the passage, what has stayed the same in modern apartments?",
+      "o": [
+       "The use of smoke channels",
+       "The low and light furniture",
+       "The wooden hall for summer",
+       "The idea of a warm floor"
+      ],
+      "a": 3,
+      "why": "마지막 문장에 나와요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     }
+    ]
+   },
+   "why": "sentence number corrected (1 Traditional, 2 Smoke, 3 As a result, 4 In summer however)",
+   "severity": "major"
+  },
+  {
+   "item": "55f28d4c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the first step in the drill?",
+      "o": [
+       "Counting heads",
+       "Walking to an open area",
+       "Calling the families",
+       "Dropping to the ground"
+      ],
+      "a": 3,
+      "why": "'first learn to drop to the ground'",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "Why do experts say practice matters?",
+      "o": [
+       "Students enjoy the exercises more and more with every passing year.",
+       "Earthquakes happen at the same time every autumn.",
+       "Teachers need to measure how fast students run.",
+       "Habits help people act when they cannot think clearly."
+      ],
+      "a": 3,
+      "why": "'a habit learned in advance can take over'",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What is the purpose of the comparison with riding a bicycle?",
+      "o": [
+       "To explain how bicycles can be useful in a real earthquake",
+       "To show that trained actions become automatic",
+       "To argue that cycling is safer than walking",
+       "To describe an accident during a drill"
+      ],
+      "a": 1,
+      "why": "비유로 익힌 행동이 자동으로 나온다는 점을 설명해요.",
+      "std": [
+       "12영Ⅱ-01-06"
+      ]
+     },
+     {
+      "q": "What does 'Yet' mean in the fifth sentence?",
+      "o": [
+       "It gives an example of a silly exercise.",
+       "It shows that the drill is over.",
+       "It introduces a view opposite to the students' feeling.",
+       "It repeats the students' opinion."
+      ],
+      "a": 2,
+      "why": "학생들의 시큰둥함과 대조되는 전문가의 입장이에요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     }
+    ]
+   },
+   "why": "sentence number corrected (Yet experts insist is sentence 5)",
+   "severity": "major"
+  },
+  {
+   "item": "020fe018",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why can songs with lyrics disturb reading?",
+      "o": [
+       "Both use the brain's limited capacity for language.",
+       "Lyrics are always louder than the instruments that accompany them.",
+       "Readers dislike songs in foreign languages.",
+       "Music makes the reader fall asleep quickly."
+      ],
+      "a": 0,
+      "why": "'the brain has only limited space for language'",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does 'whereas' show in the fifth sentence?",
+      "o": [
+       "A cause of the claim made by the students",
+       "A result of copying notes",
+       "A contrast between two kinds of tasks",
+       "A repetition of the previous example"
+      ],
+      "a": 2,
+      "why": "단순 작업과 어려운 수학 문제의 대조예요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What is the best advice according to the passage?",
+      "o": [
+       "Always study in a completely silent room.",
+       "Choose sounds that suit the kind of work.",
+       "Listen to songs with lyrics to stay awake.",
+       "Avoid doing repetitive tasks altogether."
+      ],
+      "a": 1,
+      "why": "Therefore 이후 결론이에요.",
+      "std": [
+       "12영Ⅱ-01-02"
+      ]
+     },
+     {
+      "q": "What is the purpose of the last sentence?",
+      "o": [
+       "To prove that students prefer silence",
+       "To describe a famous experiment about students' reading habits",
+       "To suggest that reading is useless",
+       "To give a practical sign that music is not helping"
+      ],
+      "a": 3,
+      "why": "같은 줄을 세 번 읽는 것은 음악이 방해된다는 신호예요.",
+      "std": [
+       "12영Ⅱ-01-06"
+      ]
+     }
+    ]
+   },
+   "why": "sentence number corrected",
+   "severity": "major"
+  },
+  {
+   "item": "ca90a85e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why do corals turn white?",
+      "o": [
+       "They absorb too much light from the surface.",
+       "They are eaten by fish that live in the reef.",
+       "They cannot find enough algae in cool water.",
+       "They expel the algae that give them color and food."
+      ],
+      "a": 3,
+      "why": "물이 너무 따뜻해지면 산호가 조류를 내보내 하얗게 변해요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does the word 'Therefore' show?",
+      "o": [
+       "A contrast with the earlier description",
+       "A conclusion drawn from the previous statements",
+       "An example of a bleached reef",
+       "A change in the topic of the passage"
+      ],
+      "a": 1,
+      "why": "Therefore는 앞 내용의 결과/결론을 이끌어요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "Which statement is true according to the passage?",
+      "o": [
+       "A bleached coral can survive if the warm period ends soon.",
+       "Corals can get all their food without any algae.",
+       "Reefs cover about a quarter of the ocean floor and shelter most fish.",
+       "Heat-tolerant corals have already saved every reef."
+      ],
+      "a": 0,
+      "why": "'not yet dead'와 'if the warm water lasts too long it will starve'에서 알 수 있어요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "What is the writer's attitude toward the scientists' tests?",
+      "o": [
+       "Strongly doubtful",
+       "Completely certain",
+       "Hopeful but cautious",
+       "Entirely uninterested"
+      ],
+      "a": 2,
+      "why": "'in the hope that they can be planted'는 기대하되 확정적이지는 않다는 어조예요.",
+      "std": [
+       "12영Ⅱ-01-03"
+      ]
+     }
+    ]
+   },
+   "why": "replace near-duplicate distractor; key (index 0) unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "8e25474d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is a common belief that the passage corrects?",
+      "o": [
+       "That climbers breathe more slowly at height",
+       "That high air has a smaller share of oxygen",
+       "That red blood cells are harmful to climbers",
+       "That mountains have no air pressure"
+      ],
+      "a": 1,
+      "why": "비율은 같고 기압이 낮다는 점을 바로잡아요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "Why do mountaineers climb in stages?",
+      "o": [
+       "Middle heights have better scenery.",
+       "Rest nights are cheaper than climbing.",
+       "The body needs days to adjust.",
+       "The air pressure is higher at night."
+      ],
+      "a": 2,
+      "why": "'For this reason' 앞이 이유예요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does 'Instead' show?",
+      "o": [
+       "The real cause replaces the wrong belief.",
+       "A description of how climbers prepare their bodies",
+       "An example of how fit a climber is",
+       "The result of altitude sickness"
+      ],
+      "a": 0,
+      "why": "잘못된 믿음 대신 진짜 원인을 제시해요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does the mountaineers' saying imply?",
+      "o": [
+       "Fit people never get sick at any height above the sea.",
+       "Patience is more important than strength.",
+       "Mountains are friendly to beginners.",
+       "Climbers should ignore their bodies."
+      ],
+      "a": 1,
+      "why": "체력보다 시간을 주는 것이 중요하다는 뜻이에요.",
+      "std": [
+       "12영Ⅱ-01-05"
+      ]
+     }
+    ]
+   },
+   "why": "replace near-duplicate distractors; key (index 0) unchanged",
+   "severity": "minor"
+  },
+  {
+   "item": "f9a4f6ec",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What went wrong in the first match?",
+      "o": [
+       "The basket was moved by a referee.",
+       "The team arrived after the match began.",
+       "The robot's arm stopped moving.",
+       "The balls were too heavy to lift."
+      ],
+      "a": 2,
+      "why": "'its arm froze'",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "What does 'the problem' in 'a single loose wire had caused the problem' refer to?",
+      "o": [
+       "the long bus ride to the competition venue",
+       "the other teams' high scores",
+       "the robot's arm freezing in the match",
+       "the teacher's difficult question"
+      ],
+      "a": 2,
+      "why": "문제는 앞에서 말한 로봇 팔이 멈춘 일이에요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "Why had the loose wire not been noticed?",
+      "o": [
+       "The robot had not been tested after the bus trip.",
+       "The teacher had repaired it during practice.",
+       "The team had used the wrong kind of wire.",
+       "The competition rules forbade checking."
+      ],
+      "a": 0,
+      "why": "'never tested the robot after moving it by bus'",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "How did the writer's team feel immediately after the match?",
+      "o": [
+       "Proud of the result",
+       "Bored with the project",
+       "Relieved to have finished",
+       "Deeply disappointed"
+      ],
+      "a": 3,
+      "why": "'We were crushed.'",
+      "std": [
+       "12영Ⅱ-01-03"
+      ]
+     },
+     {
+      "q": "What is the writer's attitude toward the failure by the end?",
+      "o": [
+       "Resentful toward the teacher who asked the questions",
+       "Constructive; it became a chance to learn.",
+       "Embarrassed and unwilling to talk about it afterward",
+       "Indifferent to the result of the competition"
+      ],
+      "a": 1,
+      "why": "마지막 문장이 실패를 유용한 교사로 보아요.",
+      "std": [
+       "12영Ⅱ-01-03"
+      ]
+     }
+    ]
+   },
+   "why": "lengthen distractors; key index 1 unchanged",
+   "severity": "minor"
+  }
+ ],
+ "ok": 123,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

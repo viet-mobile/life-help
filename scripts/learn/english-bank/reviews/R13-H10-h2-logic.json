@@ -1,0 +1,296 @@
+{
+ "packet": "H10-h2-logic",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 13,
+  "questions": 125
+ },
+ "patches": [
+  {
+   "item": "f4819bc3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the vault's main purpose?",
+      "o": [
+       "To grow food for the countries nearby during emergencies",
+       "To sell rare seeds to scientists",
+       "To study the cold climate of the north",
+       "To keep backup copies of the world's crop seeds"
+      ],
+      "a": 3,
+      "why": "미래를 위한 보존이에요.",
+      "std": [
+       "12영Ⅱ-01-02"
+      ]
+     },
+     {
+      "q": "Why are the seeds called 'copies'?",
+      "o": [
+       "Each country keeps its original samples.",
+       "They are made of plastic that keeps well in the cold.",
+       "They grow only in cold rooms.",
+       "They were taken from the mountain."
+      ],
+      "a": 0,
+      "why": "각국이 원본을 소유해요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does the comparison with insurance suggest?",
+      "o": [
+       "The vault will earn a lot of money for its owners someday.",
+       "Scientists should buy seeds yearly.",
+       "A precaution may seem costly until a crisis occurs.",
+       "Crops are cheaper than insurance."
+      ],
+      "a": 2,
+      "why": "필요한 날이 오기 전까지는 비싸 보인다는 뜻이에요.",
+      "std": [
+       "12영Ⅱ-01-05"
+      ]
+     },
+     {
+      "q": "What do the rock walls around the storage rooms provide?",
+      "o": [
+       "Hidden storage away from thieves",
+       "Protection from heat and earthquakes",
+       "Water that keeps the seeds moist",
+       "Fuel for the cooling machines"
+      ],
+      "a": 1,
+      "why": "바위가 열과 지진으로부터 자연스럽게 보호해 줘요."
+     }
+    ]
+   },
+   "why": "Q4 cited the wrong sentence number (Because is the 5th sentence) and revealed Q2's answer; replaced with a detail question.",
+   "severity": "major"
+  },
+  {
+   "item": "5dca36f6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is Ben's concern about the trip?",
+      "o": [
+       "The ferry ticket is too costly for them.",
+       "The ferry schedule leaves little time.",
+       "The weather forecast looks bad.",
+       "The bicycles are too expensive to rent."
+      ],
+      "a": 1,
+      "why": "마지막 배가 5시여서 시간이 짧아요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "Why does Mira suggest renting bicycles?",
+      "o": [
+       "They want to avoid the ferry.",
+       "They are cheaper than walking tours.",
+       "They can see the coast in a short time.",
+       "The island forbids cars."
+      ],
+      "a": 2,
+      "why": "짧은 시간에 해안을 둘러보기 위해서예요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "Why does Ben say 'a little tight'?",
+      "o": [
+       "The bicycles are too narrow.",
+       "The coastal road is closed.",
+       "One hour for lunch might not be enough.",
+       "The ferry tickets are sold out."
+      ],
+      "a": 2,
+      "why": "자전거 3시간 후 점심 1시간이 빠듯해요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What do they decide?",
+      "o": [
+       "To take the early ferry",
+       "To visit the island next month",
+       "To take the five o'clock ferry",
+       "To walk around the island"
+      ],
+      "a": 0,
+      "why": "Mira가 8시 배를 선택하고 Ben이 동의해요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "What does 'In that case' refer to?",
+      "o": [
+       "renting a car",
+       "waiting for the last ferry",
+       "skipping lunch",
+       "taking the early ferry"
+      ],
+      "a": 3,
+      "why": "In that case = 그렇다면(8시 배를 타기로 한 경우).",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Q1 had two near-identical distractors; replaced and moved key to option 2.",
+   "severity": "minor"
+  },
+  {
+   "item": "c4d02981",
+   "op": "set",
+   "set": {
+    "q": "주어진 문장이 들어갈 가장 알맞은 곳은?\n주어진 문장: These two reasons explain why the bakery opens at four in the morning.\n[A] Customers often ask why the bakery opens so early. [B] Dough needs several hours to rise before baking. [C] Also, many people want to buy bread before they go to work. [D]",
+    "o": [
+     "[A]",
+     "[D]",
+     "[B]",
+     "[C]"
+    ],
+    "a": 1,
+    "why": "These two reasons는 앞에서 말한 두 가지 이유(반죽 시간, 출근 전 구매)를 모두 읽은 뒤에 와야 하므로 [D]예요."
+   },
+   "why": "Original had several defensible insertion points; q and o are identity fields and are changed.",
+   "severity": "major"
+  },
+  {
+   "item": "f6a0b10d",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "You will not pass ___ you study.",
+     "ok": "unless",
+     "wr": [
+      "because",
+      "so that",
+      "whereas"
+     ]
+    }
+   },
+   "why": "cloze distractor 'although' is arguably acceptable; replaced.",
+   "severity": "minor"
+  },
+  {
+   "item": "9efaa87b",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Neither the manager and the workers were told about the change.",
+     "Neither the manager nor the workers was told about the change.",
+     "Neither the manager nor neither the workers were told about the change."
+    ],
+    "cz": {
+     "st": "Neither the manager ___ the workers were told about the change.",
+     "ok": "nor",
+     "wr": [
+      "and",
+      "but",
+      "so"
+     ]
+    }
+   },
+   "why": "Replace debatable 'neither...or' with unambiguously wrong 'neither...and'.",
+   "severity": "minor"
+  },
+  {
+   "item": "2ee76272",
+   "op": "set",
+   "set": {
+    "q": "다음 글에서 'which'가 가리키는 것은?\nThe team tested the new battery. It lasted twice as long as the old one, which surprised them.",
+    "o": [
+     "the old battery that was replaced by the team",
+     "the team that performed the test",
+     "the date on which it was tested",
+     "the fact that it lasted twice as long"
+    ],
+    "a": 3,
+    "why": "which는 앞 절 전체의 내용을 받아요."
+   },
+   "why": "'밑줄 친' with no underline; q is an identity field and is changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "6e4b25e8",
+   "op": "set",
+   "set": {
+    "q": "다음 글에서 'those'가 가리키는 것은?\nCars made in the 1990s used more fuel than those made today.",
+    "o": [
+     "years",
+     "cars",
+     "fuels",
+     "factories"
+    ],
+    "a": 1,
+    "why": "those = cars."
+   },
+   "why": "'밑줄 친' with no underline; q is an identity field and is changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "aaa30e0a",
+   "op": "set",
+   "set": {
+    "q": "다음 글에서 'This'가 가리키는 것은?\nMany students stay up late to study. This often leads to lower concentration the next day.",
+    "o": [
+     "studying in the morning",
+     "staying up late to study",
+     "having more concentration",
+     "the next day's lessons"
+    ],
+    "a": 1,
+    "why": "This는 앞 문장의 행동 전체를 가리켜요."
+   },
+   "why": "'밑줄 친' with no underline; q is an identity field and is changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "489586fd",
+   "op": "set",
+   "set": {
+    "q": "다음 글에서 'the former'가 가리키는 것은?\nTom and Lisa both applied for the job. The former was invited to an interview, but the latter was not.",
+    "o": [
+     "Lisa",
+     "Tom",
+     "the job",
+     "the interview"
+    ],
+    "a": 1,
+    "why": "the former는 앞에 언급한 둘 중 먼저 나온 것(Tom)이에요."
+   },
+   "why": "'밑줄 친' with no underline; q is an identity field and is changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "3e4fb424",
+   "op": "set",
+   "set": {
+    "q": "다음 글에서 'They'가 가리키는 것은?\nThe engineers showed the farmers the new pumps. They were made of steel and needed no electricity.",
+    "o": [
+     "the engineers",
+     "the farmers",
+     "the pumps",
+     "the wells"
+    ],
+    "a": 2,
+    "why": "강철로 만들어졌고 전기가 필요 없는 것은 펌프예요."
+   },
+   "why": "'밑줄 친' with no underline; q is an identity field and is changed.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 114,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,91 @@
+{
+ "packet": "H11-h3-par",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 14,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "f501c069",
+   "op": "set",
+   "set": {
+    "bad": [
+     "The report explains what caused the delay, how the company responded, and the reason of price increase.",
+     "The report explains what caused the delay, how the company responded, and why did prices rise.",
+     "The report explains what caused the delay, how did the company respond, and why prices rose."
+    ],
+    "cz": {
+     "st": "The report explains what caused the delay, how the company responded, and ___ prices rose.",
+     "ok": "why",
+     "wr": [
+      "because",
+      "therefore",
+      "due to"
+     ]
+    }
+   },
+   "why": "cz distractor \"which\" is grammatical (and which prices rose); bad[1] (the response of the company) is grammatical, only non-parallel. Replaced with clearly wrong forms.",
+   "severity": "major"
+  },
+  {
+   "item": "85e7baa8",
+   "op": "set",
+   "set": {
+    "bad": [
+     "The island is famous not only for its beaches but also about its seafood.",
+     "The island is famous not only for its beaches but also famous seafood.",
+     "The island is famous not only its beaches but also for its seafood."
+    ]
+   },
+   "why": "bad[0] \"also because of its seafood\" is grammatical English (just not parallel); replaced with a clearly wrong preposition.",
+   "severity": "minor"
+  },
+  {
+   "item": "eed4bf43",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Measles are a contagious disease that vaccines can prevent.",
+     "Measles is a contagious disease that vaccines can prevents.",
+     "Measles are contagious diseases that vaccines can prevent."
+    ]
+   },
+   "why": "bad[1] \"that vaccine can prevent\" (mass noun) is arguably acceptable; replaced with an unambiguous error.",
+   "severity": "minor"
+  },
+  {
+   "item": "430a9c23",
+   "op": "set",
+   "set": {
+    "bad": [
+     "The new library offers free tutoring, quiet study rooms, and accessed online journals.",
+     "The new library offers free tutoring, quiet study rooms, and to access online journals.",
+     "The new library offers free tutoring, quiet study rooms, and that students can access online journals."
+    ]
+   },
+   "why": "bad[0] \"and accessing online journals\" is a grammatical gerund object parallel to tutoring; replaced with a wrong verb form.",
+   "severity": "minor"
+  },
+  {
+   "item": "c9e0fde7",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "intelligent/considerate can be swapped (both A and B), so word order of good is not unique.",
+   "severity": "minor"
+  },
+  {
+   "item": "dd120ca5",
+   "op": "set",
+   "set": {
+    "hint": "prefer A to B에서 A와 B의 형태를 서로 비교해 보세요."
+   },
+   "why": "Hint mentions and/but/or but the sentence has none, misleading (hint field edit; if hint cannot be patched, replace generic hint manually).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 122,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
