@@ -1,0 +1,2084 @@
+{
+ "packet": "E14-e5",
+ "sections": [
+  {
+   "skill": "e.e5.gram",
+   "items": [
+    {
+     "k": "w",
+     "en": "foot",
+     "pos": "n",
+     "ko": "발",
+     "ex": "I kicked the ball with my left foot.",
+     "exko": "나는 왼발로 공을 찼어요.",
+     "z": [
+      "window",
+      "pencil",
+      "bread"
+     ],
+     "syn": [],
+     "sp": [
+      "fuot",
+      "fote",
+      "footh"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "tooth",
+     "pos": "n",
+     "ko": "이, 치아",
+     "ex": "I ate too much candy, so my tooth hurts.",
+     "exko": "사탕을 너무 많이 먹어서 이가 아파요.",
+     "z": [
+      "window",
+      "chair",
+      "bread"
+     ],
+     "syn": [],
+     "sp": [
+      "tooht",
+      "toth",
+      "tuth"
+     ]
+    },
+    {
+     "k": "s",
+     "good": "She has an orange.",
+     "ko": "그녀는 오렌지 한 개를 가지고 있어요.",
+     "bad": [
+      "She has a orange.",
+      "She has orange.",
+      "She has an oranges."
+     ],
+     "cz": {
+      "st": "She has ___ orange.",
+      "ok": "an",
+      "wr": [
+       "a",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "orange는 모음 소리로 시작하는 셀 수 있는 낱말이라서 한 개일 때 an을 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "It takes an hour to get there.",
+     "ko": "거기까지 가는 데 한 시간이 걸려요.",
+     "bad": [
+      "It takes a hour to get there.",
+      "It takes hour to get there.",
+      "It takes an hours to get there."
+     ],
+     "cz": {
+      "st": "It takes ___ hour to get there.",
+      "ok": "an",
+      "wr": [
+       "a",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "hour의 h는 소리가 나지 않고 모음 소리로 시작해서 an을 써요. 철자가 아니라 소리로 판단해요."
+    },
+    {
+     "k": "s",
+     "good": "There are three boxes on the table.",
+     "ko": "탁자 위에 상자 세 개가 있어요.",
+     "bad": [
+      "There are three boxs on the table.",
+      "There is three boxes on the table.",
+      "There are three box on the table."
+     ],
+     "cz": {
+      "st": "There are three ___ on the table.",
+      "ok": "boxes",
+      "wr": [
+       "box",
+       "boxs",
+       "boxies"
+      ]
+     },
+     "rule": "x, s, ch, sh로 끝나는 낱말은 -es를 붙여 복수형을 만들어요."
+    },
+    {
+     "k": "s",
+     "good": "I see two babies in the park.",
+     "ko": "나는 공원에서 아기 두 명을 봐요.",
+     "bad": [
+      "I see two babys in the park.",
+      "I see two baby in the park.",
+      "I see two babyes in the park."
+     ],
+     "cz": {
+      "st": "I see two ___ in the park.",
+      "ok": "babies",
+      "wr": [
+       "baby",
+       "babys",
+       "babyes"
+      ]
+     },
+     "rule": "〈자음+y〉로 끝나는 낱말은 y를 i로 바꾸고 -es를 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "Three children are playing in the yard.",
+     "ko": "아이들 세 명이 마당에서 놀고 있어요.",
+     "bad": [
+      "Three childs are playing in the yard.",
+      "Three children is playing in the yard.",
+      "Three childrens are playing in the yard."
+     ],
+     "cz": {
+      "st": "Three ___ are playing in the yard.",
+      "ok": "children",
+      "wr": [
+       "child",
+       "childs",
+       "childrens"
+      ]
+     },
+     "rule": "child의 복수형은 불규칙하게 children이에요. children은 이미 복수라서 -s를 또 붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "My feet are cold.",
+     "ko": "내 발이 차가워요.",
+     "bad": [
+      "My foots are cold.",
+      "My feet is cold.",
+      "My feets are cold."
+     ],
+     "cz": {
+      "st": "My ___ are cold.",
+      "ok": "feet",
+      "wr": [
+       "foot",
+       "foots",
+       "feets"
+      ]
+     },
+     "rule": "foot의 복수형은 불규칙하게 feet이고, 복수 주어 뒤에는 are를 써요."
+    },
+    {
+     "k": "s",
+     "good": "There is a library near my school.",
+     "ko": "우리 학교 근처에 도서관이 하나 있어요.",
+     "bad": [
+      "There are a library near my school.",
+      "There is library a near my school.",
+      "There a library is near my school."
+     ],
+     "cz": {
+      "st": "There ___ a library near my school.",
+      "ok": "is",
+      "wr": [
+       "are",
+       "am",
+       "be"
+      ]
+     },
+     "rule": "하나(단수)가 있을 때는 There is를 써요."
+    },
+    {
+     "k": "s",
+     "good": "There are many birds in the tree.",
+     "ko": "나무에 새가 많이 있어요.",
+     "bad": [
+      "There is many birds in the tree.",
+      "There are many bird in the tree.",
+      "There many birds are in the tree."
+     ],
+     "cz": {
+      "st": "There ___ many birds in the tree.",
+      "ok": "are",
+      "wr": [
+       "is",
+       "am",
+       "be"
+      ]
+     },
+     "rule": "여러 개(복수)가 있을 때는 There are를 쓰고, many 뒤에는 복수 명사가 와요."
+    },
+    {
+     "k": "s",
+     "good": "Is there a bank near here?",
+     "ko": "이 근처에 은행이 있나요?",
+     "bad": [
+      "Are there a bank near here?",
+      "There is a bank near here?",
+      "Is there bank near here?"
+     ],
+     "cz": {
+      "st": "___ there a bank near here?",
+      "ok": "Is",
+      "wr": [
+       "Are",
+       "Am",
+       "Do"
+      ]
+     },
+     "rule": "There is의 의문문은 Is there ~?로 is를 앞으로 보내요. 하나일 때는 Is, 여러 개일 때는 Are를 써요."
+    },
+    {
+     "k": "s",
+     "good": "Are there any apples in the basket?",
+     "ko": "바구니에 사과가 좀 있나요?",
+     "bad": [
+      "Is there any apples in the basket?",
+      "Are there any apple in the basket?",
+      "Are there apples any in the basket?"
+     ],
+     "cz": {
+      "st": "Are there ___ apples in the basket?",
+      "ok": "any",
+      "wr": [
+       "a",
+       "an",
+       "one"
+      ]
+     },
+     "rule": "의문문에서 '조금도, 좀'이라는 뜻으로는 any를 쓰고, 뒤에는 복수 명사가 와요."
+    },
+    {
+     "k": "s",
+     "good": "There isn't a cloud in the sky.",
+     "ko": "하늘에 구름 한 점 없어요.",
+     "bad": [
+      "There aren't a cloud in the sky.",
+      "There not is a cloud in the sky.",
+      "There isn't clouds in the sky."
+     ],
+     "cz": {
+      "st": "There ___ a cloud in the sky.",
+      "ok": "isn't",
+      "wr": [
+       "aren't",
+       "don't",
+       "not"
+      ]
+     },
+     "rule": "하나가 없다고 할 때는 There isn't를 써요. 여러 개가 없을 때는 There aren't를 써요."
+    },
+    {
+     "k": "s",
+     "good": "There aren't any chairs in the room.",
+     "ko": "방에 의자가 하나도 없어요.",
+     "bad": [
+      "There isn't any chairs in the room.",
+      "There aren't any chair in the room.",
+      "There aren't a chairs in the room."
+     ],
+     "cz": {
+      "st": "There aren't ___ chairs in the room.",
+      "ok": "any",
+      "wr": [
+       "a",
+       "an",
+       "much"
+      ]
+     },
+     "rule": "부정문에서 '하나도'라는 뜻으로는 any를 쓰고, 뒤에는 복수 명사가 와요."
+    },
+    {
+     "k": "s",
+     "good": "The sun rises in the east.",
+     "ko": "해는 동쪽에서 떠요.",
+     "bad": [
+      "Sun rises in the east.",
+      "The sun rises in east.",
+      "A sun rises in the east."
+     ],
+     "cz": {
+      "st": "___ sun rises in the east.",
+      "ok": "The",
+      "wr": [
+       "A",
+       "An",
+       "Two"
+      ]
+     },
+     "rule": "세상에 하나뿐인 것(the sun, the moon)에는 the를 붙이고, 방향 east 앞에도 the를 써요."
+    },
+    {
+     "k": "s",
+     "good": "My mother is a teacher.",
+     "ko": "우리 엄마는 선생님이에요.",
+     "bad": [
+      "My mother is teacher.",
+      "My mother is an teacher.",
+      "My mother a teacher is."
+     ],
+     "cz": {
+      "st": "My mother is ___ teacher.",
+      "ok": "a",
+      "wr": [
+       "an",
+       "two",
+       "many"
+      ]
+     },
+     "rule": "직업을 말할 때 셀 수 있는 단수 명사 앞에는 a/an을 붙여요. teacher는 자음 소리로 시작해서 a를 써요."
+    },
+    {
+     "k": "s",
+     "good": "It is an old bike.",
+     "ko": "그것은 낡은 자전거예요.",
+     "bad": [
+      "It is a old bike.",
+      "It is old a bike.",
+      "It an is old bike."
+     ],
+     "cz": {
+      "st": "It is an ___ bike.",
+      "ok": "old",
+      "wr": [
+       "new",
+       "big",
+       "red"
+      ]
+     },
+     "rule": "a와 an은 바로 뒤에 오는 낱말의 소리로 정해요. old는 모음 소리로 시작해서 an old가 돼요."
+    },
+    {
+     "k": "s",
+     "good": "There is some milk in the glass.",
+     "ko": "유리잔에 우유가 조금 있어요.",
+     "bad": [
+      "There are some milk in the glass.",
+      "There is some milks in the glass.",
+      "There is two milk in the glass."
+     ],
+     "cz": {
+      "st": "There is some ___ in the glass.",
+      "ok": "milk",
+      "wr": [
+       "milks",
+       "apples",
+       "eggs"
+      ]
+     },
+     "rule": "milk처럼 셀 수 없는 명사는 복수형으로 쓰지 않고 There is와 함께 써요."
+    },
+    {
+     "k": "s",
+     "good": "I have two watches.",
+     "ko": "나는 시계가 두 개 있어요.",
+     "bad": [
+      "I have two watchs.",
+      "I have two watch.",
+      "I have two watchies."
+     ],
+     "cz": {
+      "st": "I have two ___.",
+      "ok": "watches",
+      "wr": [
+       "watch",
+       "watchs",
+       "watchies"
+      ]
+     },
+     "rule": "ch로 끝나는 낱말은 -es를 붙여 복수형을 만들어요."
+    },
+    {
+     "k": "s",
+     "good": "Two leaves fell from the tree.",
+     "ko": "나뭇잎 두 장이 나무에서 떨어졌어요.",
+     "bad": [
+      "Two leafs fell from the tree.",
+      "Two leaf fell from the tree.",
+      "Two leaves falls from the tree."
+     ],
+     "cz": {
+      "st": "Two ___ fell from the tree.",
+      "ok": "leaves",
+      "wr": [
+       "leaf",
+       "leafs",
+       "leafes"
+      ]
+     },
+     "rule": "leaf처럼 f로 끝나는 일부 낱말은 f를 v로 바꾸고 -es를 붙여 leaves가 돼요."
+    },
+    {
+     "k": "s",
+     "good": "Two men are fixing the roof.",
+     "ko": "남자 두 명이 지붕을 고치고 있어요.",
+     "bad": [
+      "Two mans are fixing the roof.",
+      "Two men is fixing the roof.",
+      "Two man are fixing the roof."
+     ],
+     "cz": {
+      "st": "Two ___ are fixing the roof.",
+      "ok": "men",
+      "wr": [
+       "man",
+       "mans",
+       "mens"
+      ]
+     },
+     "rule": "man의 복수형은 불규칙하게 men이에요."
+    },
+    {
+     "k": "s",
+     "good": "Five sheep are in the field.",
+     "ko": "양 다섯 마리가 들판에 있어요.",
+     "bad": [
+      "Five sheeps are in the field.",
+      "Five sheep is in the field.",
+      "Five of sheep are in the field."
+     ],
+     "cz": {
+      "st": "Five ___ are in the field.",
+      "ok": "sheep",
+      "wr": [
+       "sheeps",
+       "sheepes",
+       "a sheep"
+      ]
+     },
+     "rule": "sheep은 단수와 복수의 모양이 같아서 -s를 붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "How many books are there on the desk?",
+     "ko": "책상 위에 책이 몇 권 있나요?",
+     "bad": [
+      "How many book are there on the desk?",
+      "How many books is there on the desk?",
+      "How many books there are on the desk?"
+     ],
+     "cz": {
+      "st": "How many ___ are there on the desk?",
+      "ok": "books",
+      "wr": [
+       "book",
+       "bookes",
+       "a book"
+      ]
+     },
+     "rule": "How many 뒤에는 셀 수 있는 복수 명사가 와요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\n___ umbrella is on the chair.",
+     "o": [
+      "A",
+      "An",
+      "Two",
+      "Many"
+     ],
+     "a": 1,
+     "why": "umbrella는 모음 소리로 시작하고 하나뿐이라서 An을 써요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 앞에 a를 붙이는 낱말은?",
+     "o": [
+      "uniform",
+      "orange",
+      "ear",
+      "hour"
+     ],
+     "a": 0,
+     "why": "uniform은 '유' 소리로 시작해서 a uniform이에요. 나머지는 모음 소리로 시작하는 an orange, an ear, an hour예요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 앞에 an을 붙이는 낱말은?",
+     "o": [
+      "house",
+      "horse",
+      "hat",
+      "hour"
+     ],
+     "a": 3,
+     "why": "hour는 h가 소리 나지 않아서 an hour예요. 나머지는 a house, a horse, a hat이에요."
+    },
+    {
+     "k": "m",
+     "q": "baby의 복수형은?",
+     "o": [
+      "babys",
+      "babyes",
+      "babies",
+      "babyies"
+     ],
+     "a": 2,
+     "why": "〈자음+y〉로 끝나는 낱말은 y를 i로 바꾸고 -es를 붙여요."
+    },
+    {
+     "k": "m",
+     "q": "bus의 복수형은?",
+     "o": [
+      "buss",
+      "buses",
+      "busies",
+      "busen"
+     ],
+     "a": 1,
+     "why": "s로 끝나는 낱말은 -es를 붙여 buses가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "woman의 복수형은?",
+     "o": [
+      "women",
+      "womans",
+      "womens",
+      "womanes"
+     ],
+     "a": 0,
+     "why": "woman의 복수형은 불규칙하게 women이에요."
+    },
+    {
+     "k": "m",
+     "q": "tooth의 복수형은?",
+     "o": [
+      "tooths",
+      "teeths",
+      "toothes",
+      "teeth"
+     ],
+     "a": 3,
+     "why": "tooth의 복수형은 불규칙하게 teeth예요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 복수형이 단수형과 같은 낱말은?",
+     "o": [
+      "cow",
+      "goat",
+      "sheep",
+      "hen"
+     ],
+     "a": 2,
+     "why": "sheep은 단수와 복수가 같아요. 나머지는 cows, goats, hens로 -s를 붙여요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 복수형이 잘못된 것은?",
+     "o": [
+      "two dishes",
+      "four womans",
+      "three boys",
+      "five foxes"
+     ],
+     "a": 1,
+     "why": "woman의 복수형은 women이므로 womans가 틀렸어요."
+    },
+    {
+     "k": "m",
+     "q": "knife의 복수형은?",
+     "o": [
+      "knives",
+      "knifes",
+      "knifies",
+      "knifeses"
+     ],
+     "a": 0,
+     "why": "f나 fe로 끝나는 일부 낱말은 v로 바꾸고 -es를 붙여요. knife는 knives가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nThere ___ two cats under the table.",
+     "o": [
+      "is",
+      "am",
+      "be",
+      "are"
+     ],
+     "a": 3,
+     "why": "고양이가 둘(복수)이라서 There are를 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nThere ___ some water in the bottle.",
+     "o": [
+      "are",
+      "am",
+      "is",
+      "be"
+     ],
+     "a": 2,
+     "why": "water는 셀 수 없는 명사라서 There is를 써요."
+    },
+    {
+     "k": "m",
+     "q": "'책상 위에 연필 세 자루가 있어요.'를 영어로 바르게 쓴 것은?",
+     "o": [
+      "There is three pencils on the desk.",
+      "There are three pencils on the desk.",
+      "There are three pencil on the desk.",
+      "There three pencils are on the desk."
+     ],
+     "a": 1,
+     "why": "세 자루(복수)이므로 There are를 쓰고 명사에는 -s를 붙여요."
+    },
+    {
+     "k": "m",
+     "q": "'방에 의자가 하나 있어요.'를 영어로 바르게 쓴 것은?",
+     "o": [
+      "There is a chair in the room.",
+      "There are a chair in the room.",
+      "There is chair a in the room.",
+      "There a chair is in the room."
+     ],
+     "a": 0,
+     "why": "하나일 때는 There is a ~.로 말해요."
+    },
+    {
+     "k": "m",
+     "q": "'공원에 아이들이 많이 있어요.'를 영어로 바르게 쓴 것은?",
+     "o": [
+      "There is many children in the park.",
+      "There are many childs in the park.",
+      "There many children are in the park.",
+      "There are many children in the park."
+     ],
+     "a": 3,
+     "why": "children은 복수이고 There are와 함께 써요. child의 복수형은 children이에요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nIs there ___ egg in the fridge?",
+     "o": [
+      "a",
+      "two",
+      "an",
+      "many"
+     ],
+     "a": 2,
+     "why": "egg는 모음 소리로 시작하고 하나를 묻는 문장이라서 an을 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nMy brother has ___ new bike.",
+     "o": [
+      "an",
+      "a",
+      "some",
+      "many"
+     ],
+     "a": 1,
+     "why": "new는 자음 소리로 시작하는 단수 명사 bike 앞에서 a와 함께 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nLook at ___ stars! They are bright.",
+     "o": [
+      "the",
+      "a",
+      "an",
+      "one"
+     ],
+     "a": 0,
+     "why": "눈앞에 보이는 특정한 별들을 가리키므로 the를 써요. stars가 복수라서 a, an, one은 쓸 수 없어요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 셀 수 없는 명사는?",
+     "o": [
+      "bottle",
+      "apple",
+      "cup",
+      "water"
+     ],
+     "a": 3,
+     "why": "water는 하나, 둘로 셀 수 없는 명사예요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nHow many ___ do you have?",
+     "o": [
+      "pencil",
+      "milk",
+      "pencils",
+      "water"
+     ],
+     "a": 2,
+     "why": "How many 뒤에는 셀 수 있는 복수 명사가 와요. milk와 water는 셀 수 없어요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nI have ___ sister and two brothers.",
+     "o": [
+      "an",
+      "a",
+      "two",
+      "many"
+     ],
+     "a": 1,
+     "why": "sister가 하나이고 자음 소리로 시작하므로 a를 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\n___ there any milk in the cup?",
+     "o": [
+      "Is",
+      "Are",
+      "Am",
+      "Do"
+     ],
+     "a": 0,
+     "why": "milk는 셀 수 없는 명사라서 Is there ~?로 물어요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 복수형을 만들 때 -es를 붙이는 낱말은?",
+     "o": [
+      "cup",
+      "pen",
+      "book",
+      "dish"
+     ],
+     "a": 3,
+     "why": "sh로 끝나는 낱말은 -es를 붙여 dishes가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 복수형이 -ies로 끝나는 낱말은?",
+     "o": [
+      "toy",
+      "boy",
+      "story",
+      "day"
+     ],
+     "a": 2,
+     "why": "story는 y를 i로 바꾸고 -es를 붙여 stories가 돼요. toy, boy, day는 모음+y라서 -s만 붙여요."
+    },
+    {
+     "k": "m",
+     "q": "A: What is in the box?\nB: ___ two balls.",
+     "o": [
+      "There is",
+      "There are",
+      "It are",
+      "They is"
+     ],
+     "a": 1,
+     "why": "공이 두 개(복수)라서 There are를 써요."
+    },
+    {
+     "k": "m",
+     "q": "'오렌지 주스 한 잔'을 영어로 바르게 쓴 것은?",
+     "o": [
+      "a glass of orange juice",
+      "an glass of orange juice",
+      "a glass of oranges juice",
+      "a glass orange of juice"
+     ],
+     "a": 0,
+     "why": "glass는 자음 소리로 시작해서 a를 쓰고, 〈a glass of ~〉의 순서로 말해요."
+    },
+    {
+     "k": "r",
+     "title": "My Room",
+     "text": "My room is small, but I like it. There is a bed next to the window. There are two shelves on the wall, and there are many books on them. On my desk, there is a lamp and an eraser. Under the bed, there are three boxes. They have my old toys inside. I clean my room every Sunday.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A trip to a toy shop",
+        "How to make a bookshelf",
+        "A day of cleaning with friends",
+        "The writer's room and things in it"
+       ],
+       "a": 3,
+       "why": "글쓴이의 방과 그 안에 있는 물건들을 소개하는 글이에요."
+      },
+      {
+       "q": "Where is the bed?",
+       "o": [
+        "Under the shelves",
+        "Next to the window",
+        "On the desk",
+        "Near the door"
+       ],
+       "a": 1,
+       "why": "There is a bed next to the window.라고 했어요."
+      },
+      {
+       "q": "How many boxes are under the bed?",
+       "o": [
+        "Two",
+        "Four",
+        "Five",
+        "Three"
+       ],
+       "a": 3,
+       "why": "Under the bed, there are three boxes.라고 했어요."
+      },
+      {
+       "q": "What is on the desk?",
+       "o": [
+        "A lamp and two boxes",
+        "A lamp and an eraser",
+        "Books and an eraser",
+        "A bed and a lamp"
+       ],
+       "a": 1,
+       "why": "On my desk, there is a lamp and an eraser.라고 했어요."
+      },
+      {
+       "q": "When does the writer clean the room?",
+       "o": [
+        "Every morning",
+        "Every night",
+        "Every Friday",
+        "Every Sunday"
+       ],
+       "a": 3,
+       "why": "I clean my room every Sunday.라고 했어요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Day at the Zoo",
+     "text": "Last Saturday, my class went to the zoo. We saw an elephant first. It was very big, and it ate a lot of grass. Then we saw two monkeys in a tree. They were funny. There were many children near the lions, so we waited. At lunch, I ate an egg sandwich on a bench.",
+     "qs": [
+      {
+       "q": "What did the class see first?",
+       "o": [
+        "An elephant",
+        "Two monkeys",
+        "The lions",
+        "A bench"
+       ],
+       "a": 0,
+       "why": "We saw an elephant first.라고 했어요."
+      },
+      {
+       "q": "How many monkeys did they see?",
+       "o": [
+        "One",
+        "Three",
+        "Two",
+        "Ten"
+       ],
+       "a": 2,
+       "why": "two monkeys라고 했어요."
+      },
+      {
+       "q": "Why did the class wait near the lions?",
+       "o": [
+        "Many children were there",
+        "The lions were sleeping",
+        "They wanted to eat lunch",
+        "The zoo was closed"
+       ],
+       "a": 0,
+       "why": "There were many children near the lions, so we waited.에서 이유를 알 수 있어요."
+      },
+      {
+       "q": "What does \"They\" mean in \"They were funny\"?",
+       "o": [
+        "The children",
+        "The lions",
+        "The monkeys",
+        "The teachers"
+       ],
+       "a": 2,
+       "why": "바로 앞 문장의 two monkeys를 가리켜요."
+      },
+      {
+       "q": "What did the writer eat at lunch?",
+       "o": [
+        "An egg sandwich",
+        "A rice ball",
+        "Some grass",
+        "An apple"
+       ],
+       "a": 0,
+       "why": "I ate an egg sandwich on a bench.라고 했어요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Message from Hana",
+     "text": "Hi Jun, I am having a picnic on Saturday. It is at Green Park. There is a big lake, and there are many trees, so it is a nice place. Please bring a sandwich and some juice. I have two balls, so we can play soccer. Please come at ten. Your friend, Hana",
+     "qs": [
+      {
+       "q": "Why did Hana write this message?",
+       "o": [
+        "To ask for a soccer ball",
+        "To say sorry to Jun",
+        "To tell Jun about a lake",
+        "To invite Jun to a picnic"
+       ],
+       "a": 3,
+       "why": "피크닉에 초대하려는 글이에요."
+      },
+      {
+       "q": "Where is the picnic?",
+       "o": [
+        "At Hana's house",
+        "At Green Park",
+        "At the school",
+        "By the sea"
+       ],
+       "a": 1,
+       "why": "It is at Green Park.라고 했어요."
+      },
+      {
+       "q": "What should Jun bring?",
+       "o": [
+        "A soccer ball and some chairs",
+        "Some paper and a few pens",
+        "A big towel and a blanket",
+        "A sandwich and some juice"
+       ],
+       "a": 3,
+       "why": "Please bring a sandwich and some juice.라고 했어요."
+      },
+      {
+       "q": "What can they do with Hana's balls?",
+       "o": [
+        "Swim in the lake",
+        "Play soccer",
+        "Read books",
+        "Make sandwiches"
+       ],
+       "a": 1,
+       "why": "I have two balls, so we can play soccer.라고 했어요."
+      },
+      {
+       "q": "Why does Hana say Green Park is a nice place?",
+       "o": [
+        "It has a shop and a zoo",
+        "It is near Jun's house",
+        "It has a soccer field",
+        "It has a lake and many trees"
+       ],
+       "a": 3,
+       "why": "There is a big lake, and there are many trees라고 했어요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Mr. Kim's Farm",
+     "text": "Mr. Kim has a small farm. There are five sheep, three cows and ten chickens on his farm. Every morning, he gives the cows some grass. The chickens give him eggs, and the sheep give him wool. In the evening, children from the town visit the farm. They love the baby sheep.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A zoo in the town",
+        "A trip to the sea",
+        "Mr. Kim's small farm",
+        "How to make wool"
+       ],
+       "a": 2,
+       "why": "Mr. Kim의 작은 농장에 대한 글이에요."
+      },
+      {
+       "q": "How many cows are on the farm?",
+       "o": [
+        "Three",
+        "Five",
+        "Ten",
+        "Two"
+       ],
+       "a": 0,
+       "why": "three cows라고 했어요."
+      },
+      {
+       "q": "What do the chickens give Mr. Kim?",
+       "o": [
+        "Wool",
+        "Grass",
+        "Eggs",
+        "Milk"
+       ],
+       "a": 2,
+       "why": "The chickens give him eggs라고 했어요."
+      },
+      {
+       "q": "When do the children visit the farm?",
+       "o": [
+        "In the evening",
+        "In the morning",
+        "At lunch time",
+        "At night"
+       ],
+       "a": 0,
+       "why": "In the evening, children from the town visit the farm.이라고 했어요."
+      },
+      {
+       "q": "Which sentence is true?",
+       "o": [
+        "Mr. Kim has a very big farm",
+        "The cows give him wool and eggs",
+        "There are more chickens than sheep",
+        "The children do not like the sheep"
+       ],
+       "a": 2,
+       "why": "닭은 열 마리, 양은 다섯 마리라서 닭이 더 많아요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    }
+   ]
+  },
+  {
+   "skill": "e.e5.comp",
+   "items": [
+    {
+     "k": "w",
+     "en": "heavy",
+     "pos": "adj",
+     "ko": "무거운",
+     "ex": "The box is heavy, so I need help.",
+     "exko": "상자가 무거워서 도움이 필요해요.",
+     "z": [
+      "quiet",
+      "cloudy",
+      "sleepy"
+     ],
+     "syn": [],
+     "sp": [
+      "hevy",
+      "heavvy",
+      "heavey"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "popular",
+     "pos": "adj",
+     "ko": "인기 있는",
+     "ex": "Soccer is a popular sport at my school.",
+     "exko": "축구는 우리 학교에서 인기 있는 운동이에요.",
+     "z": [
+      "hungry",
+      "wet",
+      "cloudy"
+     ],
+     "syn": [],
+     "sp": [
+      "populer",
+      "populor",
+      "poppular"
+     ]
+    },
+    {
+     "k": "s",
+     "good": "Tom is taller than Ben.",
+     "ko": "톰은 벤보다 키가 커요.",
+     "bad": [
+      "Tom is tall than Ben.",
+      "Tom is more tall than Ben.",
+      "Tom is taller then Ben."
+     ],
+     "cz": {
+      "st": "Tom is ___ than Ben.",
+      "ok": "taller",
+      "wr": [
+       "tall",
+       "tallest",
+       "more tall"
+      ]
+     },
+     "rule": "짧은 형용사는 -er을 붙여 비교급을 만들고, 비교 대상 앞에는 than을 써요."
+    },
+    {
+     "k": "s",
+     "good": "This bag is heavier than that bag.",
+     "ko": "이 가방은 저 가방보다 무거워요.",
+     "bad": [
+      "This bag is heavyer than that bag.",
+      "This bag is more heavy than that bag.",
+      "This bag is heaviest than that bag."
+     ],
+     "cz": {
+      "st": "This bag is ___ than that bag.",
+      "ok": "heavier",
+      "wr": [
+       "heavyer",
+       "heavy",
+       "heaviest"
+      ]
+     },
+     "rule": "〈자음+y〉로 끝나는 형용사는 y를 i로 바꾸고 -er을 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "My dog is bigger than your dog.",
+     "ko": "우리 개는 너의 개보다 커요.",
+     "bad": [
+      "My dog is biger than your dog.",
+      "My dog is more big than your dog.",
+      "My dog is bigest than your dog."
+     ],
+     "cz": {
+      "st": "My dog is ___ than your dog.",
+      "ok": "bigger",
+      "wr": [
+       "biger",
+       "big",
+       "biggest"
+      ]
+     },
+     "rule": "〈짧은 모음+자음 한 개〉로 끝나는 낱말은 자음을 한 번 더 쓰고 -er을 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "This book is more interesting than that one.",
+     "ko": "이 책은 저 책보다 더 재미있어요.",
+     "bad": [
+      "This book is interestinger than that one.",
+      "This book is most interesting than that one.",
+      "This book is interesting than that one."
+     ],
+     "cz": {
+      "st": "This book is ___ than that one.",
+      "ok": "more interesting",
+      "wr": [
+       "interestinger",
+       "most interesting",
+       "interesting"
+      ]
+     },
+     "rule": "긴 형용사는 -er 대신 앞에 more를 붙여 비교급을 만들어요."
+    },
+    {
+     "k": "s",
+     "good": "Mina is the tallest girl in my class.",
+     "ko": "미나는 우리 반에서 키가 가장 큰 여자아이예요.",
+     "bad": [
+      "Mina is tallest girl in my class.",
+      "Mina is the most tall girl in my class.",
+      "Mina is the tallest girl than my class."
+     ],
+     "cz": {
+      "st": "Mina is the ___ girl in my class.",
+      "ok": "tallest",
+      "wr": [
+       "most tall",
+       "tallester",
+       "more tall"
+      ]
+     },
+     "rule": "셋 이상 중에서 가장 ~한 것은 the + -est로 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "This pizza is better than that pizza.",
+     "ko": "이 피자는 저 피자보다 더 맛있어요.",
+     "bad": [
+      "This pizza is gooder than that pizza.",
+      "This pizza is more good than that pizza.",
+      "This pizza is best than that pizza."
+     ],
+     "cz": {
+      "st": "This pizza is ___ than that pizza.",
+      "ok": "better",
+      "wr": [
+       "gooder",
+       "good",
+       "best"
+      ]
+     },
+     "rule": "good의 비교급은 불규칙하게 better예요. good-better-best로 외워요."
+    },
+    {
+     "k": "s",
+     "good": "She is the best singer in our school.",
+     "ko": "그녀는 우리 학교에서 노래를 가장 잘하는 사람이에요.",
+     "bad": [
+      "She is the goodest singer in our school.",
+      "She is the most good singer in our school.",
+      "She is best singer in our school."
+     ],
+     "cz": {
+      "st": "She is the ___ singer in our school.",
+      "ok": "best",
+      "wr": [
+       "goodest",
+       "most good",
+       "gooder"
+      ]
+     },
+     "rule": "good의 최상급은 불규칙하게 best예요."
+    },
+    {
+     "k": "s",
+     "good": "Today the weather is worse than yesterday.",
+     "ko": "오늘 날씨는 어제보다 더 나빠요.",
+     "bad": [
+      "Today the weather is badder than yesterday.",
+      "Today the weather is more bad than yesterday.",
+      "Today the weather is worst than yesterday."
+     ],
+     "cz": {
+      "st": "Today the weather is ___ than yesterday.",
+      "ok": "worse",
+      "wr": [
+       "badder",
+       "bad",
+       "worst"
+      ]
+     },
+     "rule": "bad의 비교급은 불규칙하게 worse, 최상급은 worst예요.",
+     "d": 4
+    },
+    {
+     "k": "s",
+     "good": "My brother is as tall as my father.",
+     "ko": "내 남동생은 아빠만큼 키가 커요.",
+     "bad": [
+      "My brother is as taller as my father.",
+      "My brother is as tall than my father.",
+      "My brother is so tall as my father."
+     ],
+     "cz": {
+      "st": "My brother is as ___ as my father.",
+      "ok": "tall",
+      "wr": [
+       "taller",
+       "tallest",
+       "more tall"
+      ]
+     },
+     "rule": "두 대상이 같을 때는 as + 원래 형태의 형용사 + as로 나타내요. as ~ as 사이에는 -er을 붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "This box is not as big as that box.",
+     "ko": "이 상자는 저 상자만큼 크지 않아요.",
+     "bad": [
+      "This box is not as bigger as that box.",
+      "This box is not as big than that box.",
+      "This box not is as big as that box."
+     ],
+     "cz": {
+      "st": "This box is not as ___ as that box.",
+      "ok": "big",
+      "wr": [
+       "bigger",
+       "biggest",
+       "more big"
+      ]
+     },
+     "rule": "not as ~ as는 '~만큼 …하지 않다'라는 뜻이고, 사이에는 원래 형태의 형용사를 써요."
+    },
+    {
+     "k": "s",
+     "good": "Which is bigger, a cat or a dog?",
+     "ko": "고양이와 개 중에 어느 쪽이 더 커요?",
+     "bad": [
+      "Which is more big, a cat or a dog?",
+      "Which is biggest, a cat or a dog?",
+      "Which bigger is, a cat or a dog?"
+     ],
+     "cz": {
+      "st": "Which is ___, a cat or a dog?",
+      "ok": "bigger",
+      "wr": [
+       "more big",
+       "biger",
+       "bigger than"
+      ]
+     },
+     "rule": "둘 중에서 어느 쪽이 더 ~한지 물을 때는 비교급을 써요."
+    },
+    {
+     "k": "s",
+     "good": "Seoul is one of the biggest cities in Korea.",
+     "ko": "서울은 한국에서 가장 큰 도시 중 하나예요.",
+     "bad": [
+      "Seoul is one of the biggest city in Korea.",
+      "Seoul is one of biggest cities in Korea.",
+      "Seoul is one of the bigest cities in Korea."
+     ],
+     "cz": {
+      "st": "Seoul is one of the ___ cities in Korea.",
+      "ok": "biggest",
+      "wr": [
+       "bigest",
+       "most big",
+       "bigging"
+      ]
+     },
+     "rule": "one of the + 최상급 뒤에는 복수 명사를 써요. big은 g를 한 번 더 써서 biggest가 돼요."
+    },
+    {
+     "k": "s",
+     "good": "English is more difficult than math for me.",
+     "ko": "나에게는 영어가 수학보다 더 어려워요.",
+     "bad": [
+      "English is difficulter than math for me.",
+      "English is more difficult then math for me.",
+      "English is most difficult than math for me."
+     ],
+     "cz": {
+      "st": "English is ___ difficult than math for me.",
+      "ok": "more",
+      "wr": [
+       "most",
+       "much",
+       "very"
+      ]
+     },
+     "rule": "difficult처럼 긴 형용사는 more를 붙여 비교급을 만들어요."
+    },
+    {
+     "k": "s",
+     "good": "This is the most beautiful flower in the garden.",
+     "ko": "이것은 정원에서 가장 아름다운 꽃이에요.",
+     "bad": [
+      "This is the beautifulest flower in the garden.",
+      "This is most beautiful flower in the garden.",
+      "This is the most beautifuller flower in the garden."
+     ],
+     "cz": {
+      "st": "This is the ___ beautiful flower in the garden.",
+      "ok": "most",
+      "wr": [
+       "much",
+       "many",
+       "mostly"
+      ]
+     },
+     "rule": "긴 형용사의 최상급은 the most를 앞에 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "Summer is hotter than spring.",
+     "ko": "여름은 봄보다 더 더워요.",
+     "bad": [
+      "Summer is hoter than spring.",
+      "Summer is more hot than spring.",
+      "Summer is hottest than spring."
+     ],
+     "cz": {
+      "st": "Summer is ___ than spring.",
+      "ok": "hotter",
+      "wr": [
+       "hoter",
+       "hot",
+       "hottest"
+      ]
+     },
+     "rule": "hot처럼 〈짧은 모음+자음〉으로 끝나는 낱말은 t를 한 번 더 쓰고 -er을 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "Ben runs faster than Jin.",
+     "ko": "벤은 진보다 더 빨리 달려요.",
+     "bad": [
+      "Ben runs fast than Jin.",
+      "Ben runs more fast than Jin.",
+      "Ben runs fastest than Jin."
+     ],
+     "cz": {
+      "st": "Ben runs ___ than Jin.",
+      "ok": "faster",
+      "wr": [
+       "fast",
+       "fastest",
+       "more fast"
+      ]
+     },
+     "rule": "fast는 형용사와 부사의 모양이 같고, 비교급은 faster예요."
+    },
+    {
+     "k": "s",
+     "good": "I have more books than my sister.",
+     "ko": "나는 언니보다 책이 더 많아요.",
+     "bad": [
+      "I have many books than my sister.",
+      "I have more book than my sister.",
+      "I have mores books than my sister."
+     ],
+     "cz": {
+      "st": "I have ___ books than my sister.",
+      "ok": "more",
+      "wr": [
+       "many",
+       "much",
+       "most"
+      ]
+     },
+     "rule": "many의 비교급은 more이고, more 뒤에 than으로 비교 대상을 써요."
+    },
+    {
+     "k": "s",
+     "good": "Mount Everest is the highest mountain in the world.",
+     "ko": "에베레스트산은 세계에서 가장 높은 산이에요.",
+     "bad": [
+      "Mount Everest is the higher mountain in the world.",
+      "Mount Everest is the most high mountain in the world.",
+      "Mount Everest is highest mountain in the world."
+     ],
+     "cz": {
+      "st": "Mount Everest is the ___ mountain in the world.",
+      "ok": "highest",
+      "wr": [
+       "higher",
+       "most high",
+       "highing"
+      ]
+     },
+     "rule": "세계에서 가장 ~한 것은 the + -est로 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "A car is much faster than a bike.",
+     "ko": "자동차는 자전거보다 훨씬 더 빨라요.",
+     "bad": [
+      "A car is very faster than a bike.",
+      "A car is much fast than a bike.",
+      "A car is faster much than a bike."
+     ],
+     "cz": {
+      "st": "A car is ___ faster than a bike.",
+      "ok": "much",
+      "wr": [
+       "very",
+       "so",
+       "too"
+      ]
+     },
+     "rule": "비교급을 강조해서 '훨씬'이라고 할 때는 much를 써요. very는 비교급 앞에 쓰지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "The blue shirt is cheaper than the red one.",
+     "ko": "파란 셔츠는 빨간 셔츠보다 더 싸요.",
+     "bad": [
+      "The blue shirt is cheapest than the red one.",
+      "The blue shirt is more cheap than the red one.",
+      "The blue shirt is cheaper as the red one."
+     ],
+     "cz": {
+      "st": "The blue shirt is cheaper ___ the red one.",
+      "ok": "than",
+      "wr": [
+       "then",
+       "as",
+       "that"
+      ]
+     },
+     "rule": "비교하는 대상 앞에는 than을 써요. then은 '그때'라는 뜻의 다른 낱말이에요."
+    },
+    {
+     "k": "s",
+     "good": "Winter is the coldest season in Korea.",
+     "ko": "겨울은 한국에서 가장 추운 계절이에요.",
+     "bad": [
+      "Winter is the colder season in Korea.",
+      "Winter is coldest the season in Korea.",
+      "Winter is the most cold season in Korea."
+     ],
+     "cz": {
+      "st": "Winter is the ___ season in Korea.",
+      "ok": "coldest",
+      "wr": [
+       "most cold",
+       "coldist",
+       "coldly"
+      ]
+     },
+     "rule": "네 계절 중에서 가장 ~한 것이므로 최상급 the coldest를 써요."
+    },
+    {
+     "k": "m",
+     "q": "tall의 비교급은?",
+     "o": [
+      "tallest",
+      "more tall",
+      "tallter",
+      "taller"
+     ],
+     "a": 3,
+     "why": "짧은 형용사는 -er을 붙여 taller가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "big의 최상급은?",
+     "o": [
+      "bigest",
+      "bigger",
+      "biggest",
+      "most big"
+     ],
+     "a": 2,
+     "why": "big은 g를 한 번 더 쓰고 -est를 붙여 biggest가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "happy의 비교급은?",
+     "o": [
+      "happyer",
+      "happier",
+      "happiier",
+      "happieer"
+     ],
+     "a": 1,
+     "why": "〈자음+y〉로 끝나는 낱말은 y를 i로 바꾸고 -er을 붙여요."
+    },
+    {
+     "k": "m",
+     "q": "good의 비교급은?",
+     "o": [
+      "better",
+      "gooder",
+      "best",
+      "more good"
+     ],
+     "a": 0,
+     "why": "good의 비교급은 불규칙하게 better예요."
+    },
+    {
+     "k": "m",
+     "q": "bad의 최상급은?",
+     "o": [
+      "baddest",
+      "worse",
+      "most bad",
+      "worst"
+     ],
+     "a": 3,
+     "why": "bad-worse-worst로 불규칙하게 변해요."
+    },
+    {
+     "k": "m",
+     "q": "beautiful의 비교급은?",
+     "o": [
+      "beautifuler",
+      "most beautiful",
+      "more beautiful",
+      "beautifulest"
+     ],
+     "a": 2,
+     "why": "긴 형용사는 앞에 more를 붙여 비교급을 만들어요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 more를 붙여 비교급을 만드는 낱말은?",
+     "o": [
+      "cold",
+      "expensive",
+      "fast",
+      "long"
+     ],
+     "a": 1,
+     "why": "expensive는 긴 낱말이라서 more expensive가 돼요. 나머지는 colder, faster, longer예요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 -er을 붙여 비교급을 만드는 낱말은?",
+     "o": [
+      "quick",
+      "famous",
+      "popular",
+      "difficult"
+     ],
+     "a": 0,
+     "why": "quick은 짧은 낱말이라서 quicker가 돼요. 나머지는 more famous, more popular, more difficult예요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nA giraffe is ___ than a horse.",
+     "o": [
+      "tallest",
+      "tall",
+      "as tall",
+      "taller"
+     ],
+     "a": 3,
+     "why": "둘을 비교하고 뒤에 than이 있으므로 비교급 taller를 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nThis is the ___ day of my life. (가장 행복한)",
+     "o": [
+      "happier",
+      "happyest",
+      "happiest",
+      "happiness"
+     ],
+     "a": 2,
+     "why": "the 뒤에는 최상급이 오고, happy는 y를 i로 바꾸어 happiest가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nToday is ___ than yesterday. (더 따뜻한)",
+     "o": [
+      "warm",
+      "warmer",
+      "warmest",
+      "more warm"
+     ],
+     "a": 1,
+     "why": "than 앞에는 비교급을 써요. warm은 짧은 낱말이라서 warmer가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nMath is ___ than science for me. (더 쉬운)",
+     "o": [
+      "easier",
+      "easy",
+      "easiest",
+      "easyer"
+     ],
+     "a": 0,
+     "why": "easy는 y를 i로 바꾸고 -er을 붙여 easier가 돼요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nWho runs the ___ in your class?",
+     "o": [
+      "faster",
+      "fast",
+      "more fast",
+      "fastest"
+     ],
+     "a": 3,
+     "why": "반 전체 중에서 가장 빠르므로 the fastest를 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nThis bag is as ___ as that bag.",
+     "o": [
+      "lighter",
+      "lightest",
+      "light",
+      "more light"
+     ],
+     "a": 2,
+     "why": "as ~ as 사이에는 원래 형태의 형용사를 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nMy cat is smaller ___ your cat.",
+     "o": [
+      "then",
+      "than",
+      "as",
+      "that"
+     ],
+     "a": 1,
+     "why": "비교급 뒤에서 비교 대상을 이끄는 말은 than이에요."
+    },
+    {
+     "k": "m",
+     "q": "'He is older than me.'의 뜻으로 알맞은 것은?",
+     "o": [
+      "그는 나보다 나이가 많아요.",
+      "그는 나보다 어려요.",
+      "그는 나와 나이가 같아요.",
+      "그는 가장 나이가 많아요."
+     ],
+     "a": 0,
+     "why": "older than은 '~보다 나이가 많은'이라는 뜻이에요."
+    },
+    {
+     "k": "m",
+     "q": "'Sora is the shortest in her family.'의 뜻으로 알맞은 것은?",
+     "o": [
+      "소라는 가족 중에서 키가 가장 커요.",
+      "소라는 엄마보다 키가 조금 커요.",
+      "소라는 가족과 키가 같아요.",
+      "소라는 가족 중에서 키가 가장 작아요."
+     ],
+     "a": 3,
+     "why": "the shortest는 '가장 키가 작은'이라는 뜻이에요."
+    },
+    {
+     "k": "m",
+     "q": "heavier의 반대말은?",
+     "o": [
+      "longer",
+      "harder",
+      "lighter",
+      "smaller"
+     ],
+     "a": 2,
+     "why": "무거운(heavy)의 반대는 가벼운(light)이라서 heavier의 반대는 lighter예요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nShe is the ___ student in our school. (가장 똑똑한)",
+     "o": [
+      "smarter",
+      "smartest",
+      "smart",
+      "most smart"
+     ],
+     "a": 1,
+     "why": "학교 전체에서 가장 똑똑하므로 the smartest를 써요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nWhich is ___, the red car or the blue car? (더 비싼)",
+     "o": [
+      "more expensive",
+      "most expensive",
+      "expensiver",
+      "expensive"
+     ],
+     "a": 0,
+     "why": "둘을 비교하는 질문이고 expensive는 긴 낱말이라서 more expensive를 써요."
+    },
+    {
+     "k": "m",
+     "q": "'이 가방이 저 가방보다 더 싸요.'를 영어로 바르게 쓴 것은?",
+     "o": [
+      "This bag is cheapest than that bag.",
+      "This bag is more cheaper than that bag.",
+      "This bag is cheap than that bag.",
+      "This bag is cheaper than that bag."
+     ],
+     "a": 3,
+     "why": "비교급 cheaper 뒤에 than을 써요. more와 -er을 함께 쓰지 않아요."
+    },
+    {
+     "k": "m",
+     "q": "'그녀는 반에서 노래를 가장 잘해요.'를 영어로 바르게 쓴 것은?",
+     "o": [
+      "She sings the goodest in her class.",
+      "She sings the better in her class.",
+      "She sings the best in her class.",
+      "She sings best than her class."
+     ],
+     "a": 2,
+     "why": "good/well의 최상급은 best예요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nA whale is ___ bigger than a fish. (훨씬)",
+     "o": [
+      "very",
+      "much",
+      "so",
+      "too"
+     ],
+     "a": 1,
+     "why": "비교급을 강조할 때는 much를 써요. very, so, too는 비교급 앞에 쓰지 않아요."
+    },
+    {
+     "k": "m",
+     "q": "good - better - ___",
+     "o": [
+      "best",
+      "goodest",
+      "most good",
+      "gooder"
+     ],
+     "a": 0,
+     "why": "good의 최상급은 best예요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nThe Pacific Ocean is the ___ ocean in the world.",
+     "o": [
+      "larger",
+      "large",
+      "most large",
+      "largest"
+     ],
+     "a": 3,
+     "why": "세계에서 가장 큰 것이므로 최상급 the largest를 써요."
+    },
+    {
+     "k": "m",
+     "q": "다음 중 비교하는 표현이 쓰이지 않은 문장은?",
+     "o": [
+      "She is taller than me.",
+      "He is the fastest runner.",
+      "This soup is hot.",
+      "It is more useful than that."
+     ],
+     "a": 2,
+     "why": "This soup is hot.에는 비교급이나 최상급이 없어요."
+    },
+    {
+     "k": "r",
+     "title": "Two Brothers",
+     "text": "Jun and Min are brothers. Jun is twelve, and Min is ten, so Jun is older than Min. But Min is taller than Jun. Jun runs faster than his brother, but Min swims better. Min is the best swimmer in his class. Jun's favorite subject is math. He thinks it is more interesting than English.",
+     "qs": [
+      {
+       "q": "Who is older?",
+       "o": [
+        "Jun",
+        "Min",
+        "They are the same age",
+        "The text does not say"
+       ],
+       "a": 0,
+       "why": "Jun은 열두 살이고 Min은 열 살이에요."
+      },
+      {
+       "q": "Which sentence is true about Min?",
+       "o": [
+        "He runs faster than Jun",
+        "He is shorter than Jun",
+        "He swims better than Jun",
+        "He likes math the most"
+       ],
+       "a": 2,
+       "why": "Min swims better.라고 했어요."
+      },
+      {
+       "q": "What does \"it\" mean in the last sentence?",
+       "o": [
+        "Math",
+        "English",
+        "Swimming",
+        "His class"
+       ],
+       "a": 0,
+       "why": "it은 바로 앞의 math를 가리켜요."
+      },
+      {
+       "q": "How old is Min?",
+       "o": [
+        "Twelve",
+        "Eleven",
+        "Ten",
+        "Nine"
+       ],
+       "a": 2,
+       "why": "Jun is twelve, and Min is ten이라고 했어요."
+      },
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "Two brothers who are different",
+        "A swimming contest",
+        "Jun's math class",
+        "Where the boys live"
+       ],
+       "a": 0,
+       "why": "두 형제의 서로 다른 점을 비교한 글이에요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Seasons in Korea",
+     "text": "Korea has four seasons. Spring is warmer than winter, and flowers come out. Summer is the hottest season, and it is also the wettest because of the rain in July. Autumn is cooler than summer, and many people think it is the most beautiful season. Winter is the coldest, so I wear a thick coat.",
+     "qs": [
+      {
+       "q": "Which season is the hottest?",
+       "o": [
+        "Summer",
+        "Spring",
+        "Autumn",
+        "Winter"
+       ],
+       "a": 0,
+       "why": "Summer is the hottest season이라고 했어요."
+      },
+      {
+       "q": "Why does the writer wear a thick coat?",
+       "o": [
+        "Autumn is cooler than summer",
+        "It rains a lot in July",
+        "Winter is the coldest season",
+        "Spring is warmer than winter"
+       ],
+       "a": 2,
+       "why": "겨울이 가장 추워서 두꺼운 코트를 입어요."
+      },
+      {
+       "q": "Which season do many people think is the most beautiful?",
+       "o": [
+        "Autumn",
+        "Spring",
+        "Summer",
+        "Winter"
+       ],
+       "a": 0,
+       "why": "many people think it is the most beautiful season에서 it은 autumn이에요."
+      },
+      {
+       "q": "Why is summer the wettest season?",
+       "o": [
+        "There is snow in July",
+        "Flowers come out",
+        "There is rain in July",
+        "People wear coats"
+       ],
+       "a": 2,
+       "why": "because of the rain in July라고 했어요."
+      },
+      {
+       "q": "Why did the writer write this text?",
+       "o": [
+        "To describe the seasons in Korea",
+        "To sell winter coats",
+        "To tell a story about July",
+        "To teach a swimming class"
+       ],
+       "a": 0,
+       "why": "한국의 사계절을 비교하며 설명하는 글이에요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Choosing a Bag",
+     "text": "Soo went to a shop with her mother. The red bag was cheaper than the blue bag, but the blue bag was bigger. The green bag was the most expensive, but it was also the lightest. Soo wanted a big bag for her books, so she chose the blue one. Her mother said, \"It is the best bag for school.\"",
+     "qs": [
+      {
+       "q": "Which bag is the cheapest?",
+       "o": [
+        "The blue bag",
+        "The green bag",
+        "The red bag",
+        "They cost the same"
+       ],
+       "a": 2,
+       "why": "빨간 가방이 파란 가방보다 싸고, 초록 가방이 가장 비싸요. 그래서 빨간 가방이 가장 싸요."
+      },
+      {
+       "q": "Why did Soo choose the blue bag?",
+       "o": [
+        "It was big enough for her books",
+        "It was the lightest of the three bags",
+        "It was cheaper than the red one",
+        "Her mother liked its color"
+       ],
+       "a": 0,
+       "why": "Soo wanted a big bag for her books라고 했어요."
+      },
+      {
+       "q": "Which bag is the lightest?",
+       "o": [
+        "The red bag",
+        "The blue bag",
+        "The green bag",
+        "The text does not say"
+       ],
+       "a": 2,
+       "why": "The green bag ... was also the lightest라고 했어요."
+      },
+      {
+       "q": "Who said \"It is the best bag for school\"?",
+       "o": [
+        "Soo's mother",
+        "The shop owner",
+        "Soo",
+        "A teacher"
+       ],
+       "a": 0,
+       "why": "Her mother said라고 했어요."
+      },
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A day at school",
+        "Making a green bag",
+        "Soo choosing a bag",
+        "Selling books"
+       ],
+       "a": 2,
+       "why": "Soo가 가방을 비교하고 고르는 이야기예요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Animals Around the World",
+     "text": "A cheetah is faster than a lion, but a lion is stronger than a cheetah. An elephant is the biggest animal on land. It is much bigger than a horse. However, a blue whale is even bigger than an elephant. It is the largest animal in the world, and it lives in the sea. A mouse is much smaller than a cat, but it is quick.",
+     "qs": [
+      {
+       "q": "Which animal is the largest in the world?",
+       "o": [
+        "A blue whale",
+        "An elephant",
+        "A lion",
+        "A horse"
+       ],
+       "a": 0,
+       "why": "a blue whale ... is the largest animal in the world라고 했어요."
+      },
+      {
+       "q": "Which sentence is true?",
+       "o": [
+        "A cheetah is slower than a lion",
+        "A horse is bigger than an elephant",
+        "A lion is stronger than a cheetah",
+        "A mouse is bigger than a cat"
+       ],
+       "a": 2,
+       "why": "a lion is stronger than a cheetah라고 했어요."
+      },
+      {
+       "q": "Where does a blue whale live?",
+       "o": [
+        "In the sea",
+        "On land",
+        "In a tree",
+        "On a farm"
+       ],
+       "a": 0,
+       "why": "it lives in the sea라고 했어요."
+      },
+      {
+       "q": "Why did the writer write this text?",
+       "o": [
+        "To tell a funny story",
+        "To sell animal photos",
+        "To compare different animals",
+        "To teach swimming"
+       ],
+       "a": 2,
+       "why": "여러 동물을 서로 비교하는 글이에요."
+      },
+      {
+       "q": "What does \"It\" mean in \"It is much bigger than a horse\"?",
+       "o": [
+        "An elephant",
+        "A lion",
+        "A cheetah",
+        "A blue whale"
+       ],
+       "a": 0,
+       "why": "바로 앞 문장의 An elephant를 가리켜요."
+      }
+     ],
+     "std": [
+      "6영01-04",
+      "6영01-05"
+     ]
+    }
+   ]
+  }
+ ]
+}
