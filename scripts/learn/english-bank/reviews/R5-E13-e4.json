@@ -1,0 +1,325 @@
+{
+ "packet": "E13-e4",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 5,
+  "questions": 110
+ },
+ "patches": [
+  {
+   "item": "dc5581aa",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does the little brother eat rice and eggs?",
+      "o": [
+       "He does not like fish.",
+       "He is too sleepy to eat.",
+       "There is no soup at home.",
+       "He wants a snack later."
+      ],
+      "a": 0,
+      "why": "“does not like fish, so he eats rice and eggs”에서 이유를 알 수 있어요."
+     },
+     {
+      "q": "Who tells a funny story?",
+      "o": [
+       "Grandma",
+       "Dad",
+       "Grandpa",
+       "The little brother"
+      ],
+      "a": 2,
+      "why": "저녁 식사 후 할아버지가 이야기를 해 줘요."
+     },
+     {
+      "q": "What is this text mainly about?",
+      "o": [
+       "A cooking class at school",
+       "A family dinner on Sunday",
+       "A trip to the sea",
+       "A birthday party at home"
+      ],
+      "a": 1,
+      "why": "일요일 저녁에 할머니 댁에서 가족이 식사하는 내용이에요."
+     },
+     {
+      "q": "What does Grandma make?",
+      "o": [
+       "Noodles and green salad",
+       "Pizza and orange juice",
+       "Sandwiches and hot tea",
+       "Bean soup and fried fish"
+      ],
+      "a": 3,
+      "why": "She makes bean soup and fried fish."
+     }
+    ]
+   },
+   "severity": "major",
+   "why": "Q4: distractor 'Rice and eggs' is a second reading (text does not say who makes the rice and eggs the brother eats) and the key was the uniquely longest option; replaced distractors with clearly wrong items of similar length. Q1: key was uniquely longest; lengthened distractors."
+  },
+  {
+   "item": "3194cf9f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does Lucas live?",
+      "o": [
+       "In Korea",
+       "In Canada",
+       "In Japan",
+       "In England"
+      ],
+      "a": 1,
+      "why": "I live in Canada."
+     },
+     {
+      "q": "What is Max?",
+      "o": [
+       "Lucas's dog",
+       "Lucas's brother",
+       "Lucas's school",
+       "Lucas's cat"
+      ],
+      "a": 0,
+      "why": "I have a dog named Max."
+     },
+     {
+      "q": "What does Lucas like?",
+      "o": [
+       "Soccer and soup",
+       "Music and cake",
+       "Books and tennis",
+       "Pizza and swimming"
+      ],
+      "a": 3,
+      "why": "I like pizza and swimming."
+     },
+     {
+      "q": "Why does Lucas write this letter?",
+      "o": [
+       "He wants to sell his dog to a friend.",
+       "He wants to visit a school in Korea.",
+       "He wants a new friend to write back.",
+       "He wants to say sorry to his teacher."
+      ],
+      "a": 2,
+      "why": "자기소개를 하고 답장을 부탁하므로, 편지를 주고받을 친구를 원하는 거예요."
+     }
+    ]
+   },
+   "severity": "minor",
+   "why": "Q4 key was uniquely longest/most specific; lengthened distractors to equal length."
+  },
+  {
+   "item": "c4a42fe6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What do you do first?",
+      "o": [
+       "Cut the sandwich into halves",
+       "Put some cheese on the bread",
+       "Put two slices on a plate",
+       "Wash the tomato and the plate"
+      ],
+      "a": 2,
+      "why": "First로 시작하는 문장이 첫 단계예요."
+     },
+     {
+      "q": "What goes on one slice of bread?",
+      "o": [
+       "Cheese and tomato",
+       "Butter and berry jam",
+       "Egg and sliced ham",
+       "Lettuce and chicken"
+      ],
+      "a": 0,
+      "why": "Next, put cheese and tomato on one slice."
+     },
+     {
+      "q": "What is the third step?",
+      "o": [
+       "Cut the sandwich in half",
+       "Put the other slice on top",
+       "Put the sandwich in a bag",
+       "Eat the sandwich"
+      ],
+      "a": 1,
+      "why": "First, Next, Then, Last 순서에서 세 번째 단계는 Then이에요. “Then put the other slice on top.”"
+     },
+     {
+      "q": "What is the last step?",
+      "o": [
+       "Put cheese on a slice",
+       "Put bread on a plate",
+       "Put the other slice on top",
+       "Cut the sandwich in half"
+      ],
+      "a": 3,
+      "why": "Last, cut the sandwich in half."
+     }
+    ]
+   },
+   "severity": "major",
+   "why": "Q3 stem ('after putting cheese and tomato on the bread') gave away Q2's answer; reworded to 'third step' (and Q4 'last step' stays independent). Q1 and Q2 keys were uniquely longest; distractors lengthened."
+  },
+  {
+   "item": "791c47fb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does Sora's umbrella look like?",
+      "o": [
+       "Pink with stars",
+       "Purple with white dots",
+       "Blue with stripes",
+       "Red with flowers"
+      ],
+      "a": 1,
+      "why": "It is purple with white dots."
+     },
+     {
+      "q": "Where does Sora look first?",
+      "o": [
+       "In her classroom and the gym",
+       "On the bus and at the bus stop",
+       "In the library and the cafeteria",
+       "At the shop near her school"
+      ],
+      "a": 0,
+      "why": "She looks in her classroom and in the gym. 음악실은 마지막에 우산을 찾은 곳이에요."
+     },
+     {
+      "q": "Where does she find the umbrella?",
+      "o": [
+       "On a desk",
+       "Behind a door",
+       "Under a chair",
+       "In a bag"
+      ],
+      "a": 2,
+      "why": "She sees it under a chair in the music room."
+     },
+     {
+      "q": "How does Sora feel at the end?",
+      "o": [
+       "Angry",
+       "Sleepy",
+       "Afraid",
+       "Happy"
+      ],
+      "a": 3,
+      "why": "She is happy and says, \"Here it is!\""
+     }
+    ]
+   },
+   "severity": "minor",
+   "why": "Q2 key uniquely longest; also the old distractor 'In the music room' revealed Q3's answer location. Replaced."
+  },
+  {
+   "item": "1ee2dd23",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is wrong with Dad?",
+      "o": [
+       "He has a cold.",
+       "He lost his bag.",
+       "He is late for work.",
+       "He hurts his leg."
+      ],
+      "a": 0,
+      "why": "Dad has a cold today."
+     },
+     {
+      "q": "Who gives Dad warm tea?",
+      "o": [
+       "The writer",
+       "Grandma",
+       "Mom",
+       "A doctor"
+      ],
+      "a": 2,
+      "why": "Mom gives him warm tea and some medicine."
+     },
+     {
+      "q": "Why does the writer make a card?",
+      "o": [
+       "To say happy birthday",
+       "To make Dad feel better",
+       "To thank Dad for a gift",
+       "To ask Dad to play"
+      ],
+      "a": 1,
+      "why": "Get well soon!은 빨리 낫기를 바라는 말이에요."
+     },
+     {
+      "q": "Where does Dad sleep?",
+      "o": [
+       "On the sofa at work",
+       "In the car",
+       "In the garden",
+       "In bed at home"
+      ],
+      "a": 3,
+      "why": "Dad stays home and sleeps in bed."
+     }
+    ]
+   },
+   "severity": "major",
+   "why": "Q3 key 'To wish Dad feels better' is ungrammatical English."
+  },
+  {
+   "item": "5435f4c1",
+   "op": "set",
+   "set": {
+    "text": "Boy: Excuse me. Where is the post office?\nGirl: Go straight for two blocks.\nBoy: Two blocks. And then?\nGirl: Turn left at the bank. The post office is next to the flower shop.\nBoy: Is it far?\nGirl: No, it takes five minutes on foot.\nBoy: Thank you very much.\nGirl: You are welcome."
+   },
+   "severity": "major",
+   "why": "'Turn left at the bank. It is next to the flower shop.' - 'It' can be the bank or the post office, so Q2 had two readings. Text made explicit; existing Korean translation remains consistent, qs unchanged."
+  },
+  {
+   "item": "4d90967d",
+   "op": "set",
+   "set": {
+    "q": "Read the message: “I lost my pencil case. Can you help me look for it?” What does the writer want?",
+    "o": [
+     "A new pencil case to use",
+     "A ride to school today",
+     "Help finding the pencil case",
+     "A pencil to borrow in class"
+    ],
+    "a": 2,
+    "why": "잃어버린 필통을 같이 찾아 달라고 부탁하는 글이에요."
+   },
+   "severity": "minor",
+   "why": "Key uniquely longest and most specific; lengthened distractors (q unchanged)."
+  },
+  {
+   "item": "96085ea9",
+   "op": "set",
+   "set": {
+    "q": "Read: “The shop opens at 10 a.m. and closes at 8 p.m.” When is the shop open?",
+    "o": [
+     "At noon",
+     "At 9 a.m.",
+     "At 9 p.m.",
+     "At 6 a.m."
+    ],
+    "a": 0,
+    "why": "오전 10시부터 오후 8시까지 열므로 정오(낮 12시)에는 열려 있어요. 나머지 시각은 열기 전이거나 닫은 후예요."
+   },
+   "severity": "major",
+   "why": "Identity field q changed. Without a.m./p.m. 'opens at ten, closes at eight' also reads as a night shop (10 p.m.-8 a.m.), making noon wrong and 9 a.m./6 a.m. right; made times explicit."
+  }
+ ],
+ "ok": 99,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,113 @@
+{
+ "packet": "E14-e5",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "4510e156",
+   "op": "set",
+   "set": {
+    "q": "well(잘)의 비교급은?",
+    "o": [
+     "gooder",
+     "weller",
+     "better",
+     "more well"
+    ],
+    "a": 2,
+    "why": "well(잘)의 비교급도 good처럼 불규칙하게 better예요."
+   },
+   "why": "Identity change (q/o): avoids duplicating 11a3b43a (good->better).",
+   "severity": "minor"
+  },
+  {
+   "item": "985a37bb",
+   "op": "set",
+   "set": {
+    "q": "빈칸에 알맞은 말은?\nold - older - ___",
+    "o": [
+     "oldest",
+     "most old",
+     "olderest",
+     "oldder"
+    ],
+    "a": 0,
+    "why": "old의 최상급은 -est를 붙여 oldest예요. old-older-oldest로 외워요."
+   },
+   "why": "Identity change (q/o): avoids duplicating 9ed317e9 options and no longer shows better (key of 4510e156).",
+   "severity": "minor"
+  },
+  {
+   "item": "4a833c43",
+   "op": "set",
+   "set": {
+    "q": "thin의 최상급은?",
+    "o": [
+     "thinest",
+     "thinner",
+     "thinnest",
+     "most thin"
+    ],
+    "a": 2,
+    "why": "thin은 n을 한 번 더 쓰고 -est를 붙여 thinnest가 돼요."
+   },
+   "why": "Identity change (q/o): avoids restating cb0d22ef (biggest).",
+   "severity": "minor"
+  },
+  {
+   "item": "144ca528",
+   "op": "set",
+   "set": {
+    "q": "'이 버스가 저 버스보다 더 느려요.'를 영어로 바르게 쓴 것은?",
+    "o": [
+     "This bus is slow than that bus.",
+     "This bus is slower than that bus.",
+     "This bus is slowest than that bus.",
+     "This bus is more slower than that bus."
+    ],
+    "a": 1,
+    "why": "비교급 slower 뒤에 than을 써요. more와 -er을 함께 쓰지 않아요."
+   },
+   "why": "Identity change (q/o): avoids duplicating e2f0ad7b (cheaper than).",
+   "severity": "minor"
+  },
+  {
+   "item": "1290e70a",
+   "op": "set",
+   "set": {
+    "q": "빈칸에 알맞은 말은?\nBomi is the tallest ___ the three girls.",
+    "o": [
+     "in",
+     "of",
+     "than",
+     "as"
+    ],
+    "a": 1,
+    "why": "the three girls처럼 여럿(셋)을 가리키는 말 앞에는 of를 써요. my class처럼 장소·집단 앞에는 in을 써요."
+   },
+   "why": "Identity change (q/o): avoids duplicating 26973a7e (much + comparative).",
+   "severity": "minor"
+  },
+  {
+   "item": "37b1f7fd",
+   "op": "set",
+   "set": {
+    "o": [
+     "She is taller than me.",
+     "He is the fastest runner.",
+     "This soup is very hot today.",
+     "It is more useful than that."
+    ],
+    "a": 2,
+    "why": "This soup is very hot today.에는 비교급이나 최상급이 없어요."
+   },
+   "why": "Key was uniquely shortest; lengthened.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 92,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

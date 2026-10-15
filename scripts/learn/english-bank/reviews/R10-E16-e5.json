@@ -1,0 +1,324 @@
+{
+ "packet": "E16-e5",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 117
+ },
+ "patches": [
+  {
+   "item": "6ccb9cfb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did Doctor Kim visit the class?",
+      "o": [
+       "To check students' eyes",
+       "To give out medicine",
+       "To talk about healthy habits",
+       "To teach a cooking class"
+      ],
+      "a": 2,
+      "why": "건강한 습관에 대해 이야기하러 왔어요.",
+      "std": [
+       "6영01-05"
+      ]
+     },
+     {
+      "q": "Why should students sleep at least nine hours?",
+      "o": [
+       "So they can skip breakfast",
+       "So they can learn well",
+       "So they can watch more TV",
+       "So they can walk to school"
+      ],
+      "a": 1,
+      "why": "피곤한 아이들은 잘 배우지 못하기 때문이에요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "When should students wash their hands?",
+      "o": [
+       "After class",
+       "Every Monday",
+       "Before bedtime",
+       "Before meals"
+      ],
+      "a": 3,
+      "why": "식사 전에 손을 씻으라고 했어요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "Which advice did Doctor Kim NOT give?",
+      "o": [
+       "Eat vegetables every day.",
+       "Play outside for an hour.",
+       "Drink milk every morning.",
+       "Wash your hands before meals."
+      ],
+      "a": 2,
+      "why": "우유 이야기는 없었어요. 나머지는 모두 조언한 내용이에요.",
+      "std": [
+       "6영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Remove \"only\" from three distractors of the hand-washing question (absolute-word cue).",
+   "severity": "major"
+  },
+  {
+   "item": "0ae91520",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the largest number of books a student can borrow?",
+      "o": [
+       "Two",
+       "Three",
+       "Four",
+       "Five"
+      ],
+      "a": 1,
+      "why": "up to three books, 최대 세 권이에요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "What should students do to keep a book longer?",
+      "o": [
+       "Hide it on the shelf",
+       "Give it to a classmate",
+       "Wait until the library closes",
+       "Ask the librarian first"
+      ],
+      "a": 3,
+      "why": "기간을 늘리려면 반납일 전에 사서 선생님께 물어봐야 해요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "Which thing is allowed in the library?",
+      "o": [
+       "Eating snacks",
+       "Drinking juice at a table",
+       "Speaking quietly",
+       "Talking loudly"
+      ],
+      "a": 2,
+      "why": "조용히 말하는 것만 허용돼요. 음식은 안 되고 음료는 가방에 두어야 해요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "What is the purpose of this text?",
+      "o": [
+       "To explain how books are made",
+       "To tell the library rules",
+       "To sell books to students",
+       "To describe a trip to a library"
+      ],
+      "a": 1,
+      "why": "도서관 이용 규칙을 알려 주는 글이에요.",
+      "std": [
+       "6영01-05"
+      ]
+     },
+     {
+      "q": "Until what time is the library open?",
+      "o": [
+       "4 p.m.",
+       "5 p.m.",
+       "3 p.m.",
+       "6 p.m."
+      ],
+      "a": 0,
+      "why": "from 9 a.m. to 4 p.m.이라고 나와요.",
+      "std": [
+       "6영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Q1 stem made unambiguous (\"up to three\").",
+   "severity": "minor"
+  },
+  {
+   "item": "5001007d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How penguins live and swim",
+       "Why penguins like fish",
+       "Where to see birds fly",
+       "Animals of hot deserts"
+      ],
+      "a": 0,
+      "why": "펭귄의 생활과 헤엄 등 특징을 소개하는 글이에요.",
+      "std": [
+       "6영01-05"
+      ]
+     },
+     {
+      "q": "What do penguins use their wings for in the water?",
+      "o": [
+       "To dig holes in ice",
+       "To swim",
+       "To carry fish home",
+       "To call others"
+      ],
+      "a": 1,
+      "why": "날개를 노처럼 써서 헤엄친다고 했어요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "What keeps penguins warm?",
+      "o": [
+       "Warm sea water and snow",
+       "Bright sunlight and sand",
+       "Small caves and rocks",
+       "Thick feathers and fat"
+      ],
+      "a": 3,
+      "why": "두꺼운 깃털과 지방층 덕분에 따뜻해요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "Which statement is true?",
+      "o": [
+       "Penguins fly very high.",
+       "Penguins swim well.",
+       "Penguins eat only plants.",
+       "Penguins like hot sand."
+      ],
+      "a": 1,
+      "why": "펭귄은 물속에서 빠른 수영 선수예요.",
+      "std": [
+       "6영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Lengthen Q3 distractors so the key is not uniquely longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "229dcfc3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did Ben feel when he first sat on the bike?",
+      "o": [
+       "Bored",
+       "Proud",
+       "Afraid",
+       "Angry"
+      ],
+      "a": 2,
+      "why": "처음에는 타기를 무서워했고 다리가 떨렸어요.",
+      "std": [
+       "6영01-04"
+      ]
+     },
+     {
+      "q": "What does Yuri mean by \"I won't let go\"?",
+      "o": [
+       "She will go home soon.",
+       "She will keep holding the bike.",
+       "She will ride next to him.",
+       "She will buy him a helmet."
+      ],
+      "a": 1,
+      "why": "뒤에서 자전거를 계속 잡아 주겠다는 뜻이에요.",
+      "std": [
+       "6영01-03"
+      ]
+     },
+     {
+      "q": "What can we guess about Yuri?",
+      "o": [
+       "She was angry with him.",
+       "She could not ride a bike.",
+       "She had gone home already.",
+       "She let go of the bike."
+      ],
+      "a": 3,
+      "why": "벤이 뒤돌아보니 유리가 멀리 뒤에 있었으므로 자전거를 놓았다고 짐작할 수 있어요.",
+      "std": [
+       "6영01-05"
+      ]
+     },
+     {
+      "q": "Why did Ben laugh loudly?",
+      "o": [
+       "He felt proud and happy.",
+       "He had fallen down on the road.",
+       "He lost the way back home.",
+       "He saw something very funny."
+      ],
+      "a": 0,
+      "why": "혼자 자전거를 타고 있다는 것을 알고 기뻐서 웃었어요.",
+      "std": [
+       "6영01-05"
+      ]
+     }
+    ]
+   },
+   "why": "Lengthen Q4 distractors so the key is not uniquely longest.",
+   "severity": "minor"
+  },
+  {
+   "item": "c04a6f26",
+   "op": "set",
+   "set": {
+    "q": "Read: “Dogs need exercise every day. They also need food, water, and a warm place to sleep. Taking care of a dog takes time.” What is the main idea?",
+    "o": [
+     "Dogs can run very fast",
+     "Dogs sleep all day long",
+     "Dogs need a lot of care",
+     "Dogs eat only meat and bones"
+    ],
+    "a": 2,
+    "why": "개를 돌보려면 운동, 먹이, 잠자리 등 시간과 정성이 필요하다는 것이 중심 내용이에요."
+   },
+   "why": "Lengthen distractors (changes o, an identity field).",
+   "severity": "minor"
+  },
+  {
+   "item": "fdf0e40b",
+   "op": "set",
+   "set": {
+    "q": "Subject: New Test Day. “Hi class, our science test is moved from Tuesday to Thursday. Please study more!” What is this email about?",
+    "o": [
+     "A class trip to a museum",
+     "A lost science book",
+     "A new science teacher",
+     "A change of test day"
+    ],
+    "a": 3,
+    "why": "과학 시험 날짜가 화요일에서 목요일로 바뀐다는 내용이에요."
+   },
+   "why": "Lengthen distractors (changes o, an identity field).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 111,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

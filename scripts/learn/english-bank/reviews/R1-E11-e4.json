@@ -1,0 +1,142 @@
+{
+ "packet": "E11-e4",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 72
+ },
+ "patches": [
+  {
+   "item": "63960bbf",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Sam loses his dog",
+       "Sam asks for a pet dog",
+       "Sam's mother buys a house",
+       "A pet shop closes down"
+      ],
+      "a": 1,
+      "why": "샘이 개를 키우고 싶어 하고 엄마와 이야기하는 내용이에요."
+     },
+     {
+      "q": "What does Sam promise to do?",
+      "o": [
+       "Wash the dog every night",
+       "Feed the dog and walk it",
+       "Teach the dog tricks",
+       "Sell the dog later"
+      ],
+      "a": 1,
+      "why": "I will feed it and walk it every day라고 했어요."
+     },
+     {
+      "q": "Why doesn't his mother want a big dog?",
+      "o": [
+       "Their house is small.",
+       "Dogs are expensive.",
+       "Sam is afraid of dogs.",
+       "She likes cats better."
+      ],
+      "a": 0,
+      "why": "because their house is small이라고 했어요."
+     },
+     {
+      "q": "When will they visit the pet shop?",
+      "o": [
+       "On Friday",
+       "Tomorrow morning",
+       "Next month",
+       "On Sunday"
+      ],
+      "a": 3,
+      "why": "they will visit a pet shop on Sunday라고 했어요."
+     },
+     {
+      "q": "How does his mother seem at the end?",
+      "o": [
+       "Angry about Sam's idea",
+       "Worried about the cost",
+       "Happy about Sam's answer",
+       "Bored by Sam's story"
+      ],
+      "a": 2,
+      "why": "His mother smiles라고 해서 샘의 대답에 만족한 것을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Remove punctuation cue in q1, balance q5 option lengths, fix explanation spacing.",
+   "severity": "major"
+  },
+  {
+   "item": "d7e9fc88",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What problem does Yuna have?",
+      "o": [
+       "She missed her bus.",
+       "She lost her phone.",
+       "She is lost in the city.",
+       "She has no umbrella."
+      ],
+      "a": 3,
+      "why": "It is raining, but she doesn't have an umbrella라고 했어요."
+     },
+     {
+      "q": "What does the old man ask Yuna?",
+      "o": [
+       "If she is cold",
+       "If she is lost",
+       "Where her house is",
+       "What time it is"
+      ],
+      "a": 0,
+      "why": "An old man asks, \"Are you cold?\"라고 했어요."
+     },
+     {
+      "q": "In \"Don't you need it?\", what does 'it' mean?",
+      "o": [
+       "The bus",
+       "The rain",
+       "The umbrella",
+       "The bus stop"
+      ],
+      "a": 2,
+      "why": "it은 바로 앞에서 노인이 준 우산을 가리켜요."
+     },
+     {
+      "q": "Why doesn't the old man need the umbrella?",
+      "o": [
+       "His house is near.",
+       "He has a car.",
+       "The rain stops soon.",
+       "He has another one."
+      ],
+      "a": 0,
+      "why": "No, my house is near라고 했어요."
+     },
+     {
+      "q": "What kind of person is the old man?",
+      "o": [
+       "Rude",
+       "Shy",
+       "Lazy",
+       "Kind"
+      ],
+      "a": 3,
+      "why": "비를 맞는 유나에게 자기 우산을 주었으니 친절한 사람이에요."
+     }
+    ]
+   },
+   "why": "Key of q1 no longer uniquely longest; q5 explanation no longer invents facts.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 68,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

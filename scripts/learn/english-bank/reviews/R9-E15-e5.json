@@ -1,0 +1,272 @@
+{
+ "packet": "E15-e5",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 77
+ },
+ "patches": [
+  {
+   "item": "0f9b2d41",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Playing in a soccer game after lunch",
+       "Talking with a new classmate at lunch",
+       "Cooking a special lunch for the class",
+       "Moving to a different school this year"
+      ],
+      "a": 1,
+      "why": "새로 온 친구 준과 처음 대화하는 이야기예요."
+     },
+     {
+      "q": "In the passage, ‘shy’ means ___.",
+      "o": [
+       "good at playing many sports",
+       "very hungry before lunch time",
+       "afraid to talk to new people",
+       "tired after a long school day"
+      ],
+      "a": 2,
+      "why": "shy는 낯선 사람과 이야기하기를 부끄러워하는 것을 뜻해요. 준은 말하기를 좋아한다고 했어요."
+     },
+     {
+      "q": "What does the writer do about soccer?",
+      "o": [
+       "Plays it with Jun every day",
+       "Dislikes it and never watches",
+       "Teaches it to the new student",
+       "Watches it but does not play"
+      ],
+      "a": 3,
+      "why": "I don't play, but I watch every game.이라고 했어요."
+     },
+     {
+      "q": "In ‘Yes, I do,’ the word ‘do’ stands for ___.",
+      "o": [
+       "like soccer",
+       "play with me",
+       "talk to Jun",
+       "watch every game"
+      ],
+      "a": 0,
+      "why": "앞의 질문 Do you like soccer?에서 like soccer를 대신해요."
+     },
+     {
+      "q": "How does the writer feel at the end?",
+      "o": [
+       "Nervous about tomorrow's math test",
+       "Sorry about a mistake at lunch",
+       "Bored with the long lesson today",
+       "Hopeful about a new friendship"
+      ],
+      "a": 3,
+      "why": "글쓴이는 둘이 좋은 친구가 될 것 같다고 생각해요."
+     }
+    ]
+   },
+   "why": "Reading item: lengthened/balanced distractors so the key is rarely the longest option (13 of 20 keys were the longest in this batch); reworded weak distractors and removed unstated claim in explanation; text unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "a108546c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why was this notice written?",
+      "o": [
+       "To invite students to a reading club",
+       "To advertise a book sale at school",
+       "To explain how to use the library",
+       "To announce a new teacher's name"
+      ],
+      "a": 2,
+      "why": "도서관에서 지켜야 할 규칙을 알려 주는 안내문이에요."
+     },
+     {
+      "q": "How many books can a student borrow?",
+      "o": [
+       "Two",
+       "Three",
+       "Five",
+       "One"
+      ],
+      "a": 1,
+      "why": "You can borrow three books for two weeks.라고 했어요."
+     },
+     {
+      "q": "What should you do to keep a book longer?",
+      "o": [
+       "Wait until the next week",
+       "Take it home without asking",
+       "Ask the school librarian",
+       "Put it back on the shelf"
+      ],
+      "a": 2,
+      "why": "Do you want to keep a book longer? Ask the librarian.이라고 했어요."
+     },
+     {
+      "q": "In this notice, ‘borrow’ means ___.",
+      "o": [
+       "give something to a friend for free",
+       "buy something new at a shop today",
+       "lose something by mistake on the way",
+       "use something and then return it"
+      ],
+      "a": 3,
+      "why": "borrow는 잠시 빌려서 쓰고 돌려주는 것을 뜻해요."
+     },
+     {
+      "q": "Which thing is NOT allowed in the library?",
+      "o": [
+       "Reading a quiet book",
+       "Returning books on time",
+       "Eating food at a desk",
+       "Asking the librarian for help"
+      ],
+      "a": 2,
+      "why": "Don't eat or drink inside.라고 했어요."
+     }
+    ]
+   },
+   "why": "Reading item: lengthened/balanced distractors so the key is rarely the longest option (13 of 20 keys were the longest in this batch); reworded weak distractors and removed unstated claim in explanation; text unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "9701bb26",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A school project about playing computer games",
+       "How the grandfather's childhood was different",
+       "A sports day at the grandfather's old school",
+       "A trip to see the grandfather's old friends"
+      ],
+      "a": 1,
+      "why": "할아버지의 어린 시절이 오늘날과 어떻게 달랐는지를 이야기하는 글이에요."
+     },
+     {
+      "q": "Why did the writer talk to the grandfather?",
+      "o": [
+       "For a gift on his birthday",
+       "For a show on television",
+       "For a project at school",
+       "For a family trip abroad"
+      ],
+      "a": 2,
+      "why": "I interviewed my grandfather for a school project.라고 했어요."
+     },
+     {
+      "q": "What did the grandfather NOT have when he was young?",
+      "o": [
+       "Time to play outside",
+       "Fun things to do all day",
+       "A computer at home",
+       "Days full of outdoor play"
+      ],
+      "a": 2,
+      "why": "컴퓨터가 있었냐는 질문에 No, we didn't라고 답했어요. 반면 하루 종일 바깥에서 놀았다고 했어요."
+     },
+     {
+      "q": "What does the grandfather think about his childhood?",
+      "o": [
+       "It was too quiet for him.",
+       "It was not boring at all.",
+       "It was very lonely at times.",
+       "It was much too short."
+      ],
+      "a": 1,
+      "why": "Not at all! We were always busy.라고 대답했어요."
+     },
+     {
+      "q": "In this passage, ‘busy’ means ___.",
+      "o": [
+       "feeling very sleepy",
+       "going to bed early",
+       "waiting for a bus",
+       "having a lot to do"
+      ],
+      "a": 3,
+      "why": "busy는 할 일이 많아 바쁘다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Reading item: lengthened/balanced distractors so the key is rarely the longest option (13 of 20 keys were the longest in this batch); reworded weak distractors and removed unstated claim in explanation; text unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "9f0e1a9d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did Sora write this message?",
+      "o": [
+       "To invite Eun to a party this weekend",
+       "To ask Eun to check for her umbrella",
+       "To thank Eun for a gift she gave",
+       "To tell Eun about a trip to the sea"
+      ],
+      "a": 1,
+      "why": "소라는 우산을 어제 은의 집에 두고 온 것 같아 찾아봐 달라고 부탁해요."
+     },
+     {
+      "q": "Where has Sora already looked?",
+      "o": [
+       "In the hall at Eun's house",
+       "At the school gate near home",
+       "In her bag and in her room",
+       "In the kitchen of her house"
+      ],
+      "a": 2,
+      "why": "It isn't in my bag, and it isn't in my room.이라고 했어요."
+     },
+     {
+      "q": "What does the umbrella look like?",
+      "o": [
+       "Red with a long handle",
+       "White with blue stripes",
+       "Yellow and small",
+       "Blue with white dots"
+      ],
+      "a": 3,
+      "why": "It is blue with white dots.라고 했어요."
+     },
+     {
+      "q": "Why will Sora need the umbrella tomorrow?",
+      "o": [
+       "She is going on a long trip.",
+       "Her old umbrella is broken.",
+       "Her mother wants to borrow it.",
+       "It is going to rain tomorrow."
+      ],
+      "a": 3,
+      "why": "it is going to rain 때문에 내일 필요하다고 했어요."
+     },
+     {
+      "q": "In this message, ‘check’ means ___.",
+      "o": [
+       "write it down in a notebook",
+       "look to see if it is there",
+       "wash it with soap and water",
+       "give it to a friend as a gift"
+      ],
+      "a": 1,
+      "why": "check the hall은 현관을 살펴보라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Reading item: lengthened/balanced distractors so the key is rarely the longest option (13 of 20 keys were the longest in this batch); reworded weak distractors and removed unstated claim in explanation; text unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 62,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

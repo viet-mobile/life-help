@@ -1,0 +1,89 @@
+{
+ "packet": "E12-e4",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "88fa12c5",
+   "op": "set",
+   "set": {
+    "ko": "시큼한"
+   },
+   "why": "ko '신' is ambiguous as a standalone prompt gloss; '시큼한' is natural and matches exko.",
+   "severity": "minor"
+  },
+  {
+   "item": "3c4ba8b5",
+   "op": "set",
+   "set": {
+    "q": "다음 중 사람의 성격을 나타내는 말은?",
+    "o": [
+     "round",
+     "kind",
+     "wet",
+     "tall"
+    ],
+    "a": 1,
+    "why": "kind(친절한)는 사람의 성격을 나타내요. round는 모양, wet은 젖은 상태, tall은 키를 나타내요."
+   },
+   "why": "Identity change (q/o): removes the duplicate of the an+old item with a distinct concept; key kind is the only personality word.",
+   "severity": "minor"
+  },
+  {
+   "item": "5462b0d1",
+   "op": "set",
+   "set": {
+    "q": "Which animal is usually tall?",
+    "o": [
+     "a rabbit",
+     "a turtle",
+     "a giraffe",
+     "a mouse"
+    ],
+    "a": 2,
+    "why": "기린은 키가 아주 커요. 토끼, 거북이, 쥐는 키가 작아요."
+   },
+   "why": "Identity change (q/o): drops the repeated turtle-slow fact and the above-level superlative.",
+   "severity": "minor"
+  },
+  {
+   "item": "d5e8ade7",
+   "op": "set",
+   "set": {
+    "q": "Which thing is usually hard?",
+    "o": [
+     "a pillow",
+     "a marble",
+     "a blanket",
+     "a sponge"
+    ],
+    "a": 1,
+    "why": "구슬은 단단해요. 베개, 담요, 스펀지는 부드러워요."
+   },
+   "why": "Identity change (q/o): removes the restatement of the soft/pillow example; options have no length cue (pillow 6, marble 6, blanket 7, sponge 6) and only marble is hard.",
+   "severity": "minor"
+  },
+  {
+   "item": "6ad8366a",
+   "op": "set",
+   "set": {
+    "q": "Which word means “full of color”?",
+    "o": [
+     "colors",
+     "coloring",
+     "colorful",
+     "colorless"
+    ],
+    "a": 2,
+    "why": "-ful은 '~이 가득한'이라는 뜻이라서 colorful은 '색이 다채로운'이에요. colorless는 색이 없다는 뜻이에요."
+   },
+   "why": "Identity change (o): removes the defensible distractor 'colored'.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 122,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -144,7 +144,7 @@ for (const { skill, packet, item } of valid) {
       qid = `eb-${id}-order`;
       const ids = toks.map((_, i) => `w${i + 1}`); const rot = 1 + (hash(qid) % (ids.length - 1));
       const shown = ids.map((_, i) => ids[(i * 5 + rot) % ids.length]); const uniq = new Set(shown).size === ids.length ? shown : ids.map((_, i) => ids[(i + rot) % ids.length]);
-      push(skill, packet, item, "order", { id: qid, site: "english", type: "ordering", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 50, status: "DRAFT", difficulty: clamp(d + 1), prompt: `단어를 올바른 순서로 배열하세요. (${item.ko})`, options: uniq.map((w) => ({ id: w, text: toks[Number(w.slice(1)) - 1] })), answer: { kind: "order", ids }, hints: ["문장의 첫 낱말은 대문자로 시작해요.", `첫 단어는 “${toks[0]}”예요.`], explanation: expl });
+      push(skill, packet, item, "order", { id: qid, site: "english", type: "ordering", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 50, status: "DRAFT", difficulty: clamp(d + 1), prompt: `단어를 올바른 순서로 배열하세요. (${item.ko})`, options: uniq.map((w) => ({ id: w, text: toks[Number(w.slice(1)) - 1] })), answer: { kind: "order", ids }, hints: ["문장의 첫 낱말은 대문자로 시작해요.", `첫 단어: “${toks[0]}”`], explanation: expl });
     }
   } else if (item.k === "r" || item.k === "d") {
     item.qs.forEach((q, i) => {

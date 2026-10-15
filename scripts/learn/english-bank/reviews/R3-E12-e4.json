@@ -1,0 +1,166 @@
+{
+ "packet": "E12-e4",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "70160771",
+   "op": "set",
+   "set": {
+    "q": "A bird is sitting on the roof. A cat is under the tree. Where is the bird?",
+    "o": [
+     "Under the tree",
+     "In the water",
+     "Behind the house",
+     "On the roof"
+    ],
+    "a": 3,
+    "why": "새는 지붕 위(on the roof)에 앉아 있어요."
+   },
+   "why": "Remove 'Look at the picture' (no picture exists); identity field q changes.",
+   "severity": "major"
+  },
+  {
+   "item": "30468d18",
+   "op": "set",
+   "set": {
+    "o": [
+     "It is very silent.",
+     "It is very loud.",
+     "It is very dark.",
+     "It is very small."
+    ],
+    "a": 0,
+    "why": "quiet(조용한)는 silent(고요한)와 뜻이 비슷해요."
+   },
+   "why": "Parallel options remove the frame/length cue (identity field o changes).",
+   "severity": "minor"
+  },
+  {
+   "item": "77000db3",
+   "op": "set",
+   "set": {
+    "good": "The bank is between the school and the park.",
+    "ko": "은행은 학교와 공원 사이에 있어요.",
+    "bad": [
+     "The bank is between the school the park.",
+     "The bank is between the school with the park.",
+     "The bank is between the school or the park."
+    ],
+    "cz": {
+     "st": "The bank is ___ the school and the park.",
+     "ok": "between",
+     "wr": [
+      "behind",
+      "under",
+      "inside"
+     ]
+    },
+    "rule": "between은 'A and B' 형태로 두 대상 사이를 말해요.",
+    "ord": false
+   },
+   "why": "Word order not unique (school/park swap); disable ordering.",
+   "severity": "major"
+  },
+  {
+   "item": "431b6059",
+   "op": "set",
+   "set": {
+    "good": "She walks along the river with her dog.",
+    "ko": "그녀는 강을 따라 개와 함께 걸어요.",
+    "bad": [
+     "She walks along to the river with her dog.",
+     "She walks the river along with her dog.",
+     "She walk along the river with her dog."
+    ],
+    "cz": {
+     "st": "She walks ___ the river with her dog.",
+     "ok": "along",
+     "wr": [
+      "into",
+      "under",
+      "between"
+     ]
+    },
+    "rule": "along은 '~을 따라'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 She이면 동사에 s를 붙여요.",
+    "ord": false
+   },
+   "why": "'with her dog' can move; disable ordering.",
+   "severity": "major"
+  },
+  {
+   "item": "9a17fd70",
+   "op": "set",
+   "set": {
+    "z": [
+     "upstairs",
+     "outside",
+     "away"
+    ],
+    "syn": [],
+    "sp": [
+     "downstares",
+     "downstaris",
+     "dawnstairs"
+    ],
+    "ex": "Dad is on the first floor. He is downstairs in the kitchen.",
+    "exko": "아빠는 1층에 있어요. 아빠는 아래층 부엌에 있어요.",
+    "ko": "아래층에"
+   },
+   "why": "'nearby' fits the blank too; use 'away'.",
+   "severity": "minor"
+  },
+  {
+   "item": "fd7d3b41",
+   "op": "set",
+   "set": {
+    "z": [
+     "between",
+     "inside",
+     "under"
+    ],
+    "syn": [],
+    "sp": [
+     "alonge",
+     "alog",
+     "allong"
+    ],
+    "ex": "Many trees grow along the road.",
+    "exko": "길을 따라 나무가 많이 자라요.",
+    "ko": "따라"
+   },
+   "why": "'past the road' is plausible; use 'under'.",
+   "severity": "minor"
+  },
+  {
+   "item": "8dd46298",
+   "op": "set",
+   "set": {
+    "good": "The dog runs toward the gate.",
+    "ko": "개는 문을 향해 달려요.",
+    "bad": [
+     "The dog runs toward to the gate.",
+     "The dog runs the gate toward.",
+     "The dog run toward the gate."
+    ],
+    "cz": {
+     "st": "The dog runs ___ the gate.",
+     "ok": "toward",
+     "wr": [
+      "between",
+      "inside",
+      "above"
+     ]
+    },
+    "rule": "toward는 '~을 향해'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 The dog이면 동사에 s를 붙여요."
+   },
+   "why": "Off-skill (wh-question) replaced by a preposition sentence; identity field good changes.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 121,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

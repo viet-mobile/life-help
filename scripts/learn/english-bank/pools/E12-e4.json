@@ -316,7 +316,7 @@
      "k": "w",
      "en": "sour",
      "pos": "adj",
-     "ko": "신",
+     "ko": "시큼한",
      "ex": "A lemon is sour, so I make a funny face.",
      "exko": "레몬은 시어서 나는 웃긴 표정을 지어요.",
      "z": [
@@ -754,15 +754,15 @@
     },
     {
      "k": "m",
-     "q": "That is ___ old bike.",
+     "q": "다음 중 사람의 성격을 나타내는 말은?",
      "o": [
-      "a",
-      "two",
-      "an",
-      "many"
+      "round",
+      "kind",
+      "wet",
+      "tall"
      ],
-     "a": 2,
-     "why": "old는 모음 소리로 시작하고 bike는 하나이므로 an을 써요.",
+     "a": 1,
+     "why": "kind(친절한)는 사람의 성격을 나타내요. round는 모양, wet은 젖은 상태, tall은 키를 나타내요.",
      "cat": "article",
      "d": 3
     },
@@ -840,10 +840,10 @@
      "k": "m",
      "q": "Which word means “full of color”?",
      "o": [
-      "colorless",
-      "colored",
+      "colors",
+      "coloring",
       "colorful",
-      "coloring"
+      "colorless"
      ],
      "a": 2,
      "why": "-ful은 '~이 가득한'이라는 뜻이라서 colorful은 '색이 다채로운'이에요. colorless는 색이 없다는 뜻이에요.",
@@ -852,29 +852,29 @@
     },
     {
      "k": "m",
-     "q": "Which animal is usually the slowest?",
+     "q": "Which animal is usually tall?",
      "o": [
-      "a turtle",
       "a rabbit",
-      "a horse",
-      "a cheetah"
+      "a turtle",
+      "a giraffe",
+      "a mouse"
      ],
-     "a": 0,
-     "why": "거북이는 걸음이 아주 느려요. 나머지는 빠르게 달리는 동물이에요.",
+     "a": 2,
+     "why": "기린은 키가 아주 커요. 토끼, 거북이, 쥐는 키가 작아요.",
      "cat": "fact",
      "d": 1
     },
     {
      "k": "m",
-     "q": "Which thing is usually soft?",
+     "q": "Which thing is usually hard?",
      "o": [
-      "a rock",
-      "a desk",
-      "a coin",
-      "a pillow"
+      "a pillow",
+      "a marble",
+      "a blanket",
+      "a sponge"
      ],
-     "a": 3,
-     "why": "베개는 부드러워요. 바위, 책상, 동전은 단단해요.",
+     "a": 1,
+     "why": "구슬은 단단해요. 베개, 담요, 스펀지는 부드러워요.",
      "cat": "fact",
      "d": 1
     },
@@ -896,10 +896,10 @@
      "k": "m",
      "q": "Which sentence means almost the same as “The room is quiet”?",
      "o": [
-      "It is silent.",
-      "There is a lot of noise.",
-      "There is no light.",
-      "There is no chair."
+      "It is very silent.",
+      "It is very loud.",
+      "It is very dark.",
+      "It is very small."
      ],
      "a": 0,
      "why": "quiet(조용한)는 silent(고요한)와 뜻이 비슷해요.",
@@ -1277,7 +1277,7 @@
      "z": [
       "between",
       "inside",
-      "past"
+      "under"
      ],
      "syn": [],
      "sp": [
@@ -1372,7 +1372,7 @@
      "z": [
       "upstairs",
       "outside",
-      "nearby"
+      "away"
      ],
      "syn": [],
      "sp": [
@@ -1540,7 +1540,8 @@
        "inside"
       ]
      },
-     "rule": "between은 'A and B' 형태로 두 대상 사이를 말해요."
+     "rule": "between은 'A and B' 형태로 두 대상 사이를 말해요.",
+     "ord": false
     },
     {
      "k": "s",
@@ -1565,23 +1566,23 @@
     },
     {
      "k": "s",
-     "good": "Where is my cap?",
-     "ko": "내 모자는 어디에 있어요?",
+     "good": "The dog runs toward the gate.",
+     "ko": "개는 문을 향해 달려요.",
      "bad": [
-      "Where my cap is?",
-      "Where are my cap?",
-      "Where is cap my?"
+      "The dog runs toward to the gate.",
+      "The dog runs the gate toward.",
+      "The dog run toward the gate."
      ],
      "cz": {
-      "st": "Where ___ my cap?",
-      "ok": "is",
+      "st": "The dog runs ___ the gate.",
+      "ok": "toward",
       "wr": [
-       "are",
-       "do",
-       "does"
+       "between",
+       "inside",
+       "above"
       ]
      },
-     "rule": "Where 뒤에는 be동사가 먼저 오고 그 뒤에 주어가 와요. cap은 하나이므로 is를 써요."
+     "rule": "toward는 '~을 향해'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 The dog이면 동사에 s를 붙여요."
     },
     {
      "k": "s",
@@ -1621,7 +1622,8 @@
        "between"
       ]
      },
-     "rule": "along은 '~을 따라'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 She이면 동사에 s를 붙여요."
+     "rule": "along은 '~을 따라'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 She이면 동사에 s를 붙여요.",
+     "ord": false
     },
     {
      "k": "m",
@@ -1667,7 +1669,7 @@
     },
     {
      "k": "m",
-     "q": "Look at the picture. A bird is sitting on the roof. A cat is under the tree. Where is the bird?",
+     "q": "A bird is sitting on the roof. A cat is under the tree. Where is the bird?",
      "o": [
       "Under the tree",
       "In the water",
@@ -1675,7 +1677,7 @@
       "On the roof"
      ],
      "a": 3,
-     "why": "그림 설명에서 새는 지붕 위(on the roof)에 앉아 있어요.",
+     "why": "새는 지붕 위(on the roof)에 앉아 있어요.",
      "cat": "reading",
      "d": 2
     },

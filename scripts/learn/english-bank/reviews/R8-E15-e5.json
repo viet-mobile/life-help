@@ -1,0 +1,336 @@
+{
+ "packet": "E15-e5",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 8,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "950eb58f",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence item: 'You are going to fall. Be careful!' uses the same tokens and is also valid, so the ordering question has no unique answer (and its hint reveals the first word). Disable ordering.",
+   "severity": "minor"
+  },
+  {
+   "item": "64f4a1e4",
+   "op": "set",
+   "set": {
+    "good": "The bus will arrive soon.",
+    "ko": "버스가 곧 도착할 거예요.",
+    "bad": [
+     "The bus will arrives soon.",
+     "The bus will arriving soon.",
+     "The bus arrive will soon."
+    ],
+    "cz": {
+     "st": "The bus will ___ soon.",
+     "ok": "arrive",
+     "wr": [
+      "arrives",
+      "arriving",
+      "arrived"
+     ]
+    },
+    "rule": "will 뒤에는 동사원형이 와요. 주어가 3인칭 단수여도 동사에 -s를 붙이지 않아요.",
+    "ord": false
+   },
+   "why": "If-clause present-for-future (If it rains..., will rain wrong) is a middle-school point, above E5 future level; also 'If it will rain' is arguable in some readings. Replaced by a grade-appropriate will sentence (identity field good changed). ord false because 'Soon, the bus...' is movable.",
+   "severity": "minor"
+  },
+  {
+   "item": "8cf03821",
+   "op": "set",
+   "set": {
+    "q": "A: The phone is ringing. B: I ___ answer it.",
+    "o": [
+     "have",
+     "was",
+     "am",
+     "will"
+    ],
+    "a": 3,
+    "why": "그 자리에서 정한 일을 말할 때 will을 써요. I will answer it.이 자연스러워요."
+   },
+   "why": "Distractor 'did' makes 'I did answer it' (emphatic did), a grammatical sentence; replace with 'was' (identity field o changed).",
+   "severity": "minor"
+  },
+  {
+   "item": "306efd77",
+   "op": "set",
+   "set": {
+    "q": "다음 중 계획을 묻는 질문은 무엇일까요?",
+    "o": [
+     "What did you do with Jiho last weekend?",
+     "What are you going to do this weekend?",
+     "What were you doing at nine last night?",
+     "What was your best day of last year?"
+    ],
+    "a": 1,
+    "why": "be going to는 앞으로의 계획을 물을 때 써요. 나머지 문장은 과거의 일을 물어요."
+   },
+   "why": "Key was uniquely longest (38 vs 24-33) and in the same slot as many others; lengthen distractors to 36-39 chars and move key (identity field o changed).",
+   "severity": "minor"
+  },
+  {
+   "item": "42de2ef9",
+   "op": "set",
+   "set": {
+    "q": "다음 중 미래의 일을 말하는 문장은 무엇일까요?",
+    "o": [
+     "I cleaned my room after dinner.",
+     "I will clean my room after dinner.",
+     "I clean my room every Sunday morning.",
+     "I am cleaning my room right now."
+    ],
+    "a": 1,
+    "why": "will + 동사원형은 앞으로의 일을 나타내요. 나머지는 과거, 습관, 현재 진행이에요."
+   },
+   "why": "Key was uniquely longest (34 vs 26-31); lengthen distractors and move key (identity field o changed).",
+   "severity": "minor"
+  },
+  {
+   "item": "8d750de0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A shopping trip to a big market",
+       "A family's plan for a birthday",
+       "A song contest at our school",
+       "A cooking lesson about baking bread"
+      ],
+      "a": 1,
+      "why": "글 전체가 아버지 생신을 위한 가족의 계획을 이야기해요."
+     },
+     {
+      "q": "Who will buy the eggs and milk?",
+      "o": [
+       "The writer",
+       "Dad",
+       "Mom",
+       "The sister"
+      ],
+      "a": 2,
+      "why": "세 번째 문장에서 Mom will buy the eggs and milk라고 했어요."
+     },
+     {
+      "q": "Where will the cake stay until evening?",
+      "o": [
+       "Under the bed",
+       "In the kitchen",
+       "At the market",
+       "In the garage"
+      ],
+      "a": 1,
+      "why": "We are going to hide the cake in the kitchen until evening.이라고 했어요."
+     },
+     {
+      "q": "When will the family sing a song?",
+      "o": [
+       "After dinner",
+       "Before breakfast",
+       "On Friday night",
+       "At the market"
+      ],
+      "a": 0,
+      "why": "After dinner, we will sing a song together.라고 했어요."
+     },
+     {
+      "q": "How does the writer feel about the plan?",
+      "o": [
+       "Worried that the cake will burn",
+       "Sad that Dad is too busy to come",
+       "Angry that Mom is late again",
+       "Hopeful that Dad will enjoy it"
+      ],
+      "a": 3,
+      "why": "글쓴이는 아빠가 매우 기뻐할 거라고 생각해요(I think Dad will be very happy)."
+     }
+    ]
+   },
+   "why": "Key in slot 0 for 3 of 5 questions and uniquely longest in q1; reorder and lengthen distractors (q1, q5).",
+   "severity": "minor"
+  },
+  {
+   "item": "1c9f6b3b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why was this text written?",
+      "o": [
+       "To teach children how to swim safely",
+       "To sell warm jackets at a clothing shop",
+       "To tell people about the weather",
+       "To describe a trip from last week"
+      ],
+      "a": 2,
+      "why": "내일 날씨를 알려 주는 글이에요."
+     },
+     {
+      "q": "What will the morning be like?",
+      "o": [
+       "Sunny, warm, and very bright",
+       "Rainy, cold, and a little dark",
+       "Windy, cloudy, and a bit rainy",
+       "Cloudy, but with no rain at all"
+      ],
+      "a": 3,
+      "why": "In the morning, it will be cloudy, but it will not rain.이라고 했어요."
+     },
+     {
+      "q": "What will happen to the temperature in the afternoon?",
+      "o": [
+       "It will stay the same.",
+       "It will go up.",
+       "It will go down.",
+       "It will freeze."
+      ],
+      "a": 1,
+      "why": "the temperature will go up이라고 했어요."
+     },
+     {
+      "q": "What are the evening winds going to do?",
+      "o": [
+       "Blow from the sea",
+       "Stop at night",
+       "Bring snow",
+       "Come from the mountain"
+      ],
+      "a": 0,
+      "why": "strong winds are going to blow from the sea라고 했어요."
+     }
+    ]
+   },
+   "why": "Key was option A in all 4 questions and the longest/most specific in q1 and q2; reposition keys and lengthen distractors.",
+   "severity": "major"
+  },
+  {
+   "item": "b2e51398",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How long will Mina stay at the camp?",
+      "o": [
+       "Two weeks",
+       "One night",
+       "Five days",
+       "Ten days"
+      ],
+      "a": 2,
+      "why": "She will stay there for five days.라고 했어요."
+     },
+     {
+      "q": "Why won't Mina bring her phone?",
+      "o": [
+       "It is too heavy to carry there.",
+       "The camp does not allow phones.",
+       "Her mother lost it last week.",
+       "It could easily break in the lake."
+      ],
+      "a": 1,
+      "why": "the camp has a no-phone rule이라고 했어요."
+     },
+     {
+      "q": "What is Mina going to do every night?",
+      "o": [
+       "Write in a diary",
+       "Climb a mountain",
+       "Call her mother",
+       "Swim in the lake"
+      ],
+      "a": 0,
+      "why": "she is going to write a diary every night라고 했어요."
+     },
+     {
+      "q": "In the last sentence, ‘it’ means ___.",
+      "o": [
+       "the lake",
+       "the camp",
+       "the phone",
+       "the diary"
+      ],
+      "a": 3,
+      "why": "앞 문장에서 쓴 일기(diary)를 어머니께 보여 준다는 뜻이에요."
+     },
+     {
+      "q": "Which of these will Mina do at the camp?",
+      "o": [
+       "Watch videos",
+       "Make new friends",
+       "Visit her cousins",
+       "Learn to cook"
+      ],
+      "a": 1,
+      "why": "At the camp, she is going to ... make new friends라고 했어요."
+     }
+    ]
+   },
+   "why": "Key in slot 0 for 3 of 5 questions; q2 key was longest. Reposition (q2, q4) and lengthen distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "f9bdabf6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the writer believe?",
+      "o": [
+       "Robots will replace all of our friends.",
+       "People and robots will work together.",
+       "Robots will never be allowed in homes.",
+       "Homes will not need any help at all."
+      ],
+      "a": 1,
+      "why": "So I believe humans and robots are going to work together.라고 했어요."
+     },
+     {
+      "q": "What will a robot not understand?",
+      "o": [
+       "Heavy bags",
+       "Simple jobs",
+       "Our feelings",
+       "The dishes"
+      ],
+      "a": 2,
+      "why": "a robot will not understand our feelings like a friend does라고 했어요."
+     },
+     {
+      "q": "In this text, ‘carry’ means ___.",
+      "o": [
+       "throw something away into the trash",
+       "wash something with soap and water",
+       "make something smaller or lighter",
+       "hold something and take it somewhere"
+      ],
+      "a": 3,
+      "why": "carry heavy bags는 무거운 가방을 들고 옮긴다는 뜻이에요."
+     },
+     {
+      "q": "Why does the writer end with ‘What do you think?’",
+      "o": [
+       "To ask readers for their ideas",
+       "To say that the writer is lost",
+       "To finish a story about a friend",
+       "To give the readers homework"
+      ],
+      "a": 0,
+      "why": "독자도 자기 생각을 해 보도록 묻는 마무리예요."
+     }
+    ]
+   },
+   "why": "Key in slot 0 for 3 of 4 questions; q1 and q3 keys were the only long/specific option. Reposition and lengthen distractors.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 113,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

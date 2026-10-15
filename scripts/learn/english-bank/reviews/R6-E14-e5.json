@@ -1,0 +1,204 @@
+{
+ "packet": "E14-e5",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "6356979e",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Are there a bank near here?",
+     "Does there have a bank near here?",
+     "Is there bank near here?"
+    ]
+   },
+   "why": "Remove the arguably acceptable statement-with-question-mark distractor.",
+   "severity": "minor"
+  },
+  {
+   "item": "10b17d83",
+   "op": "set",
+   "set": {
+    "why": "knife처럼 f나 fe로 끝나는 일부 낱말은 f(e)를 ves로 바꿔요. knife는 knives가 돼요."
+   },
+   "why": "Fix rule wording (fe -> ves).",
+   "severity": "minor"
+  },
+  {
+   "item": "9d6763dd",
+   "op": "set",
+   "set": {
+    "o": [
+     "an",
+     "a",
+     "two",
+     "many"
+    ],
+    "a": 1,
+    "why": "a와 an은 바로 뒤에 오는 낱말의 소리로 정해요. new는 자음 소리로 시작하고 bike가 하나뿐이라서 a를 써요."
+   },
+   "why": "Changes option set (some -> two) and fixes explanation; q unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "4863ddeb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A trip to a toy shop",
+       "How to make a bookshelf",
+       "The writer's small room",
+       "A day of cleaning with friends"
+      ],
+      "a": 2,
+      "why": "글쓴이의 방과 그 안에 있는 물건들을 소개하는 글이에요."
+     },
+     {
+      "q": "Where is the bed?",
+      "o": [
+       "Under the shelves",
+       "Next to the window",
+       "On the desk",
+       "Near the door"
+      ],
+      "a": 1,
+      "why": "There is a bed next to the window.라고 했어요."
+     },
+     {
+      "q": "How many boxes are under the bed?",
+      "o": [
+       "Two",
+       "Four",
+       "Five",
+       "Three"
+      ],
+      "a": 3,
+      "why": "Under the bed, there are three boxes.라고 했어요."
+     },
+     {
+      "q": "What is on the desk?",
+      "o": [
+       "A lamp and two boxes",
+       "A lamp and an eraser",
+       "Books and an eraser",
+       "A bed and a lamp"
+      ],
+      "a": 1,
+      "why": "On my desk, there is a lamp and an eraser.라고 했어요."
+     },
+     {
+      "q": "What does \"them\" mean in \"there are many books on them\"?",
+      "o": [
+       "The shelves",
+       "The boxes",
+       "The toys",
+       "The windows"
+      ],
+      "a": 0,
+      "why": "바로 앞 문장 부분의 two shelves를 가리켜요."
+     }
+    ]
+   },
+   "why": "Lengthen/rebalance main-idea options (key no longer uniquely longest) and replace the redundant 'when' detail question by a reference question.",
+   "severity": "minor"
+  },
+  {
+   "item": "15023b4f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A zoo in the town",
+       "A trip to the sea",
+       "Mr. Kim's small farm",
+       "How to make wool"
+      ],
+      "a": 2,
+      "why": "Mr. Kim의 작은 농장에 대한 글이에요."
+     },
+     {
+      "q": "How many cows are on the farm?",
+      "o": [
+       "Three",
+       "Five",
+       "Ten",
+       "Two"
+      ],
+      "a": 0,
+      "why": "three cows라고 했어요."
+     },
+     {
+      "q": "What do the chickens give Mr. Kim?",
+      "o": [
+       "Wool",
+       "Grass",
+       "Eggs",
+       "Milk"
+      ],
+      "a": 2,
+      "why": "The chickens give him eggs라고 했어요."
+     },
+     {
+      "q": "When do the children visit the farm?",
+      "o": [
+       "In the evening",
+       "In the morning",
+       "At lunch time",
+       "In the afternoon"
+      ],
+      "a": 0,
+      "why": "In the evening, children from the town visit the farm.이라고 했어요."
+     },
+     {
+      "q": "Which sentence is true?",
+      "o": [
+       "Mr. Kim has a very big farm",
+       "The cows give him wool and eggs",
+       "There are more chickens than sheep",
+       "The children do not like the sheep"
+      ],
+      "a": 2,
+      "why": "닭은 열 마리, 양은 다섯 마리라서 닭이 더 많아요."
+     }
+    ]
+   },
+   "why": "Replace arguable distractor 'At night' (close to evening).",
+   "severity": "minor"
+  },
+  {
+   "item": "ca5d9dc1",
+   "op": "drop",
+   "set": {},
+   "why": "Restates the babies sentence item 690e9149 (same word, same rule).",
+   "severity": "minor"
+  },
+  {
+   "item": "e572be81",
+   "op": "set",
+   "set": {
+    "q": "다음 중 앞에 an을 붙이는 낱말은?",
+    "o": [
+     "pencil",
+     "onion",
+     "ruler",
+     "bag"
+    ],
+    "a": 1,
+    "why": "onion은 모음 소리로 시작해서 an onion이에요. 나머지는 a pencil, a ruler, a bag이에요."
+   },
+   "why": "Avoid repeating 'hour' from ba73b044; options changed (identity field o changed).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 120,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
