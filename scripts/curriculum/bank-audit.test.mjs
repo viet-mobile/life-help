@@ -47,7 +47,7 @@ test("loads all 6,672 bank questions in addition to 1,078 canonical questions", 
   assert(contentSourceFiles(root, "mathematics").includes("lib/learn/content/bank/math.json"));
   const eng = readContent(root, "english");
   assert.equal(eng.canonicalQuestions, 628);
-  assert.equal(eng.questions.size, 7288);
+  assert.equal(eng.questions.size, 10618);
   assert(contentSourceFiles(root, "english").includes("lib/learn/content/bank/english.json"));
 });
 test("validates discrete English bank questions and strictly rejects malformed entries", () => {
