@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
                 <li>정답이 하나인지, 한국어·맞춤법·로마자가 맞는지, 오답이 자연스러운지 확인합니다.</li>
                 <li>힌트가 정답을 알려 주지 않는지, 해설이 맞는지 확인합니다. 번역 줄의 <em>fallback to English</em>는 그 언어 번역이 없다는 뜻입니다.</li>
                 <li>문제를 찾으면 문항의 <em>문제 기록</em>에 남기고, 끝나면 JSON/CSV로 내보냅니다.</li>
-                <li>이 화면의 모든 자료는 검토 전입니다. 검토 완료로 표시하는 기능은 없습니다.</li>
+                <li>이 화면의 모든 자료는 검토 전입니다. 이 화면에는 “검토됨”으로 표시하는 기능이 없습니다.</li>
               </ol>
             </section>
             <section className="l-card" style={{ overflowX: "auto" }}>
