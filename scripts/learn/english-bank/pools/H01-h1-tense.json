@@ -199,7 +199,8 @@
       ]
      },
      "rule": "의문문의 yet은 '이미(벌써) 했는지'를 묻고, 현재완료(have + 주어 + p.p.) 어순을 써요.",
-     "d": 3
+     "d": 3,
+     "ord": false
     },
     {
      "k": "s",
@@ -658,7 +659,8 @@
       ]
      },
      "rule": "It has been + 기간 + since + 과거시제 문장은 '~한 지 …가 되었다'는 뜻이에요.",
-     "d": 3
+     "d": 3,
+     "ord": false
     },
     {
      "k": "s",
@@ -817,7 +819,7 @@
      "good": "If I had studied harder, I would have passed the exam.",
      "ko": "내가 더 열심히 공부했더라면 시험에 합격했을 거예요.",
      "bad": [
-      "If I studied harder, I would have passed the exam.",
+      "If I have studied harder, I would have passed the exam.",
       "If I had studied harder, I would passed the exam.",
       "If I would have studied harder, I would have passed the exam."
      ],
@@ -1141,12 +1143,12 @@
     },
     {
      "k": "m",
-     "q": "Choose the best answer: How long ___ for the bus? It is already getting dark.",
+     "q": "Choose the best answer: How long ___ for the bus so far? It is already getting dark.",
      "o": [
       "have you been waiting",
-      "do you wait",
+      "do you waiting",
       "are you waited",
-      "will you wait"
+      "did you waiting"
      ],
      "a": 0,
      "why": "지금까지 계속된 동작의 기간을 물을 때는 현재완료진행 have you been waiting을 써요.",
@@ -1188,7 +1190,7 @@
       "in recent weeks"
      ],
      "a": 2,
-     "why": "ago는 과거의 한 시점을 나타내므로 과거시제와 쓰고, so far, up to now, lately는 현재완료와 잘 어울려요.",
+     "why": "ago는 과거의 한 시점을 나타내므로 과거시제와 쓰고, so far, up to now, in recent weeks는 현재완료와 잘 어울려요.",
      "cat": "tense"
     },
     {
@@ -1214,7 +1216,7 @@
       "two hours"
      ],
      "a": 0,
-     "why": "since 뒤에는 시작 시점이 와요. three days, a week, two hours는 기간이라 for와 함께 써요.",
+     "why": "since 뒤에는 시작 시점이 와요. three days, about two weeks, two hours는 기간이라 for와 함께 써요.",
      "cat": "tense"
     },
     {
@@ -1345,19 +1347,6 @@
      ],
      "a": 1,
      "why": "since 뒤에 시작 시점(절)이 오면 그때부터 지금까지의 계속을 나타내요.",
-     "cat": "tense"
-    },
-    {
-     "k": "m",
-     "q": "Choose the best word: \"My cousin has been living in Canada ___ five years.\"",
-     "o": [
-      "for",
-      "since",
-      "ago",
-      "before"
-     ],
-     "a": 0,
-     "why": "five years는 기간이므로 for를 써요. 시작 시점일 때만 since를 써요.",
      "cat": "tense"
     },
     {
@@ -1552,7 +1541,7 @@
       "She had lunch with Ben at the school café."
      ],
      "a": 1,
-     "why": "첫 문장의 had는 finished와 함께 과거완료를 이루는 조동사예요. 나머지의 had는 '먹었다', '해야 했다'는 뜻의 본동사예요.",
+     "why": "정답 문장의 had는 finished와 함께 과거완료를 이루는 조동사예요. 나머지의 had는 '먹었다', '해야 했다'는 뜻의 본동사예요.",
      "cat": "tense"
     },
     {
@@ -1565,7 +1554,7 @@
       "We have to leave now."
      ],
      "a": 0,
-     "why": "첫 문장의 have는 visited와 함께 현재완료를 이루는 조동사예요. 나머지의 have는 본동사예요.",
+     "why": "정답 문장의 have는 visited와 함께 현재완료를 이루는 조동사예요. 나머지의 have는 본동사예요.",
      "cat": "tense"
     },
     {
@@ -2050,11 +2039,11 @@
        "o": [
         "The writer skated backward for a few seconds.",
         "The writer won a small prize.",
-        "The writer fell and landed on the back.",
+        "The writer fell down on the ice.",
         "The writer met a professional skater."
        ],
        "a": 2,
-       "why": "첫 수업에서 10분간 걷는 연습을 하다가 넘어져 등으로 떨어졌어요."
+       "why": "첫 수업에서 10분간 걷는 연습을 하다가 넘어졌어요."
       },
       {
        "q": "How does the writer feel about skating now?",
@@ -2149,10 +2138,10 @@
       {
        "q": "According to the reply, when should the writer visit a doctor?",
        "o": [
-        "Right after she reads the reply letter",
-        "After sleeping ten hours a night",
-        "Before going to bed every day",
-        "If no better by the end of the month"
+        "Right after the writer finishes reading this reply letter",
+        "After sleeping ten hours a night for a whole week",
+        "Before going to bed on every day of the month",
+        "If she has not improved by the end of the month"
        ],
        "a": 3,
        "why": "If you haven't felt better by the end of the month, please see a doctor라고 했어요."
@@ -2160,10 +2149,10 @@
       {
        "q": "Why might the writer still feel tired?",
        "o": [
-        "The writer sleeps too many hours now.",
-        "The writer has stopped studying completely.",
-        "The body may still be recovering from earlier lack of sleep.",
-        "The writer drinks too little water."
+        "The writer is sleeping far too many hours now.",
+        "The writer has stopped studying for exams completely.",
+        "The body may still be catching up on lost sleep.",
+        "The writer drinks too little water during the day."
        ],
        "a": 2,
        "why": "이전 몇 주간 잠이 부족했던 상태에서 몸이 아직 회복 중일 수 있다고 했어요."
@@ -2184,10 +2173,10 @@
       {
        "q": "Why was Cape Willow Lighthouse built?",
        "o": [
-        "A famous keeper wanted a new home.",
-        "The town needed a place for visitors.",
+        "A famous keeper wanted a new home near the sea.",
+        "The town needed a place for visitors to enjoy the view.",
         "Ships had been destroyed in a storm near the rocks.",
-        "An automatic light had stopped working."
+        "An automatic light had stopped working near the rocks."
        ],
        "a": 2,
        "why": "폭풍이 근처 바위에서 배 세 척을 부순 뒤에 지어졌어요."
@@ -2331,10 +2320,10 @@
       {
        "q": "What had Eun-seo not known before?",
        "o": [
-        "Her grandmother kept a diary.",
-        "Her grandfather owned a farm.",
-        "Her grandparents had been apart for a long time.",
-        "The attic held old photographs."
+        "Her grandmother kept a diary of her whole life.",
+        "Her grandfather owned a farm outside the city.",
+        "Her grandparents had lived apart for so long.",
+        "The attic held boxes of old family photographs."
        ],
        "a": 2,
        "why": "Eun-seo had never known that her grandparents had been separated for so long이라고 했어요."
@@ -2377,9 +2366,9 @@
       {
        "q": "What had the staff done by the writer's second visit?",
        "o": [
-        "Lowered the prices of all desserts",
-        "Closed the café for repairs",
-        "Hired a new apple tart baker",
+        "Lowered the prices of all the desserts",
+        "Closed the café for several weeks of repairs",
+        "Hired a new baker to make the apple tart",
         "Fixed the coffee problem and added a reading room"
        ],
        "a": 3,
@@ -2408,15 +2397,15 @@
        "why": "calm place to study를 찾는 사람에게 추천한다고 했어요."
       },
       {
-       "q": "What does \"third time lucky\" probably suggest as the title?",
+       "q": "What can we infer about the writer's last visit to the café?",
        "o": [
-        "The third visit was the best one.",
-        "The writer won a prize at the café.",
-        "The café opened on the third of the month.",
-        "The writer visited three different cafés."
+        "The writer was waiting for a friend who arrived late.",
+        "The writer felt relaxed and lost track of time.",
+        "The writer left early because the room was too noisy.",
+        "The writer was upset about the high prices that day."
        ],
-       "a": 0,
-       "why": "방문할 때마다 나아졌다는 내용에서 세 번째가 가장 좋았음을 암시해요."
+       "a": 1,
+       "why": "거의 네 시간 동안 머물렀는데도 몰랐다는 데서 편안하게 시간을 보냈음을 알 수 있어요."
       }
      ]
     },
@@ -2443,7 +2432,7 @@
        "why": "벤치에 있으면서도 연습을 멈추지 않은 소년의 이야기로 인내와 꾸준함을 강조해요."
       },
       {
-       "q": "How many regional titles has the team won since Coach Han arrived?",
+       "q": "How many regional titles has the team won since the coach arrived?",
        "o": [
         "Two",
         "One",
@@ -2465,26 +2454,26 @@
        "why": "he had never stopped practicing이라고 했어요."
       },
       {
-       "q": "What does the story of the boy show about him?",
+       "q": "When did the boy score?",
        "o": [
-        "He was angry at the coach.",
-        "He cared only about trophies.",
-        "He was patient and hardworking.",
-        "He wanted to play for another club."
-       ],
-       "a": 2,
-       "why": "불평하지 않고 연습을 계속해 기회를 잡은 것에서 인내심과 성실함을 알 수 있어요."
-      },
-      {
-       "q": "Why does the coach say, \"Nothing, except that he had never stopped practicing\"?",
-       "o": [
-        "To say that the boy was lucky",
-        "To show that effort was the reason for the change",
-        "To explain that the rules had changed",
-        "To blame the other players"
+        "During his first season on the bench",
+        "Soon after he finally got his chance",
+        "At the end of his four years",
+        "After the coach left the club"
        ],
        "a": 1,
-       "why": "달라진 것은 연습을 멈추지 않은 것뿐이라는 말로 노력의 중요성을 강조해요."
+       "why": "When he finally got his chance, he scored in the first five minutes라고 했어요."
+      },
+      {
+       "q": "What does \"come and go\" mean in \"I have seen many players come and go\"?",
+       "o": [
+        "Travel to many away games",
+        "Win some matches and lose others",
+        "Join the team and later leave it",
+        "Get hurt and then recover quickly"
+       ],
+       "a": 2,
+       "why": "come and go는 왔다가 떠난다는 뜻으로, 많은 선수가 팀에 들어왔다가 떠났다는 의미예요."
       }
      ]
     },
@@ -2632,7 +2621,7 @@
      "ex": "How many pages have you read so far?",
      "exko": "너는 지금까지 몇 쪽을 읽었니?",
      "z": [
-      "by heart",
+      "next week",
       "of course",
       "at least"
      ],

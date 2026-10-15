@@ -1,0 +1,90 @@
+{
+ "packet": "M14-m3-part",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 5,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "d6c9cb9d",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "carefully can move, so ordering is ambiguous",
+   "severity": "minor"
+  },
+  {
+   "item": "1ab538fe",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "quietly can move, so ordering is ambiguous",
+   "severity": "minor"
+  },
+  {
+   "item": "b0d7f811",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Please can move to the end, so ordering is ambiguous",
+   "severity": "minor"
+  },
+  {
+   "item": "084660b4",
+   "op": "set",
+   "set": {
+    "q": "Choose the sentence in which a past participle is used as an adjective before a noun.",
+    "o": [
+     "She closed the window.",
+     "We played soccer after school.",
+     "I'm looking for a lost wallet.",
+     "He asked a difficult question."
+    ],
+    "a": 2,
+    "why": "lost는 명사 wallet을 앞에서 꾸미는 과거분사형 형용사(잃어버린)예요. closed, played, asked는 과거형 동사이고 difficult는 분사가 아니에요."
+   },
+   "why": "Identity field q changed: stem said -ed word but key lost is not -ed.",
+   "severity": "minor"
+  },
+  {
+   "item": "664118e5",
+   "op": "set",
+   "set": {
+    "q": "What is the best Korean meaning of “the people living next door”?",
+    "o": [
+     "옆집에 살다가 이사를 간 사람들",
+     "곧 옆집으로 이사 올 예정인 사람들",
+     "지금 옆집에 살고 있는 사람들",
+     "옆집에서 일하는 것을 좋아하는 사람들"
+    ],
+    "a": 2,
+    "why": "명사 뒤 현재분사구 living next door는 '옆집에 살고 있는'이라는 뜻으로 people을 꾸며요."
+   },
+   "why": "Identity field o changed: key was uniquely shortest; options rebalanced in length.",
+   "severity": "minor"
+  },
+  {
+   "item": "486d948e",
+   "op": "set",
+   "set": {
+    "q": "We listened to the birds ____ in the trees.",
+    "o": [
+     "sang",
+     "sings",
+     "singing",
+     "to sing"
+    ],
+    "a": 2,
+    "why": "지각동사 listen to 뒤에서 새들이 노래하고 있는 능동·진행 장면이므로 현재분사 singing이 알맞아요. listen to 뒤에는 that절이 올 수 없어서 sang, sings는 틀려요."
+   },
+   "why": "Identity fields q/o changed: \"heard someone called/calls\" is defensible via omitted that.",
+   "severity": "major"
+  }
+ ],
+ "ok": 124,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

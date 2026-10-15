@@ -1,0 +1,422 @@
+{
+ "packet": "H01-h1-tense",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 99
+ },
+ "patches": [
+  {
+   "item": "cca116e8",
+   "op": "set",
+   "set": {
+    "why": "정답 문장의 had는 finished와 함께 과거완료를 이루는 조동사예요. 나머지의 had는 '먹었다', '해야 했다'는 뜻의 본동사예요."
+   },
+   "why": "explanation referred to the first sentence though options are shuffled",
+   "severity": "major"
+  },
+  {
+   "item": "b7702024",
+   "op": "set",
+   "set": {
+    "why": "정답 문장의 have는 visited와 함께 현재완료를 이루는 조동사예요. 나머지의 have는 본동사예요."
+   },
+   "why": "explanation referred to the first sentence though options are shuffled",
+   "severity": "major"
+  },
+  {
+   "item": "f068b7ee",
+   "op": "set",
+   "set": {
+    "z": [
+     "next week",
+     "of course",
+     "at least"
+    ]
+   },
+   "why": "'by heart' could fit the cloze; 'next week' clashes with present perfect",
+   "severity": "minor"
+  },
+  {
+   "item": "b8d7092d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What happened during the writer's first lesson?",
+      "o": [
+       "The writer skated backward for a few seconds.",
+       "The writer won a small prize.",
+       "The writer fell down on the ice.",
+       "The writer met a professional skater."
+      ],
+      "a": 2,
+      "why": "첫 수업에서 10분간 걷는 연습을 하다가 넘어졌어요."
+     },
+     {
+      "q": "How does the writer feel about skating now?",
+      "o": [
+       "Embarrassed and ready to quit",
+       "Proud and eager to continue",
+       "Bored with the weekly lessons",
+       "Afraid of the instructor"
+      ],
+      "a": 1,
+      "why": "계속 연습해 왔고 칭찬에 하루 종일 웃었으며 쇼에도 나갈 계획이라 뿌듯하고 의욕적이에요."
+     },
+     {
+      "q": "What had the boy been doing before he asked his question?",
+      "o": [
+       "Watching the writer skate",
+       "Practicing hard for the beginners' show",
+       "Talking with Ms. Park",
+       "Learning to stop"
+      ],
+      "a": 0,
+      "why": "a boy who had been watching me라고 했어요."
+     },
+     {
+      "q": "What does \"managed to\" suggest in the passage?",
+      "o": [
+       "The writer was asked to teach others.",
+       "The writer tried but did not succeed.",
+       "The writer was in charge of the rink.",
+       "The writer succeeded in doing something difficult."
+      ],
+      "a": 3,
+      "why": "manage to는 어려운 일을 해내다는 뜻이에요."
+     },
+     {
+      "q": "What does the writer plan to do?",
+      "o": [
+       "Teach at the rink",
+       "Take a break for a year",
+       "Enter a beginners' show",
+       "Buy a new pair of skates"
+      ],
+      "a": 2,
+      "why": "마지막 문장에서 beginners' show에 참가할 계획이라고 했어요."
+     }
+    ]
+   },
+   "why": "unnatural 'landed on the back'",
+   "severity": "minor"
+  },
+  {
+   "item": "222b6f9b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main purpose of Sunny's reply?",
+      "o": [
+       "To explain how to study for exams",
+       "To recommend a new school",
+       "To give a reader some advice",
+       "To describe a famous doctor"
+      ],
+      "a": 2,
+      "why": "독자의 피로 문제에 조언을 해 주는 글이에요."
+     },
+     {
+      "q": "What does the word \"that\" in \"I thought that was the cause\" refer to?",
+      "o": [
+       "Going to bed earlier than usual",
+       "Staying up late to study",
+       "Sleeping eight hours",
+       "Waking up tired"
+      ],
+      "a": 1,
+      "why": "that은 앞에서 말한 늦게까지 공부하느라 깨어 있던 것을 가리켜요."
+     },
+     {
+      "q": "What does Sunny mean by \"sleep debt\"?",
+      "o": [
+       "Sleep that must be made up",
+       "Money paid for a sleeping room",
+       "A habit of sleeping too much",
+       "The time needed to fall asleep"
+      ],
+      "a": 0,
+      "why": "sleep debt는 부족했던 잠을 나중에 보충해야 하는 것을 비유하는 말이에요."
+     },
+     {
+      "q": "According to the reply, when should the writer visit a doctor?",
+      "o": [
+       "Right after the writer finishes reading this reply letter",
+       "After sleeping ten hours a night for a whole week",
+       "Before going to bed on every day of the month",
+       "If she has not improved by the end of the month"
+      ],
+      "a": 3,
+      "why": "If you haven't felt better by the end of the month, please see a doctor라고 했어요."
+     },
+     {
+      "q": "Why might the writer still feel tired?",
+      "o": [
+       "The writer is sleeping far too many hours now.",
+       "The writer has stopped studying for exams completely.",
+       "The body may still be catching up on lost sleep.",
+       "The writer drinks too little water during the day."
+      ],
+      "a": 2,
+      "why": "이전 몇 주간 잠이 부족했던 상태에서 몸이 아직 회복 중일 수 있다고 했어요."
+     }
+    ]
+   },
+   "why": "q4 ungrammatical key and length cue; q5 length cue",
+   "severity": "minor"
+  },
+  {
+   "item": "2f230b8d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why was Cape Willow Lighthouse built?",
+      "o": [
+       "A famous keeper wanted a new home near the sea.",
+       "The town needed a place for visitors to enjoy the view.",
+       "Ships had been destroyed in a storm near the rocks.",
+       "An automatic light had stopped working near the rocks."
+      ],
+      "a": 2,
+      "why": "폭풍이 근처 바위에서 배 세 척을 부순 뒤에 지어졌어요."
+     },
+     {
+      "q": "What had happened by 1975?",
+      "o": [
+       "The tower had been opened to visitors.",
+       "An automatic light had taken over.",
+       "The volunteers had finished repairing the stairs.",
+       "The original lens had returned to the tower."
+      ],
+      "a": 1,
+      "why": "By 1975 the lighthouse had been replaced by an automatic light라고 했어요."
+     },
+     {
+      "q": "What have the volunteers done so far?",
+      "o": [
+       "Painted walls and replaced stairs",
+       "Restored the original lens and lamp",
+       "Built a new museum for the old lens",
+       "Hired a new keeper for the tower"
+      ],
+      "a": 0,
+      "why": "So far 뒤에 벽을 칠하고 계단을 교체하고 램프실을 열었다고 나와요."
+     },
+     {
+      "q": "In the passage, \"disrepair\" most likely means ...",
+      "o": [
+       "a process of careful cleaning",
+       "a plan for future changes",
+       "a kind of ship equipment",
+       "a state of poor condition"
+      ],
+      "a": 3,
+      "why": "탑이 비어 있어서 서서히 낡아 갔다는 흐름이므로 수리가 안 된 나쁜 상태를 뜻해요."
+     },
+     {
+      "q": "What can we infer about the original lens?",
+      "o": [
+       "It was destroyed by the storm.",
+       "It was sold to a private collector.",
+       "It has not been in the lighthouse for a long time.",
+       "It is still being used every evening."
+      ],
+      "a": 2,
+      "why": "렌즈가 50년 동안 박물관에 보관되어 있다는 데서 오랫동안 등대에 없었음을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "q1 length cue",
+   "severity": "minor"
+  },
+  {
+   "item": "69c486c4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where did Eun-seo find the letter?",
+      "o": [
+       "In a box in the attic",
+       "In a drawer in the kitchen",
+       "Under her grandmother's bed",
+       "In a book at the library"
+      ],
+      "a": 0,
+      "why": "She found a small wooden box in her grandmother's attic이라고 했어요."
+     },
+     {
+      "q": "Why had the grandfather been away from home?",
+      "o": [
+       "He had been studying abroad.",
+       "He had been looking for his lost box.",
+       "He had been visiting a friend.",
+       "He had been working far away."
+      ],
+      "a": 3,
+      "why": "the grandfather, who had been working far from home이라고 했어요."
+     },
+     {
+      "q": "What had Eun-seo not known before?",
+      "o": [
+       "Her grandmother kept a diary of her whole life.",
+       "Her grandfather owned a farm outside the city.",
+       "Her grandparents had lived apart for so long.",
+       "The attic held boxes of old family photographs."
+      ],
+      "a": 2,
+      "why": "Eun-seo had never known that her grandparents had been separated for so long이라고 했어요."
+     },
+     {
+      "q": "How did the grandmother probably feel when she read the letter?",
+      "o": [
+       "Angry and disappointed",
+       "Touched and happy",
+       "Worried and confused",
+       "Bored and uninterested"
+      ],
+      "a": 1,
+      "why": "눈물을 글썽이며 미소 지었다는 데서 감동했음을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "q3 length cue",
+   "severity": "minor"
+  },
+  {
+   "item": "13cbcb65",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's overall opinion of the café?",
+      "o": [
+       "Positive overall",
+       "Negative, with a few good points",
+       "Neutral, with no clear opinion",
+       "Angry, because of the cold coffee"
+      ],
+      "a": 0,
+      "why": "전반적으로 칭찬하는 글이고 가격만 아쉬운 점으로 꼽았어요."
+     },
+     {
+      "q": "What had the staff done by the writer's second visit?",
+      "o": [
+       "Lowered the prices of all the desserts",
+       "Closed the café for several weeks of repairs",
+       "Hired a new baker to make the apple tart",
+       "Fixed the coffee problem and added a reading room"
+      ],
+      "a": 3,
+      "why": "By my second visit, the staff had fixed the problem and even added a quiet reading room이라고 했어요."
+     },
+     {
+      "q": "What is the writer's one complaint?",
+      "o": [
+       "The coffee is always cold.",
+       "The reading room is too noisy.",
+       "The price has gone up twice.",
+       "The apple tart is too sweet."
+      ],
+      "a": 2,
+      "why": "The only complaint I have is the price라고 했어요."
+     },
+     {
+      "q": "Who would the writer recommend the café to?",
+      "o": [
+       "People who like noisy parties",
+       "Students who want quiet",
+       "Tourists who only want dessert",
+       "Families with young children"
+      ],
+      "a": 1,
+      "why": "calm place to study를 찾는 사람에게 추천한다고 했어요."
+     },
+     {
+      "q": "What can we infer about the writer's last visit to the café?",
+      "o": [
+       "The writer was waiting for a friend who arrived late.",
+       "The writer felt relaxed and lost track of time.",
+       "The writer left early because the room was too noisy.",
+       "The writer was upset about the high prices that day."
+      ],
+      "a": 1,
+      "why": "거의 네 시간 동안 머물렀는데도 몰랐다는 데서 편안하게 시간을 보냈음을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "q2 length cue; q5 replaced (idiom misused, doubtful key)",
+   "severity": "major"
+  },
+  {
+   "item": "0ed54fd0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main message of the talk?",
+      "o": [
+       "Winning trophies is the only goal.",
+       "Patience and steady effort lead to success.",
+       "Players should change teams often.",
+       "The coach plans to leave the club."
+      ],
+      "a": 1,
+      "why": "벤치에 있으면서도 연습을 멈추지 않은 소년의 이야기로 인내와 꾸준함을 강조해요."
+     },
+     {
+      "q": "How many regional titles has the team won since the coach arrived?",
+      "o": [
+       "Two",
+       "One",
+       "Four",
+       "Six"
+      ],
+      "a": 0,
+      "why": "Since then, we have won it twice라고 했어요."
+     },
+     {
+      "q": "What had the boy done while sitting on the bench?",
+      "o": [
+       "He had asked to change teams.",
+       "He had complained to the coach.",
+       "He had stopped coming to practice.",
+       "He had kept practicing."
+      ],
+      "a": 3,
+      "why": "he had never stopped practicing이라고 했어요."
+     },
+     {
+      "q": "When did the boy score?",
+      "o": [
+       "During his first season on the bench",
+       "Soon after he finally got his chance",
+       "At the end of his four years",
+       "After the coach left the club"
+      ],
+      "a": 1,
+      "why": "When he finally got his chance, he scored in the first five minutes라고 했어요."
+     },
+     {
+      "q": "What does \"come and go\" mean in \"I have seen many players come and go\"?",
+      "o": [
+       "Travel to many away games",
+       "Win some matches and lose others",
+       "Join the team and later leave it",
+       "Get hurt and then recover quickly"
+      ],
+      "a": 2,
+      "why": "come and go는 왔다가 떠난다는 뜻으로, 많은 선수가 팀에 들어왔다가 떠났다는 의미예요."
+     }
+    ]
+   },
+   "why": "name not in passage; q5 leaked q3; q4/q5 redundant",
+   "severity": "major"
+  }
+ ],
+ "ok": 86,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

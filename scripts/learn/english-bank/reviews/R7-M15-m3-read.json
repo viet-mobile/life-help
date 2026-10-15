@@ -1,0 +1,201 @@
+{
+ "packet": "M15-m3-read",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "fa050355",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main purpose of this notice?",
+      "o": [
+       "To tell students about a temporary change",
+       "To ask students to buy new books",
+       "To praise the workers for their effort",
+       "To introduce a new library teacher"
+      ],
+      "a": 0,
+      "why": "도서관이 일시적으로 일찍 닫는다는 변경 사항을 알리는 글이에요.",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "Why will the library close early this week?",
+      "o": [
+       "Because the roof is being repaired",
+       "Because the teachers are having a long meeting",
+       "Because the books are being moved to a new room",
+       "Because Ms. Park is away on a trip"
+      ],
+      "a": 0,
+      "why": "지붕 수리 공사 때문에 도서관이 일찍 닫는다고 했어요."
+     },
+     {
+      "q": "The phrase \"thank you for your patience\" shows that the writer",
+      "o": [
+       "wants students to hurry up",
+       "is angry at the students",
+       "expects students to feel a little upset",
+       "is planning a surprise party for the school"
+      ],
+      "a": 2,
+      "why": "불편을 끼쳐 미안하다는 뜻이며, 학생들이 조금 불편해할 것을 예상해요.",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "What should a student do to get a book for a project?",
+      "o": [
+       "Use the box beside the main door",
+       "Talk to Ms. Park before twelve",
+       "Wait until the roof is repaired",
+       "Visit the library after 3:00 p.m."
+      ],
+      "a": 1,
+      "why": "정오 전에 사무실의 Ms. Park에게 요청하라고 했어요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Original key (returning books is harder) is not stated: the notice says books can still be returned via the box; no reason is given for waiving late fees. Replaced with a stated-detail question.",
+   "severity": "major"
+  },
+  {
+   "item": "a00b0329",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What problem did Yuri have at the start?",
+      "o": [
+       "She had missed the final train",
+       "She had lost her phone",
+       "She had forgotten the city's name",
+       "She had no money for a ticket"
+      ],
+      "a": 0,
+      "why": "막차를 놓쳤어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does \"Someone did the same for me once\" suggest about the young man?",
+      "o": [
+       "He works for the train company",
+       "He is a friend of the family of Yuri's mother",
+       "He often misses trains",
+       "He once received similar help himself"
+      ],
+      "a": 3,
+      "why": "예전에 누군가 자신을 도와준 적이 있다는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "How did Yuri most likely feel at the end?",
+      "o": [
+       "Bored and sleepy",
+       "Jealous and upset",
+       "Thankful and inspired",
+       "Afraid and angry"
+      ],
+      "a": 2,
+      "why": "친절을 다른 사람에게도 전하겠다고 결심했으므로 감사하며 감동한 상태예요.",
+      "std": [
+       "9영01-05"
+      ]
+     },
+     {
+      "q": "Why is her phone battery mentioned?",
+      "o": [
+       "It explains why the night bus arrived so late at night",
+       "It shows she could not easily solve the problem on her own",
+       "It proves the man was rich enough to help a stranger",
+       "It tells us how much the train ticket cost her"
+      ],
+      "a": 1,
+      "why": "배터리가 거의 없어서 혼자 길을 찾기 어려운 상황이었음을 강조해요."
+     }
+    ]
+   },
+   "why": "Key \"shows how hard it was to get help\" is misleading (she got help at once); reworded to the actual function, distractors lengthened.",
+   "severity": "major"
+  },
+  {
+   "item": "8b8ec2ae",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the purpose of this report?",
+      "o": [
+       "To suggest ways to save water",
+       "To praise the cafeteria workers",
+       "To sell rain sensors",
+       "To plan a swimming contest"
+      ],
+      "a": 0,
+      "why": "물 사용을 조사하고 절약 방안을 제안하는 보고서예요.",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "What can we infer about the sprinklers?",
+      "o": [
+       "They are controlled by students and teachers",
+       "They are used only on dry days",
+       "They are broken in every season",
+       "They do not respond to the weather"
+      ],
+      "a": 3,
+      "why": "비 오는 날에도 켜진다고 했으므로 날씨에 반응하지 않아요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "How do the sprinklers and the dripping taps compare with the cafeteria in water use?",
+      "o": [
+       "They used about the same water as the cafeteria",
+       "They used less water than the cafeteria did",
+       "Together they used more water than the cafeteria",
+       "They used water only on rainy mornings"
+      ],
+      "a": 2,
+      "why": "스프링클러와 수도꼭지 두 문제를 합치면 급식실보다 더 많은 물을 썼어요."
+     },
+     {
+      "q": "What is the writer's attitude to the problem?",
+      "o": [
+       "Hopeless and tired",
+       "Practical and hopeful",
+       "Careless and rude",
+       "Frightened and shocked"
+      ],
+      "a": 1,
+      "why": "해결책을 제시하며 기대하는 현실적이고 희망적인 태도예요.",
+      "std": [
+       "9영01-06"
+      ]
+     }
+    ]
+   },
+   "why": "Original claimed the yard+taps used the most water of any place; the text only says they used more than the cafeteria (other places unknown) and \"yard and taps together\" is not a place.",
+   "severity": "major"
+  }
+ ],
+ "ok": 126,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

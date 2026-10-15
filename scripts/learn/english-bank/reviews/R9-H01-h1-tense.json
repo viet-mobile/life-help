@@ -1,0 +1,100 @@
+{
+ "packet": "H01-h1-tense",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "3d6e677f",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Word order not unique (yet can precede finished); no ordering question.",
+   "severity": "minor"
+  },
+  {
+   "item": "f97f6d46",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "'since I saw my cousin last' is an equally valid order; no ordering question.",
+   "severity": "minor"
+  },
+  {
+   "item": "60c4418c",
+   "op": "set",
+   "set": {
+    "bad": [
+     "If I have studied harder, I would have passed the exam.",
+     "If I had studied harder, I would passed the exam.",
+     "If I would have studied harder, I would have passed the exam."
+    ]
+   },
+   "why": "Replace the arguably valid mixed-conditional distractor.",
+   "severity": "minor"
+  },
+  {
+   "item": "39df53e8",
+   "op": "set",
+   "set": {
+    "q": "Choose the best answer: How long ___ for the bus so far? It is already getting dark.",
+    "o": [
+     "have you been waiting",
+     "do you waiting",
+     "are you waited",
+     "did you waiting"
+    ],
+    "a": 0,
+    "why": "지금까지 계속된 동작의 기간을 물을 때는 현재완료진행 have you been waiting을 써요."
+   },
+   "why": "Remove defensible 'will you wait'/'do you wait' readings; 'so far' pins present perfect progressive.",
+   "severity": "major"
+  },
+  {
+   "item": "0a298195",
+   "op": "set",
+   "set": {
+    "q": "Which time expression usually goes with the past simple, not the present perfect?",
+    "o": [
+     "so far this year",
+     "up to now",
+     "two days ago",
+     "in recent weeks"
+    ],
+    "a": 2,
+    "why": "ago는 과거의 한 시점을 나타내므로 과거시제와 쓰고, so far, up to now, in recent weeks는 현재완료와 잘 어울려요."
+   },
+   "why": "Explanation matched to options.",
+   "severity": "minor"
+  },
+  {
+   "item": "adabd42e",
+   "op": "set",
+   "set": {
+    "q": "Which expression can follow 'since' in the sentence \"She has been absent since ___\"?",
+    "o": [
+     "Monday morning",
+     "three days",
+     "about two weeks",
+     "two hours"
+    ],
+    "a": 0,
+    "why": "since 뒤에는 시작 시점이 와요. three days, about two weeks, two hours는 기간이라 for와 함께 써요."
+   },
+   "why": "Explanation matched to options.",
+   "severity": "minor"
+  },
+  {
+   "item": "ade53a77",
+   "op": "drop",
+   "why": "Over-repetition of the for/since contrast within the batch.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 123,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

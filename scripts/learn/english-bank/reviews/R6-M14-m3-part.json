@@ -1,0 +1,267 @@
+{
+ "packet": "M14-m3-part",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 88
+ },
+ "patches": [
+  {
+   "item": "b7beeccf",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A family moves to a new home because of heavy rain.",
+       "A mother teaches her sons how to cook a big dinner.",
+       "Two children make a rainy day fun with boxes.",
+       "A father repairs the roof while his children sleep."
+      ],
+      "a": 2,
+      "why": "비 오는 날 지루해하던 두 아이가 상자로 성을 만들며 즐겁게 보낸다는 내용이에요."
+     },
+     {
+      "q": "Why was the narrator's little brother bored?",
+      "o": [
+       "He had to stay in because of the rain.",
+       "He was sick and needed to see a doctor.",
+       "His mother did not let him use the sofa.",
+       "He had already finished building his toys."
+      ],
+      "a": 0,
+      "why": "비 오는 토요일이라 밖에 나가 놀 수 없어서 지루해했다고 추론할 수 있어요."
+     },
+     {
+      "q": "Where did the narrator find the boxes?",
+      "o": [
+       "Behind the sofa",
+       "Under the stairs",
+       "In the garage",
+       "Next to the window"
+      ],
+      "a": 1,
+      "why": "본문에서 'old boxes stored under the stairs'라고 했어요."
+     },
+     {
+      "q": "How did Mom probably feel at the end of the story?",
+      "o": [
+       "Angry about the mess in the room",
+       "Worried about the rain outside",
+       "Bored with the castle after a while",
+       "Pleased and ready to join the fun"
+      ],
+      "a": 3,
+      "why": "놀라워하며 미소 짓고 함께했다는 표현에서 기뻐했음을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "q1 해설의 \"남매\"는 근거 없는 추정(두 형제일 수도 있음)",
+   "severity": "minor"
+  },
+  {
+   "item": "7a2b98d4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did the writer of the letter ask the reader to do?",
+      "o": [
+       "Plant a tree",
+       "Return a book",
+       "Visit the library",
+       "Clean the garden"
+      ],
+      "a": 0,
+      "why": "편지에 'please plant a tree for me'라고 쓰여 있었어요."
+     },
+     {
+      "q": "Why did the librarian smile?",
+      "o": [
+       "She had written the letter herself long ago.",
+       "She wanted Hana to leave the library quickly.",
+       "The idea fit the school's garden plans.",
+       "She thought the paper looked very expensive."
+      ],
+      "a": 2,
+      "why": "정원에 나무가 더 필요하다는 말에서 편지의 부탁이 마침 학교 사정과 맞았다고 추론할 수 있어요."
+     },
+     {
+      "q": "In the passage, the word “faded” is closest in meaning to ____.",
+      "o": [
+       "bright and colorful",
+       "freshly written",
+       "easy to carry",
+       "not clear anymore"
+      ],
+      "a": 3,
+      "why": "faded는 색이나 글씨가 흐릿해진 상태를 뜻해요."
+     },
+     {
+      "q": "What does “it” refer to in the last sentence?",
+      "o": [
+       "The apple tree",
+       "The old letter",
+       "The library door",
+       "The garden"
+      ],
+      "a": 1,
+      "why": "앞에서 편지를 액자에 넣어 벽에 걸었다고 했으므로 방문객이 읽을 수 있는 것은 편지예요."
+     }
+    ]
+   },
+   "why": "faded q3 key was the only longer option (17 vs 13); lengthened distractors",
+   "severity": "minor"
+  },
+  {
+   "item": "c5791ef8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did the dog react to the robot vacuum at first?",
+      "o": [
+       "He barked and chased it outside.",
+       "He hid because he was scared.",
+       "He jumped on top of it happily.",
+       "He ignored it and kept sleeping."
+      ],
+      "a": 1,
+      "why": "처음에는 겁을 먹고 침대 밑에 숨었다고 했어요."
+     },
+     {
+      "q": "What does “it” in “we have to rescue it” refer to?",
+      "o": [
+       "The family dog",
+       "The big sofa",
+       "The clean floor",
+       "The robot vacuum"
+      ],
+      "a": 3,
+      "why": "소파 밑에 끼는 것은 로봇 청소기예요."
+     },
+     {
+      "q": "What can we guess about the brother?",
+      "o": [
+       "He expects the robot to fix his mess.",
+       "He wants to sell the robot to a neighbor.",
+       "He is afraid of the dog and the machine.",
+       "He cleans the whole house every day."
+      ],
+      "a": 0,
+      "why": "양말을 아무 데나 두고 로봇이 해결할 거라고 말하는 모습에서 추론할 수 있어요."
+     },
+     {
+      "q": "What is the writer's attitude toward the robot vacuum?",
+      "o": [
+       "Strongly negative, almost angry",
+       "Completely serious and formal",
+       "Mostly positive, with humor",
+       "Worried and a bit confused"
+      ],
+      "a": 2,
+      "why": "장점을 인정하면서도 재미있게 단점을 말하고 있어요."
+     }
+    ]
+   },
+   "why": "q2 and q4 keys were far longer than distractors (16 vs 7-9; 32 vs 17-20)",
+   "severity": "minor"
+  },
+  {
+   "item": "81cbaf24",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Grandfather teach the writer to do?",
+      "o": [
+       "Sell fresh tomatoes at a local store",
+       "Build a small wooden house for birds",
+       "Pick wild flowers for a big vase",
+       "Tie climbing beans to wooden sticks"
+      ],
+      "a": 3,
+      "why": "본문에서 콩 줄기를 나무 막대에 묶는 법을 가르쳤다고 했어요."
+     },
+     {
+      "q": "How did the writer's feeling change?",
+      "o": [
+       "From bored to interested",
+       "From excited to tired",
+       "From afraid to calm",
+       "From proud to angry"
+      ],
+      "a": 0,
+      "why": "처음에는 지루했지만 점차 흥미를 느꼈다고 했어요."
+     },
+     {
+      "q": "Why does Grandfather probably smile so much while working?",
+      "o": [
+       "He is waiting for visitors to arrive.",
+       "He has just won a gardening prize.",
+       "He enjoys growing food himself.",
+       "He plans to move to a bigger house."
+      ],
+      "a": 2,
+      "why": "직접 기른 채소로 샐러드를 먹은 뒤 이유를 이해했다는 흐름에서 추론할 수 있어요."
+     },
+     {
+      "q": "In the passage, “patience” is closest in meaning to ____.",
+      "o": [
+       "rushing to finish quickly",
+       "staying calm while waiting",
+       "buying many things at once",
+       "working alone all day"
+      ],
+      "a": 1,
+      "why": "patience는 서두르지 않고 차분히 기다리는 태도를 뜻해요."
+     }
+    ]
+   },
+   "why": "patience q4 key uniquely longest (26 vs 13-18)",
+   "severity": "minor"
+  },
+  {
+   "item": "29aec8e8",
+   "op": "set",
+   "set": {
+    "z": [
+     "hungry",
+     "bitter",
+     "sleepy"
+    ],
+    "syn": [
+     "interesting",
+     "captivating",
+     "charming"
+    ],
+    "sp": [
+     "fasinating",
+     "fascinateing",
+     "facsinating"
+    ],
+    "ex": "The museum has a fascinating exhibit about ancient ships.",
+    "exko": "그 박물관에는 고대 선박에 관한 아주 흥미로운 전시가 있어요.",
+    "ko": "아주 흥미로운"
+   },
+   "why": "ko 매력적인 means attractive/charming, not fascinating; 매력적인 전시 is awkward. Gloss changed to 아주 흥미로운 (en unchanged); charming added to syn.",
+   "severity": "minor"
+  },
+  {
+   "item": "600c867d",
+   "op": "set",
+   "set": {
+    "z": [
+     "wooden",
+     "useful",
+     "rainy"
+    ]
+   },
+   "why": "\"She was hungry to win first prize\" is a natural idiom (hungry to win), a second reading in the cloze; replaced hungry",
+   "severity": "major"
+  }
+ ],
+ "ok": 77,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

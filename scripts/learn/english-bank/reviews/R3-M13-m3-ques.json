@@ -1,0 +1,34 @@
+{
+ "packet": "M13-m3-ques",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "d077a60b",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Could you tell me how much does this bag cost?",
+     "Could you tell me how this bag costs much?",
+     "Could you tell me how much this bag costing?"
+    ],
+    "cz": {
+     "st": "Could you tell me how much this bag ___?",
+     "ok": "costs",
+     "wr": [
+      "costing",
+      "to cost",
+      "is cost"
+     ]
+    }
+   },
+   "why": "The original distractor/wrong option \"cost\" is valid as a past-tense reading (how much this bag cost), so a second answer was defensible; replaced with forms that are wrong in every reading.",
+   "severity": "major"
+  }
+ ],
+ "ok": 128,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
