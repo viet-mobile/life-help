@@ -1,0 +1,2453 @@
+{
+ "packet": "M05-order",
+ "sections": [
+  {
+   "skill": "e.order",
+   "items": [
+    {
+     "k": "s",
+     "good": "My uncle drives a big white truck.",
+     "ko": "삼촌은 크고 하얀 트럭을 운전해요.",
+     "bad": [
+      "My uncle drives a truck big white.",
+      "My uncle a big white drives truck.",
+      "My uncle drives big a white truck."
+     ],
+     "cz": {
+      "st": "My uncle drives ___ truck.",
+      "ok": "a big white",
+      "wr": [
+       "big a white",
+       "white a big",
+       "a truck big"
+      ]
+     },
+     "rule": "형용사는 관사 뒤, 명사 앞에 와요: 관사 → 형용사 → 명사.",
+     "hint": "꾸며 주는 말이 명사의 앞에 오는지 뒤에 오는지 살펴보세요."
+    },
+    {
+     "k": "s",
+     "good": "Where do you keep your pencils?",
+     "ko": "너는 연필을 어디에 두니?",
+     "bad": [
+      "Where you do keep your pencils?",
+      "Where do keep you your pencils?",
+      "Do where you keep your pencils?"
+     ],
+     "cz": {
+      "st": "Where ___ keep your pencils?",
+      "ok": "do you",
+      "wr": [
+       "you do",
+       "does you",
+       "are you"
+      ]
+     },
+     "rule": "의문사 의문문의 어순은 의문사 + do/does + 주어 + 동사원형이에요.",
+     "hint": "의문사 바로 뒤에는 무엇이 올까요?"
+    },
+    {
+     "k": "s",
+     "good": "What time does the bus arrive?",
+     "ko": "버스는 몇 시에 도착하나요?",
+     "bad": [
+      "What time the bus does arrive?",
+      "What time does arrive the bus?",
+      "What does time the bus arrive?"
+     ],
+     "cz": {
+      "st": "What time ___ arrive?",
+      "ok": "does the bus",
+      "wr": [
+       "the bus does",
+       "do the bus",
+       "is the bus"
+      ]
+     },
+     "rule": "What time 뒤에도 does + 주어 + 동사원형 순서로 써요."
+    },
+    {
+     "k": "s",
+     "good": "Can your brother swim in the sea?",
+     "ko": "네 형은 바다에서 수영할 수 있니?",
+     "bad": [
+      "Can swim your brother in the sea?",
+      "Can your brother in the sea swim?",
+      "Swim can your brother in the sea?"
+     ],
+     "cz": {
+      "st": "___ swim in the sea?",
+      "ok": "Can your brother",
+      "wr": [
+       "Brother your can",
+       "Can brother your",
+       "Your can brother"
+      ]
+     },
+     "rule": "조동사 의문문은 조동사 + 주어 + 동사원형 순서예요.",
+     "hint": "의문문은 조동사가 문장 맨 앞으로 나와요."
+    },
+    {
+     "k": "s",
+     "good": "My mother always drinks tea in the morning.",
+     "ko": "어머니는 아침마다 늘 차를 마셔요.",
+     "bad": [
+      "My mother drinks always tea in the morning.",
+      "My mother tea always drinks in the morning.",
+      "My always mother drinks tea in the morning."
+     ],
+     "cz": {
+      "st": "My mother ___ tea in the morning.",
+      "ok": "always drinks",
+      "wr": [
+       "drinks always",
+       "always drink",
+       "drink always"
+      ]
+     },
+     "rule": "빈도부사(always, usually)는 일반동사 앞에 두어요.",
+     "hint": "빈도를 나타내는 말은 동사 바로 앞에 오는 것이 보통이에요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Tom is usually the first student in class.",
+     "ko": "톰은 보통 반에서 가장 먼저 오는 학생이에요.",
+     "bad": [
+      "Tom is the usually first student in class.",
+      "Tom is the first usually student in class.",
+      "Tom the first usually is student in class."
+     ],
+     "cz": {
+      "st": "Tom ___ the first student in class.",
+      "ok": "is usually",
+      "wr": [
+       "usually are",
+       "is usual",
+       "usually"
+      ]
+     },
+     "rule": "be동사가 있는 문장에서는 빈도부사를 be동사 뒤에 두어요.",
+     "hint": "be동사와 빈도부사 중 어느 쪽이 먼저일까요?",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "I don't know where he lives.",
+     "ko": "나는 그가 어디에 사는지 몰라요.",
+     "bad": [
+      "I don't know where does he live.",
+      "I don't know where lives he.",
+      "I don't know he where lives."
+     ],
+     "cz": {
+      "st": "I don't know where ___.",
+      "ok": "he lives",
+      "wr": [
+       "does he live",
+       "lives he",
+       "is he living"
+      ]
+     },
+     "rule": "문장 속에 들어간 의문문(간접의문문)은 의문사 + 주어 + 동사 순서로, do/does를 쓰지 않아요.",
+     "hint": "더 큰 문장 안에 들어간 의문문은 평서문 어순이에요."
+    },
+    {
+     "k": "s",
+     "good": "Please tell me what time the museum opens.",
+     "ko": "박물관이 몇 시에 여는지 알려 주세요.",
+     "bad": [
+      "Please tell me what time does the museum open.",
+      "Please tell me what time opens the museum.",
+      "Please tell me the museum what time opens."
+     ],
+     "cz": {
+      "st": "Please tell me what time ___.",
+      "ok": "the museum opens",
+      "wr": [
+       "does the museum open",
+       "opens the museum",
+       "the museum does opens"
+      ]
+     },
+     "rule": "간접의문문에서는 의문사 뒤에 주어 + 동사 순서를 지켜요."
+    },
+    {
+     "k": "s",
+     "good": "Dad gave me a new watch.",
+     "ko": "아빠가 나에게 새 시계를 주셨어요.",
+     "bad": [
+      "Dad gave a new watch me.",
+      "Dad me gave a new watch.",
+      "Gave Dad me a new watch."
+     ],
+     "cz": {
+      "st": "Dad gave ___ a new watch.",
+      "ok": "me",
+      "wr": [
+       "I",
+       "my",
+       "mine"
+      ]
+     },
+     "rule": "give + 사람 + 물건 순서(4형식)로 써요. 사람 자리에는 목적격이 와요.",
+     "hint": "주는 대상과 물건 중 어느 쪽이 먼저 올까요?"
+    },
+    {
+     "k": "s",
+     "good": "She sent a postcard to her grandmother.",
+     "ko": "그녀는 할머니께 엽서를 보냈어요.",
+     "bad": [
+      "She sent to a postcard her grandmother.",
+      "She sent a postcard her grandmother to.",
+      "She sent her grandmother to a postcard."
+     ],
+     "cz": {
+      "st": "She sent a postcard ___ her grandmother.",
+      "ok": "to",
+      "wr": [
+       "at",
+       "of",
+       "on"
+      ]
+     },
+     "rule": "물건 + to + 사람 순서(3형식)로도 쓸 수 있어요. 이때 사람 앞에 to가 필요해요."
+    },
+    {
+     "k": "s",
+     "good": "The room felt warm and quiet.",
+     "ko": "그 방은 따뜻하고 조용하게 느껴졌어요.",
+     "bad": [
+      "The felt room warm and quiet.",
+      "The room warm felt and quiet.",
+      "The room felt and warm quiet."
+     ],
+     "cz": {
+      "st": "The room felt ___.",
+      "ok": "warm and quiet",
+      "wr": [
+       "and warm quiet",
+       "warm quiet and",
+       "quiet warm and"
+      ]
+     },
+     "rule": "주어 + 감각동사 + 형용사(보어) 순서예요. 둘 이상을 이을 때는 A and B로 써요.",
+     "hint": "감각동사 다음에는 상태를 나타내는 말이 와요."
+    },
+    {
+     "k": "s",
+     "good": "The news made everyone happy.",
+     "ko": "그 소식은 모두를 행복하게 했어요.",
+     "bad": [
+      "The news made happy everyone.",
+      "The news everyone made happy.",
+      "The news happy made everyone."
+     ],
+     "cz": {
+      "st": "The news made ___.",
+      "ok": "everyone happy",
+      "wr": [
+       "happy everyone",
+       "happily everyone",
+       "everyone happily"
+      ]
+     },
+     "rule": "make + 목적어 + 형용사(목적보어) 순서예요. 목적보어 자리에는 부사가 아니라 형용사를 써요.",
+     "hint": "목적어가 먼저 나오고 그 상태를 말하는 말이 뒤따라요."
+    },
+    {
+     "k": "s",
+     "good": "There is a small park near my house.",
+     "ko": "우리 집 근처에 작은 공원이 있어요.",
+     "bad": [
+      "There a small park is near my house.",
+      "There is a park small near my house.",
+      "There is small a park near my house."
+     ],
+     "cz": {
+      "st": "There ___ a small park near my house.",
+      "ok": "is",
+      "wr": [
+       "are",
+       "do",
+       "has"
+      ]
+     },
+     "rule": "There is + 단수 명사 순서로 써요. 형용사는 명사 앞에 와요."
+    },
+    {
+     "k": "s",
+     "good": "I don't like cold milk.",
+     "ko": "나는 차가운 우유를 좋아하지 않아요.",
+     "bad": [
+      "I like not cold milk.",
+      "I do like not cold milk.",
+      "I not do like cold milk."
+     ],
+     "cz": {
+      "st": "I ___ like cold milk.",
+      "ok": "don't",
+      "wr": [
+       "not",
+       "no",
+       "doesn't"
+      ]
+     },
+     "rule": "일반동사의 부정문은 주어 + don't + 동사원형 순서예요.",
+     "hint": "부정을 나타내는 말은 동사 앞에서 do와 함께 써요."
+    },
+    {
+     "k": "s",
+     "good": "Please close the window before you leave.",
+     "ko": "나가기 전에 창문을 닫아 주세요.",
+     "bad": [
+      "Please the window close before you leave.",
+      "Close please before the window you leave.",
+      "Please close the window you before leave."
+     ],
+     "cz": {
+      "st": "Please ___ the window before you leave.",
+      "ok": "close",
+      "wr": [
+       "closing",
+       "to close",
+       "closed"
+      ]
+     },
+     "rule": "명령문은 동사원형으로 시작하고, please는 문장 앞이나 뒤에 붙여요.",
+     "hint": "명령문에는 주어가 보이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "I was tired, so I went to bed early.",
+     "ko": "나는 피곤해서 일찍 잤어요.",
+     "bad": [
+      "I was tired, I so went to bed early.",
+      "So I was tired, I went to bed early.",
+      "I was tired, so went I to bed early."
+     ],
+     "cz": {
+      "st": "I was tired, ___ I went to bed early.",
+      "ok": "so",
+      "wr": [
+       "or",
+       "if",
+       "than"
+      ]
+     },
+     "rule": "결과를 말할 때는 원인 문장 뒤에 so + 주어 + 동사 순서로 이어요.",
+     "hint": "원인이 먼저, 결과가 나중에 와요."
+    },
+    {
+     "k": "s",
+     "good": "We stayed home because it was raining hard.",
+     "ko": "비가 심하게 와서 우리는 집에 있었어요.",
+     "bad": [
+      "We stayed home because was it raining hard.",
+      "We stayed because home it was raining hard.",
+      "We stayed home it was because raining hard."
+     ],
+     "cz": {
+      "st": "We stayed home because ___ hard.",
+      "ok": "it was raining",
+      "wr": [
+       "was it raining",
+       "raining it was",
+       "it raining was"
+      ]
+     },
+     "rule": "because 뒤에는 의문문이 아니라 주어 + 동사 순서로 써요."
+    },
+    {
+     "k": "s",
+     "good": "When I got home, my sister was cooking dinner.",
+     "ko": "내가 집에 왔을 때 언니는 저녁을 만들고 있었어요.",
+     "bad": [
+      "When I home got, my sister was cooking dinner.",
+      "When I got home, was my sister cooking dinner.",
+      "When got I home, my sister cooking was dinner."
+     ],
+     "cz": {
+      "st": "When I got home, my sister ___ dinner.",
+      "ok": "was cooking",
+      "wr": [
+       "cooking was",
+       "cooks was",
+       "was cooked"
+      ]
+     },
+     "rule": "when 절도 주어 + 동사 순서를 지키고, 뒤 문장과 쉼표로 나눠요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "If it rains tomorrow, we will stay inside.",
+     "ko": "내일 비가 오면 우리는 안에 있을 거예요.",
+     "bad": [
+      "If it will rain tomorrow, we will stay inside.",
+      "If it rains tomorrow, we stay will inside.",
+      "If tomorrow rains it, we will stay inside."
+     ],
+     "cz": {
+      "st": "If it ___ tomorrow, we will stay inside.",
+      "ok": "rains",
+      "wr": [
+       "will rain",
+       "rained",
+       "raining"
+      ]
+     },
+     "rule": "조건을 나타내는 if절에서는 미래의 일도 현재 시제로 써요.",
+     "hint": "if가 이끄는 부분의 시제를 확인해 보세요."
+    },
+    {
+     "k": "s",
+     "good": "The girl who sits next to me is my cousin.",
+     "ko": "내 옆에 앉은 소녀는 내 사촌이에요.",
+     "bad": [
+      "The girl sits who next to me is my cousin.",
+      "The who girl sits next to me is my cousin.",
+      "The girl who next to me sits is my cousin."
+     ],
+     "cz": {
+      "st": "The girl ___ next to me is my cousin.",
+      "ok": "who sits",
+      "wr": [
+       "sits who",
+       "who sit",
+       "she sits"
+      ]
+     },
+     "rule": "관계대명사 who는 꾸며 줄 사람 바로 뒤에 와요.",
+     "hint": "꾸며 주는 절은 꾸밈받는 말 바로 뒤에 붙어요."
+    },
+    {
+     "k": "s",
+     "good": "We went to the market to buy some fruit.",
+     "ko": "우리는 과일을 사러 시장에 갔어요.",
+     "bad": [
+      "We went to the market buy to some fruit.",
+      "We went to buy the market to some fruit.",
+      "To the market we went buy some fruit."
+     ],
+     "cz": {
+      "st": "We went to the market ___ some fruit.",
+      "ok": "to buy",
+      "wr": [
+       "buy to",
+       "buying to",
+       "to buying"
+      ]
+     },
+     "rule": "목적을 나타낼 때는 to + 동사원형을 써요."
+    },
+    {
+     "k": "s",
+     "good": "Reading before bed helps me sleep.",
+     "ko": "자기 전에 책을 읽으면 잠드는 데 도움이 돼요.",
+     "bad": [
+      "Reading before bed me helps sleep.",
+      "Reading helps before bed me sleep.",
+      "Before reading bed helps me sleep."
+     ],
+     "cz": {
+      "st": "___ before bed helps me sleep.",
+      "ok": "Reading",
+      "wr": [
+       "Read",
+       "Reads",
+       "To reads"
+      ]
+     },
+     "rule": "동명사(-ing)는 문장의 주어가 될 수 있어요."
+    },
+    {
+     "k": "s",
+     "good": "This bag is heavier than that one.",
+     "ko": "이 가방이 저것보다 더 무거워요.",
+     "bad": [
+      "This bag is than heavier that one.",
+      "This bag heavier is than that one.",
+      "This bag is more heavier than that one."
+     ],
+     "cz": {
+      "st": "This bag is ___ than that one.",
+      "ok": "heavier",
+      "wr": [
+       "more heavier",
+       "most heavy",
+       "heavily"
+      ]
+     },
+     "rule": "비교급은 주어 + be + 비교급 + than + 비교 대상 순서예요. 짧은 형용사는 -er을 붙여요."
+    },
+    {
+     "k": "s",
+     "good": "The lake is as deep as the river.",
+     "ko": "그 호수는 강만큼 깊어요.",
+     "bad": [
+      "The lake is as deep the river as.",
+      "The lake as is deep as the river.",
+      "The lake is deep as as the river."
+     ],
+     "cz": {
+      "st": "The lake is as deep ___ the river.",
+      "ok": "as",
+      "wr": [
+       "than",
+       "that",
+       "to"
+      ]
+     },
+     "rule": "원급 비교는 as + 형용사 + as 순서로 써요."
+    },
+    {
+     "k": "s",
+     "good": "Mina is the tallest girl in our class.",
+     "ko": "미나는 우리 반에서 키가 가장 큰 소녀예요.",
+     "bad": [
+      "Mina is tallest the girl in our class.",
+      "Mina is the girl tallest in our class.",
+      "Mina the tallest is girl in our class."
+     ],
+     "cz": {
+      "st": "Mina is the ___ girl in our class.",
+      "ok": "tallest",
+      "wr": [
+       "taller",
+       "most tall",
+       "tall"
+      ]
+     },
+     "rule": "최상급은 the + -est + 명사 순서로 쓰고, 범위는 in/of로 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "The window was broken by a baseball.",
+     "ko": "창문은 야구공에 의해 깨졌어요.",
+     "bad": [
+      "The window broken was by a baseball.",
+      "The window was by broken a baseball.",
+      "The window was a baseball broken by."
+     ],
+     "cz": {
+      "st": "The window was ___ by a baseball.",
+      "ok": "broken",
+      "wr": [
+       "break",
+       "breaking",
+       "broke"
+      ]
+     },
+     "rule": "수동태는 주어 + be동사 + 과거분사 + by + 행위자 순서예요."
+    },
+    {
+     "k": "s",
+     "good": "We have already finished our homework.",
+     "ko": "우리는 이미 숙제를 끝냈어요.",
+     "bad": [
+      "We have finished already our homework.",
+      "We finished have already our homework.",
+      "We have our already finished homework."
+     ],
+     "cz": {
+      "st": "We have already ___ our homework.",
+      "ok": "finished",
+      "wr": [
+       "finish",
+       "finishing",
+       "finishes"
+      ]
+     },
+     "rule": "현재완료는 have + 과거분사이고, already는 have와 과거분사 사이에 자주 와요.",
+     "hint": "have 다음에 어떤 동사 형태가 필요한지 생각해 보세요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Let's meet in front of the school at noon.",
+     "ko": "정오에 학교 앞에서 만나자.",
+     "bad": [
+      "Let's meet at noon the school in front of.",
+      "Let's in front meet of the school at noon.",
+      "Let's meet front in of the school at noon."
+     ],
+     "cz": {
+      "st": "Let's meet ___ the school at noon.",
+      "ok": "in front of",
+      "wr": [
+       "front in of",
+       "in of front",
+       "of in front"
+      ]
+     },
+     "rule": "in front of는 하나의 덩어리 표현이라서 순서를 바꿀 수 없어요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Who are you talking to?",
+     "ko": "너는 누구에게 말하고 있니?",
+     "bad": [
+      "Who you are talking to?",
+      "Who are talking you to?",
+      "Who talking are you to?"
+     ],
+     "cz": {
+      "st": "Who are you ___?",
+      "ok": "talking to",
+      "wr": [
+       "to talking",
+       "talk to are",
+       "talking at to"
+      ]
+     },
+     "rule": "의문사가 전치사의 목적어일 때는 전치사가 문장 끝에 남을 수 있어요."
+    },
+    {
+     "k": "s",
+     "good": "How many books do you read in a month?",
+     "ko": "너는 한 달에 책을 몇 권 읽니?",
+     "bad": [
+      "How many do you read books in a month?",
+      "How many books you do read in a month?",
+      "How books many do you read in a month?"
+     ],
+     "cz": {
+      "st": "How many ___ do you read in a month?",
+      "ok": "books",
+      "wr": [
+       "book",
+       "a book",
+       "bookes"
+      ]
+     },
+     "rule": "How many 뒤에는 셀 수 있는 명사의 복수형이 바로 붙어요."
+    },
+    {
+     "k": "s",
+     "good": "Why is your sister so sad today?",
+     "ko": "네 여동생은 오늘 왜 그렇게 슬퍼하니?",
+     "bad": [
+      "Why your sister is so sad today?",
+      "Why is so sad your sister today?",
+      "Is why your sister so sad today?"
+     ],
+     "cz": {
+      "st": "Why ___ so sad today?",
+      "ok": "is your sister",
+      "wr": [
+       "your sister is",
+       "are your sister",
+       "does your sister"
+      ]
+     },
+     "rule": "be동사 의문문은 의문사 + be + 주어 순서예요."
+    },
+    {
+     "k": "s",
+     "good": "Which season do you like best?",
+     "ko": "너는 어느 계절을 가장 좋아하니?",
+     "bad": [
+      "Which do you like season best?",
+      "Which season you do like best?",
+      "Which season like you do best?"
+     ],
+     "cz": {
+      "st": "Which season ___ like best?",
+      "ok": "do you",
+      "wr": [
+       "you do",
+       "does you",
+       "are you"
+      ]
+     },
+     "rule": "which + 명사는 한 덩어리로 문장 앞에 오고, 그 뒤에 do + 주어 + 동사원형이 와요."
+    },
+    {
+     "k": "s",
+     "good": "The boy opened the door carefully.",
+     "ko": "소년은 조심스럽게 문을 열었어요.",
+     "bad": [
+      "The boy opened carefully the door.",
+      "The boy carefully the door opened.",
+      "The carefully boy opened the door."
+     ],
+     "cz": {
+      "st": "The boy opened the door ___.",
+      "ok": "carefully",
+      "wr": [
+       "careful",
+       "carefulness",
+       "care"
+      ]
+     },
+     "rule": "동사를 꾸미는 부사는 보통 목적어 뒤에 와요.",
+     "hint": "동사를 꾸며 주는 말의 모양을 생각해 보세요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "He is old enough to ride the bus alone.",
+     "ko": "그는 혼자 버스를 탈 만큼 나이가 많아요.",
+     "bad": [
+      "He is enough old to ride the bus alone.",
+      "He is old enough ride to the bus alone.",
+      "He enough is old to ride the bus alone."
+     ],
+     "cz": {
+      "st": "He is old ___ to ride the bus alone.",
+      "ok": "enough",
+      "wr": [
+       "enoughly",
+       "too",
+       "very"
+      ]
+     },
+     "rule": "enough는 형용사 뒤에 와서 '~할 만큼 충분히'라는 뜻을 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "The box was too heavy for me to lift.",
+     "ko": "그 상자는 내가 들기에는 너무 무거웠어요.",
+     "bad": [
+      "The box was heavy too for me to lift.",
+      "The box was too heavy me for to lift.",
+      "The box too was heavy for me to lift."
+     ],
+     "cz": {
+      "st": "The box was too heavy ___ me to lift.",
+      "ok": "for",
+      "wr": [
+       "of",
+       "at",
+       "by"
+      ]
+     },
+     "rule": "too + 형용사 + for + 사람 + to부정사 순서로 써요."
+    },
+    {
+     "k": "s",
+     "good": "Her brother's friend lives next door.",
+     "ko": "그녀의 오빠의 친구는 옆집에 살아요.",
+     "bad": [
+      "Her brother friend's lives next door.",
+      "Her friend brother's lives next door.",
+      "Brother her friend's lives next door."
+     ],
+     "cz": {
+      "st": "Her ___ friend lives next door.",
+      "ok": "brother's",
+      "wr": [
+       "brother",
+       "brothers",
+       "brother is"
+      ]
+     },
+     "rule": "사람의 소유는 이름 뒤에 's를 붙이고, 소유하는 사람이 먼저 와요."
+    },
+    {
+     "k": "s",
+     "good": "He told me that he would call later.",
+     "ko": "그는 나중에 전화하겠다고 내게 말했어요.",
+     "bad": [
+      "He told that me he would call later.",
+      "He told me he that would call later.",
+      "He me told that he would call later."
+     ],
+     "cz": {
+      "st": "He told ___ that he would call later.",
+      "ok": "me",
+      "wr": [
+       "to",
+       "at",
+       "with"
+      ]
+     },
+     "rule": "tell은 'tell + 사람 + that절' 순서로 써요."
+    },
+    {
+     "k": "s",
+     "good": "Let's go to the park after lunch.",
+     "ko": "점심 먹고 공원에 가자.",
+     "bad": [
+      "Let's to go the park after lunch.",
+      "Let's go after to the park lunch.",
+      "Go let's to the park after lunch."
+     ],
+     "cz": {
+      "st": "Let's ___ to the park after lunch.",
+      "ok": "go",
+      "wr": [
+       "to go",
+       "going",
+       "goes"
+      ]
+     },
+     "rule": "Let's 뒤에는 동사원형이 바로 와요."
+    },
+    {
+     "k": "s",
+     "good": "You should drink more water every day.",
+     "ko": "너는 매일 물을 더 많이 마셔야 해요.",
+     "bad": [
+      "You drink should more water every day.",
+      "You should more drink water every day.",
+      "You should water drink more every day."
+     ],
+     "cz": {
+      "st": "You should ___ more water every day.",
+      "ok": "drink",
+      "wr": [
+       "to drink",
+       "drinks",
+       "drinking"
+      ]
+     },
+     "rule": "조동사 should 뒤에는 동사원형이 와요. 동사 다음에 목적어가 이어져요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "Every student must bring a lunch box.",
+     "ko": "모든 학생은 도시락통을 가져와야 해요.",
+     "bad": [
+      "Every students must bring a lunch box.",
+      "Every student must bring lunch a box.",
+      "Student every must bring a lunch box."
+     ],
+     "cz": {
+      "st": "Every ___ must bring a lunch box.",
+      "ok": "student",
+      "wr": [
+       "students",
+       "studentes",
+       "the students"
+      ]
+     },
+     "rule": "every 뒤에는 단수 명사가 오고, 관사를 함께 쓰지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "Although it was cold, we played outside.",
+     "ko": "추웠지만 우리는 밖에서 놀았어요.",
+     "bad": [
+      "Although it was cold, but we played outside.",
+      "Although was cold it, we played outside.",
+      "It was although cold, we played outside."
+     ],
+     "cz": {
+      "st": "Although it was cold, ___ played outside.",
+      "ok": "we",
+      "wr": [
+       "but we",
+       "so we",
+       "and so we"
+      ]
+     },
+     "rule": "although가 있는 문장에서는 but을 함께 쓰지 않아요. although 절 + 쉼표 + 주절 순서예요."
+    },
+    {
+     "k": "s",
+     "good": "First, mix the eggs and the flour.",
+     "ko": "먼저 달걀과 밀가루를 섞으세요.",
+     "bad": [
+      "First, the eggs mix and the flour.",
+      "Mix first, the eggs and the flour.",
+      "First, the eggs and the flour mix."
+     ],
+     "cz": {
+      "st": "First, ___ the eggs and the flour.",
+      "ok": "mix",
+      "wr": [
+       "mixing",
+       "mixes",
+       "to mix"
+      ]
+     },
+     "rule": "순서를 나타내는 말(first, then) 뒤에 동사원형으로 시작하는 명령문이 와요."
+    },
+    {
+     "k": "s",
+     "good": "Please turn it off before dinner.",
+     "ko": "저녁 먹기 전에 그것을 꺼 주세요.",
+     "bad": [
+      "Please turn off it before dinner.",
+      "Please off turn it before dinner.",
+      "Please turn before it off dinner."
+     ],
+     "cz": {
+      "st": "Please turn ___ before dinner.",
+      "ok": "it off",
+      "wr": [
+       "off it",
+       "it offs",
+       "it of"
+      ]
+     },
+     "rule": "구동사의 목적어가 대명사(it)이면 동사와 부사 사이에 끼워 넣어요: turn it off."
+    },
+    {
+     "k": "s",
+     "good": "The post office is between the bank and the bakery.",
+     "ko": "우체국은 은행과 빵집 사이에 있어요.",
+     "bad": [
+      "The post office between is the bank and the bakery.",
+      "The post office is between the bank the and bakery.",
+      "The post is office between the bank and the bakery."
+     ],
+     "cz": {
+      "st": "The post office is ___ the bank and the bakery.",
+      "ok": "between",
+      "wr": [
+       "during",
+       "since",
+       "until"
+      ]
+     },
+     "rule": "between A and B는 둘 사이에 있는 위치를 나타내요."
+    },
+    {
+     "k": "s",
+     "good": "After dinner, I usually wash the dishes.",
+     "ko": "저녁 식사 후에 나는 보통 설거지를 해요.",
+     "bad": [
+      "After dinner, I wash usually the dishes.",
+      "I after dinner, usually wash the dishes.",
+      "After dinner, I the dishes usually wash."
+     ],
+     "cz": {
+      "st": "After dinner, I usually ___ the dishes.",
+      "ok": "wash",
+      "wr": [
+       "washes",
+       "washing",
+       "to wash"
+      ]
+     },
+     "rule": "빈도부사는 일반동사 앞에 두고, 동사 뒤에 목적어가 와요.",
+     "ord": false
+    },
+    {
+     "k": "s",
+     "good": "I study every day so that I can pass the test.",
+     "ko": "나는 시험에 합격할 수 있도록 매일 공부해요.",
+     "bad": [
+      "I study every day so I that can pass the test.",
+      "I study every day that so I can pass the test.",
+      "I study every day so that can I pass the test."
+     ],
+     "cz": {
+      "st": "I study every day so that I ___ pass the test.",
+      "ok": "can",
+      "wr": [
+       "to",
+       "for",
+       "am"
+      ]
+     },
+     "rule": "목적을 나타내는 so that 뒤에는 주어 + can/will + 동사원형이 이어져요."
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(is / my / in / the / cat / garden)",
+     "o": [
+      "My is cat in the garden.",
+      "My cat is in the garden.",
+      "My cat in is the garden.",
+      "Cat my is in the garden."
+     ],
+     "a": 1,
+     "why": "주어(My cat) + be동사 + 장소 표현 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(reads / every / Jun / night / a / book)",
+     "o": [
+      "Jun a book reads every night.",
+      "Jun reads every night a book.",
+      "Every Jun reads night a book.",
+      "Jun reads a book every night."
+     ],
+     "a": 3,
+     "why": "주어 + 동사 + 목적어 순서이고, 시간 표현(every night)은 보통 뒤에 와요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(do / what / you / want / eat / to)",
+     "o": [
+      "What do you want to eat?",
+      "What you do want to eat?",
+      "What do want you to eat?",
+      "What want do you to eat?"
+     ],
+     "a": 0,
+     "why": "의문사 + do + 주어 + 동사원형 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(by / was / written / the / book / a / teacher)",
+     "o": [
+      "The book written was by a teacher.",
+      "The book was by written a teacher.",
+      "The book was written by a teacher.",
+      "A teacher was written the book by."
+     ],
+     "a": 2,
+     "why": "수동태는 주어 + was + 과거분사 + by + 행위자 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(taller / than / my / is / father / me)",
+     "o": [
+      "My father taller is than me.",
+      "My father is than taller me.",
+      "My father is taller than me.",
+      "Taller my father is than me."
+     ],
+     "a": 2,
+     "why": "비교급 문장은 주어 + be + 비교급 + than 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(never / late / is / Hana / for / school)",
+     "o": [
+      "Hana is never late for school.",
+      "Hana is late never for school.",
+      "Hana is late for never school.",
+      "Never Hana is late for school."
+     ],
+     "a": 0,
+     "why": "never는 be동사 뒤, 형용사 앞에 와요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(where / the / station / is / train)",
+     "o": [
+      "Where the train station is?",
+      "Where is station the train?",
+      "Is where the train station?",
+      "Where is the train station?"
+     ],
+     "a": 3,
+     "why": "Where + be동사 + 주어 순서예요. 명사 덩어리는 the train station이에요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(old / how / is / your / sister)",
+     "o": [
+      "How is old your sister?",
+      "How old is your sister?",
+      "How old your sister is?",
+      "Old how is your sister?"
+     ],
+     "a": 1,
+     "why": "How old가 한 덩어리로 앞에 오고 그다음 be동사 + 주어가 와요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(gave / his / a / me / friend / present)",
+     "o": [
+      "His friend gave me a present.",
+      "His friend gave a present me.",
+      "His friend me gave a present.",
+      "Gave his friend me a present."
+     ],
+     "a": 0,
+     "why": "give + 사람 + 물건 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(to / wants / she / a / be / doctor)",
+     "o": [
+      "She wants be to a doctor.",
+      "She to wants be a doctor.",
+      "She wants to be a doctor.",
+      "She wants to a be doctor."
+     ],
+     "a": 2,
+     "why": "want + to + 동사원형 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(because / tired / stayed / home / I / was / I)",
+     "o": [
+      "I stayed because home I was tired.",
+      "I stayed home because I was tired.",
+      "I stayed home because was I tired.",
+      "Because I stayed home was I tired."
+     ],
+     "a": 1,
+     "why": "because 뒤에는 주어 + 동사 순서로 이유를 말해요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(lives / who / girl / door / next / the / is / kind)",
+     "o": [
+      "The girl lives who next door is kind.",
+      "The girl who lives door next is kind.",
+      "The who girl lives next door is kind.",
+      "The girl who lives next door is kind."
+     ],
+     "a": 3,
+     "why": "관계대명사 who는 꾸며 줄 명사 바로 뒤에 와요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(know / I / when / the / starts / movie / don't)",
+     "o": [
+      "I don't know when starts the movie.",
+      "I don't know the movie when starts.",
+      "I know don't when the movie starts.",
+      "I don't know when the movie starts."
+     ],
+     "a": 3,
+     "why": "간접의문문은 의문사 + 주어 + 동사 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "다음 단어들을 배열해 문장을 만들 때 올바른 것은?\n(on / the / cup / the / is / table / blue)",
+     "o": [
+      "The cup blue is on the table.",
+      "The blue cup is on the table.",
+      "The blue is cup on the table.",
+      "The blue cup on is the table."
+     ],
+     "a": 1,
+     "why": "형용사(blue)는 명사 앞에 오고, 장소 표현은 be동사 뒤에 와요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "우리말과 뜻이 같은 영어 문장은?\n“나는 어제 친구와 영화를 봤어요.”",
+     "o": [
+      "I a movie watched with my friend yesterday.",
+      "Yesterday watched I a movie with my friend.",
+      "I watched a movie with my friend yesterday.",
+      "I watched yesterday a movie my friend with."
+     ],
+     "a": 2,
+     "why": "주어 + 동사 + 목적어 + 부가 표현 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "우리말과 뜻이 같은 영어 문장은?\n“너는 어디에서 점심을 먹니?”",
+     "o": [
+      "Where do you eat lunch?",
+      "Where you eat do lunch?",
+      "Where do eat you lunch?",
+      "Do you where eat lunch?"
+     ],
+     "a": 0,
+     "why": "의문사 + do + 주어 + 동사원형 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "우리말과 뜻이 같은 영어 문장은?\n“그 소년은 공을 아주 멀리 던졌어요.”",
+     "o": [
+      "The boy the ball threw very far.",
+      "The boy threw the ball very far.",
+      "The boy threw very far the ball.",
+      "Threw the boy the ball very far."
+     ],
+     "a": 1,
+     "why": "영어는 주어 + 동사 + 목적어 순서이고 부사 표현은 그 뒤에 와요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "우리말과 뜻이 같은 영어 문장은?\n“우리는 방과 후에 도서관에서 공부해요.”",
+     "o": [
+      "We study the library at after school.",
+      "We at the library study after school.",
+      "Study we at the library after school.",
+      "We study at the library after school."
+     ],
+     "a": 3,
+     "why": "주어 + 동사 + 장소 + 시간 순서로 말하면 자연스러워요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "우리말과 뜻이 같은 영어 문장은?\n“엄마는 내가 일찍 일어나기를 원하세요.”",
+     "o": [
+      "Mom wants me to get up early.",
+      "Mom wants to me get up early.",
+      "Mom me wants to get up early.",
+      "Mom wants me get to up early."
+     ],
+     "a": 0,
+     "why": "want + 목적어 + to부정사 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "우리말과 뜻이 같은 영어 문장은?\n“이 영화는 저 영화보다 더 재미있어요.”",
+     "o": [
+      "This movie is interesting more than that one.",
+      "This movie more is interesting than that one.",
+      "This movie is more interesting than that one.",
+      "This movie is more than interesting that one."
+     ],
+     "a": 2,
+     "why": "긴 형용사의 비교급은 more + 형용사 + than 순서예요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "음식에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "Mina cooked noodles for dinner.",
+      "My father always eats breakfast.",
+      "She soup drinks every morning.",
+      "Do you like spicy food?"
+     ],
+     "a": 2,
+     "why": "영어는 주어 + 동사 + 목적어 순서라서 She drinks soup ...이어야 해요.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "학교에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "The students quiet are in the library.",
+      "Our teacher gave us homework.",
+      "Can I borrow your eraser?",
+      "The bell rings at nine."
+     ],
+     "a": 0,
+     "why": "형용사 quiet은 be동사 뒤에 와야 해요: The students are quiet ...",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "동물에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "Dogs can run very fast.",
+      "Is the bird singing?",
+      "The rabbit ate a carrot.",
+      "The elephant big drinks water."
+     ],
+     "a": 3,
+     "why": "형용사는 명사 앞에 와요: The big elephant drinks water.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "날씨에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "It rained all day yesterday.",
+      "Today is sunny very and warm.",
+      "What is the weather like today?",
+      "Winter is colder than autumn."
+     ],
+     "a": 1,
+     "why": "very는 꾸며 주는 형용사 앞에 와요: Today is very sunny and warm.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "운동에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "We tennis play on Sundays.",
+      "Jisu plays soccer after school.",
+      "How often do you swim?",
+      "He kicked the ball hard."
+     ],
+     "a": 0,
+     "why": "동사가 목적어 앞에 와야 해요: We play tennis on Sundays.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "가족에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "My grandmother lives in Busan.",
+      "Does your brother have a bike?",
+      "My sister is than me older.",
+      "Dad cooked dinner for us."
+     ],
+     "a": 2,
+     "why": "비교급 + than 순서예요: older than me.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "여행에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "We took a train to the sea.",
+      "I a ticket bought at the station.",
+      "Where did you go last summer?",
+      "The hotel was very clean."
+     ],
+     "a": 1,
+     "why": "주어 다음에 동사가 와야 해요: I bought a ticket at the station.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "음악에 관한 네 문장 중 어순이 틀린 문장은?",
+     "o": [
+      "She plays the piano well.",
+      "Let's sing a song together.",
+      "The concert starts at seven.",
+      "Music loud he plays in his room."
+     ],
+     "a": 3,
+     "why": "주어가 먼저 와야 해요: He plays loud music in his room.",
+     "cat": "word order"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\n___ ___ your birthday?",
+     "o": [
+      "Is when",
+      "When are",
+      "Where do",
+      "When is"
+     ],
+     "a": 3,
+     "why": "의문사 + be동사 + 주어 순서이고, birthday는 단수라서 is를 써요.",
+     "cat": "question words"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\n___ he play the guitar?",
+     "o": [
+      "How often he does",
+      "How often does",
+      "How does often",
+      "How often is"
+     ],
+     "a": 1,
+     "why": "의문사구 How often 뒤에 does + 주어 + 동사원형이 와요.",
+     "cat": "question words"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장을 부정문으로 바꾼 것은?\nSam likes cold weather.",
+     "o": [
+      "Sam not likes cold weather.",
+      "Sam likes not cold weather.",
+      "Sam does not like cold weather.",
+      "Sam does not likes cold weather."
+     ],
+     "a": 2,
+     "why": "3인칭 단수 부정문은 does not + 동사원형이에요.",
+     "cat": "negatives"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장을 의문문으로 바꾼 것은?\nYour sister plays the violin.",
+     "o": [
+      "Does your sister play the violin?",
+      "Plays your sister the violin?",
+      "Does your sister plays the violin?",
+      "Do your sister play the violin?"
+     ],
+     "a": 0,
+     "why": "의문문은 Does + 주어 + 동사원형 순서이고, 동사의 -s는 사라져요.",
+     "cat": "questions"
+    },
+    {
+     "k": "m",
+     "q": "요리 순서:\n(A) Then she poured hot water into a cup.\n(B) First, Ana put a tea bag in a cup.\n(C) Finally, she added a little sugar and enjoyed the tea.\n자연스러운 순서로 배열한 것은?",
+     "o": [
+      "A - B - C",
+      "B - A - C",
+      "C - B - A",
+      "B - C - A"
+     ],
+     "a": 1,
+     "why": "First, Then, Finally 같은 순서 표현이 단서예요.",
+     "cat": "text order"
+    },
+    {
+     "k": "m",
+     "q": "아침 일과:\n(A) After that, he brushed his teeth.\n(B) Tom woke up at seven.\n(C) He washed his face first.\n(D) At last he left for school.\n자연스러운 순서로 배열한 것은?",
+     "o": [
+      "B - A - C - D",
+      "C - B - A - D",
+      "B - C - D - A",
+      "B - C - A - D"
+     ],
+     "a": 3,
+     "why": "일어남 → 세수 → 양치 → 등교의 흐름이에요.",
+     "cat": "text order"
+    },
+    {
+     "k": "m",
+     "q": "식물 기르기:\n(A) Water the seed every day.\n(B) Dig a small hole in the soil.\n(C) Put the seed in and cover it.\n(D) After a week, a green leaf appears.\n자연스러운 순서로 배열한 것은?",
+     "o": [
+      "B - C - A - D",
+      "B - A - C - D",
+      "C - B - A - D",
+      "A - B - C - D"
+     ],
+     "a": 0,
+     "why": "구멍 파기 → 씨 심기 → 물 주기 → 싹 나기 순서예요.",
+     "cat": "text order"
+    },
+    {
+     "k": "m",
+     "q": "도서관 방문:\n(A) She found the book on a high shelf.\n(B) Yuna went to the library after lunch.\n(C) At the desk, she borrowed it with her card.\n(D) She asked the librarian for a science book.\n자연스러운 순서로 배열한 것은?",
+     "o": [
+      "B - A - D - C",
+      "D - B - A - C",
+      "B - D - A - C",
+      "B - D - C - A"
+     ],
+     "a": 2,
+     "why": "도착 → 사서에게 묻기 → 책 찾기 → 대출 순서예요. 'the book'은 앞에 'a science book'이 나온 뒤에 쓸 수 있어요.",
+     "cat": "text order"
+    },
+    {
+     "k": "m",
+     "q": "편지 쓰기:\n(A) Dear Mina,\n(B) See you soon!\n(C) I had a great time at your party.\n(D) Love, Sora\n자연스러운 순서로 배열한 것은?",
+     "o": [
+      "A - B - C - D",
+      "C - A - B - D",
+      "A - C - B - D",
+      "A - C - D - B"
+     ],
+     "a": 2,
+     "why": "편지는 인사 → 본문 → 맺음말 → 서명 순서예요.",
+     "cat": "text order"
+    },
+    {
+     "k": "m",
+     "q": "이야기를 시작하는 첫 문장으로 가장 알맞은 것은?",
+     "o": [
+      "One rainy morning, Jack found a small box on the porch.",
+      "Then they both laughed and went back inside the warm house.",
+      "At last, he gave the box back to its owner.",
+      "Because of this, the little dog was never lonely again."
+     ],
+     "a": 0,
+     "why": "Then, At last, Because of this 같은 말은 앞의 일을 이어받는 표현이라 첫 문장에는 어울리지 않아요.",
+     "cat": "text order"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장에서 대문자로 써야 하는 단어를 모두 바르게 고른 것은?\n(i met sora in busan)",
+     "o": [
+      "i, met, sora",
+      "sora, busan",
+      "i, in, busan",
+      "i, sora, busan"
+     ],
+     "a": 3,
+     "why": "I는 항상 대문자로 쓰고, 사람 이름과 도시 이름도 대문자로 시작해요.",
+     "cat": "capitals"
+    },
+    {
+     "k": "m",
+     "q": "대문자로 시작해서 써야 하는 단어는?",
+     "o": [
+      "monkey",
+      "monday",
+      "morning",
+      "music"
+     ],
+     "a": 1,
+     "why": "요일 이름은 문장 중간에서도 대문자로 시작해요: Monday.",
+     "cat": "capitals"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장의 끝에 알맞은 부호는?\nWhere is my red bag",
+     "o": [
+      "물음표 ( ? )",
+      "마침표 ( . )",
+      "쉼표 ( , )",
+      "세미콜론 ( ; )"
+     ],
+     "a": 0,
+     "why": "의문사로 묻는 문장은 물음표로 끝나요.",
+     "cat": "punctuation"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장의 끝에 알맞은 부호는?\nPlease be quiet in the library",
+     "o": [
+      "물음표 ( ? )",
+      "쉼표 ( , )",
+      "마침표 ( . )",
+      "세미콜론 ( ; )"
+     ],
+     "a": 2,
+     "why": "부탁이나 요청의 평서문은 마침표로 끝나요.",
+     "cat": "punctuation"
+    },
+    {
+     "k": "m",
+     "q": "“After school, Joon plays basketball.”에서 주어는?",
+     "o": [
+      "school",
+      "Joon",
+      "plays",
+      "basketball"
+     ],
+     "a": 1,
+     "why": "주어는 동작을 하는 사람이나 사물이에요. 농구를 하는 사람은 Joon이에요.",
+     "cat": "sentence parts"
+    },
+    {
+     "k": "m",
+     "q": "The little boy kicked the red ball.\n이 문장에서 동사는?",
+     "o": [
+      "little",
+      "red",
+      "ball",
+      "kicked"
+     ],
+     "a": 3,
+     "why": "kicked는 주어 the little boy가 한 행동을 나타내는 동사예요.",
+     "cat": "sentence parts"
+    },
+    {
+     "k": "m",
+     "q": "“Mina sent her aunt a card.”에서 her aunt의 역할은?",
+     "o": [
+      "직접목적어",
+      "보어",
+      "주어",
+      "간접목적어"
+     ],
+     "a": 3,
+     "why": "send + 사람 + 물건 문장에서 사람은 간접목적어, 물건은 직접목적어예요.",
+     "cat": "sentence parts"
+    },
+    {
+     "k": "m",
+     "q": "“The soup smells delicious.”에서 delicious의 역할은?",
+     "o": [
+      "목적어",
+      "보어",
+      "주어",
+      "동사"
+     ],
+     "a": 1,
+     "why": "smell 같은 감각동사 뒤의 형용사는 주어의 상태를 설명하는 보어예요.",
+     "cat": "sentence parts"
+    },
+    {
+     "k": "m",
+     "q": "“The song made her sad.”에서 sad의 역할은?",
+     "o": [
+      "목적어",
+      "주어",
+      "목적보어",
+      "수식어"
+     ],
+     "a": 2,
+     "why": "make + 목적어 + 형용사에서 형용사는 목적어의 상태를 설명하는 목적보어예요.",
+     "cat": "sentence parts"
+    },
+    {
+     "k": "m",
+     "q": "‘주어 + 동사 + 목적어’ 순서로 된 문장은?",
+     "o": [
+      "Ella opened the window.",
+      "Birds fly.",
+      "The cake looks great.",
+      "The man gave her flowers."
+     ],
+     "a": 0,
+     "why": "Ella(주어) opened(동사) the window(목적어) 순서예요. 나머지는 목적어가 없거나 보어, 두 개의 목적어를 가진 문장이에요.",
+     "cat": "sentence parts"
+    },
+    {
+     "k": "m",
+     "q": "대화의 질문으로 알맞은 것은?\nA: ___\nB: I usually go to school by bus.",
+     "o": [
+      "Do how you usually go to school?",
+      "How do you usually go to school?",
+      "How you usually go to school do?",
+      "How usually do you go to school?"
+     ],
+     "a": 1,
+     "why": "의문사 How 뒤에 do + 주어 + 동사원형이 와요.",
+     "cat": "questions"
+    },
+    {
+     "k": "m",
+     "q": "대화의 질문으로 알맞은 것은?\nA: Look at Mia. ___\nB: She is reading a comic book.",
+     "o": [
+      "What she is doing?",
+      "What does she doing?",
+      "Is what she doing?",
+      "What is she doing?"
+     ],
+     "a": 3,
+     "why": "의문사 + be동사 + 주어 + -ing 순서예요.",
+     "cat": "questions"
+    },
+    {
+     "k": "m",
+     "q": "대화의 질문으로 알맞은 것은?\nA: ___\nB: Because I missed the bus.",
+     "o": [
+      "Why were you late for school?",
+      "Why you were late for school?",
+      "Were why you late for school?",
+      "Why late were you for school?"
+     ],
+     "a": 0,
+     "why": "Why + be동사 + 주어 순서예요.",
+     "cat": "questions"
+    },
+    {
+     "k": "m",
+     "q": "대화의 질문으로 알맞은 것은?\nA: ___\nB: It starts at seven thirty.",
+     "o": [
+      "What time the concert does start?",
+      "What does time the concert start?",
+      "What time does the concert start?",
+      "What time starts the concert?"
+     ],
+     "a": 2,
+     "why": "What time + does + 주어 + 동사원형 순서예요.",
+     "cat": "questions"
+    },
+    {
+     "k": "m",
+     "q": "대화의 질문으로 알맞은 것은?\nA: ___\nB: Three, a dog and two cats.",
+     "o": [
+      "How many do you have pets?",
+      "How pets many do you have?",
+      "How many pets do you have?",
+      "How many pets you do have?"
+     ],
+     "a": 2,
+     "why": "How many + 명사 + do + 주어 + 동사원형 순서예요.",
+     "cat": "questions"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nDo you know ___?",
+     "o": [
+      "where the post office is",
+      "where is the post office",
+      "where the post office does",
+      "is where the post office"
+     ],
+     "a": 0,
+     "why": "문장 속에 들어간 의문문은 의문사 + 주어 + 동사 순서예요.",
+     "cat": "embedded questions"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nTell me ___.",
+     "o": [
+      "what did you do yesterday",
+      "what you yesterday did",
+      "did you what yesterday",
+      "what you did yesterday"
+     ],
+     "a": 3,
+     "why": "간접의문문에서는 do를 쓰지 않고 주어 + 동사 순서로 써요.",
+     "cat": "embedded questions"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nI wonder ___ tomorrow.",
+     "o": [
+      "if will it be sunny",
+      "if it will be sunny",
+      "will it be if sunny",
+      "it will if be sunny"
+     ],
+     "a": 1,
+     "why": "if가 이끄는 절은 주어 + 동사 순서예요.",
+     "cat": "embedded questions"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nCan you tell me ___?",
+     "o": [
+      "how I can get to the museum",
+      "how can I get to the museum",
+      "how to I can get the museum",
+      "I how can get to the museum"
+     ],
+     "a": 0,
+     "why": "간접의문문은 how + 주어 + 동사 순서예요.",
+     "cat": "embedded questions"
+    },
+    {
+     "k": "m",
+     "q": "다음 문장을 수동태로 바꾼 것은?\nThe cat ate the fish.",
+     "o": [
+      "The fish eaten was by the cat.",
+      "The fish was ate by the cat.",
+      "The fish was eaten by the cat.",
+      "The cat was eaten by the fish."
+     ],
+     "a": 2,
+     "why": "수동태는 목적어가 주어가 되고 was + 과거분사 + by + 행위자 순서예요.",
+     "cat": "passive"
+    },
+    {
+     "k": "m",
+     "q": "의문사를 사용해 장소를 묻는 문장으로 바꾼 것은?\nHe lives in Jeju.",
+     "o": [
+      "Where he lives?",
+      "Where does he live?",
+      "Where does he lives?",
+      "Where lives he?"
+     ],
+     "a": 1,
+     "why": "Where + does + 주어 + 동사원형 순서예요.",
+     "cat": "questions"
+    },
+    {
+     "k": "r",
+     "title": "Kimchi Fried Rice",
+     "text": "Mina's father is teaching her how to make kimchi fried rice. First, he cuts the kimchi into small pieces and puts a little oil in a pan. Next, he fries the kimchi for two minutes. After that, he adds a bowl of cold rice and mixes everything well. Finally, Mina puts a fried egg on top. Her father says that the order of the steps is very important. If you add the rice too early, the kimchi will not be tasty.",
+     "qs": [
+      {
+       "q": "What does Mina's father do right after he fries the kimchi?",
+       "o": [
+        "He cuts the kimchi into pieces.",
+        "He pours oil into the pan.",
+        "He adds cold rice to the pan.",
+        "He washes the cold rice."
+       ],
+       "a": 2,
+       "why": "2분간 김치를 볶은 다음(After that) 찬밥을 넣어요."
+      },
+      {
+       "q": "What is the last step in the passage?",
+       "o": [
+        "Mina puts a fried egg on top.",
+        "Her father mixes the rice well.",
+        "Her father fries the kimchi.",
+        "Her father cuts the kimchi up."
+       ],
+       "a": 0,
+       "why": "Finally 뒤에 마지막 단계가 나와요."
+      },
+      {
+       "q": "In the passage, the word “mixes” is closest in meaning to ...",
+       "o": [
+        "takes out",
+        "cuts up",
+        "throws away",
+        "puts together"
+       ],
+       "a": 3,
+       "why": "mixes everything well은 모든 재료를 잘 섞는다는 뜻이에요."
+      },
+      {
+       "q": "Why does Mina's father say the order of the steps is important?",
+       "o": [
+        "Adding the oil too late would burn the egg.",
+        "Adding the rice too early would spoil the kimchi.",
+        "Cutting the kimchi small would make rice cook fast.",
+        "Using cold rice would make the dish too salty."
+       ],
+       "a": 1,
+       "why": "마지막 문장에서 밥을 너무 일찍 넣으면 김치가 맛이 없다고 해요."
+      },
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "A girl opens a new restaurant with her father.",
+        "A father shows his daughter the steps of a recipe.",
+        "A family talks about their favorite food shop.",
+        "A cook compares different kinds of fried rice."
+       ],
+       "a": 1,
+       "why": "전체 내용은 아버지가 딸에게 요리 순서를 가르쳐 주는 것이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Sora's Saturday",
+     "text": "Dear Diary, today was a busy Saturday. I woke up at eight and ate toast with jam. At ten, I met my friend Hana at the park, and we rode our bikes by the river. We had lunch at noon, and then we went to the library to return some books. In the evening I helped my mother make dinner. Before bed, I read a comic book for twenty minutes. I was tired, but I felt happy.",
+     "qs": [
+      {
+       "q": "Where did Sora go right after lunch?",
+       "o": [
+        "To the park",
+        "To the river",
+        "To the market",
+        "To the library"
+       ],
+       "a": 3,
+       "why": "점심 뒤에 도서관에 갔다고 해요."
+      },
+      {
+       "q": "What did Sora do first today?",
+       "o": [
+        "She ate toast with jam.",
+        "She rode a bike by the river.",
+        "She helped make dinner.",
+        "She read a comic book."
+       ],
+       "a": 0,
+       "why": "8시에 일어나서 토스트를 먹었어요."
+      },
+      {
+       "q": "In “return some books,” the word “return” means ...",
+       "o": [
+        "borrow",
+        "read again",
+        "give back",
+        "buy"
+       ],
+       "a": 2,
+       "why": "도서관에서 책을 return한다는 것은 돌려준다는 뜻이에요."
+      },
+      {
+       "q": "How did Sora feel at the end of the day?",
+       "o": [
+        "Bored and lonely",
+        "Angry but calm",
+        "Afraid and sad",
+        "Tired but glad"
+       ],
+       "a": 3,
+       "why": "마지막 문장에 tired but happy라고 나와요."
+      },
+      {
+       "q": "Why does the writer mention times like “eight,” “ten,” and “noon”?",
+       "o": [
+        "To explain how to read a clock",
+        "To show the order of the day's activities",
+        "To compare two different weekends",
+        "To complain about a long school day"
+       ],
+       "a": 1,
+       "why": "시각 표현은 하루 일과의 순서를 보여 줘요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "The Lost Umbrella",
+     "text": "On Monday, Jun left his blue umbrella on the bus. He did not notice until he got to school, because the sun was shining. In the afternoon, it began to rain heavily. Jun was worried, so he called the bus company after class. A kind woman found the umbrella and kept it at the office. On Tuesday morning, Jun picked it up. Since then, he always checks his seat before he leaves the bus.",
+     "qs": [
+      {
+       "q": "When did Jun first notice that his umbrella was missing?",
+       "o": [
+        "When he arrived at school",
+        "When the rain started in the afternoon",
+        "After he called the bus company",
+        "On Tuesday morning at the office"
+       ],
+       "a": 0,
+       "why": "학교에 도착해서야 알았다고 해요."
+      },
+      {
+       "q": "Why did Jun call the bus company?",
+       "o": [
+        "He wanted to ask about a late bus.",
+        "He wanted to thank the driver.",
+        "He hoped to find out if his umbrella was there.",
+        "He needed a new bus pass."
+       ],
+       "a": 2,
+       "why": "걱정이 되어 우산을 찾으려고 전화했어요."
+      },
+      {
+       "q": "In the passage, “picked it up” means ...",
+       "o": [
+        "lifted it high",
+        "dropped it off",
+        "collected it",
+        "looked for it"
+       ],
+       "a": 2,
+       "why": "사무실에서 우산을 찾아갔다는 뜻이에요."
+      },
+      {
+       "q": "What does Jun learn from this experience?",
+       "o": [
+        "To check for his things before leaving",
+        "To carry two umbrellas every day",
+        "To avoid buses on rainy days",
+        "To call the office every morning"
+       ],
+       "a": 0,
+       "why": "그 이후로 내리기 전에 항상 자리를 확인해요."
+      },
+      {
+       "q": "Which statement is true?",
+       "o": [
+        "Jun lost his umbrella on Tuesday.",
+        "It was raining when Jun left the bus.",
+        "The woman at the office called Jun first.",
+        "Jun got his umbrella back the next day."
+       ],
+       "a": 3,
+       "why": "화요일 아침에 우산을 찾았어요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Growing Beans",
+     "text": "You can grow beans at home in five easy steps. First, put a bean on wet paper and place it in a clear cup. Second, keep the cup near a window so that it gets light. Third, add a few drops of water every day. After about a week, a small root appears. Then move the bean to a pot with soil. Soon green leaves will grow. Remember, too much water can make the bean rot, so be careful.",
+     "qs": [
+      {
+       "q": "What should you do second?",
+       "o": [
+        "Put the bean on wet paper",
+        "Keep the cup near a window",
+        "Add a few drops of water",
+        "Move the bean to a pot"
+       ],
+       "a": 1,
+       "why": "Second 뒤에 창가에 두라고 나와요."
+      },
+      {
+       "q": "In the passage, the word “rot” most likely means ...",
+       "o": [
+        "grow tall",
+        "go bad",
+        "turn green",
+        "become dry"
+       ],
+       "a": 1,
+       "why": "물이 너무 많으면 콩이 썩을 수 있다는 내용이에요."
+      },
+      {
+       "q": "Why should the cup be near a window?",
+       "o": [
+        "The bean needs cool air.",
+        "The paper dries faster.",
+        "The cup stays quiet.",
+        "The bean needs light."
+       ],
+       "a": 3,
+       "why": "so that it gets light가 이유예요."
+      },
+      {
+       "q": "When should you move the bean to a pot?",
+       "o": [
+        "After a small root appears",
+        "Before adding any water",
+        "As soon as leaves grow",
+        "On the first day"
+       ],
+       "a": 0,
+       "why": "뿌리가 나온 뒤에 화분으로 옮겨요."
+      },
+      {
+       "q": "What is the main purpose of the passage?",
+       "o": [
+        "To describe a trip to a farm",
+        "To compare different foods",
+        "To explain how to grow beans",
+        "To advertise a garden shop"
+       ],
+       "a": 2,
+       "why": "콩을 기르는 방법을 순서대로 설명하는 글이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Trip to the Science Museum",
+     "text": "Hi Daniel, I'm writing to tell you about our class trip. We left school at nine and took a bus to the science museum. First, we watched a short film about space. Next, a guide showed us a model of the solar system, and we asked a lot of questions. After lunch, we tried some fun experiments with magnets. My favorite part was the last one, because I made a small train move without touching it! I will bring pictures on Monday. Your friend, Eun-ji",
+     "qs": [
+      {
+       "q": "Why is Eun-ji writing to Daniel?",
+       "o": [
+        "To invite him to a party",
+        "To ask about the homework",
+        "To thank him for a gift",
+        "To tell him about a class trip"
+       ],
+       "a": 3,
+       "why": "첫 문장에서 현장학습 이야기를 하려고 쓴다고 해요."
+      },
+      {
+       "q": "What did the class do after lunch?",
+       "o": [
+        "They watched a film about space.",
+        "They did experiments with magnets.",
+        "They met a guide.",
+        "They rode the bus back."
+       ],
+       "a": 1,
+       "why": "점심 뒤에 자석 실험을 했어요."
+      },
+      {
+       "q": "Which activity came before the model of the solar system?",
+       "o": [
+        "The film about space",
+        "The magnet experiments",
+        "The picnic lunch",
+        "The bus ride home"
+       ],
+       "a": 0,
+       "why": "First가 영화, Next가 태양계 모형이에요."
+      },
+      {
+       "q": "How did Eun-ji probably feel about the magnet experiments?",
+       "o": [
+        "Bored",
+        "Worried",
+        "Excited",
+        "Ashamed"
+       ],
+       "a": 2,
+       "why": "가장 좋았던 부분이라고 하며 느낌표를 썼어요."
+      },
+      {
+       "q": "In “I made a small train move without touching it,” what does “it” refer to?",
+       "o": [
+        "the magnet",
+        "the museum",
+        "the small train",
+        "the model"
+       ],
+       "a": 2,
+       "why": "만지지 않고 움직인 것은 작은 기차예요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04",
+      "9영01-05",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "School Festival Notice",
+     "text": "The Spring Festival will be held next Friday in the school gym. The doors open at 9:30. The festival begins with a dance show at ten o'clock, and a short play follows at eleven. After the play, students may buy snacks in the yard until noon. The art contest starts at one, and the winners will be announced at three. Parents are welcome, but they must sign in at the front desk. Please do not run in the gym.",
+     "qs": [
+      {
+       "q": "What happens right after the dance show?",
+       "o": [
+        "A short play begins.",
+        "The art contest starts.",
+        "Snacks are sold in the yard.",
+        "Winners are announced."
+       ],
+       "a": 0,
+       "why": "댄스 공연 다음 11시에 연극이 이어져요."
+      },
+      {
+       "q": "When will the winners be announced?",
+       "o": [
+        "At 1:00",
+        "At 12:00",
+        "At 11:00",
+        "At 3:00"
+       ],
+       "a": 3,
+       "why": "3시에 수상자를 발표해요."
+      },
+      {
+       "q": "What is this notice mainly for?",
+       "o": [
+        "Asking students for money",
+        "Giving information about a school event",
+        "Teaching a dance step",
+        "Choosing a class leader"
+       ],
+       "a": 1,
+       "why": "행사 일정과 안내를 알리는 글이에요."
+      },
+      {
+       "q": "In the notice, “sign in” means ...",
+       "o": [
+        "pay at the door",
+        "write your name down",
+        "leave a message",
+        "ask a question"
+       ],
+       "a": 1,
+       "why": "parents must sign in at the front desk는 방문 기록을 남기라는 뜻이에요."
+      },
+      {
+       "q": "Which is NOT allowed at the festival?",
+       "o": [
+        "Visiting as a parent",
+        "Buying snacks",
+        "Watching the play",
+        "Running in the gym"
+       ],
+       "a": 3,
+       "why": "마지막 문장에서 체육관에서 뛰지 말라고 해요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04",
+      "9영01-06"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "The Life of a Butterfly",
+     "text": "A butterfly goes through four stages in its life. At first, it is a tiny egg on a leaf. A few days later, a caterpillar comes out and begins to eat leaves all day. When it is big enough, the caterpillar hangs from a branch and makes a hard case around its body. Inside the case, it slowly changes for about two weeks. Finally, the case opens and a butterfly comes out. It dries its wings in the sun before it can fly.",
+     "qs": [
+      {
+       "q": "What is the passage mainly about?",
+       "o": [
+        "How a butterfly grows and changes",
+        "Where butterflies like to live",
+        "What butterflies eat",
+        "Why leaves turn brown"
+       ],
+       "a": 0,
+       "why": "알에서 나비가 되기까지의 과정을 설명해요."
+      },
+      {
+       "q": "What comes right after the egg stage?",
+       "o": [
+        "A butterfly dries its wings.",
+        "A hard case forms.",
+        "A caterpillar comes out.",
+        "The leaf falls off."
+       ],
+       "a": 2,
+       "why": "며칠 뒤 애벌레가 나와요."
+      },
+      {
+       "q": "How long does the change inside the case take?",
+       "o": [
+        "A few days",
+        "One whole year",
+        "Only one hour",
+        "About two weeks"
+       ],
+       "a": 3,
+       "why": "약 2주 동안 변해요."
+      },
+      {
+       "q": "Why does the butterfly stay in the sun after coming out?",
+       "o": [
+        "To find food",
+        "To dry its wings",
+        "To lay eggs",
+        "To make a new case"
+       ],
+       "a": 1,
+       "why": "날기 전에 햇빛에 날개를 말려요."
+      },
+      {
+       "q": "In the passage, “case” is closest in meaning to ...",
+       "o": [
+        "a hard covering",
+        "a problem",
+        "a suitcase",
+        "a situation"
+       ],
+       "a": 0,
+       "why": "몸을 둘러싼 단단한 껍질이라는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "A Morning at the Market",
+     "text": "Early on Sunday, Grandpa took Yuri to the fish market. They arrived at six, when the sellers were still setting up their stands. Grandpa asked a seller for the freshest fish, and the man smiled and picked one from a big box of ice. Next, they bought some vegetables from an old lady who knew Grandpa well. Before leaving, Grandpa bought Yuri a warm rice cake. On the way home, Yuri said, \"Let's come again next week!\"",
+     "qs": [
+      {
+       "q": "What did Grandpa buy just before leaving the market?",
+       "o": [
+        "Some fresh vegetables",
+        "A big box of ice",
+        "A warm rice cake for Yuri",
+        "A fish for dinner"
+       ],
+       "a": 2,
+       "why": "떠나기 전에 따뜻한 떡을 사 주었어요."
+      },
+      {
+       "q": "What did Grandpa do before buying vegetables?",
+       "o": [
+        "He bought a rice cake for Yuri.",
+        "He talked with Yuri's teacher.",
+        "He bought fresh fish from a seller.",
+        "He carried Yuri home."
+       ],
+       "a": 2,
+       "why": "Next 앞의 일은 생선을 산 것이에요."
+      },
+      {
+       "q": "How does Yuri feel about the trip?",
+       "o": [
+        "She enjoyed it and wants to go again.",
+        "She was bored and wants to go to sleep.",
+        "She was afraid of the fish and wants to stay away.",
+        "She was angry about waking up so early."
+       ],
+       "a": 0,
+       "why": "다음 주에 또 오자고 말해요."
+      },
+      {
+       "q": "In the passage, “freshest” means ...",
+       "o": [
+        "most expensive",
+        "biggest",
+        "oldest",
+        "most recently caught"
+       ],
+       "a": 3,
+       "why": "fresh fish는 갓 잡은 신선한 생선이에요."
+      },
+      {
+       "q": "In “the man smiled,” who is “the man”?",
+       "o": [
+        "Grandpa",
+        "The fish seller",
+        "The old lady's husband",
+        "A bus driver"
+       ],
+       "a": 1,
+       "why": "Grandpa가 부탁한 상대인 상인을 가리켜요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-04",
+      "9영01-05"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Learning to Ride a Bike",
+     "text": "When I was seven, I could not ride a bike. My brother Seho decided to help me. On the first day, he held the back of my seat while I pedaled slowly. I fell twice, and my knee hurt. On the second day, I practiced alone in the yard and went a little farther. By the end of the week, I could ride all the way to the corner without falling. Now I ride to school every day, and I always thank Seho.",
+     "qs": [
+      {
+       "q": "What is the story mainly about?",
+       "o": [
+        "How the writer lost a bike on the way to school",
+        "How the writer learned to ride a bike with a brother's help",
+        "How the writer's brother won a race",
+        "How the writer fixed a broken bike"
+       ],
+       "a": 1,
+       "why": "형의 도움으로 자전거를 배운 이야기예요."
+      },
+      {
+       "q": "What did Seho do on the first day?",
+       "o": [
+        "He rode ahead of the writer.",
+        "He bought a new bike.",
+        "He took the writer to the corner.",
+        "He held the back of the seat."
+       ],
+       "a": 3,
+       "why": "첫날 형이 안장 뒤를 잡아 주었어요."
+      },
+      {
+       "q": "When could the writer ride to the corner without falling?",
+       "o": [
+        "By the end of the week",
+        "On the first day",
+        "On the second day",
+        "A month later"
+       ],
+       "a": 0,
+       "why": "주말 무렵에는 넘어지지 않고 모퉁이까지 갔어요."
+      },
+      {
+       "q": "Why does the writer thank Seho?",
+       "o": [
+        "Seho gave the writer a new bike.",
+        "Seho takes the writer to school.",
+        "Seho helped the writer learn to ride.",
+        "Seho fixed the writer's knee."
+       ],
+       "a": 2,
+       "why": "형이 자전거 타는 법을 배우도록 도와주었기 때문이에요."
+      },
+      {
+       "q": "In the passage, “pedaled” means ...",
+       "o": [
+        "pulled the brakes",
+        "turned the handle",
+        "rang the bell",
+        "moved the pedals with the feet"
+       ],
+       "a": 3,
+       "why": "pedal은 발로 페달을 밟는 동작이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "r",
+     "title": "Mina's Study Plan",
+     "text": "Mina has a big test on Friday, so she made a study plan. On Monday and Tuesday, she will review her English notes for thirty minutes after dinner. On Wednesday, she will do math problems with her classmate Joon at the library. On Thursday, she will rest her eyes by taking a long walk and then look over the hardest parts one more time. \"If I study a little every day instead of all at once, I will remember more,\" she says.",
+     "qs": [
+      {
+       "q": "What is Mina's plan mainly for?",
+       "o": [
+        "Planning a trip with her classmate",
+        "Preparing for a test by studying a bit each day",
+        "Choosing a book from the library",
+        "Learning to take better walks"
+       ],
+       "a": 1,
+       "why": "금요일 시험을 위해 조금씩 매일 공부하는 계획이에요."
+      },
+      {
+       "q": "Who will study math with Mina?",
+       "o": [
+        "Joon",
+        "Her brother",
+        "Her teacher",
+        "A librarian"
+       ],
+       "a": 0,
+       "why": "수요일에 같은 반 친구 준과 함께 수학 문제를 풀어요."
+      },
+      {
+       "q": "What will Mina do on Thursday?",
+       "o": [
+        "Do math problems at the library",
+        "Review English notes after dinner",
+        "Take a walk and review the hardest parts",
+        "Take the big test"
+       ],
+       "a": 2,
+       "why": "목요일에는 산책을 하고 어려운 부분을 다시 봐요."
+      },
+      {
+       "q": "Why does Mina plan to study a little every day?",
+       "o": [
+        "She wants to finish before dinner.",
+        "She does not like long walks.",
+        "She thinks she will remember more that way.",
+        "She has no test on Friday."
+       ],
+       "a": 2,
+       "why": "마지막 문장에서 이유를 말해요."
+      },
+      {
+       "q": "In the passage, “look over” means ...",
+       "o": [
+        "read through again",
+        "look up at",
+        "pass above",
+        "write down"
+       ],
+       "a": 0,
+       "why": "look over는 훑어보며 다시 검토한다는 뜻이에요."
+      }
+     ],
+     "std": [
+      "9영01-02",
+      "9영01-03",
+      "9영01-04"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "sequence",
+     "pos": "n",
+     "ko": "순서",
+     "ex": "The numbers are not in the right sequence.",
+     "exko": "숫자들이 올바른 순서로 되어 있지 않아요.",
+     "z": [
+      "weather",
+      "holiday",
+      "umbrella"
+     ],
+     "syn": [
+      "order"
+     ],
+     "sp": [
+      "sequense",
+      "sequance",
+      "seqence"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "step",
+     "pos": "n",
+     "ko": "단계",
+     "ex": "Follow each step in the recipe carefully.",
+     "exko": "요리법의 각 단계를 조심스럽게 따라 하세요.",
+     "z": [
+      "village",
+      "holiday",
+      "shoulder"
+     ],
+     "syn": [],
+     "sp": [
+      "stepp",
+      "sstep",
+      "steap"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "instruction",
+     "pos": "n",
+     "ko": "지시",
+     "ex": "She gave a clear instruction to the class.",
+     "exko": "그녀는 반 학생들에게 분명한 지시를 했어요.",
+     "z": [
+      "village",
+      "holiday",
+      "shoulder"
+     ],
+     "syn": [
+      "direction"
+     ],
+     "sp": [
+      "instrucshun",
+      "intruction",
+      "instrution"
+     ]
+    }
+   ]
+  }
+ ]
+}
