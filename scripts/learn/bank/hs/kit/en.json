@@ -1,0 +1,28 @@
+{
+  "q": {
+    "cul_pitchFifth": {
+      "prompt": "A reference note has frequency ${f}$ Hz. Raise it by ${k}$ octaves, then by a perfect fifth (frequency ratio $3:2$). What is the frequency of the resulting note in Hz? (digits only)",
+      "hints": [
+        "One octave up doubles the frequency.",
+        "A perfect fifth up multiplies the frequency by $\\frac{3}{2}$."
+      ],
+      "expl": "Up ${k}$ octaves: ${f}\\times 2^{{k}}={mid}$ Hz; a fifth higher: ${mid}\\times\\frac{3}{2}={ans}$ Hz."
+    },
+    "cul_bordaTotal": {
+      "prompt": "A Borda count chooses among candidates A, B, C: 2 points for first place, 1 for second, 0 for third. ${n1}$ voters rank A>B>C, ${n2}$ rank B>C>A and ${n3}$ rank C>A>B. What is candidate A's total score? (digits only)",
+      "hints": [
+        "First find A's place on each kind of ballot.",
+        "Add (number of voters)×(points for that place) over all ballots."
+      ],
+      "expl": "A is first (2 points) on the first ballot, third (0) on the second and second (1) on the third: ${n1}\\times2+{n2}\\times0+{n3}\\times1={ans}$ points."
+    },
+    "cul_brailleCells": {
+      "prompt": "A braille cell has ${d}$ dot positions, each raised or not raised. Not counting the empty cell with no raised dot, how many different patterns can one cell show? (digits only)",
+      "hints": [
+        "Each position has 2 states: raised or not.",
+        "Subtract the one pattern with no raised dot from all patterns."
+      ],
+      "expl": "$2^{{d}}-1={ans}$ patterns."
+    }
+  }
+}
