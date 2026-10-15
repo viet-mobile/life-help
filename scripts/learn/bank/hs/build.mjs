@@ -91,6 +91,39 @@ for (const set of sets) {
   const names = new Set([...set.cols, "ans"]);
   for (const s of [tpl.prompt, ...tpl.hints, tpl.explanation]) for (const m of s.matchAll(/\{([A-Za-z_]\w+)\}/g)) if (!names.has(m[1])) fail(`${set.id}: placeholder {${m[1]}} is not a column of the set (${[...names]})`);
 }
+// ---- fraction-format rule (review finding, all modules): the numeric checker accepts a typed number only within 1e-9 of the stored value.
+// A template that lets the student write "a decimal or a fraction" is only honest when every answer it can produce terminates in a few decimals;
+// otherwise the prompt asks for a fraction in lowest terms and the explanation prints that fraction (column ansf), never a raw double.
+const ratOf = (x) => { // continued fraction -> [p, q] (q <= 1e6) or null
+  let h1 = 1, h0 = 0, k1 = 0, k0 = 1, y = x;
+  for (let i = 0; i < 40; i++) {
+    const a = Math.floor(y);
+    [h1, h0] = [a * h1 + h0, h1]; [k1, k0] = [a * k1 + k0, k1];
+    if (k1 > 1e6) return null;
+    if (Math.abs(x - h1 / k1) < 1e-12 * Math.max(1, Math.abs(x))) return [h1, k1];
+    y = 1 / (y - a);
+    if (!Number.isFinite(y)) break;
+  }
+  return null;
+};
+const decimalsOf = (q) => { let a = 0, b = 0; while (q % 2 === 0) { q /= 2; a++; } while (q % 5 === 0) { q /= 5; b++; } return q === 1 ? Math.max(a, b) : Infinity; };
+const FRAC_KO = /\((?:소수로 써도 되고 3\/4 처럼 분수로 써도 돼요|소수로 쓰세요)\)\s*$/;
+const flagged = new Set();
+for (const set of sets) {
+  if (!FRAC_KO.test(templates[set.template].prompt) || set.tolerance) continue;
+  for (const r of set.rows) { const a = r[r.length - 1]; if (Number.isInteger(a)) continue; const f = ratOf(a); if (!f || decimalsOf(f[1]) > 4) { flagged.add(set.template); break; } }
+}
+const fmtAns = (a) => { if (Number.isInteger(a)) return String(a); const f = ratOf(a); if (f && decimalsOf(f[1]) <= 4) return String(a); return f ? `${f[0]}/${f[1]}` : String(a); };
+for (const k of flagged) {
+  const t = templates[k], e = en[k];
+  t.prompt = t.prompt.replace(FRAC_KO, "(기약분수로 쓰세요. 정수이면 정수로 쓰세요. 예: 3/4)");
+  e.prompt = e.prompt.replace(/\(([^()]*)\)\s*$/, "(write a fraction in lowest terms such as 3/4; an integer if the value is whole)");
+  const swap = (x) => x.replace(/\{ans\}/g, "{ansf}");
+  t.explanation = swap(t.explanation); t.hints = t.hints.map(swap); e.expl = swap(e.expl); e.hints = e.hints.map(swap);
+  for (const set of sets) if (set.template === k) { set.rows = set.rows.map((r) => [...r.slice(0, -1), fmtAns(r[r.length - 1]), r[r.length - 1]]); set.cols = [...set.cols, "ansf"]; }
+}
+console.log(`fraction-format rule: ${flagged.size} templates now ask for a fraction in lowest terms`);
+
 const used = new Set(sets.map((s) => s.template));
 for (const k of Object.keys(templates)) if (!used.has(k)) fail(`template ${k} is not used by any plan entry`);
 const bank = {

@@ -41,36 +41,52 @@
       "expl": "Comparing coefficients (or substituting suitable values of $x$) gives ${sol}$. Hence ${ask}={ans}$."
     },
     "cm1_symmetricEval": {
-      "prompt": "Given ${cond}$, what is the value of ${expr}$? (digits only)",
+      "prompt": "For real numbers $x$ and $y$ with ${cond}$, what is the value of ${expr}$? (digits only)",
       "hints": [
-        "Rewrite the expression through the sum and the product of two numbers; for example $a^2+b^2=(a+b)^2-2ab$.",
-        "Only the sum and the product are needed. For cubes use $a^3+b^3=(a+b)^3-3ab(a+b)$."
+        "Write the required expression through the sum $x+y$ and the product $xy$; for example $x^2+y^2=(x+y)^2-2xy$.",
+        "For cubes use $x^3+y^3=(x+y)^3-3xy(x+y)$; for fourth powers first find $x^2+y^2$ and then use $x^4+y^4=(x^2+y^2)^2-2(xy)^2$."
       ],
-      "expl": "Rewriting with the product formulas gives ${expr}={work}$. So the value is ${ans}$."
+      "expl": "Rewriting with the product formulas gives ${expr}={work}$. (Also $(x-y)^2=(x+y)^2-4xy={dd}\\ge0$, so real numbers $x$, $y$ with the given condition exist.) So the value is ${ans}$."
+    },
+    "cm1_symmetricInv": {
+      "prompt": "For a real number $x$ with $x+\\frac{1}{x}={k}$, what is the value of ${expr}$? (digits only)",
+      "hints": [
+        "The product of $x$ and $\\frac{1}{x}$ is $1$, so the value of the sum $x+\\frac{1}{x}$ is enough to get sums of powers.",
+        "$x^2+\\frac{1}{x^2}=\\left(x+\\frac{1}{x}\\right)^2-2$ and $x^3+\\frac{1}{x^3}=\\left(x+\\frac{1}{x}\\right)^3-3\\left(x+\\frac{1}{x}\\right)$; for the fourth power square $x^2+\\frac{1}{x^2}$ once more."
+      ],
+      "expl": "Rewriting with the product formulas gives ${expr}={work}$. (For real $x$ we have $\\left|x+\\frac{1}{x}\\right|\\ge2$, so a real number with this condition exists.) So the value is ${ans}$."
     },
     "cm1_factorEval": {
       "prompt": "Use factorization to find the value of ${expr}$. (digits only)",
       "hints": [
         "Let $N$ be the large number, factor the numerator and cancel against the denominator.",
-        "For instance $N^3-1=(N-1)(N^2+N+1)$ and $N^4+N^2+1=(N^2+N+1)(N^2-N+1)$: the denominator shows up as a factor of the numerator."
+        "For instance $N^3-1=(N-1)(N^2+N+1)$, $N^4+N^2+1=(N^2+N+1)(N^2-N+1)$ and $N^4-1=(N^2+1)(N^2-1)$: the denominator shows up as a factor of the numerator."
       ],
       "expl": "With $N={N}$ the numerator factors as ${fac}$; cancelling the denominator leaves ${simp}$. So the value is ${ans}$."
     },
     "cm1_iPower": {
-      "prompt": "For $z={z}$, what is the sum of the real part and the imaginary part of $z+z^2+z^3+\\cdots+z^{{n}}$? (digits only)",
+      "prompt": "For $z={z}$, what is the sum of the real part and the imaginary part of ${expr}$? (digits only)",
       "hints": [
-        "The powers of $i$ repeat as $i,\\ -1,\\ -i,\\ 1$. First simplify $z$ to the form $a+bi$.",
-        "If $z^4=1$, then four consecutive powers $z+z^2+z^3+z^4$ add up to $0$, so only the terms left over after dividing the number of terms by $4$ remain."
+        "The powers of $i$ repeat as $i,\\ -1,\\ -i,\\ 1$. If $z$ looks complicated, first simplify it to the form $a+bi$.",
+        "Since $z^4=1$, the powers of $z$ repeat after every $4$ steps; only the exponent modulo $4$ matters."
       ],
-      "expl": "Simplifying gives $z={zs}$, so $z^4=1$ and $z+z^2+z^3+z^4=0$. Since ${n}={q4}\\times4+{rm}$, the sum $z+z^2+\\cdots+z^{{n}}$ equals the sum of the first ${rm}$ terms, which is ${val}$. So the sum of the real and imaginary parts is ${ans}$."
+      "expl": "Simplifying first gives $z={zs}$ and $z^4=1$. Reducing the exponents modulo $4$ gives ${work}$. So the sum of the real and imaginary parts is ${ans}$."
+    },
+    "cm1_iPowerSum": {
+      "prompt": "For $z={z}$, what is the sum of the real part and the imaginary part of ${expr}$? (digits only)",
+      "hints": [
+        "First simplify $z$ to the form $a+bi$ and check that $z^4=1$; then you know the value of four consecutive powers $z+z^2+z^3+z^4$.",
+        "Group the terms four at a time; every group has the same sum. Only as many terms as the remainder of the number of terms divided by $4$ are left at the end."
+      ],
+      "expl": "Simplifying first gives $z={zs}$, so $z^4=1$ and $z+z^2+z^3+z^4=0$. Every group of four terms sums to $0$, and ${n}={q4}\\times4+{rm}$, so only the first ${rm}$ terms remain, so ${work}$. So the sum of the real and imaginary parts is ${ans}$."
     },
     "cm1_complexCond": {
-      "prompt": "For which real number $x$ is the complex number $z={zs}$ purely imaginary? (A purely imaginary number has real part $0$ and imaginary part not $0$.) (digits only)",
+      "prompt": "For a real number $x$, consider the complex number $z={zs}$. For which $x$ is $z$ purely imaginary? (A purely imaginary number has real part $0$ and imaginary part not $0$.) (digits only)",
       "hints": [
         "Write $z$ as (real part)$+$(imaginary part)$i$, using $i^2=-1$.",
         "Find the $x$ that makes the real part $0$, then check that the imaginary part is not $0$ there."
       ],
-      "expl": "The real part of $z$ is ${re}$ and the imaginary part is ${im}$. The real part must be $0$, giving ${roots}$; among these the imaginary part ${im}$ is nonzero only for $x={ans}$."
+      "expl": "The real part of $z$ is ${re}$ and the imaginary part is ${im}$. The real part must be $0$, giving ${roots}$. The value of the imaginary part there is ${chk}$, so $z$ is purely imaginary exactly for $x={ans}$."
     },
     "cm1_discrimCount": {
       "prompt": "For how many integers $k$ with ${lo}\\le k\\le {hi}$ does the quadratic equation ${eq}=0$ have non-real roots? (digits only)",
@@ -78,10 +94,10 @@
         "A quadratic has non-real roots exactly when its discriminant satisfies $D<0$.",
         "If the coefficient of $x$ is even, $\\frac{D}{4}=\\left(\\frac{b}{2}\\right)^2-ac$ is convenient. Solve the resulting inequality in $k$."
       ],
-      "expl": "We need $\\frac{D}{4}={d4}<0$. The integers $k$ satisfying this are ${ks}$, so there are ${ans}$ of them."
+      "expl": "We need $\\frac{D}{4}={d4}<0$, which gives ${kr}$. The integers $k$ in ${lo}\\le k\\le {hi}$ satisfying this are ${ks}$, so there are ${ans}$ of them."
     },
     "cm1_vietaExpr": {
-      "prompt": "Let $\\alpha$ and $\\beta$ be the two roots of ${eq}=0$. What is the value of ${expr}$? (write a decimal, or a fraction like 3/4)",
+      "prompt": "Let $\\alpha$ and $\\beta$ be the two roots of ${eq}=0$. What is the value of ${expr}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "For $ax^2+bx+c=0$ the sum of the roots is $-\\frac{b}{a}$ and the product is $\\frac{c}{a}$.",
         "Express the required quantity through $\\alpha+\\beta$ and $\\alpha\\beta$, then substitute."
@@ -225,12 +241,12 @@
       "expl": "Since the solution is ${sol}$, the roots are ${lo}$ and ${hi}$, and the coefficient of $x^2$ is ${m}$, so ${mx2}+ax+b={fac}={full}$. Hence $a={a}$, $b={b}$ and ${ask}={ans}$."
     },
     "cm1_quadIneqAlways": {
-      "prompt": "For how many integers $k$ does the inequality ${ineq}$ hold for every real number $x$? (digits only)",
+      "prompt": "For how many integers $k$ is every real number a solution of the inequality ${ineq}$? (digits only)",
       "hints": [
-        "A quadratic is $>0$ (or $\\ge0$) for all real $x$ when it opens upward and its discriminant satisfies $D<0$ (or $D\\le0$).",
-        "Write $D$ in terms of $k$ and solve the inequality. If the coefficient of $x^2$ is $k$, check the case $k=0$ separately."
+        "The coefficient of $x^2$ is $k$, so treat $k=0$ separately. For $k\\ne0$ the parabola must open upward and the discriminant must satisfy $D<0$ (or $D\\le0$).",
+        "Write $D$ in terms of $k$ and solve the inequality. If it opens downward ($k<0$), the inequality cannot hold for all real $x$."
       ],
-      "expl": "The condition becomes ${cond}$. The integers $k$ satisfying it are ${ks}$, so there are ${ans}$ of them."
+      "expl": "For $k=0$ the left side is just the constant ${n}$, which is positive, so the inequality always holds. For $k\\ne0$ the parabola must open upward, so $k>0$ and $\\frac{D}{4}={d4}{rel}0$, which gives ${kr}$. Including $k=0$, the integers $k$ are ${ks}$, so there are ${ans}$ of them."
     },
     "cm1_divisorCount": {
       "prompt": "How many positive divisors of $N={fac}$ are multiples of ${m}$? (digits only)",
@@ -241,7 +257,7 @@
       "expl": "A divisor that is a multiple of ${m}$ has the form ${m}\\times t$ with $t$ a divisor of $\\frac{N}{{m}}={Nm}$. The number of such divisors is ${prod}={ans}$."
     },
     "cm1_coloring": {
-      "prompt": "There are regions $1, 2, \\ldots, {n}$, and only the following pairs of regions touch each other: ${edges}$. Regions that touch must get different colors. With ${k}$ colors available (a color may be used for several regions, and some colors may stay unused), in how many ways can all regions be colored? (digits only)",
+      "prompt": "There are ${n}$ regions numbered ${regs}$, and only the following pairs of regions touch each other: ${edges}$. Regions that touch must get different colors. With ${k}$ colors available (a color may be used for several regions, and some colors may stay unused), in how many ways can all regions be colored? (digits only)",
       "hints": [
         "Fix an order and color one region at a time, counting the colors not used by already-colored neighbours.",
         "If the number of available colors depends on whether earlier neighbours share a color, split into cases and add (sum rule)."
@@ -329,12 +345,12 @@
       "expl": "The coefficients of $x$, $y$ in $l_1$ are ${p}$, $k$ and in $l_2$ they are $k{qs}$, ${rr}$. Parallel: ${p}\\times({rr})=k(k{qs})$, i.e. ${eqPar}=0$, so $k={k1}$ or $k={k2}$ (neither makes the lines coincide). Perpendicular: ${p}(k{qs})+({rr})k=0$ gives $k={k3}$. The sum is ${k1}+({k2})+({k3})={ans}$."
     },
     "cm2_pointLineDist": {
-      "prompt": "What is the distance between the point $P({x0}, {y0})$ and the line ${line}$? (a decimal or a fraction such as 3/4 is accepted)",
+      "prompt": "What is the distance from the point $P({x0}, {y0})$ to the line ${line}$? (a decimal or a fraction such as 3/4 is accepted)",
       "hints": [
         "The distance from $(x_0,y_0)$ to $ax+by+c=0$ is $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
         "The numerator is $|{a}\\times({x0})+({b})\\times({y0})+({c})|$ and the denominator is $\\sqrt{({a})^2+({b})^2}$."
       ],
-      "expl": "$\\frac{|{a}\\times({x0})+({b})\\times({y0})+({c})|}{\\sqrt{({a})^2+({b})^2}}=\\frac{{N}}{{h}}={ans}$."
+      "expl": "$\\frac{|{a}\\times({x0})+({b})\\times({y0})+({c})|}{\\sqrt{({a})^2+({b})^2}}$ has numerator ${N}$ and $\\sqrt{({a})^2+({b})^2}={h}$, so the distance is $\\frac{{N}}{{h}}={ans}$."
     },
     "cm2_circleGeneral": {
       "prompt": "The equation ${eq}$ represents a circle. If its center is $(a, b)$ and its radius is $r$, what is $a+b+r$? (digits only)",
@@ -392,6 +408,14 @@
       ],
       "expl": "In terms of $a$, $b$: $Q(b, a)$, $R(-b, a)$, $S(-b+({m}), a+({n}))$. From $-b+({m})={sx}$ we get $b={pb}$; from $a+({n})={sy}$ we get $a={pa}$. So $a+b={ans}$."
     },
+    "cm2_reflectChainOrder": {
+      "prompt": "Translate $P(a, b)$ by ${m}$ in the direction of the $x$-axis and by ${n}$ in the direction of the $y$-axis to get $Q$, reflect $Q$ in the origin to get $R$, and reflect $R$ in the $x$-axis to get $S$. If $S=({sx}, {sy})$, what is $a+b$? (digits only)",
+      "hints": [
+        "Reflection in the origin is $(x,y)\\to(-x,-y)$; reflection in the $x$-axis is $(x,y)\\to(x,-y)$.",
+        "The translation comes first, so the shift is reflected too. Work backwards from $S$ one step at a time, or write each image in terms of $a$ and $b$."
+      ],
+      "expl": "In terms of $a$, $b$: $Q(a+({m}), b+({n}))$, $R(-a-({m}), -b-({n}))$, $S(-a-({m}), b+({n}))$. From $-a-({m})={sx}$ we get $a={pa}$; from $b+({n})={sy}$ we get $b={pb}$. So $a+b={ans}$."
+    },
     "cm2_reflectCurve": {
       "prompt": "The graph of $y={orig}$ is reflected in the origin and then translated by ${m}$ in the direction of the $x$-axis and by ${n}$ in the direction of the $y$-axis. If the vertex of the resulting parabola is $(s, t)$, what is $s+t$? (digits only)",
       "hints": [
@@ -433,20 +457,12 @@
       "expl": "$n(A\\cup B)={nu}-{nc}={un}$ and $n(A\\cap B)=n(A)+n(B)-n(A\\cup B)={na}+{nb}-{un}={ab}$. Since $A^c\\cup B=(A-B)^c$ and $n(A-B)={na}-{ab}$, $n(A^c\\cup B)={nu}-({na}-{ab})={ans}$."
     },
     "cm2_inclusionParam": {
-      "prompt": "For $A=\\{x\\mid {Ac}\\}$ and $C=\\{x\\mid {Cc}\\}$ ($x$ real), how many sets $B=\\{x\\mid a\\le x\\le b\\}$ with integers $a$, $b$ satisfy $A\\subset B\\subset C$ ($A\\subset B$ allows $A=B$)? (digits only)",
+      "prompt": "For $A=\\{x\\mid {Ac}\\}$ and $C=\\{x\\mid {Cc}\\}$ ($x$ real), how many sets $B=\\{x\\mid a\\le x\\le b\\}$ with integers $a$, $b$ satisfy $A\\subset B\\subset C$? (The symbol $\\subset$ allows the two sets to be equal.) (digits only)",
       "hints": [
         "First write $A$ and $C$ as intervals $\\alpha\\le x\\le\\beta$.",
         "$A\\subset B$ means $a$ is at most the left end of $A$ and $b$ at least its right end; $B\\subset C$ keeps $a$ and $b$ inside the interval of $C$. Count the possible $a$ and $b$ separately."
       ],
       "expl": "$A=\\{x\\mid {al}\\le x\\le {ar}\\}$ and $C=\\{x\\mid {cl}\\le x\\le {cr}\\}$. $A\\subset B\\subset C$ requires ${cl}\\le a\\le {al}$ and ${ar}\\le b\\le {cr}$, giving ${na}$ choices for $a$ and ${nb}$ for $b$: ${na}\\times{nb}={ans}$ sets."
-    },
-    "cm2_forallQuad": {
-      "prompt": "What is the smallest integer $k$ for which the statement 'for every real number $x$, ${form}>0$' is true? (digits only)",
-      "hints": [
-        "For a quadratic to be positive for all real $x$, its graph must open upward and not meet the $x$-axis.",
-        "The discriminant $D$ of ${form}=0$ must satisfy $D<0$."
-      ],
-      "expl": "The statement holds for all real $x$ exactly when $D=({b})^2-4\\times{a}\\times k<0$, i.e. $k>{kv}$. The smallest such integer is ${ans}$."
     },
     "cm2_existsInterval": {
       "prompt": "$U$ is the set of integers from ${p}$ to ${q}$. What is the largest integer $k$ for which the statement 'there is an element $x$ of $U$ with ${form}$' is true? (digits only)",
@@ -456,21 +472,13 @@
       ],
       "expl": "${form}$ is equivalent to $k<{gx}$. Over $U$ the maximum of ${gx}$ is ${gm}$, at $x={xm}$, and $k<{gm}$ makes the statement true there. So the largest integer $k$ is ${ans}$."
     },
-    "cm2_contraRange": {
-      "prompt": "For real $x$, find the smallest natural number $a$ for which the contrapositive of the statement 'if ${quad}\\le 0$ then $|{cx}|\\le a$' is true. (digits only)",
+    "cm2_truthRange": {
+      "prompt": "For real $x$ let $p$: ${quad}\\le 0$ and $q$: $|{cx}|\\le a$. Let $\\alpha$ be the smallest natural number $a$ for which the contrapositive of $p\\to q$ is true, and $\\beta$ the largest natural number $a$ for which the converse of $p\\to q$ is true. What is $\\alpha\\beta$? (digits only)",
       "hints": [
-        "A statement and its contrapositive are always both true or both false, so you may look for when the original statement is true.",
-        "If $p\\to q$ is true, the truth set $P$ of $p$ is contained in the truth set $Q$ of $q$."
+        "A statement and its contrapositive always have the same truth value; the converse $q\\to p$ must be examined separately. With truth sets $P$, $Q$, $p\\to q$ true means $P\\subset Q$.",
+        "Write $P$ as an interval and solve $|{cx}|\\le a$ for $Q$ in terms of $a$. The contrapositive needs $P\\subset Q$, the converse needs $Q\\subset P$; find the range of $a$ for each."
       ],
-      "expl": "The contrapositive has the same truth value as the original, so 'if ${quad}\\le 0$ then $|{cx}|\\le a$' must be true. The truth sets are $P=\\{x\\mid {m}\\le x\\le {n}\\}$ and $Q=\\{x\\mid {c}-a\\le x\\le {c}+a\\}$; $P\\subset Q$ needs $a\\ge {c}-({m})={d1}$ and $a\\ge {n}-({c})={d2}$. So the smallest $a$ is ${ans}$."
-    },
-    "cm2_converseRange": {
-      "prompt": "For real $x$, how many natural numbers $a$ make the converse of the statement 'if ${quad}\\le 0$ then $|{cx}|\\le a$' true? (digits only)",
-      "hints": [
-        "The converse of $p\\to q$ is $q\\to p$.",
-        "The converse is true when the truth set of $q$ is contained in the truth set of $p$."
-      ],
-      "expl": "The converse is 'if $|{cx}|\\le a$ then ${quad}\\le 0$'. With $Q=\\{x\\mid {c}-a\\le x\\le {c}+a\\}$ and $P=\\{x\\mid {m}\\le x\\le {n}\\}$, $Q\\subset P$ needs ${c}-a\\ge {m}$ and ${c}+a\\le {n}$, i.e. $a\\le {d1}$ and $a\\le {d2}$. The natural numbers $a$ from $1$ to ${ans}$ work: ${ans}$ values."
+      "expl": "$P=\\{x\\mid {m}\\le x\\le {n}\\}$ and $|{cx}|\\le a$ means $-a\\le {cx}\\le a$. The contrapositive has the truth value of the original, so $P\\subset Q$ is needed; at the ends $x={m}$, $x={n}$ of $P$ the value of ${cx}$ is ${u}$, ${w}$, so $a\\ge {d1}$ and $a\\ge {d2}$. Hence $\\alpha={al}$. The converse needs $Q\\subset P$; $Q$ is ${lowS}\\le {kx}\\le {highS}$, so ${lowS}\\ge {km}$ and ${highS}\\le {kn}$, i.e. $a\\le {d1}$ and $a\\le {d2}$. Hence $\\beta={be}$ and $\\alpha\\beta={al}\\times{be}={ans}$."
     },
     "cm2_necessaryDiv": {
       "prompt": "For an integer $x$, consider $p$: '$x$ is a multiple of $m$' and $q$: '$x$ is a multiple of ${n}$'. How many natural numbers $m$ make $p$ a necessary but not sufficient condition for $q$? (digits only)",
@@ -505,7 +513,7 @@
       "expl": "$f(1)$ has ${t}$ choices and $f(2)$ has ${n}-{u}+1$ choices; ${ov}$ of the combinations have $f(1)=f(2)$, so there are ${pairs}$ valid pairs. The remaining ${mr}$ elements go one-to-one into the other ${nr}$ values in ${rest}$ ways, so the count is ${pairs}\\times{rest}={ans}$."
     },
     "cm2_funcMonotone": {
-      "prompt": "How many functions $f$ from $X=\\{{xset}\\}$ to $Y=\\{{yset}\\}$ satisfy ${chain}$, $f(1)\\ge {u}$ and $f({m})\\le {w}$? (digits only)",
+      "prompt": "How many functions $f$ from $X=\\{{xset}\\}$ to $Y=\\{{yset}\\}$ satisfy ${chain}$ and $f(1)\\ge {u}$? (digits only)",
       "hints": [
         "If $f(1)<f(2)<\\cdots$, all values are different and, once the values are chosen, the order of assignment is forced.",
         "The possible values are the integers from ${u}$ to ${w}$; choose ${m}$ distinct ones."
@@ -534,7 +542,7 @@
         "With the domain restricted to ${dom}$, $f$ is one-to-one onto its range, so it has an inverse.",
         "$g({t})=x$ means $f(x)={t}$. Solve the quadratic equation and pick the root that lies in the domain."
       ],
-      "expl": "Write $f(x)={vf}$. From $f(x)={t}$: $({xp})^2={s2}$, so ${xp}=\\pm{s}$. The domain is ${dom}$, hence ${xp}={rt}$ and $g({t})={ans}$."
+      "expl": "Write $f(x)={vf}$. From $f(x)={t}$: ${sq}={s2}$, so ${xp}=\\pm{s}$. The domain is ${dom}$, hence ${xp}={rt}$ and $g({t})={ans}$."
     },
     "cm2_inverseRational": {
       "prompt": "Let $g$ be the inverse function of $f(x)=\\frac{{num}}{{den}}$ (domain: all real $x$ with nonzero denominator). What is $g({k})$? (digits only)",
@@ -550,7 +558,7 @@
         "The value of $x$ that makes the denominator $0$ gives the vertical asymptote.",
         "The value that $y$ approaches when $|x|$ is very large is the horizontal asymptote: the ratio of the $x$-coefficients."
       ],
-      "expl": "The denominator is $0$ at $x={px}$, so the vertical asymptote is the line $x={px}$. As $x\\to\\infty$, $y\\to\\frac{{a}}{{c}}={qy}$, the horizontal asymptote. So $p+q={px}+{qy}={ans}$."
+      "expl": "The denominator is $0$ at $x={px}$, so the vertical asymptote is the line $x={px}$. As $x\\to\\infty$, $y\\to\\frac{{a}}{{c}}={qy}$, the horizontal asymptote. So $p+q=({px})+({qy})={ans}$."
     },
     "cm2_rationalParam": {
       "prompt": "The graph of $y=\\frac{k}{x}$ ($k$ a nonzero constant) is translated by ${p}$ in the direction of the $x$-axis and by ${q}$ in the direction of the $y$-axis, and the new graph passes through $P({x0}, {y0})$. What is the $x$-coordinate of the point where it meets the $x$-axis? (digits only)",
@@ -558,7 +566,7 @@
         "A translation replaces $x$ by $x-({p})$ and $y$ by $y-({q})$.",
         "Substitute the given point to find $k$, then put $y=0$."
       ],
-      "expl": "The translated graph is $y=\\frac{k}{x-({p})}+({q})$. Through $P$: ${y0}=\\frac{k}{{x0}-({p})}+({q})$ gives $k={kk}$. Putting $y=0$: $\\frac{{kk}}{x-({p})}=-({q})$, so $x={ans}$."
+      "expl": "The translated graph is $y=\\frac{k}{{xsh}}{ysh}$. Through $P$: ${y0}=\\frac{k}{{dx}}{ysh}$ gives $k={kk}$. Putting $y=0$: $\\frac{{kk}}{{xsh}}={nq}$, so $x={ans}$."
     },
     "cm2_rationalIntersectCount": {
       "prompt": "For how many integers $n$ with $-{N}\\le n\\le {N}$ do the graph of $y={fr}$ and the line ${line}$ have exactly two points in common? (digits only)",
@@ -593,7 +601,7 @@
       "expl": "Put $t=\\sqrt{{fr}}\\ (t\\ge 0)$, so $x=\\frac{t^2-({b})}{{a}}$, and $t=x+k$ gives $t^2-{a}t+({a}k-({b}))=0$. Two distinct non-negative roots need $D={a}^2-4({a}k-({b}))>0$ and product ${a}k-({b})\\ge 0$ (the sum ${a}$ is positive), i.e. ${lt}\\le k<{ht}$. The integers $k$ from ${lo}$ to ${hi}$ work: ${ans}$ of them."
     },
     "bm_ineqSystem": {
-      "prompt": "How many integers $x$ satisfy both linear inequalities ${i1}$ and ${i2}$ at the same time? (digits only)",
+      "prompt": "Among the common solutions of the two linear inequalities ${i1}$ and ${i2}$, how many are integers $x$? (digits only)",
       "hints": [
         "Solve each inequality separately to get a range for $x$ first.",
         "Draw both ranges on a number line and count the integers in the overlap. The inequality sign flips when you multiply or divide by a negative number."
@@ -614,7 +622,7 @@
         "Rewrite it as $f(x)=a(x-p)^2+q$ to find the vertex.",
         "The $x$-coordinate of the vertex lies inside the interval, so compare the values at the vertex and at both ends of the interval."
       ],
-      "expl": "$f(x)=({a})(x-({h}))^2+({k})$, so the vertex $({h},{k})$ lies inside the interval. The end values are $f({s})={fs}$ and $f({t})={ft}$, so $M={M}$, $m={m}$ and $M+m={ans}$."
+      "expl": "$f(x)={vf}$, so the vertex $({h},{k})$ lies inside the interval. The end values are $f({s})={fs}$ and $f({t})={ft}$, so $M={M}$, $m={m}$ and $M+m={ans}$."
     },
     "bm_discK": {
       "prompt": "The graph of the quadratic function $y={f}$ meets the $x$-axis at two distinct points. How many integers $k$ with $-{N}\\le k\\le {N}$ make this happen? (digits only)",
@@ -649,12 +657,12 @@
       "expl": "It simplifies to ${std}=0$, which factors as ${fac}=0$, so $\\alpha={al}$ and $\\beta={be}$. Hence $\\beta-2\\alpha={ans}$."
     },
     "bm_countDigits": {
-      "prompt": "Cards show the distinct digits {ds}, one digit per card. Choose {k} cards and line them up to make a {k}-digit natural number. How many of these numbers are even? (The first digit cannot be 0. Digits only)",
+      "prompt": "Cards show distinct digits, one digit per card: ${n}$ cards with the digits ${ds}$. Choose 3 cards and line them up to make a three-digit natural number. How many of these numbers are even? (The first digit cannot be 0. Digits only)",
       "hints": [
         "The last digit must be even. Fix the last digit first, then fill the other places.",
-        "Split into the case where the last digit is 0 and the case where it is a nonzero even digit, then use the sum rule. In the second case 0 cannot be placed first."
+        "Split into the case where the last digit is 0 and the case where it is a nonzero even digit, and count each with permutations. If a nonzero even digit is last, 0 cannot be placed first."
       ],
-      "expl": "Last digit 0: {z} numbers. Last digit a nonzero even digit: {o} numbers. By the sum rule ${z}+{o}={ans}$."
+      "expl": "Last digit 0: the other two places are filled from the remaining ${n1}$ cards in order, giving ${zex}$ numbers. Last digit a nonzero even digit: choose it among the ${nz}$ nonzero even cards, then the first digit among the remaining ${n2}$ nonzero cards, then the middle digit among the remaining ${n2}$ cards, giving ${oex}$ numbers. By the sum rule ${z}+{o}={ans}$."
     },
     "bm_matUnknown": {
       "prompt": "For the matrices $A={A}$, $B={B}$, $C={C}$ with ${ex}=C$, what is the sum $x+y$ of the real numbers $x$ and $y$? (digits only)",
@@ -673,12 +681,12 @@
       "expl": "The parallel line is ${par}$; putting $x=0$ gives $s={s}$. The perpendicular line is ${perp}$; putting $x=0$ gives $t={t}$. So $s+t={ans}$."
     },
     "bm_circleLine": {
-      "prompt": "For how many integers $m$ do the circle ${circ}$ and the line ${line}$ meet at two distinct points? (digits only)",
+      "prompt": "Circle: ${circ}$, line: ${line}$. For how many integers $m$ do they meet at two distinct points? (digits only)",
       "hints": [
-        "They meet at two distinct points when the distance from the center to the line is less than the radius.",
-        "The distance from $(p,q)$ to $ax+by+c=0$ is $\\frac{|ap+bq+c|}{\\sqrt{a^2+b^2}}$. Set up the inequality that this is less than the radius."
+        "Substitute the equation of the line into the equation of the circle to get a quadratic in $x$.",
+        "Two distinct intersection points need two distinct real roots, so $D>0$. Find the range of $m$ from $D>0$ and count the integers."
       ],
-      "expl": "The center is $({h},{kk})$, the radius is ${rr}$ and $\\sqrt{{a2}}={c0}$. The distance condition is ${cond}$, so ${lo}<m<{hi}$ and there are ${ans}$ integers $m$."
+      "expl": "Substituting the line into the circle gives ${sub}=0$. With discriminant $D$ we have $\\frac{D}{4}={d4}$, so $D>0$ gives ${cond}$. Since ${chk}$, the integers $m$ are exactly those from $-{hi}$ to ${hi}$, in total ${ans}$."
     },
     "bm_transform": {
       "prompt": "Translate the point $\\mathrm{P}({a},{b})$ by ${p}$ in the $x$-direction and ${q}$ in the $y$-direction to get $\\mathrm{Q}$; reflect $\\mathrm{Q}$ in the $x$-axis to get $\\mathrm{R}$; reflect $\\mathrm{R}$ in the line $y=x$ to get $\\mathrm{S}(m,n)$. What is $2m+n$? (digits only)",
@@ -689,7 +697,7 @@
       "expl": "$\\mathrm{Q}({qx},{qy})$, $\\mathrm{R}({rx},{ry})$, $\\mathrm{S}({m},{n})$, so $2m+n={ans}$."
     },
     "bm_setOps": {
-      "prompt": "Let the universal set be $U=\\{x\\mid x\\text{ is a natural number at most }{n}\\}$ with subsets $A=\\{x\\mid x\\text{ is a divisor of }{a}\\}$ and $B=\\{x\\mid x\\text{ is a multiple of }{b}\\}$. What is the sum of all elements of $A\\cap B^{c}$? (digits only)",
+      "prompt": "The universal set $U$ is the set of all natural numbers at most ${n}$. Its subsets are $A$, the set of all divisors of ${a}$, and $B$, the set of all multiples of ${b}$. What is the sum of all elements of $A\\cap B^{c}$? (digits only)",
       "hints": [
         "List $A$ and $B$ by their elements. Only consider multiples inside $U$.",
         "$B^{c}$ is what remains of $U$ after removing the elements of $B$. Keep the elements of $A$ that are not in $B$."
@@ -702,7 +710,7 @@
         "$p\\to q$ is true when the truth set of $p$ is contained in the truth set of $q$.",
         "First find the range of $x$ satisfying $p$, then make sure its left end is at least $m$."
       ],
-      "expl": "The truth set of $p$ consists of the $x$ between ${lo}$ and ${hi}$. For it to lie inside $\\{x\\mid m\\le x\\le {n}\\}$ we need $m\\le {lo}$ and ${hi}\\le {n}$. So the largest integer $m$ is ${ans}$."
+      "expl": "The truth set of $p$ is $\\{x\\mid {lo}{rl}x{rl}{hi}\\}$. For it to lie inside $\\{x\\mid m\\le x\\le {n}\\}$ we need $m\\le {lo}$ and ${hi}\\le {n}$. So the largest integer $m$ is ${ans}$."
     },
     "bm_compUnknown": {
       "prompt": "For the function $f(x)={f}$ and a function $g$, the composite function satisfies $(g\\circ f)(x)={h}$. What is $g({k})$? (digits only)",
@@ -713,12 +721,12 @@
       "expl": "$f(x)={k}$ gives $x={x0}$. Then $(g\\circ f)({x0})=g(f({x0}))=g({k})$, so put $x={x0}$ into ${h}$ to get ${ans}$."
     },
     "bm_funcCount": {
-      "prompt": "How many functions $f$ from $X=\\{x\\mid x\\text{ is a natural number at most }{m}\\}$ to $Y=\\{y\\mid y\\text{ is a natural number at most }{n}\\}$ satisfy $f(1)=1$ and are not one-to-one? (digits only)",
+      "prompt": "The set $X$ is the set of all natural numbers at most ${m}$ and the set $Y$ is the set of all natural numbers at most ${n}$. How many functions $f$ from $X$ to $Y$ satisfy $f(1)=1$ and are not one-to-one? (digits only)",
       "hints": [
         "If $f(1)=1$, each of the other elements can be sent to any element of $Y$ freely.",
         "Count (all such functions) $-$ (those that are one-to-one). In a one-to-one function different elements have different images."
       ],
-      "expl": "With $f(1)=1$, each of the other {m1} elements has {n} choices, giving {tot} functions. For a one-to-one function the others need distinct values different from 1, giving {inj}. So ${tot}-{inj}={ans}$."
+      "expl": "With $f(1)=1$, each of the other ${m1}$ elements has ${n}$ choices, giving ${tot}$ functions. For a one-to-one function the others need distinct values different from 1, giving ${inj}$. So ${tot}-{inj}={ans}$."
     },
     "alg_rootEval": {
       "prompt": "Evaluate ${expr}$. (digits only)",
@@ -737,7 +745,7 @@
       "expl": "If $A>0$ then $f(n)=2$ for even $n$ and $1$ for odd $n$; if $A<0$ then $f(n)=0$ for even $n$ and $1$ for odd $n$. Counting even and odd $n$ gives ${work}$."
     },
     "alg_rationalExp": {
-      "prompt": "Evaluate ${expr}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "Evaluate ${expr}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Write each base as a power of some number.",
         "Use $(a^{m})^{n}=a^{m\\times n}$, for example $(c^{q})^{\\frac{p}{q}}=c^{p}$, and $a^{-n}=\\frac{1}{a^{n}}$."
@@ -753,7 +761,7 @@
       "expl": "Let $t$ be the first term of the given expression and use the product identity: ${work}$."
     },
     "alg_logChain": {
-      "prompt": "Evaluate ${expr}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "Evaluate ${expr}$. (digits only)",
       "hints": [
         "With the change of base formula $\\log_{a}b=\\frac{\\log_{c}b}{\\log_{c}a}$ the neighbouring logarithms cancel.",
         "Reduce the whole product to one logarithm and write its argument as a power."
@@ -761,7 +769,7 @@
       "expl": "${work}$."
     },
     "alg_logExpress": {
-      "prompt": "Given $\\log_{2}3=a$ and $\\log_{2}5=b$, write $\\log_{2}{N}$ as $xa+yb+z$ with rational $x, y, z$. Find $x+y+z$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "Given $\\log_{2}3=a$ and $\\log_{2}5=b$, write $\\log_{2}{N}$ as $xa+yb+z$ with rational $x, y, z$. Find $x+y+z$. (digits only)",
       "hints": [
         "Factor ${N}$ into powers of the primes $2, 3, 5$.",
         "Use $\\log_{2}(MN)=\\log_{2}M+\\log_{2}N$, $\\log_{2}M^{k}=k\\log_{2}M$ and $\\log_{2}2=1$."
@@ -777,7 +785,7 @@
       "expl": "$\\log({N})={lg}$ has integer part ${ip}$, so the number has ${ans}$ digits."
     },
     "alg_growthYears": {
-      "prompt": "Money is deposited at an annual compound interest rate of ${rate}\\%$. After how many whole years does the balance first reach at least ${k}$ times the principal? (Given ${given}$; answer in whole years.) (digits only)",
+      "prompt": "Money is deposited at an annual compound interest rate of ${rate}\\%$, with interest added to the principal once a year. After how many whole years does the balance first reach at least ${k}$ times the principal? The common logarithms are ${given}$. (digits only)",
       "hints": [
         "After $n$ years the balance is $(1+\\frac{r}{100})^{n}$ times the principal.",
         "Taking common logs: $n\\log(1+\\frac{r}{100})\\ge\\log k$."
@@ -785,7 +793,7 @@
       "expl": "From $({one})^{n}\\ge {k}$ we get $n\\ge\\frac{{lk}}{{l1}}={q}$, so the smallest whole number is ${ans}$."
     },
     "alg_expFuncParams": {
-      "prompt": "For the function $f(x)=a\\cdot b^{x}$ ($a\\ne0$, $b>0$, $b\\ne1$) we have $f({p})={u}$ and $f({q})={v}$. Find $f({r})$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "For the function $f(x)=a\\cdot b^{x}$ ($a\\ne0$, $b>0$, $b\\ne1$) we have $f({p})={u}$ and $f({q})={v}$. Find $f({r})$. (digits only)",
       "hints": [
         "From $\\frac{f(q)}{f(p)}=b^{q-p}$ find $b$ first.",
         "Since $b>0$, $b$ is determined uniquely; then find $a$."
@@ -793,7 +801,7 @@
       "expl": "${work}$."
     },
     "alg_expShiftA": {
-      "prompt": "The graph of ${f}$ passes through the point $({p}, {q})$. Find the positive number $a$ ($a\\ne1$). (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "The graph of ${f}$ passes through the point $({p}, {q})$. Find the positive number $a$ ($a\\ne1$). (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Substitute the coordinates; one power of $a$ remains.",
         "Since $a>0$ and the exponent is not $0$, $a$ is determined uniquely."
@@ -814,10 +822,10 @@
         "Make the bases equal and compare exponents; the direction is kept if the common base exceeds $1$.",
         "Solve the resulting quadratic inequality and count the integers."
       ],
-      "expl": "Writing everything with base ${b}$, the inequality on the exponents becomes ${work}$; the integers satisfying it are ${xs}$, in total ${ans}$."
+      "expl": "Writing everything with base ${b}$, the inequality on the exponents becomes ${work}$; the two roots of the quadratic are ${rts}$, so the integers satisfying it are ${xs}$, in total ${ans}$."
     },
     "alg_logEquation": {
-      "prompt": "For real $x$, solve ${eq}$. (There is exactly one solution.) (digits only)",
+      "prompt": "Find the real solution $x$ of the equation ${eq}$. (digits only)",
       "hints": [
         "First check the domain condition ${dom}$.",
         "Combine the logarithms and form a quadratic equation in the argument."
@@ -833,12 +841,20 @@
       "expl": "${work}$, so there are ${ans}$ such integers."
     },
     "alg_inverseGraph": {
-      "prompt": "The graph of the inverse function of ${f}$ passes through the point $({p}, {q})$. Find the positive number $a$ ($a\\ne1$). (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "The graph of the inverse function of ${f}$ passes through the point $({p}, {q})$. Find the positive number $a$ ($a\\ne1$). (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "If the inverse's graph passes through $(p, q)$, the original graph passes through $(q, p)$.",
         "Substitute that point into the original function to get an equation in $a$."
       ],
       "expl": "The inverse passes through $({p},{q})$, so the original graph passes through $({q},{p})$. ${work}$."
+    },
+    "alg_inversePoints": {
+      "prompt": "The graph of the inverse of $f(x)=a^{x}+b$ ($a>1$, $b$ an integer) passes through the two points $({p1}, {q1})$ and $({p2}, {q2})$. Find $a+b$. (digits only)",
+      "hints": [
+        "If the inverse's graph passes through $(p, q)$, the graph of $f$ passes through $(q, p)$.",
+        "Substitute both points into $f$ and subtract the two equations to eliminate $b$; this gives an equation in $a$. Choose the solution with $a>1$."
+      ],
+      "expl": "The graph of $f$ passes through $({q1},{p1})$ and $({q2},{p2})$. ${work}$, so $a+b={ans}$."
     },
     "alg_logDomain": {
       "prompt": "How many integers $x$ lie in the domain of ${f}$? (digits only)",
@@ -849,7 +865,7 @@
       "expl": "${work}$, so there are ${ans}$ integers."
     },
     "alg_expMaxMin": {
-      "prompt": "For ${s}\\le x\\le {t}$, find the maximum value of ${f}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "For ${s}\\le x\\le {t}$, find the maximum value of ${f}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Find the extreme values of the exponent $g(x)$ first (vertex and endpoints of the parabola).",
         "If the base is greater than $1$, a larger $g$ gives a larger value; if it is less than $1$, a smaller $g$ does."
@@ -864,16 +880,8 @@
       ],
       "expl": "${work}$, so the angle is ${ans}^\\circ$."
     },
-    "alg_halfAngleQuad": {
-      "prompt": "If $\\theta$ is an angle in quadrant ${m}$, the terminal side of $\\frac{\\theta}{{n}}$ can lie in which quadrants? Add up the numbers of all possible quadrants. (Example: quadrants 1 and 3 give $1+3=4$.) (digits only)",
-      "hints": [
-        "Write $\\theta=360^\\circ\\times k+\\alpha$ with $k$ an integer and $\\alpha$ in the range of quadrant ${m}$.",
-        "Let $k=0,1,2,\\dots$ and see which quadrant the range of $\\frac{\\theta}{{n}}$ falls in."
-      ],
-      "expl": "${work}$, so the sum of the numbers is ${ans}$."
-    },
     "alg_sectorForward": {
-      "prompt": "A sector has radius ${r}$ cm and central angle ${th}$. Its arc length is $a\\pi$ cm and its area is $b\\pi$ cm$^{2}$. Find $a+b$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "A sector has radius ${r}$ cm and central angle ${th}$. Its arc length is $a\\pi$ cm and its area is $b\\pi$ cm$^{2}$. Find $a+b$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "In radians, arc length $l=r\\theta$ and area $S=\\frac{1}{2}r^{2}\\theta$.",
         "First find how many times $\\pi$ the central angle is."
@@ -889,26 +897,18 @@
       "expl": "From $2r+l={P}$ and $\\frac{1}{2}rl={S}$, eliminating $l$ gives ${work}$, so the larger radius is ${ans}$ cm."
     },
     "alg_trigPoint": {
-      "prompt": "The initial side is the positive $x$-axis and the terminal side of the angle $\\theta$ passes through the point P$({xp}, {yp})$. Find the value of ${E}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "The initial side is the positive $x$-axis and the terminal side of the angle $\\theta$ passes through the point P$({xp}, {yp})$. Find the value of ${E}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First find the distance $r=\\sqrt{x^{2}+y^{2}}$ from the origin O to P (writing P as $(x, y)$).",
         "$\\sin\\theta=\\frac{y}{r}$, $\\cos\\theta=\\frac{x}{r}$, $\\tan\\theta=\\frac{y}{x}$."
       ],
       "expl": "${work}$, so ${E}={vt}$."
     },
-    "alg_trigGiven": {
-      "prompt": "The angle $\\theta$ lies in quadrant ${quad}$ and ${given}$. Find the value of ${E}$. (a decimal is fine, and so is a fraction like 3/4)",
-      "hints": [
-        "Check the signs of $\\sin$, $\\cos$, $\\tan$ in quadrant ${quad}$.",
-        "Turn the given value into the sides of a right triangle and find the other ratios."
-      ],
-      "expl": "${work}$, so ${E}={vt}$."
-    },
     "alg_trigIdentity": {
-      "prompt": "For a real number $\\theta$, ${given}$. Find the value of ${E}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "For a real number $\\theta$, ${given}$. Find the value of ${E}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "Use $\\sin^{2}\\theta+\\cos^{2}\\theta=1$ together with the square of the given relation.",
-        "Rewrite the required expression in terms of $\\sin\\theta\\cos\\theta$ or $(\\sin\\theta\\pm\\cos\\theta)^{2}$."
+        "$\\sin^{2}\\theta+\\cos^{2}\\theta=1$. Squaring both sides of the given relation produces $\\sin\\theta\\cos\\theta$.",
+        "Square the given relation to find $\\sin\\theta\\cos\\theta$. If the required expression is the other square, express it with $\\sin\\theta\\cos\\theta$ in the same way."
       ],
       "expl": "${work}$."
     },
@@ -921,15 +921,15 @@
       "expl": "${work}$, so the number of solutions is ${ans}$."
     },
     "alg_trigPeriod": {
-      "prompt": "The smallest positive period of ${f}$ is $k\\pi$. Find $k$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "The smallest positive period of ${f}$ is $k\\pi$. Find $k$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "$y=\\sin bx$ and $y=\\cos bx$ have period $\\frac{2\\pi}{|b|}$; $y=\\tan bx$ has period $\\frac{\\pi}{|b|}$.",
-        "With an absolute value or a square, the negative part is folded up, so the period can be half as long."
+        "An absolute value folds the negative part up, so the period is halved. For a square, use $\\sin^{2}x=\\frac{1-\\cos2x}{2}$ or $\\cos^{2}x=\\frac{1+\\cos2x}{2}$."
       ],
       "expl": "${work}$, so $k={kt}$."
     },
     "alg_trigGraphParam": {
-      "prompt": "The function $y=a{fn}\\,bx+c$ ($a>0$, $b>0$) has maximum ${M}$, minimum ${m}$ and period ${per}$. Find the product $abc$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "The function $y=a{fn}\\,bx+c$ ($a>0$, $b>0$) has maximum ${M}$, minimum ${m}$ and period ${per}$. Find the product $abc$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The maximum is $a+c$ and the minimum is $-a+c$.",
         "Use the period $\\frac{2\\pi}{b}$ to find $b$."
@@ -945,7 +945,7 @@
       "expl": "${work}$."
     },
     "alg_circumradius": {
-      "prompt": "In triangle ABC, $\\overline{B C}={side}$ and ${cond}$. Find the radius of the circumscribed circle. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "In triangle ABC, $\\overline{B C}={side}$ and ${cond}$. Find the radius of the circumscribed circle. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use the law of sines $\\frac{a}{\\sin A}=2R$ with $a=\\overline{B C}$.",
         "If the cosine is given, use $\\sin A>0$ to find $\\sin A$ first."
@@ -977,7 +977,7 @@
       "expl": "${work}$, so there are ${ans}$ natural numbers $x$."
     },
     "alg_arithTwoTerms": {
-      "prompt": "In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. (digits only)",
       "hints": [
         "Use $a_q-a_p=(q-p)d$ to find the common difference $d$.",
         "Then $a_r=a_p+(r-p)d$."
@@ -990,7 +990,7 @@
         "Look at the sign of the common difference: the sum grows only while the terms are positive.",
         "Find the first term and the difference, then sum up to just before the terms become non-positive."
       ],
-      "expl": "The first term is ${a1}$ and the difference is ${d}$, so the terms stay positive (or zero) up to term ${nm}$. The maximum is $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$."
+      "expl": "The first term is ${a1}$ and the difference is ${d}$, so $a_n>0$ exactly for $n\\le{nm}$ and $a_{{nm1}}\\le0$. The maximum is $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$."
     },
     "alg_arithFirstExceeds": {
       "prompt": "An arithmetic sequence has first term ${a}$ and common difference ${d}$; $S_n$ is the sum of its first $n$ terms. Find the smallest positive integer $n$ with $S_n>{N}$. (digits only)",
@@ -998,7 +998,7 @@
         "Write $S_n=\\frac{n(2a+(n-1)d)}{2}$ as a quadratic in $n$.",
         "Solve the quadratic inequality, or try $n=1,2,3,\\dots$ until the sum first exceeds the bound."
       ],
-      "expl": "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$, and $S_{{m1}}={s1}\\le{N}$ while $S_{{ans}}={s2}>{N}$, so $n={ans}$."
+      "expl": "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$, and $S_1,\\dots,S_{{m1}}$ are all at most ${N}$ (largest value ${s1}$) while $S_{{ans}}={s2}>{N}$, so $n={ans}$."
     },
     "alg_arithGeoMix": {
       "prompt": "Three numbers $x$, $y$, $z$ form, in this order, an arithmetic sequence with positive common difference, and $x+y+z={S}$. The numbers $x$, $y$, $z+{k}$ form, in this order, a geometric sequence. Find the common difference. (digits only)",
@@ -1017,12 +1017,12 @@
       "expl": "$a_1=S_1={a1}$ and $a_{{k}}=S_{{k}}-S_{{km}}={ak}$, so the sum is ${ans}$."
     },
     "alg_geoTwoTerms": {
-      "prompt": "In a geometric sequence $\\{a_n\\}$ with positive common ratio, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "In a geometric sequence $\\{a_n\\}$ with positive common ratio, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. (digits only)",
       "hints": [
         "(later term) ÷ (earlier term) equals $r$ raised to the difference of the indices.",
         "The positivity of $r$ makes it unique."
       ],
-      "expl": "$\\frac{{v}}{{u}}=r^{{dq}}$ and $r>0$, so $r={rt}$; hence ${work}$."
+      "expl": "${vu}={rpow}$ and $r>0$, so $r={rt}$; hence ${work}$."
     },
     "alg_geoSumRatio": {
       "prompt": "Let $S_n$ be the sum of the first $n$ terms of a geometric sequence $\\{a_n\\}$. If $S_{{n1}}={u}$ and $S_{{n2}}={v}$, find $S_{{n3}}$. (digits only)",
@@ -1041,7 +1041,7 @@
       "expl": "$({comb})^{2}={expand}$, so ${work}$."
     },
     "alg_sigmaTelescope": {
-      "prompt": "Evaluate the sum ${expr}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "Evaluate the sum ${expr}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Split each term into partial fractions, e.g. $\\frac{1}{k(k+1)}=\\frac{1}{k}-\\frac{1}{k+1}$.",
         "When added, the terms cancel in pairs and only a few at each end remain."
@@ -1065,10 +1065,10 @@
       "expl": "${work}$."
     },
     "alg_recAffine": {
-      "prompt": "A sequence $\\{a_n\\}$ is defined by $a_1={s}$ and $a_{n+1}={rule}$ ($n\\ge1$). Find $a_{{k}}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "A sequence $\\{a_n\\}$ is defined by $a_1={s}$ and $a_{n+1}={rule}$ ($n\\ge1$). Find $a_{{k}}$. (digits only)",
       "hints": [
         "Compute $a_2, a_3, \\dots$ one after another.",
-        "For many terms, rewrite as $a_{n+1}-\\alpha=p(a_n-\\alpha)$ to get the general term."
+        "Write the term numbers and values in a table and apply the rule one step at a time up to $a_{{k}}$. Reduce fractions as you go."
       ],
       "expl": "${work}$."
     },
@@ -1081,12 +1081,12 @@
       "expl": "The terms are ${work}$, so the first $1$ is term number ${ans}$."
     },
     "alg_recParam": {
-      "prompt": "A sequence $\\{a_n\\}$ satisfies $a_1={s}$, $a_{n+1}=pa_n+{q}$ ($n\\ge1$, $p$ positive) and $a_3={t}$. Find $p$. (a decimal is fine, and so is a fraction like 3/4)",
+      "prompt": "A sequence $\\{a_n\\}$ satisfies $a_1={s}$, $a_{n+1}=pa_n+{q}$ ($n\\ge1$, $p$ positive) and $a_3={t}$. Find $p$. (digits only)",
       "hints": [
         "Express $a_2$ and $a_3$ in terms of $p$.",
         "$a_3$ is a quadratic in $p$; pick the positive solution."
       ],
-      "expl": "$a_2={st}p+{q}$ and $a_3=p({st}p+{q})+{q}={st}p^{2}+{q}p+{q}={t}$ give ${work}$; since $p>0$, $p={ans}$."
+      "expl": "$a_2={a2e}$ and $a_3=p({a2e})+{q}={a3e}={t}$ give ${work}$; since $p>0$, $p={ans}$."
     },
     "alg_seqIntTerms": {
       "prompt": "The general term of $\\{a_n\\}$ is $a_n=\\frac{{num}}{{den}}$. How many terms are integers? (digits only)",
@@ -1095,6 +1095,54 @@
         "Count the divisors of the constant that the denominator $n+r$ can equal (for natural $n$, $n+r\\ge{r1}$)."
       ],
       "expl": "${work}$, so ${ans}$ terms are integers."
+    },
+    "alg_logChainQ": {
+      "prompt": "Evaluate ${expr}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
+      "hints": [
+        "With the change of base formula $\\log_{a}b=\\frac{\\log_{c}b}{\\log_{c}a}$ the neighbouring logarithms cancel.",
+        "Reduce the whole product to one logarithm and write its argument as a power."
+      ],
+      "expl": "${work}$."
+    },
+    "alg_logExpressQ": {
+      "prompt": "Given $\\log_{2}3=a$ and $\\log_{2}5=b$, write $\\log_{2}{N}$ as $xa+yb+z$ with rational $x, y, z$. Find $x+y+z$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
+      "hints": [
+        "Factor ${N}$ into powers of the primes $2, 3, 5$.",
+        "Use $\\log_{2}(MN)=\\log_{2}M+\\log_{2}N$, $\\log_{2}M^{k}=k\\log_{2}M$ and $\\log_{2}2=1$."
+      ],
+      "expl": "${work}$, so $x+y+z={sumtex}$."
+    },
+    "alg_expFuncParamsQ": {
+      "prompt": "For the function $f(x)=a\\cdot b^{x}$ ($a\\ne0$, $b>0$, $b\\ne1$) we have $f({p})={u}$ and $f({q})={v}$. Find $f({r})$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
+      "hints": [
+        "From $\\frac{f(q)}{f(p)}=b^{q-p}$ find $b$ first.",
+        "Since $b>0$, $b$ is determined uniquely; then find $a$."
+      ],
+      "expl": "${work}$."
+    },
+    "alg_arithTwoTermsQ": {
+      "prompt": "In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "hints": [
+        "Use $a_q-a_p=(q-p)d$ to find the common difference $d$.",
+        "Then $a_r=a_p+(r-p)d$."
+      ],
+      "expl": "The common difference is $d=\\frac{{v}-{ub}}{{q}-{p}}={d}$, so $a_{{r}}={u}+({r}-{p})\\times{db}={ans}$."
+    },
+    "alg_geoTwoTermsQ": {
+      "prompt": "In a geometric sequence $\\{a_n\\}$ with positive common ratio, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
+      "hints": [
+        "(later term) ÷ (earlier term) equals $r$ raised to the difference of the indices.",
+        "The positivity of $r$ makes it unique."
+      ],
+      "expl": "${vu}={rpow}$ and $r>0$, so $r={rt}$; hence ${work}$."
+    },
+    "alg_recAffineQ": {
+      "prompt": "A sequence $\\{a_n\\}$ is defined by $a_1={s}$ and $a_{n+1}={rule}$ ($n\\ge1$). Find $a_{{k}}$. (a decimal is fine, and so is a fraction like 3/4)",
+      "hints": [
+        "Compute $a_2, a_3, \\dots$ one after another.",
+        "Write the term numbers and values in a table and apply the rule one step at a time up to $a_{{k}}$. Reduce fractions as you go."
+      ],
+      "expl": "${work}$."
     },
     "ca1_limCoefRational": {
       "prompt": "If $\\lim_{x\\to {c}}\\frac{{num}}{{den}}={L}$, what is $a+b$ for the constants $a$ and $b$? (digits only)",
@@ -1105,36 +1153,36 @@
       "expl": "The limit exists and the denominator is $0$ at $x={c}$, so the numerator is $0$ there too. Cancelling the common factor and requiring the limit ${L}$ gives $a={av}$, $b={bv}$. So $a+b={ans}$."
     },
     "ca1_limInfRatio": {
-      "prompt": "What is $\\lim_{x\\to\\infty}\\frac{{num}}{{den}}$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "What is $\\lim_{x\\to\\infty}\\frac{{num}}{{den}}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "As $x\\to\\infty$ only the leading behaviour of numerator and denominator matters.",
+        "Compare the degrees of the leading terms first. If the numerator has the lower degree, the limit is $0$.",
         "Divide the numerator and denominator by the highest power of $x$."
       ],
-      "expl": "Dividing by the highest power of $x$ and letting $x\\to\\infty$ leaves the ratio of the leading coefficients. The limit is ${ansf}$."
+      "expl": "As $x\\to\\infty$ the numerator behaves like ${nl}$ and the denominator like ${dl}$, so the limit equals the limit of the ratio $\\frac{{nl}}{{dl}}$, which is ${ansf}$."
     },
     "ca1_limRadical": {
       "prompt": "What is $\\lim_{x\\to\\infty}\\left({expr}\\right)$? (a decimal, or a fraction such as 3/4, is fine)",
       "hints": [
-        "Rationalise: multiply and divide by the sum of the two radical terms.",
+        "For a difference involving a radical, multiply and divide by (the radical term)+(the other term) to rationalise.",
         "Then divide numerator and denominator by $x$ and let $x\\to\\infty$."
       ],
-      "expl": "After rationalising the numerator is linear in $x$ and the denominator grows like a multiple of $x$. Dividing by $x$ and taking the limit gives ${ansf}$."
+      "expl": "Rationalising turns the expression into $\\frac{{numr}}{{den2}}$. Dividing numerator and denominator by $x$, the numerator tends to ${nc}$ and the denominator to ${dc}$, so the limit is ${ans}$."
     },
     "ca1_limPiecewise": {
       "prompt": "For the function ${pw}$, what is {ask}? (digits only)",
       "hints": [
-        "Near $x=k$ the left side ($x<k$) and the right side ($x>k$) use different expressions.",
-        "Decide from which side the variable approaches and substitute into that expression."
+        "The formula for $f$ changes at $x={k}$. Decide whether the value inside $f$ approaches ${k}$ from below or from above.",
+        "Take the formula on that side and evaluate it at $x={k}$. The value $f({k})$ itself plays no role in a limit."
       ],
-      "expl": "The value $f(k)$ plays no role in a limit. Substituting into the expression on the relevant side gives ${ans}$."
+      "expl": "As $x\\to {k}^{-}$ the limit is ${lv}$ and as $x\\to {k}^{+}$ it is ${rv}$ (the value at $x={k}$ is ${e}$, but it does not matter for a limit). Checking from which side the inner value approaches ${k}$ and using these numbers accordingly gives ${ans}$."
     },
     "ca1_contRadical": {
-      "prompt": "The function ${pw}$ is continuous at $x={c}$. What is the constant $k$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "The function ${pw}$ is continuous at $x={c}$. What is the constant $k$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Continuity at $x={c}$ requires $\\lim_{x\\to {c}}f(x)=f({c})=k$.",
         "Rationalise the radical expression and cancel the common factor."
       ],
-      "expl": "Continuity means $k=\\lim_{x\\to {c}}f(x)$. Rationalising, cancelling the common factor and evaluating the limit gives $k={ansf}$."
+      "expl": "Continuity means $k=\\lim_{x\\to {c}}f(x)$. For $x\\ne {c}$, rationalising and cancelling gives $f(x)={rat}$, so the limit as $x\\to {c}$ is $k={ansf}$."
     },
     "ca1_contTwoJoint": {
       "prompt": "The function ${pw}$ is continuous for all real $x$. What is $a+b$ for the constants $a$ and $b$? (digits only)",
@@ -1145,12 +1193,12 @@
       "expl": "At $x={p1}$ and $x={p2}$ both expressions must agree. Solving the two equations gives $a={av}$, $b={bv}$, so $a+b={ans}$."
     },
     "ca1_contProduct": {
-      "prompt": "For ${pw}$ and $g(x)={gd}$ (letters $a$, $b$, $c$ appearing in the formula are constants), $f(x)g(x)$ is continuous for all real $x$. What is $g({kq})$? (digits only)",
+      "prompt": "For ${pw}$ and $g(x)={gd}$ (every letter in the formula of $g$ is a constant), $f(x)g(x)$ is continuous for all real $x$. What is $g({kq})$? (digits only)",
       "hints": [
         "At a point where $f$ jumps, what must $g$ equal for $f(x)g(x)$ to stay continuous?",
-        "So $g$ has those points as roots and can be written in factored form."
+        "Use $g=0$ at those points to determine the constants appearing in the formula for $g$."
       ],
-      "expl": "Where $f$ jumps, $f(x)g(x)$ is continuous only if $g=0$ there. So $g$ has those points as roots and, being monic, $g({kq})={ans}$."
+      "expl": "$f$ jumps at ${ptxt}$, so $f(x)g(x)$ is continuous only if $g=0$ there. This fixes the constants: $g(x)={gfull}$, and $g({kq})={ans}$."
     },
     "ca1_ivtCount": {
       "prompt": "How many integers $a$ make the equation ${fx}=0$ have a real root in the open interval $({m},{n})$? (digits only)",
@@ -1161,28 +1209,28 @@
       "expl": "For $f(x)={fx}$, $f'(x)>0$, so the function is increasing and a root in $({m},{n})$ exists iff $f({m})f({n})<0$. That means ${alo}<a<{ahi}$, giving ${ans}$ integers."
     },
     "ca1_diffLimitPoly": {
-      "prompt": "For $f(x)={f}$, what is ${lim}$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "For $f(x)={f}$, what is ${lim}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "Rewrite the limit with the definition $\\lim\\frac{f(a+\\Delta)-f(a)}{\\Delta}$ of the derivative.",
+        "Rewrite the limit in the form of the definition $\\lim\\frac{f(a+\\Delta)-f(a)}{\\Delta}$: add and subtract so that $f(x)-f({a})$ appears in the numerator.",
         "Compute $f({a})$ or $f'({a})$ first and combine them according to the expression."
       ],
-      "expl": "First $f'({a})={d1}$ and $f({a})={d0}$. Expressing the limit through the derivative gives ${ansf}$."
+      "expl": "First $f'({a})={d1}$ and $f({a})={d0}$. Expressing the limit through the derivative gives ${step}={ansf}$."
     },
     "ca1_limDerivForm": {
-      "prompt": "For a differentiable function $f$ with $f({a})={s}$ and $f'({a})={t}$, what is ${lim}$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "For a differentiable function $f$ with $f({a})={s}$ and $f'({a})={t}$, what is ${lim}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "Add and subtract terms so that $f(x)-f({a})$ (or $f(a+h)-f(a)$) appears in the numerator.",
-        "Use the definition $\\lim_{x\\to {a}}\\frac{f(x)-f({a})}{x-{a}}=f'({a})$."
+        "Add and subtract terms (or factor) so that $f(x)-f({a})$ (or $f(a+h)-f(a)$) appears in the numerator.",
+        "Use the definition $\\lim_{x\\to {a}}\\frac{f(x)-f({a})}{{xa}}=f'({a})$."
       ],
-      "expl": "Form $f(x)-f({a})$ in the numerator and apply the definition of the derivative with $f({a})={s}$, $f'({a})={t}$. The value is ${ansf}$."
+      "expl": "Form $f(x)-f({a})$ in the numerator, apply the definition of the derivative and substitute $f({a})={s}$, $f'({a})={t}$: the value is ${step}={ansf}$."
     },
     "ca1_limCoefPoly": {
       "prompt": "The function $f(x)={f}$ ($a$, $b$ constants) satisfies ${lim}={L}$. What is $f(1)$? (digits only)",
       "hints": [
         "The limit exists with a vanishing denominator, so the numerator is $0$ at $x={c}$.",
-        "Then the limit equals $f'({c})$; set up simultaneous equations in $a$ and $b$."
+        "Then the limit equals ${rel}$; use this value ${L}$ together with the numerator condition to set up simultaneous equations in $a$ and $b$."
       ],
-      "expl": "The numerator vanishes at $x={c}$, which fixes $f({c})$, and the limit equals $f'({c})$. Solving the two equations gives $a={av}$, $b={bv}$, so $f(1)={ans}$."
+      "expl": "The numerator vanishes at $x={c}$, so $f({c})={m0}$. The limit then equals ${rel}$, which is ${L}$; solving the two equations gives $a={av}$, $b={bv}$, so $f(1)={ans}$."
     },
     "ca1_powerFindN": {
       "prompt": "For a positive integer $n$, $f(x)={f}$. If $f'({a})={V}$, what is $n$? (digits only)",
@@ -1198,7 +1246,7 @@
         "Use the product rule $\\{f(x)g(x)\\}'=f'(x)g(x)+f(x)g'(x)$.",
         "For more than two factors, differentiate one factor at a time and add the terms."
       ],
-      "expl": "Differentiate $h$ with the product rule and substitute $x={a}$ with the given values: $h'({a})={ans}$."
+      "expl": "By the product rule, $h'({a})={step}={ans}$."
     },
     "ca1_limExistence": {
       "prompt": "For the function ${pw}$, the limit $\\lim_{x\\to {c}}f(x)$ exists. What is the constant $a$? (digits only)",
@@ -1222,7 +1270,7 @@
         "$|g(x)|$ has a corner where $g(x)$ changes sign; check whether each root is a repeated root.",
         "A root of odd multiplicity gives a corner; a root of even multiplicity does not."
       ],
-      "expl": "At a root of odd multiplicity of the expression inside $|\\ |$ the sign changes and the one-sided derivatives differ, so $f$ is not differentiable; at roots of even multiplicity it is. Counting these points gives ${ans}$."
+      "expl": "The roots of the expression(s) inside the absolute value with odd multiplicity are ${oddr}$, those with even multiplicity are ${evenr}$. At a root of odd multiplicity the sign changes and the one-sided derivatives differ, so $f$ is not differentiable there; at roots of even multiplicity it is. So there are ${ans}$ such points."
     },
     "ca1_tangentIntercept": {
       "prompt": "The tangent to the curve $y={f}$ at the point with $x$-coordinate ${a}$ meets the $y$-axis at which $y$-coordinate? (digits only)",
@@ -1265,12 +1313,12 @@
       "expl": "The average rate of change is $\\frac{f({b})-f({a})}{{b}-({a})}={sl}$, and $f'(c)={sl}$ has exactly one root in $({a},{b})$: $c={ans}$."
     },
     "ca1_mvtBound": {
-      "prompt": "A differentiable function $f$ satisfies ${lo}\\le f'(x)\\le {hi}$ for all real $x$ and ${cond}$. What is the maximum possible value of $f({b})$? (digits only)",
+      "prompt": "A differentiable function $f$ satisfies ${lo}\\le f'(x)\\le {hi}$ for all real $x$, and ${cond}$. What is the maximum possible value of $f({b})$? (digits only)",
       "hints": [
         "By the MVT, $f(b)-f(a)=f'(c)(b-a)$ for some $c$; use the largest possible $f'(c)$.",
         "If two values are known, base the estimate on the known point closer to $b$."
       ],
-      "expl": "By the MVT the increase from the nearest known point to $x={b}$ is (with $d$ the gap between the points) $f'(c)\\times d\\le {hi}\\times d$, and a line of slope ${hi}$ attains it, so the maximum is ${ans}$."
+      "expl": "The known point nearest to $x={b}$ is $x={na}$ with $f({na})={nm}$, at distance ${gap}$. By the MVT $f({b})-({nm})=f'(c)\\times{gap}\\le {hi}\\times{gap}$, so $f({b})\\le {ans}$. A function whose slope stays ${hi}$ attains this, so the maximum is ${ans}$."
     },
     "ca1_powerTangentN": {
       "prompt": "The tangent to the curve $y={fx}$ ($n$ an integer at least $2$) at the point with $x$-coordinate ${a}$ has $y$-intercept ${V}$. What is $n$? (digits only)",
@@ -1281,12 +1329,12 @@
       "expl": "For $f(x)={fx}$, $f'(x)={cc}nx^{n-1}$, so the $y$-intercept is $f({a})-{a}f'({a})=(1-n)\\cdot{ccp}\\cdot{a}^n$. Its absolute value increases with $n$, so exactly one $n$ gives ${V}$: $n={ans}$."
     },
     "ca1_monoGiven": {
-      "prompt": "The cubic $f(x)={f}$ ($a$, $b$ constants) is decreasing on $[{m},{n}]$ and increasing on $(-\\infty,{m}]$ and on $[{n},\\infty)$. What is $a+b$? (digits only)",
+      "prompt": "The cubic $f(x)={f}$ ($a$, $b$ constants) is decreasing on $[{m},{n}]$ and increasing on $(-\\infty,{m}]$ and on $[{n},\\infty)$. What is the difference between the maximum and the minimum of $f(x)$ on $[{m},{n}]$? (digits only)",
       "hints": [
         "$f'(x)=0$ at $x={m}$ and $x={n}$, where the monotonicity changes.",
-        "So $f'(x)$ is a quadratic with roots ${m}$ and ${n}$: $f'(x)=(\\text{leading coefficient})\\times{fm}{fn}$."
+        "So $f'(x)$ is a quadratic with roots ${m}$ and ${n}$: write $f'(x)=(\\text{leading coefficient})\\times{fm}{fn}$ and find $a$, $b$. Where on a decreasing interval do the maximum and minimum occur?"
       ],
-      "expl": "Monotonicity changes at $x={m}$ and $x={n}$, so $f'(x)={d3}{fm}{fn}$. Comparing coefficients gives $a={av}$, $b={bv}$, hence $a+b={ans}$."
+      "expl": "Monotonicity changes at $x={m}$ and $x={n}$, so $f'(x)={d3}{fm}{fn}$ and comparing coefficients gives $a={av}$, $b={bv}$. $f$ is decreasing on the interval, so the maximum is $f({m})={fmv}$, the minimum is $f({n})={fnv}$ and the difference is ${ans}$."
     },
     "ca1_noExtremum": {
       "prompt": "How many integers $a$ make the cubic $f(x)={f}$ have no local extremum? (digits only)",
@@ -1355,7 +1403,7 @@
     "ca1_optimProfit": {
       "prompt": "Producing and selling $x$ units a day ($0\\le x\\le {X}$) costs $C(x)={cost}$ (in ten-thousand won), and each unit sells for ${price}$ ten-thousand won. What is the maximum daily profit (sales minus cost), in ten-thousand won? (digits only)",
       "hints": [
-        "Write the profit as $P(x)=({price})x-C(x)$ and solve $P'(x)=0$.",
+        "Write the profit as $P(x)={price}x-C(x)$ and solve $P'(x)=0$.",
         "Compare the value at the local maximum with the values at the ends $x=0$ and $x={X}$."
       ],
       "expl": "$P(x)={price}x-C(x)$, and $P'(x)=0$ gives the local maximum at $x={xs}$ inside the interval. Comparing $P({xs})={ans}$, $P(0)={p0}$, $P({X})={pX}$, the maximum is ${ans}$."
@@ -1409,12 +1457,12 @@
       "expl": "Integrating $f''$ and using $f'({p})={s}$ gives $f'(x)={g1}$; integrating again and using $f({q})={w}$ gives $f(x)={g0}$. Hence $f({r})={ans}$."
     },
     "ca1_defIntSymm": {
-      "prompt": "What is $\\int_{-{a}}^{{a}}\\left({g}\\right)dx$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "What is $\\int_{-{a}}^{{a}}\\left({g}\\right)dx$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The interval is symmetric about $0$, so integrals of odd powers of $x$ vanish.",
-        "Keep the even-power terms and compute $2\\int_0^{a}$."
+        "Expand, keep the even-power terms and compute $2\\int_0^{a}$."
       ],
-      "expl": "Odd-power terms integrate to $0$ over $[-{a},{a}]$. The even-power terms give $2\\int_0^{a}(\\text{even part})\\,dx={ansf}$."
+      "expl": "After expanding, the odd-power terms integrate to $0$ and the even-power part is ${evp}$. So the value is $2\\int_0^{a}\\left({evp}\\right)dx={ansf}$."
     },
     "ca1_defIntSplit": {
       "prompt": "A continuous function $f$ satisfies $\\int_{{a0}}^{{p}}f(x)\\,dx={A}$ and $\\int_{{a0}}^{{q}}f(x)\\,dx={B}$. What is $\\int_{{lo}}^{{hi}}\\left({mf}\\right)dx$? (digits only)",
@@ -1433,12 +1481,12 @@
       "expl": "Let $\\int_0^1 f(t)\\,dt=c$, a constant, so $f(x)$ is a quadratic containing $c$. Integrating it from $0$ to $1$ and equating with $c$ gives $c={c}$, and $f({k})={ans}$."
     },
     "ca1_integralLimit": {
-      "prompt": "For the polynomial $f(x)={f}$, what is ${lim}$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "For the polynomial $f(x)={f}$, what is ${lim}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Both numerator and denominator tend to $0$. Use $\\frac{d}{d x}\\int_a^x f(t)\\,dt=f(x)$.",
         "Write the integral as $F(\\text{top limit})-F(\\text{bottom limit})$ with $F'=f$; the limit becomes a derivative of $F$."
       ],
-      "expl": "With $F'=f$, writing the integral as $F(\\text{top limit})-F(\\text{bottom limit})$ turns the limit into a derivative of $F$, which equals ${ansf}$ in terms of values of $f$."
+      "expl": "With $F'=f$, writing the integral as $F(\\text{top limit})-F(\\text{bottom limit})$ turns the limit into a derivative of $F$, whose value is ${step}={ansf}$."
     },
     "ca1_integralFuncFind": {
       "prompt": "A polynomial $f$ satisfies $\\int_{{c}}^{x}f(t)\\,dt={F}$ ($a$ a constant) for all real $x$. What is $f({k})$? (digits only)",
@@ -1449,7 +1497,7 @@
       "expl": "At $x={c}$ the left side is $0$, so $a={av}$. Differentiating gives $f(x)={fx}$, hence $f({k})={ans}$."
     },
     "ca1_integralFuncExtremum": {
-      "prompt": "For $f(t)={f}$, what is the local minimum value of $G(x)=\\int_{{s}}^{x}f(t)\\,dt$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "For $f(t)={f}$, what is the local minimum value of $G(x)=\\int_{{s}}^{x}f(t)\\,dt$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "$G'(x)=f(x)$, so monotonicity of $G$ is decided by the sign of $f(x)$.",
         "$G$ has a local minimum where $f$ changes sign from $-$ to $+$; its value is $\\int_{s}^{x}f(t)\\,dt$ there."
@@ -1457,12 +1505,12 @@
       "expl": "$G'(x)=f(x)$ changes sign from $-$ to $+$ at $x={z}$. The local minimum value is $G({z})=\\int_{{s}}^{{z}}f(t)\\,dt={ansf}$."
     },
     "ca1_defIntAbs": {
-      "prompt": "What is $\\int_{{p}}^{{q}}|{g}|\\,dx$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "What is $\\int_{{p}}^{{q}}|{g}|\\,dx$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Find the roots of the expression inside the absolute value that lie in the interval.",
         "Split the interval there and remove the absolute value piece by piece with the correct sign."
       ],
-      "expl": "The expression changes sign at $x={zs}$. Splitting the interval and removing the absolute value with the right sign on each part gives ${ansf}$."
+      "expl": "The expression changes sign at $x={zs}$, so split the interval there. The sign is constant on each part, so adding the absolute values of the integrals over the parts gives ${parts}={ansf}$."
     },
     "ca1_defIntFindBound": {
       "prompt": "For a positive number $a$, $\\int_{{lo}}^{a}\\left({g}\\right)dx={V}$. What is $a$? (digits only)",
@@ -1473,28 +1521,28 @@
       "expl": "With the antiderivative $G(x)={G}$ we get $G(a)-G({lo})={V}$; for $a>{lo}$ the left side increases with $a$, so the root is unique. Solving gives $a={ans}$."
     },
     "ca1_areaParabolaLine": {
-      "prompt": "What is the area of the region enclosed by the parabola $y={f}$ and the line $y={g}$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "What is the area of the region enclosed by the parabola $y={f}$ and the line $y={g}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Solve the two equations simultaneously for the intersections $\\alpha<\\beta$.",
         "Integrate (upper graph)−(lower graph) from $\\alpha$ to $\\beta$."
       ],
-      "expl": "Solving simultaneously gives intersections at $x={al}$ and $x={be}$. Integrating (upper)−(lower) over this interval gives the area ${ansf}$."
+      "expl": "Solving simultaneously gives intersections at $x={al}$ and $x={be}$, and the difference of the two expressions is ${dif}$. Integrating (upper)−(lower) over this interval gives the area ${calc}={ansf}$."
     },
     "ca1_areaCubicAxis": {
-      "prompt": "What is the total area of the two regions enclosed by the curve $y={f}$ and the $x$-axis? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "What is the total area of the two regions enclosed by the curve $y={f}$ and the $x$-axis? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Find the $x$-intercepts (the three roots of the cubic).",
         "On each part decide whether the curve is above or below the axis, and flip the sign where it is below."
       ],
-      "expl": "The curve meets the $x$-axis at $x={rs}$. Integrating $|f(x)|$ over the two intervals and adding gives the total area ${ansf}$."
+      "expl": "The curve meets the $x$-axis at $x={rs}$. On $[{r1},{r2}]$ we get $\\int y\\,dx={i1}$ and on $[{r2},{r3}]$ we get $\\int y\\,dx={i2}$, so the total area is $\\left|{i1}\\right|+\\left|{i2}\\right|={ansf}$."
     },
     "ca1_areaTangentParabola": {
-      "prompt": "What is the area of the region enclosed by the parabola $y={f}$, its tangent line at the point with $x$-coordinate ${a}$, and the $y$-axis? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "What is the area of the region enclosed by the parabola $y={f}$, its tangent line at the point with $x$-coordinate ${a}$, and the $y$-axis? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First find the tangent line; it lies entirely on one side of the parabola.",
         "Integrate the absolute difference (parabola)−(tangent) from $x=0$ to $x={a}$."
       ],
-      "expl": "The tangent line is $y={tl}$. Integrating the difference between the parabola and the tangent over the interval gives the area ${ansf}$."
+      "expl": "The tangent line is $y={tl}$ and the difference between the parabola and the tangent is ${dif}$. Integrating its absolute value from $x=0$ to $x={a}$ gives the area ${calc}={ansf}$."
     },
     "ca1_areaLineParam": {
       "prompt": "The curve $y={cur}$ and the line $y=mx$ ($0<m<{a}$) enclose a region of area ${S}$. What is the constant $m$? (digits only)",
@@ -1505,12 +1553,12 @@
       "expl": "The intersections are $x=0$ and $x={a}-m$, and the area is $\\int_0^{{a}-m}\\{({a}-m)x-x^2\\}dx=\\frac{({a}-m)^3}{6}$. Setting this equal to ${S}$ gives ${a}-m={d}$, so $m={ans}$."
     },
     "ca1_totalDistVel": {
-      "prompt": "A point P on a number line has velocity $v(t)={v}$ at time $t$ ($t\\ge0$). How far does P travel from $t=0$ to $t={T}$? (a decimal, or a fraction such as 3/4, is fine)",
+      "prompt": "A point P on a number line has velocity $v(t)={v}$ at time $t$ ($t\\ge0$). How far does P travel from $t=0$ to $t={T}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Distance travelled is the integral of the speed $|v(t)|$.",
         "Split the interval at the times where $v(t)=0$ and integrate with the correct sign."
       ],
-      "expl": "The velocity changes sign at ${zs}$ within the interval. Computing $\\int_0^{T}|v(t)|\\,dt$ piece by piece gives the distance ${ansf}$."
+      "expl": "The velocity changes sign at ${zs}$ within the interval. Splitting there, the sign is constant on each part, so adding the absolute values of $\\int v(t)\\,dt$ gives ${parts}={ansf}$."
     },
     "ca1_returnTime": {
       "prompt": "A point P leaves the origin of a number line at $t=0$, and its velocity at time $t$ ($t\\ge0$) is $v(t)={v}$. What is the velocity of P at the first time after the start when it is back at the origin? (digits only)",
@@ -1529,20 +1577,20 @@
       "expl": "There are ${tot}$ such ${k}$-digit numbers in all, and ${noExpr}={no}$ of them never use the digit ${t}$. So ${tot}-{no}={ans}$."
     },
     "pst_latticePath": {
-      "prompt": "On the coordinate plane, we move from $(0,\\ 0)$ to $({m},\\ {n})$ using only unit steps to the right or upward. How many shortest paths avoid the point $({p},\\ {q})$? (digits only)",
+      "prompt": "On the coordinate plane, we move from $(0,\\ 0)$ to $({m},\\ {n})$ using only unit steps to the right or upward. How many shortest paths avoid the point $\\mathrm{P}({p},\\ {q})$? (digits only)",
       "hints": [
         "Count all paths with permutations of repeated items. Avoiding = all - passing through.",
-        "Paths through $({p},\\ {q})$ = (paths from the start to it) × (paths from it to the end)."
+        "Paths through $\\mathrm{P}$ = (paths from the start to $\\mathrm{P}$) × (paths from $\\mathrm{P}$ to the end)."
       ],
-      "expl": "All paths: ${tot}$. Paths through $({p},\\ {q})$: ${via1}\\times{via2}={via}$. So ${tot}-{via}={ans}$."
+      "expl": "All paths: ${tot}$. There are ${via1}$ paths from the start to $\\mathrm{P}$ and ${via2}$ from $\\mathrm{P}$ to the end, so ${via1}\\times{via2}={via}$ paths go through $\\mathrm{P}$. So ${tot}-{via}={ans}$."
     },
     "pst_repCombEq": {
-      "prompt": "Count the ordered integer quadruples $(x,\\ y,\\ z,\\ w)$ with $x+y+z+w={n}$, $x\\ge {a}$, $y\\ge {b}$, $z\\ge {c}$ and $w\\ge {d}$. (digits only)",
+      "prompt": "For non-negative integers $x,\\ y,\\ z,\\ w$ with $x+y+z+w={n}$ and ${cond}$, count the ordered quadruples $(x,\\ y,\\ z,\\ w)$. (digits only)",
       "hints": [
-        "Put $x'=x-{a}$ and so on so that every variable is at least $0$.",
-        "The right-hand side of the new equation is ${m2}$."
+        "Subtract the lower bound from every variable whose bound is above $0$ so that all variables are at least $0$.",
+        "The new equation has the form $x'+y'+z'+w'={m2}$."
       ],
-      "expl": "With $x'=x-{a}$, $y'=y-{b}$, $z'=z-{c}$, $w'=w-{d}$ we get $x'+y'+z'+w'={m2}$ with non-negative integers. Combinations with repetition: $_{4}\\mathrm{H}_{{m2}}=\\binom{{m3}}{{m2}}={ans}$."
+      "expl": "Define new variables: ${subs}$. (A variable with lower bound $0$, if any, is kept as it is: $x'=x$.) Then $x'+y'+z'+w'={m2}$ with non-negative integers. Combinations with repetition: ${}_{4}\\mathrm{H}_{{m2}}=\\binom{{m3}}{{m2}}={ans}$."
     },
     "pst_monotoneSeq": {
       "prompt": "For elements $a,\\ b,\\ c,\\ d$ of the set $\\{1,\\ 2,\\ \\ldots,\\ {m}\\}$, how many ordered quadruples $(a,\\ b,\\ c,\\ d)$ satisfy $a{r1}b{r2}c{r3}d$? (digits only)",
@@ -1550,13 +1598,13 @@
         "Wherever the sign is $<$ the two numbers must differ; shrink the range of available values accordingly.",
         "With only $\\le$ signs, choosing the four numbers is a combination with repetition."
       ],
-      "expl": "There are ${s}$ signs $<$; subtracting $1$ successively from the later numbers turns all signs into $\\le$ and the range becomes $1$ to ${ms}$. Choosing $4$ numbers with repetition from it gives $_{{ms}}\\mathrm{H}_{4}=\\binom{{top}}{4}={ans}$."
+      "expl": "$a<b$ is the same as $a+1\\le b$, so subtracting $1$ from the later numbers turns each $<$ into $\\le$. Here there are ${s}$ signs $<$, so all signs become $\\le$ and the range becomes $1$ to ${ms}$. Choosing $4$ numbers with repetition from it gives ${}_{{ms}}\\mathrm{H}_{4}=\\binom{{top}}{4}={ans}$."
     },
     "pst_binomCoef2": {
       "prompt": "Find the coefficient of $x^{{k}}$ in the expansion of $({ax}{bs})^{{n}}$. (digits only)",
       "hints": [
         "The general term of the binomial theorem has the form $\\binom{N}{j}A^{N-j}B^{j}$.",
-        "Find the term in which $x$ is picked exactly $k$ times."
+        "Find the term in which $x$ is picked exactly ${k}$ times."
       ],
       "expl": "The term picks the $x$-part ${k}$ times and the constant ${nk}$ times, so the coefficient is $\\binom{{n}}{{k}}\\cdot{a}^{{k}}\\cdot({b})^{{nk}}={ans}$."
     },
@@ -1564,7 +1612,7 @@
       "prompt": "Evaluate $$\\sum_{k=0}^{{n}}\\binom{{n}}{k}\\,{at}^{k}$$ (digits only)",
       "hints": [
         "In $(1+x)^{N}=\\sum_{k=0}^{N}\\binom{N}{k}x^{k}$ substitute a suitable value for $x$.",
-        "Substitute $x={a}$."
+        "Choose $x$ so that the sum becomes $(1+x)^{N}$."
       ],
       "expl": "Putting $x={a}$ in the binomial theorem: $\\sum_{k=0}^{{n}}\\binom{{n}}{k}{at}^{k}=(1+{at})^{{n}}=({base})^{{n}}={ans}$."
     },
@@ -1577,7 +1625,7 @@
       "expl": "The coefficient of $x^{{k}}$ is $\\binom{{n}}{{k}}a^{{nk}}={C}a^{{nk}}$, so ${C}a^{{nk}}={V}$ and $a^{{nk}}={q}$. As $a>0$, $a={ans}$."
     },
     "pst_diceSum": {
-      "prompt": "Two fair dice, each with faces $1$ to ${s}$, are thrown together and show $a$ and $b$. Find the probability that $a+b{rel}{t}$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "Two fair dice, each with faces $1$ to ${s}$, are thrown together and show $a$ and $b$. Find the probability that $a+b{rel}{t}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Treating the dice as distinguishable, there are ${s}\\times{s}$ equally likely outcomes.",
         "For each $a$ from $1$ to ${s}$ count the values of $b$ that work, then add."
@@ -1585,31 +1633,31 @@
       "expl": "There are ${tot}$ outcomes and ${cnt}$ of them satisfy the condition, so the probability is ${fe}$."
     },
     "pst_diceQuad": {
-      "prompt": "A fair die with faces $1$ to ${s}$ is thrown twice, giving $a$ then $b$. Find the probability that the quadratic equation $x^{2}-{pa}x+{qb}=0$ has two distinct real roots. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A fair die with faces $1$ to ${s}$ is thrown twice, giving $a$ then $b$. Find the probability that the quadratic equation $x^{2}-{pa}x+{qb}=0$ has two distinct real roots. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Two distinct real roots means the discriminant $D>0$.",
-        "$D=({pa})^{2}-4\\times{qb}$; fix $a$ and count the values of $b$ that work."
+        "$D={d1}-4\\times{qb}$; fix $a$ and count the values of $b$ that work."
       ],
-      "expl": "The pairs $(a,\\ b)$ with $D=({pa})^{2}-4\\times{qb}>0$ number ${cnt}$ out of ${tot}$, so the probability is ${fe}$."
+      "expl": "The pairs $(a,\\ b)$ with $D={d1}-4\\times{qb}>0$ number ${cnt}$ out of ${tot}$, so the probability is ${fe}$."
     },
     "pst_atLeast": {
-      "prompt": "A bag holds ${w}$ white balls and ${bk}$ black balls. When ${k}$ balls are drawn at the same time, find the probability that at least ${r}$ of them are white. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A bag holds ${w}$ white balls and ${bk}$ black balls. When ${k}$ balls are drawn at the same time, find the probability that at least ${r}$ of them are white. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "The complement of 'at least ${r}$ white' is 'at most ${rm1}$ white'.",
+        "The complement of 'at least ${r}$ white' is 'the number of white balls is ${zs}$'.",
         "The total number of ways to draw is $\\binom{{nn}}{{k}}={tot}$."
       ],
-      "expl": "The complement is 'at most ${rm1}$ white', which has ${bad}$ ways. The total is $\\binom{{nn}}{{k}}={tot}$, so the probability is $1-\\frac{{bad}}{{tot}}={fr}$."
+      "expl": "The complement is 'the number of white balls is ${zs}$', which has ${bx}={bad}$ ways. The total is $\\binom{{nn}}{{k}}={tot}$, so the probability is $1-\\frac{{bad}}{{tot}}={fr}$."
     },
     "pst_lineUp": {
-      "prompt": "${m}$ boys and ${w}$ girls stand in a line. Find the probability that no two girls stand next to each other. (You may count only the pattern of genders.) (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "${m}$ boys and ${w}$ girls stand in a line. Find the probability that no two girls stand next to each other. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "Place the boys first; the girls go into the gaps between them or at the ends.",
+        "Counting only the pattern of genders (not who is who) gives the same probability. Place the boys first; the girls go into the gaps between them or at the ends.",
         "There are ${m1}$ possible places for the girls."
       ],
       "expl": "The total number of gender patterns is $\\binom{{nn}}{{w}}={tot}$. Choosing ${w}$ of the ${m1}$ gaps (between boys or at the ends) keeps girls apart: $\\binom{{m1}}{{w}}={good}$. Probability ${fe}$."
     },
     "pst_multiplesUnion": {
-      "prompt": "One card is drawn at random from ${N}$ cards numbered $1$ to ${N}$. Find the probability that the number is a multiple of ${p}$ or a multiple of ${q}$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "One card is drawn at random from ${N}$ cards numbered $1$ to ${N}$. Find the probability that the number is a multiple of ${p}$ or a multiple of ${q}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Count the multiples of ${p}$ and of ${q}$ first. Multiples of both are multiples of the least common multiple.",
         "|union| = (sum) - |intersection|."
@@ -1617,15 +1665,15 @@
       "expl": "There are ${np}$ multiples of ${p}$, ${nq}$ of ${q}$ and ${nl}$ multiples of the lcm ${l}$. So ${np}+{nq}-{nl}={cnt}$ and the probability is ${fe}$."
     },
     "pst_deMorgan": {
-      "prompt": "For events $A,\\ B$ with $P(A)={pa}$, $P(B)={pb}$ and $P(A\\cap B)={pab}$, find $P({ev})$. (write it as a decimal)",
+      "prompt": "For events $A,\\ B$ with ${gv}$, find $P({ev})$. (write it as a decimal)",
       "hints": [
         "Draw a Venn diagram and split it into the four regions $A\\cap B$, $A\\cap B^{c}$, $A^{c}\\cap B$, $A^{c}\\cap B^{c}$.",
-        "$P(A\\cap B^{c})=P(A)-P(A\\cap B)$ and $P(A^{c}\\cap B)=P(B)-P(A\\cap B)$."
+        "$P(A\\cap B^{c})=P(A)-P(A\\cap B)$ and $P(A^{c}\\cap B)=P(B)-P(A\\cap B)$. You may also use De Morgan's laws $(A\\cup B)^{c}=A^{c}\\cap B^{c}$, $(A\\cap B)^{c}=A^{c}\\cup B^{c}$ and $P(E^{c})=1-P(E)$."
       ],
-      "expl": "The four regions have probabilities $P(A\\cap B)={pab}$, $P(A\\cap B^{c})={ao}$, $P(A^{c}\\cap B)={bo}$, $P(A^{c}\\cap B^{c})={ne}$. $P({ev})$ is the sum of the regions it contains: ${sumx}$."
+      "expl": "$P(A\\cap B)$ is ${der}$. The four regions have probabilities $P(A\\cap B)={pab}$, $P(A\\cap B^{c})={ao}$, $P(A^{c}\\cap B)={bo}$, $P(A^{c}\\cap B^{c})={ne}$, adding up to $1$. $P({ev})$ is the sum of the regions it contains: ${sumx}$."
     },
     "pst_condTable": {
-      "prompt": "A club has ${N}$ students: ${m}$ boys, ${g}$ students wearing glasses, and ${x}$ boys wearing glasses. A student chosen at random is found not to wear glasses. Find the probability that this student is a girl. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A club has ${N}$ students: ${m}$ boys, ${g}$ students wearing glasses, and ${x}$ boys wearing glasses. A student chosen at random is found not to wear glasses. Find the probability that this student is a girl. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Make a 2×2 table of boy/girl and glasses/no glasses and fill in all four cells.",
         "In $P(B\\mid A)=\\frac{n(A\\cap B)}{n(A)}$ the condition $A$ is 'no glasses'."
@@ -1633,7 +1681,7 @@
       "expl": "There are ${f}$ girls, of whom ${g}-{x}={gy}$ wear glasses, so ${f}-{gy}={fn}$ girls do not. Students without glasses: ${N}-{g}={ng}$. The probability is ${fe}$."
     },
     "pst_condDice": {
-      "prompt": "Two distinguishable fair dice are thrown together, showing $a$ and $b$. Let $A$ be the event '$a+b{rel}{t}$' and $B$ the event '$a{relb}b$'. Find the conditional probability $P(B\\mid A)$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "Two distinguishable fair dice are thrown together, showing $a$ and $b$. Let $A$ be the event '$a+b{rel}{t}$' and $B$ the event '$a{relb}b$'. Find the conditional probability $P(B\\mid A)$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First list all outcomes belonging to $A$.",
         "$P(B\\mid A)=\\frac{n(A\\cap B)}{n(A)}$."
@@ -1641,7 +1689,7 @@
       "expl": "$n(A)={nA}$ and $n(A\\cap B)={nAB}$, so $P(B\\mid A)={fe}$."
     },
     "pst_indepUnknown": {
-      "prompt": "Events $A$ and $B$ are independent, with $P(A)={fa}$ and $P(A\\cup B)={fu}$. Find $P(B)$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "Events $A$ and $B$ are independent, with $P(A)={fa}$ and $P(A\\cup B)={fu}$. Find $P(B)$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Independence means $P(A\\cap B)=P(A)P(B)$.",
         "Rewrite the addition rule $P(A\\cup B)=P(A)+P(B)-P(A)P(B)$ as an equation for $P(B)$."
@@ -1651,21 +1699,21 @@
     "pst_indepFindN": {
       "prompt": "One card is drawn at random from $n$ cards numbered $1$ to $n$. Let $A$ be 'the number is a multiple of ${p}$' and $B$ 'the number is a multiple of ${q}$'. Among the integers $n$ with $2\\le n\\le {M}$, find the largest $n$ for which $A$ and $B$ are independent. (digits only)",
       "hints": [
-        "Independence means $P(A\\cap B)=P(A)P(B)$, and $A\\cap B$ is the set of multiples of ${l}$.",
+        "Independence means $P(A\\cap B)=P(A)P(B)$, and $A\\cap B$ is the set of multiples of ${l}$. If there are $a$ multiples of ${p}$, $b$ of ${q}$ and $c$ of ${l}$, independence means $ab=cn$.",
         "Check what happens when $n$ is a multiple of ${l}$."
       ],
-      "expl": "If $n={l}t$ ($t$ a positive integer) then $P(A)=\\frac{1}{{p}}$, $P(B)=\\frac{1}{{q}}$, $P(A\\cap B)=\\frac{1}{{l}}$, so they are independent. The largest multiple of ${l}$ up to ${M}$ is ${ans}$, and no larger $n\\le{M}$ gives independence (checked directly). The answer is ${ans}$."
+      "expl": "If $n={l}t$ ($t$ a positive integer) then $P(A)=\\frac{1}{{p}}$, $P(B)=\\frac{1}{{q}}$, $P(A\\cap B)=\\frac{1}{{l}}$, so they are independent. The largest multiple of ${l}$ up to ${M}$ is ${ans}$. For the larger $n$, let $a,\\ b,\\ c$ be the numbers of multiples of ${p}$, ${q}$, ${l}$; independence needs $\\frac{c}{n}=\\frac{a}{n}\\cdot\\frac{b}{n}$, i.e. $ab=cn$. Checking: ${chk}$, so they are not independent. The answer is ${ans}$."
     },
     "pst_urnChain": {
-      "prompt": "A bag holds ${w}$ white and ${bk}$ black balls. Balls are drawn one at a time without replacement. Find the probability that the first ${r}$ draws are all white and draw number ${r1}$ is black. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A bag holds ${w}$ white and ${bk}$ black balls. Balls are drawn one at a time without replacement. Find the probability that the first ${r}$ draws are all white and draw number ${r1}$ is black. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Multiplication rule: the number of balls left changes at every step.",
         "The probability that the first ball is white is $\\frac{{w}}{{nn}}$."
       ],
-      "expl": "Multiplying the conditional probabilities of each step: ${prod}={fr}$."
+      "expl": "Multiplying the conditional probabilities of each step: ${prod}={fe}$."
     },
     "pst_totalProb": {
-      "prompt": "A fair die is thrown once. If the result is at most ${t}$, a ball is drawn from box A, otherwise from box B. Box A holds ${w1}$ white and ${b1}$ black balls; box B holds ${w2}$ white and ${b2}$ black balls. Find the probability that the ball drawn is white. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A fair die is thrown once. If the result is at most ${t}$, a ball is drawn from box A, otherwise from box B. Box A holds ${w1}$ white and ${b1}$ black balls; box B holds ${w2}$ white and ${b2}$ black balls. Find the probability that the ball drawn is white. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "A white ball comes either from A or from B.",
         "Each part is (probability of choosing the box) × (probability of white in that box)."
@@ -1673,7 +1721,7 @@
       "expl": "White from A: $\\frac{{t}}{6}\\times{pw1}={tA}$; white from B: $\\frac{{t6c}}{6}\\times{pw2}={tB}$ (where $\\frac{{t6c}}{6}$ is the probability of choosing B). The sum is ${fr}$."
     },
     "pst_bayes": {
-      "prompt": "A fair die is thrown once. If the result is at most ${t}$, a ball is drawn from box A, otherwise from box B. Box A holds ${w1}$ white and ${b1}$ black balls; box B holds ${w2}$ white and ${b2}$ black balls. Given that the ball drawn is white, find the probability that it came from box A. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A fair die is thrown once. If the result is at most ${t}$, a ball is drawn from box A, otherwise from box B. Box A holds ${w1}$ white and ${b1}$ black balls; box B holds ${w2}$ white and ${b2}$ black balls. Given that the ball drawn is white, find the probability that it came from box A. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "$P(A\\mid \\text{white ball})=\\frac{P(A\\cap \\text{white ball})}{P(\\text{white ball})}$.",
         "The denominator is P(white from A) + P(white from B)."
@@ -1681,15 +1729,15 @@
       "expl": "P(white from A) = ${tA}$ and P(white from B) = ${tB}$, so the probability is $\\frac{{tA}}{{tA}+{tB}}={fr}$."
     },
     "pst_expectTable": {
-      "prompt": "A random variable $X$ takes the values $1,\\ 2,\\ \\ldots,\\ {n}$ with $P(X=x)=k(x+{c})$ for $x=1,\\ 2,\\ \\ldots,\\ {n}$ ($k$ is a constant). Find the mean $E(X)$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A random variable $X$ takes the values $1,\\ 2,\\ \\ldots,\\ {n}$ with $P(X=x)=k(x+{c})$ for $x=1,\\ 2,\\ \\ldots,\\ {n}$ ($k$ is a constant). Find the mean $E(X)$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use the fact that the probabilities add up to $1$ to find $k$ first.",
         "$E(X)=\\sum x\\,P(X=x)$."
       ],
-      "expl": "The probabilities sum to $1$: $k\\sum_{x=1}^{{n}}(x+{c})={S1}k=1$, so $k=\\frac{1}{{S1}}$. Then $E(X)=\\frac{1}{{S1}}\\sum_{x=1}^{{n}}x(x+{c})={fe}$."
+      "expl": "The probabilities sum to $1$: $k({t1})={S1}k=1$, so $k=\\frac{1}{{S1}}$. Then $E(X)=\\frac{1}{{S1}}({t2})=\\frac{1}{{S1}}\\times{S2}={fe}$."
     },
     "pst_varTable": {
-      "prompt": "A random variable $X$ has $P(X={x1})=\\frac{{a1}}{{d}}$, $P(X={x2})=\\frac{{a2}}{{d}}$, $P(X={x3})=\\frac{{a3}}{{d}}$. Find the variance $V(X)$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A random variable $X$ has $P(X={x1})=\\frac{{a1}}{{d}}$, $P(X={x2})=\\frac{{a2}}{{d}}$, $P(X={x3})=\\frac{{a3}}{{d}}$. Find the variance $V(X)$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First find $E(X)$ and $E(X^{2})$.",
         "$V(X)=E(X^{2})-\\{E(X)\\}^{2}$."
@@ -1713,15 +1761,15 @@
       "expl": "$\\frac{V(X)}{E(X)}=1-p$, so $1-p={q}$ and $p={pp}$. From $np={mu}$ we get $n={ans}$."
     },
     "pst_binomTail": {
-      "prompt": "A random variable $X$ follows the binomial distribution $B({n},\\ {pf})$. Find $P(X{rel}{t})$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A random variable $X$ follows the binomial distribution $B({n},\\ {pf})$. Find $P(X{rel}{t})$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "$P(X=j)=\\binom{N}{j}p^{j}(1-p)^{N-j}$ ($N$ = number of trials). If there are many terms to add, think of the complement.",
         "Add the terms for $j=$ ${js}$."
       ],
-      "expl": "$P(X=j)=\\binom{{n}}{j}\\left({pf}\\right)^{j}\\left(1-{pf}\\right)^{{n}-j}$, and the required probability is the sum of these for $j={js}$, namely ${fr}$."
+      "expl": "$P(X=j)=\\binom{{n}}{j}\\left({pf}\\right)^{j}\\left(1-{pf}\\right)^{{n}-j}$, and the required probability is the sum of these for $j={js}$, namely $\\frac{{tm}}{{D}}=\\frac{{num}}{{D}}={fe}$."
     },
     "pst_binomPmfEq": {
-      "prompt": "A random variable $X$ follows $B({n},\\ p)$ and $P(X={r})=P(X={r1})$. Find $p$ (with $0<p<1$). (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A random variable $X$ follows $B({n},\\ p)$ and $P(X={r})=P(X={r1})$. Find $p$ (with $0<p<1$). (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Write both probabilities as $\\binom{N}{j}p^{j}(1-p)^{N-j}$ and cancel the common factors.",
         "You obtain the value of $\\frac{p}{1-p}$."
@@ -1729,15 +1777,15 @@
       "expl": "From $\\binom{{n}}{{r}}p^{{r}}(1-p)^{{nr}}=\\binom{{n}}{{r1}}p^{{r1}}(1-p)^{{nr1}}$ we get $\\binom{{n}}{{r}}(1-p)=\\binom{{n}}{{r1}}p$, i.e. $\\frac{p}{1-p}=\\frac{{r1}}{{nr}}$. Hence $p={fe}$."
     },
     "pst_bestOf": {
-      "prompt": "Teams A and B play until one of them has won ${w}$ games, and that team is the champion. A wins each game with probability ${fp}$, games are independent and there are no draws. Find the probability that A becomes champion. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "Teams A and B play until one of them has won ${w}$ games, and that team is the champion. A wins each game with probability ${fp}$, games are independent and there are no draws. Find the probability that A becomes champion. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Split by the game in which A gets its ${w}$-th win.",
         "To win in game ${w}+j$, A must have ${wm1}$ wins and $j$ losses in the previous ${wm1}+j$ games."
       ],
-      "expl": "A wins the series in game ${w}+j$ ($j=0,\\ 1,\\ \\ldots,\\ {wm1}$) with probability $\\binom{{wm1}+j}{j}\\left({fp}\\right)^{{w}}\\left(1-{fp}\\right)^{j}$. Summing gives ${fr}$."
+      "expl": "A wins the series in game ${w}+j$ ($j={jr}$) with probability $\\binom{{wm1}+j}{j}\\left({fp}\\right)^{{w}}\\left(1-{fp}\\right)^{j}$. These are, in order, ${tm}$, and their sum is ${fr}$."
     },
     "pst_normalBetween": {
-      "prompt": "A random variable $X$ follows the normal distribution $N({m},\\ {s}^{2})$. Find $P({a}\\le X\\le {b})$. For a random variable $Z$ with the standard normal distribution, $P(0\\le Z\\le 0.5)=0.1915$, $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 1.5)=0.4332$, $P(0\\le Z\\le 2)=0.4772$, $P(0\\le Z\\le 2.5)=0.4938$, $P(0\\le Z\\le 3)=0.4987$. (write it as a decimal)",
+      "prompt": "A random variable $X$ follows the normal distribution $N({m},\\ {s}^{2})$. Find $P({a}\\le X\\le {b})$. For a random variable $Z$ with the standard normal distribution, $P(0\\le Z\\le 0.5)=0.1915$, $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 1.5)=0.4332$, $P(0\\le Z\\le 2)=0.4772$, $P(0\\le Z\\le 2.5)=0.4938$, $P(0\\le Z\\le 3)=0.4987$. (write it as a decimal with 4 decimal places)",
       "hints": [
         "Standardize with $Z=\\frac{X-m}{\\sigma}$ to get $P(z_1\\le Z\\le z_2)$.",
         "The standard normal curve is symmetric about $Z=0$."
@@ -1750,7 +1798,7 @@
         "Turn $P(X\\ge {c})$ into a probability for $Z$ and compare it with $0.5$.",
         "Find $z_0$ from the table value of $P(0\\le Z\\le z_0)$."
       ],
-      "expl": "$P(X\\ge {c})=P\\left(Z\\ge \\frac{{c}-m}{{s}}\\right)={pv}$. From the table $P(0\\le Z\\le |z_0|)=|{pv}-0.5|={tv}$, so $|z_0|={az}$; if ${pv}<0.5$ then $z_0>0$, otherwise $z_0<0$, so $\\frac{{c}-m}{{s}}={zz}$. Hence $m={ans}$."
+      "expl": "$P(X\\ge {c})=P\\left(Z\\ge \\frac{{c}-m}{{s}}\\right)={pv}$. From the table $P(0\\le Z\\le |z_0|)=|{pv}-0.5|={tv}$, so $|z_0|={az}$. Since ${cmp}$, ${zsg}$, so $\\frac{{c}-m}{{s}}={zz}$. Hence $m={ans}$."
     },
     "pst_normalSymmetric": {
       "prompt": "A random variable $X$ follows $N({m},\\ {s}^{2})$ and $P(X\\le {L})=P(X\\ge {R})$. Find the constant $k$. (digits only)",
@@ -1761,12 +1809,12 @@
       "expl": "The curve is symmetric about $x={m}$, so $({L})+({R})=2\\times{m}$. This simplifies to ${A}k+({BD})={m2}$, giving $k={ans}$."
     },
     "pst_binomNormal": {
-      "prompt": "A random variable $X$ follows the binomial distribution $B({n},\\ {pf})$. Approximate $X$ by a normal distribution (no continuity correction) and find $P(X{rel}{r})$. For a random variable $Z$ with the standard normal distribution, $P(0\\le Z\\le 0.5)=0.1915$, $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 1.5)=0.4332$, $P(0\\le Z\\le 2)=0.4772$, $P(0\\le Z\\le 2.5)=0.4938$, $P(0\\le Z\\le 3)=0.4987$. (write it as a decimal)",
+      "prompt": "A random variable $X$ follows the binomial distribution $B({n},\\ {pf})$. Approximate $X$ by a normal distribution (no continuity correction) and find $P({ev})$. For a random variable $Z$ with the standard normal distribution, $P(0\\le Z\\le 0.5)=0.1915$, $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 1.5)=0.4332$, $P(0\\le Z\\le 2)=0.4772$, $P(0\\le Z\\le 2.5)=0.4938$, $P(0\\le Z\\le 3)=0.4987$. (write it as a decimal with 4 decimal places)",
       "hints": [
         "For large $n$, $B(n,\\ p)$ is approximated by $N(np,\\ np(1-p))$.",
         "Standardize using the mean ${mu}$ and standard deviation ${sg}$."
       ],
-      "expl": "$E(X)={mu}$ and $\\sigma(X)=\\sqrt{{vr}}={sg}$, so $X$ is approximately $N({mu},\\ {sg}^{2})$. With $Z=\\frac{X-{mu}}{{sg}}$ we get $\\frac{{r}-{mu}}{{sg}}={z}$, so $P(X{rel}{r})\\approx{expr}$."
+      "expl": "$E(X)={mu}$ and $\\sigma(X)=\\sqrt{{vr}}={sg}$, so $X$ is approximately $N({mu},\\ {sg}^{2})$. With $Z=\\frac{X-{mu}}{{sg}}$ we get ${zs}$, so $P({ev})\\approx P({zev})={expr}$."
     },
     "pst_sampleSd": {
       "prompt": "A population has mean ${m}$ and variance ${v}$. A random sample of size ${n}$ is taken and its sample mean is $\\overline{X}$. Find $E(\\overline{X}^{2})$. (write it as a decimal)",
@@ -1777,15 +1825,15 @@
       "expl": "$E(\\overline{X})={m}$ and $V(\\overline{X})=\\frac{{v}}{{n}}={vx}$, so $E(\\overline{X}^{2})={vx}+{m}^{2}={ans}$."
     },
     "pst_sampleMeanNormal": {
-      "prompt": "A normal population has mean ${m}$ and standard deviation ${s}$. A random sample of size ${n}$ is taken, with sample mean $\\overline{X}$. Find $P(\\overline{X}{rel}{c})$. For a random variable $Z$ with the standard normal distribution, $P(0\\le Z\\le 0.5)=0.1915$, $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 1.5)=0.4332$, $P(0\\le Z\\le 2)=0.4772$, $P(0\\le Z\\le 2.5)=0.4938$, $P(0\\le Z\\le 3)=0.4987$. (write it as a decimal)",
+      "prompt": "A normal population has mean ${m}$ and standard deviation ${s}$. A random sample of size ${n}$ is taken, with sample mean $\\overline{X}$. Find $P({ev})$. For a random variable $Z$ with the standard normal distribution, $P(0\\le Z\\le 0.5)=0.1915$, $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 1.5)=0.4332$, $P(0\\le Z\\le 2)=0.4772$, $P(0\\le Z\\le 2.5)=0.4938$, $P(0\\le Z\\le 3)=0.4987$. (write it as a decimal with 4 decimal places)",
       "hints": [
         "$\\overline{X}$ follows $N\\left(m,\\ \\left(\\frac{\\sigma}{\\sqrt{{n}}}\\right)^{2}\\right)$.",
         "Standardize using the standard deviation $\\frac{\\sigma}{\\sqrt{{n}}}={h}$."
       ],
-      "expl": "$\\overline{X}$ follows $N({m},\\ {h}^{2})$ (since $\\frac{{s}}{\\sqrt{{n}}}={h}$). With $Z=\\frac{\\overline{X}-{m}}{{h}}$: $\\frac{{c}-{m}}{{h}}={z}$, so $P(\\overline{X}{rel}{c})={expr}$."
+      "expl": "$\\overline{X}$ follows $N({m},\\ {h}^{2})$ (since $\\frac{{s}}{\\sqrt{{n}}}={h}$). With $Z=\\frac{\\overline{X}-{m}}{{h}}$: ${zs}$, so $P({ev})=P({zev})={expr}$."
     },
     "pst_sampleMeanDist": {
-      "prompt": "A bag holds 3 balls, numbered ${lst}$ respectively. A ball is drawn, its number is noted and it is put back; this is done ${nt}$ times. Let $\\overline{X}$ be the mean of the ${nt}$ noted numbers. Find $P(\\overline{X}\\ge {t})$. (a decimal is fine, or a fraction such as 3/4)",
+      "prompt": "A bag holds 3 balls, numbered ${lst}$ respectively. A ball is drawn, its number is noted and it is put back; this is done ${nt}$ times. Let $\\overline{X}$ be the mean of the ${nt}$ noted numbers. Find $P(\\overline{X}\\ge {t})$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Because the balls are replaced, all ordered outcomes are equally likely.",
         "Count the ordered outcomes whose mean is at least ${t}$."
@@ -1814,58 +1862,58 @@
         "The length of the interval is $2z\\frac{\\sigma}{\\sqrt{n}}$.",
         "Solve $2z\\frac{\\sigma}{\\sqrt{n}}\\le {L}$ for $\\sqrt{n}$, then square."
       ],
-      "expl": "The length $2\\times{z}\\times\\frac{{s}}{\\sqrt{n}}\\le {L}$ gives $\\sqrt{n}\\ge\\frac{2\\times{z}\\times{s}}{{L}}$, so $n\\ge\\left(\\frac{2\\times{z}\\times{s}}{{L}}\\right)^{2}\\approx{nq}$. The smallest positive integer is ${ans}$."
+      "expl": "The length $2\\times{z}\\times\\frac{{s}}{\\sqrt{n}}\\le {L}$ gives $\\sqrt{n}\\ge\\frac{2\\times{z}\\times{s}}{{L}}$, so $n\\ge\\left(\\frac{2\\times{z}\\times{s}}{{L}}\\right)^{2}{eq}{nq}$. The smallest positive integer is ${ans}$."
     },
     "ca2_seqLimit": {
-      "prompt": "Find the limit of the sequence. $\\lim_{n\\to\\infty}{ex}$ (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the limit of the sequence. $\\lim_{n\\to\\infty}{ex}$ (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Divide numerator and denominator by the highest power of $n$ in the denominator, or rationalize first if there are radicals.",
         "Terms like $\\frac{1}{n}$ and $\\frac{1}{n^{2}}$ tend to $0$ as $n\\to\\infty$."
       ],
-      "expl": "Simplifying and letting $n\\to\\infty$ gives ${wk}$, so the limit is ${res}$."
+      "expl": "Simplifying gives ${wk}$, so the limit is ${res}$."
     },
     "ca2_seqGeoLimit": {
-      "prompt": "Find the limit. $\\lim_{n\\to\\infty}{ex}$ (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the limit. $\\lim_{n\\to\\infty}{ex}$ (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "The power with the largest base decides the limit.",
-        "Divide numerator and denominator by it; the terms with smaller bases tend to $0$."
+        "The power whose base has the largest absolute value decides the limit.",
+        "Divide numerator and denominator by it; the terms whose bases have smaller absolute values tend to $0$."
       ],
-      "expl": "Divide the numerator and denominator by the term with the largest absolute base, ${dom}$: the remaining coefficient ratio is ${wk}$, so the limit is ${res}$."
+      "expl": "Divide the numerator and denominator by the term with the largest absolute base, ${dom}$: the other terms tend to $0$ and only the coefficients remain, ${wk}$. So the limit is ${res}$."
     },
     "ca2_geoConvCount": {
-      "prompt": "Find the number of integers $x$ for which the sequence $\\left\\{\\left({rt}\\right)^{n}\\right\\}$ converges. (digits only)",
+      "prompt": "Find the sum of all integers $x$ for which the following converges. ${obj}$ (digits only)",
       "hints": [
-        "A geometric sequence $\\{r^{n}\\}$ converges only when $-1<r\\le 1$.",
-        "Solve the inequality that puts the expression for $r$ in this range."
+        "The sequence $\\{r^{n}\\}$ converges when $-1<r\\le 1$; the infinite geometric series $\\sum_{n=1}^{\\infty}r^{n}$ converges when $-1<r<1$.",
+        "Write the convergence condition as an inequality in $x$, find all integers satisfying it and add them."
       ],
-      "expl": "The convergence condition $-1<r\\le 1$ gives ${rg}$. The integers $x$ satisfying it are ${lst}$, so there are ${ans}$ of them."
+      "expl": "The convergence condition gives ${rg}$. The integers $x$ satisfying it are ${lst}$, so their sum is ${ans}$."
     },
     "ca2_seqSumLimit": {
-      "prompt": "Find the limit. $\\lim_{n\\to\\infty}{ex}$ (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the limit. $\\lim_{n\\to\\infty}{ex}$ (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "The sum $\\sum_{k=1}^{n}k^{p}$ is a polynomial in $n$ with leading term $\\frac{n^{p+1}}{p+1}$.",
-        "Only the leading coefficients matter."
+        "Use $\\sum_{k=1}^{n}k=\\frac{n(n+1)}{2}$, $\\sum_{k=1}^{n}k^{2}=\\frac{n(n+1)(2n+1)}{6}$ and $\\sum_{k=1}^{n}k^{3}=\\left\\{\\frac{n(n+1)}{2}\\right\\}^{2}$ to write the sum as a polynomial in $n$.",
+        "As $n\\to\\infty$ only the leading coefficients of numerator and denominator matter."
       ],
-      "expl": "Write the sum as a polynomial in $n$ and compare leading coefficients: ${wk}$, so the limit is ${res}$."
+      "expl": "Writing the sum in terms of $n$ gives ${wk}$, so the limit is ${res}$."
     },
     "ca2_partialSumSeries": {
-      "prompt": "The sum of the first $n$ terms of a sequence $\\{a_n\\}$ is $S_n=\\frac{{sa}}{{sb}}$. Find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "The sum of the first $n$ terms of a sequence $\\{a_n\\}$ is $S_n=\\frac{{sa}}{{sb}}$. Find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "$a_1=S_1$, and $a_n=S_n-S_{n-1}$ for $n\\ge 2$.",
-        "The sum of an infinite series is the limit of its partial sums $S_n$."
+        "First decide whether a term or the sum of the series is asked. The sum of an infinite series is the limit of its partial sums $S_n$, and a term comes from $S_n-S_{n-1}$."
       ],
       "expl": "${wk}$, so the value is ${res}$."
     },
     "ca2_telescope": {
-      "prompt": "Find the sum of the infinite series $\\sum_{n=1}^{\\infty}{term}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the sum of the infinite series $\\sum_{n=1}^{\\infty}{term}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "If the two factors in the denominator differ by a constant, split into partial fractions.",
-        "In the partial sums most terms cancel and only the first few remain."
+        "The factors in the denominator are spaced by a constant. Split into partial fractions.",
+        "$\\frac{1}{A(A+d)}=\\frac{1}{d}\\left(\\frac{1}{A}-\\frac{1}{A+d}\\right)$, and with three factors $\\frac{1}{A(A+1)(A+2)}=\\frac{1}{2}\\left(\\frac{1}{A(A+1)}-\\frac{1}{(A+1)(A+2)}\\right)$. Find which terms remain after the cancellation in the partial sums."
       ],
       "expl": "Splitting into partial fractions and cancelling in the partial sums leaves ${wk}$, so the sum is ${res}$."
     },
     "ca2_geoSeriesParam": {
-      "prompt": "The infinite series $\\sum_{n=1}^{\\infty}{term}$ converges and its sum is ${S}$. Find the constant $r$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "The infinite series $\\sum_{n=1}^{\\infty}{term}$ converges and its sum is ${S}$. Find the constant $r$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The sum of an infinite geometric series is (first term)÷(1-ratio).",
         "Identify the first term and the common ratio from the general term."
@@ -1873,15 +1921,23 @@
       "expl": "The first term is ${fa}$ and the ratio is ${ratio}$, so the sum is ${sumf}={S}$. Solving gives $r={res}$."
     },
     "ca2_ballDistance": {
-      "prompt": "A ball is dropped from a height of ${h}$ m. Each time it hits the floor it bounces up to ${ratio}$ times the height it just fell from, then falls again, and this repeats forever. What is the total distance the ball travels, in m? (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "A ball is dropped from a height of ${h}$ m. Each time it hits the floor it bounces up to ${ratio}$ times the height it just fell from, then falls again, and this repeats forever. What is the total distance the ball travels, in m? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Treat the first drop of ${h}$ m separately from the later up-and-down trips (each is twice the height reached).",
         "The heights reached form a geometric sequence whose first term is (initial height)×(bounce ratio)."
       ],
       "expl": "The heights reached add up to ${up}$ m and every up-and-down trip is twice that, so the total is ${h}+2\\times {up}={res}$ m."
     },
+    "ca2_ballReverse": {
+      "prompt": "A ball is dropped from some height. Each time it hits the floor it bounces up to ${ratio}$ times the height it just fell from, then falls again, and this repeats forever. The height reached after bounce number ${nb}$ is ${H}$ m. What is the total distance the ball travels, in m? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
+      "hints": [
+        "If the initial height is $h$ m, the height after bounce $n$ is $h\\times \\left({ratio}\\right)^{n}$.",
+        "Find $h$ first, then add the first drop $h$ and twice the sum of all heights reached."
+      ],
+      "expl": "With initial height $h$ m, ${H}=h\\times \\left({ratio}\\right)^{{nb}}$, so $h={h}$. The heights reached add up to ${up}$ m, so the total distance is ${h}+2\\times {up}={res}$ m."
+    },
     "ca2_expLogLimit": {
-      "prompt": "Find the limit. $\\lim_{{to}}{ex}$ (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the limit. $\\lim_{{to}}{ex}$ (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use $\\lim_{x\\to0}\\frac{e^{x}-1}{x}=1$ and $\\lim_{x\\to0}\\frac{\\ln(1+x)}{x}=1$ after rewriting the expression.",
         "Multiply and divide by suitable constants so the same expression appears in numerator and denominator."
@@ -1897,15 +1953,15 @@
       "expl": "Using $(1+h)^{\\frac{1}{h}}\\to e$ and collecting the exponent gives $k={wk}={res}$."
     },
     "ca2_derivExpLog": {
-      "prompt": "For $f(x)={fx}$, find $f'({x0})$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "For $f(x)={fx}$, find $f'({x0})$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Differentiate with $(e^{x})'=e^{x}$, $(\\ln x)'=\\frac{1}{x}$ and the chain rule.",
         "If the value substituted has the form $\\ln m$, use $e^{\\ln m}=m$."
       ],
-      "expl": "$f'(x)={fp}$, so $f'({x0})={res}$."
+      "expl": "$f'(x)={fp}$, so $f'({x0})={sub}$."
     },
     "ca2_quotientDeriv": {
-      "prompt": "For $f(x)={fx}$, find $f'({x0})$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "For $f(x)={fx}$, find $f'({x0})$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use the quotient rule $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^{2}}$.",
         "Evaluate $u$, $v$, $u'$, $v'$ at $x={x0}$ and substitute."
@@ -1913,10 +1969,10 @@
       "expl": "$u({x0})={u0}$, $u'({x0})={du}$, $v({x0})={v0}$, $v'({x0})={dv}$, so $f'({x0})=\\frac{({du})({v0})-({u0})({dv})}{({v0})^{2}}={res}$."
     },
     "ca2_trigLimit": {
-      "prompt": "Find the limit. $\\lim_{{to}}{ex}$ (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the limit. $\\lim_{{to}}{ex}$ (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use $\\lim_{x\\to0}\\frac{\\sin x}{x}=1$, $\\lim_{x\\to0}\\frac{\\tan x}{x}=1$ and $1-\\cos x=\\frac{\\sin^{2}x}{1+\\cos x}$.",
-        "For $x\\to c$, put $t=x-c$ and let $t\\to0$."
+        "For $x\\to c$, put $t=x-c$ and let $t\\to0$. For $x\\to\\infty$, put $h=\\frac{1}{x}$."
       ],
       "expl": "Rewriting with the basic limits gives ${wk}$, so the limit is ${res}$."
     },
@@ -1924,28 +1980,28 @@
       "prompt": "Find the positive integer $a$ for which ${eq}$ holds. (digits only)",
       "hints": [
         "Express the limit as $x\\to0$ in terms of $a$.",
-        "Set that expression equal to the given value and solve for $a$."
+        "Set that expression equal to the given value and solve for $a$; the condition that $a$ is a positive integer makes it unique."
       ],
-      "expl": "The limit equals ${wk}$, which must equal the given value, so $a={ans}$."
+      "expl": "The limit equals ${wk}$, which must equal the given value. The positive integer satisfying it is $a={ans}$, and substituting gives ${chk}$."
     },
     "ca2_limitPair": {
       "prompt": "For constants $a$ and $b$, if ${eq}$, find $ab$. (digits only)",
       "hints": [
-        "The denominator tends to $0$ while the limit exists, so the numerator must also tend to $0$.",
-        "Expand the numerator in powers of $x$ and cancel the lowest-order terms first."
+        "If the limit exists while the denominator tends to $0$, the numerator must also tend to $0$. Use this to relate $a$ and $b$ first.",
+        "Substitute that relation, then factor, rationalize or use $1-\\cos x=\\frac{\\sin^{2}x}{1+\\cos x}$ to evaluate the limit and set it equal to the given value."
       ],
       "expl": "${wk}$, so $ab={ans}$."
     },
     "ca2_trigDeriv": {
       "prompt": "For $f(x)={fx}$, find $f'({x0})$. (a decimal is fine, or a fraction written like 3/4)",
       "hints": [
-        "Use $(\\sin x)'=\\cos x$, $(\\cos x)'=-\\sin x$, the product rule and the chain rule to find $f'(x)$.",
+        "Use $(\\sin x)'=\\cos x$, $(\\cos x)'=-\\sin x$, $(\\tan x)'=\\frac{1}{\\cos^{2}x}$ together with the product, quotient and chain rules to find $f'(x)$.",
         "Substitute $x={x0}$ and evaluate the trigonometric values."
       ],
       "expl": "$f'(x)={fp}$, so $f'({x0})={res}$."
     },
     "ca2_addTheorem": {
-      "prompt": "Given ${ga}$, ${gb}$, ${ra}$ and ${rb}$, find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Given ${ga}$, ${gb}$, ${ra}$ and ${rb}$, find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use the given value and $\\sin^{2}\\theta+\\cos^{2}\\theta=1$ to get the other values; the quadrant decides the signs.",
         "Substitute the values into the addition formula."
@@ -1953,18 +2009,18 @@
       "expl": "${kn}$, so ${ask}={wk}={res}$."
     },
     "ca2_lineAngle": {
-      "prompt": "The acute angle between the lines $ {l1} $ and $ {l2} $ is $\\theta$. Find $\\tan\\theta$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "The acute angle between the lines $ {l1} $ and $ {l2} $ is $\\theta$. Find $\\tan\\theta$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "A line of slope $m$ makes an angle $\\alpha$ with the positive $x$-axis where $\\tan\\alpha=m$.",
+        "A line of slope $m$ makes an angle $\\alpha$ with the positive $x$-axis where $\\tan\\alpha=m$. Rewrite the equation as $y=mx+k$ to read off the slope.",
         "Use the tangent subtraction formula and take the positive value because the angle is acute."
       ],
       "expl": "The slopes are $m_1={m1}$ and $m_2={m2}$, so $\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\frac{({m1})-({m2})}{1+({m1})({m2})}\\right|={res}$."
     },
     "ca2_doubleAngle": {
-      "prompt": "If ${cd}$, find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "If ${cd}$, find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Use $\\sin2\\alpha=2\\sin\\alpha\\cos\\alpha$, $\\cos2\\alpha=\\cos^{2}\\alpha-\\sin^{2}\\alpha$ and $\\sin^{2}\\alpha+\\cos^{2}\\alpha=1$.",
-        "Try squaring the given relation, or get $\\sin$ and $\\cos$ from the value of $\\tan$."
+        "If $\\sin\\alpha\\pm\\cos\\alpha$ is given, square both sides. If $\\tan\\alpha=t$, then $\\sin2\\alpha=\\frac{2t}{1+t^{2}}$ and $\\cos2\\alpha=\\frac{1-t^{2}}{1+t^{2}}$; if $\\tan\\frac{\\alpha}{2}=t$, then $\\sin\\alpha=\\frac{2t}{1+t^{2}}$ and $\\cos\\alpha=\\frac{1-t^{2}}{1+t^{2}}$."
       ],
       "expl": "${wk}$, so the value is ${res}$."
     },
@@ -1972,28 +2028,28 @@
       "prompt": "For differentiable functions $f$ and $g$, ${tbl}$. If $h(x)={hx}$, find $h'({a})$. (a decimal is fine, or a fraction written like 3/4)",
       "hints": [
         "Decide whether $h$ is a product, a quotient or a composite and use the matching rule.",
-        "Read the needed values and derivatives at $x={a}$ (and at the inner values) from the data."
+        "Read the needed values and derivatives at $x={a}$ from the data. For a composite, the value of the inner function is the point at which the outer derivative is taken."
       ],
       "expl": "${rule}$, so $h'({a})={wk}={res}$."
     },
     "ca2_paramDeriv": {
-      "prompt": "For the curve $x={xt}$, $y={yt}$, find ${what}$ at $t={t0}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "For the curve $x={xt}$, $y={yt}$, find ${what}$ at $t={t0}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "For parametric functions, $\\frac{ dy }{ dx }=\\frac{dy/dt}{dx/dt}$.",
-        "The second derivative is $\\frac{d}{ dt }\\left(\\frac{ dy }{ dx }\\right)$ divided by $\\frac{ dx }{ dt }$."
+        "Write $\\frac{ dy }{ dx }$ as a function of $t$, differentiate it with respect to $t$, and divide by $\\frac{ dx }{ dt }$ to get the second derivative."
       ],
       "expl": "${wk}$, so the value is ${res}$."
     },
     "ca2_implicitDeriv": {
-      "prompt": "Treating $y$ as a function of $x$, find ${what}$ at the point $ {pt} $ of the curve ${eq}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Treating $y$ as a function of $x$, find ${what}$ at the point $ {pt} $ of the curve ${eq}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Differentiate both sides with respect to $x$; terms containing $y$ pick up a factor $\\frac{ dy }{ dx }$.",
-        "Substitute the coordinates of the point and solve for $\\frac{ dy }{ dx }$."
+        "Substitute the coordinates of the point and solve for $\\frac{ dy }{ dx }$. For the second derivative, differentiate the differentiated equation once more."
       ],
-      "expl": "${wk}$, so the value is ${res}$."
+      "expl": "Differentiating both sides with respect to $x$ and writing $y'=\\frac{ dy }{ dx }$ gives ${wk}$, so the value is ${res}$."
     },
     "ca2_inverseDeriv": {
-      "prompt": "Let $g$ be the inverse function of $f(x)={fx}$. Find $g'({b})$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Let $g$ be the inverse function of $f(x)={fx}$, which is increasing on all real numbers. Find $g'({b})$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First find $a$ with $f(a)={b}$.",
         "Inverse function rule: $g'({b})=\\frac{1}{f'(a)}$."
@@ -2009,7 +2065,7 @@
       "expl": "The point of tangency is $ {pt} $ and the slope is $m={sl}$, so the tangent is $y={tl}$ and its $y$-intercept is ${res}$."
     },
     "ca2_tangentTriangle": {
-      "prompt": "Find the area of the triangle bounded by the tangent line to the curve ${cv}$ at the point $ {pt} $ and the $x$-axis and $y$-axis. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Find the area of the triangle bounded by the tangent line to the curve ${cv}$ at the point $ {pt} $ and the $x$-axis and $y$-axis. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Find the tangent line first, then its intercepts with the two axes.",
         "The base and height of the triangle are $|x\\text{-intercept}|$ and $|y\\text{-intercept}|$."
@@ -2017,12 +2073,12 @@
       "expl": "The tangent line is $y={tl}$ with $x$-intercept ${xi}$ and $y$-intercept ${yi}$, so the area is $\\frac{1}{2}\\times|{xi}|\\times|{yi}|={res}$."
     },
     "ca2_commonTangent": {
-      "prompt": "The curves $y={f}$ and $y={g}$ meet at the point with $x=1$ and have a common tangent line there. For the constants $a$ and $b$, find $ab$. (digits only)",
+      "prompt": "The curves $y={f}$ and $y={g}$ meet at the point with $x={x0}$ and have a common tangent line there. For the constants $a$ and $b$, find $ab$. (digits only)",
       "hints": [
-        "Meeting at $x=1$ means $f(1)=g(1)$; having the same tangent means $f'(1)=g'(1)$.",
+        "Meeting at $x={x0}$ means the two function values are equal; having the same tangent means the two derivatives are equal.",
         "Solve the two equations for $a$ and $b$."
       ],
-      "expl": "$f(1)={F}$ and $f'(1)={D}$, so ${wk}$. Hence $ab={ans}$."
+      "expl": "At $x={x0}$ the curve $y={f}$ has value ${F}$ and derivative ${D}$, so ${wk}$. Hence $ab={ans}$."
     },
     "ca2_extremaPair": {
       "prompt": "The function $f(x)={fx}$ has exactly one local maximum and one local minimum. If the local maximum is at $x=\\alpha$ and the local minimum is at $x=\\beta$, find $\\alpha-\\beta$. (digits only)",
@@ -2036,9 +2092,17 @@
       "prompt": "Find the number of distinct real roots of the equation ${eq}$. (digits only)",
       "hints": [
         "Call the left side $f(x)$ and count the intersections of the curve $y=f(x)$ with the line $y=k$, where $k$ is the constant on the right.",
-        "Study where $f$ increases and decreases, find its extreme values and its behaviour as $x\\to\\pm\\infty$, then compare $k$ with those values."
+        "Study where $f$ increases and decreases, find its extreme values and its behaviour as $x\\to\\pm\\infty$, then compare $k$ with those values. Use $2.7<e<2.8$."
       ],
       "expl": "From ${fpx}$ the extreme values are ${ext}$ and the limits are ${lim}$. Here ${cm}$, so the curve $y=f(x)$ and the line $y=k$ meet in {ans} point(s), and the equation has {ans} real root(s)."
+    },
+    "ca2_rootCountParam": {
+      "prompt": "Find the number of integers $k$ for which the equation ${eq}$ has exactly ${nr}$ distinct real roots. (digits only)",
+      "hints": [
+        "Call the left side $f(x)$ and use the increase and decrease and the extreme values of $f$ to find the range of $k$ for which the line $y=k$ meets the curve $y=f(x)$ in ${nr}$ points.",
+        "If the extreme value contains $e$, use $2.7<e<2.8$, and count the integers in the range."
+      ],
+      "expl": "From ${fpx}$ the extreme value is ${ext}$, and ${nr} intersections occur when ${rg}$. The integers $k$ in this range are ${lst}$, so there are ${ans}$ of them."
     },
     "ca2_monotoneParam": {
       "prompt": "Find the number of integers $a$ for which $f(x)={fx}$ is increasing on all real numbers. (It is increasing when $f'(x)\\ge 0$ for every real $x$.) (digits only)",
@@ -2049,7 +2113,7 @@
       "expl": "${wk}$. So the integers $a$ satisfying the condition are ${lst}$, in total {ans}."
     },
     "ca2_motionReverse": {
-      "prompt": "A point P moves on a number line and its position at time $t$ ($t>0$) is $x(t)={xt}$. Find its acceleration at the first time its velocity is $0$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "A point P moves on a number line and its position at time $t$ ($t>0$) is $x(t)={xt}$. Find its acceleration at the first time its velocity is $0$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Velocity is $v(t)=x'(t)$ and acceleration is $a(t)=v'(t)$.",
         "Find the smallest positive $t$ with $v(t)=0$ and substitute it into $a(t)$."
@@ -2057,7 +2121,7 @@
       "expl": "${wk}$, so the acceleration at the first time the velocity is zero is ${res}$."
     },
     "ca2_riemann": {
-      "prompt": "If $L=\\lim_{n\\to\\infty}{pre}\\sum_{k=1}^{n}{body}$, find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "If $L=\\lim_{n\\to\\infty}{pre}\\sum_{k=1}^{n}{body}$, find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Read the sum as a sum of rectangle areas over $n$ equal parts and replace $\\frac{k}{n}$ by $x$.",
         "The limits of integration come from the values of $\\frac{k}{n}$ at the ends, in the limit."
@@ -2065,39 +2129,39 @@
       "expl": "Converting the sum to a definite integral gives $L={wk}$. Hence ${ask}$ equals ${res}$."
     },
     "ca2_areaCurves": {
-      "prompt": "Let $S$ be the area of the region bounded by the graphs $y={f}$, $y={g}$ and the lines $x={a}$, $x={b}$. Find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Let $S$ be the area of the region bounded by the graphs $y={f}$, $y={g}$ and the lines $x={a}$, $x={b}$. Find ${ask}$. (Note: the $x$-axis is $y=0$.) (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Integrate (upper graph) minus (lower graph) over the interval.",
-        "Use antiderivatives of exponential, trigonometric and rational functions."
+        "Use $(\\tan x)'=\\frac{1}{\\cos^{2}x}$, $(\\ln x)'=\\frac{1}{x}$ to find antiderivatives of exponential, trigonometric and rational functions, and substitution for composite forms."
       ],
       "expl": "On $[{a},{b}]$ the graph $y={f}$ lies above, so $S=\\int_{{a}}^{{b}}({f}-{gg})\\,dx={wk}$. Hence ${ask}$ equals ${res}$."
     },
     "ca2_volumeRotate": {
-      "prompt": "Let $V$ be the volume of the solid obtained by rotating about the $x$-axis the region bounded by the graphs $y={f}$, $y={g}$ and the lines $x={a}$, $x={b}$. Find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Let $V$ be the volume of the solid obtained by rotating about the $x$-axis the region bounded by the graphs $y={f}$, $y={g}$ and the lines $x={a}$, $x={b}$. Find ${ask}$. (Note: the $x$-axis is $y=0$.) (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The volume is $V=\\pi\\int_{\\alpha}^{\\beta}\\{(\\text{outer radius})^{2}-(\\text{inner radius})^{2}\\}\\,dx$.",
-        "Take the upper graph as the outer radius and the lower graph as the inner radius."
+        "Take the upper graph as the outer radius and the lower graph as the inner radius. Note $(\\tan x)'=\\frac{1}{\\cos^{2}x}$ and $\\sin^{2}x=\\frac{1-\\cos 2x}{2}$."
       ],
       "expl": "$V=\\pi\\int_{{a}}^{{b}}\\left(({f})^{2}-({g})^{2}\\right)dx={wk}$, so ${ask}$ equals ${res}$."
     },
     "ca2_integralBasic": {
-      "prompt": "Let $I=\\int_{{lo}}^{{hi}}\\left({fx}\\right)dx$. Find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Let $I=\\int_{{lo}}^{{hi}}\\left({fx}\\right)dx$. Find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "Use $\\int e^{x}dx=e^{x}$, $\\int\\sin x\\,dx=-\\cos x$, $\\int\\cos x\\,dx=\\sin x$, $\\int\\frac{1}{x}dx=\\ln|x|$.",
+        "Use $\\int e^{x}dx=e^{x}$, $\\int\\sin x\\,dx=-\\cos x$, $\\int\\cos x\\,dx=\\sin x$, $\\int\\frac{1}{x}dx=\\ln|x|$, $\\int\\frac{1}{\\cos^{2}x}dx=\\tan x$.",
         "Remember $\\int f(kx)\\,dx=\\frac{1}{k}F(kx)$; then substitute the upper and lower limits and subtract."
       ],
       "expl": "${wk}$, so ${ask}$ equals ${res}$."
     },
     "ca2_substitution": {
-      "prompt": "Evaluate $\\int_{{lo}}^{{hi}}{fx}\\,dx$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Evaluate $\\int_{{lo}}^{{hi}}{fx}\\,dx$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "Let $u$ be the inner part of the integrand; then $du$ matches the remaining factor.",
+        "Let $u$ be the part of the integrand that is grouped together (inside brackets, a root, an exponent or a denominator); then $du$ matches the remaining factor.",
         "Remember that the limits of integration change into values of $u$."
       ],
       "expl": "${wk}$, so the value is ${res}$."
     },
     "ca2_subsTransform": {
-      "prompt": "For a continuous function $f$, ${gv}$. Find ${tg}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "For a continuous function $f$, ${gv}$. Find ${tg}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Let $u$ be the inner expression and change the limits and $dx$ into the variable $u$.",
         "Check that the new limits are the same as those of the given integral."
@@ -2113,46 +2177,46 @@
       "expl": "${wk}$, so the value is ${res}$."
     },
     "ca2_partsEval": {
-      "prompt": "Let $I=\\int_{{lo}}^{{hi}}{fx}\\,dx$. Find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "Let $I=\\int_{{lo}}^{{hi}}{fx}\\,dx$. Find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "In the product, let $u$ be the factor that gets simpler when differentiated and $v'$ the one that is easy to integrate; then integrate by parts.",
+        "In the product, let $u$ be the factor that gets simpler when differentiated and $v'$ the one that is easy to integrate; then use $\\int uv'dx=uv-\\int u'v\\,dx$.",
         "Do it twice if necessary. Evaluate the trigonometric values at the ends of the interval."
       ],
-      "expl": "${wk}$, so ${ask}$ equals ${res}$."
+      "expl": "Integrating by parts gives ${wk}$, so ${ask}$ equals ${res}$."
     },
     "ca2_velocityIntegral": {
-      "prompt": "A point P moves on a number line and its velocity at time $t$ ($t\\ge0$) is $v(t)={vt}$. Let $x(t)$ be its position and $x(0)={x0}$. Find ${ask}$. (a decimal is fine, or a fraction written like 3/4)",
+      "prompt": "A point P moves on a number line and its velocity at time $t$ ($t\\ge0$) is $v(t)={vt}$. Find the distance travelled from $t=0$ to $t={T}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "The change in position is $\\int_{0}^{T}v(t)\\,dt$, and the distance travelled is the integral of the speed $|v(t)|$.",
-        "Find where the velocity changes sign and split the interval there."
+        "The distance travelled is $\\int_{0}^{T}|v(t)|\\,dt$.",
+        "Find where the velocity changes sign, split the interval there and integrate $|v|$ piece by piece."
       ],
-      "expl": "${wk}$, so the value is ${res}$."
+      "expl": "${wk}$, so the distance travelled is ${res}$."
     },
     "geo_parFocusDir": {
-      "prompt": "A parabola has focus $F({fx},\\ {fy})$ and directrix ${dirEq}$. A point $P(x,\\ y)$ on the parabola satisfies ${cond}$. What is the maximum value of ${un}$? (digits only)",
+      "prompt": "A parabola has focus $F({fx},\\ {fy})$ and directrix ${dirEq}$. A point $P(x,\\ y)$ on the parabola has ${cond}$. What is the maximum value of ${un}$? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "A point of a parabola is equally far from the focus and from the directrix.",
         "The vertex is the midpoint between focus and directrix. Write the equation of the parabola with vertex $({vx},\\ {vy})$ and $p={pp}$ first."
       ],
-      "expl": "The vertex is $({vx},\\ {vy})$ and $p={pp}$, so the parabola is ${eqn}$. Substituting ${cond}$ gives ${un}={sol}$, so the maximum of ${un}$ is ${ans}$."
-    },
-    "geo_parFocalChord": {
-      "prompt": "A line with slope ${m}$ passes through the focus of the parabola ${eq}$ and meets the parabola at P and Q. What is the length of segment PQ? (digits only)",
-      "hints": [
-        "For a point of a parabola, the distance to the focus equals the distance to the directrix.",
-        "Substitute the equation of the line into the parabola and find the sum of the ${w}$-coordinates of the two intersection points."
-      ],
-      "expl": "Since $p={pp}$, the focus is ${foc}$ and the line is ${line}$. Substituting gives ${w}_1+{w}_2={sum}$ for the ${w}$-coordinates, and by the directrix property $PQ=({w}_1+{pp})+({w}_2+{pp})={sum}+{twop}={ans}$."
+      "expl": "The vertex is $({vx},\\ {vy})$ and $p={pp}$, so the parabola is ${eqn}$. For ${cond}$ we get ${un}={sol}$, so the maximum of ${un}$ is ${ans}$."
     },
     "geo_ellipseFocal": {
       "prompt": "Let F and F' be the foci of the ellipse ${eq}$. A point P on the ellipse satisfies ${cond}$. What is the value of ${ask}$? (digits only)",
       "hints": [
         "For a point on an ellipse the sum of the distances to the two foci is constant and equals the length of the major axis.",
-        "The semi-major axis is $a={a}$ and $c={c}$. Use $PF+PF'=2a$."
+        "If the major axis has length $2a$ and the foci are $2c$ apart, then $a={a}$ and $c={c}$. Use $PF+PF'=2a$."
       ],
-      "expl": "The semi-major axis is $a={a}$ and $c={c}$, so $PF+PF'=2a={tw}$ and $FF'=2c={tc}$. ${work}$, so the value is ${ans}$."
+      "expl": "The major axis has length $2a={tw}$ and the foci are $2c={tc}$ apart, so $PF+PF'={tw}$ and $FF'={tc}$. ${work}$, so the value is ${ans}$."
     },
     "geo_hyperFocal": {
+      "prompt": "Let F and F' be the foci of the hyperbola ${eq}$. A point P on the hyperbola satisfies ${cond}$. What is the value of ${ask}$? (digits only)",
+      "hints": [
+        "For a point on a hyperbola, the absolute difference of the distances to the foci equals the length $2a$ of the transverse axis.",
+        "Here $a={a}$ and $c={c}$, so $|PF-PF'|=2a={tw}$, and a point of the hyperbola is at least $c-a={ca}$ away from each focus."
+      ],
+      "expl": "Here $a={a}$, $b={b}$, $c={c}$ and $|PF-PF'|=2a={tw}$. Since ${work}$, the point P is on the branch near F and $PF'>PF$. (If $PF'=PF-2a$, we would get ${alt}$, below $c-a$, which is impossible.) Hence ${work2}$, so the value is ${ans}$."
+    },
+    "geo_hyperFocalRel": {
       "prompt": "Let F and F' be the foci of the hyperbola ${eq}$. A point P on the hyperbola satisfies ${cond}$. What is the value of ${ask}$? (digits only)",
       "hints": [
         "For a point on a hyperbola, the absolute difference of the distances to the foci equals the length $2a$ of the transverse axis.",
@@ -2166,23 +2230,23 @@
         "Rewrite the ellipse as $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$; the larger denominator is $a^2$.",
         "The two denominators are ${a2}$ and ${b2}$, and $c^2=a^2-b^2$."
       ],
-      "expl": "In the form ${std}$ we have $a^2={a2}$, $b^2={b2}$, so $c^2=a^2-b^2={c2}$ and $c={c}$. The distance between the foci is $2c={ans}$."
+      "expl": "Written as ${std}$ we have $a^2={a2}$, $b^2={b2}$, so $c^2=a^2-b^2={c2}$ and $c={c}$. The distance between the foci is $2c={ans}$."
     },
     "geo_hyperAsym": {
-      "prompt": "What is the slope of the asymptote with positive slope of the hyperbola ${eq}$? (decimal or fraction such as 3/4)",
+      "prompt": "What is the slope of the asymptote with positive slope of the hyperbola ${eq}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The asymptotes of $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ are $y=\\pm\\frac{b}{a}x$, and those of $\\frac{y^2}{a^2}-\\frac{x^2}{b^2}=1$ are $y=\\pm\\frac{a}{b}x$.",
-        "First rewrite it with right-hand side 1, ${std}$, and read off $a^2$ and $b^2$."
+        "If the right-hand side is not $1$, first make it $1$; then read $a^2$ and $b^2$ from the denominators of $x^2$ and $y^2$."
       ],
-      "expl": "In the form ${std}$ the asymptotes are ${asy}$, so the asymptote with positive slope has slope ${ans}$."
+      "expl": "In the form ${std}$ the asymptotes are ${asy}$, so the asymptote with positive slope has slope ${ansf}$."
     },
-    "geo_eccentric": {
-      "prompt": "The curve ${eq}$ has eccentricity ${e}$, and ${cond}$. What is the value of $k$? (digits only)",
+    "geo_conicParam": {
+      "prompt": "The distance between the two foci of the curve ${eq}$ is ${fd}$, and ${cond}$. What is the value of $k$? (digits only)",
       "hints": [
-        "For both ellipse and hyperbola $e=\\frac{c}{a}$. First decide which denominator is $a^2$.",
-        "Write $e^2$ in terms of $k$: for an ellipse $e^2=1-\\frac{b^2}{a^2}$, for a hyperbola $e^2=1+\\frac{b^2}{a^2}$."
+        "If the foci are $2c$ apart, you can find $c$ first. Also decide which denominator is $a^2$.",
+        "For an ellipse $c^2=a^2-b^2$, for a hyperbola $c^2=a^2+b^2$. Solve for $k$."
       ],
-      "expl": "We have $e=\\frac{c}{a}$ and ${work}$. Hence $k={ans}$."
+      "expl": "The foci are $2c={fd}$ apart, so $c={c}$ and $c^2={c2}$. ${work}$, so $k={ans}$."
     },
     "geo_conicTangentLine": {
       "prompt": "The line ${ln}$ is tangent to the curve ${eq}$. What is the positive value of $k$? (digits only)",
@@ -2190,31 +2254,23 @@
         "Substitute the line into the equation of the curve to get a quadratic in $x$; tangency means its discriminant is $0$.",
         "Obtain an equation for $k$ from $D=0$."
       ],
-      "expl": "Substituting the line into the curve gives a quadratic whose discriminant $D$ must be $0$ for tangency. ${work}$, so the positive $k$ is ${ans}$."
+      "expl": "Substituting the line into the curve gives the quadratic in $x$: ${quad}$. For tangency its discriminant must be $0$. ${work}$, so the positive $k$ is ${ans}$."
     },
     "geo_tangentAt": {
-      "prompt": "What is the area of the triangle bounded by the tangent line to the curve ${eq}$ at the point $P({x0},\\ {y0})$ and the $x$-axis and $y$-axis? (decimal or fraction such as 3/4)",
+      "prompt": "What is the area of the triangle bounded by the tangent line to the curve ${eq}$ at the point $P({x0},\\ {y0})$ and the $x$-axis and $y$-axis? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The tangent at $(x_1,\\ y_1)$ is obtained by replacing $x^2\\to x_1x$ and $y^2\\to y_1y$ (for a parabola $y^2\\to y_1y$ and $x\\to\\frac{x+x_1}{2}$).",
         "Find the $x$- and $y$-intercepts of the tangent and compute $\\frac{1}{2}\\times|x\\text{-intercept}|\\times|y\\text{-intercept}|$."
       ],
-      "expl": "The tangent is ${tan}$ with $x$-intercept ${xi}$ and $y$-intercept ${yi}$. So the area is $\\frac{1}{2}\\times|{xi}|\\times|{yi}|={ans}$."
+      "expl": "The tangent is ${tan}$ with $x$-intercept ${xi}$ and $y$-intercept ${yi}$. So the area is $\\frac{1}{2}\\times|{xi}|\\times|{yi}|={ansf}$."
     },
     "geo_tangentsFromPoint": {
-      "prompt": "Two tangent lines to the curve ${eq}$ are drawn from the point $({x1},\\ {y1})$. What is the product of their slopes? (decimal or fraction such as 3/4)",
+      "prompt": "Two tangent lines to the curve ${eq}$ are drawn from the point $({x1},\\ {y1})$. What is the product of their slopes? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Let the slope be $m$ and substitute the line ${lnp}$ through the point $({x1},\\ {y1})$ into the equation of the curve.",
         "The tangency condition (discriminant $=0$) gives a quadratic in $m$ whose two roots are the slopes of the tangents."
       ],
-      "expl": "The slopes $m$ are the two roots of the quadratic ${quad}=0$ obtained from the tangency condition $D=0$. By Vieta, the product of the slopes is ${prod}$."
-    },
-    "geo_chordMidpoint": {
-      "prompt": "The midpoint of the segment PQ joining two distinct points P and Q of the curve ${eq}$ is $M({x0},\\ {y0})$. What is the slope of the line PQ? (decimal or fraction such as 3/4)",
-      "hints": [
-        "Write the points as $(x_1,\\ y_1)$, $(x_2,\\ y_2)$; the midpoint tells you $x_1+x_2$ and $y_1+y_2$.",
-        "Substitute both points into the equation of the curve and subtract the two equations to get $\\frac{y_1-y_2}{x_1-x_2}$."
-      ],
-      "expl": "Let $P(x_1,\\ y_1)$, $Q(x_2,\\ y_2)$. Then $x_1+x_2={sx}$ and $y_1+y_2={sy}$. Substituting both points into the curve and subtracting gives ${rel}$, so the slope is $\\frac{y_1-y_2}{x_1-x_2}={sl}$."
+      "expl": "Substitute the line ${lnp}$ into the curve; the discriminant of the resulting quadratic in $x$ must be $0$, so the slopes $m$ are the two roots of ${quad}=0$. By Vieta, the product of the slopes is ${prod}$."
     },
     "geo_ellipseRightTri": {
       "prompt": "Let F and F' be the foci of the ellipse ${eq}$. A point P on the ellipse satisfies $\\angle FPF'=90^\\circ$. What is the area of triangle PFF'? (digits only)",
@@ -2224,16 +2280,8 @@
       ],
       "expl": "Here $a^2={a2}$, $b^2={b2}$, $c^2={c2}$, so $PF+PF'=2a={tw}$ and $FF'=2c={tc}$. Then $PF^2+PF'^2={tc2}$, so $2\\,PF\\cdot PF'=({tw})^2-{tc2}$, that is $PF\\cdot PF'={pr}$. The area is $\\frac{1}{2}\\times PF\\times PF'={ans}$."
     },
-    "geo_conicLattice": {
-      "prompt": "How many points on the curve ${eq}$ have both coordinates integers? (digits only)",
-      "hints": [
-        "First bound the possible values of $x$ (or $y$), then try the integers one by one.",
-        "By symmetry of the curve, points that differ only in signs come together."
-      ],
-      "expl": "Checking the integers $x$, $y$ one by one, the points are ${sols}$, so there are ${ans}$ of them."
-    },
     "geo_conicGeneral": {
-      "prompt": "Consider the conic ${eq}$. Let $(a,\\ b)$ be its focus with the largest $x$-coordinate (the focus itself if there is only one). What is $a+b$? (digits only)",
+      "prompt": "Consider the conic ${eq}$. Let $(a,\\ b)$ be its focus with the largest $x$-coordinate (the focus itself if there is only one). What is $a+b$? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "Complete the square in $x$ and in $y$ to reach the standard form.",
         "Read the center (or vertex) from the standard form and move by $c$ (by $p$ for a parabola) along the axis to reach the focus."
@@ -2265,7 +2313,7 @@
       "expl": "$AB=\\sqrt{({dx})^2+({dy})^2+({dz})^2}=\\sqrt{{sq}}={ans}$."
     },
     "geo_divPoint": {
-      "prompt": "For the points $A{pa}$ and $B{pb}$ in space, the point P lies on segment AB with $AP:PB={m}:{n}$. What is the sum of the three coordinates of P? (digits only)",
+      "prompt": "For the points $A{pa}$ and $B{pb}$ in space, the point P lies on segment AB with $AP:PB={m}:{n}$. What is the sum of the three coordinates of P? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "The point dividing AB internally in the ratio $m:n$ is $\\left(\\frac{mx_2+nx_1}{m+n},\\ \\frac{my_2+ny_1}{m+n},\\ \\frac{mz_2+nz_1}{m+n}\\right)$.",
         "Compute each coordinate separately."
@@ -2281,7 +2329,7 @@
       "expl": "Let $AP:PB=s:t$. The relevant coordinate of P is $\\frac{t\\cdot({za})+s\\cdot({zb})}{s+t}=0$, so $s:t=|{za}|:|{zb}|={ua}:{ub}$. In lowest terms this is ${m}:{n}$, so $m+n={ans}$."
     },
     "geo_sphereExpand": {
-      "prompt": "The equation ${eq}$ represents a sphere of radius ${rad}$. What is the constant $s$? (digits only)",
+      "prompt": "The equation ${eq}$ represents a sphere of radius ${rad}$. What is the constant $s$? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "Complete the square in $x$, $y$ and $z$ to reach $(x-a)^2+(y-b)^2+(z-c)^2=r^2$.",
         "The right-hand side must equal $r^2={rad2}$."
@@ -2297,7 +2345,7 @@
       "expl": "The center is ${cc}$ and $R^2={rr2}$. The distance from the center to the plane ${pl}$ is $d={dd}$, so the circle has $r^2={rr2}-{dd}^2={ans}$ and its area is ${ans}\\pi$."
     },
     "geo_sphereTangentPlane": {
-      "prompt": "The plane ${pl}$ is tangent to the sphere with center $C{cc}$ and radius ${rad}$. What is the larger value of the constant $k$? (digits only)",
+      "prompt": "The plane ${pl}$ is tangent to the sphere with center $C{cc}$ and radius ${rad}$. What is the larger value of the constant $k$? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "Tangency means the distance from the center to the plane equals the radius.",
         "The distance from $(x_0,\\ y_0,\\ z_0)$ to the plane $ax+by+cz=k$ is $\\frac{|ax_0+by_0+cz_0-k|}{\\sqrt{a^2+b^2+c^2}}$."
@@ -2328,24 +2376,24 @@
       ],
       "expl": "$|{ex}|^2={calc}={ans}$."
     },
-    "geo_dotFromNorms": {
-      "prompt": "For vectors $\\vec a$ and $\\vec b$ with $|\\vec a|={na}$, $|\\vec b|={nb}$ and $|{ex}|={uu}$, what is $\\vec a\\cdot\\vec b$? (digits only)",
-      "hints": [
-        "Expand $|{ex}|^2$ in terms of $|\\vec a|^2$, $|\\vec b|^2$ and $\\vec a\\cdot\\vec b$.",
-        "Substituting the given lengths gives a linear equation in $\\vec a\\cdot\\vec b$."
-      ],
-      "expl": "$|{ex}|^2={na2}+{nb2}{sgn}2\\,\\vec a\\cdot\\vec b={uu2}$, so $\\vec a\\cdot\\vec b={ans}$."
-    },
     "geo_dotAngle": {
-      "prompt": "Let $\\theta$ ($0^\\circ\\le\\theta\\le180^\\circ$) be the angle between $\\vec a={va}$ and $\\vec b={vb}$. How many degrees is $\\theta$? (digits only)",
+      "prompt": "Let $\\theta$ ($0^\\circ\\le\\theta\\le180^\\circ$) be the angle between the two vectors $\\vec a={va}$ and $\\vec b={vb}$. What is $\\theta$? (digits only, in degrees)",
       "hints": [
         "The cosine of the angle is $\\cos\\theta=\\frac{\\vec a\\cdot\\vec b}{|\\vec a||\\vec b|}$.",
         "Compute the dot product and the two lengths."
       ],
-      "expl": "$\\vec a\\cdot\\vec b={dt}$ and $|\\vec a||\\vec b|=\\sqrt{{na2}}\\sqrt{{nb2}}$, so $\\cos\\theta={cs}$. For $0^\\circ\\le\\theta\\le180^\\circ$ this gives $\\theta={ans}^\\circ$."
+      "expl": "$\\vec a\\cdot\\vec b={dt}$ and $|\\vec a||\\vec b|=\\sqrt{{na2}}\\sqrt{{nb2}}=\\sqrt{{pr}}={rt}$, so $\\cos\\theta=\\frac{{dt}}{{rt}}={cs}$. For $0^\\circ\\le\\theta\\le180^\\circ$ this gives $\\theta={ans}^\\circ$."
     },
     "geo_vecOrthoParam": {
-      "prompt": "For vectors $\\vec a={va}$ and $\\vec b={vb}$, what is the largest real number $t$ with $\\vec a\\cdot\\vec b={dd}$? (digits only)",
+      "prompt": "For the vectors $\\vec a={va}$ and $\\vec b={vb}$ perpendicular to each other, what is the real number $t$? (an integer; put a minus sign in front if it is negative)",
+      "hints": [
+        "The dot product of two perpendicular vectors is $0$.",
+        "Multiply the components and add to write $\\vec a\\cdot\\vec b$ as an expression in $t$."
+      ],
+      "expl": "Perpendicular vectors satisfy $\\vec a\\cdot\\vec b=0$. Since $\\vec a\\cdot\\vec b={dexp}$, solving ${dexp}=0$ gives ${sol}$."
+    },
+    "geo_vecDotParam": {
+      "prompt": "For vectors $\\vec a={va}$ and $\\vec b={vb}$, what is the largest real number $t$ with $\\vec a\\cdot\\vec b={dd}$? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "Multiply the components and add to write $\\vec a\\cdot\\vec b$ as an expression in $t$.",
         "Solve the resulting equation for all $t$ and pick the largest."
@@ -2353,15 +2401,23 @@
       "expl": "$\\vec a\\cdot\\vec b={dexp}$, so solving ${dexp}={dd}$ gives ${sol}$. The largest value is ${ans}$."
     },
     "geo_vecCircleEq": {
-      "prompt": "Let $\\vec a$ and $\\vec b$ be the position vectors of the points $A{pa}$ and $B{pb}$, and let $\\vec p$ be the position vector of a point P. The points P satisfying $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ form a circle or a sphere. What is its radius? (decimal or fraction such as 3/4)",
+      "prompt": "Let $\\vec a$ and $\\vec b$ be the position vectors of the points $A{pa}$ and $B{pb}$, and let $\\vec p$ be the position vector of a point P. The points P satisfying $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ form a circle. What is its radius? (decimal or fraction such as 3/4)",
       "hints": [
         "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ says that the vectors $\\vec p-\\vec a$ and $\\vec p-\\vec b$ are perpendicular.",
-        "So the angle subtended by AB at P is a right angle, and AB is a diameter."
+        "What is the angle subtended by segment AB at P?"
       ],
-      "expl": "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ means P lies on the circle (sphere) with diameter AB. Since $AB={ab}$, the radius is $\\frac{1}{2}AB={ans}$."
+      "expl": "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ means P lies on the circle with diameter AB. Since $AB={ab}$, the radius is $\\frac{1}{2}AB={ans}$."
+    },
+    "geo_vecSphereEq": {
+      "prompt": "Let $\\vec a$ and $\\vec b$ be the position vectors of the points $A{pa}$ and $B{pb}$, and let $\\vec p$ be the position vector of a point P. The points P satisfying $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ form a sphere. What is its radius? (decimal or fraction such as 3/4)",
+      "hints": [
+        "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ says that the vectors $\\vec p-\\vec a$ and $\\vec p-\\vec b$ are perpendicular.",
+        "What is the angle subtended by segment AB at P?"
+      ],
+      "expl": "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ means P lies on the sphere with diameter AB. Since $AB={ab}$, the radius is $\\frac{1}{2}AB={ans}$."
     },
     "geo_lineIntersectParam": {
-      "prompt": "The two lines ${l1}$ and ${l2}$ in space meet in a point. What is the value of the constant $k$? (digits only)",
+      "prompt": "The two lines ${l1}$ and ${l2}$ in space meet in a point. What is the value of the constant $k$? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "Call the common values of the two lines $s$ and $t$ and write the points of each line using $s$ and $t$.",
         "Solve for $s$ and $t$ from the equal $x$- and $y$-coordinates, then compare the $z$-coordinates."
@@ -2369,20 +2425,12 @@
       "expl": "Let $s$ and $t$ be the common values of the first and second line. The $x$- and $y$-coordinates must agree: ${xy}$, which gives $s={ss}$, $t={tt}$. The $z$-coordinates must agree: ${eq3}$, so $k={ans}$."
     },
     "geo_lineSpacePoint": {
-      "prompt": "A point on the line ${ln}$ satisfies ${cond}$. What is the sum of its other two coordinates? (digits only)",
+      "prompt": "A point on the line ${ln}$ satisfies ${cond}$. What is the sum of its other two coordinates? (an integer; put a minus sign in front if it is negative)",
       "hints": [
         "Let the common value of the three fractions be $s$; then $x$, $y$ and $z$ can all be written with $s$.",
         "Use the given condition ${cond}$ to find $s$ first."
       ],
       "expl": "Let the common value be $s$; then $(x,\\ y,\\ z)=({par})$. From ${cond}$ we get $s={ss}$, so the point is ${pt}$ and the sum of the other two coordinates is ${ans}$."
-    },
-    "geo_lineVec2D": {
-      "prompt": "In the coordinate plane the point A has coordinates $({x1},\\ {y1})$. The line through A with direction vector $\\vec u=({u1},\\ {u2})$ meets the line ${ln}$ at the point $(a,\\ b)$. What is $a+b$? (digits only)",
-      "hints": [
-        "A point of the line through A with direction $\\vec u$ has the form $(x,\\ y)=A+t\\vec u$.",
-        "Substitute its coordinates into the equation ${ln}$ and solve for $t$."
-      ],
-      "expl": "The points of the line are $(x,\\ y)=({par})$. Substituting into ${ln}$ gives ${eqn}$, so $t={tt}$. The intersection is ${pt}$, hence $a+b={ans}$."
     },
     "geo_planeNormal": {
       "prompt": "For the point $A{pa}$, the plane through A perpendicular to the vector $\\vec n=({vn})$ meets the ${ax}$-axis at a point. What is its ${ax}$-coordinate? (decimal or fraction such as 3/4)",
@@ -2396,25 +2444,25 @@
       "prompt": "A figure of area ${ar}$ lies in the plane ${pl}$. What is the area of its orthogonal projection onto the ${cp}$-plane? (digits only)",
       "hints": [
         "If $\\theta$ is the angle between the plane of the figure and the ${cp}$-plane, the projected area is (area)$\\times\\cos\\theta$.",
-        "The angle between two planes equals the angle between their normal vectors, so find $\\cos\\theta$ from the normals."
+        "The angle $\\theta$ between two planes is taken in $0^\\circ\\le\\theta\\le90^\\circ$, so $\\cos\\theta=\\frac{|\\vec n_1\\cdot\\vec n_2|}{|\\vec n_1||\\vec n_2|}$ (absolute value of the dot product of the normals over the product of their lengths)."
       ],
-      "expl": "The plane ${pl}$ has normal vector $({nv})$ of length ${nn}$. The cosine with the normal of the ${cp}$-plane is $\\cos\\theta=\\frac{{ni}}{{nn}}$, so the projected area is ${ar}\\times\\frac{{ni}}{{nn}}={ans}$."
+      "expl": "The plane ${pl}$ has normal vector $({nv})$ of length ${nn}$. The normal of the ${cp}$-plane is $({cn})$, so $\\cos\\theta=\\frac{|{ns}|}{{nn}}=\\frac{{ni}}{{nn}}$, and the projected area is ${ar}\\times\\frac{{ni}}{{nn}}={ans}$."
     },
     "geo_projEllipse": {
       "prompt": "A circle of radius ${rr}$ lies in the plane $\\alpha$, and its orthogonal projection onto the plane $\\beta$ is an ellipse. Let $\\theta$ be the angle between the planes, with $\\cos\\theta={cs}$. What is the distance between the two foci of this ellipse? (digits only)",
       "hints": [
         "The diameter parallel to the line of intersection keeps its length, and the perpendicular one shrinks by the factor $\\cos\\theta$.",
-        "Find the semi-axes of the projected ellipse and compute $c=\\sqrt{a^2-b^2}$."
+        "Find the lengths $2a$ and $2b$ of the major and minor axes of the projected ellipse and compute $c=\\sqrt{a^2-b^2}$."
       ],
-      "expl": "The projected ellipse has semi-major axis $a={rr}$ and semi-minor axis $b={rr}\\cos\\theta={bb}$. Then $c=\\sqrt{{rr}^2-{bb}^2}={cc}$, so the distance between the foci is $2c={ans}$."
+      "expl": "The projected ellipse has major axis $2a=2\\times {rr}$ and minor axis $2b=2\\times {rr}\\cos\\theta=2\\times {bb}$, so $a={rr}$ and $b={bb}$. Then $c=\\sqrt{{rr}^2-{bb}^2}={cc}$, so the distance between the foci is $2c={ans}$."
     },
     "geo_threePerp": {
-      "prompt": "From a point P outside the plane $\\alpha$, the foot of the perpendicular to $\\alpha$ is H. From H the foot of the perpendicular to a line $\\ell$ in $\\alpha$ is K, and A is a point of $\\ell$ different from K. If ${giv}$, what is the length of segment ${ask}$? (digits only)",
+      "prompt": "From a point P outside the plane $\\alpha$, the foot of the perpendicular to $\\alpha$ is H. From H the foot of the perpendicular to a line $\\ell$ in $\\alpha$ is K, and A is a point of $\\ell$ different from K. Let $d$ be the distance from P to the line $\\ell$. If ${giv}$, what is the value of ${ask}$? (digits only)",
       "hints": [
         "Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$.",
         "Apply the Pythagorean theorem in the resulting right triangles one after another."
       ],
-      "expl": "Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$. ${work}$, so the length is ${ans}$."
+      "expl": "Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$. ${work}$, so the value is ${ans}$."
     },
     "econ_exchangeCross": {
       "prompt": "The exchange rates are 1 dollar $={d}$ won and 1 euro $={e}$ won. Without any fee, how many dollars do you get for ${n}$ euros? (digits only)",
@@ -2433,7 +2481,7 @@
       "expl": "The amounts in the brackets are ${s1}$, ${s2}$ and ${s3}$, so the tax is ${s1}\\times\\frac{{r1}}{100}+{s2}\\times\\frac{{r2}}{100}+{s3}\\times\\frac{{r3}}{100}={ans}$ (ten-thousand won)."
     },
     "econ_compoundFV": {
-      "prompt": "${P}$ won is deposited for ${n}$ years in an account with annual rate ${r}$% that adds interest to the principal ${m}$ times a year. The rate for one compounding period is the annual rate divided by ${m}$, and nothing is withdrawn. What is the total amount (principal plus interest) after ${n}$ years, in won? (Drop any fraction of a won. Digits only.)",
+      "prompt": "${P}$ won is deposited for ${n}$ years in an account with annual rate ${r}$% that adds interest to the principal ${m}$ times a year. The rate for one compounding period is (annual rate)$\\div{m}$, and nothing is withdrawn. What is the total amount (principal plus interest) after ${n}$ years, in won? (Drop any fraction of a won. Digits only.)",
       "hints": [
         "The number of compounding periods is (times per year)×(number of years).",
         "With the per-period rate ${rp}$%, the total is the principal times $(1+\\frac{{rp}}{100})$ multiplied once per period."
@@ -2478,10 +2526,10 @@
         "Find all integer pairs $(x, y)$ with $x,y\\ge0$ satisfying the budget equation ${a}x+{b}y={I}$.",
         "Compute $U$ for each pair and compare."
       ],
-      "expl": "The pairs satisfying the budget equation are ${pairs}$. The largest $U$ occurs at $(x, y)=({bx}, {by})$, where $U={ans}$."
+      "expl": "The pairs satisfying the budget equation are ${pairs}$. The largest value of $U$ occurs at $(x, y)=({bx}, {by})$ (one of them if several pairs tie), where $U={ans}$."
     },
     "econ_regionLP": {
-      "prompt": "A factory makes $x$ units of product A and $y$ units of product B ($x$, $y$ are integers at least 0). One unit needs ${a1}$ kg of material and ${t1}$ hours of work for product A, and ${b1}$ kg and ${t2}$ hours for product B. At most ${M}$ kg of material and ${T}$ hours of work are available per day. The profit is ${pa}$ (ten-thousand won) per unit of A and ${pb}$ per unit of B. What is the maximum daily profit, in ten-thousand won? (digits only)",
+      "prompt": "A factory makes $x$ units of product A and $y$ units of product B ($x$, $y$ are integers at least 0). One unit needs ${a1}$ kg of material and ${t1}$ hours of work for product A, and ${b1}$ kg and ${t2}$ hours for product B. At most ${M}$ kg of material and, summed over all workers, ${T}$ hours of work are available per day. The profit is ${pa}$ (ten-thousand won) per unit of A and ${pb}$ per unit of B. What is the maximum daily profit, in ten-thousand won? (digits only)",
       "hints": [
         "Write the conditions as inequalities, together with $x\\ge0$ and $y\\ge0$, and draw the region in the plane.",
         "The profit ${pa}x+{pb}y$ is largest at a vertex of the region. Check the intersection of the two boundary lines first."
@@ -2497,23 +2545,23 @@
       "expl": "From $(I-A)\\mathbf{x}=\\mathbf{d}$ we get $\\mathbf{x}=(I-A)^{-1}\\mathbf{d}$. The determinant of $I-A$ is ${D}$, so $x_1=\\frac{{c22}\\times{d1}+{a12}\\times{d2}}{{D}}={ans}$."
     },
     "econ_inverseEntry": {
-      "prompt": "What is the $({i}, {j})$ entry of the inverse $A^{-1}$ of the matrix $A={M}$? (The $(i, j)$ entry is in row $i$, column $j$.) (a decimal or a fraction like 3/4 is fine)",
+      "prompt": "What is the $({i}, {j})$ entry of the inverse $A^{-1}$ of the matrix $A={M}$? (The $(i, j)$ entry is in row $i$, column $j$.) (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The determinant of ${G}$ is $ad-bc$; the inverse exists if it is not 0.",
         "The inverse is ${H}$."
       ],
-      "expl": "The determinant is ${a}\\times{d}-({b})\\times({c})={det}$, and the $({i}, {j})$ entry of $A^{-1}$ is $\\frac{{num}}{{det}}$, that is ${fr}$."
+      "expl": "The determinant is ${ap}\\times{dp}-{bp}\\times{cp}={det}$, and the $({i}, {j})$ entry of $A^{-1}$ is $\\frac{{num}}{{det}}$, that is ${fr}$."
     },
     "econ_marginalRevenue": {
       "prompt": "The demand curve of a good is $p={a}-{b}q$ ($p$ is the price in won, $q$ the quantity sold). Total revenue is $R(q)=pq$ and marginal revenue is the derivative $R'(q)$. For what quantity $q$ is the marginal revenue equal to ${m}$ won? (digits only)",
       "hints": [
         "Substitute $p={a}-{b}q$ into $R(q)=pq$ to write $R(q)$ in terms of $q$.",
-        "Differentiate $R(q)$ and find $q$ so that the derivative equals ${m}$."
+        "Differentiate $R(q)$ and find the $q$ at which the derivative equals ${m}$."
       ],
       "expl": "$R(q)=({a}-{b}q)q={a}q-{b}q^2$, so $R'(q)={a}-{twob}q$. Setting $R'(q)={m}$ gives $q={ans}$."
     },
     "econ_elasticityPoint": {
-      "prompt": "The demand function is $q={D}$ ($p$ is the price, $q$ the quantity demanded). What is the price elasticity of demand $e=\\left|q'(p)\\times\\frac{p}{q}\\right|$ at the price $p={p0}$? (a decimal or a fraction like 3/4 is fine)",
+      "prompt": "The demand function is $q={D}$ ($p$ is the price, $q$ the quantity demanded). What is the price elasticity of demand $e=\\left|q'(p)\\times\\frac{p}{q}\\right|$ at the price $p={p0}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First find $q'(p)$ and evaluate it at $p={p0}$.",
         "Also find the quantity $q$ at $p={p0}$ and put both into the formula for $e$."
@@ -2537,7 +2585,7 @@
       "expl": "$\\pi(q)={p}q-C(q)$ gives $\\pi'(q)=-3q^2+{twob}q+{pc}=-3(q-{q0})(q+{s})$. For $q\\ge0$, $\\pi'$ is positive before $q={q0}$ and negative after, so the maximum is at $q={q0}$: $\\pi({q0})={ans}$ won."
     },
     "ai_cosine": {
-      "prompt": "The word-frequency vectors of documents A and B (counts of the dictionary words, in dictionary order) are $\\vec{a}={va}$ and $\\vec{b}={vb}$. What is their cosine similarity $\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|}$? (a decimal or a fraction such as 3/4 is fine)",
+      "prompt": "The word-frequency vectors of documents A and B (counts of the dictionary words, in dictionary order) are $\\vec{a}={va}$ and $\\vec{b}={vb}$. What is their cosine similarity $\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "First compute the dot product by multiplying matching entries and adding.",
         "A length is the square root of the sum of squared entries; both lengths are whole numbers."
@@ -2545,12 +2593,12 @@
       "expl": "$\\vec{a}\\cdot\\vec{b}={dot}$, $|\\vec{a}|={na}$, $|\\vec{b}|={nb}$, so the cosine similarity is $\\frac{{dot}}{{na}\\times{nb}}={fr}$."
     },
     "ai_jaccard": {
-      "prompt": "The dictionary words are numbered $1$ to $12$. The word numbers appearing in document A form the set $A=\\{{sa}\\}$ and in document B the set $B=\\{{sb}\\}$. What is the Jaccard similarity $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$ of the two documents? (a decimal or a fraction such as 3/4 is fine)",
+      "prompt": "The dictionary words are numbered $1$ to $12$. The word numbers appearing in document A form the set $A=\\{{sa}\\}$ and in document B the set $B=\\{{sb}\\}$. What is the Jaccard similarity $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$ of the two documents? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "$A\\cap B$ is the set of word numbers appearing in both documents.",
         "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$."
       ],
-      "expl": "$n(A\\cap B)={ni}$ and $n(A\\cup B)={nu}$, so the similarity is $\\frac{{ni}}{{nu}}={fr}$."
+      "expl": "$n(A\\cap B)={ni}$ and $n(A\\cup B)={nu}$, so the similarity is $\\frac{{ni}}{{nu}}$, which in lowest terms is ${fr}$."
     },
     "ai_jaccardRev": {
       "prompt": "Document A contains ${na}$ distinct words and document B contains ${nb}$. For their word sets $A$ and $B$ the Jaccard similarity $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$ equals $\\dfrac{{jp}}{{jq}}$. How many distinct words appear in both documents? (digits only)",
@@ -2577,7 +2625,7 @@
       "expl": "$B={bm}$ and $C={cm}$, so the entry in row {i}, column {j} is ${ans}$."
     },
     "ai_convolve": {
-      "prompt": "A filter $K={ker}$ is applied to the image $I={img}$ by sliding it one cell at a time. At each position the overlapping entries are multiplied and added, and these values form a feature map. What is the sum of all entries of the feature map? (digits only)",
+      "prompt": "A filter $K={ker}$ is applied to the image $I={img}$ by sliding it one cell at a time. At each position the overlapping entries are multiplied and added, and these values form a feature map. What is the sum of all entries of the feature map? Use only positions where the filter stays inside the image; do not pad with zeros. (digits only)",
       "hints": [
         "With the filter on the top-left corner, multiply overlapping entries and add: that is the first entry of the map.",
         "Move the filter one cell right or down and repeat."
@@ -2585,15 +2633,15 @@
       "expl": "The feature map is ${out}$ and the sum of its entries is ${ans}$."
     },
     "ai_bayesSpam": {
-      "prompt": "${s}\\%$ of the received e-mails are spam. ${p}\\%$ of the spam e-mails contain a certain word, and ${q}\\%$ of the non-spam e-mails contain it too. An e-mail containing this word is chosen. What is the probability that it is spam? (a decimal or a fraction such as 3/4 is fine)",
+      "prompt": "${s}\\%$ of the received e-mails are spam. ${p}\\%$ of the spam e-mails contain a certain word, and ${q}\\%$ of the non-spam e-mails contain it too. An e-mail containing this word is chosen. What is the probability that it is spam? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Imagine $100$ (or $10000$) e-mails and count each case.",
         "It is (spam containing the word) divided by (all e-mails containing the word)."
       ],
-      "expl": "Out of $10000$ e-mails, ${s2}$ are spam and ${a}$ of them contain the word; of the ${h2}$ non-spam e-mails, ${b}$ contain it. So the probability is $\\frac{{a}}{{a}+{b}}={fr}$."
+      "expl": "Out of $10000$ e-mails, ${s2}$ are spam and ${a}$ of them contain the word; of the ${h2}$ non-spam e-mails, ${b}$ contain it. So the probability is $\\frac{{a}}{{a}+{b}}$, which in lowest terms is ${fr}$."
     },
     "ai_trendPredict": {
-      "prompt": "The least-squares trend line of the data below is $y=ax+b$. What value of $y$ does the trend line predict at $x={x0}$? (digits only)\n$x$: {xs}\n$y$: {ys}",
+      "prompt": "Consider the data below.\n$x$: {xs}\n$y$: {ys}\nThe least-squares trend line of these data is $y=ax+b$. What value of $y$ does the trend line predict at $x={x0}$? (digits only)",
       "hints": [
         "Find the means $\\bar{x}$ and $\\bar{y}$. The trend line passes through $(\\bar{x},\\bar{y})$.",
         "The slope is $a=\\dfrac{\\sum(x_i-\\bar{x})(y_i-\\bar{y})}{\\sum(x_i-\\bar{x})^2}$."
@@ -2614,7 +2662,7 @@
         "First find $L'(w)$.",
         "Compute $w_1$, $w_2$, ... in turn starting from $w_0$."
       ],
-      "expl": "$L'(w)={dl}$. so {steps}, and $w_{{t}}={ans}$."
+      "expl": "$L'(w)={dl}$, so {steps}, and $w_{{t}}={ans}$."
     },
     "ai_gradMse": {
       "prompt": "The model $\\hat{y}=wx$ predicts the points {pts}. The loss is $L(w)=\\dfrac{1}{n}\\sum(wx_i-y_i)^2$ ($n$ is the number of points). Starting at $w_0={w0}$ with learning rate $\\eta={eta}$, apply one gradient-descent step $w_1=w_0-\\eta L'(w_0)$. What is $w_1$? (digits only)",
@@ -2713,7 +2761,7 @@
       "expl": "The allowed (top, bottom) pairs number ${s}\\times{p}-{f}={ok}$; the hat choices, including no hat, number ${h}+1={hh}$. By the product rule, ${ok}\\times{hh}={ans}$."
     },
     "job_chanceDraw": {
-      "prompt": "A box holds ${n}$ parts, of which ${d}$ are defective. Two parts are drawn at random at the same time. What is the probability that at least one of them is defective? (a decimal or a fraction like 3/4 is fine)",
+      "prompt": "A box holds ${n}$ parts, of which ${d}$ are defective. Two parts are drawn at random at the same time. What is the probability that at least one of them is defective? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "The number of all possible draws is the number of ways to choose 2 out of ${n}$.",
         "The opposite of 'at least one defective' is 'both are good'."
@@ -2737,12 +2785,20 @@
       "expl": "$N={tot}$, mean $m={mean}$, $\\dfrac{\\sum f x^2}{N}={msq}$, so the variance is ${var}$ and the standard deviation is ${ans}$."
     },
     "stat_linTransform": {
-      "prompt": "The variable $x$ has mean ${m}$ and variance ${vx}$. A new variable $y$ is given by $y={eq}$. What is the sum of the mean of $y$ and the variance of $y$? (digits only)",
+      "prompt": "The variable $x$ has mean ${m}$ and variance ${vx}$. A new variable $y$ is given by $y={eq}$. What is the variance of $y$? (digits only)",
       "hints": [
-        "If $y=ax+b$, the mean is $a\\bar{x}+b$.",
-        "The variance is multiplied by $a^2$ and the added constant $b$ does not change it."
+        "If $y=ax+b$, the variance is multiplied by $a^2$.",
+        "The added constant $b$ does not change the spread, so it does not affect the variance."
       ],
-      "expl": "The mean of $y$ is ${my}$ and its variance is ${vy}$, so the sum is ${ans}$."
+      "expl": "In $y={eq}$ the coefficient of $x$ is ${ap}$, so the variance is ${vx}\\times{ap}^{2}={vx}\\times{a2}={ans}$ (the constant term and the mean do not affect the variance)."
+    },
+    "stat_linReverse": {
+      "prompt": "A new variable $y$ is made from the variable $x$ ($y={eq}$). The mean of $y$ is ${my}$ and its standard deviation is ${sy}$. What is the standard deviation of $x$? (digits only)",
+      "hints": [
+        "If $y=ax+b$, the standard deviation is multiplied by $|a|$.",
+        "The added constant $b$ and the mean have nothing to do with the standard deviation. Divide the standard deviation of $y$ by $|a|$."
+      ],
+      "expl": "The absolute value of the coefficient of $x$ is ${aa}$, so the standard deviation of $y$ is ${aa}$ times that of $x$. Hence the standard deviation of $x$ is ${sy}\\div{aa}={ans}$."
     },
     "stat_ciMean": {
       "prompt": "A sample of {cnt} is drawn at random from a normally distributed population; the sample mean is $\\bar{x}={xbar}$ and the population standard deviation is $\\sigma={sig}$. The ${cl}\\%$ confidence interval for the population mean is $\\bar{x}-z\\dfrac{\\sigma}{\\sqrt{n}}\\le m\\le\\bar{x}+z\\dfrac{\\sigma}{\\sqrt{n}}$ with $z={z}$. What is the upper end of this interval? (digits only)",
@@ -2785,12 +2841,12 @@
       "expl": "From $Z=\\dfrac{{xbar}-{mu0}}{{sig}}\\sqrt{n}>{crit}$ we get $\\sqrt{n}>{rt}$, that is $n>{lim}$ (rounded to two decimals). The smallest positive integer satisfying this is ${ans}$."
     },
     "stat_stratified": {
-      "prompt": "A total of {ns} students are to be chosen by stratified sampling from three grades with {n1}, {n2} and {n3} students. If the sample is allocated in proportion to the size of each grade (stratum) relative to all students, how many students are chosen from the second grade? (digits only)",
+      "prompt": "A total of {ns} students are to be chosen by stratified sampling from three grades with {n1}, {n2} and {n3} students. If the sample is allocated in proportion to the size of each grade (stratum) relative to all students, how many students are chosen from grade number {i}? (digits only)",
       "hints": [
         "Find the total number of students $N$ first.",
-        "The number chosen from the second grade is (total sample size)$\\times\\dfrac{{n2}}{N}$."
+        "The number chosen from grade number {i} is (total sample size)$\\times\\dfrac{{ni}}{N}$."
       ],
-      "expl": "The total is ${pop}$ students, so ${ns}\\times\\dfrac{{n2}}{{pop}}={ans}$ students."
+      "expl": "The total is ${pop}$ students, so ${ns}\\times\\dfrac{{ni}}{{pop}}={ans}$ students."
     },
     "cul_pitchFifth": {
       "prompt": "A reference note has frequency ${f}$ Hz. Raise it by ${k}$ octaves, then by a perfect fifth (frequency ratio $3:2$). What is the frequency of the resulting note in Hz? (digits only)",
@@ -2808,13 +2864,37 @@
       ],
       "expl": "A is first (2 points) on the first ballot, third (0) on the second and second (1) on the third: ${n1}\\times2+{n2}\\times0+{n3}\\times1={ans}$ points."
     },
-    "cul_brailleCells": {
-      "prompt": "A braille cell has ${d}$ dot positions, each raised or not raised. Not counting the empty cell with no raised dot, how many different patterns can one cell show? (digits only)",
+    "cul_bordaMax": {
+      "prompt": "A Borda count chooses among candidates A, B, C: 2 points for first place, 1 for second, 0 for third. ${n1}$ voters rank '{b1}', ${n2}$ rank '{b2}' and ${n3}$ rank '{b3}'. What is the highest total score among the three candidates? (digits only)",
       "hints": [
-        "Each position has 2 states: raised or not.",
-        "Subtract the one pattern with no raised dot from all patterns."
+        "Find each candidate's place on every kind of ballot and turn it into points.",
+        "Compute all three totals and pick the largest."
       ],
-      "expl": "$2^{{d}}-1={ans}$ patterns."
+      "expl": "A's total is ${eA}$ points, B's total is ${eB}$ points and C's total is ${eC}$ points. The highest total is ${ans}$ points."
+    },
+    "cul_voteGuarantee": {
+      "prompt": "Candidates A, B, C are in a vote where the one with the most votes wins. The count so far is A ${a}$, B ${b}$, C ${c}$, and ${m}$ votes are still uncounted. However the remaining votes may be split between A and B, C must end up alone in first place. At least how many of the remaining ${m}$ votes must C get? (digits only)",
+      "hints": [
+        "If C gets $x$ of the remaining votes, the other ${m}$−$x$ go to the other candidates. The worst case is that all of them go to the candidate currently ahead.",
+        "C must have strictly more votes than that candidate (a tie is not enough). Write the inequality and find the smallest integer $x$."
+      ],
+      "expl": "The most votes so far is ${M}$. If C gets $x$ of the remaining votes and the other ${m}-x$ all go to the candidate with ${M}$, we need ${c}+x>{M}+({m}-x)$. This simplifies to $x>{half}$, so the smallest integer is ${ans}$."
+    },
+    "cul_stringLength": {
+      "prompt": "The shorter a string of a stringed instrument is, the higher its frequency; with the same thickness and tension, the frequency is inversely proportional to the length. A string of length ${L}$ cm sounds at ${f}$ Hz. If the vibrating part of the same string is shortened to ${L2}$ cm by pressing it, what is the frequency in Hz? (digits only)",
+      "hints": [
+        "(frequency)×(length) does not change.",
+        "Divide ${f}\\times{L}$ by the new length ${L2}$ cm."
+      ],
+      "expl": "Since (frequency)×(length) is constant, ${f}\\times{L}=x\\times{L2}$. So $x=\\frac{{f}\\times{L}}{{L2}}={ans}$ Hz."
+    },
+    "cul_brailleAtMost": {
+      "prompt": "A braille cell has ${d}$ positions where a dot can be placed, each either raised or not. How many different patterns in one cell have at least 1 and at most ${k}$ raised dots? (digits only)",
+      "hints": [
+        "The number of patterns with exactly $j$ raised dots is the number of ways to choose $j$ of the ${d}$ positions.",
+        "Compute it for $j=1$ up to $j={k}$ and add."
+      ],
+      "expl": "There are $_{{d}}\\mathrm{C}_{j}$ patterns with $j$ raised dots, so ${terms}={ans}$ patterns."
     }
   }
 }
