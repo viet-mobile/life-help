@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createBrowserClient } from "@supabase/ssr";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { recoveryToken } from "@/lib/learn/review/recovery";
+import { recoveryToken, recoverySession } from "@/lib/learn/review/recovery";
 
 export function ReviewPasswordReset({ url, publishableKey }: { url: string; publishableKey: string }) {
   const client = useRef<SupabaseClient | null>(null);
@@ -15,11 +15,15 @@ export function ReviewPasswordReset({ url, publishableKey }: { url: string; publ
     if (started.current) return;
     started.current = true;
     const token = recoveryToken(window.location.hash);
+    const session = recoverySession(window.location.hash);
     window.history.replaceState(null, "", window.location.pathname);
-    if (!token) { setPhase("invalid"); return; }
+    if (!token && !session) { setPhase("invalid"); return; }
     const supabase = createBrowserClient(url, publishableKey, { auth: { detectSessionInUrl: false }, isSingleton: false });
     client.current = supabase;
-    void supabase.auth.verifyOtp({ token_hash: token, type: "recovery" }).then(({ data, error }) => {
+    const verification = token
+      ? supabase.auth.verifyOtp({ token_hash: token, type: "recovery" })
+      : supabase.auth.setSession(session!);
+    void verification.then(({ data, error }) => {
       setPhase(!error && data.session && data.user ? "ready" : "invalid");
     }).catch(() => setPhase("invalid"));
   }, [url, publishableKey]);
