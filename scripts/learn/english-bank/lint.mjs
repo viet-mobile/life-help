@@ -33,7 +33,8 @@ for (const q of qs) {
   if (q.type === "multiple_choice" && /-(m|pick|cloze)$/.test(q.id) && POS.test(txt)) out.push({ rule: "R2", id: q.id, text: txt.match(POS)?.[0] });
   if (q.type === "multiple_choice") {
     const m = q.prompt.match(/\b(a|an)\s+_{2,}|\b(a|an)\s*___/i);
-    if (m) { const art = (m[1] ?? m[2]).toLowerCase(); const opts = q.options.map((o) => o.text.trim()); const okVowel = (t) => /^[aeiou]/i.test(t); const fit = opts.filter((t) => (art === "an") === okVowel(t)); if (fit.length === 1) out.push({ rule: "R3", id: q.id, article: art }); }
+    if (m) { const art = (m[1] ?? m[2]).toLowerCase(); const opts = q.options.map((o) => o.text.trim()); const okVowel = (t) => /^[aeiou]/i.test(t); if (opts.some((t) => t.split(/\s+/).length > 3)) continue; // the blank belongs to the passage and the question asks something else
+    const fit = opts.filter((t) => (art === "an") === okVowel(t)); if (fit.length === 1) out.push({ rule: "R3", id: q.id, article: art }); }
   }
   if (/말는|단어은|[A-Za-z]”예요/.test(txt)) out.push({ rule: "R4", id: q.id });
   if (q.options && q.type === "multiple_choice") { const t = q.options.map((o) => o.text.trim().toLowerCase()); if (new Set(t).size !== t.length) out.push({ rule: "R5", id: q.id }); }

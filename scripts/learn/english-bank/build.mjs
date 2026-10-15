@@ -76,7 +76,7 @@ for (const { skill, packet, item } of items) {
   } else if (item.k === "r" || item.k === "d") {
     if (typeof item.title !== "string" || typeof item.text !== "string" || item.text.length < 60) bad(where, "title/text");
     if (HANGUL.test(item.text ?? "")) bad(where, "Hangul in passage");
-    if (item.k === "d" && !/^[A-Z][A-Za-z]*:/m.test(item.text ?? "")) bad(where, "dialogue lines must start with a speaker label");
+    if (item.k === "d" && (item.text ?? "").split("\n").filter((l) => /^[A-Z][A-Za-z.' ]{0,24}:\s/.test(l)).length < 4) bad(where, "dialogue lines must start with a speaker label");
     if (!Array.isArray(item.qs) || item.qs.length < 3 || item.qs.length > 6) bad(where, "3-6 questions");
     for (const [i, q] of (item.qs ?? []).entries()) {
       if (typeof q.q !== "string" || !q.q.trim() || typeof q.why !== "string" || !q.why.trim()) bad(where, `q${i}: q/why`);
