@@ -17,8 +17,8 @@ export const TEMPLATES = {
     en: ["An income tax splits the taxable income into brackets with different rates: ${r1}$% on the part up to ${b1}$ (ten-thousand won), ${r2}$% on the part above ${b1}$ up to ${b2}$, and ${r3}$% on the part above ${b2}$. For a taxable income of ${x1}$ (ten-thousand won), how much tax is due, in ten-thousand won? (digits only)", ["Each rate applies only to the amount lying inside its bracket. Find the amount in each bracket first.", "Add (amount in the bracket)×(rate) over all brackets."], "The amounts in the brackets are ${s1}$, ${s2}$ and ${s3}$, so the tax is ${s1}\\times\\frac{{r1}}{100}+{s2}\\times\\frac{{r2}}{100}+{s3}\\times\\frac{{r3}}{100}={ans}$ (ten-thousand won)."],
   },
   econ_compoundFV: {
-    ko: ["연이율 ${r}$%, 1년에 ${m}$번 이자를 원금에 더하는 복리 예금에 ${P}$원을 ${n}$년 동안 맡깁니다. 한 번 계산할 때의 이율은 연이율을 ${m}$으로 나눈 값이고, 중간에 돈을 찾지 않습니다. ${n}$년 뒤의 원리합계는 몇 원인가요? (원 단위 미만은 버립니다. 숫자만 쓰세요)", ["이자를 계산하는 횟수는 모두 (1년의 횟수)×(햇수)번이에요.", "한 번 계산할 때의 이율 ${rp}$%를 쓰면 원리합계는 $(1+\\frac{{rp}}{100})$를 계산 횟수만큼 곱한 값에 원금을 곱한 거예요."], "계산 횟수는 ${m}\\times{n}={k}$번, 한 번의 이율은 ${rp}$%이므로 원리합계는 ${P}\\times(1+\\frac{{rp}}{100})^{{k}}\\approx{ex}$원이고, 원 단위 미만을 버리면 ${ans}$원입니다."],
-    en: ["${P}$ won is deposited for ${n}$ years in an account with annual rate ${r}$% that adds interest to the principal ${m}$ times a year. The rate for one compounding period is the annual rate divided by ${m}$, and nothing is withdrawn. What is the total amount (principal plus interest) after ${n}$ years, in won? (Drop any fraction of a won. Digits only.)", ["The number of compounding periods is (times per year)×(number of years).", "With the per-period rate ${rp}$%, the total is the principal times $(1+\\frac{{rp}}{100})$ multiplied once per period."], "There are ${m}\\times{n}={k}$ periods at ${rp}$% each, so the total is ${P}\\times(1+\\frac{{rp}}{100})^{{k}}\\approx{ex}$ won; dropping the fraction gives ${ans}$ won."],
+    ko: ["연이율 ${r}$%, 1년에 ${m}$번 이자를 원금에 더하는 복리 예금에 ${P}$원을 ${n}$년 동안 맡깁니다. 한 번 계산할 때의 이율은 (연이율)$\\div{m}$이고, 중간에 돈을 찾지 않습니다. ${n}$년 뒤의 원리합계는 몇 원인가요? (원 단위 미만은 버립니다. 숫자만 쓰세요)", ["이자를 계산하는 횟수는 모두 (1년의 횟수)×(햇수)번이에요.", "한 번 계산할 때의 이율 ${rp}$%를 쓰면 원리합계는 $(1+\\frac{{rp}}{100})$를 계산 횟수만큼 곱한 값에 원금을 곱한 거예요."], "계산 횟수는 ${m}\\times{n}={k}$번, 한 번의 이율은 ${rp}$%이므로 원리합계는 ${P}\\times(1+\\frac{{rp}}{100})^{{k}}\\approx{ex}$원이고, 원 단위 미만을 버리면 ${ans}$원입니다."],
+    en: ["${P}$ won is deposited for ${n}$ years in an account with annual rate ${r}$% that adds interest to the principal ${m}$ times a year. The rate for one compounding period is (annual rate)$\\div{m}$, and nothing is withdrawn. What is the total amount (principal plus interest) after ${n}$ years, in won? (Drop any fraction of a won. Digits only.)", ["The number of compounding periods is (times per year)×(number of years).", "With the per-period rate ${rp}$%, the total is the principal times $(1+\\frac{{rp}}{100})$ multiplied once per period."], "There are ${m}\\times{n}={k}$ periods at ${rp}$% each, so the total is ${P}\\times(1+\\frac{{rp}}{100})^{{k}}\\approx{ex}$ won; dropping the fraction gives ${ans}$ won."],
   },
   econ_presentValue: {
     ko: ["연이율 ${r}$%로 1년마다 복리로 계산합니다. ${n}$년 뒤에 받을 ${F}$원의 현재가치는 몇 원인가요? (원 단위 미만은 버립니다. 숫자만 쓰세요)", ["현재가치 $P$는 $P$를 ${n}$년 동안 복리로 불린 금액이 ${F}$원이 되는 값이에요.", "$P=F\\div(1+\\frac{{r}}{100})^{{n}}$을 계산해요."], "$P={F}\\div(1+\\frac{{r}}{100})^{{n}}\\approx{ex}$원이고, 원 단위 미만을 버리면 ${ans}$원입니다."],
@@ -37,27 +37,27 @@ export const TEMPLATES = {
     en: ["The quantity demanded of a good is ${qd1}$ when the price is ${p1}$ won and ${qd2}$ when it is ${p2}$ won; the quantity supplied is ${qs1}$ when the price is ${p3}$ won and ${qs2}$ when it is ${p4}$ won. If both quantities are linear functions of the price, what is the equilibrium price at which they are equal, in won? (digits only)", ["Use the slope of the line through two points to see how each quantity changes with price.", "Call the quantities $Q_d$ and $Q_s$ and find the price where $Q_d=Q_s$."], "The demand changes at the rate $\\frac{{qd2}-{qd1}}{{p2}-{p1}}={md}$, so $Q_d={qd1}{md}(p-{p1})$; supply changes at the rate ${ns}$, so $Q_s={qs1}+{ns}(p-{p3})$. Setting $Q_d=Q_s$ gives $p={ans}$ won."],
   },
   econ_utilityBundle: {
-    ko: ["x재는 1개에 ${a}$원, y재는 1개에 ${b}$원입니다. 예산 ${I}$원을 남김없이 모두 써서 x재 $x$개, y재 $y$개를 사려고 합니다($x$, $y$는 0 이상의 정수). 효용이 $U={U}$로 주어질 때, 효용의 최댓값은? (숫자만 쓰세요)", ["예산식 ${a}x+{b}y={I}$를 만족하는 0 이상의 정수 $(x, y)$를 모두 찾아요.", "찾은 $(x, y)$마다 $U$의 값을 계산해서 비교해요."], "예산식을 만족하는 $(x, y)$는 ${pairs}$입니다. 이 중 $U$가 가장 큰 것은 $(x, y)=({bx}, {by})$이고, 그때 $U={ans}$입니다."],
-    en: ["Good x costs ${a}$ won per unit and good y costs ${b}$ won per unit. You spend the whole budget of ${I}$ won exactly on $x$ units of good x and $y$ units of good y ($x$, $y$ are integers at least 0). If the utility is $U={U}$, what is the maximum utility? (digits only)", ["Find all integer pairs $(x, y)$ with $x,y\\ge0$ satisfying the budget equation ${a}x+{b}y={I}$.", "Compute $U$ for each pair and compare."], "The pairs satisfying the budget equation are ${pairs}$. The largest $U$ occurs at $(x, y)=({bx}, {by})$, where $U={ans}$."],
+    ko: ["x재는 1개에 ${a}$원, y재는 1개에 ${b}$원입니다. 예산 ${I}$원을 남김없이 모두 써서 x재 $x$개, y재 $y$개를 사려고 합니다($x$, $y$는 0 이상의 정수). 효용이 $U={U}$로 주어질 때, 효용 $U$의 최댓값은? (숫자만 쓰세요)", ["예산식 ${a}x+{b}y={I}$를 만족하는 0 이상의 정수 $(x, y)$를 모두 찾아요.", "찾은 $(x, y)$마다 $U$의 값을 계산해서 비교해요."], "예산식을 만족하는 $(x, y)$는 ${pairs}$입니다. 이 중 $U$의 값이 가장 큰 짝은 $(x, y)=({bx}, {by})$(값이 가장 큰 짝이 여럿이면 그중 하나)이고, 그때 $U={ans}$입니다."],
+    en: ["Good x costs ${a}$ won per unit and good y costs ${b}$ won per unit. You spend the whole budget of ${I}$ won exactly on $x$ units of good x and $y$ units of good y ($x$, $y$ are integers at least 0). If the utility is $U={U}$, what is the maximum utility? (digits only)", ["Find all integer pairs $(x, y)$ with $x,y\\ge0$ satisfying the budget equation ${a}x+{b}y={I}$.", "Compute $U$ for each pair and compare."], "The pairs satisfying the budget equation are ${pairs}$. The largest value of $U$ occurs at $(x, y)=({bx}, {by})$ (one of them if several pairs tie), where $U={ans}$."],
   },
   econ_regionLP: {
-    ko: ["제품 A를 $x$개, 제품 B를 $y$개 만드는 공장이 있습니다($x$, $y$는 0 이상의 정수). 1개를 만드는 데 필요한 재료와 작업 시간은 제품 A가 ${a1}$ kg, ${t1}$시간이고 제품 B가 ${b1}$ kg, ${t2}$시간입니다. 하루에 쓸 수 있는 재료는 ${M}$ kg 이하, 작업 시간은 ${T}$시간 이하이고, 이익은 제품 A가 1개에 ${pa}$만 원, 제품 B가 1개에 ${pb}$만 원입니다. 하루 최대 이익은 몇 만 원인가요? (숫자만 쓰세요)", ["조건을 부등식으로 쓰고 $x\\ge0$, $y\\ge0$와 함께 좌표평면에 영역으로 나타내요.", "이익 ${pa}x+{pb}y$는 영역의 꼭짓점 중 한 곳에서 최대가 돼요. 두 경계선의 교점부터 확인해요."], "부등식은 ${a1}x+{b1}y\\le{M}$, ${t1}x+{t2}y\\le{T}$, $x\\ge0$, $y\\ge0$입니다. 이익이 최대인 꼭짓점은 두 경계선의 교점 $({x0}, {y0})$이고, 이 점은 정수점이므로 최대 이익은 ${pa}\\times{x0}+{pb}\\times{y0}={ans}$만 원입니다."],
-    en: ["A factory makes $x$ units of product A and $y$ units of product B ($x$, $y$ are integers at least 0). One unit needs ${a1}$ kg of material and ${t1}$ hours of work for product A, and ${b1}$ kg and ${t2}$ hours for product B. At most ${M}$ kg of material and ${T}$ hours of work are available per day. The profit is ${pa}$ (ten-thousand won) per unit of A and ${pb}$ per unit of B. What is the maximum daily profit, in ten-thousand won? (digits only)", ["Write the conditions as inequalities, together with $x\\ge0$ and $y\\ge0$, and draw the region in the plane.", "The profit ${pa}x+{pb}y$ is largest at a vertex of the region. Check the intersection of the two boundary lines first."], "The inequalities are ${a1}x+{b1}y\\le{M}$, ${t1}x+{t2}y\\le{T}$, $x\\ge0$, $y\\ge0$. The profit is largest at the vertex where the two boundary lines meet, $({x0}, {y0})$, which is a lattice point, so the maximum profit is ${pa}\\times{x0}+{pb}\\times{y0}={ans}$."],
+    ko: ["제품 A를 $x$개, 제품 B를 $y$개 만드는 공장이 있습니다($x$, $y$는 0 이상의 정수). 1개를 만드는 데 필요한 재료와 작업 시간은 제품 A가 ${a1}$ kg, ${t1}$시간이고 제품 B가 ${b1}$ kg, ${t2}$시간입니다. 하루에 쓸 수 있는 재료는 ${M}$ kg 이하, 작업자 전체의 작업 시간을 합해 ${T}$시간 이하이고, 이익은 제품 A가 1개에 ${pa}$만 원, 제품 B가 1개에 ${pb}$만 원입니다. 하루 최대 이익은 몇 만 원인가요? (숫자만 쓰세요)", ["조건을 부등식으로 쓰고 $x\\ge0$, $y\\ge0$와 함께 좌표평면에 영역으로 나타내요.", "이익 ${pa}x+{pb}y$는 영역의 꼭짓점 중 한 곳에서 최대가 돼요. 두 경계선의 교점부터 확인해요."], "부등식은 ${a1}x+{b1}y\\le{M}$, ${t1}x+{t2}y\\le{T}$, $x\\ge0$, $y\\ge0$입니다. 이익이 최대인 꼭짓점은 두 경계선의 교점 $({x0}, {y0})$이고, 이 점은 정수점이므로 최대 이익은 ${pa}\\times{x0}+{pb}\\times{y0}={ans}$만 원입니다."],
+    en: ["A factory makes $x$ units of product A and $y$ units of product B ($x$, $y$ are integers at least 0). One unit needs ${a1}$ kg of material and ${t1}$ hours of work for product A, and ${b1}$ kg and ${t2}$ hours for product B. At most ${M}$ kg of material and, summed over all workers, ${T}$ hours of work are available per day. The profit is ${pa}$ (ten-thousand won) per unit of A and ${pb}$ per unit of B. What is the maximum daily profit, in ten-thousand won? (digits only)", ["Write the conditions as inequalities, together with $x\\ge0$ and $y\\ge0$, and draw the region in the plane.", "The profit ${pa}x+{pb}y$ is largest at a vertex of the region. Check the intersection of the two boundary lines first."], "The inequalities are ${a1}x+{b1}y\\le{M}$, ${t1}x+{t2}y\\le{T}$, $x\\ge0$, $y\\ge0$. The profit is largest at the vertex where the two boundary lines meet, $({x0}, {y0})$, which is a lattice point, so the maximum profit is ${pa}\\times{x0}+{pb}\\times{y0}={ans}$."],
   },
   econ_leontief: {
     ko: ["두 산업 1, 2의 투입계수행렬이 $A={M}$입니다($A$의 $(i, j)$ 성분은 산업 $j$가 1단위를 생산할 때 필요한 산업 $i$의 생산물의 양). 두 산업의 총생산량을 각각 $x_1$, $x_2$(단위: 억 원), 최종수요를 $d_1={d1}$, $d_2={d2}$라 하면 ${XV}=A{XV}+{DV}$이 성립합니다. $x_1$은 얼마인가요? (숫자만 쓰세요)", ["식을 $(I-A){XV}={DV}$로 바꿔요.", "$I-A$의 역행렬을 구해 ${DV}$에 곱해요. $2\\times2$ 행렬의 역행렬은 $\\frac{1}{ad-bc}$에 성분을 재배열한 행렬을 곱한 꼴이에요."], "$(I-A)\\mathbf{x}=\\mathbf{d}$이므로 $\\mathbf{x}=(I-A)^{-1}\\mathbf{d}$입니다. $I-A$의 행렬식은 ${D}$이므로 $x_1=\\frac{{c22}\\times{d1}+{a12}\\times{d2}}{{D}}={ans}$입니다."],
     en: ["Two industries 1 and 2 have the input coefficient matrix $A={M}$ (the $(i, j)$ entry is the amount of industry $i$'s product needed to make one unit of industry $j$'s product). Let the total outputs be $x_1$, $x_2$ (unit: 100 million won) and the final demands $d_1={d1}$, $d_2={d2}$; then ${XV}=A{XV}+{DV}$. What is $x_1$? (digits only)", ["Rewrite the equation as $(I-A){XV}={DV}$.", "Find the inverse of $I-A$ and multiply it by ${DV}$. The inverse of a $2\\times2$ matrix is $\\frac{1}{ad-bc}$ times a rearranged matrix."], "From $(I-A)\\mathbf{x}=\\mathbf{d}$ we get $\\mathbf{x}=(I-A)^{-1}\\mathbf{d}$. The determinant of $I-A$ is ${D}$, so $x_1=\\frac{{c22}\\times{d1}+{a12}\\times{d2}}{{D}}={ans}$."],
   },
   econ_inverseEntry: {
-    ko: ["행렬 $A={M}$의 역행렬 $A^{-1}$의 $({i}, {j})$ 성분은? ($(i, j)$ 성분은 $i$행 $j$열의 성분입니다.) (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["행렬 ${G}$의 행렬식은 $ad-bc$예요. 0이 아니면 역행렬이 있어요.", "역행렬은 ${H}$예요."], "행렬식은 ${a}\\times{d}-({b})\\times({c})={det}$이고, $A^{-1}$의 $({i}, {j})$ 성분은 $\\frac{{num}}{{det}}$, 곧 ${fr}$입니다."],
-    en: ["What is the $({i}, {j})$ entry of the inverse $A^{-1}$ of the matrix $A={M}$? (The $(i, j)$ entry is in row $i$, column $j$.) (a decimal or a fraction like 3/4 is fine)", ["The determinant of ${G}$ is $ad-bc$; the inverse exists if it is not 0.", "The inverse is ${H}$."], "The determinant is ${a}\\times{d}-({b})\\times({c})={det}$, and the $({i}, {j})$ entry of $A^{-1}$ is $\\frac{{num}}{{det}}$, that is ${fr}$."],
+    ko: ["행렬 $A={M}$의 역행렬 $A^{-1}$의 $({i}, {j})$ 성분은? ($(i, j)$ 성분은 $i$행 $j$열의 성분입니다.) (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["행렬 ${G}$의 행렬식은 $ad-bc$예요. 0이 아니면 역행렬이 있어요.", "역행렬은 ${H}$예요."], "행렬식은 ${ap}\\times{dp}-{bp}\\times{cp}={det}$이고, $A^{-1}$의 $({i}, {j})$ 성분은 $\\frac{{num}}{{det}}$, 곧 ${fr}$입니다."],
+    en: ["What is the $({i}, {j})$ entry of the inverse $A^{-1}$ of the matrix $A={M}$? (The $(i, j)$ entry is in row $i$, column $j$.) (a decimal or a fraction like 3/4 is fine)", ["The determinant of ${G}$ is $ad-bc$; the inverse exists if it is not 0.", "The inverse is ${H}$."], "The determinant is ${ap}\\times{dp}-{bp}\\times{cp}={det}$, and the $({i}, {j})$ entry of $A^{-1}$ is $\\frac{{num}}{{det}}$, that is ${fr}$."],
   },
   econ_marginalRevenue: {
-    ko: ["어떤 상품의 수요 곡선이 $p={a}-{b}q$입니다($p$는 가격(원), $q$는 판매량(개)). 총수입은 $R(q)=pq$이고, 한계수입은 $R(q)$를 $q$에 대해 미분한 $R'(q)$입니다. 한계수입이 ${m}$원이 되는 판매량 $q$는 몇 개인가요? (숫자만 쓰세요)", ["$p={a}-{b}q$를 $R(q)=pq$에 대입해 $R(q)$를 $q$의 식으로 나타내요.", "$R(q)$를 미분한 식이 ${m}$이 되게 하는 $q$를 구해요."], "$R(q)=({a}-{b}q)q={a}q-{b}q^2$이므로 $R'(q)={a}-{twob}q$입니다. $R'(q)={m}$에서 $q={ans}$입니다."],
-    en: ["The demand curve of a good is $p={a}-{b}q$ ($p$ is the price in won, $q$ the quantity sold). Total revenue is $R(q)=pq$ and marginal revenue is the derivative $R'(q)$. For what quantity $q$ is the marginal revenue equal to ${m}$ won? (digits only)", ["Substitute $p={a}-{b}q$ into $R(q)=pq$ to write $R(q)$ in terms of $q$.", "Differentiate $R(q)$ and find $q$ so that the derivative equals ${m}$."], "$R(q)=({a}-{b}q)q={a}q-{b}q^2$, so $R'(q)={a}-{twob}q$. Setting $R'(q)={m}$ gives $q={ans}$."],
+    ko: ["어떤 상품의 수요 곡선이 $p={a}-{b}q$입니다($p$는 가격(원), $q$는 판매량(개)). 총수입은 $R(q)=pq$이고, 한계수입은 $R(q)$를 $q$에 대해 미분한 $R'(q)$입니다. 한계수입이 ${m}$원이 되는 판매량 $q$는 몇 개인가요? (숫자만 쓰세요)", ["$p={a}-{b}q$를 $R(q)=pq$에 대입해 $R(q)$를 $q$의 식으로 나타내요.", "$R(q)$를 미분한 식의 값이 ${m}$원일 때의 $q$를 구해요."], "$R(q)=({a}-{b}q)q={a}q-{b}q^2$이므로 $R'(q)={a}-{twob}q$입니다. $R'(q)={m}$에서 $q={ans}$입니다."],
+    en: ["The demand curve of a good is $p={a}-{b}q$ ($p$ is the price in won, $q$ the quantity sold). Total revenue is $R(q)=pq$ and marginal revenue is the derivative $R'(q)$. For what quantity $q$ is the marginal revenue equal to ${m}$ won? (digits only)", ["Substitute $p={a}-{b}q$ into $R(q)=pq$ to write $R(q)$ in terms of $q$.", "Differentiate $R(q)$ and find the $q$ at which the derivative equals ${m}$."], "$R(q)=({a}-{b}q)q={a}q-{b}q^2$, so $R'(q)={a}-{twob}q$. Setting $R'(q)={m}$ gives $q={ans}$."],
   },
   econ_elasticityPoint: {
-    ko: ["수요함수가 $q={D}$입니다($p$는 가격, $q$는 수요량). 가격이 $p={p0}$일 때 수요의 가격탄력성 $e=\\left|q'(p)\\times\\frac{p}{q}\\right|$의 값은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["먼저 $q'(p)$를 구해서 $p={p0}$를 넣어요.", "$p={p0}$일 때의 수요량 $q$도 구해서 $e$의 식에 넣어요."], "$q'(p)$의 $p={p0}$에서의 값은 ${dqv}$, 수요량은 $q={qv}$이므로 $e=\\frac{{adq}\\times{p0}}{{qv}}={fr}$입니다."],
+    ko: ["수요함수가 $q={D}$입니다($p$는 가격, $q$는 수요량). 가격이 $p={p0}$일 때 수요의 가격탄력성 $e=\\left|q'(p)\\times\\frac{p}{q}\\right|$의 값은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["먼저 $q'(p)$를 구한 뒤 $p={p0}$일 때의 값을 구해요.", "$p={p0}$일 때의 수요량 $q$도 구해서 $e$의 식에 넣어요."], "$q'(p)$의 $p={p0}$에서의 값은 ${dqv}$, 수요량은 $q={qv}$이므로 $e=\\frac{{adq}\\times{p0}}{{qv}}={fr}$입니다."],
     en: ["The demand function is $q={D}$ ($p$ is the price, $q$ the quantity demanded). What is the price elasticity of demand $e=\\left|q'(p)\\times\\frac{p}{q}\\right|$ at the price $p={p0}$? (a decimal or a fraction like 3/4 is fine)", ["First find $q'(p)$ and evaluate it at $p={p0}$.", "Also find the quantity $q$ at $p={p0}$ and put both into the formula for $e$."], "At $p={p0}$, $q'(p)={dqv}$ and $q={qv}$, so $e=\\frac{{adq}\\times{p0}}{{qv}}={fr}$."],
   },
   econ_elasticityUnit: {
@@ -73,6 +73,7 @@ export const TEMPLATES = {
 // ---------------------------------------------------------------- generators
 const UF = { xy: (x, y) => x * y, "x^{2}y": (x, y) => x * x * y, "xy^{2}": (x, y) => x * y * y, "(x+2)y": (x, y) => (x + 2) * y, "x(y+3)": (x, y) => x * (y + 3) };
 
+const pr = (x) => (x < 0 ? `(${x})` : String(x));
 const cmpQ = (a, b) => { const d = a.sub(b); return d.p === 0n ? 0 : d.p > 0n ? 1 : -1; };
 const meet = (l1, l2) => { // A x + B y = C
   const det = l1[0] * l2[1] - l2[0] * l1[1];
@@ -83,10 +84,11 @@ const meet = (l1, l2) => { // A x + B y = C
 export const GEN = {
   econ_exchangeCross: (r) => {
     for (let g = 0; g < 500; g++) {
-      const d = r.pick([1000, 1200, 1250, 1280, 1300, 1320, 1350, 1400]), e = r.pick([1380, 1450, 1480, 1500, 1520, 1550, 1580, 1600, 1650]);
+      const d = r.pick([1100, 1200, 1250, 1280, 1300, 1320, 1350, 1400]), e = r.pick([1380, 1450, 1480, 1500, 1520, 1550, 1580, 1600, 1650]);
+      if (e <= d) continue; // one euro is worth more than one dollar
       const n = r.int(8, 200) * 10;
       const val = new Q(n * e, d);
-      if (!val.terminates(3) || val.isInt && r.next() < 0.5) continue;
+      if (!val.terminates(2) || val.isInt && r.next() < 0.5) continue;
       return { v: { d, e, n, won: n * e }, ans: val.toNumber() };
     }
     throw new Error("exchangeCross");
@@ -99,7 +101,7 @@ export const GEN = {
     return { v: { b1, b2, r1, r2, r3, x1, s1, s2, s3 }, ans: (s1 * r1 + s2 * r2 + s3 * r3) / 100 };
   },
   econ_compoundFV: (r) => {
-    const m = r.pick([1, 1, 2, 4]), rate = r.pick([2, 3, 4, 5, 6, 8, 10, 12]), n = r.int(2, 5), P = r.int(10, 300) * 10000;
+    const m = r.pick([1, 1, 2, 4]), rate = r.pick([2, 3, 4, 5, 6, 8]), n = r.int(2, 5), P = r.int(10, 300) * 10000;
     const k = m * n, rp = rate / m;
     const fv = new Q(P).mul(qpow(new Q(100 * m + rate, 100 * m), k));
     return { v: { r: rate, m, n, P, rp, k, ex: trunc2(fv) }, ans: floorQ(fv) };
@@ -175,6 +177,7 @@ export const GEN = {
     const x1 = 10 * r.int(5, 30), x2 = 10 * r.int(5, 30);
     const d1 = x1 - (a11 * x1 + a12 * x2) / 10, d2 = x2 - (a21 * x1 + a22 * x2) / 10;
     const D100 = (10 - a11) * (10 - a22) - a12 * a21;
+    if (d1 <= 0 || d2 <= 0) return GEN.econ_leontief(r); // final demand must be positive
     return { v: { XV: "\\begin{pmatrix}x_1\\\\x_2\\end{pmatrix}", M: `\\begin{pmatrix}0.${a11}&0.${a12}\\\\0.${a21}&0.${a22}\\end{pmatrix}`, d1, d2, DV: "\\begin{pmatrix}d_1\\\\d_2\\end{pmatrix}", a12: `0.${a12}`, c22: String((10 - a22) / 10), D: String(D100 / 100) }, ans: x1 };
   },
   econ_inverseEntry: (r) => {
@@ -186,7 +189,7 @@ export const GEN = {
       const num = [[d, -b], [-c, a]][i - 1][j - 1];
       if (num === 0) continue;
       const M = `\\begin{pmatrix}${a}&${b}\\\\${c}&${d}\\end{pmatrix}`;
-      return { v: { M, G: "\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}", H: "\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}", i, j, a, b, c, d, det, num, fr: tfrac(num, det) }, ans: num / det };
+      return { v: { M, G: "\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}", H: "\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}", i, j, a, b, c, d, ap: pr(a), bp: pr(b), cp: pr(c), dp: pr(d), det, num, fr: tfrac(num, det) }, ans: num / det };
     }
     throw new Error("inverseEntry");
   },
@@ -214,12 +217,12 @@ export const GEN = {
     const a = quad ? 3 * b * k * k : 2 * b * k, bs = b === 1 ? "" : String(b);
     const D = quad ? `${a}-${bs}p^{2}` : `${a}-${bs}p`;
     const dq = quad ? `-${2 * b}p` : `-${b}`;
-    const eqn = quad ? `${2 * b}p^2=${a}-${bs}p^2` : `${b}p=${a}-${bs}p`;
+    const eqn = quad ? `${2 * b}p^2=${a}-${bs}p^2` : `${bs}p=${a}-${bs}p`;
     return { v: { D, dq, eqn }, ans: k };
   },
   econ_profitCubic: (r) => {
     for (let g = 0; g < 500; g++) {
-    const s = r.int(1, 8), q0 = s + 2 * r.int(1, 4), b = (3 * (q0 - s)) / 2, c = r.int(5, 40), f = r.int(5, 60) * 10;
+    const s = r.int(1, 8), j = r.int(1, 4), q0 = s + 2 * j, b = 3 * j, c = 3 * j * j + r.int(1, 30), f = r.int(5, 60) * 10; // c > b^2/3: marginal cost 3q^2-2bq+c stays positive
     const pc = 3 * q0 * s, p = c + pc;
     const profit = p * q0 - (q0 ** 3 - b * q0 * q0 + c * q0 + f);
     if (profit <= 0) continue;
@@ -237,7 +240,7 @@ export const PLAN = [
   { skill: "m.el.econ1", template: "econ_annuityPV", levels: [1], count: 14, d: 4, standards: ["12경수01-05"], strategy: "annuity-discount-sum", evidence: "calc" },
   { skill: "m.el.econ2", template: "econ_taxEquilibrium", levels: [1], count: 14, d: 4, standards: ["12경수02-05", "12경수02-04"], strategy: "supply-shift-by-tax", evidence: "application" },
   { skill: "m.el.econ2", template: "econ_equilibriumTable", levels: [1], count: 14, d: 3, standards: ["12경수02-02", "12경수02-04"], strategy: "table-to-linear-function", evidence: "representation" },
-  { skill: "m.el.econ2", template: "econ_utilityBundle", levels: [1], count: 14, d: 3, standards: ["12경수02-03"], strategy: "budget-lattice-search", evidence: "concept" },
+  { skill: "m.el.econ2", template: "econ_utilityBundle", levels: [1], count: 14, d: 3, standards: ["12경수02-01"], strategy: "budget-lattice-search", evidence: "calc" },
   { skill: "m.el.econ2", template: "econ_regionLP", levels: [1], count: 14, d: 4, standards: ["12경수02-06"], strategy: "inequality-region-vertex", evidence: "application" },
   { skill: "m.el.econ2", template: "econ_leontief", levels: [1], count: 14, d: 4, standards: ["12경수03-03"], strategy: "matrix-inverse-model", evidence: "application" },
   { skill: "m.el.econ2", template: "econ_inverseEntry", levels: [1], count: 16, d: 2, standards: ["12경수03-02"], strategy: "adjugate-formula", evidence: "calc" },

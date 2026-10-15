@@ -31,15 +31,15 @@ export const TEMPLATES = {
     en: ["The word-frequency vectors of documents A and B (counts of the dictionary words, in dictionary order) are $\\vec{a}={va}$ and $\\vec{b}={vb}$. What is their cosine similarity $\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|}$? (a decimal or a fraction such as 3/4 is fine)", ["First compute the dot product by multiplying matching entries and adding.", "A length is the square root of the sum of squared entries; both lengths are whole numbers."], "$\\vec{a}\\cdot\\vec{b}={dot}$, $|\\vec{a}|={na}$, $|\\vec{b}|={nb}$, so the cosine similarity is $\\frac{{dot}}{{na}\\times{nb}}={fr}$."],
   },
   ai_jaccard: {
-    ko: ["사전의 단어에 $1$번부터 $12$번까지 번호를 붙였습니다. 문서 A에 나타나는 단어의 번호 집합은 $A=\\{{sa}\\}$, 문서 B는 $B=\\{{sb}\\}$입니다. 두 문서의 자카드 유사도 $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$의 값은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["$A\\cap B$는 두 문서에 모두 나타나는 단어의 번호 집합이에요.", "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$예요."], "$n(A\\cap B)={ni}$, $n(A\\cup B)={nu}$이므로 $\\frac{{ni}}{{nu}}={fr}$입니다."],
-    en: ["The dictionary words are numbered $1$ to $12$. The word numbers appearing in document A form the set $A=\\{{sa}\\}$ and in document B the set $B=\\{{sb}\\}$. What is the Jaccard similarity $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$ of the two documents? (a decimal or a fraction such as 3/4 is fine)", ["$A\\cap B$ is the set of word numbers appearing in both documents.", "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$."], "$n(A\\cap B)={ni}$ and $n(A\\cup B)={nu}$, so the similarity is $\\frac{{ni}}{{nu}}={fr}$."],
+    ko: ["사전의 단어에 $1$번부터 $12$번까지 번호를 붙였습니다. 문서 A에 나타나는 단어의 번호 집합은 $A=\\{{sa}\\}$, 문서 B는 $B=\\{{sb}\\}$입니다. 두 문서의 자카드 유사도 $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$의 값은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["$A\\cap B$는 두 문서에 모두 나타나는 단어의 번호 집합이에요.", "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$예요."], "$n(A\\cap B)={ni}$, $n(A\\cup B)={nu}$이므로 $\\frac{{ni}}{{nu}}$이고, 이 분수를 기약분수로 나타내면 ${fr}$입니다."],
+    en: ["The dictionary words are numbered $1$ to $12$. The word numbers appearing in document A form the set $A=\\{{sa}\\}$ and in document B the set $B=\\{{sb}\\}$. What is the Jaccard similarity $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$ of the two documents? (a decimal or a fraction such as 3/4 is fine)", ["$A\\cap B$ is the set of word numbers appearing in both documents.", "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$."], "$n(A\\cap B)={ni}$ and $n(A\\cup B)={nu}$, so the similarity is $\\frac{{ni}}{{nu}}$, which in lowest terms is ${fr}$."],
   },
   ai_jaccardRev: {
     ko: ["문서 A에는 서로 다른 단어가 ${na}$개, 문서 B에는 ${nb}$개 나타납니다. 두 문서의 단어 집합을 $A$, $B$라 할 때 자카드 유사도 $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$가 $\\dfrac{{jp}}{{jq}}$입니다. 두 문서에 모두 나타나는 서로 다른 단어는 몇 개인가요? (숫자만 쓰세요)", ["공통 단어의 수를 $x$라 하면 $n(A\\cup B)=n(A)+n(B)-x$예요.", "$\\dfrac{x}{{na}+{nb}-x}=\\dfrac{{jp}}{{jq}}$를 $x$에 대한 방정식으로 풀어요."], "$n(A\\cup B)={na}+{nb}-x$이므로 $\\frac{x}{{na}+{nb}-x}=\\frac{{jp}}{{jq}}$, 이를 풀면 $x={ans}$입니다."],
     en: ["Document A contains ${na}$ distinct words and document B contains ${nb}$. For their word sets $A$ and $B$ the Jaccard similarity $\\dfrac{n(A\\cap B)}{n(A\\cup B)}$ equals $\\dfrac{{jp}}{{jq}}$. How many distinct words appear in both documents? (digits only)", ["Let $x$ be the number of common words; then $n(A\\cup B)=n(A)+n(B)-x$.", "Solve $\\dfrac{x}{{na}+{nb}-x}=\\dfrac{{jp}}{{jq}}$ for $x$."], "Since $n(A\\cup B)={na}+{nb}-x$, we need $\\frac{x}{{na}+{nb}-x}=\\frac{{jp}}{{jq}}$, which gives $x={ans}$."],
   },
   ai_pixelBright: {
-    ko: ["흑백 이미지의 화소 밝기(0~255)를 행렬 $A={mat}$로 나타냈습니다. 이미지를 밝게 하려고 모든 화소의 밝기 $p$를 $\\min(255,\\ {a}p+{b})$로 바꿉니다. (255를 넘는 값은 255가 됩니다.) 바뀐 이미지 행렬의 모든 성분의 합은? (숫자만 쓰세요)", ["성분마다 ${a}p+{b}$를 먼저 계산하고, 255보다 크면 255로 바꿔요.", "새 행렬을 모두 쓴 뒤 성분을 전부 더해요."], "새 행렬은 $B={res}$이고, 모든 성분의 합은 ${ans}$입니다."],
+    ko: ["흑백 이미지의 화소 밝기(0~255)를 행렬 $A={mat}$로 나타냈습니다. 이미지를 밝게 하려고 모든 화소의 밝기 $p$를 $\\min(255,\\ {a}p+{b})$로 바꿉니다. (255를 넘는 값은 255가 됩니다.) 바뀐 이미지 행렬의 모든 성분의 합은? (숫자만 쓰세요)", ["성분 $p$마다 ${a}p+{b}$의 값을 먼저 계산하고, 255보다 크면 255로 바꿔요.", "새 행렬을 모두 쓴 뒤 성분을 전부 더해요."], "새 행렬은 $B={res}$이고, 모든 성분의 합은 ${ans}$입니다."],
     en: ["The brightness values (0-255) of the pixels of a grayscale image form the matrix $A={mat}$. To brighten the image every pixel value $p$ is replaced by $\\min(255,\\ {a}p+{b})$ (values above 255 become 255). What is the sum of all entries of the new matrix? (digits only)", ["Compute ${a}p+{b}$ for each entry first, then cap it at 255.", "Write the whole new matrix, then add all its entries."], "The new matrix is $B={res}$ and the sum of all its entries is ${ans}$."],
   },
   ai_flipTranspose: {
@@ -47,24 +47,24 @@ export const TEMPLATES = {
     en: ["The brightness values of a $3\\times4$ image form the matrix $A={mat}$. Reversing the order of the entries in every row (a left-right flip) gives the matrix $B$, and the transpose of $B$ is $C$. What is the entry of $C$ in row {i}, column {j}? (digits only)", ["First write each row of $A$ backwards to get $B$.", "The transpose swaps rows and columns, so $C$ is a $4\\times3$ matrix."], "$B={bm}$ and $C={cm}$, so the entry in row {i}, column {j} is ${ans}$."],
   },
   ai_convolve: {
-    ko: ["이미지 $I={img}$에 필터 $K={ker}$를 한 칸씩 옮겨 가며 적용합니다. 각 위치에서 필터와 겹치는 성분끼리 곱하여 모두 더한 값을 모아 만든 행렬(특성 지도)의 모든 성분의 합은? (숫자만 쓰세요)", ["필터를 이미지의 왼쪽 위에 놓고 겹친 성분끼리 곱해 더한 값이 특성 지도의 첫 성분이에요.", "필터를 한 칸씩 오른쪽, 아래쪽으로 옮기며 같은 계산을 반복해요."], "특성 지도는 ${out}$이고, 모든 성분의 합은 ${ans}$입니다."],
-    en: ["A filter $K={ker}$ is applied to the image $I={img}$ by sliding it one cell at a time. At each position the overlapping entries are multiplied and added, and these values form a feature map. What is the sum of all entries of the feature map? (digits only)", ["With the filter on the top-left corner, multiply overlapping entries and add: that is the first entry of the map.", "Move the filter one cell right or down and repeat."], "The feature map is ${out}$ and the sum of its entries is ${ans}$."],
+    ko: ["이미지 $I={img}$에 필터 $K={ker}$를 한 칸씩 옮겨 가며 적용합니다. 각 위치에서 필터와 겹치는 성분끼리 곱하여 모두 더한 값을 모아 만든 행렬(특성 지도)의 모든 성분의 합은? 필터가 이미지 밖으로 나가는 위치는 쓰지 않고, 0으로 채우지도 않습니다. (숫자만 쓰세요)", ["필터를 이미지의 왼쪽 위에 놓고 겹친 성분끼리 곱해 더한 값이 특성 지도의 첫 성분이에요.", "필터를 한 칸씩 오른쪽, 아래쪽으로 옮기며 같은 계산을 반복해요."], "특성 지도는 ${out}$이고, 모든 성분의 합은 ${ans}$입니다."],
+    en: ["A filter $K={ker}$ is applied to the image $I={img}$ by sliding it one cell at a time. At each position the overlapping entries are multiplied and added, and these values form a feature map. What is the sum of all entries of the feature map? Use only positions where the filter stays inside the image; do not pad with zeros. (digits only)", ["With the filter on the top-left corner, multiply overlapping entries and add: that is the first entry of the map.", "Move the filter one cell right or down and repeat."], "The feature map is ${out}$ and the sum of its entries is ${ans}$."],
   },
   ai_bayesSpam: {
-    ko: ["받은 메일 중 ${s}\\%$가 스팸입니다. 스팸 메일의 ${p}\\%$는 어떤 낱말을 포함하고, 스팸이 아닌 메일의 ${q}\\%$도 그 낱말을 포함합니다. 이 낱말을 포함한 메일을 한 통 골랐을 때, 그 메일이 스팸일 확률은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["메일 $100$통(또는 $10000$통)이 있다고 보고 각 경우의 수를 세어 봐요.", "(낱말을 포함한 스팸 수) ÷ (낱말을 포함한 메일 전체 수)예요."], "메일 $10000$통 중 스팸은 ${s2}$통이고 그중 낱말을 포함한 것은 ${a}$통, 스팸이 아닌 메일 ${h2}$통 중 낱말을 포함한 것은 ${b}$통입니다. 따라서 $\\frac{{a}}{{a}+{b}}={fr}$입니다."],
-    en: ["${s}\\%$ of the received e-mails are spam. ${p}\\%$ of the spam e-mails contain a certain word, and ${q}\\%$ of the non-spam e-mails contain it too. An e-mail containing this word is chosen. What is the probability that it is spam? (a decimal or a fraction such as 3/4 is fine)", ["Imagine $100$ (or $10000$) e-mails and count each case.", "It is (spam containing the word) divided by (all e-mails containing the word)."], "Out of $10000$ e-mails, ${s2}$ are spam and ${a}$ of them contain the word; of the ${h2}$ non-spam e-mails, ${b}$ contain it. So the probability is $\\frac{{a}}{{a}+{b}}={fr}$."],
+    ko: ["받은 메일 중 ${s}\\%$가 스팸입니다. 스팸 메일의 ${p}\\%$는 어떤 낱말을 포함하고, 스팸이 아닌 메일의 ${q}\\%$도 그 낱말을 포함합니다. 이 낱말을 포함한 메일을 한 통 골랐을 때, 그 메일이 스팸일 확률은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["메일 $100$통(또는 $10000$통)이 있다고 보고 각 경우의 수를 세어 봐요.", "(낱말을 포함한 스팸 수) ÷ (낱말을 포함한 메일 전체 수)예요."], "메일 $10000$통 중 스팸은 ${s2}$통이고 그중 낱말을 포함한 것은 ${a}$통, 스팸이 아닌 메일 ${h2}$통 중 낱말을 포함한 것은 ${b}$통입니다. 따라서 확률은 $\\frac{{a}}{{a}+{b}}$이고, 기약분수로 나타내면 ${fr}$입니다."],
+    en: ["${s}\\%$ of the received e-mails are spam. ${p}\\%$ of the spam e-mails contain a certain word, and ${q}\\%$ of the non-spam e-mails contain it too. An e-mail containing this word is chosen. What is the probability that it is spam? (a decimal or a fraction such as 3/4 is fine)", ["Imagine $100$ (or $10000$) e-mails and count each case.", "It is (spam containing the word) divided by (all e-mails containing the word)."], "Out of $10000$ e-mails, ${s2}$ are spam and ${a}$ of them contain the word; of the ${h2}$ non-spam e-mails, ${b}$ contain it. So the probability is $\\frac{{a}}{{a}+{b}}$, which in lowest terms is ${fr}$."],
   },
   ai_trendPredict: {
-    ko: ["다음 자료의 추세선을 최소제곱법으로 구하여 $y=ax+b$라 합니다. $x={x0}$일 때 추세선이 예측하는 $y$의 값은? (숫자만 쓰세요)\n$x$: {xs}\n$y$: {ys}", ["$x$의 평균 $\\bar{x}$와 $y$의 평균 $\\bar{y}$를 구해요. 추세선은 점 $(\\bar{x},\\bar{y})$를 지나요.", "기울기 $a=\\dfrac{\\sum(x_i-\\bar{x})(y_i-\\bar{y})}{\\sum(x_i-\\bar{x})^2}$예요."], "$\\bar{x}={mx}$, $\\bar{y}={my}$, $\\sum(x_i-\\bar{x})(y_i-\\bar{y})={sxy}$, $\\sum(x_i-\\bar{x})^2={sxx}$이므로 $a={sl}$입니다. $y-{my}={sl}(x-{mx})$에서 $x={x0}$일 때 $y={ans}$입니다."],
-    en: ["The least-squares trend line of the data below is $y=ax+b$. What value of $y$ does the trend line predict at $x={x0}$? (digits only)\n$x$: {xs}\n$y$: {ys}", ["Find the means $\\bar{x}$ and $\\bar{y}$. The trend line passes through $(\\bar{x},\\bar{y})$.", "The slope is $a=\\dfrac{\\sum(x_i-\\bar{x})(y_i-\\bar{y})}{\\sum(x_i-\\bar{x})^2}$."], "$\\bar{x}={mx}$, $\\bar{y}={my}$, $\\sum(x_i-\\bar{x})(y_i-\\bar{y})={sxy}$, $\\sum(x_i-\\bar{x})^2={sxx}$, so $a={sl}$. In $y-{my}={sl}(x-{mx})$, $x={x0}$ gives $y={ans}$."],
+    ko: ["다음 자료가 있습니다.\n$x$: {xs}\n$y$: {ys}\n이 자료의 추세선을 최소제곱법으로 구하여 $y=ax+b$라 합니다. $x={x0}$일 때 추세선이 예측하는 $y$의 값은? (숫자만 쓰세요)", ["$x$의 평균 $\\bar{x}$와 $y$의 평균 $\\bar{y}$를 구해요. 추세선은 점 $(\\bar{x},\\bar{y})$를 지나요.", "기울기 $a=\\dfrac{\\sum(x_i-\\bar{x})(y_i-\\bar{y})}{\\sum(x_i-\\bar{x})^2}$예요."], "$\\bar{x}={mx}$, $\\bar{y}={my}$, $\\sum(x_i-\\bar{x})(y_i-\\bar{y})={sxy}$, $\\sum(x_i-\\bar{x})^2={sxx}$이므로 $a={sl}$입니다. $y-{my}={sl}(x-{mx})$에서 $x={x0}$일 때 $y={ans}$입니다."],
+    en: ["Consider the data below.\n$x$: {xs}\n$y$: {ys}\nThe least-squares trend line of these data is $y=ax+b$. What value of $y$ does the trend line predict at $x={x0}$? (digits only)", ["Find the means $\\bar{x}$ and $\\bar{y}$. The trend line passes through $(\\bar{x},\\bar{y})$.", "The slope is $a=\\dfrac{\\sum(x_i-\\bar{x})(y_i-\\bar{y})}{\\sum(x_i-\\bar{x})^2}$."], "$\\bar{x}={mx}$, $\\bar{y}={my}$, $\\sum(x_i-\\bar{x})(y_i-\\bar{y})={sxy}$, $\\sum(x_i-\\bar{x})^2={sxx}$, so $a={sl}$. In $y-{my}={sl}(x-{mx})$, $x={x0}$ gives $y={ans}$."],
   },
   ai_mseLoss: {
-    ko: ["점 {pts}에 대해 직선 모형 $\\hat{y}={model}$의 평균제곱오차(MSE) $\\dfrac{1}{n}\\sum(y_i-\\hat{y}_i)^2$의 값은? (숫자만 쓰세요)", ["각 점에서 오차 $y_i-\\hat{y}_i$를 먼저 구해요.", "오차를 제곱해서 모두 더한 뒤 점의 개수 $n={np}$으로 나눠요."], "오차는 ${res}$이고 제곱의 합은 ${sq}$이므로 MSE는 $\\frac{{tot}}{{np}}={ans}$입니다."],
+    ko: ["점 {pts}에 대해 직선 모형 $\\hat{y}={model}$의 평균제곱오차(MSE) $\\dfrac{1}{n}\\sum(y_i-\\hat{y}_i)^2$의 값은? (숫자만 쓰세요)", ["각 점에서 오차 $y_i-\\hat{y}_i$를 먼저 구해요.", "오차를 제곱해서 모두 더한 뒤 점의 개수 $n={np}$로 나눠요."], "오차는 ${res}$이고 제곱의 합은 ${sq}$이므로 MSE는 $\\frac{{tot}}{{np}}={ans}$입니다."],
     en: ["For the points {pts}, what is the mean squared error (MSE) $\\dfrac{1}{n}\\sum(y_i-\\hat{y}_i)^2$ of the line model $\\hat{y}={model}$? (digits only)", ["First find the error $y_i-\\hat{y}_i$ at every point.", "Square the errors, add them and divide by the number of points $n={np}$."], "The errors are ${res}$ and the sum of squares is ${sq}$, so the MSE is $\\frac{{tot}}{{np}}={ans}$."],
   },
   ai_gradStep: {
-    ko: ["손실함수 $L(w)={lw}$를 경사하강법으로 줄이려 합니다. $w_{n+1}=w_n-\\eta L'(w_n)$, 학습률 $\\eta={eta}$, 처음 값 $w_0={w0}$일 때 {t}번 갱신한 $w_{{t}}$의 값은? (숫자만 쓰세요)", ["먼저 $L'(w)$를 구해요.", "$w_0$부터 차례로 $w_1$, $w_2$, ...를 계산해요."], "$L'(w)={dl}$입니다. 따라서 {steps}이고, $w_{{t}}={ans}$입니다."],
-    en: ["The loss function $L(w)={lw}$ is reduced by gradient descent: $w_{n+1}=w_n-\\eta L'(w_n)$ with learning rate $\\eta={eta}$ and starting value $w_0={w0}$. What is $w_{{t}}$ after {t} updates? (digits only)", ["First find $L'(w)$.", "Compute $w_1$, $w_2$, ... in turn starting from $w_0$."], "$L'(w)={dl}$. so {steps}, and $w_{{t}}={ans}$."],
+    ko: ["손실함수가 $L(w)={lw}$일 때, 경사하강법으로 이 값을 줄이려 합니다. $w_{n+1}=w_n-\\eta L'(w_n)$, 학습률 $\\eta={eta}$, 처음 값 $w_0={w0}$일 때 {t}번 갱신한 $w_{{t}}$의 값은? (숫자만 쓰세요)", ["먼저 $L'(w)$를 구해요.", "$w_0$부터 차례로 $w_1$, $w_2$, ...를 계산해요."], "$L'(w)={dl}$입니다. 따라서 {steps}이고, $w_{{t}}={ans}$입니다."],
+    en: ["The loss function $L(w)={lw}$ is reduced by gradient descent: $w_{n+1}=w_n-\\eta L'(w_n)$ with learning rate $\\eta={eta}$ and starting value $w_0={w0}$. What is $w_{{t}}$ after {t} updates? (digits only)", ["First find $L'(w)$.", "Compute $w_1$, $w_2$, ... in turn starting from $w_0$."], "$L'(w)={dl}$, so {steps}, and $w_{{t}}={ans}$."],
   },
   ai_gradMse: {
     ko: ["모형 $\\hat{y}=wx$로 점 {pts}을 예측합니다. 손실함수는 $L(w)=\\dfrac{1}{n}\\sum(wx_i-y_i)^2$($n$은 점의 개수)입니다. $w_0={w0}$에서 학습률 $\\eta={eta}$로 경사하강법을 한 번 적용한 $w_1=w_0-\\eta L'(w_0)$의 값은? (숫자만 쓰세요)", ["$L'(w)=\\dfrac{2}{n}\\sum x_i(wx_i-y_i)$예요.", "$w=w_0$를 넣어 기울기 $L'(w_0)$를 먼저 구해요."], "$L'({w0})=\\frac{2}{{np}}\\times({g})={grad}$이므로 $w_1={w0}-{eta}\\times({grad})={ans}$입니다."],
@@ -76,7 +76,7 @@ const fracOf = (num, den) => { const g = gcd(num, den) || 1; return [num / g, de
 
 export const GEN = {
   ai_cosine: (r, lvl) => {
-    const pool = lvl === 1 ? POOL[2] : POOL[r.pick([3, 3, 4])];
+    const pool = lvl === 1 ? POOL[3] : POOL[4];
     for (;;) {
       const a = r.pick(pool), b = r.pick(pool);
       if (a.join() === b.join()) continue;
@@ -173,6 +173,7 @@ export const GEN = {
       const m = r.int(-5, 5), c0 = r.int(0, 9), w0 = r.int(-9, 9), t = lvl === 1 ? r.int(1, 2) : r.int(2, 3);
       const b = lvl === 1 ? -2 * a * m : r.int(-14, 14);
       if (b === 0 || w0 === Math.round(-b / (2 * a))) continue;
+      if (a * eta[0] >= eta[1] || 2 * a * eta[0] === eta[1]) continue; // also not the exact-step factor 0 (w would sit at the minimum) // |1-2*a*eta| < 1, so |w-w*| shrinks and every step lowers the loss
       let w = new Q(w0);
       const parts = [];
       for (let k = 0; k < t; k++) {
@@ -203,10 +204,10 @@ export const GEN = {
 const P = (skill, template, levels, count, d, standards, strategy, evidence) => ({ skill, template, levels, count, d, standards, strategy, evidence });
 export const PLAN = [
   P("m.el.ai1", "ai_cosine", [1, 2], 12, 3, ["12인수02-02"], "dot-and-norm", "calc"),
-  P("m.el.ai1", "ai_jaccard", [1], 16, 2, ["12인수02-01"], "set-overlap", "representation"),
-  P("m.el.ai1", "ai_jaccardRev", [1], 14, 4, ["12인수02-01"], "solve-for-intersection", "reverse"),
+  P("m.el.ai1", "ai_jaccard", [1], 16, 2, ["12인수02-02"], "set-overlap", "calc"),
+  P("m.el.ai1", "ai_jaccardRev", [1], 14, 4, ["12인수02-02"], "solve-for-intersection", "reverse"),
   P("m.el.ai1", "ai_pixelBright", [1], 16, 2, ["12인수03-02"], "entrywise-clamp", "application"),
-  P("m.el.ai1", "ai_flipTranspose", [1], 12, 3, ["12인수03-01", "12인수03-02"], "matrix-transform-chain", "representation"),
+  P("m.el.ai1", "ai_flipTranspose", [1], 12, 3, ["12인수03-02"], "matrix-transform-chain", "calc"),
   P("m.el.ai1", "ai_convolve", [1, 2], 12, 3, ["12인수03-02"], "sliding-filter", "calc"),
   P("m.el.ai2", "ai_bayesSpam", [1], 16, 4, ["12인수04-01"], "conditional-from-rates", "application"),
   P("m.el.ai2", "ai_trendPredict", [1, 2], 12, 3, ["12인수04-02"], "least-squares-line", "application"),

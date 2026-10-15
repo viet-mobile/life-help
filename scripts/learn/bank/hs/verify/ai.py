@@ -31,6 +31,7 @@ def cosine(v):
     assert (na, nb) == (v["na"], v["nb"]) and a.dot(b) == v["dot"]
     c = sp.Rational(a.dot(b)) / (na * nb)
     assert 0 < c < 1
+    assert len(a) in (3, 4), "3-D / 4-D word-frequency vectors"
     return c
 
 def jaccard(v):
@@ -86,7 +87,9 @@ def trend(v):
     X = sp.Matrix([[x, 1] for x in xs]); Y = sp.Matrix(ys)
     a, b = list((X.T * X).inv() * X.T * Y)                                   # normal equations
     assert dec(v["sl"]) == a
-    return a * v["x0"] + b
+    pred = a * v["x0"] + b
+    assert (pred * 1000).is_Integer and (a * 1000).is_Integer, "prediction and slope must terminate within 3 decimals"
+    return pred
 
 def parse_line(s):
     return P(s, "x")
@@ -103,8 +106,10 @@ def gradstep(v):
     assert sp.expand(sp.diff(L, w)) == sp.expand(P(v["dl"], "w")[0])
     eta = dec(v["eta"]); cur = sp.Integer(v["w0"])
     for _ in range(v["t"]):
-        cur = cur - eta * sp.diff(L, w).subs(w, cur)
-    assert cur.is_Rational
+        nxt = cur - eta * sp.diff(L, w).subs(w, cur)
+        assert L.subs(w, nxt) < L.subs(w, cur), "the loss must decrease at every update"
+        cur = nxt
+    assert cur.is_Rational and (cur * 1000).is_Integer, "answer must terminate within 3 decimals"
     return cur
 
 def gradmse(v):
@@ -118,3 +123,16 @@ def gradmse(v):
 
 VERIFY = {"ai_cosine": cosine, "ai_jaccard": jaccard, "ai_jaccardRev": jaccard_rev, "ai_pixelBright": bright, "ai_flipTranspose": fliptr,
           "ai_convolve": conv, "ai_bayesSpam": bayes, "ai_trendPredict": trend, "ai_mseLoss": mse, "ai_gradStep": gradstep, "ai_gradMse": gradmse}
+
+
+def _check_dollars(mod):
+    """Static check of the rendered text: every prompt / hint / explanation string (ko and en) has balanced math delimiters."""
+    import os, re as _re
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modules", mod + ".mjs"), encoding="utf8").read()
+    for line in src.splitlines():
+        if _re.match(r"\s+(ko|en): \[", line):
+            for s in _re.findall(r'"((?:[^"\\]|\\.)*)"', line):
+                assert s.count("$") % 2 == 0, f"{mod}: odd number of $ in: {s[:80]}"
+
+
+_check_dollars("ai")

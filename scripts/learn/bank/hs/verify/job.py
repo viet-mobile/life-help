@@ -114,6 +114,7 @@ def scale_drawing(v):
     real_w = Fraction(v["w"] * v["k"], 100)   # metres
     real_h = Fraction(v["h"] * v["k"], 100)
     assert real_w == Fraction(str(v["rwm"])) and real_h == Fraction(str(v["rhm"]))
+    assert real_w <= 20 and real_h <= 20 and v["k"] in (50, 100, 200), "a room, not a hall or field"
     return real_w * real_h
 
 
@@ -151,3 +152,16 @@ VERIFY = {
     "job_outfitCount": outfit_count,
     "job_chanceDraw": chance_draw,
 }
+
+
+def _check_dollars(mod):
+    """Static check of the rendered text: every prompt / hint / explanation string (ko and en) has balanced math delimiters."""
+    import os, re as _re
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modules", mod + ".mjs"), encoding="utf8").read()
+    for line in src.splitlines():
+        if _re.match(r"\s+(ko|en): \[", line):
+            for s in _re.findall(r'"((?:[^"\\]|\\.)*)"', line):
+                assert s.count("$") % 2 == 0, f"{mod}: odd number of $ in: {s[:80]}"
+
+
+_check_dollars("job")

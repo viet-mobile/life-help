@@ -13,7 +13,10 @@ def fl(x):
 def exchange_cross(v):
     # dollars = euros * (won per euro) / (won per dollar), exact
     assert v["won"] == v["n"] * v["e"]
-    return Fraction(v["n"]) * Fraction(v["e"]) / Fraction(v["d"])
+    assert v["e"] > v["d"], "a euro is worth more than a dollar"
+    val = Fraction(v["n"]) * Fraction(v["e"]) / Fraction(v["d"])
+    assert (val * 100).denominator == 1, "dollar amount has at most 2 decimals"
+    return val
 
 
 def tax_bracket(v):
@@ -127,6 +130,7 @@ def _mat(s):
 def leontief(v):
     A = _mat(v["M"])
     I = sp.eye(2)
+    assert v["d1"] > 0 and v["d2"] > 0, "final demands must be positive"
     x = (I - A).inv() * sp.Matrix([v["d1"], v["d2"]])
     assert (I - A).det() == sp.Rational(v["D"]), "determinant"
     assert all(e > 0 for e in x), "outputs must be positive"
@@ -182,12 +186,16 @@ def profit_cubic(v):
     q = sp.symbols("q", real=True)
     C = q**3 - v["b"] * q**2 + v["c"] * q + v["f"]
     pi = v["p"] * q - C
+    # marginal cost C'(q) = 3q^2 - 2bq + c must be positive for every q (discriminant < 0), so total cost really rises with output
+    mc = sp.diff(C, q)
+    assert sp.discriminant(mc, q) < 0 and mc.subs(q, 0) > 0, "marginal cost must be positive"
     crit = [s for s in sp.solve(sp.diff(pi, q), q) if s.is_real and s >= 0]
     assert crit and sp.degree(pi, q) == 3 and pi.coeff(q, 3) < 0   # -> -infinity, so a global max exists on q >= 0
     cands = crit + [0]
     vals = [pi.subs(q, s) for s in cands]
     best = max(vals)
     assert sum(1 for s in crit if pi.subs(q, s) == best) == 1
+    assert best > 0
     # the maximiser q0 is the only positive critical point
     assert [s for s in crit if s > 0] == [v["q0"]]
     return best
@@ -210,3 +218,16 @@ VERIFY = {
     "econ_elasticityUnit": elasticity_unit,
     "econ_profitCubic": profit_cubic,
 }
+
+
+def _check_dollars(mod):
+    """Static check of the rendered text: every prompt / hint / explanation string (ko and en) has balanced math delimiters."""
+    import os, re as _re
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modules", mod + ".mjs"), encoding="utf8").read()
+    for line in src.splitlines():
+        if _re.match(r"\s+(ko|en): \[", line):
+            for s in _re.findall(r'"((?:[^"\\]|\\.)*)"', line):
+                assert s.count("$") % 2 == 0, f"{mod}: odd number of $ in: {s[:80]}"
+
+
+_check_dollars("econ")

@@ -10,7 +10,7 @@ export const TEMPLATES = {
     en: ["A water dispenser nozzle delivers ${r}$ mL of water per minute at a constant rate. If it is kept open for ${h}$ hours ${m}$ minutes, how many litres of water come out in total? (1 L = 1000 mL. Digits only.)", ["Convert the whole time into minutes.", "Multiply (amount per minute)×(minutes) to get mL, then divide by 1000 to get L."], "The time is ${h}\\times60+{m}={tot}$ minutes, so ${r}\\times{tot}={ml}$ mL come out. ${ml}\\div1000={ans}$ L."],
   },
   job_boxesCeil: {
-    ko: ["부품 ${n}$개를 한 상자에 ${k}$개씩 담아 포장하고, 상자는 한 팔레트에 ${m}$개씩 쌓아 운반합니다. 남는 부품이 있어도 상자 하나에 담고, 남는 상자가 있어도 팔레트 하나에 쌓습니다. 필요한 팔레트는 최소 몇 개인가요? (숫자만 쓰세요)", ["나누어떨어지지 않으면 남는 것을 담을 상자(팔레트)가 하나 더 필요해요.", "먼저 필요한 상자 수를 구하고, 같은 방식으로 팔레트 수를 구해요."], "상자는 ${n}\\div{k}$를 올림한 ${bx}$개가 필요하고, 팔레트는 ${bx}\\div{m}$를 올림한 ${ans}$개가 필요합니다."],
+    ko: ["부품 ${n}$개를 한 상자에 ${k}$개씩 담아 포장하고, 상자는 한 팔레트에 ${m}$개씩 쌓아 운반합니다. 남는 부품이 있어도 상자 하나에 담고, 남는 상자가 있어도 팔레트 하나에 쌓습니다. 필요한 팔레트는 최소 몇 개인가요? (숫자만 쓰세요)", ["나누어떨어지지 않으면 남는 것을 담을 상자(팔레트)가 하나 더 필요해요.", "먼저 필요한 상자 수를 구하고, 같은 방식으로 팔레트 수를 구해요."], "상자는 ${n}\\div{k}$의 값을 올림한 ${bx}$개가 필요하고, 팔레트는 ${bx}\\div{m}$의 값을 올림한 ${ans}$개가 필요합니다."],
     en: ["${n}$ parts are packed ${k}$ to a box, and boxes are stacked ${m}$ to a pallet for transport. A leftover part still goes into a box of its own, and leftover boxes still go onto a pallet. What is the smallest number of pallets needed? (digits only)", ["If the division is not exact, one more box (pallet) is needed for the remainder.", "Find the number of boxes first, then the number of pallets in the same way."], "The number of boxes is ${n}\\div{k}$ rounded up, ${bx}$; the number of pallets is ${bx}\\div{m}$ rounded up, ${ans}$."],
   },
   job_ratioChain: {
@@ -34,11 +34,11 @@ export const TEMPLATES = {
     en: ["Worker A makes ${a}$ items per hour and worker B makes ${b}$ items per hour, each at a constant speed. A starts first and B joins ${h}$ hours later. How many hours has A worked in total when the two together have made exactly ${N}$ items? (digits only)", ["If A has worked $t$ hours, B has worked $t-{h}$ hours.", "Set up the linear equation (items by A)+(items by B)$={N}$."], "If A works $t$ hours, B works $t-{h}$ hours, so ${a}t+{b}(t-{h})={N}$. This simplifies to ${ab}t={tot}$, so $t={ans}$ hours."],
   },
   job_floorPlan: {
-    ko: ["직사각형 모양의 방의 가로가 ${a}$ m, 세로가 ${b}$ m입니다. 가로 벽 한쪽 중간에 폭 ${d}$ m, 깊이 ${c}$ m인 직사각형 모양의 공간이 바깥쪽으로 붙어 있습니다(${d}<{a}$이고 방의 모서리에는 닿지 않습니다). 방 안쪽 벽 전체를 따라 걸레받이를 붙이는데, 폭 ${w}$ m인 출입문 자리에는 붙이지 않습니다. 필요한 걸레받이의 길이는 몇 m인가요? (숫자만 쓰세요)", ["공간이 붙은 도형의 둘레는 직사각형의 둘레와 어떻게 달라지는지 그려 보며 생각해요.", "바깥쪽으로 튀어나온 부분은 폭 ${d}$ m인 변이 없어지는 대신 깊이 ${c}$ m인 변이 두 개 생겨요."], "방 전체의 둘레는 $2({a}+{b})+2\\times{c}={per}$ m입니다(폭 ${d}$ m인 변이 깊이 ${c}$ m인 두 변과 폭 ${d}$ m인 변으로 바뀌므로 ${c}$ m인 변 두 개만큼 늘어납니다). 출입문 자리 ${w}$ m를 빼면 ${per}-{w}={ans}$ m입니다."],
+    ko: ["직사각형 모양의 방의 가로가 ${a}$ m, 세로가 ${b}$ m입니다. 가로 벽 한쪽 중간에 폭 ${d}$ m, 깊이 ${c}$ m인 직사각형 모양의 공간이 바깥쪽으로 붙어 있습니다(${d}<{a}$이고 방의 모서리에는 닿지 않습니다). 방 안쪽 벽 전체를 따라 걸레받이를 붙이는데, 폭 ${w}$ m인 출입문 자리에는 붙이지 않습니다. 필요한 걸레받이의 길이는 몇 m인가요? (숫자만 쓰세요)", ["공간이 붙은 도형의 둘레는 직사각형의 둘레와 어떻게 달라지는지 그려 보며 생각해요.", "폭 ${d}$ m인 변 하나가 사라지는 대신 깊이 ${c}$ m인 변 두 개와 폭 ${d}$ m인 변 하나가 생겨요."], "방 전체의 둘레는 $2({a}+{b})+2\\times{c}={per}$ m입니다(폭 ${d}$ m인 변이 깊이 ${c}$ m인 두 변과 폭 ${d}$ m인 변으로 바뀌므로 ${c}$ m인 변 두 개만큼 늘어납니다). 출입문 자리 ${w}$ m를 빼면 ${per}-{w}={ans}$ m입니다."],
     en: ["A rectangular room is ${a}$ m wide and ${b}$ m deep. A rectangular alcove ${d}$ m wide and ${c}$ m deep is attached outward in the middle of one of the walls of length ${a}$ (${d}<{a}$, and it does not touch the corners of the room). Skirting board is fixed along the whole inner wall, except for a door opening ${w}$ m wide. How many metres of skirting board are needed? (digits only)", ["Sketch the shape and compare its perimeter with that of the plain rectangle.", "The wall of length ${d}$ m is replaced by two sides of ${c}$ m and one side of ${d}$ m."], "The whole perimeter is $2({a}+{b})+2\\times{c}={per}$ m (the side of length ${d}$ is replaced by two sides of ${c}$ and one of ${d}$, so only the two sides of ${c}$ m are added). Subtracting the door ${w}$ m gives ${per}-{w}={ans}$ m."],
   },
   job_boxTunnel: {
-    ko: ["가로 ${a}$ cm, 세로 ${b}$ cm, 높이 ${c}$ cm인 직육면체 모양의 나무 블록에, 윗면 중앙에서 아랫면까지 곧게 가로 ${p}$ cm, 세로 ${q}$ cm인 직육면체 모양의 구멍을 뚫었습니다(구멍은 블록의 옆면에 닿지 않습니다). 구멍 안쪽 면도 겉넓이에 포함할 때, 구멍이 뚫린 블록의 겉넓이는 몇 cm²인가요? (숫자만 쓰세요)", ["구멍이 뚫리면 윗면과 아랫면은 구멍의 단면만큼 줄어들어요.", "대신 구멍의 안쪽 옆면 네 개가 새로 생겨요."], "뚫기 전 겉넓이는 $2({a}\\times{b}+{b}\\times{c}+{c}\\times{a})={s0}$ cm²입니다. 윗면과 아랫면에서 ${p}\\times{q}$씩 두 번 빼고, 안쪽 옆면 $2({p}+{q})\\times{c}$를 더하면 ${s0}-{pq2}+{inn}={ans}$ cm²입니다."],
+    ko: ["가로 ${a}$ cm, 세로 ${b}$ cm, 높이 ${c}$ cm인 직육면체 모양의 나무 블록에, 윗면 중앙에서 아랫면까지 곧게 가로 ${p}$ cm, 세로 ${q}$ cm인 직육면체 모양의 구멍을 뚫었습니다(구멍은 블록의 옆면에 닿지 않습니다). 구멍 안쪽 면도 겉넓이에 포함할 때, 구멍이 뚫린 블록의 겉넓이는 몇 cm²인가요? (숫자만 쓰세요)", ["구멍이 뚫리면 윗면과 아랫면은 구멍의 단면만큼 줄어들어요.", "대신 구멍의 안쪽 옆면 네 개가 새로 생겨요."], "뚫기 전 겉넓이는 $2({a}\\times{b}+{b}\\times{c}+{c}\\times{a})={s0}$ cm²입니다. 윗면과 아랫면에서 ${p}\\times{q}$씩 두 번 빼고, 안쪽 옆면 $2({p}+{q})\\times{c}$만큼 더하면 ${s0}-{pq2}+{inn}={ans}$ cm²입니다."],
     en: ["A wooden block is a rectangular box ${a}$ cm long, ${b}$ cm wide and ${c}$ cm high. A rectangular hole ${p}$ cm by ${q}$ cm is drilled straight from the middle of the top face to the bottom face (the hole does not touch the side faces of the block). Counting the inner walls of the hole as part of the surface, what is the surface area of the block in cm²? (digits only)", ["Drilling removes a rectangle of the hole's cross-section from both the top and the bottom face.", "On the other hand, four new inner side faces appear."], "Before drilling, the surface area is $2({a}\\times{b}+{b}\\times{c}+{c}\\times{a})={s0}$ cm². Subtract ${p}\\times{q}$ twice for the top and bottom, and add the inner walls $2({p}+{q})\\times{c}$: ${s0}-{pq2}+{inn}={ans}$ cm²."],
   },
   job_scaleDrawing: {
@@ -121,7 +121,7 @@ export const GEN = {
     return { v: { a, b, c, p, q, s0, pq2: 2 * p * q, inn }, ans: s0 - 2 * p * q + inn };
   },
   job_scaleDrawing: (r) => {
-    const k = r.pick([50, 100, 200, 500]), w = r.int(4, 24), h = r.int(3, 18);
+    const k = r.pick([50, 100, 200]), wmax = Math.min(24, 2000 / k), w = r.int(4, wmax), h = r.int(3, Math.min(18, wmax - 1)); // room at most 20 m wide
     const rw = w * k, rh = h * k;
     return { v: { k, w, h, rw, rh, rwm: rw / 100, rhm: rh / 100 }, ans: (rw * rh) / 10000 };
   },
@@ -140,7 +140,7 @@ export const GEN = {
 
 export const PLAN = [
   { skill: "m.el.job1", template: "job_flowUnits", levels: [1], count: 14, d: 2, standards: ["12직수01-03"], strategy: "compound-unit-conversion", evidence: "application" },
-  { skill: "m.el.job1", template: "job_boxesCeil", levels: [1], count: 14, d: 2, standards: ["12직수01-02", "12직수01-01"], strategy: "round-up-chain", evidence: "application" },
+  { skill: "m.el.job1", template: "job_boxesCeil", levels: [1], count: 14, d: 2, standards: ["12직수01-01"], strategy: "round-up-chain", evidence: "application" },
   { skill: "m.el.job1", template: "job_ratioChain", levels: [1], count: 14, d: 3, standards: ["12직수02-01"], strategy: "joined-ratio", evidence: "application" },
   { skill: "m.el.job1", template: "job_markupProfit", levels: [1], count: 14, d: 3, standards: ["12직수02-02", "12직수01-01"], strategy: "successive-percent", evidence: "application" },
   { skill: "m.el.job1", template: "job_tableRule", levels: [1], count: 14, d: 3, standards: ["12직수02-03"], strategy: "table-to-linear-rule", evidence: "representation" },

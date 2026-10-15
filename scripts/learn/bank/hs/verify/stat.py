@@ -38,16 +38,32 @@ def sdfreq(v):
     assert sd.is_Rational, "sd must be rational"
     return sd
 
+def _two_point(m, sd):
+    return [sp.Integer(m) - sd, sp.Integer(m) + sd]      # a data set with this mean and (population) standard deviation
+
 def lintr(v):
     x = sp.Symbol("x")
     f = parse_expr(v["eq"].replace("^", "**"), local_dict={"x": x}, transformations=TR)
     m, vx = sp.Integer(v["m"]), sp.Integer(v["vx"])
-    pts = [m - sp.sqrt(vx), m + sp.sqrt(vx)]                     # a two-value data set with this mean and (population) variance
+    pts = _two_point(m, sp.sqrt(vx))
     ys = [f.subs(x, p) for p in pts]
     my = sp.simplify((ys[0] + ys[1]) / 2)
     vy = sp.simplify(((ys[0] - my) ** 2 + (ys[1] - my) ** 2) / 2)
-    assert (my, vy) == (v["my"], v["vy"])
-    return my + vy
+    assert sp.expand(f).coeff(x, 1) ** 2 == v["a2"]
+    return vy
+
+def linrev(v):
+    x = sp.Symbol("x")
+    f = parse_expr(v["eq"].replace("^", "**"), local_dict={"x": x}, transformations=TR)
+    a = sp.expand(f).coeff(x, 1); b = sp.expand(f).coeff(x, 0)
+    assert a != 0 and abs(a) == v["aa"] and b != 0
+    sx = sp.Rational(v["sy"]) / abs(a)
+    assert sx.is_Integer and sx > 0
+    # check on a two-value data set with x-sd = sx: its y-values have sd |a| sx = sy and mean a m + b
+    ys = [f.subs(x, p) for p in _two_point(7, sx)]
+    mean = (ys[0] + ys[1]) / 2
+    assert sp.sqrt(((ys[0] - mean) ** 2 + (ys[1] - mean) ** 2) / 2) == v["sy"]
+    return sx
 
 ZMAP = {90: Fraction("1.645"), 95: Fraction("1.96"), 99: Fraction("2.58")}
 
@@ -71,6 +87,7 @@ def tci(v):
 def ciprop(v):
     n, a = v["cnt"], v["ag"]
     assert 0 < a < n and ZMAP[v["cl"]] == D(v["z"])
+    assert n >= 100 and a >= 10 and n - a >= 10, "normal approximation: n >= 100, n p >= 10, n (1-p) >= 10"
     p = sp.Rational(a, n)
     sd = sp.sqrt(p * (1 - p) / n)
     assert sd.is_Rational, "standard error must be rational"
@@ -97,11 +114,24 @@ def rejectn(v):
 
 def strat(v):
     sizes = [v["n1"], v["n2"], v["n3"]]
-    assert sum(sizes) == v["pop"]
+    assert sum(sizes) == v["pop"] and sizes[v["i"] - 1] == v["ni"] and v["ni"] >= 20 * 2
     alloc = [Fraction(v["ns"] * x, v["pop"]) for x in sizes]
     assert all(a.denominator == 1 and a >= 1 for a in alloc), "allocation must be whole numbers"
     assert sum(alloc) == v["ns"]
-    return alloc[1]
+    return alloc[v["i"] - 1]
 
-VERIFY = {"stat_quartileIqr": quartile, "stat_sdFreq": sdfreq, "stat_linTransform": lintr, "stat_ciMean": cimean, "stat_tCiLower": tci,
+VERIFY = {"stat_quartileIqr": quartile, "stat_sdFreq": sdfreq, "stat_linTransform": lintr, "stat_linReverse": linrev, "stat_ciMean": cimean, "stat_tCiLower": tci,
           "stat_ciProp": ciprop, "stat_zStat": zstat, "stat_rejectN": rejectn, "stat_stratified": strat}
+
+
+def _check_dollars(mod):
+    """Static check of the rendered text: every prompt / hint / explanation string (ko and en) has balanced math delimiters."""
+    import os, re as _re
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modules", mod + ".mjs"), encoding="utf8").read()
+    for line in src.splitlines():
+        if _re.match(r"\s+(ko|en): \[", line):
+            for s in _re.findall(r'"((?:[^"\\]|\\.)*)"', line):
+                assert s.count("$") % 2 == 0, f"{mod}: odd number of $ in: {s[:80]}"
+
+
+_check_dollars("stat")
