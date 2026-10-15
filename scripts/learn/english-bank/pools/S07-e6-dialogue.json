@@ -1,0 +1,998 @@
+{
+ "packet": "S07-e6-dialogue",
+ "skill": "e.e6.read",
+ "items": [
+  {
+   "k": "d",
+   "title": "A Late Library Book",
+   "text": "A: Hello. I'm sorry, but I have to return this book late.\nB: Thank you for bringing it back. It was due last Friday.\nA: I know. My little brother spilled water on it, so I dried every page first.\nB: I see. The pages look fine, so you don't need to pay anything.\nA: That's a relief! May I borrow another one today?\nB: Of course. And before you leave, look at the table by the window. Someone left a scarf there.\nA: Oh, that's mine! Thanks for noticing.\nB: No problem. Enjoy your new book.",
+   "qs": [
+    {
+     "q": "When was the book supposed to be returned?",
+     "o": [
+      "Yesterday morning",
+      "Two weeks ago",
+      "Last Friday",
+      "This Monday"
+     ],
+     "a": 2,
+     "why": "B가 'It was due last Friday'라고 말했으므로 반납 기한은 지난 금요일이에요."
+    },
+    {
+     "q": "What will happen about the late return?",
+     "o": [
+      "A pays a small fine",
+      "A pays no fee",
+      "A buys a new copy",
+      "A waits a week"
+     ],
+     "a": 1,
+     "why": "B가 'you don't need to pay anything'이라고 했으므로 A는 아무것도 내지 않아도 돼요."
+    },
+    {
+     "q": "In the dialogue, what does \"relief\" mean in \"That's a relief!\"?",
+     "o": [
+      "A short break from work",
+      "A reward for good work",
+      "A kind of help from a friend",
+      "A feeling of no longer worrying"
+     ],
+     "a": 3,
+     "why": "걱정하던 일이 괜찮다는 말을 들은 뒤의 말이므로 '걱정이 사라진 느낌'이라는 뜻이에요."
+    },
+    {
+     "q": "Why does B mention the scarf?",
+     "o": [
+      "To help A find something lost",
+      "To ask A to clean the table",
+      "To suggest a gift idea",
+      "To complain about messy shelves"
+     ],
+     "a": 0,
+     "why": "B는 창가 테이블에 두고 간 스카프를 알려 주어 A가 잃어버린 물건을 찾도록 도와요."
+    },
+    {
+     "q": "What did A do before returning the book?",
+     "o": [
+      "Dried the wet pages",
+      "Wrote on the cover",
+      "Asked for a longer loan",
+      "Bought a bookmark"
+     ],
+     "a": 0,
+     "why": "A는 'I dried every page first'라고 하여 반납하기 전에 젖은 쪽을 말렸다고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Planning the Class Picnic",
+   "text": "A: Our class picnic is next Thursday. Where should we go?\nB: How about the riverside park? It has a big field for games.\nA: Good idea, but we'd need a bus, and the bus costs money.\nB: Then let's try the school garden. It's free, and there are tables there.\nA: That works. What should we bring?\nB: I'll make sandwiches. Could you ask everyone to bring a water bottle?\nA: Sure. I'll write a note on the board after lunch.\nB: Great. Let's hope it doesn't rain!",
+   "qs": [
+    {
+     "q": "What is the problem with the riverside park?",
+     "o": [
+      "Getting there costs money",
+      "It has no open space",
+      "It is closed on Thursday",
+      "It has no tables"
+     ],
+     "a": 0,
+     "why": "A는 그곳에 가려면 버스가 필요하고 버스에는 돈이 든다고 말해요."
+    },
+    {
+     "q": "Where will the picnic most likely be held?",
+     "o": [
+      "At the riverside park",
+      "In the gym",
+      "At the school garden",
+      "On a bus"
+     ],
+     "a": 2,
+     "why": "B가 학교 정원을 제안하고 A가 'That works'라고 동의했으므로 학교 정원에서 열릴 가능성이 높아요."
+    },
+    {
+     "q": "What does \"That works\" mean here?",
+     "o": [
+      "That is a good choice",
+      "That is hard work",
+      "That machine is running",
+      "That job is finished"
+     ],
+     "a": 0,
+     "why": "제안을 받아들이는 표현으로, '그게 괜찮은 방법이다'라는 뜻이에요."
+    },
+    {
+     "q": "Why does B say \"Let's hope it doesn't rain\"?",
+     "o": [
+      "To ask for a new date",
+      "To show a worry about the weather",
+      "To say the tables are wet",
+      "To joke about the bus"
+     ],
+     "a": 1,
+     "why": "비가 오지 않기를 바란다는 말로 날씨에 대한 걱정을 나타내요."
+    },
+    {
+     "q": "What will A do after lunch?",
+     "o": [
+      "Write a note on the board",
+      "Make the sandwiches",
+      "Buy bus tickets",
+      "Pack the games"
+     ],
+     "a": 0,
+     "why": "A는 'I'll write a note on the board after lunch'라고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "The Bike Repair Call",
+   "text": "A: Hello, bike repair shop. How can I help you?\nB: Hi, I dropped off my bike yesterday. Is it ready yet?\nA: Let me check. The new tire is here, but we're still waiting for the brake part.\nB: Oh no. I need it for school on Monday.\nA: I understand. The part should arrive tomorrow morning, so the bike can be fixed in the afternoon.\nB: Can you call me when it's ready? I'll be at my grandmother's house today.\nA: Sure. Please tell me your number again.\nB: It's 555-0142.",
+   "qs": [
+    {
+     "q": "What is the shop still waiting for?",
+     "o": [
+      "A part for the brakes",
+      "A new bike chain",
+      "A tire for the front wheel",
+      "A bell and a light"
+     ],
+     "a": 0,
+     "why": "A는 새 타이어는 왔지만 브레이크 부품을 기다리고 있다고 말해요."
+    },
+    {
+     "q": "What can we guess about B?",
+     "o": [
+      "B works at the shop",
+      "B lives at a grandparent's house",
+      "B just bought a new bike",
+      "B rides the bike to school"
+     ],
+     "a": 3,
+     "why": "B는 월요일 학교에 가려면 자전거가 필요하다고 해서 자전거로 학교에 간다고 짐작할 수 있어요."
+    },
+    {
+     "q": "What does \"dropped off\" mean in the dialogue?",
+     "o": [
+      "Let fall by accident",
+      "Threw away",
+      "Lowered the price of",
+      "Left at a place for someone"
+     ],
+     "a": 3,
+     "why": "자전거를 어제 가게에 맡겨 두었다는 뜻이에요."
+    },
+    {
+     "q": "Why does B say \"I need it for school on Monday\"?",
+     "o": [
+      "To show the repair is urgent",
+      "To ask for a lower price",
+      "To say school is closed",
+      "To complain about the tire"
+     ],
+     "a": 0,
+     "why": "월요일에 필요하다는 말로 수리가 급하다는 것을 알려요."
+    },
+    {
+     "q": "What will the shop do when the bike is fixed?",
+     "o": [
+      "Send a letter",
+      "Phone B",
+      "Ride it to B's school",
+      "Wait for B to ask"
+     ],
+     "a": 1,
+     "why": "B가 수리가 끝나면 전화해 달라고 했고 A가 'Sure'라며 번호를 물어요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Finding the Museum",
+   "text": "A: Excuse me. Could you tell me how to get to the science museum?\nB: Sure. Go out of the station and turn left at the bakery.\nA: Turn left at the bakery. Then what?\nB: Walk straight for two blocks. You'll see a tall clock on your right.\nA: Is the museum near the clock?\nB: Yes, it's just behind it. It's a gray building with a round roof.\nA: Thank you so much. Is it a long walk?\nB: Only about ten minutes. You can't miss it.",
+   "qs": [
+    {
+     "q": "How long is the walk to the museum?",
+     "o": [
+      "About ten minutes",
+      "About five minutes",
+      "About twenty minutes",
+      "About half an hour"
+     ],
+     "a": 0,
+     "why": "B는 'Only about ten minutes'라고 말해요."
+    },
+    {
+     "q": "What can we guess about A?",
+     "o": [
+      "A works at the museum",
+      "A lives next to the bakery",
+      "A is late for a train",
+      "A does not know the area well"
+     ],
+     "a": 3,
+     "why": "A가 길을 묻고 있으므로 이 지역을 잘 모른다고 짐작할 수 있어요."
+    },
+    {
+     "q": "Why does A repeat part of the directions?",
+     "o": [
+      "To check that A understood",
+      "To argue with B",
+      "To ask for another route",
+      "To say the bakery is closed"
+     ],
+     "a": 0,
+     "why": "A는 'Turn left at the bakery'를 되풀이해 제대로 이해했는지 확인해요."
+    },
+    {
+     "q": "What does \"You can't miss it\" mean?",
+     "o": [
+      "It is easy to find",
+      "It is not allowed to skip",
+      "It is too small to see",
+      "It is impossible to visit"
+     ],
+     "a": 0,
+     "why": "눈에 잘 띄어서 찾기 쉽다는 뜻의 표현이에요."
+    },
+    {
+     "q": "What is the last landmark before the museum?",
+     "o": [
+      "A bakery",
+      "A tall clock",
+      "A station",
+      "A round bridge"
+     ],
+     "a": 1,
+     "why": "시계탑 바로 뒤에 박물관이 있다고 B가 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "A Pet for the Class",
+   "text": "A: Do you think our class should get a pet?\nB: I'm not sure. A pet needs care every day, even on weekends.\nA: That's true, but we could take turns. A rabbit would teach us to be responsible.\nB: Maybe. But what if someone has an allergy?\nA: Good point. I hadn't thought of that. We could ask the teacher to check first.\nB: Then I'd support a fish tank. Fish are quiet and don't cause sneezing.\nA: A fish tank is a bit boring, but it's better than nothing.\nB: Let's bring it up at the class meeting on Friday.",
+   "qs": [
+    {
+     "q": "What does B worry about first?",
+     "o": [
+      "Care is needed every day",
+      "The cost of the food",
+      "The noise at night",
+      "The size of the room"
+     ],
+     "a": 0,
+     "why": "B는 처음에 주말에도 매일 돌봐야 한다는 점을 걱정해요."
+    },
+    {
+     "q": "How does A feel about the fish tank?",
+     "o": [
+      "Very happy and proud",
+      "Angry and upset",
+      "Afraid of the fish",
+      "Not excited, but willing to accept it"
+     ],
+     "a": 3,
+     "why": "A는 조금 지루하지만 없는 것보다 낫다고 말하며 받아들여요."
+    },
+    {
+     "q": "What does \"bring it up\" mean here?",
+     "o": [
+      "Mention it for discussion",
+      "Carry it upstairs",
+      "Make it grow",
+      "Lift it with a rope"
+     ],
+     "a": 0,
+     "why": "회의에서 그 문제를 꺼내 이야기하자는 뜻이에요."
+    },
+    {
+     "q": "What is A doing when saying \"Good point\"?",
+     "o": [
+      "Ending the talk",
+      "Agreeing that B raised a useful worry",
+      "Criticizing B",
+      "Changing the topic"
+     ],
+     "a": 1,
+     "why": "A는 B가 알레르기라는 중요한 문제를 말했다고 인정해요."
+    },
+    {
+     "q": "What will the speakers do on Friday?",
+     "o": [
+      "Suggest the idea at a class meeting",
+      "Buy the fish tank",
+      "Take a rabbit home",
+      "Test for allergies"
+     ],
+     "a": 0,
+     "why": "금요일 학급 회의에서 이 안건을 꺼내자고 B가 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Messages About Practice",
+   "text": "A: Where are you? Practice starts in ten minutes.\nB: Sorry! My bus broke down, and we are all waiting on the road.\nA: Oh no. Are you okay?\nB: Yes, I'm fine. The driver says another bus will come soon.\nA: Should I tell the coach you'll be late?\nB: Yes, please. I think I'll arrive about thirty minutes after practice begins.\nA: Okay. I'll go tell the coach now.\nB: Thanks. Could you also bring my water bottle? It's on the bench.\nA: No problem. See you soon!",
+   "qs": [
+    {
+     "q": "Why is B late for practice?",
+     "o": [
+      "B forgot the time",
+      "The bus stopped working",
+      "B lost a shoe",
+      "The coach changed the place"
+     ],
+     "a": 1,
+     "why": "B의 버스가 고장 나서 길에서 기다리고 있어요."
+    },
+    {
+     "q": "What can we guess about the situation?",
+     "o": [
+      "B is walking alone",
+      "The coach is on the bus",
+      "Other riders are also stuck",
+      "The driver is away"
+     ],
+     "a": 2,
+     "why": "'we are all waiting'이라고 해서 다른 승객들도 함께 기다린다고 짐작할 수 있어요."
+    },
+    {
+     "q": "What does \"broke down\" mean in the dialogue?",
+     "o": [
+      "Fell into pieces on purpose",
+      "Became very cheap",
+      "Went very fast",
+      "Stopped working"
+     ],
+     "a": 3,
+     "why": "버스가 움직이지 못하고 멈췄다는 뜻이에요."
+    },
+    {
+     "q": "Why does A ask \"Are you okay?\"",
+     "o": [
+      "To end the chat",
+      "To show concern",
+      "To complain",
+      "To change the plan"
+     ],
+     "a": 1,
+     "why": "A는 B가 걱정되어 안전한지 묻고 있어요."
+    },
+    {
+     "q": "What will A probably do right after this chat?",
+     "o": [
+      "Tell the coach about the delay",
+      "Ride the bus to B",
+      "Start practice alone",
+      "Call B's family"
+     ],
+     "a": 0,
+     "why": "A는 'I'll go tell the coach now'라고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "A Laptop Problem",
+   "text": "A: My laptop won't turn on, and my presentation is tomorrow.\nB: Did you plug in the charger?\nA: Yes, but the little light doesn't come on.\nB: Maybe the cable is broken. Try a different one.\nA: I don't have another cable at home.\nB: Then borrow the one in our classroom. Come early tomorrow.\nA: Thanks. What if it still doesn't work?\nB: You can use a school computer. Did you save your slides online?\nA: Yes, I did. I can log in from any computer.",
+   "qs": [
+    {
+     "q": "What happens when A plugs in the charger?",
+     "o": [
+      "The screen turns blue",
+      "The laptop gets hot",
+      "The small light stays off",
+      "A loud noise starts"
+     ],
+     "a": 2,
+     "why": "A는 충전기를 꽂아도 작은 불이 켜지지 않는다고 말해요."
+    },
+    {
+     "q": "Why is A not too worried at the end?",
+     "o": [
+      "The presentation is canceled",
+      "The slides are stored online",
+      "B will give a new laptop",
+      "The cable is fixed"
+     ],
+     "a": 1,
+     "why": "슬라이드를 온라인에 저장해 두었으니 어떤 컴퓨터에서든 로그인해서 쓸 수 있어요."
+    },
+    {
+     "q": "What does \"log in\" mean in the dialogue?",
+     "o": [
+      "Enter an account with a password",
+      "Write a record of events",
+      "Cut down a tree",
+      "Leave the computer"
+     ],
+     "a": 0,
+     "why": "계정에 접속한다는 뜻이에요."
+    },
+    {
+     "q": "Why does B ask about the charger?",
+     "o": [
+      "To scold A",
+      "To check for a simple cause",
+      "To sell a charger",
+      "To end the call"
+     ],
+     "a": 1,
+     "why": "B는 가장 쉬운 원인부터 확인하려고 충전기를 꽂았는지 물어요."
+    },
+    {
+     "q": "What should A do tomorrow?",
+     "o": [
+      "Stay home to rest",
+      "Buy a new laptop",
+      "Come early and get the cable",
+      "Skip the presentation"
+     ],
+     "a": 2,
+     "why": "B가 교실의 케이블을 빌리라고 하면서 내일 일찍 오라고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "A Birthday Present Idea",
+   "text": "A: Grandma's birthday is on Sunday. Have you got a present yet?\nB: Not yet. I thought about flowers, but they die so quickly.\nA: How about a photo album? She loves old pictures.\nB: That's a nice idea, but we don't have many printed photos.\nA: We can print some at the shop near the park. I'll pay for the printing.\nB: Really? Then I'll buy the album and draw a cover.\nA: Perfect! Let's go to the shop after school on Friday.\nB: Deal. And let's keep it a secret.",
+   "qs": [
+    {
+     "q": "Why did B not choose flowers?",
+     "o": [
+      "They do not last long",
+      "They cost too much",
+      "Grandma is allergic",
+      "They are hard to carry"
+     ],
+     "a": 0,
+     "why": "B는 꽃이 금방 시든다고 말해요."
+    },
+    {
+     "q": "What can we infer about Grandma?",
+     "o": [
+      "She enjoys old photographs",
+      "She dislikes presents",
+      "She lives far away",
+      "She is a good artist"
+     ],
+     "a": 0,
+     "why": "A가 할머니가 옛날 사진을 좋아한다고 말해 앨범을 제안해요."
+    },
+    {
+     "q": "What does \"Deal\" mean here?",
+     "o": [
+      "I agree to the plan",
+      "I am selling it",
+      "Please stop",
+      "I will hand out cards"
+     ],
+     "a": 0,
+     "why": "계획에 동의한다는 뜻의 표현이에요."
+    },
+    {
+     "q": "Why does A say \"I'll pay for the printing\"?",
+     "o": [
+      "To ask B for money",
+      "To offer help so the idea can work",
+      "To refuse the idea",
+      "To change the gift"
+     ],
+     "a": 1,
+     "why": "사진이 부족하다는 문제를 A가 인쇄 비용을 대겠다며 도와 해결하려는 거예요."
+    },
+    {
+     "q": "What will they do after school on Friday?",
+     "o": [
+      "Draw the cover",
+      "Buy flowers",
+      "Visit Grandma",
+      "Go to the shop to print photos"
+     ],
+     "a": 3,
+     "why": "A가 금요일 방과 후에 가게에 가자고 제안하고 B가 동의해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Sorry About the Drawing",
+   "text": "A: I'm so sorry about your drawing. I didn't see the cup on the edge of the desk.\nB: It's okay. Accidents happen. But I worked on it all weekend.\nA: I know, and I feel terrible. Can I help you redraw it?\nB: That would be kind, but the art show is on Wednesday. We don't have much time.\nA: Then let's start at lunch. I'll bring my colored pencils too.\nB: Thanks. Actually, only the corner is wet. Maybe I can save most of it.\nA: Let me put it near the window to dry.\nB: Good idea. Let's check it after class.",
+   "qs": [
+    {
+     "q": "When is the art show?",
+     "o": [
+      "On Monday",
+      "This weekend",
+      "Next month",
+      "On Wednesday"
+     ],
+     "a": 3,
+     "why": "B는 미술 전시회가 수요일이라고 말해요."
+    },
+    {
+     "q": "How does B seem to feel?",
+     "o": [
+      "Very angry",
+      "Happy about the news",
+      "Disappointed but forgiving",
+      "Bored by the talk"
+     ],
+     "a": 2,
+     "why": "B는 사고였다며 괜찮다고 하지만 주말 내내 그렸다고 해 아쉬움도 보여요."
+    },
+    {
+     "q": "What does \"save\" mean in \"save most of it\"?",
+     "o": [
+      "Put money aside",
+      "Finish it quickly",
+      "Hand it in",
+      "Keep it from being ruined"
+     ],
+     "a": 3,
+     "why": "그림의 대부분이 망가지지 않도록 지킨다는 뜻이에요."
+    },
+    {
+     "q": "What is A doing when saying \"I feel terrible\"?",
+     "o": [
+      "Giving an order",
+      "Making a joke",
+      "Asking a favor",
+      "Showing regret"
+     ],
+     "a": 3,
+     "why": "A는 실수에 대한 미안한 마음을 표현해요."
+    },
+    {
+     "q": "What will they do after class?",
+     "o": [
+      "Start a new drawing",
+      "Buy colored pencils",
+      "Check whether the drawing dried",
+      "Go to the art show"
+     ],
+     "a": 2,
+     "why": "B가 'Let's check it after class'라고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Choosing a Science Project",
+   "text": "A: We need to choose a project for the science fair. Any ideas?\nB: What about testing which paper towel soaks up the most water?\nA: That's simple, but many students did it last year. Let's try something different.\nB: Then how about growing beans in different kinds of light?\nA: I like that. We can put one pot in the sun and one in a dark closet.\nB: We should measure the plants every two days and write down the numbers.\nA: Right. I'll buy the seeds if you bring the pots.\nB: Sounds fair. Let's start this weekend.",
+   "qs": [
+    {
+     "q": "What will B bring?",
+     "o": [
+      "The seeds",
+      "The paper towels",
+      "The pots",
+      "A ruler"
+     ],
+     "a": 2,
+     "why": "A가 씨앗을 사고 B가 화분을 가져오기로 해요."
+    },
+    {
+     "q": "What will the experiment probably show?",
+     "o": [
+      "Which towel is cheapest",
+      "How light changes plant growth",
+      "How water becomes ice",
+      "Why beans taste sweet"
+     ],
+     "a": 1,
+     "why": "햇빛 아래와 어두운 곳에 둔 콩의 자람을 비교하므로 빛이 성장에 미치는 영향을 보여 줘요."
+    },
+    {
+     "q": "What does \"soaks up\" mean here?",
+     "o": [
+      "Pours out a liquid",
+      "Takes in a liquid",
+      "Cleans off dirt",
+      "Heats up water"
+     ],
+     "a": 1,
+     "why": "종이 타월이 물을 빨아들인다는 뜻이에요."
+    },
+    {
+     "q": "Why does A say \"many students did it last year\"?",
+     "o": [
+      "To praise the idea",
+      "To give a reason for saying no",
+      "To ask for help",
+      "To change the date"
+     ],
+     "a": 1,
+     "why": "A는 흔한 주제라는 이유를 들어 첫 번째 아이디어를 정중히 거절해요."
+    },
+    {
+     "q": "What must happen before they can measure the plants?",
+     "o": [
+      "They must plant the seeds",
+      "They must take a test",
+      "They must visit the fair",
+      "They must dry the pots"
+     ],
+     "a": 0,
+     "why": "식물을 재려면 먼저 씨앗을 심어 자라게 해야 해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Booking a Dental Visit",
+   "text": "A: Good morning, Hillside Dental Clinic. How may I help you?\nB: Hello. I'd like to make an appointment for my cleaning.\nA: Certainly. Are you free on Tuesday afternoon?\nB: I have a piano lesson until four. Is there anything later?\nA: We have an opening at five. Would that work?\nB: That's perfect. The lesson is near the clinic, so I can walk over.\nA: Please arrive ten minutes early to fill out a form.\nB: Got it. Thank you.",
+   "qs": [
+    {
+     "q": "What does B want to make an appointment for?",
+     "o": [
+      "A broken tooth",
+      "A piano lesson",
+      "A cleaning",
+      "A school form"
+     ],
+     "a": 2,
+     "why": "B는 'an appointment for my cleaning'이라고 말해요."
+    },
+    {
+     "q": "When should B arrive at the clinic?",
+     "o": [
+      "At ten past four",
+      "At five thirty",
+      "At four",
+      "At ten to five"
+     ],
+     "a": 3,
+     "why": "예약은 5시이고 10분 일찍 오라고 했으므로 4시 50분이에요."
+    },
+    {
+     "q": "What does \"opening\" mean in the dialogue?",
+     "o": [
+      "A door",
+      "The start of a show",
+      "An available time",
+      "A new job"
+     ],
+     "a": 2,
+     "why": "예약할 수 있는 빈 시간이라는 뜻이에요."
+    },
+    {
+     "q": "Why does A ask \"Would that work?\"",
+     "o": [
+      "To offer a different clinic",
+      "To end the talk",
+      "To ask about the lesson",
+      "To check if the time suits B"
+     ],
+     "a": 3,
+     "why": "A는 제안한 시간이 B에게 맞는지 확인해요."
+    },
+    {
+     "q": "What will B do first after arriving?",
+     "o": [
+      "Pay the bill",
+      "Clean the teeth",
+      "Fill out a form",
+      "Wait for a lesson"
+     ],
+     "a": 2,
+     "why": "A는 도착하면 서류를 작성해야 한다고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "At the Ticket Window",
+   "text": "A: Hi. I need two tickets to the lake town, please.\nB: Round trip or one way?\nA: Round trip. We'll come back tonight.\nB: The last train home leaves at 9:15. Please don't miss it, or you'll have to stay overnight.\nA: Thanks for the warning. How much is it?\nB: Twelve dollars each. Children under ten ride for half price.\nA: My sister is eight, so that's one full ticket and one half-price ticket.\nB: Exactly. That will be eighteen dollars. Platform three, in fifteen minutes.",
+   "qs": [
+    {
+     "q": "How much will A pay in total?",
+     "o": [
+      "Eighteen dollars",
+      "Twelve dollars",
+      "Twenty-four dollars",
+      "Six dollars"
+     ],
+     "a": 0,
+     "why": "어른 표 12달러와 어린이 반값 6달러를 합쳐 18달러예요."
+    },
+    {
+     "q": "What can we infer about the travelers?",
+     "o": [
+      "One of them is younger than ten",
+      "Both are children",
+      "They live in the lake town",
+      "They have no money"
+     ],
+     "a": 0,
+     "why": "A의 여동생이 8살이라 반값 표를 사는 것으로 보아 한 사람이 10세 미만이에요."
+    },
+    {
+     "q": "What does \"round trip\" mean?",
+     "o": [
+      "Going by a circle road",
+      "Traveling at night",
+      "Moving very fast",
+      "Going and coming back"
+     ],
+     "a": 3,
+     "why": "갔다가 돌아오는 왕복 여행이라는 뜻이에요."
+    },
+    {
+     "q": "Why does B mention the last train?",
+     "o": [
+      "To sell more tickets",
+      "To warn A about the time",
+      "To praise the train",
+      "To ask about the price"
+     ],
+     "a": 1,
+     "why": "막차를 놓치면 하룻밤 묵어야 한다고 주의를 주는 거예요."
+    },
+    {
+     "q": "What should A do next?",
+     "o": [
+      "Buy more tickets",
+      "Wait for the night train",
+      "Go to platform three",
+      "Return home now"
+     ],
+     "a": 2,
+     "why": "B가 15분 뒤 3번 승강장이라고 안내해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Returning Shoes",
+   "text": "A: Hello. I bought these shoes last week, but they're too small.\nB: I'm sorry to hear that. Do you have the receipt?\nA: Yes, here it is. I only wore them inside the house.\nB: Thanks. They look new. Would you like a bigger size, or your money back?\nA: A bigger size, please. I need them for the school trip on Saturday.\nB: Let me check the storeroom. We have one pair left in your size, I think.\nA: I hope so! I really like the color.\nB: You're lucky. Here they are. Please try them on first.",
+   "qs": [
+    {
+     "q": "Why is A returning the shoes?",
+     "o": [
+      "They are too loud",
+      "They are too small",
+      "They are the wrong color",
+      "They are broken"
+     ],
+     "a": 1,
+     "why": "A는 신발이 너무 작다고 말해요."
+    },
+    {
+     "q": "Why does A choose a bigger size instead of a refund?",
+     "o": [
+      "A dislikes the shop",
+      "A lost the money",
+      "A wants a different color",
+      "A needs shoes soon"
+     ],
+     "a": 3,
+     "why": "토요일 학교 여행에 신어야 해서 환불 대신 교환을 택해요."
+    },
+    {
+     "q": "What is a \"receipt\"?",
+     "o": [
+      "A list of shop rules",
+      "A shopping bag",
+      "A discount coupon",
+      "A paper that shows a purchase"
+     ],
+     "a": 3,
+     "why": "물건을 샀다는 것을 보여 주는 영수증이에요."
+    },
+    {
+     "q": "Why does A say \"I only wore them inside the house\"?",
+     "o": [
+      "To show the shoes are not damaged",
+      "To ask for a lower price",
+      "To say the floor is dirty",
+      "To refuse a bigger size"
+     ],
+     "a": 0,
+     "why": "신발이 거의 새것이라 교환받을 수 있음을 설득하려는 말이에요."
+    },
+    {
+     "q": "What will A probably do next?",
+     "o": [
+      "Try on the new pair",
+      "Pay again",
+      "Go home without them",
+      "Ask for a smaller size"
+     ],
+     "a": 0,
+     "why": "B가 먼저 신어 보라고 하며 신발을 건네요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Park Cleanup Plan",
+   "text": "A: Are you coming to the park cleanup on Saturday?\nB: I'd like to, but I have a swimming lesson at ten.\nA: The cleanup starts at eight and ends at eleven. Could you come for the first hour?\nB: That should work. What do I need to bring?\nA: Gloves and a hat. The club will provide the bags.\nB: Great. Is there anything I should wear?\nA: Old shoes, because the grass by the pond is muddy.\nB: Okay. I'll ask my cousin to join us too.",
+   "qs": [
+    {
+     "q": "What will the club provide?",
+     "o": [
+      "The gloves",
+      "The hats",
+      "The bags",
+      "The old shoes"
+     ],
+     "a": 2,
+     "why": "A는 장갑과 모자는 가져오고 쓰레기 봉투는 동아리가 준비한다고 말해요."
+    },
+    {
+     "q": "About how long will B probably stay?",
+     "o": [
+      "About three hours",
+      "Until noon",
+      "About one hour",
+      "Only ten minutes"
+     ],
+     "a": 2,
+     "why": "수영 수업이 10시이고 A가 처음 한 시간만 오라고 해서 약 한 시간 머물 거예요."
+    },
+    {
+     "q": "What does \"provide\" mean here?",
+     "o": [
+      "Remove",
+      "Return",
+      "Supply",
+      "Count"
+     ],
+     "a": 2,
+     "why": "동아리가 봉투를 마련해 준다는 뜻이에요."
+    },
+    {
+     "q": "Why does A ask \"Could you come for the first hour?\"",
+     "o": [
+      "To make B leave early",
+      "To cancel the cleanup",
+      "To ask B to teach swimming",
+      "To find a way for B to join"
+     ],
+     "a": 3,
+     "why": "수영 수업이 있는 B도 참여할 수 있도록 방법을 찾아 주는 말이에요."
+    },
+    {
+     "q": "What will B do next?",
+     "o": [
+      "Buy new gloves",
+      "Cancel the lesson",
+      "Call the club",
+      "Ask a cousin to join"
+     ],
+     "a": 3,
+     "why": "B는 사촌에게 같이 가자고 부탁하겠다고 말해요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "A Microphone Problem",
+   "text": "A: Can you hear me? I think my microphone is off.\nB: I can see your mouth moving, but there's no sound.\nA: Let me click the icon at the bottom. Is it working now?\nB: Still nothing. Maybe you should check the settings.\nA: Oh, I see the problem. Another headset was selected.\nB: Great. Try again now.\nA: Hello? Hello! Can you hear me?\nB: Loud and clear. Now, shall we start the group talk?",
+   "qs": [
+    {
+     "q": "What was wrong with the microphone?",
+     "o": [
+      "The wrong headset was chosen",
+      "The cable was cut",
+      "The battery was empty",
+      "The room was too noisy"
+     ],
+     "a": 0,
+     "why": "A는 설정에서 다른 헤드셋이 선택되어 있었다는 문제를 찾아요."
+    },
+    {
+     "q": "How are the speakers talking?",
+     "o": [
+      "Through a video call",
+      "By letter",
+      "Face to face in a room",
+      "On a bus"
+     ],
+     "a": 0,
+     "why": "B가 A의 입이 움직이는 것은 보이지만 소리가 없다고 해서 화상 통화임을 알 수 있어요."
+    },
+    {
+     "q": "What does \"Loud and clear\" mean?",
+     "o": [
+      "Too noisy to bear",
+      "Very far away",
+      "Easy to hear well",
+      "Hard to understand"
+     ],
+     "a": 2,
+     "why": "소리가 잘 또렷하게 들린다는 뜻이에요."
+    },
+    {
+     "q": "Why does B say \"Maybe you should check the settings\"?",
+     "o": [
+      "To blame A",
+      "To end the lesson",
+      "To ask for a new mic",
+      "To suggest a way to fix it"
+     ],
+     "a": 3,
+     "why": "클릭해도 소용이 없자 B가 해결 방법을 제안해요."
+    },
+    {
+     "q": "What did A do before checking the settings?",
+     "o": [
+      "Clicked the icon",
+      "Left the call",
+      "Bought a headset",
+      "Called a teacher"
+     ],
+     "a": 0,
+     "why": "A는 먼저 아래의 아이콘을 눌러 보았고 그래도 안 되자 설정을 확인했어요."
+    }
+   ]
+  },
+  {
+   "k": "d",
+   "title": "Planting the Garden",
+   "text": "A: Why are you putting the tomato plants by the fence?\nB: They need lots of sun, and that side of the yard gets light all afternoon.\nA: Makes sense. What about the lettuce?\nB: I'll plant it under the tree. Lettuce burns in strong sun.\nA: Won't the tree's roots take the water?\nB: That's possible. So I'll water the lettuce a little every evening.\nA: Let me help. I can carry the water cans.\nB: Thanks. Could you bring the small shovel first?",
+   "qs": [
+    {
+     "q": "Why does B plant the tomatoes by the fence?",
+     "o": [
+      "That spot gets sun all afternoon",
+      "It is far from the tree",
+      "The fence keeps out rain",
+      "The soil there is wet"
+     ],
+     "a": 0,
+     "why": "토마토는 햇빛이 많이 필요하고 그 쪽은 오후 내내 햇빛이 들어요."
+    },
+    {
+     "q": "What can we infer about lettuce?",
+     "o": [
+      "It needs strong sun",
+      "It never needs water",
+      "It grows better in some shade",
+      "It grows only in winter"
+     ],
+     "a": 2,
+     "why": "강한 햇빛에 상추가 타므로 그늘이 있는 곳에서 더 잘 자란다고 추론할 수 있어요."
+    },
+    {
+     "q": "What does \"take the water\" mean here?",
+     "o": [
+      "Carry water in cans",
+      "Borrow water for a while",
+      "Accept water as a gift",
+      "Use up the water for themselves"
+     ],
+     "a": 3,
+     "why": "나무뿌리가 물을 흡수해 버릴 수 있다는 뜻이에요."
+    },
+    {
+     "q": "What is A doing with \"Won't the tree's roots take the water?\"",
+     "o": [
+      "Giving a thank-you",
+      "Making an order",
+      "Raising a concern",
+      "Telling a story"
+     ],
+     "a": 2,
+     "why": "A는 상추가 물을 못 얻을까 봐 걱정을 제기해요."
+    },
+    {
+     "q": "What will A do first?",
+     "o": [
+      "Carry the water cans",
+      "Plant the lettuce",
+      "Water the tomatoes",
+      "Bring the small shovel"
+     ],
+     "a": 3,
+     "why": "B가 먼저 작은 삽을 가져와 달라고 부탁해요."
+    }
+   ]
+  }
+ ]
+}
