@@ -1,0 +1,31 @@
+// KOREAN REVIEW Worker: the unpublished Korean material (bank, K7-K10, K6->K7 bridge) for reviewers only. Never used for production.
+//   Deploy:  npx wrangler deploy --config wrangler.korean-review.jsonc     (after `npm run build`)
+// Same artifact shape as production; differences are runtime bindings only:
+//   APP_ENV=staging            lets the learning sites be reached by path (/study/korean) on this *.workers.dev host (no routes, no custom domain)
+//   KOREAN_REVIEW_MODE=1       enables the review console (lib/learn/review/access.ts); every other host answers 404 for it
+//   LEARN_SUPABASE_*           the STAGING Supabase project (reviewer sign-in; accounts of the staging project only). EXPECTED_* pin the project.
+// Worker secrets (never here): LEARN_SUPABASE_PUBLISHABLE_KEY, LEARN_SUPABASE_SECRET_KEY.
+// Per deployment, set (not committed): KOREAN_REVIEWER_EMAILS = comma separated e-mail addresses of the reviewers, e.g.
+//   npx wrangler secret put KOREAN_REVIEWER_EMAILS --config wrangler.korean-review.jsonc
+// Reviewers also pass if they have a row in learn_staff_users of the staging project.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "life-help-korean-review",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    "run_worker_first": ["/favicon.ico", "/learn-content/*"]
+  },
+  "vars": {
+    "APP_ENV": "staging",
+    "KOREAN_REVIEW_MODE": "1",
+    "LEARN_SUPABASE_URL": "https://wreebowcbiymodswajwe.supabase.co",
+    "EXPECTED_LEARN_SUPABASE_REF": "wreebowcbiymodswajwe",
+    "SERVICE_CORE_SUPABASE_URL": "https://wreebowcbiymodswajwe.supabase.co",
+    "EXPECTED_SERVICE_CORE_SUPABASE_REF": "wreebowcbiymodswajwe"
+  },
+  "observability": { "enabled": true, "head_sampling_rate": 1 }
+}
