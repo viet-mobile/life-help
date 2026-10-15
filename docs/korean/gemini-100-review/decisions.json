@@ -1,0 +1,1688 @@
+{
+ "source": "origin/work/korean-bank-6level-expansion@1dfff673b27dbd82210ee3f6f21b7a7d47edcecb",
+ "reviewer": "AI (Claude) independent blind + informed reviewers; NOT teacher/native review",
+ "counts": {
+  "adopt": 9,
+  "revise": 83,
+  "hold": 8
+ },
+ "decisions": [
+  {
+   "id": "kr-rev-001",
+   "claimedGrade": "1급",
+   "internalLevel": "K1",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Letter-class item: answer is identified by seeing 'ㅋ' in 카드; no sound needed.",
+    "Hint 1 lists ㅋ,ㅌ,ㅍ,ㅊ which singles out 카드 (leak).",
+    "Near-duplicate family with 002/003."
+   ],
+   "fix": "Relabel as 자음 분류(읽기). Hint 1 -> '평음/경음/격음의 차이를 떠올리세요'. Or add real audio and make it a listening item.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-002",
+   "claimedGrade": "1급",
+   "internalLevel": "K1",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "Prompt names 'ㅃ' and the key 빵 is the only option containing ㅃ: pure letter matching, no distinction skill.",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Hint 2 ('ㅂ이 두 번 겹친') gives the answer; near-duplicate of 001/003."
+   ],
+   "fix": "Do not publish; redesign (e.g. choose the word read with a tense onset among 방/빵/팡 only with audio) or merge into 001/003 family.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-003",
+   "claimedGrade": "1급",
+   "internalLevel": "K1",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique answer verified (달-딸); 탈-딸=격음-경음, 불-풀=평음-격음, 칼-갈=격음-평음.",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Hint 1 states '평음(ㄷ)과 경음(ㄸ)' which gives the answer pair; terminology mixes 예사소리/평음 and 된소리/경음 inconsistently."
+   ],
+   "fix": "Unify terms; hint 1 -> '앞 낱말은 보통 소리, 뒤 낱말은 힘을 주는 소리'; relabel domain as 자음 분류; no listening claim.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-004",
+   "claimedGrade": "1급",
+   "internalLevel": "K1",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Answer 옷 [옫] unique (입 [ㅂ], 방 [ㅇ], 달 [ㄹ]).",
+    "Terminology '대표음' is above 1급; 읽기 1급 5번 only requires awareness that sound differs from spelling.",
+    "Hint 1 lists ㅅ among the finals, singling out 옷 (leak); hint 2 states the answer.",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening."
+   ],
+   "fix": "Regrade to 2급 or reword to '받침이 [ㄷ]으로 소리 나는 것'; replace hint 1 with a rule-free cue; relabel domain.",
+   "blindNote": "Requires knowing 옷 -> [옫] (ㅅ final -> ㄷ); written-form reading not self-evident for learners; no audio needed but rule-dependent. Not NOAUDIO strictly; low flag."
+  },
+  {
+   "id": "kr-rev-005",
+   "claimedGrade": "1급",
+   "internalLevel": "K1",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique: 나무 [나무]; 학생 [학쌩], 한국어 [한구거], 같이 [가치].",
+    "Supported by 읽기 1급 5번 (발음과 표기가 다를 수 있음).",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Hint 2 states the answer; 같이 [가치] (구개음화) may be too hard as a 1급 distractor."
+   ],
+   "fix": "Relabel domain; hint 2 -> generic; consider swapping 같이 for a simpler 연음 word (음악 -> [으막])",
+   "blindNote": "Answer relies on rules knowledge (한국어 [한구거], 학생 [학쌩], 같이 [가치]); stem 'completely same' ok. Wording '낱말' fine."
+  },
+  {
+   "id": "kr-rev-006",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Options and prompt are already listed in the correct order (저는 / 학생 / 입니다): trivially solved, ordering is not practiced.",
+    "'학생 입니다' splits the copula from the noun; standard spelling is 학생입니다 (spacing error taught).",
+    "Domain '쓰기(어순)' is mislabeled: tile ordering is recognition/ordering, not writing production (not 쓰기 1급 3~5번).",
+    "EN prompt gives the sentence gloss but vi/ja/zh do not (inconsistent).",
+    "Hint 2 calls 입니다 '서술격 조사' - ok but jargon for 1급."
+   ],
+   "fix": "Shuffle presented tiles; use tile '학생입니다' (or '학생이에요'); relabel '문장 순서 배열(읽기/문법)'; make all four translation prompts carry the same gloss or none.",
+   "blindNote": "입니다 spacing: standard is '학생입니다' attached; split tokens fine for ordering. Unique order."
+  },
+  {
+   "id": "kr-rev-007",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "동생이 사과를 먹어요 is the only SOV default but '사과를 동생이 먹어요' is also natural in Korean (scrambling); more than one defensible order.",
+    "Tiles listed in answer order (w1..w3) and shown order differs, ok, but explanation '주어(SOV: ...)' is garbled.",
+    "Mislabeled as writing; ordering only.",
+    "ja prompt lacks the gloss that en/vi/zh have."
+   ],
+   "fix": "Add instruction '주어-목적어-서술어의 기본 어순으로' or accept both orders; fix explanation; relabel; harmonize glosses.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-008",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Four tiles allow several natural orders (도서관에서 민수가 책을 읽어요; 민수가 책을 도서관에서 읽어요).",
+    "Hint 1 spells out the entire answer order (leak).",
+    "Mislabeled as writing; K3 vs 007 K2 progression ok."
+   ],
+   "fix": "Fix first tile or accept the natural variants; replace hint 1; relabel domain.",
+   "blindNote": "Alternate acceptable order: w2,w1,w3,w4 (도서관에서 민수가 책을 읽어요)."
+  },
+  {
+   "id": "kr-rev-009",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "'저는 베트남에 왔습니다' is grammatical ('came to Vietnam'), so distractor 에 is defensible without context.",
+    "en prompt includes the blank sentence but vi/ja/zh prompts omit it (unsolvable if translated prompt is displayed).",
+    "Grade ok: 읽기 1급 4~5번 / 말하기 소개."
+   ],
+   "fix": "Add context line e.g. '고향이 어디예요? -> 저는 베트남____ 왔습니다' or replace 에 with 와; keep sentence in all locales.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-010",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Prompt says '고유어 수사' but the key 세 is a 수관형사; '밑줄 친 부분' but there is a blank.",
+    "'사과 삼 개 주세요' is acceptable in speech, so 삼 is not clearly wrong.",
+    "'세번째' lacks spacing (세 번째) and is a different category.",
+    "Hint 1/2 give the 셋->세 rule and thus the answer; en/vi/ja/zh prompts omit the sentence '사과 ____ 개 주세요'."
+   ],
+   "fix": "Prompt '알맞은 수 관형사'; distractors 하나/셋/한/네 (clearly wrong); include sentence in all locales.",
+   "blindNote": "'세' correct before classifier 개; '셋' is the standalone form. Option d '세번째' is misspelled spacing (세 번째) and distractor is obviously wrong. Stem says '밑줄 친' but there is a blank, not underline."
+  },
+  {
+   "id": "kr-rev-011",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Unique and natural; 읽기/말하기 1급 인사 appropriate.",
+    "Reading-based dialogue completion, not speaking assessment.",
+    "[systemic] vi/ja/zh-Hans prompts drop the Korean stimulus (dialogue/passage/blank sentence) and en translates it; keep Korean stimulus in a separate non-translated field."
+   ],
+   "fix": "None required beyond systemic translation convention.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-012",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique (실례지만); distractors clearly inappropriate.",
+    "Hint 2 gives English 'excuse me' (mixes learner language into Korean-language hint and gives the answer).",
+    "Blank at start of utterance with comma-ended options: punctuation 'a, b, c' unnatural for 어서 오세요, ending.",
+    "[systemic] vi/ja/zh-Hans prompts drop the Korean stimulus (dialogue/passage/blank sentence) and en translates it; keep Korean stimulus in a separate non-translated field."
+   ],
+   "fix": "Hint 2 -> '낯선 사람에게 먼저 말을 걸 때'; harmonize punctuation.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-013",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "'나이가 몇 살이에요?' is redundant/awkward; natural is '몇 살이에요?' or '나이가 어떻게 되세요?'.",
+    "Hint 1 restates that the answer is an age (leak); hint 2 names the answer type.",
+    "[systemic] vi/ja/zh-Hans prompts drop the Korean stimulus (dialogue/passage/blank sentence) and en translates it; keep Korean stimulus in a separate non-translated field."
+   ],
+   "fix": "Use '몇 살이에요?'; hint 1 -> '대답의 숫자가 무엇을 나타내는지 보세요'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-014",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Unique (두 개 주세요); natural register. Similar to 010 (사과/개/주세요) but different skill.",
+    "Option b is a nonsensical distractor but clearly wrong.",
+    "[systemic] vi/ja/zh-Hans prompts drop the Korean stimulus (dialogue/passage/blank sentence) and en translates it; keep Korean stimulus in a separate non-translated field."
+   ],
+   "fix": "None required; optionally vary the fruit to reduce overlap with 010.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-015",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique and natural.",
+    "Hint 1 gives the rule '남아 있는 사람은 가세요' which is the answer (leak).",
+    "[systemic] vi/ja/zh-Hans prompts drop the Korean stimulus (dialogue/passage/blank sentence) and en translates it; keep Korean stimulus in a separate non-translated field."
+   ],
+   "fix": "Hint 1 -> '누가 떠나고 누가 남는지 보세요'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-016",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Answer fine and grade fits 읽기 1급 4번 (짧은 생활문/메모).",
+    "Stem has two questions ('알 수 있는 내용은?' and '질문:'); hint 2 quotes the key.",
+    "en translation renders the whole Korean note in English (answer readable without reading Korean); vi/ja/zh omit the note."
+   ],
+   "fix": "Single stem; keep the Korean note untranslated in all locales; hint 2 generic.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-017",
+   "claimedGrade": "1급",
+   "internalLevel": "K2",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Prompt prints '(EXIT)' which gives the meaning away; a real 비상구 sign is not read via English.",
+    "Fits 읽기 1급 4번 (표지) otherwise; distractors ok.",
+    "Hint 1 gives the Sino-Korean gloss of 비상 ('긴급한 상황') nearly equal to the key."
+   ],
+   "fix": "Remove (EXIT); show the sign as a stimulus 'OO 비상구'; hint 1 -> 한자어 구조 only.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-018",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Negative stem; unique answer (영국 vs 미국). '한국 대학교' is unnatural (한국의 대학교).",
+    "Hint 1 points directly at the nationality line (leak); hint 2 quotes it.",
+    "en translation translates the whole passage; vi/ja/zh omit it."
+   ],
+   "fix": "Emphasize 맞지 않는 것; keep passage Korean in all locales; fix hints.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-019",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique (only 김밥 <= 5,000).",
+    "Hint 2 states the answer; menu item names romanized/translated in en/vi so target text is lost.",
+    "Fits 읽기 1급 3·4번."
+   ],
+   "fix": "Keep menu Korean in all locales; hint 2 generic.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-020",
+   "claimedGrade": "1급",
+   "internalLevel": "K3",
+   "domain": "읽기",
+   "type": "true_false",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique key (거짓). Hint 2 quotes the days.",
+    "ja translation drops the time; '主張' is a poor rendering of 내용(記述); en/zh translate the notice."
+   ],
+   "fix": "Keep notice Korean in all locales; ja '内容'; hint 2 generic.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-021",
+   "claimedGrade": "2급",
+   "internalLevel": "K4",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Answer [무를] unique, solvable by rule without audio; grade supported by 읽기 1급 5번 (could even be 1급).",
+    "Says '밑줄 친 단어' but nothing is underlined.",
+    "Missing ja and zh-Hans translations and all explanation translations (incomplete record).",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Explanation uses '형식 형태소' (jargon above learner level)."
+   ],
+   "fix": "Add ja/zh-Hans/explanation translations; drop '밑줄'; simplify explanation.",
+   "blindNote": "Stem says '밑줄 친 단어' but no underline marked; ambiguous which word (물을 vs 마셔요). 물을 -> [무를] is the answer; 물늘 is an odd distractor."
+  },
+  {
+   "id": "kr-rev-022",
+   "claimedGrade": "2급",
+   "internalLevel": "K4",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "Prompt prints [궁물]; key 국물 is the only option with ㅁ: letter-matching, no skill.",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Hint 2 gives the answer ('국물'). Only the correct option is glossed in en (국물 (broth)): answer leak.",
+    "Missing ja/zh-Hans and explanation translations; nasalization duplicated by 023; textbook classic."
+   ],
+   "fix": "Redesign: give spelling 국물 and ask for its pronunciation among [국물/궁물/굼물/국뭄]; add all translations; merge with 023.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-023",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "Options already show pronunciations and only [밤물] has ㅁ: trivially visible.",
+    "Shown pronunciations of other options are correct but make the item a transcription-reading task, not discrimination.",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening.",
+    "Missing ja/zh-Hans/explanation translations; duplicates 022 skill."
+   ],
+   "fix": "Redesign: spelling-only options and ask for the actual pronunciation; add translations.",
+   "blindNote": "Pronunciation shown in brackets in options; answer depends on written transcriptions given, no audio. NOAUDIO-lite: bracket transcriptions are provided so answerable. 밥그릇 [밥끄륻] is a debatable transcription (standard [밥끄륻] ok)."
+  },
+  {
+   "id": "kr-rev-024",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "Prompt prints [실라]; 신라 is the only option containing ㄹ: pure letter matching.",
+    "Only the key is glossed in en/vi (신라 (Silla)): answer leak.",
+    "Hint 2 effectively gives the answer; missing ja/zh-Hans/explanation translations; 신라 [실라] is a textbook classic."
+   ],
+   "fix": "Redesign: options 칼날/설날/난로/연락 with pronunciations to choose; add translations.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-025",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Unique answer 하늘 but odd-one-out format leaks: only the key lacks a bracketed pronunciation; en glosses only the key.",
+    "Hint 2 calls 하늘 '평음' (starts with ㅎ) - misleading.",
+    "Negative stem; 식당 [식땅] fine, 학교 [학꾜], 입구 [입꾸] correct; missing ja/zh-Hans/explanation translations.",
+    "[domain label] '발음 변별' implies listening discrimination, but the item is solved from spelling/rule knowledge without audio; relabel as 표기-발음 규칙(읽기 영역, 읽기 1급 5번) and never claim listening."
+   ],
+   "fix": "Give all options as spelling only or all with brackets; fix hint; add translations.",
+   "blindNote": "Stem gives answer away: only option 'a' lacks a bracketed pronunciation while b,c,d all show one. NOAUDIO not needed but answer-leak via format."
+  },
+  {
+   "id": "kr-rev-026",
+   "claimedGrade": "2급",
+   "internalLevel": "K4",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Hint 2 states the answer outright (acceptable only as the last hint).",
+    "vi prompt omits the passage text that en includes (inconsistent)."
+   ],
+   "fix": "",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-027",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Hint 2 states the answer outright (last hint, acceptable).",
+    "Translated prompts drop the clinic-hours passage; Korean passage must stay in the page as target text."
+   ],
+   "fix": "",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-028",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Passage is internally odd: '시청역에서 2호선으로 갈아타실 승객은 이번 역에서 내리시기 바랍니다' does not say which station is 'this station', so the key 시청역 is only a copy-the-noun match, not a defensible reading inference.",
+    "Pure keyword lookup; hint 2 quotes the passage and gives the answer.",
+    "vi/en translate station names inconsistently (City Hall vs Ga Hongdae for 홍대입구)."
+   ],
+   "fix": "Rewrite passage as a real announcement: '이번 역은 시청, 시청역입니다. 2호선으로 갈아타실 승객은 이번 역에서 내리시기 바랍니다. 내리실 문은 오른쪽입니다.' Keep the question, make hint 2 non-quoting (e.g. '방송의 첫 문장에서 현재 역 이름을 찾으세요'). Optionally ask 'which door side' for more inference.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-029",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "vi option b says 'Ngày giờ tổ chức' (date and time) but ko/en say date and weekday (날짜와 요일): translation mismatch.",
+    "Hint 2 gives the answer (last hint, acceptable).",
+    "'참석할 사람의 이름' also unknown for the host's name; acceptable but could be sharpened ('초대받은 사람들의 이름')."
+   ],
+   "fix": "vi option b: 'Ngày và thứ tổ chức'. Sharpen option a to '초대받은 사람의 이름'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-030",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "읽기",
+   "type": "true_false",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Vocabulary '법정 공휴일', '착오 없으시기 바랍니다' is above the otherwise simple 2급 level; 2급 Table 5 row 2 (일상에서 흔히 접하는 공적인 글) fits but wording should be simplified.",
+    "Options are '참 (O)/거짓 (X)' while the stem says 'O, X를 고르세요': inconsistent labels.",
+    "True/False gives 50% guessing and statement is a bare negation of the notice sentence; en/vi prompt drops the notice text.",
+    "Hint 2 gives answer (last hint)."
+   ],
+   "fix": "Replace '이용에 착오 없으시기 바랍니다' with '이용에 참고하시기 바랍니다'; unify labels (O/X); consider multiple-choice with 3 statements; include the notice in translations or keep Korean passage visible.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-031",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Dialogue order is illogical: customer already gives the full order, and then staff asks '주문하시겠습니까?'. The blank is the wrong turn, so the keyed answer does not fit the following line.",
+    "Distractors are absurd (not near-misses).",
+    "Written choice-of-expression, not a speaking assessment; do not label as 말하기.",
+    "en distractor 'Bill is wrong.' / 'Food tastes bad.' are fragments."
+   ],
+   "fix": "Reorder: 직원: '주문하시겠어요?' / 손님: ____ ; or make the blank 'ordering getting attention' line (e.g. '여기 주문할게요.') and keep 직원 reply. Polish en: 'The bill is wrong.'",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-032",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Hint 2 gives the answer (last hint).",
+    "en distractors are article-less fragments ('Doctor is kind.', 'Friend is hospitalized.'); polish to 'The doctor is kind.' / 'A friend was hospitalized.'",
+    "Distractors are easy; very common textbook dialogue (low uniqueness)."
+   ],
+   "fix": "",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-033",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 1 gives the answer pattern ('-(으)로 + 가 주세요').",
+    "vi option c 'tàu ngầm' = submarine; subway is 'tàu điện ngầm' (translation error).",
+    "en distractors are fragments ('I'll take subway.', 'Went to Seoul Station yesterday.').",
+    "Common textbook item."
+   ],
+   "fix": "Hint 1: '가려는 장소를 기사님께 부탁하는 말을 찾으세요.' vi c: 'Tôi sẽ đi tàu điện ngầm.' en c: 'I'll take the subway.' d: 'I went to Seoul Station yesterday.'",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-034",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Stem says 'asks the other's opinion' but the blank asks a time question; wording could be '약속 시각을 묻는'.",
+    "Hint 2 nearly gives the answer (last hint).",
+    "Textbook-common dialogue."
+   ],
+   "fix": "",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-035",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "en/vi distractor c loses meaning: 내일 다시 입어 볼게요 = 'I'll try it on again tomorrow', translated 'I'll try tomorrow' / 'Mai thử lại'; vi d 'Thích áo nhỏ' is fragmentary.",
+    "Key is by far the longest option (test-wiseness cue); distractors absurd.",
+    "Hint 2 repeats key phrase (last hint)."
+   ],
+   "fix": "Fix translations; make distractors parallel in length and plausible (e.g. '이 옷 얼마예요?', '다른 색깔은 없어요?', '카드로 계산할게요.').",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-036",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 1 effectively defines the answer ('본인 확인에 필요한 공식 증명서').",
+    "Distractors (음식을, 사진첩을, 가방을) are absurd, so item is trivial.",
+    "'행원' is stiff/rare as a dialogue label; use '직원'.",
+    "en/vi mark only the correct option with the Korean gloss (신분증): answer leak by format."
+   ],
+   "fix": "Use '직원'; distractors from the bank context but wrong (영수증을, 우산을 ... avoid 여권/도장 which are defensible); remove Korean gloss from only the key; hint 1: '은행에서 내 이름과 얼굴을 확인할 때 필요한 것입니다.'",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-037",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Stem says '늦어 사과할 때 가장 알맞은 표현' but the blank is the reply of the person who receives the apology, not the apology.",
+    "Distractors are unrelated set phrases (trivial).",
+    "Hint 2 gives answer (last hint).",
+    "en/vi mark key with Korean gloss only: format leak."
+   ],
+   "fix": "Stem: '상대가 늦는다고 사과할 때 괜찮다고 답하는 말은?' Remove gloss from key only.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-038",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Distractor b '걸리니까' is not clearly wrong ('감기에 걸리니까 학교에 못 갔어요' is acceptable in narrative); only 걸렸으니까 would be unnatural to check. Not exactly one defensible answer.",
+    "Hint 2 reveals '-아서/어서' (answer form).",
+    "en/vi mark key with gloss only (leak).",
+    "Overlaps topically with 039 (-아서 vs -니까)."
+   ],
+   "fix": "Replace b with '걸려도' or '걸리지만'. Hint 2: '이유를 말하는 어미이지만 명령문에는 쓰지 못하는 어미입니다.' Remove gloss from key.",
+   "blindNote": "b 걸리니까 is grammatically possible as a reason clause but less natural with a past-fact statement; a is clearly better. Stem label 연결어미 gives little away."
+  },
+  {
+   "id": "kr-rev-039",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 1 names the answer ('-(으)니까').",
+    "Stem itself states the rule, so the item reduces to label matching.",
+    "Distractor c '춥지만' is semantically nonsense, not a grammar near-miss.",
+    "Overlap with 038."
+   ],
+   "fix": "Stem: '빈칸에 알맞은 말은?' Hint 1: '뒤 문장이 명령문이면 쓸 수 없는 이유 어미가 하나 있습니다.' Replace c with '추우면서'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-040",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 1 names the answer ('-(으)려고').",
+    "Stem labels the category (의도나 목적), so just label matching.",
+    "Only one option has any purpose reading, making distractors trivial."
+   ],
+   "fix": "Remove category from stem; hint 1: '배우는 이유(목적)를 나타내는 말이 필요합니다.'",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-041",
+   "claimedGrade": "2급",
+   "internalLevel": "K4",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Grade: -지만 (contrast) is a beginner connective; internal level K4 vs 042 K6 for -고 싶다 is also inconsistent. Table 6 2급 row 5 (기본 문법 구조 단순한 문장) is general; item is closer to 1급.",
+    "Hint 2 gives answer '-지만' (last hint).",
+    "Stem gives the category ('대조'), label matching.",
+    "Distractor 어려워서 is semantically odd but acceptable."
+   ],
+   "fix": "Downgrade standardGrade to 1급 (or make the item 2급 by adding -(으)ㄴ/는데 vs -지만 contrast).",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-042",
+   "claimedGrade": "2급",
+   "internalLevel": "K6",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Grade: -고 싶다 is a beginner structure (1급), not 2급.",
+    "Distractors 가야 해요 and 갈 수 없어요 are fully acceptable sentences; unique answer exists only because the stem states 'wish', i.e. label matching.",
+    "Hint 1 names the answer ('-고 싶다')."
+   ],
+   "fix": "Downgrade to 1급 or redesign with context ('제주도 여행 계획이 있어서 기대돼요. 이번 휴가에는 ...'). Hint 1: '자기 소망을 말하는 문형을 찾으세요.'",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-043",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "Multiple natural orders: '어제 식당에서 친구와 저녁을 먹었어요', '친구와 어제 식당에서...' are equally natural; Korean adverbial order is free, so the key is not unique and explanation/hints teach a false fixed rule.",
+    "Hint 1+2 give the whole order.",
+    "Domain label '쓰기(어순)' overstates: this is reordering recognition, not writing production; must not be reported as a writing assessment (Table 6 requires producing sentences).",
+    "Option array is already in key order: shuffle in app."
+   ],
+   "fix": "Redesign: use units with truly fixed order (particle/predicate chunking, e.g. 잘 못, V-고 싶다) or accept an answer set; relabel domain '어순 배열' (not 쓰기).",
+   "blindNote": "Other orders also acceptable: 친구와 어제 식당에서 저녁을; 어제 식당에서 친구와 저녁을 etc. Free word order; only verb-final is required."
+  },
+  {
+   "id": "kr-rev-044",
+   "claimedGrade": "2급",
+   "internalLevel": "K4",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Subject/object scrambling ('매운 음식을 저는 잘 못 먹어요') is also natural, so order is not unique; only '잘 못 먹어요' is fixed.",
+    "Hint 1 gives full order.",
+    "Domain '쓰기(어순)' is not a writing/production assessment.",
+    "Option array equals key order."
+   ],
+   "fix": "Reduce to the fixed point: [잘 / 못 / 먹어요] with 저는 매운 음식을 as given prefix; hint 1: '부정 표현은 서술어 바로 앞에 붙입니다.'; relabel domain.",
+   "blindNote": "Natural: 저는 매운 음식을 잘 못 먹어요. 못 잘 order is unnatural. Stem bracket gives words in a scrambled order but 'ordering' is fine."
+  },
+  {
+   "id": "kr-rev-045",
+   "claimedGrade": "2급",
+   "internalLevel": "K5",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "'내일 아침 공항에 일찍 갈 거예요' is equally natural, so key not unique.",
+    "Hint 1 gives full order.",
+    "Only 4 chunks, easy to brute-force; near-duplicate design of 043/044.",
+    "'쓰기' label misleading (reordering, not writing); option array in key order."
+   ],
+   "fix": "Redesign or drop; if kept, accept both orders and relabel as 어순 배열 practice.",
+   "blindNote": "Alt: 일찍 내일 아침 공항에 갈 거예요 is also acceptable but less natural."
+  },
+  {
+   "id": "kr-rev-046",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Text-only: stem supplies [가치] and asks which spelling; 가시/가지/가티 are eliminated by plain spelling-sound match, so the rule (구개음화) is not needed; 'sound' is only inferable from spelling.",
+    "No audio: must not be called listening/발음 변별 in the sense of hearing; relabel as 표기-발음 규칙.",
+    "Grade: tables list no pronunciation-rule terminology at 3급; closest is Table 5 2급 row 5 (발음과 표기가 다를 수 있음을 알고 읽기), so 3급 is too high.",
+    "Hint 2 '함께를 뜻하는 말' gives answer.",
+    "en/vi gloss on key only: leak."
+   ],
+   "fix": "Restructure: '같이'의 발음은? [가치] [가티] [가시] [갇이]; use 2급 or label as 표기-발음 규칙 (reading, Table 5 row 5); hint 2 remove meaning.",
+   "blindNote": "Stem gives pronunciation [가치] and asks which written form; answer depends on knowing 같이 spelling rule. Not NOAUDIO (written pronunciation given) but requires inferring spelling; 가티 is not a word."
+  },
+  {
+   "id": "kr-rev-047",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Same weakness as 046 (answer found by spelling; 구디/구기/구리 are non-words).",
+    "Hint 2 '단단한 마음으로 굳이' is ungrammatical and mis-glosses 굳이.",
+    "en gloss 'obstinately' is inaccurate (굳이 = 'go out of one's way, particularly'); key-only gloss leaks.",
+    "Near-duplicate of 046; 굳이 is a hard adverb for a pronunciation item."
+   ],
+   "fix": "Replace with '해돋이 -> [해도지]' written-to-sound format, or merge with 046; fix hint and gloss.",
+   "blindNote": "Same as 046: pronunciation given in stem; 구디/구기 are non-words. Stem names the rule (구개음화), giving a hint."
+  },
+  {
+   "id": "kr-rev-048",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Format leak: distractors show their pronunciations in brackets ([조코] [조타] [조치]) while key shows none, so a is left by elimination; sound is inferable from spelling.",
+    "Hint 2 states answer form.",
+    "Rule is elementary (ㅎ 탈락 + ㅎ 축약 contrast) and terminology not in Table 5/3; closer to 2급 row 5.",
+    "Not listening; no audio."
+   ],
+   "fix": "Ask '좋은'의 발음은? options [조은] [조흔] [좃은] [조은에]-type realistic errors; all options bracket-only; relabel.",
+   "blindNote": "Stem names the rule and options b,c,d show pronunciations in brackets; a is the only one without brackets - answer leaks by format. Also 좋은 [조은] is ㅎ deletion, fine."
+  },
+  {
+   "id": "kr-rev-049",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Key found by visual match 닭/닥; distractors c/d show correct but different pronunciations, bracket asymmetry leaks.",
+    "Hint 2 '가금류인 닭을 고르세요' gives answer.",
+    "Stem terminology '겹받침 자음군 단순화' beyond tables; 닭 is a 1급 word.",
+    "No audio; sound derived from spelling."
+   ],
+   "fix": "Ask '닭'의 발음은? [닥] [달] [닭] [다]; same bracket format; relabel as 표기-발음 규칙.",
+   "blindNote": "Option c and d give pronunciations in brackets that are obviously not [닥]; a vs b trivial. Stem names rule."
+  },
+  {
+   "id": "kr-rev-050",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "발음 변별",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Distractors (달리기, 소리, 유리) do not contain ㄹ+ㄷ at all, so item is trivial; key bracket [갈뜽] shown in option reveals the answer.",
+    "Hint 2 names the answer word.",
+    "Vocabulary 갈등/한자어 rule is not in Tables 3-6; 3급 plausible by vocabulary only.",
+    "No audio."
+   ],
+   "fix": "Ask '갈등'의 발음은? [갈등] [갈뜽] [강등] [가르등]; avoid distractors with ㄹ+ㅅ/ㅈ (they also tensify).",
+   "blindNote": "Stem names rule; distractors have no ㄹ+ㄷ so trivially eliminated. 갈등 is a 한자어 with 된소리 (한자어 ㄹ 뒤 ㄷ rule), fine."
+  },
+  {
+   "id": "kr-rev-051",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "stem has two inconsistent questions: first line asks generic '한국의 계절적 특징으로 알맞은 것은?' but the actual question is about summer only",
+    "vi options c/d truncated ('Mát mẻ','Ấm áp') losing 'clear sky' and 'flowers bloom'; en prompt matches only the second question",
+    "passage is simple-structured (closer to 2급 row 4) but 고온다습 vocabulary supports 3급: acceptable",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Delete the first-line question; use '다음 글을 읽고 질문에 답하세요.'; make vi/en distractors full meanings; keep key a.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-052",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "hint 1 states the two purposes (액운 방지, 이웃 인사), i.e. essentially gives option a",
+    "distractors b/c/d are absolute-word strawmen (만/전혀/가장) and trivially wrong; key is also the longest option",
+    "vi b/c lack subjects ('Chỉ thích bánh gạo đậu đỏ', 'Không bao giờ giao lưu')",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Rewrite hint 1 to 'ask what the custom was for'; write distractors of equal length and plausibility (e.g. 떡값이 비싸서 생긴 풍습이다); add subjects in vi.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-053",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "hint 1 lists all three steps, giving the whole key",
+    "option d (뚜껑을 열어 둔 채로 던져 버린다) is odd/unnatural wording; option a omits cap rule but still unique",
+    "passage is a simple numbered notice (2급 row 4 text type) with 3급 vocabulary (압착, 부착): grade acceptable",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Hint 1: '안내문의 번호 순서를 보세요.'; rewrite d as '뚜껑을 연 채로 배출한다'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-054",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "en option a 'completely do not use' is ungrammatical English",
+    "hint 1 quotes the contradicting sentence, pointing straight at the key; hint 2 states the key outright",
+    "negative stem (일치하지 않는 것) is fine, but only option a contains the absolute word '완전히'",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "EN: 'Modern apartments do not use the Ondol principle at all.'; hint 1 -> 'a~d를 글과 하나씩 비교하세요'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-055",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "읽기",
+   "type": "true_false",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "claim '몸을 보신하기 위해' is unnatural/redundant (보신하다 already means 몸을 보하다) and uses a word not in the passage",
+    "claim almost copies the passage so the item is a near-verbatim echo with 50% guessing",
+    "복날 described as '기간' though it is three specific days; en/vi prompts reproduce only the claim, not the passage (acceptable) but 'Boknal' is a bare transliteration",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Claim: '한국인들은 복날에 체력을 보충하려고 삼계탕을 먹는다.' or a false variant (차가운 음식 위주); explain 초복/중복/말복 as 3 days.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-056",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "vi option d error: 'tàu ngầm' = submarine; must be 'tàu điện ngầm'",
+    "hint 1 gives the key fact '30분 이내'; hint 2 repeats it",
+    "en/vi options b-d truncated fragments ('Leave cap off.'-style)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Fix vi to 'Chỉ áp dụng khi chuyển giữa các tuyến tàu điện ngầm'; hint 1 -> '환승 조건(시간, 횟수)을 표시하며 읽으세요'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-057",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "distractors 규칙/계획/기술 are semantically absurd beside '따뜻한', so the item is trivial",
+    "hint 1 defines 정 outright; explanation mentions '물건값을 깎아주거나' which is not in the passage",
+    "en/vi stem paraphrase 'The warm affection ... is called ____' reveals the meaning of the answer",
+    "정 is a very common textbook culture item",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Use same-register culture nouns as distractors (눈치, 예의, 체면 – check each fails); remove definition from hint 1; align explanation with 덤; reword translated stem neutrally.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-058",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "stem names the target form (e.g. '-자고 하다') so the item reduces to matching the label to the ending",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "domain '대화' is mislabeled: this is receptive multiple-choice grammar/pragmatics recognition, not speaking/dialogue production; do not claim a 말하기 assessment",
+    "hint 2 names the exact ending; near-duplicate in concept of 064 (-ㄴ다고 해요 vs -ㄴ대요)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Remove '평서문 간접화법(-다고 하다)' from stem: '대화에 맞게 ____에 들어갈 말은?'; gloss all options equally; relabel domain 문법.",
+   "blindNote": "Stem label names the grammar (-다고 하다), giving answer away; context '온대요?' also fits only a statement."
+  },
+  {
+   "id": "kr-rev-059",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "stem names the target form (e.g. '-자고 하다') so the item reduces to matching the label to the ending",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "domain '대화' is mislabeled: this is receptive multiple-choice grammar/pragmatics recognition, not speaking/dialogue production; do not claim a 말하기 assessment",
+    "distractors answer 'what did she ask?' with 했어요 (said), wrong only by verb meaning—acceptable but easy",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Stem without form label; equal glosses; relabel domain 문법.",
+   "blindNote": "Stem label names -냐고 하다, giving answer away; distractors are all different clause types."
+  },
+  {
+   "id": "kr-rev-060",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "stem names the target form (e.g. '-자고 하다') so the item reduces to matching the label to the ending",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "domain '대화' is mislabeled: this is receptive multiple-choice grammar/pragmatics recognition, not speaking/dialogue production; do not claim a 말하기 assessment",
+    "en option a drops '꼭' (definitely)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Stem '대화의 빈칸에 알맞은 말은?'; equal glosses; relabel domain.",
+   "blindNote": "Stem label names -(으)라고 하다, giving answer away."
+  },
+  {
+   "id": "kr-rev-061",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "stem names the target form (e.g. '-자고 하다') so the item reduces to matching the label to the ending",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "domain '대화' is mislabeled: this is receptive multiple-choice grammar/pragmatics recognition, not speaking/dialogue production; do not claim a 말하기 assessment",
+    "not uniquely keyed: '다 같이 이번 주말에 등산을 간다고 했어요' is also natural, so b is defensible without the form label",
+    "timeline conflict: 가 asks about talk 'on the weekend' (주말에 ... 나누었어요) while 나 says 이번 주말(future)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Rewrite 가: '동료들이 이번 주말에 뭘 하자고 했어요?' and 나: '등산을 ____' (or add '같이'/'제안' context so only -자고 fits); drop label.",
+   "blindNote": "Stem label names -자고 하다, giving answer away."
+  },
+  {
+   "id": "kr-rev-062",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "hint 1 names '-기 마련이다', which only option a contains (key leak)",
+    "distractors b-d are insulting/absurd, trivially wrong",
+    "-기 마련이다 is arguably 4급 grammar though advice function fits 3급 (총괄목표 권유·조언)",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "domain '대화' is mislabeled: this is receptive multiple-choice grammar/pragmatics recognition, not speaking/dialogue production; do not claim a 말하기 assessment",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Hint 1: '상대의 감정에 공감하는 말을 고르세요'; add plausible but pragmatically weaker distractors (e.g. 그럴 줄 알았어요); gloss all options.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-063",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "hint 2 quotes option a verbatim ('미룰 수 있을까요?')",
+    "나's reply '다음 주에 봬요' already reveals option a ('다음 주로 미룰')",
+    "distractors rude/absurd, no near-miss politeness contrast",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "domain '대화' is mislabeled: this is receptive multiple-choice grammar/pragmatics recognition, not speaking/dialogue production; do not claim a 말하기 assessment",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Remove '다음 주에' from reply or change to '네, 알겠습니다.'; distractors like '다음 주로 미룰래요.' (too casual/unilateral); hint 2 -> '완곡하게 양해를 구하는 표현'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-064",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "stem names the target form (e.g. '-자고 하다') so the item reduces to matching the label to the ending",
+    "distractor b '결혼했자요' is a non-word (trivially excluded)",
+    "en/vi options b-d left as raw Korean while a is glossed -> leak",
+    "duplicates concept of 058 (indirect statement)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Replace b with valid-but-wrong form (결혼했대요 if time contradicts via '다음 달에'); drop '(-대요)' from stem; equal glosses.",
+   "blindNote": "Distractors b (결혼했자요) and d (결혼하냬요) are non-standard/odd forms; stem names '-대요'. Easy."
+  },
+  {
+   "id": "kr-rev-065",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "-아/어 보이다 is a basic 2급 pattern; 3급 label too high",
+    "hint 1 names '-아/어 보이다' (answer pattern)",
+    "distractor '-기 마련이에요' recycled from 062/067",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Relabel 2급 (표 5 row 2 / 2급 grammar) or raise difficulty; hint 1 -> '얼굴을 보고 하는 말이에요'.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-066",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "sentence '한국어는 연습을 ... 실력이 늘어요' has a subject mismatch",
+    "stem defines the ending (앞의 조건이 증가함에 따라...) and hint 2 names '-ㄹ수록'; plus hint 1 'the more... the more' English inside Korean hint (language mixing)",
+    "classic textbook item; distractor 하느라고 is not even a plausible slot filler",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Sentence: '한국어 실력은 연습을 ____ 늘어요.'; hints in Korean only; use closer distractors (-(으)면, -(으)ㄹ 때마다).",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-067",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "hint 1 explains pattern meaning; fine but hint 2 states the exact key",
+    "'알았으면 ... 걸 그랬어요' slightly redundant",
+    "distractor '-기 마련이에요' recycled; 법이에요 near-semantic cluster with it",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Use '비가 올 줄 몰랐어요. 우산을 ____.'; keep unique key; equal glosses.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-068",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "option sentences end in citation form ('닫히다', '닫다') – not valid sentences; use 닫혀요/닫아요",
+    "stem asks for '피동사는' but options are sentences",
+    "hint 1 names suffix '-히-' (only 닫히다 has it)",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "ko stem vs en stem inconsistent",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Stem '피동 표현이 쓰인 문장은?'; options in 해요체 ('문이 바람에 닫혀요'); hint 1 -> '주어가 동작을 직접 하는지 보세요'.",
+   "blindNote": "Stem says 피동사; answer identifiable by 닫히다 vs active verbs. Prompt is a definition, mildly gives away; item type is grammar-form recognition."
+  },
+  {
+   "id": "kr-rev-069",
+   "claimedGrade": "3급",
+   "internalLevel": "K8",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "options in citation form and mixed tense (샀다 vs -다)",
+    "stem phrase '남으로 하여금' is archaic above learner level",
+    "hint 2 states '먹이다' (key); hint 1 names '-이-' (leak)",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "textbook-common (먹이다/입히다)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Stem '다른 사람에게 동작을 시키는 문장은?'; options in 해요체; equal glosses.",
+   "blindNote": "Stem says 사동사; 먹이다 is the only causative; mild giveaway."
+  },
+  {
+   "id": "kr-rev-070",
+   "claimedGrade": "3급",
+   "internalLevel": "K7",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "distractor c '알면서도 모르는 셈이에요' is semantically defensible (second correct answer)",
+    "hint 1 names '-(으)ㄴ/는 척하다'; hint 2 uses English 'pretend' inside Korean hint",
+    "en/vi options gloss only the correct option a (parenthetical translation) while b-d stay bare/untranslated -> answer leak",
+    "textbook-common",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Replace c with a clearly wrong form (모를 만해요 / 모르기 때문이에요); hint in Korean only.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-071",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "vi translates 대리 as 'trợ lý' (assistant); use 'nhân viên cấp phó/trưởng nhóm' consistently with en 'Assistant Manager'",
+    "item is a single detail lookup; formal business text fits 표 5 4급 row 2 but task demand is 3급 row 3-level (세부 정보)",
+    "hint 2 quotes the exact answer sentence",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Fix vi term; optionally add a purpose question (글의 목적) to reach 4급 row 3.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-072",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "only batch-wide gaps: ja/zh-Hans absent; hint 1 near-gives the data comparison (acceptable)",
+    "grade 4급 fits 표 5 4급 row 2/5 (격식적 업무 글, 비교·대조); 신장/수익성 vocabulary could even be 5급",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Add ja/zh-Hans and translate hints/explanation before publishing; otherwise publishable.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-073",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "text is a short bulleted notice = 표 5 2급 row 4 (단순한 구조의 실용문) / 3급 level; 4급 not justified beyond business vocabulary",
+    "hint 2 reveals the key ('참가비 결제 관련 내용은 없습니다') and relies on outside assumption",
+    "negative 'cannot know' stem – OK, but only one absent option so unique",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Relabel 3급 or add reasoning demand (e.g., infer 숙박 여부 from 1박 2일); rewrite hint 2.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-074",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "hint 1 spells out the answer ('전자 결재 도입, 결재 시간 단축')",
+    "distractors b/c/d contradict the stated goal and are strawmen",
+    "key option mentions only one of two aims (acceptable)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Hint 1: '제목과 개선안 문장을 비교하세요'; make distractors plausible (예: 결재 단계를 줄이기 위해 대면 회의를 늘린다 - check contradiction).",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-075",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "읽기",
+   "type": "true_false",
+   "decision": "revise",
+   "grade": "too-low",
+   "problems": [
+    "legal clause ('지득한', '아니 된다', 갑/을) belongs to 표 5 5급 row 1-2 (업무 격식·전문 분야) rather than 4급",
+    "claim is a bare negation of the clause; T/F has 50% guess rate",
+    "en/vi prompt reproduces only the claim, not the clause (acceptable)",
+    "translations: ja and zh-Hans missing (only en, vi present); hints/explanation not translated"
+   ],
+   "fix": "Relabel 5급, or paraphrase clause into 4급-level language; consider 4-option MC to reduce guessing.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-076",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Fits Table 5 reading 4급 row 2/3 (formal workplace text, purpose). Minor: distractors b/c are absurd; hint 2 restates the answer words (acceptable as final hint); correct option is a near-verbatim copy of step 1 so item is pure matching."
+   ],
+   "fix": "Optional: make distractors plausible (e.g., step 2 or 3 actions rephrased).",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-077",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Speaker roles unclear: 나 refers to '팀장님께서' in third person while also promising 'I will adapt', so who adjusts to whom is confused (vi translates it as direct address 'ngài').",
+    "'비즈니스 통화' but 회신 is a written-reply act; domain 대화 is a text-only dialogue, so it must not be claimed as speaking/listening assessment (Table 4 4급 row 2 is only loosely related).",
+    "Distractors b-d are cartoonishly rude/ungrammatical ('무조건 나오시면'), so only register is tested trivially; hint 2 quotes the answer; explanation quotes a different phrase ('...감사하겠습니다').",
+    "vi/en prompt drops the dialogue and blank context."
+   ],
+   "fix": "Make 가 the 팀장 or state roles; use '연락 주시면' instead of 회신 for phone; make distractors same-register but wrong (e.g., 일정을 통보해 드리니 참석해 주시면); align explanation with option text; keep dialogue in translated prompt.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-078",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 1 says 메모로 남겨 전달 and hint 2 quotes '메모를 남겨 드릴까요?' (answer given away).",
+    "Translations en/vi append the Korean '(메모를 남겨 드릴까요?)' only to option a: answer leak and target/learner text mixing.",
+    "Distractors b/d are impolite stock rudeness; c is true information, only blunt, so 'standard business expression' is the only criterion.",
+    "vi renders 과장 as 'Trưởng phòng', same as 부장 in 079 (title inconsistency)."
+   ],
+   "fix": "Rewrite hint 1 to be about politeness of offering help without saying 메모; remove Korean parentheticals; use consistent title translation (과장=Trưởng phòng/Section chief vs 부장=Giám đốc bộ phận).",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-079",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Prompt does not state the true progress, so c ('아직 손도 못 댔습니다', honorific -ㅂ니다) is a polite honest answer and arguably defensible; only a is positive, so key relies on guessing the intended content.",
+    "b and d are rude, trivial; hint 1/2 quote answer.",
+    "'차질 없이 순조롭게' is redundant; vi b/c/d unnatural."
+   ],
+   "fix": "Add context ('일정대로 진행 중임을 보고한다') and make distractors same-register (e.g., 좀 지연되고 있어 죄송하지만 곧...) so only content/format differs; remove hint quote.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-080",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-low",
+   "problems": [
+    "Negotiation of delivery date = 협의 (Table 2 5급 총괄), vocabulary '유예', '만전을 기하다' is above 4급; grade too low.",
+    "Hint 1 describes the answer; hint 2 quotes it; d is also contradicted only by '일주일만'.",
+    "vi prompt loses dialogue; en blank reads 'if you could please ____' then option repeats 'a one-week' (cloze reading awkward).",
+    "'납기를 유예' unnatural; '납기를 연장/연기해 주시면' more natural."
+   ],
+   "fix": "Re-grade to 5급 or simplify; replace 유예 with 연기; keep dialogue in all translations; fix hints.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-081",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Option a promises compensation immediately, contradicting the manual in kr-rev-076 (apologize, investigate, then compensate) and common practice.",
+    "Near-duplicate of 076 and the same 'pick polite among rude' template as 077-079; distractors b-d are rude strawmen.",
+    "Hint 2 quotes the answer; en 'caused by delay' awkward; vi b-d truncated."
+   ],
+   "fix": "Change a to '확인 후 적절한 조치를 취하겠습니다'; differentiate from 076; merge or drop one of 077-081.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-082",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "대화",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Speaker's rank not given: '박 과장' (b) is acceptable when the speaker is higher; key is only right for equal/lower speaker.",
+    "Hint 1 spells out the formula 부서명+성+직급+님, which equals option a.",
+    "vi translations: option a glossed with Korean parenthetical, b-d left as raw Korean; en 'Park-gun' unexplained (answer marking, mixed text).",
+    "c/d absurd."
+   ],
+   "fix": "State speaker is a 대리 or same-level; make distractors plausible (박 과장님께서, 박 과장님 님); standardize translations.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-083",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Ordering item labelled domain 쓰기(어순): not a writing/production assessment; relabel as 문법·어순 배열 (recognition), Table 6 does not apply.",
+    "Chips are listed w1-w5 already in the correct order and the answer is w1..w5; if options are displayed in stored order the puzzle is pre-solved (shuffle required).",
+    "Not uniquely determined: '파일로' is a free adverbial ('파일로 요청하신 검토 의견서를 첨부하여...'); '요청하신 검토 의견서를 첨부하여 파일로 송부해 드립니다' also natural; hint 1 gives the whole order.",
+    "'첨부하여 ... 송부' semantically redundant; en/vi translation gives the finished sentence as meaning."
+   ],
+   "fix": "Shuffle options; reduce free-scrambling (e.g., fix 파일로 first via phrase chip), accept alternate orders in answer set, relabel domain, shorten hint 1.",
+   "blindNote": "Alt order also acceptable: w3,w1,w2,w4,w5 (파일로 요청하신 검토 의견서를 첨부하여 송부해 드립니다). Scrambled-order ambiguity."
+  },
+  {
+   "id": "kr-rev-084",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "hold",
+   "grade": "too-high",
+   "problems": [
+    "Word order not unique: time/place/object adverbials scramble freely ('대회의실에서 차주 화요일 오전 10시에 회의를 진행하겠습니다', '회의를 차주 화요일...' all natural); key is a convention, not the only natural order.",
+    "Hint 1 reveals the full order (leak); chips already stored in answer order.",
+    "Mislabelled 쓰기(어순) - not writing production; basic word order is 2-3급, not 4급 (Table 6 4급 row 2 requires formal text production).",
+    "'차주' + '진행하겠습니다' fine but trivial."
+   ],
+   "fix": "Hold; redesign with one-correct-order constraint (e.g., 이다/-에서 chains, modifier-noun order) or drop.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-085",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Splitting noun phrase '양사의 상호 발전' into three chips makes ordering partly lexical-chunk (alternate '상호 양사의' marginal); '긴밀한 협력을 양사의 상호 발전을 위해' unnatural, so near-unique but not guaranteed.",
+    "Hint 1 gives full order; chips stored in answer order; label 쓰기(어순) must be recast as ordering practice.",
+    "'희망합니다' is stiff; '기대합니다/바랍니다' more natural."
+   ],
+   "fix": "Merge '양사의 상호' chip, shuffle, list accepted variants, rename domain.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-086",
+   "claimedGrade": "4급",
+   "internalLevel": "K9",
+   "domain": "쓰기(어순)",
+   "type": "ordering",
+   "decision": "hold",
+   "grade": "agree",
+   "problems": [
+    "Key not unique: '고객 만족도가 전 분기 대비 12% 상승하였습니다' is at least as natural; 대폭 can precede 12%.",
+    "Key '12% 대폭 상승' is unnatural/contradictory ('대폭' with a modest 12%).",
+    "Hint 1 gives whole order; chips stored in answer order; mislabeled as writing."
+   ],
+   "fix": "Hold; remove 대폭 and fix topic-comment anchor, or convert to something with a single order.",
+   "blindNote": "Ambiguous: '대폭 12% 상승' vs '12% 대폭 상승' (my pick: w1,w2,w4,w3,w5). Pairing 대폭 with an exact percentage is slightly unnatural; adverb placement is not fixed, so w1,w2,w3,w4,w5 is arguably also acceptable. Also '전 분기 대비' could precede or follow subject."
+  },
+  {
+   "id": "kr-rev-087",
+   "claimedGrade": "4급",
+   "internalLevel": "K8",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Basic -(으)시-/께서 agreement is early-intermediate (1-3급), not 4급; no Table 3-6 row supports it.",
+    "b is grammatical (only lacks honorific), so stem '호응이 바르게' needs '높임이 바르게'; c/d are ungrammatical for unrelated reasons (particles).",
+    "Hint 1 names 께서/-시- (answer)."
+   ],
+   "fix": "Use 간접높임 contrast (시간이 있으십니다 vs 계십니다) or 압존법; make all distractors differ only in honorific agreement.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-088",
+   "claimedGrade": "4급",
+   "internalLevel": "K8",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Stem names '여쭙다' but options use '여쭈어보았습니다' (여쭈다); mismatch.",
+    "Options b-d combine two errors each; c uses 드리다 wrongly with grandmother as agent, partially testing a different point.",
+    "Translations: en/vi translate only option a, leaving b-d as truncated Korean ('동생에게 선물을 드리고...'), a gloss leak.",
+    "Hint 2 reveals the rule's negative."
+   ],
+   "fix": "Align verb forms; give each distractor a single error; translate all options.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-089",
+   "claimedGrade": "4급",
+   "internalLevel": "K8",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "'저희/우리' is basic (2급) vocabulary; claiming 5급 K8/4급 unsupported; textbook-typical item.",
+    "b/c/d trivially wrong ('우리들 회사' nonsensical); '당신 회사' refers to others' company, not the question.",
+    "Business Korean uses 당사/자사/폐사; '저희 회사' is acceptable but not the formal norm.",
+    "Hint 2 gives answer; en/vi gloss only on a (leak)."
+   ],
+   "fix": "Retarget to 당사/폐사 vs 귀사 (own vs other company), grade at 4-5급, translate all options equally.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-090",
+   "claimedGrade": "4급",
+   "internalLevel": "K8",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "'자리에 착석해' is redundant (착석 already means sit in seat); better '자리에 앉아 주시기 바랍니다'.",
+    "d is also polite (해요체), c ungrammatical ('자리 앉을래'); hint 1 states the -(으)시기 바랍니다 form.",
+    "Item is announcement register but text-only; do not claim listening.",
+    "en/vi use 'Hasipsio-style' jargon and gloss only on a."
+   ],
+   "fix": "Fix redundancy, make hint 1 about 격식체 only, remove jargon and asymmetric glosses.",
+   "blindNote": "'착석해 주시기 바랍니다' is a 하십시오체-style request (-ㅂ니다) but 착석 + 자리에 is redundant; wrong options are blatantly rude/other speech levels, so stem is easy. Option d (해요체) is not 하십시오체."
+  },
+  {
+   "id": "kr-rev-091",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Short, simple passage and answer is a direct paraphrase; distractors are extreme absolutes (무제한, 아무런, 즉시 중단) so solvable without reading; more like Table 5 4급 row 3 than 5급.",
+    "Option a is long and copy-based; hint 1 lists answer content.",
+    "vi/en distractors truncated, shortening them and making them clearly absurd."
+   ],
+   "fix": "Add a longer passage with a counter-argument and plausible but partial distractors; re-check against 5급 row 3/5.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-092",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "adopt",
+   "grade": "agree",
+   "problems": [
+    "Fits Table 5 5급 row 3/4 (logic flow, 논설문). Negative stem is clearly marked; unique key. Minor: vi option c omits 공감 능력; hint 2 states key (acceptable as final hint)."
+   ],
+   "fix": "Optionally add 공감 to vi c and bold 않는 in stem.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-093",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 1 lists the three true tasks (elimination leak) and hint 2 names the answer; hint says '3대 과제' but explanation lists four.",
+    "Distractor a is absurd and not even plausibly mentioned; 'negative stem' reduces to spotting the odd item.",
+    "'돌봄 경제(Care Economy)' English term in Korean target text is fine, but 'it is Table 5 5급 row 1/4 appropriate.'"
+   ],
+   "fix": "Make the false option a plausible policy not in the text (e.g., 돌봄 서비스의 전면 민영화); reword hints.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-094",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "읽기",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "en/vi translated prompt gives the answer: \"('However')\" / \"('Tuy nhiên')\" (direct answer leak).",
+    "Hint 1 names 역접; hint 2 says 'however'.",
+    "그러나 is best but 그러므로/게다가 not clearly impossible; shift is mild (stronger with '하지만 이 인기를 지속하려면').",
+    "Common textbook connective item."
+   ],
+   "fix": "Remove gloss from translated prompt; sharpen blank context; drop hint 2 translation.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-095",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Sentence contains '마당발', which is synonym of 발이 넓다 and gives away the meaning; '각계각층' also cues.",
+    "Common textbook idiom; same format as 096/097 (three near-duplicate body-idiom items).",
+    "Embedded <u> HTML tag in plain text; renderer may show it literally.",
+    "Idiom is intermediate (3-4급), not 5급."
+   ],
+   "fix": "Remove 마당발, avoid HTML, use bold/brackets; combine 095-097 or differentiate.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-096",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "Common textbook idiom (귀가 얇다) in same template as 095/097.",
+    "Embedded <u> tag; hint 2 restates key; 4급-level idiom for 5급.",
+    "d (귀 병) trivial."
+   ],
+   "fix": "Use 귀가 얇다 vs 귀가 가렵다 type near-synonyms; no HTML; merge with 095/097 set.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-097",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "'손이 크다' also (in some use) can mean spending-generous; a is composite of two senses (씀씀이 + 음식) but ok.",
+    "Same template as 095/096; <u> tag; context with '상다리가 부러지도록' is an extra idiom above learner level.",
+    "Hint 2 points to the context phrase (leak)."
+   ],
+   "fix": "Simplify context; avoid HTML; deduplicate with 095/096.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-098",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hint 2 paraphrases the proverb ('소를 잃어버린 후에야 축사를 고치는 격'): effectively the answer.",
+    "Translations: gloss on option a only; b-d untranslated Korean. Distractors unrelated, solvable by elimination.",
+    "Very common textbook proverb."
+   ],
+   "fix": "Use plausible distractors (같은 주제: 뒤늦은 후회 vs 예방 속담, e.g., 유비무환), symmetric glosses.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-099",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "too-high",
+   "problems": [
+    "The prompt is almost a restatement of the proverb; hint 2 explicitly links 가는 말/오는 말; vi/en glosses only on a.",
+    "Classic textbook proverb (3-4급), too-high grade for 5급.",
+    "c ('말 한마디로 천 냥 빚') partially overlaps the 'good speech' theme; acceptable but weaker discrimination."
+   ],
+   "fix": "Rephrase scenario instead of defining; symmetric translations; regrade 4급.",
+   "blindNote": null
+  },
+  {
+   "id": "kr-rev-100",
+   "claimedGrade": "5급",
+   "internalLevel": "K10",
+   "domain": "문법·어휘",
+   "type": "multiple_choice",
+   "decision": "revise",
+   "grade": "agree",
+   "problems": [
+    "Hanja in options and hint 1 ('쓴 것이 다하면 단 것이 온다') plus hint 2 '고생 끝에 낙이 온다' give the answer; en prompt \"'Sweetness comes after bitterness is exhausted'\" and vi prompt 'Khổ tận cam lai' directly leak the key.",
+    "Other options are unrelated, plain elimination; textbook-typical item.",
+    "Hanja 苦盡甘來 appearing only in a-gloss pattern mixed with learner text."
+   ],
+   "fix": "Remove hanja gloss from prompt translations, replace hints with context, add plausible distractors (e.g., 새옹지마, 전화위복).",
+   "blindNote": null
+  }
+ ]
+}
