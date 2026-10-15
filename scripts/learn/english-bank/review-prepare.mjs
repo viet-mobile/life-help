@@ -7,7 +7,7 @@ import fs from "node:fs"; import path from "node:path"; import crypto from "node
 const here = path.dirname(fileURLToPath(import.meta.url)); const root = path.resolve(here, "../../..");
 const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i < 0 ? d : process.argv[i + 1]; };
 const out = arg("out"); if (!out) { console.error("--out <dir> required"); process.exit(2); }
-const scope = arg("scope", "all"), group = arg("group", null), onlyPacket = arg("packet", null), size = Number(arg("size", 100)), limit = Number(arg("limit", 1e9));
+const scope = arg("scope", "all"), group = arg("group", null), onlyPacket = arg("packet", null), size = Number(arg("size", 100)), limit = Number(arg("limit", 1e9)), minQ = Number(arg("min", 0)); // --min: skip batches with fewer questions (they are reviewed in a final tracked sweep, see small-batches.json)
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const served = read(path.join(root, "lib/learn/content/bank/english-draft.json")).questions;
 const pending = read(path.join(root, "lib/learn/content/bank/english-pending.json")).questions;
@@ -35,7 +35,10 @@ const CANARIES = [
   { id: "canary-ok", type: "multiple_choice", prompt: "영어 단어 “apple”의 뜻으로 알맞은 것은?", options: [{ id: "a", text: "사자" }, { id: "b", text: "사과" }, { id: "c", text: "공" }, { id: "d", text: "얼룩말" }] },
 ];
 let written = 0;
-for (const b of batches.slice(0, limit)) {
+const qOf = (b) => b.groups.reduce((s, g) => s + g.list.length, 0);
+const small = batches.filter((b) => qOf(b) < minQ);
+fs.writeFileSync(path.join(out, "small-batches.json"), JSON.stringify(small.map((b) => ({ n: b.n, packet: b.packet, questions: qOf(b) })), null, 1));
+for (const b of batches.filter((b) => qOf(b) >= minQ).slice(0, limit)) {
   const questions = b.groups.flatMap((g) => g.list);
   const blind = questions.map((q) => ({ id: q.id, type: q.type, prompt: q.prompt, options: q.options.map((o) => ({ id: o.id, text: o.text })) }));
   CANARIES.forEach((c, i) => blind.splice((b.n * 7 + i * 31) % (blind.length + 1), 0, c));
@@ -45,4 +48,4 @@ for (const b of batches.slice(0, limit)) {
   written++;
 }
 fs.writeFileSync(path.join(out, "batches.json"), JSON.stringify(batches.map((b) => ({ n: b.n, packet: b.packet, questions: b.groups.reduce((s, g) => s + g.list.length, 0), items: b.groups.length })), null, 1));
-console.log(`${qs.length} questions in ${batches.length} batches (written ${written}) -> ${out}`);
+console.log(`${qs.length} questions in ${batches.length} batches (written ${written}; ${small.length} small batches skipped, ${small.reduce((s, b) => s + qOf(b), 0)} questions) -> ${out}`);
