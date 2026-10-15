@@ -18,7 +18,7 @@ const items = new Map();
 for (const f of fs.readdirSync(path.join(here, "pools"))) { const pool = read(path.join(here, "pools", f)); for (const sec of pool.sections ?? [{ skill: pool.skill, items: pool.items }]) for (const it of sec.items) items.set(idOf(sec.skill, it), { packet: pool.packet ?? f.replace(/\.json$/, ""), skill: sec.skill, item: it }); }
 let qs = scope === "served" ? served : scope === "pending" ? pending : [...served, ...pending];
 const itemOf = (q) => q.id.split("-")[1];
-qs = qs.filter((q) => !ledger.reviewed[itemOf(q)] && (!group || q.packet[0] === group) && (!onlyPacket || q.packet === onlyPacket));
+qs = qs.filter((q) => !ledger.reviewed[itemOf(q)] && (!group || q.packet[0] === group) && (!onlyPacket || (onlyPacket.endsWith("*") ? q.packet.startsWith(onlyPacket.slice(0, -1)) : q.packet === onlyPacket)));
 const byPacket = new Map(); for (const q of qs) { if (!byPacket.has(q.packet)) byPacket.set(q.packet, new Map()); const m = byPacket.get(q.packet); const k = itemOf(q); if (!m.has(k)) m.set(k, []); m.get(k).push(q); }
 fs.mkdirSync(out, { recursive: true });
 const batches = []; let n = 0;
