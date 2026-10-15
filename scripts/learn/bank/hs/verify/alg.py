@@ -31,6 +31,74 @@ def ptex(s):
     return parse_expr(s, transformations=TR, local_dict={"x": x_})
 
 
+def _group(s, i):
+    """s[i] == '{' -> (content, index after the matching '}')"""
+    assert s[i] == "{", s[i:]
+    depth, j = 0, i
+    while True:
+        if s[j] == "{":
+            depth += 1
+        elif s[j] == "}":
+            depth -= 1
+            if depth == 0:
+                return s[i + 1:j], j + 1
+        j += 1
+
+
+def t2s(s):
+    """printed LaTeX (frac, sqrt[n], ^{}, \\times, \\cdot, \\left/\\right) -> a python/sympy source string"""
+    out, i = [], 0
+    while i < len(s):
+        if s.startswith("\\frac", i):
+            a, i = _group(s, i + 5)
+            b, i = _group(s, i)
+            out.append(f"(({t2s(a)})/({t2s(b)}))")
+        elif s.startswith("\\sqrt", i):
+            i += 5
+            n = "2"
+            if s[i] == "[":
+                j = s.index("]", i)
+                n = s[i + 1:j]
+                i = j + 1
+            a, i = _group(s, i)
+            out.append(f"root({t2s(a)},{n})")
+        elif s.startswith("\\times", i) or s.startswith("\\cdot", i):
+            out.append("*")
+            i += 6 if s.startswith("\\times", i) else 5
+        elif s.startswith("\\left", i):
+            i += 5
+            if s[i] == "|":
+                out.append("Abs(")
+                i += 1
+            else:
+                out.append(s[i])
+                i += 1
+        elif s.startswith("\\right", i):
+            i += 6
+            out.append(")")
+            i += 1
+        elif s.startswith("\\pi", i):
+            out.append("pi")
+            i += 3
+        elif s.startswith("\\,", i) or s.startswith("\\ ", i):
+            i += 2
+        elif s[i] == "^" and s[i + 1] == "{":
+            a, i = _group(s, i + 1)
+            out.append(f"**({t2s(a)})")
+        else:
+            out.append(s[i])
+            i += 1
+    return "".join(out)
+
+
+def tex_expr(s, **loc):
+    return parse_expr(t2s(s), transformations=TR, local_dict=loc)
+
+
+def P_(s):
+    return parse_expr(s, transformations=TR, local_dict={"n": sp.Symbol("n")})
+
+
 def rat_of(mpv, maxden=10**6, tol=mp.mpf(10) ** -30):
     f = Fraction(str(mp.nstr(mpv, 50))).limit_denominator(maxden)
     assert abs(mp.mpf(f.numerator) / f.denominator - mpv) < tol, f"not rational: {mpv}"
@@ -93,16 +161,10 @@ def to_py(s):
 
 # ---------------------------------------------------------------- exponents & logarithms
 def rootEval(v):
-    a, b, n, m = v["ra"], v["rb"], v["rn"], v["rm"]
-    R = lambda t, k: mp.root(mp.mpf(t), k)
-    if v["kind"] == 1:
-        val = R(a, n) * R(b, n)
-    elif v["kind"] == 2:
-        val = R(a, n) / R(b, n)
-    else:
-        val = R(R(a, n), m)
-    f = rat_of(val)
+    val = tex_expr(v["expr"])
+    f = rat_of(mp.mpf(str(sp.N(val, 50))))
     assert f.denominator == 1
+    assert sp.simplify(val - int(f)) == 0
     return int(f)
 
 
@@ -116,16 +178,23 @@ def realRootCount(v):
 
 
 def rationalExp(v):
-    val = sp.Rational(v["a1"]) ** sp.Rational(v["n1"], v["d1"]) * sp.Rational(v["a2"]) ** sp.Rational(v["n2"], v["d2"])
+    val = tex_expr(v["expr"])
     val = sp.nsimplify(sp.simplify(val))
     assert val.is_Rational, val
     return val
 
 
 def expSum(v):
-    a, g, e1, k, e2, s = v["a"], v["g"], v["e1"], v["k"], v["e2"], v["s"]
+    g = re.fullmatch(r"(\d+)\^\{(\d*)x\}([+-])\1\^\{-\2x\}=(-?\d+)", v["given"])
+    assert g, v["given"]
+    a, g1, e1, sval = int(g.group(1)), int(g.group(2) or 1), 1 if g.group(3) == "+" else -1, int(g.group(4))
+    q = re.fullmatch(r"(\d+)\^\{(\d*)x\}([+-])\1\^\{-\2x\}", v["ask"])
+    assert q and int(q.group(1)) == a, v["ask"]
+    g2, e2 = int(q.group(2) or 1), 1 if q.group(3) == "+" else -1
+    assert g2 % g1 == 0
+    k = g2 // g1
     t = sp.Symbol("t", positive=True)
-    sols = [r for r in sp.solve(t + e1 / t - s, t) if r.is_real and r > 0]
+    sols = [r for r in sp.solve(t + e1 / t - sval, t) if r.is_real and r > 0]
     assert sols, "no real x"
     vals = set()
     for r in sols:
@@ -137,36 +206,46 @@ def expSum(v):
 
 
 def logChain(v):
-    xs = [int(t) for t in v["args"].split(",")]
+    pairs = re.findall(r"\\log_\{(\d+)\}(\d+)", v["expr"])
+    assert len(pairs) >= 2 and "".join(f"\\log_{{{b}}}{c}" for b, c in pairs) == v["expr"].replace("\\times", "")
     val = mp.mpf(1)
-    for i in range(len(xs) - 1):
-        val *= mp.log(xs[i + 1]) / mp.log(xs[i])
+    for b, c in pairs:
+        val *= mp.log(int(c)) / mp.log(int(b))
     return rat_of(val)
 
 
 def logExpress(v):
-    Rn, Rd, m = v["Rn"], v["Rd"], v["m"]
-    fn, fd = sp.factorint(Rn), sp.factorint(Rd)
+    N = v["N"]
+    m = 1
+    mm = re.fullmatch(r"\\sqrt(?:\[(\d+)\])?\{(.*)\}", N)
+    if mm:
+        m = int(mm.group(1) or 2)
+        N = mm.group(2)
+    rad = tex_expr(N)
+    assert rad.is_Rational and rad > 0
     ex = {2: 0, 3: 0, 5: 0}
-    for p_, e in fn.items():
+    for p_, e in sp.factorrat(rad).items():
         assert p_ in ex, "prime outside {2,3,5}"
         ex[p_] += e
-    for p_, e in fd.items():
-        assert p_ in ex
-        ex[p_] -= e
     x, y, z = Fraction(ex[3], m), Fraction(ex[5], m), Fraction(ex[2], m)
-    N = (mp.mpf(Rn) / Rd) ** (mp.mpf(1) / m)
-    lhs = mp.log(N, 2)
+    lhs = mp.log(mp.mpf(rad.p) / rad.q, 2) / m
     rhs = mp.mpf(x.numerator) / x.denominator * mp.log(3, 2) + mp.mpf(y.numerator) / y.denominator * mp.log(5, 2) + mp.mpf(z.numerator) / z.denominator
     assert abs(lhs - rhs) < mp.mpf(10) ** -40
     return x + y + z
 
 
 def digitsPow(v):
-    big = v["b1"] ** v["n1"] * v["b2"] ** v["n2"]
+    facs = re.findall(r"(\d+)\^\{(\d+)\}", v["N"])
+    assert facs and "\\times".join(f"{b}^{{{n}}}" for b, n in facs) == v["N"]
+    big = 1
+    for b, n in facs:
+        big *= int(b) ** int(n)
     d = len(str(big))
-    LG = {2: Fraction(3010, 10000), 3: Fraction(4771, 10000), 5: Fraction(6990, 10000), 7: Fraction(8451, 10000), 1: Fraction(0)}
-    given = LG[v["b1"]] * v["n1"] + LG[v["b2"]] * v["n2"]
+    LG = {int(b): Fraction(t) for b, t in re.findall(r"\\log (\d+)=(0\.\d+)", v["given"])}
+    assert set(LG) == {int(b) for b, _ in facs}
+    for b, f in LG.items():       # the printed 4-digit logarithms are the true ones, rounded
+        assert abs(mp.log10(b) - mp.mpf(f.numerator) / f.denominator) < mp.mpf("0.00005")
+    given = sum(LG[int(b)] * int(n) for b, n in facs)
     assert math.floor(given) + 1 == d, "given 4-digit logs disagree with true digit count"
     return d
 
@@ -324,6 +403,21 @@ def inverseGraph(v):
     return good[0]
 
 
+def inversePoints(v):
+    a, b = sp.symbols("a b", real=True)
+    pts = [(v["q1"], v["p1"]), (v["q2"], v["p2"])]          # f passes through (q, p) when the inverse passes through (p, q)
+    sols = sp.solve([a ** e + b - w for e, w in pts], [a, b], dict=True)
+    good = [t for t in sols if t[a].is_real and t[a] > 1 and t[b].is_integer]
+    assert len(good) == 1, sols
+    # uniqueness among a > 1: brute force on a fine grid for the single equation a^e1 - a^e2 = W1 - W2
+    (e1, w1), (e2, w2) = pts
+    g = lambda z: z ** e1 - z ** e2 - (w1 - w2)
+    zs = [1 + i / 1000 for i in range(1, 12000)]
+    sign_changes = sum(1 for i in range(len(zs) - 1) if g(zs[i]) * g(zs[i + 1]) < 0) + sum(1 for z in zs if abs(g(z)) < 1e-12)
+    assert sign_changes == 1, sign_changes
+    return good[0][a] + good[0][b]
+
+
 def logDomain(v):
     f = v["f"]
     conds = []
@@ -378,16 +472,7 @@ def coterminal(v):
     return a
 
 
-def halfAngleQuad(v):
-    m, n = v["m"], v["n"]
-    qs = set()
-    for k in range(-3 * n, 3 * n + 1):
-        for i in range(1, 200):
-            th = Fraction(90 * (m - 1)) + Fraction(90 * i, 200) + 360 * k
-            a = (th / n) % 360
-            assert a % 90 != 0
-            qs.add(int(a // 90) + 1)
-    return sum(qs)
+
 
 
 def sectorForward(v):
@@ -425,28 +510,7 @@ def trigPoint(v):
     return sp.nsimplify(trig_tex(v["E"]).subs({S_: s_, C_: c_, T_: t_}))
 
 
-def trigGiven(v):
-    quad = v["quad"]
-    m = re.fullmatch(r"\\(sin|cos|tan)\\theta=(.*)", v["given"])
-    f, val = m.group(1), tex2frac(m.group(2))
-    expr = trig_tex(v["E"])
-    sx = 1 if quad in (1, 4) else -1
-    sy = 1 if quad in (1, 2) else -1
-    results = set()
-    for r in range(1, 200):
-        for x in range(1, r):
-            y2 = r * r - x * x
-            y = math.isqrt(y2)
-            if y * y != y2 or y == 0:
-                continue
-            X, Y = sx * x, sy * y
-            ratios = {"sin": Fraction(Y, r), "cos": Fraction(X, r), "tan": Fraction(Y, X)}
-            if ratios[f] != val:
-                continue
-            s_, c_, t_ = _sct(X, Y)
-            results.add(sp.nsimplify(expr.subs({S_: s_, C_: c_, T_: t_})))
-    assert len(results) == 1, results
-    return results.pop()
+
 
 
 def trigIdentity(v):
@@ -494,17 +558,32 @@ def trigRootCount(v):
 
 
 def trigPeriod(v):
-    code = v["code"]
+    f = v["f"]
+    assert f.startswith("y=")
+    e = f[2:].replace("\\left|", "Abs(").replace("\\right|", ")").replace("\\left(", "(").replace("\\right)", ")").replace("\\,", "")
+    for _ in range(4):
+        e = re.sub(r"\\frac\{([^{}]*)\}\{([^{}]*)\}", r"((\1)/(\2))", e)
+    e = e.replace("\\pi", "pi")
+    e = re.sub(r"\\(sin|cos|tan)\^\{2\}", r"\1SQ", e)
+    e = re.sub(r"\\(sin|cos|tan)", r"\1", e)
+    # a bare argument such as 3x or x gets parentheses
+    e = re.sub(r"(sin|cos|tan)(SQ)?(\d*x)", lambda g: f"{g.group(1)}{g.group(2) or ''}({g.group(3)})", e)
+    e = re.sub(r"(\d)(x|\(|sin|cos|tan|Abs)", r"\1*\2", e)
+    e = re.sub(r"\)(\d*x)", r"*)\1", e) if False else e
+    e = re.sub(r"(\d)x", r"\1*x", e)
+    e = re.sub(r"([a-zA-Z)])\(", lambda g: g.group(0), e)
+    ns = {"sin": np.sin, "cos": np.cos, "tan": np.tan, "Abs": np.abs, "pi": np.pi,
+          "sinSQ": lambda t: np.sin(t) ** 2, "cosSQ": lambda t: np.cos(t) ** 2, "tanSQ": lambda t: np.tan(t) ** 2}
     xs = np.linspace(0.123, 17.0, 60)
-    ns = {"sin": np.sin, "cos": np.cos, "tan": np.tan, "abs": np.abs, "pi": np.pi}
-    fx = lambda arr: eval(code, {"__builtins__": {}}, {**ns, "x": arr})
+    fx = lambda arr: eval(e, {"__builtins__": {}}, {**ns, "x": arr})
     base = fx(xs)
-    cands = sorted({Fraction(p, q) for q in range(1, 13) for p in range(1, 12 * 10)})
+    cands = sorted({Fraction(p_, q) for q in range(1, 13) for p_ in range(1, 12 * 10)})
     for k in cands:
         T = float(k) * np.pi
         shifted = fx(xs + T)
         both = np.isfinite(base) & np.isfinite(shifted) & (np.abs(base) < 1e6) & (np.abs(shifted) < 1e6)
         if both.sum() >= 40 and np.allclose(base[both], shifted[both], atol=1e-9, rtol=1e-9):
+            assert tex2frac(v["kt"]) == k, (v["kt"], k)
             return k
     raise AssertionError("no period found")
 
@@ -680,18 +759,13 @@ def sigmaSquare(v):
 
 
 def sigmaTelescope(v):
-    n, kd = v["n"], v["kind"]
-    tot = Fraction(0)
-    for k in range(1, n + 1):
-        if kd in (1, 2, 3):
-            tot += Fraction(1, k * (k + kd))
-        elif kd == 4:
-            tot += Fraction(1, (2 * k - 1) * (2 * k + 1))
-        else:
-            tot += Fraction(1, k * (k + 1) * (k + 2))
-    m = re.search(r"\\sum_\{k=1\}\^\{(\d+)\}", v["expr"])
-    assert int(m.group(1)) == n
-    return tot
+    m = re.fullmatch(r"\\displaystyle\\sum_\{k=1\}\^\{(\d+)\}(.*)", v["expr"])
+    assert m, v["expr"]
+    n = int(m.group(1))
+    kk = sp.Symbol("k")
+    term = tex_expr(m.group(2), k=kk)
+    tot = sum(term.subs(kk, i) for i in range(1, n + 1))
+    return sp.Rational(tot)
 
 
 def sigmaSubseq(v):
@@ -702,33 +776,97 @@ def sigmaSubseq(v):
     return sum(an.subs(nsym, idx.subs(ksym, k)) for k in range(1, v["m"] + 1))
 
 
+def _inner_sum(t):
+    """'1+2+3+\\cdots+8' -> arithmetic-progression sum (the printed terms before \\cdots fix the step)"""
+    if "\\cdots" not in t:
+        return sp.sympify(t2s(t)) if t else 0
+    head, last = t.split("+\\cdots+")
+    hs = [int(z) for z in head.split("+")]
+    d = hs[1] - hs[0]
+    assert all(hs[i + 1] - hs[i] == d for i in range(len(hs) - 1))
+    last = int(last)
+    assert (last - hs[0]) % d == 0
+    return sum(range(hs[0], last + 1, d))
+
+
+def _split_top(s):
+    """split at depth-0 + / - into signed terms"""
+    terms, depth, cur = [], 0, ""
+    for ch in s:
+        if ch in "({":
+            depth += 1
+        elif ch in ")}":
+            depth -= 1
+        if ch in "+-" and depth == 0 and cur:
+            terms.append(cur)
+            cur = ch if ch == "-" else ""
+        else:
+            cur += ch
+    terms.append(cur)
+    return terms
+
+
+def _term_value(t):
+    t = t.strip()
+    sign = 1
+    if t.startswith("-"):
+        sign, t = -1, t[1:]
+    # a parenthesised partial sum  (1+2+3+\\cdots+n)
+    if t.startswith("(") and t.endswith(")") and re.fullmatch(r"\([\d+]+(?:\+\\cdots\+\d+)?\)", t):
+        return sign * _inner_sum(t[1:-1])
+    return sign * sp.sympify(parse_expr(t2s(t), transformations=TR))
+
+
 def seriesPattern(v):
-    t, n = v["t"], v["n"]
-    if t == "A":
-        return sum(sum(range(1, k + 1)) for k in range(1, n + 1))
-    if t == "B":
-        return sum(k * (n + 1 - k) for k in range(1, n + 1))
-    if t == "C":
-        return sum(k * (k + 2) for k in range(1, n + 1))
-    if t == "D":
-        return sum((-1) ** (k + 1) * k * k for k in range(1, n + 1))
-    if t == "E":
-        return sum(k * (k + 1) * (k + 2) for k in range(1, n + 1))
-    return sum(sum(2 * j for j in range(1, k + 1)) for k in range(1, n + 1))
+    expr = v["expr"]
+    head, tail = expr.split("+\\cdots+") if expr.count("\\cdots") == 1 else (None, None)
+    if head is None:                # nested partial sums contain their own \\cdots: find the top-level one
+        depth, pos = 0, None
+        for i, ch in enumerate(expr):
+            depth += ch == "("
+            depth -= ch == ")"
+            if depth == 0 and expr.startswith("+\\cdots+", i):
+                pos = i
+        assert pos is not None
+        head, tail = expr[:pos], expr[pos + 8:]
+    ht = [_term_value(z) for z in _split_top(head)]
+    tt = [_term_value(z) for z in _split_top(tail)]
+    fam = {
+        "A": lambda k, n: k * (k + 1) // 2, "B": lambda k, n: k * (n + 1 - k), "C": lambda k, n: k * (k + 2),
+        "D": lambda k, n: (-1) ** (k + 1) * k * k, "E": lambda k, n: k * (k + 1) * (k + 2), "F": lambda k, n: k * (k + 1),
+    }
+    hits = []
+    for name, f in fam.items():
+        for n in range(len(ht) + len(tt), 80):
+            if all(f(i + 1, n) == ht[i] for i in range(len(ht))) and all(f(n - len(tt) + 1 + i, n) == tt[i] for i in range(len(tt))):
+                hits.append((name, n))
+    assert len(hits) == 1, (expr, hits)
+    name, n = hits[0]
+    return sum(fam[name](k, n) for k in range(1, n + 1))
 
 
 def recAffine(v):
-    p, q, s, k = sp.Rational(v["pn"], v["pd"]), v["q"], v["s"], v["k"]
+    m = re.fullmatch(r"(-?\d*|\\frac\{1\}\{2\})a_n([+-]\d+)", v["rule"])
+    assert m, v["rule"]
+    pt = m.group(1)
+    p = Fraction(1, 2) if pt.startswith("\\frac") else Fraction(1) if pt == "" else Fraction(-1) if pt == "-" else Fraction(int(pt))
+    q, s0, k = int(m.group(2)), int(v["s"]), int(v["k"])
     f = sp.Function("f")
-    sol = sp.rsolve(f(n_ + 1) - p * f(n_) - q, f(n_), {f(1): s})
-    return sp.nsimplify(sol.subs(n_, k))
-
+    sol = sp.rsolve(f(n_ + 1) - sp.Rational(p.numerator, p.denominator) * f(n_) - q, f(n_), {f(1): s0})
+    out = sp.nsimplify(sol.subs(n_, k))
+    a = Fraction(s0)
+    for _ in range(k - 1):
+        a = a * p + q
+    assert out == sp.Rational(a.numerator, a.denominator)
+    return out
 
 
 def collatz(v):
-    a, n = v["s"], 1
+    assert v["odd"] in ("a_n+1", "3a_n+1")
+    pp = 3 if v["odd"].startswith("3") else 1
+    a, n = int(v["s"]), 1
     while a != 1:
-        a = a // 2 if a % 2 == 0 else v["p"] * a + v["q"]
+        a = a // 2 if a % 2 == 0 else pp * a + 1
         n += 1
         assert n < 500
     return n
@@ -744,15 +882,20 @@ def recParam(v):
 
 
 def seqIntTerms(v):
-    p, q, r = v["p"], v["q"], v["r"]
+    num, den = P_(v["num"]), P_(v["den"])
+    nn = sp.Symbol("n")
+    p, q = sp.Poly(num, nn).all_coeffs()
+    mden = re.fullmatch(r"n(?:\+(\d+))?", v["den"])
+    assert mden
+    r = int(mden.group(1) or 0)
     big = 20000
     cnt = 0
     for n in range(1, big):
         if (p * n + q) % (n + r) == 0:
             cnt += 1
-    # no integer-valued term beyond |D|+r: the remainder |D| < n+r
     D = q - p * r
-    assert abs(D) < big - 1 - r
+    assert abs(D) < big - 1 - r      # no integer-valued term beyond |D| + r
+    assert v["r1"] == r + 1
     return cnt
 
 
@@ -761,12 +904,15 @@ VERIFY = {
     "alg_logExpress": logExpress, "alg_digitsPow": digitsPow, "alg_growthYears": growthYears, "alg_expFuncParams": expFuncParams,
     "alg_expShiftA": expShiftA, "alg_expEquation": expEquation, "alg_expInequality": expInequality, "alg_logEquation": logEquation,
     "alg_logInequality": logInequality, "alg_inverseGraph": inverseGraph, "alg_logDomain": logDomain, "alg_expMaxMin": expMaxMin,
-    "alg_coterminal": coterminal, "alg_halfAngleQuad": halfAngleQuad, "alg_sectorForward": sectorForward, "alg_sectorPerimArea": sectorPerimArea,
-    "alg_trigPoint": trigPoint, "alg_trigGiven": trigGiven, "alg_trigIdentity": trigIdentity, "alg_trigRootCount": trigRootCount,
+    "alg_coterminal": coterminal, "alg_sectorForward": sectorForward, "alg_sectorPerimArea": sectorPerimArea,
+    "alg_trigPoint": trigPoint, "alg_trigIdentity": trigIdentity, "alg_trigRootCount": trigRootCount,
     "alg_trigPeriod": trigPeriod, "alg_trigGraphParam": trigGraphParam, "alg_trigSpecial": trigSpecial, "alg_circumradius": circumradius,
     "alg_survey": survey, "alg_cosLawSide": cosLawSide, "alg_obtuseCount": obtuseCount, "alg_arithTwoTerms": arithTwoTerms,
     "alg_arithSumMax": arithSumMax, "alg_arithFirstExceeds": arithFirstExceeds, "alg_arithGeoMix": arithGeoMix, "alg_sumToTerm": sumToTerm,
     "alg_geoTwoTerms": geoTwoTerms, "alg_geoSumRatio": geoSumRatio, "alg_sigmaSquare": sigmaSquare, "alg_sigmaTelescope": sigmaTelescope,
     "alg_sigmaSubseq": sigmaSubseq, "alg_seriesPattern": seriesPattern, "alg_recAffine": recAffine,
     "alg_collatz": collatz, "alg_recParam": recParam, "alg_seqIntTerms": seqIntTerms,
+    "alg_inversePoints": inversePoints,
 }
+for _k in ("logChain", "logExpress", "expFuncParams", "arithTwoTerms", "geoTwoTerms", "recAffine"):   # level split by answer format: same checks
+    VERIFY[f"alg_{_k}Q"] = VERIFY[f"alg_{_k}"]

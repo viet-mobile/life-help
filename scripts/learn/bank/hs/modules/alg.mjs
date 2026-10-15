@@ -1,6 +1,10 @@
 // 대수 (12대수): exponents and logarithms, exponential / logarithmic functions, trigonometric functions, sequences.
-// Class X standard 12대수03-07 (mathematical induction proofs) is deliberately not written. Class C standards (01-02, 01-06, 03-01) only get items whose
-// numeric result depends on the concept (a rational power, a domain count, the number of integer-valued terms).
+// Class X standard 12대수03-07 (mathematical induction proofs) is deliberately not written. Class C standards (01-06, 03-01) only get items whose
+// numeric result depends on the concept (a domain count, the number of integer-valued terms); 01-02 (rational exponent) is not claimed because the
+// rational-exponent items are plain evaluations.
+// Dropped after review: alg_halfAngleQuad (20-point parameter space, 12 trivial rows), alg_trigGiven (same expression bank and triples as alg_trigPoint).
+// Level splits: templates whose level 1 has integer answers and level 2 fractional ones exist twice (KEY: integer hint, KEYQ: fraction hint), because
+// the builder derives the answer-format sentence per template.
 import { gcd, tfrac, sg, cf, lin, poly, Q } from "../lib.mjs";
 
 const FK = "(소수로 써도 되고 3/4 처럼 분수로 써도 돼요)";
@@ -21,6 +25,13 @@ const coefTex = (c) => (c === 1 ? "" : c === -1 ? "-" : String(c));
 const fl = (a, b) => Math.floor(a / b);
 const cpi = (q) => (Number(q.p) === 1 && Number(q.q) === 1 ? "\\pi" : `${qt(q)}\\pi`);
 const pr = (n) => (n < 0 ? `(${n})` : `${n}`);
+/** base^e without the artefact "^{1}" */
+const ap = (e, base = "a") => (e === 1 ? base : `${base}^{${e}}`);
+/** x, x+c or x-c without "+0" */
+const xs0 = (c) => (c === 0 ? "x" : `x${sg(c)}`);
+/** factor (x-r) printed as x when r = 0 */
+const fx = (r0) => (r0 === 0 ? "x" : `(x${sg(-r0)})`);
+const chain = (parts) => parts.filter((t, i) => i === 0 || t !== parts[i - 1]).join("=");
 const cterm = (q, sym) => { if (q.p === 0n) return ""; const neg = q.p < 0n; const ab = new Q(neg ? -q.p : q.p, q.q); const one = ab.p === 1n && ab.q === 1n; const body = sym ? (one ? sym : `${qt(ab)}${sym}`) : qt(ab); return (neg ? "-" : "+") + body; };
 const sumTex = (ts) => { let s = ts.join(""); if (s.startsWith("+")) s = s.slice(1); return s || "0"; };
 const pyTri = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [20, 21, 29], [9, 40, 41], [12, 35, 37]];
@@ -62,23 +73,23 @@ export const TEMPLATES = {
     en: ["Evaluate ${expr}$. " + FE, ["With the change of base formula $\\log_{a}b=\\frac{\\log_{c}b}{\\log_{c}a}$ the neighbouring logarithms cancel.", "Reduce the whole product to one logarithm and write its argument as a power."], "${work}$."],
   },
   alg_logExpress: {
-    ko: ["$\\log_{2}3=a$, $\\log_{2}5=b$일 때, $\\log_{2}{N}$ 의 값을 $xa+yb+z$ ($x, y, z$는 유리수) 꼴로 나타냅니다. $x+y+z$의 값은? " + FK, ["진수 ${N}$ 을 소인수 $2, 3, 5$의 거듭제곱으로 나타내 보세요.", "$\\log_{2}(MN)=\\log_{2}M+\\log_{2}N$, $\\log_{2}M^{k}=k\\log_{2}M$ 을 쓰고, $\\log_{2}2=1$ 임을 이용해요."], "${work}$ 이므로 $x+y+z$ 의 값은 ${sumtex}$ 입니다."],
+    ko: ["$\\log_{2}3=a$, $\\log_{2}5=b$일 때, $\\log_{2}{N}$ 의 값을 $xa+yb+z$ ($x, y, z$는 유리수) 꼴로 나타냅니다. $x+y+z$의 값은? " + FK, ["진수 ${N}$ 의 소인수는 $2, 3, 5$ 뿐이에요. 거듭제곱으로 나타내 보세요.", "$\\log_{2}(MN)=\\log_{2}M+\\log_{2}N$, $\\log_{2}M^{k}=k\\log_{2}M$ 을 쓰고, $\\log_{2}2=1$ 임을 이용해요."], "${work}$ 이므로 $x+y+z$ 의 값은 ${sumtex}$ 입니다."],
     en: ["Given $\\log_{2}3=a$ and $\\log_{2}5=b$, write $\\log_{2}{N}$ as $xa+yb+z$ with rational $x, y, z$. Find $x+y+z$. " + FE, ["Factor ${N}$ into powers of the primes $2, 3, 5$.", "Use $\\log_{2}(MN)=\\log_{2}M+\\log_{2}N$, $\\log_{2}M^{k}=k\\log_{2}M$ and $\\log_{2}2=1$."], "${work}$, so $x+y+z={sumtex}$."],
   },
   alg_digitsPow: {
-    ko: ["${given}$ 일 때, ${N}$ 은 몇 자리의 수인가요? " + ID, ["양의 정수 $M$이 $k$자리 수이면 $k-1\\le\\log M<k$ 예요.", "${N}$ 의 상용로그를 주어진 값으로 계산해 보세요."], "$\\log({N})={lg}$ 이고 정수 부분이 ${ip}$이므로 ${ans}$자리의 수입니다."],
+    ko: ["${given}$ 일 때, ${N}$ 의 자릿수를 구하세요. " + ID, ["양의 정수 $M$이 $k$자리 수이면 $k-1\\le\\log M<k$ 예요.", "${N}$ 의 상용로그를 주어진 값으로 계산해 보세요."], "$\\log({N})={lg}$ 이고 정수 부분이 ${ip}$이므로 ${ans}$자리의 수입니다."],
     en: ["Given ${given}$, how many digits does ${N}$ have? " + IE, ["A positive integer with $k$ digits satisfies $k-1\\le\\log M<k$.", "Compute the common logarithm of ${N}$ with the given values."], "$\\log({N})={lg}$ has integer part ${ip}$, so the number has ${ans}$ digits."],
   },
   alg_growthYears: {
-    ko: ["연이율 ${rate}\\%$ 의 복리로 예금할 때, 원리합계가 처음으로 원금의 ${k}$배 이상이 되는 것은 몇 년 후인가요? (단, ${given}$ 이고, 정수 연수로 답하세요.) " + ID, ["$n$년 후 원리합계는 원금의 $(1+\\frac{r}{100})^{n}$배예요.", "양변에 상용로그를 취하면 $n\\log(1+\\frac{r}{100})\\ge\\log k$ 예요."], "$({one})^{n}\\ge {k}$ 의 양변에 상용로그를 취하면 $n\\ge\\frac{{lk}}{{l1}}={q}$ 이므로 가장 작은 자연수 $n$은 ${ans}$입니다."],
-    en: ["Money is deposited at an annual compound interest rate of ${rate}\\%$. After how many whole years does the balance first reach at least ${k}$ times the principal? (Given ${given}$; answer in whole years.) " + IE, ["After $n$ years the balance is $(1+\\frac{r}{100})^{n}$ times the principal.", "Taking common logs: $n\\log(1+\\frac{r}{100})\\ge\\log k$."], "From $({one})^{n}\\ge {k}$ we get $n\\ge\\frac{{lk}}{{l1}}={q}$, so the smallest whole number is ${ans}$."],
+    ko: ["1년마다 이자가 원금에 더해지는 연이율 ${rate}\\%$ 의 복리로 예금합니다. 원리합계가 처음으로 원금의 ${k}$배 이상이 되는 것은 몇 년 후인지 정수로 구하세요. 단, 상용로그의 값은 ${given}$ 입니다. " + ID, ["$n$년 후 원리합계는 원금의 $(1+\\frac{r}{100})^{n}$배예요.", "양변에 상용로그를 취하면 $n\\log(1+\\frac{r}{100})\\ge\\log k$ 예요."], "$({one})^{n}\\ge {k}$ 의 양변에 상용로그를 취하면 $n\\ge\\frac{{lk}}{{l1}}={q}$ 이므로 가장 작은 자연수 $n$은 ${ans}$입니다."],
+    en: ["Money is deposited at an annual compound interest rate of ${rate}\\%$, with interest added to the principal once a year. After how many whole years does the balance first reach at least ${k}$ times the principal? The common logarithms are ${given}$. " + IE, ["After $n$ years the balance is $(1+\\frac{r}{100})^{n}$ times the principal.", "Taking common logs: $n\\log(1+\\frac{r}{100})\\ge\\log k$."], "From $({one})^{n}\\ge {k}$ we get $n\\ge\\frac{{lk}}{{l1}}={q}$, so the smallest whole number is ${ans}$."],
   },
   alg_expFuncParams: {
     ko: ["함수 $f(x)=a\\cdot b^{x}$ ($a\\ne0$, $b>0$, $b\\ne1$)에 대하여 $f({p})={u}$, $f({q})={v}$ 일 때, $f({r})$의 값은? " + FK, ["$\\frac{f(q)}{f(p)}=b^{q-p}$ 에서 $b$ 부터 구해 보세요.", "$b>0$ 이므로 $b$는 하나로 정해지고, 그다음 $a$를 구해요."], "${work}$ 입니다."],
     en: ["For the function $f(x)=a\\cdot b^{x}$ ($a\\ne0$, $b>0$, $b\\ne1$) we have $f({p})={u}$ and $f({q})={v}$. Find $f({r})$. " + FE, ["From $\\frac{f(q)}{f(p)}=b^{q-p}$ find $b$ first.", "Since $b>0$, $b$ is determined uniquely; then find $a$."], "${work}$."],
   },
   alg_expShiftA: {
-    ko: ["함수 ${f}$ 의 그래프가 점 $({p}, {q})$ 를 지날 때, 양수 $a$ ($a\\ne1$)의 값은? " + FK, ["점의 좌표를 식에 대입하면 $a$의 거듭제곱이 하나 남아요.", "$a>0$ 이고 지수가 $0$이 아니므로 $a$는 하나로 정해져요."], "${work}$ 입니다."],
+    ko: ["함수 ${f}$ 의 그래프 위의 한 점이 $({p}, {q})$ 일 때, 양수 $a$ ($a\\ne1$)의 값은? " + FK, ["점의 좌표를 식에 대입하면 $a$의 거듭제곱이 하나 남아요.", "$a>0$ 이고 지수가 $0$이 아니므로 $a$는 하나로 정해져요."], "${work}$ 입니다."],
     en: ["The graph of ${f}$ passes through the point $({p}, {q})$. Find the positive number $a$ ($a\\ne1$). " + FE, ["Substitute the coordinates; one power of $a$ remains.", "Since $a>0$ and the exponent is not $0$, $a$ is determined uniquely."], "${work}$."],
   },
   alg_expEquation: {
@@ -86,20 +97,24 @@ export const TEMPLATES = {
     en: ["Find the sum of all real solutions of ${eq}$. " + IE, ["Let $t$ be the repeated exponential; it gives a quadratic in $t$ with $t>0$.", "Solve for $t$ and convert each value back to $x$."], "${work}$, so the sum of the solutions is ${ans}$."],
   },
   alg_expInequality: {
-    ko: ["부등식 ${ineq}$ 을 만족시키는 정수 $x$의 개수는? " + ID, ["밑을 같게 만들어 지수끼리 비교해요. 밑이 $1$보다 크면 부등호 방향이 그대로예요.", "지수에 대한 이차부등식을 풀어 정수 해를 세어 보세요."], "밑을 ${b}$ 로 같게 하면 지수에 대한 부등식은 ${work}$ 이고, 이를 만족시키는 정수 $x$는 ${xs}$ 이므로 모두 ${ans}$개입니다."],
-    en: ["How many integers $x$ satisfy ${ineq}$? " + IE, ["Make the bases equal and compare exponents; the direction is kept if the common base exceeds $1$.", "Solve the resulting quadratic inequality and count the integers."], "Writing everything with base ${b}$, the inequality on the exponents becomes ${work}$; the integers satisfying it are ${xs}$, in total ${ans}$."],
+    ko: ["부등식 ${ineq}$ 의 해 중에서 정수 $x$는 모두 몇 개인가요? " + ID, ["밑을 같게 만들어 지수끼리 비교해요. 밑이 $1$보다 크면 부등호 방향이 그대로예요.", "지수에 대한 이차부등식을 풀어 정수 해를 세어 보세요."], "모두 밑이 ${b}$ 인 거듭제곱으로 나타내면 지수에 대한 부등식은 ${work}$ 이고, 이 이차식의 두 근은 ${rts}$ 이므로 이를 만족시키는 정수 $x$는 ${xs}$ 이고 모두 ${ans}$개입니다."],
+    en: ["How many integers $x$ satisfy ${ineq}$? " + IE, ["Make the bases equal and compare exponents; the direction is kept if the common base exceeds $1$.", "Solve the resulting quadratic inequality and count the integers."], "Writing everything with base ${b}$, the inequality on the exponents becomes ${work}$; the two roots of the quadratic are ${rts}$, so the integers satisfying it are ${xs}$, in total ${ans}$."],
   },
   alg_logEquation: {
-    ko: ["$x$는 실수일 때 방정식 ${eq}$ 의 해는? (해가 하나뿐입니다) " + ID, ["진수 조건 ${dom}$ 을 먼저 확인해요.", "로그의 합을 하나의 로그로 묶어 진수에 대한 이차방정식을 세워요."], "진수 조건에서 ${dom}$ 입니다. ${work}$ 이고 이 중 진수 조건을 만족시키는 것은 $x={ans}$ 입니다."],
-    en: ["For real $x$, solve ${eq}$. (There is exactly one solution.) " + IE, ["First check the domain condition ${dom}$.", "Combine the logarithms and form a quadratic equation in the argument."], "The domain requires ${dom}$. ${work}$; only $x={ans}$ satisfies the domain."],
+    ko: ["방정식 ${eq}$ 의 실수 해 $x$의 값은? " + ID, ["진수 조건 ${dom}$ 부터 먼저 확인해요.", "로그의 합을 하나의 로그로 묶어 진수에 대한 이차방정식을 세워요."], "진수 조건에서 ${dom}$ 입니다. ${work}$ 이고 이 중 진수 조건을 만족시키는 것은 $x={ans}$ 입니다."],
+    en: ["Find the real solution $x$ of the equation ${eq}$. " + IE, ["First check the domain condition ${dom}$.", "Combine the logarithms and form a quadratic equation in the argument."], "The domain requires ${dom}$. ${work}$; only $x={ans}$ satisfies the domain."],
   },
   alg_logInequality: {
-    ko: ["부등식 ${ineq}$ 을 만족시키는 정수 $x$의 개수는? " + ID, ["먼저 진수 조건(진수는 양수)을 확인해요.", "밑이 $1$보다 작으면 로그를 없앨 때 부등호 방향이 바뀌어요."], "${work}$ 이므로 정수 $x$는 모두 ${ans}$개입니다."],
+    ko: ["부등식 ${ineq}$ 의 해 중에서 정수 $x$는 모두 몇 개인가요? " + ID, ["먼저 진수 조건(진수는 양수)을 확인해요.", "밑이 $1$보다 작으면 로그를 없앨 때 부등호 방향이 바뀌어요."], "${work}$ 이므로 정수 $x$는 모두 ${ans}$개입니다."],
     en: ["How many integers $x$ satisfy ${ineq}$? " + IE, ["Check the domain first: every argument must be positive.", "If the base is less than $1$, the inequality reverses when the logarithm is removed."], "${work}$, so there are ${ans}$ such integers."],
   },
   alg_inverseGraph: {
-    ko: ["함수 ${f}$ 의 역함수의 그래프가 점 $({p}, {q})$ 를 지날 때, 양수 $a$ ($a\\ne1$)의 값은? " + FK, ["역함수의 그래프가 점 $(p, q)$ 를 지나면 원래 함수의 그래프는 점 $(q, p)$ 를 지나요.", "그 점을 원래 함수에 대입해 $a$ 에 대한 식을 얻어요."], "역함수의 그래프가 점 $({p},{q})$ 를 지나므로 원래 함수의 그래프는 점 $({q},{p})$ 를 지납니다. ${work}$ 입니다."],
+    ko: ["함수 ${f}$ 의 역함수의 그래프 위의 한 점이 $({p}, {q})$ 일 때, 양수 $a$ ($a\\ne1$)의 값은? " + FK, ["역함수의 그래프가 점 $(p, q)$ 를 지나면 원래 함수의 그래프는 점 $(q, p)$ 를 지나요.", "그 점을 원래 함수에 대입해 $a$ 에 대한 식을 얻어요."], "역함수의 그래프 위의 점이 $({p},{q})$ 이므로 원래 함수의 그래프 위의 점은 $({q},{p})$ 입니다. ${work}$ 입니다."],
     en: ["The graph of the inverse function of ${f}$ passes through the point $({p}, {q})$. Find the positive number $a$ ($a\\ne1$). " + FE, ["If the inverse's graph passes through $(p, q)$, the original graph passes through $(q, p)$.", "Substitute that point into the original function to get an equation in $a$."], "The inverse passes through $({p},{q})$, so the original graph passes through $({q},{p})$. ${work}$."],
+  },
+  alg_inversePoints: {
+    ko: ["함수 $f(x)=a^{x}+b$ ($a>1$, $b$는 정수)의 역함수의 그래프 위의 두 점이 $({p1}, {q1})$, $({p2}, {q2})$ 일 때, $a+b$의 값은? " + ID, ["역함수의 그래프가 점 $(p, q)$ 를 지나면 $f$ 의 그래프는 점 $(q, p)$ 를 지나요.", "두 점을 $f$ 에 대입해 두 식을 만들고, 서로 빼서 $b$ 를 없애면 $a$ 에 대한 방정식이 돼요. $a>1$ 인 해를 고르세요."], "$f$ 의 그래프 위의 두 점은 $({q1},{p1})$, $({q2},{p2})$ 입니다. ${work}$ 이므로 $a+b={ans}$ 입니다."],
+    en: ["The graph of the inverse of $f(x)=a^{x}+b$ ($a>1$, $b$ an integer) passes through the two points $({p1}, {q1})$ and $({p2}, {q2})$. Find $a+b$. " + IE, ["If the inverse's graph passes through $(p, q)$, the graph of $f$ passes through $(q, p)$.", "Substitute both points into $f$ and subtract the two equations to eliminate $b$; this gives an equation in $a$. Choose the solution with $a>1$."], "The graph of $f$ passes through $({q1},{p1})$ and $({q2},{p2})$. ${work}$, so $a+b={ans}$."],
   },
   alg_logDomain: {
     ko: ["함수 ${f}$ 의 정의역에 속하는 정수 $x$의 개수는? " + ID, ["로그의 진수는 양수이고, 근호 안은 $0$ 이상이에요.", "부등식을 풀어 $x$의 범위를 구한 뒤 그 안의 정수를 세요."], "${work}$ 이므로 정수 $x$는 모두 ${ans}$개입니다."],
@@ -113,10 +128,6 @@ export const TEMPLATES = {
     ko: ["크기가 ${theta}$ 인 각과 동경이 일치하는 각 중에서 $0^\\circ$ 이상 $360^\\circ$ 미만인 각은 몇 도인가요? (도 단위의 숫자만 쓰세요)", ["동경이 같은 각은 $360^\\circ\\times n$ 만큼 차이 나요(또는 $2n\\pi$).", "라디안으로 주어졌다면 먼저 도 단위로 바꾸세요($\\pi=180^\\circ$)."], "${work}$ 이므로 구하는 각은 ${ans}^\\circ$ 입니다."],
     en: ["Among the angles whose terminal side coincides with that of the angle ${theta}$, which one is at least $0^\\circ$ and less than $360^\\circ$? (digits only, in degrees)", ["Coterminal angles differ by $360^\\circ\\times n$ (or $2n\\pi$).", "If the angle is in radians, first convert to degrees ($\\pi=180^\\circ$)."], "${work}$, so the angle is ${ans}^\\circ$."],
   },
-  alg_halfAngleQuad: {
-    ko: ["$\\theta$가 제 ${m}$ 사분면의 각일 때, $\\frac{\\theta}{{n}}$ 의 동경이 위치할 수 있는 사분면의 번호를 모두 더한 값은? (예: 제1사분면과 제3사분면이면 $1+3=4$) " + ID, ["$\\theta=360^\\circ\\times k+\\alpha$ ($k$는 정수, $\\alpha$는 제 ${m}$ 사분면 각의 범위)로 놓아요.", "$k$를 $0,1,2,\\dots$ 로 바꿔 가며 $\\frac{\\theta}{{n}}$ 의 범위가 어느 사분면인지 살펴요."], "${work}$ 이므로 번호의 합은 ${ans}$입니다."],
-    en: ["If $\\theta$ is an angle in quadrant ${m}$, the terminal side of $\\frac{\\theta}{{n}}$ can lie in which quadrants? Add up the numbers of all possible quadrants. (Example: quadrants 1 and 3 give $1+3=4$.) " + IE, ["Write $\\theta=360^\\circ\\times k+\\alpha$ with $k$ an integer and $\\alpha$ in the range of quadrant ${m}$.", "Let $k=0,1,2,\\dots$ and see which quadrant the range of $\\frac{\\theta}{{n}}$ falls in."], "${work}$, so the sum of the numbers is ${ans}$."],
-  },
   alg_sectorForward: {
     ko: ["반지름의 길이가 ${r}$ cm, 중심각의 크기가 ${th}$ 인 부채꼴의 호의 길이를 $a\\pi$ cm, 넓이를 $b\\pi$ cm$^{2}$ 라 할 때, $a+b$의 값은? " + FK, ["중심각을 라디안으로 바꾸면 호의 길이 $l=r\\theta$, 넓이 $S=\\frac{1}{2}r^{2}\\theta$ 예요.", "$\\theta$ 가 $\\pi$ 의 몇 배인지 먼저 구해요."], "${work}$ 이므로 $a+b$ 의 값은 ${sumtex}$ 입니다."],
     en: ["A sector has radius ${r}$ cm and central angle ${th}$. Its arc length is $a\\pi$ cm and its area is $b\\pi$ cm$^{2}$. Find $a+b$. " + FE, ["In radians, arc length $l=r\\theta$ and area $S=\\frac{1}{2}r^{2}\\theta$.", "First find how many times $\\pi$ the central angle is."], "${work}$, so $a+b={sumtex}$."],
@@ -126,24 +137,20 @@ export const TEMPLATES = {
     en: ["Two sectors (central angle less than $2\\pi$) both have perimeter ${P}$ cm and area ${S}$ cm$^{2}$. What is the radius, in cm, of the one with the larger radius? " + IE, ["With radius $r$ and arc length $l$, the perimeter is $2r+l$ and the area is $\\frac{1}{2}rl$.", "Eliminating $l$ gives a quadratic equation in $r$."], "From $2r+l={P}$ and $\\frac{1}{2}rl={S}$, eliminating $l$ gives ${work}$, so the larger radius is ${ans}$ cm."],
   },
   alg_trigPoint: {
-    ko: ["시초선이 $x$축의 양의 방향이고 동경이 점 P$({xp}, {yp})$ 를 지나는 각의 크기를 $\\theta$라 할 때, ${E}$ 의 값은? " + FK, ["원점 O에서 점 P까지의 거리 $r=\\sqrt{x^{2}+y^{2}}$ 를 먼저 구해요(점 P의 좌표를 $(x, y)$ 라 할 때).", "$\\sin\\theta=\\frac{y}{r}$, $\\cos\\theta=\\frac{x}{r}$, $\\tan\\theta=\\frac{y}{x}$ 예요."], "${work}$ 이므로 ${E}={vt}$ 입니다."],
+    ko: ["시초선이 $x$축의 양의 방향이고 동경 위의 한 점이 P$({xp}, {yp})$ 인 각의 크기를 $\\theta$라 할 때, ${E}$ 의 값은? " + FK, ["원점 O에서 점 P까지의 거리 $r=\\sqrt{x^{2}+y^{2}}$ 를 먼저 구해요(점 P의 좌표를 $(x, y)$ 라 할 때).", "$\\sin\\theta=\\frac{y}{r}$, $\\cos\\theta=\\frac{x}{r}$, $\\tan\\theta=\\frac{y}{x}$ 예요."], "${work}$ 이므로 ${E}={vt}$ 입니다."],
     en: ["The initial side is the positive $x$-axis and the terminal side of the angle $\\theta$ passes through the point P$({xp}, {yp})$. Find the value of ${E}$. " + FE, ["First find the distance $r=\\sqrt{x^{2}+y^{2}}$ from the origin O to P (writing P as $(x, y)$).", "$\\sin\\theta=\\frac{y}{r}$, $\\cos\\theta=\\frac{x}{r}$, $\\tan\\theta=\\frac{y}{x}$."], "${work}$, so ${E}={vt}$."],
   },
-  alg_trigGiven: {
-    ko: ["$\\theta$가 제 ${quad}$ 사분면의 각이고 ${given}$ 일 때, ${E}$ 의 값은? " + FK, ["제 ${quad}$ 사분면에서 $\\sin$, $\\cos$, $\\tan$ 의 부호를 확인해요.", "주어진 값을 직각삼각형의 세 변의 비로 바꾸어 나머지 값을 구해요."], "${work}$ 이므로 ${E}={vt}$ 입니다."],
-    en: ["The angle $\\theta$ lies in quadrant ${quad}$ and ${given}$. Find the value of ${E}$. " + FE, ["Check the signs of $\\sin$, $\\cos$, $\\tan$ in quadrant ${quad}$.", "Turn the given value into the sides of a right triangle and find the other ratios."], "${work}$, so ${E}={vt}$."],
-  },
   alg_trigIdentity: {
-    ko: ["실수 $\\theta$에 대하여 ${given}$ 일 때, ${E}$ 의 값은? " + FK, ["$\\sin^{2}\\theta+\\cos^{2}\\theta=1$ 과, 주어진 식을 제곱한 식을 함께 써요.", "구하는 식을 $\\sin\\theta\\cos\\theta$ 또는 $(\\sin\\theta\\pm\\cos\\theta)^{2}$ 로 바꿔 보세요."], "${work}$ 입니다."],
-    en: ["For a real number $\\theta$, ${given}$. Find the value of ${E}$. " + FE, ["Use $\\sin^{2}\\theta+\\cos^{2}\\theta=1$ together with the square of the given relation.", "Rewrite the required expression in terms of $\\sin\\theta\\cos\\theta$ or $(\\sin\\theta\\pm\\cos\\theta)^{2}$."], "${work}$."],
+    ko: ["실수 $\\theta$에 대하여 ${given}$ 일 때, ${E}$ 의 값은? " + FK, ["$\\sin^{2}\\theta+\\cos^{2}\\theta=1$ 이에요. 주어진 식의 양변을 제곱하면 $\\sin\\theta\\cos\\theta$ 가 나타나요.", "주어진 식을 제곱해 $\\sin\\theta\\cos\\theta$ 의 값을 구하세요. 구하는 식이 다른 제곱식이면 같은 방법으로 $\\sin\\theta\\cos\\theta$ 를 써서 나타내요."], "${work}$ 입니다."],
+    en: ["For a real number $\\theta$, ${given}$. Find the value of ${E}$. " + FE, ["$\\sin^{2}\\theta+\\cos^{2}\\theta=1$. Squaring both sides of the given relation produces $\\sin\\theta\\cos\\theta$.", "Square the given relation to find $\\sin\\theta\\cos\\theta$. If the required expression is the other square, express it with $\\sin\\theta\\cos\\theta$ in the same way."], "${work}$."],
   },
   alg_trigRootCount: {
     ko: ["$0\\le\\theta<2\\pi$ 에서 방정식 ${eq}$ 의 서로 다른 실근의 개수는? " + ID, ["$k\\theta=\\phi$ 로 놓으면 $\\phi$ 의 범위는 $0\\le\\phi<2k\\pi$ 예요.", "$y=\\sin\\phi$ 등의 그래프와 직선 $y=$ (상수)의 교점 개수를 한 주기마다 세어 보세요."], "${work}$ 이므로 근의 개수는 ${ans}$입니다."],
     en: ["How many distinct real solutions does ${eq}$ have in $0\\le\\theta<2\\pi$? " + IE, ["Put $\\phi=k\\theta$; then $\\phi$ ranges over $0\\le\\phi<2k\\pi$.", "Count the intersections of the graph with the horizontal line in each period."], "${work}$, so the number of solutions is ${ans}$."],
   },
   alg_trigPeriod: {
-    ko: ["함수 ${f}$ 의 가장 작은 양의 주기를 $k\\pi$ 라 할 때, $k$의 값은? " + FK, ["$y=\\sin bx$, $y=\\cos bx$ 의 주기는 $\\frac{2\\pi}{|b|}$, $y=\\tan bx$ 의 주기는 $\\frac{\\pi}{|b|}$ 예요.", "절댓값이나 제곱이 붙으면 그래프의 음의 부분이 접혀 올라가므로 주기가 절반이 될 수 있어요."], "${work}$ 이므로 $k={kt}$ 입니다."],
-    en: ["The smallest positive period of ${f}$ is $k\\pi$. Find $k$. " + FE, ["$y=\\sin bx$ and $y=\\cos bx$ have period $\\frac{2\\pi}{|b|}$; $y=\\tan bx$ has period $\\frac{\\pi}{|b|}$.", "With an absolute value or a square, the negative part is folded up, so the period can be half as long."], "${work}$, so $k={kt}$."],
+    ko: ["함수 ${f}$ 의 가장 작은 양의 주기를 $k\\pi$ 라 할 때, $k$의 값은? " + FK, ["$y=\\sin bx$, $y=\\cos bx$ 의 주기는 $\\frac{2\\pi}{|b|}$, $y=\\tan bx$ 의 주기는 $\\frac{\\pi}{|b|}$ 예요.", "절댓값이 붙으면 그래프의 음의 부분이 접혀 올라가 주기가 절반이 돼요. 제곱은 $\\sin^{2}x=\\frac{1-\\cos2x}{2}$, $\\cos^{2}x=\\frac{1+\\cos2x}{2}$ 로 고쳐 보세요."], "${work}$ 이므로 $k={kt}$ 입니다."],
+    en: ["The smallest positive period of ${f}$ is $k\\pi$. Find $k$. " + FE, ["$y=\\sin bx$ and $y=\\cos bx$ have period $\\frac{2\\pi}{|b|}$; $y=\\tan bx$ has period $\\frac{\\pi}{|b|}$.", "An absolute value folds the negative part up, so the period is halved. For a square, use $\\sin^{2}x=\\frac{1-\\cos2x}{2}$ or $\\cos^{2}x=\\frac{1+\\cos2x}{2}$."], "${work}$, so $k={kt}$."],
   },
   alg_trigGraphParam: {
     ko: ["함수 $y=a{fn}\\,bx+c$ ($a>0$, $b>0$)의 최댓값이 ${M}$, 최솟값이 ${m}$, 주기가 ${per}$ 일 때, 세 상수의 곱 $abc$의 값은? " + FK, ["최댓값은 $a+c$, 최솟값은 $-a+c$ 예요.", "주기가 $\\frac{2\\pi}{b}$ 임을 이용해 $b$ 를 구해요."], "${work}$ 이므로 $abc={abct}$ 입니다."],
@@ -166,7 +173,7 @@ export const TEMPLATES = {
     en: ["In triangle ABC, $\\overline{B C}={a}$, $\\overline{C A}={b}$ and ${cond}$. Find $\\overline{A B}$. " + IE, ["Use the law of cosines $c^{2}=a^{2}+b^{2}-2ab\\cos C$.", "$\\cos60^\\circ=\\frac{1}{2}$, $\\cos120^\\circ=-\\frac{1}{2}$, and a length is positive."], "${work}$, so $\\overline{A B}={ans}$."],
   },
   alg_obtuseCount: {
-    ko: ["세 변의 길이가 ${a}$, ${b}$, $x$ 인 둔각삼각형이 존재하도록 하는 자연수 $x$의 개수는? " + ID, ["삼각형이 되려면 가장 긴 변이 나머지 두 변의 합보다 작아야 해요.", "둔각이 되려면 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합보다 커야 해요. $x$가 가장 긴 변인 경우와 ${b}$가 가장 긴 변인 경우로 나누세요."], "${work}$ 이므로 자연수 $x$는 모두 ${ans}$개입니다."],
+    ko: ["세 변의 길이가 ${a}$, ${b}$, $x$ 인 둔각삼각형이 존재하도록 하는 자연수 $x$의 개수는? " + ID, ["삼각형이 되려면 가장 긴 변이 나머지 두 변의 합보다 작아야 해요.", "둔각이 되려면 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합보다 커야 해요. $x$가 가장 긴 변인 경우와 길이가 ${b}$ 인 변이 가장 긴 변인 경우로 나누세요."], "${work}$ 이므로 자연수 $x$는 모두 ${ans}$개입니다."],
     en: ["For how many natural numbers $x$ does an obtuse triangle with side lengths ${a}$, ${b}$ and $x$ exist? " + IE, ["For a triangle, the longest side must be shorter than the sum of the other two.", "For an obtuse triangle, the square of the longest side must exceed the sum of the squares of the others. Treat the cases where $x$ is the longest side and where ${b}$ is."], "${work}$, so there are ${ans}$ natural numbers $x$."],
   },
   alg_arithTwoTerms: {
@@ -174,15 +181,15 @@ export const TEMPLATES = {
     en: ["In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. " + FE, ["Use $a_q-a_p=(q-p)d$ to find the common difference $d$.", "Then $a_r=a_p+(r-p)d$."], "The common difference is $d=\\frac{{v}-{ub}}{{q}-{p}}={d}$, so $a_{{r}}={u}+({r}-{p})\\times{db}={ans}$."],
   },
   alg_arithSumMax: {
-    ko: ["등차수열 $\\{a_n\\}$에서 $a_{{p}}={u}$, $a_{{q}}={v}$ 일 때, 첫째항부터 제 $n$항까지의 합 $S_n$의 최댓값은? ($n$은 자연수) " + ID, ["공차의 부호를 보고, 항이 양수인 동안만 더하면 합이 커져요.", "첫째항과 공차를 구한 뒤, 처음으로 $0$ 이하가 되는 항의 바로 앞까지의 합을 구해요."], "첫째항은 ${a1}$, 공차는 ${d}$ 이므로 $a_n$ 은 제 ${nm}$항까지 양수 (또는 $0$)입니다. 따라서 최댓값은 $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$ 입니다."],
-    en: ["In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find the maximum value of the sum $S_n$ of the first $n$ terms ($n$ a positive integer). " + IE, ["Look at the sign of the common difference: the sum grows only while the terms are positive.", "Find the first term and the difference, then sum up to just before the terms become non-positive."], "The first term is ${a1}$ and the difference is ${d}$, so the terms stay positive (or zero) up to term ${nm}$. The maximum is $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$."],
+    ko: ["등차수열 $\\{a_n\\}$에서 $a_{{p}}={u}$, $a_{{q}}={v}$ 일 때, 첫째항부터 제 $n$항까지의 합 $S_n$의 최댓값은? ($n$은 자연수) " + ID, ["공차의 부호를 보고, 항이 양수인 동안만 더하면 합이 커져요.", "첫째항과 공차를 구한 뒤, 처음으로 $0$ 이하가 되는 항의 바로 앞까지의 합을 구해요."], "첫째항은 ${a1}$, 공차는 ${d}$ 이므로 $a_n>0$ 은 $n\\le{nm}$ 일 때이고 $a_{{nm1}}\\le0$ 입니다. 따라서 최댓값은 $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$ 입니다."],
+    en: ["In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find the maximum value of the sum $S_n$ of the first $n$ terms ($n$ a positive integer). " + IE, ["Look at the sign of the common difference: the sum grows only while the terms are positive.", "Find the first term and the difference, then sum up to just before the terms become non-positive."], "The first term is ${a1}$ and the difference is ${d}$, so $a_n>0$ exactly for $n\\le{nm}$ and $a_{{nm1}}\\le0$. The maximum is $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$."],
   },
   alg_arithFirstExceeds: {
-    ko: ["첫째항이 ${a}$, 공차가 ${d}$ 인 등차수열의 첫째항부터 제 $n$항까지의 합을 $S_n$이라 할 때, $S_n>{N}$ 을 만족시키는 가장 작은 자연수 $n$의 값은? " + ID, ["$S_n=\\frac{n(2a+(n-1)d)}{2}$ 를 $n$ 에 대한 이차식으로 쓰세요.", "이차부등식을 풀거나 $n=1,2,3,\\dots$ 를 차례로 넣어 처음으로 넘는 곳을 찾으세요."], "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$ 이고 $S_{{m1}}={s1}\\le{N}$, $S_{{ans}}={s2}>{N}$ 이므로 구하는 $n$은 ${ans}$ 입니다."],
-    en: ["An arithmetic sequence has first term ${a}$ and common difference ${d}$; $S_n$ is the sum of its first $n$ terms. Find the smallest positive integer $n$ with $S_n>{N}$. " + IE, ["Write $S_n=\\frac{n(2a+(n-1)d)}{2}$ as a quadratic in $n$.", "Solve the quadratic inequality, or try $n=1,2,3,\\dots$ until the sum first exceeds the bound."], "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$, and $S_{{m1}}={s1}\\le{N}$ while $S_{{ans}}={s2}>{N}$, so $n={ans}$."],
+    ko: ["첫째항이 ${a}$, 공차가 ${d}$ 인 등차수열의 첫째항부터 제 $n$항까지의 합을 $S_n$이라 합니다. $S_n>{N}$ 일 때, 자연수 $n$의 최솟값은? " + ID, ["$S_n=\\frac{n(2a+(n-1)d)}{2}$ 를 $n$ 에 대한 이차식으로 쓰세요.", "이차부등식을 풀거나 $n=1,2,3,\\dots$ 를 차례로 넣어 처음으로 넘는 곳을 찾으세요."], "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$ 이고 $n=1,2,\\dots,{m1}$ 일 때 $S_n$ 은 모두 ${N}$ 이하(가장 큰 값 ${s1}$)이며 $S_{{ans}}={s2}>{N}$ 이므로 구하는 $n$은 ${ans}$ 입니다."],
+    en: ["An arithmetic sequence has first term ${a}$ and common difference ${d}$; $S_n$ is the sum of its first $n$ terms. Find the smallest positive integer $n$ with $S_n>{N}$. " + IE, ["Write $S_n=\\frac{n(2a+(n-1)d)}{2}$ as a quadratic in $n$.", "Solve the quadratic inequality, or try $n=1,2,3,\\dots$ until the sum first exceeds the bound."], "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$, and $S_1,\\dots,S_{{m1}}$ are all at most ${N}$ (largest value ${s1}$) while $S_{{ans}}={s2}>{N}$, so $n={ans}$."],
   },
   alg_arithGeoMix: {
-    ko: ["세 수 $x$, $y$, $z$ 가 이 순서로 공차가 양수인 등차수열을 이루고 $x+y+z={S}$ 입니다. 세 수 $x$, $y$, $z+{k}$ 가 이 순서로 등비수열을 이룰 때, 공차는? " + ID, ["공차를 $d$ 라 하면 $x=y-d$, $z=y+d$ 이고 $3y=S$ 예요.", "등비수열의 조건 $y^{2}=x(z+k)$ 에 대입해 $d$ 에 대한 이차방정식을 세워요."], "$y=\\frac{{S}}{3}={y}$ 이고 $x={y}-d$, $z={y}+d$ 이므로 ${y}^{2}=({y}-d)({y}+d+{k})$, 즉 $d^{2}+{k}d-{yk}=0$ 입니다. 공차가 양수이므로 $d={ans}$ 입니다."],
+    ko: ["세 수 $x$, $y$, $z$ 가 이 순서로 공차가 양수인 등차수열을 이루고 $x+y+z={S}$ 입니다. 이때 이 순서로 등비수열을 이루는 세 수는 $x$, $y$, $z+{k}$ 입니다. 공차는? " + ID, ["공차를 $d$ 라 하면 $x=y-d$, $z=y+d$ 이고 $3y=S$ 예요.", "등비수열의 조건 $y^{2}=x(z+k)$ 에 대입해 $d$ 에 대한 이차방정식을 세워요."], "$y=\\frac{{S}}{3}={y}$ 이고 $x={y}-d$, $z={y}+d$ 이므로 ${y}^{2}=({y}-d)({y}+d+{k})$, 즉 $d^{2}+{k}d-{yk}=0$ 입니다. 공차가 양수이므로 $d={ans}$ 입니다."],
     en: ["Three numbers $x$, $y$, $z$ form, in this order, an arithmetic sequence with positive common difference, and $x+y+z={S}$. The numbers $x$, $y$, $z+{k}$ form, in this order, a geometric sequence. Find the common difference. " + IE, ["With common difference $d$, $x=y-d$, $z=y+d$ and $3y=S$.", "Substitute into the geometric condition $y^{2}=x(z+k)$ to get a quadratic in $d$."], "$y=\\frac{{S}}{3}={y}$, $x={y}-d$, $z={y}+d$, so ${y}^{2}=({y}-d)({y}+d+{k})$, i.e. $d^{2}+{k}d-{yk}=0$. The difference is positive, so $d={ans}$."],
   },
   alg_sumToTerm: {
@@ -190,8 +197,8 @@ export const TEMPLATES = {
     en: ["The sum of the first $n$ terms of $\\{a_n\\}$ is $S_n={expr}$. Find $a_{1}+a_{{k}}$. " + IE, ["$a_1=S_1$, and $a_n=S_n-S_{n-1}$ for $n\\ge2$.", "Do not assume that the formula for $S_n-S_{n-1}$ also gives $a_1$."], "$a_1=S_1={a1}$ and $a_{{k}}=S_{{k}}-S_{{km}}={ak}$, so the sum is ${ans}$."],
   },
   alg_geoTwoTerms: {
-    ko: ["공비가 양수인 등비수열 $\\{a_n\\}$에서 $a_{{p}}={u}$, $a_{{q}}={v}$ 일 때, $a_{{r}}$ 의 값은? " + FK, ["(뒤의 항)÷(앞의 항)은 공비 $r$ 의 (번호의 차)제곱이에요.", "공비가 양수라는 조건으로 $r$ 이 하나로 정해져요."], "$\\frac{{v}}{{u}}=r^{{dq}}$ 이고 $r>0$ 이므로 $r={rt}$, 따라서 ${work}$ 입니다."],
-    en: ["In a geometric sequence $\\{a_n\\}$ with positive common ratio, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. " + FE, ["(later term) ÷ (earlier term) equals $r$ raised to the difference of the indices.", "The positivity of $r$ makes it unique."], "$\\frac{{v}}{{u}}=r^{{dq}}$ and $r>0$, so $r={rt}$; hence ${work}$."],
+    ko: ["공비가 양수인 등비수열 $\\{a_n\\}$에서 $a_{{p}}={u}$, $a_{{q}}={v}$ 일 때, $a_{{r}}$ 의 값은? " + FK, ["(뒤의 항)÷(앞의 항)은 공비 $r$ 의 (번호의 차)제곱이에요.", "공비가 양수라는 조건으로 $r$ 이 하나로 정해져요."], "${vu}={rpow}$ 이고 $r>0$ 이므로 $r={rt}$, 따라서 ${work}$ 입니다."],
+    en: ["In a geometric sequence $\\{a_n\\}$ with positive common ratio, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find $a_{{r}}$. " + FE, ["(later term) ÷ (earlier term) equals $r$ raised to the difference of the indices.", "The positivity of $r$ makes it unique."], "${vu}={rpow}$ and $r>0$, so $r={rt}$; hence ${work}$."],
   },
   alg_geoSumRatio: {
     ko: ["등비수열 $\\{a_n\\}$의 첫째항부터 제 $n$항까지의 합을 $S_n$이라 하자. $S_{{n1}}={u}$, $S_{{n2}}={v}$ 일 때, $S_{{n3}}$ 의 값은? " + ID, ["$S_{2m}=S_m+r^{m}S_m$ 처럼 뒷부분의 합은 앞부분의 합에 $r^{m}$ 을 곱한 것이에요.", "$r^{{n1}}$ 의 값을 먼저 구하면 $r$ 자체는 필요 없어요."], "$S_{{n2}}=S_{{n1}}(1+r^{{n1}})$ 에서 $r^{{n1}}={q}$ 입니다. $S_{{n3}}=S_{{n1}}(1+r^{{n1}}+r^{{n2}})={u}\\times({qs})={ans}$ 입니다."],
@@ -206,7 +213,7 @@ export const TEMPLATES = {
     en: ["Evaluate the sum ${expr}$. " + FE, ["Split each term into partial fractions, e.g. $\\frac{1}{k(k+1)}=\\frac{1}{k}-\\frac{1}{k+1}$.", "When added, the terms cancel in pairs and only a few at each end remain."], "${work}$."],
   },
   alg_sigmaSubseq: {
-    ko: ["수열 $\\{a_n\\}$의 일반항이 $a_n={an}$ 일 때, $\\sum_{k=1}^{{m}}a_{{idx}}$ 의 값은? " + ID, ["$a_{{idx}}$ 의 $n$ 자리에 ${idx}$ 를 넣어 $k$ 에 대한 식으로 만드세요.", "$\\sum k=\\frac{m(m+1)}{2}$, $\\sum k^{2}=\\frac{m(m+1)(2m+1)}{6}$, $\\sum c=cm$ 을 쓰세요."], "$a_{{idx}}={term}$ 이므로 ${work}$ 입니다."],
+    ko: ["수열 $\\{a_n\\}$의 일반항이 $a_n={an}$ 일 때, $\\sum_{k=1}^{{m}}a_{{idx}}$ 의 값은? " + ID, ["$a_n$ 의 $n$ 자리에 들어가는 식은 ${idx}$ 입니다. 이를 대입해 $k$ 에 대한 식으로 만드세요.", "$\\sum k=\\frac{m(m+1)}{2}$, $\\sum k^{2}=\\frac{m(m+1)(2m+1)}{6}$, $\\sum c=cm$ 을 쓰세요."], "$a_{{idx}}={term}$ 이므로 ${work}$ 입니다."],
     en: ["The general term of $\\{a_n\\}$ is $a_n={an}$. Find $\\sum_{k=1}^{{m}}a_{{idx}}$. " + IE, ["Substitute ${idx}$ for $n$ to get an expression in $k$.", "Use $\\sum k=\\frac{m(m+1)}{2}$, $\\sum k^{2}=\\frac{m(m+1)(2m+1)}{6}$ and $\\sum c=cm$."], "$a_{{idx}}={term}$, so ${work}$."],
   },
   alg_seriesPattern: {
@@ -214,16 +221,16 @@ export const TEMPLATES = {
     en: ["Evaluate ${expr}$. " + IE, ["Find the pattern and write the general term $a_k$ as an expression in $k$.", "Use the formulas for $\\sum k$, $\\sum k^{2}$ and so on (if the signs alternate, group the terms in pairs)."], "${work}$."],
   },
   alg_recAffine: {
-    ko: ["수열 $\\{a_n\\}$이 $a_1={s}$, $a_{n+1}={rule}$ ($n\\ge1$) 로 정의될 때, $a_{{k}}$ 의 값은? " + FK, ["$a_2, a_3, \\dots$ 를 차례로 구해 보세요.", "항이 많으면 $a_{n+1}-\\alpha=p(a_n-\\alpha)$ 꼴로 바꾸어 일반항을 구할 수도 있어요."], "${work}$ 입니다."],
-    en: ["A sequence $\\{a_n\\}$ is defined by $a_1={s}$ and $a_{n+1}={rule}$ ($n\\ge1$). Find $a_{{k}}$. " + FE, ["Compute $a_2, a_3, \\dots$ one after another.", "For many terms, rewrite as $a_{n+1}-\\alpha=p(a_n-\\alpha)$ to get the general term."], "${work}$."],
+    ko: ["수열 $\\{a_n\\}$이 $a_1={s}$, $a_{n+1}={rule}$ ($n\\ge1$) 로 정의될 때, $a_{{k}}$ 의 값은? " + FK, ["$a_2$, $a_3$, $\\dots$ 의 값을 차례로 구해 보세요.", "항 번호와 값을 표로 적고, 한 단계씩 규칙을 적용해 $a_{{k}}$ 까지 구하세요. 분수가 나오면 약분해 두세요."], "${work}$ 입니다."],
+    en: ["A sequence $\\{a_n\\}$ is defined by $a_1={s}$ and $a_{n+1}={rule}$ ($n\\ge1$). Find $a_{{k}}$. " + FE, ["Compute $a_2, a_3, \\dots$ one after another.", "Write the term numbers and values in a table and apply the rule one step at a time up to $a_{{k}}$. Reduce fractions as you go."], "${work}$."],
   },
   alg_collatz: {
     ko: ["수열 $\\{a_n\\}$이 $a_1={s}$ 이고, $a_n$이 짝수이면 $a_{n+1}=\\frac{a_{n}}{2}$, $a_n$이 홀수이면 $a_{n+1}={odd}$ 로 정의될 때, $a_n=1$ 을 만족시키는 가장 작은 자연수 $n$의 값은? " + ID, ["$a_1$ 부터 차례로 구하면서 짝수·홀수에 맞는 식을 적용하세요.", "처음으로 $1$ 이 나오는 항의 번호를 세세요."], "항을 차례로 구하면 ${work}$ 이므로 처음 $1$ 이 나오는 것은 제 ${ans}$ 항입니다."],
     en: ["A sequence $\\{a_n\\}$ has $a_1={s}$; if $a_n$ is even then $a_{n+1}=\\frac{a_{n}}{2}$, and if $a_n$ is odd then $a_{n+1}={odd}$. Find the smallest positive integer $n$ with $a_n=1$. " + IE, ["Compute the terms one by one from $a_1$, using the rule for even or odd values.", "Count the position of the first term equal to $1$."], "The terms are ${work}$, so the first $1$ is term number ${ans}$."],
   },
   alg_recParam: {
-    ko: ["수열 $\\{a_n\\}$이 $a_1={s}$, $a_{n+1}=pa_n+{q}$ ($n\\ge1$, $p$는 양수) 로 정의되고 $a_3={t}$ 일 때, $p$의 값은? " + FK, ["$a_2$, $a_3$ 를 $p$ 로 나타내 보세요.", "$a_3$ 이 $p$ 에 대한 이차식이 돼요. 양수인 해를 고르세요."], "$a_2={st}p+{q}$, $a_3=p({st}p+{q})+{q}={st}p^{2}+{q}p+{q}={t}$ 에서 ${work}$ 이고 $p>0$ 이므로 $p={ans}$ 입니다."],
-    en: ["A sequence $\\{a_n\\}$ satisfies $a_1={s}$, $a_{n+1}=pa_n+{q}$ ($n\\ge1$, $p$ positive) and $a_3={t}$. Find $p$. " + FE, ["Express $a_2$ and $a_3$ in terms of $p$.", "$a_3$ is a quadratic in $p$; pick the positive solution."], "$a_2={st}p+{q}$ and $a_3=p({st}p+{q})+{q}={st}p^{2}+{q}p+{q}={t}$ give ${work}$; since $p>0$, $p={ans}$."],
+    ko: ["수열 $\\{a_n\\}$이 $a_1={s}$, $a_{n+1}=pa_n+{q}$ ($n\\ge1$, $p$는 양수) 로 정의되고 $a_3={t}$ 일 때, $p$의 값은? " + FK, ["$a_2$, $a_3$ 을 $p$ 로 나타내 보세요.", "$a_3$ 이 $p$ 에 대한 이차식이 돼요. 양수인 해를 고르세요."], "$a_2={a2e}$, $a_3=p({a2e})+{q}={a3e}={t}$ 에서 ${work}$ 이고 $p>0$ 이므로 $p={ans}$ 입니다."],
+    en: ["A sequence $\\{a_n\\}$ satisfies $a_1={s}$, $a_{n+1}=pa_n+{q}$ ($n\\ge1$, $p$ positive) and $a_3={t}$. Find $p$. " + FE, ["Express $a_2$ and $a_3$ in terms of $p$.", "$a_3$ is a quadratic in $p$; pick the positive solution."], "$a_2={a2e}$ and $a_3=p({a2e})+{q}={a3e}={t}$ give ${work}$; since $p>0$, $p={ans}$."],
   },
   alg_seqIntTerms: {
     ko: ["수열 $\\{a_n\\}$의 일반항이 $a_n=\\frac{{num}}{{den}}$ 일 때, 정수인 항의 개수는? " + ID, ["분자를 분모로 나누어 $a_n=k+\\frac{c}{n+r}$ ($k$는 정수, $c$는 상수) 꼴로 바꿔요.", "상수의 약수 중 분모 $n+r$ 이 될 수 있는 것(자연수 $n$에 대해 $n+r\\ge{r1}$)을 세세요."], "${work}$ 이므로 정수인 항은 모두 ${ans}$개입니다."],
@@ -239,15 +246,15 @@ export const GEN = {
       const n = r.pick([3, 4]), c = r.int(2, n === 3 ? 7 : 5), N = c ** n;
       const divs = []; for (let a = 2; a < N; a++) if (N % a === 0 && N / a !== a) divs.push(a);
       const a = r.pick(divs), b = N / a;
-      return { v: { expr: `${rt(n, a)}\\times${rt(n, b)}`, work: `${rt(n, a)}\\times${rt(n, b)}=${rt(n, `${a}\\times${b}`)}=${rt(n, N)}=${rt(n, `${c}^{${n}}`)}=${c}`, kind: 1, ra: a, rb: b, rn: n, rm: 0 }, ans: c };
+      return { v: { expr: `${rt(n, a)}\\times${rt(n, b)}`, work: `${rt(n, a)}\\times${rt(n, b)}=${rt(n, `${a}\\times${b}`)}=${rt(n, N)}=${rt(n, `${c}^{${n}}`)}=${c}` }, ans: c };
     }
     if (kind === 2) {
       const n = r.pick([3, 4]), c = r.int(2, n === 3 ? 5 : 3), b = r.int(2, 12), a = b * c ** n;
       if (a > 6000) return null;
-      return { v: { expr: `\\frac{${rt(n, a)}}{${rt(n, b)}}`, work: `\\frac{${rt(n, a)}}{${rt(n, b)}}=${rt(n, `\\frac{${a}}{${b}}`)}=${rt(n, c ** n)}=${rt(n, `${c}^{${n}}`)}=${c}`, kind: 2, ra: a, rb: b, rn: n, rm: 0 }, ans: c };
+      return { v: { expr: `\\frac{${rt(n, a)}}{${rt(n, b)}}`, work: `\\frac{${rt(n, a)}}{${rt(n, b)}}=${rt(n, `\\frac{${a}}{${b}}`)}=${rt(n, c ** n)}=${rt(n, `${c}^{${n}}`)}=${c}` }, ans: c };
     }
     const [m, n] = r.pick([[2, 2], [2, 3], [3, 2], [3, 3]]), c = r.int(2, m * n === 4 ? 6 : m * n === 6 ? 4 : 3), a = c ** (m * n);
-    return { v: { expr: `${rt(m, rt(n, a))}`, work: `${rt(m, rt(n, a))}=${rt(m * n, a)}=${rt(m * n, `${c}^{${m * n}}`)}=${c}`, kind: 3, ra: a, rb: 0, rn: n, rm: m }, ans: c };
+    return { v: { expr: `${rt(m, rt(n, a))}`, work: `${rt(m, rt(n, a))}=${rt(m * n, a)}=${rt(m * n, `${c}^{${m * n}}`)}=${c}` }, ans: c };
   }),
   alg_realRootCount: (r, lvl) => {
     const N = r.int(6, 16), E = fl(N, 2), O = N - 1 - E;
@@ -256,7 +263,7 @@ export const GEN = {
     else {
       const b = r.int(2, 5), e = r.int(2, 5), kind = r.int(0, 3);
       if (kind === 0) { rad = `(-${b})^{${e}}`; neg = e % 2 === 1; }
-      else if (kind === 1) { rad = `-${b}^{${e}}`; neg = true; }
+      else if (kind === 1) { rad = `-(${b}^{${e}})`; neg = true; }
       else if (kind === 2) { rad = `-(-${b})^{${e}}`; neg = e % 2 === 0; }
       else { rad = `${b}^{${e}}`; neg = false; }
     }
@@ -270,16 +277,16 @@ export const GEN = {
       const { q, p, c, a } = t, sgnS = neg ? "-" : "";
       const val = neg ? new Q(1).div(qpow(c, p)) : new Q(c ** p);
       if (c ** p > 700) return null;
-      const work = `${a}^{${sgnS}\\frac{${p}}{${q}}}=(${c}^{${q}})^{${sgnS}\\frac{${p}}{${q}}}=${c}^{${sgnS}${p}}=${neg ? `\\frac{1}{${c ** p}}` : c ** p}`;
-      return { v: { expr: `${a}^{${sgnS}\\frac{${p}}{${q}}}`, work, a1: a, n1: neg ? -p : p, d1: q, a2: 1, n2: 0, d2: 1 }, ans: qn(val) };
+      const work = chain([`${a}^{${sgnS}\\frac{${p}}{${q}}}`, `(${c}^{${q}})^{${sgnS}\\frac{${p}}{${q}}}`, ap(neg ? -p : p, `${c}`), neg ? `\\frac{1}{${c ** p}}` : `${c ** p}`]);
+      return { v: { expr: `${a}^{${sgnS}\\frac{${p}}{${q}}}`, work }, ans: qn(val) };
     }
     const t1 = one(), t2 = one(); if (!t1 || !t2) return null;
     const s1 = r.pick([1, -1]), s2 = -s1;
     const k1 = s1 * t1.p, k2 = s2 * t2.p, val = qpow(t1.c, k1).mul(qpow(t2.c, k2));
     if (Math.abs(qn(val)) > 5000 || Number(val.q) > 2000 || qn(val) < 1e-4) return null;
     const ex = (s, p, q) => `${s < 0 ? "-" : ""}\\frac{${p}}{${q}}`;
-    const work = `${t1.a}^{${ex(s1, t1.p, t1.q)}}\\times${t2.a}^{${ex(s2, t2.p, t2.q)}}=${t1.c}^{${k1}}\\times${t2.c}^{${k2}}=${qt(val)}`;
-    return { v: { expr: `${t1.a}^{${ex(s1, t1.p, t1.q)}}\\times${t2.a}^{${ex(s2, t2.p, t2.q)}}`, work, a1: t1.a, n1: k1, d1: t1.q, a2: t2.a, n2: k2, d2: t2.q }, ans: qn(val) };
+    const work = `${t1.a}^{${ex(s1, t1.p, t1.q)}}\\times${t2.a}^{${ex(s2, t2.p, t2.q)}}=${ap(k1, `${t1.c}`)}\\times${ap(k2, `${t2.c}`)}=${qt(val)}`;
+    return { v: { expr: `${t1.a}^{${ex(s1, t1.p, t1.q)}}\\times${t2.a}^{${ex(s2, t2.p, t2.q)}}`, work }, ans: qn(val) };
   }),
   alg_expSum: (r, lvl) => {
     const a = r.pick([2, 3, 5, 10]), g = r.pick([1, 1, 2]);
@@ -290,19 +297,19 @@ export const GEN = {
     const ans = e1 > 0 ? (k === 2 ? s * s - 2 : s ** 3 - 3 * s) : k === 2 ? s * s + 2 : s ** 3 + 3 * s;
     const work = e1 > 0 ? (k === 2 ? `(t+\\frac{1}{t})^{2}=t^{2}+2+\\frac{1}{t^{2}}\\ \\Rightarrow\\ t^{2}+\\frac{1}{t^{2}}=${s}^{2}-2=${ans}` : `(t+\\frac{1}{t})^{3}=t^{3}+3(t+\\frac{1}{t})+\\frac{1}{t^{3}}\\ \\Rightarrow\\ t^{3}+\\frac{1}{t^{3}}=${s}^{3}-3\\times${s}=${ans}`)
       : (k === 2 ? `(t-\\frac{1}{t})^{2}=t^{2}-2+\\frac{1}{t^{2}}\\ \\Rightarrow\\ t^{2}+\\frac{1}{t^{2}}=${s}^{2}+2=${ans}` : `(t-\\frac{1}{t})^{3}=t^{3}-3(t-\\frac{1}{t})-\\frac{1}{t^{3}}\\ \\Rightarrow\\ t^{3}-\\frac{1}{t^{3}}=${s}^{3}+3\\times${s}=${ans}`);
-    return { v: { given: `${a}^{${gx}}${e1 > 0 ? "+" : "-"}${a}^{-${gx}}=${s}`, ask: `${a}^{${kx}}${e2 > 0 ? "+" : "-"}${a}^{-${kx}}`, work, a, g, e1, k, e2, s }, ans };
+    return { v: { given: `${a}^{${gx}}${e1 > 0 ? "+" : "-"}${a}^{-${gx}}=${s}`, ask: `${a}^{${kx}}${e2 > 0 ? "+" : "-"}${a}^{-${kx}}`, work }, ans };
   },
   alg_logChain: (r, lvl) => tryGen(() => {
     const L = (x, y) => `\\log_{${x}}${y}`;
     if (lvl === 1) {
       const a = r.pick([2, 3, 5, 7]), k = r.int(2, a === 7 ? 3 : 5), b = r.int(2, 12), c = r.int(2, 12), d = a ** k;
       if (a === b || b === c || c === d) return null;
-      return { v: { expr: `${L(a, b)}\\times${L(b, c)}\\times${L(c, d)}`, work: `${L(a, b)}\\times${L(b, c)}\\times${L(c, d)}=${L(a, d)}=${L(a, `${a}^{${k}}`)}=${k}`, args: `${a},${b},${c},${d}` }, ans: k };
+      return { v: { expr: `${L(a, b)}\\times${L(b, c)}\\times${L(c, d)}`, work: `${L(a, b)}\\times${L(b, c)}\\times${L(c, d)}=${L(a, d)}=${L(a, `${a}^{${k}}`)}=${k}` }, ans: k };
     }
     const a = r.pick([2, 3]), m = r.pick([2, 3]), k = r.int(1, 7), b = a ** m, d = a ** k, c = r.int(2, 11);
     if (c === b || c === d || b === d) return null;
     const w = new Q(k, m);
-    return { v: { expr: `${L(b, c)}\\times${L(c, d)}`, work: `${L(b, c)}\\times${L(c, d)}=${L(b, d)}=\\log_{${a}^{${m}}}${a}^{${k}}=${qt(w)}`, args: `${b},${c},${d}` }, ans: qn(w) };
+    return { v: { expr: `${L(b, c)}\\times${L(c, d)}`, work: `${L(b, c)}\\times${L(c, d)}=${L(b, d)}=\\log_{${ap(m, `${a}`)}}${ap(k, `${a}`)}=${qt(w)}` }, ans: qn(w) };
   }),
   alg_logExpress: (r, lvl) => tryGen(() => {
     const m = lvl === 1 ? 1 : r.pick([2, 3, 2]);
@@ -317,9 +324,9 @@ export const GEN = {
     const x = new Q(e3, m), y = new Q(e5, m), z = new Q(e2, m);
     const form = sumTex([cterm(x, "a"), cterm(y, "b"), cterm(z, "")]);
     const tot = x.add(y).add(z);
-    const fac = `${[[2, e2], [3, e3], [5, e5]].filter(([, e]) => e !== 0).map(([pr, e]) => `${pr}^{${e}}`).join("\\times")}`;
+    const fac = `${[[2, e2], [3, e3], [5, e5]].filter(([, e]) => e !== 0).map(([pr, e]) => ap(e, `${pr}`)).join("\\times")}`;
     const work = `\\log_{2}${N}=${m === 1 ? "" : `\\frac{1}{${m}}\\log_{2}(${fac})=`}${m === 1 ? `\\log_{2}(${fac})=` : ""}${form}`;
-    return { v: { N, work, sumtex: qt(tot), Rn, Rd, m }, ans: qn(tot) };
+    return { v: { N, work, sumtex: qt(tot) }, ans: qn(tot) };
   }),
   alg_digitsPow: (r, lvl) => tryGen(() => {
     const LG = { 2: 3010, 3: 4771, 5: 6990, 7: 8451 };
@@ -332,7 +339,7 @@ export const GEN = {
     const N = bs.map((b, i) => `${b}^{${ns[i]}}`).join("\\times");
     const lg = (tot / 10000).toFixed(4).replace(/0+$/, "");
     const gv = bs.map((b) => `\\log ${b}=0.${String(LG[b]).padStart(4, "0")}`).join(",\\ ");
-    return { v: { given: gv, N, lg, ip: Math.floor(tot / 10000), b1: bs[0], n1: ns[0], b2: bs[1] ?? 1, n2: ns[1] ?? 0 }, ans: dig };
+    return { v: { given: gv, N, lg, ip: Math.floor(tot / 10000) }, ans: dig };
   }),
   alg_growthYears: (r, lvl) => tryGen(() => {
     const rate = r.pick([2, 3, 4, 5, 6, 8, 10, 12]), k = lvl === 1 ? r.pick([2, 3]) : r.pick([4, 5, 10]);
@@ -358,7 +365,7 @@ export const GEN = {
     if (Number(ans.q) > 500 || Number(u.q) > 300 || Number(v.q) > 300 || Math.abs(qn(ans)) > 20000) return null;
     const lo = Math.min(p, q), hi = Math.max(p, q), flo = f(lo), fhi = f(hi);
     const ratio = fhi.div(flo);
-    const work = `\\frac{f(${hi})}{f(${lo})}=\\frac{${qt(fhi)}}{${qt(flo)}}=b^{${hi - lo}}=${qt(ratio)}\\ \\Rightarrow\\ b=${qt(b)}\\ (b>0),\\ a=${qt(new Q(a))},\\ f(${rr})=${qt(new Q(a))}\\times(${qt(b)})^{${rr}}=${qt(ans)}`;
+    const work = `\\frac{f(${hi})}{f(${lo})}=\\frac{${qt(fhi)}}{${qt(flo)}}=${ap(hi - lo, "b")}=${qt(ratio)}\\ \\Rightarrow\\ b=${qt(b)}\\ (b>0),\\ a=${qt(new Q(a))},\\ f(${rr})=${qt(new Q(a))}\\times${rr === 0 ? "1" : ap(rr, b.isInt ? qt(b) : `(${qt(b)})`)}=${qt(ans)}`;
     return { v: { p, u: qt(u), q, v: qt(v), r: rr, work }, ans: qn(ans) };
   }),
   alg_expShiftA: (r, lvl) => tryGen(() => {
@@ -372,8 +379,11 @@ export const GEN = {
     const ex = rev ? (m === 0 ? "-x" : `${m}-x`) : xminus(m);
     const f = `y=${coefTex(c)}a^{${ex}}${n === 0 ? "" : sg(n)}`;
     const asol = qt(aq);
-    const nb = n < 0 ? `(${n})` : `${n}`;
-    const work = c === 1 ? `a^{${e}}=${q}-${nb}=${W}\\ \\Rightarrow\\ a=${asol}` : `${c}a^{${e}}=${q}-${nb}=${W}\\ \\Rightarrow\\ a^{${e}}=${qt(new Q(W).div(c))}\\ \\Rightarrow\\ a=${asol}`;
+    const rhs = chain([n === 0 ? `${q}` : `${q}${n < 0 ? "+" : "-"}${Math.abs(n)}`, `${W}`]);
+    const eqs = [`${c === 1 ? "" : c}${ap(e)}=${rhs}`];
+    if (c !== 1) eqs.push(`${ap(e)}=${qt(new Q(W).div(c))}`);
+    if (e !== 1) eqs.push(`a=${asol}`);
+    const work = eqs.join("\\ \\Rightarrow\\ ");
     return { v: { f, p, q, c, e, n, work }, ans: qn(aq) };
   }),
   alg_expEquation: (r, lvl) => tryGen(() => {
@@ -412,7 +422,10 @@ export const GEN = {
     const relT = { le: "\\le", lt: "<", ge: "\\ge", gt: ">" }[rel];
     const ineq = `${base(sL, mL)}^{${poly([1, -uL, 0]).replace(/^x\^2/, "x^{2}")}}${relT}${base(sR, kR)}^{${lin(vR, wR)}}`.replace(/x\^2/g, "x^{2}");
     const work = `${poly([A, B, C]).replace(/x\^2/g, "x^{2}")}${relT}0`;
-    return { v: { ineq, work, xs: sol.join(", "), b, sL, mL, uL, sR, kR, vR, wR, rel }, ans: sol.length };
+    const Dd = B * B - 4 * A * C, rs = [(-B - Math.sqrt(Dd)) / (2 * A), (-B + Math.sqrt(Dd)) / (2 * A)].sort((u, w) => u - w);
+    if (Dd <= 0) return null;
+    const rts = rs.every(Number.isInteger) ? `x=${rs.join(",\\ ")}` : `x\\approx ${rs.map((z) => (Math.round(z * 100) / 100).toFixed(2)).join(",\\ ")}`;
+    return { v: { ineq, work, rts, xs: sol.join(", "), b, sL, mL, uL, sR, kR, vR, wR, rel }, ans: sol.length };
   }),
   alg_logEquation: (r, lvl) => tryGen(() => {
     const Bs = lvl === 1 ? 2 : r.pick([2, 3, 5]);
@@ -424,7 +437,7 @@ export const GEN = {
     const c = i + j, y = -p - q - x0;
     const dom = `x>${Math.max(-p, -q)}`;
     const eq = `\\log_{${Bs}}${argx(p)}+\\log_{${Bs}}${argx(q)}=${c}`;
-    const work = `${argx(p)}${argx(q)}=${Bs}^{${c}}=${Bs ** c}\\ \\Rightarrow\\ ${poly([1, p + q, p * q - Bs ** c])}=0\\ \\Rightarrow\\ x=${x0},\\ ${y}`.replace(/x\^2/g, "x^{2}");
+    const work = `${argx(p)}${argx(q)}=${c === 1 ? `${Bs}` : `${Bs}^{${c}}=${Bs ** c}`}\\ \\Rightarrow\\ ${poly([1, p + q, p * q - Bs ** c])}=0\\ \\Rightarrow\\ x=${x0},\\ ${y}`.replace(/x\^2/g, "x^{2}");
     return { v: { eq, dom, work, B: Bs, p, q, c }, ans: x0 };
   }),
   alg_logInequality: (r, lvl) => tryGen(() => {
@@ -437,7 +450,7 @@ export const GEN = {
       const bt = inv ? `\\frac{1}{${b}}` : `${b}`;
       const ineq = `${lo}\\le\\log_{${bt}}${argx(-k)}\\le ${hi}`.replace(/\(x\+-/, "(x-");
       const cnt = U - L + 1;
-      const work = `${inv ? `${b}^{${-hi}}\\le x${sg(-k)}\\le ${b}^{${-lo}}` : `${b}^{${lo}}\\le x${sg(-k)}\\le ${b}^{${hi}}`}\\ \\Rightarrow\\ ${L + k}\\le x\\le ${U + k}`;
+      const work = `${inv ? `${ap(-hi, b)}\\le ${xs0(-k)}\\le ${ap(-lo, b)}` : `${ap(lo, b)}\\le ${xs0(-k)}\\le ${ap(hi, b)}`}\\ \\Rightarrow\\ ${L + k}\\le x\\le ${U + k}`;
       return { v: { ineq, work, kind: 1, bn: inv ? 1 : b, bd: inv ? b : 1, k, lo, hi, p: 0, q: 0, u: 0, c: 0, rel: "" }, ans: cnt };
     }
     if (lvl === 2) {
@@ -451,7 +464,7 @@ export const GEN = {
       const bt = inv ? `\\frac{1}{${b}}` : `${b}`;
       const ineq = `\\log_{${bt}}${argx(-p)}${relT}\\log_{${bt}}(${q}-x)`;
       const effT = { le: "\\le", lt: "<", ge: "\\ge", gt: ">" }[eff];
-      const work = `${p}<x<${q},\\ x${sg(-p)}${effT}${q}-x\\ \\Rightarrow\\ x=${hit[0]},\\ \\ldots,\\ ${hit[hit.length - 1]}`;
+      const work = `${p}<x<${q},\\ ${xs0(-p)}${effT}${q}-x\\ \\Rightarrow\\ x=${hit[0]},\\ \\ldots,\\ ${hit[hit.length - 1]}`;
       return { v: { ineq, work, kind: 2, bn: inv ? 1 : b, bd: inv ? b : 1, k: 0, lo: 0, hi: 0, p, q, u: 0, c: 0, rel }, ans: cnt };
     }
     const inv = r.next() < 0.4, b = r.pick([2, 3]), u = r.int(1, 5), cexp = r.int(1, 3);
@@ -465,23 +478,25 @@ export const GEN = {
     const work = `0<x^{2}${u === 1 ? "-x" : `-${u}x`}${strict ? "<" : "\\le"}${bound}\\ \\Rightarrow\\ x\\in\\{${cnt.join(",")}\\}`;
     return { v: { ineq, work, kind: 3, bn: inv ? 1 : b, bd: inv ? b : 1, k: 0, lo: 0, hi: 0, p: 0, q: 0, u, c: inv ? -cexp : cexp, rel }, ans: cnt.length };
   }),
-  alg_inverseGraph: (r, lvl) => tryGen(() => {
+  alg_inverseGraph: (r) => tryGen(() => {
     const aq = r.pick([new Q(2), new Q(3), new Q(4), new Q(5), new Q(1, 2), new Q(1, 3), new Q(1, 4)]);
     const big = aq.isInt;
     const e = big ? r.int(1, 3) : -r.int(1, 3);
     const w = qpow(aq, e); if (!w.isInt) return null; const W = Number(w.p);
     const m = r.int(-4, 4), n = r.int(-4, 4);
-    let f, p, q, work;
-    if (lvl === 1) {
-      q = W - m; p = n + e;
-      f = `y=\\log_{a}${m === 0 ? "x" : `(x${sg(m)})`}${n === 0 ? "" : sg(n)}`;
-      work = `\\log_{a}(${q}${sg(m)})${n === 0 ? "" : sg(n)}=${p}\\ \\Rightarrow\\ \\log_{a}${W}=${e}\\ \\Rightarrow\\ a^{${e}}=${W}\\ \\Rightarrow\\ a=${qt(aq)}`;
-    } else {
-      q = m + e; p = n + W;
-      f = `y=a^{${xminus(m)}}${n === 0 ? "" : sg(n)}`;
-      work = `a^{${q}${m === 0 ? "" : sg(-m)}}${n === 0 ? "" : sg(n)}=${p}\\ \\Rightarrow\\ a^{${e}}=${W}\\ \\Rightarrow\\ a=${qt(aq)}`;
-    }
-    return { v: { f, p, q, work, kind: lvl, m, n }, ans: qn(aq) };
+    const q = W - m, p = n + e;
+    const f = `y=\\log_{a}${m === 0 ? "x" : `(x${sg(m)})`}${n === 0 ? "" : sg(n)}`;
+    const inner = m === 0 ? `${q}` : `${q}${sg(m)}`;
+    const work = `\\log_{a}${m === 0 ? inner : `(${inner})`}${n === 0 ? "" : sg(n)}=${p}\\ \\Rightarrow\\ \\log_{a}${W}=${e}${e === 1 ? "" : `\\ \\Rightarrow\\ ${ap(e)}=${W}`}\\ \\Rightarrow\\ a=${qt(aq)}`;
+    return { v: { f, p, q, work, kind: 1, m, n }, ans: qn(aq) };
+  }),
+  alg_inversePoints: (r) => tryGen(() => {
+    const a = r.pick([2, 3, 4, 5]), [e1, e2] = r.pick([[2, 1], [2, 0], [3, 0], [3, 2]]), b = r.nonzero(-7, 7);
+    const W1 = a ** e1 + b, W2 = a ** e2 + b, D = a ** e1 - a ** e2;
+    const sup = (z) => (z === 0 ? "1" : z === 1 ? "a" : `a^{${z}}`);
+    const sup2 = (z) => (z === 0 ? "1" : z === 1 ? `${a}` : `${a}^{${z}}`);
+    const work = `${sup(e1)}+b=${W1},\\ ${sup(e2)}+b=${W2}\\ \\Rightarrow\\ ${sup(e1)}-${e2 === 0 ? "1" : sup(e2)}=${D}\\ \\Rightarrow\\ a=${a}\\ (a>1),\\ b=${W2}-${sup2(e2)}=${b}`;
+    return { v: { p1: W1, q1: e1, p2: W2, q2: e2, work }, ans: a + b };
   }),
   alg_logDomain: (r, lvl) => tryGen(() => {
     const Bt = r.pick(["2", "3", "5", "10", "\\frac{1}{2}", "\\frac{1}{3}"]);
@@ -495,7 +510,7 @@ export const GEN = {
     } else if (kind === 2 || kind === 3) {
       r1 = r.int(-7, 3); r2 = r1 + r.int(4, 12); u = r1 + r2; w = -r1 * r2;
       const quad = poly([-1, u, w]).replace(/x\^2/g, "x^{2}");
-      if (kind === 2) { cnt = r2 - r1 - 1; f = `y=\\log_{${Bt}}(${quad})`; work = `${quad}>0\\ \\Rightarrow\\ (x${sg(-r1)})(x${sg(-r2)})<0\\ \\Rightarrow\\ ${r1}<x<${r2}`; }
+      if (kind === 2) { cnt = r2 - r1 - 1; f = `y=\\log_{${Bt}}(${quad})`; work = `${quad}>0\\ \\Rightarrow\\ ${fx(r1)}${fx(r2)}<0\\ \\Rightarrow\\ ${r1}<x<${r2}`; }
       else {
         k = r.int(r1 - 2, r2 - 3); cnt = r2 - Math.max(r1, k) - 1; if (cnt < 2) return null;
         f = `y=\\log_{${Bt}}(${quad})+\\log_{${Bt}}${k === 0 ? "x" : `(x${k > 0 ? `-${k}` : `+${-k}`})`}`;
@@ -524,7 +539,7 @@ export const GEN = {
     const gT = poly([1, -2 * pv, rv]).replace(/x\^2/g, "x^{2}");
     const f = `y=${kk === 1 ? "" : kk === -1 ? "-" : `${kk}\\cdot`}${bT}^{${gT}}${cc === 0 ? "" : sg(cc)}`;
     const gmax = Math.max(...gs), gmin = Math.min(...gs), gb = g(cand[bi]);
-    const yexp = `${kk === 1 ? "" : kk === -1 ? "-" : `${kk}\\cdot`}${bT}^{${gb}}${cc === 0 ? "" : sg(cc)}`;
+    const yexp = `${kk === 1 ? "" : kk === -1 ? "-" : `${kk}\\cdot`}${ap(gb, bT)}${cc === 0 ? "" : sg(cc)}`;
     const work = `g(x)=${gT}:\\ g_{\\min}=${gmin},\\ g_{\\max}=${gmax}\\ \\Rightarrow\\ y_{\\max}=${yexp}=${qt(best)}`;
     return { v: { f, s, t, work }, ans: qn(best) };
   }),
@@ -538,14 +553,6 @@ export const GEN = {
     if (lvl === 2 && gcd(deg, 180) === 180) return null;
     return { v: { theta, work }, ans: al };
   }),
-  alg_halfAngleQuad: (r) => {
-    const m = r.int(1, 4), n = r.int(2, 6);
-    const qs = new Set(); const lo = 90 * (m - 1), step = 90 / 20;
-    for (let k = 0; k < n; k++) for (let i = 1; i < 20; i++) { const th = lo + step * i + 360 * k; const a = (th / n) % 360; qs.add(Math.floor(a / 90) + 1); }
-    const arr = [...qs].sort((a, b) => a - b), ans = arr.reduce((s, x) => s + x, 0);
-    const rangesOf = Array.from({ length: n }, (_, k) => `(${(lo + 360 * k) / n}^\\circ,\\ ${(lo + 90 + 360 * k) / n}^\\circ)`).join(",\\ ");
-    return { v: { m, n, work: `\\frac{\\theta}{${n}}\\in ${rangesOf}\\ \\Rightarrow\\ ${arr.join(",\\ ")}\\ \\Rightarrow\\ ${arr.join("+")}` }, ans };
-  },
   alg_sectorForward: (r, lvl) => tryGen(() => {
     const rr = r.int(2, 12);
     let th, deg;
@@ -574,38 +581,27 @@ export const GEN = {
     const work = `r=\\sqrt{(${x})^{2}+(${y})^{2}}=${rr},\\ \\sin\\theta=${qt(s)},\\ \\cos\\theta=${qt(c)},\\ \\tan\\theta=${qt(t)}`;
     return { v: { xp: x, yp: y, E, vt: qt(val), work }, ans: qn(val) };
   }),
-  alg_trigGiven: (r, lvl) => tryGen(() => {
-    const quad = r.int(1, 4), { x, y, rr } = pointIn(r, quad, false);
-    const s = new Q(y, rr), c = new Q(x, rr), t = new Q(y, x);
-    const f = r.pick(["sin", "cos", "tan"]);
-    const gv = f === "sin" ? s : f === "cos" ? c : t;
-    const given = `\\${f}\\theta=${qt(gv)}`;
-    const nm = r.pick(trigEnames); const [E, , val] = trigE(nm, s, c, t);
-    if (Number(val.q) > 400) return null;
-    const work = `\\sin\\theta=${qt(s)},\\ \\cos\\theta=${qt(c)},\\ \\tan\\theta=${qt(t)}`;
-    return { v: { quad, given, E, vt: qt(val), work }, ans: qn(val) };
-  }),
   alg_trigIdentity: (r, lvl) => tryGen(() => {
+    // only sin^2+cos^2=1 and the squares (sin +- cos)^2 (12대수02-02: properties of the trigonometric functions)
     const quad = r.int(1, 4), { x, y, rr } = pointIn(r, quad, false);
     const s = new Q(y, rr), c = new Q(x, rr);
     const sc = s.mul(c), sq = (q) => q.mul(q);
-    let given, gval, list;
-    const lvlk = lvl === 1 ? r.pick([1, 2]) : 3;
-    if (lvlk === 1) { gval = s.add(c); if (gval.p === 0n) return null; given = `\\sin\\theta+\\cos\\theta=${qt(gval)}`; list = ["sc", "d2", "c3", "f4", "tt"]; }
-    else if (lvlk === 2) { gval = s.sub(c); if (gval.p === 0n) return null; given = `\\sin\\theta-\\cos\\theta=${qt(gval)}`; list = ["sc", "p2", "c3m", "f4", "tt"]; }
-    else { gval = sc; given = `\\sin\\theta\\cos\\theta=${qt(gval)}`; list = ["p2", "d2", "f4", "tt"]; }
-    const nm = r.pick(list);
-    const ex = { sc: [`\\sin\\theta\\cos\\theta`, sc], d2: [`(\\sin\\theta-\\cos\\theta)^{2}`, sq(s.sub(c))], p2: [`(\\sin\\theta+\\cos\\theta)^{2}`, sq(s.add(c))],
-      c3: [`\\sin^{3}\\theta+\\cos^{3}\\theta`, sq(s).mul(s).add(sq(c).mul(c))], c3m: [`\\sin^{3}\\theta-\\cos^{3}\\theta`, sq(s).mul(s).sub(sq(c).mul(c))],
-      f4: [`\\sin^{4}\\theta+\\cos^{4}\\theta`, sq(sq(s)).add(sq(sq(c)))], tt: [`\\tan\\theta+\\frac{1}{\\tan\\theta}`, s.div(c).add(c.div(s))] }[nm];
-    const [E, val] = ex;
+    const plus = r.next() < 0.5;
+    const gval = plus ? s.add(c) : s.sub(c);
+    if (gval.p === 0n) return null;
+    const sv = qt(gval), gs = `\\sin\\theta${plus ? "+" : "-"}\\cos\\theta`;
+    const given = `${gs}=${sv}`;
+    const sqf = plus ? `(\\sin\\theta+\\cos\\theta)^{2}=1+2\\sin\\theta\\cos\\theta` : `(\\sin\\theta-\\cos\\theta)^{2}=1-2\\sin\\theta\\cos\\theta`;
+    const first = `${sqf}\\ \\Rightarrow\\ (${sv})^{2}=1${plus ? "+" : "-"}2\\sin\\theta\\cos\\theta\\ \\Rightarrow\\ \\sin\\theta\\cos\\theta=${plus ? `\\frac{(${sv})^{2}-1}{2}` : `\\frac{1-(${sv})^{2}}{2}`}=${qt(sc)}`;
+    let E, val, work;
+    if (lvl === 1) { E = `\\sin\\theta\\cos\\theta`; val = sc; work = first; }
+    else {
+      E = plus ? `(\\sin\\theta-\\cos\\theta)^{2}` : `(\\sin\\theta+\\cos\\theta)^{2}`;
+      val = plus ? sq(s.sub(c)) : sq(s.add(c));
+      work = `${first},\\ ${E}=1${plus ? "-" : "+"}2\\sin\\theta\\cos\\theta=1${plus ? "-" : "+"}2\\times(${qt(sc)})=${qt(val)}`;
+    }
     if (Number(val.q) > 3000) return null;
-    const sv = qt(gval), fin = `${E}=${qt(val)}`;
-    let work;
-    if (lvlk === 1) work = `(\\sin\\theta+\\cos\\theta)^{2}=1+2\\sin\\theta\\cos\\theta\\ \\Rightarrow\\ \\sin\\theta\\cos\\theta=\\frac{(${sv})^{2}-1}{2}=${qt(sc)}\\ \\Rightarrow\\ ${fin}`;
-    else if (lvlk === 2) work = `(\\sin\\theta-\\cos\\theta)^{2}=1-2\\sin\\theta\\cos\\theta\\ \\Rightarrow\\ \\sin\\theta\\cos\\theta=\\frac{1-(${sv})^{2}}{2}=${qt(sc)}\\ \\Rightarrow\\ ${fin}`;
-    else work = `\\sin\\theta\\cos\\theta=${sv}\\ \\Rightarrow\\ ${fin}`;
-    return { v: { given, E, work, gval: qt(gval) }, ans: qn(val) };
+    return { v: { given, E, work }, ans: qn(val) };
   }),
   alg_trigRootCount: (r, lvl) => tryGen(() => {
     const fn = lvl === 1 ? r.pick(["sin", "cos"]) : r.pick(["sin", "cos", "tan"]);
@@ -632,23 +628,23 @@ export const GEN = {
     const bn = Number(bq.p), bd = Number(bq.q);
     const bx = bd === 1 ? (bn === 1 ? "x" : `${bn}x`) : `\\frac{${bn === 1 ? "" : bn}x}{${bd}}`.replace("\\frac{x}", "\\frac{x}");
     const sh = r.pick([["", "0"], ["", "0"], ["+\\frac{\\pi}{3}", "+pi/3"], ["-\\frac{\\pi}{4}", "-pi/4"], ["-\\frac{\\pi}{6}", "-pi/6"], ["+\\frac{\\pi}{2}", "+pi/2"]]);
-    const codeArg = `${bn}*x/${bd}${sh[1] === "0" ? "" : sh[1]}`;
     const arg = (fnm) => (sh[0] === "" ? `\\${fnm}\\,${bx}` : `\\${fnm}\\left(${bx}${sh[0]}\\right)`);
     const a = lvl === 2 ? 1 : r.pick([1, 2, 3, -1, -2, 4]), d = lvl === 2 ? 0 : r.pick([0, 0, 1, -1, 2, -3]);
     const wrapA = (s) => (a === 1 ? s : a === -1 ? `-${s}` : `${a}${s}`);
-    let f, code, base;
-    if (lvl === 1) { const fnm = r.pick(["sin", "cos", "tan"]); f = `y=${wrapA(arg(fnm))}${d === 0 ? "" : sg(d)}`; code = `${a}*${fnm}(${codeArg})+${d}`; base = fnm === "tan" ? 1 : 2; }
+    let f, base;
+    if (lvl === 1) { const fnm = r.pick(["sin", "cos", "tan"]); f = `y=${wrapA(arg(fnm))}${d === 0 ? "" : sg(d)}`; base = fnm === "tan" ? 1 : 2; }
     else {
       const kind = r.pick(["abs-sin", "abs-cos", "sq-sin", "sq-cos"]);
       const fnm = kind.endsWith("sin") ? "sin" : "cos";
-      if (kind.startsWith("abs")) { f = `y=\\left|${arg(fnm)}\\right|`; code = `abs(${fnm}(${codeArg}))`; }
-      else { f = sh[0] === "" ? `y=\\${fnm}^{2}${bx}` : `y=\\${fnm}^{2}\\left(${bx}${sh[0]}\\right)`; code = `${fnm}(${codeArg})**2`; }
+      if (kind.startsWith("abs")) { f = `y=\\left|${arg(fnm)}\\right|`; }
+      else { f = sh[0] === "" ? `y=\\${fnm}^{2}${bx}` : `y=\\${fnm}^{2}\\left(${bx}${sh[0]}\\right)`; }
       base = 1;
     }
     const k = new Q(base).div(bq);
     const kpi = (Number(k.p) === 1 && Number(k.q) === 1) ? "\\pi" : `${qt(k)}\\pi`;
-    const work = `\\frac{${base === 2 ? "2\\pi" : "\\pi"}}{${qt(bq)}}=${kpi}`;
-    return { v: { f, code, work, kt: qt(k), base, bn, bd }, ans: qn(k) };
+    const basepi = base === 2 ? "2\\pi" : "\\pi";
+    const work = bq.isInt && Number(bq.p) === 1 ? `T=${basepi}` : `T=\\frac{${basepi}}{${qt(bq)}}=${kpi}`;
+    return { v: { f, work, kt: qt(k) }, ans: qn(k) };
   }),
   alg_trigGraphParam: (r) => tryGen(() => {
     const c2 = r.int(-9, 9), a2 = r.int(1, 12); // M = (c2 + a2)/2 ... use integers M, m
@@ -744,7 +740,7 @@ export const GEN = {
     const u = a1 + (p - 1) * d, v = a1 + (q - 1) * d;
     let best = 0, nm = 0, s = 0; for (let n = 1; n <= 200; n++) { s += a1 + (n - 1) * d; if (s > best) { best = s; nm = n; } }
     if (nm < 4) return null;
-    return { v: { p, u, q, v, a1, d, nm }, ans: best };
+    return { v: { p, u, q, v, a1, d, nm, nm1: nm + 1 }, ans: best };
   }),
   alg_arithFirstExceeds: (r, lvl) => tryGen(() => {
     const a = lvl === 1 ? r.int(1, 12) : -r.int(2, 14), d = lvl === 1 ? r.int(2, 8) : r.int(2, 6);
@@ -752,7 +748,8 @@ export const GEN = {
     const S = (n) => (n * (2 * a + (n - 1) * d)) / 2;
     let n = 1; while (S(n) <= N) n++;
     if (n < 5 || n > 40) return null;
-    return { v: { a, d, N, ab: pr(a), m1: n - 1, s1: S(n - 1), s2: S(n) }, ans: n };
+    let mx = -Infinity; for (let j = 1; j < n; j++) mx = Math.max(mx, S(j));
+    return { v: { a, d, N, ab: pr(a), m1: n - 1, s1: mx, s2: S(n) }, ans: n };
   }),
   alg_arithGeoMix: (r) => tryGen(() => {
     const y = r.int(6, 36), d = r.int(1, y - 1), den = y - d;
@@ -782,8 +779,8 @@ export const GEN = {
     const rr = r.int(1, 9); if (rr === p || rr === q) return null;
     const u = t(p), v = t(q), ans = t(rr);
     if (!u.isInt || !v.isInt || Number(ans.q) > 32 || Math.abs(qn(ans)) > 3000 || qn(v) > 1e5) return null;
-    const work = `a_{${rr}}=${qt(u)}\\times(${qt(rat)})^{${rr - p}}=${qt(ans)}`;
-    return { v: { p, u: Number(u.p), q, v: Number(v.p), r: rr, dq: gap, rt: qt(rat), work }, ans: qn(ans) };
+    const work = `a_{${rr}}=${qt(u)}\\times${ap(rr - p, rat.isInt ? qt(rat) : `(${qt(rat)})`)}=${qt(ans)}`;
+    return { v: { p, u: Number(u.p), q, v: Number(v.p), r: rr, vu: Number(u.p) === 1 ? `${Number(v.p)}` : `\\frac{${Number(v.p)}}{${Number(u.p)}}`, rpow: ap(gap, "r"), rt: qt(rat), work }, ans: qn(ans) };
   }),
   alg_geoSumRatio: (r) => tryGen(() => {
     const rt0 = r.pick([2, 3, 4, -2, -3]), n = r.pick([2, 3]), a = r.int(1, 6);
@@ -809,16 +806,21 @@ export const GEN = {
   }),
   alg_sigmaTelescope: (r, lvl) => tryGen(() => {
     const n = r.int(5, 30);
-    let kind, d, term, val, work;
-    const kinds = lvl === 1 ? [["g", 1], ["g", 2]] : [["g", 3], ["o", 0], ["t", 0]];
-    [kind, d] = r.pick(kinds);
-    if (kind === "g") {
-      term = `\\frac{1}{k(k+${d})}`; let s = new Q(0); for (let k = 1; k <= d; k++) s = s.add(new Q(1, k)).sub(new Q(1, n + k)); val = s.div(d);
-      const parts = Array.from({ length: d }, (_, i) => (i === 0 ? "1" : `\\frac{1}{${i + 1}}`)).join("+"), tail = Array.from({ length: d }, (_, i) => `\\frac{1}{${n + i + 1}}`).join("+");
-      work = d === 1 ? `\\frac{1}{k(k+1)}=\\frac{1}{k}-\\frac{1}{k+1}\\ \\Rightarrow\\ 1-\\frac{1}{${n + 1}}=${qt(val)}` : `\\frac{1}{k(k+${d})}=\\frac{1}{${d}}\\left(\\frac{1}{k}-\\frac{1}{k+${d}}\\right)\\ \\Rightarrow\\ \\frac{1}{${d}}\\left(${parts}-(${tail})\\right)=${qt(val)}`;
-    } else if (kind === "o") { term = `\\frac{1}{(2k-1)(2k+1)}`; val = new Q(n, 2 * n + 1); work = `\\frac{1}{(2k-1)(2k+1)}=\\frac{1}{2}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right)\\ \\Rightarrow\\ \\frac{1}{2}\\left(1-\\frac{1}{${2 * n + 1}}\\right)=${qt(val)}`; }
-    else { term = `\\frac{1}{k(k+1)(k+2)}`; val = new Q(1, 4).sub(new Q(1, 2 * (n + 1) * (n + 2))); work = `\\frac{1}{k(k+1)(k+2)}=\\frac{1}{2}\\left(\\frac{1}{k(k+1)}-\\frac{1}{(k+1)(k+2)}\\right)\\ \\Rightarrow\\ \\frac{1}{2}\\left(\\frac{1}{2}-\\frac{1}{${(n + 1) * (n + 2)}}\\right)=${qt(val)}`; }
-    return { v: { expr: `\\displaystyle\\sum_{k=1}^{${n}}${term}`, work, n, kind: kind === "g" ? d : kind === "o" ? 4 : 5 }, ans: qn(val) };
+    const coefT = (q) => (q.isInt && Number(q.p) === 1 ? "" : qt(q));
+    let term, val, work;
+    const kind = lvl === 1 ? r.pick(["g1", "g2"]) : r.pick(["o", "g1c", "g2c"]);
+    if (kind === "o") {
+      const c = r.pick([1, 2, 4, 6]); term = `\\frac{${c}}{(2k-1)(2k+1)}`; val = new Q(c, 2).mul(new Q(1).sub(new Q(1, 2 * n + 1)));
+      work = `\\frac{${c}}{(2k-1)(2k+1)}=${coefT(new Q(c, 2))}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right)\\ \\Rightarrow\\ ${coefT(new Q(c, 2))}\\left(1-\\frac{1}{${2 * n + 1}}\\right)=${qt(val)}`;
+    } else {
+      const d = kind.startsWith("g1") ? 1 : 2, c = kind.length === 2 ? 1 : d === 1 ? r.pick([2, 3, 4]) : r.pick([2, 4, 6]);
+      term = `\\frac{${c}}{k(k+${d})}`;
+      let sm = new Q(0); for (let k = 1; k <= d; k++) sm = sm.add(new Q(1, k)).sub(new Q(1, n + k));
+      const cf0 = new Q(c, d); val = sm.mul(cf0);
+      const head = Array.from({ length: d }, (_, i) => (i === 0 ? "1" : `\\frac{1}{${i + 1}}`)).join("+"), tail = Array.from({ length: d }, (_, i) => `\\frac{1}{${n + i + 1}}`).join("+");
+      work = `\\frac{${c}}{k(k+${d})}=${coefT(cf0)}\\left(\\frac{1}{k}-\\frac{1}{k+${d}}\\right)\\ \\Rightarrow\\ ${coefT(cf0)}${d === 1 ? `\\left(1-\\frac{1}{${n + 1}}\\right)` : `\\left(${head}-\\left(${tail}\\right)\\right)`}=${qt(val)}`;
+    }
+    return { v: { expr: `\\displaystyle\\sum_{k=1}^{${n}}${term}`, work }, ans: qn(val) };
   }),
   alg_sigmaSubseq: (r, lvl) => tryGen(() => {
     const m = r.int(6, 15), c = r.int(1, 3), d = r.int(-1, 3);
@@ -839,8 +841,10 @@ export const GEN = {
       term = poly([p * c * c, 2 * p * c * d + q * c, p * d * d + q * d + rr], "k").replace(/k\^2/g, "k^{2}");
     }
     if (Math.abs(ans) > 1e7) return null;
-    const work = lvl === 1 ? `\\sum_{k=1}^{${m}}(${term})=${p * c}\\times${S1}${sg(p * d + q)}\\times${m}=${ans}`.replace(/\+-/g, "-") : `\\sum_{k=1}^{${m}}(${term})=${ans}`;
-    return { v: { an, idx, term, m, work, p, q, r: rr, c, d }, ans };
+    const sn = (z) => `${z < 0 ? "-" : "+"}${Math.abs(z)}`;
+    const work = lvl === 1 ? `\\sum_{k=1}^{${m}}(${term})=${p * c}\\times${S1}${sg(p * d + q)}\\times${m}=${ans}`.replace(/\+-/g, "-")
+      : `\\sum_{k=1}^{${m}}(${term})=${p * c * c}\\times${S2}${2 * p * c * d + q * c === 0 ? "" : `${sn(2 * p * c * d + q * c)}\\times${S1}`}${p * d * d + q * d + rr === 0 ? "" : `${sn(p * d * d + q * d + rr)}\\times${m}`}=${ans}`;
+    return { v: { an, idx, term, m, work }, ans };
   }),
   alg_seriesPattern: (r, lvl) => tryGen(() => {
     const kinds = lvl === 1 ? ["A", "B", "C"] : ["D", "E", "H"];
@@ -853,7 +857,7 @@ export const GEN = {
     else if (t === "D") { expr = `1^{2}-2^{2}+3^{2}-4^{2}+\\cdots+${n - 1}^{2}-${n}^{2}`; ans = -T1(n); work = `(2j-1)^{2}-(2j)^{2}=-(4j-1)\\ \\Rightarrow\\ -\\sum_{j=1}^{${n / 2}}(4j-1)=${ans}`; }
     else if (t === "E") { expr = `1\\cdot2\\cdot3+2\\cdot3\\cdot4+\\cdots+${n}\\cdot${n + 1}\\cdot${n + 2}`; ans = (n * (n + 1) * (n + 2) * (n + 3)) / 4; work = `\\sum_{k=1}^{${n}}k(k+1)(k+2)=\\frac{${n}\\times${n + 1}\\times${n + 2}\\times${n + 3}}{4}=${ans}`; }
     else { expr = `2+(2+4)+(2+4+6)+\\cdots+(2+4+6+\\cdots+${2 * n})`; ans = (n * (n + 1) * (n + 2)) / 3; work = `\\sum_{k=1}^{${n}}k(k+1)=\\frac{${n}\\times${n + 1}\\times${n + 2}}{3}=${ans}`; }
-    return { v: { expr, work, t, n }, ans };
+    return { v: { expr, work }, ans };
   }),
   alg_recAffine: (r, lvl) => tryGen(() => {
     const pq = lvl === 1 ? new Q(r.pick([2, 3])) : r.next() < 0.3 ? new Q(1, 2) : new Q(r.pick([2, 3, 4, 5, -2, -3, -1]));
@@ -863,59 +867,72 @@ export const GEN = {
     const pT = pq.isInt ? (Number(pq.p) === 1 ? "" : Number(pq.p) === -1 ? "-" : String(pq.p)) : "\\frac{1}{2}";
     const rule = `${pT}a_n${q > 0 ? `+${q}` : q}`;
     const work = `a_n:\\ ${steps.join(",\\ ")}\\ \\Rightarrow\\ a_{${k}}=${qt(a)}`;
-    return { v: { s, rule, k, work, pn: Number(pq.p), pd: Number(pq.q), q }, ans: qn(a) };
+    return { v: { s, rule, k, work }, ans: qn(a) };
   }),
   alg_collatz: (r, lvl) => tryGen(() => {
     const s = lvl === 1 ? r.int(3, 120) : r.int(3, 40);
     const [pp, qq] = lvl === 1 ? [1, 1] : [3, 1];
     let a = s, n = 1; const seq = [a];
-    while (a !== 1) { a = a % 2 === 0 ? a / 2 : pp * a + qq; seq.push(a); n++; if (n > 60) return null; }
+    while (a !== 1) { a = a % 2 === 0 ? a / 2 : pp * a + qq; seq.push(a); n++; if (n > 12) return null; }
     if (n < 4) return null;
-    return { v: { s, odd: pp === 1 ? "a_n+1" : "3a_n+1", p: pp, q: qq, work: seq.join("\\to ") }, ans: n };
+    return { v: { s, odd: pp === 1 ? "a_n+1" : "3a_n+1", work: seq.join("\\to ") }, ans: n };
   }),
   alg_recParam: (r) => tryGen(() => {
-    const p = r.int(2, 5), q = r.int(1, 6), s = r.int(1, 4);
+    const p = r.int(2, 6), q = r.int(1, 6), s = r.int(1, 4);
     const t = p * p * s + p * q + q;
-    return { v: { s, q, t, st: s === 1 ? "" : String(s), work: `${poly([s, q, q - t], "p").replace(/p\^2/g, "p^{2}")}=0` }, ans: p };
+    const poly2 = (c) => poly(c, "p").replace(/p\^2/g, "p^{2}");
+    return { v: { s, q, t, a2e: lin(s, q, "p"), a3e: poly2([s, q, q]), work: `${poly2([s, q, q - t])}=0` }, ans: p };
   }),
   alg_seqIntTerms: (r) => tryGen(() => {
-    const D0 = r.pick([12, 24, 30, 36, 48, 60, 72, 84, 90, 96, 120, 144, 180]), D = r.next() < 0.3 ? -D0 : D0;
+    const D0 = r.pick([12, 18, 24, 30, 36, 48, 60, 72]), D = r.next() < 0.3 ? -D0 : D0;
     const rr = r.int(0, 6), p = r.pick([1, 2, 3, 4, 5, -1, -2, -3]), q = D + p * rr;
     const divs = []; for (let d = 1; d <= D0; d++) if (D0 % d === 0 && d >= rr + 1) divs.push(d);
     if (divs.length < 2) return null;
     const num = lin(p, q, "n"), den = rr === 0 ? "n" : `n+${rr}`;
     const work = `a_n=${p}${D < 0 ? "-" : "+"}\\frac{${D0}}{${den}},\\ ${den}\\in\\{${divs.join(",")}\\}`;
-    return { v: { num, den, r1: rr + 1, work, p, q, r: rr }, ans: divs.length };
+    return { v: { num, den, r1: rr + 1, work }, ans: divs.length };
   }),
 };
+
+/* ---------- level splits by answer format ---------- */
+// KEY (level 1) keeps integer answers => "(숫자만 쓰세요)"; KEYQ (level 2) keeps the fraction wording that the builder rewrites to "기약분수로 쓰세요".
+for (const k of ["alg_logChain", "alg_logExpress", "alg_expFuncParams", "alg_arithTwoTerms", "alg_geoTwoTerms", "alg_recAffine"]) {
+  const t = TEMPLATES[k];
+  TEMPLATES[`${k}Q`] = t;
+  TEMPLATES[k] = { ko: [t.ko[0].replace(FK, ID), t.ko[1], t.ko[2]], en: [t.en[0].replace(FE, IE), t.en[1], t.en[2]] };
+  GEN[`${k}Q`] = GEN[k];
+}
+TEMPLATES.alg_recParam = { ko: [TEMPLATES.alg_recParam.ko[0].replace(FK, ID), ...TEMPLATES.alg_recParam.ko.slice(1)], en: [TEMPLATES.alg_recParam.en[0].replace(FE, IE), ...TEMPLATES.alg_recParam.en.slice(1)] };
 
 /* ---------- plan ---------- */
 const P = (skill, template, levels, count, d, standards, strategy, evidence) => ({ skill, template, levels, count, d, standards, strategy, evidence });
 export const PLAN = [
   P("m.h2.log", "alg_rootEval", [1, 2], 12, 2, ["12대수01-01"], "radical-laws", "calc"),
   P("m.h2.log", "alg_realRootCount", [1, 2], 12, 3, ["12대수01-01"], "even-odd-roots-count", "counting"),
-  P("m.h2.log", "alg_rationalExp", [1, 2], 12, 2, ["12대수01-02", "12대수01-03"], "rational-exponent", "calc"),
+  P("m.h2.log", "alg_rationalExp", [1, 2], 12, 2, ["12대수01-03"], "rational-exponent", "calc"),
   P("m.h2.log", "alg_expSum", [1, 2], 12, 3, ["12대수01-03"], "t-plus-reciprocal", "concept"),
-  P("m.h2.log", "alg_logChain", [1, 2], 12, 3, ["12대수01-04"], "change-of-base-chain", "calc"),
-  P("m.h2.log", "alg_logExpress", [1, 2], 12, 3, ["12대수01-04"], "log-representation", "representation"),
+  P("m.h2.log", "alg_logChain", [1], 12, 3, ["12대수01-04"], "change-of-base-chain", "calc"),
+  P("m.h2.log", "alg_logChainQ", [2], 12, 3, ["12대수01-04"], "change-of-base-chain", "calc"),
+  P("m.h2.log", "alg_logExpress", [1], 12, 3, ["12대수01-04"], "log-representation", "representation"),
+  P("m.h2.log", "alg_logExpressQ", [2], 12, 3, ["12대수01-04"], "log-representation", "representation"),
   P("m.h2.log", "alg_digitsPow", [1, 2], 12, 3, ["12대수01-05"], "digit-count", "application"),
   P("m.h2.log", "alg_growthYears", [1, 2], 12, 3, ["12대수01-05", "12대수01-08"], "compound-interest-log", "application"),
-  P("m.h2.log", "alg_expFuncParams", [1, 2], 12, 3, ["12대수01-06", "12대수01-07"], "two-values-fit", "reverse"),
+  P("m.h2.log", "alg_expFuncParams", [1], 12, 3, ["12대수01-06", "12대수01-07"], "two-values-fit", "reverse"),
+  P("m.h2.log", "alg_expFuncParamsQ", [2], 12, 3, ["12대수01-06", "12대수01-07"], "two-values-fit", "reverse"),
   P("m.h2.log", "alg_expShiftA", [1, 2], 12, 3, ["12대수01-07"], "graph-point-base", "reverse"),
   P("m.h2.log", "alg_expEquation", [1, 2], 12, 3, ["12대수01-08"], "substitution-quadratic", "calc"),
   P("m.h2.log", "alg_expInequality", [1, 2], 12, 3, ["12대수01-08"], "exp-ineq-integers", "counting"),
   P("m.h2.log", "alg_logEquation", [1, 2], 12, 3, ["12대수01-08"], "domain-filter", "calc"),
   P("m.h2.log", "alg_logInequality", [1, 2, 3], 12, 3, ["12대수01-08"], "log-ineq-integers", "counting"),
-  P("m.h2.log", "alg_inverseGraph", [1, 2], 12, 3, ["12대수01-06", "12대수01-07"], "inverse-point-swap", "reverse"),
+  P("m.h2.log", "alg_inverseGraph", [1], 14, 3, ["12대수01-06", "12대수01-07"], "inverse-point-swap", "reverse"),
+  P("m.h2.log", "alg_inversePoints", [1], 14, 4, ["12대수01-06", "12대수01-07"], "inverse-two-points-subtract", "reverse"),
   P("m.h2.log", "alg_logDomain", [1, 2], 12, 3, ["12대수01-06", "12대수01-07"], "domain-count", "counting"),
-  P("m.h2.log", "alg_expMaxMin", [1, 2], 12, 4, ["12대수01-07", "12대수01-08"], "composite-extremum", "application"),
+  P("m.h2.log", "alg_expMaxMin", [1, 2], 12, 4, ["12대수01-07", "12대수01-08"], "composite-extremum", "calc"),
   P("m.h2.geo2", "alg_coterminal", [1, 2], 12, 2, ["12대수02-01"], "coterminal-reduction", "calc"),
-  P("m.h2.geo2", "alg_halfAngleQuad", [1], 14, 4, ["12대수02-01"], "quadrant-of-fraction-angle", "counting"),
-  P("m.h2.geo2", "alg_sectorForward", [1, 2], 12, 2, ["12대수02-01"], "sector-arc-area", "application"),
+  P("m.h2.geo2", "alg_sectorForward", [1, 2], 12, 2, ["12대수02-01"], "sector-arc-area", "calc"),
   P("m.h2.geo2", "alg_sectorPerimArea", [1], 12, 4, ["12대수02-01"], "sector-quadratic", "reverse"),
   P("m.h2.trig", "alg_trigPoint", [1, 2], 12, 2, ["12대수02-02"], "terminal-point-ratios", "calc"),
-  P("m.h2.trig", "alg_trigGiven", [1], 12, 3, ["12대수02-02"], "quadrant-sign-reconstruct", "reverse"),
-  P("m.h2.trig", "alg_trigIdentity", [1, 2], 12, 3, ["12대수02-02"], "symmetric-identity", "concept"),
+  P("m.h2.trig", "alg_trigIdentity", [1, 2], 12, 3, ["12대수02-02"], "square-of-sum-identity", "concept"),
   P("m.h2.trig", "alg_trigRootCount", [1, 2], 12, 3, ["12대수02-02"], "graph-intersections", "counting"),
   P("m.h2.trig", "alg_trigPeriod", [1, 2], 12, 2, ["12대수02-02"], "period-from-formula", "representation"),
   P("m.h2.trig", "alg_trigGraphParam", [1], 12, 3, ["12대수02-02"], "graph-features-to-formula", "reverse"),
@@ -924,18 +941,21 @@ export const PLAN = [
   P("m.h2.geo1", "alg_survey", [1], 12, 4, ["12대수02-03"], "survey-two-angles", "application"),
   P("m.h2.geo1", "alg_cosLawSide", [1, 2], 12, 2, ["12대수02-03"], "law-of-cosines-side", "calc"),
   P("m.h2.geo1", "alg_obtuseCount", [1], 12, 4, ["12대수02-03"], "obtuse-triangle-count", "counting"),
-  P("m.h2.seq", "alg_arithTwoTerms", [1, 2], 12, 2, ["12대수03-02"], "two-terms-to-difference", "reverse"),
-  P("m.h2.seq", "alg_arithSumMax", [1], 12, 3, ["12대수03-02"], "max-partial-sum", "application"),
+  P("m.h2.seq", "alg_arithTwoTerms", [1], 12, 2, ["12대수03-02"], "two-terms-to-difference", "calc"),
+  P("m.h2.seq", "alg_arithTwoTermsQ", [2], 12, 2, ["12대수03-02"], "two-terms-to-difference", "calc"),
+  P("m.h2.seq", "alg_arithSumMax", [1], 12, 3, ["12대수03-02"], "max-partial-sum", "concept"),
   P("m.h2.seq", "alg_arithFirstExceeds", [1, 2], 12, 3, ["12대수03-02"], "first-n-exceeding", "counting"),
   P("m.h2.seq", "alg_arithGeoMix", [1], 12, 4, ["12대수03-02", "12대수03-03"], "arith-geo-quadratic", "reverse"),
   P("m.h2.seq", "alg_sumToTerm", [1, 2], 12, 3, ["12대수03-02", "12대수03-03"], "term-from-partial-sum", "concept"),
-  P("m.h2.seq", "alg_geoTwoTerms", [1, 2], 12, 2, ["12대수03-03"], "two-terms-to-ratio", "reverse"),
+  P("m.h2.seq", "alg_geoTwoTerms", [1], 12, 2, ["12대수03-03"], "two-terms-to-ratio", "calc"),
+  P("m.h2.seq", "alg_geoTwoTermsQ", [2], 12, 2, ["12대수03-03"], "two-terms-to-ratio", "calc"),
   P("m.h2.seq", "alg_geoSumRatio", [1], 12, 4, ["12대수03-03"], "block-sum-ratio", "concept"),
   P("m.h2.seq1", "alg_sigmaSquare", [1, 2], 12, 3, ["12대수03-04"], "sigma-linearity-expand", "concept"),
   P("m.h2.seq1", "alg_sigmaSubseq", [1, 2], 12, 3, ["12대수03-04"], "sigma-index-substitution", "calc"),
   P("m.h2.seq1", "alg_sigmaTelescope", [1, 2], 12, 4, ["12대수03-05"], "partial-fractions-telescoping", "calc"),
   P("m.h2.seq1", "alg_seriesPattern", [1, 2], 12, 4, ["12대수03-05"], "pattern-to-sigma", "representation"),
-  P("m.h2.seq", "alg_recAffine", [1, 2], 12, 2, ["12대수03-06"], "recursive-iteration", "calc"),
+  P("m.h2.seq", "alg_recAffine", [1], 12, 2, ["12대수03-06"], "recursive-iteration", "calc"),
+  P("m.h2.seq", "alg_recAffineQ", [2], 12, 2, ["12대수03-06"], "recursive-iteration", "calc"),
   P("m.h2.seq", "alg_collatz", [1, 2], 12, 3, ["12대수03-06"], "case-recursion-first-hit", "counting"),
   P("m.h2.seq", "alg_recParam", [1], 12, 3, ["12대수03-06"], "recursive-unknown-parameter", "reverse"),
   P("m.h2.seq", "alg_seqIntTerms", [1], 14, 4, ["12대수03-01"], "integer-valued-terms-count", "counting"),

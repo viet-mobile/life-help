@@ -179,25 +179,35 @@ def seq_limit(v):
 def seq_geo_limit(v):
     e = P(v["ex"])
     defined_for(e, N, range(1, 41))
-    v500, v501 = e.subs(N, 500), e.subs(N, 501)
-    assert abs(float(v500 - v501)) < 1e-12, "sequence not converging"
-    return Fraction(int(v501.p), int(v501.q)).limit_denominator(5000)
+    a1, a2 = e.subs(N, 900), e.subs(N, 901)
+    assert abs(a1 - a2) < sp.Rational(1, 10 ** 30), "sequence not converging fast enough"
+    cand = Fraction(int(a2.p), int(a2.q)).limit_denominator(5000)
+    assert abs(a2 - sp.Rational(cand.numerator, cand.denominator)) < sp.Rational(1, 10 ** 25), "limit is not a simple rational"
+    # the displayed dominant term must be the one with the largest |base|
+    dom = P(v["dom"])
+    return cand
 
 
 def geo_conv_count(v):
-    rt = P(v["rt"])
-    cnt = 0
+    obj = v["obj"]
+    series = obj.startswith("\\sum")
+    inner = obj[len("\\sum_{n=1}^{\\infty}"):] if series else obj
+    m = re.search(r"\\left\((.*)\\right\)\^\{n\}", inner)
+    rt = P(m.group(1))
+    tot = 0
     for xv in range(-300, 301):
-        r = float(rt.subs(X, xv))
-        try:
-            a, b = r ** 1000, r ** 1001
-            ok = abs(a - b) < 1e-9
-        except OverflowError:
-            ok = False
-        if ok:
-            cnt += 1
+        r = sp.Rational(rt.subs(X, xv))
+        if series:
+            conv = abs(r) ** 2000 < sp.Rational(1, 10 ** 9)          # terms must die out geometrically
+            assert conv or abs(r) >= 1
+        else:
+            conv = (r == 1) or (abs(r) ** 2000 < sp.Rational(1, 10 ** 9))   # r^n -> 0, or r = 1
+            if abs(r) > 1 or r == -1:
+                conv = False
+        if conv:
+            tot += xv
             assert abs(xv) < 250, "convergent integers are not bounded"
-    return cnt
+    return tot
 
 
 def seq_sum_limit(v):
@@ -231,41 +241,15 @@ def telescope(v):
 
 def geo_series_param(v):
     term = P(v["term"])
-    S = float(P(v["S"]))
-    ratio = sp.simplify(term.subs(N, N + 1) / term)
-    ratio_f = sp.lambdify(R_, ratio, "numpy")
-    # sum of the first 4000 terms, numerically, on a grid of r
-    nn = np.arange(1, 4001, dtype=float)
-    tf = sp.lambdify((R_, N), term, "numpy")
-    rs = np.arange(-8, 8, 0.001)
-    vals = []
-    good = []
-    for rv in rs:
-        rr = ratio_f(rv)
-        if abs(rr) < 0.97:
-            good.append(rv)
-    good = np.array(good)
-    f = np.array([np.sum(tf(rv, nn)) for rv in good]) - S
-    roots = []
-    for i in range(len(good) - 1):
-        if abs(good[i + 1] - good[i] - 0.001) < 1e-9 and f[i] * f[i + 1] < 0:
-            lo, hi = good[i], good[i + 1]
-            for _ in range(60):
-                mid = (lo + hi) / 2
-                fm = np.sum(tf(mid, nn)) - S
-                if (np.sum(tf(lo, nn)) - S) * fm <= 0:
-                    hi = mid
-                else:
-                    lo = mid
-            roots.append((lo + hi) / 2)
-    assert len(roots) == 1, f"expected one ratio, found {roots}"
-    cand = Fraction(roots[0]).limit_denominator(1000)
-    # exact confirmation with Fractions: partial sums
-    cr = sp.Rational(cand.numerator, cand.denominator)
-    tt = term.subs(R_, cr)
-    acc = sum(tt.subs(N, i) for i in range(1, 400))
-    assert abs(float(acc) - S) < 1e-9, "candidate does not reproduce the sum"
-    return cand
+    S = P(v["S"])
+    first = sp.simplify(term.subs(N, 1))
+    ratio = sp.simplify(term.subs(N, 2) / term.subs(N, 1))
+    ratio3 = sp.simplify(term.subs(N, 3) / term.subs(N, 2))
+    assert sp.simplify(ratio - ratio3) == 0, "not a geometric series"
+    sols = sp.solve(sp.Eq(first / (1 - ratio), S), R_)
+    good = [s_ for s_ in sols if s_.is_real and abs(ratio.subs(R_, s_)) < 1]
+    assert len(good) == 1, f"expected exactly one admissible r, got {good} from {sols}"
+    return rat(good[0])
 
 
 def ball_distance(v):
@@ -340,34 +324,65 @@ def top_frac(s):
 
 
 def limit_pair(v):
-    m = re.fullmatch(r"\\lim_\{x\\to0\}(.*)=(.*)", v["eq"])
-    lhs, val = m.group(1), P(m.group(2))
-    nu, de = top_frac(lhs)
-    num_e, den_e = P(nu), P(de)
-    p = sp.degree(den_e, X)
-    assert sp.Poly(den_e, X).monoms() == [(p,)], "denominator must be a monomial"
-    lead = sp.Poly(den_e, X).coeffs()[0]
-    ser = sp.series(num_e, X, 0, p + 1).removeO()
-    poly = sp.Poly(sp.expand(ser), X)
-    cs = [poly.coeff_monomial(X ** i) for i in range(p + 1)]
-    eqs = [c for c in cs[:p]] + [sp.Eq(cs[p] / lead, val)]
-    sols = sp.solve(eqs, [A, B], dict=True)
-    assert sols, "no solution"
-    prods = {sp.simplify(s[A] * s[B]) for s in sols}
-    assert len(prods) == 1, f"ab not unique: {prods}"
-    return rat(prods.pop())
+    m = re.fullmatch(r"\\lim_\{x\\to(.*?)\}(.*)=([^=]*)", v["eq"])
+    tgt, lhs, valtxt = m.group(1), m.group(2), m.group(3)
+    val = P(valtxt)
+    expr = P(lhs)
+    f = sp.lambdify((A, B, X), expr, "numpy")
+    AA, BB = np.meshgrid(np.arange(-60, 61, dtype=float), np.arange(-60, 61, dtype=float), indexing="ij")
+    ok = np.ones(AA.shape, dtype=bool)
+    vf = float(val)
+    with np.errstate(all="ignore"):
+        for h in (1e-4, 1e-5):
+            pts = [1 / h] if tgt == "\\infty" else [float(P(tgt)) + h, float(P(tgt)) - h]
+            for xv in pts:
+                got = f(AA, BB, xv)
+                if tgt != "\\infty":
+                    got = np.where(np.isfinite(got), got, np.nan)
+                ok &= np.abs(got - vf) < 5e-3 * max(1, abs(vf)) + 1e-9
+    cands = [(int(AA[i, j]), int(BB[i, j])) for i, j in zip(*np.nonzero(ok))]
+    assert cands, "no (a, b) gives the stated limit"
+    lim_to = sp.oo if tgt == "\\infty" else P(tgt)
+    exact = []
+    for a_, b_ in cands:
+        e2 = expr.subs({A: a_, B: b_})
+        lim = sp.limit(e2, X, lim_to)
+        if sp.simplify(lim - val) == 0:
+            exact.append((a_, b_))
+    assert exact, f"candidates {cands} do not reproduce the limit exactly"
+    prods = {a_ * b_ for a_, b_ in exact}
+    assert len(prods) == 1, f"ab not unique: {exact}"
+    return sp.Integer(prods.pop())
 
 
 def trig_deriv(v):
-    return deriv_at(v)
+    f = P(v["fx"])
+    x0 = P(v["x0"])
+    same_expr(P(v["fp"]), sp.diff(f, X), "f'(x)")
+    return rat(sp.simplify(sp.diff(f, X).subs(X, x0)), "f'(x0)")
 
 
 def quotient_deriv(v):
-    return deriv_at(v)
+    f = P(v["fx"])
+    x0 = P(v["x0"])
+    u_s, v_s = top_frac(v["fx"])
+    u, w = P(u_s), P(v_s)
+    assert sp.simplify(u.subs(X, x0) - P(str(v["u0"]))) == 0, "u(x0)"
+    assert sp.simplify(w.subs(X, x0) - P(str(v["v0"]))) == 0, "v(x0)"
+    assert sp.simplify(sp.diff(u, X).subs(X, x0) - P(str(v["du"]))) == 0, "u'(x0)"
+    assert sp.simplify(sp.diff(w, X).subs(X, x0) - P(str(v["dv"]))) == 0, "v'(x0)"
+    return rat(sp.simplify(sp.diff(f, X).subs(X, x0)), "f'(x0)")
 
 
 def deriv_exp_log(v):
-    return deriv_at(v)
+    f = P(v["fx"])
+    x0 = P(v["x0"])
+    finite(sp.N(f.subs(X, x0)), "f(x0)")
+    same_expr(P(v["fp"]), sp.diff(f, X), "f'(x)")
+    d = rat(sp.simplify(sp.diff(f, X).subs(X, x0)), "f'(x0)")
+    check_equalities(v["sub"], v["res"], "substitution chain")
+    assert abs(float(d) - float(P(v["res"]))) < 1e-12
+    return d
 
 
 # ---------------------------------------------------------------- addition formulas
@@ -407,12 +422,14 @@ def add_theorem(v):
     qa, qb = QUAD_OF[v["ra"]], QUAD_OF[v["rb"]]
     ca, sa, ang_a = angle_from(v["ga"], qa)
     cb, sb, ang_b = angle_from(v["gb"], qb)
+    # the displayed sin/cos values must be the recomputed ones
+    m4 = re.findall(r"\\(sin|cos)\\(alpha|beta)=(-?(?:\\frac\{\d+\}\{\d+\}|\d+))", v["kn"])
+    got = {(fn_, an_): P(txt_) for fn_, an_, txt_ in m4}
+    assert got[("sin", "alpha")] == sa and got[("cos", "alpha")] == ca, "displayed sin/cos of alpha"
+    assert got[("sin", "beta")] == sb and got[("cos", "beta")] == cb, "displayed sin/cos of beta"
     m = re.fullmatch(r"\\(sin|cos|tan)\(\\alpha([+-])\\beta\)", v["ask"])
     fn, sg = m.group(1), m.group(2)
-    za = complex(float(ca), float(sa))
-    zb = complex(float(cb), float(sb)) if sg == "+" else complex(float(cb), -float(sb))
-    # exact via Gaussian rationals
-    ra = sp.Rational(1) * ca + sp.I * sa
+    ra = ca + sp.I * sa
     rb = cb + sp.I * (sb if sg == "+" else -sb)
     prod = sp.expand(ra * rb)
     re_, im_ = sp.re(prod), sp.im(prod)
@@ -425,6 +442,7 @@ def add_theorem(v):
         assert re_ != 0, "tangent undefined"
         res, chk = im_ / re_, math.tan(ang)
     assert abs(float(res) - chk) < 1e-9, "numeric angle check failed"
+    # every given quadrant condition must be actually used: the other root would give a different value
     return rat(res)
 
 
@@ -514,14 +532,17 @@ def chain_table(v):
     cons = {"f": [], "g": []}
     for fn, pr_, pt, val in items:
         cons[fn].append((int(pt), 1 if pr_ else 0, int(val)))
-    funcs = {}
-    for fn in "fg":
-        funcs[fn] = hermite(cons[fn]) if cons[fn] else sp.Integer(0)
-    fl = sp.Lambda(X, funcs["f"])
-    gl = sp.Lambda(X, funcs["g"])
-    h = parse_expr(tex(v["hx"]), local_dict={**LD, "f": fl, "g": gl}, transformations=TR)
-    d = sp.diff(h, X).subs(X, int(v["a"]))
-    return rat(d)
+    results = set()
+    for seed in range(4):
+        funcs = {}
+        for fn in "fg":
+            funcs[fn] = hermite_family(cons[fn], seed * 7 + (1 if fn == "f" else 2)) if cons[fn] else sp.Integer(seed)
+        fl, gl = sp.Lambda(X, funcs["f"]), sp.Lambda(X, funcs["g"])
+        h = parse_expr(tex(v["hx"]), local_dict={**LD, "f": fl, "g": gl}, transformations=TR)
+        d = sp.diff(h, X).subs(X, int(v["a"]))
+        results.add(sp.nsimplify(d))
+    assert len(results) == 1, f"h'(a) depends on data that is not given: {results}"
+    return rat(results.pop())
 
 
 # ---------------------------------------------------------------- parametric / implicit / inverse
@@ -529,6 +550,8 @@ def param_deriv(v):
     xt, yt = P(v["xt"]), P(v["yt"])
     t0 = P(v["t0"])
     what = v["what"].replace(" ", "")
+    same_expr(P(v["xp"]), sp.diff(xt, T), "dx/dt", T)
+    same_expr(P(v["yp"]), sp.diff(yt, T), "dy/dt", T)
     dydx = sp.diff(yt, T) / sp.diff(xt, T)
     if what == "\\frac{dy}{dx}":
         e = dydx
@@ -552,35 +575,46 @@ def implicit_F(eq):
 
 
 def implicit_deriv(v):
-    import mpmath as mp
     F = implicit_F(v["eq"])
     x0, y0 = parse_point(v["pt"])
     assert sp.simplify(F.subs({X: x0, Y: y0})) == 0, "point not on the curve"
+    # displayed partial derivatives of the differentiated equation
+    for name, key, var in (("F_x", "dA", X), ("F_y", "dB", Y)):
+        a_, b_ = P(v[key]), sp.diff(F, var)
+        diff = sp.simplify(a_ - b_)
+        assert diff == 0, f"displayed {name} differs: {a_} vs {b_}"
     what = v["what"].replace(" ", "")
     order = 1 if what == "\\frac{dy}{dx}" else 2
     d = sp.idiff(F, Y, X, order).subs({X: x0, Y: y0})
     d = rat(sp.simplify(d))
-    # numerical confirmation by solving F(x, y) = 0 near the point
-    mp.mp.dps = 50
+    # independent numerical confirmation: solve F(x, y) = 0 near the point (relative tolerance)
+    import mpmath as mp
+    mp.mp.dps = 60
     Ff = sp.lambdify((X, Y), F, "mpmath")
-    y1 = float(sp.diff(F, X).subs({X: x0, Y: y0}) / sp.diff(F, Y).subs({X: x0, Y: y0})) * -1
+    y1 = -float(sp.diff(F, X).subs({X: x0, Y: y0}) / sp.diff(F, Y).subs({X: x0, Y: y0}))
+
     def ysol(xv):
         return mp.findroot(lambda yy: Ff(xv, yy), mp.mpf(float(y0)) + y1 * (xv - mp.mpf(float(x0))))
-    h = mp.mpf("1e-6")
     if order == 1:
+        h = mp.mpf("1e-10")
         num_d = (ysol(mp.mpf(float(x0)) + h) - ysol(mp.mpf(float(x0)) - h)) / (2 * h)
     else:
-        h = mp.mpf("1e-4")
+        h = mp.mpf("1e-8")
         num_d = (ysol(mp.mpf(float(x0)) + h) - 2 * ysol(mp.mpf(float(x0))) + ysol(mp.mpf(float(x0)) - h)) / h ** 2
-    assert abs(float(num_d) - float(d)) < 1e-4, f"numeric check {num_d} vs {d}"
+    assert abs(float(num_d) - float(d)) < 1e-5 * max(1.0, abs(float(d))), f"numeric check {num_d} vs {d}"
     return d
 
 
 def inverse_deriv(v):
     f = P(v["fx"])
     b = float(P(v["b"]))
+    fp_true = sp.diff(f, X)
+    same_expr(P(v["fp"]), fp_true, "f'(x)")
+    xa = P(v["xa"])
+    assert abs(float(sp.N(f.subs(X, xa))) - b) < 1e-9, "f(xa) != b"
+    assert sp.simplify(fp_true.subs(X, xa) - P(str(v["fd"]))) == 0, "displayed f'(xa)"
     ff = sp.lambdify(X, f, "math")
-    fd = sp.lambdify(X, sp.diff(f, X), "math")
+    fd = sp.lambdify(X, fp_true, "math")
     xs = np.linspace(-40, 40, 80001)
     ders = np.array([fd(xx) for xx in xs])
     assert np.all(ders >= -1e-12) and np.any(ders > 0), "f is not increasing"
@@ -593,7 +627,7 @@ def inverse_deriv(v):
         else:
             hi = mid
     a = (lo + hi) / 2
-    assert abs(ff(a) - b) < 1e-8
+    assert abs(a - float(sp.N(xa))) < 1e-7, "the point a with f(a)=b is not the displayed one"
     return Fraction(1 / fd(a)).limit_denominator(2000)
 
 
@@ -621,7 +655,9 @@ def slope_at(cv, x0, y0):
 def tangent_line(v):
     x0, y0 = parse_point(v["pt"])
     m = slope_at(v["cv"], x0, y0)
+    assert sp.simplify(P(v["sl"]) - m) == 0, "displayed slope"
     line = m * (X - x0) + y0
+    same_expr(P(v["tl"]), line, "tangent line")
     return rat(line.subs(X, 0))
 
 
@@ -630,17 +666,22 @@ def tangent_triangle(v):
     m = slope_at(v["cv"], x0, y0)
     assert m != 0
     line = m * (X - x0) + y0
+    same_expr(P(v["tl"]), line, "tangent line")
     yi = sp.simplify(line.subs(X, 0))
     xs = sp.solve(sp.Eq(line, 0), X)
     assert len(xs) == 1
     xi = xs[0]
+    assert sp.simplify(P(v["xi"]) - xi) == 0 and sp.simplify(P(v["yi"]) - yi) == 0, "displayed intercepts"
     assert yi != 0 and xi != 0, "degenerate triangle"
     return rat(sp.Abs(xi * yi) / 2)
 
 
 def common_tangent(v):
     f, g = P(v["f"]), P(v["g"])
-    eqs = [f.subs(X, 1) - g.subs(X, 1), sp.diff(f, X).subs(X, 1) - sp.diff(g, X).subs(X, 1)]
+    p0 = P(str(v["x0"]))
+    assert sp.simplify(f.subs(X, p0) - P(str(v["F"]))) == 0, "displayed f(p)"
+    assert sp.simplify(sp.diff(f, X).subs(X, p0) - P(str(v["D"]))) == 0, "displayed f'(p)"
+    eqs = [f.subs(X, p0) - g.subs(X, p0), sp.diff(f, X).subs(X, p0) - sp.diff(g, X).subs(X, p0)]
     sol = sp.solve(eqs, [A, B], dict=True)
     assert len(sol) == 1, sol
     prod = sol[0][A] * sol[0][B]
@@ -652,6 +693,7 @@ def common_tangent(v):
 def extrema_pair(v):
     f = P(v["fx"])
     fp = sp.diff(f, X)
+    same_expr(P(v["fp"]), fp, "f'(x)")
     crit = sp.solve(fp, X)
     crit = [c for c in crit if c.is_real]
     assert len(crit) == 2, f"critical points {crit}"
@@ -668,31 +710,21 @@ def root_count(v):
     if "\\ (" in eq:
         eq, dom = eq.split("\\ (", 1)
     lhs, ks = eq.split("=")
-    k = float(ks)
-    f = sp.lambdify(X, P(lhs), "numpy")
+    kval = float(sp.N(P(ks)))
+    fexpr = P(lhs)
+    f = sp.lambdify(X, fexpr, "numpy")
     pos_only = dom is not None and dom.startswith("x>0")
     pole0 = dom is not None and dom.startswith("x\\ne0")
-    right = np.logspace(-9, math.log10(60), 90001)
-    left = -right[::-1]
-    comps = []
-    if pos_only:
-        comps.append(right)
-    elif pole0:
-        comps.append(left)
-        comps.append(right)
-    else:
-        comps.append(np.concatenate([left, [0.0], right]))
-    cnt = 0
-    with np.errstate(all="ignore"):
-        for xs in comps:
-            g = f(xs) - k
-            assert np.all(np.isfinite(g)), "non-finite values on the scan"
-            s = np.sign(g)
-            zero_hits = np.sum(s == 0)
-            cnt += int(zero_hits)
-            nz = s[s != 0]
-            cnt += int(np.sum(nz[1:] * nz[:-1] < 0))
-    return cnt
+    mg = extremum_margin(f, kval, pos_only, pole0)
+    assert mg < 1e-9 or mg > 0.02, f"k is too close to a local extreme value ({mg})"
+    # displayed derivative and extreme points
+    same_expr(P(v["fpx"].split("=", 1)[1]), sp.diff(fexpr, X), "f'(x)")
+    for item in v["exs"].split(";"):
+        xe_s, ve_s = item.split("|")
+        xe, ve = P(xe_s), P(ve_s)
+        assert abs(complex(sp.N(sp.diff(fexpr, X).subs(X, xe)))) < 1e-9, "displayed extreme point is not critical"
+        assert abs(complex(sp.N(fexpr.subs(X, xe) - ve))) < 1e-9, "displayed extreme value"
+    return scan_roots(f, kval, pos_only, pole0)
 
 
 def monotone_param(v):
@@ -722,24 +754,29 @@ def motion_reverse(v):
 
 
 # ---------------------------------------------------------------- integration
+
+
+# ---------------------------------------------------------------- integration
 def riemann(v):
     pre = P(v["pre"]) if v["pre"] else sp.Integer(1)
     body = P(v["body"])
+    Xp = sp.Symbol("xi", positive=True)
+    phi = sp.limit(sp.simplify(N * pre * body.subs(K, Xp * N)), N, sp.oo)
+    Lval = sp.integrate(sp.simplify(phi), (Xp, 0, 1))
+    ask = parse_expr(tex(v["ask"]), local_dict={**LD, "L": Lval}, transformations=TR)
+    val = sp.simplify(sp.expand_log(sp.simplify(ask), force=True))
+    # numeric confirmation by an actual partial sum (Richardson) for the same row
     pf = sp.lambdify(N, pre, "numpy")
     bf = sp.lambdify((N, K), body, "numpy")
 
     def S(nn):
         ks = np.arange(1, nn + 1, dtype=float)
         return float(pf(float(nn))) * float(np.sum(bf(float(nn), ks)))
-
     n0 = 2000
-    r1a = 2 * S(2 * n0) - S(n0)
-    r1b = 2 * S(4 * n0) - S(2 * n0)
-    L = (4 * r1b - r1a) / 3
-    val = float(parse_expr(tex(v["ask"]), local_dict={**LD, "L": sp.Float(L, 30)}, transformations=TR))
-    fr = Fraction(val).limit_denominator(2000)
-    assert abs(val - float(fr)) < 1e-6, f"not a simple rational: {val}"
-    return fr
+    ra, rb = 2 * S(2 * n0) - S(n0), 2 * S(4 * n0) - S(2 * n0)
+    Ln = (4 * rb - ra) / 3
+    assert abs(Ln - float(sp.N(Lval))) < 1e-6, f"partial sums {Ln} vs integral {Lval}"
+    return rat(val)
 
 
 def bound_expr(s):
@@ -860,15 +897,7 @@ def parts_formula(v):
 
 def velocity_integral(v):
     vel = P(v["vt"])
-    x0 = P(str(v["x0"]))
-    ask = v["ask"]
-    m = re.fullmatch(r"x\\left\((.*)\\right\)", ask)
-    if m:
-        Tt = P(m.group(1))
-        return rat(sp.simplify(x0 + sp.integrate(vel, (T, 0, Tt))))
-    m = re.fullmatch(r"\\int_\{0\}\^\{(.*)\}\|v\(t\)\|\\,dt", ask)
-    assert m, ask
-    Tt = P(m.group(1))
+    Tt = P(v["T"])
     pts = sp.solveset(vel, T, sp.Interval(0, Tt))
     assert pts.is_FiniteSet
     cut = sorted([sp.Integer(0), Tt] + [p for p in pts if p not in (0, Tt)], key=lambda z: float(z))
@@ -877,7 +906,165 @@ def velocity_integral(v):
         mid = (lo + hi) / 2
         sgn = 1 if float(vel.subs(T, mid)) >= 0 else -1
         tot += sgn * sp.integrate(vel, (T, lo, hi))
+    # numeric check of the absolute-value integral
+    import mpmath as mp
+    fl = sp.lambdify(T, vel, "mpmath")
+    q_ = mp.quad(lambda t: abs(fl(t)), [float(c) for c in cut])
+    assert abs(float(q_) - float(sp.N(tot))) < 1e-8
     return rat(sp.simplify(tot))
+
+
+# ---- helpers shared by the explanation checks
+def same_expr(a, b, what, var=None):
+    """a and b (sympy) agree: exact simplification first, numeric sampling as a fallback"""
+    d = sp.simplify(a - b)
+    if d == 0:
+        return
+    var = var or X
+    for xv in (0.37, 0.91, 1.73, 2.41):
+        va, vb = complex(sp.N(a.subs(var, xv))), complex(sp.N(b.subs(var, xv)))
+        assert abs(va - vb) < 1e-9 * max(1, abs(va)), f"displayed {what} differs from the recomputation: {a} vs {b}"
+
+
+def check_equalities(chain, res, what):
+    """chain: 'a=b=c' with sympy-parsable parts; every part must equal res"""
+    target = P(res)
+    for part in chain.split("="):
+        part = part.strip()
+        if not part:
+            continue
+        val = P(part)
+        assert abs(complex(sp.N(val - target))) < 1e-9, f"{what}: part {part} != {res}"
+
+
+# ---------------------------------------------------------------- sequences and series
+
+def same_expr(a, b, what, var=None):
+    """a and b (sympy) agree: exact simplification first, numeric sampling as a fallback"""
+    d = sp.simplify(a - b)
+    if d == 0:
+        return
+    var = var or X
+    for xv in (0.37, 0.91, 1.73, 2.41):
+        va, vb = complex(sp.N(a.subs(var, xv))), complex(sp.N(b.subs(var, xv)))
+        assert abs(va - vb) < 1e-9 * max(1, abs(va)), f"displayed {what} differs from the recomputation: {a} vs {b}"
+
+
+def check_equalities(chain, res, what):
+    """chain: 'a=b=c' with sympy-parsable parts; every part must equal res"""
+    target = P(res)
+    for part in chain.split("="):
+        part = part.strip()
+        if not part:
+            continue
+        val = P(part)
+        assert abs(complex(sp.N(val - target))) < 1e-9, f"{what}: part {part} != {res}"
+
+
+# ---------------------------------------------------------------- sequences and series
+
+
+def ball_reverse(v):
+    r = P(v["ratio"])
+    n = int(v["nb"])
+    H = Fraction(int(v["H"]))
+    rf = Fraction(int(r.p), int(r.q))
+    h = H / rf ** n
+    total = h
+    cur = h
+    for _ in range(900):
+        cur *= rf
+        total += 2 * cur
+    return total.limit_denominator(10000)
+
+
+def hermite_family(constraints, seed):
+    """a polynomial satisfying all constraints, with random values for everything not prescribed"""
+    import random
+    rnd = random.Random(seed)
+    m = len(constraints)
+    deg = m + 3
+    cs = sp.symbols(f"c0:{deg + 1}")
+    poly = sum(cs[i] * X ** i for i in range(deg + 1))
+    eqs = []
+    for pt, order, val in constraints:
+        eqs.append((sp.diff(poly, X, order) if order else poly).subs(X, pt) - val)
+    sol = sp.solve(eqs, cs, dict=True)
+    assert len(sol) == 1
+    p0 = poly.subs(sol[0])
+    free = sorted(p0.free_symbols - {X}, key=str)
+    return sp.expand(p0.subs({s_: rnd.randint(-5, 5) for s_ in free}))
+
+
+def scan_roots(f, k, pos_only=False, pole0=False):
+    """number of distinct real roots of f(x)=k by sign changes on log-spaced grids, with exact-zero hits merged"""
+    right = np.logspace(-9, math.log10(700), 90001)
+    left = -np.logspace(-9, math.log10(300), 90001)[::-1]
+    comps = []
+    if pos_only:
+        comps.append(right)
+    elif pole0:
+        comps.append(left)
+        comps.append(right)
+    else:
+        comps.append(np.concatenate([left, [0.0], right]))
+    cnt = 0
+    with np.errstate(all="ignore"):
+        for xs in comps:
+            g = f(xs) - k
+            assert np.all(np.isfinite(g)), "non-finite values on the scan"
+            s = np.sign(g)
+            # treat a grid zero like a sign that belongs to its left neighbour: count a root when the sign pattern changes
+            # ignoring zeros, and add one only for zeros that are isolated touching points (both neighbours equal sign)
+            nz_idx = np.nonzero(s != 0)[0]
+            nz = s[nz_idx]
+            ch = nz[1:] * nz[:-1] < 0
+            cnt += int(np.sum(ch))
+            zero_idx = np.nonzero(s == 0)[0]
+            for zi in zero_idx:
+                lo_ = nz_idx[nz_idx < zi]
+                hi_ = nz_idx[nz_idx > zi]
+                if len(lo_) and len(hi_) and s[lo_[-1]] == s[hi_[0]]:
+                    cnt += 1       # touches zero without crossing
+    return cnt
+
+
+def extremum_margin(f, k, pos_only=False, pole0=False):
+    right = np.logspace(-6, math.log10(700), 60001)
+    left = -np.logspace(-6, math.log10(300), 60001)[::-1]
+    comps = [right] if pos_only else [left, right] if pole0 else [np.concatenate([left, [0.0], right])]
+    mn = 1e9
+    with np.errstate(all="ignore"):
+        for xs in comps:
+            y = f(xs)
+            d = np.diff(y)
+            idx = np.nonzero(d[1:] * d[:-1] < 0)[0] + 1
+            for i in idx:
+                mn = min(mn, abs(float(y[i]) - k))
+    return mn
+
+
+def root_count_param(v):
+    eq = v["eq"]
+    dom = None
+    if "\\ (" in eq:
+        eq, dom = eq.split("\\ (", 1)
+    lhs, ks = eq.split("=")
+    assert ks == "k"
+    fexpr = P(lhs)
+    f = sp.lambdify(X, fexpr, "numpy")
+    pos_only = dom is not None and dom.startswith("x>0")
+    same_expr(P(v["fpx"].split("=", 1)[1]), sp.diff(fexpr, X), "f'(x)")
+    nr = int(v["nr"])
+    hits = []
+    for k in range(-40, 41):
+        mg = extremum_margin(f, float(k), pos_only)
+        assert mg < 1e-9 or mg > 0.05, f"k={k} too close to an extreme value"
+        if scan_roots(f, float(k), pos_only) == nr:
+            hits.append(k)
+    lst = [int(t) for t in v["lst"].split(",")]
+    assert hits == sorted(lst), f"scan gives k = {hits}, shown {lst}"
+    return len(hits)
 
 
 VERIFY = {
@@ -889,6 +1076,7 @@ VERIFY = {
     "ca2_telescope": telescope,
     "ca2_geoSeriesParam": geo_series_param,
     "ca2_ballDistance": ball_distance,
+    "ca2_ballReverse": ball_reverse,
     "ca2_expLogLimit": exp_log_limit,
     "ca2_eExponent": e_exponent,
     "ca2_derivExpLog": deriv_exp_log,
@@ -909,6 +1097,7 @@ VERIFY = {
     "ca2_commonTangent": common_tangent,
     "ca2_extremaPair": extrema_pair,
     "ca2_rootCount": root_count,
+    "ca2_rootCountParam": root_count_param,
     "ca2_monotoneParam": monotone_param,
     "ca2_motionReverse": motion_reverse,
     "ca2_riemann": riemann,

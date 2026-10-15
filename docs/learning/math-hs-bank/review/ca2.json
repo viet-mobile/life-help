@@ -1,0 +1,417 @@
+{
+ "modules": [
+  "ca2"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 39,
+  "rowsRead": 819,
+  "notes": "Read SPEC, all 39 generators (every branch), the verifier, all 117 sets in the dump (819 rows, shown in part via sample.mjs) and the standards text in lib/learn/curriculum/kr/2022/mathematics.json. Extra checks: (a) sympy re-derivation of every displayed f'(x), u/v values, tangent-line text and inverse-function f(a)=b, f'(a) in the 819 rows (0 mismatches); (b) brace/left-right balance and Hangul-in-v scan (0 problems); (c) ~12.6k extra rows from all generators/levels (160 draws per set) pushed through verify/ca2.py as a stress test (finished: 12626/12634 verified; the 8 failures are verifier defects, not wrong answers, see findings). No blocker was found: every answer I recomputed was unique and correct. The problems are level/standard honesty, explanations that use out-of-curriculum notation or show wrong/ugly working, weak level gradients and duplicated structures."
+ },
+ "findings": [
+  {
+   "template": "ca2_limitPair",
+   "severity": "major",
+   "kind": "level",
+   "detail": "Several branches need second-order expansions (Taylor) that a student of the 2022 Calculus II cannot do (no L'Hopital, no series): (a sin x + b x)/x^3, (a tan x + b x)/x^3, (e^{ax}-1-bx)/x^2, (ln(1+ax)-bx)/x^2. Hint 2 even says 'expand the numerator in powers of x (approximate)'. The curriculum note for 02-01/02-03 says exp/log/trig limits are only taken as far as needed for the derivatives. Only the (a+b cos x)/x^2 branch and the sqrt(1+ax) branch (rationalise) are elementary.",
+   "evidence": "b-hs-ca2-limitpair1 (sin x - x)/x^3 branch; b-hs-ca2-limitpair2 all rows; b-hs-ca2-limitpair3 tan branch",
+   "fix": "Keep cos and sqrt forms only (add e.g. (sqrt(a+bx)-c)/x or (cos x type) variants), drop sin/tan/exp/ln branches, and rewrite hint 2 without 'Taylor/approximate'. Otherwise relabel as enrichment, not 12미적Ⅱ-02-03/02-01."
+  },
+  {
+   "template": "ca2_riemann",
+   "severity": "major",
+   "kind": "level",
+   "detail": "Kind 6 (sum n/(n^2+k^2), ask L/pi) is solved in the explanation with tan^{-1}x. Inverse trig functions are not in the 2022 curriculum (not in the 미분법/적분법 vocabulary) and a student has no way to find the antiderivative of 1/(1+x^2).",
+   "evidence": "b-hs-ca2-riemann3 row with body \\frac{n}{n^{2}+k^{2}}",
+   "fix": "Drop kind 6 (the level-3 pool then has only 10 distinct rows: add e.g. sum k^2/n^3 shifted, sum sin/cos with different bounds, sum 1/(n+k) variants)."
+  },
+  {
+   "template": "ca2_implicitDeriv",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "All explanations (levels 1-3) use F_x, F_y, F_xx, F_xy, F_yy and y''=-(F_xx+2F_xy y'+F_yy y'^2)/F_y. F is never defined in the prompt or hints, partial derivatives are multivariable calculus, and the hint tells the student to differentiate both sides with respect to x. The displayed working does not match the method taught. Level 3 (d^2y/dx^2 of a general conic) also goes beyond the curriculum note 'implicit functions only simple ones'.",
+   "evidence": "b-hs-ca2-implicitderiv1 '$F_{x}=6,\\ F_{y}=2 ...'; b-hs-ca2-implicitderiv3 second derivative rows",
+   "fix": "Write the explanation as 'differentiate both sides: ... dy/dx(...) = ..., at the point ... dy/dx = ...' per row (build the differentiated equation from the same term list). For level 3 keep only very simple curves (e.g. x^2+y^2=r^2, xy=c, y^3+y=x) or make level 3 'dy/dx at a point of exp/log curves' and drop the generic second derivative."
+  },
+  {
+   "template": "ca2_paramDeriv",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 3 asks d^2y/dx^2 of parametric curves (including cycloid and ellipse). The curriculum limits parametric/implicit differentiation to simple cases; the explanation quotes the memorised formula (y''x'-y'x'')/x'^3 which the hint (d/dt(dy/dx) divided by dx/dt) does not teach. Also level-3 cycloid rows print a nested fraction sin^4(\\frac{\\frac{\\pi}{2}}{2}).",
+   "evidence": "b-hs-ca2-paramderiv3; wk of cycloid branch",
+   "fix": "Make the explanation follow the hint (compute d/dt(dy/dx) then divide by dx/dt) and print the value of t/2 as a single fraction; consider limiting to polynomial/exponential cases."
+  },
+  {
+   "template": "ca2_partsEval",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "(1) For k=1 the cos-type rows print the working without brackets: '(-1)\\cdot (-1)-1' for the true value (-1)((-1)-1)=2. Read literally this equals 0, so the shown arithmetic contradicts the answer (affects every row of kind 3-cos / kind 6 with k=1 and p not 1). (2) Kinds 1 and 2 only show the finished antiderivative '[(x-1)(sx+t)e^x]_0^1 = 0-(-1)t' with no by-parts steps, so for a by-parts item the explanation teaches nothing.",
+   "evidence": "b-hs-ca2-partseval3 row '$I=\\int_{0}^{3\\pi}-x\\cos x\\,dx$' wk '(-1)\\left[x\\sin x+\\cos x\\right]_{0}^{3\\pi}=(-1)\\cdot (-1)-1' ; b-hs-ca2-partseval1 all rows",
+   "fix": "Use fd(...) that always wraps the numerator in brackets when den is 1: p\\cdot\\left((-1)-1\\right). For kinds 1-2 show u=poly, v'=e^x, first and second parts steps."
+  },
+  {
+   "template": "ca2_partsEval",
+   "severity": "major",
+   "kind": "level",
+   "detail": "Level 3 is easier than level 2: level 3 draws kinds [6,3,2] with kind 6 identical to the cos branch of kind 3, while the hardest item (x^2 cos kx, parts twice, kind 4) is only in level 2. Kinds 1 and 2 (e^x vs e^{-x}) are the same trick and the answer is always t, independent of s.",
+   "evidence": "plan levels: lvl1 [1,5], lvl2 [2,3,4], lvl3 [6,3,2]",
+   "fix": "Move kind 4 to level 3, replace kind 6 with e.g. x^2 e^{kx} or e^x sin x (cyclic) or x ln x; merge kinds 1/2."
+  },
+  {
+   "template": "ca2_integralBasic",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Negative coefficients print '+-': kind 1 wk '...=2(2-1)+-4\\left(1-\\frac{1}{2}\\right)', kind 2 '=2+-3'.",
+   "evidence": "b-hs-ca2-integralbasic1",
+   "fix": "Use the pm()/sign-aware join for q in kinds 1 and 2."
+  },
+  {
+   "template": "ca2_derivExpLog",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Level 3 kind 3: f'(x) text '(-6x+5)\\ln x+-3x+5' (double sign). Level 1 explanation jumps from f'(x) to the value without showing e^{(1/k)ln m k}=m, which is exactly the step the second hint is about.",
+   "evidence": "b-hs-ca2-derivexplog3 fp; b-hs-ca2-derivexplog1",
+   "fix": "Build the product-rule text with a sign-aware join; add the substitution step (e.g. e^{2\\cdot \\frac12\\ln 3}=3) to level-1 explanations."
+  },
+  {
+   "template": "ca2_seqLimit",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "The explanation is 'after simplifying and letting n->inf we get wk, so the limit is res' where wk is just the ratio of leading coefficients (e.g. \\frac{4}{3} then 4/3; \\frac{7}{1}; \\frac{-7}{7}), i.e. no working. Level 3 kind 2 prints '\\sqrt{1n^{2}+5}'.",
+   "evidence": "b-hs-ca2-seqlimit1, seqlimit3 row 5n+4 over sqrt(1n^2+5)+n",
+   "fix": "Show the division step (numerator/denominator divided by n^k, or the rationalised form) and omit the coefficient 1 in sqrt(1n^2+..)."
+  },
+  {
+   "template": "ca2_seqGeoLimit",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 3 is level 2 with a negative base in half of the rows; unreduced working such as \\frac{-49}{-7}, \\frac{-147}{-98}, \\frac{12}{1}; answers with denominators up to 90 although the base are small.",
+   "evidence": "b-hs-ca2-seqgeolimit2/3",
+   "fix": "Add a genuinely new level-3 form (e.g. ratio with a/b < 1 mixed with powers like n*r^n is out of scope, so use sums such as (3^n+(-2)^n)/(3^{n+1}+...) or 'for which r does the limit exist' counts); reduce signs/fractions in wk."
+  },
+  {
+   "template": "ca2_seqSumLimit",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Explanation only compares leading coefficients (wk like \\frac{-3\\cdot -1}{3}); the sum formulas sum k, sum k^2 are never written, so the learner cannot reconstruct why. Level 2 kinds 2 and 3 ((ak+b)(ck+d) vs (ak+b)^2) are the same idea; level 3 prints 'k^{1}' and 'n^{3}\\sum k^{1}'.",
+   "evidence": "b-hs-ca2-seqsumlimit2, seqsumlimit3",
+   "fix": "Write the closed forms used, merge kinds 2/3, print k instead of k^{1}."
+  },
+  {
+   "template": "ca2_telescope",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hint 1 speaks of 'two factors in the denominator differing by a constant' but level 3 terms have three factors n(n+1)(n+2). Also '(n)(n+3)' with redundant parentheses and wk '\\frac{1}{1}\\left(\\frac{1}{2}\\right)'.",
+   "evidence": "b-hs-ca2-telescope3, telescope1",
+   "fix": "Level-specific hint for three factors (1/(n(n+1)(n+2)) = 1/2[1/(n(n+1)) - 1/((n+1)(n+2))]); print n instead of (n)."
+  },
+  {
+   "template": "ca2_ballDistance",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "The three levels are the same problem; they differ only in how the ratio is written (fraction, decimal, (p/q)^2). There is no extra reasoning at level 3 (squared ratio is just r=p^2/q^2).",
+   "evidence": "b-hs-ca2-balldistance1/2/3",
+   "fix": "Level 3: ask for the total time, or the total distance when the ratio applies to speed/height alternately, or the number of bounces until height < threshold (a counting item)."
+  },
+  {
+   "template": "ca2_geoConvCount",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Answer space is tiny (level 2 rows give only 3 distinct answers, level 1 only 4), so guessing succeeds often; level 1 and 2 are the same linear-inequality structure.",
+   "evidence": "geoconvcount1 answers {8,6,...}, geoconvcount2 3 distinct answers",
+   "fix": "Ask for the sum of the convergent integers x, or the sum of integer x for which the series (not the sequence) converges (|r|<1), to widen the answer space and use 01-04/05."
+  },
+  {
+   "template": "ca2_trigLimit",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 3 kinds 2 and 3 are single fixed rows (cos x/(x-pi/2) and (1-sin x)/(pi-2x)^2) that will recur in every seed; the 'trig limit for derivative' note in 02-03 (only as needed for sin/cos derivatives) suggests levels 2-3 are already beyond the intended depth. The x sin(a/x) rows duplicate the pattern of ca2_expLogLimit k=4,5 and ca2_eExponent.",
+   "evidence": "b-hs-ca2-triglimit3",
+   "fix": "Randomise constants in kinds 2-3 (cos(ax)/(x-pi/(2a)), 1-sin ax style) or replace by the derivative-definition form lim (sin(x+h)-sin x)/h."
+  },
+  {
+   "template": "ca2_trigLimitUnknown",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Every row reduces to 'a/b = value', 'a^2/(2b) = value'; same limits as ca2_trigLimit with the parameter moved. Level 1 is trivially linear. Acceptable as a 'reverse' item but three levels add little.",
+   "evidence": "b-hs-ca2-triglimitunknown1-3",
+   "fix": "Merge into ca2_trigLimit as a level-3 'reverse' mode, or make the unknown appear in two places (sin ax / sin 3x with both a in numerator and another a in denominator)."
+  },
+  {
+   "template": "ca2_trigDeriv",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 3 includes rows that collapse to trivial arithmetic: (px+q) sin x at x=0, sin(a sin x) at 0, e^{a sin x} at 0/pi; level 2 includes simple a sin kx / a cos kx at one point (same as level 1) so the gradient 1<2<3 is not real. tan x derivative (sec^2) and ln(sin kx) are outside the stated 02-03 wording (sin/cos only) although sec is in the vocabulary list.",
+   "evidence": "b-hs-ca2-trigderiv2 kinds 6,7; trigderiv3 kinds 2,3,5",
+   "fix": "Drop kinds 6/7 of level 2 (duplicates of level 1); evaluate level-3 kinds at a non-trivial point (e.g. pi/6) or drop; list 02-04 (quotient) when tan is used."
+  },
+  {
+   "template": "ca2_addTheorem",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Level 3 gives tan alpha and tan beta together with the quadrant of each angle, but the answer does not depend on the quadrants (unused givens; also the quadrant constrains tan sign, so a mismatch would be inconsistent, though the generator keeps it consistent). Level 1 (all first quadrant) is only a Pythagorean-triple exercise.",
+   "evidence": "b-hs-ca2-addtheorem3: 'tan alpha=7/24, tan beta=-7/24, pi<alpha<3pi/2, ...' answer 0",
+   "fix": "Drop the ranges in the tan version or use them (ask for alpha+beta given as an angle, or ask sin(alpha+beta) from tan data where the quadrant fixes the sign)."
+  },
+  {
+   "template": "ca2_lineAngle",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "The three levels differ only in how the lines are written (y=mx, ax+by+c=0, y=mx+c); intercepts/constants are irrelevant, so the maths is identical and not harder at level 3.",
+   "evidence": "b-hs-ca2-lineangle1-3",
+   "fix": "Level 3: ask the slope of the bisector, or the lines given by points, or the angle between a line and a curve's tangent."
+  },
+  {
+   "template": "ca2_doubleAngle",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hint 2 ('square the given relation, or get sin, cos from tan') does not help for the tan(alpha/2) rows (level 3 kind 8) and the 'sin alpha cos alpha from tan' rows.",
+   "evidence": "b-hs-ca2-doubleangle3 first row",
+   "fix": "Mention the half-angle form sin a = 2t/(1+t^2), cos a = (1-t^2)/(1+t^2) in a level-specific hint, or replace those rows by tan alpha=t via double angle."
+  },
+  {
+   "template": "ca2_chainTable",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Several givens are unused: f(b) in level 1 and level 3 kind 1 (f(f(x))), f(c) in the f(x g(x)) rows. Intentional distractors but the prompt does not say so. Level 3 kind 3 with a=0 reduces to f'(0)g(0).",
+   "evidence": "b-hs-ca2-chaintable1 '...f(4)=1, f'(4)=5 ...'",
+   "fix": "Accept as distractors or drop the unused values; avoid a=0 in kind 3."
+  },
+  {
+   "template": "ca2_tangentLine",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Level 2 prints e^{1} for k=-1 slope (4e^{1}...) and the point as \\left(e^{-1},...\\right) mixed with e^{-1}; cosmetic. The level-3 curve is a random conic whose equation may have only linear x,y terms plus one square: nothing wrong, but 'tangent to a conic at an integer point' is the same item as ca2_implicitDeriv level 1.",
+   "evidence": "b-hs-ca2-tangentline2/3",
+   "fix": "Print e instead of e^{1}; replace level 3 by tangent from an external point or tangent parallel to a given line."
+  },
+  {
+   "template": "ca2_tangentTriangle",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level-3 curves (sqrt(px+q), rational (ax+b)/(cx+d)) and level 1 (quadratic, a/x+b) are the same families as ca2_tangentLine levels 1; the item just asks area instead of y-intercept. Evidence label 'application' is not earned (no context).",
+   "evidence": "b-hs-ca2-tangenttriangle3 vs tangentline1",
+   "fix": "Drop tangentTriangle level 3 (or tangentLine level 1 rational/sqrt rows); relabel evidence 'calc'."
+  },
+  {
+   "template": "ca2_commonTangent",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Levels are not graded: L1 uses {ln, 1/x}, L2 {sqrt, exp}, L3 mixes all; L3's cubic g=ax^3+bx+c is the same two equations. The prompt says 'meet at x=1' so f(1)=g(1) is explicit (no discovery of the condition).",
+   "evidence": "b-hs-ca2-commontangent1-3",
+   "fix": "Make the meeting point part of the unknowns (curves y=a ln x and y=bx^2+c tangent at an unknown point) for level 3."
+  },
+  {
+   "template": "ca2_extremaPair",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 1 always has a=1,k=1 so the maximum is always at the smaller root (answers all negative); the student can pattern-match. Otherwise correct (verified f' factorisation and sign chart).",
+   "evidence": "b-hs-ca2-extremapair1 answers -4,-2,...",
+   "fix": "Allow a=-1 at level 1."
+  },
+  {
+   "template": "ca2_rootCount",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 1 uses x e^{-x} and ln x / x, which have the same graph shape and the same threshold 1/e, so it is one structure; answers are only {0,1,2,(3)}. Several right-hand sides are within 0.04 of the extremum (x^2e^{-x}=0.5 vs 4/e^2=0.541, =0.6; x^3e^{-x}=1.2 vs 1.344; =1.5) and need decimal values of e^2, e^3 by hand. The explanation prints 'k=0: 0<=0' or 'k=3: 3>=0', which reads oddly. Evidence label 'application' should be 'concept/representation'.",
+   "evidence": "b-hs-ca2-rootcount1/2/3",
+   "fix": "Give the right-hand side as exact multiples (e.g. 2/e, 4/e^2 +- ) or keep margins >0.15; add a parameter version 'for which k are there exactly 2 roots (integer count)'."
+  },
+  {
+   "template": "ca2_monotoneParam",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 2 is always the sin kx kind; level 3 is half the same kind (c>=2) plus ln(x^2+s^2); level 1 is cubic. The statement of 'increasing iff f'>=0' in the prompt is consistent. Standard 02-09 (graph shape) is a stretch; it is a 02-10 inequality item.",
+   "evidence": "plan levels",
+   "fix": "Add a level-3-only kind (e.g. x e^{-ax} or a x - ln(1+x^2) with a threshold from calculus); drop 02-09 code."
+  },
+  {
+   "template": "ca2_motionReverse",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Kinds 2 and 3 (sin kt / cos kt) are trivial given the first zero of cos/sin and have a(t) = -b k^2 regardless of the time; the prompt's 'first time' is only meaningful there.",
+   "evidence": "b-hs-ca2-motionreverse2",
+   "fix": "Replace with t e^{-kt} or t^3-9t^2+... polynomial with two zeros."
+  },
+  {
+   "template": "ca2_areaCurves",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 3 draws kinds [9,10,2]; kinds 2 and 10 are the same e^x, e^{-x} family (kind 2 also appears at level 2), kind 9 is easy (aa ln m). So level 3 is not harder than level 2 (kinds 5-8). 'y=0' is called a graph in the prompt (x-axis would read better). sec^2 x appears (kind 7) without being defined in the prompt.",
+   "evidence": "areacurves3 rows",
+   "fix": "Add intersection-defined regions (area between y=e^x and y=ax or ln x and line) at level 3; say 'x축' instead of 'y=0'."
+  },
+  {
+   "template": "ca2_volumeRotate",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Kinds 4 and 9 (a sin x, a cos x) are the same; sec x (kind 6) used without definition; wk shows only the antiderivative step ('\\pi[\\frac{5}{2}x^2]_0^1') without the final value.",
+   "evidence": "b-hs-ca2-volumerotate1, 2",
+   "fix": "Merge 4/9; add final evaluation to wk."
+  },
+  {
+   "template": "ca2_substitution",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Kind 5 allows a=0 and prints '(e^{x}+0)^{p}' (visible oddity); level 3 kind 1 repeats level 1 kind 1 with a larger upper limit and kind 9 repeats kind 3 with a constant shift; hint 1 says 'composite part' for all rows.",
+   "evidence": "substitution2 kind 5 with a=0 (e^{x}+0)",
+   "fix": "a from 1..3 in kind 5; replace L3 kind 1 by e.g. x/(x^2+1) (ln) or x e^{x^2}."
+  },
+  {
+   "template": "ca2_substransform",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "For negative inner slope (level 1, a<0) the explanation writes 'du=-2dx: 1/2 int_{-2}^{0} f' without mentioning the limit swap that produces the sign change, which is the exact point of the item.",
+   "evidence": "b-hs-ca2-substransform1 second row",
+   "fix": "Add 'the limits are reversed, so int_{0}^{-2}... = -int_{-2}^{0}...'."
+  },
+  {
+   "template": "ca2_velocityIntegral",
+   "severity": "major",
+   "kind": "wording",
+   "detail": "Level 3 asks int_0^T |v(t)| dt but the prompt still gives 'position x(t) with x(0)=x0' that is never used; the explanation multiplies by an unexplained factor ('1/3 x 5') for the number of quarter periods. Levels 1-2 are plain definite integrals + x0 (same computation as ca2_integralBasic kinds 1,2 with a different skin).",
+   "evidence": "b-hs-ca2-velocityintegral3 '... x(0)=-6 ... \\int_0^{5\\pi/6}|v(t)|dt'",
+   "fix": "Level 3: ask 'the total distance travelled from t=0 to T' without x0, and explain the quarter-period count; use a v that changes sign at non-symmetric times (e.g. 2 sin t - 1) for a real piecewise integral."
+  },
+  {
+   "template": "ca2_expLogLimit",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Level 3 k=2,3 working prints 'e^{1x^{2}}' and '\\ln(1+1x^{2})' (coefficient 1). Level 3 kinds 4 and 5 (x ln(1+a/x), x(e^{a/x}-1)) duplicate ca2_eExponent level 1 'x->inf' rows in idea.",
+   "evidence": "b-hs-ca2-exploglimit3 wk",
+   "fix": "Omit the coefficient 1; keep kinds 4-5 in only one template."
+  },
+  {
+   "template": "ca2_quotientDeriv",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 2 kind 3 (linear / e^{kx}) is really a product-rule item and level 3 evaluates only at 0, pi/2, pi, 3pi/2; answers have denominators up to 121.",
+   "evidence": "quotientderiv1 den 121",
+   "fix": "Keep denominators under ~50 by restricting coefficients, accept."
+  },
+  {
+   "template": "ca2_inverseDeriv",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "The prompt never states that f is invertible on R (true: strictly increasing in all rows). Level 1 requires solving a cubic f(a)=b for the integer a by trial.",
+   "evidence": "b-hs-ca2-inversederiv1",
+   "fix": "Add 'f는 일대일대응' / '역함수가 존재한다'."
+  },
+  {
+   "template": "ca2_partialSumSeries",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "Hint 2 ('the sum of the series is lim S_n') is irrelevant for the a_1, a_k and n^2 a_n rows; level 1 mixes sum-of-series and a_1 (a_1=S_1 is a one-step item).",
+   "evidence": "partialsumseries2",
+   "fix": "Level-specific hint 2."
+  },
+  {
+   "template": "ca2_geoSeriesParam",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Verifier finds r by a numeric grid/bisection on 4000-term partial sums restricted to |ratio|<0.97; uniqueness is asserted (exactly one root) but the method is numeric and cannot see roots with |ratio| in [0.97,1).",
+   "evidence": "verify/ca2.py geo_series_param",
+   "fix": "Use sympy solve on a/(1-x)=S and check |x|<1 exactly."
+  },
+  {
+   "template": "ca2_chainTable",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "The verifier builds the minimal-degree Hermite polynomial through the listed values/derivatives and differentiates it; it does not test that h'(a) is independent of the unspecified data (compare subs_transform/parts_formula which perturb the free part). A row with a missing needed value would still verify.",
+   "evidence": "verify/ca2.py chain_table",
+   "fix": "Repeat with an added extra term c*(x-p1)^2(x-p2)^2... vanishing to first order at all given points and assert equal h'(a)."
+  },
+  {
+   "template": "ca2_rootCount",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "root_count scans x in +-60 with 90001 log-spaced points; no assertion about the margin |f(x*)-k| at the extremum, so a row with k within 0.001 of the extreme value would silently go either way; explanation text (wk/ext/lim) is never checked by any verifier (all templates).",
+   "evidence": "verify/ca2.py root_count",
+   "fix": "Assert min |extreme-k| > 0.02 and add a check that the printed f'(x) in fpx equals sympy diff of the left side."
+  },
+  {
+   "template": "ca2_riemann",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Answer recomputed by Richardson extrapolation of partial sums and rationalised with limit_denominator(2000) at tolerance 1e-6: not exact, and the exp(a*L)/L/pi targets are matched only numerically.",
+   "evidence": "verify/ca2.py riemann",
+   "fix": "Additionally convert to the integral symbolically (substitute k/n=x) and compare with sympy integrate."
+  },
+  {
+   "template": "ca2_rootCount",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Verifier double counts a root that lies exactly on the scan grid: for k=0 with x*e^{-x}=0 and x^3 e^{-x}=0 it returns 2 (a zero hit at x=0 plus a sign change across it) while the correct count, and the generator's, is 1. These rows are possible (ks contains \"0\") but were not drawn in the shipped sets; a regeneration with another seed would fail verification spuriously.",
+   "evidence": "stress run: stress-ca2_rootCount-1 and -3, eq xe^{-x}=0, x^{3}e^{-x}=0",
+   "fix": "Count a zero hit only if the neighbouring samples do not already show a sign change across it (treat sign 0 as a sign change once)."
+  },
+  {
+   "template": "ca2_implicitDeriv",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Level-3 second-derivative rows can have large values (-452, -292, 146, 72, -96, -1976/27) because x0,y0 up to 3 with coefficients up to 4; the verifier's finite-difference check (tolerance 1e-4) rejects 6 of them although the answers are right (e.g. -452.0077 vs -452). Large answers are also unfriendly for a hand-calculation item.",
+   "evidence": "stress run: 6 failures at stress-ca2_implicitDeriv-3, e.g. -4x^2+2xy+3y^2-4y=-36 at (3,0)",
+   "fix": "Use a relative tolerance or Richardson extrapolation in the numeric check, and restrict level-3 coefficients/points so |answer| < ~30."
+  }
+ ],
+ "drop": [
+  {
+   "template": "ca2_riemann (kind 6, n/(n^2+k^2))",
+   "why": "needs arctan, not in the 2022 curriculum."
+  },
+  {
+   "template": "ca2_limitPair (sin/tan/exp/ln branches)",
+   "why": "need Taylor/L'Hopital, not available to the target student; keep cos and sqrt forms."
+  },
+  {
+   "template": "ca2_tangentTriangle (level 3)",
+   "why": "same curve families as ca2_tangentLine level 1, only the asked quantity differs."
+  },
+  {
+   "template": "ca2_partsEval (kind 6 and one of kinds 1/2)",
+   "why": "kind 6 duplicates kind 3-cos; kinds 1 and 2 are the same trick with the same answer t."
+  },
+  {
+   "template": "ca2_trigDeriv (level 2 kinds 6,7)",
+   "why": "duplicate of level 1 (a sin kx, a cos kx at a standard angle)."
+  },
+  {
+   "template": "ca2_areaCurves (level 3 kind 2 or 10)",
+   "why": "same e^x, e^{-x} family appears as kinds 2 and 10; kind 2 is also in level 2."
+  },
+  {
+   "template": "ca2_volumeRotate (kind 9 or kind 4)",
+   "why": "a sin x and a cos x over a half period are the same item."
+  },
+  {
+   "template": "ca2_integralBasic (kind 8 or 9)",
+   "why": "sin^2 and cos^2 over a half period are the same item."
+  },
+  {
+   "template": "ca2_seqSumLimit (level 2 kind 3)",
+   "why": "(ak+b)^2 is a special case of kind 2 (ak+b)(ck+d)."
+  },
+  {
+   "template": "ca2_trigLimitUnknown (merge into ca2_trigLimit)",
+   "why": "same limits as ca2_trigLimit with the parameter moved; low added value."
+  }
+ ],
+ "ok": [
+  "ca2_seqLimit (answers/uniqueness correct, only working is thin)",
+  "ca2_seqGeoLimit (limits correct for negative bases; denominators checked n<=40 and the ratio argument makes later n safe)",
+  "ca2_geoConvCount (conditions -1<r<=1 correct; r=-1 excluded, r=1 included)",
+  "ca2_partialSumSeries, ca2_telescope (partial-fraction sums checked)",
+  "ca2_geoSeriesParam (|r|<1 holds for every row, the linear equation gives a unique r)",
+  "ca2_ballDistance (h+2h r/(1-r) correct)",
+  "ca2_eExponent (all branches recomputed, both-sided limits exist)",
+  "ca2_quotientDeriv, ca2_derivExpLog, ca2_trigDeriv (all displayed f'(x) strings and u,v values checked with sympy on 819 rows)",
+  "ca2_addTheorem, ca2_doubleAngle (unique answer independent of the angle choice; verifier asserts it)",
+  "ca2_inverseDeriv (f strictly increasing in every row; f(a)=b and f'(a) checked)",
+  "ca2_extremaPair (factorisation and max/min assignment verified)",
+  "ca2_monotoneParam (clear definition of 'increasing' in the prompt; boundary cases consistent)",
+  "ca2_subsTransform, ca2_partsFormula (verifier perturbs the free part of f, so independence of the answer from unspecified data is checked)",
+  "ca2_volumeRotate, ca2_areaCurves (upper/lower order and f>=g>=0 verified on a sample grid)",
+  "ca2_integralBasic, ca2_substitution (closed forms verified with sympy and quadrature)",
+  "Formats: NUM used only where the answer is an integer; FR where fractions occur; LaTeX braces and \\left/\\right balanced in all 819 rows, no Hangul inside v."
+ ]
+}

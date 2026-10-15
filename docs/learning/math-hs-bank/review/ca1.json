@@ -1,0 +1,281 @@
+{
+ "modules": [
+  "ca1"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 53,
+  "rowsRead": 805,
+  "notes": "Read SPEC, modules/ca1.mjs (all 1137 lines) and verify/ca1.py (all), every generator reasoned by hand for every form it can produce, 805 shipped rows re-rendered from the bank and scanned for formatting/degenerate patterns, plus a stress run of ~26,000 fresh generator draws (all forms) through the author's verifier and through pattern scans (negative prices, identical fractions, 1x^2, 0+...). The author's verifier passed on 2,489 of those fresh draws (first 45 per form; the full 26,017-draw verification was still running when I stopped, no failure seen). Counts/percentages in `evidence` are from that run. No blocker found: every sampled answer is unique and correct; defects are degenerate rows, false hint sentences, unrealistic data and format honesty."
+ },
+ "findings": [
+  {
+   "template": "ca1_contRadical",
+   "severity": "major",
+   "kind": "diversity",
+   "detail": "Level-3 form draws the shift S1 and W independently from 1..4, so S1==W (probability 1/4) gives numerator and denominator that are the SAME expression: f(x)=(sqrt(x+a)-S)/(sqrt(x+a)-S) for x!=c, k=1. The 'limit' is trivially 1 and the printed fraction is a degenerate row.",
+   "evidence": "set b-hs-ca1-contradical: 2 of 15 shipped rows (x=3: sqrt(x+6)-3 over sqrt(x+6)-3; x=-2: sqrt(x+18)-4 over sqrt(x+18)-4), both ans 1. In 114 sampled level-3 draws 27 are identical-fraction.",
+   "fix": "Reject S1===W in the level-3 branch (e.g. `do W = r.int(1,4); while (W === S1)`); answer W/S1 is then never 1."
+  },
+  {
+   "template": "ca1_limCoefPoly",
+   "severity": "major",
+   "kind": "hint",
+   "detail": "Hint 2 ('그러면 이 극한값이 곧 f\\'(c)') and the explanation ('극한값이 곧 f\\'(c)입니다') are false for the level-3 form, whose denominator is x^2-c^2: there the limit equals f'(c)/(2c), not f'(c). A student who follows the hint gets the wrong system. Same error in the English hint/explanation.",
+   "evidence": "b-hs-ca1-limcoefpoly, e.g. f(x)=ax^3+bx, lim_{x->2}(f(x)-56)/(x^2-4)=5: f'(2)=20=5*4, not 5. 7 of 15 shipped rows are this form.",
+   "fix": "Add a template variable (e.g. {den1} = 1 or 2c) and write 'f\\'(c)/{den1}' / 'x^2-c^2 = (x-c)(x+c) 이므로 극한값은 f\\'(c)/(2c)' for the level-3 branch, or split level 3 into its own template text."
+  },
+  {
+   "template": "ca1_optimProfit",
+   "severity": "major",
+   "kind": "domain",
+   "detail": "Generator never requires price>0 or a sensible cost function. (a) The unit selling price can be NEGATIVE (price=3xs^2-2a*xs+b with xs>=3, a up to 8 and b small): 19 of 599 stress draws (3%), e.g. price -9, C(x)=x^3-9x^2+6x+27, 'maximum profit' -2. (b) The marginal cost 3x^2-2ax+b is negative on part of [0,X] in about a third of draws (195/599), i.e. the total cost DECREASES when producing more (e.g. C(x)=x^3-5x^2+25), which is not a realistic cost. The shipped 14 rows happen to avoid the negative price, but a re-seed will not.",
+   "evidence": "stress draws of ca1_optimProfit: price<=0 in 19/599; b-a^2/3<0 in 195/599. Shipped example 'x^3-5x^2+25' has C'(x)<0 for 0<x<10/3.",
+   "fix": "Add to the retry condition: price>0, b>=a*a/3 (so C'(x)>=0 for all x), P(xs)>0, and also require xs to be the only critical point in (0,X) that is a maximum (already true). Cap price at a sane magnitude."
+  },
+  {
+   "template": "ca1_limRadical",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "Level-2 rows (sqrt(m^2x^2+ax+b)-(mx+n)): (1) hint 1 says '루트가 있는 두 항의 차' although only ONE term has a root; (2) the explanation says rationalising gives a numerator that is linear in x, which is false when a=2mn: the numerator is then the constant b-n^2 and the limit is 0 (the same sentence 'denominator proportional to x' is fine). Reachable: 6 of 595 stress draws have ans 0, e.g. sqrt(4x^2+8x+3)-(2x+2) (numerator -1), sqrt(9x^2-6x+2)-(3x-1). Also level-2 prints '\\\\sqrt{1x^2...}' and '-(x)'.",
+   "evidence": "b-hs-ca1-limradical level-2 rows; stress: sqrt(x^2-2x+3)-(x-1) -> 0.",
+   "fix": "Word hint 1 for level 2 as '근호가 있는 항과 일차식의 차도 (근호 항)+(일차식) 으로 유리화' ; either exclude a==2*m*n (then the explanation is true) or say '분자는 상수 또는 일차식'. Format with a coefficient helper (cf) for m*m, and print `-x` / `-(x+1)` without parentheses when n=0."
+  },
+  {
+   "template": "ca1_limInfRatio",
+   "severity": "minor",
+   "kind": "format",
+   "detail": "Level-3 radicand prints a literal '1x^2' whenever m=1 (`\\\\sqrt{1x^2+7x+3}`), a convention break (coefficient 1 should be omitted). About 1 draw in 5.",
+   "evidence": "b-hs-ca1-liminfratio3: 2 of 12 shipped rows (sqrt{1x^2+3x+5}/(4x), sqrt{1x^2+7x+3}/(2x-1)); same defect in ca1_limRadical (2 shipped rows).",
+   "fix": "Use cf(m*m) in front of x^2."
+  },
+  {
+   "template": "ca1_limInfRatio",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 (quadratic over quadratic, answer = ratio of leading coefficients, middle and constant terms are noise) is the weakest form of the whole module and the 'explanation' states no numbers. Level 2 (factored product form) exists in the generator but is not in the plan (dead code).",
+   "evidence": "b-hs-ca1-liminfratio1",
+   "fix": "Keep level 3 and make level 1 mix degrees (numerator degree < denominator -> 0, equal -> ratio) so the row can not be answered by looking at two coefficients; delete the unused level-2 branch."
+  },
+  {
+   "template": "ca1_*(format)",
+   "severity": "major",
+   "kind": "format",
+   "detail": "79 of 805 shipped rows have a NON-terminating decimal answer (1/3, -1/6, 7/12 ...) but the prompt tail is the fraction format '(소수로 써도 되고 3/4 처럼 분수로 써도 돼요)', i.e. it tells the student a decimal is fine; a student typing 0.33 / -0.167 (no tolerance is stored, tolerance=null) is judged wrong or at best ambiguous. Counts: integralFuncExtremum 12, areaCubicAxis 11, defIntSymm 9, defIntAbs 9, areaParabolaLine 9, areaTangentParabola 9, totalDistVel 8, limInfRatio 7, contRadical 2, integralLimit 2, diffLimitPoly 1.",
+   "evidence": "e.g. b-hs-ca1-liminfratio1 #1 ans -0.16666666666666666 prompt '(소수로 써도 되고 3/4 처럼 분수로 써도 돼요)'.",
+   "fix": "Per row choose the tail: if the exact value is a terminating decimal keep KF, otherwise use '(기약분수로 쓰세요. 예: 3/4)' (new format string with an English twin) or steer parameters to terminating values."
+  },
+  {
+   "template": "ca1_limInfRatio / ca1_limRadical / ca1_limPiecewise / ca1_contRadical / ca1_limDerivForm / ca1_prodAbstract / ca1_diffLimitPoly / ca1_absNotDiff / ca1_defIntSymm / ca1_defIntAbs / ca1_integralLimit / ca1_mvtBound / ca1_areaParabolaLine / ca1_areaCubicAxis",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "SPEC says the explanation must show the actual solution steps with the row's numbers. In these templates the explanation is the same generic sentence for every row and only quotes the final answer (e.g. limInfRatio: '최고차항의 계수의 비가 남습니다. 따라서 극한값은 ... 입니다' without naming the two coefficients; absNotDiff never lists the roots/multiplicities; limDerivForm and prodAbstract never show the combination; defIntSymm never shows the even part; defIntAbs does not give the pieces; contRadical/limRadical omit the rationalised expression). A learner who got it wrong cannot see where.",
+   "evidence": "b-hs-ca1-liminfratio1, absnotdiff, derivform/prodabstract, defintsymm rows.",
+   "fix": "Pass the intermediate values through `v` (leading coefficients, roots with multiplicities, f'(a)/f(a) combination, the even part and its antiderivative value, the rationalised numerator) and print them in the explanation. Priority: limInfRatio, absNotDiff, prodAbstract, limDerivForm, defIntSymm, defIntAbs."
+  },
+  {
+   "template": "ca1_contProduct",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "For the one-jump form g(x)=x^2+ax+b0 only ONE root is forced by continuity and b0 is given; the hint ('g는 그 점들을 근으로 가지므로 인수분해된 꼴로') and the explanation ('해당 점들을 근으로 가지고, 최고차항의 계수가 1이므로') talk about several roots and never use the stated constant term, which is what fixes a. Correct answer, but the working shown does not solve the printed problem.",
+   "evidence": "b-hs-ca1-contproduct rows with a single jump (e.g. g(x)=x^2+ax-8, jump at 2).",
+   "fix": "Branch the wording on the number of jumps: 'g(p)=0 에서 a를 구한다'."
+  },
+  {
+   "template": "ca1_limPiecewise",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Hint 1 speaks of the unnamed symbol $k$ ('x가 k에 가까워질 때') while the prompt contains only the concrete number, and when k=0 the composite argument prints as 'f(0-2x-x^2)' / 'f(0+3x^2)'. Levels 2 and 3 (composition f(k±x^2 ...), side decided by the sign of the inner function) are 합성함수의 극한 but the hints do not say that the inner function's sign near 0 decides the side.",
+   "evidence": "b-hs-ca1-limpiecewise level 2/3 rows, k=0 row: lim_{x->0+} f(0-2x-x^2) - lim_{x->0-} f(0-2x-x^2).",
+   "fix": "Put the concrete value into hint 1 ({k}); drop the leading '0' when k=0; for the composite forms add '안쪽 함수 g(x)가 k보다 큰 쪽/작은 쪽에서 k에 가까워지는지 먼저 보세요'."
+  },
+  {
+   "template": "ca1_limDerivForm",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "When f(a)=0 the cube-style form prints '\\\\{f(x)\\\\}^2-0' and the xf(x) form prints no constant ('xf(x)/(x-1)'), which reads as a trick; s=0 occurs for 1 value in 11. 10 of 574 stress rows show '^2-0'.",
+   "evidence": "e.g. f(3)=0, f'(3)=-5: lim ({f(x)}^2-0)/(x-3).",
+   "fix": "Exclude s=0 for kinds 3 and 4 (or omit the '-0')."
+  },
+  {
+   "template": "ca1_diffLimitPoly / ca1_integralLimit",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "When a=0 the arguments print 'f(0+2h)' / limits '0-2h' ... '0+h'.",
+   "evidence": "diffLimitPoly: 29/600 stress rows with 'f(0+..h)'; integralLimit 37/600.",
+   "fix": "Use a helper that omits a leading 0 ('f(2h)', '\\\\int_{-2h}^{h}')."
+  },
+  {
+   "template": "ca1_throwImpact",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Unrealistic magnitudes and unit-coefficient formatting: height up to 333 m 'throwing a ball up' from that height (h0=5T^2-v0*T with T up to 9), and '+1t' for v0=1 (6 of 184 stress draws).",
+   "evidence": "stress: h(t)=333+8t-5t^2.",
+   "fix": "Cap h0 (<= 80 m) via smaller T or larger v0, and use cf(v0)."
+  },
+  {
+   "template": "ca1_optimBox",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 is a square sheet (W=H) described as '가로 ... 세로 ...인 직사각형' with equal numbers (e.g. 54 cm x 54 cm), a single pattern 16k^3 with 9 values; the whole template has only 24 distinct rows reachable, so a set of 14 is more than half of the space.",
+   "evidence": "b-hs-ca1-optimbox #4 (54 x 54).",
+   "fix": "Drop level 1 or call the sheet '정사각형 모양의 종이' in a separate wording; enlarge BOX (W up to 80)."
+  },
+  {
+   "template": "ca1_tangentSlopeTwo",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "evidence label 'counting' is not honest: the answer is a sum of two y-intercepts (a calculation); the 'two lines' is given in the prompt.",
+   "evidence": "set b-hs-ca1-tangentslopetwo evidence=counting",
+   "fix": "Relabel as 'calc'."
+  },
+  {
+   "template": "ca1_twoRootsK",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "evidence 'counting' - the answer is a sum of k-values (extreme values); counting is only used to reach them. Level 1/2 answer is simply f(m)+f(n) (sum of the local max and min), the same number extremaCoef asks for.",
+   "evidence": "b-hs-ca1-tworootsk",
+   "fix": "Relabel as 'concept'."
+  },
+  {
+   "template": "ca1_optimBox / ca1_optimProfit",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "12미적Ⅰ-02-09 (방정식과 부등식에 대한 문제) is listed first, but these are max/min application problems whose content is 02-07 (극대·극소의 활용). 02-09 fits ineqParam, rootCountK, twoRootsK, noExtremum better.",
+   "evidence": "PLAN standards ['12미적Ⅰ-02-09','12미적Ⅰ-02-07']",
+   "fix": "Put 12미적Ⅰ-02-07 first and drop 02-09 for these two."
+  },
+  {
+   "template": "ca1_contTwoJoint",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "Standards list 12미적Ⅰ-01-04 (연속함수의 성질: 사잇값 정리, 최대최소 정리, 사칙) but the item only equates one-sided values at two joints, i.e. 01-03.",
+   "evidence": "PLAN standards ['12미적Ⅰ-01-03','12미적Ⅰ-01-04']",
+   "fix": "Keep only 12미적Ⅰ-01-03 (contProduct may keep 01-04: product of continuous functions)."
+  },
+  {
+   "template": "ca1_* mixed sets",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "PLAN `d` is the difficulty of level 1 only, but the 'mix' sets draw rows from forms two levels harder (limPiecewise d2 contains composite one-sided limits; defIntSymm/defIntSplit/indefInitial d2 contain level-3 forms; limDerivForm d3 includes {f}^2 forms). Row difficulty inside one set varies by about 2 grades while the set carries one d.",
+   "evidence": "SHAPE `mix` in modules/ca1.mjs (limPiecewise, defIntSymm, defIntSplit, indefInitial, integralLimit ...).",
+   "fix": "Set d to the mean of the forms (or split the set) so adaptive selection is not misled."
+  },
+  {
+   "template": "ca1_diffLimitPoly vs ca1_limDerivForm",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Same idea: diffLimitPoly level 1 (f(a+ph)-f(a-qh))/h is limDerivForm kind 1 with an explicit f; diffLimitPoly level 3 (x f(a)-a f(x))/(x-a) is limDerivForm kind 2 (a^2 f(x)-x^2 f(a)) with an explicit f.",
+   "evidence": "templates ca1_diffLimitPoly, ca1_limDerivForm",
+   "fix": "Drop diffLimitPoly level 1 and keep levels 2 (x^2-a^2) and 3, or drop the explicit-f level of one of them."
+  },
+  {
+   "template": "ca1_monoGiven vs ca1_extremaCoef",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Both solve f'(m)=f'(n)=0 for the cubic's a, b through cubicCrit; monoGiven is the first step of extremaCoef with the monotone-interval wording.",
+   "evidence": "templates ca1_monoGiven, ca1_extremaCoef (also velZeroAccel/totalDistPos/rootCountK use the same cubicCrit data)",
+   "fix": "Keep monoGiven (representation) but make its target different (e.g. f(0)-f(m) or the length of the decreasing interval's drop), or fold it into extremaCoef."
+  },
+  {
+   "template": "ca1_defIntSymm",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 (cubic) and level 2 (quartic) are the same exercise with one more term; only level 3 (product to expand) adds anything.",
+   "evidence": "b-hs-ca1-defintsymm",
+   "fix": "Drop level 2 from the mix (mix [1,3])."
+  },
+  {
+   "template": "ca1_limCoefRational vs ca1_limCoefPoly",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Both: 'limit exists and has value L -> numerator vanishes at c -> two unknown constants'. Level 3 of both uses denominator x^2-c^2 with the same cancellation.",
+   "evidence": "b-hs-ca1-limcoefrational3, limcoefpoly lvl 3",
+   "fix": "Keep both but drop one of the two x^2-c^2 forms."
+  },
+  {
+   "template": "ca1 (small parameter spaces)",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Distinct rows reachable: optimBox 24, areaLineParam 35, powerTangentN 58, returnTime 90, ivtCount 137, defIntFindBound 175, throwImpact 184, areaCubicAxis 183; a set takes 12-14 of them, so a later top-up of the bank will duplicate.",
+   "evidence": "stress run with 600 draws per set",
+   "fix": "Do not raise counts for these; widen ranges only if more rows are needed."
+  },
+  {
+   "template": "verify/ca1.py",
+   "severity": "major",
+   "kind": "verifier",
+   "detail": "Several verifiers re-derive from the structured variables (kind, e/d, pl/pr, p/q, pts/vals, g1..g3, lf/rt) but never parse the PRINTED expression (pw, lim, hx, ask, given), so a mismatch between what the student reads and what is verified is invisible: diffLimitPoly, limDerivForm, prodAbstract (kind -> expression table), integralLimit, contRadical (uses e,d; pw unchecked), contProduct (pts/vals; pw unchecked), limPiecewise (ask/mode), contTwoJoint/diffParam/limExistence (components, not pw), limCoefPoly (only the denominator by substring). I hand-checked all of them and the printed forms match, but the check is not in the pipeline.",
+   "evidence": "verify/ca1.py v_diffLimitPoly, v_limDerivForm, v_prodAbstract, v_integralLimit, v_contRadical, v_contProduct, v_limPiecewise",
+   "fix": "Parse the printed `lim`/`hx`/`pw` strings with the L()/P() helper (\\\\begin{cases} split on '\\\\\\\\') and compute from them."
+  },
+  {
+   "template": "verify/ca1.py",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "(a) v_limCoefRational contains a vacuous assertion `... in (oo, -oo, zoo) or True`. (b) No assertion for the facts the hints rely on: ivtCount 'increasing everywhere' (f'>0), powerFindN/powerTangentN monotonicity (only n<=60/40 brute force), optimProfit price>0/realism, limRadical numerator linear, limCoefPoly 'limit equals f'(c)'. (c) tangentSlopeTwo asserts two tangency x but not that the two lines are distinct. (d) mvtBound is verified by an integer-step lattice DP, which proves the bound only for integer-valued paths (correct here, but a weaker model than the claim). (e) defIntSplit uses a piecewise-constant stand-in, described as 'continuous'.",
+   "evidence": "verify/ca1.py lines 61, 123-134, 259-270, 443-451",
+   "fix": "Remove `or True` (assert the numerator does not vanish for b+1) and add the preconditions above."
+  }
+ ],
+ "drop": [
+  {
+   "template": "ca1_limInfRatio (level 1 alone)",
+   "why": "two leading coefficients decide it; if one form must go, this is the weakest. Keep level 3 and a mixed-degree level 1."
+  },
+  {
+   "template": "ca1_diffLimitPoly level 1",
+   "why": "duplicates limDerivForm kind 1 with an explicit f (see diversity finding)."
+  },
+  {
+   "template": "ca1_defIntSymm level 2",
+   "why": "quartic version of level 1."
+  },
+  {
+   "template": "ca1_optimBox level 1",
+   "why": "square sheet called a rectangle, 9 rows of one pattern 16k^3."
+  }
+ ],
+ "ok": [
+  "ca1_limCoefRational (levels 1,3: unique a,b; hint/explanation true)",
+  "ca1_ivtCount (increasing f, open interval, brute-force verified; theorem not misnamed)",
+  "ca1_limExistence",
+  "ca1_contTwoJoint (unique 2x2 system, p1,p2 nonzero guard works)",
+  "ca1_powerFindN / ca1_powerTangentN (strict monotonicity in n; natural-number domain stated)",
+  "ca1_prodAbstract (all five kinds derived by hand)",
+  "ca1_diffParam (a,b unique in all three forms; closed/open sides correct)",
+  "ca1_absNotDiff (multiplicity argument right, also for |g1|+|g2| including coincident roots)",
+  "ca1_tangentIntercept",
+  "ca1_tangentSlopeTwo (two distinct lines; intercepts differ)",
+  "ca1_tangentFromPoint (two distinct tangency points, sum of roots 2p)",
+  "ca1_tangentIntersect (double root at a, third root integral, never a triple root)",
+  "ca1_mvtC (second root excluded, open interval stated)",
+  "ca1_mvtBound (strict interior slope in level 2 keeps the bound attainable; hint 'nearer point' true)",
+  "ca1_monoGiven",
+  "ca1_noExtremum (D<=0 includes D=0, both forms counted correctly)",
+  "ca1_extremaCoef",
+  "ca1_derivSignMin (all three forms, simple roots at least 1 apart)",
+  "ca1_rootCountK (strict inequalities, window)",
+  "ca1_twoRootsK (cubic and both quartic orientations checked by hand)",
+  "ca1_ineqParam",
+  "ca1_maxMinFind",
+  "ca1_optimBox (smaller root, V' sign change, interval open)",
+  "ca1_velZeroAccel",
+  "ca1_kinCoefFind",
+  "ca1_totalDistPos (turning point at t=0 handled)",
+  "ca1_indefInitial",
+  "ca1_indefSecond",
+  "ca1_defIntSplit",
+  "ca1_integralEq (g!=1 guarantees unique c)",
+  "ca1_integralFuncFind",
+  "ca1_integralFuncExtremum",
+  "ca1_defIntFindBound (positive-a uniqueness for lo=0 and lo=1)",
+  "ca1_areaParabolaLine",
+  "ca1_areaCubicAxis",
+  "ca1_areaTangentParabola",
+  "ca1_areaLineParam (0<m<a stated, unique)",
+  "ca1_totalDistVel",
+  "ca1_returnTime (first positive zero)",
+  "Standards codes: all 12미적Ⅰ codes exist in standards.json; no class-X standard used; no 미적분Ⅱ content (chain-rule style limits are done with the (x+a) factor, which stays in 미적분Ⅰ)."
+ ]
+}
