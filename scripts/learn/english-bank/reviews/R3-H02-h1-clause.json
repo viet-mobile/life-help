@@ -1,0 +1,61 @@
+{
+ "packet": "H02-h1-clause",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "4123fad7",
+   "op": "set",
+   "set": {
+    "bad": [
+     "We talked about that we should move to a bigger house.",
+     "We talked about whether should we move to a bigger house.",
+     "We talked about whether we should to move to a bigger house."
+    ],
+    "rule": "전치사 뒤에서 ‘~인지 아닌지’의 명사절은 whether로 이끌어요. that절은 전치사의 목적어가 될 수 없고, 절 안은 「주어 + should + 동사원형」 순서예요."
+   },
+   "why": "Remove disputable if distractor; rule no longer claims if is wrong.",
+   "severity": "major"
+  },
+  {
+   "item": "16b65d30",
+   "op": "set",
+   "set": {
+    "bad": [
+     "It doesn't matter whether does it rain tomorrow.",
+     "It doesn't matter whether it will rains tomorrow.",
+     "It doesn't matter whether it rain tomorrow."
+    ]
+   },
+   "why": "Replace arguable \"if or not\" distractor with a clearly wrong form.",
+   "severity": "major"
+  },
+  {
+   "item": "1f8013dd",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Please tell me which does bus go to the airport.",
+     "Please tell me which bus going to the airport.",
+     "Please tell me which bus go to the airport."
+    ]
+   },
+   "why": "Emphatic \"does go\" is grammatical; replace with inverted order.",
+   "severity": "minor"
+  },
+  {
+   "item": "b362b132",
+   "op": "set",
+   "set": {
+    "rule": "의문사가 이끄는 명사절은 평서문 어순(주어 + 동사)이에요. where 자체가 ‘어디에’라는 장소 부사이므로 there를 덧붙이지 않아요."
+   },
+   "why": "Fix imprecise explanation.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 123,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

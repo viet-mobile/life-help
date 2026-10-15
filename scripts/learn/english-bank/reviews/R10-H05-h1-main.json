@@ -1,0 +1,225 @@
+{
+ "packet": "H05-h1-main",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 107
+ },
+ "patches": [
+  {
+   "item": "3608e75e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which word best fills the blank?",
+      "o": [
+       "interrupt",
+       "complain",
+       "listen",
+       "compete"
+      ],
+      "a": 2,
+      "why": "두 방식이 모두 타당함을 알면 판단하기보다 귀 기울이게 돼요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Silence is useless and should be avoided in every conversation.",
+       "Fast talkers are always rude people who ruin conversations.",
+       "All cultures value quick answers more than careful thought.",
+       "Different attitudes toward silence can cause misunderstandings."
+      ],
+      "a": 3,
+      "why": "침묵에 대한 문화적 차이가 오해를 낳는다는 것이 요지예요."
+     },
+     {
+      "q": "How do some cultures regard silence?",
+      "o": [
+       "As a sign of great anger",
+       "As a waste of time",
+       "As a rude habit",
+       "As a sign of respect"
+      ],
+      "a": 3,
+      "why": "'silence ... is a sign of respect'"
+     },
+     {
+      "q": "What would a quick talker probably think of a silent partner?",
+      "o": [
+       "The partner is very polite.",
+       "The partner is not interested.",
+       "The partner is speaking too fast.",
+       "The partner is angry about the weather."
+      ],
+      "a": 1,
+      "why": "빠른 대답을 중시하는 사람은 침묵을 무관심으로 오해할 수 있어요."
+     }
+    ]
+   },
+   "severity": "minor",
+   "why": "Main-idea key was by far the longest option (63 vs 33-36 chars); distractors lengthened to similar specific length and key moved to position d."
+  },
+  {
+   "item": "a01a4167",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which expression best fills the blank?",
+      "o": [
+       "the learner",
+       "the lecture",
+       "the university",
+       "the village"
+      ],
+      "a": 0,
+      "why": "기회는 기술이, 노력은 학습자가 제공해야 한다는 대비예요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Online courses offer convenience but also real difficulties.",
+       "Universities should close all of their classrooms soon.",
+       "Evening is always the best time for watching lectures.",
+       "Teachers are no longer needed in any school at all."
+      ],
+      "a": 0,
+      "why": "온라인 강의의 편리함과 어려움, 그리고 성공하는 학습자의 습관을 다루는 글이에요."
+     },
+     {
+      "q": "What do successful online students tend to do?",
+      "o": [
+       "They watch lectures only once.",
+       "They set regular schedules.",
+       "They avoid discussion groups.",
+       "They keep their goals secret."
+      ],
+      "a": 1,
+      "why": "'set a regular schedule, join discussion groups, and tell friends'"
+     },
+     {
+      "q": "Which word in the passage signals a contrast between the benefits and the difficulties of online study?",
+      "o": [
+       "late",
+       "famous",
+       "however",
+       "regular"
+      ],
+      "a": 2,
+      "why": "Convenience, however, brings its own difficulties에서 however가 장점에서 어려움으로 넘어가는 전환을 나타내요."
+     }
+    ]
+   },
+   "severity": "major",
+   "why": "Q4 ('Without' also introduces a problem sentence, so two defensible answers) rewritten as an unambiguous connective question; Q2 key reworded so it no longer paraphrases the blank answer of Q1 ('the learner')."
+  },
+  {
+   "item": "04df6e33",
+   "op": "set",
+   "set": {
+    "text": "Haru: Our experiment didn't work. The plants in the dark box grew taller than the ones in the sun.\nMs. Cho: That's interesting. Why do you think that happened?\nHaru: I don't know. I expected the sunny ones to do better.\nMs. Cho: Look at the data again. What else do you notice about the dark ones?\nHaru: They're taller but very pale and thin.\nMs. Cho: Exactly. Plants without light stretch upward searching for it, but they can't make healthy leaves. So your experiment worked after all.\nHaru: Because we learned something we didn't expect?\nMs. Cho: Yes. Unexpected results often teach more than the expected ones. Write that in your report."
+   },
+   "severity": "major",
+   "why": "Ms. Cho's line 'How tall are the dark ones compared with their color?' is ungrammatical/nonsensical (height vs color) and not a natural prompt for Haru's answer; replaced."
+  },
+  {
+   "item": "a26d02ea",
+   "op": "set",
+   "set": {
+    "good": "The more you practice, the better you become.",
+    "bad": [
+     "The more you practice, the best you become.",
+     "The much you practice, the better you become.",
+     "The more you practice, the more better you become."
+    ],
+    "cz": {
+     "st": "The more you practice, the ___ you become.",
+     "ok": "better",
+     "wr": [
+      "best",
+      "good",
+      "well"
+     ]
+    },
+    "rule": "'the + 비교급, the + 비교급'은 '~할수록 더 ~하다'라는 뜻이에요. 비교급 good → better를 써요.",
+    "ord": false
+   },
+   "severity": "major",
+   "why": "Word-ordering is not unique: 'The better you become, the more you practice' uses the same tokens and is grammatical, so ord:false. Third distractor 'More you practice, the better...' is colloquially acceptable, replaced by clearly wrong 'the more better'."
+  },
+  {
+   "item": "ee40c2d3",
+   "op": "set",
+   "set": {
+    "q": "Choose the best word for the blank.\n\nThe detective did not believe the suspect's story. Too many details were ______, and the times he mentioned did not match the records.",
+    "o": [
+     "thrilling",
+     "decorative",
+     "false",
+     "friendly"
+    ],
+    "a": 2,
+    "why": "시간이 기록과 맞지 않으므로 세부 내용이 사실이 아니라(거짓이라)는 뜻이에요."
+   },
+   "severity": "minor",
+   "why": "Explanation said '일관되지 않다' (inconsistent) while the key is 'false'; aligned."
+  },
+  {
+   "item": "2f207a82",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the conversation mainly about?",
+      "o": [
+       "A plan to buy school dictionaries for all students",
+       "A complaint about a teacher's schedule",
+       "A new homework policy for math",
+       "A debate over how to handle phones at school"
+      ],
+      "a": 3,
+      "why": "학교에서의 휴대폰 사용 규정에 대한 토론이에요."
+     },
+     {
+      "q": "What is Jiho's argument against the total ban?",
+      "o": [
+       "It makes paper dictionaries much more expensive.",
+       "It does not teach students responsibility.",
+       "It lets teachers use phones freely.",
+       "It gives students too much homework."
+      ],
+      "a": 1,
+      "why": "'a total ban doesn't teach responsibility'"
+     },
+     {
+      "q": "Why does Sora support the ban?",
+      "o": [
+       "She never uses a phone.",
+       "She wants longer lunch breaks.",
+       "She knows messages easily distract her.",
+       "She dislikes using dictionaries at school."
+      ],
+      "a": 2,
+      "why": "스스로를 통제하지 못함을 인정해요."
+     },
+     {
+      "q": "How does the conversation end?",
+      "o": [
+       "The speakers agree on a compromise.",
+       "Ms. Lee cancels the discussion early.",
+       "Sora refuses any new rule.",
+       "Jiho leaves the classroom angrily."
+      ],
+      "a": 0,
+      "why": "휴대폰은 가방에 두고 필요할 때만 쓰는 절충안에 동의해요."
+     }
+    ]
+   },
+   "severity": "minor",
+   "why": "Explanation said '수업 중' but the ban discussed is for the whole school day."
+  }
+ ],
+ "ok": 97,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

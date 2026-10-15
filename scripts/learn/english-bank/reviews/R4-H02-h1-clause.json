@@ -1,0 +1,521 @@
+{
+ "packet": "H02-h1-clause",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "77cc1960",
+   "op": "set",
+   "set": {
+    "q": "다음 중 that이 접속사로 쓰인 문장은?",
+    "o": [
+     "She said that she was tired.",
+     "That is my bicycle.",
+     "The movie that we saw was long.",
+     "I don't like that color."
+    ],
+    "a": 0,
+    "why": "She said that she was tired.에서 that은 said의 목적어절을 이끄는 접속사예요. 나머지는 지시대명사, 관계대명사, 지시형용사예요."
+   },
+   "why": "Explanation says '첫 문장' but the key is not the first option after shuffling.",
+   "severity": "major"
+  },
+  {
+   "item": "d033fdc9",
+   "op": "set",
+   "set": {
+    "q": "Which sentence has a noun clause used as its subject?",
+    "o": [
+     "She studies in a quiet place near the lake.",
+     "The quiet place where she studies is open.",
+     "What she wants is a quiet place to study.",
+     "She likes to study when the house is quiet."
+    ],
+    "a": 2,
+    "why": "What she wants is a quiet place to study.에서 What she wants(그녀가 원하는 것)가 주어 역할을 하는 명사절이에요. 나머지 문장에는 주어 역할을 하는 명사절이 없고, 장소를 꾸미는 절이나 때를 나타내는 절이 있어요."
+   },
+   "why": "Explanation says '첫 문장' but the key is the second option; '다른 절들' also wrongly implies each other option has a clause.",
+   "severity": "major"
+  },
+  {
+   "item": "1a373190",
+   "op": "set",
+   "set": {
+    "q": "In which sentence does \"what\" mean \"the thing that\"?",
+    "o": [
+     "What is your favorite subject?",
+     "What a lovely view this is!",
+     "I like what you wrote in the card.",
+     "What time does the train leave?"
+    ],
+    "a": 2,
+    "why": "I like what you wrote in the card.의 what you wrote는 ‘네가 쓴 것’이라는 뜻의 관계대명사 what절이에요. 나머지는 의문문이나 감탄문이에요."
+   },
+   "why": "Explanation says '첫 문장' but the key is the second option.",
+   "severity": "major"
+  },
+  {
+   "item": "3bc5a702",
+   "op": "set",
+   "set": {
+    "q": "In which sentence does \"how\" start a noun clause?",
+    "o": [
+     "How did she bake the cake?",
+     "How about baking a cake?",
+     "I learned how she baked the cake.",
+     "How delicious!"
+    ],
+    "a": 2,
+    "why": "I learned how she baked the cake.의 how she baked the cake는 learned의 목적어 역할을 하는 명사절이에요."
+   },
+   "why": "Explanation says '첫 문장' but the key is the fourth option.",
+   "severity": "major"
+  },
+  {
+   "item": "77c254c0",
+   "op": "set",
+   "set": {
+    "q": "In which sentence is \"when\" a relative adverb?",
+    "o": [
+     "When did you move here?",
+     "I asked when the shop opens.",
+     "I remember the day when we met.",
+     "Call me when you arrive."
+    ],
+    "a": 2,
+    "why": "I remember the day when we met.의 when은 선행사 day를 꾸미는 관계부사예요. 나머지는 의문사, 명사절 접속사, 시간 부사절 접속사예요."
+   },
+   "why": "Explanation says '첫 문장' but the key is the second option.",
+   "severity": "major"
+  },
+  {
+   "item": "5963bfb5",
+   "op": "set",
+   "set": {
+    "q": "In which sentence is the \"why\" clause a noun clause?",
+    "o": [
+     "Why did you call me?",
+     "The reason why I called you is simple.",
+     "I called you because I was lost.",
+     "That is why I called you."
+    ],
+    "a": 3,
+    "why": "That is why I called you.의 why I called you가 be동사 뒤 보어 역할을 하는 명사절이에요. The reason why I called you is simple.의 why절은 reason을 꾸미는 관계부사절이에요."
+   },
+   "why": "Explanation says '세 번째 보기' for the relative-adverb clause but it is the second option.",
+   "severity": "major"
+  },
+  {
+   "item": "08f61fb6",
+   "op": "drop",
+   "set": {},
+   "why": "'I'm not sure that she lives.' is grammatical, so distractor 'that' is a second defensible answer; also near-duplicate of 'I wonder where he lives' (eb-b9ee4e79).",
+   "severity": "major"
+  },
+  {
+   "item": "761497d0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A plan to take down an unsafe old train station in the city",
+       "A temporary study space that opened while the library was closed",
+       "A group of engineers who built a new kind of reading lamp",
+       "A debate about whether students should have free internet"
+      ],
+      "a": 1,
+      "why": "도서관이 닫힌 동안 옛 기차역이 임시 열람실이 된 이야기가 중심이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "What did the engineers report after checking the station?",
+      "o": [
+       "Only a few small repairs were needed",
+       "The roof and the floors had to be rebuilt",
+       "The building was too unsafe for anyone to use",
+       "New train tracks had to be laid before opening"
+      ],
+      "a": 0,
+      "why": "기술자들은 몇 가지 작은 수리만 필요하다고 보고했어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What can be inferred about the reading room?",
+      "o": [
+       "Its future is still uncertain",
+       "It will replace the library for good",
+       "It will close right after the exams end",
+       "Only the volunteers are allowed to use it"
+      ],
+      "a": 0,
+      "why": "‘얼마나 오래 열려 있을지 아무도 모른다’고 했으므로 앞날이 불확실하다고 추론할 수 있어요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "In the passage, \"doubted\" is closest in meaning to...",
+      "o": [
+       "was completely sure",
+       "was very angry about",
+       "was not convinced",
+       "was greatly pleased by"
+      ],
+      "a": 2,
+      "why": "doubted that ~은 ‘~라는 것을 확신하지 못했다’는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "What does \"the quiet place where they used to study\" refer to?",
+      "o": [
+       "the old train station",
+       "the city library",
+       "the council office",
+       "the students' school"
+      ],
+      "a": 1,
+      "why": "학생들이 예전에 공부하던 조용한 장소는 수리를 위해 문을 닫은 도서관이에요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     }
+    ]
+   },
+   "why": "q2 key ('Officials were not sure the building was safe') paraphrases 'doubted' and gives away q4 (vocabulary 'doubted'). Replaced with a detail question.",
+   "severity": "major"
+  },
+  {
+   "item": "4b47a31e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Staying awake all night usually leads to higher test scores",
+       "Forty students found a quick way to learn a long word list",
+       "Studying in the evening works better than in the morning",
+       "Sleep may help people remember what they have learned"
+      ],
+      "a": 3,
+      "why": "수면이 학습한 내용을 기억하는 데 도움이 될 수 있다는 것이 요지예요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "How did the two groups differ in the experiment?",
+      "o": [
+       "One group slept and the other stayed awake",
+       "One group studied more words than the other",
+       "One group took the test in the evening",
+       "One group learned the list in a noisy room"
+      ],
+      "a": 0,
+      "why": "한 집단은 8시간을 잤고 다른 집단은 밤새 깨어 있었어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What was the result for the students who slept?",
+      "o": [
+       "They finished the test in half the time",
+       "They wrote longer answers than the others",
+       "They remembered about twenty percent more words",
+       "They guessed more of the answers correctly"
+      ],
+      "a": 2,
+      "why": "잠을 잔 학생들은 약 20퍼센트 더 많은 단어를 기억했어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "Why do the researchers give a warning at the end?",
+      "o": [
+       "The students did not follow the test rules",
+       "A single small study may not apply to every person",
+       "Sleeping too long can harm the brain's memory",
+       "The experiment ended before the morning test"
+      ],
+      "a": 1,
+      "why": "연구가 작아서 모든 사람에게 같은 효과가 나타난다고 말할 수 없다는 경고예요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "In the passage, \"concluded\" is closest in meaning to...",
+      "o": [
+       "argued with the other scientists",
+       "repeated the same test again",
+       "refused to accept the findings",
+       "decided after studying the results"
+      ],
+      "a": 3,
+      "why": "concluded는 결과를 보고 ‘결론을 내렸다’는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     }
+    ]
+   },
+   "why": "Unnatural stem 'What did the students who slept do better on the test?'.",
+   "severity": "minor"
+  },
+  {
+   "item": "948acb88",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did the city start the bike-sharing system?",
+      "o": [
+       "Traffic was getting worse and pollution was a concern",
+       "Visitors asked for cheaper tickets to the riverside park",
+       "Food trucks needed an easier way to reach the offices",
+       "Local shops wanted more customers on the narrow roads"
+      ],
+      "a": 0,
+      "why": "교통 체증과 대기 오염이 문제여서 도시가 이 계획을 선택했어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "According to the passage, when are the bikes used most?",
+      "o": [
+       "In the early morning rush hour",
+       "On the weekend afternoons by the river",
+       "During the lunch break",
+       "At night after the food trucks leave"
+      ],
+      "a": 2,
+      "why": "가장 붐비는 때는 출근 시간이 아니라 점심시간이에요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What does the building of new lanes suggest?",
+      "o": [
+       "The city plans to remove the bike stations soon",
+       "The city takes the critics' safety concerns seriously",
+       "The critics have already stopped using the bikes",
+       "Most roads in the city are wide enough for bikes"
+      ],
+      "a": 1,
+      "why": "안전 문제를 지적한 비판에 대응해 새 자전거 도로를 만든다는 점에서 추론할 수 있어요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "In the passage, \"commuters\" means people who...",
+      "o": [
+       "repair bikes at the stations",
+       "run food trucks near the park",
+       "visit the city for a short holiday",
+       "travel regularly between home and work"
+      ],
+      "a": 3,
+      "why": "commuters는 집과 직장을 정기적으로 오가는 사람들이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How a bike-sharing system affects daily travel",
+       "Why food trucks are popular with office workers",
+       "How narrow roads were made safer for walkers",
+       "Which cities have the cleanest air in the country"
+      ],
+      "a": 0,
+      "why": "자전거 공유 제도와 그것이 사람들의 이동에 준 변화를 다뤄요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Key 'Heavy traffic and polluted air were becoming serious' is ungrammatical (missing noun) and the longest option.",
+   "severity": "minor"
+  },
+  {
+   "item": "7acf5dd8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main point of the passage?",
+      "o": [
+       "Tea can carry different meanings in different cultures",
+       "Tea is the most popular drink around the world",
+       "The best tea is always prepared very slowly",
+       "Afternoon tea is older than the tea ceremony"
+      ],
+      "a": 0,
+      "why": "같은 차라도 문화마다 다른 의미를 지닌다는 것이 요지예요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "When did afternoon tea become popular in Britain?",
+      "o": [
+       "Before lunch was invented",
+       "During a recent summer",
+       "In the nineteenth century",
+       "At the time of the tea ceremony"
+      ],
+      "a": 2,
+      "why": "영국의 오후 차는 19세기에 인기를 얻었어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What might happen if a guest refuses tea in Morocco?",
+      "o": [
+       "The host may pour the tea from a lower height",
+       "The host may feel the guest is impolite",
+       "The guest may be asked to prepare the tea",
+       "The guest may be given a light meal instead"
+      ],
+      "a": 1,
+      "why": "모로코에서는 차를 거절하면 무례하게 보일 수 있다고 했어요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "In the passage, \"hospitality\" means...",
+      "o": [
+       "a quiet and calm place",
+       "the skill of making tea",
+       "a feeling of being tired",
+       "kind treatment of guests"
+      ],
+      "a": 3,
+      "why": "hospitality는 손님을 친절하게 대접하는 태도예요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "In the passage, \"quench\" thirst means to...",
+      "o": [
+       "end the feeling of being thirsty",
+       "make the tea taste a little sweeter",
+       "pour a drink carefully for a guest",
+       "carry water home from a river"
+      ],
+      "a": 0,
+      "why": "quench thirst는 목마름을 해소한다는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     }
+    ]
+   },
+   "why": "q5 (purpose of mentioning three countries) restates q1's main point, so the two reveal each other. Replaced with vocabulary-in-context.",
+   "severity": "minor"
+  },
+  {
+   "item": "a8a9f529",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why can the telescope show the young universe?",
+      "o": [
+       "It flies much closer to the galaxies than other telescopes",
+       "It detects light that has traveled for billions of years",
+       "It takes pictures at night when the sky is darkest",
+       "It records the sounds that old galaxies send out"
+      ],
+      "a": 1,
+      "why": "아주 오래 여행한 빛을 포착하기 때문에 젊은 우주의 모습을 볼 수 있어요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "What do scientists hope to find out next?",
+      "o": [
+       "Whether distant planets have air that could support life",
+       "Whether the large mirror can be folded up again on Earth",
+       "Whether the first sharp pictures were taken by mistake",
+       "Whether young galaxies are really older than the universe"
+      ],
+      "a": 0,
+      "why": "과학자들은 먼 행성에 생명을 지탱할 수 있는 공기가 있는지 알아내기를 바라요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "In the passage, \"delicate\" is closest in meaning to...",
+      "o": [
+       "easily damaged",
+       "extremely heavy",
+       "brightly colored",
+       "very old"
+      ],
+      "a": 0,
+      "why": "delicate mirror는 쉽게 손상될 수 있는 섬세한 거울이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "What does \"it\" refer to in \"it opened perfectly\"?",
+      "o": [
+       "the telescope's first picture",
+       "the distant planet",
+       "the mirror",
+       "the universe"
+      ],
+      "a": 2,
+      "why": "it은 앞에서 말한 delicate mirror를 가리켜요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "What is the scientists' attitude at the end of the passage?",
+      "o": [
+       "Surprised and disappointed",
+       "Hopeful but careful",
+       "Bored and unconcerned",
+       "Certain and impatient"
+      ],
+      "a": 1,
+      "why": "희망을 품지만 긴 탐색의 시작일 뿐이라고 조심스럽게 말해요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     }
+    ]
+   },
+   "why": "q2 key ('mirror would open correctly') gives away q4's referent ('it' = the mirror). Replaced with a different detail question.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 115,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,282 @@
+{
+ "packet": "H05-h1-main",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "fb2d3a81",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Warm weather is the true cause of tiredness.",
+       "The reasons for yawning are still being debated.",
+       "Strangers yawn together more often than family members do.",
+       "Oxygen is the only thing the brain needs."
+      ],
+      "a": 1,
+      "why": "여러 가설을 소개하며 아직 논쟁 중이라고 말해요."
+     },
+     {
+      "q": "Which idea about yawning has NOT been supported by experiments?",
+      "o": [
+       "A yawn may help to cool the brain.",
+       "Yawns can spread between people.",
+       "Close friends yawn together more often.",
+       "A yawn gives the body extra oxygen."
+      ],
+      "a": 3,
+      "why": "첫 번째 가설만 'experiments have not supported this'라고 해요."
+     },
+     {
+      "q": "What can be inferred from the last sentence?",
+      "o": [
+       "Yawning together may reflect emotional closeness.",
+       "People yawn only when they are alone and tired.",
+       "Researchers have already proved that empathy causes yawns.",
+       "Yawning is more common in strangers than in relatives."
+      ],
+      "a": 0,
+      "why": "마지막 문장은 하품의 전염이 피로보다 공감과 더 관련 있을 수 있다고 추측해요. 'suspect'이므로 증명된 것은 아니에요."
+     },
+     {
+      "q": "The word “puzzling” in the passage means",
+      "o": [
+       "easy to see",
+       "pleasant to hear",
+       "hard to explain",
+       "quick to finish"
+      ],
+      "a": 2,
+      "why": "puzzling은 '이해하거나 설명하기 어려운'이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q3 asks for an inference from the last sentence, but the old key restated a detail from the previous sentence (effect stronger among close friends). New key is a real inference from the last sentence (empathy link).",
+   "severity": "minor"
+  },
+  {
+   "item": "cccd90ff",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which phrase best fills the blank?",
+      "o": [
+       "avoid reading long texts on paper or screen altogether",
+       "choose a format that supports careful reading",
+       "always skim every text quickly to save time at school",
+       "read only on screens with bright lights"
+      ],
+      "a": 1,
+      "why": "종이가 깊은 이해에 유리하다는 내용 뒤에 이어질 실용적 결론이에요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to buy a printed book at a much lower price",
+       "Why scrolling is the fastest way to read any text",
+       "When students should stop reading books",
+       "Why paper may help us understand difficult texts"
+      ],
+      "a": 3,
+      "why": "화면과 종이를 비교하며 종이가 이해에 유리한 이유를 설명해요."
+     },
+     {
+      "q": "According to the passage, what tends to happen when people read on screens?",
+      "o": [
+       "They may skim instead of reading closely.",
+       "They read more slowly and carefully than on paper.",
+       "They understand long texts better than on paper.",
+       "They are useless for any kind of reading."
+      ],
+      "a": 0,
+      "why": "'screens invite quick skimming'이라고 했어요. 화면이 쓸모없다는 뜻은 아니라고 본문이 밝혀요."
+     },
+     {
+      "q": "In the passage, “this mental map” refers to",
+      "o": [
+       "a picture drawn in a school notebook",
+       "a route to the school library",
+       "a memory of where ideas appeared",
+       "a list of difficult words"
+      ],
+      "a": 2,
+      "why": "앞 문장의 remember where an idea appeared를 가리켜요."
+     }
+    ]
+   },
+   "why": "Old Q3 key ('Readers remember where ideas appeared') gave away Q4 (the 'mental map' refers to exactly that memory). New Q3 tests the other reason (skimming), keeping the questions independent.",
+   "severity": "minor"
+  },
+  {
+   "item": "89b9d691",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which word best fills the blank?",
+      "o": [
+       "smaller",
+       "greater",
+       "weaker",
+       "fewer"
+      ],
+      "a": 1,
+      "why": "경험과 남을 돕는 데 쓰는 돈이 물건 구매보다 만족이 '더 크다'는 비교 흐름이에요."
+     },
+     {
+      "q": "What is the best summary of the passage?",
+      "o": [
+       "Wealthy people are always happier than poor people everywhere.",
+       "Basic needs have no effect on happiness.",
+       "Spending on things guarantees satisfaction.",
+       "Money matters up to a point, and its use matters too."
+      ],
+      "a": 3,
+      "why": "소득 증가의 효과가 줄고, 사용 방식이 중요하다는 것이 요지예요."
+     },
+     {
+      "q": "What happens when people escape poverty?",
+      "o": [
+       "Their happiness increases quickly.",
+       "They feel less safe than before.",
+       "Their income stops growing.",
+       "They stop sharing with others."
+      ],
+      "a": 0,
+      "why": "'their happiness rises sharply'"
+     },
+     {
+      "q": "Which of the following would the writer most likely agree with?",
+      "o": [
+       "Earning twice as much money makes life twice as good.",
+       "Saving money is the only path to joy.",
+       "Time with friends may satisfy more than a gadget.",
+       "Poverty has little effect on feelings."
+      ],
+      "a": 2,
+      "why": "경험과 나눔이 물건 구매보다 만족이 크다는 글쓴이의 주장과 일치해요."
+     }
+    ]
+   },
+   "why": "Distractors b and c were near-identical ('stops growing for years' / 'stops growing'); b replaced by a distinct wrong option.",
+   "severity": "minor"
+  },
+  {
+   "item": "0767683b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which statement best expresses the writer's main idea?",
+      "o": [
+       "Errors give us useful information for improving.",
+       "Easy problems are better for a student's confidence.",
+       "Teachers should avoid pointing out wrong answers.",
+       "A clever person never makes a mistake in class."
+      ],
+      "a": 0,
+      "why": "마지막 문장에서 실수를 증명이 아니라 정보로 보라고 정리해요."
+     },
+     {
+      "q": "Why does the writer mention a student who always chooses easy problems?",
+      "o": [
+       "To praise students who finish problems quickly and easily",
+       "To explain why math is the hardest subject",
+       "To show a person who never finds a weak point",
+       "To prove that errors are enjoyable"
+      ],
+      "a": 2,
+      "why": "쉬운 문제만 고르면 약점을 발견하지 못한다는 대조 예시예요."
+     },
+     {
+      "q": "What did the teacher NOT mean by her words?",
+      "o": [
+       "Errors can show where understanding ends.",
+       "Mistakes are fun to make.",
+       "Learning involves some wrong answers.",
+       "A wrong answer is a chance to learn."
+      ],
+      "a": 1,
+      "why": "'She did not mean that mistakes are enjoyable.'"
+     },
+     {
+      "q": "What is the writer's attitude toward mistakes?",
+      "o": [
+       "Angry and critical",
+       "Fearful and extremely worried",
+       "Bored and uninterested",
+       "Positive and encouraging"
+      ],
+      "a": 3,
+      "why": "실수를 정보로 보라는 긍정적이고 격려하는 태도예요."
+     }
+    ]
+   },
+   "why": "Option d ('Each wrong step can be checked') was the writer's example, not clearly the teacher's meaning, so it could be argued as a second 'NOT meant' answer; replaced by something the teacher clearly meant.",
+   "severity": "minor"
+  },
+  {
+   "item": "12ebb877",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the purpose of this advertisement?",
+      "o": [
+       "To encourage young people to join a camp",
+       "To report an accident at a lake",
+       "To teach cooking skills to young people",
+       "To announce a new school rule for campers"
+      ],
+      "a": 0,
+      "why": "캠프 참가를 권유하는 광고예요."
+     },
+     {
+      "q": "What does a camper need to bring for the activities, according to the ad?",
+      "o": [
+       "His or her own kayak",
+       "A letter from a teacher",
+       "No special equipment",
+       "Rock-climbing shoes"
+      ],
+      "a": 2,
+      "why": "'all equipment is provided'이므로 따로 장비를 가져올 필요가 없어요."
+     },
+     {
+      "q": "Until when should people register?",
+      "o": [
+       "July 1",
+       "June 1",
+       "The first day of camp",
+       "Any day in July"
+      ],
+      "a": 1,
+      "why": "'register before June 1'"
+     },
+     {
+      "q": "Which of the following is suggested by the advertisement?",
+      "o": [
+       "Campers will practice working as a team.",
+       "Only experts will be accepted.",
+       "The camp lasts all summer.",
+       "Groups are very large."
+      ],
+      "a": 0,
+      "why": "'learn teamwork through friendly challenges'와 작은 모둠 활동에서 팀워크를 연습한다고 추론할 수 있어요."
+     }
+    ]
+   },
+   "why": "Q4 was a near-duplicate of the school garden notice item 30b9e222 Q4 (key 'Beginners are welcome to join', from 'no experience necessary'); changed to a different point.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 123,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

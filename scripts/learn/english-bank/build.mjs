@@ -103,6 +103,7 @@ const seenSets = new Set();
 const byKind = {};
 const push = (skill, packet, item, form, q) => {
   const answerText = q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
+  if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, "a(n)$2$3") }; // the article would single out the one option that starts with the matching sound
   const k1 = `${norm(q.prompt)}|${norm(answerText ?? "")}`;
   const k2 = `${norm(q.prompt)}|${q.options.map((o) => norm(o.text)).sort().join("|")}`;
   if (seenKeys.has(k1) || seenSets.has(k2)) { dropped.duplicateQuestion++; return; }
@@ -129,10 +130,10 @@ for (const { skill, packet, item } of valid) {
     let qid = `eb-${id}-enko`, o = pickN(qid);
     if (o.length === 3) { const r = shuffled(qid, [item.ko, ...o.map((x) => x.ko)]); push(skill, packet, item, "enko", mk(skill, qid, { skillId: skill, difficulty: d, prompt: `영어 단어 “${item.en}”의 뜻으로 알맞은 것은?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `예문: ${item.ex}`], explanation: expl })); }
     qid = `eb-${id}-koen`; o = pickN(qid);
-    if (o.length === 3) { const r = shuffled(qid, [item.en, ...o.map((x) => x.en)]); push(skill, packet, item, "koen", mk(skill, qid, { difficulty: d, prompt: `뜻이 “${item.ko}”인 영어 단어(표현)는?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `첫 글자는 “${item.en[0]}”예요.`], explanation: expl })); }
+    if (o.length === 3) { const r = shuffled(qid, [item.en, ...o.map((x) => x.en)]); push(skill, packet, item, "koen", mk(skill, qid, { difficulty: d, prompt: `뜻이 “${item.ko}”인 영어 단어(표현)는?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `첫 글자: “${item.en[0]}”`], explanation: expl })); }
     qid = `eb-${id}-cloze`;
     { const stem = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____"); const r = shuffled(qid, [item.en, ...item.z]); push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${stem}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["문장 전체의 뜻을 먼저 생각해 보세요.", `빈칸에는 ${POS[item.pos]}에 해당하는 말이 들어가요.`], explanation: expl })); }
-    if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["글자를 하나씩 소리 내어 확인해 보세요.", `첫 글자는 “${item.en[0]}”예요.`], explanation: expl })); }
+    if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["글자를 하나씩 소리 내어 확인해 보세요.", `첫 글자: “${item.en[0]}”`], explanation: expl })); }
   } else if (item.k === "s") {
     let qid = `eb-${id}-pick`; let r = shuffled(qid, [item.good, ...item.bad]);
     const expl = `정답: “${item.good}” (${item.ko}) ${item.rule}`;
@@ -159,6 +160,23 @@ for (const { skill, packet, item } of valid) {
 }
 if (errors.length) { console.error(`${errors.length} problem(s):`); for (const e of errors.slice(0, 40)) console.error("  " + e); }
 
+// ---- cross-question leak gate: an item is dropped when its key text (>= 4 words) appears verbatim in the prompt of a question of ANOTHER item in the same skill
+//      (the same lesson/session serves them together, so the sibling would show the answer). Reviewers see one batch at a time and cannot catch this.
+{
+  const normT = (t) => t.toLowerCase().replace(/[^a-z0-9가-힣 ]+/g, " ").replace(/\s+/g, " ").trim();
+  const itemKey = (q) => q.id.split("-")[1];
+  const bySk = new Map(); for (const q of questions) (bySk.get(q.skillId) ?? bySk.set(q.skillId, []).get(q.skillId)).push(q);
+  const leaky = new Set();
+  for (const list of bySk.values()) {
+    const prompts = list.map((q) => ({ it: itemKey(q), p: normT(q.prompt) }));
+    for (const q of list) {
+      if (q.type !== "multiple_choice") continue;
+      const k = q.options.find((o) => o.id === q.answer.id)?.text; if (!k) continue; const nk = normT(k); if (nk.split(" ").length < 4) continue;
+      if (prompts.some((x) => x.it !== itemKey(q) && x.p.includes(nk))) leaky.add(`${q.skillId}|${itemKey(q)}`);
+    }
+  }
+  if (leaky.size) { const before = questions.length; for (let i = questions.length - 1; i >= 0; i--) if (leaky.has(`${questions[i].skillId}|${itemKey(questions[i])}`)) questions.splice(i, 1); dropped.siblingLeak = before - questions.length; }
+}
 const idCount = cnt0(questions.map((q) => q.id));
 function cnt0(a) { const m = {}; for (const x of a) m[x] = (m[x] ?? 0) + 1; return m; }
 const dupIds = Object.entries(idCount).filter(([, n]) => n > 1).map(([k]) => k);

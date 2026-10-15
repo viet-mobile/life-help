@@ -1,0 +1,358 @@
+{
+ "packet": "H03-h1-partc",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "300e4e08",
+   "op": "set",
+   "set": {
+    "o": [
+     "I felt sick for the whole evening",
+     "the greasy pizza made me feel quite sick",
+     "a bad stomachache began very quickly",
+     "my stomach started to hurt badly"
+    ],
+    "a": 0,
+    "why": "먹은 사람이 주절의 주어여야 해요. 피자, 복통, 배는 ‘먹은’ 주체가 될 수 없어요."
+   },
+   "why": "Key was uniquely shortest (3 words vs 4-7); distractors lengthened, key kept. Changes option list (o), identity field of kind m.",
+   "severity": "minor"
+  },
+  {
+   "item": "100069f9",
+   "op": "set",
+   "set": {
+    "o": [
+     "절 사이의 의미 관계를 분명히 하기 위해서",
+     "문장을 더 길고 화려하게 만들기 위해서",
+     "주절의 주어를 다른 사람으로 바꾸기 위해서",
+     "동사의 시제를 완전히 없애기 위해서"
+    ],
+    "a": 0,
+    "why": "접속사를 남기면 시간·양보 등 관계가 또렷해져요(예: While walking, Though tired)."
+   },
+   "why": "Key was the longest and most specific; distractors lengthened. Changes o (identity field of m).",
+   "severity": "minor"
+  },
+  {
+   "item": "438e111a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did the grandmother mean by “The stew will tell you what it needs”?",
+      "o": [
+       "Cooks should taste and adjust as they go.",
+       "The stew needs more water than most cooks think.",
+       "Only old kimchi can make a good stew.",
+       "Writing numbers down always spoils the taste."
+      ],
+      "a": 0,
+      "why": "레시피 대신 맛을 보며 조절하라는 뜻이에요."
+     },
+     {
+      "q": "What did the writer do when trying to help?",
+      "o": [
+       "Measured the ingredients and wrote down the amounts",
+       "Bought a new pot at the market near her house",
+       "Taught the grandmother a new recipe from a book",
+       "Added extra salt to the stew without telling her"
+      ],
+      "a": 0,
+      "why": "숟가락으로 재료를 재고 숫자를 적었다고 해요."
+     },
+     {
+      "q": "How does the writer feel about the grandmother?",
+      "o": [
+       "Warm and respectful",
+       "Bored and impatient",
+       "Angry and jealous",
+       "Shy and worried"
+      ],
+      "a": 0,
+      "why": "할머니의 말을 떠올리며 따라 요리하므로 따뜻하고 존경하는 마음이에요."
+     },
+     {
+      "q": "What can be inferred about the writer now?",
+      "o": [
+       "The writer lives away from home but keeps the tradition.",
+       "The writer has stopped cooking and eating kimchi stew.",
+       "The writer has moved into the grandmother's house nearby.",
+       "The writer buys the stew from a shop every winter now."
+      ],
+      "a": 0,
+      "why": "far from home이지만 직접 끓이며 할머니 목소리를 떠올려요."
+     }
+    ]
+   },
+   "why": "Q2 and Q4 keys were the longest by 6-12 characters; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "ba2af6d9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A traditional paper, how it is made, and how it is used",
+       "The history of the mulberry tree in Korean villages",
+       "How artists chose lamps over books and clothing",
+       "Why machines make better paper than people do"
+      ],
+      "a": 0,
+      "why": "한지의 재료, 만드는 과정, 쓰임새를 설명하는 글이에요."
+     },
+     {
+      "q": "Which step comes just after the fibers become soft?",
+      "o": [
+       "They are mixed with water and plant glue.",
+       "They are dried in the sun for several days.",
+       "They are sewn into clothing right away.",
+       "They are painted in bright colors first."
+      ],
+      "a": 0,
+      "why": "섬유가 부드러워진 다음 물과 닥풀을 섞는 단계가 나와요."
+     },
+     {
+      "q": "Why has hanji been used for doors and windows?",
+      "o": [
+       "It is strong yet light.",
+       "It is cheaper than any other paper.",
+       "It can be made in a few minutes.",
+       "It turns white when the sun shines."
+      ],
+      "a": 0,
+      "why": "“Because of this strength”가 이유예요. 강하면서도 가볍다고 했어요."
+     },
+     {
+      "q": "The word “survived” in the passage is closest in meaning to",
+      "o": [
+       "lasted",
+       "changed",
+       "disappeared",
+       "improved"
+      ],
+      "a": 0,
+      "why": "문서가 수백 년 동안 ‘남아 있다’는 뜻이에요."
+     },
+     {
+      "q": "The last sentence suggests that hanji",
+      "o": [
+       "is still valuable in modern life",
+       "is no longer made by hand",
+       "has become harder to find",
+       "is only used in museums"
+      ],
+      "a": 0,
+      "why": "예술가들이 오늘날에도 램프와 공예에 쓴다는 내용에서 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Q2 key was longest (41 vs 26-34 chars); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "927f0a9e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why coral reefs matter and what puts them at risk",
+       "How tourists can find the best reefs to visit",
+       "Why algae are more important than corals",
+       "How rivers carry sea animals to the open ocean"
+      ],
+      "a": 0,
+      "why": "산호초의 중요성, 백화 현상, 위협 요인과 보호의 필요성을 다뤄요."
+     },
+     {
+      "q": "What happens when the water gets too warm?",
+      "o": [
+       "Corals push out algae and turn white.",
+       "Algae grow faster and cover the reef.",
+       "Corals move to colder parts of the ocean.",
+       "Tiny animals build a new reef quickly."
+      ],
+      "a": 0,
+      "why": "“stressed corals push out the algae and turn white”라고 해요."
+     },
+     {
+      "q": "“Bleached reefs are not dead, but they are weak” suggests that bleached reefs",
+      "o": [
+       "may get better under good conditions",
+       "will soon be used for new buildings",
+       "cannot be seen from the surface",
+       "always recover within one season"
+      ],
+      "a": 0,
+      "why": "죽은 것이 아니라 약해진 것이므로 조건이 좋아지면 회복할 수 있다는 뜻이에요."
+     },
+     {
+      "q": "In “The corals live together with algae, which give them food and bright colors,” what does “them” refer to?",
+      "o": [
+       "the corals",
+       "the tourists",
+       "the ocean floor",
+       "the algae"
+      ],
+      "a": 0,
+      "why": "which give them food에서 them은 먹이와 색을 받는 the corals를 가리켜요."
+     },
+     {
+      "q": "Why does the writer use the word “Unfortunately”?",
+      "o": [
+       "To introduce things that make recovery harder",
+       "To show that tourists protect the reefs",
+       "To say that reefs recover very fast",
+       "To describe how the corals get food"
+      ],
+      "a": 0,
+      "why": "뒤에 회복을 어렵게 하는 요인들이 이어져요."
+     }
+    ]
+   },
+   "why": "Q4 stem quoted 'they can recover', which gives away the answer to Q3 (bleached reefs may get better). Reference question rewritten on another sentence.",
+   "severity": "major"
+  },
+  {
+   "item": "8576d64b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did the driver stop a few meters ahead of Mina?",
+      "o": [
+       "He saw her only at the last moment.",
+       "He wanted to check her bus pass first.",
+       "A fallen tree was blocking the road ahead.",
+       "Another passenger had asked him to stop there."
+      ],
+      "a": 0,
+      "why": "“noticing her at the last moment, stopped a few meters ahead”가 근거예요."
+     },
+     {
+      "q": "How did Mina feel when the driver teased her?",
+      "o": [
+       "Embarrassed",
+       "Frightened",
+       "Disappointed",
+       "Confused"
+      ],
+      "a": 0,
+      "why": "“too embarrassed to answer”라고 해요."
+     },
+     {
+      "q": "Why did Mina's eyes close before the third stop?",
+      "o": [
+       "She had worked hard on a project all day.",
+       "She had run a long race earlier that afternoon.",
+       "The seat was warm and the bus ride was very long.",
+       "She had stayed awake the whole night before."
+      ],
+      "a": 0,
+      "why": "과학 프로젝트를 아침부터 해서 매우 피곤했다는 내용이 있어요."
+     },
+     {
+      "q": "The phrase “slide past” suggests that the town",
+      "o": [
+       "moved by smoothly outside the window",
+       "stopped at every corner for her",
+       "looked bright and noisy to her",
+       "seemed to be changing its shape"
+      ],
+      "a": 0,
+      "why": "창밖 풍경이 부드럽게 지나가는 모습을 표현해요."
+     },
+     {
+      "q": "What does the driver do when the bus reaches Mina's street?",
+      "o": [
+       "He calls her name in a gentle voice.",
+       "He turns on the lights in the bus.",
+       "He drives past her street by mistake.",
+       "He asks her to get off at once."
+      ],
+      "a": 0,
+      "why": "마지막 문장에 gently called her name이라고 나와요."
+     }
+    ]
+   },
+   "why": "Explanation said '학교 과학 프로젝트' but text does not say school.",
+   "severity": "minor"
+  },
+  {
+   "item": "b4e28e16",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Hojun forget to bring to the fair?",
+      "o": [
+       "The baking soda",
+       "The vinegar",
+       "The volcano model",
+       "The paper bag"
+      ],
+      "a": 0,
+      "why": "집에 baking soda를 두고 왔다고 해요."
+     },
+     {
+      "q": "Why did nothing happen when Hojun poured the vinegar?",
+      "o": [
+       "His sister had brought the wrong powder.",
+       "The vinegar had been left at home.",
+       "The judges had stopped the experiment.",
+       "The volcano model had a hole in it."
+      ],
+      "a": 0,
+      "why": "가방에는 baking soda가 아니라 flour가 들어 있었어요."
+     },
+     {
+      "q": "What happened right after Hojun put the model on the table?",
+      "o": [
+       "He noticed that something was missing.",
+       "The judges arrived at his table.",
+       "His sister called him on the phone.",
+       "He poured the vinegar into the volcano."
+      ],
+      "a": 0,
+      "why": "모형을 놓고 나서 baking soda가 없다는 것을 깨달았어요."
+     },
+     {
+      "q": "How did Hojun feel while he told the judges the story?",
+      "o": [
+       "Nervous but cooperative",
+       "Proud and very bored",
+       "Angry and quite lonely",
+       "Calm and a bit silly"
+      ],
+      "a": 0,
+      "why": "smiling nervously 하며 솔직히 모두 설명했어요."
+     },
+     {
+      "q": "What can be inferred from the special prize?",
+      "o": [
+       "The judges valued his truthfulness.",
+       "The judges enjoyed the volcano's explosion.",
+       "The judges wanted to help his sister.",
+       "The judges had planned the mix-up."
+      ],
+      "a": 0,
+      "why": "특별상이 honesty에 대한 것이라는 점에서 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Q4 key 'Nervous but honest' gives away Q5 (prize for truthfulness) and was longest; replaced with 'cooperative' and lengthened distractors.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 119,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

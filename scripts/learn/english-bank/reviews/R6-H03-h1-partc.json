@@ -1,0 +1,34 @@
+{
+ "packet": "H03-h1-partc",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "c7dab71d",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Though tire, they kept climbing the hill.",
+     "Though tiredness, they kept climbing the hill.",
+     "Though tires, they kept climbing the hill."
+    ],
+    "cz": {
+     "st": "Though ___, they kept climbing the hill.",
+     "ok": "tired",
+     "wr": [
+      "tire",
+      "tiredness",
+      "tires"
+     ]
+    }
+   },
+   "why": "Remove the arguably acceptable \"Though tiring\" distractor (no identity field changed).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 127,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

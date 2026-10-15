@@ -224,7 +224,7 @@
        "whose"
       ]
      },
-     "rule": "의문사가 이끄는 명사절은 평서문 어순이에요. where 자체가 ‘거기에’의 뜻을 포함하므로 there를 덧붙이지 않아요."
+     "rule": "의문사가 이끄는 명사절은 평서문 어순(주어 + 동사)이에요. where 자체가 ‘어디에’라는 장소 부사이므로 there를 덧붙이지 않아요."
     },
     {
      "k": "s",
@@ -431,9 +431,9 @@
      "good": "We talked about whether we should move to a bigger house.",
      "ko": "우리는 더 큰 집으로 이사해야 할지에 대해 이야기했어요.",
      "bad": [
-      "We talked about if we should move to a bigger house.",
       "We talked about that we should move to a bigger house.",
-      "We talked about whether should we move to a bigger house."
+      "We talked about whether should we move to a bigger house.",
+      "We talked about whether we should to move to a bigger house."
      ],
      "cz": {
       "st": "We talked about ___ we should move to a bigger house.",
@@ -444,7 +444,7 @@
        "which"
       ]
      },
-     "rule": "전치사 뒤에서는 ‘~인지 아닌지’의 명사절을 whether로 이끌고 if는 쓰지 않아요. that절은 전치사의 목적어가 될 수 없어요."
+     "rule": "전치사 뒤에서 ‘~인지 아닌지’의 명사절은 whether로 이끌어요. that절은 전치사의 목적어가 될 수 없고, 절 안은 「주어 + should + 동사원형」 순서예요."
     },
     {
      "k": "s",
@@ -571,7 +571,7 @@
      "good": "Please tell me which bus goes to the airport.",
      "ko": "어느 버스가 공항에 가는지 알려 주세요.",
      "bad": [
-      "Please tell me which bus does go to the airport.",
+      "Please tell me which does bus go to the airport.",
       "Please tell me which bus going to the airport.",
       "Please tell me which bus go to the airport."
      ],
@@ -592,7 +592,7 @@
      "ko": "내일 비가 오든 말든 상관없어요.",
      "bad": [
       "It doesn't matter whether does it rain tomorrow.",
-      "It doesn't matter if or not it rains tomorrow.",
+      "It doesn't matter whether it will rains tomorrow.",
       "It doesn't matter whether it rain tomorrow."
      ],
      "cz": {
@@ -1036,7 +1036,7 @@
       "She likes to study when the house is quiet."
      ],
      "a": 2,
-     "why": "첫 문장은 What she wants(그녀가 원하는 것)가 주어 역할을 하는 명사절이에요. 다른 절들은 장소를 꾸미거나 때를 나타내요.",
+     "why": "What she wants is a quiet place to study.에서 What she wants(그녀가 원하는 것)가 주어 역할을 하는 명사절이에요. 나머지 문장에는 주어 역할을 하는 명사절이 없고, 장소를 꾸미는 절이나 때를 나타내는 절이 있어요.",
      "cat": "clause"
     },
     {
@@ -1244,7 +1244,7 @@
       "What time does the train leave?"
      ],
      "a": 2,
-     "why": "첫 문장의 what you wrote는 ‘네가 쓴 것’이라는 뜻의 관계대명사 what절이에요. 나머지는 의문문이나 감탄문이에요.",
+     "why": "I like what you wrote in the card.의 what you wrote는 ‘네가 쓴 것’이라는 뜻의 관계대명사 what절이에요. 나머지는 의문문이나 감탄문이에요.",
      "cat": "clause"
     },
     {
@@ -1452,7 +1452,7 @@
       "How delicious!"
      ],
      "a": 2,
-     "why": "첫 문장의 how she baked the cake는 learned의 목적어 역할을 해요.",
+     "why": "I learned how she baked the cake.의 how she baked the cake는 learned의 목적어 역할을 하는 명사절이에요.",
      "cat": "clause"
     },
     {
@@ -1491,7 +1491,7 @@
       "I don't like that color."
      ],
      "a": 0,
-     "why": "첫 문장의 that은 said의 목적어절을 이끄는 접속사예요. 나머지는 지시대명사, 관계대명사, 지시형용사예요.",
+     "why": "She said that she was tired.에서 that은 said의 목적어절을 이끄는 접속사예요. 나머지는 지시대명사, 관계대명사, 지시형용사예요.",
      "cat": "clause"
     },
     {
@@ -1556,7 +1556,7 @@
       "Call me when you arrive."
      ],
      "a": 2,
-     "why": "첫 문장의 when은 선행사 day를 꾸미는 관계부사예요. 나머지는 의문사, 명사절 접속사, 시간 부사절 접속사예요.",
+     "why": "I remember the day when we met.의 when은 선행사 day를 꾸미는 관계부사예요. 나머지는 의문사, 명사절 접속사, 시간 부사절 접속사예요.",
      "cat": "clause"
     },
     {
@@ -1570,19 +1570,6 @@
      ],
      "a": 1,
      "why": "The problem is that ~에서 that절이 be동사 뒤 보어 역할을 해요.",
-     "cat": "clause"
-    },
-    {
-     "k": "m",
-     "q": "Complete the sentence.\n\"I'm not sure ___ she lives.\"",
-     "o": [
-      "that",
-      "what",
-      "who",
-      "where"
-     ],
-     "a": 3,
-     "why": "‘어디에 사는지’를 나타내는 where가 알맞아요. 나머지는 뒤의 절이 완전해서 어색해요.",
      "cat": "clause"
     },
     {
@@ -1686,7 +1673,7 @@
       "That is why I called you."
      ],
      "a": 3,
-     "why": "why I called you가 be동사 뒤 보어 역할을 하는 명사절이에요. 세 번째 보기는 reason을 꾸미는 관계부사절이에요.",
+     "why": "That is why I called you.의 why I called you가 be동사 뒤 보어 역할을 하는 명사절이에요. The reason why I called you is simple.의 why절은 reason을 꾸미는 관계부사절이에요.",
      "cat": "clause"
     },
     {
@@ -1774,15 +1761,15 @@
        ]
       },
       {
-       "q": "Why did engineers check the station?",
+       "q": "What did the engineers report after checking the station?",
        "o": [
-        "The council wanted to add more internet cables to it",
-        "Volunteers asked them to paint the old walls again",
-        "Students complained that the lamps were far too bright",
-        "Officials were not sure that the building was safe"
+        "Only a few small repairs were needed",
+        "The roof and the floors had to be rebuilt",
+        "The building was too unsafe for anyone to use",
+        "New train tracks had to be laid before opening"
        ],
-       "a": 3,
-       "why": "관리들이 건물의 안전을 의심했기 때문에 기술자들이 지붕과 바닥을 점검했어요.",
+       "a": 0,
+       "why": "기술자들은 몇 가지 작은 수리만 필요하다고 보고했어요.",
        "std": [
         "12영Ⅰ-01-01"
        ]
@@ -1865,7 +1852,7 @@
        ]
       },
       {
-       "q": "What did the students who slept do better on the test?",
+       "q": "What was the result for the students who slept?",
        "o": [
         "They finished the test in half the time",
         "They wrote longer answers than the others",
@@ -1916,7 +1903,7 @@
       {
        "q": "Why did the city start the bike-sharing system?",
        "o": [
-        "Heavy traffic and polluted air were becoming serious",
+        "Traffic was getting worse and pollution was a concern",
         "Visitors asked for cheaper tickets to the riverside park",
         "Food trucks needed an easier way to reach the offices",
         "Local shops wanted more customers on the narrow roads"
@@ -2264,17 +2251,17 @@
        ]
       },
       {
-       "q": "Why does the writer mention three different countries?",
+       "q": "In the passage, \"quench\" thirst means to...",
        "o": [
-        "To show how customs differ from place to place",
-        "To argue that one country makes better tea",
-        "To explain where tea plants grow best",
-        "To describe a trip taken by the writer"
+        "end the feeling of being thirsty",
+        "make the tea taste a little sweeter",
+        "pour a drink carefully for a guest",
+        "carry water home from a river"
        ],
        "a": 0,
-       "why": "세 나라의 예로 풍습이 지역마다 다르다는 것을 보여 주려는 거예요.",
+       "why": "quench thirst는 목마름을 해소한다는 뜻이에요.",
        "std": [
-        "12영Ⅰ-01-06"
+        "12영Ⅰ-01-05"
        ]
       }
      ]
@@ -2376,15 +2363,15 @@
        ]
       },
       {
-       "q": "What had the engineers worried about?",
+       "q": "What do scientists hope to find out next?",
        "o": [
-        "Whether the pictures would be sharp",
-        "Whether the planets would have air",
-        "Whether the launch would take place on time",
-        "Whether the mirror would open correctly"
+        "Whether distant planets have air that could support life",
+        "Whether the large mirror can be folded up again on Earth",
+        "Whether the first sharp pictures were taken by mistake",
+        "Whether young galaxies are really older than the universe"
        ],
-       "a": 3,
-       "why": "섬세한 거울이 우주에서 제대로 펼쳐질지 걱정했어요.",
+       "a": 0,
+       "why": "과학자들은 먼 행성에 생명을 지탱할 수 있는 공기가 있는지 알아내기를 바라요.",
        "std": [
         "12영Ⅰ-01-01"
        ]
