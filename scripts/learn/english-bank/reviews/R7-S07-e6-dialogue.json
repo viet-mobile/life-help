@@ -1,0 +1,402 @@
+{
+ "packet": "S07-e6-dialogue",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 80
+ },
+ "patches": [
+  {
+   "item": "09fc7363",
+   "op": "set",
+   "severity": "minor",
+   "why": "Fix form/length cues in q1,q2,q4; replace q5 which leaked q3 and was longest.",
+   "set": {
+    "qs": [
+     {
+      "q": "What does B worry about first?",
+      "o": [
+       "The daily care a pet needs",
+       "The cost of the pet food",
+       "The noise a pet makes at night",
+       "The size of the classroom"
+      ],
+      "a": 0,
+      "why": "B는 처음에 주말에도 매일 돌봐야 한다는 점을 걱정해요."
+     },
+     {
+      "q": "How does A feel about the fish tank?",
+      "o": [
+       "Very excited and proud of the idea",
+       "Angry and upset about what B said",
+       "Afraid of the fish swimming in the tank",
+       "Not excited, but willing to accept it"
+      ],
+      "a": 3,
+      "why": "A는 조금 지루하지만 없는 것보다 낫다고 말하며 받아들여요."
+     },
+     {
+      "q": "What does \"bring it up\" mean here?",
+      "o": [
+       "Mention it for discussion",
+       "Carry the tank up the stairs",
+       "Help the fish grow bigger",
+       "Lift the tank with a rope"
+      ],
+      "a": 0,
+      "why": "회의에서 그 문제를 꺼내 이야기하자는 뜻이에요."
+     },
+     {
+      "q": "What is A doing when saying \"Good point\"?",
+      "o": [
+       "Ending the talk and walking away",
+       "Agreeing that B's worry is useful",
+       "Making a harsh criticism of B's idea",
+       "Changing the topic to a new subject"
+      ],
+      "a": 1,
+      "why": "A는 B가 알레르기라는 중요한 문제를 말했다고 인정해요."
+     },
+     {
+      "q": "Which pet does A suggest first?",
+      "o": [
+       "A fish",
+       "A bird",
+       "A rabbit",
+       "A hamster"
+      ],
+      "a": 2,
+      "why": "A는 'A rabbit would teach us to be responsible'라며 토끼를 먼저 제안해요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "8ea8dc42",
+   "op": "set",
+   "severity": "minor",
+   "why": "Key was longest in 4/5 questions; lengthen distractors in q1-q3.",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does B plant the tomatoes by the fence?",
+      "o": [
+       "That spot gets sun all afternoon",
+       "It is far away from the big tree",
+       "The fence keeps most of the rain off",
+       "The soil there stays wet all day"
+      ],
+      "a": 0,
+      "why": "토마토는 햇빛이 많이 필요하고 그 쪽은 오후 내내 햇빛이 들어요."
+     },
+     {
+      "q": "What can we infer about lettuce?",
+      "o": [
+       "It needs strong sun all day long",
+       "It never needs any water at all",
+       "It grows better in some shade",
+       "It grows only during winter months"
+      ],
+      "a": 2,
+      "why": "강한 햇빛에 상추가 타므로 그늘이 있는 곳에서 더 잘 자란다고 추론할 수 있어요."
+     },
+     {
+      "q": "What does \"take the water\" mean here?",
+      "o": [
+       "Carry water away in small cans",
+       "Borrow water for a short while",
+       "Accept water as a present from us",
+       "Use up the water for themselves"
+      ],
+      "a": 3,
+      "why": "나무뿌리가 물을 흡수해 버릴 수 있다는 뜻이에요."
+     },
+     {
+      "q": "What is A doing with \"Won't the tree's roots take the water?\"",
+      "o": [
+       "Giving a thank-you",
+       "Making an order",
+       "Raising a concern",
+       "Telling a story"
+      ],
+      "a": 2,
+      "why": "A는 상추가 물을 못 얻을까 봐 걱정을 제기해요."
+     },
+     {
+      "q": "What will A do first?",
+      "o": [
+       "Carry the water cans",
+       "Plant the lettuce",
+       "Water the tomatoes",
+       "Bring the small shovel"
+      ],
+      "a": 3,
+      "why": "B가 먼저 작은 삽을 가져와 달라고 부탁해요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "06873bd8",
+   "op": "set",
+   "severity": "minor",
+   "why": "q4 key was much longer than distractors.",
+   "set": {
+    "qs": [
+     {
+      "q": "Why is A returning the shoes?",
+      "o": [
+       "They are too loud",
+       "They are too small",
+       "They are the wrong color",
+       "They are broken"
+      ],
+      "a": 1,
+      "why": "A는 신발이 너무 작다고 말해요."
+     },
+     {
+      "q": "Why does A choose a bigger size instead of a refund?",
+      "o": [
+       "A dislikes the shop",
+       "A lost the money",
+       "A wants a different color",
+       "A needs shoes soon"
+      ],
+      "a": 3,
+      "why": "토요일 학교 여행에 신어야 해서 환불 대신 교환을 택해요."
+     },
+     {
+      "q": "What is a \"receipt\"?",
+      "o": [
+       "A list of the shop rules",
+       "A shopping bag for shoes",
+       "A coupon for a discount",
+       "A paper that shows a purchase"
+      ],
+      "a": 3,
+      "why": "물건을 샀다는 것을 보여 주는 영수증이에요."
+     },
+     {
+      "q": "Why does A say \"I only wore them inside the house\"?",
+      "o": [
+       "To show the shoes are not damaged",
+       "To ask for a lower price on them",
+       "To say that the floor is very dirty",
+       "To refuse the offer of a bigger size"
+      ],
+      "a": 0,
+      "why": "신발이 거의 새것이라 교환받을 수 있음을 설득하려는 말이에요."
+     },
+     {
+      "q": "What will A probably do next?",
+      "o": [
+       "Try on the new pair",
+       "Pay again",
+       "Go home without them",
+       "Ask for a smaller size"
+      ],
+      "a": 0,
+      "why": "B가 먼저 신어 보라고 하며 신발을 건네요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "3aa9dc68",
+   "op": "set",
+   "severity": "major",
+   "why": "Distractor \"Both of them are children\" could be true; replace with \"adults\".",
+   "set": {
+    "qs": [
+     {
+      "q": "How much will A pay in total?",
+      "o": [
+       "Eighteen dollars",
+       "Twelve dollars",
+       "Twenty-four dollars",
+       "Six dollars"
+      ],
+      "a": 0,
+      "why": "어른 표 12달러와 어린이 반값 6달러를 합쳐 18달러예요."
+     },
+     {
+      "q": "What can we infer about the travelers?",
+      "o": [
+       "One of them is younger than ten",
+       "Both of them are adults",
+       "They live in the lake town",
+       "They have no money with them"
+      ],
+      "a": 0,
+      "why": "A의 여동생이 8살이라 반값 표를 사는 것으로 보아 한 사람이 10세 미만이에요."
+     },
+     {
+      "q": "What does \"round trip\" mean?",
+      "o": [
+       "Going by a circle road",
+       "Traveling at night",
+       "Moving very fast",
+       "Going and coming back"
+      ],
+      "a": 3,
+      "why": "갔다가 돌아오는 왕복 여행이라는 뜻이에요."
+     },
+     {
+      "q": "Why does B mention the last train?",
+      "o": [
+       "To sell some more tickets",
+       "To warn A about the time",
+       "To praise how fast the train is",
+       "To ask about the ticket price"
+      ],
+      "a": 1,
+      "why": "막차를 놓치면 하룻밤 묵어야 한다고 주의를 주는 거예요."
+     },
+     {
+      "q": "What should A do next?",
+      "o": [
+       "Buy more tickets",
+       "Wait for the night train",
+       "Go to platform three",
+       "Return home now"
+      ],
+      "a": 2,
+      "why": "B가 15분 뒤 3번 승강장이라고 안내해요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "f8ba1d2c",
+   "op": "set",
+   "severity": "minor",
+   "why": "Unnatural key wording.",
+   "set": {
+    "qs": [
+     {
+      "q": "What was wrong with the microphone?",
+      "o": [
+       "The wrong headset was chosen",
+       "The cable had been cut in half",
+       "The battery was completely empty",
+       "The room was too noisy"
+      ],
+      "a": 0,
+      "why": "A는 설정에서 다른 헤드셋이 선택되어 있었다는 문제를 찾아요."
+     },
+     {
+      "q": "How are the speakers talking?",
+      "o": [
+       "Through a video call",
+       "By letter",
+       "Face to face in a room",
+       "On a bus"
+      ],
+      "a": 0,
+      "why": "B가 A의 입이 움직이는 것은 보이지만 소리가 없다고 해서 화상 통화임을 알 수 있어요."
+     },
+     {
+      "q": "What does \"Loud and clear\" mean?",
+      "o": [
+       "Too noisy to bear",
+       "Very far away",
+       "Heard very well",
+       "Hard to understand"
+      ],
+      "a": 2,
+      "why": "소리가 잘 또렷하게 들린다는 뜻이에요."
+     },
+     {
+      "q": "Why does B say \"Maybe you should check the settings\"?",
+      "o": [
+       "To blame A for the trouble",
+       "To end the lesson early",
+       "To ask A to buy a new microphone",
+       "To suggest a way to fix it"
+      ],
+      "a": 3,
+      "why": "클릭해도 소용이 없자 B가 해결 방법을 제안해요."
+     },
+     {
+      "q": "What did A do before checking the settings?",
+      "o": [
+       "Clicked the icon",
+       "Left the call and came back",
+       "Bought a new headset",
+       "Called a teacher for help"
+      ],
+      "a": 0,
+      "why": "A는 먼저 아래의 아이콘을 눌러 보았고 그래도 안 되자 설정을 확인했어요."
+     }
+    ]
+   }
+  },
+  {
+   "item": "48d8c48f",
+   "op": "set",
+   "severity": "minor",
+   "why": "Balance option development in q2.",
+   "set": {
+    "qs": [
+     {
+      "q": "When is the art show?",
+      "o": [
+       "On Monday",
+       "This weekend",
+       "Next month",
+       "On Wednesday"
+      ],
+      "a": 3,
+      "why": "B는 미술 전시회가 수요일이라고 말해요."
+     },
+     {
+      "q": "How does B seem to feel?",
+      "o": [
+       "Angry and unwilling to forgive A",
+       "Happy and glad about the accident",
+       "Disappointed but forgiving",
+       "Bored and not interested in the talk"
+      ],
+      "a": 2,
+      "why": "B는 사고였다며 괜찮다고 하지만 주말 내내 그렸다고 해 아쉬움도 보여요."
+     },
+     {
+      "q": "What does \"save\" mean in \"save most of it\"?",
+      "o": [
+       "Put money aside for later",
+       "Finish the drawing quickly",
+       "Hand the drawing in early",
+       "Keep it from being ruined"
+      ],
+      "a": 3,
+      "why": "그림의 대부분이 망가지지 않도록 지킨다는 뜻이에요."
+     },
+     {
+      "q": "What is A doing when saying \"I feel terrible\"?",
+      "o": [
+       "Giving an order",
+       "Making a joke",
+       "Asking a favor",
+       "Showing regret"
+      ],
+      "a": 3,
+      "why": "A는 실수에 대한 미안한 마음을 표현해요."
+     },
+     {
+      "q": "What will they do after class?",
+      "o": [
+       "Start a brand new drawing",
+       "Buy more colored pencils",
+       "Check whether the drawing dried",
+       "Go to the art show together"
+      ],
+      "a": 2,
+      "why": "B가 'Let's check it after class'라고 말해요."
+     }
+    ]
+   }
+  }
+ ],
+ "ok": 69,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

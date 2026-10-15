@@ -1,0 +1,208 @@
+{
+ "packet": "S10-m2-reading",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 70
+ },
+ "patches": [
+  {
+   "item": "10a27726",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of this passage?",
+      "o": [
+       "Kimchi tastes much better without any ginger.",
+       "Cabbage must always be washed for two hours.",
+       "Plastic gloves are the secret ingredient of kimchi.",
+       "Making kimchi with a grandparent was hard but rewarding."
+      ],
+      "a": 3,
+      "why": "할아버지와 김치를 담그며 힘들었지만 보람 있었던 경험을 이야기해요."
+     },
+     {
+      "q": "What did the writer and Grandpa do right after covering the cabbage with salt?",
+      "o": [
+       "They washed the cabbage carefully.",
+       "They spread the paste between the leaves.",
+       "They put the jar in a cool place.",
+       "They waited about two hours."
+      ],
+      "a": 3,
+      "why": "“We waited two hours, and then we washed the cabbage.” 소금을 뿌린 바로 다음에는 두 시간을 기다렸고, 씻는 것은 그 뒤에 했어요."
+     },
+     {
+      "q": "Why did Grandpa give the writer plastic gloves?",
+      "o": [
+       "The writer wanted to look like a real cook.",
+       "The jar was too slippery for the writer to carry.",
+       "The paste was hurting the writer's hands.",
+       "The cabbage was too cold for the writer to hold."
+      ],
+      "a": 2,
+      "why": "고춧가루 양념이 손을 빨갛고 화끈거리게 해서 장갑을 줬어요."
+     },
+     {
+      "q": "In the passage, “It” in “It made my hands red and hot” refers to",
+      "o": [
+       "the paste",
+       "the cabbage",
+       "the jar",
+       "the salt"
+      ],
+      "a": 0,
+      "why": "앞 문장에서 만든 “a thick paste”를 가리켜요."
+     },
+     {
+      "q": "In the last sentence, “eager” means",
+      "o": [
+       "angry and upset",
+       "excited and ready",
+       "tired and sleepy",
+       "worried and unsure"
+      ],
+      "a": 1,
+      "why": "“I am eager to taste the result”는 결과를 빨리 맛보고 싶어 들뜬 마음이에요."
+     }
+    ]
+   },
+   "why": "Q2 stem \"after covering the cabbage with salt\" was ambiguous: washing, spreading the paste and putting the jar in a cool place all also happen after salting, so several options were defensible; changed to \"right after\" and replaced distractor \"mixed the paste with ginger\" (done by the writer meanwhile, during the wait) with a later step. Q1 stem \"blog post\" is not a genre stated in the text; changed to passage.",
+   "severity": "major"
+  },
+  {
+   "item": "c9d3a696",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the story mainly about?",
+      "o": [
+       "A school bus broke down on the road.",
+       "Mr. Cho told a very funny joke.",
+       "A driver lost her job at the school.",
+       "Students helped a new driver find the way."
+      ],
+      "a": 3,
+      "why": "처음 노선을 운전하는 불안한 기사님을 학생들이 도와준 이야기예요."
+     },
+     {
+      "q": "Why was there a new driver?",
+      "o": [
+       "Mr. Cho was ill.",
+       "Mr. Cho took a vacation.",
+       "The students asked for a change.",
+       "The bus route was closed."
+      ],
+      "a": 0,
+      "why": "“Mr. Cho is sick.”"
+     },
+     {
+      "q": "Why did Ms. Lee hold the steering wheel tightly?",
+      "o": [
+       "She was cold in the early morning.",
+       "She was angry at the noisy students.",
+       "She wanted to drive very fast to school.",
+       "She felt nervous about the new route."
+      ],
+      "a": 3,
+      "why": "그날이 이 노선의 첫날이라고 했고 웃지 않았으니 긴장했다고 짐작할 수 있어요."
+     },
+     {
+      "q": "In the passage, “route” means",
+      "o": [
+       "a rule for all the students",
+       "the path a bus follows",
+       "a seat near the front door",
+       "a kind of driver license"
+      ],
+      "a": 1,
+      "why": "“first day on this route”는 버스가 다니는 길을 뜻해요."
+     },
+     {
+      "q": "In the passage, “her” in “Ms. Lee thanked her” refers to",
+      "o": [
+       "Yuna",
+       "Ms. Lee",
+       "the baker",
+       "Mr. Cho"
+      ],
+      "a": 0,
+      "why": "길을 알려 준 학생 Yuna에게 고마워한 거예요."
+     }
+    ]
+   },
+   "why": "Q1 key said \"worried\" new driver, giving away Q3 (she held the wheel tightly because she felt nervous); reworded key to \"find the way\" and lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "95df374c",
+   "op": "set",
+   "set": {
+    "text": "Attention Passengers\n\nBecause of track work, there will be changes at Eastgate Station from Saturday, May 10, through Sunday, May 18. Trains to Lakeview usually leave from Platform 2, but during this time they will use Platform 5. To reach Platform 5, use the stairs by the ticket office or take the elevator near the east exit. Trains to the airport will run every twenty minutes instead of every ten. Please allow extra time for your trip. Station staff in orange vests will be on every platform to help you. Printed maps are available at the information desk, and they are free. Passengers who use wheelchairs may ask for help at the desk. We are sorry for any inconvenience.",
+    "qs": [
+     {
+      "q": "What is the main purpose of this notice?",
+      "o": [
+       "To tell passengers about temporary changes",
+       "To sell tickets for a new line",
+       "To ask for volunteers at the desk",
+       "To close the station for good"
+      ],
+      "a": 0,
+      "why": "선로 공사 때문에 일정 기간 바뀌는 사항을 알리는 안내문이에요."
+     },
+     {
+      "q": "Which platform will Lakeview trains use during the work?",
+      "o": [
+       "Platform 2",
+       "Platform 10",
+       "The airport platform",
+       "Platform 5"
+      ],
+      "a": 3,
+      "why": "“during this time they will use Platform 5.”"
+     },
+     {
+      "q": "What can a traveler to the airport expect during the work?",
+      "o": [
+       "Longer waits between trains",
+       "Trains that skip the station",
+       "Shorter trips than usual",
+       "Free tickets at the desk"
+      ],
+      "a": 0,
+      "why": "공항행 열차가 10분 간격에서 20분 간격으로 바뀌므로 더 오래 기다려야 해요."
+     },
+     {
+      "q": "In the notice, “allow extra time” means",
+      "o": [
+       "earn some more money",
+       "lose a ticket",
+       "set aside more time",
+       "refuse to wait at all"
+      ],
+      "a": 2,
+      "why": "“Please allow extra time”은 여유 시간을 더 잡으라는 뜻이에요."
+     },
+     {
+      "q": "In the passage, “they” in “and they are free” refers to",
+      "o": [
+       "the station staff",
+       "the printed maps",
+       "the trains to Lakeview",
+       "the wheelchairs"
+      ],
+      "a": 1,
+      "why": "바로 앞 문장의 “Printed maps”를 가리켜요. 지도는 무료로 받을 수 있다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q5 stem quoted \"they will use Platform 5\", which gives away the answer of Q2 (which platform Lakeview trains use). Added a new pronoun sentence (\"Printed maps ... and they are free\") and moved the reference question to it.",
+   "severity": "major"
+  }
+ ],
+ "ok": 66,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,404 @@
+{
+ "packet": "S01-e3-dialogue",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 68
+ },
+ "patches": [
+  {
+   "item": "784ccfdd",
+   "op": "set",
+   "set": {
+    "text": "Lia: Do you want to see a movie on Saturday?\nJo: I can't. I have a piano lesson at two.\nLia: How about the evening show?\nJo: What time does it start?\nLia: It starts at six.\nJo: That's fine. Let's go!\nLia: I can buy the tickets online.\nJo: Great. See you at the theater.",
+    "qs": [
+     {
+      "q": "Why can't Jo go to the movie in the afternoon?",
+      "o": [
+       "Jo has a cold.",
+       "Jo cleans the house at two.",
+       "Jo has a piano lesson.",
+       "Jo has a math test."
+      ],
+      "a": 2,
+      "why": "Jo가 \"I have a piano lesson at two.\"라고 말했어요."
+     },
+     {
+      "q": "What time does the evening show start?",
+      "o": [
+       "at six",
+       "at two",
+       "at eight",
+       "at four"
+      ],
+      "a": 0,
+      "why": "Lia가 \"It starts at six.\"라고 했어요."
+     },
+     {
+      "q": "What does Lia suggest with \"How about the evening show?\"",
+      "o": [
+       "seeing a different movie",
+       "meeting at the school",
+       "staying home on Saturday",
+       "going to the later show"
+      ],
+      "a": 3,
+      "why": "오후에 못 가는 Jo에게 저녁 상영으로 가자고 다른 시간을 제안한 말이에요."
+     },
+     {
+      "q": "Which is true about the tickets?",
+      "o": [
+       "Jo can buy them at the theater.",
+       "They are free.",
+       "They are sold out.",
+       "Lia can buy them online."
+      ],
+      "a": 3,
+      "why": "Lia가 \"I can buy the tickets online.\"이라고 했어요."
+     }
+    ]
+   },
+   "why": "Unnatural 'I buy the tickets online' (present simple used for a future offer); changed to 'I can buy' (E3-safe) and updated q4 option/why.",
+   "severity": "minor"
+  },
+  {
+   "item": "cfd60bfb",
+   "op": "set",
+   "set": {
+    "text": "Clerk: Can I help you?\nYuna: I need new shoes for gym class.\nClerk: What size are you?\nYuna: I am size 230.\nClerk: We have white ones and black ones.\nYuna: The white ones are nice. How much are they?\nClerk: They are twenty thousand won.\nYuna: OK, I'll take them.",
+    "qs": [
+     {
+      "q": "Why does Yuna want new shoes?",
+      "o": [
+       "for a party",
+       "for gym class",
+       "for a rainy day",
+       "for a birthday gift"
+      ],
+      "a": 1,
+      "why": "Yuna가 \"I need new shoes for gym class.\"라고 했어요."
+     },
+     {
+      "q": "How much are the white shoes?",
+      "o": [
+       "twelve thousand won",
+       "twenty thousand won",
+       "thirty thousand won",
+       "two thousand won"
+      ],
+      "a": 1,
+      "why": "점원이 \"They are twenty thousand won.\"이라고 했어요."
+     },
+     {
+      "q": "What does \"ones\" mean in \"white ones and black ones\"?",
+      "o": [
+       "shoes",
+       "sizes",
+       "stores",
+       "clerks"
+      ],
+      "a": 0,
+      "why": "\"ones\"는 앞에서 말한 shoes를 대신하는 말이에요."
+     },
+     {
+      "q": "What does Yuna mean by \"OK, I'll take them\"?",
+      "o": [
+       "She wants to try some other shoes on.",
+       "She asks the price again.",
+       "She decides to buy the white shoes.",
+       "She asks for black shoes."
+      ],
+      "a": 2,
+      "why": "\"I'll take them\"은 사겠다는 결정이에요. 앞에서 흰색 신발이 마음에 든다고 했어요."
+     }
+    ]
+   },
+   "why": "'I take them' is unnatural for deciding to buy; changed to idiomatic \"I'll take them\" and updated q4 stem/why.",
+   "severity": "minor"
+  },
+  {
+   "item": "a2d94709",
+   "op": "set",
+   "set": {
+    "text": "Min: Hello, Hana? This is Min.\nHana: Hi, Min. What's up?\nMin: I was absent yesterday. What was the homework?\nHana: We read page 40 and wrote three sentences.\nMin: Can you send me a photo of the page?\nHana: Sure. I can send it now.\nMin: Thanks! You are a good friend.",
+    "qs": [
+     {
+      "q": "Why does Min call Hana?",
+      "o": [
+       "to invite Hana to a party",
+       "to say sorry for being late",
+       "to ask about a test score",
+       "to ask about the homework"
+      ],
+      "a": 3,
+      "why": "Min이 \"What was the homework?\"라고 물었어요."
+     },
+     {
+      "q": "What does Hana send to Min?",
+      "o": [
+       "a book",
+       "a long letter from class",
+       "a letter",
+       "a photo of the page"
+      ],
+      "a": 3,
+      "why": "Min이 쪽의 사진을 보내 달라고 했고 Hana가 \"I can send it now.\"라고 답했어요."
+     },
+     {
+      "q": "What does \"absent\" mean?",
+      "o": [
+       "very tired",
+       "not at school",
+       "late for class",
+       "good at school"
+      ],
+      "a": 1,
+      "why": "\"absent\"는 있어야 할 곳에 없다는 뜻으로, 결석했다는 의미예요."
+     },
+     {
+      "q": "What does Hana mean by \"What's up?\"",
+      "o": [
+       "Look at the sky.",
+       "Please stand up.",
+       "Where did you buy the book?",
+       "Why are you calling?"
+      ],
+      "a": 3,
+      "why": "\"What's up?\"은 무슨 일이냐고 가볍게 묻는 인사말이에요."
+     }
+    ]
+   },
+   "why": "'I send it now' is unnatural; changed to 'I can send it now'; q2 why quote updated.",
+   "severity": "minor"
+  },
+  {
+   "item": "9ab3c700",
+   "op": "set",
+   "set": {
+    "text": "Waiter: Are you ready to order?\nTess: Yes. I want noodle soup.\nWaiter: Sorry, we have no noodle soup today.\nTess: Oh. What do you have?\nWaiter: We have chicken rice and fish soup.\nTess: I'll take the chicken rice, please.\nWaiter: Good choice.",
+    "qs": [
+     {
+      "q": "Why can't Tess get noodle soup?",
+      "o": [
+       "It costs too much.",
+       "The shop has none today.",
+       "It is too hot.",
+       "The waiter forgot to order it."
+      ],
+      "a": 1,
+      "why": "Waiter가 \"we have no noodle soup today\"라고 했어요."
+     },
+     {
+      "q": "What does Tess order in the end?",
+      "o": [
+       "the fish soup today",
+       "noodle soup",
+       "chicken rice",
+       "fish rice"
+      ],
+      "a": 2,
+      "why": "Tess가 \"I'll take the chicken rice\"라고 했어요."
+     },
+     {
+      "q": "In \"Are you ready to order?\" what does \"order\" mean?",
+      "o": [
+       "to clean a table",
+       "to ask for food",
+       "to put things in a line",
+       "to pay a bill"
+      ],
+      "a": 1,
+      "why": "식당에서 \"order\"는 음식을 주문한다는 뜻이에요."
+     },
+     {
+      "q": "Why does Tess ask, \"What do you have?\"",
+      "o": [
+       "She wants to leave.",
+       "She wants to see the kitchen and the cook.",
+       "She wants to know other food choices.",
+       "She wants to pay less."
+      ],
+      "a": 2,
+      "why": "국수가 없다고 하자 다른 메뉴가 뭐가 있는지 알고 싶어서 물었어요."
+     }
+    ]
+   },
+   "why": "'I take the chicken rice' is unnatural when ordering; changed to \"I'll take\" and updated q2 why.",
+   "severity": "minor"
+  },
+  {
+   "item": "ca70e0c2",
+   "op": "set",
+   "set": {
+    "text": "Grandpa: Hello?\nEli: Hi, Grandpa. It's Eli. Can I visit on Sunday?\nGrandpa: Of course. What time?\nEli: After lunch.\nGrandpa: Good. I can make plum tea.\nEli: I can bring some cookies.\nGrandpa: Wonderful. I can't wait!"
+   },
+   "why": "'I make plum tea' reads as a habit, unnatural as an offer for Sunday; changed to 'I can make plum tea.'",
+   "severity": "minor"
+  },
+  {
+   "item": "53bb06b0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where should Ana turn left?",
+      "o": [
+       "at the park",
+       "at the school",
+       "at the station",
+       "at the bank"
+      ],
+      "a": 3,
+      "why": "Kai가 \"Turn left at the bank.\"라고 길을 알려줬어요."
+     },
+     {
+      "q": "What is the museum next to?",
+      "o": [
+       "the bank",
+       "a big park",
+       "the bus stop",
+       "a small shop"
+      ],
+      "a": 1,
+      "why": "Kai가 \"It is next to the big park.\"라고 했어요."
+     },
+     {
+      "q": "In this talk, what does \"far\" mean?",
+      "o": [
+       "very noisy",
+       "open until very late",
+       "a long way away",
+       "free to enter"
+      ],
+      "a": 2,
+      "why": "\"Is it far?\"는 박물관이 먼지 묻는 말이에요. \"not far\"는 가깝다는 뜻이에요."
+     },
+     {
+      "q": "How long is the walk to the museum?",
+      "o": [
+       "about fifteen minutes",
+       "about ten minutes",
+       "about five minutes",
+       "about one hour"
+      ],
+      "a": 2,
+      "why": "Kai가 \"Then walk for five minutes.\"라고 했어요."
+     }
+    ]
+   },
+   "why": "q4 'Why does Ana ask Is it far?' has a weak/arguable key (she already heard 'walk for five minutes' before asking) and its explanation says Kai answered with the 5 minutes, which comes earlier in the text; replaced with a clear detail question.",
+   "severity": "major"
+  },
+  {
+   "item": "c19c462a",
+   "op": "set",
+   "set": {
+    "text": "Pia: Do you play any sport?\nDan: I play table tennis. I joined a club.\nPia: When does the club meet?\nDan: On Tuesdays and Thursdays after school.\nPia: Can I join?\nDan: Yes! There are two empty places.\nPia: Great. I can't come on Thursday, but I can come on Tuesday.",
+    "qs": [
+     {
+      "q": "When does the table tennis club meet?",
+      "o": [
+       "on Mondays and Fridays only",
+       "on Wednesdays",
+       "on Tuesdays and Thursdays",
+       "on weekends"
+      ],
+      "a": 2,
+      "why": "Dan이 \"On Tuesdays and Thursdays after school.\"이라고 했어요."
+     },
+     {
+      "q": "What does \"I joined a club\" mean?",
+      "o": [
+       "Dan made a club.",
+       "Dan left the old club.",
+       "Dan became a member.",
+       "Dan won a game."
+      ],
+      "a": 2,
+      "why": "\"joined\"는 모임에 들어가 회원이 되었다는 뜻이에요."
+     },
+     {
+      "q": "What does Dan mean by \"There are two empty places\"?",
+      "o": [
+       "Two more people can join.",
+       "The club room is very dirty.",
+       "Two players are sick.",
+       "The club is closed."
+      ],
+      "a": 0,
+      "why": "클럽에 두 자리가 비어 있다는 것은 두 명이 더 들어올 수 있다는 뜻이에요."
+     },
+     {
+      "q": "Which day can Pia come to the club?",
+      "o": [
+       "Tuesday",
+       "Monday",
+       "Thursday",
+       "Saturday"
+      ],
+      "a": 0,
+      "why": "Pia가 \"I can't come on Thursday, but I can come on Tuesday.\"라고 했어요."
+     }
+    ]
+   },
+   "why": "q4 'Thursday' was defensible (club meets Thu; Pia never says she can't); Pia now explicitly rules Thursday out. q4 why updated.",
+   "severity": "major"
+  },
+  {
+   "item": "16872acc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is wrong with Raj's bike?",
+      "o": [
+       "The bell is lost.",
+       "The wheel does not turn.",
+       "The seat is too high for Raj.",
+       "The light is off."
+      ],
+      "a": 1,
+      "why": "Raj가 \"The wheel does not turn.\"이라고 했어요."
+     },
+     {
+      "q": "Where is the bike shop?",
+      "o": [
+       "next to the park",
+       "behind the bank",
+       "at the station",
+       "near the school"
+      ],
+      "a": 3,
+      "why": "Sue가 \"There is a bike shop near the school.\"이라고 했어요."
+     },
+     {
+      "q": "What can we guess about the time?",
+      "o": [
+       "It is after six.",
+       "It is midnight.",
+       "The bike shop is closed now.",
+       "It is before six."
+      ],
+      "a": 3,
+      "why": "가게가 지금 열려 있고 6시에 닫는다고 했으므로 6시 이전이에요."
+     },
+     {
+      "q": "In \"Can you ride it?\" what does \"ride\" mean?",
+      "o": [
+       "to wash it",
+       "to sit on it and move",
+       "to carry it up the stairs",
+       "to buy it"
+      ],
+      "a": 1,
+      "why": "\"ride\"는 자전거 위에 타고 움직이는 것을 뜻해요."
+     }
+    ]
+   },
+   "why": "Distractor 'It is very early morning' is also before six, so it can coexist with the key; replaced with 'The bike shop is closed now.' (contradicts the text).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 60,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

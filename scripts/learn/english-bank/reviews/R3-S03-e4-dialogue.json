@@ -1,0 +1,66 @@
+{
+ "packet": "S03-e4-dialogue",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 72
+ },
+ "patches": [
+  {
+   "item": "41e04622",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is good about the red bike?",
+      "o": [
+       "It is faster.",
+       "It is cheaper.",
+       "It is lighter.",
+       "It is newer."
+      ],
+      "a": 0,
+      "why": "B가 \"The red one is faster\"라고 말했어요."
+     },
+     {
+      "q": "Which sentence is probably true?",
+      "o": [
+       "The red bike is cheaper than the blue bike.",
+       "The blue bike is faster than the red bike.",
+       "The red bike is better for hills.",
+       "The blue bike is lighter than the red bike."
+      ],
+      "a": 3,
+      "why": "빨간 자전거가 더 무겁다고 했으므로 파란 자전거가 더 가벼워요."
+     },
+     {
+      "q": "In the dialogue, \"heavier\" means:",
+      "o": [
+       "weighing more",
+       "moving faster",
+       "costing less",
+       "looking better"
+      ],
+      "a": 0,
+      "why": "heavy는 무게가 많이 나간다는 뜻이고 heavier는 더 무겁다는 뜻이에요."
+     },
+     {
+      "q": "Why does A say, \"Then the blue one is better for you\"?",
+      "o": [
+       "To give advice",
+       "To ask a question",
+       "To say goodbye",
+       "To say sorry"
+      ],
+      "a": 0,
+      "why": "언덕을 오를 가벼운 자전거가 필요하다는 B에게 알맞은 선택을 조언하는 말이에요."
+     }
+    ]
+   },
+   "why": "Q2 distractor 2 was actually true (blue is slower than red); replaced with its opposite. Key unchanged (index 3).",
+   "severity": "blocker"
+  }
+ ],
+ "ok": 71,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

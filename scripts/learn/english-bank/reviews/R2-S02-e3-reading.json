@@ -1,0 +1,120 @@
+{
+ "packet": "S02-e3-reading",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 40
+ },
+ "patches": [
+  {
+   "item": "8ec92071",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A school music show",
+       "A shop that sells warm socks",
+       "A family trip to the river",
+       "A night market on Fridays"
+      ],
+      "a": 3,
+      "why": "매주 금요일 저녁에 열리는 야시장을 설명하는 글이에요."
+     },
+     {
+      "q": "Where is the market?",
+      "o": [
+       "On a little stage",
+       "Near the river",
+       "Behind a school",
+       "In a big mall"
+      ],
+      "a": 1,
+      "why": "'opens near the river'라고 나와 있어요. stage는 음악이 나오는 곳이에요."
+     },
+     {
+      "q": "'busy' in the passage means ___.",
+      "o": [
+       "quiet and empty",
+       "far from town",
+       "full of people",
+       "closed for the night"
+      ],
+      "a": 2,
+      "why": "시장에 사람들이 많이 오가며 활기찬 모습을 말해요. busy는 '붐비는, 바쁜'이라는 뜻이에요."
+     },
+     {
+      "q": "What can we guess about the market?",
+      "o": [
+       "It is open every morning.",
+       "People enjoy the evening there.",
+       "Only children can enter.",
+       "It sells only warm clothes."
+      ],
+      "a": 1,
+      "why": "가족들이 천천히 걷고 판매자와 이야기하며 음악도 즐기므로 저녁 시간을 즐기러 가는 곳임을 짐작할 수 있어요."
+     }
+    ]
+   },
+   "why": "Main-idea key no longer reveals the location asked in q2; only q1 option text changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "7ca1f282",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the doctor say Min needs?",
+      "o": [
+       "Cold juice and ice",
+       "A long walk outside",
+       "Rest and warm water",
+       "A new school"
+      ],
+      "a": 2,
+      "why": "의사가 'You need rest and warm water'라고 말했어요."
+     },
+     {
+      "q": "What will Min probably do for two days?",
+      "o": [
+       "Go to school",
+       "Stay at home",
+       "Play with friends",
+       "Travel with Mom"
+      ],
+      "a": 1,
+      "why": "집에 있어야 하고 놀 수 없다고 했으므로 집에 있을 거예요."
+     },
+     {
+      "q": "'bad' in 'a bad cough' means ___.",
+      "o": [
+       "funny",
+       "very short",
+       "serious",
+       "kind"
+      ],
+      "a": 2,
+      "why": "병원에 가야 할 만큼 심한 기침이라는 뜻이므로 bad는 '심한'에 가까워요."
+     },
+     {
+      "q": "Who is 'He' in 'He is sad'?",
+      "o": [
+       "The doctor",
+       "The nurse",
+       "Mom",
+       "Min"
+      ],
+      "a": 3,
+      "why": "바로 앞 문장의 Min이 이틀간 집에 있어야 해서 슬픈 거예요."
+     }
+    ]
+   },
+   "why": "q2 key reworded from 'Rest at home' to 'Stay at home' (and its Korean why) so it does not echo q1's key; other questions unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 38,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

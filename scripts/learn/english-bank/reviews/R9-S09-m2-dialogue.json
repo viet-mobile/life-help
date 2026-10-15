@@ -1,0 +1,272 @@
+{
+ "packet": "S09-m2-dialogue",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 80
+ },
+ "patches": [
+  {
+   "item": "3fdc62fb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What problem does Joon mention about the school garden?",
+      "o": [
+       "Dana dislikes flowers",
+       "The weather may be cold",
+       "The garden costs money",
+       "The garden is too small for a party"
+      ],
+      "a": 1,
+      "why": "Joon은 'The weather might be cold by then'라며 정원에 반대해요."
+     },
+     {
+      "q": "What can we guess about Joon's aunt?",
+      "o": [
+       "She is Dana's teacher",
+       "She makes baked goods",
+       "She lives near the garden",
+       "She teaches music"
+      ],
+      "a": 1,
+      "why": "Joon은 이모가 빵집을 운영하니 케이크를 가져올 수 있다고 말해요. 그래서 빵이나 케이크를 만드는 일과 관련이 있어요."
+     },
+     {
+      "q": "What does \"finalize the details\" mean?",
+      "o": [
+       "Start a new project",
+       "Cancel the plan",
+       "Make the last decisions",
+       "Choose a different day for the party"
+      ],
+      "a": 2,
+      "why": "'finalize'는 마무리하다, 확정하다라는 뜻이에요. 세부 사항을 최종 결정한다는 의미예요."
+     },
+     {
+      "q": "Why does Joon say, \"Hmm, I'm not sure\"?",
+      "o": [
+       "To say sorry for arriving late today",
+       "To politely disagree with the idea",
+       "To ask for more cake",
+       "To change the date of the birthday party"
+      ],
+      "a": 1,
+      "why": "'I'm not sure'는 직접 반대하지 않고 공손하게 의견이 다르다는 것을 나타내요."
+     },
+     {
+      "q": "What will the two friends probably do tomorrow?",
+      "o": [
+       "Hold the party in the school garden",
+       "Meet to talk about the party at lunch",
+       "Give Dana a present at school",
+       "Buy flowers for Dana at a shop"
+      ],
+      "a": 1,
+      "why": "Joon이 'Let's meet at lunch tomorrow'라고 했어요. 내일 점심에 만나 계획을 마무리해요."
+     }
+    ]
+   },
+   "why": "Q1 stem said Joon \"disagrees\", revealing Q4 key (politely disagree); Q5 key \"Finish the party plans\" echoed Q3 key (make the last decisions). Reworded; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "bb7c58f1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why will Yuna use the stairs?",
+      "o": [
+       "The boxes are light",
+       "Lim asked for exercise",
+       "The elevator is broken",
+       "The hall is on the first floor"
+      ],
+      "a": 2,
+      "why": "Lim이 'The elevator is broken'이라고 말해서 계단으로 옮겨야 해요."
+     },
+     {
+      "q": "What can be inferred about Yuna?",
+      "o": [
+       "Yuna works at the center",
+       "Yuna dislikes helping",
+       "Yuna works at the center every day",
+       "Yuna might volunteer later"
+      ],
+      "a": 3,
+      "why": "Yuna는 아직 자원봉사자는 아니지만 'I'd love to'라고 하며 일정만 확인하면 돼요."
+     },
+     {
+      "q": "What does \"I'm afraid\" mean in \"The elevator is broken, I'm afraid\"?",
+      "o": [
+       "I am sorry to say so",
+       "I am scared of the elevator",
+       "I am not sure about it",
+       "I will fix it soon"
+      ],
+      "a": 0,
+      "why": "문장 끝의 'I'm afraid'는 안 좋은 소식을 정중하게 전할 때 쓰며 '유감이지만'이라는 뜻이에요."
+     },
+     {
+      "q": "Why does Lim give Yuna a flyer?",
+      "o": [
+       "So Yuna can see a map",
+       "So Yuna can find the way to the elevator",
+       "So Yuna can learn how to volunteer",
+       "So Yuna can order food"
+      ],
+      "a": 2,
+      "why": "Lim은 전단지를 주며 결정하면 전화하라고 해요. 자원봉사 안내 정보를 주려는 거예요."
+     },
+     {
+      "q": "What will Yuna probably do after checking the schedule?",
+      "o": [
+       "Ask for the soup cans back from Lim",
+       "Throw the flyer away",
+       "Carry more cans home",
+       "Call the number on the flyer"
+      ],
+      "a": 3,
+      "why": "Lim이 결정하면 전단지의 번호로 전화하라고 했어요."
+     }
+    ]
+   },
+   "why": "Q3 key was a one-word adverb while distractors were clauses (form cue); made all options clauses.",
+   "severity": "minor"
+  },
+  {
+   "item": "de540932",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which platform will the Traveler's train use?",
+      "o": [
+       "Platform 3",
+       "Platform 5",
+       "Platform 2",
+       "Platform 4"
+      ],
+      "a": 0,
+      "why": "직원은 2시 45분 열차가 3번 승강장에 들어온다고 말해요."
+     },
+     {
+      "q": "Why was the Traveler worried?",
+      "o": [
+       "The ticket had been lost on the way",
+       "The Traveler thought the train had already left",
+       "The station was closed for repairs that day",
+       "The kiosk had nothing left to sell"
+      ],
+      "a": 1,
+      "why": "승객은 다른 열차가 막 떠난 것을 보고 놓쳤다고 생각했지만 표의 시간을 확인하지 않았어요."
+     },
+     {
+      "q": "What does \"What a relief!\" mean?",
+      "o": [
+       "The Traveler feels cold",
+       "The Traveler is glad the worry is gone",
+       "The Traveler is angry at the staff for the delay",
+       "The Traveler wants a drink"
+      ],
+      "a": 1,
+      "why": "'What a relief!'는 걱정이 사라져 안심될 때 쓰는 표현이에요."
+     },
+     {
+      "q": "Why does the Staff say, \"Please listen for announcements in case of changes\"?",
+      "o": [
+       "To explain the ticket price and the rules",
+       "To tell the Traveler to leave",
+       "To ask about the interview",
+       "To advise the Traveler to stay alert"
+      ],
+      "a": 3,
+      "why": "일정이 바뀔 수 있으니 안내 방송을 주의해서 들으라고 조언하는 거예요."
+     },
+     {
+      "q": "What will the Traveler probably do next?",
+      "o": [
+       "Buy a drink at the kiosk",
+       "Go to Platform 5 to catch the train",
+       "Ask for a new ticket",
+       "Cancel the interview"
+      ],
+      "a": 0,
+      "why": "직원이 간이 매점을 알려 주었고 승객이 'Good idea'라고 답해요."
+     }
+    ]
+   },
+   "why": "Q2 key \"ticket time was not checked\" is the root cause, not the reason for the worry (thinking the train was missed); rewritten, distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "0ea9c7c7",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Until what time could Dara hear the music?",
+      "o": [
+       "Before ten o'clock",
+       "After midnight",
+       "Only during dinner",
+       "During the afternoon break"
+      ],
+      "a": 1,
+      "why": "Dara는 'until after midnight', 즉 자정이 넘을 때까지 음악이 들렸다고 말해요."
+     },
+     {
+      "q": "How does Hyun probably feel after hearing the complaint?",
+      "o": [
+       "Sorry about the noise",
+       "Bored by the talk",
+       "Proud of how loud the music was",
+       "Angry at Dara"
+      ],
+      "a": 0,
+      "why": "Hyun은 'I'm so sorry'라고 사과하고 앞으로 헤드폰을 쓰겠다고 해요. 미안해하는 마음이에요."
+     },
+     {
+      "q": "What does Hyun mean by \"That's fair\"?",
+      "o": [
+       "Dara's complaint is reasonable",
+       "Both rooms are exactly the same size",
+       "The exam is not hard",
+       "The music was fairly good"
+      ],
+      "a": 0,
+      "why": "'That's fair'는 상대의 말이 공정하고 합당하다고 인정할 때 쓰는 표현이에요."
+     },
+     {
+      "q": "Why does Dara begin with \"Do you have a minute?\"",
+      "o": [
+       "To invite Hyun to a birthday party",
+       "To ask Hyun for time to talk",
+       "To ask what time it is",
+       "To borrow some headphones"
+      ],
+      "a": 1,
+      "why": "'Do you have a minute?'은 잠깐 이야기할 시간이 있는지 정중하게 묻는 말이에요. 불편한 이야기를 꺼내기 위한 시작이에요."
+     },
+     {
+      "q": "What will Dara probably do if the noise happens again?",
+      "o": [
+       "Call the police",
+       "Turn up the music too",
+       "Knock on Hyun's door",
+       "Move to another building"
+      ],
+      "a": 2,
+      "why": "Hyun이 'please knock on my door'라고 부탁했고 Dara가 'I will'이라고 답해요."
+     }
+    ]
+   },
+   "why": "Distractor \"Early in the morning\" overlaps with a time after midnight (second reading); replaced.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 75,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

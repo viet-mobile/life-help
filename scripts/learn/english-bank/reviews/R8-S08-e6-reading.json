@@ -1,0 +1,142 @@
+{
+ "packet": "S08-e6-reading",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 8,
+  "questions": 60
+ },
+ "patches": [
+  {
+   "item": "bbda33d0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What caused the problem with the train?",
+      "o": [
+       "A broken ticket machine",
+       "A heavy snowstorm",
+       "A worker who was late",
+       "A tree on the tracks"
+      ],
+      "a": 3,
+      "why": "역 직원이 'a tree had fallen across the tracks'라고 알려 주었어요."
+     },
+     {
+      "q": "Why did Hana most likely send a message?",
+      "o": [
+       "To ask her grandmother to wait inside the station",
+       "To tell her grandmother about the delay",
+       "To cancel the trip to the town",
+       "To ask for a new ticket today"
+      ],
+      "a": 1,
+      "why": "할머니가 추운 바깥에서 기다릴 것을 걱정해 연락했으므로, 기차가 늦는다는 사실을 알리려는 것이에요."
+     },
+     {
+      "q": "In the passage, the word \"delayed\" means",
+      "o": [
+       "cancelled forever",
+       "changed to a new track",
+       "later than planned",
+       "faster than usual"
+      ],
+      "a": 2,
+      "why": "기차가 8시에 출발해야 하는데 40분 뒤에야 도착했으므로 'delayed'는 예정보다 늦다는 뜻이에요."
+     },
+     {
+      "q": "In \"Her phone had no battery,\" who does \"Her\" refer to?",
+      "o": [
+       "Hana",
+       "her grandmother",
+       "the stranger",
+       "the worker"
+      ],
+      "a": 0,
+      "why": "\"Her phone had no battery, so she borrowed a stranger's phone\"에서 자기 휴대폰을 쓸 수 없어 남의 것을 빌린 사람은 Hana예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A girl who dislikes riding trains",
+       "How Hana handled a late train",
+       "A tree that fell during a storm",
+       "Why stations need a big board"
+      ],
+      "a": 1,
+      "why": "기차가 늦어졌을 때 Hana가 연락하고 책을 읽으며 대처한 이야기예요."
+     }
+    ]
+   },
+   "why": "Fix q4 stem to quote the actual sentence and explanation; Hana spelling in q5 explanation.",
+   "severity": "major"
+  },
+  {
+   "item": "23248913",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What fixed Pablo's problem?",
+      "o": [
+       "Restarting the whole class",
+       "Closing other programs",
+       "Asking Mr. Lee for help",
+       "Turning off the sound"
+      ],
+      "a": 1,
+      "why": "카메라를 껐다 켜도 소용없었고, 게임 세 개를 닫은 뒤에야 영상이 다시 작동했어요."
+     },
+     {
+      "q": "How did Pablo probably feel when the students laughed?",
+      "o": [
+       "Very proud",
+       "So sleepy",
+       "Really embarrassed",
+       "Really bored"
+      ],
+      "a": 2,
+      "why": "화면이 멈춘 우스운 얼굴을 친구들이 보고 웃었으므로 쑥스러웠을 거예요."
+     },
+     {
+      "q": "In the passage, \"froze\" means",
+      "o": [
+       "became very cold",
+       "stopped moving",
+       "ran too fast",
+       "turned blue"
+      ],
+      "a": 1,
+      "why": "화면 속 얼굴이 가만히 멈춰 있었다고 했으므로 'froze'는 멈췄다는 뜻이에요."
+     },
+     {
+      "q": "In \"Pablo could hear them,\" who does \"them\" refer to?",
+      "o": [
+       "the three games he closed",
+       "his sister",
+       "the other students",
+       "Mr. Lee and his sister"
+      ],
+      "a": 2,
+      "why": "웃고 있던 'the other students'의 소리를 들을 수 있었어요."
+     },
+     {
+      "q": "Why did Mr. Lee say that everybody has a frozen moment?",
+      "o": [
+       "To make Pablo feel better",
+       "To end the class early",
+       "To blame Pablo for the problem",
+       "To teach a lesson about games"
+      ],
+      "a": 0,
+      "why": "누구에게나 있는 일이라는 말로 당황한 Pablo를 안심시키려는 것이에요."
+     }
+    ]
+   },
+   "why": "q2 key gets same intensifier pattern as the distractors.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 57,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

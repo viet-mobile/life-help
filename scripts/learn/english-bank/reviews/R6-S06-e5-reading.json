@@ -1,0 +1,142 @@
+{
+ "packet": "S06-e5-reading",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 60
+ },
+ "patches": [
+  {
+   "item": "d6d04225",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is chlorophyll used for?",
+      "o": [
+       "Making food from sunlight",
+       "Keeping leaves cold in the winter",
+       "Making trees taller",
+       "Changing leaves red"
+      ],
+      "a": 0,
+      "why": "'Trees use it to make food from sunlight'라고 해요."
+     },
+     {
+      "q": "Why does the green color fade in autumn?",
+      "o": [
+       "Rain washes it away",
+       "Trees stop making chlorophyll",
+       "Leaves become heavier",
+       "Days become longer and sunnier"
+      ],
+      "a": 1,
+      "why": "가을에는 빛이 줄어 나무가 엽록소를 만들지 않아서 초록색이 사라져요."
+     },
+     {
+      "q": "The word \"hidden\" is closest in meaning to",
+      "o": [
+       "made with paint",
+       "cut into pieces",
+       "not easy to see",
+       "full of light"
+      ],
+      "a": 2,
+      "why": "hidden은 '숨겨진', 즉 눈에 잘 보이지 않는다는 뜻이에요."
+     },
+     {
+      "q": "What can we infer about yellow colors?",
+      "o": [
+       "They appear only in summer",
+       "They are in the leaves before autumn",
+       "They come from the soil in spring",
+       "They are made by rain"
+      ],
+      "a": 1,
+      "why": "노란색은 'hidden all along'이었다고 했으므로 이미 잎 속에 있었어요."
+     },
+     {
+      "q": "What is the main idea?",
+      "o": [
+       "Trees need much more water in autumn",
+       "Leaves are heavy in winter",
+       "Autumn leaves change color for a reason",
+       "Red leaves are the strongest"
+      ],
+      "a": 2,
+      "why": "가을에 잎 색이 변하는 이유를 설명하는 글이에요."
+     }
+    ]
+   },
+   "why": "hidden 문항에서 정답만 여러 단어라 길이 단서가 됨: 오답도 비슷한 길이의 구로 맞춤 (정답 불변)",
+   "severity": "minor"
+  },
+  {
+   "item": "1420802e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What shape is songpyeon?",
+      "o": [
+       "A full circle",
+       "A square",
+       "A half-moon",
+       "A star"
+      ],
+      "a": 2,
+      "why": "songpyeon은 'half-moon rice cake'라고 소개돼요."
+     },
+     {
+      "q": "What is done right after the dough is pressed flat?",
+      "o": [
+       "The cakes are steamed",
+       "The filling is put inside",
+       "The flour is mixed with water",
+       "The needles are removed"
+      ],
+      "a": 1,
+      "why": "반죽을 납작하게 누른 다음 속을 넣고 접어요."
+     },
+     {
+      "q": "Why are pine needles used?",
+      "o": [
+       "To color the cakes",
+       "To make the cakes sweet",
+       "To give a nice smell",
+       "To keep the cakes cold"
+      ],
+      "a": 2,
+      "why": "솔잎이 송편에 좋은 향을 준다고 했어요."
+     },
+     {
+      "q": "What can we infer about making songpyeon?",
+      "o": [
+       "It is often a family activity",
+       "It takes only one minute",
+       "It needs no water",
+       "It is usually done by one person alone"
+      ],
+      "a": 0,
+      "why": "가족이 함께 만들며 이야기한다고 했어요."
+     },
+     {
+      "q": "The word \"fold\" is closest in meaning to",
+      "o": [
+       "bend and close",
+       "cut into pieces",
+       "pour into a bowl",
+       "burn in a fire"
+      ],
+      "a": 0,
+      "why": "fold는 반죽을 접어서 닫는다는 뜻이고 bend and close와 가장 가까워요."
+     }
+    ]
+   },
+   "why": "fold의 풀이로 bend over는 부정확(사람이 몸을 숙이다 의미 가능): bend and close로 바꾸고 오답을 비슷한 길이로 맞춤",
+   "severity": "minor"
+  }
+ ],
+ "ok": 58,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

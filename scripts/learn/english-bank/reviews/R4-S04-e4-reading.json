@@ -1,0 +1,390 @@
+{
+ "packet": "S04-e4-reading",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 40
+ },
+ "patches": [
+  {
+   "item": "3a58ae5f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does Kim ask Dana to bring?",
+      "o": [
+       "Sandwiches and a ball",
+       "A drink and a blanket",
+       "A ball and a blanket",
+       "Sandwiches and a drink"
+      ],
+      "a": 1,
+      "why": "'Please bring a drink and a blanket.'이라고 부탁했어요."
+     },
+     {
+      "q": "Why does Kim want an answer by Friday?",
+      "o": [
+       "The park will close on Saturday",
+       "Leo may be too busy to play",
+       "Kim must plan the food",
+       "The blanket must be washed first"
+      ],
+      "a": 2,
+      "why": "미리 올 사람 수를 알아야 샌드위치 등을 준비할 수 있으므로, 인원을 알려고 답을 요청했다고 추측할 수 있어요."
+     },
+     {
+      "q": "In \"Can you tell me by Friday if you can come?\", \"by Friday\" means:",
+      "o": [
+       "only on Friday, not before",
+       "at some time after Friday",
+       "on every single Friday",
+       "no later than Friday"
+      ],
+      "a": 3,
+      "why": "'by Friday'는 '늦어도 금요일까지'라는 뜻이에요."
+     },
+     {
+      "q": "Why did Kim write this email?",
+      "o": [
+       "To invite Dana to a picnic",
+       "To say sorry for being late",
+       "To ask for a ball",
+       "To thank Leo for the sandwiches"
+      ],
+      "a": 0,
+      "why": "일요일 소풍에 올 수 있는지 묻는 초대 이메일이에요."
+     }
+    ]
+   },
+   "why": "Q3 stem \"In the last question\" is ambiguous (reads like the previous exam question); quoted the sentence. Key was the only long option; lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "9b670cff",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "When did Min water the seeds?",
+      "o": [
+       "Every night",
+       "Every afternoon",
+       "Once a week",
+       "Every morning"
+      ],
+      "a": 3,
+      "why": "'Every morning, she gave them a little water.'라고 했어요."
+     },
+     {
+      "q": "Why did Min jump up?",
+      "o": [
+       "She felt very excited",
+       "She wanted to move the pot",
+       "She was angry at her brother",
+       "She heard a loud sound"
+      ],
+      "a": 0,
+      "why": "일주일 동안 기다리다 작은 잎이 나오자 신이 나서 뛰어올랐다고 추측할 수 있어요."
+     },
+     {
+      "q": "In the story, \"soil\" means:",
+      "o": [
+       "a part of the window by the pot",
+       "the ground that plants grow in",
+       "a small green bean from the seeds",
+       "a pot made of clay or plastic"
+      ],
+      "a": 1,
+      "why": "잎이 'came out of the soil'이라고 했으니 식물이 자라는 흙을 뜻해요."
+     },
+     {
+      "q": "In \"she gave them a little water,\" \"them\" means:",
+      "o": [
+       "her friends",
+       "some small pots",
+       "the green leaves",
+       "the bean seeds"
+      ],
+      "a": 3,
+      "why": "'them'은 앞 문장의 'three bean seeds'를 가리켜요. 잎은 아직 나오지 않은 때예요."
+     }
+    ]
+   },
+   "why": "Q3 key was the only detailed option (30 chars vs 11-16); lengthened distractors, key position kept at index 1.",
+   "severity": "minor"
+  },
+  {
+   "item": "fe11ac83",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where should Bus 5 students wait?",
+      "o": [
+       "In the gym",
+       "At the front gate",
+       "In the library",
+       "In the cafeteria"
+      ],
+      "a": 2,
+      "why": "'Students who ride Bus 5 should wait in the library.'라고 했어요."
+     },
+     {
+      "q": "Why are students asked not to wait outside?",
+      "o": [
+       "The library will close soon",
+       "The weather is bad",
+       "The bus driver is resting",
+       "A class is starting"
+      ],
+      "a": 1,
+      "why": "눈이 많이 와서 버스가 늦어지는 상황이므로, 날씨 때문에 밖에서 기다리지 말라고 한 것으로 추측할 수 있어요."
+     },
+     {
+      "q": "In \"It will leave at 4:00 instead of 3:30,\" \"instead of\" means:",
+      "o": [
+       "in place of",
+       "at the same time as",
+       "as well as",
+       "a little before"
+      ],
+      "a": 0,
+      "why": "'4:00 instead of 3:30'은 3시 30분 '대신' 4시에 떠난다는 뜻이에요."
+     },
+     {
+      "q": "What is the announcement mainly about?",
+      "o": [
+       "A school trip by bus",
+       "A new bus driver",
+       "A change in the bus time",
+       "A snow day with no school"
+      ],
+      "a": 2,
+      "why": "5번 버스의 출발 시간이 3시 30분에서 4시로 바뀐다는 내용이에요."
+     }
+    ]
+   },
+   "why": "Q3 stem says \"second sentence\" but \"instead of\" is in the third sentence (1 Attention, students. 2 Because of the heavy snow... 3 It will leave at 4:00 instead of 3:30); quote the sentence instead.",
+   "severity": "minor"
+  },
+  {
+   "item": "537292ee",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How often should the writer brush?",
+      "o": [
+       "Once a day",
+       "Twice a day",
+       "After every snack",
+       "Once a week"
+      ],
+      "a": 1,
+      "why": "'Keep brushing twice a day'라고 했으니 하루에 두 번이에요."
+     },
+     {
+      "q": "What probably helped the writer feel less afraid?",
+      "o": [
+       "The toy in the waiting room",
+       "The long wait after school",
+       "The dentist's calm voice",
+       "The empty chair near the door"
+      ],
+      "a": 2,
+      "why": "치과의사가 부드럽게 말하고 모든 단계를 설명해 주었으므로 두려움이 줄었을 거예요."
+     },
+     {
+      "q": "In the diary, \"reward\" means:",
+      "o": [
+       "money paid to the dentist after a visit",
+       "a rule that you must follow",
+       "a tool that the doctor uses on teeth",
+       "something given for doing well"
+      ],
+      "a": 3,
+      "why": "엄마가 장난감을 사 준 것은 잘한 일에 대한 보상이므로 'something given for doing well'이에요."
+     },
+     {
+      "q": "What is the diary mainly about?",
+      "o": [
+       "A calm visit to the dentist",
+       "A broken tooth and a long pain",
+       "A fun day at the toy shop",
+       "A new chair at school"
+      ],
+      "a": 0,
+      "why": "무서웠지만 치과 방문이 순조롭게 끝난 하루를 쓴 일기예요."
+     }
+    ]
+   },
+   "why": "Q3 key was the only long option (30 chars vs 15-18); lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "c102b72b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did Mr. Oh give the girl?",
+      "o": [
+       "A round cake",
+       "A loaf of bread",
+       "A paper hat",
+       "A cookie"
+      ],
+      "a": 3,
+      "why": "'put a cookie in a paper bag, and handed it to her'라고 했어요."
+     },
+     {
+      "q": "What can we guess about Mr. Oh?",
+      "o": [
+       "He is kind to children",
+       "He dislikes early mornings",
+       "He sells only cakes",
+       "He is learning to bake"
+      ],
+      "a": 0,
+      "why": "케이크를 바라보던 아이에게 웃으며 쿠키를 건넸으니 친절하다고 추측할 수 있어요."
+     },
+     {
+      "q": "\"Stared at\" means:",
+      "o": [
+       "walked past it without stopping",
+       "looked at for a long time",
+       "laughed at it in a loud voice",
+       "pointed to it by accident"
+      ],
+      "a": 1,
+      "why": "창밖에 서서 케이크를 오래 바라보았다는 뜻이에요."
+     },
+     {
+      "q": "What is the story mainly about?",
+      "o": [
+       "A girl who learns to bake bread",
+       "A shop that changes its opening hours",
+       "A cake that is sold at a high price",
+       "A baker and a girl outside his shop"
+      ],
+      "a": 3,
+      "why": "빵집 주인과 창밖에서 케이크를 바라보던 아이 사이에 일어난 일을 다룬 이야기예요."
+     }
+    ]
+   },
+   "why": "Q4 key \"A baker's kind gift\" gives away Q2 (kind to children) and Q1 (gave the girl); replaced the key with a neutral main-idea statement and lengthened distractors. Q3 lengthened distractors (key was longest).",
+   "severity": "major"
+  },
+  {
+   "item": "7eb6a2f0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What do a penguin's wings work like?",
+      "o": [
+       "Flippers",
+       "Sails",
+       "Blankets",
+       "Paddles for boats"
+      ],
+      "a": 0,
+      "why": "'Their wings work like flippers'라고 했어요."
+     },
+     {
+      "q": "Why does the father keep the egg on his feet?",
+      "o": [
+       "To hide it from the mother",
+       "To keep it warm in the cold",
+       "To help it learn to swim",
+       "To move it to the South Pole"
+      ],
+      "a": 1,
+      "why": "아빠 펭귄이 알을 발 위에 두고 따뜻하게 지켜 준다고 했어요. 추운 곳에서 알을 따뜻하게 하려는 것이에요."
+     },
+     {
+      "q": "\"Hatches\" means:",
+      "o": [
+       "falls into the water",
+       "turns into ice",
+       "comes out of its egg",
+       "starts to fly"
+      ],
+      "a": 2,
+      "why": "알이 따뜻하게 유지되다가 새끼가 알을 깨고 나오는 것을 뜻해요."
+     },
+     {
+      "q": "In the second sentence, \"they\" (in \"so they swim fast\") refers to:",
+      "o": [
+       "the penguins",
+       "the wings",
+       "the flippers",
+       "the South Pole"
+      ],
+      "a": 0,
+      "why": "'they swim fast'에서 헤엄치는 것은 앞에서 말한 펭귄이에요. 날개는 헤엄치지 않아요."
+     }
+    ]
+   },
+   "why": "Q2 key \"To keep it off the ice\" is not supported by the text (ice is never mentioned; text says \"keeps it warm\"); rewritten to the text-supported reason. Q4 (\"it\" refers to the egg) is answered by Q2 stem, which already says \"the egg\"; replaced Q4 with a reference question on \"they\" in sentence 2 (sentence count verified: 1 Penguins are birds..., 2 Their wings work like flippers, so they swim fast...). Q1 and Q4 now both concern wings/penguins but test different abilities.",
+   "severity": "major"
+  },
+  {
+   "item": "86d9a39b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the writer ask Mr. Choi?",
+      "o": [
+       "When lunch starts at school",
+       "Where the doctor's office is",
+       "Who will teach Ari tomorrow",
+       "Which homework Ari will miss"
+      ],
+      "a": 3,
+      "why": "'Could you please tell me which homework Ari will miss?'라고 물었어요."
+     },
+     {
+      "q": "What will Ari probably miss tomorrow?",
+      "o": [
+       "The morning lessons",
+       "The afternoon lessons",
+       "The whole week",
+       "Only lunch"
+      ],
+      "a": 0,
+      "why": "아침에 병원 예약이 있고 점심 후에 학교에 도착하므로 오전 수업을 놓칠 거예요."
+     },
+     {
+      "q": "\"Appointment\" means:",
+      "o": [
+       "a planned time to meet someone",
+       "a kind of homework for the week",
+       "a long trip taken with a school",
+       "a short break for eating lunch"
+      ],
+      "a": 0,
+      "why": "'doctor's appointment'은 의사를 만나기로 정해 둔 시간, 즉 진료 예약이에요."
+     },
+     {
+      "q": "Why did the writer send this email?",
+      "o": [
+       "To thank a doctor",
+       "To explain why Ari will be late",
+       "To ask for a new class",
+       "To invite the teacher to lunch"
+      ],
+      "a": 1,
+      "why": "Ari가 병원 진료 때문에 내일 학교에 늦게 간다는 것을 알리려고 쓴 이메일이에요."
+     }
+    ]
+   },
+   "why": "Q4 key \"To report a missed day\" is inaccurate (Ari misses only the morning, in the future); replaced with \"To explain why Ari will be late\" (avoids leaking Q2 key \"morning lessons\"). Q1 and Q3 keys were the longest by a wide margin; lengthened distractors.",
+   "severity": "major"
+  }
+ ],
+ "ok": 28,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
