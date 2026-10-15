@@ -1,0 +1,119 @@
+{
+ "packet": "M08-m2-inf",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 129
+ },
+ "patches": [
+  {
+   "item": "5842a230",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "My mom told me ___ my room.",
+     "ok": "to clean",
+     "wr": [
+      "clean",
+      "cleaning",
+      "to cleaning"
+     ]
+    }
+   },
+   "why": "Cloze key 'to clean' was the only two-word option; replaced 'cleaned' with 'to cleaning' (wrong).",
+   "severity": "minor"
+  },
+  {
+   "item": "75f0ca9e",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "I'd like ___ a pizza.",
+     "ok": "to order",
+     "wr": [
+      "order",
+      "ordering",
+      "to ordering"
+     ]
+    }
+   },
+   "why": "Cloze key 'to order' was the only two-word option; replaced 'ordered' with 'to ordering' (wrong).",
+   "severity": "minor"
+  },
+  {
+   "item": "2cce04f7",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Our teacher asked us ___ quiet.",
+     "ok": "to be",
+     "wr": [
+      "be",
+      "being",
+      "to being"
+     ]
+    }
+   },
+   "why": "Cloze key 'to be' was the only 'to' option; replaced 'been' with 'to being' (wrong).",
+   "severity": "minor"
+  },
+  {
+   "item": "d5148587",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "He refused ___ up.",
+     "ok": "to give",
+     "wr": [
+      "giving",
+      "give",
+      "to giving"
+     ]
+    }
+   },
+   "why": "Cloze key 'to give' was the only 'to' option; replaced 'gave' with 'to giving' (wrong).",
+   "severity": "minor"
+  },
+  {
+   "item": "87115668",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "My dad advised me ___ skip breakfast.",
+     "ok": "not to",
+     "wr": [
+      "don't",
+      "not",
+      "no to"
+     ]
+    }
+   },
+   "why": "Cloze key 'not to' was the only two-word option; replaced 'no' with 'no to' (wrong).",
+   "severity": "minor"
+  },
+  {
+   "item": "d6b1703b",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Don't eating breakfast is bad for your health.",
+     "Not eat breakfast is bad for your health.",
+     "Not ate breakfast is bad for your health."
+    ],
+    "cz": {
+     "st": "___ breakfast is bad for your health.",
+     "ok": "Not eating",
+     "wr": [
+      "Don't eating",
+      "Not eat",
+      "Not ate"
+     ]
+    }
+   },
+   "why": "'No eating breakfast is bad...' is arguably acceptable (No + gerund) so it is not clearly wrong; replaced with clearly wrong 'Not ate'.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 122,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

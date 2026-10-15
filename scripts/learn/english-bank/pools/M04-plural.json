@@ -712,7 +712,7 @@
       "wr": [
        "little",
        "much",
-       "lot"
+       "several"
       ]
      },
      "rule": "a few 뒤에는 셀 수 있는 복수 명사가 와요.",
@@ -733,7 +733,7 @@
       "wr": [
        "few",
        "many",
-       "lot"
+       "several"
       ]
      },
      "rule": "a little 뒤에는 셀 수 없는 명사가 와요.",
@@ -878,12 +878,12 @@
       "st": "I bought two ___ of socks.",
       "ok": "pairs",
       "wr": [
-       "pair",
        "paires",
-       "pairing"
+       "pairing",
+       "paired"
       ]
      },
-     "rule": "pair를 센 경우에는 pairs로 쓰고, of 뒤에는 복수 명사를 써요.",
+     "rule": "둘 이상의 짝을 셀 때는 pairs로 쓰고, of 뒤에는 복수 명사(socks)를 써요.",
      "d": 4
     },
     {
@@ -968,7 +968,8 @@
       ]
      },
      "rule": "potato처럼 자음 + o로 끝나는 일부 명사는 -es를 붙여요. 복수 주어에는 동사 원형을 써요.",
-     "d": 3
+     "d": 3,
+     "ord": false
     },
     {
      "k": "m",
@@ -1512,7 +1513,7 @@
       "a shoes"
      ],
      "a": 0,
-     "why": "주어가 복수 동사 are와 함께 있으므로 복수 명사 shoes를 써요.",
+     "why": "동사가 복수형 are이므로 주어도 복수 명사 shoes가 와야 해요. a shoes는 쓸 수 없어요.",
      "cat": "plural",
      "d": 2
     },
@@ -1949,15 +1950,15 @@
     {
      "k": "r",
      "title": "Grandma's Kitchen",
-     "text": "My grandmother lives in a small house with a big kitchen. Every weekend, my cousins and I go there. She keeps her knives on a high shelf, and we are not allowed to touch them. Instead, we wash the dishes and cut the bread. Her stories about the old days are my favorite part. She says that long ago, there were no supermarkets in her village, so people made their own cheese, and the whole family helped. Grandma's soup always has potatoes and onions, and it makes our weekends warm and happy.",
+     "text": "My grandmother lives in a small house with a big kitchen. Every weekend, my cousins and I go there. She keeps her knives on a high shelf, and we are not allowed to touch them. Instead, we wash the dishes and set the table. Her stories about the old days are my favorite part. She says that long ago, there were no supermarkets in her village, so people made their own cheese, and the whole family helped. Grandma's soup always has potatoes and onions, and it makes our weekends warm and happy.",
      "qs": [
       {
        "q": "What is the writer's favorite part of the weekend visit?",
        "o": [
-        "Washing the dishes in the kitchen",
+        "Washing the dishes in the big kitchen",
         "Grandma's stories about the old days",
-        "Cutting the bread for lunch",
-        "Eating potatoes and onions"
+        "Setting the table for the family lunch",
+        "Eating the soup with potatoes and onions"
        ],
        "why": "글쓴이는 할머니의 옛날이야기가 가장 좋다고 했어요.",
        "std": [
@@ -1969,9 +1970,9 @@
        "q": "Why did people make their own cheese long ago?",
        "o": [
         "There were no supermarkets in the village",
-        "Cheese was a gift from the farmers",
-        "The whole family disliked bread",
-        "Cheese tasted better in soup"
+        "Cheese was a gift from the local farmers",
+        "The whole family disliked buying bread",
+        "Cheese tasted much better when it was in soup"
        ],
        "why": "그 마을에는 슈퍼마켓이 없었기 때문이에요.",
        "std": [
@@ -1982,9 +1983,9 @@
       {
        "q": "Why can the children not touch the knives?",
        "o": [
-        "Grandma wants to use them herself",
-        "The knives belong to a neighbor",
-        "The children are too tired",
+        "Grandma wants to keep them for herself only",
+        "The knives belong to a neighbor in the village",
+        "The children are too tired to hold anything",
         "They could be dangerous for children"
        ],
        "why": "칼은 위험할 수 있어서 아이들에게 만지지 못하게 한다고 추측할 수 있어요.",
@@ -1996,10 +1997,10 @@
       {
        "q": "In the passage, “the whole family” means ___.",
        "o": [
-        "only the grandmother",
-        "a few of the cousins",
+        "only the oldest woman in the family",
+        "just a few of the young cousins",
         "every person in the family",
-        "the family's neighbors"
+        "the neighbors who live nearby"
        ],
        "why": "whole은 '전체의'라는 뜻이라서 가족 모두를 뜻해요.",
        "std": [
@@ -2033,7 +2034,7 @@
        "q": "What did Yuna do at the zoo?",
        "o": [
         "She drew pictures of animals",
-        "She took photos of the penguins",
+        "She wrote a letter to the zookeeper",
         "She fed bananas to the monkeys",
         "She bought a toy giraffe"
        ],
@@ -2146,9 +2147,9 @@
       {
        "q": "Where did Hana find her keys?",
        "o": [
-        "Under the sofa",
+        "Under the old sofa",
         "Next to her lunch box",
-        "In her coat pockets",
+        "Inside one of her coat pockets",
         "In Sam's room"
        ],
        "why": "열쇠는 부엌의 도시락 통 옆에 있었어요.",
@@ -2161,9 +2162,9 @@
        "q": "Why did Hana put the keys down in the kitchen?",
        "o": [
         "She was washing the dishes",
-        "She was cooking dinner",
-        "She was talking to Sam",
-        "She was eating lunch"
+        "She was cooking dinner for her family",
+        "She was talking with Sam",
+        "She was eating her lunch"
        ],
        "why": "설거지를 하다가 열쇠를 내려놓았어요.",
        "std": [
@@ -2174,9 +2175,9 @@
       {
        "q": "What does Sam's answer show about him?",
        "o": [
-        "He was angry with his sister",
+        "He was angry about the question",
         "He wanted to hide the keys",
-        "He did not know the kitchen",
+        "He knew nothing about the keys",
         "He was busy but still helped"
        ],
        "why": "게임 중이었지만 부엌에 있었다고 알려 주며 도와줬어요.",
@@ -2189,9 +2190,9 @@
        "q": "What does Hana decide at the end?",
        "o": [
         "To ask Sam to find her keys",
-        "To buy a new bag tomorrow",
+        "To buy a bigger bag tomorrow",
         "To keep her keys in a small box",
-        "To stop washing the dishes"
+        "To stop washing dishes after lunch"
        ],
        "why": "열쇠를 넣을 작은 상자가 필요할지도 모른다고 했어요.",
        "std": [
@@ -2250,16 +2251,16 @@
        "a": 0
       },
       {
-       "q": "Who will get a certificate?",
+       "q": "What is the main purpose of this announcement?",
        "o": [
-        "Only the winners",
-        "Only the green team",
-        "The parents",
-        "Every student"
+        "To ask parents to become team coaches",
+        "To report who won last year's race",
+        "To warn students about the loud cheers",
+        "To explain the plan for Sports Day"
        ],
-       "why": "모든 학생이 물과 증서를 받는다고 했어요.",
+       "why": "운동회 일정과 준비물 등 계획을 알리는 안내문이에요.",
        "std": [
-        "9영01-02"
+        "9영01-06"
        ],
        "a": 3
       }
@@ -2274,10 +2275,10 @@
       {
        "q": "What is the passage mainly about?",
        "o": [
-        "How to choose a good mobile phone",
+        "How teenagers can choose a good mobile phone",
         "Why sleep matters and how to sleep well",
-        "Which books are best before bed",
-        "What doctors eat for breakfast"
+        "Which books are best to read before bed",
+        "What doctors usually eat for breakfast"
        ],
        "why": "수면이 왜 중요한지와 잘 자는 방법을 설명하는 글이에요.",
        "std": [
@@ -2288,24 +2289,24 @@
       {
        "q": "Why do many teenagers sleep too little?",
        "o": [
+        "They have too many early morning classes",
+        "Their bedrooms are too quiet to sleep in",
         "They use phones or watch videos late",
-        "They have too many early classes",
-        "Their rooms are too quiet",
-        "Their doctors tell them to stay up"
+        "Their doctors tell them to stay up late"
        ],
        "why": "휴대폰이나 영상 때문에 늦게까지 깨어 있기 때문이에요.",
        "std": [
         "9영01-04"
        ],
-       "a": 0
+       "a": 2
       },
       {
        "q": "What does “sort” mean in the passage?",
        "o": [
-        "Throw away",
-        "Make louder",
-        "Copy by hand",
-        "Put in order"
+        "Throw them away",
+        "Make them much louder",
+        "Copy them by hand",
+        "Put them in order"
        ],
        "why": "뇌가 정보를 정리한다는 뜻이므로 sort는 '정리하다'예요.",
        "std": [
@@ -2317,7 +2318,7 @@
        "q": "What advice does the writer give?",
        "o": [
         "Sleep in a bright room",
-        "Exercise right before sleep",
+        "Exercise hard right before sleep",
         "Turn off devices before bed",
         "Eat a big meal at night"
        ],
@@ -2352,10 +2353,10 @@
       {
        "q": "What is the writer's opinion of the market?",
        "o": [
-        "It is too crowded to enjoy",
-        "It should open every day",
-        "It sells only cold drinks",
-        "It shows the best side of the town"
+        "It is far too crowded for anyone to enjoy it",
+        "It should be open on every day of the week",
+        "It sells nothing except cold drinks and ice",
+        "It shows the best side of the neighborhood"
        ],
        "why": "글쓴이는 시장이 동네의 가장 좋은 모습을 보여 준다고 생각해요.",
        "std": [
@@ -2398,9 +2399,9 @@
      "k": "w",
      "en": "pair",
      "pos": "n",
-     "ko": "한 쌍, 한 켤레",
+     "ko": "한 쌍",
      "ex": "I bought a pair of gloves yesterday.",
-     "exko": "나는 어제 장갑 한 켤레를 샀어요.",
+     "exko": "나는 어제 장갑 한 쌍을 샀어요.",
      "z": [
       "tooth",
       "cloud",

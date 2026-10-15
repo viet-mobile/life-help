@@ -1,0 +1,352 @@
+{
+ "packet": "M02-be",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 99
+ },
+ "patches": [
+  {
+   "item": "994deeb2",
+   "op": "set",
+   "set": {
+    "q": "Which sentence correctly says that one library is near the park?",
+    "o": [
+     "There are a library near the park.",
+     "There is a library near the park.",
+     "There have a library near the park.",
+     "It are a library near the park."
+    ],
+    "a": 1,
+    "why": "단수 명사 앞에는 There is를 써요. 'have'는 '있다'는 뜻의 There 구문에 쓰지 않아요."
+   },
+   "why": "Distractor \"It has a library near the park.\" is grammatical and can be read as a second correct answer (e.g. a town has a library); replaced with a clearly wrong form. q/o identity text changes.",
+   "severity": "minor"
+  },
+  {
+   "item": "dfbbf696",
+   "op": "set",
+   "set": {
+    "q": "Choose the best answer to \"Are there any buses to the airport at night?\"",
+    "o": [
+     "No, there aren't.",
+     "No, there don't.",
+     "No, it isn't.",
+     "No, they don't."
+    ],
+    "a": 0,
+    "why": "Are there ~?에는 'No, there aren't.'로 답해요."
+   },
+   "why": "\"No, there isn't.\" is commonly said by native speakers in reply to \"Are there any buses...?\" so it is defensible; replaced with a clearly wrong form.",
+   "severity": "minor"
+  },
+  {
+   "item": "4e5fbe7e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why were the children at home last Saturday?",
+      "o": [
+       "They were sick",
+       "The weather was bad",
+       "They had too much homework",
+       "They were waiting for guests"
+      ],
+      "a": 1,
+      "why": "첫 문장에서 토요일에 비가 와서 집에 있었다고 해요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "What does \"bored\" most likely mean in the passage?",
+      "o": [
+       "Tired of doing nothing",
+       "Afraid of the heavy rain",
+       "Angry with each other",
+       "Excited about the day"
+      ],
+      "a": 0,
+      "why": "TV가 고장 나고 책도 없어서 할 일이 없는 상태예요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "Who was the best at eating dumplings?",
+      "o": [
+       "The writer's brother",
+       "The writer",
+       "The grandmother",
+       "The writer's mother"
+      ],
+      "a": 0,
+      "why": "'he was the best at eating them'에서 he는 형제예요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What happened after the grandmother suggested making dumplings?",
+      "o": [
+       "The rain stopped at once",
+       "The brother went to bed early",
+       "The TV was fixed by Grandma",
+       "The kitchen got messy"
+      ],
+      "a": 3,
+      "why": "곧 부엌이 밀가루와 웃음으로 가득 찼다고 해요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "Which statement is true?",
+      "o": [
+       "The brother was good at folding",
+       "The TV worked well all day",
+       "The dumplings tasted good",
+       "The writer stayed bored until night"
+      ],
+      "a": 2,
+      "why": "마지막 문장에서 dumplings were delicious라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Key was uniquely longest in q2 and q4; shortened keys and lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "fc977c92",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "When is Tom's birthday?",
+      "o": [
+       "This Friday",
+       "Next Friday",
+       "Next Monday",
+       "This Sunday"
+      ],
+      "a": 1,
+      "why": "Tom이 'It's next Friday.'라고 말해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why is Tom's house empty that afternoon?",
+      "o": [
+       "His parents are at work",
+       "His family is on a trip",
+       "The house is being repaired",
+       "His parents are at a party"
+      ],
+      "a": 0,
+      "why": "My parents are at work, so the house is empty라고 해요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "Why does Jisu ask about nuts?",
+      "o": [
+       "She does not like the taste of nuts",
+       "Tom asked for a cake full of nuts",
+       "The shop has no nuts left today",
+       "Sara might get sick from them"
+      ],
+      "a": 3,
+      "why": "Sara가 견과류 알레르기가 있는지 확인하고 있어요.",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "What will Jisu do for the party?",
+      "o": [
+       "Make a chocolate cake",
+       "Buy some balloons",
+       "Invite Minho",
+       "Clean the house"
+      ],
+      "a": 0,
+      "why": "I'm good at baking, so I can make it이라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "q3 key was far longer and more specific than distractors (38 vs 23-26 chars).",
+   "severity": "minor"
+  },
+  {
+   "item": "33d0d4f7",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A story about a book festival",
+       "Rules for studying at a cafe",
+       "A guide to children's books",
+       "A description of a town library"
+      ],
+      "a": 3,
+      "why": "도서관의 위치, 시간, 층별 모습을 소개하는 글이에요.",
+      "std": [
+       "9영01-03"
+      ]
+     },
+     {
+      "q": "On which floor are the long study tables?",
+      "o": [
+       "The first floor",
+       "The third floor",
+       "The second floor",
+       "The basement"
+      ],
+      "a": 2,
+      "why": "The second floor ... long tables for studying이라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "When is the library closed?",
+      "o": [
+       "On Saturdays",
+       "On Sundays",
+       "On Mondays",
+       "On Fridays"
+      ],
+      "a": 1,
+      "why": "closed on Sundays라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What was held at the library last month?",
+      "o": [
+       "A cooking class",
+       "A book festival",
+       "A music show",
+       "A movie night"
+      ],
+      "a": 1,
+      "why": "Last month, there was a book festival이라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Who would most likely enjoy the first floor?",
+      "o": [
+       "A young child who likes stories",
+       "A student preparing for a test",
+       "A person who wants some coffee",
+       "A worker who needs silence"
+      ],
+      "a": 0,
+      "why": "1층은 어린이를 위한 그림책 공간이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "The library is open only nine to six, so it is also closed in the evening; \"In the evening\" was a second correct answer.",
+   "severity": "major"
+  },
+  {
+   "item": "735f9f62",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Twins with different hobbies",
+       "A soccer game at their school",
+       "The jobs of the twins' parents",
+       "A day at the school library"
+      ],
+      "a": 0,
+      "why": "쌍둥이의 성격과 취미가 서로 다르다는 내용이에요.",
+      "std": [
+       "9영01-03"
+      ]
+     },
+     {
+      "q": "What does Dani do after class?",
+      "o": [
+       "He spends time on the soccer field",
+       "He studies in the reading room",
+       "He helps at the library club",
+       "He visits his grandmother"
+      ],
+      "a": 0,
+      "why": "he is always on the field after class라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "In the passage, \"loud\" describes Dani as someone who is ___.",
+      "o": [
+       "afraid of loud sounds",
+       "taller than his sister",
+       "always sad and tired",
+       "noisy and full of energy"
+      ],
+      "a": 3,
+      "why": "Hana가 조용하다는 것과 대비되어 '시끄럽고 활발한' 사람을 말해요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "What is the twins' father's job?",
+      "o": [
+       "Nurse",
+       "Teacher",
+       "Bus driver",
+       "Cook"
+      ],
+      "a": 2,
+      "why": "their father is a bus driver라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Where are the twins together on weekends?",
+      "o": [
+       "At the school library",
+       "At their grandmother's house",
+       "On the soccer field",
+       "At their mother's hospital"
+      ],
+      "a": 1,
+      "why": "On weekends, they are together at their grandmother's house라고 해요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "q1 key uniquely longest; also removes redundant \"Two twins\".",
+   "severity": "minor"
+  }
+ ],
+ "ok": 92,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

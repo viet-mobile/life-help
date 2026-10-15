@@ -1,0 +1,30 @@
+{
+ "packet": "M03-pres",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "e2273340",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Ordering has two valid answers (Tom and Mina / Mina and Tom). Disable ordering; pick and cloze are fine.",
+   "severity": "major"
+  },
+  {
+   "item": "3a46cf45",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Ordering has two valid answers (opens...and closes / closes...and opens). Disable ordering; pick and cloze are fine.",
+   "severity": "major"
+  }
+ ],
+ "ok": 128,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,66 @@
+{
+ "packet": "M07-m2-pass",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 94
+ },
+ "patches": [
+  {
+   "item": "0ae52e81",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How chocolate is made from cacao seeds",
+       "Why farmers need to move to warm places",
+       "Which shops sell the best chocolate",
+       "How sugar and milk are produced"
+      ],
+      "a": 0,
+      "why": "카카오 씨앗이 초콜릿이 되는 과정을 설명해요."
+     },
+     {
+      "q": "What is done to the seeds after they are left in the sun?",
+      "o": [
+       "They are dried, cleaned, and roasted.",
+       "They are crushed into paste at once.",
+       "They are poured into molds at once.",
+       "They are wrapped and sold in stores."
+      ],
+      "a": 0,
+      "why": "Then they are dried, cleaned, and roasted."
+     },
+     {
+      "q": "Why are fair prices important?",
+      "o": [
+       "Many farmers depend on cacao for money.",
+       "Chocolate is very hard to wrap well.",
+       "Cacao trees grow only in rainy weather.",
+       "Factories need less sugar and milk."
+      ],
+      "a": 0,
+      "why": "farmers depend on cacao for their income."
+     },
+     {
+      "q": "When are sugar and milk added?",
+      "o": [
+       "After the seeds become a thick paste",
+       "Before the pods are picked",
+       "While the seeds are left in the sun",
+       "After the chocolate is wrapped"
+      ],
+      "a": 0,
+      "why": "씨앗을 으깨 반죽을 만든 뒤에 설탕과 우유가 더해져요."
+     }
+    ]
+   },
+   "why": "Remove cross-question leak: q4 key no longer mentions roasted seeds (q2 answer). No identity field changed.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 93,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

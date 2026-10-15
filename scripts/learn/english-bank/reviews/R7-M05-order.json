@@ -1,0 +1,355 @@
+{
+ "packet": "M05-order",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 121
+ },
+ "patches": [
+  {
+   "item": "65d47db3",
+   "op": "set",
+   "set": {
+    "text": "Dear Diary, it's me, Sora. Today was a busy Saturday. I woke up at eight and ate toast with jam. At ten, I met my friend Hana at the park, and we rode our bikes by the river. We had lunch at noon, and then we went to the library to return some books. In the evening I helped my mother make dinner. Before bed, I read a comic book for twenty minutes. I was tired, but I felt happy."
+   },
+   "why": "Add the writer's name to the text so the Sora questions are answerable from the text.",
+   "severity": "major"
+  },
+  {
+   "item": "f8ee3650",
+   "op": "set",
+   "set": {
+    "text": "You can grow beans at home in four easy steps. First, put a bean on wet paper and place it in a clear cup. Second, keep the cup near a window so that it gets light. Third, add a few drops of water every day. After about a week, a small root appears. Then move the bean to a pot with soil. Soon green leaves will grow. Remember, too much water can make the bean rot, so be careful."
+   },
+   "why": "Only four steps are given.",
+   "severity": "minor"
+  },
+  {
+   "item": "5e3d1ffc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "When did Jun first notice that his umbrella was missing?",
+      "o": [
+       "When he arrived at school",
+       "When the rain started in the afternoon",
+       "After he called the bus company",
+       "On Tuesday morning at the office"
+      ],
+      "a": 0,
+      "why": "학교에 도착해서야 알았다고 해요."
+     },
+     {
+      "q": "Why did Jun call the bus company?",
+      "o": [
+       "He wanted to ask about a late bus on Monday.",
+       "He wanted to thank the driver for the ride.",
+       "He wanted to find his umbrella.",
+       "He needed a new bus pass for school."
+      ],
+      "a": 2,
+      "why": "걱정이 되어 우산을 찾으려고 전화했어요."
+     },
+     {
+      "q": "In the passage, “picked it up” means ...",
+      "o": [
+       "lifted it high",
+       "dropped it off",
+       "collected it",
+       "looked for it"
+      ],
+      "a": 2,
+      "why": "사무실에서 우산을 찾아갔다는 뜻이에요."
+     },
+     {
+      "q": "What does Jun learn from this experience?",
+      "o": [
+       "To carry two umbrellas on every rainy day",
+       "To avoid taking the bus on rainy days",
+       "To call the bus office every single morning",
+       "To check his seat before leaving"
+      ],
+      "a": 3,
+      "why": "그 이후로 내리기 전에 항상 자리를 확인해요."
+     },
+     {
+      "q": "Which statement is true?",
+      "o": [
+       "Jun lost his umbrella on Tuesday.",
+       "It was raining when Jun left the bus.",
+       "The woman at the office called Jun first.",
+       "Jun got his umbrella back the next day."
+      ],
+      "a": 3,
+      "why": "화요일 아침에 우산을 찾았어요."
+     }
+    ]
+   },
+   "why": "Key was longest in Q2 and Q4; make the keys shorter than distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "79b8389b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why is Eun-ji writing to Daniel?",
+      "o": [
+       "To invite him to a party",
+       "To ask about the homework",
+       "To thank him for a gift",
+       "To tell him about a class trip"
+      ],
+      "a": 3,
+      "why": "첫 문장에서 현장학습 이야기를 하려고 쓴다고 해요."
+     },
+     {
+      "q": "What did the class do after lunch?",
+      "o": [
+       "They watched a film about space.",
+       "They did experiments with magnets.",
+       "They met a guide.",
+       "They rode the bus back."
+      ],
+      "a": 1,
+      "why": "점심 뒤에 자석 실험을 했어요."
+     },
+     {
+      "q": "Which activity came before the model of the solar system?",
+      "o": [
+       "The film about space",
+       "The magnet experiments",
+       "The picnic lunch",
+       "The bus ride home"
+      ],
+      "a": 0,
+      "why": "First가 영화, Next가 태양계 모형이에요."
+     },
+     {
+      "q": "How did Eun-ji probably feel about her favorite part of the trip?",
+      "o": [
+       "Bored",
+       "Worried",
+       "Excited",
+       "Ashamed"
+      ],
+      "a": 2,
+      "why": "가장 좋았던 부분이라고 하며 느낌표를 썼어요."
+     },
+     {
+      "q": "In “I made a small train move without touching it,” what does “it” refer to?",
+      "o": [
+       "the magnet",
+       "the museum",
+       "the small train",
+       "the model"
+      ],
+      "a": 2,
+      "why": "만지지 않고 움직인 것은 작은 기차예요."
+     }
+    ]
+   },
+   "why": "Stem no longer names the magnet experiments (revealed Q2 answer). Text and key unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "d2316d5e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What happens right after the dance show?",
+      "o": [
+       "A short play begins.",
+       "The art contest starts.",
+       "Snacks are sold in the yard.",
+       "Winners are announced."
+      ],
+      "a": 0,
+      "why": "댄스 공연 다음 11시에 연극이 이어져요."
+     },
+     {
+      "q": "When will the winners be announced?",
+      "o": [
+       "At 1:00",
+       "At 12:00",
+       "At 11:00",
+       "At 3:00"
+      ],
+      "a": 3,
+      "why": "3시에 수상자를 발표해요."
+     },
+     {
+      "q": "What is this notice mainly for?",
+      "o": [
+       "Asking students to pay for the festival",
+       "Giving information about a school event",
+       "Teaching students a new dance step",
+       "Choosing a class leader for the year"
+      ],
+      "a": 1,
+      "why": "행사 일정과 안내를 알리는 글이에요."
+     },
+     {
+      "q": "In the notice, “sign in” means ...",
+      "o": [
+       "pay at the door",
+       "write your name down",
+       "leave a message",
+       "ask a question"
+      ],
+      "a": 1,
+      "why": "parents must sign in at the front desk는 방문 기록을 남기라는 뜻이에요."
+     },
+     {
+      "q": "Which is NOT allowed at the festival?",
+      "o": [
+       "Visiting as a parent",
+       "Buying snacks",
+       "Watching the play",
+       "Running in the gym"
+      ],
+      "a": 3,
+      "why": "마지막 문장에서 체육관에서 뛰지 말라고 해요."
+     }
+    ]
+   },
+   "why": "Key was longest and most specific; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "442bcf93",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the story mainly about?",
+      "o": [
+       "How the writer lost a bike on the way to school",
+       "How the writer learned to ride a bike",
+       "How the writer's brother won a big race",
+       "How the writer fixed a broken bike"
+      ],
+      "a": 1,
+      "why": "형의 도움으로 자전거를 배운 이야기예요."
+     },
+     {
+      "q": "What did Seho do on the first day?",
+      "o": [
+       "He rode ahead of the writer.",
+       "He bought a new bike.",
+       "He took the writer to the corner.",
+       "He held the back of the seat."
+      ],
+      "a": 3,
+      "why": "첫날 형이 안장 뒤를 잡아 주었어요."
+     },
+     {
+      "q": "When could the writer ride to the corner without falling?",
+      "o": [
+       "By the end of the week",
+       "On the first day",
+       "On the second day",
+       "A month later"
+      ],
+      "a": 0,
+      "why": "주말 무렵에는 넘어지지 않고 모퉁이까지 갔어요."
+     },
+     {
+      "q": "Why does the writer thank Seho?",
+      "o": [
+       "Seho gave the writer a new bike.",
+       "Seho takes the writer to school.",
+       "Seho helped the writer learn to ride.",
+       "Seho fixed the writer's knee."
+      ],
+      "a": 2,
+      "why": "형이 자전거 타는 법을 배우도록 도와주었기 때문이에요."
+     },
+     {
+      "q": "In the passage, “pedaled” means ...",
+      "o": [
+       "pulled the brakes very hard",
+       "turned the handlebars left and right",
+       "rang the bell again and again",
+       "pushed the pedals"
+      ],
+      "a": 3,
+      "why": "pedal은 발로 페달을 밟는 동작이에요."
+     }
+    ]
+   },
+   "why": "Key was longest in Q1 and Q5; key no longer longer/more specific.",
+   "severity": "minor"
+  },
+  {
+   "item": "c140251c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is Mina's plan mainly for?",
+      "o": [
+       "Planning a weekend trip with a classmate",
+       "Studying for a test a little each day",
+       "Choosing a library book for the weekend",
+       "Learning how to take better walks"
+      ],
+      "a": 1,
+      "why": "금요일 시험을 위해 조금씩 매일 공부하는 계획이에요."
+     },
+     {
+      "q": "Who will study math with Mina?",
+      "o": [
+       "Joon",
+       "Her brother",
+       "Her teacher",
+       "A librarian"
+      ],
+      "a": 0,
+      "why": "수요일에 같은 반 친구 준과 함께 수학 문제를 풀어요."
+     },
+     {
+      "q": "What will Mina do on Thursday?",
+      "o": [
+       "Do math problems at the library with Joon",
+       "Review English notes for thirty minutes",
+       "Take a walk and review hard parts",
+       "Take the big test at school"
+      ],
+      "a": 2,
+      "why": "목요일에는 산책을 하고 어려운 부분을 다시 봐요."
+     },
+     {
+      "q": "Why does Mina plan to study a little every day?",
+      "o": [
+       "She wants to finish all the work before dinner.",
+       "She does not like going for long walks.",
+       "She has no test on Friday at all.",
+       "She believes she will remember more."
+      ],
+      "a": 3,
+      "why": "마지막 문장에서 이유를 말해요."
+     },
+     {
+      "q": "In the passage, “look over” means ...",
+      "o": [
+       "look up at the sky",
+       "write down all the notes",
+       "jump over a wall",
+       "check again"
+      ],
+      "a": 3,
+      "why": "look over는 훑어보며 다시 검토한다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Key was longest in 4 of 5 questions; rebalanced lengths and positions.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 108,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

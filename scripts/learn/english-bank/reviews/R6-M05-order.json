@@ -1,0 +1,47 @@
+{
+ "packet": "M05-order",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 130
+ },
+ "patches": [
+  {
+   "item": "fe7ea0d9",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Word order of coordinated adjectives (warm and quiet / quiet and warm) is not unique, so the ordering question has two correct answers.",
+   "severity": "major"
+  },
+  {
+   "item": "27b3840f",
+   "op": "set",
+   "set": {
+    "bad": [
+     "First, the eggs mix and the flour.",
+     "First, mix the eggs the and flour.",
+     "First, mix and the eggs the flour."
+    ]
+   },
+   "why": "Original bad[1] and bad[2] are defensible English; replaced with clearly ungrammatical sentences (good, cz and rule unchanged).",
+   "severity": "minor"
+  },
+  {
+   "item": "126e4fba",
+   "op": "set",
+   "set": {
+    "bad": [
+     "The boy opened careful the door.",
+     "The boy carefully the door opened.",
+     "The carefully boy opened the door."
+    ]
+   },
+   "why": "Blind solver found \"opened carefully the door\" defensible (adverb between verb and short object); replaced with an unambiguous error.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 127,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

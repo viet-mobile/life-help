@@ -1,0 +1,64 @@
+{
+ "packet": "M04-plural",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 128
+ },
+ "patches": [
+  {
+   "item": "ab7a4197",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "I bought two ___ of socks.",
+     "ok": "pairs",
+     "wr": [
+      "paires",
+      "pairing",
+      "paired"
+     ]
+    },
+    "rule": "둘 이상의 짝을 셀 때는 pairs로 쓰고, of 뒤에는 복수 명사(socks)를 써요."
+   },
+   "why": "'two pair of socks' is a accepted variant, so distractor 'pair' removed; rule Korean smoothed.",
+   "severity": "major"
+  },
+  {
+   "item": "25200f42",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "I have a ___ friends in Busan.",
+     "ok": "few",
+     "wr": [
+      "little",
+      "much",
+      "several"
+     ]
+    }
+   },
+   "why": "'a lot friends' may be read as acceptable informal; 'a several friends' is clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "d64d071a",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "We have a ___ time left.",
+     "ok": "little",
+     "wr": [
+      "few",
+      "many",
+      "several"
+     ]
+    }
+   },
+   "why": "'a lot time left' is colloquially heard; 'a several time left' is clearly wrong.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 125,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

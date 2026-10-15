@@ -1,0 +1,461 @@
+{
+ "packet": "M04-plural",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 5,
+  "questions": 113
+ },
+ "patches": [
+  {
+   "item": "577a4a02",
+   "op": "set",
+   "set": {
+    "good": "The farmers grow potatoes and onions.",
+    "bad": [
+     "The farmers grow potatos and onions.",
+     "The farmers grows potatoes and onions.",
+     "The farmer grow potatoes and onions."
+    ],
+    "cz": {
+     "st": "The farmers grow ___ and onions.",
+     "ok": "potatoes",
+     "wr": [
+      "potatos",
+      "potatoe",
+      "potatoies"
+     ]
+    },
+    "rule": "potato처럼 자음 + o로 끝나는 일부 명사는 -es를 붙여요. 복수 주어에는 동사 원형을 써요.",
+    "ord": false
+   },
+   "why": "The ordering question is not unique: 'The farmers grow onions and potatoes.' is equally correct, so set ord:false (no identity field changed).",
+   "severity": "minor"
+  },
+  {
+   "item": "5b155caa",
+   "op": "set",
+   "set": {
+    "ko": "한 쌍",
+    "exko": "나는 어제 장갑 한 쌍을 샀어요."
+   },
+   "why": "ko had two glosses ('한 쌍, 한 켤레') against SPEC (one gloss) and made the correct en->ko option far longer than the distractors (9 vs 2-5 chars). Gloss and example kept consistent.",
+   "severity": "minor"
+  },
+  {
+   "item": "21f5b3b5",
+   "op": "set",
+   "set": {
+    "q": "The ___ are under the bed.",
+    "o": [
+     "shoes",
+     "shoe",
+     "shoe's",
+     "a shoes"
+    ],
+    "a": 0,
+    "why": "동사가 복수형 are이므로 주어도 복수 명사 shoes가 와야 해요. a shoes는 쓸 수 없어요."
+   },
+   "why": "Explanation Korean was garbled ('주어가 복수 동사 are와 함께 있으므로'); q/o/a unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "9bed3a48",
+   "op": "set",
+   "set": {
+    "text": "My grandmother lives in a small house with a big kitchen. Every weekend, my cousins and I go there. She keeps her knives on a high shelf, and we are not allowed to touch them. Instead, we wash the dishes and set the table. Her stories about the old days are my favorite part. She says that long ago, there were no supermarkets in her village, so people made their own cheese, and the whole family helped. Grandma's soup always has potatoes and onions, and it makes our weekends warm and happy.",
+    "qs": [
+     {
+      "q": "What is the writer's favorite part of the weekend visit?",
+      "o": [
+       "Washing the dishes in the big kitchen",
+       "Grandma's stories about the old days",
+       "Setting the table for the family lunch",
+       "Eating the soup with potatoes and onions"
+      ],
+      "why": "글쓴이는 할머니의 옛날이야기가 가장 좋다고 했어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 1
+     },
+     {
+      "q": "Why did people make their own cheese long ago?",
+      "o": [
+       "There were no supermarkets in the village",
+       "Cheese was a gift from the local farmers",
+       "The whole family disliked buying bread",
+       "Cheese tasted much better when it was in soup"
+      ],
+      "why": "그 마을에는 슈퍼마켓이 없었기 때문이에요.",
+      "std": [
+       "9영01-04"
+      ],
+      "a": 0
+     },
+     {
+      "q": "Why can the children not touch the knives?",
+      "o": [
+       "Grandma wants to keep them for herself only",
+       "The knives belong to a neighbor in the village",
+       "The children are too tired to hold anything",
+       "They could be dangerous for children"
+      ],
+      "why": "칼은 위험할 수 있어서 아이들에게 만지지 못하게 한다고 추측할 수 있어요.",
+      "std": [
+       "9영01-07"
+      ],
+      "a": 3
+     },
+     {
+      "q": "In the passage, “the whole family” means ___.",
+      "o": [
+       "only the oldest woman in the family",
+       "just a few of the young cousins",
+       "every person in the family",
+       "the neighbors who live nearby"
+      ],
+      "why": "whole은 '전체의'라는 뜻이라서 가족 모두를 뜻해요.",
+      "std": [
+       "9영01-07"
+      ],
+      "a": 2
+     }
+    ]
+   },
+   "why": "Text said children may not touch knives yet 'cut the bread' (contradiction -> changed to 'set the table'); key was the longest option in 4/4 questions, distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "e8c38f95",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where did Hana find her keys?",
+      "o": [
+       "Under the old sofa",
+       "Next to her lunch box",
+       "Inside one of her coat pockets",
+       "In Sam's room"
+      ],
+      "why": "열쇠는 부엌의 도시락 통 옆에 있었어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 1
+     },
+     {
+      "q": "Why did Hana put the keys down in the kitchen?",
+      "o": [
+       "She was washing the dishes",
+       "She was cooking dinner for her family",
+       "She was talking with Sam",
+       "She was eating her lunch"
+      ],
+      "why": "설거지를 하다가 열쇠를 내려놓았어요.",
+      "std": [
+       "9영01-04"
+      ],
+      "a": 0
+     },
+     {
+      "q": "What does Sam's answer show about him?",
+      "o": [
+       "He was angry about the question",
+       "He wanted to hide the keys",
+       "He knew nothing about the keys",
+       "He was busy but still helped"
+      ],
+      "why": "게임 중이었지만 부엌에 있었다고 알려 주며 도와줬어요.",
+      "std": [
+       "9영01-07"
+      ],
+      "a": 3
+     },
+     {
+      "q": "What does Hana decide at the end?",
+      "o": [
+       "To ask Sam to find her keys",
+       "To buy a bigger bag tomorrow",
+       "To keep her keys in a small box",
+       "To stop washing dishes after lunch"
+      ],
+      "why": "열쇠를 넣을 작은 상자가 필요할지도 모른다고 했어요.",
+      "std": [
+       "9영01-03"
+      ],
+      "a": 2
+     }
+    ]
+   },
+   "why": "Key was the longest (or tied longest) option in all 4 questions; distractors lengthened/varied, answer indices unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "67283b50",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How teenagers can choose a good mobile phone",
+       "Why sleep matters and how to sleep well",
+       "Which books are best to read before bed",
+       "What doctors usually eat for breakfast"
+      ],
+      "why": "수면이 왜 중요한지와 잘 자는 방법을 설명하는 글이에요.",
+      "std": [
+       "9영01-03"
+      ],
+      "a": 1
+     },
+     {
+      "q": "Why do many teenagers sleep too little?",
+      "o": [
+       "They have too many early morning classes",
+       "Their bedrooms are too quiet to sleep in",
+       "They use phones or watch videos late",
+       "Their doctors tell them to stay up late"
+      ],
+      "why": "휴대폰이나 영상 때문에 늦게까지 깨어 있기 때문이에요.",
+      "std": [
+       "9영01-04"
+      ],
+      "a": 2
+     },
+     {
+      "q": "What does “sort” mean in the passage?",
+      "o": [
+       "Throw them away",
+       "Make them much louder",
+       "Copy them by hand",
+       "Put them in order"
+      ],
+      "why": "뇌가 정보를 정리한다는 뜻이므로 sort는 '정리하다'예요.",
+      "std": [
+       "9영01-07"
+      ],
+      "a": 3
+     },
+     {
+      "q": "What advice does the writer give?",
+      "o": [
+       "Sleep in a bright room",
+       "Exercise hard right before sleep",
+       "Turn off devices before bed",
+       "Eat a big meal at night"
+      ],
+      "why": "잠자리에 들기 한 시간 전에 기기를 끄라고 조언해요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 2
+     }
+    ]
+   },
+   "why": "Key was the longest option in all 4 questions; distractors lengthened, answer indices unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "e99fb556",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How many students take part in Sports Day?",
+      "o": [
+       "Twenty",
+       "Forty",
+       "Eighty",
+       "Sixty"
+      ],
+      "why": "네 팀에 각 팀 20명이므로 모두 80명이에요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 2
+     },
+     {
+      "q": "What happens right after lunch?",
+      "o": [
+       "Soccer matches",
+       "A relay race",
+       "A race for small children",
+       "A water break"
+      ],
+      "why": "점심 식사 후에 이어달리기가 있어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What must parents NOT do?",
+      "o": [
+       "Enter the track",
+       "Sit on the benches",
+       "Wear comfortable shoes",
+       "Bring a hat"
+      ],
+      "why": "부모님은 벤치에 앉을 수 있지만 트랙에 들어가서는 안 돼요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 0
+     },
+     {
+      "q": "What is the main purpose of this announcement?",
+      "o": [
+       "To ask parents to become team coaches",
+       "To report who won last year's race",
+       "To warn students about the loud cheers",
+       "To explain the plan for Sports Day"
+      ],
+      "why": "운동회 일정과 준비물 등 계획을 알리는 안내문이에요.",
+      "std": [
+       "9영01-06"
+      ],
+      "a": 3
+     }
+    ]
+   },
+   "why": "All four questions tested literal detail only; the last (certificate) replaced with a purpose question for variety. Other questions unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "b490a50a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why can giraffes reach leaves on tall trees?",
+      "o": [
+       "They can climb the branches",
+       "They have very long necks",
+       "They are taller than the zookeeper",
+       "They jump very high"
+      ],
+      "why": "기린은 목이 아주 길어서 높은 나무의 잎에 닿을 수 있어요.",
+      "std": [
+       "9영01-04"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What did Yuna do at the zoo?",
+      "o": [
+       "She drew pictures of animals",
+       "She wrote a letter to the zookeeper",
+       "She fed bananas to the monkeys",
+       "She bought a toy giraffe"
+      ],
+      "why": "유나는 공책에 동물 그림을 그렸어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 0
+     },
+     {
+      "q": "Which sentence about penguins is true?",
+      "o": [
+       "They fly higher than other birds",
+       "They eat leaves and insects",
+       "They live in the gift shop",
+       "They cannot fly but swim fast"
+      ],
+      "why": "펭귄은 날지 못하지만 빠르게 헤엄친다고 했어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 3
+     },
+     {
+      "q": "How did the students feel on the bus home?",
+      "o": [
+       "Bored and hungry",
+       "Excited and noisy",
+       "Tired but happy",
+       "Afraid and angry"
+      ],
+      "why": "버스에서 모두 피곤했지만 행복했다고 했어요.",
+      "std": [
+       "9영01-05"
+      ],
+      "a": 2
+     }
+    ]
+   },
+   "why": "Distractor 'She took photos of the penguins' is arguably true: 'We took many photos' includes Yuna. Replaced.",
+   "severity": "minor"
+  },
+  {
+   "item": "d475e1a3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Who buys most of the candles that the writer's aunt makes?",
+      "o": [
+       "Tourists",
+       "Neighbors",
+       "Children",
+       "Other sellers"
+      ],
+      "why": "고모의 손님은 대부분 기념품을 찾는 관광객이에요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 0
+     },
+     {
+      "q": "What is the writer's opinion of the market?",
+      "o": [
+       "It is far too crowded for anyone to enjoy it",
+       "It should be open on every day of the week",
+       "It sells nothing except cold drinks and ice",
+       "It shows the best side of the neighborhood"
+      ],
+      "why": "글쓴이는 시장이 동네의 가장 좋은 모습을 보여 준다고 생각해요.",
+      "std": [
+       "9영01-06"
+      ],
+      "a": 3
+     },
+     {
+      "q": "Which item is sold at the handmade stalls?",
+      "o": [
+       "Fish cakes",
+       "Sweet potatoes",
+       "Scarves",
+       "Ice"
+      ],
+      "why": "수공예품 가게에서는 스카프, 양말, 휴대폰 케이스를 팔아요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 2
+     },
+     {
+      "q": "What does “Although” show in “Although the market is crowded”?",
+      "o": [
+       "A reason",
+       "A contrast",
+       "A time",
+       "An example"
+      ],
+      "why": "붐비지만 사람들이 친절하다는 대조를 나타내요.",
+      "std": [
+       "9영01-04"
+      ],
+      "a": 1
+     }
+    ]
+   },
+   "why": "Key was uniquely longest and said 'town' while the text says 'neighborhood'; distractors lengthened, key aligned with the text.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 93,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

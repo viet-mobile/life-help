@@ -1,0 +1,288 @@
+{
+ "packet": "M03-pres",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 3,
+  "questions": 106
+ },
+ "patches": [
+  {
+   "item": "935959bf",
+   "op": "set",
+   "set": {
+    "o": [
+     "she do",
+     "she drive",
+     "she does",
+     "she is"
+    ],
+    "a": 2,
+    "q": "A: Does Mom drive to work?\nB: Yes, ____.",
+    "why": "Does로 물으면 'Yes, she does.'처럼 does로 대답해요."
+   },
+   "why": "Remove defensible 'she drives'.",
+   "severity": "major"
+  },
+  {
+   "item": "18e1913e",
+   "op": "set",
+   "set": {
+    "why": "“She does her homework after school.”의 does는 '하다'라는 뜻의 본동사이고, 나머지 문장의 does는 의문문·부정문을 만드는 조동사예요."
+   },
+   "why": "Explanation referenced '첫 문장' wrongly.",
+   "severity": "minor"
+  },
+  {
+   "item": "e4bfa196",
+   "op": "set",
+   "set": {
+    "why": "수영은 월요일과 금요일, 피아노는 수요일이에요."
+   },
+   "why": "No table in stem.",
+   "severity": "minor"
+  },
+  {
+   "item": "456a490f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Bees build their hives near many kinds of flowers.",
+       "Bees cannot find any flowers without help from people.",
+       "Bees use dances to show where food is.",
+       "Bees dance in order to stay warm in cold weather."
+      ],
+      "a": 2,
+      "why": "글 전체가 꿀벌이 춤으로 먹이의 위치를 알려 주는 방법을 설명해요.",
+      "std": [
+       "9영01-03"
+      ]
+     },
+     {
+      "q": "What does a bee do when the flowers are far away?",
+      "o": [
+       "She moves in a small circle near the hive door.",
+       "She stays quietly inside the hive until night.",
+       "She flies around the whole hive twice in a row.",
+       "She moves in a straight line and shakes her body."
+      ],
+      "a": 3,
+      "why": "먼 곳의 꽃일 때는 직선으로 움직이며 몸을 흔든다고 나와요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What happens after the dance?",
+      "o": [
+       "The other workers follow her directions.",
+       "The first bee goes to sleep for the whole day.",
+       "The flowers start to grow more quickly.",
+       "The whole hive moves to a new place far away."
+      ],
+      "a": 0,
+      "why": "Then the other workers leave the hive and follow her directions라고 나와요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "What does a very fast dance tell the other bees?",
+      "o": [
+       "The flowers are far away.",
+       "The food is quite close.",
+       "There is no food today.",
+       "A storm is coming."
+      ],
+      "a": 1,
+      "why": "The faster she dances, the closer the food is라고 나와요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why did the writer write this passage?",
+      "o": [
+       "To persuade people to keep bees at home",
+       "To explain how insects share information",
+       "To tell a funny story about one clever bee",
+       "To show step by step how honey is made"
+      ],
+      "a": 1,
+      "why": "글쓴이는 꿀벌이 서로 정보를 나누는 방식을 설명하려고 썼어요.",
+      "std": [
+       "9영01-06"
+      ]
+     }
+    ]
+   },
+   "why": "Key-length cue in 4 of 5 questions; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "9a6e9aa2",
+   "op": "set",
+   "set": {
+    "text": "Doctors say that students between thirteen and eighteen need eight to ten hours of sleep. However, many students sleep only six or seven hours because they study late or use their phones in bed. A lack of sleep makes it hard to pay attention in class, and it can also change a person's mood. To sleep better, experts suggest a few simple habits. First, go to bed at the same time every night. Second, keep your room dark and quiet. Finally, turn off your phone an hour before bed. These small changes help many young people feel better the next day.",
+    "qs": [
+     {
+      "q": "Why do many students get too little sleep?",
+      "o": [
+       "They wake up long before sunrise each day.",
+       "They study late or use phones in bed.",
+       "They have too many hard classes at school.",
+       "They drink too much water late at night."
+      ],
+      "a": 1,
+      "why": "because they study late or use their phones in bed라고 나와요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "What is the third suggestion for better sleep?",
+      "o": [
+       "Keep your room dark and quiet at night.",
+       "Go to bed at the same time every night.",
+       "Study until you feel very tired at night.",
+       "Turn off your phone an hour before bed."
+      ],
+      "a": 3,
+      "why": "Finally 다음에 나오는 제안이 휴대폰을 자기 한 시간 전에 끄라는 거예요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What can a lack of sleep cause?",
+      "o": [
+       "A much faster walking speed",
+       "Trouble paying attention",
+       "A better memory at night",
+       "More time for homework"
+      ],
+      "a": 1,
+      "why": "A lack of sleep makes it hard to pay attention in class라고 나와요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "The writer's purpose is to ____.",
+      "o": [
+       "give tips about good sleep",
+       "advertise a new kind of bed",
+       "tell a story of a doctor",
+       "describe a long school trip"
+      ],
+      "a": 0,
+      "why": "수면 부족의 문제를 알리고 좋은 수면 습관을 제안하는 글이에요.",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "In the passage, “mood” is closest in meaning to ____.",
+      "o": [
+       "temperature",
+       "feeling",
+       "speed",
+       "opinion"
+      ],
+      "a": 1,
+      "why": "수면 부족이 사람의 기분(feeling)에 영향을 준다는 문맥이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "Key always longest; ages made accurate (13-18).",
+   "severity": "minor"
+  },
+  {
+   "item": "f3f15b88",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the whole family do in autumn?",
+      "o": [
+       "They protect the white flowers from the cold.",
+       "They pick the apples and pack the best ones.",
+       "They fix the tools and plan for next year.",
+       "They water the trees and remove small apples."
+      ],
+      "a": 1,
+      "why": "가을에는 온 가족이 사과를 따고 가장 좋은 것들을 상자에 담아요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Why does Mr. Kim take away some small apples?",
+      "o": [
+       "Because they taste very bad",
+       "Because the city doesn't want small ones",
+       "So that the other apples can grow big",
+       "Because the flowers need more space"
+      ],
+      "a": 2,
+      "why": "so that the others grow big라고 목적이 나와요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "When is the farm the quietest?",
+      "o": [
+       "In winter",
+       "In spring",
+       "In summer",
+       "In autumn"
+      ],
+      "a": 0,
+      "why": "In winter, the farm is quiet라고 나와요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does “a farmer never really rests” suggest?",
+      "o": [
+       "A farmer sleeps only a very little.",
+       "A farmer is never really tired.",
+       "A farmer works only during the summer.",
+       "A farmer always has some work to do."
+      ],
+      "a": 3,
+      "why": "겨울에도 도구를 고치고 계획을 세우는 등 늘 할 일이 있다는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Apples grow best in very cold weather.",
+       "City people want to eat much more fruit.",
+       "A farmer's work changes with the seasons.",
+       "Farms are quiet and empty in every season."
+      ],
+      "a": 2,
+      "why": "계절마다 달라지는 농부의 일을 설명하는 글이에요.",
+      "std": [
+       "9영01-03"
+      ]
+     }
+    ]
+   },
+   "why": "q1/q2 revealed each other; q5 key longest.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 92,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
