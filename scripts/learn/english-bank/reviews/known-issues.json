@@ -98,6 +98,62 @@
    "severity": "minor",
    "problem": "Two identical 'the' tokens; a correct arrangement can be marked wrong by id.",
    "fix": "ord:false on the item."
+  },
+  {
+   "batch": 2,
+   "id": "eb-3709c100-cloze",
+   "severity": "minor",
+   "problem": "Builder hint template uses 와 after a word ending in a consonant sound (“not”/“soup”/“am”); should be 과.",
+   "fix": "Not fixable at item level: fix the 와/과 choice in the builder hint template."
+  },
+  {
+   "batch": 2,
+   "id": "eb-61f0fe27-cloze",
+   "severity": "minor",
+   "problem": "Builder hint template uses 와 after a word ending in a consonant sound (“not”/“soup”/“am”); should be 과.",
+   "fix": "Not fixable at item level: fix the 와/과 choice in the builder hint template."
+  },
+  {
+   "batch": 2,
+   "id": "eb-e1d59dcd-cloze",
+   "severity": "minor",
+   "problem": "Builder hint template uses 와 after a word ending in a consonant sound (“not”/“soup”/“am”); should be 과.",
+   "fix": "Not fixable at item level: fix the 와/과 choice in the builder hint template."
+  },
+  {
+   "batch": 4,
+   "id": "eb-4bc677ee-cloze",
+   "severity": "minor",
+   "problem": "Generated hint 1 shows the misspelling '“isnt”' (strip() deletes the apostrophe of isn't). Builder issue (hints.mjs clozeHint1), likely affects many contraction cloze items; not fixable at item level without changing the item's identity.",
+   "fix": "Do not strip apostrophes inside words in clozeHint1's strip() (only strip quotes/punctuation at word edges)."
+  },
+  {
+   "batch": 6,
+   "id": "eb-d166dcd5-cloze",
+   "severity": "minor",
+   "problem": "Auto-generated cloze hint shows 'Lets' without the apostrophe (builder strips punctuation).",
+   "fix": "Not fixable at item level; builder/hint generator should keep the apostrophe."
+  },
+  {
+   "batch": 7,
+   "id": "eb-1d75f36d-order",
+   "severity": "minor",
+   "problem": "Builder-generated order hint is ungrammatical Korean: '모두 7개의 낱말로 만드는 상대에게 말하는 문장이에요.' Same template in other order questions. Not fixable at item level.",
+   "fix": "Fix the hint template in build.mjs."
+  },
+  {
+   "batch": 7,
+   "id": "eb-0b629c9e-order",
+   "severity": "minor",
+   "problem": "Same ungrammatical builder hint template. Not fixable at item level.",
+   "fix": "Fix the template in build.mjs."
+  },
+  {
+   "batch": 7,
+   "id": "eb-263002bb-order",
+   "severity": "minor",
+   "problem": "Same ungrammatical builder hint template. Not fixable at item level.",
+   "fix": "Fix the template in build.mjs."
   }
  ]
 }

@@ -1,0 +1,138 @@
+{
+ "packet": "T08-e6-functions",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 70
+ },
+ "patches": [
+  {
+   "item": "34e6b29e",
+   "op": "set",
+   "set": {
+    "q": "A girl asks a dog's owner, \"May I take a picture of your dog?\" The owner agrees. What does the owner say?",
+    "o": [
+     "Of course. Please do!",
+     "Yes, I may. Go ahead.",
+     "No, thank you. I can.",
+     "You may, I take it."
+    ],
+    "a": 0,
+    "why": "'Of course. Please do!'는 사진을 찍어도 좋다고 허락하는 자연스러운 대답이에요. 'Yes, I may'는 질문한 사람 입장의 말이라 어색해요.",
+    "hint": "개 주인은 사진을 찍어도 되는지 묻는 말을 들었어요. 허락해 주는 말을 찾으세요."
+   },
+   "why": "Fix incoherent stem (identity field q changed).",
+   "severity": "major"
+  },
+  {
+   "item": "604c511a",
+   "op": "set",
+   "set": {
+    "q": "Pool notice: The pool closes at 6. It is a rule at this pool. Swimmers ___ leave the water by 5:50.",
+    "o": [
+     "may",
+     "must",
+     "might",
+     "can't"
+    ],
+    "a": 1,
+    "why": "수영장 규칙이므로 꼭 해야 한다는 must가 알맞아요.",
+    "hint": "규칙이라고 했으니 꼭 해야 하는 일이에요."
+   },
+   "why": "Remove second reading with may (identity field q changed).",
+   "severity": "major"
+  },
+  {
+   "item": "9be39d7d",
+   "op": "set",
+   "set": {
+    "q": "The sign says, \"Visitors may park their bikes here.\" Which sentence has the same meaning?",
+    "o": [
+     "You must park a bike here.",
+     "You can't park a bike here.",
+     "You are allowed to park a bike here.",
+     "You should buy a bike here."
+    ],
+    "a": 2,
+    "why": "may는 허락을 뜻해서 allowed to park(세워도 된다)와 같아요.",
+    "hint": "may가 허락인지 의무인지 생각해 보세요."
+   },
+   "why": "Active voice at level.",
+   "severity": "minor"
+  },
+  {
+   "item": "6c9d8064",
+   "op": "set",
+   "set": {
+    "q": "Which sentence is an offer to help?",
+    "o": [
+     "Can you wash the dishes for me?",
+     "You should wash the dishes.",
+     "Shall I wash the dishes for you?",
+     "You must wash the dishes."
+    ],
+    "a": 2,
+    "why": "Shall I ...?는 도와주겠다는 제안이고, Can you ...?는 부탁이에요.",
+    "hint": "내가 도와주겠다고 하는 말은 어느 것일까요?"
+   },
+   "why": "Avoid restating the s item; identity field q changed? q same, o changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "5afdf2b9",
+   "op": "set",
+   "set": {
+    "hint": "규칙인 문장과 권하는 정도의 문장을 구별해 보세요."
+   },
+   "why": "Hint 1 gave the answer away.",
+   "severity": "minor"
+  },
+  {
+   "item": "3d819dbf",
+   "op": "set",
+   "set": {
+    "q": "should와 must의 차이를 바르게 설명한 것은?",
+    "o": [
+     "should는 어기면 벌을 받는 규칙이다.",
+     "should는 '~해도 된다'는 허락이다.",
+     "should는 '~할 수 있다'는 능력을 나타낸다.",
+     "should는 '~하는 게 좋다'는 부드러운 조언이다."
+    ],
+    "a": 3,
+    "why": "should는 조언이고 must는 규칙이나 의무예요.",
+    "hint": "'꼭 해야 한다'와 '하는 게 좋다'의 세기를 비교해 보세요."
+   },
+   "why": "Natural Korean, neutral hint.",
+   "severity": "minor"
+  },
+  {
+   "item": "093c2565",
+   "op": "set",
+   "set": {
+    "q": "A: ___ B: You should see a doctor.",
+    "o": [
+     "Can you see a doctor with me tomorrow?",
+     "May I see your stomachache, doctor?",
+     "Who is the doctor for my stomachache?",
+     "I have a stomachache. What should I do?"
+    ],
+    "a": 3,
+    "why": "'What should I do?'에 You should ...로 조언해요.",
+    "hint": "조언을 해 주는 대답이 나오려면 어떤 질문이 필요할까요?"
+   },
+   "why": "Lengthen distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "69bd2959",
+   "op": "set",
+   "set": {
+    "hint": "might가 얼마나 확실한 말인지 생각해 보세요. 반드시 일어난다는 뜻일까요?"
+   },
+   "why": "Hint gave the answer.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 61,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,126 @@
+{
+ "packet": "T05-e5-quantity",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 79
+ },
+ "patches": [
+  {
+   "item": "1ce4ecd5",
+   "op": "set",
+   "set": {
+    "ko": "곽"
+   },
+   "why": "Spec: one natural gloss, no parentheses; removes length/format cue in en->ko options.",
+   "severity": "major"
+  },
+  {
+   "item": "9e00d63b",
+   "op": "set",
+   "set": {
+    "ko": "병"
+   },
+   "why": "Spec: one gloss ('병, 항아리' lists two); consistent with exko 유리병.",
+   "severity": "minor"
+  },
+  {
+   "item": "d8b944e9",
+   "op": "set",
+   "set": {
+    "ko": "그릇"
+   },
+   "why": "Spec: one natural gloss ('사발, 그릇' lists two; 사발 is uncommon).",
+   "severity": "minor"
+  },
+  {
+   "item": "f8f8dbd7",
+   "op": "set",
+   "set": {
+    "good": "Ben has a cat, and the cat is white.",
+    "bad": [
+     "Ben has cat, and the cat is white.",
+     "Ben have a cat, and the cat is white.",
+     "Ben has a cat, and the cats is white."
+    ],
+    "cz": {
+     "st": "Ben has a cat, and ___ cat is white.",
+     "ok": "the",
+     "wr": [
+      "an",
+      "two",
+      "many"
+     ]
+    },
+    "rule": "처음 말할 때는 a cat, 이미 말한 고양이를 다시 말할 때는 the cat이에요."
+   },
+   "why": "cz.wr 'a' (and 'some') gives a grammatical sentence about another cat; replaced with always-wrong an/two/many. good and bad unchanged.",
+   "severity": "major"
+  },
+  {
+   "item": "f16db132",
+   "op": "set",
+   "set": {
+    "bad": [
+     "Are there a clock in the kitchen?",
+     "Is there clock in the kitchen?",
+     "Is there a clocks in the kitchen?"
+    ]
+   },
+   "why": "'Is a clock there in the kitchen?' is grammatical; replaced by a definitely wrong sentence. good, cz unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "51cdd3a2",
+   "op": "set",
+   "set": {
+    "q": "빈칸에 알맞은 말은?\nLook at ___ moon tonight. It is big and round.",
+    "o": [
+     "an",
+     "the",
+     "some",
+     "a"
+    ],
+    "a": 1,
+    "why": "달은 하늘에 하나뿐이어서 어느 달인지 모두 알기 때문에 the를 써요.",
+    "hint": "하늘에 달이 몇 개 있는지 생각해 보세요."
+   },
+   "why": "Identity field q changes; 'open a window' is natural so 'a' was defensible. Also sets hint (m items carry a hint field) so it matches the new stem.",
+   "severity": "major"
+  },
+  {
+   "item": "b4502737",
+   "op": "set",
+   "set": {
+    "o": [
+     "No. The first Monday was the 1st.",
+     "Yes. Every Monday is a closed day.",
+     "Yes. The library is closed on all Mondays.",
+     "No. The library is never closed in October."
+    ],
+    "a": 0,
+    "why": "그 달의 first Monday는 1일이었으므로 8일은 쉬는 날이 아니에요."
+   },
+   "why": "Distractors lengthened/made specific to remove the key-length cue (identity field o changes).",
+   "severity": "minor"
+  },
+  {
+   "item": "070f9bf3",
+   "op": "set",
+   "set": {
+    "o": [
+     "May thirteen",
+     "May threeth",
+     "May third",
+     "May thirty"
+    ],
+    "a": 2,
+    "why": "날짜는 서수로 읽어서 May 3rd는 May third예요."
+   },
+   "why": "'May three' is a common spoken form; replaced by clearly wrong 'May thirteen' (identity field o changes).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 69,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

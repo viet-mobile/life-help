@@ -3,7 +3,7 @@
 //   node scripts/learn/english-bank/build.mjs [--only <packetId,...>] [--no-write]
 // Rules: see SPEC.md. Validates every item, expands vocabulary / sentence items into question forms, drops duplicates (normalised prompt+answer,
 // prompt+option set; a copy under another skill is a duplicate too) and reports counts by group, skill, kind and form.
-import { readingHints, pickHint1, clozeHint1, orderHint1, spellHint1, wordClozeHint1, mHints } from "./hints.mjs";
+import { readingHints, pickHint1, clozeHint1, orderHint1, spellHint1, wordClozeHint1, mHints, koenHint2 } from "./hints.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -126,7 +126,7 @@ function ruleHint(item) {
   const first = String(item.rule ?? "").split(/(?<=[.。])\s|(?<=[요다])\.\s/)[0].trim();
   const keys = [item.cz?.ok, ...String(item.good).split(/\s+/).filter((w) => item.bad.every((b) => !b.split(/\s+/).includes(w)))].filter(Boolean);
   const leaks = keys.some((k) => new RegExp(`(^|[^A-Za-z])${String(k).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`, "i").test(first));
-  return first && first.length >= 8 && !leaks ? first.replace(/[.。]$/, "") + "." : "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
+  return first && first.length >= 8 && !leaks && !/\.\.\.|…/.test(first) ? first.replace(/[.。]$/, "") + "." : "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
 }
 for (const { skill, packet, item } of valid) {
   const id = itemId(skill, item);
@@ -141,10 +141,10 @@ for (const { skill, packet, item } of valid) {
     let qid = `eb-${id}-enko`, o = pickN(qid);
     if (o.length === 3) { const r = shuffled(qid, [item.ko, ...o.map((x) => x.ko)]); push(skill, packet, item, "enko", mk(skill, qid, { skillId: skill, difficulty: d, prompt: `영어 단어 “${item.en}”의 뜻으로 알맞은 것은?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `예문: ${item.ex}`], explanation: expl })); }
     qid = `eb-${id}-koen`; o = pickN(qid);
-    if (o.length === 3) { const r = shuffled(qid, [item.en, ...o.map((x) => x.en)]); push(skill, packet, item, "koen", mk(skill, qid, { difficulty: d, prompt: `뜻이 “${item.ko}”인 영어 단어(표현)는?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `첫 글자: “${item.en[0]}”`], explanation: expl })); }
+    if (o.length === 3) { const r = shuffled(qid, [item.en, ...o.map((x) => x.en)]); push(skill, packet, item, "koen", mk(skill, qid, { difficulty: d, prompt: `뜻이 “${item.ko}”인 영어 단어(표현)는?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, koenHint2(item, o.map((x) => x.en))], explanation: expl })); }
     qid = `eb-${id}-cloze`;
     { const stem = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____"); const r = shuffled(qid, [item.en, ...item.z]); push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${stem}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [wordClozeHint1(stem), `빈칸에는 ${POS[item.pos]}에 해당하는 말이 들어가요.`], explanation: expl })); }
-    if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [spellHint1(item.en), `첫 글자: “${item.en[0]}”`], explanation: expl })); }
+    if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [spellHint1(item.en, item.sp), `첫 글자: “${item.en[0]}”`], explanation: expl })); }
   } else if (item.k === "s") {
     let qid = `eb-${id}-pick`; let r = shuffled(qid, [item.good, ...item.bad]);
     const expl = `정답: “${item.good}” (${item.ko}) ${item.rule}`;

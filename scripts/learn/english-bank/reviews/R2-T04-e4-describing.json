@@ -1,0 +1,265 @@
+{
+ "packet": "T04-e4-describing",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 2,
+  "questions": 82
+ },
+ "patches": [
+  {
+   "item": "91c8f3e7",
+   "op": "set",
+   "set": {
+    "bad": [
+     "She has a small bag red.",
+     "She has red a small bag.",
+     "She has a small red bags."
+    ],
+    "rule": "형용사는 명사 바로 앞에 와요. a 다음에 형용사(small, red)를 쓰고, 가방이 한 개이므로 명사는 bag으로 단수로 써요."
+   },
+   "why": "Removes the ambiguous order-only distractor; good/cz unchanged (ord stays false).",
+   "severity": "minor"
+  },
+  {
+   "item": "7256ac88",
+   "op": "set",
+   "set": {
+    "o": [
+     "a small bird yellow",
+     "small a yellow bird",
+     "a bird small yellow",
+     "a small yellow bird"
+    ],
+    "a": 3,
+    "why": "형용사(small, yellow)는 관사 a 다음, 명사 bird 앞에 와요: a small yellow bird.",
+    "hint": "관사 다음에 형용사, 그다음에 명사가 와요."
+   },
+   "why": "Removes order-only distractor 'a yellow small bird' (defensible); hint field also changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "fa4aedf2",
+   "op": "set",
+   "set": {
+    "hint": "'cold, white, soft'를 모두 만족하는 것을 찾아보세요."
+   },
+   "why": "Only the hint field changes (not in the listed m fields).",
+   "severity": "minor"
+  },
+  {
+   "item": "e8b0351a",
+   "op": "set",
+   "set": {
+    "o": [
+     "paper",
+     "glass",
+     "sand",
+     "milk"
+    ],
+    "a": 0,
+    "why": "얇고 평평하며 글씨를 쓰고 접을 수 있는 것은 paper(종이)예요."
+   },
+   "why": "Same format for all options; each distractor cannot be written on and folded.",
+   "severity": "minor"
+  },
+  {
+   "item": "feacdf11",
+   "op": "set",
+   "set": {
+    "o": [
+     "Turn off the light and close the door.",
+     "Don't worry. I'm here with you.",
+     "Let's go outside alone in the dark.",
+     "It is a sunny day, so let's play."
+    ],
+    "a": 1,
+    "why": "어둠이 무서운 친구에게는 안심시키는 말이 알맞아요."
+   },
+   "why": "Distractors lengthened; still clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "9f7e7e08",
+   "op": "set",
+   "set": {
+    "o": [
+     "an elephant",
+     "a mouse",
+     "an owl",
+     "a rabbit"
+    ],
+    "a": 0,
+    "why": "긴 코와 큰 귀를 가진 크고 회색인 동물은 an elephant(코끼리)예요."
+   },
+   "why": "Article cue removed; new distractor is clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "eec8d5fc",
+   "op": "set",
+   "set": {
+    "o": [
+     "a spider",
+     "an owl",
+     "a snail",
+     "an ant"
+    ],
+    "a": 3,
+    "why": "여섯 개의 다리를 가지고 줄지어 먹이를 나르는 작고 검은 곤충은 an ant(개미)예요."
+   },
+   "why": "Article cue removed; new distractor is clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "8afe96ac",
+   "op": "set",
+   "set": {
+    "o": [
+     "a swimsuit",
+     "an umbrella",
+     "an ice cream",
+     "a pair of sunglasses"
+    ],
+    "a": 1,
+    "why": "비가 올 때는 우산(an umbrella)을 가져가요."
+   },
+   "why": "Article cue removed; new distractor is clearly wrong.",
+   "severity": "minor"
+  },
+  {
+   "item": "b0c90121",
+   "op": "set",
+   "set": {
+    "o": [
+     "Let's wear our swimsuits.",
+     "Let's buy a cold drink.",
+     "Let's wear our warm hats.",
+     "I want to wear my sandals."
+    ],
+    "a": 2,
+    "why": "눈이 오면 따뜻한 모자를 쓰자는 말이 알맞아요."
+   },
+   "why": "Removes defensible distractor.",
+   "severity": "minor"
+  },
+  {
+   "item": "11062bbb",
+   "op": "set",
+   "set": {
+    "hint": "but은 앞뒤 내용이 서로 다를 때 써요. 영화와 만화의 길이를 비교해 보세요."
+   },
+   "why": "Only hint changes.",
+   "severity": "minor"
+  },
+  {
+   "item": "b28e111c",
+   "op": "set",
+   "set": {
+    "o": [
+     "round",
+     "tall",
+     "deep",
+     "loud"
+    ],
+    "a": 2,
+    "why": "shallow(얕은)와 대조되는 말은 deep(깊은)이에요."
+   },
+   "why": "Removes second reading.",
+   "severity": "minor"
+  },
+  {
+   "item": "bf7a1002",
+   "op": "set",
+   "set": {
+    "o": [
+     "It is sleeping on the sofa now.",
+     "It is small and very friendly.",
+     "Its name is Nabi, and it is mine.",
+     "It is two years old this month."
+    ],
+    "a": 1,
+    "why": "What is ... like?는 성격이나 모습을 묻는 질문이라 모습·성격으로 답해야 해요."
+   },
+   "why": "Length cue fix.",
+   "severity": "minor"
+  },
+  {
+   "item": "6b96a53d",
+   "op": "set",
+   "set": {
+    "q": "A: You look worried. What's wrong?\nB: ___",
+    "o": [
+     "I like my English teacher.",
+     "I have a big test tomorrow.",
+     "I am a student at this school.",
+     "It is sunny and warm today."
+    ],
+    "a": 1,
+    "why": "무슨 일이냐는 질문에는 걱정하는 이유를 말해야 해요.",
+    "hint": "A가 걱정스러워 보이는 이유를 묻고 있어요."
+   },
+   "why": "Identity field q changed on purpose (near-duplicate removal); id changes.",
+   "severity": "minor"
+  },
+  {
+   "item": "29fadb7a",
+   "op": "set",
+   "set": {
+    "o": [
+     "not dark",
+     "not noisy",
+     "not heavy",
+     "not hot"
+    ],
+    "a": 2,
+    "why": "가방을 쉽게 들 수 있다고 했으니 light는 '가벼운'이라는 뜻이에요."
+   },
+   "why": "Uniform option form.",
+   "severity": "minor"
+  },
+  {
+   "item": "4974388d",
+   "op": "set",
+   "set": {
+    "q": "다음 중 만졌을 때의 느낌을 나타내는 말이 아닌 것은?",
+    "o": [
+     "soft",
+     "noisy",
+     "hard",
+     "wet"
+    ],
+    "a": 1,
+    "why": "soft, hard, wet은 만졌을 때의 느낌이고 noisy(시끄러운)는 소리에 관한 말이에요."
+   },
+   "why": "Stem language only; identity q changes.",
+   "severity": "minor"
+  },
+  {
+   "item": "2c7c90cc",
+   "op": "set",
+   "set": {
+    "z": [
+     "round",
+     "sunny",
+     "sticky"
+    ],
+    "syn": [
+     "afraid",
+     "frightened"
+    ],
+    "sp": [
+     "scard",
+     "scaired",
+     "skared"
+    ],
+    "ex": "The little dog is scared of loud thunder.",
+    "exko": "작은 강아지는 큰 천둥소리를 무서워해요.",
+    "ko": "무서워하는"
+   },
+   "why": "Replaces real word 'scarred' with non-word 'scard'.",
+   "severity": "major"
+  }
+ ],
+ "ok": 62,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

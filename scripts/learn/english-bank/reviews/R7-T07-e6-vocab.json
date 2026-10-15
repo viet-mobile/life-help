@@ -1,0 +1,106 @@
+{
+ "packet": "T07-e6-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 66
+ },
+ "patches": [
+  {
+   "item": "b7ee118d",
+   "op": "set",
+   "set": {
+    "q": "Menu: Sandwich $4, Juice $2, Set (sandwich + juice) $5. Dan wants both a sandwich and a juice. What is the cheapest way to get both?",
+    "o": [
+     "Order them separately for $6",
+     "Order the set for $5",
+     "Order the set and an extra juice for $7",
+     "Order two sets for $10"
+    ],
+    "a": 1,
+    "why": "샌드위치와 주스를 따로 사면 $6이고 세트는 $5라서 세트가 가장 싸요. 나머지는 더 비싸요."
+   },
+   "why": "Identity field q changed: question now requires getting both items; all options satisfy the goal so only $5 is cheapest.",
+   "severity": "major"
+  },
+  {
+   "item": "29661de3",
+   "op": "set",
+   "set": {
+    "q": "Rui has the main part in the school play next week. Here, 'play' means ___.",
+    "o": [
+     "놀이",
+     "연주",
+     "시합",
+     "연극"
+    ],
+    "a": 3,
+    "why": "main part가 있는 school play는 연극이에요."
+   },
+   "why": "Identity field o changed: all options are nouns.",
+   "severity": "minor"
+  },
+  {
+   "item": "635f6479",
+   "op": "set",
+   "set": {
+    "rule": "'종류'를 뜻하는 kind는 여러 종류일 때 kinds로 써요. 복수이므로 There are를 써요."
+   },
+   "why": "Rule wording fixed; sentence unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "9f1f2bec",
+   "op": "set",
+   "set": {
+    "q": "Which sentence uses 'light' to mean 'not heavy'?",
+    "o": [
+     "Please turn off the light before you leave.",
+     "This bag is light, so I can carry it easily.",
+     "The traffic light is red, so cars must stop.",
+     "The light in the room is warm and soft."
+    ],
+    "a": 1,
+    "why": "light는 '가벼운'이라는 뜻으로도 써요. 쉽게 들 수 있다는 말과 어울려요."
+   },
+   "why": "Distractors lengthened to remove the length cue.",
+   "severity": "minor"
+  },
+  {
+   "item": "a49da710",
+   "op": "set",
+   "set": {
+    "q": "Which sentence uses 'watch' as a noun?",
+    "o": [
+     "I watch funny cartoons on TV after school.",
+     "Please watch your little brother at the park.",
+     "Dad gave me a new watch for my birthday.",
+     "We will watch the fireworks from the hill."
+    ],
+    "a": 2,
+    "why": "'a new watch'의 watch는 손목시계라는 명사예요. 나머지는 '보다, 지켜보다'라는 동사예요."
+   },
+   "why": "Distractors lengthened to remove the length cue.",
+   "severity": "minor"
+  },
+  {
+   "item": "0a37fb11",
+   "op": "set",
+   "set": {
+    "q": "Which sentence uses 'fly' for an insect?",
+    "o": [
+     "Many birds fly south when winter comes.",
+     "I want to fly my new kite at the park.",
+     "Pilots fly big planes across the ocean.",
+     "A fly was sitting on my sandwich."
+    ],
+    "a": 3,
+    "why": "A fly는 곤충 파리예요. 나머지 문장의 fly는 '날다, 날리다'라는 동사예요."
+   },
+   "why": "Distractors lengthened to remove the length cue.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 56,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
