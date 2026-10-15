@@ -43,3 +43,9 @@
 - 오답 문장은 "확실히 틀린" 쪽을 우선해 일부 빈칸 문항의 오답이 교육적 가치가 낮은 형태(예: `-려고/-러/-게` 반복)입니다(`bridge_connect`, `bridge_modal` 등).
 - 베트남어 발음 보조는 검수된 어휘표(`vietnamese-pronunciation.mjs`)에 있는 단어에만 붙습니다.
 - 현지화 키트는 AI 번역이며 번역 검수 전입니다. 언어별 범위는 `kit/README.md` 참고.
+
+## 후속 문서
+
+- `worklist.md` — 미번역 범위(32개 언어)와 레벨별 읽기·대화 부족분 (`node scripts/learn/korean/bank/worklist.mjs`).
+- `course-findings.md` — 정규 코스(K1~K10)에서 발견한 로마자·영어 문구 문제의 문항 ID와 근거. 공유 콘텐츠는 수정하지 않음 (`node scripts/learn/korean/bank/audit-course-rr.mjs`).
+- K7~K10은 미공개 상태이므로 학습자 화면은 빈 코스 대신 이용 불가 안내와 레벨 재선택 링크를 보여 줍니다 (`components/learn/LevelUnavailable.tsx`, `lib/learn/korean-availability.ts`).
