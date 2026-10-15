@@ -103,7 +103,7 @@ const seenSets = new Set();
 const byKind = {};
 const push = (skill, packet, item, form, q) => {
   const answerText = q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
-  if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, "a(n)$2$3") }; // the article would single out the one option that starts with the matching sound
+  if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, (_m, art, sp, bl) => `${art[0] === "A" ? "A" : "a"}(n)${sp}${bl}`) }; // the article would single out the one option that starts with the matching sound
   const k1 = `${norm(q.prompt)}|${norm(answerText ?? "")}`;
   const k2 = `${norm(q.prompt)}|${q.options.map((o) => norm(o.text)).sort().join("|")}`;
   if (seenKeys.has(k1) || seenSets.has(k2)) { dropped.duplicateQuestion++; return; }
