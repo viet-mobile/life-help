@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { createBrowserClient } from "@supabase/ssr";
+import { createLearnRecoveryBrowserClient } from "@/lib/learn/server/supabase/browser";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { recoveryToken, recoverySession } from "@/lib/learn/review/recovery";
 
@@ -18,7 +18,7 @@ export function ReviewPasswordReset({ url, publishableKey }: { url: string; publ
     const session = recoverySession(window.location.hash);
     window.history.replaceState(null, "", window.location.pathname);
     if (!token && !session) { setPhase("invalid"); return; }
-    const supabase = createBrowserClient(url, publishableKey, { auth: { detectSessionInUrl: false }, isSingleton: false });
+    const supabase = createLearnRecoveryBrowserClient(url, publishableKey);
     client.current = supabase;
     const verification = token
       ? supabase.auth.verifyOtp({ token_hash: token, type: "recovery" })
