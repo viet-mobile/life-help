@@ -50,15 +50,18 @@ const ellT = (A, B) => `\\frac{x^2}{${A}}+\\frac{y^2}{${B}}=1`;
 const hypT = (A, B, xt) => (xt ? `\\frac{x^2}{${A}}-\\frac{y^2}{${B}}=1` : `\\frac{y^2}{${A}}-\\frac{x^2}{${B}}=1`);
 const slopeTex = (sn, n, d) => (d === 1 ? String(sn * n) : tfrac(sn * n, d));
 const slopeCoef = (sn, n, d) => (d === 1 ? (n === 1 ? (sn < 0 ? "-" : "") : String(sn * n)) : tfrac(sn * n, d));
-const fmtFrac = (q) => q.toNumber();
+/** coefficient text of a rational in front of a variable/bracket: 1 -> "", -1 -> "-", else the fraction */
+const qcf = (q) => (q.q === 1n && q.p === 1n ? "" : q.q === 1n && q.p === -1n ? "-" : tq(q));
+/** "ax+by" style join of rational terms [[q, "x"], ...] */
+const qlin = (terms) => { let o = ""; for (const [q, m] of terms) { if (q.p === 0n) continue; const t = qcf(q) + m; o += o && q.p > 0n ? `+${t}` : t; } return o || "0"; };
 
 // ===================================================================================================================================
 // 1. parabola from focus and directrix (definition -> equation -> coordinates)
 add(
   "geo_parFocusDir",
   {
-    ko: ["초점이 $F({fx},\\ {fy})$ 이고 준선이 ${dirEq}$ 인 포물선 위의 점 $P(x,\\ y)$ 가 ${cond}$ 를 만족할 때, ${un}$ 의 최댓값은? (숫자만 쓰세요)", ["포물선 위의 점은 초점까지의 거리와 준선까지의 거리가 같아요.", "초점과 준선의 한가운데가 꼭짓점이에요. 꼭짓점이 $({vx},\\ {vy})$ 이고 $p={pp}$ 인 포물선의 방정식을 먼저 세워 보세요."], "꼭짓점이 $({vx},\\ {vy})$, $p={pp}$ 이므로 포물선의 방정식은 ${eqn}$ 입니다. ${cond}$ 를 대입하면 ${un}={sol}$ 이므로 ${un}$ 의 최댓값은 ${ans}$ 입니다."],
-    en: ["A parabola has focus $F({fx},\\ {fy})$ and directrix ${dirEq}$. A point $P(x,\\ y)$ on the parabola satisfies ${cond}$. What is the maximum value of ${un}$? (digits only)", ["A point of a parabola is equally far from the focus and from the directrix.", "The vertex is the midpoint between focus and directrix. Write the equation of the parabola with vertex $({vx},\\ {vy})$ and $p={pp}$ first."], "The vertex is $({vx},\\ {vy})$ and $p={pp}$, so the parabola is ${eqn}$. Substituting ${cond}$ gives ${un}={sol}$, so the maximum of ${un}$ is ${ans}$."],
+    ko: ["초점이 $F({fx},\\ {fy})$ 이고 준선이 ${dirEq}$ 인 포물선 위의 점 $P(x,\\ y)$ 에 대하여 ${cond}$ 일 때, ${un}$ 의 최댓값은? (숫자만 쓰세요)", ["포물선 위의 점은 초점까지의 거리와 준선까지의 거리가 같아요.", "초점과 준선의 한가운데가 꼭짓점이에요. 꼭짓점이 $({vx},\\ {vy})$ 이고 $p={pp}$ 인 포물선의 방정식을 먼저 세워 보세요."], "꼭짓점이 $({vx},\\ {vy})$, $p={pp}$ 이므로 포물선의 방정식은 ${eqn}$ 입니다. ${cond}$ 일 때 ${un}={sol}$ 이므로 ${un}$ 의 최댓값은 ${ans}$ 입니다."],
+    en: ["A parabola has focus $F({fx},\\ {fy})$ and directrix ${dirEq}$. A point $P(x,\\ y)$ on the parabola has ${cond}$. What is the maximum value of ${un}$? (digits only)", ["A point of a parabola is equally far from the focus and from the directrix.", "The vertex is the midpoint between focus and directrix. Write the equation of the parabola with vertex $({vx},\\ {vy})$ and $p={pp}$ first."], "The vertex is $({vx},\\ {vy})$ and $p={pp}$, so the parabola is ${eqn}$. For ${cond}$ we get ${un}={sol}$, so the maximum of ${un}$ is ${ans}$."],
   },
   (r, lvl) => {
     const hor = r.next() < 0.5;
@@ -76,34 +79,12 @@ add(
 );
 
 // ===================================================================================================================================
-// 2. focal chord of a parabola
-add(
-  "geo_parFocalChord",
-  {
-    ko: ["포물선 ${eq}$ 의 초점을 지나고 기울기가 ${m}$ 인 직선이 포물선과 만나는 두 점을 P, Q라 할 때, 선분 PQ의 길이는? (숫자만 쓰세요)", ["포물선 위의 점에서 초점까지의 거리는 그 점에서 준선까지의 거리와 같아요.", "직선의 방정식을 포물선의 방정식에 대입하여 두 교점의 ${w}$좌표의 합을 구해 보세요."], "$p={pp}$ 이므로 초점은 ${foc}$, 직선은 ${line}$ 입니다. 대입하면 두 교점의 ${w}$좌표를 ${w}_1,\\ {w}_2$ 라 할 때 ${w}_1+{w}_2={sum}$ 이고, 준선까지의 거리를 이용하면 $PQ=({w}_1+{pp})+({w}_2+{pp})={sum}+{twop}={ans}$ 입니다."],
-    en: ["A line with slope ${m}$ passes through the focus of the parabola ${eq}$ and meets the parabola at P and Q. What is the length of segment PQ? (digits only)", ["For a point of a parabola, the distance to the focus equals the distance to the directrix.", "Substitute the equation of the line into the parabola and find the sum of the ${w}$-coordinates of the two intersection points."], "Since $p={pp}$, the focus is ${foc}$ and the line is ${line}$. Substituting gives ${w}_1+{w}_2={sum}$ for the ${w}$-coordinates, and by the directrix property $PQ=({w}_1+{pp})+({w}_2+{pp})={sum}+{twop}={ans}$."],
-  },
-  (r, lvl) => {
-    const p = r.int(1, 6), sn = sgn(r), c = 4 * p;
-    if (lvl === 1) {
-      const [n, d] = r.pick([[1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [2, 1], [2, 3], [2, 5]]);
-      const sum = 2 * p + (4 * p * d * d) / (n * n);
-      return { v: { eq: `y^2=${c}x`, m: slopeTex(sn, n, d), pp: p, foc: `(${p},\\ 0)`, line: `y=${slopeCoef(sn, n, d)}(x-${p})`, w: "x", sum, twop: 2 * p }, ans: sum + 2 * p };
-    }
-    const [n, d] = r.pick([[1, 1], [2, 1], [3, 1], [4, 1], [1, 2], [3, 2], [5, 2]]);
-    const sum = (4 * p * n * n) / (d * d) + 2 * p;
-    return { v: { eq: `x^2=${c}y`, m: slopeTex(sn, n, d), pp: p, foc: `(0,\\ ${p})`, line: `y=${slopeCoef(sn, n, d)}x+${p}`, w: "y", sum, twop: 2 * p }, ans: sum + 2 * p };
-  },
-  [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-01"], strategy: "focal-chord", evidence: "application" }],
-);
-
-// ===================================================================================================================================
 // 3. ellipse: sums of focal distances
 add(
   "geo_ellipseFocal",
   {
-    ko: ["타원 ${eq}$ 의 두 초점을 F, F'이라 하자. 타원 위의 점 P가 ${cond}$ 일 때, ${ask}$ 의 값은? (숫자만 쓰세요)", ["타원 위의 점에서 두 초점까지의 거리의 합은 일정하고, 그 값은 장축의 길이예요.", "장반지름이 $a={a}$, $c={c}$ 예요. $PF+PF'=2a$ 를 이용해 보세요."], "장반지름이 $a={a}$, $c={c}$ 이므로 $PF+PF'=2a={tw}$, $FF'=2c={tc}$ 입니다. ${work}$ 이므로 구하는 값은 ${ans}$ 입니다."],
-    en: ["Let F and F' be the foci of the ellipse ${eq}$. A point P on the ellipse satisfies ${cond}$. What is the value of ${ask}$? (digits only)", ["For a point on an ellipse the sum of the distances to the two foci is constant and equals the length of the major axis.", "The semi-major axis is $a={a}$ and $c={c}$. Use $PF+PF'=2a$."], "The semi-major axis is $a={a}$ and $c={c}$, so $PF+PF'=2a={tw}$ and $FF'=2c={tc}$. ${work}$, so the value is ${ans}$."],
+    ko: ["타원 ${eq}$ 의 두 초점을 F, F'이라 하자. 타원 위의 점 P가 ${cond}$ 일 때, ${ask}$ 의 값은? (숫자만 쓰세요)", ["타원 위의 점에서 두 초점까지의 거리의 합은 일정하고, 그 값은 장축의 길이예요.", "장축의 길이를 $2a$, 두 초점 사이의 거리를 $2c$ 라 하면 $a={a}$, $c={c}$ 예요. $PF+PF'=2a$ 를 이용해 보세요."], "장축의 길이가 $2a={tw}$, 두 초점 사이의 거리가 $2c={tc}$ 이므로 $PF+PF'={tw}$, $FF'={tc}$ 입니다. ${work}$ 이므로 구하는 값은 ${ans}$ 입니다."],
+    en: ["Let F and F' be the foci of the ellipse ${eq}$. A point P on the ellipse satisfies ${cond}$. What is the value of ${ask}$? (digits only)", ["For a point on an ellipse the sum of the distances to the two foci is constant and equals the length of the major axis.", "If the major axis has length $2a$ and the foci are $2c$ apart, then $a={a}$ and $c={c}$. Use $PF+PF'=2a$."], "The major axis has length $2a={tw}$ and the foci are $2c={tc}$ apart, so $PF+PF'={tw}$ and $FF'={tc}$. ${work}$, so the value is ${ans}$."],
   },
   (r, lvl) => {
     const t = r.pick(TRIS30), sw = r.next() < 0.5;
@@ -112,7 +93,8 @@ add(
     const tw = 2 * a, tc = 2 * c;
     if (lvl === 1) {
       const d1 = r.int(a - c, a + c);
-      return { v: { eq, cond: `PF=${d1}`, ask: "PF+PF'+FF'", a, c, tw, tc, work: `PF+PF'+FF'=${tw}+${tc}` }, ans: tw + tc };
+      if (r.next() < 0.5) return { v: { eq, cond: `PF=${d1}`, ask: "PF'", a, c, tw, tc, work: `PF'=2a-PF=${tw}-${d1}` }, ans: tw - d1 };
+      return { v: { eq, cond: `PF=${d1}`, ask: "PF'+FF'", a, c, tw, tc, work: `PF'+FF'=(${tw}-${d1})+${tc}` }, ans: tw - d1 + tc };
     }
     // level 2: a ratio or a difference of the two focal distances
     if (r.next() < 0.5) {
@@ -122,42 +104,52 @@ add(
     }
     const ks = []; for (let k = -2 * c; k <= 2 * c; k += 2) if (k !== 0) ks.push(k);
     const k = r.pick(ks);
-    return { v: { eq, cond: `PF-PF'=${k}`, ask: "PF", a, c, tw, tc, work: `PF=\\frac{2a+(${k})}{2}=\\frac{${tw}${sg(k)}}{2}` }, ans: a + k / 2 };
+    return { v: { eq, cond: `PF-PF'=${k}`, ask: "PF", a, c, tw, tc, work: `PF=\\frac{2a${sg(k)}}{2}=\\frac{${tw}${sg(k)}}{2}` }, ans: a + k / 2 };
   },
   [{ skill: G1, levels: [1, 2], count: 12, d: 2, standards: ["12기하01-02"], strategy: "focal-distance-sum", evidence: "application" }],
 );
 
 // ===================================================================================================================================
 // 4. hyperbola: differences of focal distances
+const hyperFocalGen = (lvl) => (r) => {
+  const t = r.pick(TRIS30), sw = r.next() < 0.5;
+  const c = t[2], a = sw ? t[0] : t[1], b = sw ? t[1] : t[0];
+  const eq = hypT(a * a, b * b, r.next() < 0.5);
+  const tw = 2 * a, tc = 2 * c, base = { a, b, c, tw, tc, ca: c - a };
+  if (lvl === 1) {
+    const d1 = r.int(c - a, c + a - 1);
+    return { v: { eq, cond: `PF=${d1}`, ask: "PF'", ...base, work: `PF=${d1}<c+a=${c + a}`, alt: `${d1}-${tw}=${d1 - tw}<${c - a}`, work2: `PF'=PF+2a=${d1}+${tw}` }, ans: d1 + tw };
+  }
+  if (r.next() < 0.6) {
+    const cands = [];
+    for (let m = 1; m <= 7; m++) for (let n = 1; n <= 7; n++) {
+      if (m === n || gcd(m, n) !== 1) continue;
+      const ad = Math.abs(n - m);
+      if ((tw * (m + n)) % ad !== 0) continue;
+      const k = tw / ad;
+      if (Math.min(m, n) * k >= c - a) cands.push([m, n, ad, (m + n) * k]);
+    }
+    if (cands.length) { const [m, n, ad, tot] = r.pick(cands); return { v: { eq, cond: `PF:PF'=${m}:${n}`, ask: "PF+PF'+FF'", ...base, work: `PF+PF'=(${m}+${n})\\times ${ad === 1 ? tw : `\\frac{${tw}}{${ad}}`}=${tot},\\ PF+PF'+FF'=${tot}+${tc}` }, ans: tot + tc }; }
+  }
+  return { v: { eq, cond: "\\angle FPF'=90^\\circ", ask: "PF\\times PF'", ...base, work: `PF\\cdot PF'=\\frac{(2c)^2-(2a)^2}{2}=\\frac{${tc}^2-${tw}^2}{2}` }, ans: 2 * b * b };
+};
 add(
   "geo_hyperFocal",
   {
-    ko: ["쌍곡선 ${eq}$ 의 두 초점을 F, F'이라 하자. 쌍곡선 위의 점 P가 ${cond}$ 일 때, ${ask}$ 의 값은? (숫자만 쓰세요)", ["쌍곡선 위의 점에서 두 초점까지의 거리의 차의 절댓값은 주축의 길이 $2a$ 와 같아요.", "$a={a}$, $c={c}$ 이므로 $|PF-PF'|=2a={tw}$ 이고, 쌍곡선 위의 점에서 한 초점까지의 거리는 $c-a={ca}$ 이상이에요."], "$a={a}$, $b={b}$, $c={c}$ 이고 $|PF-PF'|=2a={tw}$, $FF'=2c={tc}$ 입니다. ${work}$ 이므로 구하는 값은 ${ans}$ 입니다."],
+    ko: ["쌍곡선 ${eq}$ 의 두 초점을 F, F'이라 하자. 쌍곡선 위의 점 P가 ${cond}$ 일 때, ${ask}$ 의 값은? (숫자만 쓰세요)", ["쌍곡선 위의 점에서 두 초점까지의 거리의 차의 절댓값은 주축의 길이 $2a$ 와 같아요.", "$a={a}$, $c={c}$ 이므로 $|PF-PF'|=2a={tw}$ 이고, 쌍곡선 위의 점에서 각 초점까지의 거리는 $c-a={ca}$ 이상이에요."], "$a={a}$, $b={b}$, $c={c}$ 이고 $|PF-PF'|=2a={tw}$ 입니다. 이때 ${work}$ 이므로 P는 F에 가까운 쪽 가지 위에 있고 $PF'>PF$ 입니다. ($PF'=PF-2a$ 라면 ${alt}$ 로 $c-a$ 보다 작아져서 불가능합니다.) 따라서 ${work2}$ 이므로 구하는 값은 ${ans}$ 입니다."],
+    en: ["Let F and F' be the foci of the hyperbola ${eq}$. A point P on the hyperbola satisfies ${cond}$. What is the value of ${ask}$? (digits only)", ["For a point on a hyperbola, the absolute difference of the distances to the foci equals the length $2a$ of the transverse axis.", "Here $a={a}$ and $c={c}$, so $|PF-PF'|=2a={tw}$, and a point of the hyperbola is at least $c-a={ca}$ away from each focus."], "Here $a={a}$, $b={b}$, $c={c}$ and $|PF-PF'|=2a={tw}$. Since ${work}$, the point P is on the branch near F and $PF'>PF$. (If $PF'=PF-2a$, we would get ${alt}$, below $c-a$, which is impossible.) Hence ${work2}$, so the value is ${ans}$."],
+  },
+  hyperFocalGen(1),
+  [{ skill: G1, levels: [1], count: 12, d: 3, standards: ["12기하01-03"], strategy: "focal-distance-difference", evidence: "application" }],
+);
+add(
+  "geo_hyperFocalRel",
+  {
+    ko: ["쌍곡선 ${eq}$ 의 두 초점을 F, F'이라 하자. 쌍곡선 위의 점 P가 ${cond}$ 일 때, ${ask}$ 의 값은? (숫자만 쓰세요)", ["쌍곡선 위의 점에서 두 초점까지의 거리의 차의 절댓값은 주축의 길이 $2a$ 와 같아요.", "$a={a}$, $c={c}$ 이므로 $|PF-PF'|=2a={tw}$ 이고, 쌍곡선 위의 점에서 각 초점까지의 거리는 $c-a={ca}$ 이상이에요."], "$a={a}$, $b={b}$, $c={c}$ 이고 $|PF-PF'|=2a={tw}$, $FF'=2c={tc}$ 입니다. ${work}$ 이므로 구하는 값은 ${ans}$ 입니다."],
     en: ["Let F and F' be the foci of the hyperbola ${eq}$. A point P on the hyperbola satisfies ${cond}$. What is the value of ${ask}$? (digits only)", ["For a point on a hyperbola, the absolute difference of the distances to the foci equals the length $2a$ of the transverse axis.", "Here $a={a}$ and $c={c}$, so $|PF-PF'|=2a={tw}$, and a point of the hyperbola is at least $c-a={ca}$ away from each focus."], "Here $a={a}$, $b={b}$, $c={c}$, $|PF-PF'|=2a={tw}$ and $FF'=2c={tc}$. ${work}$, so the value is ${ans}$."],
   },
-  (r, lvl) => {
-    const t = r.pick(TRIS30), sw = r.next() < 0.5;
-    const c = t[2], a = sw ? t[0] : t[1], b = sw ? t[1] : t[0];
-    const eq = hypT(a * a, b * b, r.next() < 0.5);
-    const tw = 2 * a, tc = 2 * c, base = { a, b, c, tw, tc, ca: c - a };
-    if (lvl === 1) {
-      const d1 = r.int(c - a, c + a - 1);
-      return { v: { eq, cond: `PF=${d1}`, ask: "PF'", ...base, work: `PF=${d1}<c+a=${c + a},\\ PF'=PF+2a=${d1}+${tw}` }, ans: d1 + tw };
-    }
-    if (r.next() < 0.6) {
-      const cands = [];
-      for (let m = 1; m <= 7; m++) for (let n = 1; n <= 7; n++) {
-        if (m === n || gcd(m, n) !== 1) continue;
-        const ad = Math.abs(n - m);
-        if ((tw * (m + n)) % ad !== 0) continue;
-        const k = tw / ad;
-        if (Math.min(m, n) * k >= c - a) cands.push([m, n, ad, (m + n) * k]);
-      }
-      if (cands.length) { const [m, n, ad, tot] = r.pick(cands); return { v: { eq, cond: `PF:PF'=${m}:${n}`, ask: "PF+PF'+FF'", ...base, work: `PF+PF'=(${m}+${n})\\times\\frac{${tw}}{${ad}}=${tot},\\ PF+PF'+FF'=${tot}+${tc}` }, ans: tot + tc }; }
-    }
-    return { v: { eq, cond: "\\angle FPF'=90^\\circ", ask: "PF\\times PF'", ...base, work: `PF\\cdot PF'=\\frac{(2c)^2-(2a)^2}{2}=\\frac{${tc}^2-${tw}^2}{2}` }, ans: 2 * b * b };
-  },
-  [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-03"], strategy: "focal-distance-difference", evidence: "application" }],
+  hyperFocalGen(2),
+  [{ skill: G1, levels: [2], count: 12, d: 4, standards: ["12기하01-03"], strategy: "focal-distance-ratio-right-angle", evidence: "application" }],
 );
 
 // ===================================================================================================================================
@@ -165,8 +157,8 @@ add(
 add(
   "geo_ellipseFromEq",
   {
-    ko: ["타원 ${eq}$ 의 두 초점 사이의 거리는? (숫자만 쓰세요)", ["타원을 $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$ 꼴로 고쳐 두 분모 중 큰 것이 $a^2$ 예요.", "두 분모는 ${a2}$ 와 ${b2}$ 이고, $c^2=a^2-b^2$ 이에요."], "${std}$ 꼴로 고치면 $a^2={a2}$, $b^2={b2}$ 이므로 $c^2=a^2-b^2={c2}$, $c={c}$ 입니다. 두 초점 사이의 거리는 $2c={ans}$ 입니다."],
-    en: ["What is the distance between the two foci of the ellipse ${eq}$? (digits only)", ["Rewrite the ellipse as $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$; the larger denominator is $a^2$.", "The two denominators are ${a2}$ and ${b2}$, and $c^2=a^2-b^2$."], "In the form ${std}$ we have $a^2={a2}$, $b^2={b2}$, so $c^2=a^2-b^2={c2}$ and $c={c}$. The distance between the foci is $2c={ans}$."],
+    ko: ["타원 ${eq}$ 의 두 초점 사이의 거리는? (숫자만 쓰세요)", ["타원의 식을 우변이 $1$ 인 $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$ 꼴로 만들면 두 분모 중 큰 것이 $a^2$ 예요.", "두 분모는 ${a2}$ 와 ${b2}$ 이고, $c^2=a^2-b^2$ 이에요."], "${std}$ 꼴로 나타내면 $a^2={a2}$, $b^2={b2}$ 이므로 $c^2=a^2-b^2={c2}$, $c={c}$ 입니다. 두 초점 사이의 거리는 $2c={ans}$ 입니다."],
+    en: ["What is the distance between the two foci of the ellipse ${eq}$? (digits only)", ["Rewrite the ellipse as $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$; the larger denominator is $a^2$.", "The two denominators are ${a2}$ and ${b2}$, and $c^2=a^2-b^2$."], "Written as ${std}$ we have $a^2={a2}$, $b^2={b2}$, so $c^2=a^2-b^2={c2}$ and $c={c}$. The distance between the foci is $2c={ans}$."],
   },
   (r, lvl) => {
     for (;;) {
@@ -190,15 +182,16 @@ add(
 add(
   "geo_hyperAsym",
   {
-    ko: ["쌍곡선 ${eq}$ 의 두 점근선 중 기울기가 양수인 직선의 기울기는? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["쌍곡선 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ 의 점근선은 $y=\\pm\\frac{b}{a}x$, $\\frac{y^2}{a^2}-\\frac{x^2}{b^2}=1$ 의 점근선은 $y=\\pm\\frac{a}{b}x$ 예요.", "먼저 우변이 1인 꼴 ${std}$ 로 정리해서 $a^2$, $b^2$ 을 읽으세요."], "${std}$ 꼴이므로 점근선은 ${asy}$ 입니다. 기울기가 양수인 점근선의 기울기는 ${ans}$ 입니다."],
-    en: ["What is the slope of the asymptote with positive slope of the hyperbola ${eq}$? (decimal or fraction such as 3/4)", ["The asymptotes of $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ are $y=\\pm\\frac{b}{a}x$, and those of $\\frac{y^2}{a^2}-\\frac{x^2}{b^2}=1$ are $y=\\pm\\frac{a}{b}x$.", "First rewrite it with right-hand side 1, ${std}$, and read off $a^2$ and $b^2$."], "In the form ${std}$ the asymptotes are ${asy}$, so the asymptote with positive slope has slope ${ans}$."],
+    ko: ["쌍곡선 ${eq}$ 의 두 점근선 중 기울기가 양수인 직선의 기울기는? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["쌍곡선 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ 의 점근선은 $y=\\pm\\frac{b}{a}x$, $\\frac{y^2}{a^2}-\\frac{x^2}{b^2}=1$ 의 점근선은 $y=\\pm\\frac{a}{b}x$ 예요.", "식의 우변이 $1$ 이 아니면 먼저 우변을 $1$ 로 만든 뒤, $x^2$, $y^2$ 의 분모에서 $a^2$, $b^2$ 을 읽으세요."], "${std}$ 꼴이므로 점근선은 ${asy}$ 입니다. 기울기가 양수인 점근선의 기울기는 ${ans}$ 입니다."],
+    en: ["What is the slope of the asymptote with positive slope of the hyperbola ${eq}$? (decimal or fraction such as 3/4)", ["The asymptotes of $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ are $y=\\pm\\frac{b}{a}x$, and those of $\\frac{y^2}{a^2}-\\frac{x^2}{b^2}=1$ are $y=\\pm\\frac{a}{b}x$.", "If the right-hand side is not $1$, first make it $1$; then read $a^2$ and $b^2$ from the denominators of $x^2$ and $y^2$."], "In the form ${std}$ the asymptotes are ${asy}$, so the asymptote with positive slope has slope ${ans}$."],
   },
   (r, lvl) => {
     for (;;) {
       const al = r.int(2, 9), be = r.int(2, 9), xt = r.next() < 0.5;
       const std = hypT(al * al, be * be, xt);
       const num = xt ? be : al, den = xt ? al : be;
-      const asy = `y=\\pm\\frac{${num}}{${den}}x`;
+      const gg = gcd(num, den), nn1 = num / gg, dd1 = den / gg;
+      const asy = dd1 === 1 ? `y=\\pm ${nn1 === 1 ? "" : nn1}x` : `y=\\pm\\frac{${nn1}}{${dd1}}x`;
       let eq = std;
       if (lvl === 2) {
         const Lc = lcm2(al * al, be * be); let p = Lc / (al * al), q = Lc / (be * be), N = Lc; const g = gcdAll(p, q, N); p /= g; q /= g; N /= g;
@@ -212,25 +205,25 @@ add(
 );
 
 // ===================================================================================================================================
-// 7. eccentricity -> unknown denominator
+// 7. unknown denominator from the distance between the foci
 add(
-  "geo_eccentric",
+  "geo_conicParam",
   {
-    ko: ["곡선 ${eq}$ 의 이심률이 ${e}$ 이고 ${cond}$ 일 때, $k$ 의 값은? (숫자만 쓰세요)", ["타원의 이심률은 $e=\\frac{c}{a}$, 쌍곡선의 이심률도 $e=\\frac{c}{a}$ 예요. 어느 분모가 $a^2$ 인지 먼저 정하세요.", "$e^2$ 을 $k$ 로 나타낸 식을 세우세요. 타원은 $e^2=1-\\frac{b^2}{a^2}$, 쌍곡선은 $e^2=1+\\frac{b^2}{a^2}$ 예요."], "$e=\\frac{c}{a}$ 이고 ${work}$ 입니다. 따라서 $k={ans}$ 입니다."],
-    en: ["The curve ${eq}$ has eccentricity ${e}$, and ${cond}$. What is the value of $k$? (digits only)", ["For both ellipse and hyperbola $e=\\frac{c}{a}$. First decide which denominator is $a^2$.", "Write $e^2$ in terms of $k$: for an ellipse $e^2=1-\\frac{b^2}{a^2}$, for a hyperbola $e^2=1+\\frac{b^2}{a^2}$."], "We have $e=\\frac{c}{a}$ and ${work}$. Hence $k={ans}$."],
+    ko: ["곡선 ${eq}$ 의 두 초점 사이의 거리가 ${fd}$ 이고 ${cond}$ 일 때, $k$ 의 값은? (숫자만 쓰세요)", ["두 초점 사이의 거리를 $2c$ 라 하면 $c$ 의 값을 먼저 구할 수 있어요. 어느 분모가 $a^2$ 인지도 정하세요.", "타원은 $c^2=a^2-b^2$, 쌍곡선은 $c^2=a^2+b^2$ 이에요. 이 식에서 $k$ 를 구하세요."], "두 초점 사이의 거리가 $2c={fd}$ 이므로 $c={c}$, $c^2={c2}$ 입니다. ${work}$ 이므로 $k={ans}$ 입니다."],
+    en: ["The distance between the two foci of the curve ${eq}$ is ${fd}$, and ${cond}$. What is the value of $k$? (digits only)", ["If the foci are $2c$ apart, you can find $c$ first. Also decide which denominator is $a^2$.", "For an ellipse $c^2=a^2-b^2$, for a hyperbola $c^2=a^2+b^2$. Solve for $k$."], "The foci are $2c={fd}$ apart, so $c={c}$ and $c^2={c2}$. ${work}$, so $k={ans}$."],
   },
   (r, lvl) => {
     const t = r.pick(TRIS30), sw = r.next() < 0.5, case1 = r.next() < 0.5;
     if (lvl === 1) {
-      const a = t[2], b = sw ? t[0] : t[1], c = sw ? t[1] : t[0], e = tfrac(c, a);
-      if (case1) return { v: { eq: `\\frac{x^2}{${a * a}}+\\frac{y^2}{k}=1`, e, cond: `0<k<${a * a}`, work: `e^2=1-\\frac{k}{${a * a}}=\\left(${e}\\right)^2,\\ k=${a * a}\\left(1-\\left(${e}\\right)^2\\right)` }, ans: b * b };
-      return { v: { eq: `\\frac{x^2}{k}+\\frac{y^2}{${b * b}}=1`, e, cond: `k>${b * b}`, work: `e^2=1-\\frac{${b * b}}{k}=\\left(${e}\\right)^2,\\ k=\\frac{${b * b}}{1-\\left(${e}\\right)^2}` }, ans: a * a };
+      const a = t[2], b = sw ? t[0] : t[1], c = sw ? t[1] : t[0], base = { fd: 2 * c, c, c2: c * c };
+      if (case1) return { v: { eq: `\\frac{x^2}{${a * a}}+\\frac{y^2}{k}=1`, ...base, cond: `0<k<${a * a}`, work: `c^2=${a * a}-k=${c * c}` }, ans: b * b };
+      return { v: { eq: `\\frac{x^2}{k}+\\frac{y^2}{${b * b}}=1`, ...base, cond: `k>${b * b}`, work: `c^2=k-${b * b}=${c * c}` }, ans: a * a };
     }
-    const c = t[2], a = sw ? t[0] : t[1], b = sw ? t[1] : t[0], e = tfrac(c, a);
-    if (case1) return { v: { eq: `\\frac{x^2}{${a * a}}-\\frac{y^2}{k}=1`, e, cond: "k>0", work: `e^2=1+\\frac{k}{${a * a}}=\\left(${e}\\right)^2,\\ k=${a * a}\\left(\\left(${e}\\right)^2-1\\right)` }, ans: b * b };
-    return { v: { eq: `\\frac{x^2}{k}-\\frac{y^2}{${b * b}}=1`, e, cond: "k>0", work: `e^2=1+\\frac{${b * b}}{k}=\\left(${e}\\right)^2,\\ k=\\frac{${b * b}}{\\left(${e}\\right)^2-1}` }, ans: a * a };
+    const c = t[2], a = sw ? t[0] : t[1], b = sw ? t[1] : t[0], base = { fd: 2 * c, c, c2: c * c };
+    if (case1) return { v: { eq: `\\frac{x^2}{${a * a}}-\\frac{y^2}{k}=1`, ...base, cond: "k>0", work: `c^2=${a * a}+k=${c * c}` }, ans: b * b };
+    return { v: { eq: `\\frac{x^2}{k}-\\frac{y^2}{${b * b}}=1`, ...base, cond: "k>0", work: `c^2=k+${b * b}=${c * c}` }, ans: a * a };
   },
-  [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-02", "12기하01-03"], strategy: "eccentricity-unknown", evidence: "reverse" }],
+  [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-02", "12기하01-03"], strategy: "focal-distance-unknown", evidence: "reverse" }],
 );
 
 // ===================================================================================================================================
@@ -245,17 +238,18 @@ for (let A = 2; A <= 36; A++) for (let B = 2; B <= 36; B++) for (let m = 1; m <=
 add(
   "geo_conicTangentLine",
   {
-    ko: ["곡선 ${eq}$ 에 접하는 직선 ${ln}$ 에 대하여 양수 $k$ 의 값은? (숫자만 쓰세요)", ["직선의 식을 곡선의 방정식에 대입하여 $x$ 에 대한 이차방정식을 만들고, 접하면 판별식이 $0$ 이에요.", "판별식 $D=0$ 에서 $k$ 에 대한 식을 얻으세요."], "직선의 방정식을 곡선의 방정식에 대입해 얻은 이차방정식의 판별식을 $D$ 라 하면 접하므로 $D=0$ 입니다. ${work}$ 이므로 양수 $k$ 는 ${ans}$ 입니다."],
-    en: ["The line ${ln}$ is tangent to the curve ${eq}$. What is the positive value of $k$? (digits only)", ["Substitute the line into the equation of the curve to get a quadratic in $x$; tangency means its discriminant is $0$.", "Obtain an equation for $k$ from $D=0$."], "Substituting the line into the curve gives a quadratic whose discriminant $D$ must be $0$ for tangency. ${work}$, so the positive $k$ is ${ans}$."],
+    ko: ["곡선 ${eq}$ 에 접하는 직선 ${ln}$ 에 대하여 양수 $k$ 의 값은? (숫자만 쓰세요)", ["직선의 식을 곡선의 방정식에 대입하여 $x$ 에 대한 이차방정식을 만들고, 접하면 판별식이 $0$ 이에요.", "판별식 $D=0$ 에서 $k$ 에 대한 식을 얻으세요."], "직선의 방정식을 곡선의 방정식에 대입해 $x$ 에 대한 이차방정식을 얻으면 ${quad}$ 이고, 접하므로 판별식 $D=0$ 입니다. ${work}$ 이므로 양수 $k$ 는 ${ans}$ 입니다."],
+    en: ["The line ${ln}$ is tangent to the curve ${eq}$. What is the positive value of $k$? (digits only)", ["Substitute the line into the equation of the curve to get a quadratic in $x$; tangency means its discriminant is $0$.", "Obtain an equation for $k$ from $D=0$."], "Substituting the line into the curve gives the quadratic in $x$: ${quad}$. For tangency its discriminant must be $0$. ${work}$, so the positive $k$ is ${ans}$."],
   },
   (r, lvl) => {
     if (lvl === 1) {
       const m = sgn(r) * r.int(1, 4), n = r.int(1, 8), c = 4 * m * n;
-      return { v: { ln: `y=${cf(m)}x+k`, eq: `y^2=${c}x`, work: `D=${c * c}${sg(-4 * m * c)}k=0` }, ans: n };
+      return { v: { ln: `y=${cf(m)}x+k`, eq: `y^2=${c}x`, quad: `${pe([[m * m, "x^2"]])}+(${pe([[2 * m, "k"], [-c, ""]])})x+k^2=0`, work: `D=(${pe([[2 * m, "k"], [-c, ""]])})^2-${4 * m * m}k^2=${c * c}${sg(-4 * m * c)}k=0` }, ans: n };
     }
     const ell = r.next() < 0.5, [A, B, m0, k] = r.pick(ell ? TL_E : TL_H), m = sgn(r) * m0;
-    if (ell) return { v: { ln: `y=${cf(m)}x+k`, eq: ellT(A, B), work: `D=0\\ \\Rightarrow\\ k^2=${A}\\cdot ${m * m}+${B}=${k * k}` }, ans: k };
-    return { v: { ln: `y=${cf(m)}x+k`, eq: hypT(A, B, true), work: `D=0\\ \\Rightarrow\\ k^2=${A}\\cdot ${m * m}-${B}=${k * k}` }, ans: k };
+    const AB = A * B;
+    if (ell) return { v: { ln: `y=${cf(m)}x+k`, eq: ellT(A, B), quad: `${pe([[B + A * m * m, "x^2"], [2 * A * m, "kx"], [A, "k^2"], [-A * B, ""]])}=0`, work: `\\frac{D}{4}=${AB}(${A}\\cdot ${m * m}+${B}-k^2)=0\\ \\Rightarrow\\ k^2=${A}\\cdot ${m * m}+${B}=${k * k}` }, ans: k };
+    return { v: { ln: `y=${cf(m)}x+k`, eq: hypT(A, B, true), quad: `${pe([[B - A * m * m, "x^2"], [-2 * A * m, "kx"], [-A, "k^2"], [-A * B, ""]])}=0`, work: `\\frac{D}{4}=${AB}(k^2+${B}-${A}\\cdot ${m * m})=0\\ \\Rightarrow\\ k^2=${A}\\cdot ${m * m}-${B}=${k * k}` }, ans: k };
   },
   [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-04"], strategy: "tangent-discriminant", evidence: "reverse" }],
 );
@@ -278,11 +272,11 @@ add(
     if (lvl === 2) {
       const [c, x0, y0m] = r.pick(TA_P), y0 = sgn(r) * y0m;
       const xi = fq(-x0, 1), yi = fq(c * x0, 2 * y0), area = qabs(xi).mul(qabs(yi)).div(2);
-      return { v: { eq: `y^2=${c}x`, x0, y0, tan: `${y0}y=\\frac{${c}}{2}(x${sg(x0)})`, xi: tq(xi), yi: tq(yi) }, ans: area.toNumber() };
+      return { v: { eq: `y^2=${c}x`, x0, y0, tan: `${cf(y0)}y=${qcf(fq(c, 2))}(x${sg(x0)})`, xi: tq(xi), yi: tq(yi) }, ans: area.toNumber() };
     }
     const ell = r.next() < 0.5, [A, B, x0m, y0m] = r.pick(ell ? TA_E : TA_H), x0 = sgn(r) * x0m, y0 = sgn(r) * y0m;
     const xi = fq(A, x0), yi = ell ? fq(B, y0) : fq(-B, y0), area = qabs(xi).mul(qabs(yi)).div(2);
-    return { v: { eq: ell ? ellT(A, B) : hypT(A, B, true), x0, y0, tan: `\\frac{${x0}x}{${A}}${ell ? "+" : "-"}\\frac{${y0}y}{${B}}=1`, xi: tq(xi), yi: tq(yi) }, ans: area.toNumber() };
+    return { v: { eq: ell ? ellT(A, B) : hypT(A, B, true), x0, y0, tan: `${qlin([[fq(x0, A), "x"], [ell ? fq(y0, B) : fq(-y0, B), "y"]])}=1`, xi: tq(xi), yi: tq(yi) }, ans: area.toNumber() };
   },
   [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-04"], strategy: "tangent-at-point", evidence: "calc" }],
 );
@@ -299,8 +293,8 @@ for (let A = 2; A <= 30; A++) for (let B = 2; B <= 30; B++) { if (A === B) conti
 add(
   "geo_tangentsFromPoint",
   {
-    ko: ["점 $({x1},\\ {y1})$ 에서 곡선 ${eq}$ 에 그은 두 접선의 기울기의 곱은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["접선의 기울기를 $m$ 이라 하고 점 $({x1},\\ {y1})$ 을 지나는 직선 ${lnp}$ 을 곡선의 방정식에 대입해 보세요.", "접하는 조건(판별식 $=0$)에서 $m$ 에 대한 이차방정식이 나오고, 두 접선의 기울기는 그 방정식의 두 근이에요."], "접선의 기울기 $m$ 은 접하는 조건 $D=0$ 에서 얻은 이차방정식 ${quad}=0$ 의 두 근입니다. 근과 계수의 관계에서 두 접선의 기울기의 곱은 ${prod}$ 입니다."],
-    en: ["Two tangent lines to the curve ${eq}$ are drawn from the point $({x1},\\ {y1})$. What is the product of their slopes? (decimal or fraction such as 3/4)", ["Let the slope be $m$ and substitute the line ${lnp}$ through the point $({x1},\\ {y1})$ into the equation of the curve.", "The tangency condition (discriminant $=0$) gives a quadratic in $m$ whose two roots are the slopes of the tangents."], "The slopes $m$ are the two roots of the quadratic ${quad}=0$ obtained from the tangency condition $D=0$. By Vieta, the product of the slopes is ${prod}$."],
+    ko: ["점 $({x1},\\ {y1})$ 에서 곡선 ${eq}$ 에 그은 두 접선의 기울기의 곱은? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["접선의 기울기를 $m$ 이라 하고 점 $({x1},\\ {y1})$ 을 지나는 직선 ${lnp}$ 을 곡선의 방정식에 대입해 보세요.", "접하는 조건(판별식 $=0$)에서 $m$ 에 대한 이차방정식이 나오고, 두 접선의 기울기는 그 방정식의 두 근이에요."], "직선 ${lnp}$ 을 곡선의 방정식에 대입해 정리한 $x$ 에 대한 이차방정식의 판별식이 $0$ 이어야 하므로, 접선의 기울기 $m$ 은 이차방정식 ${quad}=0$ 의 두 근입니다. 근과 계수의 관계에서 두 접선의 기울기의 곱은 ${prod}$ 입니다."],
+    en: ["Two tangent lines to the curve ${eq}$ are drawn from the point $({x1},\\ {y1})$. What is the product of their slopes? (decimal or fraction such as 3/4)", ["Let the slope be $m$ and substitute the line ${lnp}$ through the point $({x1},\\ {y1})$ into the equation of the curve.", "The tangency condition (discriminant $=0$) gives a quadratic in $m$ whose two roots are the slopes of the tangents."], "Substitute the line ${lnp}$ into the curve; the discriminant of the resulting quadratic in $x$ must be $0$, so the slopes $m$ are the two roots of ${quad}=0$. By Vieta, the product of the slopes is ${prod}$."],
   },
   (r, lvl) => {
     if (lvl === 1) {
@@ -313,34 +307,6 @@ add(
     return { v: { x1, y1, lnp: `${nm("y", y1)}=m(${nm("x", x1)})`, eq: ell ? ellT(A, B) : hypT(A, B, true), quad, prod: tq(q) }, ans: q.toNumber() };
   },
   [{ skill: G1, levels: [1, 2], count: 12, d: 4, standards: ["12기하01-04"], strategy: "tangents-from-point", evidence: "application" }],
-);
-
-// ===================================================================================================================================
-// 11. slope of the chord with a given midpoint
-const CM_P = [], CM_E = [], CM_H = [];
-for (let c = -16; c <= 16; c++) { if (!c) continue; for (let x0 = -8; x0 <= 8; x0++) for (let y0 = 1; y0 <= 8; y0++) if (c * x0 > y0 * y0) { const q = fq(c, 2 * y0); if (q.q <= 12n) CM_P.push([c, x0, y0]); } }
-for (let A = 3; A <= 40; A++) for (let B = 3; B <= 40; B++) { if (A === B) continue; for (let x0 = 1; x0 <= 8; x0++) for (let y0 = 1; y0 <= 8; y0++) {
-  const q = fq(B * x0, A * y0);
-  if (q.q > 12n) continue;
-  if (x0 * x0 * B + y0 * y0 * A < A * B) CM_E.push([A, B, x0, y0]);
-  if (x0 * x0 * B - y0 * y0 * A > A * B) CM_H.push([A, B, x0, y0]);
-} }
-add(
-  "geo_chordMidpoint",
-  {
-    ko: ["곡선 ${eq}$ 위의 서로 다른 두 점 P, Q를 이은 선분 PQ의 중점이 $M({x0},\\ {y0})$ 일 때, 직선 PQ의 기울기는? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["두 점의 좌표를 $(x_1,\\ y_1)$, $(x_2,\\ y_2)$ 라 하면 $x_1+x_2$, $y_1+y_2$ 의 값을 중점으로부터 알 수 있어요.", "두 점을 곡선의 방정식에 각각 대입한 두 식을 변끼리 빼면 $\\frac{y_1-y_2}{x_1-x_2}$ 가 나와요."], "$P(x_1,\\ y_1)$, $Q(x_2,\\ y_2)$ 라 하면 $x_1+x_2={sx}$, $y_1+y_2={sy}$ 입니다. 두 점을 곡선의 방정식에 대입하여 변끼리 빼면 ${rel}$ 이므로 기울기는 $\\frac{y_1-y_2}{x_1-x_2}={sl}$ 입니다."],
-    en: ["The midpoint of the segment PQ joining two distinct points P and Q of the curve ${eq}$ is $M({x0},\\ {y0})$. What is the slope of the line PQ? (decimal or fraction such as 3/4)", ["Write the points as $(x_1,\\ y_1)$, $(x_2,\\ y_2)$; the midpoint tells you $x_1+x_2$ and $y_1+y_2$.", "Substitute both points into the equation of the curve and subtract the two equations to get $\\frac{y_1-y_2}{x_1-x_2}$."], "Let $P(x_1,\\ y_1)$, $Q(x_2,\\ y_2)$. Then $x_1+x_2={sx}$ and $y_1+y_2={sy}$. Substituting both points into the curve and subtracting gives ${rel}$, so the slope is $\\frac{y_1-y_2}{x_1-x_2}={sl}$."],
-  },
-  (r, lvl) => {
-    if (lvl === 1) {
-      const [c, x0, y0m] = r.pick(CM_P), y0 = sgn(r) * y0m, q = fq(c, 2 * y0);
-      return { v: { eq: `y^2=${c}x`, x0, y0, sx: 2 * x0, sy: 2 * y0, rel: `${2 * y0}(y_1-y_2)=${c}(x_1-x_2)`, sl: tq(q) }, ans: q.toNumber() };
-    }
-    const ell = r.next() < 0.5, [A, B, x0m, y0m] = r.pick(ell ? CM_E : CM_H), x0 = sgn(r) * x0m, y0 = sgn(r) * y0m;
-    const q = ell ? fq(-B * x0, A * y0) : fq(B * x0, A * y0);
-    return { v: { eq: ell ? ellT(A, B) : hypT(A, B, true), x0, y0, sx: 2 * x0, sy: 2 * y0, rel: `\\frac{${2 * x0}(x_1-x_2)}{${A}}${ell ? "+" : "-"}\\frac{${2 * y0}(y_1-y_2)}{${B}}=0`, sl: tq(q) }, ans: q.toNumber() };
-  },
-  [{ skill: G1, levels: [1, 2], count: 12, d: 4, standards: ["12기하01-01", "12기하01-02", "12기하01-03"], strategy: "chord-midpoint", evidence: "reverse" }],
 );
 
 // ===================================================================================================================================
@@ -368,41 +334,6 @@ add(
 );
 
 // ===================================================================================================================================
-// 13. counting lattice points on a conic
-const cntLattice = (test, lo, hi) => { const pts = []; for (let x = lo; x <= hi; x++) for (let y = lo; y <= hi; y++) if (test(x, y)) pts.push([x, y]); return pts; };
-add(
-  "geo_conicLattice",
-  {
-    ko: ["곡선 ${eq}$ 위의 점 중에서 $x$좌표와 $y$좌표가 모두 정수인 점의 개수는? (숫자만 쓰세요)", ["가능한 $x$(또는 $y$)의 범위를 먼저 정한 뒤 정수를 하나씩 대입해 보세요.", "곡선의 대칭성을 이용하면 부호만 다른 점이 함께 생겨요."], "조건을 만족하는 정수 $x$, $y$ 를 하나씩 따져 보면 ${sols}$ 이므로 모두 ${ans}$ 개입니다."],
-    en: ["How many points on the curve ${eq}$ have both coordinates integers? (digits only)", ["First bound the possible values of $x$ (or $y$), then try the integers one by one.", "By symmetry of the curve, points that differ only in signs come together."], "Checking the integers $x$, $y$ one by one, the points are ${sols}$, so there are ${ans}$ of them."],
-  },
-  (r, lvl) => {
-    for (;;) {
-      let eq, pts;
-      if (lvl === 1) {
-        const p = r.int(1, 6), q = r.int(1, 6), N = r.int(12, 160);
-        pts = cntLattice((x, y) => p * x * x + q * y * y === N, -13, 13);
-        eq = `${pe([[p, "x^2"], [q, "y^2"]])}=${N}`;
-        if (pts.length < 4 || pts.length > 24) continue;
-      } else if (r.next() < 0.6) {
-        const kk = r.pick([1, 4, 9]), N = r.int(3, 80);
-        pts = []; for (let y = -N; y <= N; y++) { const s = N + kk * y * y, x = Math.round(Math.sqrt(s)); if (x * x === s) { pts.push([x, y]); if (x !== 0) pts.push([-x, y]); } }
-        eq = `${pe([[1, "x^2"], [-kk, "y^2"]])}=${N}`;
-        if (pts.length < 4 || pts.length > 16) continue;
-      } else {
-        const c = r.int(2, 12), M = r.int(20, 100);
-        pts = []; for (let x = 1; x <= M; x++) { const s = c * x, y = Math.round(Math.sqrt(s)); if (y * y === s) { pts.push([x, y]); pts.push([x, -y]); } }
-        eq = `y^2=${c}x\\ (0<x\\le ${M})`;
-        if (pts.length < 4 || pts.length > 24) continue;
-      }
-      pts.sort((u, w) => u[0] - w[0] || u[1] - w[1]);
-      return { v: { eq, sols: pts.map(([x, y]) => `(${x},\\ ${y})`).join(",\\ ") }, ans: pts.length };
-    }
-  },
-  [{ skill: G1, levels: [1, 2], count: 12, d: 3, standards: ["12기하01-01", "12기하01-02", "12기하01-03"], strategy: "lattice-counting", evidence: "counting" }],
-);
-
-// ===================================================================================================================================
 // 14. general form -> focus (completing the square)
 add(
   "geo_conicGeneral",
@@ -411,8 +342,9 @@ add(
     en: ["Consider the conic ${eq}$. Let $(a,\\ b)$ be its focus with the largest $x$-coordinate (the focus itself if there is only one). What is $a+b$? (digits only)", ["Complete the square in $x$ and in $y$ to reach the standard form.", "Read the center (or vertex) from the standard form and move by $c$ (by $p$ for a parabola) along the axis to reach the focus."], "Completing the squares gives ${std}$. The focus is ${foc}$, so $a+b={ans}$."],
   },
   (r, lvl) => {
-    const h = r.int(-4, 4), k = r.int(-4, 4);
+    let h = r.int(-4, 4), k = r.int(-4, 4);
     if (lvl === 1) {
+      if (h === 0 && k === 0) h = r.nonzero(-4, 4);   // never the bare form y^2=4px: some completing of the square is needed
       const p = sgn(r) * r.int(1, 4);
       if (r.next() < 0.5) return { v: { eq: `${pe([[1, "y^2"], [-4 * p, "x"], [-2 * k, "y"], [k * k + 4 * p * h, ""]])}=0`, std: `${sq2("y", k)}=${4 * p}${xo("x", h)}`, foc: `(${h + p},\\ ${k})` }, ans: h + p + k };
       return { v: { eq: `${pe([[1, "x^2"], [-2 * h, "x"], [-4 * p, "y"], [h * h + 4 * p * k, ""]])}=0`, std: `${sq2("x", h)}=${4 * p}${xo("y", k)}`, foc: `(${h},\\ ${k + p})` }, ans: h + k + p };
@@ -442,8 +374,9 @@ add(
     for (;;) {
       const u = r.int(1, 10), w = r.int(-9, 9);
       if (w * w >= c * u) continue;
-      if (lvl === 1) return { v: { eq: `y^2=${c}x`, xa: u, ya: w, dir: `x=-${p}`, chk: `${w}^2=${w * w}<${c}\\times ${u}=${c * u}` }, ans: u + p };
-      return { v: { eq: `x^2=${c}y`, xa: w, ya: u, dir: `y=-${p}`, chk: `${w}^2=${w * w}<${c}\\times ${u}=${c * u}` }, ans: u + p };
+      const wb = w < 0 ? `(${w})` : `${w}`;
+      if (lvl === 1) return { v: { eq: `y^2=${c}x`, xa: u, ya: w, dir: `x=-${p}`, chk: `${wb}^2=${w * w}<${c}\\times ${u}=${c * u}` }, ans: u + p };
+      return { v: { eq: `x^2=${c}y`, xa: w, ya: u, dir: `y=-${p}`, chk: `${wb}^2=${w * w}<${c}\\times ${u}=${c * u}` }, ans: u + p };
     }
   },
   [{ skill: G1, levels: [1, 2], count: 12, d: 4, standards: ["12기하01-01"], strategy: "reflection-focus-directrix", evidence: "application" }],
@@ -459,6 +392,7 @@ for (const [a, b, c] of [[5, 3, 4], [5, 4, 3], [10, 6, 8], [10, 8, 6], [13, 5, 1
     if (d > 0 && d * d === s) EX.push([a, b, c, x, y, d]);
   }
 }
+const EXOFF = EX.filter((e) => e[4] > 0 && e[3] !== 0);
 add(
   "geo_ellipseExtSum",
   {
@@ -466,7 +400,7 @@ add(
     en: ["The ellipse ${eq}$ has a focus $F({fx},\\ {fy})$, and the point $A({xa},\\ {ya})$ lies inside the ellipse. As the point P moves on the ellipse, what is the product of the maximum and the minimum of $PA+PF$? (digits only)", ["If F' is the other focus, $PF=2a-PF'$, so $PA+PF=2a+(PA-PF')$.", "By the triangle inequality $-AF'\\le PA-PF'\\le AF'$, and both equalities occur because A is inside the ellipse."], "With F' the other focus, $PA+PF=2a+(PA-PF')$, where $a={a}$ and $AF'={dd}$. Since $-AF'\\le PA-PF'\\le AF'$, the maximum is $2a+AF'={mx}$, the minimum is $2a-AF'={mn}$, and the product is ${ans}$."],
   },
   (r) => {
-    const [a, b, c, x, y0, d] = r.pick(EX), y = sgn(r) * y0, ver = r.next() < 0.5;
+    const [a, b, c, x, y0, d] = r.pick(r.next() < 0.85 ? EXOFF : EX), y = sgn(r) * y0, ver = r.next() < 0.5;
     const mx = 2 * a + d, mn = 2 * a - d;
     return { v: { eq: ver ? ellT(b * b, a * a) : ellT(a * a, b * b), fx: ver ? 0 : c, fy: ver ? c : 0, xa: ver ? y : x, ya: ver ? x : y, a, dd: d, mx, mn }, ans: mx * mn };
   },
@@ -650,51 +584,37 @@ add(
 );
 
 // ===================================================================================================================================
-// 26. a.b from |a|, |b| and |a +- b|
-add(
-  "geo_dotFromNorms",
-  {
-    ko: ["두 벡터 $\\vec a$, $\\vec b$ 에 대하여 $|\\vec a|={na}$, $|\\vec b|={nb}$, $|{ex}|={uu}$ 일 때, $\\vec a\\cdot\\vec b$ 의 값은? (숫자만 쓰세요)", ["$|{ex}|^2$ 을 $|\\vec a|^2$, $|\\vec b|^2$, $\\vec a\\cdot\\vec b$ 로 전개하세요.", "전개한 식에 주어진 크기의 값을 대입하면 $\\vec a\\cdot\\vec b$ 에 대한 일차방정식이 돼요."], "$|{ex}|^2={na2}+{nb2}{sgn}2\\,\\vec a\\cdot\\vec b={uu2}$ 이므로 $\\vec a\\cdot\\vec b={ans}$ 입니다."],
-    en: ["For vectors $\\vec a$ and $\\vec b$ with $|\\vec a|={na}$, $|\\vec b|={nb}$ and $|{ex}|={uu}$, what is $\\vec a\\cdot\\vec b$? (digits only)", ["Expand $|{ex}|^2$ in terms of $|\\vec a|^2$, $|\\vec b|^2$ and $\\vec a\\cdot\\vec b$.", "Substituting the given lengths gives a linear equation in $\\vec a\\cdot\\vec b$."], "$|{ex}|^2={na2}+{nb2}{sgn}2\\,\\vec a\\cdot\\vec b={uu2}$, so $\\vec a\\cdot\\vec b={ans}$."],
-  },
-  (r) => {
-    for (;;) {
-      const na = r.int(2, 10), nb = r.int(2, 10), dt = r.int(-na * nb + 1, na * nb - 1), plus = r.next() < 0.5;
-      const u2 = na * na + nb * nb + (plus ? 2 : -2) * dt, u = Math.round(Math.sqrt(Math.max(u2, 0)));
-      if (u2 <= 0 || u * u !== u2) continue;
-      return { v: { na, nb, uu: u, ex: plus ? "\\vec a+\\vec b" : "\\vec a-\\vec b", na2: na * na, nb2: nb * nb, sgn: plus ? "+" : "-", uu2: u2 }, ans: dt };
-    }
-  },
-  [{ skill: G2, levels: [1], count: 12, d: 3, standards: ["12기하03-03"], strategy: "polarization", evidence: "reverse" }],
-);
-
-// ===================================================================================================================================
 // 27. angle between two vectors
-const COS_TAB = { "1/2": [[45, "\\frac{\\sqrt{2}}{2}"], [135, "-\\frac{\\sqrt{2}}{2}"]], "1/4": [[60, "\\frac{1}{2}"], [120, "-\\frac{1}{2}"]], "3/4": [[30, "\\frac{\\sqrt{3}}{2}"], [150, "-\\frac{\\sqrt{3}}{2}"]], "0": [[90, "0"], [90, "0"]] };
+const COS_TAB = { "1/2": [[45, "\\frac{\\sqrt{2}}{2}"], [135, "-\\frac{\\sqrt{2}}{2}"]], "1/4": [[60, "\\frac{1}{2}"], [120, "-\\frac{1}{2}"]], "3/4": [[30, "\\frac{\\sqrt{3}}{2}"], [150, "-\\frac{\\sqrt{3}}{2}"]], "0": [[90, "0"], [90, "0"]], "1": [[0, "1"], [180, "-1"]] };
+/** radical text of sqrt(n): 18 -> 3\sqrt{2}, 36 -> 6 */
+const sqrtTxt = (n) => { let s = 1, f = n; for (let k = 2; k * k <= f; k++) while (f % (k * k) === 0) { f /= k * k; s *= k; } return f === 1 ? String(s) : `${s === 1 ? "" : s}\\sqrt{${f}}`; };
 add(
   "geo_dotAngle",
   {
-    ko: ["$\\vec a={va}$, $\\vec b={vb}$ 가 이루는 각의 크기를 $\\theta$ ($0^\\circ\\le\\theta\\le180^\\circ$) 라 할 때, $\\theta$ 는 몇 도인가요? (숫자만 쓰세요)", ["두 벡터가 이루는 각의 코사인은 $\\cos\\theta=\\frac{\\vec a\\cdot\\vec b}{|\\vec a||\\vec b|}$ 예요.", "내적과 두 벡터의 크기를 각각 구하세요."], "$\\vec a\\cdot\\vec b={dt}$, $|\\vec a||\\vec b|=\\sqrt{{na2}}\\sqrt{{nb2}}$ 이므로 $\\cos\\theta={cs}$ 입니다. $0^\\circ\\le\\theta\\le180^\\circ$ 에서 $\\theta={ans}^\\circ$ 입니다."],
-    en: ["Let $\\theta$ ($0^\\circ\\le\\theta\\le180^\\circ$) be the angle between $\\vec a={va}$ and $\\vec b={vb}$. How many degrees is $\\theta$? (digits only)", ["The cosine of the angle is $\\cos\\theta=\\frac{\\vec a\\cdot\\vec b}{|\\vec a||\\vec b|}$.", "Compute the dot product and the two lengths."], "$\\vec a\\cdot\\vec b={dt}$ and $|\\vec a||\\vec b|=\\sqrt{{na2}}\\sqrt{{nb2}}$, so $\\cos\\theta={cs}$. For $0^\\circ\\le\\theta\\le180^\\circ$ this gives $\\theta={ans}^\\circ$."],
+    ko: ["두 벡터 $\\vec a={va}$, $\\vec b={vb}$ 가 이루는 각의 크기를 $\\theta$ ($0^\\circ\\le\\theta\\le180^\\circ$) 라 할 때, $\\theta$ 의 값은? (도 단위의 숫자만 쓰세요)", ["두 벡터가 이루는 각의 코사인은 $\\cos\\theta=\\frac{\\vec a\\cdot\\vec b}{|\\vec a||\\vec b|}$ 예요.", "내적과 두 벡터의 크기를 각각 구하세요."], "$\\vec a\\cdot\\vec b={dt}$, $|\\vec a||\\vec b|=\\sqrt{{na2}}\\sqrt{{nb2}}=\\sqrt{{pr}}={rt}$ 이므로 $\\cos\\theta=\\frac{{dt}}{{rt}}={cs}$ 입니다. $0^\\circ\\le\\theta\\le180^\\circ$ 에서 $\\theta={ans}^\\circ$ 입니다."],
+    en: ["Let $\\theta$ ($0^\\circ\\le\\theta\\le180^\\circ$) be the angle between the two vectors $\\vec a={va}$ and $\\vec b={vb}$. What is $\\theta$? (digits only, in degrees)", ["The cosine of the angle is $\\cos\\theta=\\frac{\\vec a\\cdot\\vec b}{|\\vec a||\\vec b|}$.", "Compute the dot product and the two lengths."], "$\\vec a\\cdot\\vec b={dt}$ and $|\\vec a||\\vec b|=\\sqrt{{na2}}\\sqrt{{nb2}}=\\sqrt{{pr}}={rt}$, so $\\cos\\theta=\\frac{{dt}}{{rt}}={cs}$. For $0^\\circ\\le\\theta\\le180^\\circ$ this gives $\\theta={ans}^\\circ$."],
   },
   (r, lvl) => {
     const dim = lvl === 1 ? 2 : 3, M = lvl === 1 ? 6 : 3;
-    for (let tries = 0; tries < 100000; tries++) {
-      const a = Array.from({ length: dim }, () => r.int(-M, M)), b = Array.from({ length: dim }, () => r.int(-M, M));
+    // target angle first, so that the answers are spread (2D: only 0/45/90/135/180 are possible with integer components)
+    const targets = lvl === 1 ? [45, 135, 45, 135, 90, 0, 180] : [30, 150, 60, 120, 45, 135, 90, 0, 180];
+    const want = r.pick(targets);
+    for (let tries = 0; tries < 200000; tries++) {
+      let a = Array.from({ length: dim }, () => r.int(-M, M)), b = Array.from({ length: dim }, () => r.int(-M, M));
+      if (want === 0 || want === 180) { const kk = r.pick([1, 2, 3]) * (want === 180 ? -1 : 1); b = a.map((x) => kk * x); if (b.some((x) => Math.abs(x) > M + 3)) continue; }
       const na2 = dot3(a, a), nb2 = dot3(b, b), dt = dot3(a, b);
       if (!na2 || !nb2) continue;
       const num = dt * dt, den = na2 * nb2;
       let key = null;
-      if (num === 0) key = "0"; else if (2 * num === den) key = "1/2"; else if (4 * num === den) key = "1/4"; else if (4 * num * 1 === 3 * den) key = "3/4";
+      if (num === 0) key = "0"; else if (num === den) key = "1"; else if (2 * num === den) key = "1/2"; else if (4 * num === den) key = "1/4"; else if (4 * num === 3 * den) key = "3/4";
       if (!key) continue;
-      if (lvl === 1 && key === "0" && r.next() < 0.6) continue;
       const [deg, cs] = COS_TAB[key][dt >= 0 ? 0 : 1];
-      if (dt === 0 && key !== "0") continue;
-      return { v: { va: vt(a), vb: vt(b), dt, na2, nb2, cs }, ans: deg };
+      if (deg !== want) continue;
+      return { v: { va: vt(a), vb: vt(b), dt, na2, nb2, pr: na2 * nb2, rt: sqrtTxt(na2 * nb2), cs }, ans: deg };
     }
     throw new Error("geo_dotAngle: no sample");
   },
-  [{ skill: G2, levels: [1, 2], count: 12, d: 3, standards: ["12기하03-03"], strategy: "angle-from-dot", evidence: "application" }],
+  [{ skill: G2, levels: [1, 2], count: 12, d: 3, standards: ["12기하03-03"], strategy: "angle-from-dot", evidence: "calc" }],
 );
 
 // ===================================================================================================================================
@@ -703,22 +623,30 @@ const comp = (c, d) => (c === 0 ? String(d) : lin(c, d, "t"));
 add(
   "geo_vecOrthoParam",
   {
+    ko: ["두 벡터 $\\vec a={va}$, $\\vec b={vb}$ 가 서로 수직일 때, 실수 $t$ 의 값은? (숫자만 쓰세요)", ["서로 수직인 두 벡터의 내적은 $0$ 이에요.", "성분끼리 곱해서 더하여 $\\vec a\\cdot\\vec b$ 를 $t$ 에 대한 식으로 나타내세요."], "두 벡터가 수직이므로 $\\vec a\\cdot\\vec b=0$ 입니다. $\\vec a\\cdot\\vec b={dexp}$ 이므로 방정식 ${dexp}=0$ 을 풀면 ${sol}$ 입니다."],
+    en: ["For the vectors $\\vec a={va}$ and $\\vec b={vb}$ perpendicular to each other, what is the real number $t$? (digits only)", ["The dot product of two perpendicular vectors is $0$.", "Multiply the components and add to write $\\vec a\\cdot\\vec b$ as an expression in $t$."], "Perpendicular vectors satisfy $\\vec a\\cdot\\vec b=0$. Since $\\vec a\\cdot\\vec b={dexp}$, solving ${dexp}=0$ gives ${sol}$."],
+  },
+  (r) => {
+    const dim = r.int(2, 3);
+    for (;;) {
+      const ia = r.int(0, dim - 1); let ib = r.int(0, dim - 1); if (ib === ia) ib = (ia + 1) % dim;
+      const ac = Array(dim).fill(0), bc = Array(dim).fill(0); ac[ia] = sgn(r) * r.int(1, 3); if (r.next() < 0.7) bc[ib] = sgn(r) * r.int(1, 3);
+      const ad = Array.from({ length: dim }, () => r.int(-5, 5)), bd = Array.from({ length: dim }, () => r.int(-5, 5));
+      const f = (t) => ad.reduce((s, _, i) => s + (ac[i] * t + ad[i]) * (bc[i] * t + bd[i]), 0), M = f(0), K = f(1) - f(0);
+      if (K === 0 || M % K !== 0) continue;
+      const t0 = -M / K;
+      return { v: { va: vt(ad.map((d, i) => comp(ac[i], d))), vb: vt(bd.map((d, i) => comp(bc[i], d))), dd: 0, dexp: pe([[K, "t"], [M, ""]]), sol: `t=${t0}` }, ans: t0 };
+    }
+  },
+  [{ skill: G2, levels: [1], count: 12, d: 3, standards: ["12기하03-03"], strategy: "perpendicular-parameter", evidence: "reverse" }],
+);
+add(
+  "geo_vecDotParam",
+  {
     ko: ["두 벡터 $\\vec a={va}$, $\\vec b={vb}$ 에 대하여 $\\vec a\\cdot\\vec b={dd}$ 일 때, 실수 $t$ 의 값 중 가장 큰 것은? (숫자만 쓰세요)", ["성분끼리 곱해서 더하여 $\\vec a\\cdot\\vec b$ 를 $t$ 에 대한 식으로 나타내세요.", "얻은 방정식을 풀어 $t$ 의 값을 모두 구한 뒤 가장 큰 것을 고르세요."], "$\\vec a\\cdot\\vec b={dexp}$ 이므로 방정식 ${dexp}={dd}$ 의 해는 ${sol}$ 입니다. 이 중 가장 큰 값은 ${ans}$ 입니다."],
     en: ["For vectors $\\vec a={va}$ and $\\vec b={vb}$, what is the largest real number $t$ with $\\vec a\\cdot\\vec b={dd}$? (digits only)", ["Multiply the components and add to write $\\vec a\\cdot\\vec b$ as an expression in $t$.", "Solve the resulting equation for all $t$ and pick the largest."], "$\\vec a\\cdot\\vec b={dexp}$, so solving ${dexp}={dd}$ gives ${sol}$. The largest value is ${ans}$."],
   },
-  (r, lvl) => {
-    if (lvl === 1) {
-      const dim = r.int(2, 3);
-      for (;;) {
-        const ia = r.int(0, dim - 1); let ib = r.int(0, dim - 1); if (ib === ia) ib = (ia + 1) % dim;
-        const ac = Array(dim).fill(0), bc = Array(dim).fill(0); ac[ia] = sgn(r) * r.int(1, 3); if (r.next() < 0.7) bc[ib] = sgn(r) * r.int(1, 3);
-        const ad = Array.from({ length: dim }, () => r.int(-5, 5)), bd = Array.from({ length: dim }, () => r.int(-5, 5));
-        const f = (t) => ad.reduce((s, _, i) => s + (ac[i] * t + ad[i]) * (bc[i] * t + bd[i]), 0), M = f(0), K = f(1) - f(0);
-        if (K === 0 || M % K !== 0) continue;
-        const t0 = -M / K;
-        return { v: { va: vt(ad.map((d, i) => comp(ac[i], d))), vb: vt(bd.map((d, i) => comp(bc[i], d))), dd: 0, dexp: pe([[K, "t"], [M, ""]]), sol: `t=${t0}` }, ans: t0 };
-      }
-    }
+  (r) => {
     const dim = r.int(2, 3), t1 = r.int(-6, 6);
     for (;;) {
       const t2 = r.int(-6, 6), al = r.int(-4, 4);
@@ -727,27 +655,33 @@ add(
       return { v: { va: vt([lin(1, al, "t"), ...rest.map((p) => p[0])]), vb: vt([lin(1, be, "t"), ...rest.map((p) => p[1])]), dd: s, dexp: pe([[1, "t^2"], [al + be, "t"], [al * be + R, ""]]), sol: `t=${Math.min(t1, t2)},\\ ${Math.max(t1, t2)}` }, ans: Math.max(t1, t2) };
     }
   },
-  [{ skill: G2, levels: [1, 2], count: 12, d: 3, standards: ["12기하03-03"], strategy: "dot-condition-parameter", evidence: "reverse" }],
+  [{ skill: G2, levels: [1], count: 12, d: 4, standards: ["12기하03-03"], strategy: "dot-condition-parameter", evidence: "reverse" }],
 );
 
 // ===================================================================================================================================
 // 29. the vector equation (p - a).(p - b) = 0
+const vceTxt = (shape) => ({
+  ko: [`점 $A{pa}$, $B{pb}$ 의 위치벡터를 각각 $\\vec a$, $\\vec b$ 라 하고, 점 P의 위치벡터를 $\\vec p$ 라 하자. $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ 을 만족시키는 점 P 전체가 이루는 ${shape === "c" ? "원" : "구"}의 반지름의 길이는? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)`, ["$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ 은 두 벡터 $\\vec p-\\vec a$, $\\vec p-\\vec b$ 가 수직이라는 뜻이에요.", "점 P에서 선분 AB를 바라보는 각은 몇 도일까요?"], `$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ 은 P가 선분 AB를 지름으로 하는 ${shape === "c" ? "원" : "구"} 위에 있음을 뜻합니다. $AB={ab}$ 이므로 반지름의 길이는 $\\frac{1}{2}AB={ans}$ 입니다.`],
+  en: [`Let $\\vec a$ and $\\vec b$ be the position vectors of the points $A{pa}$ and $B{pb}$, and let $\\vec p$ be the position vector of a point P. The points P satisfying $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ form a ${shape === "c" ? "circle" : "sphere"}. What is its radius? (decimal or fraction such as 3/4)`, ["$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ says that the vectors $\\vec p-\\vec a$ and $\\vec p-\\vec b$ are perpendicular.", "What is the angle subtended by segment AB at P?"], `$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ means P lies on the ${shape === "c" ? "circle" : "sphere"} with diameter AB. Since $AB={ab}$, the radius is $\\frac{1}{2}AB={ans}$.`],
+});
 add(
   "geo_vecCircleEq",
-  {
-    ko: ["점 $A{pa}$, $B{pb}$ 의 위치벡터를 각각 $\\vec a$, $\\vec b$ 라 하고, 점 P의 위치벡터를 $\\vec p$ 라 하자. $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ 을 만족시키는 점 P 전체가 이루는 도형(원 또는 구)의 반지름의 길이는? (소수로 써도 되고 3/4 처럼 분수로 써도 돼요)", ["$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ 은 두 벡터 $\\vec p-\\vec a$, $\\vec p-\\vec b$ 가 수직이라는 뜻이에요.", "점 P에서 선분 AB를 바라보는 각이 직각이니, 선분 AB가 지름이에요."], "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ 은 P가 선분 AB를 지름으로 하는 원(구) 위에 있음을 뜻합니다. $AB={ab}$ 이므로 반지름의 길이는 $\\frac{1}{2}AB={ans}$ 입니다."],
-    en: ["Let $\\vec a$ and $\\vec b$ be the position vectors of the points $A{pa}$ and $B{pb}$, and let $\\vec p$ be the position vector of a point P. The points P satisfying $(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ form a circle or a sphere. What is its radius? (decimal or fraction such as 3/4)", ["$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ says that the vectors $\\vec p-\\vec a$ and $\\vec p-\\vec b$ are perpendicular.", "So the angle subtended by AB at P is a right angle, and AB is a diameter."], "$(\\vec p-\\vec a)\\cdot(\\vec p-\\vec b)=0$ means P lies on the circle (sphere) with diameter AB. Since $AB={ab}$, the radius is $\\frac{1}{2}AB={ans}$."],
+  vceTxt("c"),
+  (r) => {
+    const t = r.pick(TRIS17), A = [r.int(-6, 6), r.int(-6, 6)], dv = shuf3(r, [t[0], t[1]]).slice(0, 2).map((x) => x * sgn(r));
+    const B = A.map((x, i) => x + dv[i]);
+    return { v: { pa: vt(A), pb: vt(B), ab: t[2] }, ans: t[2] / 2 };
   },
-  (r, lvl) => {
-    if (lvl === 1) {
-      const t = r.pick(TRIS17), A = [r.int(-6, 6), r.int(-6, 6)], dv = shuf3(r, [t[0], t[1]]).slice(0, 2).map((x) => x * sgn(r));
-      const B = A.map((x, i) => x + dv[i]);
-      return { v: { pa: vt(A), pb: vt(B), ab: t[2] }, ans: t[2] / 2 };
-    }
+  [{ skill: G2, levels: [1], count: 12, d: 3, standards: ["12기하03-05", "12기하03-03"], strategy: "vector-equation-of-circle", evidence: "concept" }],
+);
+add(
+  "geo_vecSphereEq",
+  vceTxt("s"),
+  (r) => {
     const { d, L } = quadVec(r), A = [r.int(-6, 6), r.int(-6, 6), r.int(-6, 6)], B = A.map((x, i) => x + d[i]);
     return { v: { pa: vt(A), pb: vt(B), ab: L }, ans: L / 2 };
   },
-  [{ skill: G2, levels: [1, 2], count: 12, d: 3, standards: ["12기하03-05", "12기하03-03"], strategy: "vector-equation-of-circle", evidence: "concept" }],
+  [{ skill: G2, levels: [1], count: 12, d: 4, standards: ["12기하03-05", "12기하03-03"], strategy: "vector-equation-of-sphere", evidence: "concept" }],
 );
 
 // ===================================================================================================================================
@@ -794,25 +728,6 @@ add(
 );
 
 // ===================================================================================================================================
-// 32. line in the plane given by a point and a direction vector meets another line
-add(
-  "geo_lineVec2D",
-  {
-    ko: ["좌표평면 위의 점 A의 좌표는 $({x1},\\ {y1})$ 이다. 점 A를 지나고 방향벡터가 $\\vec u=({u1},\\ {u2})$ 인 직선과 직선 ${ln}$ 의 교점의 좌표를 $(a,\\ b)$ 라 할 때, $a+b$ 의 값은? (숫자만 쓰세요)", ["방향벡터가 $\\vec u$ 이고 점 A를 지나는 직선 위의 점은 $(x,\\ y)=A+t\\vec u$ 꼴이에요.", "이 점의 좌표를 직선 ${ln}$ 의 방정식에 대입하여 $t$ 를 구하세요."], "직선 위의 점은 $(x,\\ y)=({par})$ 이고 이를 ${ln}$ 에 대입하면 ${eqn}$ 이므로 $t={tt}$ 입니다. 교점은 ${pt}$ 이므로 $a+b={ans}$ 입니다."],
-    en: ["In the coordinate plane the point A has coordinates $({x1},\\ {y1})$. The line through A with direction vector $\\vec u=({u1},\\ {u2})$ meets the line ${ln}$ at the point $(a,\\ b)$. What is $a+b$? (digits only)", ["A point of the line through A with direction $\\vec u$ has the form $(x,\\ y)=A+t\\vec u$.", "Substitute its coordinates into the equation ${ln}$ and solve for $t$."], "The points of the line are $(x,\\ y)=({par})$. Substituting into ${ln}$ gives ${eqn}$, so $t={tt}$. The intersection is ${pt}$, hence $a+b={ans}$."],
-  },
-  (r) => {
-    for (;;) {
-      const x1 = r.int(-5, 5), y1 = r.int(-5, 5), u1 = r.int(-3, 3), u2 = r.int(-3, 3), t0 = r.nonzero(-3, 3), p = r.int(-4, 4), q = r.int(-4, 4);
-      if ((u1 === 0 && u2 === 0) || (p === 0 && q === 0) || p * u1 + q * u2 === 0) continue;
-      const X = x1 + t0 * u1, Y = y1 + t0 * u2, rr = p * X + q * Y, K = p * u1 + q * u2, M = p * x1 + q * y1;
-      return { v: { x1, y1, u1, u2, ln: `${pe([[p, "x"], [q, "y"]])}=${rr}`, par: `${pe([[u1, "t"], [x1, ""]])},\\ ${pe([[u2, "t"], [y1, ""]])}`, eqn: `${pe([[K, "t"], [M, ""]])}=${rr}`, tt: t0, pt: vt([X, Y]) }, ans: X + Y };
-    }
-  },
-  [{ skill: G2, levels: [1], count: 12, d: 2, standards: ["12기하03-04"], strategy: "parametric-line-intersection", evidence: "application" }],
-);
-
-// ===================================================================================================================================
 // 33. plane through a point with a given normal vector: intercept on an axis
 add(
   "geo_planeNormal",
@@ -836,12 +751,13 @@ add(
 add(
   "geo_projPlaneArea",
   {
-    ko: ["평면 ${pl}$ 위에 있는 넓이가 ${ar}$ 인 도형을 ${cp}$평면에 정사영시킨 도형의 넓이는? (숫자만 쓰세요)", ["도형이 있는 평면과 ${cp}$평면이 이루는 각을 $\\theta$ 라 하면 정사영의 넓이는 (도형의 넓이)$\\times\\cos\\theta$ 예요.", "두 평면이 이루는 각은 두 평면의 법선벡터가 이루는 각과 같으므로 $\\cos\\theta$ 는 법선벡터로 구해요."], "평면 ${pl}$ 의 법선벡터는 $({nv})$ 이고 크기는 ${nn}$ 입니다. ${cp}$평면의 법선벡터와의 코사인은 $\\cos\\theta=\\frac{{ni}}{{nn}}$ 이므로 정사영의 넓이는 ${ar}\\times\\frac{{ni}}{{nn}}={ans}$ 입니다."],
-    en: ["A figure of area ${ar}$ lies in the plane ${pl}$. What is the area of its orthogonal projection onto the ${cp}$-plane? (digits only)", ["If $\\theta$ is the angle between the plane of the figure and the ${cp}$-plane, the projected area is (area)$\\times\\cos\\theta$.", "The angle between two planes equals the angle between their normal vectors, so find $\\cos\\theta$ from the normals."], "The plane ${pl}$ has normal vector $({nv})$ of length ${nn}$. The cosine with the normal of the ${cp}$-plane is $\\cos\\theta=\\frac{{ni}}{{nn}}$, so the projected area is ${ar}\\times\\frac{{ni}}{{nn}}={ans}$."],
+    ko: ["평면 ${pl}$ 위에 있는 넓이가 ${ar}$ 인 도형을 ${cp}$평면에 정사영시킨 도형의 넓이는? (숫자만 쓰세요)", ["도형이 있는 평면과 ${cp}$평면이 이루는 각을 $\\theta$ 라 하면 정사영의 넓이는 (도형의 넓이)$\\times\\cos\\theta$ 예요.", "두 평면이 이루는 각 $\\theta$ 는 $0^\\circ\\le\\theta\\le90^\\circ$ 로 잡으므로 $\\cos\\theta=\\frac{|\\vec n_1\\cdot\\vec n_2|}{|\\vec n_1||\\vec n_2|}$ (두 법선벡터의 내적의 절댓값을 크기의 곱으로 나눈 값) 예요."], "평면 ${pl}$ 의 법선벡터는 $({nv})$ 이고 크기는 ${nn}$ 입니다. ${cp}$평면의 법선벡터는 $({cn})$ 이므로 $\\cos\\theta=\\frac{|{ns}|}{{nn}}=\\frac{{ni}}{{nn}}$ 이고, 정사영의 넓이는 ${ar}\\times\\frac{{ni}}{{nn}}={ans}$ 입니다."],
+    en: ["A figure of area ${ar}$ lies in the plane ${pl}$. What is the area of its orthogonal projection onto the ${cp}$-plane? (digits only)", ["If $\\theta$ is the angle between the plane of the figure and the ${cp}$-plane, the projected area is (area)$\\times\\cos\\theta$.", "The angle $\\theta$ between two planes is taken in $0^\\circ\\le\\theta\\le90^\\circ$, so $\\cos\\theta=\\frac{|\\vec n_1\\cdot\\vec n_2|}{|\\vec n_1||\\vec n_2|}$ (absolute value of the dot product of the normals over the product of their lengths)."], "The plane ${pl}$ has normal vector $({nv})$ of length ${nn}$. The normal of the ${cp}$-plane is $({cn})$, so $\\cos\\theta=\\frac{|{ns}|}{{nn}}=\\frac{{ni}}{{nn}}$, and the projected area is ${ar}\\times\\frac{{ni}}{{nn}}={ans}$."],
   },
   (r) => {
-    const { d, L } = quadVec(r), cpI = r.int(0, 2), cp = ["xy", "yz", "zx"][cpI], u = r.int(1, 6), dd = r.nonzero(-12, 12), ni = Math.abs(d[[2, 0, 1][cpI]]);
-    return { v: { pl: `${pe([[d[0], "x"], [d[1], "y"], [d[2], "z"]])}=${dd}`, cp, ar: L * u, nv: d.join(",\\ "), nn: L, ni }, ans: ni * u };
+    const { d, L } = quadVec(r), cpI = r.int(0, 2), cp = ["xy", "yz", "zx"][cpI], u = r.int(1, 6), dd = r.nonzero(-12, 12), ns = d[[2, 0, 1][cpI]], ni = Math.abs(ns);
+    const cn = [[0, 0, 1], [1, 0, 0], [0, 1, 0]][cpI].join(",\\ ");
+    return { v: { ns, cn, pl: `${pe([[d[0], "x"], [d[1], "y"], [d[2], "z"]])}=${dd}`, cp, ar: L * u, nv: d.join(",\\ "), nn: L, ni }, ans: ni * u };
   },
   [{ skill: G2, levels: [1], count: 12, d: 3, standards: ["12기하02-03"], strategy: "projection-area-cosine", evidence: "application" }],
 );
@@ -851,8 +767,8 @@ add(
 add(
   "geo_projEllipse",
   {
-    ko: ["평면 $\\alpha$ 위에 반지름의 길이가 ${rr}$ 인 원이 있다. 이 원을 평면 $\\beta$ 에 정사영시키면 타원이 된다. 두 평면 $\\alpha$, $\\beta$ 가 이루는 각의 크기를 $\\theta$ 라 하고 $\\cos\\theta={cs}$ 일 때, 이 타원의 두 초점 사이의 거리는? (숫자만 쓰세요)", ["원의 지름 중 두 평면의 교선과 평행한 것은 길이가 변하지 않고, 수직인 것은 $\\cos\\theta$ 배로 줄어요.", "정사영된 타원의 장반지름과 단반지름을 구하고 $c=\\sqrt{a^2-b^2}$ 를 계산하세요."], "정사영한 타원의 장반지름은 $a={rr}$, 단반지름은 $b={rr}\\cos\\theta={bb}$ 입니다. $c=\\sqrt{{rr}^2-{bb}^2}={cc}$ 이므로 두 초점 사이의 거리는 $2c={ans}$ 입니다."],
-    en: ["A circle of radius ${rr}$ lies in the plane $\\alpha$, and its orthogonal projection onto the plane $\\beta$ is an ellipse. Let $\\theta$ be the angle between the planes, with $\\cos\\theta={cs}$. What is the distance between the two foci of this ellipse? (digits only)", ["The diameter parallel to the line of intersection keeps its length, and the perpendicular one shrinks by the factor $\\cos\\theta$.", "Find the semi-axes of the projected ellipse and compute $c=\\sqrt{a^2-b^2}$."], "The projected ellipse has semi-major axis $a={rr}$ and semi-minor axis $b={rr}\\cos\\theta={bb}$. Then $c=\\sqrt{{rr}^2-{bb}^2}={cc}$, so the distance between the foci is $2c={ans}$."],
+    ko: ["평면 $\\alpha$ 위에 반지름의 길이가 ${rr}$ 인 원이 있다. 이 원을 평면 $\\beta$ 에 정사영시키면 타원이 된다. 두 평면 $\\alpha$, $\\beta$ 가 이루는 각의 크기를 $\\theta$ 라 하고 $\\cos\\theta={cs}$ 일 때, 이 타원의 두 초점 사이의 거리는? (숫자만 쓰세요)", ["원의 지름 중 두 평면의 교선과 평행한 것은 길이가 변하지 않고, 수직인 것은 $\\cos\\theta$ 배로 줄어요.", "정사영된 타원의 장축의 길이 $2a$ 와 단축의 길이 $2b$ 를 구하고 $c=\\sqrt{a^2-b^2}$ 를 계산하세요."], "정사영한 타원의 장축의 길이는 $2a=2\\times {rr}$, 단축의 길이는 $2b=2\\times {rr}\\cos\\theta=2\\times {bb}$ 이므로 $a={rr}$, $b={bb}$ 입니다. $c=\\sqrt{{rr}^2-{bb}^2}={cc}$ 이므로 두 초점 사이의 거리는 $2c={ans}$ 입니다."],
+    en: ["A circle of radius ${rr}$ lies in the plane $\\alpha$, and its orthogonal projection onto the plane $\\beta$ is an ellipse. Let $\\theta$ be the angle between the planes, with $\\cos\\theta={cs}$. What is the distance between the two foci of this ellipse? (digits only)", ["The diameter parallel to the line of intersection keeps its length, and the perpendicular one shrinks by the factor $\\cos\\theta$.", "Find the lengths $2a$ and $2b$ of the major and minor axes of the projected ellipse and compute $c=\\sqrt{a^2-b^2}$."], "The projected ellipse has major axis $2a=2\\times {rr}$ and minor axis $2b=2\\times {rr}\\cos\\theta=2\\times {bb}$, so $a={rr}$ and $b={bb}$. Then $c=\\sqrt{{rr}^2-{bb}^2}={cc}$, so the distance between the foci is $2c={ans}$."],
   },
   (r) => {
     const t = r.pick(BASE.slice(0, 4)), sw = r.next() < 0.5, l1 = sw ? t[0] : t[1], l2 = sw ? t[1] : t[0], s = r.int(1, 6);
@@ -866,22 +782,22 @@ add(
 add(
   "geo_threePerp",
   {
-    ko: ["평면 $\\alpha$ 밖의 점 P에서 $\\alpha$ 에 내린 수선의 발을 H, 점 H에서 $\\alpha$ 위의 직선 $\\ell$ 에 내린 수선의 발을 K라 하고, $\\ell$ 위에 K와 다른 점 A를 잡는다. ${giv}$ 일 때, 선분 ${ask}$ 의 길이는? (숫자만 쓰세요)", ["$PH\\perp\\alpha$, $HK\\perp\\ell$ 이므로 삼수선의 정리에 의해 $PK\\perp\\ell$ 이에요.", "삼수선의 정리로 얻은 직각삼각형들에서 피타고라스 정리를 차례로 쓰세요."], "$PH\\perp\\alpha$, $HK\\perp\\ell$ 이므로 삼수선의 정리에 의해 $PK\\perp\\ell$ 입니다. ${work}$ 이므로 구하는 길이는 ${ans}$ 입니다."],
-    en: ["From a point P outside the plane $\\alpha$, the foot of the perpendicular to $\\alpha$ is H. From H the foot of the perpendicular to a line $\\ell$ in $\\alpha$ is K, and A is a point of $\\ell$ different from K. If ${giv}$, what is the length of segment ${ask}$? (digits only)", ["Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$.", "Apply the Pythagorean theorem in the resulting right triangles one after another."], "Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$. ${work}$, so the length is ${ans}$."],
+    ko: ["평면 $\\alpha$ 밖의 점 P에서 $\\alpha$ 에 내린 수선의 발을 H, 점 H에서 $\\alpha$ 위의 직선 $\\ell$ 에 내린 수선의 발을 K라 하고, $\\ell$ 위에 K와 다른 점 A를 잡는다. 점 P에서 직선 $\\ell$ 까지의 거리를 $d$ 라 하자. ${giv}$ 일 때, ${ask}$ 의 값은? (숫자만 쓰세요)", ["$PH\\perp\\alpha$, $HK\\perp\\ell$ 이므로 삼수선의 정리에 의해 $PK\\perp\\ell$ 이에요.", "삼수선의 정리로 얻은 직각삼각형들에서 피타고라스 정리를 차례로 쓰세요."], "$PH\\perp\\alpha$, $HK\\perp\\ell$ 이므로 삼수선의 정리에 의해 $PK\\perp\\ell$ 입니다. ${work}$ 이므로 구하는 값은 ${ans}$ 입니다."],
+    en: ["From a point P outside the plane $\\alpha$, the foot of the perpendicular to $\\alpha$ is H. From H the foot of the perpendicular to a line $\\ell$ in $\\alpha$ is K, and A is a point of $\\ell$ different from K. Let $d$ be the distance from P to the line $\\ell$. If ${giv}$, what is the value of ${ask}$? (digits only)", ["Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$.", "Apply the Pythagorean theorem in the resulting right triangles one after another."], "Since $PH\\perp\\alpha$ and $HK\\perp\\ell$, the three perpendiculars theorem gives $PK\\perp\\ell$. ${work}$, so the value is ${ans}$."],
   },
   (r, lvl) => {
-    const sq = (x) => x * x;
     if (lvl === 1) {
+      // the distance d from P to l is PK only because of the theorem
       const t = r.pick(TRIS30), [h, d] = r.next() < 0.5 ? [t[0], t[1]] : [t[1], t[0]], l = t[2];
       const m = r.int(0, 2);
-      if (m === 0) return { v: { giv: `PH=${h},\\ HK=${d}`, ask: "PK", work: `PK^2=PH^2+HK^2=${h}^2+${d}^2=${l * l}` }, ans: l };
-      if (m === 1) return { v: { giv: `PK=${l},\\ PH=${h}`, ask: "HK", work: `HK^2=PK^2-PH^2=${l}^2-${h}^2=${d * d}` }, ans: d };
-      return { v: { giv: `PK=${l},\\ HK=${d}`, ask: "PH", work: `PH^2=PK^2-HK^2=${l}^2-${d}^2=${h * h}` }, ans: h };
+      if (m === 0) return { v: { giv: `PH=${h},\\ HK=${d}`, ask: "d", work: `d=PK,\\ PK^2=PH^2+HK^2=${h}^2+${d}^2=${l * l}` }, ans: l };
+      if (m === 1) return { v: { giv: `d=${l},\\ PH=${h}`, ask: "HK", work: `PK=d=${l},\\ HK^2=PK^2-PH^2=${l}^2-${h}^2=${d * d}` }, ans: d };
+      return { v: { giv: `d=${l},\\ HK=${d}`, ask: "PH", work: `PK=d=${l},\\ PH^2=PK^2-HK^2=${l}^2-${d}^2=${h * h}` }, ans: h };
     }
     if (r.next() < 0.4) {
       const t = r.pick(TRIS30), [l, e] = r.next() < 0.5 ? [t[0], t[1]] : [t[1], t[0]], g = t[2];
-      if (r.next() < 0.5) return { v: { giv: `PK=${l},\\ AK=${e}`, ask: "PA", work: `PA^2=PK^2+AK^2=${l}^2+${e}^2=${g * g}` }, ans: g };
-      return { v: { giv: `PA=${g},\\ PK=${l}`, ask: "AK", work: `AK^2=PA^2-PK^2=${g}^2-${l}^2=${e * e}` }, ans: e };
+      if (r.next() < 0.5) return { v: { giv: `d=${l},\\ AK=${e}`, ask: "PA", work: `PK=d=${l},\\ PA^2=PK^2+AK^2=${l}^2+${e}^2=${g * g}` }, ans: g };
+      return { v: { giv: `PA=${g},\\ d=${l}`, ask: "AK", work: `PK=d=${l},\\ AK^2=PA^2-PK^2=${g}^2-${l}^2=${e * e}` }, ans: e };
     }
     const q = r.pick(QUADS), [h, d, e] = shuf3(r, q.slice(0, 3)), g = q[3];
     const m = r.int(0, 2);
@@ -891,3 +807,11 @@ add(
   },
   [{ skill: G2, levels: [1, 2], count: 12, d: 3, standards: ["12기하02-02"], strategy: "three-perpendiculars", evidence: "application" }],
 );
+
+// ---------- answer-format hint for templates whose integer answer can be negative ("digits only" would exclude the minus sign)
+for (const key of ["geo_parFocusDir", "geo_conicGeneral", "geo_divPoint", "geo_sphereExpand", "geo_sphereTangentPlane", "geo_vecOrthoParam", "geo_vecDotParam", "geo_lineIntersectParam", "geo_lineSpacePoint"]) {
+  const t = TEMPLATES[key];
+  if (!t.ko[0].includes("(숫자만 쓰세요)") || !t.en[0].includes("(digits only)")) throw new Error(`${key}: unexpected format hint`);
+  t.ko[0] = t.ko[0].replace("(숫자만 쓰세요)", "(정수로 쓰세요. 음수이면 - 를 붙이세요)");
+  t.en[0] = t.en[0].replace("(digits only)", "(an integer; put a minus sign in front if it is negative)");
+}

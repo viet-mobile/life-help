@@ -53,6 +53,31 @@ def only(vals, msg="answer not unique"):
     return vals[0]
 
 
+def chain(st):
+    """Check a purely numeric displayed working such as '(-2)^2=4<8\\times 2=16': every '=' holds and every '<' holds, evaluated with sympy
+    (so a notation error like '-2^2=4' is caught: sympy reads it as -4).  Returns the value of the last operand."""
+    parts = re.split(r"([=<])", tex(st))
+    vals = [sp.nsimplify(S(q)) if q.strip() else None for q in parts[0::2]]
+    ops = parts[1::2]
+    for (u, w, op) in zip(vals, vals[1:], ops):
+        assert u is not None and w is not None and not (u.free_symbols or w.free_symbols), f"working not numeric: {st}"
+        assert (u == w) if op == "=" else (u < w), f"displayed working is wrong: {st}"
+    return vals[-1]
+
+
+def last_is(st, expected):
+    """the last '='-operand of a displayed working (when numeric) equals the answer"""
+    q = S(tex(st).split("=")[-1].split(",")[-1])
+    if not q.free_symbols:
+        assert sp.nsimplify(q) == sp.nsimplify(expected), f"working ends with {q}, answer {expected}: {st}"
+
+
+def proportional(f1, f2, msg):
+    """f1 = const * f2 (both polynomials in x, y, ...), const != 0"""
+    q = sp.cancel(sp.expand(f1) / sp.expand(f2))
+    assert q.is_number and q != 0, f"{msg}: not proportional ({q})"
+
+
 def ell_params(F):
     """(Dx, Dy) denominators of x^2 and y^2 for an equation a x^2 + b y^2 = N written as polynomial F = 0"""
     P = sp.Poly(F, x, y)
@@ -70,23 +95,10 @@ def parFocusDir(v):
     expr = ((x - fx) ** 2 + (y - fy) ** 2 - line ** 2).subs(sp.Symbol(mc.group(1)), int(mc.group(2)))
     sols = [u for u in sp.solve(expr, sp.Symbol(v["un"])) if u.is_real]
     assert sols
+    # the displayed parabola equation is the focus-directrix equation itself
+    assert sp.expand(eqF(v["eqn"]) - sp.expand((x - fx) ** 2 + (y - fy) ** 2 - line ** 2)) == 0, "displayed equation differs from the focus/directrix equation"
     return max(sols)
 
-
-# ---------------------------------------------------------------- 2
-def parFocalChord(v):
-    mm = re.fullmatch(r"([xy])\^2=(\d+)([xy])", v["eq"])
-    c = sp.Integer(int(mm.group(2)))
-    if mm.group(1) == "y":
-        F, foc, par = (0, 0), (c / 4, 0), y**2 - c * x
-    else:
-        F, foc, par = (0, 0), (0, c / 4), x**2 - c * y
-    slope = S(v["m"])
-    assert slope != 0
-    sol = sp.solve([par, y - (slope * (x - foc[0]) + foc[1])], [x, y], dict=True)
-    assert len(sol) == 2
-    d = sp.sqrt((sol[0][x] - sol[1][x]) ** 2 + (sol[0][y] - sol[1][y]) ** 2)
-    return R(d)
 
 
 # ---------------------------------------------------------------- 3 / 4 helpers
@@ -127,9 +139,11 @@ def ellipseFocal(v):
         conds = [lambda px, py, u, w: u - w - int(m3.group(1))]
     else:
         raise AssertionError("cond")
-    ask = (lambda px, py, u, w: u + w + 2 * c) if v["ask"] == "PF+PF'+FF'" else (lambda px, py, u, w: u)
-    assert v["ask"] in ("PF+PF'+FF'", "PF")
-    return R(focal_system(F, foci, conds, ask))
+    asks = {"PF": lambda px, py, u, w: u, "PF'": lambda px, py, u, w: w, "PF'+FF'": lambda px, py, u, w: w + 2 * c}
+    ans = R(focal_system(F, foci, conds, asks[v["ask"]]))
+    assert v["a"] * 2 == v["tw"] and v["c"] * 2 == v["tc"] and 2 * c == v["tc"], "a, c, 2a, 2c shown in the working differ from the curve"
+    last_is(v["work"], ans)
+    return ans
 
 
 def hyperFocal(v):
@@ -149,7 +163,50 @@ def hyperFocal(v):
     else:
         raise AssertionError("cond")
     asks = {"PF'": lambda px, py, u, w: w, "PF+PF'+FF'": lambda px, py, u, w: u + w + 2 * c, "PF\\times PF'": lambda px, py, u, w: u * w}
-    return R(focal_system(F, foci, conds, asks[v["ask"]]))
+    ans = R(focal_system(F, foci, conds, asks[v["ask"]]))
+    assert 2 * c == v["tc"] and v["tw"] == 2 * v["a"] and v["ca"] == c - v["a"], "a, c shown in the working differ from the curve"
+    if "work2" in v:   # level 1: PF < c+a, so PF' = PF + 2a; PF' = PF - 2a would be shorter than c-a
+        d1 = int(re.fullmatch(r"PF=(\d+)", cond).group(1))
+        assert d1 < c + v["a"], "PF >= c+a"
+        chain(v["alt"])
+        assert d1 - v["tw"] < c - v["a"], "the excluded branch is not excluded"
+        assert S(v["work2"].split("=")[-1]) == ans
+    else:
+        last_is(v["work"], ans)
+    return ans
+
+
+# ---------------------------------------------------------------- 7
+def conicParam(v):
+    mm = re.fullmatch(r"\\frac\{x\^2\}\{(\w+)\}([+-])\\frac\{y\^2\}\{(\w+)\}=1", v["eq"])
+    cond = v["cond"]
+    fd = v["fd"]
+    F = eqF(v["eq"])                                    # still contains the symbol k
+    Pk = sp.Poly(sp.expand(F), x, y)
+    ca, cb, c0k = Pk.coeff_monomial(x**2), Pk.coeff_monomial(y**2), Pk.coeff_monomial(1)
+    fDx = sp.lambdify(k, -c0k / ca, "math"); fDy = sp.lambdify(k, -c0k / cb, "math")
+    hits = []
+    for kk in range(1, 6000):
+        if m1 := re.fullmatch(r"0<k<(\d+)", cond): ok = 0 < kk < int(m1.group(1))
+        elif m1 := re.fullmatch(r"k>(\d+)", cond): ok = kk > int(m1.group(1))
+        else: raise AssertionError("cond")
+        if not ok:
+            continue
+        Dx, Dy = fDx(Fraction(kk)), fDy(Fraction(kk))
+        if mm.group(2) == "+":
+            if Dx == Dy or Dx <= 0 or Dy <= 0:
+                continue
+            c2 = abs(Dx - Dy)
+        else:
+            assert Dx * Dy < 0
+            c2 = abs(Dx) + abs(Dy)
+        if 4 * c2 == fd**2:
+            hits.append(kk)
+    assert len(hits) == 1, f"candidates {hits}"
+    assert v["c"] * 2 == fd and v["c2"] == v["c"] ** 2
+    pieces = [S(q) for q in tex(v["work"]).split("=")]   # c^2 = (expression in k) = number
+    assert all(sp.nsimplify(q.subs(k, hits[0])) == v["c2"] for q in pieces[1:]), "displayed working differs"
+    return hits[0]
 
 
 # ---------------------------------------------------------------- 5
@@ -168,34 +225,17 @@ def hyperAsym(v):
     sl = sp.solve(a * x**2 + b * y**2, y)
     pos = [q for q in sl if q.subs(x, 1) > 0]
     assert len(pos) == 1
-    return R(sp.diff(pos[0], x))
-
-
-# ---------------------------------------------------------------- 7
-def eccentric(v):
-    mm = re.fullmatch(r"\\frac\{x\^2\}\{(\w+)\}([+-])\\frac\{y\^2\}\{(\w+)\}=1", v["eq"])
-    d1, sign, d2 = mm.group(1), mm.group(2), mm.group(3)
-    ev = S(v["e"]) ** 2
-    cond = v["cond"]
-    hits = []
-    for kk in range(1, 3000):
-        D1 = kk if d1 == "k" else int(d1); D2 = kk if d2 == "k" else int(d2)
-        ok = False
-        if mm := re.fullmatch(r"0<k<(\d+)", cond): ok = 0 < kk < int(mm.group(1))
-        elif mm := re.fullmatch(r"k>(\d+)", cond): ok = kk > int(mm.group(1))
-        else: raise AssertionError("cond")
-        if not ok:
-            continue
-        if sign == "+":
-            if D1 == D2:
-                continue
-            a2 = max(D1, D2); c2 = a2 - min(D1, D2)
-        else:
-            a2 = D1; c2 = D1 + D2
-        if sp.Rational(c2, a2) == ev:
-            hits.append(kk)
-    assert len(hits) == 1, f"candidates {hits}"
-    return hits[0]
+    ans = R(sp.diff(pos[0], x))
+    # the displayed asymptotes y = +-(n/d) x are in lowest terms and agree
+    mm = re.fullmatch(r"y=\\pm ?(.*)x", v["asy"])
+    shown = S(mm.group(1) or "1")
+    assert sp.nsimplify(shown) == sp.nsimplify(pos[0].subs(x, 1)), "displayed asymptote differs"
+    fr = re.fullmatch(r"\\frac\{(\d+)\}\{(\d+)\}", mm.group(1))
+    if fr:
+        assert math.gcd(int(fr.group(1)), int(fr.group(2))) == 1, "asymptote slope not in lowest terms"
+    # the displayed standard form has the same graph as the given equation
+    proportional(eqF(v["std"]), F, "std form")
+    return ans
 
 
 # ---------------------------------------------------------------- 8
@@ -208,7 +248,24 @@ def conicTangentLine(v):
     sols = sp.solve(sp.discriminant(P.as_expr(), x), k)
     pos = [q for q in sols if q.is_real and q > 0]
     assert len(pos) == 1, f"positive k not unique: {sols}"
-    return R(pos[0])
+    ans = R(pos[0])
+    # displayed quadratic in x is the substituted equation (up to a constant factor)
+    q = sp.expand(eqF(v["quad"]))
+    proportional(q, P.as_expr(), "displayed quadratic")
+    # displayed discriminant working
+    w = v["work"]
+    if w.startswith("D="):          # parabola: D=(2mk-c)^2-4m^2k^2=c^2-4mck=0
+        parts = w.split("=")
+        D = sp.discriminant(P.as_expr(), x)
+        assert sp.expand(S(parts[1]) - D) == 0 and sp.expand(S(parts[2]) - D) == 0, "displayed D differs from the discriminant"
+        assert parts[3] == "0"
+    else:                           # D/4 = AB(...) = 0  =>  k^2 = ...
+        left, right = w.split("\\Rightarrow")
+        d4 = S(left.split("=")[1])
+        assert sp.expand(d4 - sp.discriminant(sp.expand(eqF(v["quad"])), x) / 4) == 0, "displayed D/4 differs from the discriminant of the displayed quadratic"
+        chain(right.split("=", 1)[1])
+        assert S(right.split("=")[-1]) == pos[0] ** 2
+    return ans
 
 
 # ---------------------------------------------------------------- 9
@@ -221,6 +278,9 @@ def tangentAt(v):
     L = fx * (x - x0) + fy * (y - y0)
     xi = sp.solve(L.subs(y, 0), x); yi = sp.solve(L.subs(x, 0), y)
     assert len(xi) == 1 and len(yi) == 1 and xi[0] != 0 and yi[0] != 0
+    # displayed tangent line and intercepts
+    proportional(eqF(v["tan"]), L, "displayed tangent line")
+    assert sp.nsimplify(S(v["xi"])) == xi[0] and sp.nsimplify(S(v["yi"])) == yi[0], "displayed intercepts differ"
     return R(abs(xi[0] * yi[0]) / 2)
 
 
@@ -242,25 +302,12 @@ def tangentsFromPoint(v):
     for q in ms:
         lead = sp.Poly(P.subs(m, q), x).coeff_monomial(x**2)
         assert sp.simplify(lead) != 0, "line parallel to an axis/asymptote is not a tangent"
-    return R(ms[0] * ms[1])
-
-
-# ---------------------------------------------------------------- 11
-def chordMidpoint(v):
-    F = eqF(v["eq"])
-    x0, y0 = v["x0"], v["y0"]
-    assert y0 != 0
-    P = sp.Poly(sp.expand(F.subs(y, y0 + m * (x - x0))), x)
-    assert P.degree() == 2
-    a2, b2, c2 = P.all_coeffs()
-    cand = [q for q in sp.solve(sp.expand(b2 + 2 * x0 * a2), m) if q.is_real]
-    assert len(cand) == 1, f"slope not unique: {cand}"
-    q = cand[0]
-    Pq = sp.Poly(sp.expand(P.as_expr().subs(m, q)), x)
-    assert Pq.degree() == 2 and sp.discriminant(Pq.as_expr(), x) > 0, "chord does not exist"
-    rts = sp.solve(Pq.as_expr(), x)
-    assert sp.simplify((rts[0] + rts[1]) / 2 - x0) == 0
-    return R(q)
+    ans = R(ms[0] * ms[1])
+    # displayed quadratic in m is the discriminant condition, displayed product agrees
+    proportional(sp.expand(S(v["quad"])), disc, "displayed quadratic in m")
+    assert sp.nsimplify(S(v["prod"])) == sp.nsimplify(ms[0] * ms[1]), "displayed product differs"
+    proportional(eqF(v["lnp"]), y - y1 - m * (x - x1), "displayed line")
+    return ans
 
 
 # ---------------------------------------------------------------- 12
@@ -273,29 +320,13 @@ def ellipseRightTri(v):
     sol = [q for q in sol if q[px].is_real and q[py].is_real]
     assert len(sol) == 4, f"expected 4 points with a right angle at P, got {len(sol)}"
     ar = {sp.simplify(abs((f1x - f2x) * (q[py] - f2y) - (f1y - f2y) * (q[px] - f2x)) / 2) for q in sol}
-    return R(only(ar))
-
-
-# ---------------------------------------------------------------- 13
-def conicLattice(v):
-    eq = v["eq"]
-    bound = None
-    if "\\ (" in eq:
-        eq, rest = eq.split("\\ (")
-        mb = re.fullmatch(r"0<x\\le (\d+)\)", rest)
-        bound = int(mb.group(1))
-    F = sp.lambdify((x, y), eqF(eq), "math")
-    n = 0
-    for xx in range(-110, 111):
-        if bound is not None and not (0 < xx <= bound):
-            continue
-        for yy in range(-110, 111):
-            if F(xx, yy) == 0:
-                n += 1
-    # the listed points must be exactly the counted ones
-    pts = re.findall(r"\((-?\d+),\\ (-?\d+)\)", v["sols"])
-    assert len(pts) == n, "listed points differ from the enumeration"
-    return n
+    ans = R(only(ar))
+    a_, b_, c0 = ell_params(F)
+    Dx, Dy = -c0 / a_, -c0 / b_
+    A2, B2 = max(Dx, Dy), min(Dx, Dy)
+    assert (v["a2"], v["b2"], v["c2"]) == (A2, B2, A2 - B2) and v["tw"] == 2 * sp.sqrt(A2) and v["tc"] == 2 * c and v["tc2"] == 4 * c**2, "numbers of the working differ"
+    assert 2 * v["pr"] == v["tw"] ** 2 - v["tc2"] and sp.Rational(v["pr"], 2) == ans, "PF.PF' in the working differs"
+    return ans
 
 
 # ---------------------------------------------------------------- 14
@@ -315,15 +346,20 @@ def conicGeneral(v):
         else:
             assert Dx > 0 and Dy < 0, "hyperbola must open along x"
             c = sp.sqrt(Dx - Dy)
-        return R(h + c + kk)
-    if C != 0:   # (y-k)^2 = 4p (x-h)
+        ans = R(h + c + kk)
+    elif C != 0:   # (y-k)^2 = 4p (x-h)
         kk = -E / (2 * C); xv = sp.solve(F.subs(y, kk), x)[0]
         # 4p: coefficient of x in  C (y-k)^2 = -D x - ...  => (y-k)^2 = (-D/C)(x - xv)
         four_p = -D / C
-        return R(xv + four_p / 4 + kk)
-    h = -D / (2 * A); yv = sp.solve(F.subs(x, h), y)[0]
-    four_p = -E / A
-    return R(h + yv + four_p / 4)
+        ans = R(xv + four_p / 4 + kk)
+    else:
+        h = -D / (2 * A); yv = sp.solve(F.subs(x, h), y)[0]
+        four_p = -E / A
+        ans = R(h + yv + four_p / 4)
+    # the displayed standard form is the same curve, the displayed focus is the one asked for
+    proportional(eqF(v["std"]), F, "standard form")
+    assert sum(nums(v["foc"])) == ans, "displayed focus differs"
+    return ans
 
 
 # ---------------------------------------------------------------- 15
@@ -332,6 +368,9 @@ def parMinSum(v):
     c = int(mm.group(2)); horiz = mm.group(1) == "y"
     xa, ya = v["xa"], v["ya"]
     assert (ya * ya < c * xa) if horiz else (xa * xa < c * ya), "A is not inside the parabola"
+    chain(v["chk"])      # the displayed inside-check re-evaluates (negative coordinates bracketed)
+    w = ya if horiz else xa
+    assert S(v["chk"].split("^2")[0]) == w and chain(v["chk"]) == c * (xa if horiz else ya), "displayed check differs from A and the parabola"
     def f(tt):
         if horiz:
             px_, py_ = tt * tt / c, tt; fx_, fy_ = c / 4, 0
@@ -345,7 +384,9 @@ def parMinSum(v):
         if f(a_) < f(b_): hi = b_
         else: lo = a_
     mn = f((lo + hi) / 2)
-    assert abs(mn - round(mn * 2) / 2) < 1e-6, f"minimum {mn}"
+    assert abs(mn - round(mn * 2) / 2) < 1e-9, f"minimum {mn}"
+    # the directrix shown is the focus-directrix line of the parabola
+    dd = re.fullmatch(r"([xy])=-(\d+)", v["dir"]); assert int(dd.group(2)) * 4 == c
     return Fraction(round(mn * 2), 2)
 
 
@@ -358,21 +399,33 @@ def ellipseExtSum(v):
     fx, fy, xa, ya = v["fx"], v["fy"], v["xa"], v["ya"]
     assert xa * xa / Dx + ya * ya / Dy < 1, "A not inside"
     assert abs((fx * fx + fy * fy) - abs(Dx - Dy)) < 1e-9, "F is not a focus"
-    N = 400000
-    vals = []
-    for i in range(N):
-        th = 2 * math.pi * i / N
+    def g(th):
         px, py = ax * math.cos(th), by * math.sin(th)
-        vals.append(math.hypot(px - xa, py - ya) + math.hypot(px - fx, py - fy))
-    mx, mn = max(vals), min(vals)
+        return math.hypot(px - xa, py - ya) + math.hypot(px - fx, py - fy)
+    N = 200000
+    vals = [g(2 * math.pi * i / N) for i in range(N)]
+    def refine(i, sign):
+        lo, hi = 2 * math.pi * (i - 1) / N, 2 * math.pi * (i + 1) / N
+        for _ in range(200):
+            a1, b1 = lo + (hi - lo) / 3, hi - (hi - lo) / 3
+            if sign * g(a1) < sign * g(b1): hi = b1
+            else: lo = a1
+        return g((lo + hi) / 2)
+    mx = refine(max(range(N), key=vals.__getitem__), -1)
+    mn = refine(min(range(N), key=vals.__getitem__), 1)
     pr = mx * mn
-    assert abs(pr - round(pr)) < 1e-3, f"product {pr}"
+    assert abs(pr - round(pr)) < 1e-6, f"product {pr}"
+    # the numbers of the working: a, AF', max and min
+    a = max(ax, by)
+    assert abs(a - v["a"]) < 1e-9 and abs(mx - v["mx"]) < 1e-6 and abs(mn - v["mn"]) < 1e-6, "working numbers differ"
+    assert abs(math.hypot(xa + fx, ya + fy) - v["dd"]) < 1e-9, "AF' differs"
     return Fraction(round(pr))
 
 
 # ---------------------------------------------------------------- space
 def spaceDist(v):
     A = sp.Point3D(*nums(v["pa"])); B = sp.Point3D(*nums(v["pb"]))
+    assert [v["dx"], v["dy"], v["dz"]] == [b - a for a, b in zip(A, B)] and v["sq"] == v["dx"] ** 2 + v["dy"] ** 2 + v["dz"] ** 2, "working differs"
     return R(A.distance(B))
 
 
@@ -409,6 +462,10 @@ def sphereExpand(v):
     r2 = sp.expand(-F.subs(C))   # F = |X - C|^2 - r^2
     sol = sp.solve(sp.Eq(r2, v["rad"] ** 2), s)
     assert len(sol) == 1
+    # displayed completed squares: sum of squares equals s4 - s, i.e. the same sphere
+    std = eqF(v["std"])
+    assert sp.expand(std - F) == 0, "displayed completed-square form differs from the equation"
+    assert v["rad2"] == v["rad"] ** 2 and v["s4"] == sum(c**2 for c in C.values())
     return R(sol[0])
 
 
@@ -421,6 +478,10 @@ def sphereSection(v):
     r2 = -G.subs(C)
     assert r2 > 0
     assert sp.Rational(r2).q == 1
+    # center, R^2 and distance shown in the working
+    C3 = sp.solve([sp.diff(sp.expand(F), q) for q in (x, y, z)], [x, y, z], dict=True)[0]
+    assert [C3[x], C3[y], C3[z]] == nums(v["cc"]) and v["rr2"] == -sp.expand(F).subs(C3)
+    assert v["dd"] == abs(C3[sp.Symbol(ax)] - int(val)), "distance centre-plane differs"
     return R(r2)
 
 
@@ -433,6 +494,8 @@ def sphereTangentPlane(v):
     pl = sp.Plane(sp.Point3D(0, 0, kr / c), normal_vector=(a, b, c))
     sols = sp.solve(sp.Eq(pl.distance(C), v["rad"]), kr)
     assert len(sols) == 2
+    # numbers in the working: |n|, n.C, R|n|
+    assert nums(v["nv"]) == [a, b, c] and v["nn"] ** 2 == a * a + b * b + c * c and v["dc"] == a * C[0] + b * C[1] + c * C[2] and v["rl"] == v["rad"] * v["nn"]
     return R(max(sols))
 
 
@@ -456,6 +519,11 @@ def vecDecompose(v):
     assert len(sol) == 1 and sp.Matrix([a, b]).rank() == 2
     n = sp.Symbol("n")
     ask = S(v["ask"], n=n)
+    # displayed m, n and two displayed component equations
+    assert sp.nsimplify(S(v["mt"])) == sol[0][m] and sp.nsimplify(S(v["nt"])) == sol[0][s], "displayed m, n differ"
+    for e1 in v["eqs"].split(",\\ "):
+        lhs = eqF(e1, n=n)
+        assert sp.expand(lhs.subs({m: sol[0][m], n: sol[0][s]})) == 0, "displayed component equation is not satisfied"
     return R(ask.subs({m: sol[0][m], n: sol[0][s]}))
 
 
@@ -466,25 +534,23 @@ def dotNormExpand(v):
     assert sp.simplify(e**2) > 0, "|a.b| must be smaller than |a||b|"
     a, b = sp.Matrix([na, 0]), sp.Matrix([sp.Rational(dt, na), e])
     w = sp.Matrix(_lc(v["ex"], a, b))
-    return R(w.dot(w))
-
-
-def dotFromNorms(v):
-    na, nb, uu = v["na"], v["nb"], v["uu"]
-    d, e = sp.symbols("d e", real=True)
-    sg = 1 if v["ex"] == "\\vec a+\\vec b" else -1
-    sol = sp.solve([d**2 + e**2 - nb**2, (na + sg * d) ** 2 + (sg * e) ** 2 - uu**2], [d, e], dict=True)
-    sol = [q for q in sol if q[d].is_real and q[e].is_real]
-    assert sol, "no such vectors"
-    return R(only([na * q[d] for q in sol]))
+    ans = R(w.dot(w))
+    assert chain(v["calc"]) == sp.nsimplify(w.dot(w)), "displayed expansion differs"
+    return ans
 
 
 def dotAngle(v):
     a, b = nums(v["va"]), nums(v["vb"])
     dt = sum(p * q for p, q in zip(a, b))
-    assert dt == v["dt"]
-    ang = math.degrees(math.acos(dt / (math.sqrt(sum(p * p for p in a)) * math.sqrt(sum(q * q for q in b)))))
+    assert dt == v["dt"] and sum(p * p for p in a) == v["na2"] and sum(q * q for q in b) == v["nb2"] and v["pr"] == v["na2"] * v["nb2"]
+    cosv = dt / (math.sqrt(sum(p * p for p in a)) * math.sqrt(sum(q * q for q in b)))
+    a3, b3 = a + [0] * (3 - len(a)), b + [0] * (3 - len(b))
+    cr = [a3[1] * b3[2] - a3[2] * b3[1], a3[2] * b3[0] - a3[0] * b3[2], a3[0] * b3[1] - a3[1] * b3[0]]
+    ang = math.degrees(math.atan2(math.sqrt(sum(q * q for q in cr)), dt))      # exact-ish also for 0 and 180 degrees
     assert abs(ang - round(ang)) < 1e-7, ang
+    # displayed simplified root and cosine
+    rt = S(v["rt"]); assert sp.simplify(rt**2 - v["pr"]) == 0 and rt > 0, "displayed sqrt differs"
+    assert abs(float(S(v["cs"])) - cosv) < 1e-12 and sp.simplify(sp.Rational(dt) / rt - S(v["cs"])) == 0, "displayed cosine differs"
     return round(ang)
 
 
@@ -498,6 +564,10 @@ def vecOrthoParam(v):
     f = sp.expand(sum(p * q for p, q in zip(a, b)) - v["dd"])
     sol = [q for q in sp.solve(f, t) if q.is_real]
     assert sol
+    # displayed dot product expression and solution list
+    assert sp.expand(S(v["dexp"]) - sum(p * q for p, q in zip(a, b))) == 0, "displayed a.b differs"
+    shown = sorted(S(u.split("=")[-1]) if "=" in u else S(u) for u in v["sol"].replace("t=", "").split(",\\ "))
+    assert sorted(sol) == shown, "displayed solutions differ"
     return R(max(sol))
 
 
@@ -508,6 +578,7 @@ def vecCircleEq(v):
     C = sp.solve([sp.diff(F, q) for q in X], X, dict=True)[0]
     r2 = -F.subs(C)
     assert r2 > 0
+    assert v["ab"] ** 2 == sum((a - b) ** 2 for a, b in zip(A, B)), "displayed AB differs"
     return R(sp.sqrt(r2))
 
 
@@ -532,6 +603,12 @@ def lineIntersectParam(v):
     sol = sp.solve([p - q for p, q in zip(pt1, pt2)], [s_, t_, k], dict=True)
     sol = [q for q in sol if q[k] != 0]
     assert len(sol) == 1, f"k not unique: {sol}"
+    assert sol[0][s_] == v["ss"] and sol[0][t_] == v["tt"], "displayed s, t differ"
+    # displayed coordinate equations are satisfied by the solution
+    sub_ = {s_.name: sol[0][s_], t_.name: sol[0][t_], "k": sol[0][k]}
+    for e1 in (v["xy"].split(",\\ ") + [v["eq3"]]):
+        lhs = eqF(e1, s=s_, t=t_)
+        assert lhs.subs({s_: sol[0][s_], t_: sol[0][t_], k: sol[0][k]}) == 0, f"displayed equation not satisfied: {e1}"
     return R(sol[0][k])
 
 
@@ -548,22 +625,13 @@ def lineSpacePoint(v):
     return R(sum(P) - P[idx])
 
 
-def lineVec2D(v):
-    x1, y1, u1, u2 = v["x1"], v["y1"], v["u1"], v["u2"]
-    # the line through A with direction u:  u2 (x - x1) - u1 (y - y1) = 0
-    L2 = eqF(v["ln"])
-    sol = sp.solve([u2 * (x - x1) - u1 * (y - y1), L2], [x, y], dict=True)
-    assert len(sol) == 1
-    assert [sol[0][x], sol[0][y]] == nums(v["pt"])
-    return R(sol[0][x] + sol[0][y])
-
-
 def planeNormal(v):
     A, n = nums(v["pa"]), nums(v["vn"])
     pl = sp.Plane(sp.Point3D(*A), normal_vector=n)
     d = {"x": (1, 0, 0), "y": (0, 1, 0), "z": (0, 0, 1)}[v["ax"]]
     inter = pl.intersection(sp.Line3D(sp.Point3D(0, 0, 0), sp.Point3D(*d)))
     assert len(inter) == 1 and isinstance(inter[0], sp.Point3D), "plane parallel to the axis"
+    proportional(eqF(v["plane"]), sum(c * (q - a) for c, q, a in zip(n, (x, y, z), A)), "displayed plane")
     return R(inter[0].coordinates["xyz".index(v["ax"])])
 
 
@@ -577,6 +645,10 @@ def projPlaneArea(v):
     assert sp.Matrix(n).dot(u) == 0 and sp.Matrix(n).dot(w) == 0
     nrm = u.cross(w)
     idx = {"xy": 2, "yz": 0, "zx": 1}[v["cp"]]
+    # working: normal, length, the signed coefficient and the absolute value used for cos(theta)
+    assert nums(v["nv"]) == n and v["nn"] ** 2 == sum(q * q for q in n)
+    assert v["ns"] == n[idx] and v["ni"] == abs(n[idx]) and nums(v["cn"]) == [int(i == idx) for i in range(3)], "signed/absolute coefficient differs"
+    assert v["ar"] % 1 == 0
     return R(v["ar"] * abs(nrm[idx]) / nrm.norm())
 
 
@@ -591,32 +663,48 @@ def projEllipse(v):
     ev = sorted((M * M.T).eigenvals().keys(), key=lambda q: float(q))
     a2, b2_ = ev[1], ev[0]
     assert abs(sp.simplify(sp.sqrt(b2_)) - v["bb"]) == 0
+    assert sp.simplify(sp.sqrt(a2) - v["rr"]) == 0 and sp.simplify(sp.sqrt(a2 - b2_) - v["cc"]) == 0, "displayed a or c differ"
     return R(2 * sp.sqrt(a2 - b2_))
 
 
 def threePerp(v):
-    h, d, e = sp.symbols("h d e", positive=True)
-    P = sp.Point3D(0, d, h); H = sp.Point3D(0, d, 0); K = sp.Point3D(0, 0, 0); A = sp.Point3D(e, 0, 0)
-    assert (P - K).dot(sp.Point3D(1, 0, 0)) == 0   # PK is perpendicular to l (three perpendiculars theorem)
-    dist = {"PH": P.distance(H), "HK": H.distance(K), "PK": P.distance(K), "PA": P.distance(A), "AK": A.distance(K)}
-    eqs = [dist[nm] ** 2 - int(val) ** 2 for nm, val in re.findall(r"([A-Z]{2})=(\d+)", v["giv"])]
-    target = dist[v["ask"]]
+    """The geometry is built WITHOUT using the three-perpendiculars theorem: alpha is the plane z=0, l the x-axis, H a point of alpha, K the
+    foot of the perpendicular from H to l (computed by sympy), P lies above H (PH perpendicular to alpha).  PK is then a computed segment, and
+    d is the distance from P to the line l computed by sympy, so PK = d is checked rather than assumed."""
+    h, dd, e = sp.symbols("h dd e", positive=True)
+    ell = sp.Line3D(sp.Point3D(0, 0, 0), sp.Point3D(1, 0, 0))
+    H = sp.Point3D(3, dd, 0)                    # a generic point of alpha: z = 0
+    P = sp.Point3D(3, dd, h)                    # PH perpendicular to alpha
+    K = ell.projection(H)                       # foot of the perpendicular from H to l
+    A = sp.Point3D(3 + e, 0, 0)                 # a point of l other than K
+    assert K == sp.Point3D(3, 0, 0) and ell.contains(A)
+    dist2 = {"PH": P.distance(H) ** 2, "HK": H.distance(K) ** 2, "PK": P.distance(K) ** 2, "PA": P.distance(A) ** 2, "AK": A.distance(K) ** 2,
+             "d": sp.simplify(ell.distance(P) ** 2)}
+    assert sp.simplify(dist2["d"] - dist2["PK"]) == 0, "distance from P to l is not PK (three perpendiculars theorem fails?)"
+    gv = re.findall(r"\b(PH|HK|PK|PA|AK|d)=(\d+)", v["giv"])
+    assert gv
+    eqs = [sp.simplify(dist2[nm]) - int(val) ** 2 for nm, val in gv]
+    target = sp.simplify(dist2[v["ask"]])
     unknown = sorted(set().union(*[q.free_symbols for q in eqs]) | target.free_symbols, key=str)
     sol = sp.solve(eqs, unknown, dict=True)
     assert sol, "no configuration exists"
-    vals = [sp.simplify(target.subs(q)) for q in sol]
+    vals = [sp.sqrt(sp.simplify(target.subs(q))) for q in sol]
     assert all(not q.free_symbols for q in vals), f"the asked length is not determined by the givens: {vals}"
-    return R(only(vals))
+    ans = R(only(vals))
+    # the displayed working: its last equal sign gives the squared length
+    last_sq = S(tex(v["work"]).split("=")[-1])
+    assert last_sq == ans**2 if isinstance(ans, int) else sp.nsimplify(last_sq) == sp.nsimplify(ans) ** 2, "displayed square differs"
+    return ans
 
 
 VERIFY = {
-    "geo_parFocusDir": parFocusDir, "geo_parFocalChord": parFocalChord, "geo_ellipseFocal": ellipseFocal, "geo_hyperFocal": hyperFocal,
-    "geo_ellipseFromEq": ellipseFromEq, "geo_hyperAsym": hyperAsym, "geo_eccentric": eccentric, "geo_conicTangentLine": conicTangentLine,
-    "geo_tangentAt": tangentAt, "geo_tangentsFromPoint": tangentsFromPoint, "geo_chordMidpoint": chordMidpoint, "geo_ellipseRightTri": ellipseRightTri,
-    "geo_conicLattice": conicLattice, "geo_conicGeneral": conicGeneral, "geo_parMinSum": parMinSum, "geo_ellipseExtSum": ellipseExtSum,
+    "geo_parFocusDir": parFocusDir, "geo_ellipseFocal": ellipseFocal, "geo_hyperFocal": hyperFocal, "geo_hyperFocalRel": hyperFocal,
+    "geo_ellipseFromEq": ellipseFromEq, "geo_hyperAsym": hyperAsym, "geo_conicParam": conicParam, "geo_conicTangentLine": conicTangentLine,
+    "geo_tangentAt": tangentAt, "geo_tangentsFromPoint": tangentsFromPoint, "geo_ellipseRightTri": ellipseRightTri,
+    "geo_conicGeneral": conicGeneral, "geo_parMinSum": parMinSum, "geo_ellipseExtSum": ellipseExtSum,
     "geo_spaceDist": spaceDist, "geo_divPoint": divPoint, "geo_divRatioPlane": divRatioPlane, "geo_sphereExpand": sphereExpand,
     "geo_sphereSection": sphereSection, "geo_sphereTangentPlane": sphereTangentPlane, "geo_vecLinComb": vecLinComb, "geo_vecDecompose": vecDecompose,
-    "geo_dotNormExpand": dotNormExpand, "geo_dotFromNorms": dotFromNorms, "geo_dotAngle": dotAngle, "geo_vecOrthoParam": vecOrthoParam,
-    "geo_vecCircleEq": vecCircleEq, "geo_lineIntersectParam": lineIntersectParam, "geo_lineSpacePoint": lineSpacePoint, "geo_lineVec2D": lineVec2D,
+    "geo_dotNormExpand": dotNormExpand, "geo_dotAngle": dotAngle, "geo_vecOrthoParam": vecOrthoParam, "geo_vecDotParam": vecOrthoParam,
+    "geo_vecCircleEq": vecCircleEq, "geo_vecSphereEq": vecCircleEq, "geo_lineIntersectParam": lineIntersectParam, "geo_lineSpacePoint": lineSpacePoint,
     "geo_planeNormal": planeNormal, "geo_projPlaneArea": projPlaneArea, "geo_projEllipse": projEllipse, "geo_threePerp": threePerp,
 }

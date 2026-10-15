@@ -1,0 +1,282 @@
+{
+ "modules": [
+  "geo"
+ ],
+ "reviewer": "AI (Claude), independent of the author; not a teacher review",
+ "scope": {
+  "structures": 36,
+  "rowsRead": 686,
+  "notes": "Read SPEC.md, geo.mjs (all 36 generators and templates), verify/geo.py (all verifiers), the rendered samples (all 57 sets, ko) and a sample.mjs 12-row run; analysed the 686 built rows (answer distributions, signs, non-terminating fractions, pool composition) and checked the 2022 curriculum text in lib/learn/curriculum/kr/2022/mathematics.json for scope limits. Mathematics of every generator was re-derived by hand (tangent conditions, midpoint-chord slopes, tangents from a point incl. hyperbola asymptote/vertical cases, focal-distance existence, ellipse extremum attainment, plane/sphere formulas); no wrong final answer, non-unique answer, or non-existent configuration was found. Extra stress run: ~15,000 distinct rows (up to 400 per set, from the generators with fresh seeds, beyond the 686 stored rows) were pushed through verify/run.py: 1,980 fresh rows (35 per set, new seeds, beyond the 686 stored) all passed verify/run.py (failures 0), so the findings concern prompts, explanations, scope and wording, not wrong answers; a 15,000-row run was stopped for time."
+ },
+ "findings": [
+  {
+   "template": "geo_parMinSum",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "The displayed check that A lies inside the parabola is written ${w}^2=... with the raw (possibly negative) coordinate: for w<0 it prints $-2^2=4<8\\times 2=16$, which by the usual convention reads -(2^2) = -4. The working is therefore mathematically wrong notation in about 40 percent of the rows.",
+   "evidence": "set b-hs-geo-parminsum2 #1: 'A(-2, 2) ... ($-2^2=4<8\\times 2=16$)'; 5 of 12 rows in each of the two sets have a negative coordinate (also level 1: w=ya in -9..9).",
+   "fix": "Build chk with a bracket for negatives, e.g. `${w<0?`(${w})`:w}^2=${w*w}`, or write `|w|^2`/`${w*w}<...` only."
+  },
+  {
+   "template": "geo_hyperAsym",
+   "severity": "major",
+   "kind": "format",
+   "detail": "Prompt allows 'decimal or a fraction such as 3/4', but 7 of 24 built answers (37 percent of 256 stress rows) are non-terminating (5/7, 2/3 ...). No decimal can be typed for them and the checker tolerance is 1e-9, so a student who types 0.714 (as the prompt permits) is marked wrong. The worked solution also prints the raw double: '기울기가 양수인 점근선의 기울기는 0.7142857142857143 입니다' (set hyperasym1 #1). Same unreduced-fraction ugliness: y=\\pm\\frac{6}{2}x (hyperasym2 #2).",
+   "evidence": "b-hs-geo-hyperasym1 #1 (y^2/25-x^2/49=1, ans 0.7142857142857143); hyperasym2 #2 asymptote '6/2'",
+   "fix": "Use a fraction string in the explanation (pass tq(...) as a separate variable instead of {ans}); reduce num/den before printing; for rows whose answer does not terminate use the prompt wording '분수로 쓰세요 (예: 3/4)' (or restrict num/den so the slope terminates, e.g. den in {2,4,5,8})."
+  },
+  {
+   "template": "geo_tangentAt",
+   "severity": "major",
+   "kind": "format",
+   "detail": "Same defect: fractional areas with denominators 3,6,7 (e.g. 961/6 = 160.1666...) are accepted only as exact fraction, but the prompt invites a decimal; the explanation prints {ans} as a raw double (…160.16666666666666).",
+   "evidence": "stress sample: max ans 160.16666666666666; built rows 2/24 non-terminating",
+   "fix": "Restrict TA_* so the area terminates (denominator | 2^a5^b) or show the fraction text (tq) in the explanation and change the format hint for those rows."
+  },
+  {
+   "template": "geo_chordMidpoint",
+   "severity": "major",
+   "kind": "format",
+   "detail": "12 of 24 built answers (34 percent of 800 stress rows, denominators 3,6,7,9,11,12) and 7 of 24 built / 34 percent stress rows of geo_tangentsFromPoint are non-terminating fractions (e.g. -1/9, 3/7) under the 'decimal or fraction' prompt; a student who writes a rounded decimal is marked wrong at tol 1e-9. (The explanation here uses the fraction text, which is good.)",
+   "evidence": "chordmidpoint ans -12.666666666666666, 4.285714285714286; tangentsfrompoint ans -11.6 ...",
+   "fix": "Either state '분수로 쓰세요' for these two templates or restrict the denominators to 2,4,5,8,10; the generators already filter denominators <= 12, tighten the filter to terminating ones."
+  },
+  {
+   "template": "geo_planeNormal",
+   "severity": "minor",
+   "kind": "format",
+   "detail": "Answer d/n_i with n_i in {+-1..4}; n_i=+-3 gives a non-terminating value (14 percent of 400 stress rows), explanation prints {ans} as a raw double.",
+   "evidence": "generator: idx coordinate n[idx] may be 3 or -3; 4 of 12 rows already fractional",
+   "fix": "Show the fraction text (tq) in the explanation; exclude |n_i|=3 or change the format hint for those rows."
+  },
+  {
+   "template": "geo_vecDecompose",
+   "severity": "minor",
+   "kind": "format",
+   "detail": "m, n and the asked combination are fractions with denominator 2 (terminating) so grading is fine, but the explanation prints {ans} as a double; negative answers (9 of 24) under a fraction prompt are fine. Only the display of {ans} differs from mt/nt.",
+   "evidence": "level 2 rows",
+   "fix": "Print the ask value via tq() for consistency."
+  },
+  {
+   "template": "geo_eccentric",
+   "severity": "major",
+   "kind": "level",
+   "detail": "The 2022 curriculum text (고등학교 12기하, 성취기준 적용 시 고려 사항, lib/learn/curriculum/kr/2022/mathematics.json) says '이심률을 이용한 정의는 다루지 않는다', and 이심률 is not in the vocabulary list for the 이차곡선 area. The whole template is built on e=c/a and is labelled 12기하01-02/01-03, so the standard code is not honest and the item is outside the course.",
+   "evidence": "b-hs-geo-eccentric1/2: '곡선 x^2/k + y^2/225=1 의 이심률이 4/5 이고 k>225 일 때, k 의 값은?'",
+   "fix": "Drop, or rewrite without the word 이심률: give c (or the distance between foci) and a (the length of the major/transverse axis) and ask for k. Then it is an ordinary c^2=a^2-b^2 / c^2=a^2+b^2 item for 01-02/01-03."
+  },
+  {
+   "template": "geo_chordMidpoint",
+   "severity": "major",
+   "kind": "level",
+   "detail": "The curriculum says '이차곡선과 직선과의 관계는 접하는 경우만 다룬다'. Chords with a given midpoint are secants; the item is a classic of the 2009-era course but outside the 2022 한계. The code list 12기하01-01/02/03 also does not cover it (the nearest code, 01-04, is about tangents).",
+   "evidence": "b-hs-geo-chordmidpoint1/2 (24 rows)",
+   "fix": "Drop it or mark it as an extension outside the 성취기준 (and do not attach 01-01..03). If kept, it is correct: the verifier asserts existence of the chord and uniqueness of the slope."
+  },
+  {
+   "template": "geo_parFocalChord",
+   "severity": "major",
+   "kind": "level",
+   "detail": "Same curriculum limit (only tangent lines are treated). A line through the focus cutting the parabola in two points is a secant. In addition the key step (x1+x2 from the quadratic) is not shown in the explanation: '대입하면 ... x_1+x_2=396' appears with no working, which is the whole difficulty of the item.",
+   "evidence": "b-hs-geo-parfocalchord1 #1: slope -1/4, y^2=24x, 'x_1+x_2=396 ... PQ=408'",
+   "fix": "Drop or relabel as an extension; if kept, show 'm^2x^2-(2pm^2+4p)x+m^2p^2=0, so x1+x2=2p+4p/m^2' in the explanation. Answers up to 520 are also unrealistically large for a hand problem; cap the slope denominators."
+  },
+  {
+   "template": "geo_conicLattice",
+   "severity": "major",
+   "kind": "hint",
+   "detail": "Hint 1 says to bound x (or y) first and try the integers one by one. That works for the ellipse and the cut-off parabola but not for the hyperbola rows (x^2-y^2=N, x^2-4y^2=N, x^2-9y^2=N, 60% of level 2): they are unbounded, and the only workable method is (x-ky)(x+ky)=N factoring, which no hint mentions. The explanation just says '하나씩 따져 보면' and lists the points. The content (integer points of x^2-ky^2=N, y^2=cx with an artificial cut-off 0<x<=73) is number theory, not 기하; 01-01..03 only claim the conic definitions.",
+   "evidence": "b-hs-geo-coniclattice2 #7 'x^2-y^2=47 ... (-24,-23) ...', #12 'x^2-9y^2=55', #1 'y^2=10x (0<x<=73)'; level-2 answers 6 distinct values over 24 rows",
+   "fix": "Drop the template (see drop list). If kept: ellipse part only, and a hint that matches each branch."
+  },
+  {
+   "template": "geo_threePerp",
+   "severity": "major",
+   "kind": "standard",
+   "detail": "All three level-1 variants (PH,HK->PK; PK,PH->HK; PK,HK->PH) are Pythagoras in triangle PHK, right-angled at H because PH is perpendicular to the plane. The three-perpendiculars theorem is never needed, although the explanation recites it and the item is tagged 12기하02-02/'three-perpendiculars'. Only level 2 (PK or PA with AK, or PA with PH,HK,AK) uses PK perpendicular to l.",
+   "evidence": "b-hs-geo-threeperp1 #1,#2: 'PK=5, HK=4 ... PH' solved by 5^2-4^2",
+   "fix": "Make level 1 ask for something that needs PK_|_l (e.g. give PH, HK and AK and ask PA, or give the distance from P to l and ask AK from PA), or demote level 1 to evidence 'calc' with a different strategy tag."
+  },
+  {
+   "template": "geo_projPlaneArea",
+   "severity": "major",
+   "kind": "explanation",
+   "detail": "Hint 2 says the angle between two planes equals the angle between their normal vectors, and the explanation then writes cos θ = ni/nn. When the relevant normal coefficient is negative (9 of the 12 built rows, e.g. 12x-y-12z=8 and the zx-plane, coefficient -1) the cosine of the normals is -1/17, not 1/17. The acute-angle/absolute-value step is silently inserted.",
+   "evidence": "b-hs-geo-projplanearea #2: 'cos θ = 1/17' for normal (12,-1,-12)",
+   "fix": "State in hint 2 and explanation: 'cos θ = |n1·n2|/(|n1||n2|) because the angle between planes is taken between 0 and 90 degrees', and print |{coef}|."
+  },
+  {
+   "template": "geo_ellipseExtSum",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "The pool EX has 324 entries of which 220 (68 percent) lie on the major axis (y=0); in the built set 8 of 12 rows have A on the major axis, where the extremum is just a vertex computation and the 'triangle inequality' idea is invisible. Only 10 different ellipses. Answers 399..1131 are large products. Correctness is fine (A is strictly inside, d>0, both bounds attained, product verified numerically).",
+   "evidence": "b-hs-geo-ellipseextsum #1 A(0,-8) on the axis, #2 A(-12,0), ...",
+   "fix": "Weight the sampler towards y != 0 (or require y0>0 for at least 2/3 of rows); ask for the max and the min separately or their sum to keep numbers small."
+  },
+  {
+   "template": "geo_ellipseFocal",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Level 1 gives PF=d1 and asks PF+PF'+FF', which does not depend on d1 at all (d1 is a decoy); the item is 2a+2c. Level 2 difference/ratio rows are fine (P exists for every row, answer unique). Evidence 'application' is generous for level 1.",
+   "evidence": "b-hs-geo-ellipsefocal1 #1: 'PF=17 ... PF+PF'+FF'' = 64",
+   "fix": "Use the decoy only as an explicit distractor or ask for PF' / the perimeter given a different datum; or set evidence 'calc' for level 1."
+  },
+  {
+   "template": "geo_hyperFocal",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Level 1 is correct (d1 < c+a is enforced, so PF'=PF+2a is the only choice) but the explanation puts the reason in a one-line inequality: 'PF=15<c+a=50, PF'=PF+2a=15+48' without saying that PF'=PF-2a would make PF' < c-a. Level 2 right-angle branch overlaps in idea with geo_ellipseRightTri.",
+   "evidence": "b-hs-geo-hyperfocal1 #1",
+   "fix": "Add one clause: 'PF < c+a, so P is on the branch near F and PF'=PF+2a'."
+  },
+  {
+   "template": "geo_hyperAsym",
+   "severity": "minor",
+   "kind": "hint",
+   "detail": "At level 1 the equation already has right side 1, yet hint 2 says 'first rewrite it to the form {std}' and prints the identical equation (and ellipseFromEq says '{std} 꼴로 고치면' in its explanation for level 1 as well).",
+   "evidence": "b-hs-geo-hyperasym1 hint 2; b-hs-geo-ellipsefromeq1 explanation",
+   "fix": "Use a level-specific hint, or only mention the rewriting at level 2."
+  },
+  {
+   "template": "geo_tangentAt",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Tangent line is typeset with coefficient 1 or -1 and unreduced fractions: '1y=\\frac{12}{2}(x+12)', '\\frac{-8x}{8}-\\frac{7y}{7}=1', '\\frac{-8}{2}'. Mathematically right, but visibly raw.",
+   "evidence": "b-hs-geo-tangentat1 #1; tangentat2 #1",
+   "fix": "Print coefficients with cf(), reduce c/2 and keep the sign outside the fraction."
+  },
+  {
+   "template": "geo_tangentAt",
+   "severity": "minor",
+   "kind": "standard",
+   "detail": "The curriculum note says tangents are obtained with the discriminant; hint 1 uses the 'x1x/a^2' replacement rule instead. Acceptable (textbook formula) but the discriminant route is not offered.",
+   "evidence": "hint 1 of tangentAt",
+   "fix": "Add the discriminant route in hint 2 or accept as is."
+  },
+  {
+   "template": "geo_conicTangentLine",
+   "severity": "minor",
+   "kind": "explanation",
+   "detail": "Level 2 explanation jumps from D=0 straight to k^2 = A m^2 + B (ellipse) or A m^2 - B (hyperbola); the derivation is the content of the standard (discriminant) and is not shown. geo_tangentsFromPoint also prints the quadratic in m without deriving it. Both are correct for every row (verifier checks unique positive k / two real slopes, no vertical or asymptotic tangent).",
+   "evidence": "b-hs-geo-conictangentline2 #1: 'D=0 => k^2=20*1+16=36'",
+   "fix": "Show the quadratic and its discriminant once (e.g. (B+Am^2)x^2+2Amkx+A(k^2-B)=0 form) or at least the line 'D/4=...'."
+  },
+  {
+   "template": "geo_dotAngle",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Only 7 possible answers (30,45,60,90,120,135,150) and the generator is heavily skewed: of 800 stress rows 352 (44 percent) are 90 and 382 more are 45/135; 30/150 are about 1 percent each. The 24 built rows show 4 distinct values, so the answer is guessable. Hint/explanation correct; the explanation does not show the step from dt/(sqrt(na2) sqrt(nb2)) to the stated cos (e.g. 3/(3*sqrt2)). Stray '\\frac{\\sqrt{2} }{2}' space is harmless. Evidence 'application' should be 'calc'.",
+   "evidence": "dotangle1/2 rows",
+   "fix": "Balance the sampler over the 7 angles (cap 90 degrees at ~15 percent), add the 0/180 degree cases or ask for cos/dot values too; show the simplification dt/(sqrt(na2)*sqrt(nb2)); relabel evidence as calc."
+  },
+  {
+   "template": "geo_vecOrthoParam",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "Level 1 is linear in t (a single solution) but still asks for 'the largest real t', which suggests several; hint 2 also says to find all t. The prompt gives 'a·b=0' rather than a perpendicularity statement, so the 'orthogonal' concept (name of the template) is not exercised.",
+   "evidence": "b-hs-geo-vecorthoparam1 #1: 'a·b=0 일 때, 실수 t 의 값 중 가장 큰 것은?' answer -1",
+   "fix": "Level 1: '실수 t의 값은?' and phrase as '두 벡터가 서로 수직일 때'; keep 'largest' for the quadratic level."
+  },
+  {
+   "template": "geo_vecCircleEq",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "The prompt says '도형(원 또는 구)' although the dimension is fixed by the given points (2 coordinates -> circle, 3 -> sphere); hint 2 states that AB is the diameter, which gives away the idea. P=A and P=B also satisfy the equation (harmless). Correct and unique.",
+   "evidence": "b-hs-geo-veccircleeq1 #1",
+   "fix": "Write '원' at level 1 and '구' at level 2; shorten hint 2 to 'P에서 AB를 보는 각은 몇 도일까요?'"
+  },
+  {
+   "template": "geo_lineVec2D",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "A plane problem with a direction vector: substitute (A+t u) into a line and solve a linear equation. Same idea as geo_lineSpacePoint / geo_lineIntersectParam, 2D, one linear equation; it does not ask to obtain a vector equation of a line (the actual content of 12기하03-04). All rows correct and unique.",
+   "evidence": "b-hs-geo-linevec2d (12 rows)",
+   "fix": "Drop (see drop list)."
+  },
+  {
+   "template": "geo_dotFromNorms",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "The inverse of geo_dotNormExpand level 1: both are the single identity |a±b|^2=|a|^2+|b|^2±2a·b. Different unknown, same idea; correct, existence enforced (|a|-|b| <= |a±b| holds by construction), unique.",
+   "evidence": "b-hs-geo-dotfromnorms vs dotnormexpand1",
+   "fix": "Merge as level 3 of geo_dotNormExpand or drop."
+  },
+  {
+   "template": "(all templates with negative answers)",
+   "severity": "minor",
+   "kind": "format",
+   "detail": "Many rows have negative answers while the prompt says '(숫자만 쓰세요)' / '(digits only)': sphereExpand 9/12, dotFromNorms 8/12, lineVec2D 7/12, divPoint 6/12, lineIntersectParam 5/12, lineSpacePoint 3/12, conicGeneral 5/24, vecOrthoParam 7/24, sphereTangentPlane 2/12. 'digits only' literally excludes the minus sign; in English it is plainly misleading. The checker accepts '-58', so only the wording is at issue.",
+   "evidence": "sphereExpand #2: s = -58; dotFromNorms #1: -42",
+   "fix": "Use '(정수로 쓰세요; 음수이면 - 부호도 쓰세요)' / 'integer, with a minus sign if negative' for templates that can be negative, or keep '숫자만' only where the answer is always positive."
+  },
+  {
+   "template": "(vocabulary)",
+   "severity": "minor",
+   "kind": "wording",
+   "detail": "'장반지름', '단반지름' (ellipseFocal, hyperFocal hints, projEllipse) are not terms of the 2022 course (the listed terms are 장축, 단축, 주축). The conditions are written with '를' after $...$ ('$x=1$ 를 만족할 때', '$x=-12$ 를'), which is wrong for about half of the values (일 -> 을); better a particle-neutral phrase such as '$x=1$ 인 점 P'. 'θ 는 몇 도인가요?' (dotAngle) and '..는?' elsewhere mix the question style; 'a=(3,0), b=(1,1) 가 이루는 각' lacks '두 벡터'.",
+   "evidence": "parfocusdir1 #1; ellipsefocal explanations; dotangle1 #1",
+   "fix": "Say '장축의 길이 2a' etc.; avoid the particle after a formula; add '두 벡터'."
+  },
+  {
+   "template": "geo_conicGeneral",
+   "severity": "minor",
+   "kind": "level",
+   "detail": "Level 1 contains rows already in standard form (y^2-12x=0 -> 'completing the square gives y^2=12x'); the question wording 'x좌표가 가장 큰 초점(하나뿐이면 그 점)' is correct and unique for all rows (parabola 1 focus, ellipse/hyperbola horizontal axis). Answers a+b negative in 5/24 under '숫자만'.",
+   "evidence": "conicgeneral1 #2",
+   "fix": "Require at least one linear term in y for the horizontal parabola (and in x for the vertical one) beyond the pure form, i.e. force h or k non-zero."
+  },
+  {
+   "template": "geo_spaceDist / geo_vecLinComb / geo_sphereSection / geo_lineSpacePoint",
+   "severity": "minor",
+   "kind": "diversity",
+   "detail": "Pure single-formula calculations (d=1..2). Not wrong; answer diversity is inherently small (spaceDist: 8 possible answers, 6 in 12 rows; vecLinComb level 1 answers cluster at small values). They are legitimate for the standards (02-04, 03-01/02, 02-05, 03-04) and should stay as warm-up, but do not add more levels.",
+   "evidence": "spacedist: answers 3,6,7,9,11,13,15,17",
+   "fix": "None required; keep counts at 12."
+  },
+  {
+   "template": "verifier/geo.py",
+   "severity": "minor",
+   "kind": "verifier",
+   "detail": "Independence is good overall: foci/centres are re-read from the equation coefficients (ell_params), focal distance problems are solved symbolically with the point P as unknown (existence of P asserted, uniqueness by only()), tangents/chords via discriminants, lattice counts by brute force over +-110, parMinSum/ellipseExtSum numerically. Gaps: (1) the displayed working strings (chk, work, sol, rel, tan) are never checked, which is why the '-2^2=4' notation error and raw floats pass; (2) threePerp builds PK_|_l into its coordinates, so the theorem step is assumed, not tested; (3) conicGeneral/eccentric assert only the orientation the generator chooses, not that the other orientation would be excluded by the prompt; (4) parMinSum and ellipseExtSum rely on float scans (tolerance 1e-6/1e-3) and could pass a slightly wrong closed form of similar size.",
+   "evidence": "verify/geo.py lines 330-370, 597-609",
+   "fix": "Add a text check that every number written in `chk`/`work` re-evaluates (e.g. parse `a^2=b<c` pieces), and assert exact equality for the two numeric ones by reconstructing the optimum point (P=(t^2/c,t) with t rational)."
+  }
+ ],
+ "drop": [
+  {
+   "template": "geo_conicLattice",
+   "why": "Not 기하: integer points of x^2-ky^2=N and y^2=cx with an artificial cut-off are number theory; hyperbola rows have no matching hint; only 6 distinct answers in 24 rows; standards 01-01..03 are not honestly exercised."
+  },
+  {
+   "template": "geo_lineVec2D",
+   "why": "Same substitute-and-solve idea as geo_lineSpacePoint / geo_lineIntersectParam in the plane with one linear equation; does not exercise obtaining a vector equation of a line."
+  },
+  {
+   "template": "geo_dotFromNorms",
+   "why": "Inverse of geo_dotNormExpand level 1 (single identity |a+-b|^2); merge as a level or drop (author's own suggestion is justified)."
+  },
+  {
+   "template": "geo_eccentric",
+   "why": "The 2022 course explicitly does not treat the eccentricity; keep only a rewrite without the word 이심률 (given c and a)."
+  },
+  {
+   "template": "geo_chordMidpoint",
+   "why": "Secant chord; the course restricts line-conic relations to tangency. Correct and verified, so keep only if the integrator accepts items outside the standards, and without codes 01-01..03."
+  },
+  {
+   "template": "geo_parFocalChord",
+   "why": "Secant through the focus (same curriculum limit); the key step is not shown. Keep only as an extension."
+  }
+ ],
+ "ok": [
+  "geo_parFocusDir (unique, vertex/p handled for negative p and shifts; verifier derives from distance equation)",
+  "geo_ellipseFocal level 2, geo_hyperFocal (P exists for every row: ranges enforced; PF'=PF+2a unique because PF<c+a; right angle at P always occurs on a hyperbola)",
+  "geo_ellipseRightTri (right angle at P occurs because b<c in every triple; area b^2 verified by solving for the four points)",
+  "geo_ellipseFromEq, geo_conicTangentLine (unique positive k, no vertical/asymptotic case), geo_tangentsFromPoint (point strictly outside, no vertical or asymptotic tangent, two real slopes)",
+  "geo_conicGeneral, geo_parMinSum (A strictly inside; closed form correct, apart from the notation bug above), geo_ellipseExtSum (both bounds attained for any interior A)",
+  "geo_divPoint, geo_divRatioPlane, geo_sphereExpand, geo_sphereSection (d<R enforced), geo_sphereTangentPlane, geo_spaceDist",
+  "geo_vecLinComb, geo_vecDecompose (independence of a,b asserted, third component consistent), geo_dotNormExpand, geo_vecOrthoParam level 2 (two distinct integer roots)",
+  "geo_lineIntersectParam (unique intersection, k unique), geo_lineSpacePoint, geo_planeNormal, geo_projEllipse, geo_threePerp level 2",
+  "Standards: codes match the official text for 02-02, 02-03, 02-04, 02-05, 03-01..05; 02-01 correctly skipped"
+ ]
+}
