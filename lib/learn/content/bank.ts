@@ -1,5 +1,8 @@
 import type { Difficulty, Question, Site } from "@/lib/learn/types";
 import mathBank from "./bank/math.json";
+import koreanBank from "./bank/korean.json";
+import koreanKitEn from "./bank/korean-kit.en.json";
+import { KOREAN_BANK_LIVE, expandKoreanBank, type KBankData, type KKit, type KForm } from "./korean-bank";
 
 /**
  * The parametric question bank: practice questions that are NOT stored one by one. A set holds a template id and a table of numbers
@@ -36,6 +39,8 @@ export interface BankData {
 export interface BankOverlay { templates?: Record<string, BankTemplate>; texts?: Record<string, string> }
 
 export const BANKS: Partial<Record<Site, BankData>> = { math: mathBank as unknown as BankData };
+/** The study.korean practice bank (format 2, korean-bank.ts) is DRAFT: bankQuestions() serves it only when KOREAN_BANK_LIVE is on (after an independent review). The review console reads it through lib/learn/review instead. */
+export const KOREAN_BANK_DATA = koreanBank as unknown as KBankData;
 
 const HOLES = /\{(\w+)\}/g;
 /** the template filler of the content builders: "{{x}}" must not read as an unresolved placeholder in content QA */
@@ -84,6 +89,11 @@ export function expandBank(data: BankData, overlay: BankOverlay | null | undefin
 const CACHE_LIMIT = 6;
 const cache = new Map<string, Question[]>();
 export function bankQuestions(site: Site, locale: string, overlay: BankOverlay | null | undefined, skills: ReadonlySet<string>, skillsKey: string): Question[] {
+  if (site === "korean") {
+    if (!KOREAN_BANK_LIVE) return [];
+    const kit: KKit = overlay ? { templates: overlay.templates as unknown as Record<KForm, KKit["templates"][KForm]>, texts: overlay.texts ?? {} } : { templates: koreanKitEn.templates as unknown as KKit["templates"], texts: {} };
+    return expandKoreanBank(KOREAN_BANK_DATA, kit, skills);
+  }
   const data = BANKS[site];
   if (!data) return [];
   const key = `${site}:${locale}:${skillsKey}`;

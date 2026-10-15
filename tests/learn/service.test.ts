@@ -201,6 +201,27 @@ describe("guest (demo) mode", () => {
     await expect(svc.saveOnboarding({ userId: null }, "math", { nickname: "민수", grade: "X9", goal: "habit", avatar: "fox" })).rejects.toMatchObject({ code: "invalid_grade" });
     const st = await svc.saveOnboarding(A, "math", { nickname: "민수", grade: "M2", goal: "habit", avatar: "fox" });
     expect(st.profile?.grade).toBe("M2");
+
+    // Signed-in Korean learner can onboard with K1..K6
+    const k2 = await svc.saveOnboarding(A, "korean", { nickname: "지민", grade: "K2", goal: "habit", avatar: "fox" });
+    expect(k2.profile?.grade).toBe("K2");
+
+    // Signed-in Korean learner attempting K7..K10 is safely restricted before DB RPC
+    for (const lv of ["K7", "K8", "K9", "K10"] as const) {
+      await expect(
+        svc.saveOnboarding(A, "korean", { nickname: "지민", grade: lv, goal: "habit", avatar: "fox" }),
+      ).rejects.toMatchObject({ code: "level_requires_db_upgrade" });
+    }
+
+    // Guest mode learner can onboard with any level including K7..K10
+    for (const lv of ["K7", "K8", "K9", "K10"] as const) {
+      const guest = await svc.saveOnboarding(
+        { userId: null, guestState: null },
+        "korean",
+        { nickname: "게스트", grade: lv, goal: "habit", avatar: "fox" },
+      );
+      expect(guest.profile?.grade).toBe(lv);
+    }
   });
 });
 

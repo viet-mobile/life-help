@@ -5,6 +5,7 @@ import { useState, useSyncExternalStore } from "react";
 import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
 import { siteConfig, isLevelOf } from "@/lib/learn/sites";
+import { UNAVAILABLE_KOREAN_LEVELS } from "@/lib/learn/korean-availability";
 import { GOALS, type Goal, type Grade } from "@/lib/learn/types";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { LocaleSwitch } from "./LocaleSwitch";
@@ -44,8 +45,9 @@ export function Onboarding() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const isBlockedLevel = site === "korean" && !!grade && UNAVAILABLE_KOREAN_LEVELS.includes(grade);
   const nickOk = nickname.trim().length >= 2 && nickname.trim().length <= 16 && !/[<>&"'`\\]/.test(nickname);
-  const canNext = step === 1 ? nickOk : step === 2 ? !!grade : step === 3 ? !!goal : true;
+  const canNext = step === 1 ? nickOk : step === 2 ? (!!grade && !isBlockedLevel) : step === 3 ? !!goal : true;
 
   const next = () => {
     if (canNext && step < TOTAL) setStep(step + 1);
@@ -59,7 +61,13 @@ export function Onboarding() {
       router.replace(href(state.diagnosticDone ? "/dashboard" : "/diagnostic"));
     } catch (e) {
       setSaving(false);
-      setError(e instanceof ApiError && e.code === "invalid_nickname" ? t("onboarding.nickname.hint") : t("lesson.error"));
+      setError(
+        e instanceof ApiError && e.code === "invalid_nickname"
+          ? t("onboarding.nickname.hint")
+          : e instanceof ApiError && e.code === "level_requires_db_upgrade"
+            ? (site === "korean" ? t("onboarding.korean.account_limit") : t("lesson.error"))
+            : t("lesson.error"),
+      );
     }
   };
 
@@ -96,13 +104,18 @@ export function Onboarding() {
               <p className="l-muted" style={{ fontWeight: 800 }}>{t(`grade.group.${level}` as never)}</p>
               <div className="l-options l-grades">
                 {list.map((g) => (
-                  <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} data-grade={g} className="l-option l-grade" onClick={() => setGrade(g)}>
-                    {t(`grade.${g}` as never)}
+                  <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} data-grade={g} data-unavailable={site === "korean" && UNAVAILABLE_KOREAN_LEVELS.includes(g) ? "true" : undefined} className="l-option l-grade" style={site === "korean" && UNAVAILABLE_KOREAN_LEVELS.includes(g) ? { opacity: 0.6 } : undefined} onClick={() => setGrade(g)}>
+                    {t(`grade.${g}` as never)}{site === "korean" && UNAVAILABLE_KOREAN_LEVELS.includes(g) ? " 🔒" : ""}
                   </button>
                 ))}
               </div>
             </div>
           ))}
+          {isBlockedLevel && (
+            <p className="l-panel" style={{ fontSize: "0.9rem", color: "var(--l-accent, #c2410c)" }} role="status">
+              ℹ️ {t("onboarding.korean.account_limit")}
+            </p>
+          )}
         </section>
       )}
 

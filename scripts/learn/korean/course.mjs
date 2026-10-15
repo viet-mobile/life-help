@@ -1,3 +1,4 @@
+import { INTERMEDIATE_LEVELS, INTERMEDIATE_EXAMPLES } from "./course-intermediate.mjs";
 // study.korean.life.help — canonical Korean course data (K1..K6 language levels).
 //
 // TARGET material (Korean text, its Revised Romanization, reviewed Vietnamese pronunciation, accepted answers, audio) lives here ONCE and is never localized.
@@ -18,6 +19,7 @@
 // `rr` = Revised Romanization of `ko`; Vietnamese reading aids use reviewed surface pronunciation. `note` = kit key of a grammar note added to the explanation.
 
 import { EXTRA_LESSONS, EXTRA_EXAMPLES } from "./course-extra.mjs";
+import { BRIDGE_LESSONS, BRIDGE_EXAMPLES } from "./course-bridge.mjs";
 
 const BASE_LEVELS = [
   {
@@ -239,7 +241,11 @@ const BASE_LEVELS = [
 ];
 
 /** K1..K6: the first three lessons above plus the extended lessons in course-extra.mjs. */
-export const LEVELS = BASE_LEVELS.map((L) => ({ ...L, lessons: [...L.lessons, ...(EXTRA_LESSONS[L.level] ?? [])] }));
+export const LEVELS = [
+  ...BASE_LEVELS.map((L) => ({ ...L, lessons: [...L.lessons, ...(EXTRA_LESSONS[L.level] ?? [])] })),
+  // K7 starts with the five bridge lessons that close the K6 -> K7 gap (course-bridge.mjs)
+  ...INTERMEDIATE_LEVELS.map((L) => (L.level === "K7" ? { ...L, lessons: [...BRIDGE_LESSONS, ...L.lessons], diagOffset: BRIDGE_LESSONS.length } : L)),
+];
 
 /** Lesson examples: Korean target + romanization; the gloss after "=" is presentation (kit key). */
 const BASE_EXAMPLES = {
@@ -263,4 +269,4 @@ const BASE_EXAMPLES = {
   "K6.wants": [["가고 싶어요.", "gago sipeoyo.", "wantGo"]],
 };
 
-export const EXAMPLES = { ...BASE_EXAMPLES, ...EXTRA_EXAMPLES };
+export const EXAMPLES = { ...BASE_EXAMPLES, ...EXTRA_EXAMPLES, ...INTERMEDIATE_EXAMPLES, ...BRIDGE_EXAMPLES };

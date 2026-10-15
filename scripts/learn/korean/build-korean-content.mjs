@@ -12,6 +12,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { EXAMPLES, LEVELS } from "./course.mjs";
 import { pronunciationVi, distractorVi } from "./vietnamese-pronunciation.mjs";
+import { BRIDGE_EN, BRIDGE_GLOSS_EN, BRIDGE_SKILLS } from "./course-bridge.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const check = process.argv.includes("--check");
@@ -26,9 +27,25 @@ const extraPath = (l) => path.join(root, "scripts/learn/korean/kit-extra", `${l}
 for (const l of Object.keys(kits)) {
   if (!fs.existsSync(extraPath(l))) { if (process.argv.includes("--draft")) delete kits[l]; continue; }
   const x = JSON.parse(fs.readFileSync(extraPath(l), "utf8"));
-  for (const sec of ["skill", "lesson", "gloss", "note"]) kits[l][sec] = { ...kits[l][sec], ...(x[sec] ?? {}) };
+  for (const sec of ["course", "skill", "lesson", "gloss", "note"]) kits[l][sec] = { ...kits[l][sec], ...(x[sec] ?? {}) };
 }
-const missing = LOCALES.filter((l) => !kits[l] || !fs.existsSync(extraPath(l)));
+// K6 -> K7 bridge lessons (course-bridge.mjs): their titles / concepts and the English meaning of every item come from the bank kit of each language
+// (scripts/learn/korean/bank/kit/<locale>.json: bridge + texts "g:<id>"); en is the canonical source (course-bridge.mjs itself).
+const bankKitPath = (l) => path.join(root, "scripts/learn/korean/bank/kit", `${l}.json`);
+const bankKits = {};
+for (const l of Object.keys(kits)) {
+  if (l === "en") {
+    for (const s of BRIDGE_SKILLS) { kits[l].skill[s] = BRIDGE_EN.skill[s]; kits[l].lesson[s] = BRIDGE_EN.lesson[s]; }
+    Object.assign(kits[l].gloss, BRIDGE_GLOSS_EN);
+    continue;
+  }
+  if (!fs.existsSync(bankKitPath(l))) { if (process.argv.includes("--draft")) delete kits[l]; continue; }
+  const bk = JSON.parse(fs.readFileSync(bankKitPath(l), "utf8"));
+  bankKits[l] = bk;
+  for (const s of BRIDGE_SKILLS) { kits[l].skill[s] = bk.bridge.skill[s]; kits[l].lesson[s] = bk.bridge.lesson[s]; }
+  for (const id of Object.keys(BRIDGE_GLOSS_EN)) { const t = bk.texts[`g:${id.slice(2)}`]; if (typeof t === "string") kits[l].gloss[id] = t; }
+}
+const missing = LOCALES.filter((l) => !kits[l] || !fs.existsSync(extraPath(l)) || (l !== "en" && !bankKits[l]));
 // --draft renders only the kits present (development); the committed build (and --check) requires a kit for every registry locale.
 const draft = process.argv.includes("--draft");
 if (missing.length && !draft) {
@@ -45,15 +62,19 @@ const need = (cond, msg) => { if (!cond) throw new Error(msg); };
 /** One rendering of the whole course in one presentation kit. Pure function of (items, kit). */
 function render(kit, locale = "en") {
   const vi = locale === "vi";
-  const reading = (ko, rr) => vi ? pronunciationVi(ko) : rr;
+  let inBridge = false;
+  // The reviewed Vietnamese surface-pronunciation table has no entries for the new bridge sentences: those lessons show the revised romanization instead of an unreviewed Vietnamese reading.
+  const pv = (ko, rr) => { try { return pronunciationVi(ko); } catch (e) { if (inBridge && rr) return rr; throw e; } };
+  const reading = (ko, rr) => vi ? pv(ko, rr) : rr;
   const gloss = (key) => { need(kit.gloss[key], `gloss ${key}`); return kit.gloss[key]; };
   const skills = [], courses = [], questions = [];
   let prevSkill;
   LEVELS.forEach((L) => {
     const lv = L.level.toLowerCase();
+    const isIntermediate = ["K7", "K8", "K9", "K10"].includes(L.level);
     const lessons = [];
     const make = (it, id, role, family, difficulty) => {
-      const q = { id, site: "korean", skillId: null, type: "multiple_choice", difficulty, prompt: "", hints: [], explanation: "", family, role, expectedSeconds: 30, tags: ["korean", it.k], status: "PUBLISHED" };
+      const q = { id, site: "korean", skillId: null, type: "multiple_choice", difficulty, prompt: "", hints: [], explanation: "", family, role, expectedSeconds: 30, tags: ["korean", it.k], status: isIntermediate ? "DRAFT" : "PUBLISHED" };
       const choice = (texts, localized) => {
         const r = rot(id, texts.length);
         const ordered = texts.map((_, i) => texts[(i - r + texts.length) % texts.length]);
@@ -67,11 +88,11 @@ function render(kit, locale = "en") {
           choice(vi ? [pronunciationVi(it.ko), ...it.wrong.map(distractorVi)] : [it.rr, ...it.wrong], vi);
           need(new Set(q.options.map((o) => o.text)).size === q.options.length, `${id}: distinct readings`);
           q.target = { text: it.ko }; q.audioText = it.ko; break;
-        case "meaning": choice([it.g, ...it.wrong].map(gloss), true); q.target = { text: it.ko, romanization: it.rr, romanizationVi: pronunciationVi(it.ko) }; q.audioText = it.ko; break;
+        case "meaning": choice([it.g, ...it.wrong].map(gloss), true); q.target = { text: it.ko, romanization: it.rr, romanizationVi: pv(it.ko, it.rr) }; q.audioText = it.ko; break;
         case "toko": choice([it.ko, ...it.wrong], false); break;
         case "listen": choice([it.ko, ...it.wrong], false); q.audioText = it.ko; break;
         case "choose": choice(it.options, false); break;
-        case "tf": q.type = "true_false"; q.answer = { kind: "choice", id: it.claim === it.g ? "true" : "false" }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pronunciationVi(it.ko) }; q.audioText = it.ko; vars.gloss = gloss(it.claim); break;
+        case "tf": q.type = "true_false"; q.answer = { kind: "choice", id: it.claim === it.g ? "true" : "false" }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pv(it.ko, it.rr) }; q.audioText = it.ko; vars.gloss = gloss(it.claim); break;
         case "fill": q.type = "fill_blank"; q.answer = { kind: "text", accepted: it.answers }; q.target = { text: it.blank }; vars.rr = reading(it.answers[0], it.ans_rr); break;
         case "order": {
           q.type = "ordering";
@@ -83,21 +104,23 @@ function render(kit, locale = "en") {
           q.audioText = it.ko;
           break;
         }
-        case "number": q.type = "numeric"; q.answer = { kind: "numeric", value: it.n }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pronunciationVi(it.ko) }; q.audioText = it.ko; break;
+        case "number": q.type = "numeric"; q.answer = { kind: "numeric", value: it.n }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pv(it.ko, it.rr) }; q.audioText = it.ko; break;
         default: throw new Error(`unknown kind ${it.k}`);
       }
       q.prompt = fill(kit.prompt[it.k], vars);
       q.hints = kit.hint[it.k].map((h) => fill(h, { ...vars, rr: it.k === "fill" ? reading(it.answers[0], it.ans_rr) : reading(it.ko, it.rr) }));
-      const ex = it.k === "read" ? kit.expl.read : it.k === "number" ? kit.expl.number : kit.expl.meaning;
+      const ex = (it.k === "read" || (it.k === "listen" && !it.g)) ? kit.expl.read : it.k === "number" ? kit.expl.number : kit.expl.meaning;
       q.explanation = fill(ex, { ...vars, rr: reading(it.ko, it.rr), gloss: it.g ? gloss(it.g) : "" }) + (it.note ? ` ${kit.note[it.note]}` : "");
       return q;
     };
     L.lessons.forEach((les, li) => {
       const sid = `k.${lv}.${les.skill}`;
+      inBridge = BRIDGE_SKILLS.includes(les.skill);
       skills.push({ id: sid, title: kit.skill[les.skill], ...(prevSkill ? { prerequisiteId: prevSkill } : {}) });
       prevSkill = sid;
       const family = `${lv}-${les.skill}`;
-      const base = Math.min(5, 1 + Math.floor((Number(L.level[1]) - 1) / 2));
+      const levelNum = parseInt(L.level.slice(1), 10);
+      const base = Math.min(5, 1 + Math.floor((levelNum - 1) / 2));
       let n = 0, v = 0;
       const core = [];
       let challengeId;
@@ -112,9 +135,10 @@ function render(kit, locale = "en") {
       lessons.push({ id: `korean-${lv}-l${li + 1}`, title: kit.lesson[les.skill].title, concept: kit.lesson[les.skill].concept, example: ex, skillIds: [sid], questionIds: core, ...(challengeId ? { challengeId } : {}) });
     });
     L.diagnostic.forEach((it, i) => {
-      const q = make(it, `k-${lv}-d${i + 1}`, "diagnostic", undefined, Math.min(5, 1 + Math.floor((Number(L.level[1]) - 1) / 2)));
+      const levelNum = parseInt(L.level.slice(1), 10);
+      const q = make(it, `k-${lv}-d${i + 1}`, "diagnostic", undefined, Math.min(5, 1 + Math.floor((levelNum - 1) / 2)));
       delete q.family;
-      q.skillId = skills.find((s) => s.id.startsWith(`k.${lv}.`) && L.lessons[Math.min(i, L.lessons.length - 1)].skill === s.id.split(".")[2]).id;
+      q.skillId = skills.find((s) => s.id.startsWith(`k.${lv}.`) && L.lessons[Math.min(i + (L.diagOffset ?? 0), L.lessons.length - 1)].skill === s.id.split(".")[2]).id;
       questions.push(q);
     });
     const c = kit.course[L.level];
@@ -145,6 +169,8 @@ for (const loc of LOCALES) {
     ov.questions[q.id] = { prompt: q.prompt, hints: q.hints, explanation: q.explanation, ...(q.localizedOptions ? { options: Object.fromEntries(q.options.map((o) => [o.id, o.text])) } : {}) };
   });
   if (loc !== "ko") for (const [k, v] of Object.entries(kits[loc].gloss)) need(!HANGUL.test(v), `${loc}: Hangul in gloss ${k}`);
+  // the practice bank's wording in this language (lib/learn/content/korean-bank.ts reads bank.templates / bank.texts)
+  ov.bank = { templates: bankKits[loc].templates, texts: bankKits[loc].texts };
   outputs[`content/learn-overlays/${loc}/korean.json`] = ov;
 }
 

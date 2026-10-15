@@ -31,9 +31,40 @@ export function indexContent(bundle: MetaBundle): ContentIndex {
   return { bundle, questions, lessons, skills, lessonOrder, lessonsBySkill };
 }
 
-/** Only PUBLISHED questions may reach students. */
+/** Only PUBLISHED questions may reach students. Courses without complete published questions are excluded to preserve lesson reference integrity. */
 export function publishedOnly(bundle: ContentBundle): ContentBundle {
-  return { ...bundle, questions: bundle.questions.filter((q) => q.status === "PUBLISHED") };
+  const publishedQuestions = bundle.questions.filter((q) => q.status === "PUBLISHED");
+  const publishedQIds = new Set(publishedQuestions.map((q) => q.id));
+  const publishedSkills = new Set(publishedQuestions.map((q) => q.skillId));
+
+  const courses = bundle.catalog.courses
+    .map((course) => {
+      const units = course.units
+        .map((unit) => {
+          const lessons = unit.lessons.filter(
+            (l) =>
+              l.questionIds.length > 0 &&
+              l.questionIds.every((qid) => publishedQIds.has(qid)) &&
+              (!l.challengeId || publishedQIds.has(l.challengeId)),
+          );
+          return { ...unit, lessons };
+        })
+        .filter((u) => u.lessons.length > 0);
+      return { ...course, units };
+    })
+    .filter((c) => c.units.length > 0);
+
+  const activeSkills = new Set<string>();
+  courses.forEach((c) => c.units.forEach((u) => u.lessons.forEach((l) => l.skillIds.forEach((sid) => activeSkills.add(sid)))));
+
+  return {
+    catalog: {
+      ...bundle.catalog,
+      courses,
+      skills: bundle.catalog.skills.filter((s) => activeSkills.has(s.id) || publishedSkills.has(s.id)),
+    },
+    questions: publishedQuestions,
+  };
 }
 
 export function toMetaBundle(bundle: ContentBundle): MetaBundle {
