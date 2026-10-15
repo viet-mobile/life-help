@@ -7,12 +7,13 @@ import { proxy } from "@/proxy";
 import manifest from "@/lib/learn/content/asset-manifest.json";
 import servedBank from "@/lib/learn/content/bank/english-draft.json";
 import { loadIndex, toPublicQuestion } from "@/lib/learn/content/repository";
+import type { Question } from "@/lib/learn/types";
 import { loadEnglishBankIndex, loadEnglishBankSkill, ContentAssetError } from "@/lib/learn/content/assets";
 
 const served = (servedBank as { questions: { id: string; skillId: string }[] }).questions;
 const dir = path.join(process.cwd(), "public", "learn-content", manifest.version, "english-bank");
 const sha = (b: Buffer | string) => createHash("sha256").update(b).digest("hex");
-const eb = (b: { questions: { id: string }[] }) => b.questions.filter((q) => q.id.startsWith("eb-"));
+const eb = (b: { questions: Question[] }) => b.questions.filter((q) => q.id.startsWith("eb-"));
 
 describe("English practice bank = server-only, versioned, sha-pinned static assets", () => {
   it("the manifest pins the bank: total, index and every skill shard match the committed source and the generated files", () => {
