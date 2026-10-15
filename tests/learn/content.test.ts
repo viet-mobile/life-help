@@ -56,7 +56,7 @@ describe.each(SITES)("demo content: %s", (site) => {
     for (const course of bundle.catalog.courses) {
       const lessons = course.units.flatMap((u) => u.lessons);
       expect(lessons.length, `${course.id} lessons`).toBeGreaterThanOrEqual(2);
-      expect(lessons.length, `${course.id} lessons`).toBeLessThanOrEqual(12); // 2 lessons of an elective course ... a grade course with its topic lessons
+      expect(lessons.length, `${course.id} lessons`).toBeLessThanOrEqual(course.id === "korean-k7" ? 14 : 12); // K7 carries the five K6->K7 bridge skills; // 2 lessons of an elective course ... a grade course with its topic lessons
     }
     for (const { lesson } of index.lessons.values()) {
       const n = lesson.questionIds.length + (lesson.challengeId ? 1 : 0);

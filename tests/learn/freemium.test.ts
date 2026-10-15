@@ -44,11 +44,11 @@ describe("canonical 50 / 50 split", () => {
       expect(free.length).toBe(Math.floor(items.length / 2));
     }
   });
-  it("covers Math E1-H3, English E1-H3 and Korean K1-K6 (active courses; K7-K10 draft excluded)", async () => {
+  it("covers Math E1-H3, English E1-H3 and Korean K1-K10 (all published since 2026-10-15)", async () => {
     const grades = async (site: Site) => buildAccessPlan({ ...(await canonical(site)).catalog, courses: (await canonical(site)).catalog.courses.filter((c) => !c.elective) }, []).courses.map((c) => c.grade).sort();
     expect(await grades("math")).toEqual(["E1", "E2", "E3", "E4", "E5", "E6", "H1", "H2", "H3", "M1", "M2", "M3"]);
     expect(await grades("english")).toEqual(["E1", "E2", "E3", "E4", "E5", "E6", "H1", "H2", "H3", "M1", "M2", "M3"]);
-    expect(await grades("korean")).toEqual(["K1", "K2", "K3", "K4", "K5", "K6"]);
+    expect(await grades("korean")).toEqual(["K1", "K10", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9"]);
   });
   it("the split is computed on canonical ids, so every locale has exactly the same boundary", async () => {
     const plan = buildAccessPlan((await canonical("math")).catalog, (await canonical("math")).questions);

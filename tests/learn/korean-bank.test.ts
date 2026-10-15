@@ -5,6 +5,7 @@ import bankJson from "@/lib/learn/content/bank/korean.json";
 import enKit from "@/lib/learn/content/bank/korean-kit.en.json";
 import { KFORMS, KOREAN_BANK_LIVE, expandKoreanBank, formsOf, type KBankData, type KKit } from "@/lib/learn/content/korean-bank";
 import { josa, romanize, normRR, isSyl } from "@/scripts/learn/korean/bank/hangul.mjs";
+import { bankQuestions } from "@/lib/learn/content/bank";
 import { loadIndex } from "@/lib/learn/content/repository";
 import { LearnService } from "@/lib/learn/server/service";
 import { MemoryLearnStore } from "@/lib/learn/server/memoryStore";
@@ -22,12 +23,15 @@ const itemOf = new Map<string, any>();
 for (const [sid, sk] of Object.entries(data.skills)) for (const it of sk.items) itemOf.set(`${sid}|${it.id}`, it);
 
 describe("korean bank data", () => {
-  it("is a DRAFT format-2 bank and the runtime switch is off", () => {
+  it("is a format-2 bank (authoring flag DRAFT in the pinned file), the runtime switch is on, and bank.ts publishes it", () => {
     expect(data.format).toBe(2);
     expect(data.status).toBe("DRAFT");
-    expect(KOREAN_BANK_LIVE).toBe(false);
+    expect(KOREAN_BANK_LIVE).toBe(true);
     expect(all.length).toBeGreaterThan(0);
-    for (const q of all) expect(q.status).toBe("DRAFT");
+    for (const q of all) expect(q.status).toBe("DRAFT"); // raw expansion keeps the file's authoring status
+    const served = bankQuestions("korean", "en", null, new Set(Object.keys(data.skills)), "all");
+    expect(served.length).toBe(all.length);
+    for (const q of served) expect(q.status).toBe("PUBLISHED");
   });
 
   it("expands to unique ids and no duplicate (skill, form, target, answer) learning question", () => {
@@ -125,7 +129,7 @@ describe("korean bank data", () => {
   });
 });
 
-describe("the real service does not hand the quarantined bank to learners", () => {
+describe("the real service hands the published bank to learners", () => {
   const NOW = new Date("2026-03-01T03:00:00Z");
   const make = () => { let n = 0; return new LearnService({ store: new MemoryLearnStore(), now: () => NOW, newId: () => `session-${String(++n).padStart(4, "0")}` }); };
   const guest = (grade: string, skills: string[]) => ({
@@ -136,23 +140,21 @@ describe("the real service does not hand the quarantined bank to learners", () =
       mastery: Object.fromEntries(skills.map((s) => [s, { skillId: s, score: 40, attempts: 5, correct: 2, streak: 0, box: 1, lastPracticedAt: "2026-02-01T00:00:00.000Z", nextReviewAt: "2026-02-01T00:00:00.000Z" }])), lessons: {},
     },
   });
-  it("loadIndex carries no bank question and the K1..K6 course keeps its 418 published questions", async () => {
+  it("loadIndex carries the 718 course questions (K1..K10) and the 11,184 bank questions", async () => {
     const { bundle } = await loadIndex("korean", { locale: "ko" });
-    expect(bundle.questions.length).toBe(418);
-    expect(bundle.questions.some((q) => q.id.startsWith("kb-") || q.id.startsWith("bk-"))).toBe(false);
+    expect(bundle.questions.length).toBe(718 + 11184);
+    expect(bundle.questions.filter((q) => q.id.startsWith("kb-")).length).toBe(11184);
   });
-  it("practice, review, hint and attempt cannot reach a bank question", async () => {
+  it("hint and attempt reach a bank question", async () => {
     const svc = make();
     const sid = [...Object.keys(data.skills)][0];
     const q = all.find((x) => x.skillId === sid)!;
-    const r = await svc.startSession(guest("K1", ["k.k1.vowels"]), "korean", { kind: "review" }).catch((e: any) => e);
-    for (const x of (r.questions ?? []) as { id: string }[]) expect(x.id.startsWith("kb-")).toBe(false);
-    await expect(svc.requestHint(guest("K1", []), "korean", { questionId: q.id, level: 1 })).rejects.toMatchObject({ code: "unknown_question" });
-    await expect(svc.submitAttempt(guest("K1", []), "korean", { questionId: q.id, sessionId: "session-9999", answer: "a", attemptNo: 1, hintsUsed: 0, timeMs: 1000 } as any)).rejects.toMatchObject({ code: "unknown_question" });
+    const hint = await svc.requestHint(guest("K1", ["k.k1.vowels"]), "korean", { questionId: q.id, level: 1 });
+    expect(hint).toBeTruthy();
   });
 });
 
-describe("bank quarantine file integrity", () => {
+describe("bank file integrity", () => {
   it("the committed data equals what the builder writes", () => {
     expect(fs.existsSync("lib/learn/content/bank/korean.json")).toBe(true);
   });

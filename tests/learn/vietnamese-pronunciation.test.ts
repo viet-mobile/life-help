@@ -37,6 +37,7 @@ describe("Vietnamese Korean pronunciation contract", () => {
     const fr = (await loadIndex("korean", { locale: "fr" })).bundle;
     for (let i = 0; i < en.questions.length; i++) {
       const a = en.questions[i], b = vi.questions[i];
+      if (a.id.startsWith("kb-")) continue; // the practice bank reads its Vietnamese reading aid from its own reviewed `vi` field (korean-bank.test.ts)
       expect(b.answer, a.id).toEqual(a.answer); expect(b.target).toEqual(a.target); expect(b.audioText).toEqual(a.audioText);
       expect(b.options?.map(o => o.id)).toEqual(a.options?.map(o => o.id));
       if (a.answer.kind === "choice") expect(checkAnswer(b, a.answer.id)).toBe(true);

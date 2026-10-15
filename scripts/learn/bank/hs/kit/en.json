@@ -126,7 +126,7 @@
         "Tangency means the quadratic obtained by equating the two expressions has a double root.",
         "Eliminate $y$ and make the discriminant of the resulting quadratic equal to $0$."
       ],
-      "expl": "Equating gives ${eq2}=0$. Tangency requires the discriminant $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)=0$, which gives $k={ans}$."
+      "expl": "From ${f}={g}$ we get ${eq2}=0$. Tangency requires the discriminant $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)=0$, which gives $k={ans}$."
     },
     "cm1_parabolaLineCount": {
       "prompt": "For how many integers $k$ with ${lo}\\le k\\le {hi}$ do the parabola $y={f}$ and the line $y={g}$ have no common point? (digits only)",
@@ -134,7 +134,7 @@
         "No common point means that the quadratic obtained by equating the two expressions has no real root.",
         "Eliminate $y$, find the range of $k$ for which the discriminant satisfies $D<0$, and count the integers in it."
       ],
-      "expl": "Equating gives ${eq2}=0$, and there is no intersection exactly when $D<0$. Here $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)={dk}<0$, which gives ${kr}$, so the integers in ${lo}\\le k\\le {hi}$ are ${ks}$, which is ${ans}$ integers."
+      "expl": "From ${f}={g}$ we get ${eq2}=0$, and there is no intersection exactly when $D<0$. Here $D=({bm})^2-4\\cdot({a})\\cdot({c}-k)={dk}<0$, which gives ${kr}$, so the integers in ${lo}\\le k\\le {hi}$ are ${ks}$, which is ${ans}$ integers."
     },
     "cm1_parabolaXaxis": {
       "prompt": "The graph of $y={f}$ meets the $x$-axis at two distinct points whose distance apart is ${d}$. What is the constant $k$? (digits only)",
@@ -150,7 +150,7 @@
         "First check whether the $x$-coordinate of the vertex lies inside the given interval.",
         "If the vertex is inside, compare the values at the vertex and at both endpoints; otherwise compare the two endpoints."
       ],
-      "expl": "The vertex of the graph is $({h},{kv})$, and at the ends of the interval $y={fm}$ for $x={m}$ and $y={fn}$ for $x={n}$. Deciding whether the vertex abscissa ${h}$ lies in the interval gives the maximum and minimum, whose sum is ${ans}$."
+      "expl": "The vertex of the graph is $({h},{kv})$, and at the ends of the interval $y={fm}$ for $x={m}$ and $y={fn}$ for $x={n}$. Deciding whether the vertex abscissa ${h}$ lies in the interval ${m}\\le x\\le {n}$ gives the maximum and minimum, whose sum is ${ans}$."
     },
     "cm1_quadRevenue": {
       "prompt": "An item with a cost of ${w}$ won sells ${b}$ per day at a price of ${a}$ won each. Every time the price is raised by ${s}$ won, the daily sales drop by ${c}$ items. If the price can be raised by ${s}$ won any whole number of times (including $0$), what is the maximum daily profit in won? (Profit = (selling price $-$ cost) $\\times$ (number sold).) (digits only)",
@@ -179,7 +179,7 @@
     "cm1_cubicOneReal": {
       "prompt": "Let $S$ be the sum of the distinct real roots and $T$ the product of all distinct non-real roots of ${eq}=0$. What is $S+T$? (digits only)",
       "hints": [
-        "An integer root of a monic integer-coefficient equation divides the constant term; test candidates with the factor theorem.",
+        "An integer root of an integer-coefficient equation whose leading coefficient is $1$ divides the constant term; test candidates with the factor theorem.",
         "Once you find a root, divide (synthetic division) to leave a lower-degree factor, and use the discriminant of the remaining quadratic to see that its roots are non-real."
       ],
       "expl": "${eq}={fac}$. The discriminant of the quadratic ${quad}$ is $D={D}<0$, so it has two non-real roots whose product is $T={q}$, and the real roots add up to $S={S}$. Hence $S+T={ans}$."
@@ -196,7 +196,7 @@
       "prompt": "For how many integers $k$ with $-{M}\\le k\\le {M}$ does the system ${e1}$, ${e2}$ have a real solution $(x, y)$? (digits only)",
       "hints": [
         "Eliminate $y$ with one equation; you get a quadratic in $x$.",
-        "A real solution exists exactly when that quadratic has a non-negative discriminant."
+        "A real solution exists exactly when the discriminant of that quadratic is $0$ or more."
       ],
       "expl": "Eliminating $y$ gives a quadratic in $x$, which has a real root exactly when ${dcond}$. That means ${kr}$, so the number of integers in $-{M}\\le k\\le {M}$ is ${ans}$."
     },
@@ -246,7 +246,7 @@
         "The coefficient of $x^2$ is $k$, so treat $k=0$ separately. For $k\\ne0$ the parabola must open upward and the discriminant must satisfy $D<0$ (or $D\\le0$).",
         "Write $D$ in terms of $k$ and solve the inequality. If it opens downward ($k<0$), the inequality cannot hold for all real $x$."
       ],
-      "expl": "For $k=0$ the left side is just the constant ${n}$, which is positive, so the inequality always holds. For $k\\ne0$ the parabola must open upward, so $k>0$ and $\\frac{D}{4}={d4}{rel}0$, which gives ${kr}$. Including $k=0$, the integers $k$ are ${ks}$, so there are ${ans}$ of them."
+      "expl": "For $k=0$ the left side is just the constant ${n}$, which is greater than $0$, so the inequality always holds. For $k\\ne0$ the parabola must open upward, so $k>0$ and $\\frac{D}{4}={d4}{rel}0$, which gives ${kr}$. Including $k=0$, the integers $k$ are ${ks}$, so there are ${ans}$ of them."
     },
     "cm1_divisorCount": {
       "prompt": "How many positive divisors of $N={fac}$ are multiples of ${m}$? (digits only)",
@@ -270,13 +270,13 @@
         "It is easier to place the group that must not be adjacent (the girls) afterwards: first line up the boys.",
         "The boys leave gaps between them and at both ends. Choose different gaps for the girls and arrange them there."
       ],
-      "expl": "The boys can be lined up in ${m}!={mf}$ ways. Choosing ordered, distinct places for the ${w}$ girls among the ${m1}$ gaps (between boys and at both ends) can be done in ${}_{{m1}}\\mathrm{P}_{{w}}={pv}$ ways. Hence ${mf}\\times{pv}={ans}$ ways."
+      "expl": "Line up the ${m}$ boys first: ${m}!={mf}$ ways. Choosing ordered, distinct places for the ${w}$ girls among the ${m1}$ gaps (between boys and at both ends) can be done in ${}_{{m1}}\\mathrm{P}_{{w}}={pv}$ ways. Hence ${mf}\\times{pv}={ans}$ ways."
     },
     "cm1_permNumbers": {
       "prompt": "There are ${nc}$ cards, one for each of the different digits ${digs}$. Choosing ${r}$ of them and arranging them in a row forms a ${r}$-digit natural number (the first digit cannot be $0$). How many of these numbers are multiples of ${m}$? (digits only)",
       "hints": [
         "Being a multiple of ${m}$ depends on the last digit, so decide which digits can go last.",
-        "After fixing the last digit, pick the first digit from the nonzero ones left, and fill the rest from the remaining cards (product rule)."
+        "After fixing the last digit, pick the first digit from the digits other than $0$, and fill the rest from the remaining cards (product rule)."
       ],
       "expl": "The digits that can stand in the units place are ${Lstr}$. For each, multiply (ways to choose the first digit) by (ways to fill the remaining places) and add: ${work}={ans}$."
     },
@@ -356,7 +356,7 @@
       "prompt": "The equation ${eq}$ represents a circle. If its center is $(a, b)$ and its radius is $r$, what is $a+b+r$? (digits only)",
       "hints": [
         "Rewrite it in the form $(x-a)^2+(y-b)^2=r^2$.",
-        "Divide by the coefficient of $x^2$, then group the $x$ terms and the $y$ terms and complete the squares."
+        "Divide both sides by the coefficients of $x^2$ and $y^2$, then group the $x$ terms and the $y$ terms and complete the squares."
       ],
       "expl": "Dividing by the coefficient ${kk}$ of $x^2$ and completing squares gives ${std}$. The center is $({cx}, {cy})$ and the radius is ${rad}$, so $a+b+r={cx}+({cy})+{rad}={ans}$."
     },
@@ -510,7 +510,7 @@
         "A one-to-one function gives different elements of $X$ different values. Choose $f(1)$ and $f(2)$ first.",
         "Count the pairs $(f(1), f(2))$ with $f(1)\\ne f(2)$, then multiply by the number of ways to assign the remaining elements."
       ],
-      "expl": "$f(1)$ has ${t}$ choices and $f(2)$ has ${n}-{u}+1$ choices; ${ov}$ of the combinations have $f(1)=f(2)$, so there are ${pairs}$ valid pairs. The remaining ${mr}$ elements go one-to-one into the other ${nr}$ values in ${rest}$ ways, so the count is ${pairs}\\times{rest}={ans}$."
+      "expl": "$f(1)$ has ${t}$ choices and $f(2)$ has ${n}-{u}+1$ choices; ${ov}$ of the combinations have $f(1)=f(2)$, so $(f(1), f(2))$ has ${pairs}$ possibilities. The remaining ${mr}$ elements go one-to-one into the other ${nr}$ values in ${rest}$ ways, so the count is ${pairs}\\times{rest}={ans}$."
     },
     "cm2_funcMonotone": {
       "prompt": "How many functions $f$ from $X=\\{{xset}\\}$ to $Y=\\{{yset}\\}$ satisfy ${chain}$ and $f(1)\\ge {u}$? (digits only)",
@@ -540,12 +540,12 @@
       "prompt": "Let $g$ be the inverse function of $f(x)={fx}$ (${dom}$). What is $g({t})$? (digits only)",
       "hints": [
         "With the domain restricted to ${dom}$, $f$ is one-to-one onto its range, so it has an inverse.",
-        "$g({t})=x$ means $f(x)={t}$. Solve the quadratic equation and pick the root that lies in the domain."
+        "$g({t})=x$ means $f(x)={t}$. Solve the quadratic equation $f(x)={t}$ and pick the root that lies in the domain."
       ],
       "expl": "Write $f(x)={vf}$. From $f(x)={t}$: ${sq}={s2}$, so ${xp}=\\pm{s}$. The domain is ${dom}$, hence ${xp}={rt}$ and $g({t})={ans}$."
     },
     "cm2_inverseRational": {
-      "prompt": "Let $g$ be the inverse function of $f(x)=\\frac{{num}}{{den}}$ (domain: all real $x$ with nonzero denominator). What is $g({k})$? (digits only)",
+      "prompt": "Let $g$ be the inverse function of $f(x)=\\frac{{num}}{{den}}$ (the domain of $f$ is all real numbers for which the denominator is not $0$). What is $g({k})$? (digits only)",
       "hints": [
         "$g({k})=x$ means $f(x)={k}$.",
         "Multiply both sides of $\\frac{{num}}{{den}}={k}$ by the denominator and solve the linear equation for $x$."
@@ -558,10 +558,10 @@
         "The value of $x$ that makes the denominator $0$ gives the vertical asymptote.",
         "The value that $y$ approaches when $|x|$ is very large is the horizontal asymptote: the ratio of the $x$-coefficients."
       ],
-      "expl": "The denominator is $0$ at $x={px}$, so the vertical asymptote is the line $x={px}$. As $x\\to\\infty$, $y\\to\\frac{{a}}{{c}}={qy}$, the horizontal asymptote. So $p+q=({px})+({qy})={ans}$."
+      "expl": "The denominator is $0$ at $x={px}$, so the vertical asymptote is the line $x={px}$. As $x\\to\\infty$, $y\\to\\frac{{a}}{{c}}={qy}$, so the horizontal asymptote is $y={qy}$. So $p+q=({px})+({qy})={ans}$."
     },
     "cm2_rationalParam": {
-      "prompt": "The graph of $y=\\frac{k}{x}$ ($k$ a nonzero constant) is translated by ${p}$ in the direction of the $x$-axis and by ${q}$ in the direction of the $y$-axis, and the new graph passes through $P({x0}, {y0})$. What is the $x$-coordinate of the point where it meets the $x$-axis? (digits only)",
+      "prompt": "The graph of $y=\\frac{k}{x}$ ($k$ a constant other than $0$) is translated by ${p}$ in the direction of the $x$-axis and by ${q}$ in the direction of the $y$-axis, and the new graph passes through $P({x0}, {y0})$. What is the $x$-coordinate of the point where it meets the $x$-axis? (digits only)",
       "hints": [
         "A translation replaces $x$ by $x-({p})$ and $y$ by $y-({q})$.",
         "Substitute the given point to find $k$, then put $y=0$."
@@ -577,9 +577,9 @@
       "expl": "From $\\frac{{k}}{{den}}{qs}={mx}+n$, clearing the denominator gives a quadratic with discriminant $D=({nstr})^2{ds}$ (no root makes the denominator $0$). We need $D>0$; among the ${tot}$ integers in the range, ${bad}$ fail, leaving ${ans}$."
     },
     "cm2_irrationalPass": {
-      "prompt": "The graph of the irrational function $y=\\sqrt{a({xp})}{qs}$ ($a$ a nonzero constant) passes through $P({x0}, {y0})$. What is $a$? (digits only)",
+      "prompt": "The graph of the irrational function $y=\\sqrt{a({xp})}{qs}$ ($a$ a constant other than $0$) passes through $P({x0}, {y0})$. What is $a$? (digits only)",
       "hints": [
-        "Substitute the coordinates. Remember that a square root is never negative.",
+        "Substitute the coordinates. Remember that a square root is $0$ or more.",
         "Isolate the radical and square both sides to get a linear equation in $a$."
       ],
       "expl": "Substituting $P$: ${y0}=\\sqrt{a({x0}-({p}))}+({q})$, so $\\sqrt{a\\times({d})}={s}$. Squaring: $a\\times({d})={s2}$, so $a={ans}$."
@@ -598,7 +598,7 @@
         "Let $t=\\sqrt{{fr}}\\ge 0$ and express $x$ through $t$. The number of intersections equals the number of distinct non-negative real roots of a quadratic in $t$.",
         "A quadratic has two distinct non-negative roots when $D>0$, (sum of roots) $\\ge 0$ and (product of roots) $\\ge 0$."
       ],
-      "expl": "Put $t=\\sqrt{{fr}}\\ (t\\ge 0)$, so $x=\\frac{t^2-({b})}{{a}}$, and $t=x+k$ gives $t^2-{a}t+({a}k-({b}))=0$. Two distinct non-negative roots need $D={a}^2-4({a}k-({b}))>0$ and product ${a}k-({b})\\ge 0$ (the sum ${a}$ is positive), i.e. ${lt}\\le k<{ht}$. The integers $k$ from ${lo}$ to ${hi}$ work: ${ans}$ of them."
+      "expl": "Put $t=\\sqrt{{fr}}\\ (t\\ge 0)$, so $x=\\frac{t^2-({b})}{{a}}$, and $t=x+k$ gives $t^2-{a}t+({a}k-({b}))=0$. Two distinct non-negative roots need $D={a}^2-4({a}k-({b}))>0$ and product ${a}k-({b})\\ge 0$ (the sum ${a}>0$), i.e. ${lt}\\le k<{ht}$. The integers $k$ from ${lo}$ to ${hi}$ work: ${ans}$ of them."
     },
     "bm_ineqSystem": {
       "prompt": "Among the common solutions of the two linear inequalities ${i1}$ and ${i2}$, how many are integers $x$? (digits only)",
@@ -718,7 +718,7 @@
         "To get $g({k})$, find the $x$ with $f(x)={k}$.",
         "Put that $x$ into the composite function $(g\\circ f)(x)=g(f(x))$."
       ],
-      "expl": "$f(x)={k}$ gives $x={x0}$. Then $(g\\circ f)({x0})=g(f({x0}))=g({k})$, so put $x={x0}$ into ${h}$ to get ${ans}$."
+      "expl": "$f(x)={k}$ gives $x={x0}$. Then $(g\\circ f)({x0})=g(f({x0}))=g({k})$, so $g({k})={h}$ evaluated at $x={x0}$ is ${ans}$."
     },
     "bm_funcCount": {
       "prompt": "The set $X$ is the set of all natural numbers at most ${m}$ and the set $Y$ is the set of all natural numbers at most ${n}$. How many functions $f$ from $X$ to $Y$ satisfy $f(1)=1$ and are not one-to-one? (digits only)",
@@ -988,7 +988,7 @@
       "prompt": "In the arithmetic sequence $\\{a_n\\}$, $a_{{p}}={u}$ and $a_{{q}}={v}$. Find the maximum value of the sum $S_n$ of the first $n$ terms ($n$ a positive integer). (digits only)",
       "hints": [
         "Look at the sign of the common difference: the sum grows only while the terms are positive.",
-        "Find the first term and the difference, then sum up to just before the terms become non-positive."
+        "Find the first term and the difference, then sum up to just before the first term that is $0$ or less."
       ],
       "expl": "The first term is ${a1}$ and the difference is ${d}$, so $a_n>0$ exactly for $n\\le{nm}$ and $a_{{nm1}}\\le0$. The maximum is $S_{{nm}}=\\frac{{nm}(2\\times{a1}+({nm}-1)\\times({d}))}{2}={ans}$."
     },
@@ -998,7 +998,7 @@
         "Write $S_n=\\frac{n(2a+(n-1)d)}{2}$ as a quadratic in $n$.",
         "Solve the quadratic inequality, or try $n=1,2,3,\\dots$ until the sum first exceeds the bound."
       ],
-      "expl": "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$, and $S_1,\\dots,S_{{m1}}$ are all at most ${N}$ (largest value ${s1}$) while $S_{{ans}}={s2}>{N}$, so $n={ans}$."
+      "expl": "$S_n=\\frac{n(2\\times{ab}+(n-1)\\times{d})}{2}$, and $S_1,S_2,\\dots,S_{{m1}}$ are all at most ${N}$ (largest value ${s1}$) while $S_{{ans}}={s2}>{N}$, so $n={ans}$."
     },
     "alg_arithGeoMix": {
       "prompt": "Three numbers $x$, $y$, $z$ form, in this order, an arithmetic sequence with positive common difference, and $x+y+z={S}$. The numbers $x$, $y$, $z+{k}$ form, in this order, a geometric sequence. Find the common difference. (digits only)",
@@ -1012,7 +1012,7 @@
       "prompt": "The sum of the first $n$ terms of $\\{a_n\\}$ is $S_n={expr}$. Find $a_{1}+a_{{k}}$. (digits only)",
       "hints": [
         "$a_1=S_1$, and $a_n=S_n-S_{n-1}$ for $n\\ge2$.",
-        "Do not assume that the formula for $S_n-S_{n-1}$ also gives $a_1$."
+        "Do not assume that putting $n=1$ into $a_n=S_n-S_{n-1}$ gives a value equal to $S_1$."
       ],
       "expl": "$a_1=S_1={a1}$ and $a_{{k}}=S_{{k}}-S_{{km}}={ak}$, so the sum is ${ans}$."
     },
@@ -1147,10 +1147,10 @@
     "ca1_limCoefRational": {
       "prompt": "If $\\lim_{x\\to {c}}\\frac{{num}}{{den}}={L}$, what is $a+b$ for the constants $a$ and $b$? (digits only)",
       "hints": [
-        "For the limit to exist where the denominator is $0$ at $x={c}$, the numerator must also be $0$ there.",
+        "For the limit to exist, the denominator being $0$ at $x={c}$ means the numerator must also be $0$ at $x={c}$.",
         "Make the numerator divisible by ${xc}$, cancel, and require the limit to equal ${L}$."
       ],
-      "expl": "The limit exists and the denominator is $0$ at $x={c}$, so the numerator is $0$ there too. Cancelling the common factor and requiring the limit ${L}$ gives $a={av}$, $b={bv}$. So $a+b={ans}$."
+      "expl": "The limit exists and the denominator is $0$ at $x={c}$, so the numerator is $0$ at $x={c}$ too. Cancelling the common factor and requiring the limit ${L}$ gives $a={av}$, $b={bv}$. So $a+b={ans}$."
     },
     "ca1_limInfRatio": {
       "prompt": "What is $\\lim_{x\\to\\infty}\\frac{{num}}{{den}}$? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
@@ -1204,7 +1204,7 @@
       "prompt": "How many integers $a$ make the equation ${fx}=0$ have a real root in the open interval $({m},{n})$? (digits only)",
       "hints": [
         "This function is increasing everywhere, so a root in the interval needs opposite signs at the two ends.",
-        "Write $f({m})f({n})<0$ as an inequality in $a$."
+        "Write the condition that $f({m})$ and $f({n})$ have opposite signs, i.e. $f({m})f({n})<0$, as an inequality in $a$."
       ],
       "expl": "For $f(x)={fx}$, $f'(x)>0$, so the function is increasing and a root in $({m},{n})$ exists iff $f({m})f({n})<0$. That means ${alo}<a<{ahi}$, giving ${ans}$ integers."
     },
@@ -1227,10 +1227,10 @@
     "ca1_limCoefPoly": {
       "prompt": "The function $f(x)={f}$ ($a$, $b$ constants) satisfies ${lim}={L}$. What is $f(1)$? (digits only)",
       "hints": [
-        "The limit exists with a vanishing denominator, so the numerator is $0$ at $x={c}$.",
+        "The limit exists and the denominator is $0$ at $x={c}$, so the numerator must also be $0$ at $x={c}$.",
         "Then the limit equals ${rel}$; use this value ${L}$ together with the numerator condition to set up simultaneous equations in $a$ and $b$."
       ],
-      "expl": "The numerator vanishes at $x={c}$, so $f({c})={m0}$. The limit then equals ${rel}$, which is ${L}$; solving the two equations gives $a={av}$, $b={bv}$, so $f(1)={ans}$."
+      "expl": "The numerator must be $0$ at $x={c}$, so $f({c})={m0}$. The limit then equals ${rel}$, which is ${L}$; solving the two equations gives $a={av}$, $b={bv}$, so $f(1)={ans}$."
     },
     "ca1_powerFindN": {
       "prompt": "For a positive integer $n$, $f(x)={f}$. If $f'({a})={V}$, what is $n$? (digits only)",
@@ -1252,9 +1252,9 @@
       "prompt": "For the function ${pw}$, the limit $\\lim_{x\\to {c}}f(x)$ exists. What is the constant $a$? (digits only)",
       "hints": [
         "For the limit to exist, the left limit and the right limit at $x\\to {c}$ must be equal.",
-        "Express both one-sided limits in terms of $a$ using the expression for $x<{c}$ and the one for $x>{c}$."
+        "Substitute values near $x={c}$ into the expression for $x<{c}$ and into the one for $x>{c}$, and write both one-sided limits in terms of $a$."
       ],
-      "expl": "The left limit comes from the expression for $x<{c}$ and the right limit from the one for $x>{c}$. They must be equal, which gives $a={ans}$."
+      "expl": "The left limit is the value of the expression for $x<{c}$ as $x\\to {c}$, and the right limit is that of the expression for $x>{c}$. They must be equal, which gives $a={ans}$."
     },
     "ca1_diffParam": {
       "prompt": "The function ${pw}$ is differentiable at $x={c}$. What is $a+b$ for the constants $a$ and $b$? (digits only)",
@@ -1334,7 +1334,7 @@
         "$f'(x)=0$ at $x={m}$ and $x={n}$, where the monotonicity changes.",
         "So $f'(x)$ is a quadratic with roots ${m}$ and ${n}$: write $f'(x)=(\\text{leading coefficient})\\times{fm}{fn}$ and find $a$, $b$. Where on a decreasing interval do the maximum and minimum occur?"
       ],
-      "expl": "Monotonicity changes at $x={m}$ and $x={n}$, so $f'(x)={d3}{fm}{fn}$ and comparing coefficients gives $a={av}$, $b={bv}$. $f$ is decreasing on the interval, so the maximum is $f({m})={fmv}$, the minimum is $f({n})={fnv}$ and the difference is ${ans}$."
+      "expl": "Monotonicity changes at $x={m}$ and $x={n}$, where $f'(x)=0$, so $f'(x)={d3}{fm}{fn}$ and comparing coefficients gives $a={av}$, $b={bv}$. $f$ is decreasing on the interval, so the maximum is $f({m})={fmv}$, the minimum is $f({n})={fnv}$ and the difference is ${ans}$."
     },
     "ca1_noExtremum": {
       "prompt": "How many integers $a$ make the cubic $f(x)={f}$ have no local extremum? (digits only)",
@@ -1347,7 +1347,7 @@
     "ca1_extremaCoef": {
       "prompt": "The cubic $f(x)={f}$ ($a$, $b$, $c$ constants) has a local maximum at $x={m}$ and a local minimum at $x={n}$, and $f({z})={w}$. What is the sum of the local maximum and the local minimum? (digits only)",
       "hints": [
-        "At the extrema $f'({m})=f'({n})=0$, which determines $a$ and $b$.",
+        "At the extrema $f'(x)=0$, so $f'({m})=f'({n})=0$ determines $a$ and $b$.",
         "Then use $f({z})={w}$ to find $c$, and compute the local maximum $f({m})$ and local minimum $f({n})$ and add them."
       ],
       "expl": "$f'({m})=f'({n})=0$ gives $a={av}$, $b={bv}$, and $f({z})={w}$ gives $c={cv}$. The local maximum is $f({m})={fm}$, the local minimum is $f({n})={fn}$, and the sum is ${ans}$."
@@ -1382,7 +1382,7 @@
         "$f(x)+a\\ge0$ for all $x$ in the interval means the minimum of $f$ there is at least $-a$.",
         "Find the minimum of $f$ by comparing the extreme values and the function values at the ends."
       ],
-      "expl": "The minimum of $f(x)$ on this interval is ${mn}$. The inequality always holds iff $a\\ge {mn2}$, so the smallest $a$ is ${ans}$."
+      "expl": "The minimum of $f(x)$ on this interval is ${mn}$. $f(x)+a\\ge0$ always holds iff $a\\ge {mn2}$, so the smallest $a$ is ${ans}$."
     },
     "ca1_maxMinFind": {
       "prompt": "The maximum of $f(x)={f}$ ($a$ a constant) on the closed interval $[{s},{t}]$ is ${M}$. What is the minimum on this interval? (digits only)",
@@ -1590,7 +1590,7 @@
         "Subtract the lower bound from every variable whose bound is above $0$ so that all variables are at least $0$.",
         "The new equation has the form $x'+y'+z'+w'={m2}$."
       ],
-      "expl": "Define new variables: ${subs}$. (A variable with lower bound $0$, if any, is kept as it is: $x'=x$.) Then $x'+y'+z'+w'={m2}$ with non-negative integers. Combinations with repetition: ${}_{4}\\mathrm{H}_{{m2}}=\\binom{{m3}}{{m2}}={ans}$."
+      "expl": "Define new variables: ${subs}$. (A variable whose lower bound is $0$, if any, is kept as it is: $x'=x$.) Then $x'+y'+z'+w'={m2}$ with each variable an integer of $0$ or more. Combinations with repetition: ${}_{4}\\mathrm{H}_{{m2}}=\\binom{{m3}}{{m2}}={ans}$."
     },
     "pst_monotoneSeq": {
       "prompt": "For elements $a,\\ b,\\ c,\\ d$ of the set $\\{1,\\ 2,\\ \\ldots,\\ {m}\\}$, how many ordered quadruples $(a,\\ b,\\ c,\\ d)$ satisfy $a{r1}b{r2}c{r3}d$? (digits only)",
@@ -1718,7 +1718,7 @@
         "A white ball comes either from A or from B.",
         "Each part is (probability of choosing the box) × (probability of white in that box)."
       ],
-      "expl": "White from A: $\\frac{{t}}{6}\\times{pw1}={tA}$; white from B: $\\frac{{t6c}}{6}\\times{pw2}={tB}$ (where $\\frac{{t6c}}{6}$ is the probability of choosing B). The sum is ${fr}$."
+      "expl": "White from A: $\\frac{{t}}{6}\\times{pw1}={tA}$; white from B: $\\frac{{t6c}}{6}\\times{pw2}={tB}$ (where $\\frac{{t6c}}{6}$ is the probability of choosing B). The sum is $\\frac{{t}}{6}\\times{pw1}+\\frac{{t6c}}{6}\\times{pw2}={fr}$."
     },
     "pst_bayes": {
       "prompt": "A fair die is thrown once. If the result is at most ${t}$, a ball is drawn from box A, otherwise from box B. Box A holds ${w1}$ white and ${b1}$ black balls; box B holds ${w2}$ white and ${b2}$ black balls. Given that the ball drawn is white, find the probability that it came from box A. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
@@ -1931,7 +1931,7 @@
     "ca2_ballReverse": {
       "prompt": "A ball is dropped from some height. Each time it hits the floor it bounces up to ${ratio}$ times the height it just fell from, then falls again, and this repeats forever. The height reached after bounce number ${nb}$ is ${H}$ m. What is the total distance the ball travels, in m? (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
-        "If the initial height is $h$ m, the height after bounce $n$ is $h\\times \\left({ratio}\\right)^{n}$.",
+        "If the initial height is $h$ m, each bounce reaches ${ratio}$ times the previous height, so the height after bounce $n$ is $h\\times \\left({ratio}\\right)^{n}$.",
         "Find $h$ first, then add the first drop $h$ and twice the sum of all heights reached."
       ],
       "expl": "With initial height $h$ m, ${H}=h\\times \\left({ratio}\\right)^{{nb}}$, so $h={h}$. The heights reached add up to ${up}$ m, so the total distance is ${h}+2\\times {up}={res}$ m."
@@ -2102,13 +2102,13 @@
         "Call the left side $f(x)$ and use the increase and decrease and the extreme values of $f$ to find the range of $k$ for which the line $y=k$ meets the curve $y=f(x)$ in ${nr}$ points.",
         "If the extreme value contains $e$, use $2.7<e<2.8$, and count the integers in the range."
       ],
-      "expl": "From ${fpx}$ the extreme value is ${ext}$, and ${nr} intersections occur when ${rg}$. The integers $k$ in this range are ${lst}$, so there are ${ans}$ of them."
+      "expl": "From ${fpx}$ the extreme value is ${ext}$, and ${nr}$ intersections occur when ${rg}$. The integers $k$ in this range are ${lst}$, so there are ${ans}$ of them."
     },
     "ca2_monotoneParam": {
       "prompt": "Find the number of integers $a$ for which $f(x)={fx}$ is increasing on all real numbers. (It is increasing when $f'(x)\\ge 0$ for every real $x$.) (digits only)",
       "hints": [
         "A differentiable function is increasing on all of $\\mathbb{R}$ exactly when $f'(x)\\ge0$ for every $x$.",
-        "Find the range of $a$ for which the minimum of $f'(x)$ (or the discriminant) allows this, then count the integers."
+        "Find the range of $a$ for which the minimum of $f'(x)$ (or the discriminant) is $0$ or more, then count the integers."
       ],
       "expl": "${wk}$. So the integers $a$ satisfying the condition are ${lst}$, in total {ans}."
     },
@@ -2118,13 +2118,13 @@
         "Velocity is $v(t)=x'(t)$ and acceleration is $a(t)=v'(t)$.",
         "Find the smallest positive $t$ with $v(t)=0$ and substitute it into $a(t)$."
       ],
-      "expl": "${wk}$, so the acceleration at the first time the velocity is zero is ${res}$."
+      "expl": "${wk}$, so the acceleration at the first time the velocity is $0$ is ${res}$."
     },
     "ca2_riemann": {
       "prompt": "If $L=\\lim_{n\\to\\infty}{pre}\\sum_{k=1}^{n}{body}$, find ${ask}$. (write a fraction in lowest terms such as 3/4; an integer if the value is whole)",
       "hints": [
         "Read the sum as a sum of rectangle areas over $n$ equal parts and replace $\\frac{k}{n}$ by $x$.",
-        "The limits of integration come from the values of $\\frac{k}{n}$ at the ends, in the limit."
+        "The limits of integration come from the limits of $\\frac{k}{n}$ at $k=1$ and at $k=n$."
       ],
       "expl": "Converting the sum to a definite integral gives $L={wk}$. Hence ${ask}$ equals ${res}$."
     },
@@ -2227,7 +2227,7 @@
     "geo_ellipseFromEq": {
       "prompt": "What is the distance between the two foci of the ellipse ${eq}$? (digits only)",
       "hints": [
-        "Rewrite the ellipse as $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$; the larger denominator is $a^2$.",
+        "Rewrite the ellipse so that the right side is $1$: $\\frac{x^2}{\\square}+\\frac{y^2}{\\square}=1$; the larger denominator is $a^2$.",
         "The two denominators are ${a2}$ and ${b2}$, and $c^2=a^2-b^2$."
       ],
       "expl": "Written as ${std}$ we have $a^2={a2}$, $b^2={b2}$, so $c^2=a^2-b^2={c2}$ and $c={c}$. The distance between the foci is $2c={ans}$."
@@ -2756,7 +2756,7 @@
       "prompt": "There are ${s}$ work tops, ${p}$ work bottoms and ${h}$ hats. One top and one bottom are chosen, and one of the ${h}$ hats may be worn or no hat at all. If ${f}$ (top, bottom) pairs may not be worn together for safety reasons, how many different outfits are possible? (digits only)",
       "hints": [
         "First count the allowed (top, bottom) pairs.",
-        "Count the hat choices, including wearing no hat, and multiply."
+        "Count the outcomes: one of ${h}$ hat types or no hat, and multiply."
       ],
       "expl": "The allowed (top, bottom) pairs number ${s}\\times{p}-{f}={ok}$; the hat choices, including no hat, number ${h}+1={hh}$. By the product rule, ${ok}\\times{hh}={ans}$."
     },

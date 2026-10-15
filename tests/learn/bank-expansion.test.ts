@@ -58,31 +58,21 @@ describe("Skill-Linked Practice Question Bank (Bank) Expansion", () => {
   });
 
   describe("Repository loadIndex Integration with Practice Banks", () => {
-    it("quarantines new Korean bank and K7..K10 from loadIndex while preserving K1..K6 canonical content", async () => {
-      const fullKorean = await loadIndex("korean");
-      const bankQs = fullKorean.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      // Discrete Korean bank is quarantined from student runtime
-      expect(bankQs.length).toBe(0);
-      // Canonical Korean published content strictly K1..K6 (418 questions)
-      expect(fullKorean.bundle.questions.length).toBe(418);
-
-      // K7..K10 remain excluded
-      const k7Bundle = await loadIndex("korean", { grade: "K7" });
-      expect(k7Bundle.bundle.questions.length).toBe(0);
-      expect(k7Bundle.bundle.catalog.courses.length).toBe(0);
-
-      // K1 canonical content intact
-      const k1Bundle = await loadIndex("korean", { grade: "K1" });
-      expect(k1Bundle.bundle.questions.length).toBe(65);
+    it("serves the Korean bank (PUBLISHED) and K1..K10 from loadIndex", async () => {
+      const fullKorean = await loadIndex("korean", { locale: "ko" });
+      expect(fullKorean.bundle.questions.filter((q) => q.id.startsWith("kb-")).length).toBe(11184);
+      expect(fullKorean.bundle.questions.filter((q) => !q.id.startsWith("kb-")).length).toBe(718);
+      const k7 = await loadIndex("korean", { grade: "K7", bank: false });
+      expect(k7.bundle.catalog.courses.length).toBe(1);
+      expect(k7.bundle.questions.length).toBeGreaterThan(0);
+      const k1 = await loadIndex("korean", { grade: "K1", bank: false });
+      expect(k1.bundle.questions.length).toBe(65);
     });
 
-    it("preserves Claude math bank in loadIndex while discrete banks are quarantined", async () => {
+    it("preserves the Claude math bank and adds the high-school tranche", async () => {
       const fullMath = await loadIndex("math");
-      const mathBankQs = fullMath.bundle.questions.filter((q) => q.tags?.includes("bank"));
-      expect(mathBankQs.length).toBeGreaterThan(0);
-
-      // bankQuestions returns empty for quarantined sites
-      expect(bankQuestions("korean", "ko", null, new Set(["k.k1.vowels"]), "1")).toEqual([]);
+      expect(fullMath.bundle.questions.filter((q) => q.tags?.includes("bank")).length).toBeGreaterThanOrEqual(6672);
+      expect(bankQuestions("korean", "en", null, new Set(["k.k1.vowels"]), "1").length).toBeGreaterThan(0);
     });
   });
 });

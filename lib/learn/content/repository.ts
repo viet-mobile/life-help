@@ -2,7 +2,7 @@ import type { LearnLocale } from "@/lib/learn/i18n";
 import type { ContentBundle, Grade, PublicQuestion, Question, Site } from "@/lib/learn/types";
 import { indexContent, publishedOnly, scopeToGrade, type ContentIndex } from "./indexer";
 import { localizedBundle, overlayFor } from "./localize";
-import { BANKS, bankQuestions } from "./bank";
+import { bankQuestions, hasBank } from "./bank";
 import { siteConfig } from "@/lib/learn/sites";
 import mathDemo from "./demo/math.json";
 import englishDemo from "./demo/english.json";
@@ -65,7 +65,7 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
   let bundle = await (site === "korean" ? demoContentRepository : getContentRepository()).getBundle(site);
   if (opts.locale) bundle = await localizedBundle(bundle, opts.locale);
   // The parametric practice bank (bank.ts) joins the server-side bundle only: pages and the browser's metadata ask with bank:false.
-  if (opts.bank !== false && BANKS[site]) {
+  if (opts.bank !== false && hasBank(site)) {
     const locale = opts.locale ?? siteConfig(site).presentationLocale;
     const ov = locale === siteConfig(site).presentationLocale ? null : await overlayFor(locale, site);
     const skills = new Set(bundle.catalog.skills.map((s) => s.id));

@@ -48,7 +48,7 @@ describe("Korean review data", () => {
     expect(sg.rows.filter((r) => r.source === "course").every((r) => r.wording === "localized")).toBe(true);
   });
 
-  it("includes the unpublished K7-K10 course, the bridge and the whole bank, all DRAFT, and does not publish them", async () => {
+  it("includes the K7-K10 course, the bridge and the whole bank (all published since 2026-10-15)", async () => {
     const k7 = await loadReviewLevel("K7", "en", { limit: 100 });
     expect(k7.skills.some((s) => s.id === "k.k7.bridge_formal")).toBe(true);
     const all = [];
@@ -56,10 +56,10 @@ describe("Korean review data", () => {
     const counts = reviewCounts();
     expect(reviewLevels.reduce((n, l) => n + counts[l].bank, 0)).toBe(11184);
     expect(counts.K7.bridge).toBe(40);
-    // quarantine unchanged for learners
-    expect(bankQuestions("korean", "en", null, new Set(Object.keys(KOREAN_BANK_DATA.skills)), "all")).toEqual([]);
-    const learner = await loadIndex("korean");
-    expect(learner.bundle.questions.some((q) => /^k-k(7|8|9|10)-/.test(q.id) || q.id.startsWith("kb-"))).toBe(false);
+    // published since 2026-10-15: the review console reads the same material that learners now receive
+    const served = bankQuestions("korean", "en", null, new Set(Object.keys(KOREAN_BANK_DATA.skills)), "all");
+    expect(served.length).toBe(11184);
+    expect(served.every((q) => q.status === "PUBLISHED")).toBe(true);
   });
 
   it("validates inputs", () => {

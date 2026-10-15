@@ -13,7 +13,7 @@ import secondary from "@/lib/learn/content/secondary/math.json";
 import standardsFile from "@/scripts/learn/bank/hs/standards.json";
 
 /**
- * The high-school tranche (lib/learn/content/bank/math-hs.json) is a DRAFT: nothing in the runtime loads it, the existing 6,672-question
+ * The high-school tranche (lib/learn/content/bank/math-hs.json) is published through bank.ts (Korean and English wording only): the existing 6,672-question
  * bank is unchanged, every row's answer was re-computed by the independent Python/sympy verifier (docs/learning/math-hs-bank/verification.json
  * pins the exact bytes it checked) and the wording is complete in Korean and English.
  */
@@ -26,14 +26,14 @@ const old = expandBank(BANKS.math as BankData, null, skills);
 const holes = (s: string) => [...new Set([...s.matchAll(/\{([A-Za-z_]\w+)\}/g)].map((m) => m[1]))].sort().join(",");
 
 describe("math high-school draft bank", () => {
-  it("is a DRAFT in the bank format, and the runtime never loads it", () => {
+  it("is in the bank format, and only lib/learn/content/bank.ts loads it", () => {
     expect(hs.format).toBe(1);
-    expect(hs.status).toBe("DRAFT");
+    expect(hs.status).toBe("DRAFT"); // the file is pinned byte for byte by verification.json; publication is decided in bank.ts, not here
     expect(hs.site).toBe("math");
     expect(hs.sets.length).toBeGreaterThan(100);
     for (const dir of ["lib", "app", "components", "proxy.ts"]) {
       const walk = (p: string): string[] => (fs.statSync(p).isDirectory() ? fs.readdirSync(p).flatMap((f) => walk(path.join(p, f))) : [p]);
-      for (const f of walk(path.join(root, dir)).filter((x) => /\.(ts|tsx)$/.test(x))) expect(fs.readFileSync(f, "utf8"), f).not.toMatch(/bank\/math-hs/);
+      for (const f of walk(path.join(root, dir)).filter((x) => /\.(ts|tsx)$/.test(x))) if (!/lib[\\/]learn[\\/]content[\\/]bank\.ts$/.test(f)) expect(fs.readFileSync(f, "utf8"), f).not.toMatch(/bank\/math-hs/);
     }
   });
 

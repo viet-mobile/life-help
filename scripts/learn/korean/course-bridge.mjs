@@ -3,7 +3,7 @@
 //
 // The lesson items are CHOSEN from the reviewed bank pool (scripts/learn/korean/bank/pools/K7.json) so the course and the bank say the same
 // reviewed Korean; every English meaning is the bank text "g:<id>" in the presentation kit (see scripts/learn/korean/bank/kit/*).
-// Nothing here is native-speaker reviewed; K7 is DRAFT (not served) until the content review is complete.
+// Nothing here is native-speaker reviewed; K7 is PUBLISHED with the rest of K7~K10 (owner release decision 2026-10-15).
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";

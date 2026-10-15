@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { LOCALES } from "@/lib/learn/i18n";
 import { loadIndex } from "@/lib/learn/content/repository";
+import { MATH_HS_DATA } from "@/lib/learn/content/bank";
 import { SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
 
 /**
@@ -14,7 +15,7 @@ import { SITES, type ContentBundle, type Question, type Site } from "@/lib/learn
  */
 const WON = /\d[\d,]*\s*원|만\s*원|원짜리/;
 const FOREIGN =
-  /रुपय|रुपये|रुपए|रूपये|रुपया|ರೂಪಾಯಿ|ಪೈಸೆ|രൂപ|ரூபாய்|రూపాయ|ਰੁਪਏ|રૂપિયા|روپ|\bfrancs?\b|\bdollars?\b|\beuros?\b|\byuan\b|(?<![韩韓])元|\bpesos?\b|shilingi|\bbirr\b|ብር|টাকা|\blira\b|рубл|гривн|₹|€|£|¥|บาท|đồng|paise|पैस|पैश/i;
+  /रुपय|रुपये|रुपए|रूपये|रुपया|ರೂಪಾಯಿ|ಪೈಸೆ|രൂപ|ரூபாய்|రూపాయ|ਰੁਪਏ|રૂપિયા|روپ|\bfrancs?\b|\bdollars?\b|\beuros?\b|\byuan\b|(?<![韩韓])元(?!音)|\bpesos?\b|shilingi|\bbirr\b|ብር|টাকা|\blira\b|рубл|гривн|₹|€|£|¥|บาท|đồng|paise|पैस|पैश/i;
 const HANGUL = /[가-힣]/;
 const MATH = /\$[^$]+\$/g;
 const NUM = /\d+/g;
@@ -38,12 +39,32 @@ const fields = (q: Question): [string, string][] => [
   ...(q.options ?? []).map((o): [string, string] => [`option:${o.id}`, o.text ?? ""]),
 ];
 
+/**
+ * Banks whose wording does not exist in every language yet (published 2026-10-15). A language without wording gets NONE of that bank, never
+ * the bank in another language, so its question list is the canonical list minus exactly that bank. Everything else stays in parity.
+ *   math    high-school tranche (math-hs.json): Korean + English wording only
+ *   english Claude English practice bank: Korean instructions only
+ *   korean  practice bank: only the languages whose overlay carries every meaning (14 + the site's English)
+ */
+const HS_IDS = new Set(MATH_HS_DATA.sets.flatMap((s) => s.rows.map((_, i) => `${s.id}-${String(i + 1).padStart(3, "0")}`)));
+const bankOnly = (site: Site, id: string) => (site === "math" ? HS_IDS.has(id) : site === "english" ? id.startsWith("eb-") : id.startsWith("kb-"));
+
 describe.each(SITES)("%s: 47-locale parity and semantic policy", (site: Site) => {
   it.each([...LOCALES])("%s", async (locale) => {
     const canon = (await loadIndex(site)).bundle;
     const loc = (await loadIndex(site, { locale })).bundle;
     expect(structure(loc), "ANSWER / DIFFICULTY / SKILL parity: catalog").toEqual(structure(canon));
-    expect(loc.questions.map(parityView), "ANSWER / DIFFICULTY / SKILL parity: questions").toEqual(canon.questions.map(parityView));
+    const served = new Set(loc.questions.map((q) => q.id));
+    const gap = canon.questions.filter((q) => bankOnly(site, q.id) && !served.has(q.id));
+    // a gap is all-or-nothing per bank and only where the language has no wording
+    if (gap.length) {
+      const all = canon.questions.filter((q) => bankOnly(site, q.id)).length;
+      expect(gap.length, `${site}/${locale}: a bank is withheld whole or not at all`).toBe(all);
+      if (site === "math") expect(["ko", "en"]).not.toContain(locale);
+      if (site === "english") expect(locale).not.toBe("ko");
+    }
+    const gapIds = new Set(gap.map((q) => q.id));
+    expect(loc.questions.map(parityView), "ANSWER / DIFFICULTY / SKILL parity: questions").toEqual(canon.questions.filter((q) => !gapIds.has(q.id)).map(parityView));
     const byId = new Map(canon.questions.map((q) => [q.id, q]));
     const errors: string[] = [];
     for (const q of loc.questions) {

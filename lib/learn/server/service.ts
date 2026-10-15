@@ -134,11 +134,6 @@ export class LearnService {
 
     const store = this.requireStore(actor);
     if (store && actor.userId) {
-      // Until the database migration widening learn_progress_meta and learn_set_course_level to K7..K10 is applied,
-      // signed-in account profiles on study.korean are restricted to K1..K6. Guests remain free to explore all levels K1..K10.
-      if (site === "korean" && !["K1", "K2", "K3", "K4", "K5", "K6"].includes(input.grade as string)) {
-        throw new LearnError("level_requires_db_upgrade", 400);
-      }
       await store.saveProfile(actor.userId, site, profile);
       return store.loadState(actor.userId, site, this.now());
     }

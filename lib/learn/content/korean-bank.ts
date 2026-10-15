@@ -6,12 +6,13 @@
  * comes from a presentation kit: the canonical English kit (korean-bank-kit.ts) or the bank section of a locale overlay
  * (`bank.templates[form]` and `bank.texts["g:<id>" | "s:<id>" | "n:<key>"]`), exactly like the course (scripts/learn/korean/kit/*).
  *
- * The bank is QUARANTINED: KOREAN_BANK_LIVE is false and every expanded question is DRAFT until the content has passed an independent review.
+ * PUBLISHED (owner's release decision of 2026-10-15): KOREAN_BANK_LIVE is true and bank.ts expands it as PUBLISHED practice questions. The
+ * content is AI-written and AI-reviewed; it has had no native-speaker or teacher review, and no screen may say otherwise.
  * Expanding is a pure function of (data, kit); ids and answer keys are identical in every language.
  */
 import type { Question, QuestionOption } from "@/lib/learn/types";
 
-export const KOREAN_BANK_LIVE = false as boolean;
+export const KOREAN_BANK_LIVE = true as boolean;
 
 export type KCat = "word" | "phrase" | "sentence" | "expr" | "passage" | "syl";
 export interface KItem {

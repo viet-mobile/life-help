@@ -206,14 +206,13 @@ describe("guest (demo) mode", () => {
     const k2 = await svc.saveOnboarding(A, "korean", { nickname: "지민", grade: "K2", goal: "habit", avatar: "fox" });
     expect(k2.profile?.grade).toBe("K2");
 
-    // Signed-in Korean learner attempting K7..K10 is safely restricted before DB RPC
+    // Signed-in Korean learners can choose K7..K10 (published; migration 044 widens the stored level)
     for (const lv of ["K7", "K8", "K9", "K10"] as const) {
-      await expect(
-        svc.saveOnboarding(A, "korean", { nickname: "지민", grade: lv, goal: "habit", avatar: "fox" }),
-      ).rejects.toMatchObject({ code: "level_requires_db_upgrade" });
+      const acc = await svc.saveOnboarding(A, "korean", { nickname: "지민", grade: lv, goal: "habit", avatar: "fox" });
+      expect(acc.profile?.grade).toBe(lv);
     }
 
-    // Guest mode learner can onboard with any level including K7..K10
+    // Guest mode learner can onboard with any level K1..K10
     for (const lv of ["K7", "K8", "K9", "K10"] as const) {
       const guest = await svc.saveOnboarding(
         { userId: null, guestState: null },
