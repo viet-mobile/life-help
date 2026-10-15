@@ -26,19 +26,22 @@ def norm(q): return (mask(q['prompt']),tuple(sorted(mask(o['text']) for o in q.g
 def frame(q):  # names / capitalised words masked: catches name and word substitution
     t=re.sub(r'\b[A-Z][a-z]+\b','<N>',q['prompt']); return (mask(t),)
 item=lambda q:q['id'].split('-')[1]
+def frame2(q):  # prompt + options, names masked: the choose-the-sentence stem is the same for 1,300+ questions, so the options carry the content
+    nm_=lambda t: re.sub(r'\b[A-Z][a-z]+\b','<N>',t)
+    return (mask(nm_(q['prompt'])),tuple(sorted(mask(nm_(o['text'])) for o in q.get('options',[]))))
 def passage(q):
     return q['prompt'].split('\n\n')[0] if ('rq' in q['tags'] or 'dq' in q['tags']) else None
 def row(qs):
-    ex=len({exact(q) for q in qs}); nm=len({norm(q) for q in qs}); fr=len({frame(q) for q in qs})
+    ex=len({exact(q) for q in qs}); nm=len({norm(q) for q in qs}); fr=len({frame(q) for q in qs}); fr2=len({frame2(q) for q in qs})
     it=len({item(q) for q in qs}); ps={passage(q) for q in qs}-{None}
     rq=sum('rq' in q['tags'] for q in qs); dq=sum('dq' in q['tags'] for q in qs)
     std=set()
     for q in qs:
         for c in q.get('standards') or []:
             if c in cur: std.add(c)
-    return len(qs),ex,nm,fr,it,len(ps),rq+dq,len(std)
+    return len(qs),ex,nm,fr,fr2,it,len(ps),rq+dq,len(std)
 def table(title,qs):
-    out=[f'### {title}','','| 구분 | ID 수 | 정확 고유 | 정규화 고유 | 틀(이름·낱말 치환 제거) 고유 | 독립 학습 항목 | 고유 지문 | 지문 딸린 질문 | 연결된 성취기준 |','|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+    out=[f'### {title}','','| 구분 | ID 수 | 정확 고유 | 정규화 고유 | 문구 틀 고유(지시문만, 보기 제외) | 틀 고유(지시문+보기, 이름 가림) | 독립 학습 항목 | 고유 지문 | 지문 딸린 질문 | 연결된 성취기준 |','|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     g=collections.defaultdict(list)
     for q in qs: g[grp(q)].append(q)
     order=['E1-E2 (공식 교육과정 밖 확장)','E3-E6 (초 3~6학년)','중등 M1-M3','고등 H1-H3']
@@ -53,7 +56,7 @@ inCat=[q for q in allq if q['skillId'] in cat]; notCat=[q for q in allq if q['sk
 state=lambda q:'reviewed' if led['reviewed'].get(item(q)) else ('carryOver' if q['id'] in set(led['carryOverQuestions']) else 'pending')
 sc=collections.Counter(state(q) for q in allq)
 out=['# 영어 문제은행 현황 (자동 생성)','',f'생성: `python3 scripts/learn/english-bank/status.py`. 원본: `english-draft.json`(런타임이 읽음) + `english-pending.json`(작성만 됨, 미공개) + `ledger.json`. 모두 **AI 작성·AI 검토**이며 교사·원어민 검토가 아닙니다.','',
-'정의: **정확 고유** = 지문·보기·정답이 글자까지 같지 않은 수. **정규화 고유** = 대소문자·구두점·공백·숫자를 지운 뒤 고유한 수. **틀 고유** = 여기에 대문자로 시작하는 이름·낱말까지 가린 뒤 고유한 수(이름·낱말 치환 복제를 잡음). **독립 학습 항목** = 작성된 학습 단위(낱말·문장·지문·대화·독립 문항). **고유 지문** = 서로 다른 독해·대화 지문 수(질문 수와 따로 관리).','']
+'정의: **정확 고유** = 지문·보기·정답이 글자까지 같지 않은 수. **정규화 고유** = 대소문자·구두점·공백·숫자를 지운 뒤 고유한 수. **문구 틀 고유(지시문만)** = 지시문/지문에서 대문자 이름·낱말을 가린 뒤 고유한 수. 같은 지시문(예: ‘다음 중 문법적으로 옳은 문장은?’)을 쓰는 문장 고르기 문항 1,300여 개가 한 틀로 합쳐지므로 **엄격한 하한**일 뿐 중복 수가 아님. **틀 고유(지시문+보기)** = 보기까지 포함해 이름을 가린 뒤 고유한 수(이름만 바꾼 복제를 잡음). **독립 학습 항목** = 작성된 학습 단위(낱말·문장·지문·대화·독립 문항). **고유 지문** = 서로 다른 독해·대화 지문 수(질문 수와 따로 관리).','']
 out+=table('A. 전체 작성분 (공개 여부 무관)',allq)+['']
 out+=table('B. 현재 런타임이 읽는 파일(english-draft.json) = 공개 중',served)+['']
 out+=table('C. 작성만 됨, 미공개 (english-pending.json)',pending)+['']

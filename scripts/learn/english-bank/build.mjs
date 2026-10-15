@@ -3,6 +3,7 @@
 //   node scripts/learn/english-bank/build.mjs [--only <packetId,...>] [--no-write]
 // Rules: see SPEC.md. Validates every item, expands vocabulary / sentence items into question forms, drops duplicates (normalised prompt+answer,
 // prompt+option set; a copy under another skill is a duplicate too) and reports counts by group, skill, kind and form.
+import { readingHints, pickHint1, clozeHint1, orderHint1, spellHint1, wordClozeHint1, mHints } from "./hints.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -48,7 +49,9 @@ for (const f of files) {
 const wordsSeen = new Map(); // en|pos -> first skill (a word is one learning item across levels)
 const dropped = { vocabRepeat: 0, duplicateQuestion: 0, clozeBroken: 0, badItem: 0 };
 const skillOrder = (s) => plan.skills.findIndex((x) => x.id === s);
-items.sort((a, b) => skillOrder(a.skill) - skillOrder(b.skill));
+// Reviewed items keep their place when a newer (unreviewed) item duplicates them: the first-seen copy survives de-duplication.
+const reviewedIds = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8")).reviewed;
+items.sort((a, b) => (reviewedIds[itemId(a.skill, a.item)] ? 0 : 1) - (reviewedIds[itemId(b.skill, b.item)] ? 0 : 1) || skillOrder(a.skill) - skillOrder(b.skill));
 
 const valid = [];
 const poolBySkill = {};
@@ -117,6 +120,14 @@ const pickOthers = (qid, cands, ok, n) => {
   return pool.map((c) => [hash(qid + (c.en ?? "")), c]).sort((a, b) => a[0] - b[0]).slice(0, n).map((x) => x[1]);
 };
 const subOf = (a, b) => a.includes(b) || b.includes(a);
+// 2nd hint of a sentence item: the author's own `hint`, else the first clause of the grammar note when it does not state the answer
+function ruleHint(item) {
+  if (item.hint) return item.hint;
+  const first = String(item.rule ?? "").split(/(?<=[.。])\s|(?<=[요다])\.\s/)[0].trim();
+  const keys = [item.cz?.ok, ...String(item.good).split(/\s+/).filter((w) => item.bad.every((b) => !b.split(/\s+/).includes(w)))].filter(Boolean);
+  const leaks = keys.some((k) => new RegExp(`(^|[^A-Za-z])${String(k).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`, "i").test(first));
+  return first && first.length >= 8 && !leaks ? first.replace(/[.。]$/, "") + "." : "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요.";
+}
 for (const { skill, packet, item } of valid) {
   const id = itemId(skill, item);
   const d = diff(skill, item);
@@ -132,30 +143,30 @@ for (const { skill, packet, item } of valid) {
     qid = `eb-${id}-koen`; o = pickN(qid);
     if (o.length === 3) { const r = shuffled(qid, [item.en, ...o.map((x) => x.en)]); push(skill, packet, item, "koen", mk(skill, qid, { difficulty: d, prompt: `뜻이 “${item.ko}”인 영어 단어(표현)는?`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [hintPos, `첫 글자: “${item.en[0]}”`], explanation: expl })); }
     qid = `eb-${id}-cloze`;
-    { const stem = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____"); const r = shuffled(qid, [item.en, ...item.z]); push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${stem}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["문장 전체의 뜻을 먼저 생각해 보세요.", `빈칸에는 ${POS[item.pos]}에 해당하는 말이 들어가요.`], explanation: expl })); }
-    if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["글자를 하나씩 소리 내어 확인해 보세요.", `첫 글자: “${item.en[0]}”`], explanation: expl })); }
+    { const stem = item.ex.replace(new RegExp(`(^|[^A-Za-z])(${item.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^A-Za-z]|$)`), "$1____"); const r = shuffled(qid, [item.en, ...item.z]); push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${stem}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [wordClozeHint1(stem), `빈칸에는 ${POS[item.pos]}에 해당하는 말이 들어가요.`], explanation: expl })); }
+    if (item.sp) { qid = `eb-${id}-spell`; const r = shuffled(qid, [item.en, ...item.sp]); push(skill, packet, item, "spell", mk(skill, qid, { difficulty: d, prompt: `철자가 바른 것은? (뜻: ${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [spellHint1(item.en), `첫 글자: “${item.en[0]}”`], explanation: expl })); }
   } else if (item.k === "s") {
     let qid = `eb-${id}-pick`; let r = shuffled(qid, [item.good, ...item.bad]);
     const expl = `정답: “${item.good}” (${item.ko}) ${item.rule}`;
-    push(skill, packet, item, "pick", mk(skill, qid, { difficulty: d, prompt: "다음 중 문법적으로 옳은 문장은?", options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["각 문장을 소리 내어 읽으며 어색한 곳을 찾아보세요.", item.hint ?? "이 문장들이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요."], explanation: expl }));
+    push(skill, packet, item, "pick", mk(skill, qid, { difficulty: d, prompt: "다음 중 문법적으로 옳은 문장은?", options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [pickHint1(item.good, item.bad), ruleHint(item)], explanation: expl }));
     qid = `eb-${id}-cloze`; r = shuffled(qid, [item.cz.ok, ...item.cz.wr]);
-    push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["문장의 주어와 시제, 의미를 먼저 확인하세요.", item.hint ?? "이 문장이 어떤 문법 항목을 시험하는지 먼저 생각해 보세요."], explanation: expl }));
+    push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint(item)], explanation: expl }));
     const toks = item.good.split(/\s+/);
     if (item.ord !== false && toks.length >= 3 && toks.length <= 12) {
       qid = `eb-${id}-order`;
       const ids = toks.map((_, i) => `w${i + 1}`); const rot = 1 + (hash(qid) % (ids.length - 1));
       const shown = ids.map((_, i) => ids[(i * 5 + rot) % ids.length]); const uniq = new Set(shown).size === ids.length ? shown : ids.map((_, i) => ids[(i + rot) % ids.length]);
-      push(skill, packet, item, "order", { id: qid, site: "english", type: "ordering", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 50, status: "DRAFT", difficulty: clamp(d + 1), prompt: `단어를 올바른 순서로 배열하세요. (${item.ko})`, options: uniq.map((w) => ({ id: w, text: toks[Number(w.slice(1)) - 1] })), answer: { kind: "order", ids }, hints: ["문장의 첫 낱말은 대문자로 시작해요.", `첫 단어: “${toks[0]}”`], explanation: expl });
+      push(skill, packet, item, "order", { id: qid, site: "english", type: "ordering", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 50, status: "DRAFT", difficulty: clamp(d + 1), prompt: `단어를 올바른 순서로 배열하세요. (${item.ko})`, options: uniq.map((w) => ({ id: w, text: toks[Number(w.slice(1)) - 1] })), answer: { kind: "order", ids }, hints: [orderHint1(item.good), `첫 단어: “${toks[0]}”`], explanation: expl });
     }
   } else if (item.k === "r" || item.k === "d") {
     item.qs.forEach((q, i) => {
       const qid = `eb-${id}-q${i + 1}`;
       const texts = [q.o[q.a], ...q.o.filter((_, j) => j !== q.a)]; const r = shuffled(qid, texts);
-      push(skill, packet, item, `${item.k}q`, mk(skill, qid, { difficulty: clamp(d + (i >= 3 ? 1 : 0)), prompt: `${item.text}\n\n${q.q}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["지문에서 질문과 관련된 부분을 다시 찾아보세요.", "각 보기가 지문의 내용과 맞는지 하나씩 확인하세요."], explanation: q.why }));
+      push(skill, packet, item, `${item.k}q`, mk(skill, qid, { difficulty: clamp(d + (i >= 3 ? 1 : 0)), prompt: `${item.text}\n\n${q.q}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: readingHints(item, q), explanation: q.why }));
     });
   } else if (item.k === "m") {
     const qid = `eb-${id}-m`; const texts = [item.o[item.a], ...item.o.filter((_, j) => j !== item.a)]; const r = shuffled(qid, texts);
-    push(skill, packet, item, "m", mk(skill, qid, { difficulty: d, prompt: item.q, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["문제를 천천히 다시 읽어 보세요.", "보기를 하나씩 문제에 넣어 확인해 보세요."], explanation: item.why }));
+    push(skill, packet, item, "m", mk(skill, qid, { difficulty: d, prompt: item.q, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: mHints(item), explanation: item.why }));
   }
 }
 if (errors.length) { console.error(`${errors.length} problem(s):`); for (const e of errors.slice(0, 40)) console.error("  " + e); }

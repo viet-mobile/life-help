@@ -1,0 +1,824 @@
+{
+ "packet": "T06-e5-transform",
+ "sections": [
+  {
+   "skill": "e.e5.transform",
+   "items": [
+    {
+     "k": "m",
+     "q": "다음 문장을 의문문으로 바꾼 것은?\nMina and Ben are in the library.",
+     "o": [
+      "Do Mina and Ben are in the library?",
+      "Is Mina and Ben in the library?",
+      "Are Mina and Ben in the library?",
+      "Are in the library Mina and Ben?"
+     ],
+     "a": 2,
+     "why": "be동사(are)가 있는 문장은 are를 주어 앞으로 보내 'Are Mina and Ben in the library?'로 바꿔요.",
+     "hint": "be동사 문장에는 do를 따로 넣지 않아요. be동사의 자리를 생각해 보세요."
+    },
+    {
+     "k": "m",
+     "q": "다음 문장을 의문문으로 바꾼 것은?\nThe students finished the test.",
+     "o": [
+      "Did the students finish the test?",
+      "Did the students finished the test?",
+      "Do the students finish the test?",
+      "Were the students finish the test?"
+     ],
+     "a": 0,
+     "why": "과거 일반동사 문장은 Did를 앞에 쓰고 동사는 원형(finish)으로 써요.",
+     "hint": "Did를 쓰면 뒤의 동사 모양은 어떻게 될까요?"
+    },
+    {
+     "k": "m",
+     "q": "Is your cat sleeping?\nYes, ___.",
+     "o": [
+      "it does",
+      "he did",
+      "they are",
+      "it is"
+     ],
+     "a": 3,
+     "why": "Is로 물었으니 같은 be동사로 'Yes, it is.'라고 답해요. 고양이 한 마리는 it으로 받아요.",
+     "hint": "질문의 첫 단어와 같은 종류의 동사로 대답해요."
+    },
+    {
+     "k": "m",
+     "q": "A: Did the bus come late today?\nB: No, ___.",
+     "o": [
+      "it doesn't",
+      "it didn't",
+      "it don't",
+      "they didn't"
+     ],
+     "a": 1,
+     "why": "Did로 물었으니 'No, it didn't.'로 답해요. 버스 한 대는 it이에요.",
+     "hint": "질문이 과거(Did)인지 현재인지 보세요."
+    },
+    {
+     "k": "m",
+     "q": "다음 문장을 부정문으로 바꾼 것은?\nKen has a new bike.",
+     "o": [
+      "Ken don't have a new bike.",
+      "Ken doesn't has a new bike.",
+      "Ken doesn't have a new bike.",
+      "Ken not have a new bike."
+     ],
+     "a": 2,
+     "why": "3인칭 단수 일반동사의 부정은 doesn't + 동사원형(have)이에요.",
+     "hint": "doesn't 뒤에서 has는 어떤 모양으로 바뀔까요?"
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nJisu eats lunch [in the cafeteria].",
+     "o": [
+      "When does Jisu eat lunch?",
+      "Where does Jisu eat lunch?",
+      "Who does Jisu eat lunch?",
+      "What does Jisu eat lunch?"
+     ],
+     "a": 1,
+     "why": "장소(in the cafeteria)를 묻는 말은 Where예요.",
+     "hint": "괄호 안 말은 '어디서'를 알려 줘요."
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nWe go to the zoo [on Saturday].",
+     "o": [
+      "Who goes to the zoo?",
+      "How do we go to the zoo?",
+      "Where do we go to the zoo?",
+      "When do we go to the zoo?"
+     ],
+     "a": 3,
+     "why": "요일(on Saturday)은 때이므로 When으로 물어요.",
+     "hint": "Saturday는 시간에 관한 말이에요."
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nMina went to school [by bike].",
+     "o": [
+      "How did Mina go to school?",
+      "Why did Mina go to school?",
+      "Where did Mina go to school?",
+      "When did Mina go to school?"
+     ],
+     "a": 0,
+     "why": "by bike는 방법이므로 How, 과거라서 did + go를 써요.",
+     "hint": "by bike는 이동 방법을 말해요."
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\n[My uncle] is waiting at the gate.",
+     "o": [
+      "What is waiting at the gate?",
+      "Where is waiting at the gate?",
+      "Who is waiting at the gate?",
+      "Who he is waiting at the gate?"
+     ],
+     "a": 2,
+     "why": "사람(My uncle)이 주어이므로 Who로 시작해요.",
+     "hint": "괄호 안은 사람이에요. 주어를 묻는 문장은 어순이 그대로예요."
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nSam is sad [because he lost his hat].",
+     "o": [
+      "How is Sam sad?",
+      "Who is Sam sad?",
+      "What is Sam sad?",
+      "Why is Sam sad?"
+     ],
+     "a": 3,
+     "why": "because ~는 이유이므로 Why로 물어요.",
+     "hint": "because로 시작하는 말은 무엇을 알려 줄까요?"
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nYuna bought [a red scarf] at the market.",
+     "o": [
+      "What does Yuna buy at the market?",
+      "What did Yuna buy at the market?",
+      "What Yuna bought at the market?",
+      "What did Yuna bought at the market?"
+     ],
+     "a": 1,
+     "why": "물건을 묻는 What, 과거이므로 did + 동사원형(buy)이에요.",
+     "hint": "did가 있으면 동사는 원형이에요. 시제도 확인해 보세요."
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nThe movie starts [at six o'clock].",
+     "o": [
+      "What time does the movie start?",
+      "Where does the movie start?",
+      "How does the movie start?",
+      "Who does the movie start?"
+     ],
+     "a": 0,
+     "why": "몇 시인지 묻는 말은 What time이에요.",
+     "hint": "six o'clock은 시각이에요."
+    },
+    {
+     "k": "m",
+     "q": "괄호 [ ] 부분을 묻는 질문은?\nDad has [three] tickets.",
+     "o": [
+      "How much tickets does Dad have?",
+      "How many tickets do Dad have?",
+      "How many tickets does Dad have?",
+      "How many tickets Dad has?"
+     ],
+     "a": 2,
+     "why": "수를 셀 수 있는 명사에는 How many를 쓰고, Dad는 3인칭 단수라 does를 써요.",
+     "hint": "Dad에는 do와 does 중 무엇이 어울릴까요?"
+    },
+    {
+     "k": "m",
+     "q": "다음 대답에 가장 알맞은 질문은?\nA: ___?\nB: Because the bus was slow.",
+     "o": [
+      "Who were you late?",
+      "Where were you late?",
+      "How many were you late?",
+      "Why were you late?"
+     ],
+     "a": 3,
+     "why": "이유를 말하는 Because ~ 대답에는 Why 질문이 어울려요.",
+     "hint": "Because로 시작하는 대답은 이유예요."
+    },
+    {
+     "k": "m",
+     "q": "Yesterday를 넣어 과거 문장으로 바꾼 것은?\nI clean my room every day.",
+     "o": [
+      "I clean my room yesterday.",
+      "I cleaned my room yesterday.",
+      "I will clean my room yesterday.",
+      "I cleaning my room yesterday."
+     ],
+     "a": 1,
+     "why": "yesterday는 과거이므로 clean에 -ed를 붙여 cleaned로 써요.",
+     "hint": "yesterday는 '어제'예요. 동사 끝 모양을 바꿔 보세요."
+    },
+    {
+     "k": "m",
+     "q": "Tomorrow를 넣어 미래 문장으로 바꾼 것은?\nWe play soccer.",
+     "o": [
+      "We will play soccer tomorrow.",
+      "We played soccer tomorrow.",
+      "We plays soccer tomorrow.",
+      "We will played soccer tomorrow."
+     ],
+     "a": 0,
+     "why": "tomorrow는 미래이므로 will + 동사원형(play)을 써요.",
+     "hint": "will 뒤에는 어떤 모양의 동사가 올까요?"
+    },
+    {
+     "k": "m",
+     "q": "Yesterday를 넣어 과거 문장으로 바꾼 것은?\nMina eats ice cream.",
+     "o": [
+      "Mina eated ice cream yesterday.",
+      "Mina eats ice cream yesterday.",
+      "Mina ate ice cream yesterday.",
+      "Mina will eat ice cream yesterday."
+     ],
+     "a": 2,
+     "why": "eat의 과거형은 불규칙 변화인 ate예요.",
+     "hint": "eat은 -ed를 붙이지 않는 불규칙 동사예요."
+    },
+    {
+     "k": "m",
+     "q": "Yesterday를 넣어 과거 문장으로 바꾼 것은?\nThe soup is hot.",
+     "o": [
+      "The soup were hot yesterday.",
+      "The soup was hot yesterday.",
+      "The soup is hot yesterday.",
+      "The soup will be hot yesterday."
+     ],
+     "a": 1,
+     "why": "단수 주어 The soup의 be동사 과거형은 was예요.",
+     "hint": "soup 한 가지에 맞는 be동사의 과거형은 무엇일까요?"
+    },
+    {
+     "k": "m",
+     "q": "Next Sunday를 넣어 미래 문장으로 바꾼 것은?\nI go to the market.",
+     "o": [
+      "I went to the market next Sunday.",
+      "I will went to the market next Sunday.",
+      "I going to the market next Sunday.",
+      "I will go to the market next Sunday."
+     ],
+     "a": 3,
+     "why": "next Sunday는 앞으로 올 때이므로 will + go예요.",
+     "hint": "next는 '다음'이라는 뜻이에요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nLast Friday, we ___ a picnic by the lake.",
+     "o": [
+      "had",
+      "have",
+      "will have",
+      "are having"
+     ],
+     "a": 0,
+     "why": "Last Friday는 지난 일이므로 과거형 had를 써요.",
+     "hint": "Last는 '지난'이라는 뜻이에요."
+    },
+    {
+     "k": "m",
+     "q": "과거에 일어난 일을 말하는 문장은?",
+     "o": [
+      "We will visit the farm next summer.",
+      "We visited the farm last summer.",
+      "We visit the farm every summer.",
+      "We are visiting the farm now."
+     ],
+     "a": 1,
+     "why": "visited와 last summer가 지난 일을 나타내요.",
+     "hint": "동사 끝과 시간 표현을 함께 살펴보세요."
+    },
+    {
+     "k": "m",
+     "q": "I를 He로 바꿔 쓴 문장은?\nI wash my hands before lunch.",
+     "o": [
+      "He wash my hands before lunch.",
+      "He washes my hands before lunch.",
+      "He washes his hands before lunch.",
+      "He wash his hands before lunch."
+     ],
+     "a": 2,
+     "why": "He에는 동사 -es(washes)를 붙이고, my는 his로 바꿔요.",
+     "hint": "두 군데를 바꿔야 해요. 동사 끝과 소유 표현을 보세요."
+    },
+    {
+     "k": "m",
+     "q": "I를 She로 바꿔 쓴 문장은?\nI fly a kite in the park.",
+     "o": [
+      "She fly a kite in the park.",
+      "She flys a kite in the park.",
+      "She flied a kite in the park.",
+      "She flies a kite in the park."
+     ],
+     "a": 3,
+     "why": "자음+y로 끝나는 동사는 y를 i로 바꾸고 -es를 붙여요.",
+     "hint": "fly의 끝 철자를 어떻게 바꿔서 -s를 붙일까요?"
+    },
+    {
+     "k": "m",
+     "q": "I를 They로 바꿔 쓴 문장은?\nI am ready for lunch.",
+     "o": [
+      "They are ready for lunch.",
+      "They is ready for lunch.",
+      "They am ready for lunch.",
+      "They be ready for lunch."
+     ],
+     "a": 0,
+     "why": "주어 They(여럿)에는 be동사 are를 써요.",
+     "hint": "They와 짝이 되는 be동사를 떠올려 보세요."
+    },
+    {
+     "k": "m",
+     "q": "I를 He로 바꿔 쓴 문장은?\nI don't like carrots.",
+     "o": [
+      "He don't like carrots.",
+      "He doesn't likes carrots.",
+      "He doesn't like carrots.",
+      "He not like carrots."
+     ],
+     "a": 2,
+     "why": "He에는 don't 대신 doesn't를 쓰고 뒤의 동사는 원형이에요.",
+     "hint": "don't와 doesn't 중 He와 맞는 것은?"
+    },
+    {
+     "k": "m",
+     "q": "I를 he로 바꿔 쓴 질문은?\nDo I need a pencil?",
+     "o": [
+      "Do he need a pencil?",
+      "Does he need a pencil?",
+      "Does he needs a pencil?",
+      "Is he need a pencil?"
+     ],
+     "a": 1,
+     "why": "he에는 Does를 쓰고 동사는 원형 need예요.",
+     "hint": "Does 뒤의 동사에는 -s를 또 붙이지 않아요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nI like apples, ___ I don't like pears.",
+     "o": [
+      "so",
+      "because",
+      "or",
+      "but"
+     ],
+     "a": 3,
+     "why": "좋아한다와 좋아하지 않는다는 서로 반대 내용이라 but을 써요.",
+     "hint": "앞뒤 내용이 반대인지 이어지는지 따져 보세요."
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nMina was late ___ she missed the bus.",
+     "o": [
+      "because",
+      "but",
+      "or",
+      "so"
+     ],
+     "a": 0,
+     "why": "버스를 놓친 것이 늦은 이유이므로 because를 써요.",
+     "hint": "'늦었다'와 '버스를 놓쳤다' 중 어느 쪽이 이유일까요?"
+    },
+    {
+     "k": "m",
+     "q": "빈칸에 알맞은 말은?\nThe soup was hot, ___ Ben waited before eating it.",
+     "o": [
+      "but",
+      "because",
+      "so",
+      "or"
+     ],
+     "a": 2,
+     "why": "수프가 뜨거워서 기다린 것이니 결과를 이어 주는 so를 써요.",
+     "hint": "앞 문장은 원인, 뒤 문장은 결과예요."
+    },
+    {
+     "k": "m",
+     "q": "두 문장을 하나로 알맞게 합친 것은?\nI was tired. I went to bed early.",
+     "o": [
+      "I was tired, but I went to bed early.",
+      "I was tired, so I went to bed early.",
+      "I was tired because I went to bed early.",
+      "I was tired, or I went to bed early."
+     ],
+     "a": 1,
+     "why": "피곤해서 일찍 잔 것이므로 결과를 나타내는 so로 이어요.",
+     "hint": "피곤한 것과 일찍 잔 것 중 무엇이 원인일까요?"
+    },
+    {
+     "k": "m",
+     "q": "두 문장을 하나로 알맞게 합친 것은?\nJin plays the drums. Jin sings.",
+     "o": [
+      "Jin plays the drums and sing.",
+      "Jin play the drums and sings.",
+      "Jin plays and the drums sings.",
+      "Jin plays the drums and sings."
+     ],
+     "a": 3,
+     "why": "같은 주어의 동작 둘은 and로 이어요. 둘 다 Jin이 하는 일이라 sings예요.",
+     "hint": "두 동사 모두 주어 Jin에 맞아야 해요."
+    },
+    {
+     "k": "m",
+     "q": "다음 명령문을 정중한 요청으로 바꾼 것은?\nClose the door.",
+     "o": [
+      "Please close the door.",
+      "Please closes the door.",
+      "Please you close the door.",
+      "Please closing the door."
+     ],
+     "a": 0,
+     "why": "Please 뒤에는 동사원형을 그대로 써요.",
+     "hint": "Please 바로 뒤에는 동사를 어떤 모양으로 쓸까요?"
+    },
+    {
+     "k": "m",
+     "q": "다음 금지 표현을 정중하게 바꾼 것은?\nDon't run in the hall.",
+     "o": [
+      "Please not run in the hall.",
+      "Please don't run in the hall.",
+      "Please doesn't run in the hall.",
+      "Don't please run in the hall."
+     ],
+     "a": 1,
+     "why": "금지 표현은 Please 뒤에 don't + 동사원형을 이어요.",
+     "hint": "Please를 어디에 놓아야 자연스러울까요?"
+    },
+    {
+     "k": "m",
+     "q": "예의 바르지 않은 말은?",
+     "o": [
+      "Please open your books.",
+      "Could you help me, please?",
+      "Give me your pen now.",
+      "May I sit here, please?"
+     ],
+     "a": 2,
+     "why": "Give me your pen now.는 부탁하는 말(please 등)이 없어 무례하게 들려요.",
+     "hint": "나머지는 모두 부탁할 때 쓰는 표현이에요."
+    },
+    {
+     "k": "m",
+     "q": "\"Can you turn off the light, please?\"와 뜻이 같은 것은?",
+     "o": [
+      "Please turn on the light.",
+      "Please don't turn off the light.",
+      "I will turn off the light.",
+      "Please turn off the light."
+     ],
+     "a": 3,
+     "why": "불을 꺼 달라는 부탁이므로 Please turn off the light.와 같아요.",
+     "hint": "turn off와 turn on은 반대 뜻이에요."
+    },
+    {
+     "k": "m",
+     "q": "뜻이 같은 문장은?\nThere is a clock on the wall.",
+     "o": [
+      "A clock is on the floor.",
+      "A clock is on the wall.",
+      "There is no clock on the wall.",
+      "The wall is on a clock."
+     ],
+     "a": 1,
+     "why": "There is ~는 '~이 있다'이므로 A clock is on the wall.과 같은 뜻이에요.",
+     "hint": "있는 것과 위치가 모두 같아야 해요."
+    },
+    {
+     "k": "m",
+     "q": "뜻이 같은 문장은?\nJun is taller than Sam.",
+     "o": [
+      "Sam is shorter than Jun.",
+      "Sam is taller than Jun.",
+      "Jun is shorter than Sam.",
+      "Sam is as tall as Jun."
+     ],
+     "a": 0,
+     "why": "Jun이 더 크면 Sam은 더 작아요.",
+     "hint": "누가 더 큰지 비교해 보세요."
+    },
+    {
+     "k": "m",
+     "q": "뜻이 같은 문장은?\nDan is a good swimmer.",
+     "o": [
+      "Dan swims slowly.",
+      "Dan is a good singer.",
+      "Dan swims well.",
+      "Dan likes the water."
+     ],
+     "a": 2,
+     "why": "good swimmer는 수영을 잘하는 사람이므로 swims well과 같아요.",
+     "hint": "good + 사람은 그 일을 잘한다는 뜻이에요."
+    },
+    {
+     "k": "m",
+     "q": "뜻이 같은 문장은?\nSara gave Tom a book.",
+     "o": [
+      "Sara gave Tom to a book.",
+      "Sara gave a book to Tom.",
+      "Tom gave a book to Sara.",
+      "Sara gave to a book Tom."
+     ],
+     "a": 1,
+     "why": "give A B는 give B to A로 바꿔도 뜻이 같아요. 주는 사람과 받는 사람은 그대로예요.",
+     "hint": "누가 주고 누가 받는지 확인하세요."
+    },
+    {
+     "k": "m",
+     "q": "뜻이 같은 문장은?\nThe test was easy.",
+     "o": [
+      "The test was very hard.",
+      "The test was not easy.",
+      "The test was very long.",
+      "The test was not difficult."
+     ],
+     "a": 3,
+     "why": "easy는 difficult의 반대이므로 not difficult와 뜻이 비슷해요.",
+     "hint": "easy의 반대말을 부정하면 어떻게 될까요?"
+    },
+    {
+     "k": "m",
+     "q": "밑줄 친 부분 중 고쳐야 할 곳은?\n(1)Yesterday (2)I go (3)to the park (4)with my dad.",
+     "o": [
+      "(2)I go",
+      "(1)Yesterday",
+      "(3)to the park",
+      "(4)with my dad"
+     ],
+     "a": 0,
+     "why": "Yesterday가 있으므로 go를 went로 바꿔야 해요.",
+     "hint": "문장 맨 앞의 시간 표현과 동사를 비교해 보세요."
+    },
+    {
+     "k": "m",
+     "q": "고쳐야 할 부분은?\nHow many (1)cat (2)do (3)you (4)have?",
+     "o": [
+      "(2)do",
+      "(3)you",
+      "(1)cat",
+      "(4)have"
+     ],
+     "a": 2,
+     "why": "How many 뒤에는 복수 명사가 와서 cats가 되어야 해요.",
+     "hint": "How many 뒤의 명사 모양을 생각해 보세요."
+    },
+    {
+     "k": "m",
+     "q": "고쳐야 할 부분은?\n(1)She (2)wants (3)a (4)apple.",
+     "o": [
+      "(1)She",
+      "(3)a",
+      "(2)wants",
+      "(4)apple"
+     ],
+     "a": 1,
+     "why": "모음 소리로 시작하는 apple 앞에는 an을 써요.",
+     "hint": "apple의 첫소리가 무엇인지 들어 보세요."
+    },
+    {
+     "k": "m",
+     "q": "고쳐야 할 부분은?\n(1)Their dog is very cute, (2)but (3)I like (4)it a lot.",
+     "o": [
+      "(1)Their dog is very cute,",
+      "(3)I like",
+      "(4)it a lot",
+      "(2)but"
+     ],
+     "a": 3,
+     "why": "귀여워서 좋아한다는 이어지는 내용이라 but 대신 so를 써야 해요.",
+     "hint": "앞뒤 내용이 반대인지 살펴보세요."
+    },
+    {
+     "k": "m",
+     "q": "고쳐야 할 부분은?\n(1)Please (2)opens (3)the (4)window.",
+     "o": [
+      "(2)opens",
+      "(1)Please",
+      "(3)the",
+      "(4)window"
+     ],
+     "a": 0,
+     "why": "Please 뒤에는 동사원형 open을 써요.",
+     "hint": "Please 뒤의 동사에는 -s를 붙이지 않아요."
+    },
+    {
+     "k": "s",
+     "good": "Last week, my class visited a farm.",
+     "ko": "지난주에 우리 반은 농장을 방문했어요.",
+     "bad": [
+      "Last week, my class visit a farm.",
+      "Last week, my class visits a farm.",
+      "Last week, my class will visit a farm."
+     ],
+     "cz": {
+      "st": "Last week, my class ___ a farm.",
+      "ok": "visited",
+      "wr": [
+       "visit",
+       "visits",
+       "will visit"
+      ]
+     },
+     "rule": "last week는 지난 일을 나타내서 동사를 과거형(visited)으로 써요.",
+     "ord": false,
+     "hint": "last week가 가리키는 때를 생각해 보세요."
+    },
+    {
+     "k": "s",
+     "good": "Tomorrow, Dad will cook rice for us.",
+     "ko": "내일 아빠가 우리에게 밥을 해 주실 거예요.",
+     "bad": [
+      "Tomorrow, Dad cooked rice for us.",
+      "Tomorrow, Dad will cooked rice for us.",
+      "Tomorrow, Dad cooking rice for us."
+     ],
+     "cz": {
+      "st": "Tomorrow, Dad ___ rice for us.",
+      "ok": "will cook",
+      "wr": [
+       "cooked",
+       "will cooked",
+       "cooking"
+      ]
+     },
+     "rule": "tomorrow는 앞으로 올 때를 나타내서 will + 동사원형으로 미래를 표현해요.",
+     "ord": false,
+     "hint": "will 뒤에 오는 동사의 모양을 떠올려 보세요."
+    },
+    {
+     "k": "s",
+     "good": "Please wash your hands before lunch.",
+     "ko": "점심 전에 손을 씻어 주세요.",
+     "bad": [
+      "Please washes your hands before lunch.",
+      "Please you wash your hands before lunch.",
+      "Please washing your hands before lunch."
+     ],
+     "cz": {
+      "st": "Please ___ your hands before lunch.",
+      "ok": "wash",
+      "wr": [
+       "washes",
+       "washing",
+       "washed"
+      ]
+     },
+     "rule": "정중한 요청은 Please + 동사원형으로 말해요.",
+     "ord": false,
+     "hint": "Please 바로 뒤에는 동사를 꾸미지 않은 원래 모양으로 써요."
+    },
+    {
+     "k": "s",
+     "good": "They were tired, so they went home.",
+     "ko": "그들은 피곤해서 집에 갔어요.",
+     "bad": [
+      "They was tired, so they went home.",
+      "They were tired, so they goed home.",
+      "They were tired, so they went to home."
+     ],
+     "cz": {
+      "st": "They were tired, ___ they went home.",
+      "ok": "so",
+      "wr": [
+       "but",
+       "because",
+       "or"
+      ]
+     },
+     "rule": "원인 뒤에 결과를 이을 때는 so를 써요. go의 과거형은 went이고, home 앞에는 to를 쓰지 않아요.",
+     "ord": false,
+     "hint": "피곤한 것이 집에 간 일의 원인이에요."
+    },
+    {
+     "k": "s",
+     "good": "Did Mina and Jun find the key?",
+     "ko": "미나와 준은 열쇠를 찾았나요?",
+     "bad": [
+      "Did Mina and Jun finded the key?",
+      "Did Mina and Jun found the key?",
+      "Did find Mina and Jun the key?"
+     ],
+     "cz": {
+      "st": "Did Mina and Jun ___ the key?",
+      "ok": "find",
+      "wr": [
+       "found",
+       "finds",
+       "finding"
+      ]
+     },
+     "rule": "Did로 시작하는 과거 의문문에서는 동사를 원형(find)으로 써요.",
+     "hint": "Did가 이미 과거를 나타내요. 동사는 어떤 모양일까요?"
+    },
+    {
+     "k": "s",
+     "good": "Ji-ho can't come because he is sick.",
+     "ko": "지호는 아파서 올 수 없어요.",
+     "bad": [
+      "Ji-ho can't come because he sick.",
+      "Ji-ho can't comes because he is sick.",
+      "Ji-ho can't come because is sick he."
+     ],
+     "cz": {
+      "st": "Ji-ho can't come ___ he is sick.",
+      "ok": "because",
+      "wr": [
+       "so",
+       "but",
+       "or"
+      ]
+     },
+     "rule": "이유를 말할 때는 because를 써요. can't 뒤에는 동사원형, because 뒤에도 주어와 동사를 갖춰야 해요.",
+     "ord": false,
+     "hint": "아픈 것은 올 수 없는 이유예요."
+    },
+    {
+     "k": "s",
+     "good": "What did you eat for breakfast?",
+     "ko": "아침으로 무엇을 먹었나요?",
+     "bad": [
+      "What you ate for breakfast?",
+      "What did you ate for breakfast?",
+      "What do you ate for breakfast?"
+     ],
+     "cz": {
+      "st": "What did you ___ for breakfast?",
+      "ok": "eat",
+      "wr": [
+       "ate",
+       "eats",
+       "eating"
+      ]
+     },
+     "rule": "의문사 + did + 주어 + 동사원형 순서로 과거 질문을 만들어요.",
+     "ord": false,
+     "hint": "did 뒤에서는 과거형을 또 쓰지 않아요."
+    },
+    {
+     "k": "w",
+     "en": "request",
+     "pos": "n",
+     "ko": "요청",
+     "ex": "I sent a request to the school office.",
+     "exko": "나는 학교 사무실에 요청을 보냈어요.",
+     "z": [
+      "pillow",
+      "spoon",
+      "ladder"
+     ],
+     "syn": [],
+     "sp": [
+      "reqest",
+      "requset",
+      "requeset"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "negative",
+     "pos": "adj",
+     "ko": "부정의",
+     "ex": "A negative sentence has the word not.",
+     "exko": "부정문에는 not이라는 말이 있어요.",
+     "z": [
+      "sleepy",
+      "round",
+      "sweet"
+     ],
+     "syn": [],
+     "sp": [
+      "negativ",
+      "negetive",
+      "nagative"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "statement",
+     "pos": "n",
+     "ko": "평서문, 진술",
+     "ex": "This statement is true.",
+     "exko": "이 진술은 사실이에요.",
+     "z": [
+      "window",
+      "candy",
+      "river"
+     ],
+     "syn": [],
+     "sp": [
+      "statment",
+      "stetement",
+      "statemant"
+     ]
+    },
+    {
+     "k": "w",
+     "en": "rewrite",
+     "pos": "v",
+     "ko": "다시 쓰다",
+     "ex": "I will rewrite my sentence on a new page.",
+     "exko": "나는 새 쪽에 내 문장을 다시 쓸 거예요.",
+     "z": [
+      "borrow",
+      "cook",
+      "jump"
+     ],
+     "syn": [],
+     "sp": [
+      "rewrit",
+      "rewritte",
+      "reewrite"
+     ]
+    }
+   ]
+  }
+ ]
+}
