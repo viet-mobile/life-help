@@ -1,0 +1,210 @@
+{
+ "packet": "M10-m2-read",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 80,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "73b7ca07",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "When does the school band perform?",
+      "o": [
+       "At 1:00",
+       "At 2:00",
+       "At 3:00",
+       "At 9:30"
+      ],
+      "a": 1,
+      "why": "댄스 동아리가 1시, 밴드가 2시예요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Where should parents park?",
+      "o": [
+       "In the gym parking lot",
+       "In the playground",
+       "In the main hall",
+       "Near the food stands"
+      ],
+      "a": 0,
+      "why": "“parents are asked to use the gym parking lot”",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What will happen to the money from the flea market?",
+      "o": [
+       "It will buy a new school band.",
+       "It will pay for the talent show.",
+       "It will be shared by the dance club.",
+       "It will go to a children's hospital."
+      ],
+      "a": 3,
+      "why": "“given to a local children's hospital”",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What can students do between 10:00 and 12:00?",
+      "o": [
+       "Enjoy the booths in the playground",
+       "Watch the dance club perform",
+       "Listen to the school band",
+       "Join the opening ceremony"
+      ],
+      "a": 0,
+      "why": "“From 10:00 to 12:00, students can enjoy the booths in the playground.”",
+      "std": [
+       "9영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Q4 stem ('park in the gym lot') gave away Q2's answer, and a distractor mentioned the hospital (Q3). Replaced with an independent detail question.",
+   "severity": "major"
+  },
+  {
+   "item": "4d01394b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does the writer give four stars instead of five?",
+      "o": [
+       "The vacuum cost too much money.",
+       "The vacuum has a few small problems.",
+       "The battery lasts only ten minutes.",
+       "The vacuum does not pick up dust."
+      ],
+      "a": 1,
+      "why": "소파 밑에 끼고 문턱을 못 넘는 등 작은 문제가 있어요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "According to the review, what is one good point?",
+      "o": [
+       "It keeps the floor clean on its own.",
+       "It can climb steps without any trouble at all.",
+       "It stays quiet even when it is stuck somewhere.",
+       "It is perfect for very large houses and gardens."
+      ],
+      "a": 0,
+      "why": "리뷰에서 로봇청소기가 스스로 먼지와 털을 치워 매일 저녁 바닥이 깨끗하다는 장점을 말했어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "Who would the writer recommend this vacuum to?",
+      "o": [
+       "People who have no pets",
+       "People with many stairs",
+       "People who dislike beeping",
+       "People living in small homes"
+      ],
+      "a": 3,
+      "why": "“recommend it to people who live in small homes”",
+      "std": [
+       "9영01-06"
+      ]
+     },
+     {
+      "q": "What is the purpose of this text?",
+      "o": [
+       "To explain how robots are made",
+       "To advertise a new pet shop",
+       "To give an opinion about a product",
+       "To tell a story about a dog"
+      ],
+      "a": 2,
+      "why": "제품 사용 후기예요.",
+      "std": [
+       "9영01-06"
+      ]
+     }
+    ]
+   },
+   "why": "Explanation claimed '집이 비어 있어도', not in text.",
+   "severity": "minor"
+  },
+  {
+   "item": "b0e37800",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which event does the writer think is the most exciting?",
+      "o": [
+       "The tug-of-war",
+       "The relay race",
+       "The morning races",
+       "The lunch break"
+      ],
+      "a": 1,
+      "why": "“a big relay race, which is the most exciting event”",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "How did the writer feel when taking the stick?",
+      "o": [
+       "Nervous because the team was behind",
+       "Calm because the team was ahead",
+       "Tired because the race was long",
+       "Surprised because the stick was lost"
+      ],
+      "a": 0,
+      "why": "약 10미터 뒤처져 있어서 심장이 빨리 뛰고 다리가 무거웠다고 했으니 긴장한 거예요.",
+      "std": [
+       "9영01-05"
+      ]
+     },
+     {
+      "q": "What happened at the end of the relay?",
+      "o": [
+       "The white team won by a few steps.",
+       "The race was stopped for a short time.",
+       "The writer dropped the stick on the track.",
+       "The writer passed the white runner."
+      ],
+      "a": 3,
+      "why": "파란 팀 마지막 주자(글쓴이)가 흰 팀을 앞질렀어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does “Even though” show in the last sentence?",
+      "o": [
+       "A reason for the white team's win",
+       "A time before the relay",
+       "A contrast between two results",
+       "An example of a team game"
+      ],
+      "a": 2,
+      "why": "줄다리기는 졌지만 이어달리기는 기억에 남는다는 대조예요.",
+      "std": [
+       "9영01-04"
+      ]
+     }
+    ]
+   },
+   "why": "'열 걸음' mistranslates ten meters.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 96,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

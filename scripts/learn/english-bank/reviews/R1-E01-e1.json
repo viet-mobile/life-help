@@ -1,0 +1,184 @@
+{
+ "packet": "E01-e1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "0f43937c",
+   "op": "set",
+   "set": {
+    "why": "“apple”은 A로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "444d8075",
+   "op": "set",
+   "set": {
+    "why": "“bus”는 B로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "c51b8fc1",
+   "op": "set",
+   "set": {
+    "why": "“cup”은 C로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "fd568987",
+   "op": "set",
+   "set": {
+    "why": "“desk”는 D로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "352be9f4",
+   "op": "set",
+   "set": {
+    "why": "“egg”는 E로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "03118958",
+   "op": "set",
+   "set": {
+    "why": "“fan”은 F로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "9c38d499",
+   "op": "set",
+   "set": {
+    "why": "“goat”는 G로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "35f8fdca",
+   "op": "set",
+   "set": {
+    "why": "“hat”은 H로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "bfa56051",
+   "op": "set",
+   "set": {
+    "why": "“ice”는 I로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "ee408b24",
+   "op": "set",
+   "set": {
+    "why": "“jam”은 J로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "2f87bb0e",
+   "op": "set",
+   "set": {
+    "why": "“lemon”은 L로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "42ef2b9a",
+   "op": "set",
+   "set": {
+    "why": "“pen”은 P로 시작해요."
+   },
+   "why": "한국어 조사 오류(받침에 따른 은/는)",
+   "severity": "minor"
+  },
+  {
+   "item": "c570031b",
+   "op": "set",
+   "set": {
+    "why": "moon은 M으로 시작해요."
+   },
+   "why": "조사 오류(은/는, 로/으로)",
+   "severity": "minor"
+  },
+  {
+   "item": "7095a031",
+   "op": "set",
+   "set": {
+    "why": "nose는 N으로 시작해요."
+   },
+   "why": "조사 오류(은/는, 로/으로)",
+   "severity": "minor"
+  },
+  {
+   "item": "5d3a4984",
+   "op": "set",
+   "set": {
+    "why": "sun은 S로 시작해요."
+   },
+   "why": "조사 오류(은/는, 로/으로)",
+   "severity": "minor"
+  },
+  {
+   "item": "926d5e83",
+   "op": "set",
+   "set": {
+    "why": "van은 V로 시작해요."
+   },
+   "why": "조사 오류(은/는, 로/으로)",
+   "severity": "minor"
+  },
+  {
+   "item": "857a46f8",
+   "op": "set",
+   "set": {
+    "why": "queen은 Q로 시작해요."
+   },
+   "why": "조사 오류(은/는, 로/으로)",
+   "severity": "minor"
+  },
+  {
+   "item": "5f9aa871",
+   "op": "set",
+   "set": {
+    "why": "sock은 /s/ 소리로 시작해요."
+   },
+   "why": "조사 오류",
+   "severity": "minor"
+  },
+  {
+   "item": "95d3c6c7",
+   "op": "set",
+   "set": {
+    "ex": "A zebra is an animal.",
+    "exko": "얼룩말은 동물이에요."
+   },
+   "why": "cloze 'A ____ has black and white lines.'에서 table/pencil/book도 흑백 줄무늬가 있을 수 있어 오답이 확정적이지 않음; 문장을 바꿔 오답을 명확히 함",
+   "severity": "major"
+  }
+ ],
+ "ok": 81,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

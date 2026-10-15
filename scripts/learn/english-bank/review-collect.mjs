@@ -34,7 +34,8 @@ for (const q of full.questions) {
 const defective = new Set(Object.entries(rev.verdicts ?? {}).filter(([, v]) => v !== "ok").map(([k]) => k));
 for (const id of [...mismatch, ...ambiguous]) defective.add(id);
 const patched = new Set((rev.patches ?? []).map((p) => p.item));
-const flaggedItems = new Set([...defective].map(itemOf));
+const acceptArg = process.argv.indexOf("--accept"); const accepted = new Set(acceptArg > 0 ? process.argv[acceptArg + 1].split(",") : []); // items whose blind-solver disagreement was adjudicated in favour of the key
+const flaggedItems = new Set([...defective].map(itemOf).filter((i) => !accepted.has(i) || patched.has(i)));
 const unresolved = [...flaggedItems].filter((i) => !patched.has(i));
 const summary = { batch: n, packet: full.packet, questions: ids.length, items: Object.keys(full.items).length, blindMismatch: mismatch.length, blindAmbiguous: ambiguous.length, reviewerDefects: (rev.defects ?? []).length, bySeverity: (rev.defects ?? []).reduce((m, d) => (m[d.severity] = (m[d.severity] ?? 0) + 1, m), {}), patches: (rev.patches ?? []).length, unresolvedFlaggedItems: unresolved, problems, canary: canaryFail.length ? canaryFail : "ok" };
 console.log(JSON.stringify(summary));
@@ -43,22 +44,22 @@ if (problems.length) { console.error("INCOMPLETE REVIEW:\n  " + problems.slice(0
 if (!apply) process.exit(0);
 // -- apply
 const R = path.join(here, "reviews"); const file = path.join(R, `R${n}-${full.packet}.json`);
-fs.writeFileSync(file, JSON.stringify({ packet: full.packet, reviewer: "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review", scope: { batch: n, questions: ids.length }, patches: rev.patches ?? [], ok: ids.length - defective.size, criteria: "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation" }, null, 1) + "\n");
-const log = JSON.parse(execFileSync("node", [path.join(here, "apply-review.mjs"), file], { encoding: "utf8" }).trim().split("\n").pop());
-// new ids of patched items
-const poolFile = path.join(here, "pools", `${full.packet}.json`); const pool = read(poolFile);
-const live = new Set(); for (const sec of pool.sections ?? [{ skill: pool.skill, items: pool.items }]) for (const it of sec.items) live.add(idOf(sec.skill, it));
-const ledger = read(path.join(here, "ledger.json")); const when = new Date().toISOString().slice(0, 10);
-let added = 0;
-const patchedNew = []; // ids of patched items cannot be derived from the old id: find pool items whose id is new and not previously known
-for (const item of Object.keys(full.items)) {
-  if (flaggedItems.has(item)) continue; // fixed items are listed below
-  if (live.has(item)) { ledger.reviewed[item] = { batch: n, verdict: "ok", at: when }; added++; }
+const ledgerOnly = process.argv.includes("--ledger-only");
+let log = { skipped: "ledger-only" };
+if (!ledgerOnly) {
+  fs.writeFileSync(file, JSON.stringify({ packet: full.packet, reviewer: "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review", scope: { batch: n, questions: ids.length }, patches: rev.patches ?? [], ok: ids.length - defective.size, criteria: "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation" }, null, 1) + "\n");
+  log = JSON.parse(execFileSync("node", [path.join(here, "apply-review.mjs"), file], { encoding: "utf8" }).trim().split("\n").pop());
 }
-// patched items: mark the (possibly re-identified) items by matching the patch targets
-const before = new Set(Object.keys(full.items));
-for (const sec of pool.sections ?? [{ skill: pool.skill, items: pool.items }]) for (const it of sec.items) { const id = idOf(sec.skill, it); if (!before.has(id) && !ledger.reviewed[id] && (rev.patches ?? []).some((p) => p.op === "set")) patchedNew.push(id); }
-for (const id of patchedNew) { ledger.reviewed[id] = { batch: n, verdict: "patched", at: when }; added++; }
-for (const item of flaggedItems) if (live.has(item) && patched.has(item)) { ledger.reviewed[item] = { batch: n, verdict: "patched", at: when }; added++; }
+// ledger: exactly the items of THIS batch. ok = no flag at all; patched = flagged and fixed (new id computed from the patch); dropped / unresolved items are not recorded.
+const ledger = read(path.join(here, "ledger.json")); const when = new Date().toISOString().slice(0, 10);
+const patchOf = new Map((rev.patches ?? []).map((p) => [p.item, p]));
+const counts = { ok: 0, patched: 0, dropped: 0, unresolved: 0 };
+for (const [item, entry] of Object.entries(full.items)) {
+  const p = patchOf.get(item);
+  if (p?.op === "drop") { counts.dropped++; continue; }
+  if (p?.op === "set") { const newId = idOf(entry.skill, { ...entry.item, ...p.set }); ledger.reviewed[newId] = { batch: n, verdict: "patched", at: when }; if (newId !== item) delete ledger.reviewed[item]; counts.patched++; continue; }
+  if (flaggedItems.has(item)) { counts.unresolved++; continue; }
+  ledger.reviewed[item] = { batch: n, verdict: "ok", at: when }; counts.ok++;
+}
 fs.writeFileSync(path.join(here, "ledger.json"), JSON.stringify(ledger));
-console.log(JSON.stringify({ applied: log, ledgerAdded: added, unresolvedFlaggedItems: unresolved }));
+console.log(JSON.stringify({ applied: log, ledger: counts, unresolvedFlaggedItems: unresolved }));

@@ -1,0 +1,1127 @@
+{
+ "packet": "H04-h1-conn",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 53,
+  "questions": 98
+ },
+ "patches": [
+  {
+   "item": "de815f2c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In addition / (B) For example",
+       "(A) In addition / (B) Even so",
+       "(A) As a result / (B) Similarly",
+       "(A) Otherwise / (B) Even so"
+      ],
+      "a": 1,
+      "why": "(A)는 장점을 덧붙이는 In addition, (B)는 안전 걱정과 대비되는 사실을 말하므로 Even so가 알맞아요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "The benefits of bike lanes and how they address safety worries",
+       "Why driving is better than cycling for families in big cities",
+       "The history of bicycle design and its spread across Europe",
+       "A plan to ban cars from every city center in the country"
+      ],
+      "a": 0,
+      "why": "자전거 도로의 장점과 안전 문제 해결을 다루고 있어요."
+     },
+     {
+      "q": "According to the passage, what has helped reduce accidents?",
+      "o": [
+       "Lower prices for new bicycles",
+       "New speed limits for cyclists",
+       "Free helmets for all commuters",
+       "Lanes separated from traffic by low walls"
+      ],
+      "a": 3,
+      "why": "낮은 벽으로 차도와 분리된 도로에서 사고가 줄었다고 했어요."
+     },
+     {
+      "q": "What does \"however\" in the fourth sentence signal?",
+      "o": [
+       "An example of the benefits just mentioned",
+       "A result of the low cost of cycling",
+       "A contrast with the benefits just mentioned",
+       "The order in which events happened"
+      ],
+      "a": 2,
+      "why": "however는 앞의 장점과 대비되는 걱정(안전)을 이끌어요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "ad74e9aa",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In contrast / (B) Because of",
+       "(A) In addition / (B) Because of",
+       "(A) In addition / (B) Although",
+       "(A) For example / (B) Despite"
+      ],
+      "a": 1,
+      "why": "두 번째 이유를 덧붙이는 In addition, 원인을 나타내는 명사구 앞에는 Because of가 와요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Teenagers sleep too little for both biological and social reasons",
+       "Teenagers should go to bed much earlier than adults do",
+       "School start times have no effect on teenagers' sleep or grades",
+       "Nine hours of sleep is far too much for most teenagers"
+      ],
+      "a": 0,
+      "why": "생물학적 이유와 학교 시간표 때문에 청소년의 수면이 부족하다는 내용이에요."
+     },
+     {
+      "q": "Why do teens feel sleepy later in the evening?",
+      "o": [
+       "They drink too much caffeine in the evening",
+       "They have to study for exams every night",
+       "Their classes finish late in the afternoon",
+       "Their body clock shifts during adolescence"
+      ],
+      "a": 3,
+      "why": "사춘기에 체내 시계가 바뀌기 때문이라고 했어요."
+     },
+     {
+      "q": "In the last sentence, \"absences\" is closest in meaning to",
+      "o": [
+       "times when students receive awards",
+       "mistakes students make on tests",
+       "times when students are not at school",
+       "classes that are very short"
+      ],
+      "a": 2,
+      "why": "absences는 결석, 즉 학교에 없는 경우를 뜻해요."
+     },
+     {
+      "q": "How is the last sentence related to the sentences before it?",
+      "o": [
+       "It gives an example that disproves the problem",
+       "It describes a possible solution to the problem",
+       "It repeats the first sentence in other words",
+       "It begins an unrelated topic"
+      ],
+      "a": 1,
+      "why": "수면 부족 문제에 대한 해결 시도를 소개해요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "38bf68d0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) so",
+       "(A) Therefore / (B) so",
+       "(A) However / (B) because",
+       "(A) For example / (B) unless"
+      ],
+      "a": 0,
+      "why": "불만이 있었지만(However) 결과적으로 사용이 줄었고, 천 가방 사용의 결과로 해변이 깨끗해져 so가 알맞아요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Local shop owners want to raise the price of plastic bags again",
+       "Cloth bags cost much more than plastic bags in most stores",
+       "A town has stopped all of its beach cleaning programs this year",
+       "A small bag fee cut plastic use a lot, though some complaints remain"
+      ],
+      "a": 3,
+      "why": "작은 요금이 비닐봉지 사용을 크게 줄였지만 불만도 남았다는 내용이에요."
+     },
+     {
+      "q": "By how much did the number of bags fall in a year?",
+      "o": [
+       "By ten cents per bag",
+       "By about half",
+       "By almost 80 percent",
+       "By nearly 20 percent"
+      ],
+      "a": 2,
+      "why": "1년 안에 거의 80퍼센트 줄었다고 했어요."
+     },
+     {
+      "q": "What do small shop owners complain about?",
+      "o": [
+       "Customers refuse to buy cloth bags",
+       "Explaining the fee takes extra time",
+       "The fee reduces their sales",
+       "The beaches are too far away"
+      ],
+      "a": 1,
+      "why": "요금을 설명하느라 시간이 더 든다고 했어요."
+     },
+     {
+      "q": "What can be inferred about most shop owners?",
+      "o": [
+       "They still support the policy overall",
+       "They plan to stop charging the fee",
+       "They think customers should pay more",
+       "They did not notice any change"
+      ],
+      "a": 0,
+      "why": "Still, most agree ... 에서 대체로 정책을 지지함을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "6edcbdd4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) So that / (B) In addition",
+       "(A) Although / (B) In contrast",
+       "(A) Unless / (B) For example",
+       "(A) Although / (B) In addition"
+      ],
+      "a": 3,
+      "why": "Although는 양보(건물은 닫지만 반납함은 열림), In addition은 정보를 덧붙여요."
+     },
+     {
+      "q": "What is the main purpose of the notice?",
+      "o": [
+       "To ask members for donations to buy the new computers",
+       "To announce the opening of a new library at the community center",
+       "To inform members about the closure and available services",
+       "To invite members to join a new book club this spring"
+      ],
+      "a": 2,
+      "why": "휴관과 이용 가능한 서비스를 알리는 공지예요."
+     },
+     {
+      "q": "When will the mobile library van visit the community center?",
+      "o": [
+       "Every day of the week",
+       "On Tuesdays and Saturdays",
+       "On Mondays and Fridays",
+       "Only on Sundays"
+      ],
+      "a": 1,
+      "why": "화요일과 토요일에 방문한다고 했어요."
+     },
+     {
+      "q": "What will happen if a member returns a book on April 20?",
+      "o": [
+       "No late fee will be charged",
+       "A late fee will be charged",
+       "The book will not be accepted",
+       "The member cannot borrow books again"
+      ],
+      "a": 0,
+      "why": "반납 기한이 4월 21일까지 연장되고 연체료가 없어요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "a1ac6bf3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Finally / (B) After that",
+       "(A) First / (B) However",
+       "(A) For example / (B) Next time",
+       "(A) First / (B) After that"
+      ],
+      "a": 3,
+      "why": "처음 단계는 First, 반죽을 치댄 다음 단계는 After that이 알맞아요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A simple recipe that anyone can follow without any mistakes",
+       "Why fresh homemade bread is better than store-bought bread",
+       "A first attempt at baking bread that was hard but rewarding",
+       "How to choose the best oven for baking bread at home"
+      ],
+      "a": 2,
+      "why": "첫 빵 굽기가 어려웠지만 보람 있었다는 내용이에요."
+     },
+     {
+      "q": "Why did the loaf come out flat?",
+      "o": [
+       "Too much yeast was put in the dough",
+       "The writer opened the oven too early",
+       "The dough was left to rise for too long",
+       "The oven was not hot enough to bake it"
+      ],
+      "a": 1,
+      "why": "성급하게 오븐을 일찍 열었기 때문이에요."
+     },
+     {
+      "q": "In the passage, \"ached\" is closest in meaning to",
+      "o": [
+       "felt sore",
+       "became stronger",
+       "felt cold",
+       "moved quickly"
+      ],
+      "a": 0,
+      "why": "ached는 아프다, 쑤시다라는 뜻이에요."
+     },
+     {
+      "q": "How does the writer feel at the end?",
+      "o": [
+       "Angry about the result",
+       "Bored with baking",
+       "Ashamed in front of friends",
+       "Hopeful despite the failure"
+      ],
+      "a": 3,
+      "why": "Still, ... 와 다음 일요일에 다시 해 보겠다는 말에서 희망적임을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "1e1afd28",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) Although",
+       "(A) For instance / (B) Because",
+       "(A) For instance / (B) Although",
+       "(A) Therefore / (B) Unless"
+      ],
+      "a": 2,
+      "why": "뇌 훈련의 구체적 사례는 For instance, 오래 걸리지만 보람 있다는 양보는 Although예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Translations are usually better than reading original novels",
+       "Learning a language helps the mind and opens doors to cultures",
+       "Language learning is only useful for people who often travel abroad",
+       "Adults learn new languages much faster than young children do"
+      ],
+      "a": 1,
+      "why": "언어 학습이 두뇌와 문화 이해 모두에 도움이 된다는 내용이에요."
+     },
+     {
+      "q": "According to studies, what are bilingual people often better at?",
+      "o": [
+       "Focusing on one task despite distractions",
+       "Remembering long lists of words",
+       "Reading books very quickly",
+       "Ordering food on holiday"
+      ],
+      "a": 0,
+      "why": "방해 요소를 무시하고 한 가지에 집중하는 것이라고 했어요."
+     },
+     {
+      "q": "What would the writer most likely agree with?",
+      "o": [
+       "Learning a language is easy for adults",
+       "Only young people should study languages",
+       "Humor can be translated perfectly",
+       "Language learning is worth the long effort"
+      ],
+      "a": 3,
+      "why": "마지막 문장에서 노력할 가치가 있다고 했어요."
+     },
+     {
+      "q": "In the passage, \"lose\" is closest in meaning to",
+      "o": [
+       "forget by accident",
+       "win against",
+       "fail to keep",
+       "send away"
+      ],
+      "a": 2,
+      "why": "번역에서 유머와 리듬을 잃는다는 뜻이므로 fail to keep이에요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "ed7b4a3a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Moreover / (B) Therefore",
+       "(A) Moreover / (B) However",
+       "(A) Otherwise / (B) However",
+       "(A) In contrast / (B) For example"
+      ],
+      "a": 1,
+      "why": "(A)는 놀라운 행동을 덧붙이는 Moreover, (B)는 예전의 의문과 대비되는 현재의 생각이라 However예요."
+     },
+     {
+      "q": "What have some octopuses done at night?",
+      "o": [
+       "Escaped from sealed tanks and come back",
+       "Opened jars for other animals",
+       "Built shells around themselves",
+       "Hunted together in groups"
+      ],
+      "a": 0,
+      "why": "밤에 밀폐된 수조에서 탈출했다가 돌아왔다고 했어요."
+     },
+     {
+      "q": "Why were scientists once unsure about the octopus?",
+      "o": [
+       "It has no bones or shell to protect its soft body",
+       "It refuses to take part in most laboratory tests",
+       "It lives too deep in the sea for scientists to reach",
+       "Its short life seemed too brief for so much learning"
+      ],
+      "a": 3,
+      "why": "짧은 수명으로 많은 것을 배우는 것이 의문이었어요."
+     },
+     {
+      "q": "In the passage, \"extends\" is closest in meaning to",
+      "o": [
+       "shrinks",
+       "separates",
+       "reaches",
+       "protects"
+      ],
+      "a": 2,
+      "why": "extends into는 ~까지 뻗어 있다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "3b59d1eb",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which word best fills (A)?",
+      "o": [
+       "For example",
+       "However",
+       "Therefore",
+       "Similarly"
+      ],
+      "a": 1,
+      "why": "과거(명절에만 입음)와 현재(일상에서 입음)가 대조되므로 However예요."
+     },
+     {
+      "q": "Which expression best fills (B)?",
+      "o": [
+       "For example",
+       "In contrast",
+       "Otherwise",
+       "Nevertheless"
+      ],
+      "a": 0,
+      "why": "관광객이 한복을 빌려 입는 것은 유행의 구체적인 예이므로 For example이에요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Tourists should not be allowed to wear the hanbok",
+       "Traditional clothes are no longer made in Korea",
+       "Designers prefer heavy fabrics for the hanbok",
+       "The hanbok is changing and becoming part of daily life"
+      ],
+      "a": 3,
+      "why": "한복이 현대화되어 일상에 들어오고 있다는 내용이에요."
+     },
+     {
+      "q": "What do critics worry about?",
+      "o": [
+       "The hanbok has become too expensive for young people",
+       "Tourists rent too few hanbok from the palace shops",
+       "Modern changes may make the clothes less traditional",
+       "Young people dislike the lighter modern fabrics"
+      ],
+      "a": 2,
+      "why": "변화가 전통성을 떨어뜨린다고 비판한다고 했어요."
+     },
+     {
+      "q": "How do supporters answer the critics?",
+      "o": [
+       "Old palaces should close to visitors",
+       "A tradition survives only if it is still used",
+       "Only holidays can keep a tradition alive",
+       "Fabrics should never be changed"
+      ],
+      "a": 1,
+      "why": "전통은 사람들이 계속 사용해야 살아남는다고 답해요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "634d08b0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) On the one hand / (B) On the other hand",
+       "(A) On the other hand / (B) On the one hand",
+       "(A) For example / (B) Therefore",
+       "(A) In addition / (B) In contrast"
+      ],
+      "a": 0,
+      "why": "두 입장을 비교할 때는 On the one hand ... On the other hand 순서로 써요."
+     },
+     {
+      "q": "Which word best fills (C)?",
+      "o": [
+       "For example",
+       "Otherwise",
+       "Likewise",
+       "Therefore"
+      ],
+      "a": 3,
+      "why": "양쪽 모두 일리가 있다는 데서 절충안이 나오므로 결과를 나타내는 Therefore예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A ban on all smartphones in every school in the world",
+       "How teachers can record their lessons on their own phones",
+       "Both sides of the phone debate and a compromise",
+       "Why notifications are useful for learning in class"
+      ],
+      "a": 2,
+      "why": "찬반 양측 주장과 절충안을 소개하는 글이에요."
+     },
+     {
+      "q": "According to opponents, what can one notification do?",
+      "o": [
+       "Help students look up words they do not know",
+       "Pull a student's attention away for several minutes",
+       "Remind teachers when it is time to start the lesson",
+       "Tell students when the class is going to end"
+      ],
+      "a": 1,
+      "why": "알림 하나가 몇 분 동안 집중을 흐트러뜨린다고 했어요."
+     },
+     {
+      "q": "What does the writer think of the two sides?",
+      "o": [
+       "Each side has some good points",
+       "Supporters are completely right",
+       "Opponents are completely right",
+       "Neither side cares about learning"
+      ],
+      "a": 0,
+      "why": "Neither side is entirely wrong 에서 양쪽 모두 일리가 있다고 봐요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "b4012a4a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which word best fills (A)?",
+      "o": [
+       "because",
+       "so",
+       "unless",
+       "while"
+      ],
+      "a": 3,
+      "why": "일부는 꿀을 모으고 다른 일부는 안에 머무는 대조이므로 while이에요."
+     },
+     {
+      "q": "Which expression best fills (B)?",
+      "o": [
+       "In contrast",
+       "For example",
+       "As a result",
+       "Otherwise"
+      ],
+      "a": 2,
+      "why": "춤이 방향과 거리를 알려 주므로 결과적으로 곧장 날아갈 수 있어요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why honeybees build their hives high up in trees",
+       "How honeybees work together to find and collect food",
+       "How a hive can be protected from heavy storms",
+       "Which flowers make the sweetest nectar for honey"
+      ],
+      "a": 1,
+      "why": "꿀벌이 협력하여 먹이를 찾고 모으는 방법을 설명해요."
+     },
+     {
+      "q": "What does the waggle dance show?",
+      "o": [
+       "The direction and distance of the flowers",
+       "The number of bees in the hive",
+       "The best time to leave the hive",
+       "The danger of nearby animals"
+      ],
+      "a": 0,
+      "why": "춤은 꽃밭의 방향과 거리를 알려 줘요."
+     },
+     {
+      "q": "In the passage, \"efficient\" is closest in meaning to",
+      "o": [
+       "very noisy when it is busy",
+       "hard to see from far away",
+       "dangerous for the young bees",
+       "working well without wasting time"
+      ],
+      "a": 3,
+      "why": "efficient는 효율적인, 낭비 없이 잘 작동하는이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "62a5c130",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) However / (B) so",
+       "(A) As a result / (B) because",
+       "(A) As a result / (B) so",
+       "(A) For example / (B) unless"
+      ],
+      "a": 2,
+      "why": "분리배출의 결과로 일반 쓰레기가 줄었고(As a result), 일부가 지키지 않아서 포스터를 붙이려는 것이니 so예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to open a pizza restaurant at school",
+       "A school recycling program and its results so far",
+       "Why students dislike colored bins",
+       "A plan to close the student council"
+      ],
+      "a": 1,
+      "why": "학교 재활용 프로그램과 지금까지의 성과를 다뤄요."
+     },
+     {
+      "q": "How are the bins organized?",
+      "o": [
+       "Waste is sorted into three colored bins",
+       "Each student has one personal bin",
+       "Only plastic bottles are collected",
+       "There is one bin for the whole school"
+      ],
+      "a": 0,
+      "why": "종이, 캔, 플라스틱을 세 가지 색 통에 분리한다고 했어요."
+     },
+     {
+      "q": "Why did the student council start the competition?",
+      "o": [
+       "To lower the price of pizza",
+       "To replace the colored bins",
+       "To punish classes that recycle less",
+       "To encourage classes to recycle more"
+      ],
+      "a": 3,
+      "why": "경쟁으로 더 많이 재활용하게 하려는 의도예요."
+     },
+     {
+      "q": "What does the council plan to do about students who do not recycle?",
+      "o": [
+       "Remove the pizza party",
+       "Close the classroom bins",
+       "Put up reminder posters",
+       "Ask teachers to sort the waste"
+      ],
+      "a": 2,
+      "why": "일부 학생들을 위해 안내 포스터를 붙일 계획이에요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "dc573985",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Despite / (B) Even so",
+       "(A) Because of / (B) Even so",
+       "(A) Despite / (B) Therefore",
+       "(A) Although / (B) For example"
+      ],
+      "a": 0,
+      "why": "날씨에도 불구하고(Despite), 힘든 길에도 불구하고(Even so) 숲이 아름다웠다는 흐름이에요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "The best time of year to visit Jeju",
+       "How to prepare for a long mountain climb",
+       "A disagreement between two hikers",
+       "Bad weather did not spoil the writers' hike"
+      ],
+      "a": 3,
+      "why": "비가 와도 즐거웠던 하이킹 경험을 이야기해요."
+     },
+     {
+      "q": "Where did the writers spend the second day?",
+      "o": [
+       "At the top of Hallasan",
+       "In a hotel room",
+       "On the beach",
+       "In a muddy forest"
+      ],
+      "a": 2,
+      "why": "다음 날에는 해변에서 시간을 보냈다고 했어요."
+     },
+     {
+      "q": "Why were the writers laughing in the afternoon?",
+      "o": [
+       "They had reached the top and seen a clear view",
+       "They were having fun even though they were wet",
+       "They had met many other hikers on the trail",
+       "They had found a dry cave where they could rest"
+      ],
+      "a": 1,
+      "why": "신발이 젖었지만 웃고 있었다는 것은 여행을 즐기고 있었다는 뜻이에요."
+     },
+     {
+      "q": "In the passage, \"hidden\" is closest in meaning to",
+      "o": [
+       "not able to be seen",
+       "very high",
+       "covered with mud",
+       "easy to find"
+      ],
+      "a": 0,
+      "why": "hidden은 보이지 않는, 가려진이라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "fcdf3e79",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In contrast / (B) In addition",
+       "(A) For example / (B) However",
+       "(A) For example / (B) In addition",
+       "(A) Therefore / (B) Otherwise"
+      ],
+      "a": 2,
+      "why": "구체적인 예(For example)와 또 다른 이점의 추가(In addition)로 이어져요."
+     },
+     {
+      "q": "What does \"In fact\" in the second sentence do?",
+      "o": [
+       "It gives a specific example of the common belief",
+       "It points out a fact against the common belief",
+       "It shows the time order of two different events",
+       "It adds one more reason to support the common belief"
+      ],
+      "a": 1,
+      "why": "In fact는 앞의 통념과 반대되는 사실을 강조해 소개해요."
+     },
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Volunteering helps the helper as well as others",
+       "Students should quit their studies in order to volunteer",
+       "Animal shelters need more money than school teams do",
+       "Teamwork is difficult for most teenagers today"
+      ],
+      "a": 0,
+      "why": "봉사가 도움을 받는 사람뿐 아니라 하는 사람에게도 이롭다는 내용이에요."
+     },
+     {
+      "q": "What do students who help at animal shelters often say?",
+      "o": [
+       "They no longer need any free time",
+       "They prefer animals to people",
+       "They finish schoolwork faster",
+       "They become more patient and confident"
+      ],
+      "a": 3,
+      "why": "더 인내심 있고 자신감 있게 된다고 말해요."
+     },
+     {
+      "q": "What does the writer suggest in the last two sentences?",
+      "o": [
+       "Volunteering is only for people with free time",
+       "Two hours is too short to be useful",
+       "A small amount of time can still make a difference",
+       "Schoolwork matters less than volunteering"
+      ],
+      "a": 2,
+      "why": "한 달에 두 시간이라도 의미가 있다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "02d51a15",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In addition / (B) Like",
+       "(A) In addition / (B) Unlike",
+       "(A) However / (B) Unlike",
+       "(A) Therefore / (B) Like"
+      ],
+      "a": 1,
+      "why": "추가되는 장점은 In addition, 옥상 정원과 달리 공동체를 모으는 것은 Unlike예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Kinds of city gardens and what they offer",
+       "How to grow tomatoes in a rooftop garden",
+       "Why gardens are banned in crowded cities",
+       "The history of tools used in community gardens"
+      ],
+      "a": 0,
+      "why": "도시 정원의 종류와 장점을 소개하는 글이에요."
+     },
+     {
+      "q": "Why does a rooftop garden keep a building cooler?",
+      "o": [
+       "The soil is always wet",
+       "The garden blocks the wind",
+       "The food is kept in the shade",
+       "The plants absorb heat"
+      ],
+      "a": 3,
+      "why": "식물이 열을 흡수하기 때문이에요."
+     },
+     {
+      "q": "What makes community gardens different?",
+      "o": [
+       "They are managed by only a few residents",
+       "They are built on the top of buildings",
+       "They bring neighbors of all ages together",
+       "They sell vegetables at high prices"
+      ],
+      "a": 2,
+      "why": "공동체 정원은 모든 연령의 이웃을 모아 준다는 점이 달라요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "d2a673e0",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Because / (B) As a result",
+       "(A) Although / (B) As a result",
+       "(A) Although / (B) In contrast",
+       "(A) Unless / (B) For example"
+      ],
+      "a": 1,
+      "why": "소비자는 좋아하지만(Although) 비용이 크고, 옷을 쉽게 버린 결과(As a result) 쓰레기가 쌓여요."
+     },
+     {
+      "q": "What is the writer's attitude toward fast fashion?",
+      "o": [
+       "Critical of its environmental costs",
+       "Fully supportive of its low prices",
+       "Uninterested and neutral",
+       "Worried only about the quality of clothes"
+      ],
+      "a": 0,
+      "why": "환경 비용을 문제 삼는 비판적인 태도예요."
+     },
+     {
+      "q": "In the passage, \"landfills\" are",
+      "o": [
+       "factories that make textiles",
+       "shops that sell second-hand clothes",
+       "rivers polluted by dye",
+       "places where garbage is buried"
+      ],
+      "a": 3,
+      "why": "landfill은 쓰레기 매립지예요."
+     },
+     {
+      "q": "What are some young people doing in response?",
+      "o": [
+       "Making new clothes for their friends every week",
+       "Throwing away clothes after a few days of use",
+       "Buying second-hand clothes or repairing their own",
+       "Working in textile factories to earn money"
+      ],
+      "a": 2,
+      "why": "중고 옷을 사거나 가진 옷을 수선하고 있어요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "32800a3b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In fact / (B) Therefore",
+       "(A) In fact / (B) Even then",
+       "(A) Otherwise / (B) Even then",
+       "(A) Therefore / (B) As a result"
+      ],
+      "a": 1,
+      "why": "가치가 높았다는 사실을 강조하는 In fact, 달게 만든 뒤에도 여전히 비쌌다는 Even then이에요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How chocolate went from a bitter drink to a sweet treat",
+       "Why cacao beans were once used as money in Central America",
+       "How to make a chocolate bar at home with simple tools",
+       "Why Europeans did not like adding sugar to cacao"
+      ],
+      "a": 0,
+      "why": "초콜릿이 쓴 음료에서 흔한 간식으로 바뀐 과정을 다뤄요."
+     },
+     {
+      "q": "What did Europeans do to cacao in the 1500s?",
+      "o": [
+       "They used it as money",
+       "They sold it as a medicine",
+       "They mixed it with spices only",
+       "They added sugar to it"
+      ],
+      "a": 3,
+      "why": "유럽인들은 설탕을 넣어 더 달게 만들었어요."
+     },
+     {
+      "q": "Which happened last?",
+      "o": [
+       "Cacao beans were sometimes used as money",
+       "Europeans added sugar to make cacao sweeter",
+       "Machines made chocolate cheap enough for a bar",
+       "People ground cacao beans with water and spices"
+      ],
+      "a": 2,
+      "why": "시간 순서상 1800년대 기계 생산이 가장 나중이에요."
+     },
+     {
+      "q": "In the passage, \"luxury\" is closest in meaning to",
+      "o": [
+       "a kind of drink that is very sweet",
+       "something expensive that is not necessary",
+       "a cheap item that people use every day",
+       "a tool that is used for grinding beans"
+      ],
+      "a": 1,
+      "why": "luxury는 사치품을 뜻해요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "c7ba6807",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) In contrast / (B) Therefore",
+       "(A) Similarly / (B) Therefore",
+       "(A) In contrast / (B) Otherwise",
+       "(A) For example / (B) However"
+      ],
+      "a": 0,
+      "why": "가사 있는 음악과 대비되는 연주곡은 In contrast, 연구 결과에 따른 조언은 Therefore예요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Silence is always the best way to relax",
+       "Instrumental music is more expensive than songs",
+       "Students should never listen to music",
+       "Songs with lyrics can make studying less effective"
+      ],
+      "a": 3,
+      "why": "가사가 있는 음악이 공부를 방해할 수 있다는 내용이에요."
+     },
+     {
+      "q": "How much more did students in silence remember?",
+      "o": [
+       "About 50 percent",
+       "About 5 percent",
+       "About 15 percent",
+       "Almost all of the text"
+      ],
+      "a": 2,
+      "why": "침묵 속에서 읽은 학생들이 약 15퍼센트 더 기억했어요."
+     },
+     {
+      "q": "Why do lyrics harm reading, according to the researchers?",
+      "o": [
+       "They make the music so loud that it is hard to read",
+       "They compete with reading for the same brain area",
+       "They are usually sung in a foreign language",
+       "They are hard to hear while a person is reading"
+      ],
+      "a": 1,
+      "why": "가사와 읽기가 뇌의 같은 부분을 두고 경쟁하기 때문이에요."
+     },
+     {
+      "q": "What can be inferred about students' beliefs?",
+      "o": [
+       "Their belief may not match the research results",
+       "Their belief is proved completely right",
+       "They never study in silence",
+       "They dislike instrumental music"
+      ],
+      "a": 0,
+      "why": "많은 학생이 음악이 도움이 된다고 믿지만 연구는 다른 모습을 보여 줘요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  },
+  {
+   "item": "e6d5798f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which pair best fills (A) and (B)?",
+      "o": [
+       "(A) Therefore / (B) In addition",
+       "(A) However / (B) In addition",
+       "(A) However / (B) Instead",
+       "(A) For example / (B) Otherwise"
+      ],
+      "a": 1,
+      "why": "약속과 달리 늦은 상황은 However, 이미 한 노력을 덧붙이는 것은 In addition이에요."
+     },
+     {
+      "q": "Why did Daniel write this email?",
+      "o": [
+       "To complain about a late order and ask for action",
+       "To cancel a refund that he has already received",
+       "To ask the company for a different kind of lamp",
+       "To thank the company for its very fast delivery"
+      ],
+      "a": 0,
+      "why": "늦은 주문에 대해 항의하고 조치를 요구하는 글이에요."
+     },
+     {
+      "q": "What does the tracking page say?",
+      "o": [
+       "\"Delivered\"",
+       "\"Out for delivery\"",
+       "\"Order cancelled\"",
+       "\"Preparing for shipment\""
+      ],
+      "a": 3,
+      "why": "추적 페이지에 아직 'preparing for shipment'라고 나와 있어요."
+     },
+     {
+      "q": "What will Daniel want if the lamp cannot arrive by Friday?",
+      "o": [
+       "A discount on his next order",
+       "A different delivery address",
+       "A full refund",
+       "A replacement lamp"
+      ],
+      "a": 2,
+      "why": "금요일까지 배송이 안 되면 전액 환불을 원한다고 했어요."
+     },
+     {
+      "q": "How would you describe Daniel's attitude?",
+      "o": [
+       "Delighted and relaxed",
+       "Frustrated but polite",
+       "Angry and rude",
+       "Confused and uninterested"
+      ],
+      "a": 1,
+      "why": "불만이 있지만 정중한 어조예요."
+     }
+    ]
+   },
+   "why": "Equalise option lengths so the key is not uniquely longest; content/answers otherwise unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 73,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

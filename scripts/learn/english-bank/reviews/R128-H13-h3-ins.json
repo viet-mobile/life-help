@@ -1,0 +1,930 @@
+{
+ "packet": "H13-h3-ins",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 128,
+  "questions": 100
+ },
+ "patches": [
+  {
+   "item": "d3d67d9e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why have bee populations dropped, according to the passage?",
+      "o": [
+       "Disease, lost habitats and farm chemicals.",
+       "Flowers have stopped producing nectar in many regions.",
+       "Farmers have planted too many wildflowers near their fields.",
+       "Apple and almond trees have become too common in cities."
+      ],
+      "a": 0,
+      "why": "네 번째 문장이 질병, 서식지 손실, 농약을 원인으로 들어요."
+     },
+     {
+      "q": "What is the purpose of the last two sentences?",
+      "o": [
+       "To warn that balconies are dangerous for bees",
+       "To explain why apartments have fewer flowers",
+       "To show that ordinary people can also help bees",
+       "To ask farmers to stop growing their crops"
+      ],
+      "a": 2,
+      "why": "마지막 두 문장은 아파트에 사는 보통 사람도 벌을 도울 수 있고, 작은 노력이 모이면 벌의 수가 회복될 수 있다는 점을 보여 줘요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"This movement of pollen is what allows plants to produce seeds and fruit.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘This movement of pollen’은 바로 앞 문장(꽃가루를 옮김)을 받고, 다음 문장의 ‘Without it’이 이 과정을 가리켜요."
+     },
+     {
+      "q": "Which of the following can be inferred from the passage?",
+      "o": [
+       "Bees are the only animals that carry pollen anywhere.",
+       "Wildflowers grow best at the edges of apartment buildings.",
+       "Farmers no longer need to use any chemicals at all.",
+       "Fewer bees could lead to smaller harvests of some crops."
+      ],
+      "a": 3,
+      "why": "벌이 없으면 수확량이 줄어든다는 내용에서 추론할 수 있어요. 나머지는 글에 근거가 없어요."
+     }
+    ]
+   },
+   "why": "q2 asks about \"last sentence\" but key/explanation come from the last two sentences; q1 key was the longest",
+   "severity": "major"
+  },
+  {
+   "item": "b19489d2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why is cleaning the open ocean so difficult?",
+      "o": [
+       "Fish and seabirds refuse to leave the polluted water.",
+       "Engineers cannot build barriers that float on the sea.",
+       "The waste is made of small pieces spread over wide areas.",
+       "Rivers carry more waste than the ocean can hold."
+      ],
+      "a": 2,
+      "why": "세 번째 문장이 조각이 작고 넓게 퍼져 있어서 어렵다고 설명해요."
+     },
+     {
+      "q": "What does \"it\" in the fifth sentence refer to?",
+      "o": [
+       "the floating barrier itself",
+       "the trash gathered at the collection point",
+       "the water in the river",
+       "the coast near the river"
+      ],
+      "a": 1,
+      "why": "모인 쓰레기를 작업자들이 분류한다는 뜻이에요."
+     },
+     {
+      "q": "What does the writer suggest in the last two sentences?",
+      "o": [
+       "Using less plastic is needed along with cleanup.",
+       "Cleanup projects should be stopped completely.",
+       "Recycling workers should sort waste out at sea.",
+       "Rivers should be closed to boats and fishers."
+      ],
+      "a": 0,
+      "why": "마지막 두 문장은 청소만으로는 부족하고, 플라스틱 사용 자체를 줄이는 일(일회용 봉지·빨대 금지)이 함께 필요하다고 말해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"In other words, catching trash in a river is much cheaper than chasing it across the sea.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 3,
+      "why": "‘In other words’는 바로 앞의 ‘강에서는 쓰레기를 모으기 더 쉽다’를 바꿔 말하고, 다음 문장의 ‘To do this’가 강에서 쓰레기를 모으는 방법을 설명해요."
+     }
+    ]
+   },
+   "why": "q3 \"last sentence\" mismatch; q4 inserted sentence also fits [3]",
+   "severity": "major"
+  },
+  {
+   "item": "67480c78",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"These small gestures\" refer to?",
+      "o": [
+       "Talking loudly with friends during the gathering",
+       "Checking phones between cups of tea",
+       "Accepting the cup with both hands and thanking the host",
+       "Pouring tea quickly for all of the guests"
+      ],
+      "a": 2,
+      "why": "바로 앞 문장의 손님들의 예의 바른 행동을 가리켜요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"Every step is done slowly, so even a simple cup of tea can take half an hour to prepare and enjoy.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 2,
+      "why": "‘Every step’은 주인이 하는 여러 단계를 가리키고, 다음 문장의 ‘meanwhile’은 그 동안 손님이 하는 일을 설명해요. [4]에 넣으면 ‘These small gestures’의 지시 관계가 끊겨요."
+     },
+     {
+      "q": "Why does the writer mention young people who spend most of the day on their phones?",
+      "o": [
+       "To argue that phones should be banned at tea gatherings",
+       "To explain why tea sales have fallen in recent years",
+       "To show that the tradition still appeals to them",
+       "To complain that they do not have good manners"
+      ],
+      "a": 2,
+      "why": "젊은 사람들도 이 평화로운 휴식을 즐긴다는 점을 보여 줘요."
+     },
+     {
+      "q": "In the second sentence, \"ritual\" is closest in meaning to",
+      "o": [
+       "a fixed set of customs",
+       "a sudden change of plans",
+       "a kind of cheap drink",
+       "a private argument"
+      ],
+      "a": 0,
+      "why": "ritual은 정해진 관습이나 의식을 뜻해요."
+     }
+    ]
+   },
+   "why": "q3 says last sentence but young people are in the sixth sentence",
+   "severity": "major"
+  },
+  {
+   "item": "ba93b2b2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"they\" in the fourth sentence refer to?",
+      "o": [
+       "the librarians who run the workshops",
+       "the older adults who take computer classes",
+       "the machines that are used in the workshops",
+       "the teenagers who attend the workshops"
+      ],
+      "a": 3,
+      "why": "‘machines they could not afford’에서 they는 십 대를 가리켜요."
+     },
+     {
+      "q": "In the second sentence, \"check out\" is closest in meaning to",
+      "o": [
+       "return",
+       "borrow",
+       "donate",
+       "repair"
+      ],
+      "a": 1,
+      "why": "책을 check out한다는 것은 빌린다는 뜻이에요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"In this way, libraries now serve everyone from toddlers to older adults.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 3,
+      "why": "‘toddlers’와 ‘older adults’가 모두 앞에 나온 뒤인 [4]에 와야 ‘everyone from ... to ...’가 성립하고, 다음 문장 ‘these services’가 이를 받아요."
+     },
+     {
+      "q": "How do city officials now describe libraries?",
+      "o": [
+       "As places that are too costly to keep open",
+       "As centers for community life",
+       "As rooms used only for printed books",
+       "As storage spaces that should be closed"
+      ],
+      "a": 1,
+      "why": "여섯 번째 문장에서 도서관을 지역 사회의 중심(community centers)으로 묘사한다고 해요."
+     }
+    ]
+   },
+   "why": "explanation says last sentence; it is the sixth",
+   "severity": "minor"
+  },
+  {
+   "item": "97a0800b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "According to the passage, what is an advantage of adult learners?",
+      "o": [
+       "They pronounce new words better than children.",
+       "They have more free time for long lessons.",
+       "They never forget the phrases they learn.",
+       "They can set clear goals for their study."
+      ],
+      "a": 3,
+      "why": "네 번째 문장이 구체적인 목표를 세울 수 있다는 장점을 말해요."
+     },
+     {
+      "q": "Which study plan does the writer prefer?",
+      "o": [
+       "A short lesson every day",
+       "One long lesson each week",
+       "A big review before exams",
+       "Learning fifty phrases in an hour"
+      ],
+      "a": 0,
+      "why": "여섯 번째 문장이 매일 10분이 일주일에 한 번 하는 긴 수업보다 낫다고 해요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Children should start language lessons earlier.",
+       "Grammar is the hardest part of a new language.",
+       "Age is not the key factor in learning a language.",
+       "Travelers need to learn many new phrases."
+      ],
+      "a": 2,
+      "why": "글 전체가 나이보다 꾸준한 연습이 중요하다는 내용이에요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"That is why a sixty-year-old who practices daily may speak more fluently than a teenager who studies only before exams.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 3,
+      "why": "‘That is why’는 바로 앞 문장의 ‘나이가 아니라 꾸준한 연습이 중요하다’는 이유를 결과로 이어 줘요."
+     }
+    ]
+   },
+   "why": "explanation says last sentence; it is the sixth",
+   "severity": "minor"
+  },
+  {
+   "item": "4542088d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"Some of this waste contains valuable metals such as copper and gold, but also harmful substances such as lead.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘Both facts’는 귀중한 금속과 해로운 물질이라는 두 가지 사실을 가리키므로, 그 두 사실이 나오는 문장이 [2]에 와야 해요."
+     },
+     {
+      "q": "What happens at the collection points?",
+      "o": [
+       "Residents repair their broken phones for free.",
+       "Machines throw away plastic, glass and metal.",
+       "Visitors buy cheaper electronics from the workers.",
+       "Workers separate materials so they can be used again."
+      ],
+      "a": 3,
+      "why": "다섯 번째 문장에서 작업자들이 재료를 분리해 재사용한다고 해요."
+     },
+     {
+      "q": "What is the purpose of the last two sentences?",
+      "o": [
+       "To praise cities for their collection points",
+       "To warn that repairable phones are rare",
+       "To suggest a way for individuals to help",
+       "To explain how to separate glass and metal"
+      ],
+      "a": 2,
+      "why": "마지막 두 문장은 수리 가능한 휴대폰을 오래 쓰는 것처럼 개인이 할 수 있는 방법을 제안해요."
+     },
+     {
+      "q": "What is the writer's main point?",
+      "o": [
+       "Metals such as gold are easy to find.",
+       "Old electronics should be handled responsibly.",
+       "New devices are better than old ones.",
+       "Televisions break more often than phones."
+      ],
+      "a": 1,
+      "why": "글은 오래된 기기를 책임감 있게 처리해야 한다고 말해요."
+     }
+    ]
+   },
+   "why": "q3: key/explanation describe sixth sentence, not the last",
+   "severity": "major"
+  },
+  {
+   "item": "a2201299",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why do some visitors prefer printed leaflets?",
+      "o": [
+       "They find the audio talks too short.",
+       "They cannot read the codes beside objects.",
+       "They think children's guides are too simple.",
+       "They do not enjoy wearing headphones."
+      ],
+      "a": 3,
+      "why": "다섯 번째 문장에서 헤드폰을 쓰기 싫어하는 사람들이 있다고 해요."
+     },
+     {
+      "q": "What is an advantage of the audio guide?",
+      "o": [
+       "Visitors can touch the paintings freely.",
+       "Visitors can borrow guides for a week.",
+       "Visitors can skip objects they do not like.",
+       "Visitors can speak to the painters directly."
+      ],
+      "a": 2,
+      "why": "세 번째 문장에서 원하는 작품만 골라 들을 수 있다고 해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"The small device plays a short talk whenever the visitor enters a number code beside an object.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘these codes’는 number code를 가리키므로 코드가 소개된 문장이 audio guide 소개 문장 바로 뒤인 [2]에 와야 해요."
+     },
+     {
+      "q": "What is the overall tone of the passage?",
+      "o": [
+       "Sad and hopeless",
+       "Informative and balanced",
+       "Angry and critical",
+       "Playful and silly"
+      ],
+      "a": 1,
+      "why": "오디오 가이드의 장점과 헤드폰을 싫어하는 사람들 같은 단점을 함께 차분하게 설명하는 글이에요."
+     }
+    ]
+   },
+   "why": "q4: last sentence is about downloading talks; key/explanation refer to sixth sentence",
+   "severity": "major"
+  },
+  {
+   "item": "f480435f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most common mistake mentioned in the passage?",
+      "o": [
+       "Wearing shoes made for city streets",
+       "Carrying too much water on the trail",
+       "Starting the walk after dark",
+       "Leaving the route before the rain ends"
+      ],
+      "a": 0,
+      "why": "두 번째 문장이 도시용 신발을 신는 것을 가장 흔한 실수로 들어요."
+     },
+     {
+      "q": "Why does the writer say mountain weather needs attention?",
+      "o": [
+       "It is always colder than in cities.",
+       "It stays the same all day long.",
+       "It only matters in the winter months.",
+       "It can change very quickly."
+      ],
+      "a": 3,
+      "why": "한 시간 안에도 날씨가 바뀔 수 있다고 해요."
+     },
+     {
+      "q": "What is the purpose of the last sentence of the passage?",
+      "o": [
+       "To explain how to choose a good rain jacket",
+       "To argue that dangerous mountains should be closed",
+       "To show that safety rules do not spoil the fun",
+       "To warn readers that most hikers never return home"
+      ],
+      "a": 2,
+      "why": "마지막 문장은 안전 수칙이 여행의 즐거움을 해치지 않는다고 안심시켜요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"Such shoes slip easily on wet rocks, and they offer little protection for the ankles.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘Such shoes’는 도시용 신발을 가리키고, 다음 문장의 ‘That is why’가 그 문제점의 결과를 말해요."
+     }
+    ]
+   },
+   "why": "q3 key far longer than distractors",
+   "severity": "minor"
+  },
+  {
+   "item": "8f4c50c6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why can paper not be recycled forever?",
+      "o": [
+       "Ink cannot be removed from the pulp.",
+       "Recyclers run out of clean water.",
+       "Its fibers become shorter each time.",
+       "Staples stay inside the new sheets."
+      ],
+      "a": 2,
+      "why": "네 번째 문장에서 순환할 때마다 섬유가 짧아진다고 해요."
+     },
+     {
+      "q": "What does \"both\" in the second sentence refer to?",
+      "o": [
+       "trees and landfills",
+       "pulp and ink",
+       "paper and staples",
+       "water and energy"
+      ],
+      "a": 3,
+      "why": "앞 문장에서 물과 에너지를 많이 쓴다고 했어요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"Ink and staples are then removed, and the clean pulp is pressed into thin new sheets.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘pulp’가 처음 나온 문장 바로 뒤에 와야 하고, 다음 문장의 ‘Each cycle’이 이 재활용 과정을 가리켜요."
+     },
+     {
+      "q": "What does the writer recommend to households?",
+      "o": [
+       "Remove the ink from paper before disposal.",
+       "Buy only paper made from fresh trees.",
+       "Keep paper separate from food waste.",
+       "Mix all kinds of waste together in one bin."
+      ],
+      "a": 2,
+      "why": "여섯 번째 문장이 종이를 음식물 쓰레기와 떨어뜨려 분리하라고 해요."
+     }
+    ]
+   },
+   "why": "explanation says last body sentence; it is the sixth",
+   "severity": "minor"
+  },
+  {
+   "item": "e8452bae",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"For example, loud, continuous noise can raise a person's heart rate and make it harder to fall asleep.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘evidence’의 구체적 예시가 필요하고, 다음 문장의 ‘These effects’가 심박수 증가와 수면 문제를 가리켜요."
+     },
+     {
+      "q": "What can be inferred about people who say they no longer notice the noise?",
+      "o": [
+       "They have moved to a quiet area.",
+       "They enjoy the sound of traffic.",
+       "They sleep better than children do.",
+       "The noise may still affect them."
+      ],
+      "a": 3,
+      "why": "두 번째 문장에서 소리를 못 느낀다고 해도 여전히 영향을 받는다는 증거가 있다고 해요."
+     },
+     {
+      "q": "What can individuals do, according to the passage?",
+      "o": [
+       "Choose quiet appliances or plant trees near windows",
+       "Build walls beside the busiest roads",
+       "Limit the hours of night construction",
+       "Move away from the city center"
+      ],
+      "a": 0,
+      "why": "다섯 번째 문장이 개인이 할 수 있는 방법을 말해요."
+     },
+     {
+      "q": "In the sixth sentence, \"absorb\" is closest in meaning to",
+      "o": [
+       "take in",
+       "send back",
+       "block completely",
+       "make louder"
+      ],
+      "a": 0,
+      "why": "잎이 소리를 일부 흡수한다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "q2 not answerable from passage (needs inserted sentence from q1, leaks it); q4 wrong sentence number",
+   "severity": "major"
+  },
+  {
+   "item": "49bdc5b4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which disadvantage of trains does the writer mention?",
+      "o": [
+       "They are slower than ships.",
+       "They cannot travel across oceans.",
+       "They produce more carbon dioxide than planes.",
+       "Their seats are narrower than plane seats."
+      ],
+      "a": 1,
+      "why": "다섯 번째 문장이 바다를 건널 수 없다고 해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"This means passengers can often step off the train and be at their destination within minutes.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘This’는 역이 도시 중심에 있다는 편리함을 가리키고, 다음 문장의 ‘Another advantage’가 편리함 다음의 장점을 이어요."
+     },
+     {
+      "q": "What does the best choice depend on, according to the passage?",
+      "o": [
+       "the weather and the season",
+       "the size and weight of the luggage",
+       "the number of people traveling",
+       "the distance and the money available"
+      ],
+      "a": 3,
+      "why": "여섯 번째 문장이 거리와 예산에 달려 있다고 해요."
+     },
+     {
+      "q": "In the sixth sentence, \"budget\" is closest in meaning to",
+      "o": [
+       "the time a person has to wait",
+       "the bags a person can carry",
+       "the money a person plans to spend",
+       "the places a person wants to see"
+      ],
+      "a": 2,
+      "why": "budget은 쓸 수 있는 돈의 계획을 뜻해요."
+     }
+    ]
+   },
+   "why": "q4 wrong sentence number; q3 explanation",
+   "severity": "major"
+  },
+  {
+   "item": "fd3b7f73",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why can cold muscles be a problem?",
+      "o": [
+       "They send too much blood to the heart.",
+       "They are stiff and may tear more easily.",
+       "They make a player run faster than usual.",
+       "They cause the joints to grow weaker."
+      ],
+      "a": 1,
+      "why": "두 번째 문장이 근육이 뻣뻣해 찢어지기 쉽다고 해요."
+     },
+     {
+      "q": "What is the purpose of a cool-down?",
+      "o": [
+       "To make the muscles colder before play",
+       "To help the heart slow down gradually",
+       "To prepare the legs for a faster start",
+       "To reduce the time spent on stretching"
+      ],
+      "a": 1,
+      "why": "다섯 번째 문장이 심장이 서서히 정상으로 돌아오도록 돕는다고 해요."
+     },
+     {
+      "q": "What does \"these habits\" in the sixth sentence refer to?",
+      "o": [
+       "the hurry to begin playing",
+       "the stiffness of cold muscles",
+       "the length of the whole season",
+       "the warm-up and the cool-down"
+      ],
+      "a": 3,
+      "why": "앞에서 설명한 준비 운동과 정리 운동을 가리켜요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"A good warm-up gently raises body temperature and sends more blood to the muscles that will be used.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "차가운 근육의 문제 다음에 그 해결책이 오고, 다음 문장의 ‘these changes’가 체온과 혈류의 변화를 가리켜요."
+     }
+    ]
+   },
+   "why": "q3 says last sentence; phrase is in sixth",
+   "severity": "major"
+  },
+  {
+   "item": "3f0aa334",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"To avoid this, a growing number of families write a short shopping list after checking what they already have.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘this’는 음식이 상하는 문제를 가리키고, 다음 문장의 ‘Such lists’가 쇼핑 목록을 받아요."
+     },
+     {
+      "q": "What is one cause of food waste mentioned in the passage?",
+      "o": [
+       "Buying more food than can be eaten",
+       "Cooking meals that are too spicy",
+       "Storing bread outside the refrigerator",
+       "Eating at restaurants too often"
+      ],
+      "a": 0,
+      "why": "두 번째 문장이 한꺼번에 너무 많이 사는 것을 원인으로 들어요."
+     },
+     {
+      "q": "What does \"Some\" in the fifth sentence refer to?",
+      "o": [
+       "families with shopping lists",
+       "hungry people in the city",
+       "restaurants and supermarkets",
+       "workers at the food banks"
+      ],
+      "a": 2,
+      "why": "앞 문장의 식당과 슈퍼마켓 중 일부를 가리켜요."
+     },
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How restaurants prepare fresh bread for customers",
+       "Ways to reduce food waste at home and in business",
+       "Where food banks find volunteers to help them",
+       "Why fruit and vegetables become more expensive"
+      ],
+      "a": 1,
+      "why": "가정과 업체가 음식물 쓰레기를 줄이는 방법이 중심이에요."
+     }
+    ]
+   },
+   "why": "q4 key clearly longest",
+   "severity": "minor"
+  },
+  {
+   "item": "f98c5aee",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the most natural order of (A), (B) and (C) after the given paragraph?",
+      "o": [
+       "(C)-(A)-(B)",
+       "(A)-(B)-(C)",
+       "(A)-(C)-(B)",
+       "(B)-(C)-(A)"
+      ],
+      "a": 0,
+      "why": "각 문단의 첫머리 단서(연결어·시간 표현·지시어)를 따라가면 순서가 정해져요. First → Next → Finally의 순서 표지어를 따라요."
+     },
+     {
+      "q": "What makes the outer coat of the seed split open?",
+      "o": [
+       "Heat from the sunlight above",
+       "Pressure from the growing leaves",
+       "Swelling after it takes in water",
+       "Minerals found deep in the soil"
+      ],
+      "a": 2,
+      "why": "씨앗이 물을 흡수해 부풀기 때문이에요."
+     },
+     {
+      "q": "What is the purpose of the root?",
+      "o": [
+       "To push the first leaves toward the light",
+       "To protect the young seed from insects",
+       "To make food from the sunlight above",
+       "To collect water and minerals for the plant"
+      ],
+      "a": 3,
+      "why": "뿌리는 땅에서 물과 무기질을 모아요."
+     },
+     {
+      "q": "In the passage, \"anchor\" is closest in meaning to",
+      "o": [
+       "lift up",
+       "wash away",
+       "hold in place",
+       "warm up"
+      ],
+      "a": 2,
+      "why": "anchor는 고정한다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "q3 key \"hold in place\" gives away q4 answer (anchor) and is longest",
+   "severity": "major"
+  },
+  {
+   "item": "e8f595f1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"The rain, however, did not keep people away, as the committee soon discovered.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 2,
+      "why": "‘however’는 앞의 우려(비 때문에 방문객이 적을 것)와 대조되고, 다음 문장이 실제로 사람이 많았다는 증거가 돼요."
+     },
+     {
+      "q": "Which best describes the committee's feeling at first?",
+      "o": [
+       "Concerned that the weather would reduce visitors",
+       "Excited about inviting students from other schools",
+       "Angry that many students refused to help",
+       "Bored by the number of plans to be made"
+      ],
+      "a": 0,
+      "why": "세 번째 문장에서 비 때문에 방문객이 적을까 걱정했다고 해요."
+     },
+     {
+      "q": "What can be inferred about the dumpling booth?",
+      "o": [
+       "It opened later than the other booths did.",
+       "It was very popular with the visitors.",
+       "It was run by parents instead of students.",
+       "It sold food from only one country."
+      ],
+      "a": 1,
+      "why": "정오까지 음식이 다 떨어졌다는 것은 인기가 많았다는 뜻이에요."
+     },
+     {
+      "q": "What will the committee probably do next year?",
+      "o": [
+       "Prepare earlier and invite nearby schools",
+       "Ask parents to run every booth at the fair",
+       "Cancel the plays to save time for booths",
+       "Move the festival to a sunnier time of year"
+      ],
+      "a": 0,
+      "why": "마지막 문장에 더 일찍 준비하고 이웃 학교를 초대할 계획이 나와요."
+     }
+    ]
+   },
+   "why": "q4 key clearly longest",
+   "severity": "minor"
+  },
+  {
+   "item": "5b0ec109",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did the neighbors create a schedule?",
+      "o": [
+       "To sell vegetables more quickly",
+       "To keep children away from the lot",
+       "To meet the city's condition",
+       "To avoid sharing recipes with others"
+      ],
+      "a": 2,
+      "why": "시가 내건 조건을 지키기 위해서였어요."
+     },
+     {
+      "q": "What does \"it\" in the second sentence refer to?",
+      "o": [
+       "the apartment block",
+       "the city office",
+       "the empty lot",
+       "the shared garden"
+      ],
+      "a": 2,
+      "why": "‘turn it into a garden’에서 it은 빈 땅이에요."
+     },
+     {
+      "q": "Why do some residents feel safer?",
+      "o": [
+       "The lot is full of people in the evening.",
+       "The city has put up a tall fence.",
+       "The weeds have been cut every week.",
+       "Older neighbors guard the garden."
+      ],
+      "a": 0,
+      "why": "여섯 번째 문장이 저녁마다 사람들로 가득 차기 때문이라고 해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"The city agreed, but only on the condition that the neighbors would look after the land themselves.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘that condition’이 가리키는 조건이 앞 문장에 나와야 해요. 시의 허락과 조건이 [2]에 들어가야 일정표가 그 조건을 충족해요."
+     }
+    ]
+   },
+   "why": "explanation says last body sentence; it is the sixth",
+   "severity": "minor"
+  },
+  {
+   "item": "1564389c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did the students feel at first?",
+      "o": [
+       "Pleased to have extra free time",
+       "Proud of the new school rule",
+       "Nervous and tied to their phones",
+       "Bored by their friends' company"
+      ],
+      "a": 2,
+      "why": "두 번째 문장에서 불안해하며 습관적으로 휴대폰을 찾았다고 해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"By the third day, however, the urge had grown weaker, and most of them felt calmer.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘however’는 처음의 불안함과 대조되고, 다음 문장의 새로운 활동은 알림에서 벗어난 뒤의 변화로 이어져요."
+     },
+     {
+      "q": "What did most students do when the week ended?",
+      "o": [
+       "They deleted all of their accounts.",
+       "They went back online but set limits.",
+       "They asked for another week offline.",
+       "They stopped using their phones completely."
+      ],
+      "a": 1,
+      "why": "네 번째 문장이 제한을 두고 돌아갔다고 해요."
+     },
+     {
+      "q": "What did the teacher conclude from the experiment?",
+      "o": [
+       "Limits chosen by students can work well.",
+       "Adults should ban phones in every school.",
+       "Social media is useful only at night.",
+       "One week is too short for any change."
+      ],
+      "a": 0,
+      "why": "여섯 번째 문장이 스스로 정한 작은 제한이 어른이 강요한 엄격한 규칙보다 효과적이라고 해요."
+     }
+    ]
+   },
+   "why": "explanation says last body sentence; it is the sixth",
+   "severity": "minor"
+  }
+ ],
+ "ok": 77,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

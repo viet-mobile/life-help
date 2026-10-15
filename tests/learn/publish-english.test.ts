@@ -1,17 +1,25 @@
 import { describe, expect, it } from "vitest";
 import { loadIndex } from "@/lib/learn/content/repository";
+import servedBank from "@/lib/learn/content/bank/english-draft.json";
+import ledger from "@/scripts/learn/english-bank/ledger.json";
 import { checkAnswer } from "@/lib/learn/domain/answers";
 import type { Question } from "@/lib/learn/types";
 
 const key = (q: Question): string | string[] => (q.answer.kind === "choice" ? q.answer.id : q.answer.kind === "order" ? q.answer.ids : "");
 
 describe("Claude English practice bank reaches the learner path", () => {
-  it("Korean-language learners get all 4,031 questions as PUBLISHED practice variants", async () => {
+  it("Korean-language learners get every question of english-draft.json as PUBLISHED practice variants", async () => {
     const { bundle } = await loadIndex("english");
     const eb = bundle.questions.filter((q) => q.id.startsWith("eb-"));
-    expect(eb.length).toBe(4031);
+    expect(eb.length).toBe((servedBank as { questions: unknown[] }).questions.length);
+    expect(eb.length).toBeGreaterThanOrEqual(4000);
     expect(eb.every((q) => q.status === "PUBLISHED" && q.role === "variant" && q.site === "english")).toBe(true);
     expect(eb.some((q) => "packet" in q)).toBe(false);
+  });
+  it("publication gate: every served question is a carried-over (already live) question or belongs to an independently reviewed item", () => {
+    const carry = new Set((ledger as { carryOverQuestions: string[] }).carryOverQuestions);
+    const reviewed = (ledger as { reviewed: Record<string, unknown> }).reviewed;
+    for (const q of (servedBank as { questions: { id: string }[] }).questions) expect(carry.has(q.id) || q.id.split("-")[1] in reviewed, q.id).toBe(true);
   });
   it("every question is well formed and graded correct by its own key; options and ids are consistent", async () => {
     const { bundle } = await loadIndex("english");

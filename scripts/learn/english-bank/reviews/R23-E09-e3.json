@@ -1,0 +1,43 @@
+{
+ "packet": "E09-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 23,
+  "questions": 99
+ },
+ "patches": [
+  {
+   "item": "9a982487",
+   "op": "set",
+   "set": {
+    "o": [
+     "Eat it very quickly",
+     "Be safe and watch out",
+     "Ask for some more",
+     "Put it in the sun"
+    ],
+    "a": 1
+   },
+   "why": "avoid longest key",
+   "severity": "minor"
+  },
+  {
+   "item": "8dcdad9d",
+   "op": "set",
+   "set": {
+    "o": [
+     "Dan has one brother.",
+     "Dan has two sisters.",
+     "Dan has no brothers or sisters.",
+     "Dan has one sister."
+    ],
+    "a": 3,
+    "why": "형제 둘과 자매 한 명이 있으므로 여동생이나 누나가 한 명이에요."
+   },
+   "why": "ambiguous key",
+   "severity": "major"
+  }
+ ],
+ "ok": 97,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
