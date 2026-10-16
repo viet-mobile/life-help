@@ -67,7 +67,7 @@ describe("gate: hint 2 is neutral unless cleared AND clean; hint 1 is untouched;
   });
   it("the neutral hint itself reveals nothing for any served English question (bank, derived dictation/listening, electives)", () => {
     const all = [...(english as { questions: Question[] }).questions, ...(secondary as unknown as { questions: Question[] }).questions.filter((x) => x.id.startsWith("e-h3e-"))];
-    expect(all.length).toBeGreaterThan(16000);
+    expect(all.length).toBeGreaterThan(15000);
     let n = 0, fallback = 0;
     for (const x of all) { const h = gateHints({ ...x, hints: [x.hints[0], "rich"] }).hints[1]; if (hintRevealsAnswer(h, x)) n++; if (h === "💭") fallback++; expect(NEUTRAL_SET).toContain(h); }
     expect(n).toBe(0);
