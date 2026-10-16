@@ -109,6 +109,12 @@ export interface RubricRow { criterion: string; full: string; partial: string; n
 export interface ThinkTask {
   id: string;
   subject: Subject;
+  /** which school grade / language level / elective subject this task is written for: E1..E6, M1..M3, H1..H3 (math, english), K1..K10 (korean), EL-econ|EL-ai|EL-job|EL-cul|EL-sta|EL-res (math electives). Pilot tasks may omit it. */
+  grade?: string;
+  /** the sub-field inside the grade (number & operations, geometry, measurement, patterns/functions/algebra, data & probability ...; reading/dialogue/notice/message ... for languages) */
+  topic?: string;
+  /** "draft" = passed the automatic validator only, not yet blind-reviewed by an independent reviewer; "reviewed-ai" = blind AI review rounds done (never teacher / learner review) */
+  status?: "draft" | "reviewed-ai";
   /** 1 = elementary / beginner, 2 = middle / intermediate, 3 = high / advanced */
   level: 1 | 2 | 3;
   levelLabel: string;

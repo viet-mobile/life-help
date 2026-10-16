@@ -43,7 +43,7 @@ describe("task validator", () => {
 });
 
 describe("pilot set: 36 tasks, 12 per subject", async () => {
-  const { allTasks } = await import("@/lib/think/tasks");
+  const { pilotTasks: allTasks } = await import("@/lib/think/tasks");
   it("every task is valid (structure, model answers vs checks, model rows vs constraints)", () => {
     expect(validateSet(allTasks)).toEqual([]);
   });
@@ -86,5 +86,25 @@ describe("choice feedback", async () => {
     expect(partial.status).toBe("not-match");
     expect(partial.message).toBe("missing-b");
     expect(partial.message).not.toContain("E");
+  });
+});
+
+describe("later batches (per grade / level / elective subject)", async () => {
+  const { extraTasks, allTasks } = await import("@/lib/think/tasks");
+  it("every extra task is valid and carries grade + topic; ids are unique across all tasks", () => {
+    expect(validateSet(extraTasks)).toEqual([]);
+    for (const t of extraTasks) { expect(t.grade, t.id).toBeTruthy(); expect(t.topic, t.id).toBeTruthy(); }
+    expect(new Set(allTasks.map((t) => t.id)).size).toBe(allTasks.length);
+  });
+  it("a grade's tasks mix step kinds and are not all choice questions", () => {
+    const by = new Map<string, Set<string>>();
+    for (const t of extraTasks) { const k = `${t.subject}:${t.grade}`; const set = by.get(k) ?? new Set(); t.steps.forEach((x) => set.add(x.kind)); by.set(k, set); }
+    for (const [k, kinds] of by) expect(kinds.size, k).toBeGreaterThanOrEqual(3);
+  });
+  it("no keyed option letter is the same at every stage of a reveal task, and single-choice keys are not all the same letter within a grade", () => {
+    for (const t of extraTasks) for (const s of t.steps) if (s.kind === "reveal") expect(new Set(s.stages.map((st) => st.reasonable[0])).size, `${t.id} ${s.id}`).toBeGreaterThan(1);
+    const by = new Map<string, string[]>();
+    for (const t of extraTasks) for (const s of t.steps) if (s.kind === "choose" && !s.multi) { const k = `${t.subject}:${t.grade}`; by.set(k, [...(by.get(k) ?? []), s.correct[0]]); }
+    for (const [k, keys] of by) if (keys.length >= 6) expect(new Set(keys).size, `${k} keys ${keys.join("")}`).toBeGreaterThan(1);
   });
 });

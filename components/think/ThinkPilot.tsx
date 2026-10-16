@@ -17,6 +17,7 @@ export function ThinkPilot() {
   const [taskId, setTaskId] = useState<string | null>(null);
   const [subject, setSubject] = useState<string>("all");
   const [level, setLevel] = useState<string>("all");
+  const [grade, setGrade] = useState<string>("all");
   const [reviewer, setReviewer] = useState(false);
   const [flags, setFlags] = useState<Flag[]>([]);
   useEffect(() => { setFlags(readFlags()); const h = window.location.hash.slice(1); if (h && allTasks.some((t) => t.id === h)) setTaskId(h); }, []);
@@ -27,11 +28,12 @@ export function ThinkPilot() {
 
   if (task) return <TaskPlayer key={task.id} task={task} reviewer={reviewer} onBack={() => open(null)} onFlag={addFlag} />;
 
-  const shown = allTasks.filter((t) => (subject === "all" || t.subject === subject) && (level === "all" || String(t.level) === level));
+  const grades = [...new Set(allTasks.filter((t) => (subject === "all" || t.subject === subject) && t.grade).map((t) => t.grade as string))];
+  const shown = allTasks.filter((t) => (subject === "all" || t.subject === subject) && (level === "all" || String(t.level) === level) && (grade === "all" || t.grade === grade));
   return (
     <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-list">
       <h1 className="text-2xl font-black">{L0.title}</h1>
-      <p className="mt-1 text-sm text-slate-600">검토용 시범 과제 {allTasks.length}개 · Review pilot · 수량이 아니라 학생이 하는 생각을 보기 위한 시제품입니다. 자동 확인은 정오 확정이 아닙니다.</p>
+      <p className="mt-1 text-sm text-slate-600">검토용 과제 {allTasks.length}개(앞의 36개는 AI 독립 검토 2회, 🟡 표시는 초안) · Review pilot · 수량이 아니라 학생이 하는 생각을 보기 위한 시제품입니다. 자동 확인은 정오 확정이 아닙니다.</p>
       <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label={L0.subject}>
         {["all", "math", "english", "korean"].map((s) => (
           <button key={s} onClick={() => setSubject(s)} aria-pressed={subject === s} className={`rounded-full border px-3 py-1 text-sm font-bold ${subject === s ? "bg-slate-900 text-white" : "bg-white"}`}>{s === "all" ? L0.all : L0[s as "math"]}</button>
@@ -39,13 +41,19 @@ export function ThinkPilot() {
         {["all", "1", "2", "3"].map((s) => (
           <button key={`l${s}`} onClick={() => setLevel(s)} aria-pressed={level === s} className={`rounded-full border px-3 py-1 text-sm font-bold ${level === s ? "bg-slate-900 text-white" : "bg-white"}`}>{s === "all" ? `${L0.level}: ${L0.all}` : `${L0.level} ${s}`}</button>
         ))}
+        {grades.length > 0 && (
+          <select value={grade} onChange={(e) => setGrade(e.target.value)} aria-label="grade" data-testid="grade-filter" className="rounded-full border px-3 py-1 text-sm font-bold">
+            <option value="all">{L0.all} (grade / level)</option>
+            {grades.map((g) => <option key={g} value={g}>{g}</option>)}
+          </select>
+        )}
         <label className="ml-auto flex items-center gap-2 text-sm"><input type="checkbox" checked={reviewer} onChange={(e) => setReviewer(e.target.checked)} data-testid="reviewer-toggle" />{L0.reviewerMode}</label>
       </div>
       <ul className="mt-4 grid gap-3">
         {shown.map((t) => (
           <li key={t.id}>
             <button onClick={() => open(t.id)} data-testid={`task-${t.id}`} className="w-full rounded-2xl border bg-white p-4 text-left shadow-sm hover:border-slate-900">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-500"><span aria-hidden>{SUBJECT_ICON[t.subject]}</span>{t.id} · {t.levelLabel} · {t.minutes}{labels(t.uiLang).minutes} · {t.format}{t.generative ? ` · ✍ ${labels(t.uiLang).generative}` : ""}</div>
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-500"><span aria-hidden>{SUBJECT_ICON[t.subject]}</span>{t.id} · {t.grade ? `${t.grade} · ` : ""}{t.levelLabel} · {t.minutes}{labels(t.uiLang).minutes} · {t.format}{t.generative ? ` · ✍ ${labels(t.uiLang).generative}` : ""}{t.topic ? ` · ${t.topic}` : ""}{t.status === "draft" ? " · 🟡 draft (not independently reviewed)" : ""}</div>
               <div className="mt-1 text-lg font-black">{t.title}</div>
               <div className="mt-1 text-sm text-slate-600">{t.goal}</div>
             </button>
@@ -69,6 +77,7 @@ function TaskPlayer({ task, reviewer, onBack, onFlag }: { task: ThinkTask; revie
       <button onClick={onBack} className="text-sm font-bold underline">{L.back}</button>
       <p className="mt-3 text-xs font-bold text-slate-500">{task.id} · {task.levelLabel} · ≈{task.minutes}{L.minutes} · {task.format}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
+      {task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {task.uiLang === "ko" ? "초안: 자동 검증만 통과했고 독립 검토 전이에요." : "Draft: passed the automatic validator only; not independently reviewed yet."}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
       <details className="mt-3 rounded-2xl border bg-slate-50 p-4 text-sm" data-testid="task-info" open={reviewer}>
         <summary className="cursor-pointer font-black">{L.info}</summary>
