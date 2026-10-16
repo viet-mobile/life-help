@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import english from "@/lib/learn/content/bank/english-draft.json";
 import secondary from "@/lib/learn/content/secondary/english.json";
-import { NEUTRAL_HINT2, NEUTRAL_SET, gateHints, hintRevealsAnswer } from "@/lib/learn/hintGate";
+import { NEUTRAL_HINT2, NEUTRAL_SET, NEUTRAL_TYPED, gateHints, hintRevealsAnswer } from "@/lib/learn/hintGate";
 import { loadIndex } from "@/lib/learn/content/repository";
 import { MemoryLearnStore } from "@/lib/learn/server/memoryStore";
 import { LearnService } from "@/lib/learn/server/service";
@@ -71,7 +71,10 @@ describe("gate: hint 2 is neutral unless cleared AND clean; hint 1 is untouched;
     let n = 0, fallback = 0;
     for (const x of all) { const h = gateHints({ ...x, hints: [x.hints[0], "rich"] }).hints[1]; if (hintRevealsAnswer(h, x)) n++; if (h !== NEUTRAL_HINT2) fallback++; expect(NEUTRAL_SET).toContain(h); }
     expect(n).toBe(0);
-    expect(fallback).toBeLessThan(200); // the primary neutral hint is used almost everywhere
+    expect(fallback).toBeLessThan(2200); // option questions use the primary neutral hint; text / ordering questions their own
+    const dict = all.find((x) => x.id.endsWith("-dict"))!; const ord = all.find((x) => x.type === "ordering")!;
+    expect(gateHints(dict).hints[1]).toBe(NEUTRAL_TYPED.text); // never "look at the options" for a question that has none
+    expect(gateHints(ord).hints[1]).toBe(NEUTRAL_TYPED.order);
   });
 });
 

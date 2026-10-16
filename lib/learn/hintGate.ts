@@ -14,7 +14,10 @@ import safeIds from "./content/bank/english-hint2-safe.json";
 export const NEUTRAL_HINT2 = "보기를 문제에 하나씩 넣어 읽어 보고, 어색하거나 맞지 않는 것부터 지워 보세요.";
 /** Fixed fallbacks for the rare question whose own options contain a word of the primary neutral hint (e.g. an English->Korean meaning question). Deterministic; the last one has no words. */
 export const NEUTRAL_FALLBACKS = ["문제를 한 번 더 천천히 읽어 보세요.", "💭"] as const;
-export const NEUTRAL_SET: readonly string[] = [NEUTRAL_HINT2, ...NEUTRAL_FALLBACKS];
+/** Questions without options (dictation, short answers) and orderings must not be told to look at options (found by the 2026-10-17 derived-form resample). */
+export const NEUTRAL_TYPED = { text: "들은 내용을 떠올리며 한 낱말씩 천천히 적어 보세요.", order: "낱말 조각을 하나씩 놓아 보며 자연스러운 문장이 되는지 소리 내어 읽어 보세요." } as const;
+export const NEUTRAL_SET: readonly string[] = [NEUTRAL_HINT2, NEUTRAL_TYPED.text, NEUTRAL_TYPED.order, ...NEUTRAL_FALLBACKS];
+const neutralFor = (q: Question): readonly string[] => (q.type === "ordering" ? [NEUTRAL_TYPED.order, ...NEUTRAL_FALLBACKS] : !q.options?.length ? [NEUTRAL_TYPED.text, ...NEUTRAL_FALLBACKS] : [NEUTRAL_HINT2, ...NEUTRAL_FALLBACKS]);
 const GATED_ID = /^(eb-|e-h3e-)/;
 const SAFE: ReadonlySet<string> = new Set((safeIds as { ids: string[] }).ids);
 
@@ -58,7 +61,8 @@ export function gateHints<T extends Question>(q: T, safe: ReadonlySet<string> = 
   const keep = safe.has(q.id) && !NEUTRAL_SET.includes(rich) && !hintRevealsAnswer(rich, q);
   if (keep || NEUTRAL_SET.includes(q.hints[1])) return q;
   const hints = q.hints.slice();
-  hints[1] = NEUTRAL_SET.find((n) => !hintRevealsAnswer(n, q)) ?? NEUTRAL_FALLBACKS[NEUTRAL_FALLBACKS.length - 1];
+  const cand = neutralFor(q);
+  hints[1] = cand.find((n) => !hintRevealsAnswer(n, q)) ?? NEUTRAL_FALLBACKS[NEUTRAL_FALLBACKS.length - 1];
   return { ...q, hints };
 }
 export const gateAll = <T extends Question>(qs: T[]): T[] => qs.map((q) => gateHints(q));
