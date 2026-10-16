@@ -77,7 +77,7 @@ export type AnswerKey =
   | { kind: "choice"; id: string }
   | { kind: "choices"; ids: string[] }
   | { kind: "numeric"; value: number; tolerance?: number }
-  | { kind: "text"; accepted: string[]; caseSensitive?: boolean }
+  | { kind: "text"; accepted: string[]; caseSensitive?: boolean; /** dictation: compare with the dictation rules of that language (see normalizeDictation) */ dictation?: "en" | "ko" }
   | { kind: "order"; ids: string[] };
 
 /** What a student submits. Always a string or string[] so it is trivially validatable. */

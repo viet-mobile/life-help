@@ -17,7 +17,8 @@ import { BRIDGE_EN, BRIDGE_USED_IDS } from "../course-bridge.mjs";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
 const check = process.argv.includes("--check");
 const POOL_DIR = path.join(root, "scripts/learn/korean/bank/pools");
-const OUT = path.join(root, "lib/learn/content/bank/korean.json");
+const arg = (n) => { const i = process.argv.indexOf(`--${n}`); return i < 0 ? null : process.argv[i + 1]; };
+const OUT = arg("out") ? path.resolve(arg("out")) : path.join(root, "lib/learn/content/bank/korean.json");
 const need = (cond, msg) => { if (!cond) throw new Error(msg); };
 const HANGUL = /[가-힣ㄱ-ㆎ]/;
 // The Vietnamese reading aid comes from a REVIEWED surface-pronunciation table; words outside it get no aid (the romanization is shown instead).
@@ -42,8 +43,39 @@ const skills = {};
 const problems = [];
 const warn = (sid, msg) => problems.push(`${sid}: ${msg}`);
 
+// Supplementary authored entries (scripts/learn/korean/bank/additions/*.json = { packet, skills: { <skillId>: { notes?, entries[] } } }) are appended to the
+// pool skill they name, so a new packet never edits a reviewed pool file. Entries may carry authoring-only fields (grade, area, std) the builder ignores.
+const ADD_DIR = path.join(root, "scripts/learn/korean/bank/additions");
+// Only independently reviewed additions (review-ledger.json, keyed by item id) reach the bank; --include-pending keeps the rest for the review tooling.
+const LEDGER = path.join(root, "scripts/learn/korean/bank/review-ledger.json");
+const reviewedAdd = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, "utf8")).reviewed : {};
+const includePending = process.argv.includes("--include-pending");
+let pendingAdditions = 0;
+const addBySkill = {};
+for (const f of fs.existsSync(ADD_DIR) ? fs.readdirSync(ADD_DIR).filter((x) => x.endsWith(".json")).sort() : []) {
+  const add = JSON.parse(fs.readFileSync(path.join(ADD_DIR, f), "utf8"));
+  for (const [sid, sk] of Object.entries(add.skills ?? {})) {
+    const slot = (addBySkill[sid] ??= { notes: {}, entries: [] });
+    Object.assign(slot.notes, sk.notes ?? {});
+    for (const e of sk.entries ?? []) {
+      const okId = reviewedAdd[hid(`${sid}|${String(e.ko ?? "").trim()}`)];
+      if ((okId && okId.verdict !== "patched") || includePending) slot.entries.push(e); else pendingAdditions++;
+    }
+  }
+}
+const poolSkills = new Set();
 for (const f of files) {
   const pool = JSON.parse(fs.readFileSync(path.join(POOL_DIR, f), "utf8"));
+  for (const sid of Object.keys(pool.skills)) poolSkills.add(sid);
+}
+for (const sid of Object.keys(addBySkill)) if (!poolSkills.has(sid)) problems.push(`${sid}: addition names a skill that has no pool`);
+
+for (const f of files) {
+  const pool = JSON.parse(fs.readFileSync(path.join(POOL_DIR, f), "utf8"));
+  for (const [sid, add] of Object.entries(addBySkill)) {
+    const sk0 = pool.skills[sid];
+    if (sk0) { sk0.entries = [...sk0.entries, ...add.entries]; sk0.notes = { ...(sk0.notes ?? {}), ...add.notes }; }
+  }
   for (const [sid, sk] of Object.entries(pool.skills)) {
     need(/^k\.k(10|[1-9])\.[a-z0-9_]+$/.test(sid), `bad skill id ${sid}`);
     need(!skills[sid], `duplicate skill ${sid}`);
@@ -153,13 +185,16 @@ if (problems.length) {
   for (const p of problems.slice(0, 400)) console.error("  " + p);
   if (!process.argv.includes("--allow-problems")) process.exit(1);
 }
+if (process.argv.includes("--no-write")) { console.log(`pending additions held out (not reviewed): ${pendingAdditions}`); console.log(`validated: ${Object.keys(ordered).length} skills, ${Object.values(ordered).reduce((a, x) => a + x.items.length, 0)} entries (nothing written)`); process.exit(0); }
 if (check) {
   if (!fs.existsSync(OUT) || fs.readFileSync(OUT, "utf8") !== text || !fs.existsSync(path.join(KIT_DIR, "source.en.json")) || fs.readFileSync(path.join(KIT_DIR, "source.en.json"), "utf8") !== kitEn) { console.error("korean bank is out of date: run node scripts/learn/korean/bank/build.mjs"); process.exit(1); }
   console.log("korean bank is up to date");
 } else {
   fs.writeFileSync(OUT, text);
-  fs.writeFileSync(path.join(KIT_DIR, "source.en.json"), kitEn);
-  fs.writeFileSync(path.join(KIT_DIR, "source.minimal.en.json"), kitMin);
+  if (!arg("out")) { // a scratch --out build (review tooling) never touches the committed kit sources
+    fs.writeFileSync(path.join(KIT_DIR, "source.en.json"), kitEn);
+    fs.writeFileSync(path.join(KIT_DIR, "source.minimal.en.json"), kitMin);
+  }
   const n = Object.values(ordered).reduce((a, s) => a + s.items.length, 0);
   console.log(`wrote korean bank data: ${Object.keys(ordered).length} skills, ${n} entries`);
 }

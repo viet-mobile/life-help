@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { buildPath } from "@/lib/learn/domain/path";
 import type { Course } from "@/lib/learn/types";
 import { currentSemester, hasSemesters, semesterOf, type Semester } from "@/lib/learn/content/semesters";
+import { previousLevel } from "@/lib/learn/korean-grades";
+import { OfficialGradeChip } from "./OfficialGradeChip";
 import { useLearner } from "./LearnerProvider";
 
 const SEMESTER_KEY = "learn:semester";
@@ -33,6 +35,12 @@ export function CoursePath({ course }: { course: Course }) {
         <div style={{ fontSize: "2.4rem" }} aria-hidden="true">{course.world.emoji}</div>
         <h2 id={`c-${course.id}`} className="l-h1">{course.world.name}</h2>
         <p>{course.world.tagline} · {course.title}</p>
+        {site === "korean" && (
+          <p className="l-muted" data-testid="course-official">
+            <OfficialGradeChip level={course.grade} t={t} />
+            {previousLevel(course.grade) && <span> · {t("korean.official.prev", { level: t(`grade.${previousLevel(course.grade)}` as never) })}</span>}
+          </p>
+        )}
       </div>
       {split && (
         <div role="tablist" aria-label={t("semester.title")} className="l-options" style={{ gridTemplateColumns: "1fr 1fr" }} data-testid="semester-tabs">

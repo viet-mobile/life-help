@@ -5,6 +5,7 @@ import { learnConfig } from "@/lib/learn/config";
 import { buildQueue, hasMeaning, MAX_REPEAT, parseCustomRepeat, REPEAT_CHOICES, SPEEDS, type ListenMode, type Speed } from "@/lib/learn/listen/queue";
 import { meaningLang, type ListenSegment } from "@/lib/learn/listen/segments";
 import { getListenPlayer, type PlayerState } from "@/lib/learn/listen/speech";
+import { TtsSettingsPanel } from "./TtsSettings";
 import { addWord, hasWord, loadWords, removeWord, saveWords, wordId, type SavedWord } from "@/lib/learn/listen/vocab";
 import { useSite } from "./LearnerProvider";
 
@@ -172,6 +173,7 @@ export function ListeningPanel({ scope, segments, variant, lesson, meaningPendin
           <button type="button" className="l-btn l-btn-ghost" data-testid="repeat-play" disabled={customInvalid || repeat < 1} onClick={() => play({ from, to, repeat })}>🔁 {t("listen.repeat.play")}</button>
         </div>
       </details>
+      {site === "korean" && <TtsSettingsPanel t={t} code="ko" speech="ko-KR" />}
     </div>
   );
 }

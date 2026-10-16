@@ -1,4 +1,5 @@
 import type { Utterance } from "./queue";
+import { getTtsSettings, pickPreferredVoice } from "./ttsSettings";
 
 /**
  * Provider-neutral speech layer. The default engine is the browser's own Speech Synthesis: no key, no network, no server, nothing recorded,
@@ -29,7 +30,7 @@ export class BrowserSpeechEngine implements SpeechEngine {
   private wired = false;
 
   private get synth(): SpeechSynthesis | null {
-    return typeof window !== "undefined" && "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined" ? window.speechSynthesis : null;
+    return typeof window !== "undefined" && !!window.speechSynthesis && typeof SpeechSynthesisUtterance !== "undefined" ? window.speechSynthesis : null;
   }
   private refreshVoices() {
     const s = this.synth;
@@ -49,8 +50,8 @@ export class BrowserSpeechEngine implements SpeechEngine {
     this.refreshVoices();
     const utter = new SpeechSynthesisUtterance(u.text);
     utter.lang = u.lang;
-    utter.rate = u.rate;
-    const voice = pickVoice(this.voices, u.lang);
+    utter.rate = Math.min(2, Math.max(0.1, u.rate * getTtsSettings().rate)); // the learner's speed setting scales the player's own rate
+    const voice = pickPreferredVoice(this.voices, u.lang, getTtsSettings(), pickVoice);
     if (voice) utter.voice = voice; // no voice for the language: the browser's default for utter.lang applies
     let finished = false;
     const finish = (error: boolean) => { if (!finished) { finished = true; done(error); } };
@@ -90,15 +91,16 @@ export class ListenPlayer {
   isAvailable() { return this.engine.isAvailable(); }
   supportsPause() { return this.engine.supportsPause(); }
 
-  play(queue: Utterance[], rate = 1) {
+  /** `repeat` plays the whole queue that many times in a row (the learner's repeat setting). */
+  play(queue: Utterance[], rate = 1, repeat = 1) {
     this.stop();
     if (!queue.length || !this.engine.isAvailable()) return;
     const mine = ++this.token;
     this.set({ status: "playing", error: false });
     const next = (i: number) => {
       if (mine !== this.token) return;
-      if (i >= queue.length) return this.set({ status: "idle", segmentId: null, segmentIndex: null });
-      const u = queue[i];
+      if (i >= queue.length * Math.max(1, repeat)) return this.set({ status: "idle", segmentId: null, segmentIndex: null });
+      const u = queue[i % queue.length];
       this.set({ segmentId: u.segmentId, segmentIndex: u.segmentIndex });
       this.engine.speak({ text: u.text, lang: u.lang, rate }, (error) => {
         if (mine !== this.token) return;
