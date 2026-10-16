@@ -59,7 +59,7 @@ for (const f of fs.existsSync(ADD_DIR) ? fs.readdirSync(ADD_DIR).filter((x) => x
     Object.assign(slot.notes, sk.notes ?? {});
     for (const e of sk.entries ?? []) {
       const okId = reviewedAdd[hid(`${sid}|${String(e.ko ?? "").trim()}`)];
-      if (okId || includePending) slot.entries.push(e); else pendingAdditions++;
+      if ((okId && okId.verdict !== "patched") || includePending) slot.entries.push(e); else pendingAdditions++;
     }
   }
 }
