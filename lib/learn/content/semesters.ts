@@ -23,6 +23,8 @@ const MATH: Record<string, 0 | 1 | 2> = {
   "math-e5-l1": 1, "math-e5-l2": 2, "math-e5-l3": 1, "math-e5-l4": 0, "math-e5-l5": 2, "math-e5-geo1": 1, "math-e5-geo2": 2, "math-e5-dat1": 2, "math-e5-dat2": 2,
   // E6
   "math-e6-l1": 0, "math-e6-l2": 2, "math-e6-l3": 1, "math-e6-l4": 2, "math-e6-l5": 1, "math-e6-geo1": 2, "math-e6-geo2": 1, "math-e6-dat1": 1, "math-e6-ari1": 1, "math-e6-ari2": 2,
+  // H3 electives
+  "en-h3e-l1": 0, "en-h3e-l2": 0, "en-h3e-l3": 0, "en-h3e-l4": 0, "en-h3e-l5": 0, "en-h3e-l6": 0, "en-h3e-l7": 0,
   // M1
   "math-l1": 1, "math-l2": 1, "math-l3": 1, "math-l4": 1, "math-m1-geo1": 2, "math-m1-geo2": 2, "math-m1-neg1": 1, "math-m1-fac1": 1, "math-m1-crd1": 2, "math-m1-prp1": 2, "math-m1-sta1": 2,
   // M2

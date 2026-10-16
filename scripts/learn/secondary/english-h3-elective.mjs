@@ -25,6 +25,8 @@ export function enH3Elective(b) {
       prompt: T(q.prompt, q.prompt), items: q.options, correct: q.correct,
       hints: [T(q.rule.ko, q.rule.vi), T(q.clue.ko, q.clue.vi)], expl: T(q.expl.ko, q.expl.vi),
     }));
+    const g = d.diagnostic;
+    E.mc({ sk: k, n: "d1", role: "diagnostic", d: 3, fam: `${k}-mc`, tags: ["reading", "context"], prompt: T(g.prompt, g.prompt), items: g.options, correct: g.correct, hints: [T(g.rule.ko, g.rule.vi), T(g.clue.ko, g.clue.vi)], expl: T(g.expl.ko, g.expl.vi) });
     return { id: `en-h3e-l${i + 1}`, title: T(d.lesson.title.ko, d.lesson.title.vi), concept: T(d.lesson.concept.ko, d.lesson.concept.vi), example: T(d.lesson.example.ko, d.lesson.example.vi), skills: [S[k]], core: built.slice(0, 4), challenge: built[4] };
   });
   b.course({
