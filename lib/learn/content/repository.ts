@@ -83,7 +83,7 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
     }
     if (extra.length) bundle = { ...bundle, questions: [...bundle.questions, ...extra] };
   }
-  if (site === "english") bundle = { ...bundle, questions: gateAll(bundle.questions) }; // hint 2 fail-closed (lib/learn/hintGate.ts)
+  if (site === "english") bundle = { ...bundle, questions: gateAll(bundle.questions, !!opts.locale && opts.locale !== siteConfig("english").presentationLocale) }; // hint 2 fail-closed (lib/learn/hintGate.ts)
   if (opts.grade) bundle = scopeToGrade(bundle, opts.grade);
   return { bundle, index: indexContent(bundle) };
 }

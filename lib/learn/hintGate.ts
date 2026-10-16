@@ -57,8 +57,11 @@ export function hintRevealsAnswer(hint: string, q: Pick<Question, "options" | "a
 }
 
 /** The question as it may be served: hint 2 neutral unless this id is cleared and its authored hint 2 passes the leak detector. */
-export function gateHints<T extends Question>(q: T, safe: ReadonlySet<string> = SAFE): T {
+export function gateHints<T extends Question>(q: T, safe: ReadonlySet<string> = SAFE, universal = false): T {
   if (!GATED_ID.test(q.id) || q.hints.length < 2) return q;
+  if (universal) { // a learner language other than Korean: the neutral sentences are Korean, so only the wordless hint is used (never a Korean line in another language)
+    const h = q.hints.slice(); h[1] = NEUTRAL_FALLBACKS[NEUTRAL_FALLBACKS.length - 1]; return { ...q, hints: h };
+  }
   const rich = q.hints[1];
   const keep = safe.has(q.id) && !NEUTRAL_SET.includes(rich) && !hintRevealsAnswer(rich, q);
   if (keep || NEUTRAL_SET.includes(q.hints[1])) return q;
@@ -67,4 +70,5 @@ export function gateHints<T extends Question>(q: T, safe: ReadonlySet<string> = 
   hints[1] = cand.find((n) => !hintRevealsAnswer(n, q)) ?? NEUTRAL_FALLBACKS[NEUTRAL_FALLBACKS.length - 1];
   return { ...q, hints };
 }
-export const gateAll = <T extends Question>(qs: T[]): T[] => qs.map((q) => gateHints(q));
+/** `universal`: the request is for a learner language other than the content language (Korean). */
+export const gateAll = <T extends Question>(qs: T[], universal = false): T[] => qs.map((q) => gateHints(q, SAFE, universal));
