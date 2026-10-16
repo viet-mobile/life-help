@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { checkBuild, checkChoose, checkPickLine, checkRevealStage, checkWrite } from "@/lib/think/check";
+import { checkBuild, checkChoose, checkPickLine, checkRevealStage, checkWrite, previousPredictionText } from "@/lib/think/check";
 import { allTasks } from "@/lib/think/tasks";
 import type { BuildStep, ChooseStep, PickLineStep, RevealStep, Step, ThinkTask, WriteStep } from "@/lib/think/types";
 import { fmt, labels, type Labels } from "./labels";
@@ -285,7 +285,7 @@ function RevealView({ step, L, onResult, onFlag }: SV & { step: RevealStep }) {
           ) : (
             <>
               <Feedback kind={checkRevealStage(st, picks[i]) === "reasonable" ? "acceptable" : "not-match"} msg={`${st.options.find((o) => o.id === picks[i])?.reveals ?? ""} ${st.after}`.trim()} L={L} />
-              {i > 0 && picks[i] !== picks[i - 1] && <p className="text-xs text-slate-600">↺ {L.before}: {st.options.find((o) => o.id === picks[i - 1])?.text ?? step.stages[i - 1].options.find((o) => o.id === picks[i - 1])?.text}</p>}
+              {i > 0 && picks[i] !== picks[i - 1] && <p className="text-xs text-slate-600">↺ {L.before}: {previousPredictionText(step, i, picks[i - 1]) ?? L.notAnswered}</p>}
               {i === stage && i + 1 < step.stages.length && <button className="w-fit rounded-lg border px-3 py-1 text-sm font-bold" data-testid={`more-${i}`} onClick={() => setStage(i + 1)}>{L.reveal}</button>}
             </>
           )}
