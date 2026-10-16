@@ -30,7 +30,7 @@ for (const [skill, list] of bySkill) {
 const POS = /(첫|둘째|셋째|넷째|마지막)\s*(번째\s*)?(문장|보기|선택지)|\(([A-D])\)\s*가|위의?\s*표|위\s*그림/;
 for (const q of qs) {
   const txt = `${q.explanation ?? ""} ${(q.hints ?? []).join(" ")}`;
-  if (q.type === "multiple_choice" && /-(m|pick|cloze)$/.test(q.id) && POS.test(txt)) out.push({ rule: "R2", id: q.id, text: txt.match(POS)?.[0] });
+  if (q.type === "multiple_choice" && /-(m|pick|cloze)$/.test(q.id) && POS.test(txt) && !(/(문장)$/.test(txt.match(POS)?.[0] ?? "") && (q.prompt.match(/[.!?](\s|$)/g) ?? []).length >= 2)) out.push({ rule: "R2", id: q.id, text: txt.match(POS)?.[0] });
   if (q.type === "multiple_choice") {
     const m = q.prompt.match(/\b(a|an)\s+_{2,}|\b(a|an)\s*___/i);
     if (m) { const art = (m[1] ?? m[2]).toLowerCase(); const opts = q.options.map((o) => o.text.trim()); const okVowel = (t) => /^[aeiou]/i.test(t); if (opts.some((t) => t.split(/\s+/).length > 3)) continue; // the blank belongs to the passage and the question asks something else
