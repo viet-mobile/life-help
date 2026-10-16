@@ -31,10 +31,11 @@ const setv = (ov, key, val) => {
   const [sec, id, field] = key.split("|");
   ov[sec] ??= {};
   if (!field) { ov[sec][id] = val; return; }
-  let o = (ov[sec][id] ??= {}); const ks = field.split(".");
-  for (const k of ks.slice(0, -1)) o = (o[k] ??= {});
-  const last = ks[ks.length - 1];
-  if (/^\d+$/.test(last) && ks.length === 2 && ks[0] === "hints") { o = ov[sec][id]; o.hints ??= []; o.hints[Number(last)] = val; } else o[last] = val;
+  const o = (ov[sec][id] ??= {}); const ks = field.split(".");
+  if (ks[0] === "hints") { o.hints ??= []; o.hints[Number(ks[1])] = val; return; } // hints are an array in the overlay
+  let t = o;
+  for (const k of ks.slice(0, -1)) t = (t[k] ??= {});
+  t[ks[ks.length - 1]] = val;
 };
 const arg = (n) => { const i = process.argv.indexOf(`--${n}`); return i < 0 ? null : process.argv[i + 1]; };
 if (arg("out")) {
