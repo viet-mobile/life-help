@@ -1,0 +1,18 @@
+import { describe, expect, it } from "vitest";
+import { pronTipFor } from "@/lib/learn/pron";
+
+describe("pronunciation rule tips", () => {
+  it.each([
+    ["국물", "nasal"], ["밥물", "nasal"], ["신라", "lateral"], ["칼날", "lateral"], ["국밥", "tense"], ["옷이", "liaison"], ["깎아", "liaison"], ["부엌", "final"], ["안녕하세요", null], ["물", null],
+  ])("%s -> %s", (t, rule) => expect(pronTipFor(t)?.rule ?? null).toBe(rule));
+  it("no tip for empty text or long passages", () => {
+    expect(pronTipFor("")).toBeNull();
+    expect(pronTipFor(undefined)).toBeNull();
+    expect(pronTipFor("국물이 맛있어서 밥을 많이 먹었어요 그리고 신라 이야기를 읽었어요")).toBeNull();
+  });
+  it("every tip carries an article number and an official example", () => {
+    const t = pronTipFor("국물")!;
+    expect(t.art).toBe("18");
+    expect(t.ex).toContain("궁물");
+  });
+});
