@@ -35,7 +35,7 @@ export interface KBankData {
   status: "DRAFT" | "PUBLISHED";
   skills: Record<string, { notes: Record<string, string>; items: KItem[] }>;
 }
-export type KForm = "meaning" | "toko" | "listen" | "tf" | "read" | "fromrr" | "sit" | "cloze" | "choose" | "order" | "passage";
+export type KForm = "meaning" | "toko" | "listen" | "tf" | "read" | "fromrr" | "sit" | "cloze" | "choose" | "order" | "passage" | "dict";
 export interface KTemplate { prompt: string; hints: string[]; explanation: string; /** used instead of `hints` when the romanization would give the meaning away (loanwords: 라디오 = “radio”) */ hintsSafe?: string[] }
 export interface KKit { templates: Record<KForm, KTemplate>; texts: Record<string, string> }
 export const KFORMS: KForm[] = ["meaning", "toko", "listen", "tf", "read", "fromrr", "sit", "cloze", "choose", "order", "passage"];
@@ -60,7 +60,7 @@ export function formsOf(item: KItem, skillId: string): KForm[] {
     case "word":
     case "phrase": return ["meaning", "toko", "listen", "tf", ...(lv <= 3 ? (["read"] as KForm[]) : [])];
     case "expr": return ["meaning", "toko", ...(item.s ? (["sit"] as KForm[]) : []), "listen", "tf"];
-    case "sentence": return ["meaning", "toko", "listen", "tf", ...(item.cz ? (["cloze"] as KForm[]) : []), ...(item.ch ? (["choose"] as KForm[]) : []), ...(item.od ? (["order"] as KForm[]) : [])];
+    case "sentence": return ["meaning", "toko", "listen", "tf", ...(item.cz ? (["cloze"] as KForm[]) : []), ...(item.ch ? (["choose"] as KForm[]) : []), ...(item.od ? (["order"] as KForm[]) : []), ...(item.od && item.ko.length >= 5 && item.ko.length <= 40 ? (["dict"] as KForm[]) : [])];
     case "passage": return ["passage"];
   }
 }
@@ -196,6 +196,11 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
       options = shown.map((wid) => ({ id: wid, text: item.od![Number(wid.slice(1)) - 1] }));
       answer = { kind: "order", ids }; audioText = item.ko; vars.first = item.od![0]; difficulty = Math.min(5, base + 1); break;
     }
+    case "dict": {
+      // dictation: hear the sentence, type it. Korean spacing and spelling are NOT forgiven (normalizeDictation "ko" only forgives punctuation / stray spaces at the ends)
+      type = "short_answer";
+      answer = { kind: "text", accepted: [item.ko], dictation: "ko" }; audioText = item.ko; vars.n = item.ko.replace(/\s+/g, "").length; vars.first = item.od![0]; difficulty = Math.min(5, base + 2); break;
+    }
     case "passage": {
       choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/(^|\s)[A-Z가-힣]:\s*/g, "$1").replace(/\n/g, " ").replace(/\s+/g, " ").trim(); // every "A:" / "B:" label, also on one line vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
     }
@@ -219,7 +224,7 @@ export function expandKoreanBank(data: KBankData, kit: KKit, skills: ReadonlySet
   const out: Question[] = [];
   for (const [skillId, sk] of Object.entries(data.skills)) {
     if (skills && !skills.has(skillId)) continue;
-    for (const item of sk.items) for (const form of formsOf(item, skillId)) out.push(expandItem(skillId, item, sk.items, sk.notes, kit, form, { draft: data.status === "DRAFT", ...opts }));
+    for (const item of sk.items) for (const form of formsOf(item, skillId)) if (form !== "dict" || kit.templates.dict) out.push(expandItem(skillId, item, sk.items, sk.notes, kit, form, { draft: data.status === "DRAFT", ...opts }));
   }
   return out;
 }
