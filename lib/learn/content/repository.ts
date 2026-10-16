@@ -4,6 +4,7 @@ import { indexContent, publishedOnly, scopeToGrade, type ContentIndex } from "./
 import { localizedBundle, overlayFor } from "./localize";
 import { bankQuestions, hasBank } from "./bank";
 import { loadEnglishBank, loadEnglishBankIndex } from "./assets";
+import { gateAll } from "../hintGate";
 import { siteConfig } from "@/lib/learn/sites";
 import mathDemo from "./demo/math.json";
 import englishDemo from "./demo/english.json";
@@ -82,6 +83,7 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
     }
     if (extra.length) bundle = { ...bundle, questions: [...bundle.questions, ...extra] };
   }
+  if (site === "english") bundle = { ...bundle, questions: gateAll(bundle.questions) }; // hint 2 fail-closed (lib/learn/hintGate.ts)
   if (opts.grade) bundle = scopeToGrade(bundle, opts.grade);
   return { bundle, index: indexContent(bundle) };
 }
