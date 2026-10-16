@@ -1,0 +1,1971 @@
+[
+ {
+  "id": "x-k-k10-01",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Idioms in context",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "One idiom, two feelings",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Infer the shared figurative meaning of 손이 크다 from three sentences, decide where it carries a complaint, and explain with quoted evidence why the feeling differs.",
+  "thinking": [
+   "Inferring an idiom's meaning from several contexts",
+   "Separating core meaning from connotation",
+   "Quoting evidence"
+  ],
+  "differsFromPlain": "Plain practice asks which meaning a listed idiom has. Here the idiom is never glossed: you infer it from three uses and then judge why the same words sound warm in one sentence and worrying in another.",
+  "prerequisites": [
+   "Can read Korean sentences with -아서/-어서 and -(으)ㄹ 때마다",
+   "Knows that Korean has fixed expressions whose meaning is not the sum of their words"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Three people talk about someone. The same expression 손이 크다 appears each time (it is NOT glossed here).\n(가) 엄마는 손이 커서 김장할 때마다 이웃 몫까지 넉넉하게 담그세요.\n(나) 동생은 손이 커서 월급날이면 친구들에게 밥을 사다가 월말에는 늘 빠듯해요.\n(다) 새 요리사는 손이 커서 찌개를 끓이면 늘 열 명 분이 나와서 매번 반이 남아요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which core meaning of 손이 크다 fits all three sentences?",
+    "hints": [
+     "Cover the idiom and ask what the three situations (김장, 월급날, 찌개) have in common.",
+     "Test each option against (나), the sentence with no cooking."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The person has physically large hands that are useful in the kitchen.",
+      "reveals": "Taking the words literally. Check (나): a paycheck and treating friends have nothing to do with hand size."
+     },
+     {
+      "id": "b",
+      "text": "The person is a skilled cook who makes tasty food in any situation.",
+      "reveals": "Anchoring on (가) and (다). Check (나): there is no cooking in it, so the meaning must be wider than cooking."
+     },
+     {
+      "id": "c",
+      "text": "The person is careless and often drops or breaks things at home.",
+      "reveals": "Importing a different 'hands' idiom. Nothing in the three sentences mentions breaking or dropping."
+     },
+     {
+      "id": "d",
+      "text": "The person handles food, money or gifts in large, generous amounts.",
+      "reveals": "Building a meaning that survives all three contexts, not just the first one."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "In all three, 손이 크다 describes someone who uses, gives or makes things in big quantities. Cooking and money are only the settings."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "In which sentences does the speaker treat 손이 크다 as at least a mild problem? Choose all that apply.",
+    "hints": [
+     "For each sentence, find the clause that says what happened as a result.",
+     "Ask whether that result is something the speaker would be glad about."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "(가) 엄마 ... 이웃 몫까지 넉넉하게 담그세요",
+      "reveals": "Reading 넉넉하게 / 이웃 몫까지 as a warm detail, not a complaint. The sentence has no negative result."
+     },
+     {
+      "id": "b",
+      "text": "(나) 동생 ... 월말에는 늘 빠듯해요",
+      "reveals": "Noticing the result clause 빠듯해요 (money is tight) turns the same habit into a worry."
+     },
+     {
+      "id": "c",
+      "text": "(다) 새 요리사 ... 매번 반이 남아요",
+      "reveals": "Noticing 매번 반이 남아요 (half is wasted every time) as the negative result."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "The idiom's core meaning is neutral. The feeling comes from the result clause: 빠듯해요 and 반이 남아요 signal a problem, while 넉넉하게 in (가) is friendly.",
+    "multi": true
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In English or Korean, explain why the same idiom feels warm in (가) but worrying in (나). Quote at least one Korean phrase from the sentences as evidence.",
+    "hints": [
+     "Quote the result clause of each sentence.",
+     "State what is the same (the idiom) and what is different (the outcome)."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes Korean evidence from the sentences",
+      "mode": "any",
+      "patterns": [
+       "빠듯",
+       "월말",
+       "월급",
+       "김장",
+       "이웃",
+       "넉넉",
+       "밥을 사",
+       "반이 남"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "links the feeling to the context or result",
+      "mode": "any",
+      "patterns": [
+       "context",
+       "result",
+       "outcome",
+       "because",
+       "whereas",
+       "while",
+       "but ",
+       "depend",
+       "결과",
+       "그래서",
+       "때문",
+       "하지만",
+       "반면"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what stays the same and what changes?",
+     "Did I point to the exact words that carry the feeling?",
+     "Could a classmate find my evidence in the text?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "In (가) the clause 이웃 몫까지 넉넉하게 shows sharing, so being generous is praised. In (나) the same habit leads to 월말에는 늘 빠듯해요, so the outcome is a money problem. The idiom is the same; the result clause changes the feeling."
+     },
+     {
+      "text": "손이 크다 only says that she or he uses things in large amounts. In (가) that helps the neighbours, but in (나) 빠듯해요 shows it costs the brother money, so the speaker sounds worried."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It means that the person has big hands, so it is warm.",
+      "why": "No Korean evidence and a literal reading of the idiom."
+     }
+    ],
+    "humanReview": "Whether the quoted phrase really supports the claimed feeling, and whether the learner treats connotation as coming from context."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Core meaning",
+    "full": "States a meaning that fits all three sentences (generous/large amounts)",
+    "partial": "Fits only cooking or only money",
+    "none": "Literal or unrelated meaning"
+   },
+   {
+    "criterion": "Evidence",
+    "full": "Quotes the result clauses and links them to the feeling",
+    "partial": "Quotes but does not connect",
+    "none": "No evidence"
+   }
+  ],
+  "alternatives": [
+   "Answers that call the core meaning 'spending freely' or 'making much' are both acceptable if they cover 김장 and 월급날.",
+   "A learner may say (다) is neutral; accept if 반이 남아요 is discussed."
+  ],
+  "hardCases": [
+   "Some speakers use 손이 크다 as praise for generosity even when money gets tight; the judgement in s2 depends on the result clause, not on the idiom."
+  ],
+  "cautions": {
+   "language": "Idioms are shown unglossed on purpose; the options give English paraphrases only.",
+   "culture": "Kimchi-making (김장) and treating friends on payday are common Korean settings; the task does not assume every learner knows them, since the sentences explain the result.",
+   "accessibility": "No images. Text is plain; the numbered (가)(나)(다) labels are read aloud by screen readers as gana, nada, dada: say 'sentence one, two, three' if needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2 against the key",
+    "Presence of quoted Korean and a context word in s3"
+   ],
+   "human": [
+    "Whether the explanation actually connects the result clause with the feeling"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-02",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "News headline vs. article",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "The headline that says too much",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the sentence in a short news article that claims more than the evidence supports, and rewrite the headline so that it matches the data and notes a limit of the survey.",
+  "thinking": [
+   "Checking a claim against the numbers",
+   "Spotting an unrepresentative sample",
+   "Rewriting a headline accurately"
+  ],
+  "differsFromPlain": "Plain practice asks the meaning of news vocabulary such as 과반 or 응답자. Here you must use those words to test whether a conclusion follows from the numbers and then write a corrected headline.",
+  "prerequisites": [
+   "Can read percentages and numbers in Korean news",
+   "Knows the words 찬성, 반대, 응답자"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Headline: 서울 시민 다수, 대중교통 요금 인상 찬성\n(Read the headline first, then the four sentences of the article, numbered 1 to 4.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One sentence claims more than the sentences before it support. Which one?",
+    "hints": [
+     "Compare the percentages in line 2 with the word used in line 4.",
+     "Ask who the 1,000 people were (line 3) before deciding what they can speak for."
+    ],
+    "lines": [
+     "서울시가 시민 1,000명에게 대중교통 요금 인상에 대한 의견을 물었다.",
+     "'찬성' 48%, '반대' 41%, '잘 모르겠다' 11%였다.",
+     "조사는 평일 출근 시간대 지하철역 앞에서 만난 시민만을 대상으로 했다.",
+     "이에 따라 서울 시민 다수가 요금 인상을 지지하는 것으로 나타났다."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 is the overreach. 48% is less than half, and 41% opposed, so 'majority' (다수) is not supported by line 2. Line 3 also shows that only people met at subway stations at rush hour answered, so they cannot speak for all Seoul citizens."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the headline in Korean so that it matches the numbers, and add one sentence (Korean or English) that names a limit of this survey.",
+    "hints": [
+     "Use the actual figures from line 2 instead of a vague word.",
+     "Look at line 3 for the limit."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses the figure 48",
+      "mode": "any",
+      "patterns": [
+       "48"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not claim that a majority supports the increase",
+      "mode": "none",
+      "patterns": [
+       "다수[가이]?\\s*(요금\\s*인상(에)?\\s*)?(찬성|지지)",
+       "대다수",
+       "과반[이가]?\\s*(요금\\s*인상(에)?\\s*)?(찬성|지지)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names a limit of the sample",
+      "mode": "any",
+      "patterns": [
+       "출근",
+       "지하철",
+       "역 앞",
+       "표본",
+       "대상",
+       "commut",
+       "sample",
+       "subway",
+       "station",
+       "limit",
+       "biased",
+       "only"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my headline say only what 48% and 41% allow?",
+     "Is the limit I named about who was asked, not about the topic?",
+     "Would a reader of my headline be misled about 'all citizens'?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "서울 시민 48% 요금 인상 찬성…반대 41%로 과반엔 못 미쳐. (조사는 출근 시간대 지하철역 앞 시민만 대상이라 전체 시민의 의견으로 보기 어렵다.)"
+     },
+     {
+      "text": "요금 인상 찬성 48%, 반대 41%… 찬성이 가장 많지만 절반은 안 돼. 조사 대상이 출근길 지하철역 이용자뿐이라는 한계가 있다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "서울 시민 다수가 요금 인상에 찬성",
+      "why": "Keeps the unsupported claim and gives no figure or limit."
+     },
+     {
+      "text": "서울 시민 절반 요금 인상 찬성, 48%",
+      "why": "Uses the figure but ignores the sampling limit."
+     }
+    ],
+    "humanReview": "Whether the rewritten headline is natural headline style and whether the limit named is really about representativeness."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Claim vs data",
+    "full": "Rewrite uses the figures and avoids 'majority'",
+    "partial": "Uses figures but still implies most citizens agree",
+    "none": "Keeps the original claim"
+   },
+   {
+    "criterion": "Sampling limit",
+    "full": "Names who was asked and why that limits the conclusion",
+    "partial": "Mentions the sample vaguely",
+    "none": "No limit"
+   }
+  ],
+  "alternatives": [
+   "A headline such as '찬성 48%·반대 41%…엇갈린 시민 의견' is also good.",
+   "Pointing out that 11% had no opinion is a valid extra remark."
+  ],
+  "hardCases": [
+   "Some may argue 48% is 'about half' and the headline 절반 would be fine; the sampling limit still stops 'Seoul citizens' generalisations."
+  ],
+  "cautions": {
+   "language": "Newspaper headline style drops endings and uses '…' and '·'; model answers imitate this, but plain sentences are accepted.",
+   "culture": "The survey is invented and no real organisation is meant; 서울시 appears only as a setting.",
+   "accessibility": "No images. Percent signs are read as 'percent' by most screen readers; the numbers are also spelled in the explanation."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the unsupported line",
+    "Presence of the figure, absence of a majority claim, and a sample-limit word"
+   ],
+   "human": [
+    "Naturalness of the headline and quality of the stated limit"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-03",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "News claim and evidence",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Does the phone cause the grades?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "Decide which additional information would help test whether phone use causes lower grades, spot a reversed-cause reading, and write one question for the researcher.",
+  "thinking": [
+   "Separating correlation from cause",
+   "Choosing the information that would settle a claim",
+   "Asking a precise question"
+  ],
+  "differsFromPlain": "Plain practice reads a news article for its main idea. Here you ask what the article does not tell you and which missing facts would change your judgement.",
+  "prerequisites": [
+   "Can read a short Korean news summary",
+   "Knows the words 성적, 사용 시간, 평균"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "News summary: 한 연구에서 하루 스마트폰 사용 시간이 4시간 이상인 학생의 평균 성적이 2시간 미만인 학생보다 낮았다. 연구자는 \"스마트폰 때문에 성적이 떨어진다\"고 말했다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which extra facts would help you decide whether phone use CAUSES lower grades? Choose all that apply.",
+    "hints": [
+     "For each option ask: would the answer change how likely it is that the phone is the cause?",
+     "Ask what else could differ between heavy and light phone users."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether the same students' grades were measured before and after their phone use increased",
+      "reveals": "Looking for change over time in the same people, which a single comparison cannot show."
+     },
+     {
+      "id": "b",
+      "text": "The brand of phone most of the students use",
+      "reveals": "Treating a detail that is not linked to grades as evidence."
+     },
+     {
+      "id": "c",
+      "text": "Whether students who use phones a lot also sleep less or study fewer hours",
+      "reveals": "Looking for a third factor that could explain both phone use and grades."
+     },
+     {
+      "id": "d",
+      "text": "How famous the researcher's university is",
+      "reveals": "Trusting the speaker's reputation instead of the evidence."
+     },
+     {
+      "id": "e",
+      "text": "Whether grades came from school records or from the students' own reports",
+      "reveals": "Checking how reliable the grade numbers are; this helps the whole claim, though it is not about cause itself."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "To test cause you need before/after data on the same students (a) and a check of other factors such as sleep or study time (c). Brand and fame do not bear on the cause.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "e"
+      ],
+      "reason": "Checking how grades were measured (e) is reasonable because it tests the reliability of the data, even though it does not directly address cause."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "A reader says: \"Maybe students with lower grades use their phones more to escape stress.\" Which idea does this show?",
+    "hints": [
+     "Rewrite the reader's sentence with 'grades' as the cause and 'phone' as the effect.",
+     "Check which option talks about direction, not honesty or sampling."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The study must have been dishonest.",
+      "reveals": "Jumping to accusing the study; the reader's idea is about direction, not honesty."
+     },
+     {
+      "id": "b",
+      "text": "Phone use and grades are certainly unrelated.",
+      "reveals": "Overcorrecting: reversing the direction does not mean there is no link."
+     },
+     {
+      "id": "c",
+      "text": "The cause may run the other way: low grades may lead to more phone use.",
+      "reveals": "Considering the reverse direction of cause and effect."
+     },
+     {
+      "id": "d",
+      "text": "Only the heaviest phone users were surveyed.",
+      "reveals": "Mixing in a sampling worry that the reader's sentence does not mention."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The reader proposes reverse causation. The same numbers fit both directions, which is why the claim '때문에' goes beyond the data."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In Korean, write ONE question you would ask the researcher before accepting \"스마트폰 때문에 성적이 떨어진다\".",
+    "hints": [
+     "Choose a missing fact from step 1.",
+     "Make the question one that a yes/no answer would not close."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is phrased as a question",
+      "mode": "any",
+      "patterns": [
+       "\\?",
+       "까요",
+       "나요",
+       "가요",
+       "습니까",
+       "ㅂ니까",
+       "입니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks about change over time, other factors, or cause",
+      "mode": "any",
+      "patterns": [
+       "수면",
+       "잠",
+       "공부",
+       "이전",
+       "전에",
+       "같은 학생",
+       "추적",
+       "변화",
+       "원인",
+       "인과",
+       "다른 요인",
+       "때문",
+       "sleep",
+       "before",
+       "over time",
+       "same students",
+       "cause",
+       "other factor"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question point to a missing fact, not just doubt?",
+     "Could the answer change my judgement?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "사용 시간이 늘기 전에는 같은 학생들의 성적이 어땠나요?"
+     },
+     {
+      "text": "스마트폰을 오래 쓰는 학생들이 잠이나 공부 시간도 적은 것은 아닌가요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "정말 그런가요?",
+      "why": "A question, but about nothing specific."
+     },
+     {
+      "text": "스마트폰이 나쁜 거예요.",
+      "why": "A statement, not a question."
+     }
+    ],
+    "humanReview": "Whether the question is natural and genuinely probes cause."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Information choice",
+    "full": "Picks before/after data and other factors and rejects fame/brand",
+    "partial": "Picks one correct item",
+    "none": "Picks irrelevant items"
+   },
+   {
+    "criterion": "Question",
+    "full": "A specific question that could change the judgement",
+    "partial": "Specific topic but not a question",
+    "none": "Vague doubt"
+   }
+  ],
+  "alternatives": [
+   "Option e can be chosen with a and c.",
+   "Questions in English are not accepted for s3 on purpose; the aim is to produce Korean."
+  ],
+  "hardCases": [
+   "A student may say sample size is the missing fact; this is relevant but is not in the options, so it is a good extra in s3."
+  ],
+  "cautions": {
+   "language": "The summary uses '때문에', the key cause marker, on purpose; the task points at this word.",
+   "culture": "Phones and school grades are common concerns, no real study or person is named.",
+   "accessibility": "No images. Numbers are written out in words (four hours, two hours) in the model answers where needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2",
+    "Question form and keyword presence in s3"
+   ],
+   "human": [
+    "Quality of the question"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-04",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Tone and implication in chat",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Reading 'oh, okay…'",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Revise your reading of a coworker's reply as more of the chat is revealed, and explain which Korean phrases changed your mind.",
+  "thinking": [
+   "Reading implication behind politeness",
+   "Revising a judgement with new evidence",
+   "Citing phrases as evidence"
+  ],
+  "differsFromPlain": "Plain practice translates short chat lines. Here the same few words are reread three times as more context arrives, and you track how and why your interpretation changes.",
+  "prerequisites": [
+   "Can read casual Korean chat",
+   "Knows that 괜찮아 and 알겠습니다 can be said without agreeing happily"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A team chat at a Korean company. 지민 is the newest member. 선배 is a senior colleague. The chat is revealed in three steps.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each piece of the chat. After each, pick the most reasonable reading of what 지민 feels.",
+    "hints": [
+     "Ask yourself what is said and what is only implied.",
+     "After each new piece, check whether your earlier reading still fits."
+    ],
+    "stages": [
+     {
+      "info": "선배: 내일 회의 자료, 누가 정리해 줄 수 있을까?\n지민: 아, 네…",
+      "ask": "What does '아, 네…' most likely signal?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She is glad to volunteer.",
+        "reveals": "Reading 네 as enthusiasm and ignoring the trailing '아' and '…'."
+       },
+       {
+        "id": "b",
+        "text": "She heard the question and is hesitating, without clearly volunteering.",
+        "reveals": "Noticing that 네 here answers 'I hear you', not 'I will do it'."
+       },
+       {
+        "id": "c",
+        "text": "She clearly refuses.",
+        "reveals": "Reading refusal into a word that literally means yes."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "At this point only a hesitation is visible. 네 can mean 'I heard you', and the opening '아' and the ending '…' suggest unease."
+     },
+     {
+      "info": "선배: 그럼 지민 씨가 해 줄래요?\n지민: 제가요? 아… 네, 알겠습니다.",
+      "ask": "How should you now read her answer?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She will do it but is not happy about it.",
+        "reveals": "Seeing that '알겠습니다' is compliance while '제가요?' shows surprise."
+       },
+       {
+        "id": "b",
+        "text": "She is delighted and thanking the senior.",
+        "reveals": "Treating the formal 알겠습니다 as warmth."
+       },
+       {
+        "id": "c",
+        "text": "She said no politely.",
+        "reveals": "Missing that 알겠습니다 is an acceptance."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "알겠습니다 accepts the job, while 제가요? and the pause show surprise and reluctance. She complied; that is different from agreeing gladly."
+     },
+     {
+      "info": "Later, 지민 writes to a friend: \"자료 정리? 뭐, 어차피 내가 제일 막내인데 어쩌겠어. 괜찮아.\"",
+      "ask": "If you were the senior and could read this, what is the best next step?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Take 괜찮아 at face value and ask for the same next time.",
+        "reveals": "Reading 괜찮아 literally and ignoring 어쩌겠어 (what else can I do)."
+       },
+       {
+        "id": "b",
+        "text": "Offer to share the task or help, and check in with her.",
+        "reveals": "Treating 어쩌겠어 and 막내 as signals of a one-sided burden."
+       },
+       {
+        "id": "c",
+        "text": "Say nothing, because she accepted.",
+        "reveals": "Equating acceptance with agreement."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "어쩌겠어 means she saw no real choice, and 막내 explains why. 괜찮아 here sounds like a way to close the topic, not a statement of comfort."
+     }
+    ],
+    "reflect": "The same words, 네 and 괜찮아, had different weight each time. Pausing marks like 아… and phrases like 어쩌겠어 carry what the polite words do not say."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "In English or Korean, explain how your reading changed from the first to the last piece. Quote at least two Korean phrases that moved you.",
+    "hints": [
+     "Name the first reading you had, then the phrase that made you revise it.",
+     "Pick phrases from different pieces of the chat."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes Korean phrases from the chat",
+      "mode": "any",
+      "patterns": [
+       "아, 네",
+       "제가요",
+       "알겠습니다",
+       "어쩌겠어",
+       "막내",
+       "괜찮아"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "describes a change of reading",
+      "mode": "any",
+      "patterns": [
+       "chang",
+       "revis",
+       "at first",
+       "later",
+       "however",
+       "but",
+       "now",
+       "바뀌",
+       "달라",
+       "처음"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what I first thought?",
+     "Did I tie the change to specific phrases?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "At first I read '아, 네…' as a plain yes, but '제가요?' showed surprise and reluctance, and later '어쩌겠어' told me she accepted only because she is the youngest. So '괜찮아' does not mean she is fine."
+     },
+     {
+      "text": "My view changed after 제가요? and 어쩌겠어. Polite words like 알겠습니다 hid how she felt, and at the end 괜찮아 was her way to end the topic."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "She is happy to help.",
+      "why": "No quoted Korean and no change of reading."
+     }
+    ],
+    "humanReview": "Whether the quoted phrases truly drive the revised reading."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revision",
+    "full": "Describes first reading, the trigger phrase, and the new reading",
+    "partial": "Describes a change without naming a trigger",
+    "none": "No change described"
+   },
+   {
+    "criterion": "Evidence",
+    "full": "Quotes phrases from at least two pieces",
+    "partial": "Quotes one phrase",
+    "none": "No quote"
+   }
+  ],
+  "alternatives": [
+   "In stage 1, 'she has not decided yet' is also reasonable; the key is not reading it as enthusiasm.",
+   "In stage 3 a student may argue for gently asking 지민 first; this counts as option b."
+  ],
+  "hardCases": [
+   "Some readers hear 괜찮아 as genuinely fine. The task asks for the best-supported reading, not certainty."
+  ],
+  "cautions": {
+   "language": "Ellipsis marks (…) in chat carry tone; they are read as 'dot dot dot' by screen readers, so the stage text mentions the pause in words.",
+   "culture": "Hierarchy by age or rank (막내 = the youngest member) is typical of many Korean workplaces; not every workplace works this way.",
+   "accessibility": "No images. The chat is plain text with speaker names."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in the reveal stages",
+    "Quoted phrases and a change word in s2"
+   ],
+   "human": [
+    "Whether the reasoning is persuasive"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-05",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Message to a professor",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Late homework, polite message",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Judge what is off in a text to a professor, then rewrite it so that it asks permission, identifies the writer, and gives a reason.",
+  "thinking": [
+   "Evaluating a message for its audience",
+   "Moving from informing to asking",
+   "Rewriting in a respectful register"
+  ],
+  "differsFromPlain": "Plain practice conjugates -습니다/-어요 endings. Here you decide which features of a real message misfire with a professor and then rewrite the whole message, not a single ending.",
+  "prerequisites": [
+   "Can write -습니다 and -(으)ㄹ까요 sentences",
+   "Knows the words 교수님, 과제, 제출"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "A student sends this KakaoTalk message to a professor at 11 p.m. (ㅎㅎ is a chat abbreviation for laughing, said 'hieut hieut'; ~ is a tilde that adds a light, friendly tone.)\n\n\"교수님 과제 내일 낼게요 ㅎㅎ 몸이 좀 안 좋아서요. 확인 부탁해요~\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which features of this message would a Korean professor probably find inappropriate? Choose all that apply.",
+    "hints": [
+     "Imagine you are the professor reading it at 11 p.m. What would you need to know?",
+     "Separate a missing function (asking, naming) from a matter of taste (symbols)."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "It announces the new deadline ('낼게요') instead of asking permission",
+      "reveals": "Seeing that the writer is deciding something that belongs to the professor."
+     },
+     {
+      "id": "b",
+      "text": "The laughing abbreviation and the tilde make the tone casual",
+      "reveals": "Noticing register markers that suit friends more than a professor."
+     },
+     {
+      "id": "c",
+      "text": "The writer does not say who they are or which class they attend",
+      "reveals": "Seeing that the professor may teach many students and cannot tell who writes."
+     },
+     {
+      "id": "d",
+      "text": "The message gives illness as the reason for the delay",
+      "reveals": "Treating a reason as a fault, although a reason is exactly what is expected."
+     },
+     {
+      "id": "e",
+      "text": "It uses the -요 ending rather than the more formal -습니다",
+      "reveals": "Judging endings: -요 is polite; a formal ending is a plus, but not the main fault here."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "The core problems are that the writer announces rather than asks (a) and does not identify themselves (c). The casual markers (b) and the -요 ending (e) are debatable, and giving a reason (d) is good practice.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "b",
+       "c"
+      ],
+      "reason": "Many readers also find the symbols too casual for a professor; this is a reasonable extra."
+     },
+     {
+      "ids": [
+       "a",
+       "c",
+       "e"
+      ],
+      "reason": "A more formal ending is expected in a written message to a professor, so noticing it is reasonable."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the message in Korean (2-4 sentences) for the professor. Keep the reason, ask for permission, and say who you are.",
+    "hints": [
+     "Start with a greeting and your name or class.",
+     "Turn the deadline into a question."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "opens with a greeting",
+      "mode": "any",
+      "patterns": [
+       "안녕하세요",
+       "교수님,?\\s*안녕"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks permission or makes a request",
+      "mode": "any",
+      "patterns": [
+       "어려울까요",
+       "될까요",
+       "괜찮을까요",
+       "가능할까요",
+       "있을까요",
+       "허락",
+       "양해",
+       "부탁드"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "keeps a reason",
+      "mode": "any",
+      "patterns": [
+       "몸",
+       "아프",
+       "아파",
+       "컨디션",
+       "감기",
+       "병",
+       "몸살"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "avoids casual markers and announcing",
+      "mode": "none",
+      "patterns": [
+       "ㅎㅎ",
+       "ㅋㅋ",
+       "~",
+       "낼게요",
+       "할게요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the professor know who I am?",
+     "Did I ask rather than tell?",
+     "Is the whole message in one respectful register?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "교수님, 안녕하세요. 한국어문학과 수업을 듣는 이서연입니다. 어제부터 몸이 좋지 않아 과제를 오늘까지 제출하기 어려울 것 같습니다. 내일까지 제출해도 괜찮을까요? 양해해 주시면 감사하겠습니다."
+     },
+     {
+      "text": "안녕하세요, 교수님. 목요일 3교시 수업의 김민준입니다. 감기 몸살로 과제를 마무리하지 못했습니다. 하루만 늦게 제출할 수 있을까요? 죄송하지만 허락해 주시면 감사하겠습니다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "교수님 과제 내일 낼게요 ㅎㅎ 몸이 안 좋아서요",
+      "why": "The original message: casual, announces, no greeting."
+     },
+     {
+      "text": "안녕하세요 교수님. 몸이 안 좋아서 과제는 내일 낼게요.",
+      "why": "Has a greeting and a reason but still announces and does not ask or identify the writer."
+     }
+    ],
+    "humanReview": "Whether the register is consistent and the message sounds natural."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Function",
+    "full": "Greets, identifies, gives reason, asks permission",
+    "partial": "Misses one of these",
+    "none": "Still announces without asking"
+   },
+   {
+    "criterion": "Register",
+    "full": "Consistently formal (-습니다/-ㄹ까요), no casual symbols",
+    "partial": "Mostly formal with a lapse",
+    "none": "Casual"
+   }
+  ],
+  "alternatives": [
+   "Using -요 endings can be accepted if the other functions are present.",
+   "A message that offers a make-up plan (e.g. emailing a draft today) is an excellent extra."
+  ],
+  "hardCases": [
+   "Whether to add an apology word varies; both a short 죄송합니다 and none can be fine."
+  ],
+  "cautions": {
+   "language": "Written messages to professors usually take -습니다/-ㄹ까요 endings; -요 is also widely used, so the checker does not demand a particular ending.",
+   "culture": "Norms about messaging a professor late at night differ between universities; many students send such messages the next morning.",
+   "accessibility": "No images. ㅎㅎ and ~ are explained in words so that a screen reader's reading is not required to understand them."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1",
+    "Greeting, request, reason and absence of casual markers in s2"
+   ],
+   "human": [
+    "Naturalness and register of the rewrite"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-06",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Idioms misused",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "The idiom that contradicts its sentence",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": false,
+  "goal": "Find the sentence where an idiom clashes with the rest of the sentence, fix it, and write a new sentence in which the context makes the idiom's meaning inferable.",
+  "thinking": [
+   "Detecting a contradiction between an idiom and its context",
+   "Repairing a sentence",
+   "Giving context clues"
+  ],
+  "differsFromPlain": "Plain practice matches idioms to meanings. Here the meanings are not asked; you detect which use fails and why, and then build context that makes an idiom understandable.",
+  "prerequisites": [
+   "Knows the idioms 발등에 불이 떨어지다, 누워서 떡 먹기, 발이 넓다 as vocabulary items",
+   "Can read short learner essays"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "A learner wrote four sentences for a class blog and used an idiom in each. (Idioms: 발등에 불이 떨어지다 = to face an urgent problem; 누워서 떡 먹기 = to be very easy; 발이 넓다 = to know many people; 소문난 잔치에 먹을 것 없다 = hype that exceeds the reality.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One sentence uses an idiom in a way that contradicts the rest of the sentence. Which line?",
+    "hints": [
+     "Replace the idiom in each line with its meaning, then reread.",
+     "Look for a result that does not follow from the idiom."
+    ],
+    "lines": [
+     "발표 전날 밤에 자료가 사라져서 정말 발등에 불이 떨어졌어요.",
+     "큰일인 줄 알았는데 막상 해 보니 누워서 떡 먹기였어요.",
+     "우리 팀장님은 발이 넓어서 하루도 모임에 가지 않고 집에만 계세요.",
+     "소문난 잔치에 먹을 것 없다더니 그 식당이 딱 그랬어요."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the problem. 발이 넓다 means to know many people, but the rest says the team leader stays home and goes to no gatherings. The other three idioms fit their contexts."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which repair of line 3 keeps the idiom and makes the sentence logical?",
+    "hints": [
+     "Ask which options still make sense if 발이 넓다 means 'knows many people'.",
+     "Eliminate options that stay on the literal meaning of feet."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "우리 팀장님은 발이 넓어서 여러 부서 사람들을 두루 아시고 소개도 잘해 주세요.",
+      "reveals": "Keeping the idiom and giving it a result that matches 'knows many people'."
+     },
+     {
+      "id": "b",
+      "text": "우리 팀장님은 발이 넓어서 키가 큰 편이시고 신발을 따로 맞추세요.",
+      "reveals": "Reading the idiom literally as wide feet."
+     },
+     {
+      "id": "c",
+      "text": "우리 팀장님은 발이 넓어서 어디서나 아는 사람을 만나세요.",
+      "reveals": "Keeping the idiom with a fitting result, though the sentence now focuses on chance meetings."
+     },
+     {
+      "id": "d",
+      "text": "우리 팀장님은 발이 넓어서 신발 가게에서 고르는 데 시간이 오래 걸려요.",
+      "reveals": "Reading the idiom literally as wide feet and shoe shopping."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "A good repair keeps 발이 넓다 as 'knows many people' and adds a consequence, such as knowing people across departments. Literal readings (b, d) use the words, not the idiom.",
+    "acceptable": [
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "Option c also keeps the figurative meaning and gives a fitting consequence."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write ONE Korean sentence with an idiom from the passage so that the context makes its meaning clear to someone who has never seen it.",
+    "hints": [
+     "Add a clause that tells what happened because of the idiom's meaning.",
+     "Avoid explaining the idiom directly; show the situation."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "contains one of the idioms",
+      "mode": "any",
+      "patterns": [
+       "발등에 불",
+       "누워서 떡",
+       "발이 넓",
+       "소문난 잔치"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives a reason or result clause",
+      "mode": "any",
+      "patterns": [
+       "어서",
+       "아서",
+       "해서",
+       "라서",
+       "니까",
+       "는데",
+       "지만",
+       "더니",
+       "때문에"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a reader guess the meaning from my sentence?",
+     "Does my clause contradict the idiom?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "시험 전날 노트북이 고장 나서 발등에 불이 떨어졌지만 친구가 빌려줘서 다행이었어요."
+     },
+     {
+      "text": "그 선배는 발이 넓어서 어느 회사에 가도 아는 사람이 있대요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "발이 넓다.",
+      "why": "Only the idiom; no context clue."
+     },
+     {
+      "text": "저는 한국어를 공부해요.",
+      "why": "No idiom from the passage."
+     }
+    ],
+    "humanReview": "Whether the context really makes the meaning inferable."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Error detection",
+    "full": "Finds the line and says what clashes",
+    "partial": "Finds the line without a reason",
+    "none": "Wrong line"
+   },
+   {
+    "criterion": "Context clues",
+    "full": "Sentence with idiom and a clause that fits its meaning",
+    "partial": "Idiom with weak context",
+    "none": "No idiom or a clashing context"
+   }
+  ],
+  "alternatives": [
+   "Line 2 can be argued weak if the writer found it hard; the clash in line 3 is stronger.",
+   "In s2 both a and c are acceptable."
+  ],
+  "hardCases": [
+   "A clause that uses 하지만 may flip the meaning; check that the clause matches the idiom."
+  ],
+  "cautions": {
+   "language": "Idioms are glossed in English in the material because the aim is to judge use, not to recall meanings.",
+   "culture": "Idioms like 발이 넓다 and 누워서 떡 먹기 are everyday expressions; none refer to a particular group or religion.",
+   "accessibility": "No images. Idioms are written in plain Hangul."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The error line in s1",
+    "The idiom and a reason or result clause in s3"
+   ],
+   "human": [
+    "Whether the context clue is real"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-07",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "News statistics",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Opposed, but not 'most'",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Find the headline that overreaches for given poll results, then build three poll result sets for which 'more opposed than in favour' is true but 'a majority opposes' is not.",
+  "thinking": [
+   "Checking a headline against counts",
+   "Constructing several examples under constraints",
+   "Explaining what a hidden group changes"
+  ],
+  "differsFromPlain": "Plain practice computes percentages. Here you invent several data sets that satisfy one claim but not another, which shows the gap between 'the most' and 'a majority'.",
+  "prerequisites": [
+   "Can add and compare whole numbers up to 200",
+   "Knows 찬성, 반대, 모름, 과반"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "A newspaper polled 200 people about a new policy. Each person answered 찬성 (in favour), 반대 (opposed) or 모름 (not sure). Headline A: 새 정책, 국민 반대가 더 많아.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "The poll found 찬성 60, 반대 90, 모름 50. Which headline claims more than these counts support?",
+    "hints": [
+     "Compute half of 200 first.",
+     "Compare 90 with that number."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "새 정책, 반대가 찬성보다 30명 많아",
+      "reveals": "Reading the counts exactly: 90 - 60 = 30."
+     },
+     {
+      "id": "b",
+      "text": "국민 과반, 새 정책 반대",
+      "reveals": "Treating 'most' as 'more than any other group' and missing that 90 of 200 is under half."
+     },
+     {
+      "id": "c",
+      "text": "새 정책 반대 45%·찬성 30%·모름 25%",
+      "reveals": "Converting counts into shares of the whole group (90, 60, 50 out of 200)."
+     },
+     {
+      "id": "d",
+      "text": "새 정책 반대 응답, 찬성보다 많아",
+      "reveals": "Comparing only the two answers and leaving out the third."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "과반 means more than half. Half of 200 is 100, and 90 is fewer, so b overreaches. The others report the counts correctly.",
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Enter three different poll results (200 people in total) where more people opposed than were in favour, but fewer than or exactly 100 opposed, and at least 20 answered 모름.",
+    "hints": [
+     "Pick the number opposed first; keep it at 100 or below.",
+     "Then choose a smaller number in favour and let 모름 take the rest.",
+     "Check that 찬성 + 반대 + 모름 = 200."
+    ],
+    "vars": [
+     {
+      "name": "a",
+      "label": "찬성 (in favour)"
+     },
+     {
+      "name": "b",
+      "label": "반대 (opposed)"
+     },
+     {
+      "name": "c",
+      "label": "모름 (not sure)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "floor(a)==a && floor(b)==b && floor(c)==c && a>=0 && b>=0 && c>=0",
+      "ok": "Whole non-negative numbers.",
+      "fail": "Use whole numbers of people, not negative."
+     },
+     {
+      "id": "c2",
+      "expr": "a+b+c==200",
+      "ok": "The total is 200.",
+      "fail": "The three numbers must add up to 200."
+     },
+     {
+      "id": "c3",
+      "expr": "b>a",
+      "ok": "More opposed than in favour.",
+      "fail": "Opposed must be greater than in favour."
+     },
+     {
+      "id": "c4",
+      "expr": "b<=100",
+      "ok": "Opposition is not a majority.",
+      "fail": "Opposition is over half, so it IS a majority."
+     },
+     {
+      "id": "c5",
+      "expr": "c>=20",
+      "ok": "At least 20 were not sure.",
+      "fail": "At least 20 must answer 모름."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "a*1000+b",
+    "modelRows": [
+     {
+      "a": 60,
+      "b": 90,
+      "c": 50
+     },
+     {
+      "a": 70,
+      "b": 100,
+      "c": 30
+     },
+     {
+      "a": 40,
+      "b": 85,
+      "c": 75
+     }
+    ],
+    "badRows": [
+     {
+      "a": 50,
+      "b": 110,
+      "c": 40
+     },
+     {
+      "a": 90,
+      "b": 60,
+      "c": 50
+     }
+    ],
+    "explain": "For example 60/90/50 and 70/100/30 both have more people opposed than in favour, yet opposition is not above 100. 100 is exactly half, which is not 'more than half'.",
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "In English or Korean, explain why 'opposed is the largest group' does not allow the headline '과반 반대', and what role the 모름 group plays.",
+     "hints": [
+      "Think about how many people did not oppose.",
+      "Look at your own examples."
+     ],
+     "placeholder": "예: ...",
+     "minChars": 20,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "mentions majority / half",
+       "mode": "any",
+       "patterns": [
+        "과반",
+        "절반",
+        "half",
+        "majority",
+        "100",
+        "50%"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "mentions the not-sure group or the others",
+       "mode": "any",
+       "patterns": [
+        "모름",
+        "무응답",
+        "undecided",
+        "don't know",
+        "not sure",
+        "unsure",
+        "others"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Did I use my own numbers?",
+      "Did I say who is not counted among the opposed?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "반대가 찬성보다 많아도 100명을 넘지 않으면 과반이 아니에요. 모름이라고 답한 사람이 많으면 반대 비율은 절반 미만이라서 '국민 반대' 헤드라인이 과장일 수 있어요."
+      },
+      {
+       "text": "More opposed than in favour does not mean a majority: with 90 of 200 opposed, 110 people did not oppose, many answered 모름 or in favour."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "숫자를 더하면 200이다.",
+       "why": "Restates the total; no reasoning about majority or the third group."
+      }
+     ],
+     "humanReview": "Whether the reasoning distinguishes the largest group from a majority."
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Constraint solving",
+    "full": "Three valid, different result sets",
+    "partial": "Two valid sets",
+    "none": "One or none"
+   },
+   {
+    "criterion": "Explanation",
+    "full": "Distinguishes largest group from majority and uses the not-sure group",
+    "partial": "Mentions only one of these",
+    "none": "No relevant reasoning"
+   }
+  ],
+  "alternatives": [
+   "Any triple with a < b <= 100, c >= 20 and sum 200 is valid, e.g. 20/100/80.",
+   "A student may also include 모름 above 100 (e.g. 0/50/150); this is valid."
+  ],
+  "hardCases": [
+   "A set where 모름 is large but 찬성 is tiny shows the same idea; both are valid."
+  ],
+  "cautions": {
+   "language": "과반 means more than half, exactly half is not 과반; the explanation states this.",
+   "culture": "The poll is invented and describes no real policy or population.",
+   "accessibility": "No images. The counts are given as numbers; enter whole numbers in the three fields."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1",
+    "Validity of the three result sets and the keywords in the explanation"
+   ],
+   "human": [
+    "Whether the reasoning is clear"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-08",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Tone and implication at work",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Is 'I'll think about it' a yes?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "Decide which information would help read an ambiguous workplace reply and pick a follow-up message that finds out without pressuring or assuming.",
+  "thinking": [
+   "Recognising an indirect reply",
+   "Choosing evidence to resolve ambiguity",
+   "Evaluating follow-up messages"
+  ],
+  "differsFromPlain": "Plain practice translates '생각해 보겠습니다' as 'I will think about it'. Here you decide what that reply could mean in context and which facts would settle it.",
+  "prerequisites": [
+   "Can read a short workplace chat",
+   "Knows -겠습니다 as a polite ending"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "현우 sent a proposal to 박 부장님 (a department head) by messenger. The reply: \"좋은 아이디어네요. 한번 생각해 보겠습니다.\" 현우 cannot tell if it is a yes, a no or a maybe.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which extra pieces of information would help 현우 read the reply? Choose all that apply.",
+    "hints": [
+     "Which facts would a person who is really interested produce, but a person who is declining would not?",
+     "Which fact compares this reply with the same person's earlier replies?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether 박 부장님 asked follow-up questions about the budget or schedule",
+      "reveals": "Looking for signs of real interest, which a polite no rarely includes."
+     },
+     {
+      "id": "b",
+      "text": "Whether the message was sent in the morning or at night",
+      "reveals": "Using a detail that says little about the answer."
+     },
+     {
+      "id": "c",
+      "text": "Whether 박 부장님 usually says this before approving or before declining",
+      "reveals": "Looking for the speaker's own habit, the best key to an indirect reply."
+     },
+     {
+      "id": "d",
+      "text": "Whether the reply used -습니다 rather than -어요",
+      "reveals": "Treating the ending as the signal, although endings follow rank, not yes or no."
+     },
+     {
+      "id": "e",
+      "text": "Whether the reply came within minutes or only after several days",
+      "reveals": "Using speed as weak evidence of interest."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "Follow-up questions (a) and the speaker's habit (c) tell the most about whether the reply is a soft no. Time of day (b) and the ending (d) say little, and reply speed (e) is only weak evidence.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "e"
+      ],
+      "reason": "Reply speed (e) is weak but reasonable additional evidence."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which follow-up message from 현우 best finds out the answer without pressure or assumption?",
+    "hints": [
+     "Imagine you are 박 부장님: which message would you answer most easily?",
+     "Check each option for assuming, demanding or pressing."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "그럼 내일부터 바로 진행하겠습니다. 감사합니다, 부장님.",
+      "reveals": "Assuming a yes and acting on it."
+     },
+     {
+      "id": "b",
+      "text": "그럼 하라는 말씀이신가요, 하지 말라는 말씀이신가요? 확실히 알고 싶습니다.",
+      "reveals": "Asking bluntly and putting the senior on the spot."
+     },
+     {
+      "id": "c",
+      "text": "말씀 감사합니다. 검토에 필요한 자료나 일정이 있으시면 알려 주세요.",
+      "reveals": "Offering help and opening the door to a clear answer without pressure."
+     },
+     {
+      "id": "d",
+      "text": "생각해 보신다고 하셨으니 이번 주 안으로 꼭 답을 주셨으면 합니다.",
+      "reveals": "Setting a deadline, which can feel like pressure on a senior."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Option c keeps the senior's face, offers help and invites more information. a assumes a yes, b is blunt and d pressures."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Information choice",
+    "full": "Picks follow-up questions and the speaker's habit",
+    "partial": "Picks one of them",
+    "none": "Picks irrelevant items"
+   },
+   {
+    "criterion": "Follow-up",
+    "full": "Chooses a message that offers help and does not assume or press",
+    "partial": "Chooses an acceptable but weaker message",
+    "none": "Chooses an assuming or pressing message"
+   }
+  ],
+  "alternatives": [
+   "Reply speed (e) is acceptable as extra evidence.",
+   "In s2 only c fully matches; d could be acceptable in workplaces with fixed deadlines."
+  ],
+  "hardCases": [
+   "In some workplaces '생각해 보겠습니다' simply means the manager will think; the task treats it as ambiguous, not as always a no."
+  ],
+  "cautions": {
+   "language": "-겠습니다 can mean future or polite resolve; here it is the latter.",
+   "culture": "Indirect refusal is common in many cultures; the claim that this phrase 'often means no' is a tendency, not a rule.",
+   "accessibility": "No images. Messages are single plain-text lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2"
+   ],
+   "human": [
+    "Open reflection is not included; discuss with a teacher if students disagree"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-09",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Declining a team dinner",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Saying no to a 회식",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Find the phrase in a reply to a team leader that is inappropriate by itself, then rewrite the whole reply to decline politely.",
+  "thinking": [
+   "Evaluating address forms and phrases",
+   "Declining with respect",
+   "Rewriting for a superior"
+  ],
+  "differsFromPlain": "Plain practice drills refusal sentences. Here you evaluate a real draft, find a phrase that is wrong whatever its meaning, and rewrite the message so that the refusal keeps the relationship.",
+  "prerequisites": [
+   "Can write -습니다 sentences",
+   "Knows 회식 (a team dinner), 선약, 공지"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "The team leader posted in the group chat: \"이번 금요일 6시 팀 회식입니다. 다들 참석 바랍니다.\" A new employee has a family appointment that evening. Their draft reply:",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One phrase in the draft is a well-known problem when speaking to a superior, whatever the refusal is. Which line contains it?",
+    "hints": [
+     "Ask which line would sound odd if said to a boss even in a different message.",
+     "Remember what is said when leaving a workplace."
+    ],
+    "lines": [
+     "팀장님, 금요일 회식 공지 확인했습니다.",
+     "그날은 선약이 있어서 못 가요.",
+     "다음에 가요.",
+     "그럼 수고하세요."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 is the problem. 수고하세요 is said to someone of equal or lower rank; to a superior many Koreans prefer 먼저 가보겠습니다 or 고생하셨습니다. Lines 2 and 3 are also too blunt, but they can be fixed by wording."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the reply in Korean (2-4 sentences): acknowledge the notice, decline politely with a reason, and show goodwill.",
+    "hints": [
+     "Thank or acknowledge first, then apologise before the refusal.",
+     "Replace '못 가요' with a softer expression of difficulty."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "acknowledges the notice",
+      "mode": "any",
+      "patterns": [
+       "확인했습니다",
+       "감사",
+       "공지",
+       "알려 주셔서",
+       "알겠습니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "apologises or shows regret",
+      "mode": "any",
+      "patterns": [
+       "죄송",
+       "송구",
+       "양해",
+       "아쉽"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "shows goodwill or an alternative",
+      "mode": "any",
+      "patterns": [
+       "다음",
+       "아쉽",
+       "즐거운 시간",
+       "함께하지 못",
+       "참석하지 못"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "avoids the blunt phrases from the draft",
+      "mode": "none",
+      "patterns": [
+       "수고하세요",
+       "못\\s*가요",
+       "다음에\\s*가요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the refusal come with respect and a reason?",
+     "Did I avoid ending with 수고하세요?",
+     "Does it sound like someone who still values the team?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "팀장님, 회식 공지 확인했습니다. 죄송하지만 그날은 가족과의 선약이 있어 참석하기 어려울 것 같습니다. 다음 회식에는 꼭 참석하겠습니다. 즐거운 시간 보내시기 바랍니다."
+     },
+     {
+      "text": "팀장님, 알려 주셔서 감사합니다. 이번 금요일에는 선약이 있어 함께하지 못해 아쉽습니다. 양해 부탁드립니다. 다음에는 꼭 함께하겠습니다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "팀장님, 금요일 회식 공지 확인했습니다. 그날은 선약이 있어서 못 가요. 다음에 가요. 그럼 수고하세요.",
+      "why": "The original draft: blunt and ends with an inappropriate phrase."
+     },
+     {
+      "text": "금요일에 못 가요.",
+      "why": "Blunt, no acknowledgement, no apology."
+     }
+    ],
+    "humanReview": "Naturalness and whether the tone is neither servile nor curt."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Phrase evaluation",
+    "full": "Identifies 수고하세요 and says why",
+    "partial": "Identifies a line without a reason",
+    "none": "Misses it"
+   },
+   {
+    "criterion": "Polite refusal",
+    "full": "Acknowledges, apologises, gives a reason and shows goodwill",
+    "partial": "Misses one element",
+    "none": "Blunt refusal"
+   }
+  ],
+  "alternatives": [
+   "Declining with a vague reason ('개인 사정이 있어서') is acceptable.",
+   "A reply offering to join for the first hour is also a valid choice."
+  ],
+  "hardCases": [
+   "Acceptance of 수고하세요 to superiors varies by person and workplace; the task treats it as a common source of offence, not a universal rule."
+  ],
+  "cautions": {
+   "language": "수고하세요 and 수고하셨습니다 to superiors are debated; the task uses the more cautious norm.",
+   "culture": "Expectations about attending a 회식 vary; many companies make it voluntary. The task does not say that skipping is wrong.",
+   "accessibility": "No images. The group chat is plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The problem line in s1",
+    "Acknowledgement, apology, goodwill and avoidance of blunt phrases in s2"
+   ],
+   "human": [
+    "Tone and naturalness"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k10-10",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Idioms and implication",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Write a sentence that explains the idiom",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Choose the sentence whose context teaches an idiom, then write your own sentence for an idiom and name its clue and its possible misreading.",
+  "thinking": [
+   "Judging which context reveals meaning",
+   "Creating a self-explaining context",
+   "Anticipating a misreading"
+  ],
+  "differsFromPlain": "Plain practice asks for an idiom's meaning. Here you make the context that lets a reader infer it, and you identify the clue and the misreading risk yourself.",
+  "prerequisites": [
+   "Knows the three idioms from the glosses",
+   "Can write a two-clause Korean sentence"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Idioms: 귀가 얇다 (to be easily swayed by what others say), 입이 무겁다 (to keep secrets), 눈이 높다 (to have high standards, to be picky). A good example sentence lets a reader infer the meaning from the situation.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which sentence best lets a reader infer the meaning of 귀가 얇다 without a gloss?",
+    "hints": [
+     "Cover the idiom and ask what a reader could still learn about 민지.",
+     "Eliminate sentences that would be true if she simply had thin ears."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "민지는 어릴 때부터 친구가 많고 늘 웃는 얼굴인데 귀가 얇아요.",
+      "reveals": "Adding facts that do not bear on the idiom, so the reader cannot infer anything."
+     },
+     {
+      "id": "b",
+      "text": "다들 알다시피 민지는 정말로 귀가 얇은 사람이라서 그 점이 늘 화제예요.",
+      "reveals": "Repeating the idiom with no situation; it explains nothing."
+     },
+     {
+      "id": "c",
+      "text": "민지는 귀가 얇아서 광고에 끌려 사고 친구가 말리면 금방 마음을 바꿔요.",
+      "reveals": "Giving behaviours that show being swayed, and a reason clause that links them."
+     },
+     {
+      "id": "d",
+      "text": "민지는 귀가 얇아서 겨울에 귀마개 없이는 금방 귀가 빨개져요.",
+      "reveals": "Making a context that supports a literal reading of ears."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Option c gives behaviour (buying because of an ad, changing mind when friends object) that reveals the meaning. a adds irrelevant detail, b is circular, and d supports the literal reading.",
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Choose ONE of the three idioms and write two Korean sentences so that a reader who has never seen it can infer its meaning from the situation.",
+    "hints": [
+     "Show what the person does or what happens, not a definition.",
+     "Connect the situation to the idiom with a reason clause."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses one of the idioms",
+      "mode": "any",
+      "patterns": [
+       "귀가\\s*얇",
+       "입이\\s*무(겁|거)",
+       "눈이\\s*높"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives a reason, contrast or result",
+      "mode": "any",
+      "patterns": [
+       "그래서",
+       "그래도",
+       "하지만",
+       "그런데",
+       "때문",
+       "어서",
+       "아서",
+       "해서",
+       "라서",
+       "니까",
+       "는데",
+       "지만",
+       "더니",
+       "면"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would the reader guess the meaning if the idiom were hidden?",
+     "Could my sentences also fit a literal reading?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "수지는 입이 무거워서 내가 말해 준 비밀을 아무에게도 얘기하지 않았다. 그래서 나는 고민이 생기면 수지에게 제일 먼저 말한다."
+     },
+     {
+      "text": "그 사람은 눈이 높아서 소개팅을 열 번 해도 마음에 드는 사람이 없대요. 외모뿐 아니라 성격이나 직업도 까다롭게 따지거든요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "저는 눈이 높아요.",
+      "why": "The idiom alone; no situation or clue."
+     },
+     {
+      "text": "준호는 키가 커요.",
+      "why": "Does not use any of the idioms."
+     }
+    ],
+    "humanReview": "Whether the situation really reveals the meaning and the Korean is natural."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In English, name the exact Korean words in your sentences that give the meaning away, and say how a reader could still misread the idiom (for example literally).",
+    "hints": [
+     "Quote the clause that carries the clue.",
+     "Think of the literal meaning of the body part."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes Korean words",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]{2,}"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names a possible misreading",
+      "mode": "any",
+      "patterns": [
+       "literal",
+       "misread",
+       "different meaning",
+       "ambigu",
+       "mistake",
+       "literally",
+       "actual",
+       "body"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I quote, not paraphrase?",
+     "Is my misreading a real alternative?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The clue is 아무에게도 얘기하지 않았다; a reader could still take 입이 무겁다 literally as a heavy mouth, but the secret context makes that unlikely."
+     },
+     {
+      "text": "눈이 높아서 + 마음에 드는 사람이 없대요 are the clues. Someone might misread 눈 as eyesight, but the dating context makes the standards reading clear."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It is clear.",
+      "why": "No quoted words and no misreading."
+     }
+    ],
+    "humanReview": "Whether the identified clue is the real one."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Context quality",
+    "full": "Situation reveals the meaning and a reason clause links it",
+    "partial": "Some situation but weak link",
+    "none": "Idiom alone or circular"
+   },
+   {
+    "criterion": "Self-evaluation",
+    "full": "Quotes the clue and names a realistic misreading",
+    "partial": "Quotes but no misreading",
+    "none": "Neither"
+   }
+  ],
+  "alternatives": [
+   "Any of the three idioms is acceptable; sentences about oneself or about a character are both fine.",
+   "A longer story with three sentences is also fine."
+  ],
+  "hardCases": [
+   "A sentence may reveal meaning only through a gloss ('귀가 얇다, 즉 ...'); treat as weaker, since the aim is inference."
+  ],
+  "cautions": {
+   "language": "The glosses are given in English; the task aims at creating context, not at recalling them.",
+   "culture": "Idioms with body parts exist in many languages, but their meanings differ; the task warns about literal readings.",
+   "accessibility": "No images. The checker looks for two or more Hangul characters in s3 and does not judge quality."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Idiom use, connectors and quoted Korean in s2 and s3"
+   ],
+   "human": [
+    "Whether the clues truly reveal the idiom"
+   ]
+  }
+ }
+]

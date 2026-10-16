@@ -13,8 +13,8 @@ const res = await build({
   jsx: "automatic", tsconfig: "tsconfig.json", write: false, define: { "process.env.NODE_ENV": '"production"' }, legalComments: "none",
 });
 const js = res.outputFiles[0].text;
-const cssDir = ".next/static/css";
-const css = fs.readdirSync(cssDir).filter((f) => f.endsWith(".css")).map((f) => fs.readFileSync(path.join(cssDir, f), "utf8")).join("\n");
+const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".css") ? [path.join(d, e.name)] : []));
+const css = walk(".next/static").map((f) => fs.readFileSync(f, "utf8")).join("\n");
 if (!/\.bg-slate-900|bg-slate-900/.test(css)) throw new Error("compiled CSS lacks the player's utility classes: run `next build` first");
 const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Thinking tasks (review pilot)</title><style>${css.replace(/<\/style/gi, "<\\/style")}</style></head><body><div id="root"></div><script src="/app.js"></script></body></html>`;
 const worker = `const HTML = ${JSON.stringify(html)};

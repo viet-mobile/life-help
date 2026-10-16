@@ -1,0 +1,1767 @@
+[
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-01",
+  "topic": "중심 내용과 세부 근거",
+  "title": "'가장 인기 있다'는 말, 글이 뒷받침할까?",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "글의 숫자 정보가 주장(인기)을 뒷받침하는지 따져 보고, 주장을 확인할 수 있는 질문을 영어로 만든다.",
+  "thinking": [
+   "주장과 글의 세부 정보를 비교하기",
+   "'있는 것'과 '읽히는 것'을 구분하기",
+   "부족한 근거를 채울 질문 만들기"
+  ],
+  "differsFromPlain": "단순 연습은 글에서 숫자나 사실을 찾는 문제다. 여기서는 책의 수라는 정보가 '인기'라는 주장의 근거가 되는지 판단하고, 근거를 보충할 질문을 직접 만든다.",
+  "prerequisites": [
+   "most, popular, about 같은 쉬운 낱말",
+   "Twelve, four 같은 숫자 낱말"
+  ],
+  "minutes": 8,
+  "material": "Mina의 반에는 책꽂이가 있는 독서 코너가 있어요.\n\nOur class has a reading corner. There are 20 books on the shelf. Twelve of them are about animals. Four are about space, and four are story books. The teacher did not buy any new books this year.\n\nMina says, \"Animal books are the most popular in our class.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Mina의 말(동물 책이 가장 인기 있다)을 글이 뒷받침하는지 판단하세요.",
+    "hints": [
+     "Mina의 말에서 '인기 있다'가 무엇을 뜻하는지 생각하고, 글에 그것을 알려 주는 문장이 있는지 찾아보세요.",
+     "'책꽂이에 몇 권 있다'와 '학생들이 몇 번 읽었다'가 같은 정보인지 따져 보세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "근거가 충분하다. 20권 중 12권이 동물 책이므로 학생들이 가장 많이 읽을 것이다.",
+      "reveals": "책의 수와 읽은 횟수를 같은 것으로 보았는지 돌아보세요."
+     },
+     {
+      "id": "b",
+      "text": "근거가 부족하다. 책의 수만 있고, 학생들이 읽는 책은 나와 있지 않다.",
+      "reveals": "주장에 필요한 정보와 글이 주는 정보가 같은지 비교했습니다."
+     },
+     {
+      "id": "c",
+      "text": "근거가 충분하다. 선생님이 새 책을 사지 않았으므로 학생들이 낡은 책만 읽을 것이다.",
+      "reveals": "'새 책을 사지 않았다'가 어떤 책이 인기 있는지와 이어지는지 확인해 보세요."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "글은 책꽂이에 있는 책의 수(동물 책 12권 등)만 알려 줍니다. 학생들이 어떤 책을 많이 읽거나 빌렸는지는 나와 있지 않아서 '가장 인기 있다'는 말을 확인할 수 없어요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Mina의 말이 맞는지 확인하려면 학생들에게 어떤 질문을 해야 할까요? 영어로 질문 한 문장을 쓰세요.",
+    "placeholder": "예: Which books ...?",
+    "minChars": 12,
+    "hints": [
+     "'인기'를 알려 주는 행동(읽기, 빌리기, 고르기)을 하나 정하세요.",
+     "그 행동을 묻는 의문문을 쓰고 끝에 물음표를 붙이세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "물음표가 있는 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\?"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "읽기·빌리기·좋아하기 등 '인기'를 확인하는 말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bread(?:s|ing)?\\b",
+       "\\bborrow(?:ed|s|ing)?\\b",
+       "\\blike\\b",
+       "\\bfavou?rites?\\b",
+       "\\bpopular\\b",
+       "\\bcheck(?:ed)?\\s+out\\b",
+       "\\bchoose\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내 질문의 답이 '어떤 책을 많이 읽는지'를 알려 주나요?",
+     "책의 수를 묻는 질문이 아니라 학생의 행동을 묻나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Which books do you read the most?"
+     },
+     {
+      "text": "How many students borrowed animal books last month?",
+      "note": "빌린 횟수로 확인하는 또 다른 좋은 질문."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Are there twelve animal books?",
+      "why": "책의 수는 이미 글에 나와 있다. 인기를 확인하지 못한다."
+     },
+     {
+      "text": "I like animal books.",
+      "why": "질문이 아니라 자기 의견이다."
+     }
+    ],
+    "humanReview": "질문이 실제로 인기를 확인하는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 물음표와 행동 낱말만 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "근거 판단",
+    "full": "책의 수와 인기가 다른 정보임을 설명함",
+    "partial": "근거가 부족하다고만 말함",
+    "none": "숫자만 보고 주장을 인정함"
+   },
+   {
+    "criterion": "확인 질문",
+    "full": "학생의 읽기·빌리기를 묻는 질문을 만듦",
+    "partial": "질문은 있으나 인기와 관계가 약함",
+    "none": "책의 수 등 이미 있는 정보를 다시 물음"
+   }
+  ],
+  "alternatives": [
+   "'근거가 부족하다'에 더해 '12권이 많으니 가능성은 있다'고 덧붙이는 것도 타당하다.",
+   "설문, 대출 기록 확인, 선생님께 묻기 등 다른 확인 방법을 제안해도 된다."
+  ],
+  "hardCases": [
+   "'Do you like animal books?'처럼 인기를 직접 묻는 질문은 읽는 행동까지는 안 묻지만 약한 근거로 허용할 수 있다."
+  ],
+  "cautions": {
+   "language": "Twelve of them, the most 같은 표현이 어려우면 낱말 뜻을 알려 주되 판단 단서는 주지 않는다. 학생 답은 문법 오류보다 질문의 내용을 본다.",
+   "culture": "학급 독서 코너는 학교 생활에서 흔한 소재다. 특정 책이나 인물은 쓰지 않았다.",
+   "accessibility": "책꽂이 그림 없이 글로만 제시했다. 숫자는 Twelve, Four처럼 낱말로 적어 화면 낭독기가 그대로 읽는다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "선택지 정답",
+    "질문 형태(물음표)와 행동 낱말 유무"
+   ],
+   "human": [
+    "질문이 주장을 실제로 확인하는지",
+    "영어 표현의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-02",
+  "topic": "짧은 글·광고·메시지 읽기",
+  "title": "Jin의 요약에서 틀린 줄 찾아 고치기",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "짧은 글과 요약을 줄마다 비교해 글과 어긋난 줄을 찾고, 영어로 고쳐 쓴다.",
+  "thinking": [
+   "요약의 각 줄을 글의 문장과 대조하기",
+   "사건의 순서와 시간(morning/afternoon) 확인하기",
+   "글에 맞게 문장 고쳐 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 글을 읽고 질문에 답하는 문제다. 여기서는 남이 쓴 요약이 글과 맞는지 줄마다 검증하고 틀린 줄을 직접 고쳐 쓴다.",
+  "prerequisites": [
+   "rain, lake, fish, cook 같은 쉬운 낱말",
+   "morning, afternoon의 뜻"
+  ],
+  "minutes": 8,
+  "material": "Ben에 관한 짧은 글이에요.\n\nBen went to the lake on Saturday. He wanted to fish, but it rained in the morning, so he stayed at his uncle's house and played cards. In the afternoon the rain stopped. Ben and his uncle walked to the lake and caught two fish. They cooked the fish for dinner.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Jin이 이 글을 네 줄로 요약했어요. 글과 맞지 않는 줄을 고르세요.",
+    "hints": [
+     "요약의 줄을 하나씩 읽고, 글에서 같은 내용이 나온 문장을 찾아 나란히 놓으세요.",
+     "시간을 나타내는 낱말(morning, afternoon, all day)에 표시하고 글과 비교하세요."
+    ],
+    "lines": [
+     "Ben went to the lake on Saturday.",
+     "It rained all day, so he could not fish.",
+     "He played cards with his uncle in the morning.",
+     "They ate the fish for dinner."
+    ],
+    "wrong": [
+     1
+    ],
+    "explain": "2번째 줄이 틀렸어요. 글에서는 비가 아침에만 왔고 오후에는 그쳤으며, 그래서 Ben은 오후에 낚시를 했어요. 1, 3, 4번째 줄은 글과 맞아요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "틀린 줄을 글에 맞게 영어로 고쳐 쓰세요. 한두 문장이면 됩니다.",
+    "placeholder": "예: It rained ...",
+    "minChars": 15,
+    "hints": [
+     "글에서 비가 온 때와 그친 때를 먼저 찾으세요.",
+     "고친 문장에 그 두 때(morning, afternoon)를 넣어 보세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "비(rain)를 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\brain(?:s|ed|ing|y)?\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "비가 온/그친 때를 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bmorning\\b",
+       "\\bafternoon\\b",
+       "\\bstop(?:s|ped)?\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "'하루 종일 비가 왔다'는 틀린 내용이 아니다",
+      "mode": "none",
+      "patterns": [
+       "\\brain(?:ed|s)?\\s+all\\s+day\\b",
+       "\\b(?:did\\s+not|didn['’]t|never)\\s+rain\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "비가 아침에만 왔다는 사실이 들어 있나요?",
+     "그 결과 오후에 낚시를 했다는 흐름과 맞나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "It rained in the morning, but the rain stopped in the afternoon, so he could fish."
+     },
+     {
+      "text": "It rained only in the morning. In the afternoon he went to the lake and fished.",
+      "note": "'only in the morning'으로 고친 또 다른 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It rained all day, so he could not fish.",
+      "why": "틀린 줄을 그대로 베꼈다."
+     },
+     {
+      "text": "He fished a lot.",
+      "why": "비에 대한 내용이 빠졌다."
+     }
+    ],
+    "humanReview": "고친 문장이 글과 모순되지 않는지, 문법이 자연스러운지는 사람이 본다. 'It did not rain'처럼 글과 반대인 답은 규칙으로 일부만 걸러진다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "오류 찾기",
+    "full": "2번째 줄을 글의 문장과 대조해 찾음",
+    "partial": "다른 줄도 의심하나 결국 찾음",
+    "none": "맞는 줄을 틀렸다고 함"
+   },
+   {
+    "criterion": "고쳐 쓰기",
+    "full": "비가 아침에만 왔고 오후에 그쳤음을 담음",
+    "partial": "비 내용은 있으나 때가 불분명함",
+    "none": "오류를 그대로 두거나 글과 다른 내용"
+   }
+  ],
+  "alternatives": [
+   "'It rained in the morning, so he could not fish then.'처럼 때를 한정해도 맞다.",
+   "4번째 줄의 'ate'는 'cooked ... for dinner'에서 자연스럽게 이어지므로 틀린 줄이 아니다."
+  ],
+  "hardCases": [
+   "'The rain stopped in the afternoon.'만 쓴 답은 아침 비를 말하지 않아도 오류를 바로잡았다고 볼 수 있어 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "caught, stopped 같은 과거형이 어려우면 뜻만 알려 준다. 학생 답의 시제 오류는 내용이 맞으면 감점하지 않는다.",
+   "culture": "주말 낚시와 삼촌 집은 일상적인 소재다. 특정 지역이나 인물을 쓰지 않았다.",
+   "accessibility": "그림 없이 글로만 제시했다. 줄 번호는 1부터 화면에 나온다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "틀린 줄 위치",
+    "비·시간 낱말 유무와 틀린 문장 베끼기 여부"
+   ],
+   "human": [
+    "고친 문장의 정확성과 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-03",
+  "topic": "짧은 글·광고·메시지 읽기",
+  "title": "자전거 가게 광고, Mia의 계획 점검하기",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "광고의 조건(오늘만, 닫는 시각)과 친구의 계획을 줄마다 대조해 어긋나는 부분을 찾고 영어로 알려 준다.",
+  "thinking": [
+   "광고 문구와 계획의 각 줄을 대조하기",
+   "today only, 6 p.m. 같은 조건 확인하기",
+   "어긋나는 점을 근거와 함께 전달하기"
+  ],
+  "differsFromPlain": "단순 연습은 광고에서 가격이나 시각을 찾는 문제다. 여기서는 친구의 계획 네 줄을 광고 조건과 하나씩 비교해 틀린 줄을 모두 찾고, 이유를 영어로 알려 준다.",
+  "prerequisites": [
+   "sale, open, bike, off의 뜻",
+   "a.m. / p.m. 읽기"
+  ],
+  "minutes": 8,
+  "material": "Mia가 거리에서 이 광고를 봤어요(그림 없이 글로만 적었어요).\n\nRIDE BIKE SHOP\nBIG SALE! All bikes 30% off.\nToday only!\nOpen 9 a.m. - 6 p.m.\n12 Park Street\n\n(30%는 '서티 퍼센트'라고 읽어요.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Mia가 계획을 네 줄로 말했어요. 광고와 맞지 않는 줄을 하나 고르세요. (맞지 않는 줄이 둘 이상일 수 있어요. 하나만 골라도 돼요.)",
+    "hints": [
+     "광고에서 날짜·시각과 관계된 문구(Today only, Open)에 표시하세요.",
+     "Mia의 줄 중 날짜나 시각을 말하는 줄을 광고의 그 문구와 비교하세요."
+    ],
+    "lines": [
+     "Ride Bike Shop has a sale.",
+     "All bikes are 30% off.",
+     "I can buy a sale bike tomorrow, on Saturday.",
+     "I can go to the shop after school at 7 p.m."
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "3번째 줄은 'Today only!' 때문에 틀렸고(내일은 세일이 아님), 4번째 줄은 가게가 오후 6시에 닫는데 오후 7시에 간다고 해서 틀렸어요. 1, 2번째 줄은 광고와 맞아요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Mia에게 영어로 답장하세요. 계획에서 안 되는 점 하나를 이유와 함께 알려 주세요.",
+    "placeholder": "예: Mia, ...",
+    "minChars": 20,
+    "hints": [
+     "광고에서 문제가 되는 문구 하나를 골라 그대로 가져오세요.",
+     "'그래서 ~할 수 없어'에 해당하는 so를 써서 한 문장으로 이으세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "광고 조건(오늘만, 닫는 시각 등)을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\btoday\\b",
+       "\\btomorrow\\b",
+       "\\bclos(?:e|es|ed|ing)\\b",
+       "\\b6\\b",
+       "\\bsix\\b",
+       "\\b7\\b",
+       "\\bseven\\b",
+       "\\blate\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "계획에 그냥 찬성하는 답이 아니다",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(?:yes|great|ok(?:ay)?|good)\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "광고의 어느 문구 때문에 안 되는지 말했나요?",
+     "해결 방법(오늘 가기, 6시 전에 가기)을 덧붙였나요? (선택)"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Mia, the sale is today only, so you cannot buy a sale bike tomorrow."
+     },
+     {
+      "text": "The shop closes at 6 p.m., so 7 p.m. is too late. Go before 6!",
+      "note": "해결 방법까지 말한 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Great, let's go to the sale!",
+      "why": "문제를 놓치고 찬성했다."
+     },
+     {
+      "text": "I like bikes very much.",
+      "why": "광고 조건과 관계없는 말이다."
+     }
+    ],
+    "humanReview": "이유가 광고 문구와 일치하는지, 영어가 자연스러운지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "광고 대조",
+    "full": "날짜와 시각 두 곳을 모두 광고와 연결함",
+    "partial": "한 곳만 찾음",
+    "none": "맞는 줄을 틀렸다고 함"
+   },
+   {
+    "criterion": "이유 전달",
+    "full": "광고 조건을 근거로 영어로 설명함",
+    "partial": "문제만 말하고 근거가 약함",
+    "none": "근거 없이 찬성하거나 무관한 말"
+   }
+  ],
+  "alternatives": [
+   "3번째 줄만 또는 4번째 줄만 찾아도 인정한다.",
+   "'tomorrow'가 아닌 'today'로 가자고 제안하는 답도 좋다."
+  ],
+  "hardCases": [
+   "'Open 9 a.m. - 6 p.m.'에서 6시 정각에 닫는지 직전까지 여는지는 광고에 없으므로, '6시 이후는 안 된다'는 정도로만 판단한다."
+  ],
+  "cautions": {
+   "language": "30% off(서티 퍼센트 오프)는 읽는 법을 자료에 적어 두었다. 'Today only'의 뜻은 단서이므로 풀이 전에 알려 주지 않는다.",
+   "culture": "가상의 가게 이름과 주소이며 실제 상점과 관계없다. 원화·달러 같은 화폐는 쓰지 않았다.",
+   "accessibility": "광고를 줄 단위 글로 적어 낭독기로 읽을 수 있다. 숫자 6, 7은 p.m.과 함께 읽히므로 시각임을 분명히 했다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "틀린 줄 위치",
+    "광고 조건 낱말 유무와 무조건 찬성 여부"
+   ],
+   "human": [
+    "이유의 정확성",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-04",
+  "topic": "정보 확인 질문하기",
+  "title": "포스터를 읽을수록 달라지는 생각",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "포스터의 정보가 단계별로 공개될 때마다 판단을 고치고, 포스터에 없는 정보를 확인하는 질문을 영어로 만든다.",
+  "thinking": [
+   "새 정보를 만날 때마다 판단 수정하기",
+   "작은 글씨와 조건 읽기",
+   "이미 답이 나온 것과 아직 모르는 것 구분하기"
+  ],
+  "differsFromPlain": "단순 연습은 포스터 전체를 읽고 한 번 답한다. 여기서는 정보를 나눠 보며 판단이 바뀌는 과정을 겪고, 마지막에 포스터에 없는 정보만 골라 질문한다.",
+  "prerequisites": [
+   "free, member, friend, won(원)의 뜻"
+  ],
+  "minutes": 10,
+  "material": "Jun은 Green Library의 회원이 아니에요. 친구 Ara는 Green Library의 회원이에요. 둘이 도서관 앞 포스터를 한 줄씩 읽어 보려고 해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "정보가 하나씩 공개돼요. 매번 지금까지의 정보로 Jun이 낼 돈을 예측해 보세요.",
+    "hints": [
+     "이번에 새로 나온 문장이 앞의 판단을 바꾸는지 확인하세요.",
+     "Jun이 회원인지, Ara가 회원인지 구분해서 읽으세요."
+    ],
+    "stages": [
+     {
+      "info": "포스터 제목: FREE ART CAMP! This Sunday. Green Library.",
+      "ask": "이 제목만 보면 Jun은 돈을 낼까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "낼 필요가 없다고 본다.",
+        "reveals": "제목의 FREE만으로 판단하는 첫 추측이에요."
+       },
+       {
+        "id": "b",
+        "text": "더 읽어 봐야 안다.",
+        "reveals": "제목 밖에 조건이 있을 수 있다고 본 판단이에요."
+       },
+       {
+        "id": "c",
+        "text": "반드시 낸다.",
+        "reveals": "아직 돈을 내라는 말이 나오지 않았어요."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b"
+      ],
+      "after": "제목만으로는 '무료'처럼 보이지만, 작은 글씨에 조건이 있을 수 있어요."
+     },
+     {
+      "info": "작은 글씨: Free for Green Library members. Other children: 5,000 won.",
+      "ask": "Jun은 회원이 아니에요. 이제 Jun은 얼마를 낼까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "0원",
+        "reveals": "회원에게만 무료라는 조건을 놓쳤을 수 있어요."
+       },
+       {
+        "id": "b",
+        "text": "5,000원",
+        "reveals": "회원이 아닌 아이에 해당하는 줄을 찾아 연결했어요."
+       },
+       {
+        "id": "c",
+        "text": "참가할 수 없다",
+        "reveals": "참가 금지라는 말은 없어요."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "회원만 무료이고 다른 아이는 5,000원이므로 Jun은 5,000원이에요."
+     },
+     {
+      "info": "맨 아래 줄: Members can bring one friend for free.",
+      "ask": "Jun이 회원인 Ara와 함께 가면 얼마를 낼까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "5,000원 (Jun은 회원이 아니므로)",
+        "reveals": "앞 줄의 조건만 보고 새 줄을 반영하지 않았을 수 있어요."
+       },
+       {
+        "id": "b",
+        "text": "0원 (Ara가 데려가는 친구이므로)",
+        "reveals": "새 줄과 두 사람의 관계를 연결했어요."
+       },
+       {
+        "id": "c",
+        "text": "알 수 없다",
+        "reveals": "새 줄이 Jun의 경우에 해당하는지 다시 확인해 보세요."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "회원은 친구 한 명을 무료로 데려갈 수 있어요. Ara가 회원이므로 Jun은 Ara와 함께 가면 무료예요."
+     }
+    ],
+    "reflect": "두 번째 줄에서 '무료' 판단을 고쳤고, 세 번째 줄에서 다시 고쳤어요. 어떤 말이 판단을 바꿨는지, 처음 제목만 믿었을 때 무엇이 빠졌는지 돌아보세요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "포스터에는 아직 나오지 않은 정보가 있어요(예: 몇 시에 시작하는지, 어떻게 신청하는지). 이런 정보를 확인하는 질문을 영어로 한 문장 쓰세요. 돈에 대한 질문은 이미 답이 나왔으니 빼세요.",
+    "placeholder": "예: What time ...?",
+    "minChars": 12,
+    "hints": [
+     "포스터에서 '날짜'는 있고 '시각'이나 '신청 방법'이 있는지 찾아보세요.",
+     "아직 모르는 것 하나를 골라 의문문으로 쓰고 물음표를 붙이세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "물음표가 있는 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\?"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "시각·신청·장소 등 새 정보를 묻는다",
+      "mode": "any",
+      "patterns": [
+       "\\bsign(?:ing)?\\s*up\\b",
+       "\\bregist",
+       "\\btime\\b",
+       "\\bstart",
+       "\\bbegin",
+       "\\bwhen\\b",
+       "\\bwhere\\b",
+       "\\bhow\\b",
+       "\\bbring\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "이미 답이 나온 돈 질문이 아니다",
+      "mode": "none",
+      "patterns": [
+       "\\bhow much\\b",
+       "\\bfree\\b",
+       "\\bpay\\b",
+       "\\bprice\\b",
+       "\\bcost"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내 질문의 답이 포스터에 정말 없나요?",
+     "질문이 한 가지만 분명하게 묻나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "What time does the art camp start on Sunday?"
+     },
+     {
+      "text": "How can we sign up for the camp?",
+      "note": "신청 방법을 묻는 질문."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Is it free for me?",
+      "why": "돈에 대한 답은 이미 포스터에 있다."
+     },
+     {
+      "text": "The camp is fun.",
+      "why": "질문이 아니다."
+     }
+    ],
+    "humanReview": "질문이 포스터에 없는 정보를 묻는지, 영어가 자연스러운지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "판단 수정",
+    "full": "각 단계의 새 정보로 예측을 고침",
+    "partial": "일부 단계에서만 고침",
+    "none": "처음 판단을 그대로 유지"
+   },
+   {
+    "criterion": "확인 질문",
+    "full": "포스터에 없는 정보를 묻는 영어 질문을 씀",
+    "partial": "질문은 있으나 이미 나온 정보를 물음",
+    "none": "질문이 아니거나 무관함"
+   }
+  ],
+  "alternatives": [
+   "1단계에서 '낼 필요가 없다'와 '더 읽어 봐야 안다'는 모두 합리적인 첫 추측이다.",
+   "질문은 시작 시각, 신청 방법, 준비물, 끝나는 시각 등 포스터에 없는 정보면 된다."
+  ],
+  "hardCases": [
+   "3단계 후에도 'Ara가 꼭 함께 가야 하는지'를 확인하려는 학생의 질문은 합리적이며, 포스터만으로는 확정되지 않는다고 볼 수 있다."
+  ],
+  "cautions": {
+   "language": "bring one friend for free 같은 표현은 그대로 읽게 하되 뜻은 단서이므로 미리 풀어 주지 않는다. 5,000 won은 '오천 원'으로 읽는다.",
+   "culture": "도서관 회원 무료 행사는 흔한 소재다. 가상의 도서관 이름이며 실제 기관이 아니다.",
+   "accessibility": "포스터를 그림 없이 글 줄로 단계별 제시했다. 새 정보가 나올 때마다 화면 낭독기가 그 줄만 읽도록 단계로 나눴다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "단계별 합리적 예측",
+    "물음표와 새 정보 낱말 유무, 돈 질문 제외"
+   ],
+   "human": [
+    "질문이 새 정보를 묻는지",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-05",
+  "topic": "중심 내용과 세부 근거",
+  "title": "학교 텃밭 글의 중심 내용과 뒷받침 문장",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "문장들 중 중심 내용을 고르고, 중심 내용을 뒷받침하는 세부 내용과 단순한 사실을 구분한 뒤, 뒷받침 문장을 직접 만든다.",
+  "thinking": [
+   "중심 내용과 세부 내용을 구분하기",
+   "뒷받침하는 정보와 관계없는 정보 가려내기",
+   "중심 내용에 맞는 세부 문장 만들기"
+  ],
+  "differsFromPlain": "단순 연습은 글 제목이나 주제를 한 번 고르는 문제다. 여기서는 어느 문장이 중심이고 어느 문장이 그것을 뒷받침하는지 구분하고, 같은 글에서 뒷받침과 상관없는 사실도 가려내며 새 뒷받침 문장을 만든다.",
+  "prerequisites": [
+   "garden, plant, insect, seed의 뜻",
+   "문단은 하나의 큰 생각과 작은 생각들로 이루어진다는 경험"
+  ],
+  "minutes": 10,
+  "material": "Our school has a small garden next to the gym. Last spring, the students planted beans, tomatoes, and flowers. Now they water the plants every day and make notes about the insects they see. Some students learned that bees help flowers make seeds. Mr. Han says, \"The garden is the best classroom in our school.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "이 글 전체의 중심 내용에 가장 알맞은 문장은?",
+    "hints": [
+     "각 보기가 글의 한 부분만 말하는지, 글 전체를 아우르는지 비교하세요.",
+     "보기 하나를 글의 다른 모든 문장과 연결해 보고, 가장 많은 문장과 이어지는 것을 찾으세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Students planted beans, tomatoes, and flowers.",
+      "reveals": "글의 한 문장에 있는 세부 내용을 중심으로 본 것이에요."
+     },
+     {
+      "id": "b",
+      "text": "The garden is next to the gym.",
+      "reveals": "장소를 알려 주는 사실이며 다른 문장들과 이어지는지 확인해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Students water the plants every day.",
+      "reveals": "하루 일과 중 한 가지를 중심으로 본 것이에요."
+     },
+     {
+      "id": "d",
+      "text": "The garden helps students learn.",
+      "reveals": "여러 문장의 내용을 하나로 묶을 수 있는지 생각한 선택이에요."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "텃밭에서 심고, 물 주고, 곤충을 관찰해 적고, 벌의 역할을 배우는 것은 모두 '텃밭이 배움의 장소'라는 큰 생각으로 묶입니다. 나머지 보기는 그 중 한 가지 사실이에요."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "중심 내용 'The garden helps students learn.'을 뒷받침하는 문장을 모두 고르세요.",
+    "hints": [
+     "각 보기를 읽고 '이것이 학생들이 배운다는 증거인가?'라고 스스로 물어보세요.",
+     "사실이지만 배움과 관계가 없는 보기를 먼저 지우세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The garden is small.",
+      "reveals": "사실이지만 배움과 이어지는 내용인지 따져 보세요."
+     },
+     {
+      "id": "b",
+      "text": "Students make notes about insects.",
+      "reveals": "학생이 하는 활동이 배움의 증거가 되는지 생각한 선택이에요."
+     },
+     {
+      "id": "c",
+      "text": "Some students learned that bees help flowers make seeds.",
+      "reveals": "배운 내용을 직접 말하는 문장을 찾아 연결했어요."
+     },
+     {
+      "id": "d",
+      "text": "It is next to the gym.",
+      "reveals": "장소 정보가 배움을 보여 주는지 따져 보세요."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "곤충을 관찰해 적는 활동과 벌에 대해 배운 내용은 배움의 증거예요. 텃밭이 작다는 것과 체육관 옆에 있다는 것은 사실이지만 배움과는 상관없는 정보예요."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "중심 내용 'The garden helps students learn.'을 뒷받침하는 새 문장을 영어로 하나 만들어 보세요. 글에 없는 내용이어도 괜찮아요.",
+    "placeholder": "예: Students ...",
+    "minChars": 15,
+    "hints": [
+     "학생들이 텃밭에서 볼 수 있는 것이나 할 수 있는 일을 하나 떠올리세요.",
+     "'배운다, 관찰한다, 적는다' 같은 동사를 써서 한 문장으로 쓰세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "배움·관찰 활동을 나타내는 낱말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\blearn(?:s|ed|ing)?\\b",
+       "\\bwatch(?:es|ed|ing)?\\b",
+       "\\bsee\\b",
+       "\\bnotes?\\b",
+       "\\bstud(?:y|ies|ied)\\b",
+       "\\bfind\\b",
+       "\\blook(?:s|ed|ing)?\\b",
+       "\\bwrite\\b",
+       "\\bgrow(?:s|n)?\\b",
+       "\\bask(?:s|ed)?\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "장소·크기 같은 관계없는 사실이 중심이 아니다",
+      "mode": "none",
+      "patterns": [
+       "\\bgym\\b",
+       "\\bsmall\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내 문장이 '텃밭에서 배운다'는 증거가 되나요?",
+     "단순히 텃밭의 크기나 위치를 말하지 않았나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Students learn how plants grow from seeds."
+     },
+     {
+      "text": "They watch bees and write what they see.",
+      "note": "관찰 활동을 쓴 또 다른 좋은 문장."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "The garden is next to the gym.",
+      "why": "장소 정보라서 배움을 뒷받침하지 못한다."
+     },
+     {
+      "text": "I like pizza.",
+      "why": "텃밭과 관계없다."
+     }
+    ],
+    "humanReview": "문장이 정말 배움을 뒷받침하는지, 영어가 자연스러운지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "중심/세부 구분",
+    "full": "중심 내용을 고르고 세부 문장을 가려냄",
+    "partial": "둘 중 하나만 맞음",
+    "none": "세부 사실을 중심 내용으로 선택"
+   },
+   {
+    "criterion": "뒷받침 문장 만들기",
+    "full": "배움의 증거가 되는 새 문장을 만듦",
+    "partial": "관련은 있으나 증거가 약함",
+    "none": "장소·크기 같은 무관한 사실"
+   }
+  ],
+  "alternatives": [
+   "'Mr. Han says it is the best classroom'도 배움을 뒷받침하는 문장으로 인정할 수 있다(보기에서는 제외했다).",
+   "s3에서는 활동(물 주기 관찰)이나 배운 내용 중 어느 쪽으로 써도 된다."
+  ],
+  "hardCases": [
+   "'Students water the plants every day'가 책임감을 배운다는 뜻이라면 뒷받침이 될 수 있으나, 글에는 그 설명이 없다."
+  ],
+  "cautions": {
+   "language": "planted, learned 같은 과거형은 뜻만 알려 준다. 중심 내용이라는 말 자체가 낯설면 '글 전체를 한 문장으로 말하면'이라고 바꿔 읽게 한다.",
+   "culture": "학교 텃밭은 한국에서도 흔한 활동이다. Mr. Han은 가상의 선생님이다.",
+   "accessibility": "복수 선택이므로 선택한 보기 수가 화면 낭독기로 읽혀야 한다. 그림 없이 글만 제시했다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "중심 문장 선택",
+    "뒷받침 문장 선택",
+    "활동 낱말 유무와 관계없는 사실 제외"
+   ],
+   "human": [
+    "새 문장이 실제로 뒷받침이 되는지",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-06",
+  "topic": "두 안내문 비교하기",
+  "title": "수영의 날 안내문 두 장, 무엇이 다를까?",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "두 안내문을 항목별로 비교해 '진짜 다른 점'과 '다르게 보이지만 모순이 아닌 것'을 가리고, 확인 질문을 영어로 쓴다.",
+  "thinking": [
+   "두 글을 항목별로 비교하기",
+   "같은 내용·다른 내용·한쪽에만 있는 내용 구분하기",
+   "모순이 아닌 차이 알아보기"
+  ],
+  "differsFromPlain": "단순 연습은 한 안내문에서 정보를 찾는다. 여기서는 두 안내문을 날짜, 시각, 준비물, 비 올 때로 나눠 비교하고, 모순처럼 보이는 것이 사실은 서로 다른 일을 말하는 것인지 따져 본다.",
+  "prerequisites": [
+   "swimsuit, towel, cap, gate의 뜻",
+   "날짜 읽기(June 7 = 6월 7일)"
+  ],
+  "minutes": 10,
+  "material": "Mina의 학교에서 수영의 날 안내문 두 장이 왔어요.\n\nNotice A (학교 사무실)\nSwim Day. Date: Friday, June 7.\nMeet: school gate, 8:30 a.m.\nBring: swimsuit, towel, swimming cap.\n\nNotice B (담임 선생님)\nSwim Day is on Friday, June 7. The bus leaves at 9:00 a.m. Please bring a swimsuit and a towel. If it rains, we will go on June 14.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "두 안내문을 비교했을 때 '진짜 다른 점'(한쪽에만 있는 정보나 서로 맞지 않는 정보)을 모두 고르세요.",
+    "hints": [
+     "날짜, 시각, 준비물, 비 올 때의 네 항목으로 표를 그려 A와 B를 채워 보세요.",
+     "시각이 다르게 보이는 곳은 두 글이 같은 일을 말하는지 확인하세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "날짜: A는 6월 7일, B는 6월 14일이라고 한다.",
+      "reveals": "B의 June 14가 어떤 경우에 쓰이는 날짜인지 다시 읽어 보세요."
+     },
+     {
+      "id": "b",
+      "text": "수영 모자: A에만 적혀 있다.",
+      "reveals": "두 글의 준비물 줄을 항목별로 맞춰 비교했어요."
+     },
+     {
+      "id": "c",
+      "text": "시각: A는 8:30, B는 9:00이라 서로 모순이다.",
+      "reveals": "8:30과 9:00이 같은 일(모이기/출발)을 말하는지 확인해 보세요."
+     },
+     {
+      "id": "d",
+      "text": "비가 올 때: B에만 나와 있다.",
+      "reveals": "한쪽에만 있는 정보를 찾아냈어요."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "수영 모자는 A에만 적혀 있고, 비 올 때 계획은 B에만 있어요. B의 6월 14일은 비가 올 때의 날짜일 뿐 A와 다르지 않고, 8:30은 학교 정문에 모이는 시각, 9:00은 버스가 출발하는 시각이라 서로 모순이 아니에요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "선생님께 영어로 짧은 질문 문자를 쓰세요. 두 안내문이 다르게 말하거나 한쪽에만 있는 내용 한 가지를 확인하세요.",
+    "placeholder": "예: Dear Ms. Lee, ...?",
+    "minChars": 20,
+    "hints": [
+     "s1에서 고른 '진짜 다른 점' 중 하나를 정하세요.",
+     "'Do we need ...?' 또는 'What if ...?'로 시작해 질문 하나를 쓰세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "수영 모자나 비 오는 날 같은 진짜 차이를 다룬다",
+      "mode": "any",
+      "patterns": [
+       "\\bcaps?\\b",
+       "\\brain(?:s|ed|ing|y)?\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "물음표가 있는 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\?"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내 질문이 두 안내문이 다르게 말하는 부분을 다루나요?",
+     "선생님이 '예/아니오'나 한 문장으로 답할 수 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Dear Ms. Lee, do we need a swimming cap on Friday? Notice A says yes, but Notice B does not say it."
+     },
+     {
+      "text": "Hello, if it rains on June 7, will Swim Day be on June 14? Notice A does not say this.",
+      "note": "비 올 때 계획을 확인하는 또 다른 좋은 질문."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "I will bring a cap.",
+      "why": "질문이 아니다."
+     },
+     {
+      "text": "Is Swim Day on Friday?",
+      "why": "두 안내문이 똑같이 말하는 내용을 물었다."
+     }
+    ],
+    "humanReview": "질문이 진짜 차이를 짚는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 cap/rain과 물음표만 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "비교하기",
+    "full": "모자와 비 올 때 계획을 찾고 시각은 모순이 아님을 구분함",
+    "partial": "하나만 찾거나 시각을 모순으로 봄",
+    "none": "날짜를 다르다고 봄"
+   },
+   {
+    "criterion": "확인 질문",
+    "full": "진짜 차이를 짚는 영어 질문을 씀",
+    "partial": "질문은 있으나 같은 내용을 물음",
+    "none": "질문이 아님"
+   }
+  ],
+  "alternatives": [
+   "8:30 모임과 9:00 출발을 '비교할 수 없는 서로 다른 일'로 설명하는 학생도 맞다.",
+   "s2에서 모자 대신 '비 올 때'를 물어도 인정한다."
+  ],
+  "hardCases": [
+   "B에 모자가 없는 것이 '필요 없다'는 뜻인지 '그냥 안 적은 것'인지는 글만으로 알 수 없다. 그래서 질문이 필요하다."
+  ],
+  "cautions": {
+   "language": "swimming cap은 수영 모자다. If it rains 문장은 조건문이지만 뜻만 알려 주고 문법 설명은 하지 않는다.",
+   "culture": "한국 초등 학교의 수영 행사와 안내문 형식에 가깝다. 사람 이름과 날짜는 가상이다.",
+   "accessibility": "두 안내문을 그림 없이 글 줄로 적었다. 비교 표가 필요하면 화면에서 표를 직접 그리게 한다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "진짜 차이 선택",
+    "cap/rain 낱말과 물음표 유무"
+   ],
+   "human": [
+    "질문의 적절성",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-07",
+  "topic": "두 안내문 비교하기",
+  "title": "달라진 모임 안내, Sam에게 알려 주기",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "날짜가 다른 두 안내문 중 어느 것을 따라야 하는지 근거로 판단하고, 옛 포스터만 본 친구에게 바뀐 점을 영어로 전한다.",
+  "thinking": [
+   "날짜와 변경 표시로 어느 안내가 최신인지 판단하기",
+   "옛 정보와 새 정보를 구분하기",
+   "받는 사람에게 필요한 정보만 쉽게 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 한 공지에서 시각과 장소를 찾는다. 여기서는 서로 다른 시기에 나온 두 안내문 중 어느 것이 현재인지 판단하고, 옛 포스터만 본 친구에게 달라진 점을 알려 주는 메시지를 쓴다.",
+  "prerequisites": [
+   "change(바뀜), library, Room, Wednesday/Tuesday의 뜻",
+   "날짜 표기(Sep. 1 = 9월 1일)"
+  ],
+  "minutes": 10,
+  "material": "Sam은 새로 들어온 독서 모임 회원이에요. Sam은 복도 벽의 오래된 포스터만 봤어요. 당신은 모임 회원이라서 새 쪽지도 봤어요.\n\nPoster (Sep. 1)\nBook Club. Tuesday, 4:00 p.m. Room 5. New members welcome!\n\nNote (Sep. 20)\nCHANGE! From next week, Book Club is on Wednesday at 4:00 p.m. in the library.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "다음 주 Sam은 어느 안내를 따라야 할까요?",
+    "hints": [
+     "두 안내문에 적힌 날짜를 비교하고 어느 쪽이 나중에 만들어졌는지 보세요.",
+     "쪽지에 '바뀐다'는 말이 있는지 찾아보세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "두 안내문을 모두 따른다. 화요일과 수요일 둘 다 모임에 간다.",
+      "reveals": "두 안내문을 하나의 일정으로 합쳐도 되는지 따져 보세요."
+     },
+     {
+      "id": "b",
+      "text": "9월 1일 포스터를 따른다. 벽에 붙어 있어서 가장 믿을 만하다.",
+      "reveals": "붙어 있는 장소와 만든 시기 중 무엇을 근거로 삼았는지 돌아보세요."
+     },
+     {
+      "id": "c",
+      "text": "9월 20일 쪽지를 따른다. 더 나중에 나왔고 변경이라고 쓰여 있다.",
+      "reveals": "날짜와 변경 표시를 근거로 최신 정보를 가려냈어요."
+     },
+     {
+      "id": "d",
+      "text": "둘 다 믿지 않고, 선생님이 말해 줄 때까지 가지 않는다.",
+      "reveals": "근거가 있는데도 확인을 미루는 선택이에요."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "d"
+      ],
+      "reason": "선생님께 확인하는 것도 신중한 선택이지만, 날짜와 CHANGE 표시만으로 판단할 수 있어 이 과제에서는 근거 판단(c)을 기대한다."
+     }
+    ],
+    "explain": "쪽지가 9월 20일로 더 나중이고 'CHANGE!'라고 쓰여 있어요. 그러니 현재 모임은 수요일 4시, 도서관이에요. 벽에 오래 붙어 있다는 것은 정보가 최신이라는 근거가 아니에요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Sam에게 영어로 짧은 메시지를 쓰세요. 바뀐 요일과 장소를 알려 주고, 포스터와 달라졌다는 것도 말해 주세요. 쉬운 말로 쓰세요.",
+    "placeholder": "예: Sam, Book Club ...",
+    "minChars": 20,
+    "hints": [
+     "Sam이 이미 아는 옛 정보와 새 정보를 한 문장씩 나눠 쓰세요.",
+     "요일과 장소 낱말을 쪽지에서 그대로 가져오세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "새 요일(Wednesday)을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bwednesday\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "새 장소(library)를 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\blibrary\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "바뀌었다는 것을 알렸다",
+      "mode": "any",
+      "patterns": [
+       "\\bchang(?:e|ed|es|ing)\\b",
+       "\\bnow\\b",
+       "\\bnew\\b",
+       "\\bnot\\b",
+       "\\binstead\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Sam이 이 메시지만 읽고 어디로 언제 가야 하는지 알 수 있나요?",
+     "옛 정보(화요일, Room 5)와 헷갈리지 않게 썼나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Sam, Book Club has changed. It meets on Wednesday at 4:00 p.m. in the library now, not on Tuesday in Room 5."
+     },
+     {
+      "text": "Hi Sam! The time is new: Wednesday at 4:00. Please go to the library, not Room 5.",
+      "note": "짧고 쉽게 쓴 또 다른 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Book Club is on Tuesday in Room 5.",
+      "why": "옛 포스터 내용이다."
+     },
+     {
+      "text": "Come to Book Club.",
+      "why": "요일과 장소가 없다."
+     }
+    ],
+    "humanReview": "정보가 쪽지와 일치하는지, 받는 사람이 이해하기 쉬운지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "최신 정보 판단",
+    "full": "날짜와 CHANGE 표시를 근거로 쪽지를 고름",
+    "partial": "쪽지를 고르나 근거가 약함",
+    "none": "포스터나 둘 다를 따름"
+   },
+   {
+    "criterion": "메시지 쓰기",
+    "full": "요일·장소와 달라졌다는 것을 쉽게 전함",
+    "partial": "요일 또는 장소 중 하나가 빠짐",
+    "none": "옛 정보만 전함"
+   }
+  ],
+  "alternatives": [
+   "선생님께 한 번 더 확인하자는 제안을 덧붙이는 것도 좋다.",
+   "시간이 4:00 p.m.으로 같다는 말은 해도 되고 안 해도 된다."
+  ],
+  "hardCases": [
+   "'From next week'가 정확히 어느 날부터인지는 쪽지에 없으므로, '다음 주부터'라고 쓴 답은 인정한다."
+  ],
+  "cautions": {
+   "language": "CHANGE!, From next week 같은 표현은 낱말 뜻을 알려 주되 판단 단서는 주지 않는다. Wednesday의 철자 오류는 자동 점검이 잡지 못하므로 사람이 본다.",
+   "culture": "학교 독서 모임은 흔한 소재이며 이름과 방 번호는 가상이다.",
+   "accessibility": "두 안내문을 글 줄로 제시했고 날짜를 앞에 적어 낭독기로 먼저 읽힌다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "최신 안내 선택",
+    "Wednesday/library 및 변경 낱말 유무"
+   ],
+   "human": [
+    "정보의 일치",
+    "받는 사람에게 쉬운지"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-08",
+  "topic": "정보 확인 질문하기",
+  "title": "'영화관에서 만나!' 무엇을 물어봐야 할까?",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "친구의 메시지에 빠진 정보가 무엇인지 가려내고, 꼭 필요한 질문을 영어로 쓴다.",
+  "thinking": [
+   "메시지가 이미 알려 준 것과 빠진 것 구분하기",
+   "목적(만나기)에 꼭 필요한 정보 고르기",
+   "필요한 질문 두 가지를 영어로 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 메시지의 내용을 이해하는 문제다. 여기서는 메시지만으로 만날 수 있는지 판단하고, 빠진 정보 중 만나기에 꼭 필요한 것을 골라 질문한다.",
+  "prerequisites": [
+   "cinema, ticket, meet의 뜻",
+   "What time ...? / Which ...? 같은 의문문 형태"
+  ],
+  "minutes": 8,
+  "material": "Dana와 Eli는 같은 반 친구예요. Dana가 사는 동네에는 영화관이 두 곳 있어요: Star Cinema와 Moon Cinema.\n\nEli가 Dana에게 문자를 보냈어요.\n\nEli: \"Let's see a movie on Saturday! I will buy the tickets. Meet me at the cinema!\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Dana가 토요일에 Eli를 틀림없이 만나려면 꼭 물어봐야 하는 것을 모두 고르세요.",
+    "hints": [
+     "문자에서 이미 알려 준 정보(요일, 표)에 먼저 표시하세요.",
+     "'만나는 데' 필요한 것만 남기세요. 있으면 좋지만 없어도 만날 수 있는 질문은 뺍니다."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "What time should we meet on Saturday?",
+      "reveals": "만나는 데 필요한 정보가 시각이라는 것을 알아챈 선택이에요."
+     },
+     {
+      "id": "b",
+      "text": "Which cinema do you mean?",
+      "reveals": "영화관이 두 곳이라는 사실을 문자와 연결한 선택이에요."
+     },
+     {
+      "id": "c",
+      "text": "Who will buy the tickets, you or me?",
+      "reveals": "표를 누가 사는지는 문자에 나와 있는지 다시 확인해 보세요."
+     },
+     {
+      "id": "d",
+      "text": "What is your favorite movie?",
+      "reveals": "있으면 좋은 질문이지만 만나는 데 꼭 필요한지 따져 보세요."
+     }
+    ],
+    "correct": [
+     "a",
+     "b"
+    ],
+    "explain": "문자에는 요일(Saturday)과 표를 Eli가 산다는 것은 있지만 몇 시에 만나는지와 어느 영화관인지는 없어요. 동네에 영화관이 두 곳이므로 두 가지 모두 꼭 물어야 해요. 좋아하는 영화는 만나는 데 꼭 필요하지 않아요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Dana가 Eli에게 보낼 답장을 영어로 쓰세요. 꼭 필요한 질문 두 개를 모두 넣으세요.",
+    "placeholder": "예: What time ...? And ...?",
+    "minChars": 25,
+    "hints": [
+     "s1에서 고른 두 가지를 각각 한 문장의 질문으로 쓰세요.",
+     "시각은 What time, 장소는 Which나 Where로 시작할 수 있어요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "시각을 묻는다",
+      "mode": "any",
+      "patterns": [
+       "\\bwhat\\s+time\\b",
+       "\\bwhen\\b",
+       "\\bstart",
+       "\\bo['’]clock\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "어느 영화관인지/장소를 묻는다",
+      "mode": "any",
+      "patterns": [
+       "\\bwhich\\b",
+       "\\bwhere\\b",
+       "\\bstar\\b",
+       "\\bmoon\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "질문이 두 개 이상이다(물음표 두 개)",
+      "mode": "any",
+      "patterns": [
+       "\\?[^?]*\\?"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "시각과 영화관 질문이 모두 들어 있나요?",
+     "Eli가 이 답장만 읽고 바로 대답할 수 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "What time do we meet? And which cinema, Star or Moon?"
+     },
+     {
+      "text": "Where should I go, Star Cinema or Moon Cinema? When does the movie start?",
+      "note": "장소와 시작 시각을 물은 또 다른 좋은 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Okay, see you there!",
+      "why": "필요한 질문이 없다."
+     },
+     {
+      "text": "What time?",
+      "why": "영화관 질문이 빠졌다."
+     }
+    ],
+    "humanReview": "질문이 자연스러운지, 두 질문이 분명한지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "필요한 정보 고르기",
+    "full": "시각과 영화관을 모두 고르고 이유를 말할 수 있음",
+    "partial": "하나만 고름",
+    "none": "이미 나온 정보나 불필요한 것을 고름"
+   },
+   {
+    "criterion": "질문 쓰기",
+    "full": "두 질문을 영어로 분명하게 씀",
+    "partial": "하나만 쓰거나 모호함",
+    "none": "질문이 없거나 무관함"
+   }
+  ],
+  "alternatives": [
+   "'어느 영화'를 묻는 질문은 만나는 데 필수는 아니지만 영화를 고르는 데 중요하다고 설명하면 허용 가능한 추가 질문이다.",
+   "시각 질문은 '영화가 몇 시에 시작하는지'로 물어도 된다."
+  ],
+  "hardCases": [
+   "Dana가 Eli에게 '네가 말한 영화관은 어느 쪽이야, 전에 간 곳이야?'처럼 길게 묻는 것은 허용하지만 시각이 빠지면 필수 질문이 부족하다."
+  ],
+  "cautions": {
+   "language": "which와 what의 차이는 설명하지 않는다. 학생 답의 문법 오류는 질문의 내용이 맞으면 감점하지 않는다.",
+   "culture": "친구끼리 영화를 보는 일상적인 소재다. 영화관 이름은 가상이다.",
+   "accessibility": "문자를 따옴표 안의 글로만 제시했다. 복수 선택 안내를 화면에서 읽을 수 있게 했다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "필요한 정보 선택",
+    "시각·장소 낱말과 물음표 두 개 유무"
+   ],
+   "human": [
+    "질문의 명확성",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-09",
+  "topic": "이유를 들어 부탁하기",
+  "title": "선생님께 자리를 바꿔 달라고 부탁하기",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "상대(선생님)와 상황에 맞는 부탁의 말과 구체적인 이유를 고르고, 거친 말을 정중한 부탁으로 고쳐 쓴다.",
+  "thinking": [
+   "부탁하는 말과 이유가 모두 있는지 평가하기",
+   "받는 사람에 맞게 말투 고치기",
+   "상대가 판단할 수 있는 구체적 이유 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 'Can I ...?' 문장 만들기다. 여기서는 세 가지 부탁을 비교해 어느 것이 상대에게 알맞은지 판단하고, 거친 한마디를 선생님께 하는 정중한 부탁과 이유로 직접 바꾼다.",
+  "prerequisites": [
+   "Could I ...? / May I ...?의 뜻",
+   "because의 뜻",
+   "board(칠판), seat, sit의 뜻"
+  ],
+  "minutes": 10,
+  "material": "Hana는 교실 뒤쪽 자리에 앉아서 칠판 글씨가 잘 안 보여요. Hana가 처음 쓴 문장은 이거예요: \"Move my seat.\" 선생님(Mr. Kim)께 자리를 바꿔 달라고 부탁하려고 해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "선생님께 하는 부탁으로 가장 알맞은 것은?",
+    "hints": [
+     "각 보기에서 '부탁하는 말'과 '이유'가 둘 다 있는지 표시하세요.",
+     "듣는 사람이 선생님이라는 점을 생각해 말투도 비교하세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Mr. Kim, move my seat now. I can't see the board from here.",
+      "reveals": "이유는 있지만 선생님께 하는 말투가 맞는지 돌아보세요."
+     },
+     {
+      "id": "b",
+      "text": "Could I sit nearer the board, please? I can't see it well.",
+      "reveals": "부탁하는 말과 이유가 모두 있는지 확인한 선택이에요."
+     },
+     {
+      "id": "c",
+      "text": "Could I sit in a different seat, please? Thank you!",
+      "reveals": "정중하지만 선생님이 판단할 이유가 있는지 확인해 보세요."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "b는 'Could I ...?, please'로 정중하게 부탁하고, 칠판이 안 보인다는 이유도 있어요. a는 이유는 있지만 명령하는 말투이고, c는 정중하지만 이유가 없어서 선생님이 판단하기 어려워요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Hana의 \"Move my seat.\"를 선생님께 하는 정중한 부탁으로 영어로 고쳐 쓰세요. 부탁과 이유를 모두 넣으세요.",
+    "placeholder": "예: Mr. Kim, could I ...?",
+    "minChars": 25,
+    "hints": [
+     "'Could I / May I / Can I ...?'로 부탁을 먼저 쓰세요.",
+     "because나 문장 하나로 이유(칠판이 잘 안 보인다)를 덧붙이세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "정중한 부탁 표현이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:could|can|may|would|will)\\s+(?:you|i|we)\\b",
+       "\\bplease\\b",
+       "\\bi(?:['’]d|\\s+would)\\s+like\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "이유를 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bbecause\\b",
+       "\\bsince\\b",
+       "\\bso\\b",
+       "\\bcan(?:not|['’]t)\\s+(?:see|read)\\b",
+       "\\bhard\\s+to\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "자리/보는 일과 관계가 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bseat\\b",
+       "\\bsit\\b",
+       "\\bmove\\b",
+       "\\bfront\\b",
+       "\\bboard\\b",
+       "\\bsee\\b",
+       "\\bdesk\\b",
+       "\\bnear"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "선생님이 읽고 '왜 그런지' 알 수 있나요?",
+     "명령하는 말투가 아니라 부탁하는 말투인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Mr. Kim, could I move to the front, please? I can't see the board well from my seat."
+     },
+     {
+      "text": "Excuse me, Mr. Kim. May I sit near the front because I cannot see the board?",
+      "note": "because로 이유를 이은 또 다른 좋은 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Move my seat.",
+      "why": "부탁하는 말과 이유가 모두 없다."
+     },
+     {
+      "text": "Could you help me, please?",
+      "why": "무엇을 부탁하는지, 이유가 없다."
+     }
+    ],
+    "humanReview": "이유가 구체적인지, 말투가 선생님께 알맞은지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "평가하기",
+    "full": "부탁하는 말과 이유가 모두 있는 보기를 고르고 설명함",
+    "partial": "한 요소만 보고 고름",
+    "none": "말투나 이유를 보지 않음"
+   },
+   {
+    "criterion": "고쳐 쓰기",
+    "full": "정중한 부탁과 구체적 이유를 모두 씀",
+    "partial": "부탁 또는 이유 중 하나가 약함",
+    "none": "명령 그대로이거나 이유 없음"
+   }
+  ],
+  "alternatives": [
+   "이유로 '눈이 나빠서 앞이 잘 안 보인다'를 써도 된다.",
+   "'Could I swap seats with Jiho?'처럼 구체적 방법을 제안해도 좋다."
+  ],
+  "hardCases": [
+   "'Please move my seat because I can't see.'는 정중한 낱말(please)과 이유가 있으나 명령형이므로 정중한 부탁인지 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "Could I와 Can I의 차이는 다루지 않는다. 학생 답의 문법 오류는 부탁과 이유가 분명하면 감점하지 않는다.",
+   "culture": "한국 학교에서 선생님께 자리를 부탁하는 상황은 흔하다. 영어권의 예의 표현(please, could)은 한국어 존댓말과 쓰임이 다르다는 점을 알려 준다.",
+   "accessibility": "칠판은 그림 없이 글로 설명했다. 시력 문제를 이유로 쓰는 학생이 불편하지 않게 개인 정보를 요구하지 않는다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "보기 선택",
+    "부탁 표현·이유 낱말 유무"
+   ],
+   "human": [
+    "말투와 이유의 적절성",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "subject": "english",
+  "grade": "E5",
+  "level": 1,
+  "levelLabel": "초등",
+  "uiLang": "ko",
+  "curriculum": null,
+  "id": "x-e-e5-10",
+  "topic": "이유를 들어 부탁하기",
+  "title": "허락받는 부탁: 이유와 대안 만들기",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "상대가 판단할 수 있는 이유와 때를 담은 부탁을 직접 만들고, 거절당했을 때 다른 때를 제안하며 부탁을 고친다.",
+  "thinking": [
+   "이유의 쓸모(구체적인지)를 비교하기",
+   "때와 이유를 넣어 부탁 만들기",
+   "거절 뒤 조건에 맞게 부탁 수정하기"
+  ],
+  "differsFromPlain": "단순 연습은 주어진 문장 틀을 채운다. 여기서는 어떤 이유가 부탁을 들어주는 데 쓸모 있는지 평가하고, 자신의 부탁을 만들고, 거절 이유를 읽은 뒤 대안을 제안해 부탁을 바꾼다.",
+  "prerequisites": [
+   "요일·시각 말하기(on Sunday, at 2 p.m.)",
+   "need to, must의 뜻",
+   "Can I ...? 형태"
+  ],
+  "minutes": 12,
+  "material": "집이나 학교에서 허락이 필요한 일이 있어요. 부탁을 들어줄지 말지는 어른이 이유를 듣고 결정해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "엄마에게 친구 집에 가도 되는지 묻는 세 가지 말이에요. 엄마가 결정하는 데 가장 도움이 되는 말은?",
+    "hints": [
+     "엄마가 허락할지 말지 정할 때 알고 싶은 것이 무엇인지 생각해 보세요.",
+     "각 보기의 이유가 '해야 하는 일'인지, 다른 사람 이야기인지, 마음만 말하는지 비교하세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Can I go to Jiho's house on Saturday? We must finish our science project.",
+      "reveals": "엄마가 판단할 수 있는 이유가 있는지 확인한 선택이에요."
+     },
+     {
+      "id": "b",
+      "text": "Can I go to Jiho's house on Saturday? All my friends go there every weekend.",
+      "reveals": "다른 사람들이 한다는 말이 엄마의 결정에 도움이 되는지 따져 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Can I go to Jiho's house on Saturday? I really, really want to go.",
+      "reveals": "마음만 말하는 이유가 엄마의 결정에 정보를 주는지 따져 보세요."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "a의 '과학 숙제를 끝내야 한다'는 이유는 엄마가 필요성을 판단할 수 있는 구체적인 정보예요. b는 다른 사람들의 사정이고, c는 마음만 말해 결정에 쓸 정보가 적어요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "당신이 부모님이나 선생님께 허락받고 싶은 일이 하나 있다고 상상하세요. 요일이나 시각, 그리고 이유를 넣어 영어로 부탁하는 말을 쓰세요.",
+    "placeholder": "예: Mom, could I ... on Sunday? I need to ...",
+    "minChars": 25,
+    "hints": [
+     "하고 싶은 일, 때, 이유를 한 칸씩 정해 두고 쓰세요.",
+     "이유는 s1에서 고른 보기처럼 '해야 하는 일'로 쓰세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "부탁하는 표현이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:can|could|may)\\s+(?:i|we)\\b",
+       "\\bplease\\b",
+       "\\bi(?:['’]d|\\s+would)\\s+like\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "이유를 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bbecause\\b",
+       "\\bsince\\b",
+       "\\bso\\s+(?:that|i|we)\\b",
+       "\\bneed(?:s)?\\b",
+       "\\bhave\\s+to\\b",
+       "\\bmust\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "요일이나 시각을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:mon|tues|wednes|thurs|fri|satur|sun)day\\b",
+       "\\bat\\s+\\d",
+       "\\b\\d{1,2}\\s*(?:a\\.?m|p\\.?m)\\b",
+       "\\btonight\\b",
+       "\\btomorrow\\b",
+       "\\bafter\\s+school\\b",
+       "\\bweekend\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "부탁, 이유, 때가 모두 들어 있나요?",
+     "듣는 사람이 이유만 읽고 결정할 수 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Mom, could I go to the library on Sunday afternoon? I need to find books for my report."
+     },
+     {
+      "text": "Mr. Park, may I stay in the classroom after school tomorrow? I must finish my art work for the contest.",
+      "note": "선생님께 하는 다른 상황의 좋은 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "I want a new phone.",
+      "why": "부탁하는 말, 이유, 때가 모두 없다."
+     },
+     {
+      "text": "Can I go to the park?",
+      "why": "이유와 때가 없다."
+     }
+    ],
+    "humanReview": "이유가 구체적인지, 영어가 자연스러운지, 상황이 적절한지는 사람이 본다."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "어른이 이렇게 답했어요: \"Not Saturday. We have a family dinner.\" 다른 때를 제안하는 짧은 답을 영어로 쓰세요.",
+    "placeholder": "예: OK. How about ...?",
+    "minChars": 15,
+    "hints": [
+     "거절 이유(가족 저녁 식사)와 겹치지 않는 때를 하나 정하세요.",
+     "'How about ...?'이나 'Could I ... instead?'로 새 제안을 쓰세요."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "다른 요일이나 시각을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:mon|tues|wednes|thurs|fri|satur|sun)day\\b",
+       "\\bat\\s+\\d",
+       "\\b\\d{1,2}\\s*(?:a\\.?m|p\\.?m)\\b",
+       "\\btonight\\b",
+       "\\btomorrow\\b",
+       "\\bafter\\s+school\\b",
+       "\\bnext\\s+week\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "새로운 제안을 하는 표현이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bhow\\s+about\\b",
+       "\\bwhat\\s+about\\b",
+       "\\binstead\\b",
+       "\\b(?:can|could|may)\\s+i\\b",
+       "\\bmaybe\\b",
+       "\\bthen\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "거절 이유와 겹치지 않는 때를 골랐나요?",
+     "제안이 정중한 말투인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "OK, Mom. How about Sunday at 2 p.m. instead?"
+     },
+     {
+      "text": "I understand. Could I go on Friday after school, then?",
+      "note": "금요일을 제안한 다른 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "But I want to go on Saturday!",
+      "why": "거절을 받아들이지 않고 다른 때를 제안하지 않았다."
+     },
+     {
+      "text": "OK.",
+      "why": "다른 때를 제안하지 않았다."
+     }
+    ],
+    "humanReview": "제안한 때가 거절 이유와 겹치지 않는지, 말투가 자연스러운지는 사람이 본다."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "이유 평가",
+    "full": "구체적이고 판단에 도움이 되는 이유를 고르고 설명함",
+    "partial": "이유의 쓸모를 구분하지 못함",
+    "none": "마음만 말하는 이유를 고름"
+   },
+   {
+    "criterion": "부탁 만들기와 수정",
+    "full": "부탁·이유·때를 담고 거절 뒤 겹치지 않는 대안을 제안함",
+    "partial": "하나가 빠짐",
+    "none": "이유도 대안도 없음"
+   }
+  ],
+  "alternatives": [
+   "s1의 b도 친구들이 가는 곳이라는 사정이 맞다면 일부 도움이 되지만, 이 과제는 '해야 하는 일'이 더 쓸모 있다고 본다.",
+   "s2는 가족, 친구, 선생님 누구에게 해도 된다."
+  ],
+  "hardCases": [
+   "이유가 거짓이거나 장난스러운 경우(예: 외계인 때문에)는 자동 점검을 통과해도 사람이 적절성을 판단한다."
+  ],
+  "cautions": {
+   "language": "need to / must의 차이는 다루지 않는다. 학생 답의 시제·관사 오류는 내용이 맞으면 감점하지 않는다.",
+   "culture": "한국에서 허락을 구하는 대화는 이유를 함께 말하는 문화가 강하다. 영어권에서도 이유를 덧붙이는 것이 정중하다는 점을 안내한다.",
+   "accessibility": "개인 정보(실제 이름, 주소)를 쓰지 않도록 가상 이름 사용을 권한다. 입력 칸이 길어질 수 있어 글자 수 제한을 두지 않았다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "보기 선택",
+    "부탁·이유·때 낱말 유무",
+    "제안 표현과 새로운 때 유무"
+   ],
+   "human": [
+    "이유의 구체성과 적절성",
+    "영어의 자연스러움"
+   ]
+  }
+ }
+]

@@ -1,0 +1,1971 @@
+[
+ {
+  "id": "x-k-k2-01",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "greetings",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who leaves, who stays?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Decide which goodbye fits from who is leaving and who is staying, notice the case where both people leave, and write a polite goodbye with thanks.",
+  "thinking": [
+   "Reading the situation to pick the expression",
+   "Handling a case that breaks the simple rule",
+   "Producing a polite goodbye for a new situation"
+  ],
+  "differsFromPlain": "Plain practice asks you to match 안녕히 가세요 / 안녕히 계세요 with a picture. Here you work out from the scene who is leaving and who stays, including a scene where nobody stays.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 안녕하세요 and that -요 endings are polite"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "지우 is a student and speaks politely to adults. Three times 지우 says goodbye. Check who walks away and who stays where they are.\n\nScene 1: 지우 finishes talking in 선생님's room and walks out. 선생님 stays at the desk.\nScene 2: 지우 and 선생님 leave the school together. At the gate they walk in different directions.\nScene 3: 지우 eats dinner at 할머니's home. Then 지우 goes home. 할머니 stays at home.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Scene 1: what does 지우 say to 선생님?",
+    "options": [
+     {
+      "id": "a",
+      "text": "안녕히 계세요.",
+      "reveals": "You looked at who stays where they are and chose the expression for the person who is leaving."
+     },
+     {
+      "id": "b",
+      "text": "안녕히 가세요.",
+      "reveals": "This is said to the person who is leaving. Check who is leaving in Scene 1."
+     },
+     {
+      "id": "c",
+      "text": "안녕하세요.",
+      "reveals": "This is a hello, not a goodbye. Think about what is happening at that moment."
+     },
+     {
+      "id": "d",
+      "text": "잘 가.",
+      "reveals": "This is casual speech, but 선생님 is an adult."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "안녕히 계세요 is said by the person who leaves to the person who stays. 지우 walks out and 선생님 stays at the desk.",
+    "hints": [
+     "Ask: who is walking away, and who is staying in the room?",
+     "The expression is chosen for the person who hears it. What is that person doing?"
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Scene 2: both walk away from the gate. What can 지우 say to 선생님?",
+    "options": [
+     {
+      "id": "a",
+      "text": "안녕히 계세요.",
+      "reveals": "This is for someone who stays. Does 선생님 stay at the gate?"
+     },
+     {
+      "id": "b",
+      "text": "안녕.",
+      "reveals": "This is casual speech, and it does not show respect to 선생님."
+     },
+     {
+      "id": "c",
+      "text": "안녕하세요.",
+      "reveals": "This is mostly a hello. It does not tell 선생님 that you are parting."
+     },
+     {
+      "id": "d",
+      "text": "안녕히 가세요.",
+      "reveals": "You noticed that the listener is also leaving, so the 'stay' expression does not fit."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Here the listener is leaving too, so 안녕히 가세요 fits. The simple rule 'the speaker leaves, so use 계세요' breaks down because nobody stays.",
+    "hints": [
+     "Draw it in words: where does each person go after the gate?",
+     "Test the rule from Scene 1 here. Does it still work?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Scene 3: 지우 thanks 할머니 for dinner and says goodbye. Write what 지우 says in Korean (polite speech).",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses the 'stay' goodbye 안녕히 계세요",
+      "mode": "any",
+      "patterns": [
+       "계세요",
+       "계십시오"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not use the 'go' goodbye or 잘 가",
+      "mode": "none",
+      "patterns": [
+       "가세요",
+       "가십시오",
+       "잘 가"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "thanks for the food or dinner",
+      "mode": "any",
+      "patterns": [
+       "잘 먹었",
+       "맛있게 먹",
+       "감사",
+       "고맙",
+       "고마워요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use the goodbye for the person who stays?",
+     "Is my whole answer polite (no casual endings)?",
+     "Did I thank 할머니 for something?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "잘 먹었습니다. 안녕히 계세요.",
+      "note": "Short; thanks for the meal first."
+     },
+     {
+      "text": "할머니, 저녁 맛있게 먹었어요. 감사합니다. 안녕히 계세요!"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니, 안녕히 가세요.",
+      "why": "Uses the goodbye for the person who leaves, but 할머니 stays, and there is no thanks."
+     },
+     {
+      "text": "잘 가! 고마워.",
+      "why": "Casual speech to 할머니, and the wrong goodbye."
+     }
+    ],
+    "humanReview": "Whether the answer sounds warm and natural for a grandchild, and whether extra expressions are used correctly.",
+    "hints": [
+     "Say what 할머니 is doing: leaving or staying?",
+     "Put the thanks before or after the goodbye; both are fine."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choice of goodbye",
+    "full": "Picks the correct expression in both scenes and can say why scene 2 differs",
+    "partial": "Correct in scene 1 only",
+    "none": "Neither correct"
+   },
+   {
+    "criterion": "Own goodbye",
+    "full": "Polite, correct 'stay' goodbye, with thanks",
+    "partial": "Correct goodbye but no thanks or a casual part",
+    "none": "Wrong goodbye or casual speech"
+   }
+  ],
+  "alternatives": [
+   "안녕히 계세요 plus a thank-you in either order is fine.",
+   "In Scene 2 another polite parting such as 조심히 가세요 would be natural for a native speaker, but it is not expected at this level."
+  ],
+  "hardCases": [
+   "Some speakers say 안녕히 가세요 to someone who stays in the room if the speaker is on the phone and the other person hangs up last; this task does not cover phone calls."
+  ],
+  "cautions": {
+   "language": "안녕히 계세요 / 안녕히 가세요 are fixed greetings; 가세요 means 'please go' and 계세요 means 'please stay'. The task uses these two only for polite speech.",
+   "culture": "Visiting an elder's home and thanking them for a meal is common; some families eat together differently. The task does not claim one correct custom.",
+   "accessibility": "No images; scenes are described in words. Screen readers can read all Korean text; no symbol-only content."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choices in steps 1 and 2",
+    "Whether the answer contains 계세요, a polite ending and a thank-you word"
+   ],
+   "human": [
+    "Naturalness and warmth of the written goodbye"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-02",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "thanks",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Thank-you for a friend, thank-you for a teacher",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Find which parts of a casual thank-you must change when the listener is a teacher, then rewrite it politely.",
+  "thinking": [
+   "Locating what in a sentence signals closeness",
+   "Adapting wording for a different listener"
+  ],
+  "differsFromPlain": "Plain practice asks you to translate 'thank you' or fill in 고마워요/감사합니다. Here you take a ready-made casual message and decide which words change for a new audience, then rewrite it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 고마워 and 감사합니다 are both ways to say thanks"
+  ],
+  "minutes": 6,
+  "curriculum": null,
+  "material": "서준 gave a book to a classmate and the classmate wrote back: '책 줘서 고마워!' Now 서준's teacher gives 서준 a book, and 서준 wants to send almost the same message to the teacher.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which words of '책 줘서 고마워!' must change when the message goes to 선생님? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "책",
+      "reveals": "A noun like 책 names the thing and does not show who you talk to."
+     },
+     {
+      "id": "b",
+      "text": "줘서",
+      "reveals": "You saw that the verb for what the other person did also shows how you treat them."
+     },
+     {
+      "id": "c",
+      "text": "고마워",
+      "reveals": "You saw that the thanks word itself shows closeness or respect."
+     },
+     {
+      "id": "d",
+      "text": "!",
+      "reveals": "Punctuation does not set politeness. A teacher can receive an exclamation mark."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Both the verb about what the teacher did (줘서 becomes 주셔서) and the thanks word (고마워 becomes 고맙습니다 or 감사합니다) show the relationship. The noun 책 stays the same.",
+    "hints": [
+     "Mark which words name things and which words show how you speak to someone.",
+     "Compare 줘서 and 고마워 with how you would address a teacher."
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the message for 선생님 in Korean. Mention the book and thank the teacher politely.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no casual 줘서 / bare 고마워",
+      "mode": "none",
+      "patterns": [
+       "줘서",
+       "고마워(?![가-힣])",
+       "고마워\\s*[!.~]"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "mentions the book",
+      "mode": "any",
+      "patterns": [
+       "책"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "a thanks word",
+      "mode": "any",
+      "patterns": [
+       "감사",
+       "고맙",
+       "고마워요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I change both the verb and the thanks word?",
+     "Would I send this to a teacher?",
+     "Is the message still short and clear?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "책을 주셔서 감사합니다.",
+      "note": "Short and polite."
+     },
+     {
+      "text": "선생님, 책 정말 감사합니다. 잘 읽겠습니다.",
+      "note": "Adds a short promise; no 주셔서 needed."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "책 줘서 고마워.",
+      "why": "Same casual message as for a friend."
+     },
+     {
+      "text": "선생님, 책은 고마워.",
+      "why": "Casual thanks word to a teacher."
+     }
+    ],
+    "humanReview": "Whether 고마워요 is acceptable for a teacher in this context, and whether the tone matches the student's school.",
+    "hints": [
+     "Start with 선생님 or 책을 and finish with a thanks word.",
+     "Check the end of your sentence: does it end with -요 or -습니다?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding what changes",
+    "full": "Chooses the verb and the thanks word, not the noun or punctuation",
+    "partial": "Chooses only one of the two",
+    "none": "Chooses only the noun or the punctuation"
+   },
+   {
+    "criterion": "Rewrite",
+    "full": "Polite from start to end, mentions the book and thanks",
+    "partial": "Polite thanks but missing the book, or one casual part left",
+    "none": "Still casual"
+   }
+  ],
+  "alternatives": [
+   "고마워요 is common and friendly in everyday speech, but 감사합니다 / 고맙습니다 is the safe choice for a teacher.",
+   "The student may add 선생님 at the start or a promise to read the book."
+  ],
+  "hardCases": [
+   "책 고마워요 may sound fine to some teachers; a human judge should not mark it wrong, but should say 감사합니다 is safer."
+  ],
+  "cautions": {
+   "language": "줘서 (casual) and 주셔서 (honorific) are one verb in two politeness levels; the task shows both and asks the student to notice, not to learn the rule.",
+   "culture": "Gifts from teachers are not universal; the scene is only a thank-you for a book.",
+   "accessibility": "All Korean text is short and readable by screen readers; no symbols carry meaning."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of changed words",
+    "Whether the rewrite has a polite ending, no casual 줘서 / bare 고마워, mentions 책 and a thanks word"
+   ],
+   "human": [
+    "Natural tone, and whether 고마워요 is acceptable"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-03",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "apologies",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The apology that slips",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find where a polite apology to a teacher suddenly turns casual, say what makes an apology complete, and fix the message.",
+  "thinking": [
+   "Finding the part that breaks the writer's own tone",
+   "Judging what an apology needs",
+   "Rewriting to keep one level of politeness"
+  ],
+  "differsFromPlain": "Plain practice asks you to choose 죄송합니다 or 미안해요. Here the apology is already written and you must find where it breaks and repair it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 죄송합니다 is a polite apology"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "하준 was late to class today and sends a chat message to 선생님.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One part of the message sounds like it was written to a friend, even though the message starts politely. Which line is the first one that breaks the tone?",
+    "lines": [
+     "선생님, 안녕하세요. 하준이에요.",
+     "오늘 수업에 늦어서 죄송합니다.",
+     "버스가 늦게 왔어.",
+     "다음에는 일찍 올게.",
+     "감사합니다."
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "Line 1, 2 and 5 are polite. Lines 3 and 4 end with -어 and -ㄹ게, which are casual endings. Either line shows the tone break.",
+    "hints": [
+     "Look at how each line ends. Which ones end with 요 or 습니다 and which do not?",
+     "Compare the endings of lines 2 and 3."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Besides saying sorry, which parts make this a good apology? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "It uses many emojis.",
+      "reveals": "Emojis can soften a friend chat, but they do not make an apology complete."
+     },
+     {
+      "id": "b",
+      "text": "It gives a short reason (the bus).",
+      "reveals": "You saw that a reason helps the listener understand."
+     },
+     {
+      "id": "c",
+      "text": "It says what 하준 will do next time.",
+      "reveals": "You saw that a promise shows you take the problem seriously."
+     },
+     {
+      "id": "d",
+      "text": "It says 괜찮아요 to the teacher.",
+      "reveals": "괜찮아요 is what the person who hears the apology says, not the person who apologizes."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "A good apology has the sorry word, a short reason and what you will do. The emojis and 괜찮아요 are not part of it.",
+    "hints": [
+     "Ask: what would 선생님 still want to know after 죄송합니다 alone?",
+     "Who usually says 괜찮아요: the one who apologizes or the one who hears it?"
+    ],
+    "multi": true
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite lines 3 and 4 in polite Korean so they match lines 1 and 2. Keep the meaning.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no casual -어 / -ㄹ게 ending left",
+      "mode": "none",
+      "patterns": [
+       "(왔어|올게|갈게|할게|했어|거야)(?![요가-힣])"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "keeps the bus reason",
+      "mode": "any",
+      "patterns": [
+       "버스"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "keeps the promise for next time",
+      "mode": "any",
+      "patterns": [
+       "다음",
+       "일찍",
+       "앞으로"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do both lines now end politely?",
+     "Did I keep both ideas (the bus and next time)?",
+     "Does it still sound like 하준 wrote it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "버스가 늦게 왔어요. 다음에는 일찍 올게요."
+     },
+     {
+      "text": "버스가 늦게 왔습니다. 다음에는 일찍 오겠습니다.",
+      "note": "More formal version; both fine."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "버스가 늦게 왔어. 다음에는 일찍 올게.",
+      "why": "Unchanged casual endings."
+     },
+     {
+      "text": "죄송합니다.",
+      "why": "Polite, but drops the reason and the promise."
+     }
+    ],
+    "humanReview": "Whether the new lines sound natural and whether 올게요 / 오겠습니다 are used correctly.",
+    "hints": [
+     "Change only the endings first, then read the two lines aloud.",
+     "Two polite endings you know: -요 and -습니다."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Spotting the break",
+    "full": "Finds line 3 or 4 and says what changed",
+    "partial": "Finds a polite line as the error",
+    "none": "Picks no wrong line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Both lines polite, meaning kept",
+    "partial": "One line fixed",
+    "none": "Not fixed"
+   }
+  ],
+  "alternatives": [
+   "Line 5 (감사합니다) is polite; some readers may feel it is out of place. It is not an error.",
+   "Either 올게요 or 오겠습니다 is fine."
+  ],
+  "hardCases": [
+   "Some Korean teachers accept 올게요 in friendly chats with students; the task still treats the switch from 죄송합니다 to -어 as inconsistent."
+  ],
+  "cautions": {
+   "language": "The task teaches endings only; the same sentence has many other casual variants, such as 왔네.",
+   "culture": "Being late and apologizing in writing to a teacher is a common school situation; practices differ by school.",
+   "accessibility": "Chat lines are plain text; no emojis are needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which lines are picked",
+    "Endings and key content in the rewrite"
+   ],
+   "human": [
+    "Naturalness of the rewritten lines"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-04",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "simple requests",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A request that gets a yes",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Compare ways to ask for something in a restaurant, then write your own polite request with a reason.",
+  "thinking": [
+   "Judging which requests sound polite and clear",
+   "Making your own request that includes a reason"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn 'give me water' into Korean. Here you compare several versions for tone, and then make a polite request in a new situation.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 주세요 means 'please give' and that 저기요 is a way to call someone"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "At a restaurant 민아 wants water. She is looking at a busy server. Here are some things she could say.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which are polite and clear ways to ask for water? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "물!",
+      "reveals": "Short words can be understood but they sound like an order."
+     },
+     {
+      "id": "b",
+      "text": "저기요, 물 좀 주세요.",
+      "reveals": "You saw that calling the person first, adding 좀 and using 주세요 makes it a polite request."
+     },
+     {
+      "id": "c",
+      "text": "저기요! 물! 빨리 가져오세요!",
+      "reveals": "A -세요 ending alone does not make it polite; the shouting and 빨리 sound like an order."
+     },
+     {
+      "id": "d",
+      "text": "물 좀 주시겠어요?",
+      "reveals": "You saw that a question form with a respectful ending also works as a polite request."
+     },
+     {
+      "id": "e",
+      "text": "물 줘.",
+      "reveals": "This is casual speech to a stranger."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "Both 저기요, 물 좀 주세요 and 물 좀 주시겠어요? are polite. 좀 softens the request. Short commands and shouting sound rude even with a polite ending.",
+    "hints": [
+     "Imagine you are the server. Which words would make you happy to help?",
+     "Check each option for: a call word, 좀 and a polite ending."
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "The room is cold. A classmate you do not know well (use polite speech) sits by the window. Ask them to close it (닫다 = close) and give a short reason. Write 1-2 sentences.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions closing (닫)",
+      "mode": "any",
+      "patterns": [
+       "닫"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "at least two polite sentence endings (the request and a reason)",
+      "mode": "any",
+      "patterns": [
+       "요(?![가-힣])[\\s\\S]*요(?![가-힣])",
+       "니다[\\s\\S]*니다",
+       "요(?![가-힣])[\\s\\S]*니다",
+       "니다[\\s\\S]*요(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no casual 줘 / 닫아. request",
+      "mode": "none",
+      "patterns": [
+       "닫아\\s*줘",
+       "닫아줘",
+       "닫아[.!?]\\s*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my request show what I want and why?",
+     "Did I use a softening word or polite question?",
+     "Is it polite from start to end?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "창문 좀 닫아 주세요. 너무 추워요."
+     },
+     {
+      "text": "저기요, 창문을 닫아 주시겠어요? 좀 추워서요.",
+      "note": "Uses a question and a softening 좀."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "창문 닫아 줘.",
+      "why": "Casual command, no reason."
+     },
+     {
+      "text": "추워요.",
+      "why": "Gives only a reason; never asks."
+     }
+    ],
+    "humanReview": "Whether the request sounds natural and whether the reason fits.",
+    "hints": [
+     "Write the request first and the reason second.",
+     "Two endings you can use: 주세요 and 주시겠어요?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging requests",
+    "full": "Chooses both polite requests and can say why the shouted one is not",
+    "partial": "Chooses one polite request",
+    "none": "Picks a rude request"
+   },
+   {
+    "criterion": "Own request",
+    "full": "States what is wanted, polite, with a reason",
+    "partial": "Request without reason or one casual part",
+    "none": "No request"
+   }
+  ],
+  "alternatives": [
+   "닫아 주실래요? and 닫아도 돼요? (asking permission) can also work.",
+   "A reason before the request is fine, too."
+  ],
+  "hardCases": [
+   "Some students may add a friendly 죄송하지만 ...; this is natural and acceptable."
+  ],
+  "cautions": {
+   "language": "주세요 and 주시겠어요 are both polite requests; 해 주세요 vs 줘 distinguishes polite from casual. The check looks only at surface features.",
+   "culture": "Calling a server with 저기요 is normal; in some places people call by pressing a button instead. Asking a classmate to close a window is an everyday case.",
+   "accessibility": "No images; the scene is described in words."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The multiple-choice answer",
+    "Whether the answer mentions 닫, has two polite endings, and has no casual 닫아 줘"
+   ],
+   "human": [
+    "Naturalness and fit of the reason"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-05",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "choosing the right expression for a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "One phrase, two meanings",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Use the context to decide what 괜찮아요 means in two chats, and write a clear reply that avoids the confusing word.",
+  "thinking": [
+   "Using context to choose a meaning",
+   "Weighing several pieces of evidence",
+   "Choosing a clearer expression"
+  ],
+  "differsFromPlain": "Plain practice gives one meaning for 괜찮아요. Here the same word means different things, and you decide from evidence, then avoid the confusion yourself.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen 괜찮아요 and 주세요"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Chat A (in a shop):\n점원: 봉투 드릴까요?\n손님: 괜찮아요.\n\nChat B (at school; 민수 stepped on 하나's foot):\n민수: 어, 발을 밟았어요! 죄송해요.\n하나: 괜찮아요.\n민수: 정말요?\n하나: 네, 안 아파요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "In Chat A, what does the customer mean by 괜찮아요?",
+    "options": [
+     {
+      "id": "a",
+      "text": "No, thank you.",
+      "reveals": "You used the question 봉투 드릴까요? to see that the word answers an offer."
+     },
+     {
+      "id": "b",
+      "text": "Yes, please give me a bag right now.",
+      "reveals": "You may have used the meaning from Chat B instead of the shop context."
+     },
+     {
+      "id": "c",
+      "text": "I am feeling much better than yesterday.",
+      "reveals": "You took 괜찮아요 as a statement about health. Look again at what the clerk asks."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The clerk offers a bag with 드릴까요? and the customer says no politely. After an offer, 괜찮아요 usually means 'no thank you'.",
+    "hints": [
+     "What does the clerk ask? Is the customer answering that question?",
+     "If the customer wanted the bag, which word would be more direct?"
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "In Chat B, which pieces of evidence show that 하나's 괜찮아요 means 'It is OK, no problem'? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "민수 apologizes right before.",
+      "reveals": "You saw that the word follows an apology, so it answers it."
+     },
+     {
+      "id": "b",
+      "text": "민수 does not offer anything to 하나.",
+      "reveals": "You saw that nothing is offered, so 'no thank you' does not fit."
+     },
+     {
+      "id": "c",
+      "text": "The word is the same as in Chat A, so the meaning is the same.",
+      "reveals": "A word can change meaning with context; the same spelling does not decide it."
+     },
+     {
+      "id": "d",
+      "text": "하나 adds 안 아파요.",
+      "reveals": "You saw that the follow-up explains why it is not a problem."
+     }
+    ],
+    "correct": [
+     "a",
+     "b",
+     "d"
+    ],
+    "explain": "The apology before it, the absence of any offer and the later 안 아파요 all show that 하나 means 'it is OK'. The spelling alone does not tell the meaning.",
+    "hints": [
+     "Look at the line just before 괜찮아요 in each chat. Is it an offer or an apology?",
+     "Read the last line of Chat B. What does it add?"
+    ],
+    "multi": true
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In a shop the clerk asks '영수증 드릴까요?' and you do want the receipt. Reply in Korean (polite) without using 괜찮아요 and say thank you.",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다) or a clear yes",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까",
+       "^네",
+       "^예"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not use 괜찮",
+      "mode": "none",
+      "patterns": [
+       "괜찮"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "clear yes: 네 / 주세요 / 부탁",
+      "mode": "any",
+      "patterns": [
+       "네",
+       "예",
+       "주세요",
+       "부탁"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "thanks",
+      "mode": "any",
+      "patterns": [
+       "감사",
+       "고맙",
+       "고마워요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would the clerk be sure I want the receipt?",
+     "Did I avoid the word with two meanings?",
+     "Is my reply polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "네, 주세요. 감사합니다."
+     },
+     {
+      "text": "네, 영수증도 주세요. 고맙습니다.",
+      "note": "Adds the object."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "괜찮아요.",
+      "why": "Could mean 'no thanks'; the clerk may not give the receipt."
+     },
+     {
+      "text": "영수증 주세요.",
+      "why": "Clear request, but no thanks."
+     }
+    ],
+    "humanReview": "Whether the reply sounds natural for the situation.",
+    "hints": [
+     "Think: which word from the first chat could be mistaken for 'no'?",
+     "Start with a clear yes word."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the context",
+    "full": "Picks the right meaning in both chats and uses the evidence",
+    "partial": "Right in one chat",
+    "none": "Wrong in both"
+   },
+   {
+    "criterion": "Own reply",
+    "full": "Clear yes, polite and thankful, avoids 괜찮아요",
+    "partial": "Clear but no thanks",
+    "none": "Uses 괜찮아요 or unclear"
+   }
+  ],
+  "alternatives": [
+   "In casual speech between friends, 괜찮아 can also mean 'it is fine / decent' (e.g. about a bag); this task only looks at the two chats.",
+   "The reply 네 is enough as a yes."
+  ],
+  "hardCases": [
+   "괜찮아요 after a question like '어때요?' could mean 'it is fine'; this is outside the two chats."
+  ],
+  "cautions": {
+   "language": "괜찮아요 can mean 'I'm OK', 'it's OK' or 'no, thank you'. The task uses two meanings and the contexts that show them.",
+   "culture": "Receipts and bags in shops are everyday; some shops charge for bags, which changes how often the offer is made.",
+   "accessibility": "No images; the chats are plain text and fully readable by screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choices",
+    "Whether the reply avoids 괜찮, has a yes word and thanks"
+   ],
+   "human": [
+    "Naturalness of the reply"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-06",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "반말 vs 존댓말 recognition",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Casual talk, respectful talk about someone",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Infer the relationship between two speakers from their endings, find where respect for a third person still shows, and write a polite message to that person.",
+  "thinking": [
+   "Inferring a relationship from language evidence",
+   "Separating the speaker-listener level from respect for a third person",
+   "Switching to polite speech"
+  ],
+  "differsFromPlain": "Plain practice labels sentences as 반말 or 존댓말. Here you read a whole chat, infer who the speakers are to each other, and use the same clues to write to someone else.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows that -요 / -습니다 endings are polite and -어 / -야 endings are casual"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "하준 and 지아 chat. 선생님 is their teacher; 선생님 is not in this chat.\n\n하준: 지아야, 숙제 했어?\n지아: 응, 했어. 너는?\n하준: 아직. 선생님이 뭐라고 하셨어?\n지아: 내일까지라고 하셨어.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "What is the most reasonable guess about 하준 and 지아?",
+    "options": [
+     {
+      "id": "a",
+      "text": "지아 is a few years older than 하준, so he speaks to her casually.",
+      "reveals": "Older people may use 반말 to younger ones, but here both use 반말 to each other."
+     },
+     {
+      "id": "b",
+      "text": "They have only just met and are still getting to know each other.",
+      "reveals": "New acquaintances usually start with polite speech."
+     },
+     {
+      "id": "c",
+      "text": "Close friends of similar age.",
+      "reveals": "You used the fact that both of them use casual endings with each other."
+     },
+     {
+      "id": "d",
+      "text": "하준 is the teacher of 지아.",
+      "reveals": "The chat itself says 선생님 is a third person."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Both use casual endings (-어, -야, 너는) with each other, and 하준 calls her by name with -야. This points to close peers.",
+    "hints": [
+     "Look at how each speaker ends their sentences.",
+     "Does either speaker use 요 or 습니다 to the other?"
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Even in casual talk, which pieces show respect for 선생님? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "하셨어 in '뭐라고 하셨어?'",
+      "reveals": "You saw that the added -시- in 하셨어 honors the person being talked about."
+     },
+     {
+      "id": "b",
+      "text": "응 and 어",
+      "reveals": "These are casual answers and show closeness between the two speakers."
+     },
+     {
+      "id": "c",
+      "text": "하셨어 in '내일까지라고 하셨어'",
+      "reveals": "You saw the same honorific again in the answer."
+     },
+     {
+      "id": "d",
+      "text": "지아야",
+      "reveals": "The -야 after a name is casual and addresses the listener, not 선생님."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "하셨어 uses -시- to honor 선생님 while the sentence ending stays casual for a friend. The speaker-listener level and the respect for a third person are separate.",
+    "hints": [
+     "Which words in the chat talk about 선생님?",
+     "Compare 했어 and 하셨어: what was added?"
+    ],
+    "multi": true
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now 하준 writes to 선생님 himself to ask when the homework is due. Write his message in Korean (polite speech).",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no casual sentence ending",
+      "mode": "none",
+      "patterns": [
+       "(어|야|니|해|지)(?=\\s*[?.!]+(\\s|$))"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about homework or time",
+      "mode": "any",
+      "patterns": [
+       "숙제",
+       "내일",
+       "언제",
+       "까지"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is every sentence polite?",
+     "Did I ask about the homework or the day?",
+     "Would 선생님 understand the question?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님, 숙제는 내일까지예요?"
+     },
+     {
+      "text": "선생님, 숙제 언제까지 해야 해요?",
+      "note": "Uses a question word."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "선생님, 숙제 내일까지야?",
+      "why": "Casual ending to a teacher."
+     },
+     {
+      "text": "숙제 언제까지 해?",
+      "why": "Casual, and no address to the teacher."
+     }
+    ],
+    "humanReview": "Whether the message sounds natural and polite enough for a teacher.",
+    "hints": [
+     "Use the same topic as in the chat, but change the ending.",
+     "Try ending the question with -예요? or -해요?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Inference",
+    "full": "Names the peer relationship and cites endings",
+    "partial": "Right guess without evidence",
+    "none": "Wrong guess"
+   },
+   {
+    "criterion": "Respectful message",
+    "full": "Polite throughout, asks about the homework",
+    "partial": "One casual part or no question",
+    "none": "Casual message"
+   }
+  ],
+  "alternatives": [
+   "In step 1, 'friends' and 'classmates' are both reasonable.",
+   "The question in step 3 may be 내일까지예요? or 언제까지예요?"
+  ],
+  "hardCases": [
+   "Some students use 선생님께 질문이 있어요 first; that is fine if the question follows."
+  ],
+  "cautions": {
+   "language": "하셨어 is both casual (-어) and honorific (-시-); the task keeps these separate on purpose.",
+   "culture": "Teachers are spoken about respectfully even between friends; this is common but not universal in every family or school.",
+   "accessibility": "No images; screen readers read all lines normally."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice answers",
+    "Politeness and topic of the message"
+   ],
+   "human": [
+    "Naturalness of the message"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-07",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "short chat messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "From polite to casual: when?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Follow a new chat step by step, decide at each stage which style fits, and revise your guess when new information appears. Then write your own casual message.",
+  "thinking": [
+   "Predicting with limited information",
+   "Revising a judgement",
+   "Producing a casual message after agreement"
+  ],
+  "differsFromPlain": "Plain practice asks which style is correct in one sentence. Here the chat reveals itself in stages and the right style changes as the relationship changes.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows -요 endings are polite and -어 endings are casual"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "지호 and 유나 are in the same class this year. They have not talked before. The chat appears in stages.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Decide at each stage; the new information may change your mind.",
+    "hints": [
+     "At each stage, ask what the two know about each other.",
+     "Casual speech needs both to agree, not one."
+    ],
+    "stages": [
+     {
+      "info": "지호: 안녕하세요. 저는 지호예요.\n유나: 안녕하세요! 저는 유나예요.",
+      "ask": "What should 지호's next message sound like?",
+      "options": [
+       {
+        "id": "a",
+        "text": "뭐 좋아해?",
+        "reveals": "You assumed casual speech, but they have only just met."
+       },
+       {
+        "id": "b",
+        "text": "뭐 좋아해요?",
+        "reveals": "You kept to polite speech until you know more."
+       },
+       {
+        "id": "c",
+        "text": "뭘 좋아하십니까?",
+        "reveals": "This is very formal; they are classmates of probably the same age."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Strangers start polite. 뭐 좋아해요? is friendly and polite; the very formal 좋아하십니까 would feel stiff."
+     },
+     {
+      "info": "지호: 저는 3학년이에요.\n유나: 저도 3학년이에요!",
+      "ask": "What does the new information change?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Nothing. They must use polite speech for ever.",
+        "reveals": "Polite speech can be kept, but the new information makes a change possible."
+       },
+       {
+        "id": "b",
+        "text": "They could switch to casual speech if they both agree.",
+        "reveals": "You saw that equal age makes casual speech possible, but only by agreement."
+       },
+       {
+        "id": "c",
+        "text": "지호 should switch to casual speech now, by himself.",
+        "reveals": "Switching alone can surprise 유나."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Same grade makes casual speech possible, but they should agree first."
+     },
+     {
+      "info": "유나: 우리 편하게 말해요!\n지호: 좋아! 그럴게.",
+      "ask": "What is the best next message from 유나?",
+      "options": [
+       {
+        "id": "a",
+        "text": "점심 먹었어?",
+        "reveals": "You saw that after they agreed, casual speech fits."
+       },
+       {
+        "id": "b",
+        "text": "점심 드셨어요?",
+        "reveals": "This is for someone older; they are the same age."
+       },
+       {
+        "id": "c",
+        "text": "점심 먹었어요?",
+        "reveals": "This is polite and not wrong, but after agreeing to speak casually it keeps a distance."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "c"
+      ],
+      "after": "After they agree, 점심 먹었어? fits best. 점심 먹었어요? is still polite and acceptable, only less close."
+     }
+    ],
+    "reflect": "Your answer changed because of what the two said about their age and about speaking casually. Notice that polite speech was the safe start and casual speech came after both agreed."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "You are 지호. Write a short casual question to 유나 about the weekend or about what she likes (반말).",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "casual ending (not -요 / -습니다)",
+      "mode": "none",
+      "patterns": [
+       "[가-힣]요(?![가-힣])",
+       "니다",
+       "니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "a question (question mark or question ending)",
+      "mode": "any",
+      "patterns": [
+       "\\?",
+       "까\\s*$",
+       "니\\s*$"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "a casual-sounding ending",
+      "mode": "any",
+      "patterns": [
+       "[어아야니지래자해까]\\s*[?.!~ㅋㅎ]*\\s*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is it fully casual, with no -요?",
+     "Is it a real question 유나 can answer?",
+     "Does it fit two friends who just agreed to speak casually?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "주말에 뭐 해?"
+     },
+     {
+      "text": "너는 무슨 음식 좋아해?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "주말에 뭐 해요?",
+      "why": "Still polite."
+     },
+     {
+      "text": "안녕하세요.",
+      "why": "A polite greeting, not a casual question."
+     }
+    ],
+    "humanReview": "Whether the casual question sounds natural and friendly.",
+    "hints": [
+     "Take a question you know and remove the -요.",
+     "Questions like 뭐 해? / 어디 가? are casual."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising",
+    "full": "Changes the answer when age and agreement are revealed",
+    "partial": "Changes once",
+    "none": "Never changes"
+   },
+   {
+    "criterion": "Own casual question",
+    "full": "Casual, natural question",
+    "partial": "Casual but statement",
+    "none": "Polite or not a question"
+   }
+  ],
+  "alternatives": [
+   "Staying polite longer is also fine for shy classmates; the task says casual speech becomes possible, not required."
+  ],
+  "hardCases": [
+   "Some students find '편하게 말해요' itself polite; that is natural since the invitation is made politely."
+  ],
+  "cautions": {
+   "language": "편하게 말해요 invites 반말; the task treats this as agreement. 먹었어? is casual and 먹었어요? is polite.",
+   "culture": "Some classes keep polite speech between students for a long time; the task does not claim a rule for everybody.",
+   "accessibility": "No images; the chat is plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices at each stage",
+    "Absence of -요 and a question mark/ending in the written reply"
+   ],
+   "human": [
+    "Naturalness of the message"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-08",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "반말 vs 존댓말 recognition",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who may use casual speech?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the line in a conversation with a grandmother that is not right, separate it from a line that only looks wrong, explain why, and fix it.",
+  "thinking": [
+   "Finding an error among near-errors",
+   "Explaining the one-way pattern of casual speech",
+   "Fixing a line"
+  ],
+  "differsFromPlain": "Plain practice gives 반말 and 존댓말 sentences to label. Here one line is right even though it is casual, and one is wrong, and you must explain the difference.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows -어 is casual and -요 is polite"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "지우 visits 할머니 and they talk. 할머니 is 지우's grandmother.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Which line is not appropriate in this conversation?",
+    "lines": [
+     "지우: 할머니, 안녕하세요?",
+     "할머니: 우리 지우 왔니?",
+     "지우: 네, 할머니. 보고 싶었어요.",
+     "지우: 할머니, 밥 먹었어?"
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 is the problem: 지우 uses casual speech to 할머니. Line 2 is casual, but it is a grandmother speaking to her grandchild.",
+    "hints": [
+     "Mark who is speaking in each line and who listens.",
+     "Is there a casual line that is fine?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why can 할머니 say '왔니?' but 지우 cannot say '먹었어?' to 할머니?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Older to younger can be casual; younger to older is polite.",
+      "reveals": "You saw that the choice depends on who is older and the relationship."
+     },
+     {
+      "id": "b",
+      "text": "Casual speech is only for people of exactly the same age as the speaker.",
+      "reveals": "This would also forbid 할머니's line to 지우, so it is not the full picture."
+     },
+     {
+      "id": "c",
+      "text": "할머니 made a mistake in line 2.",
+      "reveals": "You decided the casual line is wrong, but line 2 is normal between an older and a younger person."
+     },
+     {
+      "id": "d",
+      "text": "Casual speech is only used at home.",
+      "reveals": "The place does not decide it; 지우 is at home with 할머니 in line 4."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "In Korean, an older person often speaks casually to a younger family member, but the younger person uses polite speech to the older one.",
+    "hints": [
+     "Compare the ages of the speaker and listener in line 2 and line 4.",
+     "Does the place change between the lines?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite line 4 so that 지우 is polite to 할머니 and still asks if she has eaten.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no casual -었어 / -니 question",
+      "mode": "none",
+      "patterns": [
+       "(먹었어|드셨어|하셨어|했어)(?![요가-힣])",
+       "먹었니"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about a meal",
+      "mode": "any",
+      "patterns": [
+       "밥",
+       "식사",
+       "진지",
+       "점심",
+       "저녁",
+       "아침",
+       "드셨",
+       "먹었어요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question end politely?",
+     "Does it still ask about a meal?",
+     "Would I say it to my own grandparent?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니, 밥 드셨어요?",
+      "note": "드셨어요 is the respectful form of 먹었어요."
+     },
+     {
+      "text": "할머니, 식사하셨어요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니, 밥 먹었어?",
+      "why": "Still casual."
+     },
+     {
+      "text": "할머니, 안녕히 계세요.",
+      "why": "Polite but changes the meaning."
+     }
+    ],
+    "humanReview": "Whether the student chooses 드셨어요 or the simple 먹었어요; both are acceptable here.",
+    "hints": [
+     "Change only the ending first.",
+     "If you know the respectful word for eating, try it; if not, a polite -요 ending is enough."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the error",
+    "full": "Picks line 4 and sees line 2 is fine",
+    "partial": "Picks line 4 without a reason",
+    "none": "Picks line 2"
+   },
+   {
+    "criterion": "Explanation and fix",
+    "full": "Explains the older-younger pattern and fixes politely",
+    "partial": "Fixes without explanation",
+    "none": "Does not fix"
+   }
+  ],
+  "alternatives": [
+   "먹었어요 is fine for the fix; 드셨어요 is the more respectful form."
+  ],
+  "hardCases": [
+   "Some families use casual speech with grandparents; this is a family choice and not an error by the learner, but standard polite speech is the safe choice."
+  ],
+  "cautions": {
+   "language": "드시다 is the respectful word for eating; the check accepts 먹었어요 too.",
+   "culture": "Family speech levels differ; the task describes the common pattern without claiming it is universal.",
+   "accessibility": "No images; lines are plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Line picked",
+    "Which choice was selected",
+    "Polite ending in the rewrite"
+   ],
+   "human": [
+    "Naturalness of the rewritten line"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-09",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "choosing the right expression for a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Which facts decide the style?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which facts are needed to choose between 안녕 and 안녕하세요, judge whether the given facts are enough, and write a polite question to find out.",
+  "thinking": [
+   "Deciding which information matters",
+   "Deciding whether the information is sufficient",
+   "Asking the right question"
+  ],
+  "differsFromPlain": "Plain practice tells you the situation and asks for the expression. Here the situation is incomplete and you decide what is needed first.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 안녕 and 안녕하세요"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "채원 is new at school. In the hallway she wants to greet someone she does not know yet, and she must choose 안녕 or 안녕하세요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which facts would help 채원 choose? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether the person is a teacher or older.",
+      "reveals": "You saw that age and role usually decide the style."
+     },
+     {
+      "id": "b",
+      "text": "Whether it is morning or evening.",
+      "reveals": "The time can change the greeting words, but not casual versus polite."
+     },
+     {
+      "id": "c",
+      "text": "Whether they have already agreed to speak casually.",
+      "reveals": "You saw that agreement makes casual speech possible."
+     },
+     {
+      "id": "d",
+      "text": "Whether the person knows her name.",
+      "reveals": "This may matter later, but it does not set casual versus polite."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "Age/role and an agreement to speak casually decide the style. Time of day and name knowledge do not.",
+    "hints": [
+     "Which facts tell you whether the listener is above you or equal?",
+     "Which facts change the words but not the level?"
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Now 채원 knows only this: the person looks about her age and she has never spoken with them. Is that enough to use 안녕?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. They look the same age, so use 안녕.",
+      "reveals": "A look is not reliable, and no agreement exists."
+     },
+     {
+      "id": "b",
+      "text": "No. She should use 안녕하세요, because nothing says casual is fine.",
+      "reveals": "You saw that without agreement, polite speech is the safe choice."
+     },
+     {
+      "id": "c",
+      "text": "No. She must ask age before greeting at all.",
+      "reveals": "Asking first is not needed; a polite greeting works without knowing."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "She does not know their age or agreement, so polite speech is the safe default. Asking age can come later in the conversation.",
+    "hints": [
+     "What does 'looks about my age' really prove?",
+     "Which style is less risky if you are wrong?"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "Asking is a reasonable next step later, but it is not needed to greet."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write one polite question in Korean that 채원 could ask later to find out whether they can speak casually.",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks about age, grade or casual speech",
+      "mode": "any",
+      "patterns": [
+       "몇",
+       "나이",
+       "학년",
+       "살",
+       "편하게",
+       "말 놓",
+       "말을 놓",
+       "반말"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not use 너 as 'you'",
+      "mode": "none",
+      "patterns": [
+       "(^|\\s)너(는|도)?(\\s|$)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is my question polite?",
+     "Does it ask something that helps decide the style?",
+     "Would it feel friendly and not rude?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "몇 학년이에요?"
+     },
+     {
+      "text": "우리 말 편하게 해도 돼요?",
+      "note": "Asks directly about casual speech."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "너 몇 살이야?",
+      "why": "Casual before agreement."
+     },
+     {
+      "text": "안녕하세요.",
+      "why": "A greeting, not a question about style."
+     }
+    ],
+    "humanReview": "Whether the question sounds natural and not too direct.",
+    "hints": [
+     "Think of a fact from step 1 and turn it into a question.",
+     "Two useful words: 몇 and 편하게."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing needed facts",
+    "full": "Picks the two facts that decide the style and explains",
+    "partial": "Picks one",
+    "none": "Picks facts that do not matter"
+   },
+   {
+    "criterion": "Sufficiency and question",
+    "full": "Judges the facts as not enough for casual speech and asks a polite question",
+    "partial": "Right judgement but weak question",
+    "none": "Wrong judgement"
+   }
+  ],
+  "alternatives": [
+   "In step 2, asking first is acceptable as a later step.",
+   "The question may use 몇 살이에요? in polite form; some people consider asking age direct."
+  ],
+  "hardCases": [
+   "Asking age is considered normal in Korea, but some learners may find it direct in their culture."
+  ],
+  "cautions": {
+   "language": "안녕 is casual and 안녕하세요 is polite. The check looks for 몇 / 학년 / 편하게 and a polite ending.",
+   "culture": "Asking age early is common in Korea to decide speech levels; other cultures differ, so the task asks only for a polite question.",
+   "accessibility": "No images; the scene is described in words."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choices",
+    "The politeness and topic of the question"
+   ],
+   "human": [
+    "Naturalness of the question"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k2-10",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "short chat messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The same news for a teacher",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Decide what a short message to a teacher must include, then rewrite a quick note to a friend as a polite, complete message for the teacher.",
+  "thinking": [
+   "Deciding what the reader needs",
+   "Adapting a message for a different reader"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn one sentence from casual to polite. Here you decide which information a teacher needs and rewrite a whole short message.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 죄송합니다 and polite -요 endings"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "민지 is sick and cannot go to 학원 tomorrow. She wrote a quick note to a friend:\n\n나 내일 못 가. 아파서. 미안!\n\nNow she has to send the same news to her 학원 선생님 in a chat.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "What should the message to 선생님 include so that 선생님 does not need to ask more questions? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Who is writing (name or class).",
+      "reveals": "You saw that a teacher may have many students."
+     },
+     {
+      "id": "b",
+      "text": "The kind of medicine she took.",
+      "reveals": "This is too much detail for an absence message."
+     },
+     {
+      "id": "c",
+      "text": "A friendly emoji at the end.",
+      "reveals": "An emoji is not needed for the teacher to understand."
+     },
+     {
+      "id": "d",
+      "text": "Which class she cannot come to.",
+      "reveals": "You saw that the teacher needs to know what is missed."
+     },
+     {
+      "id": "e",
+      "text": "A short reason and an apology.",
+      "reveals": "You saw that a brief reason and a polite apology fit a message to a teacher."
+     }
+    ],
+    "correct": [
+     "a",
+     "d",
+     "e"
+    ],
+    "explain": "The teacher needs to know who, which class and a short reason with an apology. Medicine details and emoji are not needed.",
+    "hints": [
+     "Imagine you are the teacher reading it with no other information.",
+     "Which parts answer who / what / why?"
+    ],
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "d"
+      ],
+      "reason": "Without the reason the message is understandable but less polite."
+     }
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write the message to 선생님 in Korean (polite speech). Say who you are, that you cannot come tomorrow, why, and apologize.",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다|니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says she cannot come (못 / 갈 수 없 / 결석)",
+      "mode": "any",
+      "patterns": [
+       "못",
+       "갈 수 없",
+       "결석",
+       "안 가",
+       "안 갑니다",
+       "쉬"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives a reason (sick)",
+      "mode": "any",
+      "patterns": [
+       "아파",
+       "아프",
+       "감기",
+       "열이",
+       "병원",
+       "몸이",
+       "배가",
+       "머리가"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "apologizes",
+      "mode": "any",
+      "patterns": [
+       "죄송",
+       "미안합니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does 선생님 know who is writing?",
+     "Are the day, the reason and the apology all there?",
+     "Is every sentence polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님, 안녕하세요. 저는 민지예요. 몸이 아파서 내일 학원에 못 가요. 죄송합니다."
+     },
+     {
+      "text": "안녕하세요, 선생님. 감기에 걸려서 내일 수업에 갈 수 없습니다. 죄송합니다.",
+      "note": "Uses the formal -습니다 style."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "나 내일 못 가. 아파서. 미안!",
+      "why": "The same casual note."
+     },
+     {
+      "text": "선생님, 내일 학원 안 가요.",
+      "why": "Polite but no reason and no apology."
+     }
+    ],
+    "humanReview": "Whether the message sounds natural, complete and not too long.",
+    "hints": [
+     "Write it in four short parts: greeting, who, what and why, apology.",
+     "Use polite endings in every sentence."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing needed content",
+    "full": "Picks who, which class, reason",
+    "partial": "Picks two",
+    "none": "Picks medicine or emoji only"
+   },
+   {
+    "criterion": "Rewrite",
+    "full": "Polite, complete (who, cannot come, why, apology)",
+    "partial": "Polite but one part missing",
+    "none": "Casual"
+   }
+  ],
+  "alternatives": [
+   "The student may omit the name if 선생님 already knows the number or the class.",
+   "정 말 죄송합니다 or 늦게 말씀드려서 죄송합니다 are also fine."
+  ],
+  "hardCases": [
+   "A very short polite message such as '내일 못 가요 죄송해요' is complete enough for a quick note."
+  ],
+  "cautions": {
+   "language": "The task uses 아파서 / 못 가요 / 죄송합니다; the checks accept several verbs.",
+   "culture": "Telling the teacher about an absence in advance is the norm in many schools; some use a parent's message instead.",
+   "accessibility": "No images; chat text only."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choices",
+    "Polite ending, absence, reason, apology"
+   ],
+   "human": [
+    "Naturalness and completeness of the message"
+   ]
+  }
+ }
+]

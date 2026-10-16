@@ -1,0 +1,1764 @@
+[
+ {
+  "id": "x-k-k3-01",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Omitted subjects: who is meant",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who gave the pocket money?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Infer who an omitted subject refers to, point to the evidence in the text, and say how the inference changes when one clue is removed.",
+  "thinking": [
+   "Inferring an unstated subject from several clues",
+   "Choosing evidence that supports the inference",
+   "Revising the inference when a clue is removed"
+  ],
+  "differsFromPlain": "Plain practice asks you to translate a sentence or name the honorific ending. Here the subject is missing and you must decide who it is from the whole chat and test which clues really carry the weight.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen -요 endings and the words 할머니, 친구, 용돈"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "Two classmates, 지우 and 하나, chat in polite -요 speech. Korean often leaves out the subject (who does the action). (댁 = a respectful word for someone's home.)\n\n지우: 어제 뭐 했어요?\n하나: 할머니 댁에 갔어요. 맛있는 밥을 먹었어요. 용돈도 주셨어요.\n지우: 좋았겠어요!",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Who gave 하나 the pocket money (용돈도 주셨어요)?",
+    "hints": [
+     "Look at the ending of 주셨어요 and compare it with 먹었어요 in the line before.",
+     "List every person who appears in 하나's three sentences."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "하나 herself",
+      "reveals": "She is the one who received the money, and a verb that honors the doer is not used for oneself."
+     },
+     {
+      "id": "b",
+      "text": "Her grandmother, probably"
+     },
+     {
+      "id": "c",
+      "text": "지우, the friend who asks",
+      "reveals": "지우 only asks and reacts; nothing in the text says he gave anything."
+     },
+     {
+      "id": "d",
+      "text": "A classmate of the same age",
+      "reveals": "The form of the verb points to someone she looks up to, not a same-age classmate."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The text names no subject, but the verb form shows the giver is someone to be respected, and the only such person in the story is 할머니, whose home 하나 visited. 'Probably' is right: the text does not say it outright."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which pieces of evidence support your answer? Choose all that apply.",
+    "hints": [
+     "For each option ask: does it tell me WHO, or only WHAT?",
+     "Find a clue about the verb and a clue about the place."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "용돈 means pocket money, so the giver must be from the family.",
+      "reveals": "The word names what was given, not who gave it."
+     },
+     {
+      "id": "b",
+      "text": "맛있는 밥 shows the giver also cooked the meal.",
+      "reveals": "Food and money are different actions; nothing links the two to one person."
+     },
+     {
+      "id": "c",
+      "text": "주셨어요 is in a form that shows respect for the doer."
+     },
+     {
+      "id": "d",
+      "text": "하나 had just been at 할머니's home and no one else is mentioned there."
+     }
+    ],
+    "correct": [
+     "c",
+     "d"
+    ],
+    "explain": "Two clues work together: the verb form tells what kind of person the giver is, and the story tells who is there. Pocket money and food say nothing about the giver.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "The verb form is the strongest single clue; d adds that the story context fits it."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Suppose 하나 had said '용돈도 줬어요' instead of '용돈도 주셨어요'. What changes?",
+    "hints": [
+     "Take away the clue from s2 you found strongest and see what is left.",
+     "Ask which people could still fit."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Nothing changes; the giver is still clearly 할머니.",
+      "reveals": "The honoring form was one of the clues that narrowed the giver; without it the clue is gone."
+     },
+     {
+      "id": "b",
+      "text": "The giver could now also be a friend or someone younger."
+     },
+     {
+      "id": "c",
+      "text": "The giver must be 지우.",
+      "reveals": "Nothing in the text points to 지우 either way."
+     },
+     {
+      "id": "d",
+      "text": "The sentence would be wrong Korean.",
+      "reveals": "'줬어요' is a normal polite sentence; it just carries less information about the giver."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Without the honoring form the story still fits 할머니, but it no longer rules out other people. Your confidence in the first answer should drop."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Inference",
+    "full": "Names the giver as the respected relative and explains it with the verb form plus the story context",
+    "partial": "Names the giver but gives only one clue or only a weak clue",
+    "none": "Names the wrong person or gives no clue"
+   },
+   {
+    "criterion": "Revising",
+    "full": "Sees that dropping the honoring form makes other givers possible",
+    "partial": "Sees a change but not what it is",
+    "none": "Says nothing changes"
+   }
+  ],
+  "alternatives": [
+   "Her grandfather, if he lives there too, also fits; the text only says 할머니 댁, so 'probably 할머니' is a reasonable answer."
+  ],
+  "hardCases": [
+   "A very polite learner might say it is 'certain' it is 할머니; the text allows other respected persons in the house."
+  ],
+  "cautions": {
+   "language": "The honorific -시- is used for the person being respected, so it is a clue, not proof; the key avoids saying it is certain.",
+   "culture": "Visiting grandparents and receiving pocket money is common in Korea but is not universal; other families may differ.",
+   "accessibility": "No images. Use a screen reader that reads Korean text; 주셨어요 and 줬어요 are read differently, so ask the learner to read both aloud."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice against the key in each step"
+   ],
+   "human": [
+    "Whether a learner's own reasoning about the grandmother vs. other relatives is sound"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-02",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Introductions: self-introduction to the class",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "One odd line in a self-introduction",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the line in a self-introduction that sounds odd, say why, and rewrite it so that it sounds natural.",
+  "thinking": [
+   "Locating the one odd line",
+   "Explaining why it is odd",
+   "Producing a corrected version"
+  ],
+  "differsFromPlain": "Plain practice asks you to copy a model self-introduction. Here you inspect someone else's introduction, find the problem yourself and repair it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows the pattern 저는 ___예요/이에요 for saying a name"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "A new student, 이민수, introduces himself to the class. Five lines are shown. One line sounds odd to a Korean listener.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Which line sounds odd?",
+    "lines": [
+     "안녕하세요?",
+     "제 이름은 이민수님이에요.",
+     "저는 열두 살이에요.",
+     "우리 가족은 네 명이에요.",
+     "만나서 반갑습니다."
+    ],
+    "wrong": [
+     1
+    ],
+    "explain": "Line 2 is odd. 님 is a title added to other people's names to show respect. Putting it on your own name sounds as if you are praising yourself. The other lines are fine for a class introduction.",
+    "hints": [
+     "Read each line aloud as if you were speaking to your class. Which one would make listeners smile?",
+     "Look at what comes right after the name."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why is that line odd?",
+    "hints": [
+     "Think about when you add 님: 선생님? 친구? yourself?",
+     "Compare with how line 3 talks about the speaker."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "A title that shows respect is attached to the speaker's own name."
+     },
+     {
+      "id": "b",
+      "text": "Names can only be followed by 은/는, never by 이에요.",
+      "reveals": "이에요 after a name is the normal way to say 'I am ___'; this is not the problem."
+     },
+     {
+      "id": "c",
+      "text": "An introduction must use 입니다, never 이에요.",
+      "reveals": "Both are polite; line 5 uses 습니다 and line 1 uses 요, and a mix is normal."
+     },
+     {
+      "id": "d",
+      "text": "A self-introduction must not include a family name.",
+      "reveals": "Giving a full name is normal; the part after the name is the issue."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The title 님 is for showing respect to someone else. Use your own name without it."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite line 2 so that it sounds natural. Write it in Korean in a polite style.",
+    "hints": [
+     "Keep 이민수 as the name and say 'my name is ...' or 'I am ...'.",
+     "Check the end of your sentence: it should still be polite (요 or 습니다)."
+    ],
+    "placeholder": "제 이름은 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says 'my name'/'I am'",
+      "mode": "any",
+      "patterns": [
+       "(제 이름은|저의 이름은|이름은|저는)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no 님 attached to the speaker's own name",
+      "mode": "none",
+      "patterns": [
+       "(이름은|저는)\\s*[가-힣 ]{1,6}님(이|입)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(이에요|예요|입니다|이라고 해요|라고 해요|이라고 합니다|라고 합니다)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I keep the polite ending?",
+     "Did I leave out the respect title on my own name?",
+     "Would a classmate understand 'who' I am?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "제 이름은 이민수예요."
+     },
+     {
+      "text": "저는 이민수라고 해요.",
+      "note": "A different good wording that avoids the problem."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "제 이름은 이민수님이에요.",
+      "why": "Still has 님 on the speaker's own name."
+     },
+     {
+      "text": "제 이름은 이민수야.",
+      "why": "Drops the polite ending in front of the class."
+     }
+    ],
+    "humanReview": "Whether the rewritten sentence sounds natural and keeps the right level of politeness."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the error",
+    "full": "Picks line 2 and says 님 is for others",
+    "partial": "Picks line 2 without a reason",
+    "none": "Picks another line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Natural polite sentence without 님 on own name",
+    "partial": "Removes 님 but the ending is no longer polite",
+    "none": "Repeats the error"
+   }
+  ],
+  "alternatives": [
+   "'저는 이민수입니다.' and '제 이름은 이민수라고 합니다.' are also good."
+  ],
+  "hardCases": [
+   "A teacher introducing herself with a title ('저는 박 선생님이에요') is possible but is a different context; the check would flag it as a false alarm."
+  ],
+  "cautions": {
+   "language": "The pattern check looks for a title attached to the speaker's own name after 저는 or 이름은. Please read answers that use titles for a legitimate reason.",
+   "culture": "Using 님 for oneself is an error in Korean but may exist in other languages' honorific habits; the sentence is not rude, only odd.",
+   "accessibility": "No images; all lines can be read by a screen reader. Each line is a separate item."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The picked line",
+    "The choice in s2",
+    "Surface checks in s3"
+   ],
+   "human": [
+    "Naturalness of the rewrite"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-03",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Titles and speech levels: writing to a grandparent",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "From a friend text to a grandmother text",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Decide which parts of a casual message must change for a grandmother, and rewrite it with polite forms and suitable words for 'I', 'you' and the home.",
+  "thinking": [
+   "Analysing what the audience changes",
+   "Choosing polite forms for one's own and another's side",
+   "Rewriting for a new audience"
+  ],
+  "differsFromPlain": "Plain practice asks you to convert one verb at a time. Here you decide which words need to change when the listener changes, then rewrite the whole short message.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen both -어/아 and -어요/아요 endings"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "하나 sent this to a close friend:\n\n나 내일 학교 끝나고 너네 집에 가. 같이 밥 먹어.\n\n(나 = I, 너네 집 = your family's home, 가 and 먹어 are casual endings.) She wants to send almost the same news to her 할머니, whose house she will visit tomorrow.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which parts of the friend message must change for 할머니? Choose all that apply.",
+    "hints": [
+     "Ask: if I replace the friend by 할머니, which words still make sense?",
+     "Check three kinds of words: 'I', 'your home', and the way sentences end."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "학교 끝나고",
+      "reveals": "This part names a time and does not depend on who is listening."
+     },
+     {
+      "id": "b",
+      "text": "나"
+     },
+     {
+      "id": "c",
+      "text": "너네 집"
+     },
+     {
+      "id": "d",
+      "text": "가. / 먹어. (the endings)"
+     }
+    ],
+    "correct": [
+     "b",
+     "c",
+     "d"
+    ],
+    "explain": "The word for 'I', the word for the other person's home and the sentence endings all depend on the listener. The time phrase does not.",
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the message for 할머니 in Korean. Start by calling her 할머니.",
+    "hints": [
+     "Use the humble word for 'I' and polite endings.",
+     "Replace 너네 집 with a phrase that names the person whose house it is."
+    ],
+    "placeholder": "할머니, ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "addresses her as 할머니",
+      "mode": "any",
+      "patterns": [
+       "할머니"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses 저/제 for 'I'",
+      "mode": "any",
+      "patterns": [
+       "(^|[\\s,.!?])(저|제|저희)(는|도|가|를|의)?(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite endings",
+      "mode": "any",
+      "patterns": [
+       "(요|니다)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no casual 나/너 and no casual endings",
+      "mode": "none",
+      "patterns": [
+       "(^|[\\s,.!?])(나|너|너희|너네)(는|도|가|를|의)?(?![가-힣])",
+       "(먹자|갈게|줘|가|먹어|해|와|봐)(?=\\s*[.!?~]|\\s*$)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I replace every casual ending?",
+     "Did I change the word for 'I' and for the home?",
+     "Would 할머니 feel respected reading this?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니, 저 내일 학교 끝나고 할머니 댁에 가요. 같이 식사해요."
+     },
+     {
+      "text": "할머니, 저는 내일 학교가 끝나면 할머니 집에 갈게요. 같이 밥 먹어요.",
+      "note": "Uses 집 and 밥, which are fine at this level."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니, 나 내일 학교 끝나고 할머니 집에 가. 같이 밥 먹어.",
+      "why": "Still has the casual 'I' and casual endings."
+     },
+     {
+      "text": "저 내일 학교 끝나고 가요.",
+      "why": "Polite, but 할머니 is missing and the home is not named."
+     }
+    ],
+    "humanReview": "Naturalness, how respectful it sounds, and whether the home is named correctly."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Analysing the audience",
+    "full": "Finds all three kinds of words that change and none that stays",
+    "partial": "Finds one or two",
+    "none": "Picks the unchanged phrase"
+   },
+   {
+    "criterion": "Rewrite",
+    "full": "Polite message, correct 'I', home named, sounds natural",
+    "partial": "Mostly polite but one casual form remains",
+    "none": "Still casual"
+   }
+  ],
+  "alternatives": [
+   "Using 집 instead of 댁 and 밥 instead of 식사 is acceptable at this level."
+  ],
+  "hardCases": [
+   "A close grandmother may allow warmer, shorter speech; here the task asks for a respectful style."
+  ],
+  "cautions": {
+   "language": "Casual endings like 가. and 먹어. are detected only when they end the sentence; a hard case is a learner who writes a mix.",
+   "culture": "Level of respect toward grandparents is typical of Korean families but varies by family and region.",
+   "accessibility": "All sentences are plain text; read aloud with screen readers works. 너네 is a casual word that some readers may find unfamiliar."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Surface checks of the rewrite"
+   ],
+   "human": [
+    "Naturalness and warmth of the message"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-04",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Writing a short family message",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Reply to a pen pal about your family",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Compare short replies for how much they tell, then write your own 4-5 sentence message that gives your name, age, family members and one age comparison.",
+  "thinking": [
+   "Evaluating which reply answers the question best",
+   "Selecting what information a reader needs",
+   "Producing a self/family message"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill in blanks of a model. Here you judge what a reply must contain, then write your own that includes a comparison between two people.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows words for family members such as 아버지, 어머니, 동생",
+   "Has seen the word 살 for age"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A pen pal, 서준, wrote to you:\n\n안녕하세요! 저는 서준이에요. 열두 살이에요. 우리 가족은 다섯 명이에요. 형은 저보다 세 살 많아요. 당신도 가족을 소개해 주세요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "서준 wants to know about you and your family. Which reply gives him the clearest picture?",
+    "hints": [
+     "Make a list of what 서준 told you and what he asked about.",
+     "Check each reply against that list."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "안녕하세요! 저는 하나예요. 한국어를 공부해요. 한국 음식을 좋아해요. 만나서 반가워요.",
+      "reveals": "Friendly, but it says nothing about her age or her family, which is what 서준 asked about."
+     },
+     {
+      "id": "b",
+      "text": "저는 하나예요. 열 살이에요. 어머니, 아버지, 동생이 있어요. 동생은 저보다 두 살 어려요."
+     },
+     {
+      "id": "c",
+      "text": "우리 가족은 세 명이에요. 어머니는 선생님이에요. 아버지는 의사예요. 저는 학생이에요.",
+      "reveals": "It describes the parents' jobs but leaves out the writer's name, age and any comparison like 서준's."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Reply b gives a name, an age, the family members and a comparison, which matches 서준's own message. The other replies are friendly or detailed but miss what he asked."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your own reply in Korean (4-5 short sentences). Include your name, your age, at least one family member, and one comparison with 보다 (for example, who is older or younger than you). Use polite style.",
+    "hints": [
+     "Start with 저는 ___예요 and then say your age with 살.",
+     "For the comparison, copy the shape of 서준's sentence: ___은/는 저보다 ... 살 많아요/어려요."
+    ],
+    "placeholder": "안녕하세요! 저는 ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(요|니다)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says who you are",
+      "mode": "any",
+      "patterns": [
+       "(저는|제 이름은|저의 이름은)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives an age",
+      "mode": "any",
+      "patterns": [
+       "\\d+\\s*살",
+       "[가-힣]+\\s*살(이에요|입니다|이야|이다)",
+       "학년"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "mentions a family member",
+      "mode": "any",
+      "patterns": [
+       "(아버지|어머니|아빠|엄마|동생|형|누나|오빠|언니|할머니|할아버지|가족)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "makes a comparison with 보다",
+      "mode": "any",
+      "patterns": [
+       "보다\\s*[^.!?]*(많|어리|어려|살)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my message tell 서준 my name and age?",
+     "Is the comparison true for my real or imagined family?",
+     "Is every sentence polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "안녕하세요! 저는 하나예요. 열 살이에요. 우리 가족은 네 명이에요. 어머니, 아버지, 동생이 있어요. 동생은 저보다 두 살 어려요."
+     },
+     {
+      "text": "저는 지민이에요. 열한 살이에요. 가족은 아버지, 어머니, 오빠, 저예요. 오빠는 저보다 네 살 많아요.",
+      "note": "Uses 오빠, which a girl uses for her older brother."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "안녕하세요. 만나서 반가워요.",
+      "why": "Polite, but no name, age, family or comparison."
+     },
+     {
+      "text": "저는 하나예요. 열 살이에요.",
+      "why": "Gives name and age, but nothing about the family."
+     }
+    ],
+    "humanReview": "Whether the comparison is true and natural, and whether the family words fit the writer's own situation."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evaluating replies",
+    "full": "Chooses the reply that matches 서준's questions and says why",
+    "partial": "Chooses it with a reason that is only about length or friendliness",
+    "none": "Chooses a reply that misses what he asked"
+   },
+   {
+    "criterion": "Own message",
+    "full": "All four items present, polite, comparison correct",
+    "partial": "One item missing or one casual sentence",
+    "none": "Several items missing"
+   }
+  ],
+  "alternatives": [
+   "A learner without a sibling may write a comparison with a cousin, parent or friend; that still meets the task."
+  ],
+  "hardCases": [
+   "Children with no siblings, single-parent families or unusual families are fine; the task works with any family."
+  ],
+  "cautions": {
+   "language": "형/오빠 and 누나/언니 depend on the speaker's gender, so a learner may need to look them up; 동생 works for everyone.",
+   "culture": "Family structures differ; a learner may describe an imagined or a different family. Do not require a 'typical' family.",
+   "accessibility": "All text is plain Korean; no images needed. The word 살 may be read in more than one way by screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Surface checks of the message"
+   ],
+   "human": [
+    "Whether the message is true to the learner's situation and warm in tone"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-05",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Ages and relationships: what information is missing",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "What would you ask 민호 to find out?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide whether a short family description is enough to answer a question, find the missing piece, and ask for it in a polite Korean question.",
+  "thinking": [
+   "Judging sufficiency of information",
+   "Separating needed from irrelevant facts",
+   "Asking a precise polite question"
+  ],
+  "differsFromPlain": "Plain practice gives all numbers and asks you to compute. Here the information is deliberately incomplete and you decide what is missing and ask for it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 나이, 살 and the family words in the text"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "민호 wrote:\n\n저는 열 살이에요. 우리 가족은 다섯 명이에요. 할머니, 아버지, 어머니, 누나, 그리고 저예요. 누나는 저보다 나이가 많아요.\n\nYou want to know exactly how old 누나 is.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Is the message enough to know 누나's age exactly?",
+    "hints": [
+     "List a few ages that would fit 'older than 10'. Is there only one?",
+     "Which fact would shrink that list to one number?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "No. I need to know how many years older she is."
+     },
+     {
+      "id": "b",
+      "text": "Yes. She is older than 10, so she is 11.",
+      "reveals": "'Older' only gives a lower limit; she could be 11, 15 or 17."
+     },
+     {
+      "id": "c",
+      "text": "No. I need 아버지's age.",
+      "reveals": "The father's age does not decide a sibling's age."
+     },
+     {
+      "id": "d",
+      "text": "No. I need 민호's birthday.",
+      "reveals": "His own birthday would not tell you about 누나."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The text only says she is older than 민호, which allows many ages. The missing piece is how much older (or her age itself)."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "민호's friend also wants to know whether 할머니 is 아버지's mother or 어머니's mother. Which new sentence from 민호 would settle it? Choose all that apply.",
+    "hints": [
+     "Which sentences mention 아버지 or 어머니?",
+     "If the answer could be the same for both grandmothers, the sentence does not settle it."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "할머니는 70세예요.",
+      "reveals": "Her age says nothing about which side of the family she is on."
+     },
+     {
+      "id": "b",
+      "text": "할머니는 아버지의 어머니예요."
+     },
+     {
+      "id": "c",
+      "text": "할머니는 어머니의 어머니예요."
+     },
+     {
+      "id": "d",
+      "text": "할머니는 우리 집에서 같이 살아요.",
+      "reveals": "Both grandmothers could live with the family; this does not tell which one."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Either sentence names the side directly, so it settles the question (with opposite answers). Age and living together fit both sides.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "b"
+      ],
+      "reason": "Naming one side settles it; c would settle it the other way."
+     },
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "Naming one side settles it; b would settle it the other way."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write one polite Korean question you could send to 민호 to learn how old 누나 is.",
+    "hints": [
+     "Use 누나 in the question and a word for age or years (몇 살, 나이).",
+     "End with a polite question ending."
+    ],
+    "placeholder": "누나는 ...?",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "asks a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "(까요|나요|니까)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions 누나",
+      "mode": "any",
+      "patterns": [
+       "누나"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about age",
+      "mode": "any",
+      "patterns": [
+       "(몇 살|몇 년|나이|살)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(요|니까)(?![가-힣])"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the question ask about 누나, not someone else?",
+     "Would a single answer from 민호 settle it?",
+     "Is it polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "누나는 민호 씨보다 몇 살 많아요?"
+     },
+     {
+      "text": "누나는 몇 살이에요?",
+      "note": "Directly asks for the age."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "누나가 좋아요.",
+      "why": "Not a question and not about age."
+     },
+     {
+      "text": "민호는 몇 살이야?",
+      "why": "Asks about the wrong person and drops the polite ending."
+     }
+    ],
+    "humanReview": "Whether the question is natural and precise."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Sufficiency",
+    "full": "Sees that 'older' is not enough and names what is missing",
+    "partial": "Says it is not enough but picks an irrelevant fact",
+    "none": "Treats it as enough"
+   },
+   {
+    "criterion": "Question",
+    "full": "Polite question that targets 누나's age",
+    "partial": "Question about age but not about 누나, or not polite",
+    "none": "No question"
+   }
+  ],
+  "alternatives": [
+   "'누나는 몇 살이에요?' and '누나는 저보다 몇 살 많아요?' both work."
+  ],
+  "hardCases": [
+   "The word 할머니 can be either grandmother; a learner might say 'ask for 친할머니 or 외할머니' using vocabulary beyond this level, which is fine."
+  ],
+  "cautions": {
+   "language": "The question uses 몇 살 and 나이; check that a learner who writes 몇 년 or 나이가 어떻게 돼요 is also accepted by the surface pattern.",
+   "culture": "In Korean families, 할머니 can mean either grandmother and a more exact word may be needed; this is a normal ambiguity.",
+   "accessibility": "Use plain text; 민호 is read as a name. The question mark may be skipped by learners; the 요/까요 endings are accepted too."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2",
+    "Surface checks of the question"
+   ],
+   "human": [
+    "Naturalness and precision of the learner's question"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-06",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Omitted subjects: who is meant, stage by stage",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The person in the living room",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Predict who an omitted subject is, then revise the guess as more of 민지's story appears.",
+  "thinking": [
+   "Making and revising a guess about an omitted subject",
+   "Using several clues together",
+   "Noticing how added information narrows a guess"
+  ],
+  "differsFromPlain": "Plain practice gives the whole text at once and asks one question. Here the story is shown in three parts and you update your judgement after each.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen -요 endings and family words"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "민지 is telling a friend about her afternoon. We read it one part at a time. Korean often leaves out who does the action.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part and choose who you think is meant. Your guess may change.",
+    "stages": [
+     {
+      "info": "민지: 학교 끝나고 집에 갔어요. 거실에 계셨어요.",
+      "ask": "Who was in the living room?",
+      "options": [
+       {
+        "id": "a",
+        "text": "민지 herself",
+        "reveals": "The verb form is one that honors the doer, which people do not use for themselves."
+       },
+       {
+        "id": "b",
+        "text": "Someone she looks up to, like a grandparent or a parent"
+       },
+       {
+        "id": "c",
+        "text": "Her younger brother",
+        "reveals": "A younger brother would not usually be spoken of in this way."
+       },
+       {
+        "id": "d",
+        "text": "A classmate her age",
+        "reveals": "The form does not fit a same-age classmate."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The ending shows respect for the person, so a family elder or similar fits. At this point a parent or a grandparent both remain possible."
+     },
+     {
+      "info": "민지: 저를 보고 웃으시면서 '우리 강아지, 왔어?' 하셨어요.",
+      "ask": "Who is '우리 강아지' here?",
+      "options": [
+       {
+        "id": "a",
+        "text": "A real puppy",
+        "reveals": "A real puppy does not 'come' or answer; 민지 is the one just arriving."
+       },
+       {
+        "id": "b",
+        "text": "민지 herself, as a loving nickname"
+       },
+       {
+        "id": "c",
+        "text": "Her younger brother",
+        "reveals": "The person is looking at 민지 when saying it."
+       },
+       {
+        "id": "d",
+        "text": "Nobody; it is a mistake",
+        "reveals": "Calling a loved child '강아지' is a common warm nickname."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The person looks at 민지 and asks if she has come. 우리 강아지 is a warm nickname for a child, so it points to 민지."
+     },
+     {
+      "info": "민지: 그리고 아버지께 전화해서 '아들, 민지 왔다.' 하셨어요.",
+      "ask": "Who is the person in the living room now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "민지's mother",
+        "reveals": "Her mother would not call 아버지 '아들'."
+       },
+       {
+        "id": "b",
+        "text": "민지's teacher",
+        "reveals": "A teacher is not likely to call her father '아들'."
+       },
+       {
+        "id": "c",
+        "text": "A parent of 민지's father, such as a grandmother or a grandfather"
+       },
+       {
+        "id": "d",
+        "text": "민지's older sister",
+        "reveals": "An older sister would not call 아버지 '아들'."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "Only a parent can call a grown man '아들'. So the person is 민지's father's parent: her grandmother or grandfather on the father's side."
+     }
+    ],
+    "reflect": "At first 'someone respected' was enough, but each new clue removed some options. The last clue showed that the earlier 'parent' possibility also had to go. Notice that you changed your guess because of evidence, not because of a hunch.",
+    "hints": [
+     "After each part, ask yourself which options the new part rules out.",
+     "Do not keep a guess just because you chose it earlier."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why can 민지 leave out the subject without confusing her friend?",
+    "hints": [
+     "Look at which parts of the three messages you used to guess.",
+     "Ask when you think a speaker would say the subject out loud."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Because Korean sentences never have a subject.",
+      "reveals": "Subjects are often omitted but they exist; they can be added when it would be unclear."
+     },
+     {
+      "id": "b",
+      "text": "Because her friend knows everything about her family.",
+      "reveals": "If that were the whole reason, the clues in the verbs would not matter."
+     },
+     {
+      "id": "c",
+      "text": "Because the verb form and the story already show who is meant."
+     },
+     {
+      "id": "d",
+      "text": "Because she was not sure who was in the living room.",
+      "reveals": "She clearly knows; she tells the story in order."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Korean listeners use forms of the verb and context to recover the subject. If it were truly unclear, a speaker would add it."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Updating a guess",
+    "full": "Changes the guess in a stage after a new clue and ends with a grandparent on the father's side",
+    "partial": "Narrows only partly",
+    "none": "Keeps one guess regardless of clues"
+   },
+   {
+    "criterion": "Explaining",
+    "full": "Says the verb form and context make the subject clear",
+    "partial": "Says subjects are not needed",
+    "none": "No answer"
+   }
+  ],
+  "alternatives": [
+   "A learner may reason that the grandparent could also be on the mother's side; the text 아버지께 '아들' excludes that."
+  ],
+  "hardCases": [
+   "If a learner does not know 아들, the third stage becomes harder; a hint may be needed."
+  ],
+  "cautions": {
+   "language": "The honoring form (-시-) is the clue; the nickname 우리 강아지 is a typical expression and does not call 민지 an animal.",
+   "culture": "Calling a child 강아지 is a warm habit in some families and may sound strange to others; it is not an insult.",
+   "accessibility": "No images. Stages appear one at a time; screen readers can read each stage. Quote marks may be read aloud."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The reasonable options in each stage"
+   ],
+   "human": [
+    "Quality of the learner's reflection if it is asked in class"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-07",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Relationships: family words that depend on who speaks",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Brother or sister? Check the words",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": false,
+  "goal": "Find the family word that does not fit the speaker, choose the right word, and test what changes if the speaker is someone else.",
+  "thinking": [
+   "Locating an odd word using information about the speaker",
+   "Choosing the corrected word",
+   "Checking how a change in the speaker changes the judgement"
+  ],
+  "differsFromPlain": "Plain practice asks you to match family words to pictures. Here the right word depends on who is speaking, so you have to check a text against that information.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows that Korean has more than one word for older brother and older sister"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "하나 is a girl. She has one older brother (15 years old) and one older sister (17 years old). She introduces her family to her class.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Which line has a family word that does not fit 하나?",
+    "lines": [
+     "안녕하세요? 저는 하나예요.",
+     "저는 열두 살이에요.",
+     "우리 형은 열다섯 살이에요.",
+     "언니는 열일곱 살이에요.",
+     "아버지와 어머니도 계세요."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the odd one. A girl calls her older brother 오빠, not 형. A boy would use 형. Line 4 is fine because a girl calls her older sister 언니.",
+    "hints": [
+     "Mark who is a boy or a girl in the story. Which family words depend on that?",
+     "Compare the two lines that name an older sibling."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which word should replace 형 in line 3?",
+    "hints": [
+     "Is the person older or younger than 하나?",
+     "Is the speaker a girl or a boy?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "누나",
+      "reveals": "누나 is the word a boy uses for his older sister; here the sibling is a brother."
+     },
+     {
+      "id": "b",
+      "text": "동생",
+      "reveals": "동생 means a younger sibling, but he is 15 and older than 하나."
+     },
+     {
+      "id": "c",
+      "text": "오빠"
+     },
+     {
+      "id": "d",
+      "text": "아버지",
+      "reveals": "아버지 is the father; the line is about a brother."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A girl calls her older brother 오빠. The line becomes 우리 오빠는 열다섯 살이에요."
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Now imagine 하나 is a boy with the same family (one older brother and one older sister). Which lines would need changing?",
+    "hints": [
+     "Test line 3 and line 4 separately with the new speaker.",
+     "Write the right word for a boy for each sibling."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Line 4 only"
+     },
+     {
+      "id": "b",
+      "text": "Line 3 only",
+      "reveals": "For a boy 형 is the right word, so line 3 would be fine."
+     },
+     {
+      "id": "c",
+      "text": "Both lines 3 and 4",
+      "reveals": "Only one of the two words would stop fitting."
+     },
+     {
+      "id": "d",
+      "text": "Neither line",
+      "reveals": "Check each word against the new speaker."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "For a boy, 형 (older brother) is correct, but an older sister is 누나, not 언니. So line 4 would change."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the error",
+    "full": "Picks line 3 and says the word depends on the speaker being a girl",
+    "partial": "Picks line 3 without a reason",
+    "none": "Picks another line"
+   },
+   {
+    "criterion": "Transfer",
+    "full": "Correctly says only line 4 would change for a boy",
+    "partial": "Sees one change but wrong line",
+    "none": "Says nothing or both"
+   }
+  ],
+  "alternatives": [
+   "Some families use other words (for example the sibling's name); in a class introduction 오빠/언니 and 형/누나 are expected."
+  ],
+  "hardCases": [
+   "Learners from a language with a single word for 'brother' or 'sister' may find the speaker-dependent words surprising; this is not a mistake of logic."
+  ],
+  "cautions": {
+   "language": "Terms that change by the speaker's gender are 형/오빠 and 누나/언니; 동생 is the same for all.",
+   "culture": "This is a Korean convention and is not about status; someone may use a name instead.",
+   "accessibility": "No images; all lines can be read separately by a screen reader."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "All three steps against their keys"
+   ],
+   "human": [
+    "Whether a learner can explain the pattern in their own words"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-08",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Titles and speech levels with family",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Can you speak casually to family?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Judge a claim about speech to family members, find which parts hold and which do not, and write one sentence for a sibling and one for a grandparent.",
+  "thinking": [
+   "Evaluating a general claim with a counterexample",
+   "Seeing that one counterexample breaks 'always' but not 'sometimes'",
+   "Producing two sentences for two audiences"
+  ],
+  "differsFromPlain": "Plain practice asks which ending is polite. Here you decide how far a general claim goes and then apply your judgement in writing for two people.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen both casual and polite endings"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Two friends discuss how to speak to family.\n\n하나: 가족한테는 항상 반말을 써도 돼. 우리 가족이잖아.\n준: 아니야. 할머니한테 '밥 먹었어?' 하면 안 돼.\n(반말 = casual speech without the polite -요.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which statements about this argument are fair? Choose all that apply.",
+    "hints": [
+     "What would a single counterexample prove, and what would it not prove?",
+     "Think about whom a person usually speaks casually to at home."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "'항상' is too strong: one example like 할머니 is enough to question it."
+     },
+     {
+      "id": "b",
+      "text": "Families differ: some use casual speech with parents, others do not, so no single rule fits every family."
+     },
+     {
+      "id": "c",
+      "text": "Because it is family, politeness is never needed.",
+      "reveals": "This repeats 하나's claim instead of testing it."
+     },
+     {
+      "id": "d",
+      "text": "준's example shows that no one uses casual speech to family members.",
+      "reveals": "One example about 할머니 does not cover a younger sibling or every family; it only breaks 'always'."
+     }
+    ],
+    "correct": [
+     "a",
+     "b"
+    ],
+    "explain": "The claim 'always casual' is broken by a single counterexample, but that does not mean 'never casual'. Real families differ, and the relationship decides.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "Spotting the weakness of '항상' is the key point; b adds that families differ."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write two short questions in Korean asking if the person has eaten: one to your younger sibling and one to your grandmother or grandfather.",
+    "hints": [
+     "Use casual ending for the younger sibling and a polite one for the grandparent.",
+     "Put 할머니 or 할아버지 in the second sentence."
+    ],
+    "placeholder": "동생아, ... 할머니, ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "one sentence with polite -요",
+      "mode": "any",
+      "patterns": [
+       "(요|니까)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "one casual question for the younger sibling",
+      "mode": "any",
+      "patterns": [
+       "(먹었어|먹었니|먹을래|먹었냐|먹었지)(?!요)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names the grandparent",
+      "mode": "any",
+      "patterns": [
+       "(할머니|할아버지)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use different endings for the two people?",
+     "Does the grandparent sentence sound respectful?",
+     "Is each question really about eating?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "동생아, 밥 먹었어? 할머니, 밥 드셨어요?"
+     },
+     {
+      "text": "너 밥 먹었니? 할아버지, 식사하셨어요?",
+      "note": "Uses the honorific verb 식사하셨어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니, 밥 먹었어? 동생아, 밥 먹었어?",
+      "why": "Both sentences are casual."
+     },
+     {
+      "text": "할머니, 식사하셨어요? 할아버지, 드셨어요?",
+      "why": "Both sentences are polite; no casual sentence for the sibling."
+     }
+    ],
+    "humanReview": "Whether the casual sentence is natural, and whether the grandparent sentence has suitable respect words."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evaluating the claim",
+    "full": "Sees that 'always' is too strong and that families differ",
+    "partial": "Sees one of the two",
+    "none": "Accepts 하나's claim"
+   },
+   {
+    "criterion": "Applying",
+    "full": "Casual question to sibling and polite question to grandparent",
+    "partial": "One sentence fits, the other does not",
+    "none": "Same level in both"
+   }
+  ],
+  "alternatives": [
+   "Some families use polite speech with older siblings or even with parents; the task does not call that wrong."
+  ],
+  "hardCases": [
+   "A learner with no grandparents may use a different older relative or neighbor; the check accepts 할머니 or 할아버지 only, so adjust the check or review by hand."
+  ],
+  "cautions": {
+   "language": "Casual forms (먹었어) are only appropriate to someone younger or very close; polite forms (먹었어요, 드셨어요) are the safe choice for elders.",
+   "culture": "Family speech habits differ by region, family and generation; do not treat one pattern as the correct one.",
+   "accessibility": "The prompt uses plain text. The ? sign may be read aloud as a question mark; this is fine."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1",
+    "Surface checks in s2"
+   ],
+   "human": [
+    "Naturalness of the two sentences and the learner's reasoning"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-09",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Ages and relationships: several families fit",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "How old could the family be?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read age clues in Korean, see that they leave several possibilities, and build different families that satisfy all clues.",
+  "thinking": [
+   "Reading comparisons of ages",
+   "Seeing that some clues allow a range, not one answer",
+   "Building and checking several solutions under constraints"
+  ],
+  "differsFromPlain": "Plain practice asks for one calculated age. Here the clues allow many answers and you must build several correct families, each checked against every clue.",
+  "prerequisites": [
+   "Can read Hangul and Arabic numerals",
+   "Knows 살 (years old), 많아요, 어려요 and 보다"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "민수 describes his family:\n\n저는 12살이에요.\n형은 저보다 2살이나 3살 많아요.\n아버지는 형보다 28살에서 32살 많아요.\n할머니는 아버지보다 25살에서 32살 많아요.\n할머니는 75살보다 어려요.\n\n(All ages are whole numbers.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Can you tell 형's age exactly from the text?",
+    "hints": [
+     "Work out the lowest and highest age the first clue allows.",
+     "Check whether any other clue gives 형's age."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes: 14",
+      "reveals": "This ignores the other possibility that fits '2살이나 3살'."
+     },
+     {
+      "id": "b",
+      "text": "Yes: 15",
+      "reveals": "This ignores the other possibility that fits '2살이나 3살'."
+     },
+     {
+      "id": "c",
+      "text": "No: 14 and 15 both fit"
+     },
+     {
+      "id": "d",
+      "text": "No: the clues contradict each other",
+      "reveals": "They are consistent; check them one by one."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "'2살이나 3살' means 12+2 = 14 or 12+3 = 15, so two ages fit.",
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Build three different families: enter 형's age (h), 아버지's age (f) and 할머니's age (g) so that every clue is true.",
+    "hints": [
+     "Pick 형's age first, then add a number between 28 and 32 for 아버지.",
+     "Then add a number between 25 and 32 for 할머니 and check that she is under 75."
+    ],
+    "vars": [
+     {
+      "name": "h",
+      "label": "형's age"
+     },
+     {
+      "name": "f",
+      "label": "아버지's age"
+     },
+     {
+      "name": "g",
+      "label": "할머니's age"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "h==floor(h) && f==floor(f) && g==floor(g)",
+      "ok": "All ages are whole numbers.",
+      "fail": "Ages must be whole numbers."
+     },
+     {
+      "id": "c1",
+      "expr": "h>=14 && h<=15",
+      "ok": "형 is 2 or 3 years older than 12.",
+      "fail": "형 should be 14 or 15."
+     },
+     {
+      "id": "c2",
+      "expr": "f-h>=28 && f-h<=32",
+      "ok": "아버지 is 28-32 years older than 형.",
+      "fail": "아버지's age minus 형's age should be 28 to 32."
+     },
+     {
+      "id": "c3",
+      "expr": "g-f>=25 && g-f<=32",
+      "ok": "할머니 is 25-32 years older than 아버지.",
+      "fail": "할머니's age minus 아버지's age should be 25 to 32."
+     },
+     {
+      "id": "c4",
+      "expr": "g<75",
+      "ok": "할머니 is younger than 75.",
+      "fail": "할머니 must be younger than 75."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "h*10000+f*100+g",
+    "modelRows": [
+     {
+      "h": 14,
+      "f": 42,
+      "g": 67
+     },
+     {
+      "h": 15,
+      "f": 45,
+      "g": 70
+     },
+     {
+      "h": 14,
+      "f": 44,
+      "g": 72
+     },
+     {
+      "h": 15,
+      "f": 47,
+      "g": 74
+     }
+    ],
+    "badRows": [
+     {
+      "h": 16,
+      "f": 46,
+      "g": 70
+     },
+     {
+      "h": 14,
+      "f": 40,
+      "g": 66
+     },
+     {
+      "h": 14,
+      "f": 44,
+      "g": 60
+     }
+    ],
+    "explain": "For example 14 / 42 / 67 works: 14-12 = 2, 42-14 = 28, 67-42 = 25 and 67 is under 75. Many other combinations also work, so the text does not give one single family."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the clues",
+    "full": "Finds the allowed ranges and sees more than one answer",
+    "partial": "Finds one answer only",
+    "none": "Misreads the comparisons"
+   },
+   {
+    "criterion": "Checking",
+    "full": "All three families satisfy every clue",
+    "partial": "Two of three correct",
+    "none": "Most violate a clue"
+   }
+  ],
+  "alternatives": [
+   "Any three different valid triples are correct; there are many."
+  ],
+  "hardCases": [
+   "A learner may treat '28살에서 32살' as exclusive of 28 or 32; the text means including both."
+  ],
+  "cautions": {
+   "language": "Numbers are written with digits so the focus is on the comparison words 많아요/어려요/보다 and the range 에서.",
+   "culture": "Ages and generations may vary in real families; the numbers are made up.",
+   "accessibility": "Digits and short sentences work with screen readers; the clues are listed on separate lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Every example against the constraints in s2"
+   ],
+   "human": [
+    "None needed beyond a quick look at the learner's reasoning, if asked"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k3-10",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Relationships: who is meant by a clue",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Describe a family member so only one fits",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Find which clue pair points to exactly one family member, then write your own clue pair for another member.",
+  "thinking": [
+   "Testing clue pairs against a list of people",
+   "Seeing that a clue pair can fit more than one person",
+   "Making a clue pair that fits exactly one person"
+  ],
+  "differsFromPlain": "Plain practice asks you to name the relationship word for a person. Here you test descriptions against a family and write clues that single out one person.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows the family words and 남자/여자, 나이, 살"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "민수's family (all in the same house):\n\n민수 (12 years old, boy)\n남동생 (8, boy)\n누나 (15, girl)\n아버지 (45)\n어머니 (42)\n할머니 (70, 아버지's mother)\n\nA clue pair is a description of one person, for a guessing game.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which clue pair points to exactly one person?",
+    "hints": [
+     "Test the clue pair on each person in the list, one by one.",
+     "Count how many people fit each pair."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "여자예요. 민수보다 나이가 많아요.",
+      "reveals": "This fits 누나, 어머니 and 할머니, so it does not single out one person."
+     },
+     {
+      "id": "b",
+      "text": "민수의 가족이에요. 어른이에요.",
+      "reveals": "This fits 아버지, 어머니 and 할머니."
+     },
+     {
+      "id": "c",
+      "text": "여자예요. 아버지의 어머니가 아니에요.",
+      "reveals": "This leaves 누나 and 어머니."
+     },
+     {
+      "id": "d",
+      "text": "남자예요. 민수보다 나이가 많아요."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Only 아버지 is a man older than 민수. The other pairs leave two or three people."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Choose another person from 민수's family (not 아버지) and write two Korean clue sentences that fit only that person. Do not say the family word itself.",
+    "hints": [
+     "Combine two kinds of clue, like 남자/여자 with an age comparison or a number of years.",
+     "Test your two sentences on all six people before you finish."
+    ],
+    "placeholder": "...예요. ...예요.",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "two sentences ending in polite -요",
+      "mode": "any",
+      "patterns": [
+       "요[.!]?\\s+[^.!?]*요"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives a clue about the person",
+      "mode": "any",
+      "patterns": [
+       "(남자|여자|살|많아요|어려요|어려|보다|딸|아들|의 (어머니|아버지))"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my clue pair fit only one person when I check all six?",
+     "Did I avoid saying the family word of the answer?",
+     "Are both sentences polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "남자예요. 민수보다 어려요.",
+      "note": "Fits only 남동생."
+     },
+     {
+      "text": "여자예요. 15살이에요.",
+      "note": "Fits only 누나."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "아버지예요.",
+      "why": "Only one sentence, and it says the family word itself."
+     },
+     {
+      "text": "누구일까요? 맞혀 보세요.",
+      "why": "No clue about the person."
+     }
+    ],
+    "humanReview": "Whether the two clues really single out one person, which needs a person to test against the list."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing clues",
+    "full": "Counts who fits each pair and finds the unique one",
+    "partial": "Finds it but cannot say why the others fail",
+    "none": "Chooses a pair that fits several people"
+   },
+   {
+    "criterion": "Own clue pair",
+    "full": "Two clues that fit exactly one person, polite",
+    "partial": "Fits two people or one clue is weak",
+    "none": "No usable clue"
+   }
+  ],
+  "alternatives": [
+   "Mixed clues such as '70살이에요. 아버지의 어머니예요.' are valid but give the same information twice."
+  ],
+  "hardCases": [
+   "A learner may write '여자예요. 민수보다 많아요.' without thinking that 3 people fit; self-assessment is needed."
+  ],
+  "cautions": {
+   "language": "Check that learners understand 남자/여자 as 'male/female'; the family list in English labels (boy, girl) helps.",
+   "culture": "The family is made up; the family terms (아버지, 어머니, 할머니) assume a two-parent household for convenience and do not assume this for all learners.",
+   "accessibility": "The list is a plain text list, not a picture, so it works with screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Surface checks of clues"
+   ],
+   "human": [
+    "Whether the written clues identify exactly one person"
+   ]
+  }
+ }
+]
