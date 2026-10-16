@@ -49,6 +49,13 @@ for (const f of files) {
 const wordsSeen = new Map(); // en|pos -> first skill (a word is one learning item across levels)
 const dropped = { frameDuplicate: 0, vocabRepeat: 0, duplicateQuestion: 0, clozeBroken: 0, badItem: 0 };
 const skillOrder = (s) => plan.skills.findIndex((x) => x.id === s);
+// Authored step-by-step hints (scripts/learn/english-bank/hints/*.json: itemId -> {m:[h1,h2]} | {s:"h"} | {q:{"n":[h1,h2]}}) replace the rule-generated ones.
+// A hint that names the key (or a word only the key contains) is ignored here and counted as rejected.
+const HINTS = {};
+const HINT_DIR = path.join(here, "hints");
+for (const f of fs.existsSync(HINT_DIR) ? fs.readdirSync(HINT_DIR).filter((x) => x.endsWith(".json")).sort() : []) Object.assign(HINTS, JSON.parse(fs.readFileSync(path.join(HINT_DIR, f), "utf8")));
+const hintStats = { used: 0, rejected: 0 };
+const okHint = (h, key, options) => (h === undefined ? undefined : typeof h === "string" && /[가-힣]/.test(h) && h.length <= 160 && safeHint(h, key, options) !== undefined ? (hintStats.used++, h) : (hintStats.rejected++, undefined));
 // Reviewed items keep their place when a newer (unreviewed) item duplicates them: the first-seen copy survives de-duplication.
 const reviewedIds = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8")).reviewed;
 items.sort((a, b) => (reviewedIds[itemId(a.skill, a.item)] ? 0 : 1) - (reviewedIds[itemId(b.skill, b.item)] ? 0 : 1) || skillOrder(a.skill) - skillOrder(b.skill));
@@ -150,9 +157,9 @@ for (const { skill, packet, item } of valid) {
   } else if (item.k === "s") {
     let qid = `eb-${id}-pick`; let r = shuffled(qid, [item.good, ...item.bad]);
     const expl = `정답: “${item.good}” (${item.ko}) ${item.rule}`;
-    push(skill, packet, item, "pick", mk(skill, qid, { difficulty: d, prompt: "다음 중 문법적으로 옳은 문장은?", options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [pickHint1(item.good, item.bad), ruleHint(item)], explanation: expl }));
+    push(skill, packet, item, "pick", mk(skill, qid, { difficulty: d, prompt: "다음 중 문법적으로 옳은 문장은?", options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [pickHint1(item.good, item.bad), ruleHint({ ...item, hint: item.hint ?? okHint(HINTS[id]?.s, item.good, item.bad) })], explanation: expl }));
     qid = `eb-${id}-cloze`; r = shuffled(qid, [item.cz.ok, ...item.cz.wr]);
-    push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint(item)], explanation: expl }));
+    push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint({ ...item, hint: item.hint ?? okHint(HINTS[id]?.s, item.cz.ok, item.cz.wr) })], explanation: expl }));
     const toks = item.good.split(/\s+/);
     if (item.ord !== false && toks.length >= 3 && toks.length <= 12) {
       qid = `eb-${id}-order`;
@@ -164,11 +171,11 @@ for (const { skill, packet, item } of valid) {
     item.qs.forEach((q, i) => {
       const qid = `eb-${id}-q${i + 1}`;
       const texts = [q.o[q.a], ...q.o.filter((_, j) => j !== q.a)]; const r = shuffled(qid, texts);
-      push(skill, packet, item, `${item.k}q`, mk(skill, qid, { difficulty: clamp(d + (i >= 3 ? 1 : 0)), prompt: `${item.text}\n\n${q.q}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: readingHints(item, q), explanation: q.why }));
+      push(skill, packet, item, `${item.k}q`, mk(skill, qid, { difficulty: clamp(d + (i >= 3 ? 1 : 0)), prompt: `${item.text}\n\n${q.q}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: (() => { const a = HINTS[id]?.q?.[String(i + 1)]; const ok = Array.isArray(a) && a.length === 2 && a.every((h) => okHint(h, q.o[q.a], q.o) !== undefined); return ok ? a : readingHints(item, q); })(), explanation: q.why }));
     });
   } else if (item.k === "m") {
     const qid = `eb-${id}-m`; const texts = [item.o[item.a], ...item.o.filter((_, j) => j !== item.a)]; const r = shuffled(qid, texts);
-    push(skill, packet, item, "m", mk(skill, qid, { difficulty: d, prompt: item.q, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: mHints(item), explanation: item.why }));
+    push(skill, packet, item, "m", mk(skill, qid, { difficulty: d, prompt: item.q, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: (() => { const a = HINTS[id]?.m; const ok = Array.isArray(a) && a.length === 2 && a.every((h) => okHint(h, item.o[item.a], item.o) !== undefined); return ok ? a : mHints(item); })(), explanation: item.why }));
   }
 }
 if (errors.length) { console.error(`${errors.length} problem(s):`); for (const e of errors.slice(0, 40)) console.error("  " + e); }
@@ -226,6 +233,7 @@ console.log("by group:", byGroup, "items by group:", itemsByGroup);
 console.log("by form:", byForm);
 console.log("longest-correct rate (reading/dialogue/standalone) by packet:", Object.fromEntries(Object.entries(longest).map(([k, v]) => [k, `${Math.round((100 * v.longestCorrect) / v.n)}% of ${v.n}`])));
 console.log("passages below the minimum length:", Object.fromEntries(Object.entries(wordsShort).map(([k, v]) => [k, v.length])));
+console.log("authored hints used/rejected:", hintStats, "units:", Object.keys(HINTS).length);
 console.log("dropped:", dropped, `${errors.length ? errors.length + " validation errors" : "no validation errors"}`);
 if (!noWrite) fs.writeFileSync(path.join(here, "report.json"), JSON.stringify({ total: questions.length, items: valid.length, served: served.length, pending: pending.length, byState, byGroup, itemsByGroup, byForm, bySkill, dropped }, null, 1) + "\n");
 process.exit(errors.length ? 1 : 0);

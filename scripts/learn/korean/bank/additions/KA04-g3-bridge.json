@@ -132,11 +132,11 @@
      "ko": "A: 안녕하십니까? 예약하신 성함을 말씀해 주십시오. B: 김민수입니다. 세 명이 예약했습니다. A: 네, 확인했습니다. 창가 자리로 안내하겠습니다.",
      "g": "A: Hello. Please tell me the name the reservation is under. B: It is Kim Minsu. The reservation is for three people. A: Yes, I have confirmed it. I will show you to a table by the window.",
      "read": {
-      "true": "B has a reservation for three people, and A will guide B to a window table.",
+      "true": "B reserved for three people, and A takes B to a window seat.",
       "false": [
-       "The reservation is for only one person.",
-       "A says that every seat is already full.",
-       "B works at the restaurant and is asking A for a reservation."
+       "The reservation is for only one person, not for a group.",
+       "A says that all seats are full and B must wait outside.",
+       "B is a staff member who is taking A's reservation by phone."
       ]
      },
      "grade": 3,
@@ -251,7 +251,7 @@
      },
      "grade": 3,
      "area": "읽기",
-     "std": "읽기3-4"
+     "std": "읽기3-5"
     },
     {
      "cat": "sentence",

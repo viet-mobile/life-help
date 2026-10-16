@@ -3,48 +3,9 @@
  "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
  "scope": {
   "batch": 1,
-  "questions": 81
+  "questions": 6
  },
- "patches": [
-  {
-   "item": "d1a87f5c",
-   "op": "set",
-   "set": {
-    "ex": "Oh, sorry! I am late. Please wait for me.",
-    "exko": "아, 미안해요! 제가 늦었어요. 저를 기다려 주세요."
-   },
-   "why": "'Oh, goodbye! I am late.' was a plausible reading; added 'Please wait for me' which excludes goodbye/thanks. en unchanged.",
-   "severity": "minor"
-  },
-  {
-   "item": "1167d837",
-   "op": "set",
-   "set": {
-    "ex": "The soccer game is great!",
-    "exko": "그 축구 경기는 굉장해요!"
-   },
-   "why": "'game is heavy' (board game) was arguably correct; soccer game removes it.",
-   "severity": "minor"
-  },
-  {
-   "item": "e7b7a2b4",
-   "op": "set",
-   "set": {
-    "why": "hat은 t로 끝나요."
-   },
-   "why": "Particle consistency with sibling item (hat은).",
-   "severity": "minor"
-  },
-  {
-   "item": "be12e84c",
-   "op": "set",
-   "set": {
-    "why": "cat과 hat은 끝소리가 같아요."
-   },
-   "why": "Particle consistency (hat은).",
-   "severity": "minor"
-  }
- ],
- "ok": 77,
+ "patches": [],
+ "ok": 6,
  "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
 }

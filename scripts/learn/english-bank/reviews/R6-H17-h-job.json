@@ -1,0 +1,89 @@
+{
+ "packet": "H17-h-job",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 25
+ },
+ "patches": [
+  {
+   "item": "a53ec9b1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's main point?",
+      "o": [
+       "Dentists should be kinder to small children",
+       "The internship built the writer's skills and interest in healthcare",
+       "Forms at clinics are too difficult for most interns to complete",
+       "Summer jobs are easier than school courses"
+      ],
+      "a": 1,
+      "why": "인턴 경험이 기술과 진로 관심을 키워 주었다는 글이에요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "How did the writer feel on the first day?",
+      "o": [
+       "Bored because the tasks were too easy",
+       "Worried because the work was new",
+       "Proud because Dr. Moon had already praised the work",
+       "Angry because she had to work alone"
+      ],
+      "a": 1,
+      "why": "I was nervous on the first day라고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "What habit did the writer develop?",
+      "o": [
+       "Writing a daily diary about each patient",
+       "Arriving at the clinic an hour before it opens",
+       "Asking parents to sign every page twice",
+       "Reading each form two times before submitting"
+      ],
+      "a": 3,
+      "why": "checking each form twice라고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "The word “confusion” in the second paragraph is closest in meaning to",
+      "o": [
+       "a state of not understanding clearly",
+       "a feeling of great happiness",
+       "a plan for a future career",
+       "a rule about patient forms"
+      ],
+      "a": 0,
+      "why": "confusion은 정확히 이해하지 못해 혼란스러운 상태를 뜻해요."
+     },
+     {
+      "q": "What can be inferred from the last sentence?",
+      "o": [
+       "The writer has already decided to quit school",
+       "The writer will return to the clinic next week",
+       "The experience may influence the writer's future plans",
+       "The writer dislikes working with young patients in clinics"
+      ],
+      "a": 2,
+      "why": "healthcare 진로에 대해 진지하게 생각하게 되었다고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     }
+    ]
+   },
+   "why": "Replace her/she with 'the writer' in q1, q2, q5 options; text has no gender.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 22,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

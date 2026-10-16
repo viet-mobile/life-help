@@ -1,0 +1,120 @@
+{
+ "packet": "H13-h3-ins",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 23,
+  "questions": 14
+ },
+ "patches": [
+  {
+   "item": "b19489d2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why is cleaning the open ocean so difficult?",
+      "o": [
+       "Fish and seabirds refuse to leave the polluted water.",
+       "Engineers cannot build barriers that float on the sea.",
+       "The waste is made of small pieces spread over wide areas.",
+       "Rivers carry more waste than the ocean can hold."
+      ],
+      "a": 2,
+      "why": "세 번째 문장이 조각이 작고 넓게 퍼져 있어서 어렵다고 설명해요."
+     },
+     {
+      "q": "What does \"it\" in the fifth sentence refer to?",
+      "o": [
+       "the floating barrier itself",
+       "the trash gathered at the collection point",
+       "the water in the river",
+       "the coast near the river"
+      ],
+      "a": 1,
+      "why": "모인 쓰레기를 작업자들이 분류한다는 뜻이에요."
+     },
+     {
+      "q": "What does the writer suggest in the last two sentences?",
+      "o": [
+       "Using less plastic is needed along with cleanup.",
+       "Cleanup projects should be stopped completely.",
+       "Recycling workers should sort waste out at sea.",
+       "Rivers should be closed to boats and fishers."
+      ],
+      "a": 0,
+      "why": "마지막 두 문장은 청소만으로는 부족하고, 플라스틱 사용 자체를 줄이는 일(일회용 봉지·빨대 금지)이 함께 필요하다고 말해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"Many of these animals become sick or die as a result.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "'these animals'는 바로 앞 문장의 fish and seabirds를 가리키므로 그 문장 뒤인 [2]에 들어가야 해요. [1]에는 가리킬 동물이 아직 나오지 않아요."
+     }
+    ]
+   },
+   "why": "Replace redundant Q4 with an insertion question; sentence 'Many of these animals...' fits only at [2] (right after the sentence naming fish and seabirds; at [1] 'these animals' has no antecedent; at [3] it would split the 'difficult... therefore' link).",
+   "severity": "major"
+  },
+  {
+   "item": "ba93b2b2",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does \"they\" in the fourth sentence refer to?",
+      "o": [
+       "the librarians who run the workshops",
+       "the older adults who take computer classes",
+       "the machines that are used in the workshops",
+       "the teenagers who attend the workshops"
+      ],
+      "a": 3,
+      "why": "‘machines they could not afford’에서 they는 십 대를 가리켜요."
+     },
+     {
+      "q": "In the second sentence, \"check out\" is closest in meaning to",
+      "o": [
+       "return",
+       "borrow",
+       "donate",
+       "repair"
+      ],
+      "a": 1,
+      "why": "책을 check out한다는 것은 빌린다는 뜻이에요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"These visitors come for other reasons.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 0,
+      "why": "'These visitors'는 두 번째 문장의 some visitors를 가리키므로 그 바로 뒤인 [1]에 들어가야 해요. 다른 위치에서는 가리킬 방문객이 앞에 나오지 않아요."
+     },
+     {
+      "q": "How do city officials now describe libraries?",
+      "o": [
+       "As places that are too costly to keep open",
+       "As centers for community life",
+       "As rooms used only for printed books",
+       "As storage spaces that should be closed"
+      ],
+      "a": 1,
+      "why": "여섯 번째 문장에서 도서관을 지역 사회의 중심(community centers)으로 묘사한다고 해요."
+     }
+    ]
+   },
+   "why": "Replace Q3 with an insertion question; 'These visitors come for other reasons.' fits only at [1], after 'some visitors never check out a single book'.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 11,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

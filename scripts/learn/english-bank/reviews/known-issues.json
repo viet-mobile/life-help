@@ -322,6 +322,13 @@
    "severity": "minor",
    "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
    "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 5,
+   "id": "eb-d5e52f6e-koen",
+   "severity": "minor",
+   "problem": "Generated hint 2 '첫 글자: g' fits both the key 'go to school' and the distractor 'get up', so it is ambiguous (does not reveal the answer, but misleads).",
+   "fix": "Not fixable at item level (hint is builder-generated); builder should skip the first-letter hint when another option starts with the same letter, or for phr items."
   }
  ]
 }

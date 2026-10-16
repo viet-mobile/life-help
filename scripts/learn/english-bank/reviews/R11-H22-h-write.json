@@ -1,0 +1,77 @@
+{
+ "packet": "H22-h-write",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 11,
+  "questions": 23
+ },
+ "patches": [
+  {
+   "item": "64f653b1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How is the passage organized?",
+      "o": [
+       "Advantages, then drawbacks, then a recommendation",
+       "A personal story followed by a list of rules",
+       "A history of roofs from ancient times to the modern day",
+       "Two opinions followed by the writer's complaint"
+      ],
+      "a": 0,
+      "why": "장점, 단점, 전문가의 권고 순으로 전개돼요."
+     },
+     {
+      "q": "Why does less rainwater rush into the drains during storms?",
+      "o": [
+       "Plants release water vapor into the drains.",
+       "Roofs of concrete and tar hold rain for a long time.",
+       "The soil of a green roof absorbs part of the water.",
+       "Building owners cover the drains in heavy weather."
+      ],
+      "a": 2,
+      "why": "흙이 빗물을 흡수해 배수구로 흘러드는 양이 줄어요."
+     },
+     {
+      "q": "In the passage, the layer of plants “acts like a blanket” means that it",
+      "o": [
+       "makes the building look soft and warm",
+       "covers the building to protect it from rain",
+       "hides ugly surfaces from people on the street",
+       "keeps the temperature inside more stable"
+      ],
+      "a": 3,
+      "why": "담요처럼 겨울에는 따뜻하게, 여름에는 시원하게 해 주는 단열 효과를 비유한 거예요."
+     },
+     {
+      "q": "Which word marks a contrast with the sentences before it?",
+      "o": [
+       "In addition",
+       "Still",
+       "Also",
+       "As"
+      ],
+      "a": 1,
+      "why": "Still은 앞 문장들의 내용과 대조되는 내용을 이끄는 연결어예요."
+     },
+     {
+      "q": "Why do many experts recommend green roofs for new buildings?",
+      "o": [
+       "Old buildings do not have any roofs at all.",
+       "New buildings need fewer plants than old ones do, so they cost less.",
+       "New buildings can be designed to carry the extra weight.",
+       "Green roofs are cheaper to remove from new buildings."
+      ],
+      "a": 2,
+      "why": "녹화 지붕은 무거워서 건물이 이를 지탱하도록 설계되어야 하기 때문이에요."
+     }
+    ]
+   },
+   "why": "Q4 stem named 'advantages to disadvantages', giving away Q1's key (structure); reworded neutrally",
+   "severity": "minor"
+  }
+ ],
+ "ok": 22,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -112,7 +112,7 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
   const others = (n: number, ok: (it: KItem) => boolean = () => true, key = (it: KItem) => it.id) => {
     const same = pick(pool, n, qid, key, (it) => sameKind(it) && ok(it));
     if (same.length === n) return same;
-    const rest = pick(pool, n - same.length, qid + "+", key, (it) => it.id !== item.id && !same.includes(it) && ok(it));
+    const rest = pick(pool, n - same.length, qid + "+", key, (it) => it.id !== item.id && !same.includes(it) && ok(it) && (item.c === "passage" || it.c !== "passage")); // a long passage gloss as a distractor is trivially eliminated
     return [...same, ...rest];
   };
   /**
@@ -179,7 +179,7 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
     }
     case "sit": {
       const w0 = others(3, (it) => !!it.s && it.ko !== item.ko, (it) => it.ko);
-      const w = w0.length === 3 ? w0 : [...w0, ...pick(pool, 3 - w0.length, qid + "+s", (it) => it.ko, (it) => it.ko !== item.ko && !w0.includes(it))];
+      const w = w0.length === 3 ? w0 : [...w0, ...pick(pool, 3 - w0.length, qid + "+s", (it) => it.ko, (it) => it.ko !== item.ko && !w0.includes(it) && it.c !== "passage")];
       choice([item.ko, ...w.map((x) => x.ko)]); vars.gloss = kit.texts[`s:${item.id}`] ?? item.s ?? ""; difficulty = Math.min(5, base + 1); break;
     }
     case "cloze": {

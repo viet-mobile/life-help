@@ -22,6 +22,23 @@ function isStringArray(v: unknown): v is string[] {
   return Array.isArray(v) && v.length <= MAX_ITEMS && v.every((x) => isString(x) && x.length <= MAX_TEXT);
 }
 
+/**
+ * Dictation (typing what was heard). What is forgiven and what is not, the same for every learner:
+ *   forgiven   case (English), extra / missing spaces at the ends and repeated inner spaces, sentence-final and inner punctuation (. , ! ? ; : quotes ellipsis),
+ *              curly vs straight apostrophes and quotes, en/em dashes vs a hyphen (full-width / compatibility forms via Unicode NFKC)
+ *   NOT forgiven  spelling (every letter / syllable counts), the apostrophe or hyphen being there or not (don't vs dont, well-known vs wellknown),
+ *              and for Korean the SPACING between words: a missing or extra space is a mistake (띄어쓰기), never silently accepted.
+ * Hangul is compared after NFC composition (a typed jamo sequence that composes to the same syllables is the same text).
+ */
+export function normalizeDictation(input: string, lang: "en" | "ko"): string {
+  let s = input.normalize("NFKC").replace(/[\u2018\u2019\u02bc\u0060\u00b4]/g, "'").replace(/[\u2010-\u2015\u2212]/g, "-");
+  s = s.replace(/[“”"«»]/g, "").replace(/[.,!?;:…·。、]/g, "");
+  s = s.replace(/\s+/g, " ").trim();
+  if (lang === "en") s = s.replace(/(^|\s)['-]+|['-]+(?=\s|$)/g, "$1").toLowerCase(); // a quote / dash standing alone at a word edge is punctuation, inner ones are spelling
+  else s = s.normalize("NFC");
+  return s;
+}
+
 export function normalizeText(input: string, caseSensitive = false): string {
   let s = input.normalize("NFKC").trim().replace(/\s+/g, " ");
   s = s.replace(/[.!?。]+$/u, "");
@@ -106,6 +123,7 @@ function textDef(type: QuestionType): QuestionTypeDef {
     validate: (r) => (isString(r) && r.trim().length > 0 && r.length <= MAX_TEXT ? null : "invalid_text"),
     check: (k, r) => {
       if (k.kind !== "text" || typeof r !== "string") return false;
+      if (k.dictation) { const got = normalizeDictation(r, k.dictation); return k.accepted.some((a) => normalizeDictation(a, k.dictation!) === got); }
       const cs = k.caseSensitive ?? false;
       const got = normalizeText(r, cs);
       return k.accepted.some((a) => normalizeText(a, cs) === got);
