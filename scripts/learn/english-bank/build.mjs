@@ -113,13 +113,13 @@ const seenSets = new Set();
 const seenFrames = new Set();
 const byKind = {};
 const push = (skill, packet, item, form, q) => {
-  const answerText = q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
+  const answerText = q.answer.kind === "text" ? q.answer.accepted[0] : q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
   if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, (_m, art, sp, bl) => `${art[0] === "A" ? "A" : "a"}(n)${sp}${bl}`) }; // the article would single out the one option that starts with the matching sound
   const k1 = `${norm(q.prompt)}|${norm(answerText ?? "")}`;
-  const k2 = `${norm(q.prompt)}|${q.options.map((o) => norm(o.text)).sort().join("|")}`;
+  const k2 = `${norm(q.prompt)}|${(q.options ?? [{ text: q.audioText ?? "" }]).map((o) => norm(o.text)).sort().join("|")}`;
   // name-masked frame (prompt + options, capitalised words masked): the same item with only a name / pronoun swapped is a substitution duplicate (docs/english-bank/dedup-policy.md)
   const mk3 = (t) => norm(t.replace(/\b[A-Z][a-z]+\b/g, "<N>"));
-  const k3 = `${mk3(q.prompt)}|${q.options.map((o) => mk3(o.text)).sort().join("|")}`;
+  const k3 = `${mk3(q.prompt)}|${(q.options ?? [{ text: q.audioText ?? "" }]).map((o) => mk3(o.text)).sort().join("|")}`;
   if (seenKeys.has(k1) || seenSets.has(k2)) { dropped.duplicateQuestion++; return; }
   if (seenFrames.has(k3)) { dropped.frameDuplicate++; return; }
   seenKeys.set(k1, q.id); seenSets.add(k2); seenFrames.add(k3);
@@ -161,6 +161,13 @@ for (const { skill, packet, item } of valid) {
     qid = `eb-${id}-cloze`; r = shuffled(qid, [item.cz.ok, ...item.cz.wr]);
     push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint({ ...item, hint: item.hint ?? okHint(HINTS[id]?.s, item.cz.ok, item.cz.wr) })], explanation: expl }));
     const toks = item.good.split(/\s+/);
+    // review modes (docs/learn/review-modes.md): dictation and listening are derived from the already-reviewed sentence, so they inherit its review state
+    if (toks.length >= 3 && toks.length <= 12) {
+      qid = `eb-${id}-dict`;
+      push(skill, packet, item, "dict", { id: qid, site: "english", type: "short_answer", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 60, status: "DRAFT", difficulty: clamp(d + 1), prompt: "들려주는 영어 문장을 듣고 그대로 쓰세요. (대소문자·문장부호·띄어쓰기 여분은 봐줘요. 철자는 정확해야 해요.)", audioText: item.good, answer: { kind: "text", accepted: [item.good], dictation: "en" }, hints: [`모두 ${toks.length}단어예요. 다시 들어 보세요(느리게 듣기도 가능).`, `첫 단어: “${toks[0]}”`], explanation: expl });
+      qid = `eb-${id}-listen`; r = shuffled(qid, [item.good, ...item.bad]);
+      push(skill, packet, item, "listen", mk(skill, qid, { difficulty: d, prompt: "들려주는 문장과 같은 것을 고르세요.", audioText: item.good, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["소리를 다시 듣고, 보기 문장을 한 낱말씩 비교해 보세요.", `문장은 ${toks.length}단어이고 “${toks[0]}”로 시작해요.`], explanation: expl }));
+    }
     if (item.ord !== false && toks.length >= 3 && toks.length <= 12) {
       qid = `eb-${id}-order`;
       const ids = toks.map((_, i) => `w${i + 1}`); const rot = 1 + (hash(qid) % (ids.length - 1));
