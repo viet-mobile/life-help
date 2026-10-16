@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { readFile } from "node:fs/promises";
 import { NextRequest } from "next/server";
 import { proxy } from "@/proxy";
 import manifest from "@/lib/learn/content/asset-manifest.json";
@@ -9,6 +10,12 @@ import servedBank from "@/lib/learn/content/bank/english-draft.json";
 import { loadIndex, toPublicQuestion } from "@/lib/learn/content/repository";
 import type { Question } from "@/lib/learn/types";
 import { loadEnglishBankIndex, loadEnglishBankSkill, ContentAssetError } from "@/lib/learn/content/assets";
+
+// Fault injection stays inside this test module; other workers must keep reading the real assets.
+vi.mock("node:fs/promises", async (importOriginal) => {
+  const original = await importOriginal<typeof import("node:fs/promises")>();
+  return { ...original, readFile: vi.fn(original.readFile) };
+});
 
 const served = (servedBank as { questions: { id: string; skillId: string }[] }).questions;
 const dir = path.join(process.cwd(), "public", "learn-content", manifest.version, "english-bank");
@@ -78,14 +85,10 @@ describe("English practice bank = server-only, versioned, sha-pinned static asse
   it("a tampered or missing shard is a clear error (never another file, never a silent skip); a good one is still readable afterwards", async () => {
     const file = path.join(dir, "e.pres.json");
     const original = fs.readFileSync(file);
-    try {
-      fs.writeFileSync(file, original.toString("utf8").replace('"questions"', '"questionz"'));
-      await expect(loadEnglishBankSkill("e.pres")).rejects.toThrow(/learn_content_asset_checksum:english-bank\/e\.pres/);
-      fs.rmSync(file);
-      await expect(loadEnglishBankSkill("e.pres")).rejects.toThrow(ContentAssetError);
-    } finally {
-      fs.writeFileSync(file, original);
-    }
+    vi.mocked(readFile).mockResolvedValueOnce(original.toString("utf8").replace('"questions"', '"questionz"') as never);
+    await expect(loadEnglishBankSkill("e.pres")).rejects.toThrow(/learn_content_asset_checksum:english-bank\/e\.pres/);
+    vi.mocked(readFile).mockRejectedValueOnce(Object.assign(new Error("missing fixture asset"), { code: "ENOENT" }));
+    await expect(loadEnglishBankSkill("e.pres")).rejects.toThrow(ContentAssetError);
     expect((await loadEnglishBankSkill("e.pres")).length).toBeGreaterThan(0); // failed reads are not cached
     expect(await loadEnglishBankSkill("e.no.such.skill")).toEqual([]);
     expect((await loadEnglishBankIndex()).size).toBe(served.length);
