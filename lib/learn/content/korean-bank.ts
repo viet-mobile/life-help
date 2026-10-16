@@ -38,7 +38,7 @@ export interface KBankData {
 export type KForm = "meaning" | "toko" | "listen" | "tf" | "read" | "fromrr" | "sit" | "cloze" | "choose" | "order" | "passage" | "dict";
 export interface KTemplate { prompt: string; hints: string[]; explanation: string; /** used instead of `hints` when the romanization would give the meaning away (loanwords: 라디오 = “radio”) */ hintsSafe?: string[] }
 export interface KKit { templates: Record<KForm, KTemplate>; texts: Record<string, string> }
-export const KFORMS: KForm[] = ["meaning", "toko", "listen", "tf", "read", "fromrr", "sit", "cloze", "choose", "order", "passage"];
+export const KFORMS: KForm[] = ["meaning", "toko", "listen", "tf", "read", "fromrr", "sit", "cloze", "choose", "order", "passage", "dict"];
 
 const OPT = ["a", "b", "c", "d"];
 const levelOf = (skillId: string) => Number(skillId.split(".")[1].slice(1));
