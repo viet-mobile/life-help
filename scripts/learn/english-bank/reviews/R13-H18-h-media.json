@@ -1,0 +1,67 @@
+{
+ "packet": "H18-h-media",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 13,
+  "questions": 40
+ },
+ "patches": [
+  {
+   "item": "57f9b111",
+   "op": "set",
+   "set": {
+    "o": [
+     "Opening more stores in other countries",
+     "Reducing the number of workers",
+     "Lowering the price of its goods",
+     "Moving its main office to another city"
+    ],
+    "a": 1
+   },
+   "why": "\"Moving to a smaller office\" and \"making products smaller\" are real senses of downsize, so distractors were defensible; replaced with clearly wrong options. Identity field (o) changed.",
+   "severity": "major"
+  },
+  {
+   "item": "03ab262c",
+   "op": "set",
+   "set": {
+    "o": [
+     "A chat room that automatically repeats every message twice",
+     "A website that records and plays back people's voices",
+     "A group where members hear only opinions that match their own",
+     "A video with a very loud sound effect in every scene"
+    ]
+   },
+   "why": "Lengthen distractors (length cue).",
+   "severity": "minor"
+  },
+  {
+   "item": "a74a636e",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Not only ___ the site publish the rumor, but it also refused to correct it.",
+     "ok": "did",
+     "wr": [
+      "do",
+      "has",
+      "was"
+     ]
+    }
+   },
+   "why": "In the cloze, \"does\" yields a defensible sentence (present habit + \"also refused\" is awkward but acceptable); replaced with agreement-wrong \"do\".",
+   "severity": "major"
+  },
+  {
+   "item": "64d4d746",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "\"immediately\" can move (\"be immediately corrected\", \"immediately insisted\"), so the word-order question has several valid orders; disable ordering.",
+   "severity": "major"
+  }
+ ],
+ "ok": 36,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

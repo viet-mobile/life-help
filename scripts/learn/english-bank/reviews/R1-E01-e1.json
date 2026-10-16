@@ -3,207 +3,48 @@
  "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
  "scope": {
   "batch": 1,
-  "questions": 99
+  "questions": 81
  },
  "patches": [
   {
-   "item": "6a788ddb",
+   "item": "d1a87f5c",
    "op": "set",
    "set": {
-    "q": "a, e, i, o, u 중 하나로 시작하는 단어는?"
+    "ex": "Oh, sorry! I am late. Please wait for me.",
+    "exko": "아, 미안해요! 제가 늦었어요. 저를 기다려 주세요."
    },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "002521c8",
-   "op": "set",
-   "set": {
-    "q": "t로 끝나는 단어는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "6314a554",
-   "op": "set",
-   "set": {
-    "q": "p로 끝나는 단어는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "3dd1659c",
-   "op": "set",
-   "set": {
-    "q": "“cat”과 끝소리가 같은 단어는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "94ca2d5f",
-   "op": "set",
-   "set": {
-    "q": "“sun”과 끝소리가 같은 단어는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "f989e620",
-   "op": "set",
-   "set": {
-    "q": "“bed”와 끝소리가 같은 단어는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "414401ac",
-   "op": "set",
-   "set": {
-    "q": "“pig”와 끝소리가 같은 단어는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "58fe7134",
-   "op": "set",
-   "set": {
-    "q": "“bee”와 소리가 같은 알파벳 글자는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "d37bcc83",
-   "op": "set",
-   "set": {
-    "q": "“see”와 소리가 같은 알파벳 글자는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "dbc36f7e",
-   "op": "set",
-   "set": {
-    "q": "“eye”와 소리가 같은 알파벳 글자는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "b7ac3bca",
-   "op": "set",
-   "set": {
-    "q": "“you”와 소리가 같은 알파벳 글자는?"
-   },
-   "why": "q is an identity field (m): changed to a Korean instruction for E1 level; options and key unchanged",
-   "severity": "minor"
-  },
-  {
-   "item": "506801dc",
-   "op": "set",
-   "set": {
-    "sp": [
-     "helo",
-     "hellou",
-     "hellow"
-    ]
-   },
-   "why": "hallo is a recognised variant spelling",
-   "severity": "minor"
-  },
-  {
-   "item": "04d552ae",
-   "op": "set",
-   "set": {
-    "sp": [
-     "goodbey",
-     "gudbye",
-     "godbye"
-    ]
-   },
-   "why": "goodby is an accepted variant",
-   "severity": "major"
-  },
-  {
-   "item": "746ddde8",
-   "op": "set",
-   "set": {
-    "sp": [
-     "thenks",
-     "thankss",
-     "thancks"
-    ]
-   },
-   "why": "thanx is an informal variant",
-   "severity": "minor"
-  },
-  {
-   "item": "5cedf129",
-   "op": "set",
-   "set": {
-    "sp": [
-     "niht",
-     "nigth",
-     "nigt"
-    ]
-   },
-   "why": "nite is a recognised informal variant",
+   "why": "'Oh, goodbye! I am late.' was a plausible reading; added 'Please wait for me' which excludes goodbye/thanks. en unchanged.",
    "severity": "minor"
   },
   {
    "item": "1167d837",
    "op": "set",
    "set": {
-    "sp": [
-     "graet",
-     "grat",
-     "greate"
-    ],
-    "ex": "The game is great!",
-    "exko": "그 경기는 굉장해요!"
+    "ex": "The soccer game is great!",
+    "exko": "그 축구 경기는 굉장해요!"
    },
-   "why": "grate is a real word; avoid past tense at E1. Cloze distractors tall/heavy/hungry still wrong",
-   "severity": "major"
-  },
-  {
-   "item": "d1a87f5c",
-   "op": "set",
-   "set": {
-    "ex": "Oh, sorry! I am late.",
-    "exko": "아, 미안해요! 제가 늦었어요."
-   },
-   "why": "avoid past tense at E1; distractors goodbye/please/thanks stay wrong",
+   "why": "'game is heavy' (board game) was arguably correct; soccer game removes it.",
    "severity": "minor"
   },
   {
-   "item": "9a6b1cf8",
+   "item": "e7b7a2b4",
    "op": "set",
    "set": {
-    "ko": "친절한",
-    "ex": "She is nice to me.",
-    "exko": "그녀는 나에게 친절해요.",
-    "note": "nice는 사람에게 쓰면 ‘친절한’이라는 뜻이에요.",
-    "z": [
-     "tall",
-     "heavy",
-     "hungry"
-    ],
-    "syn": [
-     "good",
-     "great"
-    ]
+    "why": "hat은 t로 끝나요."
    },
-   "why": "duplicate gloss 좋은 with good; the note field is replaced too (old note refers to the old example); en (identity) unchanged",
-   "severity": "major"
+   "why": "Particle consistency with sibling item (hat은).",
+   "severity": "minor"
+  },
+  {
+   "item": "be12e84c",
+   "op": "set",
+   "set": {
+    "why": "cat과 hat은 끝소리가 같아요."
+   },
+   "why": "Particle consistency (hat은).",
+   "severity": "minor"
   }
  ],
- "ok": 71,
+ "ok": 77,
  "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
 }

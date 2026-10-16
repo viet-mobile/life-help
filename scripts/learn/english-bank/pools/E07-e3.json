@@ -1006,18 +1006,18 @@
     {
      "k": "s",
      "good": "My brother is tall, and he plays basketball.",
-     "ko": "내 형은 키가 크고, 농구를 해요.",
+     "ko": "내 남자 형제는 키가 크고, 농구를 해요.",
      "bad": [
-      "My brother is tall, and she plays basketball.",
       "My brother is tall, and him plays basketball.",
-      "My brother is tall, and it plays basketball."
+      "My brother is tall, and he play basketball.",
+      "My brother is tall, and his plays basketball."
      ],
      "cz": {
       "st": "My brother is tall, and ___ plays basketball.",
       "ok": "he",
       "wr": [
-       "she",
-       "it",
+       "him",
+       "his",
        "they"
       ]
      },
@@ -1050,7 +1050,7 @@
      "good": "My parents are kind. They help me.",
      "ko": "우리 부모님은 친절해요. 그분들은 나를 도와줘요.",
      "bad": [
-      "My parents are kind. He helps me.",
+      "My parents are kind. Its help me.",
       "My parents are kind. They helps me.",
       "My parents are kind. Them help me."
      ],
@@ -1331,7 +1331,8 @@
        "We"
       ]
      },
-     "rule": "Mr. Kim은 남자 한 명이라서 he로 바꿔요. He 뒤의 동사에는 -s를 붙여요."
+     "rule": "Mr. Kim은 남자 한 명이라서 he로 바꿔요. He 뒤의 동사에는 -s를 붙여요.",
+     "ord": false
     },
     {
      "k": "s",
@@ -1347,11 +1348,12 @@
       "ok": "them",
       "wr": [
        "they",
-       "him",
-       "he"
+       "he",
+       "she"
       ]
      },
-     "rule": "여러 개를 가리키는 '그것들을'은 them이에요. 동사 뒤에는 they를 쓰지 않아요."
+     "rule": "여러 개를 가리키는 '그것들을'은 them이에요. 동사 뒤에는 they를 쓰지 않아요.",
+     "ord": false
     },
     {
      "k": "s",
@@ -1392,7 +1394,8 @@
       ]
      },
      "rule": "'그것의'는 its예요. 동물이나 사물의 것을 말할 때 명사 앞에 써요.",
-     "d": 4
+     "d": 4,
+     "ord": false
     },
     {
      "k": "s",
@@ -1894,7 +1897,7 @@
        "why": "바로 앞에서 고양이와 노는 이야기가 나왔으니 it은 고양이예요."
       },
       {
-       "q": "What can Ana give the cat?",
+       "q": "What food can Ana give?",
        "o": [
         "Some milk",
         "Some fish",

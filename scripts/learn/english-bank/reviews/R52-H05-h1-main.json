@@ -1,0 +1,120 @@
+{
+ "packet": "H05-h1-main",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 52,
+  "questions": 38
+ },
+ "patches": [
+  {
+   "item": "89b9d691",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which word best fills the blank?",
+      "o": [
+       "smaller",
+       "greater",
+       "weaker",
+       "fewer"
+      ],
+      "a": 1,
+      "why": "경험과 남을 돕는 데 쓰는 돈이 물건 구매보다 만족이 '더 크다'는 비교 흐름이에요."
+     },
+     {
+      "q": "What is the best summary of the passage?",
+      "o": [
+       "Wealthy people are always happier than poor people everywhere.",
+       "Basic needs have no effect on happiness.",
+       "Spending on things guarantees satisfaction.",
+       "Money matters up to a point, and its use matters too."
+      ],
+      "a": 3,
+      "why": "소득 증가의 효과가 줄고, 사용 방식이 중요하다는 것이 요지예요."
+     },
+     {
+      "q": "What happens when people escape poverty?",
+      "o": [
+       "Their happiness increases quickly.",
+       "They feel less safe than before.",
+       "Their income stops growing.",
+       "They stop sharing with others."
+      ],
+      "a": 0,
+      "why": "'their happiness rises sharply'"
+     },
+     {
+      "q": "Which of the following would the writer most likely agree with?",
+      "o": [
+       "Earning twice as much money always makes life twice as good.",
+       "Saving as much money as possible is the only path to joy.",
+       "Extra income helps less once a person is already comfortable.",
+       "Poverty has little effect on how people feel about their lives."
+      ],
+      "a": 2,
+      "why": "소득이 어느 수준을 넘으면 추가 소득의 효과가 점점 작아진다는 글의 내용과 일치해요."
+     }
+    ]
+   },
+   "why": "Q4 key no longer restates the cloze answer; tests the diminishing-returns idea. No identity field changed.",
+   "severity": "minor"
+  },
+  {
+   "item": "04df6e33",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main point Ms. Cho makes?",
+      "o": [
+       "Plants always grow better in the dark than in light.",
+       "Surprising results can still be valuable.",
+       "Experiments should be repeated three times.",
+       "Reports should be short."
+      ],
+      "a": 1,
+      "why": "예상 밖 결과가 더 많이 가르칠 수 있다는 것이 핵심이에요."
+     },
+     {
+      "q": "How did the plants in the dark box look?",
+      "o": [
+       "Short, green, and strong",
+       "Tall and healthy",
+       "Dead and dry",
+       "Tall but pale and thin"
+      ],
+      "a": 3,
+      "why": "'taller but very pale and thin'"
+     },
+     {
+      "q": "Why did the dark-box plants grow so tall?",
+      "o": [
+       "They were stretching to find light.",
+       "They received far too much water.",
+       "They were kept in a much warmer room.",
+       "They had more space for leaves."
+      ],
+      "a": 0,
+      "why": "빛을 찾아 위로 뻗은 것이에요."
+     },
+     {
+      "q": "How does Haru feel at the beginning of the conversation?",
+      "o": [
+       "Overjoyed",
+       "Bored",
+       "Let down",
+       "Furious"
+      ],
+      "a": 2,
+      "why": "'Our experiment didn't work'에서 실망감이 드러나요."
+     }
+    ]
+   },
+   "why": "Q4 distractors diversified so the key is not the odd-one-out. No identity field changed.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 36,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

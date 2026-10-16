@@ -1,0 +1,144 @@
+{
+ "packet": "M16-m2-sum1",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 66,
+  "questions": 57
+ },
+ "patches": [
+  {
+   "item": "05d0cd0b",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main message of the story?",
+      "o": [
+       "Summer is the best time to learn any sport.",
+       "Friends should never leave a scared child alone.",
+       "Swimming boards are needed for every beginner.",
+       "Small steps can help you overcome a fear."
+      ],
+      "a": 3,
+      "why": "두려움도 작은 단계를 차근차근 밟으면 이겨낼 수 있다는 것이 핵심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Which sentence is too detailed to be a good summary of the whole story?",
+      "o": [
+       "On the second day, the writer held a board and kicked.",
+       "A child who feared water slowly learned to swim.",
+       "The writer feels proud of overcoming a childhood fear.",
+       "After weeks of practice, the writer finally swam across the pool."
+      ],
+      "a": 0,
+      "why": "둘째 날 이야기는 하루의 세부 내용일 뿐 전체를 요약하지 못해요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "Who taught the writer to swim?",
+      "o": [
+       "The writer's friends",
+       "A pool lifeguard",
+       "The writer's aunt",
+       "The writer's cousin"
+      ],
+      "a": 2,
+      "why": "여름에 이모(고모)가 가르쳐 주겠다고 했어요.",
+      "std": [
+       "9영01-02"
+      ]
+     },
+     {
+      "q": "What does \"far wall\" refer to?",
+      "o": [
+       "The wall behind the writer's house",
+       "The wall at the pool's far end",
+       "The wall next to the writer's feet",
+       "The wall near the school gate"
+      ],
+      "a": 1,
+      "why": "수영장을 가로질러 맞은편 벽을 짚었다는 뜻이에요.",
+      "std": [
+       "9영01-07"
+      ]
+     }
+    ]
+   },
+   "why": "cross-question cue removal",
+   "severity": "minor"
+  },
+  {
+   "item": "47e54268",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which sentence is the best summary of the passage?",
+      "o": [
+       "People today use bikes for fun, sport, and daily travel.",
+       "Bicycles changed over time until they reached today's safe design.",
+       "People today use bikes only for sport and for fun on weekends.",
+       "Inventors made bikes faster by putting the pedals on large front wheels."
+      ],
+      "a": 1,
+      "why": "시간이 지나며 자전거가 오늘날의 안전한 모양으로 발전했다는 것이 중심이에요.",
+      "std": [
+       "9영01-03",
+       "9영02-07"
+      ]
+     },
+     {
+      "q": "What made later bicycles easier and safer?",
+      "o": [
+       "Large pedals on the front wheel only",
+       "A larger back wheel",
+       "No pedals at all",
+       "A back-wheel chain and equal wheels"
+      ],
+      "a": 3,
+      "why": "뒷바퀴 체인과 같은 크기의 두 바퀴가 더 안전하고 쉬웠어요.",
+      "std": [
+       "9영01-04"
+      ]
+     },
+     {
+      "q": "What was a problem with the bikes that had pedals on the front wheel?",
+      "o": [
+       "They were harder to ride.",
+       "They were too slow for racing.",
+       "They had no seat for the rider.",
+       "They could only be used on sand."
+      ],
+      "a": 0,
+      "why": "앞바퀴에 페달을 단 자전거는 더 빨랐지만 타기 더 어려웠다고 해요."
+     },
+     {
+      "q": "How did riders move the earliest bikes?",
+      "o": [
+       "By using a very small engine",
+       "By turning a handle",
+       "By pushing off the ground",
+       "By pedaling on the back wheel"
+      ],
+      "a": 2,
+      "why": "발로 땅을 밀어 앞으로 나아갔어요.",
+      "std": [
+       "9영01-02"
+      ]
+     }
+    ]
+   },
+   "why": "Q3 and Q4 duplicated the same fact",
+   "severity": "minor"
+  }
+ ],
+ "ok": 55,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

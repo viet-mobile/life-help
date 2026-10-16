@@ -1,0 +1,25 @@
+{
+ "packet": "E04-e2",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 4,
+  "questions": 106
+ },
+ "patches": [
+  {
+   "item": "3c4e176c",
+   "op": "set",
+   "set": {
+    "z": [
+     "shoe",
+     "cup",
+     "pencil"
+    ]
+   },
+   "why": "'sit on the hat' conceivable; replaced with clearly wrong nouns.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 105,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

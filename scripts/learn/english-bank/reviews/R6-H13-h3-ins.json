@@ -1,0 +1,30 @@
+{
+ "packet": "H13-h3-ins",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 6,
+  "questions": 11
+ },
+ "patches": [
+  {
+   "item": "95e95c36",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "By the time we arrived, the film ___ already started.",
+     "ok": "had",
+     "wr": [
+      "has",
+      "will",
+      "is"
+     ]
+    },
+    "ord": false
+   },
+   "why": "Remove defensible 'was' distractor; ordering has an equivalent alternative (already after started).",
+   "severity": "major"
+  }
+ ],
+ "ok": 9,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

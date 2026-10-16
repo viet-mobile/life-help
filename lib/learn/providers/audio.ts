@@ -1,4 +1,5 @@
 import { pickVoice } from "@/lib/learn/listen/speech";
+import { getTtsSettings, pickPreferredVoice } from "@/lib/learn/listen/ttsSettings";
 
 /**
  * Listening audio abstraction. Questions carry `audioText` (and later `audioUrl`);
@@ -28,15 +29,21 @@ export class BrowserSpeechAudioProvider implements AudioProvider {
   speak(text: string, lang = "en-US") {
     return new Promise<void>((resolve) => {
       if (!this.isAvailable()) return resolve();
+      const settings = getTtsSettings();
+      let left = settings.repeat; // the learner's repeat setting: the same text, one after another (a short pause between)
+      const once = () => {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang;
+        const voice = pickPreferredVoice(window.speechSynthesis.getVoices(), lang, settings, pickVoice);
+        if (voice) u.voice = voice; // the chosen voice, else a matching voice (ko-KR for Korean) instead of the browser default reading foreign text
+        u.rate = Math.min(2, Math.max(0.1, 0.9 * settings.rate));
+        const next = () => { left--; if (left > 0) window.setTimeout(once, 600); else resolve(); };
+        u.onend = next;
+        u.onerror = () => resolve();
+        window.speechSynthesis.speak(u);
+      };
       window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = lang;
-      const voice = pickVoice(window.speechSynthesis.getVoices(), lang);
-      if (voice) u.voice = voice; // a matching voice (ko-KR for Korean) instead of the browser default reading foreign text
-      u.rate = 0.9;
-      u.onend = () => resolve();
-      u.onerror = () => resolve();
-      window.speechSynthesis.speak(u);
+      once();
     });
   }
   stop() {

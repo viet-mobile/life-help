@@ -1,0 +1,310 @@
+{
+ "packet": "H17-h-job",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 10,
+  "questions": 150
+ },
+ "patches": [
+  {
+   "item": "4c48a7cc",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main purpose of these minutes?",
+      "o": [
+       "To invite staff to a party for the spring campaign",
+       "To record what was discussed and decided",
+       "To ask the design team for new poster ideas",
+       "To praise the team for growing so fast online"
+      ],
+      "a": 1,
+      "why": "회의록은 논의와 결정 사항을 기록하는 글이에요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "Why did the team choose the second slogan?",
+      "o": [
+       "It was easier to remember",
+       "It was cheaper to print on posters",
+       "It had been suggested by the chair",
+       "It matched last year's campaign well"
+      ],
+      "a": 0,
+      "why": "simpler and easier to remember라고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "What can be inferred about the printing budget?",
+      "o": [
+       "The team plans to buy a new printer soon",
+       "Posters will no longer be shown online",
+       "Printed posters must be kept to a minimum",
+       "The design team will pay for the printing"
+      ],
+      "a": 2,
+      "why": "예산이 거의 소진되어 온라인 공유가 먼저이고 인쇄는 필요할 때만 해요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "Who is asked to send a revised budget before the next meeting?",
+      "o": [
+       "Daniel",
+       "Priya",
+       "Minho",
+       "Seo-yeon"
+      ],
+      "a": 2,
+      "why": "Action: Minho to send a revised budget이라고 했어요.",
+      "std": [
+       "12직영01-03"
+      ]
+     },
+     {
+      "q": "In item 1, what does “mainly because of” show?",
+      "o": [
+       "The main reason for the growth",
+       "A plan the team made for next month",
+       "A problem that the videos caused",
+       "An example of a short social media post"
+      ],
+      "a": 0,
+      "why": "mainly because of는 주된 원인을 나타내요.",
+      "std": [
+       "12직영01-01"
+      ]
+     }
+    ]
+   },
+   "why": "Stem made specific: Priya also has a task due Friday, before the next meeting, so the old stem had two answers.",
+   "severity": "major"
+  },
+  {
+   "item": "a53ec9b1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's main point?",
+      "o": [
+       "Dentists should be kinder to small children",
+       "The internship built her skills and interest in healthcare",
+       "Forms at clinics are too difficult for most interns to complete",
+       "Summer jobs are easier than school courses"
+      ],
+      "a": 1,
+      "why": "인턴 경험이 기술과 진로 관심을 키워 주었다는 글이에요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "How did the writer feel on the first day?",
+      "o": [
+       "Bored because the tasks were too easy",
+       "Worried because the work was new",
+       "Proud because Dr. Moon had praised her",
+       "Angry because she had to work alone"
+      ],
+      "a": 1,
+      "why": "I was nervous on the first day라고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "What habit did the writer develop?",
+      "o": [
+       "Writing a daily diary about each patient",
+       "Arriving at the clinic an hour before it opens",
+       "Asking parents to sign every page twice",
+       "Reading each form two times before submitting"
+      ],
+      "a": 3,
+      "why": "checking each form twice라고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "The word “confusion” in the second paragraph is closest in meaning to",
+      "o": [
+       "a state of not understanding clearly",
+       "a feeling of great happiness",
+       "a plan for a future career",
+       "a rule about patient forms"
+      ],
+      "a": 0,
+      "why": "confusion은 정확히 이해하지 못해 혼란스러운 상태를 뜻해요."
+     },
+     {
+      "q": "What can be inferred from the last sentence?",
+      "o": [
+       "She has already decided to quit school",
+       "She will return to the clinic next week",
+       "The experience may influence her future plans",
+       "She dislikes working with young patients in clinics"
+      ],
+      "a": 2,
+      "why": "healthcare 진로에 대해 진지하게 생각하게 되었다고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     }
+    ]
+   },
+   "why": "Old q4 ('this habit' reference) had key 'Double-checking the forms' which gave away q3's answer; replaced by a vocabulary question.",
+   "severity": "major"
+  },
+  {
+   "item": "8b55768e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's purpose?",
+      "o": [
+       "To report a fault and ask for it to be fixed",
+       "To announce the release date of the app",
+       "To praise the team for finishing version 2.4",
+       "To ask for help with a new laptop"
+      ],
+      "a": 0,
+      "why": "버그를 보고하고 수정을 요청하는 글이에요.",
+      "std": [
+       "12직영01-01",
+       "12직영01-05"
+      ]
+     },
+     {
+      "q": "When does the problem happen?",
+      "o": [
+       "When the app is opened on a laptop",
+       "When a short note is pasted in",
+       "When a long note is saved",
+       "When a screen recording is attached"
+      ],
+      "a": 2,
+      "why": "500자보다 긴 메모를 저장할 때 발생해요.",
+      "std": [
+       "12직영01-05"
+      ]
+     },
+     {
+      "q": "What can be inferred about the writer's suggestion?",
+      "o": [
+       "The writer wants the team to stop testing the app",
+       "The writer thinks the release should be moved to the middle of next year",
+       "The writer feels the bug is serious enough to fix before the release",
+       "The writer feels that shorter notes should be banned from the app"
+      ],
+      "a": 2,
+      "why": "금요일 릴리스 전에 고치자고 한 것은 사용자가 작업을 잃을 수 있는 심각한 문제로 보기 때문이에요."
+     },
+     {
+      "q": "What is the purpose of the numbered steps?",
+      "o": [
+       "To let others repeat the problem",
+       "To show how to write a long note",
+       "To explain what the app is designed for",
+       "To list the features of version 2.4"
+      ],
+      "a": 0,
+      "why": "Steps to reproduce는 문제를 재현하게 해 줘요.",
+      "std": [
+       "12직영01-03"
+      ]
+     },
+     {
+      "q": "In the text, the word “freezes” means",
+      "o": [
+       "stops responding for a while",
+       "becomes very cold inside",
+       "changes its color suddenly",
+       "grows much bigger in size"
+      ],
+      "a": 0,
+      "why": "freezes는 앱이 한동안 반응하지 않고 멈춘다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "qs[2]: key overstated ('delay the release') -> 'fix before the release'. qs[4]: 'reproduce' meaning was revealed by qs[3]'s key; replaced by 'freezes'.",
+   "severity": "major"
+  },
+  {
+   "item": "8a6bcb23",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the purpose of the announcement?",
+      "o": [
+       "To give details about a career event",
+       "To advertise jobs at a single company",
+       "To request money for a convention center",
+       "To report results from last year's fair"
+      ],
+      "a": 0,
+      "why": "진로 박람회의 일정과 내용을 알리는 공지예요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "What is new at this year's fair?",
+      "o": [
+       "A special area for taking résumé photos",
+       "Booths run by hospitals, firms, and farms",
+       "Short talks with working professionals",
+       "Free parking for all visitors"
+      ],
+      "a": 2,
+      "why": "New this year are fifteen-minute “job chats”라고 했어요.",
+      "std": [
+       "12직영01-01"
+      ]
+     },
+     {
+      "q": "What must students do by April 8?",
+      "o": [
+       "Buy a ticket for the convention center",
+       "Send a résumé to sixty organizations",
+       "Reserve a place for a job chat",
+       "Show a student ID at the entrance"
+      ],
+      "a": 2,
+      "why": "reserve a seat on the fair's website by April 8이라고 했어요.",
+      "std": [
+       "12직영01-03"
+      ]
+     },
+     {
+      "q": "What can be inferred about visitors who drive?",
+      "o": [
+       "They will need to find parking elsewhere",
+       "They will park for free near the booths",
+       "They will be refused entry at the door",
+       "They will be asked to pay at the entrance"
+      ],
+      "a": 0,
+      "why": "주차가 불가능하니 대중교통을 권해요.",
+      "std": [
+       "12직영01-01"
+      ]
+     }
+    ]
+   },
+   "why": "Workshop distractor could be read as also new ('In addition'); replaced with an unmentioned feature.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 138,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

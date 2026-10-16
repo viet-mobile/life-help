@@ -1,0 +1,263 @@
+{
+ "packet": "H10-h2-logic",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 58,
+  "questions": 46
+ },
+ "patches": [
+  {
+   "item": "def5aa09",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How did the ondol system heat a room?",
+      "o": [
+       "Heated water ran through clay pipes built inside the walls of each room.",
+       "A stove in the middle of the room warmed the air.",
+       "Hot air from the kitchen fire warmed the stones under the floor.",
+       "Sunlight was stored in large wooden boards."
+      ],
+      "a": 2,
+      "why": "부엌의 열기가 바닥 아래 통로를 지나 돌을 데웠어요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "Why was furniture in these houses low and light?",
+      "o": [
+       "People used the floor for sitting and sleeping.",
+       "Stone was too expensive for large furniture.",
+       "Wooden floors could not support heavy objects.",
+       "The houses were too small for tall chairs."
+      ],
+      "a": 0,
+      "why": "사람들이 난방된 바닥에 앉고 잠을 잤기 때문에(As a result 앞의 내용) 가구가 낮고 가벼웠어요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does 'however' show in the fourth sentence?",
+      "o": [
+       "A repetition of the winter heating method",
+       "A contrast between winter and summer arrangements",
+       "A reason why stones keep heat for hours",
+       "An example of modern apartment heating"
+      ],
+      "a": 1,
+      "why": "겨울 난방과 여름 시원함의 대조예요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "According to the passage, what has stayed the same in modern apartments?",
+      "o": [
+       "The use of smoke channels",
+       "The low and light furniture",
+       "The wooden hall for summer",
+       "The idea of a warm floor"
+      ],
+      "a": 3,
+      "why": "마지막 문장에 나와요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     }
+    ]
+   },
+   "why": "q2 explanation corrected; no key change.",
+   "severity": "minor"
+  },
+  {
+   "item": "f9a4f6ec",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What went wrong in the first match?",
+      "o": [
+       "The basket was moved by a referee.",
+       "The team arrived after the match began.",
+       "The robot's arm stopped moving.",
+       "The balls were too heavy to lift."
+      ],
+      "a": 2,
+      "why": "'its arm froze'",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "What does 'the problem' in 'a single loose wire had caused the problem' refer to?",
+      "o": [
+       "the long bus ride to the competition venue",
+       "the other teams' high scores",
+       "the robot's arm freezing in the match",
+       "the teacher's difficult question"
+      ],
+      "a": 2,
+      "why": "문제는 앞에서 말한 로봇 팔이 멈춘 일이에요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "Why had the loose wire not been noticed?",
+      "o": [
+       "The robot had not been tested after the bus trip.",
+       "The teacher had repaired it during practice.",
+       "The team had used the wrong kind of wire.",
+       "The competition rules forbade checking."
+      ],
+      "a": 0,
+      "why": "'never tested the robot after moving it by bus'",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "How did the writer's team feel immediately after the match?",
+      "o": [
+       "Proud of the result",
+       "Bored with the project",
+       "Relieved to have finished",
+       "Deeply disappointed"
+      ],
+      "a": 3,
+      "why": "'We were crushed.'",
+      "std": [
+       "12영Ⅱ-01-03"
+      ]
+     },
+     {
+      "q": "What is the writer's attitude toward the failure by the end?",
+      "o": [
+       "Resentful toward the teacher who asked the questions",
+       "Constructive, seeing it as a chance to learn",
+       "Embarrassed and unwilling to talk about it afterward",
+       "Indifferent to the result of the competition"
+      ],
+      "a": 1,
+      "why": "마지막 문장이 실패를 유용한 교사로 보아요.",
+      "std": [
+       "12영Ⅱ-01-03"
+      ]
+     }
+    ]
+   },
+   "why": "q5 key restyled to match distractors; same meaning.",
+   "severity": "minor"
+  },
+  {
+   "item": "5dca36f6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is Ben's concern about the trip?",
+      "o": [
+       "The ferry ticket is too costly for them.",
+       "The ferry schedule leaves little time.",
+       "The weather forecast looks bad.",
+       "The bicycles are too expensive to rent."
+      ],
+      "a": 1,
+      "why": "마지막 배가 5시여서 시간이 짧아요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "Why does Mira suggest renting bicycles?",
+      "o": [
+       "They want to avoid the ferry.",
+       "They are cheaper than walking tours.",
+       "They can see the coast in a short time.",
+       "The island forbids cars."
+      ],
+      "a": 2,
+      "why": "짧은 시간에 해안을 둘러보기 위해서예요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "Why does Ben say 'a little tight'?",
+      "o": [
+       "The bicycles are too narrow.",
+       "The coastal road is closed.",
+       "One hour for lunch might not be enough.",
+       "The ferry tickets are sold out."
+      ],
+      "a": 2,
+      "why": "자전거 3시간 후 점심 1시간이 빠듯해요.",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     },
+     {
+      "q": "What does Ben plan to do tonight?",
+      "o": [
+       "Book the bicycles online",
+       "Buy the ferry tickets at the dock",
+       "Pack sandwiches for the trip",
+       "Set an alarm for six"
+      ],
+      "a": 0,
+      "why": "Ben은 오늘 밤 자전거를 온라인으로 예약하겠다고 말해요. 알람을 맞추는 사람은 Mira예요.",
+      "std": [
+       "12영Ⅱ-01-01"
+      ]
+     },
+     {
+      "q": "What does 'In that case' refer to?",
+      "o": [
+       "renting a car",
+       "waiting for the last ferry",
+       "skipping lunch",
+       "taking the early ferry"
+      ],
+      "a": 3,
+      "why": "In that case = 그렇다면(8시 배를 타기로 한 경우).",
+      "std": [
+       "12영Ⅱ-01-04"
+      ]
+     }
+    ]
+   },
+   "why": "q4 replaced with a non-overlapping detail question.",
+   "severity": "major"
+  },
+  {
+   "item": "9efaa87b",
+   "op": "set",
+   "set": {
+    "good": "Neither the manager nor the workers were told about the change.",
+    "bad": [
+     "Neither the manager and the workers were told about the change.",
+     "Neither the manager nor the workers was told about the change.",
+     "Neither the manager nor neither the workers were told about the change."
+    ],
+    "cz": {
+     "st": "Neither the manager ___ the workers were told about the change.",
+     "ok": "nor",
+     "wr": [
+      "and",
+      "but",
+      "so"
+     ]
+    },
+    "rule": "neither는 nor와 짝을 이루고, 동사는 가까운 주어(the workers)에 맞춰요.",
+    "ord": false
+   },
+   "why": "ord:false; swapped-subject order is also plausible. Identity field good unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 41,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

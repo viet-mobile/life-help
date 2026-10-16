@@ -1,0 +1,25 @@
+{
+ "packet": "M01-vocab",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 27,
+  "questions": 74
+ },
+ "patches": [
+  {
+   "item": "49b0d110",
+   "op": "set",
+   "set": {
+    "z": [
+     "umbrella",
+     "elephant",
+     "notebook"
+    ]
+   },
+   "why": "Remove metaphorical 'classroom'/'playground' (travel can be 'a great classroom'); keep z as nouns that cannot fill the blank.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 73,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

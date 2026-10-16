@@ -1,0 +1,77 @@
+{
+ "packet": "M06-m2-perf",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 32,
+  "questions": 45
+ },
+ "patches": [
+  {
+   "item": "66ff5758",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "How to buy a cheap old camera",
+       "Ha-eun's interest in photography",
+       "A school event about flowers",
+       "Her uncle's job as a photographer"
+      ],
+      "a": 1,
+      "why": "글 전체가 하은이의 사진 취미를 다루고 있어요."
+     },
+     {
+      "q": "Since when has Ha-eun been interested in photography?",
+      "o": [
+       "Since last spring",
+       "Since last winter",
+       "Since her uncle's birthday",
+       "Since she joined the club"
+      ],
+      "a": 0,
+      "why": "첫 문장에서 since last spring이라고 했어요."
+     },
+     {
+      "q": "How many pictures has Ha-eun taken with the old camera?",
+      "o": [
+       "More than five hundred",
+       "Fewer than one hundred",
+       "Only about five",
+       "Exactly ten"
+      ],
+      "a": 0,
+      "why": "she has taken more than five hundred pictures with it라고 했어요."
+     },
+     {
+      "q": "The word \"tips\" in the passage is closest in meaning to ___.",
+      "o": [
+       "small gifts",
+       "strong feelings",
+       "useful advice",
+       "short stories"
+      ],
+      "a": 2,
+      "why": "사진을 어떻게 찍는지 알려 달라는 맥락이므로 '유용한 조언'이에요."
+     },
+     {
+      "q": "What can we infer from the passage?",
+      "o": [
+       "Ha-eun's uncle teaches her every week.",
+       "Ha-eun is learning photography mostly by herself.",
+       "Ha-eun is a member of the photography club now.",
+       "Ha-eun does not like taking pictures of animals."
+      ],
+      "a": 1,
+      "why": "수업을 들은 적이 없고 영상으로 배운다고 했으므로 혼자 배우고 있어요."
+     }
+    ]
+   },
+   "why": "Remove q3/q5 overlap; q3 now tests a different detail (number of pictures).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 44,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

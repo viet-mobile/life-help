@@ -161,6 +161,167 @@
    "severity": "minor",
    "problem": "Hint 1 (괄호 안 말은 어디서를 알려 줘요) gives the answer Where directly; the m patch cannot change hints.",
    "fix": "Not fixable at item level; hint could be reworded to ask what kind of information the bracketed phrase gives."
+  },
+  {
+   "batch": 10,
+   "id": "eb-b8ece177-q2",
+   "severity": "minor",
+   "problem": "Auto hint 1 uses a name fragment ('hyun') as the 'key word', which is meaningless; not fixable at item level (hint generator splits hyphenated names).",
+   "fix": "Hint generator should skip name fragments / use the whole name."
+  },
+  {
+   "batch": 10,
+   "id": "eb-b8ece177-q4",
+   "severity": "minor",
+   "problem": "Same name-fragment hint ('hyun').",
+   "fix": "Same generator fix."
+  },
+  {
+   "batch": 10,
+   "id": "eb-8b03e389-q1",
+   "severity": "minor",
+   "problem": "Same name-fragment hint ('yang').",
+   "fix": "Same generator fix."
+  },
+  {
+   "batch": 10,
+   "id": "eb-8b03e389-q4",
+   "severity": "minor",
+   "problem": "Same name-fragment hint ('yang').",
+   "fix": "Same generator fix."
+  },
+  {
+   "batch": 10,
+   "id": "eb-f2450db4-q1",
+   "severity": "minor",
+   "problem": "Same name-fragment hint ('hyeon').",
+   "fix": "Same generator fix."
+  },
+  {
+   "batch": 64,
+   "id": "eb-59d623b5-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-59d623b5-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-3b91ae13-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-3b91ae13-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-6e2b8ead-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-6e2b8ead-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-77ecf1ce-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-77ecf1ce-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-f00c54c0-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-f00c54c0-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-3337c79c-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-3337c79c-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-a2739111-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-a2739111-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-d370fca0-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-d370fca0-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-784c0b55-enko",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
+  },
+  {
+   "batch": 64,
+   "id": "eb-784c0b55-koen",
+   "severity": "minor",
+   "problem": "Hint 1 is the broken template sentence '이 말은 표현이에요.' (the word-type label for the phr kind is missing, so it reads as an ungrammatical, empty hint). Item content (en/ko/ex/z/sp) is correct.",
+   "fix": "Not fixable at pool-item level: generator hint template for pos 'phr' in enko/koen forms must supply a label (e.g. '여러 낱말로 이루어진 표현이에요.' or the ko gloss category)."
   }
  ]
 }

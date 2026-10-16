@@ -1,0 +1,397 @@
+{
+ "packet": "H20-h-lit",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 16,
+  "questions": 150
+ },
+ "patches": [
+  {
+   "item": "9893183f",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Who is the speaker of the poem?",
+      "o": [
+       "A child playing in the park",
+       "The tree that lost its leaves",
+       "A leaf that is still on the branch",
+       "The wind blowing through the garden"
+      ],
+      "a": 2,
+      "why": "The speaker calls itself \"the last one on the branch\" and refers to \"my sisters\", so it is a leaf."
+     },
+     {
+      "q": "\"a small brass coin of summer\" is a metaphor that suggests the leaf is",
+      "o": [
+       "small, shiny and golden in colour",
+       "heavy and likely to break",
+       "noisy and difficult to ignore",
+       "dull, grey and ready to be thrown away"
+      ],
+      "a": 0,
+      "why": "A brass coin is small, shiny and yellow-gold, so the metaphor describes the leaf's size and bright colour."
+     },
+     {
+      "q": "What do the last two lines suggest about the leaf's attitude toward falling?",
+      "o": [
+       "It is terrified and tries hard to hold on to the branch.",
+       "It accepts the fall with calm and courage.",
+       "It is angry with the wind for calling.",
+       "It feels nothing at all."
+      ],
+      "a": 1,
+      "why": "The leaf \"loosens its fingers\" and the whole world rushes up to meet it, showing willing acceptance."
+     },
+     {
+      "q": "In the second stanza, how does the poem look at the fallen leaves?",
+      "o": [
+       "As rubbish that spoils the ground",
+       "As a sign that the tree is unhealthy",
+       "As something that still brings happiness to children",
+       "As a warning of a long and cruel winter for the whole town"
+      ],
+      "a": 2,
+      "why": "The children shout with joy as they kick the leaves, so falling leaves still bring delight, which is a gentler view of ending."
+     }
+    ]
+   },
+   "why": "Q1 key claimed the leaf is \"valuable\" (brass is a cheap metal; the poem only says thin and bright) and a distractor (\"round and good for trade\") is a literal coin reading; Q2 stem said \"the last line\" but the evidence (loosen my fingers) is in the second-to-last line",
+   "severity": "minor"
+  },
+  {
+   "item": "4030bd38",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the cracked cup most likely symbolise?",
+      "o": [
+       "Something imperfect that is still deeply valuable",
+       "A gift that was bought in a faraway city by her uncle",
+       "A danger that Clara must avoid at all costs",
+       "A mistake that Grandmother wants to hide"
+      ],
+      "a": 0,
+      "why": "The cup leaks but is never empty when needed; it stands for flawed but faithful care, perhaps Grandmother herself."
+     },
+     {
+      "q": "Which event first breaks the opening situation, in which nobody is allowed to use the cup?",
+      "o": [
+       "Clara wonders why the cup is kept at the back of the cupboard.",
+       "Grandmother fills the cup and gives it to Clara.",
+       "The stain spreads over the saucer.",
+       "Clara goes to the city by train."
+      ],
+      "a": 1,
+      "why": "Grandmother takes the forbidden cup down and fills it for Clara, which ends the opening situation and leads to the lesson."
+     },
+     {
+      "q": "Why does Clara hold the cup \"a little more tightly\" at the end?",
+      "o": [
+       "She is afraid that it will fall from her hands.",
+       "She has understood something moving about the cup.",
+       "She wants to take it with her without asking.",
+       "She is angry that the tea has leaked onto the clean saucer."
+      ],
+      "a": 1,
+      "why": "Her silence and tighter grip show she is moved; she has grasped what the cup means to Grandmother."
+     },
+     {
+      "q": "What is the effect of the simile \"like a river on a map\"?",
+      "o": [
+       "It shows that the crack is thin but long and winding.",
+       "It proves that Grandmother is very good at drawing maps.",
+       "It suggests the cup came from another country.",
+       "It makes the crack seem dangerous to everyone."
+      ],
+      "a": 0,
+      "why": "A river on a map is a thin winding line, which matches the crack from rim to handle."
+     }
+    ]
+   },
+   "why": "\"Turning point\" is ambiguous (the stain/\"You see? It leaks\" can also be argued as the climax), so option C is defensible; stem now asks which event first breaks the opening situation (unique)",
+   "severity": "major"
+  },
+  {
+   "item": "e9f91480",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What literary device is the main feature of the ending?",
+      "o": [
+       "Situational irony",
+       "Alliteration of sounds",
+       "Onomatopoeia",
+       "Rhymed verse"
+      ],
+      "a": 0,
+      "why": "Each person sacrifices something for a gift that has become useless, which is the opposite of what was intended: situational irony."
+     },
+     {
+      "q": "What can be inferred about the couple?",
+      "o": [
+       "They love each other but have little money.",
+       "They are rich and love to compete.",
+       "They dislike giving and receiving gifts on special days.",
+       "They often quarrel about money."
+      ],
+      "a": 0,
+      "why": "Saving for six months and selling a coat show that they care about one another and have few resources."
+     },
+     {
+      "q": "Why did the couple become \"a little embarrassed\"?",
+      "o": [
+       "They saw that their gifts no longer matched their needs.",
+       "They had forgotten the date of the birthday until the evening.",
+       "They were afraid that the guests would arrive much too early.",
+       "They found the presents were too cheap."
+      ],
+      "a": 0,
+      "why": "The case is useless without glasses, and the umbrella cannot make up for the coat she sold, so the sacrifices cancelled each other out."
+     },
+     {
+      "q": "What does the story mainly suggest about gifts?",
+      "o": [
+       "The love behind a gift matters more than its use.",
+       "Gifts should always be bought in shops, never made by hand.",
+       "It is better to give money than objects.",
+       "Rain spoils all celebrations."
+      ],
+      "a": 0,
+      "why": "Despite the awkward result, the couple's willingness to sacrifice shows the value of love and care."
+     }
+    ],
+    "text": "Mr. Park had saved for six months to buy his wife a silver umbrella for her birthday. It was slim and elegant, with a handle shaped like a swan's neck. She had admired it in a shop window every Tuesday since spring.\n\nOn the morning of the birthday, he wrapped it in tissue paper and tied a ribbon around it. At the same moment, his wife was in the next room, wrapping a small box for him. Inside was a leather case for his old reading glasses, bought with the money from selling her winter coat.\n\nIt rained all afternoon. They ate dinner, exchanged their presents, and laughed, and then, a little embarrassed, both fell silent. He had no need of a case; he had lost his glasses on Monday. And on a day like this, she now had no coat to wear under her new umbrella."
+   },
+   "why": "Passage contradicts itself: she sold her \"second-best\" coat (so she still has another) yet is said to have no coat; explanation claimed an umbrella is useful only to someone with a coat (false).",
+   "severity": "major"
+  },
+  {
+   "item": "94705db9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the mood of the opening paragraph?",
+      "o": [
+       "Heavy, hot and exhausting",
+       "Cheerful, calm and relaxed",
+       "Funny and noisy",
+       "Cold and mysterious"
+      ],
+      "a": 0,
+      "why": "Images of a heavy sun, silence, and lowered heads create a draining mood."
+     },
+     {
+      "q": "\"the sun lay on the travellers' shoulders like a hand that refused to lift\" is an example of",
+      "o": [
+       "a simile with a sense of weight",
+       "an onomatopoeia",
+       "a rhyme scheme",
+       "a rhetorical question to the reader"
+      ],
+      "a": 0,
+      "why": "The sun is compared to a heavy hand using \"like\", and the image conveys the oppressive weight of the heat."
+     },
+     {
+      "q": "What is Amira's reason for counting steps?",
+      "o": [
+       "To distract herself from worry about water",
+       "To measure the size of the desert",
+       "To compete with the camels",
+       "To plan her route on a map of the whole desert"
+      ],
+      "a": 0,
+      "why": "She counts \"to keep her mind from the water that was almost gone\"."
+     },
+     {
+      "q": "Why does the guide smile at the end?",
+      "o": [
+       "He realises the green shape means water is near.",
+       "He is pleased that Amira has finished counting.",
+       "He is glad that the camels have stopped walking.",
+       "He remembers a joke from his childhood."
+      ],
+      "a": 0,
+      "why": "The green thing that shimmers is likely an oasis; the experienced guide would know this and smile with relief."
+     }
+    ]
+   },
+   "why": "Two distractors were near-identical (\"finished counting\" / \"finally finished counting her steps\").",
+   "severity": "minor"
+  },
+  {
+   "item": "367b1a4e",
+   "op": "set",
+   "set": {
+    "text": "Madame Orlova's parrot had a talent that no one had asked for: he repeated everything he overheard. For years this was harmless, even charming. Visitors enjoyed hearing him imitate the doorbell, the kettle and the postman's cough.\n\nThen came the dinner party. Madame had invited her richest neighbour, and she spent an hour describing how delighted she was to see him. The parrot, in the corner, listened to every compliment. Later that evening, just as the neighbour was lifting his dessert fork, the bird said in Madame's own voice, \"What a bore he is! If only he would go home!\"\n\nThe silence lasted nearly a minute. Madame turned the colour of her white tablecloth. The neighbour, to everyone's surprise, burst out laughing. \"At last,\" he said, \"an honest voice in this house.\" They became the closest of friends, and the parrot was given the best seat at every dinner."
+   },
+   "why": "Tablecloth colour is not given, so \"went pale\" cannot be derived from the text (red/angry also possible)",
+   "severity": "major"
+  },
+  {
+   "item": "c6ca8ce6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where did most of Leila's poems begin?",
+      "o": [
+       "On bus tickets while she was commuting",
+       "In a university classroom during the long winter term",
+       "During a stay in a mountain cabin",
+       "At the radio station"
+      ],
+      "a": 0,
+      "why": "She says most of the poems began on bus tickets during her daily commute."
+     },
+     {
+      "q": "What does Leila mean when she compares a short poem to a small window?",
+      "o": [
+       "The poet must choose carefully what to show.",
+       "Short poems are easier to write.",
+       "Poems are best written while sitting near a bright window.",
+       "A poem needs a frame made of glass."
+      ],
+      "a": 0,
+      "why": "A small window shows only part of the house, so the poet selects what the reader will see."
+     },
+     {
+      "q": "What is Leila's hope for her readers?",
+      "o": [
+       "That a poem changes how they notice small things",
+       "That they will memorise every line",
+       "That they will learn one clear moral from every poem she wrote",
+       "That they will buy several copies"
+      ],
+      "a": 0,
+      "why": "She wants a reader to look out of a bus window differently after reading, rather than receive a lesson."
+     },
+     {
+      "q": "Why does she describe her own handwriting as \"a stranger's\"?",
+      "o": [
+       "She has forgotten writing it by the time she finds it.",
+       "She is quoting a poem by another writer.",
+       "Someone else copies her notes onto fresh bus tickets at night.",
+       "She cannot read English."
+      ],
+      "a": 0,
+      "why": "Because the line is found later in a pocket, it seems to come from someone else, showing the distance between the moment of writing and the finding."
+     }
+    ]
+   },
+   "why": "Distractor \"writes on a bumpy, moving bus\" is a second defensible reading of why her own writing looks like a stranger's",
+   "severity": "minor"
+  },
+  {
+   "item": "30bc7e0e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "A girl succeeds with the quiet support of her father.",
+       "A judge makes a serious mistake with a very difficult word.",
+       "Reporters discover a secret about the contest.",
+       "A father teaches his daughter English at home."
+      ],
+      "a": 0,
+      "why": "Dahye overcomes her fear with the help of her father's card, so the story is about support and courage."
+     },
+     {
+      "q": "What does the father's card show about him?",
+      "o": [
+       "He wants to help though he does not know English well.",
+       "He does not believe that Dahye can spell the word.",
+       "He disagrees with the judge's decision.",
+       "He is angry that Dahye is nervous."
+      ],
+      "a": 0,
+      "why": "He copied the letter from her notebook, showing effort and love without strong English."
+     },
+     {
+      "q": "Why does Dahye say, \"I was thinking about a card\"?",
+      "o": [
+       "She thanks her father in a way only he understands.",
+       "She has forgotten the reporters' question.",
+       "She is trying to confuse the audience and the other contestants.",
+       "She hopes to win a prize for the card."
+      ],
+      "a": 0,
+      "why": "Only her father understands the answer, so it is a private gesture of thanks."
+     },
+     {
+      "q": "Which phrase best describes how the story ends?",
+      "o": [
+       "Emotional and warm",
+       "Mysterious and dark",
+       "Bitter and cold",
+       "Silly and loud"
+      ],
+      "a": 0,
+      "why": "The applause, the quiet answer, and the father crying behind his programme create a moving, warm ending."
+     }
+    ]
+   },
+   "why": "Distractor \"trying to cheat\" is arguably true (a signal during a contest), so it is not clearly wrong",
+   "severity": "minor"
+  },
+  {
+   "item": "698db64c",
+   "op": "set",
+   "set": {
+    "q": "Which line is an example of alliteration?",
+    "o": [
+     "Sally sells silver shells by the shore.",
+     "The door creaked loudly and then slammed shut again.",
+     "He ran as fast as a hare.",
+     "All the world's a gentle dream."
+    ],
+    "a": 0,
+    "why": "The repeated /s/ sound at the beginning of several words (Sally, sells, silver, shells, shore) is alliteration."
+   },
+   "why": "Explanation listed words (silver, streams, sunlight, slipped, shutters) that are not in the key sentence",
+   "severity": "minor"
+  },
+  {
+   "item": "8ac6fc82",
+   "op": "set",
+   "set": {
+    "q": "\"Opening that old trunk was like opening Pandora's box.\" This phrase assumes the reader knows a famous story from Greek myth. This device is called",
+    "o": [
+     "allusion",
+     "rhyme",
+     "alliteration",
+     "onomatopoeia"
+    ],
+    "a": 0,
+    "why": "A brief reference to a well-known person, event or story is an allusion."
+   },
+   "why": "Identity field q changed: replaced the biblical \"patience of Job\" (religious reference, against SPEC rule 5) with a mythological allusion",
+   "severity": "minor"
+  },
+  {
+   "item": "876de819",
+   "op": "set",
+   "set": {
+    "q": "In a detective story, Inspector Reed tries to catch a clever thief who always escapes. The inspector is the protagonist. Who is the antagonist?",
+    "o": [
+     "The thief who works against the inspector",
+     "The inspector who follows the thief's clues",
+     "The reader who tries to guess",
+     "The author who wrote the story"
+    ],
+    "a": 0,
+    "why": "The antagonist is the force or character that opposes the protagonist; here the inspector is the protagonist and the thief opposes him."
+   },
+   "why": "Identity field q/o changed: original stem did not say who the protagonist is, so the thief could be the protagonist (heist story) and the detective the antagonist",
+   "severity": "major"
+  }
+ ],
+ "ok": 136,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

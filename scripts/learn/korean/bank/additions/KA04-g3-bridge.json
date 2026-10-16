@@ -82,7 +82,7 @@
     {
      "cat": "sentence",
      "ko": "다음 주부터 새로운 규칙을 적용합니다.",
-     "g": "New rules will apply starting next week.",
+     "g": "We will apply the new rules starting next week.",
      "cloze": {
       "blank": "다음 주____ 새로운 규칙을 적용합니다.",
       "ans": "부터",
@@ -130,7 +130,7 @@
     {
      "cat": "passage",
      "ko": "A: 안녕하십니까? 예약하신 성함을 말씀해 주십시오. B: 김민수입니다. 세 명이 예약했습니다. A: 네, 확인했습니다. 창가 자리로 안내하겠습니다.",
-     "g": "A: Good afternoon. Please tell me the name the reservation is under. B: It is Kim Minsu. The reservation is for three people. A: Yes, I have confirmed it. I will show you to a table by the window.",
+     "g": "A: Hello. Please tell me the name the reservation is under. B: It is Kim Minsu. The reservation is for three people. A: Yes, I have confirmed it. I will show you to a table by the window.",
      "read": {
       "true": "B has a reservation for three people, and A will guide B to a window table.",
       "false": [
@@ -159,16 +159,16 @@
       "blank": "도서관에서 ____ 책을 내일 돌려줄 거예요.",
       "ans": "빌린",
       "w": [
-       "빌리는",
        "빌릴",
-       "빌려서"
+       "빌려서",
+       "빌리고"
       ]
      },
      "choose": {
       "w": [
-       "도서관에서 빌리는 책을 내일 돌려줄 거예요.",
        "도서관에서 빌릴 책을 내일 돌려줄 거예요.",
-       "도서관에서 빌려 책을 내일 돌려줄 거예요."
+       "도서관에서 빌려 책을 내일 돌려줄 거예요.",
+       "도서관에서 빌린 책이 내일 돌려줄 거예요."
       ]
      },
      "grade": 3,
@@ -184,14 +184,14 @@
       "ans": "있는",
       "w": [
        "있은",
-       "있을",
+       "있다",
        "있어서"
       ]
      },
      "choose": {
       "w": [
        "요즘 인기가 있은 노래를 자주 들어요.",
-       "요즘 인기가 있을 노래를 자주 들어요.",
+       "요즘 인기가 있어 노래를 자주 들어요.",
        "요즘 인기가 있는 노래가 자주 들어요."
       ]
      },
@@ -238,7 +238,7 @@
       "ans": "않은",
       "w": [
        "않는",
-       "않을",
+       "않고",
        "안은"
       ]
      },
@@ -311,9 +311,9 @@
        "머리를 감았어요"
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -341,9 +341,9 @@
        "게임을 해요"
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -371,9 +371,9 @@
        "휴대폰을 보지 마세요"
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -401,9 +401,9 @@
        "물을 마시러 갔어요"
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -503,9 +503,9 @@
        "도서관에서는 큰 소리로 이야기하면서 안 돼요."
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -533,9 +533,9 @@
        "누르면 돼요"
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -557,9 +557,9 @@
        "여기를 잠깐 앉아도 될까요?"
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     },
     {
      "cat": "sentence",
@@ -581,9 +581,9 @@
        "손이 아파서 글씨를 쓰고 못해요."
       ]
      },
-     "grade": 3,
+     "grade": 2,
      "area": "읽기",
-     "std": "읽기3-5"
+     "std": "읽기2-5"
     }
    ]
   },
@@ -595,7 +595,7 @@
     {
      "cat": "sentence",
      "ko": "새로 산 운동화가 편해 보여서 저도 사고 싶어요.",
-     "g": "The new sneakers you bought look comfortable, so I want to buy a pair too.",
+     "g": "Those new sneakers look comfortable, so I want to buy a pair too.",
      "note": "app",
      "cloze": {
       "blank": "새로 산 운동화가 ____ 보여서 저도 사고 싶어요.",
@@ -874,11 +874,11 @@
      "ko": "A: 시험 잘 봤어요? B: 아니요. 공부를 더 할 걸 그랬어요. A: 너무 걱정하지 마세요. 다음에는 같이 준비해요. B: 고마워요. 도서관에서 같이 공부해요.",
      "g": "A: Did you do well on the test? B: No. I should have studied more. A: Don't worry too much. Let's prepare together next time. B: Thanks. Let's study together at the library.",
      "read": {
-      "true": "B did not do well on the test, and they plan to study together next time.",
+      "true": "B did not do well on the test, and they plan to study together.",
       "false": [
-       "B did very well on the test and is happy.",
-       "A tells B to stop studying for the exam.",
-       "B plans to study alone at home from now on."
+       "B did very well on the test and is happy about the result.",
+       "A tells B to stop studying for the exam and just rest at home.",
+       "B plans to study alone at home from now on, without A."
       ]
      },
      "grade": 3,

@@ -115,6 +115,19 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
     const rest = pick(pool, n - same.length, qid + "+", key, (it) => it.id !== item.id && !same.includes(it) && ok(it));
     return [...same, ...rest];
   };
+  /**
+   * Distractors are drawn from other items of the skill, so a long sentence could be set against short words and stand out by length alone.
+   * When the first draw makes the key clearly the longest (or shortest) option, draw again among items of a similar length (when enough exist).
+   */
+  const lengthFair = (n: number, ok: (it: KItem) => boolean, keyOf: (it: KItem) => string, lenOf: (it: KItem) => number): KItem[] => {
+    const first = others(n, ok, keyOf);
+    const kl = lenOf(item);
+    const ls = first.map(lenOf);
+    const cue = kl >= 14 && ls.length > 0 && (kl >= 1.6 * Math.max(...ls) || kl * 1.6 <= Math.min(...ls));
+    if (!cue) return first;
+    const near = others(n, (it) => ok(it) && lenOf(it) >= 0.6 * kl && lenOf(it) <= 1.7 * kl, keyOf);
+    return near.length === n ? near : first;
+  };
   const base = Math.min(5, 1 + Math.floor((lv - 1) / 2));
   let type: Question["type"] = "multiple_choice";
   let options: QuestionOption[] | undefined;
@@ -131,16 +144,16 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
   };
   switch (form) {
     case "meaning": {
-      const w = others(3, (it) => it.g !== item.g && gl(it) !== gl(item), (it) => gl(it));
+      const w = lengthFair(3, (it) => it.g !== item.g && gl(it) !== gl(item), (it) => gl(it), (it) => gl(it).length);
       choice([gl(item), ...w.map(gl)]);
       target = { text: item.ko, romanization: item.rr, romanizationVi: item.vi }; audioText = item.ko; break;
     }
     case "toko": {
-      const w = others(3, (it) => it.ko !== item.ko);
+      const w = lengthFair(3, (it) => it.ko !== item.ko, (it) => it.id, (it) => it.ko.length);
       choice([item.ko, ...w.map((x) => x.ko)]); vars.gloss = gl(item); break;
     }
     case "listen": {
-      const w = item.c === "syl" ? pick(pool, 3, qid, (it) => it.ko, (it) => it.ko !== item.ko && sylNear(it.ko, item.ko)) : others(3, (it) => it.ko !== item.ko);
+      const w = item.c === "syl" ? pick(pool, 3, qid, (it) => it.ko, (it) => it.ko !== item.ko && sylNear(it.ko, item.ko)) : lengthFair(3, (it) => it.ko !== item.ko, (it) => it.id, (it) => it.ko.length);
       const fillw = w.length === 3 ? w : [...w, ...pick(pool, 3 - w.length, qid + "+", (it) => it.ko, (it) => it.ko !== item.ko && !w.includes(it))];
       choice([item.ko, ...fillw.map((x) => x.ko)]); audioText = item.ko; difficulty = Math.max(1, base - (item.c === "syl" ? 0 : 0)); break;
     }
@@ -184,7 +197,7 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
       answer = { kind: "order", ids }; audioText = item.ko; vars.first = item.od![0]; difficulty = Math.min(5, base + 1); break;
     }
     case "passage": {
-      choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/^[A-Z가-힣]:\s*/gm, "").replace(/\n/g, " "); vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
+      choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/(^|\s)[A-Z가-힣]:\s*/g, "$1").replace(/\n/g, " ").replace(/\s+/g, " ").trim(); // every "A:" / "B:" label, also on one line vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
     }
   }
   prompt = fill(tpl.prompt, vars);
