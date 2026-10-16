@@ -3,6 +3,7 @@ import { LearnError } from "@/lib/learn/server/errors";
 import { assertSameOrigin, errorResponse, jsonResponse, rateLimit, readJson } from "@/lib/learn/server/http";
 import { getLearnService, resolveActor } from "@/lib/learn/server/runtime";
 import { isLocale } from "@/lib/learn/i18n";
+import { isReviewMode } from "@/lib/learn/reviewModes";
 
 /**
  * Learning API. Every action:
@@ -48,6 +49,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
             kind,
             lessonId: typeof body.lessonId === "string" ? body.lessonId : undefined,
             skillId: typeof body.skillId === "string" ? body.skillId : undefined,
+            mode: isReviewMode(body.mode) ? body.mode : undefined,
           }),
         );
       }

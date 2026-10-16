@@ -37,6 +37,7 @@ import { isLevelOf } from "@/lib/learn/sites";
 import { LearnError } from "./errors";
 import type { LearnStore } from "./store";
 import { parsePlayerState } from "./stateCodec";
+import { isReviewMode, questionMode, type ReviewMode } from "@/lib/learn/reviewModes";
 
 /**
  * Who is calling. Authenticated students have their state loaded from the
@@ -196,9 +197,9 @@ export class LearnService {
 
   /* ------------------------------- sessions ------------------------------- */
 
-  private pickPractice(bundle: ContentBundle, skillIds: string[], count: number, seed: string): Question[] {
+  private pickPractice(bundle: ContentBundle, skillIds: string[], count: number, seed: string, mode?: ReviewMode): Question[] {
     const pool = bundle.questions.filter(
-      (q) => skillIds.includes(q.skillId) && q.role !== "diagnostic" && q.status === "PUBLISHED",
+      (q) => skillIds.includes(q.skillId) && q.role !== "diagnostic" && q.status === "PUBLISHED" && (!mode || questionMode(q) === mode),
     );
     // Deterministic shuffle keyed by the session id: stable within a session.
     const keyed = pool.map((q) => ({ q, k: hash(`${seed}:${q.id}`) }));
@@ -219,7 +220,7 @@ export class LearnService {
   async startSession(
     actor: Actor,
     site: Site,
-    input: { kind: "lesson" | "review" | "practice"; lessonId?: string; skillId?: string },
+    input: { kind: "lesson" | "review" | "practice"; lessonId?: string; skillId?: string; mode?: ReviewMode },
   ) {
     const { state, bundle, index, access, plan } = await this.load(actor, site);
     const sessionId = this.newId();
@@ -244,11 +245,15 @@ export class LearnService {
     } else if (input.kind === "review") {
       const due = dueSkills(state.mastery, now).filter((m) => index.skills.has(m.skillId));
       if (due.length === 0) throw new LearnError("nothing_to_review", 409);
-      questions = this.pickPractice(bundle, due.map((d) => d.skillId), learnConfig.quest.reviewTarget + 2, sessionId);
+      questions = this.pickPractice(bundle, due.map((d) => d.skillId), learnConfig.quest.reviewTarget + 2, sessionId, input.mode);
+    } else if (input.mode && !input.skillId) {
+      // a review mode over everything the learner has already reached (never a locked lesson's skill)
+      const open = new Set(buildPath(state, index).filter((n) => n.status !== "locked").flatMap((n) => index.lessons.get(n.lessonId)?.lesson.skillIds ?? []));
+      questions = this.pickPractice(bundle, [...open], learnConfig.quest.solveTarget, sessionId, input.mode);
     } else {
       const skillId = input.skillId && index.skills.has(input.skillId) ? input.skillId : null;
       if (!skillId) throw new LearnError("unknown_skill", 404);
-      questions = this.pickPractice(bundle, [skillId], learnConfig.quest.solveTarget, sessionId);
+      questions = this.pickPractice(bundle, [skillId], learnConfig.quest.solveTarget, sessionId, input.mode);
     }
     if (questions.length === 0) throw new LearnError("no_questions", 409);
 
