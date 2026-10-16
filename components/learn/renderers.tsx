@@ -7,7 +7,7 @@ import type { PublicQuestion, QuestionType, Site } from "@/lib/learn/types";
 import { siteConfig } from "@/lib/learn/sites";
 import { useSite } from "./LearnerProvider";
 import { RichText } from "./RichText";
-import { choiceKeyIndex, isTextTarget } from "./choiceKeys";
+import { choiceKeyIndex, isTextTarget, trueFalseKeyId } from "./choiceKeys";
 
 /**
  * Renderer registry. A renderer receives the public question and controlled
@@ -49,10 +49,17 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
   const latest = useRef({ options, onChange, disabled });
   useEffect(() => { latest.current = { options, onChange, disabled }; });
   useEffect(() => {
-    if (q.type !== "multiple_choice") return;
+    if (q.type !== "multiple_choice" && q.type !== "true_false") return;
     const onKey = (e: KeyboardEvent) => {
       const { options: opts, onChange: choose, disabled: locked } = latest.current;
       if (locked || isTextTarget(e.target)) return;
+      if (q.type === "true_false") { // O / X choose exactly like a click
+        const id = trueFalseKeyId(e);
+        if (!id) return;
+        e.preventDefault();
+        choose(id);
+        return;
+      }
       const index = choiceKeyIndex(e, opts.length);
       if (index < 0) return;
       e.preventDefault();

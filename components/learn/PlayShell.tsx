@@ -11,7 +11,7 @@ import { BrandLogo } from "./BrandLogo";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { useLearner } from "./LearnerProvider";
 
-const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"];
+const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice", "/flow"];
 
 export function PlayShell({ children }: { children: ReactNode }) {
   const { t, href, site, state, ready } = useLearner();

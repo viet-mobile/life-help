@@ -9,6 +9,7 @@ import { ensureQuest } from "@/lib/learn/domain/quests";
 import { displayStreak } from "@/lib/learn/domain/streak";
 import { avatarEmoji } from "@/lib/learn/avatars";
 import { useLearner } from "./LearnerProvider";
+import { FlowLauncher } from "./FlowLauncher";
 import { LevelUnavailable } from "./LevelUnavailable";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
@@ -28,7 +29,7 @@ export function Dashboard() {
   let ctaHref = href(weak ? `/practice?kind=practice&skill=${encodeURIComponent(weak.id)}` : "/learn");
   if (rec.kind === "lesson") {
     ctaLabel = t("dash.continue.lesson", { title: index.lessons.get(rec.lessonId)?.lesson.title ?? "" });
-    ctaHref = href(`/lesson/${rec.lessonId}`);
+    ctaHref = href("/flow"); // lesson after lesson, grade after grade, without a stop in between
   } else if (rec.kind === "review") {
     ctaLabel = t("dash.continue.review");
     ctaHref = href("/practice?kind=review");
@@ -55,6 +56,8 @@ export function Dashboard() {
         <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
         {site === "korean" && <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>}
       </section>
+
+      <FlowLauncher />
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

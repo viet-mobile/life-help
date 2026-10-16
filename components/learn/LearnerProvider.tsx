@@ -46,6 +46,8 @@ interface LearnerCtx extends SiteCtx {
   ready: boolean;
   state: PlayerState;
   index: ContentIndex;
+  /** the whole (not grade-scoped) catalogue, for pickers that look at other grades */
+  meta: MetaBundle;
   /** POST to the learning API. Guest state is attached automatically; the returned state is adopted. */
   api: <T extends object>(action: string, body?: Record<string, unknown>) => Promise<T & { state?: PlayerState }>;
   resetGuest: () => void;
@@ -169,8 +171,8 @@ export function LearnerProvider({
 
   const plan = useMemo(() => buildAccessPlan(meta.catalog, meta.questions), [meta]);
   const value = useMemo<LearnerCtx>(
-    () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan }),
-    [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan],
+    () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, meta, api, href, resetGuest, access, plan }),
+    [site, base, locale, t, mode, accountsEnabled, ready, state, index, meta, api, href, resetGuest, access, plan],
   );
   return <LearnerContext.Provider value={value}>{children}</LearnerContext.Provider>;
 }

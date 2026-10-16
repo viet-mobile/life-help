@@ -19,6 +19,16 @@ export function choiceKeyIndex(e: KeyLike, optionCount: number): number {
   return index >= 0 && index < optionCount ? index : -1;
 }
 
+/**
+ * True / false questions: O selects "true", X selects "false" (any case; also under a Korean input method, where the typed character is
+ * "ㅐ" / "ㅌ", via the physical key). Returns the option id, or null when the key addresses nothing.
+ */
+export function trueFalseKeyId(e: KeyLike): "true" | "false" | null {
+  if (e.repeat || e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return null;
+  const letter = /^[a-zA-Z]$/.test(e.key) ? e.key.toUpperCase() : /^Key([A-Z])$/.exec(e.code)?.[1];
+  return letter === "O" ? "true" : letter === "X" ? "false" : null;
+}
+
 /** Keys typed into a text field are text, not answers. */
 export function isTextTarget(target: EventTarget | null): boolean {
   const el = target as { closest?: (s: string) => unknown } | null;
