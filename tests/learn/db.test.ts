@@ -263,7 +263,7 @@ describe("demo seed", () => {
     let expectedLessons = 0;
     for (const site of ["math", "english"] as const) expectedLessons += (await demoContentRepository.getBundle(site)).catalog.courses.flatMap((c) => c.units.flatMap((u) => u.lessons)).length;
     expect(Number(lessons.rows[0].n)).toBe(expectedLessons);
-    expect(expectedLessons).toBe(8 + 60 + 50 + 24 + 36 + 5); // 4 + 4 original M1 lessons, 5 lessons x 6 elementary grades x 2 subjects, 5 lessons x 5 secondary grades (M2..H3) x 2 subjects, plus 2 geometry lessons x 12 grades (math), plus 36 data / number / elective lessons (math) and 5 English topic lessons
+    expect(expectedLessons).toBe(8 + 60 + 50 + 24 + 36 + 5 + 7); // +7 lessons of the English H3 electives course; 4 + 4 original M1 lessons, 5 lessons x 6 elementary grades x 2 subjects, 5 lessons x 5 secondary grades (M2..H3) x 2 subjects, plus 2 geometry lessons x 12 grades (math), plus 36 data / number / elective lessons (math) and 5 English topic lessons
     // Workflow trigger is back on after seeding.
     await expect(fresh.exec("insert into public.learn_questions(code, subject_id, skill_id, type, difficulty, prompt, status) select 'zz', subject_id, id, 'numeric', 1, 'x', 'PUBLISHED' from public.learn_skills limit 1")).rejects.toThrow(/DRAFT/);
     await fresh.close();
