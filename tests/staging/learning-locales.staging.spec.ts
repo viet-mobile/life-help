@@ -46,7 +46,8 @@ async function onboardGuest(page: Page, site: Site, loc: string, level: string) 
   await page.goto(learnUrl(site, "/onboarding"));
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${level}`], exact: true }).click();
+  // Korean level buttons also contain an official-grade chip; select their stable level identity.
+  await page.locator(`[data-grade="${level}"]`).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
