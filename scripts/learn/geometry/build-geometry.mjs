@@ -48,7 +48,9 @@ const loadKit = (loc) => {
 const rot = (id, n) => [...id].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) >>> 0, 7) % n;
 // "}}" is written "} }" (identical in KaTeX): content QA treats a doubled brace as an unresolved {{placeholder}}.
 const noDouble = (t) => t.replace(/\}\}/g, "} }");
-const fill = (tpl, vars) => noDouble(tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m)));
+// "y=1x+1" -> "y=x+1", "-1x" -> "-x", "2x+-1" -> "2x-1": filled coefficients read like a textbook, in every language
+const tidyAlgebra = (t) => t.replace(/(?<![0-9.A-Za-z])(-?)1(?=[xyz](?![A-Za-z]))/g, "$1").replace(/\+\s*-(?=\d|[xyz])/g, "-");
+const fill = (tpl, vars) => noDouble(tidyAlgebra(tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m))));
 
 // ---------------------------------------------------------------- items -> questions (one rendering = one kit)
 function render(kit) {

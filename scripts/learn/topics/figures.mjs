@@ -67,18 +67,22 @@ export const G = {
       const a2 = a - (pct / 100) * 360;
       s.push(L(cx, cy, cx + R * Math.cos(rad(a)), cy - R * Math.sin(rad(a))));
       const mid = rad((a + a2) / 2);
-      s.push(T(cx + (R * 0.62) * Math.cos(mid), cy - (R * 0.62) * Math.sin(mid) + 5, `${name}${hide.includes(name) ? "" : ` ${pct}%`}`));
+      const label = `${name}${hide.includes(name) ? "" : ` ${pct}%`}`;
+      if (pct < 15) { // a narrow wedge: the label goes outside, next to it, so no radius runs through the text
+        const r2 = R + 8, ex = cx + r2 * Math.cos(mid), ey = cy - r2 * Math.sin(mid) + 5;
+        s.push(T(ex, ey, label, Math.cos(mid) >= 0 ? "s" : "e"));
+      } else s.push(T(cx + (R * 0.62) * Math.cos(mid), cy - (R * 0.62) * Math.sin(mid) + 5, label));
       a = a2;
     }
     return fig(s, 220, 170);
   },
   /** band graph: one bar split into parts [[letter, percent]] */
-  band(parts) {
+  band(parts, hide = []) {
     const x0 = 14, w = 232, y = 60, h = 38, s = [];
     let x = x0;
     parts.forEach(([name, pct], i) => {
       const pw = (w * pct) / 100;
-      s.push(P([[x, y], [x + pw, y], [x + pw, y + h], [x, y + h]], (i % 3) + 1), T(x + pw / 2, y + h / 2 + 5, name), T(x + pw / 2, y + h + 18, `${pct}%`));
+      s.push(P([[x, y], [x + pw, y], [x + pw, y + h], [x, y + h]], (i % 3) + 1), T(x + pw / 2, y + h / 2 + 5, name), T(x + pw / 2, y + h + 18, hide.includes(name) ? "x" : `${pct}%`));
       x += pw;
     });
     return fig(s, 260, 130);
@@ -100,17 +104,25 @@ export const G = {
     const xmin = Math.min(...xs), xmax = Math.max(...xs), ymin = Math.min(...ys), ymax = Math.max(...ys);
     const u = Math.min(30, (w - 50) / (xmax - xmin + 1), (h - 40) / (ymax - ymin + 1));
     const ox = 22 + (0 - xmin) * u + 8, oy = h - 20 - (0 - ymin) * u;
-    s.push(L(8, oy, w - 8, oy), L(ox, h - 8, ox, 8), T(w - 12, oy - 6, "x"), T(ox + 10, 16, "y"), T(ox - 7, oy - 6, "O", "e"));
-    for (let x = Math.ceil(xmin); x <= xmax; x++) if (x !== 0) { s.push(L(ox + x * u, oy - 3, ox + x * u, oy + 3)); if (u >= 15 || x % 2 === 0) s.push(T(ox + x * u, oy + 15, x)); }
-    for (let y = Math.ceil(ymin); y <= ymax; y++) if (y !== 0) { s.push(L(ox - 3, oy - y * u, ox + 3, oy - y * u)); if (u >= 15 || y % 2 === 0) s.push(T(ox - 8, oy - y * u + 5, y, "e")); }
+    s.push(L(8, oy, w - 8, oy), L(ox, h - 8, ox, 8), T(w - 12, oy - 6, "x"), T(ox + 10, 16, "y"), T(ox - 8, oy + 15, "O", "e"));
+    // "O" sits at the lower left of the origin: a tick label that would touch it (or the other axis) is left out
+    for (let x = Math.ceil(xmin); x <= xmax; x++) if (x !== 0) { s.push(L(ox + x * u, oy - 3, ox + x * u, oy + 3)); if ((u >= 15 || x % 2 === 0) && !(x < 0 && ox + x * u > ox - 24)) s.push(T(ox + x * u, oy + 15, x)); }
+    for (let y = Math.ceil(ymin); y <= ymax; y++) if (y !== 0) { s.push(L(ox - 3, oy - y * u, ox + 3, oy - y * u)); if ((u >= 15 || y % 2 === 0) && !(y < 0 && oy - y * u < oy + 20)) s.push(T(ox - 8, oy - y * u + 5, y, "e")); }
     for (const [x1, y1, x2, y2, d] of segments) s.push(L(ox + x1 * u, oy - y1 * u, ox + x2 * u, oy - y2 * u, d));
-    for (const [name, x, y] of points) { s.push(C(ox + x * u, oy - y * u, 3.5, 3)); s.push(T(ox + x * u + 8, oy - y * u - 8, name, "s")); }
+    for (const [name, x, y] of points) {
+      const px = ox + x * u, py = oy - y * u;
+      s.push(C(px, py, 3.5, 3));
+      let dx = 0, dy = 0; // label on the side away from segments ending here
+      for (const [x1, y1, x2, y2] of segments) { if (x1 === x && y1 === y) { dx += x2 - x; dy += y2 - y; } else if (x2 === x && y2 === y) { dx += x1 - x; dy += y1 - y; } }
+      const d = Math.hypot(dx, dy);
+      s.push(x === 0 && y !== 0 ? T(px + 10, py + 4, name, "s") : d > 0 ? T(px - (dx / d) * 14, py + (dy / d) * 14 + 5, name) : T(px + 8, py - 8, name, "s"));
+    }
     return fig(s, w, h);
   },
   /** two straight lines y = a x + b drawn on an auto-fitted plane, intersection marked */
   lines(l1, l2, cross) {
     const u = 22, ox = 46, oy = 128, X0 = -1, X1 = 6, YMAX = 5.4;
-    const s = [L(8, oy, 252, oy), L(ox, 164, ox, 8), T(246, oy - 6, "x"), T(ox + 12, 16, "y"), T(ox - 7, oy - 6, "O", "e")];
+    const s = [L(8, oy, 252, oy), L(ox, 164, ox, 8), T(246, oy - 6, "x"), T(ox + 12, 16, "y"), T(ox - 8, oy + 15, "O", "e")];
     for (let x = 1; x <= 6; x++) s.push(L(ox + x * u, oy - 3, ox + x * u, oy + 3), T(ox + x * u, oy + 15, x));
     for (let y = 1; y <= 5; y++) s.push(L(ox - 3, oy - y * u, ox + 3, oy - y * u), T(ox - 8, oy - y * u + 5, y, "e"));
     const draw = (m, b) => {
@@ -119,7 +131,7 @@ export const G = {
       return x1 > x0 ? L(ox + x0 * u, oy - (m * x0 + b) * u, ox + x1 * u, oy - (m * x1 + b) * u) : null;
     };
     s.push(draw(...l1), draw(...l2));
-    if (cross) s.push(C(ox + cross[0] * u, oy - cross[1] * u, 4, 3), T(ox + cross[0] * u + 8, oy - cross[1] * u - 8, "P", "s"));
+    if (cross) s.push(C(ox + cross[0] * u, oy - cross[1] * u, 4, 3), T(ox + cross[0] * u + 8, oy - cross[1] * u + 18, "P", "s"));
     return fig(s, 260, 170);
   },
   /** supply and demand lines: price on y, quantity on x; equilibrium E */

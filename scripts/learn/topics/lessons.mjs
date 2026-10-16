@@ -54,10 +54,10 @@ export const LESSONS = [
   { grade: "E6", topic: "dat", n: 1, items: [
     num("pieCount", { p: 25, t: 200 }, 50, G.pie([["A", 25], ["B", 40], ["C", 35]])),
     num("pieRest", { a: 20, b: 30, c: 35 }, 15, G.pie([["A", 20], ["B", 30], ["C", 35], ["D", 15]], ["D"])),
-    num("bandRead", { cat: "B" }, 40, G.band([["A", 25], ["B", 40], ["C", 35]])),
+    num("bandRead", { cat: "B" }, 40, G.band([["A", 25], ["B", 40], ["C", 35]], ["B"])),
     num("pieCount", { p: 30, t: 150 }, 45, G.pie([["A", 30], ["B", 50], ["C", 20]])),
     num("pieCount", { p: 35, t: 240 }, 84, G.pie([["A", 35], ["B", 45], ["C", 20]]), c),
-    num("bandRead", { cat: "C" }, 35, G.band([["A", 25], ["B", 40], ["C", 35]]), vr),
+    num("bandRead", { cat: "C" }, 35, G.band([["A", 25], ["B", 40], ["C", 35]], ["C"]), vr),
     num("pieRest", { a: 10, b: 25, c: 40 }, 25, G.pie([["A", 10], ["B", 25], ["C", 40], ["D", 25]], ["D"]), vr),
   ] },
   // ---------------- middle school

@@ -167,8 +167,8 @@ export const TEMPLATES = {
     en: ["Two lines cross and one angle is ${a}^\\circ$. What is the vertically opposite angle? (degrees)", ["Vertically opposite angles face each other.", "They are equal in size."], "Vertically opposite angles are equal, so it is ${ans}^\\circ$."],
   },
   parallelAngle: {
-    ko: ["평행한 두 직선 $l$, $m$과 한 직선이 만납니다. 한 각이 ${a}^\\circ$일 때 $x$의 크기는 몇 도일까요? (도)", ["평행선에서 동위각의 크기는 같아요.", "엇각의 크기도 같아요."], "평행선에서 동위각(엇각)은 같으므로 $x={ans}$입니다."],
-    en: ["Two parallel lines $l$ and $m$ are cut by a transversal. One angle is ${a}^\\circ$. What is $x$? (degrees)", ["Corresponding angles on parallel lines are equal.", "Alternate angles are equal as well."], "Corresponding (alternate) angles on parallel lines are equal, so $x={ans}$."],
+    ko: ["평행한 두 직선 $l$, $m$과 한 직선이 만납니다. 한 각이 ${a}^\\circ$일 때 $x$의 크기는 몇 도일까요? (도)", ["평행선에서 동위각의 크기는 같아요.", "엇각의 크기도 같아요."], "평행선에서 동위각은 같으므로 $x={ans}$입니다."],
+    en: ["Two parallel lines $l$ and $m$ are cut by a transversal. One angle is ${a}^\\circ$. What is $x$? (degrees)", ["Corresponding angles on parallel lines are equal.", "Alternate angles are equal as well."], "Corresponding angles on parallel lines are equal, so $x={ans}$."],
   },
   polygonSum: {
     ko: ["변이 {n}개인 다각형의 내각의 크기의 합은 몇 도일까요? (도)", ["변이 {n}개인 다각형은 삼각형 {m}개로 나눌 수 있어요.", "삼각형 하나의 내각의 합은 $180^\\circ$예요."], "$180\\times{m}={ans}$이므로 ${ans}^\\circ$입니다."],
