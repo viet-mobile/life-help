@@ -37,6 +37,7 @@ import { isLevelOf } from "@/lib/learn/sites";
 import { LearnError } from "./errors";
 import type { LearnStore } from "./store";
 import { parsePlayerState } from "./stateCodec";
+import { cardBack, cardFront, isReviewMode, questionMode, type ReviewMode } from "@/lib/learn/reviewModes";
 
 /**
  * Who is calling. Authenticated students have their state loaded from the
@@ -196,9 +197,9 @@ export class LearnService {
 
   /* ------------------------------- sessions ------------------------------- */
 
-  private pickPractice(bundle: ContentBundle, skillIds: string[], count: number, seed: string): Question[] {
+  private pickPractice(bundle: ContentBundle, skillIds: string[], count: number, seed: string, mode?: ReviewMode): Question[] {
     const pool = bundle.questions.filter(
-      (q) => skillIds.includes(q.skillId) && q.role !== "diagnostic" && q.status === "PUBLISHED",
+      (q) => skillIds.includes(q.skillId) && q.role !== "diagnostic" && q.status === "PUBLISHED" && (!mode || questionMode(q) === mode),
     );
     // Deterministic shuffle keyed by the session id: stable within a session.
     const keyed = pool.map((q) => ({ q, k: hash(`${seed}:${q.id}`) }));
@@ -219,7 +220,7 @@ export class LearnService {
   async startSession(
     actor: Actor,
     site: Site,
-    input: { kind: "lesson" | "review" | "practice"; lessonId?: string; skillId?: string },
+    input: { kind: "lesson" | "review" | "practice"; lessonId?: string; skillId?: string; mode?: ReviewMode },
   ) {
     const { state, bundle, index, access, plan } = await this.load(actor, site);
     const sessionId = this.newId();
@@ -244,11 +245,15 @@ export class LearnService {
     } else if (input.kind === "review") {
       const due = dueSkills(state.mastery, now).filter((m) => index.skills.has(m.skillId));
       if (due.length === 0) throw new LearnError("nothing_to_review", 409);
-      questions = this.pickPractice(bundle, due.map((d) => d.skillId), learnConfig.quest.reviewTarget + 2, sessionId);
+      questions = this.pickPractice(bundle, due.map((d) => d.skillId), learnConfig.quest.reviewTarget + 2, sessionId, input.mode);
+    } else if (input.mode && !input.skillId) {
+      // a review mode over everything the learner has already reached (never a locked lesson's skill)
+      const open = new Set(buildPath(state, index).filter((n) => n.status !== "locked").flatMap((n) => index.lessons.get(n.lessonId)?.lesson.skillIds ?? []));
+      questions = this.pickPractice(bundle, [...open], learnConfig.quest.solveTarget, sessionId, input.mode);
     } else {
       const skillId = input.skillId && index.skills.has(input.skillId) ? input.skillId : null;
       if (!skillId) throw new LearnError("unknown_skill", 404);
-      questions = this.pickPractice(bundle, [skillId], learnConfig.quest.solveTarget, sessionId);
+      questions = this.pickPractice(bundle, [skillId], learnConfig.quest.solveTarget, sessionId, input.mode);
     }
     if (questions.length === 0) throw new LearnError("no_questions", 409);
 
@@ -266,6 +271,40 @@ export class LearnService {
   }
 
   /* ------------------------------- attempts ------------------------------- */
+
+  /** Flashcard fronts for the skills the learner has reached. No session, no XP, no mastery change; the back is fetched with `revealCard`. */
+  async startCards(actor: Actor, site: Site, input: { skillId?: string; count?: number }) {
+    const { state, bundle, index } = await this.load(actor, site);
+    const open = new Set(buildPath(state, index).filter((n) => n.status !== "locked").flatMap((n) => index.lessons.get(n.lessonId)?.lesson.skillIds ?? []));
+    const skills = input.skillId ? (open.has(input.skillId) ? [input.skillId] : []) : [...open];
+    const count = Math.min(40, Math.max(1, Math.floor(input.count ?? 12)));
+    const seed = this.newId();
+    const pool = bundle.questions
+      .filter((q) => skills.includes(q.skillId) && q.status === "PUBLISHED" && q.role !== "diagnostic" && cardFront(q) !== null)
+      .map((q) => ({ q, k: hash(`${seed}:${q.id}`) }))
+      .sort((a, b) => a.k - b.k);
+    const seen = new Set<string>();
+    const cards: { id: string; front: string; audioText?: string }[] = [];
+    for (const { q } of pool) {
+      const front = cardFront(q)!;
+      if (seen.has(front)) continue; // one card per word
+      seen.add(front);
+      cards.push({ id: q.id, front, ...(q.audioText ? { audioText: q.audioText } : {}) });
+      if (cards.length >= count) break;
+    }
+    if (cards.length === 0) throw new LearnError("no_questions", 409);
+    return { cards };
+  }
+
+  async revealCard(actor: Actor, site: Site, body: { questionId: string }) {
+    const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko", bankQuestionId: body.questionId });
+    const [access, plan] = await Promise.all([this.getAccess(actor, site), this.accessPlan(site)]);
+    if (plan.questionTier.get(body.questionId) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
+    const q = full.questions.find((x) => x.id === body.questionId);
+    const back = q && q.status === "PUBLISHED" && q.role !== "diagnostic" && cardFront(q) !== null ? cardBack(q) : null;
+    if (!q || back === null) throw new LearnError("unknown_question", 404);
+    return { back };
+  }
 
   async requestHint(actor: Actor, site: Site, body: { questionId: string; level: number }) {
     const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko", bankQuestionId: body.questionId });

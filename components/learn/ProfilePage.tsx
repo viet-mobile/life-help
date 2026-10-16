@@ -5,10 +5,12 @@ import { useTransition } from "react";
 import { ACHIEVEMENTS } from "@/lib/learn/domain/achievements";
 import { levelProgress } from "@/lib/learn/domain/level";
 import { avatarEmoji } from "@/lib/learn/avatars";
+import { OfficialGradeChip } from "./OfficialGradeChip";
+import { TtsSettingsPanel } from "./TtsSettings";
 import { useLearner } from "./LearnerProvider";
 
 export function ProfilePage({ signOutAction }: { signOutAction?: () => Promise<void> }) {
-  const { state, t, href, mode, accountsEnabled, resetGuest } = useLearner();
+  const { state, t, href, mode, accountsEnabled, resetGuest, site } = useLearner();
   const [pending, start] = useTransition();
   const level = levelProgress(state.totalXp);
   const c = state.counters;
@@ -18,6 +20,7 @@ export function ProfilePage({ signOutAction }: { signOutAction?: () => Promise<v
         <div style={{ fontSize: "3.4rem" }} aria-hidden="true">{avatarEmoji(state.profile?.avatar)}</div>
         <h1 className="l-h1">{state.profile?.nickname}</h1>
         <p>{state.profile && `${t(`grade.${state.profile.grade}` as never)} · ${t(`goal.${state.profile.goal}` as never)}`}</p>
+        {site === "korean" && state.profile && <p><OfficialGradeChip level={state.profile.grade} t={t} /></p>}
         <p>{t("profile.level", { level: level.level, title: t(`level.${level.titleKey}` as never) })} · {state.totalXp} XP</p>
         <Link className="l-link" style={{ color: "#fff" }} href={href("/onboarding")}>{t("profile.edit")}</Link>
       </div>
@@ -55,6 +58,13 @@ export function ProfilePage({ signOutAction }: { signOutAction?: () => Promise<v
           })}
         </ul>
       </section>
+
+      {(site === "korean" || site === "english") && (
+        <section className="l-card l-stack" aria-labelledby="tts-h">
+          <h2 id="tts-h" className="l-h2">{t("tts.title")}</h2>
+          <TtsSettingsPanel t={t} code={site === "korean" ? "ko" : "en"} speech={site === "korean" ? "ko-KR" : "en-US"} />
+        </section>
+      )}
 
       <section className="l-card l-stack" aria-labelledby="ac-h">
         <h2 id="ac-h" className="l-h2">{t("profile.account")}</h2>

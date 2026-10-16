@@ -53,6 +53,7 @@ export function Dashboard() {
         <h2 id="cta-h" className="l-h2">{t("dash.continue")}</h2>
         <p>{ctaLabel}</p>
         <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
+        <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>
       </section>
 
       {!state.diagnosticDone && (

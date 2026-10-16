@@ -5,7 +5,7 @@ import ledger from "@/scripts/learn/english-bank/ledger.json";
 import { checkAnswer } from "@/lib/learn/domain/answers";
 import type { Question } from "@/lib/learn/types";
 
-const key = (q: Question): string | string[] => (q.answer.kind === "choice" ? q.answer.id : q.answer.kind === "order" ? q.answer.ids : "");
+const key = (q: Question): string | string[] => (q.answer.kind === "choice" ? q.answer.id : q.answer.kind === "order" ? q.answer.ids : q.answer.kind === "text" ? q.answer.accepted[0] : "");
 
 describe("Claude English practice bank reaches the learner path", () => {
   it("Korean-language learners get every question of english-draft.json as PUBLISHED practice variants", async () => {
@@ -39,7 +39,7 @@ describe("Claude English practice bank reaches the learner path", () => {
     const { bundle } = await loadIndex("english");
     const seen = new Set<string>();
     for (const q of bundle.questions.filter((x) => x.id.startsWith("eb-"))) {
-      const k = `${q.prompt.toLowerCase().replace(/\s+/g, " ")}|${(q.options ?? []).map((o) => o.text.toLowerCase()).sort().join("|")}`;
+      const k = `${q.prompt.toLowerCase().replace(/\s+/g, " ")}|${(q.audioText ?? "").toLowerCase()}|${(q.options ?? []).map((o) => o.text.toLowerCase()).sort().join("|")}`;
       expect(seen.has(k), q.id).toBe(false);
       seen.add(k);
     }

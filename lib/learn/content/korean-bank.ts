@@ -35,10 +35,10 @@ export interface KBankData {
   status: "DRAFT" | "PUBLISHED";
   skills: Record<string, { notes: Record<string, string>; items: KItem[] }>;
 }
-export type KForm = "meaning" | "toko" | "listen" | "tf" | "read" | "fromrr" | "sit" | "cloze" | "choose" | "order" | "passage";
+export type KForm = "meaning" | "toko" | "listen" | "tf" | "read" | "fromrr" | "sit" | "cloze" | "choose" | "order" | "passage" | "dict";
 export interface KTemplate { prompt: string; hints: string[]; explanation: string; /** used instead of `hints` when the romanization would give the meaning away (loanwords: 라디오 = “radio”) */ hintsSafe?: string[] }
 export interface KKit { templates: Record<KForm, KTemplate>; texts: Record<string, string> }
-export const KFORMS: KForm[] = ["meaning", "toko", "listen", "tf", "read", "fromrr", "sit", "cloze", "choose", "order", "passage"];
+export const KFORMS: KForm[] = ["meaning", "toko", "listen", "tf", "read", "fromrr", "sit", "cloze", "choose", "order", "passage", "dict"];
 
 const OPT = ["a", "b", "c", "d"];
 const levelOf = (skillId: string) => Number(skillId.split(".")[1].slice(1));
@@ -60,7 +60,7 @@ export function formsOf(item: KItem, skillId: string): KForm[] {
     case "word":
     case "phrase": return ["meaning", "toko", "listen", "tf", ...(lv <= 3 ? (["read"] as KForm[]) : [])];
     case "expr": return ["meaning", "toko", ...(item.s ? (["sit"] as KForm[]) : []), "listen", "tf"];
-    case "sentence": return ["meaning", "toko", "listen", "tf", ...(item.cz ? (["cloze"] as KForm[]) : []), ...(item.ch ? (["choose"] as KForm[]) : []), ...(item.od ? (["order"] as KForm[]) : [])];
+    case "sentence": return ["meaning", "toko", "listen", "tf", ...(item.cz ? (["cloze"] as KForm[]) : []), ...(item.ch ? (["choose"] as KForm[]) : []), ...(item.od ? (["order"] as KForm[]) : []), ...(item.od && item.ko.length >= 5 && item.ko.length <= 40 ? (["dict"] as KForm[]) : [])];
     case "passage": return ["passage"];
   }
 }
@@ -112,8 +112,21 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
   const others = (n: number, ok: (it: KItem) => boolean = () => true, key = (it: KItem) => it.id) => {
     const same = pick(pool, n, qid, key, (it) => sameKind(it) && ok(it));
     if (same.length === n) return same;
-    const rest = pick(pool, n - same.length, qid + "+", key, (it) => it.id !== item.id && !same.includes(it) && ok(it));
+    const rest = pick(pool, n - same.length, qid + "+", key, (it) => it.id !== item.id && !same.includes(it) && ok(it) && (item.c === "passage" || it.c !== "passage")); // a long passage gloss as a distractor is trivially eliminated
     return [...same, ...rest];
+  };
+  /**
+   * Distractors are drawn from other items of the skill, so a long sentence could be set against short words and stand out by length alone.
+   * When the first draw makes the key clearly the longest (or shortest) option, draw again among items of a similar length (when enough exist).
+   */
+  const lengthFair = (n: number, ok: (it: KItem) => boolean, keyOf: (it: KItem) => string, lenOf: (it: KItem) => number): KItem[] => {
+    const first = others(n, ok, keyOf);
+    const kl = lenOf(item);
+    const ls = first.map(lenOf);
+    const cue = kl >= 14 && ls.length > 0 && (kl >= 1.6 * Math.max(...ls) || kl * 1.6 <= Math.min(...ls));
+    if (!cue) return first;
+    const near = others(n, (it) => ok(it) && lenOf(it) >= 0.6 * kl && lenOf(it) <= 1.7 * kl, keyOf);
+    return near.length === n ? near : first;
   };
   const base = Math.min(5, 1 + Math.floor((lv - 1) / 2));
   let type: Question["type"] = "multiple_choice";
@@ -131,16 +144,16 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
   };
   switch (form) {
     case "meaning": {
-      const w = others(3, (it) => it.g !== item.g && gl(it) !== gl(item), (it) => gl(it));
+      const w = lengthFair(3, (it) => it.g !== item.g && gl(it) !== gl(item), (it) => gl(it), (it) => gl(it).length);
       choice([gl(item), ...w.map(gl)]);
       target = { text: item.ko, romanization: item.rr, romanizationVi: item.vi }; audioText = item.ko; break;
     }
     case "toko": {
-      const w = others(3, (it) => it.ko !== item.ko);
+      const w = lengthFair(3, (it) => it.ko !== item.ko, (it) => it.id, (it) => it.ko.length);
       choice([item.ko, ...w.map((x) => x.ko)]); vars.gloss = gl(item); break;
     }
     case "listen": {
-      const w = item.c === "syl" ? pick(pool, 3, qid, (it) => it.ko, (it) => it.ko !== item.ko && sylNear(it.ko, item.ko)) : others(3, (it) => it.ko !== item.ko);
+      const w = item.c === "syl" ? pick(pool, 3, qid, (it) => it.ko, (it) => it.ko !== item.ko && sylNear(it.ko, item.ko)) : lengthFair(3, (it) => it.ko !== item.ko, (it) => it.id, (it) => it.ko.length);
       const fillw = w.length === 3 ? w : [...w, ...pick(pool, 3 - w.length, qid + "+", (it) => it.ko, (it) => it.ko !== item.ko && !w.includes(it))];
       choice([item.ko, ...fillw.map((x) => x.ko)]); audioText = item.ko; difficulty = Math.max(1, base - (item.c === "syl" ? 0 : 0)); break;
     }
@@ -166,7 +179,7 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
     }
     case "sit": {
       const w0 = others(3, (it) => !!it.s && it.ko !== item.ko, (it) => it.ko);
-      const w = w0.length === 3 ? w0 : [...w0, ...pick(pool, 3 - w0.length, qid + "+s", (it) => it.ko, (it) => it.ko !== item.ko && !w0.includes(it))];
+      const w = w0.length === 3 ? w0 : [...w0, ...pick(pool, 3 - w0.length, qid + "+s", (it) => it.ko, (it) => it.ko !== item.ko && !w0.includes(it) && it.c !== "passage")];
       choice([item.ko, ...w.map((x) => x.ko)]); vars.gloss = kit.texts[`s:${item.id}`] ?? item.s ?? ""; difficulty = Math.min(5, base + 1); break;
     }
     case "cloze": {
@@ -183,8 +196,13 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
       options = shown.map((wid) => ({ id: wid, text: item.od![Number(wid.slice(1)) - 1] }));
       answer = { kind: "order", ids }; audioText = item.ko; vars.first = item.od![0]; difficulty = Math.min(5, base + 1); break;
     }
+    case "dict": {
+      // dictation: hear the sentence, type it. Korean spacing and spelling are NOT forgiven (normalizeDictation "ko" only forgives punctuation / stray spaces at the ends)
+      type = "short_answer";
+      answer = { kind: "text", accepted: [item.ko], dictation: "ko" }; audioText = item.ko; vars.n = item.ko.replace(/\s+/g, "").length; vars.first = item.od![0]; difficulty = Math.min(5, base + 2); break;
+    }
     case "passage": {
-      choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/^[A-Z가-힣]:\s*/gm, "").replace(/\n/g, " "); vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
+      choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/(^|\s)[A-Z가-힣]:\s*/g, "$1").replace(/\n/g, " ").replace(/\s+/g, " ").trim(); // every "A:" / "B:" label, also on one line vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
     }
   }
   prompt = fill(tpl.prompt, vars);
@@ -206,7 +224,7 @@ export function expandKoreanBank(data: KBankData, kit: KKit, skills: ReadonlySet
   const out: Question[] = [];
   for (const [skillId, sk] of Object.entries(data.skills)) {
     if (skills && !skills.has(skillId)) continue;
-    for (const item of sk.items) for (const form of formsOf(item, skillId)) out.push(expandItem(skillId, item, sk.items, sk.notes, kit, form, { draft: data.status === "DRAFT", ...opts }));
+    for (const item of sk.items) for (const form of formsOf(item, skillId)) if (form !== "dict" || kit.templates.dict) out.push(expandItem(skillId, item, sk.items, sk.notes, kit, form, { draft: data.status === "DRAFT", ...opts }));
   }
   return out;
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore, type ComponentType } from "react";
 import { getAudioProvider } from "@/lib/learn/providers/audio";
+import { TtsSettingsPanel } from "./TtsSettings";
 import type { PublicQuestion, QuestionType, Site } from "@/lib/learn/types";
 import { siteConfig } from "@/lib/learn/sites";
 import { useSite } from "./LearnerProvider";
@@ -208,8 +209,14 @@ export function ListenButton({ text }: { text: string }) {
   const voice = useSyncExternalStore(subscribeVoices, () => (target ? provider.hasVoice(target.speech) : false), () => true);
   if (!target || !provider.isAvailable()) return null;
   const lang = t(`lang.${target.code}`);
-  if (!voice) return <p className="l-target-note" role="note" data-testid="no-voice">{t("listen.noVoice", { lang })}</p>;
+  if (!voice) return (
+    <>
+      <p className="l-target-note" role="note" data-testid="no-voice">{t("listen.noVoice", { lang })}</p>
+      <TtsSettingsPanel t={t} code={target.code === "ko" ? "ko" : "en"} speech={target.speech} />
+    </>
+  );
   return (
+    <>
     <button
       type="button"
       className="l-chip"
@@ -224,6 +231,8 @@ export function ListenButton({ text }: { text: string }) {
     >
       🔊 {site === "english" ? t("lesson.listen") : t("target.listen", { lang })}
     </button>
+    <TtsSettingsPanel t={t} code={target.code === "ko" ? "ko" : "en"} speech={target.speech} />
+    </>
   );
 }
 function subscribeVoices(notify: () => void) {

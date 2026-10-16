@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReviewMode } from "@/lib/learn/reviewModes";
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
 import { buildPath } from "@/lib/learn/domain/path";
@@ -38,7 +39,7 @@ interface Totals {
   quest: boolean;
 }
 
-export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId?: string; skillId?: string }) {
+export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; lessonId?: string; skillId?: string; mode?: ReviewMode }) {
   const { api, index, t, href, state, site, access } = useLearner();
   const lesson = lessonId ? index.lessons.get(lessonId) : undefined;
 
@@ -68,7 +69,7 @@ export function LessonRunner({ kind, lessonId, skillId }: { kind: Kind; lessonId
     setPhase("loading");
     setError(null);
     try {
-      const res = await api<StartResponse>("start", { kind, lessonId, skillId });
+      const res = await api<StartResponse>("start", { kind, lessonId, skillId, mode });
       setSession(res);
       setQueue(res.questions);
       setCoreIds(res.questions.map((x) => x.id));
