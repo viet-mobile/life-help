@@ -34,7 +34,7 @@ describe("learn_load_content returns the fields added by migration 043", () => {
     for (const q of bundled.questions.filter((x) => !x.figure)) expect("figure" in (byId.get(q.id) ?? {}), q.id).toBe(false);
   });
 
-  it("elective: elective courses carry elective:true, regular courses carry no key, and english has none", async () => {
+  it("elective: elective courses carry elective:true, regular courses carry no key, and english has only its H3 electives course", async () => {
     const { demoContentRepository } = await import("@/lib/learn/content/repository");
     const bundled = await demoContentRepository.getBundle("math");
     const electives = bundled.catalog.courses.filter((c) => c.elective).map((c) => c.id).sort();
@@ -42,7 +42,9 @@ describe("learn_load_content returns the fields added by migration 043", () => {
     const raw = await load("math");
     expect(raw.catalog.courses.filter((c) => c.elective === true).map((c) => c.id).sort()).toEqual(electives);
     expect(raw.catalog.courses.filter((c) => !electives.includes(c.id)).every((c) => !("elective" in c))).toBe(true);
-    expect((await load("english")).catalog.courses.some((c) => "elective" in c)).toBe(false);
+    const en = await load("english");
+    expect(en.catalog.courses.filter((c) => "elective" in c).map((c) => c.id)).toEqual(["en-h3e-electives"]);
+    expect(en.catalog.courses.filter((c) => c.elective === true).length).toBe(1);
   });
 
   it("an archived figure question is hidden, and the function is service-role only", async () => {

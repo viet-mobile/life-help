@@ -228,6 +228,15 @@ const byGroup = cnt(questions, (q) => skillInfo[q.skillId].group);
 const itemsByGroup = cnt(valid, (x) => skillInfo[x.skill].group);
 const bySkill = cnt(questions, (q) => q.skillId);
 const byForm = cnt(questions, (q) => q.tags[2]);
+// ---- hint suppression: hints that a full independent audit flagged (leak / wrong pointer / Korean error) and that have no authored replacement.
+// They are replaced by a neutral hint that says nothing about the answer; this is a removal of a defect, not an improvement of the hint.
+{
+  const sup = JSON.parse(fs.readFileSync(path.join(here, "hints", "suppress.json"), "utf8"));
+  const NEUTRAL = ["문제가 무엇을 묻는지 한 문장으로 말해 본 뒤, 보기를 하나씩 읽어 보세요.", "보기를 문제에 하나씩 넣어 읽어 보고, 어색한 것부터 지워 보세요."];
+  let n = 0;
+  for (const q of questions) { const idx = sup[q.id]; if (!idx) continue; q.hints = q.hints.map((h, i) => (idx.includes(i) ? NEUTRAL[i] ?? NEUTRAL[1] : h)); n++; }
+  console.log("suppressed (neutral) hints:", n);
+}
 // ---- publication gate (scripts/learn/english-bank/ledger.json): only reviewed / carried-over items reach the file the runtime imports
 const ledger = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8"));
 const itemOfQuestion = (q) => q.id.split("-")[1];

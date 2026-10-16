@@ -108,7 +108,7 @@ export function createBuilder(site, { country = "KR", curriculum } = {}) {
       overlay.lessons[l.id] = { title: l.title.vi, concept: l.concept.vi, example: l.example.vi };
       return { id: l.id, title: l.title.ko, skillIds: l.skills, concept: l.concept.ko, example: l.example.ko, questionIds: l.core, challengeId: l.challenge };
     });
-    courses.push({ id: c.id, title: c.title.ko, grade: c.grade, world: { name: c.world.name.ko, emoji: c.world.emoji, tagline: c.world.tagline.ko }, units: [{ id: c.unit.id, title: c.unit.title.ko, lessons }] });
+    courses.push({ id: c.id, title: c.title.ko, grade: c.grade, ...(c.elective ? { elective: true } : {}), world: { name: c.world.name.ko, emoji: c.world.emoji, tagline: c.world.tagline.ko }, units: [{ id: c.unit.id, title: c.unit.title.ko, lessons }] });
   }
 
   /**

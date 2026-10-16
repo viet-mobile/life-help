@@ -15,7 +15,7 @@ const ORDER = ["conv", "job", "media", "world", "lit", "debate", "write"];
 
 export function enH3Elective(b) {
   const S = Object.fromEntries(ORDER.map((k) => [k, `e.h.${k}`]));
-  for (const k of ORDER) b.skill(S[k], T(DATA[S[k]].title.ko, DATA[S[k]].title.vi), "e.h2.logic");
+  for (const k of ORDER) b.skill(S[k], T(DATA[S[k]].title.ko, DATA[S[k]].title.vi));
   const E = makeEnglish(b, "h3e", S);
   const lessons = ORDER.map((k, i) => {
     const d = DATA[S[k]];
@@ -30,7 +30,7 @@ export function enH3Elective(b) {
     return { id: `en-h3e-l${i + 1}`, title: T(d.lesson.title.ko, d.lesson.title.vi), concept: T(d.lesson.concept.ko, d.lesson.concept.vi), example: T(d.lesson.example.ko, d.lesson.example.vi), skills: [S[k]], core: built.slice(0, 4), challenge: built[4] };
   });
   b.course({
-    id: "en-h3e-electives", grade: "H3",
+    id: "en-h3e-electives", grade: "H3", elective: true,
     title: T("고3 영어 선택: 회화·직무·미디어·문화·문학·토론·작문", "Tiếng Anh lớp 12 tự chọn: hội thoại, công việc, truyền thông, văn hóa, văn học, tranh luận, viết"),
     world: { name: T("선택과목 광장 (Elective Plaza)", "Quảng trường tự chọn (Elective Plaza)"), emoji: "🎭", tagline: T("실생활·직무·미디어·문화·문학 영어를 골라 익혀요.", "Chọn và luyện tiếng Anh đời sống, công việc, truyền thông, văn hóa và văn học.") },
     unit: { id: "en-h3e-unit", title: T("고등 선택과목 영어", "Tiếng Anh tự chọn cấp 3") },
