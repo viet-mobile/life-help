@@ -56,4 +56,20 @@ describe("review modes", () => {
     const ok = await call("start", { site: "english", locale: "ko", state: state("E3"), kind: "practice", skillId: "e.e3.snd1", mode: "nonsense" });
     expect(ok.status).toBe(200);
   });
+  it("flashcards: fronts only from the server, the back through reveal, nothing graded or rewarded", async () => {
+    const st = state("E3");
+    const res = await call("cards", { site: "english", locale: "ko", state: st, count: 8 });
+    expect(res.status).toBe(200);
+    const text = await res.text();
+    const { cards } = JSON.parse(text) as { cards: { id: string; front: string }[] };
+    expect(cards.length).toBeGreaterThan(0);
+    expect(new Set(cards.map((c) => c.front)).size).toBe(cards.length);
+    for (const c of cards) expect(Object.keys(c).sort()).toEqual(expect.arrayContaining(["front", "id"]));
+    expect(text).not.toMatch(/"(answer|explanation|hints|options)"/);
+    const back = await call("reveal", { site: "english", locale: "ko", state: st, questionId: cards[0].id });
+    expect(back.status).toBe(200);
+    expect(typeof (await back.json()).back).toBe("string");
+    const bad = await call("reveal", { site: "english", locale: "ko", state: st, questionId: "eb-nope-x" });
+    expect(bad.status).toBe(404);
+  });
 });

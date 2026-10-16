@@ -24,3 +24,18 @@ export function questionMode(q: Pick<Question, "type" | "audioText" | "answer" |
 
 /** Modes that cannot be done without sound; the UI offers a no-audio alternative instead of a silent session. */
 export const NEEDS_AUDIO: readonly ReviewMode[] = ["listening", "dictation"];
+
+/**
+ * Flashcards (front = target-language word, back = its meaning in the learner's language). They are built only from questions whose
+ * form is a plain word -> meaning lookup (Korean "meaning", English "enko"), so the card never mixes the two languages on one side.
+ * Cards carry no XP, mastery or SRS effect on the server: the learner's own rating stays on the device.
+ */
+export function cardFront(q: Pick<Question, "prompt" | "target" | "tags">): string | null {
+  const form = q.tags?.[2];
+  if (form === "meaning" && q.target?.text) return q.target.text;
+  if (form === "enko") return q.prompt.match(/“([^”]+)”/)?.[1] ?? null;
+  return null;
+}
+export function cardBack(q: Pick<Question, "options" | "answer">): string | null {
+  return q.answer.kind === "choice" ? (q.options?.find((o) => o.id === (q.answer as { id: string }).id)?.text ?? null) : null;
+}

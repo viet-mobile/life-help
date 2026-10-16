@@ -23,6 +23,11 @@ export function ModesPage() {
             <Link className="l-btn" href={href(`/practice?kind=practice&mode=${m}`)}>{t("modes.start")}</Link>
           </li>
         ))}
+        <li className="l-card l-stack">
+          <h2 className="l-h2">{t("modes.cards")}</h2>
+          <p>{t("modes.cards.desc")}</p>
+          <Link className="l-btn" href={href("/cards")}>{t("modes.start")}</Link>
+        </li>
       </ul>
       <p className="l-muted">{t("modes.noSound")}</p>
     </main>

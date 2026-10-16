@@ -53,6 +53,10 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
           }),
         );
       }
+      case "cards":
+        return jsonResponse(await svc.startCards(actor, site, { skillId: typeof body.skillId === "string" ? body.skillId : undefined, count: typeof body.count === "number" ? body.count : undefined }));
+      case "reveal":
+        return jsonResponse(await svc.revealCard(actor, site, { questionId: String(body.questionId ?? "") }));
       case "hint":
         return jsonResponse(
           await svc.requestHint(actor, site, {
