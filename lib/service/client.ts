@@ -8,20 +8,27 @@ export class ApiError extends Error {
   }
 }
 
+/** Reads (GET) are cut off after this long. A request that never answers must fail, so the caller (the polling loop) can recover. */
+export const READ_TIMEOUT_MS = 15_000;
+
 async function call<T>(method: string, path: string, body?: unknown): Promise<T> {
   let res: Response;
+  // only reads are timed out here: a write that is cut off client-side may still have been stored, and is retried by its own idempotency key
+  const signal = method === "GET" ? AbortSignal.timeout(READ_TIMEOUT_MS) : undefined;
   try {
     res = await fetch(`/api/svc${path}`, {
+      ...(signal ? { signal } : {}),
       method,
       credentials: "same-origin",
       cache: "no-store",
       headers: { ...(body !== undefined ? { "content-type": "application/json" } : {}) },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
-  } catch {
-    throw new ApiError("NETWORK", 0);
+  } catch (e) {
+    throw new ApiError((e as { name?: string })?.name === "TimeoutError" ? "TIMEOUT" : "NETWORK", 0);
   }
-  const data = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+  // the body read is part of the request: a response whose body stalls must not hang the caller either
+  const data = (await res.json().catch(() => { if (signal?.aborted) throw new ApiError("TIMEOUT", 0); return {}; })) as Record<string, unknown>;
   if (!res.ok) throw new ApiError(String(data.error ?? "INTERNAL"), res.status);
   return data as T;
 }

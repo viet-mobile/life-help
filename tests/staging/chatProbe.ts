@@ -7,12 +7,28 @@ import type { Page } from "@playwright/test";
  */
 export interface SendObs { status: number; code?: string; at: number }
 export interface PollObs { status: number; at: number; count: number; hasMarker: boolean; translationStatus?: string; validMessage?: boolean }
-export interface ChatObs { sends: SendObs[]; polls: PollObs[]; stop: () => void }
+/** Request lifecycle of the chat calls (safe facts only): a completed-response log cannot tell "no request was made" from "a request is still waiting". */
+export interface LifeObs { started: number; finished: number; failed: number; failureCodes: string[]; pending: number; longestWaitMs: number; startedAt: number[] }
+export interface ChatObs { sends: SendObs[]; polls: PollObs[]; life: LifeObs; stop: () => void }
 
 const MESSAGES_URL = /\/api\/svc\/(?:c|h)\/requests\/[0-9a-f-]{36}\/messages/;
 
 export function watchChat(page: Page, marker: string): ChatObs {
-  const obs: ChatObs = { sends: [], polls: [], stop: () => page.off("response", listener) };
+  const live = new Map<import("@playwright/test").Request, number>();
+  const life: LifeObs = { started: 0, finished: 0, failed: 0, failureCodes: [], pending: 0, longestWaitMs: 0, startedAt: [] };
+  const isChat = (r: import("@playwright/test").Request) => MESSAGES_URL.test(r.url()) && r.method() === "GET";
+  const onRequest = (r: import("@playwright/test").Request) => { if (isChat(r)) { live.set(r, Date.now()); life.started++; life.startedAt.push(Date.now()); } };
+  const done = (r: import("@playwright/test").Request, ok: boolean, code?: string) => {
+    const t0 = live.get(r); if (t0 === undefined) return;
+    live.delete(r); life.longestWaitMs = Math.max(life.longestWaitMs, Date.now() - t0);
+    if (ok) life.finished++; else { life.failed++; if (code && /^[A-Za-z_:. ]{1,60}$/.test(code)) life.failureCodes.push(code.replace(/\s+/g, "_")); }
+  };
+  const onFinished = (r: import("@playwright/test").Request) => done(r, true);
+  const onFailed = (r: import("@playwright/test").Request) => done(r, false, r.failure()?.errorText);
+  page.on("request", onRequest); page.on("requestfinished", onFinished); page.on("requestfailed", onFailed);
+  const obs: ChatObs = { sends: [], polls: [], life, stop: () => { page.off("response", listener); page.off("request", onRequest); page.off("requestfinished", onFinished); page.off("requestfailed", onFailed); } };
+  Object.defineProperty(life, "pending", { get: () => live.size, enumerable: true });
+  Object.defineProperty(life, "longestPendingMs", { get: () => { const now = Date.now(); let m = 0; for (const t0 of live.values()) m = Math.max(m, now - t0); return m; }, enumerable: true });
   const listener = async (res: import("@playwright/test").Response) => {
     if (!MESSAGES_URL.test(res.url())) return;
     const method = res.request().method();

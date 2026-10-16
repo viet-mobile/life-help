@@ -215,7 +215,95 @@ describe("usePoll (client polling loop)", () => {
     const src = readFileSync("lib/service/usePoll.ts", "utf8");
     expect(src).toContain("}, [ms, enabled]);");
     expect(src).toContain("latest.current.tick()");
-    expect(src).toMatch(/finally \{\s*running = false;\s*if \(!stopped\) timer = setTimeout\(run, ms\);/); // an error never ends the loop
+    expect(src).toMatch(/const settle = [\s\S]*running = false;[\s\S]*schedule\(\);/); // an error never ends the loop: every outcome schedules the next run
+    expect(src).toContain("POLL_TICK_TIMEOUT_MS"); // ... and neither does a tick that never settles
     expect(src).not.toMatch(/AbortController/); // no abort controller to be reused or cancelled across navigation
+  });
+
+  // Regression for the final staging approval (STG-mvb00osw-d579cb): the receiver's chat was mounted and visible but never showed the other
+  // side's message until a reload. A request that neither completes nor fails left `running` true for good, so no timer, no later tick and no
+  // return to the tab could start a new poll.
+  it("a tick that never settles is abandoned after the watchdog and polling carries on (it used to stop for good)", async () => {
+    const { POLL_TICK_TIMEOUT_MS } = await import("@/lib/service/usePoll");
+    let runs = 0; const errors: Array<{ code?: string }> = []; const delivered: string[] = [];
+    const stop = await start(async () => {
+      runs++;
+      if (runs === 1) return new Promise<void>(() => { /* a stalled request: never resolves, never rejects */ });
+      delivered.push(`poll-${runs}`);
+    }, (e) => errors.push(e as { code?: string }));
+    await vi.advanceTimersByTimeAsync(POLL_TICK_TIMEOUT_MS - 1);
+    expect(runs).toBe(1);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(errors.map((e) => e.code)).toEqual(["poll_timeout"]);
+    await vi.advanceTimersByTimeAsync(2000);
+    expect(runs).toBe(2);
+    expect(delivered).toEqual(["poll-2"]);
+    await vi.advanceTimersByTimeAsync(4000);
+    expect(runs).toBeGreaterThanOrEqual(4); // and keeps going at the configured cadence
+    stop();
+  });
+  it("coming back to the tab abandons a tick that has been waiting for a long time and polls right away", async () => {
+    const { POLL_STALE_ON_VISIBLE_MS } = await import("@/lib/service/usePoll");
+    let runs = 0;
+    const stop = await start(async () => { runs++; if (runs === 1) return new Promise<void>(() => undefined); });
+    await vi.advanceTimersByTimeAsync(POLL_STALE_ON_VISIBLE_MS + 1);
+    expect(runs).toBe(1);
+    doc.listeners.get("visibilitychange")!();
+    await vi.advanceTimersByTimeAsync(0);
+    expect(runs).toBe(2);
+    stop();
+  });
+  it("a healthy tick that is merely slow is not abandoned, never overlaps, and a stale tick's late result changes nothing", async () => {
+    let inFlight = 0, maxInFlight = 0; const errors: unknown[] = [];
+    let release: (() => void) | undefined;
+    const stop = await start(async () => { inFlight++; maxInFlight = Math.max(maxInFlight, inFlight); try { await new Promise<void>((r) => { release = r; }); } finally { inFlight--; } }, (e) => errors.push(e));
+    await vi.advanceTimersByTimeAsync(10_000);
+    expect(errors).toHaveLength(0);
+    expect(maxInFlight).toBe(1);
+    release?.(); // answers late but within the watchdog
+    await vi.advanceTimersByTimeAsync(0);
+    expect(errors).toHaveLength(0);
+    stop();
+  });
+  it("a tick that throws synchronously also schedules the next one", async () => {
+    let runs = 0;
+    const stop = await start((() => { runs++; throw new Error("sync"); }) as unknown as () => Promise<void>, () => undefined);
+    await vi.advanceTimersByTimeAsync(4000);
+    expect(runs).toBeGreaterThanOrEqual(2);
+    stop();
+  });
+});
+
+describe("client reads are time-limited (a request that never answers fails instead of hanging)", () => {
+  it("a GET that gets no answer rejects with TIMEOUT after READ_TIMEOUT_MS; a POST is not timed out client-side", async () => {
+    vi.resetModules(); vi.useFakeTimers();
+    const seen: Array<{ method: string; hasSignal: boolean }> = [];
+    (globalThis as any).fetch = (_u: string, init: RequestInit) => new Promise((_res, rej) => {
+      seen.push({ method: String(init.method), hasSignal: !!init.signal });
+      init.signal?.addEventListener("abort", () => rej(Object.assign(new Error("t"), { name: "TimeoutError" })));
+    });
+    const { chatApi, READ_TIMEOUT_MS } = await import("@/lib/service/client");
+    const p = chatApi.list("CUSTOMER", "r", 0, "ko").then(() => "ok", (e) => `${e.code}:${e.status}`);
+    await vi.advanceTimersByTimeAsync(READ_TIMEOUT_MS + 1);
+    expect(await p).toBe("TIMEOUT:0");
+    void chatApi.send("CUSTOMER", "r", "x", "ko", "id").catch(() => undefined);
+    expect(seen).toEqual([{ method: "GET", hasSignal: true }, { method: "POST", hasSignal: false }]);
+    vi.useRealTimers();
+  });
+});
+
+describe("chat list with several untranslated messages answers in one provider timeout, not one per message", () => {
+  it("translations run concurrently and keep the message order; a failed one is marked FAILED while the others are shown", async () => {
+    const { ServiceCore } = await import("@/lib/service/core");
+    const order: number[] = [];
+    const translator = { translate: async (text: string) => { order.push(Date.now()); await new Promise((r) => setTimeout(r, 50)); return text.includes("bad") ? { ok: false as const, reason: "x" } : { ok: true as const, text: `T:${text}`, provider: "t" }; } };
+    const rows = ["a", "bad", "c"].map((b, i) => ({ id: `m${i}`, seq: i + 1, requestId: "r", senderKind: "HELPER", body: b, sourceLocale: "en", createdAt: "x", translation: null }));
+    const db = { rpc: async (name: string) => (name === "svc_msg_list" ? rows : null) } as any;
+    const core = new (ServiceCore as any)(db, translator, () => Date.now()) as any;
+    const t0 = Date.now();
+    const views = await core.withTranslations(rows, "CUSTOMER", "ko");
+    expect(Date.now() - t0).toBeLessThan(140); // 3 x 50 ms would be sequential
+    expect(views.map((v: any) => [v.seq, v.translationStatus])).toEqual([[1, "OK"], [2, "FAILED"], [3, "OK"]]);
+    expect(views[0].translation.text).toBe("T:a");
   });
 });

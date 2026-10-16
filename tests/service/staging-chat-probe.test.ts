@@ -37,10 +37,10 @@ describe("chat propagation: the failing segment is named", () => {
   });
 });
 
-/** a minimal Playwright page: it only needs on("response") */
+/** a minimal Playwright page: on("response") feeds the poll log; the request lifecycle events are accepted and ignored here */
 function fakePage() {
   const handlers: Array<(r: unknown) => Promise<void>> = [];
-  const page = { on: (_: string, h: (r: unknown) => Promise<void>) => handlers.push(h) };
+  const page = { on: (ev: string, h: (r: unknown) => Promise<void>) => { if (ev === "response") handlers.push(h); }, off: () => undefined };
   const emit = (r: { url: string; method: string; status: number; body?: unknown; badJson?: boolean }) =>
     Promise.all(handlers.map((h) => h({ url: () => r.url, status: () => r.status, request: () => ({ method: () => r.method }), json: async () => { if (r.badJson) throw new Error("no json"); return r.body; } })));
   return { page: page as never, emit };
@@ -88,5 +88,26 @@ describe("the staging journey spec", () => {
   it("the product polling cadence is unchanged (2 s chat, 3 s status)", () => {
     expect(readFileSync("components/service/ServiceChat.tsx", "utf8")).toContain("pollMs = 2000");
     expect(readFileSync("components/service/CustomerRequest.tsx", "utf8")).toMatch(/}, 3000, true/);
+  });
+});
+
+describe("watchChat request lifecycle (a completed-response log cannot tell 'no request' from 'still waiting')", () => {
+  const ID = "0f6c2d8e-3b1a-4c5d-9e7f-1a2b3c4d5e6f";
+  it("counts started / finished / failed / pending chat reads and the longest wait, without URLs or bodies", () => {
+    const h: Record<string, (r: unknown) => void> = {};
+    const page = { on: (ev: string, fn: (r: unknown) => void) => { h[ev] = fn; }, off: () => undefined };
+    const obs = watchChat(page as never, "M");
+    const req = (n: number, method = "GET") => ({ url: () => `https://h/api/svc/c/requests/${ID}/messages?after=${n}`, method: () => method, failure: () => ({ errorText: "net::ERR_TIMED_OUT" }) });
+    const a = req(0), b = req(1), c = req(2), post = req(3, "POST");
+    for (const r of [a, b, c, post]) h.request(r);
+    h.requestfinished(a);
+    h.requestfailed(b);
+    const life = obs.life as unknown as { started: number; finished: number; failed: number; pending: number; failureCodes: string[] };
+    expect(life.started).toBe(3); // the POST is not a poll
+    expect(life.finished).toBe(1);
+    expect(life.failed).toBe(1);
+    expect(life.pending).toBe(1);
+    expect(life.failureCodes).toEqual(["net::ERR_TIMED_OUT"]);
+    expect(JSON.stringify(obs.life)).not.toContain(ID);
   });
 });
