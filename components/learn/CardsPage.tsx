@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { useLearner } from "./LearnerProvider";
+import { ApiError, useLearner } from "./LearnerProvider";
 import { ListenButton } from "./renderers";
 
 type Card = { id: string; front: string; audioText?: string };
@@ -29,7 +29,7 @@ export function CardsPage() {
       if (!live) return;
       const boxes = readBoxes(site);
       setQueue([...r.cards].sort((a, b) => (boxes[a.id] ?? 0) - (boxes[b.id] ?? 0)));
-    }).catch(() => live && setError(true));
+    }).catch((e) => { if (!live) return; if (e instanceof ApiError && e.code === "no_questions") setQueue([]); else setError(true); });
     return () => { live = false; };
   }, [api, site]);
 
@@ -60,12 +60,18 @@ export function CardsPage() {
   }, [back, reveal, rate]);
 
   return (
-    <main className="l-stack">
+    <div className="l-stack">
       <h1 className="l-h1">{t("modes.cards")}</h1>
       <p className="l-muted">{t("cards.local")}</p>
       {error && <p role="alert">{t("lesson.error")}</p>}
       {queue === null && !error && <p>…</p>}
-      {queue && queue.length === 0 && (
+      {queue && queue.length === 0 && known + again === 0 && (
+        <section className="l-card l-stack">
+          <p>{t("lesson.empty")}</p>
+          <Link className="l-btn" href={href("/learn")}>{t("nav.learn")}</Link>
+        </section>
+      )}
+      {queue && queue.length === 0 && known + again > 0 && (
         <section className="l-card l-stack">
           <p>{t("cards.done", { known, again })}</p>
           <Link className="l-btn" href={href("/modes")}>{t("modes.title")}</Link>
@@ -89,6 +95,6 @@ export function CardsPage() {
           )}
         </section>
       )}
-    </main>
+    </div>
   );
 }

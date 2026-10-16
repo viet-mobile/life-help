@@ -18,7 +18,7 @@ export interface AudioProvider {
 export class BrowserSpeechAudioProvider implements AudioProvider {
   readonly id = "browser-speech";
   isAvailable() {
-    return typeof window !== "undefined" && "speechSynthesis" in window;
+    return typeof window !== "undefined" && !!window.speechSynthesis;
   }
   hasVoice(lang: string) {
     if (!this.isAvailable()) return false;
