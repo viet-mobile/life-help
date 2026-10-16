@@ -31,3 +31,17 @@ describe("dictation rules: what is forgiven and what is not", () => {
     expect(validateResponse(k, "hello")).toBeNull();
   });
 });
+
+describe("English bank dictation: contraction / expansion spellings of the same words are both accepted, nothing else", () => {
+  it("accepted lists hold only the sentence and its contraction variants; a misspelling or another word is still wrong", async () => {
+    const bank = (await import("@/lib/learn/content/bank/english-draft.json")).default as unknown as { questions: { id: string; type: string; answer: { kind: string; accepted?: string[] } }[] };
+    const d = bank.questions.filter((q) => q.id.endsWith("-dict"));
+    const multi = d.filter((q) => (q.answer.accepted ?? []).length > 1);
+    expect(multi.length).toBeGreaterThan(20);
+    const { checkAnswer } = await import("@/lib/learn/domain/answers");
+    const q = multi.find((x) => /\bis not\b/i.test(x.answer.accepted![0])) ?? multi[0];
+    const acc = q.answer.accepted!;
+    for (const a of acc) expect(checkAnswer(q as never, a)).toBe(true);
+    expect(checkAnswer(q as never, acc[0].replace(/^(\w+)/, "$1x"))).toBe(false);
+  });
+});

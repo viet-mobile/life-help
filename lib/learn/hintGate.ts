@@ -16,8 +16,10 @@ export const NEUTRAL_HINT2 = "보기를 문제에 하나씩 넣어 읽어 보고
 export const NEUTRAL_FALLBACKS = ["문제를 한 번 더 천천히 읽어 보세요.", "💭"] as const;
 /** Questions without options (dictation, short answers) and orderings must not be told to look at options (found by the 2026-10-17 derived-form resample). */
 export const NEUTRAL_TYPED = { text: "들은 내용을 떠올리며 한 낱말씩 천천히 적어 보세요.", order: "낱말 조각을 하나씩 놓아 보며 자연스러운 문장이 되는지 소리 내어 읽어 보세요." } as const;
-export const NEUTRAL_SET: readonly string[] = [NEUTRAL_HINT2, NEUTRAL_TYPED.text, NEUTRAL_TYPED.order, ...NEUTRAL_FALLBACKS];
-const neutralFor = (q: Question): readonly string[] => (q.type === "ordering" ? [NEUTRAL_TYPED.order, ...NEUTRAL_FALLBACKS] : !q.options?.length ? [NEUTRAL_TYPED.text, ...NEUTRAL_FALLBACKS] : [NEUTRAL_HINT2, ...NEUTRAL_FALLBACKS]);
+/** Listening questions have options but no blank: the generic "put each option into the question" line does not fit (resample 2026-10-17). */
+export const NEUTRAL_LISTEN = "소리를 한 번 더 듣고, 들은 문장과 보기를 처음부터 끝까지 비교해 보세요.";
+export const NEUTRAL_SET: readonly string[] = [NEUTRAL_HINT2, NEUTRAL_TYPED.text, NEUTRAL_TYPED.order, NEUTRAL_LISTEN, ...NEUTRAL_FALLBACKS];
+const neutralFor = (q: Question): readonly string[] => (q.audioText && q.options?.length ? [NEUTRAL_LISTEN, ...NEUTRAL_FALLBACKS] : q.type === "ordering" ? [NEUTRAL_TYPED.order, ...NEUTRAL_FALLBACKS] : !q.options?.length ? [NEUTRAL_TYPED.text, ...NEUTRAL_FALLBACKS] : [NEUTRAL_HINT2, ...NEUTRAL_FALLBACKS]);
 const GATED_ID = /^(eb-|e-h3e-)/;
 const SAFE: ReadonlySet<string> = new Set((safeIds as { ids: string[] }).ids);
 

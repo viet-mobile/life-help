@@ -112,6 +112,14 @@ const seenKeys = new Map(); // normalised prompt+answer -> id
 const seenSets = new Set();
 const seenFrames = new Set();
 const byKind = {};
+// Dictation: a listener cannot hear whether "She is" or "She's" was meant; both spellings of the same words are accepted (never a different word or a misspelling).
+const CONTRACT = [["I am", "I'm"], ["you are", "you're"], ["we are", "we're"], ["they are", "they're"], ["she is", "she's"], ["he is", "he's"], ["it is", "it's"], ["that is", "that's"], ["there is", "there's"], ["what is", "what's"], ["is not", "isn't"], ["are not", "aren't"], ["was not", "wasn't"], ["were not", "weren't"], ["do not", "don't"], ["does not", "doesn't"], ["did not", "didn't"], ["will not", "won't"], ["cannot", "can't"], ["I will", "I'll"], ["you will", "you'll"], ["we will", "we'll"], ["they will", "they'll"], ["she will", "she'll"], ["he will", "he'll"], ["I would", "I'd"], ["toward", "towards"]];
+function dictVariants(good) {
+  const out = new Set([good]);
+  const swap = (s, a, b) => s.replace(new RegExp(`\\b${a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\w'])`, "gi"), (m) => (m[0] === m[0].toUpperCase() && a[0] !== a[0].toUpperCase() ? b[0].toUpperCase() + b.slice(1) : b));
+  for (const [a, b] of CONTRACT) for (const [x, y] of [[a, b], [b, a]]) { for (const cur of [...out]) { const v = swap(cur, x, y); if (v !== cur) out.add(v); } }
+  return [...out].slice(0, 12);
+}
 const PROMOTED = new Set(JSON.parse(fs.readFileSync(path.join(here, "electives-core.json"), "utf8")).questionIds); // now core questions of the electives course
 const push = (skill, packet, item, form, q) => {
   if (PROMOTED.has(q.id)) { dropped.promotedToCatalog = (dropped.promotedToCatalog ?? 0) + 1; return; }
@@ -172,9 +180,10 @@ for (const { skill, packet, item } of valid) {
     const COMMON_CAP = new Set(["I", "The", "A", "An", "This", "That", "These", "Those", "There", "Here", "It", "He", "She", "We", "They", "You", "My", "Your", "His", "Her", "Our", "Their", "Its", "What", "Where", "When", "Who", "Why", "How", "Which", "Whose", "Do", "Does", "Did", "Is", "Are", "Am", "Was", "Were", "Can", "Could", "Will", "Would", "Should", "May", "Might", "Must", "Have", "Has", "Had", "Please", "Let", "Let's", "Don't", "Doesn't", "Didn't", "Please", "Look", "Come", "Go", "Open", "Close", "Sit", "Stand", "Be", "Not", "No", "Yes", "Many", "Some", "Any", "Every", "Each", "All", "Both", "Few", "Most", "Last", "Next", "First", "On", "In", "At", "After", "Before", "During", "If", "When", "While", "Because", "But", "And", "Or", "So", "Then", "Now", "Today", "Tomorrow", "Yesterday", "Always", "Never", "Often", "Sometimes", "Usually", "Maybe", "Perhaps", "Once", "Twice", "Nobody", "Everyone", "Everybody", "Someone", "Something", "Nothing", "Everything", "One", "Two", "Three"]);
     // a name (or any capitalised word that is not an ordinary sentence opener) may be spelled in several ways by ear: no dictation (2026-10-17 resample: "Minho" -> Min-ho / Mino)
     const properMid = toks.slice(1).some((w) => /^[A-Z]/.test(w) && w !== "I") || (/^[A-Z]/.test(toks[0]) && !COMMON_CAP.has(toks[0].replace(/[^A-Za-z']/g, "")));
-    if (toks.length >= 3 && toks.length <= 12 && !spokenAmbiguous.test(item.good) && !properMid) {
+    const auxHave = /\b(have|has)\s+(?!a\b|an\b|the\b|to\b|some\b|any\b|no\b|my\b|your\b|his\b|her\b|our\b|their\b|many\b|much\b|one\b|two\b|three\b|four\b|five\b|six\b|ten\b|big\b|good\b|a\b)/i.test(item.good); // auxiliary have/has: "he has finished" may be typed "he's finished"
+    if (toks.length >= 3 && toks.length <= 12 && !spokenAmbiguous.test(item.good) && !properMid && !auxHave) {
       qid = `eb-${id}-dict`;
-      push(skill, packet, item, "dict", { id: qid, site: "english", type: "short_answer", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 60, status: "DRAFT", difficulty: clamp(d + 1), prompt: "들려주는 영어 문장을 듣고 그대로 쓰세요. (대소문자·문장부호·띄어쓰기 여분은 봐줘요. 철자는 정확해야 해요.)", audioText: item.good, answer: { kind: "text", accepted: [item.good], dictation: "en" }, hints: [`모두 ${toks.length}단어예요. 다시 들어 보세요(느리게 듣기도 가능).`, `첫 단어: “${toks[0]}”`], explanation: expl });
+      push(skill, packet, item, "dict", { id: qid, site: "english", type: "short_answer", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 60, status: "DRAFT", difficulty: clamp(d + 1), prompt: "들려주는 영어 문장을 듣고 그대로 쓰세요. (대소문자·문장부호·띄어쓰기 여분은 봐줘요. 철자는 정확해야 해요.)", audioText: item.good, answer: { kind: "text", accepted: dictVariants(item.good), dictation: "en" }, hints: [`모두 ${toks.length}단어예요. 다시 들어 보세요(느리게 듣기도 가능).`, `첫 단어: “${toks[0]}”`], explanation: expl });
     }
     if (toks.length >= 3 && toks.length <= 12 && !item.bad.some((b) => soundsSame(item.good, b))) {
       qid = `eb-${id}-listen`; r = shuffled(qid, [item.good, ...item.bad]);

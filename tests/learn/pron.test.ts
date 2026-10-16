@@ -3,7 +3,7 @@ import { pronTipFor } from "@/lib/learn/pron";
 
 describe("pronunciation rule tips", () => {
   it.each([
-    ["국물", "nasal"], ["밥물", "nasal"], ["신라", "lateral"], ["칼날", "lateral"], ["국밥", "tense"], ["옷이", "liaison"], ["깎아", "liaison"], ["부엌", "final"], ["안녕하세요", null], ["물", null],
+    ["국물", "nasal"], ["밥물", "nasal"], ["신라", "lateral"], ["칼날", "lateral"], ["국밥", "tense"], ["옷이", "liaison"], ["깎아", "liaison"], ["부엌", "final"], ["의견란", null], ["생산량", null], ["겉옷", null], ["맛있다", null], ["값이", null], ["안녕하세요", null], ["물", null],
   ])("%s -> %s", (t, rule) => expect(pronTipFor(t)?.rule ?? null).toBe(rule));
   it("no tip for empty text or long passages", () => {
     expect(pronTipFor("")).toBeNull();
@@ -14,5 +14,6 @@ describe("pronunciation rule tips", () => {
     const t = pronTipFor("국물")!;
     expect(t.art).toBe("18");
     expect(t.ex).toContain("궁물");
+    expect(pronTipFor("꽃")!.ex).toContain("옫");
   });
 });
