@@ -11,7 +11,7 @@ import { NEEDS_AUDIO, REVIEW_MODES, type ReviewMode } from "@/lib/learn/reviewMo
 export function ModesPage() {
   const { t, href } = useLearner();
   return (
-    <main className="l-stack">
+    <div className="l-stack">
       <h1 className="l-h1">{t("modes.title")}</h1>
       <p className="l-muted">{t("modes.intro")}</p>
       <ul className="l-stack" style={{ listStyle: "none", padding: 0 }}>
@@ -30,6 +30,6 @@ export function ModesPage() {
         </li>
       </ul>
       <p className="l-muted">{t("modes.noSound")}</p>
-    </main>
+    </div>
   );
 }

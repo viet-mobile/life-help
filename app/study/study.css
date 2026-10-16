@@ -89,7 +89,10 @@
 .l-topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; max-width: 1040px; margin: 0 auto; }
 .l-brand { display: inline-flex; align-items: center; font-weight: 900; letter-spacing: -0.02em; color: var(--l-accent-dark); text-decoration: none; font-size: 1.05rem; line-height: 0; }
 .l-logo { display: block; width: auto; height: 44px; border-radius: 10px; }
-.l-stats { display: flex; gap: 8px; align-items: center; }
+.l-stats { display: flex; gap: 8px; align-items: center; flex: 0 0 auto; }
+.l-topbar-inner > .l-locale { flex: 1 1 0; min-width: 0; }
+.l-topbar-inner > .l-locale .l-locale-select { min-width: 0; width: 100%; max-width: 100%; }
+@media (max-width: 420px) { .l-topbar-inner { gap: 6px; padding: 8px 10px; } .l-stats { gap: 4px; } .l-stat { padding: 4px 8px; font-size: 0.8rem; gap: 2px; } }
 .l-stat { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; padding: 6px 10px; border-radius: 999px; background: #fff; border: 2px solid var(--l-line); font-size: 0.9rem; }
 
 .l-tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: #fff; border-top: 2px solid var(--l-line); display: flex; padding-bottom: env(safe-area-inset-bottom); }

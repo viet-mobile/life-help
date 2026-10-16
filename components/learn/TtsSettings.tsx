@@ -13,7 +13,7 @@ function useVoices(lang: string): { voices: Voice[]; ready: boolean } {
   const [voices, setVoices] = useState<Voice[]>([]);
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) { setReady(true); return; }
+    if (typeof window === "undefined" || !window.speechSynthesis) { setReady(true); return; }
     const s = window.speechSynthesis;
     const read = () => { setVoices(s.getVoices().filter((v) => primaryLang(v.lang) === primaryLang(lang))); setReady(true); };
     read();
