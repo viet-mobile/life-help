@@ -41,3 +41,36 @@ describe("task validator", () => {
     expect(validateSet(t).some((p) => p.includes("modelRows"))).toBe(true);
   });
 });
+
+describe("pilot set: 36 tasks, 12 per subject", async () => {
+  const { allTasks } = await import("@/lib/think/tasks");
+  it("every task is valid (structure, model answers vs checks, model rows vs constraints)", () => {
+    expect(validateSet(allTasks)).toEqual([]);
+  });
+  it("12 per subject, levels 4/4/4, at least 4 generative tasks per subject, ids unique", () => {
+    expect(allTasks).toHaveLength(36);
+    for (const s of ["math", "english", "korean"] as const) {
+      const ts = allTasks.filter((t) => t.subject === s);
+      expect(ts, s).toHaveLength(12);
+      for (const lv of [1, 2, 3]) expect(ts.filter((t) => t.level === lv), `${s} level ${lv}`).toHaveLength(4);
+      expect(ts.filter((t) => t.generative).length, `${s} generative`).toBeGreaterThanOrEqual(4);
+      expect(new Set(ts.map((t) => t.format)).size, `${s} formats`).toBeGreaterThanOrEqual(4);
+    }
+    expect(new Set(allTasks.map((t) => t.id)).size).toBe(36);
+    const formats = new Set(allTasks.map((t) => t.format));
+    for (const f of ["judge-evidence-explain", "find-error-fix", "build-many-verify", "choose-needed-info", "reveal-and-revise", "rewrite-for-audience", "make-your-own"]) expect(formats.has(f as never), f).toBe(true);
+  });
+  it("not everything is a choice question: every subject mixes at least 3 step kinds", () => {
+    for (const s of ["math", "english", "korean"] as const) {
+      const kinds = new Set(allTasks.filter((t) => t.subject === s).flatMap((t) => t.steps.map((x) => x.kind)));
+      expect(kinds.size, s).toBeGreaterThanOrEqual(3);
+    }
+  });
+  it("Korean-subject tasks give instructions in English and keep Korean as the target; math/english instructions are Korean", () => {
+    for (const t of allTasks) expect(t.uiLang).toBe(t.subject === "korean" ? "en" : "ko");
+    for (const t of allTasks.filter((x) => x.subject === "korean")) expect(/[가-힣]/.test(JSON.stringify({ m: t.material, s: t.steps.map((x) => (x.kind === "pickLine" ? x.lines : x.kind === "choose" ? x.options : x.kind === "reveal" ? x.stages : x.prompt)) })), t.id).toBe(true);
+  });
+  it("curriculum is only given with a standard and a note saying one task does not fulfil it", () => {
+    for (const t of allTasks) if (t.curriculum) expect(t.curriculum.note.length, t.id).toBeGreaterThan(10);
+  });
+});
