@@ -3,7 +3,7 @@ import type { ThinkLang } from "@/lib/think/types";
 /** Chrome strings of the review player. Task content has its own language (task.uiLang); the player follows it. */
 const L = {
   ko: {
-    title: "사고력 시범 과제", back: "← 목록", all: "전체", subject: "과목", level: "수준", math: "수학", english: "영어", korean: "한국어",
+    title: "사고력 시범 과제", info: "이 과제의 목표와 요구하는 사고 (먼저 풀고 나서 보세요)", back: "← 목록", all: "전체", subject: "과목", level: "수준", math: "수학", english: "영어", korean: "한국어",
     minutes: "분", generative: "직접 만들기", goal: "학습 목표", thinking: "요구하는 사고", differs: "단순 문항과 다른 점", prereq: "선수학습",
     start: "시작", check: "확인", next: "다음", finish: "마치기", hint: "힌트", hintNone: "더 이상 힌트가 없어요", skip: "이미 알아요 — 건너뛰기", retry: "다시 도전",
     matchT: "자동으로 확인됨", acceptT: "다른 타당한 답", notT: "아직 맞지 않아요", surfaceNote: "아래는 글의 '겉모습'만 확인한 결과예요. 글이 좋은지 아닌지는 판단하지 않아요.",
@@ -15,7 +15,7 @@ const L = {
     uncertainty: "이 화면의 자동 확인은 정답을 확정하는 판정이 아니에요. 틀렸다고 나와도 다시 시도하거나 이의를 남길 수 있어요.", before: "이전 예측", notAnswered: "아직 답하지 않았어요", enterAnswer: "답을 입력하세요", numbers: "숫자로 입력",
   },
   en: {
-    title: "Thinking tasks (pilot)", back: "← List", all: "All", subject: "Subject", level: "Level", math: "Math", english: "English", korean: "Korean",
+    title: "Thinking tasks (pilot)", info: "Goal and the thinking this task asks for (open it after you try)", back: "← List", all: "All", subject: "Subject", level: "Level", math: "Math", english: "English", korean: "Korean",
     minutes: "min", generative: "You create", goal: "Learning goal", thinking: "Thinking required", differs: "How this differs from plain practice", prereq: "Prior knowledge",
     start: "Start", check: "Check", next: "Next", finish: "Finish", hint: "Hint", hintNone: "No more hints", skip: "I already see it — skip", retry: "Try again",
     matchT: "Checked automatically", acceptT: "Another valid answer", notT: "Not matching yet", surfaceNote: "This only checks the surface of your text. It does not judge whether the text is good.",

@@ -42,6 +42,7 @@ export function validateTask(t: ThinkTask): string[] {
     } else if (s.kind === "pickLine") {
       need(s.lines.length >= 3 && s.wrong.length >= 1 && s.wrong.every((i) => i >= 0 && i < s.lines.length), `${s.id}: lines/wrong invalid`);
       need(s.explain, `${s.id}: explain missing`);
+      need(!/(^|[^\d])0\s*번|\b[Ll]ine\s*0\b/.test(s.explain), `${s.id}: explain numbers lines from 0, but the player shows lines from 1`);
     } else if (s.kind === "write") writeChecks(s, s.id);
     else if (s.kind === "build") {
       need(s.vars.length >= 1 && s.constraints.length >= 1 && s.need >= 1, `${s.id}: vars/constraints/need`);

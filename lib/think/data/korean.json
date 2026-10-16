@@ -126,7 +126,11 @@
               "다음",
               "이번 주 일",
               "평일",
-              "나중"
+              "나중",
+              "다른 날",
+              "다른 때",
+              "다른 시간",
+              "언제"
             ]
           },
           {
@@ -363,7 +367,10 @@
               "살게요",
               "사겠습니다",
               "드릴게요",
-              "가져갈게요"
+              "가져갈게요",
+              "주십시오",
+              "주시기",
+              "드리겠"
             ]
           },
           {
@@ -505,7 +512,7 @@
         "correct": [
           "b"
         ],
-        "explain": "The two sources disagree about the time (the notice says the bus leaves at 8:30, the text says to meet at 7:00). The best question points at the difference so the friend can explain.",
+        "explain": "The two sources differ (the notice says the bus leaves at 8:30, the text says to meet at 7:00). The best question points at the difference so the friend can explain.",
         "hints": [
           "Find every time in the notice and in the text, then compare them.",
           "Which question asks about something you do NOT already know from the notice?"
@@ -538,7 +545,10 @@
               "맞죠",
               "거예요",
               "건가요",
-              "인가요"
+              "인가요",
+              "예요",
+              "이에요",
+              "인데요"
             ]
           },
           {
@@ -912,7 +922,7 @@
         "prompt": "Read each part, choose the reading that seems most likely, then continue.",
         "hints": [
           "Decide using only what you have read so far.",
-          "Look at the endings of the sentences (…, -서요, -세요) for what is left unsaid."
+          "Look at the endings of the sentences (…, -서요, -는데) for what is left unsaid."
         ],
         "reflect": "Notice how a complaint can be built from small hints: first an unfinished sentence, then a reason, then a request. Politeness does not mean there is no request.",
         "stages": [
@@ -1046,7 +1056,15 @@
               "않게",
               "신경 써",
               "신경 쓸",
-              "신경 쓰겠"
+              "신경 쓰겠",
+              "도록 하겠",
+              "도록 할게",
+              "도록 해",
+              "걷도록",
+              "살살",
+              "슬리퍼",
+              "매트",
+              "재우"
             ]
           },
           {
@@ -1244,7 +1262,7 @@
             "label": "states a half refund (절반/반/반액/1/2 + 환불)",
             "mode": "any",
             "patterns": [
-              "(절반|반액|반|1/2|2분의 ?1|50 ?%?)\\s*(만\\s*)?(은\\s*|을\\s*|이\\s*)?(환불|돌려|받을 수)",
+              "(절반|반액|반|1/2|2분의 ?1|50 ?%?)\\s*(정도|쯤)?\\s*(만\\s*)?(은\\s*|을\\s*|이\\s*)?(환불|돌려|받을 수)",
               "환불[^.?!]{0,6}(절반|반액|반 )"
             ]
           },
@@ -1448,7 +1466,7 @@
           },
           {
             "id": "w4",
-            "label": "has a softener, apology or thanks (혹시, 죄송, 감사 ...)",
+            "label": "softens the request (혹시, 죄송, 주실 수 있을까요, 감사하겠습니다 ...)",
             "mode": "any",
             "patterns": [
               "혹시",
@@ -1459,7 +1477,13 @@
               "바쁘시",
               "감사",
               "부탁",
-              "결석"
+              "좀",
+              "주실 수",
+              "주시면",
+              "수 있을까요",
+              "수 있으실까요",
+              "주시겠",
+              "받을 수 있"
             ]
           },
           {
@@ -1469,6 +1493,23 @@
             "patterns": [
               "줘",
               "줄래"
+            ]
+          },
+          {
+            "id": "w6",
+            "label": "gives a reason (아파서, 결석 ...)",
+            "mode": "any",
+            "patterns": [
+              "아파",
+              "아팠",
+              "몸이",
+              "결석",
+              "못 갔",
+              "못 들",
+              "참석하지 못",
+              "불참",
+              "사정",
+              "병원"
             ]
           }
         ],
@@ -1522,7 +1563,11 @@
               "줘",
               "빌려",
               "사진",
-              "찍어"
+              "찍어",
+              "주면",
+              "부탁해(?!요)",
+              "고맙",
+              "고마워"
             ]
           },
           {
@@ -1633,7 +1678,7 @@
       {
         "id": "s1",
         "kind": "pickLine",
-        "prompt": "The conversation became awkward. Pick a line that is part of the cause: either the phrase that can be read two ways, or the reply that turns it into a plan.",
+        "prompt": "The conversation became awkward. Pick a line that is part of the cause: the phrase that can be read two ways, the reply that turns it into a plan, or the follow-up that pushes the plan again.",
         "lines": [
           "이웃: 안녕하세요. 요즘 잘 지내세요?",
           "나: 네, 잘 지내요. 잘 지내시죠?",
@@ -1645,9 +1690,10 @@
         ],
         "wrong": [
           2,
-          3
+          3,
+          5
         ],
-        "explain": "'언제 밥 한번 먹어요' (line 3) is often a friendly closing phrase, like 'let's get lunch sometime'. Line 4 treats it as a concrete plan and sets a date. The neighbour's hesitation (…, 글쎄요, 나중에) shows the pressure.",
+        "explain": "'언제 밥 한번 먹어요' (line 3) is often a friendly closing phrase, like 'let's get lunch sometime'. Line 4 treats it as a concrete plan and sets a date. The neighbour's hesitation (…, 글쎄요, 나중에) shows the pressure. Line 6 ('그럼 다음 주는요? 몇 시가 좋아요?') pushes the plan again after the neighbour hesitated.",
         "hints": [
           "Find the first line where one person gets more concrete than the other.",
           "Ask: is there any time or place in the neighbour's own sentence?"
@@ -1737,7 +1783,7 @@
               "몇 시",
               "내일",
               "모레",
-              "오늘",
+              "오늘 (저녁|밤|점심|아침)",
               "이번 주",
               "다음 주",
               "저녁에",
@@ -1745,6 +1791,19 @@
               "점심에",
               "주말",
               "언제 만"
+            ]
+          },
+          {
+            "id": "w4",
+            "label": "does not refuse",
+            "mode": "none",
+            "patterns": [
+              "안 먹어요",
+              "안 먹을래",
+              "안 먹겠",
+              "싫",
+              "안 돼요",
+              "안 갈"
             ]
           }
         ],
@@ -1927,10 +1986,12 @@
           },
           {
             "id": "w3",
-            "label": "sofa goes out on Thursday (목요일)",
+            "label": "sofa goes out on Thursday (목요일, 모레)",
             "mode": "any",
             "patterns": [
-              "목요일"
+              "목요일",
+              "모레",
+              "목\\s*요일"
             ]
           },
           {
@@ -1957,7 +2018,8 @@
             "label": "does not tell them to put the sofa out today",
             "mode": "none",
             "patterns": [
-              "소파[^.?!]{0,12}오늘\\s*(밤|저녁)?(에)?\\s*내놓(으세요|으셔도|아도|으시|아요|으면)"
+              "소파[^.?!]{0,12}오늘\\s*(밤|저녁)?(에)?\\s*내놓(으세요|으셔도|아도 ?(돼|되)|으시고|아요)",
+              "오늘[^.?!]{0,6}소파[^.?!]{0,8}내놓(으세요|으셔도|아도 ?(돼|되))"
             ]
           }
         ],
@@ -2203,6 +2265,19 @@
               "오전",
               "전까지"
             ]
+          },
+          {
+            "id": "w4",
+            "label": "does not refuse",
+            "mode": "none",
+            "patterns": [
+              "못 해",
+              "못 합",
+              "안 해",
+              "안 합",
+              "못 볼",
+              "안 볼"
+            ]
           }
         ],
         "selfAssess": [
@@ -2303,7 +2378,8 @@
         "options": [
           {
             "id": "a",
-            "text": "죄송하지만 오늘은 선약이 있어서 참석하기 어려울 것 같습니다."
+            "text": "죄송하지만 오늘은 선약이 있어서 참석하기 어려울 것 같습니다.",
+            "reveals": "Suitable (apology, reason, softener). It is not the only suitable one, so check the other options too."
           },
           {
             "id": "b",
@@ -2312,11 +2388,13 @@
           },
           {
             "id": "c",
-            "text": "아쉽지만 오늘은 개인 사정이 있어서 참석이 어렵습니다."
+            "text": "아쉽지만 오늘은 개인 사정이 있어서 참석이 어렵습니다.",
+            "reveals": "Suitable (regret, reason, formal). It is not the only suitable one, so check the other options too."
           },
           {
             "id": "d",
-            "text": "오늘은 일정이 있어서 못 갈 것 같습니다. 다음에는 꼭 가겠습니다."
+            "text": "오늘은 일정이 있어서 못 갈 것 같습니다. 다음에는 꼭 가겠습니다.",
+            "reveals": "Suitable (reason, softener, promise about next time). It is not the only suitable one, so check the other options too."
           }
         ],
         "correct": [
@@ -2324,7 +2402,7 @@
           "c",
           "d"
         ],
-        "explain": "a, c and d show regret or apology, give a reason and soften the refusal. b only states a flat refusal ('안 갑니다') and so sounds blunt even though its ending is formal.",
+        "explain": "a and c apologise or show regret ('죄송하지만', '아쉽지만'), give a reason and soften the refusal. d gives a reason, softens with '못 갈 것 같습니다' and promises next time. b only states a flat refusal ('안 갑니다') and so sounds blunt even though its ending is formal.",
         "hints": [
           "For each message, note whether it apologises or shows regret, gives a reason, and softens with something like '-ㄹ 것 같습니다'.",
           "Choose every message that does at least two of those things in a way a supervisor would accept."
@@ -2491,7 +2569,8 @@
               "습니다",
               "팀장님",
               "드리",
-              "십시오"
+              "십시오",
+              "[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
@@ -2672,15 +2751,15 @@
         "kind": "pickLine",
         "prompt": "In another chat, one line leaves it unclear who is meant, even though the verb is honorific, because two honoured people are in the conversation. Pick it.",
         "lines": [
-          "수미: 사장님이 팀장님께 연락하셨어요?",
-          "태호: 네, 어제 하셨어요.",
-          "수미: 그래서 사장님은 뭐라고 하셨어요?",
+          "수미: 사장님과 팀장님이 어제 통화하셨어요?",
+          "태호: 네, 오래 통화하셨어요.",
+          "수미: 그래서 어떻게 됐대요?",
           "태호: 회의 전에 다시 연락하신대요."
         ],
         "wrong": [
           3
         ],
-        "explain": "'연락하신대요' has -시-, so the person is honoured, but both 사장님 and 팀장님 qualify. The reader cannot tell who will call again; adding the subject ('사장님이 ...' or '팀장님이 ...') fixes it.",
+        "explain": "'연락하신대요' has -시-, so the person is honoured, but both 사장님 and 팀장님 qualify and the earlier lines name them together. The reader cannot tell who will call again; adding the subject ('사장님이 ...' or '팀장님이 ...') fixes it.",
         "hints": [
           "Find the people in the chat who would be spoken about with -시-.",
           "In each line, ask whether the subject is named or can only be guessed."
@@ -2695,24 +2774,24 @@
         "checks": [
           {
             "id": "w1",
-            "label": "honorific ending (-시-, -셨-, 께서, 세요 ...)",
+            "label": "honorific ending in B's answer (-시-, -셨-, 세요 ...)",
             "mode": "any",
             "patterns": [
-              "셨",
-              "십니다",
-              "께서",
-              "시는",
-              "시고",
-              "시면",
-              "시죠",
-              "시네",
-              "시나",
-              "시어요",
-              "계세요",
-              "이세요",
-              "[가-힣]세요",
-              "실까요",
-              "[가-힣]신(대요|다고|데|다는)"
+              "(B|나)\\s*[:：][\\s\\S]*셨",
+              "(B|나)\\s*[:：][\\s\\S]*십니다",
+              "(B|나)\\s*[:：][\\s\\S]*께서",
+              "(B|나)\\s*[:：][\\s\\S]*시는",
+              "(B|나)\\s*[:：][\\s\\S]*시고",
+              "(B|나)\\s*[:：][\\s\\S]*시면",
+              "(B|나)\\s*[:：][\\s\\S]*시죠",
+              "(B|나)\\s*[:：][\\s\\S]*시네",
+              "(B|나)\\s*[:：][\\s\\S]*시나",
+              "(B|나)\\s*[:：][\\s\\S]*시어요",
+              "(B|나)\\s*[:：][\\s\\S]*계세요",
+              "(B|나)\\s*[:：][\\s\\S]*이세요",
+              "(B|나)\\s*[:：][\\s\\S]*[가-힣]세요",
+              "(B|나)\\s*[:：][\\s\\S]*실까요",
+              "(B|나)\\s*[:：][\\s\\S]*[가-힣]신(대요|다고|데|다는)"
             ]
           },
           {
@@ -2745,6 +2824,14 @@
             "patterns": [
               "안녕하세요",
               "안녕하십니까"
+            ]
+          },
+          {
+            "id": "w5",
+            "label": "B's answer drops the subject (no 'name + 이/께서')",
+            "mode": "none",
+            "patterns": [
+              "(B|나)\\s*[:：][^\\n]{0,25}(님이|님께서|님은)"
             ]
           }
         ],

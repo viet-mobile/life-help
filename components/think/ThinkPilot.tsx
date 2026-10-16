@@ -69,13 +69,16 @@ function TaskPlayer({ task, reviewer, onBack, onFlag }: { task: ThinkTask; revie
       <button onClick={onBack} className="text-sm font-bold underline">{L.back}</button>
       <p className="mt-3 text-xs font-bold text-slate-500">{task.id} · {task.levelLabel} · ≈{task.minutes}{L.minutes} · {task.format}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
-      <section className="mt-3 grid gap-2 rounded-2xl border bg-slate-50 p-4 text-sm" aria-label={L.goal}>
-        <p><b>{L.goal}:</b> {task.goal}</p>
-        <p><b>{L.thinking}:</b> {task.thinking.join(" · ")}</p>
-        <p><b>{L.differs}:</b> {task.differsFromPlain}</p>
-        <p><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
-        <p><b>{L.curriculum}:</b> {task.curriculum ? `${task.curriculum.standard} — ${task.curriculum.note}` : L.none2}</p>
-      </section>
+      <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
+      <details className="mt-3 rounded-2xl border bg-slate-50 p-4 text-sm" data-testid="task-info" open={reviewer}>
+        <summary className="cursor-pointer font-black">{L.info}</summary>
+        <div className="mt-2 grid gap-2">
+          <p><b>{L.goal}:</b> {task.goal}</p>
+          <p><b>{L.thinking}:</b> {task.thinking.join(" · ")}</p>
+          <p><b>{L.differs}:</b> {task.differsFromPlain}</p>
+          <p><b>{L.curriculum}:</b> {task.curriculum ? `${task.curriculum.standard} — ${task.curriculum.note}` : L.none2}</p>
+        </div>
+      </details>
       <p className="mt-2 text-xs text-slate-500">{L.uncertainty}</p>
       <section className="mt-4 rounded-2xl border-2 border-slate-900 p-4" aria-label="material"><p className="whitespace-pre-wrap text-base leading-relaxed" data-testid="material">{task.material}</p></section>
       {!started ? (

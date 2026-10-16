@@ -1,0 +1,456 @@
+{
+ "reviewer": "AI independent reviewer (not teacher, not learner)",
+ "tasks": [
+  {
+   "id": "e-01",
+   "Q1": {
+    "v": "concern",
+    "e": "s2 is solvable by elimination (c is the title, d is Ben's own sentence; only the two information lines are left) and s1's 'Neither' is the only option with no reveals; s2's prompt text '두 요일 모두 안 된다고 판단하는' also restates the s1 key. Actual reasoning is a 2-step lookup (not in list; exception overrides), fine for Lv1 but thin."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Checker run: valid answers falsely rejected by w3: 'Thursday: library is shut. Friday: library is shut for cleaning.', 'Thursday isn't a library day and Friday is a cleaning day' (only 'not a library day' is listed), 'Thursday no. Friday cleaning day, so no.' False accept: 'No, we can't go. Thursday is closed but Friday is open.' (wrong content passes all 4 checks)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Six lines of very easy English; no hidden load."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "reveals on s1 a/c/d are good (they name the missed line). But key options in multi-select s2 have no reveals, so picking only [a] gives an empty first feedback (UI shows explain only after 2 tries)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'general rule + this-week exception, check each case separately' transfers to timetables/notices."
+   },
+   "defects": [
+    "s2 quoted lines: first-try feedback empty when only one key line is picked",
+    "s3 checker w3 synonyms (isn't a library day, shut) falsely rejected; accepts 'Friday is open'"
+   ],
+   "suggestedFixes": [
+    "Add reveals to a/b in s2 (e.g. 'only covers Thursday') so under-selection gets feedback",
+    "Add patterns: isn['’]?t (a )?(library|open)( day)?, shut, 'no\\b', and a none-check for 'friday (is )?open'",
+    "Remove '두 요일 모두 안 된다고' from the s2 prompt"
+   ],
+   "cueSolvableSteps": [
+    "s2 (elimination: title and Ben's own line)",
+    "s1 partly (Neither)"
+   ],
+   "blindResult": "All correct (s1 b, s2 a+b, s3 write)."
+  },
+  {
+   "id": "e-02",
+   "Q1": {
+    "v": "concern",
+    "e": "s2 is a restatement of s1 and its distractor c (Saturday) is absurd; s2 b is not clearly wrong (a friend who trusts 'start 9:30' and arrives then finds nobody, which is exactly what b says) so a vs b is decided by guessing which reading the author took. s1 itself is genuine (compare two numbers)."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "Two interpretations and the key excludes one: s2 b is a plausible consequence but only a is accepted and no acceptable[] entry exists. s3 w4 only blocks the original wording, so conflict-retaining rewrites PASS all checks: 'Please come at 9:45. We will start the game at 9:30.', 'Please come at 9:30. We start the game at 9:30.', 'Please come at 9 o'clock. We will start the game at 8:30.', 'We will start the game at 9:30. Please come at 10 o'clock.', 'Please come at ten o'clock. We will start the game at nine thirty.' (5 of 15 conflict-retaining probes pass). Valid fixes all pass (9/9)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Four short sentences."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "reveals for s2 b/c are informative, but b's reveal ('9:30에 오는 친구는 메시지를 따르지 않은 거예요') declares a reasonable reading wrong. pickLine not-match gives empty message on the first try."
+   },
+   "Q5": {
+    "v": "concern",
+    "e": "Idea 'check that numbers/times in a message agree' transfers, but the task is a single obvious number comparison; no 'which one to change and why' reasoning is assessed."
+   },
+   "defects": [
+    "s2 b is arguably valid; explain/pickLine text uses 0-based line numbers ('0번(일요일 공원), 1번') while the UI shows 1-based numbering ('1. Hi everyone...'): off-by-one error",
+    "s3 w4 accepts conflict-retaining rewrites"
+   ],
+   "suggestedFixes": [
+    "Use 1-based numbers (or quote the sentences) in pickLine explains",
+    "Make s2 b clearly wrong (e.g. 'arrives and everyone is already playing') or add acceptable:[b] with reason",
+    "Replace w4 by a numeric check: extract the two times and require come < start (e.g. a regex ordering test done in code, or a build-type step with two variables)"
+   ],
+   "cueSolvableSteps": [
+    "s2 (c absurd; a restates s1)"
+   ],
+   "blindResult": "s1 line 3/4 (both accepted by key [2,3]); s2 a correct but b judged also defensible; s3 passes."
+  },
+  {
+   "id": "e-03",
+   "Q1": {
+    "v": "concern",
+    "e": "c, d, e are visibly peripheral (a ball, who else, do you like soccer) while a/b are exactly the wh-words listed under 'prerequisites' (What time / Where / When) which are shown to the student, so elimination/cue works. The reasoning test 'could I say yes without this?' is real but easy."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Choice key [a,b] with acceptable [a,b,d] is sensible. s2 checker: all 9 valid replies pass; 'Sure! Who else is coming?' correctly fails; w2 pattern '\\btime\\b|\\bplace\\b' also accepts 'Do you have time?' (asks about Ari/me, not the event time): minor false accept. If a student picked only 'a' in s1 the s2 prompt ('위에서 고른 정보') still accepts time-only question; fine."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Very short."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals on c/d/e say why the item is not necessary and are diagnostic; hints are tests ('can I say 갈게 without it?'), not answers."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'identify the information without which a decision cannot be made' transfers to any request/invitation."
+   },
+   "defects": [
+    "prerequisites list shows 'What time / Where / When' to the student, pointing at a and b"
+   ],
+   "suggestedFixes": [
+    "Replace the prerequisite wording with 'wh-questions' generally",
+    "Add one more tempting-but-unnecessary option that is also a wh-question (e.g. 'Why do you want to play?') so wh-form is not a cue"
+   ],
+   "cueSolvableSteps": [
+    "s1 (a,b are the wh-time/place; c,d,e peripheral)"
+   ],
+   "blindResult": "All correct."
+  },
+  {
+   "id": "e-04",
+   "Q1": {
+    "v": "concern",
+    "e": "Stage 1 option a is absurd, stage 3 has a single sensible option (a contradicts 'closed today', b contradicts 'other way'), and s2 can be answered from the student's own stage-2 choice. The prerequisites shown to the student list 'borrow', which is the stage-3 key (c). The genuinely reasoned part is stage 1 (b vs c, an inference vs a plain statement)."
+   },
+   "Q2": {
+    "v": "ok",
+    "e": "Stage 1 accepts b and c, stage 2 a, stage 3 c; a student arguing c/'skip P.E.' in stage 2 is explained in alternatives. No false rejections found because reveal uses selection only."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "'borrow' in prerequisites is a cue; P.E. is explained only in the cautions field, not in the student-facing text (a Lv1 student may not know 'P.E.')."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals are specific (e.g. stage 3 a: 'conflicts with the shop being closed') and reflect asks to name the sentence that changed the guess."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Revising an inference when a new clue arrives, and separating 'statement' from 'request', transfer."
+   },
+   "defects": [
+    "prerequisites leak the key word 'borrow'",
+    "P.E. not glossed in the material"
+   ],
+   "suggestedFixes": [
+    "Remove 'borrow' from prerequisites; gloss P.E. inside the info line (P.E. = 체육)",
+    "Make stage 3 include a second reasonable option (e.g. 'ask Mom to go to another shop tomorrow morning')"
+   ],
+   "cueSolvableSteps": [
+    "stage 3 (only c is sensible)",
+    "stage 1 a (absurd)",
+    "s2 (derived from own stage-2 choice)"
+   ],
+   "blindResult": "All correct (stage1 b or c, stage2 a, stage3 c, s2 a)."
+  },
+  {
+   "id": "e-05",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: a is the only option with the textbook formal markers ('I'm afraid', 'I'm sorry'), c is a strawman ('not my problem'), b is neutral; so a can be found by register keywords, not reasoning about the reader. s2/s3 are production tasks where the thinking (what changes with the audience) is never asked for in words."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Key a + acceptable d, but b (clear, addresses her as Ms. Han, gives reason) is called uncomfortable for a teacher; that is a cultural judgement presented as fact. Checker: s3 register test is keyword-only: 'I would like to inform you that I can't come due to a dentist appointment.' and 'Please excuse me. I can't come to club today because of a dentist appointment. Thank you.' pass as 'casual'; 'I'm sorry' style bad answers (e.g. 'Dear Ms. Han, I'm afraid...') are caught only through the words dear/afraid. s2 accepts 'Ms. Han, can't come. Sorry. Dentist appointment.' (curt) and rejects the valid 'Dear Ms. Han, I have a dentist appointment today. Please excuse me from the club.' (w3: no 'can't'). s3 rejects valid 'Sorry, I'm unable to attend the club...' (formal, arguably correctly) and correctly rejects 19-word text."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Vocabulary level fine; hints supply easy alternatives."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "s1 reveals for b and c are good; the d reveal is never shown (d is 'acceptable', which shows only the reason). s2 hint 1 literally lists 'Sorry / I'm afraid / Could you' = a template to paste. The explain says 'b와 c는 ... 불편할 수 있어요', over-claiming for b."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Register shift for audience and a constraint-driven rewrite transfers to any message-writing."
+   },
+   "defects": [
+    "s1 explain overstates that b is uncomfortable",
+    "s2 hint 1 hands over the target phrases",
+    "minutes=16 is about 2x the real time (~8-10 min)"
+   ],
+   "suggestedFixes": [
+    "Add acceptable:[b] with the reason 'clear and respectful; fine for a quick note'",
+    "Change hint 1 to 'Think how you would apologise to a teacher in Korean, then find the English words'",
+    "Add a step asking the student to point out which words changed between the two messages and why (this is the actual thinking)"
+   ],
+   "cueSolvableSteps": [
+    "s1 (formal keywords I'm afraid / I'm sorry)"
+   ],
+   "blindResult": "s1 a (d judged also fine - matches key+acceptable); s2/s3 pass the checks."
+  },
+  {
+   "id": "e-06",
+   "Q1": {
+    "v": "concern",
+    "e": "s2 a is the only specific option; b is nonsense and c is easy to dismiss with the reveal logic. s1 is real reasoning (order of 'night' vs 'after school')."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "The premise 'after school comes before night' is not safe: 'Thursday after school' can be 8 pm (many Korean students attend hagwon), so a strong student may see no conflict or choose line 1 vs 2 for other reasons; hardCases admits this but the key treats it as fixed. s3 checker accepts wrong fixes: 'send ... by Friday morning', 'by Friday night', 'by Saturday' (after the poster is due), 'put together on Thursday before school' (still before the Thursday-night deadline), 'send by Thursday after school. I will put ... on Thursday night' (borderline). Valid fix rejected: 'Please send me your part by Thursday night. I will put all the parts together at 11:30 p.m. on Thursday.' and '...by Thursday night, and I will put all the parts together after that.' (w3 third pattern rejects any text containing 'by Thursday night' without 'fri')."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short, with by / put together as the only vocabulary."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "s2 b/c reveals are diagnostic. pickLine explain refers to '0번과 3번' while the UI numbers lines 1-4: wrong lines named (0번 = displayed 1)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Dependency order in a schedule (deadline before the step that uses it) transfers well."
+   },
+   "defects": [
+    "pickLine explain uses 0-based numbers vs displayed 1-based",
+    "s3 checker false accepts (Friday/Saturday deadlines) and false rejects",
+    "'after school' vs 'night' ordering is an assumption"
+   ],
+   "suggestedFixes": [
+    "Give the school day an explicit anchor in the material (e.g. 'School ends at 3:30')",
+    "Fix numbering in explain",
+    "Replace the s3 surface checks by a build-like structured step (deadline time, assembly time) so order can be verified numerically"
+   ],
+   "cueSolvableSteps": [
+    "s2 (a is the only concrete option)"
+   ],
+   "blindResult": "All correct (s1 line 2/3, s2 a, s3 e.g. 'by Thursday noon')."
+  },
+  {
+   "id": "e-07",
+   "Q1": {
+    "v": "defect",
+    "e": "s1 can be solved from the material without reading the notices: Jae says 'Then on Friday it leaves at 7:30, too' - 'too' tells that Thursday is 7:30. In addition prerequisites (shown to students) say '시각 계산(10분 빼기)', i.e. the operation. So the 'earlier' inference is both cued and given away."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s2 key a with acceptable c is reasonable. s3 checker: 'I think it's 7:30, not 7:50, because 7:50 is later than 7:40.' and 'It leaves at 7:30, not 7:50.' rejected by w2 (valid reasoning without the keywords earlier/notice); otherwise 8/10 valid answers pass; wrong-time answers are rejected by w1."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Two short notices; 'earlier' and 'from' are the intended load."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s1 reveals a ('earlier를 later처럼 읽었을 수 있어요') and c are diagnostic; hints are comparisons."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'later notice overrides the earlier one; relative change; scope of from' transfers."
+   },
+   "defects": [
+    "Jae's 'too' leaks the s1 answer",
+    "prerequisites '10분 빼기' leaks the operation",
+    "minutes=10 vs about 6 real"
+   ],
+   "suggestedFixes": [
+    "Rewrite Jae's line as 'Then on Friday it leaves at 7:50, too?' only if Hana's is changed, or remove the numbers from the friends' lines (e.g. Hana: 'I'll leave home 10 minutes later.') so the notices must be read",
+    "Prerequisite: '시각 읽기와 계산' without the verb",
+    "Accept 7:50-is-later-than-7:40 style reasons in w2"
+   ],
+   "cueSolvableSteps": [
+    "s1 (Jae's 'too' + prerequisite)"
+   ],
+   "blindResult": "All correct (s1 b, s2 a, s3 passes)."
+  },
+  {
+   "id": "e-08",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: the only non-selected option (e: club name) is the only phrase without 'or'/vague word and hint 1 names exactly 'or' and 'something'; trivial to do without reasoning. s2 is real production, but there is no step where the student explains why the original misleads."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Checker is largely good (10/12 valid pass, 'or' leftovers and 'something' rejected, 'Friday or Saturday' rejected). False rejections of valid notices: 'Art Club meeting on Friday at half past three in room 2.' (w3), '... at 3:00 in the cafeteria.' and 'on Fri., 3:00 in Rm 2' (w4 place list closed). Accepts 'Art Club meeting on Tuesday ...' fine; accepts 'Room 12'. 'Bring something to draw with' would be rejected by w6."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Plain vocabulary."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveal on e is useful; hints are actions. The e reveal says choose parts that can be read 'in two or more ways' while d is vague rather than two-way (slightly inconsistent)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Writing an unambiguous announcement (who/when/where/what to bring) transfers to every notice."
+   },
+   "defects": [
+    "w4 place whitelist and time format too narrow",
+    "s1 solvable by hint 1 + elimination"
+   ],
+   "suggestedFixes": [
+    "Open w4 to any 'in/at the <word>' or 'room <n>' pattern, add half past/quarter, rm",
+    "Make s1 harder: add a distractor with a hidden ambiguity that has no 'or' (e.g. 'after school') and a precise-looking one"
+   ],
+   "cueSolvableSteps": [
+    "s1 (e is the only non-ambiguous item; hint names 'or'/'something')"
+   ],
+   "blindResult": "All correct (s1 a-d, s2 passes)."
+  },
+  {
+   "id": "e-09",
+   "Q1": {
+    "v": "concern",
+    "e": "b is the longest and most detailed option (length cue); d (last year's grade) and e (other friends) are obviously irrelevant. The real decision is whether c (length) is needed - and the key says yes while acceptable allows its omission, so the discriminating judgement is not tested."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Key [a,b,c] with acceptable [a,b]; [a,c] or [b,c] are not-match although equally defensible. s2 w2 false rejections of good answers: 'Do you want grammar help or idea help? How many words?' (pattern needs 'grammar or'), 'Sure, no problem! What's the due date, and what exactly do you need from me?' ('what exactly do you need' not matched), 'Yes, I can help. By when do you need it? What should I check?', 'Sure! How soon do you need it? What should I look at?', 'Sure! When does it need to be done? And is it a long essay?'. False accept: none significant; 'Sure! What's the deadline? What are you worried about in your essay?' rejected arguably wrongly."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Informal English, short."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Key options a/b/c have no reveals, so omitting one gives no first-try feedback. d/e reveals are clear."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Clarifying a vague request before committing is transferable."
+   },
+   "defects": [
+    "w2 regexes too narrow (5 valid answers rejected)",
+    "length cue on option b"
+   ],
+   "suggestedFixes": [
+    "Make acceptable also [a,c],[b,c] or reduce key to the two truly necessary ones with a note",
+    "Shorten b to 'What kind of help does the student want?'",
+    "Broaden w2: 'grammar|ideas|feedback|check|look at|focus|help do you', 'how soon|by when|when does|when do'"
+   ],
+   "cueSolvableSteps": [
+    "s1 (b longest; d,e irrelevant)"
+   ],
+   "blindResult": "s1 answered a,b (acceptable; key also has c); s2 passes."
+  },
+  {
+   "id": "e-10",
+   "Q1": {
+    "v": "concern",
+    "e": "Stage 3: a and b are strawmen ('just courtesy', 'form only') and c is the longest and echoes the email (Friday, March), so it is cue-solvable; stage 2 is similar. Stage 1 (b vs c) is the genuine judgement. Vocabulary (budget, estimate, director) is the main barrier, not the inference."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Stage 1 reasonable [b,c], stage 2 [a], stage 3 [c]. Checker s2 (Korean/English reflection) rejects the English 'I first thought no, then But and Friday made me think yes.' (w2 lacks 'first/then'). Accepts nearly any text mentioning But + 처음, so it cannot check consistency (passes 'At first I thought maybe approve. Later it's a no, because of budget.'). s3: accepts 'I will send the cost estimate on Monday' (after the Friday deadline) and 'Thank you, but I am disappointed...' (no 'understanding' required); rejects valid synonyms 'price list', 'quote'."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Hard for a typical Lv3 student only through vocabulary; cautions suggest a dictionary but the UI shows no gloss. 'budget for this year fixed' vs 'budget meeting in March' needs an inference about next year's budget that is never made explicit."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "Stage reveals explicitly say 'if you chose X earlier, revise here'; reflect step asks to name the expression that changed the view. Hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Reading indirect refusals and revising as the pivot ('But ...') appears: strong transfer."
+   },
+   "defects": [
+    "stage 3/2 strawman options",
+    "s3 allows a promise after the requested Friday date",
+    "synonym false rejections (quote, price list)"
+   ],
+   "suggestedFixes": [
+    "Add a serious alternative at stage 3 (e.g. 'gathering info so a refusal can be justified to the director')",
+    "Add none-check for later-than-Friday promises or ask in the prompt to 'promise by the date asked'",
+    "Add quote|price|figures|cost to w2"
+   ],
+   "cueSolvableSteps": [
+    "stage 3 (c)",
+    "stage 2 (a)"
+   ],
+   "blindResult": "All correct (stage1 c, stage2 a, stage3 c)."
+  },
+  {
+   "id": "e-11",
+   "Q1": {
+    "v": "ok",
+    "e": "s1 and s2 require recognising post hoc reasoning and choosing evidence that separates causes; c/d are off-target but the three right options are not given away by wording, since a/b/e look equally 'Wi-Fi-related'. Mild cue: the two wrong options are the only ones not about test/Wi-Fi."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1 wrong [2,3] fine. s2 key [a,b,e] with acceptable [a,b]; [a,e] not-match although defensible. s3 checker false rejections of strong answers: 'I see your point, but maybe students were tired this year. We need more evidence.' (w1), 'Maybe the students are different this year.' (w2 - the most obvious confound, a different cohort, is not in the w2 list and not in s2 options), 'it is not clear that Wi-Fi is the reason, since many things changed. Let's look at last year's and this year's classes' (w1+w2), 'scores can fall for many reasons, such as a harder exam or a different group of students' (w1). False accept: 'I agree that scores fell, but correlation is not causation. We need data.' passes (generic, the kind the bad answer describes) because 'data' alone satisfies w2."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Simple English and Korean option text; load is the logic."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Under-selection in s2 ([a,e]) gives no first-try feedback (key options have no reveals). Hints are actions. c/d reveals are good."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Correlation vs cause, control group, confounders: highly transferable."
+   },
+   "defects": [
+    "s3 checker rejects the cohort-difference explanation and accepts generic 'we need data'",
+    "explain refers to '2번 줄' = displayed line 3 (0-based vs 1-based)",
+    "s2 has no cohort/sample option"
+   ],
+   "suggestedFixes": [
+    "Add cohort words (students are different, different class, different group, tired, studied less) to w2 and 'not clear', 'many things', 'need more evidence' to w1; require w2 to be something other than 'data/evidence/factors' alone",
+    "Add option 'This year's students are a different group from last year's' to s2 and key it",
+    "Fix 1-based numbers in explain"
+   ],
+   "cueSolvableSteps": [
+    "none strong (c,d off-target)"
+   ],
+   "blindResult": "All correct (s1 line 3 = idx 2; s2 a,b,e)."
+  },
+  {
+   "id": "e-12",
+   "Q1": {
+    "v": "concern",
+    "e": "s1 has no defensible single answer: b, c and d are all 'pretending' candidates (the key b vs acceptable c, d). Only a is rejected, and the key b is the shortest/most minimal option - a test-wise heuristic. The distinction match vs acceptable is arbitrary. s2 is a real generative task."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Choice s1 accepts b/c/d (explicit). s2 checker: valid dialogues rejected: A asks 'What's the matter?' or 'Do you want to talk about it?' (w4), B says 'I was waiting all night' (w5 expects 'waited'). False accepts: 'A: Are you hungry?' counts as noticing (w4 'are you'); B's inner feeling in the FIRST B line ('It's fine. I feel sad.') satisfies w5 although the last B line is 'Yes.' (condition 3 says 'at the end'); 'A: Sorry!... B: It's fine!...' correctly rejected."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short dialogues, informal English."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "s1 gives no reveals for the key; the acceptable d's own reveal says 'less likely', but only the reason is shown. The s2 result says only surface checks, which is honest, but several false rejections will push students to game keywords."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Literal vs intended meaning (indirect speech) transfers to any 'It's fine / whatever' situation."
+   },
+   "defects": [
+    "s1 has three accepted answers; discrimination only against a",
+    "w4/w5 false rejections and false accepts",
+    "minutes=18 vs about 10-12 real"
+   ],
+   "suggestedFixes": [
+    "Rephrase s1 as 'Which replies could hide upset? Choose all that could, and give one reason' (multi-select) or make a/d clearly literal",
+    "Anchor w5 on the LAST B line and broaden w4 (matter, talk about it, what happened, how are you)",
+    "Add waiting|waited|ignored|forgot to w5"
+   ],
+   "cueSolvableSteps": [
+    "s1 (shortest option b)"
+   ],
+   "blindResult": "s1 b or c - judged ambiguous (key b, acceptable c,d); s2 passes."
+  }
+ ],
+ "summary": {
+  "defects": 3,
+  "concerns": 29,
+  "themes": [
+   "pickLine explains use 0-based numbers (0번, 1번, 2번) while ThinkPilot.tsx shows 1-based numbers (i+1) - affects e-02, e-06, e-11",
+   "prerequisites are shown to students and leak keys: e-04 'borrow', e-07 '10분 빼기', e-03 'What time / Where'",
+   "write-step regex checks have both false rejections (valid synonyms, valid alternative explanations) and false acceptances (e-02, e-06 rewrites that keep the conflict; e-11 generic 'we need data'; e-10 late promise; e-12 first-B-line, 'Are you hungry?')",
+   "key options in multi-select/choose steps carry no reveals, so under-selection gets empty first-try feedback (e-01 s2, e-03, e-08, e-09, e-11 s2)",
+   "distractors are strawmen (absurd/off-topic) in e-01, e-02, e-04, e-06, e-10 stage 3, so elimination solves them",
+   "Lv1 tasks are very thin as thinking tasks (single comparison); stated minutes are 1.5-2x too high for e-05, e-07, e-12",
+   "e-12 s1 accepts 3 of 4 options; e-09/e-11 key vs acceptable subsets inconsistent ([a,c],[a,e] rejected)"
+  ]
+ }
+}
