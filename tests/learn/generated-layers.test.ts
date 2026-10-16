@@ -7,7 +7,7 @@ import { LESSONS } from "../../scripts/learn/topics/english/lessons.mjs";
 
 describe("original curriculum checks exclude generated English topics", () => {
   it("removes all five topic lessons and their questions and skills while full bundles retain them", () => {
-    const full = [elementary, secondary];
+    const full = [elementary, secondary] as unknown as (typeof elementary)[]; // the two bundles differ slightly in literal answer-key shapes
     const before = JSON.stringify(full);
     const stripped = full.map((bundle) => stripGeneratedLayers<typeof bundle>(bundle));
     const topics = full

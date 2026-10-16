@@ -172,5 +172,5 @@ describe("one engine, any learner locale: progress and grading never depend on t
       const res = await svc.submitAttempt(actor(loc), site, { sessionId: s.sessionId, questionId: q.id, answer: key(q), attemptNo: 1, hintsUsed: 0, timeMs: 4000 });
       expect(res.correct, `${site} ${loc}`).toBe(true);
     }
-  });
+  }, 240_000); // 47 locales x the 13k-question Korean bank: slow under a loaded full run
 });
