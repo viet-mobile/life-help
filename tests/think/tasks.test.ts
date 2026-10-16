@@ -74,3 +74,17 @@ describe("pilot set: 36 tasks, 12 per subject", async () => {
     for (const t of allTasks) if (t.curriculum) expect(t.curriculum.note.length, t.id).toBeGreaterThan(10);
   });
 });
+
+describe("choice feedback", async () => {
+  const { checkChoose } = await import("@/lib/think/check");
+  const step = { id: "s", kind: "choose", prompt: "p", hints: ["a", "b"], multi: true, correct: ["a", "b"], explain: "E", options: [
+    { id: "a", text: "A", reveals: "missing-a" }, { id: "b", text: "B", reveals: "missing-b" }, { id: "c", text: "C", reveals: "picked-c" }] } as never;
+  it("a full match explains; a wrong pick shows what it reveals; leaving a key option out shows what that reveals, never the key", () => {
+    expect(checkChoose(step, ["a", "b"]).status).toBe("match");
+    expect(checkChoose(step, ["a", "b", "c"]).message).toBe("picked-c");
+    const partial = checkChoose(step, ["a"]);
+    expect(partial.status).toBe("not-match");
+    expect(partial.message).toBe("missing-b");
+    expect(partial.message).not.toContain("E");
+  });
+});

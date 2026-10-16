@@ -156,7 +156,7 @@ function ChooseView({ step, L, reviewer, onResult, onFlag }: SV & { step: Choose
         {step.options.map((o) => (
           <button key={o.id} type="button" role={step.multi ? "checkbox" : "radio"} aria-checked={sel.includes(o.id)} onClick={() => toggle(o.id)} data-testid={`opt-${o.id}`}
             className={`rounded-xl border p-3 text-left text-sm ${sel.includes(o.id) ? "border-slate-900 bg-slate-100" : ""}`}>
-            {o.text}{reviewer && step.correct.includes(o.id) ? " ✔" : ""}
+            <b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}{reviewer && step.correct.includes(o.id) ? " ✔" : ""}
           </button>
         ))}
       </div>
@@ -274,7 +274,7 @@ function RevealView({ step, L, onResult, onFlag }: SV & { step: RevealStep }) {
           <p className="text-sm font-bold">{st.ask}</p>
           <div role="radiogroup" className="grid gap-1">
             {st.options.map((o) => (
-              <button key={o.id} role="radio" aria-checked={picks[i] === o.id} disabled={committed[i]} onClick={() => setPicks((p) => p.map((x, j) => (j === i ? o.id : x)))} data-testid={`s${i}-${o.id}`} className={`rounded-lg border p-2 text-left text-sm ${picks[i] === o.id ? "border-slate-900 bg-slate-100" : ""}`}>{o.text}</button>
+              <button key={o.id} role="radio" aria-checked={picks[i] === o.id} disabled={committed[i]} onClick={() => setPicks((p) => p.map((x, j) => (j === i ? o.id : x)))} data-testid={`s${i}-${o.id}`} className={`rounded-lg border p-2 text-left text-sm ${picks[i] === o.id ? "border-slate-900 bg-slate-100" : ""}`}><b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}</button>
             ))}
           </div>
           {!committed[i] ? (

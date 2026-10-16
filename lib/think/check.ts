@@ -11,8 +11,11 @@ export function checkChoose(step: ChooseStep, picked: string[]): Verdict {
   if (sameSet(picked, step.correct)) return { status: "match", message: step.explain };
   const alt = step.acceptable?.find((a) => sameSet(a.ids, picked));
   if (alt) return { status: "acceptable", message: alt.reason };
-  const shown = picked.map((id) => step.options.find((o) => o.id === id)?.reveals).filter(Boolean).join(" ");
-  return { status: "not-match", message: shown };
+  // what the picked options show about the thinking, and - when a key option was left out - what leaving it out shows (never the key itself)
+  const wrongPicks = picked.filter((id) => !step.correct.includes(id));
+  const missing = step.correct.filter((id) => !picked.includes(id));
+  const parts = [...wrongPicks, ...(step.multi ? missing : [])].map((id) => step.options.find((o) => o.id === id)?.reveals).filter(Boolean);
+  return { status: "not-match", message: [...new Set(parts)].join(" ") };
 }
 
 export function checkPickLine(step: PickLineStep, picked: number | null): Verdict {
