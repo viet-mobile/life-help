@@ -1,3 +1,4 @@
+import { NEUTRAL_SET } from "@/lib/learn/hintGate";
 import crypto from "node:crypto";
 import { describe, expect, it } from "vitest";
 import secondary from "@/lib/learn/content/secondary/english.json";
@@ -62,14 +63,14 @@ describe("English H3 electives release candidate", () => {
     for (const q of el) { const r = rawBank.get(q.id); if (r) expect(q.hints[0], q.id).toBe(r.hints[0]); }
     for (const locale of ["vi", "ar"] as const) for (const q of (await loadIndex("english", { grade: "H3", locale })).bundle.questions.filter((x) => x.id.startsWith("e-h3e-"))) { expect(q.hints[1]).toBe("💭"); expect(/[가-힣]/.test(q.hints[0])).toBe(false); }
   });
-  it("the released English is untouched: every non-elective served question is byte-identical to main (be08f10) and hint 2 is NOT gated outside the electives", async () => {
+  it("the released English is untouched: every non-elective served question is byte-identical to main (be08f10) in the data; served hint 1 is as authored and hint 2 is the neutral hint (integrated hint-gate policy covers the whole bank)", async () => {
     const rest = bank.filter((q) => !q.skillId.startsWith("e.h."));
     expect(rest).toHaveLength(12882);
     expect(sha(rest)).toBe(RELEASED_BANK_SHA);
     const { bundle } = await loadIndex("english", { grade: "E3" });
     const raw = new Map(rest.map((q) => [q.id, q]));
     let n = 0;
-    for (const q of bundle.questions) { const r = raw.get(q.id); if (r) { expect(q.hints, q.id).toEqual(r.hints); n++; } }
+    for (const q of bundle.questions) { const r = raw.get(q.id); if (r) { expect(q.hints[0], q.id).toEqual(r.hints[0]); expect(NEUTRAL_SET, q.id).toContain(q.hints[1]); n++; } }
     expect(n).toBeGreaterThan(500);
   });
 });
