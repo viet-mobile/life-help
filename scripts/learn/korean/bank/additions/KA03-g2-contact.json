@@ -1,0 +1,793 @@
+{
+ "packet": "KA03-g2-contact",
+ "skills": {
+  "k.k6.phone": {
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "지금 회의 중이라서 전화를 못 받아요.",
+     "g": "I'm in a meeting right now, so I can't answer the phone.",
+     "cloze": {
+      "blank": "지금 회의 ____이라서 전화를 못 받아요.",
+      "ans": "중",
+      "w": [
+       "때",
+       "안",
+       "에서"
+      ]
+     },
+     "choose": {
+      "w": [
+       "지금 회의 중이라서 전화가 못 받아요.",
+       "지금 회의 중이라서 전화에 못 받아요.",
+       "지금 회의 중이라서 전화를 못 받다요."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-3"
+    },
+    {
+     "cat": "sentence",
+     "ko": "통화 중에 소리가 자꾸 끊겨요.",
+     "g": "The sound keeps cutting out during the call.",
+     "cloze": {
+      "blank": "통화 중에 소리가 자꾸 ____.",
+      "ans": "끊겨요",
+      "w": [
+       "끊어요",
+       "끊을까요",
+       "끊으세요"
+      ]
+     },
+     "choose": {
+      "w": [
+       "통화 중에 소리를 자꾸 끊겨요.",
+       "통화 중에 소리가 자꾸 끊었어요.",
+       "통화 중에서 소리가 자꾸 끊겨요."
+      ]
+     },
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-3"
+    },
+    {
+     "cat": "sentence",
+     "ko": "전화번호를 문자로 보내 주시겠어요?",
+     "g": "Could you send me the phone number by text message?",
+     "cloze": {
+      "blank": "전화번호를 ____ 보내 주시겠어요?",
+      "ans": "문자로",
+      "w": [
+       "문자를",
+       "문자에",
+       "문자가"
+      ]
+     },
+     "choose": {
+      "w": [
+       "전화번호가 문자로 보내 주시겠어요?",
+       "전화번호를 문자에 보내 주시겠어요?",
+       "전화번호를 문자로 보내 주시겠고요?"
+      ]
+     },
+     "order": {
+      "parts": [
+       "전화번호를",
+       "문자로",
+       "보내 주시겠어요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 여보세요? 소리가 잘 안 들려요.\nB: 그래요? 잠깐만요, 창가로 갈게요.\nA: 아직도 소리가 끊겨요.\nB: 그럼 제가 끊고 다시 걸게요.",
+     "g": "A: Hello? I can't hear you well.\nB: Really? Just a moment, I'll go over to the window.\nA: The sound is still cutting out.\nB: Then I'll hang up and call again.",
+     "read": {
+      "true": "B will hang up and call A again.",
+      "false": [
+       "A cannot hear B because B is on the subway.",
+       "After moving to the window, B's voice became clear.",
+       "A will send B a text message instead."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-3"
+    },
+    {
+     "cat": "expr",
+     "ko": "잠시만 기다려 주세요.",
+     "g": "Please hold for a moment.",
+     "s": "Asking a caller to wait on the line.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "expr",
+     "ko": "메시지 남겨 드릴까요?",
+     "g": "Shall I take a message?",
+     "s": "Asked when the person being called is not available.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    }
+   ]
+  },
+  "k.k6.hospital": {
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "어제 저녁부터 머리가 계속 아파요.",
+     "g": "My head has kept hurting since last evening.",
+     "cloze": {
+      "blank": "어제 저녁____ 머리가 계속 아파요.",
+      "ans": "부터",
+      "w": [
+       "까지",
+       "에서",
+       "보다"
+      ]
+     },
+     "choose": {
+      "w": [
+       "어제 저녁에서 머리가 계속 아파요.",
+       "어제 저녁부터 머리를 계속 아파요.",
+       "어제 저녁부터 머리가 계속 아프요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "어제 저녁부터",
+       "머리가",
+       "계속 아파요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-1"
+    },
+    {
+     "cat": "sentence",
+     "ko": "약은 식사 후에 하루 세 번 드세요.",
+     "g": "Take the medicine three times a day after meals.",
+     "cloze": {
+      "blank": "약은 식사 후에 하루 세 번 ____.",
+      "ans": "드세요",
+      "w": [
+       "드릴게요",
+       "드셨어요",
+       "드실까요"
+      ]
+     },
+     "choose": {
+      "w": [
+       "약은 식사 후에 하루 세 번 드시요.",
+       "약은 식사 후에 하루 세 번이 드세요.",
+       "약은 식사 후에를 하루 세 번 드세요."
+      ]
+     },
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "sentence",
+     "ko": "다리가 부어서 병원에 왔어요.",
+     "g": "My leg is swollen, so I came to the hospital.",
+     "cloze": {
+      "blank": "다리가 ____ 병원에 왔어요.",
+      "ans": "부어서",
+      "w": [
+       "부으면",
+       "부을까",
+       "부으러"
+      ]
+     },
+     "choose": {
+      "w": [
+       "다리가 부어서 병원을 왔어요.",
+       "다리를 부어서 병원에 왔어요.",
+       "다리가 부어서 병원에 오었어요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "다리가 부어서",
+       "병원에",
+       "왔어요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-1"
+    },
+    {
+     "cat": "expr",
+     "ko": "처방전 받으셨어요?",
+     "g": "Did you get a prescription?",
+     "s": "A pharmacist asks a customer who has just come in.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "expr",
+     "ko": "검사 전에 금식해야 해요?",
+     "g": "Do I have to fast before the test?",
+     "s": "Asking a nurse before a blood test.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-3"
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 어떻게 오셨어요?\nB: 어제부터 배가 아프고 열도 나요.\nA: 여기에 이름과 전화번호를 써 주세요.\nB: 네, 다 썼어요.\nA: 잠깐 앉아서 기다리세요. 곧 부를게요.",
+     "g": "A: What brings you in?\nB: Since yesterday my stomach hurts and I also have a fever.\nA: Please write your name and phone number here.\nB: Yes, I've finished.\nA: Please sit and wait a moment. We'll call you soon.",
+     "read": {
+      "true": "B filled in a form with a name and phone number.",
+      "false": [
+       "B has been sick for two days.",
+       "B came because of a cough and a sore throat.",
+       "A gave B some medicine right away."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    }
+   ]
+  },
+  "k.k6.requests": {
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "짐이 무거운데 좀 도와주시겠어요?",
+     "g": "My bags are heavy. Could you help me, please?",
+     "cloze": {
+      "blank": "짐이 무거운데 좀 ____?",
+      "ans": "도와주시겠어요",
+      "w": [
+       "도와주셨어요",
+       "도와주러요",
+       "도와주던데요"
+      ]
+     },
+     "choose": {
+      "w": [
+       "짐을 무거운데 좀 도와주시겠어요?",
+       "짐이 무겁은데 좀 도와주시겠어요?",
+       "짐이 무거운데 좀 도와주시겠어서요?"
+      ]
+     },
+     "order": {
+      "parts": [
+       "짐이 무거운데",
+       "좀",
+       "도와주시겠어요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-2"
+    },
+    {
+     "cat": "sentence",
+     "ko": "더 천천히 말씀해 주시겠어요?",
+     "g": "Could you speak more slowly, please?",
+     "cloze": {
+      "blank": "더 ____ 말씀해 주시겠어요?",
+      "ans": "천천히",
+      "w": [
+       "천천해",
+       "천천한",
+       "천천이"
+      ]
+     },
+     "choose": {
+      "w": [
+       "더 천천이 말씀해 주시겠어요?",
+       "더 천천히 말씀하게 주시겠어요?",
+       "더 천천히 말씀해 주시겠어?"
+      ]
+     },
+     "order": {
+      "parts": [
+       "더 천천히",
+       "말씀해",
+       "주시겠어요"
+      ]
+     },
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "sentence",
+     "ko": "내일까지 이 서류를 보내 주실 수 있어요?",
+     "g": "Can you send me this document by tomorrow?",
+     "cloze": {
+      "blank": "내일____ 이 서류를 보내 주실 수 있어요?",
+      "ans": "까지",
+      "w": [
+       "부터",
+       "마다",
+       "보다"
+      ]
+     },
+     "choose": {
+      "w": [
+       "내일까지 이 서류가 보내 주실 수 있어요?",
+       "내일까지 이 서류를 보내 주시를 수 있어요?",
+       "내일까지 이 서류를 보내 주실 수 있어서요?"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    },
+    {
+     "cat": "sentence",
+     "ko": "엘리베이터 좀 잡아 주세요.",
+     "g": "Please hold the elevator.",
+     "cloze": {
+      "blank": "엘리베이터 좀 ____ 주세요.",
+      "ans": "잡아",
+      "w": [
+       "잡는",
+       "잡고",
+       "잡을"
+      ]
+     },
+     "choose": {
+      "w": [
+       "엘리베이터 좀 잡아 드세요.",
+       "엘리베이터 좀 잡다 주세요.",
+       "엘리베이터에 좀 잡아 주세요."
+      ]
+     },
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "expr",
+     "ko": "잠시 자리 좀 맡아 주실래요?",
+     "g": "Could you save my seat for a moment?",
+     "s": "Asking a person sitting nearby in a library.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 이 자료를 복사해 주실 수 있어요?\nB: 네. 몇 부 필요하세요?\nA: 열 부요. 내일 회의에서 써야 해요.\nB: 알겠어요. 오후 두 시까지 해 드릴게요.",
+     "g": "A: Could you copy these materials for me?\nB: Sure. How many copies do you need?\nA: Ten. I need them at tomorrow's meeting.\nB: Understood. I'll have them done by two this afternoon.",
+     "read": {
+      "true": "B promises to finish the copies by two o'clock in the afternoon.",
+      "false": [
+       "A needs five copies of the materials.",
+       "The meeting is today.",
+       "B is too busy and refuses the request."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    }
+   ]
+  },
+  "k.k6.invitations": {
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "다음 주 금요일에 집들이를 하는데 오실래요?",
+     "g": "I'm having a housewarming party next Friday. Would you like to come?",
+     "cloze": {
+      "blank": "다음 주 금요일에 집들이를 ____ 오실래요?",
+      "ans": "하는데",
+      "w": [
+       "하러",
+       "한 후",
+       "하지만"
+      ]
+     },
+     "choose": {
+      "w": [
+       "다음 주 금요일에 집들이가 하는데 오실래요?",
+       "다음 주 금요일에 집들이를 하는데 오세실래요?",
+       "다음 주 금요일에 집들이를 하는데 오실래다?"
+      ]
+     },
+     "order": {
+      "parts": [
+       "다음 주 금요일에",
+       "집들이를 하는데",
+       "오실래요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-2"
+    },
+    {
+     "cat": "sentence",
+     "ko": "시간이 되면 같이 점심 먹어요.",
+     "g": "If you have time, let's have lunch together.",
+     "cloze": {
+      "blank": "시간이 ____ 같이 점심 먹어요.",
+      "ans": "되면",
+      "w": [
+       "되지만",
+       "되러",
+       "된다고"
+      ]
+     },
+     "choose": {
+      "w": [
+       "시간을 되면 같이 점심 먹어요.",
+       "시간이 되면 같이 점심 먹아요.",
+       "시간이 되면 같이 점심 먹으요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "시간이 되면",
+       "같이",
+       "점심 먹어요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-2"
+    },
+    {
+     "cat": "sentence",
+     "ko": "초대해 주셔서 감사합니다.",
+     "g": "Thank you for inviting me.",
+     "cloze": {
+      "blank": "초대해 ____ 감사합니다.",
+      "ans": "주셔서",
+      "w": [
+       "주시면",
+       "주려고",
+       "주지만"
+      ]
+     },
+     "choose": {
+      "w": [
+       "초대를 주셔서 감사합니다.",
+       "초대해 주셔서 감사합니요.",
+       "초대해 주셔서 감사해습니다."
+      ]
+     },
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "sentence",
+     "ko": "이번 모임에는 못 갈 것 같아요.",
+     "g": "I don't think I can make it to this gathering.",
+     "cloze": {
+      "blank": "이번 모임에는 못 갈 것 ____.",
+      "ans": "같아요",
+      "w": [
+       "이에요",
+       "있어요",
+       "하고요"
+      ]
+     },
+     "choose": {
+      "w": [
+       "이번 모임에는 못 가 것 같아요.",
+       "이번 모임에는 못 갈 것이 같아요.",
+       "이번 모임에는 못 갈 것 같이요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "이번 모임에는",
+       "못 갈",
+       "것 같아요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-2"
+    },
+    {
+     "cat": "expr",
+     "ko": "다음에는 꼭 초대할게요.",
+     "g": "Next time I'll be sure to invite you.",
+     "s": "Said to a friend who could not come to a party.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 다음 주에 반 친구들과 소풍을 가요. 같이 갈래요?\nB: 저도 가고 싶지만 그날 다른 일이 있어요.\nA: 아쉽네요. 그럼 다음 모임에는 꼭 오세요.\nB: 네, 꼭 갈게요.",
+     "g": "A: Next week our classmates are going on a picnic. Would you like to come?\nB: I'd like to go too, but I have something else that day.\nA: That's a shame. Then please be sure to come to the next gathering.\nB: Yes, I'll definitely come.",
+     "read": {
+      "true": "B has something else to do on the day of the picnic.",
+      "false": [
+       "B has agreed to go on the picnic.",
+       "A invited B to a birthday party.",
+       "B says B will not come to the next gathering."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-3"
+    }
+   ]
+  },
+  "k.k4.negation": {
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "저는 매운 음식을 안 좋아해요.",
+     "g": "I don't like spicy food.",
+     "cloze": {
+      "blank": "저는 매운 음식을 ____ 좋아해요.",
+      "ans": "안",
+      "w": [
+       "못",
+       "아니",
+       "없"
+      ]
+     },
+     "choose": {
+      "w": [
+       "저는 매운 음식을 못 좋아해요.",
+       "저는 매운 음식이 안 좋아해요.",
+       "저는 매운 음식을 좋아 안해요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "저는",
+       "매운 음식을",
+       "안 좋아해요"
+      ]
+     },
+     "grade": 1,
+     "area": "읽기",
+     "std": "읽기1-3"
+    },
+    {
+     "cat": "sentence",
+     "ko": "너무 졸려서 눈을 못 뜨겠어요.",
+     "g": "I'm so sleepy that I can't keep my eyes open.",
+     "cloze": {
+      "blank": "너무 ____ 눈을 못 뜨겠어요.",
+      "ans": "졸려서",
+      "w": [
+       "졸리면",
+       "졸리러",
+       "졸려도"
+      ]
+     },
+     "choose": {
+      "w": [
+       "너무 졸려서 눈이 못 뜨겠어요.",
+       "너무 졸려서 눈을 뜨 못하겠어요.",
+       "너무 졸려서 눈을 못 뜨겠이요."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-5"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 아직 점심을 안 먹었어요.",
+     "g": "I haven't eaten lunch yet.",
+     "cloze": {
+      "blank": "저는 ____ 점심을 안 먹었어요.",
+      "ans": "아직",
+      "w": [
+       "벌써",
+       "이미",
+       "방금"
+      ]
+     },
+     "choose": {
+      "w": [
+       "저는 아직 점심이 안 먹었어요.",
+       "저는 아직 점심을 안 먹어었어요.",
+       "저는 아직 점심을 먹 안했어요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "저는 아직",
+       "점심을",
+       "안 먹었어요"
+      ]
+     },
+     "grade": 1,
+     "area": "읽기",
+     "std": "읽기1-3"
+    },
+    {
+     "cat": "sentence",
+     "ko": "저는 오늘 아무것도 안 먹었어요.",
+     "g": "I haven't eaten anything today.",
+     "cloze": {
+      "blank": "저는 오늘 ____ 안 먹었어요.",
+      "ans": "아무것도",
+      "w": [
+       "무엇이든",
+       "뭐든지",
+       "어떤 것이나"
+      ]
+     },
+     "choose": {
+      "w": [
+       "저는 오늘 아무것도 먹었어요.",
+       "저는 오늘 아무것도를 안 먹었어요.",
+       "저는 오늘 아무것도 안 먹어어요."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-5"
+    },
+    {
+     "cat": "expr",
+     "ko": "아직 못 정했어요.",
+     "g": "I haven't been able to decide yet.",
+     "s": "Answering when someone asks about your plans.",
+     "grade": 2,
+     "area": "듣기",
+     "std": "듣기2-2"
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 주말에 같이 등산할까요?\nB: 저는 다리를 다쳐서 산에 못 가요.\nA: 그럼 영화는 어때요?\nB: 영화는 좋아요. 하지만 무서운 영화는 안 봐요.",
+     "g": "A: Shall we go hiking together this weekend?\nB: I hurt my leg, so I can't go to the mountain.\nA: Then how about a movie?\nB: A movie is fine. But I don't watch scary movies.",
+     "read": {
+      "true": "B cannot go hiking because of an injured leg.",
+      "false": [
+       "B does not like movies.",
+       "B often watches scary movies.",
+       "B refused to hike because B dislikes mountains."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-3"
+    }
+   ]
+  },
+  "k.k3.messages": {
+   "entries": [
+    {
+     "cat": "sentence",
+     "ko": "버스가 늦어서 조금 늦을 것 같아요.",
+     "g": "The bus is late, so I'll probably be a little late.",
+     "cloze": {
+      "blank": "버스가 ____ 조금 늦을 것 같아요.",
+      "ans": "늦어서",
+      "w": [
+       "늦으러",
+       "늦고서",
+       "늦다고"
+      ]
+     },
+     "choose": {
+      "w": [
+       "버스를 늦어서 조금 늦을 것 같아요.",
+       "버스가 늦어서 조금 늦을 것 같이요.",
+       "버스가 늦어서 조금 늦을 것 같아다."
+      ]
+     },
+     "order": {
+      "parts": [
+       "버스가 늦어서",
+       "조금",
+       "늦을 것 같아요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    },
+    {
+     "cat": "sentence",
+     "ko": "도착하면 전화 주세요.",
+     "g": "Please call me when you arrive.",
+     "cloze": {
+      "blank": "도착____ 전화 주세요.",
+      "ans": "하면",
+      "w": [
+       "하러",
+       "하는데도",
+       "하지만"
+      ]
+     },
+     "choose": {
+      "w": [
+       "도착하면 전화 드세요.",
+       "도착했면 전화 주세요.",
+       "도착하면 전화 주시요."
+      ]
+     },
+     "order": {
+      "parts": [
+       "도착하면",
+       "전화 주세요"
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    },
+    {
+     "cat": "sentence",
+     "ko": "사진 보냈어요. 확인해 보세요.",
+     "g": "I sent the photo. Please check it.",
+     "cloze": {
+      "blank": "사진 보냈어요. 확인____ 보세요.",
+      "ans": "해",
+      "w": [
+       "하는",
+       "할",
+       "했던"
+      ]
+     },
+     "choose": {
+      "w": [
+       "사진 보냈어요. 확인하 보세요.",
+       "사진 보냈어요. 확인해 봐세요.",
+       "사진 보냈어. 확인해 보세요."
+      ]
+     },
+     "grade": 2,
+     "area": "읽기",
+     "std": "읽기2-4"
+    },
+    {
+     "cat": "expr",
+     "ko": "늦어서 미안해요.",
+     "g": "Sorry I'm late.",
+     "s": "Typing a message to a friend who is waiting.",
+     "grade": 1,
+     "area": "읽기",
+     "std": "읽기1-2"
+    },
+    {
+     "cat": "expr",
+     "ko": "내일 연락할게요.",
+     "g": "I'll contact you tomorrow.",
+     "s": "Ending a chat message.",
+     "grade": 1,
+     "area": "읽기",
+     "std": "읽기1-2"
+    },
+    {
+     "cat": "passage",
+     "ko": "A: 지금 어디예요?\nB: 지하철역 앞이에요.\nA: 저는 카페 안에 있어요.\nB: 알겠어요. 오 분 후에 갈게요.",
+     "g": "A: Where are you now?\nB: I'm in front of the subway station.\nA: I'm inside the cafe.\nB: Got it. I'll be there in five minutes.",
+     "read": {
+      "true": "B will go to the cafe in about five minutes.",
+      "false": [
+       "A is in front of the subway station.",
+       "B is already inside the cafe.",
+       "B says B will arrive in ten minutes."
+      ]
+     },
+     "grade": 1,
+     "area": "읽기",
+     "std": "읽기1-3"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+  "packet": "KA07-g5-media",
+  "skills": {
+    "k.k9.biz_negotiate": {
+      "entries": [
+        { "cat": "sentence", "ko": "납기를 일주일 앞당겨 주신다면 추가 비용을 부담하겠습니다.", "g": "If you move the delivery date up by a week, we will bear the extra cost.",
+          "cloze": { "blank": "납기를 일주일 앞당겨 주신다면 추가 ____ 부담하겠습니다.", "ans": "비용을", "w": ["비용에", "비용과", "비용의"] },
+          "choose": { "w": ["납기가 일주일 앞당겨 주신다면 추가 비용을 부담하겠습니다.", "납기를 일주일 앞당겨 주신다면 추가 비용을 부담해졌습니다.", "납기를 일주일 앞당겨 주신다면 추가 비용이 부담하겠습니다."] },
+          "order": { "parts": ["납기를 일주일", "앞당겨 주신다면", "추가 비용을", "부담하겠습니다"] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" },
+        { "cat": "sentence", "ko": "합의가 이루어지지 않을 경우 계약 해지를 검토할 수밖에 없습니다.", "g": "If no agreement is reached, we have no choice but to consider terminating the contract.",
+          "cloze": { "blank": "합의가 이루어지지 않을 경우 계약 해지를 검토할 ____ 없습니다.", "ans": "수밖에", "w": ["만큼", "듯이", "탓에"] },
+          "choose": { "w": ["합의가 이루어지지 않을 경우 계약 해지를 검토할 수밖에 있습니다.", "합의가 이루어지지 않을 경우 계약 해지가 검토할 수밖에 없습니다.", "합의가 이루어지지 않을 경우 계약 해지에 검토할 수밖에 없습니다."] },
+          "order": { "parts": ["합의가 이루어지지 않을 경우", "계약 해지를", "검토할 수밖에 없습니다"] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" },
+        { "cat": "sentence", "ko": "이번 협상에서는 납품 일정보다 품질 보증 기간이 더 중요한 쟁점입니다.", "g": "In this negotiation, the warranty period is a more important issue than the delivery schedule.",
+          "cloze": { "blank": "이번 협상에서는 납품 일정____ 품질 보증 기간이 더 중요한 쟁점입니다.", "ans": "보다", "w": ["부터", "까지", "마다"] },
+          "choose": { "w": ["이번 협상에서는 납품 일정보다 품질 보증 기간을 더 중요한 쟁점입니다.", "이번 협상에게는 납품 일정보다 품질 보증 기간이 더 중요한 쟁점입니다.", "이번 협상에서는 납품 일정보다 품질 보증 기간이 더 중요하는 쟁점입니다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-3" },
+        { "cat": "sentence", "ko": "추가 물량에 대해서는 별도의 계약서를 작성하는 것이 바람직합니다.", "g": "For the additional volume, it is advisable to draw up a separate contract.",
+          "cloze": { "blank": "추가 물량에 대해서는 별도의 계약서를 작성하는 ____ 바람직합니다.", "ans": "것이", "w": ["것을", "것에", "것으로"] },
+          "choose": { "w": ["추가 물량에 대해서는 별도의 계약서가 작성하는 것이 바람직합니다.", "추가 물량에 대해서는 별도의 계약서를 작성하는 것이 바람직하십니다.", "추가 물량에 대해서는 별도의 계약서를 작성하는 것이 바람직합시다."] },
+          "order": { "parts": ["추가 물량에 대해서는", "별도의 계약서를", "작성하는 것이", "바람직합니다"] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" },
+        { "cat": "passage", "ko": "A: 지난번에 보내 주신 견적서를 검토했습니다. 단가는 괜찮은데 납기가 너무 깁니다.\nB: 현재 원자재 수급이 불안정해서 4주가 최선입니다.\nA: 그렇다면 일부 물량만 먼저 2주 안에 받을 수 있을까요? 나머지는 기존 일정대로 받겠습니다.\nB: 분할 납품이라면 가능합니다. 다만 운송비는 귀사에서 부담해 주셔야 합니다.\nA: 알겠습니다. 내부 승인을 받은 뒤 내일까지 연락드리겠습니다.",
+          "g": "A: I reviewed the quotation you sent last time. The unit price is fine, but the delivery time is too long.\nB: Raw material supply is unstable at the moment, so four weeks is the best we can do.\nA: In that case, could we receive part of the order within two weeks first? We will take the rest on the original schedule.\nB: Split delivery is possible. However, your company would have to cover the shipping costs.\nA: Understood. We will contact you by tomorrow after getting internal approval.",
+          "read": { "true": "물량을 나누어 받으면 일부는 더 빨리 받을 수 있다.", "false": ["공급 측은 단가를 낮추는 데 동의했다.", "운송비는 공급 측이 부담하기로 했다.", "구매 측은 그 자리에서 최종 계약을 확정했다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" },
+        { "cat": "passage", "ko": "A: 올해 계약을 갱신할 때 수수료를 3% 올리고 싶습니다. 인건비가 크게 올랐기 때문입니다.\nB: 사정은 이해하지만 3%는 부담스럽습니다. 계약 기간을 2년으로 늘려 주시면 2%까지 수용하겠습니다.\nA: 2년 계약이라면 저희도 인력을 안정적으로 운영할 수 있으니 긍정적으로 검토하겠습니다.\nB: 좋습니다. 다음 주 월요일까지 수정한 계약서 초안을 보내 주십시오.",
+          "g": "A: When we renew the contract this year, we would like to raise the fee by 3 percent. Labor costs have risen sharply.\nB: We understand your situation, but 3 percent is a burden. If you extend the contract term to two years, we will accept up to 2 percent.\nA: With a two-year contract we can also staff stably, so we will review it positively.\nB: Good. Please send us the revised draft contract by next Monday.",
+          "read": { "true": "수수료 인상 폭과 계약 기간을 함께 조정하는 방향으로 이야기가 오갔다.", "false": ["B는 3% 인상을 그 자리에서 받아들였다.", "A는 계약 기간을 줄이자고 제안했다.", "수정한 계약서 초안은 B가 A에게 보내기로 했다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" }
+      ]
+    },
+    "k.k10.media_headline": {
+      "entries": [
+        { "cat": "phrase", "ko": "재건축 규제 완화, 집값 불안 우려", "g": "Easing of rebuilding rules raises fears of housing price instability", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "해외 직구 급증에 소비자 피해도 늘어", "g": "Consumer harm also rises as overseas direct purchases surge", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "지하철 무료 환승 범위 확대 검토", "g": "Expansion of the free subway transfer zone under review", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "AI 번역 도입, 현장 통역사 일자리 위협 논란", "g": "Controversy as AI translation adoption threatens on-site interpreters' jobs", "grade": 5, "area": "읽기", "std": "읽기5-3" },
+        { "cat": "phrase", "ko": "중소기업 인력난 해소 위해 외국인 근로자 쿼터 상향", "g": "Foreign worker quota raised to ease small business labor shortage", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "passage", "ko": "[속보] 시, 도심 제한 속도 40km로 하향…다음 달부터 시행\n시는 다음 달부터 도심 주요 도로의 제한 속도를 시속 50킬로미터에서 40킬로미터로 낮추기로 했다. 시는 시범 운영 결과 보행자 사고가 줄었다며, 6개월 뒤 효과를 다시 분석해 다른 도로로 넓힐지 결정할 계획이라고 밝혔다.",
+          "g": "[Breaking] City lowers downtown speed limit to 40 km/h, starting next month\nStarting next month, the city will lower the speed limit on major downtown roads from 50 to 40 kilometers per hour. The city said pedestrian accidents decreased during the trial operation, and that it plans to analyze the effect again after six months and decide whether to extend it to other roads.",
+          "read": { "true": "제한 속도를 다른 도로로 넓힐지는 효과를 다시 분석한 뒤에 결정된다.", "false": ["제한 속도는 이미 모든 지역에서 40킬로미터로 낮아졌다.", "시범 운영 기간에 보행자 사고가 늘었다.", "속도 제한은 6개월 뒤에 처음 시행된다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-3" }
+      ]
+    },
+    "k.k10.media_article": {
+      "entries": [
+        { "cat": "sentence", "ko": "전문가들은 이번 정책이 단기적 효과에 그칠 수 있다고 지적했다.", "g": "Experts pointed out that this policy may have only short-term effects.",
+          "cloze": { "blank": "전문가들은 이번 정책이 단기적 효과에 ____ 수 있다고 지적했다.", "ans": "그칠", "w": ["그치던", "그친", "그치는"] },
+          "choose": { "w": ["전문가들은 이번 정책이 단기적 효과를 그칠 수 있다고 지적했다.", "전문가들이 이번 정책을 단기적 효과에 그칠 수 있다고 지적했다.", "전문가들은 이번 정책이 단기적 효과에 그칠 수 있다는 지적했다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-3" },
+        { "cat": "sentence", "ko": "정부는 내달 중 관련 법안을 국회에 제출할 예정이라고 밝혔다.", "g": "The government said it plans to submit the related bill to the National Assembly sometime next month.",
+          "cloze": { "blank": "정부는 내달 중 관련 법안을 국회에 제출할 ____ 밝혔다.", "ans": "예정이라고", "w": ["예정으로", "예정이면", "예정인데"] },
+          "choose": { "w": ["정부는 내달 중 관련 법안을 국회를 제출할 예정이라고 밝혔다.", "정부는 내달 중 관련 법안을 국회에 제출할 예정이라고 밝혀다.", "정부에는 내달 중 관련 법안을 국회에 제출할 예정이라고 밝혔다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" },
+        { "cat": "sentence", "ko": "일각에서는 이번 조치가 오히려 시장의 혼란을 키울 수 있다는 우려도 제기된다.", "g": "Some quarters also raise concern that the measure could, if anything, deepen market confusion.",
+          "cloze": { "blank": "일각에서는 이번 조치가 ____ 시장의 혼란을 키울 수 있다는 우려도 제기된다.", "ans": "오히려", "w": ["아무리", "비록", "마치"] },
+          "choose": { "w": ["일각에서는 이번 조치가 오히려 시장의 혼란에 키울 수 있다는 우려도 제기된다.", "일각에서는 이번 조치가 오히려 시장의 혼란을 키울 수 있다는 우려로 제기된다.", "일각에서는 이번 조치를 오히려 시장의 혼란을 키울 수 있다는 우려도 제기된다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-3" },
+        { "cat": "passage", "ko": "한 연구소가 직장인 1,000명을 대상으로 조사한 결과, 재택근무를 경험한 응답자의 68%가 업무 만족도가 높아졌다고 답했다. 반면 팀원 간 소통이 줄었다는 응답도 42%에 달했다. 연구소는 재택근무의 장점을 살리려면 정기적인 화상 회의 같은 소통 장치가 필요하다고 분석했다.",
+          "g": "In a survey of 1,000 office workers by a research institute, 68 percent of respondents who had experienced remote work said their job satisfaction had risen. On the other hand, 42 percent said communication among team members had decreased. The institute analyzed that to make the most of the benefits of remote work, communication mechanisms such as regular video meetings are needed.",
+          "read": { "true": "재택근무를 경험한 응답자 가운데 절반이 넘는 사람이 업무 만족도가 올라갔다고 느꼈다.", "false": ["응답자의 42%가 재택근무에 불만족한다고 답했다.", "연구소는 재택근무를 줄여야 한다고 주장했다.", "조사 대상은 재택근무를 경험한 직장인 68명이다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-3" },
+        { "cat": "passage", "ko": "[공지] 시립도서관 시설 보수 안내\n시립도서관은 시설 보수 공사를 위해 3월 4일부터 3월 17일까지 2주간 열람실을 임시로 닫습니다. 같은 기간 도서 대출과 반납은 1층 안내 데스크에서 평소처럼 가능합니다. 공사 소음으로 불편을 드리게 된 점 양해 부탁드립니다.",
+          "g": "[Notice] Municipal library facility repair\nThe municipal library will temporarily close its reading rooms for two weeks, from March 4 to March 17, for facility repair work. During the same period, book loans and returns remain available as usual at the first-floor information desk. We ask for your understanding for the inconvenience caused by construction noise.",
+          "read": { "true": "공사 기간에도 책을 빌리고 돌려줄 수 있다.", "false": ["도서관 전체가 2주 동안 문을 닫는다.", "대출과 반납은 공사가 끝난 뒤에 가능하다.", "공사는 1층 안내 데스크에서 진행된다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-2" },
+        { "cat": "passage", "ko": "최근 도심 공원에 반려견 전용 구역을 만들자는 주민 요구가 늘고 있다. 구청은 올해 안에 시범 구역 두 곳을 조성하고, 이용 규칙 위반 사례와 민원 건수를 점검한 뒤 확대 여부를 결정하기로 했다. 다만 일부 주민은 소음과 위생 문제를 이유로 반대 의견을 내고 있다.",
+          "g": "Recently, residents' calls to create dog-only zones in downtown parks have been growing. The district office decided to set up two pilot zones within this year and to decide on expansion after checking cases of rule violations and the number of complaints. However, some residents are voicing opposition, citing noise and hygiene problems.",
+          "read": { "true": "구청은 시범 운영 결과를 살펴본 뒤 전용 구역을 늘릴지 정할 계획이다.", "false": ["구청은 모든 공원에 전용 구역을 즉시 만들기로 했다.", "주민들은 모두 전용 구역 조성에 찬성하고 있다.", "시범 구역은 이미 올해 초에 완성되었다."] },
+          "grade": 5, "area": "읽기", "std": "읽기5-3" }
+      ]
+    },
+    "k.k10.idioms_action": {
+      "entries": [
+        { "cat": "phrase", "ko": "발 벗고 나서다", "g": "to step in eagerly and help with full effort", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "귀가 얇다", "g": "to be easily swayed by what others say", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "손이 크다", "g": "to be generous with quantities, giving or cooking a lot", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "눈이 높다", "g": "to have high standards and be hard to please", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "머리를 맞대다", "g": "to put heads together and discuss a problem", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "입에 침이 마르도록", "g": "praising or repeating something over and over without tiring", "grade": 5, "area": "읽기", "std": "읽기5-1" }
+      ]
+    },
+    "k.k10.proverbs_life": {
+      "entries": [
+        { "cat": "expr", "ko": "발 없는 말이 천 리 간다.", "g": "Words spread far and fast even though they have no feet.", "s": "Warning someone that a careless remark will quickly be passed around.", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "expr", "ko": "소 잃고 외양간 고친다.", "g": "Fixing the barn only after losing the cow means acting too late.", "s": "Commenting on a precaution taken only after a loss has already happened.", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "expr", "ko": "하룻강아지 범 무서운 줄 모른다.", "g": "A puppy a day old does not know to fear a tiger; the inexperienced are reckless.", "s": "Describing a newcomer who rashly challenges someone far stronger.", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "expr", "ko": "공든 탑이 무너지랴.", "g": "A tower built with devotion will not collapse; sincere effort pays off.", "s": "Encouraging someone who has worked carefully and sincerely.", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "phrase", "ko": "쇠귀에 경 읽기", "g": "reading scripture to the ear of an ox; advice wasted on someone who will not listen", "grade": 5, "area": "읽기", "std": "읽기5-1" },
+        { "cat": "expr", "ko": "낫 놓고 기역 자도 모른다.", "g": "Not even knowing the letter giyeok when looking at a sickle means being completely illiterate or ignorant.", "s": "Describing someone who knows nothing about a basic subject.", "grade": 5, "area": "읽기", "std": "읽기5-1" }
+      ]
+    }
+  }
+}
