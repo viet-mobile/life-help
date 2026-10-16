@@ -143,3 +143,16 @@ describe("gate on the wrong-answer feedback path", () => {
     expect(seen).toBeGreaterThan(0);
   });
 });
+
+describe("gate in other learner languages", () => {
+  it("elective course questions in a non-Korean language get the wordless hint 2, never a Korean sentence or the translated rich hint", async () => {
+    for (const locale of ["vi", "ja", "ar", "en"] as const) {
+      const { bundle } = await loadIndex("english", { locale, grade: "H3" });
+      const el = bundle.questions.filter((x) => x.id.startsWith("e-h3e-"));
+      expect(el.length, locale).toBe(42);
+      for (const x of el) { expect(x.hints[1], `${locale} ${x.id}`).toBe("💭"); expect(/[가-힣]/.test(x.hints[0]), `${locale} ${x.id} hint 1`).toBe(false); }
+    }
+    const ko = (await loadIndex("english", { locale: "ko", grade: "H3" })).bundle.questions.filter((x) => x.id.startsWith("e-h3e-"));
+    for (const x of ko) expect(NEUTRAL_SET, x.id).toContain(x.hints[1]);
+  });
+});
