@@ -173,7 +173,7 @@ export function ListeningPanel({ scope, segments, variant, lesson, meaningPendin
           <button type="button" className="l-btn l-btn-ghost" data-testid="repeat-play" disabled={customInvalid || repeat < 1} onClick={() => play({ from, to, repeat })}>🔁 {t("listen.repeat.play")}</button>
         </div>
       </details>
-      <TtsSettingsPanel t={t} code={site === "korean" ? "ko" : "en"} speech={site === "korean" ? "ko-KR" : "en-US"} />
+      {site === "korean" && <TtsSettingsPanel t={t} code="ko" speech="ko-KR" />}
     </div>
   );
 }

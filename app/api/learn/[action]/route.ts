@@ -49,7 +49,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
             kind,
             lessonId: typeof body.lessonId === "string" ? body.lessonId : undefined,
             skillId: typeof body.skillId === "string" ? body.skillId : undefined,
-            mode: isReviewMode(body.mode) ? body.mode : undefined,
+            mode: site === "korean" && isReviewMode(body.mode) ? body.mode : undefined, // review modes are Korean-only in this release
           }),
         );
       }

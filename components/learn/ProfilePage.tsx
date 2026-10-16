@@ -59,7 +59,7 @@ export function ProfilePage({ signOutAction }: { signOutAction?: () => Promise<v
         </ul>
       </section>
 
-      {(site === "korean" || site === "english") && (
+      {site === "korean" && (
         <section className="l-card l-stack" aria-labelledby="tts-h">
           <h2 id="tts-h" className="l-h2">{t("tts.title")}</h2>
           <TtsSettingsPanel t={t} code={site === "korean" ? "ko" : "en"} speech={site === "korean" ? "ko-KR" : "en-US"} />

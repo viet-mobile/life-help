@@ -1,4 +1,6 @@
-# 공통 복습 모드 (Review modes)
+# 복습 모드 (Review modes)
+
+**이 릴리스(Korean RC)에서는 한국어 사이트(study.korean)에만 켜져 있다.** Math·English 사이트는 기존 화면·API 그대로다: `/modes`·`/cards`는 그 사이트에서 404, `cards`·`reveal` API는 404, `mode` 파라미터는 무시된다. 아래 표의 영어 `dict`/`listen` 형식은 영어 릴리스 트레인(별도)에 속하며 이 후보에는 영어 데이터가 없다.
 
 구현됨(브랜치 `claude/sleepy-ride-4x56y2`) / 아직 아님을 구분해 적는다. 모든 번역은 AI 번역이며 원어민·교사 검토가 아니다.
 
