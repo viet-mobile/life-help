@@ -51,7 +51,9 @@ const loadKit = (loc) => {
 };
 const rot = (id, n) => [...id].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) >>> 0, 7) % n;
 const noDouble = (t) => t.replace(/\}\}/g, "} }").replace(/\{\{/g, "{ {"); // "{{" / "}}" read as unresolved placeholders in content QA
-const fill = (tpl, vars) => noDouble(tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m)));
+// "y=1x+1" -> "y=x+1", "-1x" -> "-x", "2x+-1" -> "2x-1": filled coefficients read like a textbook, in every language
+const tidyAlgebra = (t) => t.replace(/(?<![0-9.A-Za-z])(-?)1(?=[xyz](?![A-Za-z]))/g, "$1").replace(/\+\s*-(?=\d|[xyz])/g, "-");
+const fill = (tpl, vars) => noDouble(tidyAlgebra(tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m))));
 const keyOf = (L) => (L.elective ? `el.${L.elective}${L.n}` : `${L.grade}${L.topic}${L.n}`);
 const ids = (L) => {
   if (L.elective) return { lesson: `math-el-${L.elective}${L.n}`, skill: `m.el.${L.elective}${L.n}`, q: `m-el-${L.elective}${L.n}`, family: `el-${L.elective}${L.n}`, grade: "H3" };

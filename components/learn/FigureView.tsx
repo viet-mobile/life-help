@@ -31,7 +31,7 @@ function Shape({ s }: { s: FigureShape }) {
     }
     case "text":
       return (
-        <text x={clamp(s.p[0])} y={clamp(s.p[1])} textAnchor={s.a === "s" ? "start" : s.a === "e" ? "end" : "middle"} stroke="none" fill="currentColor" fontSize="14" fontWeight="700">
+        <text x={clamp(s.p[0])} y={clamp(s.p[1])} textAnchor={s.a === "s" ? "start" : s.a === "e" ? "end" : "middle"} stroke="var(--l-card, #fff)" strokeWidth="4" strokeLinejoin="round" paintOrder="stroke" fill="currentColor" fontSize="14" fontWeight="700">
           {s.t}
         </text>
       );
