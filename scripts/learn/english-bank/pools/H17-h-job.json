@@ -192,7 +192,7 @@
        ]
       },
       {
-       "q": "Who must do something before the next meeting?",
+       "q": "Who is asked to send a revised budget before the next meeting?",
        "o": [
         "Daniel",
         "Priya",
@@ -433,7 +433,7 @@
        "q": "What is the writer's main point?",
        "o": [
         "Dentists should be kinder to small children",
-        "The internship built her skills and interest in healthcare",
+        "The internship built the writer's skills and interest in healthcare",
         "Forms at clinics are too difficult for most interns to complete",
         "Summer jobs are easier than school courses"
        ],
@@ -448,8 +448,8 @@
        "o": [
         "Bored because the tasks were too easy",
         "Worried because the work was new",
-        "Proud because Dr. Moon had praised her",
-        "Angry because she had to work alone"
+        "Proud because Dr. Moon had already praised the work",
+        "Angry because the work had to be done alone"
        ],
        "a": 1,
        "why": "I was nervous on the first day라고 했어요.",
@@ -472,26 +472,23 @@
        ]
       },
       {
-       "q": "What does “this habit” refer to in the last paragraph?",
+       "q": "The word “confusion” in the second paragraph is closest in meaning to",
        "o": [
-        "Double-checking the forms",
-        "Talking with the children",
-        "Greeting families at the door",
-        "Working for four weeks"
+        "a state of not understanding clearly",
+        "a feeling of great happiness after a success",
+        "a plan for a future career in healthcare",
+        "a rule about how patient forms are filled"
        ],
        "a": 0,
-       "why": "this habit은 앞서 말한 서식을 두 번 확인하는 것이에요.",
-       "std": [
-        "12직영01-01"
-       ]
+       "why": "confusion은 정확히 이해하지 못해 혼란스러운 상태를 뜻해요."
       },
       {
        "q": "What can be inferred from the last sentence?",
        "o": [
-        "She has already decided to quit school",
-        "She will return to the clinic next week",
-        "The experience may influence her future plans",
-        "She dislikes working with young patients in clinics"
+        "The writer has already decided to quit school",
+        "The writer will return to the clinic next week",
+        "The experience may influence the writer's future plans",
+        "The writer dislikes working with young patients in clinics"
        ],
        "a": 2,
        "why": "healthcare 진로에 대해 진지하게 생각하게 되었다고 했어요.",
@@ -929,7 +926,7 @@
       {
        "q": "What is new at this year's fair?",
        "o": [
-        "A workshop for writing a résumé",
+        "A special area for taking résumé photos",
         "Booths run by hospitals, firms, and farms",
         "Short talks with working professionals",
         "Free parking for all visitors"
@@ -1133,16 +1130,13 @@
       {
        "q": "What can be inferred about the writer's suggestion?",
        "o": [
-        "She wants the team to stop testing the app",
-        "She thinks the release should be moved to the middle of next year",
-        "She feels the bug is serious enough to delay the release",
-        "She feels that shorter notes should be banned"
+        "The writer wants the team to stop testing the app",
+        "The writer thinks the release should be moved to the middle of next year",
+        "The writer feels the bug is serious enough to fix before the release",
+        "The writer feels that shorter notes should be banned from the app"
        ],
        "a": 2,
-       "why": "릴리스 전에 고치자고 한 것은 문제가 심각하다고 보기 때문이에요.",
-       "std": [
-        "12직영01-05"
-       ]
+       "why": "금요일 릴리스 전에 고치자고 한 것은 사용자가 작업을 잃을 수 있는 심각한 문제로 보기 때문이에요."
       },
       {
        "q": "What is the purpose of the numbered steps?",
@@ -1159,18 +1153,15 @@
        ]
       },
       {
-       "q": "What does “reproduce” mean in this text?",
+       "q": "In the text, the word “freezes” means",
        "o": [
-        "Copy a note for several users",
-        "Create a better version of the app",
-        "Print the report on paper",
-        "Make the same problem happen again"
+        "stops responding for a while",
+        "becomes very cold inside",
+        "changes its color suddenly",
+        "grows much bigger in size"
        ],
-       "a": 3,
-       "why": "reproduce는 같은 현상을 다시 일으키는 것을 뜻해요.",
-       "std": [
-        "12직영01-05"
-       ]
+       "a": 0,
+       "why": "freezes는 앱이 한동안 반응하지 않고 멈춘다는 뜻이에요."
       }
      ]
     },
@@ -2372,7 +2363,7 @@
     },
     {
      "k": "m",
-     "q": "Choose the correct word: “Her ___ to the team meeting was very valuable.”",
+     "q": "Choose the correct word: “Her valuable ___ to the team meeting surprised everyone.”",
      "o": [
       "contribution",
       "contribute",
@@ -2380,7 +2371,7 @@
       "contributing"
      ],
      "a": 0,
-     "why": "소유격 her 뒤에는 명사가 와야 하므로 contribution이에요.",
+     "why": "소유격 her와 형용사 valuable 뒤에는 명사가 와야 하므로 contribution이에요.",
      "cat": "word form"
     },
     {
@@ -2584,24 +2575,25 @@
        "which"
       ]
      },
-     "rule": "소유를 나타내는 관계대명사는 whose이며, 뒤에 소유격 대명사를 또 쓰지 않아요."
+     "rule": "소유를 나타내는 관계대명사는 whose이며, 뒤에 소유격 대명사를 또 쓰지 않아요.",
+     "ord": false
     },
     {
      "k": "s",
      "good": "She is interested in working for an international company.",
      "ko": "그녀는 국제적인 회사에서 일하는 데 관심이 있어요.",
      "bad": [
-      "She is interested in work for an international company.",
+      "She is interested on working for an international company.",
       "She is interested in to work for an international company.",
-      "She is interested in works for an international company."
+      "She is interested in worked for an international company."
      ],
      "cz": {
       "st": "She is interested in ___ for an international company.",
       "ok": "working",
       "wr": [
-       "work",
        "to work",
-       "worked"
+       "worked",
+       "to working"
       ]
      },
      "rule": "전치사 뒤에는 동명사(-ing)가 와요.",
