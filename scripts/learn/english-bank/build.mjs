@@ -161,12 +161,19 @@ for (const { skill, packet, item } of valid) {
     qid = `eb-${id}-cloze`; r = shuffled(qid, [item.cz.ok, ...item.cz.wr]);
     push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint({ ...item, hint: item.hint ?? okHint(HINTS[id]?.s, item.cz.ok, item.cz.wr) })], explanation: expl }));
     const toks = item.good.split(/\s+/);
-    // review modes (docs/learn/review-modes.md): dictation and listening are derived from the already-reviewed sentence, so they inherit its review state
-    if (toks.length >= 3 && toks.length <= 12) {
+    // review modes (docs/learn/review-modes.md): dictation and listening are derived from the already-reviewed sentence, so they inherit its review state.
+    // Sample review (2026-10-16, 120 samples, 20% defects) -> rules below: no dictation where speech cannot fix the spelling, no listening where options differ only in spelling.
+    const spokenAmbiguous = /[0-9'’\-:]|\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|first|second|third|fourth|fifth|cannot|email|to|too|two|there|their|its|your|whose|write|right|hear|here|by|buy|bye|knew|new|no|know|one|won|weather|whether|sea|see|son|sun|meet|meat|week|weak)\b/i;
+    const sk = (w) => w.toLowerCase().replace(/[^a-z]/g, "").replace(/ie/g, "i").replace(/y/g, "i").replace(/(.)\1+/g, "$1").replace(/e(?=[sd]$)/, "");
+    const soundsSame = (a, b) => { const x = a.split(/\s+/), y = b.split(/\s+/); return x.length === y.length && x.every((w, i) => w.toLowerCase().replace(/[^a-z]/g, "") === y[i].toLowerCase().replace(/[^a-z]/g, "") || sk(w) === sk(y[i])) ; };
+    const properMid = toks.slice(1).some((w) => /^[A-Z]/.test(w) && w !== "I");
+    if (toks.length >= 3 && toks.length <= 12 && !spokenAmbiguous.test(item.good) && !properMid) {
       qid = `eb-${id}-dict`;
       push(skill, packet, item, "dict", { id: qid, site: "english", type: "short_answer", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 60, status: "DRAFT", difficulty: clamp(d + 1), prompt: "들려주는 영어 문장을 듣고 그대로 쓰세요. (대소문자·문장부호·띄어쓰기 여분은 봐줘요. 철자는 정확해야 해요.)", audioText: item.good, answer: { kind: "text", accepted: [item.good], dictation: "en" }, hints: [`모두 ${toks.length}단어예요. 다시 들어 보세요(느리게 듣기도 가능).`, `첫 단어: “${toks[0]}”`], explanation: expl });
+    }
+    if (toks.length >= 3 && toks.length <= 12 && !item.bad.some((b) => soundsSame(item.good, b))) {
       qid = `eb-${id}-listen`; r = shuffled(qid, [item.good, ...item.bad]);
-      push(skill, packet, item, "listen", mk(skill, qid, { difficulty: d, prompt: "들려주는 문장과 같은 것을 고르세요.", audioText: item.good, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["소리를 다시 듣고, 보기 문장을 한 낱말씩 비교해 보세요.", `문장은 ${toks.length}단어이고 “${toks[0]}”로 시작해요.`], explanation: expl }));
+      push(skill, packet, item, "listen", mk(skill, qid, { difficulty: d, prompt: "들려주는 문장과 같은 것을 고르세요.", audioText: item.good, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["소리를 다시 듣고(느리게 듣기도 가능), 보기 문장을 한 낱말씩 비교해 보세요.", "낱말 끝소리(-s, -ed 등)와 빠진 낱말이 있는지 들어 보세요."], explanation: expl }));
     }
     if (item.ord !== false && toks.length >= 3 && toks.length <= 12) {
       qid = `eb-${id}-order`;
