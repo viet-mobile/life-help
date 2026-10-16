@@ -1,3 +1,4 @@
+import { NEUTRAL_SET } from "@/lib/learn/hintGate";
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
@@ -72,7 +73,10 @@ describe("English practice bank = server-only, versioned, sha-pinned static asse
       const q = byId.get(s.id)!;
       expect(q, s.id).toBeTruthy();
       expect(JSON.stringify(q.answer)).toBe(JSON.stringify((s as unknown as { answer: unknown }).answer));
-      expect(q.hints).toEqual((s as unknown as { hints: string[] }).hints);
+      const rawHints = (s as unknown as { hints: string[] }).hints;
+      expect(q.hints[0]).toBe(rawHints[0]); // hint 1 is served as authored
+      expect(NEUTRAL_SET).toContain(q.hints[1]); // hint 2 is fail-closed (lib/learn/hintGate.ts); the authored one stays in the data file
+      expect(q.hints).toHaveLength(rawHints.length);
     }
     for (const q of all.slice(0, 500)) {
       const pub = JSON.stringify(toPublicQuestion(q));
