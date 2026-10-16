@@ -90,6 +90,14 @@
         "hints": [
           "Find the lines where she says something positive.",
           "Compare what she names in '토요일은 좀…' with what she names in '일요일은 좋아요!'."
+        ],
+        "acceptable": [
+          {
+            "ids": [
+              "a"
+            ],
+            "reason": "Citing only the clearest evidence (she accepts Sunday) is reasonable; d adds that she names only the day, not the film."
+          }
         ]
       },
       {
@@ -104,24 +112,26 @@
             "label": "polite 요/습니다 ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
             "id": "w2",
-            "label": "mentions another day or time (일요일, 주말, 다음 ...)",
+            "label": "names a different day/time than Saturday (일요일, 내일, 다음 ...)",
             "mode": "any",
             "patterns": [
-              "(월|화|수|목|금|토|일)요일",
-              "주말",
+              "일요일",
+              "(월|화|수|목|금)요일",
               "내일",
               "다음",
-              "이번 주"
+              "이번 주 일",
+              "평일",
+              "나중"
             ]
           },
           {
             "id": "w3",
-            "label": "has a softener (좀, 죄송, 아쉽, 것 같 ...)",
+            "label": "softener or reason (좀, 죄송, 약속, 일이 있 ...)",
             "mode": "any",
             "patterns": [
               "좀",
@@ -132,7 +142,16 @@
               "것 같",
               "어렵",
               "어려울",
-              "힘들"
+              "힘들",
+              "약속",
+              "일이",
+              "일정",
+              "바빠",
+              "바쁘",
+              "있어서",
+              "있어요",
+              "못 가",
+              "안 될"
             ]
           },
           {
@@ -141,6 +160,20 @@
             "mode": "none",
             "patterns": [
               "싫어"
+            ]
+          },
+          {
+            "id": "w5",
+            "label": "actually proposes it (어때요, -ㄹ까요, 에 만나요 ...)",
+            "mode": "any",
+            "patterns": [
+              "어때",
+              "어떠",
+              "까요",
+              "래요",
+              "(에|엔) ?(같이 )?(만나|먹|봐|보|가|해|볼)",
+              "괜찮",
+              "좋을 것 같"
             ]
           }
         ],
@@ -167,12 +200,20 @@
           {
             "text": "토요일은 안 돼.",
             "why": "Drops the polite ending to a classmate you use 요 with, and offers no alternative."
+          },
+          {
+            "text": "죄송해요, 토요일은 좀 어려워요.",
+            "why": "Soft, but it offers no other day, so the plan is left hanging."
+          },
+          {
+            "text": "미안, 토요일은 약속 있으니까 다음 주말에 보자.",
+            "why": "Casual ending to a classmate you use 요 with."
           }
         ],
         "humanReview": "Whether the tone feels warm and natural, and whether the reason given is believable and not rude, needs a person.",
         "hints": [
           "Start by saying sorry or that it is a pity, then name Saturday.",
-          "End with a question that proposes a different day."
+          "Say sorry or give a short reason, then end with a question that proposes a different day."
         ]
       }
     ],
@@ -301,31 +342,42 @@
         "checks": [
           {
             "id": "w1",
-            "label": "asks the price politely (얼마예요/얼마입니까 ...)",
+            "label": "asks the price politely (얼마예요, 얼마인가요, 가격 ...)",
             "mode": "any",
             "patterns": [
-              "얼마(예요|에요|입니까|입니다|인가요|죠|지요|일까요)"
+              "얼마(예요|에요|입니까|입니다|인가요|죠|지요|일까요|해요|하나요|나요)",
+              "가격이",
+              "가격이 어떻게",
+              "얼마\\s*해요"
             ]
           },
           {
             "id": "w2",
-            "label": "polite request (주세요, 주시겠어요 ...)",
+            "label": "polite request or order (주세요, 살게요, 부탁 ...)",
             "mode": "any",
             "patterns": [
               "주세요",
               "주시겠",
               "주실 수",
-              "부탁"
+              "부탁",
+              "살게요",
+              "사겠습니다",
+              "드릴게요",
+              "가져갈게요"
             ]
           },
           {
             "id": "w3",
-            "label": "no casual 얼마야 / 줘",
+            "label": "no casual 얼마야 / 줘 / 고마워 / 살게",
             "mode": "none",
             "patterns": [
               "얼마야",
               "얼마냐",
-              "줘(?!요)"
+              "얼마니",
+              "줘(?!요)",
+              "줄래",
+              "고마워(?!요)",
+              "살게(?!요)"
             ]
           }
         ],
@@ -355,7 +407,7 @@
         "humanReview": "Whether a learner's alternative wording (for example '두 봉지 주세요' vs '두 봉지 부탁드려요') is natural.",
         "hints": [
           "Change the endings of both lines to a polite form.",
-          "For asking someone to give you something, think of 주세요."
+          "Think of what you say when you order at a café."
         ]
       }
     ],
@@ -432,7 +484,7 @@
           },
           {
             "id": "b",
-            "text": "버스는 8시 30분인데, 7시에 만나요?"
+            "text": "버스 출발 시간이랑 만나는 시간이 왜 달라요?"
           },
           {
             "id": "c",
@@ -447,22 +499,30 @@
           {
             "id": "e",
             "text": "7시는 아침 7시예요, 저녁 7시예요?",
-            "reveals": "The bus leaves in the morning, so an evening meeting makes no sense. The real puzzle is the gap between 7:00 and 8:30."
+            "reveals": "Asking AM or PM can be a first step, but the bus leaves in the morning, so an evening meeting makes no sense. The real puzzle is the gap between the bus time and the meeting time."
           }
         ],
         "correct": [
           "b"
         ],
-        "explain": "The two sources disagree about the time (bus 8:30 vs meeting at 7:00). The best question points out the difference so the friend can explain.",
+        "explain": "The two sources disagree about the time (the notice says the bus leaves at 8:30, the text says to meet at 7:00). The best question points at the difference so the friend can explain.",
         "hints": [
-          "Underline every time in the notice and in the text.",
-          "Which of the questions asks about something you do NOT already know from the notice?"
+          "Find every time in the notice and in the text, then compare them.",
+          "Which question asks about something you do NOT already know from the notice?"
+        ],
+        "acceptable": [
+          {
+            "ids": [
+              "e"
+            ],
+            "reason": "Asking AM/PM is a reasonable first clarification, but it does not yet show that you noticed the 8:30 bus time."
+          }
         ]
       },
       {
         "id": "s2",
         "kind": "write",
-        "prompt": "Write your question to your friend in Korean (friendly -요 speech). Mention the time or the bus.",
+        "prompt": "Write your question to your friend in Korean (friendly -요 speech). Mention both the bus time (or the notice) and the 7:00 meeting.",
         "placeholder": "예: ...",
         "minChars": 5,
         "checks": [
@@ -471,23 +531,39 @@
             "label": "is a question",
             "mode": "any",
             "patterns": [
-              "\\?",
-              "[가-힣]요(?![가-힣])"
+              "[?？]",
+              "까요",
+              "나요",
+              "맞아요",
+              "맞죠",
+              "거예요",
+              "건가요",
+              "인가요"
             ]
           },
           {
             "id": "w2",
-            "label": "points to the time or the bus",
+            "label": "mentions the bus or the 8:30 time",
             "mode": "any",
             "patterns": [
-              "7",
-              "8",
-              "일곱",
+              "8\\s*시",
+              "8:30",
               "여덟",
+              "팔 시",
               "버스",
               "출발",
-              "시간",
-              "시에"
+              "공지"
+            ]
+          },
+          {
+            "id": "w3",
+            "label": "mentions the 7:00 meeting",
+            "mode": "any",
+            "patterns": [
+              "7\\s*시",
+              "7:",
+              "일곱",
+              "만나"
             ]
           }
         ],
@@ -576,7 +652,8 @@
     "differsFromPlain": "Plain practice asks the price of one item. Here the message leaves things unsaid, and you must find several baskets that fit every condition.",
     "prerequisites": [
       "Can read Hangul",
-      "Knows numbers and 봉지"
+      "Knows numbers and 봉지",
+      "Has met -까지 (up to), -보다 (than) and 이상 (this number or more); they are explained in the hints"
     ],
     "minutes": 10,
     "material": "Your friend texts you before you go to the market:\n\n\"시장에 가요? 그럼 사과랑 귤 좀 사 와요. 만 원까지 쓸 수 있어요. 귤이 사과보다 많아야 해요. 모두 5봉지 이상이요.\"\n\n[가격표]\n사과 한 봉지: 2,000원\n귤 한 봉지: 1,000원",
@@ -619,7 +696,7 @@
       {
         "id": "s2",
         "kind": "build",
-        "prompt": "Find 3 different baskets that fit every condition in the message. a = bags of apples, g = bags of tangerines.",
+        "prompt": "Find 3 baskets that fit every condition in the message, each with a different number of apple bags. a = bags of apples, g = bags of tangerines.",
         "vars": [
           {
             "name": "a",
@@ -693,14 +770,14 @@
         ],
         "explain": "For example 1 apple + 4 tangerines = 6,000 won; 2 + 3 = 7,000 won; 3 + 4 = 10,000 won. Many baskets fit because the message gives limits, not one exact order.",
         "hints": [
-          "Write down the four conditions in your own words first.",
+          "Write down the conditions in your own words first: '-보다 많아야 해요' = must be more than; '이상' = this number or more.",
           "Try a = 1 and increase g until the total reaches 5 bags.",
-          "Check the money last: 2,000 × a + 1,000 × g."
+          "Check the money last: 2,000 × a + 1,000 × g, then change a."
         ],
         "because": {
           "id": "s2b",
           "kind": "write",
-          "prompt": "Send your friend a short text in Korean (polite -요) saying what you bought and how much you spent.",
+          "prompt": "Pick ONE of your baskets and send your friend a short text in Korean (polite -요) saying how many bags of each fruit you bought and the total.",
           "placeholder": "예: ...",
           "minChars": 8,
           "checks": [
@@ -709,38 +786,37 @@
               "label": "polite ending",
               "mode": "any",
               "patterns": [
-                "[가-힣]요(?![가-힣])|니다|니까"
+                "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
               ]
             },
             {
               "id": "w2",
-              "label": "names both fruits",
-              "mode": "all",
+              "label": "gives the apple count",
+              "mode": "any",
               "patterns": [
-                "사과",
-                "귤"
+                "사과[^귤]{0,8}(\\d|한|두|세|네|다섯|여섯|일곱|하나|둘|셋|넷)"
               ]
             },
             {
               "id": "w3",
-              "label": "has a number or count",
+              "label": "gives the tangerine count",
               "mode": "any",
               "patterns": [
-                "\\d",
-                "[한두세네]\\s*봉지",
-                "다섯",
-                "여섯",
-                "일곱",
-                "하나",
-                "둘",
-                "셋",
-                "넷"
+                "귤[^사]{0,8}(\\d|한|두|세|네|다섯|여섯|일곱|여덟|하나|둘|셋|넷)"
+              ]
+            },
+            {
+              "id": "w4",
+              "label": "says the total amount (원)",
+              "mode": "any",
+              "patterns": [
+                "원"
               ]
             }
           ],
           "selfAssess": [
-            "Does my text match one of the baskets I built?",
-            "Did I say both what and how many?"
+            "Do the numbers in my text match one basket I built?",
+            "Is the total correct (2,000 × apples + 1,000 × tangerines)?"
           ],
           "modelAnswers": [
             {
@@ -760,12 +836,13 @@
               "why": "Does not say which fruit or how many."
             }
           ],
-          "humanReview": "Whether the numbers in the text match a valid basket.",
+          "humanReview": "Whether the counts and the total in the text really match a valid basket (the checker only sees that numbers are present).",
           "hints": [
-            "Use your basket from above: which two numbers?",
-            "Say the fruit, the number of 봉지, then the total."
+            "Use one basket from above: which two numbers?",
+            "Say the apple count, the tangerine count, then the total in won."
           ]
-        }
+        },
+        "distinctBy": "a"
       }
     ],
     "rubric": [
@@ -853,11 +930,13 @@
               },
               {
                 "id": "c",
-                "text": "Asking you to move out"
+                "text": "Asking you to move out",
+                "reveals": "Nothing in the sentence suggests moving out; a neighbour who wanted that would be far more direct."
               },
               {
                 "id": "d",
-                "text": "Inviting you to visit"
+                "text": "Inviting you to visit",
+                "reveals": "There is no invitation language (like 놀러 오세요). The sentence is about sounds that bother the speaker."
               }
             ],
             "reasonable": [
@@ -867,7 +946,7 @@
             "after": "At this point both small talk and a hint at a problem are possible, but '들려서요…' ends with a reason and leaves the result unsaid, which often signals a complaint."
           },
           {
-            "info": "아래층 이웃: 아기가 일찍 자는데, 소리가 나면 자꾸 깨서요.",
+            "info": "아래층 이웃: 아기가 9시쯤 자는데, 그때 소리가 나면 자꾸 깨서요.",
             "ask": "Whose baby is it, and what does the neighbour hope?",
             "options": [
               {
@@ -876,15 +955,18 @@
               },
               {
                 "id": "b",
-                "text": "Your baby; they want to help you"
+                "text": "Your baby; they want to help you",
+                "reveals": "The baby is the one who wakes up because of the sound from above, so it belongs to the speaker, not to you."
               },
               {
                 "id": "c",
-                "text": "Their own baby; they want you to move"
+                "text": "Their own baby; they want you to move",
+                "reveals": "The speaker's hope is about the noise, not about where you live; there is no sign they want you to move."
               },
               {
                 "id": "d",
-                "text": "No one's baby; it is only small talk"
+                "text": "No one's baby; it is only small talk",
+                "reveals": "The details about the baby (자는데, 깨서요) are a reason for a request, so this is more than small talk."
               }
             ],
             "reasonable": [
@@ -902,15 +984,18 @@
               },
               {
                 "id": "b",
-                "text": "Still very angry"
+                "text": "Still very angry",
+                "reveals": "'아니에요, 감사해요' is a calm, thankful tone, not an angry one."
               },
               {
                 "id": "c",
-                "text": "Wants the children to stop running at all times"
+                "text": "Wants the children to stop running at all times",
+                "reveals": "They ask only for after 9 ('9시 이후만'), not for no running at all times."
               },
               {
                 "id": "d",
-                "text": "Does not care about the noise"
+                "text": "Does not care about the noise",
+                "reveals": "They still say '부탁드려요', so quiet after 9 does matter to them."
               }
             ],
             "reasonable": [
@@ -932,7 +1017,7 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
@@ -946,15 +1031,34 @@
           },
           {
             "id": "w3",
-            "label": "promise to change (조심, 신경, 줄이 ...)",
+            "label": "promise to change (조심, 조용히, 안 나게, 줄이 ...)",
             "mode": "any",
             "patterns": [
               "조심",
-              "신경",
               "줄이",
               "줄일",
               "뛰지",
-              "주의"
+              "주의",
+              "조용",
+              "안 나게",
+              "안 나도록",
+              "않도록",
+              "않게",
+              "신경 써",
+              "신경 쓸",
+              "신경 쓰겠"
+            ]
+          },
+          {
+            "id": "w4",
+            "label": "does not dismiss the complaint",
+            "mode": "none",
+            "patterns": [
+              "신경\\s*쓰지\\s*않",
+              "상관\\s*없",
+              "알아서",
+              "어쩔 수 없",
+              "내 마음"
             ]
           }
         ],
@@ -1116,6 +1220,16 @@
         "hints": [
           "Which numbers did you compare with the table?",
           "Cross out anything that does not change the amount."
+        ],
+        "acceptable": [
+          {
+            "ids": [
+              "a",
+              "b",
+              "c"
+            ],
+            "reason": "Knowing how to apply is useful for the next step, but it does not change the amount of the refund."
+          }
         ]
       },
       {
@@ -1127,17 +1241,26 @@
         "checks": [
           {
             "id": "w1",
-            "label": "states the amount (절반)",
+            "label": "states a half refund (절반/반/반액/1/2 + 환불)",
             "mode": "any",
             "patterns": [
-              "절반",
-              "반만",
-              "반 환불",
-              "50"
+              "(절반|반액|반|1/2|2분의 ?1|50 ?%?)\\s*(만\\s*)?(은\\s*|을\\s*|이\\s*)?(환불|돌려|받을 수)",
+              "환불[^.?!]{0,6}(절반|반액|반 )"
             ]
           },
           {
             "id": "w2",
+            "label": "does not conclude 'no refund'",
+            "mode": "none",
+            "patterns": [
+              "환불\\s*(이\\s*|은\\s*)?(안\\s*돼|불가|안\\s*된)",
+              "환불\\s*못",
+              "받을 수 없",
+              "환불 없"
+            ]
+          },
+          {
+            "id": "w3",
             "label": "uses the numbers (3, 8 ...)",
             "mode": "any",
             "patterns": [
@@ -1150,7 +1273,7 @@
             ]
           },
           {
-            "id": "w3",
+            "id": "w4",
             "label": "says what to do (신청, 사무실)",
             "mode": "any",
             "patterns": [
@@ -1236,10 +1359,10 @@
     "title": "Same request, two listeners",
     "format": "rewrite-for-audience",
     "generative": true,
-    "goal": "Judge which request is too casual for a professor, then write the same request to a professor and to a close friend.",
+    "goal": "Judge which request to a professor is a command rather than a softened request, then write the same request to a professor and to a close friend.",
     "thinking": [
-      "Judging speech level and honorifics against the relationship",
-      "Softening a request",
+      "Judging the strength of a request",
+      "Softening a request for a professor",
       "Rewriting the same meaning for a different listener"
     ],
     "differsFromPlain": "Plain practice converts a sentence into honorific forms. Here you must choose and produce different wording for two real listeners who need the same thing.",
@@ -1258,30 +1381,30 @@
           {
             "id": "a",
             "text": "교수님, 아파서 수업에 못 갔습니다. 자료를 보내 주실 수 있을까요?",
-            "reveals": "This is a suitable, softened request."
+            "reveals": "This is suitable: '-(으)ㄹ 수 있을까요?' is a softened question that leaves the professor room to say no."
           },
           {
             "id": "b",
-            "text": "교수님, 아파서 수업에 못 갔어요. 자료를 좀 빨리 보내 줘요."
+            "text": "교수님, 아파서 수업에 못 갔습니다. 자료를 오늘 안에 꼭 보내세요."
           },
           {
             "id": "c",
             "text": "교수님, 아파서 수업에 못 갔습니다. 자료를 받을 수 있을까요?",
-            "reveals": "This is polite and suitable."
+            "reveals": "This is suitable: it asks whether it is possible instead of telling the professor to do something."
           },
           {
             "id": "d",
             "text": "교수님, 아파서 수업에 못 갔습니다. 자료를 보내 주시면 감사하겠습니다.",
-            "reveals": "This is very polite and suitable."
+            "reveals": "This is suitable: '-(으)시면 감사하겠습니다' is a common formal way to make a request."
           }
         ],
         "correct": [
           "b"
         ],
-        "explain": "'보내 줘요' lacks the honorific '주세요/주실 수' and sounds like asking a friend; '빨리' also pushes. The others soften the request.",
+        "explain": "b tells the professor what to do ('보내세요') and adds a deadline ('오늘 안에 꼭'); it is an order. The others ask, leaving the professor free to answer.",
         "hints": [
-          "Look at the verb the request ends with in each message.",
-          "Which one would sound strange if you said it out loud to a professor?"
+          "All four are formal in tone, so compare something else: is each message asking or telling?",
+          "Imagine the professor reading each message: which one sounds like an instruction?"
         ]
       },
       {
@@ -1320,12 +1443,12 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
             "id": "w4",
-            "label": "has a softener or apology (혹시, 죄송 ...)",
+            "label": "has a softener, apology or thanks (혹시, 죄송, 감사 ...)",
             "mode": "any",
             "patterns": [
               "혹시",
@@ -1333,7 +1456,10 @@
               "실례",
               "괜찮으시",
               "가능",
-              "바쁘시"
+              "바쁘시",
+              "감사",
+              "부탁",
+              "결석"
             ]
           },
           {
@@ -1390,14 +1516,11 @@
             "patterns": [
               "줄래",
               "줄 수",
-              "보내 줘",
-              "보내줘",
+              "보내 ?줘",
+              "공유",
+              "주라",
+              "줘",
               "빌려",
-              "줘\\?",
-              "줘!",
-              "줘\\.",
-              "줘~",
-              "좀 줘",
               "사진",
               "찍어"
             ]
@@ -1510,29 +1633,30 @@
       {
         "id": "s1",
         "kind": "pickLine",
-        "prompt": "The conversation became awkward. At which line did the misunderstanding begin?",
+        "prompt": "The conversation became awkward. Pick a line that is part of the cause: either the phrase that can be read two ways, or the reply that turns it into a plan.",
         "lines": [
           "이웃: 안녕하세요. 요즘 잘 지내세요?",
           "나: 네, 잘 지내요. 잘 지내시죠?",
           "이웃: 네. 언제 밥 한번 먹어요.",
-          "나: 네! 좋아요. 이번 주 토요일 저녁 어때요?",
-          "이웃: 아… 토요일은 좀…",
-          "나: 그럼 일요일은요? 몇 시가 좋아요?",
+          "나: 네! 좋아요. 이번 주 금요일 저녁 어때요?",
+          "이웃: 아… 글쎄요. 일정을 한번 봐야 해서요.",
+          "나: 그럼 다음 주는요? 몇 시가 좋아요?",
           "이웃: 아, 네… 나중에 연락드릴게요."
         ],
         "wrong": [
+          2,
           3
         ],
-        "explain": "'언제 밥 한번 먹어요' is often a friendly closing phrase, like 'let's get lunch sometime'. Line 4 treats it as a concrete plan and sets a date. The neighbour gets uncomfortable (…, 나중에).",
+        "explain": "'언제 밥 한번 먹어요' (line 3) is often a friendly closing phrase, like 'let's get lunch sometime'. Line 4 treats it as a concrete plan and sets a date. The neighbour's hesitation (…, 글쎄요, 나중에) shows the pressure.",
         "hints": [
-          "Find the first line where the two people seem to want different things.",
-          "Compare how concrete line 3 is with line 4."
+          "Find the first line where one person gets more concrete than the other.",
+          "Ask: is there any time or place in the neighbour's own sentence?"
         ]
       },
       {
         "id": "s2",
         "kind": "choose",
-        "prompt": "Why did the neighbour answer '토요일은 좀…' and '나중에 연락드릴게요'?",
+        "prompt": "Why did the neighbour answer '글쎄요…' and '나중에 연락드릴게요'?",
         "options": [
           {
             "id": "a",
@@ -1545,8 +1669,8 @@
           },
           {
             "id": "c",
-            "text": "The neighbour is busy every Saturday and Sunday.",
-            "reveals": "Possible, but then the neighbour could have said so; the repeated soft '…' and 'later' fit a pleasantry better."
+            "text": "The neighbour is simply busy this week.",
+            "reveals": "Possible, but a neighbour who really wanted to meet would have suggested another day; the hesitant, non-committal tone fits a pleasantry better."
           },
           {
             "id": "d",
@@ -1583,7 +1707,7 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
@@ -1609,11 +1733,18 @@
             "mode": "none",
             "patterns": [
               "(월|화|수|목|금|토|일)요일",
-              "[0-9]+\\s*시",
+              "\\d",
               "몇 시",
               "내일",
+              "모레",
               "오늘",
-              "이번 주"
+              "이번 주",
+              "다음 주",
+              "저녁에",
+              "아침에",
+              "점심에",
+              "주말",
+              "언제 만"
             ]
           }
         ],
@@ -1632,17 +1763,21 @@
         ],
         "badAnswers": [
           {
-            "text": "네! 이번 주 토요일 저녁 어때요?",
+            "text": "네! 이번 주 금요일 저녁 어때요?",
             "why": "Fixes a date again."
           },
           {
             "text": "아니요.",
             "why": "No friendly response."
+          },
+          {
+            "text": "네, 좋아요. 모레 저녁에 먹어요.",
+            "why": "Still fixes a day and time."
           }
         ],
         "humanReview": "Whether the reply fits the tone; a learner who wants to follow up gently (e.g., '언제 시간 괜찮으세요?') needs a person to judge it.",
         "hints": [
-          "Agree in a general way without a day.",
+          "Agree in a general way without naming a day or time.",
           "Try '다음에' or '기회가 되면'."
         ]
       }
@@ -1712,7 +1847,7 @@
       {
         "id": "s1",
         "kind": "choose",
-        "prompt": "To answer 'Can I put these out tonight?', which one question do you need to ask the neighbour first?",
+        "prompt": "To give ONE exact answer to 'Can I put these out tonight?', which question do you need to ask the neighbour first?",
         "options": [
           {
             "id": "a",
@@ -1742,7 +1877,7 @@
         "correct": [
           "a"
         ],
-        "explain": "Paper goes out on Tuesday (tonight is fine), but Styrofoam is Wednesday (not tonight). '박스' alone does not say which one it is, so this is the question that changes the answer.",
+        "explain": "Paper goes out on Tuesday (tonight is fine), but Styrofoam is Wednesday (not tonight). '박스' alone does not say which one it is. You could also answer both cases at once, but this is the only fact that changes the answer; the sofa is a 'no' either way.",
         "hints": [
           "Go through each item (박스, 소파, 페트병) and ask: is the answer for tonight already clear?",
           "For which item does the answer depend on a detail the neighbour did not give?"
@@ -1779,7 +1914,7 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
@@ -1792,11 +1927,9 @@
           },
           {
             "id": "w3",
-            "label": "sofa rule (신고, 스티커, 목요일)",
+            "label": "sofa goes out on Thursday (목요일)",
             "mode": "any",
             "patterns": [
-              "신고",
-              "스티커",
               "목요일"
             ]
           },
@@ -1811,25 +1944,35 @@
           },
           {
             "id": "w5",
-            "label": "mentions the PET bottles (페트병/플라스틱)",
+            "label": "mentions the PET bottles (페트병/PET/플라스틱)",
             "mode": "any",
             "patterns": [
-              "페트병",
+              "페트",
+              "PET",
               "플라스틱"
+            ]
+          },
+          {
+            "id": "w6",
+            "label": "does not tell them to put the sofa out today",
+            "mode": "none",
+            "patterns": [
+              "소파[^.?!]{0,12}오늘\\s*(밤|저녁)?(에)?\\s*내놓(으세요|으셔도|아도|으시|아요|으면)"
             ]
           }
         ],
         "selfAssess": [
           "Did I answer each of the three items?",
           "Did I give the condition for the box instead of guessing?",
-          "Is my tone friendly toward a new neighbour?"
+          "Is my tone friendly toward a new neighbour?",
+          "Did I mention that the sofa must be reported to the office first and carry a sticker?"
         ],
         "modelAnswers": [
           {
-            "text": "안녕하세요. 페트병은 오늘 저녁 9시까지 비워서 내놓으셔도 돼요. 박스는 종이이면 오늘, 스티로폼이면 내일 저녁에 내놓으세요. 소파는 관리사무소에 신고하고 스티커를 붙여서 목요일 아침 7시 전에 내놓으셔야 해요."
+            "text": "안녕하세요. 페트병은 오늘 저녁 9시까지 비워서 내놓으셔도 돼요. 박스는 종이 박스면 오늘, 스티로폼 박스면 내일 저녁에 내놓으세요. 소파는 관리사무소에 신고하고 스티커를 붙여서 목요일 아침 7시 전에 내놓으셔야 해요."
           },
           {
-            "text": "소파는 오늘은 안 되고 목요일 아침 7시 전에 내놓으세요. 먼저 관리사무소에 신고해야 해요. 박스가 종이이면 오늘 괜찮아요. 페트병도 오늘 저녁에 내놓으셔도 돼요.",
+            "text": "소파는 오늘은 안 되고 목요일 아침 7시 전에 내놓으세요. 먼저 관리사무소에 신고해야 해요. 박스가 종이 박스면 오늘 괜찮아요. 페트병도 오늘 저녁에 내놓으셔도 돼요.",
             "note": "Shorter; leaves out the Styrofoam case."
           }
         ],
@@ -1841,12 +1984,16 @@
           {
             "text": "소파는 목요일에 내놓으세요.",
             "why": "Misses the box type and the bottles."
+          },
+          {
+            "text": "페트병은 오늘 저녁에 내놓으세요. 박스는 종이 박스면 오늘, 스티로폼 박스면 내일이에요. 소파는 신고하고 오늘 내놓으세요.",
+            "why": "Tells the neighbour to put the sofa out today; it can only go out on Thursday."
           }
         ],
         "humanReview": "Accuracy of the rule details (times, days) and whether the reply stays helpful and polite.",
         "hints": [
           "Take the items one by one: 페트병, 박스, 소파.",
-          "For 박스, use a '-이면 ... , -이면 ...' structure."
+          "For 박스, use a '-면 ..., -면 ...' structure."
         ]
       }
     ],
@@ -1931,7 +2078,8 @@
               },
               {
                 "id": "b",
-                "text": "A purely optional favour; fine to ignore"
+                "text": "A purely optional favour; fine to ignore",
+                "reveals": "A supervisor's request is rarely optional; the softeners (혹시, 시간 되면) only keep it polite."
               },
               {
                 "id": "c",
@@ -1939,13 +2087,15 @@
               },
               {
                 "id": "d",
-                "text": "An order to do it immediately"
+                "text": "An order to do it immediately",
+                "reveals": "No word like 지금 or 당장 appears, so it is not an immediate order."
               }
             ],
             "reasonable": [
-              "a"
+              "a",
+              "c"
             ],
-            "after": "Between colleagues this could be optional, but from a supervisor '혹시 ... 주실 수 있을까요?' is a polite way of asking for something to be done."
+            "after": "From a supervisor, '혹시 ... 주실 수 있을까요?' is normally a polite way of asking for something to be done. Reading it literally as a question about your free time is possible at first, but the next messages show it is a real request."
           },
           {
             "info": "팀장님: 급한 건 아니고요, 내일 오전 회의 전까지만 보면 돼요.",
@@ -1953,7 +2103,8 @@
             "options": [
               {
                 "id": "a",
-                "text": "Any time this week"
+                "text": "Any time this week",
+                "reveals": "'내일 오전 회의 전까지만' sets a tighter limit than 'this week'."
               },
               {
                 "id": "b",
@@ -1961,11 +2112,13 @@
               },
               {
                 "id": "c",
-                "text": "Right now"
+                "text": "Right now",
+                "reveals": "'급한 건 아니고요' says it is not urgent, so not right now."
               },
               {
                 "id": "d",
-                "text": "After tomorrow's meeting"
+                "text": "After tomorrow's meeting",
+                "reveals": "'전까지' means before the meeting, not after."
               }
             ],
             "reasonable": [
@@ -1979,7 +2132,8 @@
             "options": [
               {
                 "id": "a",
-                "text": "Do nothing until the morning, the deadline is the meeting"
+                "text": "Do nothing until the morning, the deadline is the meeting",
+                "reveals": "This meets the stated deadline but ignores the new wish for today ('더 좋고요'); a supervisor's wish usually counts."
               },
               {
                 "id": "b",
@@ -1987,7 +2141,8 @@
               },
               {
                 "id": "c",
-                "text": "Ignore the new message, the first deadline is the real one"
+                "text": "Ignore the new message, the first deadline is the real one",
+                "reveals": "The new message adds to the first one; it does not cancel it, and a supervisor's wish matters."
               },
               {
                 "id": "d",
@@ -2014,7 +2169,7 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
@@ -2025,7 +2180,14 @@
               "알겠",
               "확인",
               "네",
-              "감사"
+              "넵",
+              "넹",
+              "감사",
+              "볼게",
+              "보겠",
+              "하겠",
+              "할게",
+              "드리겠"
             ]
           },
           {
@@ -2145,8 +2307,8 @@
           },
           {
             "id": "b",
-            "text": "저 오늘은 안 갈래요. 다른 약속이 있어서 못 가요.",
-            "reveals": "'안 갈래요' is a blunt statement of what you do not want, with no apology or softener; it sounds too casual for a supervisor."
+            "text": "저는 오늘 회식에 안 갑니다. 다른 약속이 있어서 못 갑니다.",
+            "reveals": "The ending is formal, but the message is a bare statement: no apology, no regret and no softening ('안 갑니다' is a flat 'I am not going'), which is too blunt for a supervisor."
           },
           {
             "id": "c",
@@ -2162,10 +2324,33 @@
           "c",
           "d"
         ],
-        "explain": "a, c and d give a softener (죄송하지만, 아쉽지만 or 같습니다), a reason, and a formal ending. b states a personal wish bluntly.",
+        "explain": "a, c and d show regret or apology, give a reason and soften the refusal. b only states a flat refusal ('안 갑니다') and so sounds blunt even though its ending is formal.",
         "hints": [
-          "Look for an apology, a reason and a formal ending in each.",
-          "Which one sounds like what you would tell a friend?"
+          "For each message, note whether it apologises or shows regret, gives a reason, and softens with something like '-ㄹ 것 같습니다'.",
+          "Choose every message that does at least two of those things in a way a supervisor would accept."
+        ],
+        "acceptable": [
+          {
+            "ids": [
+              "a",
+              "c"
+            ],
+            "reason": "Both are suitable; d also adds a next-time promise, so choosing all three is the fullest answer."
+          },
+          {
+            "ids": [
+              "a",
+              "d"
+            ],
+            "reason": "Both are suitable; c is also suitable."
+          },
+          {
+            "ids": [
+              "c",
+              "d"
+            ],
+            "reason": "Both are suitable; a is also suitable."
+          }
         ]
       },
       {
@@ -2180,7 +2365,7 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
             ]
           },
           {
@@ -2208,7 +2393,12 @@
               "선약",
               "있어서",
               "있습니다",
-              "있어요"
+              "있어요",
+              "해서",
+              "때문",
+              "행사",
+              "병원",
+              "가야"
             ]
           },
           {
@@ -2229,7 +2419,9 @@
               "안 갈래",
               "안 갈게",
               "싫",
-              "안 가요"
+              "안 가요",
+              "안 갑니다",
+              "시간이 있어서"
             ]
           }
         ],
@@ -2282,7 +2474,13 @@
               "어려울",
               "약속",
               "일이 있",
-              "일정"
+              "일정",
+              "어려워",
+              "힘들",
+              "어렵",
+              "안 되겠",
+              "있어",
+              "대신"
             ]
           },
           {
@@ -2305,7 +2503,8 @@
               "나중",
               "내일",
               "주말",
-              "담에"
+              "담에",
+              "대신"
             ]
           }
         ],
@@ -2445,7 +2644,7 @@
           },
           {
             "id": "b",
-            "text": "부장님 himself",
+            "text": "부장님 personally",
             "reveals": "태호 asked the secretary, not the head, and the head is the one who is busy in the meeting."
           },
           {
@@ -2471,20 +2670,20 @@
       {
         "id": "s3",
         "kind": "pickLine",
-        "prompt": "In another chat, one line stays ambiguous because no subject is given and there is no honorific clue. Pick it.",
+        "prompt": "In another chat, one line leaves it unclear who is meant, even though the verb is honorific, because two honoured people are in the conversation. Pick it.",
         "lines": [
-          "수미: 사장님이 팀장님한테 연락하셨어요?",
+          "수미: 사장님이 팀장님께 연락하셨어요?",
           "태호: 네, 어제 하셨어요.",
-          "수미: 그래서 뭐라고 하셨어요?",
-          "태호: 다음 주에 같이 보자고 했어요."
+          "수미: 그래서 사장님은 뭐라고 하셨어요?",
+          "태호: 회의 전에 다시 연락하신대요."
         ],
         "wrong": [
           3
         ],
-        "explain": "In the last line there is no honorific marker, so the speaker could mean 태호 himself or someone junior. The earlier lines use -시- for 사장님 and 팀장님, so the same marker would show who said it: '하셨어요'.",
+        "explain": "'연락하신대요' has -시-, so the person is honoured, but both 사장님 and 팀장님 qualify. The reader cannot tell who will call again; adding the subject ('사장님이 ...' or '팀장님이 ...') fixes it.",
         "hints": [
-          "Which lines use -시- and which one does not?",
-          "Check who is being asked about in line 3."
+          "Find the people in the chat who would be spoken about with -시-.",
+          "In each line, ask whether the subject is named or can only be guessed."
         ]
       },
       {
@@ -2496,17 +2695,24 @@
         "checks": [
           {
             "id": "w1",
-            "label": "honorific ending (-시-, -셨-, 께서 ...)",
+            "label": "honorific ending (-시-, -셨-, 께서, 세요 ...)",
             "mode": "any",
             "patterns": [
-              "시어요",
-              "세요",
               "셨",
               "십니다",
+              "께서",
               "시는",
               "시고",
               "시면",
-              "께서"
+              "시죠",
+              "시네",
+              "시나",
+              "시어요",
+              "계세요",
+              "이세요",
+              "[가-힣]세요",
+              "실까요",
+              "[가-힣]신(대요|다고|데|다는)"
             ]
           },
           {
@@ -2514,7 +2720,14 @@
             "label": "has a question",
             "mode": "any",
             "patterns": [
-              "\\?"
+              "[?？]",
+              "까요",
+              "뭐라고",
+              "어디",
+              "누가",
+              "언제",
+              "왜",
+              "나요"
             ]
           },
           {
@@ -2522,7 +2735,16 @@
             "label": "polite ending",
             "mode": "any",
             "patterns": [
-              "[가-힣]요(?![가-힣])|니다|니까"
+              "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+            ]
+          },
+          {
+            "id": "w4",
+            "label": "a plain greeting is not the honorific clue",
+            "mode": "none",
+            "patterns": [
+              "안녕하세요",
+              "안녕하십니까"
             ]
           }
         ],
