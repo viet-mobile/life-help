@@ -51,7 +51,7 @@ export function validateTask(t: ThinkTask): string[] {
       need(checkBuild(s, s.modelRows).valid >= s.need, `${s.id}: modelRows must contain >= need DIFFERENT examples`);
       need(s.badRows.length >= 1 && s.badRows.every((r) => !checkRow(s, r).ok), `${s.id}: badRows must each violate a constraint`);
       need(s.explain, `${s.id}: explain missing`);
-      if (s.because) writeChecks(s.because, `${s.id}.because`);
+      if (s.because) { writeChecks(s.because, `${s.id}.because`); need(s.because.hints?.length >= 2, `${s.id}.because: needs >= 2 staged hints (the translation index lists them)`); }
     } else if (s.kind === "reveal") {
       need(s.stages.length >= 3, `${s.id}: needs >= 3 stages`);
       for (const st of s.stages) { const o = new Set(st.options.map((x) => x.id)); need(st.options.length >= 3 && st.reasonable.length >= 1 && st.reasonable.every((r) => o.has(r)), `${s.id}: stage options/reasonable invalid`); need(st.info && st.after, `${s.id}: stage info/after`); }
