@@ -33,12 +33,17 @@ describe("translation overlays", () => {
         expect(Object.keys(flatten(loc)).length).toBe(Object.keys(flatten(t)).length);
         for (const v of Object.values(m ?? {})) {
           expect(v.trim().length).toBeGreaterThan(0);
-          if (t.subject !== "korean" && /[가-힣]/.test(v.replace(/[0-9,]*\s*만?\s*원/g, ""))) hangul++;
+          if (t.subject !== "korean") {
+            // labels (가/나), romanized-name sources and currency may stay; count only strings that are mostly Hangul
+            const rest = v.replace(/[0-9,]*\s*만?\s*원/g, "");
+            const h = (rest.match(/[가-힣]/g) ?? []).length;
+            if (h > 0 && h / ((rest.match(/\p{L}/gu) ?? []).length || 1) > 0.5) hangul++;
+          }
         }
       }
       expect(actuallyMissing.sort(), `translation-pending.json for ${lang} must list exactly the tasks without an overlay`).toEqual([...pending].sort());
       // labels (가/나), names and Korean quoted material may remain; a flood of Hangul means untranslated text
-      expect(hangul).toBeLessThan(400);
+      expect(hangul).toBeLessThan(150);
     }, 60000);
   }
 });
