@@ -1,0 +1,76 @@
+# coding: utf-8
+"""Coverage/duplicate checks plus selected arithmetic self-checks. Not independent content review."""
+import json, pathlib, collections, re, math, itertools
+from fractions import Fraction as F
+root=pathlib.Path(__file__).parent
+d=json.loads((root/'tasks.json').read_text());ts=d['tasks'];checks=[]
+def ok(v,label):
+ if not v:raise AssertionError(label)
+ checks.append(label)
+def norm(s):return re.sub(r'\s+','',s).casefold()
+ok(len(ts)==234,'234 authored tasks')
+ok(len(set(t['id'] for t in ts))==234,'unique IDs')
+ok(len(set(norm(t['prompt']) for t in ts))==234,'no exact normalized prompt copies')
+slots=collections.Counter((t['subject'],t['grade'],t['domain']) for t in ts)
+expected=set()
+for g in range(1,7):
+ for a in ['number','relation','space','data']:expected.add(('math',f'E{g}',a))
+for g in range(1,4):
+ for a in ['number','algebra','function','geometry','statistics']:expected.add(('math',f'M{g}',a))
+ for a in ['polynomial','equations','counting','matrix','coordinate','logic','function','basic1','basic2','algebra-elective','calculus1','probability','calculus2','geometry-elective','economics','ai','job','applied-statistics','culture','research']:expected.add(('math',f'H{g}',a))
+for g in ['E1','E2','E3','E4','E5','E6','M1','M2','M3','H1','H2','H3']:expected.add(('english',g,'language'))
+for g in range(1,7):expected.add(('korean',f'L{g}','communication'))
+ok(set(slots)==expected and all(n==2 for n in slots.values()),'all 117 independently enumerated cells have two tasks')
+for t in ts:
+ ok(all(isinstance(t[k],str) and len(t[k])>0 for k in ['prompt','newInformation','followup','modelReasoning','hint','rubric','prerequisite']),t['id']+' complete fields')
+ ok(t['reviewStatus']=='author_draft_not_independently_reviewed',t['id']+' honest draft status')
+ok(all(re.search('[A-Za-z]{3}',t['prompt']) for t in ts if t['subject']=='korean'),'Korean tasks have English learner instructions')
+ok(all(t['enrichment'] for t in ts if t['subject']=='english' and t['grade'] in ['E1','E2']),'E1 E2 enrichment flags')
+old=json.loads((root/'prior-prompts.json').read_text())['tasks']
+ok(not {norm(t['prompt']) for t in ts}&{norm(t['target']) for t in old},'no exact source prompt copies of original nine')
+# Each arithmetic check is tied to actual saved text before evaluating an independently constructed expression.
+by={t['id']:t for t in ts}
+def calc(id,fragment,condition):
+ ok(norm(fragment) in norm(by[id]['prompt']+' '+by[id]['newInformation']+' '+by[id]['modelReasoning']),id+' reference matches saved item')
+ ok(condition,id+' arithmetic check')
+calc('CX-math-E1-number-01','8개',len([a for a in range(1,8) if a>8-a])==3)
+calc('CX-math-E2-space-01','18cm',12+8-2==18)
+calc('CX-math-E3-number-01','의자4개',math.ceil(7/2)==4)
+calc('CX-math-E3-space-02','16cm',2*(6+2)==2*(4+4)==16 and 6*2<4*4)
+calc('CX-math-E4-number-01','1400원',4*350<2*900 and 900+350==1250)
+calc('CX-math-E5-number-01','두배',F(3,5)*2>F(2,3))
+calc('CX-math-E5-number-02','6개',max(n for n in range(1,25) if 24%n==36%n==0 and 24//n>=3)==6)
+calc('CX-math-E5-space-01','36',not any(a*b==36 and a==2*b for a in range(1,37) for b in range(1,37)))
+calc('CX-math-E5-space-02','12',F(8*6,4)==12)
+calc('CX-math-E6-number-02','25%',80*F(125,100)==100 and 100*F(8,10)*F(12,10)==96)
+calc('CX-math-E6-relation-02','16장',F(16,15)<3+F(16,16))
+def fits(box,obj):return any(all(a<=b for a,b in zip(p,box)) for p in itertools.permutations(obj))
+calc('CX-math-E6-space-01','가로6',not fits((4,3,5),(6,2,4)) and fits((6,2,5),(6,2,4)))
+calc('CX-math-M1-statistics-01','22.8',sum([2,3,4,5,100])/5==22.8)
+calc('CX-math-M2-algebra-02','13',not any(2*x+y==6 and 4*x+2*y==13 for x in range(-20,21) for y in range(-20,21)))
+calc('CX-math-M2-statistics-02','3/4',sum('H' in p for p in itertools.product('HT',repeat=2))==3)
+calc('CX-math-M3-algebra-01','0',set(x for x in range(-10,11) if x*x==x)=={0,1})
+calc('CX-math-H1-equations-01','−1',2**2==2+2 and (-1)**2==-1+2)
+calc('CX-math-H2-polynomial-01','2x²−x',all(x*x==2*x*x-x for x in [0,1]) and 4!=2*4-2)
+calc('CX-math-H2-polynomial-02','a=5',(-2)**2+5*(-2)+6==0)
+calc('CX-math-H3-polynomial-01','a=−2',all(x**3-2*x*x-x+2==0 for x in [-1,1]))
+calc('CX-math-H2-counting-01','8',6+5-3==8)
+calc('CX-math-H2-counting-02','4',math.comb(4,2)==6 and math.comb(2,1)**2==4)
+calc('CX-math-H3-counting-02','7',2**3-1==7 and 2**2==4)
+calc('CX-math-H1-matrix-02','AB',[[2,1],[1,1]]!=[[1,1],[1,2]])
+calc('CX-math-H3-coordinate-02','25',math.hypot(3,4)*5==25)
+calc('CX-math-H1-basic1-01','(2,3)',[(p,n) for p in range(1,9) for n in range(1,5) if 500*p+1000*n==4000 and p+n==5]==[(2,3)])
+calc('CX-math-H3-algebra-elective-01','n=8',2**(1-8)<F(1,100)<2**(1-7))
+calc('CX-math-H1-calculus1-02','순간', (2**2-0)/2==2 and 2*2==4)
+calc('CX-math-H2-calculus1-02','거리',F(1,2)+F(1,2)==1)
+calc('CX-math-H1-probability-01','7/10',(F(1,2)+F(9,10))/2==F(7,10) and F(10,12)==F(5,6))
+calc('CX-math-H2-probability-02','1/12',F(9,1000)/(F(9,1000)+F(99,1000))==F(1,12))
+calc('CX-math-H1-economics-01','0.99',F(11,10)*F(9,10)==F(99,100))
+calc('CX-math-H3-economics-01','p=60',max(range(101),key=lambda p:(p-20)*(100-p))==60)
+calc('CX-math-H2-ai-02','12',sum(e*e for e in [0,0,6])/3==12 and sum(e*e for e in [2,2,2])/3==4)
+calc('CX-math-H1-job-02','12',min(20,12)==12)
+calc('CX-math-H2-job-01','2006',4*500+3*2==2006)
+calc('CX-math-H3-research-02','1.25',10*F(5,4)+8==14*F(5,4)+3 and 10+8>14+3)
+report=dict(status='PASS',checks=len(checks),tasks=len(ts),allocationCells=len(slots),exactNormalizedPromptDuplicates=0,selectedNumericChecks=37,limitations=['No full independent content review','No teacher/native-speaker/learner validation','Normalized uniqueness does not establish 234 independent cognitive structures','Grade placements are provisional; some tasks may need scaffolding'])
+(root/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(report,ensure_ascii=False))
