@@ -62,3 +62,9 @@ export function checkRevealStage(stage: RevealStep["stages"][number], picked: st
   if (!picked) return "none";
   return stage.reasonable.includes(picked) ? "reasonable" : "other";
 }
+
+/** Option ids may be reused with different meanings in later stages. History belongs to the previous stage. */
+export function previousPredictionText(step: RevealStep, currentStage: number, pickedId: string | null): string | null {
+  if (currentStage <= 0 || !pickedId) return null;
+  return step.stages[currentStage - 1]?.options.find((option) => option.id === pickedId)?.text ?? null;
+}

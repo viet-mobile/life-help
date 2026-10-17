@@ -112,6 +112,8 @@ export interface ThinkTask {
   subject: Subject;
   /** which school grade / language level / elective subject this task is written for: E1..E6, M1..M3, H1..H3 (math, english), K1..K10 (korean), EL-econ|EL-ai|EL-job|EL-cul|EL-sta|EL-res (math electives). Pilot tasks may omit it. */
   grade?: string;
+  /** the allocation cell this task is counted in (docs/think-pilot/expansion-1170/ALLOCATION.md), e.g. "math|E3|space"; a task is counted in exactly one cell. Tasks written before the allocation have none (see mapping.json). */
+  cell?: string;
   /** the sub-field inside the grade (number & operations, geometry, measurement, patterns/functions/algebra, data & probability ...; reading/dialogue/notice/message ... for languages) */
   topic?: string;
   /** "draft" = passed the automatic validator only, not yet blind-reviewed by an independent reviewer; "reviewed-ai" = blind AI review rounds done (never teacher / learner review) */
