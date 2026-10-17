@@ -1,4 +1,4 @@
-import type { ThinkLang } from "@/lib/think/types";
+import type { ThinkLang } from "@/lib/think/lang";
 
 /** Chrome strings of the review player. Task content has its own language (task.uiLang); the player follows it. */
 const L = {
@@ -26,7 +26,55 @@ const L = {
     cautions: "Language, culture, accessibility notes", reviewerMode: "Reviewer view (show keys)", export: "Export my notes (JSON)", curriculum: "Curriculum link", none2: "No verified link",
     uncertainty: "Automatic checks here are not a final verdict. Even if it says no, you can try again or leave a note.", before: "Earlier prediction", notAnswered: "Not answered yet", enterAnswer: "Enter your answer", numbers: "Enter numbers",
   },
+  "zh-Hans": {
+    title: "思维力任务（试点）", info: "本任务的目标与所需思考（做完再看）", back: "← 列表", all: "全部", subject: "科目", level: "水平", math: "数学", english: "英语", korean: "韩语",
+    minutes: "分钟", generative: "自己创作", goal: "学习目标", thinking: "需要的思考", differs: "与普通练习的区别", prereq: "先修知识",
+    start: "开始", check: "检查", next: "下一步", finish: "完成", hint: "提示", hintNone: "没有更多提示了", skip: "我已经懂了 — 跳过", retry: "再试一次",
+    matchT: "已自动确认", acceptT: "另一种合理的答案", notT: "还不太对", surfaceNote: "下面只检查文字的“表面特征”，不判断文章好不好。",
+    needsHuman: "需要人工审阅的部分", selfAssess: "读完参考答案后，请自己检查", model: "参考答案（好答案不止一个）", yourAnswer: "我的答案",
+    flag: "我认为我的答案也对（提出异议）", flagged: "意见已保存", add: "添加例子", remove: "删除", needN: "需要 {n} 个不同的例子（已认可 {k} 个）", duplicate: "与前面的例子算作相同",
+    pickLine: "点击有问题的那一行", predict: "根据目前的信息来预测", revise: "你改变预测了吗？", reveal: "查看更多信息", reflect: "回顾",
+    summary: "小结", autoVs: "自动确认与人工审阅", rubric: "评价标准", full: "充分", partial: "部分", none: "不足", alternatives: "其他合理的答案与解读", hard: "难以判断的情况",
+    cautions: "语言·文化·无障碍注意事项", reviewerMode: "审阅者视图（显示答案）", export: "导出我的意见（JSON）", curriculum: "课程标准关联", none2: "没有已确认的关联",
+    uncertainty: "这里的自动确认不是最终判定。即使显示不对，也可以再试一次或留下意见。", before: "之前的预测", notAnswered: "尚未作答", enterAnswer: "请输入答案", numbers: "请输入数字",
+  },
+  "zh-Hant": {
+    title: "思考力任務（試辦）", info: "本任務的目標與所需思考（做完再看）", back: "← 列表", all: "全部", subject: "科目", level: "程度", math: "數學", english: "英語", korean: "韓語",
+    minutes: "分鐘", generative: "自己創作", goal: "學習目標", thinking: "需要的思考", differs: "與一般練習的差別", prereq: "先備知識",
+    start: "開始", check: "檢查", next: "下一步", finish: "完成", hint: "提示", hintNone: "沒有更多提示了", skip: "我已經懂了 — 跳過", retry: "再試一次",
+    matchT: "已自動確認", acceptT: "另一種合理的答案", notT: "還不太對", surfaceNote: "以下只檢查文字的「表面特徵」，不判斷文章好不好。",
+    needsHuman: "需要人工審閱的部分", selfAssess: "讀完參考答案後，請自己檢查", model: "參考答案（好答案不只一個）", yourAnswer: "我的答案",
+    flag: "我認為我的答案也對（提出異議）", flagged: "意見已儲存", add: "新增範例", remove: "刪除", needN: "需要 {n} 個不同的範例（已認可 {k} 個）", duplicate: "與前面的範例視為相同",
+    pickLine: "點選有問題的那一行", predict: "根據目前的資訊來預測", revise: "你改變預測了嗎？", reveal: "查看更多資訊", reflect: "回顧",
+    summary: "小結", autoVs: "自動確認與人工審閱", rubric: "評量標準", full: "充分", partial: "部分", none: "不足", alternatives: "其他合理的答案與解讀", hard: "難以判斷的情況",
+    cautions: "語言·文化·無障礙注意事項", reviewerMode: "審閱者檢視（顯示答案）", export: "匯出我的意見（JSON）", curriculum: "課程綱要關聯", none2: "沒有已確認的關聯",
+    uncertainty: "這裡的自動確認不是最終判定。即使顯示不對，也可以再試一次或留下意見。", before: "先前的預測", notAnswered: "尚未作答", enterAnswer: "請輸入答案", numbers: "請輸入數字",
+  },
+  ja: {
+    title: "思考力タスク（試行版）", info: "このタスクの目標と求められる思考（解いてから開いてください）", back: "← 一覧", all: "すべて", subject: "教科", level: "レベル", math: "数学", english: "英語", korean: "韓国語",
+    minutes: "分", generative: "自分で作る", goal: "学習目標", thinking: "求められる思考", differs: "通常の練習との違い", prereq: "必要な予備知識",
+    start: "はじめる", check: "確認", next: "次へ", finish: "終了", hint: "ヒント", hintNone: "これ以上ヒントはありません", skip: "もう分かるのでスキップ", retry: "もう一度",
+    matchT: "自動で確認できました", acceptT: "ほかにも妥当な答え", notT: "まだ合っていません", surfaceNote: "以下は文章の「表面的な特徴」だけを確認した結果です。文章の良し悪しは判断しません。",
+    needsHuman: "人による確認が必要な部分", selfAssess: "模範解答を読んで自分で点検しましょう", model: "模範解答（良い答えは一つではありません）", yourAnswer: "自分の答え",
+    flag: "自分の答えも正しいと思う（異議を送る）", flagged: "意見を保存しました", add: "例を追加", remove: "削除", needN: "異なる例が {n} 個必要です（{k} 個認定）", duplicate: "前の例と同じものとして数えられます",
+    pickLine: "問題のある行をタップしてください", predict: "ここまでの情報から予想しましょう", revise: "予想を変えましたか？", reveal: "情報をもっと見る", reflect: "ふり返り",
+    summary: "まとめ", autoVs: "自動確認と人による確認", rubric: "評価基準（ルーブリック）", full: "十分", partial: "部分的", none: "不十分", alternatives: "ほかの妥当な答え・解釈", hard: "判断が難しい場合",
+    cautions: "言語・文化・アクセシビリティの注意", reviewerMode: "レビュー用表示（正解を表示）", export: "自分の意見を書き出す（JSON）", curriculum: "学習指導要領との関連", none2: "確認済みの関連なし",
+    uncertainty: "ここでの自動確認は最終判定ではありません。違うと出ても、もう一度試すか意見を残せます。", before: "前の予想", notAnswered: "まだ答えていません", enterAnswer: "答えを入力してください", numbers: "数字で入力",
+  },
+  vi: {
+    title: "Bài tập tư duy (thử nghiệm)", info: "Mục tiêu và kiểu tư duy của bài (hãy mở sau khi làm)", back: "← Danh sách", all: "Tất cả", subject: "Môn", level: "Mức", math: "Toán", english: "Tiếng Anh", korean: "Tiếng Hàn",
+    minutes: "phút", generative: "Tự tạo ra", goal: "Mục tiêu học tập", thinking: "Tư duy cần dùng", differs: "Khác gì bài luyện thông thường", prereq: "Kiến thức cần có trước",
+    start: "Bắt đầu", check: "Kiểm tra", next: "Tiếp", finish: "Hoàn thành", hint: "Gợi ý", hintNone: "Hết gợi ý", skip: "Em đã hiểu — bỏ qua", retry: "Thử lại",
+    matchT: "Đã được xác nhận tự động", acceptT: "Một đáp án hợp lý khác", notT: "Chưa đúng", surfaceNote: "Phần dưới chỉ kiểm tra \"hình thức\" của văn bản, không đánh giá văn bản hay hay dở.",
+    needsHuman: "Phần cần người xem xét", selfAssess: "Đọc đáp án mẫu rồi tự kiểm tra", model: "Đáp án mẫu (không chỉ có một đáp án tốt)", yourAnswer: "Đáp án của em",
+    flag: "Em nghĩ đáp án của em cũng đúng (phản hồi)", flagged: "Đã lưu ý kiến", add: "Thêm ví dụ", remove: "Xóa", needN: "Cần {n} ví dụ khác nhau (đã công nhận {k})", duplicate: "Được tính là giống ví dụ trước",
+    pickLine: "Chạm vào dòng có vấn đề", predict: "Hãy dự đoán từ thông tin hiện có", revise: "Em có đổi dự đoán không?", reveal: "Xem thêm thông tin", reflect: "Nhìn lại",
+    summary: "Tổng kết", autoVs: "Tự động và người xem xét", rubric: "Tiêu chí đánh giá", full: "Đầy đủ", partial: "Một phần", none: "Chưa đạt", alternatives: "Đáp án và cách hiểu hợp lý khác", hard: "Trường hợp khó phán đoán",
+    cautions: "Lưu ý về ngôn ngữ, văn hóa, khả năng tiếp cận", reviewerMode: "Chế độ người xem xét (hiện đáp án)", export: "Xuất ý kiến của tôi (JSON)", curriculum: "Liên hệ chương trình học", none2: "Chưa có liên hệ được xác nhận",
+    uncertainty: "Kết quả kiểm tra tự động ở đây không phải phán quyết cuối cùng. Dù báo sai, em vẫn có thể thử lại hoặc để lại ý kiến.", before: "Dự đoán trước", notAnswered: "Chưa trả lời", enterAnswer: "Nhập đáp án", numbers: "Nhập bằng số",
+  },
 } as const;
 export type Labels = Record<keyof (typeof L)["ko"], string>;
-export const labels = (lang: ThinkLang): Labels => L[lang] as unknown as Labels;
+export const labels = (lang: ThinkLang): Labels => (L[lang] ?? L.en) as unknown as Labels;
 export const fmt = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? ""));

@@ -10,11 +10,14 @@ import { displayStreak } from "@/lib/learn/domain/streak";
 import { avatarEmoji } from "@/lib/learn/avatars";
 import { useLearner } from "./LearnerProvider";
 import { LevelUnavailable } from "./LevelUnavailable";
+import { thinkLangFor } from "@/lib/think/lang";
+import { HUB } from "@/components/think/hubLabels";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
 
 export function Dashboard() {
-  const { state, index, t, href, mode, accountsEnabled, site } = useLearner();
+  const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
+  const thinkText = HUB[thinkLangFor(locale, site)];
   const now = new Date();
   const level = levelProgress(state.totalXp);
   const rec = recommendNext(state, index, now);
@@ -55,6 +58,12 @@ export function Dashboard() {
         <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
         {site === "korean" && <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>}
       </section>
+
+      <Link className="l-card l-stack" data-testid="think-card" href={href("/think")} style={{ textDecoration: "none", color: "inherit" }}>
+        <h2 className="l-h2">🧠 {thinkText.title}</h2>
+        <p className="l-muted">{thinkText.intro}</p>
+        <span className="l-btn l-btn-ghost l-btn-block">{thinkText.tryOne}</span>
+      </Link>
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

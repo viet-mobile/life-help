@@ -124,3 +124,29 @@ describe("no write check passes vacuous answers", async () => {
     expect(bad).toEqual([]);
   });
 });
+
+describe("flat strings (translation interface)", async () => {
+  const { allTasks } = await import("@/lib/think/tasks");
+  const { flatten, applyFlat } = await import("@/lib/think/flat");
+  const { baseLang, thinkLangFor } = await import("@/lib/think/lang");
+  const { checksOffFor, localize } = await import("@/lib/think/localize");
+  it("applying a task's own flat strings gives the same task back (the index a translator uses is lossless)", () => {
+    for (const t of allTasks) expect(applyFlat(t, flatten(t)), t.id).toEqual(t);
+  });
+  it("a partial translation replaces only the strings it has and never touches keys, checks or answers", () => {
+    const t = allTasks.find((x) => x.steps.some((s) => s.kind === "choose"))!;
+    const f = flatten(t);
+    const out = applyFlat(t, { title: "T!", [Object.keys(f).find((k) => k.endsWith(".prompt"))!]: "P!" });
+    expect(out.title).toBe("T!");
+    expect(out.steps[0].prompt === "P!" || out.steps.some((s) => s.prompt === "P!")).toBe(true);
+    expect(JSON.stringify(out.steps.map((s) => (s.kind === "choose" ? s.correct : s.kind === "write" ? s.checks : null)))).toBe(JSON.stringify(t.steps.map((s) => (s.kind === "choose" ? s.correct : s.kind === "write" ? s.checks : null))));
+  });
+  it("language policy: authored language per subject, locale fallback to English, math written answers have no surface checks in translations", () => {
+    expect(baseLang("math")).toBe("ko"); expect(baseLang("english")).toBe("ko"); expect(baseLang("korean")).toBe("en");
+    expect(thinkLangFor("vi", "math")).toBe("vi"); expect(thinkLangFor("zh-Hant", "korean")).toBe("zh-Hant"); expect(thinkLangFor("fr", "english")).toBe("en"); expect(thinkLangFor("ko", "korean")).toBe("en");
+    const m = allTasks.find((t) => t.subject === "math")!; const e = allTasks.find((t) => t.subject === "english")!;
+    expect(checksOffFor(m, "vi")).toBe(true); expect(checksOffFor(m, "ko")).toBe(false); expect(checksOffFor(e, "vi")).toBe(false);
+    expect(localize(m, "vi", {}).translated).toBe(false); // no overlay: the authored text, chrome still in the chosen language
+    expect(localize(m, "ko", {}).translated).toBe(true);
+  });
+});

@@ -8,6 +8,7 @@
  * is never turned into a right/wrong verdict, and always allows a retry and a "my answer is also valid" flag.
  */
 export type Subject = "math" | "english" | "korean";
+/** The language the task was authored in (see lib/think/lang.ts for the languages it is available in). */
 export type ThinkLang = "ko" | "en";
 
 export interface Hint { text: string }

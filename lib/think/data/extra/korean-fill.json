@@ -1,0 +1,1528 @@
+[
+ {
+  "id": "x-k-fill-01",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "Evaluating claims and evidence: what a sign says and does not say",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "What does the library sign really tell us?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide what a short Korean sign does and does not tell you, and ask a Korean question about something it leaves out.",
+  "thinking": [
+   "Checking a claim against the exact words of a sign",
+   "Separating 'the sign says' from 'the sign does not say'",
+   "Choosing a question that fills a gap"
+  ],
+  "differsFromPlain": "Plain practice asks you to read opening times aloud or find a number on a sign. Here you test a friend's plan against the sign and decide which information is missing.",
+  "prerequisites": [
+   "Can read simple Korean times such as 오전 9시 and 오후 1시",
+   "Knows 평일 (weekdays), 토요일 and 일요일"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "작은빛도서관 안내\n평일(월~금): 오전 9시 ~ 오후 6시\n토요일: 오전 9시 ~ 오후 1시\n일요일, 공휴일: 쉽니다.\n책은 한 사람이 5권까지 빌릴 수 있어요. 14일 안에 돌려주세요.\n\nYour friend 소윤 says in Korean: \"이번 토요일 오후 3시에 가서 책을 빌릴 거야.\" You are reading the sign next to her.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Does the sign agree with 소윤's plan?",
+    "hints": [
+     "Find the line for 토요일 and read the closing time.",
+     "Compare 오후 3시 with the closing time. Which is later?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes, her plan works, because the library is open on Saturday.",
+      "reveals": "This looks at the day only; the sign also gives hours, and a plan has to fit both."
+     },
+     {
+      "id": "b",
+      "text": "No, her plan does not work, because on Saturday the library closes at 1 p.m.",
+      "reveals": "You compared her time with the hours written for that day."
+     },
+     {
+      "id": "c",
+      "text": "We cannot tell, because the sign says nothing about Saturday.",
+      "reveals": "The sign does have a Saturday line; look again at each line before saying something is missing."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The Saturday line says 오전 9시 ~ 오후 1시. 3 p.m. is after 1 p.m., so the sign does not support her plan."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Select ALL the things this sign does NOT tell you.",
+    "hints": [
+     "For each option, try to find the exact line on the sign. If you cannot find one, it is not told.",
+     "Do not use what you guess about libraries in general; use only the words on the sign."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "What happens if you return a book after 14 days",
+      "reveals": "Something that sounds normal is not the same as something the sign says."
+     },
+     {
+      "id": "b",
+      "text": "How many books one person can borrow",
+      "reveals": "The sign says 5권까지; you found it in the words."
+     },
+     {
+      "id": "c",
+      "text": "What time the library closes on weekdays",
+      "reveals": "The sign says 오후 6시; you found it in the words."
+     },
+     {
+      "id": "d",
+      "text": "Whether the library has a parking lot",
+      "reveals": "A real question, but nothing on the sign speaks to it."
+     }
+    ],
+    "correct": [
+     "a",
+     "d"
+    ],
+    "explain": "The sign says to return books within 14 days but not what happens later, and it never mentions parking. Number of books and weekday closing time are written on it."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Pick one thing from the previous step that the sign does not tell you. Write ONE Korean question you could ask the staff.",
+    "hints": [
+     "Start with the thing you want to know (for example 주차장 or 늦게 돌려주면).",
+     "End with a question form, for example ...있어요? or ...돼요?"
+    ],
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "asks about something the sign does not say",
+      "mode": "any",
+      "patterns": [
+       "주차",
+       "연체",
+       "무료",
+       "요금",
+       "돈",
+       "와이파이",
+       "반납",
+       "복사",
+       "회원",
+       "카드",
+       "신분증",
+       "늦"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "is written as a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "까요",
+       "나요",
+       "있어요",
+       "돼요",
+       "돼요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question ask about something I could NOT find on the sign?",
+     "Would the staff be able to answer it with a short answer?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "책을 늦게 돌려주면 어떻게 돼요?"
+     },
+     {
+      "text": "주차장이 있어요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "책은 5권까지 빌릴 수 있어요.",
+      "why": "It repeats what the sign already says; it is not a question about a gap."
+     },
+     {
+      "text": "도서관 안녕하세요.",
+      "why": "Not a question and not about missing information."
+     }
+    ],
+    "humanReview": "Whether the asked-for topic really is absent from the sign, and whether the Korean sentence is natural, need a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Compares a plan with the exact words of the sign",
+    "full": "Uses the Saturday hours to reject the plan",
+    "partial": "Says the plan is wrong without the hours",
+    "none": "Accepts the plan from the day only"
+   },
+   {
+    "criterion": "Separates told from not told",
+    "full": "Picks items with no line on the sign and avoids guessing from experience",
+    "partial": "Picks one correct item only",
+    "none": "Picks items the sign states"
+   }
+  ],
+  "alternatives": [
+   "Asking about weekday closing time in a new way is not valid, since it is written on the sign.",
+   "Questions about fees, rules for late books or other services are all acceptable if the sign is silent on them."
+  ],
+  "hardCases": [
+   "Sunday: the sign says 쉽니다, but whether a book-return box exists is not told. Learners may ask this; it is a good question."
+  ],
+  "cautions": {
+   "language": "Only simple Korean (times, days, 5권, 14일). Counters and 오전/오후 are the only new forms.",
+   "culture": "Closed on public holidays and on Sunday is normal for small libraries in Korea, but hours differ by place.",
+   "accessibility": "No picture is needed: the sign is given as plain lines of text. Times are written with Korean numbers that a screen reader reads as digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice keys in steps 1 and 2",
+    "Whether the question contains a topic not on the sign and a question form"
+   ],
+   "human": [
+    "Naturalness of the Korean question",
+    "Whether the chosen gap is honest"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-02",
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "Evaluating claims and evidence: a friend's message against a notice",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Does 지호's message match the notice?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a friend's four-line message with a written notice, find the line that does not match and rewrite it so it is true.",
+  "thinking": [
+   "Checking each statement against evidence",
+   "Finding the one statement that conflicts with the evidence",
+   "Repairing a statement and naming its source"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a notice and answer questions. Here the message is somebody else's claim, and you check it line by line before correcting it.",
+  "prerequisites": [
+   "Knows past-tense endings such as -았/었어 and -(으)ㄴ",
+   "Can read school-day vocabulary like 체육대회, 달리기, 알림장"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "어제는 5월 12일이었어요. 오늘 아침에 지호가 반 단톡방에 이렇게 썼어요.\n\n어제 오전에는 비가 왔어.\n점심시간에는 비가 그쳤어.\n그래서 체육대회를 못 했어.\n우리 반은 달리기에서 1등을 했어.\n\n5월 12일의 알림장에는 이렇게 쓰여 있어요.\n\"오전에는 비가 왔지만, 점심시간에 그쳤습니다. 체육대회는 오후 2시에 운동장에서 열렸습니다. 달리기 결과: 1등 3반, 2등 1반, 3등 4반.\" (Our class is 3반.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Read 지호's four lines (shown below) and the notice in the material. Which line does the notice NOT support?",
+    "hints": [
+     "Take one line at a time and look for the matching words in the notice.",
+     "Check the time of the sports day and what happened to the rain."
+    ],
+    "lines": [
+     "어제 오전에는 비가 왔어.",
+     "점심시간에는 비가 그쳤어.",
+     "그래서 체육대회를 못 했어.",
+     "우리 반은 달리기에서 1등을 했어."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 says the sports day was not held. The notice says it was held at 2 p.m. Lines 1, 2 and 4 match the notice (our class is 3반, which came first)."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite line 3 in Korean so it matches the notice. Then add one short Korean sentence that says where you got your information.",
+    "hints": [
+     "Look at what the notice says happened at 오후 2시 and use that word.",
+     "To show your source, you can start with 알림장에 ..."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says the sports day took place",
+      "mode": "any",
+      "patterns": [
+       "열렸",
+       "했어",
+       "했다",
+       "했습니다",
+       "진행",
+       "시작",
+       "열려"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not say it was cancelled or could not be held",
+      "mode": "none",
+      "patterns": [
+       "못\\s*했",
+       "안\\s*했",
+       "취소",
+       "못\\s*열",
+       "없었"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names the source",
+      "mode": "any",
+      "patterns": [
+       "알림장",
+       "공지",
+       "쓰여",
+       "적혀",
+       "나와"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say the same thing as the notice, not as 지호?",
+     "Did I name the notice as my evidence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "비가 그쳐서 체육대회는 오후 2시에 열렸어. 알림장에 그렇게 쓰여 있어."
+     },
+     {
+      "text": "체육대회를 했어. 알림장에 오후 2시에 한다고 나와 있어."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "체육대회를 못 했어.",
+      "why": "It repeats the error."
+     },
+     {
+      "text": "체육대회를 했어.",
+      "why": "Correct fact but no source, so a friend cannot check it."
+     }
+    ],
+    "humanReview": "Whether the corrected fact, not just the right words, is stated naturally, needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finds the mismatch with evidence",
+    "full": "Picks line 3 by comparing it with the notice",
+    "partial": "Notices something is wrong but picks another line",
+    "none": "Accepts all four lines"
+   },
+   {
+    "criterion": "Repairs the claim",
+    "full": "Writes the true event and the source",
+    "partial": "Writes the true event only",
+    "none": "Repeats or only denies the claim"
+   }
+  ],
+  "alternatives": [
+   "Rewriting the line as 비가 그쳐서 오후 2시에 체육대회를 했어 is equally good.",
+   "A learner may also add that the morning rain is the likely reason 지호 got confused; this is a reasonable guess but is not stated in the notice."
+  ],
+  "hardCases": [
+   "Line 1 is correct but could mislead: it is easy to read 'rain in the morning' as 'rain all day'."
+  ],
+  "cautions": {
+   "language": "Plain short sentences. 못 + verb means 'could not'; learners must not read 그래서 as proof.",
+   "culture": "Sports day (체육대회) is a common school event in Korea; the notice book (알림장) is a normal way for teachers to tell parents about the day.",
+   "accessibility": "All information is in text. The dates are written out, and the class number 3반 is given in parentheses."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which line is the wrong one",
+    "Whether the rewrite says the event happened, avoids denial and names a source"
+   ],
+   "human": [
+    "Accuracy and naturalness of the rewrite"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-03",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Evaluating claims and evidence: exaggeration in an advertisement",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Which parts of the gimbap ad can be checked?",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Separate ad phrases that can be checked from phrases that cannot, then rewrite the ad for a careful customer.",
+  "thinking": [
+   "Telling checkable claims from unprovable ones",
+   "Judging what evidence would be needed",
+   "Rewriting for an audience that wants facts"
+  ],
+  "differsFromPlain": "Plain practice asks you to find adjectives or hard words in an ad. Here you decide which claims a person could test with records or labels, and rewrite so the text only contains what could be tested.",
+  "prerequisites": [
+   "Knows 가장, 누구나 and percent expressions in Korean",
+   "Can read 하루에 ...줄 (per day, ...rolls)"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "새로 문을 연 '봄이네 김밥'의 광고예요.\n\"세상에서 가장 맛있는 김밥! 하루에 1,000줄이나 팔려요! 쌀과 김은 100% 국내산! 한 번 먹으면 누구나 행복해져요!\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Select the TWO phrases that nobody could check, even with the shop's sales records and ingredient labels.",
+    "hints": [
+     "For each phrase, ask: what record, label or number would prove it right or wrong?",
+     "If you imagine two people disagreeing, could one of them show proof?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "쌀과 김은 100% 국내산",
+      "reveals": "A label or invoice can show where the rice and seaweed came from, so it can be tested even though it might be false."
+     },
+     {
+      "id": "b",
+      "text": "세상에서 가장 맛있는 김밥",
+      "reveals": "'Most delicious' depends on taste and compares with every shop in the world; no record can settle it."
+     },
+     {
+      "id": "c",
+      "text": "하루에 1,000줄이나 팔려요",
+      "reveals": "Sales records could confirm or refute the number, although the ad gives no source."
+     },
+     {
+      "id": "d",
+      "text": "한 번 먹으면 누구나 행복해져요",
+      "reveals": "'Everyone' and a feeling cannot be checked; one unhappy customer would disprove it, yet nobody can measure it in advance."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "Taste and 'everyone will be happy' cannot be tested with records. Origin of ingredients and the number sold can be tested, though the ad does not show proof for either."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "A careful customer wants facts only. Rewrite the ad in two short Korean sentences. Keep only what could be checked, and drop or change the rest.",
+    "hints": [
+     "Choose the parts you marked as checkable in step 1.",
+     "You may say who told you the number, for example 가게 주인이 말했어요."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "keeps at least one checkable fact",
+      "mode": "any",
+      "patterns": [
+       "국내산",
+       "1,?000",
+       "하루",
+       "줄"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "drops the unprovable words",
+      "mode": "none",
+      "patterns": [
+       "가장",
+       "제일",
+       "최고",
+       "세상에서",
+       "누구나",
+       "모두",
+       "무조건"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "still talks about gimbap",
+      "mode": "any",
+      "patterns": [
+       "김밥"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Could someone with records or labels prove my sentences wrong?",
+     "Did I keep the shop name or the food so the ad still makes sense?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "봄이네 김밥은 쌀과 김이 100% 국내산이에요. 하루에 1,000줄 정도 팔린다고 해요."
+     },
+     {
+      "text": "봄이네 김밥에는 국내산 쌀과 김을 써요. 하루에 1,000줄 가까이 팔렸다고 가게 주인이 말했어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "세상에서 가장 맛있는 김밥이에요.",
+      "why": "Keeps the unprovable claim and contains no checkable fact."
+     },
+     {
+      "text": "김밥을 팔아요.",
+      "why": "Nothing is claimed that anyone could check."
+     }
+    ],
+    "humanReview": "A person has to decide whether the rewritten sentences are natural, and whether '정도' or '다고 해요' correctly softens an unproven number."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Separates checkable from unprovable",
+    "full": "Identifies taste and 'everyone' as unprovable and explains why in the choice",
+    "partial": "Finds one of the two",
+    "none": "Treats all phrases the same"
+   },
+   {
+    "criterion": "Rewrites for a facts-only reader",
+    "full": "Keeps checkable facts and drops superlatives",
+    "partial": "Drops superlatives but adds nothing checkable",
+    "none": "Keeps the exaggerations"
+   }
+  ],
+  "alternatives": [
+   "A learner may argue that 1,000줄 is also doubtful because no source is shown; this is reasonable when they say it needs proof but is still checkable.",
+   "Writing the shop name and the price is acceptable if stated as facts that were given."
+  ],
+  "hardCases": [
+   "'100% 국내산' may be false, but it is still a claim that can be tested; the task asks about what can be checked, not what is true."
+  ],
+  "cautions": {
+   "language": "가장/제일/최고 (the most) and 누구나 (everyone) are the key signal words; 100% and numbers are not.",
+   "culture": "Gimbap is everyday Korean food; superlative advertising is common in shop signs.",
+   "accessibility": "The ad is plain text. The percent sign should be read as 'percent' by a screen reader."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The two unprovable phrases",
+    "Checkable fact present, superlatives absent, topic kept"
+   ],
+   "human": [
+    "Naturalness and honesty of the rewritten ad"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-04",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Evaluating claims and evidence: how far a reported statement can be trusted",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Is Saturday's meeting cancelled?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Judge how reliable chains of reported speech (-대요, 들었어요) are, and revise a judgement when a first-hand notice appears.",
+  "thinking": [
+   "Counting how many people a message passed through",
+   "Separating repeated news from independent sources",
+   "Revising a judgement with better evidence"
+  ],
+  "differsFromPlain": "Plain practice asks you to change a sentence into reported speech. Here the reported speech is the evidence, and you decide how much it proves.",
+  "prerequisites": [
+   "Knows the reported-speech endings -대요/-래요 (reporting what somebody said)",
+   "Knows 공지 (notice) and 회장 (club president)"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You joined a club. Three messages appear in the group chat.\n\n지수: 민재가 그러는데 토요일 모임이 취소됐대.\n하은: 나도 취소됐다고 들었어. 누가 그러던데.\n공지(게시판, 회장): 토요일 모임은 비가 오지 않으면 예정대로 합니다.\n\nAt first you see only the first two messages.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which two messages could come from the same single rumour?",
+    "hints": [
+     "Look at who each message says the news came from.",
+     "Ask: could 하은's '누가' be 지수 or 민재?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "지수's message and 하은's message",
+      "reveals": "You noticed that two people repeating -대/-던데 may only be passing on the same unnamed source."
+     },
+     {
+      "id": "b",
+      "text": "하은's message and the notice",
+      "reveals": "The notice names its writer (회장); it is not 'someone said'."
+     },
+     {
+      "id": "c",
+      "text": "지수's message and the notice",
+      "reveals": "The notice is written by the president, not repeated from a friend."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "지수 heard it from 민재, and 하은 heard it from '누가' (somebody). They may be the same rumour told twice, which is not two independent proofs."
+   },
+   {
+    "id": "s2",
+    "kind": "reveal",
+    "prompt": "Read each new piece of information in order. After each, choose how sure you are that Saturday's meeting is cancelled.",
+    "hints": [
+     "After each stage, ask: who actually saw or decided this?",
+     "You are allowed to change your answer; changing it is the point."
+    ],
+    "stages": [
+     {
+      "info": "지수: 민재가 그러는데 토요일 모임이 취소됐대.\n하은: 나도 취소됐다고 들었어. 누가 그러던데.",
+      "ask": "How sure are you that the meeting is cancelled?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Sure: it is cancelled.",
+        "reveals": "Two messages feel stronger than one, but both are second-hand."
+       },
+       {
+        "id": "b",
+        "text": "Probably cancelled, but I want to know who decided.",
+        "reveals": "You accepted the news and asked for a source."
+       },
+       {
+        "id": "c",
+        "text": "I cannot tell yet: nobody says they decided it.",
+        "reveals": "You noticed that nobody named is the decider."
+       },
+       {
+        "id": "d",
+        "text": "Probably not cancelled.",
+        "reveals": "There is no evidence yet for this either."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "Both messages are reported speech with no person who saw the decision. 'Probably' is fine; 'sure' is too strong."
+     },
+     {
+      "info": "You ask 민재. He answers: \"나는 서연이한테 '비가 많이 오면 취소될 수도 있대'라고 들었어. 확정은 아니야.\"",
+      "ask": "Now how sure are you?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Still sure it is cancelled.",
+        "reveals": "The new message turns 'cancelled' into 'may be cancelled if it rains a lot'."
+       },
+       {
+        "id": "b",
+        "text": "Cancelled, but only if it rains a lot.",
+        "reveals": "You kept what the new message says and the condition."
+       },
+       {
+        "id": "c",
+        "text": "I cannot tell yet; the news changed on the way.",
+        "reveals": "You noticed the sentence became weaker as it passed on."
+       },
+       {
+        "id": "d",
+        "text": "Not cancelled at all.",
+        "reveals": "The new message is also not first-hand, so it does not prove this."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "The first message said 'cancelled (됐대)'. The original only said 'maybe, if it rains much (될 수도 있대)'. Each retelling made it stronger."
+     },
+     {
+      "info": "공지(게시판, 회장): 토요일 모임은 비가 오지 않으면 예정대로 합니다.",
+      "ask": "Now how sure are you that the meeting is cancelled?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Cancelled; the notice is not important.",
+        "reveals": "A notice from the president is the strongest piece of evidence so far."
+       },
+       {
+        "id": "b",
+        "text": "Not decided: it depends on the rain.",
+        "reveals": "You used the notice's condition."
+       },
+       {
+        "id": "c",
+        "text": "Probably still on, unless it rains.",
+        "reveals": "You trusted the person who decides and kept the condition."
+       },
+       {
+        "id": "d",
+        "text": "Cancelled, because two friends said so.",
+        "reveals": "Counting how many people repeat news is weaker than the decider's own words."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "The decider (회장) wrote the plan: it is on if it does not rain. The earlier 'cancelled' was not what the source said."
+     }
+    ],
+    "reflect": "Notice that your answer moved from 'cancelled' to 'on, if it does not rain' without any friend lying. Reported speech can get stronger as it is retold; first-hand notices from the decider beat any number of retellings."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write ONE Korean sentence to tell 지수 what the notice says. Use the word 공지 (or 회장님 / 게시판).",
+    "hints": [
+     "Say who wrote it before you say what it says.",
+     "Include whether the meeting is held and under what condition, if you can."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the notice as the source",
+      "mode": "any",
+      "patterns": [
+       "공지",
+       "회장",
+       "게시",
+       "안내"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says the meeting goes ahead as planned",
+      "mode": "any",
+      "patterns": [
+       "예정대로",
+       "그대로",
+       "한대",
+       "한다고",
+       "합니다",
+       "해요",
+       "진행"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say it is cancelled",
+      "mode": "none",
+      "patterns": [
+       "취소\\s*(한대|한다|됐|되었|라고|야|예요)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say who the source is?",
+     "Did I keep the condition (비가 오지 않으면) if I mention it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "회장님 공지에 토요일 모임은 비가 안 오면 예정대로 한다고 나와 있어."
+     },
+     {
+      "text": "공지를 보니까 토요일 모임은 예정대로 한대. 비만 안 오면 말이야."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "취소됐대.",
+      "why": "No source, and it is not what the notice says."
+     },
+     {
+      "text": "공지에 취소라고 나와 있어.",
+      "why": "Names the source but says the opposite."
+     }
+    ],
+    "humanReview": "Whether the reported speech is used correctly and whether the sentence faithfully reports the condition need a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judges reliability",
+    "full": "Explains that second-hand messages are not independent and gives weight to the decider",
+    "partial": "Sees that something is second-hand",
+    "none": "Counts how many people said it"
+   },
+   {
+    "criterion": "Revises a judgement",
+    "full": "Moves from 'cancelled' to 'depends on rain' with a reason",
+    "partial": "Changes the answer without a reason",
+    "none": "Never changes"
+   }
+  ],
+  "alternatives": [
+   "At stage 1, 'probably cancelled' is reasonable if the learner asks for a source.",
+   "At stage 3, either 'not decided' or 'probably on' is acceptable."
+  ],
+  "hardCases": [
+   "Learners may feel that 민재's answer is also first-hand; he was asked directly but he only repeated what 서연 said."
+  ],
+  "cautions": {
+   "language": "-대요/-래요 report what somebody said; -던데 and 들었어 mark that the speaker was not there. Learners may confuse -대 with -데.",
+   "culture": "Messaging groups for clubs and classes are normal; president (회장) notices are usually trusted.",
+   "accessibility": "All messages are text. The three messages are labelled with who says them."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice keys and the reasonable options at each stage",
+    "The condition and the source check in the final sentence"
+   ],
+   "human": [
+    "Whether the final sentence reports the notice faithfully"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-05",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "Evaluating claims and evidence: rumour versus confirmed fact",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Which lines are confirmed, which are rumour?",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Sort statements into confirmed facts and rumours, then write a short Korean post that keeps them apart.",
+  "thinking": [
+   "Classifying statements by evidence",
+   "Spotting rumours that are presented as facts",
+   "Writing a post that marks the status of information"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn a statement into reported speech. Here you decide which statements deserve to be called facts at all, and write something that keeps the difference visible.",
+  "prerequisites": [
+   "Knows the reported endings -대요/-다고 해요",
+   "Can read 공지 and 소문 (rumour)"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "학교 단체 채팅방과 공지예요.\n\n가온: 야, 매점 다음 달부터 문 닫는대!\n나래: 맞아, 직원 아주머니가 그만두신대. 그래서 닫는 거래.\n\n공지(교무실, 10월 14일): 11월 1일부터 매점 운영 시간이 오전 8시~오후 4시로 바뀝니다. 자세한 내용은 추후 안내하겠습니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "A student made this list of 'confirmed facts' about the shop. Which line does NOT belong, because the notice does not confirm it?",
+    "hints": [
+     "For each line, look for the same words in the notice.",
+     "Notice which lines only appear in the chat."
+    ],
+    "lines": [
+     "11월 1일부터 매점 운영 시간이 바뀐다.",
+     "바뀐 운영 시간은 오전 8시부터 오후 4시까지이다.",
+     "매점은 다음 달부터 문을 닫는다.",
+     "직원이 그만두기 때문에 매점이 문을 닫는다."
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "Lines 3 and 4 appear only in the chat as '-대요' reports. The notice confirms only that the opening hours change (lines 1 and 2). Either line 3 or 4 is a correct answer."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write TWO short Korean sentences for the class notice board. The first gives one confirmed fact and its source. The second shows that the shop closing is only a rumour.",
+    "hints": [
+     "For the first sentence, you can start with 공지에 따르면 ...",
+     "For the second, use a rumour marker such as ...대요, ...다고 해요 or 소문."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names a source for the fact",
+      "mode": "any",
+      "patterns": [
+       "공지",
+       "안내",
+       "에 따르면",
+       "나와 있",
+       "적혀"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "marks the closing as a rumour or unconfirmed",
+      "mode": "any",
+      "patterns": [
+       "소문",
+       "대요",
+       "래요",
+       "다고 해요",
+       "라고 해요",
+       "다던데",
+       "[는한된]대[.!\\s]",
+       "[는한된]대$",
+       "[는한된]래[.!\\s]",
+       "[는한된]래$"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "uses a fact from the notice",
+      "mode": "any",
+      "patterns": [
+       "11월",
+       "운영 시간",
+       "오후 4시",
+       "오전 8시"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a reader know which sentence is checked and which is not?",
+     "Did I avoid writing the rumour as plain fact?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "공지에 따르면 11월 1일부터 매점 운영 시간이 바뀝니다. 매점이 문을 닫는다는 이야기는 소문이라서 아직 확인되지 않았어요."
+     },
+     {
+      "text": "교무실 안내에 나와 있어요. 11월 1일부터 오전 8시~오후 4시에 매점을 열어요. 직원이 그만두신대요. 아직 확실하지 않아요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "매점이 문을 닫는대요.",
+      "why": "The rumour has no source and no fact at all."
+     },
+     {
+      "text": "매점은 11월 1일부터 오후 4시까지 열어요.",
+      "why": "A fact, but no source and no rumour sentence."
+     }
+    ],
+    "humanReview": "Whether the second sentence really marks the rumour as unconfirmed rather than as a fact needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Sorts by evidence",
+    "full": "Rejects both unconfirmed lines and says why",
+    "partial": "Rejects one",
+    "none": "Accepts all as facts"
+   },
+   {
+    "criterion": "Keeps status visible in writing",
+    "full": "Fact with source and rumour with a marker",
+    "partial": "One of the two is present",
+    "none": "Mixes them as plain statements"
+   }
+  ],
+  "alternatives": [
+   "Lines 3 and 4 are both acceptable picks.",
+   "Learners may write the rumour using 소문에 따르면 or ...라는 말이 있어요; both are fine."
+  ],
+  "hardCases": [
+   "The notice says the hours change; it does not say the shop will stay open. 'Not confirmed' differs from 'false'."
+  ],
+  "cautions": {
+   "language": "Learners often hear -대요 as part of the verb; it signals that the speaker is repeating someone.",
+   "culture": "School chat groups spread rumours quickly; official notices (공지) are the usual way schools confirm changes.",
+   "accessibility": "Texts are short; chat lines are labelled with the speaker's name."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which lines are unconfirmed",
+    "Source marker, rumour marker and notice fact in the post"
+   ],
+   "human": [
+    "Whether the post is natural and does not state the rumour as a fact"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-06",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "Evaluating claims and evidence: numbers in a work report",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Is '50% growth' good news?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Show that a percent increase in a report can be true and still small, and rewrite the report line so the reader can see the base numbers.",
+  "thinking": [
+   "Asking which number is missing",
+   "Building examples under constraints",
+   "Rewriting a claim so it can be evaluated"
+  ],
+  "differsFromPlain": "Plain practice asks you to calculate a percent change. Here the percent is already given, and you test what it hides.",
+  "prerequisites": [
+   "Knows 지난달, 이번 달, 증가 and the % sign",
+   "Can read business-style endings like -했습니다"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "[이번 달 업무 보고] 신규 앱 가입자가 지난달보다 50% 증가했습니다. 마케팅 효과가 확실합니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which question helps you most to decide whether the report supports '마케팅 효과가 확실합니다'?",
+    "hints": [
+     "Which number would you need to turn 50% into an actual change?",
+     "Ask which piece of information is missing from the report."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Who wrote this report?",
+      "reveals": "A good question about trust, but it does not tell you the size of the change."
+     },
+     {
+      "id": "b",
+      "text": "How many people were on the marketing team?",
+      "reveals": "This is not connected to what the 50% hides."
+     },
+     {
+      "id": "c",
+      "text": "How many sign-ups were there last month?",
+      "reveals": "You asked for the base number that turns a percent into real people."
+     },
+     {
+      "id": "d",
+      "text": "Is 50% a big number in general?",
+      "reveals": "A percent's meaning depends on the number it comes from."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A percent change says nothing about size without the base: 50% of 4 is 2 people, 50% of 4,000 is 2,000."
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "The report is true: this month's sign-ups (b) are exactly 50% more than last month's (a), counted in whole people. Give TWO different examples in which the increase is at most 10 people.",
+    "hints": [
+     "If this month is 50% more, then this month is 1.5 times last month. Which numbers of people stay whole?",
+     "Check your example: is b - a at most 10?"
+    ],
+    "vars": [
+     {
+      "name": "a",
+      "label": "last month's sign-ups (people)"
+     },
+     {
+      "name": "b",
+      "label": "this month's sign-ups (people)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "floor(a)==a && floor(b)==b && a>=1",
+      "ok": "Whole numbers of people.",
+      "fail": "Use whole numbers of people, at least 1 last month."
+     },
+     {
+      "id": "c2",
+      "expr": "2*b==3*a",
+      "ok": "This month is exactly 50% more.",
+      "fail": "This month is not exactly 50% more than last month."
+     },
+     {
+      "id": "c3",
+      "expr": "b-a<=10",
+      "ok": "The increase is at most 10 people.",
+      "fail": "The increase is more than 10 people."
+     }
+    ],
+    "need": 2,
+    "distinctBy": "a",
+    "modelRows": [
+     {
+      "a": 4,
+      "b": 6
+     },
+     {
+      "a": 10,
+      "b": 15
+     },
+     {
+      "a": 20,
+      "b": 30
+     }
+    ],
+    "badRows": [
+     {
+      "a": 100,
+      "b": 150
+     },
+     {
+      "a": 10,
+      "b": 12
+     }
+    ],
+    "explain": "4 to 6, 10 to 15 and 20 to 30 all give 50% more, and the increase (2, 5, 10 people) is small. The same percent from 1,000 to 1,500 would be 500 people.",
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Rewrite the report sentence in ONE Korean sentence so a reader can see the real numbers behind the percent (use numbers from one of your examples).",
+     "hints": [
+      "Put both numbers (last month and this month) in the sentence.",
+      "Keep a word for the increase, such as 늘었습니다 or 증가했습니다."
+     ],
+     "placeholder": "예: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "shows two numbers",
+       "mode": "any",
+       "patterns": [
+        "\\d+[^\\d]+\\d+"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "says the number rose",
+       "mode": "any",
+       "patterns": [
+        "늘",
+        "증가",
+        "올"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Can a reader see how many people the increase is?",
+      "Did I use my own numbers, not just the percent?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "지난달 4명에서 이번 달 6명으로 늘어 50% 증가했습니다."
+      },
+      {
+       "text": "가입자가 10명에서 15명으로 늘어, 증가율은 50%입니다."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "가입자가 50% 늘었습니다.",
+       "why": "Only the percent, with no base number."
+      },
+      {
+       "text": "가입자가 크게 늘었습니다.",
+       "why": "No numbers at all."
+      }
+     ],
+     "humanReview": "A person has to judge whether the sentence is natural and whether the numbers agree with the percent."
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Asks for the base",
+    "full": "Asks for last month's number and links it to the percent",
+    "partial": "Asks something nearby",
+    "none": "Asks about trust or a person"
+   },
+   {
+    "criterion": "Builds examples",
+    "full": "Two different whole-number pairs with exactly 50% and a small increase",
+    "partial": "One valid pair",
+    "none": "Pairs that break the percent"
+   }
+  ],
+  "alternatives": [
+   "Any pair (a, 1.5a) with a even and a up to 20 is valid, for example 2 to 3 or 6 to 9.",
+   "A learner may also point out that 'certain marketing effect' needs a comparison group; this is a good addition."
+  ],
+  "hardCases": [
+   "Learners may think 150% is meant; 50% more is 1.5 times, not 0.5 times."
+  ],
+  "cautions": {
+   "language": "증가했습니다 is the formal report style; '지난달보다 50%' means compared with last month.",
+   "culture": "Work reports in Korea often use formal -습니다 style and percent growth as a headline.",
+   "accessibility": "The % sign may be read as 'percent'; numbers are also written as words in the instruction."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice key",
+    "Constraint verification of the number pairs",
+    "Presence of two numbers in the rewritten sentence"
+   ],
+   "human": [
+    "Naturalness of the report sentence",
+    "Whether the numbers match the percent"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-07",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Evaluating claims and evidence: a news headline against its article",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Does the headline say more than the article?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Break a headline into separate claims, check each against the article, and rewrite the headline so that it does not claim more than the evidence.",
+  "thinking": [
+   "Splitting a headline into claims",
+   "Comparing a claim with comparison-group evidence",
+   "Rewriting a claim to match its support"
+  ],
+  "differsFromPlain": "Plain practice asks you to find the main idea of an article. Here the headline is a claim and the article is the evidence, and you check how far the support goes.",
+  "prerequisites": [
+   "Can read news-style Korean (-했다, nominal headline style)",
+   "Knows 평균, 학급, 효과"
+  ],
+  "minutes": 15,
+  "curriculum": null,
+  "material": "[제목] 스마트폰 보관하니 성적 올랐다… 학생 성적 향상 효과 입증\n\n[본문] A중학교는 3개월 동안 1학년 한 학급(28명)에서 점심시간 스마트폰 보관 제도를 시범 운영했다. 이 학급의 평균 점수는 71.2점에서 73.5점으로 올랐다. 같은 기간 스마트폰을 보관하지 않은 다른 학급의 평균도 70.8점에서 72.6점으로 올랐다. 학교 관계자는 \"효과가 있는지는 더 지켜봐야 한다\"고 말했다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "The headline can be split into four claims (shown as lines). Which line is NOT supported by the article?",
+    "hints": [
+     "For each claim, find the sentence in the article that speaks to it.",
+     "Look at what happened to the other class."
+    ],
+    "lines": [
+     "일부 학급이 점심시간에 스마트폰을 보관했다.",
+     "그 학급의 평균 점수가 올랐다.",
+     "스마트폰 보관이 성적을 올렸다.",
+     "성적 향상 효과가 입증됐다."
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "Lines 1 and 2 are in the article. Line 3 is not supported because the class without phone storage also rose, and line 4 contradicts the official who says it must be watched longer. Either line 3 or line 4 is correct."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which single sentence of the article most weakens '스마트폰 보관이 성적을 올렸다'?",
+    "hints": [
+     "The claim is about cause. What would you compare the class with?",
+     "Which sentence tells you what happened without the phone storage?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "이 학급의 평균 점수는 71.2점에서 73.5점으로 올랐다.",
+      "reveals": "This is the evidence for the rise, not against the cause."
+     },
+     {
+      "id": "b",
+      "text": "같은 기간 스마트폰을 보관하지 않은 다른 학급의 평균도 70.8점에서 72.6점으로 올랐다.",
+      "reveals": "You saw that scores rose without the rule too."
+     },
+     {
+      "id": "c",
+      "text": "1학년 한 학급(28명)에서 시범 운영했다.",
+      "reveals": "A small group limits the claim, but it does not show another explanation."
+     },
+     {
+      "id": "d",
+      "text": "학교 관계자는 더 지켜봐야 한다고 말했다.",
+      "reveals": "A cautious quote, but it does not give evidence about the cause."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "If another class without the rule also improved (by 1.8 points against 2.3), the rise is not clearly due to the rule."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the headline in ONE Korean line (news style is fine) so it does not claim more than the article shows.",
+    "hints": [
+     "Keep what is true (the class's score rose) and add the limit.",
+     "Do not use a word that says the effect is already proven."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "adds a limit or caution",
+      "mode": "any",
+      "patterns": [
+       "더 지켜",
+       "아직",
+       "단정",
+       "일부",
+       "시범",
+       "한 학급",
+       "가능성",
+       "불확실",
+       "확인되지",
+       "알 수 없"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not say the effect is proven",
+      "mode": "none",
+      "patterns": [
+       "입증(됐|되었|했)",
+       "확실히",
+       "증명"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Could someone hold me to this headline after reading the article?",
+     "Did I mention the other class or the small trial?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "점심시간 스마트폰 보관 학급 성적 소폭 상승…효과는 더 지켜봐야"
+     },
+     {
+      "text": "시범 운영 한 학급 평균 2.3점 올랐지만 다른 학급도 올라 원인은 단정 어려워"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "스마트폰 줄이니 성적 올랐다… 효과 입증됐다",
+      "why": "Repeats the overclaim."
+     },
+     {
+      "text": "성적이 올랐다",
+      "why": "True but gives no limit, and it is not a headline that qualifies the cause."
+     }
+    ],
+    "humanReview": "Whether the headline stays close to the data and sounds natural needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Splits and checks claims",
+    "full": "Picks an unsupported claim and says why",
+    "partial": "Picks a claim for a weak reason",
+    "none": "Accepts the headline"
+   },
+   {
+    "criterion": "Finds the weakness in cause",
+    "full": "Chooses the control-class sentence",
+    "partial": "Chooses the small sample",
+    "none": "Chooses the cause's supporting number"
+   },
+   {
+    "criterion": "Rewrites to match evidence",
+    "full": "Keeps the true part and states the limit",
+    "partial": "Only adds a caution word",
+    "none": "Repeats the overclaim"
+   }
+  ],
+  "alternatives": [
+   "A learner may also note that 28 students and 3 months is a small trial.",
+   "Several different headlines are acceptable if they state the rise and the limit."
+  ],
+  "hardCases": [
+   "Both classes rose; a small extra rise (0.5 points) might be chance, which the article does not say."
+  ],
+  "cautions": {
+   "language": "Headline style drops endings (올랐다, 입증); '입증' means 'proved by evidence'.",
+   "culture": "School phone rules are a common news topic; names and schools are invented.",
+   "accessibility": "Scores are written with the word 점 so a screen reader reads them as numbers with units."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice keys and the pickLine",
+    "Overclaim words in the rewritten headline"
+   ],
+   "human": [
+    "Fit of the rewritten headline to the evidence"
+   ]
+  }
+ },
+ {
+  "id": "x-k-fill-08",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Evaluating claims and evidence: limits of a poll sentence",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "How far can '60% support' go?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which details of a poll limit its conclusion about all citizens, and write a Korean sentence that reports the result honestly.",
+  "thinking": [
+   "Deciding what information limits a claim",
+   "Separating sample size from sample quality",
+   "Writing a result with its limits"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a percent from a chart. Here you decide who the percent represents and what the result does not tell you.",
+  "prerequisites": [
+   "Knows 찬성/반대, 응답률, 표본오차 as terms",
+   "Can read percentages in Korean news"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "뉴스 문장: \"시민 10명 중 6명이 새 도서관 건립에 찬성했다.\"\n\n조사 개요: 전화조사, 평일 오후 2~4시, 유선전화 응답자 1,000명, 응답률 8%, 표본오차 ±3.1%p(95% 신뢰수준), 찬성 60%.\n\nA reader says: \"그러면 우리 시의 시민 대부분이 찬성하는구나.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Select the TWO details that make 'most citizens support' less sure than the news sentence sounds.",
+    "hints": [
+     "Ask: who could not be reached by this method?",
+     "Ask: how many people who were called did not answer?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "표본이 1,000명이다",
+      "reveals": "1,000 people is a normal size for a poll; the number alone is not the problem."
+     },
+     {
+      "id": "b",
+      "text": "평일 오후 2~4시에 유선전화로만 조사했다",
+      "reveals": "People who work in the afternoon or have only a mobile phone were less likely to be reached."
+     },
+     {
+      "id": "c",
+      "text": "표본오차가 ±3.1%p이다",
+      "reveals": "The margin of error is already included in the reported result; the range 56.9 to 63.1 is still above 50%."
+     },
+     {
+      "id": "d",
+      "text": "응답률이 8%이다",
+      "reveals": "92 of 100 people called did not answer, and they might differ from those who did."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "The method (weekday afternoon, landline) and the low response rate raise doubts about whether the 1,000 answers represent all citizens. The size and the margin of error are normal and already reported."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write ONE Korean sentence that reports the result of this poll without saying more than it shows.",
+    "hints": [
+     "Say who answered (the people who answered the phone) before you give the number.",
+     "Include one limit such as the way of calling or the low response rate."
+    ],
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "includes a limit of the poll",
+      "mode": "any",
+      "patterns": [
+       "유선",
+       "평일",
+       "응답률",
+       "(?<!\\d)8\\s*%",
+       "전화"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "speaks about the people who answered",
+      "mode": "any",
+      "patterns": [
+       "응답자",
+       "응답한",
+       "조사에 참여",
+       "조사 대상",
+       "전화를 받은",
+       "전화 조사"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not claim all citizens support",
+      "mode": "none",
+      "patterns": [
+       "시민\\s*(모두|전체|대부분)\\S*\\s*찬성"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say 'respondents' instead of 'citizens'?",
+     "Would a careful reader know the result's limit from my sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "유선전화로 조사에 응답한 사람 중 약 60%가 찬성했다(응답률 8%)."
+     },
+     {
+      "text": "평일 낮에 전화를 받은 응답자 1,000명 중 60%가 찬성했지만, 응답률이 낮아 시민 전체의 의견으로 보기는 어렵다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "시민 대부분이 찬성했다.",
+      "why": "Treats the sample as all citizens."
+     },
+     {
+      "text": "60%가 찬성했다.",
+      "why": "Gives the number but names neither who answered nor any limit."
+     }
+    ],
+    "humanReview": "Whether the sentence states the limit accurately and naturally needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Identifies limiting details",
+    "full": "Picks method and response rate and gives the reason",
+    "partial": "Picks one",
+    "none": "Picks size or margin of error"
+   },
+   {
+    "criterion": "Reports honestly",
+    "full": "Names the respondents and a limit",
+    "partial": "Names the respondents only",
+    "none": "Generalises to all citizens"
+   }
+  ],
+  "alternatives": [
+   "A learner may say that the margin of error still allows a majority; that is correct if the sample is random, and the limit is about whether it is.",
+   "Mentioning that the question wording is not shown is a good extra point."
+  ],
+  "hardCases": [
+   "Whether 8% response is 'bad' depends on whether non-respondents differ; the poll alone cannot say."
+  ],
+  "cautions": {
+   "language": "표본오차 (margin of error) and 응답률 (response rate) are fixed news terms; ±3.1%p reads 'plus or minus 3.1 percentage points'.",
+   "culture": "Poll descriptions with 표본오차 and 신뢰수준 appear in nearly all Korean news polls; the city and library are fictional.",
+   "accessibility": "Symbols are written out: ± = plus or minus, %p = percentage points."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice key",
+    "Respondent word, limit word, and absence of 'all citizens support'"
+   ],
+   "human": [
+    "Accuracy and naturalness of the reported sentence"
+   ]
+  }
+ }
+]
