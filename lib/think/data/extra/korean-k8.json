@@ -1,0 +1,2158 @@
+[
+ {
+  "id": "x-k-k8-01",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "relationship-appropriate speech",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Who is above whom in this chat?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Infer the relative status of three people from asymmetric speech levels and honorific forms, and judge whether a mixed-level reply is disrespectful.",
+  "thinking": [
+   "Inferring a relationship from several pieces of evidence",
+   "Separating mutual politeness from one-way politeness",
+   "Evaluating a classmate's claim about rudeness"
+  ],
+  "differsFromPlain": "Plain practice asks you to name the speech level of one sentence. Here you read a whole chat, decide which differences between speakers carry information about status, and judge a claim about politeness.",
+  "prerequisites": [
+   "Can read Hangul sentences of two or three clauses",
+   "Has met -요 and -습니다 endings and the verb 드리다 in class"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A volunteer-club group chat. You are not told anyone's age or role; you only see how they talk to each other.\n\nLine 1 - 다은: 지후 씨, 어제 포스터 파일 보내 줬어요?\nLine 2 - 지후: 네, 팀장님. 어제 저녁에 메일로 보내 드렸습니다.\nLine 3 - 지후: 도윤아, 너 내일 올 수 있어?\nLine 4 - 도윤: 응, 형. 내일은 갈 수 있어요.\n\n(팀장님 = team leader; 형 = what a younger man calls an older man he is close to.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Judging only from how they speak, who is most likely the highest in status or age?",
+    "options": [
+     {
+      "id": "a",
+      "text": "다은"
+     },
+     {
+      "id": "b",
+      "text": "지후",
+      "reveals": "He is the one who speaks to everybody, but he is the one who adds -님 and humble verbs when speaking up."
+     },
+     {
+      "id": "c",
+      "text": "도윤",
+      "reveals": "도윤 receives casual speech from 지후 and is the one using 형, which points to a lower position, not the highest."
+     },
+     {
+      "id": "d",
+      "text": "It cannot be told from this chat at all",
+      "reveals": "Look for forms that differ between the two directions of a pair; they carry information even without ages."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The two directions of the 다은-지후 pair are unequal: 지후 uses 팀장님, -습니다 and the humble verb 드리다, while 다은 uses 씨 and plain 줬어요. 지후 is also higher than 도윤, who gets 반말.",
+    "hints": [
+     "For each pair of speakers, compare how A addresses B with how B addresses A.",
+     "Which speaker is addressed with a title plus -님?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which pieces of evidence support that 지후 ranks BELOW 다은 (not just that he is polite)? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Both 다은 and 지후 end their lines in polite endings.",
+      "reveals": "Politeness in both directions is also normal between equals or strangers. Look for a difference between the two directions."
+     },
+     {
+      "id": "b",
+      "text": "지후 calls her 팀장님, but she calls him 지후 씨."
+     },
+     {
+      "id": "c",
+      "text": "지후 uses the humble verb 드렸습니다, while 다은 uses the plain verb 줬어요."
+     },
+     {
+      "id": "d",
+      "text": "지후 speaks 반말 to 도윤 in line 3.",
+      "reveals": "This shows 지후 is above 도윤. It says nothing about 지후's position relative to 다은."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Only differences between the two directions of one pair show rank. Titles with -님 and humble verbs like 드리다 go up; plain names and 줬어요 go down or across. 지후's 반말 to 도윤 concerns a different pair.",
+    "hints": [
+     "Keep only the evidence about the pair 다은 and 지후.",
+     "Ask: would an equal use exactly this word or form back?"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "b"
+      ],
+      "reason": "The title asymmetry alone is already strong evidence; the humble verb adds a second, independent piece."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "A new member says: '도윤 is rude to 지후 because he starts with 응 and not 네.' Do you agree? Answer in English, quoting at least one Korean phrase from the chat as evidence.",
+    "placeholder": "I think ... because ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes Korean from the chat",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "talks about closeness, respect or politeness",
+      "mode": "any",
+      "patterns": [
+       "close",
+       "familiar",
+       "friend",
+       "casual",
+       "informal",
+       "respect",
+       "polite",
+       "rude",
+       "impolite",
+       "comfortable",
+       "relationship",
+       "younger",
+       "older"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use both 응 and the -요 ending as evidence, not only one of them?",
+     "Did I say what the mixture tells us about the relationship, not only 'rude' or 'not rude'?",
+     "Would my answer still work if 도윤 and 지후 were not close?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "I partly disagree. 응 is casual, but 도윤 still ends with 갈 수 있어요 and calls him 형, so he shows respect while sounding relaxed. It suggests they are close, though a stranger would find 응 too casual."
+     },
+     {
+      "text": "I agree a little: 응 is a casual answer to an older person. But the ending -요 and the word 형 show he does respect 지후, so I would call it close and casual rather than rude."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Yes, he is rude.",
+      "why": "A verdict with no evidence from the chat."
+     },
+     {
+      "text": "I think it is fine because it is a chat message.",
+      "why": "No Korean evidence is quoted and the relationship is not discussed."
+     }
+    ],
+    "humanReview": "Whether the answer weighs 응 against -요 and 형, and whether it avoids treating a mixed register as simply right or wrong.",
+    "hints": [
+     "Look at everything 도윤 says in line 4, not only the first word.",
+     "Think about when a younger person might mix a casual word with -요 for an older friend."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evidence from asymmetry",
+    "full": "Uses differences between the two directions of a pair (title, humble verb)",
+    "partial": "Names polite forms but not the asymmetry",
+    "none": "No evidence"
+   },
+   {
+    "criterion": "Judgement of the mixed reply",
+    "full": "Weighs 응 against -요/형 and links it to closeness and respect",
+    "partial": "Gives a verdict with one piece of evidence",
+    "none": "Verdict only"
+   }
+  ],
+  "alternatives": [
+   "Judging 도윤's reply as clearly rude is defensible if the answer explains that 응 to an older person is risky outside close relationships.",
+   "A reader may argue 다은 could be a peer; the evidence supports a higher position but does not prove it."
+  ],
+  "hardCases": [
+   "Real teams differ: some workplaces use -요 plus titles in both directions, which would weaken the 'rank' evidence."
+  ],
+  "cautions": {
+   "language": "-님, -시-, 드리다 and 반말 are the forms the task depends on; the chat uses only everyday words. Student answers may be in English with Korean quotes.",
+   "culture": "Titles and speech levels in Korean show relative age or role. Practice differs between companies, clubs and generations, so the task asks for judgement, not a rule.",
+   "accessibility": "All information is in text; speakers are marked 'Line n - name:' for screen readers. No emoji or images."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Whether the answer quotes Korean and discusses closeness or respect",
+    "The choice items"
+   ],
+   "human": [
+    "Quality of the argument in the last step"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-02",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "fix register errors",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "One wrong verb in an email to a professor",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the sentence of a polite email in which the writer honours himself instead of the professor, explain why, and repair it with a humble form.",
+  "thinking": [
+   "Locating a register error among mostly correct lines",
+   "Explaining who the honorific -시- may refer to",
+   "Repairing the sentence with an acceptable humble form"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn one plain sentence into honorific speech. Here the email is mostly correct, so you have to detect a subtle wrong use and repair it without breaking the rest.",
+  "prerequisites": [
+   "Knows that -시- raises the person who does the action",
+   "Can read short formal emails in Korean"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A student, 이서연, emails her professor to arrange a visit. Lines are numbered from 1.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One line contains a register error. Which line is it?",
+    "lines": [
+     "교수님, 안녕하세요. 경영학과 2학년 이서연입니다.",
+     "지난주에 말씀하신 보고서 때문에 메일 드립니다.",
+     "내일 오후 3시에 제가 연구실로 오시겠습니다.",
+     "괜찮으시면 그때 보고서를 보여 드리고 싶습니다.",
+     "바쁘시면 편한 시간을 말씀해 주세요."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 uses 오시겠습니다 with 제가 as the subject, so the writer honours herself. The -시- form belongs to the professor's actions (말씀하신, 괜찮으시면, 바쁘시면), while her own actions use 드리다 or humble verbs such as 찾아뵙다.",
+    "hints": [
+     "For each line, name who does the action. Does the -시- or other honorific form fit that person?",
+     "Read line 3 aloud and ask whether the speaker is raising or lowering herself."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why is the line wrong?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The -시- form is attached to the writer's own action."
+     },
+     {
+      "id": "b",
+      "text": "오다 never combines with -겠-.",
+      "reveals": "Check the other lines: -겠- appears in other correct polite sentences, so this is not the problem."
+     },
+     {
+      "id": "c",
+      "text": "The time word 내일 is too casual for an email.",
+      "reveals": "내일 is an ordinary word in formal writing; the problem lies in the verb."
+     },
+     {
+      "id": "d",
+      "text": "The particle 로 should be 에.",
+      "reveals": "Both 로 and 에 are used after 연구실 in this sentence; this is not the error."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "-시- raises the subject of the action. Here the subject is 제가, so the sentence raises the writer and not the professor.",
+    "hints": [
+     "Find the subject of the verb in line 3.",
+     "Compare with line 4: who does 보여 드리다, and what does 드리다 do?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite line 3 in Korean so that it is correct. Keep the meaning: you will come to the professor's office tomorrow at 3 p.m.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "does not put -시- on the writer's own coming",
+      "mode": "none",
+      "patterns": [
+       "제가[^.?!]{0,25}(오시|가시)",
+       "오시겠",
+       "가시겠"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses a going/visiting verb",
+      "mode": "any",
+      "patterns": [
+       "가겠",
+       "가도",
+       "가고",
+       "가요",
+       "갈게요",
+       "갑니다",
+       "찾아뵙",
+       "찾아뵈",
+       "뵙겠",
+       "뵈러",
+       "방문",
+       "들르",
+       "들러",
+       "갈 수",
+       "갈까요"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the time",
+      "mode": "any",
+      "patterns": [
+       "3시",
+       "세 ?시",
+       "오후"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(요|니다|니까)(?![가-힣])"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is the person who does the coming no longer honoured?",
+     "Does the sentence still sound respectful to the professor (polite ending, humble verb or a request)?",
+     "Did I keep the time and place?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "내일 오후 3시에 제가 연구실로 찾아뵙겠습니다."
+     },
+     {
+      "text": "내일 오후 3시에 연구실에 가도 될까요?",
+      "note": "A request form also repairs the error because the professor decides."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "내일 오후 3시에 제가 연구실로 오시겠습니다.",
+      "why": "The original error is repeated."
+     },
+     {
+      "text": "내일 3시에 연구실로 갈게.",
+      "why": "The sentence lost its polite ending, which is wrong for a professor."
+     }
+    ],
+    "humanReview": "Whether the repair is natural: 찾아뵙겠습니다, 가겠습니다 and a request are all acceptable, but a mixed-register sentence needs a human reader.",
+    "hints": [
+     "Decide who is allowed to carry -시- in this sentence, then choose a verb that fits that person.",
+     "You may also turn the sentence into a polite request and let the professor decide."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Locating and explaining the error",
+    "full": "Finds line 3 and says -시- was attached to the writer's own action",
+    "partial": "Finds the line but gives no reason",
+    "none": "Chooses a correct line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Fixes the verb, keeps meaning and polite ending",
+    "partial": "Fixes the verb but loses the time or politeness",
+    "none": "Repeats the error"
+   }
+  ],
+  "alternatives": [
+   "Dropping 제가 and writing 가겠습니다 is also correct.",
+   "Using 방문하겠습니다 is correct but sounds more official than 찾아뵙겠습니다."
+  ],
+  "hardCases": [
+   "Writing 교수님께서 오시면 제가 보고서를 드리겠습니다 changes the plan (professor comes) but is not wrong in register."
+  ],
+  "cautions": {
+   "language": "The task depends on the difference between -시- (raising someone else) and humble verbs (lowering oneself). The Korean is formal email register at about the level of a university student.",
+   "culture": "Writing to a professor by email is common in Korean universities; the greeting and self-introduction at the top are conventions. Other cultures may find the formality very high.",
+   "accessibility": "Lines are plain text and numbered from 1; no image or colour needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The line chosen",
+    "The reason chosen",
+    "Surface features of the rewritten sentence"
+   ],
+   "human": [
+    "Naturalness of the rewrite"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-03",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "who does what in passive and causative",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Whose foot, whose order?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Work out who acts and who is affected in passive and causative sentences, and judge what a report does not say.",
+  "thinking": [
+   "Tracing agent and receiver in each clause",
+   "Distinguishing what the grammar states from what a reader imagines",
+   "Evaluating a claim that goes beyond the text"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn an active sentence into a passive or causative one. Here you read finished sentences, track who does what to whom, and decide what the text really proves.",
+  "prerequisites": [
+   "Has met passive and causative verbs such as 잡히다 and 먹이다 in class",
+   "Can read short school reports in Korean"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A student report to the teacher about PE class. Lines are numbered from 1.\n\nLine 1: 민수가 지수에게 발을 밟혔습니다.\nLine 2: 지수는 놀라서 소리를 질렀습니다.\nLine 3: 선생님께서 민수에게 지수를 보건실에 데려가게 하셨습니다.\nLine 4: 보건 선생님께서 지수에게 얼음을 대게 하셨습니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "According to line 1, who stepped on whose foot?",
+    "options": [
+     {
+      "id": "a",
+      "text": "민수 stepped on 지수's foot.",
+      "reveals": "The person marked with 에게 after a -히- verb (밟혔) is the one who did the stepping; 민수 is the one whose foot was stepped on."
+     },
+     {
+      "id": "b",
+      "text": "Both of them stepped on each other's feet.",
+      "reveals": "Neither the verb nor the particles describe a mutual action."
+     },
+     {
+      "id": "c",
+      "text": "지수 stepped on 민수's foot."
+     },
+     {
+      "id": "d",
+      "text": "The sentence does not say who stepped on whom.",
+      "reveals": "The agent is marked: 지수에게 names her as the one who did it."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "In a passive sentence the subject receives the action and the agent takes 에게. 민수가 ... 밟혔습니다 means 민수's foot was stepped on; 지수에게 names who did it.",
+    "hints": [
+     "Find the verb in line 1 and the particle that goes with each name.",
+     "Ask: who is the subject, and does the subject do or receive the action?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Who physically walked to the school nurse's room, and who gave the order?",
+    "options": [
+     {
+      "id": "a",
+      "text": "선생님 gave the order; 민수 walked with 지수 to the nurse.",
+      "reveals": "The pattern is -게 하셨습니다: someone makes another person do it."
+     },
+     {
+      "id": "b",
+      "text": "민수 gave the order; 선생님 walked with 지수.",
+      "reveals": "The honorific -시- in 하셨습니다 belongs to the teacher, who is the one making someone act."
+     },
+     {
+      "id": "c",
+      "text": "선생님 walked with 지수; 민수 gave the order.",
+      "reveals": "The person after 에게 in a -게 하다 sentence is the one who acts, not the one who orders."
+     },
+     {
+      "id": "d",
+      "text": "지수 gave the order; 민수 walked.",
+      "reveals": "지수 is the one being taken (를), not a subject of the sentence."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "In 선생님께서 민수에게 ... 데려가게 하셨습니다, the causer is the subject (선생님께서) and the person who actually acts is marked by 에게 (민수).",
+    "hints": [
+     "In a causative with -게 하다, which name is the subject and which one follows 에게?",
+     "Ask who is honoured with -시- and what that tells you about who gives the order."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "A classmate says: 'Line 1 proves that 지수 stepped on 민수 on purpose.' Do you agree? Explain in English what the grammar of line 1 does and does not tell us.",
+    "placeholder": "I disagree/agree because ...",
+    "minChars": 50,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "talks about intention or accident",
+      "mode": "any",
+      "patterns": [
+       "intent",
+       "on purpose",
+       "deliberate",
+       "accident",
+       "meant to",
+       "mean to",
+       "purposely"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "refers to the Korean wording or grammar",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]{2,}",
+       "passive"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not simply accept the claim",
+      "mode": "any",
+      "patterns": [
+       "(^|[^a-z])(no|not|never|nothing|only|cannot)([^a-z]|$)",
+       "n['’]t"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I separate who did the stepping from why she did it?",
+     "Did I point to the exact word in line 1 that I am talking about?",
+     "Did I notice what other information a reader would need?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "I disagree. 밟혔습니다 only says that 민수's foot was stepped on and 지수에게 names her as the one who did it. It does not say whether she meant to; it could easily be an accident."
+     },
+     {
+      "text": "No. The passive 밟혔습니다 tells us the result for 민수 and who did the stepping, but nothing about intention. We would need more context, for example what happened just before, to say on purpose."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Yes, she stepped on him on purpose.",
+      "why": "Accepts the claim and treats the grammar as proof of intention."
+     },
+     {
+      "text": "No, I do not think so.",
+      "why": "Disagrees without reference to the Korean wording or to intention."
+     }
+    ],
+    "humanReview": "Whether the explanation separates agent (stated) from intention (not stated), and whether it asks for the right missing information.",
+    "hints": [
+     "Which two things does line 1 state, and which question about the event is left open?",
+     "Think of another situation where 지수 could step on a foot without wanting to."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading agent and receiver",
+    "full": "Correct in both passive (line 1) and causative (line 3)",
+    "partial": "Correct in one of them",
+    "none": "Mixed up"
+   },
+   {
+    "criterion": "Judging the claim",
+    "full": "Separates what the grammar states from the unstated intention",
+    "partial": "Disagrees without the distinction",
+    "none": "Accepts the claim"
+   }
+  ],
+  "alternatives": [
+   "A student who writes that 'on purpose' is possible but not proven is fully correct.",
+   "Saying the report is unreliable because it is short is not a grammar answer but can be accepted if tied to missing context."
+  ],
+  "hardCases": [
+   "Line 2 could be read as 지수 being startled by her own mistake, but the text does not say so."
+  ],
+  "cautions": {
+   "language": "Key forms: 밟히다 (passive of 밟다), -게 하다 (causative), -시- on the teacher. The passive uses 에게 to mark the agent; learners from languages without this may expect a different particle.",
+   "culture": "Reporting a classroom accident to a teacher is common; no sensitive details. Names are common and not tied to real persons.",
+   "accessibility": "All text; lines are numbered from 1 for screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Both choice steps",
+    "Presence of intention and Korean wording in the explanation"
+   ],
+   "human": [
+    "Quality of the explanation"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-04",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "relationship-appropriate speech",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "How two coworkers' speech changes",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Predict a relationship from small pieces of conversation, revise the prediction as more information arrives, and explain why speech level alone was not enough at the start.",
+  "thinking": [
+   "Making and revising a prediction",
+   "Noticing what a first meeting can and cannot show",
+   "Judging which later replies are natural"
+  ],
+  "differsFromPlain": "Plain practice asks which speech level fits one sentence. Here the same two people appear at three moments and your reading of their relationship has to change as evidence appears.",
+  "prerequisites": [
+   "Can read short chat lines in Korean",
+   "Has met -요 and 반말 endings in class"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Two coworkers, 선우 and 하린, at three moments. Read each part, choose what is most likely, then continue.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Decide using only what you have read so far.",
+    "hints": [
+     "Note which forms both people use for each other.",
+     "Ask what a first meeting between adults usually sounds like, whatever their ages."
+    ],
+    "reflect": "Mutual polite speech at a first meeting says little about age or rank. Later facts, such as age and consent to relax the language, change the picture.",
+    "stages": [
+     {
+      "info": "First day at the office.\n선우: 안녕하세요, 이번에 입사한 선우입니다.\n하린: 아, 반가워요. 저는 하린이에요.",
+      "ask": "What does this exchange tell you?",
+      "options": [
+       {
+        "id": "a",
+        "text": "They are close friends.",
+        "reveals": "Close friends would not introduce themselves this way."
+       },
+       {
+        "id": "b",
+        "text": "Strangers speaking politely to each other; nothing about age or rank yet."
+       },
+       {
+        "id": "c",
+        "text": "하린 is clearly 선우's boss.",
+        "reveals": "Both use polite speech in the same way. There is no asymmetry yet."
+       },
+       {
+        "id": "d",
+        "text": "선우 is much younger than 하린.",
+        "reveals": "Nothing in the lines points to age."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Two adults who meet for the first time usually use polite -요 speech in both directions, so the exchange shows distance, not rank."
+     },
+     {
+      "info": "Two weeks later.\n하린: 선우 씨, 점심 같이 먹을래요?\n선우: 네, 좋아요. 어디로 갈까요?",
+      "ask": "What has changed?",
+      "options": [
+       {
+        "id": "a",
+        "text": "They now speak 반말.",
+        "reveals": "Both still use -요; no one has switched."
+       },
+       {
+        "id": "b",
+        "text": "They are still polite but more at ease, and nothing shows who is older."
+       },
+       {
+        "id": "c",
+        "text": "선우 has become 하린's subordinate.",
+        "reveals": "There are no honorific titles or humble verbs."
+       },
+       {
+        "id": "d",
+        "text": "They have become close friends.",
+        "reveals": "Inviting for lunch is friendly, but the speech is still polite and equal."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "A lunch invitation shows comfort, not a change in the speech level. The language is still symmetrical."
+     },
+     {
+      "info": "A team dinner.\n하린: 선우 씨, 몇 년생이에요?\n선우: 98년생이에요. 하린 씨는요?\n하린: 나는 96이야. 그럼 나는 말 편하게 할게. 선우 씨는 편한 대로 해.",
+      "ask": "How does 선우 most likely speak to 하린 next?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Keeps polite -요 endings (e.g. 네, 저는 이대로 할게요)."
+       },
+       {
+        "id": "b",
+        "text": "Switches fully to 반말 and calls her 하린아.",
+        "reveals": "She allowed 선우 to choose, but nothing says he should drop respect, and using her name with 아 would be very familiar for a two-year gap."
+       },
+       {
+        "id": "c",
+        "text": "Keeps -요 but sounds friendlier (e.g. 네, 하린 씨 고마워요)."
+       },
+       {
+        "id": "d",
+        "text": "Moves to very stiff -습니다 speech to show respect.",
+        "reveals": "After she relaxed her own speech and invited him to relax, stiffening would feel distant."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "c"
+      ],
+      "after": "하린 relaxes her own speech because she is older; 선우 is free to choose and most people keep -요 or soften it. Switching all the way to 반말 would need more closeness or her clear invitation."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "In English: in the first part, could you tell who was older? Say what you could and could not infer, and what information you needed. Quote at least one Korean phrase.",
+    "placeholder": "At first I ... but later ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes Korean",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions what was missing (age, rank, title, ...)",
+      "mode": "any",
+      "patterns": [
+       "age",
+       "older",
+       "younger",
+       "senior",
+       "rank",
+       "title",
+       "status",
+       "position",
+       "born",
+       "year",
+       "did not know",
+       "didn't know",
+       "unknown",
+       "can't tell",
+       "cannot tell",
+       "could not tell",
+       "couldn't tell"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what the first part could NOT tell us?",
+     "Did I name the later evidence that made the picture clearer?",
+     "Is my first guess different from my final view, and did I say why?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "No. In 안녕하세요 and 반가워요 both used polite speech, so it only showed they did not know each other. I needed the age or a title; I learned it from 98년생 and 96 in the last part."
+     },
+     {
+      "text": "I could not tell. 하린 said 반가워요 and 선우 said 입사한 선우입니다, which is polite but equal. Only the birth years in the last part showed who was older."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "선우 is younger.",
+      "why": "Gives a conclusion without saying what could or could not be inferred."
+     },
+     {
+      "text": "I could not tell who was older.",
+      "why": "No Korean evidence and no statement of what information was missing."
+     }
+    ],
+    "humanReview": "Whether the answer is honest about the first part's limits and links the later evidence.",
+    "hints": [
+     "Reread part 1 and list every form that differs between the two speakers.",
+     "Then check which line in part 3 supplies the missing fact."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising a prediction",
+    "full": "Explains how part 2 and 3 changed the reading, with Korean evidence",
+    "partial": "Mentions a change without evidence",
+    "none": "No change or reason"
+   },
+   {
+    "criterion": "Awareness of limits",
+    "full": "Says that symmetric polite speech does not show rank or age",
+    "partial": "Hints at uncertainty",
+    "none": "Claims certainty from part 1"
+   }
+  ],
+  "alternatives": [
+   "Stage 3 may also be read as 하린 being the 선배 at work. If the answer explains that she is older and not necessarily higher in rank, it is fine.",
+   "Students may argue for -요 plus a title such as 선배; this is acceptable."
+  ],
+  "hardCases": [
+   "Offices differ on whether age or position decides who relaxes first."
+  ],
+  "cautions": {
+   "language": "Key forms: -요 endings used by both sides, the question 몇 년생, and the self-chosen 반말 of 하린. Birth year is written like 98년생.",
+   "culture": "Asking for age to decide speech levels is common in Korea and may feel intrusive in other cultures. The task describes it without recommending it.",
+   "accessibility": "Plain text only; spoken forms can be read by screen readers; no image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of reasonable predictions",
+    "Presence of Korean and information needs in the explanation"
+   ],
+   "human": [
+    "Whether the explanation is honest about limits"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-05",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "rewriting for different listeners",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Dinner is ready: Grandma and little brother",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Express the same message to a grandparent and to a young sibling by changing nouns, verbs, endings and subject marking.",
+  "thinking": [
+   "Deciding which parts of a message depend on the listener",
+   "Producing honorific and casual versions of the same content"
+  ],
+  "differsFromPlain": "Plain practice asks you to convert one given sentence. Here you first decide which parts change and which do not, then write both versions on your own.",
+  "prerequisites": [
+   "Knows that Korean has honorific and casual forms of nouns, verbs and endings",
+   "Can write short sentences in Hangul"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "You live with your grandmother (할머니) and your 8-year-old brother (동생). Dinner is ready on the table. You want to tell each of them: 'Dinner is on the table. Please come and eat.' For your brother you also add: 'Wash your hands first.'",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "scaffold": true,
+    "prompt": "Which parts of the message must change when you turn the message for your brother into one for your grandmother? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "지금 -> 방금 (the time word)",
+      "reveals": "Time words do not depend on the listener's status."
+     },
+     {
+      "id": "b",
+      "text": "밥 -> 진지 (the word for the meal)"
+     },
+     {
+      "id": "c",
+      "text": "식탁 -> 밥상 (the table)",
+      "reveals": "Both words are neutral objects; the honorific pair applies to a person's food and actions."
+     },
+     {
+      "id": "d",
+      "text": "먹어 -> 드세요 (the verb and ending)"
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "The meal and the eating action belong to the listener, so they take honorific forms (진지, 드시다). Neutral objects and time words do not change.",
+    "hints": [
+     "Which words describe something that belongs to the listener or is done by the listener?",
+     "Check each option: does the other form have a special honorific counterpart?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write in Korean what you say to your grandmother: dinner is ready on the table; please come and eat.",
+    "placeholder": "예: 할머니, ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "honorific meal or verb",
+      "mode": "any",
+      "patterns": [
+       "진지",
+       "드시",
+       "드세",
+       "잡수",
+       "식사하"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "honorific request ending",
+      "mode": "any",
+      "patterns": [
+       "세요",
+       "십시오",
+       "시지요",
+       "시죠",
+       "시겠",
+       "으세요",
+       "십니까"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no casual 먹어/먹자/와라",
+      "mode": "none",
+      "patterns": [
+       "(?<![가-힣])먹어(?![가-힣])",
+       "먹자",
+       "와라",
+       "오렴"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "mentions dinner or the table",
+      "mode": "any",
+      "patterns": [
+       "밥",
+       "진지",
+       "식사",
+       "저녁",
+       "상",
+       "차렸",
+       "식탁"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use an honorific for the meal or the eating, not only polite -요?",
+     "Is the sentence a request that sounds warm, not a command?",
+     "Is the grandmother the one honoured, not me?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니, 진지 드세요. 식탁에 차려 놨어요."
+     },
+     {
+      "text": "할머니, 저녁 식사 준비됐어요. 식탁으로 오셔서 드세요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니, 밥 먹어요.",
+      "why": "Polite but no honorific noun or verb for a grandparent's meal."
+     },
+     {
+      "text": "할머니, 진지 먹어.",
+      "why": "Honorific noun but a casual verb and ending."
+     }
+    ],
+    "humanReview": "Whether the tone is natural for a grandmother and whether honorific vocabulary is used correctly.",
+    "hints": [
+     "Which two words in your brother's version need a special form for a grandparent?",
+     "Choose an ending that asks politely instead of ordering."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now write in Korean what you say to your 8-year-old brother: wash your hands first, then come and eat.",
+    "placeholder": "예: 손 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions washing hands",
+      "mode": "any",
+      "patterns": [
+       "손"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions eating",
+      "mode": "any",
+      "patterns": [
+       "먹",
+       "밥"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "casual ending",
+      "mode": "any",
+      "patterns": [
+       "(어|아|자|야|와|해|라|래|지)\\s*[.!?~]*\\s*$"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no honorific or polite forms",
+      "mode": "none",
+      "patterns": [
+       "세요",
+       "습니다",
+       "십시오",
+       "드시",
+       "께서",
+       "진지",
+       "어요",
+       "아요",
+       "해요",
+       "와요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do both actions appear in the right order?",
+     "Is the speech clearly casual but still kind?",
+     "Could an 8-year-old understand it right away?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "손 씻고 와서 밥 먹어!"
+     },
+     {
+      "text": "얼른 손 씻고 와. 밥 먹자."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "손 씻고 오셔서 진지 드세요.",
+      "why": "Honorific forms for a young sibling."
+     },
+     {
+      "text": "손 씻고 와요.",
+      "why": "No eating, and the ending is not casual."
+     }
+    ],
+    "humanReview": "Whether the casual tone is natural, warm and not impolite.",
+    "hints": [
+     "Which verbs do you need for the two actions?",
+     "Casual endings often end in -어, -아 or -자."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Honorific choices",
+    "full": "Uses honorific noun and verb with a request ending for the grandmother",
+    "partial": "Uses -요 only",
+    "none": "Casual forms"
+   },
+   {
+    "criterion": "Contrast",
+    "full": "Casual but clear version for the sibling with both actions",
+    "partial": "Casual but missing an action",
+    "none": "Honorific forms for the sibling"
+   }
+  ],
+  "alternatives": [
+   "Using 모시다, 오시다 or 할머니께서 may also be correct if the sentence is natural.",
+   "For the brother, 먹자 or 먹어라 are both acceptable; 먹어 sounds gentler."
+  ],
+  "hardCases": [
+   "A very polite sentence like 식사하시겠어요? to a grandmother can be correct but sounds stiff at home."
+  ],
+  "cautions": {
+   "language": "Learners often keep polite -요 where an honorific noun or verb is also expected, or they put 께서 where the subject is dropped. The task checks the surface forms only.",
+   "culture": "Using honorific forms with grandparents at home is common but not universal; some families prefer softer, simpler language. The task assumes a typical household.",
+   "accessibility": "All plain text; no image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice step",
+    "Presence of honorific and casual forms"
+   ],
+   "human": [
+    "Naturalness and warmth"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-06",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "relationship-appropriate speech",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Which facts decide the speech level?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which pieces of information determine how to speak in a first message, and write a polite question that asks for the missing one.",
+  "thinking": [
+   "Selecting relevant information for a language choice",
+   "Recognising unreliable cues",
+   "Asking a clarifying question politely"
+  ],
+  "differsFromPlain": "Plain practice gives you the relationship and asks for the matching ending. Here the relationship is missing, so you must decide what you need to know, and write the question that finds out.",
+  "prerequisites": [
+   "Knows that Korean speech levels depend on the listener",
+   "Can write short polite Korean sentences"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You joined an online Korean class chat. A classmate called 하은 has a young-looking profile photo and no other information. You want to send her a first private message to ask for the class notes. You can write in either polite speech or casual speech.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which facts do you actually need to choose a speech level? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "The relationship or role between you (classmate, teacher, customer ...)"
+     },
+     {
+      "id": "b",
+      "text": "Her gender",
+      "reveals": "Korean speech levels do not depend on whether the listener is a man or a woman."
+     },
+     {
+      "id": "c",
+      "text": "Whether you two have already agreed to speak casually"
+     },
+     {
+      "id": "d",
+      "text": "How young her profile photo looks",
+      "reveals": "Photos can be misleading and polite speech works for everyone you do not know."
+     },
+     {
+      "id": "e",
+      "text": "Whether the message is private or posted for the whole group"
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "e"
+    ],
+    "explain": "Speech level depends on role, agreed familiarity and the setting (private or public). Gender and a photo are not reliable cues; when unsure, polite speech is the safe default.",
+    "hints": [
+     "Ask yourself: would a Korean speaker change the ending because of this fact?",
+     "Think of one case where you would speak differently even to the same person."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "You cannot tell 하은's age. In Korean, write a polite question to her asking whether you may speak more casually (or how she prefers to speak).",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "\\?",
+       "까요",
+       "나요",
+       "(?<![가-힣])가요",
+       "괜찮으세요",
+       "어때요",
+       "어떠세요"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks about speech or age",
+      "mode": "any",
+      "patterns": [
+       "편하게",
+       "반말",
+       "존댓말",
+       "말 ?놓",
+       "말씀",
+       "나이",
+       "연세",
+       "몇 살",
+       "학번",
+       "동갑"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(요|니다|니까)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not ask 'how old are you' bluntly",
+      "mode": "none",
+      "patterns": [
+       "너 몇 살",
+       "나이가 몇",
+       "몇 살이야"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question leave her free to say no?",
+     "Is the ending polite?",
+     "Would it feel natural to someone I have just met?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "혹시 말 편하게 해도 될까요?"
+     },
+     {
+      "text": "실례지만 서로 말을 편하게 해도 괜찮을까요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "너 몇 살이야?",
+      "why": "Casual, blunt and personal for a first message."
+     },
+     {
+      "text": "말 편하게 해.",
+      "why": "An order, not a question, and without a polite ending."
+     }
+    ],
+    "humanReview": "Whether the question is natural, polite and not intrusive.",
+    "hints": [
+     "What do Korean speakers often ask when they want to start speaking casually?",
+     "A question ending in -ㄹ까요? lets the other person decide."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Selecting needed facts",
+    "full": "Chooses role, agreement and setting; rejects gender and photo",
+    "partial": "Chooses some needed facts",
+    "none": "Relies on gender or photo"
+   },
+   {
+    "criterion": "Asking",
+    "full": "Polite question that lets her decide",
+    "partial": "Question lacks politeness or choice",
+    "none": "No question"
+   }
+  ],
+  "alternatives": [
+   "Asking for age (연세, 나이) is also used in Korea, but some students may find it too direct; both approaches are acceptable if polite.",
+   "A student may add that polite speech is the safe default and skip the question; accept if they say why."
+  ],
+  "hardCases": [
+   "In some groups everybody uses casual speech by default (e.g. gaming chats); then the question is optional."
+  ],
+  "cautions": {
+   "language": "The question forms -ㄹ까요? and -나요? make a request softer. Learners may write the plain 해도 돼요? which is polite but less soft.",
+   "culture": "Whether to ask for age or permission to speak casually varies by generation and group; the task does not say it must be asked.",
+   "accessibility": "All plain text; the profile photo is described in words only."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice step",
+    "Surface features of the question"
+   ],
+   "human": [
+    "Naturalness and tact"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-07",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "who does what in passive and causative",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "A grammar notebook with one wrong gloss",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find a wrong English gloss in a learner's notes, explain which role the subject plays, and fix it with a correct causative sentence of your own.",
+  "thinking": [
+   "Checking glosses against the roles of subject and agent",
+   "Separating two meanings of the same verb form",
+   "Producing a corrected sentence"
+  ],
+  "differsFromPlain": "Plain practice asks you to build one form from a base verb. Here you check someone else's notes and must decide, from the sentence, which meaning a form carries.",
+  "prerequisites": [
+   "Has met passive and causative verbs in class",
+   "Can read short Korean sentences with 에게"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A learner's grammar notebook. Each line gives a Korean sentence and an English gloss. Lines are numbered from 1.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One gloss is wrong. Which line is it?",
+    "lines": [
+     "도둑이 경찰에게 잡혔다 = The thief was caught by the police.",
+     "엄마가 아기에게 우유를 먹였다 = The mother fed the baby milk (made the baby drink).",
+     "엄마가 아이에게 옷을 입혔다 = The mother put clothes on the child.",
+     "이 책은 아이도 쉽게 읽혀요 = I make children read this book easily.",
+     "문이 저절로 닫혔다 = The door closed by itself."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "In line 4 the subject is 이 책, the thing that is read. 읽혀요 is the passive here, so the sentence means 'This book can be read easily even by children'. There is no one who makes anyone read.",
+    "hints": [
+     "For each line, name the subject. Does it do the action, receive it, or make someone else do it?",
+     "In line 4, what is the subject, and can a book make someone read?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why is the gloss in line 4 wrong?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The subject receives the action (the book is read), so the form is passive and not causative."
+     },
+     {
+      "id": "b",
+      "text": "읽히다 can only be a causative verb, so the gloss is the only possible reading.",
+      "reveals": "The same form can be passive or causative; the subject and particles decide which one."
+     },
+     {
+      "id": "c",
+      "text": "아이도 cannot mean 'children' in this sentence.",
+      "reveals": "아이도 means 'children too'; the gloss problem lies elsewhere."
+     },
+     {
+      "id": "d",
+      "text": "The word 쉽게 turns every verb into a passive.",
+      "reveals": "An adverb does not change the role of the subject."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The same stem 읽히- can mean 'be read' (passive) or 'make someone read' (causative). The subject 이 책 can only be read, so the meaning is passive.",
+    "hints": [
+     "Ask whether the subject can do the action or only undergo it.",
+     "Compare with line 2, where the subject is a person and the baby is marked with 에게."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Fix the note. In English give the correct meaning of line 4; then in Korean write one causative sentence with 읽히다 meaning 'I made/let my child read this book'.",
+    "placeholder": "Meaning: ... / 한국어: ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "correct passive meaning in English",
+      "mode": "any",
+      "patterns": [
+       "(can|could|may) be read",
+       "gets? read",
+       "reads? (easily|well)",
+       "easy to read",
+       "is read",
+       "passive"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "Korean causative with 에게/한테 and 읽히-",
+      "mode": "any",
+      "patterns": [
+       "(에게|한테|께)[^.?!]{0,25}읽(혔|혀|히|힐|힌)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "includes 책",
+      "mode": "any",
+      "patterns": [
+       "책"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my English say the book is read, not that someone makes others read?",
+     "In my Korean, is the child marked with 에게/한테 and the person who makes them the subject?",
+     "Did I keep the object 책?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Meaning: this book can be read easily even by children (passive). 한국어: 저는 아이에게 이 책을 읽혔어요."
+     },
+     {
+      "text": "Meaning: this book reads easily even for kids. 한국어: 엄마는 동생한테 그 책을 읽혀요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It means I made children read the book.",
+      "why": "Repeats the wrong gloss and has no Korean causative."
+     },
+     {
+      "text": "Meaning: this book is easy. 한국어: 아이가 책을 읽어요.",
+      "why": "No passive gloss and the Korean sentence is not causative."
+     }
+    ],
+    "humanReview": "Whether the Korean sentence is natural; 읽히다 as causative can also sound unusual in some registers.",
+    "hints": [
+     "Who is the one that reads in your causative sentence, and which particle marks them?",
+     "Who makes it happen? That person is the subject."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Detecting the error",
+    "full": "Finds line 4 and gives the role of the subject as the reason",
+    "partial": "Finds line 4 only",
+    "none": "Another line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Gives correct meaning and a correct causative sentence",
+    "partial": "Only one of the two",
+    "none": "Neither"
+   }
+  ],
+  "alternatives": [
+   "Saying 'it reads easily for children' is as good as 'can be read easily'.",
+   "Using 읽게 했어요 instead of 읽혔어요 is not what was asked, but shows the meaning; accept with a note."
+  ],
+  "hardCases": [
+   "읽히다 as a causative is less common in everyday speech than 읽게 하다; some speakers prefer the latter."
+  ],
+  "cautions": {
+   "language": "The -히- form is ambiguous between passive and causative; learners translate by the form instead of the roles. The Korean here is short and everyday.",
+   "culture": "Textbook-like situations; no specific cultural knowledge needed.",
+   "accessibility": "Lines are plain text, numbered from 1; no image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Line chosen",
+    "Reason chosen",
+    "Surface features of the fix"
+   ],
+   "human": [
+    "Naturalness of the causative sentence"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-08",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "who does what in passive and causative",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "One festival, three roles",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Write a causative sentence with an honorific teacher and a passive sentence about the same event, making clear who does the physical action.",
+  "thinking": [
+   "Choosing the grammar that shows who acts",
+   "Combining causative and honorific forms",
+   "Writing a passive that fits the same scene"
+  ],
+  "differsFromPlain": "Plain practice asks you to change a given sentence. Here you invent the sentences yourself for one scene and must keep the roles consistent.",
+  "prerequisites": [
+   "Has met passive, causative and -시- in class",
+   "Can write two connected sentences in Korean"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "School festival preparation. The teacher (선생님), a student named 지수 and a poster (포스터) are in the scene.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Which sentence tells you that the teacher is NOT the one who physically hangs the poster?",
+    "options": [
+     {
+      "id": "a",
+      "text": "선생님께서 포스터를 거셨다.",
+      "reveals": "Here the teacher is the subject and does the hanging."
+     },
+     {
+      "id": "b",
+      "text": "선생님께서 지수에게 포스터를 드리셨다.",
+      "reveals": "드리다 means 'to give (to someone)', not a causative."
+     },
+     {
+      "id": "c",
+      "text": "포스터가 벽에 걸렸다.",
+      "reveals": "This passive says nothing about who hung it and does not name the teacher."
+     },
+     {
+      "id": "d",
+      "text": "선생님께서 지수에게 포스터를 걸게 하셨다."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "In -게 하다 the subject (선생님) makes the person marked with 에게 (지수) act. The teacher causes it; 지수 hangs the poster.",
+    "hints": [
+     "In each option, who is the subject and who is marked with 에게?",
+     "Look for the pattern that means 'make someone do it'."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write two Korean sentences about the scene: (1) the teacher makes 지수 do something with the poster (use -게 하다 or 시키다, with -시- for the teacher); (2) a passive sentence about the poster's result.",
+    "placeholder": "예: 선생님께서 ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "honorific on the teacher's action",
+      "mode": "any",
+      "patterns": [
+       "셨",
+       "십니다",
+       "세요",
+       "시고",
+       "시며",
+       "시는",
+       "시면"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "causative",
+      "mode": "any",
+      "patterns": [
+       "게\\s*(하|했|해)",
+       "시키",
+       "먹이|먹였|입히|입혔|읽히|읽혔|씻기|씻겼|재우|재웠|깨우|깨웠|태우|태웠|웃기|웃겼|울리|울렸|앉히|앉혔|세우|세웠|신기|신겼"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "passive",
+      "mode": "any",
+      "patterns": [
+       "걸렸",
+       "걸리",
+       "붙여졌",
+       "찢겼",
+       "찢기",
+       "닦였",
+       "닦이",
+       "찍혔",
+       "찍히",
+       "놓였",
+       "놓이",
+       "쓰였",
+       "쓰이",
+       "풀렸",
+       "보였",
+       "보이",
+       "떨어졌",
+       "잡혔",
+       "바뀌었",
+       "깨졌",
+       "열렸",
+       "닫혔",
+       "막혔",
+       "읽혔",
+       "밟혔"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is it clear that 지수 and not the teacher does the action in (1)?",
+     "Does (2) describe a result that fits the same scene?",
+     "Is the teacher honoured with -시-?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님께서 지수에게 포스터를 걸게 하셨다. 포스터는 복도 벽에 걸렸다."
+     },
+     {
+      "text": "선생님께서 학생들에게 교실 청소를 시키셨다. 그래서 창문이 깨끗이 닦였다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "지수가 포스터를 걸었다.",
+      "why": "Active only; no causative, no passive, no honorific."
+     },
+     {
+      "text": "선생님께서 지수에게 포스터를 걸게 하셨다.",
+      "why": "Causative and honorific but no passive sentence."
+     }
+    ],
+    "humanReview": "Whether both sentences are natural and the passive result really fits the scene.",
+    "hints": [
+     "Decide who the teacher makes act, and what that person does.",
+     "For the passive, choose something that happens to the poster or the room as a result."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Causative with honorific",
+    "full": "Teacher is subject with -시-; 지수 acts",
+    "partial": "Causative without -시-",
+    "none": "Active only"
+   },
+   {
+    "criterion": "Passive",
+    "full": "A grammatical passive that fits the scene",
+    "partial": "Passive with a wrong verb form",
+    "none": "No passive"
+   }
+  ],
+  "alternatives": [
+   "시키다 is a valid causative; so is -게 하다.",
+   "Using 에 의해 to name the agent is possible but not needed."
+  ],
+  "hardCases": [
+   "Passive forms like 걸어졌다 are less natural than 걸렸다; accept only if the student explains the pairing."
+  ],
+  "cautions": {
+   "language": "The sentences need two ideas at once, -시- for the teacher and a causative or passive form for the roles. Learners often forget the subject of the second sentence.",
+   "culture": "School festival is a normal school event; poster hanging is neutral. Names are common and not tied to real persons.",
+   "accessibility": "Plain text; scene described in words."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the causative sentence",
+    "Surface features of the two sentences"
+   ],
+   "human": [
+    "Naturalness and consistency of roles"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-09",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "fix register errors",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "From teacher chat to parent notice to first graders",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Find what is wrong with a hearsay draft when the school itself is the source, then rewrite it for two audiences with different registers.",
+  "thinking": [
+   "Evaluating a draft against its source and audience",
+   "Choosing a formal notice register with a passive form",
+   "Choosing simple, kind speech for children"
+  ],
+  "differsFromPlain": "Plain practice asks you to convert a sentence into formal speech. Here you decide what is wrong with a draft for its purpose and then write two versions yourself.",
+  "prerequisites": [
+   "Has met -습니다, -요 and reported -대 endings in class",
+   "Can write short formal notices in Korean"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Draft from a teacher chat (the school itself decided):\n내일 비 와서 운동회 취소됐대. 도시락 가져오지 마.\n\nYou must send this information (1) as a notice to the parents and (2) to the first-grade children in class. The school made the decision.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "What is the most serious problem with using the draft's '취소됐대' in the notice to parents?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The word 취소 is too difficult for a parent.",
+      "reveals": "Parents are adults; the problem is not vocabulary."
+     },
+     {
+      "id": "b",
+      "text": "The passive -되- is not allowed in notices.",
+      "reveals": "Passive forms like 취소되었습니다 are very common in official notices."
+     },
+     {
+      "id": "c",
+      "text": "The -대 ending shows that you only heard it from someone, but the school is the source.",
+      "reveals": "Check what -대 usually shows about where the information came from."
+     },
+     {
+      "id": "d",
+      "text": "The draft does not mention the weather.",
+      "reveals": "The draft does mention the weather: 비 와서."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "-대 marks hearsay. A notice from the school should state the decision directly with a formal ending, for example 취소되었습니다.",
+    "hints": [
+     "Ask who is the source of the information in the notice.",
+     "What does -대 usually say about where the speaker learned something?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write the notice to parents in Korean: tomorrow's sports day is cancelled because of rain, and they do not need to send lunch boxes.",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "formal -ㅂ니다 ending",
+      "mode": "any",
+      "patterns": [
+       "(습니다|ㅂ니다|입니다|십시오|바랍니다|드립니다|니다)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "sports day",
+      "mode": "any",
+      "patterns": [
+       "운동회"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "cancel/postpone",
+      "mode": "any",
+      "patterns": [
+       "취소",
+       "연기",
+       "열리지",
+       "미루",
+       "미뤄",
+       "하지 않"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "courteous marker toward parents",
+      "mode": "any",
+      "patterns": [
+       "바랍니다",
+       "드립니다",
+       "않으셔도",
+       "않으시",
+       "마시",
+       "주시",
+       "오시",
+       "양해",
+       "부탁",
+       "협조"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the notice state the decision directly instead of passing it on as hearsay?",
+     "Does it speak respectfully to the parents?",
+     "Are both facts (cancel and lunch boxes) there?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "내일 운동회는 비 때문에 취소되었습니다. 도시락은 준비하지 않으셔도 됩니다."
+     },
+     {
+      "text": "학부모님께 안내드립니다. 비 예보로 내일 운동회가 연기되었습니다. 도시락은 보내지 않으시기 바랍니다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "내일 비 와서 운동회 취소됐어. 도시락 가져오지 마.",
+      "why": "Casual ending and no respect for the parents."
+     },
+     {
+      "text": "내일 운동회는 취소되었습니다.",
+      "why": "Formal but lacks the lunch-box message and any courtesy toward parents."
+     }
+    ],
+    "humanReview": "Whether the notice sounds like a real school notice and whether the courtesy is natural.",
+    "hints": [
+     "Which ending is typical for school notices?",
+     "Decide how to tell parents politely that they do not need to do something."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now say the same thing to the first graders in simple, kind Korean: no sports day tomorrow because of rain, and they should not bring a lunch box.",
+    "placeholder": "예: 내일은 ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "kind -요 speech",
+      "mode": "any",
+      "patterns": [
+       "요(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "sports day",
+      "mode": "any",
+      "patterns": [
+       "운동회"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no difficult or stiff words",
+      "mode": "none",
+      "patterns": [
+       "취소",
+       "연기",
+       "우천",
+       "습니다",
+       "바랍니다",
+       "학부모",
+       "예정",
+       "변경"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "lunch box",
+      "mode": "any",
+      "patterns": [
+       "도시락"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a six-year-old understand each word?",
+     "Is the tone kind, not stiff?",
+     "Did I include both pieces of information?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "내일은 비가 와요. 그래서 운동회를 못 해요. 도시락은 안 가져와도 돼요."
+     },
+     {
+      "text": "비가 와서 내일 운동회는 쉬어요. 도시락은 안 싸 와도 돼요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "내일 운동회는 우천으로 취소되었습니다.",
+      "why": "Formal notice register and hard words for children."
+     },
+     {
+      "text": "비가 와요. 운동회를 못 해요.",
+      "why": "Leaves out the lunch box."
+     }
+    ],
+    "humanReview": "Whether the vocabulary is truly child-friendly.",
+    "hints": [
+     "Replace the hard words with everyday ones a child already knows.",
+     "Choose the ending teachers often use with young children."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Diagnosis of the draft",
+    "full": "Names hearsay -대 and the wrong register for the audience",
+    "partial": "Names register only",
+    "none": "No diagnosis"
+   },
+   {
+    "criterion": "Two versions",
+    "full": "Two correct registers with the same facts",
+    "partial": "One correct version",
+    "none": "Same register for both"
+   }
+  ],
+  "alternatives": [
+   "Using 취소 for parents and 못 해요 for children is typical; 열리지 않습니다 is also good.",
+   "A student might keep -대 if reporting the principal's decision; accept only with a note on the source."
+  ],
+  "hardCases": [
+   "Parents may prefer a softer closing such as 감사합니다; both short and long notices are valid."
+  ],
+  "cautions": {
+   "language": "Contrast between hearsay -대, formal -습니다 and child-directed -요. The passive 취소되었습니다 is standard in notices and should not be marked wrong.",
+   "culture": "School sports days (운동회) are a big event in Korean schools; notices to parents are formal. Other countries may differ.",
+   "accessibility": "Plain text; no image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice step",
+    "Surface features of the two notices"
+   ],
+   "human": [
+    "Tone and naturalness of both versions"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k8-10",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "who does what in passive and causative",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Who broke the window?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Revise a judgement about who is responsible as sentences with different grammatical roles appear, and report the event fairly.",
+  "thinking": [
+   "Reading what a sentence with no agent does and does not claim",
+   "Revising a judgement as new evidence appears",
+   "Choosing a fair report"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn 유리창이 깨졌다 into an active form. Here you decide what each form implies about responsibility and report the event fairly.",
+  "prerequisites": [
+   "Has met passive and active verb pairs such as 깨다 and 깨지다",
+   "Can read short notices in Korean"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A school window is broken. Read each part, choose the most reasonable reading, then continue.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Decide using only what you have read so far.",
+    "hints": [
+     "Check which person, if any, the sentence names as doing the action.",
+     "Ask what the sentence would look like if it wanted to blame someone."
+    ],
+    "reflect": "A sentence with no agent does not claim that nobody did it, and a sentence with an agent assumes one. Fair reporting keeps these two apart.",
+    "stages": [
+     {
+      "info": "School notice board.\n어제 오후 3층 교실의 유리창이 깨졌습니다.",
+      "ask": "What does this notice tell you about who broke the window?",
+      "options": [
+       {
+        "id": "a",
+        "text": "A student was careless.",
+        "reveals": "The notice names nobody."
+       },
+       {
+        "id": "b",
+        "text": "It does not say whether a person was involved."
+       },
+       {
+        "id": "c",
+        "text": "The window broke by itself with no cause.",
+        "reveals": "The sentence does not claim there was no cause; it just does not say."
+       },
+       {
+        "id": "d",
+        "text": "The school wants to blame someone.",
+        "reveals": "Nothing signals blame; the form without a doer is the neutral way to report."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "깨졌습니다 has no doer. It states a result without saying who or what caused it."
+     },
+     {
+      "info": "Later, the vice principal on the loudspeaker.\n유리창을 깬 학생은 교무실로 오세요.",
+      "ask": "What changed in how the event is told?",
+      "options": [
+       {
+        "id": "a",
+        "text": "It now assumes a person broke the window."
+       },
+       {
+        "id": "b",
+        "text": "It now says the window broke by itself.",
+        "reveals": "깬 is the active form with the object marker 을; it is the opposite of 깨졌."
+       },
+       {
+        "id": "c",
+        "text": "Nothing changed; 깬 and 깨진 mean the same.",
+        "reveals": "Compare 유리창이 깨졌다 and 유리창을 깼다: the object marker and the doer differ."
+       },
+       {
+        "id": "d",
+        "text": "It says a teacher broke it.",
+        "reveals": "깬 학생 names a student as the doer, not a teacher."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "깬 is the active form: it presupposes that someone broke the window. The first notice left that open."
+     },
+     {
+      "info": "In the office, 민호 says:\n체육 시간에 제 공이 날아가서 유리창에 맞았어요. 일부러 한 건 아니에요.",
+      "ask": "Which report of the event do you now find fair?",
+      "options": [
+       {
+        "id": "a",
+        "text": "민호가 일부러 유리창을 깼다.",
+        "reveals": "This adds an intention that nothing in the story supports."
+       },
+       {
+        "id": "b",
+        "text": "민호의 공에 유리창이 깨졌다."
+       },
+       {
+        "id": "c",
+        "text": "민호가 실수로 유리창을 깼다."
+       },
+       {
+        "id": "d",
+        "text": "누군가 민호에게 유리창을 깨게 했다.",
+        "reveals": "A causative means someone made 민호 do it; nobody else appears in the story."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "Both b and c fit the story: one names the cause (his ball) without a verb of blame, and one names him as the doer while stating it was a mistake. Saying he did it on purpose, or that somebody made him, goes beyond the evidence."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write in Korean how you would report the event neutrally to the principal (no blame): the window broke because a ball flew into it during PE.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses a no-agent form (깨지다)",
+      "mode": "any",
+      "patterns": [
+       "깨졌",
+       "깨져",
+       "깨어졌"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not name a doer with 깨다/깨뜨리다",
+      "mode": "none",
+      "patterns": [
+       "깼",
+       "깨뜨",
+       "깨게"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(요|니다|니까)(?![가-힣])"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence state the result without blaming anyone?",
+     "Is it polite enough for the principal?",
+     "Does it mention the cause (the ball) as a cause and not as a person's fault?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "체육 시간에 날아온 공에 맞아 유리창이 깨졌습니다."
+     },
+     {
+      "text": "공이 날아가서 교실 유리창이 깨졌어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "민호가 유리창을 깼습니다.",
+      "why": "Names a doer with the active verb."
+     },
+     {
+      "text": "유리창이 깨졌어.",
+      "why": "The ending is not polite enough for the principal."
+     }
+    ],
+    "humanReview": "Whether the report is neutral and natural.",
+    "hints": [
+     "Which form of the verb has no doer?",
+     "Add the cause with a particle such as 에 or -어서, not with a person as subject."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the judgement",
+    "full": "Explains how the active/passive forms changed the reading",
+    "partial": "Notes a change but no reason",
+    "none": "No change"
+   },
+   {
+    "criterion": "Fair report",
+    "full": "Neutral polite sentence with the result and cause",
+    "partial": "Neutral but impolite or without cause",
+    "none": "Names a doer"
+   }
+  ],
+  "alternatives": [
+   "b and c in the last stage are both fair; a student may prefer one for style.",
+   "A student may keep a neutral report even in stage 3 and say that more evidence is needed; this is acceptable."
+  ],
+  "hardCases": [
+   "The neutral 깨졌습니다 can also hide responsibility in a real case; students may point this out and that is a valid observation."
+  ],
+  "cautions": {
+   "language": "The pair 깨다 / 깨지다 (active / intransitive passive) is the core; learners often think 깨졌다 means 'someone broke it'.",
+   "culture": "Reporting a broken window to a school office is normal; the story avoids any harm to a real person.",
+   "accessibility": "Plain text; no image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of reasonable options",
+    "Surface features of the written report"
+   ],
+   "human": [
+    "Whether the report is neutral and natural"
+   ]
+  }
+ }
+]

@@ -1,0 +1,452 @@
+{
+ "reviewer": "AI independent reviewer (not teacher, not learner)",
+ "tasks": [
+  {
+   "id": "e-01",
+   "Q1": {
+    "v": "concern",
+    "e": "s2 is solvable by string match: only option containing 'Thu' (and 'No'); s1 by scanning for 'Thu'. The 'Open: Mon, Wed, Fri' line already implies Thursday is closed, so the 'No library on Tue and Thu' line is redundant and s3 is mostly copying it."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Ran real checker: s3 false acceptance 'Yes, we can! I can't wait for Thursday.' and 'Yes, let's go on Thursday. I can't wait!' pass both checks (w2 matches can't in 'can't wait'). False rejections: 'We can not go.', 'The library is close on Thursday.', 'Thursday is not a library day.'"
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Vocabulary and length are minimal; nothing hides the thinking."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "s1/s2 reveals are good diagnostics (e.g. a = missed the day). But s3 hint 2 hands over the answer start ('No, we can't.로 시작') and hint 1 says copy the line; a wrong pickLine/s3 gives no diagnostic."
+   },
+   "Q5": {
+    "v": "concern",
+    "e": "Idea 'match the claim to the line that speaks to it' transfers, but with a 3-line notice that contains the answer verbatim there is little to practise beyond lookup."
+   },
+   "defects": [
+    "s3 checker accepts opposite stance via \"can't wait\"; rejects 'can not', 'close', 'is not a library day'"
+   ],
+   "suggestedFixes": [
+    "Make the notice require an inference (e.g. only 'Open: Mon, Wed, Fri' without the explicit 'No library' line, or add a special-schedule line) so s2 options all contain Thursday-relevant text",
+    "Add w2 patterns: can\\s?not, close\\b, not a library day, don't; add a 'none' check for ^\\s*yes",
+    "Rewrite s3 hint 2 as an action (state the answer to Ben first, then add the reason)"
+   ],
+   "cueSolvableSteps": [
+    "s2 (only option with 'Thu')",
+    "s1 (scan for Thu)"
+   ],
+   "blindResult": "s1 b, s2 b, s3 passes: all matched key."
+  },
+  {
+   "id": "e-02",
+   "Q1": {
+    "v": "concern",
+    "e": "s2: distractors b and c are refuted by facts stated verbatim in the text (park near school, Sunday); a is the only option about time and is the only one that does not need checking. s1 has two accepted lines so is fine."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 false acceptance: the unchanged original 'Please come at 10 o'clock. We will start the game at 9:30.' passes all checks, as does 'come at 11 ... start at 9:30' - the check cannot tell fixed from unfixed (humanReview admits it). False rejection: 'Please come at nine.' (needs a digit)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Four short sentences, easy vocabulary."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "b/c reveals point back to the text; hints are actions. pickLine wrong answers get no message until 2 tries."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Check clock-time consistency in a message is a transferable habit (applies to e-06)."
+   },
+   "defects": [
+    "s3: the original, unfixed sentences pass every automatic check"
+   ],
+   "suggestedFixes": [
+    "Add a check that extracts the two times and verifies come<=start (or present as self-check with explicit 'not verified')",
+    "Allow number words (nine, ten thirty)",
+    "Make s2 options all plausible consequences (e.g. 'friends arrive 30 min early and wait', 'friends arrive at 10 and game starts without them')"
+   ],
+   "cueSolvableSteps": [
+    "s2 (only on-topic option)"
+   ],
+   "blindResult": "s1 line 4 (accepted), s2 a, s3 passes: all matched key."
+  },
+  {
+   "id": "e-03",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: c ('Is your ball new?') and e (already answered by the invitation) are jokes; hint 2 almost names e; leaving two plain wh-questions a and b. Reasoning is mostly elimination of silly items."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1 handled well (a,b match; a,b,d acceptable). s2: false rejection 'Sounds good! Time and place?'; false acceptance 'I want to play. Where is your ball?' (w2 matches where). Picking only 'a' or 'b' gives empty feedback."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Low load."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "Reveals for c, d, e diagnose the wrong thinking well; hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Needed-information judgement before committing transfers to any invitation/request (see e-09)."
+   },
+   "defects": [
+    "s2 checker: wh-word anywhere counts as asking time/place"
+   ],
+   "suggestedFixes": [
+    "Require w2 pattern inside the sentence containing '?'",
+    "Add 'time and place|date' patterns",
+    "Give a reveal for omission (picked a only: 'Where would you go?')"
+   ],
+   "cueSolvableSteps": [
+    "s1 partially (silly distractors)"
+   ],
+   "blindResult": "s1 a,b; s2 passes: matched key."
+  },
+  {
+   "id": "e-04",
+   "Q1": {
+    "v": "concern",
+    "e": "Stage 3: option a repeats Jun's own words ('ask Hana'); s2: a is the only option that is not absurd (mum won't buy; word is hard) and is longest; stage 2 a longest. Moreover stage 1 accepts a and b, stage 2 a and c, so a student who answers 'a' every time never revises anything - the 'revise judgement' is not forced."
+   },
+   "Q2": {
+    "v": "ok",
+    "e": "Stage reasonable-sets are sensible (stage 1 a,b; stage 2 a,c). Minor: stage 1 b ('just tell shoe size') is a straw interpretation that makes the set look wider than it is."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short and easy; P.E. is common to Korean pupils."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Reveals on wrong options are good (stage 2 b, stage 3 b/c). But the `reflect` prompt ('한 가지 말해 보세요') has no input field in the data model so the student's own revision is never captured; s2 hint 2 states the stage ('어느 단계에서 좁혀졌나')."
+   },
+   "Q5": {
+    "v": "concern",
+    "e": "Idea 'one sentence underdetermines intent, add clues' is transferable but task is a narrow story; no step makes the student identify which clue changed their mind."
+   },
+   "defects": [
+    "Revision is not forced: constant-'a' strategy gets full credit",
+    "reflect has no response capture"
+   ],
+   "suggestedFixes": [
+    "Make stage 1 options include a tempting-but-wrong confident answer that later clues overturn (e.g. 'wants to stop wearing shoes') so a revision is observable",
+    "Turn reflect into a choose step: 'Which clue ruled out going to the shop?'",
+    "Remove 'ask Hana' echo in option wording (e.g. 'Borrow shoes from a friend')"
+   ],
+   "cueSolvableSteps": [
+    "stage 3 (word echo)",
+    "s2 (absurd distractors, longest)",
+    "stage 2 (longest)"
+   ],
+   "blindResult": "stages a,a,a and s2 a: all within keyed reasonable sets."
+  },
+  {
+   "id": "e-05",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: a is the longest and has the most hedges ('I'm afraid', 'Could I'); b and c are overtly rude. A student can pick a by form without weighing a vs d (d is acceptable, so no penalty, but no discrimination either)."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Ran checker. False rejections (valid answers): 'I will be absent today because I have a dental appointment' (s2 w3), 'I regret that I cannot attend... dentist visit' (s2 w2: regret not listed), s3 'I can not come...' and 'I'm not coming today because of the dentist' (s3 w2). False acceptance: s3 'Dear Ms. Han, I'm afraid I can't come due to my dentist appointment. I'm sorry.' (17 words, formal) passes although the task asks for casual register - register is never checked, only length."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "afraid/appointment glossed in hints; two writes in 12 min is tight but fine (est. 13-15 min)."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "b and c reveals diagnose tone problems well; hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Register/audience adaptation transfers to many situations; strongest transfer in the set."
+   },
+   "defects": [
+    "s3 does not verify casual register; several valid verbs missing from w2/w3"
+   ],
+   "suggestedFixes": [
+    "Add absent|not attend|dental|visit|regret|can\\s?not|not coming|not going to patterns",
+    "In s3 add a 'none' check for formal markers (Dear, I'm afraid, apologize, would appreciate)",
+    "Hint 1 of s2 lists 'Sorry / I'm afraid / Could you' - fine, keep"
+   ],
+   "cueSolvableSteps": [
+    "s1 (longest/hedged)"
+   ],
+   "blindResult": "s1 a (d also ok), s2 and s3 pass: matched key."
+  },
+  {
+   "id": "e-06",
+   "Q1": {
+    "v": "concern",
+    "e": "s2: a is the only option about the conflict just identified; b and c are unmotivated. s1 hint 1 tells the procedure. Reasoning (ordering events in time) is real, though the answer is easy once the Thursday lines are located."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "pickLine accepts line 2 and line 3 (good). s3: false acceptance of concatenating both original lines ('Please send me your part by Thursday night. I will put all the parts together on Thursday after school.') and of 'by Thursday evening' (still after school). w3 only rejects exact verbatim single-line copies. Fixes like 'Wednesday night' pass correctly."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "'by' = deadline is the point; vocabulary easy."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "s2 reveals good. pickLine wrong gives no diagnostic message. s3 hint 2 gives the check sequence (fine, action)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Sequencing check across steps of a plan transfers (e-02 similar, so not a single trick)."
+   },
+   "defects": [
+    "s3 checker passes unrepaired text when both originals are pasted"
+   ],
+   "suggestedFixes": [
+    "Add none-pattern for both original sentences anywhere in the text (not only ^...$)",
+    "Make s2 distractors real alternatives (e.g. 'parts are sent but poster is printed with missing parts' vs 'merger works overnight')",
+    "Mention that 'Thursday night' later than 'Thursday after school' in the material or hint, since hardCases itself says it is ambiguous"
+   ],
+   "cueSolvableSteps": [
+    "s2"
+   ],
+   "blindResult": "s1 line 2/3, s2 a, s3 passes: matched key."
+  },
+  {
+   "id": "e-07",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: a contradicts the word 'earlier' (student only needs the dictionary), c is a give-up option; s2: a is the decisive/longest, c is in fact acceptable. Hana's 7:50 is simple sign-direction arithmetic."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 checker: false rejections 'seven-thirty', '7 30'; false acceptances: 'The bus leaves at 7:50 because it is 10 minutes later than 7:40, so 7:30 is wrong.' (wrong claim, contains 7:30 + because) and 'It is not 7:30 because yes.' w2 'so\\b' and 'because' are satisfied by any text. s2: a vs c handled by acceptable."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Moderate but fair: earlier/from are the content."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "a/c reveals diagnose direction error and over-scepticism well; hint 2 of s1 tells the action."
+   },
+   "Q5": {
+    "v": "concern",
+    "e": "Title promises 'which notice to trust' but B simply supersedes A; there is no real conflict-resolution. Transferable idea is 'later update modifies earlier' which is narrow; 'from' vs 'on' is a good nugget."
+   },
+   "defects": [
+    "Title/goal mismatch: no actual conflicting-sources evaluation",
+    "s3 w1/w2 weak"
+   ],
+   "suggestedFixes": [
+    "Add a stale-vs-new twist (e.g. Notice C 'Disregard Notice B') or retitle ('두 안내문 합쳐 읽기')",
+    "Patterns: seven[- ]?thirty, 7\\s30; add none-pattern for 'not 7:30|7:30 is wrong'"
+   ],
+   "cueSolvableSteps": [
+    "s1 (earlier = dictionary)",
+    "s2 (longest)"
+   ],
+   "blindResult": "s1 b, s2 a (c acceptable), s3 passes: matched key."
+  },
+  {
+   "id": "e-08",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: only e lacks vagueness and d is the only vague item without 'or' - hint 1 ('mark every or') leads away from d, the keyed answer, while e is clearly irrelevant. s2 has no cue issue."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "Ran checker. False acceptance: the original notice with only 'something' replaced ('Art Club meeting this Friday or next week at 3 or 4 in room 2 or the gym. Bring paper.') passes ALL checks while still fully ambiguous. 'Art Club meeting at 3:00 in room 2 on the 23rd. Bring paper and invite your friends.' passes the weekday check because 'fri' matches 'friends' (also mon->month, sat, wed, sun substrings). False rejections: 'three o'clock', 'in the art room'. No check for 'or' although the selfAssess and label stress it."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Plain vocabulary; no hidden barrier."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Reveal only for e. Picking a,b,c (omitting d) returns an empty message; no reveal says 'something has a vague object' for d. Hint 1 contradicts key d (see Q1)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Remove ambiguity (when/where/what) in any announcement transfers widely."
+   },
+   "defects": [
+    "s2 checker accepts still-ambiguous notices; substring day matching ('fri' in 'friends')"
+   ],
+   "suggestedFixes": [
+    "Add a 'none' check for \\bor\\b between times/places/days (e.g. \\d\\s+or\\s+\\d, room\\s*\\d+\\s+or, friday\\s+or) and for 'next week'",
+    "Use \\b word boundaries and fuller day names in w2; add number words",
+    "Add reveal to option d and fix hint 1 ('also look for vague nouns like something')"
+   ],
+   "cueSolvableSteps": [
+    "s1 (e obviously irrelevant)"
+   ],
+   "blindResult": "s1 a,b,c,d, s2 passes: matched key."
+  },
+  {
+   "id": "e-09",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: d and e are comic distractors (favorite food); remaining a,b,c. Hint 1 names 'at some point', 'look at' which are exactly the answers a and b."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s2 w2 requires a deadline question (when/due/deadline...) even though the prompt says any two of the chosen questions and acceptable/alternatives say a,b only or skipping length is fine. Real checker: 'Sure, I'd be happy to help! How long is the essay, and what kind of help do you want?' fails (w2); 'Could you tell me what you'd like me to focus on? Also how many words is it?' fails; 'What do you need exactly? Grammar or ideas?' fails. False acceptance: 'Sure! I can give you feedback. Could you send it when you can?' passes (when + feedback + one non-question request). Two-question minimum is not checked."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Light language for L3; gap is in thinking, not reading."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Omission feedback is empty (picked only a, or b,c). Hint 1 of s2 lists '언제까지 / 어떤 도움 / 얼마나 긴지', i.e. the answer set."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Identify missing information before agreeing transfers (pairs with e-03)."
+   },
+   "defects": [
+    "s2 checker structurally forces the 'when' question; false acceptance of non-question"
+   ],
+   "suggestedFixes": [
+    "Replace w2/w3 by a count: >=2 distinct question-type matches among {deadline, kind of help, length}",
+    "Require '?' count >=2 or a '?' in the same sentence as the pattern",
+    "Rewrite hint 1 of s2 as an action ('pick the two that would change whether you can help this week')"
+   ],
+   "cueSolvableSteps": [
+    "s1 (d,e jokes; hint names the set)"
+   ],
+   "blindResult": "s1 a,b,c (key), s2 passes: matched key."
+  },
+  {
+   "id": "e-10",
+   "Q1": {
+    "v": "defect",
+    "e": "All three reveal stages are keyed 'b'; in each, b is the longest, the only hedged/nuanced option, and the other two are extremes ('곧 채택', '이미 거절', '영원히 거절', '무시해도', '지금 바로 만들라'). A student can answer b,b,b with no reading of the email. Stage 2 b even pre-announces stage 3 ('이후에 대해서는 아직 아무 말이 없다'). Because the correct answer never changes, no revision of judgement is ever required, contradicting the format 'reveal-and-revise'."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Alternatives/hardCases say a tentative or 'polite refusal' reading of stage 1 and 3 is reasonable, but no option expresses it, so only b can be chosen. s2 checker: false rejections of valid promises: 'I'll send you the costs tomorrow', 'on Thursday', 'this Wednesday', 'soon' (w3 needs friday/by/before/deadline/this week); false acceptance 'Thank you. I'm sad about the budget, by the way.' ('by' matches)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "L3-appropriate vocabulary; 'director/estimate' guessable."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Reveals on wrong options are informative (e.g. 'budget already fixed'). But the right option is not distinguished by evidence quotes, and reflect has no input."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Reading politeness markers and concessive 'But' to infer intent transfers; the idea is good but under-exercised by this key."
+   },
+   "defects": [
+    "Cue-solvable b,b,b in all stages (length + hedge + position)",
+    "No real revision of judgement",
+    "s2 time-promise check too narrow"
+   ],
+   "suggestedFixes": [
+    "Make options similar in length and each a hedged judgement; vary the correct position; make stage 1 plausibly 'likely polite no' vs 'undecided' and stage 3 flip some earlier judgement",
+    "Add an option for tentative reading and put it in `reasonable`",
+    "w3: accept any future time word (tomorrow|today|week|monday..|soon|\\bby\\b) but require it within the sentence with estimate"
+   ],
+   "cueSolvableSteps": [
+    "stage 1",
+    "stage 2",
+    "stage 3 (b: longest, hedged, same slot)"
+   ],
+   "blindResult": "b,b,b and s2 passes: matched key; I did not need to read the email to decide."
+  },
+  {
+   "id": "e-11",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: 'caused' is a keyword and hint 2 names the contrast 'after' vs 'caused'; s2: c, d are irrelevant on their face. Real reasoning is still required for s3 and the a/b/e choice."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s3 checker: w1 rejects valid hedges: 'it is unclear whether the Wi-Fi caused it', 'this is not proof', 'I don't think the Wi-Fi is the only cause'. w2 is satisfied by 'for example' ('exam' substring) and by 'latest' ('test'), so 'The scores fell, but that doesn't prove the Wi-Fi caused it. For example, many things changed.' passes although no check/other reason is given. s1 key is only line 3 though line 4 ('we should turn it off') is also unsupported; a wrong pick gets no message. s2: a,b,e acceptable but a,e alone or e alone is not-match with a reveal that starts with '도움이 될 수 있어요' (contradictory)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Concise text; the logic (post hoc) is the content."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "e reveal contradicts itself ('can help... but'), c reveal says 'may relate to scores' - fine. pickLine feedback absent for line 1/2/4."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Distinguishing correlation/sequence from cause and asking for comparison data is the most transferable idea in the set."
+   },
+   "defects": [
+    "s3 w2 matches 'example'",
+    "s3 w1 misses common hedges",
+    "e reveal contradictory"
+   ],
+   "suggestedFixes": [
+    "w2: use \\b boundaries (\\btest\\b, \\bexams?\\b not example), require 'other school|compare|harder|control'",
+    "w1: add unclear|not proof|don't think|doubt|uncertain|might be|could be",
+    "Decide whether e is correct: if it checks the mechanism, add to correct (a,b,e) and fix reveal"
+   ],
+   "cueSolvableSteps": [
+    "s1 (keyword 'caused')",
+    "s2 (c,d irrelevant)"
+   ],
+   "blindResult": "s1 line 3, s2 a,b,e (acceptable, not exact key a,b), s3 passes."
+  },
+  {
+   "id": "e-12",
+   "Q1": {
+    "v": "concern",
+    "e": "Hint 2 of s1 ('이유와 감정이 모두 빠진 답') describes option b exactly. But the question is a subjective probability (b, c, d all defensible; d actually shows the speaker is not fine) so even without the cue there is no single reasoning path."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1: b match, c and d acceptable, only a is wrong - three of four options accepted, so it hardly discriminates. s2 checker: false rejection 'A: Sorry. B: It's fine. A: Is everything okay with you? B: I just felt left out.' (w4 does not know 'everything okay'); no check that B ever reveals a feeling (condition 3): 'A: Are you okay? You seem tired. B: Yes, I'm fine. A: Really? B: Yes, really fine, thanks.' passes. Format regex needs consecutive lines but tolerates blank lines."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Dialogue-making with free topic; 60 chars / 4 lines achievable (est. 15-20 min, a little above stated 14)."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "c reveal ('문장만으로는 마음을 판단하기 어려워요') nearly dismisses a defensible answer; hints are actions. Good honesty in explain."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Pragmatic inference (literal vs intended meaning) and building a counterexample dialogue transfers to other phrases (sure, whatever)."
+   },
+   "defects": [
+    "s1 cue via hint; three accepted answers",
+    "s2 does not check condition 3"
+   ],
+   "suggestedFixes": [
+    "Rewrite s1 as ranking/justification or write step 'which clue made you choose?'",
+    "Replace hint 2 with an action: 'compare which answers give a reason or a feeling' ",
+    "w4: add everything okay|what's on your mind|is something|bothering|what happened; add check on last B line having feeling words (felt|wish|hurt|waited|disappoint)"
+   ],
+   "cueSolvableSteps": [
+    "s1 (hint 2)"
+   ],
+   "blindResult": "s1 b (c,d also defensible), s2 passes."
+  }
+ ],
+ "summary": {
+  "defects": 4,
+  "concerns": 30,
+  "oks": 26,
+  "themes": [
+   "Distractors that are absurd or refuted by the text, plus the correct option being the longest/most hedged (e-04,e-05,e-06,e-07,e-10); e-10 is b,b,b in every stage",
+   "Write-step regex checks reject valid answers (can not, not coming, tomorrow, unclear, number words, 'three') and accept wrong ones (original text unchanged in e-02, concatenated originals in e-06, 'Yes... can't wait' in e-01, copy minus 'something' in e-08, 'example' as 'exam' in e-11)",
+   "Substring patterns without word boundaries (fri in friends, exam in example, test in latest)",
+   "Hints sometimes give the answer set (e-09 s2, e-12 s1, e-03 s1, e-08 s1 contradiction)",
+   "pickLine/omission in multi-choice give no diagnostic message; reflect prompts (e-04, e-10) have no response capture",
+   "Revise-judgement tasks (e-04, e-10) do not force an actual revision",
+   "Strength: transferable ideas in e-05 (register), e-11 (post hoc), e-09/e-03 (missing info); Korean instructions are natural overall"
+  ]
+ }
+}

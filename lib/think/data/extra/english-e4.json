@@ -1,0 +1,1766 @@
+[
+ {
+  "id": "x-e-e4-01",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "짧은 쪽지와 일정",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "엄마의 쪽지와 Jisu의 놀이 시간",
+  "uiLang": "ko",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "엄마 쪽지의 여러 일정을 친구가 제안한 시간과 비교해 맞지 않는 곳을 찾고, 영어로 거절하며 다른 시각을 제안한다.",
+  "thinking": [
+   "쪽지의 시각들을 제안된 시간 범위와 하나씩 비교하기",
+   "시간 '범위'와 한 시각이 겹치는지 판단하기",
+   "근거를 들어 영어로 알리기"
+  ],
+  "differsFromPlain": "단순 연습은 쪽지에서 시각을 찾아 읽게 한다. 여기서는 친구가 제안한 시간 범위(4:15-5:15)를 쪽지의 여러 일정과 하나씩 맞춰 겹치는 곳을 모두 찾고, 그 근거로 거절하며 다른 시각을 제안한다.",
+  "prerequisites": [
+   "p.m.의 뜻과 시각 읽기(3:30, 4:00처럼)",
+   "piano class, trash 같은 쉬운 낱말"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "엄마가 식탁에 둔 쪽지예요(그림 없이 글로만 적었어요):\n\nMina,\nToday's plan:\n3:30 p.m. Come home.\n4:00 p.m. Piano class (30 minutes).\n5:00 p.m. Take out the trash.\n6:30 p.m. Dinner with Mom and Dad.\n\n그때 친구 Jisu가 문자를 보냈어요. \"Let's play at the park from 4:15 to 5:15 today!\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Jisu의 제안(4:15-5:15)과 시간이 겹치는 쪽지의 줄을 모두 고르세요.",
+    "options": [
+     {
+      "id": "a",
+      "text": "3:30 p.m. Come home.",
+      "reveals": "집에 오는 시각이 4:15보다 앞인지 뒤인지 비교해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "4:00 p.m. Piano class.",
+      "reveals": "수업이 몇 시에 시작해서 몇 시에 끝나는지 계산해 공원 시간과 나란히 놓아 보세요."
+     },
+     {
+      "id": "c",
+      "text": "5:00 p.m. Take out the trash.",
+      "reveals": "한 시각이 공원 시간 범위 안에 들어가는지 확인하는 방식으로 생각했어요."
+     },
+     {
+      "id": "d",
+      "text": "6:30 p.m. Dinner with Mom and Dad.",
+      "reveals": "저녁 시각은 공원 시간이 끝난 뒤인지 비교해 보세요."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "피아노 수업은 4:00-4:30이라 4:15-4:30이 겹치고, 5:00 쓰레기 버리기는 4:15-5:15 사이에 들어가요. 집에 오는 3:30과 저녁 6:30은 공원 시간 밖이에요.",
+    "hints": [
+     "각 줄을 공원 시간 '4:15-5:15'와 하나씩 놓고, 앞에서 끝나는지, 뒤에서 시작하는지 보세요.",
+     "수업처럼 시간이 걸리는 일은 끝나는 시각까지 계산해 보세요."
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Jisu에게 영어로 두세 문장으로 답장하세요. 쪽지에서 안 되는 이유를 찾아 쓰고, 가능한 다른 시각을 하나 제안하세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "피아노 일정을 이유로 들었다",
+      "mode": "any",
+      "patterns": [
+       "\\bpiano\\b",
+       "\\bclass\\b",
+       "\\blesson\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "쓰레기 버리기(5시) 일정도 이유로 들었다",
+      "mode": "any",
+      "patterns": [
+       "\\btrash\\b",
+       "\\bgarbage\\b",
+       "\\bchore\\b",
+       "\\b5(?::00)?\\b",
+       "\\bfive\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "무조건 찬성하는 답이 아니다",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(?:yes|sure|great)\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "피아노와 쓰레기 버리기, 두 이유를 모두 말했나요?",
+     "다른 시각을 제안했고, 그 시각이 쪽지의 일정과 겹치지 않나요?",
+     "'I can't'처럼 거절하는 말이 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Sorry, I can't play at 4:15. I have piano class at 4:00, and I have to take out the trash at 5:00. Can we play at 5:30?"
+     },
+     {
+      "text": "I can't go to the park from 4:15. My piano class is until 4:30, and my mom wants me to take out the trash at 5:00. How about 5:30 to 6:15?",
+      "note": "시각을 범위로 제안한 좋은 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Sure, see you at the park at 4:15!",
+      "why": "쪽지와 비교하지 않고 찬성했다."
+     },
+     {
+      "text": "I have piano class.",
+      "why": "쓰레기 버리기 일정과 다른 시각 제안이 없다."
+     }
+    ],
+    "humanReview": "제안한 시각이 쪽지와 정말 겹치지 않는지, 영어 문장이 자연스러운지는 사람이 본다. 자동 점검은 이유 낱말의 유무만 본다.",
+    "hints": [
+     "먼저 'Sorry, I can't ...' 한 문장으로 거절하세요.",
+     "쪽지에서 겹치는 일정 두 개를 시각과 함께 쓰고, 마지막에 'Can we play at ...?'로 제안하세요."
+    ],
+    "placeholder": "예: Sorry, I can't ...",
+    "minChars": 30
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "쪽지와 비교하기",
+    "full": "두 겹치는 일정을 모두 시각 범위로 비교해 찾음",
+    "partial": "한 일정만 찾음",
+    "none": "겹침을 확인하지 않고 받아들임"
+   },
+   {
+    "criterion": "영어로 거절하고 제안하기",
+    "full": "이유 두 가지와 대안 시각을 영어로 씀",
+    "partial": "이유나 대안 중 하나가 빠짐",
+    "none": "내용이 쪽지와 맞지 않음"
+   }
+  ],
+  "alternatives": [
+   "5:00 쓰레기 버리기는 5분이면 끝날 수 있으니 '4:15-5:00에 놀고 쓰레기를 버린 뒤 다시 놀자'는 제안도 좋은 답이다.",
+   "대안 시각은 4:30-5:00 사이 구간이나 5:30 이후 어느 것이든 쪽지와 겹치지 않으면 된다."
+  ],
+  "hardCases": [
+   "'I have piano.'처럼 class가 빠진 문장은 뜻은 통하므로 사람이 인정한다.",
+   "쓰레기를 버리는 시각을 5시 이후로 옮기자는 제안은 쪽지(엄마의 계획)를 바꾸는 것이라 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "p.m., class, trash처럼 쉬운 낱말만 썼다. 'Take out the trash'는 '쓰레기를 내다 버리다'라는 표현이다.",
+   "culture": "피아노 수업과 집안일은 한국 초등학생에게 흔한 소재다. 학원이나 특정 가정 형편을 가정하지 않도록 엄마의 쪽지 형태로 썼다.",
+   "accessibility": "그림 없이 글로만 적었다. 시각은 '포 피프틴', '파이브 오 클락처럼' 소리 내어 읽어도 뜻이 같다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "복수 선택 정답(피아노, 쓰레기 버리기)",
+    "이유 낱말의 유무와 무조건 찬성하는 시작 여부"
+   ],
+   "human": [
+    "대안 시각이 일정과 맞는지",
+    "영어 문장의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-02",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "짧은 쪽지와 일정",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "강아지 산책과 숙제 시간 정하기",
+  "uiLang": "ko",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "아빠 쪽지의 여러 조건을 모두 만족하는 산책 시각과 숙제 시각의 조합을 서로 다르게 여러 개 만든다.",
+  "thinking": [
+   "여러 조건을 동시에 만족하는 해를 직접 만들기",
+   "시작 시각에 걸리는 시간을 더해 끝 시각 확인하기",
+   "서로 겹치는지 검증하기"
+  ],
+  "differsFromPlain": "단순 연습은 쪽지의 시각 하나를 묻는다. 여기서는 조건 네 가지(시작 제한, 걸리는 시간, 끝내야 할 때, 겹치지 않기)를 동시에 만족하는 계획을 여러 개 만들고, 맞지 않는 계획이 어느 조건을 어기는지도 따진다.",
+  "prerequisites": [
+   "시각 읽기와 분 단위로 더하기",
+   "walk the dog, homework 같은 쉬운 낱말"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "아빠가 남긴 쪽지예요(그림 없이 글로만 적었어요):\n\nMina,\nYou come home at 4:00 p.m. I come home at 6:30 p.m.\n- Walk the dog for 30 minutes. Not before 5:00 p.m. It is too hot.\n- Do your homework for 60 minutes.\n- Finish both before I come home.\n- Do not do both at the same time.\n\n아래에서 시각은 '오후 4:00부터 몇 분 뒤인가'로 적어요. 예를 들어 4:30에 시작하면 30, 5:15에 시작하면 75예요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Mina가 숙제를 5:00에, 산책을 5:30에 시작하면 쪽지의 어느 조건을 어기나요?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Not before 5:00 p.m.",
+      "reveals": "산책 시작 5:30이 5:00보다 앞인지 뒤인지 비교해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "Do not do both at the same time.",
+      "reveals": "숙제 5:00-6:00과 산책 5:30-6:00을 시간선에 나란히 놓아 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Finish both before I come home.",
+      "reveals": "두 일이 끝나는 시각을 시작 시각에 걸리는 시간을 더해 구해 보세요."
+     },
+     {
+      "id": "d",
+      "text": "Walk the dog for 30 minutes.",
+      "reveals": "시작 시각이 아니라 일이 걸리는 시간에 대한 조건이에요."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "숙제는 5:00-6:00, 산책은 5:30-6:00이라 5:30-6:00에 두 일이 겹쳐요. 산책은 5:00 이후에 시작하고 둘 다 6:30 전에 끝나니 다른 조건은 지켰어요.",
+    "hints": [
+     "각 일의 시작 시각에 걸리는 시간(분)을 더해 끝나는 시각을 구하세요.",
+     "두 일의 시간 범위를 한 줄에 나란히 그려 보세요."
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "쪽지의 조건을 모두 지키는 계획을 서로 다르게 3개 만들어 보세요. w는 산책 시작, k는 숙제 시작(오후 4:00부터 몇 분 뒤인지)이에요.",
+    "vars": [
+     {
+      "name": "w",
+      "label": "산책 시작 (4:00부터 w분 뒤)"
+     },
+     {
+      "name": "k",
+      "label": "숙제 시작 (4:00부터 k분 뒤)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "w==floor(w) && k==floor(k) && w>=0 && k>=0",
+      "ok": "시각 모양이 맞아요.",
+      "fail": "w, k는 0 이상의 정수(분)로 쓰세요."
+     },
+     {
+      "id": "c2",
+      "expr": "w>=60",
+      "ok": "산책이 5:00 이후에 시작해요.",
+      "fail": "산책이 5:00보다 일찍 시작해요."
+     },
+     {
+      "id": "c3",
+      "expr": "w+30<=150 && k+60<=150",
+      "ok": "두 일이 6:30 전에 끝나요.",
+      "fail": "산책이나 숙제가 6:30을 넘겨서 끝나요."
+     },
+     {
+      "id": "c4",
+      "expr": "w+30<=k || k+60<=w",
+      "ok": "두 일이 겹치지 않아요.",
+      "fail": "산책과 숙제 시간이 겹쳐요."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "w*1000+k",
+    "modelRows": [
+     {
+      "w": 60,
+      "k": 0
+     },
+     {
+      "w": 90,
+      "k": 0
+     },
+     {
+      "w": 60,
+      "k": 90
+     },
+     {
+      "w": 120,
+      "k": 0
+     }
+    ],
+    "badRows": [
+     {
+      "w": 60,
+      "k": 30
+     },
+     {
+      "w": 30,
+      "k": 0
+     },
+     {
+      "w": 120,
+      "k": 90
+     }
+    ],
+    "explain": "산책은 60-120분 사이(5:00-6:00)에 시작해야 하고, 숙제는 90분 이내(5:30까지)에 시작해야 해요. 그중 서로 겹치지 않는 조합이 정답이에요. 예: (산책 60, 숙제 0), (산책 90, 숙제 0), (산책 60, 숙제 90).",
+    "hints": [
+     "먼저 산책 시작 w가 될 수 있는 범위를 정하고, 그 산책 시간을 피해서 숙제 시작 k를 고르세요.",
+     "각 일의 시작+걸리는 시간으로 끝나는 시각을 구해 두 일이 겹치는지 확인하세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "조건 모두 확인하기",
+    "full": "네 조건을 모두 지키는 계획 3개를 만듦",
+    "partial": "조건 한두 개를 놓친 계획이 섞임",
+    "none": "조건을 확인하지 않고 시각을 씀"
+   },
+   {
+    "criterion": "서로 다른 계획 만들기",
+    "full": "순서만 바꾼 것이 아닌 서로 다른 조합을 만듦",
+    "partial": "같은 계획을 조금만 바꿈",
+    "none": "한 개만 만듦"
+   }
+  ],
+  "alternatives": [
+   "숙제를 먼저 하고 산책을 나중에 하는 계획과 산책을 먼저 하고 숙제를 나중에 하는 계획이 모두 가능하다.",
+   "숙제와 산책 사이에 쉬는 시간을 두는 계획도 조건을 지키면 정답이다."
+  ],
+  "hardCases": [
+   "산책이 정확히 6:00에 끝나고 숙제가 6:00에 시작하는 계획(끝과 시작이 맞닿음)은 겹치지 않는 것으로 본다.",
+   "숙제가 정확히 6:30에 끝나는 계획은 'before I come home'을 '6:30까지'로 읽어 허용했다."
+  ],
+  "cautions": {
+   "language": "Not before, at the same time, finish both 같은 표현이 나온다. 'Not before 5:00'은 5시보다 일찍은 안 된다는 뜻이다.",
+   "culture": "강아지 산책은 한국에서 흔하지만 강아지가 없는 학생을 위해 쪽지 상황으로만 썼다. 개를 무서워해도 풀 수 있다.",
+   "accessibility": "시각을 '4:00부터 몇 분 뒤'로 바꿔 입력해 시계를 읽지 못해도 풀 수 있다. 그림은 없다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "조건 네 가지의 만족 여부",
+    "서로 다른 계획 개수"
+   ],
+   "human": [
+    "산책 시각 '5:00 이후' 해석에 대한 이의 제기"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-03",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "의도 추론하기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "Ken의 문자, 한 줄씩 읽고 마음 짐작하기",
+  "uiLang": "ko",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "문자를 한 줄씩 읽을 때마다 친구가 바라는 것을 다시 추측하고, 새 단서로 앞의 추측을 고친다.",
+  "thinking": [
+   "단서가 늘 때마다 추측을 고치기",
+   "한 문장만으로는 알 수 없음을 알기",
+   "이유(단서)를 근거로 영어 답장 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 문자 전체를 읽고 뜻을 한 번 고르게 한다. 여기서는 단서를 하나씩 공개하며 매번 추측을 다시 하고, 앞의 추측이 바뀌는 순간을 직접 확인한다.",
+  "prerequisites": [
+   "cold, camp 같은 쉬운 낱말",
+   "'play a game'과 'at home'의 뜻"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "친구 Ken이 문자를 보내요. 한 번에 한 조각씩 보여 줄 거예요. 조각마다 Ken이 나에게 바라는 것을 추측해 보세요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Ken의 문자를 한 조각씩 읽고, 매번 Ken이 바라는 것을 추측해 보세요.",
+    "stages": [
+     {
+      "info": "Ken: \"I have a new game!\"",
+      "ask": "이 한 줄만으로 Ken이 바라는 것으로 합리적인 추측을 모두 고르세요.",
+      "options": [
+       {
+        "id": "a",
+        "text": "새 게임이 생겼다는 소식을 알리고 싶어 한다.",
+        "reveals": "소식만 알리는 것도 가능한 읽기예요."
+       },
+       {
+        "id": "b",
+        "text": "나에게 게임을 팔고 싶어 한다.",
+        "reveals": "판다는 말은 어디에도 없어요."
+       },
+       {
+        "id": "c",
+        "text": "나와 같이 게임을 하자고 하려는 것 같다.",
+        "reveals": "같이 하려는 마음일 수도 있어요. 아직은 단서가 약한 추측이에요."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "c"
+      ],
+      "after": "한 줄만으로는 정확히 알 수 없어요. 소식만 말하는 것일 수도, 같이 하자는 것일 수도 있어요."
+     },
+     {
+      "info": "Ken: \"It is for two players. My brother is at camp this week.\"",
+      "ask": "새 단서까지 보고 Ken이 바라는 것을 다시 추측해 보세요.",
+      "options": [
+       {
+        "id": "a",
+        "text": "같이 게임할 두 번째 사람으로 나를 생각하는 것 같다.",
+        "reveals": "'두 명이 하는 게임'과 '형제가 없다'는 단서가 모두 이 추측과 이어져요."
+       },
+       {
+        "id": "b",
+        "text": "혼자 게임하고 싶어 한다.",
+        "reveals": "'two players'라는 단서와 맞지 않아요."
+       },
+       {
+        "id": "c",
+        "text": "여전히 소식만 알리고 싶어 한다.",
+        "reveals": "처음 줄에서는 가능했지만, 같이 할 사람이 없다는 단서가 더해진 지금은 단서를 다 설명하지 못해요."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "'두 명이 하는 게임'과 '형제가 캠프에 감'이 합쳐져 같이 할 사람을 찾는 것으로 읽는 것이 가장 자연스러워요."
+     },
+     {
+      "info": "Ken: \"But Mom says no friends at home today. I have a cold.\"",
+      "ask": "마지막 단서까지 보고 Ken이 바라는 것을 다시 추측해 보세요.",
+      "options": [
+       {
+        "id": "a",
+        "text": "오늘 우리 집에 와서 같이 하자고 한다.",
+        "reveals": "엄마가 오늘은 친구가 집에 오면 안 된다고 했다는 단서와 맞지 않아요."
+       },
+       {
+        "id": "b",
+        "text": "나와 더 이상 같이 놀고 싶지 않다.",
+        "reveals": "거절하는 이유(감기, 엄마 말씀)를 말했고, 놀기 싫다는 단서는 없어요."
+       },
+       {
+        "id": "c",
+        "text": "몸이 나으면 같이 하고 싶어 한다.",
+        "reveals": "감기가 이유이므로 감기가 나으면 가능하다는 읽기예요."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "처음에 '같이 하자'로 추측했다면 이제 '오늘'이 아니라 '나중에'로 고쳐야 해요. 하나의 새 단서(감기, 엄마 말씀)가 계획을 바꿨어요."
+     }
+    ],
+    "reflect": "세 번의 추측 중 가장 크게 바뀐 곳은 어디였나요? 어떤 문장이 이유였는지 한 가지 말해 보세요.",
+    "hints": [
+     "이번 조각에서 새로 생긴 단어나 숫자를 하나 찾으세요.",
+     "내 이전 추측이 새 단서와 모두 맞는지 하나씩 대어 보세요."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Ken에게 영어로 한두 문장으로 답장하세요. Ken이 바라는 것을 이해했다는 것이 드러나야 해요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "게임이나 같이 놀기를 언급했다",
+      "mode": "any",
+      "patterns": [
+       "\\bplay\\b",
+       "\\bgames?\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "아픈 Ken을 배려하거나 나중을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bwell\\b",
+       "\\bbetter\\b",
+       "\\blater\\b",
+       "\\bsoon\\b",
+       "\\btomorrow\\b",
+       "\\bnext\\b",
+       "\\bweekend\\b",
+       "\\bcold\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Ken의 감기를 알아주거나 나중에 하자고 했나요?",
+     "Ken의 게임 이야기를 이어 갔나요?",
+     "오늘 집에 가겠다는 말처럼 앞 단서와 맞지 않는 내용이 없나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Get well soon, Ken! Let's play your new game when you feel better."
+     },
+     {
+      "text": "Sorry about your cold. Can we play the game next week?",
+      "note": "시간을 구체적으로 제안한 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "I will come to your house now!",
+      "why": "엄마의 말씀과 감기라는 단서를 무시했고 게임도 언급하지 않았다."
+     },
+     {
+      "text": "Cool game!",
+      "why": "Ken이 바라는 것(같이 하기, 나중에)에 답하지 않았다."
+     }
+    ],
+    "humanReview": "답장이 단서 전체와 맞는지, 영어 문장이 자연스러운지는 사람이 본다. 자동 점검은 낱말 유무만 본다.",
+    "hints": [
+     "먼저 Ken의 몸 상태에 대해 한 문장을 쓰세요.",
+     "두 번째 문장에서 게임을 언제 같이 할지 제안해 보세요."
+    ],
+    "placeholder": "예: Get well soon, Ken! ...",
+    "minChars": 15
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "단서로 추측 고치기",
+    "full": "단계마다 새 단서를 근거로 추측을 바꾸거나 유지함",
+    "partial": "한두 단계에서만 고침",
+    "none": "단서와 상관없이 같은 추측을 고집함"
+   },
+   {
+    "criterion": "답장에 이해 드러내기",
+    "full": "감기와 나중에 놀기를 반영한 영어 답장",
+    "partial": "한 가지만 반영",
+    "none": "단서와 맞지 않는 내용"
+   }
+  ],
+  "alternatives": [
+   "3단계에서 '전화나 화상으로 오늘 같이 하자'고 제안하는 답도 단서와 충돌하지 않는 좋은 답이다.",
+   "'Get well soon.'만 쓴 답은 게임 이야기가 빠졌지만 배려는 드러난다."
+  ],
+  "hardCases": [
+   "1단계에서 모든 추측이 합리적인지, '소식만 알리고 싶다'를 정답으로 볼지는 사람에 따라 다를 수 있어 둘 다 인정했다.",
+   "'play'가 'play outside'로 해석되는 답은 사람이 확인한다."
+  ],
+  "cautions": {
+   "language": "cold(감기)와 camp는 고빈도 낱말이다. no friends at home today는 '오늘은 친구가 집에 오면 안 된다'는 뜻이다.",
+   "culture": "감기와 친구 초대는 문화에 상관없이 흔한 소재다. 게임 이름이나 특정 상품은 쓰지 않았다.",
+   "accessibility": "그림 없이 글로만 썼다. 화면 읽기 프로그램이 따옴표 안 영어를 읽는 데 문제가 없는 쉬운 문장이다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "단계별 합리적 선택",
+    "답장 낱말 점검"
+   ],
+   "human": [
+    "추측 이유의 타당성",
+    "영어 답장의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-04",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "의도 추론하기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "Sora의 이메일은 무엇을 부탁하나요",
+  "uiLang": "ko",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "짧은 이메일에서 쓴 사람의 의도를 근거와 함께 판단하고, 그 의도에 맞게 영어로 답한다.",
+  "thinking": [
+   "서로 다른 주장 중 근거가 더 맞는 것 고르기",
+   "이메일의 낱말을 근거로 의도 추론하기",
+   "의도에 맞게 답하기"
+  ],
+  "differsFromPlain": "단순 연습은 이메일의 낱말 뜻을 묻는다. 여기서는 친구들의 서로 다른 해석을 이메일의 근거와 대어 보고 더 잘 맞는 것을 고른 뒤, 선생님으로서 질문에 답한다.",
+  "prerequisites": [
+   "homework, bring 같은 쉬운 낱말",
+   "'Is that OK?'가 허락을 묻는 말이라는 것"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "Sora가 선생님께 보낸 이메일이에요(그림 없이 글로만 적었어요):\n\nDear Ms. Park,\nI am sorry. I forgot my homework at home. My mom can bring it to school at 11 a.m. today. Is that OK?\nSora\n\n세 친구가 Sora가 무엇을 원하는지 말했어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "이메일의 문장들과 가장 잘 맞는 해석은 누구의 것일까요?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Min: \"Sora는 숙제를 안 내고 싶어 해.\"",
+      "reveals": "이메일에 숙제를 가져오겠다는 말이 있는지 찾아보세요."
+     },
+     {
+      "id": "b",
+      "text": "Jun: \"Sora는 내일까지 시간을 더 달라고 해.\"",
+      "reveals": "이메일에 today와 tomorrow 중 어느 낱말이 있는지 확인해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Hana: \"Sora는 오늘 낮에 숙제를 내도 되는지 묻고 있어.\"",
+      "reveals": "'11 a.m. today'와 'Is that OK?'가 함께 가리키는 것을 살펴보세요."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "'My mom can bring it ... at 11 a.m. today'는 오늘 오전 11시에 숙제를 가져오겠다는 말이고, 'Is that OK?'는 그래도 되는지 묻는 말이에요. 숙제를 안 내려는 말도, 내일까지 달라는 말도 없어요.",
+    "hints": [
+     "세 해석을 이메일 문장에 하나씩 대어 보며 어긋나는 낱말을 찾으세요.",
+     "'bring', 'today', 'Is that OK?'가 각각 무엇을 말해 주는지 적어 보세요."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Ms. Park이 되어 Sora에게 영어로 한두 문장으로 답장하세요. Sora의 질문에 답해 주세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "숙제나 11시, 엄마가 가져오는 일을 언급했다",
+      "mode": "any",
+      "patterns": [
+       "\\bhomework\\b",
+       "\\b11\\b",
+       "\\beleven\\b",
+       "\\bmom\\b",
+       "\\bmother\\b",
+       "\\bbring\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "허락이나 부탁을 하는 말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\byes\\b",
+       "\\bno\\b",
+       "\\bok(?:ay)?\\b",
+       "\\bfine\\b",
+       "\\bsure\\b",
+       "\\bcan\\b",
+       "\\bcan['’]?t\\b",
+       "\\bcannot\\b",
+       "\\bplease\\b",
+       "\\bthank"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Sora의 질문(Is that OK?)에 답했나요?",
+     "숙제를 가져오는 시각이나 방법을 이메일 내용과 맞게 썼나요?",
+     "허락하지 않는 답이라면 이유를 썼나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Dear Sora, yes, that's OK. Please give me your homework at 11 a.m."
+     },
+     {
+      "text": "Hello Sora, no problem. Your mom can bring your homework at 11. Please do not forget it tomorrow.",
+      "note": "허락하며 다음 번 당부까지 쓴 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Sora, you do not need to do it.",
+      "why": "이메일의 의도(숙제를 늦게 내기)와 다르고 숙제를 언급하지 않았다."
+     },
+     {
+      "text": "OK.",
+      "why": "너무 짧아 어떤 일을 허락하는지 알 수 없다."
+     }
+    ],
+    "humanReview": "답장이 이메일의 의도와 맞는지는 사람이 본다. 자동 점검은 숙제·시각 낱말과 허락 표현의 유무만 본다.",
+    "hints": [
+     "먼저 'Yes' 또는 'No'로 Sora의 질문에 답하세요.",
+     "두 번째 문장에서 언제, 누구에게 숙제를 주면 되는지 쓰세요."
+    ],
+    "placeholder": "예: Dear Sora, ...",
+    "minChars": 15
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "해석을 근거에 대어 보기",
+    "full": "이메일의 낱말을 근거로 한 해석을 고름",
+    "partial": "근거 없이 고르거나 한 낱말만 봄",
+    "none": "이메일과 상관없는 해석을 고름"
+   },
+   {
+    "criterion": "의도에 맞는 답장",
+    "full": "질문에 답하고 숙제·시각을 맞게 씀",
+    "partial": "질문에만 답함",
+    "none": "이메일과 맞지 않는 내용"
+   }
+  ],
+  "alternatives": [
+   "선생님이 'No, homework is due in the morning.'처럼 허락하지 않는 답장도 이유가 이메일과 맞으면 인정한다.",
+   "두 친구의 해석이 둘 다 부분적으로 맞다고 보는 학생은 근거를 말하면 인정한다."
+  ],
+  "hardCases": [
+   "'today'를 'later today'로 읽는 것과 '오늘 낮'으로 읽는 것은 같은 해석으로 본다.",
+   "'Please bring it now.'처럼 11시를 무시한 답은 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "Dear, forgot, bring처럼 쉬운 낱말을 썼다. 'Is that OK?'는 허락을 구하는 가장 흔한 표현이다.",
+   "culture": "선생님께 이메일로 숙제를 늦게 내겠다고 하는 상황은 한국에서도 흔하다. 가정마다 상황이 다를 수 있어 가족을 '엄마'로만 한정하지 않아도 되며, 'mom' 대신 'family'를 쓴 답도 인정한다.",
+   "accessibility": "그림 없이 글로만 썼다. 'a.m.'은 '에이엠'으로 읽으면 된다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "해석 선택의 정답",
+    "허락·낱말 점검"
+   ],
+   "human": [
+    "답장의 내용 타당성",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-05",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "필요한 정보 고르기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "영화의 날에 갈 수 있을까",
+  "uiLang": "ko",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "결정하는 데 필요한 정보와 필요 없는 정보를 구분하고, 받은 정보로 갈 수 있는지 판단한다.",
+  "thinking": [
+   "내 조건과 비교해 꼭 필요한 정보 고르기",
+   "받은 정보가 모든 조건을 만족하는지 확인하기",
+   "흥미로운 정보와 필요한 정보 구분하기"
+  ],
+  "differsFromPlain": "단순 연습은 안내문을 읽고 답을 찾게 한다. 여기서는 안내문에 없는 정보 중 결정에 꼭 필요한 것만 골라 묻고, 받은 정보가 두 조건(시간과 돈)을 모두 만족하는지 따진다.",
+  "prerequisites": [
+   "시각 더하기(5:30에 20분 더하기)",
+   "ticket, movie, snack 같은 쉬운 낱말"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "학교 게시판의 안내문이에요(그림 없이 글로만 적었어요):\n\nMovie Day\nFriday, after school\nCome and watch a movie in the gym.\nBring a snack.\n\nMina의 사정: 금요일에는 6:00 p.m.까지 집에 도착해야 하고, 학교에서 집까지 걸어서 20분 걸려요. 쓸 수 있는 돈은 1,000원이에요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Mina가 갈 수 있는지 정하려면 선생님께 꼭 물어봐야 하는 정보를 모두 고르세요.",
+    "options": [
+     {
+      "id": "a",
+      "text": "What is the name of the movie?",
+      "reveals": "궁금한 정보와 결정에 필요한 정보는 달라요. 이 정보가 없어도 시간과 돈을 확인할 수 있는지 생각해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "What time does the movie end?",
+      "reveals": "Mina의 조건 중 시각 조건과 이어지는 정보예요."
+     },
+     {
+      "id": "c",
+      "text": "How much is a ticket?",
+      "reveals": "Mina의 조건 중 돈 조건과 이어지는 정보예요."
+     },
+     {
+      "id": "d",
+      "text": "What snack should I bring?",
+      "reveals": "안내문에 이미 'Bring a snack.'이 있어요. 이 답이 가는지 안 가는지를 바꾸는지 따져 보세요."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Mina는 '6시까지 집에 가기'와 '1,000원'이라는 두 조건이 있어서 영화가 끝나는 시각과 표 값을 알아야 가는지 정할 수 있어요. 영화 이름과 간식은 궁금하지만 결정을 바꾸지 않아요.",
+    "hints": [
+     "Mina의 조건 두 가지를 먼저 적고, 안내문에 빠진 정보가 무엇인지 찾으세요.",
+     "각 질문에 대한 답이 '간다/안 간다'를 바꿀 수 있는지 하나씩 생각해 보세요."
+    ],
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "선생님이 답했어요. \"The movie ends at 5:30 p.m. A ticket is 1,500 won.\" Mina는 어떻게 해야 할까요?",
+    "options": [
+     {
+      "id": "a",
+      "text": "돈과 시간 모두 괜찮아서 갈 수 있다.",
+      "reveals": "돈 조건과 받은 표 값을 비교해 보았는지 확인해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "영화가 끝나면 늦어서 6시까지 집에 못 간다.",
+      "reveals": "5:30에 걸어가는 20분을 더해 6:00과 비교해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "시간은 괜찮지만 돈이 모자란다.",
+      "reveals": "두 조건을 각각 따로 확인한 생각이에요."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "5:30에 끝나고 걸어서 20분이면 5:50에 도착해 6:00 전이에요. 하지만 표가 1,500원이라 1,000원으로는 살 수 없어요. 두 조건을 모두 확인해야 해요.",
+    "hints": [
+     "조건 두 개를 따로따로 확인해 보세요.",
+     "시각 조건은 끝나는 시각에 걸어서 가는 시간을 더해서 확인하세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "필요한 정보 고르기",
+    "full": "두 조건과 이어지는 정보 둘을 골라 이유를 이해함",
+    "partial": "한 가지만 고름",
+    "none": "관계없는 정보를 필요하다고 고름"
+   },
+   {
+    "criterion": "모든 조건 확인하기",
+    "full": "시간과 돈을 모두 확인해 결론을 냄",
+    "partial": "한 조건만 확인",
+    "none": "조건 확인 없이 답함"
+   }
+  ],
+  "alternatives": [
+   "'What time does it start?'도 알고 싶을 수 있지만, 끝나는 시각만으로 결정할 수 있어 필수는 아니다.",
+   "표 값 대신 '친구에게 빌릴 수 있는가'를 묻는 것은 Mina의 조건을 바꾸는 것이라 이 과제에서는 인정하지 않는다."
+  ],
+  "hardCases": [
+   "영화 이름이 Mina에게 중요할 수 있다(예: 무서운 영화). 하지만 이 과제의 조건에는 없다.",
+   "'6시까지 도착'을 5:50 도착으로 보는 것은 정확한 계산이지만 길이 막히는 경우는 고려하지 않았다."
+  ],
+  "cautions": {
+   "language": "movie, ticket, end처럼 쉬운 낱말만 썼다. 'after school'은 '방과 후'다.",
+   "culture": "영화 보기와 간식은 흔한 소재다. 용돈 액수는 가정마다 다를 수 있어 Mina의 사정으로 따로 적었다.",
+   "accessibility": "그림 없이 글로만 썼다. 시각은 '파이브 서티'처럼 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "필요한 정보 선택",
+    "결론 선택"
+   ],
+   "human": [
+    "선택 이유의 설명"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-06",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "필요한 정보 고르기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "Ben에게 무엇을 물어볼까",
+  "uiLang": "ko",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "계획에 빠진 정보를 찾고, 그 정보를 얻는 영어 질문 두 개를 직접 만든다.",
+  "thinking": [
+   "빠진 정보와 이미 아는 정보 구분하기",
+   "빠진 정보를 얻는 질문 만들기",
+   "내 조건을 반영한 질문 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 질문 형식을 따라 쓰게 한다. 여기서는 Ben의 문자에 빠진 정보가 무엇인지 스스로 가려내고, 내 사정에 맞게 꼭 필요한 질문 두 개를 만든다.",
+  "prerequisites": [
+   "what time, where, how 질문 만들기",
+   "문자의 짧은 문장 읽기"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Ben이 Mina에게 문자를 보냈어요: \"Let's do our science homework together on Saturday. Come to my house!\"\n\nMina의 사정: Ben은 새 집으로 이사했고, Mina는 새 집이 어디인지 몰라요. Mina는 토요일 오전 10시부터 11시까지 수영 수업이 있어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "계획을 세우려면 Mina가 Ben에게 꼭 물어봐야 하는 정보를 모두 고르세요.",
+    "options": [
+     {
+      "id": "a",
+      "text": "몇 시에 가면 되는지",
+      "reveals": "Mina의 토요일 일정과 이어지는 정보예요."
+     },
+     {
+      "id": "b",
+      "text": "Ben이 아침에 무엇을 먹었는지",
+      "reveals": "궁금해도 계획을 세우는 데 필요한 정보인지 따져 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Ben의 새 집에 가는 방법이나 주소",
+      "reveals": "Mina의 사정 중 아직 모르는 것과 이어지는 정보예요."
+     },
+     {
+      "id": "d",
+      "text": "숙제 과목이 무엇인지",
+      "reveals": "Ben의 문자에 이미 과목이 있어요. 새로 알아야 하는지 확인해 보세요."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "시각이 없어서 수영 수업과 겹치는지 알 수 없고, 새 집 위치를 몰라서 갈 수 없어요. 숙제 과목(science)은 문자에 있고, 아침 식사는 계획과 상관이 없어요.",
+    "hints": [
+     "Ben의 문자에 있는 정보와 없는 정보를 나눠 적어 보세요.",
+     "Mina의 사정 두 가지에서 아직 모르는 것이 무엇인지 찾으세요."
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Ben에게 보낼 영어 질문을 두 개 쓰세요. 한 질문은 시각, 다른 질문은 장소와 관련된 것이어야 해요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "시각이나 시작에 대한 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\bwhat time\\b",
+       "\\bwhen\\b",
+       "\\bstart\\b",
+       "\\bafter\\b",
+       "\\bhow long\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "장소나 가는 방법에 대한 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\bwhere\\b",
+       "\\baddress\\b",
+       "\\bhow (?:do|can|should|will) i (?:get|go)\\b",
+       "\\bhow to (?:get|go)\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "질문이 두 개 이상이다",
+      "mode": "any",
+      "patterns": [
+       "\\?[\\s\\S]*\\?"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "질문 하나는 시각, 하나는 장소에 대한 것인가요?",
+     "내 수영 수업(10-11시) 때문에 시각 질문을 더 구체적으로 할 수 있었나요?",
+     "문장 끝에 물음표를 썼나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "What time should I come? Where is your new house?"
+     },
+     {
+      "text": "When can we start? Can we start after 11 a.m.? How can I get to your house?",
+      "note": "수영 수업을 반영한 구체적인 질문."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Let's meet on Saturday.",
+      "why": "질문이 아니라 알려 주는 말이다."
+     },
+     {
+      "text": "What time?",
+      "why": "질문이 하나뿐이고 장소 질문이 없다."
+     }
+    ],
+    "humanReview": "질문이 정말 필요한 정보를 얻는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 질문 낱말과 물음표 두 개의 유무만 본다.",
+    "hints": [
+     "질문 낱말을 먼저 정하세요. 시각은 What time, 장소는 Where나 How로 시작할 수 있어요.",
+     "질문마다 끝에 물음표(?)를 붙이고, 수영 수업 때문에 시각을 더 구체적으로 물을 수 있는지 생각해 보세요."
+    ],
+    "placeholder": "예: What time ...?",
+    "minChars": 15
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "필요한 정보 찾기",
+    "full": "시각과 장소 두 가지 빠진 정보를 모두 찾음",
+    "partial": "한 가지만 찾음",
+    "none": "관계없는 정보를 고름"
+   },
+   {
+    "criterion": "질문 만들기",
+    "full": "시각과 장소를 묻는 영어 질문 둘을 씀",
+    "partial": "질문이 하나뿐이거나 문장 모양이 틀림",
+    "none": "질문이 아니거나 관계없음"
+   }
+  ],
+  "alternatives": [
+   "'Can I come after my swimming class?'처럼 자기 사정을 말하며 시각을 묻는 질문도 좋은 답이다.",
+   "'Is your house near the station?'처럼 장소를 간접적으로 묻는 질문도 사람이 인정한다."
+  ],
+  "hardCases": [
+   "'What time and where?'처럼 한 질문에 두 가지를 묻는 답은 질문 수가 하나로 보이지만 내용은 충분해 사람이 판단한다.",
+   "'Where do you live?'는 장소 질문이지만 새 집 위치를 정확히 묻지 않을 수 있다."
+  ],
+  "cautions": {
+   "language": "what time, where, how 질문을 쓴다. 'swimming class'는 쓰지 않아도 되며, 쓰면 자연스러운 표현이다.",
+   "culture": "이사와 친구 집에서 숙제하기는 흔한 소재다. 개인 주소를 쓰게 하지 않고 질문만 쓰게 했다.",
+   "accessibility": "그림 없이 글로만 썼다. 시각 '10시부터 11시까지'는 '텐 투 일레븐'처럼 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "필요한 정보 선택",
+    "질문 낱말과 물음표 점검"
+   ],
+   "human": [
+    "질문의 쓸모",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-07",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "오해를 부르는 문장 고치기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "두 도서관, 한 문장",
+  "uiLang": "ko",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "오해를 만든 문장을 찾고, 같은 뜻을 오해 없이 전하도록 영어로 고쳐 쓴다.",
+  "thinking": [
+   "오해의 원인이 된 문장 찾기",
+   "빠진 정보(어느 도서관인지) 알아내기",
+   "고쳐 쓴 문장이 정보를 더하는지 점검하기"
+  ],
+  "differsFromPlain": "단순 연습은 문법 오류를 고치게 한다. 여기서는 문법은 맞지만 오해를 부른 문장을 대화에서 찾고, 어떤 정보가 빠져 오해가 생겼는지 판단해 고친다.",
+  "prerequisites": [
+   "library, school, park 같은 쉬운 낱말",
+   "시각과 요일 읽기"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Jisu와 Ben의 이야기예요. 이 마을에는 도서관이 두 곳 있어요. 하나는 공원 옆의 City Library이고, 다른 하나는 학교 안에 있는 school library예요. 토요일에 school library는 문을 닫아요. 아래 줄에서 한 문장이 오해를 만들었어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "두 친구가 서로 만나지 못한 까닭이 된 말은 어느 줄일까요?",
+    "lines": [
+     "Jisu: Let's meet at the library on Saturday at 2 p.m.",
+     "Ben: OK! See you there.",
+     "(Saturday, 2:00 p.m.) Jisu is at the City Library, next to the park.",
+     "(Saturday, 2:00 p.m.) Ben is at the school library. The door is closed.",
+     "Ben: Jisu, where are you?"
+    ],
+    "wrong": [
+     0
+    ],
+    "explain": "1번 줄의 'the library'는 City Library인지 school library인지 알려 주지 않아요. 문법은 맞지만 어느 곳인지 빠져서 두 사람이 서로 다른 도서관으로 갔어요.",
+    "hints": [
+     "Jisu와 Ben이 각자 어디에 있는지 3번, 4번 줄에서 확인하세요.",
+     "두 사람이 서로 다른 장소를 떠올리게 만든 낱말이 어느 줄에 있는지 찾으세요."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "1번 줄을 영어로 고쳐 써서 Ben이 Jisu가 있는 곳으로 올 수 있게 하세요. 요일과 시각도 그대로 넣으세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "도서관이라는 낱말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\blibrar(?:y|ies)\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "어느 도서관인지 알 수 있는 말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bcity\\b",
+       "\\bpublic\\b",
+       "\\bpark\\b",
+       "\\bnear\\b",
+       "\\bnext to\\b",
+       "\\bin front of\\b",
+       "\\bentrance\\b",
+       "\\bgate\\b",
+       "\\bschool\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "요일과 시각이 있다",
+      "mode": "all",
+      "patterns": [
+       "\\bsaturday\\b",
+       "\\b(?:2|two)\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "어느 도서관인지 한 번에 알 수 있나요?",
+     "원래 문장의 요일과 시각을 그대로 썼나요?",
+     "Ben이 읽고 다시 물어볼 필요가 없나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Let's meet at the City Library on Saturday at 2 p.m."
+     },
+     {
+      "text": "Let's meet at the library next to the park on Saturday at 2 p.m. Wait in front of the main door.",
+      "note": "장소를 두 가지 방법으로 알려 주고 만나는 곳까지 정한 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Let's meet at the library on Saturday at 2 p.m.",
+      "why": "원래 문장과 같아서 어느 도서관인지 알 수 없다."
+     },
+     {
+      "text": "Let's meet on Saturday at 2 p.m.",
+      "why": "도서관 이야기가 사라졌다."
+     }
+    ],
+    "humanReview": "고친 문장이 정말 오해를 없애는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 낱말 유무만 본다.",
+    "hints": [
+     "Ben이 'the library'를 읽고 어떤 곳을 떠올릴지 생각해 보세요.",
+     "도서관 앞이나 뒤에 장소를 알려 주는 말(이름, 근처 장소 등)을 하나 더하세요."
+    ],
+    "placeholder": "예: Let's meet at ...",
+    "minChars": 20
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "오해의 원인 찾기",
+    "full": "빠진 정보가 있는 문장을 정확히 찾음",
+    "partial": "다른 줄을 고르거나 이유를 모름",
+    "none": "오해의 원인을 찾지 못함"
+   },
+   {
+    "criterion": "고쳐 쓰기",
+    "full": "장소 정보를 더하고 요일·시각을 지킴",
+    "partial": "장소를 더했지만 요일·시각이 빠짐",
+    "none": "원래 문장과 같음"
+   }
+  ],
+  "alternatives": [
+   "Ben이 '어느 도서관?'이라고 되묻지 않은 2번 줄도 오해에 한몫했다고 보는 학생은 이유를 말하면 인정한다. 이 과제는 원인이 된 말을 고치는 데 집중한다.",
+   "'Let's meet at the City Library' 대신 'Let's meet at the library by the park'도 같은 효과다."
+  ],
+  "hardCases": [
+   "'school'을 쓴 답(예: 'not the school library')은 도서관을 구분하지만 만날 장소를 City Library로 정하는지 사람이 확인한다.",
+   "'at 2' 대신 '2:00'처럼 쓴 답은 w3이 통과하도록 허용했다."
+  ],
+  "cautions": {
+   "language": "library 두 곳을 구분하는 것이 핵심이다. 영어 낱말은 쉬운 것만 썼다.",
+   "culture": "마을 도서관과 학교 도서관은 한국에서도 흔하다. 공원 옆이라는 설명으로 학교 사정을 가정하지 않게 했다.",
+   "accessibility": "그림 없이 글로만 썼다. 줄 번호는 화면에 1부터 표시된다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "오류 줄 위치",
+    "낱말 유무"
+   ],
+   "human": [
+    "고친 문장의 효과",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-08",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "오해를 부르는 문장 고치기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "'she'는 누구일까",
+  "uiLang": "ko",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "대명사 때문에 생긴 오해를 찾아 이름이나 직접 말로 바꿔 분명하게 고쳐 쓴다.",
+  "thinking": [
+   "대명사가 가리킬 수 있는 사람 모두 찾기",
+   "오해가 생기는 이유 설명하기",
+   "오해 없는 문장으로 고치기"
+  ],
+  "differsFromPlain": "단순 연습은 she를 알맞은 이름으로 바꾸게 한다. 여기서는 she가 둘 중 누구일 수 있는지 모두 따진 뒤, 실제 뜻을 오해 없이 전하는 문장을 스스로 만든다.",
+  "prerequisites": [
+   "she, he, told 같은 기본 낱말",
+   "glue(풀) 뜻"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "Hana가 Jisu에게 문자를 보냈어요: \"Mina told Sora that she has the glue.\"\n\n실제로 Mina가 한 말은 \"Sora, you bring the glue.\"(Sora, 풀은 네가 가져와.)였어요. 그런데 다음 날 미술 시간에 아무도 풀을 가져오지 않았어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Hana의 문장에서 'she'가 가리킬 수 있는 사람을 모두 고르세요.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Hana",
+      "reveals": "Hana는 문장을 쓴 사람이에요. 문장 안에 이름이 나오는지 확인해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "Mina",
+      "reveals": "문장에서 'told'의 앞에 나오는 사람이에요."
+     },
+     {
+      "id": "c",
+      "text": "Sora",
+      "reveals": "'told' 뒤에 나오는 사람도 'she'일 수 있어요."
+     },
+     {
+      "id": "d",
+      "text": "Jisu",
+      "reveals": "문자를 받은 사람이에요. 문장 안에 이름이 나오는지 확인해 보세요."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "'Mina told Sora that she has the glue.'에서 she는 Mina일 수도, Sora일 수도 있어요. Hana와 Jisu는 문장 안에 나오지 않아요. Jisu가 Mina라고 읽으면 Mina가 가져온다고 생각하게 돼요.",
+    "hints": [
+     "문장에 나오는 이름이 몇 개인지 세어 보세요.",
+     "she 앞에 나온 여자 이름을 모두 찾으세요."
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Hana의 문장을 영어로 고쳐 써서, 풀은 Sora가 가져와야 한다는 뜻이 분명하게 하세요. 'she'를 쓰지 마세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "풀(glue)이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bglue\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "'she'가 풀을 가진다는 모호한 문장이 아니다",
+      "mode": "none",
+      "patterns": [
+       "\\bshe\\s+(?:has|have|had|will|should|must|brings?)\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "Sora(또는 you)가 풀을 가져오는 일이 드러난다",
+      "mode": "any",
+      "patterns": [
+       "\\bsora\\b[^.?!]*\\b(?:has|have|will|should|must|brings?|needs?)\\b",
+       "\\byou\\b[^.?!]*\\b(?:have|will|should|must|bring)\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "풀을 가져올 사람이 한 명으로 분명한가요?",
+     "'she'나 'her' 같은 대명사 때문에 다시 헷갈릴 일이 없나요?",
+     "원래 Mina가 한 말(Sora가 가져오기)과 같은 뜻인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Mina told Sora, \"You bring the glue.\""
+     },
+     {
+      "text": "Mina told Sora to bring the glue.",
+      "note": "'to bring'으로 간접화법을 쓴 자연스러운 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Mina told Sora that she has the glue.",
+      "why": "원래 문장과 같아서 여전히 'she'가 누구인지 모호하다."
+     },
+     {
+      "text": "Mina has the glue.",
+      "why": "Sora가 가져온다는 뜻을 담지 못했다."
+     }
+    ],
+    "humanReview": "고친 문장이 Mina의 원래 말과 같은 뜻인지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 낱말 유무만 본다.",
+    "hints": [
+     "'she'가 가리키는 사람이 둘이라서 헷갈린다는 점을 먼저 떠올리세요.",
+     "'she' 대신 이름을 쓰거나, Mina가 한 말을 따옴표 안에 그대로 쓰는 방법을 시도하세요."
+    ],
+    "placeholder": "예: Mina told Sora ...",
+    "minChars": 15
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "대명사의 모호함 찾기",
+    "full": "she가 두 사람일 수 있음을 설명함",
+    "partial": "한 사람만 떠올림",
+    "none": "오해의 원인을 말하지 못함"
+   },
+   {
+    "criterion": "오해 없이 고치기",
+    "full": "she 없이 Sora가 가져온다는 뜻이 분명함",
+    "partial": "뜻은 바뀌지 않았지만 여전히 모호함",
+    "none": "뜻이 바뀜"
+   }
+  ],
+  "alternatives": [
+   "'Mina told Sora, \"Bring the glue.\"'처럼 명령문으로 직접 인용해도 좋은 답이다.",
+   "Sora를 두 번 쓰는 'Mina told Sora that Sora must bring the glue.'도 허용한다."
+  ],
+  "hardCases": [
+   "'Sora has to bring the glue, Mina said.'처럼 어순이 다른 답은 사람이 확인한다.",
+   "'Mina said that Sora has the glue.'는 '가지고 있다'로 읽혀 '가져와야 한다'와 뜻이 다르다. 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "she, told, glue 같은 쉬운 낱말만 썼다. 대명사가 둘 이상일 수 있다는 점이 핵심이다.",
+   "culture": "친구들끼리 준비물을 말하는 일은 흔한 소재다. 특정 성별을 정해 놓은 활동이 아니도록 이름만 사용했다.",
+   "accessibility": "그림 없이 글로만 썼다. 문장 안에 따옴표가 있어 화면 읽기 프로그램이 따옴표 안 문장을 따로 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "she를 쓰지 않았는지",
+    "낱말 유무"
+   ],
+   "human": [
+    "고친 문장의 의미",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-09",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "친구와 선생님에게 다르게 쓰기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "같은 사정, 다른 두 사람",
+  "uiLang": "ko",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "같은 사정을 친구에게 보내는 문자와 선생님께 보내는 이메일로 각각 다르게 쓴다.",
+  "thinking": [
+   "받는 사람에 따라 인사와 말투 바꾸기",
+   "같은 내용(사정)은 유지하기",
+   "공손한 부탁과 가벼운 말투 구분하기"
+  ],
+  "differsFromPlain": "단순 연습은 문장을 공손한 말투로 바꾸게 한다. 여기서는 같은 사정을 두 사람에게 각각 직접 쓰고, 인사·말투·부탁의 방식이 달라야 한다.",
+  "prerequisites": [
+   "can't, sorry, trip 같은 쉬운 낱말",
+   "Dear / Hi 인사말"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "토요일 오전에 학교에서 영어 말하기 연습이 있어요. 그런데 그날 가족과 여행을 가서 갈 수 없어요. 친구 Jisu에게 알리는 문자와 Kim 선생님께 보내는 이메일을 각각 영어로 쓰세요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "write",
+    "prompt": "친구 Jisu에게 보낼 문자를 영어로 한두 문장으로 쓰세요. 가지 못하는 것과 이유를 알려 주세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "가지 못한다는 말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bcan['’]?t\\b",
+       "\\bcannot\\b",
+       "\\bcan not\\b",
+       "\\bwon['’]?t\\b",
+       "\\bmiss\\b",
+       "\\bnot\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "이유(여행이나 가족)를 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\btrip\\b",
+       "\\btravel\\b",
+       "\\bfamily\\b",
+       "\\bvisit\\b",
+       "\\bbusy\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "친구에게 쓰는 글에 어울리지 않는 격식 표현이 없다",
+      "mode": "none",
+      "patterns": [
+       "\\bdear\\b",
+       "\\bsincerely\\b",
+       "\\bregards\\b",
+       "\\bwould like to\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "친구에게 말하듯 편한 말투인가요?",
+     "가지 못하는 것과 이유를 모두 썼나요?",
+     "더 필요한 정보(연습 내용 물어보기 등)를 덧붙였나요? (선택)"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Hey Jisu, I can't come on Saturday. We have a family trip. Sorry! What do we do in practice?"
+     },
+     {
+      "text": "Sorry, I can't go on Saturday. My family is going on a trip. See you on Monday!",
+      "note": "다음 만남까지 언급한 편한 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Dear Ms. Kim, I would like to inform you that I cannot attend. Sincerely, Mina",
+      "why": "친구에게 쓰기에는 너무 격식을 차렸다."
+     },
+     {
+      "text": "I can't come.",
+      "why": "이유가 빠졌다."
+     }
+    ],
+    "humanReview": "말투가 친구에게 자연스러운지는 사람이 본다. 자동 점검은 격식 표현이 없는지와 이유 낱말의 유무만 본다.",
+    "hints": [
+     "친구에게 말하듯 'Hey'나 'Hi'로 시작해도 돼요.",
+     "가지 못한다는 문장을 먼저 쓰고, 이유를 덧붙이세요."
+    ],
+    "placeholder": "예: Hey Jisu, ...",
+    "minChars": 20
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "이제 Kim 선생님께 보내는 이메일을 영어로 쓰세요. 인사말로 시작하고, 사정을 공손하게 알려 주세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "인사말로 시작한다",
+      "mode": "any",
+      "patterns": [
+       "^\\s*(?:dear|hello|hi|good (?:morning|afternoon))\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "가지 못한다는 말과 이유가 있다",
+      "mode": "all",
+      "patterns": [
+       "\\bcan['’]?t\\b|\\bcannot\\b|\\bcan not\\b|\\bwon['’]?t\\b|\\bmiss\\b|\\bnot\\b",
+       "\\btrip\\b|\\btravel\\b|\\bfamily\\b|\\bvisit\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "공손한 표현이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bsorry\\b",
+       "\\bplease\\b",
+       "\\bthank",
+       "\\bmay i\\b",
+       "\\bcould i\\b",
+       "\\bwould\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "가벼운 줄임말이나 은어가 없다",
+      "mode": "none",
+      "patterns": [
+       "\\bgonna\\b",
+       "\\bwanna\\b",
+       "\\bgotta\\b",
+       "\\blol\\b",
+       "\\bu\\b",
+       "\\bya\\b",
+       "\\bdude\\b",
+       "\\bbro\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Dear나 Hello로 시작하고 선생님 호칭을 썼나요?",
+     "'Sorry'나 'Thank you' 같은 공손한 말이 있나요?",
+     "친구에게 쓴 글과 말투가 확실히 다른가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Dear Ms. Kim, I am sorry, but I cannot come to the English practice on Saturday because I have a family trip. Thank you."
+     },
+     {
+      "text": "Hello Mr. Kim, I'm sorry I can't join the practice on Saturday. My family has a trip. Please tell me what I should study. Thank you.",
+      "note": "공손하게 무엇을 공부할지 묻는 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Hey, I can't come lol. Trip.",
+      "why": "인사말이 없고 은어(lol)를 썼다."
+     },
+     {
+      "text": "Dear Ms. Kim, I will be there.",
+      "why": "갈 수 없다는 사정을 말하지 않았다."
+     }
+    ],
+    "humanReview": "공손함의 정도, 선생님께 알맞은 영어인지는 사람이 본다. 자동 점검은 인사·공손 표현·은어의 유무만 본다.",
+    "hints": [
+     "첫 줄은 'Dear ...,'나 'Hello ...,'로 시작하세요.",
+     "친구에게 쓴 글에 'Sorry'를 한 번 더 붙이거나, 'Thank you'로 마무리해 보세요."
+    ],
+    "placeholder": "예: Dear Ms. Kim, ...",
+    "minChars": 30
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "받는 사람에 맞추기",
+    "full": "친구 글은 편하게, 선생님 글은 인사와 공손한 말로 구분함",
+    "partial": "한쪽만 구분함",
+    "none": "두 글이 같은 말투임"
+   },
+   {
+    "criterion": "사정 전하기",
+    "full": "두 글 모두 가지 못하는 것과 이유를 씀",
+    "partial": "한 글에서 이유가 빠짐",
+    "none": "사정을 말하지 않음"
+   }
+  ],
+  "alternatives": [
+   "친구 글에서 'Dear Jisu,'로 시작해도 사람이 글 전체를 보고 판단한다(검사는 격식 표현을 점검하므로 이 경우 통과하지 못할 수 있다).",
+   "선생님께 쓸 때 'Hi Ms. Kim'은 가벼운 인사이므로 사람이 판단한다."
+  ],
+  "hardCases": [
+   "'I can not'과 'cannot'은 모두 허용했다.",
+   "'family trip' 대신 'visiting grandparents'처럼 쓴 답은 이유로 인정하되 w2(trip/family/visit)에 걸리도록 설계했다."
+  ],
+  "cautions": {
+   "language": "Ms./Mr.는 성별을 나타내므로 선생님 성별을 가정하지 않도록 Ms. 또는 Mr. 중 어느 쪽도 인정한다.",
+   "culture": "주말 학교 연습과 가족 여행은 흔한 소재다. 가족 여행이 어려운 학생을 위해 '여행' 외에 'visit' 등 이유도 인정한다.",
+   "accessibility": "그림 없이 글로만 썼다. 이메일의 인사말 'Dear'는 '디어'로 읽는다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "인사·공손 표현·은어의 유무",
+    "이유 낱말의 유무"
+   ],
+   "human": [
+    "말투의 적절함",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e4-10",
+  "subject": "english",
+  "grade": "E4",
+  "topic": "친구와 선생님에게 다르게 쓰기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "친구에게 쓴 문자를 선생님께 보내려면",
+  "uiLang": "ko",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "친구용 문자에서 선생님께 맞지 않는 부분을 찾고, 같은 사정을 선생님께 맞게 다시 쓴다.",
+  "thinking": [
+   "받는 사람에 맞지 않는 표현 찾아내기",
+   "사정(이유)은 그대로 두고 말투만 바꾸기",
+   "공손한 부탁 만들기"
+  ],
+  "differsFromPlain": "단순 연습은 주어진 문장을 공손하게 바꾼다. 여기서는 어떤 부분이 선생님께 맞지 않는지 먼저 판단한 뒤, 바꿀 것과 남길 것을 구분해 직접 다시 쓴다.",
+  "prerequisites": [
+   "sick, homework, tomorrow의 뜻",
+   "문자 줄임말을 읽는 법"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "친구 Jisu에게 보낸 문자예요(그림 없이 글로만 적었어요):\n\n\"Hey! I'm sick lol. Can't come 2 school 2morrow. Gimme the homework pls!\"\n\n(참고로 2morrow는 '투머로우', 즉 tomorrow를 짧게 쓴 거예요.) 같은 내용을 선생님께 이메일로 보내려고 해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "이 문자를 선생님께 보낼 때 고쳐야 하는 부분을 모두 고르세요.",
+    "options": [
+     {
+      "id": "a",
+      "text": "I'm sick",
+      "reveals": "아픈 이유는 선생님께도 알려야 하는 사정이에요. 바꿔야 하는지 남겨야 하는지 따져 보세요."
+     },
+     {
+      "id": "b",
+      "text": "lol",
+      "reveals": "받는 사람이 선생님이라는 점과 이 표현의 느낌을 비교해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Can't come 2 school 2morrow",
+      "reveals": "숫자를 낱말 대신 쓴 것이 선생님께 보내는 글에 어울리는지 생각해 보세요."
+     },
+     {
+      "id": "d",
+      "text": "Gimme the homework pls!",
+      "reveals": "부탁하는 방식이 선생님께 어울리는지 살펴보세요."
+     }
+    ],
+    "correct": [
+     "b",
+     "c",
+     "d"
+    ],
+    "explain": "'lol', 숫자로 줄인 '2 school 2morrow', 'Gimme ... pls!'는 친구끼리 쓰는 말투라 선생님께는 고쳐야 해요. 아픈 이유('I'm sick')는 남겨야 하는 사정이에요.",
+    "hints": [
+     "선생님에게 말하는 것처럼 소리 내어 읽어 보세요.",
+     "줄임말, 은어, 부탁하는 말투를 하나씩 따로 보세요."
+    ],
+    "multi": true,
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "같은 내용을 Kim 선생님께 보내는 이메일로 영어로 다시 쓰세요. 인사말로 시작하고, 아픈 사정과 내일 못 가는 것, 숙제를 알려 달라는 부탁을 넣으세요.",
+    "checks": [
+     {
+      "id": "w1",
+      "label": "인사말로 시작한다",
+      "mode": "any",
+      "patterns": [
+       "^\\s*(?:dear|hello|hi|good (?:morning|afternoon))\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "아픈 사정이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bsick\\b",
+       "\\bill\\b",
+       "\\bcold\\b",
+       "\\bfever\\b",
+       "\\bnot feeling well\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "공손한 부탁 표현이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bplease\\b",
+       "\\bcould\\b",
+       "\\bmay i\\b",
+       "\\bwould\\b",
+       "\\bthank"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "친구용 줄임말이나 은어가 없다",
+      "mode": "none",
+      "patterns": [
+       "\\blol\\b",
+       "\\bgimme\\b",
+       "\\bpls\\b",
+       "\\b2morrow\\b",
+       "\\btmrw\\b",
+       "\\bu\\b",
+       "\\bya\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "선생님께 맞는 인사말로 시작했나요?",
+     "친구용 줄임말과 은어를 모두 없앴나요?",
+     "사정(아픔)과 부탁(숙제)이 모두 남아 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Dear Ms. Kim, I am sick, so I cannot come to school tomorrow. Could you please tell me the homework? Thank you."
+     },
+     {
+      "text": "Hello Mr. Kim, I'm sick and I can't come to school tomorrow. May I get the homework from a friend? Thank you.",
+      "note": "친구에게 받겠다는 제안까지 한 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Hey! I'm sick lol. Gimme the homework pls!",
+      "why": "친구용 문자 그대로여서 고치지 않았다."
+     },
+     {
+      "text": "Dear Ms. Kim, I will come tomorrow.",
+      "why": "아픈 사정과 숙제 부탁이 빠졌고 원래 사정과 다르다."
+     }
+    ],
+    "humanReview": "공손함의 정도, 선생님께 알맞은 영어인지는 사람이 본다. 자동 점검은 인사·사정·공손 표현·친구용 줄임말의 유무만 본다.",
+    "hints": [
+     "1번 단계에서 고르지 않은 부분(사정)은 그대로 남기세요.",
+     "'Gimme the homework'를 'Could you please ...?'처럼 부탁하는 문장으로 바꿔 보세요."
+    ],
+    "placeholder": "예: Dear Ms. Kim, ...",
+    "minChars": 40
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "바꿀 부분 판단하기",
+    "full": "은어, 줄임말, 명령투를 모두 찾고 사정은 남김",
+    "partial": "일부만 찾음",
+    "none": "사정까지 지우거나 하나도 못 찾음"
+   },
+   {
+    "criterion": "선생님께 다시 쓰기",
+    "full": "인사말·사정·공손한 부탁이 모두 있음",
+    "partial": "한두 가지 빠짐",
+    "none": "친구용 말투가 남음"
+   }
+  ],
+  "alternatives": [
+   "숙제를 직접 부탁하는 대신 'Is there any homework for tomorrow?'처럼 묻는 글도 좋은 답이다.",
+   "'Dear Ms. Kim'과 'Hello Mr. Kim'처럼 호칭을 바꿔도 동등하다."
+  ],
+  "hardCases": [
+   "'Hey' 인사가 선생님께 안 맞는지는 학교 문화에 따라 다를 수 있어 선택지에서 제외했다.",
+   "내일 학교에 못 간다는 말을 'I will be absent'처럼 바꾼 답은 사람이 인정한다."
+  ],
+  "cautions": {
+   "language": "2morrow, pls, lol은 문자 줄임말이다. 학생에게 선생님께는 쓰지 않는 말임을 알게 하는 것이 목표이며 쓰는 법을 가르치지 않는다.",
+   "culture": "병결 연락은 한국에서도 흔하다. 선생님 성별을 가정하지 않도록 Ms./Mr. 모두 인정한다.",
+   "accessibility": "화면 읽기 프로그램이 '2morrow'를 '투머로우'로 읽도록 설명을 덧붙였다. 'lol'은 '엘오엘'이라고 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "친구용 줄임말이 없는지",
+    "인사·공손 표현 낱말"
+   ],
+   "human": [
+    "공손함의 정도",
+    "영어의 자연스러움"
+   ]
+  }
+ }
+]

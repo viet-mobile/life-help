@@ -1,0 +1,403 @@
+{
+ "reviewer": "AI independent reviewer (not teacher, not learner)",
+ "tasks": [
+  {
+   "id": "k-01",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: a is the only option that states a refusal, others are absurd (b, d) or absolute (c); s2 'a' is trivially visible; only 'd' needs thought."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 w2 false-rejects '미안해요, 토요일은 좀 어려워요. 다른 날은 어때요?' (vague 'another day' is a valid alternative; 다른 날 not in list). s2: choosing only 'a' is 'acceptable', only 'd' gets silent not-match. Run: all my 9 other valid replies passed."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "8 lines of dialogue, simple vocabulary; but 어려워요/죄송해요 may be needed for s3 and are not glossed (model answers show them)."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals for b,c,d are specific and diagnostic; hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'soft refusal + alternative' transfers to any invitation."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Add 다른 날|다음에|언제 다른 to w2 patterns; give 1 line vocabulary support (어려워요 = is difficult) in hints."
+   ],
+   "cueSolvableSteps": [
+    "s1",
+    "s2(a)"
+   ],
+   "blindResult": "All correct vs key (s1 a; s2 a+d; s3 passes checker)."
+  },
+  {
+   "id": "k-02",
+   "Q1": {
+    "v": "concern",
+    "e": "s2: option a is longest and the only 'No' with a reason; s1 hint 2 ('do they end in -요/-습니다?') nearly gives the method; the real reasoning (customer's polite speech is service language) is only in s2."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 false-rejects the formal register the task itself calls acceptable (alternatives: '-습니다 both acceptable'): '이 귤 얼마입니까? 두 봉지 주십시오.' fails w2 (주십시오 absent). s1: both casual lines accepted (good). No false accepts found."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Very short."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "d reveals ('age is not given') is a good diagnostic."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Speech level vs relationship transfers."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Add 주십시오|주시기|드리겠 to w2 patterns."
+   ],
+   "cueSolvableSteps": [
+    "s2"
+   ],
+   "blindResult": "All correct (s1 idx2 or 4, s2 a)."
+  },
+  {
+   "id": "k-03",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: b is the only option mentioning both times, so it is findable by cue; e is also reasonable (accepted as 'acceptable'). s2 is writing, so not cue-solvable."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3/s2 w1 false-rejects an unpunctuated question '소풍 버스가 8시 반인데 왜 7시예요' (예요 not recognized; only '?' works). Also 7:00 and 8:30 are not necessarily contradictory (friend may want to meet early) - the task treats it as a 'mismatch'; hardCases mentions it, but s1 explain says 'disagree'."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Two short sources."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals good; hint 2 for s1 ('Which question asks about something you do NOT already know') is close to answer but still an action."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Compare two sources before replying: transferable."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Accept 예요|이에요|인가요 without '?' in w1; reword explain 'differ' instead of 'disagree'."
+   ],
+   "cueSolvableSteps": [
+    "s1"
+   ],
+   "blindResult": "All correct (s1 b; s2 passes)."
+  },
+  {
+   "id": "k-04",
+   "Q1": {
+    "v": "ok",
+    "e": "s2 is a build step verified by constraints; only s1 (scaffold) is cue-solvable (a)."
+   },
+   "Q2": {
+    "v": "ok",
+    "e": "Verified: valid a-values are exactly {1,2,3}; (1,4),(2,3),(3,4) done; 13 of my other rows (valid and invalid) matched my judgement; duplicates by a flagged. Requirement a>=1,g>=1 is a reading of '사과랑 귤' (arguably fine). Write step w2/w3 accept my 10 valid formats; they do not verify that numbers match a valid basket (humanReview says so)."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Beginner must handle -까지, -보다, 이상 plus a 5-condition build with money arithmetic in 10 min; hints gloss them, but the load is above other beginner tasks."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "fail messages in constraints are specific; s1 reveals diagnostic. The 'because' step is actually a report, not a justification (naming mismatch)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Translating limits into constraints transfers."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Rename 'because' prompt or add check that the totals are consistent; accept a count only set of exactly 3 baskets is by design (solution space small - note it)."
+   ],
+   "cueSolvableSteps": [
+    "s1"
+   ],
+   "blindResult": "All correct (s1 a; rows (1,4),(2,3),(3,4); s2b passes)."
+  },
+  {
+   "id": "k-05",
+   "Q1": {
+    "v": "concern",
+    "e": "Every stage: the correct option is the longest/most elaborated; distractors are absurd (move out, invite, 'only small talk'). A student can pass without reading the endings."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Stage 1 allows a or b: fine. s2 w3 pattern list narrow: false-rejects valid promise '9시 이후에는 ... 걷도록 하겠습니다' and '재우겠습니다'-type concrete promises (no 조심/줄이/뛰지/조용 etc.)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short dialogue lines."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Format is reveal-and-revise but no stage contradicts the previous reading; a student who answers correctly at stage 1 never revises. Hint 2 cites '-세요' which does not occur in the stages."
+   },
+   "Q5": {
+    "v": "concern",
+    "e": "Indirect complaint is one scenario; the transferable idea is stated in reflect only."
+   },
+   "defects": [
+    "Hint refers to '-세요' ending that is absent from the text."
+   ],
+   "suggestedFixes": [
+    "Insert a stage that overturns the first reading (e.g. the neighbour first sounds friendly, then reveals the complaint, or the baby turns out to belong to another neighbour); broaden w3 with 하겠습니다-type behaviour verbs; fix the hint."
+   ],
+   "cueSolvableSteps": [
+    "stage1",
+    "stage2",
+    "stage3"
+   ],
+   "blindResult": "All correct (b, a, a; note passes)."
+  },
+  {
+   "id": "k-06",
+   "Q1": {
+    "v": "concern",
+    "e": "s1 needs 8/3 vs 3 vs 4: real reasoning. s2: c and d are obviously logistics/reason distractors, a+b is a cue."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 w1 false-rejects 절반 정도/반 정도 환불 ('절반 정도 환불받을 수 있어', '반 정도 환불돼'). Key is otherwise right: 8/3=2.67 <3 <4, half. Timing ambiguity (request after lesson 4 would give 'no refund'; table gap at exactly 4) is disclosed in hardCases. 'w3 uses numbers' passes on any '3' or '삼'."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Fractions/table are the content."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals for a,b,d are diagnostic (name the rule misapplied)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Applying fraction-threshold rules to a notice transfers."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Allow (정도|쯤)? between 절반 and 환불 in w1."
+   ],
+   "cueSolvableSteps": [
+    "s2"
+   ],
+   "blindResult": "All correct (s1 c, s2 a+b)."
+  },
+  {
+   "id": "k-07",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: b is the only imperative with 꼭/오늘 안에; hint 1 states the criterion ('asking or telling'). Little reasoning beyond recognizing -세요 imperative."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s2 w4 false-rejects good message '교수님, 안녕하세요. 어제 몸이 아파서 수업에 참석하지 못했습니다. 수업 자료를 보내 주실 수 있을까요?' and '자료 좀 보내주실 수 있으실까요?' (none of the softener words). False-accepts '교수님, 아파서 결석했습니다. 자료를 보내 주세요.' (결석 counts as softener; 주세요 accepted) and a message with no reason. s3 false-rejects valid 반말 '보내 주면 안 될까?', '자료 좀 부탁해~', '보내 주면 고맙겠어'."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "a, c, d reveals say why suitable - good."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Request strength by audience transfers."
+   },
+   "defects": [
+    "s2 checker w4 rejects a model-quality message and accepts a bare imperative ('결석' listed as a softener)."
+   ],
+   "suggestedFixes": [
+    "Remove 결석/가능 from w4, drop '주세요' from w2 or require softener beyond it; add a reason check (아파|결석|못); add 주면|부탁해|고맙 to s3 w1; replace distractor-free s1 with items where the command is subtler (e.g. 보내 주시기 바랍니다 vs 보내 주세요)."
+   ],
+   "cueSolvableSteps": [
+    "s1"
+   ],
+   "blindResult": "All correct (s1 b; s2/s3 write)."
+  },
+  {
+   "id": "k-08",
+   "Q1": {
+    "v": "concern",
+    "e": "s2: a is the long explanatory option that restates the lesson; c is acceptable, so the key is cue-solvable. s1 prompt names both candidate lines."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1 accepts only idx 2,3; idx 5 ('그럼 다음 주는요? 몇 시가 좋아요?') further pushes the plan and is arguably part of the cause (false reject). s3 w3 bans '오늘', so '좋아요. 오늘은 바빠서 다음에 같이 먹어요.' is rejected, and 'w2 네' matches any 'neighbor' word so '네, 안 먹어요.' passes."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "The pleasantry idiom '언제 밥 한번 먹어요' is cultural knowledge not inferable from the text alone (only from the neighbour's awkward reaction); intended but a learner without it can only guess."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals b, c, d are good."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Pleasantry vs invitation transfers."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Add 5 to wrong; remove 오늘 from w3 or restrict to '오늘 저녁|오늘 밤'; tighten w2."
+   ],
+   "cueSolvableSteps": [
+    "s2"
+   ],
+   "blindResult": "All correct (s1 idx2; s2 a)."
+  },
+  {
+   "id": "k-09",
+   "Q1": {
+    "v": "ok",
+    "e": "s1 needs table lookup per item; options b-e are distractors but the logic (sofa is 'no' either way, plastic 'yes' either way, box splits) is real reasoning. s2 clear once Thursday is found."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s3 w6 false-rejects correct negative statements: '소파는 오늘 내놓으면 안 돼요', '소파는 오늘 저녁에 내놓으시면 안 되고 목요일...' (the regex lists 내놓으면/내놓으시 as forbidden). w3 requires '목요일', so '모레 아침 7시 전' (Thursday is 모레 from Tuesday) is rejected. Passing: 오늘은 안 돼요 forms."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Formal notice table + 15 min + a 30-char multi-clause write; the hint ('-면 ..., -면 ...') gives the structure for 박스."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "reveals for b,d explicitly explain why not needed; hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'which missing fact changes the answer' transfers."
+   },
+   "defects": [
+    "w6 and w3 regexes false-reject correct answers (negated 내놓으면 안 돼요; 모레)."
+   ],
+   "suggestedFixes": [
+    "Remove 내놓(으면|으시) from w6 or require no following 안/못/마; allow (목요일|모레|이번 주 목)."
+   ],
+   "cueSolvableSteps": [
+    "s1",
+    "s2"
+   ],
+   "blindResult": "All correct (s1 a; s2 idx2)."
+  },
+  {
+   "id": "k-10",
+   "Q1": {
+    "v": "concern",
+    "e": "Stage 2 is pure reading comprehension ('내일 오전 회의 전까지' -> b); stages 1 and 3 correct options are longest. Distractors a/c/d in stage 3 are visibly worse; b and d both fine."
+   },
+   "Q2": {
+    "v": "ok",
+    "e": "Stage 1 a/c and stage 3 b/d both accepted. s2 checks accept my 8/9 valid replies; only '지금 바로 ... 이따' (no listed time word) rejected - minor; w2 '네' accepts a refusal like '네. 오늘 못 해요. 내일 할게요.'"
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short chat messages."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Later messages only add detail; no stage forces revising an earlier reading, so 'revise' is not exercised. Stage 1 option c is called 'reasonable' while the after text says it is wrong."
+   },
+   "Q5": {
+    "v": "concern",
+    "e": "Supervisor-request-strength is workplace-culture specific; reflect states it generically."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Make stage 2 or 3 contradict the first reading (e.g. 'no hurry' then 'actually the client needs it today')."
+   ],
+   "cueSolvableSteps": [
+    "stage1",
+    "stage2",
+    "stage3"
+   ],
+   "blindResult": "All correct (a, b, b/d)."
+  },
+  {
+   "id": "k-11",
+   "Q1": {
+    "v": "concern",
+    "e": "s1: b is blatantly blunt ('안 갑니다'); a, c, d are the long softened ones. Only s2/s3 require production."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1 explain claims a, c and d 'show regret or apology' but d has neither (reason + softening + promise) - key text inaccurate. Choosing only one of a/c/d gets no feedback. s3 'casual' check does not detect formal verbs without '습니다' (accepts '죄송합니다. 오늘 약속이 있어서 못 갑니다. 다음에 먹어요.'); s2 w5 lists odd pattern '시간이 있어서'."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Registers are the target."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Single selections of a, c or d produce an empty message (silent not-match)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Register + refusal strategy transfers."
+   },
+   "defects": [
+    "k-11 s1 explain says d shows regret or apology; it does not."
+   ],
+   "suggestedFixes": [
+    "Correct explain; add reveals to a/c/d for 'under-selected' feedback; add 합니다|갑니다|ㅂ니다 to s3 w2."
+   ],
+   "cueSolvableSteps": [
+    "s1(b)"
+   ],
+   "blindResult": "All correct (s1 a,c,d)."
+  },
+  {
+   "id": "k-12",
+   "Q1": {
+    "v": "concern",
+    "e": "s1 and s2 are easy by cue (only honoured person; the person asked in the previous line). s3 is the real reasoning; s4 is generative."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 accepts only idx 3, but idx 1 ('네, 어제 하셨어요') is arguably as unclear; in both, the question before names 사장님, so context also favours 사장님 - the 'cannot tell' claim is arguable. s4 checks accept honorific only in the question and an explicit subject in the answer ('A: 부장님이 오셨어요? B: 네, 부장님이 오셨어요.') and '내래요' answer with 하셨어요 only in A."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Two short chats; grammar -래요/-시- is the target."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Only s1/s2 have rich reveals; s3 pickLine gives no wrong-answer feedback."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Reading dropped subjects from honorific/context transfers."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Add a check that the B line contains an honorific verb and no named subject; make s3 'wrong' [1,3] or justify idx1 as clear in explain."
+   ],
+   "cueSolvableSteps": [
+    "s1",
+    "s2"
+   ],
+   "blindResult": "s1 a, s2 a correct; s3 picked 3 (matches key); s4 passes."
+  }
+ ],
+ "summary": {
+  "defects": 3,
+  "concerns": 27,
+  "themes": [
+   "Write-step regex checks give false rejections of valid answers (k-07, k-09, k-01, k-02, k-03, k-05, k-06, k-08) and a few false acceptances (k-07, k-11 s3, k-12 s4)",
+   "Choose steps are often cue-solvable: correct option longest/most explanatory, distractors absurd (k-01, k-05, k-08, k-10, k-11, k-12)",
+   "Reveal tasks (k-05, k-10) do not force revision",
+   "Single-option selections in multi-choose get silent feedback (k-01 s2 d, k-06 s2, k-11 s1)",
+   "Korean text is natural overall; no unsafe or biased content found"
+  ]
+ }
+}

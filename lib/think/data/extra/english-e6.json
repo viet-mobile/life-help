@@ -1,0 +1,1876 @@
+[
+ {
+  "id": "x-e-e6-01",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "짧은 글과 간단한 의견",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "학급 동물 키우기 의견의 이유 가려내기",
+  "uiLang": "ko",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Jin의 의견 글에서 의견 자체, 이유, 근거가 되는 예, 상관없는 말을 구분하고 가장 힘센 이유를 영어로 평가한다.",
+  "thinking": [
+   "의견과 그것을 뒷받침하는 이유 구분하기",
+   "개인 취향과 확인할 수 있는 근거 구분하기",
+   "이유의 강약 비교하기"
+  ],
+  "differsFromPlain": "단순 연습은 글을 읽고 내용 일치 문장을 고른다. 여기서는 글 속 문장마다 '의견을 받쳐 주는가'를 따져 보고, 어떤 이유가 더 믿을 만한지 영어로 평가한다.",
+  "prerequisites": [
+   "I think ~ / because 같은 의견 표현을 읽을 수 있다",
+   "fish, pet, feed 같은 쉬운 낱말"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "6학년 3반이 '학급 동물을 키울까?'를 이야기하고 있어요. Jin의 글입니다.\n\nI think we should get a class pet. A pet can teach us to take care of animals. I like cats very much, and I want to see one every day. Class 6-1 had a fish last year, and students fed it by turns. Also, many students are afraid of dogs.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Jin의 의견 'we should get a class pet'을 뒷받침하는 이유가 되는 문장을 모두 고르세요.",
+    "hints": [
+     "각 문장이 '학급 전체가 동물을 키우자'는 주장에 도움이 되는지 하나씩 물어 보세요.",
+     "'나는 좋아한다'처럼 말한 사람의 마음만 있는 문장과, 다른 사람이 확인할 수 있는 사실을 나눠 보세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "A pet can teach us to take care of animals.",
+      "reveals": "학급에 주는 이점을 말하는 문장이에요. 의견과 같은 말이 아닌지도 비교해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "I like cats very much, and I want to see one every day.",
+      "reveals": "말하는 사람의 취향이 학급 전체의 이유가 되는지 생각해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Class 6-1 had a fish last year, and students fed it by turns.",
+      "reveals": "실제로 있었던 일을 예로 든 문장이에요. 주장과 어떻게 이어지는지 따져 보세요."
+     },
+     {
+      "id": "d",
+      "text": "Many students are afraid of dogs, so dogs are not good.",
+      "reveals": "동물 키우기 전체를 찬성하는 이유인지, 일부 동물에 대한 걱정인지 구분해 보세요."
+     },
+     {
+      "id": "e",
+      "text": "I think we should get a class pet.",
+      "reveals": "이 문장이 이유인지 주장 자체인지 살펴보세요."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "a는 동물을 키우면 얻는 이점을 말하는 이유이고, c는 다른 반에서 실제로 해 본 예라서 근거가 돼요. b는 Jin 개인의 취향일 뿐 학급에 필요한 이유는 아니고, d는 오히려 일부 동물에 반대하는 말이며, e는 이유가 아니라 주장 자체예요.",
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Jin에게 영어로 한두 문장을 써 주세요. Jin의 이유 중 어느 것이 가장 힘센지, 그 까닭(또는 더 필요한 것)을 쓰세요.",
+    "placeholder": "예: The fish example is...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "Jin의 글에 나온 이유를 가리켰다",
+      "mode": "any",
+      "patterns": [
+       "\\bfish\\b",
+       "\\bfed\\b",
+       "\\bfeed\\b",
+       "\\bturns?\\b",
+       "\\b6-1\\b",
+       "\\btake care\\b",
+       "\\banimals?\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "왜 그런지 까닭을 이었다",
+      "mode": "any",
+      "patterns": [
+       "\\bbecause\\b",
+       "\\bso\\b",
+       "\\bsince\\b",
+       "\\bshows?\\b",
+       "\\bproves?\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "'좋아요' 같은 한 마디가 아니다",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(?:good|great|ok|okay|yes|no)\\b[\\s.,!]*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내가 고른 이유가 Jin의 글의 어느 문장인지 말했나요?",
+     "그 이유가 왜 힘센지(또는 무엇이 더 필요한지) 까닭을 썼나요?",
+     "내 취향이 아니라 학급 전체에 대한 이유를 평가했나요? (선택)"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The fish example is strong because students really fed it by turns, so it shows a class can take care of a pet."
+     },
+     {
+      "text": "I think 'a pet can teach us to take care of animals' is good, but you need an example, because it is only an idea.",
+      "note": "이유의 약점(예가 없음)을 짚은 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Good opinion!",
+      "why": "어떤 이유를 평가하는지도, 까닭도 없다."
+     },
+     {
+      "text": "I like cats too.",
+      "why": "Jin의 이유를 평가하지 않고 취향만 말했다."
+     }
+    ],
+    "humanReview": "어떤 이유를 골랐든 까닭이 글과 맞는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 글의 낱말을 가리켰는지와 까닭 낱말의 유무만 본다.",
+    "hints": [
+     "힘센 이유 하나를 정해 그 문장에서 낱말 한두 개를 가져와 쓰세요.",
+     "because나 so를 써서 '왜 힘센지'를 이어 보세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "이유 가려내기",
+    "full": "a와 c를 고르고 b·d·e가 왜 이유가 아닌지 말할 수 있음",
+    "partial": "a나 c 중 하나만 고름",
+    "none": "b나 e를 이유로 고름"
+   },
+   {
+    "criterion": "이유 평가하기",
+    "full": "고른 이유를 글에 근거해 까닭과 함께 평가함",
+    "partial": "이유는 골랐으나 까닭이 없음",
+    "none": "글과 상관없는 말"
+   }
+  ],
+  "alternatives": [
+   "a가 더 강하다고 보는 학생도 있다. 어느 쪽이든 글에 근거한 까닭이 있으면 인정한다.",
+   "'더 필요한 것은 예/자료'라는 평가도 좋은 답이다."
+  ],
+  "hardCases": [
+   "d를 '동물 키우기에 반대하는 이유'로 읽는 학생은 이 글의 주장과 방향을 본 것이다. 이유로 고르지 않아야 한다."
+  ],
+  "cautions": {
+   "language": "의견 표현과 쉬운 낱말만 썼다. 'turns'는 '차례로'의 뜻으로 쓰였다.",
+   "culture": "반려동물을 무서워하거나 알레르기가 있는 학생을 배려해 개를 무서워하는 학생을 이야기에 넣었다. 학급 동물 키우기는 한국 초등학교에서도 흔한 토론 소재다.",
+   "accessibility": "그림 없이 글만 쓰고, 6-1은 '식스 대시 원'이 아니라 '6학년 1반'으로 읽도록 설명했다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "복수 선택 정답(a, c)",
+    "글 낱말과 까닭 낱말의 유무"
+   ],
+   "human": [
+    "고른 이유 평가의 타당성",
+    "영어 표현의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-02",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "이메일 읽기와 고치기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "선생님께 보내는 이메일의 앞뒤 안 맞는 부분 고치기",
+  "uiLang": "ko",
+  "format": "find-error-fix",
+  "generative": false,
+  "goal": "이메일의 두 줄이 서로 맞지 않는 곳을 찾아, 계획이 성립하도록 영어로 고쳐 쓴다.",
+  "thinking": [
+   "이메일 줄들 사이의 모순 찾기",
+   "어느 줄을 고쳐도 되는지 가능한 수정 비교하기",
+   "고친 문장이 다른 줄과 맞는지 검증하기"
+  ],
+  "differsFromPlain": "단순 연습은 이메일을 읽고 누가 무엇을 하는지 묻는다. 여기서는 줄과 줄을 맞대어 보아 모순을 찾고, 어느 쪽을 어떻게 고치면 계획이 성립하는지 스스로 정한다.",
+  "prerequisites": [
+   "a.m./p.m.와 요일 읽기",
+   "can, want to, after 같은 쉬운 표현"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Yuna가 모둠 과학 숙제 모임에 대해 Mr. Park 선생님께 이메일을 보내려고 해요. 도서관은 목요일 5 p.m.까지 쓸 수 있어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "이 이메일에서 다른 줄과 맞지 않아 모임이 성립하지 않는 줄을 하나 고르세요.",
+    "hints": [
+     "모임 시각과, 어느 모둠원이 올 수 있는 시각을 나란히 놓고 비교해 보세요.",
+     "각 줄의 요일과 시각을 'a.m./p.m.'까지 같이 적어 보세요."
+    ],
+    "lines": [
+     "Dear Mr. Park,",
+     "I am writing about our science project meeting.",
+     "Our group wants to meet on Thursday at 3 p.m. in the library.",
+     "Mina has a piano lesson on Thursday, so she can come only after 4 p.m.",
+     "Can we use the library room until 5 p.m.?",
+     "Thank you. Yuna"
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "3번 줄은 목요일 3 p.m.에 모이자고 하고, 4번 줄은 Mina가 4 p.m. 이후에만 올 수 있다고 해서 두 줄이 맞지 않아요. 모임 시각(3번 줄)을 고치거나 Mina의 사정(4번 줄)을 바꾸는 방법이 있어서 어느 줄을 골라도 인정해요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "모임이 성립하도록 3번 줄(또는 4번 줄)을 영어로 다시 써 보세요. 도서관은 5 p.m.까지만 쓸 수 있다는 것도 지켜야 해요.",
+    "placeholder": "예: Our group wants to meet...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "시각이나 요일을 바꿔 모순을 없앴다",
+      "mode": "any",
+      "patterns": [
+       "\\b4[:.][1-5]\\d\\b",
+       "\\bfour\\s+(?:fifteen|thirty|forty[- ]?five)\\b",
+       "\\bafter\\s+4\\b",
+       "\\b(?:monday|tuesday|wednesday|friday)\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "모임을 하는 문장이다",
+      "mode": "any",
+      "patterns": [
+       "\\bmeet",
+       "\\bmeeting\\b",
+       "\\bcome\\b",
+       "\\bstart"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내가 고친 시각이 Mina가 오는 시각 뒤인가요(또는 요일을 바꿨나요)?",
+     "고친 문장이 도서관 5 p.m. 규칙과 4번 줄과 모두 어울리나요?",
+     "고친 문장이 이메일 속 다른 줄에서 자연스럽게 이어지나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Our group wants to meet on Thursday at 4:30 p.m. in the library."
+     },
+     {
+      "text": "Our group wants to meet on Friday at 3 p.m. in the library, because Mina has a piano lesson on Thursday.",
+      "note": "요일을 바꾸고 이유 줄까지 맞춘 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Our group wants to meet on Thursday at 3 p.m. in the library.",
+      "why": "원래 문장이라 모순이 그대로다."
+     },
+     {
+      "text": "Mina is sorry.",
+      "why": "모임 시각이나 요일을 바꾸지 않았다."
+     }
+    ],
+    "humanReview": "시각이 도서관 규칙(5 p.m. 전에 끝)을 지키는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 새 시각·요일의 유무만 본다.",
+    "hints": [
+     "Mina가 올 수 있는 가장 이른 시각과 도서관이 닫는 시각 사이에서 모임 시각을 정해 보세요.",
+     "시각 대신 요일을 바꾸는 방법도 있어요. 그러면 4번 줄도 같이 어울리는지 확인하세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "모순 찾기",
+    "full": "3번과 4번 줄이 왜 안 맞는지 말할 수 있음",
+    "partial": "한 줄만 의심함",
+    "none": "관계없는 줄을 고름"
+   },
+   {
+    "criterion": "고쳐 쓰기",
+    "full": "모순을 없애고 5 p.m. 규칙까지 지킴",
+    "partial": "모순은 없앴으나 규칙을 어김",
+    "none": "원래 문장과 같음"
+   }
+  ],
+  "alternatives": [
+   "Mina가 따로 오는 방법(We will start at 3 p.m., and Mina will join later.)도 모순을 없앤다.",
+   "도서관이 5 p.m.에 닫으므로 4:30 p.m.에 시작하면 짧지만 가능하다."
+  ],
+  "hardCases": [
+   "4 p.m.처럼 Mina가 오는 경계 시각은 'only after 4 p.m.'의 해석에 따라 다르다. 사람이 보고 판단한다."
+  ],
+  "cautions": {
+   "language": "시각은 a.m./p.m.를 구분해 읽는 것이 핵심이다. 'only after'는 '~ 이후에만'이다.",
+   "culture": "학교 숙제 모임과 이메일로 선생님께 허락 구하기는 한국 학교에서도 가능한 상황이다. 피아노 레슨은 방과 후 활동의 예일 뿐이다.",
+   "accessibility": "그림 없이 이메일을 줄별로 적었다. 4:30 같은 시각은 '포 서티'로 읽도록 안내할 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "오류 줄 위치(3번 또는 4번)",
+    "새 시각·요일의 유무"
+   ],
+   "human": [
+    "고친 문장이 규칙을 지키는지",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-03",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "근거로 주장 판단하기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "독서 동아리는 성공일까? 근거가 늘 때마다 판단 고치기",
+  "uiLang": "ko",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "자료가 하나씩 더해질 때 '독서 동아리가 성공했다'는 주장에 대한 판단을 고치고, 두 근거로 영어로 마무리한다.",
+  "thinking": [
+   "하나의 근거만으로 단정하지 않기",
+   "새 정보가 나오면 판단 바꾸기",
+   "여러 근거를 합쳐 주장 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 표를 읽고 숫자를 묻는다. 여기서는 숫자 하나로 '성공'을 결론짓지 않고, 정보가 더해질 때마다 판단이 어떻게 바뀌어야 하는지 따져 영어로 쓴다.",
+  "prerequisites": [
+   "숫자 읽기(12, 4, 6)",
+   "sign up(신청하다), only, come 같은 쉬운 표현"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "우리 학교에 독서 동아리가 새로 생겼어요. 선생님이 '이 동아리는 성공이다(The club is a success)'라고 말했어요. 근거를 하나씩 받아 보며 이 말이 맞는지 생각해 봅니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "자료를 하나씩 보며, 그때마다 '동아리는 성공이다'라는 말에 대한 내 생각을 고르세요.",
+    "hints": [
+     "지금 가진 자료로 확인된 것과 아직 모르는 것을 나눠 보세요.",
+     "새 자료가 이전 자료와 같은 방향인지 반대 방향인지 비교하세요."
+    ],
+    "stages": [
+     {
+      "info": "3월에 12명이 동아리에 신청했어요.",
+      "ask": "이 자료만으로 '동아리는 성공이다'를 어떻게 볼까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "성공이다. 12명은 많은 숫자다.",
+        "reveals": "신청 인원만으로 이미 결론을 내렸어요. 신청한 뒤에 무엇을 했는지는 아직 몰라요."
+       },
+       {
+        "id": "b",
+        "text": "성공이 아니다. 동아리는 늘 인기가 없다.",
+        "reveals": "자료에 없는 일반론으로 결론을 냈어요."
+       },
+       {
+        "id": "c",
+        "text": "아직 모른다. 신청은 시작일 뿐이다.",
+        "reveals": "지금 가진 근거의 한계를 말했어요."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "신청 인원은 시작의 증거예요. 이후에 실제로 어떻게 참여했는지 보아야 해요."
+     },
+     {
+      "info": "5월 모임에는 4명만 왔어요.",
+      "ask": "자료가 늘었어요. 이제 어떻게 볼까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "처음 숫자가 더 중요하니 성공이다.",
+        "reveals": "새 자료를 처음 판단에 맞춰 버렸어요."
+       },
+       {
+        "id": "b",
+        "text": "'성공'이라고 하기엔 근거가 약해졌다.",
+        "reveals": "두 자료를 합쳐 판단을 낮췄어요."
+       },
+       {
+        "id": "c",
+        "text": "실패다. 4명은 너무 적다.",
+        "reveals": "'적다'의 기준이 없는데 바로 결론을 냈어요."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "신청은 많았는데 참석이 적어졌어요. '성공'이라고 말하기엔 근거가 약해졌지만, 왜 줄었는지는 아직 몰라요."
+     },
+     {
+      "info": "왔던 4명은 한 달에 책을 3권씩 읽었어요. 한편 6명은 같은 시간에 열리는 운동 동아리로 옮겼어요.",
+      "ask": "이제 가장 알맞은 생각은 무엇일까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "독서 동아리가 재미없어서 줄었다.",
+        "reveals": "'재미없다'는 자료에 없는 이유예요."
+       },
+       {
+        "id": "b",
+        "text": "온 학생은 잘 읽었고, 시간이 겹쳐서 줄었을 수도 있다. 더 물어봐야 한다.",
+        "reveals": "자료에 있는 사실과 아직 모르는 것을 나눠서 말했어요."
+       },
+       {
+        "id": "c",
+        "text": "온 4명만 열심히 한 것이니 동아리는 성공이다.",
+        "reveals": "일부 학생의 결과로 전체를 단정했어요."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "참석은 줄었지만 참여한 학생의 읽기는 많았고, 줄어든 까닭에 시간 겹침이 있을 수 있어요. 더 알아보고 결론 내려야 해요."
+     }
+    ],
+    "reflect": "처음에는 '성공'처럼 보였지만 새 근거가 나올 때마다 판단이 바뀌었어요. 근거가 더해질 때 판단을 고칠 수 있어야 해요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "영어로 한두 문장을 쓰세요. 독서 동아리가 성공인지에 대한 내 생각을, 위 자료에서 근거 두 가지를 넣어서 쓰세요.",
+    "placeholder": "예: I am not sure ... because ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "신청 자료를 근거로 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\b12\\b",
+       "\\btwelve\\b",
+       "\\bsign(?:ed)?\\s*up\\b",
+       "\\bjoin(?:ed)?\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "참석·책·시간 겹침 등 다른 근거를 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\b4\\b",
+       "\\bfour\\b",
+       "\\bonly\\b",
+       "\\bfew\\b",
+       "\\bsports?\\b",
+       "\\bcame\\b",
+       "\\bcome\\b",
+       "\\battend(?:ed)?\\b",
+       "\\bbooks?\\b",
+       "\\b6\\b",
+       "\\bsix\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "'예/아니오'만 쓴 답이 아니다",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(?:yes|no)[\\s.,!]*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내 생각을 말했나요?",
+     "서로 다른 두 근거(신청 / 참석 등)를 모두 썼나요?",
+     "근거가 어느 단계의 자료인지 맞나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "I am not sure it is a success. Twelve students signed up, but only four came to the May meetings."
+     },
+     {
+      "text": "It is partly a success: 12 students signed up and the 4 students read three books each. But six students left for the sports club, so we need to ask why.",
+      "note": "성공의 일부와 한계를 함께 쓴 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "The reading club is a success because it is fun.",
+      "why": "자료의 근거를 쓰지 않았다."
+     },
+     {
+      "text": "Yes, it is a great club.",
+      "why": "근거가 없다."
+     }
+    ],
+    "humanReview": "근거가 자료와 맞는지, 판단이 자료에 비해 지나치지 않은지는 사람이 본다. 자동 점검은 근거 낱말의 유무만 본다.",
+    "hints": [
+     "내 생각을 한 문장으로 먼저 쓰세요. (I think / I am not sure ...)",
+     "but으로 두 번째 근거(참석, 책, 운동 동아리 중 하나)를 이어 보세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "판단 고치기",
+    "full": "새 자료마다 판단을 바꾸고 이유를 말할 수 있음",
+    "partial": "마지막만 고침",
+    "none": "처음 판단을 끝까지 바꾸지 않음"
+   },
+   {
+    "criterion": "근거로 쓰기",
+    "full": "서로 다른 두 근거로 영어 판단문을 씀",
+    "partial": "근거 하나만 씀",
+    "none": "근거 없이 의견만 씀"
+   }
+  ],
+  "alternatives": [
+   "'부분적으로 성공'이라는 판단도 근거가 있으면 좋은 답이다.",
+   "'아직 모르니 더 알아봐야 한다'도 합리적이다."
+  ],
+  "hardCases": [
+   "4명이 '적은지'는 기준에 따라 다르다. 단정하지 않고 근거를 말하면 인정한다."
+  ],
+  "cautions": {
+   "language": "signed up, only, left 등 쉬운 표현을 썼다. 'success'는 '성공'의 뜻으로 알려 준다.",
+   "culture": "학교 동아리 활동은 한국 초등학교에서도 흔한 상황이다. 동아리를 못 한 학생이 낙인찍히지 않게 학생을 비난하는 표현을 쓰지 않았다.",
+   "accessibility": "표 없이 문장으로 숫자를 적었고, 숫자는 소리 내어 '트웰브', '포'처럼 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "각 단계에서 쓸 만한 선택(reasonable)",
+    "근거 낱말의 유무"
+   ],
+   "human": [
+    "판단의 타당성",
+    "영어 표현의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-04",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "근거로 주장 판단하기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "표를 만들어 주장이 맞는 경우 찾기",
+  "uiLang": "ko",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "'가장 많이 뽑혔지만 반의 절반은 안 된다'는 영어 주장이 맞는 득표표를 직접 여러 개 만들어 본다.",
+  "thinking": [
+   "'most'와 'more than half'의 차이 구분하기",
+   "여러 조건을 동시에 만족하는 예 만들기",
+   "가능한 범위 찾기"
+  ],
+  "differsFromPlain": "단순 연습은 주어진 표에서 가장 많은 항목을 고른다. 여기서는 '가장 많다'와 '절반 미만'이라는 두 조건을 모두 만족하는 표를 학생이 만들고, 그런 표가 어떤 범위에서만 가능한지 찾는다.",
+  "prerequisites": [
+   "숫자 20의 절반",
+   "most(가장 많은), fewer than(~보다 적은), half(절반)의 뜻"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "반 학생 20명이 간식 시간 후 활동으로 soccer, art, music 중 하나에 한 표씩 투표했어요. 득표를 s(soccer), a(art), m(music)이라고 해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "soccer 8표, art 6표, music 6표가 나왔어요. 가장 알맞게 말한 문장은 무엇인가요?",
+    "hints": [
+     "8, 6, 6을 더해 보고, 20명의 절반이 몇인지 구해서 비교하세요.",
+     "'most'와 'everyone'이 각각 무엇을 말하는지 비교하세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Soccer got the most votes, but under half of us chose it.",
+      "reveals": "조건 두 가지를 모두 숫자로 확인했는지 보세요."
+     },
+     {
+      "id": "b",
+      "text": "Everyone voted for soccer, because it got the most votes.",
+      "reveals": "'가장 많음'을 '모두'로 확대했어요."
+     },
+     {
+      "id": "c",
+      "text": "Soccer got more than half of the votes, so it won.",
+      "reveals": "8이 10보다 큰지 작은지 다시 비교해 보세요."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "8표는 art(6), music(6)보다 많아서 가장 많고, 20명의 절반인 10보다 작아서 절반이 안 돼요. 그래서 a가 맞아요."
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "같은 주장('soccer가 가장 많이 뽑혔지만 절반은 안 된다')이 맞도록, 합이 20명이 되는 서로 다른 득표표를 3개 만들어 보세요.",
+    "hints": [
+     "soccer가 가장 많아야 하니, art와 music보다 큰 값부터 정해 보세요.",
+     "soccer를 한 값으로 고정하고 art와 music의 합을 20에서 빼서 나눠 보세요. soccer가 너무 작으면 20을 채울 수 없어요."
+    ],
+    "vars": [
+     {
+      "name": "s",
+      "label": "soccer 득표 s"
+     },
+     {
+      "name": "a",
+      "label": "art 득표 a"
+     },
+     {
+      "name": "m",
+      "label": "music 득표 m"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "s==floor(s) && a==floor(a) && m==floor(m) && s>=0 && a>=0 && m>=0",
+      "ok": "득표가 0 이상의 정수예요.",
+      "fail": "득표는 0 이상의 정수로 쓰세요."
+     },
+     {
+      "id": "c2",
+      "expr": "s+a+m==20",
+      "ok": "모두 합해 20명이에요.",
+      "fail": "s+a+m이 20이 아니에요."
+     },
+     {
+      "id": "c3",
+      "expr": "s>a && s>m",
+      "ok": "soccer가 가장 많아요.",
+      "fail": "soccer가 art나 music보다 많지 않아요."
+     },
+     {
+      "id": "c4",
+      "expr": "s<10",
+      "ok": "soccer는 절반(10표) 미만이에요.",
+      "fail": "soccer가 절반(10표) 이상이에요."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "s": 8,
+      "a": 6,
+      "m": 6
+     },
+     {
+      "s": 9,
+      "a": 6,
+      "m": 5
+     },
+     {
+      "s": 9,
+      "a": 7,
+      "m": 4
+     },
+     {
+      "s": 8,
+      "a": 7,
+      "m": 5
+     }
+    ],
+    "badRows": [
+     {
+      "s": 10,
+      "a": 5,
+      "m": 5
+     },
+     {
+      "s": 7,
+      "a": 7,
+      "m": 6
+     }
+    ],
+    "explain": "soccer가 가장 많으려면 art와 music이 각각 s보다 작아야 하고, 둘의 합은 20-s예요. s=7이면 a+m=13이라 둘 다 6 이하일 수 없어 안 되고, s가 10 이상이면 절반이 돼요. 그래서 s는 8 또는 9만 가능해요."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "조건 이해",
+    "full": "두 조건(가장 많음, 절반 미만)과 합 20을 모두 이해함",
+    "partial": "한 조건만 지킴",
+    "none": "조건을 지키지 않는 표를 만듦"
+   },
+   {
+    "criterion": "여러 예 만들기",
+    "full": "서로 다른 3개 표를 만들고 가능한 s가 8, 9뿐임을 설명함",
+    "partial": "표는 만들었으나 범위를 설명 못 함",
+    "none": "표를 만들지 못함"
+   }
+  ],
+  "alternatives": [
+   "soccer가 8표일 때 art/music이 (6,6), (7,5)이고 9표일 때 (6,5), (7,4), (8,3)처럼 다양한 표가 가능하다.",
+   "art와 music을 바꾼 표는 투표 내용이 달라서 서로 다른 예다."
+  ],
+  "hardCases": [
+   "(9, 8, 3)은 s>a이므로 가능하다(합 20). a를 s-1까지 허용하는지 헷갈릴 수 있다."
+  ],
+  "cautions": {
+   "language": "most(가장 많은)와 half(절반), fewer than을 먼저 설명한다. s>a는 'soccer가 art보다 많다'로 읽는다.",
+   "culture": "학급 투표라는 보편 상황이다. 특정 활동을 우열 있게 보지 않도록 세 활동을 동등하게 썼다.",
+   "accessibility": "표 없이 숫자를 글로 적었다. 식은 '에스는 에이보다 크다'처럼 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "선택 정답",
+    "조건 검증(합, 비교, 정수)"
+   ],
+   "human": [
+    "영어 문장의 이해"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-05",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "간단한 주장 속 숨은 가정",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "젖은 우산 하나로 '지금 비 온다'고 말할 수 있을까?",
+  "uiLang": "ko",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Mia의 짧은 추론이 말하지 않고 믿고 있는 전제를 찾고, 그 전제가 틀리는 경우를 영어로 만든다.",
+  "thinking": [
+   "말하지 않은 전제 찾기",
+   "전제가 깨지는 반례 상황 만들기",
+   "주장이 성립하는 조건 말하기"
+  ],
+  "differsFromPlain": "단순 연습은 글 속 사실을 묻는다. 여기서는 짧은 추론이 어떤 전제 위에 서 있는지 가려내고, 그 전제가 틀리는 상황을 영어로 직접 만든다.",
+  "prerequisites": [
+   "wet(젖은), rain, outside 같은 쉬운 낱말",
+   "because/so로 이유를 이어 읽을 수 있다"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Mia가 말했어요. \"Dan came into the classroom with a wet umbrella. So it is raining outside now.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Mia가 말하지 않았지만 믿고 있어야 '지금 밖에 비가 온다'가 나오는 생각은 무엇인가요?",
+    "hints": [
+     "Mia의 결론에서 한 단계씩 거꾸로 가며 '우산이 젖은 것이 곧 지금 비가 오는 것'이 되려면 무엇이 필요한지 보세요.",
+     "글에 이미 적힌 사실과 적히지 않은 믿음을 나눠 보세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Dan has an umbrella with him in the classroom.",
+      "reveals": "글에 이미 있는 사실이에요. 숨은 생각인지 확인해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "Umbrellas are used by many people on rainy days.",
+      "reveals": "우산의 일반적인 쓰임이지, 이 추론에 꼭 필요한 연결인지 따져 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Nothing else could have made the umbrella wet.",
+      "reveals": "'젖음'에서 '지금 비'로 건너가는 다리를 말하고 있어요."
+     },
+     {
+      "id": "d",
+      "text": "Dan walked into the classroom with his umbrella.",
+      "reveals": "글에 이미 적힌 장면이에요."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "우산이 젖은 것이 지금 비 때문이라고 하려면 다른 원인은 없다는 전제가 필요해요. 비가 이미 그쳤거나, 우산을 씻었거나, 물에 빠뜨린 경우에도 우산은 젖을 수 있어요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Mia의 결론이 틀리는 상황을 영어로 한 문장 쓰세요. 우산은 젖었지만 지금은 비가 오지 않는 이유를 쓰세요.",
+    "placeholder": "예: It stopped raining ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "비가 아닌 다른 원인이나 이미 그친 비를 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\bstopped\\b",
+       "\\bearlier\\b",
+       "\\bwashed\\b",
+       "\\bwash\\b",
+       "\\bpuddle\\b",
+       "\\bspill(?:ed)?\\b",
+       "\\bsprinkler\\b",
+       "\\bhose\\b",
+       "\\bsink\\b",
+       "\\bwater\\b",
+       "\\bdropped\\b",
+       "\\bfell\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "우산이나 젖음을 말한 문장이다",
+      "mode": "any",
+      "patterns": [
+       "\\bumbrella\\b",
+       "\\bwet\\b",
+       "\\bit\\b",
+       "\\bhis\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "'예/아니오'만 쓴 답이 아니다",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(?:yes|no)[\\s.,!]*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내가 쓴 상황에서 우산이 젖었는데도 지금은 비가 오지 않나요?",
+     "Mia의 믿음(다른 원인은 없다)이 왜 틀리는지 보이나요?",
+     "상황이 현실적인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "It stopped raining ten minutes ago, but the umbrella was still wet."
+     },
+     {
+      "text": "Dan washed his umbrella in the sink before class."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It is raining outside now.",
+      "why": "결론을 되풀이하고 반례가 아니다."
+     },
+     {
+      "text": "Dan has a blue umbrella.",
+      "why": "젖은 이유나 비가 그친 상황이 없다."
+     }
+    ],
+    "humanReview": "쓴 상황이 정말 반례인지(우산은 젖고 지금은 비가 안 옴)는 사람이 본다. 자동 점검은 다른 원인 낱말의 유무만 본다.",
+    "hints": [
+     "우산을 젖게 하는 일을 비 말고 떠올려 보세요. (물, 시간, 장소)",
+     "'비는 이미 그쳤다'처럼 시간이 다른 상황도 가능해요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "숨은 가정 찾기",
+    "full": "c를 고르고 a·d가 글에 이미 있는 사실이라는 점을 말함",
+    "partial": "b를 고르고 이유를 못 말함",
+    "none": "글에 있는 사실을 고름"
+   },
+   {
+    "criterion": "반례 만들기",
+    "full": "비 이외 원인이나 그친 비로 결론이 깨지는 상황을 씀",
+    "partial": "상황은 쓰나 결론이 안 깨짐",
+    "none": "결론을 되풀이함"
+   }
+  ],
+  "alternatives": [
+   "우산을 쓰지 않은 사람이 젖은 우산을 들고 들어온 경우, 비가 그친 직후 등 다양하다.",
+   "'우산이 비에 젖었지만 그쳤다'는 시간 차이를 짚은 좋은 답이다."
+  ],
+  "hardCases": [
+   "'Dan used the umbrella as a sun shade'처럼 젖지 않은 경우는 반례가 아니다."
+  ],
+  "cautions": {
+   "language": "wet, rain, stopped 등 쉬운 낱말만 썼다. 'So it is raining outside now'의 now가 핵심 낱말이다.",
+   "culture": "학교에 우산을 들고 오는 장면은 한국에서도 흔하다. 실제 인물이 아닌 가상의 학생 이름을 썼다.",
+   "accessibility": "그림 없이 문장만 썼다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "선택 정답",
+    "다른 원인 낱말의 유무"
+   ],
+   "human": [
+    "반례의 타당성",
+    "영어의 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-06",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "간단한 주장 속 숨은 가정",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "Joy는 정말 지각할까? 확인할 정보와 질문 고르기",
+  "uiLang": "ko",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "'버스가 느려서 지각할 것이다'라는 주장이 성립하려면 무엇을 알아야 하는지 가려내고 영어 질문으로 만든다.",
+  "thinking": [
+   "결론에 필요한 정보와 상관없는 정보 구분하기",
+   "주장에 깔린 두 가정 찾기",
+   "확인할 질문 만들기"
+  ],
+  "differsFromPlain": "단순 연습은 글을 읽고 질문에 답한다. 여기서는 주어진 말이 맞는지 판단하려면 어떤 정보가 더 필요한지 고르고, 그 정보를 얻는 영어 질문을 직접 만든다.",
+  "prerequisites": [
+   "시각 말하기",
+   "What time ~? / Will you ~? 같은 의문문의 모양"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Joy가 말했어요. \"My bus is slow, so I will be late for school tomorrow.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Joy의 말이 맞는지 확인하려면 어떤 정보가 필요할까요? 알맞은 것을 모두 고르세요.",
+    "hints": [
+     "'버스가 느리다 → 지각한다'가 되려면 두 가지가 필요해요. 하나는 지각의 기준이고, 다른 하나는 그 버스를 탄다는 사실이에요.",
+     "색이나 학생 수처럼 지각 여부와 이어지지 않는 정보를 빼 보세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The color of Joy's bus and how clean it is",
+      "reveals": "결론과 이어지는지 따져 보세요."
+     },
+     {
+      "id": "b",
+      "text": "What time school starts and when the bus gets there",
+      "reveals": "지각의 기준과 도착 시각이 필요한 이유를 생각해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "How many students are in Joy's class this year",
+      "reveals": "지각 여부와 직접 이어지는지 살펴보세요."
+     },
+     {
+      "id": "d",
+      "text": "Whether Joy will really take that bus tomorrow morning",
+      "reveals": "주장이 '내일 그 버스를 탄다'는 믿음 위에 있는지 생각해 보세요."
+     },
+     {
+      "id": "e",
+      "text": "What Joy had for dinner last night at home",
+      "reveals": "지각과 이어지는 정보인지 살펴보세요."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "느린 버스가 지각으로 이어지려면 학교 시작 시각과 버스 도착 시각을 비교해야 하고, Joy가 내일 그 버스를 탄다는 전제도 필요해요. 버스 색, 학급 인원, 저녁 메뉴는 이 판단과 상관없어요.",
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Joy에게 확인하고 싶은 것을 묻는 영어 질문을 하나 쓰세요. (s1에서 고른 정보를 얻는 질문)",
+    "placeholder": "예: What time ...?",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "물음표가 있는 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\?"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "시각·버스·등교와 관련된 낱말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\btime\\b",
+       "\\bwhen\\b",
+       "\\bstarts?\\b",
+       "\\bleave\\b",
+       "\\bbus\\b",
+       "\\bwalk\\b",
+       "\\btake\\b",
+       "\\bride\\b",
+       "\\bminutes?\\b",
+       "\\barrive\\b",
+       "\\bget\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "내 질문으로 대답하면 Joy의 말이 맞는지 알 수 있나요?",
+     "질문이 한 문장으로 분명한가요?",
+     "결론이 아닌 정보를 묻고 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "What time does school start, and what time does your bus come?"
+     },
+     {
+      "text": "Will you take the bus tomorrow, or will someone drive you?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Are you happy?",
+      "why": "지각 여부와 상관없는 질문이다."
+     },
+     {
+      "text": "Why is the bus slow",
+      "why": "물음표가 없고 필요한 정보를 직접 묻지 않는다."
+     }
+    ],
+    "humanReview": "질문이 필요한 정보를 정말 얻는지, 영어 의문문 모양이 맞는지는 사람이 본다. 자동 점검은 물음표와 관련 낱말만 본다.",
+    "hints": [
+     "질문은 물음표(?)로 끝내고, What time / Will you / Do you 같은 시작을 써 보세요.",
+     "시각이나 버스, 학교 시작 중 낱말 하나를 넣어 보세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "필요한 정보 고르기",
+    "full": "b와 d를 고르고 나머지가 상관없는 이유를 말함",
+    "partial": "하나만 고름",
+    "none": "상관없는 정보를 고름"
+   },
+   {
+    "criterion": "질문 만들기",
+    "full": "정보를 얻는 영어 의문문을 씀",
+    "partial": "질문이긴 하나 정보와 안 맞음",
+    "none": "질문이 아님"
+   }
+  ],
+  "alternatives": [
+   "'How long is the bus ride?'도 도착 시각을 알려 주는 좋은 질문이다.",
+   "'Is there another bus?'처럼 대안을 묻는 질문도 인정한다."
+  ],
+  "hardCases": [
+   "Joy가 걸어서 갈 가능성은 d에서 다룬다. 'Does Joy leave early?'는 b의 일부로 볼 수 있다."
+  ],
+  "cautions": {
+   "language": "What time / Will you ~ ? 같은 의문문의 모양이 핵심이다. 'start'는 '시작하다'로 쓰였다.",
+   "culture": "한국 학교는 등교 시각이 정해져 있어 지각 상황이 친숙하다. 지각한 학생을 비난하는 말을 쓰지 않았다.",
+   "accessibility": "그림 없이 문장만 썼다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "복수 선택 정답(b, d)",
+    "물음표와 관련 낱말"
+   ],
+   "human": [
+    "질문의 쓸모와 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-07",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "정중하게 거절하기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "친구의 생일 초대를 정중하게 거절하는 답장 쓰기",
+  "uiLang": "ko",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "초대를 거절하는 답장에 필요한 요소(감사, 분명한 거절, 이유, 대안)를 가려내고 영어로 직접 쓴다.",
+  "thinking": [
+   "애매한 거절과 분명한 거절 비교하기",
+   "상대 마음을 배려하는 요소 고르기",
+   "읽는 사람에 맞춰 직접 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 초대에 대한 짧은 대답을 따라 쓴다. 여기서는 거절 답장에 어떤 요소가 도움이 되고 어떤 것이 오히려 문제인지 따져 본 뒤 내 상황으로 직접 쓴다.",
+  "prerequisites": [
+   "can't / thank you for ~ 같은 표현",
+   "Saturday, next week 같은 쉬운 낱말"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "친구 Sam이 메시지를 보냈어요.\n\nHi! Can you come to my birthday party on Saturday at 2 p.m.? It is at my house. Please tell me by Wednesday.\n\n그런데 토요일에 가족 여행이 있어서 갈 수 없어요. 아래 첫 번째 답장 초안은 이래요: \"I can't come to your party. Bye.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "위 초안을 더 좋은 거절 답장으로 만들려면 어떤 변경이 도움이 될까요? 알맞은 것을 모두 고르세요.",
+    "hints": [
+     "Sam이 받았을 때 어떤 기분일지 상상하고, 초안에 없는 것을 찾아보세요.",
+     "'가고 싶지만 안 돼요'를 분명하게 전해야 Sam이 다른 계획을 세울 수 있어요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Start with thanks for the invitation.",
+      "reveals": "상대의 마음을 먼저 알아주는 행동이에요."
+     },
+     {
+      "id": "b",
+      "text": "Write 'maybe' instead of 'can't' so Sam is not sad.",
+      "reveals": "Sam이 수요일까지 답을 정해야 한다는 점을 생각해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Suggest another day to play together.",
+      "reveals": "거절 뒤에 관계를 이어 가는 방법이에요."
+     },
+     {
+      "id": "d",
+      "text": "Take out the reason so the message is shorter.",
+      "reveals": "이유가 있을 때와 없을 때 상대가 받는 느낌을 비교해 보세요."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "감사로 시작하고 다른 날을 제안하면 거절이 덜 차갑게 전해져요. 'maybe'는 Sam이 계획을 세우기 어렵게 하고, 이유를 빼면 성의 없어 보일 수 있어요.",
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Sam에게 보낼 답장을 영어 두세 문장으로 쓰세요. 고마움, 분명한 거절(이유 포함), 다른 제안이 들어가게 하세요. 이유는 가족 여행이 아니어도 괜찮아요.",
+    "placeholder": "예: Thank you for ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "고마움을 표현했다",
+      "mode": "any",
+      "patterns": [
+       "\\bthank(?:s| you)?\\b",
+       "\\bappreciate\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "분명하게 거절했다",
+      "mode": "any",
+      "patterns": [
+       "\\bcan[’']?t\\b",
+       "\\bcannot\\b",
+       "\\bcan not\\b",
+       "\\bwon[’']?t be able\\b",
+       "\\bwill not be able\\b",
+       "\\bnot able to\\b",
+       "\\bunable\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "이유를 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\bbecause\\b",
+       "\\bsince\\b",
+       "\\bso\\b",
+       "\\btrip\\b",
+       "\\bfamily\\b",
+       "\\bbusy\\b",
+       "\\bI have\\b",
+       "\\bI am going\\b",
+       "\\bI[’']m going\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "다른 제안이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bnext\\b",
+       "\\banother\\b",
+       "\\bother day\\b",
+       "\\binstead\\b",
+       "\\blater\\b",
+       "\\btogether\\b",
+       "\\blet[’']?s\\b",
+       "\\bhow about\\b",
+       "\\bcan we\\b",
+       "\\bcould we\\b"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "애매하게 미루지 않았다",
+      "mode": "none",
+      "patterns": [
+       "\\bmaybe I (?:can|will)\\b",
+       "\\bI might come\\b",
+       "\\bI will try to come\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "고마움, 분명한 거절, 이유, 제안이 모두 들어갔나요?",
+     "Sam이 읽고 '갈 수 없구나'를 분명히 알 수 있나요?",
+     "말투가 친구에게 쓰는 편안한 영어인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Thank you for inviting me! I can't come on Saturday because I have a family trip. Can we play together next week?"
+     },
+     {
+      "text": "Thanks, Sam. I'm sorry, but I cannot come to your party since my family is going away. Let's meet on Sunday instead!",
+      "note": "다른 날 제안으로 마무리한 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "No, I can't come.",
+      "why": "고마움, 이유, 제안이 없다."
+     },
+     {
+      "text": "Thank you! Maybe I will come, I'm not sure.",
+      "why": "거절이 분명하지 않다."
+     }
+    ],
+    "humanReview": "말투의 따뜻함, 이유의 자연스러움, 영어 표현은 사람이 본다. 자동 점검은 감사·거절·이유·제안 낱말의 유무만 본다.",
+    "hints": [
+     "고마움 문장, 못 간다는 문장, 제안 문장 순서로 한 문장씩 써 보세요.",
+     "거절 문장에는 can't / cannot 같은 분명한 말을 쓰고, 이유는 because나 so로 이어 보세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "분명한 거절",
+    "full": "can't 등으로 갈 수 없음을 분명히 전함",
+    "partial": "거절은 하나 애매함",
+    "none": "maybe로 미룸"
+   },
+   {
+    "criterion": "배려 요소",
+    "full": "감사와 이유, 제안을 모두 넣음",
+    "partial": "한두 요소만 넣음",
+    "none": "요소가 없음"
+   }
+  ],
+  "alternatives": [
+   "이유 대신 'I have other plans.'처럼 간단히 말하는 것도 인정한다.",
+   "제안은 선물/카드/다른 날 중 무엇이든 된다."
+  ],
+  "hardCases": [
+   "'I'm sorry, but I can't come.'만 쓴 답은 이유와 제안이 약해 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "can't와 cannot 둘 다 인정한다. 'Thank you for inviting me'는 문장 틀로 안내할 수 있다.",
+   "culture": "생일 파티 초대는 한국에서도 흔하다. 가족 여행이 없는 학생을 위해 이유는 다른 것을 써도 된다고 안내했다.",
+   "accessibility": "그림 없이 메시지를 글로 적었다. 2 p.m.은 '투 피엠'으로 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "복수 선택 정답(a, c)",
+    "요소 낱말의 유무"
+   ],
+   "human": [
+    "말투와 영어 자연스러움",
+    "이유의 타당성"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-08",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "정중하게 부탁하기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "선생님께 숙제 기한을 정중하게 부탁하기",
+  "uiLang": "ko",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "같은 부탁도 듣는 사람에 따라 말투가 달라짐을 비교하고, 선생님께 하는 정중한 부탁으로 고쳐 쓴다.",
+  "thinking": [
+   "듣는 사람에 맞는 말투 고르기",
+   "퉁명한 부탁을 이유가 있는 정중한 부탁으로 고치기",
+   "부탁의 요소(호칭, 부탁 표현, 이유) 점검하기"
+  ],
+  "differsFromPlain": "단순 연습은 'Can I ~?' 문장을 따라 쓴다. 여기서는 같은 부탁의 여러 버전을 선생님이라는 듣는 사람에 맞춰 비교하고, 고쳐 쓴 문장에 호칭·부탁 표현·이유가 있는지 스스로 점검한다.",
+  "prerequisites": [
+   "Can I / Could you ~? 와 please",
+   "friend와 teacher에게 말하는 방식이 다르다는 것"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "월요일과 화요일에 아파서 숙제를 못 했어요. 담임 Ms. Lee께 영어로 \"금요일까지 낼 수 있게 해 주세요\"라고 부탁하려고 해요. 그리고 체육 시간 후에는 PE 선생님 Mr. Han께 다른 부탁을 해야 해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Ms. Lee께 보내는 부탁으로 가장 알맞은 것은 무엇인가요?",
+    "hints": [
+     "받는 사람이 선생님이라는 점과 내 부탁이 '명령'처럼 들리는지 확인하세요.",
+     "호칭과 부탁하는 표현, 이유가 있는지 하나씩 비교하세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Ms. Lee, could I hand it in on Friday? I was sick on Monday.",
+      "reveals": "호칭, 부탁 표현, 이유가 모두 있는지 확인해 보세요."
+     },
+     {
+      "id": "b",
+      "text": "Hey, can I just have more time for the homework? I was sick.",
+      "reveals": "친구에게 말하듯 시작했어요. 선생님께는 호칭이 어떨지 생각해 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Give me until Friday for the homework, please. I was sick, okay?",
+      "reveals": "please가 있어도 문장의 모양이 명령인지 살펴보세요."
+     },
+     {
+      "id": "d",
+      "text": "I need more time. I was sick, so you have to say yes.",
+      "reveals": "결과를 정해 놓고 말하는 것은 아닌지 살펴보세요."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "선생님께는 호칭을 쓰고, Could I ~?처럼 허락을 구하는 모양과 짧은 이유를 함께 써야 해요. a는 너무 가볍고, b와 d는 명령처럼 들려요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "PE 선생님 Mr. Han께, 우리 반이 지금 체육관 문을 열어 줬으면 한다고 영어로 정중하게 부탁하세요. (퉁명한 원문: \"Open the gym door now!\") 호칭, 부탁 표현, 이유를 넣으세요.",
+    "placeholder": "예: Excuse me, Mr. Han. ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "정중한 부탁 표현이다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:could|would|can|may)\\s+(?:you|we|i)\\b",
+       "\\bplease\\b",
+       "\\bwould it be (?:ok|okay|possible)\\b",
+       "\\bis it (?:ok|okay|possible)\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "이유를 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\bbecause\\b",
+       "\\bso (?:we|that)\\b",
+       "\\bwe (?:want|need|have|would like)\\b",
+       "\\bfor (?:our|the)\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "선생님을 부르는 말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bmr\\b",
+       "\\bteacher\\b",
+       "\\bsir\\b",
+       "\\bexcuse me\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "명령으로 시작하지 않았다",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(?:open|give|do|let)\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "선생님을 부르는 말이 있나요?",
+     "'~해 주시겠어요?' 모양의 부탁 표현이 있나요?",
+     "왜 부탁하는지 이유가 있나요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Excuse me, Mr. Han. Could you open the gym door for us, please? We want to practice for sports day."
+     },
+     {
+      "text": "Mr. Han, would it be possible to open the gym door now? We have a game at two o'clock."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Open the gym door now!",
+      "why": "명령이고 호칭과 이유가 없다."
+     },
+     {
+      "text": "Could you open the door?",
+      "why": "부탁은 정중하나 호칭과 이유가 없다."
+     }
+    ],
+    "humanReview": "말투가 선생님께 알맞은지, 이유가 상황과 맞는지, 영어 표현은 사람이 본다. 자동 점검은 부탁 표현·이유·호칭 낱말의 유무만 본다.",
+    "hints": [
+     "Excuse me나 Mr. Han으로 시작해 보세요.",
+     "Could you / Would you / Can you나 please로 부탁을 만들고, We have ... 또는 because로 이유를 이어 보세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "듣는 사람 고려",
+    "full": "호칭·부탁 표현·이유로 선생님에게 맞춘 말투",
+    "partial": "한두 요소만 넣음",
+    "none": "명령 말투"
+   },
+   {
+    "criterion": "고쳐 쓰기",
+    "full": "원문 뜻을 유지하며 정중하게 바꿈",
+    "partial": "정중하지만 뜻이 바뀜",
+    "none": "원문과 같음"
+   }
+  ],
+  "alternatives": [
+   "'May I ~?'나 'Would you mind ~ing?'도 정중한 부탁이다.",
+   "호칭은 'Excuse me, Mr. Han'처럼 감탄 표현으로도 가능하다."
+  ],
+  "hardCases": [
+   "'Please open the door!'는 please가 있지만 명령형이라 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "Could/Would는 '~해 주시겠어요?'로 알려 준다. 'Excuse me'는 '실례합니다'다.",
+   "culture": "선생님께 부탁할 때 높임 표현이 있는 한국어와 달리 영어는 호칭과 Could 같은 표현으로 공손함을 나타낸다고 알려 준다.",
+   "accessibility": "그림 없이 글로만 썼다. 시각은 '투 어클락'으로 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "선택 정답",
+    "부탁 표현·이유·호칭 낱말의 유무"
+   ],
+   "human": [
+    "말투의 적절성",
+    "영어 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-09",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "읽는 사람에 맞게 고쳐 쓰기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "새로 온 친구 Emma가 읽을 모임 알림 고쳐 쓰기",
+  "uiLang": "ko",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "친구끼리만 알아듣는 알림 메시지에서 새로 온 친구가 모를 부분을 찾아, 필요한 정보를 넣어 영어로 다시 쓴다.",
+  "thinking": [
+   "읽는 사람이 이미 아는 것과 모르는 것 구분하기",
+   "빠진 정보 채워 넣기",
+   "메시지가 혼자서도 이해되는지 점검하기"
+  ],
+  "differsFromPlain": "단순 연습은 문장을 격식체로 바꾼다. 여기서는 읽는 사람이 바뀌면 어떤 정보가 빠져 있는지 찾아 채운다.",
+  "prerequisites": [
+   "place, bring, after school 같은 쉬운 말",
+   "gonna는 going to의 말하기 형태임"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Jun이 반 단체방에 이렇게 썼어요.\n\"BTW, we're gonna meet at the usual place after school. Bring the stuff!\"\n\n오늘 이 반에 새로 온 Emma(전학생)도 이 방에 들어와 있어요. Emma는 학교를 잘 몰라요.\n\n알아 두세요: the usual place는 운동장 옆 큰 나무 아래 벤치이고, the stuff는 공과 물병이에요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Emma가 읽을 때 무엇인지 몰라서 곤란할 부분을 모두 고르세요.",
+    "hints": [
+     "Emma가 학교를 잘 모른다는 점에서, 이미 같이 보낸 시간이 있어야 알 수 있는 말이 무엇인지 찾아보세요.",
+     "각 표현이 설명 없이도 이해되는지 질문해 보세요."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "BTW",
+      "reveals": "축약어를 모르는 경우도 있지만 뜻을 풀면 이해에는 큰 영향이 없을 수도 있어요."
+     },
+     {
+      "id": "b",
+      "text": "the usual place",
+      "reveals": "'늘 가던 곳'이 어딘지는 같이 지낸 친구만 알아요."
+     },
+     {
+      "id": "c",
+      "text": "after school",
+      "reveals": "누구나 이해할 수 있는 일반적인 표현이에요."
+     },
+     {
+      "id": "d",
+      "text": "the stuff",
+      "reveals": "무엇을 가져와야 하는지 설명이 없어요."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "b와 d는 이전에 이야기한 적이 있어야 아는 말이라 Emma는 어디서 만나는지, 무엇을 가져오는지 몰라요. 'BTW'는 몰라도 뜻을 이해하는 데 큰 문제가 없어서 둘 다 인정해요(a를 포함해도 인정).",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "b",
+       "d"
+      ],
+      "reason": "BTW(by the way)도 처음 보는 사람에게는 낯선 줄임말이라 고칠 수 있어요."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Emma도 이해할 수 있게 메시지를 영어 두세 문장으로 다시 쓰세요. 어디서, 무엇을 가져와야 하는지 구체적으로 넣으세요.",
+    "placeholder": "예: Hi Emma! After school, ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "'the usual place', 'the stuff', 'BTW'를 그대로 두지 않았다",
+      "mode": "none",
+      "patterns": [
+       "\\bthe usual place\\b",
+       "\\bthe stuff\\b",
+       "\\bbtw\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "만날 장소를 구체적으로 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\bbench\\b",
+       "\\btree\\b",
+       "\\bplayground\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "가져올 것을 구체적으로 썼다",
+      "mode": "any",
+      "patterns": [
+       "\\bball\\b",
+       "\\bwater\\b",
+       "\\bbottle\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Emma가 학교를 몰라도 장소를 찾을 수 있나요?",
+     "무엇을 가져와야 하는지 알 수 있나요?",
+     "Emma가 환영받는 느낌의 말투인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Hi Emma! After school, let's meet at the bench under the big tree near the playground. Please bring a ball and a water bottle."
+     },
+     {
+      "text": "Hello everyone, including Emma. We will meet near the playground, at the bench under the big tree, after school. Please bring a ball and your water bottle.",
+      "note": "모두에게 보내는 안내 형식의 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "BTW, we're gonna meet at the usual place after school. Bring the stuff!",
+      "why": "원문 그대로다."
+     },
+     {
+      "text": "Hi Emma! We meet after school at the playground.",
+      "why": "가져올 것이 없다."
+     }
+    ],
+    "humanReview": "장소 설명이 길을 찾기에 충분한지, 말투와 영어 자연스러움은 사람이 본다. 자동 점검은 모호한 표현이 남았는지와 장소·준비물 낱말의 유무만 본다.",
+    "hints": [
+     "'the usual place'와 'the stuff'를 알려 준 설명으로 바꿔 쓰세요.",
+     "Emma에게 인사하는 말을 넣으면 더 따뜻해요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "읽는 사람 고려",
+    "full": "모르는 표현을 모두 풀어 줌",
+    "partial": "일부만 풀어 줌",
+    "none": "원문 그대로"
+   },
+   {
+    "criterion": "정보 채우기",
+    "full": "장소와 준비물을 구체적으로 영어로 씀",
+    "partial": "한 가지만 씀",
+    "none": "둘 다 없음"
+   }
+  ],
+  "alternatives": [
+   "'near the big tree in the playground'처럼 장소를 다르게 설명해도 된다.",
+   "시간(After school at 3:30)을 덧붙이면 더 좋다."
+  ],
+  "hardCases": [
+   "'the playground'만 쓰고 벤치/나무는 안 쓴 답은 장소가 넓어 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "gonna, BTW 같은 구어체는 기억해 두되 따라 쓰지 않아도 된다. BTW는 'by the way'의 줄임말이다.",
+   "culture": "전학생에게 학교 장소를 알려 주는 상황은 한국 학교에서도 흔하다. 전학생 이름만 쓰고 출신은 쓰지 않았다.",
+   "accessibility": "그림 없이 글로만 장소를 설명했다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "복수 선택 정답",
+    "모호 표현이 남았는지, 장소·준비물 낱말"
+   ],
+   "human": [
+    "안내가 길을 찾기에 충분한지",
+    "영어 자연스러움"
+   ]
+  }
+ },
+ {
+  "id": "x-e-e6-10",
+  "subject": "english",
+  "grade": "E6",
+  "topic": "읽는 사람에 맞게 고쳐 쓰기",
+  "level": 1,
+  "levelLabel": "초등",
+  "title": "같은 늦는다는 문자, 읽는 사람이 바뀌면 어떻게 고칠까?",
+  "uiLang": "ko",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "읽는 사람에 대한 정보가 하나씩 더해질 때 문자 메시지를 어떻게 고쳐야 하는지 판단하고 새 독자에게 맞게 영어로 다시 쓴다.",
+  "thinking": [
+   "독자에 대한 정보가 바뀌면 필요한 내용이 바뀐다는 것 알기",
+   "처음 판단 고치기",
+   "혼자서도 이해되는 메시지 쓰기"
+  ],
+  "differsFromPlain": "단순 연습은 메시지를 격식체로 바꾼다. 여기서는 독자 정보가 늘 때마다 같은 메시지가 충분한지 다시 판단하고, 새 독자에게 필요한 정보를 직접 넣어 쓴다.",
+  "prerequisites": [
+   "late, meeting, arrive 같은 쉬운 낱말",
+   "this is ~ 로 자기를 소개하는 말"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Jisu는 문자를 쓰려고 해요: \"Hi! I'll be late. The meeting went long.\" 이 문자를 읽을 사람이 바뀔 때마다 적절한지 판단해 보세요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "독자에 대한 정보를 하나씩 보며, 그때마다 이 문자를 어떻게 하면 좋을지 고르세요.",
+    "hints": [
+     "독자가 이미 아는 것(나, 모임, 일정)을 먼저 적어 보세요.",
+     "그 사람이 모르는 것을 문자에서 찾으세요."
+    ],
+    "stages": [
+     {
+      "info": "받는 사람은 Jisu의 엄마예요. 엄마는 Jisu가 오늘 학교 독서 모임이 있다는 것을 알고 있어요.",
+      "ask": "문자는 어떻게 하면 좋을까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "이름을 자세히 쓰고 100단어로 늘린다.",
+        "reveals": "엄마가 이미 아는 것을 다시 쓰고 있어요."
+       },
+       {
+        "id": "b",
+        "text": "정식 편지 형식으로 고친다.",
+        "reveals": "독자가 가까운 사람인지 생각해 보세요."
+       },
+       {
+        "id": "c",
+        "text": "그대로 보내도 충분하다.",
+        "reveals": "독자가 이미 아는 것을 고려했어요."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "엄마는 모임도, 누구인지도 알아서 이 짧은 문자로 충분해요."
+     },
+     {
+      "info": "이제 받는 사람이 Jisu가 처음 만나는 이웃집 Mr. Brown으로 바뀌었어요. Mr. Brown은 Jisu를 모르고, 오늘 만나기로 했어요.",
+      "ask": "무엇이 바뀌어야 할까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "아무것도 바꾸지 않는다.",
+        "reveals": "독자가 바뀐 것을 반영하지 않았어요."
+       },
+       {
+        "id": "b",
+        "text": "나는 누구인지, 어느 모임인지, 언제 도착하는지를 넣는다.",
+        "reveals": "독자가 모르는 것을 채우려 했어요."
+       },
+       {
+        "id": "c",
+        "text": "친근해 보이도록 줄임말을 더 많이 쓴다.",
+        "reveals": "독자가 모르는 말이 늘어날 수 있어요."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Mr. Brown은 Jisu가 누구인지, 어떤 모임인지, 언제 오는지 몰라요. 이 세 가지가 문자에 있어야 해요."
+     },
+     {
+      "info": "Mr. Brown은 어른이고, 한국에 온 지 얼마 안 되었어요.",
+      "ask": "시작 인사로 가장 알맞은 것은 무엇일까요?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Hello, Mr. Brown. This is Jisu from apartment 302.",
+        "reveals": "독자가 어른이고 처음 보는 사람임을 반영했어요."
+       },
+       {
+        "id": "b",
+        "text": "Yo! This is Jisu.",
+        "reveals": "독자와 거리가 가까운 사이에 쓰는 말이에요."
+       },
+       {
+        "id": "c",
+        "text": "Dear Sir or Madam,",
+        "reveals": "독자 이름을 아는데도 이름을 쓰지 않았어요."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "처음 보는 어른께는 이름과 인사, 내가 누구인지를 알리는 말을 쓰는 것이 좋아요."
+     }
+    ],
+    "reflect": "같은 소식도 독자가 바뀌면 필요한 정보와 말투가 달라졌어요. 독자가 모르는 것이 무엇인지 매번 다시 물어야 해요."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Mr. Brown에게 보낼 문자로 영어 두세 문장을 쓰세요. 인사, 나는 누구인지, 어느 모임인지, 얼마나 늦는지가 들어가게 하세요.",
+    "placeholder": "예: Hello, Mr. Brown. This is ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "인사를 했다",
+      "mode": "any",
+      "patterns": [
+       "\\bhello\\b",
+       "\\bhi\\b",
+       "\\bdear\\b",
+       "\\bgood (?:morning|afternoon|evening)\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "자기를 소개했다",
+      "mode": "any",
+      "patterns": [
+       "\\bthis is\\b",
+       "\\bI am\\b",
+       "\\bI[’']m\\b",
+       "\\bmy name\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "늦는다고 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\blate\\b",
+       "\\bdelay(?:ed)?\\b",
+       "\\blater\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "도착 시각이나 늦는 시간이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\b\\d{1,2}(?::\\d\\d)?\\s*(?:a\\.?m\\.?|p\\.?m\\.?|o[’']clock)",
+       "\\b\\d+\\s*minutes?\\b",
+       "\\b(?:ten|fifteen|twenty|thirty)\\s+minutes?\\b",
+       "\\bat\\s+\\d"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "친구용 줄임말을 쓰지 않았다",
+      "mode": "none",
+      "patterns": [
+       "\\byo\\b",
+       "\\bbtw\\b",
+       "\\bgonna\\b",
+       "\\bwanna\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Mr. Brown이 Jisu가 누구인지 알 수 있나요?",
+     "어느 모임인지, 언제 도착하는지가 보이나요?",
+     "어른에게 쓰는 말투인가요?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Hello, Mr. Brown. This is Jisu from apartment 302. My book club meeting is longer than planned, so I will be late. I will arrive at 5:30 p.m."
+     },
+     {
+      "text": "Hi Mr. Brown, I'm Jisu. Sorry, my club meeting went long and I will be about 20 minutes late.",
+      "note": "사과와 늦는 시간을 분명히 쓴 답."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Hi! I'll be late. The meeting went long.",
+      "why": "새 독자를 고려하지 않은 원문이다."
+     },
+     {
+      "text": "Yo, Mr. Brown, this is Jisu. I'll be late at 5 p.m.",
+      "why": "친구용 말투 'Yo'를 썼고 어떤 모임인지 없다."
+     }
+    ],
+    "humanReview": "독자에게 알맞은 정보와 말투인지, 영어 자연스러움은 사람이 본다. 자동 점검은 인사·소개·늦음·시각 낱말과 줄임말의 유무만 본다.",
+    "hints": [
+     "Hello, Mr. Brown. This is ... 로 시작해 보세요.",
+     "모임 이름(book club 등)과 늦는 시간을 숫자나 시각으로 넣어 보세요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "독자 고려",
+    "full": "독자가 모르는 것(누구, 어느 모임, 언제)을 모두 채움",
+    "partial": "일부만 채움",
+    "none": "독자 정보를 반영하지 않음"
+   },
+   {
+    "criterion": "판단 고치기",
+    "full": "새 정보마다 이전 판단을 고침",
+    "partial": "마지막에만 고침",
+    "none": "끝까지 고치지 않음"
+   }
+  ],
+  "alternatives": [
+   "'Sorry I'm late'처럼 사과를 덧붙이는 것도 좋다.",
+   "도착 시각 대신 'about 20 minutes'처럼 늦는 시간으로 써도 된다."
+  ],
+  "hardCases": [
+   "'I will be there soon.'처럼 시간이 모호한 문장은 사람이 판단한다."
+  ],
+  "cautions": {
+   "language": "이름·시각이 있는 짧은 문자 영어다. 'This is ~'는 전화나 문자에서 '저는 ~입니다'로 쓰는 표현임을 알려 준다.",
+   "culture": "처음 보는 어른에게 문자로 인사하는 문화는 한국과 영어권 모두 정중한 인사가 기본이다. 가상의 인물이다.",
+   "accessibility": "그림 없이 글로만 썼다. 5:30 p.m.은 '파이브 서티 피엠'으로 읽을 수 있다."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "각 단계의 합리적 선택",
+    "인사·소개·시각 낱말과 줄임말의 유무"
+   ],
+   "human": [
+    "독자에 맞는 정보와 말투",
+    "영어 자연스러움"
+   ]
+  }
+ }
+]

@@ -1,0 +1,1910 @@
+[
+ {
+  "id": "x-k-k7-01",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Who said what",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "Who really bought the cake?",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Weigh several relayed statements, work out who each report points to, and decide which claim the evidence supports best.",
+  "thinking": [
+   "Inferring the original words from a report",
+   "Comparing evidence from several sources",
+   "Explaining how sure you are and why"
+  ],
+  "differsFromPlain": "Plain practice turns one direct sentence into a report. Here three reports disagree and you decide which one to trust, using who is speaking about whom.",
+  "prerequisites": [
+   "Can read short Korean sentences with polite endings",
+   "Has seen sentences of the type 'someone said that ...' in class"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Your class bought a birthday cake for the teacher, and 은서 asked three classmates who paid. These are 은서's notes, in her own words:\n\n1) 민호는 자기가 케이크를 샀대요.\n2) 수빈이는 민호가 케이크를 샀다고 했어요.\n3) 지후는 수빈이가 케이크를 샀대요.\n\nNote: 자기 here points back to the person who is the subject of the sentence.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "In note 1, what did 민호 most likely say to 은서 himself?",
+    "options": [
+     {
+      "id": "a",
+      "text": "'민호가 케이크를 샀어요.'",
+      "reveals": "A speaker rarely names himself in the third person; 자기 in the note points back to the speaker."
+     },
+     {
+      "id": "b",
+      "text": "'제가 케이크를 샀어요.'",
+      "reveals": "You read 자기 as a pointer back to the speaker, so he spoke about himself."
+     },
+     {
+      "id": "c",
+      "text": "'수빈이가 케이크를 샀어요.'",
+      "reveals": "That names a different person; check who 자기 points to in the note."
+     },
+     {
+      "id": "d",
+      "text": "'저는 케이크를 안 샀어요.'",
+      "reveals": "A negative sentence would be reported with 안 샀대요; the note has no negation."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "자기 refers back to 민호, the subject. When he talks about himself he would say 제가/내가 (I), and the report changes it to 자기.",
+    "hints": [
+     "Ask yourself who the subject of note 1 is, and whom 자기 points to.",
+     "Imagine you are 민호 speaking directly: which word would you use for yourself?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Using all three notes, who most likely bought the cake?",
+    "options": [
+     {
+      "id": "a",
+      "text": "수빈",
+      "reveals": "This rests on one report (note 3) that the other two notes do not support."
+     },
+     {
+      "id": "b",
+      "text": "지후",
+      "reveals": "지후 appears only as a reporter; no note says he bought it."
+     },
+     {
+      "id": "c",
+      "text": "민호",
+      "reveals": "You looked for the answer that the most notes, including the person's own statement, support."
+     },
+     {
+      "id": "d",
+      "text": "No one can say anything",
+      "reveals": "Some answers are better supported than others even when you are not 100% sure."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Note 1 is 민호's own claim and note 2 repeats it. Only note 3 names 수빈. The best-supported answer is 민호, although more information could still change it.",
+    "hints": [
+     "Count how many notes point to each person.",
+     "Does any note come straight from the person it names?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In English or Korean, explain your choice in 2-3 sentences. What evidence did you use, and what would make you less sure?",
+    "placeholder": "Because ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says that two reports agree",
+      "mode": "any",
+      "patterns": [
+       "\\b(two|both|agree[sd]?|match(es)?|consistent|same)\\b",
+       "두\\s*(명|사람|보고)",
+       "일치",
+       "같은"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the report that disagrees",
+      "mode": "any",
+      "patterns": [
+       "지후",
+       "ji-?h[uo]+",
+       "conflict",
+       "contradict",
+       "disagree",
+       "differ",
+       "only one",
+       "alone"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "mentions the buyer's own statement",
+      "mode": "any",
+      "patterns": [
+       "himself",
+       "first-?hand",
+       "own (words|report|claim|statement)",
+       "직접",
+       "자기",
+       "admit"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use the person's own statement as evidence?",
+     "Did I say how many notes support my answer?",
+     "Did I name something that would change my mind?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Probably 민호. He says he did it himself (자기), and 수빈 says the same thing, so two reports agree. Only 지후 names 수빈, so that one conflicts. I would be less sure if 수빈 only heard it from 민호, because then it is not a separate source."
+     },
+     {
+      "text": "민호예요. 민호 자기가 샀다고 했고 수빈이도 같은 말을 했어요. 지후만 달라요. I would ask 지후 how he knows."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "I think 민호 because he is nice.",
+      "why": "No evidence from the notes."
+     },
+     {
+      "text": "It could be 수빈.",
+      "why": "No reasoning and does not use the notes."
+     }
+    ],
+    "humanReview": "Whether the student separates first-hand from second-hand evidence and states what could change the answer.",
+    "hints": [
+     "Mention which notes agree and which one does not.",
+     "Say whose own words (first-hand) you have and whose you only have second-hand."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Using the evidence",
+    "full": "Uses at least two notes, separates 민호's own words from reports about him",
+    "partial": "Names the answer but uses only one note",
+    "none": "No evidence from the notes"
+   },
+   {
+    "criterion": "Calibrated confidence",
+    "full": "Says what could change the answer (e.g. 수빈 only heard it from 민호)",
+    "partial": "Says 'maybe' without a reason",
+    "none": "Claims certainty or says nothing can be known"
+   }
+  ],
+  "alternatives": [
+   "Answering '민호' with the reasoning that the person himself and a second person agree is the expected line.",
+   "A student who says 'ask 수빈 and 지후 how they know' before deciding is also reasoning well."
+  ],
+  "hardCases": [
+   "If 수빈 only heard it from 민호, notes 1 and 2 are not independent; some students notice this."
+  ],
+  "cautions": {
+   "language": "-대요 and -다고 했어요 are two forms of the same kind of report. 자기 refers back to the sentence subject; it is not the same as 'friend'.",
+   "culture": "Birthday gifts for teachers vary; the setting is only a neutral class scene and none of the names are real people.",
+   "accessibility": "No images. The notes are plain text, numbered 1 to 3."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice items (key: step 1 b, step 2 c) and the surface checks of the explanation"
+   ],
+   "human": [
+    "Quality of the explanation and whether the confidence is justified"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-02",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Fixing reporting errors",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "Whose 'me' is it?",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the report that points to the wrong person, repair it, and state the general idea behind the repair.",
+  "thinking": [
+   "Checking each reported line against the original",
+   "Re-pointing words such as 나 to the new speaker's situation",
+   "Repairing and generalising"
+  ],
+  "differsFromPlain": "Plain practice changes endings (-해요 to -한대요). Here every ending is right and the error hides in who a word points to.",
+  "prerequisites": [
+   "Can read short Korean messages with polite endings",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "오빠 left a voice message for his younger sister 지아:\n\n'지아야, 엄마한테 전해 줘. 오늘 나 늦게 가. 저녁은 먼저 드시라고 해. 그리고 나한테는 전화하지 말라고 해. 내일은 일찍 나가.'\n\n지아 now tells 엄마 (polite style):",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One of 지아's sentences points to the wrong person. Which line?",
+    "lines": [
+     "오빠가 오늘 늦게 간대요.",
+     "저녁은 먼저 드시래요.",
+     "그리고 저한테는 전화하지 말래요.",
+     "내일은 일찍 나간대요."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is wrong. In 오빠's message 나한테는 means 오빠, but 지아 is the one speaking now, so 저한테는 would mean 지아. Lines 1, 2 and 4 keep the meaning and use fitting endings.",
+    "hints": [
+     "Take one line at a time and put it back into 오빠's words.",
+     "Look for words that mean 'me' or 'you' and ask who the speaker is each time."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write line 3 again so that it is correct. Keep the polite style.",
+    "placeholder": "그리고 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "points to 오빠 (not 지아)",
+      "mode": "any",
+      "patterns": [
+       "오빠",
+       "자기"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not use 저/나 for the wrong person",
+      "mode": "none",
+      "patterns": [
+       "저한테",
+       "저에게",
+       "제게",
+       "나한테",
+       "나에게",
+       "내게"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports a request not to call",
+      "mode": "any",
+      "patterns": [
+       "말(래|랬|라고)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say who should not be called?",
+     "Would 엄마 understand it as a message from 오빠?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "그리고 오빠한테는 전화하지 말래요."
+     },
+     {
+      "text": "그리고 자기한테는 전화하지 말라고 했어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "그리고 저한테는 전화하지 말래요.",
+      "why": "Still points to 지아."
+     },
+     {
+      "text": "그리고 오빠한테 전화하지 마세요.",
+      "why": "Not a report; sounds like an order from 지아 to 엄마."
+     }
+    ],
+    "humanReview": "Natural wording and whether 자기 is used correctly; a plain 오빠 is the safest.",
+    "hints": [
+     "Ask who 오빠 means by 나한테는, and who 지아 should name instead.",
+     "Keep the ending that reports a request not to do something."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Which idea explains the repair best?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The ending is the only part that changes when you pass a message on.",
+      "reveals": "Here the endings were right and the meaning still broke."
+     },
+     {
+      "id": "b",
+      "text": "Only formal messages need changes of words.",
+      "reveals": "Even a casual message from a sibling needs the same care."
+     },
+     {
+      "id": "c",
+      "text": "Words such as 나 and 너 must be re-aimed at the people in the new situation.",
+      "reveals": "You noticed that words pointing at people shift with the speaker."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Words that point at the speaker or listener (나, 너, 우리) change when the speaker changes. Endings alone are not enough.",
+    "hints": [
+     "Compare the original word with the repaired word: what stayed the same, what changed?",
+     "Think of what would happen if 엄마 passed it on again."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the error",
+    "full": "Picks line 3 and can say which word is wrong and why",
+    "partial": "Picks a line with a reason that is only about endings",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Names 오빠 or 자기 and keeps a reported ending",
+    "partial": "Changes the word but loses the reported ending",
+    "none": "Repeats the error"
+   }
+  ],
+  "alternatives": [
+   "자기한테는 is also a good repair if the student knows how 자기 points back.",
+   "오빠 can be replaced by the child's own name for the brother in other families (형 for a male speaker)."
+  ],
+  "hardCases": [
+   "A student who writes 오빠한테는 전화하지 말라고 하셨어요 uses honorific 하셨 for a sibling; polite but not needed."
+  ],
+  "cautions": {
+   "language": "Reported speech: 나 (I) becomes the person's name, 자기 or 오빠. The endings -래요/-대요 are written as one word, no space.",
+   "culture": "오빠 is what a younger sister calls her older brother; younger brothers say 형. Family terms depend on who speaks.",
+   "accessibility": "No images. Lines are numbered by the page from 1. Read 'the ending -래요' aloud as 'rae-yo'."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The line chosen in step 1, the surface checks of the repair, step 3"
+   ],
+   "human": [
+    "Natural wording of the repaired sentence"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-03",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Message chains",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "A family dinner built from four messages",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read messages that were passed on from person to person, turn them into exact limits, and find several plans that keep all of them.",
+  "thinking": [
+   "Turning reported wording into limits (before, until, at most)",
+   "Satisfying several limits at once",
+   "Finding more than one solution"
+  ],
+  "differsFromPlain": "Plain practice asks for one time in one sentence. Here four relayed messages give limits that must all hold together.",
+  "prerequisites": [
+   "Can read times such as 7시 and 9시",
+   "Has seen 'someone told me ...' sentences in class; 전에, 까지 and 넘게 are explained in the hints"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Your family plans dinner for 할머니's birthday. All times are in the evening (오후). Four people passed on messages:\n\n엄마: '아빠가 7시 전에는 못 온대. 아빠가 와야 먹을 수 있어.'\n이모: '동생이 9시 전에는 먹기 시작해야 한대. 9시부터 학원에 가거든.'\n삼촌: '할머니께서 10시에는 주무신대. 그때까지 식사가 끝나야 해.'\n고모: '의사 선생님이 할머니는 천천히 한 시간 이상 드시래. 그렇지만 두 시간 넘게는 앉아 계시지 말래.'",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "What does 고모 pass on with '두 시간 넘게는 앉아 계시지 말래'?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The meal must last longer than 2 hours.",
+      "reveals": "넘게 means 'beyond'; 말래 reports 'do not'."
+     },
+     {
+      "id": "b",
+      "text": "The meal must last exactly 2 hours.",
+      "reveals": "The sentence sets a limit, it does not ask for one exact length."
+     },
+     {
+      "id": "c",
+      "text": "The meal may last 2 hours at most.",
+      "reveals": "You combined 넘게 (beyond) with 말래 (do not) correctly."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "넘게 means more than; 하지 말래 reports 'do not'. So the meal may not go beyond 2 hours, and exactly 2 hours is still fine.",
+    "hints": [
+     "Translate 두 시간 넘게 first, then the ending 말래.",
+     "Test: would 2 hours exactly break the rule?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different dinner plans that obey all four messages. s = hour when dinner starts, e = hour when dinner ends (whole hours, evening).",
+    "vars": [
+     {
+      "name": "s",
+      "label": "start hour (s)"
+     },
+     {
+      "name": "e",
+      "label": "end hour (e)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "s==floor(s) && e==floor(e)",
+      "ok": "Whole hours.",
+      "fail": "Use whole hours."
+     },
+     {
+      "id": "c1",
+      "expr": "s>=7",
+      "ok": "Dad can be there.",
+      "fail": "아빠 cannot come before 7 (엄마's message)."
+     },
+     {
+      "id": "c2",
+      "expr": "s<9",
+      "ok": "Starts before 9.",
+      "fail": "Dinner must start before 9 (이모's message)."
+     },
+     {
+      "id": "c3",
+      "expr": "e<=10",
+      "ok": "Ends by 10.",
+      "fail": "Dinner must end by 10 (삼촌's message)."
+     },
+     {
+      "id": "c4",
+      "expr": "e-s>=1",
+      "ok": "At least one hour.",
+      "fail": "The meal must be at least one hour (고모's message)."
+     },
+     {
+      "id": "c5",
+      "expr": "e-s<=2",
+      "ok": "At most two hours.",
+      "fail": "The meal may not be longer than two hours (고모's message)."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "s": 7,
+      "e": 8
+     },
+     {
+      "s": 7,
+      "e": 9
+     },
+     {
+      "s": 8,
+      "e": 10
+     }
+    ],
+    "badRows": [
+     {
+      "s": 6,
+      "e": 7
+     },
+     {
+      "s": 7,
+      "e": 10
+     },
+     {
+      "s": 9,
+      "e": 10
+     },
+     {
+      "s": 8,
+      "e": 11
+     }
+    ],
+    "explain": "The possible plans are 7-8, 7-9, 8-9 and 8-10. For example 7 to 9 starts after 아빠 arrives, starts before 9, ends before 10 and lasts 2 hours.",
+    "hints": [
+     "Write each message as a small rule: 'not before', 'before', 'by', 'at least', 'at most'.",
+     "Pick the start first (which hours are left?), then the end.",
+     "Check the length e minus s last."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Tell 아빠 (polite style) your plan: when dinner starts and ends, and one reason from a message you pass on.",
+     "placeholder": "저녁은 ...",
+     "minChars": 12,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "gives a time",
+       "mode": "any",
+       "patterns": [
+        "([0-9]+|한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\\s*시"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "passes on a reason with a reported form",
+       "mode": "any",
+       "patterns": [
+        "(대|래|재)(요|\\.|!|\\?|\\s|$)|[다라자]고\\s*(했|해|하)"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the times in my text match one of my plans?",
+      "Is the reason really in one of the four messages?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "저녁은 8시에 시작해서 10시에 끝낼 거예요. 할머니께서 10시에는 주무신대요."
+      },
+      {
+       "text": "7시에 시작해서 8시에 끝내요. 동생이 9시 전에 먹기 시작해야 한대요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "저녁을 먹어요.",
+       "why": "No times and no reason."
+      },
+      {
+       "text": "7시에 시작해요.",
+       "why": "No reason passed on."
+      }
+     ],
+     "humanReview": "Whether the times form a valid plan and the reason matches a real message.",
+     "hints": [
+      "Choose one of your plans, then one of the four messages that limits it.",
+      "Use a reporting ending (-대요, -래요, -다고 했어요) for the reason."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the limits",
+    "full": "Every plan obeys all four messages",
+    "partial": "Plans break one limit",
+    "none": "Plans ignore the messages"
+   },
+   {
+    "criterion": "Passing on",
+    "full": "Report names the plan and a real reason with a reported form",
+    "partial": "Plan or reason missing",
+    "none": "Neither given"
+   }
+  ],
+  "alternatives": [
+   "Other lengths (1 or 2 hours) are fine as long as all limits hold.",
+   "A student who treats '9시 전에는' as 'up to and including 9' will accept start 9; the explanation shows why not."
+  ],
+  "hardCases": [
+   "Is exactly 7시 allowed for 아빠? Yes: '7시 전에는 못 온대' only rules out earlier times."
+  ],
+  "cautions": {
+   "language": "전에 = before, -까지 = until, 넘게 = beyond. Times are written with 시. Hours are evening hours, so no 오후 is needed in the build.",
+   "culture": "Family birthday dinners at home or a restaurant are widespread; 할머니's birthday dinner is a neutral scene.",
+   "accessibility": "No images. Messages are plain lines starting with the sender's name."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Whether each plan satisfies all limits, times and reported ending in the text"
+   ],
+   "human": [
+    "Whether the reason matches the plan"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-04",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Writing a relayed message",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "What must I ask before I pass it on?",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which missing details a message needs before it can be relayed, then write the finished relay.",
+  "thinking": [
+   "Judging whether information is sufficient",
+   "Choosing useful questions",
+   "Rebuilding a complete message"
+  ],
+  "differsFromPlain": "Plain practice gives you a full message to report. Here the message is incomplete and you decide what to ask first.",
+  "prerequisites": [
+   "Can read short Korean messages with polite endings",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "In the hallway 하나 says quickly to 지우: '선생님이 내일 준비물 가져오래.' 지우 wants to tell 엄마 tonight so she can prepare it, but 지우 does not know what to bring.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which questions must 지우 ask 하나 so that 엄마 can prepare the right thing? Choose all that are needed.",
+    "options": [
+     {
+      "id": "a",
+      "text": "하나는 어디에서 들었어요? (Where did you hear it?)",
+      "reveals": "Where 하나 heard it does not change what 엄마 must do."
+     },
+     {
+      "id": "b",
+      "text": "뭘 가져와요? (What do I bring?)",
+      "reveals": "You saw that '준비물' alone does not say which item."
+     },
+     {
+      "id": "c",
+      "text": "선생님이 웃으면서 말했어요? (Did the teacher smile?)",
+      "reveals": "The teacher's mood does not change what must be prepared."
+     },
+     {
+      "id": "d",
+      "text": "언제까지 가져와요? (By when?)",
+      "reveals": "You noticed that a deadline is part of the task."
+     },
+     {
+      "id": "e",
+      "text": "몇 개 가져와요? (How many?)",
+      "reveals": "You saw that the amount also decides what 엄마 buys."
+     }
+    ],
+    "correct": [
+     "b",
+     "d",
+     "e"
+    ],
+    "explain": "엄마 needs to know what, by when and how many. Where 하나 heard it or whether the teacher smiled does not change what to prepare.",
+    "hints": [
+     "Imagine 엄마 goes shopping tonight: what would she not know yet?",
+     "Cross out questions whose answer would not change what 엄마 does."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "하나 answers: '색연필이야. 금요일까지. 12색으로 한 통.' Now tell 엄마 in Korean what 선생님 said (polite style).",
+    "placeholder": "선생님이 ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the item",
+      "mode": "any",
+      "patterns": [
+       "색연필"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the deadline",
+      "mode": "any",
+      "patterns": [
+       "금요일"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the amount",
+      "mode": "any",
+      "patterns": [
+       "한\\s*통",
+       "12\\s*색",
+       "열두\\s*색",
+       "십이\\s*색",
+       "1\\s*통"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "reports an instruction",
+      "mode": "any",
+      "patterns": [
+       "(가져|챙겨|들고|사|준비하)\\s*오?(래|랬|라고)",
+       "오(래|랬|라)",
+       "챙기(래|랬|라고)",
+       "준비하(래|랬|라고)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my message let 엄마 prepare without asking more?",
+     "Do I report an instruction (bring it), not a fact?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님이 금요일까지 12색 색연필 한 통을 가져오래요."
+     },
+     {
+      "text": "선생님이 금요일까지 색연필 한 통을 가져오라고 하셨어요. 12색이래요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "선생님이 색연필을 가져오래요.",
+      "why": "Deadline and amount are missing."
+     },
+     {
+      "text": "선생님이 금요일까지 색연필 한 통을 가져온대요.",
+      "why": "Reports a statement, not an instruction."
+     }
+    ],
+    "humanReview": "Natural wording of the relay and whether it is complete.",
+    "hints": [
+     "Use 선생님이 ... and a reporting ending for an instruction.",
+     "Put the item, the deadline and the amount into one or two sentences."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging what is missing",
+    "full": "Chooses exactly what, by when and how many",
+    "partial": "Chooses two of the three, or adds one irrelevant question",
+    "none": "Chooses irrelevant questions only"
+   },
+   {
+    "criterion": "Complete relay",
+    "full": "Gives item, deadline, amount and a reported instruction",
+    "partial": "Misses one element",
+    "none": "Misses two or more"
+   }
+  ],
+  "alternatives": [
+   "Some students also ask for the colour or brand; that is reasonable but not needed for a relay.",
+   "A student who asks '다른 반도 가져와요?' (does other classes bring it too?) is thinking, but 엄마 does not need it."
+  ],
+  "hardCases": [
+   "Whether to say 선생님이 ... 하셨어요 (honorific) or ... 래요 depends on how formal the family is."
+  ],
+  "cautions": {
+   "language": "가져오래요 comes from 가져오라고 해요 (a reported instruction); 가져온대요 would report a fact, which is a different meaning.",
+   "culture": "Bringing art supplies to class is common in Korea; the example is neutral.",
+   "accessibility": "No images. The questions are given in Korean plus an English gloss in brackets."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The set of needed questions, presence of item/deadline/amount/instruction form"
+   ],
+   "human": [
+    "Quality of the relay"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-05",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Message chains",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "Is 3:00 the deadline or the start?",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Revise a judgement about what a relayed message means as new evidence arrives, and rewrite the message so it keeps the lost detail.",
+  "thinking": [
+   "Predicting from partial information",
+   "Revising when new evidence arrives",
+   "Repairing a message that lost a detail"
+  ],
+  "differsFromPlain": "Plain practice reports one sentence once. Here the same message appears in three forms and you update your reading.",
+  "prerequisites": [
+   "Can read times such as 3시",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "두리 will go to a special class tomorrow. The information reaches 두리 in pieces. Decide at each step what you believe, then read what comes next.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Follow the messages and decide at each step when 두리 should arrive.",
+    "stages": [
+     {
+      "info": "하나 tells 두리 in the hallway: '선생님이 내일 3시까지 오래.'",
+      "ask": "When does 두리 need to be there?",
+      "options": [
+       {
+        "id": "a",
+        "text": "At 3:00 sharp, not earlier.",
+        "reveals": "까지 marks a limit, not an exact time."
+       },
+       {
+        "id": "b",
+        "text": "By 3:00 at the latest.",
+        "reveals": "You read 까지 as 'up to'."
+       },
+       {
+        "id": "c",
+        "text": "Any time after 3:00.",
+        "reveals": "까지 looks backwards from 3:00; after 3:00 would be too late."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "까지 sets a latest time: be there by 3:00."
+     },
+     {
+      "info": "반장 writes to 소희 in the class chat: '수업은 3시에 시작한대.'",
+      "ask": "What do you think now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "The two messages contradict each other, so ignore the first.",
+        "reveals": "The messages do not contradict: arriving by the start time is possible."
+       },
+       {
+        "id": "b",
+        "text": "Class starts at 3:00, so 'by 3:00' might have lost a detail.",
+        "reveals": "You noticed that a short message may not be the whole message."
+       },
+       {
+        "id": "c",
+        "text": "Both are clear: arrive at 3:00 and be done.",
+        "reveals": "Reasonable with this information; check what the teacher actually said."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "Both messages can be true. But 'by 3:00' for a class that starts at 3:00 is odd: why would the teacher say it?"
+     },
+     {
+      "info": "하나 remembers the teacher's exact words: '수업은 3시에 시작하니까 10분 전까지 오세요.'",
+      "ask": "When should 두리 arrive?",
+      "options": [
+       {
+        "id": "a",
+        "text": "By 2:50.",
+        "reveals": "You used the teacher's original words and not the shortened relay."
+       },
+       {
+        "id": "b",
+        "text": "By 3:00.",
+        "reveals": "That was the shortened relay; the original sets an earlier time."
+       },
+       {
+        "id": "c",
+        "text": "At 3:10.",
+        "reveals": "That reads 10분 as a later time; 전 means before."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The relay 3시까지 lost '10분 전'. The original gives a reason (the class starts at 3) and a time (10 minutes before)."
+     }
+    ],
+    "reflect": "Short relays can drop numbers or reasons. When two messages seem to fit, ask whether the first one is the whole story.",
+    "hints": [
+     "At each stage, write your own answer before you read the options.",
+     "If a new message fits the old one, ask whether it adds a detail."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write the correct message for 두리's mother (polite style), including the detail that was lost.",
+    "placeholder": "선생님이 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "includes the 10 minutes",
+      "mode": "any",
+      "patterns": [
+       "10\\s*분",
+       "십\\s*분"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says 'before'",
+      "mode": "any",
+      "patterns": [
+       "전"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports an instruction",
+      "mode": "any",
+      "patterns": [
+       "오(래|랬|라)",
+       "오라고"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would 두리's mother know to arrive earlier than the class start?",
+     "Did I report an instruction and not a fact?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님이 3시 10분 전까지 오래요."
+     },
+     {
+      "text": "선생님이 수업이 3시에 시작하니까 10분 전까지 오라고 하셨어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "선생님이 3시까지 오래요.",
+      "why": "Loses the 10 minutes."
+     },
+     {
+      "text": "선생님이 10분 전에 온대요.",
+      "why": "Reports a fact about 선생님, not an instruction."
+     }
+    ],
+    "humanReview": "Natural wording and whether the reason is kept.",
+    "hints": [
+     "Include both the class start time and the earlier arrival time.",
+     "Use a reporting ending for an instruction."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising a reading",
+    "full": "Changes the reading when the exact words arrive and says why",
+    "partial": "Changes it without a reason",
+    "none": "Keeps the first reading"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Message keeps the 10 minutes before and an instruction form",
+    "partial": "Keeps the time but not the instruction form",
+    "none": "Repeats the shortened message"
+   }
+  ],
+  "alternatives": [
+   "At stage 2 both 'be there by 3:00' and 'the lesson starts at 3:00' fit; both options b and c are reasonable.",
+   "Students who answer 'ask the teacher' show good judgement."
+  ],
+  "hardCases": [
+   "Does 10분 전까지 also allow arriving much earlier? Yes; 까지 sets a latest time."
+  ],
+  "cautions": {
+   "language": "까지 sets a limit; 전 means before. 3시 10분 전 can be read as 2:50. -래요 reports an instruction, -ㄴ대요 a statement.",
+   "culture": "Arriving early to class is a general expectation in many schools; nothing specific to Korea is required.",
+   "accessibility": "No images. Times are given as words and numbers; screen readers read 2:50 differently, so it is written 3시 10분 전 in the Korean."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices at each stage, checks of the repaired message"
+   ],
+   "human": [
+    "The wording and the explanation"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-06",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Writing a relayed message",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "Same message, two listeners",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Pass one voice message on to two different listeners and choose which parts, what level of politeness and which reporting endings fit each listener.",
+  "thinking": [
+   "Deciding what each listener needs",
+   "Matching politeness to the listener",
+   "Keeping the kind of message (request or news)"
+  ],
+  "differsFromPlain": "Plain practice turns one sentence into a report. Here one message goes to two listeners and the form, content and style must differ.",
+  "prerequisites": [
+   "Can read short Korean messages with polite endings",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "민지 receives a voice message from 할머니:\n\n'민지야, 할머니가 내일 병원에 가. 그래서 강아지 밥은 민우가 줘야 해. 그리고 네 아빠한테 저녁에 전화하라고 전해 줘.'\n\n민지 (the older sister) must pass it on to 아빠 (polite style, respectful) and to her younger brother 민우 (casual style).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "write",
+    "prompt": "Tell 아빠, in polite style, the part of the message that 아빠 needs.",
+    "placeholder": "할머니께서 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names 할머니",
+      "mode": "any",
+      "patterns": [
+       "할머니"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says what 아빠 should do",
+      "mode": "all",
+      "patterns": [
+       "저녁",
+       "전화"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports a request",
+      "mode": "any",
+      "patterns": [
+       "(대|래|재)(요|\\.|!|\\?|\\s|$)|[다라자]고\\s*(했|해|하)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite style",
+      "mode": "any",
+      "patterns": [
+       "(요|습니다|니다)(\\s|\\.|!|\\?|$)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence let 아빠 know who asks and what to do?",
+     "Did I use respectful forms for 할머니 or 아빠?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니께서 저녁에 전화하시래요."
+     },
+     {
+      "text": "할머니께서 내일 병원에 가신대요. 저녁에 아빠한테 전화해 달라고 하셨어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "아빠, 저녁에 전화하세요.",
+      "why": "Does not say who asked; not a report."
+     },
+     {
+      "text": "할머니가 내일 병원에 가요.",
+      "why": "Gives different news and not the request."
+     }
+    ],
+    "humanReview": "Respectful forms (-시-, 께서) are optional here but show good control.",
+    "hints": [
+     "Ask what 아빠 needs to do, and what he does not need to know.",
+     "Use 할머니께서 and a reporting ending that passes on a request."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now tell 민우 (casual style, no -요) what he has to do and why.",
+    "placeholder": "할머니가 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the dog",
+      "mode": "any",
+      "patterns": [
+       "강아지"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions why (할머니/병원)",
+      "mode": "any",
+      "patterns": [
+       "할머니",
+       "병원"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports the message",
+      "mode": "any",
+      "patterns": [
+       "(대|래|재)(요|\\.|!|\\?|\\s|$)|[다라자]고\\s*(했|해|하)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "casual style (no polite -요)",
+      "mode": "none",
+      "patterns": [
+       "[가-힣]요(?![가-힣])"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is it clear that 민우 has to feed the dog?",
+     "Did I keep a casual style?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니가 내일 병원에 가신대. 그래서 네가 강아지 밥 주래."
+     },
+     {
+      "text": "할머니 내일 병원 가신대. 강아지 밥은 네가 주라고 하셨어."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니가 병원에 가요. 강아지 밥 줘요.",
+      "why": "Polite style and no reported form."
+     },
+     {
+      "text": "민우는 강아지 밥 줘.",
+      "why": "Does not say who asked; not a report."
+     }
+    ],
+    "humanReview": "Whether the message keeps its kind (request vs news) and fits the listener.",
+    "hints": [
+     "Decide which part of the message is about 민우.",
+     "Casual style means no polite -요 ending."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Right content for each listener",
+    "full": "Each version has the part that listener needs and no confusing extras",
+    "partial": "One version has the wrong part",
+    "none": "Both repeat the whole message"
+   },
+   {
+    "criterion": "Style and form",
+    "full": "Polite for 아빠, casual for 민우, with reported endings",
+    "partial": "Style or reporting ending is wrong in one",
+    "none": "Style and form ignored"
+   }
+  ],
+  "alternatives": [
+   "For 민우, 네가 강아지 밥 주래 and 강아지 밥 주라고 하셨어 are both fine.",
+   "Adding why (병원) is optional but helps 민우."
+  ],
+  "hardCases": [
+   "Whether the honorific -시- on 가신대 is natural in casual speech with a younger sibling: yes, for 할머니."
+  ],
+  "cautions": {
+   "language": "Reported speech changes 줘야 해 into 주래. Casual style has no -요, so -래요 becomes -래.",
+   "culture": "Using respectful forms for grandparents is a core part of Korean family speech; students from other cultures may need this noted.",
+   "accessibility": "No images. The two listeners are named in the instructions."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Checks for names, content, reported form and style in each version"
+   ],
+   "human": [
+    "Naturalness and respectful forms"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-07",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Connecting sentences",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "One relay keeps the reason",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Judge which relay keeps the real relationship between the facts of a note, then pass a contrast on with the right connector.",
+  "thinking": [
+   "Reading how facts relate (reason, contrast, condition)",
+   "Comparing relays for faithfulness",
+   "Choosing a connector that fits"
+  ],
+  "differsFromPlain": "Plain practice fills a blank with -아서 or -지만. Here you test whether a relay keeps the same relationship as the original.",
+  "prerequisites": [
+   "Can read short Korean notes",
+   "Has seen connectors such as -니까, -지만, -(으)면 and -는데 in class"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "The teacher's note:\n\n'내일은 현장학습이에요. 버스가 8시에 떠나요. 늦으면 기다릴 수 없어요. 그러니까 7시 50분까지 오세요.'\n\nFour students each pass on the note to a friend who asks 'Why must I come by 7:50?'",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which relay keeps the relationship between the facts?",
+    "options": [
+     {
+      "id": "a",
+      "text": "내일 현장학습이지만 버스가 8시에 떠나서 7시 50분까지 오래.",
+      "reveals": "지만 joins facts that clash; the note has no clash."
+     },
+     {
+      "id": "b",
+      "text": "내일 현장학습인데 버스가 8시에 떠나니까 7시 50분까지 오래.",
+      "reveals": "You matched 그러니까 to a reason connector and kept the background fact."
+     },
+     {
+      "id": "c",
+      "text": "내일 현장학습인데 버스가 8시에 떠나도 7시 50분까지 오래.",
+      "reveals": "-아도 says 'even if'; the note gives a reason, not a concession."
+     },
+     {
+      "id": "d",
+      "text": "내일 현장학습이고 버스가 8시에 떠나면 7시 50분까지 오래.",
+      "reveals": "-면 comes from 늦으면 in the note but is attached to the wrong fact."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The note says: field trip (background), bus leaves at 8 (reason), so come by 7:50. Option b keeps that reason with -니까. The others change the relation to contrast (a), concession (c) or condition (d).",
+    "hints": [
+     "Find the word that signals the reason in the note.",
+     "For each relay, say in English what relation its connector shows."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now the father says: '비가 와요. 그래도 우리는 캠핑을 가요.' Pass it on in one Korean sentence that keeps the contrast.",
+    "placeholder": "아빠가 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "contrast connector",
+      "mode": "any",
+      "patterns": [
+       "지만",
+       "데도",
+       "와도",
+       "오더라도",
+       "그래도",
+       "그렇지만",
+       "그런데도",
+       "오는데"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the camping",
+      "mode": "any",
+      "patterns": [
+       "캠핑"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports a statement",
+      "mode": "any",
+      "patterns": [
+       "(대|래|재)(요|\\.|!|\\?|\\s|$)|[다라자]고\\s*(했|해|하)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say that camping goes on although it rains?",
+     "Could my connector be read as a cause (because)?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "아빠가 비가 오지만 캠핑을 간대요."
+     },
+     {
+      "text": "비가 와도 캠핑은 간다고 하셨어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "비가 와서 캠핑을 간대요.",
+      "why": "와서 shows a reason, so the meaning flips."
+     },
+     {
+      "text": "아빠가 캠핑을 가요.",
+      "why": "Loses the rain and is not a report."
+     }
+    ],
+    "humanReview": "Whether the connector fits naturally; -는데 can also show contrast.",
+    "hints": [
+     "Decide which connector shows 'although' or 'even if'.",
+     "End with a form for reported statements."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging faithfulness",
+    "full": "Chooses b and can say what relation each connector shows",
+    "partial": "Chooses b without a reason",
+    "none": "Chooses an option that changes the relation"
+   },
+   {
+    "criterion": "Connector in own sentence",
+    "full": "Contrast connector plus a reported statement",
+    "partial": "One of the two",
+    "none": "Neither"
+   }
+  ],
+  "alternatives": [
+   "A student may also accept 비가 오는데 캠핑을 간대요 for contrast; it is natural.",
+   "Both 지만 and -아도 are valid for the contrast."
+  ],
+  "hardCases": [
+   "The note's 늦으면 (condition) is not part of the relay in option b; leaving it out is fine."
+  ],
+  "cautions": {
+   "language": "-니까 (reason), -지만 (contrast), -아도 (even if), -(으)면 (condition) and -는데 (background) are all explained as relationships, not by translation word by word.",
+   "culture": "School field trips are common worldwide; nothing special is assumed.",
+   "accessibility": "No images. Option letters and Korean sentences are plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Key of step 1, checks of the sentence in step 2"
+   ],
+   "human": [
+    "Naturalness of the connector choice"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-08",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Reported speech (-대요, -래요, -재요)",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "Three kinds of message",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Invent a short teacher message made of three different kinds of sentences and pass it on with the matching endings.",
+  "thinking": [
+   "Telling statements, requests and suggestions apart",
+   "Choosing the report ending that keeps the kind",
+   "Making your own example"
+  ],
+  "differsFromPlain": "Plain practice changes ready-made sentences. Here you make the message yourself and test your own report.",
+  "prerequisites": [
+   "Can read short Korean messages with polite endings",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Imagine you are the class representative. The teacher gave the class some news, a request and an invitation to do something together. A friend who was absent asks you what the teacher said.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Which report says that the teacher will also take part?",
+    "options": [
+     {
+      "id": "a",
+      "text": "교실을 청소한대요.",
+      "reveals": "This reports a statement or plan, not an invitation."
+     },
+     {
+      "id": "b",
+      "text": "교실을 청소하재요.",
+      "reveals": "You saw that 재요 passes on 'let's' and includes the teacher."
+     },
+     {
+      "id": "c",
+      "text": "교실을 청소하래요.",
+      "reveals": "This reports an instruction to the class."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "-재요 reports a suggestion 'let's ...' and includes the speaker. -래요 reports an instruction to the listeners, -ㄴ대요 reports a statement.",
+    "hints": [
+     "Think of the original sentences: 청소해요, 청소하세요, 같이 청소해요.",
+     "Which original sentence includes the teacher?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write 3 lines the teacher said (a fact, a request to the class, and a suggestion that includes the teacher), then write what you tell your friend, one reported sentence per line.",
+    "placeholder": "선생님: ...",
+    "minChars": 35,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "reports a statement",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]대요",
+       "다고\\s*(했|해|하셨)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "reports a request",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]래요",
+       "라고\\s*(했|해|하셨)",
+       "랬어요"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports a suggestion",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]재요",
+       "자고\\s*(했|해|하셨)",
+       "쟀어요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do my three original lines have three different kinds?",
+     "Does each reported line keep its kind?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님: 내일 시험이 없어요. 책을 가져오세요. 같이 청소해요.\n전달: 선생님이 내일 시험이 없대요. 책을 가져오래요. 같이 청소하재요."
+     },
+     {
+      "text": "선생님: 오늘 숙제가 많아요. 내일까지 내세요. 우리 같이 도서관에 가요.\n전달: 선생님이 숙제가 많대요. 내일까지 내래요. 같이 도서관에 가재요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "선생님이 시험이 없대요. 책을 가져온대요. 청소한대요.",
+      "why": "Only statement endings; requests and suggestions are lost."
+     },
+     {
+      "text": "선생님이 청소하래요.",
+      "why": "Only one kind."
+     }
+    ],
+    "humanReview": "Whether the three original lines really are different kinds and whether the reports match them.",
+    "hints": [
+     "Pick any topic, but make the three kinds different.",
+     "Use a different ending for each kind when you report."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Own example",
+    "full": "Three clearly different kinds of lines",
+    "partial": "Two kinds or unclear",
+    "none": "One kind"
+   },
+   {
+    "criterion": "Matching report",
+    "full": "Each report keeps the kind of its line",
+    "partial": "One report mismatched",
+    "none": "Most reports mismatched"
+   }
+  ],
+  "alternatives": [
+   "Questions can be added as a fourth line with -냬요; not required here.",
+   "A student may use -다고 했어요 forms instead of -대요."
+  ],
+  "hardCases": [
+   "Statements about a person (선생님이 학생이래요) look like -래요 but come from 이다 and are not a request."
+  ],
+  "cautions": {
+   "language": "-ㄴ/는대요 reports a statement, -(으)래요 an instruction, -자고 해요 (-재요) a suggestion; they are written without a space.",
+   "culture": "Classroom talk about cleaning or homework is typical of Korean schools and is only an example.",
+   "accessibility": "No images. The three forms are listed in the first step."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The three ending patterns in the text"
+   ],
+   "human": [
+    "Whether the teacher lines are really three kinds"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-09",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Writing a relayed message",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "What the cousins need to know",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Read a phone conversation, decide which decisions the cousins need, and write a short message that says who decided what.",
+  "thinking": [
+   "Selecting relevant information",
+   "Telling decisions from suggestions",
+   "Writing a relay for a new audience"
+  ],
+  "differsFromPlain": "Plain practice reports one sentence at a time. Here you compress a longer conversation for a group who were not there.",
+  "prerequisites": [
+   "Can read short Korean dialogues",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "은솔 overhears a phone call between 이모 and her mother:\n\n이모: '언니, 할머니 생신 모임은 이번 토요일에 하자. 장소는 우리 집이 어때?'\n엄마: '좋아. 그런데 아빠가 토요일 2시까지 일해. 저녁에 하면 어때?'\n이모: '그래, 6시에 우리 집에서 보자. 케이크는 언니가 사 와.'\n엄마: '알았어.'\n\nThen 엄마 says to 은솔: '사촌들한테 할머니께 쓸 편지를 한 장씩 써 오라고 전해.' 은솔 will write in the cousins' group chat.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "What do the cousins need in the group chat? Choose all that they need to know or do.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Time: 6시",
+      "reveals": "You picked the decision that tells everyone when to come."
+     },
+     {
+      "id": "b",
+      "text": "아빠 works until 2:00",
+      "reveals": "This was the reason for the time and not a decision the cousins must act on."
+     },
+     {
+      "id": "c",
+      "text": "Place: 이모's house",
+      "reveals": "You picked the decision that tells everyone where to go."
+     },
+     {
+      "id": "d",
+      "text": "엄마 buys the cake",
+      "reveals": "Useful to know, but the cousins do not have to do anything about it."
+     },
+     {
+      "id": "e",
+      "text": "Write a letter each",
+      "reveals": "You picked the task that is for the cousins."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "e"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "d",
+       "e"
+      ],
+      "reason": "The cake is a decision made in the call; adding it is fine as news."
+     }
+    ],
+    "explain": "The cousins need the time, the place and their own task (a letter). The reason for the time (아빠 works until 2:00) is only background; the cake is optional news.",
+    "hints": [
+     "Mark each piece as a decision (agreed), a reason, or a task for the cousins.",
+     "Ask which pieces change what the cousins will do."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write the group-chat message in Korean (casual style is fine). Say who decided the time and place, and what the cousins have to bring.",
+    "placeholder": "엄마랑 이모가 ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says who decided",
+      "mode": "any",
+      "patterns": [
+       "엄마",
+       "이모"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the time",
+      "mode": "any",
+      "patterns": [
+       "6\\s*시",
+       "여섯\\s*시"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the place",
+      "mode": "any",
+      "patterns": [
+       "이모\\s*(집|네|댁)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "mentions the letter",
+      "mode": "any",
+      "patterns": [
+       "편지"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "uses a reported form",
+      "mode": "any",
+      "patterns": [
+       "(대|래|재)(요|\\.|!|\\?|\\s|$)|[다라자]고\\s*(했|해|하)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a cousin know when, where and what to bring?",
+     "Did I say it was 엄마 and 이모 who decided?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "엄마랑 이모가 토요일 6시에 이모네 집에서 보재. 할머니께 쓸 편지도 한 장씩 써 오래."
+     },
+     {
+      "text": "이모 집에서 토요일 저녁 6시에 모인대. 엄마가 편지를 한 장씩 써 오라고 했어."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "토요일에 모여. 편지 써 와.",
+      "why": "No time or place; not a report; no source."
+     },
+     {
+      "text": "엄마가 편지를 써 오래.",
+      "why": "Time and place missing."
+     }
+    ],
+    "humanReview": "Whether the text is short and clear, and whether it separates decided plans from background.",
+    "hints": [
+     "Name who decided (엄마 and 이모) and use a reporting ending.",
+     "Include the time, the place and the letter."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Selecting information",
+    "full": "Chooses time, place and task and leaves out background",
+    "partial": "Includes background or leaves out one decision",
+    "none": "Copies the whole conversation"
+   },
+   {
+    "criterion": "Relayed message",
+    "full": "Gives source, time, place, letter with reported forms",
+    "partial": "Misses one element",
+    "none": "Misses two or more"
+   }
+  ],
+  "alternatives": [
+   "Adding the cake is acceptable.",
+   "Students may mention the day (토요일); it is useful."
+  ],
+  "hardCases": [
+   "Is 'let's meet at 6' (보자) a decision or a suggestion? It was agreed by both, so reporting it as a plan is fine."
+  ],
+  "cautions": {
+   "language": "보자 (let's meet) is reported as 보재; 써 오라고 해 is reported as 써 오래. Group chats often drop the polite -요.",
+   "culture": "Family birthday gatherings with cousins are common; the example is not tied to a religion or region.",
+   "accessibility": "No images. The dialogue is plain text with speaker names."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Step 1 key and the checks for source, time, place, letter, reported form"
+   ],
+   "human": [
+    "Brevity and clarity"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k7-10",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Message chains",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "title": "Where did the telephone game go wrong?",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Follow a message through four people, find the first link where its meaning changes, name the change, and repair it.",
+  "thinking": [
+   "Comparing each link with the original",
+   "Naming what kind of change happened",
+   "Repairing the chain"
+  ],
+  "differsFromPlain": "Plain practice reports one message once. Here the message moves through several people and you find the first link where it changed.",
+  "prerequisites": [
+   "Can read short Korean messages",
+   "Has seen 'someone told me ...' sentences in class"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "선생님 said to the class:\n\n'내일 1교시에 우리 반은 도서관에 가요. 도서관 카드는 꼭 가져오세요.'\n\nThe message was then passed on person to person:",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Which link is the first one where the meaning changes?",
+    "lines": [
+     "반장이 하나에게: 선생님이 내일 1교시에 우리 반이 도서관에 간대. 도서관 카드는 꼭 가져오래.",
+     "하나가 두리에게: 선생님이 내일 1교시에 우리 반이 도서관에 간다고 했어. 도서관 카드는 꼭 가져오라고 했어.",
+     "두리가 우진에게: 선생님이 내일 1교시에 우리 반이 도서관에 간대. 도서관 카드는 꼭 가져온대.",
+     "우진이 소라에게: 선생님이 내일 도서관 카드를 가져온대. 1교시는 도서관에서 한대."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the first change: 가져오세요 (an instruction) became 가져온대 (a statement), so it no longer says that the class must bring the card. Lines 1 and 2 keep it as an instruction. Line 4 repeats and adds more changes.",
+    "hints": [
+     "Compare the card sentence of each line with the teacher's sentence.",
+     "Read only the ending of each card sentence: is it still an instruction?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What exactly changed in the line you chose?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The time moved from tomorrow to today.",
+      "reveals": "The word 내일 is still there in line 3."
+     },
+     {
+      "id": "b",
+      "text": "The place changed from the library to a classroom.",
+      "reveals": "도서관 is in line 3 and unchanged."
+     },
+     {
+      "id": "c",
+      "text": "The speaker changed from 선생님 to 하나.",
+      "reveals": "Line 3 still says 선생님."
+     },
+     {
+      "id": "d",
+      "text": "An instruction became news, so it is unclear who brings the card.",
+      "reveals": "You looked at the ending and saw what type of message it reports."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Everything is the same except the card sentence: 가져오래 reports an instruction, 가져온대 reports a fact (as if someone is bringing a card).",
+    "hints": [
+     "Compare line 3 with line 2 word by word and list the differences.",
+     "Which differences change who must do something?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write line 3 again so it passes on the teacher's message correctly (casual style).",
+    "placeholder": "두리가 우진에게: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "still names 선생님",
+      "mode": "any",
+      "patterns": [
+       "선생님"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "reports the card sentence as an instruction",
+      "mode": "any",
+      "patterns": [
+       "오(래|랬|라)",
+       "오라고"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not report it as a statement",
+      "mode": "none",
+      "patterns": [
+       "가져온(대|다고)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say that the class must bring the card?",
+     "Did I keep the time and place?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님이 내일 1교시에 우리 반이 도서관에 간대. 도서관 카드는 꼭 가져오래."
+     },
+     {
+      "text": "선생님이 내일 1교시에 우리 반이 도서관에 간다고 하셨어. 도서관 카드는 꼭 가져오라고 하셨어."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "선생님이 내일 1교시에 우리 반이 도서관에 간대. 도서관 카드는 꼭 가져온대.",
+      "why": "Still reports a statement."
+     },
+     {
+      "text": "도서관 카드를 가져와.",
+      "why": "Not a report and loses the source."
+     }
+    ],
+    "humanReview": "Whether the rest of the line (time, place) is kept.",
+    "hints": [
+     "Start with the part that is already right.",
+     "Change only the ending that reports the card sentence."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the first change",
+    "full": "Picks line 3 and names the change",
+    "partial": "Picks line 4",
+    "none": "Picks line 1 or 2"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Instruction form, source and time/place kept",
+    "partial": "Instruction form only",
+    "none": "Repeats the error"
+   }
+  ],
+  "alternatives": [
+   "Some students will say line 4 is the worst; step 1 asks for the first change.",
+   "A student who writes 가져오라고 하셨어 uses honorific for 선생님: good."
+  ],
+  "hardCases": [
+   "Line 2 uses 간다고 했어 instead of 간대; both are correct forms and not a change."
+  ],
+  "cautions": {
+   "language": "-래 is the casual short form of -라고 해; the casual forms drop -요. -ㄴ대 and -라고 해 are different report types.",
+   "culture": "Telephone games are common in many countries; no special background needed.",
+   "accessibility": "No images. Lines are numbered 1 to 4 by the page, and each line names the two people involved."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Step 1 line, step 2 key, checks in step 3"
+   ],
+   "human": [
+    "Whether the repaired line keeps time and place"
+   ]
+  }
+ }
+]

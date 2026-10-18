@@ -1,0 +1,1676 @@
+[
+ {
+  "id": "x-k-k1-01",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul in signs",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Which sign leads to the parking lot?",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Read three short road signs, combine the words with the arrow and symbol described, and judge which one really leads a visitor to park; defend the judgement against a friend's half-reading.",
+  "thinking": [
+   "Combining word, symbol and arrow as evidence",
+   "Not stopping at one familiar word (주차장)",
+   "Answering a friend with evidence from the sign"
+  ],
+  "differsFromPlain": "Plain practice asks what 주차장 or 출구 means. Here three signs all contain familiar words, and you must decide which one is meant for a driver who wants to park, using every part of each sign.",
+  "prerequisites": [
+   "Can read Hangul syllables aloud",
+   "Knows that an arrow on a sign shows the way to go"
+  ],
+  "minutes": 6,
+  "curriculum": null,
+  "material": "A visitor drives up to a school and wants to leave the car for one hour. Three signs are in view (no pictures, so they are described in words).\n\nSign A: white letters '주차 금지' on a red board. A red circle with a diagonal line crosses a small drawing of a car. It is fixed to the school fence.\nSign B: blue board, white letters '방문자 주차장' and an arrow pointing to the right. It stands at the side of the road.\nSign C: green board, white letters '주차장 출구' and an arrow pointing back toward the road. It hangs over a narrow lane where cars are driving out.\n\nWords: 주차(장) = parking (lot); 방문자 = visitor; 입구 = entrance; 출구 = exit.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which sign should the visitor follow in order to park?",
+    "hints": [
+     "Read the last word of each sign, not only the first one.",
+     "Ask of each sign: does it send a car in, out, or nowhere?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Sign C (주차장 출구)",
+      "reveals": "주차장 is in this sign, but it is only one word of two. Check what the second word and the arrow say about the direction cars take."
+     },
+     {
+      "id": "b",
+      "text": "Sign A (주차 금지)",
+      "reveals": "This sign has 주차 too. Look at the red circle with the slash: what does that kind of symbol usually tell you?"
+     },
+     {
+      "id": "c",
+      "text": "Sign B (방문자 주차장 →)",
+      "reveals": "You combined the visitor word, the parking word and the arrow. That is how a sign is read as a whole."
+     },
+     {
+      "id": "d",
+      "text": "None of them; no sign speaks about parking",
+      "reveals": "Two signs contain 주차장 or 주차. Read them again before saying that nothing is there."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Sign B is for visitors, names a parking lot and gives a direction. Sign A has the same first word but carries a prohibition symbol. Sign C names a parking lot too, but 출구 means exit, so it marks where cars leave."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "A friend says: 'Sign C has 주차장 in it, so let's drive in through there.' Answer your friend in one or two English sentences, using what the sign actually says.",
+    "placeholder": "Example: ...",
+    "minChars": 15,
+    "hints": [
+     "Which word of Sign C is different from Sign B's?",
+     "Where do cars go on a lane that has an exit sign?"
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions 출구 or exit",
+      "mode": "any",
+      "patterns": [
+       "출구",
+       "\\bexit\\b",
+       "way out"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "connects it to leaving, or to needing the entrance",
+      "mode": "any",
+      "patterns": [
+       "\\bleav\\w*",
+       "\\bentrance\\b",
+       "입구",
+       "\\benter\\w*",
+       "\\bgoing out\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use the word of the sign as evidence, not just my opinion?",
+     "Did I say what the sign is for (leaving) and what we need instead?",
+     "Would my friend know where to look next?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Sign C says 출구, which means exit. Cars drive out there, so we should look for an entrance, like the arrow on Sign B.",
+      "note": "Names the key word and the missing entrance."
+     },
+     {
+      "text": "주차장 is only half of it. The other word, 출구, tells us cars are leaving there, so we would be driving the wrong way.",
+      "note": "Explains the risk with the direction."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Sign A is better because it has a red board.",
+      "why": "Ignores the friend's claim and the words of Sign C."
+     },
+     {
+      "text": "I think it is fine, 주차장 means parking.",
+      "why": "Repeats half of the sign and skips 출구."
+     }
+    ],
+    "humanReview": "Whether the reply gives the right evidence politely and clearly; alternative wordings with the same evidence are fine."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Uses all parts of the sign",
+    "full": "Uses word, symbol and arrow of at least two signs",
+    "partial": "Uses the word of one sign only",
+    "none": "Chooses by colour or guess"
+   },
+   {
+    "criterion": "Answers the friend with evidence",
+    "full": "Names 출구/exit and what it implies",
+    "partial": "Says the friend is wrong without the word",
+    "none": "Agrees or gives no reason"
+   }
+  ],
+  "alternatives": [
+   "A learner may also argue that Sign A is the worst choice, which is true, but the question is which sign to follow.",
+   "Saying that Sign C may be a second lot with its own entrance is a thoughtful extra, not a mistake."
+  ],
+  "hardCases": [
+   "Some real car parks use one sign for both directions; the arrow and 출구/입구 decide, so a learner who has not met 출구 cannot be expected to guess it."
+  ],
+  "cautions": {
+   "language": "출구 and 입구 are glossed in the material because K1 learners may not know them; 금지 is deliberately not glossed and must be inferred from the symbol. The arrow is written as 'arrow pointing to the right' in the description.",
+   "culture": "Korean road and parking signs follow common international symbols (red circle with slash), and visitor lots are common at schools.",
+   "accessibility": "No image is needed: every sign is described in words. A screen reader may read the arrow symbol in Sign B as 'rightwards arrow'; the material also states it in words."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice of sign against the key",
+    "Presence of 출구/exit and leaving/entrance words in the reply"
+   ],
+   "human": [
+    "Quality and politeness of the reply to the friend"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-02",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "What a sign does and does not say",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "If it rains, is the picnic on?",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a note taken in English with the original Korean notice, find the line that says more than the notice, and write the Korean rule yourself.",
+  "thinking": [
+   "Checking a summary line by line against the source",
+   "Noticing a condition ('if') turned into a fact",
+   "Rewriting the condition in Korean"
+  ],
+  "differsFromPlain": "Plain practice asks what 소풍 or 도시락 means. Here the words are easy; the thinking is whether a classmate's note keeps the condition of the original sentence or turns it into something it never said.",
+  "prerequisites": [
+   "Can read Hangul and short polite sentences",
+   "Has met the ending -(으)면 and the idea of 'if' in simple sentences"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A teacher stuck a notice on the classroom door:\n\n내일은 소풍 가요.\n9시까지 학교에 오세요.\n도시락을 가져오세요.\n비가 오면 소풍을 안 가요.\n\nWords: 소풍 = outing/picnic; 도시락 = lunch box; 비 = rain; 오다 = to come (비가 오다 = it rains); 안 = not.\n\nJoon read it and wrote four notes in English (shown below).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One of Joon's notes says more than the notice says. Which line?",
+    "hints": [
+     "Compare each note with the notice, one line at a time.",
+     "Which note states something as certain that the notice only states as a condition?"
+    ],
+    "lines": [
+     "Tomorrow is the picnic day.",
+     "We must be at school by 9.",
+     "We bring a lunch box.",
+     "It will rain tomorrow, so there is no picnic."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 is the problem. The notice says what happens if it rains (비가 오면); it does not say that it will rain. Joon turned a condition into a prediction."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write in Korean (polite -요 speech) one sentence that says the rule correctly: what happens to the picnic if it rains.",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "hints": [
+     "Which two parts must be in the sentence: the condition and what happens?",
+     "Check that your sentence does not say that it WILL rain."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (요 / 니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "condition: 비가 오면",
+      "mode": "any",
+      "patterns": [
+       "비 ?(가|이)? ?오면"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "result: no picnic (안 가요 / 없어요 / 못 ...)",
+      "mode": "any",
+      "patterns": [
+       "(안|못) ?(가|해|합|갑)",
+       "없",
+       "취소",
+       "않"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence contain 'if it rains' and not 'it rains'?",
+     "Does it tell the result for the picnic?",
+     "Is my ending polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "비가 오면 소풍을 안 가요.",
+      "note": "Close to the notice."
+     },
+     {
+      "text": "비 오면 소풍이 없어요.",
+      "note": "Spoken style with the same meaning."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "비가 와요. 소풍 가요.",
+      "why": "States rain as a fact and keeps the picnic."
+     },
+     {
+      "text": "소풍을 안 가요.",
+      "why": "Drops the condition completely."
+     }
+    ],
+    "humanReview": "Whether the sentence is natural; other correct wordings such as 소풍은 취소돼요 should be accepted."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finds the over-reading",
+    "full": "Picks the line and says it turns a condition into a fact",
+    "partial": "Picks the line",
+    "none": "Picks a line that is accurate"
+   },
+   {
+    "criterion": "Writes the condition",
+    "full": "Sentence has 비가 오면 and a result",
+    "partial": "Has only the condition or only the result",
+    "none": "Wrong meaning or no Korean"
+   }
+  ],
+  "alternatives": [
+   "Some learners may also mark line 2 or 3 because they cannot read 9시 or 도시락; the explanation shows these are accurate.",
+   "A sentence such as 비가 오면 우산을 가져오세요 is correct Korean but does not say what happens to the picnic."
+  ],
+  "hardCases": [
+   "Whether 소풍은 못 가요 is as good as 안 가요: it implies cannot rather than will not, so it is accepted but flagged for a human."
+  ],
+  "cautions": {
+   "language": "-(으)면 is the only grammar point and it is a prerequisite, not taught here. The write check accepts 비 오면 (without 가) because many learners drop the particle.",
+   "culture": "소풍 is a common school outing in Korea; a rain rule on the notice is typical.",
+   "accessibility": "No picture is needed. The notice is plain text, one sentence per line, so a screen reader reads it line by line."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which line was chosen",
+    "Surface features of the Korean sentence: polite ending, 비가 오면, result word"
+   ],
+   "human": [
+    "Naturalness and exact meaning of the written sentence"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-03",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading very short messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Meet tomorrow at 3. Where?",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which piece of information a very short message leaves out and write the Korean question that asks for it.",
+  "thinking": [
+   "Listing what the message gives and what it leaves out",
+   "Deciding which missing piece is needed to act",
+   "Asking one precise question"
+  ],
+  "differsFromPlain": "Plain practice asks you to read 만나요 or 3시. Here you read the whole message to find which essential piece is missing and ask only for that.",
+  "prerequisites": [
+   "Can read short Hangul messages and numbers with 시",
+   "Knows 내일 and 만나요 from class"
+  ],
+  "minutes": 6,
+  "curriculum": null,
+  "material": "Your classmate 지우 sends you a text. You use polite -요 speech with each other.\n\n지우: 내일 3시에 만나요!\n\nWords: 내일 = tomorrow; 3시 = 3 o'clock; 만나요 = (we) meet / let's meet.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "You want to go. Which piece of information do you still need before you can actually meet 지우?",
+    "hints": [
+     "List what the message already tells you: day, time, who, ...",
+     "What would you need to know to walk to the right place?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The place",
+      "reveals": "You noticed that the message names a time and a day but nowhere to go."
+     },
+     {
+      "id": "b",
+      "text": "The day",
+      "reveals": "내일 means tomorrow, so the day is already there."
+     },
+     {
+      "id": "c",
+      "text": "The time",
+      "reveals": "3시 is the time. Read the message once more from the start."
+     },
+     {
+      "id": "d",
+      "text": "What to wear",
+      "reveals": "It could be useful, but you can meet without knowing it, so it is not what blocks you."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The message gives the day (내일), the time (3시) and the sender. The place is missing; without it you cannot meet."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your reply to 지우 in Korean (polite -요 speech): say nothing else, just ask for the missing piece.",
+    "placeholder": "예: ...",
+    "minChars": 4,
+    "hints": [
+     "Which question word asks about a place?",
+     "Finish with a polite ending."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "asks about the place (어디 ...)",
+      "mode": "any",
+      "patterns": [
+       "어디",
+       "장소"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite ending (요 / 니까)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다",
+       "니까"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question ask for the place, and only that?",
+     "Would 지우 know at once how to answer?",
+     "Is it polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "어디에서 만나요?",
+      "note": "The shortest natural question."
+     },
+     {
+      "text": "3시에 어디서 만날까요?",
+      "note": "Repeats the time and suggests a plan."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "몇 시에 만나요?",
+      "why": "Asks for the time, which the message already gives."
+     },
+     {
+      "text": "네, 좋아요!",
+      "why": "Accepts but leaves the place open."
+     }
+    ],
+    "humanReview": "Whether the question is natural; 어디예요? alone is acceptable but less clear."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finds the missing piece",
+    "full": "Names the place and says day and time are given",
+    "partial": "Names the place only",
+    "none": "Names a piece already in the message"
+   },
+   {
+    "criterion": "Asks one clear question",
+    "full": "Polite question about the place",
+    "partial": "Question that is unclear or impolite",
+    "none": "No question"
+   }
+  ],
+  "alternatives": [
+   "Asking 어디에서 만날까요? with an own suggestion is also fine.",
+   "Some learners reasonably want to ask about the weather; it is useful but not needed to meet."
+  ],
+  "hardCases": [
+   "If both 지우's school and a park are likely, a learner may feel the place is 'guessable'; the task treats a guess as not sufficient."
+  ],
+  "cautions": {
+   "language": "어디 (where) is the key question word; 어디서 is the spoken short form of 어디에서. The check accepts both.",
+   "culture": "Short messages without a place are normal among classmates who share a usual meeting spot, which is why this can feel obvious to native speakers.",
+   "accessibility": "No images. The chat is one line, so a screen reader reads it unchanged."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice of the missing piece",
+    "Presence of 어디 and a polite ending in the reply"
+   ],
+   "human": [
+    "Naturalness of the question"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-04",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading very short messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Who is sick? Messages change the answer",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read a chat one message at a time, keep your guess flexible, and revise who is sick when the next message adds a fact; then answer in Korean.",
+  "thinking": [
+   "Distinguishing what a message says from what we guess",
+   "Revising an inference when new evidence arrives",
+   "Replying to the real situation"
+  ],
+  "differsFromPlain": "Plain practice asks what 아파요 means. Here you decide, message by message, which guesses are still reasonable and notice when an early guess has to be dropped.",
+  "prerequisites": [
+   "Can read short Hangul messages",
+   "Knows basic polite -요 sentences"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A classmate, 유나, texts you before school. You know nothing else.\n\nWords: 학교 = school; 못 가요 = cannot go; 병원 = hospital; 동생 = younger brother or sister; 아파요 = (is) sick / hurts; 같이 = together.\n\nThe messages arrive one at a time.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each new message and choose what you can reasonably think so far.",
+    "hints": [
+     "Separate what the message says from what you are guessing.",
+     "After a new message, ask which earlier guess it supports and which it weakens."
+    ],
+    "stages": [
+     {
+      "info": "유나: 오늘 학교에 못 가요.",
+      "ask": "What can you reasonably think so far?",
+      "options": [
+       {
+        "id": "a",
+        "text": "유나 is sick today.",
+        "reveals": "The message gives no reason at all. Sick is a possible guess, not something the message says."
+       },
+       {
+        "id": "b",
+        "text": "유나 will be away from school today; the reason is not given.",
+        "reveals": "You kept to what the message says and left the reason open."
+       },
+       {
+        "id": "c",
+        "text": "유나 has changed schools.",
+        "reveals": "Nothing in the message suggests a move; 오늘 (today) points to one day."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The message states only that 유나 cannot come today. Anything about the reason is a guess."
+     },
+     {
+      "info": "유나: 병원에 가요.",
+      "ask": "What fits the two messages so far? (Choose all that are reasonable.)",
+      "options": [
+       {
+        "id": "a",
+        "text": "유나 is on a holiday trip.",
+        "reveals": "병원 is a hospital, which does not fit a holiday trip."
+       },
+       {
+        "id": "b",
+        "text": "유나 herself is probably the one who is sick.",
+        "reveals": "A natural first guess; keep it as a guess, not as a fact."
+       },
+       {
+        "id": "c",
+        "text": "A hospital visit is the reason, but who needs it is not clear yet.",
+        "reveals": "You kept the question about who open; the message does not name a person."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "The hospital explains why she is absent, but still not who is sick. Both b and c are reasonable here."
+     },
+     {
+      "info": "유나: 동생이 아파요. 같이 가요.",
+      "ask": "Now what fits best?",
+      "options": [
+       {
+        "id": "a",
+        "text": "유나 is sick and her younger sibling goes along.",
+        "reveals": "Check who is the subject of 아파요 in this message."
+       },
+       {
+        "id": "b",
+        "text": "유나 is sick and also her sibling is.",
+        "reveals": "The message names only the sibling as sick."
+       },
+       {
+        "id": "c",
+        "text": "유나's younger sibling is sick and 유나 goes to the hospital together.",
+        "reveals": "You revised your first guess when 동생이 became the subject."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "동생이 is the subject of 아파요, so the sibling is sick. 유나 is absent because she goes along (같이 가요). Your first guess needed to be dropped."
+     }
+    ],
+    "reflect": "Your first guess about who is sick was reasonable after the second message but wrong after the third. New evidence can change who the subject of a sentence is, so keep guesses open until the message names the person."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write a short Korean reply (polite -요 speech) that shows you understood who is sick.",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "hints": [
+     "Which person should your reply mention?",
+     "Add a short caring phrase if you can."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (요 / 니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the sibling (동생)",
+      "mode": "any",
+      "patterns": [
+       "동생"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply mention the person who is sick?",
+     "Does it sound caring and polite?",
+     "Did I avoid saying that 유나 is sick?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "동생이 많이 아파요? 걱정돼요.",
+      "note": "Asks about the sibling and shows care."
+     },
+     {
+      "text": "알겠어요. 동생이 빨리 나으면 좋겠어요.",
+      "note": "Understands and wishes well."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "많이 아파요? 괜찮아요?",
+      "why": "Does not say who; sounds as if 유나 is the sick one."
+     },
+     {
+      "text": "네.",
+      "why": "No Korean content about the situation."
+     }
+    ],
+    "humanReview": "Whether the reply is natural and caring; a reply that asks about 유나 herself needs a human to judge."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Keeps guesses open",
+    "full": "Chooses the reasonable options at each stage",
+    "partial": "Right at the last stage only",
+    "none": "Treats the first guess as a fact"
+   },
+   {
+    "criterion": "Replies to the real situation",
+    "full": "Mentions 동생 and shows care politely",
+    "partial": "Mentions 동생 only",
+    "none": "Replies about the wrong person"
+   }
+  ],
+  "alternatives": [
+   "At stage 2 both 'probably 유나' and 'unclear who' are reasonable; neither is wrong.",
+   "A learner may reasonably wish both 유나 and her sibling well; that is fine."
+  ],
+  "hardCases": [
+   "동생이 can be read as 'younger sibling' of either gender; the task does not decide the gender."
+  ],
+  "cautions": {
+   "language": "동생 does not show gender; 동생이 아파요 puts the sibling as subject with the particle -이. The glossary gives 동생 so that the thinking, not vocabulary, is tested.",
+   "culture": "Taking a younger sibling to the doctor, or staying home to help, is a normal reason for absence in Korean families.",
+   "accessibility": "No images. The three messages are plain text and are revealed one at a time, so each stage is a short screen."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each stage choice against the reasonable list",
+    "Presence of a polite ending and 동생 in the reply"
+   ],
+   "human": [
+    "Naturalness and warmth of the reply"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-05",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Matching text to a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Same news for a friend and for a teacher",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Rewrite a casual text so that it fits a teacher, and say which parts of the text had to change.",
+  "thinking": [
+   "Judging which parts of a text depend on the reader",
+   "Keeping the message and changing the form",
+   "Writing a polite message that keeps all the facts"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn 가 into 가요. Here you decide what changes for a new reader, and you must keep the facts (cannot come, sick) while changing the style.",
+  "prerequisites": [
+   "Can read short Hangul sentences",
+   "Knows the polite -요 ending and the word 선생님"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "You sent your friend this text:\n\n나 내일 학교에 못 가. 아파.\n\nNow you must tell your teacher (선생님) the same thing in a message.\n\nWords: 내일 = tomorrow; 학교 = school; 못 가 = cannot go; 아파 = (I) am sick.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which parts of the friend text must change when it is written for 선생님? Choose all that apply.",
+    "hints": [
+     "Read the text one word at a time and ask: would I say it this way to a teacher?",
+     "Look at the ends of the sentences and at the first word."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The sentence endings (가. and 아파.)",
+      "reveals": "You noticed that the ending carries the level of politeness."
+     },
+     {
+      "id": "b",
+      "text": "The word 내일 (tomorrow)",
+      "reveals": "The day stays the same for any listener; the facts do not change."
+     },
+     {
+      "id": "c",
+      "text": "The word 학교 (school)",
+      "reveals": "The place does not change with the listener."
+     },
+     {
+      "id": "d",
+      "text": "The word 나 (I)",
+      "reveals": "You noticed that even 'I' has a form for speaking to a teacher."
+     }
+    ],
+    "correct": [
+     "a",
+     "d"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "The endings are the main change; changing 나 to 저 is a second, finer one."
+     }
+    ],
+    "explain": "The facts (tomorrow, cannot go to school, sick) stay. The endings become polite (-요 or -ㅂ니다), and 나 becomes 저 when speaking to a teacher."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write the message to 선생님 in Korean. Keep all the facts of the text and make it suit a teacher.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "hints": [
+     "Which facts must still be in your message?",
+     "Start by addressing the teacher."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending (요 / 니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says cannot go (못 가 / 안 가)",
+      "mode": "any",
+      "patterns": [
+       "(못|안) ?(가|갑|와|옵|오)",
+       "오지 못",
+       "가지 못"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says sick (아파 / 아픕 / 병원)",
+      "mode": "any",
+      "patterns": [
+       "아파",
+       "아픕",
+       "아픈",
+       "아프",
+       "병원",
+       "몸이"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "addresses the teacher or apologises",
+      "mode": "any",
+      "patterns": [
+       "선생님",
+       "죄송",
+       "감사합니다",
+       "안녕하세요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I keep all the facts?",
+     "Does every sentence sound polite to a teacher?",
+     "Did I address the teacher or say sorry?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님, 내일 학교에 못 가요. 아파요.",
+      "note": "The shortest version."
+     },
+     {
+      "text": "선생님, 안녕하세요. 저는 내일 몸이 아파서 학교에 못 갑니다. 죄송합니다.",
+      "note": "More formal, with a reason."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "나 내일 학교에 못 가. 아파.",
+      "why": "Unchanged casual text."
+     },
+     {
+      "text": "선생님, 내일 학교에 가요. 아파요.",
+      "why": "Polite, but changes the fact: it says that you go."
+     }
+    ],
+    "humanReview": "Whether the tone suits a teacher and the wording is natural; 저 is a bonus, not a requirement."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Separates style from facts",
+    "full": "Says endings (and 나) change, facts stay",
+    "partial": "Names only the endings",
+    "none": "Says the facts must change"
+   },
+   {
+    "criterion": "Writes for the teacher",
+    "full": "Polite message that keeps all facts",
+    "partial": "Polite but a fact is lost",
+    "none": "Still casual or wrong meaning"
+   }
+  ],
+  "alternatives": [
+   "Both -요 and -ㅂ니다 are valid for a message to a teacher; -ㅂ니다 is more formal.",
+   "Some learners add the reason with -아서 (몸이 아파서); it is fine."
+  ],
+  "hardCases": [
+   "A message to a teacher with only 죄송해요 and no mention of sickness keeps politeness but loses a fact."
+  ],
+  "cautions": {
+   "language": "The check accepts 못 가/안 가 and different forms of 가다 and 오다 because learners may say 학교에 못 와요 from the teacher's point of view. 저 (humble I) is not glossed and not required.",
+   "culture": "Korean students normally use polite speech to teachers and often add 죄송합니다 when reporting an absence.",
+   "accessibility": "No images. The chat text is one short line."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice of changing parts",
+    "Polite ending, cannot-go, sick and address features of the message"
+   ],
+   "human": [
+    "Tone, naturalness and whether the facts are all kept"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-06",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul in labels and names",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "A label for the snack table",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Judge which draft labels keep a classmate with a peanut allergy safe and write your own Korean label that says what it must say.",
+  "thinking": [
+   "Deciding what a label must say for its reader",
+   "Spotting labels that do not say it, or say the opposite",
+   "Producing a short label"
+  ],
+  "differsFromPlain": "Plain practice asks you to read 쿠키 or 땅콩. Here you decide what information a label has to carry for someone with an allergy and write it yourself.",
+  "prerequisites": [
+   "Can read Hangul words",
+   "Knows 있어요 / 없어요"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "Your class has a snack table. You bring cookies that CONTAIN peanuts. One classmate cannot eat peanuts (allergy). You must put a Korean label on the box.\n\nWords: 쿠키 = cookie; 땅콩 = peanut; 있어요 = there is / it has; 없어요 = there is not; 맛있는 = tasty.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which draft labels would keep the classmate safe? Choose all that work.",
+    "hints": [
+     "Check each draft: does it mention peanuts at all?",
+     "Then check whether it says the cookies have peanuts or not."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "맛있는 쿠키예요!",
+      "reveals": "Friendly, but it does not warn about peanuts, so the classmate cannot decide."
+     },
+     {
+      "id": "b",
+      "text": "땅콩 쿠키예요.",
+      "reveals": "You saw that naming the peanut in the cookie is a warning."
+     },
+     {
+      "id": "c",
+      "text": "이 쿠키는 땅콩이 없어요.",
+      "reveals": "It names peanuts, but says the opposite of the truth."
+     },
+     {
+      "id": "d",
+      "text": "쿠키 안에 땅콩이 있어요.",
+      "reveals": "You noticed that 있어요 states that the peanuts are present."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "A safe label must say that peanuts are in the cookies. Draft a says nothing about peanuts, and draft c says there are none, which is the worst mistake."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now write your own label in Korean for the box. It must tell the reader what is in the box and that it contains peanuts.",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "hints": [
+     "Write the food and the warning as two short parts.",
+     "Check that your label cannot be read as 'no peanuts'."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the cookies (쿠키)",
+      "mode": "any",
+      "patterns": [
+       "쿠키"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names peanuts (땅콩)",
+      "mode": "any",
+      "patterns": [
+       "땅콩"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say there are no peanuts",
+      "mode": "none",
+      "patterns": [
+       "땅콩(이|은|도|을)? ?(없|안 )"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Can a classmate with an allergy understand the warning at a glance?",
+     "Is the label short and clear?",
+     "Could any part be misread as 'no peanuts'?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "쿠키입니다. 땅콩이 있어요!",
+      "note": "Two short parts."
+     },
+     {
+      "text": "쿠키 (땅콩 들어 있어요. 조심하세요!)",
+      "note": "Adds an extra caution."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "쿠키입니다. 땅콩이 없어요.",
+      "why": "Says the opposite."
+     },
+     {
+      "text": "맛있는 쿠키예요!",
+      "why": "No warning."
+     }
+    ],
+    "humanReview": "Whether the label is natural and clear; labels using 땅콩 주의 or similar need a human to confirm they read as a warning."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judges the drafts",
+    "full": "Picks the two drafts that state the peanuts",
+    "partial": "Picks one",
+    "none": "Picks the false draft"
+   },
+   {
+    "criterion": "Writes a clear label",
+    "full": "Names cookie and peanut, cannot be misread",
+    "partial": "Names only one",
+    "none": "Says no peanuts or no warning"
+   }
+  ],
+  "alternatives": [
+   "Labels such as 땅콩 주의 or 땅콩 들어 있음 are good; they may use words not taught at K1.",
+   "A label in two lines is as good as one in a sentence."
+  ],
+  "hardCases": [
+   "A label that only says 땅콩 쿠키 is accepted but a teacher may want a clearer warning."
+  ],
+  "cautions": {
+   "language": "In the glossary 있어요/없어요 are given so that the check can look for the opposite. The write check does not require a polite ending because labels are often nouns.",
+   "culture": "Food-allergy labels are taken seriously in Korean schools; peanuts are one of the common allergens. The scenario names no real student.",
+   "accessibility": "No images. The label is short text; a screen reader reads Korean as normal."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The choice of safe drafts",
+    "Presence of 쿠키 and 땅콩 and absence of a 'no peanuts' phrase"
+   ],
+   "human": [
+    "Whether the label is clear, natural and safe"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-07",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul in signs",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "When can you walk into the library?",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read a sign with several lines, decide which lines matter on a given day, then find several arrival times that fit all of them.",
+  "thinking": [
+   "Selecting which lines of a sign apply",
+   "Finding several solutions under two limits",
+   "Explaining why other times fail"
+  ],
+  "differsFromPlain": "Plain practice asks what 오전 or 쉬어요 means. Here you must satisfy the opening times and the break at once and list times that work.",
+  "prerequisites": [
+   "Can read Hangul and numbers with 시",
+   "Knows that 오전 is morning and 오후 is afternoon"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A sign on a library door (one line per row):\n\n도서관\n오전 9시 ~ 오후 6시\n낮 12시 ~ 1시 쉬어요\n일요일 쉬어요\n\nWords: 오전 = a.m.; 오후 = p.m.; 낮 = midday; 쉬어요 = (it) rests; ~ is read 'to' (from ... to ...). You want to visit on a Wednesday.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which lines of the sign matter for a visit on Wednesday? Choose all that apply.",
+    "hints": [
+     "Ask of each line: does it apply on Wednesday?",
+     "One line is a name; one is about another day."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "도서관",
+      "reveals": "This is the name of the place; it does not limit your time."
+     },
+     {
+      "id": "b",
+      "text": "오전 9시 ~ 오후 6시",
+      "reveals": "You saw that this line gives the hours of a normal day."
+     },
+     {
+      "id": "c",
+      "text": "낮 12시 ~ 1시 쉬어요",
+      "reveals": "You saw that the place stops for a while within the day."
+     },
+     {
+      "id": "d",
+      "text": "일요일 쉬어요",
+      "reveals": "This line is about Sunday; your day is Wednesday."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Lines 2 and 3 apply to every normal day. Line 1 is the name and line 4 is only about Sunday."
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find three different times on Wednesday at which you can arrive and the library is open. Every time is 'h:30'; enter the hour h on a 24-hour clock (1 p.m. = 13).",
+    "hints": [
+     "Write the opening and closing hours as 24-hour numbers first.",
+     "Remove the hour of the break, then test your numbers."
+    ],
+    "vars": [
+     {
+      "name": "h",
+      "label": "hour h of the arrival time h:30 (0-23)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "h==floor(h)",
+      "ok": "A whole hour.",
+      "fail": "Use a whole hour, such as 10."
+     },
+     {
+      "id": "c2",
+      "expr": "h>=9 && h<=17",
+      "ok": "Between opening and closing.",
+      "fail": "The library is open from 9:00 to 18:00, so h:30 must be in that range."
+     },
+     {
+      "id": "c3",
+      "expr": "h<12 || h>=13",
+      "ok": "Not in the break.",
+      "fail": "At 12:30 the library rests."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "h": 9
+     },
+     {
+      "h": 10
+     },
+     {
+      "h": 13
+     },
+     {
+      "h": 17
+     }
+    ],
+    "badRows": [
+     {
+      "h": 12
+     },
+     {
+      "h": 18
+     },
+     {
+      "h": 8
+     }
+    ],
+    "explain": "Open times are 9:30 to 11:30 and 13:30 to 17:30 as h:30 arrivals. 12:30 is in the break, and 8:30 and 18:30 are outside the opening hours.",
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Write one or two English sentences to a friend who says 'it is open from 9 to 6, any time is fine': which times fail, and why?",
+     "placeholder": "Example: ...",
+     "minChars": 10,
+     "hints": [
+      "Which line of the sign did your friend skip?",
+      "Name the hours that fail."
+     ],
+     "checks": [
+      {
+       "id": "w1",
+       "label": "mentions the break (12, noon, lunch, midday, 낮)",
+       "mode": "any",
+       "patterns": [
+        "\\b12\\b",
+        "noon",
+        "lunch",
+        "midday",
+        "낮",
+        "점심"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "says closed / rest / break",
+       "mode": "any",
+       "patterns": [
+        "closed",
+        "\\bbreak\\b",
+        "\\brest\\w*",
+        "쉬",
+        "not open",
+        "shut"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Did I name the hour that fails?",
+      "Did I say why?",
+      "Could my friend now plan a visit?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "Between 12 and 1 it rests (쉬어요), and before 9 or after 6 it is closed.",
+       "note": "Names both limits."
+      },
+      {
+       "text": "Do not come at lunch time, 12 to 1. The library has a break then, so choose another time between 9 and 6.",
+       "note": "Focuses on the break."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "Any time is fine.",
+       "why": "Repeats the friend's mistake."
+      },
+      {
+       "text": "It rests on Sunday.",
+       "why": "True but not about Wednesday."
+      }
+     ],
+     "humanReview": "Whether the explanation is clear; other correct limits are accepted."
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Selects the lines",
+    "full": "Picks lines 2 and 3 and rejects the name and Sunday",
+    "partial": "Picks one of them",
+    "none": "Picks the name or the Sunday line"
+   },
+   {
+    "criterion": "Builds valid times",
+    "full": "Three different times that satisfy both limits",
+    "partial": "One or two valid times",
+    "none": "Times in the break or outside hours"
+   }
+  ],
+  "alternatives": [
+   "Arriving at 9:00 or 13:00 sharp would also be fine, but the task uses h:30 to avoid doubts at the edges.",
+   "A learner may enter 17 (17:30) and also check that the library closes at 18:00."
+  ],
+  "hardCases": [
+   "'~' shows the range, but a learner may wonder whether 6시 is included; the task avoids this by using h:30."
+  ],
+  "cautions": {
+   "language": "쉬어요 is glossed as 'rests'; the sign uses polite -어요 for a notice. 낮 (midday) is glossed because it is rare at K1.",
+   "culture": "Korean libraries and small shops often close for lunch; 'Sunday rest' is common for smaller libraries.",
+   "accessibility": "No images. A screen reader reads '~' as 'tilde' or 'to'; the material explains that it is read 'to'. The sign is given one line per row."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of lines",
+    "Each time against the constraints",
+    "Break and closed words in the explanation"
+   ],
+   "human": [
+    "Clarity of the explanation"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-08",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Matching text to a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Where does 'shoes off' belong?",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Match one sign to the place where it most likely hangs, using details of each scene, and notice what the sign leaves unsaid.",
+  "thinking": [
+   "Using scene details as evidence for a match",
+   "Accepting more than one reasonable match",
+   "Noticing what a sign does not say"
+  ],
+  "differsFromPlain": "Plain practice asks what 벗고 means. Here three scenes each contain small clues, and you must decide where the sign most likely hangs and what it still leaves open.",
+  "prerequisites": [
+   "Can read short Hangul sentences",
+   "Knows that signs speak to people who enter"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "A sign says: 신발을 벗고 들어오세요.\n\nWords: 신발 = shoes; 벗다 = to take off; 들어오세요 = please come in.\n\nThree places, described in words:\nPlace 1: a shoe shop. Customers try shoes on and walk on a thin carpet.\nPlace 2: a small restaurant. The dining area is a raised wooden floor with low tables. At the door a row of shoes lies on the stone step.\nPlace 3: a school gym. The wooden floor was polished yesterday. Students wear clean indoor shoes there.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Where could this sign hang? Choose all places where it makes sense.",
+    "hints": [
+     "For each place, ask: do people there walk on the floor in their shoes?",
+     "Look for clues like a raised floor or shoes on the step."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Place 1: the shoe shop",
+      "reveals": "You noticed that customers need their shoes on or off to try pairs; compare with the 'thin carpet' clue."
+     },
+     {
+      "id": "b",
+      "text": "Place 2: the restaurant",
+      "reveals": "You used the raised floor and the shoes on the step as clues."
+     },
+     {
+      "id": "c",
+      "text": "Place 3: the gym",
+      "reveals": "You used the new polished floor as a reason to protect the floor."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "b",
+       "c"
+      ],
+      "reason": "A gym can ask people to take off outdoor shoes, even if students there wear indoor shoes, so choosing the restaurant and the gym is also reasonable."
+     }
+    ],
+    "explain": "The restaurant has the clearest clues (raised floor, shoes at the step). The gym is also possible because the floor is new; the shoe shop is the least likely because customers try shoes on."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "The sign says only: 신발을 벗고 들어오세요. Which of these questions does the sign NOT answer? Choose all.",
+    "hints": [
+     "Read the sign again and mark what it tells you to do.",
+     "Then check each question against those instructions."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Where should I put my shoes?",
+      "reveals": "You saw that the sign says to take them off, but not where to leave them."
+     },
+     {
+      "id": "b",
+      "text": "Do I go in after taking them off?",
+      "reveals": "들어오세요 answers this; the sign tells you to come in."
+     },
+     {
+      "id": "c",
+      "text": "Do I have to wear socks?",
+      "reveals": "You noticed that the sign says nothing about socks."
+     },
+     {
+      "id": "d",
+      "text": "Should I take my shoes off?",
+      "reveals": "벗고 answers this question directly."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "The sign answers 'take shoes off' (벗고) and 'come in' (들어오세요). It does not say where to put the shoes or whether socks are needed."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Uses scene evidence",
+    "full": "Matches with a specific clue from the scene",
+    "partial": "Matches with a vague reason",
+    "none": "Matches at random or by length"
+   },
+   {
+    "criterion": "Sees what the sign leaves open",
+    "full": "Names at least two questions it does not answer",
+    "partial": "Names one",
+    "none": "Says the sign answers everything"
+   }
+  ],
+  "alternatives": [
+   "Choosing the restaurant alone or the restaurant and the gym are both acceptable.",
+   "A learner may also say that the shoe shop is possible for a trial area; the explanation notes that it is the least likely."
+  ],
+  "hardCases": [
+   "Gym floors differ between schools; the question is about the clues in this description, not general truth."
+  ],
+  "cautions": {
+   "language": "The sign uses -고 (and then) and the polite request -(으)세요; both are glossed by translation, not taught.",
+   "culture": "Taking shoes off at the entrance is normal in Korean homes and in many traditional restaurants, but not in shoe shops.",
+   "accessibility": "No images: each place is described in words. Words are given as a short glossary."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of places against the key and the acceptable set",
+    "Choice of unanswered questions"
+   ],
+   "human": [
+    "Free-text reasons if a teacher adds a discussion"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-09",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Matching text to a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Is the bakery open yet?",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Check a classmate's reasoning about a sign against the clock, find the wrong step and write the corrected step.",
+  "thinking": [
+   "Checking each step of a chain of reasoning",
+   "Comparing two times",
+   "Writing the corrected reasoning"
+  ],
+  "differsFromPlain": "Plain practice asks what 열어요 means. Here the reading is correct, and the thinking is finding where the chain of reasoning breaks.",
+  "prerequisites": [
+   "Can read Hangul and numbers with 시",
+   "Can compare two clock times"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "You stand in front of a bakery at 11:00 (the clock on the wall of the shop next door says 11:00). On the bakery door is a sign:\n\n빵집\n10시에 열어요.\n\nWords: 빵집 = bakery; 열어요 = (it) opens.\n\nMina read the sign and wrote her reasoning in English (below).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One line of Mina's reasoning is wrong. Which one?",
+    "hints": [
+     "Check each line against the sign and the clock.",
+     "Compare the two times: which one is later?"
+    ],
+    "lines": [
+     "The sign says 열어요, so it tells when the bakery opens.",
+     "The number is 10시, so it opens at ten o'clock.",
+     "The clock says 11:00, so ten o'clock has not come yet.",
+     "So the bakery is not open, and we should wait."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is wrong: 11:00 is later than 10:00, so the opening time has already passed. Line 4 repeats this error. (The sign still does not say that the door is unlocked today.)"
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write the correct version of line 3 in one or two English sentences.",
+    "placeholder": "Example: ...",
+    "minChars": 12,
+    "hints": [
+     "Which two times must your sentence compare?",
+     "Say which is earlier and which is later."
+    ],
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the 11 o'clock time",
+      "mode": "any",
+      "patterns": [
+       "\\b11\\b",
+       "eleven"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the 10 o'clock opening",
+      "mode": "any",
+      "patterns": [
+       "\\b10\\b",
+       "ten"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says that the time has passed (after, later, already, passed)",
+      "mode": "any",
+      "patterns": [
+       "after",
+       "later",
+       "past",
+       "already",
+       "passed",
+       "over",
+       "gone"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I compare 11 and 10 correctly?",
+     "Is it clear that the opening time is already over?",
+     "Did I say something about what the bakery should be doing now?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The clock says 11:00, which is after 10:00, so the bakery should already be open.",
+      "note": "Compares and concludes."
+     },
+     {
+      "text": "Ten o'clock has passed because it is eleven now, so the opening time is over.",
+      "note": "Says the same in other words."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "The clock says 11:00 so we wait.",
+      "why": "Does not mention 10 or say the time has passed."
+     },
+     {
+      "text": "The bakery is closed.",
+      "why": "No comparison."
+     }
+    ],
+    "humanReview": "Whether the sentence is clear; the cautious remark 'the sign does not say it is open today' is a good extra."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finds the faulty step",
+    "full": "Picks line 3 and says why",
+    "partial": "Picks line 4",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Corrects it",
+    "full": "Compares 11 and 10 and says the time has passed",
+    "partial": "Gives the right conclusion without comparing",
+    "none": "Repeats the error"
+   }
+  ],
+  "alternatives": [
+   "Choosing line 4 shows seeing the wrong conclusion but not the first wrong step; the explanation names line 3 as the cause.",
+   "A learner may add that the bakery may not be open today for another reason; the sign cannot tell."
+  ],
+  "hardCases": [
+   "Real bakeries sometimes open late; the sign's 10시 is the intended opening time, not a guarantee."
+  ],
+  "cautions": {
+   "language": "10시 is read 'yeol-si' in native Korean numbers; the task works with the written numerals so that no spoken form is needed.",
+   "culture": "Small bakeries in Korea often put opening times on the door; times use the 12-hour or 24-hour clock depending on the sign, here the plain number.",
+   "accessibility": "No images; the clock is described in words. The sign is two short lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The chosen line",
+    "Presence of 11, 10 and a 'passed' word in the correction"
+   ],
+   "human": [
+    "Correctness and clarity of the corrected line"
+   ]
+  }
+ },
+ {
+  "id": "x-k-k1-10",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "What a sign does and does not say",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "title": "Apples are sold out. What about pears?",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "Separate what a short sign says from what you guess, and choose the questions that would settle what the sign leaves open.",
+  "thinking": [
+   "Checking each claim against the sign",
+   "Spotting a claim that goes beyond the sign",
+   "Choosing questions that settle the open point"
+  ],
+  "differsFromPlain": "Plain practice asks what 팔았어요 means. Here the words are easy; the thinking is that a sign about apples says nothing about pears.",
+  "prerequisites": [
+   "Can read short Hangul sentences",
+   "Knows the question ending -요?"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "On the door of a fruit shop (the lights are on, a woman is arranging boxes inside) there is a sign:\n\n사과 다 팔았어요. 내일 오세요.\n\nWords: 사과 = apple; 배 = pear; 다 = all; 팔았어요 = sold; 내일 오세요 = please come tomorrow.\n\nYour friend read the sign and made four notes (below). You would like to buy pears.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One of your friend's notes goes beyond what the sign says. Which one?",
+    "hints": [
+     "For each note, point to the word of the sign that supports it.",
+     "Which note talks about something the sign never mentions?"
+    ],
+    "lines": [
+     "The sign says apples are sold out.",
+     "So the shop has no apples now.",
+     "So the shop has no pears either.",
+     "The sign asks us to come back tomorrow."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the one. The sign says 사과 (apples); it says nothing about pears (배). The other lines are in the sign."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "You go inside to ask the woman. Which Korean questions would settle whether you can buy pears today? Choose all.",
+    "hints": [
+     "Which question is about pears and about today?",
+     "Which question is about apples or about another day?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "배는 있어요?",
+      "reveals": "You asked directly about pears."
+     },
+     {
+      "id": "b",
+      "text": "사과는 얼마예요?",
+      "reveals": "The apples are sold out, so their price does not help with the pears."
+     },
+     {
+      "id": "c",
+      "text": "배도 다 팔았어요?",
+      "reveals": "You turned the sign into a question about pears."
+     },
+     {
+      "id": "d",
+      "text": "내일 몇 시에 열어요?",
+      "reveals": "This is about tomorrow, not about buying pears today."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "Asking 배는 있어요? alone settles the question."
+     },
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "Asking 배도 다 팔았어요? alone settles the question."
+     }
+    ],
+    "explain": "Both 배는 있어요? and 배도 다 팔았어요? ask about pears now. The questions about apple prices or tomorrow's opening time do not settle it."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Separates sign from guess",
+    "full": "Picks the pear line and says the sign only mentions apples",
+    "partial": "Picks it without a reason",
+    "none": "Picks a line the sign supports"
+   },
+   {
+    "criterion": "Chooses useful questions",
+    "full": "Chooses both pear questions or one with a reason",
+    "partial": "Chooses one pear question and one other",
+    "none": "Chooses only unrelated questions"
+   }
+  ],
+  "alternatives": [
+   "Each of the two pear questions alone settles the matter.",
+   "Asking when the shop opens tomorrow is polite but does not settle today's question."
+  ],
+  "hardCases": [
+   "In real shops 사과 다 팔았어요 may be an old sign that was not taken down; the task only asks what the sign says."
+  ],
+  "cautions": {
+   "language": "배 is also the word for 'belly' and 'boat'; the glossary and the fruit context make the meaning clear. 팔았어요 is the past tense of 팔다 and is given in the glossary.",
+   "culture": "Small fruit shops in Korea often handwrite sold-out notices on the door or on a board.",
+   "accessibility": "No images; the shop is described in words. The sign is a single line of text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The chosen line",
+    "The chosen questions against the key and the acceptable sets"
+   ],
+   "human": [
+    "Discussion of whether an old sign can be trusted"
+   ]
+  }
+ }
+]
