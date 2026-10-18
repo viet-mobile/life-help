@@ -10,7 +10,7 @@ export const LANG_NAMES: Record<ThinkLang, string> = { ko: "한국어", en: "Eng
 export const baseLang = (subject: Subject): "ko" | "en" => (subject === "korean" ? "en" : "ko");
 
 /** Learner language (registry locale) -> the closest language the tasks exist in. Anything else falls back to English. */
-export function thinkLangFor(locale: string, subject: Subject): ThinkLang {
-  if (isThinkLang(locale)) return locale === "ko" && subject === "korean" ? "en" : locale;
+export function thinkLangFor(locale: string, _subject: Subject): ThinkLang {
+  if (isThinkLang(locale)) return locale;
   return "en";
 }

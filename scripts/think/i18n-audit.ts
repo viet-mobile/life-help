@@ -38,7 +38,7 @@ async function main() {
           const tr = m[path];
           if (typeof tr === "string" && tr.trim()) { overlay++; if (hangulShare(tr) > 0.7) { korean++; list.push(`${lang} ${t.id} ${path}: ${tr.slice(0, 60)}`); } }
           else if (!needsTranslation(text)) { notNeeded++; }
-          else { missing++; miss++; if (lang === "vi") { list.push(`MISSING ${lang} ${t.id} ${path}: ${text.slice(0, 50)}`); missingFull.push({ subject, id: t.id, path, text }); } }
+          else { missing++; miss++; if (lang === (process.env.MISS_LANG ?? "vi")) { list.push(`MISSING ${lang} ${t.id} ${path}: ${text.slice(0, 50)}`); missingFull.push({ subject, id: t.id, path, text }); } }
         }
         if (miss) tasksMissing++;
       }

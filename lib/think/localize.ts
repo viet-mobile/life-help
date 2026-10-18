@@ -21,5 +21,9 @@ export function localize(task: ThinkTask, lang: ThinkLang, overlay: Overlay): Lo
   return { task: applyFlat(task, m), lang, translated: true };
 }
 
-/** Math answers are written in the learner's language, but the surface checks only know the authored (Korean) text. */
-export const checksOffFor = (task: ThinkTask, lang: ThinkLang): boolean => task.subject === "math" && lang !== "ko";
+/**
+ * Math answers are written in the learner's language, but the surface checks only know the authored (Korean) text. Korean-subject tasks authored
+ * with English instructions have checks for English answers; the Korean version asks for answers in Korean (and lets learners mix), so the
+ * surface checks are off there too (the self-assessment and the review notes carry the judgement).
+ */
+export const checksOffFor = (task: ThinkTask, lang: ThinkLang): boolean => (task.subject === "math" && lang !== "ko") || (task.subject === "korean" && lang === "ko");

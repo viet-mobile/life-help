@@ -143,9 +143,10 @@ describe("flat strings (translation interface)", async () => {
   });
   it("language policy: authored language per subject, locale fallback to English, math written answers have no surface checks in translations", () => {
     expect(baseLang("math")).toBe("ko"); expect(baseLang("english")).toBe("ko"); expect(baseLang("korean")).toBe("en");
-    expect(thinkLangFor("vi", "math")).toBe("vi"); expect(thinkLangFor("zh-Hant", "korean")).toBe("zh-Hant"); expect(thinkLangFor("fr", "english")).toBe("en"); expect(thinkLangFor("ko", "korean")).toBe("en");
+    expect(thinkLangFor("vi", "math")).toBe("vi"); expect(thinkLangFor("zh-Hant", "korean")).toBe("zh-Hant"); expect(thinkLangFor("fr", "english")).toBe("en"); expect(thinkLangFor("ko", "korean")).toBe("ko"); // Korean-subject instructions exist in Korean too (lib/think/i18n/ko)
     const m = allTasks.find((t) => t.subject === "math")!; const e = allTasks.find((t) => t.subject === "english")!;
     expect(checksOffFor(m, "vi")).toBe(true); expect(checksOffFor(m, "ko")).toBe(false); expect(checksOffFor(e, "vi")).toBe(false);
+    const k = allTasks.find((t) => t.subject === "korean")!; expect(checksOffFor(k, "ko")).toBe(true); expect(checksOffFor(k, "en")).toBe(false);
     expect(localize(m, "vi", {}).translated).toBe(false); // no overlay: the authored text, chrome still in the chosen language
     expect(localize(m, "ko", {}).translated).toBe(true);
   });

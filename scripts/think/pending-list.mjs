@@ -5,9 +5,9 @@ import { TASK_LOADERS } from "../../lib/think/data/files";
 import { loadOverlay } from "../../lib/think/localize";
 const tasks = []; for (const k of Object.keys(TASK_LOADERS)) tasks.push(...(await TASK_LOADERS[k]()));
 const out = {};
-for (const lang of ["en", "zh-Hans", "zh-Hant", "ja", "vi"]) {
+for (const lang of ["en", "zh-Hans", "zh-Hant", "ja", "vi", "ko"]) {
   const ov = await loadOverlay(lang);
-  out[lang] = tasks.filter((t) => !(lang === "en" && t.subject === "korean") && !ov[t.id]).map((t) => t.id).sort();
+  out[lang] = tasks.filter((t) => !(lang === "en" && t.subject === "korean") && !(lang === "ko" && t.subject !== "korean") && !ov[t.id]).map((t) => t.id).sort();
 }
 fs.writeFileSync("tests/think/translation-pending.json", JSON.stringify(out));
 console.log(Object.entries(out).map(([l, v]) => `${l}: ${v.length}`).join("  "));

@@ -8,7 +8,7 @@ import pendingList from "./translation-pending.json";
 /** Tasks that exist but have no translation overlay yet, per language. They are tracked here, never counted as translated; the list must match reality exactly (no hiding, no stale entries). */
 const PENDING = pendingList as Record<string, string[]>;
 
-const LANGS = ["en", "zh-Hans", "zh-Hant", "ja", "vi"] as const;
+const LANGS = ["en", "zh-Hans", "zh-Hant", "ja", "vi", "ko"] as const;
 
 async function allTasks(): Promise<ThinkTask[]> {
   const out: ThinkTask[] = [];
@@ -27,6 +27,8 @@ describe("translation overlays", () => {
       for (const t of tasks) {
         // the Korean subject is authored with English instructions: no English overlay is expected for it
         if (lang === "en" && t.subject === "korean") continue;
+        // Korean overlays exist only for the Korean subject (the other subjects are authored in Korean)
+        if (lang === "ko" && t.subject !== "korean") continue;
         const m = overlay[t.id];
         if (!m) { actuallyMissing.push(t.id); continue; }
         const loc = localize(t, lang, overlay).task;
